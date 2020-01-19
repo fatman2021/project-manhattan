@@ -1,3 +1,16 @@
+Dartmouth BASIC         Copyright © 1964-1979 John G. Kemény, Thomas E. Kurtz
+Microsoft BASIC         Copyright © 1975-present Microsoft Corporation    
+Commodore KERNAL ROM    Copyright © 1977-1994 Commodore International Limited		    
+                        Copyright © 1995-1996 Escom
+                        Copyright © 1997-2008 Tulip Computers NV
+                        Copyright © 2008-2009 Nedfield NV
+MOS Technology 6510     Copyright © 1982-2001 MOS Technology, Inc.
+OpenGL Shading Language Copyright © 2004-2006 OpenGLARB
+      		    	    Copyright © 2006-present The Khronos Group, Inc.
+FreeBASIC               Copyright © 2004-present The FreeBASIC Development Team
+Shadertoy               Copyright © 2013-present Inigo Quilez & Pol Jeremias
+Project Manhattan       Copyright © 2019-present Jacob Dahlen"
+
 # project-manhattan
 Next generation APU for gaming and business applications.
 
