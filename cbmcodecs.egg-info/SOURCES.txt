@@ -1,0 +1,13 @@
+README.rst
+setup.py
+cbmcodecs/__init__.py
+cbmcodecs/petscii_c64en_lc.py
+cbmcodecs/petscii_c64en_uc.py
+cbmcodecs/petscii_vic20en_lc.py
+cbmcodecs/petscii_vic20en_uc.py
+cbmcodecs/screencode_c64_lc.py
+cbmcodecs/screencode_c64_uc.py
+cbmcodecs.egg-info/PKG-INFO
+cbmcodecs.egg-info/SOURCES.txt
+cbmcodecs.egg-info/dependency_links.txt
+cbmcodecs.egg-info/top_level.txt

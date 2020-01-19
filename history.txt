@@ -1,0 +1,121 @@
+FUN FACT #1: AMD's 3Ghz Epyc Rome CPU has 39,540,000,000 transistors vs. the MOS 6502 with it's 4,528 transistors. It is therefore possible to create a 64-bit MOS 6510 compatible CPU(about 36,224 transistors) with a clock speed of 4Ghz using current CPU manufacturing technology.
+
+FUN FACT #2: The universities have already produced multicore 8-bit CPUs that run at 150GHz or more in the lab.
+
+FUN FACT #3: Unlike real hardware, you can get an emulator to do  anything you want.
+
+About a year ago I started playing around with the emulator's source code. I wanted to see what I could get the POKE statement to do. So the first I got the emulator to play DVDs. See lines 270-274:
+https://github.com/fatman2021/project-manhattan/blob/master/c64dvd-p.bas
+
+Then I added 32-bit color support and 64-bit registers. c64dvd-p.bas lines 275-306 
+
+Next I exposed the FreeBASIC runtime library's pset, getmouse, and cls commands. c64dvd-p.bas lines 307-318
+
+After that I gave the emulator the ability to render images using generated POV-ray code. c64dvd-p.bas lines 319-921
+
+Using POV-ray turned out to be to slow. So I tried Blender instead. Lines 439-1113:
+https://github.com/fatman2021/project-manhattan/blob/master/c64dvd-b.bas
+
+This was good for simple scenes, but for more complex ones it was too slow. So I switched to GLSL as a result.
+https://github.com/fatman2021/project-manhattan/blob/master/c64dvd-glsl.bas (lines 489-679)
+https://github.com/fatman2021/project-manhattan/blob/master/glsl.bi (all)
+
+The emulator generates a line of GLSL script based of the value written to address 49314. The GLSL script is then compiled and executed 0 is written to address 49313.
+
+The demo will not run on a stock c64/c128. You will need custom hardware and a second monitor.
+
+Build a 65c02-based computer from scratch:
+https://www.youtube.com/watch?v=LnzuMJLZRdU&list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH
+
+Building an 8-bit breadboard computer:
+https://www.youtube.com/watch?v=HyznrdDSSGM&list=PLowKtXNTBypGqImE405J2565dvjafglHU
+
+How "oldschool" graphics worked Part 1 - Commodore and Nintendo:
+https://www.youtube.com/watch?v=Tfh0ytz8S0k
+
+How "oldschool" graphics work, part 2-Apple and Atari
+https://www.youtube.com/watch?v=_rsycfDliZU
+
+How "Oldschool" Sound/Music worked
+https://www.youtube.com/watch?v=q_3d1x2VPxk
+
+Reverse emulating the NES to give it SUPER POWERS: 
+https://www.youtube.com/watch?v=ar9WRwCiSr0
+
+Making of "Reverse emulating the NES...":
+https://www.youtube.com/watch?v=hTlNVUmBA28
+
+Let's build a video card Part 1:
+https://www.youtube.com/watch?v=l7rce6IQDWs
+
+Let's build a video card Part 2:
+https://www.youtube.com/watch?v=uqY3FMuMuRo
+
+Shader Tutorial Series:
+https://www.youtube.com/watch?v=HIvNePu7UEE&list=PL4neAtv21WOmIrTrkNO3xCyrxg4LKkrF7&index=2&t=0s
+
+Boot Sector Games:
+https://www.amazon.com/Programming-Sector-Games-Toledo-Gutierrez/dp/0359816312/ref=sr_1_1?crid=3SN5VXJO59DQB&keywords=boot+sector+games&qid=1578521315&sprefix=boot+sect%2Caps%2C156&sr=8-1
+https://www.youtube.com/watch?v=1UzTf0Qo37A
+https://github.com/nanochess
+
+OS Development: low-level Boot-Sector Programming:
+https://www.youtube.com/watch?v=YvZhgRO7hL4&list=PLv6ChvD5cBYAFA12TBddOqzle1TvSNjF9&index=2&t=0s
+
+How we fit an NES game into 40 Kilobytes:
+https://www.youtube.com/watch?v=ZWQ0591PAxM
+
+The 96KB Game:
+https://www.youtube.com/watch?v=mqHwJSsmCBc
+
+Write your own Operating System:
+https://www.youtube.com/playlist?list=PLHh55M_Kq4OApWScZyPl5HhgsTJS9MZ6M
+
+25c3: The Ultimate Commodore 64 Talk:
+https://www.youtube.com/watch?v=ZsRRCnque2E
+
+27c3: Reverse Engineering the MOS 6502 CPU (en)
+https://www.youtube.com/watch?v=fWqBmmPQP40
+
+Create your own Version of Microsoft BASIC for the 6502:
+https://www.pagetable.com/?p=46
+
+Microsoft BASIC for the 6502 Original Source Code [1978]:
+https://www.pagetable.com/?p=774
+
+Commodore 64 BASIC and KERNAL Source Code:
+https://github.com/mist64/c64rom
+
+FPGA Design using VHDL Lectures:
+https://www.youtube.com/watch?v=BDq8-QDXmek&list=PLZv8x7uxq5XY-IQfQFb6mC6OXzz0h8ceF
+
+The END of Silicon & Future of Computing:
+https://www.youtube.com/watch?v=xNDInhRni_c
+
+3D Printing 101:
+https://www.youtube.com/watch?v=BrvMqrgGXuE&list=PLTCCNNvHC8PDR_jQy609toqq8EAfhiOOL
+
+LLVM Code:
+https://raw.githubusercontent.com/fatman2021/project-manhattan/master/c64dvd-glsl.ll
+
+Apple I Emulator :
+https://www.shadertoy.com/view/tlX3W7
+
+Commodore 64 Emulator:
+https://www.shadertoy.com/view/Xs3XW4
+
+Commodore 64 Emulator Written in FreeBASIC:
+http://shiny3d.de/public/c64/c64.bas
+
+pyc64: Commodore-64 simulator in pure Python.
+https://github.com/irmen/pyc64
+
+Shadertoy is Open Source Software:
+https://github.com/beautypi/shadertoy-iOS-v1
+https://github.com/beautypi/shadertoy-iOS-v2
+
+The original shader code falls under the MIT License
+https://github.com/reindernijhoff/wp-shadertoy-gallery
+https://github.com/reindernijhoff/wp-shadertoy-gallery/blob/master/LICENSE
+https://github.com/marklundin/glsl-sdf-primitives
+https://github.com/marklundin/glsl-sdf-primitives/blob/master/LICENSE

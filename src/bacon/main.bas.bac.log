@@ -1,0 +1,1019 @@
+In file included from main.bas.bac.c:2:
+main.bas.bac.h:65:18: error: expected declaration specifiers or '...' before numeric constant
+ NUMBER sin_table(356), cos_table(356);
+                  ^~~
+main.bas.bac.h:68:1: error: unknown type name 'Point3D'
+ Point3D points(2577777);
+ ^~~~~~~
+main.bas.bac.h:68:16: error: expected declaration specifiers or '...' before numeric constant
+ Point3D points(2577777);
+                ^~~~~~~
+main.bas.bac.h:71:1: error: unknown type name 'Tri2D'
+ Tri2D tris(2577777);
+ ^~~~~
+main.bas.bac.h:71:12: error: expected declaration specifiers or '...' before numeric constant
+ Tri2D tris(2577777);
+            ^~~~~~~
+main.bas.bac.h:181:15: error: expected declaration specifiers or '...' before numeric constant
+ NUMBER ram   (0x10FFFFFF);
+               ^~~~~~~~~~
+main.bas.bac.h:184:8: warning: missing terminating ' character
+ NUMBER ' Font xchar  (0x00007FF0);
+        ^
+main.bas.bac.h:184:8: error: missing terminating ' character
+ NUMBER ' Font xchar  (0x00007FF0);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.bac.h:726:7: error: expected identifier or '(' before ')' token
+ NUMBER) TYPE NUMBER peekb( long adr);
+       ^
+main.bas.bac.h:971:9: error: expected '=', ',', ';', 'asm' or '__attribute__' before '-' token
+ long adr-;
+         ^
+main.bas.bac.h:976:15: error: expected '=', ',', ';', 'asm' or '__attribute__' before '<<' token
+ long char_ptr <<;
+               ^~
+main.bas.bac.h:979:14: error: expected '=', ',', ';', 'asm' or '__attribute__' before '<<' token
+ long x_axis0 <<;
+              ^~
+main.bas.bac.h:980:13: error: expected '=', ',', ';', 'asm' or '__attribute__' before '+' token
+ long x_axis0+;
+             ^
+main.bas.bac.h:983:14: error: expected '=', ',', ';', 'asm' or '__attribute__' before '<<' token
+ long y_axis0 <<;
+              ^~
+main.bas.bac.h:984:13: error: expected '=', ',', ';', 'asm' or '__attribute__' before '+' token
+ long y_axis0+;
+             ^
+main.bas.bac.h:999:14: error: expected '=', ',', ';', 'asm' or '__attribute__' before '+' token
+ long char_ptr+;
+              ^
+main.bas.bac.h:1004:9: error: expected '=', ',', ';', 'asm' or '__attribute__' before '+' token
+ long adr+;
+         ^
+main.bas.bac.h:1146:13: error: unknown type name 'adr'
+ void pokeb( adr as uinteger);
+             ^~~
+main.bas.bac.h:1157:7: error: expected identifier or '(' before ')' token
+ NUMBER) TYPE NUMBER peekw( long adr);
+       ^
+main.bas.bac.h:1160:36: error: expected declaration specifiers or '...' before numeric constant
+ NUMBER get_key, get_data, old_data(10000);
+                                    ^~~~~
+In file included from main.bas.bac.h:1320,
+                 from main.bas.bac.c:2:
+main.bas.peekb.h:4:7: error: expected identifier or '(' before ')' token
+ NUMBER) TYPE NUMBER peekb( long adr) {
+       ^
+In file included from main.bas.bac.h:1321,
+                 from main.bas.bac.c:2:
+main.bas.pokeb.h:4:13: error: unknown type name 'adr'
+ void pokeb( adr as uinteger) {
+             ^~~
+main.bas.pokeb.h:15:23: warning: missing terminating ' character
+ r0=(long)(v           ' move r0, v);
+                       ^
+main.bas.pokeb.h:15:23: error: missing terminating ' character
+ r0=(long)(v           ' move r0, v);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:19:25: warning: missing terminating ' character
+ r1=(NUMBER)(v           ' move r1, v);
+                         ^
+main.bas.pokeb.h:19:25: error: missing terminating ' character
+ r1=(NUMBER)(v           ' move r1, v);
+                         ^~~~~~~~~~~~~~
+main.bas.pokeb.h:23:25: warning: missing terminating ' character
+ r2=(NUMBER)(v           ' move r2, v);
+                         ^
+main.bas.pokeb.h:23:25: error: missing terminating ' character
+ r2=(NUMBER)(v           ' move r2, v);
+                         ^~~~~~~~~~~~~~
+main.bas.pokeb.h:27:23: warning: missing terminating ' character
+ r0=(long)(r1          ' move r0, r1);
+                       ^
+main.bas.pokeb.h:27:23: error: missing terminating ' character
+ r0=(long)(r1          ' move r0, r1);
+                       ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:31:23: warning: missing terminating ' character
+ r0=(long)(r2          ' move r0, r2);
+                       ^
+main.bas.pokeb.h:31:23: error: missing terminating ' character
+ r0=(long)(r2          ' move r0, r2);
+                       ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:35:25: warning: missing terminating ' character
+ r1=(NUMBER)(r0          ' move r1, r0);
+                         ^
+main.bas.pokeb.h:35:25: error: missing terminating ' character
+ r1=(NUMBER)(r0          ' move r1, r0);
+                         ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:39:25: warning: missing terminating ' character
+ r1=(NUMBER)(r2          ' move r1, r2);
+                         ^
+main.bas.pokeb.h:39:25: error: missing terminating ' character
+ r1=(NUMBER)(r2          ' move r1, r2);
+                         ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:43:25: warning: missing terminating ' character
+ r2=(NUMBER)(r0          ' move r2, r0);
+                         ^
+main.bas.pokeb.h:43:25: error: missing terminating ' character
+ r2=(NUMBER)(r0          ' move r2, r0);
+                         ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:47:25: warning: missing terminating ' character
+ r2=(NUMBER)(r1          ' move r2, r1);
+                         ^
+main.bas.pokeb.h:47:25: error: missing terminating ' character
+ r2=(NUMBER)(r1          ' move r2, r1);
+                         ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:51:25: warning: missing terminating ' character
+ pc=(NUMBER)(r0          ' move pc, r0);
+                         ^
+main.bas.pokeb.h:51:25: error: missing terminating ' character
+ pc=(NUMBER)(r0          ' move pc, r0);
+                         ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:55:25: warning: missing terminating ' character
+ pc=(NUMBER)(r1          ' move pc, r1);
+                         ^
+main.bas.pokeb.h:55:25: error: missing terminating ' character
+ pc=(NUMBER)(r1          ' move pc, r1);
+                         ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:59:25: warning: missing terminating ' character
+ pc=(NUMBER)(r2          ' move pc, r2);
+                         ^
+main.bas.pokeb.h:59:25: error: missing terminating ' character
+ pc=(NUMBER)(r2          ' move pc, r2);
+                         ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:63:25: warning: missing terminating ' character
+ adr0=(NUMBER)(r0        ' move adr0, r0);
+                         ^
+main.bas.pokeb.h:63:25: error: missing terminating ' character
+ adr0=(NUMBER)(r0        ' move adr0, r0);
+                         ^~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:67:25: warning: missing terminating ' character
+ adr0=(NUMBER)(r1        ' move adr0, r1);
+                         ^
+main.bas.pokeb.h:67:25: error: missing terminating ' character
+ adr0=(NUMBER)(r1        ' move adr0, r1);
+                         ^~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:71:25: warning: missing terminating ' character
+ adr0=(NUMBER)(r2        ' move adr0, r2);
+                         ^
+main.bas.pokeb.h:71:25: error: missing terminating ' character
+ adr0=(NUMBER)(r2        ' move adr0, r2);
+                         ^~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:75:25: warning: missing terminating ' character
+ adr1=(NUMBER)(r0        ' move adr1, r0);
+                         ^
+main.bas.pokeb.h:75:25: error: missing terminating ' character
+ adr1=(NUMBER)(r0        ' move adr1, r0);
+                         ^~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:79:25: warning: missing terminating ' character
+ adr1=(NUMBER)(r1        ' move adr1, r1);
+                         ^
+main.bas.pokeb.h:79:25: error: missing terminating ' character
+ adr1=(NUMBER)(r1        ' move adr1, r1);
+                         ^~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:83:25: warning: missing terminating ' character
+ adr1=(NUMBER)(r2        ' move adr1, r2);
+                         ^
+main.bas.pokeb.h:83:25: error: missing terminating ' character
+ adr1=(NUMBER)(r2        ' move adr1, r2);
+                         ^~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:87:25: warning: missing terminating ' character
+ adr3=(NUMBER)(r0        ' move adr3, r0);
+                         ^
+main.bas.pokeb.h:87:25: error: missing terminating ' character
+ adr3=(NUMBER)(r0        ' move adr3, r0);
+                         ^~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:91:25: warning: missing terminating ' character
+ adr3=(NUMBER)(r1        ' move adr3, r1);
+                         ^
+main.bas.pokeb.h:91:25: error: missing terminating ' character
+ adr3=(NUMBER)(r1        ' move adr3, r1);
+                         ^~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:95:25: warning: missing terminating ' character
+ adr3=(NUMBER)(r2        ' move adr3, r2);
+                         ^
+main.bas.pokeb.h:95:25: error: missing terminating ' character
+ adr3=(NUMBER)(r2        ' move adr3, r2);
+                         ^~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:99:25: warning: missing terminating ' character
+ red0=(NUMBER)(r0        ' move red0, r0);
+                         ^
+main.bas.pokeb.h:99:25: error: missing terminating ' character
+ red0=(NUMBER)(r0        ' move red0, r0);
+                         ^~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:103:25: warning: missing terminating ' character
+ red1=(NUMBER)(r0        ' move red0, r0);
+                         ^
+main.bas.pokeb.h:103:25: error: missing terminating ' character
+ red1=(NUMBER)(r0        ' move red0, r0);
+                         ^~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:107:25: warning: missing terminating ' character
+ red2=(NUMBER)(r0        ' move red2, r0);
+                         ^
+main.bas.pokeb.h:107:25: error: missing terminating ' character
+ red2=(NUMBER)(r0        ' move red2, r0);
+                         ^~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:111:25: warning: missing terminating ' character
+ green0=(NUMBER)(r0      ' move green0, r0);
+                         ^
+main.bas.pokeb.h:111:25: error: missing terminating ' character
+ green0=(NUMBER)(r0      ' move green0, r0);
+                         ^~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:115:25: warning: missing terminating ' character
+ green1=(NUMBER)(r0      ' move green1, r0);
+                         ^
+main.bas.pokeb.h:115:25: error: missing terminating ' character
+ green1=(NUMBER)(r0      ' move green1, r0);
+                         ^~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:119:25: warning: missing terminating ' character
+ green2=(NUMBER)(r0      ' move green2, r0);
+                         ^
+main.bas.pokeb.h:119:25: error: missing terminating ' character
+ green2=(NUMBER)(r0      ' move green2, r0);
+                         ^~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:123:25: warning: missing terminating ' character
+ blue0=(NUMBER)(r0       ' move blue0, r0);
+                         ^
+main.bas.pokeb.h:123:25: error: missing terminating ' character
+ blue0=(NUMBER)(r0       ' move blue0, r0);
+                         ^~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:127:25: warning: missing terminating ' character
+ blue1=(NUMBER)(r0       ' move blue1, r0);
+                         ^
+main.bas.pokeb.h:127:25: error: missing terminating ' character
+ blue1=(NUMBER)(r0       ' move blue1, r0);
+                         ^~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:131:25: warning: missing terminating ' character
+ blue2=(NUMBER)(r0       ' move blue2, r0);
+                         ^
+main.bas.pokeb.h:131:25: error: missing terminating ' character
+ blue2=(NUMBER)(r0       ' move blue2, r0);
+                         ^~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:135:25: warning: missing terminating ' character
+ xalpha0=(NUMBER)(r0     ' move xalpha0, r0);
+                         ^
+main.bas.pokeb.h:135:25: error: missing terminating ' character
+ xalpha0=(NUMBER)(r0     ' move xalpha0, r0);
+                         ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:139:25: warning: missing terminating ' character
+ xalpha1=(NUMBER)(r0     ' move xalpha1, r0);
+                         ^
+main.bas.pokeb.h:139:25: error: missing terminating ' character
+ xalpha1=(NUMBER)(r0     ' move xalpha1, r0);
+                         ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:143:25: warning: missing terminating ' character
+ xalpha2=(NUMBER)(r0     ' move xalpha2, r0);
+                         ^
+main.bas.pokeb.h:143:25: error: missing terminating ' character
+ xalpha2=(NUMBER)(r0     ' move xalpha2, r0);
+                         ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:147:25: warning: missing terminating ' character
+ x_axis0=(NUMBER)(r0     ' move x_axis0, r0);
+                         ^
+main.bas.pokeb.h:147:25: error: missing terminating ' character
+ x_axis0=(NUMBER)(r0     ' move x_axis0, r0);
+                         ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:151:25: warning: missing terminating ' character
+ x_axis1=(NUMBER)(r0     ' move x_axis1, r0);
+                         ^
+main.bas.pokeb.h:151:25: error: missing terminating ' character
+ x_axis1=(NUMBER)(r0     ' move x_axis1, r0);
+                         ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:155:25: warning: missing terminating ' character
+ y_axis0=(NUMBER)(r0     ' move y_axis0, r0);
+                         ^
+main.bas.pokeb.h:155:25: error: missing terminating ' character
+ y_axis0=(NUMBER)(r0     ' move y_axis0, r0);
+                         ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:159:25: warning: missing terminating ' character
+ y_axis1=(NUMBER)(r0     ' move y_axis1, r0);
+                         ^
+main.bas.pokeb.h:159:25: error: missing terminating ' character
+ y_axis1=(NUMBER)(r0     ' move y_axis1, r0);
+                         ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:163:25: warning: missing terminating ' character
+ z_axis0=(NUMBER)(r0     ' move z_axis0, r0);
+                         ^
+main.bas.pokeb.h:163:25: error: missing terminating ' character
+ z_axis0=(NUMBER)(r0     ' move z_axis0, r0);
+                         ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:167:25: warning: missing terminating ' character
+ z_axis1=(NUMBER)(r0     ' move z_axis1, r0);
+                         ^
+main.bas.pokeb.h:167:25: error: missing terminating ' character
+ z_axis1=(NUMBER)(r0     ' move z_axis1, r0);
+                         ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:171:25: warning: missing terminating ' character
+ col0=(NUMBER)(r0        ' move col1, r0);
+                         ^
+main.bas.pokeb.h:171:25: error: missing terminating ' character
+ col0=(NUMBER)(r0        ' move col1, r0);
+                         ^~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:175:25: warning: missing terminating ' character
+ col1=(NUMBER)(r0        ' move col2, r0);
+                         ^
+main.bas.pokeb.h:175:25: error: missing terminating ' character
+ col1=(NUMBER)(r0        ' move col2, r0);
+                         ^~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:179:25: warning: missing terminating ' character
+ char_h=(NUMBER)(r0      ' move char_h, r0);
+                         ^
+main.bas.pokeb.h:179:25: error: missing terminating ' character
+ char_h=(NUMBER)(r0      ' move char_h, r0);
+                         ^~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:183:25: warning: missing terminating ' character
+ char_w=(NUMBER)(r0      ' move char_w, r0);
+                         ^
+main.bas.pokeb.h:183:25: error: missing terminating ' character
+ char_w=(NUMBER)(r0      ' move char_w, r0);
+                         ^~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:187:25: warning: missing terminating ' character
+ char_ptr=(NUMBER)(r0    ' move char_ptr, r0);
+                         ^
+main.bas.pokeb.h:187:25: error: missing terminating ' character
+ char_ptr=(NUMBER)(r0    ' move char_ptr, r0);
+                         ^~~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:191:25: warning: missing terminating ' character
+ char_buffer=(NUMBER)(r0 ' move char_buffer, r0);
+                         ^
+main.bas.pokeb.h:191:25: error: missing terminating ' character
+ char_buffer=(NUMBER)(r0 ' move char_buffer, r0);
+                         ^~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:195:25: warning: missing terminating ' character
+ bitmask=(NUMBER)(r0     ' move bitmask, r0);
+                         ^
+main.bas.pokeb.h:195:25: error: missing terminating ' character
+ bitmask=(NUMBER)(r0     ' move bitmask, r0);
+                         ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:199:25: warning: missing terminating ' character
+ pixel_size=(NUMBER)(r0  ' move pixel_size, r0);
+                         ^
+main.bas.pokeb.h:199:25: error: missing terminating ' character
+ pixel_size=(NUMBER)(r0  ' move pixel_size, r0);
+                         ^~~~~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:203:25: warning: missing terminating ' character
+ radius=(NUMBER)(r0      ' move radius, r0);
+                         ^
+main.bas.pokeb.h:203:25: error: missing terminating ' character
+ radius=(NUMBER)(r0      ' move radius, r0);
+                         ^~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:207:25: warning: missing terminating ' character
+ string_adr=(NUMBER)(r0  ' move string_adr, r0);
+                         ^
+main.bas.pokeb.h:207:25: error: missing terminating ' character
+ string_adr=(NUMBER)(r0  ' move string_adr, r0);
+                         ^~~~~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:211:25: warning: missing terminating ' character
+ string_len=(NUMBER)(r0  ' move string_len, r0);
+                         ^
+main.bas.pokeb.h:211:25: error: missing terminating ' character
+ string_len=(NUMBER)(r0  ' move string_len, r0);
+                         ^~~~~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:215:23: warning: missing terminating ' character
+ r0=(long)(mouse_x     ' move r0, mouse_X);
+                       ^
+main.bas.pokeb.h:215:23: error: missing terminating ' character
+ r0=(long)(mouse_x     ' move r0, mouse_X);
+                       ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:219:25: warning: missing terminating ' character
+ mouse_x=(NUMBER)(r0     ' move mouse_x, r0);
+                         ^
+main.bas.pokeb.h:219:25: error: missing terminating ' character
+ mouse_x=(NUMBER)(r0     ' move mouse_x, r0);
+                         ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:223:23: warning: missing terminating ' character
+ r0=(long)(mouse_y     ' move r0, mouse_y);
+                       ^
+main.bas.pokeb.h:223:23: error: missing terminating ' character
+ r0=(long)(mouse_y     ' move r0, mouse_y);
+                       ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:227:25: warning: missing terminating ' character
+ mouse_y=(NUMBER)(r0     ' move mouse_y, r0);
+                         ^
+main.bas.pokeb.h:227:25: error: missing terminating ' character
+ mouse_y=(NUMBER)(r0     ' move mouse_y, r0);
+                         ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:231:23: warning: missing terminating ' character
+ r0=(long)(mouse_w     ' move r0, mouse_w);
+                       ^
+main.bas.pokeb.h:231:23: error: missing terminating ' character
+ r0=(long)(mouse_w     ' move r0, mouse_w);
+                       ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:235:23: warning: missing terminating ' character
+ r0=(long)(mouse_b     ' move r0, mouse_b);
+                       ^
+main.bas.pokeb.h:235:23: error: missing terminating ' character
+ r0=(long)(mouse_b     ' move r0, mouse_b);
+                       ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:239:23: warning: missing terminating ' character
+ r0=(long)(mouse_c     ' move r0, mouse_c);
+                       ^
+main.bas.pokeb.h:239:23: error: missing terminating ' character
+ r0=(long)(mouse_c     ' move r0, mouse_c);
+                       ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:243:23: warning: missing terminating ' character
+ r0=(long)(mouse_v     ' move r0, mouse_v);
+                       ^
+main.bas.pokeb.h:243:23: error: missing terminating ' character
+ r0=(long)(mouse_v     ' move r0, mouse_v);
+                       ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:247:25: warning: missing terminating ' character
+ mouse_v=(NUMBER)(r0     ' move mouse_v, r0);
+                         ^
+main.bas.pokeb.h:247:25: error: missing terminating ' character
+ mouse_v=(NUMBER)(r0     ' move mouse_v, r0);
+                         ^~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:251:23: warning: missing terminating ' character
+ r0=(long)(joystick_id ' move r0, joystick_id);
+                       ^
+main.bas.pokeb.h:251:23: error: missing terminating ' character
+ r0=(long)(joystick_id ' move r0, joystick_id);
+                       ^~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:255:23: warning: missing terminating ' character
+ r0=(long)(joystick_b  ' move r0, joystick_b);
+                       ^
+main.bas.pokeb.h:255:23: error: missing terminating ' character
+ r0=(long)(joystick_b  ' move r0, joystick_b);
+                       ^~~~~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:259:23: warning: missing terminating ' character
+ r0=(long)(a1          ' move r0, a1);
+                       ^
+main.bas.pokeb.h:259:23: error: missing terminating ' character
+ r0=(long)(a1          ' move r0, a1);
+                       ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:263:23: warning: missing terminating ' character
+ r0=(long)(a2          ' move r0, a2);
+                       ^
+main.bas.pokeb.h:263:23: error: missing terminating ' character
+ r0=(long)(a2          ' move r0, a2);
+                       ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:267:23: warning: missing terminating ' character
+ r0=(long)(a3          ' move r0, a3);
+                       ^
+main.bas.pokeb.h:267:23: error: missing terminating ' character
+ r0=(long)(a3          ' move r0, a3);
+                       ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:271:23: warning: missing terminating ' character
+ r0=(long)(a4          ' move r0, a4);
+                       ^
+main.bas.pokeb.h:271:23: error: missing terminating ' character
+ r0=(long)(a4          ' move r0, a4);
+                       ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:275:23: warning: missing terminating ' character
+ r0=(long)(a5          ' move r0, a5);
+                       ^
+main.bas.pokeb.h:275:23: error: missing terminating ' character
+ r0=(long)(a5          ' move r0, a5);
+                       ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:279:23: warning: missing terminating ' character
+ r0=(long)(a6          ' move r0, a6);
+                       ^
+main.bas.pokeb.h:279:23: error: missing terminating ' character
+ r0=(long)(a6          ' move r0, a6);
+                       ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:283:23: warning: missing terminating ' character
+ r0=(long)(a7          ' move r0, a7);
+                       ^
+main.bas.pokeb.h:283:23: error: missing terminating ' character
+ r0=(long)(a7          ' move r0, a7);
+                       ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:287:23: warning: missing terminating ' character
+ r0=(long)(a8          ' move r0, a8);
+                       ^
+main.bas.pokeb.h:287:23: error: missing terminating ' character
+ r0=(long)(a8          ' move r0, a8);
+                       ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:291:23: warning: missing terminating ' character
+ r0=(long)(key         ' move r0, key);
+                       ^
+main.bas.pokeb.h:291:23: error: missing terminating ' character
+ r0=(long)(key         ' move r0, key);
+                       ^~~~~~~~~~~~~~~~
+main.bas.pokeb.h:295:23: warning: missing terminating ' character
+ r0=(long)(r1 + r2     ' add r1, r2);
+                       ^
+main.bas.pokeb.h:295:23: error: missing terminating ' character
+ r0=(long)(r1 + r2     ' add r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:299:23: warning: missing terminating ' character
+ r0=(long)(r1 - r2     ' sub r1, r2);
+                       ^
+main.bas.pokeb.h:299:23: error: missing terminating ' character
+ r0=(long)(r1 - r2     ' sub r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:303:23: warning: missing terminating ' character
+ r0=(long)(r1 * r2     ' mul r1, r2);
+                       ^
+main.bas.pokeb.h:303:23: error: missing terminating ' character
+ r0=(long)(r1 * r2     ' mul r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:307:23: warning: missing terminating ' character
+ r0=(long)(r1 / r2     ' div r1, r3);
+                       ^
+main.bas.pokeb.h:307:23: error: missing terminating ' character
+ r0=(long)(r1 / r2     ' div r1, r3);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:311:14: error: stray '\' in program
+ r0=(long)(r1 \ r2     ' idiv r1, r2);
+              ^
+main.bas.pokeb.h:311:23: warning: missing terminating ' character
+ r0=(long)(r1 \ r2     ' idiv r1, r2);
+                       ^
+main.bas.pokeb.h:311:23: error: missing terminating ' character
+ r0=(long)(r1 \ r2     ' idiv r1, r2);
+                       ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:315:23: warning: missing terminating ' character
+ r0=(long)(r1 ^ r2     ' exp r1, r2);
+                       ^
+main.bas.pokeb.h:315:23: error: missing terminating ' character
+ r0=(long)(r1 ^ r2     ' exp r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:319:23: warning: missing terminating ' character
+ r0=(long)(r1 mod r2   ' mod r0, r1);
+                       ^
+main.bas.pokeb.h:319:23: error: missing terminating ' character
+ r0=(long)(r1 mod r2   ' mod r0, r1);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:323:23: warning: missing terminating ' character
+ r0=(long)(- r0        ' neg r0);
+                       ^
+main.bas.pokeb.h:323:23: error: missing terminating ' character
+ r0=(long)(- r0        ' neg r0);
+                       ^~~~~~~~~~
+main.bas.pokeb.h:327:22: warning: missing terminating ' character
+ r0=(long)(r1 << r2   ' << r1, r2);
+                      ^
+main.bas.pokeb.h:327:22: error: missing terminating ' character
+ r0=(long)(r1 << r2   ' << r1, r2);
+                      ^~~~~~~~~~~~~
+main.bas.pokeb.h:331:23: warning: missing terminating ' character
+ r0=(long)(r1 shr r2   ' shr r1, r2);
+                       ^
+main.bas.pokeb.h:331:23: error: missing terminating ' character
+ r0=(long)(r1 shr r2   ' shr r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:335:23: warning: missing terminating ' character
+ r0=(long)((r1 = r2)   ' equ r1, r2);
+                       ^
+main.bas.pokeb.h:335:23: error: missing terminating ' character
+ r0=(long)((r1 = r2)   ' equ r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:339:23: warning: missing terminating ' character
+ r0=(long)((r1 <> r2)  ' ne  r1, r2);
+                       ^
+main.bas.pokeb.h:339:23: error: missing terminating ' character
+ r0=(long)((r1 <> r2)  ' ne  r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:343:23: warning: missing terminating ' character
+ r0=(long)((r1 < r2)   ' lt  r1, r2);
+                       ^
+main.bas.pokeb.h:343:23: error: missing terminating ' character
+ r0=(long)((r1 < r2)   ' lt  r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:347:23: warning: missing terminating ' character
+ r0=(long)((r1 <= r2)  ' lte r1, r2);
+                       ^
+main.bas.pokeb.h:347:23: error: missing terminating ' character
+ r0=(long)((r1 <= r2)  ' lte r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:351:23: warning: missing terminating ' character
+ r0=(long)((r1 >= r2)  ' gle r1, r2);
+                       ^
+main.bas.pokeb.h:351:23: error: missing terminating ' character
+ r0=(long)((r1 >= r2)  ' gle r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:355:23: warning: missing terminating ' character
+ r0=(long)((r1 > r2)   ' gt  r1, r2);
+                       ^
+main.bas.pokeb.h:355:23: error: missing terminating ' character
+ r0=(long)((r1 > r2)   ' gt  r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:359:23: warning: missing terminating ' character
+ r0=(long)((r1 and r2) ' and r1, r2);
+                       ^
+main.bas.pokeb.h:359:23: error: missing terminating ' character
+ r0=(long)((r1 and r2) ' and r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:363:23: warning: missing terminating ' character
+ r0=(long)((r1 eqv r2) ' eqv r1, r2);
+                       ^
+main.bas.pokeb.h:363:23: error: missing terminating ' character
+ r0=(long)((r1 eqv r2) ' eqv r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:367:23: warning: missing terminating ' character
+ r0=(long)((r1 imp r2) ' imp r1, r2);
+                       ^
+main.bas.pokeb.h:367:23: error: missing terminating ' character
+ r0=(long)((r1 imp r2) ' imp r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:371:23: warning: missing terminating ' character
+ r0=(long)((r1 or r2)  ' or  r1, r2);
+                       ^
+main.bas.pokeb.h:371:23: error: missing terminating ' character
+ r0=(long)((r1 or r2)  ' or  r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:375:23: warning: missing terminating ' character
+ r0=(long)((r1 xor r2) ' xor r1, r2);
+                       ^
+main.bas.pokeb.h:375:23: error: missing terminating ' character
+ r0=(long)((r1 xor r2) ' xor r1, r2);
+                       ^~~~~~~~~~~~~~
+main.bas.pokeb.h:379:25: warning: missing terminating ' character
+ string_adr=(NUMBER)(r0  ' move string_adr, r0);
+                         ^
+main.bas.pokeb.h:379:25: error: missing terminating ' character
+ string_adr=(NUMBER)(r0  ' move string_adr, r0);
+                         ^~~~~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:383:25: warning: missing terminating ' character
+ string_len=(NUMBER)(r0  ' move string_len, r0);
+                         ^
+main.bas.pokeb.h:383:25: error: missing terminating ' character
+ string_len=(NUMBER)(r0  ' move string_len, r0);
+                         ^~~~~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:387:23: warning: missing terminating ' character
+ r0=(long)(r0 + 1      ' inc r0);
+                       ^
+main.bas.pokeb.h:387:23: error: missing terminating ' character
+ r0=(long)(r0 + 1      ' inc r0);
+                       ^~~~~~~~~~
+main.bas.pokeb.h:391:25: warning: missing terminating ' character
+ r1=(NUMBER)(r1 + 1      ' inc r1);
+                         ^
+main.bas.pokeb.h:391:25: error: missing terminating ' character
+ r1=(NUMBER)(r1 + 1      ' inc r1);
+                         ^~~~~~~~~~
+main.bas.pokeb.h:395:25: warning: missing terminating ' character
+ r2=(NUMBER)(r2 + 1      ' inc r2);
+                         ^
+main.bas.pokeb.h:395:25: error: missing terminating ' character
+ r2=(NUMBER)(r2 + 1      ' inc r2);
+                         ^~~~~~~~~~
+main.bas.pokeb.h:399:23: warning: missing terminating ' character
+ r0=(long)(r0 - 1      ' dec r0);
+                       ^
+main.bas.pokeb.h:399:23: error: missing terminating ' character
+ r0=(long)(r0 - 1      ' dec r0);
+                       ^~~~~~~~~~
+main.bas.pokeb.h:403:25: warning: missing terminating ' character
+ r1=(NUMBER)(r1 - 1      ' dec r1);
+                         ^
+main.bas.pokeb.h:403:25: error: missing terminating ' character
+ r1=(NUMBER)(r1 - 1      ' dec r1);
+                         ^~~~~~~~~~
+main.bas.pokeb.h:407:25: warning: missing terminating ' character
+ r2=(NUMBER)(r2 - 1      ' dec r2);
+                         ^
+main.bas.pokeb.h:407:25: error: missing terminating ' character
+ r2=(NUMBER)(r2 - 1      ' dec r2);
+                         ^~~~~~~~~~
+main.bas.pokeb.h:476:49: warning: missing terminating ' character
+ } else if ( adr == ( 0x000004000 TO 0x000007E70 ' Screen Memory(Text 0x000004000-)){
+                                                 ^
+main.bas.pokeb.h:476:49: error: missing terminating ' character
+ } else if ( adr == ( 0x000004000 TO 0x000007E70 ' Screen Memory(Text 0x000004000-)){
+                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:494:23: error: stray '\' in program
+ y_axis0=(NUMBER)(adr  \  char_h);
+                       ^
+In file included from main.bas.bac.h:1321,
+                 from main.bas.bac.c:2:
+main.bas.pokeb.h:528:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x0000A0000 ' Graphics Register Ports)){
+   ^~~~
+main.bas.pokeb.h:528:34: warning: missing terminating ' character
+ } else if ( adr == ( 0x0000A0000 ' Graphics Register Ports)){
+                                  ^
+main.bas.pokeb.h:528:34: error: missing terminating ' character
+ } else if ( adr == ( 0x0000A0000 ' Graphics Register Ports)){
+                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:531:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x0000A0001)){
+   ^~~~
+main.bas.pokeb.h:534:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x0000A0002)){
+   ^~~~
+main.bas.pokeb.h:537:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x0000A0003)){
+   ^~~~
+main.bas.pokeb.h:543:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x0000A0004)){
+   ^~~~
+main.bas.pokeb.h:549:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x0000A0005)){
+   ^~~~
+main.bas.pokeb.h:552:108: error: invalid digit "8" in octal constant
+ r1=(NUMBER)(ram(0x0000B0001) << 32 + ram(0x0000B0002) << 24 + ram(0x0000B0003) << 16 + ram(0x0000B0004) << 08 + ram(0x0000B0005));
+                                                                                                            ^~
+main.bas.pokeb.h:555:108: error: invalid digit "8" in octal constant
+ r2=(NUMBER)(ram(0x0000B0006) << 32 + ram(0x0000B0007) << 24 + ram(0x0000B0008) << 16 + ram(0x0000B0009) << 08 + ram(0x0000B000A));
+                                                                                                            ^~
+main.bas.pokeb.h:561:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x0000A0006)){
+   ^~~~
+main.bas.pokeb.h:564:108: error: invalid digit "8" in octal constant
+ r1=(NUMBER)(ram(0x0000B000B) << 32 + ram(0x0000B000C) << 24 + ram(0x0000B000D) << 16 + ram(0x0000B000E) << 08 + ram(0x0000B000F));
+                                                                                                            ^~
+main.bas.pokeb.h:567:108: error: invalid digit "8" in octal constant
+ r2=(NUMBER)(ram(0x0000B0010) << 32 + ram(0x0000B0011) << 24 + ram(0x0000B0012) << 16 + ram(0x0000B0013) << 08 + ram(0x0000B0014));
+                                                                                                            ^~
+main.bas.pokeb.h:573:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x0000A0007)){
+   ^~~~
+main.bas.pokeb.h:576:108: error: invalid digit "8" in octal constant
+ r1=(NUMBER)(ram(0x0000B0015) << 32 + ram(0x0000B0016) << 24 + ram(0x0000B0017) << 16 + ram(0x0000B0018) << 08 + ram(0x0000B0019));
+                                                                                                            ^~
+main.bas.pokeb.h:579:108: error: invalid digit "8" in octal constant
+ r2=(NUMBER)(ram(0x0000B001A) << 32 + ram(0x0000B001B) << 24 + ram(0x0000B001C) << 16 + ram(0x0000B001D) << 08 + ram(0x0000B001E));
+                                                                                                            ^~
+main.bas.pokeb.h:585:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x0000A0008)){
+   ^~~~
+main.bas.pokeb.h:588:108: error: invalid digit "8" in octal constant
+ r1=(NUMBER)(ram(0x0000B001F) << 32 + ram(0x0000B0020) << 24 + ram(0x0000B0021) << 16 + ram(0x0000B0022) << 08 + ram(0x0000B0023));
+                                                                                                            ^~
+main.bas.pokeb.h:591:108: error: invalid digit "8" in octal constant
+ r2=(NUMBER)(ram(0x0000B0024) << 32 + ram(0x0000B0025) << 24 + ram(0x0000B0026) << 16 + ram(0x0000B0027) << 08 + ram(0x0000B0028));
+                                                                                                            ^~
+main.bas.pokeb.h:597:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x0000A0009)){
+   ^~~~
+main.bas.pokeb.h:600:108: error: invalid digit "8" in octal constant
+ r1=(NUMBER)(ram(0x0000B0029) << 32 + ram(0x0000B002A) << 24 + ram(0x0000B002B) << 16 + ram(0x0000B002C) << 08 + ram(0x0000B002D));
+                                                                                                            ^~
+main.bas.pokeb.h:603:108: error: invalid digit "8" in octal constant
+ r2=(NUMBER)(ram(0x0000B002E) << 32 + ram(0x0000B002F) << 24 + ram(0x0000B0030) << 16 + ram(0x0000B0031) << 08 + ram(0x0000B0032));
+                                                                                                            ^~
+main.bas.pokeb.h:609:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x0000A000A)){
+   ^~~~
+main.bas.pokeb.h:612:108: error: invalid digit "8" in octal constant
+ r1=(NUMBER)(ram(0x0000B0033) << 32 + ram(0x0000B0034) << 24 + ram(0x0000B0035) << 16 + ram(0x0000B0036) << 08 + ram(0x0000B0037));
+                                                                                                            ^~
+main.bas.pokeb.h:615:108: error: invalid digit "8" in octal constant
+ r2=(NUMBER)(ram(0x0000B0038) << 32 + ram(0x0000B0039) << 24 + ram(0x0000B003A) << 16 + ram(0x0000B003B) << 08 + ram(0x0000B003C));
+                                                                                                            ^~
+main.bas.pokeb.h:621:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x0000A000B)){
+   ^~~~
+main.bas.pokeb.h:651:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x00000A000C)){
+   ^~~~
+main.bas.pokeb.h:658:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x00000A000D)){
+   ^~~~
+main.bas.pokeb.h:665:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x00000A000F)){
+   ^~~~
+main.bas.pokeb.h:672:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x00000A0010)){
+   ^~~~
+main.bas.pokeb.h:679:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x00000A0011)){
+   ^~~~
+main.bas.pokeb.h:686:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x00000A0012)){
+   ^~~~
+main.bas.pokeb.h:693:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x00000A0013)){
+   ^~~~
+main.bas.pokeb.h:700:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x00000A0014)){
+   ^~~~
+main.bas.pokeb.h:707:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x00000A0016)){
+   ^~~~
+main.bas.pokeb.h:714:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x00000A0017)){
+   ^~~~
+main.bas.pokeb.h:721:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x00000A0018)){
+   ^~~~
+main.bas.pokeb.h:728:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x00000A0019)){
+   ^~~~
+main.bas.pokeb.h:735:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x00000A001A)){
+   ^~~~
+main.bas.pokeb.h:738:3: error: expected identifier or '(' before 'else'
+ } else if ( adr == ( 0x0000C0000 TO 0x0000C7FF0 ' Screen Memory(0x000C0000-0x000C7FF0))){
+   ^~~~
+main.bas.pokeb.h:738:49: warning: missing terminating ' character
+ } else if ( adr == ( 0x0000C0000 TO 0x0000C7FF0 ' Screen Memory(0x000C0000-0x000C7FF0))){
+                                                 ^
+main.bas.pokeb.h:738:49: error: missing terminating ' character
+ } else if ( adr == ( 0x0000C0000 TO 0x0000C7FF0 ' Screen Memory(0x000C0000-0x000C7FF0))){
+                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:742:1: warning: data definition has no type or storage class
+ __b2c__char_loc = __b2c__char__add(adr);
+ ^~~~~~~~~~~~~~~
+main.bas.pokeb.h:742:1: warning: type defaults to 'int' in declaration of '__b2c__char_loc' [-Wimplicit-int]
+main.bas.pokeb.h:742:19: warning: implicit declaration of function '__b2c__char__add'; did you mean '__b2c__head'? [-Wimplicit-function-declaration]
+ __b2c__char_loc = __b2c__char__add(adr);
+                   ^~~~~~~~~~~~~~~~
+                   __b2c__head
+main.bas.pokeb.h:742:36: error: 'adr' undeclared here (not in a function); did you mean 'adr3'?
+ __b2c__char_loc = __b2c__char__add(adr);
+                                    ^~~
+                                    adr3
+main.bas.pokeb.h:743:16: error: expected '=', ',', ';', 'asm' or '__attribute__' before '->' token
+ __b2c__char_loc->value = v;
+                ^~
+main.bas.pokeb.h:744:4: error: expected '=', ',', ';', 'asm' or '__attribute__' before '+=' token
+ adr+=(long)(0x000C0000);
+    ^~
+main.bas.pokeb.h:747:1: error: expected identifier or '(' before '}' token
+ }
+ ^
+main.bas.pokeb.h:751:1: warning: data definition has no type or storage class
+ __b2c__catch_set = __b2c__catch_set_backup;
+ ^~~~~~~~~~~~~~~~
+main.bas.pokeb.h:751:1: warning: type defaults to 'int' in declaration of '__b2c__catch_set' [-Wimplicit-int]
+main.bas.pokeb.h:751:20: error: initializer element is not constant
+ __b2c__catch_set = __b2c__catch_set_backup;
+                    ^~~~~~~~~~~~~~~~~~~~~~~
+main.bas.pokeb.h:752:1: error: expected identifier or '(' before '}' token
+ }
+ ^
+In file included from main.bas.bac.h:1322,
+                 from main.bas.bac.c:2:
+main.bas.peekw.h:4:7: error: expected identifier or '(' before ')' token
+ NUMBER) TYPE NUMBER peekw( long adr) {
+       ^
+main.bas.bac.c:8:34: error: redefinition of '__b2c__catch_set'
+ int __b2c__catch_set_backup = 0, __b2c__catch_set = 0;
+                                  ^~~~~~~~~~~~~~~~
+In file included from main.bas.bac.h:1321,
+                 from main.bas.bac.c:2:
+main.bas.pokeb.h:751:1: note: previous definition of '__b2c__catch_set' was here
+ __b2c__catch_set = __b2c__catch_set_backup;
+ ^~~~~~~~~~~~~~~~
+main.bas.bac.c: In function 'main':
+main.bas.bac.c:761:1: error: '__b2c__xchar_loc' undeclared (first use in this function); did you mean '__b2c__char_loc'?
+ __b2c__xchar_loc = __b2c__xchar__add(char_ptr);
+ ^~~~~~~~~~~~~~~~
+ __b2c__char_loc
+main.bas.bac.c:761:1: note: each undeclared identifier is reported only once for each function it appears in
+main.bas.bac.c:761:20: warning: implicit declaration of function '__b2c__xchar__add'; did you mean '__b2c__head'? [-Wimplicit-function-declaration]
+ __b2c__xchar_loc = __b2c__xchar__add(char_ptr);
+                    ^~~~~~~~~~~~~~~~~
+                    __b2c__head
+main.bas.bac.c:762:1: error: cannot convert to a pointer type
+ __b2c__xchar_loc->value = (void*)__b2c__floatarray[__b2c__floatarray_ptr];;
+ ^~~~~~~~~~~~~~~~
+main.bas.bac.c:782:2: warning: implicit declaration of function 'pokeb'; did you mean 'popen'? [-Wimplicit-function-declaration]
+  pokeb(0,255);
+  ^~~~~
+  popen
+main.bas.bac.c:811:7: warning: type defaults to 'int' in declaration of 'pi' [-Wimplicit-int]
+ const pi=(double)(3.141592654__b2c__float_var);
+       ^~
+main.bas.bac.c:811:19: error: invalid suffix "__b2c__float_var" on floating constant
+ const pi=(double)(3.141592654__b2c__float_var);
+                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.bac.c:817:1: error: '__b2c__sin_table_loc' undeclared (first use in this function); did you mean '__b2c__hashtable_t'?
+ __b2c__sin_table_loc = __b2c__sin_table__add(r0);
+ ^~~~~~~~~~~~~~~~~~~~
+ __b2c__hashtable_t
+main.bas.bac.c:817:24: warning: implicit declaration of function '__b2c__sin_table__add'; did you mean '__b2c__hashtable_find'? [-Wimplicit-function-declaration]
+ __b2c__sin_table_loc = __b2c__sin_table__add(r0);
+                        ^~~~~~~~~~~~~~~~~~~~~
+                        __b2c__hashtable_find
+main.bas.bac.c:821:1: error: '__b2c__cos_table_loc' undeclared (first use in this function); did you mean '__b2c__hashtable_t'?
+ __b2c__cos_table_loc = __b2c__cos_table__add(r0);
+ ^~~~~~~~~~~~~~~~~~~~
+ __b2c__hashtable_t
+main.bas.bac.c:821:24: warning: implicit declaration of function '__b2c__cos_table__add'; did you mean '__b2c__hashtable_find'? [-Wimplicit-function-declaration]
+ __b2c__cos_table_loc = __b2c__cos_table__add(r0);
+                        ^~~~~~~~~~~~~~~~~~~~~
+                        __b2c__hashtable_find
+main.bas.bac.c:831:14: warning: implicit declaration of function 'asc'; did you mean 'acct'? [-Wimplicit-function-declaration]
+ key=(NUMBER)(asc(inkey__b2c__string_var)                                    ' scan keyboard register);
+              ^~~
+              acct
+main.bas.bac.c:831:18: error: 'inkey__b2c__string_var' undeclared (first use in this function); did you mean 'ERR__b2c__string_var'?
+ key=(NUMBER)(asc(inkey__b2c__string_var)                                    ' scan keyboard register);
+                  ^~~~~~~~~~~~~~~~~~~~~~
+                  ERR__b2c__string_var
+main.bas.bac.c:831:77: warning: missing terminating ' character
+ key=(NUMBER)(asc(inkey__b2c__string_var)                                    ' scan keyboard register);
+                                                                             ^
+main.bas.bac.c:831:77: error: missing terminating ' character
+ key=(NUMBER)(asc(inkey__b2c__string_var)                                    ' scan keyboard register);
+                                                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.bac.c:831:41: error: expected ')' before 'if'
+ key=(NUMBER)(asc(inkey__b2c__string_var)                                    ' scan keyboard register);
+             ~                           ^
+                                         )
+main.bas.bac.c:838:1:
+ if ( CASE ram(pc) == ( 0x000000001 to 0x00000006B)){
+ ~~                                       
+main.bas.bac.c:841:88: error: invalid digit "8" in octal constant
+ r3=(NUMBER)(ram(pc + 1) << 32 + ram(pc + 2) << 24 + ram(pc + 3) << 16 + ram(pc + 4) << 08 + ram(pc + 5));
+                                                                                        ^~
+main.bas.bac.c:848:43: warning: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x00000006F ' peekb adr0)){
+                                           ^
+main.bas.bac.c:848:43: error: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x00000006F ' peekb adr0)){
+                                           ^~~~~~~~~~~~~~~
+main.bas.bac.c:851:90: error: invalid digit "8" in octal constant
+ adr0=(NUMBER)(ram(pc + 1) << 32 + ram(pc + 2) << 24 + ram(pc + 3) << 16 + ram(pc + 4) << 08 + ram(pc + 5));
+                                                                                          ^~
+main.bas.bac.c:858:43: warning: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x000000070 ' pokeb adr0)|| CASE ram(pc) == ( r3)){
+                                           ^
+main.bas.bac.c:858:43: error: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x000000070 ' pokeb adr0)|| CASE ram(pc) == ( r3)){
+                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.bac.c:861:90: error: invalid digit "8" in octal constant
+ adr0=(NUMBER)(ram(pc + 1) << 32 + ram(pc + 2) << 24 + ram(pc + 3) << 16 + ram(pc + 4) << 08 + ram(pc + 5));
+                                                                                          ^~
+main.bas.bac.c:871:43: warning: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x000000071 ' peekw r3)){
+                                           ^
+main.bas.bac.c:871:43: error: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x000000071 ' peekw r3)){
+                                           ^~~~~~~~~~~~~
+main.bas.bac.c:874:90: error: invalid digit "8" in octal constant
+ adr0=(NUMBER)(ram(pc + 1) << 32 + ram(pc + 2) << 24 + ram(pc + 3) << 16 + ram(pc + 4) << 08 + ram(pc + 5));
+                                                                                          ^~
+main.bas.bac.c:881:43: warning: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x000000072 ' pokew adr0)|| CASE ram(pc) == ( r3)){
+                                           ^
+main.bas.bac.c:881:43: error: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x000000072 ' pokew adr0)|| CASE ram(pc) == ( r3)){
+                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.bac.c:884:90: error: invalid digit "8" in octal constant
+ adr0=(NUMBER)(ram(pc + 1) << 32 + ram(pc + 2) << 24 + ram(pc + 3) << 16 + ram(pc + 4) << 08 + ram(pc + 5));
+                                                                                          ^~
+main.bas.bac.c:887:88: error: invalid digit "8" in octal constant
+ r3=(NUMBER)(ram(pc + 6) << 32 + ram(pc + 7) << 24 + ram(pc + 8) << 16 + ram(pc + 9) << 08 + ram(pc + 10));
+                                                                                        ^~
+main.bas.bac.c:894:43: warning: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x000000073 ' pokeb [(long)address])|| CASE ram(pc) == ([(long)address])){
+                                           ^
+main.bas.bac.c:894:43: error: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x000000073 ' pokeb [(long)address])|| CASE ram(pc) == ([(long)address])){
+                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.bac.c:897:90: error: invalid digit "8" in octal constant
+ adr0=(NUMBER)(ram(pc + 1) << 32 + ram(pc + 2) << 24 + ram(pc + 3) << 16 + ram(pc + 4) << 08 + ram(pc + 5));
+                                                                                          ^~
+main.bas.bac.c:900:90: error: invalid digit "8" in octal constant
+ adr1=(NUMBER)(ram(pc + 6) << 32 + ram(pc + 7) << 24 + ram(pc + 8) << 16 + ram(pc + 9) << 08 + ram(pc + 10));
+                                                                                          ^~
+main.bas.bac.c:907:43: warning: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x000000074 ' pokew [(long)address])|| CASE ram(pc) == ([(long)address])){
+                                           ^
+main.bas.bac.c:907:43: error: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x000000074 ' pokew [(long)address])|| CASE ram(pc) == ([(long)address])){
+                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.bac.c:910:90: error: invalid digit "8" in octal constant
+ adr0=(NUMBER)(ram(pc + 1) << 32 + ram(pc + 2) << 24 + ram(pc + 3) << 16 + ram(pc + 4) << 08 + ram(pc + 5));
+                                                                                          ^~
+main.bas.bac.c:913:90: error: invalid digit "8" in octal constant
+ adr1=(NUMBER)(ram(pc + 6) << 32 + ram(pc + 7) << 24 + ram(pc + 8) << 16 + ram(pc + 9) << 08 + ram(pc + 10));
+                                                                                          ^~
+main.bas.bac.c:920:43: warning: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x000000075 ' Display number [(long)screen memory address])){
+                                           ^
+main.bas.bac.c:920:43: error: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x000000075 ' Display number [(long)screen memory address])){
+                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.bac.c:923:90: error: invalid digit "8" in octal constant
+ adr0=(NUMBER)(ram(pc + 1) << 32 + ram(pc + 2) << 24 + ram(pc + 3) << 16 + ram(pc + 4) << 08 + ram(pc + 5));
+                                                                                          ^~
+main.bas.bac.c:939:43: warning: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x000000076 ' Display text [(long)string address])|| CASE ram(pc) == ([(long)length])){
+                                           ^
+main.bas.bac.c:939:43: error: missing terminating ' character
+ } else if ( CASE ram(pc) == ( 0x000000076 ' Display text [(long)string address])|| CASE ram(pc) == ([(long)length])){
+                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.bac.c:942:96: error: invalid digit "8" in octal constant
+ string_adr=(NUMBER)(ram(pc + 1) << 32 + ram(pc + 2) << 24 + ram(pc + 3) << 16 + ram(pc + 4) << 08 + ram(pc + 5));
+                                                                                                ^~
+main.bas.bac.c:945:96: error: invalid digit "8" in octal constant
+ string_len=(NUMBER)(ram(pc + 6) << 32 + ram(pc + 7) << 24 + ram(pc + 8) << 16 + ram(pc + 9) << 08 + ram(pc + 10));
+                                                                                                ^~
+main.bas.bac.c:948:94: error: invalid digit "8" in octal constant
+ adr0=(NUMBER)(ram(pc + 11) << 32 + ram(pc + 12) << 24 + ram(pc + 13) << 16 + ram(pc + 14) << 08 + ram(pc + 15));
+                                                                                              ^~
+main.bas.bac.c:964:94: error: invalid digit "8" in octal constant
+ adr0=(NUMBER)(ram(pc + 1)  <<  32 + ram(pc + 2) << 24 + ram(pc + 3)  <<  16 + ram(pc + 4) << 08 + ram(pc + 5));
+                                                                                              ^~
+main.bas.bac.c:969:43: warning: missing terminating ' character
+ if ( adr0 == ( 0x000004000 to 0x000007E70 ' text memory)){
+                                           ^
+main.bas.bac.c:969:43: error: missing terminating ' character
+ if ( adr0 == ( 0x000004000 to 0x000007E70 ' text memory)){
+                                           ^~~~~~~~~~~~~~~~
+main.bas.bac.c:977:50: warning: missing terminating ' character
+ } else if ( adr0 == ( 0x0000A0000 to 0x0000AFFFF ' graphics port addresses)){
+                                                  ^
+main.bas.bac.c:977:50: error: missing terminating ' character
+ } else if ( adr0 == ( 0x0000A0000 to 0x0000AFFFF ' graphics port addresses)){
+                                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.bas.bac.c:1044:1: error: expected declaration or statement at end of input
+ }
+ ^
+main.bas.bac.c:1044:1: error: expected declaration or statement at end of input
+make: *** [Makefile.bacon:6: main.bas.bac.o] Error 1

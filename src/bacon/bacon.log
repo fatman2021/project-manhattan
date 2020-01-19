@@ -1,0 +1,7 @@
+Compiler error:
+
+Description:
+	 file '/home/main/project-manhattan/main.bas.bac' line 664: undefined syntax error, hint: check for missing ENDIF, WEND, NEXT.
+Cause:
+	 expected declaration specifiers or '...' before numeric constant
+

@@ -1,0 +1,10 @@
+# Created with BaCon 3.7.3 - (c) Peter van Eerten - MIT License (Expat)
+
+main.bas: main.bas.bac.o 
+	cc -o main.bas main.bas.bac.o -L. -lbacon -lm 
+main.bas.bac.o: main.bas.bac.c
+	cc  -c main.bas.bac.c
+
+.PHONY: clean
+clean:
+	rm -f *.o *.c main.bas main.bas.*.*  Makefile.bacon
