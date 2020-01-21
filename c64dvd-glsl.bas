@@ -656,8 +656,30 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
      #include once "mainImage.bas"
     case sys_offset+&HA3
      filename  = "tmp.glsl": poke64(&HC0A1,&H00)
+    case sys_offset+&HF0
+     chain strCode
+     strCode = ""            
+    case sys_offset+&HF1
+     chain "wine " + strCode
+     strCode = ""            
+    case sys_offset+&HF2
+     chain "dosbox "+strCode+" -fullscreen -exit"
+     strCode = ""       
+    case sys_offset+&HF3
+     open strCode+".asm" for output as #1
+     strCode=""
+    case sys_offset+&HF4
+     print #1, strCode: strCode = ""
+    case sys_offset+&HF5
+     close #1: strCode = "" 
+    case sys_offset+&HF6
+     shell "nasm "+strCode+".asm -f bin "+strCode+".bin" 
+     strCode = ""
+    case sys_offset+&HF7
+     chain "dosbox -fullscreen -c boot " + strCode+".bin -exit"
+     shell "rm tmp.bin": strCode = ""
     case sys_offset+&HF8
-     chain strCode: strCode = ""
+     shell strCode: strCode = ""
     case sys_offset+&HF9: swch = v 
     case sys_offset+&HFA
      strCode=strCode+lcase(chr(v)) 

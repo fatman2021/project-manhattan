@@ -113,4 +113,48 @@ $C09A     - Copies $C09B through $C09F to $C0D3
 
 $C0A0     - Copies $C0A1 through $C0A5 to $C0D4
 
-NOTE: Memory addresses can hold values in the range -4.940656458412465e-324 to 4.940656458412465e-324. They contain at most 53 bits of precision, or about 15 decimal digits.
+$C0A1 49313 run GLSL program    $A1 161
+
+$C0A2 49314 define GLSL program $A2 162
+
+$C0A3 49315 run GLSL program    $A3 163
+
+$C0A4-$C0A9 used for function calls
+
+$C0AA-$C0EF is free
+
+$C0F0 49392 run linux program   $F0 240
+
+$C0F1 49393 run windows program $F1 241
+
+$C0F2 49394 run DOS program     $F2 242
+
+$C0F3 49395 open ASM file       $F3 243
+
+$C0F4 49396 write to ASM file   $F4 244
+
+$C0F5 49397 close ASM file      $F5 245
+
+$C0F6 49398 compile .BIN file   $F6 246
+
+$C0F7 49399 run .BIN file       $F7 247
+
+$C0F8 49400 run background task $F8 248
+
+$C0F9 49401 swich GLSL mode     $F9 249
+
+$COFA 49402 define strCode      $FA 250
+
+$C0FB 49403 write to file       $FB 251
+
+$C0FC 49404 display hires text  $FC 252
+
+$C0FD 49405 close file          $FD 253
+
+$C0FE 49406 define filename     $FE 254
+
+$C0FF 49407 run GLSL program    $FF 255
+
+POKE $00 0 to $FF 255 to address $C0A7 49319 to change function call
+
+Type SYS $C0A4 49316 to make function call
