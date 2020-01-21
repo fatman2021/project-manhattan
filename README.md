@@ -155,6 +155,6 @@ $C0FE 49406 define filename     $FE 254
 
 $C0FF 49407 run GLSL program    $FF 255
 
-POKE $00 0 to $FF 255 to address $C0A7 49319 to change function call
+POKE $00 0 through $FF 255 to address $C0A7 49319 to change function call
 
 Type SYS $C0A4 49316 to make function call
