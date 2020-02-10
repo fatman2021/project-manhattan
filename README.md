@@ -20,7 +20,7 @@ FreeBASIC               Copyright © 2004-present The FreeBASIC Development Team
 
 Shadertoy               Copyright © 2013-present Inigo Quilez & Pol Jeremias
 
-Project Manhattan       Copyright © 2019-present Jacob Dahlen
+Project Manhattan       Copyright © 2018-present The Project Manhattan Team
 
 # project-manhattan
 Next generation APU for gaming and business applications.

@@ -355,9 +355,13 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
   select case adr
     case &H00  
 	case sys_offset
-	 chain "mplayer -vo xv -fs -alang en dvd://" + str(v) + " -dvd-device /dev/sr0"
+	 screen 0: chain "mplayer -vo xv -fs -alang en dvd://" + str(v) + " -dvd-device /dev/sr0"
+     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
+     bload "./background/background.bmp",0	 
 	case sys_offset+&H01
-	 chain "mplayer -vo xv -fs dvdnav:// -mouse-movements -dvd-device /dev/sr0" 
+	 screen 0: chain "mplayer -vo xv -fs dvdnav:// -mouse-movements -dvd-device /dev/sr0"
+     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
+     bload "./background/background.bmp",0	  
 	case sys_offset+&H02 ' Foreground Red
 	 mem64(sys_offset+&HC9) = rgba(mem64(sys_offset+&H02),mem64(sys_offset+&H03),_
 							  mem64(sys_offset+&H04),mem64(sys_offset+&H05))
@@ -657,14 +661,21 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
     case sys_offset+&HA3
      filename  = "tmp.glsl": poke64(&HC0A1,&H00)
     case sys_offset+&HF0
-     chain strCode
-     strCode = ""            
+     'locate 1,1: print strCode
+     screen 0: chain strCode: strCode = ""
+     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
+     bload "./background/background.bmp",0
+     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset                 
     case sys_offset+&HF1
-     chain "wine " + strCode
-     strCode = ""            
+     screen 0: chain "wine " + strCode: strCode = ""
+     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
+     bload "./background/background.bmp",0
+     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset                 
     case sys_offset+&HF2
-     chain "dosbox "+strCode+" -fullscreen -exit"
-     strCode = ""       
+     screen 0: chain "dosbox "+strCode+" -fullscreen -exit": strCode = ""
+     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
+     bload "./background/background.bmp",0
+     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset            
     case sys_offset+&HF3
      open strCode+".asm" for output as #1
      strCode=""
@@ -673,11 +684,13 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
     case sys_offset+&HF5
      close #1: strCode = "" 
     case sys_offset+&HF6
-     shell "nasm "+strCode+".asm -f bin "+strCode+".bin" 
-     strCode = ""
+     shell "nasm "+strCode+".asm -f bin "+strCode+".bin": strCode = ""
     case sys_offset+&HF7
-     chain "dosbox -fullscreen -c boot " + strCode+".bin -exit"
+     screen 0: chain "dosbox -fullscreen -c 'boot "+strCode+"'"+" -exit"
      shell "rm tmp.bin": strCode = ""
+     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
+     bload "./background/background.bmp",0
+     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset     
     case sys_offset+&HF8
      shell strCode: strCode = ""
     case sys_offset+&HF9: swch = v 

@@ -17,7 +17,7 @@ Using POV-ray turned out to be to slow. So I tried Blender instead. Lines 439-11
 https://github.com/fatman2021/project-manhattan/blob/master/c64dvd-b.bas
 
 This was good for simple scenes, but for more complex ones it was too slow. So I switched to GLSL as a result.
-https://github.com/fatman2021/project-manhattan/blob/master/c64dvd-glsl.bas (lines 489-679)
+https://github.com/fatman2021/project-manhattan/blob/master/c64dvd-glsl.bas (lines 493-709)
 https://github.com/fatman2021/project-manhattan/blob/master/glsl.bi (all)
 
 The emulator generates a line of GLSL script based of the value written to address 49314. The GLSL script is then compiled and executed 0 is written to address 49313.
@@ -119,3 +119,68 @@ https://github.com/reindernijhoff/wp-shadertoy-gallery
 https://github.com/reindernijhoff/wp-shadertoy-gallery/blob/master/LICENSE
 https://github.com/marklundin/glsl-sdf-primitives
 https://github.com/marklundin/glsl-sdf-primitives/blob/master/LICENSE
+
+CC BY-NC-SA
+
+Race Spaceship By Alessandro Chiffi / ONdata Studio.
+https://www.youtube.com/watch?v=FJyLk8cbasE
+
+Tree Creature By Daniel Bystedt
+https://dbystedt.wordpress.com
+
+Temple By Dominik Graf
+https://www.artstation.com/dommigraf
+
+Wanderer By Daniel Bystedt
+https://dbystedt.wordpress.com
+
+Mr. Elephant By By Glenn Melenhorst
+http://glennmelenhorst.com/website/
+
+Architectural Visualization By Marek Moravec
+https://www.youtube.com/watch?v=Crk5btO4WUw
+
+Guitar Stage By Davide Tirindelli
+https://www.youtube.com/watch?v=gFVoyjEckiM
+
+Iphone Animation By Dorian Zgraggen
+https://www.youtube.com/watch?v=tmZVpc9sJOM
+
+Flying Trabant By Zacharias Reinhardt
+https://www.youtube.com/watch?v=An67LpaHDNg
+
+Lighthouse Animation By Davide Tirindelli
+https://www.youtube.com/watch?v=xT5OSyofQUs
+
+Sphynx Cat By Zacharias Reinhardt
+https://www.youtube.com/watch?v=Fwk1cYA3G1U
+
+Interior Scene By Leroy Xie
+https://www.youtube.com/watch?v=mQ0mPrNdZbA
+
+Pagani Huayra BC By Bazejoo
+https://www.youtube.com/watch?v=x1fM1c3Oa_w
+
+Classroom By Leroy Xie
+https://www.youtube.com/watch?v=MbjIBPo5dWM
+
+Alien By Glenn Melenhorst
+https://www.youtube.com/watch?v=DF0YXtLIKMg
+
+Architecture By Charlie Studio
+https://www.youtube.com/channel/UCm4wJhkgrzwtd_U1hwp14TA
+
+Robots By Leonardo Braz
+https://www.youtube.com/watch?v=AuWWDyLINx0
+
+Anime Girl By Rui Zr
+https://www.youtube.com/watch?v=aikOQjYqQF8
+
+Mandelbulb Fractals By Jonas Dichelle
+https://www.youtube.com/watch?v=R0KgWfVRi5U
+
+Honda NSX 2017 By Wojciech Klimas
+https://www.youtube.com/watch?v=npfHYZE62PA
+
+Coil Master By John Malcolm
+https://www.youtube.com/watch?v=7_P4-OmrASo
