@@ -120,7 +120,13 @@ https://github.com/reindernijhoff/wp-shadertoy-gallery/blob/master/LICENSE
 https://github.com/marklundin/glsl-sdf-primitives
 https://github.com/marklundin/glsl-sdf-primitives/blob/master/LICENSE
 
-CC BY-NC-SA
+Operating System: FreeDOS
+Programming Language: FreeBASIC
+he original animations were created  for Blender 2.8's EEVEE real time render engine. 
+All art work is covered by the Creative Commons - By Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0):
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+https://www.blender.org/download/demo-files/
 
 Race Spaceship By Alessandro Chiffi / ONdata Studio.
 https://www.youtube.com/watch?v=FJyLk8cbasE
@@ -153,7 +159,7 @@ Lighthouse Animation By Davide Tirindelli
 https://www.youtube.com/watch?v=xT5OSyofQUs
 
 Sphynx Cat By Zacharias Reinhardt
-https://www.youtube.com/watch?v=Fwk1cYA3G1U
+https://www.youtube.com/watch?v=1o0ni0IbnRI
 
 Interior Scene By Leroy Xie
 https://www.youtube.com/watch?v=mQ0mPrNdZbA
@@ -177,7 +183,7 @@ Anime Girl By Rui Zr
 https://www.youtube.com/watch?v=aikOQjYqQF8
 
 Mandelbulb Fractals By Jonas Dichelle
-https://www.youtube.com/watch?v=R0KgWfVRi5U
+https://www.youtube.com/watch?v=ZBHi6yFPztc
 
 Honda NSX 2017 By Wojciech Klimas
 https://www.youtube.com/watch?v=npfHYZE62PA
