@@ -267,7 +267,7 @@ constructor MEMORY_T
   poke64(53272,31) 'Sets screen memory to 1024
   poke64(sys_offset+&HEC,&H01) ' set frame multiplyer to 1
 
-  'SYS call to raymarcher demo.
+  'SYS calls
   poke64(&HC0A4,&HA9): poke64(&HC0A5,&H00)                      ' LDA #$00        A9 00
   poke64(&HC0A6,&H8D): poke64(&HC0A7,&HA3): poke64(&HC0A8,&HC0) ' STA $C0A3       8D A3 C0
   poke64(&HC0A9,&H60):                                          ' RTS             60
@@ -667,15 +667,15 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
      bload "./background/background.bmp",0
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset                 
     case sys_offset+&HF1
-     screen 0: chain "wine " + strCode: strCode = ""
+     screen 0: shell "wine " + strCode: strCode = ""
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
      bload "./background/background.bmp",0
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset                 
     case sys_offset+&HF2
-     screen 0: chain "dosbox "+strCode+" -fullscreen -exit": strCode = ""
+     screen 0:shell "dosbox " + strCode+" -fullscreen -exit": strCode = ""
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
      bload "./background/background.bmp",0
-     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset            
+     'for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset            
     case sys_offset+&HF3
      open strCode+".asm" for output as #1
      strCode=""
@@ -686,7 +686,7 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
     case sys_offset+&HF6
      shell "nasm "+strCode+".asm -f bin "+strCode+".bin": strCode = ""
     case sys_offset+&HF7
-     screen 0: chain "dosbox -fullscreen -c 'boot "+strCode+"'"+" -exit"
+     screen 0: shell "dosbox -fullscreen -c 'boot "+strCode+"'"+" -exit"
      shell "rm tmp.bin": strCode = ""
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
      bload "./background/background.bmp",0

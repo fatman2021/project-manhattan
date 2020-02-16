@@ -190,3 +190,15 @@ https://www.youtube.com/watch?v=npfHYZE62PA
 
 Coil Master By John Malcolm
 https://www.youtube.com/watch?v=7_P4-OmrASo
+
+Executing QB64 with Commodore 64 BASIC
+https://www.youtube.com/watch?v=g7Qgh1uGPik
+
+#qb64.sh - bash shell script used in video
+#!/bin/bash
+cd ../qb64
+./qb64
+cd ../project-manhattan 
+https://www.youtube.com/watch?v=g7Qgh1uGPik
+
+Linux session on a Commodore 64 (Novaterm/VT102 + FozzTexx tcpser)

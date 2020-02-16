@@ -1,4 +1,4 @@
 #!/bin/bash
-cd ../AMOSProfessional
-wine "AMOS Professional.exe"
+cd ../IcarosDesktop/Arch/linux/
+./AROSBootstrap --fullscreen
 cd ../project-manhattan
