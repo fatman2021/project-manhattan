@@ -1,0 +1,25 @@
+{
+  "name": "project-manhattan",
+  "version": "1.0.0",
+  "description": "Next generation APU emulator for gaming and business applications. ",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fatman2021/project-manhattan.git"
+  },
+  "author": "Jacob Dahlen",
+  "license": "(MIT OR Apache-2.0)" ,
+  "bugs": {
+    "url": "https://github.com/fatman2021/project-manhattan/issues"
+  },
+  "publishConfig": { 
+    "registry": "https://npm.pkg.github.com/" 
+  },
+  "homepage": "https://github.com/fatman2021/project-manhattan#readme"
+}

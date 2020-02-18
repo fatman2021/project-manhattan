@@ -23,7 +23,7 @@ Shadertoy               Copyright © 2013-present Inigo Quilez & Pol Jeremias
 Project Manhattan       Copyright © 2018-present The Project Manhattan Team
 
 # project-manhattan
-Next generation APU for gaming and business applications.
+Next generation APU emulator for gaming and business applications.
 
 CPU - 4Ghz, 64-Bit, MOS 6510/VICE compatible, can address up to 8GiB of system memory
 
