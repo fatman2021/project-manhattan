@@ -200,13 +200,19 @@ case sys_offset+&HB0' Render Anamation
   print #1, "# End of file"
   close #1 
   select case mem64(sys_offset+&HC8)
-   case 0: shell "blender-2.8 -b -P tmp.py -a"
-   case 1: shell "blender-2.8 -b tmp.blend -a"
+   case 0: shell "blender -b -P tmp.py -a"
+   case 1: shell "blender -b tmp.blend -a"
+   case 2: shell "blender-2.7 -b -P tmp.py -a"
+   case 3: shell "blender-2.7 -b tmp.blend -a"
   end select 
   shell "for FILE in `ls *.bmp`; do mv $FILE `echo $FILE | sed -e 's:^0*::'`; done"
   shell "mv *.bmp ./vram/"	
-case sys_offset+&HB2 ' Render                    
-  shell "blender-2.8 -b -P tmp.py"
+case sys_offset+&HB2 ' Render
+  select case mem64(sys_offset+&HC8)
+   case 0: shell "blender -b -P tmp.py"
+   case 1: shell "blender-2.7 -b -P tmp.py"
+  end select                    
+  shell "blender -b -P tmp.py"
   shell "mv "+str(mem64(sys_offset+&HB4))+_
   ".bmp vram/"+str(mem64(sys_offset+&HB4))+".bmp"
   poke64(sys_offset+&HAB,0) ' clear screen

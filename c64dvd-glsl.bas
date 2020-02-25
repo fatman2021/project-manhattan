@@ -235,7 +235,6 @@ constructor C64_T
   for i=0 to 15
     read c:palette i,c
   next
-  bload "./background/background.bmp",0
   mem=new MEMORY_T
   cpu=new CPU6510(mem)
 end constructor
@@ -266,7 +265,7 @@ constructor MEMORY_T
   poke64(sys_offset+9,&H80) ' Background Color(Alpha)
   poke64(53272,31) 'Sets screen memory to 1024
   poke64(sys_offset+&HEC,&H01) ' set frame multiplyer to 1
-
+  paint(0,0), rgba(0, 0, 0, 255)
   'SYS calls
   poke64(&HC0A4,&HA9): poke64(&HC0A5,&H00)                      ' LDA #$00        A9 00
   poke64(&HC0A6,&H8D): poke64(&HC0A7,&HA3): poke64(&HC0A8,&HC0) ' STA $C0A3       8D A3 C0
@@ -294,7 +293,26 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
     adr-=&HD800:col(adr)=v
     adr+=1024:v=mem64(adr)
   end if
-   if adr = 53272 then
+  if adr = 646 then ' Set foreground color							  							  
+    select case v
+		case 00: poke64(sys_offset+&H02,0): poke64(sys_offset+&H03,0): poke64(sys_offset+&H04,0): 
+		case 01: poke64(sys_offset+&H02,255): poke64(sys_offset+&H03,255): poke64(sys_offset+&H04,255)
+		case 02: poke64(sys_offset+&H02,136): poke64(sys_offset+&H03,0): poke64(sys_offset+&H04,0)
+		case 03: poke64(sys_offset+&H02,170): poke64(sys_offset+&H03,255):poke64(sys_offset+&H04,238)
+		case 04: poke64(sys_offset+&H02,204): poke64(sys_offset+&H03,68):poke64(sys_offset+&H04,204)
+		case 05: poke64(sys_offset+&H02,0): poke64(sys_offset+&H03,204):poke64(sys_offset+&H04,85)
+		case 06: poke64(sys_offset+&H02,0): poke64(sys_offset+&H03,0):poke64(sys_offset+&H04,170)
+		case 07: poke64(sys_offset+&H02,238):poke64(sys_offset+&H03,238):poke64(sys_offset+&H04,119)
+		case 08: poke64(sys_offset+&H02,221):poke64(sys_offset+&H03,136):poke64(sys_offset+&H04,85)
+		case 09: poke64(sys_offset+&H02,102):poke64(sys_offset+&H03,68):poke64(sys_offset+&H04,0)
+		case 10: poke64(sys_offset+&H02,255):poke64(sys_offset+&H03,119):poke64(sys_offset+&H04,119)
+		case 11: poke64(sys_offset+&H02,51):poke64(sys_offset+&H03,51):poke64(sys_offset+&H04,51)
+		case 12: poke64(sys_offset+&H02,119):poke64(sys_offset+&H03,119):poke64(sys_offset+&H04,119)
+		case 13: poke64(sys_offset+&H02,170):poke64(sys_offset+&H03,255):poke64(sys_offset+&H04,102)
+		case 14: poke64(sys_offset+&H02,0):poke64(sys_offset+&H03,136):poke64(sys_offset+&H04,255)
+		case 15: poke64(sys_offset+&H02,128):poke64(sys_offset+&H03,128):poke64(sys_offset+&H04,128)
+    end select
+  elseif adr = 53272 then
     select case v
 		   case 15:  
 		    poke64(sys_offset+&H12B, &H0000)
@@ -345,23 +363,77 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
 		    poke64(sys_offset+&H12B, &H3C00)
 		    poke64(&H0288, &H3C)
     end select 
-    elseif adr=53248 or adr=53250 or adr=53252 or adr=53254 or _
+  elseif adr=53248 or adr=53250 or adr=53252 or adr=53254 or _
            adr=53256 or adr=53258 or adr=53260 or adr=53262 then  
            Poke64(sys_offset+&HCB, v)	
-    elseif adr=53249 or adr=53251 or adr=53253 or adr=53255 or _
+  elseif adr=53249 or adr=53251 or adr=53253 or adr=53255 or _
            adr=53257 or adr=53259 or adr=53261 or adr=53263 then  
-           Poke64(sys_offset+&HCC, v)	     
-   end if
+           Poke64(sys_offset+&HCC, v)
+  elseif adr=53280 then ' Set border color
+     select case v
+		case 00: poke64(sys_offset+&H02,0): poke64(sys_offset+&H03,0): poke64(sys_offset+&H04,0)
+		         paint(0,0), mem64(sys_offset+&HC9)
+		case 01: poke64(sys_offset+&H02,255): poke64(sys_offset+&H03,255): poke64(sys_offset+&H04,255)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+		case 02: poke64(sys_offset+&H02,136): poke64(sys_offset+&H03,0): poke64(sys_offset+&H04,0)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+		case 03: poke64(sys_offset+&H02,170): poke64(sys_offset+&H03,255):poke64(sys_offset+&H04,238)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+		case 04: poke64(sys_offset+&H02,204): poke64(sys_offset+&H03,68):poke64(sys_offset+&H04,204)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+		case 05: poke64(sys_offset+&H02,0): poke64(sys_offset+&H03,204):poke64(sys_offset+&H04,85)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+		case 06: poke64(sys_offset+&H02,0): poke64(sys_offset+&H03,0):poke64(sys_offset+&H04,170)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+		case 07: poke64(sys_offset+&H02,238):poke64(sys_offset+&H03,238):poke64(sys_offset+&H04,119)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+		case 08: poke64(sys_offset+&H02,221):poke64(sys_offset+&H03,136):poke64(sys_offset+&H04,85)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+		case 09: poke64(sys_offset+&H02,102):poke64(sys_offset+&H03,68):poke64(sys_offset+&H04,0)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+		case 10: poke64(sys_offset+&H02,255):poke64(sys_offset+&H03,119):poke64(sys_offset+&H04,119)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+		case 11: poke64(sys_offset+&H02,51):poke64(sys_offset+&H03,51):poke64(sys_offset+&H04,51)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+		case 12: poke64(sys_offset+&H02,119):poke64(sys_offset+&H03,119):poke64(sys_offset+&H04,119)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+		case 13: poke64(sys_offset+&H02,170):poke64(sys_offset+&H03,255):poke64(sys_offset+&H04,102)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+		case 14: poke64(sys_offset+&H02,0):poke64(sys_offset+&H03,136):poke64(sys_offset+&H04,255)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+		case 15: poke64(sys_offset+&H02,128):poke64(sys_offset+&H03,128):poke64(sys_offset+&H04,128)
+		         paint(0,0), mem64(sys_offset+&HC9)		
+    end select          
+  elseif adr=53281 or adr=53282 or adr=53283 or adr=53284 then ' Set background color
+    select case v
+		case 00: poke64(sys_offset+&H06,0): poke64(sys_offset+&H07,0): poke64(sys_offset+&H08,0): 
+		case 01: poke64(sys_offset+&H06,255): poke64(sys_offset+&H07,255): poke64(sys_offset+&H08,255)
+		case 02: poke64(sys_offset+&H06,136): poke64(sys_offset+&H07,0): poke64(sys_offset+&H08,0)
+		case 03: poke64(sys_offset+&H06,170): poke64(sys_offset+&H07,255):poke64(sys_offset+&H08,238)
+		case 04: poke64(sys_offset+&H06,204): poke64(sys_offset+&H07,68):poke64(sys_offset+&H08,204)
+		case 05: poke64(sys_offset+&H06,0): poke64(sys_offset+&H07,204):poke64(sys_offset+&H08,85)
+		case 06: poke64(sys_offset+&H06,0): poke64(sys_offset+&H07,0):poke64(sys_offset+&H08,170)
+		case 07: poke64(sys_offset+&H06,238):poke64(sys_offset+&H07,238):poke64(sys_offset+&H08,119)
+		case 08: poke64(sys_offset+&H06,221):poke64(sys_offset+&H07,136):poke64(sys_offset+&H08,85)
+		case 09: poke64(sys_offset+&H06,102):poke64(sys_offset+&H07,68):poke64(sys_offset+&H08,0)
+		case 10: poke64(sys_offset+&H06,255):poke64(sys_offset+&H07,119):poke64(sys_offset+&H08,119)
+		case 11: poke64(sys_offset+&H06,51):poke64(sys_offset+&H07,51):poke64(sys_offset+&H08,51)
+		case 12: poke64(sys_offset+&H06,119):poke64(sys_offset+&H07,119):poke64(sys_offset+&H08,119)
+		case 13: poke64(sys_offset+&H06,170):poke64(sys_offset+&H07,255):poke64(sys_offset+&H08,102)
+		case 14: poke64(sys_offset+&H06,0):poke64(sys_offset+&H07,136):poke64(sys_offset+&H08,255)
+		case 15: poke64(sys_offset+&H06,128):poke64(sys_offset+&H07,128):poke64(sys_offset+&H08,128)
+    end select
+  end if
   select case adr
     case &H00  
 	case sys_offset
 	 screen 0: chain "mplayer -vo xv -fs -alang en dvd://" + str(v) + " -dvd-device /dev/sr0"
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
-     bload "./background/background.bmp",0	 
+     paint(0,0), rgba(0, 0, 0, 255)	 
 	case sys_offset+&H01
 	 screen 0: chain "mplayer -vo xv -fs dvdnav:// -mouse-movements -dvd-device /dev/sr0"
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
-     bload "./background/background.bmp",0	  
+     paint(0,0), rgba(0, 0, 0, 255)	  
 	case sys_offset+&H02 ' Foreground Red
 	 mem64(sys_offset+&HC9) = rgba(mem64(sys_offset+&H02),mem64(sys_offset+&H03),_
 							  mem64(sys_offset+&H04),mem64(sys_offset+&H05))
@@ -654,27 +726,50 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
 		wend
 	 strCode = !""	
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
-     bload "./background/background.bmp",0
+     paint(0,0), rgba(0, 0, 0, 255)
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset
 	case sys_offset+&HA2 
      #include once "mainImage.bas"
     case sys_offset+&HA3
      filename  = "tmp.glsl": poke64(&HC0A1,&H00)
+    case sys_offset+&HEB, sys_offset+&HEC ' Amiga style Hold-and-Modify - foreground and border color
+     select case v
+		case &B000000 to &B001111:poke64(646,v mod 16)
+		case &B010000 to &B011111:poke64(sys_offset+&H02,(((v - &B010000) mod 16) * 17) mod 255)
+		case &B100000 to &B101111:poke64(sys_offset+&H03,(((v - &B100000) mod 16) * 17) mod 255)
+		case &B110000 to &B111111:poke64(sys_offset+&H04,(((v - &B110000) mod 16) * 17) mod 255)
+     	case else: poke64(sys_offset+&H05,(((v - &B1000000) mod 16) * 17) mod 255)				  
+     end select
+     if adr=sys_offset+&HEC then paint(0,0), mem64(sys_offset+&HC9)     
+    case sys_offset+&HED ' Amiga style Hold-and-Modify - background
+     select case v
+		case &B000000 to &B001111:poke64(53281,v mod 16)
+		case &B010000 to &B011111:poke64(sys_offset+&H06,(((v - &B010000) mod 16) * 17) mod 255)
+		case &B100000 to &B101111:poke64(sys_offset+&H07,(((v - &B100000) mod 16) * 17) mod 255)
+		case &B110000 to &B111111:poke64(sys_offset+&H08,(((v - &B110000) mod 16) * 17) mod 255)
+     	case else: poke64(sys_offset+&H09,(((v - &B1000000) mod 16) * 17) mod 255)					  
+     end select    
+    case sys_offset+&HEE ' Amiga style Hold-and-Modify - Draw foreground
+          line (mem64(sys_offset+&HCB),mem64(sys_offset+&HCC))-(mem64(sys_offset+&HCE),_
+                mem64(sys_offset+&HCF)),mem64(sys_offset+&HC9), BF    
+    case sys_offset+&HEF ' Amiga style Hold-and-Modify - Draw background
+          line (mem64(sys_offset+&HCB),mem64(sys_offset+&HCC))-(mem64(sys_offset+&HCE),_
+                mem64(sys_offset+&HCF)),mem64(sys_offset+&HCA), BF              
     case sys_offset+&HF0
      'locate 1,1: print strCode
      screen 0: chain strCode: strCode = ""
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
-     bload "./background/background.bmp",0
+     paint(0,0), rgba(0, 0, 0, 255)
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset                 
     case sys_offset+&HF1
      screen 0: shell "wine " + strCode: strCode = ""
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
-     bload "./background/background.bmp",0
+     paint(0,0), rgba(0, 0, 0, 255)
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset                 
     case sys_offset+&HF2
      screen 0:shell "dosbox " + strCode+" -fullscreen -exit": strCode = ""
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
-     bload "./background/background.bmp",0
+     paint(0,0), rgba(0, 0, 0, 255)
      'for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset            
     case sys_offset+&HF3
      open strCode+".asm" for output as #1
@@ -689,7 +784,7 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
      screen 0: shell "dosbox -fullscreen -c 'boot "+strCode+"'"+" -exit"
      shell "rm tmp.bin": strCode = ""
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
-     bload "./background/background.bmp",0
+     paint(0,0), rgba(0, 0, 0, 255)
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset     
     case sys_offset+&HF8
      shell strCode: strCode = ""
@@ -712,15 +807,17 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
       dim as integer b,c=v:c shl=3
       dim as integer xs=adr mod 40:xs shl =3:xs+=8*4
       dim as integer ys=adr  \  40:ys shl =3:ys+=8*4
-      screenlock
+      screenlock               
       for y as integer = 0 to 7
         for x as integer = 0 to 7
           if char(c) and (128 shr x) then
-             line(((xs+x)*5)-2,((ys+y)*4)-2)-_
-                 (((xs+x)*5)+2,((ys+y)*4)+2),mem64(sys_offset+&HC9),BF           
+             mem64(sys_offset+&HCB) = ((xs+x)*5)-2: mem64(sys_offset+&HCC) = ((ys+y)*4)-2
+             mem64(sys_offset+&HCE) = ((xs+x)*5)+2: mem64(sys_offset+&HCF) = ((ys+y)*4)+2
+             poke64(sys_offset+&HEE,0)           
           else
-             line(((xs+x)*5)-2,((ys+y)*4)-2)-_
-                 (((xs+x)*5)+2,((ys+y)*4)+2),mem64(sys_offset+&HCA),BF          
+             mem64(sys_offset+&HCB) = ((xs+x)*5)-2: mem64(sys_offset+&HCC) = ((ys+y)*4)-2
+             mem64(sys_offset+&HCE) = ((xs+x)*5)+2: mem64(sys_offset+&HCF) = ((ys+y)*4)+2
+             poke64(sys_offset+&HEF,0)          
           end if
         next 
         c+=1
