@@ -10,10 +10,13 @@
 
 common shared as double swch
 common shared as ulong offset,sys_offset
-common shared as any ptr image
+common shared as any ptr spr0,spr1,spr2,spr3
+common shared as any ptr spr4,spr5,spr6,spr7
+common shared as any ptr image,raster
 common shared as string strCode
 common shared as string filename
 common shared as ubyte uflag
+common shared as ushort UpdatedScreen
 
 sys_offset=&HC000
 type MEMORY_T
@@ -51,13 +54,11 @@ type MEMORY_T
   const as ulongint basic_base = &HA000 '  8 K
 #endif
   as double   mem64 (&HFFFE) ' Ram
-  as double   kernal(&H1FFF) ' OS
-  as double   basic (&H1FFF) ' Basic
-  as double   char  (&H07FF) ' Font
+  as double   kernal(&H3FFF) ' OS
+  as double   basic (&H3FFF) ' Basic
+  as double   char  (&H3FFF) ' Font
   as double   col   (&H03E7) ' color triples
 end type
-
-
 
 enum ADR_MODES
   _UNK ' unknow
@@ -230,8 +231,17 @@ data &Ha7a3a7,&Hbfb7fb,&Hffa397,&He7efe9
 constructor C64_T
   dim as integer i,c
   dprint("C64_T()")
-  ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
-  image = ImageCreate(1920,1080,0,32)
+  ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+  image  = ImageCreate(1920,1080,0,32)
+  raster = ImageCreate(1920,1,0,32)
+  spr0   = ImageCreate(82,51,0,32)
+  spr1   = ImageCreate(82,51,0,32)
+  spr2   = ImageCreate(82,51,0,32)
+  spr3   = ImageCreate(82,51,0,32)
+  spr4   = ImageCreate(82,51,0,32)
+  spr5   = ImageCreate(82,51,0,32)
+  spr6   = ImageCreate(82,51,0,32)
+  spr7   = ImageCreate(82,51,0,32)
   for i=0 to 15
     read c:palette i,c
   next
@@ -243,38 +253,95 @@ destructor C64_T
   delete CPU
   delete MEM
   dprint("C64_T~")
+  ImageDestroy(spr0)
+  ImageDestroy(spr1)
+  ImageDestroy(spr2)
+  ImageDestroy(spr3)
+  ImageDestroy(spr4)
+  ImageDestroy(spr5)
+  ImageDestroy(spr6)
+  ImageDestroy(spr7)
   ImageDestroy(image)
+  ImageDestroy(raster)  
   sleep 1000
 end destructor
 
 constructor MEMORY_T
-  dim as integer i
-  ' init all ROM's
-  restore KERNAL_ROM                 ' Comment out when using custom kernel
-  for i=0 to 8191:read kernal(i):next' Comment out when using custom kernel
-  restore BASIC_ROM                  ' Comment out when using custom kernel
-  for i=0 to 8191:read basic(i):next ' Comment out when using custom kernel
-  restore CHAR_ROM
-  for i=0 to 2047:read char(i):next
-  poke64(0,255):poke64(1,255) 'Comment out when using custom 6510 kernel
   ' Set text color
   poke64(sys_offset+2,&HFF) ' Red
   poke64(sys_offset+3,&HFF) ' Greem
   poke64(sys_offset+4,&HFF) ' Blue
   poke64(sys_offset+5,&HFF) ' Alpha
-  poke64(sys_offset+9,&H80) ' Background Color(Alpha)
+  poke64(sys_offset+9,&HFF) ' Background Color(Alpha)
   poke64(53272,31) 'Sets screen memory to 1024
-  poke64(sys_offset+&HEC,&H01) ' set frame multiplyer to 1
+  ' sys_offset+&HE7 flip font       
+  ' sys_offset+&HE8 font offset
+  ' sys_offset+&HE9 font width
+  ' sys_offset+&HEA font height
+  poke64(sys_offset+&HE7,1) 'Flip font  
+  poke64(sys_offset+&HE8,0) 'Fomt offset
+  poke64(sys_offset+&HE9,7) 'Font width 
+  poke64(sys_offset+&HEA,7) 'Font height 
+  dim as integer i
+  ' init all ROM's
+  dim as ubyte tmp
+  open "64c.251913-01.bin" for binary as #1
+   for i=0 to 8191
+     get #1,,tmp: basic(i)=tmp
+   next i  
+   for i=0 to 8191
+	 get #1,,tmp: kernal(i)=tmp
+   next i
+  close #1
+  'for b as integer = 617 to 641
+  for i = &H0000 to &H1FFF: char(i)=&H00: next i
+  'open "./chargen/"+str(b)+".c64" for binary as #1
+  open "./chargen/641.c64" for binary as #1
+   for i=0 to lof(1)
+     get #1,,tmp: char(i)=tmp
+   next i
+  close #1
+  'for a as integer = 0 to 255: poke64(1024+a,a): next a
+  'locate 50,1: print "./chargen/"+str(b)+".c64"
+  'sleep : next b: end    
+  poke64(0,255):poke64(1,255) 
   paint(0,0), rgba(0, 0, 0, 255)
   'SYS calls
   poke64(&HC0A4,&HA9): poke64(&HC0A5,&H00)                      ' LDA #$00        A9 00
   poke64(&HC0A6,&H8D): poke64(&HC0A7,&HA3): poke64(&HC0A8,&HC0) ' STA $C0A3       8D A3 C0
-  poke64(&HC0A9,&H60):                                          ' RTS             60
+  poke64(&HC0A9,&H60)                                           ' RTS             60
+  '64-bit memory detection
+  dim as string mem
+  mem = str(int(fre(mem64(0))/1024^3))
+  select case len(mem) 
+         case 1
+          kernal(&H49B)=asc(mem) and &H3F 
+          kernal(&H49C)=&H47: kernal(&H49D)=&H42
+         case 2
+          kernal(&H49B)=asc(mid(mem,1,1)) and &H3F
+          kernal(&H49C)=asc(mid(mem,2,1)) and &H3F 
+          kernal(&H49D)=&H47: kernal(&H49E)=&H42
+          mem=" RAM SYSTEM"
+          for a as integer = 1 to len(mem)
+           kernal(&H49E+a)=asc(mid(mem,a,1))
+          next a           
+  end select
+  /'
+  kernal(&H506) = &H50 'get the x size
+  kernal(&H598) = &H3C 'get the y size
+  kernal(&H551) = &H50 'add the line length to the low byte
+  kernal(&H557) = &H3D 'compare it with the number of lines + 1
+  kernal(&H55F) = &H3B 'set the line count, 60 lines to do, 0 to 59
+  kernal(&H576) = &H50 'add one line length
+  kernal(&H580) = &H49 'set the line length
+  kernal(&H588) = &H50 'add one line length to the current line length
+  '/
 end constructor
 
 destructor MEMORY_T
   dprint("MEMORY_T~")
 end destructor
+
 function MEMORY_T.Peek64(byval adr as ulongint) as ulongint
   select case adr
   case &HE000 to &HFFFF:return kernal(adr-&HE000)
@@ -369,6 +436,8 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
   elseif adr=53249 or adr=53251 or adr=53253 or adr=53255 or _
            adr=53257 or adr=53259 or adr=53261 or adr=53263 then  
            Poke64(sys_offset+&HCC, v)
+  elseif adr=53269 then ' Sprite enable register
+      'print v             
   elseif adr=53280 then ' Set border color
      select case v
 		case 00: poke64(sys_offset+&H02,0): poke64(sys_offset+&H03,0): poke64(sys_offset+&H04,0)
@@ -427,12 +496,12 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
   select case adr
     case &H00  
 	case sys_offset
-	 screen 0: chain "mplayer -vo xv -fs -alang en dvd://" + str(v) + " -dvd-device /dev/sr0"
-     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
+	 screen 0: shell "mplayer -vo xv -fs -alang en dvd://" + str(v) + " -dvd-device /dev/sr0"
+     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)	 
 	case sys_offset+&H01
-	 screen 0: chain "mplayer -vo xv -fs dvdnav:// -mouse-movements -dvd-device /dev/sr0"
-     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
+	 screen 0: shell "mplayer -vo xv -fs dvdnav:// -mouse-movements -dvd-device /dev/sr0"
+     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)	  
 	case sys_offset+&H02 ' Foreground Red
 	 mem64(sys_offset+&HC9) = rgba(mem64(sys_offset+&H02),mem64(sys_offset+&H03),_
@@ -725,13 +794,36 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
 		  end if  
 		wend
 	 strCode = !""	
-     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
+     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset
 	case sys_offset+&HA2 
      #include once "mainImage.bas"
     case sys_offset+&HA3
      filename  = "tmp.glsl": poke64(&HC0A1,&H00)
+    'SYS calls sys_offset+A4 to sys_offset+A9        
+    case sys_offset+&HAA 'Mouse driver
+      dim as integer x, y, wheel, buttons, res 
+      mem64(sys_offset+&HAA) =  GetMouse(x, y, ,buttons)
+      mem64(sys_offset+&HCB) = x
+      mem64(sys_offset+&HCC) = y
+      mem64(sys_offset+&HCD) = wheel
+      if buttons and 1 then mem64(sys_offset+&HCE) = 1 'L
+      if buttons and 2 then mem64(sys_offset+&HCE) = 2 'R
+      if buttons and 4 then mem64(sys_offset+&HCE) = 4 'M
+    case sys_offset+&HAB:pcopy mem64(sys_offset+&HCB), mem64(sys_offset+&HCC)                           
+    case sys_offset+&HE6 'Change font
+       dim as ubyte tmp
+       for c as integer = &H0000 to &H1FFF: char(c)=&H00: next c
+       open "./chargen/"+str(v)+".c64" for binary as #1
+        for i as integer=0 to lof(1)
+         get #1,,tmp: char(i)=tmp
+        next i
+       close #1
+    ' sys_offset+&HE7 flip font       
+    ' sys_offset+&HE8 font offset
+    ' sys_offset+&HE9 font width
+    ' sys_offset+&HEA font height
     case sys_offset+&HEB, sys_offset+&HEC ' Amiga style Hold-and-Modify - foreground and border color
      select case v
 		case &B000000 to &B001111:poke64(646,v mod 16)
@@ -751,24 +843,24 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
      end select    
     case sys_offset+&HEE ' Amiga style Hold-and-Modify - Draw foreground
           line (mem64(sys_offset+&HCB),mem64(sys_offset+&HCC))-(mem64(sys_offset+&HCE),_
-                mem64(sys_offset+&HCF)),mem64(sys_offset+&HC9), BF    
+                mem64(sys_offset+&HCF)),mem64(sys_offset+&HC9), BF       
     case sys_offset+&HEF ' Amiga style Hold-and-Modify - Draw background
           line (mem64(sys_offset+&HCB),mem64(sys_offset+&HCC))-(mem64(sys_offset+&HCE),_
                 mem64(sys_offset+&HCF)),mem64(sys_offset+&HCA), BF              
     case sys_offset+&HF0
      'locate 1,1: print strCode
      screen 0: chain strCode: strCode = ""
-     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
+     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset                 
     case sys_offset+&HF1
      screen 0: shell "wine " + strCode: strCode = ""
-     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
+     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset                 
     case sys_offset+&HF2
      screen 0:shell "dosbox " + strCode+" -fullscreen -exit": strCode = ""
-     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
+     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
      'for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset            
     case sys_offset+&HF3
@@ -783,7 +875,7 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
     case sys_offset+&HF7
      screen 0: shell "dosbox -fullscreen -c 'boot "+strCode+"'"+" -exit"
      shell "rm tmp.bin": strCode = ""
-     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN: cls 'OR GFX_ALPHA_PRIMITIVES: Cls
+     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset     
     case sys_offset+&HF8
@@ -802,14 +894,19 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
 	case sys_offset+&HFF
 	 'locate 1,1: print filename: sleep 1
 	 poke64(sys_offset+&HA1,&H0): filename=""   			  		
-    case mem64(sys_offset+&H12B) to mem64(sys_offset+&H12B) + &H3E7
+    case mem64(sys_offset+&H12B) to mem64(sys_offset+&H12B) + &H3FF
       adr-=mem64(sys_offset+&H12B)
-      dim as integer b,c=v:c shl=3
+    ' sys_offset+&HE7 flip font       
+    ' sys_offset+&HE8 font offset
+    ' sys_offset+&HE9 font width
+    ' sys_offset+&HEA font height
+      dim as integer b,c=v:c shl=3:c+=mem64(sys_offset+&HE8)
       dim as integer xs=adr mod 40:xs shl =3:xs+=8*4
-      dim as integer ys=adr  \  40:ys shl =3:ys+=8*4
-      screenlock               
-      for y as integer = 0 to 7
-        for x as integer = 0 to 7
+      dim as integer ys=adr  \  40:ys shl =3:ys+=8*4 
+      screenlock
+      if mem64(sys_offset+&HE7)=0 then              
+      for y as integer = 0 to mem64(sys_offset+&HE9)
+        for x as integer = 0 to mem64(sys_offset+&HEA)
           if char(c) and (128 shr x) then
              mem64(sys_offset+&HCB) = ((xs+x)*5)-2: mem64(sys_offset+&HCC) = ((ys+y)*4)-2
              mem64(sys_offset+&HCE) = ((xs+x)*5)+2: mem64(sys_offset+&HCF) = ((ys+y)*4)+2
@@ -822,7 +919,29 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
         next 
         c+=1
       next
-      screenunlock ys,ys+8          
+      elseif mem64(sys_offset+&HE7)=1 then
+      for y as integer = mem64(sys_offset+&HE9) to 0 step -1
+        for x as integer = 0 to mem64(sys_offset+&HEA)
+          if char(c) and (128 shr x) then
+             mem64(sys_offset+&HCE) = ((xs-x)*5)+2: mem64(sys_offset+&HCF) = ((ys-y)*4)+2
+             mem64(sys_offset+&HCB) = ((xs-x)*5)-2: mem64(sys_offset+&HCC) = ((ys-y)*4)-2
+             poke64(sys_offset+&HEE,0)           
+          else
+             mem64(sys_offset+&HCE) = ((xs-x)*5)+2: mem64(sys_offset+&HCF) = ((ys-y)*4)+2
+             mem64(sys_offset+&HCB) = ((xs-x)*5)-2: mem64(sys_offset+&HCC) = ((ys-y)*4)-2
+             poke64(sys_offset+&HEF,0)          
+          end if
+        next 
+        c+=1
+      next   
+      end if 
+      screenunlock ys,ys+8 /'
+      dim as integer xs=adr mod 40:xs shl =3:xs+=8*4
+      dim as integer ys=adr  \  40:ys shl =3:ys+=8*4
+      color mem64(sys_offset+&HC9), mem64(sys_offset+&HC9):locate int(ys/16), int(xs/8) 
+      select case v
+       case 00 to 27: print wchr(v+32)
+      end select '/         
   end select
 end sub
 
@@ -1897,10 +2016,12 @@ data "INDX"
 data "INDY"
 data "IND"
 
+/'
 #include "kernel.bas"
 #include "kernal.bas"
 #include "basic.bas"
 #include "char.bas"
+'/
 
 enum FB_KEYS
   fb_bspace =   8

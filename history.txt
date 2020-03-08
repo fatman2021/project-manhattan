@@ -17,7 +17,7 @@ Using POV-ray turned out to be to slow. So I tried Blender instead. Lines 439-11
 https://github.com/fatman2021/project-manhattan/blob/master/c64dvd-b.bas
 
 This was good for simple scenes, but for more complex ones it was too slow. So I switched to GLSL as a result.
-https://github.com/fatman2021/project-manhattan/blob/master/c64dvd-glsl.bas (lines 493-709)
+https://github.com/fatman2021/project-manhattan/blob/master/c64dvd-glsl.bas (lines 634-896)
 https://github.com/fatman2021/project-manhattan/blob/master/glsl.bi (all)
 
 The emulator generates a line of GLSL script based of the value written to address 49314. The GLSL script is then compiled and executed 0 is written to address 49313.
@@ -119,7 +119,7 @@ https://github.com/reindernijhoff/wp-shadertoy-gallery
 https://github.com/reindernijhoff/wp-shadertoy-gallery/blob/master/LICENSE
 https://github.com/marklundin/glsl-sdf-primitives
 https://github.com/marklundin/glsl-sdf-primitives/blob/master/LICENSE
-
+---------------------------------------------------------------------------------------------------------------------------------------
 Operating System: FreeDOS
 Programming Language: FreeBASIC
 he original animations were created  for Blender 2.8's EEVEE real time render engine. 
@@ -214,3 +214,34 @@ https://github.com/fatman2021/project-manhattan/blob/master/c64dvd-glsl.bas
 David C. Pyatt
 See lines 270-273 and lines 659-709
 https://github.com/fatman2021/project-manhattan/blob/master/c64dvd-glsl.bas
+
+June 06, 2001
+IBM claims 210-GHz SiGe transistor is world’s fastest, four years ahead of competition
+
+EAST FISHKILL, N.Y.–IBM Corp. today announced development of a new silicon-germanium (SiGe) transistor, which is capable of reaching speeds of 210 GHz while drawing only a milliamp of electrical current. 
+
+https://www.eetimes.com/ibm-claims-210-ghz-sige-transistor-is-worlds-fastest-four-years-ahead-of-competition/
+
+April 13, 2005
+
+Scientists at the University of Illinois have built what they claim is the world's fastest transistor.
+
+The new device has smashed through the 600GHz barrier and switches at a world record 604GHz. The researchers behind the transistor say that a terahertz transistor could now be within reach. The previous record was held by a Japanese team which clocked a device at 560GHz.
+
+https://www.alphr.com/news/hardware/71383/scientists-build-the-worlds-fastest-transistor
+
+December 13, 2006
+
+World's Fastest Transistor Approaches Goal Of Terahertz Device
+
+Scientists at the University of Illinois at Urbana-Champaign have again broken their own speed record for the world's fastest transistor. With a frequency of 845 gigahertz, their latest device is approximately 300 gigahertz faster than transistors built by other research groups, and approaches the goal of a terahertz device. 
+
+https://www.sciencedaily.com/releases/2006/12/061212091344.htm
+
+December 5, 2016 
+
+IHP Presents The Fastest Silicon-Based Transistor In The World
+
+Scientist Dr. Bernd Heinemann of IHP – Innovations for High Performance Microelectronics will present results on silicon-germanium heterobipolar transistors (SiGe HBTs) developed in Frankfurt (Oder) on the “International Electron Devices Meeting” (IEDM) in San Francisco. His contribution titled “SiGe HBT with fT/fmax of 505 GHz/720 GHz” presents speed parameters that set new standards for silicon transistors.
+
+https://www.rfglobalnet.com/doc/ihp-presents-the-fastest-silicon-based-transistor-in-the-world-0001
