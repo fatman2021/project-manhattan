@@ -362,22 +362,22 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
   end if
   if adr = 646 then ' Set foreground color							  							  
     select case v
-		case 00: poke64(sys_offset+&H02,0): poke64(sys_offset+&H03,0): poke64(sys_offset+&H04,0): 
-		case 01: poke64(sys_offset+&H02,255): poke64(sys_offset+&H03,255): poke64(sys_offset+&H04,255)
-		case 02: poke64(sys_offset+&H02,136): poke64(sys_offset+&H03,0): poke64(sys_offset+&H04,0)
-		case 03: poke64(sys_offset+&H02,170): poke64(sys_offset+&H03,255):poke64(sys_offset+&H04,238)
-		case 04: poke64(sys_offset+&H02,204): poke64(sys_offset+&H03,68):poke64(sys_offset+&H04,204)
-		case 05: poke64(sys_offset+&H02,0): poke64(sys_offset+&H03,204):poke64(sys_offset+&H04,85)
-		case 06: poke64(sys_offset+&H02,0): poke64(sys_offset+&H03,0):poke64(sys_offset+&H04,170)
-		case 07: poke64(sys_offset+&H02,238):poke64(sys_offset+&H03,238):poke64(sys_offset+&H04,119)
-		case 08: poke64(sys_offset+&H02,221):poke64(sys_offset+&H03,136):poke64(sys_offset+&H04,85)
-		case 09: poke64(sys_offset+&H02,102):poke64(sys_offset+&H03,68):poke64(sys_offset+&H04,0)
-		case 10: poke64(sys_offset+&H02,255):poke64(sys_offset+&H03,119):poke64(sys_offset+&H04,119)
-		case 11: poke64(sys_offset+&H02,51):poke64(sys_offset+&H03,51):poke64(sys_offset+&H04,51)
-		case 12: poke64(sys_offset+&H02,119):poke64(sys_offset+&H03,119):poke64(sys_offset+&H04,119)
-		case 13: poke64(sys_offset+&H02,170):poke64(sys_offset+&H03,255):poke64(sys_offset+&H04,102)
-		case 14: poke64(sys_offset+&H02,0):poke64(sys_offset+&H03,136):poke64(sys_offset+&H04,255)
-		case 15: poke64(sys_offset+&H02,128):poke64(sys_offset+&H03,128):poke64(sys_offset+&H04,128)
+		case &H00: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&H00)
+		case &H01: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&HAA)
+		case &H02: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&HAA): poke64(sys_offset+&H04,&H00)
+		case &H03: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&HAA): poke64(sys_offset+&H04,&HAA)
+		case &H04: poke64(sys_offset+&H02,&HAA): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&H00)
+		case &H05: poke64(sys_offset+&H02,&HAA): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&HAA)
+		case &H06: poke64(sys_offset+&H02,&HAA): poke64(sys_offset+&H03,&H55): poke64(sys_offset+&H04,&H00)
+		case &H07: poke64(sys_offset+&H02,&HAA): poke64(sys_offset+&H03,&HAA): poke64(sys_offset+&H04,&HAA)
+		case &H08: poke64(sys_offset+&H02,&H55): poke64(sys_offset+&H03,&H55): poke64(sys_offset+&H04,&H55)
+		case &H09: poke64(sys_offset+&H02,&H55): poke64(sys_offset+&H03,&H55): poke64(sys_offset+&H04,&HFF)
+		case &H0A: poke64(sys_offset+&H02,&H55): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H55)
+		case &H0B: poke64(sys_offset+&H02,&H55): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&HFF)
+		case &H0C: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&H55): poke64(sys_offset+&H04,&H55)
+		case &H0D: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&H55): poke64(sys_offset+&H04,&HFF)
+		case &H0E: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H55)
+		case &H0F: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&HFF)				 
     end select
   elseif adr = 53272 then
     select case v
@@ -440,58 +440,43 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
       'print v             
   elseif adr=53280 then ' Set border color
      select case v
-		case 00: poke64(sys_offset+&H02,0): poke64(sys_offset+&H03,0): poke64(sys_offset+&H04,0)
-		         paint(0,0), mem64(sys_offset+&HC9)
-		case 01: poke64(sys_offset+&H02,255): poke64(sys_offset+&H03,255): poke64(sys_offset+&H04,255)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-		case 02: poke64(sys_offset+&H02,136): poke64(sys_offset+&H03,0): poke64(sys_offset+&H04,0)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-		case 03: poke64(sys_offset+&H02,170): poke64(sys_offset+&H03,255):poke64(sys_offset+&H04,238)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-		case 04: poke64(sys_offset+&H02,204): poke64(sys_offset+&H03,68):poke64(sys_offset+&H04,204)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-		case 05: poke64(sys_offset+&H02,0): poke64(sys_offset+&H03,204):poke64(sys_offset+&H04,85)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-		case 06: poke64(sys_offset+&H02,0): poke64(sys_offset+&H03,0):poke64(sys_offset+&H04,170)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-		case 07: poke64(sys_offset+&H02,238):poke64(sys_offset+&H03,238):poke64(sys_offset+&H04,119)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-		case 08: poke64(sys_offset+&H02,221):poke64(sys_offset+&H03,136):poke64(sys_offset+&H04,85)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-		case 09: poke64(sys_offset+&H02,102):poke64(sys_offset+&H03,68):poke64(sys_offset+&H04,0)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-		case 10: poke64(sys_offset+&H02,255):poke64(sys_offset+&H03,119):poke64(sys_offset+&H04,119)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-		case 11: poke64(sys_offset+&H02,51):poke64(sys_offset+&H03,51):poke64(sys_offset+&H04,51)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-		case 12: poke64(sys_offset+&H02,119):poke64(sys_offset+&H03,119):poke64(sys_offset+&H04,119)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-		case 13: poke64(sys_offset+&H02,170):poke64(sys_offset+&H03,255):poke64(sys_offset+&H04,102)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-		case 14: poke64(sys_offset+&H02,0):poke64(sys_offset+&H03,136):poke64(sys_offset+&H04,255)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-		case 15: poke64(sys_offset+&H02,128):poke64(sys_offset+&H03,128):poke64(sys_offset+&H04,128)
-		         paint(0,0), mem64(sys_offset+&HC9)		
-    end select          
+		case &H00: poke64(sys_offset+&HAC,&H00): poke64(sys_offset+&HAD,&H00): poke64(sys_offset+&HAE,&H00)
+		case &H01: poke64(sys_offset+&HAC,&H00): poke64(sys_offset+&HAD,&H00): poke64(sys_offset+&HAE,&HAA)
+		case &H02: poke64(sys_offset+&HAC,&H00): poke64(sys_offset+&HAD,&HAA): poke64(sys_offset+&HAE,&H00)
+		case &H03: poke64(sys_offset+&HAC,&H00): poke64(sys_offset+&HAD,&HAA): poke64(sys_offset+&HAE,&HAA)
+		case &H04: poke64(sys_offset+&HAC,&HAA): poke64(sys_offset+&HAD,&H00): poke64(sys_offset+&HAE,&H00)
+		case &H05: poke64(sys_offset+&HAC,&HAA): poke64(sys_offset+&HAD,&H00): poke64(sys_offset+&HAE,&HAA)
+		case &H06: poke64(sys_offset+&HAC,&HAA): poke64(sys_offset+&HAD,&H55): poke64(sys_offset+&HAE,&H00)
+		case &H07: poke64(sys_offset+&HAC,&HAA): poke64(sys_offset+&HAD,&HAA): poke64(sys_offset+&HAE,&HAA)
+		case &H08: poke64(sys_offset+&HAC,&H55): poke64(sys_offset+&HAD,&H55): poke64(sys_offset+&HAE,&H55)
+		case &H09: poke64(sys_offset+&HAC,&H55): poke64(sys_offset+&HAD,&H55): poke64(sys_offset+&HAE,&HFF)
+		case &H0A: color rgb(&H55,&HFF,&H55): line(120,99)-(1723,896),,B:paint(0,0)
+		case &H0B: poke64(sys_offset+&HAC,&H55): poke64(sys_offset+&HAD,&HFF): poke64(sys_offset+&HAE,&HFF)
+		case &H0C: poke64(sys_offset+&HAC,&HFF): poke64(sys_offset+&HAD,&H55): poke64(sys_offset+&HAE,&H55)
+		case &H0D: poke64(sys_offset+&HAC,&HFF): poke64(sys_offset+&HAD,&H55): poke64(sys_offset+&HAE,&HFF)
+		case &H0E: poke64(sys_offset+&HAC,&HFF): poke64(sys_offset+&HAD,&HFF): poke64(sys_offset+&HAE,&H55)
+		case &H0F: poke64(sys_offset+&HAC,&HFF): poke64(sys_offset+&HAD,&HFF): poke64(sys_offset+&HAE,&HFF)
+    end select
+    color mem64(sys_offset+&HAC): line(120,99)-(1723,896),,B:paint(0,0)        
   elseif adr=53281 or adr=53282 or adr=53283 or adr=53284 then ' Set background color
     select case v
-		case 00: poke64(sys_offset+&H06,0): poke64(sys_offset+&H07,0): poke64(sys_offset+&H08,0): 
-		case 01: poke64(sys_offset+&H06,255): poke64(sys_offset+&H07,255): poke64(sys_offset+&H08,255)
-		case 02: poke64(sys_offset+&H06,136): poke64(sys_offset+&H07,0): poke64(sys_offset+&H08,0)
-		case 03: poke64(sys_offset+&H06,170): poke64(sys_offset+&H07,255):poke64(sys_offset+&H08,238)
-		case 04: poke64(sys_offset+&H06,204): poke64(sys_offset+&H07,68):poke64(sys_offset+&H08,204)
-		case 05: poke64(sys_offset+&H06,0): poke64(sys_offset+&H07,204):poke64(sys_offset+&H08,85)
-		case 06: poke64(sys_offset+&H06,0): poke64(sys_offset+&H07,0):poke64(sys_offset+&H08,170)
-		case 07: poke64(sys_offset+&H06,238):poke64(sys_offset+&H07,238):poke64(sys_offset+&H08,119)
-		case 08: poke64(sys_offset+&H06,221):poke64(sys_offset+&H07,136):poke64(sys_offset+&H08,85)
-		case 09: poke64(sys_offset+&H06,102):poke64(sys_offset+&H07,68):poke64(sys_offset+&H08,0)
-		case 10: poke64(sys_offset+&H06,255):poke64(sys_offset+&H07,119):poke64(sys_offset+&H08,119)
-		case 11: poke64(sys_offset+&H06,51):poke64(sys_offset+&H07,51):poke64(sys_offset+&H08,51)
-		case 12: poke64(sys_offset+&H06,119):poke64(sys_offset+&H07,119):poke64(sys_offset+&H08,119)
-		case 13: poke64(sys_offset+&H06,170):poke64(sys_offset+&H07,255):poke64(sys_offset+&H08,102)
-		case 14: poke64(sys_offset+&H06,0):poke64(sys_offset+&H07,136):poke64(sys_offset+&H08,255)
-		case 15: poke64(sys_offset+&H06,128):poke64(sys_offset+&H07,128):poke64(sys_offset+&H08,128)
-    end select
+		case &H00: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&H00)
+		case &H01: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&HAA)
+		case &H02: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&HAA): poke64(sys_offset+&H08,&H00)
+		case &H03: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&HAA): poke64(sys_offset+&H08,&HAA)
+		case &H04: poke64(sys_offset+&H06,&HAA): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&H00)
+		case &H05: poke64(sys_offset+&H06,&HAA): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&HAA)
+		case &H06: poke64(sys_offset+&H06,&HAA): poke64(sys_offset+&H07,&H55): poke64(sys_offset+&H08,&H00)
+		case &H07: poke64(sys_offset+&H06,&HAA): poke64(sys_offset+&H07,&HAA): poke64(sys_offset+&H08,&HAA)
+		case &H08: poke64(sys_offset+&H06,&H55): poke64(sys_offset+&H07,&H55): poke64(sys_offset+&H08,&H55)
+		case &H09: poke64(sys_offset+&H06,&H55): poke64(sys_offset+&H07,&H55): poke64(sys_offset+&H08,&HFF)
+		case &H0A: poke64(sys_offset+&H06,&H55): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H55)
+		case &H0B: poke64(sys_offset+&H06,&H55): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&HFF)
+		case &H0C: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&H55): poke64(sys_offset+&H08,&H55)
+		case &H0D: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&H55): poke64(sys_offset+&H08,&HFF)
+		case &H0E: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H55)
+		case &H0F: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&HFF)	
+	end select	
   end if
   select case adr
     case &H00  
@@ -811,7 +796,7 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
       if buttons and 1 then mem64(sys_offset+&HCE) = 1 'L
       if buttons and 2 then mem64(sys_offset+&HCE) = 2 'R
       if buttons and 4 then mem64(sys_offset+&HCE) = 4 'M
-    case sys_offset+&HAB:pcopy mem64(sys_offset+&HCB), mem64(sys_offset+&HCC)                           
+    case sys_offset+&HAB:pcopy mem64(sys_offset+&HCB), mem64(sys_offset+&HCC)                             
     case sys_offset+&HE6 'Change font
        dim as ubyte tmp
        for c as integer = &H0000 to &H1FFF: char(c)=&H00: next c
@@ -824,18 +809,18 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
     ' sys_offset+&HE8 font offset
     ' sys_offset+&HE9 font width
     ' sys_offset+&HEA font height
-    case sys_offset+&HEB, sys_offset+&HEC ' Amiga style Hold-and-Modify - foreground and border color
+    case sys_offset+&HEB,sys_offset+&HEC ' Amiga style Hold-and-Modify - foreground and boarder color
      select case v
-		case &B000000 to &B001111:poke64(646,v mod 16)
+		case &B000000 to &B001111:poke64(646,v mod 255)
 		case &B010000 to &B011111:poke64(sys_offset+&H02,(((v - &B010000) mod 16) * 17) mod 255)
 		case &B100000 to &B101111:poke64(sys_offset+&H03,(((v - &B100000) mod 16) * 17) mod 255)
 		case &B110000 to &B111111:poke64(sys_offset+&H04,(((v - &B110000) mod 16) * 17) mod 255)
      	case else: poke64(sys_offset+&H05,(((v - &B1000000) mod 16) * 17) mod 255)				  
      end select
-     if adr=sys_offset+&HEC then paint(0,0), mem64(sys_offset+&HC9)     
+     if adr=sys_offset+&HEC then paint(0,0), mem64(sys_offset+&HC9)      
     case sys_offset+&HED ' Amiga style Hold-and-Modify - background
      select case v
-		case &B000000 to &B001111:poke64(53281,v mod 16)
+		case &B000000 to &B001111:poke64(53281,v mod 255)
 		case &B010000 to &B011111:poke64(sys_offset+&H06,(((v - &B010000) mod 16) * 17) mod 255)
 		case &B100000 to &B101111:poke64(sys_offset+&H07,(((v - &B100000) mod 16) * 17) mod 255)
 		case &B110000 to &B111111:poke64(sys_offset+&H08,(((v - &B110000) mod 16) * 17) mod 255)
@@ -2157,7 +2142,7 @@ end function
 '
 dim as C64_T computer
 dim as integer ticks
-
+dim as integer x, y,res 
 do
   Ticks+=1
   if flag=1 then
