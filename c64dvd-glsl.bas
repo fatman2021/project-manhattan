@@ -1,5 +1,6 @@
 ' c64.bas
 
+#include once "address.bi"
 #include once "glsl.bi"
 
 #ifdef _DEBUG
@@ -53,11 +54,11 @@ type MEMORY_T
   const as ulongint basic_end  = &HBFFF '------|
   const as ulongint basic_base = &HA000 '  8 K
 #endif
-  as double   mem64 (&HFFFE) ' Ram
-  as double   kernal(&H3FFF) ' OS
-  as double   basic (&H3FFF) ' Basic
-  as double   char  (&H3FFF) ' Font
-  as double   col   (&H03E7) ' color triples
+  as double   mem64 (&HFFFFFF) ' Ram
+  as double   kernal(&H003FFF) ' OS
+  as double   basic (&H003FFF) ' Basic
+  as double   char  (&H003FFF) ' Font
+  as double   col   (&H0003E7) ' color triples
 end type
 
 enum ADR_MODES
@@ -222,12 +223,6 @@ type C64_T
   as CPU6510 ptr CPU
 end type
 
-COLOR_ROM:
-data &H19191d,&Hfcfcf9,&H4c933a,&Hfab6fa
-data &Hedd27d,&H6f6acf,&Hd84f44,&H8bfbfb
-data &H5bd89c,&H077f53,&H9fef83,&H535757
-data &Ha7a3a7,&Hbfb7fb,&Hffa397,&He7efe9
-
 constructor C64_T
   dim as integer i,c
   dprint("C64_T()")
@@ -278,7 +273,7 @@ constructor MEMORY_T
   ' sys_offset+&HE8 font offset
   ' sys_offset+&HE9 font width
   ' sys_offset+&HEA font height
-  poke64(sys_offset+&HE7,1) 'Flip font  
+  poke64(sys_offset+&HE7,0) 'Flip font  
   poke64(sys_offset+&HE8,0) 'Fomt offset
   poke64(sys_offset+&HE9,7) 'Font width 
   poke64(sys_offset+&HEA,7) 'Font height 
@@ -296,7 +291,7 @@ constructor MEMORY_T
   'for b as integer = 617 to 641
   for i = &H0000 to &H1FFF: char(i)=&H00: next i
   'open "./chargen/"+str(b)+".c64" for binary as #1
-  open "./chargen/641.c64" for binary as #1
+  open "./chargen/0.c64" for binary as #1
    for i=0 to lof(1)
      get #1,,tmp: char(i)=tmp
    next i
@@ -310,22 +305,64 @@ constructor MEMORY_T
   poke64(&HC0A4,&HA9): poke64(&HC0A5,&H00)                      ' LDA #$00        A9 00
   poke64(&HC0A6,&H8D): poke64(&HC0A7,&HA3): poke64(&HC0A8,&HC0) ' STA $C0A3       8D A3 C0
   poke64(&HC0A9,&H60)                                           ' RTS             60
-  '64-bit memory detection
+  
   dim as string mem
+  dim as integer a
+  
+  basic(&H0B46)=&H00 '.,AB45 A9 00    LDA #$00        ;set input prompt to NULL
+  basic(&H178E)=&H00 '.,B78E F0 05    BEQ $B794       ;ASC() - Ignore NULL
+  
+  'Patch BASIC startup messages"  
+  mem = "BYTES"
+  for a = 1 to len(mem)
+    kernal(&H466+a)=asc(mid(mem,a,1))+&H20
+  next a
+  mem = "FREE"
+  for a = 1 to len(mem)
+	kernal(&H46C+a)=asc(mid(mem,a,1))+&H20
+  next a
+  kernal(&H47D)=&H2A:kernal(&H47E)=&H20
+  kernal(&H47F)=&H20 	
+  mem = "MICROSOFT"
+  for a = 1 to len(mem)
+	kernal(&H47F+a)=asc(mid(mem,a,1))+&H20
+  next a:kernal(&H489)=&H20
+  mem = "BASIC"
+  for a = 1 to len(mem)
+	kernal(&H460+a)=asc(mid(mem,a,1))+&H20
+	kernal(&H489+a)=asc(mid(mem,a,1))+&H20
+  next a: kernal(&H48F)=&H20:kernal(&H490)=&H76
+  kernal(&H491)=&H32: kernal(&H492)=&H20
+  kernal(&H493)=&H2A
+  mem = "RAM SYSTEM"
+  for a = 1 to len(mem)
+	kernal(&H49E+a)=asc(mid(mem,a,1))+&H20 
+  next a
+  kernal(&H4A2)=&H20
+  mem="READY" 'Patch BASIC "READY." message
+  for a = 1 to len(mem)
+    basic(&H377+a)=asc(mid(mem,a,1))+&H20
+  next a 	
+  '64-bit memory detection
+  '.:E47B 2A 2A (mem) 47 42 4D 4D 4F  (cr) (cr) (mem)gb ram system
   mem = str(int(fre(mem64(0))/1024^3))
   select case len(mem) 
          case 1
-          kernal(&H49B)=asc(mem) and &H3F 
-          kernal(&H49C)=&H47: kernal(&H49D)=&H42
-         case 2
-          kernal(&H49B)=asc(mid(mem,1,1)) and &H3F
-          kernal(&H49C)=asc(mid(mem,2,1)) and &H3F 
-          kernal(&H49D)=&H47: kernal(&H49E)=&H42
+          kernal(&H49B)=asc(mem)
+          kernal(&H49C)=&H67: kernal(&H49D)=&H62
+         case 2 
+          kernal(&H49B)=asc(mid(mem,1,1))
+          kernal(&H49C)=asc(mid(mem,2,1))
+          kernal(&H49D)=&H67: kernal(&H49E)=&H62
           mem=" RAM SYSTEM"
           for a as integer = 1 to len(mem)
-           kernal(&H49E+a)=asc(mid(mem,a,1))
-          next a           
+			kernal(&H49E+a)=asc(mid(mem,a,1))+&H20
+          next a
+          kernal(&H49F)=&H20:kernal(&H4A3)=&H20 ' Replace "@" at E49F and E4A3 with " ".         
   end select
+  kernal(&H535)=&H10 '.,E534 A9 10    LDA #$0E     ;set default text color to 11(Amber)
+  kernal(&HCD9)=&H17 '.:ECD9 17                    ;set default border color to 0(black)
+  kernal(&HCDA)=&H17 '.:ECDA 17                    ;set default background color to 0(black)
   /'
   kernal(&H506) = &H50 'get the x size
   kernal(&H598) = &H3C 'get the y size
@@ -343,7 +380,7 @@ destructor MEMORY_T
 end destructor
 
 function MEMORY_T.Peek64(byval adr as ulongint) as ulongint
-  select case adr
+  select case adr 
   case &HE000 to &HFFFF:return kernal(adr-&HE000)
   case &HA000 to &HBFFF:return basic (adr-&HA000)
   case &HD800 to &HDBFF:return char  (adr-&HD800)
@@ -377,7 +414,42 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
 		case &H0C: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&H55): poke64(sys_offset+&H04,&H55)
 		case &H0D: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&H55): poke64(sys_offset+&H04,&HFF)
 		case &H0E: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H55)
-		case &H0F: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&HFF)				 
+		case &H0F: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&HFF)
+		case &H10: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&HB0): poke64(sys_offset+&H04,&H00)
+		case &H11: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&HCC): poke64(sys_offset+&H04,&H00)
+		case &H12: poke64(sys_offset+&H02,&H33): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H00)
+		case &H13: poke64(sys_offset+&H02,&H33): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H33)
+		case &H14: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H33)
+		case &H15: poke64(sys_offset+&H02,&H66): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H66)
+		case &H16: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H66)
+		case &H17: poke64(sys_offset+&H02,&H28): poke64(sys_offset+&H03,&H28): poke64(sys_offset+&H04,&H28)
+		case &H18: poke64(sys_offset+&H02,&HEF): poke64(sys_offset+&H03,&H29): poke64(sys_offset+&H04,&H29)
+		case &H19: poke64(sys_offset+&H02,&HCC): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&H00)
+		case &H1A: poke64(sys_offset+&H02,&HA4): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&H00)
+		case &H1B: poke64(sys_offset+&H02,&HFC): poke64(sys_offset+&H03,&HAF): poke64(sys_offset+&H04,&H3E)
+		case &H1C: poke64(sys_offset+&H02,&HF5): poke64(sys_offset+&H03,&H79): poke64(sys_offset+&H04,&H00)
+		case &H1D: poke64(sys_offset+&H02,&HCE): poke64(sys_offset+&H03,&H5C): poke64(sys_offset+&H04,&H00)
+		case &H1E: poke64(sys_offset+&H02,&HFC): poke64(sys_offset+&H03,&HE9): poke64(sys_offset+&H04,&H4F)
+		case &H1F: poke64(sys_offset+&H02,&HED): poke64(sys_offset+&H03,&HD4): poke64(sys_offset+&H04,&H00)
+		case &H20: poke64(sys_offset+&H02,&HC4): poke64(sys_offset+&H03,&HA0): poke64(sys_offset+&H04,&H00)
+		case &H21: poke64(sys_offset+&H02,&HBA): poke64(sys_offset+&H03,&HE2): poke64(sys_offset+&H04,&H34)
+		case &H22: poke64(sys_offset+&H02,&H73): poke64(sys_offset+&H03,&HD2): poke64(sys_offset+&H04,&H16)
+		case &H23: poke64(sys_offset+&H02,&H4E): poke64(sys_offset+&H03,&H9A): poke64(sys_offset+&H04,&H06)
+		case &H24: poke64(sys_offset+&H02,&H72): poke64(sys_offset+&H03,&H9F): poke64(sys_offset+&H04,&HCF)
+		case &H25: poke64(sys_offset+&H02,&H34): poke64(sys_offset+&H03,&H65): poke64(sys_offset+&H04,&HA4)
+		case &H26: poke64(sys_offset+&H02,&H20): poke64(sys_offset+&H03,&H4A): poke64(sys_offset+&H04,&H87)
+		case &H27: poke64(sys_offset+&H02,&HAD): poke64(sys_offset+&H03,&H7F): poke64(sys_offset+&H04,&HA8)
+		case &H28: poke64(sys_offset+&H02,&H75): poke64(sys_offset+&H03,&H50): poke64(sys_offset+&H04,&H7D)
+		case &H29: poke64(sys_offset+&H02,&H5C): poke64(sys_offset+&H03,&H35): poke64(sys_offset+&H04,&H66)
+		case &H2A: poke64(sys_offset+&H02,&HE9): poke64(sys_offset+&H03,&HB9): poke64(sys_offset+&H04,&H6E)
+		case &H2B: poke64(sys_offset+&H02,&HC1): poke64(sys_offset+&H03,&H7D): poke64(sys_offset+&H04,&H11)
+		case &H2C: poke64(sys_offset+&H02,&H8F): poke64(sys_offset+&H03,&H59): poke64(sys_offset+&H04,&H02)
+		case &H2D: poke64(sys_offset+&H02,&H88): poke64(sys_offset+&H03,&H8A): poke64(sys_offset+&H04,&H85)
+		case &H2E: poke64(sys_offset+&H02,&H55): poke64(sys_offset+&H03,&H57): poke64(sys_offset+&H04,&H53)
+		case &H2F: poke64(sys_offset+&H02,&H2E): poke64(sys_offset+&H03,&H34): poke64(sys_offset+&H04,&H36)
+		case &H30: poke64(sys_offset+&H02,&HEE): poke64(sys_offset+&H03,&HEE): poke64(sys_offset+&H04,&HEC)
+		case &H31: poke64(sys_offset+&H02,&HD3): poke64(sys_offset+&H03,&HD7): poke64(sys_offset+&H04,&HCF)
+		case &H32: poke64(sys_offset+&H02,&HBA): poke64(sys_offset+&H03,&HBD): poke64(sys_offset+&H04,&HB6)
     end select
   elseif adr = 53272 then
     select case v
@@ -429,7 +501,7 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
 		   case 255: 
 		    poke64(sys_offset+&H12B, &H3C00)
 		    poke64(&H0288, &H3C)
-    end select 
+    end select  
   elseif adr=53248 or adr=53250 or adr=53252 or adr=53254 or _
            adr=53256 or adr=53258 or adr=53260 or adr=53262 then  
            Poke64(sys_offset+&HCB, v)	
@@ -440,24 +512,57 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
       'print v             
   elseif adr=53280 then ' Set border color
      select case v
-		case &H00: poke64(sys_offset+&HAC,&H00): poke64(sys_offset+&HAD,&H00): poke64(sys_offset+&HAE,&H00)
-		case &H01: poke64(sys_offset+&HAC,&H00): poke64(sys_offset+&HAD,&H00): poke64(sys_offset+&HAE,&HAA)
-		case &H02: poke64(sys_offset+&HAC,&H00): poke64(sys_offset+&HAD,&HAA): poke64(sys_offset+&HAE,&H00)
-		case &H03: poke64(sys_offset+&HAC,&H00): poke64(sys_offset+&HAD,&HAA): poke64(sys_offset+&HAE,&HAA)
-		case &H04: poke64(sys_offset+&HAC,&HAA): poke64(sys_offset+&HAD,&H00): poke64(sys_offset+&HAE,&H00)
-		case &H05: poke64(sys_offset+&HAC,&HAA): poke64(sys_offset+&HAD,&H00): poke64(sys_offset+&HAE,&HAA)
-		case &H06: poke64(sys_offset+&HAC,&HAA): poke64(sys_offset+&HAD,&H55): poke64(sys_offset+&HAE,&H00)
-		case &H07: poke64(sys_offset+&HAC,&HAA): poke64(sys_offset+&HAD,&HAA): poke64(sys_offset+&HAE,&HAA)
-		case &H08: poke64(sys_offset+&HAC,&H55): poke64(sys_offset+&HAD,&H55): poke64(sys_offset+&HAE,&H55)
-		case &H09: poke64(sys_offset+&HAC,&H55): poke64(sys_offset+&HAD,&H55): poke64(sys_offset+&HAE,&HFF)
-		case &H0A: color rgb(&H55,&HFF,&H55): line(120,99)-(1723,896),,B:paint(0,0)
-		case &H0B: poke64(sys_offset+&HAC,&H55): poke64(sys_offset+&HAD,&HFF): poke64(sys_offset+&HAE,&HFF)
-		case &H0C: poke64(sys_offset+&HAC,&HFF): poke64(sys_offset+&HAD,&H55): poke64(sys_offset+&HAE,&H55)
-		case &H0D: poke64(sys_offset+&HAC,&HFF): poke64(sys_offset+&HAD,&H55): poke64(sys_offset+&HAE,&HFF)
-		case &H0E: poke64(sys_offset+&HAC,&HFF): poke64(sys_offset+&HAD,&HFF): poke64(sys_offset+&HAE,&H55)
-		case &H0F: poke64(sys_offset+&HAC,&HFF): poke64(sys_offset+&HAD,&HFF): poke64(sys_offset+&HAE,&HFF)
-    end select
-    color mem64(sys_offset+&HAC): line(120,99)-(1723,896),,B:paint(0,0)        
+		case &H00: color rgb(&H00,&H00,&H00):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H01: color rgb(&H00,&H00,&HAA):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H02: color rgb(&H00,&HAA,&H00):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H03: color rgb(&H00,&HAA,&HAA):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H04: color rgb(&HAA,&H00,&H00):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H05: color rgb(&HAA,&H00,&HAA):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H06: color rgb(&HAA,&H55,&H00):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H07: color rgb(&HAA,&HAA,&HAA):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H08: color rgb(&H55,&H55,&H55):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H09: color rgb(&H55,&H55,&HFF):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H0A: color rgb(&H55,&HFF,&H55):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H0B: color rgb(&H55,&HFF,&HFF):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H0C: color rgb(&HFF,&H55,&H55):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H0D: color rgb(&HFF,&H55,&HFF):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H0E: color rgb(&HFF,&HFF,&H55):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H0F: color rgb(&HFF,&HFF,&HFF):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H10: color rgb(&HFF,&HB0,&H00):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H11: color rgb(&HFF,&HCC,&H00):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H12: color rgb(&H33,&HFF,&H00):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H13: color rgb(&H33,&HFF,&H33):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H14: color rgb(&H00,&HFF,&H33):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H15: color rgb(&H66,&HFF,&H66):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H16: color rgb(&H00,&HFF,&H66):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H17: color rgb(&H28,&H28,&H28):line(120,99)-(1723,896),,B:paint(0,0)					
+		case &H18: color rgb(&HCC,&H00,&H00):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H19: color rgb(&HA4,&H00,&H00):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H1A: color rgb(&HFC,&HAF,&H3E):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H1B: color rgb(&HF5,&H79,&H00):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H1C: color rgb(&HCE,&H5C,&H00):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H1D: color rgb(&HFC,&HE9,&H4F):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H1E: color rgb(&HED,&HD4,&H00):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H20: color rgb(&HC4,&HA0,&H00):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H21: color rgb(&HBA,&HE2,&H34):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H22: color rgb(&H73,&HD2,&H16):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H23: color rgb(&H4E,&H9A,&H06):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H24: color rgb(&H72,&H9F,&HCF):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H25: color rgb(&H34,&H65,&HA4):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H26: color rgb(&H20,&H4A,&H87):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H27: color rgb(&HAD,&H7F,&HA8):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H28: color rgb(&H75,&H50,&H7D):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H29: color rgb(&H5C,&H35,&H66):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H2A: color rgb(&HE9,&HB9,&H6E):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H2B: color rgb(&HC1,&H7D,&H11):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H2C: color rgb(&H8F,&H59,&H02):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H2D: color rgb(&H88,&H8A,&H85):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H2E: color rgb(&H55,&H57,&H53):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H2F: color rgb(&H2E,&H34,&H36):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H30: color rgb(&HEE,&HEE,&HEC):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H31: color rgb(&HD3,&HD7,&HCF):line(120,99)-(1723,896),,B:paint(0,0)
+		case &H32: color rgb(&HBA,&HBD,&HB6):line(120,99)-(1723,896),,B:paint(0,0)
+    end select      
   elseif adr=53281 or adr=53282 or adr=53283 or adr=53284 then ' Set background color
     select case v
 		case &H00: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&H00)
@@ -475,8 +580,43 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
 		case &H0C: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&H55): poke64(sys_offset+&H08,&H55)
 		case &H0D: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&H55): poke64(sys_offset+&H08,&HFF)
 		case &H0E: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H55)
-		case &H0F: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&HFF)	
-	end select	
+		case &H0F: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&HFF)
+		case &H10: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&HB0): poke64(sys_offset+&H08,&H00)
+		case &H11: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&HCC): poke64(sys_offset+&H08,&H00)
+		case &H12: poke64(sys_offset+&H06,&H33): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H00)
+		case &H13: poke64(sys_offset+&H06,&H33): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H33)
+		case &H14: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H33)
+		case &H15: poke64(sys_offset+&H06,&H66): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H66)
+		case &H16: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H66)
+		case &H17: poke64(sys_offset+&H06,&H28): poke64(sys_offset+&H07,&H28): poke64(sys_offset+&H08,&H28)
+		case &H18: poke64(sys_offset+&H06,&HCC): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&H00)
+		case &H19: poke64(sys_offset+&H06,&HA4): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&H00)
+		case &H1A: poke64(sys_offset+&H06,&HFC): poke64(sys_offset+&H07,&HAF): poke64(sys_offset+&H08,&H3E)
+		case &H1B: poke64(sys_offset+&H06,&HF5): poke64(sys_offset+&H07,&H79): poke64(sys_offset+&H08,&H00)
+		case &H1C: poke64(sys_offset+&H06,&HCE): poke64(sys_offset+&H07,&H5C): poke64(sys_offset+&H08,&H00)
+		case &H1D: poke64(sys_offset+&H06,&HFC): poke64(sys_offset+&H07,&HE9): poke64(sys_offset+&H08,&H4F)
+		case &H1E: poke64(sys_offset+&H06,&HED): poke64(sys_offset+&H07,&HD4): poke64(sys_offset+&H08,&H00)
+		case &H20: poke64(sys_offset+&H06,&HC4): poke64(sys_offset+&H07,&HA0): poke64(sys_offset+&H08,&H00)
+		case &H21: poke64(sys_offset+&H06,&HBA): poke64(sys_offset+&H07,&HE2): poke64(sys_offset+&H08,&H34)
+		case &H22: poke64(sys_offset+&H06,&H73): poke64(sys_offset+&H07,&HD2): poke64(sys_offset+&H08,&H16)
+		case &H23: poke64(sys_offset+&H06,&H4E): poke64(sys_offset+&H07,&H9A): poke64(sys_offset+&H08,&H06)
+		case &H24: poke64(sys_offset+&H06,&H72): poke64(sys_offset+&H07,&H9F): poke64(sys_offset+&H08,&HCF)
+		case &H25: poke64(sys_offset+&H06,&H34): poke64(sys_offset+&H07,&H65): poke64(sys_offset+&H08,&HA4)
+		case &H26: poke64(sys_offset+&H06,&H20): poke64(sys_offset+&H07,&H4A): poke64(sys_offset+&H08,&H87)
+		case &H27: poke64(sys_offset+&H06,&HAD): poke64(sys_offset+&H07,&H7F): poke64(sys_offset+&H08,&HA8)
+		case &H28: poke64(sys_offset+&H06,&H75): poke64(sys_offset+&H07,&H50): poke64(sys_offset+&H08,&H7D)
+		case &H29: poke64(sys_offset+&H06,&H5C): poke64(sys_offset+&H07,&H35): poke64(sys_offset+&H08,&H66)
+		case &H2A: poke64(sys_offset+&H06,&HE9): poke64(sys_offset+&H07,&HB9): poke64(sys_offset+&H08,&H6E)
+		case &H2B: poke64(sys_offset+&H06,&HC1): poke64(sys_offset+&H07,&H7D): poke64(sys_offset+&H08,&H11)
+		case &H2C: poke64(sys_offset+&H06,&H8F): poke64(sys_offset+&H07,&H59): poke64(sys_offset+&H08,&H02)
+		case &H2D: poke64(sys_offset+&H06,&H88): poke64(sys_offset+&H07,&H8A): poke64(sys_offset+&H08,&H85)
+		case &H2E: poke64(sys_offset+&H06,&H55): poke64(sys_offset+&H07,&H57): poke64(sys_offset+&H08,&H53)
+		case &H2F: poke64(sys_offset+&H06,&H2E): poke64(sys_offset+&H07,&H34): poke64(sys_offset+&H08,&H36)
+		case &H30: poke64(sys_offset+&H06,&HEE): poke64(sys_offset+&H07,&HEE): poke64(sys_offset+&H08,&HEC)
+		case &H31: poke64(sys_offset+&H06,&HD3): poke64(sys_offset+&H07,&HD7): poke64(sys_offset+&H08,&HCF)
+		case &H32: poke64(sys_offset+&H06,&HBA): poke64(sys_offset+&H07,&HBD): poke64(sys_offset+&H08,&HB6)						
+	end select
+  elseif adr=55487 then  poke64(646,v)	
   end if
   select case adr
     case &H00  
@@ -817,7 +957,7 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
 		case &B110000 to &B111111:poke64(sys_offset+&H04,(((v - &B110000) mod 16) * 17) mod 255)
      	case else: poke64(sys_offset+&H05,(((v - &B1000000) mod 16) * 17) mod 255)				  
      end select
-     if adr=sys_offset+&HEC then paint(0,0), mem64(sys_offset+&HC9)      
+     if adr=sys_offset+&HEC then color mem64(sys_offset+&HC9):line(120,99)-(1723,896),,B:paint(0,0)    
     case sys_offset+&HED ' Amiga style Hold-and-Modify - background
      select case v
 		case &B000000 to &B001111:poke64(53281,v mod 255)
@@ -886,47 +1026,53 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
     ' sys_offset+&HE9 font width
     ' sys_offset+&HEA font height
       dim as integer b,c=v:c shl=3:c+=mem64(sys_offset+&HE8)
-      dim as integer xs=adr mod 40:xs shl =3:xs+=8*4
-      dim as integer ys=adr  \  40:ys shl =3:ys+=8*4 
+      if mem64(RVS)<>0 then c and=&HFF
       screenlock
-      if mem64(sys_offset+&HE7)=0 then              
+      if mem64(sys_offset+&HE7)=0 then 
+      dim as integer xs=adr mod 40:xs shl =3:xs+=7*3.5
+      dim as integer ys=adr  \  40:ys shl =3:ys+=7*3.5        
       for y as integer = 0 to mem64(sys_offset+&HE9)
         for x as integer = 0 to mem64(sys_offset+&HEA)
           if char(c) and (128 shr x) then
-             mem64(sys_offset+&HCB) = ((xs+x)*5)-2: mem64(sys_offset+&HCC) = ((ys+y)*4)-2
-             mem64(sys_offset+&HCE) = ((xs+x)*5)+2: mem64(sys_offset+&HCF) = ((ys+y)*4)+2
-             poke64(sys_offset+&HEE,0)           
+             mem64(sys_offset+&HCB) = ((xs+x)*5): mem64(sys_offset+&HCC) = ((ys+y)*4)
+             mem64(sys_offset+&HCE) = ((xs+x)*5)+7: mem64(sys_offset+&HCF) = ((ys+y)*4)+4
+             if mem64(RVS)<>0 then poke64(sys_offset+&HEF,0) else poke64(sys_offset+&HEE,0)         
           else
-             mem64(sys_offset+&HCB) = ((xs+x)*5)-2: mem64(sys_offset+&HCC) = ((ys+y)*4)-2
-             mem64(sys_offset+&HCE) = ((xs+x)*5)+2: mem64(sys_offset+&HCF) = ((ys+y)*4)+2
-             poke64(sys_offset+&HEF,0)          
+             mem64(sys_offset+&HCB) = ((xs+x)*5): mem64(sys_offset+&HCC) = ((ys+y)*4)
+             mem64(sys_offset+&HCE) = ((xs+x)*5)+7: mem64(sys_offset+&HCF) = ((ys+y)*4)+4
+             if mem64(RVS)<>0 then poke64(sys_offset+&HEE,0) else poke64(sys_offset+&HEF,0)         
           end if
         next 
         c+=1
       next
+      screenunlock ys,ys+8
       elseif mem64(sys_offset+&HE7)=1 then
+      dim as integer xs=adr mod 40:xs shl =3:xs+=8*4
+      dim as integer ys=adr  \  40:ys shl =3:ys+=8*4 
       for y as integer = mem64(sys_offset+&HE9) to 0 step -1
         for x as integer = 0 to mem64(sys_offset+&HEA)
           if char(c) and (128 shr x) then
              mem64(sys_offset+&HCE) = ((xs-x)*5)+2: mem64(sys_offset+&HCF) = ((ys-y)*4)+2
              mem64(sys_offset+&HCB) = ((xs-x)*5)-2: mem64(sys_offset+&HCC) = ((ys-y)*4)-2
-             poke64(sys_offset+&HEE,0)           
+             if mem64(RVS)<>0 then poke64(sys_offset+&HEF,0) else poke64(sys_offset+&HEE,0)           
           else
              mem64(sys_offset+&HCE) = ((xs-x)*5)+2: mem64(sys_offset+&HCF) = ((ys-y)*4)+2
              mem64(sys_offset+&HCB) = ((xs-x)*5)-2: mem64(sys_offset+&HCC) = ((ys-y)*4)-2
-             poke64(sys_offset+&HEF,0)          
+             if mem64(RVS)<>0 then poke64(sys_offset+&HEE,0) else poke64(sys_offset+&HEF,0)         
           end if
         next 
         c+=1
-      next   
+      next
+      screenunlock ys,ys+8   
       end if 
-      screenunlock ys,ys+8 /'
+      /'
       dim as integer xs=adr mod 40:xs shl =3:xs+=8*4
       dim as integer ys=adr  \  40:ys shl =3:ys+=8*4
       color mem64(sys_offset+&HC9), mem64(sys_offset+&HC9):locate int(ys/16), int(xs/8) 
       select case v
        case 00 to 27: print wchr(v+32)
-      end select '/         
+      end select '/
+  case &HE000 to &HFFFF,&HA000 to &HBFFF,&HD800 to &HDBFF:mem64(adr)=v              
   end select
 end sub
 
