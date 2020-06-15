@@ -299,7 +299,8 @@ constructor MEMORY_T
   'for a as integer = 0 to 255: poke64(1024+a,a): next a
   'locate 50,1: print "./chargen/"+str(b)+".c64"
   'sleep : next b: end    
-  poke64(0,255):poke64(1,255) 
+  poke64(0,255):poke64(1,255)
+  poke64(&HFFFC,&H00):poke64(&HFFFD,&H80)
   paint(0,0), rgba(0, 0, 0, 255)
   'SYS calls
   poke64(&HC0A4,&HA9): poke64(&HC0A5,&H00)                      ' LDA #$00        A9 00
@@ -397,6 +398,22 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
     adr-=&HD800:col(adr)=v
     adr+=1024:v=mem64(adr)
   end if
+  /'
+  Current Foreground Color for Text
+  
+  The process of PRINTing a character to the screen consists of both
+  placing the screen code value for the character in the screen memory
+  and placing a foreground color value in the corresponding location in
+  color RAM. Whenever a character is PRINTed, the Operating System 
+  fetches the value to be put in color RAM from this location. The
+  forground color may be changed in a number of ways. Pressing the CTRL 
+  or logo key and numbers 1-8 at the same time will change the value 
+  stored here, and thus the color being printed. PRINTing the PETASCII 
+  equivalent character with the CHR$ command will have the  same effect. 
+  But probably the easiest method is to POKE the color value directly to 
+  this location.
+  '/
+  'if adr = 0 then Locate 1,1: Print "Hello from address 0": sleep
   if adr = 646 then ' Set foreground color							  							  
     select case v
 		case &H00: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&H00)
@@ -451,6 +468,66 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
 		case &H31: poke64(sys_offset+&H02,&HD3): poke64(sys_offset+&H03,&HD7): poke64(sys_offset+&H04,&HCF)
 		case &H32: poke64(sys_offset+&H02,&HBA): poke64(sys_offset+&H03,&HBD): poke64(sys_offset+&H04,&HB6)
     end select
+  /'
+  VIC-II Chip Mempry Control Register
+  Bit 0: Unused
+  Bit 1-3: Text character dot-data base address within VIC-II address space
+  Bit 4-7: Video matrix base address within VIC-II address space
+  
+  This register affects virtually all graphics operations. It determains
+  the base address of two very important data areas, the Video Matrix, and
+  the characters displayed on the screen to stored (for more information on
+  character shape data, sea the alternate entry for location 53248 ($D00),
+  the Character Generator ROM). 
+  
+  Bits 1-3 can represent any number 0 to 14.
+  That number stands for the 1K offset of the character data area from
+  the beginning of VIC-II memory. For example, if these bits are all set
+  to 0, it means that character memory occupies the first 2K of VIC-II
+  memory. If they equal 2, the data area starts 2*1K (2*1024) or 2048
+  bytes from the biginning of VIC memory. The default value of this nybble
+  is 4.This sets the address of the Character Dot-Data to 4096($1000), which
+  is the starting address of the VIC-II chip address of the Character ROM.
+  The normal character set which contains uppercase and graphics occupies the
+  first 2K of that ROM. The alternate character set which contains both upper
+  and lowercase uses the second 2K. Therefore, to shift to the alternate
+  character set set, you hust change the value of this nybble to 6, with a 
+  POKE 53272,PEEK(53272)OR2. To change it back, POKE 53272,PEEK(53272)AND253.
+  In bitmap mode,the lower nybble controls the location of the bitmap screen
+  data. Since this data area can start only at an offset of 0 or 8K from the
+  biginning of VIC-II memory, only Bit 3 of the Memory Control Register is
+  significant in bitmap mode. If Bit 3 holds a 0 the offset is 0, and if it
+  holds a 1, the offset is 8192(8K).
+  
+  Bits 4-7. This nyble determines the starting address of the Vudei Natrux
+  area. This is a 1024-byte area of memory which contains the screen codes
+  for the text characters that are displayed on the screen. In addition, the
+  last eight bytes of this area are used as pointers which designate which
+  64-byte of VIC-II memory will be used for each sprite. These four bits can
+  represent numbers from 0 to 15. These numbers stand for the offset (in 1K
+  increments) from the beginning of VIC-II memory to the Video Matrix. For
+  example, the default bit battern is 0001. This indicates that the Video
+  Matrix is offset by 1K from the beginning of VIC-II memory, the normal
+  starting place for screen memory. Remember, though, the bit value of this
+  number will be 16 times what the bit pattern indicates, because we are 
+  dealing with Bits 4-7. Therefore, the 0001 in the upper nybble as a value
+  of 16. Using this register, we can move the start of the screen memory to
+  any 1K boundary wwithin the 16K VIC-II memory area. Just changing this 
+  register, however, is not enought if you want to use the BASIC line editor.
+  The editor looks to location 648 ($288) to determine where to print screen
+  characters. If you just change the location of the Video Matrix without
+  changing the value in 648, BASIC will continue to print character in the
+  memory area starting at 1024, even though that area is no longer being
+  displayed. The result is that you will not be able to see anything that
+  you type on the keyboard. To fix this, you must POKE 648 with the page 
+  number of the starting address of screen memory (page number=location/256).
+  Remember, the actual starting address of screen memory depends not only on
+  the offset from the beginning of VIC-II memory in the register, but also on
+  which bank of 16K is used for VIC-II memory. For example, if the screen area
+  starts 1024 bytes from the beginning of VIC-II memory, and the video chip is
+  using Bank 2(32768-49151), the actual starting address of screen memory is
+  32768+1024=33792 ($8400).
+  '/
   elseif adr = 53272 then
     select case v
 		   case 15:  
@@ -508,8 +585,38 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
   elseif adr=53249 or adr=53251 or adr=53253 or adr=53255 or _
            adr=53257 or adr=53259 or adr=53261 or adr=53263 then  
            Poke64(sys_offset+&HCC, v)
+  /'
+  Sprite Enable Register
+  
+  Bit 0: Enable Sprite 0(1=sprite is on, 0=sprite is off)
+  Bit 1: Enable Sprite 0(1=sprite is on, 0=sprite is off)
+  Bit 2: Enable Sprite 0(1=sprite is on, 0=sprite is off)
+  Bit 3: Enable Sprite 0(1=sprite is on, 0=sprite is off)
+  Bit 4: Enable Sprite 0(1=sprite is on, 0=sprite is off)
+  Bit 5: Enable Sprite 0(1=sprite is on, 0=sprite is off)
+  Bit 6: Enable Sprite 0(1=sprite is on, 0=sprite is off)
+  Bit 7: Enable Sprite 0(1=sprite is on, 0=sprite is off)
+  
+  In order for any sprite to be displayed, the corresponding bit in this
+  register must be set to 1 (the default for the location is 0). Of course,
+  just setting this bit alone will not guarantee that a sprite will be
+  shown on the screen. The Sprite Data Pointer must indicate a data area
+  that holds some values other than 0. The Sprite Color Register must also
+  contain a value other thant that of the background color. In addition, the
+  Sprite Horizontal and Vertical Position Registers must be set for positions
+  that lie within the visible screen range in order for a sprite to appear on
+  screen.  
+  '/
   elseif adr=53269 then ' Sprite enable register
-      'print v             
+      'print v
+   /'
+   Border Color Register
+   
+   The color value here determines the color of the border or frame around
+   the central display area. The entire screen is set to this color when the
+   blanking feature of Bit 4 of 53265 ($D011) is enabled. The default color
+   value is 14.
+   '/                
   elseif adr=53280 then ' Set border color
      select case v
 		case &H00: color rgb(&H00,&H00,&H00):line(120,99)-(1723,896),,B:paint(0,0)
@@ -562,7 +669,11 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
 		case &H30: color rgb(&HEE,&HEE,&HEC):line(120,99)-(1723,896),,B:paint(0,0)
 		case &H31: color rgb(&HD3,&HD7,&HCF):line(120,99)-(1723,896),,B:paint(0,0)
 		case &H32: color rgb(&HBA,&HBD,&HB6):line(120,99)-(1723,896),,B:paint(0,0)
-    end select      
+    end select
+  /'
+  Background Color Registers
+  Sets the background color for all text modes, sprite graphics, and multicolor bitmap graphics.
+  '/      
   elseif adr=53281 or adr=53282 or adr=53283 or adr=53284 then ' Set background color
     select case v
 		case &H00: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&H00)

@@ -328,120 +328,131 @@ static shared as ushort FADDT  = &HB86A 'Perform BASIC's Addition Operation
 static shared as ushort FADD4  = &HB8A7 'Make the Result Negative If a Borrow Was Done
 static shared as ushort NORMAL = &HB8FE 'Normalize Floating Point Accumulator #1
 static shared as ushort NEGFAC = &HB947 'Replace FAC1 with Its 2's Complement
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+static shared as ushort OVERR  = &HB97E 'Print Overflow Error Message
+static shared as ushort MULSHF = &HB983 'SHIFT Routine
+static shared as ushort FONE   = &HB9BC 'Floating Point Constant with Value of 1
+static shared as ushort LOGCN2 = &HB9C1 'Table of Floating Point Constants for the LOG function
+static shared as ushort LOGC   = &HB9EA 'Perform LOG to Base E
+static shared as ushort FMULT1 = &HBA28 'Multiply FAC1 by Value in Memory
+static shared as ushort FMULT2 = &HBA33 'Multiply FAC1 by FAC2
+static shared as ushort MLTPLY = &HBA59 'Multiply a Byte Subroutine
+static shared as ushort CONUPK = &HBA8C 'Move a Floating Point Number from Memory into FAC2
+static shared as ushort MULDIV = &HBAB7 'Add Exponent of FAC1 to Exponent of FAC2
+static shared as ushort MLDVEX = &HBAD4 'Handle Underflow or Overflow
+static shared as ushort MUL10  = &HBAE2 'Multiply FAC1 by 10
+static shared as ushort TENC   = &HBAF9 'The Constant 10 in Five-Byte Floatin Point Format
+static shared as ushort DIV10  = &HBAFE 'Divide FAC1 by 10
+static shared as ushort FDIV   = &HBB0F 'Divide a Number in Memory by FAC1
+static shared as ushort FDIVT  = &HBB12 'Divide FAC2 by FAC1
+static shared as ushort MOVFM  = &HBBA2 'Move a Floating Point Number from Memory to FAC1
+static shared as ushort MOV2F  = &HBBC7 'Move a Floating Point Number from FAC1 to Memory
+static shared as ushort MOVFA  = &HBBFC 'Move a Floating Point Number from FAC2 to FAC1
+static shared as ushort MOVAF  = &HBC0C 'Round and Move a Floating Point Number from FAC1 to FAC2
+static shared as ushort MOVEF  = &HBC0F 'Copy FAC1 tp FAC2 Without Rounding
+static shared as ushort ROUND  = &HBC1B 'Round Accumulator #1 by Adjusting the Rounding Byte
+static shared as ushort SIGN   = &HBC2B 'Put the Sign of Accumulator #1 into .A Register
+static shared as ushort SGNC   = &HBC39 'Perform SGN
+static shared as ushort ABSC   = &HBC58 'Perform ABS
+static shared as ushort FCOMP  = &HBC5B 'Compare FAC1 to Memory
+static shared as ushort QINT   = &HBC9B 'Convert FAC1 into Integer Within FAC1
+static shared as ushort INTC   = &HBCCC 'Perform INT
+static shared as ushort FIN    = &HBCF3 'Convert an ASCII String to a Floating Point Number FAC1
+static shared as ushort FINLOG = &HBD7E 'Add Signed Integer to FAC1
+static shared as ushort NO999  = &HBDB3 'Table of three floating point constants
+static shared as ushort INPRT  = &HBDC0 'Print IN Followed by a Line Nmber
+static shared as ushort LINPRT = &HBDCD 'Output a Number in ASCII Decimal Digits
+static shared as ushort FOUT   = &HBDDD 'Convert Contents of FAC1 to ASCII
+static shared as ushort FHALF  = &HBF11 'The Constant Value 1/2 in Five-Byte Floating Point Notation
+static shared as ushort FOUTBL = &HBF1C 'Powers of Minuz Ten Constants Table
+static shared as ushort FDCEND = &HBF3A 'Table of Constants for TI$ Conversion
+static shared as ushort SQRC   = &HBF71 'Perform SQR
+static shared as ushort FPWRT  = &HBF7B 'Performs Exponentation (Power Calculation Called for by UPARROW(
+static shared as ushort NEGOP  = &HBFB4 'Perform NOT and >
+static shared as ushort EXPCST = &HBFBF 'Table of Constants for EXP and LOG in Five-Byte Floatin Point Format
+static shared as ushort EXPC   = &HBFED 'Perform EXP
+static shared as ushort SP0X   = &HD000 'Sprite 0 Horizontal Position
+static shared as ushort SP0Y   = &HD001 'Sprite 0 Vertical Position
+static shared as ushort SP1X   = &HD002 'Sprite 1 Horizontal Position
+static shared as ushort SP1Y   = &HD003 'Sprite 1 Vertical Position
+static shared as ushort SP2X   = &HD004 'Sprite 2 Horizontal Position
+static shared as ushort SP2Y   = &HD005 'Sprite 2 Vertical Position
+static shared as ushort SP3X   = &HD006 'Sprite 3 Horizontal Position
+static shared as ushort SP3Y   = &HD007 'Sprite 3 Vertical Position
+static shared as ushort SP4X   = &HD008 'Sprite 4 Horizontal Position
+static shared as ushort SP4Y   = &HD009 'Sprite 4 Vertical Position
+static shared as ushort SP5X   = &HD00A 'Sprite 5 Horizontal Position
+static shared as ushort SP5Y   = &HD00B 'Sprite 5 Vertical Position
+static shared as ushort SP6X   = &HD00C 'Sprite 6 Horizontal Position 
+static shared as ushort SP6Y   = &HD00D 'Sprite 6 Vertical Position
+static shared as ushort SP7X   = &HD00E 'Spirte 7 Horizontal Position
+static shared as ushort SP7Y   = &HD00F 'Sprite 7 Vertical Position
+static shared as ushort MSIGX  = &HD010 'Most Significant Bits of Sprites 0-7 Horizontal Position
+static shared as ushort SCROLY = &HD011 'Virtucal Fine Scrolling and Control Register
+static shared as ushort RASTR  = &HD012 'Read Current Raster Scan Line/Write Line to Compare for Raster IRQ
+static shared as ushort LPENX  = &HD013 'Light Pen Horizontal Position
+static shared as ushort LPENY  = &HD014 'Light Pen Vertical Position
+static shared as ushort SPENA  = &HD015 'Sprite Enable Register
+static shared as ushort SCROLX = &HD016 'Horizontal Fine Scrolling and Control Register
+static shared as ushort YXPAND = &HD017 'Sprite Vertical Expansion Register
+static shared as ushort VMCSB  = &HD018 'VIC-II Chip Memory Control Register
+static shared as ushort VICIRQ = &HD019 'VIC Interrupt Flag Register
+static shared as ushort IRQMSK = &HD01A 'IRQ Mask Register
+static shared as ushort SPBGRP = &HD01B 'Sprite to Forground Display Priority Register
+static shared as ushort SPMC   = &HD01C 'Sprite Multicolor Registers
+static shared as ushort XXPAND = &HD01D 'Sprite Horizontal Expansion Register
+static shared as ushort SPSPCL = &HD01E 'Sprite to Sprite Collision Register
+static shared as ushort SPBGCL = &HD01F 'Sprite to Forground Collision Register
+static shared as ushort EXTCOL = &HD020 'Border Color Register
+static shared as ushort BGCOL0 = &HD021 'Background Color 0
+static shared as ushort BGCOL1 = &HD022 'Background Color 1
+static shared as ushort BGCOL2 = &HD023 'Background Color 2
+static shared as ushort BGCOL3 = &HD024 'Background Color 3
+static shared as ushort SPMC0  = &HD025 'Sprite Multicolor Register 0
+static shared as ushort SPMC1  = &HD026 'Sprite Multicolor Register 1
+static shared as ushort SP0COL = &HD027 'Sprite 0 Color Register (the default color value is 1)
+static shared as ushort SP1COL = &HD028 'Sprite 1 Color Register (the default color value is 2)
+static shared as ushort SP2COL = &HD029 'Sprite 2 Color Register (the default color value is 3)
+static shared as ushort SP3COL = &HD02A 'Sprite 3 Color Register (the default color value is 4)
+static shared as ushort SP4COL = &HD02B 'Sprite 4 Color Register (the default color value is 5)
+static shared as ushort SP5COL = &HD03D 'Sprite 5 Color Register (the default color value is 6)
+static shared as ushort SP6COL = &HD03E 'Sprite 6 Color Register (the default color value is 7)
+static shared as ushort SP7COL = &HD03F 'Sprite 7 Color Register (the default color value is 12)
+static shared as ushort EXPCON = &HE000 'Continuation of EXP Routine
+static shared as ushort POLY1  = &HE043 'Function Series Evaluation Subroutine 1
+static shared as ushort POLY2  = &HE059 'Function Series Evaluation Subroutine 2
+static shared as ushort RMULC  = &HE08D 'Multiplicative Constant for RND
+static shared as ushort RADDC  = &HE092 'Additive Constant for RND
+static shared as ushort RNDC   = &HE097 'Perform RND
+static shared as ushort CKIOR  = &HE0F9 'Call Kernal I/O Routines  
+static shared as ushort SYSC   = &HE12A 'Perform SYS
+static shared as ushort SAVEC  = &HE156 'Perform SAVE
+static shared as ushort VARIFY = &HE165 'Perform VARIFY
+static shared as ushort LOADC  = &HE168 'Perform LOAD
+static shared as ushort OPENC  = &HE1BE 'Perform OPEN
+static shared as ushort CLOSEC = &HE1C7 'Perform CLOSE
+static shared as ushort SPLVS  = &HE1D4 'Set Parameters for LOAD,VERIFY, and SAVE 
+static shared as ushort SCGIX  = &HE200 'Skip Comma and Get Integer in X
+static shared as ushort FCCCEL = &HE206 'Fetch Current Character and Check for End of Line
+static shared as ushort CHCMA  = &HE20E 'Check for Comma
+static shared as ushort SPOPCL = &HE219 'Set Parameters for OPEN and CLOSE
+static shared as ushort COSC   = &HE264 'Perform COS
+static shared as ushort SINC   = &HE26E 'Perform SIN
+static shared as ushort TANC   = &HE2B4 'Perform TAN
+static shared as ushort PI2    = &HE2E0 'The Five-Byte Floating Point Pepresentation of the Constant PI/2
+static shared as ushort TWOOPI = &HE2E5 'The Five-Byte Floating Point Pepresentation of the Constant 2*PI
+static shared as ushort FR4    = &HE2EA 'The Five-Byte Floating Point Pepresentation of the Constant 1/4
+static shared as ushort SINCON = &HE2EF 'Table of Constants for Evaluation of SIN, COS, and TAN
+static shared as ushort ATNC   = &HE30E 'Peform ATN
+static shared as ushort ATNCON = &HE33E 'Table of Constants for ATN Evaluation
+static shared as ushort WSBASI = &HE37B 'Warm Start BASIC
+static shared as ushort ERMSGH = &HE38B 'Error Message Handler
+static shared as ushort CSBASI = &HE394 'Cold Start BASIC
+static shared as ushort TCHRGET= &HE3A2 'Text of the CHRGET Routine Which Runs at 155($73)
+static shared as ushort IRNDSV = &HE3BA 'Initial RND Seed Value
+static shared as ushort PBCSUM = &HE422 'Print BASIC Start-Up Message
+static shared as ushort TVIBCR = &HE447 'Table of Vectors to Important BASIC Routines
+static shared as ushort CBCVRM = &HE453 'Copy BASIC Vectors to RAM
+static shared as ushort WORDS  = &HE460 'Power-Up Messages
 
 
 
