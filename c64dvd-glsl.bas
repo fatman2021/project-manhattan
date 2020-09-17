@@ -9,17 +9,41 @@
 # define dprint(msg) :
 #endif
 
-common shared as double swch
-common shared as ulong offset,sys_offset
+'Python keywords
+#define in_range(x, y) x to y
+
+'Assembly Mnemonics
+
+#define equ  = 'Equal
+#define add  + 'Add
+#define subt - 'Subtract
+#define mul  * 'Multiply
+#define div  / 'Divide
+#define idiv \ 'Integer Devide
+#define expt ^ 'Exponentiate
+#define neg  - 'Negate
+#define mov(x, y) x equ y
+
+'Logic Gates
+#define logic_xnor(x, y) not(x xor y) 'XNOR
+#define logic_xor(x, y)  x xor y      'XOR  
+#define logic_nor(x, y)  not(x or y)  'NOR
+#define logic_or(x, y)   x or y       'OR
+#define logic_nand(x, y) not(x and y) 'NAND 
+#define logic_and(x, y)  x and y      'AND
+
+common shared as double swch,b,c,x,y,xs,ys
+common shared as double offset,sys_offset
 common shared as any ptr spr0,spr1,spr2,spr3
 common shared as any ptr spr4,spr5,spr6,spr7
-common shared as any ptr image,raster
+common shared as any ptr bgimage,fgimage,raster
 common shared as string strCode
 common shared as string filename
 common shared as ubyte uflag
 common shared as ushort UpdatedScreen
 
-sys_offset=&HC000
+mov(sys_offset,&HC000)
+
 type MEMORY_T
   public:
   declare constructor
@@ -33,26 +57,26 @@ type MEMORY_T
   declare function Peek64(byval adr as ulongint) as ulongint
   declare sub      poke64(byval adr as ulongint, byval v as ulongint)
 #if 0
-  const as ulongint os_end     = &HFFFF '------|
-  const as ulongint os_base    = &HE000 '  8 K | KERNAL ROM or RAM (adr 0 bit1=0 RAM bit1=1 ROM
-  const as ulongint flopy_end  = &HDFFF '------+-|
-  const as ulongint flopy_base = &HDF00 ' 256 b  |
-  const as ulongint cpm_end    = &HDEFF '--------|
-  const as ulongint cpm_base   = &HDE00 ' 256 b  |
-  const as ulongint cia2_end   = &HDDFF '--------|
-  const as ulongint cia2_base  = &HDD00 ' 256 b  |
-  const as ulongint cia1_end   = &HDCFF '--------|
-  const as ulongint cia1_base  = &HDC00 ' 256 b  |-- 4 K I/O
-  const as ulongint col_end    = &HDBFF '--------|
-  const as ulongint col_base   = &HD800 '  1 K   |
-  const as ulongint sid_end    = &HD7FF '--------|
-  const as ulongint sid_base   = &HD400 '  1 K   |
-  const as ulongint vic_end    = &HD3FF '--------|
-  const as ulongint vic_base   = &HD000 '  1 K   |
-  const as ulongint up_ram_end = &HCFFF '------+-|
-  const as ulongint up_ram_base= &HC000 '  4 K |
-  const as ulongint basic_end  = &HBFFF '------|
-  const as ulongint basic_base = &HA000 '  8 K
+  const as ulongint mov(os_end,      &HFFFF) '------|
+  const as ulongint mov(os_base,     &HE000) '  8 K | KERNAL ROM or RAM (adr 0 bit1=0 RAM bit1=1 ROM
+  const as ulongint mov(flopy_end,   &HDFFF) '------+-|
+  const as ulongint mov(flopy_base,  &HDF00) ' 256 b  |
+  const as ulongint mov(cpm_end,     &HDEFF) '--------|
+  const as ulongint mov(cpm_base,    &HDE00) ' 256 b  |
+  const as ulongint mob(cia2_end,    &HDDFF) '--------|
+  const as ulongint mov(cia2_base,   &HDD00) ' 256 b  |
+  const as ulongint mov(cia1_end,    &HDCFF) '--------|
+  const as ulongint mov(cia1_base,   &HDC00) ' 256 b  |-- 4 K I/O
+  const as ulongint mov(col_end,     &HDBFF) '--------|
+  const as ulongint mov(col_base,    &HD800) '  1 K   |
+  const as ulongint mov(sid_end,     &HD7FF) '--------|
+  const as ulongint mov(sid_base,    &HD400) '  1 K   |
+  const as ulongint mov(vic_end,     &HD3FF) '--------|
+  const as ulongint mov(vic_base,    &HD000) '  1 K   |
+  const as ulongint mov(up_ram_end,  &HCFFF) '------+-|
+  const as ulongint mov(up_ram_base, &HC000) '  4 K |
+  const as ulongint mov(basic_end,   &HBFFF) '------|
+  const as ulongint mov(basic_base,  &HA000) '  8 K
 #endif
   as double   mem64 (&HFFFFFF) ' Ram
   as double   kernal(&H003FFF) ' OS
@@ -162,7 +186,7 @@ type CPU6510
   declare constructor(byval mem  as MEMORY_T ptr)
   declare destructor
   declare operator CAST      as string
-  declare function Tick(byval flg as ulongint=&HFFFFFFFFFFFFFFFF) as ulongint
+  declare function Tick(byval mov(flg as ulongint, &HFFFFFFFFFFFFFFFF)) as ulongint
   declare function ADR_IMM   as ulongint
   declare function ADR_REL   as ulongint
   declare function ADR_ZERO  as ulongint
@@ -227,21 +251,22 @@ constructor C64_T
   dim as integer i,c
   dprint("C64_T()")
   ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
-  image  = ImageCreate(1920,1080,0,32)
-  raster = ImageCreate(1920,1,0,32)
-  spr0   = ImageCreate(82,51,0,32)
-  spr1   = ImageCreate(82,51,0,32)
-  spr2   = ImageCreate(82,51,0,32)
-  spr3   = ImageCreate(82,51,0,32)
-  spr4   = ImageCreate(82,51,0,32)
-  spr5   = ImageCreate(82,51,0,32)
-  spr6   = ImageCreate(82,51,0,32)
-  spr7   = ImageCreate(82,51,0,32)
-  for i=0 to 15
+  mov(bgimage, ImageCreate(1920,1080,0,32))
+  mov(fgimage, ImageCreate(1920,1080,0,32))
+  mov(raster,  ImageCreate(1920,0,0,32))
+  mov(spr0,    ImageCreate(82,51,0,32))
+  mov(spr1,    ImageCreate(82,51,0,32))
+  mov(spr2,    ImageCreate(82,51,0,32))
+  mov(spr3,    ImageCreate(82,51,0,32))
+  mov(spr4,    ImageCreate(82,51,0,32))
+  mov(spr5,    ImageCreate(82,51,0,32))
+  mov(spr6,    ImageCreate(82,51,0,32))
+  mov(spr7,    ImageCreate(82,51,0,32))
+  for in_range(mov(i, 0), 15)
     read c:palette i,c
   next
-  mem=new MEMORY_T
-  cpu=new CPU6510(mem)
+  mov(mem, new MEMORY_T)
+  mov(cpu, new CPU6510(mem))
 end constructor
 
 destructor C64_T
@@ -256,44 +281,54 @@ destructor C64_T
   ImageDestroy(spr5)
   ImageDestroy(spr6)
   ImageDestroy(spr7)
-  ImageDestroy(image)
+  ImageDestroy(bgimage)
+  ImageDestroy(fgimage)
   ImageDestroy(raster)  
   sleep 1000
 end destructor
 
 constructor MEMORY_T
+  ' initialize the zero page and stack
+  dim b as ubyte
+  dim index as ushort
+  for in_range(mov(index, &H0000), &H01FF)
+	read b: mov(mem64(index), b)
+  next index
+  for in_range(mov(index, &H0200), &H03FF)
+   mov(mem64(index), &HFF)
+  next index 
   ' Set text color
-  poke64(sys_offset+2,&HFF) ' Red
-  poke64(sys_offset+3,&HFF) ' Greem
-  poke64(sys_offset+4,&HFF) ' Blue
-  poke64(sys_offset+5,&HFF) ' Alpha
-  poke64(sys_offset+9,&HFF) ' Background Color(Alpha)
+  poke64(sys_offset add 2,&HFF) ' Red
+  poke64(sys_offset add 3,&HFF) ' Greem
+  poke64(sys_offset add 4,&HFF) ' Blue
+  poke64(sys_offset add 5,&HFF) ' Alpha
+  poke64(sys_offset add 9,&HFF) ' Background Color(Alpha)
   poke64(53272,31) 'Sets screen memory to 1024
   ' sys_offset+&HE7 flip font       
   ' sys_offset+&HE8 font offset
   ' sys_offset+&HE9 font width
   ' sys_offset+&HEA font height
-  poke64(sys_offset+&HE7,0) 'Flip font  
-  poke64(sys_offset+&HE8,0) 'Fomt offset
-  poke64(sys_offset+&HE9,7) 'Font width 
-  poke64(sys_offset+&HEA,7) 'Font height 
+  poke64(sys_offset add &HE7,0) 'Flip font  
+  poke64(sys_offset add &HE8,0) 'Fomt offset
+  poke64(sys_offset add &HE9,7) 'Font width 
+  poke64(sys_offset add &HEA,7) 'Font height 
   dim as integer i
   ' init all ROM's
   dim as ubyte tmp
   open "64c.251913-01.bin" for binary as #1
-   for i=0 to 8191
-     get #1,,tmp: basic(i)=tmp
+   for in_range(mov(i, 0), 8191)
+     get #1,,tmp: mov(basic(i), tmp)
    next i  
-   for i=0 to 8191
-	 get #1,,tmp: kernal(i)=tmp
+   for in_range(mov(i, 0), 8191)
+	 get #1,,tmp: mov(kernal(i), tmp)
    next i
   close #1
   'for b as integer = 617 to 641
-  for i = &H0000 to &H1FFF: char(i)=&H00: next i
+  for mov(i, &H0000) to &H1FFF: mov(char(i), &H00): next i
   'open "./chargen/"+str(b)+".c64" for binary as #1
   open "./chargen/0.c64" for binary as #1
-   for i=0 to lof(1)
-     get #1,,tmp: char(i)=tmp
+   for in_range(mov(i, 0), lof(1))
+     get #1,,tmp: mov(char(i), tmp)
    next i
   close #1
   'for a as integer = 0 to 255: poke64(1024+a,a): next a
@@ -303,67 +338,67 @@ constructor MEMORY_T
   poke64(&HFFFC,&H00):poke64(&HFFFD,&H80)
   paint(0,0), rgba(0, 0, 0, 255)
   'SYS calls
-  poke64(&HC0A4,&HA9): poke64(&HC0A5,&H00)                      ' LDA #$00        A9 00
-  poke64(&HC0A6,&H8D): poke64(&HC0A7,&HA3): poke64(&HC0A8,&HC0) ' STA $C0A3       8D A3 C0
-  poke64(&HC0A9,&H60)                                           ' RTS             60
+  poke64(&HC0A6,&HA9): poke64(&HC0A7,&H00)                      ' LDA #$00        A9 00
+  poke64(&HC0A8,&H8D): poke64(&HC0A9,&H00): poke64(&HC0AA,&HC0) ' STA $C000       8D 00 C0
+  poke64(&HC0AB,&H60)                                           ' RTS             60
   
   dim as string mem
   dim as integer a
   
-  basic(&H0B46)=&H00 '.,AB45 A9 00    LDA #$00        ;set input prompt to NULL
-  basic(&H178E)=&H00 '.,B78E F0 05    BEQ $B794       ;ASC() - Ignore NULL
+  mov(basic(&H0B46), &H00) '.,AB45 A9 00    LDA #$00        ;set input prompt to NULL
+  mov(basic(&H178E), &H00) '.,B78E F0 05    BEQ $B794       ;ASC() - Ignore NULL
   
   'Patch BASIC startup messages"  
-  mem = "BYTES"
-  for a = 1 to len(mem)
-    kernal(&H466+a)=asc(mid(mem,a,1))+&H20
+  mov(mem, "BYTES")
+  for in_range(mov(a, 1), len(mem))
+    mov(kernal(&H466 add a), asc(mid(mem,a,1)) add &H20)
   next a
-  mem = "FREE"
-  for a = 1 to len(mem)
-	kernal(&H46C+a)=asc(mid(mem,a,1))+&H20
+  mov(mem, "FREE")
+  for in_range(mov(a, 1), len(mem))
+	mov(kernal(&H46C add a), asc(mid(mem,a,1)) add &H20)
   next a
-  kernal(&H47D)=&H2A:kernal(&H47E)=&H20
-  kernal(&H47F)=&H20 	
-  mem = "MICROSOFT"
-  for a = 1 to len(mem)
-	kernal(&H47F+a)=asc(mid(mem,a,1))+&H20
-  next a:kernal(&H489)=&H20
-  mem = "BASIC"
-  for a = 1 to len(mem)
-	kernal(&H460+a)=asc(mid(mem,a,1))+&H20
-	kernal(&H489+a)=asc(mid(mem,a,1))+&H20
-  next a: kernal(&H48F)=&H20:kernal(&H490)=&H76
-  kernal(&H491)=&H32: kernal(&H492)=&H20
-  kernal(&H493)=&H2A
-  mem = "RAM SYSTEM"
-  for a = 1 to len(mem)
-	kernal(&H49E+a)=asc(mid(mem,a,1))+&H20 
+  mov(kernal(&H47D), &H2A): mov(kernal(&H47E), &H20)
+  mov(kernal(&H47F), &H20) 	
+  mov(mem, "MICROSOFT")
+  for in_range(mov(a, 1), len(mem))
+	mov(kernal(&H47F add a), asc(mid(mem,a,1)) add &H20)
+  next a: mov(kernal(&H489), &H20)
+  mov(mem, "BASIC")
+  for in_range(mov(a, 1), len(mem))
+	mov(kernal(&H460 add a), asc(mid(mem,a,1)) add &H20)
+	mov(kernal(&H489 add a), asc(mid(mem,a,1)) add &H20)
+  next a: mov(kernal(&H48F), &H20): mov(kernal(&H490), &H76)
+  mov(kernal(&H491), &H32): mov(kernal(&H492), &H20)
+  mov(kernal(&H493), &H2A)
+  mov(mem, "RAM SYSTEM")
+  for in_range(mov(a, 1), len(mem))
+	mov(kernal(&H49E add a), asc(mid(mem,a,1)) add &H20) 
   next a
-  kernal(&H4A2)=&H20
-  mem="READY" 'Patch BASIC "READY." message
-  for a = 1 to len(mem)
-    basic(&H377+a)=asc(mid(mem,a,1))+&H20
-  next a 	
+  mov(kernal(&H4A2), &H20)
+  mov(mem, "READY") 'Patch BASIC "READY." message
+  for in_range(mov(a, 1), len(mem))
+    mov(basic(&H377 add a), asc(mid(mem,a,1)) add &H20)
+  next a
   '64-bit memory detection
   '.:E47B 2A 2A (mem) 47 42 4D 4D 4F  (cr) (cr) (mem)gb ram system
-  mem = str(int(fre(mem64(0))/1024^3))
+  mov(mem, str(int(fre(mem64(0)) idiv 1024 expt 3)))
   select case len(mem) 
          case 1
-          kernal(&H49B)=asc(mem)
-          kernal(&H49C)=&H67: kernal(&H49D)=&H62
+          mov(kernal(&H49B), asc(mem))
+          mov(kernal(&H49C), &H67): mov(kernal(&H49D), &H62)
          case 2 
-          kernal(&H49B)=asc(mid(mem,1,1))
-          kernal(&H49C)=asc(mid(mem,2,1))
-          kernal(&H49D)=&H67: kernal(&H49E)=&H62
-          mem=" RAM SYSTEM"
-          for a as integer = 1 to len(mem)
-			kernal(&H49E+a)=asc(mid(mem,a,1))+&H20
+          mov(kernal(&H49B), asc(mid(mem,1,1)))
+          mov(kernal(&H49C), asc(mid(mem,2,1)))
+          mov(kernal(&H49D), &H67): mov(kernal(&H49E), &H62)
+          mov(mem, " RAM SYSTEM")
+          for in_range(mov(a, 1), len(mem))
+			mov(kernal(&H49E add a), asc(mid(mem,a,1)) add &H20)
           next a
-          kernal(&H49F)=&H20:kernal(&H4A3)=&H20 ' Replace "@" at E49F and E4A3 with " ".         
+          mov(kernal(&H49F), &H20): mov(kernal(&H4A3), &H20) ' Replace "@" at E49F and E4A3 with " ".         
   end select
-  kernal(&H535)=&H10 '.,E534 A9 10    LDA #$0E     ;set default text color to 11(Amber)
-  kernal(&HCD9)=&H17 '.:ECD9 17                    ;set default border color to 0(black)
-  kernal(&HCDA)=&H17 '.:ECDA 17                    ;set default background color to 0(black)
+  mov(kernal(&H535), &H11) '.,E534 A9 11    LDA #$0E     ;set default text color to 11(Amber)
+  mov(kernal(&HCD9), &H17) '.:ECD9 17                    ;set default border color to 0(black)
+  mov(kernal(&HCDA), &H17) '.:ECDA 17                    ;set default background color to 0(black)
   /'
   kernal(&H506) = &H50 'get the x size
   kernal(&H598) = &H3C 'get the y size
@@ -386,17 +421,18 @@ function MEMORY_T.Peek64(byval adr as ulongint) as ulongint
   case &HA000 to &HBFFF:return basic (adr-&HA000)
   case &HD800 to &HDBFF:return char  (adr-&HD800)
   case &HD000 to &HD3FF
-    dim as integer reg=adr and &H003f
-    if reg=&H12 then return 0 else return &HFF
+    dim as integer mov(reg,adr and &H003f)
+    if reg equ &H12 then return 0 else return &HFF
   case else : return mem64(adr)
   end select
 end function
 
 sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
-  mem64(adr)=v
+  mov(mem64(adr), v)
   if adr>=&HD800 and adr<=&HDBFF then
-    adr-=&HD800:col(adr)=v
-    adr+=1024:v=mem64(adr)
+    mov(adr subt, &HD800): mov(col(adr), v)
+    mov(adr add, mem64(sys_offset add &H12B))
+    mov(v, mem64(adr))
   end if
   /'
   Current Foreground Color for Text
@@ -414,7 +450,7 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
   this location.
   '/
   'if adr = 0 then Locate 1,1: Print "Hello from address 0": sleep
-  if adr = 646 then ' Set foreground color							  							  
+  if mov(adr, 646) then ' Set foreground color							  							  
     select case v
 		case &H00: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&H00)
 		case &H01: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&HAA)
@@ -528,7 +564,7 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
   using Bank 2(32768-49151), the actual starting address of screen memory is
   32768+1024=33792 ($8400).
   '/
-  elseif adr = 53272 then
+  elseif mov(adr, 53272) then
     select case v
 		   case 15:  
 		    poke64(sys_offset+&H12B, &H0000)
@@ -579,12 +615,12 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
 		    poke64(sys_offset+&H12B, &H3C00)
 		    poke64(&H0288, &H3C)
     end select  
-  elseif adr=53248 or adr=53250 or adr=53252 or adr=53254 or _
-           adr=53256 or adr=53258 or adr=53260 or adr=53262 then  
-           Poke64(sys_offset+&HCB, v)	
-  elseif adr=53249 or adr=53251 or adr=53253 or adr=53255 or _
-           adr=53257 or adr=53259 or adr=53261 or adr=53263 then  
-           Poke64(sys_offset+&HCC, v)
+  elseif logic_or(logic_or(logic_or(mov(adr, 53248), mov(adr, 53250)), logic_or(mov(adr, 53252), mov(adr, 53254))), _
+         logic_or(logic_or(mov(adr, 53256), mov(adr, 53258)), logic_or(mov(adr, 53260), mov(adr, 53262)))) then  
+         Poke64(sys_offset+&HCB, v)	
+  elseif logic_or(logic_or(logic_or(mov(adr, 53249), mov(adr, 53251)), logic_or(mov(adr, 53253), mov(adr, 53255))), _
+         logic_or(logic_or(mov(adr, 53257), mov(adr, 53259)), logic_or(mov(adr, 53261), mov(adr, 53263)))) then  
+         Poke64(sys_offset+&HCC, v)
   /'
   Sprite Enable Register
   
@@ -607,7 +643,7 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
   that lie within the visible screen range in order for a sprite to appear on
   screen.  
   '/
-  elseif adr=53269 then ' Sprite enable register
+  elseif mov(adr, 53269) then ' Sprite enable register
       'print v
    /'
    Border Color Register
@@ -617,64 +653,65 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
    blanking feature of Bit 4 of 53265 ($D011) is enabled. The default color
    value is 14.
    '/                
-  elseif adr=53280 then ' Set border color
+   elseif mov(adr, 53280) then ' Set border color
      select case v
-		case &H00: color rgb(&H00,&H00,&H00):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H01: color rgb(&H00,&H00,&HAA):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H02: color rgb(&H00,&HAA,&H00):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H03: color rgb(&H00,&HAA,&HAA):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H04: color rgb(&HAA,&H00,&H00):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H05: color rgb(&HAA,&H00,&HAA):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H06: color rgb(&HAA,&H55,&H00):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H07: color rgb(&HAA,&HAA,&HAA):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H08: color rgb(&H55,&H55,&H55):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H09: color rgb(&H55,&H55,&HFF):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H0A: color rgb(&H55,&HFF,&H55):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H0B: color rgb(&H55,&HFF,&HFF):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H0C: color rgb(&HFF,&H55,&H55):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H0D: color rgb(&HFF,&H55,&HFF):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H0E: color rgb(&HFF,&HFF,&H55):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H0F: color rgb(&HFF,&HFF,&HFF):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H10: color rgb(&HFF,&HB0,&H00):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H11: color rgb(&HFF,&HCC,&H00):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H12: color rgb(&H33,&HFF,&H00):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H13: color rgb(&H33,&HFF,&H33):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H14: color rgb(&H00,&HFF,&H33):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H15: color rgb(&H66,&HFF,&H66):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H16: color rgb(&H00,&HFF,&H66):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H17: color rgb(&H28,&H28,&H28):line(120,99)-(1723,896),,B:paint(0,0)					
-		case &H18: color rgb(&HCC,&H00,&H00):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H19: color rgb(&HA4,&H00,&H00):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H1A: color rgb(&HFC,&HAF,&H3E):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H1B: color rgb(&HF5,&H79,&H00):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H1C: color rgb(&HCE,&H5C,&H00):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H1D: color rgb(&HFC,&HE9,&H4F):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H1E: color rgb(&HED,&HD4,&H00):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H20: color rgb(&HC4,&HA0,&H00):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H21: color rgb(&HBA,&HE2,&H34):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H22: color rgb(&H73,&HD2,&H16):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H23: color rgb(&H4E,&H9A,&H06):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H24: color rgb(&H72,&H9F,&HCF):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H25: color rgb(&H34,&H65,&HA4):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H26: color rgb(&H20,&H4A,&H87):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H27: color rgb(&HAD,&H7F,&HA8):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H28: color rgb(&H75,&H50,&H7D):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H29: color rgb(&H5C,&H35,&H66):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H2A: color rgb(&HE9,&HB9,&H6E):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H2B: color rgb(&HC1,&H7D,&H11):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H2C: color rgb(&H8F,&H59,&H02):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H2D: color rgb(&H88,&H8A,&H85):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H2E: color rgb(&H55,&H57,&H53):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H2F: color rgb(&H2E,&H34,&H36):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H30: color rgb(&HEE,&HEE,&HEC):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H31: color rgb(&HD3,&HD7,&HCF):line(120,99)-(1723,896),,B:paint(0,0)
-		case &H32: color rgb(&HBA,&HBD,&HB6):line(120,99)-(1723,896),,B:paint(0,0)
-    end select
+		case &H00: color rgb(&H00,&H00,&H00)
+		case &H01: color rgb(&H00,&H00,&HAA)
+		case &H02: color rgb(&H00,&HAA,&H00)
+		case &H03: color rgb(&H00,&HAA,&HAA)
+		case &H04: color rgb(&HAA,&H00,&H00)
+		case &H05: color rgb(&HAA,&H00,&HAA)
+		case &H06: color rgb(&HAA,&H55,&H00)
+		case &H07: color rgb(&HAA,&HAA,&HAA)
+		case &H08: color rgb(&H55,&H55,&H55)
+		case &H09: color rgb(&H55,&H55,&HFF)
+		case &H0A: color rgb(&H55,&HFF,&H55)
+		case &H0B: color rgb(&H55,&HFF,&HFF)
+		case &H0C: color rgb(&HFF,&H55,&H55)
+		case &H0D: color rgb(&HFF,&H55,&HFF)
+		case &H0E: color rgb(&HFF,&HFF,&H55)
+		case &H0F: color rgb(&HFF,&HFF,&HFF)
+		case &H10: color rgb(&HFF,&HB0,&H00)
+		case &H11: color rgb(&HFF,&HCC,&H00)
+		case &H12: color rgb(&H33,&HFF,&H00)
+		case &H13: color rgb(&H33,&HFF,&H33)
+		case &H14: color rgb(&H00,&HFF,&H33)
+		case &H15: color rgb(&H66,&HFF,&H66)
+		case &H16: color rgb(&H00,&HFF,&H66)
+		case &H17: color rgb(&H28,&H28,&H28)			
+		case &H18: color rgb(&HCC,&H00,&H00)
+		case &H19: color rgb(&HA4,&H00,&H00)
+		case &H1A: color rgb(&HFC,&HAF,&H3E)
+		case &H1B: color rgb(&HF5,&H79,&H00)
+		case &H1C: color rgb(&HCE,&H5C,&H00)
+		case &H1D: color rgb(&HFC,&HE9,&H4F)
+		case &H1E: color rgb(&HED,&HD4,&H00)
+		case &H20: color rgb(&HC4,&HA0,&H00)
+		case &H21: color rgb(&HBA,&HE2,&H34)
+		case &H22: color rgb(&H73,&HD2,&H16)
+		case &H23: color rgb(&H4E,&H9A,&H06)
+		case &H24: color rgb(&H72,&H9F,&HCF)
+		case &H25: color rgb(&H34,&H65,&HA4)
+		case &H26: color rgb(&H20,&H4A,&H87)
+		case &H27: color rgb(&HAD,&H7F,&HA8)
+		case &H28: color rgb(&H75,&H50,&H7D)
+		case &H29: color rgb(&H5C,&H35,&H66)
+		case &H2A: color rgb(&HE9,&HB9,&H6E)
+		case &H2B: color rgb(&HC1,&H7D,&H11)
+		case &H2C: color rgb(&H8F,&H59,&H02)
+		case &H2D: color rgb(&H88,&H8A,&H85)
+		case &H2E: color rgb(&H55,&H57,&H53)
+		case &H2F: color rgb(&H2E,&H34,&H36)
+		case &H30: color rgb(&HEE,&HEE,&HEC)
+		case &H31: color rgb(&HD3,&HD7,&HCF)
+		case &H32: color rgb(&HBA,&HBD,&HB6)
+    end select 
+    line bgimage,(0,0)-(1919,1079),,bf
   /'
   Background Color Registers
   Sets the background color for all text modes, sprite graphics, and multicolor bitmap graphics.
   '/      
-  elseif adr=53281 or adr=53282 or adr=53283 or adr=53284 then ' Set background color
+  elseif adr equ 53281 or adr equ 53282 or adr equ 53283 or adr equ 53284 then ' Set background color
     select case v
 		case &H00: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&H00)
 		case &H01: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&HAA)
@@ -727,7 +764,7 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
 		case &H31: poke64(sys_offset+&H06,&HD3): poke64(sys_offset+&H07,&HD7): poke64(sys_offset+&H08,&HCF)
 		case &H32: poke64(sys_offset+&H06,&HBA): poke64(sys_offset+&H07,&HBD): poke64(sys_offset+&H08,&HB6)						
 	end select
-  elseif adr=55487 then  poke64(646,v)	
+  elseif mov(adr, 55487) then  poke64(646,v)	
   end if
   select case adr
     case &H00  
@@ -1078,10 +1115,10 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
      	case else: poke64(sys_offset+&H09,(((v - &B1000000) mod 16) * 17) mod 255)					  
      end select    
     case sys_offset+&HEE ' Amiga style Hold-and-Modify - Draw foreground
-          line (mem64(sys_offset+&HCB),mem64(sys_offset+&HCC))-(mem64(sys_offset+&HCE),_
+          line fgimage,(mem64(sys_offset+&HCB),mem64(sys_offset+&HCC))-(mem64(sys_offset+&HCE),_
                 mem64(sys_offset+&HCF)),mem64(sys_offset+&HC9), BF       
     case sys_offset+&HEF ' Amiga style Hold-and-Modify - Draw background
-          line (mem64(sys_offset+&HCB),mem64(sys_offset+&HCC))-(mem64(sys_offset+&HCE),_
+          line fgimage,(mem64(sys_offset+&HCB),mem64(sys_offset+&HCC))-(mem64(sys_offset+&HCE),_
                 mem64(sys_offset+&HCF)),mem64(sys_offset+&HCA), BF              
     case sys_offset+&HF0
      'locate 1,1: print strCode
@@ -1121,9 +1158,12 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
      strCode=strCode+lcase(chr(v)) 
     case sys_offset+&HFB
      print #1, strCode: strCode = ""
-    case sys_offset+&HFC
-      draw string (mem64(sys_offset+&HCB), mem64(sys_offset+&HCC)),_
-      chr(v), mem64(sys_offset+&HC9)
+    case sys_offset+&HFC 'Flag: Print Reverse Characters?0=No
+     if char(c) and (128 shr x) then
+        if mem64(RVS)<>0 then poke64(sys_offset+&HEF,0) else poke64(sys_offset+&HEE,0)         
+     else
+        if mem64(RVS)<>0 then poke64(sys_offset+&HEE,0) else poke64(sys_offset+&HEF,0)         
+     end if
     case sys_offset+&HFD: close #1 		
 	case sys_offset+&HFE
 	 filename=filename+lcase(chr(v))
@@ -1136,45 +1176,61 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
     ' sys_offset+&HE8 font offset
     ' sys_offset+&HE9 font width
     ' sys_offset+&HEA font height
-      dim as integer b,c=v:c shl=3:c+=mem64(sys_offset+&HE8)
-      if mem64(RVS)<>0 then c and=&HFF
+      c equ v:c shl=3:c+=mem64(sys_offset+&HE8)
+      if mem64(RVS)<>0 then c and equ &HFF
       screenlock
-      if mem64(sys_offset+&HE7)=0 then 
-      dim as integer xs=adr mod 40:xs shl =3:xs+=7*3.5
-      dim as integer ys=adr  \  40:ys shl =3:ys+=7*3.5        
-      for y as integer = 0 to mem64(sys_offset+&HE9)
-        for x as integer = 0 to mem64(sys_offset+&HEA)
-          if char(c) and (128 shr x) then
-             mem64(sys_offset+&HCB) = ((xs+x)*5): mem64(sys_offset+&HCC) = ((ys+y)*4)
-             mem64(sys_offset+&HCE) = ((xs+x)*5)+7: mem64(sys_offset+&HCF) = ((ys+y)*4)+4
-             if mem64(RVS)<>0 then poke64(sys_offset+&HEF,0) else poke64(sys_offset+&HEE,0)         
-          else
-             mem64(sys_offset+&HCB) = ((xs+x)*5): mem64(sys_offset+&HCC) = ((ys+y)*4)
-             mem64(sys_offset+&HCE) = ((xs+x)*5)+7: mem64(sys_offset+&HCF) = ((ys+y)*4)+4
-             if mem64(RVS)<>0 then poke64(sys_offset+&HEE,0) else poke64(sys_offset+&HEF,0)         
-          end if
+      if mem64(sys_offset+&HE7) equ 0 then 
+      xs equ adr mod 40:xs shl  equ 3:xs+=7*3.5
+      ys equ adr  \  40:ys shl  equ 3:ys+=7*3.5        
+      for y equ 0 to mem64(sys_offset+&HE9)
+        for x equ 0 to mem64(sys_offset+&HEA)
+          mem64(sys_offset+&HCB) equ ((xs+x)*5): mem64(sys_offset+&HCC) equ ((ys+y)*4)
+          mem64(sys_offset+&HCE) equ ((xs+x)*5)+7: mem64(sys_offset+&HCF) equ ((ys+y)*4)+4
+          poke64(sys_offset+&HFC,0)
         next 
         c+=1
       next
       screenunlock ys,ys+8
-      elseif mem64(sys_offset+&HE7)=1 then
-      dim as integer xs=adr mod 40:xs shl =3:xs+=8*4
-      dim as integer ys=adr  \  40:ys shl =3:ys+=8*4 
-      for y as integer = mem64(sys_offset+&HE9) to 0 step -1
-        for x as integer = 0 to mem64(sys_offset+&HEA)
-          if char(c) and (128 shr x) then
-             mem64(sys_offset+&HCE) = ((xs-x)*5)+2: mem64(sys_offset+&HCF) = ((ys-y)*4)+2
-             mem64(sys_offset+&HCB) = ((xs-x)*5)-2: mem64(sys_offset+&HCC) = ((ys-y)*4)-2
-             if mem64(RVS)<>0 then poke64(sys_offset+&HEF,0) else poke64(sys_offset+&HEE,0)           
-          else
-             mem64(sys_offset+&HCE) = ((xs-x)*5)+2: mem64(sys_offset+&HCF) = ((ys-y)*4)+2
-             mem64(sys_offset+&HCB) = ((xs-x)*5)-2: mem64(sys_offset+&HCC) = ((ys-y)*4)-2
-             if mem64(RVS)<>0 then poke64(sys_offset+&HEE,0) else poke64(sys_offset+&HEF,0)         
-          end if
+      elseif mem64(sys_offset+&HE7) equ 1 then
+      xs=adr mod 40:xs shl equ 3:xs+=8*4
+      ys=adr  \  40:ys shl equ 3:ys+=8*4 
+      for y equ mem64(sys_offset+&HE9) to 0 step -1
+        for x equ 0 to mem64(sys_offset+&HEA)
+          mem64(sys_offset+&HCE) equ ((xs-x)*5)+2: mem64(sys_offset+&HCF) equ ((ys-y)*4)+2
+          mem64(sys_offset+&HCB) equ ((xs-x)*5)-2: mem64(sys_offset+&HCC) equ ((ys-y)*4)-2        
+          poke64(sys_offset+&HFC,0)
         next 
         c+=1
       next
-      screenunlock ys,ys+8   
+      screenunlock ys,ys+8
+      elseif mem64(sys_offset+&HE7) equ 2 then 
+      xs=adr mod 40:xs shl equ 3:xs+=7*3.5
+      ys=adr  \  40:ys shl equ 3:ys+=7*3.5        
+      for y equ 0 to mem64(sys_offset+&HE9)
+        for x equ 0 to mem64(sys_offset+&HEA)
+          mem64(sys_offset+&HCB) equ ((((xs+x)*5)/2)+mem64(sys_offset+&HE3))
+          mem64(sys_offset+&HCC) equ ((((ys+y)*4)/2)+mem64(sys_offset+&HE4))
+          mem64(sys_offset+&HCE) equ (((((xs+x)*5)+7)/2)+mem64(sys_offset+&HE3))
+          mem64(sys_offset+&HCF) equ (((((ys+y)*4)+4)/2)+mem64(sys_offset+&HE4))
+          poke64(sys_offset+&HFC,0)
+        next 
+        c+=1
+      next
+      screenunlock ys,ys+8
+      elseif mem64(sys_offset+&HE7) equ 3 then
+      xs=adr mod 40:xs shl equ 3:xs+=8*4
+      ys=adr  \  40:ys shl equ 3:ys+=8*4 
+      for y equ mem64(sys_offset+&HE9) to 0 step -1
+        for x equ 0 to mem64(sys_offset+&HEA)
+          mem64(sys_offset+&HCE) equ (((((xs-x)*5)+2)/2)+mem64(sys_offset+&HE3))
+          mem64(sys_offset+&HCF) equ (((((ys-y)*4)+2)/2)+mem64(sys_offset+&HE4))
+          mem64(sys_offset+&HCB) equ (((((xs-x)*5)-2)/2)+mem64(sys_offset+&HE3))
+          mem64(sys_offset+&HCC) equ (((((ys-y)*4)-2)/2)+mem64(sys_offset+&HE4))
+          poke64(sys_offset+&HFC,0)
+        next 
+        c+=1
+      next
+      screenunlock ys,ys+8           
       end if 
       /'
       dim as integer xs=adr mod 40:xs shl =3:xs+=8*4
@@ -2399,7 +2455,7 @@ end function
 '
 dim as C64_T computer
 dim as integer ticks
-dim as integer x, y,res 
+dim as integer res 
 do
   Ticks+=1
   if flag=1 then
@@ -2410,6 +2466,10 @@ do
   ' call ISR after 24,000 ticks
   if Ticks mod 24000=0 then
     Ticks+=InterruptService(computer.cpu)
+    screenlock
+    put (0,0),bgimage,pset: put (0,0),fgimage,or
+    'put(0,computer.cpu->mem->mem64(sys_offset+&H100)),raster,or
+    screenunlock
     'computer.cpu->mem->poke64(&H000,&H00)
     'sleep(10,1)
   end if

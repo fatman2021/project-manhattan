@@ -1,3 +1,69 @@
+// The MIT License
+// Character ROM           Copyright © 1959-2011 National Semiconductor Corporation
+//                         Copyright © 2011-present Texas Instruments Incorporated
+// Dartmouth BASIC         Copyright © 1964-1979 John G. Kemény, Thomas E. Kurtz
+// Microsoft BASIC         Copyright © 1975-present Microsoft Corporation
+// Commodore KERNAL ROM    Copyright © 1977-1994 Commodore International Limited
+//                         Copyright © 1995-1996 Escom
+//                         Copyright © 1997-2008 Tulip Computers NV
+//                         Copyright © 2008-2009 Nedfield NV
+// MOS Technology 6510     Copyright © 1982-2001 MOS Technology, Inc.
+// OpenGL Shading Language Copyright © 2004-2006 OpenGLARB
+//    		    	      Copyright © 2006-present The Khronos Group, Inc.
+// FreeBASIC               Copyright © 2004-present The FreeBASIC Development Team
+// Shadertoy               Copyright © 2013-present Inigo Quilez & Pol Jeremias
+// Project Manhattan       Copyright © 2019-present Project Manhattan Team
+// Permission is hereby granted, free of charge, to any person 
+// obtaining a copy of this software and associated documentation 
+// files (the 'Software'), to deal in the Software without restriction,
+// including without limitation the rights to use, copy, modify, merge, 
+// publish, distribute, sublicense, and/or sell copies of the Software, 
+// and to permit persons to whom the Software is furnished to do so, 
+// subject to the following conditions: The above copyright notice and
+// this permission notice shall be included in all copies or
+// substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+// The MIT License
+// Character ROM           Copyright © 1959-2011 National Semiconductor Corporation
+//                         Copyright © 2011-present Texas Instruments Incorporated
+// Dartmouth BASIC         Copyright © 1964-1979 John G. Kemény, Thomas E. Kurtz
+// Microsoft BASIC         Copyright © 1975-present Microsoft Corporation
+// Commodore KERNAL ROM    Copyright © 1977-1994 Commodore International Limited
+//                         Copyright © 1995-1996 Escom
+//                         Copyright © 1997-2008 Tulip Computers NV
+//                         Copyright © 2008-2009 Nedfield NV
+// MOS Technology 6510     Copyright © 1982-2001 MOS Technology, Inc.
+// OpenGL Shading Language Copyright © 2004-2006 OpenGLARB
+//    		    	      Copyright © 2006-present The Khronos Group, Inc.
+// FreeBASIC               Copyright © 2004-present The FreeBASIC Development Team
+// Shadertoy               Copyright © 2013-present Inigo Quilez & Pol Jeremias
+// Project Manhattan       Copyright © 2019-present Project Manhattan Team
+// Permission is hereby granted, free of charge, to any person 
+// obtaining a copy of this software and associated documentation 
+// files (the 'Software'), to deal in the Software without restriction,
+// including without limitation the rights to use, copy, modify, merge, 
+// publish, distribute, sublicense, and/or sell copies of the Software, 
+// and to permit persons to whom the Software is furnished to do so, 
+// subject to the following conditions: The above copyright notice and
+// this permission notice shall be included in all copies or
+// substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
 #if HW_PERFORMANCE==0
 #define AA 1
 #else
@@ -1701,7 +1767,7 @@ void getRays(inout Ray ray, out Ray r1, out Ray r2) {
     r2 = Ray( refl, findIntersection(p, refl), vec3(0),fresnel, ray.eta);
 }
     
-// set of "recursion" functions
+// set of recursion functions
 void rec2(inout Ray ray) {
 	
     Ray r1,r2;
@@ -2243,48 +2309,7 @@ void traceScene(bool improvedScattering, vec3 rO, vec3 rD, inout vec3 finalPos, 
     
     scatTrans = vec4(scatteredLight, transmittance);
 }
-
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
-    //iTime
-    //iMouse
-    //iResolution
-    
-	vec2 uv = fragCoord.xy / iResolution.xy;
-    
-    float hfactor = float(iResolution.y) / float(iResolution.x); // make it screen ratio independent
-	vec2 uv2 = vec2(2.0, 2.0*hfactor) * fragCoord.xy / iResolution.xy - vec2(1.0, hfactor);
-	
-	vec3 camPos = vec3( 20.0, 18.0,-50.0);
-     if(iMouse.x+iMouse.y > 0.0) // to handle first loading and see somthing on screen
-        camPos += vec3(0.05,0.12,0.0)*(vec3(iMouse.x, iMouse.y, 0.0)-vec3(iResolution.xy*0.5, 0.0));
-	vec3 camX   = vec3( 1.0, 0.0, 0.0);
-	vec3 camY   = vec3( 0.0, 1.0, 0.0);
-	vec3 camZ   = vec3( 0.0, 0.0, 1.0);
-	
-	vec3 rO = camPos;
-	vec3 rD = normalize(uv2.x*camX + uv2.y*camY + camZ);
-	vec3 finalPos = rO;
-	vec3 albedo = vec3( 0.0, 0.0, 0.0 );
-	vec3 normal = vec3( 0.0, 0.0, 0.0 );
-    vec4 scatTrans = vec4( 0.0, 0.0, 0.0, 0.0 );
-    traceScene( fragCoord.x>(iResolution.x/2.0),
-        rO, rD, finalPos, normal, albedo, scatTrans);
-	
-    
-    //lighting
-    vec3 color = (albedo/3.14) * evaluateLight(finalPos, normal) * volumetricShadow(finalPos, LPOS);
-    // Apply scattering/transmittance
-    color = color * scatTrans.w + scatTrans.xyz;
-    
-    // Gamma correction
-	color = pow(color, vec3(1.0/2.2)); // simple linear to gamma, exposure of 1.0
-   
-#ifndef D_DEMO_FREE
-    // Separation line
-    if(abs(fragCoord.x-(iResolution.x*0.5))<0.6)
-        color.r = 0.5;
-#endif
-    
-	fragColor = vec4(color ,1.0);
-}
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{

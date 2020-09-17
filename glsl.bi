@@ -4,7 +4,7 @@
 #include once "GL/glext.bi"
 
 extern as double swch
-extern as ulong mr, offset,sys_offset
+extern as double mr, offset,sys_offset
 extern as any ptr image
 extern as string strCode
 extern as string filename
