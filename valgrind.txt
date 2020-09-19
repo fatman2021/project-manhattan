@@ -1,130 +1,1565 @@
-[main@MajaroPC1 project-manhattan]$ valgrind  --leak-check=full --track-origins=yes ./c64dvd-glsl > valgrind.txt
-==81038== Memcheck, a memory error detector
-==81038== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==81038== Using Valgrind-3.16.1 and LibVEX; rerun with -h for copyright info
-==81038== Command: ./c64dvd-glsl
-==81038== 
-==81038== Warning: unimplemented fcntl command: 1033
-==81038== Conditional jump or move depends on uninitialised value(s)
-==81038==    at 0x13D43234: ??? (in /usr/lib/libnvidia-glcore.so.450.66)
-==81038==    by 0x13D43BBD: ??? (in /usr/lib/libnvidia-glcore.so.450.66)
-==81038==    by 0x13CDFCE9: ??? (in /usr/lib/libnvidia-glcore.so.450.66)
-==81038==    by 0x13C94666: ??? (in /usr/lib/libnvidia-glcore.so.450.66)
-==81038==    by 0x5E939BF: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
-==81038==    by 0x5EC1A36: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
-==81038==    by 0x4F43E02: ??? (in /usr/lib/libGLX.so.0.0.0)
-==81038==    by 0x4F46810: ??? (in /usr/lib/libGLX.so.0.0.0)
-==81038==    by 0x4F497EC: ??? (in /usr/lib/libGLX.so.0.0.0)
-==81038==    by 0x4332DE: driver_init (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x42D7AB: set_mode (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x42DC94: fb_GfxScreenRes (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==  Uninitialised value was created by a stack allocation
-==81038==    at 0x5EC30A0: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
-==81038== 
-==81038== 
-==81038== HEAP SUMMARY:
-==81038==     in use at exit: 151,442,901 bytes in 901 blocks
-==81038==   total heap usage: 21,930 allocs, 21,029 frees, 648,393,340 bytes allocated
-==81038== 
-==81038== 17,190 bytes in 1 blocks are possibly lost in loss record 106 of 116
-==81038==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
-==81038==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x427B09: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x2BB0CF87D9C53: ???
-==81038==    by 0x57619F0FB38A7F: ???
-==81038==    by 0x98EAD65B7A32846: ???
-==81038==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
-==81038== 
-==81038== 17,190 bytes in 1 blocks are possibly lost in loss record 107 of 116
-==81038==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
-==81038==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x427B29: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x2BB0CF87D9C53: ???
-==81038==    by 0x57619F0FB38A7F: ???
-==81038==    by 0x98EAD65B7A32846: ???
-==81038==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
-==81038== 
-==81038== 17,190 bytes in 1 blocks are possibly lost in loss record 108 of 116
-==81038==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
-==81038==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x427B49: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x2BB0CF87D9C53: ???
-==81038==    by 0x57619F0FB38A7F: ???
-==81038==    by 0x98EAD65B7A32846: ???
-==81038==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
-==81038== 
-==81038== 17,190 bytes in 1 blocks are possibly lost in loss record 109 of 116
-==81038==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
-==81038==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x427B69: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x2BB0CF87D9C53: ???
-==81038==    by 0x57619F0FB38A7F: ???
-==81038==    by 0x98EAD65B7A32846: ???
-==81038==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
-==81038== 
-==81038== 17,190 bytes in 1 blocks are possibly lost in loss record 110 of 116
-==81038==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
-==81038==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x427B89: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x2BB0CF87D9C53: ???
-==81038==    by 0x57619F0FB38A7F: ???
-==81038==    by 0x98EAD65B7A32846: ???
-==81038==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
-==81038== 
-==81038== 17,190 bytes in 1 blocks are possibly lost in loss record 111 of 116
-==81038==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
-==81038==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x427BA9: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x2BB0CF87D9C53: ???
-==81038==    by 0x57619F0FB38A7F: ???
-==81038==    by 0x98EAD65B7A32846: ???
-==81038==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
-==81038== 
-==81038== 17,190 bytes in 1 blocks are possibly lost in loss record 112 of 116
-==81038==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
-==81038==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x427BCB: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x2BB0CF87D9C53: ???
-==81038==    by 0x57619F0FB38A7F: ???
-==81038==    by 0x98EAD65B7A32846: ???
-==81038==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
-==81038== 
-==81038== 17,190 bytes in 1 blocks are possibly lost in loss record 113 of 116
-==81038==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
-==81038==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x427BEB: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x2BB0CF87D9C53: ???
-==81038==    by 0x57619F0FB38A7F: ???
-==81038==    by 0x98EAD65B7A32846: ???
-==81038==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
-==81038== 
-==81038== 8,294,454 bytes in 1 blocks are possibly lost in loss record 114 of 116
-==81038==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
-==81038==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x427AAC: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x2BB0CF87D9C53: ???
-==81038==    by 0x57619F0FB38A7F: ???
-==81038==    by 0x98EAD65B7A32846: ???
-==81038==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
-==81038== 
-==81038== 8,294,454 bytes in 1 blocks are possibly lost in loss record 115 of 116
-==81038==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
-==81038==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x427ACC: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
-==81038==    by 0x2BB0CF87D9C53: ???
-==81038==    by 0x57619F0FB38A7F: ???
-==81038==    by 0x98EAD65B7A32846: ???
-==81038==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
-==81038== 
-==81038== LEAK SUMMARY:
-==81038==    definitely lost: 0 bytes in 0 blocks
-==81038==    indirectly lost: 0 bytes in 0 blocks
-==81038==      possibly lost: 16,726,428 bytes in 10 blocks
-==81038==    still reachable: 134,716,473 bytes in 891 blocks
-==81038==         suppressed: 0 bytes in 0 blocks
-==81038== Reachable blocks (those to which a pointer was found) are not shown.
-==81038== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==81038== 
-==81038== For lists of detected and suppressed errors, rerun with: -s
-==81038== ERROR SUMMARY: 11 errors from 11 contexts (suppressed: 0 from 0)
-
+==85414== Memcheck, a memory error detector
+==85414== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==85414== Using Valgrind-3.16.1 and LibVEX; rerun with -h for copyright info
+==85414== Command: ./c64dvd-glsl
+==85414== Parent PID: 31953
+==85414== 
+==85414== Warning: unimplemented fcntl command: 1033
+==85414== Conditional jump or move depends on uninitialised value(s)
+==85414==    at 0x13D43234: ??? (in /usr/lib/libnvidia-glcore.so.450.66)
+==85414==    by 0x13D43BBD: ??? (in /usr/lib/libnvidia-glcore.so.450.66)
+==85414==    by 0x13CDFCE9: ??? (in /usr/lib/libnvidia-glcore.so.450.66)
+==85414==    by 0x13C94666: ??? (in /usr/lib/libnvidia-glcore.so.450.66)
+==85414==    by 0x5E939BF: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414==    by 0x5EC1A36: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414==    by 0x4F43E02: ??? (in /usr/lib/libGLX.so.0.0.0)
+==85414==    by 0x4F46810: ??? (in /usr/lib/libGLX.so.0.0.0)
+==85414==    by 0x4F497EC: ??? (in /usr/lib/libGLX.so.0.0.0)
+==85414==    by 0x4332DE: driver_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42D7AB: set_mode (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42DC94: fb_GfxScreenRes (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==  Uninitialised value was created by a stack allocation
+==85414==    at 0x5EC30A0: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414== 
+==85414== 
+==85414== HEAP SUMMARY:
+==85414==     in use at exit: 151,442,953 bytes in 901 blocks
+==85414==   total heap usage: 21,819 allocs, 20,918 frees, 654,376,599 bytes allocated
+==85414== 
+==85414== 6 bytes in 1 blocks are still reachable in loss record 1 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4D13B4E: strdup (in /usr/lib/libc-2.32.so)
+==85414==    by 0x48EFB9B: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 8 bytes in 1 blocks are still reachable in loss record 2 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4D13B4E: strdup (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4B0FCE7: _nc_trim_sgr0 (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08E09: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x4CAC0DD: (below main) (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 11 bytes in 1 blocks are still reachable in loss record 3 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4D13B4E: strdup (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4B054B9: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B05781: _nc_first_db (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F619: _nc_read_entry2 (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08279: _nc_setup_tinfo (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08697: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 11 bytes in 1 blocks are still reachable in loss record 4 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4D13B4E: strdup (in /usr/lib/libc-2.32.so)
+==85414==    by 0x48EF8C8: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 15 bytes in 1 blocks are still reachable in loss record 5 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4D13B4E: strdup (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4B086E5: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x4CAC0DD: (below main) (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 23 bytes in 1 blocks are still reachable in loss record 6 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4B06067: _nc_home_terminfo (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0576B: _nc_first_db (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F619: _nc_read_entry2 (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08279: _nc_setup_tinfo (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08697: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x4CAC0DD: (below main) (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 24 bytes in 1 blocks are still reachable in loss record 7 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x48ECD86: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF855: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 24 bytes in 1 blocks are still reachable in loss record 8 of 116
+==85414==    at 0x483CD7B: realloc (vg_replace_malloc.c:834)
+==85414==    by 0x48EC247: _XlcResolveLocaleName (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EFA99: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 24 bytes in 1 blocks are still reachable in loss record 9 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48F6EC8: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC96E1: XcursorNoticeCreateBitmap (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x48B9341: XCreatePixmap (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x42F900: fb_hX11Init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 24 bytes in 1 blocks are still reachable in loss record 10 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x49E7E5E: XextCreateExtension (in /usr/lib/libXext.so.6.4.0)
+==85414==    by 0x5EBF13B: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414==    by 0x5EB9D70: glXChooseVisual (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414==    by 0x4331CD: driver_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42D7AB: set_mode (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42DC94: fb_GfxScreenRes (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x4049F5: GLSCREEN (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x1FFEFFFB17: ???
+==85414==    by 0x4290FF: fb_GfxUnlock (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 32 bytes in 1 blocks are still reachable in loss record 11 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x4B0588C: _nc_first_db (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F619: _nc_read_entry2 (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08279: _nc_setup_tinfo (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08697: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x4CAC0DD: (below main) (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 37 bytes in 1 blocks are still reachable in loss record 12 of 116
+==85414==    at 0x483A6AF: malloc (vg_replace_malloc.c:306)
+==85414==    by 0x43DAD9: fb_hStrRealloc (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43D4F8: fb_StrConcatAssign (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x428C60: INTERRUPTSERVICE (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x529D59F: ???
+==85414==    by 0x405FCD: MEMORY_T::PEEK64(unsigned long long) (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x52A8C2F: ???
+==85414== 
+==85414== 37 bytes in 1 blocks are still reachable in loss record 13 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x43DD1D: fb_hStrAllocTemp (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43D031: fb_CHR (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x428AE4: INTERRUPTSERVICE (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x529D59F: ???
+==85414==    by 0x529D59F: ???
+==85414==    by 0xE5D1: ???
+==85414==    by 0x98EAD65B7A32846: ???
+==85414==    by 0x42CD0F: ??? (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42CE1F: ??? (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x529D59F: ???
+==85414==    by 0x428747: CPU6510::TICK(unsigned long long) (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 37 bytes in 1 blocks are still reachable in loss record 14 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x43DB21: fb_hStrRealloc (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43CF12: fb_StrAssignEx (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x408FC4: MEMORY_T::POKE64(unsigned long long, unsigned long long) (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x8: ???
+==85414==    by 0x77F: ???
+==85414==    by 0x437: ???
+==85414==    by 0x4CDCD47: sprintf (in /usr/lib/libc-2.32.so)
+==85414==    by 0x1F800A5AB06F: ???
+==85414==    by 0x4FDCBAF: ???
+==85414==    by 0x1F8000000008: ???
+==85414==    by 0x529D59F: ???
+==85414== 
+==85414== 40 bytes in 1 blocks are still reachable in loss record 15 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48C7BCA: XInitThreads (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x42FB8D: fb_hX11Init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42D7AB: set_mode (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42DC94: fb_GfxScreenRes (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x427A89: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x2BB0CF87D9C53: ???
+==85414==    by 0x57619F0FB38A7F: ???
+==85414==    by 0x98EAD65B7A32846: ???
+==85414==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 40 bytes in 1 blocks are still reachable in loss record 16 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48C7BE8: XInitThreads (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x42FB8D: fb_hX11Init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42D7AB: set_mode (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42DC94: fb_GfxScreenRes (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x427A89: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x2BB0CF87D9C53: ???
+==85414==    by 0x57619F0FB38A7F: ???
+==85414==    by 0x98EAD65B7A32846: ???
+==85414==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 40 bytes in 1 blocks are still reachable in loss record 17 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48EB924: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EFAD2: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 40 bytes in 1 blocks are still reachable in loss record 18 of 116
+==85414==    at 0x483CD7B: realloc (vg_replace_malloc.c:834)
+==85414==    by 0x42DFFB: fb_GfxScreenList (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x40496A: GLSCREEN (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x1FFEFFFB17: ???
+==85414==    by 0x4290FF: fb_GfxUnlock (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 46 bytes in 1 blocks are still reachable in loss record 19 of 116
+==85414==    at 0x483CD7B: realloc (vg_replace_malloc.c:834)
+==85414==    by 0x4B05CB4: _nc_doalloc (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0ED15: _nc_read_termtype (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F12D: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F515: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F645: _nc_read_entry2 (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08279: _nc_setup_tinfo (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08697: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 46 bytes in 1 blocks are still reachable in loss record 20 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4B03BCF: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B086AF: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x4CAC0DD: (below main) (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 47 bytes in 5 blocks are still reachable in loss record 21 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E94A4: _XlcAddCT (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E9708: _XlcInitCTInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF983: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 48 bytes in 1 blocks are still reachable in loss record 22 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48DF091: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DF745: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F8C: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC96E1: XcursorNoticeCreateBitmap (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x48B9341: XCreatePixmap (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x42F900: fb_hX11Init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42D7AB: set_mode (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 23 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48CF9B7: _XrmInternalStringToQuark (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1730: XrmInitialize (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1B3: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC96E1: XcursorNoticeCreateBitmap (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x48B9341: XCreatePixmap (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x42F900: fb_hX11Init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42D7AB: set_mode (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42DC94: fb_GfxScreenRes (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 24 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E9745: _XlcInitCTInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF983: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 25 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E9764: _XlcInitCTInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF983: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 26 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E9783: _XlcInitCTInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF983: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 27 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E97A2: _XlcInitCTInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF983: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 28 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F66A1: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 29 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F66C2: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 30 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F66E3: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 31 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6704: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 32 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6725: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 33 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6746: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 34 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6767: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 35 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6788: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 36 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F67A9: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 37 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F67CA: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 38 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F67EB: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 39 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F680C: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 40 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F682D: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 41 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F684E: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 42 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F686F: _XlcAddUtf8LocaleConverters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 43 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CB8: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC96E1: XcursorNoticeCreateBitmap (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 44 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F65B1: _XlcAddUtf8Converters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CA3: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 45 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F65D2: _XlcAddUtf8Converters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CA3: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 46 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F65F3: _XlcAddUtf8Converters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CA3: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 47 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6614: _XlcAddUtf8Converters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CA3: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 48 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6635: _XlcAddUtf8Converters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CA3: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 49 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6656: _XlcAddUtf8Converters (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CA3: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 64 bytes in 1 blocks are still reachable in loss record 50 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9EFB: _XlcSetConverter (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910CA3: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC96E1: XcursorNoticeCreateBitmap (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 66 bytes in 1 blocks are still reachable in loss record 51 of 116
+==85414==    at 0x483CD7B: realloc (vg_replace_malloc.c:834)
+==85414==    by 0x4B05CB4: _nc_doalloc (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0B574: tparm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x440A5C: fb_hTermOut (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43AB43: fb_ConsoleClear (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43CA0F: fb_ConsoleWidth (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A955: fb_Width (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42D9BC: set_mode (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42DB42: fb_GfxScreen (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x40480B: GLSCREEN (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x1FFEFFFB17: ???
+==85414==    by 0x4290FF: fb_GfxUnlock (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 69 bytes in 5 blocks are still reachable in loss record 52 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9AE5: _XlcCreateDefaultCharSet (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EDAC7: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF03E: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 70 bytes in 1 blocks are still reachable in loss record 53 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4B057EE: _nc_first_db (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F619: _nc_read_entry2 (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08279: _nc_setup_tinfo (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08697: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x4CAC0DD: (below main) (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 78 bytes in 1 blocks are still reachable in loss record 54 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4B03C44: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B086AF: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x4CAC0DD: (below main) (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 80 bytes in 3 blocks are still reachable in loss record 55 of 116
+==85414==    at 0x483CD7B: realloc (vg_replace_malloc.c:834)
+==85414==    by 0x48EDA17: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF03E: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 80 bytes in 5 blocks are still reachable in loss record 56 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E987A: _XlcAddCharSet (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EDAEA: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF03E: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 89 bytes in 5 blocks are still reachable in loss record 57 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9A74: _XlcCreateDefaultCharSet (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EDAC7: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF03E: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 93 bytes in 3 blocks are still reachable in loss record 58 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x401E68F: strdup (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4018D6B: _dl_load_cache_lookup (in /usr/lib/ld-2.32.so)
+==85414==    by 0x400AC28: _dl_map_object (in /usr/lib/ld-2.32.so)
+==85414==    by 0x400F1E4: openaux (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x400F572: _dl_map_object_deps (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4015439: dl_open_worker (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4014F3D: _dl_open (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4C7F34B: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 93 bytes in 3 blocks are still reachable in loss record 59 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x400D408: _dl_new_object (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4009095: _dl_map_object_from_fd (in /usr/lib/ld-2.32.so)
+==85414==    by 0x400A71C: _dl_map_object (in /usr/lib/ld-2.32.so)
+==85414==    by 0x400F1E4: openaux (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x400F572: _dl_map_object_deps (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4015439: dl_open_worker (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4014F3D: _dl_open (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4C7F34B: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 94 bytes in 1 blocks are still reachable in loss record 60 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4B09E13: _nc_tparm_analyze (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0A0A9: tparm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0FA55: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0FCD9: _nc_trim_sgr0 (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08E09: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x4CAC0DD: (below main) (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 96 bytes in 1 blocks are still reachable in loss record 61 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x4012C25: _dl_check_map_versions (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4015482: dl_open_worker (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4014F3D: _dl_open (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4C7F34B: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4DBF152: _dl_catch_error (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4C7FB88: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4C7F3D7: dlopen (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x5EEE935: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414==    by 0x5EE7EFE: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414== 
+==85414== 96 bytes in 1 blocks are still reachable in loss record 62 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x4012C25: _dl_check_map_versions (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4015482: dl_open_worker (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4014F3D: _dl_open (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4C7F34B: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4DBF152: _dl_catch_error (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4C7FB88: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4C7F3D7: dlopen (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x5EE3FE0: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414==    by 0x5EC4315: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414== 
+==85414== 96 bytes in 1 blocks are still reachable in loss record 63 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x4012C25: _dl_check_map_versions (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4015482: dl_open_worker (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4014F3D: _dl_open (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4C7F34B: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4DBF152: _dl_catch_error (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4C7FB88: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4C7F3D7: dlopen (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x5EE3FF5: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414==    by 0x5EC4315: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414== 
+==85414== 104 bytes in 3 blocks are still reachable in loss record 64 of 116
+==85414==    at 0x483CD7B: realloc (vg_replace_malloc.c:834)
+==85414==    by 0x48EA476: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EAFA4: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB0BC: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB817: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EFAD2: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 112 bytes in 14 blocks are still reachable in loss record 65 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48EDB02: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF03E: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 120 bytes in 1 blocks are still reachable in loss record 66 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x4012C25: _dl_check_map_versions (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4015482: dl_open_worker (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4014F3D: _dl_open (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4C7F34B: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4DBF152: _dl_catch_error (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4C7FB88: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4C7F3D7: dlopen (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x5EE400A: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414==    by 0x5EC4315: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414== 
+==85414== 136 bytes in 1 blocks are still reachable in loss record 67 of 116
+==85414==    at 0x483CD7B: realloc (vg_replace_malloc.c:834)
+==85414==    by 0x48ECD26: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48ED5D6: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF03E: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 156 bytes in 1 blocks are still reachable in loss record 68 of 116
+==85414==    at 0x483CD7B: realloc (vg_replace_malloc.c:834)
+==85414==    by 0x4B05CB4: _nc_doalloc (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0ED34: _nc_read_termtype (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F12D: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F515: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F645: _nc_read_entry2 (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08279: _nc_setup_tinfo (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08697: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 168 bytes in 1 blocks are still reachable in loss record 69 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48ECDBE: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF855: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 176 bytes in 1 blocks are still reachable in loss record 70 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x48ECDA2: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF855: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414== 
+==85414== 182 bytes in 3 blocks are still reachable in loss record 71 of 116
+==85414==    at 0x483CD7B: realloc (vg_replace_malloc.c:834)
+==85414==    by 0x48EA4B3: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EAFA4: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB0BC: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB817: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EFAD2: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 205 bytes in 8 blocks are still reachable in loss record 72 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x401E68F: strdup (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4018D6B: _dl_load_cache_lookup (in /usr/lib/ld-2.32.so)
+==85414==    by 0x400AC28: _dl_map_object (in /usr/lib/ld-2.32.so)
+==85414==    by 0x40153D0: dl_open_worker (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4014F3D: _dl_open (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4C7F34B: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4DBF152: _dl_catch_error (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4C7FB88: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4C7F3D7: dlopen (in /usr/lib/libdl-2.32.so)
+==85414== 
+==85414== 205 bytes in 8 blocks are still reachable in loss record 73 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x400D408: _dl_new_object (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4009095: _dl_map_object_from_fd (in /usr/lib/ld-2.32.so)
+==85414==    by 0x400A71C: _dl_map_object (in /usr/lib/ld-2.32.so)
+==85414==    by 0x40153D0: dl_open_worker (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4014F3D: _dl_open (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4C7F34B: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4DBF152: _dl_catch_error (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4C7FB88: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4C7F3D7: dlopen (in /usr/lib/libdl-2.32.so)
+==85414== 
+==85414== 264 bytes in 1 blocks are still reachable in loss record 74 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x4012C25: _dl_check_map_versions (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4015482: dl_open_worker (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4014F3D: _dl_open (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4C7F34B: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4DBF152: _dl_catch_error (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4C7FB88: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4C7F3D7: dlopen (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x13CAD2FD: ??? (in /usr/lib/libnvidia-glcore.so.450.66)
+==85414==    by 0x13C9A4D2: ??? (in /usr/lib/libnvidia-glcore.so.450.66)
+==85414== 
+==85414== 264 bytes in 2 blocks are still reachable in loss record 75 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x4012C25: _dl_check_map_versions (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4015482: dl_open_worker (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4014F3D: _dl_open (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4C7F34B: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4DBF152: _dl_catch_error (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4C7FB88: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4C7F3D7: dlopen (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x48B8BAE: _XNoticeCreateBitmap (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48B9341: XCreatePixmap (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 280 bytes in 1 blocks are still reachable in loss record 76 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x4B08648: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x4CAC0DD: (below main) (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 288 bytes in 3 blocks are still reachable in loss record 77 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x4012C25: _dl_check_map_versions (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4015482: dl_open_worker (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4014F3D: _dl_open (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4C7F34B: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4DBF152: _dl_catch_error (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4C7FB88: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4C7F3D7: dlopen (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4F4A3F5: ??? (in /usr/lib/libGLX.so.0.0.0)
+==85414==    by 0x4F4B172: ??? (in /usr/lib/libGLX.so.0.0.0)
+==85414== 
+==85414== 360 bytes in 5 blocks are still reachable in loss record 78 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x48E9A43: _XlcCreateDefaultCharSet (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EDAC7: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF03E: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 481 bytes in 13 blocks are still reachable in loss record 79 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x43DB21: fb_hStrRealloc (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43CF12: fb_StrAssignEx (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x4384EF: fb_DataReadStr (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x427A14: CPU6510::CPU6510(MEMORY_T*) (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x3987: ???
+==85414==    by 0x529D59F: ???
+==85414==    by 0xAD9503F: ???
+==85414==    by 0x1FFEFFFDCF: ???
+==85414== 
+==85414== 608 bytes in 1 blocks are still reachable in loss record 80 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x4B0EFA2: _nc_read_termtype (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F12D: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F515: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F645: _nc_read_entry2 (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08279: _nc_setup_tinfo (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08697: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 608 bytes in 1 blocks are still reachable in loss record 81 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4B03D1A: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B086AF: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x4CAC0DD: (below main) (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 633 bytes in 49 blocks are still reachable in loss record 82 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9AE5: _XlcCreateDefaultCharSet (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E9683: _XlcAddCT (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E9708: _XlcInitCTInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF983: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 800 bytes in 50 blocks are still reachable in loss record 83 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E987A: _XlcAddCharSet (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E9698: _XlcAddCT (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E9708: _XlcInitCTInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF983: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 802 bytes in 88 blocks are still reachable in loss record 84 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48EA594: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EAFA4: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB0BC: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB817: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EFAD2: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 940 bytes in 1 blocks are still reachable in loss record 85 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4B0F02E: _nc_read_termtype (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F12D: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F515: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F645: _nc_read_entry2 (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08279: _nc_setup_tinfo (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08697: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 1,028 bytes in 50 blocks are still reachable in loss record 86 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E9A74: _XlcCreateDefaultCharSet (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E9683: _XlcAddCT (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E9708: _XlcInitCTInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF983: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 1,092 bytes in 91 blocks are still reachable in loss record 87 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4D13B4E: strdup (in /usr/lib/libc-2.32.so)
+==85414==    by 0x48EADAB: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB0BC: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB817: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EFAD2: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 1,341 bytes in 91 blocks are still reachable in loss record 88 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4D13B4E: strdup (in /usr/lib/libc-2.32.so)
+==85414==    by 0x48EAF28: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB0BC: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB817: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EFAD2: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 1,360 bytes in 17 blocks are still reachable in loss record 89 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x48ECCF6: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48ED5D6: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF03E: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 1,408 bytes in 88 blocks are still reachable in loss record 90 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48EA56F: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EAFA4: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB0BC: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB817: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EFAD2: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 1,622 bytes in 1 blocks are still reachable in loss record 91 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4B0E68B: _nc_read_termtype (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F12D: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F515: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F645: _nc_read_entry2 (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08279: _nc_setup_tinfo (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08697: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 2,048 bytes in 1 blocks are still reachable in loss record 92 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48EBA3F: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EFAD2: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 2,208 bytes in 1 blocks are still reachable in loss record 93 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x48EB8C0: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EFAD2: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 2,631 bytes in 50 blocks are still reachable in loss record 94 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48E93FE: _XlcAddCT (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E9708: _XlcInitCTInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF983: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 3,600 bytes in 50 blocks are still reachable in loss record 95 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x48E9A43: _XlcCreateDefaultCharSet (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E9683: _XlcAddCT (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E9708: _XlcInitCTInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF983: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 3,618 bytes in 3 blocks are still reachable in loss record 96 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x400D124: _dl_new_object (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4009095: _dl_map_object_from_fd (in /usr/lib/ld-2.32.so)
+==85414==    by 0x400A71C: _dl_map_object (in /usr/lib/ld-2.32.so)
+==85414==    by 0x400F1E4: openaux (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x400F572: _dl_map_object_deps (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4015439: dl_open_worker (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4014F3D: _dl_open (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4C7F34B: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 3,640 bytes in 91 blocks are still reachable in loss record 97 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x48EAD92: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB0BC: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB817: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EFAD2: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF032: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 3,904 bytes in 1 blocks are still reachable in loss record 98 of 116
+==85414==    at 0x483CD7B: realloc (vg_replace_malloc.c:834)
+==85414==    by 0x4B05CB4: _nc_doalloc (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0ED53: _nc_read_termtype (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F12D: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F515: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B0F645: _nc_read_entry2 (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08279: _nc_setup_tinfo (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08697: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 3,904 bytes in 1 blocks are still reachable in loss record 99 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x4B03BF1: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B086AF: _nc_setupterm (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B08C26: tgetent_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x441315: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x4CAC0DD: (below main) (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 4,096 bytes in 1 blocks are still reachable in loss record 100 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x48CF823: _XrmInternalStringToQuark (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1730: XrmInitialize (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1B3: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC96E1: XcursorNoticeCreateBitmap (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x48B9341: XCreatePixmap (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x42F900: fb_hX11Init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42D7AB: set_mode (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42DC94: fb_GfxScreenRes (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 7,952 bytes in 1 blocks are still reachable in loss record 101 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x4B049F8: ??? (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B051AD: _nc_find_type_entry (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x4B09599: tgetstr_sp (in /usr/lib/libncursesw.so.6.2)
+==85414==    by 0x44133E: hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x441568: fb_hInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x43A995: fb_hRtInit (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x44288C: __libc_csu_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x4CAC0DD: (below main) (in /usr/lib/libc-2.32.so)
+==85414== 
+==85414== 8,176 bytes in 1 blocks are still reachable in loss record 102 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48CF5C6: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48CF995: _XrmInternalStringToQuark (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1730: XrmInitialize (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1B3: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE435: XGetDefault (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x8DC6C84: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC6D09: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x8DC96E1: XcursorNoticeCreateBitmap (in /usr/lib/libXcursor.so.1.0.2)
+==85414==    by 0x48B9341: XCreatePixmap (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x42F900: fb_hX11Init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42D7AB: set_mode (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 8,176 bytes in 1 blocks are still reachable in loss record 103 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x48CFB2B: _XrmInternalStringToQuark (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EB55F: _XlcGetLocaleDataBase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EE24E: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF03E: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48EF878: _XlcCreateLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x4910C51: _XlcUtf8Loader (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F6EB5: _XOpenLC (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48F70DB: _XrmInitParseInfo (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48DE876: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48E1F5E: XrmGetStringDatabase (in /usr/lib/libX11.so.6.3.0)
+==85414==    by 0x48BE1C5: ??? (in /usr/lib/libX11.so.6.3.0)
+==85414== 
+==85414== 9,605 bytes in 8 blocks are still reachable in loss record 104 of 116
+==85414==    at 0x483CB65: calloc (vg_replace_malloc.c:760)
+==85414==    by 0x400D124: _dl_new_object (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4009095: _dl_map_object_from_fd (in /usr/lib/ld-2.32.so)
+==85414==    by 0x400A71C: _dl_map_object (in /usr/lib/ld-2.32.so)
+==85414==    by 0x40153D0: dl_open_worker (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4014F3D: _dl_open (in /usr/lib/ld-2.32.so)
+==85414==    by 0x4C7F34B: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4DBF087: _dl_catch_exception (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4DBF152: _dl_catch_error (in /usr/lib/libc-2.32.so)
+==85414==    by 0x4C7FB88: ??? (in /usr/lib/libdl-2.32.so)
+==85414==    by 0x4C7F3D7: dlopen (in /usr/lib/libdl-2.32.so)
+==85414== 
+==85414== 14,728 bytes in 1 blocks are still reachable in loss record 105 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x427C46: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x1: ???
+==85414== 
+==85414== 17,190 bytes in 1 blocks are possibly lost in loss record 106 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x427B09: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x2BB0CF87D9C53: ???
+==85414==    by 0x57619F0FB38A7F: ???
+==85414==    by 0x98EAD65B7A32846: ???
+==85414==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 17,190 bytes in 1 blocks are possibly lost in loss record 107 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x427B29: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x2BB0CF87D9C53: ???
+==85414==    by 0x57619F0FB38A7F: ???
+==85414==    by 0x98EAD65B7A32846: ???
+==85414==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 17,190 bytes in 1 blocks are possibly lost in loss record 108 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x427B49: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x2BB0CF87D9C53: ???
+==85414==    by 0x57619F0FB38A7F: ???
+==85414==    by 0x98EAD65B7A32846: ???
+==85414==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 17,190 bytes in 1 blocks are possibly lost in loss record 109 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x427B69: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x2BB0CF87D9C53: ???
+==85414==    by 0x57619F0FB38A7F: ???
+==85414==    by 0x98EAD65B7A32846: ???
+==85414==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 17,190 bytes in 1 blocks are possibly lost in loss record 110 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x427B89: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x2BB0CF87D9C53: ???
+==85414==    by 0x57619F0FB38A7F: ???
+==85414==    by 0x98EAD65B7A32846: ???
+==85414==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 17,190 bytes in 1 blocks are possibly lost in loss record 111 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x427BA9: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x2BB0CF87D9C53: ???
+==85414==    by 0x57619F0FB38A7F: ???
+==85414==    by 0x98EAD65B7A32846: ???
+==85414==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 17,190 bytes in 1 blocks are possibly lost in loss record 112 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x427BCB: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x2BB0CF87D9C53: ???
+==85414==    by 0x57619F0FB38A7F: ???
+==85414==    by 0x98EAD65B7A32846: ???
+==85414==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 17,190 bytes in 1 blocks are possibly lost in loss record 113 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x427BEB: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x2BB0CF87D9C53: ???
+==85414==    by 0x57619F0FB38A7F: ???
+==85414==    by 0x98EAD65B7A32846: ???
+==85414==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 8,294,454 bytes in 1 blocks are possibly lost in loss record 114 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x427AAC: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x2BB0CF87D9C53: ???
+==85414==    by 0x57619F0FB38A7F: ???
+==85414==    by 0x98EAD65B7A32846: ???
+==85414==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 8,294,454 bytes in 1 blocks are possibly lost in loss record 115 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x42A2DF: gfx_imagecreate.part.0 (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x427ACC: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x2BB0CF87D9C53: ???
+==85414==    by 0x57619F0FB38A7F: ???
+==85414==    by 0x98EAD65B7A32846: ???
+==85414==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== 134,618,944 bytes in 1 blocks are still reachable in loss record 116 of 116
+==85414==    at 0x483A77F: malloc (vg_replace_malloc.c:307)
+==85414==    by 0x427C28: C64_T::C64_T() (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x2BB0CF87D9C53: ???
+==85414==    by 0x57619F0FB38A7F: ???
+==85414==    by 0x98EAD65B7A32846: ???
+==85414==    by 0x404127: main (in /home/main/project-manhattan/c64dvd-glsl)
+==85414== 
+==85414== LEAK SUMMARY:
+==85414==    definitely lost: 0 bytes in 0 blocks
+==85414==    indirectly lost: 0 bytes in 0 blocks
+==85414==      possibly lost: 16,726,428 bytes in 10 blocks
+==85414==    still reachable: 134,716,525 bytes in 891 blocks
+==85414==         suppressed: 0 bytes in 0 blocks
+==85414== 
+==85414== ERROR SUMMARY: 11 errors from 11 contexts (suppressed: 0 from 0)
+==85414== 
+==85414== 1 errors in context 1 of 11:
+==85414== Conditional jump or move depends on uninitialised value(s)
+==85414==    at 0x13D43234: ??? (in /usr/lib/libnvidia-glcore.so.450.66)
+==85414==    by 0x13D43BBD: ??? (in /usr/lib/libnvidia-glcore.so.450.66)
+==85414==    by 0x13CDFCE9: ??? (in /usr/lib/libnvidia-glcore.so.450.66)
+==85414==    by 0x13C94666: ??? (in /usr/lib/libnvidia-glcore.so.450.66)
+==85414==    by 0x5E939BF: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414==    by 0x5EC1A36: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414==    by 0x4F43E02: ??? (in /usr/lib/libGLX.so.0.0.0)
+==85414==    by 0x4F46810: ??? (in /usr/lib/libGLX.so.0.0.0)
+==85414==    by 0x4F497EC: ??? (in /usr/lib/libGLX.so.0.0.0)
+==85414==    by 0x4332DE: driver_init (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42D7AB: set_mode (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==    by 0x42DC94: fb_GfxScreenRes (in /home/main/project-manhattan/c64dvd-glsl)
+==85414==  Uninitialised value was created by a stack allocation
+==85414==    at 0x5EC30A0: ??? (in /usr/lib/libGLX_nvidia.so.450.66)
+==85414== 
+==85414== ERROR SUMMARY: 11 errors from 11 contexts (suppressed: 0 from 0)

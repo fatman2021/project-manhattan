@@ -269,7 +269,7 @@ constructor C64_T
   mov(cpu, new CPU6510(mem))
 end constructor
 
-destructor C64_T
+destructor C64_T 
   delete CPU
   delete MEM
   dprint("C64_T~")
@@ -283,7 +283,7 @@ destructor C64_T
   ImageDestroy(spr7)
   ImageDestroy(bgimage)
   ImageDestroy(fgimage)
-  ImageDestroy(raster)  
+  ImageDestroy(raster)
   sleep 1000
 end destructor
 
