@@ -32,30 +32,33 @@
 #define logic_nand(x, y) not(x and y) 'NAND 
 #define logic_and(x, y)  x and y      'AND
 
-common shared as double swch,b,c,x,y,xs,ys
-common shared as double offset,sys_offset
+var shared ld_x0=0,ld_y0=0,ld_z0=0,ld_x1=0,ld_y1=0,ld_z1=0
+var shared fg_red=0, fg_grn=0, fg_blu=0, fg_aph=0, prc_flag=0
+var shared bg_red=0, bg_grn=0, bg_blu=0, bg_aph=0, scro_x=0
+var shared font_f=0, font_o=0, font_h=0, font_w=0, scro_y=0
+var shared fg_color=0, bg_color=0, scr_ptr=0, x0=0, y0=0, z0=0
+var shared x1=0, y1=0, z1=0, b=0, c=0, x=0, y=0, xs=0, ys=0
+var shared uflag=0, UpdatedScreen=0
+
+common shared as double offset, sys_offset, swch
 common shared as any ptr spr0,spr1,spr2,spr3
 common shared as any ptr spr4,spr5,spr6,spr7
 common shared as any ptr bgimage,fgimage,raster
 common shared as string strCode
 common shared as string filename
-common shared as ubyte uflag
-common shared as ushort UpdatedScreen
-
-mov(sys_offset,&HC000)
 
 type MEMORY_T
   public:
   declare constructor
   declare destructor
-  declare function ReadByte   (byval adr as ulongint) as  byte
-  declare function ReadUByte  (byval adr as ulongint) as ubyte
-  declare function ReadUShort (byval adr as ulongint) as ushort
-  declare sub      WriteByte  (byval adr as ulongint, byval b8  as ulongint)
-  declare sub      WriteUByte (byval adr as ulongint, byval b8  as ulongint)
-  declare sub      WriteUShort(byval adr as ulongint, byval w16 as ulongint)
-  declare function Peek64(byval adr as ulongint) as ulongint
-  declare sub      poke64(byval adr as ulongint, byval v as ulongint)
+  declare function ReadByte   (byval adr as double) as  byte
+  declare function ReadUByte  (byval adr as double) as ubyte
+  declare function ReadUShort (byval adr as double) as ushort
+  declare sub      WriteByte  (byval adr as double, byval b8  as double)
+  declare sub      WriteUByte (byval adr as double, byval b8  as double)
+  declare sub      WriteUShort(byval adr as double, byval w16 as double)
+  declare function Peek64(byval adr as double) as double
+  declare sub      poke64(byval adr as double, byval v as double)
 #if 0
   const as ulongint mov(os_end,      &HFFFF) '------|
   const as ulongint mov(os_base,     &HE000) '  8 K | KERNAL ROM or RAM (adr 0 bit1=0 RAM bit1=1 ROM
@@ -78,11 +81,12 @@ type MEMORY_T
   const as ulongint mov(basic_end,   &HBFFF) '------|
   const as ulongint mov(basic_base,  &HA000) '  8 K
 #endif
-  as double   mem64 (&HFFFFFF) ' Ram
-  as double   kernal(&H003FFF) ' OS
-  as double   basic (&H003FFF) ' Basic
-  as double   char  (&H003FFF) ' Font
-  as double   col   (&H0003E7) ' color triples
+  'Define datasets
+  as double   mem64 (16777215d) ' Ram
+  as double   kernal(00016383d) ' OS
+  as double   basic (00016383d) ' Basic
+  as double   char  (00016383d) ' Font
+  as double   col   (00000999d) ' color triples
 end type
 
 enum ADR_MODES
@@ -115,14 +119,14 @@ enum ADR_MODES
 end enum
 
 type FLAGS
-  as ulongint  C:1
-  as ulongint  Z:1
-  as ulongint  I:1
-  as ulongint  D:1
-  as ulongint  B:1
-  as ulongint  H:1
-  as ulongint  V:1
-  as ulongint  N:1
+  as ulongint  C:1d
+  as ulongint  Z:1d
+  as ulongint  I:1d
+  as ulongint  D:1d
+  as ulongint  B:1d
+  as ulongint  H:1d
+  as ulongint  V:1d
+  as ulongint  N:1d
 end type
 
 type CPU6510_T as CPU6510 ptr
@@ -186,21 +190,21 @@ type CPU6510
   declare constructor(byval mem  as MEMORY_T ptr)
   declare destructor
   declare operator CAST      as string
-  declare function Tick(byval mov(flg as ulongint, &HFFFFFFFFFFFFFFFF)) as ulongint
-  declare function ADR_IMM   as ulongint
-  declare function ADR_REL   as ulongint
-  declare function ADR_ZERO  as ulongint
-  declare function ADR_ZEROX as ulongint
-  declare function ADR_ZEROY as ulongint
-  declare function ADR_ABS   as ulongint
-  declare function ADR_ABSX  as ulongint
-  declare function ADR_ABSY  as ulongint
-  declare function ADR_IND   as ulongint
-  declare function ADR_INDX  as ulongint
-  declare function ADR_INDY  as ulongint
-  declare function ADR_UNK   as ulongint ' unknow
-  declare sub      Push   (byval v as ulongint)
-  declare function Pull      as ulongint
+  declare function Tick(byval mov(flg as double, 1.797693134862316e+308)) as double
+  declare function ADR_IMM   as double
+  declare function ADR_REL   as double
+  declare function ADR_ZERO  as double
+  declare function ADR_ZEROX as double
+  declare function ADR_ZEROY as double
+  declare function ADR_ABS   as double
+  declare function ADR_ABSX  as double
+  declare function ADR_ABSY  as double
+  declare function ADR_IND   as double
+  declare function ADR_INDX  as double
+  declare function ADR_INDY  as double
+  declare function ADR_UNK   as double ' unknow
+  declare sub      Push   (byval v as double)
+  declare function Pull      as double
 
   union ' status register P
     as ubyte P
@@ -235,8 +239,8 @@ type CPU6510
   as MEMORY_T ptr mem
   as OPCODE     code
   private:
-  as OPCODE Opcodes(255)
-  as string StrAdrModes(12)
+  as OPCODE Opcodes(255d)
+  as string StrAdrModes(12d)
 end type
 
 type C64_T
@@ -250,19 +254,19 @@ end type
 constructor C64_T
   dim as integer i,c
   dprint("C64_T()")
-  ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
-  mov(bgimage, ImageCreate(1920,1080,0,32))
-  mov(fgimage, ImageCreate(1920,1080,0,32))
-  mov(raster,  ImageCreate(1920,0,0,32))
-  mov(spr0,    ImageCreate(82,51,0,32))
-  mov(spr1,    ImageCreate(82,51,0,32))
-  mov(spr2,    ImageCreate(82,51,0,32))
-  mov(spr3,    ImageCreate(82,51,0,32))
-  mov(spr4,    ImageCreate(82,51,0,32))
-  mov(spr5,    ImageCreate(82,51,0,32))
-  mov(spr6,    ImageCreate(82,51,0,32))
-  mov(spr7,    ImageCreate(82,51,0,32))
-  for in_range(mov(i, 0), 15)
+  ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+  mov(bgimage, ImageCreate(1920d,1080d,0d,32d))
+  mov(fgimage, ImageCreate(1920d,1080d,0d,32d))
+  mov(raster,  ImageCreate(1920d,0d,0d,32d))
+  mov(spr0,    ImageCreate(82d,51d,0d,32d))
+  mov(spr1,    ImageCreate(82d,51d,0d,32d))
+  mov(spr2,    ImageCreate(82d,51d,0d,32d))
+  mov(spr3,    ImageCreate(82d,51d,0d,32d))
+  mov(spr4,    ImageCreate(82d,51d,0d,32d))
+  mov(spr5,    ImageCreate(82d,51d,0d,32d))
+  mov(spr6,    ImageCreate(82d,51d,0d,32d))
+  mov(spr7,    ImageCreate(82d,51d,0d,32d))
+  for in_range(mov(i, 0d), 15d)
     read c:palette i,c
   next
   mov(mem, new MEMORY_T)
@@ -284,59 +288,77 @@ destructor C64_T
   ImageDestroy(bgimage)
   ImageDestroy(fgimage)
   ImageDestroy(raster)
-  sleep 1000
+  sleep 1000d
 end destructor
 
 constructor MEMORY_T
-  ' initialize the zero page and stack
+  'Set default memory addresses
+  mov(sys_offset,49152d)
+  mov(fg_red, sys_offset add 2d):     mov(fg_grn, sys_offset add 3d)
+  mov(fg_blu, sys_offset add 4d):     mov(fg_aph, sys_offset add 5d)
+  mov(bg_red, sys_offset add 6d):     mov(bg_grn, sys_offset add 7d)
+  mov(bg_blu, sys_offset add 8d):     mov(bg_aph, sys_offset add 9d)
+  mov(fg_color, sys_offset add 201d): mov(bg_color,sys_offset add 202d)
+  mov(scr_ptr, sys_offset add 299d):  mov(ld_x0,sys_offset add 010d)
+  mov(ld_y0,sys_offset add 016d):     mov(ld_z0,sys_offset add 022d)
+  mov(ld_x1,sys_offset add 028d):     mov(ld_y1,sys_offset add 034d)
+  mov(ld_z1,sys_offset add 040d):     mov(x0,sys_offset add 203d)
+  mov(y0,sys_offset add 204d):        mov(z0,sys_offset add 205d)
+  mov(x1,sys_offset add 206d):        mov(y1,sys_offset add 207d)
+  mov(z1,sys_offset add 208d):        mov(prc_flag,sys_offset add 252d)
+  mov(font_f,sys_offset add 231d):    mov(font_o,sys_offset add 232d)
+  mov(font_w,sys_offset add 233d):    mov(font_h,sys_offset add 234d)
+  mov(scro_x,sys_offset add 227d):    mov(scro_y,sys_offset add 228d)
+  'sys_offset+&HE3
+  ' initialize zero page and the stack
   dim b as ubyte
-  dim index as ushort
-  for in_range(mov(index, &H0000), &H01FF)
+  dim index as double
+  for in_range(mov(index, 0000d), 0511d)
 	read b: mov(mem64(index), b)
   next index
-  for in_range(mov(index, &H0200), &H03FF)
-   mov(mem64(index), &HFF)
+  for in_range(mov(index, 0512d), 1023d)
+   mov(mem64(index), 255d)
   next index 
   ' Set text color
-  poke64(sys_offset add 2,&HFF) ' Red
-  poke64(sys_offset add 3,&HFF) ' Greem
-  poke64(sys_offset add 4,&HFF) ' Blue
-  poke64(sys_offset add 5,&HFF) ' Alpha
-  poke64(sys_offset add 9,&HFF) ' Background Color(Alpha)
-  poke64(53272,31) 'Sets screen memory to 1024
+  poke64(fg_red,255d) ' Red
+  poke64(fg_grn,255d) ' Greem
+  poke64(fg_blu,255d) ' Blue
+  poke64(fg_aph,255d) ' Alpha
+  poke64(bg_aph,255d) ' Background Color(Alpha)
+  poke64(648d,04d): poke64(53272d,31d) 'Sets screen memory to 1024
   ' sys_offset+&HE7 flip font       
   ' sys_offset+&HE8 font offset
   ' sys_offset+&HE9 font width
   ' sys_offset+&HEA font height
-  poke64(sys_offset add &HE7,0) 'Flip font  
-  poke64(sys_offset add &HE8,0) 'Fomt offset
-  poke64(sys_offset add &HE9,7) 'Font width 
-  poke64(sys_offset add &HEA,7) 'Font height 
+  poke64(sys_offset add &HE7,0d) 'Flip font  
+  poke64(sys_offset add &HE8,0d) 'Fomt offset
+  poke64(sys_offset add &HE9,7d) 'Font width 
+  poke64(sys_offset add &HEA,7d) 'Font height 
   dim as integer i
   ' init all ROM's
   dim as ubyte tmp
   open "64c.251913-01.bin" for binary as #1
-   for in_range(mov(i, 0), 8191)
+   for in_range(mov(i, 0d), 8191d)
      get #1,,tmp: mov(basic(i), tmp)
    next i  
-   for in_range(mov(i, 0), 8191)
+   for in_range(mov(i, 0d), 8191d)
 	 get #1,,tmp: mov(kernal(i), tmp)
    next i
   close #1
   'for b as integer = 617 to 641
-  for mov(i, &H0000) to &H1FFF: mov(char(i), &H00): next i
+  for mov(i, 0000d) to 8191d: mov(char(i), 00d): next i
   'open "./chargen/"+str(b)+".c64" for binary as #1
   open "./chargen/0.c64" for binary as #1
-   for in_range(mov(i, 0), lof(1))
+   for in_range(mov(i, 0d), lof(1d))
      get #1,,tmp: mov(char(i), tmp)
    next i
   close #1
   'for a as integer = 0 to 255: poke64(1024+a,a): next a
   'locate 50,1: print "./chargen/"+str(b)+".c64"
   'sleep : next b: end    
-  poke64(0,255):poke64(1,255)
+  poke64(0d,255d):poke64(1d,255d)
   poke64(&HFFFC,&H00):poke64(&HFFFD,&H80)
-  paint(0,0), rgba(0, 0, 0, 255)
+  paint(0d,0d), rgba(0d, 0d, 0d, 255d)
   'SYS calls
   poke64(&HC0A6,&HA9): poke64(&HC0A7,&H00)                      ' LDA #$00        A9 00
   poke64(&HC0A8,&H8D): poke64(&HC0A9,&H00): poke64(&HC0AA,&HC0) ' STA $C000       8D 00 C0
@@ -350,55 +372,55 @@ constructor MEMORY_T
   
   'Patch BASIC startup messages"  
   mov(mem, "BYTES")
-  for in_range(mov(a, 1), len(mem))
-    mov(kernal(&H466 add a), asc(mid(mem,a,1)) add &H20)
+  for in_range(mov(a, 1d), len(mem))
+    mov(kernal(&H466 add a), asc(mid(mem,a,1d)) add &H20)
   next a
   mov(mem, "FREE")
-  for in_range(mov(a, 1), len(mem))
-	mov(kernal(&H46C add a), asc(mid(mem,a,1)) add &H20)
+  for in_range(mov(a, 1d), len(mem))
+	mov(kernal(&H46C add a), asc(mid(mem,a,1d)) add &H20)
   next a
   mov(kernal(&H47D), &H2A): mov(kernal(&H47E), &H20)
   mov(kernal(&H47F), &H20) 	
   mov(mem, "MICROSOFT")
-  for in_range(mov(a, 1), len(mem))
-	mov(kernal(&H47F add a), asc(mid(mem,a,1)) add &H20)
+  for in_range(mov(a, 1d), len(mem))
+	mov(kernal(&H47F add a), asc(mid(mem,a,1d)) add &H20)
   next a: mov(kernal(&H489), &H20)
   mov(mem, "BASIC")
-  for in_range(mov(a, 1), len(mem))
-	mov(kernal(&H460 add a), asc(mid(mem,a,1)) add &H20)
-	mov(kernal(&H489 add a), asc(mid(mem,a,1)) add &H20)
+  for in_range(mov(a, 1d), len(mem))
+	mov(kernal(&H460 add a), asc(mid(mem,a,1d)) add &H20)
+	mov(kernal(&H489 add a), asc(mid(mem,a,1d)) add &H20)
   next a: mov(kernal(&H48F), &H20): mov(kernal(&H490), &H76)
   mov(kernal(&H491), &H32): mov(kernal(&H492), &H20)
   mov(kernal(&H493), &H2A)
   mov(mem, "RAM SYSTEM")
-  for in_range(mov(a, 1), len(mem))
-	mov(kernal(&H49E add a), asc(mid(mem,a,1)) add &H20) 
+  for in_range(mov(a, 1d), len(mem))
+	mov(kernal(&H49E add a), asc(mid(mem,a,1d)) add &H20) 
   next a
   mov(kernal(&H4A2), &H20)
   mov(mem, "READY") 'Patch BASIC "READY." message
-  for in_range(mov(a, 1), len(mem))
-    mov(basic(&H377 add a), asc(mid(mem,a,1)) add &H20)
+  for in_range(mov(a, 1d), len(mem))
+    mov(basic(&H377 add a), asc(mid(mem,a,1d)) add &H20)
   next a
   '64-bit memory detection
   '.:E47B 2A 2A (mem) 47 42 4D 4D 4F  (cr) (cr) (mem)gb ram system
-  mov(mem, str(int(fre(mem64(0)) idiv 1024 expt 3)))
+  mov(mem, str(int(fre(mem64(0d)) idiv 1024d expt 3d)))
   select case len(mem) 
          case 1
           mov(kernal(&H49B), asc(mem))
           mov(kernal(&H49C), &H67): mov(kernal(&H49D), &H62)
          case 2 
-          mov(kernal(&H49B), asc(mid(mem,1,1)))
-          mov(kernal(&H49C), asc(mid(mem,2,1)))
+          mov(kernal(&H49B), asc(mid(mem,1d,1d)))
+          mov(kernal(&H49C), asc(mid(mem,2d,1d)))
           mov(kernal(&H49D), &H67): mov(kernal(&H49E), &H62)
           mov(mem, " RAM SYSTEM")
-          for in_range(mov(a, 1), len(mem))
-			mov(kernal(&H49E add a), asc(mid(mem,a,1)) add &H20)
+          for in_range(mov(a, 1d), len(mem))
+			mov(kernal(&H49E add a), asc(mid(mem,a,1d)) add &H20)
           next a
           mov(kernal(&H49F), &H20): mov(kernal(&H4A3), &H20) ' Replace "@" at E49F and E4A3 with " ".         
   end select
-  mov(kernal(&H535), &H11) '.,E534 A9 11    LDA #$0E     ;set default text color to 11(Amber)
-  mov(kernal(&HCD9), &H17) '.:ECD9 17                    ;set default border color to 0(black)
-  mov(kernal(&HCDA), &H17) '.:ECDA 17                    ;set default background color to 0(black)
+  mov(kernal(&H535), &H11) '.,E534 A9 11    LDA #$11     ;set default text color to 11(Amber)
+  mov(kernal(&HCD9), &H17) '.:ECD9 17                    ;set default border color to 17(black)
+  mov(kernal(&HCDA), &H17) '.:ECDA 17                    ;set default background color to 17(black)
   /'
   kernal(&H506) = &H50 'get the x size
   kernal(&H598) = &H3C 'get the y size
@@ -415,7 +437,7 @@ destructor MEMORY_T
   dprint("MEMORY_T~")
 end destructor
 
-function MEMORY_T.Peek64(byval adr as ulongint) as ulongint
+function MEMORY_T.Peek64(byval adr as double) as double
   select case adr 
   case &HE000 to &HFFFF:return kernal(adr-&HE000)
   case &HA000 to &HBFFF:return basic (adr-&HA000)
@@ -427,11 +449,11 @@ function MEMORY_T.Peek64(byval adr as ulongint) as ulongint
   end select
 end function
 
-sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
+sub MEMORY_T.poke64(byval adr as double,byval v as double)
   mov(mem64(adr), v)
-  if adr>=&HD800 and adr<=&HDBFF then
-    mov(adr subt, &HD800): mov(col(adr), v)
-    mov(adr add, mem64(sys_offset add &H12B))
+  if adr >= 55296d and adr <= 56319d then
+    mov(adr subt, 55296d): mov(col(adr), v)
+    mov(adr add, mem64(scr_ptr))
     mov(v, mem64(adr))
   end if
   /'
@@ -450,62 +472,62 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
   this location.
   '/
   'if adr = 0 then Locate 1,1: Print "Hello from address 0": sleep
-  if mov(adr, 646) then ' Set foreground color							  							  
-    select case v
-		case &H00: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&H00)
-		case &H01: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&HAA)
-		case &H02: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&HAA): poke64(sys_offset+&H04,&H00)
-		case &H03: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&HAA): poke64(sys_offset+&H04,&HAA)
-		case &H04: poke64(sys_offset+&H02,&HAA): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&H00)
-		case &H05: poke64(sys_offset+&H02,&HAA): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&HAA)
-		case &H06: poke64(sys_offset+&H02,&HAA): poke64(sys_offset+&H03,&H55): poke64(sys_offset+&H04,&H00)
-		case &H07: poke64(sys_offset+&H02,&HAA): poke64(sys_offset+&H03,&HAA): poke64(sys_offset+&H04,&HAA)
-		case &H08: poke64(sys_offset+&H02,&H55): poke64(sys_offset+&H03,&H55): poke64(sys_offset+&H04,&H55)
-		case &H09: poke64(sys_offset+&H02,&H55): poke64(sys_offset+&H03,&H55): poke64(sys_offset+&H04,&HFF)
-		case &H0A: poke64(sys_offset+&H02,&H55): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H55)
-		case &H0B: poke64(sys_offset+&H02,&H55): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&HFF)
-		case &H0C: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&H55): poke64(sys_offset+&H04,&H55)
-		case &H0D: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&H55): poke64(sys_offset+&H04,&HFF)
-		case &H0E: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H55)
-		case &H0F: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&HFF)
-		case &H10: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&HB0): poke64(sys_offset+&H04,&H00)
-		case &H11: poke64(sys_offset+&H02,&HFF): poke64(sys_offset+&H03,&HCC): poke64(sys_offset+&H04,&H00)
-		case &H12: poke64(sys_offset+&H02,&H33): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H00)
-		case &H13: poke64(sys_offset+&H02,&H33): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H33)
-		case &H14: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H33)
-		case &H15: poke64(sys_offset+&H02,&H66): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H66)
-		case &H16: poke64(sys_offset+&H02,&H00): poke64(sys_offset+&H03,&HFF): poke64(sys_offset+&H04,&H66)
-		case &H17: poke64(sys_offset+&H02,&H28): poke64(sys_offset+&H03,&H28): poke64(sys_offset+&H04,&H28)
-		case &H18: poke64(sys_offset+&H02,&HEF): poke64(sys_offset+&H03,&H29): poke64(sys_offset+&H04,&H29)
-		case &H19: poke64(sys_offset+&H02,&HCC): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&H00)
-		case &H1A: poke64(sys_offset+&H02,&HA4): poke64(sys_offset+&H03,&H00): poke64(sys_offset+&H04,&H00)
-		case &H1B: poke64(sys_offset+&H02,&HFC): poke64(sys_offset+&H03,&HAF): poke64(sys_offset+&H04,&H3E)
-		case &H1C: poke64(sys_offset+&H02,&HF5): poke64(sys_offset+&H03,&H79): poke64(sys_offset+&H04,&H00)
-		case &H1D: poke64(sys_offset+&H02,&HCE): poke64(sys_offset+&H03,&H5C): poke64(sys_offset+&H04,&H00)
-		case &H1E: poke64(sys_offset+&H02,&HFC): poke64(sys_offset+&H03,&HE9): poke64(sys_offset+&H04,&H4F)
-		case &H1F: poke64(sys_offset+&H02,&HED): poke64(sys_offset+&H03,&HD4): poke64(sys_offset+&H04,&H00)
-		case &H20: poke64(sys_offset+&H02,&HC4): poke64(sys_offset+&H03,&HA0): poke64(sys_offset+&H04,&H00)
-		case &H21: poke64(sys_offset+&H02,&HBA): poke64(sys_offset+&H03,&HE2): poke64(sys_offset+&H04,&H34)
-		case &H22: poke64(sys_offset+&H02,&H73): poke64(sys_offset+&H03,&HD2): poke64(sys_offset+&H04,&H16)
-		case &H23: poke64(sys_offset+&H02,&H4E): poke64(sys_offset+&H03,&H9A): poke64(sys_offset+&H04,&H06)
-		case &H24: poke64(sys_offset+&H02,&H72): poke64(sys_offset+&H03,&H9F): poke64(sys_offset+&H04,&HCF)
-		case &H25: poke64(sys_offset+&H02,&H34): poke64(sys_offset+&H03,&H65): poke64(sys_offset+&H04,&HA4)
-		case &H26: poke64(sys_offset+&H02,&H20): poke64(sys_offset+&H03,&H4A): poke64(sys_offset+&H04,&H87)
-		case &H27: poke64(sys_offset+&H02,&HAD): poke64(sys_offset+&H03,&H7F): poke64(sys_offset+&H04,&HA8)
-		case &H28: poke64(sys_offset+&H02,&H75): poke64(sys_offset+&H03,&H50): poke64(sys_offset+&H04,&H7D)
-		case &H29: poke64(sys_offset+&H02,&H5C): poke64(sys_offset+&H03,&H35): poke64(sys_offset+&H04,&H66)
-		case &H2A: poke64(sys_offset+&H02,&HE9): poke64(sys_offset+&H03,&HB9): poke64(sys_offset+&H04,&H6E)
-		case &H2B: poke64(sys_offset+&H02,&HC1): poke64(sys_offset+&H03,&H7D): poke64(sys_offset+&H04,&H11)
-		case &H2C: poke64(sys_offset+&H02,&H8F): poke64(sys_offset+&H03,&H59): poke64(sys_offset+&H04,&H02)
-		case &H2D: poke64(sys_offset+&H02,&H88): poke64(sys_offset+&H03,&H8A): poke64(sys_offset+&H04,&H85)
-		case &H2E: poke64(sys_offset+&H02,&H55): poke64(sys_offset+&H03,&H57): poke64(sys_offset+&H04,&H53)
-		case &H2F: poke64(sys_offset+&H02,&H2E): poke64(sys_offset+&H03,&H34): poke64(sys_offset+&H04,&H36)
-		case &H30: poke64(sys_offset+&H02,&HEE): poke64(sys_offset+&H03,&HEE): poke64(sys_offset+&H04,&HEC)
-		case &H31: poke64(sys_offset+&H02,&HD3): poke64(sys_offset+&H03,&HD7): poke64(sys_offset+&H04,&HCF)
-		case &H32: poke64(sys_offset+&H02,&HBA): poke64(sys_offset+&H03,&HBD): poke64(sys_offset+&H04,&HB6)
+  if mov(adr, 646d) then ' Set foreground color							  							  
+    select case as const cast(ulongint, v)
+		case 000d: poke64(fg_red,000d): poke64(fg_grn,000d): poke64(fg_blu,000d)
+		case 001d: poke64(fg_red,000d): poke64(fg_grn,000d): poke64(fg_blu,170d)
+		case 002d: poke64(fg_red,000d): poke64(fg_grn,170d): poke64(fg_blu,000d)
+		case 003d: poke64(fg_red,000d): poke64(fg_grn,170d): poke64(fg_blu,170d)
+		case 004d: poke64(fg_red,170d): poke64(fg_grn,000d): poke64(fg_blu,000d)
+		case 005d: poke64(fg_red,170d): poke64(fg_grn,000d): poke64(fg_blu,170d)
+		case 006d: poke64(fg_red,170d): poke64(fg_grn,085d): poke64(fg_blu,000d)
+		case 007d: poke64(fg_red,170d): poke64(fg_grn,170d): poke64(fg_blu,170d)
+		case 008d: poke64(fg_red,085d): poke64(fg_grn,085d): poke64(fg_blu,085d)
+		case 009d: poke64(fg_red,085d): poke64(fg_grn,085d): poke64(fg_blu,255d)
+		case 010d: poke64(fg_red,085d): poke64(fg_grn,255d): poke64(fg_blu,255d)
+		case 011d: poke64(fg_red,085d): poke64(fg_grn,255d): poke64(fg_blu,255d)
+		case 012d: poke64(fg_red,255d): poke64(fg_grn,085d): poke64(fg_blu,085d)
+		case 013d: poke64(fg_red,255d): poke64(fg_grn,085d): poke64(fg_blu,255d)
+		case 014d: poke64(fg_red,255d): poke64(fg_grn,255d): poke64(fg_blu,085d)
+		case 015d: poke64(fg_red,255d): poke64(fg_grn,255d): poke64(fg_blu,255d)
+		case 016d: poke64(fg_red,255d): poke64(fg_grn,176d): poke64(fg_blu,000d)
+		case 017d: poke64(fg_red,255d): poke64(fg_grn,204d): poke64(fg_blu,000d)
+		case 018d: poke64(fg_red,051d): poke64(fg_grn,255d): poke64(fg_blu,000d)
+		case 019d: poke64(fg_red,051d): poke64(fg_grn,255d): poke64(fg_blu,051d)
+		case 020d: poke64(fg_red,000d): poke64(fg_grn,255d): poke64(fg_blu,051d)
+		case 021d: poke64(fg_red,102d): poke64(fg_grn,255d): poke64(fg_blu,102d)
+		case 022d: poke64(fg_red,000d): poke64(fg_grn,255d): poke64(fg_blu,102d)
+		case 023d: poke64(fg_red,040d): poke64(fg_grn,040d): poke64(fg_blu,040d)
+		case 024d: poke64(fg_red,236d): poke64(fg_grn,041d): poke64(fg_blu,041d)
+		case 025d: poke64(fg_red,204d): poke64(fg_grn,000d): poke64(fg_blu,000d)
+		case 026d: poke64(fg_red,164d): poke64(fg_grn,000d): poke64(fg_blu,000d)
+		case 027d: poke64(fg_red,252d): poke64(fg_grn,175d): poke64(fg_blu,062d)
+		case 028d: poke64(fg_red,245d): poke64(fg_grn,121d): poke64(fg_blu,000d)
+		case 029d: poke64(fg_red,206d): poke64(fg_grn,092d): poke64(fg_blu,000d)
+		case 030d: poke64(fg_red,252d): poke64(fg_grn,233d): poke64(fg_blu,079d)
+		case 031d: poke64(fg_red,237d): poke64(fg_grn,212d): poke64(fg_blu,000d)
+		case 032d: poke64(fg_red,196d): poke64(fg_grn,160d): poke64(fg_blu,000d)
+		case 033d: poke64(fg_red,186d): poke64(fg_grn,226d): poke64(fg_blu,052d)
+		case 034d: poke64(fg_red,115d): poke64(fg_grn,210d): poke64(fg_blu,022d)
+		case 035d: poke64(fg_red,078d): poke64(fg_grn,154d): poke64(fg_blu,006d)
+		case 036d: poke64(fg_red,114d): poke64(fg_grn,159d): poke64(fg_blu,207d)
+		case 037d: poke64(fg_red,052d): poke64(fg_grn,101d): poke64(fg_blu,164d)
+		case 038d: poke64(fg_red,032d): poke64(fg_grn,074d): poke64(fg_blu,135d)
+		case 039d: poke64(fg_red,173d): poke64(fg_grn,127d): poke64(fg_blu,168d)
+		case 040d: poke64(fg_red,117d): poke64(fg_grn,080d): poke64(fg_blu,125d)
+		case 041d: poke64(fg_red,092d): poke64(fg_grn,053d): poke64(fg_blu,102d)
+		case 042d: poke64(fg_red,233d): poke64(fg_grn,185d): poke64(fg_blu,110d)
+		case 043d: poke64(fg_red,193d): poke64(fg_grn,125d): poke64(fg_blu,011d)
+		case 044d: poke64(fg_red,143d): poke64(fg_grn,089d): poke64(fg_blu,002d)
+		case 045d: poke64(fg_red,136d): poke64(fg_grn,138d): poke64(fg_blu,133d)
+		case 046d: poke64(fg_red,085d): poke64(fg_grn,087d): poke64(fg_blu,083d)
+		case 047d: poke64(fg_red,046d): poke64(fg_grn,052d): poke64(fg_blu,054d)
+		case 048d: poke64(fg_red,238d): poke64(fg_grn,238d): poke64(fg_blu,236d)
+		case 049d: poke64(fg_red,211d): poke64(fg_grn,215d): poke64(fg_blu,207d)
+		case 050d: poke64(fg_red,186d): poke64(fg_grn,189d): poke64(fg_blu,182d)
     end select
   /'
-  VIC-II Chip Mempry Control Register
+  VIC-II Chip Memory Control Register
   Bit 0: Unused
   Bit 1-3: Text character dot-data base address within VIC-II address space
   Bit 4-7: Video matrix base address within VIC-II address space
@@ -564,63 +586,63 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
   using Bank 2(32768-49151), the actual starting address of screen memory is
   32768+1024=33792 ($8400).
   '/
-  elseif mov(adr, 53272) then
-    select case v
-		   case 15:  
-		    poke64(sys_offset+&H12B, &H0000)
-		    poke64(&H0288, &H00)
-		   case 31:  
-		    poke64(sys_offset+&H12B, &H0400)
-		    poke64(&H0288, &H04)
-		   case 47:  
-		    poke64(sys_offset+&H12B, &H0800)
-		    poke64(&H0288, &H08)
-		   case 63:  
-		    poke64(sys_offset+&H12B, &H0C00)
-		    poke64(&H0288, &H0C)
-		   case 79:  
-		    poke64(sys_offset+&H12B, &H1000)
-		    poke64(&H0288, &H10)
-		   case 95:  
-		    poke64(sys_offset+&H12B, &H1400)
-		    poke64(&H0288, &H14)
-		   case 111: 
-		    poke64(sys_offset+&H12B, &H1800)
-		    poke64(&H0288, &H18)
-		   case 127: 
-		    poke64(sys_offset+&H12B, &H1C00)
-		    poke64(&H0288, &H1C)
-		   case 143: 
-		    poke64(sys_offset+&H12B, &H2000)
-		    poke64(&H0288, &H20)
-		   case 159: 
-		    poke64(sys_offset+&H12B, &H2400)
-		    poke64(&H0288, &H24)
-		   case 175: 
-		    poke64(sys_offset+&H12B, &H2800)
-		    poke64(&H0288, &H28)
-		   case 191: 
-		    poke64(sys_offset+&H12B, &H2C00)
-		    poke64(&H0288, &H2C)
-		   case 207: 
-		    poke64(sys_offset+&H12B, &H3000)
-		    poke64(&H0288, &H30)
+  elseif mov(adr, 53272d) then
+    select case as const cast(ulong, v)
+		   case 15d:  
+		    mov(mem64(scr_ptr), &H0000)
+		    mov(mem64(&H0288), &H00)
+		   case 31d:  
+		    mov(mem64(scr_ptr), &H0400)
+		    mov(mem64(&H0288), &H04)
+		   case 47d:  
+		    mov(mem64(scr_ptr), &H0800)
+		    mov(mem64(&H0288), &H08)
+		   case 63d:  
+		    mov(mem64(scr_ptr), &H0C00)
+		    mov(mem64(&H0288), &H0C)
+		   case 79d:  
+		    mov(mem64(scr_ptr), &H1000)
+		    mov(mem64(&H0288), &H10)
+		   case 95d:  
+		    mov(mem64(scr_ptr), &H1400)
+		    mov(mem64(&H0288), &H14)
+		   case 111d: 
+		    mov(mem64(scr_ptr), &H1800)
+		    mov(mem64(&H0288), &H18)
+		   case 127d: 
+		    mov(mem64(scr_ptr), &H1C00)
+		    mov(mem64(&H0288), &H1C)
+		   case 143d: 
+		    mov(mem64(scr_ptr), &H2000)
+		    mov(mem64(&H0288), &H20)
+		   case 159d: 
+		    mov(mem64(scr_ptr), &H2400)
+		    mov(mem64(&H0288), &H24)
+		   case 175d: 
+		    mov(mem64(scr_ptr), &H2800)
+		    mov(mem64(&H0288), &H28)
+		   case 191d: 
+		    mov(mem64(scr_ptr), &H2C00)
+		    mov(mem64(&H0288), &H2C)
+		   case 207d: 
+		    mov(mem64(scr_ptr), &H3000)
+		    mov(mem64(&H0288), &H30)
 	       case 223: 
-	        poke64(sys_offset+&H12B, &H3400)
-	        poke64(&H0288, &H34)
-		   case 239: 
-		    poke64(sys_offset+&H12B, &H3800)
-		    poke64(&H0288, &H38)
-		   case 255: 
-		    poke64(sys_offset+&H12B, &H3C00)
-		    poke64(&H0288, &H3C)
+	        mov(mem64(scr_ptr), &H3400)
+	        mov(mem64(&H0288), &H34)
+		   case 239d: 
+		    mov(mem64(scr_ptr), &H3800)
+		    mov(mem64(&H0288), &H38)
+		   case 255d: 
+		    mov(mem64(scr_ptr), &H3C00)
+		    mov(mem64(&H0288), &H3C)
     end select  
-  elseif logic_or(logic_or(logic_or(mov(adr, 53248), mov(adr, 53250)), logic_or(mov(adr, 53252), mov(adr, 53254))), _
-         logic_or(logic_or(mov(adr, 53256), mov(adr, 53258)), logic_or(mov(adr, 53260), mov(adr, 53262)))) then  
-         Poke64(sys_offset+&HCB, v)	
-  elseif logic_or(logic_or(logic_or(mov(adr, 53249), mov(adr, 53251)), logic_or(mov(adr, 53253), mov(adr, 53255))), _
-         logic_or(logic_or(mov(adr, 53257), mov(adr, 53259)), logic_or(mov(adr, 53261), mov(adr, 53263)))) then  
-         Poke64(sys_offset+&HCC, v)
+  elseif logic_or(logic_or(logic_or(mov(adr, 53248d), mov(adr, 53250d)), logic_or(mov(adr, 53252d), mov(adr, 53254d))), _
+         logic_or(logic_or(mov(adr, 53256d), mov(adr, 53258d)), logic_or(mov(adr, 53260d), mov(adr, 53262d)))) then  
+         mov(mem64(sys_offset+&HCB), v)	
+  elseif logic_or(logic_or(logic_or(mov(adr, 53249d), mov(adr, 53251d)), logic_or(mov(adr, 53253d), mov(adr, 53255d))), _
+         logic_or(logic_or(mov(adr, 53257d), mov(adr, 53259d)), logic_or(mov(adr, 53261d), mov(adr, 53263d)))) then  
+         mov(mem64(sys_offset+&HCC), v)
   /'
   Sprite Enable Register
   
@@ -643,7 +665,7 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
   that lie within the visible screen range in order for a sprite to appear on
   screen.  
   '/
-  elseif mov(adr, 53269) then ' Sprite enable register
+  elseif mov(adr, 53269d) then ' Sprite enable register
       'print v
    /'
    Border Color Register
@@ -653,256 +675,249 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
    blanking feature of Bit 4 of 53265 ($D011) is enabled. The default color
    value is 14.
    '/                
-   elseif mov(adr, 53280) then ' Set border color
-     select case v
-		case &H00: color rgb(&H00,&H00,&H00)
-		case &H01: color rgb(&H00,&H00,&HAA)
-		case &H02: color rgb(&H00,&HAA,&H00)
-		case &H03: color rgb(&H00,&HAA,&HAA)
-		case &H04: color rgb(&HAA,&H00,&H00)
-		case &H05: color rgb(&HAA,&H00,&HAA)
-		case &H06: color rgb(&HAA,&H55,&H00)
-		case &H07: color rgb(&HAA,&HAA,&HAA)
-		case &H08: color rgb(&H55,&H55,&H55)
-		case &H09: color rgb(&H55,&H55,&HFF)
-		case &H0A: color rgb(&H55,&HFF,&H55)
-		case &H0B: color rgb(&H55,&HFF,&HFF)
-		case &H0C: color rgb(&HFF,&H55,&H55)
-		case &H0D: color rgb(&HFF,&H55,&HFF)
-		case &H0E: color rgb(&HFF,&HFF,&H55)
-		case &H0F: color rgb(&HFF,&HFF,&HFF)
-		case &H10: color rgb(&HFF,&HB0,&H00)
-		case &H11: color rgb(&HFF,&HCC,&H00)
-		case &H12: color rgb(&H33,&HFF,&H00)
-		case &H13: color rgb(&H33,&HFF,&H33)
-		case &H14: color rgb(&H00,&HFF,&H33)
-		case &H15: color rgb(&H66,&HFF,&H66)
-		case &H16: color rgb(&H00,&HFF,&H66)
-		case &H17: color rgb(&H28,&H28,&H28)			
-		case &H18: color rgb(&HCC,&H00,&H00)
-		case &H19: color rgb(&HA4,&H00,&H00)
-		case &H1A: color rgb(&HFC,&HAF,&H3E)
-		case &H1B: color rgb(&HF5,&H79,&H00)
-		case &H1C: color rgb(&HCE,&H5C,&H00)
-		case &H1D: color rgb(&HFC,&HE9,&H4F)
-		case &H1E: color rgb(&HED,&HD4,&H00)
-		case &H20: color rgb(&HC4,&HA0,&H00)
-		case &H21: color rgb(&HBA,&HE2,&H34)
-		case &H22: color rgb(&H73,&HD2,&H16)
-		case &H23: color rgb(&H4E,&H9A,&H06)
-		case &H24: color rgb(&H72,&H9F,&HCF)
-		case &H25: color rgb(&H34,&H65,&HA4)
-		case &H26: color rgb(&H20,&H4A,&H87)
-		case &H27: color rgb(&HAD,&H7F,&HA8)
-		case &H28: color rgb(&H75,&H50,&H7D)
-		case &H29: color rgb(&H5C,&H35,&H66)
-		case &H2A: color rgb(&HE9,&HB9,&H6E)
-		case &H2B: color rgb(&HC1,&H7D,&H11)
-		case &H2C: color rgb(&H8F,&H59,&H02)
-		case &H2D: color rgb(&H88,&H8A,&H85)
-		case &H2E: color rgb(&H55,&H57,&H53)
-		case &H2F: color rgb(&H2E,&H34,&H36)
-		case &H30: color rgb(&HEE,&HEE,&HEC)
-		case &H31: color rgb(&HD3,&HD7,&HCF)
-		case &H32: color rgb(&HBA,&HBD,&HB6)
+   elseif mov(adr, 53280d) then ' Set border color
+     select case as const cast(ulongint, v)
+		case 000d: color rgb(000d,000d,000d)
+		case 001d: color rgb(000d,000d,170d)
+		case 002d: color rgb(000d,170d,000d)
+		case 003d: color rgb(000d,170d,170d)
+		case 004d: color rgb(170d,000d,170d)
+		case 005d: color rgb(170d,000d,170d)
+		case 006d: color rgb(170d,085d,000d)
+		case 007d: color rgb(170d,085d,170d)
+		case 008d: color rgb(085d,085d,085d)
+		case 009d: color rgb(085d,085d,255d)
+		case 010d: color rgb(085d,255d,085d)
+		case 011d: color rgb(085d,255d,085d)
+		case 012d: color rgb(255d,085d,085d)
+		case 013d: color rgb(255d,085d,255d)
+		case 014d: color rgb(255d,255d,085d)
+		case 015d: color rgb(255d,255d,255d)
+		case 016d: color rgb(&HFF,&HB0,&H00)
+		case 017d: color rgb(&HFF,&HCC,&H00)
+		case 018d: color rgb(&H33,&HFF,&H00)
+		case 019d: color rgb(&H33,&HFF,&H33)
+		case 020d: color rgb(&H00,&HFF,&H33)
+		case 021d: color rgb(&H66,&HFF,&H66)
+		case 022d: color rgb(&H00,&HFF,&H66)
+		case 023d: color rgb(&H28,&H28,&H28)			
+		case 024d: color rgb(&HCC,&H00,&H00)
+		case 025d: color rgb(&HA4,&H00,&H00)
+		case 026d: color rgb(&HFC,&HAF,&H3E)
+		case 027d: color rgb(&HF5,&H79,&H00)
+		case 028d: color rgb(&HCE,&H5C,&H00)
+		case 029d: color rgb(&HFC,&HE9,&H4F)
+		case 030d: color rgb(&HED,&HD4,&H00)
+		case 031d: color rgb(&HC4,&HA0,&H00)
+		case 032d: color rgb(&HBA,&HE2,&H34)
+		case 033d: color rgb(&H73,&HD2,&H16)
+		case 034d: color rgb(&H4E,&H9A,&H06)
+		case 035d: color rgb(&H72,&H9F,&HCF)
+		case 036d: color rgb(&H34,&H65,&HA4)
+		case 037d: color rgb(&H20,&H4A,&H87)
+		case 038d: color rgb(&HAD,&H7F,&HA8)
+		case 039d: color rgb(&H75,&H50,&H7D)
+		case 040d: color rgb(&H5C,&H35,&H66)
+		case 041d: color rgb(&HE9,&HB9,&H6E)
+		case 042d: color rgb(&HC1,&H7D,&H11)
+		case 043d: color rgb(&H8F,&H59,&H02)
+		case 044d: color rgb(&H88,&H8A,&H85)
+		case 045d: color rgb(&H55,&H57,&H53)
+		case 046d: color rgb(&H2E,&H34,&H36)
+		case 047d: color rgb(&HEE,&HEE,&HEC)
+		case 048d: color rgb(&HD3,&HD7,&HCF)
+		case 049d: color rgb(&HBA,&HBD,&HB6)
     end select 
-    line bgimage,(0,0)-(1919,1079),,bf
+    line bgimage,(0d,0d)-(1919d,1079d),,bf
   /'
   Background Color Registers
   Sets the background color for all text modes, sprite graphics, and multicolor bitmap graphics.
   '/      
-  elseif adr equ 53281 or adr equ 53282 or adr equ 53283 or adr equ 53284 then ' Set background color
-    select case v
-		case &H00: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&H00)
-		case &H01: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&HAA)
-		case &H02: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&HAA): poke64(sys_offset+&H08,&H00)
-		case &H03: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&HAA): poke64(sys_offset+&H08,&HAA)
-		case &H04: poke64(sys_offset+&H06,&HAA): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&H00)
-		case &H05: poke64(sys_offset+&H06,&HAA): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&HAA)
-		case &H06: poke64(sys_offset+&H06,&HAA): poke64(sys_offset+&H07,&H55): poke64(sys_offset+&H08,&H00)
-		case &H07: poke64(sys_offset+&H06,&HAA): poke64(sys_offset+&H07,&HAA): poke64(sys_offset+&H08,&HAA)
-		case &H08: poke64(sys_offset+&H06,&H55): poke64(sys_offset+&H07,&H55): poke64(sys_offset+&H08,&H55)
-		case &H09: poke64(sys_offset+&H06,&H55): poke64(sys_offset+&H07,&H55): poke64(sys_offset+&H08,&HFF)
-		case &H0A: poke64(sys_offset+&H06,&H55): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H55)
-		case &H0B: poke64(sys_offset+&H06,&H55): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&HFF)
-		case &H0C: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&H55): poke64(sys_offset+&H08,&H55)
-		case &H0D: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&H55): poke64(sys_offset+&H08,&HFF)
-		case &H0E: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H55)
-		case &H0F: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&HFF)
-		case &H10: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&HB0): poke64(sys_offset+&H08,&H00)
-		case &H11: poke64(sys_offset+&H06,&HFF): poke64(sys_offset+&H07,&HCC): poke64(sys_offset+&H08,&H00)
-		case &H12: poke64(sys_offset+&H06,&H33): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H00)
-		case &H13: poke64(sys_offset+&H06,&H33): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H33)
-		case &H14: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H33)
-		case &H15: poke64(sys_offset+&H06,&H66): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H66)
-		case &H16: poke64(sys_offset+&H06,&H00): poke64(sys_offset+&H07,&HFF): poke64(sys_offset+&H08,&H66)
-		case &H17: poke64(sys_offset+&H06,&H28): poke64(sys_offset+&H07,&H28): poke64(sys_offset+&H08,&H28)
-		case &H18: poke64(sys_offset+&H06,&HCC): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&H00)
-		case &H19: poke64(sys_offset+&H06,&HA4): poke64(sys_offset+&H07,&H00): poke64(sys_offset+&H08,&H00)
-		case &H1A: poke64(sys_offset+&H06,&HFC): poke64(sys_offset+&H07,&HAF): poke64(sys_offset+&H08,&H3E)
-		case &H1B: poke64(sys_offset+&H06,&HF5): poke64(sys_offset+&H07,&H79): poke64(sys_offset+&H08,&H00)
-		case &H1C: poke64(sys_offset+&H06,&HCE): poke64(sys_offset+&H07,&H5C): poke64(sys_offset+&H08,&H00)
-		case &H1D: poke64(sys_offset+&H06,&HFC): poke64(sys_offset+&H07,&HE9): poke64(sys_offset+&H08,&H4F)
-		case &H1E: poke64(sys_offset+&H06,&HED): poke64(sys_offset+&H07,&HD4): poke64(sys_offset+&H08,&H00)
-		case &H20: poke64(sys_offset+&H06,&HC4): poke64(sys_offset+&H07,&HA0): poke64(sys_offset+&H08,&H00)
-		case &H21: poke64(sys_offset+&H06,&HBA): poke64(sys_offset+&H07,&HE2): poke64(sys_offset+&H08,&H34)
-		case &H22: poke64(sys_offset+&H06,&H73): poke64(sys_offset+&H07,&HD2): poke64(sys_offset+&H08,&H16)
-		case &H23: poke64(sys_offset+&H06,&H4E): poke64(sys_offset+&H07,&H9A): poke64(sys_offset+&H08,&H06)
-		case &H24: poke64(sys_offset+&H06,&H72): poke64(sys_offset+&H07,&H9F): poke64(sys_offset+&H08,&HCF)
-		case &H25: poke64(sys_offset+&H06,&H34): poke64(sys_offset+&H07,&H65): poke64(sys_offset+&H08,&HA4)
-		case &H26: poke64(sys_offset+&H06,&H20): poke64(sys_offset+&H07,&H4A): poke64(sys_offset+&H08,&H87)
-		case &H27: poke64(sys_offset+&H06,&HAD): poke64(sys_offset+&H07,&H7F): poke64(sys_offset+&H08,&HA8)
-		case &H28: poke64(sys_offset+&H06,&H75): poke64(sys_offset+&H07,&H50): poke64(sys_offset+&H08,&H7D)
-		case &H29: poke64(sys_offset+&H06,&H5C): poke64(sys_offset+&H07,&H35): poke64(sys_offset+&H08,&H66)
-		case &H2A: poke64(sys_offset+&H06,&HE9): poke64(sys_offset+&H07,&HB9): poke64(sys_offset+&H08,&H6E)
-		case &H2B: poke64(sys_offset+&H06,&HC1): poke64(sys_offset+&H07,&H7D): poke64(sys_offset+&H08,&H11)
-		case &H2C: poke64(sys_offset+&H06,&H8F): poke64(sys_offset+&H07,&H59): poke64(sys_offset+&H08,&H02)
-		case &H2D: poke64(sys_offset+&H06,&H88): poke64(sys_offset+&H07,&H8A): poke64(sys_offset+&H08,&H85)
-		case &H2E: poke64(sys_offset+&H06,&H55): poke64(sys_offset+&H07,&H57): poke64(sys_offset+&H08,&H53)
-		case &H2F: poke64(sys_offset+&H06,&H2E): poke64(sys_offset+&H07,&H34): poke64(sys_offset+&H08,&H36)
-		case &H30: poke64(sys_offset+&H06,&HEE): poke64(sys_offset+&H07,&HEE): poke64(sys_offset+&H08,&HEC)
-		case &H31: poke64(sys_offset+&H06,&HD3): poke64(sys_offset+&H07,&HD7): poke64(sys_offset+&H08,&HCF)
-		case &H32: poke64(sys_offset+&H06,&HBA): poke64(sys_offset+&H07,&HBD): poke64(sys_offset+&H08,&HB6)						
-	end select
-  elseif mov(adr, 55487) then  poke64(646,v)	
+  elseif logic_or(logic_or(mov(adr, 53281d), mov(adr, 53282d)), logic_or(mov(adr, 53283d), mov(adr, 53284d))) then ' Set background color
+    select case as const cast(ulongint, v)
+		case 000d: poke64(bg_red,000d): poke64(bg_grn,000d): poke64(bg_blu,000d)
+		case 001d: poke64(bg_red,000d): poke64(bg_grn,000d): poke64(bg_blu,170d)
+		case 002d: poke64(bg_red,000d): poke64(bg_grn,170d): poke64(bg_blu,000d)
+		case 003d: poke64(bg_red,000d): poke64(bg_grn,170d): poke64(bg_blu,170d)
+		case 004d: poke64(bg_red,170d): poke64(bg_grn,000d): poke64(bg_blu,000d)
+		case 005d: poke64(bg_red,170d): poke64(bg_grn,000d): poke64(bg_blu,170d)
+		case 006d: poke64(bg_red,170d): poke64(bg_grn,085d): poke64(bg_blu,000d)
+		case 007d: poke64(bg_red,170d): poke64(bg_grn,170d): poke64(bg_blu,170d)
+		case 008d: poke64(bg_red,085d): poke64(bg_grn,085d): poke64(bg_blu,085d)
+		case 009d: poke64(bg_red,085d): poke64(bg_grn,085d): poke64(bg_blu,255d)
+		case 010d: poke64(bg_red,085d): poke64(bg_grn,255d): poke64(bg_blu,255d)
+		case 011d: poke64(bg_red,085d): poke64(bg_grn,255d): poke64(bg_blu,255d)
+		case 012d: poke64(bg_red,255d): poke64(bg_grn,085d): poke64(bg_blu,085d)
+		case 013d: poke64(bg_red,255d): poke64(bg_grn,085d): poke64(bg_blu,255d)
+		case 014d: poke64(bg_red,255d): poke64(bg_grn,255d): poke64(bg_blu,085d)
+		case 015d: poke64(bg_red,255d): poke64(bg_grn,255d): poke64(bg_blu,255d)
+		case 016d: poke64(bg_red,255d): poke64(bg_grn,176d): poke64(bg_blu,000d)
+		case 017d: poke64(bg_red,255d): poke64(bg_grn,204d): poke64(bg_blu,000d)
+		case 018d: poke64(bg_red,051d): poke64(bg_grn,255d): poke64(bg_blu,000d)
+		case 019d: poke64(bg_red,051d): poke64(bg_grn,255d): poke64(bg_blu,051d)
+		case 020d: poke64(bg_red,000d): poke64(bg_grn,255d): poke64(bg_blu,051d)
+		case 021d: poke64(bg_red,102d): poke64(bg_grn,255d): poke64(bg_blu,102d)
+		case 022d: poke64(bg_red,000d): poke64(bg_grn,255d): poke64(bg_blu,102d)
+		case 023d: poke64(bg_red,040d): poke64(bg_grn,040d): poke64(bg_blu,040d)
+		case 024d: poke64(bg_red,236d): poke64(bg_grn,041d): poke64(bg_blu,041d)
+		case 025d: poke64(bg_red,204d): poke64(bg_grn,000d): poke64(bg_blu,000d)
+		case 026d: poke64(bg_red,164d): poke64(bg_grn,000d): poke64(bg_blu,000d)
+		case 027d: poke64(bg_red,252d): poke64(bg_grn,175d): poke64(bg_blu,062d)
+		case 028d: poke64(bg_red,245d): poke64(bg_grn,121d): poke64(bg_blu,000d)
+		case 029d: poke64(bg_red,206d): poke64(bg_grn,092d): poke64(bg_blu,000d)
+		case 030d: poke64(bg_red,252d): poke64(bg_grn,233d): poke64(bg_blu,079d)
+		case 031d: poke64(bg_red,237d): poke64(bg_grn,212d): poke64(bg_blu,000d)
+		case 032d: poke64(bg_red,196d): poke64(bg_grn,160d): poke64(bg_blu,000d)
+		case 033d: poke64(bg_red,186d): poke64(bg_grn,226d): poke64(bg_blu,052d)
+		case 034d: poke64(bg_red,115d): poke64(bg_grn,210d): poke64(bg_blu,022d)
+		case 035d: poke64(bg_red,078d): poke64(bg_grn,154d): poke64(bg_blu,006d)
+		case 036d: poke64(bg_red,114d): poke64(bg_grn,159d): poke64(bg_blu,207d)
+		case 037d: poke64(bg_red,052d): poke64(bg_grn,101d): poke64(bg_blu,164d)
+		case 038d: poke64(bg_red,032d): poke64(bg_grn,074d): poke64(bg_blu,135d)
+		case 039d: poke64(bg_red,173d): poke64(bg_grn,127d): poke64(bg_blu,168d)
+		case 040d: poke64(bg_red,117d): poke64(bg_grn,080d): poke64(bg_blu,125d)
+		case 041d: poke64(bg_red,092d): poke64(bg_grn,053d): poke64(bg_blu,102d)
+		case 042d: poke64(bg_red,233d): poke64(bg_grn,185d): poke64(bg_blu,110d)
+		case 043d: poke64(bg_red,193d): poke64(bg_grn,125d): poke64(bg_blu,011d)
+		case 044d: poke64(bg_red,143d): poke64(bg_grn,089d): poke64(bg_blu,002d)
+		case 045d: poke64(bg_red,136d): poke64(bg_grn,138d): poke64(bg_blu,133d)
+		case 046d: poke64(bg_red,085d): poke64(bg_grn,087d): poke64(bg_blu,083d)
+		case 047d: poke64(bg_red,046d): poke64(bg_grn,052d): poke64(bg_blu,054d)
+		case 048d: poke64(bg_red,238d): poke64(bg_grn,238d): poke64(bg_blu,236d)
+		case 049d: poke64(bg_red,211d): poke64(bg_grn,215d): poke64(bg_blu,207d)
+		case 050d: poke64(bg_red,186d): poke64(bg_grn,189d): poke64(bg_blu,182d)
+    end select
+  elseif mov(adr, 55487d) then  poke64(646d,v)	
   end if
   select case adr
     case &H00  
 	case sys_offset
-	 screen 0: shell "mplayer -vo xv -fs -alang en dvd://" + str(v) + " -dvd-device /dev/sr0"
-     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
-     paint(0,0), rgba(0, 0, 0, 255)	 
+	 screen 0d: shell "mplayer -vo xv -fs -alang en dvd://" + str(v) + " -dvd-device /dev/sr0"
+     ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+     paint(0d,0d), rgba(0d, 0d, 0d, 255d)	 
 	case sys_offset+&H01
-	 screen 0: shell "mplayer -vo xv -fs dvdnav:// -mouse-movements -dvd-device /dev/sr0"
-     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
-     paint(0,0), rgba(0, 0, 0, 255)	  
-	case sys_offset+&H02 ' Foreground Red
-	 mem64(sys_offset+&HC9) = rgba(mem64(sys_offset+&H02),mem64(sys_offset+&H03),_
-							  mem64(sys_offset+&H04),mem64(sys_offset+&H05))
-	case sys_offset+&H03 ' Foreground Green
-	 mem64(sys_offset+&HC9) = rgba(mem64(sys_offset+&H02),mem64(sys_offset+&H03),_
-							  mem64(sys_offset+&H04),mem64(sys_offset+&H05))
-	case sys_offset+&H04 ' Foreground Blue
-	 mem64(sys_offset+&HC9) = rgba(mem64(sys_offset+&H02),mem64(sys_offset+&H03),_
-							  mem64(sys_offset+&H04),mem64(sys_offset+&H05))
-	case sys_offset+&H05 ' Foreground Alpha
-	 mem64(sys_offset+&HC9) = rgba(mem64(sys_offset+&H02),mem64(sys_offset+&H03),_
-							   mem64(sys_offset+&H04),mem64(sys_offset+&H05))
-	case sys_offset+&H06 ' Background Red
-	 mem64(sys_offset+&HCA) = rgba(mem64(sys_offset+&H06),mem64(sys_offset+&H07),_
-							  mem64(sys_offset+&H08),mem64(sys_offset+&H09))
-	case sys_offset+&H07 ' Background Green
-	 mem64(sys_offset+&HCA) = rgba(mem64(sys_offset+&H06),mem64(sys_offset+&H07),_
-							  mem64(sys_offset+&H08),mem64(sys_offset+&H09))
-	case sys_offset+&H08 ' Background Blue
-	 mem64(sys_offset+&HCA) = rgba(mem64(sys_offset+&H06),mem64(sys_offset+&H07),_
-							  mem64(sys_offset+&H08),mem64(sys_offset+&H09))
-	case sys_offset+&H09 ' Background Alapha
-	 mem64(sys_offset+&HCA) = rgba(mem64(sys_offset+&H06),mem64(sys_offset+&H07),_
-							  mem64(sys_offset+&H08),mem64(sys_offset+&H09))
-	case sys_offset+&H0A 'x0
-	 mem64(sys_offset+&HCB) = mem64(sys_offset+&H0B) shl 32 + mem64(sys_offset+&H0C) shl 24 +_
-							  mem64(sys_offset+&H0D) shl 16 + mem64(sys_offset+&H0E) shl 08 +_
-							  mem64(sys_offset+&H0F)
-	case sys_offset+&H10 'y0
-	 mem64(sys_offset+&HCC) = mem64(sys_offset+&H11) shl 32 + mem64(sys_offset+&H12) shl 24 +_
-							  mem64(sys_offset+&H13) shl 16 + mem64(sys_offset+&H14) shl 08 +_
-							  mem64(sys_offset+&H15)
-	case sys_offset+&H16 'z0
-	 mem64(sys_offset+&HCD) = mem64(sys_offset+&H17) shl 32 + mem64(sys_offset+&H18) shl 24 +_
-							  mem64(sys_offset+&H19) shl 16 + mem64(sys_offset+&H1A) shl 08 +_
-							  mem64(sys_offset+&H1B)
-	case sys_offset+&H1C 'x1
-	 mem64(sys_offset+&HCE) = mem64(sys_offset+&H1D) shl 32 + mem64(sys_offset+&H1E) shl 24 +_
-							  mem64(sys_offset+&H1F) shl 16 + mem64(sys_offset+&H20) shl 08 +_
-							  mem64(sys_offset+&H21)
-	case sys_offset+&H22 'y1
-	 mem64(sys_offset+&HCF) = mem64(sys_offset+&H23) shl 32 + mem64(sys_offset+&H24) shl 24 +_
-							  mem64(sys_offset+&H25) shl 16 + mem64(sys_offset+&H26) shl 08 +_
-							  mem64(sys_offset+&H27)
-	case sys_offset+&H28 'z1
-	 mem64(sys_offset+&HD0) = mem64(sys_offset+&H28) shl 32 + mem64(sys_offset+&H29) shl 24 +_
-							  mem64(sys_offset+&H2A) shl 16 + mem64(sys_offset+&H2C) shl 08 +_
-							  mem64(sys_offset+&H2D)
+	 screen 0d: shell "mplayer -vo xv -fs dvdnav:// -mouse-movements -dvd-device /dev/sr0"
+     ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+     paint(0d,0d), rgba(0d, 0d, 0d, 255d)	  
+	case fg_red ' Foreground Red
+	 mov(mem64(fg_color),rgba(mem64(fg_red),mem64(fg_grn),mem64(fg_blu),mem64(fg_aph)))
+	case fg_grn ' Foreground Green
+	 mov(mem64(fg_color),rgba(mem64(fg_red),mem64(fg_grn),mem64(fg_blu),mem64(fg_aph)))
+	case fg_blu ' Foreground Blue
+	 mov(mem64(fg_color),rgba(mem64(fg_red),mem64(fg_grn),mem64(fg_blu),mem64(fg_aph)))
+	case fg_aph ' Foreground Alpha
+	 mov(mem64(fg_color),rgba(mem64(fg_red),mem64(fg_grn),mem64(fg_blu),mem64(fg_aph)))
+	case bg_red ' Background Red
+	 mov(mem64(bg_color),rgba(mem64(bg_red),mem64(bg_grn),mem64(bg_blu),mem64(bg_aph)))
+	case bg_grn ' Background Green
+	 mov(mem64(bg_color),rgba(mem64(bg_red),mem64(bg_grn),mem64(bg_blu),mem64(bg_aph)))
+	case bg_blu ' Background Blue
+	 mov(mem64(bg_color),rgba(mem64(bg_red),mem64(bg_grn),mem64(bg_blu),mem64(bg_aph)))
+	case bg_aph ' Background Alapha
+	 mov(mem64(bg_color),rgba(mem64(bg_red),mem64(bg_grn),mem64(bg_blu),mem64(bg_aph)))
+	case ld_x0'x0
+	 mem64(x0) = mem64(sys_offset+&H0B) shl 32d + mem64(sys_offset+&H0C) shl 24d +_
+				 mem64(sys_offset+&H0D) shl 16d + mem64(sys_offset+&H0E) shl 08d +_
+				 mem64(sys_offset+&H0F)
+	case ld_y0 'y0
+	 mem64(y0) = mem64(sys_offset+&H11) shl 32d + mem64(sys_offset+&H12) shl 24d +_
+				 mem64(sys_offset+&H13) shl 16d + mem64(sys_offset+&H14) shl 08d +_
+				 mem64(sys_offset+&H15)
+	case ld_z0 'z0
+	 mem64(z0) = mem64(sys_offset+&H17) shl 32d + mem64(sys_offset+&H18) shl 24d +_
+				 mem64(sys_offset+&H19) shl 16d + mem64(sys_offset+&H1A) shl 08d +_
+				 mem64(sys_offset+&H1B)
+	case ld_x1 'x1
+	 mem64(x1) = mem64(sys_offset+&H1D) shl 32d + mem64(sys_offset+&H1E) shl 24d +_
+				 mem64(sys_offset+&H1F) shl 16d + mem64(sys_offset+&H20) shl 08d +_
+				 mem64(sys_offset+&H21)
+	case ld_y1 'y1
+	 mem64(y1) = mem64(sys_offset+&H23) shl 32d + mem64(sys_offset+&H24) shl 24d +_
+				 mem64(sys_offset+&H25) shl 16d + mem64(sys_offset+&H26) shl 08d +_
+				 mem64(sys_offset+&H27)
+	case ld_z1 'z1
+	 mem64(z1) = mem64(sys_offset+&H28) shl 32d + mem64(sys_offset+&H29) shl 24d +_
+				 mem64(sys_offset+&H2A) shl 16d + mem64(sys_offset+&H2C) shl 08d +_
+				 mem64(sys_offset+&H2D)
 	case sys_offset+&H2E 'r0
-	 mem64(sys_offset+&HD1) = mem64(sys_offset+&H2F) shl 32 + mem64(sys_offset+&H30) shl 24 +_
-							  mem64(sys_offset+&H31) shl 16 + mem64(sys_offset+&H32) shl 08 +_
+	 mem64(sys_offset+&HD1) = mem64(sys_offset+&H2F) shl 32d + mem64(sys_offset+&H30) shl 24d +_
+							  mem64(sys_offset+&H31) shl 16d + mem64(sys_offset+&H32) shl 08d +_
 							  mem64(sys_offset+&H33)
 	case sys_offset+&H34 'r1
-	 mem64(sys_offset+&HD2) = mem64(sys_offset+&H35) shl 32 + mem64(sys_offset+&H36) shl 24 +_
-							  mem64(sys_offset+&H37) shl 16 + mem64(sys_offset+&H38) shl 08 +_
+	 mem64(sys_offset+&HD2) = mem64(sys_offset+&H35) shl 32d + mem64(sys_offset+&H36) shl 24d +_
+							  mem64(sys_offset+&H37) shl 16d + mem64(sys_offset+&H38) shl 08d +_
 							  mem64(sys_offset+&H39)
 	case sys_offset+&H3A 'r2
-	 mem64(sys_offset+&HD3) = mem64(sys_offset+&H3B) shl 32 + mem64(sys_offset+&H3C) shl 24 +_
-							  mem64(sys_offset+&H3D) shl 16 + mem64(sys_offset+&H3E) shl 08 +_
+	 mem64(sys_offset+&HD3) = mem64(sys_offset+&H3B) shl 32d + mem64(sys_offset+&H3C) shl 24d +_
+							  mem64(sys_offset+&H3D) shl 16d + mem64(sys_offset+&H3E) shl 08d +_
 							  mem64(sys_offset+&H3F)
 	case sys_offset+&H40 'r3
-	 mem64(sys_offset+&HD4) = mem64(sys_offset+&H41) shl 32 + mem64(sys_offset+&H42) shl 24 +_
-							  mem64(sys_offset+&H43) shl 16 + mem64(sys_offset+&H44) shl 08 +_
+	 mem64(sys_offset+&HD4) = mem64(sys_offset+&H41) shl 32d + mem64(sys_offset+&H42) shl 24d +_
+							  mem64(sys_offset+&H43) shl 16d + mem64(sys_offset+&H44) shl 08d +_
 							  mem64(sys_offset+&H45)
 	case sys_offset+&H46 'r4
-	 mem64(sys_offset+&HD5) = mem64(sys_offset+&H47) shl 32 + mem64(sys_offset+&H48) shl 24 +_
-							  mem64(sys_offset+&H49) shl 16 + mem64(sys_offset+&H4A) shl 08 +_
+	 mem64(sys_offset+&HD5) = mem64(sys_offset+&H47) shl 32d + mem64(sys_offset+&H48) shl 24d +_
+							  mem64(sys_offset+&H49) shl 16d + mem64(sys_offset+&H4A) shl 08d +_
 							  mem64(sys_offset+&H4B)
 	case sys_offset+&H4C 'r5
-	 mem64(sys_offset+&HD6) = mem64(sys_offset+&H4D) shl 32 + mem64(sys_offset+&H4E) shl 24 +_
-							  mem64(sys_offset+&H4F) shl 16 + mem64(sys_offset+&H50) shl 08 +_
+	 mem64(sys_offset+&HD6) = mem64(sys_offset+&H4D) shl 32d + mem64(sys_offset+&H4E) shl 24d +_
+							  mem64(sys_offset+&H4F) shl 16d + mem64(sys_offset+&H50) shl 08d +_
 							  mem64(sys_offset+&H51)
 	case sys_offset+&H52 'r6
-	 mem64(sys_offset+&HD7) = mem64(sys_offset+&H53) shl 32 + mem64(sys_offset+&H54) shl 24 +_
-							  mem64(sys_offset+&H55) shl 16 + mem64(sys_offset+&H56) shl 08 +_
+	 mem64(sys_offset+&HD7) = mem64(sys_offset+&H53) shl 32d + mem64(sys_offset+&H54) shl 24d +_
+							  mem64(sys_offset+&H55) shl 16d + mem64(sys_offset+&H56) shl 08d +_
 							  mem64(sys_offset+&H57)
 	case sys_offset+&H58 'r7
-	 mem64(sys_offset+&HD8) = mem64(sys_offset+&H59) shl 32 + mem64(sys_offset+&H5A) shl 24 +_
-							  mem64(sys_offset+&H5B) shl 16 + mem64(sys_offset+&H5C) shl 08 +_
+	 mem64(sys_offset+&HD8) = mem64(sys_offset+&H59) shl 32d + mem64(sys_offset+&H5A) shl 24d +_
+							  mem64(sys_offset+&H5B) shl 16d + mem64(sys_offset+&H5C) shl 08d +_
 							  mem64(sys_offset+&H5D)
 	case sys_offset+&H5E 'r8
-	 mem64(sys_offset+&HD9) = mem64(sys_offset+&H5F) shl 32 + mem64(sys_offset+&H60) shl 24 +_
-							  mem64(sys_offset+&H61) shl 16 + mem64(sys_offset+&H62) shl 08 +_
+	 mem64(sys_offset+&HD9) = mem64(sys_offset+&H5F) shl 32d + mem64(sys_offset+&H60) shl 24d +_
+							  mem64(sys_offset+&H61) shl 16d + mem64(sys_offset+&H62) shl 08d +_
 							  mem64(sys_offset+&H63)
 	case sys_offset+&H64 'r9
-	 mem64(sys_offset+&HDA) = mem64(sys_offset+&H65) shl 32 + mem64(sys_offset+&H66) shl 24 +_
-							  mem64(sys_offset+&H67) shl 16 + mem64(sys_offset+&H68) shl 08 +_
+	 mem64(sys_offset+&HDA) = mem64(sys_offset+&H65) shl 32d + mem64(sys_offset+&H66) shl 24d +_
+							  mem64(sys_offset+&H67) shl 16d + mem64(sys_offset+&H68) shl 08d +_
 							  mem64(sys_offset+&H69)
 	case sys_offset+&H6A 'r10
-	 mem64(sys_offset+&HDB) = mem64(sys_offset+&H6B) shl 32 + mem64(sys_offset+&H6C) shl 24 +_
-							  mem64(sys_offset+&H6D) shl 16 + mem64(sys_offset+&H6E) shl 08 +_
+	 mem64(sys_offset+&HDB) = mem64(sys_offset+&H6B) shl 32d + mem64(sys_offset+&H6C) shl 24d +_
+							  mem64(sys_offset+&H6D) shl 16d + mem64(sys_offset+&H6E) shl 08d +_
 							  mem64(sys_offset+&H6F)
 	case sys_offset+&H70 'r11
-	 mem64(sys_offset+&HDC) = mem64(sys_offset+&H71) shl 32 + mem64(sys_offset+&H72) shl 24 +_
-							  mem64(sys_offset+&H73) shl 16 + mem64(sys_offset+&H74) shl 08 +_
+	 mem64(sys_offset+&HDC) = mem64(sys_offset+&H71) shl 32d + mem64(sys_offset+&H72) shl 24d +_
+							  mem64(sys_offset+&H73) shl 16d + mem64(sys_offset+&H74) shl 08d +_
 							  mem64(sys_offset+&H75)
 	case sys_offset+&H76 'rot0
-	 mem64(sys_offset+&HDD) = mem64(sys_offset+&H77) shl 32 + mem64(sys_offset+&H78) shl 24 +_
-							  mem64(sys_offset+&H79) shl 16 + mem64(sys_offset+&H7A) shl 08 +_
+	 mem64(sys_offset+&HDD) = mem64(sys_offset+&H77) shl 32d + mem64(sys_offset+&H78) shl 24d +_
+							  mem64(sys_offset+&H79) shl 16d + mem64(sys_offset+&H7A) shl 08d +_
 							  mem64(sys_offset+&H7B)
 	case sys_offset+&H7C 'rot1
-	 mem64(sys_offset+&HDE) = mem64(sys_offset+&H7D) shl 32 + mem64(sys_offset+&H7E) shl 24 +_
-							  mem64(sys_offset+&H7F) shl 16 + mem64(sys_offset+&H80) shl 08 +_
+	 mem64(sys_offset+&HDE) = mem64(sys_offset+&H7D) shl 32d + mem64(sys_offset+&H7E) shl 24d +_
+							  mem64(sys_offset+&H7F) shl 16d + mem64(sys_offset+&H80) shl 08d +_
 							  mem64(sys_offset+&H81)
 	case sys_offset+&H82 'rot2
-	 mem64(sys_offset+&HDF) = mem64(sys_offset+&H83) shl 32 + mem64(sys_offset+&H84) shl 24 +_
-							  mem64(sys_offset+&H85) shl 16 + mem64(sys_offset+&H86) shl 08 +_
+	 mem64(sys_offset+&HDF) = mem64(sys_offset+&H83) shl 32d + mem64(sys_offset+&H84) shl 24d +_
+							  mem64(sys_offset+&H85) shl 16d + mem64(sys_offset+&H86) shl 08d +_
 							  mem64(sys_offset+&H87)
 	case sys_offset+&H88 'rot3
-	 mem64(sys_offset+&HE0) = mem64(sys_offset+&H89) shl 32 + mem64(sys_offset+&H8A) shl 24 +_
-							  mem64(sys_offset+&H8B) shl 16 + mem64(sys_offset+&H8C) shl 08 +_
+	 mem64(sys_offset+&HE0) = mem64(sys_offset+&H89) shl 32d + mem64(sys_offset+&H8A) shl 24d +_
+							  mem64(sys_offset+&H8B) shl 16d + mem64(sys_offset+&H8C) shl 08d +_
 							  mem64(sys_offset+&H8D)
 	case sys_offset+&H8E 'rot4
-	 mem64(sys_offset+&HE1) = mem64(sys_offset+&H8F) shl 32 + mem64(sys_offset+&H90) shl 24 +_
-							  mem64(sys_offset+&H91) shl 16 + mem64(sys_offset+&H92) shl 08 +_
+	 mem64(sys_offset+&HE1) = mem64(sys_offset+&H8F) shl 32d + mem64(sys_offset+&H90) shl 24d +_
+							  mem64(sys_offset+&H91) shl 16d + mem64(sys_offset+&H92) shl 08d +_
 							  mem64(sys_offset+&H93)
 	case sys_offset+&H94 'rot5
-	 mem64(sys_offset+&HE2) = mem64(sys_offset+&H95) shl 32 + mem64(sys_offset+&H96) shl 24 +_
-							  mem64(sys_offset+&H97) shl 16 + mem64(sys_offset+&H98) shl 08 +_
+	 mem64(sys_offset+&HE2) = mem64(sys_offset+&H95) shl 32d + mem64(sys_offset+&H96) shl 24d +_
+							  mem64(sys_offset+&H97) shl 16d + mem64(sys_offset+&H98) shl 08d +_
 							  mem64(sys_offset+&H99)		  		  		  		  		  		  		  		  		  		  		  		  		  		  
 	case sys_offset+&H9A 'd0
-	 mem64(sys_offset+&HE3) = mem64(sys_offset+&H9B) shl 32 + mem64(sys_offset+&H9C) shl 24 +_
-							  mem64(sys_offset+&H9D) shl 16 + mem64(sys_offset+&H9E) shl 08 +_
+	 mem64(sys_offset+&HE3) = mem64(sys_offset+&H9B) shl 32d + mem64(sys_offset+&H9C) shl 24d +_
+							  mem64(sys_offset+&H9D) shl 16d + mem64(sys_offset+&H9E) shl 08d +_
 							  mem64(sys_offset+&H9F)
 	case sys_offset+&HA0 'd1
-	 mem64(sys_offset+&HE4) = mem64(sys_offset+&HA1) shl 32 + mem64(sys_offset+&HA2) shl 24 +_
-							  mem64(sys_offset+&HA3) shl 16 + mem64(sys_offset+&HA4) shl 08 +_
+	 mem64(sys_offset+&HE4) = mem64(sys_offset+&HA1) shl 32d + mem64(sys_offset+&HA2) shl 24d +_
+							  mem64(sys_offset+&HA3) shl 16d + mem64(sys_offset+&HA4) shl 08d +_
 							  mem64(sys_offset+&HA5)
 	case sys_offset+&HA1 ' Compile and run GLSL shader.
 		dim as boolean bFullscreen
@@ -1081,15 +1096,15 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
       mem64(sys_offset+&HCB) = x
       mem64(sys_offset+&HCC) = y
       mem64(sys_offset+&HCD) = wheel
-      if buttons and 1 then mem64(sys_offset+&HCE) = 1 'L
-      if buttons and 2 then mem64(sys_offset+&HCE) = 2 'R
-      if buttons and 4 then mem64(sys_offset+&HCE) = 4 'M
+      if buttons and 1d then mem64(sys_offset+&HCE) = 1d 'L
+      if buttons and 2d then mem64(sys_offset+&HCE) = 2d 'R
+      if buttons and 4d then mem64(sys_offset+&HCE) = 4d 'M
     case sys_offset+&HAB:pcopy mem64(sys_offset+&HCB), mem64(sys_offset+&HCC)                             
     case sys_offset+&HE6 'Change font
        dim as ubyte tmp
        for c as integer = &H0000 to &H1FFF: char(c)=&H00: next c
        open "./chargen/"+str(v)+".c64" for binary as #1
-        for i as integer=0 to lof(1)
+        for i as integer=0d to lof(1d)
          get #1,,tmp: char(i)=tmp
         next i
        close #1
@@ -1098,28 +1113,29 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
     ' sys_offset+&HE9 font width
     ' sys_offset+&HEA font height
     case sys_offset+&HEB,sys_offset+&HEC ' Amiga style Hold-and-Modify - foreground and boarder color
-     select case v
-		case &B000000 to &B001111:poke64(646,v mod 255)
-		case &B010000 to &B011111:poke64(sys_offset+&H02,(((v - &B010000) mod 16) * 17) mod 255)
-		case &B100000 to &B101111:poke64(sys_offset+&H03,(((v - &B100000) mod 16) * 17) mod 255)
-		case &B110000 to &B111111:poke64(sys_offset+&H04,(((v - &B110000) mod 16) * 17) mod 255)
-     	case else: poke64(sys_offset+&H05,(((v - &B1000000) mod 16) * 17) mod 255)				  
+     select case as const cast(ulongint, v)
+		case &B000000d to &B001111d:poke64(646d,v mod 255d)
+		case &B010000d to &B011111d:poke64(fg_red,(((v - &B010000d) mod 16d) * 17d) mod 255d)
+		case &B100000d to &B101111d:poke64(fg_blu,(((v - &B100000d) mod 16d) * 17d) mod 255d)
+		case &B110000d to &B111111d:poke64(fg_grn,(((v - &B110000d) mod 16d) * 17d) mod 255d)
+     	case else: poke64(fg_aph,(((v - &B1000000d) mod 16d) * 17d) mod 255d)				  
      end select
-     if adr=sys_offset+&HEC then color mem64(sys_offset+&HC9):line(120,99)-(1723,896),,B:paint(0,0)    
+     if adr=sys_offset+&HEC then 
+        poke64(53280,peek64(sys_offset+&HC9))
+        poke64(53281,peek64(sys_offset+&HC9))
+     end if       
     case sys_offset+&HED ' Amiga style Hold-and-Modify - background
-     select case v
-		case &B000000 to &B001111:poke64(53281,v mod 255)
-		case &B010000 to &B011111:poke64(sys_offset+&H06,(((v - &B010000) mod 16) * 17) mod 255)
-		case &B100000 to &B101111:poke64(sys_offset+&H07,(((v - &B100000) mod 16) * 17) mod 255)
-		case &B110000 to &B111111:poke64(sys_offset+&H08,(((v - &B110000) mod 16) * 17) mod 255)
-     	case else: poke64(sys_offset+&H09,(((v - &B1000000) mod 16) * 17) mod 255)					  
+     select case as const cast(ulongint, v)
+		case &B000000d to &B001111d:poke64(53281d,v mod 255d)
+		case &B010000d to &B011111d:poke64(bg_red,(((v - &B010000d) mod 16d) * 17d) mod 255d)
+		case &B100000d to &B101111d:poke64(bg_blu,(((v - &B100000d) mod 16d) * 17d) mod 255d)
+		case &B110000d to &B111111d:poke64(bg_grn,(((v - &B110000d) mod 16d) * 17d) mod 255d)
+     	case else: poke64(bg_aph,(((v - &B1000000d) mod 16d) * 17d) mod 255d)					  
      end select    
     case sys_offset+&HEE ' Amiga style Hold-and-Modify - Draw foreground
-          line fgimage,(mem64(sys_offset+&HCB),mem64(sys_offset+&HCC))-(mem64(sys_offset+&HCE),_
-                mem64(sys_offset+&HCF)),mem64(sys_offset+&HC9), BF       
+          line fgimage,(mem64(x0),mem64(y0))-(mem64(x1),mem64(y1)),mem64(fg_color), BF       
     case sys_offset+&HEF ' Amiga style Hold-and-Modify - Draw background
-          line fgimage,(mem64(sys_offset+&HCB),mem64(sys_offset+&HCC))-(mem64(sys_offset+&HCE),_
-                mem64(sys_offset+&HCF)),mem64(sys_offset+&HCA), BF              
+          line fgimage,(mem64(x0),mem64(y0))-(mem64(x1),mem64(y1)),mem64(bg_color), BF              
     case sys_offset+&HF0
      'locate 1,1: print strCode
      screen 0: chain strCode: strCode = ""
@@ -1159,10 +1175,11 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
     case sys_offset+&HFB
      print #1, strCode: strCode = ""
     case sys_offset+&HFC 'Flag: Print Reverse Characters?0=No
-     if char(c) and (128 shr x) then
-        if mem64(RVS)<>0 then poke64(sys_offset+&HEF,0) else poke64(sys_offset+&HEE,0)         
+     mov(mem64(RVS), v)
+     if char(c) and (128d shr x) then
+        if mem64(RVS)<>0d then poke64(sys_offset+&HEF,0d) else poke64(sys_offset+&HEE,0d)         
      else
-        if mem64(RVS)<>0 then poke64(sys_offset+&HEE,0) else poke64(sys_offset+&HEF,0)         
+        if mem64(RVS)<>0d then poke64(sys_offset+&HEE,0d) else poke64(sys_offset+&HEF,0d)         
      end if
     case sys_offset+&HFD: close #1 		
 	case sys_offset+&HFE
@@ -1170,67 +1187,67 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
 	case sys_offset+&HFF
 	 'locate 1,1: print filename: sleep 1
 	 poke64(sys_offset+&HA1,&H0): filename=""   			  		
-    case mem64(sys_offset+&H12B) to mem64(sys_offset+&H12B) + &H3FF
-      adr-=mem64(sys_offset+&H12B)
-    ' sys_offset+&HE7 flip font       
-    ' sys_offset+&HE8 font offset
-    ' sys_offset+&HE9 font width
-    ' sys_offset+&HEA font height
-      c equ v:c shl=3:c+=mem64(sys_offset+&HE8)
-      if mem64(RVS)<>0 then c and equ &HFF
+    case in_range(mem64(scr_ptr),mem64(scr_ptr) add 1023d)
+      mov(adr subt,mem64(scr_ptr))
+      mov(c, v):mov(c shl,3d):mov(c add,mem64(font_o))
+      if mem64(RVS)<>0d then mov(c and,255d)
       screenlock
-      if mem64(sys_offset+&HE7) equ 0 then 
-      xs equ adr mod 40:xs shl  equ 3:xs+=7*3.5
-      ys equ adr  \  40:ys shl  equ 3:ys+=7*3.5        
-      for y equ 0 to mem64(sys_offset+&HE9)
-        for x equ 0 to mem64(sys_offset+&HEA)
-          mem64(sys_offset+&HCB) equ ((xs+x)*5): mem64(sys_offset+&HCC) equ ((ys+y)*4)
-          mem64(sys_offset+&HCE) equ ((xs+x)*5)+7: mem64(sys_offset+&HCF) equ ((ys+y)*4)+4
-          poke64(sys_offset+&HFC,0)
+      if mov(mem64(font_f),0d) then 
+      mov(xs,adr mod 40d):mov(xs shl,3d):mov(xs add,7d mul 3.5d)
+      mov(ys,adr idiv 40d):mov(ys shl,3d):mov(ys add,7d mul 3.5d)        
+      for in_range(mov(y,0d),mem64(font_h))
+        for in_range(mov(x,0d),mem64(font_w))
+          mov(mem64(x0),(((xs add x) mul 5d) add mem64(scro_x)))  
+          mov(mem64(y0),(((ys add y) mul 4d) add mem64(scro_y)))
+          mov(mem64(x1),(((xs add x) mul 5d) add 7d) add mem64(scro_x))
+          mov(mem64(y1),(((ys add y) mul 4d) add 4d) add mem64(scro_y))
+          poke64(prc_flag,peek64(prc_flag)) 'Flag: Print Reverse Characters?0=No
         next 
-        c+=1
+        mov(c add,1d)
       next
-      screenunlock ys,ys+8
-      elseif mem64(sys_offset+&HE7) equ 1 then
-      xs=adr mod 40:xs shl equ 3:xs+=8*4
-      ys=adr  \  40:ys shl equ 3:ys+=8*4 
-      for y equ mem64(sys_offset+&HE9) to 0 step -1
-        for x equ 0 to mem64(sys_offset+&HEA)
-          mem64(sys_offset+&HCE) equ ((xs-x)*5)+2: mem64(sys_offset+&HCF) equ ((ys-y)*4)+2
-          mem64(sys_offset+&HCB) equ ((xs-x)*5)-2: mem64(sys_offset+&HCC) equ ((ys-y)*4)-2        
-          poke64(sys_offset+&HFC,0)
+      screenunlock ys,ys add 8d
+      elseif mov(mem64(font_f), 1d) then
+      mov(xs,adr mod 40d):mov(xs shl, 3d):mov(xs add,8d mul 4d)
+      mov(ys,adr idiv  40d):mov(ys shl, 3d):mov(ys add, 8d mul 4d) 
+      for in_range(mov(y,mem64(font_h)),0d) step -1d
+        for in_range(mov(x,0d),mem64(font_w))
+          mov(mem64(x1),(((xs subt x) mul 5d) add 2d)  add mem64(scro_x))
+          mov(mem64(y1),(((ys subt y) mul 4d) add 2d)  add mem64(scro_y))
+          mov(mem64(x0),(((xs subt x) mul 5d) subt 2d) add mem64(scro_x))
+          mov(mem64(y0),(((ys subt y) mul 4d) subt 2d) add mem64(scro_y))        
+          poke64(prc_flag,peek64(prc_flag)) 'Flag: Print Reverse Characters?0=No
         next 
-        c+=1
+        mov(c add,1d)
       next
-      screenunlock ys,ys+8
-      elseif mem64(sys_offset+&HE7) equ 2 then 
-      xs=adr mod 40:xs shl equ 3:xs+=7*3.5
-      ys=adr  \  40:ys shl equ 3:ys+=7*3.5        
-      for y equ 0 to mem64(sys_offset+&HE9)
-        for x equ 0 to mem64(sys_offset+&HEA)
-          mem64(sys_offset+&HCB) equ ((((xs+x)*5)/2)+mem64(sys_offset+&HE3))
-          mem64(sys_offset+&HCC) equ ((((ys+y)*4)/2)+mem64(sys_offset+&HE4))
-          mem64(sys_offset+&HCE) equ (((((xs+x)*5)+7)/2)+mem64(sys_offset+&HE3))
-          mem64(sys_offset+&HCF) equ (((((ys+y)*4)+4)/2)+mem64(sys_offset+&HE4))
-          poke64(sys_offset+&HFC,0)
+      screenunlock ys,ys add 8d
+      elseif mov(mem64(font_f), 2d) then 
+      mov(xs,adr mod 40d):mov(xs shl,)3:mov(xs add,7 mul 3.5d)
+      mov(ys,adr idiv  40d):mov(ys shl, 3):mov(ys add,7 mul 3.5d)       
+      for in_range(mov(y,0d),mem64(font_h))
+        for in_range(mov(x,0d),mem64(font_w))
+          mov(mem64(x0),((((xs add x) mul 5d) div 2d) add mem64(scro_x)))
+          mov(mem64(y0),((((ys add y) mul 4d) div 2d) add mem64(scro_y)))
+          mov(mem64(x1),(((((xs add x) mul 5d) add 7d) div 2d) add mem64(scro_x)))
+          mov(mem64(y1),(((((ys add y) mul 4d) add 4d) div 2d) add mem64(scro_y)))
+          poke64(prc_flag,peek64(prc_flag)) 'Flag: Print Reverse Characters?0=No
         next 
-        c+=1
+        mov(c add,1d)
       next
-      screenunlock ys,ys+8
-      elseif mem64(sys_offset+&HE7) equ 3 then
-      xs=adr mod 40:xs shl equ 3:xs+=8*4
-      ys=adr  \  40:ys shl equ 3:ys+=8*4 
-      for y equ mem64(sys_offset+&HE9) to 0 step -1
-        for x equ 0 to mem64(sys_offset+&HEA)
-          mem64(sys_offset+&HCE) equ (((((xs-x)*5)+2)/2)+mem64(sys_offset+&HE3))
-          mem64(sys_offset+&HCF) equ (((((ys-y)*4)+2)/2)+mem64(sys_offset+&HE4))
-          mem64(sys_offset+&HCB) equ (((((xs-x)*5)-2)/2)+mem64(sys_offset+&HE3))
-          mem64(sys_offset+&HCC) equ (((((ys-y)*4)-2)/2)+mem64(sys_offset+&HE4))
-          poke64(sys_offset+&HFC,0)
+      screenunlock ys,ys add 8d
+      elseif mov(mem64(font_f),3d) then
+      mov(xs,adr mod 40d):mov(xs shl,3d):mov(xs add,8d mul 4d)
+      mov(ys,adr idiv  40d):mov(ys shl,3d):mov(ys add,8d mul 4d) 
+      for in_range(mov(y,mem64(font_h)),0d) step -1d
+        for in_range(mov(x,0d),mem64(font_w))
+          mov(mem64(x1),(((((xs subt x) mul 5d) add 2d) div 2d) add mem64(scro_x)))
+          mov(mem64(y1),(((((ys subt y) mul 4d) add 2d) div 2d) add mem64(scro_y)))
+          mov(mem64(x0),(((((xs subt x) mul 5d) subt 2d) div 2d) add mem64(scro_x)))
+          mov(mem64(y0),(((((ys subt y) mul 4d) subt 2d) div 2d) add mem64(scro_y)))
+          poke64(prc_flag,peek64(prc_flag)) 'Flag: Print Reverse Characters?0=No
         next 
-        c+=1
+        mov(c add,1d)
       next
-      screenunlock ys,ys+8           
+      screenunlock ys,ys add 8d           
       end if 
       /'
       dim as integer xs=adr mod 40:xs shl =3:xs+=8*4
@@ -1239,31 +1256,31 @@ sub MEMORY_T.poke64(byval adr as ulongint,byval v as ulongint)
       select case v
        case 00 to 27: print wchr(v+32)
       end select '/
-  case &HE000 to &HFFFF,&HA000 to &HBFFF,&HD800 to &HDBFF:mem64(adr)=v              
+  case 57344d to 65535d,40960d to 49151d,55296d to 56319d:mem64(adr)=v              
   end select
 end sub
 
-function MEMORY_T.ReadUByte(byval adr as ulongint) as ubyte
+function MEMORY_T.ReadUByte(byval adr as double) as ubyte
   return Peek64(adr)
 end function
 
-function MEMORY_T.ReadByte(byval adr as ulongint) as byte
+function MEMORY_T.ReadByte(byval adr as double) as byte
   return Peek64(adr)
 end function
 
-function MEMORY_T.ReadUShort(byval adr as ulongint) as ushort
-  return Peek64(adr) or Peek64(adr+1) shl 8
+function MEMORY_T.ReadUShort(byval adr as double) as ushort
+  return Peek64(adr) or Peek64(adr+1d) shl 8d
 end function
 
-sub MEMORY_T.WriteByte(byval adr as ulongint,byval b8 as ulongint)
+sub MEMORY_T.WriteByte(byval adr as double,byval b8 as double)
   poke64(adr,b8)
 end sub
 
-sub MEMORY_T.WriteUByte(byval adr as ulongint,byval b8 as ulongint)
+sub MEMORY_T.WriteUByte(byval adr as double,byval b8 as double)
   poke64(adr,b8)
 end sub
 
-sub MEMORY_T.WriteUShort(byval adr as ulongint,byval w16 as ulongint)
+sub MEMORY_T.WriteUShort(byval adr as double,byval w16 as double)
   poke64(adr,LOBYTE(w16)):poke64(adr+1,HIBYTE(w16))
 end sub
 
@@ -1272,13 +1289,13 @@ constructor CPU6510(byval lpMem as MEMORY_T ptr)
   mem=lpMem
   restore INSTRUCTION_SET
   'opcode,name,adrmode,ticks,operand,decoder
-  for i as integer=0 to 255
+  for i as integer=0d to 255d
     with Opcodes(i)
       read .code,.nam,.adrmode,.bytes,.ticks,cast(integer,.decode)
     end with
   next
   restore ADDRESS_MODES
-  for i as integer=0 to 12
+  for i as integer=0d to 12d
     read StrAdrModes(i)
   next
   ' direction and data port
@@ -1297,11 +1314,11 @@ destructor CPU6510
 end destructor
 
 operator CPU6510.CAST as string
-  return "PC:" & hex(PC,4) & _
-  " A:" & hex(A ,2) & _
-  " X:" & hex(X ,2) & _
-  " Y:" & hex(Y ,2) & _
-  " S:" & hex(S ,2) & _
+  return "PC:" & hex(PC,4d) & _
+  " A:" & hex(A ,2d) & _
+  " X:" & hex(X ,2d) & _
+  " Y:" & hex(Y ,2d) & _
+  " S:" & hex(S ,2d) & _
   " N:" & F.N & _
   " V:" & F.V & _
   " -"  & _
@@ -1312,7 +1329,7 @@ operator CPU6510.CAST as string
   " C:" & F.C
 end operator
 
-function CPU6510.Tick(byval flg as ulongint) as ulongint
+function CPU6510.Tick(byval flg as double) as double
   static as integer Ticks
   dim as string msg
   dim as MULTI v
@@ -1320,27 +1337,27 @@ function CPU6510.Tick(byval flg as ulongint) as ulongint
   code=opcodes(mem->readubyte(PC))
 
   ' clear union
-  code.op.u16=0
+  code.op.u16=0d
   Ticks+=1
 
   #ifdef _DEBUG
   if flg=Ticks then
     dprint("tick: flag=1")
-    msg   = Ticks & chr(13,10)
-    msg & =  "A:" & hex(A,2) & _
-    " X:" & hex(X,2) & _
-    " Y:" & hex(Y,2) & _
-    " S:" & hex(S,2) & _
-    " P:" & bin(P,8) & chr(13,10)
-    msg & = HEX(pc,4) & " " & hex(code.code,2) & " " & code.nam & " " & stradrmodes(code.adrmode)
+    msg   = Ticks & chr(13d,10d)
+    msg & =  "A:" & hex(A,2d) & _
+    " X:" & hex(X,2d) & _
+    " Y:" & hex(Y,2d) & _
+    " S:" & hex(S,2d) & _
+    " P:" & bin(P,8d) & chr(13d,10d)
+    msg & = HEX(pc,4d) & " " & hex(code.code,2d) & " " & code.nam & " " & stradrmodes(code.adrmode)
   end if
   #endif
 
-  PC+=1 ' increment the programm counter
+  PC+=1d ' increment the programm counter
   select case as const code.adrmode
     case _UNK
       #ifdef _DEBUG
-      dprint(msg & chr(13,10))
+      dprint(msg & chr(13d,10d))
       ' reset vector
       PL=mem->readubyte(&HFFFC)
       PH=mem->readubyte(&HFFFD)
@@ -1349,7 +1366,7 @@ function CPU6510.Tick(byval flg as ulongint) as ulongint
     case _IMP
       #ifdef _DEBUG
       if flg=Ticks then
-        dprint(msg & chr(13,10))
+        dprint(msg & chr(13d,10d))
         sleep
       endif
       #endif
@@ -1358,7 +1375,7 @@ function CPU6510.Tick(byval flg as ulongint) as ulongint
       #ifdef _DEBUG
       if flg=Ticks then
         v.ulo=mem->readubyte(pc)
-        dprint(msg & " #$" & hex(v.ulo,2) & chr(13,10))
+        dprint(msg & " #$" & hex(v.ulo,2d) & chr(13d,10d))
         sleep
       endif
       #endif
@@ -1368,7 +1385,7 @@ function CPU6510.Tick(byval flg as ulongint) as ulongint
       #ifdef _DEBUG
       if flg=Ticks then
         v.u16=mem->readushort(pc)
-        dprint(msg & "  $" & hex(v.u16,4) & chr(13,10))
+        dprint(msg & "  $" & hex(v.u16,4d) & chr(13d,10d))
         sleep
       endif
       #endif
@@ -1378,7 +1395,7 @@ function CPU6510.Tick(byval flg as ulongint) as ulongint
       #ifdef _DEBUG
       if flg=Ticks then
         v.ulo=mem->readubyte(pc)
-        dprint(msg & " $" & hex(v.ulo,2) & chr(13,10))
+        dprint(msg & " $" & hex(v.ulo,2d) & chr(13d,10d))
         sleep
       endif
       #endif
@@ -1388,7 +1405,7 @@ function CPU6510.Tick(byval flg as ulongint) as ulongint
       #ifdef _DEBUG
       if flg=Ticks then
         v.ulo=mem->readubyte(pc)
-        dprint(msg & " $" & hex(v.ulo,2) & ",X" & chr(13,10))
+        dprint(msg & " $" & hex(v.ulo,2d) & ",X" & chr(13d,10d))
         sleep
       endif
       #endif
@@ -1398,7 +1415,7 @@ function CPU6510.Tick(byval flg as ulongint) as ulongint
       #ifdef _DEBUG
       if flg=Ticks then
         v.ulo=mem->readubyte(pc)
-        dprint(msg & " $" & hex(v.ulo,2) & ",Y" & chr(13,10))
+        dprint(msg & " $" & hex(v.ulo,2d) & ",Y" & chr(13d,10d))
         sleep
       endif
       #endif
@@ -1408,7 +1425,7 @@ function CPU6510.Tick(byval flg as ulongint) as ulongint
       #ifdef _DEBUG
       if flg=Ticks then
         v.u16=mem->readushort(pc)
-        dprint(msg & " $" & hex(v.u16,4) & ",X" & chr(13,10))
+        dprint(msg & " $" & hex(v.u16,4d) & ",X" & chr(13d,10d))
         sleep
       endif
       #endif
@@ -1418,7 +1435,7 @@ function CPU6510.Tick(byval flg as ulongint) as ulongint
       #ifdef _DEBUG
       if flg=Ticks then
         v.u16=mem->readushort(pc)
-        dprint(msg & " $" & hex(v.u16,4) & ",Y" & chr(13,10))
+        dprint(msg & " $" & hex(v.u16,4d) & ",Y" & chr(13d,10d))
         sleep
       endif
       #endif
@@ -1428,8 +1445,8 @@ function CPU6510.Tick(byval flg as ulongint) as ulongint
       #ifdef _DEBUG
       if flg=Ticks then
         v.u16 =pc
-        v.s16+=mem->ReadByte(pc)+1
-        dprint(msg & " $" & hex(v.u16,4) & chr(13,10))
+        v.s16+=mem->ReadByte(pc)+1d
+        dprint(msg & " $" & hex(v.u16,4d) & chr(13d,10d))
         sleep
       endif
       #endif
@@ -1439,7 +1456,7 @@ function CPU6510.Tick(byval flg as ulongint) as ulongint
       #ifdef _DEBUG
       if flg=Ticks then
         v.u16=mem->ReadUShort(pc)
-        dprint(msg & " ($" & hex(v.u16,4) & ",X)" & chr(13,10))
+        dprint(msg & " ($" & hex(v.u16,4d) & ",X)" & chr(13d,10d))
         sleep
       endif
       #endif
@@ -1449,7 +1466,7 @@ function CPU6510.Tick(byval flg as ulongint) as ulongint
       #ifdef _DEBUG
       if flg=Ticks then
         v.ulo=mem->ReadUByte(pc)
-        dprint(msg & " ($" & hex(v.ulo,4) & "),Y" & chr(13,10))
+        dprint(msg & " ($" & hex(v.ulo,4d) & "),Y" & chr(13d,10d))
         sleep
       endif
       #endif
@@ -1459,110 +1476,110 @@ function CPU6510.Tick(byval flg as ulongint) as ulongint
       #ifdef _DEBUG
       if flg=Ticks then
         v.u16=mem->ReadUShort(pc)
-        dprint(msg & " ($" & hex(v.u16,4) & ")" & chr(13,10))
+        dprint(msg & " ($" & hex(v.u16,4d) & ")" & chr(13d,10d))
         sleep
       endif
       #endif
       code.op.u16=ADR_IND()
       code.decode(@this)
   end select
-  return 0
+  return 0d
 end function
 '
 ' 6510 address modes
 '
-function CPU6510.ADR_UNK as ulongint
+function CPU6510.ADR_UNK as double
   #ifdef _DEBUG
   dprint("! adr unknow !")
   beep:sleep:end
   #endif
-  sleep:return 0
+  sleep:return 0d
 end function
 
-function CPU6510.ADR_IMM as ulongint ' 1 byte #$xx
+function CPU6510.ADR_IMM as double ' 1 byte #$xx
   ' mem(pc)
   function = PC
-  PC+=1
+  PC+=1d
 end function
 
-function CPU6510.ADR_REL as ulongint  ' 1 byte (rel. branch -128 - +127)
+function CPU6510.ADR_REL as double  ' 1 byte (rel. branch -128 - +127)
   function=PC
-  PC+=1
+  PC+=1d
 end function
 
-function CPU6510.ADR_ABS as ulongint  ' 2 byte $xx:xx
+function CPU6510.ADR_ABS as double  ' 2 byte $xx:xx
   ' adr = mem(pc) + mem(pc+1)*256
   function = mem->ReadUShort(pc)
-  pc+=2
+  pc+=2d
 end function
 
-function CPU6510.ADR_ZERO as ulongint ' 1 byte $00:xx
+function CPU6510.ADR_ZERO as double ' 1 byte $00:xx
   ' adr = mem(pc) and 255
-  function = mem->ReadUByte(pc) and &HFF
-  pc+=1
+  function = mem->ReadUByte(pc) and 255d
+  pc+=1d
 end function
 
-function CPU6510.ADR_ZEROX as ulongint' 1 byte 00:xx,x
+function CPU6510.ADR_ZEROX as double' 1 byte 00:xx,x
   ' adr = (mem(pc)+x) and 255
-  function = (mem->ReadUByte(pc)+x) and &HFF
-  pc+=1
+  function = (mem->ReadUByte(pc)+x) and 255d
+  pc+=1d
 end function
 
-function CPU6510.ADR_ZEROY as ulongint' 1 byte 00:xx,y
+function CPU6510.ADR_ZEROY as double' 1 byte 00:xx,y
   ' adr = (mem(pc)+y) and 255
-  function = (mem->ReadUByte(pc)+y) and &HFF
-  pc+=1
+  function = (mem->ReadUByte(pc)+y) and 255d
+  pc+=1d
 end function
 
-function CPU6510.ADR_ABSX as ulongint ' 2 byte $xx:xx,x
+function CPU6510.ADR_ABSX as double ' 2 byte $xx:xx,x
   ' adr = mem(pc ) + mem(pc+1)*256 + x
   function  = mem->ReadUShort(PC) + X
-  PC+=2
+  PC+=2d
 end function
 
-function CPU6510.ADR_ABSY as ulongint ' 2 byte $xx:xx,y
+function CPU6510.ADR_ABSY as double ' 2 byte $xx:xx,y
   ' adr = mem(pc ) + mem(pc+1)*256 + y
   function = mem->ReadUShort(PC) + Y
-  PC+=2
+  PC+=2d
 end function
 
-function CPU6510.ADR_INDX as ulongint ' 1 byte ($XX,x)
+function CPU6510.ADR_INDX as double ' 1 byte ($XX,x)
   ' adr =(mem(pc )+x) and 255
   ' adr = mem(adr) + mem(adr+1)*256
   dim as MULTI v
-  v.u16=(mem->ReadUByte(pc)+x) and &HFF
+  v.u16=(mem->ReadUByte(pc)+x) and 255d
   v.u16=mem->ReadUShort(v.u16)
-  pc+=1
+  pc+=1d
   return v.u16
 end function
 
-function CPU6510.ADR_INDY as ulongint ' 1 byte ($XX),y
+function CPU6510.ADR_INDY as double ' 1 byte ($XX),y
   ' v.ulo=mem->ReadUByte(pc)
   ' adr = mem(pc ) + mem(pc +1)*256 + y
   dim as MULTI v
   v.u16=mem->ReadUshort(mem->ReadUByte(PC))
   v.u16+=y
 function = v.u16
-    pc+=1
+    pc+=1d
 end function
 
-function CPU6510.ADR_IND as ulongint ' 2 byte ($xx:xx)
+function CPU6510.ADR_IND as double ' 2 byte ($xx:xx)
   ' adr = mem(pc ) + mem(pc +1)*256
   ' pc  = mem(adr) + mem(adr+1)*256
   dim as MULTI v
   v.u16=mem->ReadUShort(pc)
   v.u16=mem->ReadUShort(v.u16)
-  pc+=2
+  pc+=2d
   return v.u16
 end function
 
-sub CPU6510.Push(byval b as ulongint)
+sub CPU6510.Push(byval b as double)
   mem->WriteUByte(sp,b)
-  s-=1
+  s-=1d
 end sub
 
-function CPU6510.PULL as ulongint
-  s+=1
+function CPU6510.PULL as double
+  s+=1d
   return mem->ReadUbyte(sp)
 end function
 
@@ -1583,42 +1600,42 @@ sub INS_ADC(byval Cpu as CPU6510_T)
   v.u16=Cpu->A + ub
   if Cpu->F.c=1 then v.u16+=1
   Cpu->F.v=iif(((not (Cpu->A xor    ub) and &H80) and _
-  (    (Cpu->A xor v.ulo) and &H80)),1,0)
+  (    (Cpu->A xor v.ulo) and &H80)),1d,0d)
   Cpu->A=v.ulo
-  Cpu->F.c=iif(v.u16>255,1,0)
-  Cpu->F.z=iif(v.ulo=0,1,0)
-  Cpu->F.n=iif(v.slo<0,1,0)
+  Cpu->F.c=iif(v.u16>255d,1d,0d)
+  Cpu->F.z=iif(v.ulo=0d,1d,0d)
+  Cpu->F.n=iif(v.slo<0d,1d,0d)
 end sub
 
 sub INS_AND(byval Cpu as CPU6510_T)
   Cpu->A=Cpu->A and Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  Cpu->F.z=iif(Cpu->A =0,1,0)
-  Cpu->F.n=iif(Cpu->sA<0,1,0)
+  Cpu->F.z=iif(Cpu->A =0d,1d,0d)
+  Cpu->F.n=iif(Cpu->sA<0d,1d,0d)
 end sub
 
 sub INS_ASL(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  Cpu->F.c = iif(v.ulo and &H80,1,0)
-  v.ulo shl = 1
+  Cpu->F.c = iif(v.ulo and &H80,1d,0d)
+  v.ulo shl = 1d
   Cpu->mem->WriteUbyte(Cpu->Code.op.u16,v.ulo)
-  Cpu->F.z=iif(v.ulo=0,1,0)
-  Cpu->F.n=iif(v.slo<0,1,0)
+  Cpu->F.z=iif(v.ulo=0d,1d,0d)
+  Cpu->F.n=iif(v.slo<0d,1d,0d)
 end sub
 
 sub INS_ASLA(byval Cpu as CPU6510_T) ' ac
-  Cpu->F.c = iif(Cpu->A and &H80,1,0)
-  Cpu->A shl = 1
-  Cpu->F.z=iif(Cpu->A =0,1,0)
-  Cpu->F.n=iif(Cpu->sA<0,1,0)
+  Cpu->F.c = iif(Cpu->A and &H80,1d,0d)
+  Cpu->A shl = 1d
+  Cpu->F.z=iif(Cpu->A =0d,1d,0d)
+  Cpu->F.n=iif(Cpu->sA<0d,1d,0d)
 end sub
 
 sub INS_BCC(byval Cpu as CPU6510_T)
   if Cpu->F.c=0 then
     dim as MULTI v
     v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
+    v.s16-=1d
+    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
 end sub
@@ -1627,18 +1644,18 @@ sub INS_BCS(byval Cpu as CPU6510_T)
   if Cpu->F.c then
     dim as MULTI v
     v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
+    v.s16-=1d
+    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
 end sub
 
 sub INS_BEQ(byval Cpu as CPU6510_T)
-  if Cpu->F.z=1 then
+  if Cpu->F.z=1d then
     dim as MULTI v
     v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
+    v.s16-=1d
+    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
 end sub
@@ -1646,27 +1663,27 @@ end sub
 sub INS_BIT(byval Cpu as CPU6510_T)
   dim as byte b
   b=Cpu->mem->Readbyte(Cpu->Code.op.u16)
-  Cpu->F.n=iif(b and &H80,1,0)
-  Cpu->F.v=iif(b and &H40,1,0)
-  Cpu->F.z=iif(0=(b and Cpu->sX),1,0)
+  Cpu->F.n=iif(b and &H80,1d,0d)
+  Cpu->F.v=iif(b and &H40,1d,0d)
+  Cpu->F.z=iif(0=(b and Cpu->sX),1d,0d)
 end sub
 
 sub INS_BMI(byval Cpu as CPU6510_T)
   if Cpu->F.n then
     dim as MULTI v
     v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
+    v.s16-=1d
+    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
 end sub
 
 sub INS_BNE(byval Cpu as CPU6510_T)
-  if Cpu->F.z=0 then
+  if Cpu->F.z=0d then
     dim as MULTI v
     v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
+    v.s16-=1d
+    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
 end sub
@@ -1675,19 +1692,19 @@ sub INS_BPL(byval Cpu as CPU6510_T)
   if Cpu->F.n=0 then
     dim as MULTI v
     v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
+    v.s16-=1d
+    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
 end sub
 
 sub INS_BRK(byval Cpu as CPU6510_T)
-  Cpu->pc+=1
+  Cpu->pc+=1d
   Cpu->push(Cpu->ph)
   Cpu->push(Cpu->pl)
   Cpu->push(Cpu->p )
-  Cpu->F.b=1
-  Cpu->F.i=1
+  Cpu->F.b=1d
+  Cpu->F.i=1d
   Cpu->pc = Cpu->mem->ReadUShort(&HFFFE)
 end sub
 
@@ -1695,8 +1712,8 @@ sub INS_BVC(byval Cpu as CPU6510_T)
   if Cpu->F.v=0 then
     dim as MULTI v
     v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
+    v.s16-=1d
+    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
 end sub
@@ -1705,104 +1722,104 @@ sub INS_BVS(byval Cpu as CPU6510_T)
   if Cpu->F.v then
     dim as MULTI v
     v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
+    v.s16-=1d
+    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
 end sub
 
 sub INS_CLC(byval Cpu as CPU6510_T)
-  Cpu->F.C=0
+  Cpu->F.C=0d
 end sub
 
 sub INS_CLD(byval Cpu as CPU6510_T)
-  Cpu->F.D=0
+  Cpu->F.D=0d
 end sub
 
 sub INS_CLI(byval Cpu as CPU6510_T)
-  Cpu->F.I=0
+  Cpu->F.I=0d
 end sub
 
 sub INS_CLV(byval Cpu as CPU6510_T)
-  Cpu->F.V=0
+  Cpu->F.V=0d
 end sub
 
 sub INS_CMP(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.u16 = Cpu->A-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  Cpu->F.c=iif(v.u16<=255,1,0)
-  Cpu->F.z=iif(v.ulo =  0,1,0)
-  Cpu->F.n=iif(v.slo <  0,1,0)
+  Cpu->F.c=iif(v.u16<=255d,1d,0d)
+  Cpu->F.z=iif(v.ulo =  0d,1d,0d)
+  Cpu->F.n=iif(v.slo <  0d,1d,0d)
 end sub
 
 sub INS_CPX(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.u16 = Cpu->X-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  Cpu->F.c=iif(v.u16<=255,1,0)
-  Cpu->F.z=iif(v.ulo =  0,1,0)
-  Cpu->F.n=iif(v.slo <  0,1,0)
+  Cpu->F.c=iif(v.u16<=255d,1d,0d)
+  Cpu->F.z=iif(v.ulo =  0d,1d,0d)
+  Cpu->F.n=iif(v.slo <  0d,1d,0d)
 end sub
 
 sub INS_CPY(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.u16 = Cpu->Y-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  Cpu->F.c=iif(v.u16<=255,1,0)
-  Cpu->F.z=iif(v.ulo =  0,1,0)
-  Cpu->F.n=iif(v.slo <  0,1,0)
+  Cpu->F.c=iif(v.u16<=255d,1d,0d)
+  Cpu->F.z=iif(v.ulo =  0d,1d,0d)
+  Cpu->F.n=iif(v.slo <  0d,1d,0d)
 end sub
 
 sub INS_DEC(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.ulo=Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  v.slo-=1
-  Cpu->F.z=iif(v.slo=0,1,0)
-  Cpu->F.n=iif(v.slo<0,1,0)
+  v.slo-=1d
+  Cpu->F.z=iif(v.slo=0d,1d,0d)
+  Cpu->F.n=iif(v.slo<0d,1d,0d)
   Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
 end sub
 
 sub INS_DEX(byval Cpu as CPU6510_T)
-  Cpu->sX-=1
-  Cpu->F.z=iif(Cpu->X =0,1,0)
-  Cpu->F.n=iif(Cpu->sX<0,1,0)
+  Cpu->sX-=1d
+  Cpu->F.z=iif(Cpu->X =0d,1d,0d)
+  Cpu->F.n=iif(Cpu->sX<0d,1d,0d)
 end sub
 
 sub INS_DEY(byval Cpu as CPU6510_T)
-  Cpu->sY-=1
-  Cpu->F.z=iif(Cpu->Y =0,1,0)
-  Cpu->F.n=iif(Cpu->sY<0,1,0)
+  Cpu->sY-=1d
+  Cpu->F.z=iif(Cpu->Y =0d,1d,0d)
+  Cpu->F.n=iif(Cpu->sY<0d,1d,0d)
 end sub
 
 sub INS_EOR(byval Cpu as CPU6510_T)
   Cpu->A=Cpu->A xor Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  Cpu->F.z=iif(Cpu->A =0,1,0)
-  Cpu->F.n=iif(Cpu->sA<0,1,0)
+  Cpu->F.z=iif(Cpu->A =0d,1d,0d)
+  Cpu->F.n=iif(Cpu->sA<0d,1d,0d)
 end sub
 
 sub INS_INC(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  v.s16+=1
+  v.s16+=1d
   Cpu->mem->WriteByte(Cpu->Code.op.u16,v.ulo)
-  Cpu->F.z=iif(v.ulo=0,1,0)
-  Cpu->F.n=iif(v.slo<0,1,0)
+  Cpu->F.z=iif(v.ulo=0d,1d,0d)
+  Cpu->F.n=iif(v.slo<0d,1d,0d)
 end sub
 
 sub INS_INX(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.ulo=Cpu->X
-  v.s16+=1
+  v.s16+=1d
   Cpu->X=v.ulo
-  Cpu->F.z=iif(v.ulo=0,1,0)
-  Cpu->F.n=iif(v.slo<0,1,0)
+  Cpu->F.z=iif(v.ulo=0d,1d,0d)
+  Cpu->F.n=iif(v.slo<0d,1d,0d)
 end sub
 
 sub INS_INY(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.ulo=Cpu->Y
-  v.s16+=1
+  v.s16+=1d
   Cpu->Y=v.ulo
-  Cpu->F.z=iif(v.ulo=0,1,0)
-  Cpu->F.n=iif(v.slo<0,1,0)
+  Cpu->F.z=iif(v.ulo=0d,1d,0d)
+  Cpu->F.n=iif(v.slo<0d,1d,0d)
 end sub
 
 sub INS_JMP(byval Cpu as CPU6510_T)
@@ -1818,37 +1835,37 @@ end sub
 
 sub INS_LDA(byval Cpu as CPU6510_T)
   Cpu->A  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  Cpu->F.Z=iif(Cpu->A=0,1,0)
-  Cpu->F.N=iif(Cpu->sA<0,1,0)
+  Cpu->F.Z=iif(Cpu->A=0d,1d,0d)
+  Cpu->F.N=iif(Cpu->sA<0d,1d,0d)
 end sub
 
 sub INS_LDX(byval Cpu as CPU6510_T)
   Cpu->X  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  Cpu->F.Z=iif(Cpu->X=0,1,0)
-  Cpu->F.N=iif(Cpu->sX<0,1,0)
+  Cpu->F.Z=iif(Cpu->X=0d,1d,0d)
+  Cpu->F.N=iif(Cpu->sX<0d,1d,0d)
 end sub
 
 sub INS_LDY(byval Cpu as CPU6510_T)
   Cpu->Y  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  Cpu->F.Z=iif(Cpu->Y =0,1,0)
-  Cpu->F.N=iif(Cpu->sY<0,1,0)
+  Cpu->F.Z=iif(Cpu->Y =0d,1d,0d)
+  Cpu->F.N=iif(Cpu->sY<0d,1d,0d)
 end sub
 
 sub INS_LSR(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  Cpu->F.c=iif(v.ulo and &H01,1,0)
-  v.ulo shr = 1
+  Cpu->F.c=iif(v.ulo and &H01,1d,0d)
+  v.ulo shr = 1d
   Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
-  Cpu->F.z=iif(v.ulo=0,1,0)
-  Cpu->F.n=iif(v.slo<1,1,0)
+  Cpu->F.z=iif(v.ulo=0d,1d,0d)
+  Cpu->F.n=iif(v.slo<1d,1d,0d)
 end sub
 
 sub INS_LSRA(byval Cpu as CPU6510_T) ' ac
-  Cpu->F.c=iif(Cpu->A and &H01,1,0)
-  Cpu->A shr = 1
-  Cpu->F.Z=iif(Cpu->A =0,1,0)
-  Cpu->F.N=iif(Cpu->sA<0,1,0)
+  Cpu->F.c=iif(Cpu->A and &H01,1d,0d)
+  Cpu->A shr = 1d
+  Cpu->F.Z=iif(Cpu->A =0d,1d,0d)
+  Cpu->F.N=iif(Cpu->sA<0d,1d,0d)
 end sub
 
 sub INS_NOP(byval Cpu as CPU6510_T)
@@ -1857,8 +1874,8 @@ end sub
 
 sub INS_ORA(byval Cpu as CPU6510_T)
   Cpu->A=Cpu->A or Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  Cpu->F.z=iif(Cpu->A =0,1,0)
-  Cpu->F.n=iif(Cpu->sA<0,1,0)
+  Cpu->F.z=iif(Cpu->A =0d,1d,0d)
+  Cpu->F.n=iif(Cpu->sA<0d,1d,0d)
 end sub
 
 sub INS_PHA(byval Cpu as CPU6510_T)
@@ -1871,8 +1888,8 @@ end sub
 
 sub INS_PLA(byval Cpu as CPU6510_T)
   Cpu->A=Cpu->Pull()
-  Cpu->F.z=iif(Cpu->A =0,1,0)
-  Cpu->F.n=iif(Cpu->sA<0,1,0)
+  Cpu->F.z=iif(Cpu->A =0d,1d,0d)
+  Cpu->F.n=iif(Cpu->sA<0d,1d,0d)
 end sub
 
 sub INS_PLP(byval Cpu as CPU6510_T)
@@ -1883,42 +1900,42 @@ sub INS_ROL(byval Cpu as CPU6510_T)
   dim as MULTI v
   dim as ubyte cary
   v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  cary=iif(Cpu->F.c=1,1,0)
-  Cpu->F.c=iif(v.ulo and &H80,1,0)
-  v.ulo shl=1
-  if cary then v.ulo or =1
+  cary=iif(Cpu->F.c=1d,1d,0d)
+  Cpu->F.c=iif(v.ulo and &H80,1d,0d)
+  v.ulo shl=1d
+  if cary then v.ulo or =1d
   Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
-  Cpu->F.z=iif(v.ulo=0,1,0)
-  Cpu->F.n=iif(v.slo<1,1,0)
+  Cpu->F.z=iif(v.ulo=0d,1d,0d)
+  Cpu->F.n=iif(v.slo<1d,1d,0d)
 end sub
 sub INS_ROLA(byval Cpu as CPU6510_T) ' ac
   dim as ubyte cary
-  cary=iif(Cpu->F.c=1,1,0)
-  Cpu->F.c=iif(Cpu->A and &H80,1,0)
-  Cpu->A shl= 1
-  if cary then Cpu->A or =1
-  Cpu->F.z=iif(Cpu->A =0,1,0)
-  Cpu->F.n=iif(Cpu->sA<0,1,0)
+  cary=iif(Cpu->F.c=1d,1d,0d)
+  Cpu->F.c=iif(Cpu->A and &H80,1d,0d)
+  Cpu->A shl= 1d
+  if cary then Cpu->A or =1d
+  Cpu->F.z=iif(Cpu->A =0d,1d,0d)
+  Cpu->F.n=iif(Cpu->sA<0d,1d,0d)
 end sub
 
 sub INS_ROR(byval Cpu as CPU6510_T)
   dim as MULTI v
   dim as ubyte cary
-  cary=iif(Cpu->F.c=1,1,0)
+  cary=iif(Cpu->F.c=1d,1d,0d)
   v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  Cpu->F.c=iif(v.ulo and &H01,1,0)
-  v.ulo shr=1
+  Cpu->F.c=iif(v.ulo and &H01,1d,0d)
+  v.ulo shr=1d
   if cary then v.ulo or = &H80
   Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
-  Cpu->F.z=iif(v.ulo=0,1,0)
-  Cpu->F.n=iif(v.slo<0,1,0)
+  Cpu->F.z=iif(v.ulo=0d,1d,0d)
+  Cpu->F.n=iif(v.slo<0d,1d,0d)
 end sub
 
 sub INS_RORA(byval Cpu as CPU6510_T) ' ac
   dim as ubyte cary
-  cary=iif(Cpu->F.c=1,1,0)
-  Cpu->F.c=iif(Cpu->A and &H01,1,0)
-  Cpu->A shr= 1
+  cary=iif(Cpu->F.c=1d,1d,0d)
+  Cpu->F.c=iif(Cpu->A and &H01,1d,0d)
+  Cpu->A shr= 1d
   if cary then Cpu->A or =&H80
   Cpu->F.z=iif(Cpu->A =0,1,0)
   Cpu->F.n=iif(Cpu->sA<0,1,0)
@@ -1928,26 +1945,26 @@ sub INS_RTI(byval Cpu as CPU6510_T)
   Cpu->P =Cpu->pull()
   Cpu->PL=Cpu->pull()
   Cpu->PH=Cpu->pull()
-  Cpu->PC+=1
+  Cpu->PC+=1d
 end sub
 
 sub INS_RTS(byval Cpu as CPU6510_T)
   Cpu->PL=Cpu->pull()
   Cpu->PH=Cpu->pull()
-  Cpu->PC+=1
+  Cpu->PC+=1d
 end sub
 
 sub INS_SBC(byval Cpu as CPU6510_T)
   dim as multi v,b
   b.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   v.u16=Cpu->A - b.ulo
-  if Cpu->F.c=0 then v.s16-=1
+  if Cpu->F.c=0d then v.s16-=1d
   Cpu->F.v=iif((((Cpu->A xor b.ulo) and &H80) and _
-  ((Cpu->A xor v.ulo) and &H80)),1,0)
+  ((Cpu->A xor v.ulo) and &H80)),1d,0d)
   Cpu->A=v.ulo
-  Cpu->F.c=iif(v.u16<=255,1,0)
-  Cpu->F.z=iif(v.ulo =  0,1,0)
-  Cpu->F.n=iif(v.slo <  0,1,0)
+  Cpu->F.c=iif(v.u16<=255d,1d,0d)
+  Cpu->F.z=iif(v.ulo =  0d,1d,0d)
+  Cpu->F.n=iif(v.slo <  0d,1d,0d)
 end sub
 
 sub INS_SEC(byval Cpu as CPU6510_T)
@@ -1976,26 +1993,26 @@ end sub
 
 sub INS_TAX(byval Cpu as CPU6510_T)
   Cpu->X=Cpu->A
-  Cpu->F.Z=iif(Cpu->X =0,1,0)
-  Cpu->F.N=iif(Cpu->sX<0,1,0)
+  Cpu->F.Z=iif(Cpu->X =0d,1d,0d)
+  Cpu->F.N=iif(Cpu->sX<0d,1d,0d)
 end sub
 
 sub INS_TAY(byval Cpu as CPU6510_T)
   Cpu->Y=Cpu->A
-  Cpu->F.Z=iif(Cpu->Y =0,1,0)
-  Cpu->F.N=iif(Cpu->sY<0,1,0)
+  Cpu->F.Z=iif(Cpu->Y =0d,1d,0d)
+  Cpu->F.N=iif(Cpu->sY<0d,1d,0d)
 end sub
 
 sub INS_TSX(byval Cpu as CPU6510_T)
   Cpu->X=Cpu->S
-  Cpu->F.Z=iif(Cpu->X =0,1,0)
-  Cpu->F.N=iif(Cpu->sX<0,1,0)
+  Cpu->F.Z=iif(Cpu->X =0d,1d,0d)
+  Cpu->F.N=iif(Cpu->sX<0d,1d,0d)
 end sub
 
 sub INS_TXA(byval Cpu as CPU6510_T)
   Cpu->A=Cpu->X
-  Cpu->F.Z=iif(Cpu->A =0,1,0)
-  Cpu->F.N=iif(Cpu->sA<0,1,0)
+  Cpu->F.Z=iif(Cpu->A =0d,1d,0d)
+  Cpu->F.N=iif(Cpu->sA<0d,1d,0d)
 end sub
 
 sub INS_TXS(byval Cpu as CPU6510_T)
@@ -2004,8 +2021,8 @@ end sub
 
 sub INS_TYA(byval Cpu as CPU6510_T)
   Cpu->A=Cpu->Y
-  Cpu->F.Z=iif(Cpu->A =0,1,0)
-  Cpu->F.N=iif(Cpu->sA<0,1,0)
+  Cpu->F.Z=iif(Cpu->A =0d,1d,0d)
+  Cpu->F.N=iif(Cpu->sA<0d,1d,0d)
 end sub
 
 sub INS_R32(byval Cpu as CPU6510_T)
@@ -2027,277 +2044,277 @@ sub INS_W64(byval Cpu as CPU6510_T)
 end sub
 
 INSTRUCTION_SET:
-data   0,"BRK",_IMP   ,7,0,@INS_BRK
-data   1,"ORA",_INDX  ,6,2,@INS_ORA
-data   2,"R32",_ABS   ,0,0,@INS_R32
-data   3,"W32",_ABS   ,0,0,@INS_W32
-data   4,"R64",_ABS   ,0,0,@INS_R64
-data   5,"ORA",_ZERO  ,3,2,@INS_ORA
-data   6,"ASL",_ZERO  ,0,0,@INS_ASL
-data   7,"W64",_ABS   ,0,0,@INS_W64
-data   8,"PHP",_IMP   ,3,1,@INS_PHP
-data   9,"ORA",_IMM   ,2,2,@INS_ORA
-data  10,"ASL",_IMP   ,2,1,@INS_ASLA
-data  11,"***",_UNK   ,0,0,@INS_UNK
-data  12,"***",_UNK   ,0,0,@INS_UNK
-data  13,"ORA",_ABS   ,4,3,@INS_ORA
-data  14,"ASL",_ABS   ,0,0,@INS_ASL
-data  15,"***",_UNK   ,0,0,@INS_UNK
+data   0d,"BRK",_IMP   ,7d,0d,@INS_BRK
+data   1d,"ORA",_INDX  ,6d,2d,@INS_ORA
+data   2d,"R32",_ABS   ,0d,0d,@INS_R32
+data   3d,"W32",_ABS   ,0d,0d,@INS_W32
+data   4d,"R64",_ABS   ,0d,0d,@INS_R64
+data   5d,"ORA",_ZERO  ,3d,2d,@INS_ORA
+data   6d,"ASL",_ZERO  ,0d,0d,@INS_ASL
+data   7d,"W64",_ABS   ,0d,0d,@INS_W64
+data   8d,"PHP",_IMP   ,3d,1d,@INS_PHP
+data   9d,"ORA",_IMM   ,2d,2d,@INS_ORA
+data  10d,"ASL",_IMP   ,2d,1d,@INS_ASLA
+data  11d,"***",_UNK   ,0d,0d,@INS_UNK
+data  12d,"***",_UNK   ,0d,0d,@INS_UNK
+data  13d,"ORA",_ABS   ,4d,3d,@INS_ORA
+data  14d,"ASL",_ABS   ,0d,0d,@INS_ASL
+data  15d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data  16,"BPL",_REL   ,0,0,@INS_BPL
-data  17,"ORA",_INDY  ,0,0,@INS_ORA
-data  18,"***",_UNK   ,0,0,@INS_UNK
-data  19,"***",_UNK   ,0,0,@INS_UNK
-data  20,"***",_UNK   ,0,0,@INS_UNK
-data  21,"ORA",_ZEROX ,0,0,@INS_ORA
-data  22,"ASL",_ZEROX ,0,0,@INS_ASL
-data  23,"***",_UNK   ,0,0,@INS_UNK
-data  24,"CLC",_IMP   ,0,0,@INS_CLC
-data  25,"ORA",_ABSY  ,0,0,@INS_ORA
-data  26,"***",_UNK   ,0,0,@INS_UNK
-data  27,"***",_UNK   ,0,0,@INS_UNK
-data  28,"***",_UNK   ,0,0,@INS_UNK
-data  29,"ORA",_ABSX  ,0,0,@INS_ORA
-data  30,"ASL",_ABSX  ,0,0,@INS_ASL
-data  31,"***",_UNK   ,0,0,@INS_UNK
+data  16d,"BPL",_REL   ,0d,0d,@INS_BPL
+data  17d,"ORA",_INDY  ,0d,0d,@INS_ORA
+data  18d,"***",_UNK   ,0d,0d,@INS_UNK
+data  19d,"***",_UNK   ,0d,0d,@INS_UNK
+data  20d,"***",_UNK   ,0d,0d,@INS_UNK
+data  21d,"ORA",_ZEROX ,0d,0d,@INS_ORA
+data  22d,"ASL",_ZEROX ,0d,0d,@INS_ASL
+data  23d,"***",_UNK   ,0d,0d,@INS_UNK
+data  24d,"CLC",_IMP   ,0d,0d,@INS_CLC
+data  25d,"ORA",_ABSY  ,0d,0d,@INS_ORA
+data  26d,"***",_UNK   ,0d,0d,@INS_UNK
+data  27d,"***",_UNK   ,0d,0d,@INS_UNK
+data  28d,"***",_UNK   ,0d,0d,@INS_UNK
+data  29d,"ORA",_ABSX  ,0d,0d,@INS_ORA
+data  30d,"ASL",_ABSX  ,0d,0d,@INS_ASL
+data  31d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data  32,"JSR",_ABS   ,0,0,@INS_JSR
-data  33,"AND",_INDX  ,0,0,@INS_AND
-data  34,"***",_UNK   ,0,0,@INS_UNK
-data  35,"***",_UNK   ,0,0,@INS_UNK
-data  36,"BIT",_ZERO  ,0,0,@INS_BIT
-data  37,"AND",_ZERO  ,0,0,@INS_AND
-data  38,"ROL",_ZERO  ,0,0,@INS_ROL
-data  39,"***",_UNK   ,0,0,@INS_UNK
-data  40,"PLP",_IMP   ,0,0,@INS_PLP
-data  41,"AND",_IMM   ,0,0,@INS_AND
-data  42,"ROL",_IMP   ,0,0,@INS_ROLA
-data  43,"***",_UNK   ,0,0,@INS_UNK
-data  44,"BIT",_ABS   ,0,0,@INS_BIT
-data  45,"AND",_ABS   ,0,0,@INS_AND
-data  46,"ROL",_ABS   ,0,0,@INS_ROL
-data  47,"***",_UNK   ,0,0,@INS_UNK
+data  32d,"JSR",_ABS   ,0d,0d,@INS_JSR
+data  33d,"AND",_INDX  ,0d,0d,@INS_AND
+data  34d,"***",_UNK   ,0d,0d,@INS_UNK
+data  35d,"***",_UNK   ,0d,0d,@INS_UNK
+data  36d,"BIT",_ZERO  ,0d,0d,@INS_BIT
+data  37d,"AND",_ZERO  ,0d,0d,@INS_AND
+data  38d,"ROL",_ZERO  ,0d,0d,@INS_ROL
+data  39d,"***",_UNK   ,0d,0d,@INS_UNK
+data  40d,"PLP",_IMP   ,0d,0d,@INS_PLP
+data  41d,"AND",_IMM   ,0d,0d,@INS_AND
+data  42d,"ROL",_IMP   ,0d,0d,@INS_ROLA
+data  43d,"***",_UNK   ,0d,0d,@INS_UNK
+data  44d,"BIT",_ABS   ,0d,0d,@INS_BIT
+data  45d,"AND",_ABS   ,0d,0d,@INS_AND
+data  46d,"ROL",_ABS   ,0d,0d,@INS_ROL
+data  47d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data  48,"BMI",_REL   ,0,0,@INS_BMI
-data  49,"AND",_INDY  ,0,0,@INS_AND
-data  50,"***",_UNK   ,0,0,@INS_UNK
-data  51,"***",_UNK   ,0,0,@INS_UNK
-data  52,"***",_UNK   ,0,0,@INS_UNK
-data  53,"AND",_ZEROX ,0,0,@INS_AND
-data  54,"ROL",_ZEROX ,0,0,@INS_ROL
-data  55,"***",_UNK   ,0,0,@INS_UNK
-data  56,"SEC",_IMP   ,0,0,@INS_SEC
-data  57,"AND",_ABSY  ,0,0,@INS_AND
-data  58,"***",_UNK   ,0,0,@INS_UNK
-data  59,"***",_UNK   ,0,0,@INS_UNK
-data  60,"***",_UNK   ,0,0,@INS_UNK
-data  61,"AND",_ABSX  ,0,0,@INS_AND
-data  62,"ROL",_ABSX  ,0,0,@INS_ROL
-data  63,"***",_UNK   ,0,0,@INS_UNK
+data  48d,"BMI",_REL   ,0d,0d,@INS_BMI
+data  49d,"AND",_INDY  ,0d,0d,@INS_AND
+data  50d,"***",_UNK   ,0d,0d,@INS_UNK
+data  51d,"***",_UNK   ,0d,0d,@INS_UNK
+data  52d,"***",_UNK   ,0d,0d,@INS_UNK
+data  53d,"AND",_ZEROX ,0d,0d,@INS_AND
+data  54d,"ROL",_ZEROX ,0d,0d,@INS_ROL
+data  55d,"***",_UNK   ,0d,0d,@INS_UNK
+data  56d,"SEC",_IMP   ,0d,0d,@INS_SEC
+data  57d,"AND",_ABSY  ,0d,0d,@INS_AND
+data  58d,"***",_UNK   ,0d,0d,@INS_UNK
+data  59d,"***",_UNK   ,0d,0d,@INS_UNK
+data  60d,"***",_UNK   ,0d,0d,@INS_UNK
+data  61d,"AND",_ABSX  ,0d,0d,@INS_AND
+data  62d,"ROL",_ABSX  ,0d,0d,@INS_ROL
+data  63d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data  64,"RTI",_IMP   ,0,0,@INS_RTI
-data  65,"EOR",_INDX  ,0,0,@INS_EOR
-data  66,"***",_UNK   ,0,0,@INS_UNK
-data  67,"***",_UNK   ,0,0,@INS_UNK
-data  68,"***",_UNK   ,0,0,@INS_UNK
-data  69,"EOR",_ZERO  ,0,0,@INS_EOR
-data  70,"LSR",_ZERO  ,0,0,@INS_LSR
-data  71,"***",_UNK   ,0,0,@INS_UNK
-data  72,"PHA",_IMP   ,0,0,@INS_PHA
-data  73,"EOR",_IMM   ,0,0,@INS_EOR
-data  74,"LSR",_IMP   ,0,0,@INS_LSRA
-data  75,"***",_UNK   ,0,0,@INS_UNK
-data  76,"JMP",_ABS   ,0,0,@INS_JMP
-data  77,"EOR",_ABS   ,0,0,@INS_EOR
-data  78,"LSR",_ABS   ,0,0,@INS_LSR
-data  79,"***",_UNK   ,0,0,@INS_UNK
+data  64d,"RTI",_IMP   ,0d,0d,@INS_RTI
+data  65d,"EOR",_INDX  ,0d,0d,@INS_EOR
+data  66d,"***",_UNK   ,0d,0d,@INS_UNK
+data  67d,"***",_UNK   ,0d,0d,@INS_UNK
+data  68d,"***",_UNK   ,0d,0d,@INS_UNK
+data  69d,"EOR",_ZERO  ,0d,0d,@INS_EOR
+data  70d,"LSR",_ZERO  ,0d,0d,@INS_LSR
+data  71d,"***",_UNK   ,0d,0d,@INS_UNK
+data  72d,"PHA",_IMP   ,0d,0d,@INS_PHA
+data  73d,"EOR",_IMM   ,0d,0d,@INS_EOR
+data  74d,"LSR",_IMP   ,0d,0d,@INS_LSRA
+data  75d,"***",_UNK   ,0d,0d,@INS_UNK
+data  76d,"JMP",_ABS   ,0d,0d,@INS_JMP
+data  77d,"EOR",_ABS   ,0d,0d,@INS_EOR
+data  78d,"LSR",_ABS   ,0d,0d,@INS_LSR
+data  79d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data  80,"BVC",_REL   ,0,0,@INS_BVC
-data  81,"EOR",_INDY  ,0,0,@INS_EOR
-data  82,"***",_UNK   ,0,0,@INS_UNK
-data  83,"***",_UNK   ,0,0,@INS_UNK
-data  84,"***",_UNK   ,0,0,@INS_UNK
-data  85,"EOR",_ZEROX ,0,0,@INS_EOR
-data  86,"LSR",_ZEROX ,0,0,@INS_LSR
-data  87,"***",_UNK   ,0,0,@INS_UNK
-data  88,"CLI",_IMP   ,0,0,@INS_CLI
-data  89,"EOR",_ABSY  ,0,0,@INS_EOR
-data  90,"***",_UNK   ,0,0,@INS_UNK
-data  91,"***",_UNK   ,0,0,@INS_UNK
-data  92,"***",_UNK   ,0,0,@INS_UNK
-data  93,"EOR",_ABSX  ,0,0,@INS_EOR
-data  94,"LSR",_ABSX  ,0,0,@INS_LSR
-data  95,"***",_UNK   ,0,0,@INS_UNK
+data  80d,"BVC",_REL   ,0d,0d,@INS_BVC
+data  81d,"EOR",_INDY  ,0d,0d,@INS_EOR
+data  82d,"***",_UNK   ,0d,0d,@INS_UNK
+data  83d,"***",_UNK   ,0d,0d,@INS_UNK
+data  84d,"***",_UNK   ,0d,0d,@INS_UNK
+data  85d,"EOR",_ZEROX ,0d,0d,@INS_EOR
+data  86d,"LSR",_ZEROX ,0d,0d,@INS_LSR
+data  87d,"***",_UNK   ,0d,0d,@INS_UNK
+data  88d,"CLI",_IMP   ,0d,0d,@INS_CLI
+data  89d,"EOR",_ABSY  ,0d,0d,@INS_EOR
+data  90d,"***",_UNK   ,0d,0d,@INS_UNK
+data  91d,"***",_UNK   ,0d,0d,@INS_UNK
+data  92d,"***",_UNK   ,0d,0d,@INS_UNK
+data  93d,"EOR",_ABSX  ,0d,0d,@INS_EOR
+data  94d,"LSR",_ABSX  ,0d,0d,@INS_LSR
+data  95d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data  96,"RTS",_IMP   ,0,0,@INS_RTS
-data  97,"ADC",_INDX  ,0,0,@INS_ADC
-data  98,"***",_UNK   ,0,0,@INS_UNK
-data  99,"***",_UNK   ,0,0,@INS_UNK
-data 100,"***",_UNK   ,0,0,@INS_UNK
-data 101,"ADC",_ZERO  ,0,0,@INS_ADC
-data 102,"ROR",_ZERO  ,0,0,@INS_ROR
-data 103,"***",_UNK   ,0,0,@INS_UNK
-data 104,"PLA",_IMP   ,0,0,@INS_PLA
-data 105,"ADC",_IMM   ,0,0,@INS_ADC
-data 106,"ROR",_IMP   ,0,0,@INS_RORA
-data 107,"***",_UNK   ,0,0,@INS_UNK
-data 108,"JMP",_IND   ,0,0,@INS_JMP
-data 109,"ADC",_ABS   ,0,0,@INS_ADC
-data 110,"ROR",_ABS   ,0,0,@INS_ROR
-data 111,"***",_UNK   ,0,0,@INS_UNK
+data  96d,"RTS",_IMP   ,0d,0d,@INS_RTS
+data  97d,"ADC",_INDX  ,0d,0d,@INS_ADC
+data  98d,"***",_UNK   ,0d,0d,@INS_UNK
+data  99d,"***",_UNK   ,0d,0d,@INS_UNK
+data 100d,"***",_UNK   ,0d,0d,@INS_UNK
+data 101d,"ADC",_ZERO  ,0d,0d,@INS_ADC
+data 102d,"ROR",_ZERO  ,0d,0d,@INS_ROR
+data 103d,"***",_UNK   ,0d,0d,@INS_UNK
+data 104d,"PLA",_IMP   ,0d,0d,@INS_PLA
+data 105d,"ADC",_IMM   ,0d,0d,@INS_ADC
+data 106d,"ROR",_IMP   ,0d,0d,@INS_RORA
+data 107d,"***",_UNK   ,0d,0d,@INS_UNK
+data 108d,"JMP",_IND   ,0d,0d,@INS_JMP
+data 109d,"ADC",_ABS   ,0d,0d,@INS_ADC
+data 110d,"ROR",_ABS   ,0d,0d,@INS_ROR
+data 111d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 112,"BVS",_REL   ,0,0,@INS_BVS
-data 113,"ADC",_INDY  ,0,0,@INS_ADC
-data 114,"***",_UNK   ,0,0,@INS_UNK
-data 115,"***",_UNK   ,0,0,@INS_UNK
-data 116,"***",_UNK   ,0,0,@INS_UNK
-data 117,"ADC",_ZEROX ,0,0,@INS_ADC
-data 118,"ROR",_ZEROX ,0,0,@INS_ROR
-data 119,"***",_UNK   ,0,0,@INS_UNK
-data 120,"SEI",_IMP   ,0,0,@INS_SEI
-data 121,"ADC",_ABSY  ,0,0,@INS_ADC
-data 122,"***",_UNK   ,0,0,@INS_UNK
-data 123,"***",_UNK   ,0,0,@INS_UNK
-data 124,"***",_UNK   ,0,0,@INS_UNK
-data 125,"ADC",_ABSX  ,0,0,@INS_ADC
-data 126,"ROR",_ABSX  ,0,0,@INS_ROR
-data 127,"***",_UNK   ,0,0,@INS_UNK
+data 112d,"BVS",_REL   ,0d,0d,@INS_BVS
+data 113d,"ADC",_INDY  ,0d,0d,@INS_ADC
+data 114d,"***",_UNK   ,0d,0d,@INS_UNK
+data 115d,"***",_UNK   ,0d,0d,@INS_UNK
+data 116d,"***",_UNK   ,0d,0d,@INS_UNK
+data 117d,"ADC",_ZEROX ,0d,0d,@INS_ADC
+data 118d,"ROR",_ZEROX ,0d,0d,@INS_ROR
+data 119d,"***",_UNK   ,0d,0d,@INS_UNK
+data 120d,"SEI",_IMP   ,0d,0d,@INS_SEI
+data 121d,"ADC",_ABSY  ,0d,0d,@INS_ADC
+data 122d,"***",_UNK   ,0d,0d,@INS_UNK
+data 123d,"***",_UNK   ,0d,0d,@INS_UNK
+data 124d,"***",_UNK   ,0d,0d,@INS_UNK
+data 125d,"ADC",_ABSX  ,0d,0d,@INS_ADC
+data 126d,"ROR",_ABSX  ,0d,0d,@INS_ROR
+data 127d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 128,"***",_UNK   ,0,0,@INS_UNK
-data 129,"STA",_INDX  ,0,0,@INS_STA
-data 130,"***",_UNK   ,0,0,@INS_UNK
-data 131,"***",_UNK   ,0,0,@INS_UNK
-data 132,"STY",_ZERO  ,0,0,@INS_STY
-data 133,"STA",_ZERO  ,0,0,@INS_STA
-data 134,"STX",_ZERO  ,0,0,@INs_STX
-data 135,"***",_UNK   ,0,0,@INS_UNK
-data 136,"DEY",_IMP   ,0,0,@INS_DEY
-data 137,"***",_UNK   ,0,0,@INS_UNK
-data 138,"TXA",_IMP   ,0,0,@INS_TXA
-data 139,"***",_UNK   ,0,0,@INS_UNK
-data 140,"STY",_ABS   ,0,0,@INS_STY
-data 141,"STA",_ABS   ,0,0,@INS_STA
-data 142,"STX",_ABS   ,0,0,@INS_STX
-data 143,"***",_UNK   ,0,0,@INS_UNK
+data 128d,"***",_UNK   ,0d,0d,@INS_UNK
+data 129d,"STA",_INDX  ,0d,0d,@INS_STA
+data 130d,"***",_UNK   ,0d,0d,@INS_UNK
+data 131d,"***",_UNK   ,0d,0d,@INS_UNK
+data 132d,"STY",_ZERO  ,0d,0d,@INS_STY
+data 133d,"STA",_ZERO  ,0d,0d,@INS_STA
+data 134d,"STX",_ZERO  ,0d,0d,@INs_STX
+data 135d,"***",_UNK   ,0d,0d,@INS_UNK
+data 136d,"DEY",_IMP   ,0d,0d,@INS_DEY
+data 137d,"***",_UNK   ,0d,0d,@INS_UNK
+data 138d,"TXA",_IMP   ,0d,0d,@INS_TXA
+data 139d,"***",_UNK   ,0d,0d,@INS_UNK
+data 140d,"STY",_ABS   ,0d,0d,@INS_STY
+data 141d,"STA",_ABS   ,0d,0d,@INS_STA
+data 142d,"STX",_ABS   ,0d,0d,@INS_STX
+data 143d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 144,"BCC",_REL   ,0,0,@INS_BCC
-data 145,"STA",_INDY  ,0,0,@INS_STA
-data 146,"***",_UNK   ,0,0,@INS_UNK
-data 147,"***",_UNK   ,0,0,@INS_UNK
-data 148,"STY",_ZEROX ,0,0,@INS_STY
-data 149,"STA",_ZEROX ,0,0,@INS_STA
-data 150,"STX",_ZEROY ,0,0,@INS_STX
-data 151,"***",_UNK   ,0,0,@INS_UNK
-data 152,"TYA",_IMP   ,0,0,@INS_TYA
-data 153,"STA",_ABSY  ,0,0,@INS_STA
-data 154,"TXS",_IMP   ,0,0,@INS_TXS
-data 155,"***",_UNK   ,0,0,@INS_UNK
-data 156,"***",_UNK   ,0,0,@INS_UNK
-data 157,"STA",_ABSX  ,0,0,@INS_STA
-data 158,"***",_UNK   ,0,0,@INS_UNK
-data 159,"***",_UNK   ,0,0,@INS_UNK
+data 144d,"BCC",_REL   ,0d,0d,@INS_BCC
+data 145d,"STA",_INDY  ,0d,0d,@INS_STA
+data 146d,"***",_UNK   ,0d,0d,@INS_UNK
+data 147d,"***",_UNK   ,0d,0d,@INS_UNK
+data 148d,"STY",_ZEROX ,0d,0d,@INS_STY
+data 149d,"STA",_ZEROX ,0d,0d,@INS_STA
+data 150d,"STX",_ZEROY ,0d,0d,@INS_STX
+data 151d,"***",_UNK   ,0d,0d,@INS_UNK
+data 152d,"TYA",_IMP   ,0d,0d,@INS_TYA
+data 153d,"STA",_ABSY  ,0d,0d,@INS_STA
+data 154d,"TXS",_IMP   ,0d,0d,@INS_TXS
+data 155d,"***",_UNK   ,0d,0d,@INS_UNK
+data 156d,"***",_UNK   ,0d,0d,@INS_UNK
+data 157d,"STA",_ABSX  ,0d,0d,@INS_STA
+data 158d,"***",_UNK   ,0d,0d,@INS_UNK
+data 159d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 160,"LDY",_IMM   ,0,0,@INS_LDY
-data 161,"LDA",_INDX  ,0,0,@INS_LDA
-data 162,"LDX",_IMM   ,0,0,@INS_LDX
-data 163,"***",_UNK   ,0,0,@INS_UNK
-data 164,"LDY",_ZERO  ,0,0,@INS_LDY
-data 165,"LDA",_ZERO  ,0,0,@INS_LDA
-data 166,"LDX",_ZERO  ,0,0,@INS_LDX
-data 167,"***",_UNK   ,0,0,@INS_UNK
-data 168,"TAY",_IMP   ,0,0,@INS_TAY
-data 169,"LDA",_IMM   ,0,0,@INS_LDA
-data 170,"TAX",_IMP   ,0,0,@INS_TAX
-data 171,"***",_UNK   ,0,0,@INS_UNK
-data 172,"LDY",_ABS   ,0,0,@INS_LDY
-data 173,"LDA",_ABS   ,0,0,@INS_LDA
-data 174,"LDX",_ABS   ,0,0,@INS_LDX
-data 175,"***",_UNK   ,0,0,@INS_UNK
+data 160d,"LDY",_IMM   ,0d,0d,@INS_LDY
+data 161d,"LDA",_INDX  ,0d,0d,@INS_LDA
+data 162d,"LDX",_IMM   ,0d,0d,@INS_LDX
+data 163d,"***",_UNK   ,0d,0d,@INS_UNK
+data 164d,"LDY",_ZERO  ,0d,0d,@INS_LDY
+data 165d,"LDA",_ZERO  ,0d,0d,@INS_LDA
+data 166d,"LDX",_ZERO  ,0d,0d,@INS_LDX
+data 167d,"***",_UNK   ,0d,0d,@INS_UNK
+data 168d,"TAY",_IMP   ,0d,0d,@INS_TAY
+data 169d,"LDA",_IMM   ,0d,0d,@INS_LDA
+data 170d,"TAX",_IMP   ,0d,0d,@INS_TAX
+data 171d,"***",_UNK   ,0d,0d,@INS_UNK
+data 172d,"LDY",_ABS   ,0d,0d,@INS_LDY
+data 173d,"LDA",_ABS   ,0d,0d,@INS_LDA
+data 174d,"LDX",_ABS   ,0d,0d,@INS_LDX
+data 175d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 176,"BCS",_REL   ,0,0,@INS_BCS
-data 177,"LDA",_INDY  ,0,0,@INS_LDA
-data 178,"***",_UNK   ,0,0,@INS_UNK
-data 179,"***",_UNK   ,0,0,@INS_UNK
-data 180,"LDY",_ZEROX ,0,0,@INS_LDY
-data 181,"LDA",_ZEROX ,0,0,@INS_LDA
-data 182,"LDX",_ZEROY ,0,0,@INS_LDX
-data 183,"***",_UNK   ,0,0,@INS_UNK
-data 184,"CLV",_IMP   ,0,0,@INS_CLV
-data 185,"LDA",_ABSY  ,0,0,@INS_LDA
-data 186,"TSX",_IMP   ,0,0,@INS_TSX
-data 187,"***",_UNK   ,0,0,@INS_UNK
-data 188,"LDY",_ABSX  ,0,0,@INS_LDY
-data 189,"LDA",_ABSX  ,0,0,@INS_LDA
-data 190,"LDX",_ABSY  ,0,0,@INS_LDX
-data 191,"***",_UNK   ,0,0,@INS_UNK
+data 176d,"BCS",_REL   ,0d,0d,@INS_BCS
+data 177d,"LDA",_INDY  ,0d,0d,@INS_LDA
+data 178d,"***",_UNK   ,0d,0d,@INS_UNK
+data 179d,"***",_UNK   ,0d,0d,@INS_UNK
+data 180d,"LDY",_ZEROX ,0d,0d,@INS_LDY
+data 181d,"LDA",_ZEROX ,0d,0d,@INS_LDA
+data 182d,"LDX",_ZEROY ,0d,0d,@INS_LDX
+data 183d,"***",_UNK   ,0d,0d,@INS_UNK
+data 184d,"CLV",_IMP   ,0d,0d,@INS_CLV
+data 185d,"LDA",_ABSY  ,0d,0d,@INS_LDA
+data 186d,"TSX",_IMP   ,0d,0d,@INS_TSX
+data 187d,"***",_UNK   ,0d,0d,@INS_UNK
+data 188d,"LDY",_ABSX  ,0d,0d,@INS_LDY
+data 189d,"LDA",_ABSX  ,0d,0d,@INS_LDA
+data 190d,"LDX",_ABSY  ,0d,0d,@INS_LDX
+data 191d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 192,"CPY",_IMM   ,0,0,@INS_CPY
-data 193,"CMP",_INDX  ,0,0,@INS_CMP
-data 194,"***",_UNK   ,0,0,@INS_UNK
-data 195,"***",_UNK   ,0,0,@INS_UNK
-data 196,"CPY",_ZERO  ,0,0,@INS_CPY
-data 197,"CMP",_ZERO  ,0,0,@INS_CMP
-data 198,"DEC",_ZERO  ,0,0,@INS_DEC
-data 199,"***",_UNK   ,0,0,@INS_UNK
-data 200,"INY",_IMP   ,0,0,@INS_INY
-data 201,"CMP",_IMM   ,0,0,@INS_CMP
-data 202,"DEX",_IMP   ,0,0,@INS_DEX
-data 203,"***",_UNK   ,0,0,@INS_UNK
-data 204,"CPY",_ABS   ,0,0,@INS_CPY
-data 205,"CMP",_ABS   ,0,0,@INS_CMP
-data 206,"DEC",_ABS   ,0,0,@INS_DEC
-data 207,"***",_UNK   ,0,0,@INS_UNK
+data 192d,"CPY",_IMM   ,0d,0d,@INS_CPY
+data 193d,"CMP",_INDX  ,0d,0d,@INS_CMP
+data 194d,"***",_UNK   ,0d,0d,@INS_UNK
+data 195d,"***",_UNK   ,0d,0d,@INS_UNK
+data 196d,"CPY",_ZERO  ,0d,0d,@INS_CPY
+data 197d,"CMP",_ZERO  ,0d,0d,@INS_CMP
+data 198d,"DEC",_ZERO  ,0d,0d,@INS_DEC
+data 199d,"***",_UNK   ,0d,0d,@INS_UNK
+data 200d,"INY",_IMP   ,0d,0d,@INS_INY
+data 201d,"CMP",_IMM   ,0d,0d,@INS_CMP
+data 202d,"DEX",_IMP   ,0d,0d,@INS_DEX
+data 203d,"***",_UNK   ,0d,0d,@INS_UNK
+data 204d,"CPY",_ABS   ,0d,0d,@INS_CPY
+data 205d,"CMP",_ABS   ,0d,0d,@INS_CMP
+data 206d,"DEC",_ABS   ,0d,0d,@INS_DEC
+data 207d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 208,"BNE",_REL   ,0,0,@INS_BNE
-data 209,"CMP",_INDY  ,0,0,@INS_CMP
-data 210,"***",_UNK   ,0,0,@INS_UNK
-data 211,"***",_UNK   ,0,0,@INS_UNK
-data 212,"***",_UNK   ,0,0,@INS_UNK
-data 213,"CMP",_ZEROX ,0,0,@INS_CMP
-data 214,"DEC",_ZEROX ,0,0,@INS_DEC
-data 215,"***",_UNK   ,0,0,@INS_UNK
-data 216,"CLD",_IMP   ,0,0,@INS_CLD
-data 217,"CMP",_ABSY  ,0,0,@INS_CMP
-data 218,"***",_UNK   ,0,0,@INS_UNK
-data 219,"***",_UNK   ,0,0,@INS_UNK
-data 220,"***",_UNK   ,0,0,@INS_UNK
-data 221,"CMP",_ABSX  ,0,0,@INS_CMP
-data 222,"DEC",_ABSX  ,0,0,@INS_DEC
-data 223,"***",_UNK   ,0,0,@INS_UNK
+data 208d,"BNE",_REL   ,0d,0d,@INS_BNE
+data 209d,"CMP",_INDY  ,0d,0d,@INS_CMP
+data 210d,"***",_UNK   ,0d,0d,@INS_UNK
+data 211d,"***",_UNK   ,0d,0d,@INS_UNK
+data 212d,"***",_UNK   ,0d,0d,@INS_UNK
+data 213d,"CMP",_ZEROX ,0d,0d,@INS_CMP
+data 214d,"DEC",_ZEROX ,0d,0d,@INS_DEC
+data 215d,"***",_UNK   ,0d,0d,@INS_UNK
+data 216d,"CLD",_IMP   ,0d,0d,@INS_CLD
+data 217d,"CMP",_ABSY  ,0d,0d,@INS_CMP
+data 218d,"***",_UNK   ,0d,0d,@INS_UNK
+data 219d,"***",_UNK   ,0d,0d,@INS_UNK
+data 220d,"***",_UNK   ,0d,0d,@INS_UNK
+data 221d,"CMP",_ABSX  ,0d,0d,@INS_CMP
+data 222d,"DEC",_ABSX  ,0d,0d,@INS_DEC
+data 223d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 224,"CPX",_IMM   ,0,0,@INS_CPX
-data 225,"SBC",_INDX  ,0,0,@INS_SBC
-data 226,"***",_UNK   ,0,0,@INS_UNK
-data 227,"***",_UNK   ,0,0,@INS_UNK
-data 228,"CPX",_ZERO  ,0,0,@INS_CPX
-data 229,"SBC",_ZERO  ,0,0,@INS_SBC
-data 230,"INC",_ZERO  ,0,0,@INS_INC
-data 231,"***",_UNK   ,0,0,@INS_UNK
-data 232,"INX",_IMP   ,0,0,@INS_INX
-data 233,"SBC",_IMM   ,0,0,@INS_SBC
-data 234,"NOP",_IMP   ,0,0,@INS_NOP
-data 235,"***",_UNK   ,0,0,@INS_UNK
-data 236,"CPX",_ABS   ,0,0,@INS_CPX
-data 237,"SBC",_ABS   ,0,0,@INS_SBC
-data 238,"INC",_ABS   ,0,0,@INS_INC
-data 239,"***",_UNK   ,0,0,@INS_UNK
+data 224d,"CPX",_IMM   ,0d,0d,@INS_CPX
+data 225d,"SBC",_INDX  ,0d,0d,@INS_SBC
+data 226d,"***",_UNK   ,0d,0d,@INS_UNK
+data 227d,"***",_UNK   ,0d,0d,@INS_UNK
+data 228d,"CPX",_ZERO  ,0d,0d,@INS_CPX
+data 229d,"SBC",_ZERO  ,0d,0d,@INS_SBC
+data 230d,"INC",_ZERO  ,0d,0d,@INS_INC
+data 231d,"***",_UNK   ,0d,0d,@INS_UNK
+data 232d,"INX",_IMP   ,0d,0d,@INS_INX
+data 233d,"SBC",_IMM   ,0d,0d,@INS_SBC
+data 234d,"NOP",_IMP   ,0d,0d,@INS_NOP
+data 235d,"***",_UNK   ,0d,0d,@INS_UNK
+data 236d,"CPX",_ABS   ,0d,0d,@INS_CPX
+data 237d,"SBC",_ABS   ,0d,0d,@INS_SBC
+data 238d,"INC",_ABS   ,0d,0d,@INS_INC
+data 239d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 240,"BEQ",_REL   ,0,0,@INS_BEQ
-data 241,"SBC",_INDY  ,0,0,@INS_SBC
-data 242,"***",_UNK   ,0,0,@INS_UNK
-data 243,"***",_UNK   ,0,0,@INS_UNK
-data 244,"***",_UNK   ,0,0,@INS_UNK
-data 245,"SBC",_ZEROX ,0,0,@INS_SBC
-data 246,"INC",_ZEROX ,0,0,@INS_INC
-data 247,"***",_UNK   ,0,0,@INS_UNK
-data 248,"SED",_IMP   ,0,0,@INS_SED
-data 249,"SBC",_ABSY  ,0,0,@INS_SBC
-data 250,"***",_UNK   ,0,0,@INS_UNK
-data 251,"***",_UNK   ,0,0,@INS_UNK
-data 252,"***",_UNK   ,0,0,@INS_UNK
-data 253,"SBC",_ABSX  ,0,0,@INS_SBC
-data 254,"INC",_ABSX  ,0,0,@INS_INC
-data 255,"***",_UNK   ,0,0,@INS_UNK
+data 240d,"BEQ",_REL   ,0d,0d,@INS_BEQ
+data 241d,"SBC",_INDY  ,0d,0d,@INS_SBC
+data 242d,"***",_UNK   ,0d,0d,@INS_UNK
+data 243d,"***",_UNK   ,0d,0d,@INS_UNK
+data 244d,"***",_UNK   ,0d,0d,@INS_UNK
+data 245d,"SBC",_ZEROX ,0d,0d,@INS_SBC
+data 246d,"INC",_ZEROX ,0d,0d,@INS_INC
+data 247d,"***",_UNK   ,0d,0d,@INS_UNK
+data 248d,"SED",_IMP   ,0d,0d,@INS_SED
+data 249d,"SBC",_ABSY  ,0d,0d,@INS_SBC
+data 250d,"***",_UNK   ,0d,0d,@INS_UNK
+data 251d,"***",_UNK   ,0d,0d,@INS_UNK
+data 252d,"***",_UNK   ,0d,0d,@INS_UNK
+data 253d,"SBC",_ABSX  ,0d,0d,@INS_SBC
+data 254d,"INC",_ABSX  ,0d,0d,@INS_INC
+data 255d,"***",_UNK   ,0d,0d,@INS_UNK
 
 ADDRESS_MODES:
 data "UNK"
