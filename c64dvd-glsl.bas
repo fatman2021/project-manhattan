@@ -1,8 +1,14 @@
 ' c64.bas
 
+#include once "fbgfx.bi"
 #include once "address.bi"
+#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
 #include once "glsl.bi"
+#elseif defined(__FB_DOS__)
+static shared as any ptr render
+#endif
 
+ 
 #ifdef _DEBUG
 # define dprint(msg) open err for output as #99:print #99,"debug: " & msg:close #99
 #else
@@ -13,7 +19,6 @@
 #define in_range(x, y) x to y
 
 'Assembly Mnemonics
-
 #define equ  = 'Equal
 #define add  + 'Add
 #define subt - 'Subtract
@@ -23,6 +28,11 @@
 #define expt ^ 'Exponentiate
 #define neg  - 'Negate
 #define mov(x, y) x equ y
+#define neq  <> 'Not equal
+#define ltn  <  'Less than
+#define leq  <= 'Less than or equal
+#define geq  >= 'Greater than or equal
+#define gtn  >  'Greater than
 
 'Logic Gates
 #define logic_xnor(x, y) not(x xor y) 'XNOR
@@ -36,9 +46,9 @@ var shared ld_x0=0,ld_y0=0,ld_z0=0,ld_x1=0,ld_y1=0,ld_z1=0
 var shared fg_red=0, fg_grn=0, fg_blu=0, fg_aph=0, prc_flag=0
 var shared bg_red=0, bg_grn=0, bg_blu=0, bg_aph=0, scro_x=0
 var shared font_f=0, font_o=0, font_h=0, font_w=0, scro_y=0
-var shared fg_color=0, bg_color=0, scr_ptr=0, x0=0, y0=0, z0=0
-var shared x1=0, y1=0, z1=0, b=0, c=0, x=0, y=0, xs=0, ys=0
-var shared uflag=0, UpdatedScreen=0
+var shared fg_color=0, bg_color=0, bd_color=0, scr_ptr=0
+var shared x0=0, y0=0, z0=0,x1=0, y1=0, z1=0, b=0, c=0, x=0
+var shared y=0, xs=0, ys=0, uflag=0, UpdatedScreen=0
 
 common shared as double offset, sys_offset, swch
 common shared as any ptr spr0,spr1,spr2,spr3
@@ -86,7 +96,7 @@ type MEMORY_T
   as double   kernal(00016383d) ' OS
   as double   basic (00016383d) ' Basic
   as double   char  (00016383d) ' Font
-  as double   col   (00000999d) ' color triples
+  as double   col   (00001023d) ' color triples
 end type
 
 enum ADR_MODES
@@ -254,6 +264,7 @@ end type
 constructor C64_T
   dim as integer i,c
   dprint("C64_T()")
+#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
   ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
   mov(bgimage, ImageCreate(1920d,1080d,0d,32d))
   mov(fgimage, ImageCreate(1920d,1080d,0d,32d))
@@ -266,6 +277,21 @@ constructor C64_T
   mov(spr5,    ImageCreate(82d,51d,0d,32d))
   mov(spr6,    ImageCreate(82d,51d,0d,32d))
   mov(spr7,    ImageCreate(82d,51d,0d,32d))
+#elseif defined(__FB_DOS__)
+  ScreenRes 800d,600d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+  mov(bgimage, ImageCreate(800d,600d,0d,32d))
+  mov(fgimage, ImageCreate(800d,600d,0d,32d))
+  mov(raster,  ImageCreate(800d,0d,0d,32d))
+  mov(spr0,    ImageCreate(35d,29d,0d,32d))
+  mov(spr1,    ImageCreate(35d,29d,0d,32d))
+  mov(spr2,    ImageCreate(35d,29d,0d,32d))
+  mov(spr3,    ImageCreate(35d,29d,0d,32d))
+  mov(spr4,    ImageCreate(35d,29d,0d,32d))
+  mov(spr5,    ImageCreate(35d,29d,0d,32d))
+  mov(spr6,    ImageCreate(35d,29d,0d,32d))
+  mov(spr7,    ImageCreate(35d,29d,0d,32d))
+  mov(render,  ImageCreate(800d,600d,0d,32d))
+#endif
   for in_range(mov(i, 0d), 15d)
     read c:palette i,c
   next
@@ -288,6 +314,9 @@ destructor C64_T
   ImageDestroy(bgimage)
   ImageDestroy(fgimage)
   ImageDestroy(raster)
+#if defined(__FB_DOS__)
+  ImageDestroy(render)
+#endif  
   sleep 1000d
 end destructor
 
@@ -330,10 +359,10 @@ constructor MEMORY_T
   ' sys_offset+&HE8 font offset
   ' sys_offset+&HE9 font width
   ' sys_offset+&HEA font height
-  poke64(sys_offset add &HE7,0d) 'Flip font  
-  poke64(sys_offset add &HE8,0d) 'Fomt offset
-  poke64(sys_offset add &HE9,7d) 'Font width 
-  poke64(sys_offset add &HEA,7d) 'Font height 
+  poke64(font_f,0d) 'Flip font  
+  poke64(font_o,0d) 'Font offset
+  poke64(font_w,7d) 'Font width 
+  poke64(font_h,7d) 'Font height 
   dim as integer i
   ' init all ROM's
   dim as ubyte tmp
@@ -346,7 +375,7 @@ constructor MEMORY_T
    next i
   close #1
   'for b as integer = 617 to 641
-  for mov(i, 0000d) to 8191d: mov(char(i), 00d): next i
+  for in_range(mov(i, 0000d),8191d): mov(char(i), 00d): next i
   'open "./chargen/"+str(b)+".c64" for binary as #1
   open "./chargen/0.c64" for binary as #1
    for in_range(mov(i, 0d), lof(1d))
@@ -677,92 +706,93 @@ sub MEMORY_T.poke64(byval adr as double,byval v as double)
    '/                
    elseif mov(adr, 53280d) then ' Set border color
      select case as const cast(ulongint, v)
-		case 000d: color rgb(000d,000d,000d)
-		case 001d: color rgb(000d,000d,170d)
-		case 002d: color rgb(000d,170d,000d)
-		case 003d: color rgb(000d,170d,170d)
-		case 004d: color rgb(170d,000d,170d)
-		case 005d: color rgb(170d,000d,170d)
-		case 006d: color rgb(170d,085d,000d)
-		case 007d: color rgb(170d,085d,170d)
-		case 008d: color rgb(085d,085d,085d)
-		case 009d: color rgb(085d,085d,255d)
-		case 010d: color rgb(085d,255d,085d)
-		case 011d: color rgb(085d,255d,085d)
-		case 012d: color rgb(255d,085d,085d)
-		case 013d: color rgb(255d,085d,255d)
-		case 014d: color rgb(255d,255d,085d)
-		case 015d: color rgb(255d,255d,255d)
-		case 016d: color rgb(&HFF,&HB0,&H00)
-		case 017d: color rgb(&HFF,&HCC,&H00)
-		case 018d: color rgb(&H33,&HFF,&H00)
-		case 019d: color rgb(&H33,&HFF,&H33)
-		case 020d: color rgb(&H00,&HFF,&H33)
-		case 021d: color rgb(&H66,&HFF,&H66)
-		case 022d: color rgb(&H00,&HFF,&H66)
-		case 023d: color rgb(&H28,&H28,&H28)			
-		case 024d: color rgb(&HCC,&H00,&H00)
-		case 025d: color rgb(&HA4,&H00,&H00)
-		case 026d: color rgb(&HFC,&HAF,&H3E)
-		case 027d: color rgb(&HF5,&H79,&H00)
-		case 028d: color rgb(&HCE,&H5C,&H00)
-		case 029d: color rgb(&HFC,&HE9,&H4F)
-		case 030d: color rgb(&HED,&HD4,&H00)
-		case 031d: color rgb(&HC4,&HA0,&H00)
-		case 032d: color rgb(&HBA,&HE2,&H34)
-		case 033d: color rgb(&H73,&HD2,&H16)
-		case 034d: color rgb(&H4E,&H9A,&H06)
-		case 035d: color rgb(&H72,&H9F,&HCF)
-		case 036d: color rgb(&H34,&H65,&HA4)
-		case 037d: color rgb(&H20,&H4A,&H87)
-		case 038d: color rgb(&HAD,&H7F,&HA8)
-		case 039d: color rgb(&H75,&H50,&H7D)
-		case 040d: color rgb(&H5C,&H35,&H66)
-		case 041d: color rgb(&HE9,&HB9,&H6E)
-		case 042d: color rgb(&HC1,&H7D,&H11)
-		case 043d: color rgb(&H8F,&H59,&H02)
-		case 044d: color rgb(&H88,&H8A,&H85)
-		case 045d: color rgb(&H55,&H57,&H53)
-		case 046d: color rgb(&H2E,&H34,&H36)
-		case 047d: color rgb(&HEE,&HEE,&HEC)
-		case 048d: color rgb(&HD3,&HD7,&HCF)
-		case 049d: color rgb(&HBA,&HBD,&HB6)
+		case 000d: mov(bd_color,mem64(bg_aph) shl 24d add 000d shl 16d add 000d shl 08d add 000d)
+		case 001d: mov(bd_color,mem64(bg_aph) shl 24d add 000d shl 16d add 000d shl 08d add 170d)
+		case 002d: mov(bd_color,mem64(bg_aph) shl 24d add 000d shl 16d add 170d shl 08d add 000d)
+		case 003d: mov(bd_color,mem64(bg_aph) shl 24d add 000d shl 16d add 170d shl 08d add 170d)
+		case 004d: mov(bd_color,mem64(bg_aph) shl 24d add 170d shl 16d add 000d shl 08d add 170d)
+		case 005d: mov(bd_color,mem64(bg_aph) shl 24d add 170d shl 16d add 000d shl 08d add 170d)
+		case 006d: mov(bd_color,mem64(bg_aph) shl 24d add 170d shl 16d add 085d shl 08d add 000d)
+		case 007d: mov(bd_color,mem64(bg_aph) shl 24d add 170d shl 16d add 085d shl 08d add 170d)
+		case 008d: mov(bd_color,mem64(bg_aph) shl 24d add 085d shl 16d add 085d shl 08d add 085d)
+		case 009d: mov(bd_color,mem64(bg_aph) shl 24d add 085d shl 16d add 085d shl 08d add 255d)
+		case 010d: mov(bd_color,mem64(bg_aph) shl 24d add 085d shl 16d add 255d shl 08d add 085d)
+		case 011d: mov(bd_color,mem64(bg_aph) shl 24d add 085d shl 16d add 255d shl 08d add 085d)
+		case 012d: mov(bd_color,mem64(bg_aph) shl 24d add 255d shl 16d add 085d shl 08d add 085d)
+		case 013d: mov(bd_color,mem64(bg_aph) shl 24d add 255d shl 16d add 085d shl 08d add 255d)
+		case 014d: mov(bd_color,mem64(bg_aph) shl 24d add 255d shl 16d add 255d shl 08d add 085d)
+		case 015d: mov(bd_color,mem64(bg_aph) shl 24d add 255d shl 16d add 255d shl 08d add 255d)
+		case 016d: mov(bd_color,mem64(bg_aph) shl 24d add &HFF shl 16d add &HB0 shl 08d add &H00)
+		case 017d: mov(bd_color,mem64(bg_aph) shl 24d add &HFF shl 16d add &HCC shl 08d add &H00)
+		case 018d: mov(bd_color,mem64(bg_aph) shl 24d add &H33 shl 16d add &HFF shl 08d add &H00)
+		case 019d: mov(bd_color,mem64(bg_aph) shl 24d add &H33 shl 16d add &HFF shl 08d add &H33)
+		case 020d: mov(bd_color,mem64(bg_aph) shl 24d add &H00 shl 16d add &HFF shl 08d add &H33)
+		case 021d: mov(bd_color,mem64(bg_aph) shl 24d add &H66 shl 16d add &HFF shl 08d add &H66)
+		case 022d: mov(bd_color,mem64(bg_aph) shl 24d add &H00 shl 16d add &HFF shl 08d add &H66)
+		case 023d: mov(bd_color,mem64(bg_aph) shl 24d add &H28 shl 16d add &H28 shl 08d add &H28)			
+		case 024d: mov(bd_color,mem64(bg_aph) shl 24d add &HCC shl 16d add &H00 shl 08d add &H00)
+		case 025d: mov(bd_color,mem64(bg_aph) shl 24d add &HA4 shl 16d add &H00 shl 08d add &H00)
+		case 026d: mov(bd_color,mem64(bg_aph) shl 24d add &HFC shl 16d add &HAF shl 08d add &H3E)
+		case 027d: mov(bd_color,mem64(bg_aph) shl 24d add &HF5 shl 16d add &H79 shl 08d add &H00)
+		case 028d: mov(bd_color,mem64(bg_aph) shl 24d add &HCE shl 16d add &H5C shl 08d add &H00)
+		case 029d: mov(bd_color,mem64(bg_aph) shl 24d add &HFC shl 16d add &HE9 shl 08d add &H4F)
+		case 030d: mov(bd_color,mem64(bg_aph) shl 24d add &HED shl 16d add &HD4 shl 08d add &H00)
+		case 031d: mov(bd_color,mem64(bg_aph) shl 24d add &HC4 shl 16d add &HA0 shl 08d add &H00)
+		case 032d: mov(bd_color,mem64(bg_aph) shl 24d add &HBA shl 16d add &HE2 shl 08d add &H34)
+		case 033d: mov(bd_color,mem64(bg_aph) shl 24d add &H73 shl 16d add &HD2 shl 08d add &H16)
+		case 034d: mov(bd_color,mem64(bg_aph) shl 24d add &H4E shl 16d add &H9A shl 08d add &H06)
+		case 035d: mov(bd_color,mem64(bg_aph) shl 24d add &H72 shl 16d add &H9F shl 08d add &HCF)
+		case 036d: mov(bd_color,mem64(bg_aph) shl 24d add &H34 shl 16d add &H65 shl 08d add &HA4)
+		case 037d: mov(bd_color,mem64(bg_aph) shl 24d add &H20 shl 16d add &H4A shl 08d add &H87)
+		case 038d: mov(bd_color,mem64(bg_aph) shl 24d add &HAD shl 16d add &H7F shl 08d add &HA8)
+		case 039d: mov(bd_color,mem64(bg_aph) shl 24d add &H75 shl 16d add &H50 shl 08d add &H7D)
+		case 040d: mov(bd_color,mem64(bg_aph) shl 24d add &H5C shl 16d add &H35 shl 08d add &H66)
+		case 041d: mov(bd_color,mem64(bg_aph) shl 24d add &HE9 shl 16d add &HB9 shl 08d add &H6E)
+		case 042d: mov(bd_color,mem64(bg_aph) shl 24d add &HC1 shl 16d add &H7D shl 08d add &H11)
+		case 043d: mov(bd_color,mem64(bg_aph) shl 24d add &H8F shl 16d add &H59 shl 08d add &H02)
+		case 044d: mov(bd_color,mem64(bg_aph) shl 24d add &H88 shl 16d add &H8A shl 08d add &H85)
+		case 045d: mov(bd_color,mem64(bg_aph) shl 24d add &H55 shl 16d add &H57 shl 08d add &H53)
+		case 046d: mov(bd_color,mem64(bg_aph) shl 24d add &H2E shl 16d add &H34 shl 08d add &H36)
+		case 047d: mov(bd_color,mem64(bg_aph) shl 24d add &HEE shl 16d add &HEE shl 08d add &HEC)
+		case 048d: mov(bd_color,mem64(bg_aph) shl 24d add &HD3 shl 16d add &HD7 shl 08d add &HCF)
+		case 049d: mov(bd_color,mem64(bg_aph) shl 24d add &HBA shl 16d add &HBD shl 08d add &HB6)
     end select 
-    line bgimage,(0d,0d)-(1919d,1079d),,bf
+    line bgimage,(0d,0d)-(1919d,1079d),bd_color,bf
   /'
   Background Color Registers
   Sets the background color for all text modes, sprite graphics, and multicolor bitmap graphics.
   '/      
   elseif logic_or(logic_or(mov(adr, 53281d), mov(adr, 53282d)), logic_or(mov(adr, 53283d), mov(adr, 53284d))) then ' Set background color
     select case as const cast(ulongint, v)
-		case 000d: poke64(bg_red,000d): poke64(bg_grn,000d): poke64(bg_blu,000d)
-		case 001d: poke64(bg_red,000d): poke64(bg_grn,000d): poke64(bg_blu,170d)
-		case 002d: poke64(bg_red,000d): poke64(bg_grn,170d): poke64(bg_blu,000d)
-		case 003d: poke64(bg_red,000d): poke64(bg_grn,170d): poke64(bg_blu,170d)
-		case 004d: poke64(bg_red,170d): poke64(bg_grn,000d): poke64(bg_blu,000d)
-		case 005d: poke64(bg_red,170d): poke64(bg_grn,000d): poke64(bg_blu,170d)
-		case 006d: poke64(bg_red,170d): poke64(bg_grn,085d): poke64(bg_blu,000d)
-		case 007d: poke64(bg_red,170d): poke64(bg_grn,170d): poke64(bg_blu,170d)
-		case 008d: poke64(bg_red,085d): poke64(bg_grn,085d): poke64(bg_blu,085d)
-		case 009d: poke64(bg_red,085d): poke64(bg_grn,085d): poke64(bg_blu,255d)
-		case 010d: poke64(bg_red,085d): poke64(bg_grn,255d): poke64(bg_blu,255d)
-		case 011d: poke64(bg_red,085d): poke64(bg_grn,255d): poke64(bg_blu,255d)
-		case 012d: poke64(bg_red,255d): poke64(bg_grn,085d): poke64(bg_blu,085d)
-		case 013d: poke64(bg_red,255d): poke64(bg_grn,085d): poke64(bg_blu,255d)
-		case 014d: poke64(bg_red,255d): poke64(bg_grn,255d): poke64(bg_blu,085d)
-		case 015d: poke64(bg_red,255d): poke64(bg_grn,255d): poke64(bg_blu,255d)
-		case 016d: poke64(bg_red,255d): poke64(bg_grn,176d): poke64(bg_blu,000d)
-		case 017d: poke64(bg_red,255d): poke64(bg_grn,204d): poke64(bg_blu,000d)
-		case 018d: poke64(bg_red,051d): poke64(bg_grn,255d): poke64(bg_blu,000d)
-		case 019d: poke64(bg_red,051d): poke64(bg_grn,255d): poke64(bg_blu,051d)
-		case 020d: poke64(bg_red,000d): poke64(bg_grn,255d): poke64(bg_blu,051d)
-		case 021d: poke64(bg_red,102d): poke64(bg_grn,255d): poke64(bg_blu,102d)
-		case 022d: poke64(bg_red,000d): poke64(bg_grn,255d): poke64(bg_blu,102d)
-		case 023d: poke64(bg_red,040d): poke64(bg_grn,040d): poke64(bg_blu,040d)
-		case 024d: poke64(bg_red,236d): poke64(bg_grn,041d): poke64(bg_blu,041d)
-		case 025d: poke64(bg_red,204d): poke64(bg_grn,000d): poke64(bg_blu,000d)
-		case 026d: poke64(bg_red,164d): poke64(bg_grn,000d): poke64(bg_blu,000d)
-		case 027d: poke64(bg_red,252d): poke64(bg_grn,175d): poke64(bg_blu,062d)
+    'case 000d: mov(bd_color,mem64(bg_aph) shl 24d add 000d shl 16d add 000d shl 08d add 000d)
+		case 000d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 000d shl 16d add 000d shl 08d add 000d)
+		case 001d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 000d shl 16d add 000d shl 08d add 170d)
+		case 002d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 000d shl 16d add 170d shl 08d add 000d)
+		case 003d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 000d shl 16d add 170d shl 08d add 170d)
+		case 004d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 170d shl 16d add 000d shl 08d add 000d)
+		case 005d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 170d shl 16d add 000d shl 08d add 170d)
+		case 006d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 170d shl 16d add 085d shl 08d add 000d)
+		case 007d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 170d shl 16d add 170d shl 08d add 170d)
+		case 008d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 085d shl 16d add 085d shl 08d add 085d)
+		case 009d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 085d shl 16d add 085d shl 08d add 255d)
+		case 010d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 085d shl 16d add 255d shl 08d add 255d)
+		case 011d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 085d shl 16d add 255d shl 08d add 255d)
+		case 012d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 255d shl 16d add 085d shl 08d add 085d)
+		case 013d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 255d shl 16d add 085d shl 08d add 255d)
+		case 014d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 255d shl 16d add 255d shl 08d add 085d)
+		case 015d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 255d shl 16d add 255d shl 08d add 255d)
+		case 016d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 255d shl 16d add 176d shl 08d add 000d)
+		case 017d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 255d shl 16d add 204d shl 08d add 000d)
+		case 018d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 051d shl 16d add 255d shl 08d add 000d)
+		case 019d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 051d shl 16d add 255d shl 08d add 051d)
+		case 020d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 000d shl 16d add 255d shl 08d add 051d)
+		case 021d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 102d shl 16d add 255d shl 08d add 102d)
+		case 022d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 000d shl 16d add 255d shl 08d add 102d)
+		case 023d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 040d shl 16d add 040d shl 08d add 040d)
+		case 024d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 236d shl 16d add 041d shl 08d add 041d)
+		case 025d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 204d shl 16d add 000d shl 08d add 000d)
+		case 026d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 164d shl 16d add 000d shl 08d add 000d)
+		case 027d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 252d shl 16d add 175d shl 08d add 062d)
 		case 028d: poke64(bg_red,245d): poke64(bg_grn,121d): poke64(bg_blu,000d)
 		case 029d: poke64(bg_red,206d): poke64(bg_grn,092d): poke64(bg_blu,000d)
 		case 030d: poke64(bg_red,252d): poke64(bg_grn,233d): poke64(bg_blu,079d)
@@ -792,29 +822,45 @@ sub MEMORY_T.poke64(byval adr as double,byval v as double)
   select case adr
     case &H00  
 	case sys_offset
+#if defined(__FB_LINUX__)
 	 screen 0d: shell "mplayer -vo xv -fs -alang en dvd://" + str(v) + " -dvd-device /dev/sr0"
      ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
      paint(0d,0d), rgba(0d, 0d, 0d, 255d)	 
+#elseif defined(__FB_WIN32__) or defined(__FB_WIN64__)
+	 screen 0d: shell "mplayer -vo xv -fs -alang en dvd://" + str(v) + " -dvd-device d:"
+     ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+     paint(0d,0d), rgba(0d, 0d, 0d, 255d)
+#elseif defined(__FB_DOS__)
+	 screen 0d: shell "mplayer dvd://" + str(v) + " -dvd-device d:"
+     ScreenRes 800d,600d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+     paint(0d,0d), rgba(0d, 0d, 0d, 255d)
+#endif
 	case sys_offset+&H01
+#if defined(__FB_LINUX__)
 	 screen 0d: shell "mplayer -vo xv -fs dvdnav:// -mouse-movements -dvd-device /dev/sr0"
      ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
-     paint(0d,0d), rgba(0d, 0d, 0d, 255d)	  
+     paint(0d,0d), rgba(0d, 0d, 0d, 255d)
+#elseif defined(__FB_WIN32__) or defined(__FB_WIN64__)
+ 	 screen 0d: shell "mplayer -vo xv -fs dvdnav:// -mouse-movements -dvd-device d:"
+     ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+     paint(0d,0d), rgba(0d, 0d, 0d, 255d)   
+#endif     	  
 	case fg_red ' Foreground Red
-	 mov(mem64(fg_color),rgba(mem64(fg_red),mem64(fg_grn),mem64(fg_blu),mem64(fg_aph)))
+	 mov(mem64(fg_color),mem64(fg_aph) shl 24d add mem64(fg_red) shl 16d add mem64(fg_grn) shl 08d add mem64(fg_blu))
 	case fg_grn ' Foreground Green
-	 mov(mem64(fg_color),rgba(mem64(fg_red),mem64(fg_grn),mem64(fg_blu),mem64(fg_aph)))
+	 mov(mem64(fg_color),mem64(fg_aph) shl 24d add mem64(fg_red) shl 16d add mem64(fg_grn) shl 08d add mem64(fg_blu))
 	case fg_blu ' Foreground Blue
-	 mov(mem64(fg_color),rgba(mem64(fg_red),mem64(fg_grn),mem64(fg_blu),mem64(fg_aph)))
+	 mov(mem64(fg_color),mem64(fg_aph) shl 24d add mem64(fg_red) shl 16d add mem64(fg_grn) shl 08d add mem64(fg_blu))
 	case fg_aph ' Foreground Alpha
-	 mov(mem64(fg_color),rgba(mem64(fg_red),mem64(fg_grn),mem64(fg_blu),mem64(fg_aph)))
+	 mov(mem64(fg_color),mem64(fg_aph) shl 24d add mem64(fg_red) shl 16d add mem64(fg_grn) shl 08d add mem64(fg_blu))
 	case bg_red ' Background Red
-	 mov(mem64(bg_color),rgba(mem64(bg_red),mem64(bg_grn),mem64(bg_blu),mem64(bg_aph)))
+	 mov(mem64(bg_color),mem64(bg_aph) shl 24d add mem64(bg_red) shl 16d add mem64(bg_grn) shl 08d add mem64(bg_blu))
 	case bg_grn ' Background Green
-	 mov(mem64(bg_color),rgba(mem64(bg_red),mem64(bg_grn),mem64(bg_blu),mem64(bg_aph)))
+	 mov(mem64(bg_color),mem64(bg_aph) shl 24d add mem64(bg_red) shl 16d add mem64(bg_grn) shl 08d add mem64(bg_blu))
 	case bg_blu ' Background Blue
-	 mov(mem64(bg_color),rgba(mem64(bg_red),mem64(bg_grn),mem64(bg_blu),mem64(bg_aph)))
+	 mov(mem64(bg_color),mem64(bg_aph) shl 24d add mem64(bg_red) shl 16d add mem64(bg_grn) shl 08d add mem64(bg_blu))
 	case bg_aph ' Background Alapha
-	 mov(mem64(bg_color),rgba(mem64(bg_red),mem64(bg_grn),mem64(bg_blu),mem64(bg_aph)))
+	 mov(mem64(bg_color),mem64(bg_aph) shl 24d add mem64(bg_red) shl 16d add mem64(bg_grn) shl 08d add mem64(bg_blu))
 	case ld_x0'x0
 	 mem64(x0) = mem64(sys_offset+&H0B) shl 32d + mem64(sys_offset+&H0C) shl 24d +_
 				 mem64(sys_offset+&H0D) shl 16d + mem64(sys_offset+&H0E) shl 08d +_
@@ -919,172 +965,7 @@ sub MEMORY_T.poke64(byval adr as double,byval v as double)
 	 mem64(sys_offset+&HE4) = mem64(sys_offset+&HA1) shl 32d + mem64(sys_offset+&HA2) shl 24d +_
 							  mem64(sys_offset+&HA3) shl 16d + mem64(sys_offset+&HA4) shl 08d +_
 							  mem64(sys_offset+&HA5)
-	case sys_offset+&HA1 ' Compile and run GLSL shader.
-		dim as boolean bFullscreen
-		dim as boolean bTextured
-		dim as boolean bNoise
-		dim as boolean bLinear
-		dim as boolean bNearest
-		dim as boolean bNearestLinear
-		dim as boolean bLinearNearest
-		dim as boolean bMipmap
-		dim as boolean bRepeat
-		dim as any ptr img = NULL
-
-        glScreen(1920,1080,,,true)
-
-		' get curent resolution
-		dim as integer scr_w,scr_h
-		screeninfo scr_w,scr_h
-
-
-		dim as vec3 v3
-		v3.x = scr_w     ' width  (in pixels)
-		v3.y = scr_h     '`height (in pixels)
-		v3.z = v3.x/v3.y ' pixel ratio
-
-		dim as ShaderToy Shader
-
-
-
-		if len(filename)=0 then
-		  bTextured = false
-		  'demo mode
-		  filename="./shaders/pc/demo.glsl"
-		end if  
-		if Shader.CompileFile(filename)=false then
-		   ErrorExit "file: " & filename & !"\n\n" & Shader.ShaderLog
-		end if
-		windowtitle filename & " ok ..."
-
-
-		' enable the shader
-		glUseProgram(Shader.ProgramObject)
-
-		dim as GLint Textures(3) ' channel0 ... channel3
-		glGenTextures(4,@Textures(0))
-
-		if bTextured then
-		  if img = NULL then
-			const iSize = 512
-			' if no images was loaded before create a dummy texture
-			img = imagecreate(iSize,iSize,RGBA(0,0,0,255),32)
-			if bNoise=true then
-			  for y as integer = 0 to iSize  
-				for x as integer = 0 to iSize
-				  pset img,(x,y),RGBA(rnd*255,rnd*255,rnd*255,255)
-				next
-			  next
-			else  
-			  for y as integer = 0 to iSize/16  
-				for x as integer = 0 to iSize/16
-				  line img,(x*iSize/16,y*iSize/16)-step(iSize/16-1,iSize/16-1),iif((x+y) mod 2=0,RGBA(255,255,255,255),RGBA(0,0,0,255)),BF
-				next
-			  next
-			  draw string img,(0,0),"FreeBASIC",rgb(255,0,0)
-			  draw string img,(24,24),"Shadertoy.com",rgb(0,255,0)
-			endif
-		  end if  
-		  
-		  dim as integer tw,th,tb,tp
-		  dim as any ptr pixels
-		  ImageInfo(img,tw,th,tb,tp,pixels)
-		  
-		  glBindTexture(GL_TEXTURE_2D,Textures(0))
-		  
-		  ' for mipmaps
-		  if bMipmap then
-			glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP   , GL_TRUE)
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR)
-		  end if
-		  
-		  if bRepeat then
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT)
-		  end if
-		  
-		  if bLinear then  
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
-		  elseif bNearest then  
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
-		  elseif bNearestLinear then
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
-		  elseif bLinearNearest then
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
-		  end if
-		  ' copy the pixels to the GPU
-		  glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,tw,th,0,GL_BGRA,GL_UNSIGNED_BYTE,pixels)
-		  imagedestroy img : img=NULL
-		  
-		  glBindTexture(GL_TEXTURE_2D,0)
-		end if  
-		  
-		' we have 4 slots for 2D textures and one cubemap
-		' use glBindTexture(GL_TEXTURE_2D,Textures(0,1,2 or 3))
-		var iChannel0 = glGetUniformLocation(Shader.ProgramObject, "iChannel0")
-		if iChannel0>-1 then
-		  glUniform1i(iChannel0,0)
-		  glActiveTexture(GL_TEXTURE0)
-		  glBindTexture(GL_TEXTURE_2D, Textures(0))
-		end if
-
-		' get uniforms locations in shader program
-		' old
-		var iGlobalTime = glGetUniformLocation(Shader.ProgramObject,"iGlobalTime")
-		' new
-		var iTime       = glGetUniformLocation(Shader.ProgramObject,"iTime")
-		var iResolution = glGetUniformLocation(Shader.ProgramObject,"iResolution")
-		var iMouse      = glGetUniformLocation(Shader.ProgramObject,"iMouse")
-		var iFrame      = glGetUniformLocation(Shader.ProgramObject,"iFrame")
-
-		' set vec3 iResolution
-		if iResolution>-1 then glUniform3f(iResolution,v3.x,v3.y,v3.z)
-
-		dim as integer ox=-1,oy=-1,ob=-1,mx,my,mb,frames,fps
-		dim as double tRuntime,tStart = Timer()
-		dim as double tNow,tLast=tStart
-		while inkey=""
-		  tNow=Timer() : tRuntime = tNow-tStart
-		  ' set uniform float iTime
-		  if iTime>-1 then
-			glUniform1f(iTime,tRuntime)
-		  elseif iGlobalTime>-1 then
-			glUniform1f(iGlobalTime,tRuntime)
-		  end if  
-		  
-		  ' set uniform float iFrame
-		  if iFrame>-1 then glUniform1f(iFrame,frames)
-		  if iMouse>-1 then
-			if getMouse(mx,my,,mb)=0 then 
-			  if ox<>mx orelse oy<>my orelse ob<>mb then
-				glUniform4f(iMouse,mx,scr_h-my,mb,1)
-				ox=mx : oy=my : ob=mb
-			  end if
-			end if  
-		  end if
-		  
-		  ' draw a rectangle over the whole screen
-		  ' this trigers for every pixel the fragment shader :-)
-		  glRectf(-1,-1,1,1)
-		  ' make it visible
-		  flip
-		  frames+=1
-		  if frames mod 60=0 then
-			tNow = Timer()
-			fps  = 60/(tNow-tLast) : tLast=tNow
-			windowtitle filename & " fps: " & fps
-			'sleep 10
-		  end if  
-		wend
-	 strCode = !""	
-     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
-     paint(0,0), rgba(0, 0, 0, 255)
-     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset
+    #include once "graph3d.bas"
 	case sys_offset+&HA2 
      #include once "mainImage.bas"
     case sys_offset+&HA3
@@ -1138,20 +1019,31 @@ sub MEMORY_T.poke64(byval adr as double,byval v as double)
           line fgimage,(mem64(x0),mem64(y0))-(mem64(x1),mem64(y1)),mem64(bg_color), BF              
     case sys_offset+&HF0
      'locate 1,1: print strCode
+#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
      screen 0: chain strCode: strCode = ""
      ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
-     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset                 
+     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset
+#elseif defined(__FB_DOS__)
+     screen 0: chain strCode: strCode = ""
+     ScreenRes 800,600, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+     paint(0,0), rgba(0, 0, 0, 255)
+     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset
+#endif                      
     case sys_offset+&HF1
+#if defined(__FB_LINUX__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)    
      screen 0: shell "wine " + strCode: strCode = ""
      ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
-     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset                 
+     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset 
+#endif                    
     case sys_offset+&HF2
+#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)    
      screen 0:shell "dosbox " + strCode+" -fullscreen -exit": strCode = ""
      ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
      'for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset            
+#endif
     case sys_offset+&HF3
      open strCode+".asm" for output as #1
      strCode=""
@@ -1160,11 +1052,21 @@ sub MEMORY_T.poke64(byval adr as double,byval v as double)
     case sys_offset+&HF5
      close #1: strCode = "" 
     case sys_offset+&HF6
+#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
      shell "nasm "+strCode+".asm -f bin "+strCode+".bin": strCode = ""
+#elseif defined(__FB_DOS__)
+     shell "nasm "+strCode+".asm -f bin "+strCode+".com": strCode = ""
+#endif     
     case sys_offset+&HF7
-     screen 0: shell "dosbox -fullscreen -c 'boot "+strCode+"'"+" -exit"
-     shell "rm tmp.bin": strCode = ""
-     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
+     screen 0: shell "dosbox -c 'boot "+strCode+"'"+" -exit"
+     shell "rm " + strCode: strCode = ""
+     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls     
+#elseif defined(__FB_DOS__)
+     shell strCode+".com"
+     shell strCode+".com": strCode = ""
+     ScreenRes 800,600, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+#endif    
      paint(0,0), rgba(0, 0, 0, 255)
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset     
     case sys_offset+&HF8
@@ -1188,67 +1090,7 @@ sub MEMORY_T.poke64(byval adr as double,byval v as double)
 	 'locate 1,1: print filename: sleep 1
 	 poke64(sys_offset+&HA1,&H0): filename=""   			  		
     case in_range(mem64(scr_ptr),mem64(scr_ptr) add 1023d)
-      mov(adr subt,mem64(scr_ptr))
-      mov(c, v):mov(c shl,3d):mov(c add,mem64(font_o))
-      if mem64(RVS)<>0d then mov(c and,255d)
-      screenlock
-      if mov(mem64(font_f),0d) then 
-      mov(xs,adr mod 40d):mov(xs shl,3d):mov(xs add,7d mul 3.5d)
-      mov(ys,adr idiv 40d):mov(ys shl,3d):mov(ys add,7d mul 3.5d)        
-      for in_range(mov(y,0d),mem64(font_h))
-        for in_range(mov(x,0d),mem64(font_w))
-          mov(mem64(x0),(((xs add x) mul 5d) add mem64(scro_x)))  
-          mov(mem64(y0),(((ys add y) mul 4d) add mem64(scro_y)))
-          mov(mem64(x1),(((xs add x) mul 5d) add 7d) add mem64(scro_x))
-          mov(mem64(y1),(((ys add y) mul 4d) add 4d) add mem64(scro_y))
-          poke64(prc_flag,peek64(prc_flag)) 'Flag: Print Reverse Characters?0=No
-        next 
-        mov(c add,1d)
-      next
-      screenunlock ys,ys add 8d
-      elseif mov(mem64(font_f), 1d) then
-      mov(xs,adr mod 40d):mov(xs shl, 3d):mov(xs add,8d mul 4d)
-      mov(ys,adr idiv  40d):mov(ys shl, 3d):mov(ys add, 8d mul 4d) 
-      for in_range(mov(y,mem64(font_h)),0d) step -1d
-        for in_range(mov(x,0d),mem64(font_w))
-          mov(mem64(x1),(((xs subt x) mul 5d) add 2d)  add mem64(scro_x))
-          mov(mem64(y1),(((ys subt y) mul 4d) add 2d)  add mem64(scro_y))
-          mov(mem64(x0),(((xs subt x) mul 5d) subt 2d) add mem64(scro_x))
-          mov(mem64(y0),(((ys subt y) mul 4d) subt 2d) add mem64(scro_y))        
-          poke64(prc_flag,peek64(prc_flag)) 'Flag: Print Reverse Characters?0=No
-        next 
-        mov(c add,1d)
-      next
-      screenunlock ys,ys add 8d
-      elseif mov(mem64(font_f), 2d) then 
-      mov(xs,adr mod 40d):mov(xs shl,)3:mov(xs add,7 mul 3.5d)
-      mov(ys,adr idiv  40d):mov(ys shl, 3):mov(ys add,7 mul 3.5d)       
-      for in_range(mov(y,0d),mem64(font_h))
-        for in_range(mov(x,0d),mem64(font_w))
-          mov(mem64(x0),((((xs add x) mul 5d) div 2d) add mem64(scro_x)))
-          mov(mem64(y0),((((ys add y) mul 4d) div 2d) add mem64(scro_y)))
-          mov(mem64(x1),(((((xs add x) mul 5d) add 7d) div 2d) add mem64(scro_x)))
-          mov(mem64(y1),(((((ys add y) mul 4d) add 4d) div 2d) add mem64(scro_y)))
-          poke64(prc_flag,peek64(prc_flag)) 'Flag: Print Reverse Characters?0=No
-        next 
-        mov(c add,1d)
-      next
-      screenunlock ys,ys add 8d
-      elseif mov(mem64(font_f),3d) then
-      mov(xs,adr mod 40d):mov(xs shl,3d):mov(xs add,8d mul 4d)
-      mov(ys,adr idiv  40d):mov(ys shl,3d):mov(ys add,8d mul 4d) 
-      for in_range(mov(y,mem64(font_h)),0d) step -1d
-        for in_range(mov(x,0d),mem64(font_w))
-          mov(mem64(x1),(((((xs subt x) mul 5d) add 2d) div 2d) add mem64(scro_x)))
-          mov(mem64(y1),(((((ys subt y) mul 4d) add 2d) div 2d) add mem64(scro_y)))
-          mov(mem64(x0),(((((xs subt x) mul 5d) subt 2d) div 2d) add mem64(scro_x)))
-          mov(mem64(y0),(((((ys subt y) mul 4d) subt 2d) div 2d) add mem64(scro_y)))
-          poke64(prc_flag,peek64(prc_flag)) 'Flag: Print Reverse Characters?0=No
-        next 
-        mov(c add,1d)
-      next
-      screenunlock ys,ys add 8d           
-      end if 
+     #include "font.bas"
       /'
       dim as integer xs=adr mod 40:xs shl =3:xs+=8*4
       dim as integer ys=adr  \  40:ys shl =3:ys+=8*4

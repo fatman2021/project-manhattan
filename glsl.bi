@@ -1,5 +1,5 @@
 #lang "fb"
-#include once "fbgfx.bi"
+
 #include once "GL/gl.bi"
 #include once "GL/glext.bi"
 

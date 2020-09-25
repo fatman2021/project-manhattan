@@ -97,6 +97,8 @@ RVS$:
 	.comm	FG_COLOR$,8,8
 	.local	BG_COLOR$
 	.comm	BG_COLOR$,8,8
+	.local	BD_COLOR$
+	.comm	BD_COLOR$,8,8
 	.local	SCR_PTR$
 	.comm	SCR_PTR$,8,8
 	.local	X0$
@@ -8509,7 +8511,7 @@ _ZN5C64_TC1Ev:
 .L263:
 	nop
 .L257:
-	mov	edi, 134618944
+	mov	edi, 134619136
 	call	malloc@PLT
 	mov	QWORD PTR -96[rbp], rax
 	mov	rax, QWORD PTR -96[rbp]
@@ -8689,7 +8691,7 @@ _ZN8MEMORY_TC1Ev:
 	call	memset@PLT
 	mov	rax, QWORD PTR -456[rbp]
 	add	rax, 134610944
-	mov	ecx, 8000
+	mov	ecx, 8192
 	mov	esi, 0
 	mov	QWORD PTR [rax], rsi
 	mov	edx, ecx
@@ -9074,38 +9076,38 @@ _ZN8MEMORY_TC1Ev:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
-	movsd	xmm0, QWORD PTR .LC421[rip]
-	addsd	xmm1, xmm0
-	movq	rdx, xmm1
+	mov	rax, QWORD PTR FONT_F$[rip]
+	pxor	xmm7, xmm7
+	cvtsi2sd	xmm7, rax
+	movq	rdx, xmm7
 	mov	rax, QWORD PTR -456[rbp]
 	pxor	xmm1, xmm1
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
-	movsd	xmm0, QWORD PTR .LC422[rip]
-	addsd	xmm1, xmm0
-	movq	rdx, xmm1
+	mov	rax, QWORD PTR FONT_O$[rip]
+	pxor	xmm2, xmm2
+	cvtsi2sd	xmm2, rax
+	movq	rdx, xmm2
 	mov	rax, QWORD PTR -456[rbp]
 	pxor	xmm1, xmm1
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
-	movsd	xmm0, QWORD PTR .LC423[rip]
-	addsd	xmm1, xmm0
-	movq	rdx, xmm1
+	mov	rax, QWORD PTR FONT_W$[rip]
+	pxor	xmm3, xmm3
+	cvtsi2sd	xmm3, rax
+	movq	rdx, xmm3
 	movsd	xmm0, QWORD PTR .LC404[rip]
 	mov	rax, QWORD PTR -456[rbp]
 	movapd	xmm1, xmm0
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
-	movsd	xmm0, QWORD PTR .LC424[rip]
-	addsd	xmm1, xmm0
-	movq	rdx, xmm1
+	mov	rax, QWORD PTR FONT_H$[rip]
+	pxor	xmm4, xmm4
+	cvtsi2sd	xmm4, rax
+	movq	rdx, xmm4
 	movsd	xmm0, QWORD PTR .LC404[rip]
 	mov	rax, QWORD PTR -456[rbp]
 	movapd	xmm1, xmm0
@@ -14398,7 +14400,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	neg	eax
 	and	eax, edx
 	test	eax, eax
-	je	.L1848
+	je	.L1768
 	movsd	xmm0, QWORD PTR -22240[rbp]
 	movsd	xmm1, QWORD PTR .LC470[rip]
 	subsd	xmm0, xmm1
@@ -14434,15 +14436,15 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	QWORD PTR -22248[rbp], xmm0
 	jmp	.L412
 .L411:
-.L1848:
+.L1768:
 	nop
 .L412:
 	movsd	xmm0, QWORD PTR -22240[rbp]
 	ucomisd	xmm0, QWORD PTR .LC474[rip]
-	jp	.L1849
+	jp	.L1769
 	movsd	xmm0, QWORD PTR -22240[rbp]
 	comisd	xmm0, QWORD PTR .LC474[rip]
-	jne	.L1849
+	jne	.L1769
 	mov	rax, QWORD PTR -22248[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -16083,15 +16085,15 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L472
 .L420:
 	jmp	.L473
-.L1849:
+.L1769:
 	nop
 .L415:
 	movsd	xmm0, QWORD PTR -22240[rbp]
 	ucomisd	xmm0, QWORD PTR .LC434[rip]
-	jp	.L1850
+	jp	.L1770
 	movsd	xmm0, QWORD PTR -22240[rbp]
 	comisd	xmm0, QWORD PTR .LC434[rip]
-	jne	.L1850
+	jne	.L1770
 	mov	rax, QWORD PTR -22248[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -16322,7 +16324,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L472
 .L479:
 	jmp	.L473
-.L1850:
+.L1770:
 	nop
 .L476:
 	movsd	xmm0, QWORD PTR -22240[rbp]
@@ -16406,7 +16408,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	neg	eax
 	or	eax, ecx
 	test	eax, eax
-	je	.L1851
+	je	.L1771
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC414[rip]
 	addsd	xmm1, xmm0
@@ -16421,7 +16423,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	movsd	QWORD PTR [rax], xmm0
 	jmp	.L473
-.L1851:
+.L1771:
 	nop
 .L497:
 	movsd	xmm0, QWORD PTR -22240[rbp]
@@ -16505,7 +16507,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	neg	eax
 	or	eax, ecx
 	test	eax, eax
-	je	.L1852
+	je	.L1772
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC415[rip]
 	addsd	xmm1, xmm0
@@ -16520,25 +16522,25 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	movsd	QWORD PTR [rax], xmm0
 	jmp	.L473
-.L1852:
+.L1772:
 	nop
 .L499:
 	movsd	xmm0, QWORD PTR -22240[rbp]
 	ucomisd	xmm0, QWORD PTR .LC569[rip]
-	jp	.L1853
+	jp	.L1773
 	movsd	xmm0, QWORD PTR -22240[rbp]
 	comisd	xmm0, QWORD PTR .LC569[rip]
-	jne	.L1853
+	jne	.L1773
 	jmp	.L473
-.L1853:
+.L1773:
 	nop
 .L502:
 	movsd	xmm0, QWORD PTR -22240[rbp]
 	ucomisd	xmm0, QWORD PTR .LC570[rip]
-	jp	.L1854
+	jp	.L1774
 	movsd	xmm0, QWORD PTR -22240[rbp]
 	comisd	xmm0, QWORD PTR .LC570[rip]
-	jne	.L1854
+	jne	.L1774
 	mov	rax, QWORD PTR -22248[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -16563,100 +16565,306 @@ _ZN8MEMORY_T6POKE64Edd:
 	jbe	.L560
 	jmp	.L510
 .L509:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -16777216
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	pxor	xmm0, xmm0
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L511:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -16777046
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	movsd	xmm0, QWORD PTR .LC476[rip]
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L512:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -16733696
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 43520
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	pxor	xmm0, xmm0
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L513:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -16733526
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 43520
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	movsd	xmm0, QWORD PTR .LC476[rip]
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L514:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -5635926
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 11141120
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	movsd	xmm0, QWORD PTR .LC476[rip]
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L515:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -5635926
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 11141120
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	movsd	xmm0, QWORD PTR .LC476[rip]
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L516:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -5614336
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 11162880
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	pxor	xmm0, xmm0
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L517:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -5614166
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 11162880
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	movsd	xmm0, QWORD PTR .LC476[rip]
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L518:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -11184811
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 5592320
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	movsd	xmm0, QWORD PTR .LC477[rip]
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L519:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -11184641
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 5592320
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	movsd	xmm0, QWORD PTR .LC430[rip]
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L520:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -11141291
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 5635840
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	movsd	xmm0, QWORD PTR .LC477[rip]
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L521:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -11141291
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 5635840
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	movsd	xmm0, QWORD PTR .LC477[rip]
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L522:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -43691
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 16733440
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	movsd	xmm0, QWORD PTR .LC477[rip]
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L523:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -43521
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 16733440
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	movsd	xmm0, QWORD PTR .LC430[rip]
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L524:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -171
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 16776960
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	movsd	xmm0, QWORD PTR .LC477[rip]
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L525:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -1
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 16776960
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	movsd	xmm0, QWORD PTR .LC430[rip]
+	addsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L526:
 	mov	edx, 2
@@ -16701,10 +16909,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	fb_Color@PLT
 	jmp	.L510
 .L533:
-	mov	edx, 2
-	mov	esi, 0
-	mov	edi, -14145496
-	call	fb_Color@PLT
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	add	rax, 2631720
+	mov	QWORD PTR BD_COLOR$[rip], rax
 	jmp	.L510
 .L534:
 	mov	edx, 2
@@ -16869,11 +17085,12 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR [rdx+rax]
 	jmp	.L472
 .L510:
+	mov	rax, QWORD PTR BD_COLOR$[rip]
+	mov	esi, eax
 	mov	rax, QWORD PTR BGIMAGE$[rip]
-	mov	r8d, -2147483648
+	mov	r8d, 0
 	mov	ecx, 65535
 	mov	edx, 2
-	mov	esi, 0
 	movss	xmm3, DWORD PTR .LC571[rip]
 	movss	xmm2, DWORD PTR .LC572[rip]
 	pxor	xmm1, xmm1
@@ -16881,7 +17098,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rdi, rax
 	call	fb_GfxLine@PLT
 	jmp	.L473
-.L1854:
+.L1774:
 	nop
 .L505:
 	movsd	xmm0, QWORD PTR -22240[rbp]
@@ -16925,7 +17142,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	neg	eax
 	or	eax, ecx
 	test	eax, eax
-	je	.L1855
+	je	.L1775
 	mov	rax, QWORD PTR -22248[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -18564,15 +18781,15 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L472
 .L567:
 	jmp	.L473
-.L1855:
+.L1775:
 	nop
 .L562:
 	movsd	xmm0, QWORD PTR -22240[rbp]
 	ucomisd	xmm0, QWORD PTR .LC577[rip]
-	jp	.L1856
+	jp	.L1776
 	movsd	xmm0, QWORD PTR -22240[rbp]
 	comisd	xmm0, QWORD PTR .LC577[rip]
-	jne	.L1856
+	jne	.L1776
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	mov	rdx, QWORD PTR .LC474[rip]
 	mov	rax, QWORD PTR -22232[rbp]
@@ -18582,25 +18799,25 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	_ZN8MEMORY_T6POKE64Edd
 	jmp	.L473
 .L621:
-.L1856:
+.L1776:
 	nop
 .L473:
 	pxor	xmm0, xmm0
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1857
+	jp	.L1777
 	pxor	xmm0, xmm0
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1857
-	jmp	.L1817
+	jne	.L1777
+	jmp	.L1737
 .L622:
-.L1857:
+.L1777:
 	nop
 .L624:
 	movsd	xmm0, QWORD PTR SYS_OFFSET$[rip]
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1858
+	jp	.L1778
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1858
+	jne	.L1778
 .L626:
 	mov	r8d, 0
 	mov	ecx, 0
@@ -18663,17 +18880,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	pxor	xmm0, xmm0
 	mov	edi, 0
 	call	fb_GfxPaint@PLT
-	jmp	.L1817
-.L1858:
+	jmp	.L1737
+.L1778:
 	nop
 .L628:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1859
+	jp	.L1779
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1859
+	jne	.L1779
 .L629:
 	mov	r8d, 0
 	mov	ecx, 0
@@ -18711,80 +18928,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	pxor	xmm0, xmm0
 	mov	edi, 0
 	call	fb_GfxPaint@PLT
-	jmp	.L1817
-.L1859:
+	jmp	.L1737
+.L1779:
 	nop
 .L631:
 	mov	rax, QWORD PTR FG_RED$[rip]
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1860
+	jp	.L1780
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1860
+	jne	.L1780
 .L632:
-	mov	rax, QWORD PTR FG_RED$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L635
-	cvttsd2si	rax, xmm0
-	jmp	.L636
-.L635:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L636:
-	sal	rax, 16
-	mov	rbx, rax
-	mov	rax, QWORD PTR FG_GRN$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L637
-	cvttsd2si	rax, xmm0
-	jmp	.L638
-.L637:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L638:
-	sal	rax, 8
-	or	rbx, rax
-	mov	rax, QWORD PTR FG_BLU$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L639
-	cvttsd2si	rax, xmm0
-	jmp	.L640
-.L639:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L640:
-	or	rbx, rax
 	mov	rax, QWORD PTR FG_APH$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -18793,113 +18948,58 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR [rax]
 	movq	xmm0, rax
 	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L641
 	cvttsd2si	rax, xmm0
-	jmp	.L642
-.L641:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L642:
 	sal	rax, 24
-	or	rax, rbx
-	mov	rdx, QWORD PTR FG_COLOR$[rip]
-	sal	rdx, 3
-	mov	rcx, rdx
-	mov	rdx, QWORD PTR -22232[rbp]
-	add	rcx, rdx
-	test	rax, rax
-	js	.L643
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rax
-	jmp	.L644
-.L643:
+	mov	rbx, rax
+	mov	rax, QWORD PTR FG_RED$[rip]
+	sal	rax, 3
 	mov	rdx, rax
-	shr	rdx
-	and	eax, 1
-	or	rdx, rax
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rdx
-	addsd	xmm0, xmm0
-.L644:
-	movsd	QWORD PTR [rcx], xmm0
-	jmp	.L1817
-.L1860:
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 16
+	add	rbx, rax
+	mov	rax, QWORD PTR FG_GRN$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 8
+	add	rax, rbx
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	mov	rax, QWORD PTR FG_BLU$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	movsd	xmm0, QWORD PTR [rax]
+	mov	rax, QWORD PTR FG_COLOR$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	addsd	xmm0, xmm1
+	movsd	QWORD PTR [rax], xmm0
+	jmp	.L1737
+.L1780:
 	nop
 .L634:
 	mov	rax, QWORD PTR FG_GRN$[rip]
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1861
+	jp	.L1781
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1861
-.L645:
-	mov	rax, QWORD PTR FG_RED$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L648
-	cvttsd2si	rax, xmm0
-	jmp	.L649
-.L648:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L649:
-	sal	rax, 16
-	mov	rbx, rax
-	mov	rax, QWORD PTR FG_GRN$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L650
-	cvttsd2si	rax, xmm0
-	jmp	.L651
-.L650:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L651:
-	sal	rax, 8
-	or	rbx, rax
-	mov	rax, QWORD PTR FG_BLU$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L652
-	cvttsd2si	rax, xmm0
-	jmp	.L653
-.L652:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L653:
-	or	rbx, rax
+	jne	.L1781
+.L635:
 	mov	rax, QWORD PTR FG_APH$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -18908,343 +19008,238 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR [rax]
 	movq	xmm0, rax
 	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L654
 	cvttsd2si	rax, xmm0
-	jmp	.L655
-.L654:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L655:
 	sal	rax, 24
-	or	rax, rbx
-	mov	rdx, QWORD PTR FG_COLOR$[rip]
-	sal	rdx, 3
-	mov	rcx, rdx
-	mov	rdx, QWORD PTR -22232[rbp]
-	add	rcx, rdx
-	test	rax, rax
-	js	.L656
+	mov	rbx, rax
+	mov	rax, QWORD PTR FG_RED$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 16
+	add	rbx, rax
+	mov	rax, QWORD PTR FG_GRN$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 8
+	add	rax, rbx
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	mov	rax, QWORD PTR FG_BLU$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	movsd	xmm0, QWORD PTR [rax]
+	mov	rax, QWORD PTR FG_COLOR$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	addsd	xmm0, xmm1
+	movsd	QWORD PTR [rax], xmm0
+	jmp	.L1737
+.L1781:
+	nop
+.L637:
+	mov	rax, QWORD PTR FG_BLU$[rip]
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
-	jmp	.L657
-.L656:
+	ucomisd	xmm0, QWORD PTR -22240[rbp]
+	jp	.L1782
+	comisd	xmm0, QWORD PTR -22240[rbp]
+	jne	.L1782
+.L638:
+	mov	rax, QWORD PTR FG_APH$[rip]
+	sal	rax, 3
 	mov	rdx, rax
-	shr	rdx
-	and	eax, 1
-	or	rdx, rax
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rdx
-	addsd	xmm0, xmm0
-.L657:
-	movsd	QWORD PTR [rcx], xmm0
-	jmp	.L1817
-.L1861:
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	mov	rbx, rax
+	mov	rax, QWORD PTR FG_RED$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 16
+	add	rbx, rax
+	mov	rax, QWORD PTR FG_GRN$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 8
+	add	rax, rbx
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	mov	rax, QWORD PTR FG_BLU$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	movsd	xmm0, QWORD PTR [rax]
+	mov	rax, QWORD PTR FG_COLOR$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	addsd	xmm0, xmm1
+	movsd	QWORD PTR [rax], xmm0
+	jmp	.L1737
+.L1782:
 	nop
+.L640:
+	mov	rax, QWORD PTR FG_APH$[rip]
+	pxor	xmm0, xmm0
+	cvtsi2sd	xmm0, rax
+	ucomisd	xmm0, QWORD PTR -22240[rbp]
+	jp	.L1783
+	comisd	xmm0, QWORD PTR -22240[rbp]
+	jne	.L1783
+.L641:
+	mov	rax, QWORD PTR FG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	mov	rbx, rax
+	mov	rax, QWORD PTR FG_RED$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 16
+	add	rbx, rax
+	mov	rax, QWORD PTR FG_GRN$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 8
+	add	rax, rbx
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	mov	rax, QWORD PTR FG_BLU$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	movsd	xmm0, QWORD PTR [rax]
+	mov	rax, QWORD PTR FG_COLOR$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	addsd	xmm0, xmm1
+	movsd	QWORD PTR [rax], xmm0
+	jmp	.L1737
+.L1783:
+	nop
+.L643:
+	mov	rax, QWORD PTR BG_RED$[rip]
+	pxor	xmm0, xmm0
+	cvtsi2sd	xmm0, rax
+	ucomisd	xmm0, QWORD PTR -22240[rbp]
+	jp	.L1784
+	comisd	xmm0, QWORD PTR -22240[rbp]
+	jne	.L1784
+.L644:
+	mov	rax, QWORD PTR BG_APH$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 24
+	mov	rbx, rax
+	mov	rax, QWORD PTR BG_RED$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 16
+	add	rbx, rax
+	mov	rax, QWORD PTR BG_GRN$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	mov	rax, QWORD PTR [rax]
+	movq	xmm0, rax
+	call	nearbyint@PLT
+	cvttsd2si	rax, xmm0
+	sal	rax, 8
+	add	rax, rbx
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
+	mov	rax, QWORD PTR BG_BLU$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	movsd	xmm0, QWORD PTR [rax]
+	mov	rax, QWORD PTR BG_COLOR$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	addsd	xmm0, xmm1
+	movsd	QWORD PTR [rax], xmm0
+	jmp	.L1737
+.L1784:
+	nop
+.L646:
+	mov	rax, QWORD PTR BG_GRN$[rip]
+	pxor	xmm0, xmm0
+	cvtsi2sd	xmm0, rax
+	ucomisd	xmm0, QWORD PTR -22240[rbp]
+	jp	.L1785
+	comisd	xmm0, QWORD PTR -22240[rbp]
+	jne	.L1785
 .L647:
-	mov	rax, QWORD PTR FG_BLU$[rip]
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rax
-	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1862
-	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1862
-.L658:
-	mov	rax, QWORD PTR FG_RED$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L661
-	cvttsd2si	rax, xmm0
-	jmp	.L662
-.L661:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L662:
-	sal	rax, 16
-	mov	rbx, rax
-	mov	rax, QWORD PTR FG_GRN$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L663
-	cvttsd2si	rax, xmm0
-	jmp	.L664
-.L663:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L664:
-	sal	rax, 8
-	or	rbx, rax
-	mov	rax, QWORD PTR FG_BLU$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L665
-	cvttsd2si	rax, xmm0
-	jmp	.L666
-.L665:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L666:
-	or	rbx, rax
-	mov	rax, QWORD PTR FG_APH$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L667
-	cvttsd2si	rax, xmm0
-	jmp	.L668
-.L667:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L668:
-	sal	rax, 24
-	or	rax, rbx
-	mov	rdx, QWORD PTR FG_COLOR$[rip]
-	sal	rdx, 3
-	mov	rcx, rdx
-	mov	rdx, QWORD PTR -22232[rbp]
-	add	rcx, rdx
-	test	rax, rax
-	js	.L669
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rax
-	jmp	.L670
-.L669:
-	mov	rdx, rax
-	shr	rdx
-	and	eax, 1
-	or	rdx, rax
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rdx
-	addsd	xmm0, xmm0
-.L670:
-	movsd	QWORD PTR [rcx], xmm0
-	jmp	.L1817
-.L1862:
-	nop
-.L660:
-	mov	rax, QWORD PTR FG_APH$[rip]
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rax
-	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1863
-	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1863
-.L671:
-	mov	rax, QWORD PTR FG_RED$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L674
-	cvttsd2si	rax, xmm0
-	jmp	.L675
-.L674:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L675:
-	sal	rax, 16
-	mov	rbx, rax
-	mov	rax, QWORD PTR FG_GRN$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L676
-	cvttsd2si	rax, xmm0
-	jmp	.L677
-.L676:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L677:
-	sal	rax, 8
-	or	rbx, rax
-	mov	rax, QWORD PTR FG_BLU$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L678
-	cvttsd2si	rax, xmm0
-	jmp	.L679
-.L678:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L679:
-	or	rbx, rax
-	mov	rax, QWORD PTR FG_APH$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L680
-	cvttsd2si	rax, xmm0
-	jmp	.L681
-.L680:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L681:
-	sal	rax, 24
-	or	rax, rbx
-	mov	rdx, QWORD PTR FG_COLOR$[rip]
-	sal	rdx, 3
-	mov	rcx, rdx
-	mov	rdx, QWORD PTR -22232[rbp]
-	add	rcx, rdx
-	test	rax, rax
-	js	.L682
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rax
-	jmp	.L683
-.L682:
-	mov	rdx, rax
-	shr	rdx
-	and	eax, 1
-	or	rdx, rax
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rdx
-	addsd	xmm0, xmm0
-.L683:
-	movsd	QWORD PTR [rcx], xmm0
-	jmp	.L1817
-.L1863:
-	nop
-.L673:
-	mov	rax, QWORD PTR BG_RED$[rip]
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rax
-	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1864
-	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1864
-.L684:
-	mov	rax, QWORD PTR BG_RED$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L687
-	cvttsd2si	rax, xmm0
-	jmp	.L688
-.L687:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L688:
-	sal	rax, 16
-	mov	rbx, rax
-	mov	rax, QWORD PTR BG_GRN$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L689
-	cvttsd2si	rax, xmm0
-	jmp	.L690
-.L689:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L690:
-	sal	rax, 8
-	or	rbx, rax
-	mov	rax, QWORD PTR BG_BLU$[rip]
-	sal	rax, 3
-	mov	rdx, rax
-	mov	rax, QWORD PTR -22232[rbp]
-	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L691
-	cvttsd2si	rax, xmm0
-	jmp	.L692
-.L691:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L692:
-	or	rbx, rax
 	mov	rax, QWORD PTR BG_APH$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -19253,51 +19248,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR [rax]
 	movq	xmm0, rax
 	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L693
 	cvttsd2si	rax, xmm0
-	jmp	.L694
-.L693:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L694:
 	sal	rax, 24
-	or	rax, rbx
-	mov	rdx, QWORD PTR BG_COLOR$[rip]
-	sal	rdx, 3
-	mov	rcx, rdx
-	mov	rdx, QWORD PTR -22232[rbp]
-	add	rcx, rdx
-	test	rax, rax
-	js	.L695
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rax
-	jmp	.L696
-.L695:
-	mov	rdx, rax
-	shr	rdx
-	and	eax, 1
-	or	rdx, rax
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rdx
-	addsd	xmm0, xmm0
-.L696:
-	movsd	QWORD PTR [rcx], xmm0
-	jmp	.L1817
-.L1864:
-	nop
-.L686:
-	mov	rax, QWORD PTR BG_GRN$[rip]
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rax
-	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1865
-	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1865
-.L697:
+	mov	rbx, rax
 	mov	rax, QWORD PTR BG_RED$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -19306,19 +19259,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR [rax]
 	movq	xmm0, rax
 	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L700
 	cvttsd2si	rax, xmm0
-	jmp	.L701
-.L700:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L701:
 	sal	rax, 16
-	mov	rbx, rax
+	add	rbx, rax
 	mov	rax, QWORD PTR BG_GRN$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -19327,39 +19270,36 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR [rax]
 	movq	xmm0, rax
 	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L702
 	cvttsd2si	rax, xmm0
-	jmp	.L703
-.L702:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L703:
 	sal	rax, 8
-	or	rbx, rax
+	add	rax, rbx
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
 	mov	rax, QWORD PTR BG_BLU$[rip]
 	sal	rax, 3
 	mov	rdx, rax
 	mov	rax, QWORD PTR -22232[rbp]
 	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L704
-	cvttsd2si	rax, xmm0
-	jmp	.L705
-.L704:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L705:
-	or	rbx, rax
+	movsd	xmm0, QWORD PTR [rax]
+	mov	rax, QWORD PTR BG_COLOR$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	addsd	xmm0, xmm1
+	movsd	QWORD PTR [rax], xmm0
+	jmp	.L1737
+.L1785:
+	nop
+.L649:
+	mov	rax, QWORD PTR BG_BLU$[rip]
+	pxor	xmm0, xmm0
+	cvtsi2sd	xmm0, rax
+	ucomisd	xmm0, QWORD PTR -22240[rbp]
+	jp	.L1786
+	comisd	xmm0, QWORD PTR -22240[rbp]
+	jne	.L1786
+.L650:
 	mov	rax, QWORD PTR BG_APH$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -19368,51 +19308,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR [rax]
 	movq	xmm0, rax
 	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L706
 	cvttsd2si	rax, xmm0
-	jmp	.L707
-.L706:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L707:
 	sal	rax, 24
-	or	rax, rbx
-	mov	rdx, QWORD PTR BG_COLOR$[rip]
-	sal	rdx, 3
-	mov	rcx, rdx
-	mov	rdx, QWORD PTR -22232[rbp]
-	add	rcx, rdx
-	test	rax, rax
-	js	.L708
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rax
-	jmp	.L709
-.L708:
-	mov	rdx, rax
-	shr	rdx
-	and	eax, 1
-	or	rdx, rax
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rdx
-	addsd	xmm0, xmm0
-.L709:
-	movsd	QWORD PTR [rcx], xmm0
-	jmp	.L1817
-.L1865:
-	nop
-.L699:
-	mov	rax, QWORD PTR BG_BLU$[rip]
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rax
-	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1866
-	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1866
-.L710:
+	mov	rbx, rax
 	mov	rax, QWORD PTR BG_RED$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -19421,19 +19319,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR [rax]
 	movq	xmm0, rax
 	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L713
 	cvttsd2si	rax, xmm0
-	jmp	.L714
-.L713:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L714:
 	sal	rax, 16
-	mov	rbx, rax
+	add	rbx, rax
 	mov	rax, QWORD PTR BG_GRN$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -19442,39 +19330,36 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR [rax]
 	movq	xmm0, rax
 	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L715
 	cvttsd2si	rax, xmm0
-	jmp	.L716
-.L715:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L716:
 	sal	rax, 8
-	or	rbx, rax
+	add	rax, rbx
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
 	mov	rax, QWORD PTR BG_BLU$[rip]
 	sal	rax, 3
 	mov	rdx, rax
 	mov	rax, QWORD PTR -22232[rbp]
 	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L717
-	cvttsd2si	rax, xmm0
-	jmp	.L718
-.L717:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L718:
-	or	rbx, rax
+	movsd	xmm0, QWORD PTR [rax]
+	mov	rax, QWORD PTR BG_COLOR$[rip]
+	sal	rax, 3
+	mov	rdx, rax
+	mov	rax, QWORD PTR -22232[rbp]
+	add	rax, rdx
+	addsd	xmm0, xmm1
+	movsd	QWORD PTR [rax], xmm0
+	jmp	.L1737
+.L1786:
+	nop
+.L652:
+	mov	rax, QWORD PTR BG_APH$[rip]
+	pxor	xmm0, xmm0
+	cvtsi2sd	xmm0, rax
+	ucomisd	xmm0, QWORD PTR -22240[rbp]
+	jp	.L1787
+	comisd	xmm0, QWORD PTR -22240[rbp]
+	jne	.L1787
+.L653:
 	mov	rax, QWORD PTR BG_APH$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -19483,51 +19368,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR [rax]
 	movq	xmm0, rax
 	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L719
 	cvttsd2si	rax, xmm0
-	jmp	.L720
-.L719:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L720:
 	sal	rax, 24
-	or	rax, rbx
-	mov	rdx, QWORD PTR BG_COLOR$[rip]
-	sal	rdx, 3
-	mov	rcx, rdx
-	mov	rdx, QWORD PTR -22232[rbp]
-	add	rcx, rdx
-	test	rax, rax
-	js	.L721
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rax
-	jmp	.L722
-.L721:
-	mov	rdx, rax
-	shr	rdx
-	and	eax, 1
-	or	rdx, rax
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rdx
-	addsd	xmm0, xmm0
-.L722:
-	movsd	QWORD PTR [rcx], xmm0
-	jmp	.L1817
-.L1866:
-	nop
-.L712:
-	mov	rax, QWORD PTR BG_APH$[rip]
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rax
-	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1867
-	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1867
-.L723:
+	mov	rbx, rax
 	mov	rax, QWORD PTR BG_RED$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -19536,19 +19379,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR [rax]
 	movq	xmm0, rax
 	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L726
 	cvttsd2si	rax, xmm0
-	jmp	.L727
-.L726:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L727:
 	sal	rax, 16
-	mov	rbx, rax
+	add	rbx, rax
 	mov	rax, QWORD PTR BG_GRN$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -19557,92 +19390,36 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR [rax]
 	movq	xmm0, rax
 	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L728
 	cvttsd2si	rax, xmm0
-	jmp	.L729
-.L728:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L729:
 	sal	rax, 8
-	or	rbx, rax
+	add	rax, rbx
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, rax
 	mov	rax, QWORD PTR BG_BLU$[rip]
 	sal	rax, 3
 	mov	rdx, rax
 	mov	rax, QWORD PTR -22232[rbp]
 	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L730
-	cvttsd2si	rax, xmm0
-	jmp	.L731
-.L730:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L731:
-	or	rbx, rax
-	mov	rax, QWORD PTR BG_APH$[rip]
+	movsd	xmm0, QWORD PTR [rax]
+	mov	rax, QWORD PTR BG_COLOR$[rip]
 	sal	rax, 3
 	mov	rdx, rax
 	mov	rax, QWORD PTR -22232[rbp]
 	add	rax, rdx
-	mov	rax, QWORD PTR [rax]
-	movq	xmm0, rax
-	call	nearbyint@PLT
-	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L732
-	cvttsd2si	rax, xmm0
-	jmp	.L733
-.L732:
-	movsd	xmm1, QWORD PTR .LC475[rip]
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	movabs	rdx, -9223372036854775808
-	xor	rax, rdx
-.L733:
-	sal	rax, 24
-	or	rax, rbx
-	mov	rdx, QWORD PTR BG_COLOR$[rip]
-	sal	rdx, 3
-	mov	rcx, rdx
-	mov	rdx, QWORD PTR -22232[rbp]
-	add	rcx, rdx
-	test	rax, rax
-	js	.L734
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rax
-	jmp	.L735
-.L734:
-	mov	rdx, rax
-	shr	rdx
-	and	eax, 1
-	or	rdx, rax
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, rdx
-	addsd	xmm0, xmm0
-.L735:
-	movsd	QWORD PTR [rcx], xmm0
-	jmp	.L1817
-.L1867:
+	addsd	xmm0, xmm1
+	movsd	QWORD PTR [rax], xmm0
+	jmp	.L1737
+.L1787:
 	nop
-.L725:
+.L655:
 	mov	rax, QWORD PTR LD_X0$[rip]
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1868
+	jp	.L1788
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1868
-.L736:
+	jne	.L1788
+.L656:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC516[rip]
 	addsd	xmm1, xmm0
@@ -19733,18 +19510,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rax, rdx
 	addsd	xmm0, QWORD PTR -22256[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1868:
+	jmp	.L1737
+.L1788:
 	nop
-.L738:
+.L658:
 	mov	rax, QWORD PTR LD_Y0$[rip]
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1869
+	jp	.L1789
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1869
-.L739:
+	jne	.L1789
+.L659:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC464[rip]
 	addsd	xmm1, xmm0
@@ -19835,18 +19612,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rax, rdx
 	addsd	xmm0, QWORD PTR -22256[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1869:
+	jmp	.L1737
+.L1789:
 	nop
-.L741:
+.L661:
 	mov	rax, QWORD PTR LD_Z0$[rip]
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1870
+	jp	.L1790
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1870
-.L742:
+	jne	.L1790
+.L662:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC465[rip]
 	addsd	xmm1, xmm0
@@ -19937,18 +19714,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rax, rdx
 	addsd	xmm0, QWORD PTR -22256[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1870:
+	jmp	.L1737
+.L1790:
 	nop
-.L744:
+.L664:
 	mov	rax, QWORD PTR LD_X1$[rip]
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1871
+	jp	.L1791
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1871
-.L745:
+	jne	.L1791
+.L665:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC590[rip]
 	addsd	xmm1, xmm0
@@ -20039,18 +19816,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rax, rdx
 	addsd	xmm0, QWORD PTR -22256[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1871:
+	jmp	.L1737
+.L1791:
 	nop
-.L747:
+.L667:
 	mov	rax, QWORD PTR LD_Y1$[rip]
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1872
+	jp	.L1792
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1872
-.L748:
+	jne	.L1792
+.L668:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC593[rip]
 	addsd	xmm1, xmm0
@@ -20141,18 +19918,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rax, rdx
 	addsd	xmm0, QWORD PTR -22256[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1872:
+	jmp	.L1737
+.L1792:
 	nop
-.L750:
+.L670:
 	mov	rax, QWORD PTR LD_Z1$[rip]
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1873
+	jp	.L1793
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1873
-.L751:
+	jne	.L1793
+.L671:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC413[rip]
 	addsd	xmm1, xmm0
@@ -20243,18 +20020,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rax, rdx
 	addsd	xmm0, QWORD PTR -22256[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1873:
+	jmp	.L1737
+.L1793:
 	nop
-.L753:
+.L673:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC524[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1874
+	jp	.L1794
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1874
-.L754:
+	jne	.L1794
+.L674:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC598[rip]
 	addsd	xmm1, xmm0
@@ -20353,18 +20130,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1874:
+	jmp	.L1737
+.L1794:
 	nop
-.L756:
+.L676:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC496[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1875
+	jp	.L1795
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1875
-.L757:
+	jne	.L1795
+.L677:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC512[rip]
 	addsd	xmm1, xmm0
@@ -20463,18 +20240,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1875:
+	jmp	.L1737
+.L1795:
 	nop
-.L759:
+.L679:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC603[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1876
+	jp	.L1796
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1876
-.L760:
+	jne	.L1796
+.L680:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC604[rip]
 	addsd	xmm1, xmm0
@@ -20573,18 +20350,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1876:
+	jmp	.L1737
+.L1796:
 	nop
-.L762:
+.L682:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC607[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1877
+	jp	.L1797
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1877
-.L763:
+	jne	.L1797
+.L683:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC608[rip]
 	addsd	xmm1, xmm0
@@ -20683,18 +20460,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1877:
+	jmp	.L1737
+.L1797:
 	nop
-.L765:
+.L685:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC613[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1878
+	jp	.L1798
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1878
-.L766:
+	jne	.L1798
+.L686:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC614[rip]
 	addsd	xmm1, xmm0
@@ -20793,18 +20570,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1878:
+	jmp	.L1737
+.L1798:
 	nop
-.L768:
+.L688:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC619[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1879
+	jp	.L1799
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1879
-.L769:
+	jne	.L1799
+.L689:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC620[rip]
 	addsd	xmm1, xmm0
@@ -20903,18 +20680,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1879:
+	jmp	.L1737
+.L1799:
 	nop
-.L771:
+.L691:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC623[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1880
+	jp	.L1800
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1880
-.L772:
+	jne	.L1800
+.L692:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC523[rip]
 	addsd	xmm1, xmm0
@@ -21013,18 +20790,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1880:
+	jmp	.L1737
+.L1800:
 	nop
-.L774:
+.L694:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC626[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1881
+	jp	.L1801
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1881
-.L775:
+	jne	.L1801
+.L695:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC518[rip]
 	addsd	xmm1, xmm0
@@ -21123,18 +20900,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1881:
+	jmp	.L1737
+.L1801:
 	nop
-.L777:
+.L697:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC631[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1882
+	jp	.L1802
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1882
-.L778:
+	jne	.L1802
+.L698:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC632[rip]
 	addsd	xmm1, xmm0
@@ -21233,18 +21010,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1882:
+	jmp	.L1737
+.L1802:
 	nop
-.L780:
+.L700:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC636[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1883
+	jp	.L1803
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1883
-.L781:
+	jne	.L1803
+.L701:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC503[rip]
 	addsd	xmm1, xmm0
@@ -21343,18 +21120,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1883:
+	jmp	.L1737
+.L1803:
 	nop
-.L783:
+.L703:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC640[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1884
+	jp	.L1804
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1884
-.L784:
+	jne	.L1804
+.L704:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC641[rip]
 	addsd	xmm1, xmm0
@@ -21453,18 +21230,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1884:
+	jmp	.L1737
+.L1804:
 	nop
-.L786:
+.L706:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC646[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1885
+	jp	.L1805
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1885
-.L787:
+	jne	.L1805
+.L707:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC647[rip]
 	addsd	xmm1, xmm0
@@ -21563,18 +21340,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1885:
+	jmp	.L1737
+.L1805:
 	nop
-.L789:
+.L709:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC457[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1886
+	jp	.L1806
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1886
-.L790:
+	jne	.L1806
+.L710:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC650[rip]
 	addsd	xmm1, xmm0
@@ -21673,18 +21450,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1886:
+	jmp	.L1737
+.L1806:
 	nop
-.L792:
+.L712:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC655[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1887
+	jp	.L1807
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1887
-.L793:
+	jne	.L1807
+.L713:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC511[rip]
 	addsd	xmm1, xmm0
@@ -21783,18 +21560,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1887:
+	jmp	.L1737
+.L1807:
 	nop
-.L795:
+.L715:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC659[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1888
+	jp	.L1808
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1888
-.L796:
+	jne	.L1808
+.L716:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC660[rip]
 	addsd	xmm1, xmm0
@@ -21893,18 +21670,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1888:
+	jmp	.L1737
+.L1808:
 	nop
-.L798:
+.L718:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC519[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1889
+	jp	.L1809
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1889
-.L799:
+	jne	.L1809
+.L719:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC664[rip]
 	addsd	xmm1, xmm0
@@ -22003,18 +21780,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1889:
+	jmp	.L1737
+.L1809:
 	nop
-.L801:
+.L721:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC668[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1890
+	jp	.L1810
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1890
-.L802:
+	jne	.L1810
+.L722:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC517[rip]
 	addsd	xmm1, xmm0
@@ -22113,18 +21890,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1890:
+	jmp	.L1737
+.L1810:
 	nop
-.L804:
+.L724:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC674[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1891
+	jp	.L1811
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1891
-.L805:
+	jne	.L1811
+.L725:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC675[rip]
 	addsd	xmm1, xmm0
@@ -22223,18 +22000,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1891:
+	jmp	.L1737
+.L1811:
 	nop
-.L807:
+.L727:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC500[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1892
+	jp	.L1812
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1892
-.L808:
+	jne	.L1812
+.L728:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC680[rip]
 	addsd	xmm1, xmm0
@@ -22333,18 +22110,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1892:
+	jmp	.L1737
+.L1812:
 	nop
-.L810:
+.L730:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC493[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1893
+	jp	.L1813
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1893
-.L811:
+	jne	.L1813
+.L731:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC684[rip]
 	addsd	xmm1, xmm0
@@ -22443,18 +22220,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR -22256[rbp]
 	addsd	xmm0, QWORD PTR -22264[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L1893:
+	jmp	.L1737
+.L1813:
 	nop
-.L813:
+.L733:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC684[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1894
+	jp	.L1814
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1894
-.L814:
+	jne	.L1814
+.L734:
 	mov	BYTE PTR -21297[rbp], 0
 	mov	BYTE PTR -21298[rbp], 0
 	mov	BYTE PTR -21299[rbp], 0
@@ -22525,7 +22302,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	fb_StrLen@PLT
 	mov	QWORD PTR -224[rbp], rax
 	cmp	QWORD PTR -224[rbp], 0
-	jne	.L1895
+	jne	.L1815
 	mov	BYTE PTR -21298[rbp], 0
 	mov	r8d, 0
 	mov	ecx, 23
@@ -22533,18 +22310,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, -1
 	lea	rdi, FILENAME$[rip]
 	call	fb_StrAssign@PLT
-	jmp	.L819
-.L818:
-.L1895:
+	jmp	.L739
+.L738:
+.L1815:
 	nop
-.L819:
+.L739:
 	lea	rax, -22224[rbp]
 	lea	rsi, FILENAME$[rip]
 	mov	rdi, rax
 	call	_ZN9SHADERTOY11COMPILEFILEER8FBSTRING
 	mov	BYTE PTR -225[rbp], al
 	cmp	BYTE PTR -225[rbp], 0
-	jne	.L1896
+	jne	.L1816
 	lea	rax, -21536[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	QWORD PTR 8[rax], 0
@@ -22600,11 +22377,11 @@ _ZN8MEMORY_T6POKE64Edd:
 	lea	rax, -21536[rbp]
 	mov	rdi, rax
 	call	fb_StrDelete@PLT
-	jmp	.L822
-.L821:
-.L1896:
+	jmp	.L742
+.L741:
+.L1816:
 	nop
-.L822:
+.L742:
 	lea	rax, -21296[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	QWORD PTR 8[rax], 0
@@ -22660,9 +22437,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	glGenTextures@PLT
 	movzx	eax, BYTE PTR -21298[rbp]
 	test	al, al
-	je	.L1897
+	je	.L1817
 	cmp	QWORD PTR -24[rbp], 0
-	jne	.L1898
+	jne	.L1818
 	mov	r8d, 0
 	mov	ecx, 32
 	mov	edx, -16777216
@@ -22674,11 +22451,11 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	QWORD PTR -24[rbp], rax
 	movzx	eax, BYTE PTR -21299[rbp]
 	cmp	al, 1
-	jne	.L1899
+	jne	.L1819
 	mov	QWORD PTR -32[rbp], 0
-.L829:
+.L749:
 	mov	QWORD PTR -40[rbp], 0
-.L830:
+.L750:
 	movss	xmm0, DWORD PTR .LC692[rip]
 	call	fb_Rnd@PLT
 	movq	rax, xmm0
@@ -22698,16 +22475,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L831
+	jnb	.L751
 	cvttsd2si	rax, xmm0
-	jmp	.L832
-.L831:
+	jmp	.L752
+.L751:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L832:
+.L752:
 	sal	eax, 16
 	mov	ebx, eax
 	movsd	xmm1, QWORD PTR -296[rbp]
@@ -22717,16 +22494,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L833
+	jnb	.L753
 	cvttsd2si	rax, xmm0
-	jmp	.L834
-.L833:
+	jmp	.L754
+.L753:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L834:
+.L754:
 	sal	eax, 8
 	or	ebx, eax
 	movsd	xmm1, QWORD PTR -304[rbp]
@@ -22736,16 +22513,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L835
+	jnb	.L755
 	cvttsd2si	rax, xmm0
-	jmp	.L836
-.L835:
+	jmp	.L756
+.L755:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L836:
+.L756:
 	or	eax, ebx
 	or	eax, -16777216
 	mov	esi, eax
@@ -22761,47 +22538,47 @@ _ZN8MEMORY_T6POKE64Edd:
 	movd	xmm0, edi
 	mov	rdi, rax
 	call	fb_GfxPset@PLT
-.L837:
+.L757:
 	add	QWORD PTR -40[rbp], 1
-.L838:
+.L758:
 	cmp	QWORD PTR -40[rbp], 512
-	jg	.L1900
-	jmp	.L830
-.L839:
-.L1900:
+	jg	.L1820
+	jmp	.L750
+.L759:
+.L1820:
 	nop
-.L840:
+.L760:
 	add	QWORD PTR -32[rbp], 1
-.L841:
+.L761:
 	cmp	QWORD PTR -32[rbp], 512
-	jg	.L1901
-	jmp	.L829
-.L1901:
+	jg	.L1821
+	jmp	.L749
+.L1821:
 	nop
-.L842:
-	jmp	.L855
-.L1899:
+.L762:
+	jmp	.L775
+.L1819:
 	nop
-.L828:
+.L748:
 	mov	QWORD PTR -48[rbp], 0
-.L844:
+.L764:
 	mov	QWORD PTR -56[rbp], 0
-.L845:
+.L765:
 	mov	rdx, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR -48[rbp]
 	add	rax, rdx
 	and	eax, 1
 	test	rax, rax
-	jne	.L1902
+	jne	.L1822
 	mov	eax, 4294967295
 	mov	QWORD PTR -64[rbp], rax
-	jmp	.L848
-.L1902:
+	jmp	.L768
+.L1822:
 	nop
-.L847:
+.L767:
 	mov	eax, 4278190080
 	mov	QWORD PTR -64[rbp], rax
-.L848:
+.L768:
 	mov	rax, QWORD PTR -64[rbp]
 	mov	esi, eax
 	mov	rax, QWORD PTR -48[rbp]
@@ -22831,24 +22608,24 @@ _ZN8MEMORY_T6POKE64Edd:
 	movd	xmm0, edi
 	mov	rdi, rax
 	call	fb_GfxLine@PLT
-.L849:
+.L769:
 	add	QWORD PTR -56[rbp], 1
-.L850:
+.L770:
 	cmp	QWORD PTR -56[rbp], 32
-	jg	.L1903
-	jmp	.L845
-.L851:
-.L1903:
+	jg	.L1823
+	jmp	.L765
+.L771:
+.L1823:
 	nop
-.L852:
+.L772:
 	add	QWORD PTR -48[rbp], 1
-.L853:
+.L773:
 	cmp	QWORD PTR -48[rbp], 32
-	jg	.L1904
-	jmp	.L844
-.L1904:
+	jg	.L1824
+	jmp	.L764
+.L1824:
 	nop
-.L854:
+.L774:
 	mov	esi, 9
 	lea	rdi, .LC694[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -22887,12 +22664,12 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rdi, rax
 	call	fb_GfxDrawString@PLT
 	add	rsp, 32
-	jmp	.L855
-.L843:
-.L826:
-.L1898:
+	jmp	.L775
+.L763:
+.L746:
+.L1818:
 	nop
-.L855:
+.L775:
 	mov	QWORD PTR -21552[rbp], 0
 	mov	QWORD PTR -21560[rbp], 0
 	mov	QWORD PTR -21568[rbp], 0
@@ -22918,7 +22695,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	glBindTexture@PLT
 	movzx	eax, BYTE PTR -21304[rbp]
 	test	al, al
-	je	.L1905
+	je	.L1825
 	mov	edx, 1
 	mov	esi, 33169
 	mov	edi, 3553
@@ -22931,14 +22708,14 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	esi, 10241
 	mov	edi, 3553
 	call	glTexParameteri@PLT
-	jmp	.L858
-.L857:
-.L1905:
+	jmp	.L778
+.L777:
+.L1825:
 	nop
-.L858:
+.L778:
 	movzx	eax, BYTE PTR -21305[rbp]
 	test	al, al
-	je	.L1906
+	je	.L1826
 	mov	edx, 10497
 	mov	esi, 10242
 	mov	edi, 3553
@@ -22947,14 +22724,14 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	esi, 10243
 	mov	edi, 3553
 	call	glTexParameteri@PLT
-	jmp	.L861
-.L860:
-.L1906:
+	jmp	.L781
+.L780:
+.L1826:
 	nop
-.L861:
+.L781:
 	movzx	eax, BYTE PTR -21300[rbp]
 	test	al, al
-	je	.L1907
+	je	.L1827
 	mov	edx, 9729
 	mov	esi, 10241
 	mov	edi, 3553
@@ -22963,13 +22740,13 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	esi, 10240
 	mov	edi, 3553
 	call	glTexParameteri@PLT
-	jmp	.L864
-.L1907:
+	jmp	.L784
+.L1827:
 	nop
-.L863:
+.L783:
 	movzx	eax, BYTE PTR -21301[rbp]
 	test	al, al
-	je	.L1908
+	je	.L1828
 	mov	edx, 9728
 	mov	esi, 10241
 	mov	edi, 3553
@@ -22978,13 +22755,13 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	esi, 10240
 	mov	edi, 3553
 	call	glTexParameteri@PLT
-	jmp	.L864
-.L1908:
+	jmp	.L784
+.L1828:
 	nop
-.L866:
+.L786:
 	movzx	eax, BYTE PTR -21302[rbp]
 	test	al, al
-	je	.L1909
+	je	.L1829
 	mov	edx, 9728
 	mov	esi, 10241
 	mov	edi, 3553
@@ -22993,13 +22770,13 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	esi, 10240
 	mov	edi, 3553
 	call	glTexParameteri@PLT
-	jmp	.L864
-.L1909:
+	jmp	.L784
+.L1829:
 	nop
-.L868:
+.L788:
 	movzx	eax, BYTE PTR -21303[rbp]
 	test	al, al
-	je	.L1910
+	je	.L1830
 	mov	edx, 9729
 	mov	esi, 10241
 	mov	edi, 3553
@@ -23008,11 +22785,11 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	esi, 10240
 	mov	edi, 3553
 	call	glTexParameteri@PLT
-	jmp	.L864
-.L870:
-.L1910:
+	jmp	.L784
+.L790:
+.L1830:
 	nop
-.L864:
+.L784:
 	mov	rax, QWORD PTR -21584[rbp]
 	mov	rdx, QWORD PTR -21560[rbp]
 	mov	ecx, edx
@@ -23036,11 +22813,11 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	esi, 0
 	mov	edi, 3553
 	call	glBindTexture@PLT
-	jmp	.L871
-.L824:
-.L1897:
+	jmp	.L791
+.L744:
+.L1817:
 	nop
-.L871:
+.L791:
 	mov	rdx, QWORD PTR GLGETUNIFORMLOCATION$[rip]
 	lea	rax, -22224[rbp]
 	add	rax, 4
@@ -23052,7 +22829,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	eax, DWORD PTR -324[rbp]
 	mov	DWORD PTR -328[rbp], eax
 	cmp	DWORD PTR -328[rbp], 0
-	js	.L1911
+	js	.L1831
 	mov	rdx, QWORD PTR GLUNIFORM1I$[rip]
 	mov	eax, DWORD PTR -328[rbp]
 	mov	esi, 0
@@ -23065,11 +22842,11 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	esi, eax
 	mov	edi, 3553
 	call	glBindTexture@PLT
-	jmp	.L874
-.L873:
-.L1911:
+	jmp	.L794
+.L793:
+.L1831:
 	nop
-.L874:
+.L794:
 	mov	rdx, QWORD PTR GLGETUNIFORMLOCATION$[rip]
 	lea	rax, -22224[rbp]
 	add	rax, 4
@@ -23121,7 +22898,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	eax, DWORD PTR -364[rbp]
 	mov	DWORD PTR -368[rbp], eax
 	cmp	DWORD PTR -352[rbp], 0
-	js	.L1912
+	js	.L1832
 	mov	rcx, QWORD PTR GLUNIFORM3F$[rip]
 	lea	rax, -21340[rbp]
 	add	rax, 8
@@ -23137,10 +22914,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	movd	xmm0, edx
 	mov	edi, eax
 	call	rcx
-	jmp	.L876
-.L1912:
+	jmp	.L796
+.L1832:
 	nop
-.L876:
+.L796:
 	mov	QWORD PTR -72[rbp], -1
 	mov	QWORD PTR -80[rbp], -1
 	mov	QWORD PTR -88[rbp], -1
@@ -23160,7 +22937,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	QWORD PTR [rax], 0
 	movsd	xmm0, QWORD PTR -384[rbp]
 	movsd	QWORD PTR -96[rbp], xmm0
-.L877:
+.L797:
 	call	fb_Inkey@PLT
 	mov	QWORD PTR -392[rbp], rax
 	mov	rax, QWORD PTR -392[rbp]
@@ -23171,7 +22948,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	fb_StrCompare@PLT
 	mov	DWORD PTR -396[rbp], eax
 	cmp	DWORD PTR -396[rbp], 0
-	jne	.L1913
+	jne	.L1833
 	call	fb_Timer@PLT
 	movq	rax, xmm0
 	mov	QWORD PTR -408[rbp], rax
@@ -23181,7 +22958,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	subsd	xmm0, QWORD PTR -384[rbp]
 	movsd	QWORD PTR -21408[rbp], xmm0
 	cmp	DWORD PTR -344[rbp], 0
-	js	.L1914
+	js	.L1834
 	mov	rcx, QWORD PTR GLUNIFORM1F$[rip]
 	movsd	xmm0, QWORD PTR -21408[rbp]
 	pxor	xmm2, xmm2
@@ -23191,12 +22968,12 @@ _ZN8MEMORY_T6POKE64Edd:
 	movd	xmm0, edx
 	mov	edi, eax
 	call	rcx
-	jmp	.L882
-.L1914:
+	jmp	.L802
+.L1834:
 	nop
-.L881:
+.L801:
 	cmp	DWORD PTR -336[rbp], 0
-	js	.L1915
+	js	.L1835
 	mov	rcx, QWORD PTR GLUNIFORM1F$[rip]
 	movsd	xmm0, QWORD PTR -21408[rbp]
 	pxor	xmm3, xmm3
@@ -23206,13 +22983,13 @@ _ZN8MEMORY_T6POKE64Edd:
 	movd	xmm0, edx
 	mov	edi, eax
 	call	rcx
-	jmp	.L882
-.L884:
-.L1915:
+	jmp	.L802
+.L804:
+.L1835:
 	nop
-.L882:
+.L802:
 	cmp	DWORD PTR -368[rbp], 0
-	js	.L1916
+	js	.L1836
 	mov	rcx, QWORD PTR GLUNIFORM1F$[rip]
 	mov	rax, QWORD PTR -21392[rbp]
 	pxor	xmm6, xmm6
@@ -23222,12 +22999,12 @@ _ZN8MEMORY_T6POKE64Edd:
 	movd	xmm0, edx
 	mov	edi, eax
 	call	rcx
-	jmp	.L886
-.L1916:
+	jmp	.L806
+.L1836:
 	nop
-.L886:
+.L806:
 	cmp	DWORD PTR -360[rbp], 0
-	js	.L1917
+	js	.L1837
 	mov	QWORD PTR -21600[rbp], 0
 	mov	QWORD PTR -21592[rbp], 0
 	lea	rdi, -21600[rbp]
@@ -23240,10 +23017,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	fb_GetMouse64@PLT
 	mov	DWORD PTR -412[rbp], eax
 	cmp	DWORD PTR -412[rbp], 0
-	jne	.L1918
+	jne	.L1838
 	mov	rax, QWORD PTR -21368[rbp]
 	cmp	QWORD PTR -72[rbp], rax
-	jne	.L1919
+	jne	.L1839
 	mov	rax, QWORD PTR -21376[rbp]
 	cmp	QWORD PTR -80[rbp], rax
 	setne	al
@@ -23251,14 +23028,14 @@ _ZN8MEMORY_T6POKE64Edd:
 	neg	eax
 	cdqe
 	mov	QWORD PTR -104[rbp], rax
-	jmp	.L893
-.L1919:
+	jmp	.L813
+.L1839:
 	nop
-.L892:
+.L812:
 	mov	QWORD PTR -104[rbp], -1
-.L893:
+.L813:
 	cmp	QWORD PTR -104[rbp], 0
-	jne	.L1920
+	jne	.L1840
 	mov	rax, QWORD PTR -21384[rbp]
 	cmp	QWORD PTR -88[rbp], rax
 	setne	al
@@ -23266,14 +23043,14 @@ _ZN8MEMORY_T6POKE64Edd:
 	neg	eax
 	cdqe
 	mov	QWORD PTR -112[rbp], rax
-	jmp	.L896
-.L1920:
+	jmp	.L816
+.L1840:
 	nop
-.L895:
+.L815:
 	mov	QWORD PTR -112[rbp], -1
-.L896:
+.L816:
 	cmp	QWORD PTR -112[rbp], 0
-	je	.L1921
+	je	.L1841
 	mov	rcx, QWORD PTR GLUNIFORM4F$[rip]
 	mov	rax, QWORD PTR -21384[rbp]
 	pxor	xmm1, xmm1
@@ -23300,21 +23077,21 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	QWORD PTR -80[rbp], rax
 	mov	rax, QWORD PTR -21384[rbp]
 	mov	QWORD PTR -88[rbp], rax
-	jmp	.L901
-.L898:
-.L899:
-.L890:
-.L900:
-.L888:
-.L1917:
+	jmp	.L821
+.L818:
+.L819:
+.L810:
+.L820:
+.L808:
+.L1837:
 	nop
-	jmp	.L901
-.L1918:
+	jmp	.L821
+.L1838:
 	nop
-	jmp	.L901
-.L1921:
+	jmp	.L821
+.L1841:
 	nop
-.L901:
+.L821:
 	movss	xmm3, DWORD PTR .LC692[rip]
 	movss	xmm2, DWORD PTR .LC692[rip]
 	movss	xmm1, DWORD PTR .LC703[rip]
@@ -23343,7 +23120,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	sub	rcx, rax
 	mov	rdx, rcx
 	test	rdx, rdx
-	jne	.L1922
+	jne	.L1842
 	call	fb_Timer@PLT
 	movq	rax, xmm0
 	mov	QWORD PTR -424[rbp], rax
@@ -23393,15 +23170,15 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR -448[rbp]
 	mov	rdi, rax
 	call	fb_GfxSetWindowTitle@PLT
-	jmp	.L877
-.L903:
-.L1922:
+	jmp	.L797
+.L823:
+.L1842:
 	nop
-.L904:
-	jmp	.L877
-.L1913:
+.L824:
+	jmp	.L797
+.L1833:
 	nop
-.L879:
+.L799:
 	mov	r8d, 0
 	mov	ecx, 1
 	lea	rdx, .LC331[rip]
@@ -23433,7 +23210,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	fb_GfxPaint@PLT
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR OFFSET$[rip], xmm0
-.L905:
+.L825:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC408[rip]
 	addsd	xmm1, xmm0
@@ -23455,41 +23232,41 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-.L906:
+.L826:
 	movsd	xmm1, QWORD PTR OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	addsd	xmm0, xmm1
 	movsd	QWORD PTR OFFSET$[rip], xmm0
-.L907:
+.L827:
 	movsd	xmm1, QWORD PTR OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC531[rip]
 	comisd	xmm0, xmm1
-	jb	.L1834
-	jmp	.L905
-.L1834:
-.L908:
+	jb	.L1754
+	jmp	.L825
+.L1754:
+.L828:
 	lea	rax, -22224[rbp]
 	mov	rdi, rax
 	call	_ZN9SHADERTOYD1Ev
-	jmp	.L1817
-.L1894:
+	jmp	.L1737
+.L1814:
 	nop
-.L816:
+.L736:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC685[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1923
+	jp	.L1843
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L1923
-.L910:
+	jne	.L1843
+.L830:
 	pxor	xmm0, xmm0
 	ucomisd	xmm0, QWORD PTR -22248[rbp]
-	jp	.L1924
+	jp	.L1844
 	pxor	xmm0, xmm0
 	comisd	xmm0, QWORD PTR -22248[rbp]
-	jne	.L1924
-.L913:
+	jne	.L1844
+.L833:
 	mov	r8d, 0
 	mov	ecx, 9
 	lea	rdx, .LC705[rip]
@@ -44338,17 +44115,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1924:
+	jmp	.L836
+.L1844:
 	nop
-.L915:
+.L835:
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	ucomisd	xmm0, QWORD PTR -22248[rbp]
-	jp	.L1925
+	jp	.L1845
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	comisd	xmm0, QWORD PTR -22248[rbp]
-	jne	.L1925
-.L917:
+	jne	.L1845
+.L837:
 	mov	esi, 1
 	lea	rdi, .LC830[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44360,17 +44137,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	fb_PrintString@PLT
 	mov	edi, 1
 	call	fb_FileClose@PLT
-	jmp	.L916
-.L1925:
+	jmp	.L836
+.L1845:
 	nop
-.L919:
+.L839:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC399[rip]
-	jp	.L1926
+	jp	.L1846
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC399[rip]
-	jne	.L1926
-.L920:
+	jne	.L1846
+.L840:
 	mov	esi, 10
 	lea	rdi, .LC2087[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44380,17 +44157,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1926:
+	jmp	.L836
+.L1846:
 	nop
-.L922:
+.L842:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC400[rip]
-	jp	.L1927
+	jp	.L1847
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC400[rip]
-	jne	.L1927
-.L923:
+	jne	.L1847
+.L843:
 	mov	esi, 35
 	lea	rdi, .LC2088[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44400,17 +44177,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1927:
+	jmp	.L836
+.L1847:
 	nop
-.L925:
+.L845:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC401[rip]
-	jp	.L1928
+	jp	.L1848
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC401[rip]
-	jne	.L1928
-.L926:
+	jne	.L1848
+.L846:
 	mov	esi, 38
 	lea	rdi, .LC2089[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44420,17 +44197,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1928:
+	jmp	.L836
+.L1848:
 	nop
-.L928:
+.L848:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC402[rip]
-	jp	.L1929
+	jp	.L1849
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC402[rip]
-	jne	.L1929
-.L929:
+	jne	.L1849
+.L849:
 	mov	esi, 42
 	lea	rdi, .LC2090[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44440,17 +44217,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1929:
+	jmp	.L836
+.L1849:
 	nop
-.L931:
+.L851:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC403[rip]
-	jp	.L1930
+	jp	.L1850
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC403[rip]
-	jne	.L1930
-.L932:
+	jne	.L1850
+.L852:
 	mov	esi, 58
 	lea	rdi, .LC2091[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44460,17 +44237,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1930:
+	jmp	.L836
+.L1850:
 	nop
-.L934:
+.L854:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC404[rip]
-	jp	.L1931
+	jp	.L1851
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC404[rip]
-	jne	.L1931
-.L935:
+	jne	.L1851
+.L855:
 	mov	esi, 41
 	lea	rdi, .LC2092[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44480,17 +44257,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1931:
+	jmp	.L836
+.L1851:
 	nop
-.L937:
+.L857:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC405[rip]
-	jp	.L1932
+	jp	.L1852
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC405[rip]
-	jne	.L1932
-.L938:
+	jne	.L1852
+.L858:
 	mov	esi, 79
 	lea	rdi, .LC2093[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44500,17 +44277,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1932:
+	jmp	.L836
+.L1852:
 	nop
-.L940:
+.L860:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC333[rip]
-	jp	.L1933
+	jp	.L1853
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC333[rip]
-	jne	.L1933
-.L941:
+	jne	.L1853
+.L861:
 	mov	esi, 35
 	lea	rdi, .LC2094[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44520,17 +44297,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1933:
+	jmp	.L836
+.L1853:
 	nop
-.L943:
+.L863:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC409[rip]
-	jp	.L1934
+	jp	.L1854
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC409[rip]
-	jne	.L1934
-.L944:
+	jne	.L1854
+.L864:
 	mov	esi, 51
 	lea	rdi, .LC2095[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44540,17 +44317,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1934:
+	jmp	.L836
+.L1854:
 	nop
-.L946:
+.L866:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC516[rip]
-	jp	.L1935
+	jp	.L1855
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC516[rip]
-	jne	.L1935
-.L947:
+	jne	.L1855
+.L867:
 	mov	esi, 54
 	lea	rdi, .LC2096[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44560,17 +44337,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1935:
+	jmp	.L836
+.L1855:
 	nop
-.L949:
+.L869:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC534[rip]
-	jp	.L1936
+	jp	.L1856
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC534[rip]
-	jne	.L1936
-.L950:
+	jne	.L1856
+.L870:
 	mov	esi, 55
 	lea	rdi, .LC2097[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44580,17 +44357,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1936:
+	jmp	.L836
+.L1856:
 	nop
-.L952:
+.L872:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC581[rip]
-	jp	.L1937
+	jp	.L1857
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC581[rip]
-	jne	.L1937
-.L953:
+	jne	.L1857
+.L873:
 	mov	esi, 58
 	lea	rdi, .LC2098[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44600,17 +44377,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1937:
+	jmp	.L836
+.L1857:
 	nop
-.L955:
+.L875:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC582[rip]
-	jp	.L1938
+	jp	.L1858
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC582[rip]
-	jne	.L1938
-.L956:
+	jne	.L1858
+.L876:
 	mov	esi, 58
 	lea	rdi, .LC2099[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44620,17 +44397,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1938:
+	jmp	.L836
+.L1858:
 	nop
-.L958:
+.L878:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC583[rip]
-	jp	.L1939
+	jp	.L1859
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC583[rip]
-	jne	.L1939
-.L959:
+	jne	.L1859
+.L879:
 	mov	esi, 59
 	lea	rdi, .LC2100[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44640,17 +44417,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1939:
+	jmp	.L836
+.L1859:
 	nop
-.L961:
+.L881:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC332[rip]
-	jp	.L1940
+	jp	.L1860
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC332[rip]
-	jne	.L1940
-.L962:
+	jne	.L1860
+.L882:
 	mov	esi, 63
 	lea	rdi, .LC2101[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44660,17 +44437,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1940:
+	jmp	.L836
+.L1860:
 	nop
-.L964:
+.L884:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC464[rip]
-	jp	.L1941
+	jp	.L1861
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC464[rip]
-	jne	.L1941
-.L965:
+	jne	.L1861
+.L885:
 	mov	esi, 71
 	lea	rdi, .LC2102[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44680,17 +44457,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1941:
+	jmp	.L836
+.L1861:
 	nop
-.L967:
+.L887:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC584[rip]
-	jp	.L1942
+	jp	.L1862
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC584[rip]
-	jne	.L1942
-.L968:
+	jne	.L1862
+.L888:
 	mov	esi, 71
 	lea	rdi, .LC2103[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44700,17 +44477,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1942:
+	jmp	.L836
+.L1862:
 	nop
-.L970:
+.L890:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC585[rip]
-	jp	.L1943
+	jp	.L1863
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC585[rip]
-	jne	.L1943
-.L971:
+	jne	.L1863
+.L891:
 	mov	esi, 34
 	lea	rdi, .LC2104[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44720,17 +44497,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1943:
+	jmp	.L836
+.L1863:
 	nop
-.L973:
+.L893:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC537[rip]
-	jp	.L1944
+	jp	.L1864
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC537[rip]
-	jne	.L1944
-.L974:
+	jne	.L1864
+.L894:
 	mov	esi, 37
 	lea	rdi, .LC2105[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44740,17 +44517,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1944:
+	jmp	.L836
+.L1864:
 	nop
-.L976:
+.L896:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC586[rip]
-	jp	.L1945
+	jp	.L1865
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC586[rip]
-	jne	.L1945
-.L977:
+	jne	.L1865
+.L897:
 	mov	esi, 42
 	lea	rdi, .LC2106[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44760,17 +44537,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1945:
+	jmp	.L836
+.L1865:
 	nop
-.L979:
+.L899:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC410[rip]
-	jp	.L1946
+	jp	.L1866
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC410[rip]
-	jne	.L1946
-.L980:
+	jne	.L1866
+.L900:
 	mov	esi, 49
 	lea	rdi, .LC2107[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44780,17 +44557,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1946:
+	jmp	.L836
+.L1866:
 	nop
-.L982:
+.L902:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC465[rip]
-	jp	.L1947
+	jp	.L1867
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC465[rip]
-	jne	.L1947
-.L983:
+	jne	.L1867
+.L903:
 	mov	esi, 52
 	lea	rdi, .LC2108[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44800,17 +44577,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1947:
+	jmp	.L836
+.L1867:
 	nop
-.L985:
+.L905:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC539[rip]
-	jp	.L1948
+	jp	.L1868
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC539[rip]
-	jne	.L1948
-.L986:
+	jne	.L1868
+.L906:
 	mov	esi, 17
 	lea	rdi, .LC2109[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44820,17 +44597,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1948:
+	jmp	.L836
+.L1868:
 	nop
-.L988:
+.L908:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC587[rip]
-	jp	.L1949
+	jp	.L1869
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC587[rip]
-	jne	.L1949
-.L989:
+	jne	.L1869
+.L909:
 	mov	esi, 21
 	lea	rdi, .LC2110[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44840,17 +44617,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1949:
+	jmp	.L836
+.L1869:
 	nop
-.L991:
+.L911:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC588[rip]
-	jp	.L1950
+	jp	.L1870
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC588[rip]
-	jne	.L1950
-.L992:
+	jne	.L1870
+.L912:
 	mov	esi, 24
 	lea	rdi, .LC2111[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44860,17 +44637,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1950:
+	jmp	.L836
+.L1870:
 	nop
-.L994:
+.L914:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC589[rip]
-	jp	.L1951
+	jp	.L1871
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC589[rip]
-	jne	.L1951
-.L995:
+	jne	.L1871
+.L915:
 	mov	esi, 26
 	lea	rdi, .LC2112[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44880,17 +44657,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1951:
+	jmp	.L836
+.L1871:
 	nop
-.L997:
+.L917:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC411[rip]
-	jp	.L1952
+	jp	.L1872
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC411[rip]
-	jne	.L1952
-.L998:
+	jne	.L1872
+.L918:
 	mov	esi, 26
 	lea	rdi, .LC2113[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44900,17 +44677,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1952:
+	jmp	.L836
+.L1872:
 	nop
-.L1000:
+.L920:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC590[rip]
-	jp	.L1953
+	jp	.L1873
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC590[rip]
-	jne	.L1953
-.L1001:
+	jne	.L1873
+.L921:
 	mov	esi, 21
 	lea	rdi, .LC2114[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44920,17 +44697,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1953:
+	jmp	.L836
+.L1873:
 	nop
-.L1003:
+.L923:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC591[rip]
-	jp	.L1954
+	jp	.L1874
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC591[rip]
-	jne	.L1954
-.L1004:
+	jne	.L1874
+.L924:
 	mov	esi, 31
 	lea	rdi, .LC2115[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44940,17 +44717,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1954:
+	jmp	.L836
+.L1874:
 	nop
-.L1006:
+.L926:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC433[rip]
-	jp	.L1955
+	jp	.L1875
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC433[rip]
-	jne	.L1955
-.L1007:
+	jne	.L1875
+.L927:
 	mov	esi, 34
 	lea	rdi, .LC2116[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44960,17 +44737,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1955:
+	jmp	.L836
+.L1875:
 	nop
-.L1009:
+.L929:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC454[rip]
-	jp	.L1956
+	jp	.L1876
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC454[rip]
-	jne	.L1956
-.L1010:
+	jne	.L1876
+.L930:
 	mov	esi, 38
 	lea	rdi, .LC2117[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -44980,17 +44757,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1956:
+	jmp	.L836
+.L1876:
 	nop
-.L1012:
+.L932:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC592[rip]
-	jp	.L1957
+	jp	.L1877
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC592[rip]
-	jne	.L1957
-.L1013:
+	jne	.L1877
+.L933:
 	mov	esi, 51
 	lea	rdi, .LC2118[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45000,17 +44777,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1957:
+	jmp	.L836
+.L1877:
 	nop
-.L1015:
+.L935:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC412[rip]
-	jp	.L1958
+	jp	.L1878
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC412[rip]
-	jne	.L1958
-.L1016:
+	jne	.L1878
+.L936:
 	mov	esi, 25
 	lea	rdi, .LC2119[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45020,17 +44797,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1958:
+	jmp	.L836
+.L1878:
 	nop
-.L1018:
+.L938:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC593[rip]
-	jp	.L1959
+	jp	.L1879
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC593[rip]
-	jne	.L1959
-.L1019:
+	jne	.L1879
+.L939:
 	mov	esi, 29
 	lea	rdi, .LC2120[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45040,17 +44817,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1959:
+	jmp	.L836
+.L1879:
 	nop
-.L1021:
+.L941:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC543[rip]
-	jp	.L1960
+	jp	.L1880
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC543[rip]
-	jne	.L1960
-.L1022:
+	jne	.L1880
+.L942:
 	mov	esi, 34
 	lea	rdi, .LC2121[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45060,17 +44837,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1960:
+	jmp	.L836
+.L1880:
 	nop
-.L1024:
+.L944:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC594[rip]
-	jp	.L1961
+	jp	.L1881
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC594[rip]
-	jne	.L1961
-.L1025:
+	jne	.L1881
+.L945:
 	mov	esi, 35
 	lea	rdi, .LC2122[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45080,17 +44857,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1961:
+	jmp	.L836
+.L1881:
 	nop
-.L1027:
+.L947:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC595[rip]
-	jp	.L1962
+	jp	.L1882
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC595[rip]
-	jne	.L1962
-.L1028:
+	jne	.L1882
+.L948:
 	mov	esi, 51
 	lea	rdi, .LC2123[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45100,17 +44877,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1962:
+	jmp	.L836
+.L1882:
 	nop
-.L1030:
+.L950:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC596[rip]
-	jp	.L1963
+	jp	.L1883
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC596[rip]
-	jne	.L1963
-.L1031:
+	jne	.L1883
+.L951:
 	mov	esi, 8
 	lea	rdi, .LC2124[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45120,17 +44897,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1963:
+	jmp	.L836
+.L1883:
 	nop
-.L1033:
+.L953:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC413[rip]
-	jp	.L1964
+	jp	.L1884
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC413[rip]
-	jne	.L1964
-.L1034:
+	jne	.L1884
+.L954:
 	mov	esi, 56
 	lea	rdi, .LC2125[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45140,17 +44917,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1964:
+	jmp	.L836
+.L1884:
 	nop
-.L1036:
+.L956:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC482[rip]
-	jp	.L1965
+	jp	.L1885
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC482[rip]
-	jne	.L1965
-.L1037:
+	jne	.L1885
+.L957:
 	mov	esi, 61
 	lea	rdi, .LC2126[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45160,17 +44937,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1965:
+	jmp	.L836
+.L1885:
 	nop
-.L1039:
+.L959:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC453[rip]
-	jp	.L1966
+	jp	.L1886
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC453[rip]
-	jne	.L1966
-.L1040:
+	jne	.L1886
+.L960:
 	mov	esi, 61
 	lea	rdi, .LC2127[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45180,17 +44957,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1966:
+	jmp	.L836
+.L1886:
 	nop
-.L1042:
+.L962:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2128[rip]
-	jp	.L1967
+	jp	.L1887
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2128[rip]
-	jne	.L1967
-.L1043:
+	jne	.L1887
+.L963:
 	mov	esi, 98
 	lea	rdi, .LC2129[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45200,17 +44977,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1967:
+	jmp	.L836
+.L1887:
 	nop
-.L1045:
+.L965:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC546[rip]
-	jp	.L1968
+	jp	.L1888
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC546[rip]
-	jne	.L1968
-.L1046:
+	jne	.L1888
+.L966:
 	mov	esi, 104
 	lea	rdi, .LC2130[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45220,17 +44997,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1968:
+	jmp	.L836
+.L1888:
 	nop
-.L1048:
+.L968:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC597[rip]
-	jp	.L1969
+	jp	.L1889
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC597[rip]
-	jne	.L1969
-.L1049:
+	jne	.L1889
+.L969:
 	mov	esi, 21
 	lea	rdi, .LC2131[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45240,17 +45017,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1969:
+	jmp	.L836
+.L1889:
 	nop
-.L1051:
+.L971:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC524[rip]
-	jp	.L1970
+	jp	.L1890
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC524[rip]
-	jne	.L1970
-.L1052:
+	jne	.L1890
+.L972:
 	mov	esi, 39
 	lea	rdi, .LC2132[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45260,17 +45037,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1970:
+	jmp	.L836
+.L1890:
 	nop
-.L1054:
+.L974:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC598[rip]
-	jp	.L1971
+	jp	.L1891
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC598[rip]
-	jne	.L1971
-.L1055:
+	jne	.L1891
+.L975:
 	mov	esi, 39
 	lea	rdi, .LC2133[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45280,17 +45057,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1971:
+	jmp	.L836
+.L1891:
 	nop
-.L1057:
+.L977:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC548[rip]
-	jp	.L1972
+	jp	.L1892
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC548[rip]
-	jne	.L1972
-.L1058:
+	jne	.L1892
+.L978:
 	mov	esi, 40
 	lea	rdi, .LC2134[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45300,17 +45077,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1972:
+	jmp	.L836
+.L1892:
 	nop
-.L1060:
+.L980:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC599[rip]
-	jp	.L1973
+	jp	.L1893
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC599[rip]
-	jne	.L1973
-.L1061:
+	jne	.L1893
+.L981:
 	mov	esi, 42
 	lea	rdi, .LC2135[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45320,17 +45097,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1973:
+	jmp	.L836
+.L1893:
 	nop
-.L1063:
+.L983:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC458[rip]
-	jp	.L1974
+	jp	.L1894
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC458[rip]
-	jne	.L1974
-.L1064:
+	jne	.L1894
+.L984:
 	mov	esi, 43
 	lea	rdi, .LC2136[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45340,17 +45117,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1974:
+	jmp	.L836
+.L1894:
 	nop
-.L1066:
+.L986:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC479[rip]
-	jp	.L1975
+	jp	.L1895
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC479[rip]
-	jne	.L1975
-.L1067:
+	jne	.L1895
+.L987:
 	mov	esi, 43
 	lea	rdi, .LC2137[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45360,17 +45137,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1975:
+	jmp	.L836
+.L1895:
 	nop
-.L1069:
+.L989:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC496[rip]
-	jp	.L1976
+	jp	.L1896
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC496[rip]
-	jne	.L1976
-.L1070:
+	jne	.L1896
+.L990:
 	mov	esi, 41
 	lea	rdi, .LC2138[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45380,17 +45157,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1976:
+	jmp	.L836
+.L1896:
 	nop
-.L1072:
+.L992:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC512[rip]
-	jp	.L1977
+	jp	.L1897
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC512[rip]
-	jne	.L1977
-.L1073:
+	jne	.L1897
+.L993:
 	mov	esi, 41
 	lea	rdi, .LC2139[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45400,17 +45177,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1977:
+	jmp	.L836
+.L1897:
 	nop
-.L1075:
+.L995:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC525[rip]
-	jp	.L1978
+	jp	.L1898
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC525[rip]
-	jne	.L1978
-.L1076:
+	jne	.L1898
+.L996:
 	mov	esi, 45
 	lea	rdi, .LC2140[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45420,17 +45197,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1978:
+	jmp	.L836
+.L1898:
 	nop
-.L1078:
+.L998:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC601[rip]
-	jp	.L1979
+	jp	.L1899
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC601[rip]
-	jne	.L1979
-.L1079:
+	jne	.L1899
+.L999:
 	mov	esi, 30
 	lea	rdi, .LC2141[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45440,17 +45217,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1979:
+	jmp	.L836
+.L1899:
 	nop
-.L1081:
+.L1001:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC551[rip]
-	jp	.L1980
+	jp	.L1900
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC551[rip]
-	jne	.L1980
-.L1082:
+	jne	.L1900
+.L1002:
 	mov	esi, 35
 	lea	rdi, .LC2142[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45460,17 +45237,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1980:
+	jmp	.L836
+.L1900:
 	nop
-.L1084:
+.L1004:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC602[rip]
-	jp	.L1981
+	jp	.L1901
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC602[rip]
-	jne	.L1981
-.L1085:
+	jne	.L1901
+.L1005:
 	mov	esi, 35
 	lea	rdi, .LC2143[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45480,17 +45257,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1981:
+	jmp	.L836
+.L1901:
 	nop
-.L1087:
+.L1007:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC603[rip]
-	jp	.L1982
+	jp	.L1902
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC603[rip]
-	jne	.L1982
-.L1088:
+	jne	.L1902
+.L1008:
 	mov	esi, 22
 	lea	rdi, .LC2144[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45500,17 +45277,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1982:
+	jmp	.L836
+.L1902:
 	nop
-.L1090:
+.L1010:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC604[rip]
-	jp	.L1983
+	jp	.L1903
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC604[rip]
-	jne	.L1983
-.L1091:
+	jne	.L1903
+.L1011:
 	mov	esi, 27
 	lea	rdi, .LC2145[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45520,17 +45297,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1983:
+	jmp	.L836
+.L1903:
 	nop
-.L1093:
+.L1013:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC553[rip]
-	jp	.L1984
+	jp	.L1904
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC553[rip]
-	jne	.L1984
-.L1094:
+	jne	.L1904
+.L1014:
 	mov	esi, 28
 	lea	rdi, .LC2146[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45540,17 +45317,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1984:
+	jmp	.L836
+.L1904:
 	nop
-.L1096:
+.L1016:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC605[rip]
-	jp	.L1985
+	jp	.L1905
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC605[rip]
-	jne	.L1985
-.L1097:
+	jne	.L1905
+.L1017:
 	mov	esi, 29
 	lea	rdi, .LC2147[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45560,17 +45337,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1985:
+	jmp	.L836
+.L1905:
 	nop
-.L1099:
+.L1019:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC485[rip]
-	jp	.L1986
+	jp	.L1906
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC485[rip]
-	jne	.L1986
-.L1100:
+	jne	.L1906
+.L1020:
 	mov	esi, 38
 	lea	rdi, .LC2148[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45580,17 +45357,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1986:
+	jmp	.L836
+.L1906:
 	nop
-.L1102:
+.L1022:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC606[rip]
-	jp	.L1987
+	jp	.L1907
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC606[rip]
-	jne	.L1987
-.L1103:
+	jne	.L1907
+.L1023:
 	mov	esi, 21
 	lea	rdi, .LC2149[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45600,17 +45377,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1987:
+	jmp	.L836
+.L1907:
 	nop
-.L1105:
+.L1025:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC607[rip]
-	jp	.L1988
+	jp	.L1908
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC607[rip]
-	jne	.L1988
-.L1106:
+	jne	.L1908
+.L1026:
 	mov	esi, 28
 	lea	rdi, .LC2150[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45620,17 +45397,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1988:
+	jmp	.L836
+.L1908:
 	nop
-.L1108:
+.L1028:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC608[rip]
-	jp	.L1989
+	jp	.L1909
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC608[rip]
-	jne	.L1989
-.L1109:
+	jne	.L1909
+.L1029:
 	mov	esi, 23
 	lea	rdi, .LC2151[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45640,17 +45417,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1989:
+	jmp	.L836
+.L1909:
 	nop
-.L1111:
+.L1031:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC609[rip]
-	jp	.L1990
+	jp	.L1910
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC609[rip]
-	jne	.L1990
-.L1112:
+	jne	.L1910
+.L1032:
 	mov	esi, 31
 	lea	rdi, .LC2152[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45660,17 +45437,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1990:
+	jmp	.L836
+.L1910:
 	nop
-.L1114:
+.L1034:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC610[rip]
-	jp	.L1991
+	jp	.L1911
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC610[rip]
-	jne	.L1991
-.L1115:
+	jne	.L1911
+.L1035:
 	mov	esi, 32
 	lea	rdi, .LC2153[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45680,17 +45457,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1991:
+	jmp	.L836
+.L1911:
 	nop
-.L1117:
+.L1037:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC611[rip]
-	jp	.L1992
+	jp	.L1912
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC611[rip]
-	jne	.L1992
-.L1118:
+	jne	.L1912
+.L1038:
 	mov	esi, 26
 	lea	rdi, .LC2154[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45700,17 +45477,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1992:
+	jmp	.L836
+.L1912:
 	nop
-.L1120:
+.L1040:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC612[rip]
-	jp	.L1993
+	jp	.L1913
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC612[rip]
-	jne	.L1993
-.L1121:
+	jne	.L1913
+.L1041:
 	mov	esi, 29
 	lea	rdi, .LC2155[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45720,17 +45497,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1993:
+	jmp	.L836
+.L1913:
 	nop
-.L1123:
+.L1043:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC613[rip]
-	jp	.L1994
+	jp	.L1914
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC613[rip]
-	jne	.L1994
-.L1124:
+	jne	.L1914
+.L1044:
 	mov	esi, 19
 	lea	rdi, .LC2156[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45740,17 +45517,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1994:
+	jmp	.L836
+.L1914:
 	nop
-.L1126:
+.L1046:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC614[rip]
-	jp	.L1995
+	jp	.L1915
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC614[rip]
-	jne	.L1995
-.L1127:
+	jne	.L1915
+.L1047:
 	mov	esi, 44
 	lea	rdi, .LC2157[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45760,17 +45537,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1995:
+	jmp	.L836
+.L1915:
 	nop
-.L1129:
+.L1049:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC615[rip]
-	jp	.L1996
+	jp	.L1916
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC615[rip]
-	jne	.L1996
-.L1130:
+	jne	.L1916
+.L1050:
 	mov	esi, 26
 	lea	rdi, .LC2158[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45780,17 +45557,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1996:
+	jmp	.L836
+.L1916:
 	nop
-.L1132:
+.L1052:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC616[rip]
-	jp	.L1997
+	jp	.L1917
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC616[rip]
-	jne	.L1997
-.L1133:
+	jne	.L1917
+.L1053:
 	mov	esi, 29
 	lea	rdi, .LC2159[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45800,17 +45577,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1997:
+	jmp	.L836
+.L1917:
 	nop
-.L1135:
+.L1055:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC504[rip]
-	jp	.L1998
+	jp	.L1918
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC504[rip]
-	jne	.L1998
-.L1136:
+	jne	.L1918
+.L1056:
 	mov	esi, 29
 	lea	rdi, .LC2160[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45820,17 +45597,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1998:
+	jmp	.L836
+.L1918:
 	nop
-.L1138:
+.L1058:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC617[rip]
-	jp	.L1999
+	jp	.L1919
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC617[rip]
-	jne	.L1999
-.L1139:
+	jne	.L1919
+.L1059:
 	mov	esi, 48
 	lea	rdi, .LC2161[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45840,17 +45617,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L1999:
+	jmp	.L836
+.L1919:
 	nop
-.L1141:
+.L1061:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC619[rip]
-	jp	.L2000
+	jp	.L1920
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC619[rip]
-	jne	.L2000
-.L1142:
+	jne	.L1920
+.L1062:
 	mov	esi, 28
 	lea	rdi, .LC2162[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45860,17 +45637,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2000:
+	jmp	.L836
+.L1920:
 	nop
-.L1144:
+.L1064:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC620[rip]
-	jp	.L2001
+	jp	.L1921
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC620[rip]
-	jne	.L2001
-.L1145:
+	jne	.L1921
+.L1065:
 	mov	esi, 66
 	lea	rdi, .LC2163[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45880,17 +45657,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2001:
+	jmp	.L836
+.L1921:
 	nop
-.L1147:
+.L1067:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC499[rip]
-	jp	.L2002
+	jp	.L1922
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC499[rip]
-	jne	.L2002
-.L1148:
+	jne	.L1922
+.L1068:
 	mov	esi, 17
 	lea	rdi, .LC2164[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45900,17 +45677,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2002:
+	jmp	.L836
+.L1922:
 	nop
-.L1150:
+.L1070:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC489[rip]
-	jp	.L2003
+	jp	.L1923
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC489[rip]
-	jne	.L2003
-.L1151:
+	jne	.L1923
+.L1071:
 	mov	esi, 19
 	lea	rdi, .LC2165[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45920,17 +45697,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2003:
+	jmp	.L836
+.L1923:
 	nop
-.L1153:
+.L1073:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC510[rip]
-	jp	.L2004
+	jp	.L1924
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC510[rip]
-	jne	.L2004
-.L1154:
+	jne	.L1924
+.L1074:
 	mov	esi, 35
 	lea	rdi, .LC2166[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45940,17 +45717,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2004:
+	jmp	.L836
+.L1924:
 	nop
-.L1156:
+.L1076:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC621[rip]
-	jp	.L2005
+	jp	.L1925
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC621[rip]
-	jne	.L2005
-.L1157:
+	jne	.L1925
+.L1077:
 	mov	esi, 35
 	lea	rdi, .LC2167[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45960,17 +45737,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2005:
+	jmp	.L836
+.L1925:
 	nop
-.L1159:
+.L1079:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC623[rip]
-	jp	.L2006
+	jp	.L1926
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC623[rip]
-	jne	.L2006
-.L1160:
+	jne	.L1926
+.L1080:
 	mov	esi, 35
 	lea	rdi, .LC2168[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -45980,17 +45757,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2006:
+	jmp	.L836
+.L1926:
 	nop
-.L1162:
+.L1082:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC523[rip]
-	jp	.L2007
+	jp	.L1927
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC523[rip]
-	jne	.L2007
-.L1163:
+	jne	.L1927
+.L1083:
 	mov	esi, 35
 	lea	rdi, .LC2169[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46000,17 +45777,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2007:
+	jmp	.L836
+.L1927:
 	nop
-.L1165:
+.L1085:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC624[rip]
-	jp	.L2008
+	jp	.L1928
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC624[rip]
-	jne	.L2008
-.L1166:
+	jne	.L1928
+.L1086:
 	mov	esi, 35
 	lea	rdi, .LC2170[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46020,17 +45797,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2008:
+	jmp	.L836
+.L1928:
 	nop
-.L1168:
+.L1088:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC477[rip]
-	jp	.L2009
+	jp	.L1929
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC477[rip]
-	jne	.L2009
-.L1169:
+	jne	.L1929
+.L1089:
 	mov	esi, 38
 	lea	rdi, .LC2171[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46040,17 +45817,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2009:
+	jmp	.L836
+.L1929:
 	nop
-.L1171:
+.L1091:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC625[rip]
-	jp	.L2010
+	jp	.L1930
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC625[rip]
-	jne	.L2010
-.L1172:
+	jne	.L1930
+.L1092:
 	mov	esi, 52
 	lea	rdi, .LC2172[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46060,17 +45837,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2010:
+	jmp	.L836
+.L1930:
 	nop
-.L1174:
+.L1094:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC522[rip]
-	jp	.L2011
+	jp	.L1931
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC522[rip]
-	jne	.L2011
-.L1175:
+	jne	.L1931
+.L1095:
 	mov	esi, 88
 	lea	rdi, .LC2173[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46080,17 +45857,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2011:
+	jmp	.L836
+.L1931:
 	nop
-.L1177:
+.L1097:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC626[rip]
-	jp	.L2012
+	jp	.L1932
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC626[rip]
-	jne	.L2012
-.L1178:
+	jne	.L1932
+.L1098:
 	mov	esi, 44
 	lea	rdi, .LC2174[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46100,17 +45877,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2012:
+	jmp	.L836
+.L1932:
 	nop
-.L1180:
+.L1100:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC518[rip]
-	jp	.L2013
+	jp	.L1933
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC518[rip]
-	jne	.L2013
-.L1181:
+	jne	.L1933
+.L1101:
 	mov	esi, 24
 	lea	rdi, .LC2175[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46120,17 +45897,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2013:
+	jmp	.L836
+.L1933:
 	nop
-.L1183:
+.L1103:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC627[rip]
-	jp	.L2014
+	jp	.L1934
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC627[rip]
-	jne	.L2014
-.L1184:
+	jne	.L1934
+.L1104:
 	mov	esi, 26
 	lea	rdi, .LC2176[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46140,17 +45917,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2014:
+	jmp	.L836
+.L1934:
 	nop
-.L1186:
+.L1106:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC628[rip]
-	jp	.L2015
+	jp	.L1935
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC628[rip]
-	jne	.L2015
-.L1187:
+	jne	.L1935
+.L1107:
 	mov	esi, 26
 	lea	rdi, .LC2177[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46160,17 +45937,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2015:
+	jmp	.L836
+.L1935:
 	nop
-.L1189:
+.L1109:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC488[rip]
-	jp	.L2016
+	jp	.L1936
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC488[rip]
-	jne	.L2016
-.L1190:
+	jne	.L1936
+.L1110:
 	mov	esi, 28
 	lea	rdi, .LC2178[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46180,17 +45957,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2016:
+	jmp	.L836
+.L1936:
 	nop
-.L1192:
+.L1112:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC629[rip]
-	jp	.L2017
+	jp	.L1937
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC629[rip]
-	jne	.L2017
-.L1193:
+	jne	.L1937
+.L1113:
 	mov	esi, 29
 	lea	rdi, .LC2179[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46200,17 +45977,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2017:
+	jmp	.L836
+.L1937:
 	nop
-.L1195:
+.L1115:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC631[rip]
-	jp	.L2018
+	jp	.L1938
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC631[rip]
-	jne	.L2018
-.L1196:
+	jne	.L1938
+.L1116:
 	mov	esi, 32
 	lea	rdi, .LC2180[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46220,17 +45997,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2018:
+	jmp	.L836
+.L1938:
 	nop
-.L1198:
+.L1118:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC632[rip]
-	jp	.L2019
+	jp	.L1939
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC632[rip]
-	jne	.L2019
-.L1199:
+	jne	.L1939
+.L1119:
 	mov	esi, 29
 	lea	rdi, .LC2181[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46240,17 +46017,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2019:
+	jmp	.L836
+.L1939:
 	nop
-.L1201:
+.L1121:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC449[rip]
-	jp	.L2020
+	jp	.L1940
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC449[rip]
-	jne	.L2020
-.L1202:
+	jne	.L1940
+.L1122:
 	mov	esi, 30
 	lea	rdi, .LC2182[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46260,17 +46037,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2020:
+	jmp	.L836
+.L1940:
 	nop
-.L1204:
+.L1124:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC633[rip]
-	jp	.L2021
+	jp	.L1941
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC633[rip]
-	jne	.L2021
-.L1205:
+	jne	.L1941
+.L1125:
 	mov	esi, 63
 	lea	rdi, .LC2183[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46280,17 +46057,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2021:
+	jmp	.L836
+.L1941:
 	nop
-.L1207:
+.L1127:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC462[rip]
-	jp	.L2022
+	jp	.L1942
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC462[rip]
-	jne	.L2022
-.L1208:
+	jne	.L1942
+.L1128:
 	mov	esi, 64
 	lea	rdi, .LC2184[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46300,17 +46077,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2022:
+	jmp	.L836
+.L1942:
 	nop
-.L1210:
+.L1130:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC634[rip]
-	jp	.L2023
+	jp	.L1943
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC634[rip]
-	jne	.L2023
-.L1211:
+	jne	.L1943
+.L1131:
 	mov	esi, 48
 	lea	rdi, .LC2185[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46320,17 +46097,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2023:
+	jmp	.L836
+.L1943:
 	nop
-.L1213:
+.L1133:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC636[rip]
-	jp	.L2024
+	jp	.L1944
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC636[rip]
-	jne	.L2024
-.L1214:
+	jne	.L1944
+.L1134:
 	mov	esi, 87
 	lea	rdi, .LC2186[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46340,17 +46117,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2024:
+	jmp	.L836
+.L1944:
 	nop
-.L1216:
+.L1136:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC503[rip]
-	jp	.L2025
+	jp	.L1945
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC503[rip]
-	jne	.L2025
-.L1217:
+	jne	.L1945
+.L1137:
 	mov	esi, 18
 	lea	rdi, .LC2187[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46360,17 +46137,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2025:
+	jmp	.L836
+.L1945:
 	nop
-.L1219:
+.L1139:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC480[rip]
-	jp	.L2026
+	jp	.L1946
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC480[rip]
-	jne	.L2026
-.L1220:
+	jne	.L1946
+.L1140:
 	mov	esi, 21
 	lea	rdi, .LC2188[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46380,17 +46157,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2026:
+	jmp	.L836
+.L1946:
 	nop
-.L1222:
+.L1142:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC461[rip]
-	jp	.L2027
+	jp	.L1947
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC461[rip]
-	jne	.L2027
-.L1223:
+	jne	.L1947
+.L1143:
 	mov	esi, 37
 	lea	rdi, .LC2189[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46400,17 +46177,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2027:
+	jmp	.L836
+.L1947:
 	nop
-.L1225:
+.L1145:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC637[rip]
-	jp	.L2028
+	jp	.L1948
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC637[rip]
-	jne	.L2028
-.L1226:
+	jne	.L1948
+.L1146:
 	mov	esi, 38
 	lea	rdi, .LC2190[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46420,17 +46197,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2028:
+	jmp	.L836
+.L1948:
 	nop
-.L1228:
+.L1148:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC638[rip]
-	jp	.L2029
+	jp	.L1949
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC638[rip]
-	jne	.L2029
-.L1229:
+	jne	.L1949
+.L1149:
 	mov	esi, 38
 	lea	rdi, .LC2191[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46440,17 +46217,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2029:
+	jmp	.L836
+.L1949:
 	nop
-.L1231:
+.L1151:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC640[rip]
-	jp	.L2030
+	jp	.L1950
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC640[rip]
-	jne	.L2030
-.L1232:
+	jne	.L1950
+.L1152:
 	mov	esi, 17
 	lea	rdi, .LC2192[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46460,17 +46237,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2030:
+	jmp	.L836
+.L1950:
 	nop
-.L1234:
+.L1154:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC641[rip]
-	jp	.L2031
+	jp	.L1951
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC641[rip]
-	jne	.L2031
-.L1235:
+	jne	.L1951
+.L1155:
 	mov	esi, 14
 	lea	rdi, .LC2193[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46480,17 +46257,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2031:
+	jmp	.L836
+.L1951:
 	nop
-.L1237:
+.L1157:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC642[rip]
-	jp	.L2032
+	jp	.L1952
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC642[rip]
-	jne	.L2032
-.L1238:
+	jne	.L1952
+.L1158:
 	mov	esi, 20
 	lea	rdi, .LC2194[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46500,17 +46277,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2032:
+	jmp	.L836
+.L1952:
 	nop
-.L1240:
+.L1160:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC643[rip]
-	jp	.L2033
+	jp	.L1953
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC643[rip]
-	jne	.L2033
-.L1241:
+	jne	.L1953
+.L1161:
 	mov	esi, 20
 	lea	rdi, .LC2195[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46520,17 +46297,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2033:
+	jmp	.L836
+.L1953:
 	nop
-.L1243:
+.L1163:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC514[rip]
-	jp	.L2034
+	jp	.L1954
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC514[rip]
-	jne	.L2034
-.L1244:
+	jne	.L1954
+.L1164:
 	mov	esi, 27
 	lea	rdi, .LC2196[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46540,17 +46317,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2034:
+	jmp	.L836
+.L1954:
 	nop
-.L1246:
+.L1166:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC644[rip]
-	jp	.L2035
+	jp	.L1955
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC644[rip]
-	jne	.L2035
-.L1247:
+	jne	.L1955
+.L1167:
 	mov	esi, 27
 	lea	rdi, .LC2197[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46560,17 +46337,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2035:
+	jmp	.L836
+.L1955:
 	nop
-.L1249:
+.L1169:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC646[rip]
-	jp	.L2036
+	jp	.L1956
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC646[rip]
-	jne	.L2036
-.L1250:
+	jne	.L1956
+.L1170:
 	mov	esi, 19
 	lea	rdi, .LC2198[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46580,17 +46357,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2036:
+	jmp	.L836
+.L1956:
 	nop
-.L1252:
+.L1172:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC647[rip]
-	jp	.L2037
+	jp	.L1957
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC647[rip]
-	jne	.L2037
-.L1253:
+	jne	.L1957
+.L1173:
 	mov	esi, 22
 	lea	rdi, .LC2199[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46600,17 +46377,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2037:
+	jmp	.L836
+.L1957:
 	nop
-.L1255:
+.L1175:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC501[rip]
-	jp	.L2038
+	jp	.L1958
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC501[rip]
-	jne	.L2038
-.L1256:
+	jne	.L1958
+.L1176:
 	mov	esi, 26
 	lea	rdi, .LC2200[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46620,17 +46397,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2038:
+	jmp	.L836
+.L1958:
 	nop
-.L1258:
+.L1178:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC497[rip]
-	jp	.L2039
+	jp	.L1959
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC497[rip]
-	jne	.L2039
-.L1259:
+	jne	.L1959
+.L1179:
 	mov	esi, 28
 	lea	rdi, .LC2201[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46640,17 +46417,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2039:
+	jmp	.L836
+.L1959:
 	nop
-.L1261:
+.L1181:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC648[rip]
-	jp	.L2040
+	jp	.L1960
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC648[rip]
-	jne	.L2040
-.L1262:
+	jne	.L1960
+.L1182:
 	mov	esi, 30
 	lea	rdi, .LC2202[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46660,17 +46437,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2040:
+	jmp	.L836
+.L1960:
 	nop
-.L1264:
+.L1184:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC509[rip]
-	jp	.L2041
+	jp	.L1961
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC509[rip]
-	jne	.L2041
-.L1265:
+	jne	.L1961
+.L1185:
 	mov	esi, 69
 	lea	rdi, .LC2203[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46680,17 +46457,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2041:
+	jmp	.L836
+.L1961:
 	nop
-.L1267:
+.L1187:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC457[rip]
-	jp	.L2042
+	jp	.L1962
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC457[rip]
-	jne	.L2042
-.L1268:
+	jne	.L1962
+.L1188:
 	mov	esi, 25
 	lea	rdi, .LC2204[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46700,17 +46477,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2042:
+	jmp	.L836
+.L1962:
 	nop
-.L1270:
+.L1190:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC650[rip]
-	jp	.L2043
+	jp	.L1963
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC650[rip]
-	jne	.L2043
-.L1271:
+	jne	.L1963
+.L1191:
 	mov	esi, 37
 	lea	rdi, .LC2205[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46720,17 +46497,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2043:
+	jmp	.L836
+.L1963:
 	nop
-.L1273:
+.L1193:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC651[rip]
-	jp	.L2044
+	jp	.L1964
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC651[rip]
-	jne	.L2044
-.L1274:
+	jne	.L1964
+.L1194:
 	mov	esi, 44
 	lea	rdi, .LC2206[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46740,17 +46517,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2044:
+	jmp	.L836
+.L1964:
 	nop
-.L1276:
+.L1196:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC487[rip]
-	jp	.L2045
+	jp	.L1965
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC487[rip]
-	jne	.L2045
-.L1277:
+	jne	.L1965
+.L1197:
 	mov	esi, 60
 	lea	rdi, .LC2207[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46760,17 +46537,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2045:
+	jmp	.L836
+.L1965:
 	nop
-.L1279:
+.L1199:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC652[rip]
-	jp	.L2046
+	jp	.L1966
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC652[rip]
-	jne	.L2046
-.L1280:
+	jne	.L1966
+.L1200:
 	mov	esi, 28
 	lea	rdi, .LC2208[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46780,17 +46557,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2046:
+	jmp	.L836
+.L1966:
 	nop
-.L1282:
+.L1202:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC653[rip]
-	jp	.L2047
+	jp	.L1967
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC653[rip]
-	jne	.L2047
-.L1283:
+	jne	.L1967
+.L1203:
 	mov	esi, 40
 	lea	rdi, .LC2209[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46800,17 +46577,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2047:
+	jmp	.L836
+.L1967:
 	nop
-.L1285:
+.L1205:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC655[rip]
-	jp	.L2048
+	jp	.L1968
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC655[rip]
-	jne	.L2048
-.L1286:
+	jne	.L1968
+.L1206:
 	mov	esi, 86
 	lea	rdi, .LC2210[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46820,17 +46597,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2048:
+	jmp	.L836
+.L1968:
 	nop
-.L1288:
+.L1208:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC511[rip]
-	jp	.L2049
+	jp	.L1969
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC511[rip]
-	jne	.L2049
-.L1289:
+	jne	.L1969
+.L1209:
 	mov	esi, 26
 	lea	rdi, .LC2211[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46840,17 +46617,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2049:
+	jmp	.L836
+.L1969:
 	nop
-.L1291:
+.L1211:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC656[rip]
-	jp	.L2050
+	jp	.L1970
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC656[rip]
-	jne	.L2050
-.L1292:
+	jne	.L1970
+.L1212:
 	mov	esi, 29
 	lea	rdi, .LC2212[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46860,17 +46637,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2050:
+	jmp	.L836
+.L1970:
 	nop
-.L1294:
+.L1214:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC507[rip]
-	jp	.L2051
+	jp	.L1971
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC507[rip]
-	jne	.L2051
-.L1295:
+	jne	.L1971
+.L1215:
 	mov	esi, 30
 	lea	rdi, .LC2213[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46880,17 +46657,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2051:
+	jmp	.L836
+.L1971:
 	nop
-.L1297:
+.L1217:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC438[rip]
-	jp	.L2052
+	jp	.L1972
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC438[rip]
-	jne	.L2052
-.L1298:
+	jne	.L1972
+.L1218:
 	mov	esi, 32
 	lea	rdi, .LC2214[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46900,17 +46677,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2052:
+	jmp	.L836
+.L1972:
 	nop
-.L1300:
+.L1220:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC657[rip]
-	jp	.L2053
+	jp	.L1973
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC657[rip]
-	jne	.L2053
-.L1301:
+	jne	.L1973
+.L1221:
 	mov	esi, 34
 	lea	rdi, .LC2215[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46920,17 +46697,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2053:
+	jmp	.L836
+.L1973:
 	nop
-.L1303:
+.L1223:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC659[rip]
-	jp	.L2054
+	jp	.L1974
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC659[rip]
-	jne	.L2054
-.L1304:
+	jne	.L1974
+.L1224:
 	mov	esi, 36
 	lea	rdi, .LC2216[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46940,17 +46717,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2054:
+	jmp	.L836
+.L1974:
 	nop
-.L1306:
+.L1226:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC660[rip]
-	jp	.L2055
+	jp	.L1975
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC660[rip]
-	jne	.L2055
-.L1307:
+	jne	.L1975
+.L1227:
 	mov	esi, 37
 	lea	rdi, .LC2217[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46960,17 +46737,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2055:
+	jmp	.L836
+.L1975:
 	nop
-.L1309:
+.L1229:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC661[rip]
-	jp	.L2056
+	jp	.L1976
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC661[rip]
-	jne	.L2056
-.L1310:
+	jne	.L1976
+.L1230:
 	mov	esi, 39
 	lea	rdi, .LC2218[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -46980,17 +46757,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2056:
+	jmp	.L836
+.L1976:
 	nop
-.L1312:
+.L1232:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC521[rip]
-	jp	.L2057
+	jp	.L1977
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC521[rip]
-	jne	.L2057
-.L1313:
+	jne	.L1977
+.L1233:
 	mov	esi, 45
 	lea	rdi, .LC2219[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47000,17 +46777,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2057:
+	jmp	.L836
+.L1977:
 	nop
-.L1315:
+.L1235:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC662[rip]
-	jp	.L2058
+	jp	.L1978
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC662[rip]
-	jne	.L2058
-.L1316:
+	jne	.L1978
+.L1236:
 	mov	esi, 46
 	lea	rdi, .LC2220[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47020,17 +46797,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2058:
+	jmp	.L836
+.L1978:
 	nop
-.L1318:
+.L1238:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC505[rip]
-	jp	.L2059
+	jp	.L1979
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC505[rip]
-	jne	.L2059
-.L1319:
+	jne	.L1979
+.L1239:
 	mov	esi, 47
 	lea	rdi, .LC2221[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47040,17 +46817,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2059:
+	jmp	.L836
+.L1979:
 	nop
-.L1321:
+.L1241:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC519[rip]
-	jp	.L2060
+	jp	.L1980
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC519[rip]
-	jne	.L2060
-.L1322:
+	jne	.L1980
+.L1242:
 	mov	esi, 53
 	lea	rdi, .LC2222[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47060,17 +46837,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2060:
+	jmp	.L836
+.L1980:
 	nop
-.L1324:
+.L1244:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC664[rip]
-	jp	.L2061
+	jp	.L1981
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC664[rip]
-	jne	.L2061
-.L1325:
+	jne	.L1981
+.L1245:
 	mov	esi, 62
 	lea	rdi, .LC2223[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47080,17 +46857,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2061:
+	jmp	.L836
+.L1981:
 	nop
-.L1327:
+.L1247:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC520[rip]
-	jp	.L2062
+	jp	.L1982
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC520[rip]
-	jne	.L2062
-.L1328:
+	jne	.L1982
+.L1248:
 	mov	esi, 65
 	lea	rdi, .LC2224[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47100,17 +46877,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2062:
+	jmp	.L836
+.L1982:
 	nop
-.L1330:
+.L1250:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC665[rip]
-	jp	.L2063
+	jp	.L1983
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC665[rip]
-	jne	.L2063
-.L1331:
+	jne	.L1983
+.L1251:
 	mov	esi, 74
 	lea	rdi, .LC2225[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47120,17 +46897,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2063:
+	jmp	.L836
+.L1983:
 	nop
-.L1333:
+.L1253:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC666[rip]
-	jp	.L2064
+	jp	.L1984
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC666[rip]
-	jne	.L2064
-.L1334:
+	jne	.L1984
+.L1254:
 	mov	esi, 60
 	lea	rdi, .LC2226[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47140,17 +46917,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2064:
+	jmp	.L836
+.L1984:
 	nop
-.L1336:
+.L1256:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC444[rip]
-	jp	.L2065
+	jp	.L1985
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC444[rip]
-	jne	.L2065
-.L1337:
+	jne	.L1985
+.L1257:
 	mov	esi, 49
 	lea	rdi, .LC2227[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47160,17 +46937,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2065:
+	jmp	.L836
+.L1985:
 	nop
-.L1339:
+.L1259:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC668[rip]
-	jp	.L2066
+	jp	.L1986
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC668[rip]
-	jne	.L2066
-.L1340:
+	jne	.L1986
+.L1260:
 	mov	esi, 49
 	lea	rdi, .LC2228[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47180,17 +46957,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2066:
+	jmp	.L836
+.L1986:
 	nop
-.L1342:
+.L1262:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC517[rip]
-	jp	.L2067
+	jp	.L1987
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC517[rip]
-	jne	.L2067
-.L1343:
+	jne	.L1987
+.L1263:
 	mov	esi, 35
 	lea	rdi, .LC2229[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47200,17 +46977,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2067:
+	jmp	.L836
+.L1987:
 	nop
-.L1345:
+.L1265:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC669[rip]
-	jp	.L2068
+	jp	.L1988
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC669[rip]
-	jne	.L2068
-.L1346:
+	jne	.L1988
+.L1266:
 	mov	esi, 30
 	lea	rdi, .LC2230[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47220,17 +46997,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2068:
+	jmp	.L836
+.L1988:
 	nop
-.L1348:
+.L1268:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC670[rip]
-	jp	.L2069
+	jp	.L1989
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC670[rip]
-	jne	.L2069
-.L1349:
+	jne	.L1989
+.L1269:
 	mov	esi, 8
 	lea	rdi, .LC2231[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47240,17 +47017,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2069:
+	jmp	.L836
+.L1989:
 	nop
-.L1351:
+.L1271:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC671[rip]
-	jp	.L2070
+	jp	.L1990
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC671[rip]
-	jne	.L2070
-.L1352:
+	jne	.L1990
+.L1272:
 	mov	esi, 28
 	lea	rdi, .LC2232[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47260,17 +47037,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2070:
+	jmp	.L836
+.L1990:
 	nop
-.L1354:
+.L1274:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC672[rip]
-	jp	.L2071
+	jp	.L1991
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC672[rip]
-	jne	.L2071
-.L1355:
+	jne	.L1991
+.L1275:
 	mov	esi, 28
 	lea	rdi, .LC2233[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47280,17 +47057,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2071:
+	jmp	.L836
+.L1991:
 	nop
-.L1357:
+.L1277:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC674[rip]
-	jp	.L2072
+	jp	.L1992
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC674[rip]
-	jne	.L2072
-.L1358:
+	jne	.L1992
+.L1278:
 	mov	esi, 32
 	lea	rdi, .LC2234[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47300,17 +47077,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2072:
+	jmp	.L836
+.L1992:
 	nop
-.L1360:
+.L1280:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC675[rip]
-	jp	.L2073
+	jp	.L1993
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC675[rip]
-	jne	.L2073
-.L1361:
+	jne	.L1993
+.L1281:
 	mov	esi, 34
 	lea	rdi, .LC2235[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47320,17 +47097,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2073:
+	jmp	.L836
+.L1993:
 	nop
-.L1363:
+.L1283:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC676[rip]
-	jp	.L2074
+	jp	.L1994
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC676[rip]
-	jne	.L2074
-.L1364:
+	jne	.L1994
+.L1284:
 	mov	esi, 1
 	lea	rdi, .LC832[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47340,17 +47117,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2074:
+	jmp	.L836
+.L1994:
 	nop
-.L1366:
+.L1286:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC677[rip]
-	jp	.L2075
+	jp	.L1995
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC677[rip]
-	jne	.L2075
-.L1367:
+	jne	.L1995
+.L1287:
 	mov	esi, 5
 	lea	rdi, .LC740[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47360,17 +47137,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2075:
+	jmp	.L836
+.L1995:
 	nop
-.L1369:
+.L1289:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC678[rip]
-	jp	.L2076
+	jp	.L1996
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC678[rip]
-	jne	.L2076
-.L1370:
+	jne	.L1996
+.L1290:
 	mov	esi, 6
 	lea	rdi, .LC742[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47380,17 +47157,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2076:
+	jmp	.L836
+.L1996:
 	nop
-.L1372:
+.L1292:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC679[rip]
-	jp	.L2077
+	jp	.L1997
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC679[rip]
-	jne	.L2077
-.L1373:
+	jne	.L1997
+.L1293:
 	mov	esi, 14
 	lea	rdi, .LC2236[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47400,17 +47177,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2077:
+	jmp	.L836
+.L1997:
 	nop
-.L1375:
+.L1295:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC500[rip]
-	jp	.L2078
+	jp	.L1998
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC500[rip]
-	jne	.L2078
-.L1376:
+	jne	.L1998
+.L1296:
 	mov	esi, 15
 	lea	rdi, .LC2237[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47420,17 +47197,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2078:
+	jmp	.L836
+.L1998:
 	nop
-.L1378:
+.L1298:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC680[rip]
-	jp	.L2079
+	jp	.L1999
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC680[rip]
-	jne	.L2079
-.L1379:
+	jne	.L1999
+.L1299:
 	mov	esi, 16
 	lea	rdi, .LC2238[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47440,17 +47217,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2079:
+	jmp	.L836
+.L1999:
 	nop
-.L1381:
+.L1301:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC681[rip]
-	jp	.L2080
+	jp	.L2000
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC681[rip]
-	jne	.L2080
-.L1382:
+	jne	.L2000
+.L1302:
 	mov	esi, 16
 	lea	rdi, .LC2239[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47460,17 +47237,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2080:
+	jmp	.L836
+.L2000:
 	nop
-.L1384:
+.L1304:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC682[rip]
-	jp	.L2081
+	jp	.L2001
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC682[rip]
-	jne	.L2081
-.L1385:
+	jne	.L2001
+.L1305:
 	mov	esi, 20
 	lea	rdi, .LC2240[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47480,17 +47257,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2081:
+	jmp	.L836
+.L2001:
 	nop
-.L1387:
+.L1307:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC683[rip]
-	jp	.L2082
+	jp	.L2002
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC683[rip]
-	jne	.L2082
-.L1388:
+	jne	.L2002
+.L1308:
 	mov	esi, 20
 	lea	rdi, .LC2241[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47500,17 +47277,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2082:
+	jmp	.L836
+.L2002:
 	nop
-.L1390:
+.L1310:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC502[rip]
-	jp	.L2083
+	jp	.L2003
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC502[rip]
-	jne	.L2083
-.L1391:
+	jne	.L2003
+.L1311:
 	mov	esi, 25
 	lea	rdi, .LC2242[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47520,17 +47297,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2083:
+	jmp	.L836
+.L2003:
 	nop
-.L1393:
+.L1313:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC493[rip]
-	jp	.L2084
+	jp	.L2004
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC493[rip]
-	jne	.L2084
-.L1394:
+	jne	.L2004
+.L1314:
 	mov	esi, 25
 	lea	rdi, .LC2243[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47540,17 +47317,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2084:
+	jmp	.L836
+.L2004:
 	nop
-.L1396:
+.L1316:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC684[rip]
-	jp	.L2085
+	jp	.L2005
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC684[rip]
-	jne	.L2085
-.L1397:
+	jne	.L2005
+.L1317:
 	mov	esi, 25
 	lea	rdi, .LC2244[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47560,17 +47337,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2085:
+	jmp	.L836
+.L2005:
 	nop
-.L1399:
+.L1319:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC685[rip]
-	jp	.L2086
+	jp	.L2006
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC685[rip]
-	jne	.L2086
-.L1400:
+	jne	.L2006
+.L1320:
 	mov	esi, 26
 	lea	rdi, .LC2245[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47580,17 +47357,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2086:
+	jmp	.L836
+.L2006:
 	nop
-.L1402:
+.L1322:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC686[rip]
-	jp	.L2087
+	jp	.L2007
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC686[rip]
-	jne	.L2087
-.L1403:
+	jne	.L2007
+.L1323:
 	mov	esi, 26
 	lea	rdi, .LC2246[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47600,17 +47377,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2087:
+	jmp	.L836
+.L2007:
 	nop
-.L1405:
+.L1325:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC483[rip]
-	jp	.L2088
+	jp	.L2008
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC483[rip]
-	jne	.L2088
-.L1406:
+	jne	.L2008
+.L1326:
 	mov	esi, 27
 	lea	rdi, .LC2247[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47620,17 +47397,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2088:
+	jmp	.L836
+.L2008:
 	nop
-.L1408:
+.L1328:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC687[rip]
-	jp	.L2089
+	jp	.L2009
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC687[rip]
-	jne	.L2089
-.L1409:
+	jne	.L2009
+.L1329:
 	mov	esi, 27
 	lea	rdi, .LC2248[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47640,17 +47417,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2089:
+	jmp	.L836
+.L2009:
 	nop
-.L1411:
+.L1331:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2249[rip]
-	jp	.L2090
+	jp	.L2010
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2249[rip]
-	jne	.L2090
-.L1412:
+	jne	.L2010
+.L1332:
 	mov	esi, 30
 	lea	rdi, .LC2250[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47660,17 +47437,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2090:
+	jmp	.L836
+.L2010:
 	nop
-.L1414:
+.L1334:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2251[rip]
-	jp	.L2091
+	jp	.L2011
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2251[rip]
-	jne	.L2091
-.L1415:
+	jne	.L2011
+.L1335:
 	mov	esi, 30
 	lea	rdi, .LC2252[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47680,17 +47457,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2091:
+	jmp	.L836
+.L2011:
 	nop
-.L1417:
+.L1337:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC508[rip]
-	jp	.L2092
+	jp	.L2012
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC508[rip]
-	jne	.L2092
-.L1418:
+	jne	.L2012
+.L1338:
 	mov	esi, 30
 	lea	rdi, .LC2253[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47700,17 +47477,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2092:
+	jmp	.L836
+.L2012:
 	nop
-.L1420:
+.L1340:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC441[rip]
-	jp	.L2093
+	jp	.L2013
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC441[rip]
-	jne	.L2093
-.L1421:
+	jne	.L2013
+.L1341:
 	mov	esi, 31
 	lea	rdi, .LC2254[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47720,17 +47497,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2093:
+	jmp	.L836
+.L2013:
 	nop
-.L1423:
+.L1343:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC476[rip]
-	jp	.L2094
+	jp	.L2014
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC476[rip]
-	jne	.L2094
-.L1424:
+	jne	.L2014
+.L1344:
 	mov	esi, 39
 	lea	rdi, .LC2255[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47740,17 +47517,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2094:
+	jmp	.L836
+.L2014:
 	nop
-.L1426:
+.L1346:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2256[rip]
-	jp	.L2095
+	jp	.L2015
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2256[rip]
-	jne	.L2095
-.L1427:
+	jne	.L2015
+.L1347:
 	mov	esi, 52
 	lea	rdi, .LC2257[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47760,17 +47537,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2095:
+	jmp	.L836
+.L2015:
 	nop
-.L1429:
+.L1349:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2258[rip]
-	jp	.L2096
+	jp	.L2016
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2258[rip]
-	jne	.L2096
-.L1430:
+	jne	.L2016
+.L1350:
 	mov	esi, 11
 	lea	rdi, .LC2259[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47780,17 +47557,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2096:
+	jmp	.L836
+.L2016:
 	nop
-.L1432:
+.L1352:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC506[rip]
-	jp	.L2097
+	jp	.L2017
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC506[rip]
-	jne	.L2097
-.L1433:
+	jne	.L2017
+.L1353:
 	mov	esi, 20
 	lea	rdi, .LC2260[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47800,17 +47577,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2097:
+	jmp	.L836
+.L2017:
 	nop
-.L1435:
+.L1355:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2261[rip]
-	jp	.L2098
+	jp	.L2018
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2261[rip]
-	jne	.L2098
-.L1436:
+	jne	.L2018
+.L1356:
 	mov	esi, 25
 	lea	rdi, .LC2262[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47820,17 +47597,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2098:
+	jmp	.L836
+.L2018:
 	nop
-.L1438:
+.L1358:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC484[rip]
-	jp	.L2099
+	jp	.L2019
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC484[rip]
-	jne	.L2099
-.L1439:
+	jne	.L2019
+.L1359:
 	mov	esi, 28
 	lea	rdi, .LC2263[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47840,17 +47617,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2099:
+	jmp	.L836
+.L2019:
 	nop
-.L1441:
+.L1361:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC478[rip]
-	jp	.L2100
+	jp	.L2020
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC478[rip]
-	jne	.L2100
-.L1442:
+	jne	.L2020
+.L1362:
 	mov	esi, 60
 	lea	rdi, .LC2264[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47860,17 +47637,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2100:
+	jmp	.L836
+.L2020:
 	nop
-.L1444:
+.L1364:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2265[rip]
-	jp	.L2101
+	jp	.L2021
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2265[rip]
-	jne	.L2101
-.L1445:
+	jne	.L2021
+.L1365:
 	mov	esi, 2
 	lea	rdi, .LC2266[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47880,17 +47657,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2101:
+	jmp	.L836
+.L2021:
 	nop
-.L1447:
+.L1367:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2267[rip]
-	jp	.L2102
+	jp	.L2022
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2267[rip]
-	jne	.L2102
-.L1448:
+	jne	.L2022
+.L1368:
 	mov	esi, 13
 	lea	rdi, .LC2268[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47900,17 +47677,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2102:
+	jmp	.L836
+.L2022:
 	nop
-.L1450:
+.L1370:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2269[rip]
-	jp	.L2103
+	jp	.L2023
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2269[rip]
-	jne	.L2103
-.L1451:
+	jne	.L2023
+.L1371:
 	mov	esi, 12
 	lea	rdi, .LC2270[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47920,17 +47697,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2103:
+	jmp	.L836
+.L2023:
 	nop
-.L1453:
+.L1373:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2271[rip]
-	jp	.L2104
+	jp	.L2024
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2271[rip]
-	jne	.L2104
-.L1454:
+	jne	.L2024
+.L1374:
 	mov	esi, 21
 	lea	rdi, .LC2272[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47940,17 +47717,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2104:
+	jmp	.L836
+.L2024:
 	nop
-.L1456:
+.L1376:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2273[rip]
-	jp	.L2105
+	jp	.L2025
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2273[rip]
-	jne	.L2105
-.L1457:
+	jne	.L2025
+.L1377:
 	mov	esi, 55
 	lea	rdi, .LC2274[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47960,17 +47737,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2105:
+	jmp	.L836
+.L2025:
 	nop
-.L1459:
+.L1379:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC530[rip]
-	jp	.L2106
+	jp	.L2026
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC530[rip]
-	jne	.L2106
-.L1460:
+	jne	.L2026
+.L1380:
 	mov	esi, 78
 	lea	rdi, .LC2275[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -47980,17 +47757,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2106:
+	jmp	.L836
+.L2026:
 	nop
-.L1462:
+.L1382:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2276[rip]
-	jp	.L2107
+	jp	.L2027
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2276[rip]
-	jne	.L2107
-.L1463:
+	jne	.L2027
+.L1383:
 	mov	esi, 34
 	lea	rdi, .LC2277[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48000,17 +47777,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2107:
+	jmp	.L836
+.L2027:
 	nop
-.L1465:
+.L1385:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2278[rip]
-	jp	.L2108
+	jp	.L2028
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2278[rip]
-	jne	.L2108
-.L1466:
+	jne	.L2028
+.L1386:
 	mov	esi, 144
 	lea	rdi, .LC2279[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48020,17 +47797,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2108:
+	jmp	.L836
+.L2028:
 	nop
-.L1468:
+.L1388:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC513[rip]
-	jp	.L2109
+	jp	.L2029
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC513[rip]
-	jne	.L2109
-.L1469:
+	jne	.L2029
+.L1389:
 	mov	esi, 172
 	lea	rdi, .LC2280[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48040,17 +47817,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2109:
+	jmp	.L836
+.L2029:
 	nop
-.L1471:
+.L1391:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC494[rip]
-	jp	.L2110
+	jp	.L2030
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC494[rip]
-	jne	.L2110
-.L1472:
+	jne	.L2030
+.L1392:
 	mov	esi, 43
 	lea	rdi, .LC2281[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48060,17 +47837,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2110:
+	jmp	.L836
+.L2030:
 	nop
-.L1474:
+.L1394:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2282[rip]
-	jp	.L2111
+	jp	.L2031
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2282[rip]
-	jne	.L2111
-.L1475:
+	jne	.L2031
+.L1395:
 	mov	esi, 172
 	lea	rdi, .LC2283[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48080,17 +47857,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2111:
+	jmp	.L836
+.L2031:
 	nop
-.L1477:
+.L1397:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2284[rip]
-	jp	.L2112
+	jp	.L2032
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2284[rip]
-	jne	.L2112
-.L1478:
+	jne	.L2032
+.L1398:
 	mov	esi, 34
 	lea	rdi, .LC2285[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48100,17 +47877,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2112:
+	jmp	.L836
+.L2032:
 	nop
-.L1480:
+.L1400:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC529[rip]
-	jp	.L2113
+	jp	.L2033
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC529[rip]
-	jne	.L2113
-.L1481:
+	jne	.L2033
+.L1401:
 	mov	esi, 21
 	lea	rdi, .LC2286[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48120,17 +47897,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2113:
+	jmp	.L836
+.L2033:
 	nop
-.L1483:
+.L1403:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2287[rip]
-	jp	.L2114
+	jp	.L2034
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2287[rip]
-	jne	.L2114
-.L1484:
+	jne	.L2034
+.L1404:
 	mov	esi, 30
 	lea	rdi, .LC2288[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48140,17 +47917,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2114:
+	jmp	.L836
+.L2034:
 	nop
-.L1486:
+.L1406:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2289[rip]
-	jp	.L2115
+	jp	.L2035
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2289[rip]
-	jne	.L2115
-.L1487:
+	jne	.L2035
+.L1407:
 	mov	esi, 21
 	lea	rdi, .LC2290[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48160,17 +47937,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2115:
+	jmp	.L836
+.L2035:
 	nop
-.L1489:
+.L1409:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC447[rip]
-	jp	.L2116
+	jp	.L2036
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC447[rip]
-	jne	.L2116
-.L1490:
+	jne	.L2036
+.L1410:
 	mov	esi, 21
 	lea	rdi, .LC2291[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48180,17 +47957,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2116:
+	jmp	.L836
+.L2036:
 	nop
-.L1492:
+.L1412:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC515[rip]
-	jp	.L2117
+	jp	.L2037
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC515[rip]
-	jne	.L2117
-.L1493:
+	jne	.L2037
+.L1413:
 	mov	esi, 22
 	lea	rdi, .LC2292[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48200,17 +47977,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2117:
+	jmp	.L836
+.L2037:
 	nop
-.L1495:
+.L1415:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2293[rip]
-	jp	.L2118
+	jp	.L2038
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2293[rip]
-	jne	.L2118
-.L1496:
+	jne	.L2038
+.L1416:
 	mov	esi, 35
 	lea	rdi, .LC2294[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48220,17 +47997,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2118:
+	jmp	.L836
+.L2038:
 	nop
-.L1498:
+.L1418:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2295[rip]
-	jp	.L2119
+	jp	.L2039
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2295[rip]
-	jne	.L2119
-.L1499:
+	jne	.L2039
+.L1419:
 	mov	esi, 35
 	lea	rdi, .LC2296[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48240,17 +48017,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2119:
+	jmp	.L836
+.L2039:
 	nop
-.L1501:
+.L1421:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC492[rip]
-	jp	.L2120
+	jp	.L2040
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC492[rip]
-	jne	.L2120
-.L1502:
+	jne	.L2040
+.L1422:
 	mov	esi, 36
 	lea	rdi, .LC2297[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48260,17 +48037,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2120:
+	jmp	.L836
+.L2040:
 	nop
-.L1504:
+.L1424:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2298[rip]
-	jp	.L2121
+	jp	.L2041
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2298[rip]
-	jne	.L2121
-.L1505:
+	jne	.L2041
+.L1425:
 	mov	esi, 36
 	lea	rdi, .LC2299[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48280,17 +48057,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2121:
+	jmp	.L836
+.L2041:
 	nop
-.L1507:
+.L1427:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2300[rip]
-	jp	.L2122
+	jp	.L2042
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2300[rip]
-	jne	.L2122
-.L1508:
+	jne	.L2042
+.L1428:
 	mov	esi, 17
 	lea	rdi, .LC2301[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48300,17 +48077,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2122:
+	jmp	.L836
+.L2042:
 	nop
-.L1510:
+.L1430:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2302[rip]
-	jp	.L2123
+	jp	.L2043
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2302[rip]
-	jne	.L2123
-.L1511:
+	jne	.L2043
+.L1431:
 	mov	esi, 17
 	lea	rdi, .LC2303[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48320,17 +48097,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2123:
+	jmp	.L836
+.L2043:
 	nop
-.L1513:
+.L1433:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2304[rip]
-	jp	.L2124
+	jp	.L2044
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2304[rip]
-	jne	.L2124
-.L1514:
+	jne	.L2044
+.L1434:
 	mov	esi, 47
 	lea	rdi, .LC2305[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48340,17 +48117,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2124:
+	jmp	.L836
+.L2044:
 	nop
-.L1516:
+.L1436:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC406[rip]
-	jp	.L2125
+	jp	.L2045
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC406[rip]
-	jne	.L2125
-.L1517:
+	jne	.L2045
+.L1437:
 	mov	esi, 49
 	lea	rdi, .LC2306[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48360,17 +48137,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2125:
+	jmp	.L836
+.L2045:
 	nop
-.L1519:
+.L1439:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC407[rip]
-	jp	.L2126
+	jp	.L2046
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC407[rip]
-	jne	.L2126
-.L1520:
+	jne	.L2046
+.L1440:
 	mov	esi, 49
 	lea	rdi, .LC2307[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48380,17 +48157,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2126:
+	jmp	.L836
+.L2046:
 	nop
-.L1522:
+.L1442:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC414[rip]
-	jp	.L2127
+	jp	.L2047
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC414[rip]
-	jne	.L2127
-.L1523:
+	jne	.L2047
+.L1443:
 	mov	esi, 72
 	lea	rdi, .LC2308[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48400,17 +48177,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2127:
+	jmp	.L836
+.L2047:
 	nop
-.L1525:
+.L1445:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC415[rip]
-	jp	.L2128
+	jp	.L2048
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC415[rip]
-	jne	.L2128
-.L1526:
+	jne	.L2048
+.L1446:
 	mov	esi, 73
 	lea	rdi, .LC2309[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48420,17 +48197,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2128:
+	jmp	.L836
+.L2048:
 	nop
-.L1528:
+.L1448:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC416[rip]
-	jp	.L2129
+	jp	.L2049
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC416[rip]
-	jne	.L2129
-.L1529:
+	jne	.L2049
+.L1449:
 	mov	esi, 88
 	lea	rdi, .LC2310[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48440,17 +48217,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2129:
+	jmp	.L836
+.L2049:
 	nop
-.L1531:
+.L1451:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC417[rip]
-	jp	.L2130
+	jp	.L2050
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC417[rip]
-	jne	.L2130
-.L1532:
+	jne	.L2050
+.L1452:
 	mov	esi, 27
 	lea	rdi, .LC2311[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48460,17 +48237,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2130:
+	jmp	.L836
+.L2050:
 	nop
-.L1534:
+.L1454:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC418[rip]
-	jp	.L2131
+	jp	.L2051
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC418[rip]
-	jne	.L2131
-.L1535:
+	jne	.L2051
+.L1455:
 	mov	esi, 44
 	lea	rdi, .LC2312[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48480,17 +48257,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2131:
+	jmp	.L836
+.L2051:
 	nop
-.L1537:
+.L1457:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC419[rip]
-	jp	.L2132
+	jp	.L2052
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC419[rip]
-	jne	.L2132
-.L1538:
+	jne	.L2052
+.L1458:
 	mov	esi, 20
 	lea	rdi, .LC2313[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48500,17 +48277,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2132:
+	jmp	.L836
+.L2052:
 	nop
-.L1540:
+.L1460:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC600[rip]
-	jp	.L2133
+	jp	.L2053
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC600[rip]
-	jne	.L2133
-.L1541:
+	jne	.L2053
+.L1461:
 	mov	esi, 11
 	lea	rdi, .LC2314[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48520,17 +48297,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2133:
+	jmp	.L836
+.L2053:
 	nop
-.L1543:
+.L1463:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC498[rip]
-	jp	.L2134
+	jp	.L2054
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC498[rip]
-	jne	.L2134
-.L1544:
+	jne	.L2054
+.L1464:
 	mov	esi, 12
 	lea	rdi, .LC2315[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48540,17 +48317,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2134:
+	jmp	.L836
+.L2054:
 	nop
-.L1546:
+.L1466:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC527[rip]
-	jp	.L2135
+	jp	.L2055
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC527[rip]
-	jne	.L2135
-.L1547:
+	jne	.L2055
+.L1467:
 	mov	esi, 11
 	lea	rdi, .LC2316[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48560,17 +48337,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2135:
+	jmp	.L836
+.L2055:
 	nop
-.L1549:
+.L1469:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC491[rip]
-	jp	.L2136
+	jp	.L2056
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC491[rip]
-	jne	.L2136
-.L1550:
+	jne	.L2056
+.L1470:
 	mov	esi, 28
 	lea	rdi, .LC2317[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48580,17 +48357,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2136:
+	jmp	.L836
+.L2056:
 	nop
-.L1552:
+.L1472:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC618[rip]
-	jp	.L2137
+	jp	.L2057
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC618[rip]
-	jne	.L2137
-.L1553:
+	jne	.L2057
+.L1473:
 	mov	esi, 24
 	lea	rdi, .LC2318[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48600,17 +48377,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2137:
+	jmp	.L836
+.L2057:
 	nop
-.L1555:
+.L1475:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC622[rip]
-	jp	.L2138
+	jp	.L2058
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC622[rip]
-	jne	.L2138
-.L1556:
+	jne	.L2058
+.L1476:
 	mov	esi, 29
 	lea	rdi, .LC2319[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48620,17 +48397,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2138:
+	jmp	.L836
+.L2058:
 	nop
-.L1558:
+.L1478:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC528[rip]
-	jp	.L2139
+	jp	.L2059
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC528[rip]
-	jne	.L2139
-.L1559:
+	jne	.L2059
+.L1479:
 	mov	esi, 41
 	lea	rdi, .LC2320[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48640,17 +48417,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2139:
+	jmp	.L836
+.L2059:
 	nop
-.L1561:
+.L1481:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC630[rip]
-	jp	.L2140
+	jp	.L2060
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC630[rip]
-	jne	.L2140
-.L1562:
+	jne	.L2060
+.L1482:
 	mov	esi, 35
 	lea	rdi, .LC2321[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48660,17 +48437,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2140:
+	jmp	.L836
+.L2060:
 	nop
-.L1564:
+.L1484:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC635[rip]
-	jp	.L2141
+	jp	.L2061
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC635[rip]
-	jne	.L2141
-.L1565:
+	jne	.L2061
+.L1485:
 	mov	esi, 25
 	lea	rdi, .LC2322[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48680,17 +48457,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2141:
+	jmp	.L836
+.L2061:
 	nop
-.L1567:
+.L1487:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC639[rip]
-	jp	.L2142
+	jp	.L2062
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC639[rip]
-	jne	.L2142
-.L1568:
+	jne	.L2062
+.L1488:
 	mov	esi, 21
 	lea	rdi, .LC2323[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48700,17 +48477,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2142:
+	jmp	.L836
+.L2062:
 	nop
-.L1570:
+.L1490:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC645[rip]
-	jp	.L2143
+	jp	.L2063
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC645[rip]
-	jne	.L2143
-.L1571:
+	jne	.L2063
+.L1491:
 	mov	esi, 26
 	lea	rdi, .LC2324[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48720,17 +48497,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2143:
+	jmp	.L836
+.L2063:
 	nop
-.L1573:
+.L1493:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC649[rip]
-	jp	.L2144
+	jp	.L2064
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC649[rip]
-	jne	.L2144
-.L1574:
+	jne	.L2064
+.L1494:
 	mov	esi, 27
 	lea	rdi, .LC2325[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48740,17 +48517,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2144:
+	jmp	.L836
+.L2064:
 	nop
-.L1576:
+.L1496:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC654[rip]
-	jp	.L2145
+	jp	.L2065
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC654[rip]
-	jne	.L2145
-.L1577:
+	jne	.L2065
+.L1497:
 	mov	esi, 24
 	lea	rdi, .LC2326[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48760,17 +48537,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2145:
+	jmp	.L836
+.L2065:
 	nop
-.L1579:
+.L1499:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC658[rip]
-	jp	.L2146
+	jp	.L2066
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC658[rip]
-	jne	.L2146
-.L1580:
+	jne	.L2066
+.L1500:
 	mov	esi, 24
 	lea	rdi, .LC2327[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48780,17 +48557,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2146:
+	jmp	.L836
+.L2066:
 	nop
-.L1582:
+.L1502:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC663[rip]
-	jp	.L2147
+	jp	.L2067
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC663[rip]
-	jne	.L2147
-.L1583:
+	jne	.L2067
+.L1503:
 	mov	esi, 38
 	lea	rdi, .LC2328[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48800,17 +48577,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2147:
+	jmp	.L836
+.L2067:
 	nop
-.L1585:
+.L1505:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC667[rip]
-	jp	.L2148
+	jp	.L2068
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC667[rip]
-	jne	.L2148
-.L1586:
+	jne	.L2068
+.L1506:
 	mov	esi, 50
 	lea	rdi, .LC2329[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48820,17 +48597,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2148:
+	jmp	.L836
+.L2068:
 	nop
-.L1588:
+.L1508:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC673[rip]
-	jp	.L2149
+	jp	.L2069
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC673[rip]
-	jne	.L2149
-.L1589:
+	jne	.L2069
+.L1509:
 	mov	esi, 14
 	lea	rdi, .LC2330[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48840,17 +48617,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2149:
+	jmp	.L836
+.L2069:
 	nop
-.L1591:
+.L1511:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC495[rip]
-	jp	.L2150
+	jp	.L2070
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC495[rip]
-	jne	.L2150
-.L1592:
+	jne	.L2070
+.L1512:
 	mov	esi, 44
 	lea	rdi, .LC2331[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48860,17 +48637,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2150:
+	jmp	.L836
+.L2070:
 	nop
-.L1594:
+.L1514:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC425[rip]
-	jp	.L2151
+	jp	.L2071
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC425[rip]
-	jne	.L2151
-.L1595:
+	jne	.L2071
+.L1515:
 	mov	esi, 34
 	lea	rdi, .LC2332[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48880,17 +48657,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2151:
+	jmp	.L836
+.L2071:
 	nop
-.L1597:
+.L1517:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC426[rip]
-	jp	.L2152
+	jp	.L2072
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC426[rip]
-	jne	.L2152
-.L1598:
+	jne	.L2072
+.L1518:
 	mov	esi, 84
 	lea	rdi, .LC2333[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48900,17 +48677,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2152:
+	jmp	.L836
+.L2072:
 	nop
-.L1600:
+.L1520:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2334[rip]
-	jp	.L2153
+	jp	.L2073
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2334[rip]
-	jne	.L2153
-.L1601:
+	jne	.L2073
+.L1521:
 	mov	esi, 87
 	lea	rdi, .LC2335[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48920,17 +48697,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2153:
+	jmp	.L836
+.L2073:
 	nop
-.L1603:
+.L1523:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC2336[rip]
-	jp	.L2154
+	jp	.L2074
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC2336[rip]
-	jne	.L2154
-.L1604:
+	jne	.L2074
+.L1524:
 	mov	esi, 19
 	lea	rdi, .LC2337[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48940,17 +48717,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2154:
+	jmp	.L836
+.L2074:
 	nop
-.L1606:
+.L1526:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC421[rip]
-	jp	.L2155
+	jp	.L2075
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC421[rip]
-	jne	.L2155
-.L1607:
+	jne	.L2075
+.L1527:
 	mov	esi, 35
 	lea	rdi, .LC2338[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48960,17 +48737,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L916
-.L2155:
+	jmp	.L836
+.L2075:
 	nop
-.L1609:
+.L1529:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	ucomisd	xmm0, QWORD PTR .LC422[rip]
-	jp	.L2156
+	jp	.L2076
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	comisd	xmm0, QWORD PTR .LC422[rip]
-	jne	.L2156
-.L1610:
+	jne	.L2076
+.L1530:
 	mov	esi, 8
 	lea	rdi, .LC2339[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -48980,23 +48757,23 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	edi, 1
 	call	fb_PrintString@PLT
-	jmp	.L1817
-.L1612:
-.L2156:
+	jmp	.L1737
+.L1532:
+.L2076:
 	nop
-.L916:
-	jmp	.L1817
-.L1923:
+.L836:
+	jmp	.L1737
+.L1843:
 	nop
-.L912:
+.L832:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC686[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2157
+	jp	.L2077
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2157
-.L1613:
+	jne	.L2077
+.L1533:
 	mov	r8d, 0
 	mov	ecx, 9
 	lea	rdx, .LC705[rip]
@@ -49009,18 +48786,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1817
-.L2157:
+	jmp	.L1737
+.L2077:
 	nop
-.L1615:
+.L1535:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC476[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2158
+	jp	.L2078
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2158
-.L1616:
+	jne	.L2078
+.L1536:
 	mov	QWORD PTR -21688[rbp], 0
 	mov	QWORD PTR -21696[rbp], 0
 	mov	QWORD PTR -21704[rbp], 0
@@ -49099,7 +48876,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR -21712[rbp]
 	and	eax, 1
 	test	rax, rax
-	je	.L2159
+	je	.L2079
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC417[rip]
 	addsd	xmm1, xmm0
@@ -49113,14 +48890,14 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rax, rdx
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1620
-.L2159:
+	jmp	.L1540
+.L2079:
 	nop
-.L1620:
+.L1540:
 	mov	rax, QWORD PTR -21712[rbp]
 	and	eax, 2
 	test	rax, rax
-	je	.L2160
+	je	.L2080
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC417[rip]
 	addsd	xmm1, xmm0
@@ -49134,14 +48911,14 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rax, rdx
 	movsd	xmm0, QWORD PTR .LC399[rip]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1622
-.L2160:
+	jmp	.L1542
+.L2080:
 	nop
-.L1622:
+.L1542:
 	mov	rax, QWORD PTR -21712[rbp]
 	and	eax, 4
 	test	rax, rax
-	je	.L2161
+	je	.L2081
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC417[rip]
 	addsd	xmm1, xmm0
@@ -49155,22 +48932,22 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rax, rdx
 	movsd	xmm0, QWORD PTR .LC401[rip]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L1817
-.L2161:
+	jmp	.L1737
+.L2081:
 	nop
-.L1624:
-	jmp	.L1817
-.L2158:
+.L1544:
+	jmp	.L1737
+.L2078:
 	nop
-.L1618:
+.L1538:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2256[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2162
+	jp	.L2082
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2162
-.L1625:
+	jne	.L2082
+.L1545:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC415[rip]
 	addsd	xmm1, xmm0
@@ -49204,21 +48981,21 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	esi, ebx
 	mov	edi, eax
 	call	fb_PageCopy@PLT
-	jmp	.L1817
-.L2162:
+	jmp	.L1737
+.L2082:
 	nop
-.L1627:
+.L1547:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2336[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2163
+	jp	.L2083
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2163
-.L1628:
+	jne	.L2083
+.L1548:
 	mov	BYTE PTR -21777[rbp], 0
 	mov	QWORD PTR -120[rbp], 0
-.L1631:
+.L1551:
 	mov	rax, QWORD PTR -120[rbp]
 	sal	rax, 3
 	lea	rdx, 134479872[rax]
@@ -49226,15 +49003,15 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rax, rdx
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR [rax], xmm0
-.L1632:
+.L1552:
 	add	QWORD PTR -120[rbp], 1
-.L1633:
+.L1553:
 	cmp	QWORD PTR -120[rbp], 8191
-	jg	.L2164
-	jmp	.L1631
-.L2164:
+	jg	.L2084
+	jmp	.L1551
+.L2084:
 	nop
-.L1634:
+.L1554:
 	mov	rax, QWORD PTR -22248[rbp]
 	movq	xmm0, rax
 	call	fb_DoubleToStr@PLT
@@ -49278,10 +49055,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	QWORD PTR -20872[rbp], rax
 	mov	rax, QWORD PTR -20872[rbp]
 	mov	QWORD PTR -20880[rbp], rax
-	jmp	.L1635
-.L2165:
+	jmp	.L1555
+.L2085:
 	nop
-.L1636:
+.L1556:
 	lea	rax, -21777[rbp]
 	mov	ecx, 1
 	mov	rdx, rax
@@ -49298,63 +49075,63 @@ _ZN8MEMORY_T6POKE64Edd:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, edx
 	movsd	QWORD PTR [rax], xmm0
-.L1637:
+.L1557:
 	add	QWORD PTR -128[rbp], 1
-.L1635:
+.L1555:
 	mov	rax, QWORD PTR -128[rbp]
 	cmp	rax, QWORD PTR -20880[rbp]
-	jle	.L2165
+	jle	.L2085
 	nop
-.L1638:
+.L1558:
 	mov	edi, 1
 	call	fb_FileClose@PLT
-	jmp	.L1817
-.L2163:
+	jmp	.L1737
+.L2083:
 	nop
-.L1630:
+.L1550:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2343[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L1639
+	jp	.L1559
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	je	.L2166
-.L1639:
+	je	.L2086
+.L1559:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC481[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2167
+	jp	.L2087
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2167
-	jmp	.L1641
-.L2166:
+	jne	.L2087
+	jmp	.L1561
+.L2086:
 	nop
-.L1641:
+.L1561:
 	mov	rax, QWORD PTR -22248[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L1644
+	jnb	.L1564
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR -21152[rbp], rax
-	jmp	.L1645
-.L1644:
+	jmp	.L1565
+.L1564:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR -21152[rbp], rax
 	movabs	rax, -9223372036854775808
 	xor	QWORD PTR -21152[rbp], rax
-.L1645:
+.L1565:
 	mov	rax, QWORD PTR -21152[rbp]
 	mov	QWORD PTR -21152[rbp], rax
 	nop
-.L1646:
+.L1566:
 	cmp	QWORD PTR -21152[rbp], 63
-	jbe	.L1653
-	jmp	.L1837
-.L1647:
+	jbe	.L1573
+	jmp	.L1757
+.L1567:
 	mov	rax, QWORD PTR -22248[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -49381,8 +49158,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1648
-.L1649:
+	jmp	.L1568
+.L1569:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	movsd	xmm1, QWORD PTR .LC332[rip]
 	subsd	xmm0, xmm1
@@ -49425,8 +49202,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1648
-.L1650:
+	jmp	.L1568
+.L1570:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	movsd	xmm1, QWORD PTR .LC454[rip]
 	subsd	xmm0, xmm1
@@ -49469,8 +49246,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1648
-.L1651:
+	jmp	.L1568
+.L1571:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	movsd	xmm1, QWORD PTR .LC548[rip]
 	subsd	xmm0, xmm1
@@ -49513,9 +49290,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1648
-.L1837:
-.L1652:
+	jmp	.L1568
+.L1757:
+.L1572:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	movsd	xmm1, QWORD PTR .LC607[rip]
 	subsd	xmm0, xmm1
@@ -49558,21 +49335,21 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1648
-.L1653:
+	jmp	.L1568
+.L1573:
 	mov	rax, QWORD PTR -21152[rbp]
 	lea	rdx, 0[0+rax*8]
 	lea	rax, tmp$2448.4[rip]
 	mov	rax, QWORD PTR [rdx+rax]
 	jmp	.L472
-.L1648:
+.L1568:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC481[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2168
+	jp	.L2088
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2168
+	jne	.L2088
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC406[rip]
 	addsd	xmm1, xmm0
@@ -49607,47 +49384,47 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1817
-.L1656:
-.L2168:
+	jmp	.L1737
+.L1576:
+.L2088:
 	nop
-.L1657:
-	jmp	.L1817
-.L2167:
+.L1577:
+	jmp	.L1737
+.L2087:
 	nop
-.L1643:
+.L1563:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC490[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2169
+	jp	.L2089
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2169
-.L1658:
+	jne	.L2089
+.L1578:
 	mov	rax, QWORD PTR -22248[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L1661
+	jnb	.L1581
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR -20888[rbp], rax
-	jmp	.L1662
-.L1661:
+	jmp	.L1582
+.L1581:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR -20888[rbp], rax
 	movabs	rax, -9223372036854775808
 	xor	QWORD PTR -20888[rbp], rax
-.L1662:
+.L1582:
 	mov	rax, QWORD PTR -20888[rbp]
 	mov	QWORD PTR -20888[rbp], rax
 	nop
-.L1663:
+.L1583:
 	cmp	QWORD PTR -20888[rbp], 63
-	jbe	.L1670
-	jmp	.L1838
-.L1664:
+	jbe	.L1590
+	jmp	.L1758
+.L1584:
 	mov	rax, QWORD PTR -22248[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -49674,8 +49451,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1665
-.L1666:
+	jmp	.L1585
+.L1586:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	movsd	xmm1, QWORD PTR .LC332[rip]
 	subsd	xmm0, xmm1
@@ -49718,8 +49495,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1665
-.L1667:
+	jmp	.L1585
+.L1587:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	movsd	xmm1, QWORD PTR .LC454[rip]
 	subsd	xmm0, xmm1
@@ -49762,8 +49539,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1665
-.L1668:
+	jmp	.L1585
+.L1588:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	movsd	xmm1, QWORD PTR .LC548[rip]
 	subsd	xmm0, xmm1
@@ -49806,9 +49583,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1665
-.L1838:
-.L1669:
+	jmp	.L1585
+.L1758:
+.L1589:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	movsd	xmm1, QWORD PTR .LC607[rip]
 	subsd	xmm0, xmm1
@@ -49851,26 +49628,26 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1665
-.L1670:
+	jmp	.L1585
+.L1590:
 	mov	rax, QWORD PTR -20888[rbp]
 	lea	rdx, 0[0+rax*8]
 	lea	rax, tmp$2449.3[rip]
 	mov	rax, QWORD PTR [rdx+rax]
 	jmp	.L472
-.L1665:
-	jmp	.L1817
-.L2169:
+.L1585:
+	jmp	.L1737
+.L2089:
 	nop
-.L1660:
+.L1580:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC526[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2170
+	jp	.L2090
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2170
-.L1671:
+	jne	.L2090
+.L1591:
 	mov	rax, QWORD PTR FG_COLOR$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -49923,18 +49700,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movd	xmm0, edi
 	mov	rdi, rax
 	call	fb_GfxLine@PLT
-	jmp	.L1817
-.L2170:
+	jmp	.L1737
+.L2090:
 	nop
-.L1673:
+.L1593:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2344[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2171
+	jp	.L2091
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2171
-.L1674:
+	jne	.L2091
+.L1594:
 	mov	rax, QWORD PTR BG_COLOR$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -49987,18 +49764,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movd	xmm0, edi
 	mov	rdi, rax
 	call	fb_GfxLine@PLT
-	jmp	.L1817
-.L2171:
+	jmp	.L1737
+.L2091:
 	nop
-.L1676:
+.L1596:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2345[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2172
+	jp	.L2092
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2172
-.L1677:
+	jne	.L2092
+.L1597:
 	mov	r8d, 0
 	mov	ecx, 0
 	mov	edx, 0
@@ -50038,7 +49815,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	fb_GfxPaint@PLT
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR OFFSET$[rip], xmm0
-.L1680:
+.L1600:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC408[rip]
 	addsd	xmm1, xmm0
@@ -50060,29 +49837,29 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-.L1681:
+.L1601:
 	movsd	xmm1, QWORD PTR OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	addsd	xmm0, xmm1
 	movsd	QWORD PTR OFFSET$[rip], xmm0
-.L1682:
+.L1602:
 	movsd	xmm1, QWORD PTR OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC531[rip]
 	comisd	xmm0, xmm1
-	jnb	.L1680
-	jmp	.L1817
-.L1683:
-.L2172:
+	jnb	.L1600
+	jmp	.L1737
+.L1603:
+.L2092:
 	nop
-.L1679:
+.L1599:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2346[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2173
+	jp	.L2093
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2173
-.L1685:
+	jne	.L2093
+.L1605:
 	mov	r8d, 0
 	mov	ecx, 0
 	mov	edx, 0
@@ -50135,7 +49912,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	fb_GfxPaint@PLT
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR OFFSET$[rip], xmm0
-.L1688:
+.L1608:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC408[rip]
 	addsd	xmm1, xmm0
@@ -50157,29 +49934,29 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-.L1689:
+.L1609:
 	movsd	xmm1, QWORD PTR OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	addsd	xmm0, xmm1
 	movsd	QWORD PTR OFFSET$[rip], xmm0
-.L1690:
+.L1610:
 	movsd	xmm1, QWORD PTR OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC531[rip]
 	comisd	xmm0, xmm1
-	jnb	.L1688
-	jmp	.L1817
-.L1691:
-.L2173:
+	jnb	.L1608
+	jmp	.L1737
+.L1611:
+.L2093:
 	nop
-.L1687:
+.L1607:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2348[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2174
+	jp	.L2094
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2174
-.L1693:
+	jne	.L2094
+.L1613:
 	mov	r8d, 0
 	mov	ecx, 0
 	mov	edx, 0
@@ -50242,18 +50019,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	pxor	xmm0, xmm0
 	mov	edi, 0
 	call	fb_GfxPaint@PLT
-	jmp	.L1817
-.L2174:
+	jmp	.L1737
+.L2094:
 	nop
-.L1695:
+.L1615:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2351[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2175
+	jp	.L2095
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2175
-.L1696:
+	jne	.L2095
+.L1616:
 	lea	rax, -21904[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	QWORD PTR 8[rax], 0
@@ -50280,18 +50057,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, -1
 	lea	rdi, STRCODE$[rip]
 	call	fb_StrAssign@PLT
-	jmp	.L1817
-.L2175:
+	jmp	.L1737
+.L2095:
 	nop
-.L1698:
+.L1618:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2353[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2176
+	jp	.L2096
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2176
-.L1699:
+	jne	.L2096
+.L1619:
 	mov	edx, 1
 	lea	rsi, STRCODE$[rip]
 	mov	edi, 1
@@ -50302,18 +50079,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, -1
 	lea	rdi, STRCODE$[rip]
 	call	fb_StrAssign@PLT
-	jmp	.L1817
-.L2176:
+	jmp	.L1737
+.L2096:
 	nop
-.L1701:
+.L1621:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC486[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2177
+	jp	.L2097
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2177
-.L1702:
+	jne	.L2097
+.L1622:
 	mov	edi, 1
 	call	fb_FileClose@PLT
 	mov	r8d, 0
@@ -50322,18 +50099,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, -1
 	lea	rdi, STRCODE$[rip]
 	call	fb_StrAssign@PLT
-	jmp	.L1817
-.L2177:
+	jmp	.L1737
+.L2097:
 	nop
-.L1704:
+.L1624:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2354[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2178
+	jp	.L2098
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2178
-.L1705:
+	jne	.L2098
+.L1625:
 	lea	rax, -21936[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	QWORD PTR 8[rax], 0
@@ -50391,18 +50168,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, -1
 	lea	rdi, STRCODE$[rip]
 	call	fb_StrAssign@PLT
-	jmp	.L1817
-.L2178:
+	jmp	.L1737
+.L2098:
 	nop
-.L1707:
+.L1627:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2358[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2179
+	jp	.L2099
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2179
-.L1708:
+	jne	.L2099
+.L1628:
 	mov	r8d, 0
 	mov	ecx, 0
 	mov	edx, 0
@@ -50486,7 +50263,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	fb_GfxPaint@PLT
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR OFFSET$[rip], xmm0
-.L1711:
+.L1631:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC408[rip]
 	addsd	xmm1, xmm0
@@ -50508,29 +50285,29 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-.L1712:
+.L1632:
 	movsd	xmm1, QWORD PTR OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	addsd	xmm0, xmm1
 	movsd	QWORD PTR OFFSET$[rip], xmm0
-.L1713:
+.L1633:
 	movsd	xmm1, QWORD PTR OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC531[rip]
 	comisd	xmm0, xmm1
-	jnb	.L1711
-	jmp	.L1817
-.L1714:
-.L2179:
+	jnb	.L1631
+	jmp	.L1737
+.L1634:
+.L2099:
 	nop
-.L1710:
+.L1630:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2363[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2180
+	jp	.L2100
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2180
-.L1716:
+	jne	.L2100
+.L1636:
 	lea	rdi, STRCODE$[rip]
 	call	fb_Shell@PLT
 	mov	r8d, 0
@@ -50539,32 +50316,32 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, -1
 	lea	rdi, STRCODE$[rip]
 	call	fb_StrAssign@PLT
-	jmp	.L1817
-.L2180:
+	jmp	.L1737
+.L2100:
 	nop
-.L1718:
+.L1638:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2364[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2181
+	jp	.L2101
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2181
-.L1719:
+	jne	.L2101
+.L1639:
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	movsd	QWORD PTR SWCH$[rip], xmm0
-	jmp	.L1817
-.L2181:
+	jmp	.L1737
+.L2101:
 	nop
-.L1721:
+.L1641:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2365[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2182
+	jp	.L2102
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2182
-.L1722:
+	jne	.L2102
+.L1642:
 	mov	rax, QWORD PTR -22248[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -50587,18 +50364,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	lea	rdi, STRCODE$[rip]
 	call	fb_StrConcatAssign@PLT
 	mov	QWORD PTR -21040[rbp], rax
-	jmp	.L1817
-.L2182:
+	jmp	.L1737
+.L2102:
 	nop
-.L1724:
+.L1644:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2366[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2183
+	jp	.L2103
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2183
-.L1725:
+	jne	.L2103
+.L1645:
 	mov	edx, 1
 	lea	rsi, STRCODE$[rip]
 	mov	edi, 1
@@ -50609,18 +50386,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, -1
 	lea	rdi, STRCODE$[rip]
 	call	fb_StrAssign@PLT
-	jmp	.L1817
-.L2183:
+	jmp	.L1737
+.L2103:
 	nop
-.L1727:
+.L1647:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC420[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2184
+	jp	.L2104
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2184
-.L1728:
+	jne	.L2104
+.L1648:
 	movzx	eax, WORD PTR RVS$[rip]
 	movzx	eax, ax
 	sal	rax, 3
@@ -50646,7 +50423,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, rsi
 	and	rax, rdx
 	test	rax, rax
-	je	.L2185
+	je	.L2105
 	movzx	eax, WORD PTR RVS$[rip]
 	movzx	eax, ax
 	sal	rax, 3
@@ -50656,11 +50433,11 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR [rax]
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L1733
+	jp	.L1653
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	je	.L2186
-.L1733:
+	je	.L2106
+.L1653:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2344[rip]
 	addsd	xmm1, xmm0
@@ -50671,11 +50448,11 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
 	nop
-.L1736:
-	jmp	.L1737
-.L2186:
+.L1656:
+	jmp	.L1657
+.L2106:
 	nop
-.L1735:
+.L1655:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC526[rip]
 	addsd	xmm1, xmm0
@@ -50685,10 +50462,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1737
-.L2185:
+	jmp	.L1657
+.L2105:
 	nop
-.L1732:
+.L1652:
 	movzx	eax, WORD PTR RVS$[rip]
 	movzx	eax, ax
 	sal	rax, 3
@@ -50698,11 +50475,11 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR [rax]
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L1738
+	jp	.L1658
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	je	.L2187
-.L1738:
+	je	.L2107
+.L1658:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC526[rip]
 	addsd	xmm1, xmm0
@@ -50712,10 +50489,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1737
-.L2187:
+	jmp	.L1657
+.L2107:
 	nop
-.L1740:
+.L1660:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2344[rip]
 	addsd	xmm1, xmm0
@@ -50725,35 +50502,35 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-	jmp	.L1817
-.L1741:
-.L1737:
-	jmp	.L1817
-.L2184:
+	jmp	.L1737
+.L1661:
+.L1657:
+	jmp	.L1737
+.L2104:
 	nop
-.L1730:
+.L1650:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2367[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2188
+	jp	.L2108
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2188
-.L1742:
+	jne	.L2108
+.L1662:
 	mov	edi, 1
 	call	fb_FileClose@PLT
-	jmp	.L1817
-.L2188:
+	jmp	.L1737
+.L2108:
 	nop
-.L1744:
+.L1664:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC2368[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2189
+	jp	.L2109
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2189
-.L1745:
+	jne	.L2109
+.L1665:
 	mov	rax, QWORD PTR -22248[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -50776,18 +50553,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	lea	rdi, FILENAME$[rip]
 	call	fb_StrConcatAssign@PLT
 	mov	QWORD PTR -21064[rbp], rax
-	jmp	.L1817
-.L2189:
+	jmp	.L1737
+.L2109:
 	nop
-.L1747:
+.L1667:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC430[rip]
 	addsd	xmm0, xmm1
 	ucomisd	xmm0, QWORD PTR -22240[rbp]
-	jp	.L2190
+	jp	.L2110
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jne	.L2190
-.L1748:
+	jne	.L2110
+.L1668:
 	movsd	xmm1, QWORD PTR SYS_OFFSET$[rip]
 	movsd	xmm0, QWORD PTR .LC684[rip]
 	addsd	xmm1, xmm0
@@ -50803,10 +50580,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, -1
 	lea	rdi, FILENAME$[rip]
 	call	fb_StrAssign@PLT
-	jmp	.L1817
-.L2190:
+	jmp	.L1737
+.L2110:
 	nop
-.L1750:
+.L1670:
 	mov	rax, QWORD PTR SCR_PTR$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -50814,7 +50591,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rax, rdx
 	movsd	xmm0, QWORD PTR [rax]
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	ja	.L2191
+	ja	.L2111
 	mov	rax, QWORD PTR SCR_PTR$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -50825,8 +50602,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm1, xmm0
 	movsd	xmm0, QWORD PTR -22240[rbp]
 	comisd	xmm0, xmm1
-	ja	.L2192
-.L1754:
+	ja	.L2112
+.L1674:
 	mov	rax, QWORD PTR SCR_PTR$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -50868,18 +50645,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR [rax]
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L1756
+	jp	.L1676
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	je	.L2193
-.L1756:
+	je	.L2113
+.L1676:
 	mov	rax, QWORD PTR C$[rip]
 	movzx	eax, al
 	mov	QWORD PTR C$[rip], rax
-	jmp	.L1758
-.L2193:
+	jmp	.L1678
+.L2113:
 	nop
-.L1758:
+.L1678:
 	call	fb_GfxLock@PLT
 	mov	rax, QWORD PTR FONT_F$[rip]
 	sal	rax, 3
@@ -50889,10 +50666,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR [rax]
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2194
+	jp	.L2114
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2194
+	jne	.L2114
 	mov	rax, QWORD PTR -22240[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -50963,10 +50740,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	nearbyint@PLT
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR -21072[rbp], rax
-	jmp	.L1762
-.L2196:
+	jmp	.L1682
+.L2116:
 	nop
-.L1763:
+.L1683:
 	mov	QWORD PTR X$[rip], 0
 	mov	rax, QWORD PTR FONT_W$[rip]
 	sal	rax, 3
@@ -50978,10 +50755,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	nearbyint@PLT
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR -21080[rbp], rax
-	jmp	.L1764
-.L2195:
+	jmp	.L1684
+.L2115:
 	nop
-.L1765:
+.L1685:
 	mov	rdx, QWORD PTR XS$[rip]
 	mov	rax, QWORD PTR X$[rip]
 	add	rax, rdx
@@ -51086,16 +50863,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-.L1766:
+.L1686:
 	mov	rax, QWORD PTR X$[rip]
 	add	rax, 1
 	mov	QWORD PTR X$[rip], rax
-.L1764:
+.L1684:
 	mov	rax, QWORD PTR X$[rip]
 	cmp	QWORD PTR -21080[rbp], rax
-	jge	.L2195
+	jge	.L2115
 	nop
-.L1767:
+.L1687:
 	mov	rax, QWORD PTR C$[rip]
 	pxor	xmm1, xmm1
 	cvtsi2sd	xmm1, rax
@@ -51103,16 +50880,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR C$[rip], rax
-.L1768:
+.L1688:
 	mov	rax, QWORD PTR Y$[rip]
 	add	rax, 1
 	mov	QWORD PTR Y$[rip], rax
-.L1762:
+.L1682:
 	mov	rax, QWORD PTR Y$[rip]
 	cmp	QWORD PTR -21072[rbp], rax
-	jge	.L2196
+	jge	.L2116
 	nop
-.L1769:
+.L1689:
 	mov	rax, QWORD PTR YS$[rip]
 	pxor	xmm1, xmm1
 	cvtsi2sd	xmm1, rax
@@ -51123,10 +50900,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	esi, eax
 	mov	edi, edx
 	call	fb_GfxUnlock@PLT
-	jmp	.L1770
-.L2194:
+	jmp	.L1690
+.L2114:
 	nop
-.L1761:
+.L1681:
 	mov	rax, QWORD PTR FONT_F$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -51135,10 +50912,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR [rax]
 	movsd	xmm1, QWORD PTR .LC427[rip]
 	ucomisd	xmm0, xmm1
-	jp	.L2197
+	jp	.L2117
 	movsd	xmm1, QWORD PTR .LC427[rip]
 	comisd	xmm0, xmm1
-	jne	.L2197
+	jne	.L2117
 	mov	rax, QWORD PTR -22240[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -51202,10 +50979,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	nearbyint@PLT
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR Y$[rip], rax
-	jmp	.L1774
-.L2199:
+	jmp	.L1694
+.L2119:
 	nop
-.L1775:
+.L1695:
 	mov	QWORD PTR X$[rip], 0
 	mov	rax, QWORD PTR FONT_W$[rip]
 	sal	rax, 3
@@ -51217,10 +50994,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	nearbyint@PLT
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR -21096[rbp], rax
-	jmp	.L1776
-.L2198:
+	jmp	.L1696
+.L2118:
 	nop
-.L1777:
+.L1697:
 	mov	rax, QWORD PTR XS$[rip]
 	mov	rdx, QWORD PTR X$[rip]
 	sub	rax, rdx
@@ -51329,16 +51106,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-.L1778:
+.L1698:
 	mov	rax, QWORD PTR X$[rip]
 	add	rax, 1
 	mov	QWORD PTR X$[rip], rax
-.L1776:
+.L1696:
 	mov	rax, QWORD PTR X$[rip]
 	cmp	QWORD PTR -21096[rbp], rax
-	jge	.L2198
+	jge	.L2118
 	nop
-.L1779:
+.L1699:
 	mov	rax, QWORD PTR C$[rip]
 	pxor	xmm1, xmm1
 	cvtsi2sd	xmm1, rax
@@ -51346,16 +51123,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR C$[rip], rax
-.L1780:
+.L1700:
 	mov	rax, QWORD PTR Y$[rip]
 	sub	rax, 1
 	mov	QWORD PTR Y$[rip], rax
-.L1774:
+.L1694:
 	mov	rax, QWORD PTR Y$[rip]
 	test	rax, rax
-	jns	.L2199
+	jns	.L2119
 	nop
-.L1781:
+.L1701:
 	mov	rax, QWORD PTR YS$[rip]
 	pxor	xmm1, xmm1
 	cvtsi2sd	xmm1, rax
@@ -51366,10 +51143,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	esi, eax
 	mov	edi, edx
 	call	fb_GfxUnlock@PLT
-	jmp	.L1770
-.L2197:
+	jmp	.L1690
+.L2117:
 	nop
-.L1773:
+.L1693:
 	mov	rax, QWORD PTR FONT_F$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -51377,9 +51154,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rax, rdx
 	movsd	xmm0, QWORD PTR [rax]
 	ucomisd	xmm0, QWORD PTR .LC399[rip]
-	jp	.L2200
+	jp	.L2120
 	comisd	xmm0, QWORD PTR .LC399[rip]
-	jne	.L2200
+	jne	.L2120
 	mov	rax, QWORD PTR -22240[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -51450,10 +51227,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	nearbyint@PLT
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR -21112[rbp], rax
-	jmp	.L1785
-.L2202:
+	jmp	.L1705
+.L2122:
 	nop
-.L1786:
+.L1706:
 	mov	QWORD PTR X$[rip], 0
 	mov	rax, QWORD PTR FONT_W$[rip]
 	sal	rax, 3
@@ -51465,10 +51242,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	nearbyint@PLT
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR -21120[rbp], rax
-	jmp	.L1787
-.L2201:
+	jmp	.L1707
+.L2121:
 	nop
-.L1788:
+.L1708:
 	mov	rdx, QWORD PTR XS$[rip]
 	mov	rax, QWORD PTR X$[rip]
 	add	rax, rdx
@@ -51585,16 +51362,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-.L1789:
+.L1709:
 	mov	rax, QWORD PTR X$[rip]
 	add	rax, 1
 	mov	QWORD PTR X$[rip], rax
-.L1787:
+.L1707:
 	mov	rax, QWORD PTR X$[rip]
 	cmp	QWORD PTR -21120[rbp], rax
-	jge	.L2201
+	jge	.L2121
 	nop
-.L1790:
+.L1710:
 	mov	rax, QWORD PTR C$[rip]
 	pxor	xmm1, xmm1
 	cvtsi2sd	xmm1, rax
@@ -51602,16 +51379,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR C$[rip], rax
-.L1791:
+.L1711:
 	mov	rax, QWORD PTR Y$[rip]
 	add	rax, 1
 	mov	QWORD PTR Y$[rip], rax
-.L1785:
+.L1705:
 	mov	rax, QWORD PTR Y$[rip]
 	cmp	QWORD PTR -21112[rbp], rax
-	jge	.L2202
+	jge	.L2122
 	nop
-.L1792:
+.L1712:
 	mov	rax, QWORD PTR YS$[rip]
 	pxor	xmm1, xmm1
 	cvtsi2sd	xmm1, rax
@@ -51622,10 +51399,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	esi, eax
 	mov	edi, edx
 	call	fb_GfxUnlock@PLT
-	jmp	.L1770
-.L2200:
+	jmp	.L1690
+.L2120:
 	nop
-.L1784:
+.L1704:
 	mov	rax, QWORD PTR FONT_F$[rip]
 	sal	rax, 3
 	mov	rdx, rax
@@ -51633,9 +51410,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rax, rdx
 	movsd	xmm0, QWORD PTR [rax]
 	ucomisd	xmm0, QWORD PTR .LC400[rip]
-	jp	.L2203
+	jp	.L2123
 	comisd	xmm0, QWORD PTR .LC400[rip]
-	jne	.L2203
+	jne	.L2123
 	mov	rax, QWORD PTR -22240[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -51699,10 +51476,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	nearbyint@PLT
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR Y$[rip], rax
-	jmp	.L1796
-.L2205:
+	jmp	.L1716
+.L2125:
 	nop
-.L1797:
+.L1717:
 	mov	QWORD PTR X$[rip], 0
 	mov	rax, QWORD PTR FONT_W$[rip]
 	sal	rax, 3
@@ -51714,10 +51491,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	nearbyint@PLT
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR -21136[rbp], rax
-	jmp	.L1798
-.L2204:
+	jmp	.L1718
+.L2124:
 	nop
-.L1799:
+.L1719:
 	mov	rax, QWORD PTR XS$[rip]
 	mov	rdx, QWORD PTR X$[rip]
 	sub	rax, rdx
@@ -51838,16 +51615,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T6POKE64Edd
-.L1800:
+.L1720:
 	mov	rax, QWORD PTR X$[rip]
 	add	rax, 1
 	mov	QWORD PTR X$[rip], rax
-.L1798:
+.L1718:
 	mov	rax, QWORD PTR X$[rip]
 	cmp	QWORD PTR -21136[rbp], rax
-	jge	.L2204
+	jge	.L2124
 	nop
-.L1801:
+.L1721:
 	mov	rax, QWORD PTR C$[rip]
 	pxor	xmm1, xmm1
 	cvtsi2sd	xmm1, rax
@@ -51855,16 +51632,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR C$[rip], rax
-.L1802:
+.L1722:
 	mov	rax, QWORD PTR Y$[rip]
 	sub	rax, 1
 	mov	QWORD PTR Y$[rip], rax
-.L1796:
+.L1716:
 	mov	rax, QWORD PTR Y$[rip]
 	test	rax, rax
-	jns	.L2205
+	jns	.L2125
 	nop
-.L1803:
+.L1723:
 	mov	rax, QWORD PTR YS$[rip]
 	pxor	xmm1, xmm1
 	cvtsi2sd	xmm1, rax
@@ -51875,51 +51652,51 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	esi, eax
 	mov	edi, edx
 	call	fb_GfxUnlock@PLT
-	jmp	.L1817
-.L1795:
-.L2203:
+	jmp	.L1737
+.L1715:
+.L2123:
 	nop
-.L1770:
-	jmp	.L1817
-.L2191:
+.L1690:
+	jmp	.L1737
+.L2111:
 	nop
-	jmp	.L1753
-.L2192:
+	jmp	.L1673
+.L2112:
 	nop
-.L1753:
+.L1673:
 	movsd	xmm0, QWORD PTR .LC466[rip]
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	ja	.L2206
+	ja	.L2126
 	movsd	xmm0, QWORD PTR .LC467[rip]
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jnb	.L2207
-	jmp	.L1806
-.L2206:
+	jnb	.L2127
+	jmp	.L1726
+.L2126:
 	nop
-.L1806:
+.L1726:
 	movsd	xmm0, QWORD PTR .LC468[rip]
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	ja	.L2208
+	ja	.L2128
 	movsd	xmm0, QWORD PTR .LC469[rip]
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	jnb	.L2209
-	jmp	.L1811
-.L2208:
+	jnb	.L2129
+	jmp	.L1731
+.L2128:
 	nop
-.L1811:
+.L1731:
 	movsd	xmm0, QWORD PTR .LC470[rip]
 	comisd	xmm0, QWORD PTR -22240[rbp]
-	ja	.L2210
+	ja	.L2130
 	movsd	xmm0, QWORD PTR -22240[rbp]
 	comisd	xmm0, QWORD PTR .LC471[rip]
-	ja	.L2211
-	jmp	.L1808
-.L2207:
+	ja	.L2131
+	jmp	.L1728
+.L2127:
 	nop
-	jmp	.L1808
-.L2209:
+	jmp	.L1728
+.L2129:
 	nop
-.L1808:
+.L1728:
 	mov	rax, QWORD PTR -22240[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -51930,16 +51707,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rax, rdx
 	movsd	xmm0, QWORD PTR -22248[rbp]
 	movsd	QWORD PTR [rax], xmm0
-	jmp	.L2212
-.L1815:
+	jmp	.L2132
+.L1735:
 .L625:
-.L2210:
+.L2130:
 	nop
-	jmp	.L2212
-.L2211:
+	jmp	.L2132
+.L2131:
 	nop
-.L1817:
-.L2212:
+.L1737:
+.L2132:
 	nop
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
@@ -51954,7 +51731,7 @@ _ZN8MEMORY_T9READUBYTEEd:
 	mov	QWORD PTR -24[rbp], rdi
 	movsd	QWORD PTR -32[rbp], xmm0
 	mov	BYTE PTR -9[rbp], 0
-.L2214:
+.L2134:
 	mov	rdx, QWORD PTR -32[rbp]
 	mov	rax, QWORD PTR -24[rbp]
 	movq	xmm0, rdx
@@ -51968,7 +51745,7 @@ _ZN8MEMORY_T9READUBYTEEd:
 	cvttsd2si	eax, xmm0
 	mov	BYTE PTR -9[rbp], al
 	nop
-.L2215:
+.L2135:
 	movzx	eax, BYTE PTR -9[rbp]
 	leave
 	ret
@@ -51982,7 +51759,7 @@ _ZN8MEMORY_T8READBYTEEd:
 	mov	QWORD PTR -24[rbp], rdi
 	movsd	QWORD PTR -32[rbp], xmm0
 	mov	BYTE PTR -9[rbp], 0
-.L2218:
+.L2138:
 	mov	rdx, QWORD PTR -32[rbp]
 	mov	rax, QWORD PTR -24[rbp]
 	movq	xmm0, rdx
@@ -51996,7 +51773,7 @@ _ZN8MEMORY_T8READBYTEEd:
 	cvttsd2si	eax, xmm0
 	mov	BYTE PTR -9[rbp], al
 	nop
-.L2219:
+.L2139:
 	movzx	eax, BYTE PTR -9[rbp]
 	leave
 	ret
@@ -52011,7 +51788,7 @@ _ZN8MEMORY_T10READUSHORTEd:
 	mov	QWORD PTR -56[rbp], rdi
 	movsd	QWORD PTR -64[rbp], xmm0
 	mov	WORD PTR -34[rbp], 0
-.L2222:
+.L2142:
 	mov	rdx, QWORD PTR -64[rbp]
 	mov	rax, QWORD PTR -56[rbp]
 	movq	xmm0, rdx
@@ -52042,7 +51819,7 @@ _ZN8MEMORY_T10READUSHORTEd:
 	or	eax, ebx
 	mov	WORD PTR -34[rbp], ax
 	nop
-.L2223:
+.L2143:
 	movzx	eax, WORD PTR -34[rbp]
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
@@ -52057,7 +51834,7 @@ _ZN8MEMORY_T9WRITEBYTEEdd:
 	mov	QWORD PTR -8[rbp], rdi
 	movsd	QWORD PTR -16[rbp], xmm0
 	movsd	QWORD PTR -24[rbp], xmm1
-.L2226:
+.L2146:
 	movsd	xmm0, QWORD PTR -24[rbp]
 	mov	rdx, QWORD PTR -16[rbp]
 	mov	rax, QWORD PTR -8[rbp]
@@ -52068,7 +51845,7 @@ _ZN8MEMORY_T9WRITEBYTEEdd:
 	nop
 	leave
 	ret
-.L2227:
+.L2147:
 	.size	_ZN8MEMORY_T9WRITEBYTEEdd, .-_ZN8MEMORY_T9WRITEBYTEEdd
 	.globl	_ZN8MEMORY_T10WRITEUBYTEEdd
 	.type	_ZN8MEMORY_T10WRITEUBYTEEdd, @function
@@ -52079,7 +51856,7 @@ _ZN8MEMORY_T10WRITEUBYTEEdd:
 	mov	QWORD PTR -8[rbp], rdi
 	movsd	QWORD PTR -16[rbp], xmm0
 	movsd	QWORD PTR -24[rbp], xmm1
-.L2229:
+.L2149:
 	movsd	xmm0, QWORD PTR -24[rbp]
 	mov	rdx, QWORD PTR -16[rbp]
 	mov	rax, QWORD PTR -8[rbp]
@@ -52090,7 +51867,7 @@ _ZN8MEMORY_T10WRITEUBYTEEdd:
 	nop
 	leave
 	ret
-.L2230:
+.L2150:
 	.size	_ZN8MEMORY_T10WRITEUBYTEEdd, .-_ZN8MEMORY_T10WRITEUBYTEEdd
 	.globl	_ZN8MEMORY_T11WRITEUSHORTEdd
 	.type	_ZN8MEMORY_T11WRITEUSHORTEdd, @function
@@ -52101,28 +51878,28 @@ _ZN8MEMORY_T11WRITEUSHORTEdd:
 	mov	QWORD PTR -8[rbp], rdi
 	movsd	QWORD PTR -16[rbp], xmm0
 	movsd	QWORD PTR -24[rbp], xmm1
-.L2232:
+.L2152:
 	mov	rax, QWORD PTR -24[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2233
+	jnb	.L2153
 	cvttsd2si	rax, xmm0
-	jmp	.L2234
-.L2233:
+	jmp	.L2154
+.L2153:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2234:
+.L2154:
 	movzx	eax, al
 	test	rax, rax
-	js	.L2235
+	js	.L2155
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
-	jmp	.L2236
-.L2235:
+	jmp	.L2156
+.L2155:
 	mov	rdx, rax
 	shr	rdx
 	and	eax, 1
@@ -52130,7 +51907,7 @@ _ZN8MEMORY_T11WRITEUSHORTEdd:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L2236:
+.L2156:
 	mov	rdx, QWORD PTR -16[rbp]
 	mov	rax, QWORD PTR -8[rbp]
 	movapd	xmm1, xmm0
@@ -52141,24 +51918,24 @@ _ZN8MEMORY_T11WRITEUSHORTEdd:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2237
+	jnb	.L2157
 	cvttsd2si	rax, xmm0
-	jmp	.L2238
-.L2237:
+	jmp	.L2158
+.L2157:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2238:
+.L2158:
 	shr	rax, 8
 	movzx	eax, al
 	test	rax, rax
-	js	.L2239
+	js	.L2159
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
-	jmp	.L2240
-.L2239:
+	jmp	.L2160
+.L2159:
 	mov	rdx, rax
 	shr	rdx
 	and	eax, 1
@@ -52166,7 +51943,7 @@ _ZN8MEMORY_T11WRITEUSHORTEdd:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L2240:
+.L2160:
 	movsd	xmm2, QWORD PTR -16[rbp]
 	movsd	xmm1, QWORD PTR .LC427[rip]
 	addsd	xmm2, xmm1
@@ -52179,7 +51956,7 @@ _ZN8MEMORY_T11WRITEUSHORTEdd:
 	nop
 	leave
 	ret
-.L2241:
+.L2161:
 	.size	_ZN8MEMORY_T11WRITEUSHORTEdd, .-_ZN8MEMORY_T11WRITEUSHORTEdd
 	.globl	_ZN7CPU6510C1EP8MEMORY_T
 	.type	_ZN7CPU6510C1EP8MEMORY_T, @function
@@ -52189,7 +51966,7 @@ _ZN7CPU6510C1EP8MEMORY_T:
 	sub	rsp, 48
 	mov	QWORD PTR -40[rbp], rdi
 	mov	QWORD PTR -48[rbp], rsi
-.L2243:
+.L2163:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	rax, QWORD PTR -40[rbp]
@@ -52252,7 +52029,7 @@ _ZN7CPU6510C1EP8MEMORY_T:
 	lea	rdi, label$1182[rip]
 	call	fb_DataRestore@PLT
 	mov	QWORD PTR -8[rbp], 0
-.L2244:
+.L2164:
 	mov	rdx, QWORD PTR -8[rbp]
 	mov	rax, rdx
 	sal	rax, 3
@@ -52287,19 +52064,19 @@ _ZN7CPU6510C1EP8MEMORY_T:
 	add	rax, 48
 	mov	rdi, rax
 	call	fb_DataReadLongint@PLT
-.L2245:
+.L2165:
 	add	QWORD PTR -8[rbp], 1
-.L2246:
+.L2166:
 	cmp	QWORD PTR -8[rbp], 255
-	jg	.L2253
-	jmp	.L2244
-.L2253:
+	jg	.L2173
+	jmp	.L2164
+.L2173:
 	nop
-.L2247:
+.L2167:
 	lea	rdi, label$1188[rip]
 	call	fb_DataRestore@PLT
 	mov	QWORD PTR -16[rbp], 0
-.L2248:
+.L2168:
 	mov	rdx, QWORD PTR -16[rbp]
 	mov	rax, rdx
 	add	rax, rax
@@ -52312,15 +52089,15 @@ _ZN7CPU6510C1EP8MEMORY_T:
 	mov	rsi, -1
 	mov	rdi, rax
 	call	fb_DataReadStr@PLT
-.L2249:
+.L2169:
 	add	QWORD PTR -16[rbp], 1
-.L2250:
+.L2170:
 	cmp	QWORD PTR -16[rbp], 12
-	jg	.L2254
-	jmp	.L2248
-.L2254:
+	jg	.L2174
+	jmp	.L2168
+.L2174:
 	nop
-.L2251:
+.L2171:
 	mov	rax, QWORD PTR -40[rbp]
 	add	rax, 15
 	mov	BYTE PTR [rax], 1
@@ -52330,7 +52107,7 @@ _ZN7CPU6510C1EP8MEMORY_T:
 	nop
 	leave
 	ret
-.L2252:
+.L2172:
 	.size	_ZN7CPU6510C1EP8MEMORY_T, .-_ZN7CPU6510C1EP8MEMORY_T
 	.globl	_ZN7CPU6510D1Ev
 	.type	_ZN7CPU6510D1Ev, @function
@@ -52339,8 +52116,8 @@ _ZN7CPU6510D1Ev:
 	mov	rbp, rsp
 	sub	rsp, 80
 	mov	QWORD PTR -72[rbp], rdi
-.L2256:
-.L2257:
+.L2176:
+.L2177:
 	lea	rax, -64[rbp]
 	mov	rdx, QWORD PTR -72[rbp]
 	add	rdx, 14416
@@ -52414,7 +52191,7 @@ _ZN7CPU6510cv8FBSTRINGEv:
 	mov	QWORD PTR [rax], 0
 	mov	QWORD PTR 8[rax], 0
 	mov	QWORD PTR 16[rax], 0
-.L2259:
+.L2179:
 	mov	rax, QWORD PTR -1096[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	eax, 1
@@ -52811,7 +52588,7 @@ _ZN7CPU6510cv8FBSTRINGEv:
 	mov	rdi, rax
 	call	fb_StrInit@PLT
 	nop
-.L2260:
+.L2180:
 	lea	rax, -1088[rbp]
 	mov	rdi, rax
 	call	fb_StrAllocTempResult@PLT
@@ -52831,7 +52608,7 @@ _ZN7CPU65104TICKEd:
 	movsd	QWORD PTR -192[rbp], xmm0
 	lea	rax, -128[rbp]
 	mov	QWORD PTR [rax], 0
-.L2263:
+.L2183:
 	lea	rax, -160[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	QWORD PTR 8[rax], 0
@@ -52898,21 +52675,21 @@ _ZN7CPU65104TICKEd:
 	mov	rax, QWORD PTR 40[rax]
 	mov	QWORD PTR -32[rbp], rax
 	nop
-.L2264:
+.L2184:
 	cmp	QWORD PTR -32[rbp], 12
-	jbe	.L2279
-	jmp	.L2266
-.L2265:
-	jmp	.L2266
-.L2267:
+	jbe	.L2199
+	jmp	.L2186
+.L2185:
+	jmp	.L2186
+.L2187:
 	mov	rax, QWORD PTR -184[rbp]
 	add	rax, 72
 	mov	rdx, QWORD PTR [rax]
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	rdx
-	jmp	.L2266
-.L2268:
+	jmp	.L2186
+.L2188:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65107ADR_IMMEv
@@ -52931,8 +52708,8 @@ _ZN7CPU65104TICKEd:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	rdx
-	jmp	.L2266
-.L2269:
+	jmp	.L2186
+.L2189:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65107ADR_ABSEv
@@ -52951,8 +52728,8 @@ _ZN7CPU65104TICKEd:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	rdx
-	jmp	.L2266
-.L2270:
+	jmp	.L2186
+.L2190:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65108ADR_ZEROEv
@@ -52971,8 +52748,8 @@ _ZN7CPU65104TICKEd:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	rdx
-	jmp	.L2266
-.L2271:
+	jmp	.L2186
+.L2191:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65109ADR_ZEROXEv
@@ -52991,8 +52768,8 @@ _ZN7CPU65104TICKEd:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	rdx
-	jmp	.L2266
-.L2272:
+	jmp	.L2186
+.L2192:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65109ADR_ZEROYEv
@@ -53011,8 +52788,8 @@ _ZN7CPU65104TICKEd:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	rdx
-	jmp	.L2266
-.L2273:
+	jmp	.L2186
+.L2193:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65108ADR_ABSXEv
@@ -53031,8 +52808,8 @@ _ZN7CPU65104TICKEd:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	rdx
-	jmp	.L2266
-.L2274:
+	jmp	.L2186
+.L2194:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65108ADR_ABSYEv
@@ -53051,8 +52828,8 @@ _ZN7CPU65104TICKEd:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	rdx
-	jmp	.L2266
-.L2275:
+	jmp	.L2186
+.L2195:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65107ADR_RELEv
@@ -53071,8 +52848,8 @@ _ZN7CPU65104TICKEd:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	rdx
-	jmp	.L2266
-.L2276:
+	jmp	.L2186
+.L2196:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65108ADR_INDXEv
@@ -53091,8 +52868,8 @@ _ZN7CPU65104TICKEd:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	rdx
-	jmp	.L2266
-.L2277:
+	jmp	.L2186
+.L2197:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65108ADR_INDYEv
@@ -53111,8 +52888,8 @@ _ZN7CPU65104TICKEd:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	rdx
-	jmp	.L2266
-.L2278:
+	jmp	.L2186
+.L2198:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65107ADR_INDEv
@@ -53131,22 +52908,22 @@ _ZN7CPU65104TICKEd:
 	mov	rax, QWORD PTR -184[rbp]
 	mov	rdi, rax
 	call	rdx
-	jmp	.L2266
-.L2279:
+	jmp	.L2186
+.L2199:
 	mov	rax, QWORD PTR -32[rbp]
 	lea	rdx, 0[0+rax*8]
 	lea	rax, tmp$2492.1[rip]
 	mov	rax, QWORD PTR [rdx+rax]
 	nop
 	jmp	rax
-.L2266:
+.L2186:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -128[rbp], xmm0
 	lea	rax, -160[rbp]
 	mov	rdi, rax
 	call	fb_StrDelete@PLT
 	nop
-.L2281:
+.L2201:
 	movsd	xmm0, QWORD PTR -128[rbp]
 	movq	rax, xmm0
 	movq	xmm0, rax
@@ -53163,13 +52940,13 @@ _ZN7CPU65107ADR_UNKEv:
 	mov	QWORD PTR -24[rbp], rdi
 	lea	rax, -8[rbp]
 	mov	QWORD PTR [rax], 0
-.L2284:
+.L2204:
 	mov	edi, -1
 	call	fb_Sleep@PLT
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -8[rbp], xmm0
 	nop
-.L2285:
+.L2205:
 	movsd	xmm0, QWORD PTR -8[rbp]
 	movq	rax, xmm0
 	movq	xmm0, rax
@@ -53184,7 +52961,7 @@ _ZN7CPU65107ADR_IMMEv:
 	mov	QWORD PTR -24[rbp], rdi
 	lea	rax, -8[rbp]
 	mov	QWORD PTR [rax], 0
-.L2288:
+.L2208:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	movzx	eax, WORD PTR [rax]
@@ -53204,7 +52981,7 @@ _ZN7CPU65107ADR_IMMEv:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	mov	WORD PTR [rax], dx
-.L2289:
+.L2209:
 	movsd	xmm0, QWORD PTR -8[rbp]
 	movq	rax, xmm0
 	movq	xmm0, rax
@@ -53219,7 +52996,7 @@ _ZN7CPU65107ADR_RELEv:
 	mov	QWORD PTR -24[rbp], rdi
 	lea	rax, -8[rbp]
 	mov	QWORD PTR [rax], 0
-.L2292:
+.L2212:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	movzx	eax, WORD PTR [rax]
@@ -53239,7 +53016,7 @@ _ZN7CPU65107ADR_RELEv:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	mov	WORD PTR [rax], dx
-.L2293:
+.L2213:
 	movsd	xmm0, QWORD PTR -8[rbp]
 	movq	rax, xmm0
 	movq	xmm0, rax
@@ -53255,7 +53032,7 @@ _ZN7CPU65107ADR_ABSEv:
 	mov	QWORD PTR -24[rbp], rdi
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
-.L2296:
+.L2216:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	movzx	eax, WORD PTR [rax]
@@ -53286,7 +53063,7 @@ _ZN7CPU65107ADR_ABSEv:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	mov	WORD PTR [rax], dx
-.L2297:
+.L2217:
 	movsd	xmm0, QWORD PTR -16[rbp]
 	movq	rax, xmm0
 	movq	xmm0, rax
@@ -53302,7 +53079,7 @@ _ZN7CPU65108ADR_ZEROEv:
 	mov	QWORD PTR -24[rbp], rdi
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
-.L2300:
+.L2220:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	movzx	eax, WORD PTR [rax]
@@ -53333,7 +53110,7 @@ _ZN7CPU65108ADR_ZEROEv:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	mov	WORD PTR [rax], dx
-.L2301:
+.L2221:
 	movsd	xmm0, QWORD PTR -16[rbp]
 	movq	rax, xmm0
 	movq	xmm0, rax
@@ -53349,7 +53126,7 @@ _ZN7CPU65109ADR_ZEROXEv:
 	mov	QWORD PTR -24[rbp], rdi
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
-.L2304:
+.L2224:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	movzx	eax, WORD PTR [rax]
@@ -53385,7 +53162,7 @@ _ZN7CPU65109ADR_ZEROXEv:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	mov	WORD PTR [rax], dx
-.L2305:
+.L2225:
 	movsd	xmm0, QWORD PTR -16[rbp]
 	movq	rax, xmm0
 	movq	xmm0, rax
@@ -53401,7 +53178,7 @@ _ZN7CPU65109ADR_ZEROYEv:
 	mov	QWORD PTR -24[rbp], rdi
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
-.L2308:
+.L2228:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	movzx	eax, WORD PTR [rax]
@@ -53437,7 +53214,7 @@ _ZN7CPU65109ADR_ZEROYEv:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	mov	WORD PTR [rax], dx
-.L2309:
+.L2229:
 	movsd	xmm0, QWORD PTR -16[rbp]
 	movq	rax, xmm0
 	movq	xmm0, rax
@@ -53453,7 +53230,7 @@ _ZN7CPU65108ADR_ABSXEv:
 	mov	QWORD PTR -24[rbp], rdi
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
-.L2312:
+.L2232:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	movzx	eax, WORD PTR [rax]
@@ -53489,7 +53266,7 @@ _ZN7CPU65108ADR_ABSXEv:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	mov	WORD PTR [rax], dx
-.L2313:
+.L2233:
 	movsd	xmm0, QWORD PTR -16[rbp]
 	movq	rax, xmm0
 	movq	xmm0, rax
@@ -53505,7 +53282,7 @@ _ZN7CPU65108ADR_ABSYEv:
 	mov	QWORD PTR -24[rbp], rdi
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
-.L2316:
+.L2236:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	movzx	eax, WORD PTR [rax]
@@ -53541,7 +53318,7 @@ _ZN7CPU65108ADR_ABSYEv:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	mov	WORD PTR [rax], dx
-.L2317:
+.L2237:
 	movsd	xmm0, QWORD PTR -16[rbp]
 	movq	rax, xmm0
 	movq	xmm0, rax
@@ -53557,7 +53334,7 @@ _ZN7CPU65108ADR_INDXEv:
 	mov	QWORD PTR -40[rbp], rdi
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
-.L2320:
+.L2240:
 	lea	rax, -24[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	rax, QWORD PTR -40[rbp]
@@ -53618,7 +53395,7 @@ _ZN7CPU65108ADR_INDXEv:
 	cvtsi2sd	xmm0, eax
 	movsd	QWORD PTR -16[rbp], xmm0
 	nop
-.L2321:
+.L2241:
 	movsd	xmm0, QWORD PTR -16[rbp]
 	movq	rax, xmm0
 	movq	xmm0, rax
@@ -53634,7 +53411,7 @@ _ZN7CPU65108ADR_INDYEv:
 	mov	QWORD PTR -40[rbp], rdi
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
-.L2324:
+.L2244:
 	lea	rax, -24[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	rax, QWORD PTR -40[rbp]
@@ -53692,7 +53469,7 @@ _ZN7CPU65108ADR_INDYEv:
 	mov	rax, QWORD PTR -40[rbp]
 	add	rax, 12
 	mov	WORD PTR [rax], dx
-.L2325:
+.L2245:
 	movsd	xmm0, QWORD PTR -16[rbp]
 	movq	rax, xmm0
 	movq	xmm0, rax
@@ -53708,7 +53485,7 @@ _ZN7CPU65107ADR_INDEv:
 	mov	QWORD PTR -40[rbp], rdi
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
-.L2328:
+.L2248:
 	lea	rax, -24[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	rax, QWORD PTR -40[rbp]
@@ -53763,7 +53540,7 @@ _ZN7CPU65107ADR_INDEv:
 	cvtsi2sd	xmm0, eax
 	movsd	QWORD PTR -16[rbp], xmm0
 	nop
-.L2329:
+.L2249:
 	movsd	xmm0, QWORD PTR -16[rbp]
 	movq	rax, xmm0
 	movq	xmm0, rax
@@ -53778,7 +53555,7 @@ _ZN7CPU65104PUSHEd:
 	sub	rsp, 16
 	mov	QWORD PTR -8[rbp], rdi
 	movsd	QWORD PTR -16[rbp], xmm0
-.L2332:
+.L2252:
 	mov	rax, QWORD PTR -8[rbp]
 	add	rax, 14
 	movzx	eax, WORD PTR [rax]
@@ -53809,7 +53586,7 @@ _ZN7CPU65104PUSHEd:
 	nop
 	leave
 	ret
-.L2333:
+.L2253:
 	.size	_ZN7CPU65104PUSHEd, .-_ZN7CPU65104PUSHEd
 	.globl	_ZN7CPU65104PULLEv
 	.type	_ZN7CPU65104PULLEv, @function
@@ -53820,7 +53597,7 @@ _ZN7CPU65104PULLEv:
 	mov	QWORD PTR -24[rbp], rdi
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
-.L2335:
+.L2255:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 14
 	movzx	eax, BYTE PTR [rax]
@@ -53852,7 +53629,7 @@ _ZN7CPU65104PULLEv:
 	cvtsi2sd	xmm0, eax
 	movsd	QWORD PTR -16[rbp], xmm0
 	nop
-.L2336:
+.L2256:
 	movsd	xmm0, QWORD PTR -16[rbp]
 	movq	rax, xmm0
 	movq	xmm0, rax
@@ -53868,8 +53645,8 @@ INS_UNK:
 	nop
 	pop	rbp
 	ret
-.L2339:
-.L2340:
+.L2259:
+.L2260:
 	.size	INS_UNK, .-INS_UNK
 	.globl	INS_ADC
 	.type	INS_ADC, @function
@@ -53879,7 +53656,7 @@ INS_ADC:
 	push	rbx
 	sub	rsp, 88
 	mov	QWORD PTR -88[rbp], rdi
-.L2342:
+.L2262:
 	lea	rax, -64[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	BYTE PTR -65[rbp], 0
@@ -53912,16 +53689,16 @@ INS_ADC:
 	mov	rax, QWORD PTR [rax]
 	and	eax, 1
 	test	rax, rax
-	je	.L2370
+	je	.L2290
 	lea	rax, -64[rbp]
 	movzx	eax, WORD PTR [rax]
 	lea	edx, 1[rax]
 	lea	rax, -64[rbp]
 	mov	WORD PTR [rax], dx
-	jmp	.L2344
-.L2370:
+	jmp	.L2264
+.L2290:
 	nop
-.L2344:
+.L2264:
 	mov	rax, QWORD PTR -88[rbp]
 	add	rax, 8
 	movzx	edx, BYTE PTR [rax]
@@ -53941,16 +53718,16 @@ INS_ADC:
 	and	rax, rcx
 	and	eax, 128
 	test	rax, rax
-	je	.L2371
+	je	.L2291
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2347
-.L2371:
+	jmp	.L2267
+.L2291:
 	nop
-.L2346:
+.L2266:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2347:
+.L2267:
 	mov	rax, QWORD PTR -88[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -65
@@ -53959,16 +53736,16 @@ INS_ADC:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2348
+	jnb	.L2268
 	cvttsd2si	rax, xmm0
-	jmp	.L2349
-.L2348:
+	jmp	.L2269
+.L2268:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2349:
+.L2269:
 	sal	rax, 6
 	and	eax, 64
 	or	rbx, rax
@@ -53987,16 +53764,16 @@ INS_ADC:
 	cvtsi2sd	xmm1, rax
 	movsd	xmm0, QWORD PTR .LC430[rip]
 	comisd	xmm0, xmm1
-	jnb	.L2372
+	jnb	.L2292
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2353
-.L2372:
+	jmp	.L2273
+.L2292:
 	nop
-.L2352:
+.L2272:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2353:
+.L2273:
 	mov	rax, QWORD PTR -88[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -2
@@ -54005,16 +53782,16 @@ INS_ADC:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2354
+	jnb	.L2274
 	cvttsd2si	rax, xmm0
-	jmp	.L2355
-.L2354:
+	jmp	.L2275
+.L2274:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2355:
+.L2275:
 	and	eax, 1
 	or	rbx, rax
 	mov	rdx, rbx
@@ -54027,19 +53804,19 @@ INS_ADC:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2373
+	jp	.L2293
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2373
+	jne	.L2293
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -40[rbp], xmm0
-	jmp	.L2359
-.L2373:
+	jmp	.L2279
+.L2293:
 	nop
-.L2358:
+.L2278:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -40[rbp], xmm0
-.L2359:
+.L2279:
 	mov	rax, QWORD PTR -88[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -54048,16 +53825,16 @@ INS_ADC:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2360
+	jnb	.L2280
 	cvttsd2si	rax, xmm0
-	jmp	.L2361
-.L2360:
+	jmp	.L2281
+.L2280:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2361:
+.L2281:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -54067,16 +53844,16 @@ INS_ADC:
 	lea	rax, -64[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2374
+	jns	.L2294
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -48[rbp], xmm0
-	jmp	.L2364
-.L2374:
+	jmp	.L2284
+.L2294:
 	nop
-.L2363:
+.L2283:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -48[rbp], xmm0
-.L2364:
+.L2284:
 	mov	rax, QWORD PTR -88[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -54085,16 +53862,16 @@ INS_ADC:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2365
+	jnb	.L2285
 	cvttsd2si	rax, xmm0
-	jmp	.L2366
-.L2365:
+	jmp	.L2286
+.L2285:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2366:
+.L2286:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -54105,7 +53882,7 @@ INS_ADC:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2367:
+.L2287:
 	.size	INS_ADC, .-INS_ADC
 	.globl	INS_AND
 	.type	INS_AND, @function
@@ -54115,7 +53892,7 @@ INS_AND:
 	push	rbx
 	sub	rsp, 56
 	mov	QWORD PTR -56[rbp], rdi
-.L2376:
+.L2296:
 	mov	rax, QWORD PTR -56[rbp]
 	add	rax, 64
 	movzx	eax, WORD PTR [rax]
@@ -54145,19 +53922,19 @@ INS_AND:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2390
+	jp	.L2310
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2390
+	jne	.L2310
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2380
-.L2390:
+	jmp	.L2300
+.L2310:
 	nop
-.L2379:
+.L2299:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2380:
+.L2300:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -54166,16 +53943,16 @@ INS_AND:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2381
+	jnb	.L2301
 	cvttsd2si	rax, xmm0
-	jmp	.L2382
-.L2381:
+	jmp	.L2302
+.L2301:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2382:
+.L2302:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -54186,16 +53963,16 @@ INS_AND:
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2391
+	jns	.L2311
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2385
-.L2391:
+	jmp	.L2305
+.L2311:
 	nop
-.L2384:
+.L2304:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2385:
+.L2305:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -54204,16 +53981,16 @@ INS_AND:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2386
+	jnb	.L2306
 	cvttsd2si	rax, xmm0
-	jmp	.L2387
-.L2386:
+	jmp	.L2307
+.L2306:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2387:
+.L2307:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -54224,7 +54001,7 @@ INS_AND:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2388:
+.L2308:
 	.size	INS_AND, .-INS_AND
 	.globl	INS_ASL
 	.type	INS_ASL, @function
@@ -54234,7 +54011,7 @@ INS_ASL:
 	push	rbx
 	sub	rsp, 72
 	mov	QWORD PTR -72[rbp], rdi
-.L2393:
+.L2313:
 	lea	rax, -56[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	rax, QWORD PTR -72[rbp]
@@ -54257,16 +54034,16 @@ INS_ASL:
 	lea	rax, -56[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2413
+	jns	.L2333
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2396
-.L2413:
+	jmp	.L2316
+.L2333:
 	nop
-.L2395:
+.L2315:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2396:
+.L2316:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -2
@@ -54275,16 +54052,16 @@ INS_ASL:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2397
+	jnb	.L2317
 	cvttsd2si	rax, xmm0
-	jmp	.L2398
-.L2397:
+	jmp	.L2318
+.L2317:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2398:
+.L2318:
 	and	eax, 1
 	or	rbx, rax
 	mov	rdx, rbx
@@ -54321,19 +54098,19 @@ INS_ASL:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2414
+	jp	.L2334
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2414
+	jne	.L2334
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2402
-.L2414:
+	jmp	.L2322
+.L2334:
 	nop
-.L2401:
+.L2321:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2402:
+.L2322:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -54342,16 +54119,16 @@ INS_ASL:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2403
+	jnb	.L2323
 	cvttsd2si	rax, xmm0
-	jmp	.L2404
-.L2403:
+	jmp	.L2324
+.L2323:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2404:
+.L2324:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -54361,16 +54138,16 @@ INS_ASL:
 	lea	rax, -56[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2415
+	jns	.L2335
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -40[rbp], xmm0
-	jmp	.L2407
-.L2415:
+	jmp	.L2327
+.L2335:
 	nop
-.L2406:
+.L2326:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -40[rbp], xmm0
-.L2407:
+.L2327:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -54379,16 +54156,16 @@ INS_ASL:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2408
+	jnb	.L2328
 	cvttsd2si	rax, xmm0
-	jmp	.L2409
-.L2408:
+	jmp	.L2329
+.L2328:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2409:
+.L2329:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -54399,7 +54176,7 @@ INS_ASL:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2410:
+.L2330:
 	.size	INS_ASL, .-INS_ASL
 	.globl	INS_ASLA
 	.type	INS_ASLA, @function
@@ -54409,21 +54186,21 @@ INS_ASLA:
 	push	rbx
 	sub	rsp, 56
 	mov	QWORD PTR -56[rbp], rdi
-.L2417:
+.L2337:
 	mov	rax, QWORD PTR -56[rbp]
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2437
+	jns	.L2357
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2420
-.L2437:
+	jmp	.L2340
+.L2357:
 	nop
-.L2419:
+.L2339:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2420:
+.L2340:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -2
@@ -54432,16 +54209,16 @@ INS_ASLA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2421
+	jnb	.L2341
 	cvttsd2si	rax, xmm0
-	jmp	.L2422
-.L2421:
+	jmp	.L2342
+.L2341:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2422:
+.L2342:
 	and	eax, 1
 	or	rbx, rax
 	mov	rdx, rbx
@@ -54462,19 +54239,19 @@ INS_ASLA:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2438
+	jp	.L2358
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2438
+	jne	.L2358
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2426
-.L2438:
+	jmp	.L2346
+.L2358:
 	nop
-.L2425:
+.L2345:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2426:
+.L2346:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -54483,16 +54260,16 @@ INS_ASLA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2427
+	jnb	.L2347
 	cvttsd2si	rax, xmm0
-	jmp	.L2428
-.L2427:
+	jmp	.L2348
+.L2347:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2428:
+.L2348:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -54503,16 +54280,16 @@ INS_ASLA:
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2439
+	jns	.L2359
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -40[rbp], xmm0
-	jmp	.L2431
-.L2439:
+	jmp	.L2351
+.L2359:
 	nop
-.L2430:
+.L2350:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -40[rbp], xmm0
-.L2431:
+.L2351:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -54521,16 +54298,16 @@ INS_ASLA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2432
+	jnb	.L2352
 	cvttsd2si	rax, xmm0
-	jmp	.L2433
-.L2432:
+	jmp	.L2353
+.L2352:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2433:
+.L2353:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -54541,7 +54318,7 @@ INS_ASLA:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2434:
+.L2354:
 	.size	INS_ASLA, .-INS_ASLA
 	.globl	INS_BCC
 	.type	INS_BCC, @function
@@ -54550,12 +54327,12 @@ INS_BCC:
 	mov	rbp, rsp
 	sub	rsp, 32
 	mov	QWORD PTR -24[rbp], rdi
-.L2441:
+.L2361:
 	mov	rax, QWORD PTR -24[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	eax, 1
 	test	rax, rax
-	jne	.L2446
+	jne	.L2366
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
 	lea	rax, -16[rbp]
@@ -54605,13 +54382,13 @@ INS_BCC:
 	add	rdx, 12
 	movzx	eax, WORD PTR [rax]
 	mov	WORD PTR [rdx], ax
-	jmp	.L2447
-.L2443:
-.L2444:
-.L2446:
+	jmp	.L2367
+.L2363:
+.L2364:
+.L2366:
 	nop
-.L2445:
-.L2447:
+.L2365:
+.L2367:
 	nop
 	leave
 	ret
@@ -54623,12 +54400,12 @@ INS_BCS:
 	mov	rbp, rsp
 	sub	rsp, 32
 	mov	QWORD PTR -24[rbp], rdi
-.L2449:
+.L2369:
 	mov	rax, QWORD PTR -24[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	eax, 1
 	test	rax, rax
-	je	.L2454
+	je	.L2374
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
 	lea	rax, -16[rbp]
@@ -54678,13 +54455,13 @@ INS_BCS:
 	add	rdx, 12
 	movzx	eax, WORD PTR [rax]
 	mov	WORD PTR [rdx], ax
-	jmp	.L2455
-.L2451:
-.L2452:
-.L2454:
+	jmp	.L2375
+.L2371:
+.L2372:
+.L2374:
 	nop
-.L2453:
-.L2455:
+.L2373:
+.L2375:
 	nop
 	leave
 	ret
@@ -54696,17 +54473,17 @@ INS_BEQ:
 	mov	rbp, rsp
 	sub	rsp, 32
 	mov	QWORD PTR -24[rbp], rdi
-.L2457:
+.L2377:
 	mov	rax, QWORD PTR -24[rbp]
 	mov	rax, QWORD PTR [rax]
 	shr	rax
 	and	eax, 1
 	test	rax, rax
-	js	.L2458
+	js	.L2378
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
-	jmp	.L2459
-.L2458:
+	jmp	.L2379
+.L2378:
 	mov	rdx, rax
 	shr	rdx
 	and	eax, 1
@@ -54714,13 +54491,13 @@ INS_BEQ:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L2459:
+.L2379:
 	movsd	xmm1, QWORD PTR .LC427[rip]
 	ucomisd	xmm0, xmm1
-	jp	.L2465
+	jp	.L2385
 	movsd	xmm1, QWORD PTR .LC427[rip]
 	comisd	xmm0, xmm1
-	jne	.L2465
+	jne	.L2385
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
 	lea	rax, -16[rbp]
@@ -54770,13 +54547,13 @@ INS_BEQ:
 	add	rdx, 12
 	movzx	eax, WORD PTR [rax]
 	mov	WORD PTR [rdx], ax
-	jmp	.L2466
-.L2462:
-.L2463:
-.L2465:
+	jmp	.L2386
+.L2382:
+.L2383:
+.L2385:
 	nop
-.L2464:
-.L2466:
+.L2384:
+.L2386:
 	nop
 	leave
 	ret
@@ -54789,7 +54566,7 @@ INS_BIT:
 	push	rbx
 	sub	rsp, 56
 	mov	QWORD PTR -56[rbp], rdi
-.L2468:
+.L2388:
 	mov	BYTE PTR -42[rbp], 0
 	mov	rax, QWORD PTR -56[rbp]
 	add	rax, 64
@@ -54809,16 +54586,16 @@ INS_BIT:
 	mov	BYTE PTR -42[rbp], al
 	movzx	eax, BYTE PTR -42[rbp]
 	test	al, al
-	jns	.L2488
+	jns	.L2408
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2471
-.L2488:
+	jmp	.L2391
+.L2408:
 	nop
-.L2470:
+.L2390:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2471:
+.L2391:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -54827,16 +54604,16 @@ INS_BIT:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2472
+	jnb	.L2392
 	cvttsd2si	rax, xmm0
-	jmp	.L2473
-.L2472:
+	jmp	.L2393
+.L2392:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2473:
+.L2393:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -54847,16 +54624,16 @@ INS_BIT:
 	movsx	rax, al
 	and	eax, 64
 	test	rax, rax
-	je	.L2489
+	je	.L2409
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2476
-.L2489:
+	jmp	.L2396
+.L2409:
 	nop
-.L2475:
+.L2395:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2476:
+.L2396:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -65
@@ -54865,16 +54642,16 @@ INS_BIT:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2477
+	jnb	.L2397
 	cvttsd2si	rax, xmm0
-	jmp	.L2478
-.L2477:
+	jmp	.L2398
+.L2397:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2478:
+.L2398:
 	sal	rax, 6
 	and	eax, 64
 	or	rbx, rax
@@ -54887,16 +54664,16 @@ INS_BIT:
 	movzx	eax, BYTE PTR -42[rbp]
 	and	eax, edx
 	test	al, al
-	jne	.L2490
+	jne	.L2410
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -40[rbp], xmm0
-	jmp	.L2481
-.L2490:
+	jmp	.L2401
+.L2410:
 	nop
-.L2480:
+.L2400:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -40[rbp], xmm0
-.L2481:
+.L2401:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -54905,16 +54682,16 @@ INS_BIT:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2482
+	jnb	.L2402
 	cvttsd2si	rax, xmm0
-	jmp	.L2483
-.L2482:
+	jmp	.L2403
+.L2402:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2483:
+.L2403:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -54925,7 +54702,7 @@ INS_BIT:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2484:
+.L2404:
 	.size	INS_BIT, .-INS_BIT
 	.globl	INS_BMI
 	.type	INS_BMI, @function
@@ -54934,13 +54711,13 @@ INS_BMI:
 	mov	rbp, rsp
 	sub	rsp, 32
 	mov	QWORD PTR -24[rbp], rdi
-.L2492:
+.L2412:
 	mov	rax, QWORD PTR -24[rbp]
 	mov	rax, QWORD PTR [rax]
 	shr	rax, 7
 	and	eax, 1
 	test	rax, rax
-	je	.L2497
+	je	.L2417
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
 	lea	rax, -16[rbp]
@@ -54990,13 +54767,13 @@ INS_BMI:
 	add	rdx, 12
 	movzx	eax, WORD PTR [rax]
 	mov	WORD PTR [rdx], ax
-	jmp	.L2498
-.L2494:
-.L2495:
-.L2497:
+	jmp	.L2418
+.L2414:
+.L2415:
+.L2417:
 	nop
-.L2496:
-.L2498:
+.L2416:
+.L2418:
 	nop
 	leave
 	ret
@@ -55008,17 +54785,17 @@ INS_BNE:
 	mov	rbp, rsp
 	sub	rsp, 32
 	mov	QWORD PTR -24[rbp], rdi
-.L2500:
+.L2420:
 	mov	rax, QWORD PTR -24[rbp]
 	mov	rax, QWORD PTR [rax]
 	shr	rax
 	and	eax, 1
 	test	rax, rax
-	js	.L2501
+	js	.L2421
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
-	jmp	.L2502
-.L2501:
+	jmp	.L2422
+.L2421:
 	mov	rdx, rax
 	shr	rdx
 	and	eax, 1
@@ -55026,13 +54803,13 @@ INS_BNE:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L2502:
+.L2422:
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2508
+	jp	.L2428
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2508
+	jne	.L2428
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
 	lea	rax, -16[rbp]
@@ -55082,13 +54859,13 @@ INS_BNE:
 	add	rdx, 12
 	movzx	eax, WORD PTR [rax]
 	mov	WORD PTR [rdx], ax
-	jmp	.L2509
-.L2505:
-.L2506:
-.L2508:
+	jmp	.L2429
+.L2425:
+.L2426:
+.L2428:
 	nop
-.L2507:
-.L2509:
+.L2427:
+.L2429:
 	nop
 	leave
 	ret
@@ -55100,13 +54877,13 @@ INS_BPL:
 	mov	rbp, rsp
 	sub	rsp, 32
 	mov	QWORD PTR -24[rbp], rdi
-.L2511:
+.L2431:
 	mov	rax, QWORD PTR -24[rbp]
 	mov	rax, QWORD PTR [rax]
 	shr	rax, 7
 	and	eax, 1
 	test	rax, rax
-	jne	.L2516
+	jne	.L2436
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
 	lea	rax, -16[rbp]
@@ -55156,13 +54933,13 @@ INS_BPL:
 	add	rdx, 12
 	movzx	eax, WORD PTR [rax]
 	mov	WORD PTR [rdx], ax
-	jmp	.L2517
-.L2513:
-.L2514:
-.L2516:
+	jmp	.L2437
+.L2433:
+.L2434:
+.L2436:
 	nop
-.L2515:
-.L2517:
+.L2435:
+.L2437:
 	nop
 	leave
 	ret
@@ -55174,7 +54951,7 @@ INS_BRK:
 	mov	rbp, rsp
 	sub	rsp, 32
 	mov	QWORD PTR -24[rbp], rdi
-.L2519:
+.L2439:
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 12
 	movzx	eax, WORD PTR [rax]
@@ -55246,7 +55023,7 @@ INS_BRK:
 	nop
 	leave
 	ret
-.L2520:
+.L2440:
 	.size	INS_BRK, .-INS_BRK
 	.globl	INS_BVC
 	.type	INS_BVC, @function
@@ -55255,13 +55032,13 @@ INS_BVC:
 	mov	rbp, rsp
 	sub	rsp, 32
 	mov	QWORD PTR -24[rbp], rdi
-.L2522:
+.L2442:
 	mov	rax, QWORD PTR -24[rbp]
 	mov	rax, QWORD PTR [rax]
 	shr	rax, 6
 	and	eax, 1
 	test	rax, rax
-	jne	.L2527
+	jne	.L2447
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
 	lea	rax, -16[rbp]
@@ -55311,13 +55088,13 @@ INS_BVC:
 	add	rdx, 12
 	movzx	eax, WORD PTR [rax]
 	mov	WORD PTR [rdx], ax
-	jmp	.L2528
-.L2524:
-.L2525:
-.L2527:
+	jmp	.L2448
+.L2444:
+.L2445:
+.L2447:
 	nop
-.L2526:
-.L2528:
+.L2446:
+.L2448:
 	nop
 	leave
 	ret
@@ -55329,13 +55106,13 @@ INS_BVS:
 	mov	rbp, rsp
 	sub	rsp, 32
 	mov	QWORD PTR -24[rbp], rdi
-.L2530:
+.L2450:
 	mov	rax, QWORD PTR -24[rbp]
 	mov	rax, QWORD PTR [rax]
 	shr	rax, 6
 	and	eax, 1
 	test	rax, rax
-	je	.L2535
+	je	.L2455
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
 	lea	rax, -16[rbp]
@@ -55385,13 +55162,13 @@ INS_BVS:
 	add	rdx, 12
 	movzx	eax, WORD PTR [rax]
 	mov	WORD PTR [rdx], ax
-	jmp	.L2536
-.L2532:
-.L2533:
-.L2535:
+	jmp	.L2456
+.L2452:
+.L2453:
+.L2455:
 	nop
-.L2534:
-.L2536:
+.L2454:
+.L2456:
 	nop
 	leave
 	ret
@@ -55402,7 +55179,7 @@ INS_CLC:
 	push	rbp
 	mov	rbp, rsp
 	mov	QWORD PTR -8[rbp], rdi
-.L2538:
+.L2458:
 	mov	rax, QWORD PTR -8[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -2
@@ -55412,7 +55189,7 @@ INS_CLC:
 	nop
 	pop	rbp
 	ret
-.L2539:
+.L2459:
 	.size	INS_CLC, .-INS_CLC
 	.globl	INS_CLD
 	.type	INS_CLD, @function
@@ -55420,7 +55197,7 @@ INS_CLD:
 	push	rbp
 	mov	rbp, rsp
 	mov	QWORD PTR -8[rbp], rdi
-.L2541:
+.L2461:
 	mov	rax, QWORD PTR -8[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -9
@@ -55430,7 +55207,7 @@ INS_CLD:
 	nop
 	pop	rbp
 	ret
-.L2542:
+.L2462:
 	.size	INS_CLD, .-INS_CLD
 	.globl	INS_CLI
 	.type	INS_CLI, @function
@@ -55438,7 +55215,7 @@ INS_CLI:
 	push	rbp
 	mov	rbp, rsp
 	mov	QWORD PTR -8[rbp], rdi
-.L2544:
+.L2464:
 	mov	rax, QWORD PTR -8[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -5
@@ -55448,7 +55225,7 @@ INS_CLI:
 	nop
 	pop	rbp
 	ret
-.L2545:
+.L2465:
 	.size	INS_CLI, .-INS_CLI
 	.globl	INS_CLV
 	.type	INS_CLV, @function
@@ -55456,7 +55233,7 @@ INS_CLV:
 	push	rbp
 	mov	rbp, rsp
 	mov	QWORD PTR -8[rbp], rdi
-.L2547:
+.L2467:
 	mov	rax, QWORD PTR -8[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -65
@@ -55466,7 +55243,7 @@ INS_CLV:
 	nop
 	pop	rbp
 	ret
-.L2548:
+.L2468:
 	.size	INS_CLV, .-INS_CLV
 	.globl	INS_CMP
 	.type	INS_CMP, @function
@@ -55476,7 +55253,7 @@ INS_CMP:
 	push	rbx
 	sub	rsp, 72
 	mov	QWORD PTR -72[rbp], rdi
-.L2550:
+.L2470:
 	lea	rax, -56[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	rax, QWORD PTR -72[rbp]
@@ -55507,16 +55284,16 @@ INS_CMP:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
 	comisd	xmm0, QWORD PTR .LC430[rip]
-	ja	.L2570
+	ja	.L2490
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2554
-.L2570:
+	jmp	.L2474
+.L2490:
 	nop
-.L2553:
+.L2473:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2554:
+.L2474:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -2
@@ -55525,16 +55302,16 @@ INS_CMP:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2555
+	jnb	.L2475
 	cvttsd2si	rax, xmm0
-	jmp	.L2556
-.L2555:
+	jmp	.L2476
+.L2475:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2556:
+.L2476:
 	and	eax, 1
 	or	rbx, rax
 	mov	rdx, rbx
@@ -55547,19 +55324,19 @@ INS_CMP:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2571
+	jp	.L2491
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2571
+	jne	.L2491
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2560
-.L2571:
+	jmp	.L2480
+.L2491:
 	nop
-.L2559:
+.L2479:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2560:
+.L2480:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -55568,16 +55345,16 @@ INS_CMP:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2561
+	jnb	.L2481
 	cvttsd2si	rax, xmm0
-	jmp	.L2562
-.L2561:
+	jmp	.L2482
+.L2481:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2562:
+.L2482:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -55587,16 +55364,16 @@ INS_CMP:
 	lea	rax, -56[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2572
+	jns	.L2492
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -40[rbp], xmm0
-	jmp	.L2565
-.L2572:
+	jmp	.L2485
+.L2492:
 	nop
-.L2564:
+.L2484:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -40[rbp], xmm0
-.L2565:
+.L2485:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -55605,16 +55382,16 @@ INS_CMP:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2566
+	jnb	.L2486
 	cvttsd2si	rax, xmm0
-	jmp	.L2567
-.L2566:
+	jmp	.L2487
+.L2486:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2567:
+.L2487:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -55625,7 +55402,7 @@ INS_CMP:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2568:
+.L2488:
 	.size	INS_CMP, .-INS_CMP
 	.globl	INS_CPX
 	.type	INS_CPX, @function
@@ -55635,7 +55412,7 @@ INS_CPX:
 	push	rbx
 	sub	rsp, 72
 	mov	QWORD PTR -72[rbp], rdi
-.L2574:
+.L2494:
 	lea	rax, -56[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	rax, QWORD PTR -72[rbp]
@@ -55666,16 +55443,16 @@ INS_CPX:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
 	comisd	xmm0, QWORD PTR .LC430[rip]
-	ja	.L2594
+	ja	.L2514
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2578
-.L2594:
+	jmp	.L2498
+.L2514:
 	nop
-.L2577:
+.L2497:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2578:
+.L2498:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -2
@@ -55684,16 +55461,16 @@ INS_CPX:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2579
+	jnb	.L2499
 	cvttsd2si	rax, xmm0
-	jmp	.L2580
-.L2579:
+	jmp	.L2500
+.L2499:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2580:
+.L2500:
 	and	eax, 1
 	or	rbx, rax
 	mov	rdx, rbx
@@ -55706,19 +55483,19 @@ INS_CPX:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2595
+	jp	.L2515
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2595
+	jne	.L2515
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2584
-.L2595:
+	jmp	.L2504
+.L2515:
 	nop
-.L2583:
+.L2503:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2584:
+.L2504:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -55727,16 +55504,16 @@ INS_CPX:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2585
+	jnb	.L2505
 	cvttsd2si	rax, xmm0
-	jmp	.L2586
-.L2585:
+	jmp	.L2506
+.L2505:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2586:
+.L2506:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -55746,16 +55523,16 @@ INS_CPX:
 	lea	rax, -56[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2596
+	jns	.L2516
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -40[rbp], xmm0
-	jmp	.L2589
-.L2596:
+	jmp	.L2509
+.L2516:
 	nop
-.L2588:
+.L2508:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -40[rbp], xmm0
-.L2589:
+.L2509:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -55764,16 +55541,16 @@ INS_CPX:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2590
+	jnb	.L2510
 	cvttsd2si	rax, xmm0
-	jmp	.L2591
-.L2590:
+	jmp	.L2511
+.L2510:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2591:
+.L2511:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -55784,7 +55561,7 @@ INS_CPX:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2592:
+.L2512:
 	.size	INS_CPX, .-INS_CPX
 	.globl	INS_CPY
 	.type	INS_CPY, @function
@@ -55794,7 +55571,7 @@ INS_CPY:
 	push	rbx
 	sub	rsp, 72
 	mov	QWORD PTR -72[rbp], rdi
-.L2598:
+.L2518:
 	lea	rax, -56[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	rax, QWORD PTR -72[rbp]
@@ -55825,16 +55602,16 @@ INS_CPY:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
 	comisd	xmm0, QWORD PTR .LC430[rip]
-	ja	.L2618
+	ja	.L2538
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2602
-.L2618:
+	jmp	.L2522
+.L2538:
 	nop
-.L2601:
+.L2521:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2602:
+.L2522:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -2
@@ -55843,16 +55620,16 @@ INS_CPY:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2603
+	jnb	.L2523
 	cvttsd2si	rax, xmm0
-	jmp	.L2604
-.L2603:
+	jmp	.L2524
+.L2523:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2604:
+.L2524:
 	and	eax, 1
 	or	rbx, rax
 	mov	rdx, rbx
@@ -55865,19 +55642,19 @@ INS_CPY:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2619
+	jp	.L2539
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2619
+	jne	.L2539
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2608
-.L2619:
+	jmp	.L2528
+.L2539:
 	nop
-.L2607:
+.L2527:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2608:
+.L2528:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -55886,16 +55663,16 @@ INS_CPY:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2609
+	jnb	.L2529
 	cvttsd2si	rax, xmm0
-	jmp	.L2610
-.L2609:
+	jmp	.L2530
+.L2529:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2610:
+.L2530:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -55905,16 +55682,16 @@ INS_CPY:
 	lea	rax, -56[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2620
+	jns	.L2540
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -40[rbp], xmm0
-	jmp	.L2613
-.L2620:
+	jmp	.L2533
+.L2540:
 	nop
-.L2612:
+.L2532:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -40[rbp], xmm0
-.L2613:
+.L2533:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -55923,16 +55700,16 @@ INS_CPY:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2614
+	jnb	.L2534
 	cvttsd2si	rax, xmm0
-	jmp	.L2615
-.L2614:
+	jmp	.L2535
+.L2534:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2615:
+.L2535:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -55943,7 +55720,7 @@ INS_CPY:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2616:
+.L2536:
 	.size	INS_CPY, .-INS_CPY
 	.globl	INS_DEC
 	.type	INS_DEC, @function
@@ -55953,7 +55730,7 @@ INS_DEC:
 	push	rbx
 	sub	rsp, 56
 	mov	QWORD PTR -56[rbp], rdi
-.L2622:
+.L2542:
 	lea	rax, -48[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	rax, QWORD PTR -56[rbp]
@@ -55986,16 +55763,16 @@ INS_DEC:
 	lea	rax, -48[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jne	.L2636
+	jne	.L2556
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2625
-.L2636:
+	jmp	.L2545
+.L2556:
 	nop
-.L2624:
+.L2544:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2625:
+.L2545:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -56004,16 +55781,16 @@ INS_DEC:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2626
+	jnb	.L2546
 	cvttsd2si	rax, xmm0
-	jmp	.L2627
-.L2626:
+	jmp	.L2547
+.L2546:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2627:
+.L2547:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -56023,16 +55800,16 @@ INS_DEC:
 	lea	rax, -48[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2637
+	jns	.L2557
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2630
-.L2637:
+	jmp	.L2550
+.L2557:
 	nop
-.L2629:
+.L2549:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2630:
+.L2550:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -56041,16 +55818,16 @@ INS_DEC:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2631
+	jnb	.L2551
 	cvttsd2si	rax, xmm0
-	jmp	.L2632
-.L2631:
+	jmp	.L2552
+.L2551:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2632:
+.L2552:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -56080,7 +55857,7 @@ INS_DEC:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2633:
+.L2553:
 	.size	INS_DEC, .-INS_DEC
 	.globl	INS_DEX
 	.type	INS_DEX, @function
@@ -56090,7 +55867,7 @@ INS_DEX:
 	push	rbx
 	sub	rsp, 40
 	mov	QWORD PTR -40[rbp], rdi
-.L2639:
+.L2559:
 	mov	rax, QWORD PTR -40[rbp]
 	add	rax, 9
 	movzx	eax, BYTE PTR [rax]
@@ -56111,19 +55888,19 @@ INS_DEX:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2653
+	jp	.L2573
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2653
+	jne	.L2573
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2643
-.L2653:
+	jmp	.L2563
+.L2573:
 	nop
-.L2642:
+.L2562:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2643:
+.L2563:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -56132,16 +55909,16 @@ INS_DEX:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2644
+	jnb	.L2564
 	cvttsd2si	rax, xmm0
-	jmp	.L2645
-.L2644:
+	jmp	.L2565
+.L2564:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2645:
+.L2565:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -56152,16 +55929,16 @@ INS_DEX:
 	add	rax, 9
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2654
+	jns	.L2574
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2648
-.L2654:
+	jmp	.L2568
+.L2574:
 	nop
-.L2647:
+.L2567:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2648:
+.L2568:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -56170,16 +55947,16 @@ INS_DEX:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2649
+	jnb	.L2569
 	cvttsd2si	rax, xmm0
-	jmp	.L2650
-.L2649:
+	jmp	.L2570
+.L2569:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2650:
+.L2570:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -56190,7 +55967,7 @@ INS_DEX:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2651:
+.L2571:
 	.size	INS_DEX, .-INS_DEX
 	.globl	INS_DEY
 	.type	INS_DEY, @function
@@ -56200,7 +55977,7 @@ INS_DEY:
 	push	rbx
 	sub	rsp, 40
 	mov	QWORD PTR -40[rbp], rdi
-.L2656:
+.L2576:
 	mov	rax, QWORD PTR -40[rbp]
 	add	rax, 10
 	movzx	eax, BYTE PTR [rax]
@@ -56221,19 +55998,19 @@ INS_DEY:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2670
+	jp	.L2590
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2670
+	jne	.L2590
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2660
-.L2670:
+	jmp	.L2580
+.L2590:
 	nop
-.L2659:
+.L2579:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2660:
+.L2580:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -56242,16 +56019,16 @@ INS_DEY:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2661
+	jnb	.L2581
 	cvttsd2si	rax, xmm0
-	jmp	.L2662
-.L2661:
+	jmp	.L2582
+.L2581:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2662:
+.L2582:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -56262,16 +56039,16 @@ INS_DEY:
 	add	rax, 10
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2671
+	jns	.L2591
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2665
-.L2671:
+	jmp	.L2585
+.L2591:
 	nop
-.L2664:
+.L2584:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2665:
+.L2585:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -56280,16 +56057,16 @@ INS_DEY:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2666
+	jnb	.L2586
 	cvttsd2si	rax, xmm0
-	jmp	.L2667
-.L2666:
+	jmp	.L2587
+.L2586:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2667:
+.L2587:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -56300,7 +56077,7 @@ INS_DEY:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2668:
+.L2588:
 	.size	INS_DEY, .-INS_DEY
 	.globl	INS_EOR
 	.type	INS_EOR, @function
@@ -56310,7 +56087,7 @@ INS_EOR:
 	push	rbx
 	sub	rsp, 56
 	mov	QWORD PTR -56[rbp], rdi
-.L2673:
+.L2593:
 	mov	rax, QWORD PTR -56[rbp]
 	add	rax, 64
 	movzx	eax, WORD PTR [rax]
@@ -56340,19 +56117,19 @@ INS_EOR:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2687
+	jp	.L2607
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2687
+	jne	.L2607
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2677
-.L2687:
+	jmp	.L2597
+.L2607:
 	nop
-.L2676:
+.L2596:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2677:
+.L2597:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -56361,16 +56138,16 @@ INS_EOR:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2678
+	jnb	.L2598
 	cvttsd2si	rax, xmm0
-	jmp	.L2679
-.L2678:
+	jmp	.L2599
+.L2598:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2679:
+.L2599:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -56381,16 +56158,16 @@ INS_EOR:
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2688
+	jns	.L2608
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2682
-.L2688:
+	jmp	.L2602
+.L2608:
 	nop
-.L2681:
+.L2601:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2682:
+.L2602:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -56399,16 +56176,16 @@ INS_EOR:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2683
+	jnb	.L2603
 	cvttsd2si	rax, xmm0
-	jmp	.L2684
-.L2683:
+	jmp	.L2604
+.L2603:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2684:
+.L2604:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -56419,7 +56196,7 @@ INS_EOR:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2685:
+.L2605:
 	.size	INS_EOR, .-INS_EOR
 	.globl	INS_INC
 	.type	INS_INC, @function
@@ -56429,7 +56206,7 @@ INS_INC:
 	push	rbx
 	sub	rsp, 56
 	mov	QWORD PTR -56[rbp], rdi
-.L2690:
+.L2610:
 	lea	rax, -48[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	rax, QWORD PTR -56[rbp]
@@ -56485,19 +56262,19 @@ INS_INC:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2704
+	jp	.L2624
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2704
+	jne	.L2624
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2694
-.L2704:
+	jmp	.L2614
+.L2624:
 	nop
-.L2693:
+.L2613:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2694:
+.L2614:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -56506,16 +56283,16 @@ INS_INC:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2695
+	jnb	.L2615
 	cvttsd2si	rax, xmm0
-	jmp	.L2696
-.L2695:
+	jmp	.L2616
+.L2615:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2696:
+.L2616:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -56525,16 +56302,16 @@ INS_INC:
 	lea	rax, -48[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2705
+	jns	.L2625
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2699
-.L2705:
+	jmp	.L2619
+.L2625:
 	nop
-.L2698:
+.L2618:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2699:
+.L2619:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -56543,16 +56320,16 @@ INS_INC:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2700
+	jnb	.L2620
 	cvttsd2si	rax, xmm0
-	jmp	.L2701
-.L2700:
+	jmp	.L2621
+.L2620:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2701:
+.L2621:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -56563,7 +56340,7 @@ INS_INC:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2702:
+.L2622:
 	.size	INS_INC, .-INS_INC
 	.globl	INS_INX
 	.type	INS_INX, @function
@@ -56573,7 +56350,7 @@ INS_INX:
 	push	rbx
 	sub	rsp, 56
 	mov	QWORD PTR -56[rbp], rdi
-.L2707:
+.L2627:
 	lea	rax, -40[rbp]
 	mov	QWORD PTR [rax], 0
 	lea	rax, -40[rbp]
@@ -56602,19 +56379,19 @@ INS_INX:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2721
+	jp	.L2641
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2721
+	jne	.L2641
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2711
-.L2721:
+	jmp	.L2631
+.L2641:
 	nop
-.L2710:
+.L2630:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2711:
+.L2631:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -56623,16 +56400,16 @@ INS_INX:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2712
+	jnb	.L2632
 	cvttsd2si	rax, xmm0
-	jmp	.L2713
-.L2712:
+	jmp	.L2633
+.L2632:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2713:
+.L2633:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -56642,16 +56419,16 @@ INS_INX:
 	lea	rax, -40[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2722
+	jns	.L2642
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2716
-.L2722:
+	jmp	.L2636
+.L2642:
 	nop
-.L2715:
+.L2635:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2716:
+.L2636:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -56660,16 +56437,16 @@ INS_INX:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2717
+	jnb	.L2637
 	cvttsd2si	rax, xmm0
-	jmp	.L2718
-.L2717:
+	jmp	.L2638
+.L2637:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2718:
+.L2638:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -56680,7 +56457,7 @@ INS_INX:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2719:
+.L2639:
 	.size	INS_INX, .-INS_INX
 	.globl	INS_INY
 	.type	INS_INY, @function
@@ -56690,7 +56467,7 @@ INS_INY:
 	push	rbx
 	sub	rsp, 56
 	mov	QWORD PTR -56[rbp], rdi
-.L2724:
+.L2644:
 	lea	rax, -40[rbp]
 	mov	QWORD PTR [rax], 0
 	lea	rax, -40[rbp]
@@ -56719,19 +56496,19 @@ INS_INY:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2738
+	jp	.L2658
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2738
+	jne	.L2658
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2728
-.L2738:
+	jmp	.L2648
+.L2658:
 	nop
-.L2727:
+.L2647:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2728:
+.L2648:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -56740,16 +56517,16 @@ INS_INY:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2729
+	jnb	.L2649
 	cvttsd2si	rax, xmm0
-	jmp	.L2730
-.L2729:
+	jmp	.L2650
+.L2649:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2730:
+.L2650:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -56759,16 +56536,16 @@ INS_INY:
 	lea	rax, -40[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2739
+	jns	.L2659
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2733
-.L2739:
+	jmp	.L2653
+.L2659:
 	nop
-.L2732:
+.L2652:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2733:
+.L2653:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -56777,16 +56554,16 @@ INS_INY:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2734
+	jnb	.L2654
 	cvttsd2si	rax, xmm0
-	jmp	.L2735
-.L2734:
+	jmp	.L2655
+.L2654:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2735:
+.L2655:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -56797,7 +56574,7 @@ INS_INY:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2736:
+.L2656:
 	.size	INS_INY, .-INS_INY
 	.globl	INS_JMP
 	.type	INS_JMP, @function
@@ -56805,7 +56582,7 @@ INS_JMP:
 	push	rbp
 	mov	rbp, rsp
 	mov	QWORD PTR -8[rbp], rdi
-.L2741:
+.L2661:
 	mov	rax, QWORD PTR -8[rbp]
 	lea	rdx, 12[rax]
 	mov	rax, QWORD PTR -8[rbp]
@@ -56814,7 +56591,7 @@ INS_JMP:
 	nop
 	pop	rbp
 	ret
-.L2742:
+.L2662:
 	.size	INS_JMP, .-INS_JMP
 	.globl	INS_JSR
 	.type	INS_JSR, @function
@@ -56823,7 +56600,7 @@ INS_JSR:
 	mov	rbp, rsp
 	sub	rsp, 16
 	mov	QWORD PTR -8[rbp], rdi
-.L2744:
+.L2664:
 	mov	rax, QWORD PTR -8[rbp]
 	add	rax, 12
 	movzx	eax, WORD PTR [rax]
@@ -56861,7 +56638,7 @@ INS_JSR:
 	nop
 	leave
 	ret
-.L2745:
+.L2665:
 	.size	INS_JSR, .-INS_JSR
 	.globl	INS_LDA
 	.type	INS_LDA, @function
@@ -56871,7 +56648,7 @@ INS_LDA:
 	push	rbx
 	sub	rsp, 56
 	mov	QWORD PTR -56[rbp], rdi
-.L2747:
+.L2667:
 	mov	rax, QWORD PTR -56[rbp]
 	add	rax, 64
 	movzx	eax, WORD PTR [rax]
@@ -56898,19 +56675,19 @@ INS_LDA:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2761
+	jp	.L2681
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2761
+	jne	.L2681
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2751
-.L2761:
+	jmp	.L2671
+.L2681:
 	nop
-.L2750:
+.L2670:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2751:
+.L2671:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -56919,16 +56696,16 @@ INS_LDA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2752
+	jnb	.L2672
 	cvttsd2si	rax, xmm0
-	jmp	.L2753
-.L2752:
+	jmp	.L2673
+.L2672:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2753:
+.L2673:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -56939,16 +56716,16 @@ INS_LDA:
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2762
+	jns	.L2682
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2756
-.L2762:
+	jmp	.L2676
+.L2682:
 	nop
-.L2755:
+.L2675:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2756:
+.L2676:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -56957,16 +56734,16 @@ INS_LDA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2757
+	jnb	.L2677
 	cvttsd2si	rax, xmm0
-	jmp	.L2758
-.L2757:
+	jmp	.L2678
+.L2677:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2758:
+.L2678:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -56977,7 +56754,7 @@ INS_LDA:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2759:
+.L2679:
 	.size	INS_LDA, .-INS_LDA
 	.globl	INS_LDX
 	.type	INS_LDX, @function
@@ -56987,7 +56764,7 @@ INS_LDX:
 	push	rbx
 	sub	rsp, 56
 	mov	QWORD PTR -56[rbp], rdi
-.L2764:
+.L2684:
 	mov	rax, QWORD PTR -56[rbp]
 	add	rax, 64
 	movzx	eax, WORD PTR [rax]
@@ -57014,19 +56791,19 @@ INS_LDX:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2778
+	jp	.L2698
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2778
+	jne	.L2698
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2768
-.L2778:
+	jmp	.L2688
+.L2698:
 	nop
-.L2767:
+.L2687:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2768:
+.L2688:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -57035,16 +56812,16 @@ INS_LDX:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2769
+	jnb	.L2689
 	cvttsd2si	rax, xmm0
-	jmp	.L2770
-.L2769:
+	jmp	.L2690
+.L2689:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2770:
+.L2690:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -57055,16 +56832,16 @@ INS_LDX:
 	add	rax, 9
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2779
+	jns	.L2699
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2773
-.L2779:
+	jmp	.L2693
+.L2699:
 	nop
-.L2772:
+.L2692:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2773:
+.L2693:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -57073,16 +56850,16 @@ INS_LDX:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2774
+	jnb	.L2694
 	cvttsd2si	rax, xmm0
-	jmp	.L2775
-.L2774:
+	jmp	.L2695
+.L2694:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2775:
+.L2695:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -57093,7 +56870,7 @@ INS_LDX:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2776:
+.L2696:
 	.size	INS_LDX, .-INS_LDX
 	.globl	INS_LDY
 	.type	INS_LDY, @function
@@ -57103,7 +56880,7 @@ INS_LDY:
 	push	rbx
 	sub	rsp, 56
 	mov	QWORD PTR -56[rbp], rdi
-.L2781:
+.L2701:
 	mov	rax, QWORD PTR -56[rbp]
 	add	rax, 64
 	movzx	eax, WORD PTR [rax]
@@ -57130,19 +56907,19 @@ INS_LDY:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2795
+	jp	.L2715
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2795
+	jne	.L2715
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2785
-.L2795:
+	jmp	.L2705
+.L2715:
 	nop
-.L2784:
+.L2704:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2785:
+.L2705:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -57151,16 +56928,16 @@ INS_LDY:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2786
+	jnb	.L2706
 	cvttsd2si	rax, xmm0
-	jmp	.L2787
-.L2786:
+	jmp	.L2707
+.L2706:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2787:
+.L2707:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -57171,16 +56948,16 @@ INS_LDY:
 	add	rax, 10
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2796
+	jns	.L2716
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2790
-.L2796:
+	jmp	.L2710
+.L2716:
 	nop
-.L2789:
+.L2709:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2790:
+.L2710:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -57189,16 +56966,16 @@ INS_LDY:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2791
+	jnb	.L2711
 	cvttsd2si	rax, xmm0
-	jmp	.L2792
-.L2791:
+	jmp	.L2712
+.L2711:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2792:
+.L2712:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -57209,7 +56986,7 @@ INS_LDY:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2793:
+.L2713:
 	.size	INS_LDY, .-INS_LDY
 	.globl	INS_LSR
 	.type	INS_LSR, @function
@@ -57219,7 +56996,7 @@ INS_LSR:
 	push	rbx
 	sub	rsp, 72
 	mov	QWORD PTR -72[rbp], rdi
-.L2798:
+.L2718:
 	lea	rax, -56[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	rax, QWORD PTR -72[rbp]
@@ -57244,16 +57021,16 @@ INS_LSR:
 	movzx	eax, al
 	and	eax, 1
 	test	rax, rax
-	je	.L2818
+	je	.L2738
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2801
-.L2818:
+	jmp	.L2721
+.L2738:
 	nop
-.L2800:
+.L2720:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2801:
+.L2721:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -2
@@ -57262,16 +57039,16 @@ INS_LSR:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2802
+	jnb	.L2722
 	cvttsd2si	rax, xmm0
-	jmp	.L2803
-.L2802:
+	jmp	.L2723
+.L2722:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2803:
+.L2723:
 	and	eax, 1
 	or	rbx, rax
 	mov	rdx, rbx
@@ -57308,19 +57085,19 @@ INS_LSR:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2819
+	jp	.L2739
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2819
+	jne	.L2739
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2807
-.L2819:
+	jmp	.L2727
+.L2739:
 	nop
-.L2806:
+.L2726:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2807:
+.L2727:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -57329,16 +57106,16 @@ INS_LSR:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2808
+	jnb	.L2728
 	cvttsd2si	rax, xmm0
-	jmp	.L2809
-.L2808:
+	jmp	.L2729
+.L2728:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2809:
+.L2729:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -57348,16 +57125,16 @@ INS_LSR:
 	lea	rax, -56[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jg	.L2820
+	jg	.L2740
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -40[rbp], xmm0
-	jmp	.L2812
-.L2820:
+	jmp	.L2732
+.L2740:
 	nop
-.L2811:
+.L2731:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -40[rbp], xmm0
-.L2812:
+.L2732:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -57366,16 +57143,16 @@ INS_LSR:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2813
+	jnb	.L2733
 	cvttsd2si	rax, xmm0
-	jmp	.L2814
-.L2813:
+	jmp	.L2734
+.L2733:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2814:
+.L2734:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -57386,7 +57163,7 @@ INS_LSR:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2815:
+.L2735:
 	.size	INS_LSR, .-INS_LSR
 	.globl	INS_LSRA
 	.type	INS_LSRA, @function
@@ -57396,23 +57173,23 @@ INS_LSRA:
 	push	rbx
 	sub	rsp, 56
 	mov	QWORD PTR -56[rbp], rdi
-.L2822:
+.L2742:
 	mov	rax, QWORD PTR -56[rbp]
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	movzx	eax, al
 	and	eax, 1
 	test	rax, rax
-	je	.L2842
+	je	.L2762
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2825
-.L2842:
+	jmp	.L2745
+.L2762:
 	nop
-.L2824:
+.L2744:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2825:
+.L2745:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -2
@@ -57421,16 +57198,16 @@ INS_LSRA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2826
+	jnb	.L2746
 	cvttsd2si	rax, xmm0
-	jmp	.L2827
-.L2826:
+	jmp	.L2747
+.L2746:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2827:
+.L2747:
 	and	eax, 1
 	or	rbx, rax
 	mov	rdx, rbx
@@ -57451,19 +57228,19 @@ INS_LSRA:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2843
+	jp	.L2763
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2843
+	jne	.L2763
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2831
-.L2843:
+	jmp	.L2751
+.L2763:
 	nop
-.L2830:
+.L2750:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2831:
+.L2751:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -57472,16 +57249,16 @@ INS_LSRA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2832
+	jnb	.L2752
 	cvttsd2si	rax, xmm0
-	jmp	.L2833
-.L2832:
+	jmp	.L2753
+.L2752:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2833:
+.L2753:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -57492,16 +57269,16 @@ INS_LSRA:
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2844
+	jns	.L2764
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -40[rbp], xmm0
-	jmp	.L2836
-.L2844:
+	jmp	.L2756
+.L2764:
 	nop
-.L2835:
+.L2755:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -40[rbp], xmm0
-.L2836:
+.L2756:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -57510,16 +57287,16 @@ INS_LSRA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2837
+	jnb	.L2757
 	cvttsd2si	rax, xmm0
-	jmp	.L2838
-.L2837:
+	jmp	.L2758
+.L2757:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2838:
+.L2758:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -57530,7 +57307,7 @@ INS_LSRA:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2839:
+.L2759:
 	.size	INS_LSRA, .-INS_LSRA
 	.globl	INS_NOP
 	.type	INS_NOP, @function
@@ -57541,8 +57318,8 @@ INS_NOP:
 	nop
 	pop	rbp
 	ret
-.L2846:
-.L2847:
+.L2766:
+.L2767:
 	.size	INS_NOP, .-INS_NOP
 	.globl	INS_ORA
 	.type	INS_ORA, @function
@@ -57552,7 +57329,7 @@ INS_ORA:
 	push	rbx
 	sub	rsp, 56
 	mov	QWORD PTR -56[rbp], rdi
-.L2849:
+.L2769:
 	mov	rax, QWORD PTR -56[rbp]
 	add	rax, 64
 	movzx	eax, WORD PTR [rax]
@@ -57582,19 +57359,19 @@ INS_ORA:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2863
+	jp	.L2783
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2863
+	jne	.L2783
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2853
-.L2863:
+	jmp	.L2773
+.L2783:
 	nop
-.L2852:
+.L2772:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2853:
+.L2773:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -57603,16 +57380,16 @@ INS_ORA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2854
+	jnb	.L2774
 	cvttsd2si	rax, xmm0
-	jmp	.L2855
-.L2854:
+	jmp	.L2775
+.L2774:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2855:
+.L2775:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -57623,16 +57400,16 @@ INS_ORA:
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2864
+	jns	.L2784
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2858
-.L2864:
+	jmp	.L2778
+.L2784:
 	nop
-.L2857:
+.L2777:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2858:
+.L2778:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -57641,16 +57418,16 @@ INS_ORA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2859
+	jnb	.L2779
 	cvttsd2si	rax, xmm0
-	jmp	.L2860
-.L2859:
+	jmp	.L2780
+.L2779:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2860:
+.L2780:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -57661,7 +57438,7 @@ INS_ORA:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2861:
+.L2781:
 	.size	INS_ORA, .-INS_ORA
 	.globl	INS_PHA
 	.type	INS_PHA, @function
@@ -57670,7 +57447,7 @@ INS_PHA:
 	mov	rbp, rsp
 	sub	rsp, 16
 	mov	QWORD PTR -8[rbp], rdi
-.L2866:
+.L2786:
 	mov	rax, QWORD PTR -8[rbp]
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
@@ -57685,7 +57462,7 @@ INS_PHA:
 	nop
 	leave
 	ret
-.L2867:
+.L2787:
 	.size	INS_PHA, .-INS_PHA
 	.globl	INS_PHP
 	.type	INS_PHP, @function
@@ -57694,7 +57471,7 @@ INS_PHP:
 	mov	rbp, rsp
 	sub	rsp, 16
 	mov	QWORD PTR -8[rbp], rdi
-.L2869:
+.L2789:
 	mov	rax, QWORD PTR -8[rbp]
 	movzx	eax, BYTE PTR [rax]
 	movzx	eax, al
@@ -57708,7 +57485,7 @@ INS_PHP:
 	nop
 	leave
 	ret
-.L2870:
+.L2790:
 	.size	INS_PHP, .-INS_PHP
 	.globl	INS_PLA
 	.type	INS_PLA, @function
@@ -57718,7 +57495,7 @@ INS_PLA:
 	push	rbx
 	sub	rsp, 56
 	mov	QWORD PTR -56[rbp], rdi
-.L2872:
+.L2792:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65104PULLEv
@@ -57739,19 +57516,19 @@ INS_PLA:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2886
+	jp	.L2806
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2886
+	jne	.L2806
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2876
-.L2886:
+	jmp	.L2796
+.L2806:
 	nop
-.L2875:
+.L2795:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2876:
+.L2796:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -57760,16 +57537,16 @@ INS_PLA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2877
+	jnb	.L2797
 	cvttsd2si	rax, xmm0
-	jmp	.L2878
-.L2877:
+	jmp	.L2798
+.L2797:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2878:
+.L2798:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -57780,16 +57557,16 @@ INS_PLA:
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2887
+	jns	.L2807
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2881
-.L2887:
+	jmp	.L2801
+.L2807:
 	nop
-.L2880:
+.L2800:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2881:
+.L2801:
 	mov	rax, QWORD PTR -56[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -57798,16 +57575,16 @@ INS_PLA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2882
+	jnb	.L2802
 	cvttsd2si	rax, xmm0
-	jmp	.L2883
-.L2882:
+	jmp	.L2803
+.L2802:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2883:
+.L2803:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -57818,7 +57595,7 @@ INS_PLA:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2884:
+.L2804:
 	.size	INS_PLA, .-INS_PLA
 	.globl	INS_PLP
 	.type	INS_PLP, @function
@@ -57827,7 +57604,7 @@ INS_PLP:
 	mov	rbp, rsp
 	sub	rsp, 32
 	mov	QWORD PTR -24[rbp], rdi
-.L2889:
+.L2809:
 	mov	rax, QWORD PTR -24[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65104PULLEv
@@ -57843,7 +57620,7 @@ INS_PLP:
 	nop
 	leave
 	ret
-.L2890:
+.L2810:
 	.size	INS_PLP, .-INS_PLP
 	.globl	INS_ROL
 	.type	INS_ROL, @function
@@ -57853,7 +57630,7 @@ INS_ROL:
 	push	rbx
 	sub	rsp, 88
 	mov	QWORD PTR -88[rbp], rdi
-.L2892:
+.L2812:
 	lea	rax, -64[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	BYTE PTR -65[rbp], 0
@@ -57878,11 +57655,11 @@ INS_ROL:
 	mov	rax, QWORD PTR [rax]
 	and	eax, 1
 	test	rax, rax
-	js	.L2893
+	js	.L2813
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
-	jmp	.L2894
-.L2893:
+	jmp	.L2814
+.L2813:
 	mov	rdx, rax
 	shr	rdx
 	and	eax, 1
@@ -57890,22 +57667,22 @@ INS_ROL:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L2894:
+.L2814:
 	movsd	xmm1, QWORD PTR .LC427[rip]
 	ucomisd	xmm0, xmm1
-	jp	.L2920
+	jp	.L2840
 	movsd	xmm1, QWORD PTR .LC427[rip]
 	comisd	xmm0, xmm1
-	jne	.L2920
+	jne	.L2840
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2898
-.L2920:
+	jmp	.L2818
+.L2840:
 	nop
-.L2897:
+.L2817:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2898:
+.L2818:
 	mov	rax, QWORD PTR -24[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -57914,16 +57691,16 @@ INS_ROL:
 	lea	rax, -64[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2921
+	jns	.L2841
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2901
-.L2921:
+	jmp	.L2821
+.L2841:
 	nop
-.L2900:
+.L2820:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2901:
+.L2821:
 	mov	rax, QWORD PTR -88[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -2
@@ -57932,16 +57709,16 @@ INS_ROL:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2902
+	jnb	.L2822
 	cvttsd2si	rax, xmm0
-	jmp	.L2903
-.L2902:
+	jmp	.L2823
+.L2822:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2903:
+.L2823:
 	and	eax, 1
 	or	rbx, rax
 	mov	rdx, rbx
@@ -57954,16 +57731,16 @@ INS_ROL:
 	mov	BYTE PTR [rax], dl
 	movzx	eax, BYTE PTR -65[rbp]
 	test	al, al
-	je	.L2922
+	je	.L2842
 	lea	rax, -64[rbp]
 	movzx	edx, BYTE PTR [rax]
 	lea	rax, -64[rbp]
 	or	edx, 1
 	mov	BYTE PTR [rax], dl
-	jmp	.L2905
-.L2922:
+	jmp	.L2825
+.L2842:
 	nop
-.L2905:
+.L2825:
 	lea	rax, -64[rbp]
 	movzx	eax, BYTE PTR [rax]
 	movzx	eax, al
@@ -57990,19 +57767,19 @@ INS_ROL:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2923
+	jp	.L2843
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2923
+	jne	.L2843
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -40[rbp], xmm0
-	jmp	.L2909
-.L2923:
+	jmp	.L2829
+.L2843:
 	nop
-.L2908:
+.L2828:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -40[rbp], xmm0
-.L2909:
+.L2829:
 	mov	rax, QWORD PTR -88[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -58011,16 +57788,16 @@ INS_ROL:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2910
+	jnb	.L2830
 	cvttsd2si	rax, xmm0
-	jmp	.L2911
-.L2910:
+	jmp	.L2831
+.L2830:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2911:
+.L2831:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -58030,16 +57807,16 @@ INS_ROL:
 	lea	rax, -64[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jg	.L2924
+	jg	.L2844
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -48[rbp], xmm0
-	jmp	.L2914
-.L2924:
+	jmp	.L2834
+.L2844:
 	nop
-.L2913:
+.L2833:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -48[rbp], xmm0
-.L2914:
+.L2834:
 	mov	rax, QWORD PTR -88[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -58048,16 +57825,16 @@ INS_ROL:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2915
+	jnb	.L2835
 	cvttsd2si	rax, xmm0
-	jmp	.L2916
-.L2915:
+	jmp	.L2836
+.L2835:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2916:
+.L2836:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -58068,7 +57845,7 @@ INS_ROL:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2917:
+.L2837:
 	.size	INS_ROL, .-INS_ROL
 	.globl	INS_ROLA
 	.type	INS_ROLA, @function
@@ -58078,17 +57855,17 @@ INS_ROLA:
 	push	rbx
 	sub	rsp, 72
 	mov	QWORD PTR -72[rbp], rdi
-.L2926:
+.L2846:
 	mov	BYTE PTR -49[rbp], 0
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	eax, 1
 	test	rax, rax
-	js	.L2927
+	js	.L2847
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
-	jmp	.L2928
-.L2927:
+	jmp	.L2848
+.L2847:
 	mov	rdx, rax
 	shr	rdx
 	and	eax, 1
@@ -58096,22 +57873,22 @@ INS_ROLA:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L2928:
+.L2848:
 	movsd	xmm1, QWORD PTR .LC427[rip]
 	ucomisd	xmm0, xmm1
-	jp	.L2954
+	jp	.L2874
 	movsd	xmm1, QWORD PTR .LC427[rip]
 	comisd	xmm0, xmm1
-	jne	.L2954
+	jne	.L2874
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2932
-.L2954:
+	jmp	.L2852
+.L2874:
 	nop
-.L2931:
+.L2851:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2932:
+.L2852:
 	mov	rax, QWORD PTR -24[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -58121,16 +57898,16 @@ INS_ROLA:
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2955
+	jns	.L2875
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2935
-.L2955:
+	jmp	.L2855
+.L2875:
 	nop
-.L2934:
+.L2854:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2935:
+.L2855:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -2
@@ -58139,16 +57916,16 @@ INS_ROLA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2936
+	jnb	.L2856
 	cvttsd2si	rax, xmm0
-	jmp	.L2937
-.L2936:
+	jmp	.L2857
+.L2856:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2937:
+.L2857:
 	and	eax, 1
 	or	rbx, rax
 	mov	rdx, rbx
@@ -58163,7 +57940,7 @@ INS_ROLA:
 	mov	BYTE PTR [rax], dl
 	movzx	eax, BYTE PTR -49[rbp]
 	test	al, al
-	je	.L2956
+	je	.L2876
 	mov	rax, QWORD PTR -72[rbp]
 	add	rax, 8
 	movzx	edx, BYTE PTR [rax]
@@ -58171,10 +57948,10 @@ INS_ROLA:
 	add	rax, 8
 	or	edx, 1
 	mov	BYTE PTR [rax], dl
-	jmp	.L2939
-.L2956:
+	jmp	.L2859
+.L2876:
 	nop
-.L2939:
+.L2859:
 	mov	rax, QWORD PTR -72[rbp]
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
@@ -58183,19 +57960,19 @@ INS_ROLA:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2957
+	jp	.L2877
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2957
+	jne	.L2877
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -40[rbp], xmm0
-	jmp	.L2943
-.L2957:
+	jmp	.L2863
+.L2877:
 	nop
-.L2942:
+.L2862:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -40[rbp], xmm0
-.L2943:
+.L2863:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -58204,16 +57981,16 @@ INS_ROLA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2944
+	jnb	.L2864
 	cvttsd2si	rax, xmm0
-	jmp	.L2945
-.L2944:
+	jmp	.L2865
+.L2864:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2945:
+.L2865:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -58224,16 +58001,16 @@ INS_ROLA:
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2958
+	jns	.L2878
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -48[rbp], xmm0
-	jmp	.L2948
-.L2958:
+	jmp	.L2868
+.L2878:
 	nop
-.L2947:
+.L2867:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -48[rbp], xmm0
-.L2948:
+.L2868:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -58242,16 +58019,16 @@ INS_ROLA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2949
+	jnb	.L2869
 	cvttsd2si	rax, xmm0
-	jmp	.L2950
-.L2949:
+	jmp	.L2870
+.L2869:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2950:
+.L2870:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -58262,7 +58039,7 @@ INS_ROLA:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2951:
+.L2871:
 	.size	INS_ROLA, .-INS_ROLA
 	.globl	INS_ROR
 	.type	INS_ROR, @function
@@ -58272,7 +58049,7 @@ INS_ROR:
 	push	rbx
 	sub	rsp, 88
 	mov	QWORD PTR -88[rbp], rdi
-.L2960:
+.L2880:
 	lea	rax, -64[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	BYTE PTR -65[rbp], 0
@@ -58280,11 +58057,11 @@ INS_ROR:
 	mov	rax, QWORD PTR [rax]
 	and	eax, 1
 	test	rax, rax
-	js	.L2961
+	js	.L2881
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
-	jmp	.L2962
-.L2961:
+	jmp	.L2882
+.L2881:
 	mov	rdx, rax
 	shr	rdx
 	and	eax, 1
@@ -58292,22 +58069,22 @@ INS_ROR:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L2962:
+.L2882:
 	movsd	xmm1, QWORD PTR .LC427[rip]
 	ucomisd	xmm0, xmm1
-	jp	.L2988
+	jp	.L2908
 	movsd	xmm1, QWORD PTR .LC427[rip]
 	comisd	xmm0, xmm1
-	jne	.L2988
+	jne	.L2908
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L2966
-.L2988:
+	jmp	.L2886
+.L2908:
 	nop
-.L2965:
+.L2885:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L2966:
+.L2886:
 	mov	rax, QWORD PTR -24[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -58335,16 +58112,16 @@ INS_ROR:
 	movzx	eax, al
 	and	eax, 1
 	test	rax, rax
-	je	.L2989
+	je	.L2909
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L2969
-.L2989:
+	jmp	.L2889
+.L2909:
 	nop
-.L2968:
+.L2888:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L2969:
+.L2889:
 	mov	rax, QWORD PTR -88[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -2
@@ -58353,16 +58130,16 @@ INS_ROR:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2970
+	jnb	.L2890
 	cvttsd2si	rax, xmm0
-	jmp	.L2971
-.L2970:
+	jmp	.L2891
+.L2890:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2971:
+.L2891:
 	and	eax, 1
 	or	rbx, rax
 	mov	rdx, rbx
@@ -58375,16 +58152,16 @@ INS_ROR:
 	mov	BYTE PTR [rax], dl
 	movzx	eax, BYTE PTR -65[rbp]
 	test	al, al
-	je	.L2990
+	je	.L2910
 	lea	rax, -64[rbp]
 	movzx	edx, BYTE PTR [rax]
 	lea	rax, -64[rbp]
 	or	edx, -128
 	mov	BYTE PTR [rax], dl
-	jmp	.L2973
-.L2990:
+	jmp	.L2893
+.L2910:
 	nop
-.L2973:
+.L2893:
 	lea	rax, -64[rbp]
 	movzx	eax, BYTE PTR [rax]
 	movzx	eax, al
@@ -58411,19 +58188,19 @@ INS_ROR:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L2991
+	jp	.L2911
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L2991
+	jne	.L2911
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -40[rbp], xmm0
-	jmp	.L2977
-.L2991:
+	jmp	.L2897
+.L2911:
 	nop
-.L2976:
+.L2896:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -40[rbp], xmm0
-.L2977:
+.L2897:
 	mov	rax, QWORD PTR -88[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -58432,16 +58209,16 @@ INS_ROR:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2978
+	jnb	.L2898
 	cvttsd2si	rax, xmm0
-	jmp	.L2979
-.L2978:
+	jmp	.L2899
+.L2898:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2979:
+.L2899:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -58451,16 +58228,16 @@ INS_ROR:
 	lea	rax, -64[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L2992
+	jns	.L2912
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -48[rbp], xmm0
-	jmp	.L2982
-.L2992:
+	jmp	.L2902
+.L2912:
 	nop
-.L2981:
+.L2901:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -48[rbp], xmm0
-.L2982:
+.L2902:
 	mov	rax, QWORD PTR -88[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -58469,16 +58246,16 @@ INS_ROR:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L2983
+	jnb	.L2903
 	cvttsd2si	rax, xmm0
-	jmp	.L2984
-.L2983:
+	jmp	.L2904
+.L2903:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L2984:
+.L2904:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -58489,7 +58266,7 @@ INS_ROR:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L2985:
+.L2905:
 	.size	INS_ROR, .-INS_ROR
 	.globl	INS_RORA
 	.type	INS_RORA, @function
@@ -58499,17 +58276,17 @@ INS_RORA:
 	push	rbx
 	sub	rsp, 72
 	mov	QWORD PTR -72[rbp], rdi
-.L2994:
+.L2914:
 	mov	BYTE PTR -49[rbp], 0
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	eax, 1
 	test	rax, rax
-	js	.L2995
+	js	.L2915
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
-	jmp	.L2996
-.L2995:
+	jmp	.L2916
+.L2915:
 	mov	rdx, rax
 	shr	rdx
 	and	eax, 1
@@ -58517,22 +58294,22 @@ INS_RORA:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L2996:
+.L2916:
 	movsd	xmm1, QWORD PTR .LC427[rip]
 	ucomisd	xmm0, xmm1
-	jp	.L3018
+	jp	.L2938
 	movsd	xmm1, QWORD PTR .LC427[rip]
 	comisd	xmm0, xmm1
-	jne	.L3018
+	jne	.L2938
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L3000
-.L3018:
+	jmp	.L2920
+.L2938:
 	nop
-.L2999:
+.L2919:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L3000:
+.L2920:
 	mov	rax, QWORD PTR -24[rbp]
 	movq	xmm0, rax
 	call	nearbyint@PLT
@@ -58544,16 +58321,16 @@ INS_RORA:
 	movzx	eax, al
 	and	eax, 1
 	test	rax, rax
-	je	.L3019
+	je	.L2939
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L3003
-.L3019:
+	jmp	.L2923
+.L2939:
 	nop
-.L3002:
+.L2922:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L3003:
+.L2923:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -2
@@ -58562,16 +58339,16 @@ INS_RORA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3004
+	jnb	.L2924
 	cvttsd2si	rax, xmm0
-	jmp	.L3005
-.L3004:
+	jmp	.L2925
+.L2924:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3005:
+.L2925:
 	and	eax, 1
 	or	rbx, rax
 	mov	rdx, rbx
@@ -58586,7 +58363,7 @@ INS_RORA:
 	mov	BYTE PTR [rax], dl
 	movzx	eax, BYTE PTR -49[rbp]
 	test	al, al
-	je	.L3020
+	je	.L2940
 	mov	rax, QWORD PTR -72[rbp]
 	add	rax, 8
 	movzx	edx, BYTE PTR [rax]
@@ -58594,22 +58371,22 @@ INS_RORA:
 	add	rax, 8
 	or	edx, -128
 	mov	BYTE PTR [rax], dl
-	jmp	.L3007
-.L3020:
+	jmp	.L2927
+.L2940:
 	nop
-.L3007:
+.L2927:
 	mov	rax, QWORD PTR -72[rbp]
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jne	.L3021
+	jne	.L2941
 	mov	QWORD PTR -40[rbp], 1
-	jmp	.L3010
-.L3021:
+	jmp	.L2930
+.L2941:
 	nop
-.L3009:
+.L2929:
 	mov	QWORD PTR -40[rbp], 0
-.L3010:
+.L2930:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -58624,14 +58401,14 @@ INS_RORA:
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L3022
+	jns	.L2942
 	mov	QWORD PTR -48[rbp], 1
-	jmp	.L3013
-.L3022:
+	jmp	.L2933
+.L2942:
 	nop
-.L3012:
+.L2932:
 	mov	QWORD PTR -48[rbp], 0
-.L3013:
+.L2933:
 	mov	rax, QWORD PTR -72[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -58646,7 +58423,7 @@ INS_RORA:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L3014:
+.L2934:
 	.size	INS_RORA, .-INS_RORA
 	.globl	INS_RTI
 	.type	INS_RTI, @function
@@ -58655,7 +58432,7 @@ INS_RTI:
 	mov	rbp, rsp
 	sub	rsp, 48
 	mov	QWORD PTR -40[rbp], rdi
-.L3024:
+.L2944:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65104PULLEv
@@ -58707,7 +58484,7 @@ INS_RTI:
 	nop
 	leave
 	ret
-.L3025:
+.L2945:
 	.size	INS_RTI, .-INS_RTI
 	.globl	INS_RTS
 	.type	INS_RTS, @function
@@ -58716,7 +58493,7 @@ INS_RTS:
 	mov	rbp, rsp
 	sub	rsp, 32
 	mov	QWORD PTR -24[rbp], rdi
-.L3027:
+.L2947:
 	mov	rax, QWORD PTR -24[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65104PULLEv
@@ -58756,7 +58533,7 @@ INS_RTS:
 	nop
 	leave
 	ret
-.L3028:
+.L2948:
 	.size	INS_RTS, .-INS_RTS
 	.globl	INS_SBC
 	.type	INS_SBC, @function
@@ -58766,7 +58543,7 @@ INS_SBC:
 	push	rbx
 	sub	rsp, 88
 	mov	QWORD PTR -88[rbp], rdi
-.L3030:
+.L2950:
 	lea	rax, -64[rbp]
 	mov	QWORD PTR [rax], 0
 	lea	rax, -72[rbp]
@@ -58802,11 +58579,11 @@ INS_SBC:
 	mov	rax, QWORD PTR [rax]
 	and	eax, 1
 	test	rax, rax
-	js	.L3031
+	js	.L2951
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
-	jmp	.L3032
-.L3031:
+	jmp	.L2952
+.L2951:
 	mov	rdx, rax
 	shr	rdx
 	and	eax, 1
@@ -58814,13 +58591,13 @@ INS_SBC:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L3032:
+.L2952:
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L3061
+	jp	.L2981
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L3061
+	jne	.L2981
 	lea	rax, -64[rbp]
 	movzx	eax, WORD PTR [rax]
 	cwde
@@ -58831,10 +58608,10 @@ INS_SBC:
 	cvttsd2si	edx, xmm0
 	lea	rax, -64[rbp]
 	mov	WORD PTR [rax], dx
-	jmp	.L3035
-.L3061:
+	jmp	.L2955
+.L2981:
 	nop
-.L3035:
+.L2955:
 	mov	rax, QWORD PTR -88[rbp]
 	add	rax, 8
 	movzx	edx, BYTE PTR [rax]
@@ -58852,16 +58629,16 @@ INS_SBC:
 	and	rax, rdx
 	and	eax, 128
 	test	rax, rax
-	je	.L3062
+	je	.L2982
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L3038
-.L3062:
+	jmp	.L2958
+.L2982:
 	nop
-.L3037:
+.L2957:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L3038:
+.L2958:
 	mov	rax, QWORD PTR -88[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -65
@@ -58870,16 +58647,16 @@ INS_SBC:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3039
+	jnb	.L2959
 	cvttsd2si	rax, xmm0
-	jmp	.L3040
-.L3039:
+	jmp	.L2960
+.L2959:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3040:
+.L2960:
 	sal	rax, 6
 	and	eax, 64
 	or	rbx, rax
@@ -58897,16 +58674,16 @@ INS_SBC:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
 	comisd	xmm0, QWORD PTR .LC430[rip]
-	ja	.L3063
+	ja	.L2983
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L3044
-.L3063:
+	jmp	.L2964
+.L2983:
 	nop
-.L3043:
+.L2963:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L3044:
+.L2964:
 	mov	rax, QWORD PTR -88[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -2
@@ -58915,16 +58692,16 @@ INS_SBC:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3045
+	jnb	.L2965
 	cvttsd2si	rax, xmm0
-	jmp	.L3046
-.L3045:
+	jmp	.L2966
+.L2965:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3046:
+.L2966:
 	and	eax, 1
 	or	rbx, rax
 	mov	rdx, rbx
@@ -58937,19 +58714,19 @@ INS_SBC:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L3064
+	jp	.L2984
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L3064
+	jne	.L2984
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -40[rbp], xmm0
-	jmp	.L3050
-.L3064:
+	jmp	.L2970
+.L2984:
 	nop
-.L3049:
+.L2969:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -40[rbp], xmm0
-.L3050:
+.L2970:
 	mov	rax, QWORD PTR -88[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -58958,16 +58735,16 @@ INS_SBC:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3051
+	jnb	.L2971
 	cvttsd2si	rax, xmm0
-	jmp	.L3052
-.L3051:
+	jmp	.L2972
+.L2971:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3052:
+.L2972:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -58977,16 +58754,16 @@ INS_SBC:
 	lea	rax, -64[rbp]
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L3065
+	jns	.L2985
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -48[rbp], xmm0
-	jmp	.L3055
-.L3065:
+	jmp	.L2975
+.L2985:
 	nop
-.L3054:
+.L2974:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -48[rbp], xmm0
-.L3055:
+.L2975:
 	mov	rax, QWORD PTR -88[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -58995,16 +58772,16 @@ INS_SBC:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3056
+	jnb	.L2976
 	cvttsd2si	rax, xmm0
-	jmp	.L3057
-.L3056:
+	jmp	.L2977
+.L2976:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3057:
+.L2977:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -59015,7 +58792,7 @@ INS_SBC:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L3058:
+.L2978:
 	.size	INS_SBC, .-INS_SBC
 	.globl	INS_SEC
 	.type	INS_SEC, @function
@@ -59023,7 +58800,7 @@ INS_SEC:
 	push	rbp
 	mov	rbp, rsp
 	mov	QWORD PTR -8[rbp], rdi
-.L3067:
+.L2987:
 	mov	rax, QWORD PTR -8[rbp]
 	mov	rax, QWORD PTR [rax]
 	or	rax, 1
@@ -59033,7 +58810,7 @@ INS_SEC:
 	nop
 	pop	rbp
 	ret
-.L3068:
+.L2988:
 	.size	INS_SEC, .-INS_SEC
 	.globl	INS_SED
 	.type	INS_SED, @function
@@ -59041,7 +58818,7 @@ INS_SED:
 	push	rbp
 	mov	rbp, rsp
 	mov	QWORD PTR -8[rbp], rdi
-.L3070:
+.L2990:
 	mov	rax, QWORD PTR -8[rbp]
 	mov	rax, QWORD PTR [rax]
 	or	rax, 8
@@ -59051,7 +58828,7 @@ INS_SED:
 	nop
 	pop	rbp
 	ret
-.L3071:
+.L2991:
 	.size	INS_SED, .-INS_SED
 	.globl	INS_SEI
 	.type	INS_SEI, @function
@@ -59059,7 +58836,7 @@ INS_SEI:
 	push	rbp
 	mov	rbp, rsp
 	mov	QWORD PTR -8[rbp], rdi
-.L3073:
+.L2993:
 	mov	rax, QWORD PTR -8[rbp]
 	mov	rax, QWORD PTR [rax]
 	or	rax, 4
@@ -59069,7 +58846,7 @@ INS_SEI:
 	nop
 	pop	rbp
 	ret
-.L3074:
+.L2994:
 	.size	INS_SEI, .-INS_SEI
 	.globl	INS_STA
 	.type	INS_STA, @function
@@ -59078,7 +58855,7 @@ INS_STA:
 	mov	rbp, rsp
 	sub	rsp, 16
 	mov	QWORD PTR -8[rbp], rdi
-.L3076:
+.L2996:
 	mov	rax, QWORD PTR -8[rbp]
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
@@ -59102,7 +58879,7 @@ INS_STA:
 	nop
 	leave
 	ret
-.L3077:
+.L2997:
 	.size	INS_STA, .-INS_STA
 	.globl	INS_STX
 	.type	INS_STX, @function
@@ -59111,7 +58888,7 @@ INS_STX:
 	mov	rbp, rsp
 	sub	rsp, 16
 	mov	QWORD PTR -8[rbp], rdi
-.L3079:
+.L2999:
 	mov	rax, QWORD PTR -8[rbp]
 	add	rax, 9
 	movzx	eax, BYTE PTR [rax]
@@ -59135,7 +58912,7 @@ INS_STX:
 	nop
 	leave
 	ret
-.L3080:
+.L3000:
 	.size	INS_STX, .-INS_STX
 	.globl	INS_STY
 	.type	INS_STY, @function
@@ -59144,7 +58921,7 @@ INS_STY:
 	mov	rbp, rsp
 	sub	rsp, 16
 	mov	QWORD PTR -8[rbp], rdi
-.L3082:
+.L3002:
 	mov	rax, QWORD PTR -8[rbp]
 	add	rax, 10
 	movzx	eax, BYTE PTR [rax]
@@ -59168,7 +58945,7 @@ INS_STY:
 	nop
 	leave
 	ret
-.L3083:
+.L3003:
 	.size	INS_STY, .-INS_STY
 	.globl	INS_TAX
 	.type	INS_TAX, @function
@@ -59178,7 +58955,7 @@ INS_TAX:
 	push	rbx
 	sub	rsp, 40
 	mov	QWORD PTR -40[rbp], rdi
-.L3085:
+.L3005:
 	mov	rax, QWORD PTR -40[rbp]
 	lea	rdx, 9[rax]
 	mov	rax, QWORD PTR -40[rbp]
@@ -59192,19 +58969,19 @@ INS_TAX:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L3099
+	jp	.L3019
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L3099
+	jne	.L3019
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L3089
-.L3099:
+	jmp	.L3009
+.L3019:
 	nop
-.L3088:
+.L3008:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L3089:
+.L3009:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -59213,16 +58990,16 @@ INS_TAX:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3090
+	jnb	.L3010
 	cvttsd2si	rax, xmm0
-	jmp	.L3091
-.L3090:
+	jmp	.L3011
+.L3010:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3091:
+.L3011:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -59233,16 +59010,16 @@ INS_TAX:
 	add	rax, 9
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L3100
+	jns	.L3020
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L3094
-.L3100:
+	jmp	.L3014
+.L3020:
 	nop
-.L3093:
+.L3013:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L3094:
+.L3014:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -59251,16 +59028,16 @@ INS_TAX:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3095
+	jnb	.L3015
 	cvttsd2si	rax, xmm0
-	jmp	.L3096
-.L3095:
+	jmp	.L3016
+.L3015:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3096:
+.L3016:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -59271,7 +59048,7 @@ INS_TAX:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L3097:
+.L3017:
 	.size	INS_TAX, .-INS_TAX
 	.globl	INS_TAY
 	.type	INS_TAY, @function
@@ -59281,7 +59058,7 @@ INS_TAY:
 	push	rbx
 	sub	rsp, 40
 	mov	QWORD PTR -40[rbp], rdi
-.L3102:
+.L3022:
 	mov	rax, QWORD PTR -40[rbp]
 	lea	rdx, 10[rax]
 	mov	rax, QWORD PTR -40[rbp]
@@ -59295,19 +59072,19 @@ INS_TAY:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L3116
+	jp	.L3036
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L3116
+	jne	.L3036
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L3106
-.L3116:
+	jmp	.L3026
+.L3036:
 	nop
-.L3105:
+.L3025:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L3106:
+.L3026:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -59316,16 +59093,16 @@ INS_TAY:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3107
+	jnb	.L3027
 	cvttsd2si	rax, xmm0
-	jmp	.L3108
-.L3107:
+	jmp	.L3028
+.L3027:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3108:
+.L3028:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -59336,16 +59113,16 @@ INS_TAY:
 	add	rax, 10
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L3117
+	jns	.L3037
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L3111
-.L3117:
+	jmp	.L3031
+.L3037:
 	nop
-.L3110:
+.L3030:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L3111:
+.L3031:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -59354,16 +59131,16 @@ INS_TAY:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3112
+	jnb	.L3032
 	cvttsd2si	rax, xmm0
-	jmp	.L3113
-.L3112:
+	jmp	.L3033
+.L3032:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3113:
+.L3033:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -59374,7 +59151,7 @@ INS_TAY:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L3114:
+.L3034:
 	.size	INS_TAY, .-INS_TAY
 	.globl	INS_TSX
 	.type	INS_TSX, @function
@@ -59384,7 +59161,7 @@ INS_TSX:
 	push	rbx
 	sub	rsp, 40
 	mov	QWORD PTR -40[rbp], rdi
-.L3119:
+.L3039:
 	mov	rax, QWORD PTR -40[rbp]
 	lea	rdx, 9[rax]
 	mov	rax, QWORD PTR -40[rbp]
@@ -59398,19 +59175,19 @@ INS_TSX:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L3133
+	jp	.L3053
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L3133
+	jne	.L3053
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L3123
-.L3133:
+	jmp	.L3043
+.L3053:
 	nop
-.L3122:
+.L3042:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L3123:
+.L3043:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -59419,16 +59196,16 @@ INS_TSX:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3124
+	jnb	.L3044
 	cvttsd2si	rax, xmm0
-	jmp	.L3125
-.L3124:
+	jmp	.L3045
+.L3044:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3125:
+.L3045:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -59439,16 +59216,16 @@ INS_TSX:
 	add	rax, 9
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L3134
+	jns	.L3054
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L3128
-.L3134:
+	jmp	.L3048
+.L3054:
 	nop
-.L3127:
+.L3047:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L3128:
+.L3048:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -59457,16 +59234,16 @@ INS_TSX:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3129
+	jnb	.L3049
 	cvttsd2si	rax, xmm0
-	jmp	.L3130
-.L3129:
+	jmp	.L3050
+.L3049:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3130:
+.L3050:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -59477,7 +59254,7 @@ INS_TSX:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L3131:
+.L3051:
 	.size	INS_TSX, .-INS_TSX
 	.globl	INS_TXA
 	.type	INS_TXA, @function
@@ -59487,7 +59264,7 @@ INS_TXA:
 	push	rbx
 	sub	rsp, 40
 	mov	QWORD PTR -40[rbp], rdi
-.L3136:
+.L3056:
 	mov	rax, QWORD PTR -40[rbp]
 	lea	rdx, 8[rax]
 	mov	rax, QWORD PTR -40[rbp]
@@ -59501,19 +59278,19 @@ INS_TXA:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L3150
+	jp	.L3070
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L3150
+	jne	.L3070
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L3140
-.L3150:
+	jmp	.L3060
+.L3070:
 	nop
-.L3139:
+.L3059:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L3140:
+.L3060:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -59522,16 +59299,16 @@ INS_TXA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3141
+	jnb	.L3061
 	cvttsd2si	rax, xmm0
-	jmp	.L3142
-.L3141:
+	jmp	.L3062
+.L3061:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3142:
+.L3062:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -59542,16 +59319,16 @@ INS_TXA:
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L3151
+	jns	.L3071
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L3145
-.L3151:
+	jmp	.L3065
+.L3071:
 	nop
-.L3144:
+.L3064:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L3145:
+.L3065:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -59560,16 +59337,16 @@ INS_TXA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3146
+	jnb	.L3066
 	cvttsd2si	rax, xmm0
-	jmp	.L3147
-.L3146:
+	jmp	.L3067
+.L3066:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3147:
+.L3067:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -59580,7 +59357,7 @@ INS_TXA:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L3148:
+.L3068:
 	.size	INS_TXA, .-INS_TXA
 	.globl	INS_TXS
 	.type	INS_TXS, @function
@@ -59588,7 +59365,7 @@ INS_TXS:
 	push	rbp
 	mov	rbp, rsp
 	mov	QWORD PTR -8[rbp], rdi
-.L3153:
+.L3073:
 	mov	rax, QWORD PTR -8[rbp]
 	lea	rdx, 14[rax]
 	mov	rax, QWORD PTR -8[rbp]
@@ -59597,7 +59374,7 @@ INS_TXS:
 	nop
 	pop	rbp
 	ret
-.L3154:
+.L3074:
 	.size	INS_TXS, .-INS_TXS
 	.globl	INS_TYA
 	.type	INS_TYA, @function
@@ -59607,7 +59384,7 @@ INS_TYA:
 	push	rbx
 	sub	rsp, 40
 	mov	QWORD PTR -40[rbp], rdi
-.L3156:
+.L3076:
 	mov	rax, QWORD PTR -40[rbp]
 	lea	rdx, 8[rax]
 	mov	rax, QWORD PTR -40[rbp]
@@ -59621,19 +59398,19 @@ INS_TYA:
 	cvtsi2sd	xmm0, rax
 	pxor	xmm1, xmm1
 	ucomisd	xmm0, xmm1
-	jp	.L3170
+	jp	.L3090
 	pxor	xmm1, xmm1
 	comisd	xmm0, xmm1
-	jne	.L3170
+	jne	.L3090
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -24[rbp], xmm0
-	jmp	.L3160
-.L3170:
+	jmp	.L3080
+.L3090:
 	nop
-.L3159:
+.L3079:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -24[rbp], xmm0
-.L3160:
+.L3080:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	rax, -3
@@ -59642,16 +59419,16 @@ INS_TYA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3161
+	jnb	.L3081
 	cvttsd2si	rax, xmm0
-	jmp	.L3162
-.L3161:
+	jmp	.L3082
+.L3081:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3162:
+.L3082:
 	add	rax, rax
 	and	eax, 2
 	or	rbx, rax
@@ -59662,16 +59439,16 @@ INS_TYA:
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
 	test	al, al
-	jns	.L3171
+	jns	.L3091
 	movsd	xmm0, QWORD PTR .LC427[rip]
 	movsd	QWORD PTR -32[rbp], xmm0
-	jmp	.L3165
-.L3171:
+	jmp	.L3085
+.L3091:
 	nop
-.L3164:
+.L3084:
 	pxor	xmm0, xmm0
 	movsd	QWORD PTR -32[rbp], xmm0
-.L3165:
+.L3085:
 	mov	rax, QWORD PTR -40[rbp]
 	mov	rax, QWORD PTR [rax]
 	and	al, 127
@@ -59680,16 +59457,16 @@ INS_TYA:
 	movq	xmm0, rax
 	call	nearbyint@PLT
 	comisd	xmm0, QWORD PTR .LC475[rip]
-	jnb	.L3166
+	jnb	.L3086
 	cvttsd2si	rax, xmm0
-	jmp	.L3167
-.L3166:
+	jmp	.L3087
+.L3086:
 	movsd	xmm1, QWORD PTR .LC475[rip]
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	movabs	rdx, -9223372036854775808
 	xor	rax, rdx
-.L3167:
+.L3087:
 	sal	rax, 7
 	movzx	eax, al
 	or	rbx, rax
@@ -59700,7 +59477,7 @@ INS_TYA:
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
 	ret
-.L3168:
+.L3088:
 	.size	INS_TYA, .-INS_TYA
 	.globl	INS_R32
 	.type	INS_R32, @function
@@ -59709,7 +59486,7 @@ INS_R32:
 	mov	rbp, rsp
 	sub	rsp, 32
 	mov	QWORD PTR -24[rbp], rdi
-.L3173:
+.L3093:
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	rax, QWORD PTR -24[rbp]
@@ -59717,12 +59494,12 @@ INS_R32:
 	mov	eax, DWORD PTR [rax]
 	mov	eax, eax
 	test	rax, rax
-	js	.L3174
+	js	.L3094
 	pxor	xmm1, xmm1
 	cvtsi2sd	xmm1, rax
 	movq	rax, xmm1
-	jmp	.L3175
-.L3174:
+	jmp	.L3095
+.L3094:
 	mov	rdx, rax
 	shr	rdx
 	and	eax, 1
@@ -59731,7 +59508,7 @@ INS_R32:
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
 	movq	rax, xmm0
-.L3175:
+.L3095:
 	mov	rdx, QWORD PTR -24[rbp]
 	add	rdx, 16
 	mov	rdx, QWORD PTR [rdx]
@@ -59750,7 +59527,7 @@ INS_R32:
 	nop
 	leave
 	ret
-.L3176:
+.L3096:
 	.size	INS_R32, .-INS_R32
 	.globl	INS_W32
 	.type	INS_W32, @function
@@ -59759,7 +59536,7 @@ INS_W32:
 	mov	rbp, rsp
 	sub	rsp, 16
 	mov	QWORD PTR -8[rbp], rdi
-.L3178:
+.L3098:
 	mov	rax, QWORD PTR -8[rbp]
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
@@ -59771,12 +59548,12 @@ INS_W32:
 	mov	eax, DWORD PTR [rax]
 	mov	eax, eax
 	test	rax, rax
-	js	.L3179
+	js	.L3099
 	pxor	xmm2, xmm2
 	cvtsi2sd	xmm2, rax
 	movq	rax, xmm2
-	jmp	.L3180
-.L3179:
+	jmp	.L3100
+.L3099:
 	mov	rdx, rax
 	shr	rdx
 	and	eax, 1
@@ -59785,7 +59562,7 @@ INS_W32:
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
 	movq	rax, xmm0
-.L3180:
+.L3100:
 	mov	rdx, QWORD PTR -8[rbp]
 	add	rdx, 16
 	mov	rdx, QWORD PTR [rdx]
@@ -59795,7 +59572,7 @@ INS_W32:
 	nop
 	leave
 	ret
-.L3181:
+.L3101:
 	.size	INS_W32, .-INS_W32
 	.globl	INS_R64
 	.type	INS_R64, @function
@@ -59804,19 +59581,19 @@ INS_R64:
 	mov	rbp, rsp
 	sub	rsp, 32
 	mov	QWORD PTR -24[rbp], rdi
-.L3183:
+.L3103:
 	lea	rax, -16[rbp]
 	mov	QWORD PTR [rax], 0
 	mov	rax, QWORD PTR -24[rbp]
 	add	rax, 64
 	mov	rax, QWORD PTR [rax]
 	test	rax, rax
-	js	.L3184
+	js	.L3104
 	pxor	xmm1, xmm1
 	cvtsi2sd	xmm1, rax
 	movq	rax, xmm1
-	jmp	.L3185
-.L3184:
+	jmp	.L3105
+.L3104:
 	mov	rdx, rax
 	shr	rdx
 	and	eax, 1
@@ -59825,7 +59602,7 @@ INS_R64:
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
 	movq	rax, xmm0
-.L3185:
+.L3105:
 	mov	rdx, QWORD PTR -24[rbp]
 	add	rdx, 16
 	mov	rdx, QWORD PTR [rdx]
@@ -59844,7 +59621,7 @@ INS_R64:
 	nop
 	leave
 	ret
-.L3186:
+.L3106:
 	.size	INS_R64, .-INS_R64
 	.globl	INS_W64
 	.type	INS_W64, @function
@@ -59853,7 +59630,7 @@ INS_W64:
 	mov	rbp, rsp
 	sub	rsp, 16
 	mov	QWORD PTR -8[rbp], rdi
-.L3188:
+.L3108:
 	mov	rax, QWORD PTR -8[rbp]
 	add	rax, 8
 	movzx	eax, BYTE PTR [rax]
@@ -59864,12 +59641,12 @@ INS_W64:
 	add	rax, 64
 	mov	rax, QWORD PTR [rax]
 	test	rax, rax
-	js	.L3189
+	js	.L3109
 	pxor	xmm2, xmm2
 	cvtsi2sd	xmm2, rax
 	movq	rax, xmm2
-	jmp	.L3190
-.L3189:
+	jmp	.L3110
+.L3109:
 	mov	rdx, rax
 	shr	rdx
 	and	eax, 1
@@ -59878,7 +59655,7 @@ INS_W64:
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
 	movq	rax, xmm0
-.L3190:
+.L3110:
 	mov	rdx, QWORD PTR -8[rbp]
 	add	rdx, 16
 	mov	rdx, QWORD PTR [rdx]
@@ -59888,7 +59665,7 @@ INS_W64:
 	nop
 	leave
 	ret
-.L3191:
+.L3111:
 	.size	INS_W64, .-INS_W64
 	.section	.rodata
 .LC2384:
@@ -59908,7 +59685,7 @@ INTERRUPTSERVICE:
 	sub	rsp, 416
 	mov	QWORD PTR -408[rbp], rdi
 	mov	QWORD PTR -256[rbp], 0
-.L3193:
+.L3113:
 	mov	QWORD PTR -264[rbp], 0
 	mov	QWORD PTR -272[rbp], 0
 	mov	rax, QWORD PTR -408[rbp]
@@ -59916,12 +59693,12 @@ INTERRUPTSERVICE:
 	shr	rax, 2
 	and	eax, 1
 	test	rax, rax
-	je	.L3273
+	je	.L3193
 	mov	QWORD PTR -256[rbp], 0
-	jmp	.L3196
-.L3273:
+	jmp	.L3116
+.L3193:
 	nop
-.L3195:
+.L3115:
 	mov	rax, QWORD PTR -408[rbp]
 	add	rax, 16
 	mov	rax, QWORD PTR [rax]
@@ -59933,7 +59710,7 @@ INTERRUPTSERVICE:
 	movzx	eax, BYTE PTR -17[rbp]
 	mov	QWORD PTR -32[rbp], rax
 	cmp	QWORD PTR -32[rbp], 9
-	jg	.L3274
+	jg	.L3194
 	call	fb_Inkey@PLT
 	mov	QWORD PTR -40[rbp], rax
 	mov	rdx, QWORD PTR -40[rbp]
@@ -59953,7 +59730,7 @@ INTERRUPTSERVICE:
 	mov	QWORD PTR -264[rbp], rax
 	mov	rax, QWORD PTR -264[rbp]
 	test	rax, rax
-	je	.L3275
+	je	.L3195
 	lea	rax, -304[rbp]
 	mov	rdx, QWORD PTR [rax]
 	mov	rax, QWORD PTR -264[rbp]
@@ -59968,23 +59745,23 @@ INTERRUPTSERVICE:
 	mov	QWORD PTR -264[rbp], rax
 	mov	rax, QWORD PTR -264[rbp]
 	cmp	rax, 27
-	jne	.L3276
+	jne	.L3196
 	nop
-.L3201:
+.L3121:
 	mov	edi, 0
 	call	fb_End@PLT
-	jmp	.L3203
-.L3276:
+	jmp	.L3123
+.L3196:
 	nop
-.L3202:
+.L3122:
 	mov	rax, QWORD PTR -264[rbp]
 	cmp	rax, 64
-	jle	.L3277
+	jle	.L3197
 	mov	rax, QWORD PTR -264[rbp]
 	cmp	rax, 90
-	jg	.L3278
+	jg	.L3198
 	nop
-.L3206:
+.L3126:
 	mov	rax, QWORD PTR -264[rbp]
 	add	rax, 32
 	mov	QWORD PTR -264[rbp], rax
@@ -60002,21 +59779,21 @@ INTERRUPTSERVICE:
 	lea	rdi, S$1.0[rip]
 	call	fb_StrConcatAssign@PLT
 	mov	QWORD PTR -72[rbp], rax
-	jmp	.L3203
-.L3277:
+	jmp	.L3123
+.L3197:
 	nop
-	jmp	.L3205
-.L3278:
+	jmp	.L3125
+.L3198:
 	nop
-.L3205:
+.L3125:
 	mov	rax, QWORD PTR -264[rbp]
 	cmp	rax, 96
-	jle	.L3279
+	jle	.L3199
 	mov	rax, QWORD PTR -264[rbp]
 	cmp	rax, 122
-	jg	.L3280
+	jg	.L3200
 	nop
-.L3209:
+.L3129:
 	mov	rax, QWORD PTR -264[rbp]
 	sub	rax, 32
 	mov	QWORD PTR -264[rbp], rax
@@ -60034,18 +59811,18 @@ INTERRUPTSERVICE:
 	lea	rdi, S$1.0[rip]
 	call	fb_StrConcatAssign@PLT
 	mov	QWORD PTR -88[rbp], rax
-	jmp	.L3203
-.L3279:
+	jmp	.L3123
+.L3199:
 	nop
-	jmp	.L3208
-.L3280:
+	jmp	.L3128
+.L3200:
 	nop
-.L3208:
+.L3128:
 	mov	rax, QWORD PTR -264[rbp]
 	cmp	rax, 316
-	jne	.L3281
+	jne	.L3201
 	nop
-.L3210:
+.L3130:
 	mov	r8d, 0
 	mov	ecx, 0
 	mov	edx, -1
@@ -60086,7 +59863,7 @@ INTERRUPTSERVICE:
 	call	fb_StrLen@PLT
 	mov	QWORD PTR -112[rbp], rax
 	cmp	QWORD PTR -112[rbp], 0
-	je	.L3282
+	je	.L3202
 	call	fb_FileFree@PLT
 	mov	DWORD PTR -116[rbp], eax
 	mov	eax, DWORD PTR -116[rbp]
@@ -60104,7 +59881,7 @@ INTERRUPTSERVICE:
 	call	fb_FileOpen@PLT
 	mov	DWORD PTR -120[rbp], eax
 	cmp	DWORD PTR -120[rbp], 0
-	jne	.L3283
+	jne	.L3203
 	mov	BYTE PTR -305[rbp], 0
 	mov	rax, QWORD PTR -408[rbp]
 	add	rax, 16
@@ -60130,10 +59907,10 @@ INTERRUPTSERVICE:
 	mov	rax, QWORD PTR -320[rbp]
 	sub	rax, 1
 	mov	QWORD PTR -136[rbp], rax
-	jmp	.L3216
-.L3284:
+	jmp	.L3136
+.L3204:
 	nop
-.L3217:
+.L3137:
 	mov	rax, QWORD PTR -8[rbp]
 	add	rax, 2048
 	pxor	xmm4, xmm4
@@ -60155,21 +59932,21 @@ INTERRUPTSERVICE:
 	mov	rdx, rax
 	mov	esi, 0
 	call	fb_FilePutLarge@PLT
-.L3218:
+.L3138:
 	add	QWORD PTR -8[rbp], 1
-.L3216:
+.L3136:
 	mov	rax, QWORD PTR -8[rbp]
 	cmp	rax, QWORD PTR -136[rbp]
-	jle	.L3284
+	jle	.L3204
 	nop
-.L3219:
+.L3139:
 	mov	rax, QWORD PTR -264[rbp]
 	mov	edi, eax
 	call	fb_FileClose@PLT
-	jmp	.L3221
-.L3283:
+	jmp	.L3141
+.L3203:
 	nop
-.L3215:
+.L3135:
 	mov	r8d, 0
 	mov	ecx, 0
 	mov	edx, -1
@@ -60211,12 +59988,12 @@ INTERRUPTSERVICE:
 	call	fb_Beep@PLT
 	mov	edi, -1
 	call	fb_Sleep@PLT
-	jmp	.L3221
-.L3220:
-.L3213:
-.L3282:
+	jmp	.L3141
+.L3140:
+.L3133:
+.L3202:
 	nop
-.L3221:
+.L3141:
 	mov	r8d, 0
 	mov	ecx, 65535
 	mov	edx, 2
@@ -60228,15 +60005,15 @@ INTERRUPTSERVICE:
 	mov	edi, 0
 	call	fb_GfxLine@PLT
 	mov	QWORD PTR -264[rbp], 0
-	jmp	.L3203
-.L3281:
+	jmp	.L3123
+.L3201:
 	nop
-.L3211:
+.L3131:
 	mov	rax, QWORD PTR -264[rbp]
 	cmp	rax, 317
-	jne	.L3285
+	jne	.L3205
 	nop
-.L3222:
+.L3142:
 	mov	r8d, 0
 	mov	ecx, 0
 	mov	edx, -1
@@ -60277,7 +60054,7 @@ INTERRUPTSERVICE:
 	call	fb_StrLen@PLT
 	mov	QWORD PTR -184[rbp], rax
 	cmp	QWORD PTR -184[rbp], 0
-	je	.L3286
+	je	.L3206
 	call	fb_FileFree@PLT
 	mov	DWORD PTR -188[rbp], eax
 	mov	eax, DWORD PTR -188[rbp]
@@ -60295,7 +60072,7 @@ INTERRUPTSERVICE:
 	call	fb_FileOpen@PLT
 	mov	DWORD PTR -192[rbp], eax
 	cmp	DWORD PTR -192[rbp], 0
-	jne	.L3287
+	jne	.L3207
 	mov	BYTE PTR -353[rbp], 0
 	mov	QWORD PTR -368[rbp], 0
 	mov	rax, QWORD PTR -264[rbp]
@@ -60309,10 +60086,10 @@ INTERRUPTSERVICE:
 	mov	rax, QWORD PTR -368[rbp]
 	sub	rax, 1
 	mov	QWORD PTR -200[rbp], rax
-	jmp	.L3228
-.L3288:
+	jmp	.L3148
+.L3208:
 	nop
-.L3229:
+.L3149:
 	mov	rax, QWORD PTR -264[rbp]
 	mov	edi, eax
 	lea	rax, -353[rbp]
@@ -60336,14 +60113,14 @@ INTERRUPTSERVICE:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T10WRITEUBYTEEdd
-.L3230:
+.L3150:
 	add	QWORD PTR -16[rbp], 1
-.L3228:
+.L3148:
 	mov	rax, QWORD PTR -16[rbp]
 	cmp	rax, QWORD PTR -200[rbp]
-	jle	.L3288
+	jle	.L3208
 	nop
-.L3231:
+.L3151:
 	mov	rax, QWORD PTR -264[rbp]
 	mov	edi, eax
 	call	fb_FileClose@PLT
@@ -60364,10 +60141,10 @@ INTERRUPTSERVICE:
 	mov	rax, QWORD PTR -408[rbp]
 	add	rax, 12
 	mov	WORD PTR [rax], -23254
-	jmp	.L3233
-.L3287:
+	jmp	.L3153
+.L3207:
 	nop
-.L3227:
+.L3147:
 	mov	r8d, 0
 	mov	ecx, 0
 	mov	edx, -1
@@ -60409,12 +60186,12 @@ INTERRUPTSERVICE:
 	call	fb_Beep@PLT
 	mov	edi, -1
 	call	fb_Sleep@PLT
-	jmp	.L3233
-.L3232:
-.L3225:
-.L3286:
+	jmp	.L3153
+.L3152:
+.L3145:
+.L3206:
 	nop
-.L3233:
+.L3153:
 	mov	r8d, 0
 	mov	ecx, 65535
 	mov	edx, 2
@@ -60426,74 +60203,74 @@ INTERRUPTSERVICE:
 	mov	edi, 0
 	call	fb_GfxLine@PLT
 	mov	QWORD PTR -264[rbp], 0
-	jmp	.L3203
-.L3285:
+	jmp	.L3123
+.L3205:
 	nop
-.L3223:
+.L3143:
 	mov	rax, QWORD PTR -264[rbp]
 	cmp	rax, 327
-	jne	.L3289
+	jne	.L3209
 	nop
-.L3234:
+.L3154:
 	mov	QWORD PTR -264[rbp], 19
-	jmp	.L3203
-.L3289:
+	jmp	.L3123
+.L3209:
 	nop
-.L3235:
+.L3155:
 	mov	rax, QWORD PTR -264[rbp]
 	cmp	rax, 8
-	jne	.L3290
+	jne	.L3210
 	nop
-.L3236:
+.L3156:
 	mov	QWORD PTR -264[rbp], 20
-	jmp	.L3203
-.L3290:
+	jmp	.L3123
+.L3210:
 	nop
-.L3237:
+.L3157:
 	mov	rax, QWORD PTR -264[rbp]
 	cmp	rax, 331
-	jne	.L3291
+	jne	.L3211
 	nop
-.L3238:
+.L3158:
 	mov	QWORD PTR -264[rbp], 157
-	jmp	.L3203
-.L3291:
+	jmp	.L3123
+.L3211:
 	nop
-.L3239:
+.L3159:
 	mov	rax, QWORD PTR -264[rbp]
 	cmp	rax, 328
-	jne	.L3292
+	jne	.L3212
 	nop
-.L3240:
+.L3160:
 	mov	QWORD PTR -264[rbp], 145
-	jmp	.L3203
-.L3292:
+	jmp	.L3123
+.L3212:
 	nop
-.L3241:
+.L3161:
 	mov	rax, QWORD PTR -264[rbp]
 	cmp	rax, 333
-	jne	.L3293
+	jne	.L3213
 	nop
-.L3242:
+.L3162:
 	mov	QWORD PTR -264[rbp], 29
-	jmp	.L3203
-.L3293:
+	jmp	.L3123
+.L3213:
 	nop
-.L3243:
+.L3163:
 	mov	rax, QWORD PTR -264[rbp]
 	cmp	rax, 336
-	jne	.L3294
+	jne	.L3214
 	nop
-.L3244:
+.L3164:
 	mov	QWORD PTR -264[rbp], 17
-	jmp	.L3203
-.L3245:
-.L3294:
+	jmp	.L3123
+.L3165:
+.L3214:
 	nop
-.L3203:
+.L3123:
 	mov	rax, QWORD PTR -264[rbp]
 	test	rax, rax
-	je	.L3295
+	je	.L3215
 	mov	rax, QWORD PTR -264[rbp]
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
@@ -60521,24 +60298,24 @@ INTERRUPTSERVICE:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN8MEMORY_T10WRITEUBYTEEdd
-	jmp	.L3249
-.L3247:
-.L3248:
-.L3200:
-.L3275:
+	jmp	.L3169
+.L3167:
+.L3168:
+.L3120:
+.L3195:
 	nop
-	jmp	.L3249
-.L3295:
+	jmp	.L3169
+.L3215:
 	nop
-.L3249:
+.L3169:
 	lea	rax, -304[rbp]
 	mov	rdi, rax
 	call	fb_StrDelete@PLT
-	jmp	.L3250
-.L3198:
-.L3274:
+	jmp	.L3170
+.L3118:
+.L3194:
 	nop
-.L3250:
+.L3170:
 	mov	rax, QWORD PTR -408[rbp]
 	add	rax, 13
 	movzx	eax, BYTE PTR [rax]
@@ -60607,12 +60384,12 @@ INTERRUPTSERVICE:
 	mov	rdx, rax
 	mov	rax, QWORD PTR -408[rbp]
 	mov	QWORD PTR [rax], rdx
-.L3251:
+.L3171:
 	mov	rax, QWORD PTR -408[rbp]
 	add	rax, 24
 	mov	rax, QWORD PTR [rax]
 	cmp	rax, 64
-	je	.L3296
+	je	.L3216
 	mov	rdx, QWORD PTR .LC2390[rip]
 	mov	rax, QWORD PTR -408[rbp]
 	movq	xmm0, rdx
@@ -60621,10 +60398,10 @@ INTERRUPTSERVICE:
 	mov	rax, QWORD PTR -272[rbp]
 	add	rax, 1
 	mov	QWORD PTR -272[rbp], rax
-	jmp	.L3251
-.L3296:
+	jmp	.L3171
+.L3216:
 	nop
-.L3253:
+.L3173:
 	mov	rax, QWORD PTR -408[rbp]
 	mov	rdi, rax
 	call	_ZN7CPU65104PULLEv
@@ -60663,18 +60440,18 @@ INTERRUPTSERVICE:
 	mov	BYTE PTR [rax], dl
 	mov	rax, QWORD PTR -264[rbp]
 	cmp	rax, 13
-	jne	.L3297
+	jne	.L3217
 	mov	QWORD PTR FLAG$[rip], 1
-	jmp	.L3256
-.L3297:
+	jmp	.L3176
+.L3217:
 	nop
-.L3255:
+.L3175:
 	mov	QWORD PTR FLAG$[rip], 0
-.L3256:
+.L3176:
 	mov	rax, QWORD PTR -272[rbp]
 	mov	QWORD PTR -256[rbp], rax
 	nop
-.L3196:
+.L3116:
 	mov	rax, QWORD PTR -256[rbp]
 	leave
 	ret
@@ -60696,21 +60473,21 @@ main:
 	call	fb_Init@PLT
 	lea	rdi, label$1182[rip]
 	call	fb_DataRestore@PLT
-.L3299:
-.L3300:
-.L3301:
+.L3219:
+.L3220:
+.L3221:
 	lea	rax, -32[rbp]
 	mov	rdi, rax
 	call	_ZN5C64_TC1Ev
 	mov	QWORD PTR -40[rbp], 0
 	mov	QWORD PTR -48[rbp], 0
-.L3302:
+.L3222:
 	mov	rax, QWORD PTR -40[rbp]
 	add	rax, 1
 	mov	QWORD PTR -40[rbp], rax
 	mov	rax, QWORD PTR FLAG$[rip]
 	cmp	rax, 1
-	jne	.L3311
+	jne	.L3231
 	mov	rax, QWORD PTR -40[rbp]
 	pxor	xmm2, xmm2
 	cvtsi2sd	xmm2, rax
@@ -60721,10 +60498,10 @@ main:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN7CPU65104TICKEd
-	jmp	.L3305
-.L3311:
+	jmp	.L3225
+.L3231:
 	nop
-.L3304:
+.L3224:
 	lea	rax, -32[rbp]
 	add	rax, 8
 	mov	rax, QWORD PTR [rax]
@@ -60732,7 +60509,7 @@ main:
 	movq	xmm0, rdx
 	mov	rdi, rax
 	call	_ZN7CPU65104TICKEd
-.L3305:
+.L3225:
 	mov	rcx, QWORD PTR -40[rbp]
 	movabs	rdx, -5853766786057164379
 	mov	rax, rcx
@@ -60746,7 +60523,7 @@ main:
 	mov	rax, rcx
 	sub	rax, rdx
 	test	rax, rax
-	jne	.L3312
+	jne	.L3232
 	lea	rax, -32[rbp]
 	add	rax, 8
 	mov	rax, QWORD PTR [rax]
@@ -60797,13 +60574,13 @@ main:
 	mov	esi, -1
 	mov	edi, -1
 	call	fb_GfxUnlock@PLT
-	jmp	.L3302
-.L3307:
-.L3308:
-.L3312:
+	jmp	.L3222
+.L3227:
+.L3228:
+.L3232:
 	nop
-.L3309:
-	jmp	.L3302
+.L3229:
+	jmp	.L3222
 	.size	main, .-main
 	.type	_ZN9SHADERTOYC1Ev, @function
 _ZN9SHADERTOYC1Ev:
@@ -60823,8 +60600,8 @@ _ZN9SHADERTOYC1Ev:
 	nop
 	pop	rbp
 	ret
-.L3314:
-.L3315:
+.L3234:
+.L3235:
 	.size	_ZN9SHADERTOYC1Ev, .-_ZN9SHADERTOYC1Ev
 	.type	_ZN9SHADERTOYaSERKS_, @function
 _ZN9SHADERTOYaSERKS_:
@@ -60833,7 +60610,7 @@ _ZN9SHADERTOYaSERKS_:
 	sub	rsp, 32
 	mov	QWORD PTR -24[rbp], rdi
 	mov	QWORD PTR -32[rbp], rsi
-.L3317:
+.L3237:
 	mov	rax, QWORD PTR -32[rbp]
 	mov	edx, DWORD PTR [rax]
 	mov	rax, QWORD PTR -24[rbp]
@@ -60856,7 +60633,7 @@ _ZN9SHADERTOYaSERKS_:
 	nop
 	leave
 	ret
-.L3318:
+.L3238:
 	.size	_ZN9SHADERTOYaSERKS_, .-_ZN9SHADERTOYaSERKS_
 	.type	_ZN7CPU6510aSERKS_, @function
 _ZN7CPU6510aSERKS_:
@@ -60866,7 +60643,7 @@ _ZN7CPU6510aSERKS_:
 	sub	rsp, 88
 	mov	QWORD PTR -88[rbp], rdi
 	mov	QWORD PTR -96[rbp], rsi
-.L3320:
+.L3240:
 	mov	rax, QWORD PTR -96[rbp]
 	mov	rdx, QWORD PTR [rax]
 	mov	rax, QWORD PTR -88[rbp]
@@ -60931,7 +60708,7 @@ _ZN7CPU6510aSERKS_:
 	add	rax, 80
 	mov	QWORD PTR -40[rbp], rax
 	mov	QWORD PTR -24[rbp], 0
-.L3321:
+.L3241:
 	mov	rax, QWORD PTR -32[rbp]
 	mov	rdx, QWORD PTR -40[rbp]
 	mov	rcx, QWORD PTR [rdx]
@@ -60952,9 +60729,9 @@ _ZN7CPU6510aSERKS_:
 	add	QWORD PTR -40[rbp], 56
 	add	QWORD PTR -24[rbp], 1
 	cmp	QWORD PTR -24[rbp], 256
-	je	.L3322
-	jmp	.L3321
-.L3322:
+	je	.L3242
+	jmp	.L3241
+.L3242:
 	mov	rax, QWORD PTR -88[rbp]
 	add	rax, 14416
 	mov	QWORD PTR -56[rbp], rax
@@ -60962,7 +60739,7 @@ _ZN7CPU6510aSERKS_:
 	add	rax, 14416
 	mov	QWORD PTR -64[rbp], rax
 	mov	QWORD PTR -48[rbp], 0
-.L3323:
+.L3243:
 	mov	rdx, QWORD PTR -64[rbp]
 	mov	rax, QWORD PTR -56[rbp]
 	mov	r8d, 0
@@ -60975,11 +60752,11 @@ _ZN7CPU6510aSERKS_:
 	add	QWORD PTR -64[rbp], 24
 	add	QWORD PTR -48[rbp], 1
 	cmp	QWORD PTR -48[rbp], 13
-	je	.L3325
-	jmp	.L3323
-.L3325:
+	je	.L3245
+	jmp	.L3243
+.L3245:
 	nop
-.L3324:
+.L3244:
 	nop
 	mov	rbx, QWORD PTR -8[rbp]
 	leave
@@ -61399,157 +61176,157 @@ tmp$2447.5:
 	.type	tmp$2448.4, @object
 	.size	tmp$2448.4, 512
 tmp$2448.4:
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1647
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1649
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1650
-	.quad	.L1651
-	.quad	.L1651
-	.quad	.L1651
-	.quad	.L1651
-	.quad	.L1651
-	.quad	.L1651
-	.quad	.L1651
-	.quad	.L1651
-	.quad	.L1651
-	.quad	.L1651
-	.quad	.L1651
-	.quad	.L1651
-	.quad	.L1651
-	.quad	.L1651
-	.quad	.L1651
-	.quad	.L1651
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1567
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1569
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1570
+	.quad	.L1571
+	.quad	.L1571
+	.quad	.L1571
+	.quad	.L1571
+	.quad	.L1571
+	.quad	.L1571
+	.quad	.L1571
+	.quad	.L1571
+	.quad	.L1571
+	.quad	.L1571
+	.quad	.L1571
+	.quad	.L1571
+	.quad	.L1571
+	.quad	.L1571
+	.quad	.L1571
+	.quad	.L1571
 	.align 32
 	.type	tmp$2449.3, @object
 	.size	tmp$2449.3, 512
 tmp$2449.3:
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1664
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1666
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1667
-	.quad	.L1668
-	.quad	.L1668
-	.quad	.L1668
-	.quad	.L1668
-	.quad	.L1668
-	.quad	.L1668
-	.quad	.L1668
-	.quad	.L1668
-	.quad	.L1668
-	.quad	.L1668
-	.quad	.L1668
-	.quad	.L1668
-	.quad	.L1668
-	.quad	.L1668
-	.quad	.L1668
-	.quad	.L1668
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1584
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1586
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1587
+	.quad	.L1588
+	.quad	.L1588
+	.quad	.L1588
+	.quad	.L1588
+	.quad	.L1588
+	.quad	.L1588
+	.quad	.L1588
+	.quad	.L1588
+	.quad	.L1588
+	.quad	.L1588
+	.quad	.L1588
+	.quad	.L1588
+	.quad	.L1588
+	.quad	.L1588
+	.quad	.L1588
+	.quad	.L1588
 	.local	TICKS$1.2
 	.comm	TICKS$1.2,8,8
 	.align 32
 	.type	tmp$2492.1, @object
 	.size	tmp$2492.1, 104
 tmp$2492.1:
-	.quad	.L2265
-	.quad	.L2267
-	.quad	.L2268
-	.quad	.L2269
-	.quad	.L2270
-	.quad	.L2271
-	.quad	.L2272
-	.quad	.L2273
-	.quad	.L2274
-	.quad	.L2275
-	.quad	.L2276
-	.quad	.L2277
-	.quad	.L2278
+	.quad	.L2185
+	.quad	.L2187
+	.quad	.L2188
+	.quad	.L2189
+	.quad	.L2190
+	.quad	.L2191
+	.quad	.L2192
+	.quad	.L2193
+	.quad	.L2194
+	.quad	.L2195
+	.quad	.L2196
+	.quad	.L2197
+	.quad	.L2198
 	.local	S$1.0
 	.comm	S$1.0,24,16
 	.section	.rodata
