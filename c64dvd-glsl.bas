@@ -5,7 +5,8 @@
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
 #include once "glsl.bi"
 #elseif defined(__FB_DOS__)
-static shared as any ptr render
+common shared as any ptr render
+common shared as string msg
 #endif
 
  
@@ -15,8 +16,13 @@ static shared as any ptr render
 # define dprint(msg) :
 #endif
 
+'TCL keywords
+#define proc function
+
 'Python keywords
-#define in_range(x, y) x to y
+#define def sub
+#define in
+#define range(x, y) x to y
 
 'Assembly Mnemonics
 #define equ  = 'Equal
@@ -33,6 +39,13 @@ static shared as any ptr render
 #define leq  <= 'Less than or equal
 #define geq  >= 'Greater than or equal
 #define gtn  >  'Greater than
+#define db data
+#define dw db
+#define dd dw
+#define df dd
+#define dl dl
+#define ds ds
+#define opr operator
 
 'Logic Gates
 #define logic_xnor(x, y) not(x xor y) 'XNOR
@@ -42,18 +55,19 @@ static shared as any ptr render
 #define logic_nand(x, y) not(x and y) 'NAND 
 #define logic_and(x, y)  x and y      'AND
 
-var shared ld_x0=0,ld_y0=0,ld_z0=0,ld_x1=0,ld_y1=0,ld_z1=0
-var shared fg_red=0, fg_grn=0, fg_blu=0, fg_aph=0, prc_flag=0
-var shared bg_red=0, bg_grn=0, bg_blu=0, bg_aph=0, scro_x=0
-var shared font_f=0, font_o=0, font_h=0, font_w=0, scro_y=0
+var shared mov(ld_x0,0d),mov(ld_y0,0d),mov(ld_z0,0d),mov(ld_x1,0d),mov(ld_y1,0d),mov(ld_z1,0d)
+var shared mov(fg_red,0d),mov(fg_grn,0d),mov(fg_blu,0d),mov(fg_aph,0d),mov(prc_flag,0d)
+var shared mov(bg_red,0d),mov(bg_grn,0d),mov(bg_blu,0d),mov(bg_aph,0d),mov(scro_x,0)
+var shared mov(font_f,0d),mov(font_o,0d), font_h=0, font_w=0, scro_y=0
 var shared fg_color=0, bg_color=0, bd_color=0, scr_ptr=0
 var shared x0=0, y0=0, z0=0,x1=0, y1=0, z1=0, b=0, c=0, x=0
-var shared y=0, xs=0, ys=0, uflag=0, UpdatedScreen=0
+var shared y=0, xs=0, ys=0, uflag=0, UpdatedScreen=0,cary=0
 
-common shared as double offset, sys_offset, swch
+common shared as double offset,swch, sys_offset
 common shared as any ptr spr0,spr1,spr2,spr3
 common shared as any ptr spr4,spr5,spr6,spr7
 common shared as any ptr bgimage,fgimage,raster
+common shared as any ptr image
 common shared as string strCode
 common shared as string filename
 
@@ -190,7 +204,7 @@ end type
 type OPCODE
   as ulongint    code
   as zstring * 4 nam
-  as longint     adrmode,bytes,ticks
+  as ulongint    adrmode,bytes,ticks
   as MULTI       op
   as sub(byval Cpu as CPU6510_T) decode
 end type
@@ -292,7 +306,7 @@ constructor C64_T
   mov(spr7,    ImageCreate(35d,29d,0d,32d))
   mov(render,  ImageCreate(800d,600d,0d,32d))
 #endif
-  for in_range(mov(i, 0d), 15d)
+  for in range(mov(i, 0d), 15d)
     read c:palette i,c
   next
   mov(mem, new MEMORY_T)
@@ -340,12 +354,11 @@ constructor MEMORY_T
   mov(scro_x,sys_offset add 227d):    mov(scro_y,sys_offset add 228d)
   'sys_offset+&HE3
   ' initialize zero page and the stack
-  dim b as ubyte
-  dim index as double
-  for in_range(mov(index, 0000d), 0511d)
+  var b=0, index=0
+  for in range(mov(index, 0000d), 0511d)
 	read b: mov(mem64(index), b)
   next index
-  for in_range(mov(index, 0512d), 1023d)
+  for in range(mov(index, 0512d), 1023d)
    mov(mem64(index), 255d)
   next index 
   ' Set text color
@@ -363,22 +376,22 @@ constructor MEMORY_T
   poke64(font_o,0d) 'Font offset
   poke64(font_w,7d) 'Font width 
   poke64(font_h,7d) 'Font height 
-  dim as integer i
-  ' init all ROM's
+  var i=0
   dim as ubyte tmp
+  ' init all ROM's
   open "64c.251913-01.bin" for binary as #1
-   for in_range(mov(i, 0d), 8191d)
+   for in range(mov(i, 0d), 8191d)
      get #1,,tmp: mov(basic(i), tmp)
    next i  
-   for in_range(mov(i, 0d), 8191d)
+   for in range(mov(i, 0d), 8191d)
 	 get #1,,tmp: mov(kernal(i), tmp)
    next i
   close #1
   'for b as integer = 617 to 641
-  for in_range(mov(i, 0000d),8191d): mov(char(i), 00d): next i
+  for in range(mov(i, 0000d),8191d): mov(char(i), 00d): next i
   'open "./chargen/"+str(b)+".c64" for binary as #1
   open "./chargen/0.c64" for binary as #1
-   for in_range(mov(i, 0d), lof(1d))
+   for in range(mov(i, 0d), lof(1d))
      get #1,,tmp: mov(char(i), tmp)
    next i
   close #1
@@ -393,41 +406,40 @@ constructor MEMORY_T
   poke64(&HC0A8,&H8D): poke64(&HC0A9,&H00): poke64(&HC0AA,&HC0) ' STA $C000       8D 00 C0
   poke64(&HC0AB,&H60)                                           ' RTS             60
   
-  dim as string mem
-  dim as integer a
+  var mem=chr(0), a=0
   
   mov(basic(&H0B46), &H00) '.,AB45 A9 00    LDA #$00        ;set input prompt to NULL
   mov(basic(&H178E), &H00) '.,B78E F0 05    BEQ $B794       ;ASC() - Ignore NULL
   
   'Patch BASIC startup messages"  
   mov(mem, "BYTES")
-  for in_range(mov(a, 1d), len(mem))
+  for in range(mov(a, 1d), len(mem))
     mov(kernal(&H466 add a), asc(mid(mem,a,1d)) add &H20)
   next a
   mov(mem, "FREE")
-  for in_range(mov(a, 1d), len(mem))
+  for in range(mov(a, 1d), len(mem))
 	mov(kernal(&H46C add a), asc(mid(mem,a,1d)) add &H20)
   next a
   mov(kernal(&H47D), &H2A): mov(kernal(&H47E), &H20)
   mov(kernal(&H47F), &H20) 	
   mov(mem, "MICROSOFT")
-  for in_range(mov(a, 1d), len(mem))
+  for in range(mov(a, 1d), len(mem))
 	mov(kernal(&H47F add a), asc(mid(mem,a,1d)) add &H20)
   next a: mov(kernal(&H489), &H20)
   mov(mem, "BASIC")
-  for in_range(mov(a, 1d), len(mem))
+  for in range(mov(a, 1d), len(mem))
 	mov(kernal(&H460 add a), asc(mid(mem,a,1d)) add &H20)
 	mov(kernal(&H489 add a), asc(mid(mem,a,1d)) add &H20)
   next a: mov(kernal(&H48F), &H20): mov(kernal(&H490), &H76)
   mov(kernal(&H491), &H32): mov(kernal(&H492), &H20)
   mov(kernal(&H493), &H2A)
   mov(mem, "RAM SYSTEM")
-  for in_range(mov(a, 1d), len(mem))
+  for in range(mov(a, 1d), len(mem))
 	mov(kernal(&H49E add a), asc(mid(mem,a,1d)) add &H20) 
   next a
   mov(kernal(&H4A2), &H20)
   mov(mem, "READY") 'Patch BASIC "READY." message
-  for in_range(mov(a, 1d), len(mem))
+  for in range(mov(a, 1d), len(mem))
     mov(basic(&H377 add a), asc(mid(mem,a,1d)) add &H20)
   next a
   '64-bit memory detection
@@ -442,12 +454,12 @@ constructor MEMORY_T
           mov(kernal(&H49C), asc(mid(mem,2d,1d)))
           mov(kernal(&H49D), &H67): mov(kernal(&H49E), &H62)
           mov(mem, " RAM SYSTEM")
-          for in_range(mov(a, 1d), len(mem))
+          for in range(mov(a, 1d), len(mem))
 			mov(kernal(&H49E add a), asc(mid(mem,a,1d)) add &H20)
           next a
           mov(kernal(&H49F), &H20): mov(kernal(&H4A3), &H20) ' Replace "@" at E49F and E4A3 with " ".         
   end select
-  mov(kernal(&H535), &H11) '.,E534 A9 11    LDA #$11     ;set default text color to 11(Amber)
+  mov(kernal(&H535), &H07) '.,E534 A9 07    LDA #$07     ;set default text color to 07(White)
   mov(kernal(&HCD9), &H17) '.:ECD9 17                    ;set default border color to 17(black)
   mov(kernal(&HCDA), &H17) '.:ECDA 17                    ;set default background color to 17(black)
   /'
@@ -466,25 +478,26 @@ destructor MEMORY_T
   dprint("MEMORY_T~")
 end destructor
 
-function MEMORY_T.Peek64(byval adr as double) as double
+proc MEMORY_T.Peek64(byval adr as double) as double
   select case adr 
-  case &HE000 to &HFFFF:return kernal(adr-&HE000)
-  case &HA000 to &HBFFF:return basic (adr-&HA000)
-  case &HD800 to &HDBFF:return char  (adr-&HD800)
+  case &HE000 to &HFFFF:mov(proc,kernal(adr-&HE000))
+  case &HA000 to &HBFFF:mov(proc,basic (adr-&HA000))
+  case &HD800 to &HDBFF:mov(proc,char  (adr-&HD800))
   case &HD000 to &HD3FF
-    dim as integer mov(reg,adr and &H003f)
-    if reg equ &H12 then return 0 else return &HFF
-  case else : return mem64(adr)
+    var mov(reg,logic_and(adr,&H003f))
+    if mov(reg, &H12) then mov(proc,0d) else mov(proc,&HFF)
+  case else : mov(proc,mem64(adr))
   end select
-end function
+end proc
 
-sub MEMORY_T.poke64(byval adr as double,byval v as double)
+def MEMORY_T.poke64(byval adr as double,byval v as double)
   mov(mem64(adr), v)
   if adr >= 55296d and adr <= 56319d then
     mov(adr subt, 55296d): mov(col(adr), v)
     mov(adr add, mem64(scr_ptr))
     mov(v, mem64(adr))
   end if
+  if mov(adr, 199d) then 
   /'
   Current Foreground Color for Text
   
@@ -501,59 +514,264 @@ sub MEMORY_T.poke64(byval adr as double,byval v as double)
   this location.
   '/
   'if adr = 0 then Locate 1,1: Print "Hello from address 0": sleep
-  if mov(adr, 646d) then ' Set foreground color							  							  
+  elseif mov(adr, 646d) then ' Set foreground color							  							  
     select case as const cast(ulongint, v)
-		case 000d: poke64(fg_red,000d): poke64(fg_grn,000d): poke64(fg_blu,000d)
-		case 001d: poke64(fg_red,000d): poke64(fg_grn,000d): poke64(fg_blu,170d)
-		case 002d: poke64(fg_red,000d): poke64(fg_grn,170d): poke64(fg_blu,000d)
-		case 003d: poke64(fg_red,000d): poke64(fg_grn,170d): poke64(fg_blu,170d)
-		case 004d: poke64(fg_red,170d): poke64(fg_grn,000d): poke64(fg_blu,000d)
-		case 005d: poke64(fg_red,170d): poke64(fg_grn,000d): poke64(fg_blu,170d)
-		case 006d: poke64(fg_red,170d): poke64(fg_grn,085d): poke64(fg_blu,000d)
-		case 007d: poke64(fg_red,170d): poke64(fg_grn,170d): poke64(fg_blu,170d)
-		case 008d: poke64(fg_red,085d): poke64(fg_grn,085d): poke64(fg_blu,085d)
-		case 009d: poke64(fg_red,085d): poke64(fg_grn,085d): poke64(fg_blu,255d)
-		case 010d: poke64(fg_red,085d): poke64(fg_grn,255d): poke64(fg_blu,255d)
-		case 011d: poke64(fg_red,085d): poke64(fg_grn,255d): poke64(fg_blu,255d)
-		case 012d: poke64(fg_red,255d): poke64(fg_grn,085d): poke64(fg_blu,085d)
-		case 013d: poke64(fg_red,255d): poke64(fg_grn,085d): poke64(fg_blu,255d)
-		case 014d: poke64(fg_red,255d): poke64(fg_grn,255d): poke64(fg_blu,085d)
-		case 015d: poke64(fg_red,255d): poke64(fg_grn,255d): poke64(fg_blu,255d)
-		case 016d: poke64(fg_red,255d): poke64(fg_grn,176d): poke64(fg_blu,000d)
-		case 017d: poke64(fg_red,255d): poke64(fg_grn,204d): poke64(fg_blu,000d)
-		case 018d: poke64(fg_red,051d): poke64(fg_grn,255d): poke64(fg_blu,000d)
-		case 019d: poke64(fg_red,051d): poke64(fg_grn,255d): poke64(fg_blu,051d)
-		case 020d: poke64(fg_red,000d): poke64(fg_grn,255d): poke64(fg_blu,051d)
-		case 021d: poke64(fg_red,102d): poke64(fg_grn,255d): poke64(fg_blu,102d)
-		case 022d: poke64(fg_red,000d): poke64(fg_grn,255d): poke64(fg_blu,102d)
-		case 023d: poke64(fg_red,040d): poke64(fg_grn,040d): poke64(fg_blu,040d)
-		case 024d: poke64(fg_red,236d): poke64(fg_grn,041d): poke64(fg_blu,041d)
-		case 025d: poke64(fg_red,204d): poke64(fg_grn,000d): poke64(fg_blu,000d)
-		case 026d: poke64(fg_red,164d): poke64(fg_grn,000d): poke64(fg_blu,000d)
-		case 027d: poke64(fg_red,252d): poke64(fg_grn,175d): poke64(fg_blu,062d)
-		case 028d: poke64(fg_red,245d): poke64(fg_grn,121d): poke64(fg_blu,000d)
-		case 029d: poke64(fg_red,206d): poke64(fg_grn,092d): poke64(fg_blu,000d)
-		case 030d: poke64(fg_red,252d): poke64(fg_grn,233d): poke64(fg_blu,079d)
-		case 031d: poke64(fg_red,237d): poke64(fg_grn,212d): poke64(fg_blu,000d)
-		case 032d: poke64(fg_red,196d): poke64(fg_grn,160d): poke64(fg_blu,000d)
-		case 033d: poke64(fg_red,186d): poke64(fg_grn,226d): poke64(fg_blu,052d)
-		case 034d: poke64(fg_red,115d): poke64(fg_grn,210d): poke64(fg_blu,022d)
-		case 035d: poke64(fg_red,078d): poke64(fg_grn,154d): poke64(fg_blu,006d)
-		case 036d: poke64(fg_red,114d): poke64(fg_grn,159d): poke64(fg_blu,207d)
-		case 037d: poke64(fg_red,052d): poke64(fg_grn,101d): poke64(fg_blu,164d)
-		case 038d: poke64(fg_red,032d): poke64(fg_grn,074d): poke64(fg_blu,135d)
-		case 039d: poke64(fg_red,173d): poke64(fg_grn,127d): poke64(fg_blu,168d)
-		case 040d: poke64(fg_red,117d): poke64(fg_grn,080d): poke64(fg_blu,125d)
-		case 041d: poke64(fg_red,092d): poke64(fg_grn,053d): poke64(fg_blu,102d)
-		case 042d: poke64(fg_red,233d): poke64(fg_grn,185d): poke64(fg_blu,110d)
-		case 043d: poke64(fg_red,193d): poke64(fg_grn,125d): poke64(fg_blu,011d)
-		case 044d: poke64(fg_red,143d): poke64(fg_grn,089d): poke64(fg_blu,002d)
-		case 045d: poke64(fg_red,136d): poke64(fg_grn,138d): poke64(fg_blu,133d)
-		case 046d: poke64(fg_red,085d): poke64(fg_grn,087d): poke64(fg_blu,083d)
-		case 047d: poke64(fg_red,046d): poke64(fg_grn,052d): poke64(fg_blu,054d)
-		case 048d: poke64(fg_red,238d): poke64(fg_grn,238d): poke64(fg_blu,236d)
-		case 049d: poke64(fg_red,211d): poke64(fg_grn,215d): poke64(fg_blu,207d)
-		case 050d: poke64(fg_red,186d): poke64(fg_grn,189d): poke64(fg_blu,182d)
+          case &H00: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &H01: poke64(fg_red,&HAA):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &H02: poke64(fg_red,&H00):poke64(fg_grn,&HAA):poke64(fg_blu,&H00)
+          case &H03: poke64(fg_red,&HAA):poke64(fg_grn,&HAA):poke64(fg_blu,&H00)
+          case &H04: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&HAA)
+          case &H05: poke64(fg_red,&HAA):poke64(fg_grn,&H00):poke64(fg_blu,&HAA)
+          case &H06: poke64(fg_red,&H00):poke64(fg_grn,&H55):poke64(fg_blu,&HAA)
+          case &H07: poke64(fg_red,&HAA):poke64(fg_grn,&HAA):poke64(fg_blu,&HAA)
+          case &H08: poke64(fg_red,&H55):poke64(fg_grn,&H55):poke64(fg_blu,&H55)
+          case &H09: poke64(fg_red,&HFF):poke64(fg_grn,&H55):poke64(fg_blu,&H55)
+          case &H0A: poke64(fg_red,&H55):poke64(fg_grn,&HFF):poke64(fg_blu,&H55)
+          case &H0B: poke64(fg_red,&HFF):poke64(fg_grn,&HFF):poke64(fg_blu,&H55)
+          case &H0C: poke64(fg_red,&H55):poke64(fg_grn,&H55):poke64(fg_blu,&HFF)
+          case &H0D: poke64(fg_red,&HFF):poke64(fg_grn,&H55):poke64(fg_blu,&HFF)
+          case &H0E: poke64(fg_red,&H55):poke64(fg_grn,&HFF):poke64(fg_blu,&HFF)
+          case &H0F: poke64(fg_red,&HFF):poke64(fg_grn,&HFF):poke64(fg_blu,&HFF)
+          case &H10: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &H11: poke64(fg_red,&H14):poke64(fg_grn,&H14):poke64(fg_blu,&H14)
+          case &H12: poke64(fg_red,&H20):poke64(fg_grn,&H20):poke64(fg_blu,&H20)
+          case &H13: poke64(fg_red,&H2D):poke64(fg_grn,&H2D):poke64(fg_blu,&H2D)
+          case &H14: poke64(fg_red,&H39):poke64(fg_grn,&H39):poke64(fg_blu,&H39)
+          case &H15: poke64(fg_red,&H45):poke64(fg_grn,&H45):poke64(fg_blu,&H45)
+          case &H16: poke64(fg_red,&H51):poke64(fg_grn,&H51):poke64(fg_blu,&H51)
+          case &H17: poke64(fg_red,&H61):poke64(fg_grn,&H61):poke64(fg_blu,&H61)
+          case &H18: poke64(fg_red,&H71):poke64(fg_grn,&H71):poke64(fg_blu,&H71)
+          case &H19: poke64(fg_red,&H82):poke64(fg_grn,&H82):poke64(fg_blu,&H82)
+          case &H1A: poke64(fg_red,&H92):poke64(fg_grn,&H92):poke64(fg_blu,&H92)
+          case &H1B: poke64(fg_red,&HA2):poke64(fg_grn,&HA2):poke64(fg_blu,&HA2)
+          case &H1C: poke64(fg_red,&HB6):poke64(fg_grn,&HB6):poke64(fg_blu,&HB6)
+          case &H1D: poke64(fg_red,&HCA):poke64(fg_grn,&HCA):poke64(fg_blu,&HCA)
+          case &H1E: poke64(fg_red,&HE3):poke64(fg_grn,&HE3):poke64(fg_blu,&HE3)
+          case &H1F: poke64(fg_red,&HFF):poke64(fg_grn,&HFF):poke64(fg_blu,&HFF)
+          case &H20: poke64(fg_red,&HFF):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &H21: poke64(fg_red,&HFF):poke64(fg_grn,&H00):poke64(fg_blu,&H41)
+          case &H22: poke64(fg_red,&HFF):poke64(fg_grn,&H00):poke64(fg_blu,&H7D)
+          case &H23: poke64(fg_red,&HFF):poke64(fg_grn,&H00):poke64(fg_blu,&HBE)
+          case &H24: poke64(fg_red,&HFF):poke64(fg_grn,&H00):poke64(fg_blu,&HFF)
+          case &H25: poke64(fg_red,&HBE):poke64(fg_grn,&H00):poke64(fg_blu,&HFF)
+          case &H26: poke64(fg_red,&H7D):poke64(fg_grn,&H00):poke64(fg_blu,&HFF)
+          case &H27: poke64(fg_red,&H41):poke64(fg_grn,&H00):poke64(fg_blu,&HFF)
+          case &H28: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&HFF)
+          case &H29: poke64(fg_red,&H00):poke64(fg_grn,&H41):poke64(fg_blu,&HFF)
+          case &H2A: poke64(fg_red,&H00):poke64(fg_grn,&H7D):poke64(fg_blu,&HFF)
+          case &H2B: poke64(fg_red,&H00):poke64(fg_grn,&HBE):poke64(fg_blu,&HFF)
+          case &H2C: poke64(fg_red,&H00):poke64(fg_grn,&HFF):poke64(fg_blu,&HFF)
+          case &H2D: poke64(fg_red,&H00):poke64(fg_grn,&HFF):poke64(fg_blu,&HBE)
+          case &H2E: poke64(fg_red,&H00):poke64(fg_grn,&HFF):poke64(fg_blu,&H7D)
+          case &H2F: poke64(fg_red,&H00):poke64(fg_grn,&HFF):poke64(fg_blu,&H41)
+          case &H30: poke64(fg_red,&H00):poke64(fg_grn,&HFF):poke64(fg_blu,&H00)
+          case &H31: poke64(fg_red,&H41):poke64(fg_grn,&HFF):poke64(fg_blu,&H00)
+          case &H32: poke64(fg_red,&H7D):poke64(fg_grn,&HFF):poke64(fg_blu,&H00)
+          case &H33: poke64(fg_red,&HBE):poke64(fg_grn,&HFF):poke64(fg_blu,&H00)
+          case &H34: poke64(fg_red,&HFF):poke64(fg_grn,&HFF):poke64(fg_blu,&H00)
+          case &H35: poke64(fg_red,&HFF):poke64(fg_grn,&HBE):poke64(fg_blu,&H00)
+          case &H36: poke64(fg_red,&HFF):poke64(fg_grn,&H7D):poke64(fg_blu,&H00)
+          case &H37: poke64(fg_red,&HFF):poke64(fg_grn,&H41):poke64(fg_blu,&H00)
+          case &H38: poke64(fg_red,&HFF):poke64(fg_grn,&H7D):poke64(fg_blu,&H7D)
+          case &H39: poke64(fg_red,&HFF):poke64(fg_grn,&H7D):poke64(fg_blu,&H9E)
+          case &H3A: poke64(fg_red,&HFF):poke64(fg_grn,&H7D):poke64(fg_blu,&HBE)
+          case &H3B: poke64(fg_red,&HFF):poke64(fg_grn,&H7D):poke64(fg_blu,&HDF)
+          case &H3C: poke64(fg_red,&HFF):poke64(fg_grn,&H7D):poke64(fg_blu,&HFF)
+          case &H3D: poke64(fg_red,&HDF):poke64(fg_grn,&H7D):poke64(fg_blu,&HFF)
+          case &H3E: poke64(fg_red,&HBE):poke64(fg_grn,&H7D):poke64(fg_blu,&HFF)
+          case &H3F: poke64(fg_red,&H9E):poke64(fg_grn,&H7D):poke64(fg_blu,&HFF)
+          case &H40: poke64(fg_red,&H7D):poke64(fg_grn,&H7D):poke64(fg_blu,&HFF)
+          case &H41: poke64(fg_red,&H7D):poke64(fg_grn,&H9E):poke64(fg_blu,&HFF)
+          case &H42: poke64(fg_red,&H7D):poke64(fg_grn,&HBE):poke64(fg_blu,&HFF)
+          case &H43: poke64(fg_red,&H7D):poke64(fg_grn,&HDF):poke64(fg_blu,&HFF)
+          case &H44: poke64(fg_red,&H7D):poke64(fg_grn,&HFF):poke64(fg_blu,&HFF)
+          case &H45: poke64(fg_red,&H7D):poke64(fg_grn,&HFF):poke64(fg_blu,&HDF)
+          case &H46: poke64(fg_red,&H7D):poke64(fg_grn,&HFF):poke64(fg_blu,&HBE)
+          case &H47: poke64(fg_red,&H7D):poke64(fg_grn,&HFF):poke64(fg_blu,&H9E)
+          case &H48: poke64(fg_red,&H7D):poke64(fg_grn,&HFF):poke64(fg_blu,&H7D)
+          case &H49: poke64(fg_red,&H9E):poke64(fg_grn,&HFF):poke64(fg_blu,&H7D)
+          case &H4A: poke64(fg_red,&HBE):poke64(fg_grn,&HFF):poke64(fg_blu,&H7D)
+          case &H4B: poke64(fg_red,&HDF):poke64(fg_grn,&HFF):poke64(fg_blu,&H7D)
+          case &H4C: poke64(fg_red,&HFF):poke64(fg_grn,&HFF):poke64(fg_blu,&H7D)
+          case &H4D: poke64(fg_red,&HFF):poke64(fg_grn,&HDF):poke64(fg_blu,&H7D)
+          case &H4E: poke64(fg_red,&HFF):poke64(fg_grn,&HBE):poke64(fg_blu,&H7D)
+          case &H4F: poke64(fg_red,&HFF):poke64(fg_grn,&H9E):poke64(fg_blu,&H7D)
+          case &H50: poke64(fg_red,&HFF):poke64(fg_grn,&HB6):poke64(fg_blu,&HB6)
+          case &H51: poke64(fg_red,&HFF):poke64(fg_grn,&HB6):poke64(fg_blu,&HC6)
+          case &H52: poke64(fg_red,&HFF):poke64(fg_grn,&HB6):poke64(fg_blu,&HDB)
+          case &H53: poke64(fg_red,&HFF):poke64(fg_grn,&HB6):poke64(fg_blu,&HEB)
+          case &H54: poke64(fg_red,&HFF):poke64(fg_grn,&HB6):poke64(fg_blu,&HFF)
+          case &H55: poke64(fg_red,&HEB):poke64(fg_grn,&HB6):poke64(fg_blu,&HFF)
+          case &H56: poke64(fg_red,&HDB):poke64(fg_grn,&HB6):poke64(fg_blu,&HFF)
+          case &H57: poke64(fg_red,&HC6):poke64(fg_grn,&HB6):poke64(fg_blu,&HFF)
+          case &H58: poke64(fg_red,&HB6):poke64(fg_grn,&HB6):poke64(fg_blu,&HFF)
+          case &H59: poke64(fg_red,&HB6):poke64(fg_grn,&HC6):poke64(fg_blu,&HFF)
+          case &H5A: poke64(fg_red,&HB6):poke64(fg_grn,&HDB):poke64(fg_blu,&HFF)
+          case &H5B: poke64(fg_red,&HB6):poke64(fg_grn,&HEB):poke64(fg_blu,&HFF)
+          case &H5C: poke64(fg_red,&HB6):poke64(fg_grn,&HFF):poke64(fg_blu,&HFF)
+          case &H5D: poke64(fg_red,&HB6):poke64(fg_grn,&HFF):poke64(fg_blu,&HEB)
+          case &H5E: poke64(fg_red,&HB6):poke64(fg_grn,&HFF):poke64(fg_blu,&HDB)
+          case &H5F: poke64(fg_red,&HB6):poke64(fg_grn,&HFF):poke64(fg_blu,&HC6)
+          case &H60: poke64(fg_red,&HB6):poke64(fg_grn,&HFF):poke64(fg_blu,&HB6)
+          case &H61: poke64(fg_red,&HC6):poke64(fg_grn,&HFF):poke64(fg_blu,&HB6)
+          case &H62: poke64(fg_red,&HDB):poke64(fg_grn,&HFF):poke64(fg_blu,&HB6)
+          case &H63: poke64(fg_red,&HEB):poke64(fg_grn,&HFF):poke64(fg_blu,&HB6)
+          case &H64: poke64(fg_red,&HFF):poke64(fg_grn,&HFF):poke64(fg_blu,&HB6)
+          case &H65: poke64(fg_red,&HFF):poke64(fg_grn,&HEB):poke64(fg_blu,&HB6)
+          case &H66: poke64(fg_red,&HFF):poke64(fg_grn,&HDB):poke64(fg_blu,&HB6)
+          case &H67: poke64(fg_red,&HFF):poke64(fg_grn,&HC6):poke64(fg_blu,&HB6)
+          case &H68: poke64(fg_red,&H71):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &H69: poke64(fg_red,&H71):poke64(fg_grn,&H00):poke64(fg_blu,&H1C)
+          case &H6A: poke64(fg_red,&H71):poke64(fg_grn,&H00):poke64(fg_blu,&H39)
+          case &H6B: poke64(fg_red,&H71):poke64(fg_grn,&H00):poke64(fg_blu,&H55)
+          case &H6C: poke64(fg_red,&H71):poke64(fg_grn,&H00):poke64(fg_blu,&H71)
+          case &H6D: poke64(fg_red,&H55):poke64(fg_grn,&H00):poke64(fg_blu,&H71)
+          case &H6E: poke64(fg_red,&H39):poke64(fg_grn,&H00):poke64(fg_blu,&H71)
+          case &H6F: poke64(fg_red,&H1C):poke64(fg_grn,&H00):poke64(fg_blu,&H71)
+          case &H70: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H71)
+          case &H71: poke64(fg_red,&H00):poke64(fg_grn,&H1C):poke64(fg_blu,&H71)
+          case &H72: poke64(fg_red,&H00):poke64(fg_grn,&H39):poke64(fg_blu,&H71)
+          case &H73: poke64(fg_red,&H00):poke64(fg_grn,&H55):poke64(fg_blu,&H71)
+          case &H74: poke64(fg_red,&H00):poke64(fg_grn,&H71):poke64(fg_blu,&H71)
+          case &H75: poke64(fg_red,&H00):poke64(fg_grn,&H71):poke64(fg_blu,&H55)
+          case &H76: poke64(fg_red,&H00):poke64(fg_grn,&H71):poke64(fg_blu,&H39)
+          case &H77: poke64(fg_red,&H00):poke64(fg_grn,&H71):poke64(fg_blu,&H1C)
+          case &H78: poke64(fg_red,&H00):poke64(fg_grn,&H71):poke64(fg_blu,&H00)
+          case &H79: poke64(fg_red,&H1C):poke64(fg_grn,&H71):poke64(fg_blu,&H00)
+          case &H7A: poke64(fg_red,&H39):poke64(fg_grn,&H71):poke64(fg_blu,&H00)
+          case &H7B: poke64(fg_red,&H55):poke64(fg_grn,&H71):poke64(fg_blu,&H00)
+          case &H7C: poke64(fg_red,&H71):poke64(fg_grn,&H71):poke64(fg_blu,&H00)
+          case &H7D: poke64(fg_red,&H71):poke64(fg_grn,&H55):poke64(fg_blu,&H00)
+          case &H7E: poke64(fg_red,&H71):poke64(fg_grn,&H39):poke64(fg_blu,&H00)
+          case &H7F: poke64(fg_red,&H71):poke64(fg_grn,&H1C):poke64(fg_blu,&H00)
+          case &H80: poke64(fg_red,&H71):poke64(fg_grn,&H39):poke64(fg_blu,&H39)
+          case &H81: poke64(fg_red,&H71):poke64(fg_grn,&H39):poke64(fg_blu,&H45)
+          case &H82: poke64(fg_red,&H71):poke64(fg_grn,&H39):poke64(fg_blu,&H55)
+          case &H83: poke64(fg_red,&H71):poke64(fg_grn,&H39):poke64(fg_blu,&H61)
+          case &H84: poke64(fg_red,&H71):poke64(fg_grn,&H39):poke64(fg_blu,&H71)
+          case &H85: poke64(fg_red,&H61):poke64(fg_grn,&H39):poke64(fg_blu,&H71)
+          case &H86: poke64(fg_red,&H55):poke64(fg_grn,&H39):poke64(fg_blu,&H71)
+          case &H87: poke64(fg_red,&H45):poke64(fg_grn,&H39):poke64(fg_blu,&H71)
+          case &H88: poke64(fg_red,&H39):poke64(fg_grn,&H39):poke64(fg_blu,&H71)
+          case &H89: poke64(fg_red,&H39):poke64(fg_grn,&H45):poke64(fg_blu,&H71)
+          case &H8A: poke64(fg_red,&H39):poke64(fg_grn,&H55):poke64(fg_blu,&H71)
+          case &H8B: poke64(fg_red,&H39):poke64(fg_grn,&H61):poke64(fg_blu,&H71)
+          case &H8C: poke64(fg_red,&H39):poke64(fg_grn,&H71):poke64(fg_blu,&H71)
+          case &H8D: poke64(fg_red,&H39):poke64(fg_grn,&H71):poke64(fg_blu,&H61)
+          case &H8E: poke64(fg_red,&H39):poke64(fg_grn,&H71):poke64(fg_blu,&H55)
+          case &H8F: poke64(fg_red,&H39):poke64(fg_grn,&H71):poke64(fg_blu,&H45)
+          case &H90: poke64(fg_red,&H39):poke64(fg_grn,&H71):poke64(fg_blu,&H39)
+          case &H91: poke64(fg_red,&H45):poke64(fg_grn,&H71):poke64(fg_blu,&H39)
+          case &H92: poke64(fg_red,&H55):poke64(fg_grn,&H71):poke64(fg_blu,&H39)
+          case &H93: poke64(fg_red,&H61):poke64(fg_grn,&H71):poke64(fg_blu,&H39)
+          case &H94: poke64(fg_red,&H71):poke64(fg_grn,&H71):poke64(fg_blu,&H39)
+          case &H95: poke64(fg_red,&H71):poke64(fg_grn,&H61):poke64(fg_blu,&H39)
+          case &H96: poke64(fg_red,&H71):poke64(fg_grn,&H55):poke64(fg_blu,&H39)
+          case &H97: poke64(fg_red,&H71):poke64(fg_grn,&H45):poke64(fg_blu,&H39)
+          case &H98: poke64(fg_red,&H71):poke64(fg_grn,&H51):poke64(fg_blu,&H51)
+          case &H99: poke64(fg_red,&H71):poke64(fg_grn,&H51):poke64(fg_blu,&H59)
+          case &H9A: poke64(fg_red,&H71):poke64(fg_grn,&H51):poke64(fg_blu,&H61)
+          case &H9B: poke64(fg_red,&H71):poke64(fg_grn,&H51):poke64(fg_blu,&H69)
+          case &H9C: poke64(fg_red,&H71):poke64(fg_grn,&H51):poke64(fg_blu,&H71)
+          case &H9D: poke64(fg_red,&H69):poke64(fg_grn,&H51):poke64(fg_blu,&H71)
+          case &H9E: poke64(fg_red,&H61):poke64(fg_grn,&H51):poke64(fg_blu,&H71)
+          case &H9F: poke64(fg_red,&H59):poke64(fg_grn,&H51):poke64(fg_blu,&H71)
+          case &HA0: poke64(fg_red,&H51):poke64(fg_grn,&H51):poke64(fg_blu,&H71)
+          case &HA1: poke64(fg_red,&H51):poke64(fg_grn,&H59):poke64(fg_blu,&H71)
+          case &HA2: poke64(fg_red,&H51):poke64(fg_grn,&H61):poke64(fg_blu,&H71)
+          case &HA3: poke64(fg_red,&H51):poke64(fg_grn,&H69):poke64(fg_blu,&H71)
+          case &HA4: poke64(fg_red,&H51):poke64(fg_grn,&H71):poke64(fg_blu,&H71)
+          case &HA5: poke64(fg_red,&H51):poke64(fg_grn,&H71):poke64(fg_blu,&H69)
+          case &HA6: poke64(fg_red,&H51):poke64(fg_grn,&H71):poke64(fg_blu,&H61)
+          case &HA7: poke64(fg_red,&H51):poke64(fg_grn,&H71):poke64(fg_blu,&H59)
+          case &HA8: poke64(fg_red,&H51):poke64(fg_grn,&H71):poke64(fg_blu,&H51)
+          case &HA9: poke64(fg_red,&H59):poke64(fg_grn,&H71):poke64(fg_blu,&H51)
+          case &HAA: poke64(fg_red,&H61):poke64(fg_grn,&H71):poke64(fg_blu,&H51)
+          case &HAB: poke64(fg_red,&H69):poke64(fg_grn,&H71):poke64(fg_blu,&H51)
+          case &HAC: poke64(fg_red,&H71):poke64(fg_grn,&H71):poke64(fg_blu,&H51)
+          case &HAD: poke64(fg_red,&H71):poke64(fg_grn,&H69):poke64(fg_blu,&H51)
+          case &HAE: poke64(fg_red,&H71):poke64(fg_grn,&H61):poke64(fg_blu,&H51)
+          case &HAF: poke64(fg_red,&H71):poke64(fg_grn,&H59):poke64(fg_blu,&H51)
+          case &HB0: poke64(fg_red,&H41):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HB1: poke64(fg_red,&H41):poke64(fg_grn,&H00):poke64(fg_blu,&H10)
+          case &HB2: poke64(fg_red,&H41):poke64(fg_grn,&H00):poke64(fg_blu,&H20)
+          case &HB3: poke64(fg_red,&H41):poke64(fg_grn,&H00):poke64(fg_blu,&H31)
+          case &HB4: poke64(fg_red,&H41):poke64(fg_grn,&H00):poke64(fg_blu,&H41)
+          case &HB5: poke64(fg_red,&H31):poke64(fg_grn,&H00):poke64(fg_blu,&H41)
+          case &HB6: poke64(fg_red,&H20):poke64(fg_grn,&H00):poke64(fg_blu,&H41)
+          case &HB7: poke64(fg_red,&H10):poke64(fg_grn,&H00):poke64(fg_blu,&H41)
+          case &HB8: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H41)
+          case &HB9: poke64(fg_red,&H00):poke64(fg_grn,&H10):poke64(fg_blu,&H41)
+          case &HBA: poke64(fg_red,&H00):poke64(fg_grn,&H20):poke64(fg_blu,&H41)
+          case &HBB: poke64(fg_red,&H00):poke64(fg_grn,&H31):poke64(fg_blu,&H41)
+          case &HBC: poke64(fg_red,&H00):poke64(fg_grn,&H41):poke64(fg_blu,&H41)
+          case &HBD: poke64(fg_red,&H00):poke64(fg_grn,&H41):poke64(fg_blu,&H31)
+          case &HBE: poke64(fg_red,&H00):poke64(fg_grn,&H41):poke64(fg_blu,&H20)
+          case &HBF: poke64(fg_red,&H00):poke64(fg_grn,&H41):poke64(fg_blu,&H10)
+          case &HC0: poke64(fg_red,&H00):poke64(fg_grn,&H41):poke64(fg_blu,&H00)
+          case &HC1: poke64(fg_red,&H10):poke64(fg_grn,&H41):poke64(fg_blu,&H00)
+          case &HC2: poke64(fg_red,&H20):poke64(fg_grn,&H41):poke64(fg_blu,&H00)
+          case &HC3: poke64(fg_red,&H31):poke64(fg_grn,&H41):poke64(fg_blu,&H00)
+          case &HC4: poke64(fg_red,&H41):poke64(fg_grn,&H41):poke64(fg_blu,&H00)
+          case &HC5: poke64(fg_red,&H41):poke64(fg_grn,&H31):poke64(fg_blu,&H00)
+          case &HC6: poke64(fg_red,&H41):poke64(fg_grn,&H20):poke64(fg_blu,&H00)
+          case &HC7: poke64(fg_red,&H41):poke64(fg_grn,&H10):poke64(fg_blu,&H00)
+          case &HC8: poke64(fg_red,&H41):poke64(fg_grn,&H20):poke64(fg_blu,&H20)
+          case &HC9: poke64(fg_red,&H41):poke64(fg_grn,&H20):poke64(fg_blu,&H28)
+          case &HCA: poke64(fg_red,&H41):poke64(fg_grn,&H20):poke64(fg_blu,&H31)
+          case &HCB: poke64(fg_red,&H41):poke64(fg_grn,&H20):poke64(fg_blu,&H39)
+          case &HCC: poke64(fg_red,&H41):poke64(fg_grn,&H20):poke64(fg_blu,&H41)
+          case &HCD: poke64(fg_red,&H39):poke64(fg_grn,&H20):poke64(fg_blu,&H41)
+          case &HCE: poke64(fg_red,&H31):poke64(fg_grn,&H20):poke64(fg_blu,&H41)
+          case &HCF: poke64(fg_red,&H28):poke64(fg_grn,&H20):poke64(fg_blu,&H41)
+          case &HD0: poke64(fg_red,&H20):poke64(fg_grn,&H20):poke64(fg_blu,&H41)
+          case &HD1: poke64(fg_red,&H20):poke64(fg_grn,&H28):poke64(fg_blu,&H41)
+          case &HD2: poke64(fg_red,&H20):poke64(fg_grn,&H31):poke64(fg_blu,&H41)
+          case &HD3: poke64(fg_red,&H20):poke64(fg_grn,&H39):poke64(fg_blu,&H41)
+          case &HD4: poke64(fg_red,&H20):poke64(fg_grn,&H41):poke64(fg_blu,&H41)
+          case &HD5: poke64(fg_red,&H20):poke64(fg_grn,&H41):poke64(fg_blu,&H39)
+          case &HD6: poke64(fg_red,&H20):poke64(fg_grn,&H41):poke64(fg_blu,&H31)
+          case &HD7: poke64(fg_red,&H20):poke64(fg_grn,&H41):poke64(fg_blu,&H28)
+          case &HD8: poke64(fg_red,&H20):poke64(fg_grn,&H41):poke64(fg_blu,&H20)
+          case &HD9: poke64(fg_red,&H28):poke64(fg_grn,&H41):poke64(fg_blu,&H20)
+          case &HDA: poke64(fg_red,&H31):poke64(fg_grn,&H41):poke64(fg_blu,&H20)
+          case &HDB: poke64(fg_red,&H39):poke64(fg_grn,&H41):poke64(fg_blu,&H20)
+          case &HDC: poke64(fg_red,&H41):poke64(fg_grn,&H41):poke64(fg_blu,&H20)
+          case &HDD: poke64(fg_red,&H41):poke64(fg_grn,&H39):poke64(fg_blu,&H20)
+          case &HDE: poke64(fg_red,&H41):poke64(fg_grn,&H31):poke64(fg_blu,&H20)
+          case &HDF: poke64(fg_red,&H41):poke64(fg_grn,&H28):poke64(fg_blu,&H20)
+          case &HE0: poke64(fg_red,&H41):poke64(fg_grn,&H2D):poke64(fg_blu,&H2D)
+          case &HE1: poke64(fg_red,&H41):poke64(fg_grn,&H2D):poke64(fg_blu,&H31)
+          case &HE2: poke64(fg_red,&H41):poke64(fg_grn,&H2D):poke64(fg_blu,&H35)
+          case &HE3: poke64(fg_red,&H41):poke64(fg_grn,&H2D):poke64(fg_blu,&H3D)
+          case &HE4: poke64(fg_red,&H41):poke64(fg_grn,&H2D):poke64(fg_blu,&H41)
+          case &HE5: poke64(fg_red,&H3D):poke64(fg_grn,&H2D):poke64(fg_blu,&H41)
+          case &HE6: poke64(fg_red,&H35):poke64(fg_grn,&H2D):poke64(fg_blu,&H41)
+          case &HE7: poke64(fg_red,&H31):poke64(fg_grn,&H2D):poke64(fg_blu,&H41)
+          case &HE8: poke64(fg_red,&H2D):poke64(fg_grn,&H2D):poke64(fg_blu,&H41)
+          case &HE9: poke64(fg_red,&H2D):poke64(fg_grn,&H31):poke64(fg_blu,&H41)
+          case &HEA: poke64(fg_red,&H2D):poke64(fg_grn,&H35):poke64(fg_blu,&H41)
+          case &HEB: poke64(fg_red,&H2D):poke64(fg_grn,&H3D):poke64(fg_blu,&H41)
+          case &HEC: poke64(fg_red,&H2D):poke64(fg_grn,&H41):poke64(fg_blu,&H41)
+          case &HED: poke64(fg_red,&H2D):poke64(fg_grn,&H41):poke64(fg_blu,&H3D)
+          case &HEE: poke64(fg_red,&H2D):poke64(fg_grn,&H41):poke64(fg_blu,&H35)
+          case &HEF: poke64(fg_red,&H2D):poke64(fg_grn,&H41):poke64(fg_blu,&H31)
+          case &HF0: poke64(fg_red,&H2D):poke64(fg_grn,&H41):poke64(fg_blu,&H2D)
+          case &HF1: poke64(fg_red,&H31):poke64(fg_grn,&H41):poke64(fg_blu,&H2D)
+          case &HF2: poke64(fg_red,&H35):poke64(fg_grn,&H41):poke64(fg_blu,&H2D)
+          case &HF3: poke64(fg_red,&H3D):poke64(fg_grn,&H41):poke64(fg_blu,&H2D)
+          case &HF4: poke64(fg_red,&H41):poke64(fg_grn,&H41):poke64(fg_blu,&H2D)
+          case &HF5: poke64(fg_red,&H41):poke64(fg_grn,&H3D):poke64(fg_blu,&H2D)
+          case &HF6: poke64(fg_red,&H41):poke64(fg_grn,&H35):poke64(fg_blu,&H2D)
+          case &HF7: poke64(fg_red,&H41):poke64(fg_grn,&H31):poke64(fg_blu,&H2D)
+          case &HF8: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HF9: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HFA: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HFB: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HFC: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HFD: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HFE: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HFF: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
     end select
   /'
   VIC-II Chip Memory Control Register
@@ -704,119 +922,530 @@ sub MEMORY_T.poke64(byval adr as double,byval v as double)
    blanking feature of Bit 4 of 53265 ($D011) is enabled. The default color
    value is 14.
    '/                
-   elseif mov(adr, 53280d) then ' Set border color
-     select case as const cast(ulongint, v)
-		case 000d: mov(bd_color,mem64(bg_aph) shl 24d add 000d shl 16d add 000d shl 08d add 000d)
-		case 001d: mov(bd_color,mem64(bg_aph) shl 24d add 000d shl 16d add 000d shl 08d add 170d)
-		case 002d: mov(bd_color,mem64(bg_aph) shl 24d add 000d shl 16d add 170d shl 08d add 000d)
-		case 003d: mov(bd_color,mem64(bg_aph) shl 24d add 000d shl 16d add 170d shl 08d add 170d)
-		case 004d: mov(bd_color,mem64(bg_aph) shl 24d add 170d shl 16d add 000d shl 08d add 170d)
-		case 005d: mov(bd_color,mem64(bg_aph) shl 24d add 170d shl 16d add 000d shl 08d add 170d)
-		case 006d: mov(bd_color,mem64(bg_aph) shl 24d add 170d shl 16d add 085d shl 08d add 000d)
-		case 007d: mov(bd_color,mem64(bg_aph) shl 24d add 170d shl 16d add 085d shl 08d add 170d)
-		case 008d: mov(bd_color,mem64(bg_aph) shl 24d add 085d shl 16d add 085d shl 08d add 085d)
-		case 009d: mov(bd_color,mem64(bg_aph) shl 24d add 085d shl 16d add 085d shl 08d add 255d)
-		case 010d: mov(bd_color,mem64(bg_aph) shl 24d add 085d shl 16d add 255d shl 08d add 085d)
-		case 011d: mov(bd_color,mem64(bg_aph) shl 24d add 085d shl 16d add 255d shl 08d add 085d)
-		case 012d: mov(bd_color,mem64(bg_aph) shl 24d add 255d shl 16d add 085d shl 08d add 085d)
-		case 013d: mov(bd_color,mem64(bg_aph) shl 24d add 255d shl 16d add 085d shl 08d add 255d)
-		case 014d: mov(bd_color,mem64(bg_aph) shl 24d add 255d shl 16d add 255d shl 08d add 085d)
-		case 015d: mov(bd_color,mem64(bg_aph) shl 24d add 255d shl 16d add 255d shl 08d add 255d)
-		case 016d: mov(bd_color,mem64(bg_aph) shl 24d add &HFF shl 16d add &HB0 shl 08d add &H00)
-		case 017d: mov(bd_color,mem64(bg_aph) shl 24d add &HFF shl 16d add &HCC shl 08d add &H00)
-		case 018d: mov(bd_color,mem64(bg_aph) shl 24d add &H33 shl 16d add &HFF shl 08d add &H00)
-		case 019d: mov(bd_color,mem64(bg_aph) shl 24d add &H33 shl 16d add &HFF shl 08d add &H33)
-		case 020d: mov(bd_color,mem64(bg_aph) shl 24d add &H00 shl 16d add &HFF shl 08d add &H33)
-		case 021d: mov(bd_color,mem64(bg_aph) shl 24d add &H66 shl 16d add &HFF shl 08d add &H66)
-		case 022d: mov(bd_color,mem64(bg_aph) shl 24d add &H00 shl 16d add &HFF shl 08d add &H66)
-		case 023d: mov(bd_color,mem64(bg_aph) shl 24d add &H28 shl 16d add &H28 shl 08d add &H28)			
-		case 024d: mov(bd_color,mem64(bg_aph) shl 24d add &HCC shl 16d add &H00 shl 08d add &H00)
-		case 025d: mov(bd_color,mem64(bg_aph) shl 24d add &HA4 shl 16d add &H00 shl 08d add &H00)
-		case 026d: mov(bd_color,mem64(bg_aph) shl 24d add &HFC shl 16d add &HAF shl 08d add &H3E)
-		case 027d: mov(bd_color,mem64(bg_aph) shl 24d add &HF5 shl 16d add &H79 shl 08d add &H00)
-		case 028d: mov(bd_color,mem64(bg_aph) shl 24d add &HCE shl 16d add &H5C shl 08d add &H00)
-		case 029d: mov(bd_color,mem64(bg_aph) shl 24d add &HFC shl 16d add &HE9 shl 08d add &H4F)
-		case 030d: mov(bd_color,mem64(bg_aph) shl 24d add &HED shl 16d add &HD4 shl 08d add &H00)
-		case 031d: mov(bd_color,mem64(bg_aph) shl 24d add &HC4 shl 16d add &HA0 shl 08d add &H00)
-		case 032d: mov(bd_color,mem64(bg_aph) shl 24d add &HBA shl 16d add &HE2 shl 08d add &H34)
-		case 033d: mov(bd_color,mem64(bg_aph) shl 24d add &H73 shl 16d add &HD2 shl 08d add &H16)
-		case 034d: mov(bd_color,mem64(bg_aph) shl 24d add &H4E shl 16d add &H9A shl 08d add &H06)
-		case 035d: mov(bd_color,mem64(bg_aph) shl 24d add &H72 shl 16d add &H9F shl 08d add &HCF)
-		case 036d: mov(bd_color,mem64(bg_aph) shl 24d add &H34 shl 16d add &H65 shl 08d add &HA4)
-		case 037d: mov(bd_color,mem64(bg_aph) shl 24d add &H20 shl 16d add &H4A shl 08d add &H87)
-		case 038d: mov(bd_color,mem64(bg_aph) shl 24d add &HAD shl 16d add &H7F shl 08d add &HA8)
-		case 039d: mov(bd_color,mem64(bg_aph) shl 24d add &H75 shl 16d add &H50 shl 08d add &H7D)
-		case 040d: mov(bd_color,mem64(bg_aph) shl 24d add &H5C shl 16d add &H35 shl 08d add &H66)
-		case 041d: mov(bd_color,mem64(bg_aph) shl 24d add &HE9 shl 16d add &HB9 shl 08d add &H6E)
-		case 042d: mov(bd_color,mem64(bg_aph) shl 24d add &HC1 shl 16d add &H7D shl 08d add &H11)
-		case 043d: mov(bd_color,mem64(bg_aph) shl 24d add &H8F shl 16d add &H59 shl 08d add &H02)
-		case 044d: mov(bd_color,mem64(bg_aph) shl 24d add &H88 shl 16d add &H8A shl 08d add &H85)
-		case 045d: mov(bd_color,mem64(bg_aph) shl 24d add &H55 shl 16d add &H57 shl 08d add &H53)
-		case 046d: mov(bd_color,mem64(bg_aph) shl 24d add &H2E shl 16d add &H34 shl 08d add &H36)
-		case 047d: mov(bd_color,mem64(bg_aph) shl 24d add &HEE shl 16d add &HEE shl 08d add &HEC)
-		case 048d: mov(bd_color,mem64(bg_aph) shl 24d add &HD3 shl 16d add &HD7 shl 08d add &HCF)
-		case 049d: mov(bd_color,mem64(bg_aph) shl 24d add &HBA shl 16d add &HBD shl 08d add &HB6)
+   elseif mov(adr, 53280.0d) then ' Set border color
+     select case v
+          case &H00: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H00d shl 08d add &H00)
+          case &H01: mov(bd_color,mem64(bg_aph) shl 24d add &HAAd shl 16d add &H00d shl 08d add &H00)
+          case &H02: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &HAAd shl 08d add &H00)
+          case &H03: mov(bd_color,mem64(bg_aph) shl 24d add &HAAd shl 16d add &HAAd shl 08d add &H00)
+          case &H04: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H00d shl 08d add &HAA)
+          case &H05: mov(bd_color,mem64(bg_aph) shl 24d add &HAAd shl 16d add &H00d shl 08d add &HAA)
+          case &H06: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H55d shl 08d add &HAA)
+          case &H07: mov(bd_color,mem64(bg_aph) shl 24d add &HAAd shl 16d add &HAAd shl 08d add &HAA)
+          case &H08: mov(bd_color,mem64(bg_aph) shl 24d add &H55d shl 16d add &H55d shl 08d add &H55)
+          case &H09: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H55d shl 08d add &H55)
+          case &HA0: mov(bd_color,mem64(bg_aph) shl 24d add &H55d shl 16d add &HFFd shl 08d add &H55)
+          case &HB0: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HFFd shl 08d add &H55)
+          case &HC0: mov(bd_color,mem64(bg_aph) shl 24d add &H55d shl 16d add &H55d shl 08d add &HFF)
+          case &HD0: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H55d shl 08d add &HFF)
+          case &HE0: mov(bd_color,mem64(bg_aph) shl 24d add &H55d shl 16d add &HFFd shl 08d add &HFF)
+          case &HF0: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HFFd shl 08d add &HFF)
+          case &H10: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H00d shl 08d add &H00)
+          case &H11: mov(bd_color,mem64(bg_aph) shl 24d add &H14d shl 16d add &H14d shl 08d add &H14)
+          case &H12: mov(bd_color,mem64(bg_aph) shl 24d add &H20d shl 16d add &H20d shl 08d add &H20)
+          case &H13: mov(bd_color,mem64(bg_aph) shl 24d add &H2Dd shl 16d add &H2Dd shl 08d add &H2D)
+          case &H14: mov(bd_color,mem64(bg_aph) shl 24d add &H39d shl 16d add &H39d shl 08d add &H39)
+          case &H15: mov(bd_color,mem64(bg_aph) shl 24d add &H45d shl 16d add &H45d shl 08d add &H45)
+          case &H16: mov(bd_color,mem64(bg_aph) shl 24d add &H51d shl 16d add &H51d shl 08d add &H51)
+          case &H17: mov(bd_color,mem64(bg_aph) shl 24d add &H61d shl 16d add &H61d shl 08d add &H61)
+          case &H18: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H71d shl 08d add &H71)
+          case &H19: mov(bd_color,mem64(bg_aph) shl 24d add &H82d shl 16d add &H82d shl 08d add &H82)
+          case &H1A: mov(bd_color,mem64(bg_aph) shl 24d add &H92d shl 16d add &H92d shl 08d add &H92)
+          case &H1B: mov(bd_color,mem64(bg_aph) shl 24d add &HA2d shl 16d add &HA2d shl 08d add &HA2)
+          case &H1C: mov(bd_color,mem64(bg_aph) shl 24d add &HB6d shl 16d add &HB6d shl 08d add &HB6)
+          case &H1D: mov(bd_color,mem64(bg_aph) shl 24d add &HCAd shl 16d add &HCAd shl 08d add &HCA)
+          case &H1E: mov(bd_color,mem64(bg_aph) shl 24d add &HE3d shl 16d add &HE3d shl 08d add &HE3)
+          case &H1F: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HFFd shl 08d add &HFF)
+          case &H20: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H00d shl 08d add &H00)
+          case &H21: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H00d shl 08d add &H41)
+          case &H22: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H00d shl 08d add &H7D)
+          case &H23: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H00d shl 08d add &HBE)
+          case &H24: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H00d shl 08d add &HFF)
+          case &H25: mov(bd_color,mem64(bg_aph) shl 24d add &HBEd shl 16d add &H00d shl 08d add &HFF)
+          case &H26: mov(bd_color,mem64(bg_aph) shl 24d add &H7Dd shl 16d add &H00d shl 08d add &HFF)
+          case &H27: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H00d shl 08d add &HFF)
+          case &H28: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H00d shl 08d add &HFF)
+          case &H29: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H41d shl 08d add &HFF)
+          case &H2A: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H7Dd shl 08d add &HFF)
+          case &H2B: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &HBEd shl 08d add &HFF)
+          case &H2C: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &HFFd shl 08d add &HFF)
+          case &H2D: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &HFFd shl 08d add &HBE)
+          case &H2E: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &HFFd shl 08d add &H7D)
+          case &H2F: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &HFFd shl 08d add &H41)
+          case &H30: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &HFFd shl 08d add &H00)
+          case &H31: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &HFFd shl 08d add &H00)
+          case &H32: mov(bd_color,mem64(bg_aph) shl 24d add &H7Dd shl 16d add &HFFd shl 08d add &H00)
+          case &H33: mov(bd_color,mem64(bg_aph) shl 24d add &HBEd shl 16d add &HFFd shl 08d add &H00)
+          case &H34: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HFFd shl 08d add &H00)
+          case &H35: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HBEd shl 08d add &H00)
+          case &H36: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H7Dd shl 08d add &H00)
+          case &H37: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H41d shl 08d add &H00)
+          case &H38: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H7Dd shl 08d add &H7D)
+          case &H39: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H7Dd shl 08d add &H9E)
+          case &H3A: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H7Dd shl 08d add &HBE)
+          case &H3B: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H7Dd shl 08d add &HDF)
+          case &H3C: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H7Dd shl 08d add &HFF)
+          case &H3D: mov(bd_color,mem64(bg_aph) shl 24d add &HDFd shl 16d add &H7Dd shl 08d add &HFF)
+          case &H3E: mov(bd_color,mem64(bg_aph) shl 24d add &HBEd shl 16d add &H7Dd shl 08d add &HFF)
+          case &H3F: mov(bd_color,mem64(bg_aph) shl 24d add &H9Ed shl 16d add &H7Dd shl 08d add &HFF)
+          case &H40: mov(bd_color,mem64(bg_aph) shl 24d add &H7Dd shl 16d add &H7Dd shl 08d add &HFF)
+          case &H41: mov(bd_color,mem64(bg_aph) shl 24d add &H7Dd shl 16d add &H9Ed shl 08d add &HFF)
+          case &H42: mov(bd_color,mem64(bg_aph) shl 24d add &H7Dd shl 16d add &HBEd shl 08d add &HFF)
+          case &H43: mov(bd_color,mem64(bg_aph) shl 24d add &H7Dd shl 16d add &HDFd shl 08d add &HFF)
+          case &H44: mov(bd_color,mem64(bg_aph) shl 24d add &H7Dd shl 16d add &HFFd shl 08d add &HFF)
+          case &H45: mov(bd_color,mem64(bg_aph) shl 24d add &H7Dd shl 16d add &HFFd shl 08d add &HDF)
+          case &H46: mov(bd_color,mem64(bg_aph) shl 24d add &H7Dd shl 16d add &HFFd shl 08d add &HBE)
+          case &H47: mov(bd_color,mem64(bg_aph) shl 24d add &H7Dd shl 16d add &HFFd shl 08d add &H9E)
+          case &H48: mov(bd_color,mem64(bg_aph) shl 24d add &H7Dd shl 16d add &HFFd shl 08d add &H7D)
+          case &H49: mov(bd_color,mem64(bg_aph) shl 24d add &H9Ed shl 16d add &HFFd shl 08d add &H7D)
+          case &H4A: mov(bd_color,mem64(bg_aph) shl 24d add &HBEd shl 16d add &HFFd shl 08d add &H7D)
+          case &H4B: mov(bd_color,mem64(bg_aph) shl 24d add &HDFd shl 16d add &HFFd shl 08d add &H7D)
+          case &H4C: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HFFd shl 08d add &H7D)
+          case &H4D: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HDFd shl 08d add &H7D)
+          case &H4E: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HBEd shl 08d add &H7D)
+          case &H4F: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &H9Ed shl 08d add &H7D)
+          case &H50: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HB6d shl 08d add &HB6)
+          case &H51: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HB6d shl 08d add &HC6)
+          case &H52: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HB6d shl 08d add &HDB)
+          case &H53: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HB6d shl 08d add &HEB)
+          case &H54: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HB6d shl 08d add &HFF)
+          case &H55: mov(bd_color,mem64(bg_aph) shl 24d add &HEBd shl 16d add &HB6d shl 08d add &HFF)
+          case &H56: mov(bd_color,mem64(bg_aph) shl 24d add &HDBd shl 16d add &HB6d shl 08d add &HFF)
+          case &H57: mov(bd_color,mem64(bg_aph) shl 24d add &HC6d shl 16d add &HB6d shl 08d add &HFF)
+          case &H58: mov(bd_color,mem64(bg_aph) shl 24d add &HB6d shl 16d add &HB6d shl 08d add &HFF)
+          case &H59: mov(bd_color,mem64(bg_aph) shl 24d add &HB6d shl 16d add &HC6d shl 08d add &HFF)
+          case &H5A: mov(bd_color,mem64(bg_aph) shl 24d add &HB6d shl 16d add &HDBd shl 08d add &HFF)
+          case &H5B: mov(bd_color,mem64(bg_aph) shl 24d add &HB6d shl 16d add &HEBd shl 08d add &HFF)
+          case &H5C: mov(bd_color,mem64(bg_aph) shl 24d add &HB6d shl 16d add &HFFd shl 08d add &HFF)
+          case &H5D: mov(bd_color,mem64(bg_aph) shl 24d add &HB6d shl 16d add &HFFd shl 08d add &HEB)
+          case &H5E: mov(bd_color,mem64(bg_aph) shl 24d add &HB6d shl 16d add &HFFd shl 08d add &HDB)
+          case &H5F: mov(bd_color,mem64(bg_aph) shl 24d add &HB6d shl 16d add &HFFd shl 08d add &HC6)
+          case &H60: mov(bd_color,mem64(bg_aph) shl 24d add &HB6d shl 16d add &HFFd shl 08d add &HB6)
+          case &H61: mov(bd_color,mem64(bg_aph) shl 24d add &HC6d shl 16d add &HFFd shl 08d add &HB6)
+          case &H62: mov(bd_color,mem64(bg_aph) shl 24d add &HDBd shl 16d add &HFFd shl 08d add &HB6)
+          case &H63: mov(bd_color,mem64(bg_aph) shl 24d add &HEBd shl 16d add &HFFd shl 08d add &HB6)
+          case &H64: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HFFd shl 08d add &HB6)
+          case &H65: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HEBd shl 08d add &HB6)
+          case &H66: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HDBd shl 08d add &HB6)
+          case &H67: mov(bd_color,mem64(bg_aph) shl 24d add &HFFd shl 16d add &HC6d shl 08d add &HB6)
+          case &H68: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H00d shl 08d add &H00)
+          case &H69: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H00d shl 08d add &H1C)
+          case &H6A: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H00d shl 08d add &H39)
+          case &H6B: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H00d shl 08d add &H55)
+          case &H6C: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H00d shl 08d add &H71)
+          case &H6D: mov(bd_color,mem64(bg_aph) shl 24d add &H55d shl 16d add &H00d shl 08d add &H71)
+          case &H6E: mov(bd_color,mem64(bg_aph) shl 24d add &H39d shl 16d add &H00d shl 08d add &H71)
+          case &H6F: mov(bd_color,mem64(bg_aph) shl 24d add &H1Cd shl 16d add &H00d shl 08d add &H71)
+          case &H70: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H00d shl 08d add &H71)
+          case &H71: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H1Cd shl 08d add &H71)
+          case &H72: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H39d shl 08d add &H71)
+          case &H73: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H55d shl 08d add &H71)
+          case &H74: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H71d shl 08d add &H71)
+          case &H75: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H71d shl 08d add &H55)
+          case &H76: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H71d shl 08d add &H39)
+          case &H77: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H71d shl 08d add &H1C)
+          case &H78: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H71d shl 08d add &H00)
+          case &H79: mov(bd_color,mem64(bg_aph) shl 24d add &H1Cd shl 16d add &H71d shl 08d add &H00)
+          case &H7A: mov(bd_color,mem64(bg_aph) shl 24d add &H39d shl 16d add &H71d shl 08d add &H00)
+          case &H7B: mov(bd_color,mem64(bg_aph) shl 24d add &H55d shl 16d add &H71d shl 08d add &H00)
+          case &H7C: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H71d shl 08d add &H00)
+          case &H7D: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H55d shl 08d add &H00)
+          case &H7E: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H39d shl 08d add &H00)
+          case &H7F: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H1Cd shl 08d add &H00)
+          case &H80: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H39d shl 08d add &H39)
+          case &H81: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H39d shl 08d add &H45)
+          case &H82: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H39d shl 08d add &H55)
+          case &H83: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H39d shl 08d add &H61)
+          case &H84: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H39d shl 08d add &H71)
+          case &H85: mov(bd_color,mem64(bg_aph) shl 24d add &H61d shl 16d add &H39d shl 08d add &H71)
+          case &H86: mov(bd_color,mem64(bg_aph) shl 24d add &H55d shl 16d add &H39d shl 08d add &H71)
+          case &H87: mov(bd_color,mem64(bg_aph) shl 24d add &H45d shl 16d add &H39d shl 08d add &H71)
+          case &H88: mov(bd_color,mem64(bg_aph) shl 24d add &H39d shl 16d add &H39d shl 08d add &H71)
+          case &H89: mov(bd_color,mem64(bg_aph) shl 24d add &H39d shl 16d add &H45d shl 08d add &H71)
+          case &H8A: mov(bd_color,mem64(bg_aph) shl 24d add &H39d shl 16d add &H55d shl 08d add &H71)
+          case &H8B: mov(bd_color,mem64(bg_aph) shl 24d add &H39d shl 16d add &H61d shl 08d add &H71)
+          case &H8C: mov(bd_color,mem64(bg_aph) shl 24d add &H39d shl 16d add &H71d shl 08d add &H71)
+          case &H8D: mov(bd_color,mem64(bg_aph) shl 24d add &H39d shl 16d add &H71d shl 08d add &H61)
+          case &H8E: mov(bd_color,mem64(bg_aph) shl 24d add &H39d shl 16d add &H71d shl 08d add &H55)
+          case &H8F: mov(bd_color,mem64(bg_aph) shl 24d add &H39d shl 16d add &H71d shl 08d add &H45)
+          case &H90: mov(bd_color,mem64(bg_aph) shl 24d add &H39d shl 16d add &H71d shl 08d add &H39)
+          case &H91: mov(bd_color,mem64(bg_aph) shl 24d add &H45d shl 16d add &H71d shl 08d add &H39)
+          case &H92: mov(bd_color,mem64(bg_aph) shl 24d add &H55d shl 16d add &H71d shl 08d add &H39)
+          case &H93: mov(bd_color,mem64(bg_aph) shl 24d add &H61d shl 16d add &H71d shl 08d add &H39)
+          case &H94: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H71d shl 08d add &H39)
+          case &H95: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H61d shl 08d add &H39)
+          case &H96: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H55d shl 08d add &H39)
+          case &H97: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H45d shl 08d add &H39)
+          case &H98: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H51d shl 08d add &H51)
+          case &H99: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H51d shl 08d add &H59)
+          case &H9A: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H51d shl 08d add &H61)
+          case &H9B: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H51d shl 08d add &H69)
+          case &H9C: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H51d shl 08d add &H71)
+          case &H9D: mov(bd_color,mem64(bg_aph) shl 24d add &H69d shl 16d add &H51d shl 08d add &H71)
+          case &H9E: mov(bd_color,mem64(bg_aph) shl 24d add &H61d shl 16d add &H51d shl 08d add &H71)
+          case &H9F: mov(bd_color,mem64(bg_aph) shl 24d add &H59d shl 16d add &H51d shl 08d add &H71)
+          case &HA0: mov(bd_color,mem64(bg_aph) shl 24d add &H51d shl 16d add &H51d shl 08d add &H71)
+          case &HA1: mov(bd_color,mem64(bg_aph) shl 24d add &H51d shl 16d add &H59d shl 08d add &H71)
+          case &HA2: mov(bd_color,mem64(bg_aph) shl 24d add &H51d shl 16d add &H61d shl 08d add &H71)
+          case &HA3: mov(bd_color,mem64(bg_aph) shl 24d add &H51d shl 16d add &H69d shl 08d add &H71)
+          case &HA4: mov(bd_color,mem64(bg_aph) shl 24d add &H51d shl 16d add &H71d shl 08d add &H71)
+          case &HA5: mov(bd_color,mem64(bg_aph) shl 24d add &H51d shl 16d add &H71d shl 08d add &H69)
+          case &HA6: mov(bd_color,mem64(bg_aph) shl 24d add &H51d shl 16d add &H71d shl 08d add &H61)
+          case &HA7: mov(bd_color,mem64(bg_aph) shl 24d add &H51d shl 16d add &H71d shl 08d add &H59)
+          case &HA8: mov(bd_color,mem64(bg_aph) shl 24d add &H51d shl 16d add &H71d shl 08d add &H51)
+          case &HA9: mov(bd_color,mem64(bg_aph) shl 24d add &H59d shl 16d add &H71d shl 08d add &H51)
+          case &HAA: mov(bd_color,mem64(bg_aph) shl 24d add &H61d shl 16d add &H71d shl 08d add &H51)
+          case &HAB: mov(bd_color,mem64(bg_aph) shl 24d add &H69d shl 16d add &H71d shl 08d add &H51)
+          case &HAC: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H71d shl 08d add &H51)
+          case &HAD: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H69d shl 08d add &H51)
+          case &HAE: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H61d shl 08d add &H51)
+          case &HAF: mov(bd_color,mem64(bg_aph) shl 24d add &H71d shl 16d add &H59d shl 08d add &H51)
+          case &HB0: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H00d shl 08d add &H00)
+          case &HB1: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H00d shl 08d add &H10)
+          case &HB2: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H00d shl 08d add &H20)
+          case &HB3: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H00d shl 08d add &H31)
+          case &HB4: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H00d shl 08d add &H41)
+          case &HB5: mov(bd_color,mem64(bg_aph) shl 24d add &H31d shl 16d add &H00d shl 08d add &H41)
+          case &HB6: mov(bd_color,mem64(bg_aph) shl 24d add &H20d shl 16d add &H00d shl 08d add &H41)
+          case &HB7: mov(bd_color,mem64(bg_aph) shl 24d add &H10d shl 16d add &H00d shl 08d add &H41)
+          case &HB8: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H00d shl 08d add &H41)
+          case &HB9: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H10d shl 08d add &H41)
+          case &HBA: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H20d shl 08d add &H41)
+          case &HBB: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H31d shl 08d add &H41)
+          case &HBC: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H41d shl 08d add &H41)
+          case &HBD: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H41d shl 08d add &H31)
+          case &HBE: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H41d shl 08d add &H20)
+          case &HBF: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H41d shl 08d add &H10)
+          case &HC0: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H41d shl 08d add &H00)
+          case &HC1: mov(bd_color,mem64(bg_aph) shl 24d add &H10d shl 16d add &H41d shl 08d add &H00)
+          case &HC2: mov(bd_color,mem64(bg_aph) shl 24d add &H20d shl 16d add &H41d shl 08d add &H00)
+          case &HC3: mov(bd_color,mem64(bg_aph) shl 24d add &H31d shl 16d add &H41d shl 08d add &H00)
+          case &HC4: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H41d shl 08d add &H00)
+          case &HC5: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H31d shl 08d add &H00)
+          case &HC6: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H20d shl 08d add &H00)
+          case &HC7: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H10d shl 08d add &H00)
+          case &HC8: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H20d shl 08d add &H20)
+          case &HC9: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H20d shl 08d add &H28)
+          case &HCA: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H20d shl 08d add &H31)
+          case &HCB: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H20d shl 08d add &H39)
+          case &HCC: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H20d shl 08d add &H41)
+          case &HCD: mov(bd_color,mem64(bg_aph) shl 24d add &H39d shl 16d add &H20d shl 08d add &H41)
+          case &HCE: mov(bd_color,mem64(bg_aph) shl 24d add &H31d shl 16d add &H20d shl 08d add &H41)
+          case &HCF: mov(bd_color,mem64(bg_aph) shl 24d add &H28d shl 16d add &H20d shl 08d add &H41)
+          case &HD0: mov(bd_color,mem64(bg_aph) shl 24d add &H20d shl 16d add &H20d shl 08d add &H41)
+          case &HD1: mov(bd_color,mem64(bg_aph) shl 24d add &H20d shl 16d add &H28d shl 08d add &H41)
+          case &HD2: mov(bd_color,mem64(bg_aph) shl 24d add &H20d shl 16d add &H31d shl 08d add &H41)
+          case &HD3: mov(bd_color,mem64(bg_aph) shl 24d add &H20d shl 16d add &H39d shl 08d add &H41)
+          case &HD4: mov(bd_color,mem64(bg_aph) shl 24d add &H20d shl 16d add &H41d shl 08d add &H41)
+          case &HD5: mov(bd_color,mem64(bg_aph) shl 24d add &H20d shl 16d add &H41d shl 08d add &H39)
+          case &HD6: mov(bd_color,mem64(bg_aph) shl 24d add &H20d shl 16d add &H41d shl 08d add &H31)
+          case &HD7: mov(bd_color,mem64(bg_aph) shl 24d add &H20d shl 16d add &H41d shl 08d add &H28)
+          case &HD8: mov(bd_color,mem64(bg_aph) shl 24d add &H20d shl 16d add &H41d shl 08d add &H20)
+          case &HD9: mov(bd_color,mem64(bg_aph) shl 24d add &H28d shl 16d add &H41d shl 08d add &H20)
+          case &HDA: mov(bd_color,mem64(bg_aph) shl 24d add &H31d shl 16d add &H41d shl 08d add &H20)
+          case &HDB: mov(bd_color,mem64(bg_aph) shl 24d add &H39d shl 16d add &H41d shl 08d add &H20)
+          case &HDC: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H41d shl 08d add &H20)
+          case &HDD: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H39d shl 08d add &H20)
+          case &HDE: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H31d shl 08d add &H20)
+          case &HDF: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H28d shl 08d add &H20)
+          case &HE0: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H2Dd shl 08d add &H2D)
+          case &HE1: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H2Dd shl 08d add &H31)
+          case &HE2: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H2Dd shl 08d add &H35)
+          case &HE3: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H2Dd shl 08d add &H3D)
+          case &HE4: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H2Dd shl 08d add &H41)
+          case &HE5: mov(bd_color,mem64(bg_aph) shl 24d add &H3Dd shl 16d add &H2Dd shl 08d add &H41)
+          case &HE6: mov(bd_color,mem64(bg_aph) shl 24d add &H35d shl 16d add &H2Dd shl 08d add &H41)
+          case &HE7: mov(bd_color,mem64(bg_aph) shl 24d add &H31d shl 16d add &H2Dd shl 08d add &H41)
+          case &HE8: mov(bd_color,mem64(bg_aph) shl 24d add &H2Dd shl 16d add &H2Dd shl 08d add &H41)
+          case &HE9: mov(bd_color,mem64(bg_aph) shl 24d add &H2Dd shl 16d add &H31d shl 08d add &H41)
+          case &HEA: mov(bd_color,mem64(bg_aph) shl 24d add &H2Dd shl 16d add &H35d shl 08d add &H41)
+          case &HEB: mov(bd_color,mem64(bg_aph) shl 24d add &H2Dd shl 16d add &H3Dd shl 08d add &H41)
+          case &HEC: mov(bd_color,mem64(bg_aph) shl 24d add &H2Dd shl 16d add &H41d shl 08d add &H41)
+          case &HED: mov(bd_color,mem64(bg_aph) shl 24d add &H2Dd shl 16d add &H41d shl 08d add &H3D)
+          case &HEE: mov(bd_color,mem64(bg_aph) shl 24d add &H2Dd shl 16d add &H41d shl 08d add &H35)
+          case &HEF: mov(bd_color,mem64(bg_aph) shl 24d add &H2Dd shl 16d add &H41d shl 08d add &H31)
+          case &HF0: mov(bd_color,mem64(bg_aph) shl 24d add &H2Dd shl 16d add &H41d shl 08d add &H2D)
+          case &HF1: mov(bd_color,mem64(bg_aph) shl 24d add &H31d shl 16d add &H41d shl 08d add &H2D)
+          case &HF2: mov(bd_color,mem64(bg_aph) shl 24d add &H35d shl 16d add &H41d shl 08d add &H2D)
+          case &HF3: mov(bd_color,mem64(bg_aph) shl 24d add &H3Dd shl 16d add &H41d shl 08d add &H2D)
+          case &HF4: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H41d shl 08d add &H2D)
+          case &HF5: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H3Dd shl 08d add &H2D)
+          case &HF6: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H35d shl 08d add &H2D)
+          case &HF7: mov(bd_color,mem64(bg_aph) shl 24d add &H41d shl 16d add &H31d shl 08d add &H2D)
+          case &HF8: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H00d shl 08d add &H00)
+          case &HF9: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H00d shl 08d add &H00)
+          case &HFA: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H00d shl 08d add &H00)
+          case &HFB: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H00d shl 08d add &H00)
+          case &HFC: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H00d shl 08d add &H00)
+          case &HFD: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H00d shl 08d add &H00)
+          case &HFE: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H00d shl 08d add &H00)
+          case &HFF: mov(bd_color,mem64(bg_aph) shl 24d add &H00d shl 16d add &H00d shl 08d add &H00)
     end select 
     line bgimage,(0d,0d)-(1919d,1079d),bd_color,bf
   /'
   Background Color Registers
   Sets the background color for all text modes, sprite graphics, and multicolor bitmap graphics.
   '/      
-  elseif logic_or(logic_or(mov(adr, 53281d), mov(adr, 53282d)), logic_or(mov(adr, 53283d), mov(adr, 53284d))) then ' Set background color
-    select case as const cast(ulongint, v)
-    'case 000d: mov(bd_color,mem64(bg_aph) shl 24d add 000d shl 16d add 000d shl 08d add 000d)
-		case 000d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 000d shl 16d add 000d shl 08d add 000d)
-		case 001d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 000d shl 16d add 000d shl 08d add 170d)
-		case 002d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 000d shl 16d add 170d shl 08d add 000d)
-		case 003d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 000d shl 16d add 170d shl 08d add 170d)
-		case 004d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 170d shl 16d add 000d shl 08d add 000d)
-		case 005d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 170d shl 16d add 000d shl 08d add 170d)
-		case 006d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 170d shl 16d add 085d shl 08d add 000d)
-		case 007d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 170d shl 16d add 170d shl 08d add 170d)
-		case 008d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 085d shl 16d add 085d shl 08d add 085d)
-		case 009d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 085d shl 16d add 085d shl 08d add 255d)
-		case 010d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 085d shl 16d add 255d shl 08d add 255d)
-		case 011d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 085d shl 16d add 255d shl 08d add 255d)
-		case 012d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 255d shl 16d add 085d shl 08d add 085d)
-		case 013d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 255d shl 16d add 085d shl 08d add 255d)
-		case 014d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 255d shl 16d add 255d shl 08d add 085d)
-		case 015d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 255d shl 16d add 255d shl 08d add 255d)
-		case 016d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 255d shl 16d add 176d shl 08d add 000d)
-		case 017d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 255d shl 16d add 204d shl 08d add 000d)
-		case 018d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 051d shl 16d add 255d shl 08d add 000d)
-		case 019d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 051d shl 16d add 255d shl 08d add 051d)
-		case 020d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 000d shl 16d add 255d shl 08d add 051d)
-		case 021d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 102d shl 16d add 255d shl 08d add 102d)
-		case 022d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 000d shl 16d add 255d shl 08d add 102d)
-		case 023d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 040d shl 16d add 040d shl 08d add 040d)
-		case 024d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 236d shl 16d add 041d shl 08d add 041d)
-		case 025d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 204d shl 16d add 000d shl 08d add 000d)
-		case 026d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 164d shl 16d add 000d shl 08d add 000d)
-		case 027d: mov(mem64(bg_color),mem64(bg_aph) shl 24d add 252d shl 16d add 175d shl 08d add 062d)
-		case 028d: poke64(bg_red,245d): poke64(bg_grn,121d): poke64(bg_blu,000d)
-		case 029d: poke64(bg_red,206d): poke64(bg_grn,092d): poke64(bg_blu,000d)
-		case 030d: poke64(bg_red,252d): poke64(bg_grn,233d): poke64(bg_blu,079d)
-		case 031d: poke64(bg_red,237d): poke64(bg_grn,212d): poke64(bg_blu,000d)
-		case 032d: poke64(bg_red,196d): poke64(bg_grn,160d): poke64(bg_blu,000d)
-		case 033d: poke64(bg_red,186d): poke64(bg_grn,226d): poke64(bg_blu,052d)
-		case 034d: poke64(bg_red,115d): poke64(bg_grn,210d): poke64(bg_blu,022d)
-		case 035d: poke64(bg_red,078d): poke64(bg_grn,154d): poke64(bg_blu,006d)
-		case 036d: poke64(bg_red,114d): poke64(bg_grn,159d): poke64(bg_blu,207d)
-		case 037d: poke64(bg_red,052d): poke64(bg_grn,101d): poke64(bg_blu,164d)
-		case 038d: poke64(bg_red,032d): poke64(bg_grn,074d): poke64(bg_blu,135d)
-		case 039d: poke64(bg_red,173d): poke64(bg_grn,127d): poke64(bg_blu,168d)
-		case 040d: poke64(bg_red,117d): poke64(bg_grn,080d): poke64(bg_blu,125d)
-		case 041d: poke64(bg_red,092d): poke64(bg_grn,053d): poke64(bg_blu,102d)
-		case 042d: poke64(bg_red,233d): poke64(bg_grn,185d): poke64(bg_blu,110d)
-		case 043d: poke64(bg_red,193d): poke64(bg_grn,125d): poke64(bg_blu,011d)
-		case 044d: poke64(bg_red,143d): poke64(bg_grn,089d): poke64(bg_blu,002d)
-		case 045d: poke64(bg_red,136d): poke64(bg_grn,138d): poke64(bg_blu,133d)
-		case 046d: poke64(bg_red,085d): poke64(bg_grn,087d): poke64(bg_blu,083d)
-		case 047d: poke64(bg_red,046d): poke64(bg_grn,052d): poke64(bg_blu,054d)
-		case 048d: poke64(bg_red,238d): poke64(bg_grn,238d): poke64(bg_blu,236d)
-		case 049d: poke64(bg_red,211d): poke64(bg_grn,215d): poke64(bg_blu,207d)
-		case 050d: poke64(bg_red,186d): poke64(bg_grn,189d): poke64(bg_blu,182d)
-    end select
+  elseif logic_or(logic_or(mov(adr, 53281d), mov(adr, 53282d)), logic_or(mov(adr, 53283d), mov(adr, 53284d))) then 
+   ' Set background color
+   select case as const cast(ulongint, v)
+          case &H00: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &H01: poke64(fg_red,&HAA):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &H02: poke64(fg_red,&H00):poke64(fg_grn,&HAA):poke64(fg_blu,&H00)
+          case &H03: poke64(fg_red,&HAA):poke64(fg_grn,&HAA):poke64(fg_blu,&H00)
+          case &H04: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&HAA)
+          case &H05: poke64(fg_red,&HAA):poke64(fg_grn,&H00):poke64(fg_blu,&HAA)
+          case &H06: poke64(fg_red,&H00):poke64(fg_grn,&H55):poke64(fg_blu,&HAA)
+          case &H07: poke64(fg_red,&HAA):poke64(fg_grn,&HAA):poke64(fg_blu,&HAA)
+          case &H08: poke64(fg_red,&H55):poke64(fg_grn,&H55):poke64(fg_blu,&H55)
+          case &H09: poke64(fg_red,&HFF):poke64(fg_grn,&H55):poke64(fg_blu,&H55)
+          case &H0A: poke64(fg_red,&H55):poke64(fg_grn,&HFF):poke64(fg_blu,&H55)
+          case &H0B: poke64(fg_red,&HFF):poke64(fg_grn,&HFF):poke64(fg_blu,&H55)
+          case &H0C: poke64(fg_red,&H55):poke64(fg_grn,&H55):poke64(fg_blu,&HFF)
+          case &H0D: poke64(fg_red,&HFF):poke64(fg_grn,&H55):poke64(fg_blu,&HFF)
+          case &H0E: poke64(fg_red,&H55):poke64(fg_grn,&HFF):poke64(fg_blu,&HFF)
+          case &H0F: poke64(fg_red,&HFF):poke64(fg_grn,&HFF):poke64(fg_blu,&HFF)
+          case &H10: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &H11: poke64(fg_red,&H14):poke64(fg_grn,&H14):poke64(fg_blu,&H14)
+          case &H12: poke64(fg_red,&H20):poke64(fg_grn,&H20):poke64(fg_blu,&H20)
+          case &H13: poke64(fg_red,&H2D):poke64(fg_grn,&H2D):poke64(fg_blu,&H2D)
+          case &H14: poke64(fg_red,&H39):poke64(fg_grn,&H39):poke64(fg_blu,&H39)
+          case &H15: poke64(fg_red,&H45):poke64(fg_grn,&H45):poke64(fg_blu,&H45)
+          case &H16: poke64(fg_red,&H51):poke64(fg_grn,&H51):poke64(fg_blu,&H51)
+          case &H17: poke64(fg_red,&H61):poke64(fg_grn,&H61):poke64(fg_blu,&H61)
+          case &H18: poke64(fg_red,&H71):poke64(fg_grn,&H71):poke64(fg_blu,&H71)
+          case &H19: poke64(fg_red,&H82):poke64(fg_grn,&H82):poke64(fg_blu,&H82)
+          case &H1A: poke64(fg_red,&H92):poke64(fg_grn,&H92):poke64(fg_blu,&H92)
+          case &H1B: poke64(fg_red,&HA2):poke64(fg_grn,&HA2):poke64(fg_blu,&HA2)
+          case &H1C: poke64(fg_red,&HB6):poke64(fg_grn,&HB6):poke64(fg_blu,&HB6)
+          case &H1D: poke64(fg_red,&HCA):poke64(fg_grn,&HCA):poke64(fg_blu,&HCA)
+          case &H1E: poke64(fg_red,&HE3):poke64(fg_grn,&HE3):poke64(fg_blu,&HE3)
+          case &H1F: poke64(fg_red,&HFF):poke64(fg_grn,&HFF):poke64(fg_blu,&HFF)
+          case &H20: poke64(fg_red,&HFF):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &H21: poke64(fg_red,&HFF):poke64(fg_grn,&H00):poke64(fg_blu,&H41)
+          case &H22: poke64(fg_red,&HFF):poke64(fg_grn,&H00):poke64(fg_blu,&H7D)
+          case &H23: poke64(fg_red,&HFF):poke64(fg_grn,&H00):poke64(fg_blu,&HBE)
+          case &H24: poke64(fg_red,&HFF):poke64(fg_grn,&H00):poke64(fg_blu,&HFF)
+          case &H25: poke64(fg_red,&HBE):poke64(fg_grn,&H00):poke64(fg_blu,&HFF)
+          case &H26: poke64(fg_red,&H7D):poke64(fg_grn,&H00):poke64(fg_blu,&HFF)
+          case &H27: poke64(fg_red,&H41):poke64(fg_grn,&H00):poke64(fg_blu,&HFF)
+          case &H28: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&HFF)
+          case &H29: poke64(fg_red,&H00):poke64(fg_grn,&H41):poke64(fg_blu,&HFF)
+          case &H2A: poke64(fg_red,&H00):poke64(fg_grn,&H7D):poke64(fg_blu,&HFF)
+          case &H2B: poke64(fg_red,&H00):poke64(fg_grn,&HBE):poke64(fg_blu,&HFF)
+          case &H2C: poke64(fg_red,&H00):poke64(fg_grn,&HFF):poke64(fg_blu,&HFF)
+          case &H2D: poke64(fg_red,&H00):poke64(fg_grn,&HFF):poke64(fg_blu,&HBE)
+          case &H2E: poke64(fg_red,&H00):poke64(fg_grn,&HFF):poke64(fg_blu,&H7D)
+          case &H2F: poke64(fg_red,&H00):poke64(fg_grn,&HFF):poke64(fg_blu,&H41)
+          case &H30: poke64(fg_red,&H00):poke64(fg_grn,&HFF):poke64(fg_blu,&H00)
+          case &H31: poke64(fg_red,&H41):poke64(fg_grn,&HFF):poke64(fg_blu,&H00)
+          case &H32: poke64(fg_red,&H7D):poke64(fg_grn,&HFF):poke64(fg_blu,&H00)
+          case &H33: poke64(fg_red,&HBE):poke64(fg_grn,&HFF):poke64(fg_blu,&H00)
+          case &H34: poke64(fg_red,&HFF):poke64(fg_grn,&HFF):poke64(fg_blu,&H00)
+          case &H35: poke64(fg_red,&HFF):poke64(fg_grn,&HBE):poke64(fg_blu,&H00)
+          case &H36: poke64(fg_red,&HFF):poke64(fg_grn,&H7D):poke64(fg_blu,&H00)
+          case &H37: poke64(fg_red,&HFF):poke64(fg_grn,&H41):poke64(fg_blu,&H00)
+          case &H38: poke64(fg_red,&HFF):poke64(fg_grn,&H7D):poke64(fg_blu,&H7D)
+          case &H39: poke64(fg_red,&HFF):poke64(fg_grn,&H7D):poke64(fg_blu,&H9E)
+          case &H3A: poke64(fg_red,&HFF):poke64(fg_grn,&H7D):poke64(fg_blu,&HBE)
+          case &H3B: poke64(fg_red,&HFF):poke64(fg_grn,&H7D):poke64(fg_blu,&HDF)
+          case &H3C: poke64(fg_red,&HFF):poke64(fg_grn,&H7D):poke64(fg_blu,&HFF)
+          case &H3D: poke64(fg_red,&HDF):poke64(fg_grn,&H7D):poke64(fg_blu,&HFF)
+          case &H3E: poke64(fg_red,&HBE):poke64(fg_grn,&H7D):poke64(fg_blu,&HFF)
+          case &H3F: poke64(fg_red,&H9E):poke64(fg_grn,&H7D):poke64(fg_blu,&HFF)
+          case &H40: poke64(fg_red,&H7D):poke64(fg_grn,&H7D):poke64(fg_blu,&HFF)
+          case &H41: poke64(fg_red,&H7D):poke64(fg_grn,&H9E):poke64(fg_blu,&HFF)
+          case &H42: poke64(fg_red,&H7D):poke64(fg_grn,&HBE):poke64(fg_blu,&HFF)
+          case &H43: poke64(fg_red,&H7D):poke64(fg_grn,&HDF):poke64(fg_blu,&HFF)
+          case &H44: poke64(fg_red,&H7D):poke64(fg_grn,&HFF):poke64(fg_blu,&HFF)
+          case &H45: poke64(fg_red,&H7D):poke64(fg_grn,&HFF):poke64(fg_blu,&HDF)
+          case &H46: poke64(fg_red,&H7D):poke64(fg_grn,&HFF):poke64(fg_blu,&HBE)
+          case &H47: poke64(fg_red,&H7D):poke64(fg_grn,&HFF):poke64(fg_blu,&H9E)
+          case &H48: poke64(fg_red,&H7D):poke64(fg_grn,&HFF):poke64(fg_blu,&H7D)
+          case &H49: poke64(fg_red,&H9E):poke64(fg_grn,&HFF):poke64(fg_blu,&H7D)
+          case &H4A: poke64(fg_red,&HBE):poke64(fg_grn,&HFF):poke64(fg_blu,&H7D)
+          case &H4B: poke64(fg_red,&HDF):poke64(fg_grn,&HFF):poke64(fg_blu,&H7D)
+          case &H4C: poke64(fg_red,&HFF):poke64(fg_grn,&HFF):poke64(fg_blu,&H7D)
+          case &H4D: poke64(fg_red,&HFF):poke64(fg_grn,&HDF):poke64(fg_blu,&H7D)
+          case &H4E: poke64(fg_red,&HFF):poke64(fg_grn,&HBE):poke64(fg_blu,&H7D)
+          case &H4F: poke64(fg_red,&HFF):poke64(fg_grn,&H9E):poke64(fg_blu,&H7D)
+          case &H50: poke64(fg_red,&HFF):poke64(fg_grn,&HB6):poke64(fg_blu,&HB6)
+          case &H51: poke64(fg_red,&HFF):poke64(fg_grn,&HB6):poke64(fg_blu,&HC6)
+          case &H52: poke64(fg_red,&HFF):poke64(fg_grn,&HB6):poke64(fg_blu,&HDB)
+          case &H53: poke64(fg_red,&HFF):poke64(fg_grn,&HB6):poke64(fg_blu,&HEB)
+          case &H54: poke64(fg_red,&HFF):poke64(fg_grn,&HB6):poke64(fg_blu,&HFF)
+          case &H55: poke64(fg_red,&HEB):poke64(fg_grn,&HB6):poke64(fg_blu,&HFF)
+          case &H56: poke64(fg_red,&HDB):poke64(fg_grn,&HB6):poke64(fg_blu,&HFF)
+          case &H57: poke64(fg_red,&HC6):poke64(fg_grn,&HB6):poke64(fg_blu,&HFF)
+          case &H58: poke64(fg_red,&HB6):poke64(fg_grn,&HB6):poke64(fg_blu,&HFF)
+          case &H59: poke64(fg_red,&HB6):poke64(fg_grn,&HC6):poke64(fg_blu,&HFF)
+          case &H5A: poke64(fg_red,&HB6):poke64(fg_grn,&HDB):poke64(fg_blu,&HFF)
+          case &H5B: poke64(fg_red,&HB6):poke64(fg_grn,&HEB):poke64(fg_blu,&HFF)
+          case &H5C: poke64(fg_red,&HB6):poke64(fg_grn,&HFF):poke64(fg_blu,&HFF)
+          case &H5D: poke64(fg_red,&HB6):poke64(fg_grn,&HFF):poke64(fg_blu,&HEB)
+          case &H5E: poke64(fg_red,&HB6):poke64(fg_grn,&HFF):poke64(fg_blu,&HDB)
+          case &H5F: poke64(fg_red,&HB6):poke64(fg_grn,&HFF):poke64(fg_blu,&HC6)
+          case &H60: poke64(fg_red,&HB6):poke64(fg_grn,&HFF):poke64(fg_blu,&HB6)
+          case &H61: poke64(fg_red,&HC6):poke64(fg_grn,&HFF):poke64(fg_blu,&HB6)
+          case &H62: poke64(fg_red,&HDB):poke64(fg_grn,&HFF):poke64(fg_blu,&HB6)
+          case &H63: poke64(fg_red,&HEB):poke64(fg_grn,&HFF):poke64(fg_blu,&HB6)
+          case &H64: poke64(fg_red,&HFF):poke64(fg_grn,&HFF):poke64(fg_blu,&HB6)
+          case &H65: poke64(fg_red,&HFF):poke64(fg_grn,&HEB):poke64(fg_blu,&HB6)
+          case &H66: poke64(fg_red,&HFF):poke64(fg_grn,&HDB):poke64(fg_blu,&HB6)
+          case &H67: poke64(fg_red,&HFF):poke64(fg_grn,&HC6):poke64(fg_blu,&HB6)
+          case &H68: poke64(fg_red,&H71):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &H69: poke64(fg_red,&H71):poke64(fg_grn,&H00):poke64(fg_blu,&H1C)
+          case &H6A: poke64(fg_red,&H71):poke64(fg_grn,&H00):poke64(fg_blu,&H39)
+          case &H6B: poke64(fg_red,&H71):poke64(fg_grn,&H00):poke64(fg_blu,&H55)
+          case &H6C: poke64(fg_red,&H71):poke64(fg_grn,&H00):poke64(fg_blu,&H71)
+          case &H6D: poke64(fg_red,&H55):poke64(fg_grn,&H00):poke64(fg_blu,&H71)
+          case &H6E: poke64(fg_red,&H39):poke64(fg_grn,&H00):poke64(fg_blu,&H71)
+          case &H6F: poke64(fg_red,&H1C):poke64(fg_grn,&H00):poke64(fg_blu,&H71)
+          case &H70: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H71)
+          case &H71: poke64(fg_red,&H00):poke64(fg_grn,&H1C):poke64(fg_blu,&H71)
+          case &H72: poke64(fg_red,&H00):poke64(fg_grn,&H39):poke64(fg_blu,&H71)
+          case &H73: poke64(fg_red,&H00):poke64(fg_grn,&H55):poke64(fg_blu,&H71)
+          case &H74: poke64(fg_red,&H00):poke64(fg_grn,&H71):poke64(fg_blu,&H71)
+          case &H75: poke64(fg_red,&H00):poke64(fg_grn,&H71):poke64(fg_blu,&H55)
+          case &H76: poke64(fg_red,&H00):poke64(fg_grn,&H71):poke64(fg_blu,&H39)
+          case &H77: poke64(fg_red,&H00):poke64(fg_grn,&H71):poke64(fg_blu,&H1C)
+          case &H78: poke64(fg_red,&H00):poke64(fg_grn,&H71):poke64(fg_blu,&H00)
+          case &H79: poke64(fg_red,&H1C):poke64(fg_grn,&H71):poke64(fg_blu,&H00)
+          case &H7A: poke64(fg_red,&H39):poke64(fg_grn,&H71):poke64(fg_blu,&H00)
+          case &H7B: poke64(fg_red,&H55):poke64(fg_grn,&H71):poke64(fg_blu,&H00)
+          case &H7C: poke64(fg_red,&H71):poke64(fg_grn,&H71):poke64(fg_blu,&H00)
+          case &H7D: poke64(fg_red,&H71):poke64(fg_grn,&H55):poke64(fg_blu,&H00)
+          case &H7E: poke64(fg_red,&H71):poke64(fg_grn,&H39):poke64(fg_blu,&H00)
+          case &H7F: poke64(fg_red,&H71):poke64(fg_grn,&H1C):poke64(fg_blu,&H00)
+          case &H80: poke64(fg_red,&H71):poke64(fg_grn,&H39):poke64(fg_blu,&H39)
+          case &H81: poke64(fg_red,&H71):poke64(fg_grn,&H39):poke64(fg_blu,&H45)
+          case &H82: poke64(fg_red,&H71):poke64(fg_grn,&H39):poke64(fg_blu,&H55)
+          case &H83: poke64(fg_red,&H71):poke64(fg_grn,&H39):poke64(fg_blu,&H61)
+          case &H84: poke64(fg_red,&H71):poke64(fg_grn,&H39):poke64(fg_blu,&H71)
+          case &H85: poke64(fg_red,&H61):poke64(fg_grn,&H39):poke64(fg_blu,&H71)
+          case &H86: poke64(fg_red,&H55):poke64(fg_grn,&H39):poke64(fg_blu,&H71)
+          case &H87: poke64(fg_red,&H45):poke64(fg_grn,&H39):poke64(fg_blu,&H71)
+          case &H88: poke64(fg_red,&H39):poke64(fg_grn,&H39):poke64(fg_blu,&H71)
+          case &H89: poke64(fg_red,&H39):poke64(fg_grn,&H45):poke64(fg_blu,&H71)
+          case &H8A: poke64(fg_red,&H39):poke64(fg_grn,&H55):poke64(fg_blu,&H71)
+          case &H8B: poke64(fg_red,&H39):poke64(fg_grn,&H61):poke64(fg_blu,&H71)
+          case &H8C: poke64(fg_red,&H39):poke64(fg_grn,&H71):poke64(fg_blu,&H71)
+          case &H8D: poke64(fg_red,&H39):poke64(fg_grn,&H71):poke64(fg_blu,&H61)
+          case &H8E: poke64(fg_red,&H39):poke64(fg_grn,&H71):poke64(fg_blu,&H55)
+          case &H8F: poke64(fg_red,&H39):poke64(fg_grn,&H71):poke64(fg_blu,&H45)
+          case &H90: poke64(fg_red,&H39):poke64(fg_grn,&H71):poke64(fg_blu,&H39)
+          case &H91: poke64(fg_red,&H45):poke64(fg_grn,&H71):poke64(fg_blu,&H39)
+          case &H92: poke64(fg_red,&H55):poke64(fg_grn,&H71):poke64(fg_blu,&H39)
+          case &H93: poke64(fg_red,&H61):poke64(fg_grn,&H71):poke64(fg_blu,&H39)
+          case &H94: poke64(fg_red,&H71):poke64(fg_grn,&H71):poke64(fg_blu,&H39)
+          case &H95: poke64(fg_red,&H71):poke64(fg_grn,&H61):poke64(fg_blu,&H39)
+          case &H96: poke64(fg_red,&H71):poke64(fg_grn,&H55):poke64(fg_blu,&H39)
+          case &H97: poke64(fg_red,&H71):poke64(fg_grn,&H45):poke64(fg_blu,&H39)
+          case &H98: poke64(fg_red,&H71):poke64(fg_grn,&H51):poke64(fg_blu,&H51)
+          case &H99: poke64(fg_red,&H71):poke64(fg_grn,&H51):poke64(fg_blu,&H59)
+          case &H9A: poke64(fg_red,&H71):poke64(fg_grn,&H51):poke64(fg_blu,&H61)
+          case &H9B: poke64(fg_red,&H71):poke64(fg_grn,&H51):poke64(fg_blu,&H69)
+          case &H9C: poke64(fg_red,&H71):poke64(fg_grn,&H51):poke64(fg_blu,&H71)
+          case &H9D: poke64(fg_red,&H69):poke64(fg_grn,&H51):poke64(fg_blu,&H71)
+          case &H9E: poke64(fg_red,&H61):poke64(fg_grn,&H51):poke64(fg_blu,&H71)
+          case &H9F: poke64(fg_red,&H59):poke64(fg_grn,&H51):poke64(fg_blu,&H71)
+          case &HA0: poke64(fg_red,&H51):poke64(fg_grn,&H51):poke64(fg_blu,&H71)
+          case &HA1: poke64(fg_red,&H51):poke64(fg_grn,&H59):poke64(fg_blu,&H71)
+          case &HA2: poke64(fg_red,&H51):poke64(fg_grn,&H61):poke64(fg_blu,&H71)
+          case &HA3: poke64(fg_red,&H51):poke64(fg_grn,&H69):poke64(fg_blu,&H71)
+          case &HA4: poke64(fg_red,&H51):poke64(fg_grn,&H71):poke64(fg_blu,&H71)
+          case &HA5: poke64(fg_red,&H51):poke64(fg_grn,&H71):poke64(fg_blu,&H69)
+          case &HA6: poke64(fg_red,&H51):poke64(fg_grn,&H71):poke64(fg_blu,&H61)
+          case &HA7: poke64(fg_red,&H51):poke64(fg_grn,&H71):poke64(fg_blu,&H59)
+          case &HA8: poke64(fg_red,&H51):poke64(fg_grn,&H71):poke64(fg_blu,&H51)
+          case &HA9: poke64(fg_red,&H59):poke64(fg_grn,&H71):poke64(fg_blu,&H51)
+          case &HAA: poke64(fg_red,&H61):poke64(fg_grn,&H71):poke64(fg_blu,&H51)
+          case &HAB: poke64(fg_red,&H69):poke64(fg_grn,&H71):poke64(fg_blu,&H51)
+          case &HAC: poke64(fg_red,&H71):poke64(fg_grn,&H71):poke64(fg_blu,&H51)
+          case &HAD: poke64(fg_red,&H71):poke64(fg_grn,&H69):poke64(fg_blu,&H51)
+          case &HAE: poke64(fg_red,&H71):poke64(fg_grn,&H61):poke64(fg_blu,&H51)
+          case &HAF: poke64(fg_red,&H71):poke64(fg_grn,&H59):poke64(fg_blu,&H51)
+          case &HB0: poke64(fg_red,&H41):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HB1: poke64(fg_red,&H41):poke64(fg_grn,&H00):poke64(fg_blu,&H10)
+          case &HB2: poke64(fg_red,&H41):poke64(fg_grn,&H00):poke64(fg_blu,&H20)
+          case &HB3: poke64(fg_red,&H41):poke64(fg_grn,&H00):poke64(fg_blu,&H31)
+          case &HB4: poke64(fg_red,&H41):poke64(fg_grn,&H00):poke64(fg_blu,&H41)
+          case &HB5: poke64(fg_red,&H31):poke64(fg_grn,&H00):poke64(fg_blu,&H41)
+          case &HB6: poke64(fg_red,&H20):poke64(fg_grn,&H00):poke64(fg_blu,&H41)
+          case &HB7: poke64(fg_red,&H10):poke64(fg_grn,&H00):poke64(fg_blu,&H41)
+          case &HB8: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H41)
+          case &HB9: poke64(fg_red,&H00):poke64(fg_grn,&H10):poke64(fg_blu,&H41)
+          case &HBA: poke64(fg_red,&H00):poke64(fg_grn,&H20):poke64(fg_blu,&H41)
+          case &HBB: poke64(fg_red,&H00):poke64(fg_grn,&H31):poke64(fg_blu,&H41)
+          case &HBC: poke64(fg_red,&H00):poke64(fg_grn,&H41):poke64(fg_blu,&H41)
+          case &HBD: poke64(fg_red,&H00):poke64(fg_grn,&H41):poke64(fg_blu,&H31)
+          case &HBE: poke64(fg_red,&H00):poke64(fg_grn,&H41):poke64(fg_blu,&H20)
+          case &HBF: poke64(fg_red,&H00):poke64(fg_grn,&H41):poke64(fg_blu,&H10)
+          case &HC0: poke64(fg_red,&H00):poke64(fg_grn,&H41):poke64(fg_blu,&H00)
+          case &HC1: poke64(fg_red,&H10):poke64(fg_grn,&H41):poke64(fg_blu,&H00)
+          case &HC2: poke64(fg_red,&H20):poke64(fg_grn,&H41):poke64(fg_blu,&H00)
+          case &HC3: poke64(fg_red,&H31):poke64(fg_grn,&H41):poke64(fg_blu,&H00)
+          case &HC4: poke64(fg_red,&H41):poke64(fg_grn,&H41):poke64(fg_blu,&H00)
+          case &HC5: poke64(fg_red,&H41):poke64(fg_grn,&H31):poke64(fg_blu,&H00)
+          case &HC6: poke64(fg_red,&H41):poke64(fg_grn,&H20):poke64(fg_blu,&H00)
+          case &HC7: poke64(fg_red,&H41):poke64(fg_grn,&H10):poke64(fg_blu,&H00)
+          case &HC8: poke64(fg_red,&H41):poke64(fg_grn,&H20):poke64(fg_blu,&H20)
+          case &HC9: poke64(fg_red,&H41):poke64(fg_grn,&H20):poke64(fg_blu,&H28)
+          case &HCA: poke64(fg_red,&H41):poke64(fg_grn,&H20):poke64(fg_blu,&H31)
+          case &HCB: poke64(fg_red,&H41):poke64(fg_grn,&H20):poke64(fg_blu,&H39)
+          case &HCC: poke64(fg_red,&H41):poke64(fg_grn,&H20):poke64(fg_blu,&H41)
+          case &HCD: poke64(fg_red,&H39):poke64(fg_grn,&H20):poke64(fg_blu,&H41)
+          case &HCE: poke64(fg_red,&H31):poke64(fg_grn,&H20):poke64(fg_blu,&H41)
+          case &HCF: poke64(fg_red,&H28):poke64(fg_grn,&H20):poke64(fg_blu,&H41)
+          case &HD0: poke64(fg_red,&H20):poke64(fg_grn,&H20):poke64(fg_blu,&H41)
+          case &HD1: poke64(fg_red,&H20):poke64(fg_grn,&H28):poke64(fg_blu,&H41)
+          case &HD2: poke64(fg_red,&H20):poke64(fg_grn,&H31):poke64(fg_blu,&H41)
+          case &HD3: poke64(fg_red,&H20):poke64(fg_grn,&H39):poke64(fg_blu,&H41)
+          case &HD4: poke64(fg_red,&H20):poke64(fg_grn,&H41):poke64(fg_blu,&H41)
+          case &HD5: poke64(fg_red,&H20):poke64(fg_grn,&H41):poke64(fg_blu,&H39)
+          case &HD6: poke64(fg_red,&H20):poke64(fg_grn,&H41):poke64(fg_blu,&H31)
+          case &HD7: poke64(fg_red,&H20):poke64(fg_grn,&H41):poke64(fg_blu,&H28)
+          case &HD8: poke64(fg_red,&H20):poke64(fg_grn,&H41):poke64(fg_blu,&H20)
+          case &HD9: poke64(fg_red,&H28):poke64(fg_grn,&H41):poke64(fg_blu,&H20)
+          case &HDA: poke64(fg_red,&H31):poke64(fg_grn,&H41):poke64(fg_blu,&H20)
+          case &HDB: poke64(fg_red,&H39):poke64(fg_grn,&H41):poke64(fg_blu,&H20)
+          case &HDC: poke64(fg_red,&H41):poke64(fg_grn,&H41):poke64(fg_blu,&H20)
+          case &HDD: poke64(fg_red,&H41):poke64(fg_grn,&H39):poke64(fg_blu,&H20)
+          case &HDE: poke64(fg_red,&H41):poke64(fg_grn,&H31):poke64(fg_blu,&H20)
+          case &HDF: poke64(fg_red,&H41):poke64(fg_grn,&H28):poke64(fg_blu,&H20)
+          case &HE0: poke64(fg_red,&H41):poke64(fg_grn,&H2D):poke64(fg_blu,&H2D)
+          case &HE1: poke64(fg_red,&H41):poke64(fg_grn,&H2D):poke64(fg_blu,&H31)
+          case &HE2: poke64(fg_red,&H41):poke64(fg_grn,&H2D):poke64(fg_blu,&H35)
+          case &HE3: poke64(fg_red,&H41):poke64(fg_grn,&H2D):poke64(fg_blu,&H3D)
+          case &HE4: poke64(fg_red,&H41):poke64(fg_grn,&H2D):poke64(fg_blu,&H41)
+          case &HE5: poke64(fg_red,&H3D):poke64(fg_grn,&H2D):poke64(fg_blu,&H41)
+          case &HE6: poke64(fg_red,&H35):poke64(fg_grn,&H2D):poke64(fg_blu,&H41)
+          case &HE7: poke64(fg_red,&H31):poke64(fg_grn,&H2D):poke64(fg_blu,&H41)
+          case &HE8: poke64(fg_red,&H2D):poke64(fg_grn,&H2D):poke64(fg_blu,&H41)
+          case &HE9: poke64(fg_red,&H2D):poke64(fg_grn,&H31):poke64(fg_blu,&H41)
+          case &HEA: poke64(fg_red,&H2D):poke64(fg_grn,&H35):poke64(fg_blu,&H41)
+          case &HEB: poke64(fg_red,&H2D):poke64(fg_grn,&H3D):poke64(fg_blu,&H41)
+          case &HEC: poke64(fg_red,&H2D):poke64(fg_grn,&H41):poke64(fg_blu,&H41)
+          case &HED: poke64(fg_red,&H2D):poke64(fg_grn,&H41):poke64(fg_blu,&H3D)
+          case &HEE: poke64(fg_red,&H2D):poke64(fg_grn,&H41):poke64(fg_blu,&H35)
+          case &HEF: poke64(fg_red,&H2D):poke64(fg_grn,&H41):poke64(fg_blu,&H31)
+          case &HF0: poke64(fg_red,&H2D):poke64(fg_grn,&H41):poke64(fg_blu,&H2D)
+          case &HF1: poke64(fg_red,&H31):poke64(fg_grn,&H41):poke64(fg_blu,&H2D)
+          case &HF2: poke64(fg_red,&H35):poke64(fg_grn,&H41):poke64(fg_blu,&H2D)
+          case &HF3: poke64(fg_red,&H3D):poke64(fg_grn,&H41):poke64(fg_blu,&H2D)
+          case &HF4: poke64(fg_red,&H41):poke64(fg_grn,&H41):poke64(fg_blu,&H2D)
+          case &HF5: poke64(fg_red,&H41):poke64(fg_grn,&H3D):poke64(fg_blu,&H2D)
+          case &HF6: poke64(fg_red,&H41):poke64(fg_grn,&H35):poke64(fg_blu,&H2D)
+          case &HF7: poke64(fg_red,&H41):poke64(fg_grn,&H31):poke64(fg_blu,&H2D)
+          case &HF8: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HF9: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HFA: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HFB: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HFC: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HFD: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HFE: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+          case &HFF: poke64(fg_red,&H00):poke64(fg_grn,&H00):poke64(fg_blu,&H00)
+   end select
   elseif mov(adr, 55487d) then  poke64(646d,v)	
   end if
   select case adr
@@ -965,7 +1594,7 @@ sub MEMORY_T.poke64(byval adr as double,byval v as double)
 	 mem64(sys_offset+&HE4) = mem64(sys_offset+&HA1) shl 32d + mem64(sys_offset+&HA2) shl 24d +_
 							  mem64(sys_offset+&HA3) shl 16d + mem64(sys_offset+&HA4) shl 08d +_
 							  mem64(sys_offset+&HA5)
-    #include once "graph3d.bas"
+     #include once "graph3d.bas"
 	case sys_offset+&HA2 
      #include once "mainImage.bas"
     case sys_offset+&HA3
@@ -993,26 +1622,26 @@ sub MEMORY_T.poke64(byval adr as double,byval v as double)
     ' sys_offset+&HE8 font offset
     ' sys_offset+&HE9 font width
     ' sys_offset+&HEA font height
-    case sys_offset+&HEB,sys_offset+&HEC ' Amiga style Hold-and-Modify - foreground and boarder color
-     select case as const cast(ulongint, v)
-		case &B000000d to &B001111d:poke64(646d,v mod 255d)
-		case &B010000d to &B011111d:poke64(fg_red,(((v - &B010000d) mod 16d) * 17d) mod 255d)
-		case &B100000d to &B101111d:poke64(fg_blu,(((v - &B100000d) mod 16d) * 17d) mod 255d)
-		case &B110000d to &B111111d:poke64(fg_grn,(((v - &B110000d) mod 16d) * 17d) mod 255d)
-     	case else: poke64(fg_aph,(((v - &B1000000d) mod 16d) * 17d) mod 255d)				  
+ case sys_offset+&HEC,sys_offset+&HEC ' Amiga style Hold-and-Modify - foreground and boarder color
+     select case v
+		case &B000000 to &B001111:poke64(646,v mod 255)
+		case &B010000 to &B011111:poke64(fg_red,(((v - &B010000) mod 16) * 17) mod 255)
+		case &B100000 to &B101111:poke64(fg_grn,(((v - &B100000) mod 16) * 17) mod 255)
+		case &B110000 to &B111111:poke64(fg_blu,(((v - &B110000) mod 16) * 17) mod 255)
+     	case else: poke64(fg_aph,(((v - &B1000000) mod 16) * 17) mod 255)				  
      end select
      if adr=sys_offset+&HEC then 
-        poke64(53280,peek64(sys_offset+&HC9))
-        poke64(53281,peek64(sys_offset+&HC9))
-     end if       
+        poke64(53280,peek64(fg_color))
+        poke64(53281,peek64(fg_color))
+     end if     
     case sys_offset+&HED ' Amiga style Hold-and-Modify - background
-     select case as const cast(ulongint, v)
-		case &B000000d to &B001111d:poke64(53281d,v mod 255d)
-		case &B010000d to &B011111d:poke64(bg_red,(((v - &B010000d) mod 16d) * 17d) mod 255d)
-		case &B100000d to &B101111d:poke64(bg_blu,(((v - &B100000d) mod 16d) * 17d) mod 255d)
-		case &B110000d to &B111111d:poke64(bg_grn,(((v - &B110000d) mod 16d) * 17d) mod 255d)
-     	case else: poke64(bg_aph,(((v - &B1000000d) mod 16d) * 17d) mod 255d)					  
-     end select    
+     select case v
+		case &B000000 to &B001111:poke64(53281,v mod 255)
+		case &B010000 to &B011111:poke64(bg_red,(((v - &B010000) mod 16) * 17) mod 255)
+		case &B100000 to &B101111:poke64(bg_grn,(((v - &B100000) mod 16) * 17) mod 255)
+		case &B110000 to &B111111:poke64(bg_blu,(((v - &B110000) mod 16) * 17) mod 255)
+     	case else: poke64(bg_aph,(((v - &B1000000) mod 16) * 17) mod 255)					  
+     end select      
     case sys_offset+&HEE ' Amiga style Hold-and-Modify - Draw foreground
           line fgimage,(mem64(x0),mem64(y0))-(mem64(x1),mem64(y1)),mem64(fg_color), BF       
     case sys_offset+&HEF ' Amiga style Hold-and-Modify - Draw background
@@ -1043,6 +1672,10 @@ sub MEMORY_T.poke64(byval adr as double,byval v as double)
      ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
      'for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset            
+#elseif defined(__FB_DOS__)
+     screen 0: shell "command.com": strCode = ""
+     ScreenRes 800,600, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+     paint(0,0), rgba(0, 0, 0, 255)     
 #endif
     case sys_offset+&HF3
      open strCode+".asm" for output as #1
@@ -1063,7 +1696,6 @@ sub MEMORY_T.poke64(byval adr as double,byval v as double)
      shell "rm " + strCode: strCode = ""
      ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls     
 #elseif defined(__FB_DOS__)
-     shell strCode+".com"
      shell strCode+".com": strCode = ""
      ScreenRes 800,600, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
 #endif    
@@ -1089,7 +1721,7 @@ sub MEMORY_T.poke64(byval adr as double,byval v as double)
 	case sys_offset+&HFF
 	 'locate 1,1: print filename: sleep 1
 	 poke64(sys_offset+&HA1,&H0): filename=""   			  		
-    case in_range(mem64(scr_ptr),mem64(scr_ptr) add 1023d)
+    case in range(mem64(scr_ptr),mem64(scr_ptr) add 1023d)
      #include "font.bas"
       /'
       dim as integer xs=adr mod 40:xs shl =3:xs+=8*4
@@ -1100,44 +1732,44 @@ sub MEMORY_T.poke64(byval adr as double,byval v as double)
       end select '/
   case 57344d to 65535d,40960d to 49151d,55296d to 56319d:mem64(adr)=v              
   end select
-end sub
+end def
 
-function MEMORY_T.ReadUByte(byval adr as double) as ubyte
+proc MEMORY_T.ReadUByte(byval adr as double) as ubyte
   return Peek64(adr)
-end function
+end proc
 
-function MEMORY_T.ReadByte(byval adr as double) as byte
+proc MEMORY_T.ReadByte(byval adr as double) as byte
   return Peek64(adr)
-end function
+end proc
 
-function MEMORY_T.ReadUShort(byval adr as double) as ushort
+proc MEMORY_T.ReadUShort(byval adr as double) as ushort
   return Peek64(adr) or Peek64(adr+1d) shl 8d
-end function
+end proc
 
-sub MEMORY_T.WriteByte(byval adr as double,byval b8 as double)
+def MEMORY_T.WriteByte(byval adr as double,byval b8 as double)
   poke64(adr,b8)
-end sub
+end def
 
-sub MEMORY_T.WriteUByte(byval adr as double,byval b8 as double)
+def MEMORY_T.WriteUByte(byval adr as double,byval b8 as double)
   poke64(adr,b8)
-end sub
+end def
 
-sub MEMORY_T.WriteUShort(byval adr as double,byval w16 as double)
+def MEMORY_T.WriteUShort(byval adr as double,byval w16 as double)
   poke64(adr,LOBYTE(w16)):poke64(adr+1,HIBYTE(w16))
-end sub
+end def
 
 constructor CPU6510(byval lpMem as MEMORY_T ptr)
   dprint("CPU6510()")
-  mem=lpMem
+  mem=lpMem: var i=0
   restore INSTRUCTION_SET
   'opcode,name,adrmode,ticks,operand,decoder
-  for i as integer=0d to 255d
+  for i=0d to 255d
     with Opcodes(i)
       read .code,.nam,.adrmode,.bytes,.ticks,cast(integer,.decode)
     end with
   next
   restore ADDRESS_MODES
-  for i as integer=0d to 12d
+  for i=0d to 12d
     read StrAdrModes(i)
   next
   ' direction and data port
@@ -1155,47 +1787,46 @@ destructor CPU6510
   dprint("CPU6510~")
 end destructor
 
-operator CPU6510.CAST as string
-  return "PC:" & hex(PC,4d) & _
-  " A:" & hex(A ,2d) & _
-  " X:" & hex(X ,2d) & _
-  " Y:" & hex(Y ,2d) & _
-  " S:" & hex(S ,2d) & _
-  " N:" & F.N & _
-  " V:" & F.V & _
-  " -"  & _
-  " B:" & F.B & _
-  " D:" & F.D & _
-  " I:" & F.I & _
-  " Z:" & F.Z & _
-  " C:" & F.C
-end operator
+opr CPU6510.CAST as string
+  mov(opr,  "PC:" & hex(PC,4d) & _
+            " A:" & hex(A ,2d) & _
+            " X:" & hex(X ,2d) & _
+            " Y:" & hex(Y ,2d) & _
+            " S:" & hex(S ,2d) & _
+            " N:" & F.N & _
+            " V:" & F.V & _
+            " -"  & _
+            " B:" & F.B & _
+            " D:" & F.D & _
+            " I:" & F.I & _
+            " Z:" & F.Z & _
+            " C:" & F.C)
+end opr
 
-function CPU6510.Tick(byval flg as double) as double
-  static as integer Ticks
-  dim as string msg
+proc CPU6510.Tick(byval flg as double) as double
+  var mov(Ticks,0),mov(msg,chr(0))
   dim as MULTI v
   ' get next opcode from current programm counter
-  code=opcodes(mem->readubyte(PC))
+  mov(code,opcodes(mem->readubyte(PC)))
 
   ' clear union
-  code.op.u16=0d
-  Ticks+=1
+  mov(code.op.ufpu64,0d)
+  mov(Ticks add,1d)
 
   #ifdef _DEBUG
-  if flg=Ticks then
+  if mov(flg,Ticks) then
     dprint("tick: flag=1")
-    msg   = Ticks & chr(13d,10d)
-    msg & =  "A:" & hex(A,2d) & _
-    " X:" & hex(X,2d) & _
-    " Y:" & hex(Y,2d) & _
-    " S:" & hex(S,2d) & _
-    " P:" & bin(P,8d) & chr(13d,10d)
-    msg & = HEX(pc,4d) & " " & hex(code.code,2d) & " " & code.nam & " " & stradrmodes(code.adrmode)
+    mov(msg,Ticks & chr(13d,10d))
+    mov(msg &,   " A:" & hex(A,2d) & _
+                 " X:" & hex(X,2d) & _
+                 " Y:" & hex(Y,2d) & _
+                 " S:" & hex(S,2d) & _
+                 " P:" & bin(P,8d) & chr(13d,10d))
+    mov(msg &, HEX(pc,4d) & " " & hex(code.code,2d) & " " & code.nam & " " & stradrmodes(code.adrmode))
   end if
   #endif
 
-  PC+=1d ' increment the programm counter
+  mov(PC add,1d) ' increment the programm counter
   select case as const code.adrmode
     case _UNK
       #ifdef _DEBUG
@@ -1285,159 +1916,159 @@ function CPU6510.Tick(byval flg as double) as double
       code.decode(@this)
     case _REL
       #ifdef _DEBUG
-      if flg=Ticks then
-        v.u16 =pc
-        v.s16+=mem->ReadByte(pc)+1d
+      if mov(flg,Ticks) then
+        mov(v.u16,pc)
+        mov(v.s16 add,mem->ReadByte(pc) add 1d)
         dprint(msg & " $" & hex(v.u16,4d) & chr(13d,10d))
         sleep
       endif
       #endif
-      code.op.u16=ADR_REL()
+      mov(code.op.u16,ADR_REL())
       code.decode(@this)
     case _INDX
       #ifdef _DEBUG
-      if flg=Ticks then
-        v.u16=mem->ReadUShort(pc)
+      if mov(flg,Ticks) then
+        mov(v.u16,mem->ReadUShort(pc))
         dprint(msg & " ($" & hex(v.u16,4d) & ",X)" & chr(13d,10d))
         sleep
       endif
       #endif
-      code.op.u16=ADR_INDX()
+      mov(code.op.u16,ADR_INDX())
       code.decode(@this)
     case _INDY
       #ifdef _DEBUG
-      if flg=Ticks then
-        v.ulo=mem->ReadUByte(pc)
+      if mov(flg,Ticks) then
+        mov(v.ulo,mem->ReadUByte(pc))
         dprint(msg & " ($" & hex(v.ulo,4d) & "),Y" & chr(13d,10d))
         sleep
       endif
       #endif
-      code.op.u16=ADR_INDY()
+      mov(code.op.u16,ADR_INDY())
       code.decode(@this)
     case _IND
       #ifdef _DEBUG
-      if flg=Ticks then
-        v.u16=mem->ReadUShort(pc)
+      if mov(flg,Ticks) then
+        mov(v.u16,mem->ReadUShort(pc))
         dprint(msg & " ($" & hex(v.u16,4d) & ")" & chr(13d,10d))
         sleep
       endif
       #endif
-      code.op.u16=ADR_IND()
+      mov(code.op.u16,ADR_IND())
       code.decode(@this)
   end select
-  return 0d
-end function
+  mov(proc,0d)
+end proc
 '
 ' 6510 address modes
 '
-function CPU6510.ADR_UNK as double
+proc CPU6510.ADR_UNK as double
   #ifdef _DEBUG
   dprint("! adr unknow !")
   beep:sleep:end
   #endif
   sleep:return 0d
-end function
+end proc
 
-function CPU6510.ADR_IMM as double ' 1 byte #$xx
+proc CPU6510.ADR_IMM as double ' 1 byte #$xx
   ' mem(pc)
-  function = PC
-  PC+=1d
-end function
+  mov(proc, PC)
+  mov(PC add, 1d)
+end proc
 
-function CPU6510.ADR_REL as double  ' 1 byte (rel. branch -128 - +127)
-  function=PC
-  PC+=1d
-end function
+proc CPU6510.ADR_REL as double  ' 1 byte (rel. branch -128 - +127)
+  mov(proc,PC)
+  mov(PC add,1d)
+end proc
 
-function CPU6510.ADR_ABS as double  ' 2 byte $xx:xx
+proc CPU6510.ADR_ABS as double  ' 2 byte $xx:xx
   ' adr = mem(pc) + mem(pc+1)*256
-  function = mem->ReadUShort(pc)
-  pc+=2d
-end function
+  mov(proc,mem->ReadUShort(pc))
+  mov(pc add,2d)
+end proc
 
-function CPU6510.ADR_ZERO as double ' 1 byte $00:xx
+proc CPU6510.ADR_ZERO as double ' 1 byte $00:xx
   ' adr = mem(pc) and 255
-  function = mem->ReadUByte(pc) and 255d
-  pc+=1d
-end function
+  mov(proc,logic_and(mem->ReadUByte(pc),255d))
+  mov(pc add,1d)
+end proc
 
-function CPU6510.ADR_ZEROX as double' 1 byte 00:xx,x
+proc CPU6510.ADR_ZEROX as double' 1 byte 00:xx,x
   ' adr = (mem(pc)+x) and 255
-  function = (mem->ReadUByte(pc)+x) and 255d
-  pc+=1d
-end function
+  mov(proc,logic_and((mem->ReadUByte(pc) add x),255d))
+  mov(pc add,1d)
+end proc
 
-function CPU6510.ADR_ZEROY as double' 1 byte 00:xx,y
+proc CPU6510.ADR_ZEROY as double' 1 byte 00:xx,y
   ' adr = (mem(pc)+y) and 255
-  function = (mem->ReadUByte(pc)+y) and 255d
-  pc+=1d
-end function
+  mov(proc,logic_and((mem->ReadUByte(pc) add y), 255d))
+  mov(pc add,1d)
+end proc
 
-function CPU6510.ADR_ABSX as double ' 2 byte $xx:xx,x
+proc CPU6510.ADR_ABSX as double ' 2 byte $xx:xx,x
   ' adr = mem(pc ) + mem(pc+1)*256 + x
-  function  = mem->ReadUShort(PC) + X
-  PC+=2d
-end function
+  mov(proc,mem->ReadUShort(PC) add X)
+  mov(PC add,2d)
+end proc
 
-function CPU6510.ADR_ABSY as double ' 2 byte $xx:xx,y
+proc CPU6510.ADR_ABSY as double ' 2 byte $xx:xx,y
   ' adr = mem(pc ) + mem(pc+1)*256 + y
-  function = mem->ReadUShort(PC) + Y
-  PC+=2d
-end function
+  mov(proc,mem->ReadUShort(PC) add Y)
+  mov(PC add,2d)
+end proc
 
-function CPU6510.ADR_INDX as double ' 1 byte ($XX,x)
+proc CPU6510.ADR_INDX as double ' 1 byte ($XX,x)
   ' adr =(mem(pc )+x) and 255
   ' adr = mem(adr) + mem(adr+1)*256
   dim as MULTI v
-  v.u16=(mem->ReadUByte(pc)+x) and 255d
-  v.u16=mem->ReadUShort(v.u16)
-  pc+=1d
-  return v.u16
-end function
+  mov(v.u16,logic_and((mem->ReadUByte(pc) add x), 255d))
+  mov(v.u16,mem->ReadUShort(v.u16))
+  mov(pc add,1d)
+  mov(proc,v.u16)
+end proc
 
-function CPU6510.ADR_INDY as double ' 1 byte ($XX),y
+proc CPU6510.ADR_INDY as double ' 1 byte ($XX),y
   ' v.ulo=mem->ReadUByte(pc)
   ' adr = mem(pc ) + mem(pc +1)*256 + y
   dim as MULTI v
-  v.u16=mem->ReadUshort(mem->ReadUByte(PC))
-  v.u16+=y
-function = v.u16
-    pc+=1d
-end function
+  mov(v.u16,mem->ReadUshort(mem->ReadUByte(PC)))
+  mov(v.u16 add,y)
+  mov(proc,v.u16)
+  mov(pc add,1d)
+end proc
 
-function CPU6510.ADR_IND as double ' 2 byte ($xx:xx)
+proc CPU6510.ADR_IND as double ' 2 byte ($xx:xx)
   ' adr = mem(pc ) + mem(pc +1)*256
   ' pc  = mem(adr) + mem(adr+1)*256
   dim as MULTI v
-  v.u16=mem->ReadUShort(pc)
-  v.u16=mem->ReadUShort(v.u16)
-  pc+=2d
-  return v.u16
-end function
+  mov(v.u16,mem->ReadUShort(pc))
+  mov(v.u16,mem->ReadUShort(v.u16))
+  mov(pc add,2d)
+  mov(proc,v.u16)
+end proc
 
-sub CPU6510.Push(byval b as double)
+def CPU6510.Push(byval b as double)
   mem->WriteUByte(sp,b)
-  s-=1d
-end sub
+  mov(s subt,1d)
+end def
 
-function CPU6510.PULL as double
-  s+=1d
-  return mem->ReadUbyte(sp)
-end function
+proc CPU6510.PULL as double
+  mov(s add,1d)
+  mov(proc,mem->ReadUbyte(sp))
+end proc
 
 '
 ' 6510 instructions
 '
-sub INS_UNK(byval Cpu as CPU6510_T)
+def INS_UNK(byval Cpu as CPU6510_T)
   #ifdef _DEBUG
   dprint("! unk")
   beep:sleep:end
   #endif
-end sub
+end def
 
-sub INS_ADC(byval Cpu as CPU6510_T)
+def INS_ADC(byval Cpu as CPU6510_T)
   dim as MULTI v
-  dim as ubyte ub
+  var ub=0
   ub=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   v.u16=Cpu->A + ub
   if Cpu->F.c=1 then v.u16+=1
@@ -1447,15 +2078,15 @@ sub INS_ADC(byval Cpu as CPU6510_T)
   Cpu->F.c=iif(v.u16>255d,1d,0d)
   Cpu->F.z=iif(v.ulo=0d,1d,0d)
   Cpu->F.n=iif(v.slo<0d,1d,0d)
-end sub
+end def
 
-sub INS_AND(byval Cpu as CPU6510_T)
+def INS_AND(byval Cpu as CPU6510_T)
   Cpu->A=Cpu->A and Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   Cpu->F.z=iif(Cpu->A =0d,1d,0d)
   Cpu->F.n=iif(Cpu->sA<0d,1d,0d)
-end sub
+end def
 
-sub INS_ASL(byval Cpu as CPU6510_T)
+def INS_ASL(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   Cpu->F.c = iif(v.ulo and &H80,1d,0d)
@@ -1463,16 +2094,16 @@ sub INS_ASL(byval Cpu as CPU6510_T)
   Cpu->mem->WriteUbyte(Cpu->Code.op.u16,v.ulo)
   Cpu->F.z=iif(v.ulo=0d,1d,0d)
   Cpu->F.n=iif(v.slo<0d,1d,0d)
-end sub
+end def
 
-sub INS_ASLA(byval Cpu as CPU6510_T) ' ac
+def INS_ASLA(byval Cpu as CPU6510_T) ' ac
   Cpu->F.c = iif(Cpu->A and &H80,1d,0d)
   Cpu->A shl = 1d
   Cpu->F.z=iif(Cpu->A =0d,1d,0d)
   Cpu->F.n=iif(Cpu->sA<0d,1d,0d)
-end sub
+end def
 
-sub INS_BCC(byval Cpu as CPU6510_T)
+def INS_BCC(byval Cpu as CPU6510_T)
   if Cpu->F.c=0 then
     dim as MULTI v
     v.u16 =Cpu->pc
@@ -1480,9 +2111,9 @@ sub INS_BCC(byval Cpu as CPU6510_T)
     v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
-end sub
+end def
 
-sub INS_BCS(byval Cpu as CPU6510_T)
+def INS_BCS(byval Cpu as CPU6510_T)
   if Cpu->F.c then
     dim as MULTI v
     v.u16 =Cpu->pc
@@ -1490,9 +2121,9 @@ sub INS_BCS(byval Cpu as CPU6510_T)
     v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
-end sub
+end def
 
-sub INS_BEQ(byval Cpu as CPU6510_T)
+def INS_BEQ(byval Cpu as CPU6510_T)
   if Cpu->F.z=1d then
     dim as MULTI v
     v.u16 =Cpu->pc
@@ -1500,17 +2131,17 @@ sub INS_BEQ(byval Cpu as CPU6510_T)
     v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
-end sub
+end def
 
-sub INS_BIT(byval Cpu as CPU6510_T)
+def INS_BIT(byval Cpu as CPU6510_T)
   dim as byte b
   b=Cpu->mem->Readbyte(Cpu->Code.op.u16)
   Cpu->F.n=iif(b and &H80,1d,0d)
   Cpu->F.v=iif(b and &H40,1d,0d)
   Cpu->F.z=iif(0=(b and Cpu->sX),1d,0d)
-end sub
+end def
 
-sub INS_BMI(byval Cpu as CPU6510_T)
+def INS_BMI(byval Cpu as CPU6510_T)
   if Cpu->F.n then
     dim as MULTI v
     v.u16 =Cpu->pc
@@ -1518,9 +2149,9 @@ sub INS_BMI(byval Cpu as CPU6510_T)
     v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
-end sub
+end def
 
-sub INS_BNE(byval Cpu as CPU6510_T)
+def INS_BNE(byval Cpu as CPU6510_T)
   if Cpu->F.z=0d then
     dim as MULTI v
     v.u16 =Cpu->pc
@@ -1528,9 +2159,9 @@ sub INS_BNE(byval Cpu as CPU6510_T)
     v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
-end sub
+end def
 
-sub INS_BPL(byval Cpu as CPU6510_T)
+def INS_BPL(byval Cpu as CPU6510_T)
   if Cpu->F.n=0 then
     dim as MULTI v
     v.u16 =Cpu->pc
@@ -1538,9 +2169,9 @@ sub INS_BPL(byval Cpu as CPU6510_T)
     v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
-end sub
+end def
 
-sub INS_BRK(byval Cpu as CPU6510_T)
+def INS_BRK(byval Cpu as CPU6510_T)
   Cpu->pc+=1d
   Cpu->push(Cpu->ph)
   Cpu->push(Cpu->pl)
@@ -1548,9 +2179,9 @@ sub INS_BRK(byval Cpu as CPU6510_T)
   Cpu->F.b=1d
   Cpu->F.i=1d
   Cpu->pc = Cpu->mem->ReadUShort(&HFFFE)
-end sub
+end def
 
-sub INS_BVC(byval Cpu as CPU6510_T)
+def INS_BVC(byval Cpu as CPU6510_T)
   if Cpu->F.v=0 then
     dim as MULTI v
     v.u16 =Cpu->pc
@@ -1558,9 +2189,9 @@ sub INS_BVC(byval Cpu as CPU6510_T)
     v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
-end sub
+end def
 
-sub INS_BVS(byval Cpu as CPU6510_T)
+def INS_BVS(byval Cpu as CPU6510_T)
   if Cpu->F.v then
     dim as MULTI v
     v.u16 =Cpu->pc
@@ -1568,132 +2199,132 @@ sub INS_BVS(byval Cpu as CPU6510_T)
     v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1d
     Cpu->pc=v.u16
   end if
-end sub
+end def
 
-sub INS_CLC(byval Cpu as CPU6510_T)
+def INS_CLC(byval Cpu as CPU6510_T)
   Cpu->F.C=0d
-end sub
+end def
 
-sub INS_CLD(byval Cpu as CPU6510_T)
+def INS_CLD(byval Cpu as CPU6510_T)
   Cpu->F.D=0d
-end sub
+end def
 
-sub INS_CLI(byval Cpu as CPU6510_T)
+def INS_CLI(byval Cpu as CPU6510_T)
   Cpu->F.I=0d
-end sub
+end def
 
-sub INS_CLV(byval Cpu as CPU6510_T)
+def INS_CLV(byval Cpu as CPU6510_T)
   Cpu->F.V=0d
-end sub
+end def
 
-sub INS_CMP(byval Cpu as CPU6510_T)
+def INS_CMP(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.u16 = Cpu->A-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
   Cpu->F.c=iif(v.u16<=255d,1d,0d)
   Cpu->F.z=iif(v.ulo =  0d,1d,0d)
   Cpu->F.n=iif(v.slo <  0d,1d,0d)
-end sub
+end def
 
-sub INS_CPX(byval Cpu as CPU6510_T)
+def INS_CPX(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.u16 = Cpu->X-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
   Cpu->F.c=iif(v.u16<=255d,1d,0d)
   Cpu->F.z=iif(v.ulo =  0d,1d,0d)
   Cpu->F.n=iif(v.slo <  0d,1d,0d)
-end sub
+end def
 
-sub INS_CPY(byval Cpu as CPU6510_T)
+def INS_CPY(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.u16 = Cpu->Y-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
   Cpu->F.c=iif(v.u16<=255d,1d,0d)
   Cpu->F.z=iif(v.ulo =  0d,1d,0d)
   Cpu->F.n=iif(v.slo <  0d,1d,0d)
-end sub
+end def
 
-sub INS_DEC(byval Cpu as CPU6510_T)
+def INS_DEC(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.ulo=Cpu->mem->ReadUByte(Cpu->Code.op.u16)
   v.slo-=1d
   Cpu->F.z=iif(v.slo=0d,1d,0d)
   Cpu->F.n=iif(v.slo<0d,1d,0d)
   Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
-end sub
+end def
 
-sub INS_DEX(byval Cpu as CPU6510_T)
+def INS_DEX(byval Cpu as CPU6510_T)
   Cpu->sX-=1d
   Cpu->F.z=iif(Cpu->X =0d,1d,0d)
   Cpu->F.n=iif(Cpu->sX<0d,1d,0d)
-end sub
+end def
 
-sub INS_DEY(byval Cpu as CPU6510_T)
+def INS_DEY(byval Cpu as CPU6510_T)
   Cpu->sY-=1d
   Cpu->F.z=iif(Cpu->Y =0d,1d,0d)
   Cpu->F.n=iif(Cpu->sY<0d,1d,0d)
-end sub
+end def
 
-sub INS_EOR(byval Cpu as CPU6510_T)
+def INS_EOR(byval Cpu as CPU6510_T)
   Cpu->A=Cpu->A xor Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   Cpu->F.z=iif(Cpu->A =0d,1d,0d)
   Cpu->F.n=iif(Cpu->sA<0d,1d,0d)
-end sub
+end def
 
-sub INS_INC(byval Cpu as CPU6510_T)
+def INS_INC(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   v.s16+=1d
   Cpu->mem->WriteByte(Cpu->Code.op.u16,v.ulo)
   Cpu->F.z=iif(v.ulo=0d,1d,0d)
   Cpu->F.n=iif(v.slo<0d,1d,0d)
-end sub
+end def
 
-sub INS_INX(byval Cpu as CPU6510_T)
+def INS_INX(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.ulo=Cpu->X
   v.s16+=1d
   Cpu->X=v.ulo
   Cpu->F.z=iif(v.ulo=0d,1d,0d)
   Cpu->F.n=iif(v.slo<0d,1d,0d)
-end sub
+end def
 
-sub INS_INY(byval Cpu as CPU6510_T)
+def INS_INY(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.ulo=Cpu->Y
   v.s16+=1d
   Cpu->Y=v.ulo
   Cpu->F.z=iif(v.ulo=0d,1d,0d)
   Cpu->F.n=iif(v.slo<0d,1d,0d)
-end sub
+end def
 
-sub INS_JMP(byval Cpu as CPU6510_T)
+def INS_JMP(byval Cpu as CPU6510_T)
   Cpu->PC=Cpu->Code.op.u16
-end sub
+end def
 
-sub INS_JSR(byval Cpu as CPU6510_T)
+def INS_JSR(byval Cpu as CPU6510_T)
   Cpu->PC-=1
   Cpu->Push(Cpu->PH)
   Cpu->Push(Cpu->PL)
   Cpu->PC=Cpu->Code.op.u16
-end sub
+end def
 
-sub INS_LDA(byval Cpu as CPU6510_T)
+def INS_LDA(byval Cpu as CPU6510_T)
   Cpu->A  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   Cpu->F.Z=iif(Cpu->A=0d,1d,0d)
   Cpu->F.N=iif(Cpu->sA<0d,1d,0d)
-end sub
+end def
 
-sub INS_LDX(byval Cpu as CPU6510_T)
+def INS_LDX(byval Cpu as CPU6510_T)
   Cpu->X  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   Cpu->F.Z=iif(Cpu->X=0d,1d,0d)
   Cpu->F.N=iif(Cpu->sX<0d,1d,0d)
-end sub
+end def
 
-sub INS_LDY(byval Cpu as CPU6510_T)
+def INS_LDY(byval Cpu as CPU6510_T)
   Cpu->Y  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   Cpu->F.Z=iif(Cpu->Y =0d,1d,0d)
   Cpu->F.N=iif(Cpu->sY<0d,1d,0d)
-end sub
+end def
 
-sub INS_LSR(byval Cpu as CPU6510_T)
+def INS_LSR(byval Cpu as CPU6510_T)
   dim as MULTI v
   v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   Cpu->F.c=iif(v.ulo and &H01,1d,0d)
@@ -1701,46 +2332,45 @@ sub INS_LSR(byval Cpu as CPU6510_T)
   Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
   Cpu->F.z=iif(v.ulo=0d,1d,0d)
   Cpu->F.n=iif(v.slo<1d,1d,0d)
-end sub
+end def
 
-sub INS_LSRA(byval Cpu as CPU6510_T) ' ac
+def INS_LSRA(byval Cpu as CPU6510_T) ' ac
   Cpu->F.c=iif(Cpu->A and &H01,1d,0d)
   Cpu->A shr = 1d
   Cpu->F.Z=iif(Cpu->A =0d,1d,0d)
   Cpu->F.N=iif(Cpu->sA<0d,1d,0d)
-end sub
+end def
 
-sub INS_NOP(byval Cpu as CPU6510_T)
+def INS_NOP(byval Cpu as CPU6510_T)
   'dprint("NOP")
-end sub
+end def
 
-sub INS_ORA(byval Cpu as CPU6510_T)
+def INS_ORA(byval Cpu as CPU6510_T)
   Cpu->A=Cpu->A or Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   Cpu->F.z=iif(Cpu->A =0d,1d,0d)
   Cpu->F.n=iif(Cpu->sA<0d,1d,0d)
-end sub
+end def
 
-sub INS_PHA(byval Cpu as CPU6510_T)
+def INS_PHA(byval Cpu as CPU6510_T)
   Cpu->Push(Cpu->A)
-end sub
+end def
 
-sub INS_PHP(byval Cpu as CPU6510_T)
+def INS_PHP(byval Cpu as CPU6510_T)
   Cpu->Push(Cpu->P)
-end sub
+end def
 
-sub INS_PLA(byval Cpu as CPU6510_T)
+def INS_PLA(byval Cpu as CPU6510_T)
   Cpu->A=Cpu->Pull()
   Cpu->F.z=iif(Cpu->A =0d,1d,0d)
   Cpu->F.n=iif(Cpu->sA<0d,1d,0d)
-end sub
+end def
 
-sub INS_PLP(byval Cpu as CPU6510_T)
+def INS_PLP(byval Cpu as CPU6510_T)
   Cpu->P=Cpu->Pull()
-end sub
+end def
 
-sub INS_ROL(byval Cpu as CPU6510_T)
+def INS_ROL(byval Cpu as CPU6510_T)
   dim as MULTI v
-  dim as ubyte cary
   v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   cary=iif(Cpu->F.c=1d,1d,0d)
   Cpu->F.c=iif(v.ulo and &H80,1d,0d)
@@ -1749,20 +2379,19 @@ sub INS_ROL(byval Cpu as CPU6510_T)
   Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
   Cpu->F.z=iif(v.ulo=0d,1d,0d)
   Cpu->F.n=iif(v.slo<1d,1d,0d)
-end sub
-sub INS_ROLA(byval Cpu as CPU6510_T) ' ac
-  dim as ubyte cary
+end def
+
+def INS_ROLA(byval Cpu as CPU6510_T) ' ac
   cary=iif(Cpu->F.c=1d,1d,0d)
   Cpu->F.c=iif(Cpu->A and &H80,1d,0d)
   Cpu->A shl= 1d
   if cary then Cpu->A or =1d
   Cpu->F.z=iif(Cpu->A =0d,1d,0d)
   Cpu->F.n=iif(Cpu->sA<0d,1d,0d)
-end sub
+end def
 
-sub INS_ROR(byval Cpu as CPU6510_T)
+def INS_ROR(byval Cpu as CPU6510_T)
   dim as MULTI v
-  dim as ubyte cary
   cary=iif(Cpu->F.c=1d,1d,0d)
   v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   Cpu->F.c=iif(v.ulo and &H01,1d,0d)
@@ -1771,32 +2400,31 @@ sub INS_ROR(byval Cpu as CPU6510_T)
   Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
   Cpu->F.z=iif(v.ulo=0d,1d,0d)
   Cpu->F.n=iif(v.slo<0d,1d,0d)
-end sub
+end def
 
-sub INS_RORA(byval Cpu as CPU6510_T) ' ac
-  dim as ubyte cary
+def INS_RORA(byval Cpu as CPU6510_T) ' ac
   cary=iif(Cpu->F.c=1d,1d,0d)
   Cpu->F.c=iif(Cpu->A and &H01,1d,0d)
   Cpu->A shr= 1d
   if cary then Cpu->A or =&H80
   Cpu->F.z=iif(Cpu->A =0,1,0)
   Cpu->F.n=iif(Cpu->sA<0,1,0)
-end sub
+end def
 
-sub INS_RTI(byval Cpu as CPU6510_T)
+def INS_RTI(byval Cpu as CPU6510_T)
   Cpu->P =Cpu->pull()
   Cpu->PL=Cpu->pull()
   Cpu->PH=Cpu->pull()
   Cpu->PC+=1d
-end sub
+end def
 
-sub INS_RTS(byval Cpu as CPU6510_T)
+def INS_RTS(byval Cpu as CPU6510_T)
   Cpu->PL=Cpu->pull()
   Cpu->PH=Cpu->pull()
   Cpu->PC+=1d
-end sub
+end def
 
-sub INS_SBC(byval Cpu as CPU6510_T)
+def INS_SBC(byval Cpu as CPU6510_T)
   dim as multi v,b
   b.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   v.u16=Cpu->A - b.ulo
@@ -1807,371 +2435,371 @@ sub INS_SBC(byval Cpu as CPU6510_T)
   Cpu->F.c=iif(v.u16<=255d,1d,0d)
   Cpu->F.z=iif(v.ulo =  0d,1d,0d)
   Cpu->F.n=iif(v.slo <  0d,1d,0d)
-end sub
+end def
 
-sub INS_SEC(byval Cpu as CPU6510_T)
+def INS_SEC(byval Cpu as CPU6510_T)
   Cpu->F.C=1
-end sub
+end def
 
-sub INS_SED(byval Cpu as CPU6510_T)
+def INS_SED(byval Cpu as CPU6510_T)
   Cpu->F.D=1
-end sub
+end def
 
-sub INS_SEI(byval Cpu as CPU6510_T)
+def INS_SEI(byval Cpu as CPU6510_T)
   Cpu->F.I=1
-end sub
+end def
 
-sub INS_STA(byval Cpu as CPU6510_T)
+def INS_STA(byval Cpu as CPU6510_T)
   Cpu->mem->WriteUByte(Cpu->code.op.u16,Cpu->A)
-end sub
+end def
 
-sub INS_STX(byval Cpu as CPU6510_T)
+def INS_STX(byval Cpu as CPU6510_T)
   Cpu->mem->WriteUByte(Cpu->code.op.u16,Cpu->X)
-end sub
+end def
 
-sub INS_STY(byval Cpu as CPU6510_T)
+def INS_STY(byval Cpu as CPU6510_T)
   Cpu->mem->WriteUByte(Cpu->code.op.u16,Cpu->Y)
-end sub
+end def
 
-sub INS_TAX(byval Cpu as CPU6510_T)
+def INS_TAX(byval Cpu as CPU6510_T)
   Cpu->X=Cpu->A
   Cpu->F.Z=iif(Cpu->X =0d,1d,0d)
   Cpu->F.N=iif(Cpu->sX<0d,1d,0d)
-end sub
+end def
 
-sub INS_TAY(byval Cpu as CPU6510_T)
+def INS_TAY(byval Cpu as CPU6510_T)
   Cpu->Y=Cpu->A
   Cpu->F.Z=iif(Cpu->Y =0d,1d,0d)
   Cpu->F.N=iif(Cpu->sY<0d,1d,0d)
-end sub
+end def
 
-sub INS_TSX(byval Cpu as CPU6510_T)
+def INS_TSX(byval Cpu as CPU6510_T)
   Cpu->X=Cpu->S
   Cpu->F.Z=iif(Cpu->X =0d,1d,0d)
   Cpu->F.N=iif(Cpu->sX<0d,1d,0d)
-end sub
+end def
 
-sub INS_TXA(byval Cpu as CPU6510_T)
+def INS_TXA(byval Cpu as CPU6510_T)
   Cpu->A=Cpu->X
   Cpu->F.Z=iif(Cpu->A =0d,1d,0d)
   Cpu->F.N=iif(Cpu->sA<0d,1d,0d)
-end sub
+end def
 
-sub INS_TXS(byval Cpu as CPU6510_T)
+def INS_TXS(byval Cpu as CPU6510_T)
   Cpu->S=Cpu->X
-end sub
+end def
 
-sub INS_TYA(byval Cpu as CPU6510_T)
+def INS_TYA(byval Cpu as CPU6510_T)
   Cpu->A=Cpu->Y
   Cpu->F.Z=iif(Cpu->A =0d,1d,0d)
   Cpu->F.N=iif(Cpu->sA<0d,1d,0d)
-end sub
+end def
 
-sub INS_R32(byval Cpu as CPU6510_T)
+def INS_R32(byval Cpu as CPU6510_T)
   dim as multi v
   Cpu->A=Cpu->mem->Peek64(Cpu->Code.op.u32) 
-end sub
+end def
 
-sub INS_W32(byval Cpu as CPU6510_T)
+def INS_W32(byval Cpu as CPU6510_T)
   Cpu->mem->poke64(Cpu->code.op.u32,Cpu->A)
-end sub
+end def
 
-sub INS_R64(byval Cpu as CPU6510_T)  
+def INS_R64(byval Cpu as CPU6510_T)  
   dim as multi v
   Cpu->A=Cpu->mem->Peek64(Cpu->Code.op.u64)     
-end sub
+end def
 
-sub INS_W64(byval Cpu as CPU6510_T)
+def INS_W64(byval Cpu as CPU6510_T)
   Cpu->mem->poke64(Cpu->code.op.u64,Cpu->A)
-end sub
+end def
 
 INSTRUCTION_SET:
-data   0d,"BRK",_IMP   ,7d,0d,@INS_BRK
-data   1d,"ORA",_INDX  ,6d,2d,@INS_ORA
-data   2d,"R32",_ABS   ,0d,0d,@INS_R32
-data   3d,"W32",_ABS   ,0d,0d,@INS_W32
-data   4d,"R64",_ABS   ,0d,0d,@INS_R64
-data   5d,"ORA",_ZERO  ,3d,2d,@INS_ORA
-data   6d,"ASL",_ZERO  ,0d,0d,@INS_ASL
-data   7d,"W64",_ABS   ,0d,0d,@INS_W64
-data   8d,"PHP",_IMP   ,3d,1d,@INS_PHP
-data   9d,"ORA",_IMM   ,2d,2d,@INS_ORA
-data  10d,"ASL",_IMP   ,2d,1d,@INS_ASLA
-data  11d,"***",_UNK   ,0d,0d,@INS_UNK
-data  12d,"***",_UNK   ,0d,0d,@INS_UNK
-data  13d,"ORA",_ABS   ,4d,3d,@INS_ORA
-data  14d,"ASL",_ABS   ,0d,0d,@INS_ASL
-data  15d,"***",_UNK   ,0d,0d,@INS_UNK
+dd   0d,"BRK",_IMP   ,7d,0d,@INS_BRK
+dd   1d,"ORA",_INDX  ,6d,2d,@INS_ORA
+dd   2d,"R32",_ABS   ,0d,0d,@INS_R32
+dd   3d,"W32",_ABS   ,0d,0d,@INS_W32
+dd   4d,"R64",_ABS   ,0d,0d,@INS_R64
+dd   5d,"ORA",_ZERO  ,3d,2d,@INS_ORA
+dd   6d,"ASL",_ZERO  ,0d,0d,@INS_ASL
+dd   7d,"W64",_ABS   ,0d,0d,@INS_W64
+dd   8d,"PHP",_IMP   ,3d,1d,@INS_PHP
+dd   9d,"ORA",_IMM   ,2d,2d,@INS_ORA
+dd  10d,"ASL",_IMP   ,2d,1d,@INS_ASLA
+dd  11d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  12d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  13d,"ORA",_ABS   ,4d,3d,@INS_ORA
+dd  14d,"ASL",_ABS   ,0d,0d,@INS_ASL
+dd  15d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data  16d,"BPL",_REL   ,0d,0d,@INS_BPL
-data  17d,"ORA",_INDY  ,0d,0d,@INS_ORA
-data  18d,"***",_UNK   ,0d,0d,@INS_UNK
-data  19d,"***",_UNK   ,0d,0d,@INS_UNK
-data  20d,"***",_UNK   ,0d,0d,@INS_UNK
-data  21d,"ORA",_ZEROX ,0d,0d,@INS_ORA
-data  22d,"ASL",_ZEROX ,0d,0d,@INS_ASL
-data  23d,"***",_UNK   ,0d,0d,@INS_UNK
-data  24d,"CLC",_IMP   ,0d,0d,@INS_CLC
-data  25d,"ORA",_ABSY  ,0d,0d,@INS_ORA
-data  26d,"***",_UNK   ,0d,0d,@INS_UNK
-data  27d,"***",_UNK   ,0d,0d,@INS_UNK
-data  28d,"***",_UNK   ,0d,0d,@INS_UNK
-data  29d,"ORA",_ABSX  ,0d,0d,@INS_ORA
-data  30d,"ASL",_ABSX  ,0d,0d,@INS_ASL
-data  31d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  16d,"BPL",_REL   ,0d,0d,@INS_BPL
+dd  17d,"ORA",_INDY  ,0d,0d,@INS_ORA
+dd  18d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  19d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  20d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  21d,"ORA",_ZEROX ,0d,0d,@INS_ORA
+dd  22d,"ASL",_ZEROX ,0d,0d,@INS_ASL
+dd  23d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  24d,"CLC",_IMP   ,0d,0d,@INS_CLC
+dd  25d,"ORA",_ABSY  ,0d,0d,@INS_ORA
+dd  26d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  27d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  28d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  29d,"ORA",_ABSX  ,0d,0d,@INS_ORA
+dd  30d,"ASL",_ABSX  ,0d,0d,@INS_ASL
+dd  31d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data  32d,"JSR",_ABS   ,0d,0d,@INS_JSR
-data  33d,"AND",_INDX  ,0d,0d,@INS_AND
-data  34d,"***",_UNK   ,0d,0d,@INS_UNK
-data  35d,"***",_UNK   ,0d,0d,@INS_UNK
-data  36d,"BIT",_ZERO  ,0d,0d,@INS_BIT
-data  37d,"AND",_ZERO  ,0d,0d,@INS_AND
-data  38d,"ROL",_ZERO  ,0d,0d,@INS_ROL
-data  39d,"***",_UNK   ,0d,0d,@INS_UNK
-data  40d,"PLP",_IMP   ,0d,0d,@INS_PLP
-data  41d,"AND",_IMM   ,0d,0d,@INS_AND
-data  42d,"ROL",_IMP   ,0d,0d,@INS_ROLA
-data  43d,"***",_UNK   ,0d,0d,@INS_UNK
-data  44d,"BIT",_ABS   ,0d,0d,@INS_BIT
-data  45d,"AND",_ABS   ,0d,0d,@INS_AND
-data  46d,"ROL",_ABS   ,0d,0d,@INS_ROL
-data  47d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  32d,"JSR",_ABS   ,0d,0d,@INS_JSR
+dd  33d,"AND",_INDX  ,0d,0d,@INS_AND
+dd  34d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  35d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  36d,"BIT",_ZERO  ,0d,0d,@INS_BIT
+dd  37d,"AND",_ZERO  ,0d,0d,@INS_AND
+dd  38d,"ROL",_ZERO  ,0d,0d,@INS_ROL
+dd  39d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  40d,"PLP",_IMP   ,0d,0d,@INS_PLP
+dd  41d,"AND",_IMM   ,0d,0d,@INS_AND
+dd  42d,"ROL",_IMP   ,0d,0d,@INS_ROLA
+dd  43d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  44d,"BIT",_ABS   ,0d,0d,@INS_BIT
+dd  45d,"AND",_ABS   ,0d,0d,@INS_AND
+dd  46d,"ROL",_ABS   ,0d,0d,@INS_ROL
+dd  47d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data  48d,"BMI",_REL   ,0d,0d,@INS_BMI
-data  49d,"AND",_INDY  ,0d,0d,@INS_AND
-data  50d,"***",_UNK   ,0d,0d,@INS_UNK
-data  51d,"***",_UNK   ,0d,0d,@INS_UNK
-data  52d,"***",_UNK   ,0d,0d,@INS_UNK
-data  53d,"AND",_ZEROX ,0d,0d,@INS_AND
-data  54d,"ROL",_ZEROX ,0d,0d,@INS_ROL
-data  55d,"***",_UNK   ,0d,0d,@INS_UNK
-data  56d,"SEC",_IMP   ,0d,0d,@INS_SEC
-data  57d,"AND",_ABSY  ,0d,0d,@INS_AND
-data  58d,"***",_UNK   ,0d,0d,@INS_UNK
-data  59d,"***",_UNK   ,0d,0d,@INS_UNK
-data  60d,"***",_UNK   ,0d,0d,@INS_UNK
-data  61d,"AND",_ABSX  ,0d,0d,@INS_AND
-data  62d,"ROL",_ABSX  ,0d,0d,@INS_ROL
-data  63d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  48d,"BMI",_REL   ,0d,0d,@INS_BMI
+dd  49d,"AND",_INDY  ,0d,0d,@INS_AND
+dd  50d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  51d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  52d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  53d,"AND",_ZEROX ,0d,0d,@INS_AND
+dd  54d,"ROL",_ZEROX ,0d,0d,@INS_ROL
+dd  55d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  56d,"SEC",_IMP   ,0d,0d,@INS_SEC
+dd  57d,"AND",_ABSY  ,0d,0d,@INS_AND
+dd  58d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  59d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  60d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  61d,"AND",_ABSX  ,0d,0d,@INS_AND
+dd  62d,"ROL",_ABSX  ,0d,0d,@INS_ROL
+dd  63d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data  64d,"RTI",_IMP   ,0d,0d,@INS_RTI
-data  65d,"EOR",_INDX  ,0d,0d,@INS_EOR
-data  66d,"***",_UNK   ,0d,0d,@INS_UNK
-data  67d,"***",_UNK   ,0d,0d,@INS_UNK
-data  68d,"***",_UNK   ,0d,0d,@INS_UNK
-data  69d,"EOR",_ZERO  ,0d,0d,@INS_EOR
-data  70d,"LSR",_ZERO  ,0d,0d,@INS_LSR
-data  71d,"***",_UNK   ,0d,0d,@INS_UNK
-data  72d,"PHA",_IMP   ,0d,0d,@INS_PHA
-data  73d,"EOR",_IMM   ,0d,0d,@INS_EOR
-data  74d,"LSR",_IMP   ,0d,0d,@INS_LSRA
-data  75d,"***",_UNK   ,0d,0d,@INS_UNK
-data  76d,"JMP",_ABS   ,0d,0d,@INS_JMP
-data  77d,"EOR",_ABS   ,0d,0d,@INS_EOR
-data  78d,"LSR",_ABS   ,0d,0d,@INS_LSR
-data  79d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  64d,"RTI",_IMP   ,0d,0d,@INS_RTI
+dd  65d,"EOR",_INDX  ,0d,0d,@INS_EOR
+dd  66d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  67d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  68d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  69d,"EOR",_ZERO  ,0d,0d,@INS_EOR
+dd  70d,"LSR",_ZERO  ,0d,0d,@INS_LSR
+dd  71d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  72d,"PHA",_IMP   ,0d,0d,@INS_PHA
+dd  73d,"EOR",_IMM   ,0d,0d,@INS_EOR
+dd  74d,"LSR",_IMP   ,0d,0d,@INS_LSRA
+dd  75d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  76d,"JMP",_ABS   ,0d,0d,@INS_JMP
+dd  77d,"EOR",_ABS   ,0d,0d,@INS_EOR
+dd  78d,"LSR",_ABS   ,0d,0d,@INS_LSR
+dd  79d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data  80d,"BVC",_REL   ,0d,0d,@INS_BVC
-data  81d,"EOR",_INDY  ,0d,0d,@INS_EOR
-data  82d,"***",_UNK   ,0d,0d,@INS_UNK
-data  83d,"***",_UNK   ,0d,0d,@INS_UNK
-data  84d,"***",_UNK   ,0d,0d,@INS_UNK
-data  85d,"EOR",_ZEROX ,0d,0d,@INS_EOR
-data  86d,"LSR",_ZEROX ,0d,0d,@INS_LSR
-data  87d,"***",_UNK   ,0d,0d,@INS_UNK
-data  88d,"CLI",_IMP   ,0d,0d,@INS_CLI
-data  89d,"EOR",_ABSY  ,0d,0d,@INS_EOR
-data  90d,"***",_UNK   ,0d,0d,@INS_UNK
-data  91d,"***",_UNK   ,0d,0d,@INS_UNK
-data  92d,"***",_UNK   ,0d,0d,@INS_UNK
-data  93d,"EOR",_ABSX  ,0d,0d,@INS_EOR
-data  94d,"LSR",_ABSX  ,0d,0d,@INS_LSR
-data  95d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  80d,"BVC",_REL   ,0d,0d,@INS_BVC
+dd  81d,"EOR",_INDY  ,0d,0d,@INS_EOR
+dd  82d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  83d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  84d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  85d,"EOR",_ZEROX ,0d,0d,@INS_EOR
+dd  86d,"LSR",_ZEROX ,0d,0d,@INS_LSR
+dd  87d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  88d,"CLI",_IMP   ,0d,0d,@INS_CLI
+dd  89d,"EOR",_ABSY  ,0d,0d,@INS_EOR
+dd  90d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  91d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  92d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  93d,"EOR",_ABSX  ,0d,0d,@INS_EOR
+dd  94d,"LSR",_ABSX  ,0d,0d,@INS_LSR
+dd  95d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data  96d,"RTS",_IMP   ,0d,0d,@INS_RTS
-data  97d,"ADC",_INDX  ,0d,0d,@INS_ADC
-data  98d,"***",_UNK   ,0d,0d,@INS_UNK
-data  99d,"***",_UNK   ,0d,0d,@INS_UNK
-data 100d,"***",_UNK   ,0d,0d,@INS_UNK
-data 101d,"ADC",_ZERO  ,0d,0d,@INS_ADC
-data 102d,"ROR",_ZERO  ,0d,0d,@INS_ROR
-data 103d,"***",_UNK   ,0d,0d,@INS_UNK
-data 104d,"PLA",_IMP   ,0d,0d,@INS_PLA
-data 105d,"ADC",_IMM   ,0d,0d,@INS_ADC
-data 106d,"ROR",_IMP   ,0d,0d,@INS_RORA
-data 107d,"***",_UNK   ,0d,0d,@INS_UNK
-data 108d,"JMP",_IND   ,0d,0d,@INS_JMP
-data 109d,"ADC",_ABS   ,0d,0d,@INS_ADC
-data 110d,"ROR",_ABS   ,0d,0d,@INS_ROR
-data 111d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  96d,"RTS",_IMP   ,0d,0d,@INS_RTS
+dd  97d,"ADC",_INDX  ,0d,0d,@INS_ADC
+dd  98d,"***",_UNK   ,0d,0d,@INS_UNK
+dd  99d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 100d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 101d,"ADC",_ZERO  ,0d,0d,@INS_ADC
+dd 102d,"ROR",_ZERO  ,0d,0d,@INS_ROR
+dd 103d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 104d,"PLA",_IMP   ,0d,0d,@INS_PLA
+dd 105d,"ADC",_IMM   ,0d,0d,@INS_ADC
+dd 106d,"ROR",_IMP   ,0d,0d,@INS_RORA
+dd 107d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 108d,"JMP",_IND   ,0d,0d,@INS_JMP
+dd 109d,"ADC",_ABS   ,0d,0d,@INS_ADC
+dd 110d,"ROR",_ABS   ,0d,0d,@INS_ROR
+dd 111d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 112d,"BVS",_REL   ,0d,0d,@INS_BVS
-data 113d,"ADC",_INDY  ,0d,0d,@INS_ADC
-data 114d,"***",_UNK   ,0d,0d,@INS_UNK
-data 115d,"***",_UNK   ,0d,0d,@INS_UNK
-data 116d,"***",_UNK   ,0d,0d,@INS_UNK
-data 117d,"ADC",_ZEROX ,0d,0d,@INS_ADC
-data 118d,"ROR",_ZEROX ,0d,0d,@INS_ROR
-data 119d,"***",_UNK   ,0d,0d,@INS_UNK
-data 120d,"SEI",_IMP   ,0d,0d,@INS_SEI
-data 121d,"ADC",_ABSY  ,0d,0d,@INS_ADC
-data 122d,"***",_UNK   ,0d,0d,@INS_UNK
-data 123d,"***",_UNK   ,0d,0d,@INS_UNK
-data 124d,"***",_UNK   ,0d,0d,@INS_UNK
-data 125d,"ADC",_ABSX  ,0d,0d,@INS_ADC
-data 126d,"ROR",_ABSX  ,0d,0d,@INS_ROR
-data 127d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 112d,"BVS",_REL   ,0d,0d,@INS_BVS
+dd 113d,"ADC",_INDY  ,0d,0d,@INS_ADC
+dd 114d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 115d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 116d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 117d,"ADC",_ZEROX ,0d,0d,@INS_ADC
+dd 118d,"ROR",_ZEROX ,0d,0d,@INS_ROR
+dd 119d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 120d,"SEI",_IMP   ,0d,0d,@INS_SEI
+dd 121d,"ADC",_ABSY  ,0d,0d,@INS_ADC
+dd 122d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 123d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 124d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 125d,"ADC",_ABSX  ,0d,0d,@INS_ADC
+dd 126d,"ROR",_ABSX  ,0d,0d,@INS_ROR
+dd 127d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 128d,"***",_UNK   ,0d,0d,@INS_UNK
-data 129d,"STA",_INDX  ,0d,0d,@INS_STA
-data 130d,"***",_UNK   ,0d,0d,@INS_UNK
-data 131d,"***",_UNK   ,0d,0d,@INS_UNK
-data 132d,"STY",_ZERO  ,0d,0d,@INS_STY
-data 133d,"STA",_ZERO  ,0d,0d,@INS_STA
-data 134d,"STX",_ZERO  ,0d,0d,@INs_STX
-data 135d,"***",_UNK   ,0d,0d,@INS_UNK
-data 136d,"DEY",_IMP   ,0d,0d,@INS_DEY
-data 137d,"***",_UNK   ,0d,0d,@INS_UNK
-data 138d,"TXA",_IMP   ,0d,0d,@INS_TXA
-data 139d,"***",_UNK   ,0d,0d,@INS_UNK
-data 140d,"STY",_ABS   ,0d,0d,@INS_STY
-data 141d,"STA",_ABS   ,0d,0d,@INS_STA
-data 142d,"STX",_ABS   ,0d,0d,@INS_STX
-data 143d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 128d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 129d,"STA",_INDX  ,0d,0d,@INS_STA
+dd 130d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 131d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 132d,"STY",_ZERO  ,0d,0d,@INS_STY
+dd 133d,"STA",_ZERO  ,0d,0d,@INS_STA
+dd 134d,"STX",_ZERO  ,0d,0d,@INs_STX
+dd 135d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 136d,"DEY",_IMP   ,0d,0d,@INS_DEY
+dd 137d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 138d,"TXA",_IMP   ,0d,0d,@INS_TXA
+dd 139d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 140d,"STY",_ABS   ,0d,0d,@INS_STY
+dd 141d,"STA",_ABS   ,0d,0d,@INS_STA
+dd 142d,"STX",_ABS   ,0d,0d,@INS_STX
+dd 143d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 144d,"BCC",_REL   ,0d,0d,@INS_BCC
-data 145d,"STA",_INDY  ,0d,0d,@INS_STA
-data 146d,"***",_UNK   ,0d,0d,@INS_UNK
-data 147d,"***",_UNK   ,0d,0d,@INS_UNK
-data 148d,"STY",_ZEROX ,0d,0d,@INS_STY
-data 149d,"STA",_ZEROX ,0d,0d,@INS_STA
-data 150d,"STX",_ZEROY ,0d,0d,@INS_STX
-data 151d,"***",_UNK   ,0d,0d,@INS_UNK
-data 152d,"TYA",_IMP   ,0d,0d,@INS_TYA
-data 153d,"STA",_ABSY  ,0d,0d,@INS_STA
-data 154d,"TXS",_IMP   ,0d,0d,@INS_TXS
-data 155d,"***",_UNK   ,0d,0d,@INS_UNK
-data 156d,"***",_UNK   ,0d,0d,@INS_UNK
-data 157d,"STA",_ABSX  ,0d,0d,@INS_STA
-data 158d,"***",_UNK   ,0d,0d,@INS_UNK
-data 159d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 144d,"BCC",_REL   ,0d,0d,@INS_BCC
+dd 145d,"STA",_INDY  ,0d,0d,@INS_STA
+dd 146d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 147d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 148d,"STY",_ZEROX ,0d,0d,@INS_STY
+dd 149d,"STA",_ZEROX ,0d,0d,@INS_STA
+dd 150d,"STX",_ZEROY ,0d,0d,@INS_STX
+dd 151d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 152d,"TYA",_IMP   ,0d,0d,@INS_TYA
+dd 153d,"STA",_ABSY  ,0d,0d,@INS_STA
+dd 154d,"TXS",_IMP   ,0d,0d,@INS_TXS
+dd 155d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 156d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 157d,"STA",_ABSX  ,0d,0d,@INS_STA
+dd 158d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 159d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 160d,"LDY",_IMM   ,0d,0d,@INS_LDY
-data 161d,"LDA",_INDX  ,0d,0d,@INS_LDA
-data 162d,"LDX",_IMM   ,0d,0d,@INS_LDX
-data 163d,"***",_UNK   ,0d,0d,@INS_UNK
-data 164d,"LDY",_ZERO  ,0d,0d,@INS_LDY
-data 165d,"LDA",_ZERO  ,0d,0d,@INS_LDA
-data 166d,"LDX",_ZERO  ,0d,0d,@INS_LDX
-data 167d,"***",_UNK   ,0d,0d,@INS_UNK
-data 168d,"TAY",_IMP   ,0d,0d,@INS_TAY
-data 169d,"LDA",_IMM   ,0d,0d,@INS_LDA
-data 170d,"TAX",_IMP   ,0d,0d,@INS_TAX
-data 171d,"***",_UNK   ,0d,0d,@INS_UNK
-data 172d,"LDY",_ABS   ,0d,0d,@INS_LDY
-data 173d,"LDA",_ABS   ,0d,0d,@INS_LDA
-data 174d,"LDX",_ABS   ,0d,0d,@INS_LDX
-data 175d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 160d,"LDY",_IMM   ,0d,0d,@INS_LDY
+dd 161d,"LDA",_INDX  ,0d,0d,@INS_LDA
+dd 162d,"LDX",_IMM   ,0d,0d,@INS_LDX
+dd 163d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 164d,"LDY",_ZERO  ,0d,0d,@INS_LDY
+dd 165d,"LDA",_ZERO  ,0d,0d,@INS_LDA
+dd 166d,"LDX",_ZERO  ,0d,0d,@INS_LDX
+dd 167d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 168d,"TAY",_IMP   ,0d,0d,@INS_TAY
+dd 169d,"LDA",_IMM   ,0d,0d,@INS_LDA
+dd 170d,"TAX",_IMP   ,0d,0d,@INS_TAX
+dd 171d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 172d,"LDY",_ABS   ,0d,0d,@INS_LDY
+dd 173d,"LDA",_ABS   ,0d,0d,@INS_LDA
+dd 174d,"LDX",_ABS   ,0d,0d,@INS_LDX
+dd 175d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 176d,"BCS",_REL   ,0d,0d,@INS_BCS
-data 177d,"LDA",_INDY  ,0d,0d,@INS_LDA
-data 178d,"***",_UNK   ,0d,0d,@INS_UNK
-data 179d,"***",_UNK   ,0d,0d,@INS_UNK
-data 180d,"LDY",_ZEROX ,0d,0d,@INS_LDY
-data 181d,"LDA",_ZEROX ,0d,0d,@INS_LDA
-data 182d,"LDX",_ZEROY ,0d,0d,@INS_LDX
-data 183d,"***",_UNK   ,0d,0d,@INS_UNK
-data 184d,"CLV",_IMP   ,0d,0d,@INS_CLV
-data 185d,"LDA",_ABSY  ,0d,0d,@INS_LDA
-data 186d,"TSX",_IMP   ,0d,0d,@INS_TSX
-data 187d,"***",_UNK   ,0d,0d,@INS_UNK
-data 188d,"LDY",_ABSX  ,0d,0d,@INS_LDY
-data 189d,"LDA",_ABSX  ,0d,0d,@INS_LDA
-data 190d,"LDX",_ABSY  ,0d,0d,@INS_LDX
-data 191d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 176d,"BCS",_REL   ,0d,0d,@INS_BCS
+dd 177d,"LDA",_INDY  ,0d,0d,@INS_LDA
+dd 178d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 179d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 180d,"LDY",_ZEROX ,0d,0d,@INS_LDY
+dd 181d,"LDA",_ZEROX ,0d,0d,@INS_LDA
+dd 182d,"LDX",_ZEROY ,0d,0d,@INS_LDX
+dd 183d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 184d,"CLV",_IMP   ,0d,0d,@INS_CLV
+dd 185d,"LDA",_ABSY  ,0d,0d,@INS_LDA
+dd 186d,"TSX",_IMP   ,0d,0d,@INS_TSX
+dd 187d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 188d,"LDY",_ABSX  ,0d,0d,@INS_LDY
+dd 189d,"LDA",_ABSX  ,0d,0d,@INS_LDA
+dd 190d,"LDX",_ABSY  ,0d,0d,@INS_LDX
+dd 191d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 192d,"CPY",_IMM   ,0d,0d,@INS_CPY
-data 193d,"CMP",_INDX  ,0d,0d,@INS_CMP
-data 194d,"***",_UNK   ,0d,0d,@INS_UNK
-data 195d,"***",_UNK   ,0d,0d,@INS_UNK
-data 196d,"CPY",_ZERO  ,0d,0d,@INS_CPY
-data 197d,"CMP",_ZERO  ,0d,0d,@INS_CMP
-data 198d,"DEC",_ZERO  ,0d,0d,@INS_DEC
-data 199d,"***",_UNK   ,0d,0d,@INS_UNK
-data 200d,"INY",_IMP   ,0d,0d,@INS_INY
-data 201d,"CMP",_IMM   ,0d,0d,@INS_CMP
-data 202d,"DEX",_IMP   ,0d,0d,@INS_DEX
-data 203d,"***",_UNK   ,0d,0d,@INS_UNK
-data 204d,"CPY",_ABS   ,0d,0d,@INS_CPY
-data 205d,"CMP",_ABS   ,0d,0d,@INS_CMP
-data 206d,"DEC",_ABS   ,0d,0d,@INS_DEC
-data 207d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 192d,"CPY",_IMM   ,0d,0d,@INS_CPY
+dd 193d,"CMP",_INDX  ,0d,0d,@INS_CMP
+dd 194d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 195d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 196d,"CPY",_ZERO  ,0d,0d,@INS_CPY
+dd 197d,"CMP",_ZERO  ,0d,0d,@INS_CMP
+dd 198d,"DEC",_ZERO  ,0d,0d,@INS_DEC
+dd 199d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 200d,"INY",_IMP   ,0d,0d,@INS_INY
+dd 201d,"CMP",_IMM   ,0d,0d,@INS_CMP
+dd 202d,"DEX",_IMP   ,0d,0d,@INS_DEX
+dd 203d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 204d,"CPY",_ABS   ,0d,0d,@INS_CPY
+dd 205d,"CMP",_ABS   ,0d,0d,@INS_CMP
+dd 206d,"DEC",_ABS   ,0d,0d,@INS_DEC
+dd 207d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 208d,"BNE",_REL   ,0d,0d,@INS_BNE
-data 209d,"CMP",_INDY  ,0d,0d,@INS_CMP
-data 210d,"***",_UNK   ,0d,0d,@INS_UNK
-data 211d,"***",_UNK   ,0d,0d,@INS_UNK
-data 212d,"***",_UNK   ,0d,0d,@INS_UNK
-data 213d,"CMP",_ZEROX ,0d,0d,@INS_CMP
-data 214d,"DEC",_ZEROX ,0d,0d,@INS_DEC
-data 215d,"***",_UNK   ,0d,0d,@INS_UNK
-data 216d,"CLD",_IMP   ,0d,0d,@INS_CLD
-data 217d,"CMP",_ABSY  ,0d,0d,@INS_CMP
-data 218d,"***",_UNK   ,0d,0d,@INS_UNK
-data 219d,"***",_UNK   ,0d,0d,@INS_UNK
-data 220d,"***",_UNK   ,0d,0d,@INS_UNK
-data 221d,"CMP",_ABSX  ,0d,0d,@INS_CMP
-data 222d,"DEC",_ABSX  ,0d,0d,@INS_DEC
-data 223d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 208d,"BNE",_REL   ,0d,0d,@INS_BNE
+dd 209d,"CMP",_INDY  ,0d,0d,@INS_CMP
+dd 210d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 211d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 212d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 213d,"CMP",_ZEROX ,0d,0d,@INS_CMP
+dd 214d,"DEC",_ZEROX ,0d,0d,@INS_DEC
+dd 215d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 216d,"CLD",_IMP   ,0d,0d,@INS_CLD
+dd 217d,"CMP",_ABSY  ,0d,0d,@INS_CMP
+dd 218d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 219d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 220d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 221d,"CMP",_ABSX  ,0d,0d,@INS_CMP
+dd 222d,"DEC",_ABSX  ,0d,0d,@INS_DEC
+dd 223d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 224d,"CPX",_IMM   ,0d,0d,@INS_CPX
-data 225d,"SBC",_INDX  ,0d,0d,@INS_SBC
-data 226d,"***",_UNK   ,0d,0d,@INS_UNK
-data 227d,"***",_UNK   ,0d,0d,@INS_UNK
-data 228d,"CPX",_ZERO  ,0d,0d,@INS_CPX
-data 229d,"SBC",_ZERO  ,0d,0d,@INS_SBC
-data 230d,"INC",_ZERO  ,0d,0d,@INS_INC
-data 231d,"***",_UNK   ,0d,0d,@INS_UNK
-data 232d,"INX",_IMP   ,0d,0d,@INS_INX
-data 233d,"SBC",_IMM   ,0d,0d,@INS_SBC
-data 234d,"NOP",_IMP   ,0d,0d,@INS_NOP
-data 235d,"***",_UNK   ,0d,0d,@INS_UNK
-data 236d,"CPX",_ABS   ,0d,0d,@INS_CPX
-data 237d,"SBC",_ABS   ,0d,0d,@INS_SBC
-data 238d,"INC",_ABS   ,0d,0d,@INS_INC
-data 239d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 224d,"CPX",_IMM   ,0d,0d,@INS_CPX
+dd 225d,"SBC",_INDX  ,0d,0d,@INS_SBC
+dd 226d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 227d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 228d,"CPX",_ZERO  ,0d,0d,@INS_CPX
+dd 229d,"SBC",_ZERO  ,0d,0d,@INS_SBC
+dd 230d,"INC",_ZERO  ,0d,0d,@INS_INC
+dd 231d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 232d,"INX",_IMP   ,0d,0d,@INS_INX
+dd 233d,"SBC",_IMM   ,0d,0d,@INS_SBC
+dd 234d,"NOP",_IMP   ,0d,0d,@INS_NOP
+dd 235d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 236d,"CPX",_ABS   ,0d,0d,@INS_CPX
+dd 237d,"SBC",_ABS   ,0d,0d,@INS_SBC
+dd 238d,"INC",_ABS   ,0d,0d,@INS_INC
+dd 239d,"***",_UNK   ,0d,0d,@INS_UNK
 
-data 240d,"BEQ",_REL   ,0d,0d,@INS_BEQ
-data 241d,"SBC",_INDY  ,0d,0d,@INS_SBC
-data 242d,"***",_UNK   ,0d,0d,@INS_UNK
-data 243d,"***",_UNK   ,0d,0d,@INS_UNK
-data 244d,"***",_UNK   ,0d,0d,@INS_UNK
-data 245d,"SBC",_ZEROX ,0d,0d,@INS_SBC
-data 246d,"INC",_ZEROX ,0d,0d,@INS_INC
-data 247d,"***",_UNK   ,0d,0d,@INS_UNK
-data 248d,"SED",_IMP   ,0d,0d,@INS_SED
-data 249d,"SBC",_ABSY  ,0d,0d,@INS_SBC
-data 250d,"***",_UNK   ,0d,0d,@INS_UNK
-data 251d,"***",_UNK   ,0d,0d,@INS_UNK
-data 252d,"***",_UNK   ,0d,0d,@INS_UNK
-data 253d,"SBC",_ABSX  ,0d,0d,@INS_SBC
-data 254d,"INC",_ABSX  ,0d,0d,@INS_INC
-data 255d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 240d,"BEQ",_REL   ,0d,0d,@INS_BEQ
+dd 241d,"SBC",_INDY  ,0d,0d,@INS_SBC
+dd 242d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 243d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 244d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 245d,"SBC",_ZEROX ,0d,0d,@INS_SBC
+dd 246d,"INC",_ZEROX ,0d,0d,@INS_INC
+dd 247d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 248d,"SED",_IMP   ,0d,0d,@INS_SED
+dd 249d,"SBC",_ABSY  ,0d,0d,@INS_SBC
+dd 250d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 251d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 252d,"***",_UNK   ,0d,0d,@INS_UNK
+dd 253d,"SBC",_ABSX  ,0d,0d,@INS_SBC
+dd 254d,"INC",_ABSX  ,0d,0d,@INS_INC
+dd 255d,"***",_UNK   ,0d,0d,@INS_UNK
 
 ADDRESS_MODES:
-data "UNK"
-data "IMP"
-data "IMM"
-data "ABS"
-data "ZERO"
-data "ZEROX"
-data "ZEROY"
-data "ABSX"
-data "ABSY"
-data "REL"
-data "INDX"
-data "INDY"
-data "IND"
+db "UNK"
+db "IMP"
+db "IMM"
+db "ABS"
+db "ZERO"
+db "ZEROX"
+db "ZEROY"
+db "ABSX"
+db "ABSY"
+db "REL"
+db "INDX"
+db "INDY"
+db "IND"
 
 /'
 #include "kernel.bas"
@@ -2205,7 +2833,7 @@ end enum
 
 dim shared as integer flag
 
-function InterruptService(byval cpu as CPU6510 ptr) as integer
+proc InterruptService(byval cpu as CPU6510 ptr) as integer
   static as string s
   dim as integer key
   dim as integer IRQTicks
@@ -2306,25 +2934,24 @@ function InterruptService(byval cpu as CPU6510 ptr) as integer
   else
     flag=0
   end if
-  return IRQTicks
-end function
+  mov(proc,IRQTicks)
+end proc
 
 '
 ' main
 '
 dim as C64_T computer
-dim as integer ticks
-dim as integer res 
+var ticks=0, res=0 
 do
-  Ticks+=1
-  if flag=1 then
+  mov(Ticks add,1d)
+  if mov(flag,1d) then
     computer.cpu->Tick Ticks
   else
     computer.cpu->Tick
   end if
   ' call ISR after 24,000 ticks
-  if Ticks mod 24000=0 then
-    Ticks+=InterruptService(computer.cpu)
+  if mov(Ticks mod 24000d,0d) then
+    mov(Ticks add,InterruptService(computer.cpu))
     screenlock
     put (0,0),bgimage,pset: put (0,0),fgimage,or
     'put(0,computer.cpu->mem->mem64(sys_offset+&H100)),raster,or
