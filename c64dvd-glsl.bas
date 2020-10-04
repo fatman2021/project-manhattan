@@ -54,7 +54,12 @@ common shared as string msg
 #define logic_or(x, y)   x or y       'OR
 #define logic_nand(x, y) not(x and y) 'NAND 
 #define logic_and(x, y)  x and y      'AND
-#define check_bit(x, y) ((x) and  (1 shl (y)))
+
+'Byte Operations
+#define check_bit(x, y) (logic_and((x),(1 shl (y))))
+#define low_nibble(x)   (logic_and(x,&H0F))
+#define high_nibble(x)  ((logic_and(x,&HF0)) shr 4)
+
 
 var shared mov(ld_x0,0d),mov(ld_y0,0d),mov(ld_z0,0d),mov(ld_x1,0d),mov(ld_y1,0d),mov(ld_z1,0d)
 var shared mov(fg_red,0d),mov(fg_grn,0d),mov(fg_blu,0d),mov(fg_aph,0d),mov(prc_flag,0d)
@@ -280,31 +285,31 @@ constructor C64_T
   dim as integer i,c
   dprint("C64_T()")
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
-  ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+  ScreenRes 1920d,1080d, 32d, 0d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
   mov(bgimage, ImageCreate(1920d,1080d,0d,32d))
   mov(fgimage, ImageCreate(1920d,1080d,0d,32d))
   mov(raster,  ImageCreate(1920d,0d,0d,32d))
-  mov(spr0,    ImageCreate(82d,51d,0d,32d))
-  mov(spr1,    ImageCreate(82d,51d,0d,32d))
-  mov(spr2,    ImageCreate(82d,51d,0d,32d))
-  mov(spr3,    ImageCreate(82d,51d,0d,32d))
-  mov(spr4,    ImageCreate(82d,51d,0d,32d))
-  mov(spr5,    ImageCreate(82d,51d,0d,32d))
-  mov(spr6,    ImageCreate(82d,51d,0d,32d))
-  mov(spr7,    ImageCreate(82d,51d,0d,32d))
+  mov(spr0,    ImageCreate(56d,56d,0d,32d))
+  mov(spr1,    ImageCreate(56d,56d,0d,32d))
+  mov(spr2,    ImageCreate(56d,56d,0d,32d))
+  mov(spr3,    ImageCreate(56d,56d,0d,32d))
+  mov(spr4,    ImageCreate(56d,56d,0d,32d))
+  mov(spr5,    ImageCreate(56d,56d,0d,32d))
+  mov(spr6,    ImageCreate(56d,56d,0d,32d))
+  mov(spr7,    ImageCreate(56d,56d,0d,32d))
 #elseif defined(__FB_DOS__)
-  ScreenRes 800d,600d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+  ScreenRes 800d,600d, 32d, 0d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
   mov(bgimage, ImageCreate(800d,600d,0d,32d))
   mov(fgimage, ImageCreate(800d,600d,0d,32d))
   mov(raster,  ImageCreate(800d,0d,0d,32d))
-  mov(spr0,    ImageCreate(35d,29d,0d,32d))
-  mov(spr1,    ImageCreate(35d,29d,0d,32d))
-  mov(spr2,    ImageCreate(35d,29d,0d,32d))
-  mov(spr3,    ImageCreate(35d,29d,0d,32d))
-  mov(spr4,    ImageCreate(35d,29d,0d,32d))
-  mov(spr5,    ImageCreate(35d,29d,0d,32d))
-  mov(spr6,    ImageCreate(35d,29d,0d,32d))
-  mov(spr7,    ImageCreate(35d,29d,0d,32d))
+  mov(spr0,    ImageCreate(56d,56d,0d,32d))
+  mov(spr1,    ImageCreate(56d,56d,0d,32d))
+  mov(spr2,    ImageCreate(56d,56d,0d,32d))
+  mov(spr3,    ImageCreate(56d,56d,0d,32d))
+  mov(spr4,    ImageCreate(56d,56d,0d,32d))
+  mov(spr5,    ImageCreate(56d,56d,0d,32d))
+  mov(spr6,    ImageCreate(35d,56d,0d,32d))
+  mov(spr7,    ImageCreate(56d,56d,0d,32d))
   mov(render,  ImageCreate(800d,600d,0d,32d))
 #endif
   for in range(mov(i, 0d), 15d)
@@ -461,8 +466,8 @@ constructor MEMORY_T
           mov(kernal(&H49F), &H20): mov(kernal(&H4A3), &H20) ' Replace "@" at E49F and E4A3 with " ".         
   end select
   mov(kernal(&H535), &H07) '.,E534 A9 07    LDA #$07     ;set default text color to 07(White)
-  mov(kernal(&HCD9), &H17) '.:ECD9 17                    ;set default border color to 17(black)
-  mov(kernal(&HCDA), &H17) '.:ECDA 17                    ;set default background color to 17(black)
+  mov(kernal(&HCD9), &H00) '.:ECD9 00                    ;set default border color to 00(black)
+  mov(kernal(&HCDA), &H00) '.:ECDA 00                    ;set default background color to 00(black)
   /'
   kernal(&H506) = &H50 'get the x size
   kernal(&H598) = &H3C 'get the y size
@@ -493,7 +498,7 @@ end proc
 
 def MEMORY_T.poke64(byval adr as double,byval v as double)
   mov(mem64(adr), v)
-  if adr >= 55296d and adr <= 56319d then
+  if logic_and(adr geq 55296d,adr leq 56319d) then
     mov(adr subt, 55296d): mov(col(adr), v)
     mov(adr add, mem64(scr_ptr))
     mov(v, mem64(adr))
@@ -578,62 +583,70 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
   32768+1024=33792 ($8400).
   '/
   elseif mov(adr, 53272d) then
-    select case as const cast(ulong, v)
-		   case 15d:  
+  'dim as ubyte mov(hnibble,high_nibble(cast(ubyte,v)))
+  'dim as ubyte mov(lnibble,low_nibble(cast(ubyte,v)))
+    select case as const cast(ulongint, v)
+		   case 15:  
 		    mov(mem64(scr_ptr), &H0000)
-		    mov(mem64(&H0288), &H00)
-		   case 31d:  
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 31:
 		    mov(mem64(scr_ptr), &H0400)
-		    mov(mem64(&H0288), &H04)
-		   case 47d:  
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 47:  
 		    mov(mem64(scr_ptr), &H0800)
-		    mov(mem64(&H0288), &H08)
-		   case 63d:  
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 63:  
 		    mov(mem64(scr_ptr), &H0C00)
-		    mov(mem64(&H0288), &H0C)
-		   case 79d:  
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 79:  
 		    mov(mem64(scr_ptr), &H1000)
-		    mov(mem64(&H0288), &H10)
-		   case 95d:  
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 95:  
 		    mov(mem64(scr_ptr), &H1400)
-		    mov(mem64(&H0288), &H14)
-		   case 111d: 
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 111: 
 		    mov(mem64(scr_ptr), &H1800)
-		    mov(mem64(&H0288), &H18)
-		   case 127d: 
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 127: 
 		    mov(mem64(scr_ptr), &H1C00)
-		    mov(mem64(&H0288), &H1C)
-		   case 143d: 
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 143: 
 		    mov(mem64(scr_ptr), &H2000)
-		    mov(mem64(&H0288), &H20)
-		   case 159d: 
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 159: 
 		    mov(mem64(scr_ptr), &H2400)
-		    mov(mem64(&H0288), &H24)
-		   case 175d: 
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 175: 
 		    mov(mem64(scr_ptr), &H2800)
-		    mov(mem64(&H0288), &H28)
-		   case 191d: 
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 191: 
 		    mov(mem64(scr_ptr), &H2C00)
-		    mov(mem64(&H0288), &H2C)
-		   case 207d: 
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 207: 
 		    mov(mem64(scr_ptr), &H3000)
-		    mov(mem64(&H0288), &H30)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
 	       case 223: 
 	        mov(mem64(scr_ptr), &H3400)
-	        mov(mem64(&H0288), &H34)
-		   case 239d: 
+	        mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 239: 
 		    mov(mem64(scr_ptr), &H3800)
-		    mov(mem64(&H0288), &H38)
-		   case 255d: 
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 255: 
 		    mov(mem64(scr_ptr), &H3C00)
-		    mov(mem64(&H0288), &H3C)
-    end select  
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+    end select
+  ' Sprite X Registers  
   elseif logic_or(logic_or(logic_or(mov(adr, 53248d), mov(adr, 53250d)), logic_or(mov(adr, 53252d), mov(adr, 53254d))), _
          logic_or(logic_or(mov(adr, 53256d), mov(adr, 53258d)), logic_or(mov(adr, 53260d), mov(adr, 53262d)))) then  
-         mov(mem64(sys_offset+&HCB), v)	
+         mov(mem64(adr), v)
+  ' Sprite Y Registers      	
   elseif logic_or(logic_or(logic_or(mov(adr, 53249d), mov(adr, 53251d)), logic_or(mov(adr, 53253d), mov(adr, 53255d))), _
          logic_or(logic_or(mov(adr, 53257d), mov(adr, 53259d)), logic_or(mov(adr, 53261d), mov(adr, 53263d)))) then  
-         mov(mem64(sys_offset+&HCC), v)
+         mov(mem64(adr), v)
+  ' Sprite Color Registers       
+  elseif logic_or(logic_or(logic_or(mov(adr, 53287d), mov(adr, 53288d)), logic_or(mov(adr, 53289d), mov(adr, 53290d))), _
+         logic_or(logic_or(mov(adr, 53291d), mov(adr, 53292d)), logic_or(mov(adr, 53293d), mov(adr, 53294d)))) then         
+         poke64(646,v)
   /'
   Sprite Enable Register
   
@@ -873,25 +886,25 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
     ' sys_offset+&HE8 font offset
     ' sys_offset+&HE9 font width
     ' sys_offset+&HEA font height
- case sys_offset+&HEC,sys_offset+&HEC ' Amiga style Hold-and-Modify - foreground and boarder color
+ case sys_offset add &HEC,sys_offset add &HEC 'Amiga style Hold-and-Modify - foreground and boarder color
      select case v
 		case &B000000 to &B001111:poke64(646,v mod 255)
-		case &B010000 to &B011111:poke64(fg_red,(((v - &B010000) mod 16) * 17) mod 255)
-		case &B100000 to &B101111:poke64(fg_grn,(((v - &B100000) mod 16) * 17) mod 255)
-		case &B110000 to &B111111:poke64(fg_blu,(((v - &B110000) mod 16) * 17) mod 255)
-     	case else: poke64(fg_aph,(((v - &B1000000) mod 16) * 17) mod 255)				  
+		case &B010000 to &B011111:poke64(bg_red,(((v subt &B010000) mod 255) mul 17) mod 255)
+		case &B100000 to &B101111:poke64(bg_grn,(((v subt &B100000) mod 255) mul 17) mod 255)
+		case &B110000 to &B111111:poke64(bg_blu,(((v subt &B110000) mod 255) mul 17) mod 255)
+     	case else: poke64(bg_aph,(((v subt &B1000000) mod 255) mul 17) mod 255)					  
      end select
-     if adr=sys_offset+&HEC then 
+     if mov(adr,sys_offset add &HEC) then 
         poke64(53280,peek64(fg_color))
         poke64(53281,peek64(fg_color))
      end if     
-    case sys_offset+&HED ' Amiga style Hold-and-Modify - background
+    case sys_offset add &HED 'Amiga style Hold-and-Modify - background
      select case v
 		case &B000000 to &B001111:poke64(53281,v mod 255)
-		case &B010000 to &B011111:poke64(bg_red,(((v - &B010000) mod 16) * 17) mod 255)
-		case &B100000 to &B101111:poke64(bg_grn,(((v - &B100000) mod 16) * 17) mod 255)
-		case &B110000 to &B111111:poke64(bg_blu,(((v - &B110000) mod 16) * 17) mod 255)
-     	case else: poke64(bg_aph,(((v - &B1000000) mod 16) * 17) mod 255)					  
+		case &B010000 to &B011111:poke64(bg_red,(((v subt &B010000) mod 255) mul 17) mod 255)
+		case &B100000 to &B101111:poke64(bg_grn,(((v subt &B100000) mod 255) mul 17) mod 255)
+		case &B110000 to &B111111:poke64(bg_blu,(((v subt &B110000) mod 255) mul 17) mod 255)
+     	case else: poke64(bg_aph,(((v subt &B1000000) mod 255) mul 17) mod 255)					  
      end select      
     case sys_offset+&HEE ' Amiga style Hold-and-Modify - Draw foreground
           line fgimage,(mem64(x0),mem64(y0))-(mem64(x1),mem64(y1)),mem64(fg_color), BF       
@@ -901,31 +914,31 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
      'locate 1,1: print strCode
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
      screen 0: chain strCode: strCode = ""
-     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset
 #elseif defined(__FB_DOS__)
      screen 0: chain strCode: strCode = ""
-     ScreenRes 800,600, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+     ScreenRes 800,600, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset
 #endif                      
     case sys_offset+&HF1
 #if defined(__FB_LINUX__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)    
      screen 0: shell "wine " + strCode: strCode = ""
-     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset 
 #endif                    
     case sys_offset+&HF2
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)    
      screen 0:shell "dosbox " + strCode+" -fullscreen -exit": strCode = ""
-     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
      'for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset            
 #elseif defined(__FB_DOS__)
      screen 0: shell "command.com": strCode = ""
-     ScreenRes 800,600, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+     ScreenRes 800,600, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)     
 #endif
     case sys_offset+&HF3
@@ -945,10 +958,10 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
      screen 0: shell "dosbox -c 'boot "+strCode+"'"+" -exit"
      shell "rm " + strCode: strCode = ""
-     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls     
+     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls     
 #elseif defined(__FB_DOS__)
      shell strCode+".com": strCode = ""
-     ScreenRes 800,600, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+     ScreenRes 800,600, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
 #endif    
      paint(0,0), rgba(0, 0, 0, 255)
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset     
@@ -971,7 +984,22 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 	 filename=filename+lcase(chr(v))
 	case sys_offset+&HFF
 	 'locate 1,1: print filename: sleep 1
-	 poke64(sys_offset+&HA1,&H0): filename=""   			  		
+	 poke64(sys_offset+&HA1,&H0): filename=""
+	case sys_offset+&H100 ' Text buffer bank switching
+	 select case v
+	        case 0
+	         mov(mem64(scro_x),0)
+	         mov(mem64(scro_y),0)
+	        case 1
+	         mov(mem64(scro_x),802)
+	         mov(mem64(scro_y),0)
+	        case 2
+	         mov(mem64(scro_x),0)
+	         mov(mem64(scro_y),390)
+	        case 3
+	         mov(mem64(scro_x),802)
+	         mov(mem64(scro_y),390)
+	 end select    			  		
     case in range(mem64(scr_ptr),mem64(scr_ptr) add 1023d)
      #include "font.bas"
       /'
@@ -981,6 +1009,14 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
       select case v
        case 00 to 27: print wchr(v+32)
       end select '/
+  case in range(mem64(scr_ptr) add 1024d,mem64(scr_ptr) add 1031d)                
+    #include once "sprite.bi"
+/' 
+    for a as ushort = 0 to 7
+       draw string fgimage,(0d,a mul 8d),str(mem64(scr_ptr) add 1024d)+" "+_
+       str(mem64(scr_ptr) add 1031d)+" "+str(check_bit(v,a))
+    next a
+'/    
   case 57344d to 65535d,40960d to 49151d,55296d to 56319d:mem64(adr)=v              
   end select
 end def
@@ -1011,16 +1047,16 @@ end def
 
 constructor CPU6510(byval lpMem as MEMORY_T ptr)
   dprint("CPU6510()")
-  mem=lpMem: var i=0
+  mov(mem,lpMem): mov(var i,0)
   restore INSTRUCTION_SET
   'opcode,name,adrmode,ticks,operand,decoder
-  for i=0d to 255d
+  for in range(mov(i,0d),255d)
     with Opcodes(i)
       read .code,.nam,.adrmode,.bytes,.ticks,cast(integer,.decode)
     end with
   next
   restore ADDRESS_MODES
-  for i=0d to 12d
+  for in range(mov(i,0d),12d)
     read StrAdrModes(i)
   next
   ' direction and data port
@@ -1029,9 +1065,9 @@ constructor CPU6510(byval lpMem as MEMORY_T ptr)
   ' flags
   'F.H=1
   ' stack pointer
-  MSB=1 ':S=&HFF
+  mov(MSB,1d) ':S=&HFF
   ' reset vector
-  PC=&HFCE2
+  mov(PC,&HFCE2)
 end constructor
 
 destructor CPU6510
