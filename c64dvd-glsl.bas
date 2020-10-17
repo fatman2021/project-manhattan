@@ -386,12 +386,10 @@ constructor MEMORY_T
   var i=0
   dim as ubyte tmp
   ' init all ROM's
-  open "kernal_generic.rom" for binary as #1
+  open "64c.251913-01.bin" for binary as #1
    for in range(mov(i, 0d), 8191d)
      get #1,,tmp: mov(basic(i), tmp)
-   next i
-  close #1
-  open "basic_generic.rom" for binary as #1   
+   next i  
    for in range(mov(i, 0d), 8191d)
 	 get #1,,tmp: mov(kernal(i), tmp)
    next i
@@ -926,13 +924,10 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 	    mov(filename,"tmp.bas"):   mov(compiler,"fbc ")                      ' FreeBASIC
 	   case 001
 	    mov(filename,"tmp.bas"):   mov(compiler,"fbc -lang qb ")             ' QBASIC 1.1	    
-	   case 002
-	    mov(filename,"tmp.bas"):   mov(compiler,"../pcbasic/pcbasic --run ") ' PC-BASIC/GW-BASIC/BASICA
-	   case 003
-	    mov(filename,"tmp.bas"):   mov(compiler,"../qb64/qb64 -c ")          ' QB64
-	   case 004
-	    mov(filename,"tmp.bas"):   mov(compiler,"vbc ")                      ' Visual Basic	    	     
-	   case 005 	    
+	   case 002 ' Unused
+	   case 003 ' Unused
+	   case 004 ' Unused
+	   case 005 ' Unused	    
 	    mov(filename,"tmp.glsl"):  mov(compiler,"")                          ' OpenGL Shading Language
 	   case 006 
 	    mov(filename,"tmp.cob"):   mov(compiler,"cobc ")                     ' GNU COBOL
@@ -982,13 +977,13 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 	      mov(scr_pos,mem64(49451d)):mov(scr_pos,0)
 	      do until eof(1)
 	        input #1, strCode
-	        for in range(mov(index,1),len(strCode))
+	        for in range(mov(index,1),len(strCode)) 
 '                      r0	        
 	         mov(mem64(49361d),asc(mid(strCode,index,1)))
 '                         scr_ptr                                     r0	         
-             poke64(mem64(49451d) add (index subt 1) add scr_pos,mem64(49361d) and &H3f)
-            next 
-            mov(scr_pos add,(52 subt len(strCode)))
+             poke64(mem64(49451d) add (index subt 1),mem64(49361d) and &H3f)
+            next '1024 + x + 40 * (24 - y) 
+            mov(scr_pos add, 40) 
 	      loop  
 	    close #1
 	    mov(strCode,"press@any@key@to@continue")

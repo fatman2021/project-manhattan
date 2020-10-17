@@ -1567,7 +1567,7 @@
 						case 254: print #1, "texture_list";
 						case 255: print #1, "texture_map";
 					 end select                      
-				case 019d ' Graphics Processing Unit - 6
+				case 020d ' Graphics Processing Unit - 6
 '                                                     r0				
 				     select case cast(ulongint, mem64(49361))                       
 						case 000: print #1, "tga";
