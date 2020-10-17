@@ -386,10 +386,12 @@ constructor MEMORY_T
   var i=0
   dim as ubyte tmp
   ' init all ROM's
-  open "64c.251913-01.bin" for binary as #1
+  open "kernal_generic.rom" for binary as #1
    for in range(mov(i, 0d), 8191d)
      get #1,,tmp: mov(basic(i), tmp)
-   next i  
+   next i
+  close #1
+  open "basic_generic.rom" for binary as #1   
    for in range(mov(i, 0d), 8191d)
 	 get #1,,tmp: mov(kernal(i), tmp)
    next i
@@ -397,7 +399,7 @@ constructor MEMORY_T
   'for b as integer = 617 to 641
   for in range(mov(i, 0000d),8191d): mov(char(i), 00d): next i
   'open "./chargen/"+str(b)+".c64" for binary as #1
-  open "./chargen/0.c64" for binary as #1
+  open "./chargen/chargen_openroms.rom" for binary as #1
    for in range(mov(i, 0d), lof(1d))
      get #1,,tmp: mov(char(i), tmp)
    next i
@@ -418,7 +420,8 @@ constructor MEMORY_T
   'mov(basic(&H0B46), &H00) '.,AB45 A9 00    LDA #$00        ;set input prompt to NULL
   'mov(basic(&H178E), &H00) '.,B78E F0 05    BEQ $B794       ;ASC() - Ignore NULL
   
-  'Patch BASIC startup messages"  
+  'Patch BASIC startup messages" 
+   /'
   mov(mem, "BYTES")
   for in range(mov(a, 1d), len(mem))
     mov(kernal(&H466 add a), asc(mid(mem,a,1d)) add &H20)
@@ -426,46 +429,46 @@ constructor MEMORY_T
   mov(mem, "FREE")
   for in range(mov(a, 1d), len(mem))
 	mov(kernal(&H46C add a), asc(mid(mem,a,1d)) add &H20)
-  next a
+  next a 
   mov(kernal(&H47D), &H2A): mov(kernal(&H47E), &H20)
-  mov(kernal(&H47F), &H20) 	
+  mov(kernal(&H47F), &H20) 
   mov(mem, "MICROSOFT")
   for in range(mov(a, 1d), len(mem))
-	mov(kernal(&H47F add a), asc(mid(mem,a,1d)) add &H20)
+	mov(kernal(&H47F add a), asc(mid(mem,a,1d)) and &H3f)
   next a: mov(kernal(&H489), &H20)
-  mov(mem, "BASIC")
+  mov(mem, "BASIC") 
   for in range(mov(a, 1d), len(mem))
-	mov(kernal(&H460 add a), asc(mid(mem,a,1d)) add &H20)
-	mov(kernal(&H489 add a), asc(mid(mem,a,1d)) add &H20)
+	mov(kernal(&H460 add a), asc(mid(mem,a,1d)) and &H3f)
+	mov(kernal(&H489 add a), asc(mid(mem,a,1d)) and &H3f)
   next a: mov(kernal(&H48F), &H20): mov(kernal(&H490), &H76)
   mov(kernal(&H491), &H32): mov(kernal(&H492), &H20)
-  mov(kernal(&H493), &H2A)
+  mov(kernal(&H493), &H2A) 
   mov(mem, "RAM SYSTEM")
   for in range(mov(a, 1d), len(mem))
-	mov(kernal(&H49E add a), asc(mid(mem,a,1d)) add &H20) 
-  next a
+	mov(kernal(&H49E add a), asc(mid(mem,a,1d)) and &H3f) 
+  next a 
   mov(kernal(&H4A2), &H20)
-  mov(mem, "READY") 'Patch BASIC "READY." message
+  mov(mem, "READY") 'Patch BASIC "READY." message 
   for in range(mov(a, 1d), len(mem))
     mov(basic(&H377 add a), asc(mid(mem,a,1d)) add &H20)
-  next a
+  next a '/
   '64-bit memory detection
   '.:E47B 2A 2A (mem) 47 42 4D 4D 4F  (cr) (cr) (mem)gb ram system
   mov(mem, str(int(fre(mem64(0d)) idiv 1024d expt 3d)))
   select case len(mem) 
          case 1
           mov(kernal(&H49B), asc(mem))
-          mov(kernal(&H49C), &H67): mov(kernal(&H49D), &H62)
+          mov(kernal(&H49C), &H47): mov(kernal(&H49D), &H42)
          case 2 
           mov(kernal(&H49B), asc(mid(mem,1d,1d)))
           mov(kernal(&H49C), asc(mid(mem,2d,1d)))
-          mov(kernal(&H49D), &H67): mov(kernal(&H49E), &H62)
+          mov(kernal(&H49D), &H47): mov(kernal(&H49E), &H42)
           mov(mem, " RAM SYSTEM")
           for in range(mov(a, 1d), len(mem))
-			mov(kernal(&H49E add a), asc(mid(mem,a,1d)) add &H20)
+			mov(kernal(&H49E add a), asc(mid(mem,a,1d)) and &H3f)
           next a
           mov(kernal(&H49F), &H20): mov(kernal(&H4A3), &H20) ' Replace "@" at E49F and E4A3 with " ".         
-  end select
+  end select 
   mov(kernal(&H535), &HFA) '.,E534 A9 FA    LDA #$FA     ;set default text color to FA(Apple ][ Green)
   mov(kernal(&HCD9), &HFF) '.:ECD9 FF                    ;set default border color to FF(Black)
   mov(kernal(&HCDA), &HFF) '.:ECDA FF                    ;set default background color to FF(Black)

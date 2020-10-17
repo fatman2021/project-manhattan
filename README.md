@@ -1,26 +1,21 @@
+Character ROM           Copyright © 1959-2011 National Semiconductor Corporation
+                        Copyright © 2011-present Texas Instruments Incorporated
+                        Copyright © 2016-present MEGA65 Team 
 Dartmouth BASIC         Copyright © 1964-1979 John G. Kemény, Thomas E. Kurtz
-
 Microsoft BASIC         Copyright © 1975-present Microsoft Corporation
-    
 Commodore KERNAL ROM    Copyright © 1977-1994 Commodore International Limited
-		    
                         Copyright © 1995-1996 Escom
-                        
                         Copyright © 1997-2008 Tulip Computers NV
-                        
                         Copyright © 2008-2009 Nedfield NV
-                        
+                        Copyright © 2010-2020 Cloanto IT srl
+                        Copyright © 2020-present Amiga Corporation 
 MOS Technology 6510     Copyright © 1982-2001 MOS Technology, Inc.
-
+                        Copyright © 2002-present Western Design Center
 OpenGL Shading Language Copyright © 2004-2006 OpenGLARB
-
-      		    	    Copyright © 2006-present The Khronos Group, Inc.
-      		    	    
+    		    	    Copyright © 2006-present The Khronos Group, Inc.
 FreeBASIC               Copyright © 2004-present The FreeBASIC Development Team
-
 Shadertoy               Copyright © 2013-present Inigo Quilez & Pol Jeremias
-
-Project Manhattan       Copyright © 2018-present The Project Manhattan Team
+Project Manhattan       Copyright © 2019-present Project Manhattan Team
 
 # project-manhattan
 Next generation APU emulator for gaming and business applications.
