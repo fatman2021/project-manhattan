@@ -4,9 +4,11 @@
 #include once "address.bi"
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
 #include once "glsl.bi"
+#elseif defined(__FB_DOS__)
+common shared as any ptr render
+common shared as string msg
 #endif
 
-#define M_PI 3.1415926535897932384626433832795028
  
 #ifdef _DEBUG
 # define dprint(msg) open err for output as #99:print #99,"debug: " & msg:close #99
@@ -58,21 +60,22 @@
 #define low_nibble(x)   (logic_and(x,&H0F))
 #define high_nibble(x)  ((logic_and(x,&HF0)) shr 4)
 
-var shared mov(bd_color,0d)
-var shared mov(b,0d),mov(c,0d),mov(x,0d),mov(y,0d),mov(xs,0d),mov(ys,0d)
-var shared mov(uflag,0d),mov(UpdatedScreen,0d),mov(cary,0d)
 
-common shared as double offset,swch, sys_offset,str_len,cnt
+var shared mov(ld_x0,0d),mov(ld_y0,0d),mov(ld_z0,0d),mov(ld_x1,0d),mov(ld_y1,0d),mov(ld_z1,0d)
+var shared mov(fg_red,0d),mov(fg_grn,0d),mov(fg_blu,0d),mov(fg_aph,0d),mov(prc_flag,0d)
+var shared mov(bg_red,0d),mov(bg_grn,0d),mov(bg_blu,0d),mov(bg_aph,0d),mov(scro_x,0)
+var shared mov(font_f,0d),mov(font_o,0d), font_h=0, font_w=0, scro_y=0
+var shared fg_color=0, bg_color=0, bd_color=0, scr_ptr=0
+var shared x0=0, y0=0, z0=0,x1=0, y1=0, z1=0, b=0, c=0, x=0
+var shared y=0, xs=0, ys=0, uflag=0, UpdatedScreen=0,cary=0
+
+common shared as double offset,swch, sys_offset
 common shared as any ptr spr0,spr1,spr2,spr3
 common shared as any ptr spr4,spr5,spr6,spr7
 common shared as any ptr bgimage,fgimage,raster
 common shared as any ptr image
-common shared as string strCode,compiler
+common shared as string strCode
 common shared as string filename
-common shared as ulongint scr_w, scr_h,scr_pos
-common shared as any ptr render
-common shared as string msg
-
 
 type MEMORY_T
   public:
@@ -109,23 +112,11 @@ type MEMORY_T
   const as ulongint mov(basic_base,  &HA000) '  8 K
 #endif
   'Define datasets
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
-  as double   mem64   (16777215d) ' Ram
-  as double   kernal  (00016383d) ' OS
-  as double   basic   (00016383d) ' Basic
-  as double   char    (00016383d) ' Font
-  as double   col     (00001023d) ' color triples
-  as double   SINTable(00000359d) ' sine table
-  as double   COSTable(00000359d) ' cosine table
-#elseif defined(__FB_WIN32__) or defined(__FB_DOS__)
-  as double   mem64   (04194303d) ' Ram
-  as double   kernal  (00016383d) ' OS
-  as double   basic   (00016383d) ' Basic
-  as double   char    (00016383d) ' Font
-  as double   col     (00001023d) ' color triples
-  as double   SINTable(00000359d) ' sine table
-  as double   COSTable(00000359d) ' cosine table   
-#endif
+  as double   mem64 (16777215d) ' Ram
+  as double   kernal(00016383d) ' OS
+  as double   basic (00016383d) ' Basic
+  as double   char  (00016383d) ' Font
+  as double   col   (00001023d) ' color triples
 end type
 
 enum ADR_MODES
@@ -293,6 +284,11 @@ end type
 constructor C64_T
   dim as integer i,c
   dprint("C64_T()")
+#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
+  ScreenRes 1920d,1080d, 32d, 0d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+  mov(bgimage, ImageCreate(1920d,1080d,0d,32d))
+  mov(fgimage, ImageCreate(1920d,1080d,0d,32d))
+  mov(raster,  ImageCreate(1920d,0d,0d,32d))
   mov(spr0,    ImageCreate(56d,56d,0d,32d))
   mov(spr1,    ImageCreate(56d,56d,0d,32d))
   mov(spr2,    ImageCreate(56d,56d,0d,32d))
@@ -300,18 +296,22 @@ constructor C64_T
   mov(spr4,    ImageCreate(56d,56d,0d,32d))
   mov(spr5,    ImageCreate(56d,56d,0d,32d))
   mov(spr6,    ImageCreate(56d,56d,0d,32d))
-  mov(spr7,    ImageCreate(56d,56d,0d,32d))  
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
-  ScreenRes 1920d,1080d, 32d, 0d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+  mov(spr7,    ImageCreate(56d,56d,0d,32d))
 #elseif defined(__FB_DOS__)
   ScreenRes 800d,600d, 32d, 0d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+  mov(bgimage, ImageCreate(800d,600d,0d,32d))
+  mov(fgimage, ImageCreate(800d,600d,0d,32d))
+  mov(raster,  ImageCreate(800d,0d,0d,32d))
+  mov(spr0,    ImageCreate(56d,56d,0d,32d))
+  mov(spr1,    ImageCreate(56d,56d,0d,32d))
+  mov(spr2,    ImageCreate(56d,56d,0d,32d))
+  mov(spr3,    ImageCreate(56d,56d,0d,32d))
+  mov(spr4,    ImageCreate(56d,56d,0d,32d))
+  mov(spr5,    ImageCreate(56d,56d,0d,32d))
+  mov(spr6,    ImageCreate(35d,56d,0d,32d))
+  mov(spr7,    ImageCreate(56d,56d,0d,32d))
+  mov(render,  ImageCreate(800d,600d,0d,32d))
 #endif
-  ' get curent resolution
-  screeninfo scr_w, scr_h
-  mov(bgimage, ImageCreate(scr_w, scr_h,0d,32d))
-  mov(fgimage, ImageCreate(scr_w, scr_h,0d,32d))
-  mov(raster,  ImageCreate(scr_w,0d,0d,32d))
-  mov(render,  ImageCreate(scr_w,1080d,0d,32d))  
   for in range(mov(i, 0d), 15d)
     read c:palette i,c
   next
@@ -341,8 +341,24 @@ destructor C64_T
 end destructor
 
 constructor MEMORY_T
-  'Set default system offset
+  'Set default memory addresses
   mov(sys_offset,49152d)
+  mov(fg_red, sys_offset add 2d):     mov(fg_grn, sys_offset add 3d)
+  mov(fg_blu, sys_offset add 4d):     mov(fg_aph, sys_offset add 5d)
+  mov(bg_red, sys_offset add 6d):     mov(bg_grn, sys_offset add 7d)
+  mov(bg_blu, sys_offset add 8d):     mov(bg_aph, sys_offset add 9d)
+  mov(fg_color, sys_offset add 201d): mov(bg_color,sys_offset add 202d)
+  mov(scr_ptr, sys_offset add 299d):  mov(ld_x0,sys_offset add 010d)
+  mov(ld_y0,sys_offset add 016d):     mov(ld_z0,sys_offset add 022d)
+  mov(ld_x1,sys_offset add 028d):     mov(ld_y1,sys_offset add 034d)
+  mov(ld_z1,sys_offset add 040d):     mov(x0,sys_offset add 203d)
+  mov(y0,sys_offset add 204d):        mov(z0,sys_offset add 205d)
+  mov(x1,sys_offset add 206d):        mov(y1,sys_offset add 207d)
+  mov(z1,sys_offset add 208d):        mov(prc_flag,sys_offset add 252d)
+  mov(font_f,sys_offset add 231d):    mov(font_o,sys_offset add 232d)
+  mov(font_w,sys_offset add 233d):    mov(font_h,sys_offset add 234d)
+  mov(scro_x,sys_offset add 227d):    mov(scro_y,sys_offset add 228d)
+  'sys_offset+&HE3
   ' initialize zero page and the stack
   var b=0, index=0
   for in range(mov(index, 0000d), 0511d)
@@ -351,38 +367,21 @@ constructor MEMORY_T
   for in range(mov(index, 0512d), 1023d)
    mov(mem64(index), 255d)
   next index 
-  ' initialize sine and cosine tables
-  for in range(mov(index,0000d),359d)
-   mov(SINTable(index),SIN(index mul M_PI div 180d))  
-   mov(COSTable(index),COS(index mul M_PI div 180d))  
-  next index
   ' Set text color
-  poke64(49154d,255d) ' Red
-  poke64(49155d,255d) ' Greem
-  poke64(49156d,255d) ' Blue
-  poke64(49157d,255d) ' Alpha
-  poke64(49161d,255d) ' Background Color(Alpha)
-  
-  ' 648 Address 648 ($288) holds a "pointer" (or more precisely, half a pointer) that tells 
-  ' KERNAL where in RAM the text screen is currently located: The contents of address 648 is
-  ' the most significant 8 bits, or the "high-byte", of the text screen's physical start address.
-  poke64(648d,04d)  
-  ' Address 53272 ($D018) is a VIC-II register that generally tells the graphics chip where to "look for graphics", 
-  ' in conjunction with both the text screen and with bitmap graphics. 
-: poke64(53272d,31d)
-
-  ' 49383d flip font       
-  ' 49384d font offset
-  ' 49385d font width
-  ' 49386d font height
-'        font_f 
-  poke64(49383d,0d) 'Flip font
-'        font_o    
-  poke64(49384d,0d) 'Font offset
-'        font_w
-  poke64(49385d,7d) 'Font width 
-'        font_h
-  poke64(49386d,7d) 'Font height 
+  poke64(fg_red,255d) ' Red
+  poke64(fg_grn,255d) ' Greem
+  poke64(fg_blu,255d) ' Blue
+  poke64(fg_aph,255d) ' Alpha
+  poke64(bg_aph,255d) ' Background Color(Alpha)
+  poke64(648d,04d): poke64(53272d,31d) 'Sets screen memory to 1024
+  ' sys_offset+&HE7 flip font       
+  ' sys_offset+&HE8 font offset
+  ' sys_offset+&HE9 font width
+  ' sys_offset+&HEA font height
+  poke64(font_f,0d) 'Flip font  
+  poke64(font_o,0d) 'Font offset
+  poke64(font_w,7d) 'Font width 
+  poke64(font_h,7d) 'Font height 
   var i=0
   dim as ubyte tmp
   ' init all ROM's
@@ -415,8 +414,8 @@ constructor MEMORY_T
   
   var mem=chr(0), a=0
   
-  'mov(basic(&H0B46), &H00) '.,AB45 A9 00    LDA #$00        ;set input prompt to NULL
-  'mov(basic(&H178E), &H00) '.,B78E F0 05    BEQ $B794       ;ASC() - Ignore NULL
+  mov(basic(&H0B46), &H00) '.,AB45 A9 00    LDA #$00        ;set input prompt to NULL
+  mov(basic(&H178E), &H00) '.,B78E F0 05    BEQ $B794       ;ASC() - Ignore NULL
   
   'Patch BASIC startup messages"  
   mov(mem, "BYTES")
@@ -466,9 +465,9 @@ constructor MEMORY_T
           next a
           mov(kernal(&H49F), &H20): mov(kernal(&H4A3), &H20) ' Replace "@" at E49F and E4A3 with " ".         
   end select
-  mov(kernal(&H535), &HFA) '.,E534 A9 FA    LDA #$FA     ;set default text color to FA(Apple ][ Green)
-  mov(kernal(&HCD9), &HFF) '.:ECD9 FF                    ;set default border color to FF(Black)
-  mov(kernal(&HCDA), &HFF) '.:ECDA FF                    ;set default background color to FF(Black)
+  mov(kernal(&H535), &H07) '.,E534 A9 07    LDA #$07     ;set default text color to 07(White)
+  mov(kernal(&HCD9), &H00) '.:ECD9 00                    ;set default border color to 00(black)
+  mov(kernal(&HCDA), &H00) '.:ECDA 00                    ;set default background color to 00(black)
   /'
   kernal(&H506) = &H50 'get the x size
   kernal(&H598) = &H3C 'get the y size
@@ -501,8 +500,7 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
   mov(mem64(adr), v)
   if logic_and(adr geq 55296d,adr leq 56319d) then
     mov(adr subt, 55296d): mov(col(adr), v)
-'                      scr_ptr
-    mov(adr add, mem64(49451d))
+    mov(adr add, mem64(scr_ptr))
     mov(v, mem64(adr))
   end if
   if mov(adr, 199d) then 
@@ -522,7 +520,7 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
   this location.
   '/
   'if adr = 0 then Locate 1,1: Print "Hello from address 0": sleep
-  elseif mov(adr, FCOLOR) then ' Set foreground color							  							  
+  elseif mov(adr, 646d) then ' Set foreground color							  							  
    #include once "fg_color.bi"
   /'
   VIC-II Chip Memory Control Register
@@ -584,87 +582,71 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
   using Bank 2(32768-49151), the actual starting address of screen memory is
   32768+1024=33792 ($8400).
   '/
-  elseif mov(adr, VMCSB) then
+  elseif mov(adr, 53272d) then
   'dim as ubyte mov(hnibble,high_nibble(cast(ubyte,v)))
   'dim as ubyte mov(lnibble,low_nibble(cast(ubyte,v)))
     select case as const cast(ulongint, v)
-		   case 15:
-'                     scr_ptr		     
-		    mov(mem64(49451d), &H0000) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+		   case 15:  
+		    mov(mem64(scr_ptr), &H0000)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
 		   case 31:
-'                     scr_ptr		   
-		    mov(mem64(49451d), &H0400) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 47:
-'                     scr_ptr		     
-		    mov(mem64(49451d), &H0800) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 63:
-'                     scr_ptr		     
-		    mov(mem64(49451d), &H0C00) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 79:
-'                     scr_ptr		     
-		    mov(mem64(49451d), &H1000) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 95:
-'                     scr_ptr		     
-		    mov(mem64(49451d), &H1400) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 111:
-'                     scr_ptr		    
-		    mov(mem64(49451d), &H1800) '   scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 127:
-'                     scr_ptr		    
-		    mov(mem64(49451d), &H1C00) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 143:
-'                     scr_ptr		    
-		    mov(mem64(49451d), &H2000) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 159:
-'                     scr_ptr		    
-		    mov(mem64(49451d), &H2400) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+		    mov(mem64(scr_ptr), &H0400)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 47:  
+		    mov(mem64(scr_ptr), &H0800)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 63:  
+		    mov(mem64(scr_ptr), &H0C00)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 79:  
+		    mov(mem64(scr_ptr), &H1000)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 95:  
+		    mov(mem64(scr_ptr), &H1400)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 111: 
+		    mov(mem64(scr_ptr), &H1800)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 127: 
+		    mov(mem64(scr_ptr), &H1C00)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 143: 
+		    mov(mem64(scr_ptr), &H2000)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 159: 
+		    mov(mem64(scr_ptr), &H2400)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
 		   case 175: 
-'                     scr_ptr		   
-		    mov(mem64(49451d), &H2800) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 191:
-'                     scr_ptr		    
-		    mov(mem64(49451d), &H2C00) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+		    mov(mem64(scr_ptr), &H2800)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 191: 
+		    mov(mem64(scr_ptr), &H2C00)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
 		   case 207: 
-'                     scr_ptr		   
-		    mov(mem64(49451d), &H3000) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-	       case 223:
-'                     scr_ptr	        
-	        mov(mem64(49451d), &H3400) '    scr_ptr	        
-	        mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 239:
-'                     scr_ptr		    
-		    mov(mem64(49451d), &H3800) '    scr_ptr
-		    mov(mem64(&H0288), hibyte(mem64(49451d)))
-		   case 255:
-'                     scr_ptr		    
-		    mov(mem64(49451d), &H3C00) '    scr_ptr
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+		    mov(mem64(scr_ptr), &H3000)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+	       case 223: 
+	        mov(mem64(scr_ptr), &H3400)
+	        mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 239: 
+		    mov(mem64(scr_ptr), &H3800)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
+		   case 255: 
+		    mov(mem64(scr_ptr), &H3C00)
+		    mov(mem64(&H0288), hibyte(mem64(scr_ptr)))
     end select
   ' Sprite X Registers  
-  elseif logic_or(logic_or(logic_or(mov(adr, SP0X), mov(adr, SP1X)), logic_or(mov(adr, SP2X), mov(adr, SP3X))), _
-         logic_or(logic_or(mov(adr, SP4X), mov(adr, SP5X)), logic_or(mov(adr, SP6X), mov(adr, SP7X)))) then  
+  elseif logic_or(logic_or(logic_or(mov(adr, 53248d), mov(adr, 53250d)), logic_or(mov(adr, 53252d), mov(adr, 53254d))), _
+         logic_or(logic_or(mov(adr, 53256d), mov(adr, 53258d)), logic_or(mov(adr, 53260d), mov(adr, 53262d)))) then  
          mov(mem64(adr), v)
   ' Sprite Y Registers      	
-  elseif logic_or(logic_or(logic_or(mov(adr, SP0Y), mov(adr, SP1Y)), logic_or(mov(adr, SP2Y), mov(adr, SP3Y))), _
-         logic_or(logic_or(mov(adr, SP4Y), mov(adr, SP5Y)), logic_or(mov(adr, SP6Y), mov(adr, SP7Y)))) then  
+  elseif logic_or(logic_or(logic_or(mov(adr, 53249d), mov(adr, 53251d)), logic_or(mov(adr, 53253d), mov(adr, 53255d))), _
+         logic_or(logic_or(mov(adr, 53257d), mov(adr, 53259d)), logic_or(mov(adr, 53261d), mov(adr, 53263d)))) then  
          mov(mem64(adr), v)
   ' Sprite Color Registers       
-  elseif logic_or(logic_or(logic_or(mov(adr, SP0COL), mov(adr, SP1COL)), logic_or(mov(adr, SP2COL), mov(adr, SP3COL))), _
-         logic_or(logic_or(mov(adr, SP4COL), mov(adr, SP5COL)), logic_or(mov(adr, SP6COL), mov(adr, SP7COL)))) then         
-         poke64(FCOLOR,v)
+  elseif logic_or(logic_or(logic_or(mov(adr, 53287d), mov(adr, 53288d)), logic_or(mov(adr, 53289d), mov(adr, 53290d))), _
+         logic_or(logic_or(mov(adr, 53291d), mov(adr, 53292d)), logic_or(mov(adr, 53293d), mov(adr, 53294d)))) then         
+         poke64(646,v)
   /'
   Sprite Enable Register
   
@@ -687,34 +669,32 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
   that lie within the visible screen range in order for a sprite to appear on
   screen.  
   '/
-  elseif mov(adr, SPENA) then ' Sprite enable register
+  elseif mov(adr, 53269d) then ' Sprite enable register
    if     mov(check_bit(v,0),1)   then
-          put fgimage,(mem64(SP0X),mem64(SP0Y)),spr0,or
-          mov(mem64(SPRSDPR),cast(ulongint,@spr0))          
+          put fgimage,(mem64(53248),mem64(53249)),spr0,or
+          mov(mem64(2040),cast(ulongint,@spr0))          
    elseif mov(check_bit(v,1),2)   then
-          put fgimage,(mem64(SP1X),mem64(SP1Y)),spr1,or
-          mov(mem64(SPRSDPR add 1),cast(ulongint,@spr1))
+          put fgimage,(mem64(53250),mem64(53251)),spr1,or
+          mov(mem64(2041),cast(ulongint,@spr1))
    elseif mov(check_bit(v,2),4)   then
-          put fgimage,(mem64(SP2X),mem64(SP2Y)),spr2,or
-          mov(mem64(SPRSDPR add 2),cast(ulongint,@spr2))
+          put fgimage,(mem64(53252),mem64(53253)),spr2,or
+          mov(mem64(2042),cast(ulongint,@spr2))
    elseif mov(check_bit(v,3),8)   then
-          put fgimage,(mem64(SP3X),mem64(SP3Y)),spr3,or
-          mov(mem64(SPRSDPR add 3),cast(ulongint,@spr3))  
+          put fgimage,(mem64(53254),mem64(53255)),spr3,or
+          mov(mem64(2043),cast(ulongint,@spr3))  
    elseif mov(check_bit(v,4),16)  then
-          put fgimage,(mem64(SP4X),mem64(SP4Y)),spr4,or
-          mov(mem64(SPRSDPR add 4),cast(ulongint,@spr4))
+          put fgimage,(mem64(53256),mem64(53257)),spr4,or
+          mov(mem64(2044),cast(ulongint,@spr4))
    elseif mov(check_bit(v,5),32)  then
-          put fgimage,(mem64(SP5X),mem64(SP5Y)),spr5,or
-          mov(mem64(SPRSDPR add 5),cast(ulongint,@spr5))
+          put fgimage,(mem64(53258),mem64(53259)),spr5,or
+          mov(mem64(2045),cast(ulongint,@spr5))
    elseif mov(check_bit(v,6),64)  then
-          put fgimage,(mem64(SP6X),mem64(SP6Y)),spr6,or
-          mov(mem64(SPRSDPR add 6),cast(ulongint,@spr6))
+          put fgimage,(mem64(53260),mem64(53261)),spr6,or
+          mov(mem64(2046),cast(ulongint,@spr6))
    elseif mov(check_bit(v,7),128) then
-          put fgimage,(mem64(SP7X),mem64(SP7Y)),spr7,or
-          mov(mem64(SPRSDPR add 7),cast(ulongint,@spr7))
+          put fgimage,(mem64(53262),mem64(53263)),spr7,or
+          mov(mem64(2047),cast(ulongint,@spr7))
    end if
-   elseif mov(adr,RASTR) then
-     put (0,v),raster,alpha  
    /'
    Border Color Register
    
@@ -722,19 +702,19 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
    the central display area. The entire screen is set to this color when the
    blanking feature of Bit 4 of 53265 ($D011) is enabled. The default color
    value is 14.
-   '/                 
-  elseif mov(adr,EXTCOL) then ' Set border color
+   '/                
+   elseif mov(adr, 53280.0d) then ' Set border color
     #include "bd_color.bi"
   /'
   Background Color Registers
   Sets the background color for all text modes, sprite graphics, and multicolor bitmap graphics.
   '/      
-  elseif logic_or(logic_or(mov(adr, BGCOL0), mov(adr, BGCOL1)), logic_or(mov(adr, BGCOL2), mov(adr, BGCOL3))) then 
+  elseif logic_or(logic_or(mov(adr, 53281d), mov(adr, 53282d)), logic_or(mov(adr, 53283d), mov(adr, 53284d))) then 
    ' Set background color
    #include once "bg_color.bi"
   select case adr
     case &H00  
-	case 49152d 'Play DVD
+	case sys_offset
 #if defined(__FB_LINUX__)
 	 screen 0d: shell "mplayer -vo xv -fs -alang en dvd://" + str(v) + " -dvd-device /dev/sr0"
      ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
@@ -748,7 +728,7 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
      ScreenRes 800d,600d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
      paint(0d,0d), rgba(0d, 0d, 0d, 255d)
 #endif
-	case 49153d 'Display DVD menu
+	case sys_offset+&H01
 #if defined(__FB_LINUX__)
 	 screen 0d: shell "mplayer -vo xv -fs dvdnav:// -mouse-movements -dvd-device /dev/sr0"
      ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
@@ -758,268 +738,143 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
      ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
      paint(0d,0d), rgba(0d, 0d, 0d, 255d)   
 #endif     	  
-	case 49154d ' Foreground Red
-'              fg_color      alpha                     red                       green                     blue                	     
-	 mov(mem64(49353d),mem64(49157d) shl 24d add mem64(49154d) shl 16d add mem64(49155d) shl 08d add mem64(49156d))
-	case 49155d ' Foreground Green
-'              fg_color      alpha                     red                       green                     blue 
-	 mov(mem64(49353d),mem64(49157d) shl 24d add mem64(49154d) shl 16d add mem64(49155d) shl 08d add mem64(49156d))
-	case 49156d ' Foreground Blue
-'              fg_color      alpha                     red                       green                     blue 	
-	 mov(mem64(49353d),mem64(49157d) shl 24d add mem64(49154d) shl 16d add mem64(49155d) shl 08d add mem64(49156d))
-	case 49157d ' Foreground Alpha
-'              fg_color      alpha                     red                       green                     blue 
-	 mov(mem64(49353d),mem64(49157d) shl 24d add mem64(49154d) shl 16d add mem64(49155d) shl 08d add mem64(49156d))
-	case 49158d ' Background Red
-'              bg_color      alpha                     red                       green                     blue 
-	 mov(mem64(49354d),mem64(49161d) shl 24d add mem64(49158d) shl 16d add mem64(49159d) shl 08d add mem64(49160d))
-	case 49159d ' Background Green
-'              bg_color      alpha                     red                       green                     blue	
-	 mov(mem64(49354d),mem64(49161d) shl 24d add mem64(49158d) shl 16d add mem64(49159d) shl 08d add mem64(49160d))
-	case 49160d ' Background Blue
-'              bg_color      alpha                     red                       green                     blue	
-	 mov(mem64(49354d),mem64(49161d) shl 24d add mem64(49158d) shl 16d add mem64(49159d) shl 08d add mem64(49160d))
-	case 49161d ' Background Alapha
-'              bg_color      alpha                     red                       green                     blue 
-	 mov(mem64(49354d),mem64(49161d) shl 24d add mem64(49158d) shl 16d add mem64(49159d) shl 08d add mem64(49160d))
-	case 49162d 'ld x0
-'              x0            x0d4 	                   x0d3                      x0d2          
-	 mov(mem64(49355d),mem64(49163d) shl 32d add mem64(49164d) shl 24d add mem64(49165d) shl 16d add _        
-	                   mem64(49166d) shl 08d add mem64(49167))
-'                            x0d1                      x0d0		                   
-	case 49168d 'ld y0
-'              y0            y0d4      	               y0d3                      y0d2 
-	 mov(mem64(49356d),mem64(49169d) shl 32d add mem64(49170d) shl 24d add mem64(49171d) shl 16d add _
-	                   mem64(49172d) shl 08d add mem64(49173d))
-'                            y0d1                      y0d0	                   
-	case 49174d 'ld z0
-'              z0            z0d4                      z0d3                      z0d2   	           
-	 mov(mem64(49357d),mem64(49175d) shl 32d add mem64(49176d) shl 24d add mem64(49177d) shl 16d add _
-	                   mem64(49178d) shl 08d add mem64(49179d))
-'                            z0d1                      z0d0	                   
-	case 49180d 'ld x1
-'              x1            x1d4                      x1d3                      x1d2 
-	 mov(mem64(49358d),mem64(49181d) shl 32d add mem64(49182d) shl 24d add mem64(49183d) shl 16d add _
-	                   mem64(49184d) shl 08d add mem64(49185d))
-'                            x1d1                      x1d0	                   
-	case 49186d 'ld y1
-'              y1            y1d4                      y1d3                      y1d2	
-	 mov(mem64(49359d),mem64(49187d) shl 32d add mem64(49188d) shl 24d add mem64(49189d) shl 16d add _
-	                   mem64(49190d) shl 08d add mem64(49191d))
-'                            y1d1                      y1d0	                   
-	case 49192d 'ld z1
-'              z1            z1d4                      z1d3                      z1d2	
-	 mov(mem64(49360d),mem64(49193d) shl 32d add mem64(49194d) shl 24d add mem64(49195d) shl 16d add _
-	                   mem64(49196d) shl 08d add mem64(49197d))
-'                            z1d1                      z1d0	                   
-	case 49198d 'ld r0
-'              r0            r0d4                      r0d3                      r0d2
-	 mov(mem64(49361d),mem64(49199d) shl 32d add mem64(49200d) shl 24d add mem64(49201d) shl 16d add _
-	                   mem64(49202d) shl 08d add mem64(49203d))
-'                            r0d1                      r0d0	                   
-	case 49204d 'ld r1
-'              r1            r1d4                      r1d3                      r1d2   	
-	 mov(mem64(49362d),mem64(49205d) shl 32d add mem64(49206d) shl 24d add mem64(49207d) shl 16d add _
-	                   mem64(49208d) shl 08d add mem64(49209d))
-'                            r1d1                      r1d0  	                   
-	case 49210d 'ld r2
-'              r2            r2d4                      r2d3                      r2d2 	
-	 mov(mem64(49363d),mem64(49211d) shl 32d add mem64(49212d) shl 24d add mem64(49213d) shl 16d add _
-	                   mem64(49214d) shl 08d add mem64(49215d))
-'                            r2d1                      r2d0	                   
-	case 49216d 'ld r3
-'	           r3            r3d4                      r3d3                      r3d2 
-	 mov(mem64(49364d),mem64(49217d) shl 32d add mem64(49218d) shl 24d add mem64(49219d) shl 16d add _
-	                   mem64(49221d) shl 08d add mem64(49222d))
-'                            r3d1                      r3d0	                   
-	case 49223d 'ld r4
-'              r4            r4d4                      r4d3                      r4d2	
-	 mov(mem64(49365d),mem64(49224d) shl 32d add mem64(49225d) shl 24d add mem64(49226d) shl 16d add _
-	                   mem64(49227d) shl 08d add mem64(49228d))
-'                            r4d1                      r4d0	                   
-	case 49227d 'ld r5
-'              r5            r5d4                      r5d3	                     r5d2
-	 mov(mem64(49366d),mem64(49229d) shl 32d add mem64(49230d) shl 24d add mem64(49231d) shl 16d add _
-	                   mem64(49232d) shl 08d add mem64(49233d))
-'                            r5d1                      r5d0	                   
-	case 49234d 'ld r6
-'              r6            r6d4                      r6d3                      r6d2	
-	 mov(mem64(49367d),mem64(49235d) shl 32d add mem64(49236d) shl 24d add mem64(49237d) shl 16d add _
-	                   mem64(49238d) shl 08d add mem64(49239d))
-'                            r6d1                      r6d0	                   
-	case 49240d 'ld r7
-'              r7            r7d4                      r7d3                      r7d2	
-	 mov(mem64(49368d),mem64(49241d) shl 32d add mem64(49242d) shl 24d add mem64(49243d) shl 16d add _
-	                   mem64(49244d) shl 08d add mem64(49245d))
-'                            r7d1                      r7d0	                   
-	case 49246d 'ld r8
-'              r8            r8d4                      r8d3                      r8d2	
-	 mov(mem64(49369d),mem64(49247d) shl 32d add mem64(49248d) shl 24d add mem64(49249d) shl 16d add _
-	                   mem64(49250d) shl 08d add mem64(49251d))
-'                            r8d1                      r8d0	                   
-	case 49252d 'ld r9
-'              r9            r9d4                      r9d3                      r9d2	                        
-	 mov(mem64(49370d),mem64(49253d) shl 32d add mem64(49254d) shl 24d add mem64(48255d) shl 16d add _
-	                   mem64(49256d) shl 08d add mem64(49257d))
-'                            r9d1                      r9d0	                   
-	case 49258d 'ld r10
-'              r10           r10d4                     r10d3                     r10d2	
-	 mov(mem64(49371d),mem64(49259d) shl 32d add mem64(49260d) shl 24d add mem64(49261d) shl 16d add _
-	                   mem64(49262d) shl 08d add mem64(49263d))
-'                            r10d1                     r10d0	                   
-	case 49264d 'ld r11
-'	           r11           r11d4                     r11d3                     r11d2
-	 mov(mem64(49372d),mem64(49265d) shl 32d add mem64(49266d) shl 24d add mem64(49267d) shl 16d add _
-	                   mem64(49268d) shl 08d add mem64(49269d))
-'                            r11d1                     r11d0	                   
-	case 49270d 'ld rot0
-'              rot0          rot0d4                    rot0d3                    rot0d2	
-	 mov(mem64(49373d),mem64(49271d) shl 32d add mem64(49272d) shl 24d add mem64(49273d) shl 16d add _
-	                   mem64(49274d) shl 08d add mem64(49275d))
-'                            rot0d1                    rot0d0	                   
-	case 49276d 'ld rot1
-'              rot1          rot1d4                    rot1d3                   rot1d2	
-	 mov(mem64(49374d),mem64(49277d) shl 32d add mem64(49278d) shl 24d add mem64(49279d) shl 16d add _
-	                   mem64(49280d) shl 08d add mem64(49281d))
-'                            rot1d1                    rot1d0	                   
-	case 49282d 'ld rot2
-'               rot2         rot2d4                    rot2d3                    rot2d2	
-	 mov(mem64(49375d),mem64(49283d) shl 32d add mem64(49284d) shl 24d add mem64(49285d) shl 16d add _
-	                   mem64(49286d) shl 08d add mem64(49287d))
-'                            rot2d1                    rot2d0	                   
-	case 49288d 'ld rot3
-'              rot3          rot3d4                    rot3d3                    rot3d2	
-	 mov(mem64(49376d),mem64(49289d) shl 32d add mem64(49290d) shl 24d add mem64(49291d) shl 16d add _
-	                   mem64(49292d) shl 08d add mem64(49293d))
-'                            rot3d1                    rot3d0
-	case 49294d 'ld rot4
-'              rot4          rot4d4                    rot4d3                   rot4d2	
-	 mov(mem64(49377d),mem64(49295d) shl 32d add mem64(49296d) shl 24d add mem64(49297d) shl 16d add _
-	                   mem64(49298d) shl 08d add mem64(49299d))
-'                            rot4d1                    rot4d0	                   
-	case 49300d 'ld rot5
-'              rot5          rot5d4                    rot5d3                    rot5d2	
-	 mov(mem64(49378d),mem64(49301d) shl 32d add mem64(49302d) shl 24d add mem64(49303d) shl 16d add _
-	                   mem64(49304d) shl 08d add mem64(49305d))
-'                            rot5d1                    rot5d0	                   		  		  		  		  		  		  		  		  		  		  		  		  		  		  
-	case 49306d 'ld rot6
-'              rot6          rot6d4                    rot6d3                    rot6d2	
-	 mov(mem64(49379d),mem64(49307d) shl 32d add mem64(49308d) shl 24d add mem64(49309d) shl 16d add _
-	                   mem64(49310d) shl 08d add mem64(49311d))
-'                             rot6d1     	           rot6d0               
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
-	case 49312d 'glScreen
-'                   x0            y0	
-	 glScreen(mem64(49355d),mem64(49356d),,,true)
-#elseif defined(__FB_DOS__)
-	case 49312d 'screenres
-'                    x0            y0	
-	 screenres(mem64(49355d),mem64(49356d),0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
-#endif		 						  							  
-    #include once "graph3d.bas" '-> Compile, execute GLSL/OS, keyword database 
-	case 49314d ' language/compiler selector
-	 select case v
-	   case 000
-	    mov(filename,"tmp.bas"):   mov(compiler,"fbc ")                      ' FreeBASIC
-	   case 001
-	    mov(filename,"tmp.bas"):   mov(compiler,"fbc -lang qb ")             ' QBASIC 1.1	    
-	   case 002
-	    mov(filename,"tmp.bas"):   mov(compiler,"../pcbasic/pcbasic --run ") ' PC-BASIC/GW-BASIC/BASICA
-	   case 003
-	    mov(filename,"tmp.bas"):   mov(compiler,"../qb64/qb64 -c ")          ' QB64
-	   case 004
-	    mov(filename,"tmp.bas"):   mov(compiler,"vbc ")                      ' Visual Basic	    	     
-	   case 005 	    
-	    mov(filename,"tmp.glsl"):  mov(compiler,"")                          ' OpenGL Shading Language
-	   case 006 
-	    mov(filename,"tmp.cob"):   mov(compiler,"cobc ")                     ' GNU COBOL
-	   case 007
-	    mov(filename,"tmp.f77"):   mov(compiler,"gfortran ")                 ' GNU FORTRAN 77
-	   case 008
-	    mov(filename,"tmp.pas"):   mov(compiler,"fpc ")                      ' GNU PASCAL
-	   case 009
-	    mov(filename,"tmp.osl"):   mov(compiler,"")                          ' Open Shading Language
-	   case 010
-	    mov(filename,"tmp.pov"):   mov(compiler,"povray ")                   ' Persistence of Vision Raytracer
-	   case 011
-	    mov(filename,"tmp.java"):  mov(compiler,"java ")                     ' Java
-	   case 012
-	    mov(filename,"tmp.c"):     mov(compiler,"gcc ")                      ' GNU C
-	   case 013
-	    mov(filename,"tmp.cpp"):   mov(compiler,"g++ ")                      ' GNU C++
-	   case 014
-	    mov(filename,"tmp.cs"):    mov(compiler,"csc ")                      ' C#
-	   case 015
-	    mov(filename,"tmp.js"):    mov(compiler,"node ")                     ' JavaScript
-	   case 016
-	    mov(filename,"tmp.php"):   mov(compiler,"php -f ")                   ' PHP
-	   case 01
-	    mov(filename,"tmp.py"):    mov(compiler,"python ")                   ' Python
-	   case 018
-	    mov(filename,"tmp.swift"): mov(compiler,"swift ")                    ' Swift
-	   case 019
-	    mov(filename,"tmp.m"):     mov(compiler,"octave --persist ")         ' MATLAB/Octave
-	   case 020
-	    mov(filename,"tmp.kt"):    mov(compiler,"kotlinc ")                  ' Kotlin
-	   case 021
-	    mov(filename,"tmp.r"):     mov(compiler,"rscript ")                  ' R
-	   case 022
-	    mov(filename,"tmp.dart"):  mov(compiler,"dart ")                     ' Dart
-	   case 023
-	    mov(filename,"tmp.scala"): mov(compiler,"scalac ")                   ' Scala
-	   case 024 ' Open file
-	    open filename for output as #1
-	   case 025 ' Close File
-	    close #1
-	   case 026 ' Compile and execute progam
-	    line fgimage, (0,0)-(scr_w, scr_h), rgba(0,0,0,255),bf
-	    shell compiler add filename
-	    shell "./tmp > tmp.txt"
-	    open "tmp.txt" for input as #1
-	      mov(scr_pos,mem64(49451d)):mov(scr_pos,0)
-	      do until eof(1)
-	        input #1, strCode
-	        for in range(mov(index,1),len(strCode))
-'                      r0	        
-	         mov(mem64(49361d),asc(mid(strCode,index,1)))
-'                         scr_ptr                                     r0	         
-             poke64(mem64(49451d) add (index subt 1) add scr_pos,mem64(49361d) and &H3f)
-            next 
-            mov(scr_pos add,(52 subt len(strCode)))
-	      loop  
-	    close #1
-	    mov(strCode,"press@any@key@to@continue")
-	    for in range(mov(index,1),len(strCode))
-'                  r0	        
-	     mov(mem64(49361d),asc(mid(strCode,index,1)))
-'                     scr_ptr                                      r0	         
-         poke64(mem64(49451d) add (index subt 1) add scr_pos,(mem64(49361d) add &H20) and &H3f)
-        next	    
-	    shell "rm ./tmp; ./" add filename
-	    mov(scr_pos,0):mov(strCode,"")
-	    put (0,0),fgimage,pset
-	    sleep     	      	         	      	     
-	 end select
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
-    case 49315d 'Load and compile tmp.glsl
+	case fg_red ' Foreground Red
+	 mov(mem64(fg_color),mem64(fg_aph) shl 24d add mem64(fg_red) shl 16d add mem64(fg_grn) shl 08d add mem64(fg_blu))
+	case fg_grn ' Foreground Green
+	 mov(mem64(fg_color),mem64(fg_aph) shl 24d add mem64(fg_red) shl 16d add mem64(fg_grn) shl 08d add mem64(fg_blu))
+	case fg_blu ' Foreground Blue
+	 mov(mem64(fg_color),mem64(fg_aph) shl 24d add mem64(fg_red) shl 16d add mem64(fg_grn) shl 08d add mem64(fg_blu))
+	case fg_aph ' Foreground Alpha
+	 mov(mem64(fg_color),mem64(fg_aph) shl 24d add mem64(fg_red) shl 16d add mem64(fg_grn) shl 08d add mem64(fg_blu))
+	case bg_red ' Background Red
+	 mov(mem64(bg_color),mem64(bg_aph) shl 24d add mem64(bg_red) shl 16d add mem64(bg_grn) shl 08d add mem64(bg_blu))
+	case bg_grn ' Background Green
+	 mov(mem64(bg_color),mem64(bg_aph) shl 24d add mem64(bg_red) shl 16d add mem64(bg_grn) shl 08d add mem64(bg_blu))
+	case bg_blu ' Background Blue
+	 mov(mem64(bg_color),mem64(bg_aph) shl 24d add mem64(bg_red) shl 16d add mem64(bg_grn) shl 08d add mem64(bg_blu))
+	case bg_aph ' Background Alapha
+	 mov(mem64(bg_color),mem64(bg_aph) shl 24d add mem64(bg_red) shl 16d add mem64(bg_grn) shl 08d add mem64(bg_blu))
+	case ld_x0'x0
+	 mem64(x0) = mem64(sys_offset+&H0B) shl 32d + mem64(sys_offset+&H0C) shl 24d +_
+				 mem64(sys_offset+&H0D) shl 16d + mem64(sys_offset+&H0E) shl 08d +_
+				 mem64(sys_offset+&H0F)
+	case ld_y0 'y0
+	 mem64(y0) = mem64(sys_offset+&H11) shl 32d + mem64(sys_offset+&H12) shl 24d +_
+				 mem64(sys_offset+&H13) shl 16d + mem64(sys_offset+&H14) shl 08d +_
+				 mem64(sys_offset+&H15)
+	case ld_z0 'z0
+	 mem64(z0) = mem64(sys_offset+&H17) shl 32d + mem64(sys_offset+&H18) shl 24d +_
+				 mem64(sys_offset+&H19) shl 16d + mem64(sys_offset+&H1A) shl 08d +_
+				 mem64(sys_offset+&H1B)
+	case ld_x1 'x1
+	 mem64(x1) = mem64(sys_offset+&H1D) shl 32d + mem64(sys_offset+&H1E) shl 24d +_
+				 mem64(sys_offset+&H1F) shl 16d + mem64(sys_offset+&H20) shl 08d +_
+				 mem64(sys_offset+&H21)
+	case ld_y1 'y1
+	 mem64(y1) = mem64(sys_offset+&H23) shl 32d + mem64(sys_offset+&H24) shl 24d +_
+				 mem64(sys_offset+&H25) shl 16d + mem64(sys_offset+&H26) shl 08d +_
+				 mem64(sys_offset+&H27)
+	case ld_z1 'z1
+	 mem64(z1) = mem64(sys_offset+&H28) shl 32d + mem64(sys_offset+&H29) shl 24d +_
+				 mem64(sys_offset+&H2A) shl 16d + mem64(sys_offset+&H2C) shl 08d +_
+				 mem64(sys_offset+&H2D)
+	case sys_offset+&H2E 'r0
+	 mem64(sys_offset+&HD1) = mem64(sys_offset+&H2F) shl 32d + mem64(sys_offset+&H30) shl 24d +_
+							  mem64(sys_offset+&H31) shl 16d + mem64(sys_offset+&H32) shl 08d +_
+							  mem64(sys_offset+&H33)
+	case sys_offset+&H34 'r1
+	 mem64(sys_offset+&HD2) = mem64(sys_offset+&H35) shl 32d + mem64(sys_offset+&H36) shl 24d +_
+							  mem64(sys_offset+&H37) shl 16d + mem64(sys_offset+&H38) shl 08d +_
+							  mem64(sys_offset+&H39)
+	case sys_offset+&H3A 'r2
+	 mem64(sys_offset+&HD3) = mem64(sys_offset+&H3B) shl 32d + mem64(sys_offset+&H3C) shl 24d +_
+							  mem64(sys_offset+&H3D) shl 16d + mem64(sys_offset+&H3E) shl 08d +_
+							  mem64(sys_offset+&H3F)
+	case sys_offset+&H40 'r3
+	 mem64(sys_offset+&HD4) = mem64(sys_offset+&H41) shl 32d + mem64(sys_offset+&H42) shl 24d +_
+							  mem64(sys_offset+&H43) shl 16d + mem64(sys_offset+&H44) shl 08d +_
+							  mem64(sys_offset+&H45)
+	case sys_offset+&H46 'r4
+	 mem64(sys_offset+&HD5) = mem64(sys_offset+&H47) shl 32d + mem64(sys_offset+&H48) shl 24d +_
+							  mem64(sys_offset+&H49) shl 16d + mem64(sys_offset+&H4A) shl 08d +_
+							  mem64(sys_offset+&H4B)
+	case sys_offset+&H4C 'r5
+	 mem64(sys_offset+&HD6) = mem64(sys_offset+&H4D) shl 32d + mem64(sys_offset+&H4E) shl 24d +_
+							  mem64(sys_offset+&H4F) shl 16d + mem64(sys_offset+&H50) shl 08d +_
+							  mem64(sys_offset+&H51)
+	case sys_offset+&H52 'r6
+	 mem64(sys_offset+&HD7) = mem64(sys_offset+&H53) shl 32d + mem64(sys_offset+&H54) shl 24d +_
+							  mem64(sys_offset+&H55) shl 16d + mem64(sys_offset+&H56) shl 08d +_
+							  mem64(sys_offset+&H57)
+	case sys_offset+&H58 'r7
+	 mem64(sys_offset+&HD8) = mem64(sys_offset+&H59) shl 32d + mem64(sys_offset+&H5A) shl 24d +_
+							  mem64(sys_offset+&H5B) shl 16d + mem64(sys_offset+&H5C) shl 08d +_
+							  mem64(sys_offset+&H5D)
+	case sys_offset+&H5E 'r8
+	 mem64(sys_offset+&HD9) = mem64(sys_offset+&H5F) shl 32d + mem64(sys_offset+&H60) shl 24d +_
+							  mem64(sys_offset+&H61) shl 16d + mem64(sys_offset+&H62) shl 08d +_
+							  mem64(sys_offset+&H63)
+	case sys_offset+&H64 'r9
+	 mem64(sys_offset+&HDA) = mem64(sys_offset+&H65) shl 32d + mem64(sys_offset+&H66) shl 24d +_
+							  mem64(sys_offset+&H67) shl 16d + mem64(sys_offset+&H68) shl 08d +_
+							  mem64(sys_offset+&H69)
+	case sys_offset+&H6A 'r10
+	 mem64(sys_offset+&HDB) = mem64(sys_offset+&H6B) shl 32d + mem64(sys_offset+&H6C) shl 24d +_
+							  mem64(sys_offset+&H6D) shl 16d + mem64(sys_offset+&H6E) shl 08d +_
+							  mem64(sys_offset+&H6F)
+	case sys_offset+&H70 'r11
+	 mem64(sys_offset+&HDC) = mem64(sys_offset+&H71) shl 32d + mem64(sys_offset+&H72) shl 24d +_
+							  mem64(sys_offset+&H73) shl 16d + mem64(sys_offset+&H74) shl 08d +_
+							  mem64(sys_offset+&H75)
+	case sys_offset+&H76 'rot0
+	 mem64(sys_offset+&HDD) = mem64(sys_offset+&H77) shl 32d + mem64(sys_offset+&H78) shl 24d +_
+							  mem64(sys_offset+&H79) shl 16d + mem64(sys_offset+&H7A) shl 08d +_
+							  mem64(sys_offset+&H7B)
+	case sys_offset+&H7C 'rot1
+	 mem64(sys_offset+&HDE) = mem64(sys_offset+&H7D) shl 32d + mem64(sys_offset+&H7E) shl 24d +_
+							  mem64(sys_offset+&H7F) shl 16d + mem64(sys_offset+&H80) shl 08d +_
+							  mem64(sys_offset+&H81)
+	case sys_offset+&H82 'rot2
+	 mem64(sys_offset+&HDF) = mem64(sys_offset+&H83) shl 32d + mem64(sys_offset+&H84) shl 24d +_
+							  mem64(sys_offset+&H85) shl 16d + mem64(sys_offset+&H86) shl 08d +_
+							  mem64(sys_offset+&H87)
+	case sys_offset+&H88 'rot3
+	 mem64(sys_offset+&HE0) = mem64(sys_offset+&H89) shl 32d + mem64(sys_offset+&H8A) shl 24d +_
+							  mem64(sys_offset+&H8B) shl 16d + mem64(sys_offset+&H8C) shl 08d +_
+							  mem64(sys_offset+&H8D)
+	case sys_offset+&H8E 'rot4
+	 mem64(sys_offset+&HE1) = mem64(sys_offset+&H8F) shl 32d + mem64(sys_offset+&H90) shl 24d +_
+							  mem64(sys_offset+&H91) shl 16d + mem64(sys_offset+&H92) shl 08d +_
+							  mem64(sys_offset+&H93)
+	case sys_offset+&H94 'rot5
+	 mem64(sys_offset+&HE2) = mem64(sys_offset+&H95) shl 32d + mem64(sys_offset+&H96) shl 24d +_
+							  mem64(sys_offset+&H97) shl 16d + mem64(sys_offset+&H98) shl 08d +_
+							  mem64(sys_offset+&H99)		  		  		  		  		  		  		  		  		  		  		  		  		  		  
+	case sys_offset+&H9A 'd0
+	 mem64(sys_offset+&HE3) = mem64(sys_offset+&H9B) shl 32d + mem64(sys_offset+&H9C) shl 24d +_
+							  mem64(sys_offset+&H9D) shl 16d + mem64(sys_offset+&H9E) shl 08d +_
+							  mem64(sys_offset+&H9F)
+	case sys_offset+&HA0 'd1
+	 mem64(sys_offset+&HE4) = mem64(sys_offset+&HA1) shl 32d + mem64(sys_offset+&HA2) shl 24d +_
+							  mem64(sys_offset+&HA3) shl 16d + mem64(sys_offset+&HA4) shl 08d +_
+							  mem64(sys_offset+&HA5)
+     #include once "graph3d.bas"
+	case sys_offset+&HA2 
+     #include once "mainImage.bas"
+    case sys_offset+&HA3
      filename  = "tmp.glsl": poke64(&HC0A1,&H00)
-#endif     
     'SYS calls sys_offset+A4 to sys_offset+A9        
-    case 49322d 'Get mouse screen location and status
-      dim as integer x, y, wheel, buttons, res
-'     Mouse driver return address: 49322d  
-      mem64(49322d) =  GetMouse(x, y, ,buttons)
-'           x0                y0                z0      
-      mem64(49355d) = x:mem64(49356d) = y:mem64(49357d) = wheel
-'                                  x1      
-      if buttons and 1d then mem64(49358d) = 1d 'L
-'                                  x1
-      if buttons and 2d then mem64(49358d) = 2d 'R
-'                                  x1      
-      if buttons and 4d then mem64(49358d) = 4d 'M
-    case 49323d ' Copies from page x0 to page y0 
-      pcopy mem64(49355d), mem64(49356d)                          
-    case 49382d ''font v - Loads monochrome 8x8 font into Character RAM.
+    case sys_offset+&HAA 'Mouse driver
+      dim as integer x, y, wheel, buttons, res 
+      mem64(sys_offset+&HAA) =  GetMouse(x, y, ,buttons)
+      mem64(sys_offset+&HCB) = x
+      mem64(sys_offset+&HCC) = y
+      mem64(sys_offset+&HCD) = wheel
+      if buttons and 1d then mem64(sys_offset+&HCE) = 1d 'L
+      if buttons and 2d then mem64(sys_offset+&HCE) = 2d 'R
+      if buttons and 4d then mem64(sys_offset+&HCE) = 4d 'M
+    case sys_offset+&HAB:pcopy mem64(sys_offset+&HCB), mem64(sys_offset+&HCC)                             
+    case sys_offset+&HE6 'Change font
        dim as ubyte tmp
        for c as integer = &H0000 to &H1FFF: char(c)=&H00: next c
        open "./chargen/"+str(v)+".c64" for binary as #1
@@ -1027,94 +882,79 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
          get #1,,tmp: char(i)=tmp
         next i
        close #1
-  ' 49383d flip font       
-  ' 49384d font offset
-  ' 49385d font width
-  ' 49386d font height
- case 49387d,49388d 'Amiga style Hold-and-Modify - foreground and boarder color
+    ' sys_offset+&HE7 flip font       
+    ' sys_offset+&HE8 font offset
+    ' sys_offset+&HE9 font width
+    ' sys_offset+&HEA font height
+ case sys_offset add &HEC,sys_offset add &HEC 'Amiga style Hold-and-Modify - foreground and boarder color
      select case v
-		case &B000000 to &B001111:poke64(FCOLOR,v mod 255)
-'                                        fg_red		
-		case &B010000 to &B011111:poke64(49154d,(((v subt &B010000) mod 255) mul 17) mod 255)
-'                                        fg_grn
-		case &B100000 to &B101111:poke64(49155d,(((v subt &B100000) mod 255) mul 17) mod 255)
-'                                        fg_blu		
-		case &B110000 to &B111111:poke64(49156d,(((v subt &B110000) mod 255) mul 17) mod 255)
-'                         fg_aph		
-     	case else: poke64(49157d,(((v subt &B1000000) mod 255) mul 17) mod 255)					  
+		case &B000000 to &B001111:poke64(646,v mod 255)
+		case &B010000 to &B011111:poke64(bg_red,(((v subt &B010000) mod 255) mul 17) mod 255)
+		case &B100000 to &B101111:poke64(bg_grn,(((v subt &B100000) mod 255) mul 17) mod 255)
+		case &B110000 to &B111111:poke64(bg_blu,(((v subt &B110000) mod 255) mul 17) mod 255)
+     	case else: poke64(bg_aph,(((v subt &B1000000) mod 255) mul 17) mod 255)					  
      end select
-     if mov(adr,sys_offset add &HEC) then
-'                           fg_color      
-        poke64(EXTCOL,peek64(49353d))
-'                           fg_color        
-        poke64(BGCOL0,peek64(49353d))
+     if mov(adr,sys_offset add &HEC) then 
+        poke64(53280,peek64(fg_color))
+        poke64(53281,peek64(fg_color))
      end if     
-    case 49389d 'Amiga style Hold-and-Modify - background
+    case sys_offset add &HED 'Amiga style Hold-and-Modify - background
      select case v
-		case &B000000 to &B001111:poke64(BGCOL0,v mod 255)
-'                                        bg_red		
-		case &B010000 to &B011111:poke64(49158d,(((v subt &B010000) mod 255) mul 17) mod 255)
-'                                        bg_grn
-		case &B100000 to &B101111:poke64(49159d,(((v subt &B100000) mod 255) mul 17) mod 255)
-'                                        bg_blu
-		case &B110000 to &B111111:poke64(49160d,(((v subt &B110000) mod 255) mul 17) mod 255)
-'                         bg_aph
-     	case else: poke64(49161d,(((v subt &B1000000) mod 255) mul 17) mod 255)					  
+		case &B000000 to &B001111:poke64(53281,v mod 255)
+		case &B010000 to &B011111:poke64(bg_red,(((v subt &B010000) mod 255) mul 17) mod 255)
+		case &B100000 to &B101111:poke64(bg_grn,(((v subt &B100000) mod 255) mul 17) mod 255)
+		case &B110000 to &B111111:poke64(bg_blu,(((v subt &B110000) mod 255) mul 17) mod 255)
+     	case else: poke64(bg_aph,(((v subt &B1000000) mod 255) mul 17) mod 255)					  
      end select      
-    case 49390d ' Amiga style Hold-and-Modify - Draw foreground
-'                             x0            y0              x1            y1             fg_color      
-          line fgimage,(mem64(49355d),mem64(49356d))-(mem64(49358d),mem64(49359d)),mem64(49353d), BF       
-    case 49391d ' Amiga style Hold-and-Modify - Draw background
-'                             x0            y0              x1            y1             bg_color
-          line fgimage,(mem64(49355d),mem64(49356d))-(mem64(49358d),mem64(49359d)),mem64(49354d), BF              
-    case 49392d ' Execute external program using the chain command.
+    case sys_offset+&HEE ' Amiga style Hold-and-Modify - Draw foreground
+          line fgimage,(mem64(x0),mem64(y0))-(mem64(x1),mem64(y1)),mem64(fg_color), BF       
+    case sys_offset+&HEF ' Amiga style Hold-and-Modify - Draw background
+          line fgimage,(mem64(x0),mem64(y0))-(mem64(x1),mem64(y1)),mem64(bg_color), BF              
+    case sys_offset+&HF0
      'locate 1,1: print strCode
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
      screen 0: chain strCode: strCode = ""
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
-'                                             scr_ptr
-     for offset = &H000 to &H400: poke64(mem64(49451d) add offset, 32): next offset
+     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset
 #elseif defined(__FB_DOS__)
      screen 0: chain strCode: strCode = ""
      ScreenRes 800,600, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
-'                                              scr_ptr     
-     for offset = &H000 to &H400: poke64(mem64(49451d) add offset, 32): next offset
+     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset
 #endif                      
-    case 49393d ' Execute MS-Windows program
+    case sys_offset+&HF1
 #if defined(__FB_LINUX__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)    
      screen 0: shell "wine " + strCode: strCode = ""
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
-'                                              scr_ptr
-     for offset = &H000 to &H400: poke64(mem64(49451d) add offset, 32): next offset 
+     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset 
 #endif                    
-    case 49394d ' Execute MS-DOS program
+    case sys_offset+&HF2
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)    
      screen 0:shell "dosbox " + strCode+" -fullscreen -exit": strCode = ""
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
      'for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset            
 #elseif defined(__FB_DOS__)
-     screen 0: shell strCode: strCode = ""
+     screen 0: shell "command.com": strCode = ""
      ScreenRes 800,600, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)     
 #endif
-    case 49395d ' Open Intel Assembly Language File
+    case sys_offset+&HF3
      open strCode+".asm" for output as #1
      strCode=""
-    case 49396d ' Write to Intel ASM file
+    case sys_offset+&HF4
      print #1, strCode: strCode = ""
-    case 49397d ' Close Intel ASM File
+    case sys_offset+&HF5
      close #1: strCode = "" 
-    case 49398d
+    case sys_offset+&HF6
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
-     shell "nasm "+strCode+".asm -f bin -o"+strCode+".bin": strCode = ""
+     shell "nasm "+strCode+".asm -f bin "+strCode+".bin": strCode = ""
 #elseif defined(__FB_DOS__)
-     shell "nasm "+strCode+".asm -f bin -o"+strCode+".com": strCode = ""
+     shell "nasm "+strCode+".asm -f bin "+strCode+".com": strCode = ""
 #endif     
-    case 49399d ' Execute external boot sector
+    case sys_offset+&HF7
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
      screen 0: shell "dosbox -c 'boot "+strCode+"'"+" -exit"
      shell "rm " + strCode: strCode = ""
@@ -1125,208 +965,42 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 #endif    
      paint(0,0), rgba(0, 0, 0, 255)
      for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset     
-    case 49400d ' Execute external program using the shell command.
+    case sys_offset+&HF8
      shell strCode: strCode = ""
-    case 49401d: swch = v ' Set swch to v
-    case 49402d ' Add byte to string
+    case sys_offset+&HF9: swch = v 
+    case sys_offset+&HFA
      strCode=strCode+lcase(chr(v)) 
-    case 49403d 'Write string to file
+    case sys_offset+&HFB
      print #1, strCode: strCode = ""
-    case 49404d 'Flag: Print Reverse Characters?0=No
-     mov(mem64(RVS), v) ' RVS=v
+    case sys_offset+&HFC 'Flag: Print Reverse Characters?0=No
+     mov(mem64(RVS), v)
      if char(c) and (128d shr x) then
-'                                     HAM8_BG                HAM8_FG     
-        if mem64(RVS)<>0d then poke64(49391d,0d) else poke64(49390d,0d)         
+        if mem64(RVS)<>0d then poke64(sys_offset+&HEF,0d) else poke64(sys_offset+&HEE,0d)         
      else
-'                                     HAM8_FG                HAM8_BG
-        if mem64(RVS)<>0d then poke64(49390d,0d) else poke64(49391d,0d)         
+        if mem64(RVS)<>0d then poke64(sys_offset+&HEE,0d) else poke64(sys_offset+&HEF,0d)         
      end if
-    case 49405d: close #1 	' Close file	
-	case 49406d ' Add byte to file name
+    case sys_offset+&HFD: close #1 		
+	case sys_offset+&HFE
 	 filename=filename+lcase(chr(v))
-	case 49407d ' Compile and execute glsl program
+	case sys_offset+&HFF
 	 'locate 1,1: print filename: sleep 1
-	 poke64(49313d,0d): filename=""
-	case 49408d ' Text buffer bank switching
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
+	 poke64(sys_offset+&HA1,&H0): filename=""
+	case sys_offset+&H100 ' Text buffer bank switching
 	 select case v
 	        case 0
-'                      scro_x	        
-	         mov(mem64(49379d),0d)
-'                      scro_y	         
-	         mov(mem64(49380d),0d)
+	         mov(mem64(scro_x),0)
+	         mov(mem64(scro_y),0)
 	        case 1
-'                      scro_x	        
-	         mov(mem64(49379d),802d)
-'                      scro_y	         
-	         mov(mem64(49380d),0d)
+	         mov(mem64(scro_x),802)
+	         mov(mem64(scro_y),0)
 	        case 2
-'                      scro_x	        
-	         mov(mem64(49379d),0d)
-'                      scro_y	         
-	         mov(mem64(49380d),390d)
+	         mov(mem64(scro_x),0)
+	         mov(mem64(scro_y),390)
 	        case 3
-'                      scro_x	        
-	         mov(mem64(49379d),802d)
-'                      scro_y	         
-	         mov(mem64(49380d),390d)
-	 end select
-#elseif defined(__FB_DOS__)
-	 select case v
-	        case 0
-'                      scro_x	        
-	         mov(mem64(49379d),0d)
-'                      scro_y	         
-	         mov(mem64(49380d),0d)
-	        case 1
-'                      scro_x	        
-	         mov(mem64(49379d),401d)
-'                      scro_y	         
-	         mov(mem64(49380d),0d)
-	        case 2
-'                      scro_x	        
-	         mov(mem64(49379d),0d)
-'                      scro_y	         
-	         mov(mem64(49380d),195d)
-	        case 3
-'                      scro_x	        
-	         mov(mem64(49379d),401d)
-'                      scro_y	         
-	         mov(mem64(49380d),195d)
-	 end select
-#endif      
-    case 49409d 'Draw shapes in 3D space
-'                  y1             y0                         rot0                z0                         rot0 
-         mov(mem64(49359d), mem64(49356d) mul COSTable(mem64(49373d)) subt mem64(49357d) mul SINTable(mem64(49373d)))
-'                  z1             z0                         rot0                y0                         rot0
-         mov(mem64(49360d), mem64(49357d) mul COSTable(mem64(49373d)) add  mem64(49356d) mul SINTable(mem64(49373d)))
-'                  y0             y1
-         mov(mem64(49356d), mem64(49359))
-'                  z0             z1         
-         mov(mem64(49357d), mem64(49360))
-'                  z1             z0                         rot1                x0                         rot1     
-         mov(mem64(49360d), mem64(49357d) mul COSTable(mem64(49374d)) subt mem64(49355d) mul SINTable(mem64(49374d)))
-'                  x1             x0                         rot1                z0                         rot1         
-         mov(mem64(49358d), mem64(49355d) mul COSTable(mem64(49374d)) add  mem64(49357d) mul SINTable(mem64(49374d)))
-'                  x0             x1         
-         mov(mem64(49355d), mem64(49358d))
-'                  rot5           z1    
-         mov(mem64(49378d), mem64(49360d))
-'                  x1             x0                         rot2                y0                        rot2
-         mov(mem64(49358d), mem64(49355d) mul COSTable(mem64(49375d)) subt mem64(49356) mul SINTable(mem64(49375d)))
-'                  y1             y0                         rot2                x0                        rot2         
-         mov(mem64(49359d), mem64(49356d) mul COSTable(mem64(49375d)) add  mem64(49355) mul SINTable(mem64(49375d)))
-'                  rot3           x1         
-         mov(mem64(49376d), mem64(49358d))
-'                  rot4           y1
-         mov(mem64(49377d), mem64(49359d))
-         
-'                                 FOV      mul      RotX     div (     RotZ    add       ZCENTER)  add      XCENTER,    
-'                  r6             r0                rot3               rot5              r3                 r1     
-         mov(mem64(49367d),(mem64(49361d) mul mem64(49376d) div (mem64(49378d) add mem64(49364d)) add mem64(49362d)))
-         mov(mem64(49368d),(mem64(49361d) mul mem64(49377d) div (mem64(49378d) add mem64(49364d)) add mem64(49363d)))
-'                  r7             r0                rot4               rot5              r3                 r2 
-'                                 FOV      mul      RotY    div (      RotZ    add       ZCENTER) add       YCENTER)
-
-'                                 FOV     mul       X       div (      Z       add       ZCENTER)  add       XCENTER,
-'                  r8             r0                x0                 z0                r3                  r1
-         mov(mem64(49369d),(mem64(49361d) mul mem64(49355d) div (mem64(49357d) add mem64(49364d))  add mem64(49362d)))
-         mov(mem64(49370d),(mem64(49361d) mul mem64(49356d) div (mem64(49357d) add mem64(49364d))  add mem64(49363d)))
-'                  r9             r0                y0                 z0                r3                  r2               
-'                                 FOV     mul       Y       div (      Z       add       ZCENTER)  add       YCENTER
-
-      
-         select case v
-          case 0 '               r6               r8                   r7               r9                   fg_color
-           pset fgimage, ((mem64(49367) add mem64(49369)) shr 1,(mem64(49368) add mem64(49370)) shr 1),mem64(49353d)
-          case 1 '                 r6               r8                 r7                 r9
-           circle fgimage, ((mem64(49367) add mem64(49369)) shr 1,(mem64(49368) add mem64(49370)) shr 1),_
-                             mem64(49371), mem64(49353d)
-'                                  r10           fg_color
-
-          case 2 '               r6               r8                   r7               r9                   fg_color
-           line fgimage, -((mem64(49367) add mem64(49369)) shr 1,(mem64(49368) add mem64(49370)) shr 1),mem64(49353d)
-          case 3 '               r6               r8                   r7               r9                    fgcolor
-           line fgimage, -((mem64(49367) add mem64(49369)) shr 1,(mem64(49368) add mem64(49370)) shr 1),mem64(49353d),b
-          case 4 '               r6               r8                   r7               r9                    fgcolor
-           line fgimage, -((mem64(49367) add mem64(49369)) shr 1,(mem64(49368) add mem64(49370)) shr 1),mem64(49353d),bf
-          case 5 '               r6               r8                   r7               r9                    fgcolor
-           line fgimage, -((mem64(49367) add mem64(49369)) shr 1,(mem64(49368) add mem64(49370)) shr 1),mem64(49353d),,_
-                           (mem64(49371) shl 08 + mem64(49372))
- '                                r10                   r11
-                                                                 
-          case 6 '               r6               r8                   r7               r9                    fgcolor
-           paint fgimage, ((mem64(49367) add mem64(49369)) shr 1,(mem64(49368) add mem64(49370)) shr 1),mem64(49353d)
-         end select
-    case 49410d 'Screen lock
-         screenlock 
-    case 49411d 'Screen unlock
-         screenunlock  mem64(49356),mem64(49356) add 8d
-    case 49412d 'Screen unlock
-         screenunlock ys,ys add 8d        
-    case 49413d 'Write to to raster     
-     select case v
-       case 0 'Draw pixel to to raster foreground
-'                           x0             fg_color                            
-        pset raster,(mem64(49355d),0),mem64(49353d)
-       case 1 'Draw pixel to to raster background
-'                           x0              bg_color       
-        pset raster,(mem64(49355d),0),mem64(49354d)
-       case 2 'Draw line to raster foreground
-'                           x0                x1             fg_color       
-        line raster,(mem64(49355d),0)-(mem64(49358d),0),mem64(49353d)
-       case 3 'Draw line to raster background
-'                           x0               x1              bg_color       
-        line raster,(mem64(49355d),0)-(mem64(49358d),0),mem64(49354d)      
-       case 4 'Draw pattren to raster foreground
-'                           x0               x1              fg_color        r0       
-        line raster,(mem64(49355d),0)-(mem64(49358d),0),mem64(49353d),,mem64(49198d)        
-       case 5 'Draw pattren to raster background
-'                           x0               x1               bg_color       r0        
-        line raster,(mem64(49355d),0)-(mem64(49358d),0),mem64(49354d),,mem64(49198d)          
-     end select
-    case 49414d 'Write to foreground/background     
-     select case v
-       case 0 'Draw pixel to to foreground
-'                           x0            y0            fg_color                            
-        pset fgimage,(mem64(49355d),mem64(49356d)),mem64(49353d)
-       case 1 'Draw pixel to to background
-'                           x0            y0             bg_color       
-        pset bgimage,(mem64(49355d),mem64(49356d)),mem64(49354d)
-       case 2 'Draw line to foreground
-'                           x0            y0              x1            y1            fg_color       
-        line fgimage,(mem64(49355d),mem64(49356d))-(mem64(49358d),mem64(49359d)),mem64(49353d)
-       case 3 'Draw line to background
-'                           x0            y0              x1            y1            bg_color       
-        line bgimage,(mem64(49355d),mem64(49356d))-(mem64(49358d),mem64(49359d)),mem64(49354d)
-       case 4 'Draw box to foreground
-'                           x0            y0              x1            y1            fg_color       
-        line fgimage,(mem64(49355d),mem64(49356d))-(mem64(49358d),mem64(49359d)),mem64(49353d),b       
-       case 5 'Draw box to background
-'                           x0            y0              x1            y1            bg_color        
-        line bgimage,(mem64(49355d),mem64(49356d))-(mem64(49358d),mem64(49359d)),mem64(49354d),b      
-       case 6 'Draw filled box to foreground
-'                           x0            y0              x1            y1            fg_color        
-        line fgimage,(mem64(49355d),mem64(49356d))-(mem64(49358d),mem64(49359d)),mem64(49353d),bf        
-       case 7 'Draw filled box to background
-'                           x0            y0              x1            y1            bg_color        
-        line bgimage,(mem64(49355d),mem64(49356d))-(mem64(49358d),mem64(49359d)),mem64(49354d),bf        
-       case 7 'Draw circle to foreground
-'                             x0            y0             r0            fg_color       
-        circle fgimage,(mem64(49355d),mem64(49356d)),mem64(49198d),mem64(49353d)
-       case 8 'Draw circle to background
-'                             x0            y0             r0            bg_color       
-        circle bgimage,(mem64(49355d),mem64(49356d)),mem64(49198d),mem64(49354d)       
-       case 9 'Draw pattren to foreground
-'                           x0            y0              x1            y1            fg_color        r0       
-        line fgimage,(mem64(49355d),mem64(49356d))-(mem64(49358d),mem64(49359d)),mem64(49353d),,mem64(49198d)       
-       case 10 'Draw pattren to background
-'                           x0            y0              x1            y1            bg_color        r0        
-        line bgimage,(mem64(49355d),mem64(49356d))-(mem64(49358d),mem64(49359d)),mem64(49354d),,mem64(49198d)          
-     end select
-     case 49415d : print #1, strCode;: draw string fgimage,(0,0), strCode:strCode="" 
-'                       scr_ptr	      scr_ptr     			  		
-    case in range(mem64(49451d),mem64(49451d) add 1023d)
+	         mov(mem64(scro_x),802)
+	         mov(mem64(scro_y),390)
+	 end select    			  		
+    case in range(mem64(scr_ptr),mem64(scr_ptr) add 1023d)
      #include "font.bas"
       /'
       dim as integer xs=adr mod 40:xs shl =3:xs+=8*4
@@ -1335,13 +1009,12 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
       select case v
        case 00 to 27: print wchr(v+32)
       end select '/
-'                     scr_ptr                 scr_ptr
-  case in range(mem64(49451d) add 1024d,mem64(49451d) add 1031d)                
+  case in range(mem64(scr_ptr) add 1024d,mem64(scr_ptr) add 1031d)                
     #include once "sprite.bi"
 /' 
     for a as ushort = 0 to 7
-       draw string fgimage,(0d,a mul 8d),str(mem64(49451d) add 1024d)+" "+_
-       str(mem64(49451d) add 1031d)+" "+str(check_bit(v,a))
+       draw string fgimage,(0d,a mul 8d),str(mem64(scr_ptr) add 1024d)+" "+_
+       str(mem64(scr_ptr) add 1031d)+" "+str(check_bit(v,a))
     next a
 '/    
   case 57344d to 65535d,40960d to 49151d,55296d to 56319d:mem64(adr)=v              
