@@ -45,7 +45,7 @@ declare function isnumber(s as string, start as integer) as single
 declare sub getXYZ()
 
 dim shared as string   get_key, get_data, old_data(10000)
-dim shared as short    data_pointer = 1, repeat, count
+dim shared as short    data_pointer = 1, repeat
 dim shared as integer  prompt_flag = 1
 dim shared as string eol: eol = chr(13) + chr(10)
 

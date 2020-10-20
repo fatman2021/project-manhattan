@@ -1,0 +1,63 @@
+poke 49314,5:poke 49314,24:   rem open tmp.glsl for writing 
+poke 49361,123:poke 49313,20: rem void
+poke 49362,32:poke 49313,10:  rem space 
+poke 49361,249:poke 49313,17  rem mainImage
+poke 49362,32:poke 49313,10:  rem space
+poke 49362,40:poke 49313,10:  rem (
+poke 49361,139:poke 49313,18: rem out
+poke 49362,32:poke 49313,10:  rem space
+poke 49361,115:poke 49313,20: rem vec4
+poke 49362,32:poke 49313.10:  rem space
+poke 49361,224:poke 49313,7:  rem fragColor
+poke 49362,44:poke 49313,10:  rem , 
+poke 49362,85:poke 49313,17:  rem in 
+vec2
+fragCoord
+)
+{
+vec2
+uv 
+=
+fragCoord
+/
+iResolution.xy
+;
+vec3
+col
+=
+0
+.
+5
++
+0
+.
+5
+*
+cos
+(
+iTime
++
+uv.xyx
++
+vec3
+(
+0
+,
+2
+,
+4
+)
+)
+;
+fragColor
+=
+vec4
+(
+col
+,
+1
+.
+0
+)
+;
+}

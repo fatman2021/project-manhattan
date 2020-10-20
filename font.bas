@@ -51,7 +51,7 @@
       screenunlock ys,ys add 8d
 '                      font_f      
       elseif mov(mem64(49383d), 2d) then 
-      mov(xs,adr mod 40d):mov(xs shl,)3:mov(xs add,7 mul 3.5d)
+      mov(xs,adr mod 40d):mov(xs shl,3):mov(xs add,7 mul 3.5d)
       mov(ys,adr idiv  40d):mov(ys shl, 3):mov(ys add,7 mul 3.5d)
 '                                  font_h             
       for in range(mov(y,0d),mem64(49386d))
@@ -72,8 +72,8 @@
       screenunlock ys,ys add 8d
 '                      font_f      
       elseif mov(mem64(49383d),3d) then
-      mov(xs,adr mod 40d):mov(xs shl,3d):mov(xs add,8d mul 4d)
-      mov(ys,adr idiv  40d):mov(ys shl,3d):mov(ys add,8d mul 4d)
+      mov(xs,adr mod 80d):mov(xs shl,3d):mov(xs add,8d mul 4d)
+      mov(ys,adr idiv  80d):mov(ys shl,3d):mov(ys add,8d mul 4d)
 '                              font_h       
       for in range(mov(y,mem64(49386d)),0d) step -1d
 '                                    font_w      
