@@ -37,9 +37,9 @@ Project Manhattan       Copyright © 2019-present The Project Manhattan Team
 # project-manhattan
 Next generation APU emulator for gaming and business applications.
 
-CPU - 4Ghz, 64-Bit, MOS 6510/VICE compatible, can address up to 8GiB of system memory
+CPU - 4Ghz, 64-Bit, MOS 6510/VICE compatible, can address up to 16 Exabytes of system memory
 
-GPU - 17GHz, 512-Bit, can address up to 32GiB of video memory
+GPU - 17GHz, 512-Bit, can address up to 1.340780793e+154 bytes of video memory
 
 FUN FACT #1: AMD's 3Ghz Epyc Rome CPU has 39,540,000,000 transistors vs. the MOS 6502 with it's 4,528 transistors. It is therefore possible to create a 64-bit MOS 6510 compatible CPU(about 36,224 transistors) with a clock speed of 4Ghz using current CPU manufacturing technology.
 

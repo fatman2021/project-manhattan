@@ -965,37 +965,51 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
 	       
 	pokeb adr0, peekb(adr1)       
    case &H000000074 ' pokew [address],[address]
-	   adr0 = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 +_
-			  mem64(mem64(49418d) + 3) shl 16 + mem64(mem64(49418d) + 4) shl 08 +_
-			  mem64(mem64(49418d) + 5)
-	   adr1 = mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 +_
-			  mem64(mem64(49418d) + 8) shl 16 + mem64(mem64(49418d) + 9) shl 08 +_
-			  mem64(mem64(49418d) + 10): mem64(49418d) = mem64(49418d) + 11
+'                         pc                                pc                                pc   
+	   adr0 = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	          mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                         pc                                pc	          
+
+'                         pc                                pc                                pc	          
+	   adr1 = mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_ 
+	          mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10): mem64(49418d) = mem64(49418d) + 11
+'                         pc 
 	pokew adr0, peekw(adr1)
    case &H000000075 ' Display number [screen memory address]
-	adr0 = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 +_
-		   mem64(mem64(49418d) + 3) shl 16 + mem64(mem64(49418d) + 4) shl 08 +_
-		   mem64(mem64(49418d) + 5)
-	string_data = str(r0)             
+   
+'                      pc                                pc                                pc   
+	adr0 = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	       mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                      pc                                pc	       
+
+'                           r0	       
+	string_data = str(mem64(49361d))             
 	for r3 = 1 to len(string_data)             
 	  pokeb (char_buffer+adr0)+(r3-1),_
 	  screencode(asc(mid(string_data,r3,1)))
 	next r3
    case &H000000076 ' Display text [string address],[length],
 					'              [screen adr]
-	string_adr = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 +_
-				 mem64(mem64(49418d) + 3) shl 16 + mem64(mem64(49418d) + 4) shl 08 +_
-				 mem64(mem64(49418d) + 5)
-	string_len = mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 +_
-				 mem64(mem64(49418d) + 8) shl 16 + mem64(mem64(49418d) + 9) shl 08 +_
-				 mem64(mem64(49418d) + 10)
-	adr0       = mem64(mem64(49418d) + 11) shl 32 + mem64(mem64(49418d) + 12) shl 24 +_
-				 mem64(mem64(49418d) + 13) shl 16 + mem64(mem64(49418d) + 14) shl 08 +_
-				 mem64(mem64(49418d) + 15): mem64(49418d) = mem64(49418d) + 16		                
+'                            pc                                pc                                pc            					
+	string_adr = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	             mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                            pc                                pc	             
+
+'                            pc                                pc                                pc           	             
+	string_len = mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
+	             mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
+'                            pc                                pc	             
+	             
+'                            pc                                 pc                                 pc	             
+	adr0       = mem64(mem64(49418d) + 11) shl 32 + mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_
+	             mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15): mem64(49418d) = mem64(49418d) + 16
+'                            pc                                 pc                   pc              pc	             
+	             		                
 	for r3 = 0 to string_len
 	 pokeb (char_buffer + adr0) + r3,_
 	 screencode(mem64(string_adr + r3)) 		    
 	next r3
+  /'	
    case &H000000077	
     open "tmp.cob" for output as #1
    case &H000000078 
@@ -1083,7 +1097,8 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
    case &H0000000A1
     print #1, "   END-STRING"
    case &H0000000A2
-    print #1, "   END-UNSTRING"                       		            
+    print #1, "   END-UNSTRING"
+   '/                        		            
    case &H000004000 to &H000007E70 ' Screen Memory(Text 0x000004000-
                                   '                     0x000007E70)    
     adr-=&H000004000
@@ -1697,7 +1712,7 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 	         mov(mem64(49361d),asc(mid(strCode,index,1)))
 '                     r0		              r0                         r0           r0
 	         if mem64(49361) gt 31 and mem64(49361) lt 64 then mov(mem64(49361),mem64(49361) add 32)
-'                         scr_ptr                                       r0	         
+'                  scr_ptr                                           r0	         
              pokeb(&H000004000 add (index subt 1) add scr_pos,(mem64(49361d) add &H20) and &H3f) 
             next '1024 + x + 40 * (24 - y)
             mov(scr_pos,12000)
@@ -1711,7 +1726,7 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 	     mov(mem64(49361d),asc(mid(strCode,index,1)))
 '                 r0		             r0                          r0           r0
 	     if mem64(49361) gt 31 and mem64(49361) lt 64 then mov(mem64(49361),mem64(49361) add 32)
-'                     scr_ptr                                      r0	         
+'              scr_ptr                                           r0	         
          pokeb(&H000004000 add (index subt 1) add scr_pos,(mem64(49361d) add &H20) and &H3f)
         next	    
 	    shell "rm ./tmp; ./" add filename
@@ -1731,7 +1746,7 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 	         mov(mem64(49361d),asc(mid(strCode,index,1)))
 '                     r0		              r0                         r0           r0
 	         if mem64(49361) gt 31 and mem64(49361) lt 64 then mov(mem64(49361),mem64(49361) add 32)
-'                         scr_ptr                                       r0	         
+'                  scr_ptr                                          r0	         
              pokeb(&H000004000 add (index subt 1) add scr_pos,(mem64(49361d) add &H20) and &H3f) 
             next '1024 + x + 40 * (24 - y)
             mov(scr_pos,12000)
@@ -1745,7 +1760,7 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 	     mov(mem64(49361d),asc(mid(strCode,index,1)))
 '                 r0		             r0                          r0           r0
 	     if mem64(49361) gt 31 and mem64(49361) lt 64 then mov(mem64(49361),mem64(49361) add 32)
-'                     scr_ptr                                      r0	         
+'              scr_ptr                                           r0	         
          pokeb(&H000004000 add (index subt 1) add scr_pos,(mem64(49361d) add &H20) and &H3f)
         next
 	    mov(scr_pos,0):mov(strCode,"")
