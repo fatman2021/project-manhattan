@@ -37,7 +37,7 @@ Project Manhattan       Copyright © 2019-present The Project Manhattan Team
 # project-manhattan
 Next generation APU emulator for gaming and business applications.
 
-CPU - 4Ghz, 64-Bit, MOS 6510/VICE compatible, can address up to 16 Exabytes of system memory
+CPU - 4Ghz, 64-Bit, MOS 6510/VICE compatible, can address up to 18 Exabytes of system memory
 
 GPU - 17GHz, 512-Bit, can address up to 1.340780793e+154 bytes of video memory
 
