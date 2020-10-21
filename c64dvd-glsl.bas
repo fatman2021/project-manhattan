@@ -411,7 +411,7 @@ constructor MEMORY_T
 '        font_f 
   poke64(49383d,0d) 'Flip font
 '        font_o    
-  poke64(49384d,0d) 'Font offset
+  poke64(49384d,2d) 'Font offset
 '        font_w
   poke64(49385d,7d) 'Font width 
 '        font_h
@@ -437,6 +437,18 @@ constructor MEMORY_T
    next i
   close #1
   '/
+  
+  open "./chargen/2.c64" for binary as #1
+   for in range(mov(i, 0d), 8191d)
+     get #1,,tmp: mov(char(i), tmp)
+   next i
+  close #1
+  open "./chargen/2.c64" for binary as #1
+   for in range(mov(i, 8192d), 16383d)
+     get #1,,tmp: mov(char(i), tmp)
+   next i
+  close #1
+/'
   restore CHAR_ROM
 '           r0  
   mov(mem64(49361d),0d)
@@ -450,6 +462,7 @@ constructor MEMORY_T
       mov(mem64(49361d),0d): restore CHAR_ROM
    end if  
   next
+'/  
   'for a as integer = 0 to 255: poke64(1024+a,a): next a
   'locate 50,1: print "./chargen/"+str(b)+".c64"
   'sleep : next b: end
@@ -733,10 +746,10 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
    case &H000000026: mem64(49357d) = mem64(49361d) ' move mem64(49357d), mem64(49361d)
 '                          z1              r0                   z1             r0   
    case &H000000027: mem64(49360d) = mem64(49361d) ' move mem64(49360d), mem64(49361d)
-'                         fg_color         r0                                r0   
-   case &H000000028: mem64(49353d) = mem64(49361d) ' move fg_color, mem64(49361d)
-'                         bg_color         r0                                r0   
-   case &H000000029: mem64(49354d) = mem64(49361d) ' move bg_color, mem64(49361d)
+'                         fg_color         r0                   fg_color       r0   
+   case &H000000028: mem64(49353d) = mem64(49361d) ' move mem64(49353d), mem64(49361d)
+'                         bg_color         r0                   bg_color       r0   
+   case &H000000029: mem64(49354d) = mem64(49361d) ' move mem64(49354d), mem64(49361d)
 '                                   r0                                r0   
    case &H00000002A: char_h = mem64(49361d)      ' move char_h, mem64(49361d)
 '                                   r0                                r0   
@@ -755,18 +768,18 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
    case &H000000031: string_adr = mem64(49361d)  ' move string_adr, mem64(49361d)
 '                                       r0                                r0   
    case &H000000032: string_len = mem64(49361d)  ' move string_len, mem64(49361d)
-'                          r0                                 r0   
-   case &H000000033: mem64(49361d) = mouse_x     ' move mem64(49361d), mouse_X
-'                                    r0                                r0   
-   case &H000000034: mouse_x = mem64(49361d)     ' move mouse_x, mem64(49361d)
-'                          r0                                 r0   
-   case &H000000035: mem64(49361d) = mouse_y     ' move mem64(49361d), mouse_y
-'                                    r0                                r0   
-   case &H000000036: mouse_y = mem64(49361d)     ' move mouse_y, mem64(49361d)
-'                          r0                                 r0   
-   case &H000000037: mem64(49361d) = mouse_w     ' move mem64(49361d), mouse_w
-'                          r0                                 r0   
-   case &H000000038: mem64(49361d) = mouse_b     ' move mem64(49361d), mouse_b
+'                          r0              x0                   r0             x0
+   case &H000000033: mem64(49361d) = mem64(49355d) ' move mem64(49361d), mem64(49355d)
+'                          x0              r0                   x0             r0   
+   case &H000000034: mem64(49355d) = mem64(49361d) ' move mem64(49355d), mem64(49361d)
+'                          r0              y0                   r0             y0
+   case &H000000035: mem64(49361d) = mem64(49356d) ' move mem64(49361d), mem64(49356d)
+'                          x0              r0                   x0             r0   
+   case &H000000036: mem64(49356d) = mem64(49361d) ' move mem64(49356d), mem64(49361d)
+'                          r0              z0                   r0             z0   
+   case &H000000037: mem64(49361d) = mem64(49357d) ' move mem64(49361d), mem64(49357d)
+'                          r0              x1                   r0             x1 
+   case &H000000038: mem64(49361d) = mem64(49358d) ' move mem64(49361d), mem64(49358d)
 '                          r0                                 r0   
    case &H000000039: mem64(49361d) = mouse_c     ' move mem64(49361d), mouse_c
 '                          r0                                 r0   
@@ -854,30 +867,35 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
 '                          r2              r2                                      r2   
    case &H000000063: mem64(49363d) = mem64(49363d) - 1                 ' dec mem64(49363d)
    case &H000000064:                  ' be  [address]
-'                             pc     
+'             r1              r2                  pc     
     if (mem64(49362d) = mem64(49363d)) then mem64(49418d) = v
    case &H000000065:                  ' bne [address]
-'                              pc   
+'             r1               r2                  pc   
     if (mem64(49362d) <> mem64(49363d)) then mem64(49418d) = v
    case &H000000066:                  ' bg  [address]
-'                             pc   
+'             r1              r2                  pc   
     if (mem64(49362d) > mem64(49363d)) then mem64(49418d) = v          
    case &H000000067:                  ' bge [address]
-'                             pc   
+'             r1               r2                  pc   
     if (mem64(49362d) >= mem64(49363d)) then mem64(49418d) = v
    case &H000000068:                  ' ble [address]
-'                            pc   
+'             r1               r2                  pc   
     if (mem64(49362d) <= mem64(49363d)) then mem64(49418d) = v
    case &H000000069:                  ' bl  [address]
-'                           pc 
+'             r1              r2                  pc 
     if (mem64(49362d) < mem64(49363d)) then mem64(49418d) = v
    case &H00000006A:                  ' jmp [address]
 '         pc
-    mem64(49418d) = v
-   case &H00000006B:                  ' move.b r0, [address]
-    mem64(49361d) = peekb(v)
-   case &H00000006C:                  ' move.b [address], r0
-   
+    mem64(49418d) = v 
+
+'                                                    r0
+   case &H00000006B:                  ' move.b mem64(49461d), [address]
+'         r0
+    mem64(49361d) = peekb(v) 
+
+'                                                               r0
+   case &H00000006C:                  ' move.b [address], mem64(49461d)
+'                  r0   
     pokeb v, mem64(49361d)
    case &H00000006D                   ' loop [start],[stop],[times]
 '                                              pc   
@@ -1101,46 +1119,43 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
    '/                        		            
    case &H000004000 to &H000007E70 ' Screen Memory(Text 0x000004000-
                                   '                     0x000007E70)    
-    adr-=&H000004000
-    char_ptr=v:char_ptr shl=3
-    x_axis0=adr mod char_w:x_axis0 shl =3:x_axis0+=8*4
-    y_axis0=adr  \  char_h:y_axis0 shl =3:y_axis0+=8*4
-    screenlock
-'                                        font_h             
-      for in range(mov(y_axis1,0d),mem64(49386d))
-'                                        font_w      
-       for in range(mov(x_axis1,0d),mem64(49385d))
+    mov(adr subt,&H000004000)
+'                                           font_o      
+    mov(c, v):mov(c shl,3d):mov(c add,mem64(49384d))
+    mov(xs,adr mod char_w):mov(xs shl,3):mov(xs add,7 mul 3.5d)
+    mov(ys,adr idiv  char_h):mov(ys shl, 3):mov(ys add,7 mul 3.5d)
+    if mem64(RVS)<>0d then mov(c and,255d)
+    if mem64(49357d) < 1 then mem64(49357d)=1
+    poke64(49410d,0) 'Screen lock
+'                                  font_h             
+      for in range(mov(y,0d),mem64(49386d))
+'                                    font_w      
+        for in range(mov(x,0d),mem64(49385d))
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
 '                 x0                                                         scro_x        
-        mov(mem64(49355d),((((x_axis0 add x_axis1) mul 5d) div 2d) add mem64(49379d)))
+        mov(mem64(49355d),((((xs add x) mul 5d) div 2d) add mem64(49379d)))
 '                 y0                                                         scro_y
-        mov(mem64(49356d),((((y_axis0 add y_axis1) mul 4d) div 2d) add mem64(49380d)))
+        mov(mem64(49356d),((((ys add y) mul 4d) div 2d) add mem64(49380d)))
 '                 x1                                                                  scro_x          
-        mov(mem64(49358d),(((((x_axis0 add x_axis1) mul 5d) add 7d) div 2d) add mem64(49379d)))
+        mov(mem64(49358d),(((((xs add x) mul 5d) add 7d) div 2d) add mem64(49379d)))
 '                 y1                                                                  scro_y          
-        mov(mem64(49359d),(((((y_axis0 add y_axis1) mul 4d) add 4d) div 2d) add mem64(49380d))) 
+        mov(mem64(49359d),(((((ys add y) mul 4d) add 4d) div 2d) add mem64(49380d))) 
 #elseif defined(__FB_DOS__)
 '                 x0                                                            scro_x        
-        mov(mem64(49355d),((((x_axis0 add x_axis1) mul 2.08d) div 2d) add mem64(49379d)))
+        mov(mem64(49355d),((((xs add x) mul 2.08d) div 2d) add mem64(49379d)))
 '                 y0                                                            scro_y
-        mov(mem64(49356d),((((y_axis0 add y_axis1) mul 2.22d) div 2d) add mem64(49380d)))
+        mov(mem64(49356d),((((ys add y) mul 2.22d) div 2d) add mem64(49380d)))
 '                 x1                                                                     scro_x          
-        mov(mem64(49358d),(((((x_axis0 add x_axis1) mul 2.08d) add 7d) div 2d) add mem64(49379d)))
+        mov(mem64(49358d),(((((xs add x) mul 2.08d) add 7d) div 2d) add mem64(49379d)))
 '                 y1                                                                     scro_y          
-        mov(mem64(49359d),(((((y_axis0 add y_axis1) mul 2.22d) add 4d) div 2d) add mem64(49380d))) 
+        mov(mem64(49359d),(((((ys add y) mul 2.22d) add 4d) div 2d) add mem64(49380d))) 
 #endif
-	    if char(char_ptr) and (128 shr x_axis1) then
-   
-		  poke64(49390d,0) ' Amiga style Hold-and-Modify - Draw foreground
-	    else
-    
-		  poke64(49391d,0) ' Amiga style Hold-and-Modify - Draw background
-	    end if
-	  next
-	  char_ptr+=1
-    next 
-    screenunlock y_axis0,y_axis0+8
-    adr+=&H000004000:v=mem64(adr)
+	    poke64(49404d,peek64(49404d)) 'Flag: Print Reverse Characters?0=No
+       next 
+       mov(c add,1d)
+      next
+      poke64(49412d,0) 'Screen Unlock
+    mov(adr add,&H000004000):mov(v,mem64(adr))
    case &H0000A0000 ' Graphics Register Ports
     line(x_axis0, y_axis0)-(x_axis0+pixel_size,y_axis0+pixel_size),_
          rgba(red2,green2,blue2,xalpha2), BF 
@@ -1739,8 +1754,8 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 	    open filename for binary as #1                   
 	      mov(scr_pos,0): mov(mem64(49362d),0)
 	      mov(mem64(49363d),0):mov(mem64(49364d),0)
-	      'do until eof(1)
-	        strCode = input(lof(1),1)
+	      do until eof(1)
+	        line input #1, strCode
 	        for in range(mov(index,1),len(strCode))
 '                      r0	        
 	         mov(mem64(49361d),asc(mid(strCode,index,1)))
@@ -1749,10 +1764,10 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 '                  scr_ptr                                          r0	         
              pokeb(&H000004000 add (index subt 1) add scr_pos,(mem64(49361d) add &H20) and &H3f) 
             next '1024 + x + 40 * (24 - y)
-            mov(scr_pos,12000)
-'                     scro_x  
-            mov(mem64(49379d),0d)
-	      'loop  
+            mov(scr_pos add,90)
+           loop  
+           mov(scr_pos,5400)
+	      mov(mem64(49364d),0)  
 	    close #1
 	    mov(strCode,"press any key to continue.")
 	    for in range(mov(index,1),len(strCode))
