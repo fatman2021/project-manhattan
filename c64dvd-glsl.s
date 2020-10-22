@@ -7115,16 +7115,16 @@ _ZN8MEMORY_T6POKE64Edd:
 .L744:
 .L745:
 	comisd	xmm4, QWORD PTR .LC277[rip]
-	jne	.L7193
-.L5163:
+	jne	.L7205
+.L5171:
 	movsd	xmm0, QWORD PTR 395608[r13]
 	comisd	xmm0, xmm4
-	ja	.L5179
+	ja	.L5187
 	movsd	xmm1, QWORD PTR .LC547[rip]
 	addsd	xmm1, xmm0
 	comisd	xmm4, xmm1
-	ja	.L5179
-.L5181:
+	ja	.L5187
+.L5189:
 	cvtsd2si	rax, xmm5
 	subsd	xmm4, xmm0
 	pxor	xmm0, xmm0
@@ -7134,19 +7134,19 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	addsd	xmm0, QWORD PTR 395072[r13]
 	movsd	QWORD PTR C$[rip], xmm0
-	je	.L5182
+	je	.L5190
 	cvtsd2si	rax, xmm0
 	pxor	xmm0, xmm0
 	movzx	eax, al
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR C$[rip], xmm0
-.L5182:
+.L5190:
 	movsd	xmm7, QWORD PTR .LC1[rip]
 	comisd	xmm7, QWORD PTR 394856[r13]
 	movsd	QWORD PTR [rsp], xmm7
-	jbe	.L5183
+	jbe	.L5191
 	movsd	QWORD PTR 394856[r13], xmm7
-.L5183:
+.L5191:
 	movsd	xmm0, QWORD PTR .LC2071[rip]
 	pxor	xmm1, xmm1
 	mov	rdi, r13
@@ -7157,7 +7157,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm5, QWORD PTR 395064[r13]
 	movsd	xmm4, QWORD PTR 16[rsp]
 	comisd	xmm5, xmm2
-	jne	.L7194
+	jne	.L7206
 	cvtsd2si	rcx, xmm4
 	pxor	xmm0, xmm0
 	movabs	rdx, 7378697629483820647
@@ -7191,15 +7191,15 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	addsd	xmm0, xmm1
 	movsd	QWORD PTR YS$[rip], xmm0
-	jb	.L5192
-.L5188:
+	jb	.L5200
+.L5196:
 	mov	rbx, QWORD PTR 395080[r13]
 	mov	QWORD PTR X$[rip], 0x000000000
 	movq	xmm6, rbx
 	comisd	xmm6, xmm2
-	jb	.L7195
+	jb	.L7207
 	movapd	xmm0, xmm5
-.L5189:
+.L5197:
 	mov	rax, QWORD PTR .LC2062[rip]
 	addsd	xmm0, QWORD PTR XS$[rip]
 	mov	rdi, r13
@@ -7230,7 +7230,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm2, QWORD PTR 16[rsp]
 	comisd	xmm7, xmm0
 	movsd	QWORD PTR X$[rip], xmm0
-	jnb	.L5189
+	jnb	.L5197
 	movsd	xmm6, QWORD PTR [rsp]
 	movsd	xmm0, QWORD PTR C$[rip]
 	addsd	xmm0, xmm6
@@ -7240,15 +7240,15 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	QWORD PTR Y$[rip], xmm6
 	movq	xmm6, rbp
 	comisd	xmm6, xmm0
-	jnb	.L5188
-.L5192:
+	jnb	.L5196
+.L5200:
 	movsd	xmm4, QWORD PTR .LC269[rip]
 	jmp	.L743
 	.p2align 4,,10
 	.p2align 3
-.L7193:
+.L7205:
 	comisd	xmm4, QWORD PTR .LC278[rip]
-	jne	.L7196
+	jne	.L7208
 	movapd	xmm0, xmm5
 	movsd	QWORD PTR 8[rsp], xmm4
 	movsd	QWORD PTR [rsp], xmm5
@@ -7264,15 +7264,15 @@ _ZN8MEMORY_T6POKE64Edd:
 	btc	rax, 63
 .L753:
 	cmp	rax, 255
-	ja	.L5163
+	ja	.L5171
 	lea	rdx, tmp$2490.4[rip]
 	mov	rax, QWORD PTR [rdx+rax*8]
 	jmp	rax
 	.p2align 4,,10
 	.p2align 3
-.L7196:
+.L7208:
 	comisd	xmm4, QWORD PTR .LC279[rip]
-	je	.L7197
+	je	.L7209
 	xor	eax, eax
 	comisd	xmm4, QWORD PTR .LC267[rip]
 	sete	al
@@ -7312,7 +7312,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	sete	dl
 	neg	edx
 	or	eax, edx
-	jne	.L7198
+	jne	.L7210
 	xor	eax, eax
 	comisd	xmm4, QWORD PTR .LC328[rip]
 	sete	al
@@ -7352,7 +7352,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	sete	dl
 	neg	edx
 	or	eax, edx
-	jne	.L7199
+	jne	.L7211
 	xor	eax, eax
 	comisd	xmm4, QWORD PTR .LC336[rip]
 	sete	al
@@ -7392,13 +7392,13 @@ _ZN8MEMORY_T6POKE64Edd:
 	sete	dl
 	neg	edx
 	or	eax, edx
-	jne	.L7200
+	jne	.L7212
 	comisd	xmm4, QWORD PTR .LC344[rip]
-	je	.L5163
+	je	.L5171
 	comisd	xmm4, QWORD PTR .LC345[rip]
-	je	.L5322
+	je	.L5330
 	comisd	xmm4, QWORD PTR .LC346[rip]
-	je	.L7201
+	je	.L7213
 	xor	eax, eax
 	comisd	xmm4, QWORD PTR .LC268[rip]
 	sete	al
@@ -7418,7 +7418,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	sete	dl
 	neg	edx
 	or	eax, edx
-	jne	.L7202
+	jne	.L7214
 	comisd	xmm4, QWORD PTR .LC490[rip]
 	jne	.L1819
 	movsd	xmm0, QWORD PTR .LC268[rip]
@@ -7429,10 +7429,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	_ZN8MEMORY_T6POKE64Edd
 	movsd	xmm5, QWORD PTR [rsp]
 	movsd	xmm4, QWORD PTR 8[rsp]
-	jmp	.L5163
+	jmp	.L5171
 	.p2align 4,,10
 	.p2align 3
-.L7197:
+.L7209:
 	movapd	xmm0, xmm5
 	movsd	QWORD PTR 8[rsp], xmm4
 	movsd	QWORD PTR [rsp], xmm5
@@ -7442,16 +7442,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvttsd2si	rax, xmm0
 	movsd	xmm4, QWORD PTR 8[rsp]
 	comisd	xmm0, xmm1
-	jnb	.L7203
+	jnb	.L7215
 	sub	rax, 15
 	cmp	rax, 240
 	ja	.L1819
-.L5319:
+.L5327:
 	lea	rdx, tmp$2491.3[rip]
 	jmp	[QWORD PTR [rdx+rax*8]]
 	.p2align 4,,10
 	.p2align 3
-.L7198:
+.L7210:
 	movsd	QWORD PTR 0[r13+rbx*8], xmm5
 .L756:
 	.p2align 4,,10
@@ -7461,9 +7461,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	comisd	xmm4, xmm2
 	je	.L742
 	comisd	xmm4, QWORD PTR .LC494[rip]
-	je	.L5583
+	je	.L5591
 	comisd	xmm4, QWORD PTR .LC495[rip]
-	je	.L7204
+	je	.L7216
 	comisd	xmm4, QWORD PTR .LC281[rip]
 	je	.L1831
 	comisd	xmm4, QWORD PTR .LC282[rip]
@@ -7481,63 +7481,63 @@ _ZN8MEMORY_T6POKE64Edd:
 	comisd	xmm4, QWORD PTR .LC271[rip]
 	je	.L1839
 	comisd	xmm4, QWORD PTR .LC500[rip]
-	je	.L5585
+	je	.L5593
 	comisd	xmm4, QWORD PTR .LC501[rip]
-	je	.L7205
-	comisd	xmm4, QWORD PTR .LC502[rip]
-	je	.L7206
-	comisd	xmm4, QWORD PTR .LC503[rip]
-	je	.L7207
-	comisd	xmm4, QWORD PTR .LC504[rip]
-	je	.L7208
-	comisd	xmm4, QWORD PTR .LC505[rip]
-	je	.L7209
-	comisd	xmm4, QWORD PTR .LC506[rip]
-	je	.L7210
-	comisd	xmm4, QWORD PTR .LC507[rip]
-	je	.L7211
-	comisd	xmm4, QWORD PTR .LC508[rip]
-	je	.L7212
-	comisd	xmm4, QWORD PTR .LC509[rip]
-	je	.L7213
-	comisd	xmm4, QWORD PTR .LC510[rip]
-	je	.L7214
-	comisd	xmm4, QWORD PTR .LC511[rip]
-	je	.L7215
-	comisd	xmm4, QWORD PTR .LC512[rip]
-	je	.L7216
-	comisd	xmm4, QWORD PTR .LC513[rip]
 	je	.L7217
-	comisd	xmm4, QWORD PTR .LC514[rip]
+	comisd	xmm4, QWORD PTR .LC502[rip]
 	je	.L7218
-	comisd	xmm4, QWORD PTR .LC515[rip]
+	comisd	xmm4, QWORD PTR .LC503[rip]
 	je	.L7219
-	comisd	xmm4, QWORD PTR .LC516[rip]
+	comisd	xmm4, QWORD PTR .LC504[rip]
 	je	.L7220
-	comisd	xmm4, QWORD PTR .LC517[rip]
+	comisd	xmm4, QWORD PTR .LC505[rip]
 	je	.L7221
-	comisd	xmm4, QWORD PTR .LC518[rip]
+	comisd	xmm4, QWORD PTR .LC506[rip]
 	je	.L7222
-	comisd	xmm4, QWORD PTR .LC519[rip]
+	comisd	xmm4, QWORD PTR .LC507[rip]
 	je	.L7223
-	comisd	xmm4, QWORD PTR .LC520[rip]
+	comisd	xmm4, QWORD PTR .LC508[rip]
 	je	.L7224
-	comisd	xmm4, QWORD PTR .LC521[rip]
+	comisd	xmm4, QWORD PTR .LC509[rip]
 	je	.L7225
-	comisd	xmm4, QWORD PTR .LC522[rip]
+	comisd	xmm4, QWORD PTR .LC510[rip]
 	je	.L7226
-	comisd	xmm4, QWORD PTR .LC523[rip]
+	comisd	xmm4, QWORD PTR .LC511[rip]
 	je	.L7227
-	comisd	xmm4, QWORD PTR .LC524[rip]
+	comisd	xmm4, QWORD PTR .LC512[rip]
 	je	.L7228
-	comisd	xmm4, QWORD PTR .LC525[rip]
+	comisd	xmm4, QWORD PTR .LC513[rip]
 	je	.L7229
-	comisd	xmm4, QWORD PTR .LC270[rip]
+	comisd	xmm4, QWORD PTR .LC514[rip]
 	je	.L7230
-	comisd	xmm4, QWORD PTR .LC526[rip]
+	comisd	xmm4, QWORD PTR .LC515[rip]
 	je	.L7231
+	comisd	xmm4, QWORD PTR .LC516[rip]
+	je	.L7232
+	comisd	xmm4, QWORD PTR .LC517[rip]
+	je	.L7233
+	comisd	xmm4, QWORD PTR .LC518[rip]
+	je	.L7234
+	comisd	xmm4, QWORD PTR .LC519[rip]
+	je	.L7235
+	comisd	xmm4, QWORD PTR .LC520[rip]
+	je	.L7236
+	comisd	xmm4, QWORD PTR .LC521[rip]
+	je	.L7237
+	comisd	xmm4, QWORD PTR .LC522[rip]
+	je	.L7238
+	comisd	xmm4, QWORD PTR .LC523[rip]
+	je	.L7239
+	comisd	xmm4, QWORD PTR .LC524[rip]
+	je	.L7240
+	comisd	xmm4, QWORD PTR .LC525[rip]
+	je	.L7241
+	comisd	xmm4, QWORD PTR .LC270[rip]
+	je	.L7242
+	comisd	xmm4, QWORD PTR .LC526[rip]
+	je	.L7243
 	comisd	xmm4, QWORD PTR .LC1992[rip]
-	jne	.L7232
+	jne	.L7244
 .L4925:
 	xor	r8d, r8d
 	mov	ecx, 9
@@ -7582,13 +7582,13 @@ _ZN8MEMORY_T6POKE64Edd:
 	ret
 	.p2align 4,,10
 	.p2align 3
-.L7203:
+.L7215:
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	btc	rax, 63
 	sub	rax, 15
 	cmp	rax, 240
-	jbe	.L5319
+	jbe	.L5327
 	jmp	.L1819
 .L1834:
 .L1837:
@@ -7613,12 +7613,12 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7199:
+.L7211:
 	movsd	QWORD PTR 0[r13+rbx*8], xmm5
 	jmp	.L1819
 	.p2align 4,,10
 	.p2align 3
-.L7200:
+.L7212:
 	mov	rax, QWORD PTR .LC278[rip]
 	movapd	xmm1, xmm5
 	mov	rdi, r13
@@ -17183,7 +17183,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L1819
 	.p2align 4,,10
 	.p2align 3
-.L5583:
+.L5591:
 .L1822:
 	xor	r8d, r8d
 	xor	ecx, ecx
@@ -17218,7 +17218,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	xor	r9d, r9d
 	mov	r8d, 65
 	mov	ecx, 7
-.L7187:
+.L7195:
 	mov	edx, 32
 	mov	esi, 1080
 	mov	edi, 1920
@@ -17240,7 +17240,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7204:
+.L7216:
 .L1825:
 	xor	r8d, r8d
 	xor	ecx, ecx
@@ -17283,7 +17283,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	fb_GfxPaint@PLT
 	.p2align 4,,10
 	.p2align 3
-.L5585:
+.L5593:
 .L1842:
 	cvtsd2si	rcx, QWORD PTR 393304[r13]
 	pxor	xmm0, xmm0
@@ -17305,7 +17305,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7205:
+.L7217:
 .L1845:
 	cvtsd2si	rcx, QWORD PTR 393352[r13]
 	pxor	xmm0, xmm0
@@ -17327,7 +17327,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7206:
+.L7218:
 .L1847:
 	cvtsd2si	rcx, QWORD PTR 393400[r13]
 	pxor	xmm0, xmm0
@@ -17349,7 +17349,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7207:
+.L7219:
 .L1849:
 	cvtsd2si	rcx, QWORD PTR 393448[r13]
 	pxor	xmm0, xmm0
@@ -17371,7 +17371,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7208:
+.L7220:
 .L1851:
 	cvtsd2si	rcx, QWORD PTR 393496[r13]
 	pxor	xmm0, xmm0
@@ -17393,7 +17393,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7209:
+.L7221:
 .L1853:
 	cvtsd2si	rcx, QWORD PTR 393544[r13]
 	pxor	xmm0, xmm0
@@ -17415,7 +17415,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7210:
+.L7222:
 .L1855:
 	cvtsd2si	rcx, QWORD PTR 393592[r13]
 	pxor	xmm0, xmm0
@@ -17437,7 +17437,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7211:
+.L7223:
 .L1857:
 	cvtsd2si	rcx, QWORD PTR 393640[r13]
 	pxor	xmm0, xmm0
@@ -17459,14 +17459,14 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7232:
+.L7244:
 	comisd	xmm4, QWORD PTR .LC2033[rip]
-	je	.L7233
+	je	.L7245
 	comisd	xmm4, QWORD PTR .LC2034[rip]
-	je	.L7111
+	je	.L7119
 	comisd	xmm4, QWORD PTR .LC2035[rip]
-	jne	.L7234
-.L5027:
+	jne	.L7246
+.L5035:
 	lea	rdi, 134479872[r13]
 	mov	edx, 65536
 	xor	esi, esi
@@ -17505,12 +17505,12 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	fb_FileSize@PLT
 	mov	r12, rax
 	test	rax, rax
-	js	.L5028
+	js	.L5036
 	xor	ebx, ebx
 	lea	rbp, 176[rsp]
 	.p2align 4,,10
 	.p2align 3
-.L5029:
+.L5037:
 	mov	ecx, 1
 	mov	rdx, rbp
 	xor	esi, esi
@@ -17522,40 +17522,40 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	QWORD PTR 134479872[r13+rbx*8], xmm0
 	add	rbx, 1
 	cmp	r12, rbx
-	jge	.L5029
-.L5028:
+	jge	.L5037
+.L5036:
 	mov	edi, 1
 	call	fb_FileClose@PLT
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7234:
+.L7246:
 	comisd	xmm4, QWORD PTR .LC2085[rip]
-	je	.L5032
+	je	.L5040
 	comisd	xmm4, QWORD PTR .LC2086[rip]
-	jne	.L7235
-.L5032:
+	jne	.L7247
+.L5040:
 	comisd	xmm5, QWORD PTR .LC117[rip]
 	movsd	QWORD PTR [rsp], xmm4
-	ja	.L5033
+	ja	.L5041
 	comisd	xmm2, xmm5
-	jbe	.L7236
-.L5033:
+	jbe	.L7248
+.L5041:
 	comisd	xmm5, QWORD PTR .LC132[rip]
-	ja	.L5036
+	ja	.L5044
 	comisd	xmm5, QWORD PTR .LC6[rip]
-	jnb	.L7237
-.L5036:
+	jnb	.L7249
+.L5044:
 	comisd	xmm5, QWORD PTR .LC73[rip]
-	jb	.L5038
+	jb	.L5046
 	comisd	xmm5, QWORD PTR .LC88[rip]
-	jbe	.L7238
-.L5038:
+	jbe	.L7250
+.L5046:
 	comisd	xmm5, QWORD PTR .LC104[rip]
-	ja	.L5040
+	ja	.L5048
 	comisd	xmm5, QWORD PTR .LC89[rip]
-	jnb	.L7239
-.L5040:
+	jnb	.L7251
+.L5048:
 	subsd	xmm5, QWORD PTR .LC351[rip]
 	pxor	xmm1, xmm1
 	movabs	rcx, -9187201950435737471
@@ -17592,7 +17592,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rax
 	call	_ZN8MEMORY_T6POKE64Edd
 	movsd	xmm4, QWORD PTR [rsp]
-.L5035:
+.L5043:
 	movsd	xmm0, QWORD PTR .LC469[rip]
 	addsd	xmm0, QWORD PTR SYS_OFFSET$[rip]
 	comisd	xmm0, xmm4
@@ -17613,15 +17613,15 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L743
 	.p2align 4,,10
 	.p2align 3
-.L7235:
+.L7247:
 	comisd	xmm4, QWORD PTR .LC2038[rip]
-	jne	.L7240
-.L5031:
+	jne	.L7252
+.L5039:
 	comisd	xmm5, QWORD PTR .LC117[rip]
-	ja	.L5044
+	ja	.L5052
 	comisd	xmm2, xmm5
-	ja	.L5044
-.L5045:
+	ja	.L5052
+.L5053:
 	cvtsd2si	rcx, xmm5
 	pxor	xmm5, xmm5
 	movabs	rdx, -9187201950435737471
@@ -17641,8 +17641,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L743
 	.p2align 4,,10
 	.p2align 3
-.L7236:
-.L5034:
+.L7248:
+.L5042:
 	cvtsd2si	rcx, xmm5
 	pxor	xmm1, xmm1
 	mov	rdi, r13
@@ -17663,11 +17663,11 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rax
 	call	_ZN8MEMORY_T6POKE64Edd
 	movsd	xmm4, QWORD PTR [rsp]
-	jmp	.L5035
+	jmp	.L5043
 	.p2align 4,,10
 	.p2align 3
-.L7237:
-.L5037:
+.L7249:
+.L5045:
 	subsd	xmm5, QWORD PTR .LC6[rip]
 	pxor	xmm1, xmm1
 	mov	rdi, r13
@@ -17704,11 +17704,11 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rax
 	call	_ZN8MEMORY_T6POKE64Edd
 	movsd	xmm4, QWORD PTR [rsp]
-	jmp	.L5035
+	jmp	.L5043
 	.p2align 4,,10
 	.p2align 3
-.L7238:
-.L5039:
+.L7250:
+.L5047:
 	movsd	xmm2, QWORD PTR .LC73[rip]
 	pxor	xmm1, xmm1
 	mov	rdi, r13
@@ -17746,11 +17746,11 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rax
 	call	_ZN8MEMORY_T6POKE64Edd
 	movsd	xmm4, QWORD PTR [rsp]
-	jmp	.L5035
+	jmp	.L5043
 	.p2align 4,,10
 	.p2align 3
-.L7239:
-.L5041:
+.L7251:
+.L5049:
 	subsd	xmm5, QWORD PTR .LC89[rip]
 	pxor	xmm1, xmm1
 	mov	rdi, r13
@@ -17787,15 +17787,15 @@ _ZN8MEMORY_T6POKE64Edd:
 	movq	xmm0, rax
 	call	_ZN8MEMORY_T6POKE64Edd
 	movsd	xmm4, QWORD PTR [rsp]
-	jmp	.L5035
+	jmp	.L5043
 	.p2align 4,,10
 	.p2align 3
-.L5044:
+.L5052:
 	comisd	xmm5, QWORD PTR .LC132[rip]
-	ja	.L5046
+	ja	.L5054
 	comisd	xmm5, QWORD PTR .LC6[rip]
-	jb	.L5046
-.L5047:
+	jb	.L5054
+.L5055:
 	subsd	xmm5, QWORD PTR .LC6[rip]
 	movabs	rcx, -9187201950435737471
 	cvtsd2si	rsi, xmm5
@@ -17832,40 +17832,40 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L743
 	.p2align 4,,10
 	.p2align 3
-.L7240:
+.L7252:
 	comisd	xmm4, QWORD PTR .LC276[rip]
-	je	.L5054
+	je	.L5062
 	comisd	xmm4, QWORD PTR .LC275[rip]
-	je	.L7241
+	je	.L7253
 	comisd	xmm4, QWORD PTR .LC2040[rip]
-	je	.L7242
+	je	.L7254
 	comisd	xmm4, QWORD PTR .LC2041[rip]
-	je	.L7243
+	je	.L7255
 	comisd	xmm4, QWORD PTR .LC2042[rip]
-	je	.L7244
-.L5063:
+	je	.L7256
+.L5071:
 	comisd	xmm4, QWORD PTR .LC2044[rip]
-	je	.L7245
+	je	.L7257
 	comisd	xmm4, QWORD PTR .LC2047[rip]
-	je	.L5070
+	je	.L5078
 	comisd	xmm4, QWORD PTR .LC2049[rip]
-	je	.L7246
+	je	.L7258
 	comisd	xmm4, QWORD PTR .LC2050[rip]
-	je	.L7247
+	je	.L7259
 	comisd	xmm4, QWORD PTR .LC2051[rip]
-	je	.L7248
+	je	.L7260
 	comisd	xmm4, QWORD PTR .LC2055[rip]
-	je	.L7249
-.L5078:
+	je	.L7261
+.L5086:
 	comisd	xmm4, QWORD PTR .LC2059[rip]
-	je	.L7250
+	je	.L7262
 	comisd	xmm4, QWORD PTR .LC2060[rip]
-	je	.L7251
+	je	.L7263
 	comisd	xmm4, QWORD PTR .LC2061[rip]
-	je	.L5070
+	je	.L5078
 	comisd	xmm4, QWORD PTR .LC2062[rip]
-	jne	.L7252
-.L5084:
+	jne	.L7264
+.L5092:
 	cvtsd2si	rax, QWORD PTR C$[rip]
 	movsd	QWORD PTR 1592[r13], xmm5
 	cvtsd2si	rcx, QWORD PTR X$[rip]
@@ -17873,7 +17873,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	eax, 128
 	sar	rax, cl
 	test	rax, rdx
-	je	.L7253
+	je	.L7265
 	comisd	xmm5, xmm2
 	mov	rax, QWORD PTR .LC276[rip]
 	movq	xmm4, rax
@@ -17884,7 +17884,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L743
 	.p2align 4,,10
 	.p2align 3
-.L7212:
+.L7224:
 .L1859:
 	cvtsd2si	rcx, QWORD PTR 393688[r13]
 	pxor	xmm0, xmm0
@@ -17906,7 +17906,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7213:
+.L7225:
 .L1861:
 	cvtsd2si	rcx, QWORD PTR 393736[r13]
 	pxor	xmm0, xmm0
@@ -17928,7 +17928,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7214:
+.L7226:
 .L1863:
 	cvtsd2si	rcx, QWORD PTR 393792[r13]
 	pxor	xmm0, xmm0
@@ -17950,7 +17950,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7215:
+.L7227:
 .L1865:
 	cvtsd2si	rcx, QWORD PTR 393832[r13]
 	pxor	xmm0, xmm0
@@ -17972,7 +17972,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7216:
+.L7228:
 .L1867:
 	cvtsd2si	rcx, QWORD PTR 393880[r13]
 	pxor	xmm0, xmm0
@@ -17994,7 +17994,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7217:
+.L7229:
 .L1869:
 	cvtsd2si	rcx, QWORD PTR 393928[r13]
 	pxor	xmm0, xmm0
@@ -18016,7 +18016,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7218:
+.L7230:
 .L1871:
 	cvtsd2si	rcx, QWORD PTR 393976[r13]
 	pxor	xmm0, xmm0
@@ -18038,7 +18038,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7219:
+.L7231:
 .L1873:
 	cvtsd2si	rcx, QWORD PTR 394024[r13]
 	pxor	xmm0, xmm0
@@ -18060,7 +18060,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7220:
+.L7232:
 .L1875:
 	cvtsd2si	rcx, QWORD PTR 394072[r13]
 	pxor	xmm0, xmm0
@@ -18082,7 +18082,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7221:
+.L7233:
 .L1877:
 	cvtsd2si	rcx, QWORD PTR 394120[r13]
 	pxor	xmm0, xmm0
@@ -18104,7 +18104,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7222:
+.L7234:
 .L1879:
 	cvtsd2si	rcx, QWORD PTR 394168[r13]
 	pxor	xmm0, xmm0
@@ -18126,7 +18126,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7223:
+.L7235:
 .L1881:
 	cvtsd2si	rcx, QWORD PTR 394216[r13]
 	pxor	xmm0, xmm0
@@ -18148,7 +18148,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7224:
+.L7236:
 .L1883:
 	cvtsd2si	rcx, QWORD PTR 394264[r13]
 	pxor	xmm0, xmm0
@@ -18170,7 +18170,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7225:
+.L7237:
 .L1885:
 	cvtsd2si	rcx, QWORD PTR 394312[r13]
 	pxor	xmm0, xmm0
@@ -18192,7 +18192,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7226:
+.L7238:
 .L1887:
 	cvtsd2si	rcx, QWORD PTR 394360[r13]
 	pxor	xmm0, xmm0
@@ -18214,7 +18214,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L742
 	.p2align 4,,10
 	.p2align 3
-.L7227:
+.L7239:
 .L1889:
 	cvtsd2si	rcx, QWORD PTR 394408[r13]
 	pxor	xmm0, xmm0
@@ -18234,7 +18234,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm0, QWORD PTR 394440[r13]
 	movsd	QWORD PTR 395024[r13], xmm0
 	jmp	.L742
-.L7228:
+.L7240:
 .L1891:
 	cvtsd2si	rcx, QWORD PTR 394456[r13]
 	pxor	xmm0, xmm0
@@ -18254,7 +18254,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm0, QWORD PTR 394488[r13]
 	movsd	QWORD PTR 395032[r13], xmm0
 	jmp	.L742
-.L7229:
+.L7241:
 .L1893:
 	cvtsd2si	rsi, QWORD PTR 394848[r13]
 	mov	r8d, 1
@@ -18269,7 +18269,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	GLSCREEN
-.L7230:
+.L7242:
 .L1895:
 	movapd	xmm0, xmm5
 	movsd	QWORD PTR 8[rsp], xmm2
@@ -18297,43 +18297,43 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm0, xmm0
 .L1901:
 	comisd	xmm0, xmm2
-	je	.L5613
+	je	.L5621
 	comisd	xmm0, QWORD PTR .LC1[rip]
-	je	.L7254
-	comisd	xmm0, QWORD PTR .LC105[rip]
-	je	.L7255
-	comisd	xmm0, QWORD PTR .LC106[rip]
-	je	.L7256
-	comisd	xmm0, QWORD PTR .LC107[rip]
-	je	.L7257
-	comisd	xmm0, QWORD PTR .LC108[rip]
-	je	.L7258
-	comisd	xmm0, QWORD PTR .LC109[rip]
-	je	.L7259
-	comisd	xmm0, QWORD PTR .LC110[rip]
-	je	.L7260
-	comisd	xmm0, QWORD PTR .LC5[rip]
-	je	.L7261
-	comisd	xmm0, QWORD PTR .LC112[rip]
-	je	.L7262
-	comisd	xmm0, QWORD PTR .LC113[rip]
-	je	.L7263
-	comisd	xmm0, QWORD PTR .LC114[rip]
-	je	.L7264
-	comisd	xmm0, QWORD PTR .LC115[rip]
-	je	.L7265
-	comisd	xmm0, QWORD PTR .LC116[rip]
 	je	.L7266
-	comisd	xmm0, QWORD PTR .LC117[rip]
+	comisd	xmm0, QWORD PTR .LC105[rip]
 	je	.L7267
-	comisd	xmm0, QWORD PTR .LC6[rip]
+	comisd	xmm0, QWORD PTR .LC106[rip]
 	je	.L7268
-	comisd	xmm0, QWORD PTR .LC118[rip]
+	comisd	xmm0, QWORD PTR .LC107[rip]
 	je	.L7269
-	comisd	xmm0, QWORD PTR .LC119[rip]
+	comisd	xmm0, QWORD PTR .LC108[rip]
 	je	.L7270
-	comisd	xmm0, QWORD PTR .LC120[rip]
+	comisd	xmm0, QWORD PTR .LC109[rip]
 	je	.L7271
+	comisd	xmm0, QWORD PTR .LC110[rip]
+	je	.L7272
+	comisd	xmm0, QWORD PTR .LC5[rip]
+	je	.L7273
+	comisd	xmm0, QWORD PTR .LC112[rip]
+	je	.L7274
+	comisd	xmm0, QWORD PTR .LC113[rip]
+	je	.L7275
+	comisd	xmm0, QWORD PTR .LC114[rip]
+	je	.L7276
+	comisd	xmm0, QWORD PTR .LC115[rip]
+	je	.L7277
+	comisd	xmm0, QWORD PTR .LC116[rip]
+	je	.L7278
+	comisd	xmm0, QWORD PTR .LC117[rip]
+	je	.L7279
+	comisd	xmm0, QWORD PTR .LC6[rip]
+	je	.L7280
+	comisd	xmm0, QWORD PTR .LC118[rip]
+	je	.L7281
+	comisd	xmm0, QWORD PTR .LC119[rip]
+	je	.L7282
+	comisd	xmm0, QWORD PTR .LC120[rip]
+	je	.L7283
 	comisd	xmm0, QWORD PTR .LC121[rip]
 	jne	.L742
 .L4100:
@@ -18349,324 +18349,324 @@ _ZN8MEMORY_T6POKE64Edd:
 	test	rax, rax
 	je	.L4604
 	cmp	rax, 1
-	je	.L7272
+	je	.L7284
 	cmp	rax, 2
-	je	.L7273
+	je	.L7285
 	cmp	rax, 3
-	je	.L7274
+	je	.L7286
 	cmp	rax, 4
-	je	.L7275
+	je	.L7287
 	cmp	rax, 5
-	je	.L7276
+	je	.L7288
 	cmp	rax, 6
-	je	.L7277
+	je	.L7289
 	cmp	rax, 7
-	je	.L7278
+	je	.L7290
 	cmp	rax, 8
-	je	.L7279
+	je	.L7291
 	cmp	rax, 9
-	je	.L7280
+	je	.L7292
 	cmp	rax, 10
-	je	.L7281
+	je	.L7293
 	cmp	rax, 11
-	je	.L7282
+	je	.L7294
 	cmp	rax, 12
-	je	.L7283
+	je	.L7295
 	lea	rdx, -13[rax]
 	cmp	rdx, 1
-	jbe	.L7284
+	jbe	.L7296
 	cmp	rax, 15
 	je	.L4632
 	cmp	rax, 16
-	je	.L7285
-	cmp	rax, 17
-	je	.L7286
-	cmp	rax, 18
-	je	.L7287
-	cmp	rax, 19
-	je	.L7288
-	cmp	rax, 20
-	je	.L7289
-	cmp	rax, 21
-	je	.L7290
-	cmp	rax, 22
-	je	.L7291
-	cmp	rax, 23
-	je	.L7292
-	cmp	rax, 24
-	je	.L7293
-	cmp	rax, 25
-	je	.L7294
-	cmp	rax, 26
-	je	.L7295
-	cmp	rax, 27
-	je	.L7296
-	cmp	rax, 28
 	je	.L7297
-	cmp	rax, 29
+	cmp	rax, 17
 	je	.L7298
-	cmp	rax, 30
+	cmp	rax, 18
 	je	.L7299
-	cmp	rax, 31
+	cmp	rax, 19
 	je	.L7300
-	cmp	rax, 32
+	cmp	rax, 20
 	je	.L7301
-	cmp	rax, 33
+	cmp	rax, 21
 	je	.L7302
-	cmp	rax, 34
+	cmp	rax, 22
 	je	.L7303
-	cmp	rax, 35
+	cmp	rax, 23
 	je	.L7304
-	cmp	rax, 36
+	cmp	rax, 24
 	je	.L7305
-	cmp	rax, 37
+	cmp	rax, 25
 	je	.L7306
-	cmp	rax, 38
+	cmp	rax, 26
 	je	.L7307
-	cmp	rax, 39
+	cmp	rax, 27
 	je	.L7308
-	cmp	rax, 40
+	cmp	rax, 28
 	je	.L7309
-	cmp	rax, 41
+	cmp	rax, 29
 	je	.L7310
-	cmp	rax, 42
+	cmp	rax, 30
 	je	.L7311
-	cmp	rax, 43
+	cmp	rax, 31
 	je	.L7312
-	cmp	rax, 44
+	cmp	rax, 32
 	je	.L7313
-	cmp	rax, 45
+	cmp	rax, 33
 	je	.L7314
-	cmp	rax, 46
+	cmp	rax, 34
 	je	.L7315
-	cmp	rax, 47
+	cmp	rax, 35
 	je	.L7316
-	cmp	rax, 48
+	cmp	rax, 36
 	je	.L7317
-	cmp	rax, 49
+	cmp	rax, 37
 	je	.L7318
-	cmp	rax, 50
+	cmp	rax, 38
 	je	.L7319
-	cmp	rax, 51
+	cmp	rax, 39
 	je	.L7320
-	cmp	rax, 52
+	cmp	rax, 40
 	je	.L7321
-	cmp	rax, 53
+	cmp	rax, 41
 	je	.L7322
-	cmp	rax, 54
+	cmp	rax, 42
 	je	.L7323
-	cmp	rax, 55
+	cmp	rax, 43
 	je	.L7324
-	cmp	rax, 56
+	cmp	rax, 44
 	je	.L7325
-	cmp	rax, 57
+	cmp	rax, 45
 	je	.L7326
-	cmp	rax, 58
+	cmp	rax, 46
 	je	.L7327
-	cmp	rax, 59
+	cmp	rax, 47
 	je	.L7328
-	cmp	rax, 60
+	cmp	rax, 48
 	je	.L7329
-	cmp	rax, 61
+	cmp	rax, 49
 	je	.L7330
-	cmp	rax, 62
+	cmp	rax, 50
 	je	.L7331
-	cmp	rax, 63
+	cmp	rax, 51
 	je	.L7332
-	cmp	rax, 64
+	cmp	rax, 52
 	je	.L7333
-	cmp	rax, 65
+	cmp	rax, 53
 	je	.L7334
-	cmp	rax, 66
+	cmp	rax, 54
 	je	.L7335
-	cmp	rax, 67
+	cmp	rax, 55
 	je	.L7336
-	cmp	rax, 68
+	cmp	rax, 56
 	je	.L7337
-	cmp	rax, 69
+	cmp	rax, 57
 	je	.L7338
-	cmp	rax, 70
+	cmp	rax, 58
 	je	.L7339
-	cmp	rax, 71
+	cmp	rax, 59
 	je	.L7340
-	cmp	rax, 72
+	cmp	rax, 60
 	je	.L7341
-	cmp	rax, 73
+	cmp	rax, 61
 	je	.L7342
-	cmp	rax, 74
+	cmp	rax, 62
 	je	.L7343
-	cmp	rax, 75
+	cmp	rax, 63
 	je	.L7344
-	cmp	rax, 76
+	cmp	rax, 64
 	je	.L7345
-	cmp	rax, 77
+	cmp	rax, 65
 	je	.L7346
-	cmp	rax, 78
+	cmp	rax, 66
 	je	.L7347
-	cmp	rax, 79
+	cmp	rax, 67
 	je	.L7348
-	cmp	rax, 80
+	cmp	rax, 68
 	je	.L7349
-	cmp	rax, 81
+	cmp	rax, 69
 	je	.L7350
-	cmp	rax, 82
+	cmp	rax, 70
 	je	.L7351
-	cmp	rax, 83
+	cmp	rax, 71
 	je	.L7352
-	cmp	rax, 84
+	cmp	rax, 72
 	je	.L7353
-	cmp	rax, 85
+	cmp	rax, 73
 	je	.L7354
-	cmp	rax, 86
+	cmp	rax, 74
 	je	.L7355
-	cmp	rax, 87
+	cmp	rax, 75
 	je	.L7356
-	cmp	rax, 88
+	cmp	rax, 76
 	je	.L7357
-	cmp	rax, 89
+	cmp	rax, 77
 	je	.L7358
-	cmp	rax, 90
+	cmp	rax, 78
 	je	.L7359
-	cmp	rax, 91
+	cmp	rax, 79
 	je	.L7360
-	cmp	rax, 92
+	cmp	rax, 80
 	je	.L7361
-	cmp	rax, 93
+	cmp	rax, 81
 	je	.L7362
-	cmp	rax, 94
+	cmp	rax, 82
 	je	.L7363
-	cmp	rax, 95
+	cmp	rax, 83
 	je	.L7364
-	cmp	rax, 96
+	cmp	rax, 84
 	je	.L7365
-	cmp	rax, 97
+	cmp	rax, 85
 	je	.L7366
-	cmp	rax, 98
+	cmp	rax, 86
 	je	.L7367
-	cmp	rax, 99
+	cmp	rax, 87
 	je	.L7368
-	cmp	rax, 100
+	cmp	rax, 88
 	je	.L7369
-	cmp	rax, 101
+	cmp	rax, 89
 	je	.L7370
-	cmp	rax, 102
+	cmp	rax, 90
 	je	.L7371
-	cmp	rax, 103
+	cmp	rax, 91
 	je	.L7372
-	cmp	rax, 104
+	cmp	rax, 92
 	je	.L7373
-	cmp	rax, 105
+	cmp	rax, 93
 	je	.L7374
-	cmp	rax, 106
+	cmp	rax, 94
 	je	.L7375
-	cmp	rax, 107
+	cmp	rax, 95
 	je	.L7376
-	cmp	rax, 108
+	cmp	rax, 96
 	je	.L7377
-	cmp	rax, 109
+	cmp	rax, 97
 	je	.L7378
-	cmp	rax, 110
+	cmp	rax, 98
 	je	.L7379
-	cmp	rax, 111
+	cmp	rax, 99
 	je	.L7380
-	cmp	rax, 112
+	cmp	rax, 100
 	je	.L7381
-	cmp	rax, 113
+	cmp	rax, 101
 	je	.L7382
-	cmp	rax, 114
+	cmp	rax, 102
 	je	.L7383
-	cmp	rax, 115
+	cmp	rax, 103
 	je	.L7384
-	cmp	rax, 116
+	cmp	rax, 104
 	je	.L7385
-	cmp	rax, 117
+	cmp	rax, 105
 	je	.L7386
-	cmp	rax, 118
+	cmp	rax, 106
 	je	.L7387
-	cmp	rax, 119
+	cmp	rax, 107
 	je	.L7388
-	cmp	rax, 120
+	cmp	rax, 108
 	je	.L7389
-	cmp	rax, 121
+	cmp	rax, 109
 	je	.L7390
-	cmp	rax, 122
+	cmp	rax, 110
 	je	.L7391
-	cmp	rax, 123
+	cmp	rax, 111
 	je	.L7392
-	cmp	rax, 124
+	cmp	rax, 112
 	je	.L7393
-	cmp	rax, 125
+	cmp	rax, 113
 	je	.L7394
-	cmp	rax, 126
+	cmp	rax, 114
 	je	.L7395
-	cmp	rax, 127
+	cmp	rax, 115
 	je	.L7396
-	cmp	rax, 128
+	cmp	rax, 116
 	je	.L7397
-	cmp	rax, 129
+	cmp	rax, 117
 	je	.L7398
-	cmp	rax, 130
+	cmp	rax, 118
 	je	.L7399
-	cmp	rax, 131
+	cmp	rax, 119
 	je	.L7400
-	cmp	rax, 132
+	cmp	rax, 120
 	je	.L7401
-	cmp	rax, 133
+	cmp	rax, 121
 	je	.L7402
-	cmp	rax, 134
+	cmp	rax, 122
 	je	.L7403
-	cmp	rax, 135
+	cmp	rax, 123
 	je	.L7404
-	cmp	rax, 136
+	cmp	rax, 124
 	je	.L7405
-	cmp	rax, 137
+	cmp	rax, 125
 	je	.L7406
-	cmp	rax, 138
+	cmp	rax, 126
 	je	.L7407
-	cmp	rax, 139
+	cmp	rax, 127
 	je	.L7408
-	cmp	rax, 140
+	cmp	rax, 128
 	je	.L7409
-	cmp	rax, 141
+	cmp	rax, 129
 	je	.L7410
-	cmp	rax, 142
+	cmp	rax, 130
 	je	.L7411
-	cmp	rax, 143
+	cmp	rax, 131
 	je	.L7412
-	cmp	rax, 144
+	cmp	rax, 132
 	je	.L7413
-	cmp	rax, 145
+	cmp	rax, 133
 	je	.L7414
-	cmp	rax, 146
+	cmp	rax, 134
 	je	.L7415
-	cmp	rax, 147
+	cmp	rax, 135
 	je	.L7416
-	cmp	rax, 148
+	cmp	rax, 136
 	je	.L7417
-	cmp	rax, 149
+	cmp	rax, 137
 	je	.L7418
-	cmp	rax, 150
+	cmp	rax, 138
 	je	.L7419
-	cmp	rax, 151
+	cmp	rax, 139
 	je	.L7420
-	cmp	rax, 152
+	cmp	rax, 140
 	je	.L7421
-	cmp	rax, 153
+	cmp	rax, 141
 	je	.L7422
-	cmp	rax, 154
+	cmp	rax, 142
 	je	.L7423
-	cmp	rax, 155
+	cmp	rax, 143
 	je	.L7424
-	cmp	rax, 156
+	cmp	rax, 144
 	je	.L7425
-	cmp	rax, 157
+	cmp	rax, 145
 	je	.L7426
-	cmp	rax, 158
+	cmp	rax, 146
 	je	.L7427
-	cmp	rax, 159
+	cmp	rax, 147
 	je	.L7428
-	cmp	rax, 160
+	cmp	rax, 148
 	je	.L7429
+	cmp	rax, 149
+	je	.L7430
+	cmp	rax, 150
+	je	.L7431
+	cmp	rax, 151
+	je	.L7432
+	cmp	rax, 152
+	je	.L7433
+	cmp	rax, 153
+	je	.L7434
+	cmp	rax, 154
+	je	.L7435
+	cmp	rax, 155
+	je	.L7436
+	cmp	rax, 156
+	je	.L7437
+	cmp	rax, 157
+	je	.L7438
+	cmp	rax, 158
+	je	.L7439
+	cmp	rax, 159
+	je	.L7440
+	cmp	rax, 160
+	je	.L7441
 	cmp	rax, 161
 	jne	.L742
 .L4923:
@@ -18686,12 +18686,12 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	fb_PrintString@PLT
 	.p2align 4,,10
 	.p2align 3
-.L5046:
+.L5054:
 	comisd	xmm5, QWORD PTR .LC73[rip]
-	jb	.L5048
+	jb	.L5056
 	comisd	xmm5, QWORD PTR .LC88[rip]
-	ja	.L5048
-.L5049:
+	ja	.L5056
+.L5057:
 	movsd	xmm2, QWORD PTR .LC73[rip]
 	movabs	rcx, -9187201950435737471
 	subsd	xmm5, xmm2
@@ -18727,12 +18727,12 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm5, rsi
 	movq	xmm4, rax
 	jmp	.L743
-.L7231:
+.L7243:
 .L1897:
 	comisd	xmm5, xmm2
-	je	.L7087
+	je	.L7095
 	comisd	xmm5, QWORD PTR .LC1[rip]
-	je	.L7430
+	je	.L7442
 	comisd	xmm5, QWORD PTR .LC106[rip]
 	setne	dl
 	comisd	xmm5, QWORD PTR .LC105[rip]
@@ -18742,47 +18742,47 @@ _ZN8MEMORY_T6POKE64Edd:
 	comisd	xmm5, QWORD PTR .LC107[rip]
 	je	.L742
 	comisd	xmm5, QWORD PTR .LC108[rip]
-	je	.L7089
+	je	.L7097
 	comisd	xmm5, QWORD PTR .LC109[rip]
-	je	.L7431
-	comisd	xmm5, QWORD PTR .LC110[rip]
-	je	.L7432
-	comisd	xmm5, QWORD PTR .LC111[rip]
-	je	.L7433
-	comisd	xmm5, QWORD PTR .LC5[rip]
-	je	.L7434
-	comisd	xmm5, QWORD PTR .LC112[rip]
-	je	.L7435
-	comisd	xmm5, QWORD PTR .LC113[rip]
-	je	.L7436
-	comisd	xmm5, QWORD PTR .LC114[rip]
-	je	.L7437
-	comisd	xmm5, QWORD PTR .LC115[rip]
-	je	.L7438
-	comisd	xmm5, QWORD PTR .LC116[rip]
-	je	.L7439
-	comisd	xmm5, QWORD PTR .LC117[rip]
-	je	.L7440
-	comisd	xmm5, QWORD PTR .LC6[rip]
-	je	.L7441
-	comisd	xmm5, QWORD PTR .LC119[rip]
-	je	.L7442
-	comisd	xmm5, QWORD PTR .LC120[rip]
 	je	.L7443
-	comisd	xmm5, QWORD PTR .LC121[rip]
+	comisd	xmm5, QWORD PTR .LC110[rip]
 	je	.L7444
-	comisd	xmm5, QWORD PTR .LC122[rip]
+	comisd	xmm5, QWORD PTR .LC111[rip]
 	je	.L7445
-	comisd	xmm5, QWORD PTR .LC123[rip]
+	comisd	xmm5, QWORD PTR .LC5[rip]
 	je	.L7446
-	comisd	xmm5, QWORD PTR .LC124[rip]
+	comisd	xmm5, QWORD PTR .LC112[rip]
 	je	.L7447
-	comisd	xmm5, QWORD PTR .LC125[rip]
+	comisd	xmm5, QWORD PTR .LC113[rip]
 	je	.L7448
+	comisd	xmm5, QWORD PTR .LC114[rip]
+	je	.L7449
+	comisd	xmm5, QWORD PTR .LC115[rip]
+	je	.L7450
+	comisd	xmm5, QWORD PTR .LC116[rip]
+	je	.L7451
+	comisd	xmm5, QWORD PTR .LC117[rip]
+	je	.L7452
+	comisd	xmm5, QWORD PTR .LC6[rip]
+	je	.L7453
+	comisd	xmm5, QWORD PTR .LC119[rip]
+	je	.L7454
+	comisd	xmm5, QWORD PTR .LC120[rip]
+	je	.L7455
+	comisd	xmm5, QWORD PTR .LC121[rip]
+	je	.L7456
+	comisd	xmm5, QWORD PTR .LC122[rip]
+	je	.L7457
+	comisd	xmm5, QWORD PTR .LC123[rip]
+	je	.L7458
+	comisd	xmm5, QWORD PTR .LC124[rip]
+	je	.L7459
+	comisd	xmm5, QWORD PTR .LC125[rip]
+	je	.L7460
 	comisd	xmm5, QWORD PTR .LC126[rip]
 	je	.L4972
 	comisd	xmm5, QWORD PTR .LC127[rip]
-	je	.L7449
+	je	.L7461
 	comisd	xmm5, QWORD PTR .LC128[rip]
 	jne	.L742
 .L4973:
@@ -18792,7 +18792,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	movups	XMMWORD PTR 394840[r13], xmm0
 	cvtsi2ss	xmm3, rax
 	test	rax, rax
-	jns	.L4997
+	jns	.L5001
 	mov	rdx, rax
 	and	eax, 1
 	pxor	xmm3, xmm3
@@ -18800,12 +18800,12 @@ _ZN8MEMORY_T6POKE64Edd:
 	or	rdx, rax
 	cvtsi2ss	xmm3, rdx
 	addss	xmm3, xmm3
-.L4997:
+.L5001:
 	mov	rax, QWORD PTR SCR_W$[rip]
 	pxor	xmm2, xmm2
 	cvtsi2ss	xmm2, rax
 	test	rax, rax
-	jns	.L4999
+	jns	.L5003
 	mov	rdx, rax
 	and	eax, 1
 	pxor	xmm2, xmm2
@@ -18813,7 +18813,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	or	rdx, rax
 	cvtsi2ss	xmm2, rdx
 	addss	xmm2, xmm2
-.L4999:
+.L5003:
 	pxor	xmm1, xmm1
 	mov	rdi, QWORD PTR FGIMAGE$[rip]
 	xor	r8d, r8d
@@ -18833,11 +18833,11 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	QWORD PTR SCR_POS$[rip], 0
 	mov	QWORD PTR 394912[r13], 0x000000000
 	movups	XMMWORD PTR 394896[r13], xmm0
-.L5000:
+.L5004:
 	mov	edi, 1
 	call	fb_FileEof@PLT
 	test	eax, eax
-	jne	.L7450
+	jne	.L7462
 	xor	ecx, ecx
 	or	rdx, -1
 	mov	edi, 1
@@ -18848,13 +18848,13 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	WORD PTR INDEX$[rip], 1
 	call	fb_StrLen@PLT
 	mov	ebx, eax
-	jmp	.L5003
-.L5010:
+	jmp	.L5007
+.L5014:
 	mov	rax, QWORD PTR .LC73[rip]
 	movq	xmm0, rax
 	addsd	xmm1, xmm0
 	movsd	QWORD PTR 394888[r13], xmm1
-.L5004:
+.L5008:
 	addsd	xmm0, QWORD PTR 394888[r13]
 	pxor	xmm1, xmm1
 	mov	rdx, QWORD PTR SCR_POS$[rip]
@@ -18866,7 +18866,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	lea	rax, 16383[rdx+rax]
 	cvtsi2sd	xmm0, rax
 	test	rax, rax
-	jns	.L5006
+	jns	.L5010
 	mov	rdx, rax
 	and	eax, 1
 	pxor	xmm0, xmm0
@@ -18874,14 +18874,14 @@ _ZN8MEMORY_T6POKE64Edd:
 	or	rdx, rax
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L5006:
+.L5010:
 	mov	rdi, r13
 	call	_ZN8MEMORY_T5POKEBEdd
 	add	WORD PTR INDEX$[rip], 1
-.L5003:
+.L5007:
 	movzx	eax, WORD PTR INDEX$[rip]
 	cmp	ax, bx
-	ja	.L5007
+	ja	.L5011
 	mov	edx, 1
 	movzx	esi, ax
 	lea	rdi, STRCODE$[rip]
@@ -18899,19 +18899,19 @@ _ZN8MEMORY_T6POKE64Edd:
 	cmp	eax, 64
 	sbb	eax, eax
 	test	edx, eax
-	jne	.L5010
+	jne	.L5014
 	movsd	QWORD PTR 394888[r13], xmm1
 	mov	rax, QWORD PTR .LC73[rip]
 	movq	xmm0, rax
-	jmp	.L5004
+	jmp	.L5008
 	.p2align 4,,10
 	.p2align 3
-.L5048:
+.L5056:
 	comisd	xmm5, QWORD PTR .LC89[rip]
-	jb	.L5050
+	jb	.L5058
 	comisd	xmm5, QWORD PTR .LC104[rip]
-	ja	.L5050
-.L5051:
+	ja	.L5058
+.L5059:
 	subsd	xmm5, QWORD PTR .LC89[rip]
 	movabs	rcx, -9187201950435737471
 	cvtsd2si	rsi, xmm5
@@ -18946,8 +18946,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm5, rsi
 	movq	xmm4, rax
 	jmp	.L743
-.L7111:
-.L5022:
+.L7119:
+.L5030:
 	cvtsd2si	esi, QWORD PTR 394848[r13]
 	cvtsd2si	edi, QWORD PTR 394840[r13]
 	add	rsp, 280
@@ -18958,8 +18958,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PageCopy@PLT
-.L7233:
-.L5019:
+.L7245:
+.L5027:
 	lea	rcx, 240[rsp]
 	lea	rdx, 112[rsp]
 	mov	QWORD PTR 176[rsp], 0
@@ -18983,22 +18983,22 @@ _ZN8MEMORY_T6POKE64Edd:
 	unpcklpd	xmm0, xmm1
 	movups	XMMWORD PTR 394840[r13], xmm0
 	test	al, 1
-	je	.L5023
+	je	.L5031
 	mov	rbx, QWORD PTR .LC1[rip]
 	mov	QWORD PTR 394864[r13], rbx
-.L5023:
+.L5031:
 	test	al, 2
-	je	.L5024
+	je	.L5032
 	mov	rbx, QWORD PTR .LC105[rip]
 	mov	QWORD PTR 394864[r13], rbx
-.L5024:
+.L5032:
 	test	al, 4
 	je	.L742
-.L5025:
+.L5033:
 	mov	rax, QWORD PTR .LC107[rip]
 	mov	QWORD PTR 394864[r13], rax
 	jmp	.L742
-.L7253:
+.L7265:
 	comisd	xmm5, xmm2
 	mov	rax, QWORD PTR .LC275[rip]
 	movq	xmm4, rax
@@ -19007,522 +19007,522 @@ _ZN8MEMORY_T6POKE64Edd:
 	movapd	xmm5, xmm2
 	movq	xmm4, rax
 	jmp	.L743
-.L7201:
+.L7213:
 	comisd	xmm5, QWORD PTR .LC0[rip]
-	je	.L5325
+	je	.L5333
 	comisd	xmm5, QWORD PTR .LC1[rip]
-	je	.L7451
+	je	.L7463
 	movsd	xmm0, QWORD PTR .LC105[rip]
 	comisd	xmm5, xmm0
-	je	.L7452
+	je	.L7464
 	movsd	xmm0, QWORD PTR .LC106[rip]
 	comisd	xmm5, xmm0
-	je	.L7453
+	je	.L7465
 	movsd	xmm0, QWORD PTR .LC107[rip]
 	comisd	xmm5, xmm0
-	je	.L7454
+	je	.L7466
 	movsd	xmm0, QWORD PTR .LC108[rip]
 	comisd	xmm5, xmm0
-	je	.L7455
-	comisd	xmm5, QWORD PTR .LC109[rip]
-	je	.L7456
-	comisd	xmm5, QWORD PTR .LC110[rip]
-	je	.L7457
-	comisd	xmm5, QWORD PTR .LC111[rip]
-	je	.L7458
-	comisd	xmm5, QWORD PTR .LC5[rip]
-	je	.L7459
-	comisd	xmm5, QWORD PTR .LC112[rip]
-	je	.L7460
-	comisd	xmm5, QWORD PTR .LC113[rip]
-	je	.L7461
-	comisd	xmm5, QWORD PTR .LC114[rip]
-	je	.L7462
-	comisd	xmm5, QWORD PTR .LC115[rip]
-	je	.L7463
-	comisd	xmm5, QWORD PTR .LC116[rip]
-	je	.L7464
-	comisd	xmm5, QWORD PTR .LC117[rip]
-	je	.L7465
-	comisd	xmm5, QWORD PTR .LC6[rip]
-	je	.L7466
-	comisd	xmm5, QWORD PTR .LC118[rip]
 	je	.L7467
-	comisd	xmm5, QWORD PTR .LC119[rip]
+	comisd	xmm5, QWORD PTR .LC109[rip]
 	je	.L7468
-	comisd	xmm5, QWORD PTR .LC120[rip]
+	comisd	xmm5, QWORD PTR .LC110[rip]
 	je	.L7469
-	comisd	xmm5, QWORD PTR .LC121[rip]
+	comisd	xmm5, QWORD PTR .LC111[rip]
 	je	.L7470
-	comisd	xmm5, QWORD PTR .LC122[rip]
+	comisd	xmm5, QWORD PTR .LC5[rip]
 	je	.L7471
-	comisd	xmm5, QWORD PTR .LC123[rip]
+	comisd	xmm5, QWORD PTR .LC112[rip]
 	je	.L7472
-	comisd	xmm5, QWORD PTR .LC124[rip]
+	comisd	xmm5, QWORD PTR .LC113[rip]
 	je	.L7473
-	comisd	xmm5, QWORD PTR .LC125[rip]
+	comisd	xmm5, QWORD PTR .LC114[rip]
 	je	.L7474
-	comisd	xmm5, QWORD PTR .LC126[rip]
+	comisd	xmm5, QWORD PTR .LC115[rip]
 	je	.L7475
-	comisd	xmm5, QWORD PTR .LC127[rip]
+	comisd	xmm5, QWORD PTR .LC116[rip]
 	je	.L7476
-	comisd	xmm5, QWORD PTR .LC128[rip]
+	comisd	xmm5, QWORD PTR .LC117[rip]
 	je	.L7477
-	comisd	xmm5, QWORD PTR .LC129[rip]
+	comisd	xmm5, QWORD PTR .LC6[rip]
 	je	.L7478
-	comisd	xmm5, QWORD PTR .LC130[rip]
+	comisd	xmm5, QWORD PTR .LC118[rip]
 	je	.L7479
-	comisd	xmm5, QWORD PTR .LC131[rip]
+	comisd	xmm5, QWORD PTR .LC119[rip]
 	je	.L7480
-	comisd	xmm5, QWORD PTR .LC132[rip]
+	comisd	xmm5, QWORD PTR .LC120[rip]
 	je	.L7481
+	comisd	xmm5, QWORD PTR .LC121[rip]
+	je	.L7482
+	comisd	xmm5, QWORD PTR .LC122[rip]
+	je	.L7483
+	comisd	xmm5, QWORD PTR .LC123[rip]
+	je	.L7484
+	comisd	xmm5, QWORD PTR .LC124[rip]
+	je	.L7485
+	comisd	xmm5, QWORD PTR .LC125[rip]
+	je	.L7486
+	comisd	xmm5, QWORD PTR .LC126[rip]
+	je	.L7487
+	comisd	xmm5, QWORD PTR .LC127[rip]
+	je	.L7488
+	comisd	xmm5, QWORD PTR .LC128[rip]
+	je	.L7489
+	comisd	xmm5, QWORD PTR .LC129[rip]
+	je	.L7490
+	comisd	xmm5, QWORD PTR .LC130[rip]
+	je	.L7491
+	comisd	xmm5, QWORD PTR .LC131[rip]
+	je	.L7492
+	comisd	xmm5, QWORD PTR .LC132[rip]
+	je	.L7493
 	movsd	xmm2, QWORD PTR .LC73[rip]
 	comisd	xmm5, xmm2
-	je	.L7482
-	comisd	xmm5, QWORD PTR .LC74[rip]
-	je	.L7483
-	comisd	xmm5, QWORD PTR .LC75[rip]
-	je	.L7484
-	comisd	xmm5, QWORD PTR .LC76[rip]
-	je	.L7485
-	comisd	xmm5, QWORD PTR .LC77[rip]
-	je	.L7486
-	comisd	xmm5, QWORD PTR .LC78[rip]
-	je	.L7487
-	comisd	xmm5, QWORD PTR .LC79[rip]
-	je	.L7488
-	comisd	xmm5, QWORD PTR .LC80[rip]
-	je	.L7489
-	comisd	xmm5, QWORD PTR .LC81[rip]
-	je	.L7490
-	comisd	xmm5, QWORD PTR .LC82[rip]
-	je	.L7491
-	comisd	xmm5, QWORD PTR .LC83[rip]
-	je	.L7492
-	comisd	xmm5, QWORD PTR .LC84[rip]
-	je	.L7493
-	comisd	xmm5, QWORD PTR .LC85[rip]
 	je	.L7494
-	comisd	xmm5, QWORD PTR .LC86[rip]
+	comisd	xmm5, QWORD PTR .LC74[rip]
 	je	.L7495
-	comisd	xmm5, QWORD PTR .LC87[rip]
+	comisd	xmm5, QWORD PTR .LC75[rip]
 	je	.L7496
-	comisd	xmm5, QWORD PTR .LC88[rip]
+	comisd	xmm5, QWORD PTR .LC76[rip]
 	je	.L7497
-	comisd	xmm5, QWORD PTR .LC89[rip]
+	comisd	xmm5, QWORD PTR .LC77[rip]
 	je	.L7498
-	comisd	xmm5, QWORD PTR .LC90[rip]
+	comisd	xmm5, QWORD PTR .LC78[rip]
 	je	.L7499
-	comisd	xmm5, QWORD PTR .LC91[rip]
+	comisd	xmm5, QWORD PTR .LC79[rip]
 	je	.L7500
-	comisd	xmm5, QWORD PTR .LC92[rip]
+	comisd	xmm5, QWORD PTR .LC80[rip]
 	je	.L7501
-	comisd	xmm5, QWORD PTR .LC93[rip]
+	comisd	xmm5, QWORD PTR .LC81[rip]
 	je	.L7502
-	comisd	xmm5, QWORD PTR .LC94[rip]
+	comisd	xmm5, QWORD PTR .LC82[rip]
 	je	.L7503
-	comisd	xmm5, QWORD PTR .LC95[rip]
+	comisd	xmm5, QWORD PTR .LC83[rip]
 	je	.L7504
-	comisd	xmm5, QWORD PTR .LC96[rip]
+	comisd	xmm5, QWORD PTR .LC84[rip]
 	je	.L7505
-	comisd	xmm5, QWORD PTR .LC97[rip]
+	comisd	xmm5, QWORD PTR .LC85[rip]
 	je	.L7506
-	comisd	xmm5, QWORD PTR .LC98[rip]
+	comisd	xmm5, QWORD PTR .LC86[rip]
 	je	.L7507
-	comisd	xmm5, QWORD PTR .LC99[rip]
+	comisd	xmm5, QWORD PTR .LC87[rip]
 	je	.L7508
-	comisd	xmm5, QWORD PTR .LC100[rip]
+	comisd	xmm5, QWORD PTR .LC88[rip]
 	je	.L7509
-	comisd	xmm5, QWORD PTR .LC101[rip]
+	comisd	xmm5, QWORD PTR .LC89[rip]
 	je	.L7510
-	comisd	xmm5, QWORD PTR .LC102[rip]
+	comisd	xmm5, QWORD PTR .LC90[rip]
 	je	.L7511
-	comisd	xmm5, QWORD PTR .LC103[rip]
+	comisd	xmm5, QWORD PTR .LC91[rip]
 	je	.L7512
-	comisd	xmm5, QWORD PTR .LC104[rip]
+	comisd	xmm5, QWORD PTR .LC92[rip]
 	je	.L7513
-	comisd	xmm5, QWORD PTR .LC351[rip]
+	comisd	xmm5, QWORD PTR .LC93[rip]
 	je	.L7514
-	comisd	xmm5, QWORD PTR .LC294[rip]
+	comisd	xmm5, QWORD PTR .LC94[rip]
 	je	.L7515
-	comisd	xmm5, QWORD PTR .LC352[rip]
+	comisd	xmm5, QWORD PTR .LC95[rip]
 	je	.L7516
-	comisd	xmm5, QWORD PTR .LC353[rip]
+	comisd	xmm5, QWORD PTR .LC96[rip]
 	je	.L7517
-	comisd	xmm5, QWORD PTR .LC354[rip]
+	comisd	xmm5, QWORD PTR .LC97[rip]
 	je	.L7518
-	comisd	xmm5, QWORD PTR .LC286[rip]
+	comisd	xmm5, QWORD PTR .LC98[rip]
 	je	.L7519
-	comisd	xmm5, QWORD PTR .LC355[rip]
+	comisd	xmm5, QWORD PTR .LC99[rip]
 	je	.L7520
-	comisd	xmm5, QWORD PTR .LC356[rip]
+	comisd	xmm5, QWORD PTR .LC100[rip]
 	je	.L7521
-	comisd	xmm5, QWORD PTR .LC357[rip]
+	comisd	xmm5, QWORD PTR .LC101[rip]
 	je	.L7522
-	comisd	xmm5, QWORD PTR .LC358[rip]
+	comisd	xmm5, QWORD PTR .LC102[rip]
 	je	.L7523
-	comisd	xmm5, QWORD PTR .LC359[rip]
+	comisd	xmm5, QWORD PTR .LC103[rip]
 	je	.L7524
-	comisd	xmm5, QWORD PTR .LC360[rip]
+	comisd	xmm5, QWORD PTR .LC104[rip]
 	je	.L7525
-	comisd	xmm5, QWORD PTR .LC361[rip]
+	comisd	xmm5, QWORD PTR .LC351[rip]
 	je	.L7526
-	comisd	xmm5, QWORD PTR .LC362[rip]
+	comisd	xmm5, QWORD PTR .LC294[rip]
 	je	.L7527
-	comisd	xmm5, QWORD PTR .LC363[rip]
+	comisd	xmm5, QWORD PTR .LC352[rip]
 	je	.L7528
-	comisd	xmm5, QWORD PTR .LC364[rip]
+	comisd	xmm5, QWORD PTR .LC353[rip]
 	je	.L7529
-	comisd	xmm5, QWORD PTR .LC365[rip]
+	comisd	xmm5, QWORD PTR .LC354[rip]
 	je	.L7530
-	comisd	xmm5, QWORD PTR .LC287[rip]
+	comisd	xmm5, QWORD PTR .LC286[rip]
 	je	.L7531
-	comisd	xmm5, QWORD PTR .LC366[rip]
+	comisd	xmm5, QWORD PTR .LC355[rip]
 	je	.L7532
-	comisd	xmm5, QWORD PTR .LC367[rip]
+	comisd	xmm5, QWORD PTR .LC356[rip]
 	je	.L7533
-	comisd	xmm5, QWORD PTR .LC368[rip]
+	comisd	xmm5, QWORD PTR .LC357[rip]
 	je	.L7534
-	comisd	xmm5, QWORD PTR .LC285[rip]
+	comisd	xmm5, QWORD PTR .LC358[rip]
 	je	.L7535
-	comisd	xmm5, QWORD PTR .LC369[rip]
+	comisd	xmm5, QWORD PTR .LC359[rip]
 	je	.L7536
-	comisd	xmm5, QWORD PTR .LC370[rip]
+	comisd	xmm5, QWORD PTR .LC360[rip]
 	je	.L7537
-	comisd	xmm5, QWORD PTR .LC371[rip]
+	comisd	xmm5, QWORD PTR .LC361[rip]
 	je	.L7538
-	comisd	xmm5, QWORD PTR .LC301[rip]
+	comisd	xmm5, QWORD PTR .LC362[rip]
 	je	.L7539
-	comisd	xmm5, QWORD PTR .LC372[rip]
+	comisd	xmm5, QWORD PTR .LC363[rip]
 	je	.L7540
-	comisd	xmm5, QWORD PTR .LC373[rip]
+	comisd	xmm5, QWORD PTR .LC364[rip]
 	je	.L7541
-	comisd	xmm5, QWORD PTR .LC374[rip]
+	comisd	xmm5, QWORD PTR .LC365[rip]
 	je	.L7542
-	comisd	xmm5, QWORD PTR .LC375[rip]
+	comisd	xmm5, QWORD PTR .LC287[rip]
 	je	.L7543
-	comisd	xmm5, QWORD PTR .LC376[rip]
+	comisd	xmm5, QWORD PTR .LC366[rip]
 	je	.L7544
-	comisd	xmm5, QWORD PTR .LC377[rip]
+	comisd	xmm5, QWORD PTR .LC367[rip]
 	je	.L7545
-	comisd	xmm5, QWORD PTR .LC378[rip]
+	comisd	xmm5, QWORD PTR .LC368[rip]
 	je	.L7546
-	comisd	xmm5, QWORD PTR .LC288[rip]
+	comisd	xmm5, QWORD PTR .LC285[rip]
 	je	.L7547
-	comisd	xmm5, QWORD PTR .LC379[rip]
+	comisd	xmm5, QWORD PTR .LC369[rip]
 	je	.L7548
-	comisd	xmm5, QWORD PTR .LC380[rip]
+	comisd	xmm5, QWORD PTR .LC370[rip]
 	je	.L7549
-	comisd	xmm5, QWORD PTR .LC381[rip]
+	comisd	xmm5, QWORD PTR .LC371[rip]
 	je	.L7550
-	comisd	xmm5, QWORD PTR .LC382[rip]
+	comisd	xmm5, QWORD PTR .LC301[rip]
 	je	.L7551
-	comisd	xmm5, QWORD PTR .LC305[rip]
+	comisd	xmm5, QWORD PTR .LC372[rip]
 	je	.L7552
-	comisd	xmm5, QWORD PTR .LC383[rip]
+	comisd	xmm5, QWORD PTR .LC373[rip]
 	je	.L7553
-	comisd	xmm5, QWORD PTR .LC384[rip]
+	comisd	xmm5, QWORD PTR .LC374[rip]
 	je	.L7554
-	comisd	xmm5, QWORD PTR .LC302[rip]
+	comisd	xmm5, QWORD PTR .LC375[rip]
 	je	.L7555
-	comisd	xmm5, QWORD PTR .LC385[rip]
+	comisd	xmm5, QWORD PTR .LC376[rip]
 	je	.L7556
-	comisd	xmm5, QWORD PTR .LC386[rip]
+	comisd	xmm5, QWORD PTR .LC377[rip]
 	je	.L7557
-	comisd	xmm5, QWORD PTR .LC387[rip]
+	comisd	xmm5, QWORD PTR .LC378[rip]
 	je	.L7558
-	comisd	xmm5, QWORD PTR .LC388[rip]
+	comisd	xmm5, QWORD PTR .LC288[rip]
 	je	.L7559
-	comisd	xmm5, QWORD PTR .LC389[rip]
+	comisd	xmm5, QWORD PTR .LC379[rip]
 	je	.L7560
-	comisd	xmm5, QWORD PTR .LC390[rip]
+	comisd	xmm5, QWORD PTR .LC380[rip]
 	je	.L7561
-	comisd	xmm5, QWORD PTR .LC391[rip]
+	comisd	xmm5, QWORD PTR .LC381[rip]
 	je	.L7562
-	comisd	xmm5, QWORD PTR .LC289[rip]
+	comisd	xmm5, QWORD PTR .LC382[rip]
 	je	.L7563
-	comisd	xmm5, QWORD PTR .LC392[rip]
+	comisd	xmm5, QWORD PTR .LC305[rip]
 	je	.L7564
-	comisd	xmm5, QWORD PTR .LC393[rip]
+	comisd	xmm5, QWORD PTR .LC383[rip]
 	je	.L7565
-	comisd	xmm5, QWORD PTR .LC394[rip]
+	comisd	xmm5, QWORD PTR .LC384[rip]
 	je	.L7566
-	comisd	xmm5, QWORD PTR .LC395[rip]
+	comisd	xmm5, QWORD PTR .LC302[rip]
 	je	.L7567
-	comisd	xmm5, QWORD PTR .LC396[rip]
+	comisd	xmm5, QWORD PTR .LC385[rip]
 	je	.L7568
-	comisd	xmm5, QWORD PTR .LC397[rip]
+	comisd	xmm5, QWORD PTR .LC386[rip]
 	je	.L7569
-	comisd	xmm5, QWORD PTR .LC398[rip]
+	comisd	xmm5, QWORD PTR .LC387[rip]
 	je	.L7570
-	comisd	xmm5, QWORD PTR .LC399[rip]
+	comisd	xmm5, QWORD PTR .LC388[rip]
 	je	.L7571
-	comisd	xmm5, QWORD PTR .LC400[rip]
+	comisd	xmm5, QWORD PTR .LC389[rip]
 	je	.L7572
-	comisd	xmm5, QWORD PTR .LC401[rip]
+	comisd	xmm5, QWORD PTR .LC390[rip]
 	je	.L7573
-	comisd	xmm5, QWORD PTR .LC402[rip]
+	comisd	xmm5, QWORD PTR .LC391[rip]
 	je	.L7574
-	comisd	xmm5, QWORD PTR .LC295[rip]
+	comisd	xmm5, QWORD PTR .LC289[rip]
 	je	.L7575
-	comisd	xmm5, QWORD PTR .LC403[rip]
+	comisd	xmm5, QWORD PTR .LC392[rip]
 	je	.L7576
-	comisd	xmm5, QWORD PTR .LC404[rip]
+	comisd	xmm5, QWORD PTR .LC393[rip]
 	je	.L7577
-	comisd	xmm5, QWORD PTR .LC133[rip]
+	comisd	xmm5, QWORD PTR .LC394[rip]
 	je	.L7578
-	comisd	xmm5, QWORD PTR .LC134[rip]
+	comisd	xmm5, QWORD PTR .LC395[rip]
 	je	.L7579
-	comisd	xmm5, QWORD PTR .LC135[rip]
+	comisd	xmm5, QWORD PTR .LC396[rip]
 	je	.L7580
-	comisd	xmm5, QWORD PTR .LC136[rip]
+	comisd	xmm5, QWORD PTR .LC397[rip]
 	je	.L7581
-	comisd	xmm5, QWORD PTR .LC137[rip]
+	comisd	xmm5, QWORD PTR .LC398[rip]
 	je	.L7582
-	comisd	xmm5, QWORD PTR .LC138[rip]
+	comisd	xmm5, QWORD PTR .LC399[rip]
 	je	.L7583
-	comisd	xmm5, QWORD PTR .LC139[rip]
+	comisd	xmm5, QWORD PTR .LC400[rip]
 	je	.L7584
-	comisd	xmm5, QWORD PTR .LC140[rip]
+	comisd	xmm5, QWORD PTR .LC401[rip]
 	je	.L7585
-	comisd	xmm5, QWORD PTR .LC141[rip]
+	comisd	xmm5, QWORD PTR .LC402[rip]
 	je	.L7586
-	comisd	xmm5, QWORD PTR .LC142[rip]
+	comisd	xmm5, QWORD PTR .LC295[rip]
 	je	.L7587
-	comisd	xmm5, QWORD PTR .LC143[rip]
+	comisd	xmm5, QWORD PTR .LC403[rip]
 	je	.L7588
-	comisd	xmm5, QWORD PTR .LC144[rip]
+	comisd	xmm5, QWORD PTR .LC404[rip]
 	je	.L7589
-	comisd	xmm5, QWORD PTR .LC145[rip]
+	comisd	xmm5, QWORD PTR .LC133[rip]
 	je	.L7590
-	comisd	xmm5, QWORD PTR .LC146[rip]
+	comisd	xmm5, QWORD PTR .LC134[rip]
 	je	.L7591
-	comisd	xmm5, QWORD PTR .LC147[rip]
+	comisd	xmm5, QWORD PTR .LC135[rip]
 	je	.L7592
-	comisd	xmm5, QWORD PTR .LC148[rip]
+	comisd	xmm5, QWORD PTR .LC136[rip]
 	je	.L7593
-	comisd	xmm5, QWORD PTR .LC149[rip]
+	comisd	xmm5, QWORD PTR .LC137[rip]
 	je	.L7594
-	comisd	xmm5, QWORD PTR .LC150[rip]
+	comisd	xmm5, QWORD PTR .LC138[rip]
 	je	.L7595
-	comisd	xmm5, QWORD PTR .LC151[rip]
+	comisd	xmm5, QWORD PTR .LC139[rip]
 	je	.L7596
-	comisd	xmm5, QWORD PTR .LC152[rip]
+	comisd	xmm5, QWORD PTR .LC140[rip]
 	je	.L7597
-	comisd	xmm5, QWORD PTR .LC153[rip]
+	comisd	xmm5, QWORD PTR .LC141[rip]
 	je	.L7598
-	comisd	xmm5, QWORD PTR .LC154[rip]
+	comisd	xmm5, QWORD PTR .LC142[rip]
 	je	.L7599
-	comisd	xmm5, QWORD PTR .LC155[rip]
+	comisd	xmm5, QWORD PTR .LC143[rip]
 	je	.L7600
-	comisd	xmm5, QWORD PTR .LC156[rip]
+	comisd	xmm5, QWORD PTR .LC144[rip]
 	je	.L7601
-	comisd	xmm5, QWORD PTR .LC157[rip]
+	comisd	xmm5, QWORD PTR .LC145[rip]
 	je	.L7602
-	comisd	xmm5, QWORD PTR .LC158[rip]
+	comisd	xmm5, QWORD PTR .LC146[rip]
 	je	.L7603
-	comisd	xmm5, QWORD PTR .LC159[rip]
+	comisd	xmm5, QWORD PTR .LC147[rip]
 	je	.L7604
-	comisd	xmm5, QWORD PTR .LC160[rip]
+	comisd	xmm5, QWORD PTR .LC148[rip]
 	je	.L7605
-	comisd	xmm5, QWORD PTR .LC161[rip]
+	comisd	xmm5, QWORD PTR .LC149[rip]
 	je	.L7606
-	comisd	xmm5, QWORD PTR .LC162[rip]
+	comisd	xmm5, QWORD PTR .LC150[rip]
 	je	.L7607
-	comisd	xmm5, QWORD PTR .LC163[rip]
+	comisd	xmm5, QWORD PTR .LC151[rip]
 	je	.L7608
-	comisd	xmm5, QWORD PTR .LC405[rip]
+	comisd	xmm5, QWORD PTR .LC152[rip]
 	je	.L7609
-	comisd	xmm5, QWORD PTR .LC406[rip]
+	comisd	xmm5, QWORD PTR .LC153[rip]
 	je	.L7610
-	comisd	xmm5, QWORD PTR .LC407[rip]
+	comisd	xmm5, QWORD PTR .LC154[rip]
 	je	.L7611
-	comisd	xmm5, QWORD PTR .LC290[rip]
+	comisd	xmm5, QWORD PTR .LC155[rip]
 	je	.L7612
-	comisd	xmm5, QWORD PTR .LC408[rip]
+	comisd	xmm5, QWORD PTR .LC156[rip]
 	je	.L7613
-	comisd	xmm5, QWORD PTR .LC409[rip]
+	comisd	xmm5, QWORD PTR .LC157[rip]
 	je	.L7614
-	comisd	xmm5, QWORD PTR .LC410[rip]
+	comisd	xmm5, QWORD PTR .LC158[rip]
 	je	.L7615
-	comisd	xmm5, QWORD PTR .LC411[rip]
+	comisd	xmm5, QWORD PTR .LC159[rip]
 	je	.L7616
-	comisd	xmm5, QWORD PTR .LC412[rip]
+	comisd	xmm5, QWORD PTR .LC160[rip]
 	je	.L7617
-	comisd	xmm5, QWORD PTR .LC413[rip]
+	comisd	xmm5, QWORD PTR .LC161[rip]
 	je	.L7618
-	comisd	xmm5, QWORD PTR .LC414[rip]
+	comisd	xmm5, QWORD PTR .LC162[rip]
 	je	.L7619
-	comisd	xmm5, QWORD PTR .LC284[rip]
+	comisd	xmm5, QWORD PTR .LC163[rip]
 	je	.L7620
-	comisd	xmm5, QWORD PTR .LC415[rip]
+	comisd	xmm5, QWORD PTR .LC405[rip]
 	je	.L7621
-	comisd	xmm5, QWORD PTR .LC416[rip]
+	comisd	xmm5, QWORD PTR .LC406[rip]
 	je	.L7622
-	comisd	xmm5, QWORD PTR .LC417[rip]
+	comisd	xmm5, QWORD PTR .LC407[rip]
 	je	.L7623
-	comisd	xmm5, QWORD PTR .LC418[rip]
+	comisd	xmm5, QWORD PTR .LC290[rip]
 	je	.L7624
-	comisd	xmm5, QWORD PTR .LC419[rip]
+	comisd	xmm5, QWORD PTR .LC408[rip]
 	je	.L7625
-	comisd	xmm5, QWORD PTR .LC303[rip]
+	comisd	xmm5, QWORD PTR .LC409[rip]
 	je	.L7626
-	comisd	xmm5, QWORD PTR .LC420[rip]
+	comisd	xmm5, QWORD PTR .LC410[rip]
 	je	.L7627
-	comisd	xmm5, QWORD PTR .LC421[rip]
+	comisd	xmm5, QWORD PTR .LC411[rip]
 	je	.L7628
-	comisd	xmm5, QWORD PTR .LC422[rip]
+	comisd	xmm5, QWORD PTR .LC412[rip]
 	je	.L7629
-	comisd	xmm5, QWORD PTR .LC423[rip]
+	comisd	xmm5, QWORD PTR .LC413[rip]
 	je	.L7630
-	comisd	xmm5, QWORD PTR .LC424[rip]
+	comisd	xmm5, QWORD PTR .LC414[rip]
 	je	.L7631
-	comisd	xmm5, QWORD PTR .LC291[rip]
+	comisd	xmm5, QWORD PTR .LC284[rip]
 	je	.L7632
-	comisd	xmm5, QWORD PTR .LC425[rip]
+	comisd	xmm5, QWORD PTR .LC415[rip]
 	je	.L7633
-	comisd	xmm5, QWORD PTR .LC426[rip]
+	comisd	xmm5, QWORD PTR .LC416[rip]
 	je	.L7634
-	comisd	xmm5, QWORD PTR .LC427[rip]
+	comisd	xmm5, QWORD PTR .LC417[rip]
 	je	.L7635
-	comisd	xmm5, QWORD PTR .LC428[rip]
+	comisd	xmm5, QWORD PTR .LC418[rip]
 	je	.L7636
-	comisd	xmm5, QWORD PTR .LC429[rip]
+	comisd	xmm5, QWORD PTR .LC419[rip]
 	je	.L7637
-	comisd	xmm5, QWORD PTR .LC430[rip]
+	comisd	xmm5, QWORD PTR .LC303[rip]
 	je	.L7638
-	comisd	xmm5, QWORD PTR .LC431[rip]
+	comisd	xmm5, QWORD PTR .LC420[rip]
 	je	.L7639
-	comisd	xmm5, QWORD PTR .LC296[rip]
+	comisd	xmm5, QWORD PTR .LC421[rip]
 	je	.L7640
-	comisd	xmm5, QWORD PTR .LC432[rip]
+	comisd	xmm5, QWORD PTR .LC422[rip]
 	je	.L7641
-	comisd	xmm5, QWORD PTR .LC304[rip]
+	comisd	xmm5, QWORD PTR .LC423[rip]
 	je	.L7642
-	comisd	xmm5, QWORD PTR .LC433[rip]
+	comisd	xmm5, QWORD PTR .LC424[rip]
 	je	.L7643
-	comisd	xmm5, QWORD PTR .LC434[rip]
+	comisd	xmm5, QWORD PTR .LC291[rip]
 	je	.L7644
-	comisd	xmm5, QWORD PTR .LC435[rip]
+	comisd	xmm5, QWORD PTR .LC425[rip]
 	je	.L7645
-	comisd	xmm5, QWORD PTR .LC436[rip]
+	comisd	xmm5, QWORD PTR .LC426[rip]
 	je	.L7646
-	comisd	xmm5, QWORD PTR .LC437[rip]
+	comisd	xmm5, QWORD PTR .LC427[rip]
 	je	.L7647
-	comisd	xmm5, QWORD PTR .LC298[rip]
+	comisd	xmm5, QWORD PTR .LC428[rip]
 	je	.L7648
-	comisd	xmm5, QWORD PTR .LC277[rip]
+	comisd	xmm5, QWORD PTR .LC429[rip]
 	je	.L7649
-	comisd	xmm5, QWORD PTR .LC438[rip]
+	comisd	xmm5, QWORD PTR .LC430[rip]
 	je	.L7650
-	comisd	xmm5, QWORD PTR .LC439[rip]
+	comisd	xmm5, QWORD PTR .LC431[rip]
 	je	.L7651
-	comisd	xmm5, QWORD PTR .LC292[rip]
+	comisd	xmm5, QWORD PTR .LC296[rip]
 	je	.L7652
-	comisd	xmm5, QWORD PTR .LC440[rip]
+	comisd	xmm5, QWORD PTR .LC432[rip]
 	je	.L7653
-	comisd	xmm5, QWORD PTR .LC441[rip]
+	comisd	xmm5, QWORD PTR .LC304[rip]
 	je	.L7654
-	comisd	xmm5, QWORD PTR .LC442[rip]
+	comisd	xmm5, QWORD PTR .LC433[rip]
 	je	.L7655
-	comisd	xmm5, QWORD PTR .LC443[rip]
+	comisd	xmm5, QWORD PTR .LC434[rip]
 	je	.L7656
-	comisd	xmm5, QWORD PTR .LC444[rip]
+	comisd	xmm5, QWORD PTR .LC435[rip]
 	je	.L7657
-	comisd	xmm5, QWORD PTR .LC445[rip]
+	comisd	xmm5, QWORD PTR .LC436[rip]
 	je	.L7658
-	comisd	xmm5, QWORD PTR .LC446[rip]
+	comisd	xmm5, QWORD PTR .LC437[rip]
 	je	.L7659
-	comisd	xmm5, QWORD PTR .LC447[rip]
+	comisd	xmm5, QWORD PTR .LC298[rip]
 	je	.L7660
-	comisd	xmm5, QWORD PTR .LC448[rip]
+	comisd	xmm5, QWORD PTR .LC277[rip]
 	je	.L7661
-	comisd	xmm5, QWORD PTR .LC449[rip]
+	comisd	xmm5, QWORD PTR .LC438[rip]
 	je	.L7662
-	comisd	xmm5, QWORD PTR .LC450[rip]
+	comisd	xmm5, QWORD PTR .LC439[rip]
 	je	.L7663
-	comisd	xmm5, QWORD PTR .LC451[rip]
+	comisd	xmm5, QWORD PTR .LC292[rip]
 	je	.L7664
-	comisd	xmm5, QWORD PTR .LC452[rip]
+	comisd	xmm5, QWORD PTR .LC440[rip]
 	je	.L7665
-	comisd	xmm5, QWORD PTR .LC453[rip]
+	comisd	xmm5, QWORD PTR .LC441[rip]
 	je	.L7666
-	comisd	xmm5, QWORD PTR .LC454[rip]
+	comisd	xmm5, QWORD PTR .LC442[rip]
 	je	.L7667
-	comisd	xmm5, QWORD PTR .LC455[rip]
+	comisd	xmm5, QWORD PTR .LC443[rip]
 	je	.L7668
-	comisd	xmm5, QWORD PTR .LC299[rip]
+	comisd	xmm5, QWORD PTR .LC444[rip]
 	je	.L7669
-	comisd	xmm5, QWORD PTR .LC456[rip]
+	comisd	xmm5, QWORD PTR .LC445[rip]
 	je	.L7670
-	comisd	xmm5, QWORD PTR .LC457[rip]
+	comisd	xmm5, QWORD PTR .LC446[rip]
 	je	.L7671
-	comisd	xmm5, QWORD PTR .LC458[rip]
+	comisd	xmm5, QWORD PTR .LC447[rip]
 	je	.L7672
-	comisd	xmm5, QWORD PTR .LC297[rip]
+	comisd	xmm5, QWORD PTR .LC448[rip]
 	je	.L7673
-	comisd	xmm5, QWORD PTR .LC459[rip]
+	comisd	xmm5, QWORD PTR .LC449[rip]
 	je	.L7674
-	comisd	xmm5, QWORD PTR .LC460[rip]
+	comisd	xmm5, QWORD PTR .LC450[rip]
 	je	.L7675
-	comisd	xmm5, QWORD PTR .LC461[rip]
+	comisd	xmm5, QWORD PTR .LC451[rip]
 	je	.L7676
-	comisd	xmm5, QWORD PTR .LC293[rip]
+	comisd	xmm5, QWORD PTR .LC452[rip]
 	je	.L7677
-	comisd	xmm5, QWORD PTR .LC462[rip]
+	comisd	xmm5, QWORD PTR .LC453[rip]
 	je	.L7678
-	comisd	xmm5, QWORD PTR .LC463[rip]
+	comisd	xmm5, QWORD PTR .LC454[rip]
 	je	.L7679
-	comisd	xmm5, QWORD PTR .LC464[rip]
+	comisd	xmm5, QWORD PTR .LC455[rip]
 	je	.L7680
-	comisd	xmm5, QWORD PTR .LC465[rip]
+	comisd	xmm5, QWORD PTR .LC299[rip]
 	je	.L7681
-	comisd	xmm5, QWORD PTR .LC466[rip]
+	comisd	xmm5, QWORD PTR .LC456[rip]
 	je	.L7682
-	comisd	xmm5, QWORD PTR .LC467[rip]
+	comisd	xmm5, QWORD PTR .LC457[rip]
 	je	.L7683
-	comisd	xmm5, QWORD PTR .LC468[rip]
+	comisd	xmm5, QWORD PTR .LC458[rip]
 	je	.L7684
-	comisd	xmm5, QWORD PTR .LC300[rip]
+	comisd	xmm5, QWORD PTR .LC297[rip]
 	je	.L7685
-	comisd	xmm5, QWORD PTR .LC469[rip]
+	comisd	xmm5, QWORD PTR .LC459[rip]
 	je	.L7686
-	comisd	xmm5, QWORD PTR .LC470[rip]
+	comisd	xmm5, QWORD PTR .LC460[rip]
 	je	.L7687
-	comisd	xmm5, QWORD PTR .LC471[rip]
+	comisd	xmm5, QWORD PTR .LC461[rip]
 	je	.L7688
-	comisd	xmm5, QWORD PTR .LC472[rip]
+	comisd	xmm5, QWORD PTR .LC293[rip]
 	je	.L7689
-	comisd	xmm5, QWORD PTR .LC473[rip]
+	comisd	xmm5, QWORD PTR .LC462[rip]
 	je	.L7690
-	comisd	xmm5, QWORD PTR .LC474[rip]
+	comisd	xmm5, QWORD PTR .LC463[rip]
 	je	.L7691
-	comisd	xmm5, QWORD PTR .LC475[rip]
+	comisd	xmm5, QWORD PTR .LC464[rip]
 	je	.L7692
-	comisd	xmm5, QWORD PTR .LC476[rip]
+	comisd	xmm5, QWORD PTR .LC465[rip]
 	je	.L7693
-	comisd	xmm5, QWORD PTR .LC477[rip]
+	comisd	xmm5, QWORD PTR .LC466[rip]
 	je	.L7694
-	comisd	xmm5, QWORD PTR .LC478[rip]
+	comisd	xmm5, QWORD PTR .LC467[rip]
 	je	.L7695
-	comisd	xmm5, QWORD PTR .LC479[rip]
+	comisd	xmm5, QWORD PTR .LC468[rip]
 	je	.L7696
-	comisd	xmm5, QWORD PTR .LC480[rip]
+	comisd	xmm5, QWORD PTR .LC300[rip]
 	je	.L7697
-	comisd	xmm5, QWORD PTR .LC481[rip]
+	comisd	xmm5, QWORD PTR .LC469[rip]
 	je	.L7698
-	comisd	xmm5, QWORD PTR .LC482[rip]
+	comisd	xmm5, QWORD PTR .LC470[rip]
 	je	.L7699
-	comisd	xmm5, QWORD PTR .LC483[rip]
+	comisd	xmm5, QWORD PTR .LC471[rip]
 	je	.L7700
-	comisd	xmm5, QWORD PTR .LC484[rip]
+	comisd	xmm5, QWORD PTR .LC472[rip]
 	je	.L7701
-	comisd	xmm5, QWORD PTR .LC485[rip]
+	comisd	xmm5, QWORD PTR .LC473[rip]
 	je	.L7702
-	comisd	xmm5, QWORD PTR .LC486[rip]
+	comisd	xmm5, QWORD PTR .LC474[rip]
 	je	.L7703
-	comisd	xmm5, QWORD PTR .LC487[rip]
+	comisd	xmm5, QWORD PTR .LC475[rip]
 	je	.L7704
+	comisd	xmm5, QWORD PTR .LC476[rip]
+	je	.L7705
+	comisd	xmm5, QWORD PTR .LC477[rip]
+	je	.L7706
+	comisd	xmm5, QWORD PTR .LC478[rip]
+	je	.L7707
+	comisd	xmm5, QWORD PTR .LC479[rip]
+	je	.L7708
+	comisd	xmm5, QWORD PTR .LC480[rip]
+	je	.L7709
+	comisd	xmm5, QWORD PTR .LC481[rip]
+	je	.L7710
+	comisd	xmm5, QWORD PTR .LC482[rip]
+	je	.L7711
+	comisd	xmm5, QWORD PTR .LC483[rip]
+	je	.L7712
+	comisd	xmm5, QWORD PTR .LC484[rip]
+	je	.L7713
+	comisd	xmm5, QWORD PTR .LC485[rip]
+	je	.L7714
+	comisd	xmm5, QWORD PTR .LC486[rip]
+	je	.L7715
+	comisd	xmm5, QWORD PTR .LC487[rip]
+	je	.L7716
 	comisd	xmm5, QWORD PTR .LC259[rip]
 	jne	.L1558
 .L1557:
@@ -19548,8 +19548,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	fb_GfxLine@PLT
 	movsd	xmm4, QWORD PTR [rsp]
 	movsd	xmm5, QWORD PTR 8[rsp]
-	jmp	.L5163
-.L5322:
+	jmp	.L5171
+.L5330:
 	movsd	QWORD PTR 8[rsp], xmm4
 	mov	rsi, QWORD PTR RASTER$[rip]
 	mov	ecx, -65536
@@ -19571,8 +19571,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	add	rsp, 48
 	movsd	xmm5, QWORD PTR [rsp]
 	movsd	xmm4, QWORD PTR 8[rsp]
-	jmp	.L5163
-.L7087:
+	jmp	.L5171
+.L7095:
 .L4926:
 	xor	r8d, r8d
 	mov	ecx, 8
@@ -19593,7 +19593,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L5613:
+.L5621:
 .L1902:
 	movapd	xmm0, XMMWORD PTR .LC527[rip]
 	mov	rax, QWORD PTR .LC525[rip]
@@ -19628,7 +19628,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	test	al, al
 	jne	.L1907
 	mov	ebx, 1
-.L5231:
+.L5239:
 	lea	r9, 112[rsp]
 	pxor	xmm6, xmm6
 	mov	r8, -1
@@ -19696,9 +19696,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	glGenTextures@PLT
 	test	bl, bl
 	je	.L1919
-.L5229:
+.L5237:
 	cmp	QWORD PTR FGIMAGE$[rip], 0
-	je	.L7705
+	je	.L7717
 .L1909:
 .L1917:
 .L1918:
@@ -19829,13 +19829,13 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rdi, rax
 	call	fb_StrCompare@PLT
 	test	eax, eax
-	jne	.L7706
+	jne	.L7718
 	call	fb_Timer@PLT
 	movsd	QWORD PTR 104[rsp], xmm0
 	subsd	xmm0, QWORD PTR [rsp]
 	movsd	QWORD PTR 96[rsp], xmm0
 	test	ebp, ebp
-	js	.L7707
+	js	.L7719
 	mov	edi, ebp
 	cvtsd2ss	xmm0, xmm0
 	call	[QWORD PTR GLUNIFORM1F$[rip]]
@@ -19862,7 +19862,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jne	.L1943
 	mov	rdx, QWORD PTR 72[rsp]
 	cmp	rdx, QWORD PTR 24[rsp]
-	je	.L7708
+	je	.L7720
 .L1937:
 	mov	rax, QWORD PTR SCR_H$[rip]
 	pxor	xmm2, xmm2
@@ -19960,7 +19960,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	jmp	.L1927
 	.p2align 4,,10
 	.p2align 3
-.L7707:
+.L7719:
 	mov	edx, DWORD PTR 32[rsp]
 	test	edx, edx
 	js	.L1933
@@ -19968,7 +19968,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsd2ss	xmm0, xmm0
 	call	[QWORD PTR GLUNIFORM1F$[rip]]
 	jmp	.L1933
-.L7708:
+.L7720:
 	mov	rax, QWORD PTR 40[rsp]
 	cmp	QWORD PTR 80[rsp], rax
 	jne	.L1937
@@ -19976,7 +19976,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cmp	QWORD PTR 88[rsp], rax
 	jne	.L1937
 	jmp	.L1943
-.L7706:
+.L7718:
 	xor	r8d, r8d
 	mov	ecx, 1
 	lea	rdx, .LC3[rip]
@@ -20019,7 +20019,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rdi, QWORD PTR 56[rsp]
 	call	_ZN9SHADERTOYD1Ev
 	jmp	.L742
-.L5050:
+.L5058:
 	subsd	xmm5, QWORD PTR .LC351[rip]
 	movabs	rcx, -9187201950435737471
 	cvtsd2si	rsi, xmm5
@@ -20054,7 +20054,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm5, rsi
 	movq	xmm4, rax
 	jmp	.L743
-.L7430:
+.L7442:
 .L4929:
 	xor	r8d, r8d
 	mov	ecx, 8
@@ -20075,7 +20075,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7254:
+.L7266:
 .L1905:
 	mov	esi, 7
 	lea	rdi, .LC548[rip]
@@ -20101,7 +20101,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L5325:
+.L5333:
 .L1046:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -20109,7 +20109,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7202:
+.L7214:
 	movapd	xmm0, xmm5
 	movsd	QWORD PTR 8[rsp], xmm4
 	movsd	QWORD PTR [rsp], xmm5
@@ -20134,7 +20134,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	_ZN9SHADERTOY11COMPILEFILEER8FBSTRING
 	mov	ebx, eax
 	test	al, al
-	je	.L5231
+	je	.L5239
 	pxor	xmm0, xmm0
 	mov	r8d, 8
 	lea	rcx, .LC531[rip]
@@ -20154,7 +20154,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	movaps	XMMWORD PTR 112[rsp], xmm0
 	call	glGenTextures@PLT
 	jmp	.L1919
-.L7255:
+.L7267:
 .L1947:
 	mov	esi, 14
 	lea	rdi, .LC550[rip]
@@ -20172,14 +20172,14 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_FileClose@PLT
-.L7257:
+.L7269:
 .L1951:
 	movsd	xmm0, QWORD PTR .LC446[rip]
 	addsd	xmm0, QWORD PTR SYS_OFFSET$[rip]
 	cvtsd2si	rax, xmm0
 	movsd	QWORD PTR 0[r13+rax*8], xmm5
 	jmp	.L742
-.L7256:
+.L7268:
 .L1949:
 	mov	esi, 29
 	lea	rdi, .LC551[rip]
@@ -20261,7 +20261,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	fb_GfxPut@PLT
 	add	rsp, 48
 	jmp	.L742
-.L7451:
+.L7463:
 .L1049:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -20291,8 +20291,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	edi, 4
 	movaps	XMMWORD PTR 112[rsp], xmm0
 	call	glGenTextures@PLT
-	jmp	.L5229
-.L7195:
+	jmp	.L5237
+.L7207:
 	movsd	xmm6, QWORD PTR [rsp]
 	movsd	xmm1, QWORD PTR C$[rip]
 	movq	xmm7, rbp
@@ -20302,20 +20302,20 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	QWORD PTR C$[rip], xmm1
 	movapd	xmm0, xmm6
 	movsd	QWORD PTR Y$[rip], xmm6
-	jb	.L5192
-.L5191:
+	jb	.L5200
+.L5199:
 	movsd	xmm7, QWORD PTR [rsp]
 	movq	xmm6, rbp
 	addsd	xmm0, xmm7
 	addsd	xmm1, xmm7
 	comisd	xmm6, xmm0
-	jnb	.L5191
+	jnb	.L5199
 	mov	QWORD PTR X$[rip], 0x000000000
 	movsd	QWORD PTR Y$[rip], xmm0
 	movsd	QWORD PTR C$[rip], xmm1
-	jmp	.L5192
-.L5067:
-.L5070:
+	jmp	.L5200
+.L5075:
+.L5078:
 	mov	edx, 1
 	lea	rsi, STRCODE$[rip]
 	mov	edi, 1
@@ -20333,7 +20333,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7258:
+.L7270:
 .L1953:
 	cvtsd2si	edx, QWORD PTR 394896[r13]
 	cvtsd2si	eax, QWORD PTR 394904[r13]
@@ -20392,7 +20392,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cmp	r14b, bl
 	jnb	.L1957
 	jmp	.L742
-.L7452:
+.L7464:
 .L1052:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -20401,8 +20401,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7245:
-.L5065:
+.L7257:
+.L5073:
 	lea	r9, 240[rsp]
 	xor	eax, eax
 	mov	ecx, 6
@@ -20421,7 +20421,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	xor	edx, edx
 	mov	esi, 3
 	call	fb_FileOpen@PLT
-.L7190:
+.L7198:
 	xor	r8d, r8d
 	mov	ecx, 1
 	lea	rdx, .LC3[rip]
@@ -20429,8 +20429,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	lea	rdi, STRCODE$[rip]
 	call	fb_StrAssign@PLT
 	jmp	.L742
-.L7244:
-.L5061:
+.L7256:
+.L5069:
 	xor	r8d, r8d
 	xor	ecx, ecx
 	xor	edx, edx
@@ -20471,9 +20471,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	xor	r9d, r9d
 	mov	r8d, 65
 	xor	ecx, ecx
-	jmp	.L7187
-.L7251:
-.L5082:
+	jmp	.L7195
+.L7263:
+.L5090:
 	cvtsd2si	rsi, xmm5
 	mov	edi, 1
 	xor	eax, eax
@@ -20494,8 +20494,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrConcatAssign@PLT
-.L7243:
-.L5058:
+.L7255:
+.L5066:
 	xor	r8d, r8d
 	xor	ecx, ecx
 	xor	edx, edx
@@ -20547,7 +20547,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm1, QWORD PTR .LC73[rip]
 	mov	rbx, QWORD PTR .LC547[rip]
 	movsd	QWORD PTR [rsp], xmm6
-.L5062:
+.L5070:
 	movsd	xmm0, QWORD PTR 395608[r13]
 	mov	rdi, r13
 	addsd	xmm0, QWORD PTR OFFSET$[rip]
@@ -20560,10 +20560,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm2, xmm0
 	comisd	xmm6, xmm0
 	movsd	QWORD PTR OFFSET$[rip], xmm2
-	jnb	.L5062
+	jnb	.L5070
 	jmp	.L742
-.L7242:
-.L5056:
+.L7254:
+.L5064:
 	xor	r8d, r8d
 	xor	ecx, ecx
 	xor	edx, edx
@@ -20604,7 +20604,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm1, QWORD PTR .LC73[rip]
 	mov	rbx, QWORD PTR .LC547[rip]
 	movsd	QWORD PTR [rsp], xmm6
-.L5059:
+.L5067:
 	movsd	xmm0, QWORD PTR 395608[r13]
 	mov	rdi, r13
 	addsd	xmm0, QWORD PTR OFFSET$[rip]
@@ -20617,10 +20617,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm2, xmm0
 	comisd	xmm6, xmm0
 	movsd	QWORD PTR OFFSET$[rip], xmm2
-	jnb	.L5059
+	jnb	.L5067
 	jmp	.L742
-.L7241:
-.L5053:
+.L7253:
+.L5061:
 	pxor	xmm0, xmm0
 	pxor	xmm3, xmm3
 	pxor	xmm2, xmm2
@@ -20642,8 +20642,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxLine@PLT
-.L5043:
-.L5054:
+.L5051:
+.L5062:
 	pxor	xmm0, xmm0
 	pxor	xmm3, xmm3
 	pxor	xmm2, xmm2
@@ -20665,12 +20665,12 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxLine@PLT
-.L7250:
-.L5080:
+.L7262:
+.L5088:
 	movsd	QWORD PTR SWCH$[rip], xmm5
 	jmp	.L742
-.L7249:
-.L5076:
+.L7261:
+.L5084:
 	lea	rdi, STRCODE$[rip]
 	call	fb_Shell@PLT
 	add	rsp, 280
@@ -20686,8 +20686,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7248:
-.L5074:
+.L7260:
+.L5082:
 	xor	r8d, r8d
 	xor	ecx, ecx
 	xor	edx, edx
@@ -20776,7 +20776,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rbp, QWORD PTR .LC546[rip]
 	mov	rbx, QWORD PTR .LC547[rip]
 	movsd	QWORD PTR [rsp], xmm7
-.L5077:
+.L5085:
 	movq	xmm0, rbp
 	addsd	xmm0, QWORD PTR SYS_OFFSET$[rip]
 	mov	rdi, r13
@@ -20792,10 +20792,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm2, xmm0
 	comisd	xmm6, xmm0
 	movsd	QWORD PTR OFFSET$[rip], xmm2
-	jnb	.L5077
+	jnb	.L5085
 	jmp	.L742
-.L7247:
-.L5072:
+.L7259:
+.L5080:
 	xor	ebx, ebx
 	mov	ecx, 6
 	or	r8, -1
@@ -20843,9 +20843,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	fb_StrConcat@PLT
 	mov	rdi, rax
 	call	fb_Shell@PLT
-	jmp	.L7190
-.L7246:
-.L5069:
+	jmp	.L7198
+.L7258:
+.L5077:
 	mov	edi, 1
 	call	fb_FileClose@PLT
 	add	rsp, 280
@@ -20861,7 +20861,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7705:
+.L7717:
 	xor	r8d, r8d
 	mov	ecx, 32
 	mov	edx, -16777216
@@ -20892,10 +20892,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	esi, -16777216
 	cvtsd2ss	xmm0, xmm0
 	test	r15b, 1
-	jne	.L7185
+	jne	.L7193
 .L1912:
 	mov	esi, -1
-.L7185:
+.L7193:
 	mov	rdi, QWORD PTR FGIMAGE$[rip]
 	movaps	xmm3, xmm2
 	add	r14, 512
@@ -20947,7 +20947,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	call	fb_GfxDrawString@PLT
 	add	rsp, 32
 	jmp	.L1918
-.L7259:
+.L7271:
 .L1955:
 	movsd	xmm0, QWORD PTR 394888[r13]
 	call	nearbyint@PLT
@@ -20961,513 +20961,513 @@ _ZN8MEMORY_T6POKE64Edd:
 	test	rax, rax
 	je	.L1962
 	cmp	rax, 1
-	je	.L7709
-	cmp	rax, 2
-	je	.L7710
-	cmp	rax, 3
-	je	.L7711
-	cmp	rax, 4
-	je	.L7712
-	cmp	rax, 5
-	je	.L7713
-	cmp	rax, 6
-	je	.L7714
-	cmp	rax, 7
-	je	.L7715
-	cmp	rax, 8
-	je	.L7716
-	cmp	rax, 9
-	je	.L7717
-	cmp	rax, 10
-	je	.L7718
-	cmp	rax, 11
-	je	.L7719
-	cmp	rax, 12
-	je	.L7720
-	cmp	rax, 13
 	je	.L7721
-	cmp	rax, 14
+	cmp	rax, 2
 	je	.L7722
-	cmp	rax, 15
+	cmp	rax, 3
 	je	.L7723
-	cmp	rax, 16
+	cmp	rax, 4
 	je	.L7724
-	cmp	rax, 17
+	cmp	rax, 5
 	je	.L7725
-	cmp	rax, 18
+	cmp	rax, 6
 	je	.L7726
-	cmp	rax, 19
+	cmp	rax, 7
 	je	.L7727
-	cmp	rax, 20
+	cmp	rax, 8
 	je	.L7728
-	cmp	rax, 21
+	cmp	rax, 9
 	je	.L7729
-	cmp	rax, 22
+	cmp	rax, 10
 	je	.L7730
-	cmp	rax, 23
+	cmp	rax, 11
 	je	.L7731
-	cmp	rax, 24
+	cmp	rax, 12
 	je	.L7732
-	cmp	rax, 25
+	cmp	rax, 13
 	je	.L7733
-	cmp	rax, 26
+	cmp	rax, 14
 	je	.L7734
-	cmp	rax, 27
+	cmp	rax, 15
 	je	.L7735
-	cmp	rax, 28
+	cmp	rax, 16
 	je	.L7736
-	cmp	rax, 29
+	cmp	rax, 17
 	je	.L7737
-	cmp	rax, 30
+	cmp	rax, 18
 	je	.L7738
-	cmp	rax, 31
+	cmp	rax, 19
 	je	.L7739
-	cmp	rax, 32
+	cmp	rax, 20
 	je	.L7740
-	cmp	rax, 33
+	cmp	rax, 21
 	je	.L7741
-	cmp	rax, 34
+	cmp	rax, 22
 	je	.L7742
-	cmp	rax, 35
+	cmp	rax, 23
 	je	.L7743
-	cmp	rax, 36
+	cmp	rax, 24
 	je	.L7744
-	cmp	rax, 37
+	cmp	rax, 25
 	je	.L7745
-	cmp	rax, 38
+	cmp	rax, 26
 	je	.L7746
-	cmp	rax, 39
+	cmp	rax, 27
 	je	.L7747
-	cmp	rax, 40
+	cmp	rax, 28
 	je	.L7748
-	cmp	rax, 41
+	cmp	rax, 29
 	je	.L7749
-	cmp	rax, 42
+	cmp	rax, 30
 	je	.L7750
-	cmp	rax, 43
+	cmp	rax, 31
 	je	.L7751
-	cmp	rax, 44
+	cmp	rax, 32
 	je	.L7752
-	cmp	rax, 45
+	cmp	rax, 33
 	je	.L7753
-	cmp	rax, 46
+	cmp	rax, 34
 	je	.L7754
-	cmp	rax, 47
+	cmp	rax, 35
 	je	.L7755
-	cmp	rax, 48
+	cmp	rax, 36
 	je	.L7756
-	cmp	rax, 49
+	cmp	rax, 37
 	je	.L7757
-	cmp	rax, 50
+	cmp	rax, 38
 	je	.L7758
-	cmp	rax, 51
+	cmp	rax, 39
 	je	.L7759
-	cmp	rax, 52
+	cmp	rax, 40
 	je	.L7760
-	cmp	rax, 53
+	cmp	rax, 41
 	je	.L7761
-	cmp	rax, 54
+	cmp	rax, 42
 	je	.L7762
-	cmp	rax, 55
+	cmp	rax, 43
 	je	.L7763
-	cmp	rax, 56
+	cmp	rax, 44
 	je	.L7764
-	cmp	rax, 57
+	cmp	rax, 45
 	je	.L7765
-	cmp	rax, 58
+	cmp	rax, 46
 	je	.L7766
-	cmp	rax, 59
+	cmp	rax, 47
 	je	.L7767
-	cmp	rax, 60
+	cmp	rax, 48
 	je	.L7768
-	cmp	rax, 61
+	cmp	rax, 49
 	je	.L7769
-	cmp	rax, 62
+	cmp	rax, 50
 	je	.L7770
-	cmp	rax, 63
+	cmp	rax, 51
 	je	.L7771
-	cmp	rax, 64
+	cmp	rax, 52
 	je	.L7772
-	cmp	rax, 65
+	cmp	rax, 53
 	je	.L7773
-	cmp	rax, 66
+	cmp	rax, 54
 	je	.L7774
-	cmp	rax, 67
+	cmp	rax, 55
 	je	.L7775
-	cmp	rax, 68
+	cmp	rax, 56
 	je	.L7776
-	cmp	rax, 69
+	cmp	rax, 57
 	je	.L7777
-	cmp	rax, 70
+	cmp	rax, 58
 	je	.L7778
-	cmp	rax, 71
+	cmp	rax, 59
 	je	.L7779
-	cmp	rax, 72
+	cmp	rax, 60
 	je	.L7780
-	cmp	rax, 73
+	cmp	rax, 61
 	je	.L7781
-	cmp	rax, 74
+	cmp	rax, 62
 	je	.L7782
-	cmp	rax, 75
+	cmp	rax, 63
 	je	.L7783
-	cmp	rax, 76
+	cmp	rax, 64
 	je	.L7784
-	cmp	rax, 77
+	cmp	rax, 65
 	je	.L7785
-	cmp	rax, 78
+	cmp	rax, 66
 	je	.L7786
-	cmp	rax, 79
+	cmp	rax, 67
 	je	.L7787
-	cmp	rax, 80
+	cmp	rax, 68
 	je	.L7788
-	cmp	rax, 81
+	cmp	rax, 69
 	je	.L7789
-	cmp	rax, 82
+	cmp	rax, 70
 	je	.L7790
-	cmp	rax, 83
+	cmp	rax, 71
 	je	.L7791
-	cmp	rax, 84
+	cmp	rax, 72
 	je	.L7792
-	cmp	rax, 85
+	cmp	rax, 73
 	je	.L7793
-	cmp	rax, 86
+	cmp	rax, 74
 	je	.L7794
-	cmp	rax, 87
+	cmp	rax, 75
 	je	.L7795
-	cmp	rax, 88
+	cmp	rax, 76
 	je	.L7796
-	cmp	rax, 89
+	cmp	rax, 77
 	je	.L7797
-	cmp	rax, 90
+	cmp	rax, 78
 	je	.L7798
-	cmp	rax, 91
+	cmp	rax, 79
 	je	.L7799
-	cmp	rax, 92
+	cmp	rax, 80
 	je	.L7800
-	cmp	rax, 93
+	cmp	rax, 81
 	je	.L7801
-	cmp	rax, 94
+	cmp	rax, 82
 	je	.L7802
-	cmp	rax, 95
+	cmp	rax, 83
 	je	.L7803
-	cmp	rax, 96
+	cmp	rax, 84
 	je	.L7804
-	cmp	rax, 97
+	cmp	rax, 85
 	je	.L7805
-	cmp	rax, 98
+	cmp	rax, 86
 	je	.L7806
-	cmp	rax, 99
+	cmp	rax, 87
 	je	.L7807
-	cmp	rax, 100
+	cmp	rax, 88
 	je	.L7808
-	cmp	rax, 101
+	cmp	rax, 89
 	je	.L7809
-	cmp	rax, 102
+	cmp	rax, 90
 	je	.L7810
-	cmp	rax, 103
+	cmp	rax, 91
 	je	.L7811
-	cmp	rax, 104
+	cmp	rax, 92
 	je	.L7812
-	cmp	rax, 105
+	cmp	rax, 93
 	je	.L7813
-	cmp	rax, 106
+	cmp	rax, 94
 	je	.L7814
-	cmp	rax, 107
+	cmp	rax, 95
 	je	.L7815
-	cmp	rax, 108
+	cmp	rax, 96
 	je	.L7816
-	cmp	rax, 109
+	cmp	rax, 97
 	je	.L7817
-	cmp	rax, 110
+	cmp	rax, 98
 	je	.L7818
-	cmp	rax, 111
+	cmp	rax, 99
 	je	.L7819
-	cmp	rax, 112
+	cmp	rax, 100
 	je	.L7820
-	cmp	rax, 113
+	cmp	rax, 101
 	je	.L7821
-	cmp	rax, 114
+	cmp	rax, 102
 	je	.L7822
-	cmp	rax, 115
+	cmp	rax, 103
 	je	.L7823
-	cmp	rax, 116
+	cmp	rax, 104
 	je	.L7824
-	cmp	rax, 117
+	cmp	rax, 105
 	je	.L7825
-	cmp	rax, 118
+	cmp	rax, 106
 	je	.L7826
-	cmp	rax, 119
+	cmp	rax, 107
 	je	.L7827
-	cmp	rax, 120
+	cmp	rax, 108
 	je	.L7828
-	cmp	rax, 121
+	cmp	rax, 109
 	je	.L7829
-	cmp	rax, 122
+	cmp	rax, 110
 	je	.L7830
-	cmp	rax, 123
+	cmp	rax, 111
 	je	.L7831
-	cmp	rax, 124
+	cmp	rax, 112
 	je	.L7832
-	cmp	rax, 125
+	cmp	rax, 113
 	je	.L7833
-	cmp	rax, 126
+	cmp	rax, 114
 	je	.L7834
-	cmp	rax, 127
+	cmp	rax, 115
 	je	.L7835
-	cmp	rax, 128
+	cmp	rax, 116
 	je	.L7836
-	cmp	rax, 129
+	cmp	rax, 117
 	je	.L7837
-	cmp	rax, 130
+	cmp	rax, 118
 	je	.L7838
-	cmp	rax, 131
+	cmp	rax, 119
 	je	.L7839
-	cmp	rax, 132
+	cmp	rax, 120
 	je	.L7840
-	cmp	rax, 133
+	cmp	rax, 121
 	je	.L7841
-	cmp	rax, 134
+	cmp	rax, 122
 	je	.L7842
-	cmp	rax, 135
+	cmp	rax, 123
 	je	.L7843
-	cmp	rax, 136
+	cmp	rax, 124
 	je	.L7844
-	cmp	rax, 137
+	cmp	rax, 125
 	je	.L7845
-	cmp	rax, 138
+	cmp	rax, 126
 	je	.L7846
-	cmp	rax, 139
+	cmp	rax, 127
 	je	.L7847
-	cmp	rax, 140
+	cmp	rax, 128
 	je	.L7848
-	cmp	rax, 141
+	cmp	rax, 129
 	je	.L7849
-	cmp	rax, 142
+	cmp	rax, 130
 	je	.L7850
-	cmp	rax, 143
+	cmp	rax, 131
 	je	.L7851
-	cmp	rax, 144
+	cmp	rax, 132
 	je	.L7852
-	cmp	rax, 145
+	cmp	rax, 133
 	je	.L7853
-	cmp	rax, 146
+	cmp	rax, 134
 	je	.L7854
-	cmp	rax, 147
+	cmp	rax, 135
 	je	.L7855
-	cmp	rax, 148
+	cmp	rax, 136
 	je	.L7856
-	cmp	rax, 149
+	cmp	rax, 137
 	je	.L7857
-	cmp	rax, 150
+	cmp	rax, 138
 	je	.L7858
-	cmp	rax, 151
+	cmp	rax, 139
 	je	.L7859
-	cmp	rax, 152
+	cmp	rax, 140
 	je	.L7860
-	cmp	rax, 153
+	cmp	rax, 141
 	je	.L7861
-	cmp	rax, 154
+	cmp	rax, 142
 	je	.L7862
-	cmp	rax, 155
+	cmp	rax, 143
 	je	.L7863
-	cmp	rax, 156
+	cmp	rax, 144
 	je	.L7864
-	cmp	rax, 157
+	cmp	rax, 145
 	je	.L7865
-	cmp	rax, 158
+	cmp	rax, 146
 	je	.L7866
-	cmp	rax, 159
+	cmp	rax, 147
 	je	.L7867
-	cmp	rax, 160
+	cmp	rax, 148
 	je	.L7868
-	cmp	rax, 161
+	cmp	rax, 149
 	je	.L7869
-	cmp	rax, 162
+	cmp	rax, 150
 	je	.L7870
-	cmp	rax, 163
+	cmp	rax, 151
 	je	.L7871
-	cmp	rax, 164
+	cmp	rax, 152
 	je	.L7872
-	cmp	rax, 165
+	cmp	rax, 153
 	je	.L7873
-	cmp	rax, 166
+	cmp	rax, 154
 	je	.L7874
-	cmp	rax, 167
+	cmp	rax, 155
 	je	.L7875
-	cmp	rax, 168
+	cmp	rax, 156
 	je	.L7876
-	cmp	rax, 169
+	cmp	rax, 157
 	je	.L7877
-	cmp	rax, 170
+	cmp	rax, 158
 	je	.L7878
-	cmp	rax, 171
+	cmp	rax, 159
 	je	.L7879
-	cmp	rax, 172
+	cmp	rax, 160
 	je	.L7880
-	cmp	rax, 173
+	cmp	rax, 161
 	je	.L7881
-	cmp	rax, 174
+	cmp	rax, 162
 	je	.L7882
-	cmp	rax, 175
+	cmp	rax, 163
 	je	.L7883
-	cmp	rax, 176
+	cmp	rax, 164
 	je	.L7884
-	cmp	rax, 177
+	cmp	rax, 165
 	je	.L7885
-	cmp	rax, 178
+	cmp	rax, 166
 	je	.L7886
-	cmp	rax, 179
+	cmp	rax, 167
 	je	.L7887
-	cmp	rax, 180
+	cmp	rax, 168
 	je	.L7888
-	cmp	rax, 181
+	cmp	rax, 169
 	je	.L7889
-	cmp	rax, 182
+	cmp	rax, 170
 	je	.L7890
-	cmp	rax, 183
+	cmp	rax, 171
 	je	.L7891
-	cmp	rax, 184
+	cmp	rax, 172
 	je	.L7892
-	cmp	rax, 185
+	cmp	rax, 173
 	je	.L7893
-	cmp	rax, 186
+	cmp	rax, 174
 	je	.L7894
-	cmp	rax, 187
+	cmp	rax, 175
 	je	.L7895
-	cmp	rax, 188
+	cmp	rax, 176
 	je	.L7896
-	cmp	rax, 189
+	cmp	rax, 177
 	je	.L7897
-	cmp	rax, 190
+	cmp	rax, 178
 	je	.L7898
-	cmp	rax, 191
+	cmp	rax, 179
 	je	.L7899
-	cmp	rax, 192
+	cmp	rax, 180
 	je	.L7900
-	cmp	rax, 193
+	cmp	rax, 181
 	je	.L7901
-	cmp	rax, 194
+	cmp	rax, 182
 	je	.L7902
-	cmp	rax, 195
+	cmp	rax, 183
 	je	.L7903
-	cmp	rax, 196
+	cmp	rax, 184
 	je	.L7904
-	cmp	rax, 197
+	cmp	rax, 185
 	je	.L7905
-	cmp	rax, 198
+	cmp	rax, 186
 	je	.L7906
-	cmp	rax, 199
+	cmp	rax, 187
 	je	.L7907
-	cmp	rax, 200
+	cmp	rax, 188
 	je	.L7908
-	cmp	rax, 201
+	cmp	rax, 189
 	je	.L7909
-	cmp	rax, 202
+	cmp	rax, 190
 	je	.L7910
-	cmp	rax, 203
+	cmp	rax, 191
 	je	.L7911
-	cmp	rax, 204
+	cmp	rax, 192
 	je	.L7912
-	cmp	rax, 205
+	cmp	rax, 193
 	je	.L7913
-	cmp	rax, 206
+	cmp	rax, 194
 	je	.L7914
-	cmp	rax, 207
+	cmp	rax, 195
 	je	.L7915
-	cmp	rax, 208
+	cmp	rax, 196
 	je	.L7916
-	cmp	rax, 209
+	cmp	rax, 197
 	je	.L7917
-	cmp	rax, 210
+	cmp	rax, 198
 	je	.L7918
-	cmp	rax, 211
+	cmp	rax, 199
 	je	.L7919
-	cmp	rax, 212
+	cmp	rax, 200
 	je	.L7920
-	cmp	rax, 213
+	cmp	rax, 201
 	je	.L7921
-	cmp	rax, 214
+	cmp	rax, 202
 	je	.L7922
-	cmp	rax, 215
+	cmp	rax, 203
 	je	.L7923
-	cmp	rax, 216
+	cmp	rax, 204
 	je	.L7924
-	cmp	rax, 217
+	cmp	rax, 205
 	je	.L7925
-	cmp	rax, 218
+	cmp	rax, 206
 	je	.L7926
-	cmp	rax, 219
+	cmp	rax, 207
 	je	.L7927
-	cmp	rax, 220
+	cmp	rax, 208
 	je	.L7928
-	cmp	rax, 221
+	cmp	rax, 209
 	je	.L7929
-	cmp	rax, 222
+	cmp	rax, 210
 	je	.L7930
-	cmp	rax, 223
+	cmp	rax, 211
 	je	.L7931
-	cmp	rax, 224
+	cmp	rax, 212
 	je	.L7932
-	cmp	rax, 225
+	cmp	rax, 213
 	je	.L7933
-	cmp	rax, 226
+	cmp	rax, 214
 	je	.L7934
-	cmp	rax, 227
+	cmp	rax, 215
 	je	.L7935
-	cmp	rax, 228
+	cmp	rax, 216
 	je	.L7936
-	cmp	rax, 229
+	cmp	rax, 217
 	je	.L7937
-	cmp	rax, 230
+	cmp	rax, 218
 	je	.L7938
-	cmp	rax, 231
+	cmp	rax, 219
 	je	.L7939
-	cmp	rax, 232
+	cmp	rax, 220
 	je	.L7940
-	cmp	rax, 233
+	cmp	rax, 221
 	je	.L7941
-	cmp	rax, 234
+	cmp	rax, 222
 	je	.L7942
-	cmp	rax, 235
+	cmp	rax, 223
 	je	.L7943
-	cmp	rax, 236
+	cmp	rax, 224
 	je	.L7944
-	cmp	rax, 237
+	cmp	rax, 225
 	je	.L7945
-	cmp	rax, 238
+	cmp	rax, 226
 	je	.L7946
-	cmp	rax, 239
+	cmp	rax, 227
 	je	.L7947
-	cmp	rax, 240
+	cmp	rax, 228
 	je	.L7948
-	cmp	rax, 241
+	cmp	rax, 229
 	je	.L7949
-	cmp	rax, 242
+	cmp	rax, 230
 	je	.L7950
-	cmp	rax, 243
+	cmp	rax, 231
 	je	.L7951
-	cmp	rax, 244
+	cmp	rax, 232
 	je	.L7952
-	cmp	rax, 245
+	cmp	rax, 233
 	je	.L7953
-	cmp	rax, 246
+	cmp	rax, 234
 	je	.L7954
-	cmp	rax, 247
+	cmp	rax, 235
 	je	.L7955
-	cmp	rax, 248
+	cmp	rax, 236
 	je	.L7956
-	cmp	rax, 249
+	cmp	rax, 237
 	je	.L7957
-	cmp	rax, 250
+	cmp	rax, 238
 	je	.L7958
-	cmp	rax, 251
+	cmp	rax, 239
 	je	.L7959
-	cmp	rax, 252
+	cmp	rax, 240
 	je	.L7960
-	cmp	rax, 253
+	cmp	rax, 241
 	je	.L7961
-	cmp	rax, 254
+	cmp	rax, 242
 	je	.L7962
+	cmp	rax, 243
+	je	.L7963
+	cmp	rax, 244
+	je	.L7964
+	cmp	rax, 245
+	je	.L7965
+	cmp	rax, 246
+	je	.L7966
+	cmp	rax, 247
+	je	.L7967
+	cmp	rax, 248
+	je	.L7968
+	cmp	rax, 249
+	je	.L7969
+	cmp	rax, 250
+	je	.L7970
+	cmp	rax, 251
+	je	.L7971
+	cmp	rax, 252
+	je	.L7972
+	cmp	rax, 253
+	je	.L7973
+	cmp	rax, 254
+	je	.L7974
 	cmp	rax, 255
 	jne	.L742
 .L2471:
@@ -21485,7 +21485,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7089:
+.L7097:
 .L4930:
 	xor	r8d, r8d
 	mov	ecx, 9
@@ -21506,34 +21506,34 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7252:
+.L7264:
 	comisd	xmm4, QWORD PTR .LC2063[rip]
 	je	.L4972
 	comisd	xmm4, QWORD PTR .LC2064[rip]
-	je	.L7127
+	je	.L7135
 	comisd	xmm4, QWORD PTR .LC2065[rip]
-	je	.L7963
+	je	.L7975
 	comisd	xmm4, QWORD PTR .LC2066[rip]
-	je	.L7964
+	je	.L7976
 	comisd	xmm4, QWORD PTR .LC2067[rip]
-	je	.L7965
+	je	.L7977
 	comisd	xmm4, QWORD PTR .LC2071[rip]
-	je	.L7966
+	je	.L7978
 	comisd	xmm4, QWORD PTR .LC2073[rip]
-	je	.L7967
+	je	.L7979
 	comisd	xmm4, QWORD PTR .LC269[rip]
-	je	.L7968
+	je	.L7980
 	comisd	xmm4, QWORD PTR .LC2074[rip]
-	je	.L7969
+	je	.L7981
 	comisd	xmm4, QWORD PTR .LC2075[rip]
-	je	.L7970
+	je	.L7982
 	comisd	xmm4, QWORD PTR .LC2076[rip]
-	je	.L7971
+	je	.L7983
 	comisd	xmm4, QWORD PTR .LC2077[rip]
-	je	.L7164
+	je	.L7172
 	comisd	xmm4, QWORD PTR .LC2078[rip]
-	jne	.L5163
-.L5164:
+	jne	.L5171
+.L5172:
 	cvtsd2si	rax, QWORD PTR 395352[r13]
 	pxor	xmm0, xmm0
 	cvtsd2si	rsi, QWORD PTR 395360[r13]
@@ -21550,7 +21550,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm0, QWORD PTR 395384[r13]
 	movsd	QWORD PTR 395344[r13], xmm0
 	jmp	.L742
-.L7453:
+.L7465:
 .L1054:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -21559,7 +21559,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7455:
+.L7467:
 .L1058:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -21583,7 +21583,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7432:
+.L7444:
 .L4935:
 	xor	r8d, r8d
 	mov	ecx, 8
@@ -21604,7 +21604,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7431:
+.L7443:
 .L4933:
 	xor	r8d, r8d
 	mov	ecx, 8
@@ -21625,7 +21625,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7261:
+.L7273:
 .L2473:
 	movsd	xmm0, QWORD PTR 394888[r13]
 	call	nearbyint@PLT
@@ -21639,23 +21639,23 @@ _ZN8MEMORY_T6POKE64Edd:
 	test	rax, rax
 	je	.L2990
 	cmp	rax, 1
-	je	.L7972
+	je	.L7984
 	cmp	rax, 2
-	je	.L7973
+	je	.L7985
 	cmp	rax, 3
-	je	.L7974
+	je	.L7986
 	cmp	rax, 4
-	je	.L7975
+	je	.L7987
 	cmp	rax, 5
-	je	.L7976
+	je	.L7988
 	cmp	rax, 6
-	je	.L7977
+	je	.L7989
 	cmp	rax, 7
-	je	.L7978
+	je	.L7990
 	cmp	rax, 8
-	je	.L7979
+	je	.L7991
 	cmp	rax, 9
-	je	.L7980
+	je	.L7992
 	cmp	rax, 10
 	jne	.L742
 .L3009:
@@ -21673,7 +21673,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7260:
+.L7272:
 .L1959:
 	movsd	xmm0, QWORD PTR 394888[r13]
 	call	nearbyint@PLT
@@ -21687,513 +21687,513 @@ _ZN8MEMORY_T6POKE64Edd:
 	test	rax, rax
 	je	.L2476
 	cmp	rax, 1
-	je	.L7981
-	cmp	rax, 2
-	je	.L7982
-	cmp	rax, 3
-	je	.L7983
-	cmp	rax, 4
-	je	.L7984
-	cmp	rax, 5
-	je	.L7985
-	cmp	rax, 6
-	je	.L7986
-	cmp	rax, 7
-	je	.L7987
-	cmp	rax, 8
-	je	.L7988
-	cmp	rax, 9
-	je	.L7989
-	cmp	rax, 10
-	je	.L7990
-	cmp	rax, 11
-	je	.L7991
-	cmp	rax, 12
-	je	.L7992
-	cmp	rax, 13
 	je	.L7993
-	cmp	rax, 14
+	cmp	rax, 2
 	je	.L7994
-	cmp	rax, 15
+	cmp	rax, 3
 	je	.L7995
-	cmp	rax, 16
+	cmp	rax, 4
 	je	.L7996
-	cmp	rax, 17
+	cmp	rax, 5
 	je	.L7997
-	cmp	rax, 18
+	cmp	rax, 6
 	je	.L7998
-	cmp	rax, 19
+	cmp	rax, 7
 	je	.L7999
-	cmp	rax, 20
+	cmp	rax, 8
 	je	.L8000
-	cmp	rax, 21
+	cmp	rax, 9
 	je	.L8001
-	cmp	rax, 22
+	cmp	rax, 10
 	je	.L8002
-	cmp	rax, 23
+	cmp	rax, 11
 	je	.L8003
-	cmp	rax, 24
+	cmp	rax, 12
 	je	.L8004
-	cmp	rax, 25
+	cmp	rax, 13
 	je	.L8005
-	cmp	rax, 26
+	cmp	rax, 14
 	je	.L8006
-	cmp	rax, 27
+	cmp	rax, 15
 	je	.L8007
-	cmp	rax, 28
+	cmp	rax, 16
 	je	.L8008
-	cmp	rax, 29
+	cmp	rax, 17
 	je	.L8009
-	cmp	rax, 30
+	cmp	rax, 18
 	je	.L8010
-	cmp	rax, 31
+	cmp	rax, 19
 	je	.L8011
-	cmp	rax, 32
+	cmp	rax, 20
 	je	.L8012
-	cmp	rax, 33
+	cmp	rax, 21
 	je	.L8013
-	cmp	rax, 34
+	cmp	rax, 22
 	je	.L8014
-	cmp	rax, 35
+	cmp	rax, 23
 	je	.L8015
-	cmp	rax, 36
+	cmp	rax, 24
 	je	.L8016
-	cmp	rax, 37
+	cmp	rax, 25
 	je	.L8017
-	cmp	rax, 38
+	cmp	rax, 26
 	je	.L8018
-	cmp	rax, 39
+	cmp	rax, 27
 	je	.L8019
-	cmp	rax, 40
+	cmp	rax, 28
 	je	.L8020
-	cmp	rax, 41
+	cmp	rax, 29
 	je	.L8021
-	cmp	rax, 42
+	cmp	rax, 30
 	je	.L8022
-	cmp	rax, 43
+	cmp	rax, 31
 	je	.L8023
-	cmp	rax, 44
+	cmp	rax, 32
 	je	.L8024
-	cmp	rax, 45
+	cmp	rax, 33
 	je	.L8025
-	cmp	rax, 46
+	cmp	rax, 34
 	je	.L8026
-	cmp	rax, 47
+	cmp	rax, 35
 	je	.L8027
-	cmp	rax, 48
+	cmp	rax, 36
 	je	.L8028
-	cmp	rax, 49
+	cmp	rax, 37
 	je	.L8029
-	cmp	rax, 50
+	cmp	rax, 38
 	je	.L8030
-	cmp	rax, 51
+	cmp	rax, 39
 	je	.L8031
-	cmp	rax, 52
+	cmp	rax, 40
 	je	.L8032
-	cmp	rax, 53
+	cmp	rax, 41
 	je	.L8033
-	cmp	rax, 54
+	cmp	rax, 42
 	je	.L8034
-	cmp	rax, 55
+	cmp	rax, 43
 	je	.L8035
-	cmp	rax, 56
+	cmp	rax, 44
 	je	.L8036
-	cmp	rax, 57
+	cmp	rax, 45
 	je	.L8037
-	cmp	rax, 58
+	cmp	rax, 46
 	je	.L8038
-	cmp	rax, 59
+	cmp	rax, 47
 	je	.L8039
-	cmp	rax, 60
+	cmp	rax, 48
 	je	.L8040
-	cmp	rax, 61
+	cmp	rax, 49
 	je	.L8041
-	cmp	rax, 62
+	cmp	rax, 50
 	je	.L8042
-	cmp	rax, 63
+	cmp	rax, 51
 	je	.L8043
-	cmp	rax, 64
+	cmp	rax, 52
 	je	.L8044
-	cmp	rax, 65
+	cmp	rax, 53
 	je	.L8045
-	cmp	rax, 66
+	cmp	rax, 54
 	je	.L8046
-	cmp	rax, 67
+	cmp	rax, 55
 	je	.L8047
-	cmp	rax, 68
+	cmp	rax, 56
 	je	.L8048
-	cmp	rax, 69
+	cmp	rax, 57
 	je	.L8049
-	cmp	rax, 70
+	cmp	rax, 58
 	je	.L8050
-	cmp	rax, 71
+	cmp	rax, 59
 	je	.L8051
-	cmp	rax, 72
+	cmp	rax, 60
 	je	.L8052
-	cmp	rax, 73
+	cmp	rax, 61
 	je	.L8053
-	cmp	rax, 74
+	cmp	rax, 62
 	je	.L8054
-	cmp	rax, 75
+	cmp	rax, 63
 	je	.L8055
-	cmp	rax, 76
+	cmp	rax, 64
 	je	.L8056
-	cmp	rax, 77
+	cmp	rax, 65
 	je	.L8057
-	cmp	rax, 78
+	cmp	rax, 66
 	je	.L8058
-	cmp	rax, 79
+	cmp	rax, 67
 	je	.L8059
-	cmp	rax, 80
+	cmp	rax, 68
 	je	.L8060
-	cmp	rax, 81
+	cmp	rax, 69
 	je	.L8061
-	cmp	rax, 82
+	cmp	rax, 70
 	je	.L8062
-	cmp	rax, 83
+	cmp	rax, 71
 	je	.L8063
-	cmp	rax, 84
+	cmp	rax, 72
 	je	.L8064
-	cmp	rax, 85
+	cmp	rax, 73
 	je	.L8065
-	cmp	rax, 86
+	cmp	rax, 74
 	je	.L8066
-	cmp	rax, 87
+	cmp	rax, 75
 	je	.L8067
-	cmp	rax, 88
+	cmp	rax, 76
 	je	.L8068
-	cmp	rax, 89
+	cmp	rax, 77
 	je	.L8069
-	cmp	rax, 90
+	cmp	rax, 78
 	je	.L8070
-	cmp	rax, 91
+	cmp	rax, 79
 	je	.L8071
-	cmp	rax, 92
+	cmp	rax, 80
 	je	.L8072
-	cmp	rax, 93
+	cmp	rax, 81
 	je	.L8073
-	cmp	rax, 94
+	cmp	rax, 82
 	je	.L8074
-	cmp	rax, 95
+	cmp	rax, 83
 	je	.L8075
-	cmp	rax, 96
+	cmp	rax, 84
 	je	.L8076
-	cmp	rax, 97
+	cmp	rax, 85
 	je	.L8077
-	cmp	rax, 98
+	cmp	rax, 86
 	je	.L8078
-	cmp	rax, 99
+	cmp	rax, 87
 	je	.L8079
-	cmp	rax, 100
+	cmp	rax, 88
 	je	.L8080
-	cmp	rax, 101
+	cmp	rax, 89
 	je	.L8081
-	cmp	rax, 102
+	cmp	rax, 90
 	je	.L8082
-	cmp	rax, 103
+	cmp	rax, 91
 	je	.L8083
-	cmp	rax, 104
+	cmp	rax, 92
 	je	.L8084
-	cmp	rax, 105
+	cmp	rax, 93
 	je	.L8085
-	cmp	rax, 106
+	cmp	rax, 94
 	je	.L8086
-	cmp	rax, 107
+	cmp	rax, 95
 	je	.L8087
-	cmp	rax, 108
+	cmp	rax, 96
 	je	.L8088
-	cmp	rax, 109
+	cmp	rax, 97
 	je	.L8089
-	cmp	rax, 110
+	cmp	rax, 98
 	je	.L8090
-	cmp	rax, 111
+	cmp	rax, 99
 	je	.L8091
-	cmp	rax, 112
+	cmp	rax, 100
 	je	.L8092
-	cmp	rax, 113
+	cmp	rax, 101
 	je	.L8093
-	cmp	rax, 114
+	cmp	rax, 102
 	je	.L8094
-	cmp	rax, 115
+	cmp	rax, 103
 	je	.L8095
-	cmp	rax, 116
+	cmp	rax, 104
 	je	.L8096
-	cmp	rax, 117
+	cmp	rax, 105
 	je	.L8097
-	cmp	rax, 118
+	cmp	rax, 106
 	je	.L8098
-	cmp	rax, 119
+	cmp	rax, 107
 	je	.L8099
-	cmp	rax, 120
+	cmp	rax, 108
 	je	.L8100
-	cmp	rax, 121
+	cmp	rax, 109
 	je	.L8101
-	cmp	rax, 122
+	cmp	rax, 110
 	je	.L8102
-	cmp	rax, 123
+	cmp	rax, 111
 	je	.L8103
-	cmp	rax, 124
+	cmp	rax, 112
 	je	.L8104
-	cmp	rax, 125
+	cmp	rax, 113
 	je	.L8105
-	cmp	rax, 126
+	cmp	rax, 114
 	je	.L8106
-	cmp	rax, 127
+	cmp	rax, 115
 	je	.L8107
-	cmp	rax, 128
+	cmp	rax, 116
 	je	.L8108
-	cmp	rax, 129
+	cmp	rax, 117
 	je	.L8109
-	cmp	rax, 130
+	cmp	rax, 118
 	je	.L8110
-	cmp	rax, 131
+	cmp	rax, 119
 	je	.L8111
-	cmp	rax, 132
+	cmp	rax, 120
 	je	.L8112
-	cmp	rax, 133
+	cmp	rax, 121
 	je	.L8113
-	cmp	rax, 134
+	cmp	rax, 122
 	je	.L8114
-	cmp	rax, 135
+	cmp	rax, 123
 	je	.L8115
-	cmp	rax, 136
+	cmp	rax, 124
 	je	.L8116
-	cmp	rax, 137
+	cmp	rax, 125
 	je	.L8117
-	cmp	rax, 138
+	cmp	rax, 126
 	je	.L8118
-	cmp	rax, 139
+	cmp	rax, 127
 	je	.L8119
-	cmp	rax, 140
+	cmp	rax, 128
 	je	.L8120
-	cmp	rax, 141
+	cmp	rax, 129
 	je	.L8121
-	cmp	rax, 142
+	cmp	rax, 130
 	je	.L8122
-	cmp	rax, 143
+	cmp	rax, 131
 	je	.L8123
-	cmp	rax, 144
+	cmp	rax, 132
 	je	.L8124
-	cmp	rax, 145
+	cmp	rax, 133
 	je	.L8125
-	cmp	rax, 146
+	cmp	rax, 134
 	je	.L8126
-	cmp	rax, 147
+	cmp	rax, 135
 	je	.L8127
-	cmp	rax, 148
+	cmp	rax, 136
 	je	.L8128
-	cmp	rax, 149
+	cmp	rax, 137
 	je	.L8129
-	cmp	rax, 150
+	cmp	rax, 138
 	je	.L8130
-	cmp	rax, 151
+	cmp	rax, 139
 	je	.L8131
-	cmp	rax, 152
+	cmp	rax, 140
 	je	.L8132
-	cmp	rax, 153
+	cmp	rax, 141
 	je	.L8133
-	cmp	rax, 154
+	cmp	rax, 142
 	je	.L8134
-	cmp	rax, 155
+	cmp	rax, 143
 	je	.L8135
-	cmp	rax, 156
+	cmp	rax, 144
 	je	.L8136
-	cmp	rax, 157
+	cmp	rax, 145
 	je	.L8137
-	cmp	rax, 158
+	cmp	rax, 146
 	je	.L8138
-	cmp	rax, 159
+	cmp	rax, 147
 	je	.L8139
-	cmp	rax, 160
+	cmp	rax, 148
 	je	.L8140
-	cmp	rax, 161
+	cmp	rax, 149
 	je	.L8141
-	cmp	rax, 162
+	cmp	rax, 150
 	je	.L8142
-	cmp	rax, 163
+	cmp	rax, 151
 	je	.L8143
-	cmp	rax, 164
+	cmp	rax, 152
 	je	.L8144
-	cmp	rax, 165
+	cmp	rax, 153
 	je	.L8145
-	cmp	rax, 166
+	cmp	rax, 154
 	je	.L8146
-	cmp	rax, 167
+	cmp	rax, 155
 	je	.L8147
-	cmp	rax, 168
+	cmp	rax, 156
 	je	.L8148
-	cmp	rax, 169
+	cmp	rax, 157
 	je	.L8149
-	cmp	rax, 170
+	cmp	rax, 158
 	je	.L8150
-	cmp	rax, 171
+	cmp	rax, 159
 	je	.L8151
-	cmp	rax, 172
+	cmp	rax, 160
 	je	.L8152
-	cmp	rax, 173
+	cmp	rax, 161
 	je	.L8153
-	cmp	rax, 174
+	cmp	rax, 162
 	je	.L8154
-	cmp	rax, 175
+	cmp	rax, 163
 	je	.L8155
-	cmp	rax, 176
+	cmp	rax, 164
 	je	.L8156
-	cmp	rax, 177
+	cmp	rax, 165
 	je	.L8157
-	cmp	rax, 178
+	cmp	rax, 166
 	je	.L8158
-	cmp	rax, 179
+	cmp	rax, 167
 	je	.L8159
-	cmp	rax, 180
+	cmp	rax, 168
 	je	.L8160
-	cmp	rax, 181
+	cmp	rax, 169
 	je	.L8161
-	cmp	rax, 182
+	cmp	rax, 170
 	je	.L8162
-	cmp	rax, 183
+	cmp	rax, 171
 	je	.L8163
-	cmp	rax, 184
+	cmp	rax, 172
 	je	.L8164
-	cmp	rax, 185
+	cmp	rax, 173
 	je	.L8165
-	cmp	rax, 186
+	cmp	rax, 174
 	je	.L8166
-	cmp	rax, 187
+	cmp	rax, 175
 	je	.L8167
-	cmp	rax, 188
+	cmp	rax, 176
 	je	.L8168
-	cmp	rax, 189
+	cmp	rax, 177
 	je	.L8169
-	cmp	rax, 190
+	cmp	rax, 178
 	je	.L8170
-	cmp	rax, 191
+	cmp	rax, 179
 	je	.L8171
-	cmp	rax, 192
+	cmp	rax, 180
 	je	.L8172
-	cmp	rax, 193
+	cmp	rax, 181
 	je	.L8173
-	cmp	rax, 194
+	cmp	rax, 182
 	je	.L8174
-	cmp	rax, 195
+	cmp	rax, 183
 	je	.L8175
-	cmp	rax, 196
+	cmp	rax, 184
 	je	.L8176
-	cmp	rax, 197
+	cmp	rax, 185
 	je	.L8177
-	cmp	rax, 198
+	cmp	rax, 186
 	je	.L8178
-	cmp	rax, 199
+	cmp	rax, 187
 	je	.L8179
-	cmp	rax, 200
+	cmp	rax, 188
 	je	.L8180
-	cmp	rax, 201
+	cmp	rax, 189
 	je	.L8181
-	cmp	rax, 202
+	cmp	rax, 190
 	je	.L8182
-	cmp	rax, 203
+	cmp	rax, 191
 	je	.L8183
-	cmp	rax, 204
+	cmp	rax, 192
 	je	.L8184
-	cmp	rax, 205
+	cmp	rax, 193
 	je	.L8185
-	cmp	rax, 206
+	cmp	rax, 194
 	je	.L8186
-	cmp	rax, 207
+	cmp	rax, 195
 	je	.L8187
-	cmp	rax, 208
+	cmp	rax, 196
 	je	.L8188
-	cmp	rax, 209
+	cmp	rax, 197
 	je	.L8189
-	cmp	rax, 210
+	cmp	rax, 198
 	je	.L8190
-	cmp	rax, 211
+	cmp	rax, 199
 	je	.L8191
-	cmp	rax, 212
+	cmp	rax, 200
 	je	.L8192
-	cmp	rax, 213
+	cmp	rax, 201
 	je	.L8193
-	cmp	rax, 214
+	cmp	rax, 202
 	je	.L8194
-	cmp	rax, 215
+	cmp	rax, 203
 	je	.L8195
-	cmp	rax, 216
+	cmp	rax, 204
 	je	.L8196
-	cmp	rax, 217
+	cmp	rax, 205
 	je	.L8197
-	cmp	rax, 218
+	cmp	rax, 206
 	je	.L8198
-	cmp	rax, 219
+	cmp	rax, 207
 	je	.L8199
-	cmp	rax, 220
+	cmp	rax, 208
 	je	.L8200
-	cmp	rax, 221
+	cmp	rax, 209
 	je	.L8201
-	cmp	rax, 222
+	cmp	rax, 210
 	je	.L8202
-	cmp	rax, 223
+	cmp	rax, 211
 	je	.L8203
-	cmp	rax, 224
+	cmp	rax, 212
 	je	.L8204
-	cmp	rax, 225
+	cmp	rax, 213
 	je	.L8205
-	cmp	rax, 226
+	cmp	rax, 214
 	je	.L8206
-	cmp	rax, 227
+	cmp	rax, 215
 	je	.L8207
-	cmp	rax, 228
+	cmp	rax, 216
 	je	.L8208
-	cmp	rax, 229
+	cmp	rax, 217
 	je	.L8209
-	cmp	rax, 230
+	cmp	rax, 218
 	je	.L8210
-	cmp	rax, 231
+	cmp	rax, 219
 	je	.L8211
-	cmp	rax, 232
+	cmp	rax, 220
 	je	.L8212
-	cmp	rax, 233
+	cmp	rax, 221
 	je	.L8213
-	cmp	rax, 234
+	cmp	rax, 222
 	je	.L8214
-	cmp	rax, 235
+	cmp	rax, 223
 	je	.L8215
-	cmp	rax, 236
+	cmp	rax, 224
 	je	.L8216
-	cmp	rax, 237
+	cmp	rax, 225
 	je	.L8217
-	cmp	rax, 238
+	cmp	rax, 226
 	je	.L8218
-	cmp	rax, 239
+	cmp	rax, 227
 	je	.L8219
-	cmp	rax, 240
+	cmp	rax, 228
 	je	.L8220
-	cmp	rax, 241
+	cmp	rax, 229
 	je	.L8221
-	cmp	rax, 242
+	cmp	rax, 230
 	je	.L8222
-	cmp	rax, 243
+	cmp	rax, 231
 	je	.L8223
-	cmp	rax, 244
+	cmp	rax, 232
 	je	.L8224
-	cmp	rax, 245
+	cmp	rax, 233
 	je	.L8225
-	cmp	rax, 246
+	cmp	rax, 234
 	je	.L8226
-	cmp	rax, 247
+	cmp	rax, 235
 	je	.L8227
-	cmp	rax, 248
+	cmp	rax, 236
 	je	.L8228
-	cmp	rax, 249
+	cmp	rax, 237
 	je	.L8229
-	cmp	rax, 250
+	cmp	rax, 238
 	je	.L8230
-	cmp	rax, 251
+	cmp	rax, 239
 	je	.L8231
-	cmp	rax, 252
+	cmp	rax, 240
 	je	.L8232
-	cmp	rax, 253
+	cmp	rax, 241
 	je	.L8233
-	cmp	rax, 254
+	cmp	rax, 242
 	je	.L8234
+	cmp	rax, 243
+	je	.L8235
+	cmp	rax, 244
+	je	.L8236
+	cmp	rax, 245
+	je	.L8237
+	cmp	rax, 246
+	je	.L8238
+	cmp	rax, 247
+	je	.L8239
+	cmp	rax, 248
+	je	.L8240
+	cmp	rax, 249
+	je	.L8241
+	cmp	rax, 250
+	je	.L8242
+	cmp	rax, 251
+	je	.L8243
+	cmp	rax, 252
+	je	.L8244
+	cmp	rax, 253
+	je	.L8245
+	cmp	rax, 254
+	je	.L8246
 	cmp	rax, 255
 	jne	.L742
 .L2985:
@@ -22211,7 +22211,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7433:
+.L7445:
 .L4937:
 	xor	r8d, r8d
 	mov	ecx, 8
@@ -22232,7 +22232,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7454:
+.L7466:
 .L1056:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -22241,41 +22241,41 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7164:
-.L5162:
+.L7172:
+.L5170:
 	movsd	xmm0, QWORD PTR 395344[r13]
 	movsd	xmm7, QWORD PTR .LC1[rip]
 	cvtsd2si	rax, xmm0
 	movsd	QWORD PTR [rsp], xmm7
 	movsd	xmm4, QWORD PTR 0[r13+rax*8]
 	comisd	xmm7, xmm4
-	ja	.L5165
+	ja	.L5173
 	comisd	xmm4, QWORD PTR .LC396[rip]
-	jbe	.L8235
-.L5165:
+	jbe	.L8247
+.L5173:
 	comisd	xmm4, QWORD PTR .LC397[rip]
-	jb	.L5168
+	jb	.L5176
 	comisd	xmm4, QWORD PTR .LC404[rip]
-	jbe	.L7167
-.L5169:
-.L5168:
+	jbe	.L7175
+.L5177:
+.L5176:
 	comisd	xmm4, QWORD PTR .LC133[rip]
-	jb	.L5170
+	jb	.L5178
 	comisd	xmm4, QWORD PTR .LC139[rip]
-	jbe	.L7167
-.L5171:
-.L5170:
+	jbe	.L7175
+.L5179:
+.L5178:
 	comisd	xmm4, QWORD PTR .LC140[rip]
-	jb	.L7186
+	jb	.L7194
 	comisd	xmm4, QWORD PTR .LC290[rip]
-	jbe	.L7167
-.L7186:
+	jbe	.L7175
+.L7194:
 	movsd	xmm2, QWORD PTR .LC107[rip]
 	movsd	xmm3, QWORD PTR .LC105[rip]
 	movsd	xmm6, QWORD PTR .LC106[rip]
 	movsd	xmm5, QWORD PTR .LC108[rip]
-.L5167:
-.L5173:
+.L5175:
+.L5181:
 	movsd	xmm1, QWORD PTR [rsp]
 	addsd	xmm3, xmm0
 	movsd	QWORD PTR 8[rsp], xmm6
@@ -22311,22 +22311,22 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvttsd2si	rax, xmm0
 	movsd	xmm6, QWORD PTR 8[rsp]
 	comisd	xmm0, xmm1
-	jb	.L5175
+	jb	.L5183
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	btc	rax, 63
-.L5175:
+.L5183:
 	mov	QWORD PTR ADR0$[rip], rax
 	cmp	rax, 16383
 	jbe	.L742
 	cmp	rax, 32368
-	jbe	.L8236
-.L5176:
+	jbe	.L8248
+.L5184:
 	lea	rdx, -655360[rax]
 	movsd	QWORD PTR [rsp], xmm2
 	cmp	rdx, 65535
 	ja	.L742
-.L5178:
+.L5186:
 	pxor	xmm0, xmm0
 	pxor	xmm1, xmm1
 	mov	rdi, r13
@@ -22336,8 +22336,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm2, QWORD PTR 395344[r13]
 	movsd	QWORD PTR 395344[r13], xmm2
 	jmp	.L742
-.L7971:
-.L5140:
+.L7983:
+.L5148:
 	xor	edx, edx
 	lea	rsi, STRCODE$[rip]
 	mov	edi, 1
@@ -22368,8 +22368,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L8235:
-.L5166:
+.L8247:
+.L5174:
 	movapd	xmm1, xmm7
 	movsd	xmm3, QWORD PTR .LC105[rip]
 	movsd	xmm6, QWORD PTR .LC106[rip]
@@ -22419,9 +22419,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm6, QWORD PTR 24[rsp]
 	movsd	xmm3, QWORD PTR 32[rsp]
 	movsd	QWORD PTR 395344[r13], xmm0
-	jmp	.L5173
-.L7167:
-.L5172:
+	jmp	.L5181
+.L7175:
+.L5180:
 	movapd	xmm0, xmm4
 	pxor	xmm1, xmm1
 	mov	rdi, r13
@@ -22433,32 +22433,32 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm0, xmm2
 	movsd	xmm5, QWORD PTR .LC108[rip]
 	movsd	QWORD PTR 395344[r13], xmm0
-	jmp	.L5173
-.L7970:
-.L5127:
+	jmp	.L5181
+.L7982:
+.L5135:
 	comisd	xmm5, xmm2
-	je	.L7154
+	je	.L7162
 	comisd	xmm5, QWORD PTR .LC1[rip]
-	je	.L8237
+	je	.L8249
 	comisd	xmm5, QWORD PTR .LC105[rip]
-	je	.L8238
+	je	.L8250
 	comisd	xmm5, QWORD PTR .LC106[rip]
-	je	.L8239
+	je	.L8251
 	comisd	xmm5, QWORD PTR .LC107[rip]
-	je	.L8240
+	je	.L8252
 	comisd	xmm5, QWORD PTR .LC108[rip]
-	je	.L8241
+	je	.L8253
 	comisd	xmm5, QWORD PTR .LC109[rip]
-	je	.L5054
+	je	.L5062
 	comisd	xmm5, QWORD PTR .LC110[rip]
-	je	.L7160
+	je	.L7168
 	comisd	xmm5, QWORD PTR .LC111[rip]
-	je	.L8242
+	je	.L8254
 	comisd	xmm5, QWORD PTR .LC5[rip]
-	je	.L8243
+	je	.L8255
 	comisd	xmm5, QWORD PTR .LC112[rip]
 	jne	.L742
-.L5160:
+.L5168:
 	pxor	xmm0, xmm0
 	pxor	xmm3, xmm3
 	pxor	xmm2, xmm2
@@ -22480,8 +22480,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxLine@PLT
-.L8236:
-.L5177:
+.L8248:
+.L5185:
 	pxor	xmm0, xmm0
 	movsd	xmm1, QWORD PTR 8[r13+rax*8]
 	mov	rdi, r13
@@ -22493,8 +22493,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm6, QWORD PTR 395344[r13]
 	movsd	QWORD PTR 395344[r13], xmm6
 	jmp	.L742
-.L8243:
-.L5159:
+.L8255:
+.L5167:
 	pxor	xmm0, xmm0
 	pxor	xmm3, xmm3
 	pxor	xmm2, xmm2
@@ -22516,8 +22516,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxLine@PLT
-.L8242:
-.L5157:
+.L8254:
+.L5165:
 	pxor	xmm0, xmm0
 	pxor	xmm2, xmm2
 	pxor	xmm1, xmm1
@@ -22539,8 +22539,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxEllipse@PLT
-.L7160:
-.L5154:
+.L7168:
+.L5162:
 	pxor	xmm0, xmm0
 	pxor	xmm3, xmm3
 	pxor	xmm2, xmm2
@@ -22562,101 +22562,101 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxLine@PLT
-.L8241:
+.L8253:
+.L5160:
+	pxor	xmm0, xmm0
+	pxor	xmm3, xmm3
+	pxor	xmm2, xmm2
+	xor	r8d, r8d
+	pxor	xmm1, xmm1
+	mov	rdi, QWORD PTR BGIMAGE$[rip]
+	cvtsd2si	rsi, QWORD PTR 394832[r13]
+	cvtsd2ss	xmm0, QWORD PTR 394840[r13]
+	cvtsd2ss	xmm3, QWORD PTR 394872[r13]
+	mov	ecx, 65535
+	mov	edx, 1
+	cvtsd2ss	xmm2, QWORD PTR 394864[r13]
+	cvtsd2ss	xmm1, QWORD PTR 394848[r13]
+	add	rsp, 280
+	pop	rbx
+	pop	rbp
+	pop	r12
+	pop	r13
+	pop	r14
+	pop	r15
+	jmp	fb_GfxLine@PLT
+.L8252:
+.L5158:
+	pxor	xmm0, xmm0
+	pxor	xmm3, xmm3
+	pxor	xmm2, xmm2
+	xor	r8d, r8d
+	pxor	xmm1, xmm1
+	mov	rdi, QWORD PTR FGIMAGE$[rip]
+	cvtsd2si	rsi, QWORD PTR 394824[r13]
+	cvtsd2ss	xmm0, QWORD PTR 394840[r13]
+	cvtsd2ss	xmm3, QWORD PTR 394872[r13]
+	mov	ecx, 65535
+	mov	edx, 1
+	cvtsd2ss	xmm2, QWORD PTR 394864[r13]
+	cvtsd2ss	xmm1, QWORD PTR 394848[r13]
+	add	rsp, 280
+	pop	rbx
+	pop	rbp
+	pop	r12
+	pop	r13
+	pop	r14
+	pop	r15
+	jmp	fb_GfxLine@PLT
+.L8251:
+.L5156:
+	pxor	xmm0, xmm0
+	pxor	xmm3, xmm3
+	pxor	xmm2, xmm2
+	xor	r8d, r8d
+	cvtsd2si	rsi, QWORD PTR 394832[r13]
+	pxor	xmm1, xmm1
+	mov	ecx, 65535
+	xor	edx, edx
+	cvtsd2ss	xmm0, QWORD PTR 394840[r13]
+	mov	rdi, QWORD PTR BGIMAGE$[rip]
+	cvtsd2ss	xmm3, QWORD PTR 394872[r13]
+	cvtsd2ss	xmm2, QWORD PTR 394864[r13]
+	cvtsd2ss	xmm1, QWORD PTR 394848[r13]
+	add	rsp, 280
+	pop	rbx
+	pop	rbp
+	pop	r12
+	pop	r13
+	pop	r14
+	pop	r15
+	jmp	fb_GfxLine@PLT
+.L8250:
+.L5154:
+	pxor	xmm0, xmm0
+	pxor	xmm3, xmm3
+	pxor	xmm2, xmm2
+	xor	r8d, r8d
+	cvtsd2si	rsi, QWORD PTR 394824[r13]
+	pxor	xmm1, xmm1
+	mov	ecx, 65535
+	xor	edx, edx
+	cvtsd2ss	xmm0, QWORD PTR 394840[r13]
+	mov	rdi, QWORD PTR FGIMAGE$[rip]
+	cvtsd2ss	xmm3, QWORD PTR 394872[r13]
+	cvtsd2ss	xmm2, QWORD PTR 394864[r13]
+	cvtsd2ss	xmm1, QWORD PTR 394848[r13]
+	add	rsp, 280
+	pop	rbx
+	pop	rbp
+	pop	r12
+	pop	r13
+	pop	r14
+	pop	r15
+	jmp	fb_GfxLine@PLT
+.L8249:
 .L5152:
 	pxor	xmm0, xmm0
-	pxor	xmm3, xmm3
-	pxor	xmm2, xmm2
-	xor	r8d, r8d
-	pxor	xmm1, xmm1
-	mov	rdi, QWORD PTR BGIMAGE$[rip]
-	cvtsd2si	rsi, QWORD PTR 394832[r13]
-	cvtsd2ss	xmm0, QWORD PTR 394840[r13]
-	cvtsd2ss	xmm3, QWORD PTR 394872[r13]
-	mov	ecx, 65535
-	mov	edx, 1
-	cvtsd2ss	xmm2, QWORD PTR 394864[r13]
-	cvtsd2ss	xmm1, QWORD PTR 394848[r13]
-	add	rsp, 280
-	pop	rbx
-	pop	rbp
-	pop	r12
-	pop	r13
-	pop	r14
-	pop	r15
-	jmp	fb_GfxLine@PLT
-.L8240:
-.L5150:
-	pxor	xmm0, xmm0
-	pxor	xmm3, xmm3
-	pxor	xmm2, xmm2
-	xor	r8d, r8d
-	pxor	xmm1, xmm1
-	mov	rdi, QWORD PTR FGIMAGE$[rip]
-	cvtsd2si	rsi, QWORD PTR 394824[r13]
-	cvtsd2ss	xmm0, QWORD PTR 394840[r13]
-	cvtsd2ss	xmm3, QWORD PTR 394872[r13]
-	mov	ecx, 65535
-	mov	edx, 1
-	cvtsd2ss	xmm2, QWORD PTR 394864[r13]
-	cvtsd2ss	xmm1, QWORD PTR 394848[r13]
-	add	rsp, 280
-	pop	rbx
-	pop	rbp
-	pop	r12
-	pop	r13
-	pop	r14
-	pop	r15
-	jmp	fb_GfxLine@PLT
-.L8239:
-.L5148:
-	pxor	xmm0, xmm0
-	pxor	xmm3, xmm3
-	pxor	xmm2, xmm2
-	xor	r8d, r8d
-	cvtsd2si	rsi, QWORD PTR 394832[r13]
-	pxor	xmm1, xmm1
-	mov	ecx, 65535
-	xor	edx, edx
-	cvtsd2ss	xmm0, QWORD PTR 394840[r13]
-	mov	rdi, QWORD PTR BGIMAGE$[rip]
-	cvtsd2ss	xmm3, QWORD PTR 394872[r13]
-	cvtsd2ss	xmm2, QWORD PTR 394864[r13]
-	cvtsd2ss	xmm1, QWORD PTR 394848[r13]
-	add	rsp, 280
-	pop	rbx
-	pop	rbp
-	pop	r12
-	pop	r13
-	pop	r14
-	pop	r15
-	jmp	fb_GfxLine@PLT
-.L8238:
-.L5146:
-	pxor	xmm0, xmm0
-	pxor	xmm3, xmm3
-	pxor	xmm2, xmm2
-	xor	r8d, r8d
-	cvtsd2si	rsi, QWORD PTR 394824[r13]
-	pxor	xmm1, xmm1
-	mov	ecx, 65535
-	xor	edx, edx
-	cvtsd2ss	xmm0, QWORD PTR 394840[r13]
-	mov	rdi, QWORD PTR FGIMAGE$[rip]
-	cvtsd2ss	xmm3, QWORD PTR 394872[r13]
-	cvtsd2ss	xmm2, QWORD PTR 394864[r13]
-	cvtsd2ss	xmm1, QWORD PTR 394848[r13]
-	add	rsp, 280
-	pop	rbx
-	pop	rbp
-	pop	r12
-	pop	r13
-	pop	r14
-	pop	r15
-	jmp	fb_GfxLine@PLT
-.L8237:
-.L5144:
-	pxor	xmm0, xmm0
 	pxor	xmm1, xmm1
 	xor	ecx, ecx
 	mov	edx, 4
@@ -22672,8 +22672,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxPset@PLT
-.L7154:
-.L5141:
+.L7162:
+.L5149:
 	pxor	xmm0, xmm0
 	pxor	xmm1, xmm1
 	xor	ecx, ecx
@@ -22690,7 +22690,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxPset@PLT
-.L7974:
+.L7986:
 .L2996:
 	movsd	xmm0, QWORD PTR 394896[r13]
 	xorpd	xmm0, XMMWORD PTR .LC258[rip]
@@ -22706,7 +22706,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7973:
+.L7985:
 .L2994:
 	movsd	xmm0, QWORD PTR 394896[r13]
 	xorpd	xmm0, XMMWORD PTR .LC258[rip]
@@ -22722,7 +22722,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7972:
+.L7984:
 .L2992:
 	movsd	xmm0, QWORD PTR 394896[r13]
 	call	fb_DoubleToStr@PLT
@@ -22751,10 +22751,10 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L5007:
+.L5011:
 	add	QWORD PTR SCR_POS$[rip], 90
-	jmp	.L5000
-.L7450:
+	jmp	.L5004
+.L7462:
 	mov	QWORD PTR 394912[r13], 0x000000000
 	mov	edi, 1
 	mov	QWORD PTR SCR_POS$[rip], 5400
@@ -22770,13 +22770,13 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	WORD PTR INDEX$[rip], 1
 	call	fb_StrLen@PLT
 	mov	ebx, eax
-	jmp	.L5002
-.L5017:
+	jmp	.L5006
+.L5021:
 	mov	rax, QWORD PTR .LC73[rip]
 	movq	xmm0, rax
 	addsd	xmm1, xmm0
 	movsd	QWORD PTR 394888[r13], xmm1
-.L5011:
+.L5015:
 	addsd	xmm0, QWORD PTR 394888[r13]
 	pxor	xmm1, xmm1
 	mov	rdx, QWORD PTR SCR_POS$[rip]
@@ -22788,7 +22788,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	lea	rax, 16383[rdx+rax]
 	cvtsi2sd	xmm0, rax
 	test	rax, rax
-	jns	.L5013
+	jns	.L5017
 	mov	rdx, rax
 	and	eax, 1
 	pxor	xmm0, xmm0
@@ -22796,14 +22796,14 @@ _ZN8MEMORY_T6POKE64Edd:
 	or	rdx, rax
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L5013:
+.L5017:
 	mov	rdi, r13
 	call	_ZN8MEMORY_T5POKEBEdd
 	add	WORD PTR INDEX$[rip], 1
-.L5002:
+.L5006:
 	movzx	eax, WORD PTR INDEX$[rip]
 	cmp	ax, bx
-	ja	.L5014
+	ja	.L5018
 	mov	edx, 1
 	movzx	esi, ax
 	lea	rdi, STRCODE$[rip]
@@ -22821,12 +22821,26 @@ _ZN8MEMORY_T6POKE64Edd:
 	cmp	eax, 64
 	sbb	eax, eax
 	test	edx, eax
-	jne	.L5017
+	jne	.L5021
 	movsd	QWORD PTR 394888[r13], xmm1
 	mov	rax, QWORD PTR .LC73[rip]
 	movq	xmm0, rax
-	jmp	.L5011
-.L5014:
+	jmp	.L5015
+.L4992:
+	xor	eax, eax
+	mov	ecx, 6
+	or	r8, -1
+	mov	edx, 13
+	lea	r9, 240[rsp]
+	lea	rsi, .LC2032[rip]
+	mov	rdi, r9
+	rep stosd
+	mov	rdi, r9
+	lea	rcx, FILENAME$[rip]
+	call	fb_StrConcat@PLT
+	mov	rdi, rax
+	call	fb_Shell@PLT
+.L5018:
 	xor	r8d, r8d
 	mov	ecx, 1
 	or	rsi, -1
@@ -22834,31 +22848,77 @@ _ZN8MEMORY_T6POKE64Edd:
 	lea	rdx, .LC3[rip]
 	lea	rdi, STRCODE$[rip]
 	call	fb_StrAssign@PLT
+	mov	rbp, QWORD PTR fb_hPutPSet@GOTPCREL[rip]
 	push	0
-	pxor	xmm1, xmm1
 	xor	edi, edi
 	push	0
-	mov	r9d, -65536
+	pxor	xmm1, xmm1
 	mov	ecx, -65536
-	movaps	xmm0, xmm1
-	push	-1
-	mov	r8d, -65536
 	mov	edx, -65536
+	push	-1
 	mov	rsi, QWORD PTR FGIMAGE$[rip]
-	push	QWORD PTR fb_hPutPSet@GOTPCREL[rip]
+	mov	r9d, -65536
+	movaps	xmm0, xmm1
+	push	rbp
+	mov	r8d, -65536
 	push	1
 	push	0
 	call	fb_GfxPut@PLT
-	add	rsp, 328
+	add	rsp, 48
 	or	edi, -1
-	pop	rbx
-	pop	rbp
-	pop	r12
-	pop	r13
-	pop	r14
-	pop	r15
-	jmp	fb_Sleep@PLT
-.L7449:
+	call	fb_Sleep@PLT
+	mov	rax, QWORD PTR SCR_H$[rip]
+	pxor	xmm3, xmm3
+	cvtsi2ss	xmm3, rax
+	test	rax, rax
+	jns	.L5023
+	mov	rdx, rax
+	and	eax, 1
+	pxor	xmm3, xmm3
+	shr	rdx
+	or	rdx, rax
+	cvtsi2ss	xmm3, rdx
+	addss	xmm3, xmm3
+.L5023:
+	mov	rax, QWORD PTR SCR_W$[rip]
+	pxor	xmm2, xmm2
+	cvtsi2ss	xmm2, rax
+	test	rax, rax
+	jns	.L5025
+	mov	rdx, rax
+	and	eax, 1
+	pxor	xmm2, xmm2
+	shr	rdx
+	or	rdx, rax
+	cvtsi2ss	xmm2, rdx
+	addss	xmm2, xmm2
+.L5025:
+	pxor	xmm1, xmm1
+	mov	rdi, QWORD PTR FGIMAGE$[rip]
+	xor	r8d, r8d
+	mov	ecx, 65535
+	movaps	xmm0, xmm1
+	mov	edx, 2
+	mov	esi, -16777216
+	call	fb_GfxLine@PLT
+	push	0
+	pxor	xmm1, xmm1
+	mov	ecx, -65536
+	push	0
+	mov	rsi, QWORD PTR FGIMAGE$[rip]
+	mov	edx, -65536
+	xor	edi, edi
+	push	-1
+	mov	r9d, -65536
+	mov	r8d, -65536
+	movaps	xmm0, xmm1
+	push	rbp
+	push	1
+	push	0
+	call	fb_GfxPut@PLT
+	add	rsp, 48
+	jmp	.L742
+.L7461:
 .L4971:
 	mov	rax, QWORD PTR SCR_H$[rip]
 	pxor	xmm3, xmm3
@@ -22930,7 +22990,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	edi, 1
 	call	fb_FileEof@PLT
 	test	eax, eax
-	jne	.L8244
+	jne	.L8256
 	xor	ecx, ecx
 	or	rdx, -1
 	mov	edi, 1
@@ -23000,7 +23060,7 @@ _ZN8MEMORY_T6POKE64Edd:
 .L4985:
 	add	QWORD PTR SCR_POS$[rip], 90
 	jmp	.L4978
-.L8244:
+.L8256:
 	mov	QWORD PTR 394912[r13], 0x000000000
 	mov	edi, 1
 	mov	QWORD PTR SCR_POS$[rip], 5400
@@ -23072,46 +23132,6 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rax, QWORD PTR .LC73[rip]
 	movq	xmm0, rax
 	jmp	.L4989
-.L4992:
-	xor	eax, eax
-	mov	ecx, 6
-	or	r8, -1
-	mov	edx, 13
-	lea	r9, 240[rsp]
-	lea	rsi, .LC2032[rip]
-	mov	rdi, r9
-	rep stosd
-	mov	rdi, r9
-	lea	rcx, FILENAME$[rip]
-	call	fb_StrConcat@PLT
-	mov	rdi, rax
-	call	fb_Shell@PLT
-	xor	r8d, r8d
-	or	rsi, -1
-	mov	ecx, 1
-	lea	rdx, .LC3[rip]
-	lea	rdi, STRCODE$[rip]
-	mov	QWORD PTR SCR_POS$[rip], 0
-	call	fb_StrAssign@PLT
-	push	0
-	pxor	xmm1, xmm1
-	xor	edi, edi
-	push	0
-	mov	r9d, -65536
-	mov	ecx, -65536
-	movaps	xmm0, xmm1
-	push	-1
-	mov	r8d, -65536
-	mov	edx, -65536
-	mov	rsi, QWORD PTR FGIMAGE$[rip]
-	push	QWORD PTR fb_hPutPSet@GOTPCREL[rip]
-	push	1
-	push	0
-	call	fb_GfxPut@PLT
-	add	rsp, 48
-	or	edi, -1
-	call	fb_Sleep@PLT
-	jmp	.L742
 .L4969:
 .L4972:
 	add	rsp, 280
@@ -23123,7 +23143,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_FileClose@PLT
-.L7962:
+.L7974:
 .L2470:
 	mov	esi, 3
 	lea	rdi, .LC809[rip]
@@ -23139,7 +23159,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7961:
+.L7973:
 .L2468:
 	mov	esi, 3
 	lea	rdi, .LC808[rip]
@@ -23155,7 +23175,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7960:
+.L7972:
 .L2466:
 	mov	esi, 16
 	lea	rdi, .LC807[rip]
@@ -23171,7 +23191,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7959:
+.L7971:
 .L2464:
 	mov	esi, 6
 	lea	rdi, .LC806[rip]
@@ -23187,7 +23207,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7958:
+.L7970:
 .L2462:
 	mov	esi, 17
 	lea	rdi, .LC805[rip]
@@ -23203,7 +23223,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7957:
+.L7969:
 .L2460:
 	mov	esi, 12
 	lea	rdi, .LC804[rip]
@@ -23219,7 +23239,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7956:
+.L7968:
 .L2458:
 	mov	esi, 12
 	lea	rdi, .LC803[rip]
@@ -23235,7 +23255,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7955:
+.L7967:
 .L2456:
 	mov	esi, 8
 	lea	rdi, .LC802[rip]
@@ -23251,7 +23271,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7954:
+.L7966:
 .L2454:
 	mov	esi, 10
 	lea	rdi, .LC801[rip]
@@ -23267,7 +23287,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7953:
+.L7965:
 .L2452:
 	mov	esi, 12
 	lea	rdi, .LC800[rip]
@@ -23283,7 +23303,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7952:
+.L7964:
 .L2450:
 	mov	esi, 5
 	lea	rdi, .LC799[rip]
@@ -23299,7 +23319,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7951:
+.L7963:
 .L2448:
 	mov	esi, 4
 	lea	rdi, .LC798[rip]
@@ -23315,7 +23335,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7950:
+.L7962:
 .L2446:
 	mov	esi, 6
 	lea	rdi, .LC797[rip]
@@ -23331,7 +23351,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7949:
+.L7961:
 .L2444:
 	mov	esi, 4
 	lea	rdi, .LC796[rip]
@@ -23347,7 +23367,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7948:
+.L7960:
 .L2442:
 	mov	esi, 5
 	lea	rdi, .LC795[rip]
@@ -23363,7 +23383,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7947:
+.L7959:
 .L2440:
 	mov	esi, 5
 	lea	rdi, .LC794[rip]
@@ -23379,7 +23399,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7946:
+.L7958:
 .L2438:
 	mov	esi, 7
 	lea	rdi, .LC793[rip]
@@ -23395,7 +23415,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7945:
+.L7957:
 .L2436:
 	mov	esi, 7
 	lea	rdi, .LC792[rip]
@@ -23411,7 +23431,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7944:
+.L7956:
 .L2434:
 	mov	esi, 5
 	lea	rdi, .LC791[rip]
@@ -23427,7 +23447,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7943:
+.L7955:
 .L2432:
 	mov	esi, 4
 	lea	rdi, .LC790[rip]
@@ -23443,7 +23463,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7942:
+.L7954:
 .L2430:
 	mov	esi, 3
 	lea	rdi, .LC789[rip]
@@ -23459,7 +23479,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7941:
+.L7953:
 .L2428:
 	mov	esi, 13
 	lea	rdi, .LC788[rip]
@@ -23475,7 +23495,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7940:
+.L7952:
 .L2426:
 	mov	esi, 4
 	lea	rdi, .LC787[rip]
@@ -23491,7 +23511,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7939:
+.L7951:
 .L2424:
 	mov	esi, 6
 	lea	rdi, .LC786[rip]
@@ -23507,7 +23527,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7938:
+.L7950:
 .L2422:
 	mov	esi, 10
 	lea	rdi, .LC785[rip]
@@ -23523,7 +23543,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7937:
+.L7949:
 .L2420:
 	mov	esi, 8
 	lea	rdi, .LC784[rip]
@@ -23539,7 +23559,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7936:
+.L7948:
 .L2418:
 	mov	esi, 8
 	lea	rdi, .LC783[rip]
@@ -23555,7 +23575,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7935:
+.L7947:
 .L2416:
 	mov	esi, 8
 	lea	rdi, .LC782[rip]
@@ -23571,7 +23591,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7934:
+.L7946:
 .L2414:
 	mov	esi, 7
 	lea	rdi, .LC781[rip]
@@ -23587,7 +23607,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7933:
+.L7945:
 .L2412:
 	mov	esi, 8
 	lea	rdi, .LC780[rip]
@@ -23603,7 +23623,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7932:
+.L7944:
 .L2410:
 	mov	esi, 7
 	lea	rdi, .LC779[rip]
@@ -23619,7 +23639,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7931:
+.L7943:
 .L2408:
 	mov	esi, 8
 	lea	rdi, .LC778[rip]
@@ -23635,7 +23655,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7930:
+.L7942:
 .L2406:
 	mov	esi, 12
 	lea	rdi, .LC777[rip]
@@ -23651,7 +23671,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7929:
+.L7941:
 .L2404:
 	mov	esi, 4
 	lea	rdi, .LC776[rip]
@@ -23667,7 +23687,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7928:
+.L7940:
 .L2402:
 	mov	esi, 11
 	lea	rdi, .LC775[rip]
@@ -23683,7 +23703,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7927:
+.L7939:
 .L2400:
 	mov	esi, 8
 	lea	rdi, .LC774[rip]
@@ -23699,7 +23719,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7926:
+.L7938:
 .L2398:
 	mov	esi, 5
 	lea	rdi, .LC773[rip]
@@ -23715,7 +23735,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7925:
+.L7937:
 .L2396:
 	mov	esi, 15
 	lea	rdi, .LC772[rip]
@@ -23731,7 +23751,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7924:
+.L7936:
 .L2394:
 	mov	esi, 11
 	lea	rdi, .LC771[rip]
@@ -23747,7 +23767,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7923:
+.L7935:
 .L2392:
 	mov	esi, 13
 	lea	rdi, .LC770[rip]
@@ -23763,7 +23783,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7922:
+.L7934:
 .L2390:
 	mov	esi, 10
 	lea	rdi, .LC769[rip]
@@ -23779,7 +23799,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7921:
+.L7933:
 .L2388:
 	mov	esi, 4
 	lea	rdi, .LC768[rip]
@@ -23795,7 +23815,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7920:
+.L7932:
 .L2386:
 	mov	esi, 4
 	lea	rdi, .LC767[rip]
@@ -23811,7 +23831,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7919:
+.L7931:
 .L2384:
 	mov	esi, 11
 	lea	rdi, .LC766[rip]
@@ -23827,7 +23847,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7918:
+.L7930:
 .L2382:
 	mov	esi, 6
 	lea	rdi, .LC765[rip]
@@ -23843,7 +23863,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7917:
+.L7929:
 .L2380:
 	mov	esi, 7
 	lea	rdi, .LC764[rip]
@@ -23859,7 +23879,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7916:
+.L7928:
 .L2378:
 	mov	esi, 7
 	lea	rdi, .LC763[rip]
@@ -23875,7 +23895,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7915:
+.L7927:
 .L2376:
 	mov	esi, 15
 	lea	rdi, .LC762[rip]
@@ -23891,7 +23911,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7914:
+.L7926:
 .L2374:
 	mov	esi, 15
 	lea	rdi, .LC761[rip]
@@ -23907,7 +23927,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7913:
+.L7925:
 .L2372:
 	mov	esi, 15
 	lea	rdi, .LC760[rip]
@@ -23923,7 +23943,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7912:
+.L7924:
 .L2370:
 	mov	esi, 15
 	lea	rdi, .LC759[rip]
@@ -23939,7 +23959,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7911:
+.L7923:
 .L2368:
 	mov	esi, 15
 	lea	rdi, .LC758[rip]
@@ -23955,7 +23975,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7910:
+.L7922:
 .L2366:
 	mov	esi, 13
 	lea	rdi, .LC757[rip]
@@ -23971,7 +23991,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7909:
+.L7921:
 .L2364:
 	mov	esi, 9
 	lea	rdi, .LC756[rip]
@@ -23987,7 +24007,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7908:
+.L7920:
 .L2362:
 	mov	esi, 9
 	lea	rdi, .LC755[rip]
@@ -24003,7 +24023,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7907:
+.L7919:
 .L2360:
 	mov	esi, 7
 	lea	rdi, .LC754[rip]
@@ -24019,7 +24039,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7906:
+.L7918:
 .L2358:
 	mov	esi, 6
 	lea	rdi, .LC753[rip]
@@ -24035,7 +24055,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7905:
+.L7917:
 .L2356:
 	mov	esi, 6
 	lea	rdi, .LC752[rip]
@@ -24051,7 +24071,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7904:
+.L7916:
 .L2354:
 	mov	esi, 6
 	lea	rdi, .LC751[rip]
@@ -24067,7 +24087,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7903:
+.L7915:
 .L2352:
 	mov	esi, 6
 	lea	rdi, .LC750[rip]
@@ -24083,7 +24103,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7902:
+.L7914:
 .L2350:
 	mov	esi, 6
 	lea	rdi, .LC749[rip]
@@ -24099,7 +24119,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7901:
+.L7913:
 .L2348:
 	mov	esi, 4
 	lea	rdi, .LC748[rip]
@@ -24115,7 +24135,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7900:
+.L7912:
 .L2346:
 	mov	esi, 13
 	lea	rdi, .LC747[rip]
@@ -24131,7 +24151,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7899:
+.L7911:
 .L2344:
 	mov	esi, 6
 	lea	rdi, .LC746[rip]
@@ -24147,7 +24167,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7898:
+.L7910:
 .L2342:
 	mov	esi, 6
 	lea	rdi, .LC745[rip]
@@ -24163,7 +24183,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7897:
+.L7909:
 .L2340:
 	mov	esi, 7
 	lea	rdi, .LC744[rip]
@@ -24179,7 +24199,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7896:
+.L7908:
 .L2338:
 	mov	esi, 5
 	lea	rdi, .LC743[rip]
@@ -24195,7 +24215,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7895:
+.L7907:
 .L2336:
 	mov	esi, 3
 	lea	rdi, .LC742[rip]
@@ -24211,7 +24231,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7894:
+.L7906:
 .L2334:
 	mov	esi, 6
 	lea	rdi, .LC741[rip]
@@ -24227,7 +24247,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7893:
+.L7905:
 .L2332:
 	mov	esi, 10
 	lea	rdi, .LC740[rip]
@@ -24243,7 +24263,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7892:
+.L7904:
 .L2330:
 	mov	esi, 6
 	lea	rdi, .LC739[rip]
@@ -24259,7 +24279,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7891:
+.L7903:
 .L2328:
 	mov	esi, 7
 	lea	rdi, .LC738[rip]
@@ -24275,7 +24295,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7890:
+.L7902:
 .L2326:
 	mov	esi, 9
 	lea	rdi, .LC737[rip]
@@ -24291,7 +24311,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7889:
+.L7901:
 .L2324:
 	mov	esi, 5
 	lea	rdi, .LC736[rip]
@@ -24307,7 +24327,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7888:
+.L7900:
 .L2322:
 	mov	esi, 7
 	lea	rdi, .LC735[rip]
@@ -24323,7 +24343,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7887:
+.L7899:
 .L2320:
 	mov	esi, 9
 	lea	rdi, .LC734[rip]
@@ -24339,7 +24359,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7886:
+.L7898:
 .L2318:
 	mov	esi, 8
 	lea	rdi, .LC733[rip]
@@ -24355,7 +24375,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7885:
+.L7897:
 .L2316:
 	mov	esi, 4
 	lea	rdi, .LC732[rip]
@@ -24371,7 +24391,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7884:
+.L7896:
 .L2314:
 	mov	esi, 5
 	lea	rdi, .LC731[rip]
@@ -24387,7 +24407,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7883:
+.L7895:
 .L2312:
 	mov	esi, 3
 	lea	rdi, .LC730[rip]
@@ -24403,7 +24423,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7882:
+.L7894:
 .L2310:
 	mov	esi, 7
 	lea	rdi, .LC729[rip]
@@ -24419,7 +24439,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7881:
+.L7893:
 .L2308:
 	mov	esi, 5
 	lea	rdi, .LC728[rip]
@@ -24435,7 +24455,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7880:
+.L7892:
 .L2306:
 	mov	esi, 11
 	lea	rdi, .LC727[rip]
@@ -24451,7 +24471,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7879:
+.L7891:
 .L2304:
 	mov	esi, 8
 	lea	rdi, .LC726[rip]
@@ -24467,7 +24487,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7878:
+.L7890:
 .L2302:
 	mov	esi, 11
 	lea	rdi, .LC725[rip]
@@ -24483,7 +24503,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7877:
+.L7889:
 .L2300:
 	mov	esi, 5
 	lea	rdi, .LC724[rip]
@@ -24499,7 +24519,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7876:
+.L7888:
 .L2298:
 	mov	esi, 10
 	lea	rdi, .LC723[rip]
@@ -24515,7 +24535,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7875:
+.L7887:
 .L2296:
 	mov	esi, 5
 	lea	rdi, .LC722[rip]
@@ -24531,7 +24551,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7874:
+.L7886:
 .L2294:
 	mov	esi, 8
 	lea	rdi, .LC721[rip]
@@ -24547,7 +24567,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7873:
+.L7885:
 .L2292:
 	mov	esi, 5
 	lea	rdi, .LC720[rip]
@@ -24563,7 +24583,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7872:
+.L7884:
 .L2290:
 	mov	esi, 5
 	lea	rdi, .LC719[rip]
@@ -24579,7 +24599,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7871:
+.L7883:
 .L2288:
 	mov	esi, 8
 	lea	rdi, .LC718[rip]
@@ -24595,7 +24615,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7870:
+.L7882:
 .L2286:
 	mov	esi, 6
 	lea	rdi, .LC717[rip]
@@ -24611,7 +24631,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7869:
+.L7881:
 .L2284:
 	mov	esi, 4
 	lea	rdi, .LC716[rip]
@@ -24627,7 +24647,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7868:
+.L7880:
 .L2282:
 	mov	esi, 3
 	lea	rdi, .LC715[rip]
@@ -24643,7 +24663,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7867:
+.L7879:
 .L2280:
 	mov	esi, 7
 	lea	rdi, .LC714[rip]
@@ -24659,7 +24679,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7866:
+.L7878:
 .L2278:
 	mov	esi, 5
 	lea	rdi, .LC713[rip]
@@ -24675,7 +24695,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7865:
+.L7877:
 .L2276:
 	mov	esi, 5
 	lea	rdi, .LC712[rip]
@@ -24691,7 +24711,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7864:
+.L7876:
 .L2274:
 	mov	esi, 7
 	lea	rdi, .LC711[rip]
@@ -24707,7 +24727,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7863:
+.L7875:
 .L2272:
 	mov	esi, 14
 	lea	rdi, .LC710[rip]
@@ -24723,7 +24743,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7862:
+.L7874:
 .L2270:
 	mov	esi, 13
 	lea	rdi, .LC709[rip]
@@ -24739,7 +24759,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7861:
+.L7873:
 .L2268:
 	mov	esi, 11
 	lea	rdi, .LC708[rip]
@@ -24755,7 +24775,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7860:
+.L7872:
 .L2266:
 	mov	esi, 10
 	lea	rdi, .LC707[rip]
@@ -24771,7 +24791,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7859:
+.L7871:
 .L2264:
 	mov	esi, 19
 	lea	rdi, .LC706[rip]
@@ -24787,7 +24807,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7858:
+.L7870:
 .L2262:
 	mov	esi, 18
 	lea	rdi, .LC705[rip]
@@ -24803,7 +24823,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7857:
+.L7869:
 .L2260:
 	mov	esi, 16
 	lea	rdi, .LC704[rip]
@@ -24819,7 +24839,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7856:
+.L7868:
 .L2258:
 	mov	esi, 9
 	lea	rdi, .LC703[rip]
@@ -24835,7 +24855,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7855:
+.L7867:
 .L2256:
 	mov	esi, 4
 	lea	rdi, .LC702[rip]
@@ -24851,7 +24871,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7854:
+.L7866:
 .L2254:
 	mov	esi, 5
 	lea	rdi, .LC701[rip]
@@ -24867,7 +24887,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7853:
+.L7865:
 .L2252:
 	mov	esi, 2
 	lea	rdi, .LC700[rip]
@@ -24883,7 +24903,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7852:
+.L7864:
 .L2250:
 	mov	esi, 2
 	lea	rdi, .LC699[rip]
@@ -24899,7 +24919,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7851:
+.L7863:
 .L2248:
 	mov	esi, 8
 	lea	rdi, .LC698[rip]
@@ -24915,7 +24935,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7850:
+.L7862:
 .L2246:
 	mov	esi, 5
 	lea	rdi, .LC697[rip]
@@ -24931,7 +24951,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7849:
+.L7861:
 .L2244:
 	mov	esi, 9
 	lea	rdi, .LC696[rip]
@@ -24947,7 +24967,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7848:
+.L7860:
 .L2242:
 	mov	esi, 4
 	lea	rdi, .LC695[rip]
@@ -24963,7 +24983,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7847:
+.L7859:
 .L2240:
 	mov	esi, 5
 	lea	rdi, .LC694[rip]
@@ -24979,7 +24999,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7846:
+.L7858:
 .L2238:
 	mov	esi, 4
 	lea	rdi, .LC693[rip]
@@ -24995,7 +25015,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7845:
+.L7857:
 .L2236:
 	mov	esi, 2
 	lea	rdi, .LC692[rip]
@@ -25011,7 +25031,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7844:
+.L7856:
 .L2234:
 	mov	esi, 4
 	lea	rdi, .LC691[rip]
@@ -25027,7 +25047,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7843:
+.L7855:
 .L2232:
 	mov	esi, 3
 	lea	rdi, .LC690[rip]
@@ -25043,7 +25063,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7842:
+.L7854:
 .L2230:
 	mov	esi, 8
 	lea	rdi, .LC689[rip]
@@ -25059,7 +25079,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7841:
+.L7853:
 .L2228:
 	mov	esi, 13
 	lea	rdi, .LC688[rip]
@@ -25075,7 +25095,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7840:
+.L7852:
 .L2226:
 	mov	esi, 4
 	lea	rdi, .LC687[rip]
@@ -25091,7 +25111,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7839:
+.L7851:
 .L2224:
 	mov	esi, 4
 	lea	rdi, .LC686[rip]
@@ -25107,7 +25127,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7838:
+.L7850:
 .L2222:
 	mov	esi, 11
 	lea	rdi, .LC685[rip]
@@ -25123,7 +25143,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7837:
+.L7849:
 .L2220:
 	mov	esi, 6
 	lea	rdi, .LC684[rip]
@@ -25139,7 +25159,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7836:
+.L7848:
 .L2218:
 	mov	esi, 6
 	lea	rdi, .LC683[rip]
@@ -25155,7 +25175,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7835:
+.L7847:
 .L2216:
 	mov	esi, 5
 	lea	rdi, .LC682[rip]
@@ -25171,7 +25191,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7834:
+.L7846:
 .L2214:
 	mov	esi, 4
 	lea	rdi, .LC681[rip]
@@ -25187,7 +25207,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7833:
+.L7845:
 .L2212:
 	mov	esi, 15
 	lea	rdi, .LC680[rip]
@@ -25203,7 +25223,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7832:
+.L7844:
 .L2210:
 	mov	esi, 5
 	lea	rdi, .LC679[rip]
@@ -25219,7 +25239,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7831:
+.L7843:
 .L2208:
 	mov	esi, 1
 	lea	rdi, .LC230[rip]
@@ -25235,7 +25255,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7830:
+.L7842:
 .L2206:
 	mov	esi, 4
 	lea	rdi, .LC678[rip]
@@ -25251,7 +25271,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7829:
+.L7841:
 .L2204:
 	mov	esi, 2
 	lea	rdi, .LC677[rip]
@@ -25267,7 +25287,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7828:
+.L7840:
 .L2202:
 	mov	esi, 5
 	lea	rdi, .LC676[rip]
@@ -25283,7 +25303,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7827:
+.L7839:
 .L2200:
 	mov	esi, 5
 	lea	rdi, .LC675[rip]
@@ -25299,7 +25319,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7826:
+.L7838:
 .L2198:
 	mov	esi, 5
 	lea	rdi, .LC674[rip]
@@ -25315,7 +25335,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7825:
+.L7837:
 .L2196:
 	mov	esi, 9
 	lea	rdi, .LC673[rip]
@@ -25331,7 +25351,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7824:
+.L7836:
 .L2194:
 	mov	esi, 5
 	lea	rdi, .LC672[rip]
@@ -25347,7 +25367,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7823:
+.L7835:
 .L2192:
 	mov	esi, 8
 	lea	rdi, .LC671[rip]
@@ -25363,7 +25383,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7822:
+.L7834:
 .L2190:
 	mov	esi, 4
 	lea	rdi, .LC670[rip]
@@ -25379,7 +25399,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7821:
+.L7833:
 .L2188:
 	mov	esi, 8
 	lea	rdi, .LC669[rip]
@@ -25395,7 +25415,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7820:
+.L7832:
 .L2186:
 	mov	esi, 5
 	lea	rdi, .LC668[rip]
@@ -25411,7 +25431,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7819:
+.L7831:
 .L2184:
 	mov	esi, 10
 	lea	rdi, .LC667[rip]
@@ -25427,7 +25447,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7818:
+.L7830:
 .L2182:
 	mov	esi, 10
 	lea	rdi, .LC666[rip]
@@ -25443,7 +25463,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7817:
+.L7829:
 .L2180:
 	mov	esi, 10
 	lea	rdi, .LC665[rip]
@@ -25459,7 +25479,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7816:
+.L7828:
 .L2178:
 	mov	esi, 5
 	lea	rdi, .LC664[rip]
@@ -25475,7 +25495,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7815:
+.L7827:
 .L2176:
 	mov	esi, 5
 	lea	rdi, .LC663[rip]
@@ -25491,7 +25511,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7814:
+.L7826:
 .L2174:
 	mov	esi, 4
 	lea	rdi, .LC662[rip]
@@ -25507,7 +25527,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7813:
+.L7825:
 .L2172:
 	mov	esi, 5
 	lea	rdi, .LC661[rip]
@@ -25523,7 +25543,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7812:
+.L7824:
 .L2170:
 	mov	esi, 3
 	lea	rdi, .LC660[rip]
@@ -25539,7 +25559,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7811:
+.L7823:
 .L2168:
 	mov	esi, 10
 	lea	rdi, .LC659[rip]
@@ -25555,7 +25575,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7810:
+.L7822:
 .L2166:
 	mov	esi, 6
 	lea	rdi, .LC658[rip]
@@ -25571,7 +25591,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7809:
+.L7821:
 .L2164:
 	mov	esi, 4
 	lea	rdi, .LC657[rip]
@@ -25587,7 +25607,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7808:
+.L7820:
 .L2162:
 	mov	esi, 4
 	lea	rdi, .LC656[rip]
@@ -25603,7 +25623,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7807:
+.L7819:
 .L2160:
 	mov	esi, 12
 	lea	rdi, .LC655[rip]
@@ -25619,7 +25639,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7806:
+.L7818:
 .L2158:
 	mov	esi, 4
 	lea	rdi, .LC654[rip]
@@ -25635,7 +25655,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7805:
+.L7817:
 .L2156:
 	mov	esi, 5
 	lea	rdi, .LC653[rip]
@@ -25651,7 +25671,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7804:
+.L7816:
 .L2154:
 	mov	esi, 4
 	lea	rdi, .LC652[rip]
@@ -25667,7 +25687,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7803:
+.L7815:
 .L2152:
 	mov	esi, 5
 	lea	rdi, .LC651[rip]
@@ -25683,7 +25703,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7802:
+.L7814:
 .L2150:
 	mov	esi, 5
 	lea	rdi, .LC650[rip]
@@ -25699,7 +25719,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7801:
+.L7813:
 .L2148:
 	mov	esi, 10
 	lea	rdi, .LC649[rip]
@@ -25715,7 +25735,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7800:
+.L7812:
 .L2146:
 	mov	esi, 9
 	lea	rdi, .LC648[rip]
@@ -25731,7 +25751,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7799:
+.L7811:
 .L2144:
 	mov	esi, 4
 	lea	rdi, .LC647[rip]
@@ -25747,7 +25767,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7798:
+.L7810:
 .L2142:
 	mov	esi, 6
 	lea	rdi, .LC646[rip]
@@ -25763,7 +25783,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7797:
+.L7809:
 .L2140:
 	mov	esi, 13
 	lea	rdi, .LC645[rip]
@@ -25779,7 +25799,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7796:
+.L7808:
 .L2138:
 	mov	esi, 13
 	lea	rdi, .LC644[rip]
@@ -25795,7 +25815,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7795:
+.L7807:
 .L2136:
 	mov	esi, 7
 	lea	rdi, .LC643[rip]
@@ -25811,7 +25831,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7794:
+.L7806:
 .L2134:
 	mov	esi, 9
 	lea	rdi, .LC642[rip]
@@ -25827,7 +25847,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7793:
+.L7805:
 .L2132:
 	mov	esi, 5
 	lea	rdi, .LC641[rip]
@@ -25843,7 +25863,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7792:
+.L7804:
 .L2130:
 	mov	esi, 6
 	lea	rdi, .LC640[rip]
@@ -25859,7 +25879,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7791:
+.L7803:
 .L2128:
 	mov	esi, 4
 	lea	rdi, .LC639[rip]
@@ -25875,7 +25895,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7790:
+.L7802:
 .L2126:
 	mov	esi, 5
 	lea	rdi, .LC638[rip]
@@ -25891,7 +25911,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7789:
+.L7801:
 .L2124:
 	mov	esi, 9
 	lea	rdi, .LC637[rip]
@@ -25907,7 +25927,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7788:
+.L7800:
 .L2122:
 	mov	esi, 10
 	lea	rdi, .LC636[rip]
@@ -25923,7 +25943,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7787:
+.L7799:
 .L2120:
 	mov	esi, 10
 	lea	rdi, .LC635[rip]
@@ -25939,7 +25959,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7786:
+.L7798:
 .L2118:
 	mov	esi, 1
 	lea	rdi, .LC229[rip]
@@ -25955,7 +25975,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7785:
+.L7797:
 .L2116:
 	mov	esi, 5
 	lea	rdi, .LC634[rip]
@@ -25971,7 +25991,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7784:
+.L7796:
 .L2114:
 	mov	esi, 3
 	lea	rdi, .LC633[rip]
@@ -25987,7 +26007,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7783:
+.L7795:
 .L2112:
 	mov	esi, 7
 	lea	rdi, .LC632[rip]
@@ -26003,7 +26023,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7782:
+.L7794:
 .L2110:
 	mov	esi, 8
 	lea	rdi, .LC631[rip]
@@ -26019,7 +26039,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7781:
+.L7793:
 .L2108:
 	mov	esi, 9
 	lea	rdi, .LC630[rip]
@@ -26035,7 +26055,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7780:
+.L7792:
 .L2106:
 	mov	esi, 4
 	lea	rdi, .LC629[rip]
@@ -26051,7 +26071,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7779:
+.L7791:
 .L2104:
 	mov	esi, 6
 	lea	rdi, .LC628[rip]
@@ -26067,7 +26087,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7778:
+.L7790:
 .L2102:
 	mov	esi, 9
 	lea	rdi, .LC627[rip]
@@ -26083,7 +26103,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7777:
+.L7789:
 .L2100:
 	mov	esi, 3
 	lea	rdi, .LC626[rip]
@@ -26099,7 +26119,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7776:
+.L7788:
 .L2098:
 	mov	esi, 5
 	lea	rdi, .LC625[rip]
@@ -26115,7 +26135,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7775:
+.L7787:
 .L2096:
 	mov	esi, 5
 	lea	rdi, .LC624[rip]
@@ -26131,7 +26151,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7774:
+.L7786:
 .L2094:
 	mov	esi, 4
 	lea	rdi, .LC623[rip]
@@ -26147,7 +26167,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7773:
+.L7785:
 .L2092:
 	mov	esi, 2
 	lea	rdi, .LC622[rip]
@@ -26163,7 +26183,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7772:
+.L7784:
 .L2090:
 	mov	esi, 5
 	lea	rdi, .LC621[rip]
@@ -26179,7 +26199,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7978:
+.L7990:
 .L3004:
 	movsd	xmm0, QWORD PTR .LC1065[rip]
 	mulsd	xmm0, QWORD PTR 394896[r13]
@@ -26195,7 +26215,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7977:
+.L7989:
 .L3002:
 	movsd	xmm0, QWORD PTR .LC1064[rip]
 	mulsd	xmm0, QWORD PTR 394896[r13]
@@ -26211,7 +26231,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7976:
+.L7988:
 .L3000:
 	movsd	xmm0, QWORD PTR .LC1064[rip]
 	mulsd	xmm0, QWORD PTR 394896[r13]
@@ -26227,7 +26247,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7975:
+.L7987:
 .L2998:
 	mov	esi, 2
 	lea	rdi, .LC1063[rip]
@@ -26243,7 +26263,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7271:
+.L7283:
 .L3587:
 	movsd	xmm0, QWORD PTR 394888[r13]
 	call	nearbyint@PLT
@@ -26257,507 +26277,507 @@ _ZN8MEMORY_T6POKE64Edd:
 	test	rax, rax
 	je	.L4103
 	cmp	rax, 1
-	je	.L8245
-	cmp	rax, 2
-	je	.L8246
-	cmp	rax, 3
-	je	.L8247
-	cmp	rax, 4
-	je	.L8248
-	cmp	rax, 5
-	je	.L8249
-	cmp	rax, 6
-	je	.L8250
-	cmp	rax, 7
-	je	.L8251
-	cmp	rax, 8
-	je	.L8252
-	cmp	rax, 9
-	je	.L8253
-	cmp	rax, 10
-	je	.L8254
-	cmp	rax, 11
-	je	.L8255
-	cmp	rax, 12
-	je	.L8256
-	cmp	rax, 13
 	je	.L8257
-	cmp	rax, 14
+	cmp	rax, 2
 	je	.L8258
-	cmp	rax, 15
+	cmp	rax, 3
 	je	.L8259
-	cmp	rax, 16
+	cmp	rax, 4
 	je	.L8260
-	cmp	rax, 17
+	cmp	rax, 5
 	je	.L8261
-	cmp	rax, 18
+	cmp	rax, 6
 	je	.L8262
-	cmp	rax, 19
+	cmp	rax, 7
 	je	.L8263
-	cmp	rax, 20
+	cmp	rax, 8
 	je	.L8264
-	cmp	rax, 21
+	cmp	rax, 9
 	je	.L8265
-	cmp	rax, 22
+	cmp	rax, 10
 	je	.L8266
-	cmp	rax, 23
+	cmp	rax, 11
 	je	.L8267
-	cmp	rax, 24
+	cmp	rax, 12
 	je	.L8268
-	cmp	rax, 25
+	cmp	rax, 13
 	je	.L8269
-	cmp	rax, 26
+	cmp	rax, 14
 	je	.L8270
-	cmp	rax, 27
+	cmp	rax, 15
 	je	.L8271
-	cmp	rax, 28
+	cmp	rax, 16
 	je	.L8272
-	cmp	rax, 29
+	cmp	rax, 17
 	je	.L8273
-	cmp	rax, 30
+	cmp	rax, 18
 	je	.L8274
-	cmp	rax, 31
+	cmp	rax, 19
 	je	.L8275
-	cmp	rax, 32
+	cmp	rax, 20
 	je	.L8276
-	cmp	rax, 33
+	cmp	rax, 21
 	je	.L8277
-	cmp	rax, 34
+	cmp	rax, 22
 	je	.L8278
-	cmp	rax, 35
+	cmp	rax, 23
 	je	.L8279
-	cmp	rax, 36
+	cmp	rax, 24
 	je	.L8280
-	cmp	rax, 37
+	cmp	rax, 25
 	je	.L8281
-	cmp	rax, 38
+	cmp	rax, 26
 	je	.L8282
-	cmp	rax, 39
+	cmp	rax, 27
 	je	.L8283
-	cmp	rax, 40
+	cmp	rax, 28
 	je	.L8284
-	cmp	rax, 41
+	cmp	rax, 29
 	je	.L8285
-	cmp	rax, 42
+	cmp	rax, 30
 	je	.L8286
-	cmp	rax, 43
+	cmp	rax, 31
 	je	.L8287
-	cmp	rax, 44
+	cmp	rax, 32
 	je	.L8288
-	cmp	rax, 45
+	cmp	rax, 33
 	je	.L8289
-	cmp	rax, 46
+	cmp	rax, 34
 	je	.L8290
-	cmp	rax, 47
+	cmp	rax, 35
 	je	.L8291
-	cmp	rax, 48
+	cmp	rax, 36
 	je	.L8292
-	cmp	rax, 49
+	cmp	rax, 37
 	je	.L8293
-	cmp	rax, 50
+	cmp	rax, 38
 	je	.L8294
-	cmp	rax, 51
+	cmp	rax, 39
 	je	.L8295
-	cmp	rax, 52
+	cmp	rax, 40
 	je	.L8296
-	cmp	rax, 53
+	cmp	rax, 41
 	je	.L8297
-	cmp	rax, 54
+	cmp	rax, 42
 	je	.L8298
-	cmp	rax, 55
+	cmp	rax, 43
 	je	.L8299
-	cmp	rax, 56
+	cmp	rax, 44
 	je	.L8300
-	cmp	rax, 57
+	cmp	rax, 45
 	je	.L8301
-	cmp	rax, 58
+	cmp	rax, 46
 	je	.L8302
-	cmp	rax, 59
+	cmp	rax, 47
 	je	.L8303
-	cmp	rax, 60
+	cmp	rax, 48
 	je	.L8304
-	cmp	rax, 61
+	cmp	rax, 49
 	je	.L8305
-	cmp	rax, 62
+	cmp	rax, 50
 	je	.L8306
+	cmp	rax, 51
+	je	.L8307
+	cmp	rax, 52
+	je	.L8308
+	cmp	rax, 53
+	je	.L8309
+	cmp	rax, 54
+	je	.L8310
+	cmp	rax, 55
+	je	.L8311
+	cmp	rax, 56
+	je	.L8312
+	cmp	rax, 57
+	je	.L8313
+	cmp	rax, 58
+	je	.L8314
+	cmp	rax, 59
+	je	.L8315
+	cmp	rax, 60
+	je	.L8316
+	cmp	rax, 61
+	je	.L8317
+	cmp	rax, 62
+	je	.L8318
 	lea	rdx, -63[rax]
 	cmp	rdx, 1
-	jbe	.L8307
+	jbe	.L8319
 	cmp	rax, 65
 	je	.L4231
 	cmp	rax, 66
-	je	.L8308
-	cmp	rax, 67
-	je	.L8309
-	cmp	rax, 68
-	je	.L8310
-	cmp	rax, 69
-	je	.L8311
-	cmp	rax, 70
-	je	.L8312
-	cmp	rax, 71
-	je	.L8313
-	cmp	rax, 72
-	je	.L8314
-	cmp	rax, 73
-	je	.L8315
-	cmp	rax, 74
-	je	.L8316
-	cmp	rax, 75
-	je	.L8317
-	cmp	rax, 76
-	je	.L8318
-	cmp	rax, 77
-	je	.L8319
-	cmp	rax, 78
 	je	.L8320
-	cmp	rax, 79
+	cmp	rax, 67
 	je	.L8321
-	cmp	rax, 80
+	cmp	rax, 68
 	je	.L8322
-	cmp	rax, 81
+	cmp	rax, 69
 	je	.L8323
-	cmp	rax, 82
+	cmp	rax, 70
 	je	.L8324
-	cmp	rax, 83
+	cmp	rax, 71
 	je	.L8325
-	cmp	rax, 84
+	cmp	rax, 72
 	je	.L8326
-	cmp	rax, 95
+	cmp	rax, 73
 	je	.L8327
-	cmp	rax, 86
+	cmp	rax, 74
 	je	.L8328
-	cmp	rax, 87
+	cmp	rax, 75
 	je	.L8329
-	cmp	rax, 88
+	cmp	rax, 76
 	je	.L8330
-	cmp	rax, 89
+	cmp	rax, 77
 	je	.L8331
-	cmp	rax, 90
+	cmp	rax, 78
 	je	.L8332
-	cmp	rax, 91
+	cmp	rax, 79
 	je	.L8333
-	cmp	rax, 92
+	cmp	rax, 80
 	je	.L8334
-	cmp	rax, 93
+	cmp	rax, 81
 	je	.L8335
-	cmp	rax, 94
+	cmp	rax, 82
 	je	.L8336
-	cmp	rax, 96
+	cmp	rax, 83
 	je	.L8337
-	cmp	rax, 97
+	cmp	rax, 84
 	je	.L8338
-	cmp	rax, 98
+	cmp	rax, 95
 	je	.L8339
-	cmp	rax, 99
+	cmp	rax, 86
 	je	.L8340
-	cmp	rax, 100
+	cmp	rax, 87
 	je	.L8341
-	cmp	rax, 101
+	cmp	rax, 88
 	je	.L8342
-	cmp	rax, 102
+	cmp	rax, 89
 	je	.L8343
-	cmp	rax, 103
+	cmp	rax, 90
 	je	.L8344
-	cmp	rax, 104
+	cmp	rax, 91
 	je	.L8345
-	cmp	rax, 105
+	cmp	rax, 92
 	je	.L8346
+	cmp	rax, 93
+	je	.L8347
+	cmp	rax, 94
+	je	.L8348
+	cmp	rax, 96
+	je	.L8349
+	cmp	rax, 97
+	je	.L8350
+	cmp	rax, 98
+	je	.L8351
+	cmp	rax, 99
+	je	.L8352
+	cmp	rax, 100
+	je	.L8353
+	cmp	rax, 101
+	je	.L8354
+	cmp	rax, 102
+	je	.L8355
+	cmp	rax, 103
+	je	.L8356
+	cmp	rax, 104
+	je	.L8357
+	cmp	rax, 105
+	je	.L8358
 	cmp	rax, 106
 	je	.L4314
 	cmp	rax, 107
-	je	.L8347
+	je	.L8359
 	cmp	rax, 108
-	je	.L8348
+	je	.L8360
 	cmp	rax, 109
-	je	.L8349
+	je	.L8361
 	cmp	rax, 110
-	je	.L8350
+	je	.L8362
 	cmp	rax, 111
 	je	.L4314
 	cmp	rax, 112
 	je	.L4322
 	cmp	rax, 113
-	je	.L8351
-	cmp	rax, 114
-	je	.L8352
-	cmp	rax, 115
-	je	.L8353
-	cmp	rax, 116
-	je	.L8354
-	cmp	rax, 117
-	je	.L8355
-	cmp	rax, 118
-	je	.L8356
-	cmp	rax, 119
-	je	.L8357
-	cmp	rax, 120
-	je	.L8358
-	cmp	rax, 121
-	je	.L8359
-	cmp	rax, 122
-	je	.L8360
-	cmp	rax, 123
-	je	.L8361
-	cmp	rax, 124
-	je	.L8362
-	cmp	rax, 125
 	je	.L8363
-	cmp	rax, 126
+	cmp	rax, 114
 	je	.L8364
-	cmp	rax, 127
+	cmp	rax, 115
 	je	.L8365
-	cmp	rax, 128
+	cmp	rax, 116
 	je	.L8366
-	cmp	rax, 129
+	cmp	rax, 117
 	je	.L8367
-	cmp	rax, 130
+	cmp	rax, 118
 	je	.L8368
-	cmp	rax, 131
+	cmp	rax, 119
 	je	.L8369
-	cmp	rax, 132
+	cmp	rax, 120
 	je	.L8370
-	cmp	rax, 133
+	cmp	rax, 121
 	je	.L8371
-	cmp	rax, 134
+	cmp	rax, 122
 	je	.L8372
-	cmp	rax, 135
+	cmp	rax, 123
 	je	.L8373
-	cmp	rax, 136
+	cmp	rax, 124
 	je	.L8374
-	cmp	rax, 137
+	cmp	rax, 125
 	je	.L8375
-	cmp	rax, 138
+	cmp	rax, 126
 	je	.L8376
-	cmp	rax, 139
+	cmp	rax, 127
 	je	.L8377
-	cmp	rax, 140
+	cmp	rax, 128
 	je	.L8378
-	cmp	rax, 141
+	cmp	rax, 129
 	je	.L8379
-	cmp	rax, 142
+	cmp	rax, 130
 	je	.L8380
-	cmp	rax, 143
+	cmp	rax, 131
 	je	.L8381
-	cmp	rax, 144
+	cmp	rax, 132
 	je	.L8382
-	cmp	rax, 145
+	cmp	rax, 133
 	je	.L8383
-	cmp	rax, 146
+	cmp	rax, 134
 	je	.L8384
-	cmp	rax, 147
+	cmp	rax, 135
 	je	.L8385
-	cmp	rax, 148
+	cmp	rax, 136
 	je	.L8386
-	cmp	rax, 149
+	cmp	rax, 137
 	je	.L8387
-	cmp	rax, 150
+	cmp	rax, 138
 	je	.L8388
-	cmp	rax, 151
+	cmp	rax, 139
 	je	.L8389
-	cmp	rax, 152
+	cmp	rax, 140
 	je	.L8390
-	cmp	rax, 153
+	cmp	rax, 141
 	je	.L8391
-	cmp	rax, 154
+	cmp	rax, 142
 	je	.L8392
-	cmp	rax, 155
+	cmp	rax, 143
 	je	.L8393
-	cmp	rax, 156
+	cmp	rax, 144
 	je	.L8394
-	cmp	rax, 157
+	cmp	rax, 145
 	je	.L8395
-	cmp	rax, 158
+	cmp	rax, 146
 	je	.L8396
-	cmp	rax, 159
+	cmp	rax, 147
 	je	.L8397
-	cmp	rax, 160
+	cmp	rax, 148
 	je	.L8398
-	cmp	rax, 161
+	cmp	rax, 149
 	je	.L8399
-	cmp	rax, 162
+	cmp	rax, 150
 	je	.L8400
-	cmp	rax, 163
+	cmp	rax, 151
 	je	.L8401
-	cmp	rax, 164
+	cmp	rax, 152
 	je	.L8402
-	cmp	rax, 165
+	cmp	rax, 153
 	je	.L8403
-	cmp	rax, 166
+	cmp	rax, 154
 	je	.L8404
+	cmp	rax, 155
+	je	.L8405
+	cmp	rax, 156
+	je	.L8406
+	cmp	rax, 157
+	je	.L8407
+	cmp	rax, 158
+	je	.L8408
+	cmp	rax, 159
+	je	.L8409
+	cmp	rax, 160
+	je	.L8410
+	cmp	rax, 161
+	je	.L8411
+	cmp	rax, 162
+	je	.L8412
+	cmp	rax, 163
+	je	.L8413
+	cmp	rax, 164
+	je	.L8414
+	cmp	rax, 165
+	je	.L8415
+	cmp	rax, 166
+	je	.L8416
 	lea	rdx, -167[rax]
 	cmp	rdx, 1
-	jbe	.L8405
+	jbe	.L8417
 	cmp	rax, 169
 	je	.L4434
 	cmp	rax, 170
-	je	.L8406
-	cmp	rax, 171
-	je	.L8407
-	cmp	rax, 172
-	je	.L8408
-	cmp	rax, 173
-	je	.L8409
-	cmp	rax, 174
-	je	.L8410
-	cmp	rax, 175
-	je	.L8411
-	cmp	rax, 176
-	je	.L8412
-	cmp	rax, 177
-	je	.L8413
-	cmp	rax, 178
-	je	.L8414
-	cmp	rax, 179
-	je	.L8415
-	cmp	rax, 180
-	je	.L8416
-	cmp	rax, 181
-	je	.L8417
-	cmp	rax, 182
 	je	.L8418
-	cmp	rax, 183
+	cmp	rax, 171
 	je	.L8419
-	cmp	rax, 184
+	cmp	rax, 172
 	je	.L8420
-	cmp	rax, 185
+	cmp	rax, 173
 	je	.L8421
-	cmp	rax, 186
+	cmp	rax, 174
 	je	.L8422
-	cmp	rax, 187
+	cmp	rax, 175
 	je	.L8423
-	cmp	rax, 188
+	cmp	rax, 176
 	je	.L8424
-	cmp	rax, 189
+	cmp	rax, 177
 	je	.L8425
-	cmp	rax, 190
+	cmp	rax, 178
 	je	.L8426
-	cmp	rax, 191
+	cmp	rax, 179
 	je	.L8427
-	cmp	rax, 192
+	cmp	rax, 180
 	je	.L8428
-	cmp	rax, 193
+	cmp	rax, 181
 	je	.L8429
-	cmp	rax, 194
+	cmp	rax, 182
 	je	.L8430
-	cmp	rax, 195
+	cmp	rax, 183
 	je	.L8431
-	cmp	rax, 196
+	cmp	rax, 184
 	je	.L8432
-	cmp	rax, 197
+	cmp	rax, 185
 	je	.L8433
-	cmp	rax, 198
+	cmp	rax, 186
 	je	.L8434
-	cmp	rax, 199
+	cmp	rax, 187
 	je	.L8435
-	cmp	rax, 200
+	cmp	rax, 188
 	je	.L8436
-	cmp	rax, 201
+	cmp	rax, 189
 	je	.L8437
-	cmp	rax, 202
+	cmp	rax, 190
 	je	.L8438
+	cmp	rax, 191
+	je	.L8439
+	cmp	rax, 192
+	je	.L8440
+	cmp	rax, 193
+	je	.L8441
+	cmp	rax, 194
+	je	.L8442
+	cmp	rax, 195
+	je	.L8443
+	cmp	rax, 196
+	je	.L8444
+	cmp	rax, 197
+	je	.L8445
+	cmp	rax, 198
+	je	.L8446
+	cmp	rax, 199
+	je	.L8447
+	cmp	rax, 200
+	je	.L8448
+	cmp	rax, 201
+	je	.L8449
+	cmp	rax, 202
+	je	.L8450
 	lea	rdx, -203[rax]
 	cmp	rdx, 1
-	jbe	.L8439
+	jbe	.L8451
 	cmp	rax, 205
 	je	.L4504
 	cmp	rax, 206
-	je	.L8440
+	je	.L8452
 	cmp	rax, 207
-	je	.L8441
+	je	.L8453
 	lea	rdx, -208[rax]
 	cmp	rdx, 1
-	jbe	.L8442
+	jbe	.L8454
 	cmp	rax, 210
 	je	.L4512
 	cmp	rax, 211
-	je	.L8443
-	cmp	rax, 212
-	je	.L8444
-	cmp	rax, 213
-	je	.L8445
-	cmp	rax, 214
-	je	.L8446
-	cmp	rax, 215
-	je	.L8447
-	cmp	rax, 216
-	je	.L8448
-	cmp	rax, 217
-	je	.L8449
-	cmp	rax, 218
-	je	.L8450
-	cmp	rax, 219
-	je	.L8451
-	cmp	rax, 220
-	je	.L8452
-	cmp	rax, 221
-	je	.L8453
-	cmp	rax, 222
-	je	.L8454
-	cmp	rax, 223
 	je	.L8455
-	cmp	rax, 224
+	cmp	rax, 212
 	je	.L8456
-	cmp	rax, 225
+	cmp	rax, 213
 	je	.L8457
-	cmp	rax, 226
+	cmp	rax, 214
 	je	.L8458
-	cmp	rax, 227
+	cmp	rax, 215
 	je	.L8459
-	cmp	rax, 228
+	cmp	rax, 216
 	je	.L8460
-	cmp	rax, 229
+	cmp	rax, 217
 	je	.L8461
-	cmp	rax, 230
+	cmp	rax, 218
 	je	.L8462
-	cmp	rax, 231
+	cmp	rax, 219
 	je	.L8463
-	cmp	rax, 232
+	cmp	rax, 220
 	je	.L8464
-	cmp	rax, 233
+	cmp	rax, 221
 	je	.L8465
-	cmp	rax, 234
+	cmp	rax, 222
 	je	.L8466
-	cmp	rax, 235
+	cmp	rax, 223
 	je	.L8467
-	cmp	rax, 236
+	cmp	rax, 224
 	je	.L8468
-	cmp	rax, 237
+	cmp	rax, 225
 	je	.L8469
-	cmp	rax, 238
+	cmp	rax, 226
 	je	.L8470
-	cmp	rax, 239
+	cmp	rax, 227
 	je	.L8471
-	cmp	rax, 240
+	cmp	rax, 228
 	je	.L8472
-	cmp	rax, 241
+	cmp	rax, 229
 	je	.L8473
-	cmp	rax, 242
+	cmp	rax, 230
 	je	.L8474
-	cmp	rax, 243
+	cmp	rax, 231
 	je	.L8475
-	cmp	rax, 244
+	cmp	rax, 232
 	je	.L8476
-	cmp	rax, 245
+	cmp	rax, 233
 	je	.L8477
-	cmp	rax, 246
+	cmp	rax, 234
 	je	.L8478
-	cmp	rax, 247
+	cmp	rax, 235
 	je	.L8479
-	cmp	rax, 248
+	cmp	rax, 236
 	je	.L8480
-	cmp	rax, 249
+	cmp	rax, 237
 	je	.L8481
-	cmp	rax, 250
+	cmp	rax, 238
 	je	.L8482
-	cmp	rax, 251
+	cmp	rax, 239
 	je	.L8483
-	cmp	rax, 252
+	cmp	rax, 240
 	je	.L8484
-	cmp	rax, 253
+	cmp	rax, 241
 	je	.L8485
-	cmp	rax, 254
+	cmp	rax, 242
 	je	.L8486
+	cmp	rax, 243
+	je	.L8487
+	cmp	rax, 244
+	je	.L8488
+	cmp	rax, 245
+	je	.L8489
+	cmp	rax, 246
+	je	.L8490
+	cmp	rax, 247
+	je	.L8491
+	cmp	rax, 248
+	je	.L8492
+	cmp	rax, 249
+	je	.L8493
+	cmp	rax, 250
+	je	.L8494
+	cmp	rax, 251
+	je	.L8495
+	cmp	rax, 252
+	je	.L8496
+	cmp	rax, 253
+	je	.L8497
+	cmp	rax, 254
+	je	.L8498
 	cmp	rax, 255
 	jne	.L742
 .L4601:
@@ -26775,7 +26795,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7270:
+.L7282:
 .L3075:
 	movsd	xmm0, QWORD PTR 394888[r13]
 	call	nearbyint@PLT
@@ -26789,513 +26809,513 @@ _ZN8MEMORY_T6POKE64Edd:
 	test	rax, rax
 	je	.L3590
 	cmp	rax, 1
-	je	.L8487
-	cmp	rax, 2
-	je	.L8488
-	cmp	rax, 3
-	je	.L8489
-	cmp	rax, 4
-	je	.L8490
-	cmp	rax, 5
-	je	.L8491
-	cmp	rax, 6
-	je	.L8492
-	cmp	rax, 7
-	je	.L8493
-	cmp	rax, 8
-	je	.L8494
-	cmp	rax, 9
-	je	.L8495
-	cmp	rax, 10
-	je	.L8496
-	cmp	rax, 11
-	je	.L8497
-	cmp	rax, 12
-	je	.L8498
-	cmp	rax, 13
 	je	.L8499
-	cmp	rax, 14
+	cmp	rax, 2
 	je	.L8500
-	cmp	rax, 15
+	cmp	rax, 3
 	je	.L8501
-	cmp	rax, 16
+	cmp	rax, 4
 	je	.L8502
-	cmp	rax, 17
+	cmp	rax, 5
 	je	.L8503
-	cmp	rax, 18
+	cmp	rax, 6
 	je	.L8504
-	cmp	rax, 19
+	cmp	rax, 7
 	je	.L8505
-	cmp	rax, 20
+	cmp	rax, 8
 	je	.L8506
-	cmp	rax, 21
+	cmp	rax, 9
 	je	.L8507
-	cmp	rax, 22
+	cmp	rax, 10
 	je	.L8508
-	cmp	rax, 23
+	cmp	rax, 11
 	je	.L8509
-	cmp	rax, 24
+	cmp	rax, 12
 	je	.L8510
-	cmp	rax, 25
+	cmp	rax, 13
 	je	.L8511
-	cmp	rax, 26
+	cmp	rax, 14
 	je	.L8512
-	cmp	rax, 27
+	cmp	rax, 15
 	je	.L8513
-	cmp	rax, 28
+	cmp	rax, 16
 	je	.L8514
-	cmp	rax, 29
+	cmp	rax, 17
 	je	.L8515
-	cmp	rax, 30
+	cmp	rax, 18
 	je	.L8516
-	cmp	rax, 31
+	cmp	rax, 19
 	je	.L8517
-	cmp	rax, 32
+	cmp	rax, 20
 	je	.L8518
-	cmp	rax, 33
+	cmp	rax, 21
 	je	.L8519
-	cmp	rax, 34
+	cmp	rax, 22
 	je	.L8520
-	cmp	rax, 35
+	cmp	rax, 23
 	je	.L8521
-	cmp	rax, 36
+	cmp	rax, 24
 	je	.L8522
-	cmp	rax, 37
+	cmp	rax, 25
 	je	.L8523
-	cmp	rax, 38
+	cmp	rax, 26
 	je	.L8524
-	cmp	rax, 39
+	cmp	rax, 27
 	je	.L8525
-	cmp	rax, 40
+	cmp	rax, 28
 	je	.L8526
-	cmp	rax, 41
+	cmp	rax, 29
 	je	.L8527
-	cmp	rax, 42
+	cmp	rax, 30
 	je	.L8528
-	cmp	rax, 43
+	cmp	rax, 31
 	je	.L8529
-	cmp	rax, 44
+	cmp	rax, 32
 	je	.L8530
-	cmp	rax, 45
+	cmp	rax, 33
 	je	.L8531
-	cmp	rax, 46
+	cmp	rax, 34
 	je	.L8532
-	cmp	rax, 47
+	cmp	rax, 35
 	je	.L8533
-	cmp	rax, 48
+	cmp	rax, 36
 	je	.L8534
-	cmp	rax, 49
+	cmp	rax, 37
 	je	.L8535
-	cmp	rax, 50
+	cmp	rax, 38
 	je	.L8536
-	cmp	rax, 51
+	cmp	rax, 39
 	je	.L8537
-	cmp	rax, 52
+	cmp	rax, 40
 	je	.L8538
-	cmp	rax, 53
+	cmp	rax, 41
 	je	.L8539
-	cmp	rax, 54
+	cmp	rax, 42
 	je	.L8540
-	cmp	rax, 55
+	cmp	rax, 43
 	je	.L8541
-	cmp	rax, 56
+	cmp	rax, 44
 	je	.L8542
-	cmp	rax, 57
+	cmp	rax, 45
 	je	.L8543
-	cmp	rax, 58
+	cmp	rax, 46
 	je	.L8544
-	cmp	rax, 59
+	cmp	rax, 47
 	je	.L8545
-	cmp	rax, 60
+	cmp	rax, 48
 	je	.L8546
-	cmp	rax, 61
+	cmp	rax, 49
 	je	.L8547
-	cmp	rax, 62
+	cmp	rax, 50
 	je	.L8548
-	cmp	rax, 63
+	cmp	rax, 51
 	je	.L8549
-	cmp	rax, 64
+	cmp	rax, 52
 	je	.L8550
-	cmp	rax, 65
+	cmp	rax, 53
 	je	.L8551
-	cmp	rax, 66
+	cmp	rax, 54
 	je	.L8552
-	cmp	rax, 67
+	cmp	rax, 55
 	je	.L8553
-	cmp	rax, 68
+	cmp	rax, 56
 	je	.L8554
-	cmp	rax, 69
+	cmp	rax, 57
 	je	.L8555
-	cmp	rax, 70
+	cmp	rax, 58
 	je	.L8556
-	cmp	rax, 71
+	cmp	rax, 59
 	je	.L8557
-	cmp	rax, 72
+	cmp	rax, 60
 	je	.L8558
-	cmp	rax, 73
+	cmp	rax, 61
 	je	.L8559
-	cmp	rax, 74
+	cmp	rax, 62
 	je	.L8560
-	cmp	rax, 75
+	cmp	rax, 63
 	je	.L8561
-	cmp	rax, 76
+	cmp	rax, 64
 	je	.L8562
-	cmp	rax, 77
+	cmp	rax, 65
 	je	.L8563
-	cmp	rax, 78
+	cmp	rax, 66
 	je	.L8564
-	cmp	rax, 79
+	cmp	rax, 67
 	je	.L8565
-	cmp	rax, 80
+	cmp	rax, 68
 	je	.L8566
-	cmp	rax, 81
+	cmp	rax, 69
 	je	.L8567
-	cmp	rax, 82
+	cmp	rax, 70
 	je	.L8568
-	cmp	rax, 83
+	cmp	rax, 71
 	je	.L8569
-	cmp	rax, 84
+	cmp	rax, 72
 	je	.L8570
-	cmp	rax, 85
+	cmp	rax, 73
 	je	.L8571
-	cmp	rax, 86
+	cmp	rax, 74
 	je	.L8572
-	cmp	rax, 87
+	cmp	rax, 75
 	je	.L8573
-	cmp	rax, 88
+	cmp	rax, 76
 	je	.L8574
-	cmp	rax, 89
+	cmp	rax, 77
 	je	.L8575
-	cmp	rax, 90
+	cmp	rax, 78
 	je	.L8576
-	cmp	rax, 91
+	cmp	rax, 79
 	je	.L8577
-	cmp	rax, 92
+	cmp	rax, 80
 	je	.L8578
-	cmp	rax, 93
+	cmp	rax, 81
 	je	.L8579
-	cmp	rax, 94
+	cmp	rax, 82
 	je	.L8580
-	cmp	rax, 95
+	cmp	rax, 83
 	je	.L8581
-	cmp	rax, 96
+	cmp	rax, 84
 	je	.L8582
-	cmp	rax, 97
+	cmp	rax, 85
 	je	.L8583
-	cmp	rax, 98
+	cmp	rax, 86
 	je	.L8584
-	cmp	rax, 99
+	cmp	rax, 87
 	je	.L8585
-	cmp	rax, 100
+	cmp	rax, 88
 	je	.L8586
-	cmp	rax, 101
+	cmp	rax, 89
 	je	.L8587
-	cmp	rax, 102
+	cmp	rax, 90
 	je	.L8588
-	cmp	rax, 103
+	cmp	rax, 91
 	je	.L8589
-	cmp	rax, 104
+	cmp	rax, 92
 	je	.L8590
-	cmp	rax, 105
+	cmp	rax, 93
 	je	.L8591
-	cmp	rax, 106
+	cmp	rax, 94
 	je	.L8592
-	cmp	rax, 107
+	cmp	rax, 95
 	je	.L8593
-	cmp	rax, 108
+	cmp	rax, 96
 	je	.L8594
-	cmp	rax, 109
+	cmp	rax, 97
 	je	.L8595
-	cmp	rax, 110
+	cmp	rax, 98
 	je	.L8596
-	cmp	rax, 111
+	cmp	rax, 99
 	je	.L8597
-	cmp	rax, 112
+	cmp	rax, 100
 	je	.L8598
-	cmp	rax, 113
+	cmp	rax, 101
 	je	.L8599
-	cmp	rax, 114
+	cmp	rax, 102
 	je	.L8600
-	cmp	rax, 115
+	cmp	rax, 103
 	je	.L8601
-	cmp	rax, 116
+	cmp	rax, 104
 	je	.L8602
-	cmp	rax, 117
+	cmp	rax, 105
 	je	.L8603
-	cmp	rax, 118
+	cmp	rax, 106
 	je	.L8604
-	cmp	rax, 119
+	cmp	rax, 107
 	je	.L8605
-	cmp	rax, 120
+	cmp	rax, 108
 	je	.L8606
-	cmp	rax, 121
+	cmp	rax, 109
 	je	.L8607
-	cmp	rax, 122
+	cmp	rax, 110
 	je	.L8608
-	cmp	rax, 123
+	cmp	rax, 111
 	je	.L8609
-	cmp	rax, 124
+	cmp	rax, 112
 	je	.L8610
-	cmp	rax, 125
+	cmp	rax, 113
 	je	.L8611
-	cmp	rax, 126
+	cmp	rax, 114
 	je	.L8612
-	cmp	rax, 127
+	cmp	rax, 115
 	je	.L8613
-	cmp	rax, 128
+	cmp	rax, 116
 	je	.L8614
-	cmp	rax, 129
+	cmp	rax, 117
 	je	.L8615
-	cmp	rax, 130
+	cmp	rax, 118
 	je	.L8616
-	cmp	rax, 131
+	cmp	rax, 119
 	je	.L8617
-	cmp	rax, 132
+	cmp	rax, 120
 	je	.L8618
-	cmp	rax, 133
+	cmp	rax, 121
 	je	.L8619
-	cmp	rax, 134
+	cmp	rax, 122
 	je	.L8620
-	cmp	rax, 135
+	cmp	rax, 123
 	je	.L8621
-	cmp	rax, 136
+	cmp	rax, 124
 	je	.L8622
-	cmp	rax, 137
+	cmp	rax, 125
 	je	.L8623
-	cmp	rax, 138
+	cmp	rax, 126
 	je	.L8624
-	cmp	rax, 139
+	cmp	rax, 127
 	je	.L8625
-	cmp	rax, 140
+	cmp	rax, 128
 	je	.L8626
-	cmp	rax, 141
+	cmp	rax, 129
 	je	.L8627
-	cmp	rax, 142
+	cmp	rax, 130
 	je	.L8628
-	cmp	rax, 143
+	cmp	rax, 131
 	je	.L8629
-	cmp	rax, 144
+	cmp	rax, 132
 	je	.L8630
-	cmp	rax, 145
+	cmp	rax, 133
 	je	.L8631
-	cmp	rax, 146
+	cmp	rax, 134
 	je	.L8632
-	cmp	rax, 147
+	cmp	rax, 135
 	je	.L8633
-	cmp	rax, 148
+	cmp	rax, 136
 	je	.L8634
-	cmp	rax, 149
+	cmp	rax, 137
 	je	.L8635
-	cmp	rax, 150
+	cmp	rax, 138
 	je	.L8636
-	cmp	rax, 151
+	cmp	rax, 139
 	je	.L8637
-	cmp	rax, 152
+	cmp	rax, 140
 	je	.L8638
-	cmp	rax, 153
+	cmp	rax, 141
 	je	.L8639
-	cmp	rax, 154
+	cmp	rax, 142
 	je	.L8640
-	cmp	rax, 155
+	cmp	rax, 143
 	je	.L8641
-	cmp	rax, 156
+	cmp	rax, 144
 	je	.L8642
-	cmp	rax, 157
+	cmp	rax, 145
 	je	.L8643
-	cmp	rax, 158
+	cmp	rax, 146
 	je	.L8644
-	cmp	rax, 159
+	cmp	rax, 147
 	je	.L8645
-	cmp	rax, 160
+	cmp	rax, 148
 	je	.L8646
-	cmp	rax, 161
+	cmp	rax, 149
 	je	.L8647
-	cmp	rax, 162
+	cmp	rax, 150
 	je	.L8648
-	cmp	rax, 163
+	cmp	rax, 151
 	je	.L8649
-	cmp	rax, 164
+	cmp	rax, 152
 	je	.L8650
-	cmp	rax, 165
+	cmp	rax, 153
 	je	.L8651
-	cmp	rax, 166
+	cmp	rax, 154
 	je	.L8652
-	cmp	rax, 167
+	cmp	rax, 155
 	je	.L8653
-	cmp	rax, 168
+	cmp	rax, 156
 	je	.L8654
-	cmp	rax, 169
+	cmp	rax, 157
 	je	.L8655
-	cmp	rax, 170
+	cmp	rax, 158
 	je	.L8656
-	cmp	rax, 171
+	cmp	rax, 159
 	je	.L8657
-	cmp	rax, 172
+	cmp	rax, 160
 	je	.L8658
-	cmp	rax, 173
+	cmp	rax, 161
 	je	.L8659
-	cmp	rax, 174
+	cmp	rax, 162
 	je	.L8660
-	cmp	rax, 175
+	cmp	rax, 163
 	je	.L8661
-	cmp	rax, 176
+	cmp	rax, 164
 	je	.L8662
-	cmp	rax, 177
+	cmp	rax, 165
 	je	.L8663
-	cmp	rax, 178
+	cmp	rax, 166
 	je	.L8664
-	cmp	rax, 179
+	cmp	rax, 167
 	je	.L8665
-	cmp	rax, 180
+	cmp	rax, 168
 	je	.L8666
-	cmp	rax, 181
+	cmp	rax, 169
 	je	.L8667
-	cmp	rax, 182
+	cmp	rax, 170
 	je	.L8668
-	cmp	rax, 183
+	cmp	rax, 171
 	je	.L8669
-	cmp	rax, 184
+	cmp	rax, 172
 	je	.L8670
-	cmp	rax, 185
+	cmp	rax, 173
 	je	.L8671
-	cmp	rax, 186
+	cmp	rax, 174
 	je	.L8672
-	cmp	rax, 187
+	cmp	rax, 175
 	je	.L8673
-	cmp	rax, 188
+	cmp	rax, 176
 	je	.L8674
-	cmp	rax, 189
+	cmp	rax, 177
 	je	.L8675
-	cmp	rax, 190
+	cmp	rax, 178
 	je	.L8676
-	cmp	rax, 191
+	cmp	rax, 179
 	je	.L8677
-	cmp	rax, 192
+	cmp	rax, 180
 	je	.L8678
-	cmp	rax, 193
+	cmp	rax, 181
 	je	.L8679
-	cmp	rax, 194
+	cmp	rax, 182
 	je	.L8680
-	cmp	rax, 195
+	cmp	rax, 183
 	je	.L8681
-	cmp	rax, 196
+	cmp	rax, 184
 	je	.L8682
-	cmp	rax, 197
+	cmp	rax, 185
 	je	.L8683
-	cmp	rax, 198
+	cmp	rax, 186
 	je	.L8684
-	cmp	rax, 199
+	cmp	rax, 187
 	je	.L8685
-	cmp	rax, 200
+	cmp	rax, 188
 	je	.L8686
-	cmp	rax, 201
+	cmp	rax, 189
 	je	.L8687
-	cmp	rax, 202
+	cmp	rax, 190
 	je	.L8688
-	cmp	rax, 203
+	cmp	rax, 191
 	je	.L8689
-	cmp	rax, 204
+	cmp	rax, 192
 	je	.L8690
-	cmp	rax, 205
+	cmp	rax, 193
 	je	.L8691
-	cmp	rax, 206
+	cmp	rax, 194
 	je	.L8692
-	cmp	rax, 207
+	cmp	rax, 195
 	je	.L8693
-	cmp	rax, 208
+	cmp	rax, 196
 	je	.L8694
-	cmp	rax, 209
+	cmp	rax, 197
 	je	.L8695
-	cmp	rax, 210
+	cmp	rax, 198
 	je	.L8696
-	cmp	rax, 211
+	cmp	rax, 199
 	je	.L8697
-	cmp	rax, 212
+	cmp	rax, 200
 	je	.L8698
-	cmp	rax, 213
+	cmp	rax, 201
 	je	.L8699
-	cmp	rax, 214
+	cmp	rax, 202
 	je	.L8700
-	cmp	rax, 215
+	cmp	rax, 203
 	je	.L8701
-	cmp	rax, 216
+	cmp	rax, 204
 	je	.L8702
-	cmp	rax, 217
+	cmp	rax, 205
 	je	.L8703
-	cmp	rax, 218
+	cmp	rax, 206
 	je	.L8704
-	cmp	rax, 219
+	cmp	rax, 207
 	je	.L8705
-	cmp	rax, 220
+	cmp	rax, 208
 	je	.L8706
-	cmp	rax, 221
+	cmp	rax, 209
 	je	.L8707
-	cmp	rax, 222
+	cmp	rax, 210
 	je	.L8708
-	cmp	rax, 223
+	cmp	rax, 211
 	je	.L8709
-	cmp	rax, 224
+	cmp	rax, 212
 	je	.L8710
-	cmp	rax, 225
+	cmp	rax, 213
 	je	.L8711
-	cmp	rax, 226
+	cmp	rax, 214
 	je	.L8712
-	cmp	rax, 227
+	cmp	rax, 215
 	je	.L8713
-	cmp	rax, 228
+	cmp	rax, 216
 	je	.L8714
-	cmp	rax, 229
+	cmp	rax, 217
 	je	.L8715
-	cmp	rax, 230
+	cmp	rax, 218
 	je	.L8716
-	cmp	rax, 231
+	cmp	rax, 219
 	je	.L8717
-	cmp	rax, 232
+	cmp	rax, 220
 	je	.L8718
-	cmp	rax, 233
+	cmp	rax, 221
 	je	.L8719
-	cmp	rax, 234
+	cmp	rax, 222
 	je	.L8720
-	cmp	rax, 235
+	cmp	rax, 223
 	je	.L8721
-	cmp	rax, 236
+	cmp	rax, 224
 	je	.L8722
-	cmp	rax, 237
+	cmp	rax, 225
 	je	.L8723
-	cmp	rax, 238
+	cmp	rax, 226
 	je	.L8724
-	cmp	rax, 239
+	cmp	rax, 227
 	je	.L8725
-	cmp	rax, 240
+	cmp	rax, 228
 	je	.L8726
-	cmp	rax, 241
+	cmp	rax, 229
 	je	.L8727
-	cmp	rax, 242
+	cmp	rax, 230
 	je	.L8728
-	cmp	rax, 243
+	cmp	rax, 231
 	je	.L8729
-	cmp	rax, 244
+	cmp	rax, 232
 	je	.L8730
-	cmp	rax, 245
+	cmp	rax, 233
 	je	.L8731
-	cmp	rax, 246
+	cmp	rax, 234
 	je	.L8732
-	cmp	rax, 247
+	cmp	rax, 235
 	je	.L8733
-	cmp	rax, 248
+	cmp	rax, 236
 	je	.L8734
-	cmp	rax, 249
+	cmp	rax, 237
 	je	.L8735
-	cmp	rax, 250
+	cmp	rax, 238
 	je	.L8736
-	cmp	rax, 251
+	cmp	rax, 239
 	je	.L8737
-	cmp	rax, 252
+	cmp	rax, 240
 	je	.L8738
-	cmp	rax, 253
+	cmp	rax, 241
 	je	.L8739
-	cmp	rax, 254
+	cmp	rax, 242
 	je	.L8740
+	cmp	rax, 243
+	je	.L8741
+	cmp	rax, 244
+	je	.L8742
+	cmp	rax, 245
+	je	.L8743
+	cmp	rax, 246
+	je	.L8744
+	cmp	rax, 247
+	je	.L8745
+	cmp	rax, 248
+	je	.L8746
+	cmp	rax, 249
+	je	.L8747
+	cmp	rax, 250
+	je	.L8748
+	cmp	rax, 251
+	je	.L8749
+	cmp	rax, 252
+	je	.L8750
+	cmp	rax, 253
+	je	.L8751
+	cmp	rax, 254
+	je	.L8752
 	cmp	rax, 255
 	jne	.L742
 .L4099:
@@ -27313,7 +27333,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8486:
+.L8498:
 .L4600:
 	mov	esi, 12
 	lea	rdi, .LC1835[rip]
@@ -27329,7 +27349,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8740:
+.L8752:
 .L4098:
 	mov	esi, 9
 	lea	rdi, .LC1587[rip]
@@ -27345,7 +27365,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8739:
+.L8751:
 .L4096:
 	mov	esi, 5
 	lea	rdi, .LC1586[rip]
@@ -27361,7 +27381,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8738:
+.L8750:
 .L4094:
 	mov	esi, 7
 	lea	rdi, .LC1585[rip]
@@ -27377,7 +27397,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8737:
+.L8749:
 .L4092:
 	mov	esi, 6
 	lea	rdi, .LC1584[rip]
@@ -27393,7 +27413,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8736:
+.L8748:
 .L4090:
 	mov	esi, 9
 	lea	rdi, .LC1583[rip]
@@ -27409,7 +27429,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8735:
+.L8747:
 .L4088:
 	mov	esi, 7
 	lea	rdi, .LC1582[rip]
@@ -27425,7 +27445,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8734:
+.L8746:
 .L4086:
 	mov	esi, 6
 	lea	rdi, .LC1581[rip]
@@ -27441,7 +27461,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8733:
+.L8745:
 .L4084:
 	mov	esi, 1
 	lea	rdi, .LC245[rip]
@@ -27457,7 +27477,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8732:
+.L8744:
 .L4082:
 	mov	esi, 6
 	lea	rdi, .LC1580[rip]
@@ -27473,7 +27493,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8731:
+.L8743:
 .L4080:
 	mov	esi, 5
 	lea	rdi, .LC1579[rip]
@@ -27489,7 +27509,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8730:
+.L8742:
 .L4078:
 	mov	esi, 7
 	lea	rdi, .LC1578[rip]
@@ -27505,7 +27525,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8729:
+.L8741:
 .L4076:
 	mov	esi, 12
 	lea	rdi, .LC1577[rip]
@@ -27521,7 +27541,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8728:
+.L8740:
 .L4074:
 	mov	esi, 11
 	lea	rdi, .LC1576[rip]
@@ -27537,7 +27557,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8727:
+.L8739:
 .L4072:
 	mov	esi, 5
 	lea	rdi, .LC1575[rip]
@@ -27553,7 +27573,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8726:
+.L8738:
 .L4070:
 	mov	esi, 10
 	lea	rdi, .LC1574[rip]
@@ -27569,7 +27589,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8725:
+.L8737:
 .L4068:
 	mov	esi, 7
 	lea	rdi, .LC1573[rip]
@@ -27585,7 +27605,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8724:
+.L8736:
 .L4066:
 	mov	esi, 7
 	lea	rdi, .LC1572[rip]
@@ -27601,7 +27621,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8723:
+.L8735:
 .L4064:
 	mov	esi, 16
 	lea	rdi, .LC1571[rip]
@@ -27617,7 +27637,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8722:
+.L8734:
 .L4062:
 	mov	esi, 1
 	lea	rdi, .LC244[rip]
@@ -27633,7 +27653,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8721:
+.L8733:
 .L4060:
 	mov	esi, 3
 	lea	rdi, .LC1570[rip]
@@ -27649,7 +27669,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8720:
+.L8732:
 .L4058:
 	mov	esi, 3
 	lea	rdi, .LC1569[rip]
@@ -27665,7 +27685,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8719:
+.L8731:
 .L4056:
 	mov	esi, 5
 	lea	rdi, .LC1568[rip]
@@ -27681,7 +27701,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8718:
+.L8730:
 .L4054:
 	mov	esi, 9
 	lea	rdi, .LC1567[rip]
@@ -27697,7 +27717,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8717:
+.L8729:
 .L4052:
 	mov	esi, 6
 	lea	rdi, .LC1566[rip]
@@ -27713,7 +27733,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8716:
+.L8728:
 .L4050:
 	mov	esi, 5
 	lea	rdi, .LC1565[rip]
@@ -27729,7 +27749,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8715:
+.L8727:
 .L4048:
 	mov	esi, 7
 	lea	rdi, .LC1564[rip]
@@ -27745,7 +27765,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8714:
+.L8726:
 .L4046:
 	mov	esi, 4
 	lea	rdi, .LC1563[rip]
@@ -27761,7 +27781,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8713:
+.L8725:
 .L4044:
 	mov	esi, 9
 	lea	rdi, .LC1562[rip]
@@ -27777,7 +27797,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8712:
+.L8724:
 .L4042:
 	mov	esi, 8
 	lea	rdi, .LC1561[rip]
@@ -27793,7 +27813,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8711:
+.L8723:
 .L4040:
 	mov	esi, 17
 	lea	rdi, .LC1560[rip]
@@ -27809,7 +27829,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8710:
+.L8722:
 .L4038:
 	mov	esi, 10
 	lea	rdi, .LC1559[rip]
@@ -27825,7 +27845,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8709:
+.L8721:
 .L4036:
 	mov	esi, 7
 	lea	rdi, .LC1558[rip]
@@ -27841,7 +27861,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8708:
+.L8720:
 .L4034:
 	mov	esi, 4
 	lea	rdi, .LC1557[rip]
@@ -27857,7 +27877,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8707:
+.L8719:
 .L4032:
 	mov	esi, 10
 	lea	rdi, .LC1556[rip]
@@ -27873,7 +27893,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8706:
+.L8718:
 .L4030:
 	mov	esi, 7
 	lea	rdi, .LC1555[rip]
@@ -27889,7 +27909,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8705:
+.L8717:
 .L4028:
 	mov	esi, 10
 	lea	rdi, .LC1554[rip]
@@ -27905,7 +27925,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8704:
+.L8716:
 .L4026:
 	mov	esi, 17
 	lea	rdi, .LC1553[rip]
@@ -27921,7 +27941,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8703:
+.L8715:
 .L4024:
 	mov	esi, 9
 	lea	rdi, .LC1552[rip]
@@ -27937,7 +27957,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8702:
+.L8714:
 .L4022:
 	mov	esi, 7
 	lea	rdi, .LC1551[rip]
@@ -27953,7 +27973,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8701:
+.L8713:
 .L4020:
 	mov	esi, 5
 	lea	rdi, .LC1550[rip]
@@ -27969,7 +27989,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8700:
+.L8712:
 .L4018:
 	mov	esi, 8
 	lea	rdi, .LC1549[rip]
@@ -27985,7 +28005,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8699:
+.L8711:
 .L4016:
 	mov	esi, 6
 	lea	rdi, .LC1548[rip]
@@ -28001,7 +28021,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8698:
+.L8710:
 .L4014:
 	mov	esi, 5
 	lea	rdi, .LC1547[rip]
@@ -28017,7 +28037,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8697:
+.L8709:
 .L4012:
 	mov	esi, 14
 	lea	rdi, .LC1546[rip]
@@ -28033,7 +28053,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8696:
+.L8708:
 .L4010:
 	mov	esi, 12
 	lea	rdi, .LC1545[rip]
@@ -28049,7 +28069,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8695:
+.L8707:
 .L4008:
 	mov	esi, 6
 	lea	rdi, .LC1544[rip]
@@ -28065,7 +28085,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8694:
+.L8706:
 .L4006:
 	mov	esi, 10
 	lea	rdi, .LC1543[rip]
@@ -28081,7 +28101,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8693:
+.L8705:
 .L4004:
 	mov	esi, 9
 	lea	rdi, .LC1542[rip]
@@ -28097,7 +28117,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8692:
+.L8704:
 .L4002:
 	mov	esi, 3
 	lea	rdi, .LC1541[rip]
@@ -28113,7 +28133,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8691:
+.L8703:
 .L4000:
 	mov	esi, 3
 	lea	rdi, .LC1540[rip]
@@ -28129,7 +28149,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8690:
+.L8702:
 .L3998:
 	mov	esi, 3
 	lea	rdi, .LC1539[rip]
@@ -28145,7 +28165,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8689:
+.L8701:
 .L3996:
 	mov	esi, 8
 	lea	rdi, .LC1538[rip]
@@ -28161,7 +28181,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8688:
+.L8700:
 .L3994:
 	mov	esi, 11
 	lea	rdi, .LC1537[rip]
@@ -28177,7 +28197,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8687:
+.L8699:
 .L3992:
 	mov	esi, 10
 	lea	rdi, .LC1536[rip]
@@ -28193,7 +28213,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8686:
+.L8698:
 .L3990:
 	mov	esi, 8
 	lea	rdi, .LC1535[rip]
@@ -28209,7 +28229,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8685:
+.L8697:
 .L3988:
 	mov	esi, 3
 	lea	rdi, .LC1534[rip]
@@ -28225,7 +28245,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8684:
+.L8696:
 .L3986:
 	mov	esi, 9
 	lea	rdi, .LC1533[rip]
@@ -28241,7 +28261,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8683:
+.L8695:
 .L3984:
 	mov	esi, 7
 	lea	rdi, .LC1532[rip]
@@ -28257,7 +28277,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8682:
+.L8694:
 .L3982:
 	mov	esi, 4
 	lea	rdi, .LC1531[rip]
@@ -28273,7 +28293,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8681:
+.L8693:
 .L3980:
 	mov	esi, 4
 	lea	rdi, .LC1530[rip]
@@ -28289,7 +28309,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8680:
+.L8692:
 .L3978:
 	mov	esi, 7
 	lea	rdi, .LC1529[rip]
@@ -28305,7 +28325,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8679:
+.L8691:
 .L3976:
 	mov	esi, 16
 	lea	rdi, .LC1528[rip]
@@ -28321,7 +28341,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8678:
+.L8690:
 .L3974:
 	mov	esi, 17
 	lea	rdi, .LC1527[rip]
@@ -28337,7 +28357,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8677:
+.L8689:
 .L3972:
 	mov	esi, 14
 	lea	rdi, .LC1526[rip]
@@ -28353,7 +28373,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8676:
+.L8688:
 .L3970:
 	mov	esi, 8
 	lea	rdi, .LC1525[rip]
@@ -28369,7 +28389,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8675:
+.L8687:
 .L3968:
 	mov	esi, 5
 	lea	rdi, .LC1524[rip]
@@ -28385,7 +28405,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8674:
+.L8686:
 .L3966:
 	mov	esi, 6
 	lea	rdi, .LC1523[rip]
@@ -28401,7 +28421,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8673:
+.L8685:
 .L3964:
 	mov	esi, 3
 	lea	rdi, .LC1522[rip]
@@ -28417,7 +28437,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8672:
+.L8684:
 .L3962:
 	mov	esi, 4
 	lea	rdi, .LC1521[rip]
@@ -28433,7 +28453,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8671:
+.L8683:
 .L3960:
 	mov	esi, 4
 	lea	rdi, .LC1520[rip]
@@ -28449,7 +28469,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8670:
+.L8682:
 .L3958:
 	mov	esi, 4
 	lea	rdi, .LC1519[rip]
@@ -28465,7 +28485,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8669:
+.L8681:
 .L3956:
 	mov	esi, 5
 	lea	rdi, .LC1518[rip]
@@ -28481,7 +28501,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8668:
+.L8680:
 .L3954:
 	mov	esi, 6
 	lea	rdi, .LC1517[rip]
@@ -28497,7 +28517,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8667:
+.L8679:
 .L3952:
 	mov	esi, 15
 	lea	rdi, .LC1516[rip]
@@ -28513,7 +28533,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8666:
+.L8678:
 .L3950:
 	mov	esi, 11
 	lea	rdi, .LC1515[rip]
@@ -28529,7 +28549,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8665:
+.L8677:
 .L3948:
 	mov	esi, 7
 	lea	rdi, .LC1514[rip]
@@ -28545,7 +28565,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8664:
+.L8676:
 .L3946:
 	mov	esi, 7
 	lea	rdi, .LC1513[rip]
@@ -28561,7 +28581,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8663:
+.L8675:
 .L3944:
 	mov	esi, 3
 	lea	rdi, .LC1512[rip]
@@ -28577,7 +28597,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8662:
+.L8674:
 .L3942:
 	mov	esi, 2
 	lea	rdi, .LC1511[rip]
@@ -28593,7 +28613,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8661:
+.L8673:
 .L3940:
 	mov	esi, 7
 	lea	rdi, .LC1510[rip]
@@ -28609,7 +28629,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8660:
+.L8672:
 .L3938:
 	mov	esi, 10
 	lea	rdi, .LC1509[rip]
@@ -28625,7 +28645,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8659:
+.L8671:
 .L3936:
 	mov	esi, 5
 	lea	rdi, .LC1508[rip]
@@ -28641,7 +28661,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8658:
+.L8670:
 .L3934:
 	mov	esi, 5
 	lea	rdi, .LC1507[rip]
@@ -28657,7 +28677,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8657:
+.L8669:
 .L3932:
 	mov	esi, 2
 	lea	rdi, .LC1506[rip]
@@ -28673,7 +28693,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8656:
+.L8668:
 .L3930:
 	mov	esi, 3
 	lea	rdi, .LC1505[rip]
@@ -28689,7 +28709,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8655:
+.L8667:
 .L3928:
 	mov	esi, 2
 	lea	rdi, .LC1504[rip]
@@ -28705,7 +28725,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8654:
+.L8666:
 .L3926:
 	mov	esi, 11
 	lea	rdi, .LC1503[rip]
@@ -28721,7 +28741,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8653:
+.L8665:
 .L3924:
 	mov	esi, 7
 	lea	rdi, .LC1502[rip]
@@ -28737,7 +28757,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8652:
+.L8664:
 .L3922:
 	mov	esi, 3
 	lea	rdi, .LC1501[rip]
@@ -28753,7 +28773,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8651:
+.L8663:
 .L3920:
 	mov	esi, 4
 	lea	rdi, .LC1500[rip]
@@ -28769,7 +28789,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8650:
+.L8662:
 .L3918:
 	mov	esi, 5
 	lea	rdi, .LC1499[rip]
@@ -28785,7 +28805,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8649:
+.L8661:
 .L3916:
 	mov	esi, 5
 	lea	rdi, .LC1498[rip]
@@ -28801,7 +28821,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8648:
+.L8660:
 .L3914:
 	mov	esi, 7
 	lea	rdi, .LC1497[rip]
@@ -28817,7 +28837,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8647:
+.L8659:
 .L3912:
 	mov	esi, 8
 	lea	rdi, .LC1496[rip]
@@ -28833,7 +28853,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8646:
+.L8658:
 .L3910:
 	mov	esi, 12
 	lea	rdi, .LC1495[rip]
@@ -28849,7 +28869,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8645:
+.L8657:
 .L3908:
 	mov	esi, 4
 	lea	rdi, .LC1494[rip]
@@ -28865,7 +28885,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8644:
+.L8656:
 .L3906:
 	mov	esi, 6
 	lea	rdi, .LC1493[rip]
@@ -28881,7 +28901,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8643:
+.L8655:
 .L3904:
 	mov	esi, 9
 	lea	rdi, .LC1492[rip]
@@ -28897,7 +28917,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8642:
+.L8654:
 .L3902:
 	mov	esi, 10
 	lea	rdi, .LC1491[rip]
@@ -28913,7 +28933,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8641:
+.L8653:
 .L3900:
 	mov	esi, 9
 	lea	rdi, .LC1490[rip]
@@ -28929,7 +28949,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8640:
+.L8652:
 .L3898:
 	mov	esi, 8
 	lea	rdi, .LC1489[rip]
@@ -28945,7 +28965,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8639:
+.L8651:
 .L3896:
 	mov	esi, 9
 	lea	rdi, .LC1488[rip]
@@ -28961,7 +28981,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8638:
+.L8650:
 .L3894:
 	mov	esi, 7
 	lea	rdi, .LC1487[rip]
@@ -28977,7 +28997,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8637:
+.L8649:
 .L3892:
 	mov	esi, 5
 	lea	rdi, .LC1486[rip]
@@ -28993,7 +29013,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8636:
+.L8648:
 .L3890:
 	mov	esi, 12
 	lea	rdi, .LC1485[rip]
@@ -29009,7 +29029,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8635:
+.L8647:
 .L3888:
 	mov	esi, 4
 	lea	rdi, .LC1484[rip]
@@ -29025,7 +29045,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8634:
+.L8646:
 .L3886:
 	mov	esi, 7
 	lea	rdi, .LC1483[rip]
@@ -29041,7 +29061,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8633:
+.L8645:
 .L3884:
 	mov	esi, 14
 	lea	rdi, .LC1482[rip]
@@ -29057,7 +29077,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8632:
+.L8644:
 .L3882:
 	mov	esi, 6
 	lea	rdi, .LC1481[rip]
@@ -29073,7 +29093,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8631:
+.L8643:
 .L3880:
 	mov	esi, 1
 	lea	rdi, .LC243[rip]
@@ -29089,7 +29109,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8630:
+.L8642:
 .L3878:
 	mov	esi, 8
 	lea	rdi, .LC1480[rip]
@@ -29105,7 +29125,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8629:
+.L8641:
 .L3876:
 	mov	esi, 8
 	lea	rdi, .LC1479[rip]
@@ -29121,7 +29141,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8628:
+.L8640:
 .L3874:
 	mov	esi, 8
 	lea	rdi, .LC1478[rip]
@@ -29137,7 +29157,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8627:
+.L8639:
 .L3872:
 	mov	esi, 6
 	lea	rdi, .LC1477[rip]
@@ -29153,7 +29173,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8626:
+.L8638:
 .L3870:
 	mov	esi, 5
 	lea	rdi, .LC1476[rip]
@@ -29169,7 +29189,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8625:
+.L8637:
 .L3868:
 	mov	esi, 3
 	lea	rdi, .LC1475[rip]
@@ -29185,7 +29205,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8624:
+.L8636:
 .L3866:
 	mov	esi, 5
 	lea	rdi, .LC1474[rip]
@@ -29201,7 +29221,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8623:
+.L8635:
 .L3864:
 	mov	esi, 12
 	lea	rdi, .LC1473[rip]
@@ -29217,7 +29237,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8622:
+.L8634:
 .L3862:
 	mov	esi, 11
 	lea	rdi, .LC1472[rip]
@@ -29233,7 +29253,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8621:
+.L8633:
 .L3860:
 	mov	esi, 6
 	lea	rdi, .LC1471[rip]
@@ -29249,7 +29269,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8620:
+.L8632:
 .L3858:
 	mov	esi, 12
 	lea	rdi, .LC1470[rip]
@@ -29265,7 +29285,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8619:
+.L8631:
 .L3856:
 	mov	esi, 10
 	lea	rdi, .LC1469[rip]
@@ -29281,7 +29301,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8618:
+.L8630:
 .L3854:
 	mov	esi, 7
 	lea	rdi, .LC1468[rip]
@@ -29297,7 +29317,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8617:
+.L8629:
 .L3852:
 	mov	esi, 5
 	lea	rdi, .LC1467[rip]
@@ -29313,7 +29333,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8616:
+.L8628:
 .L3850:
 	mov	esi, 7
 	lea	rdi, .LC1466[rip]
@@ -29329,7 +29349,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8615:
+.L8627:
 .L3848:
 	mov	esi, 2
 	lea	rdi, .LC1465[rip]
@@ -29345,7 +29365,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8614:
+.L8626:
 .L3846:
 	mov	esi, 7
 	lea	rdi, .LC1464[rip]
@@ -29361,7 +29381,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8613:
+.L8625:
 .L3844:
 	mov	esi, 8
 	lea	rdi, .LC1463[rip]
@@ -29377,7 +29397,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8612:
+.L8624:
 .L3842:
 	mov	esi, 6
 	lea	rdi, .LC1462[rip]
@@ -29393,7 +29413,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8611:
+.L8623:
 .L3840:
 	mov	esi, 8
 	lea	rdi, .LC1461[rip]
@@ -29409,7 +29429,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8610:
+.L8622:
 .L3838:
 	mov	esi, 4
 	lea	rdi, .LC1460[rip]
@@ -29425,7 +29445,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8609:
+.L8621:
 .L3836:
 	mov	esi, 5
 	lea	rdi, .LC1459[rip]
@@ -29441,7 +29461,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8608:
+.L8620:
 .L3834:
 	mov	esi, 4
 	lea	rdi, .LC1458[rip]
@@ -29457,7 +29477,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8607:
+.L8619:
 .L3832:
 	mov	esi, 2
 	lea	rdi, .LC1457[rip]
@@ -29473,7 +29493,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8606:
+.L8618:
 .L3830:
 	mov	esi, 7
 	lea	rdi, .LC1456[rip]
@@ -29489,7 +29509,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8605:
+.L8617:
 .L3828:
 	mov	esi, 7
 	lea	rdi, .LC1455[rip]
@@ -29505,7 +29525,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8604:
+.L8616:
 .L3826:
 	mov	esi, 5
 	lea	rdi, .LC1454[rip]
@@ -29521,7 +29541,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8603:
+.L8615:
 .L3824:
 	mov	esi, 10
 	lea	rdi, .LC1453[rip]
@@ -29537,7 +29557,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8602:
+.L8614:
 .L3822:
 	mov	esi, 6
 	lea	rdi, .LC1452[rip]
@@ -29553,7 +29573,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8601:
+.L8613:
 .L3820:
 	mov	esi, 3
 	lea	rdi, .LC1451[rip]
@@ -29569,7 +29589,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8600:
+.L8612:
 .L3818:
 	mov	esi, 2
 	lea	rdi, .LC1450[rip]
@@ -29585,7 +29605,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8599:
+.L8611:
 .L3816:
 	mov	esi, 12
 	lea	rdi, .LC1449[rip]
@@ -29601,7 +29621,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8598:
+.L8610:
 .L3814:
 	mov	esi, 7
 	lea	rdi, .LC1448[rip]
@@ -29617,7 +29637,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8597:
+.L8609:
 .L3812:
 	mov	esi, 3
 	lea	rdi, .LC1447[rip]
@@ -29633,7 +29653,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8596:
+.L8608:
 .L3810:
 	mov	esi, 6
 	lea	rdi, .LC1446[rip]
@@ -29649,7 +29669,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8595:
+.L8607:
 .L3808:
 	mov	esi, 15
 	lea	rdi, .LC1445[rip]
@@ -29665,7 +29685,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8594:
+.L8606:
 .L3806:
 	mov	esi, 6
 	lea	rdi, .LC1444[rip]
@@ -29681,7 +29701,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8593:
+.L8605:
 .L3804:
 	mov	esi, 1
 	lea	rdi, .LC242[rip]
@@ -29697,7 +29717,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8592:
+.L8604:
 .L3802:
 	mov	esi, 14
 	lea	rdi, .LC1443[rip]
@@ -29713,7 +29733,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8591:
+.L8603:
 .L3800:
 	mov	esi, 7
 	lea	rdi, .LC1442[rip]
@@ -29729,7 +29749,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8590:
+.L8602:
 .L3798:
 	mov	esi, 15
 	lea	rdi, .LC1441[rip]
@@ -29745,7 +29765,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8589:
+.L8601:
 .L3796:
 	mov	esi, 6
 	lea	rdi, .LC1440[rip]
@@ -29761,7 +29781,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8588:
+.L8600:
 .L3794:
 	mov	esi, 5
 	lea	rdi, .LC1439[rip]
@@ -29777,7 +29797,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8587:
+.L8599:
 .L3792:
 	mov	esi, 4
 	lea	rdi, .LC1438[rip]
@@ -29793,7 +29813,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8586:
+.L8598:
 .L3790:
 	mov	esi, 5
 	lea	rdi, .LC1437[rip]
@@ -29809,7 +29829,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8585:
+.L8597:
 .L3788:
 	mov	esi, 3
 	lea	rdi, .LC1436[rip]
@@ -29825,7 +29845,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8584:
+.L8596:
 .L3786:
 	mov	esi, 12
 	lea	rdi, .LC1435[rip]
@@ -29841,7 +29861,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8583:
+.L8595:
 .L3784:
 	mov	esi, 9
 	lea	rdi, .LC1434[rip]
@@ -29857,7 +29877,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8582:
+.L8594:
 .L3782:
 	mov	esi, 14
 	lea	rdi, .LC1433[rip]
@@ -29873,7 +29893,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8581:
+.L8593:
 .L3780:
 	mov	esi, 10
 	lea	rdi, .LC1432[rip]
@@ -29889,7 +29909,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8580:
+.L8592:
 .L3778:
 	mov	esi, 9
 	lea	rdi, .LC1431[rip]
@@ -29905,7 +29925,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8579:
+.L8591:
 .L3776:
 	mov	esi, 14
 	lea	rdi, .LC1430[rip]
@@ -29921,7 +29941,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8578:
+.L8590:
 .L3774:
 	mov	esi, 6
 	lea	rdi, .LC1429[rip]
@@ -29937,7 +29957,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8577:
+.L8589:
 .L3772:
 	mov	esi, 13
 	lea	rdi, .LC1428[rip]
@@ -29953,7 +29973,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8576:
+.L8588:
 .L3770:
 	mov	esi, 13
 	lea	rdi, .LC1427[rip]
@@ -29969,7 +29989,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8575:
+.L8587:
 .L3768:
 	mov	esi, 8
 	lea	rdi, .LC1426[rip]
@@ -29985,7 +30005,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8574:
+.L8586:
 .L3766:
 	mov	esi, 4
 	lea	rdi, .LC1425[rip]
@@ -30001,7 +30021,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8573:
+.L8585:
 .L3764:
 	mov	esi, 15
 	lea	rdi, .LC1424[rip]
@@ -30017,7 +30037,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8572:
+.L8584:
 .L3762:
 	mov	esi, 5
 	lea	rdi, .LC1423[rip]
@@ -30033,7 +30053,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8571:
+.L8583:
 .L3760:
 	mov	esi, 8
 	lea	rdi, .LC1422[rip]
@@ -30049,7 +30069,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8570:
+.L8582:
 .L3758:
 	mov	esi, 8
 	lea	rdi, .LC1421[rip]
@@ -30065,7 +30085,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8569:
+.L8581:
 .L3756:
 	mov	esi, 13
 	lea	rdi, .LC1420[rip]
@@ -30081,7 +30101,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8568:
+.L8580:
 .L3754:
 	mov	esi, 2
 	lea	rdi, .LC1419[rip]
@@ -30097,7 +30117,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8567:
+.L8579:
 .L3752:
 	mov	esi, 3
 	lea	rdi, .LC1418[rip]
@@ -30113,7 +30133,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8566:
+.L8578:
 .L3750:
 	mov	esi, 4
 	lea	rdi, .LC1417[rip]
@@ -30129,7 +30149,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8565:
+.L8577:
 .L3748:
 	mov	esi, 3
 	lea	rdi, .LC1416[rip]
@@ -30145,7 +30165,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8564:
+.L8576:
 .L3746:
 	mov	esi, 11
 	lea	rdi, .LC1415[rip]
@@ -30161,7 +30181,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8563:
+.L8575:
 .L3744:
 	mov	esi, 8
 	lea	rdi, .LC1414[rip]
@@ -30177,7 +30197,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8562:
+.L8574:
 .L3742:
 	mov	esi, 13
 	lea	rdi, .LC1413[rip]
@@ -30193,7 +30213,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8561:
+.L8573:
 .L3740:
 	mov	esi, 4
 	lea	rdi, .LC1412[rip]
@@ -30209,7 +30229,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8560:
+.L8572:
 .L3738:
 	mov	esi, 5
 	lea	rdi, .LC1411[rip]
@@ -30225,7 +30245,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8559:
+.L8571:
 .L3736:
 	mov	esi, 14
 	lea	rdi, .LC1410[rip]
@@ -30241,7 +30261,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8558:
+.L8570:
 .L3734:
 	mov	esi, 7
 	lea	rdi, .LC1409[rip]
@@ -30257,7 +30277,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8557:
+.L8569:
 .L3732:
 	mov	esi, 13
 	lea	rdi, .LC1408[rip]
@@ -30273,7 +30293,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8556:
+.L8568:
 .L3730:
 	mov	esi, 6
 	lea	rdi, .LC1407[rip]
@@ -30289,7 +30309,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8555:
+.L8567:
 .L3728:
 	mov	esi, 8
 	lea	rdi, .LC1406[rip]
@@ -30305,7 +30325,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8554:
+.L8566:
 .L3726:
 	mov	esi, 4
 	lea	rdi, .LC1405[rip]
@@ -30321,7 +30341,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8553:
+.L8565:
 .L3724:
 	mov	esi, 1
 	lea	rdi, .LC241[rip]
@@ -30337,7 +30357,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8552:
+.L8564:
 .L3722:
 	mov	esi, 8
 	lea	rdi, .LC1404[rip]
@@ -30353,7 +30373,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8551:
+.L8563:
 .L3720:
 	mov	esi, 8
 	lea	rdi, .LC1403[rip]
@@ -30369,7 +30389,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8550:
+.L8562:
 .L3718:
 	mov	esi, 7
 	lea	rdi, .LC1402[rip]
@@ -30385,7 +30405,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8549:
+.L8561:
 .L3716:
 	mov	esi, 6
 	lea	rdi, .LC1401[rip]
@@ -30401,7 +30421,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8548:
+.L8560:
 .L3714:
 	mov	esi, 6
 	lea	rdi, .LC1400[rip]
@@ -30417,7 +30437,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8547:
+.L8559:
 .L3712:
 	mov	esi, 6
 	lea	rdi, .LC1399[rip]
@@ -30433,7 +30453,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8546:
+.L8558:
 .L3710:
 	mov	esi, 4
 	lea	rdi, .LC1398[rip]
@@ -30449,7 +30469,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8545:
+.L8557:
 .L3708:
 	mov	esi, 4
 	lea	rdi, .LC1397[rip]
@@ -30465,7 +30485,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8544:
+.L8556:
 .L3706:
 	mov	esi, 5
 	lea	rdi, .LC1396[rip]
@@ -30481,7 +30501,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8543:
+.L8555:
 .L3704:
 	mov	esi, 6
 	lea	rdi, .LC1395[rip]
@@ -30497,7 +30517,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8542:
+.L8554:
 .L3702:
 	mov	esi, 11
 	lea	rdi, .LC1394[rip]
@@ -30513,7 +30533,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8541:
+.L8553:
 .L3700:
 	mov	esi, 5
 	lea	rdi, .LC1393[rip]
@@ -30529,7 +30549,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8540:
+.L8552:
 .L3698:
 	mov	esi, 7
 	lea	rdi, .LC1392[rip]
@@ -30545,7 +30565,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8539:
+.L8551:
 .L3696:
 	mov	esi, 4
 	lea	rdi, .LC1391[rip]
@@ -30561,7 +30581,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8538:
+.L8550:
 .L3694:
 	mov	esi, 3
 	lea	rdi, .LC1390[rip]
@@ -30577,7 +30597,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8537:
+.L8549:
 .L3692:
 	mov	esi, 7
 	lea	rdi, .LC1389[rip]
@@ -30593,7 +30613,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8536:
+.L8548:
 .L3690:
 	mov	esi, 8
 	lea	rdi, .LC1388[rip]
@@ -30609,7 +30629,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8535:
+.L8547:
 .L3688:
 	mov	esi, 5
 	lea	rdi, .LC1387[rip]
@@ -30625,7 +30645,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8534:
+.L8546:
 .L3686:
 	mov	esi, 4
 	lea	rdi, .LC1386[rip]
@@ -30641,7 +30661,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8533:
+.L8545:
 .L3684:
 	mov	esi, 3
 	lea	rdi, .LC1385[rip]
@@ -30657,7 +30677,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8532:
+.L8544:
 .L3682:
 	mov	esi, 3
 	lea	rdi, .LC1384[rip]
@@ -30673,7 +30693,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8531:
+.L8543:
 .L3680:
 	mov	esi, 5
 	lea	rdi, .LC1383[rip]
@@ -30689,7 +30709,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8530:
+.L8542:
 .L3678:
 	mov	esi, 3
 	lea	rdi, .LC1382[rip]
@@ -30705,7 +30725,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8529:
+.L8541:
 .L3676:
 	mov	esi, 6
 	lea	rdi, .LC1381[rip]
@@ -30721,7 +30741,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8528:
+.L8540:
 .L3674:
 	mov	esi, 13
 	lea	rdi, .LC1380[rip]
@@ -30737,7 +30757,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8527:
+.L8539:
 .L3672:
 	mov	esi, 11
 	lea	rdi, .LC1379[rip]
@@ -30753,7 +30773,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8526:
+.L8538:
 .L3670:
 	mov	esi, 3
 	lea	rdi, .LC1378[rip]
@@ -30769,7 +30789,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8525:
+.L8537:
 .L3668:
 	mov	esi, 3
 	lea	rdi, .LC1377[rip]
@@ -30785,7 +30805,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8524:
+.L8536:
 .L3666:
 	mov	esi, 10
 	lea	rdi, .LC1376[rip]
@@ -30801,7 +30821,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8523:
+.L8535:
 .L3664:
 	mov	esi, 6
 	lea	rdi, .LC1375[rip]
@@ -30817,7 +30837,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8522:
+.L8534:
 .L3662:
 	mov	esi, 9
 	lea	rdi, .LC1374[rip]
@@ -30833,7 +30853,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8521:
+.L8533:
 .L3660:
 	mov	esi, 6
 	lea	rdi, .LC1373[rip]
@@ -30849,7 +30869,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8520:
+.L8532:
 .L3658:
 	mov	esi, 8
 	lea	rdi, .LC1372[rip]
@@ -30865,7 +30885,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8519:
+.L8531:
 .L3656:
 	mov	esi, 9
 	lea	rdi, .LC1371[rip]
@@ -30881,7 +30901,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8518:
+.L8530:
 .L3654:
 	mov	esi, 9
 	lea	rdi, .LC1370[rip]
@@ -30897,7 +30917,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8517:
+.L8529:
 .L3652:
 	mov	esi, 7
 	lea	rdi, .LC1369[rip]
@@ -30913,7 +30933,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8516:
+.L8528:
 .L3650:
 	mov	esi, 5
 	lea	rdi, .LC1368[rip]
@@ -30929,7 +30949,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8515:
+.L8527:
 .L3648:
 	mov	esi, 4
 	lea	rdi, .LC1367[rip]
@@ -30945,7 +30965,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8514:
+.L8526:
 .L3646:
 	mov	esi, 5
 	lea	rdi, .LC1366[rip]
@@ -30961,7 +30981,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8513:
+.L8525:
 .L3644:
 	mov	esi, 11
 	lea	rdi, .LC1365[rip]
@@ -30977,7 +30997,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8512:
+.L8524:
 .L3642:
 	mov	esi, 6
 	lea	rdi, .LC1364[rip]
@@ -30993,7 +31013,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8511:
+.L8523:
 .L3640:
 	mov	esi, 7
 	lea	rdi, .LC1363[rip]
@@ -31009,7 +31029,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8510:
+.L8522:
 .L3638:
 	mov	esi, 17
 	lea	rdi, .LC1362[rip]
@@ -31025,7 +31045,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8509:
+.L8521:
 .L3636:
 	mov	esi, 17
 	lea	rdi, .LC1361[rip]
@@ -31041,7 +31061,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8508:
+.L8520:
 .L3634:
 	mov	esi, 5
 	lea	rdi, .LC1360[rip]
@@ -31057,7 +31077,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8507:
+.L8519:
 .L3632:
 	mov	esi, 3
 	lea	rdi, .LC1359[rip]
@@ -31073,7 +31093,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8506:
+.L8518:
 .L3630:
 	mov	esi, 15
 	lea	rdi, .LC1358[rip]
@@ -31089,7 +31109,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8505:
+.L8517:
 .L3628:
 	mov	esi, 9
 	lea	rdi, .LC1357[rip]
@@ -31105,7 +31125,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8504:
+.L8516:
 .L3626:
 	mov	esi, 10
 	lea	rdi, .LC1356[rip]
@@ -31121,7 +31141,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8503:
+.L8515:
 .L3624:
 	mov	esi, 13
 	lea	rdi, .LC1355[rip]
@@ -31137,7 +31157,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8502:
+.L8514:
 .L3622:
 	mov	esi, 17
 	lea	rdi, .LC1354[rip]
@@ -31153,7 +31173,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8501:
+.L8513:
 .L3620:
 	mov	esi, 12
 	lea	rdi, .LC1353[rip]
@@ -31169,7 +31189,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8500:
+.L8512:
 .L3618:
 	mov	esi, 10
 	lea	rdi, .LC1352[rip]
@@ -31185,7 +31205,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8499:
+.L8511:
 .L3616:
 	mov	esi, 3
 	lea	rdi, .LC1351[rip]
@@ -31201,7 +31221,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8498:
+.L8510:
 .L3614:
 	mov	esi, 6
 	lea	rdi, .LC1350[rip]
@@ -31217,7 +31237,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8497:
+.L8509:
 .L3612:
 	mov	esi, 12
 	lea	rdi, .LC1349[rip]
@@ -31233,7 +31253,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8496:
+.L8508:
 .L3610:
 	mov	esi, 8
 	lea	rdi, .LC1348[rip]
@@ -31249,7 +31269,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8495:
+.L8507:
 .L3608:
 	mov	esi, 6
 	lea	rdi, .LC1347[rip]
@@ -31265,7 +31285,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8494:
+.L8506:
 .L3606:
 	mov	esi, 6
 	lea	rdi, .LC1346[rip]
@@ -31281,7 +31301,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8493:
+.L8505:
 .L3604:
 	mov	esi, 6
 	lea	rdi, .LC1345[rip]
@@ -31297,7 +31317,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8492:
+.L8504:
 .L3602:
 	mov	esi, 4
 	lea	rdi, .LC1344[rip]
@@ -31313,7 +31333,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8491:
+.L8503:
 .L3600:
 	mov	esi, 6
 	lea	rdi, .LC1343[rip]
@@ -31329,7 +31349,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8490:
+.L8502:
 .L3598:
 	mov	esi, 6
 	lea	rdi, .LC1342[rip]
@@ -31345,7 +31365,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8489:
+.L8501:
 .L3596:
 	mov	esi, 6
 	lea	rdi, .LC1341[rip]
@@ -31361,7 +31381,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8488:
+.L8500:
 .L3594:
 	mov	esi, 4
 	lea	rdi, .LC1340[rip]
@@ -31377,7 +31397,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8487:
+.L8499:
 .L3592:
 	mov	esi, 6
 	lea	rdi, .LC1339[rip]
@@ -31408,7 +31428,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8485:
+.L8497:
 .L4598:
 	mov	esi, 9
 	lea	rdi, .LC1834[rip]
@@ -31424,7 +31444,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8484:
+.L8496:
 .L4596:
 	mov	esi, 7
 	lea	rdi, .LC1833[rip]
@@ -31440,7 +31460,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8483:
+.L8495:
 .L4594:
 	mov	esi, 4
 	lea	rdi, .LC1832[rip]
@@ -31456,7 +31476,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8482:
+.L8494:
 .L4592:
 	mov	esi, 4
 	lea	rdi, .LC1831[rip]
@@ -31472,7 +31492,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8481:
+.L8493:
 .L4590:
 	mov	esi, 9
 	lea	rdi, .LC1830[rip]
@@ -31488,7 +31508,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8480:
+.L8492:
 .L4588:
 	mov	esi, 8
 	lea	rdi, .LC1829[rip]
@@ -31504,7 +31524,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8479:
+.L8491:
 .L4586:
 	mov	esi, 4
 	lea	rdi, .LC1828[rip]
@@ -31520,7 +31540,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8478:
+.L8490:
 .L4584:
 	mov	esi, 8
 	lea	rdi, .LC1827[rip]
@@ -31536,7 +31556,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8477:
+.L8489:
 .L4582:
 	mov	esi, 6
 	lea	rdi, .LC1826[rip]
@@ -31552,7 +31572,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8476:
+.L8488:
 .L4580:
 	mov	esi, 4
 	lea	rdi, .LC1825[rip]
@@ -31568,7 +31588,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8475:
+.L8487:
 .L4578:
 	mov	esi, 4
 	lea	rdi, .LC1824[rip]
@@ -31584,7 +31604,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8474:
+.L8486:
 .L4576:
 	mov	esi, 3
 	lea	rdi, .LC1823[rip]
@@ -31600,7 +31620,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8473:
+.L8485:
 .L4574:
 	mov	esi, 8
 	lea	rdi, .LC1822[rip]
@@ -31616,7 +31636,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8472:
+.L8484:
 .L4572:
 	mov	esi, 5
 	lea	rdi, .LC1821[rip]
@@ -31632,7 +31652,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8471:
+.L8483:
 .L4570:
 	mov	esi, 5
 	lea	rdi, .LC1820[rip]
@@ -31648,7 +31668,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8470:
+.L8482:
 .L4568:
 	mov	esi, 3
 	lea	rdi, .LC1819[rip]
@@ -31664,7 +31684,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8469:
+.L8481:
 .L4566:
 	mov	esi, 1
 	lea	rdi, .LC247[rip]
@@ -31680,7 +31700,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8468:
+.L8480:
 .L4564:
 	mov	esi, 6
 	lea	rdi, .LC1818[rip]
@@ -31696,7 +31716,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8467:
+.L8479:
 .L4562:
 	mov	esi, 3
 	lea	rdi, .LC1817[rip]
@@ -31712,7 +31732,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8466:
+.L8478:
 .L4560:
 	mov	esi, 12
 	lea	rdi, .LC1816[rip]
@@ -31728,7 +31748,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8465:
+.L8477:
 .L4558:
 	mov	esi, 4
 	lea	rdi, .LC1815[rip]
@@ -31744,7 +31764,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8464:
+.L8476:
 .L4556:
 	mov	esi, 8
 	lea	rdi, .LC1814[rip]
@@ -31760,7 +31780,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8463:
+.L8475:
 .L4554:
 	mov	esi, 6
 	lea	rdi, .LC1813[rip]
@@ -31776,7 +31796,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8462:
+.L8474:
 .L4552:
 	mov	esi, 4
 	lea	rdi, .LC1812[rip]
@@ -31792,7 +31812,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8461:
+.L8473:
 .L4550:
 	mov	esi, 11
 	lea	rdi, .LC1811[rip]
@@ -31808,7 +31828,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8460:
+.L8472:
 .L4548:
 	mov	esi, 8
 	lea	rdi, .LC1810[rip]
@@ -31824,7 +31844,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8459:
+.L8471:
 .L4546:
 	mov	esi, 6
 	lea	rdi, .LC1809[rip]
@@ -31840,7 +31860,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8458:
+.L8470:
 .L4544:
 	mov	esi, 14
 	lea	rdi, .LC1808[rip]
@@ -31856,7 +31876,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8457:
+.L8469:
 .L4542:
 	mov	esi, 5
 	lea	rdi, .LC1807[rip]
@@ -31872,7 +31892,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8456:
+.L8468:
 .L4540:
 	mov	esi, 3
 	lea	rdi, .LC1806[rip]
@@ -31888,7 +31908,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8455:
+.L8467:
 .L4538:
 	mov	esi, 8
 	lea	rdi, .LC1805[rip]
@@ -31904,7 +31924,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8454:
+.L8466:
 .L4536:
 	mov	esi, 12
 	lea	rdi, .LC1804[rip]
@@ -31920,7 +31940,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8453:
+.L8465:
 .L4534:
 	mov	esi, 9
 	lea	rdi, .LC1803[rip]
@@ -31936,7 +31956,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8452:
+.L8464:
 .L4532:
 	mov	esi, 6
 	lea	rdi, .LC1802[rip]
@@ -31952,7 +31972,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8451:
+.L8463:
 .L4530:
 	mov	esi, 10
 	lea	rdi, .LC1801[rip]
@@ -31968,7 +31988,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8450:
+.L8462:
 .L4528:
 	mov	esi, 11
 	lea	rdi, .LC1800[rip]
@@ -31984,7 +32004,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8449:
+.L8461:
 .L4526:
 	mov	esi, 11
 	lea	rdi, .LC1799[rip]
@@ -32000,7 +32020,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8448:
+.L8460:
 .L4524:
 	mov	esi, 11
 	lea	rdi, .LC1798[rip]
@@ -32016,7 +32036,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8447:
+.L8459:
 .L4522:
 	mov	esi, 8
 	lea	rdi, .LC1797[rip]
@@ -32032,7 +32052,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8446:
+.L8458:
 .L4520:
 	mov	esi, 5
 	lea	rdi, .LC1796[rip]
@@ -32048,7 +32068,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8445:
+.L8457:
 .L4518:
 	mov	esi, 6
 	lea	rdi, .LC1795[rip]
@@ -32064,7 +32084,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8444:
+.L8456:
 .L4516:
 	mov	esi, 9
 	lea	rdi, .LC1794[rip]
@@ -32080,7 +32100,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8443:
+.L8455:
 .L4514:
 	mov	esi, 6
 	lea	rdi, .LC1793[rip]
@@ -32112,7 +32132,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r15
 	jmp	fb_PrintString@PLT
 .L4510:
-.L8442:
+.L8454:
 .L4511:
 	mov	esi, 6
 	lea	rdi, .LC1791[rip]
@@ -32128,7 +32148,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8441:
+.L8453:
 .L4508:
 	mov	esi, 5
 	lea	rdi, .LC1790[rip]
@@ -32144,7 +32164,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8440:
+.L8452:
 .L4506:
 	mov	esi, 8
 	lea	rdi, .LC1789[rip]
@@ -32176,7 +32196,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r15
 	jmp	fb_PrintString@PLT
 .L4502:
-.L8439:
+.L8451:
 .L4503:
 	mov	esi, 3
 	lea	rdi, .LC1787[rip]
@@ -32192,7 +32212,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8438:
+.L8450:
 .L4500:
 	mov	esi, 4
 	lea	rdi, .LC1786[rip]
@@ -32208,7 +32228,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8437:
+.L8449:
 .L4498:
 	mov	esi, 4
 	lea	rdi, .LC1785[rip]
@@ -32224,7 +32244,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8436:
+.L8448:
 .L4496:
 	mov	esi, 4
 	lea	rdi, .LC1784[rip]
@@ -32240,7 +32260,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8435:
+.L8447:
 .L4494:
 	mov	esi, 5
 	lea	rdi, .LC1783[rip]
@@ -32256,7 +32276,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8434:
+.L8446:
 .L4492:
 	mov	esi, 4
 	lea	rdi, .LC1782[rip]
@@ -32272,7 +32292,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8433:
+.L8445:
 .L4490:
 	mov	esi, 6
 	lea	rdi, .LC1781[rip]
@@ -32288,7 +32308,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8432:
+.L8444:
 .L4488:
 	mov	esi, 7
 	lea	rdi, .LC1780[rip]
@@ -32304,7 +32324,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8431:
+.L8443:
 .L4486:
 	mov	esi, 6
 	lea	rdi, .LC1779[rip]
@@ -32320,7 +32340,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8430:
+.L8442:
 .L4484:
 	mov	esi, 10
 	lea	rdi, .LC1778[rip]
@@ -32336,7 +32356,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8429:
+.L8441:
 .L4482:
 	mov	esi, 6
 	lea	rdi, .LC1777[rip]
@@ -32352,7 +32372,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8428:
+.L8440:
 .L4480:
 	mov	esi, 10
 	lea	rdi, .LC1776[rip]
@@ -32368,7 +32388,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8427:
+.L8439:
 .L4478:
 	mov	esi, 5
 	lea	rdi, .LC1775[rip]
@@ -32384,7 +32404,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8426:
+.L8438:
 .L4476:
 	mov	esi, 10
 	lea	rdi, .LC1774[rip]
@@ -32400,7 +32420,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8425:
+.L8437:
 .L4474:
 	mov	esi, 10
 	lea	rdi, .LC1773[rip]
@@ -32416,7 +32436,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8424:
+.L8436:
 .L4472:
 	mov	esi, 8
 	lea	rdi, .LC1772[rip]
@@ -32432,7 +32452,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8423:
+.L8435:
 .L4470:
 	mov	esi, 4
 	lea	rdi, .LC1771[rip]
@@ -32448,7 +32468,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8422:
+.L8434:
 .L4468:
 	mov	esi, 3
 	lea	rdi, .LC1770[rip]
@@ -32464,7 +32484,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8421:
+.L8433:
 .L4466:
 	mov	esi, 7
 	lea	rdi, .LC1769[rip]
@@ -32480,7 +32500,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8420:
+.L8432:
 .L4464:
 	mov	esi, 9
 	lea	rdi, .LC1768[rip]
@@ -32496,7 +32516,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8419:
+.L8431:
 .L4462:
 	mov	esi, 11
 	lea	rdi, .LC1767[rip]
@@ -32512,7 +32532,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8418:
+.L8430:
 .L4460:
 	mov	esi, 5
 	lea	rdi, .LC1766[rip]
@@ -32528,7 +32548,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8417:
+.L8429:
 .L4458:
 	mov	esi, 13
 	lea	rdi, .LC1765[rip]
@@ -32544,7 +32564,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8416:
+.L8428:
 .L4456:
 	mov	esi, 6
 	lea	rdi, .LC1764[rip]
@@ -32560,7 +32580,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8415:
+.L8427:
 .L4454:
 	mov	esi, 7
 	lea	rdi, .LC1763[rip]
@@ -32576,7 +32596,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8414:
+.L8426:
 .L4452:
 	mov	esi, 7
 	lea	rdi, .LC1762[rip]
@@ -32592,7 +32612,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8413:
+.L8425:
 .L4450:
 	mov	esi, 9
 	lea	rdi, .LC1761[rip]
@@ -32608,7 +32628,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8412:
+.L8424:
 .L4448:
 	mov	esi, 12
 	lea	rdi, .LC1760[rip]
@@ -32624,7 +32644,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8411:
+.L8423:
 .L4446:
 	mov	esi, 6
 	lea	rdi, .LC1759[rip]
@@ -32640,7 +32660,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8410:
+.L8422:
 .L4444:
 	mov	esi, 8
 	lea	rdi, .LC1758[rip]
@@ -32656,7 +32676,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8409:
+.L8421:
 .L4442:
 	mov	esi, 13
 	lea	rdi, .LC1757[rip]
@@ -32672,7 +32692,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8408:
+.L8420:
 .L4440:
 	mov	esi, 10
 	lea	rdi, .LC1756[rip]
@@ -32688,7 +32708,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8407:
+.L8419:
 .L4438:
 	mov	esi, 3
 	lea	rdi, .LC1755[rip]
@@ -32704,7 +32724,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8406:
+.L8418:
 .L4436:
 	mov	esi, 7
 	lea	rdi, .LC1754[rip]
@@ -32736,7 +32756,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r15
 	jmp	fb_PrintString@PLT
 .L4432:
-.L8405:
+.L8417:
 .L4433:
 	mov	esi, 5
 	lea	rdi, .LC1752[rip]
@@ -32752,7 +32772,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8404:
+.L8416:
 .L4430:
 	mov	esi, 15
 	lea	rdi, .LC1751[rip]
@@ -32768,7 +32788,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8403:
+.L8415:
 .L4428:
 	mov	esi, 6
 	lea	rdi, .LC1750[rip]
@@ -32784,7 +32804,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8402:
+.L8414:
 .L4426:
 	mov	esi, 5
 	lea	rdi, .LC1749[rip]
@@ -32800,7 +32820,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8401:
+.L8413:
 .L4424:
 	mov	esi, 11
 	lea	rdi, .LC1748[rip]
@@ -32816,7 +32836,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8400:
+.L8412:
 .L4422:
 	mov	esi, 14
 	lea	rdi, .LC1747[rip]
@@ -32832,7 +32852,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8399:
+.L8411:
 .L4420:
 	mov	esi, 12
 	lea	rdi, .LC1746[rip]
@@ -32848,7 +32868,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8398:
+.L8410:
 .L4418:
 	mov	esi, 10
 	lea	rdi, .LC1745[rip]
@@ -32864,7 +32884,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8397:
+.L8409:
 .L4416:
 	mov	esi, 14
 	lea	rdi, .LC1744[rip]
@@ -32880,7 +32900,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8396:
+.L8408:
 .L4414:
 	mov	esi, 14
 	lea	rdi, .LC1743[rip]
@@ -32896,7 +32916,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8395:
+.L8407:
 .L4412:
 	mov	esi, 12
 	lea	rdi, .LC1742[rip]
@@ -32912,7 +32932,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8394:
+.L8406:
 .L4410:
 	mov	esi, 4
 	lea	rdi, .LC1741[rip]
@@ -32928,7 +32948,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8393:
+.L8405:
 .L4408:
 	mov	esi, 3
 	lea	rdi, .LC1740[rip]
@@ -32944,7 +32964,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8392:
+.L8404:
 .L4406:
 	mov	esi, 5
 	lea	rdi, .LC1739[rip]
@@ -32960,7 +32980,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8391:
+.L8403:
 .L4404:
 	mov	esi, 9
 	lea	rdi, .LC1738[rip]
@@ -32976,7 +32996,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8390:
+.L8402:
 .L4402:
 	mov	esi, 6
 	lea	rdi, .LC1737[rip]
@@ -32992,7 +33012,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8389:
+.L8401:
 .L4400:
 	mov	esi, 15
 	lea	rdi, .LC1736[rip]
@@ -33008,7 +33028,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8388:
+.L8400:
 .L4398:
 	mov	esi, 10
 	lea	rdi, .LC1735[rip]
@@ -33024,7 +33044,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8387:
+.L8399:
 .L4396:
 	mov	esi, 17
 	lea	rdi, .LC1734[rip]
@@ -33040,7 +33060,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8386:
+.L8398:
 .L4394:
 	mov	esi, 6
 	lea	rdi, .LC1733[rip]
@@ -33056,7 +33076,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8385:
+.L8397:
 .L4392:
 	mov	esi, 8
 	lea	rdi, .LC1732[rip]
@@ -33072,7 +33092,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8384:
+.L8396:
 .L4390:
 	mov	esi, 9
 	lea	rdi, .LC1731[rip]
@@ -33088,7 +33108,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8383:
+.L8395:
 .L4388:
 	mov	esi, 5
 	lea	rdi, .LC1730[rip]
@@ -33104,7 +33124,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8382:
+.L8394:
 .L4386:
 	mov	esi, 5
 	lea	rdi, .LC1729[rip]
@@ -33120,7 +33140,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8381:
+.L8393:
 .L4384:
 	mov	esi, 10
 	lea	rdi, .LC1728[rip]
@@ -33136,7 +33156,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8380:
+.L8392:
 .L4382:
 	mov	esi, 3
 	lea	rdi, .LC1727[rip]
@@ -33152,7 +33172,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8379:
+.L8391:
 .L4380:
 	mov	esi, 5
 	lea	rdi, .LC1726[rip]
@@ -33168,7 +33188,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8378:
+.L8390:
 .L4378:
 	mov	esi, 5
 	lea	rdi, .LC1725[rip]
@@ -33184,7 +33204,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8377:
+.L8389:
 .L4376:
 	mov	esi, 5
 	lea	rdi, .LC1724[rip]
@@ -33200,7 +33220,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8376:
+.L8388:
 .L4374:
 	mov	esi, 6
 	lea	rdi, .LC1723[rip]
@@ -33216,7 +33236,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8375:
+.L8387:
 .L4372:
 	mov	esi, 4
 	lea	rdi, .LC1722[rip]
@@ -33232,7 +33252,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8374:
+.L8386:
 .L4370:
 	mov	esi, 4
 	lea	rdi, .LC1721[rip]
@@ -33248,7 +33268,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8373:
+.L8385:
 .L4368:
 	mov	esi, 9
 	lea	rdi, .LC1720[rip]
@@ -33264,7 +33284,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8372:
+.L8384:
 .L4366:
 	mov	esi, 3
 	lea	rdi, .LC1719[rip]
@@ -33280,7 +33300,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8371:
+.L8383:
 .L4364:
 	mov	esi, 18
 	lea	rdi, .LC1718[rip]
@@ -33296,7 +33316,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8370:
+.L8382:
 .L4362:
 	mov	esi, 4
 	lea	rdi, .LC1717[rip]
@@ -33312,7 +33332,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8369:
+.L8381:
 .L4360:
 	mov	esi, 3
 	lea	rdi, .LC1716[rip]
@@ -33328,7 +33348,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8368:
+.L8380:
 .L4358:
 	mov	esi, 5
 	lea	rdi, .LC1715[rip]
@@ -33344,7 +33364,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8367:
+.L8379:
 .L4356:
 	mov	esi, 3
 	lea	rdi, .LC1714[rip]
@@ -33360,7 +33380,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8366:
+.L8378:
 .L4354:
 	mov	esi, 9
 	lea	rdi, .LC1713[rip]
@@ -33376,7 +33396,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8365:
+.L8377:
 .L4352:
 	mov	esi, 8
 	lea	rdi, .LC1712[rip]
@@ -33392,7 +33412,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8364:
+.L8376:
 .L4350:
 	mov	esi, 5
 	lea	rdi, .LC1711[rip]
@@ -33408,7 +33428,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8363:
+.L8375:
 .L4348:
 	mov	esi, 10
 	lea	rdi, .LC1710[rip]
@@ -33424,7 +33444,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8362:
+.L8374:
 .L4346:
 	mov	esi, 3
 	lea	rdi, .LC1709[rip]
@@ -33440,7 +33460,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8361:
+.L8373:
 .L4344:
 	mov	esi, 3
 	lea	rdi, .LC1708[rip]
@@ -33456,7 +33476,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8360:
+.L8372:
 .L4342:
 	mov	esi, 7
 	lea	rdi, .LC1707[rip]
@@ -33472,7 +33492,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8359:
+.L8371:
 .L4340:
 	mov	esi, 12
 	lea	rdi, .LC1706[rip]
@@ -33488,7 +33508,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8358:
+.L8370:
 .L4338:
 	mov	esi, 10
 	lea	rdi, .LC1705[rip]
@@ -33504,7 +33524,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8357:
+.L8369:
 .L4336:
 	mov	esi, 8
 	lea	rdi, .LC1704[rip]
@@ -33520,7 +33540,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8356:
+.L8368:
 .L4334:
 	mov	esi, 8
 	lea	rdi, .LC1703[rip]
@@ -33536,7 +33556,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8355:
+.L8367:
 .L4332:
 	mov	esi, 8
 	lea	rdi, .LC1702[rip]
@@ -33552,7 +33572,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8354:
+.L8366:
 .L4330:
 	mov	esi, 4
 	lea	rdi, .LC1701[rip]
@@ -33568,7 +33588,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8353:
+.L8365:
 .L4328:
 	mov	esi, 4
 	lea	rdi, .LC1700[rip]
@@ -33584,7 +33604,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8352:
+.L8364:
 .L4326:
 	mov	esi, 9
 	lea	rdi, .LC1699[rip]
@@ -33600,7 +33620,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8351:
+.L8363:
 .L4324:
 	mov	esi, 8
 	lea	rdi, .LC1698[rip]
@@ -33631,7 +33651,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8350:
+.L8362:
 .L4320:
 	mov	esi, 13
 	lea	rdi, .LC1696[rip]
@@ -33647,7 +33667,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8349:
+.L8361:
 .L4318:
 	mov	esi, 7
 	lea	rdi, .LC1695[rip]
@@ -33663,7 +33683,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8348:
+.L8360:
 .L4316:
 	mov	esi, 4
 	lea	rdi, .LC1694[rip]
@@ -33679,7 +33699,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8347:
+.L8359:
 .L4313:
 	mov	esi, 8
 	lea	rdi, .LC1693[rip]
@@ -33711,7 +33731,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8346:
+.L8358:
 .L4309:
 	mov	esi, 6
 	lea	rdi, .LC1691[rip]
@@ -33727,7 +33747,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8345:
+.L8357:
 .L4307:
 	mov	esi, 6
 	lea	rdi, .LC1690[rip]
@@ -33743,7 +33763,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8344:
+.L8356:
 .L4305:
 	mov	esi, 2
 	lea	rdi, .LC1689[rip]
@@ -33759,7 +33779,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8343:
+.L8355:
 .L4303:
 	mov	esi, 6
 	lea	rdi, .LC1688[rip]
@@ -33775,7 +33795,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8342:
+.L8354:
 .L4301:
 	mov	esi, 10
 	lea	rdi, .LC1687[rip]
@@ -33791,7 +33811,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8341:
+.L8353:
 .L4299:
 	mov	esi, 12
 	lea	rdi, .LC1686[rip]
@@ -33807,7 +33827,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8340:
+.L8352:
 .L4297:
 	mov	esi, 5
 	lea	rdi, .LC1685[rip]
@@ -33823,7 +33843,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8339:
+.L8351:
 .L4295:
 	mov	esi, 9
 	lea	rdi, .LC1684[rip]
@@ -33839,7 +33859,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8338:
+.L8350:
 .L4293:
 	mov	esi, 4
 	lea	rdi, .LC1683[rip]
@@ -33855,7 +33875,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8337:
+.L8349:
 .L4291:
 	mov	esi, 7
 	lea	rdi, .LC1682[rip]
@@ -33871,7 +33891,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8336:
+.L8348:
 .L4289:
 	mov	esi, 11
 	lea	rdi, .LC1681[rip]
@@ -33887,7 +33907,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8335:
+.L8347:
 .L4287:
 	mov	esi, 13
 	lea	rdi, .LC1680[rip]
@@ -33903,7 +33923,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8334:
+.L8346:
 .L4285:
 	mov	esi, 13
 	lea	rdi, .LC1679[rip]
@@ -33919,7 +33939,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8333:
+.L8345:
 .L4283:
 	mov	esi, 9
 	lea	rdi, .LC1678[rip]
@@ -33935,7 +33955,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8332:
+.L8344:
 .L4281:
 	mov	esi, 15
 	lea	rdi, .LC1677[rip]
@@ -33951,7 +33971,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8331:
+.L8343:
 .L4279:
 	mov	esi, 19
 	lea	rdi, .LC1676[rip]
@@ -33967,7 +33987,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8330:
+.L8342:
 .L4277:
 	mov	esi, 13
 	lea	rdi, .LC1675[rip]
@@ -33983,7 +34003,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8329:
+.L8341:
 .L4275:
 	mov	esi, 20
 	lea	rdi, .LC1674[rip]
@@ -33999,7 +34019,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8328:
+.L8340:
 .L4273:
 	mov	esi, 14
 	lea	rdi, .LC1673[rip]
@@ -34015,7 +34035,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8327:
+.L8339:
 .L4271:
 	mov	esi, 9
 	lea	rdi, .LC1672[rip]
@@ -34031,7 +34051,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8326:
+.L8338:
 .L4269:
 	mov	esi, 15
 	lea	rdi, .LC1671[rip]
@@ -34047,7 +34067,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8325:
+.L8337:
 .L4267:
 	mov	esi, 20
 	lea	rdi, .LC1670[rip]
@@ -34063,7 +34083,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8324:
+.L8336:
 .L4265:
 	mov	esi, 14
 	lea	rdi, .LC1669[rip]
@@ -34079,7 +34099,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8323:
+.L8335:
 .L4263:
 	mov	esi, 9
 	lea	rdi, .LC1668[rip]
@@ -34095,7 +34115,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8322:
+.L8334:
 .L4261:
 	mov	esi, 11
 	lea	rdi, .LC1667[rip]
@@ -34111,7 +34131,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8321:
+.L8333:
 .L4259:
 	mov	esi, 4
 	lea	rdi, .LC1666[rip]
@@ -34127,7 +34147,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8320:
+.L8332:
 .L4257:
 	mov	esi, 8
 	lea	rdi, .LC1665[rip]
@@ -34143,7 +34163,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8319:
+.L8331:
 .L4255:
 	mov	esi, 1
 	lea	rdi, .LC246[rip]
@@ -34159,7 +34179,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8318:
+.L8330:
 .L4253:
 	mov	esi, 3
 	lea	rdi, .LC1664[rip]
@@ -34175,7 +34195,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8317:
+.L8329:
 .L4251:
 	mov	esi, 4
 	lea	rdi, .LC1663[rip]
@@ -34191,7 +34211,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8316:
+.L8328:
 .L4249:
 	mov	esi, 4
 	lea	rdi, .LC1662[rip]
@@ -34207,7 +34227,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8315:
+.L8327:
 .L4247:
 	mov	esi, 9
 	lea	rdi, .LC1661[rip]
@@ -34223,7 +34243,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8314:
+.L8326:
 .L4245:
 	mov	esi, 3
 	lea	rdi, .LC1660[rip]
@@ -34239,7 +34259,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8313:
+.L8325:
 .L4243:
 	mov	esi, 7
 	lea	rdi, .LC1659[rip]
@@ -34255,7 +34275,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8312:
+.L8324:
 .L4241:
 	mov	esi, 5
 	lea	rdi, .LC1658[rip]
@@ -34271,7 +34291,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8311:
+.L8323:
 .L4239:
 	mov	esi, 9
 	lea	rdi, .LC1657[rip]
@@ -34287,7 +34307,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8310:
+.L8322:
 .L4237:
 	mov	esi, 6
 	lea	rdi, .LC1656[rip]
@@ -34303,7 +34323,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8309:
+.L8321:
 .L4235:
 	mov	esi, 3
 	lea	rdi, .LC1655[rip]
@@ -34319,7 +34339,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8308:
+.L8320:
 .L4233:
 	mov	esi, 5
 	lea	rdi, .LC1654[rip]
@@ -34351,7 +34371,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r15
 	jmp	fb_PrintString@PLT
 .L4229:
-.L8307:
+.L8319:
 .L4230:
 	mov	esi, 5
 	lea	rdi, .LC1652[rip]
@@ -34367,7 +34387,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8306:
+.L8318:
 .L4227:
 	mov	esi, 2
 	lea	rdi, .LC1651[rip]
@@ -34383,7 +34403,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8305:
+.L8317:
 .L4225:
 	mov	esi, 4
 	lea	rdi, .LC1650[rip]
@@ -34399,7 +34419,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8304:
+.L8316:
 .L4223:
 	mov	esi, 5
 	lea	rdi, .LC1649[rip]
@@ -34415,7 +34435,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8303:
+.L8315:
 .L4221:
 	mov	esi, 4
 	lea	rdi, .LC1648[rip]
@@ -34431,7 +34451,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8302:
+.L8314:
 .L4219:
 	mov	esi, 3
 	lea	rdi, .LC1647[rip]
@@ -34447,7 +34467,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8301:
+.L8313:
 .L4217:
 	mov	esi, 2
 	lea	rdi, .LC1646[rip]
@@ -34463,7 +34483,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8300:
+.L8312:
 .L4215:
 	mov	esi, 7
 	lea	rdi, .LC1645[rip]
@@ -34479,7 +34499,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8299:
+.L8311:
 .L4213:
 	mov	esi, 6
 	lea	rdi, .LC1644[rip]
@@ -34495,7 +34515,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8298:
+.L8310:
 .L4211:
 	mov	esi, 8
 	lea	rdi, .LC1643[rip]
@@ -34511,7 +34531,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8297:
+.L8309:
 .L4209:
 	mov	esi, 9
 	lea	rdi, .LC1642[rip]
@@ -34527,7 +34547,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8296:
+.L8308:
 .L4207:
 	mov	esi, 11
 	lea	rdi, .LC1641[rip]
@@ -34543,7 +34563,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8295:
+.L8307:
 .L4205:
 	mov	esi, 6
 	lea	rdi, .LC1640[rip]
@@ -34559,7 +34579,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8294:
+.L8306:
 .L4203:
 	mov	esi, 6
 	lea	rdi, .LC1639[rip]
@@ -34575,7 +34595,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8293:
+.L8305:
 .L4201:
 	mov	esi, 7
 	lea	rdi, .LC1638[rip]
@@ -34591,7 +34611,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8292:
+.L8304:
 .L4199:
 	mov	esi, 5
 	lea	rdi, .LC1637[rip]
@@ -34607,7 +34627,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8291:
+.L8303:
 .L4197:
 	mov	esi, 7
 	lea	rdi, .LC1636[rip]
@@ -34623,7 +34643,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8290:
+.L8302:
 .L4195:
 	mov	esi, 5
 	lea	rdi, .LC1635[rip]
@@ -34639,7 +34659,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8289:
+.L8301:
 .L4193:
 	mov	esi, 10
 	lea	rdi, .LC1634[rip]
@@ -34655,7 +34675,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8288:
+.L8300:
 .L4191:
 	mov	esi, 7
 	lea	rdi, .LC1633[rip]
@@ -34671,7 +34691,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8287:
+.L8299:
 .L4189:
 	mov	esi, 9
 	lea	rdi, .LC1632[rip]
@@ -34687,7 +34707,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8286:
+.L8298:
 .L4187:
 	mov	esi, 6
 	lea	rdi, .LC1631[rip]
@@ -34703,7 +34723,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8285:
+.L8297:
 .L4185:
 	mov	esi, 9
 	lea	rdi, .LC1630[rip]
@@ -34719,7 +34739,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8284:
+.L8296:
 .L4183:
 	mov	esi, 7
 	lea	rdi, .LC1629[rip]
@@ -34735,7 +34755,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8283:
+.L8295:
 .L4181:
 	mov	esi, 6
 	lea	rdi, .LC1628[rip]
@@ -34751,7 +34771,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8282:
+.L8294:
 .L4179:
 	mov	esi, 5
 	lea	rdi, .LC1627[rip]
@@ -34767,7 +34787,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8281:
+.L8293:
 .L4177:
 	mov	esi, 6
 	lea	rdi, .LC1626[rip]
@@ -34783,7 +34803,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8280:
+.L8292:
 .L4175:
 	mov	esi, 7
 	lea	rdi, .LC1625[rip]
@@ -34799,7 +34819,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8279:
+.L8291:
 .L4173:
 	mov	esi, 7
 	lea	rdi, .LC1624[rip]
@@ -34815,7 +34835,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8278:
+.L8290:
 .L4171:
 	mov	esi, 9
 	lea	rdi, .LC1623[rip]
@@ -34831,7 +34851,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8277:
+.L8289:
 .L4169:
 	mov	esi, 3
 	lea	rdi, .LC1622[rip]
@@ -34847,7 +34867,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8276:
+.L8288:
 .L4167:
 	mov	esi, 6
 	lea	rdi, .LC1621[rip]
@@ -34863,7 +34883,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8275:
+.L8287:
 .L4165:
 	mov	esi, 7
 	lea	rdi, .LC1620[rip]
@@ -34879,7 +34899,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8274:
+.L8286:
 .L4163:
 	mov	esi, 8
 	lea	rdi, .LC1619[rip]
@@ -34895,7 +34915,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8273:
+.L8285:
 .L4161:
 	mov	esi, 11
 	lea	rdi, .LC1618[rip]
@@ -34911,7 +34931,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8272:
+.L8284:
 .L4159:
 	mov	esi, 8
 	lea	rdi, .LC1617[rip]
@@ -34927,7 +34947,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8271:
+.L8283:
 .L4157:
 	mov	esi, 12
 	lea	rdi, .LC1616[rip]
@@ -34943,7 +34963,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8270:
+.L8282:
 .L4155:
 	mov	esi, 11
 	lea	rdi, .LC1615[rip]
@@ -34959,7 +34979,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8269:
+.L8281:
 .L4153:
 	mov	esi, 10
 	lea	rdi, .LC1614[rip]
@@ -34975,7 +34995,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8268:
+.L8280:
 .L4151:
 	mov	esi, 7
 	lea	rdi, .LC1613[rip]
@@ -34991,7 +35011,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8267:
+.L8279:
 .L4149:
 	mov	esi, 19
 	lea	rdi, .LC1612[rip]
@@ -35007,7 +35027,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8266:
+.L8278:
 .L4147:
 	mov	esi, 10
 	lea	rdi, .LC1611[rip]
@@ -35023,7 +35043,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8265:
+.L8277:
 .L4145:
 	mov	esi, 7
 	lea	rdi, .LC1610[rip]
@@ -35039,7 +35059,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8264:
+.L8276:
 .L4143:
 	mov	esi, 10
 	lea	rdi, .LC1609[rip]
@@ -35055,7 +35075,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8263:
+.L8275:
 .L4141:
 	mov	esi, 9
 	lea	rdi, .LC1608[rip]
@@ -35071,7 +35091,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8262:
+.L8274:
 .L4139:
 	mov	esi, 4
 	lea	rdi, .LC1607[rip]
@@ -35087,7 +35107,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8261:
+.L8273:
 .L4137:
 	mov	esi, 9
 	lea	rdi, .LC1606[rip]
@@ -35103,7 +35123,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8260:
+.L8272:
 .L4135:
 	mov	esi, 3
 	lea	rdi, .LC1605[rip]
@@ -35119,7 +35139,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8259:
+.L8271:
 .L4133:
 	mov	esi, 9
 	lea	rdi, .LC1604[rip]
@@ -35135,7 +35155,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8258:
+.L8270:
 .L4131:
 	mov	esi, 15
 	lea	rdi, .LC1603[rip]
@@ -35151,7 +35171,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8257:
+.L8269:
 .L4129:
 	mov	esi, 7
 	lea	rdi, .LC1602[rip]
@@ -35167,7 +35187,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8256:
+.L8268:
 .L4127:
 	mov	esi, 9
 	lea	rdi, .LC1601[rip]
@@ -35183,7 +35203,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8255:
+.L8267:
 .L4125:
 	mov	esi, 6
 	lea	rdi, .LC1600[rip]
@@ -35199,7 +35219,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8254:
+.L8266:
 .L4123:
 	mov	esi, 10
 	lea	rdi, .LC1599[rip]
@@ -35215,7 +35235,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8253:
+.L8265:
 .L4121:
 	mov	esi, 7
 	lea	rdi, .LC1598[rip]
@@ -35231,7 +35251,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8252:
+.L8264:
 .L4119:
 	mov	esi, 4
 	lea	rdi, .LC1597[rip]
@@ -35247,7 +35267,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8251:
+.L8263:
 .L4117:
 	mov	esi, 5
 	lea	rdi, .LC1596[rip]
@@ -35263,7 +35283,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8250:
+.L8262:
 .L4115:
 	mov	esi, 4
 	lea	rdi, .LC1595[rip]
@@ -35279,7 +35299,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8249:
+.L8261:
 .L4113:
 	mov	esi, 2
 	lea	rdi, .LC1594[rip]
@@ -35295,7 +35315,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8248:
+.L8260:
 .L4111:
 	mov	esi, 7
 	lea	rdi, .LC1593[rip]
@@ -35311,7 +35331,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8247:
+.L8259:
 .L4109:
 	mov	esi, 5
 	lea	rdi, .LC1592[rip]
@@ -35327,7 +35347,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8246:
+.L8258:
 .L4107:
 	mov	esi, 5
 	lea	rdi, .LC1591[rip]
@@ -35343,7 +35363,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8245:
+.L8257:
 .L4105:
 	mov	esi, 9
 	lea	rdi, .LC1590[rip]
@@ -35374,7 +35394,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7269:
+.L7281:
 .L3027:
 	movsd	xmm0, QWORD PTR 394888[r13]
 	call	nearbyint@PLT
@@ -35388,512 +35408,512 @@ _ZN8MEMORY_T6POKE64Edd:
 	test	rax, rax
 	je	.L3078
 	cmp	rax, 1
-	je	.L8741
-	cmp	rax, 2
-	je	.L8742
-	cmp	rax, 3
-	je	.L8743
-	cmp	rax, 4
-	je	.L8744
-	cmp	rax, 5
-	je	.L8745
-	cmp	rax, 6
-	je	.L8746
-	cmp	rax, 7
-	je	.L8747
-	cmp	rax, 8
-	je	.L8748
-	cmp	rax, 9
-	je	.L8749
-	cmp	rax, 10
-	je	.L8750
-	cmp	rax, 11
-	je	.L8751
-	cmp	rax, 12
-	je	.L8752
-	cmp	rax, 13
 	je	.L8753
-	cmp	rax, 14
+	cmp	rax, 2
 	je	.L8754
-	cmp	rax, 15
+	cmp	rax, 3
 	je	.L8755
-	cmp	rax, 16
+	cmp	rax, 4
 	je	.L8756
-	cmp	rax, 17
+	cmp	rax, 5
 	je	.L8757
-	cmp	rax, 18
+	cmp	rax, 6
 	je	.L8758
-	cmp	rax, 19
+	cmp	rax, 7
 	je	.L8759
-	cmp	rax, 20
+	cmp	rax, 8
 	je	.L8760
-	cmp	rax, 21
+	cmp	rax, 9
 	je	.L8761
-	cmp	rax, 22
+	cmp	rax, 10
 	je	.L8762
-	cmp	rax, 23
+	cmp	rax, 11
 	je	.L8763
-	cmp	rax, 24
+	cmp	rax, 12
 	je	.L8764
-	cmp	rax, 25
+	cmp	rax, 13
 	je	.L8765
-	cmp	rax, 26
+	cmp	rax, 14
 	je	.L8766
-	cmp	rax, 27
+	cmp	rax, 15
 	je	.L8767
-	cmp	rax, 28
+	cmp	rax, 16
 	je	.L8768
-	cmp	rax, 29
+	cmp	rax, 17
 	je	.L8769
-	cmp	rax, 30
+	cmp	rax, 18
 	je	.L8770
-	cmp	rax, 31
+	cmp	rax, 19
 	je	.L8771
-	cmp	rax, 32
+	cmp	rax, 20
 	je	.L8772
-	cmp	rax, 33
+	cmp	rax, 21
 	je	.L8773
-	cmp	rax, 34
+	cmp	rax, 22
 	je	.L8774
-	cmp	rax, 35
+	cmp	rax, 23
 	je	.L8775
-	cmp	rax, 36
+	cmp	rax, 24
 	je	.L8776
-	cmp	rax, 37
+	cmp	rax, 25
 	je	.L8777
-	cmp	rax, 38
+	cmp	rax, 26
 	je	.L8778
-	cmp	rax, 39
+	cmp	rax, 27
 	je	.L8779
-	cmp	rax, 40
+	cmp	rax, 28
 	je	.L8780
-	cmp	rax, 41
+	cmp	rax, 29
 	je	.L8781
-	cmp	rax, 42
+	cmp	rax, 30
 	je	.L8782
-	cmp	rax, 43
+	cmp	rax, 31
 	je	.L8783
-	cmp	rax, 44
+	cmp	rax, 32
 	je	.L8784
-	cmp	rax, 45
+	cmp	rax, 33
 	je	.L8785
-	cmp	rax, 46
+	cmp	rax, 34
 	je	.L8786
-	cmp	rax, 47
+	cmp	rax, 35
 	je	.L8787
-	cmp	rax, 48
+	cmp	rax, 36
 	je	.L8788
-	cmp	rax, 49
+	cmp	rax, 37
 	je	.L8789
-	cmp	rax, 50
+	cmp	rax, 38
 	je	.L8790
-	cmp	rax, 51
+	cmp	rax, 39
 	je	.L8791
-	cmp	rax, 52
+	cmp	rax, 40
 	je	.L8792
-	cmp	rax, 53
+	cmp	rax, 41
 	je	.L8793
-	cmp	rax, 54
+	cmp	rax, 42
 	je	.L8794
-	cmp	rax, 55
+	cmp	rax, 43
 	je	.L8795
-	cmp	rax, 56
+	cmp	rax, 44
 	je	.L8796
-	cmp	rax, 57
+	cmp	rax, 45
 	je	.L8797
-	cmp	rax, 58
+	cmp	rax, 46
 	je	.L8798
-	cmp	rax, 59
+	cmp	rax, 47
 	je	.L8799
-	cmp	rax, 60
+	cmp	rax, 48
 	je	.L8800
-	cmp	rax, 61
+	cmp	rax, 49
 	je	.L8801
-	cmp	rax, 62
+	cmp	rax, 50
 	je	.L8802
-	cmp	rax, 63
+	cmp	rax, 51
 	je	.L8803
-	cmp	rax, 64
+	cmp	rax, 52
 	je	.L8804
-	cmp	rax, 65
+	cmp	rax, 53
 	je	.L8805
-	cmp	rax, 66
+	cmp	rax, 54
 	je	.L8806
-	cmp	rax, 67
+	cmp	rax, 55
 	je	.L8807
-	cmp	rax, 68
+	cmp	rax, 56
 	je	.L8808
-	cmp	rax, 69
+	cmp	rax, 57
 	je	.L8809
-	cmp	rax, 70
+	cmp	rax, 58
 	je	.L8810
-	cmp	rax, 71
+	cmp	rax, 59
 	je	.L8811
-	cmp	rax, 72
+	cmp	rax, 60
 	je	.L8812
-	cmp	rax, 73
+	cmp	rax, 61
 	je	.L8813
-	cmp	rax, 74
+	cmp	rax, 62
 	je	.L8814
-	cmp	rax, 75
+	cmp	rax, 63
 	je	.L8815
-	cmp	rax, 76
+	cmp	rax, 64
 	je	.L8816
-	cmp	rax, 77
+	cmp	rax, 65
 	je	.L8817
-	cmp	rax, 78
+	cmp	rax, 66
 	je	.L8818
-	cmp	rax, 79
+	cmp	rax, 67
 	je	.L8819
-	cmp	rax, 80
+	cmp	rax, 68
 	je	.L8820
-	cmp	rax, 81
+	cmp	rax, 69
 	je	.L8821
-	cmp	rax, 82
+	cmp	rax, 70
 	je	.L8822
-	cmp	rax, 83
+	cmp	rax, 71
 	je	.L8823
-	cmp	rax, 84
+	cmp	rax, 72
 	je	.L8824
-	cmp	rax, 85
+	cmp	rax, 73
 	je	.L8825
-	cmp	rax, 86
+	cmp	rax, 74
 	je	.L8826
-	cmp	rax, 87
+	cmp	rax, 75
 	je	.L8827
-	cmp	rax, 88
+	cmp	rax, 76
 	je	.L8828
-	cmp	rax, 89
+	cmp	rax, 77
 	je	.L8829
-	cmp	rax, 90
+	cmp	rax, 78
 	je	.L8830
-	cmp	rax, 91
+	cmp	rax, 79
 	je	.L8831
-	cmp	rax, 92
+	cmp	rax, 80
 	je	.L8832
-	cmp	rax, 93
+	cmp	rax, 81
 	je	.L8833
-	cmp	rax, 94
+	cmp	rax, 82
 	je	.L8834
-	cmp	rax, 95
+	cmp	rax, 83
 	je	.L8835
-	cmp	rax, 96
+	cmp	rax, 84
 	je	.L8836
-	cmp	rax, 97
+	cmp	rax, 85
 	je	.L8837
-	cmp	rax, 98
+	cmp	rax, 86
 	je	.L8838
-	cmp	rax, 99
+	cmp	rax, 87
 	je	.L8839
-	cmp	rax, 100
+	cmp	rax, 88
 	je	.L8840
-	cmp	rax, 101
+	cmp	rax, 89
 	je	.L8841
-	cmp	rax, 102
+	cmp	rax, 90
 	je	.L8842
-	cmp	rax, 103
+	cmp	rax, 91
 	je	.L8843
-	cmp	rax, 104
+	cmp	rax, 92
 	je	.L8844
-	cmp	rax, 105
+	cmp	rax, 93
 	je	.L8845
-	cmp	rax, 106
+	cmp	rax, 94
 	je	.L8846
-	cmp	rax, 107
+	cmp	rax, 95
 	je	.L8847
-	cmp	rax, 108
+	cmp	rax, 96
 	je	.L8848
-	cmp	rax, 109
+	cmp	rax, 97
 	je	.L8849
-	cmp	rax, 110
+	cmp	rax, 98
 	je	.L8850
-	cmp	rax, 111
+	cmp	rax, 99
 	je	.L8851
-	cmp	rax, 112
+	cmp	rax, 100
 	je	.L8852
-	cmp	rax, 113
+	cmp	rax, 101
 	je	.L8853
-	cmp	rax, 114
+	cmp	rax, 102
 	je	.L8854
-	cmp	rax, 115
+	cmp	rax, 103
 	je	.L8855
-	cmp	rax, 116
+	cmp	rax, 104
 	je	.L8856
-	cmp	rax, 117
+	cmp	rax, 105
 	je	.L8857
-	cmp	rax, 118
+	cmp	rax, 106
 	je	.L8858
-	cmp	rax, 119
+	cmp	rax, 107
 	je	.L8859
-	cmp	rax, 120
+	cmp	rax, 108
 	je	.L8860
-	cmp	rax, 121
+	cmp	rax, 109
 	je	.L8861
-	cmp	rax, 122
+	cmp	rax, 110
 	je	.L8862
-	cmp	rax, 123
+	cmp	rax, 111
 	je	.L8863
-	cmp	rax, 124
+	cmp	rax, 112
 	je	.L8864
-	cmp	rax, 125
+	cmp	rax, 113
 	je	.L8865
-	cmp	rax, 126
+	cmp	rax, 114
 	je	.L8866
-	cmp	rax, 127
+	cmp	rax, 115
 	je	.L8867
-	cmp	rax, 128
+	cmp	rax, 116
 	je	.L8868
-	cmp	rax, 129
+	cmp	rax, 117
 	je	.L8869
-	cmp	rax, 130
+	cmp	rax, 118
 	je	.L8870
-	cmp	rax, 131
+	cmp	rax, 119
 	je	.L8871
-	cmp	rax, 132
+	cmp	rax, 120
 	je	.L8872
-	cmp	rax, 133
+	cmp	rax, 121
 	je	.L8873
-	cmp	rax, 134
+	cmp	rax, 122
 	je	.L8874
-	cmp	rax, 135
+	cmp	rax, 123
 	je	.L8875
-	cmp	rax, 136
+	cmp	rax, 124
 	je	.L8876
-	cmp	rax, 137
+	cmp	rax, 125
 	je	.L8877
-	cmp	rax, 138
+	cmp	rax, 126
 	je	.L8878
-	cmp	rax, 139
+	cmp	rax, 127
 	je	.L8879
-	cmp	rax, 140
+	cmp	rax, 128
 	je	.L8880
-	cmp	rax, 141
+	cmp	rax, 129
 	je	.L8881
-	cmp	rax, 142
+	cmp	rax, 130
 	je	.L8882
-	cmp	rax, 143
+	cmp	rax, 131
 	je	.L8883
-	cmp	rax, 144
+	cmp	rax, 132
 	je	.L8884
-	cmp	rax, 145
+	cmp	rax, 133
 	je	.L8885
-	cmp	rax, 146
+	cmp	rax, 134
 	je	.L8886
-	cmp	rax, 147
+	cmp	rax, 135
 	je	.L8887
-	cmp	rax, 148
+	cmp	rax, 136
 	je	.L8888
-	cmp	rax, 149
+	cmp	rax, 137
 	je	.L8889
-	cmp	rax, 150
+	cmp	rax, 138
 	je	.L8890
-	cmp	rax, 151
+	cmp	rax, 139
 	je	.L8891
-	cmp	rax, 152
+	cmp	rax, 140
 	je	.L8892
-	cmp	rax, 153
+	cmp	rax, 141
 	je	.L8893
-	cmp	rax, 154
+	cmp	rax, 142
 	je	.L8894
-	cmp	rax, 155
+	cmp	rax, 143
 	je	.L8895
-	cmp	rax, 156
+	cmp	rax, 144
 	je	.L8896
-	cmp	rax, 157
+	cmp	rax, 145
 	je	.L8897
-	cmp	rax, 158
+	cmp	rax, 146
 	je	.L8898
-	cmp	rax, 159
+	cmp	rax, 147
 	je	.L8899
-	cmp	rax, 160
+	cmp	rax, 148
 	je	.L8900
-	cmp	rax, 161
+	cmp	rax, 149
 	je	.L8901
-	cmp	rax, 162
+	cmp	rax, 150
 	je	.L8902
-	cmp	rax, 163
+	cmp	rax, 151
 	je	.L8903
-	cmp	rax, 164
+	cmp	rax, 152
 	je	.L8904
-	cmp	rax, 165
+	cmp	rax, 153
 	je	.L8905
-	cmp	rax, 166
+	cmp	rax, 154
 	je	.L8906
-	cmp	rax, 167
+	cmp	rax, 155
 	je	.L8907
-	cmp	rax, 168
+	cmp	rax, 156
 	je	.L8908
-	cmp	rax, 169
+	cmp	rax, 157
 	je	.L8909
-	cmp	rax, 170
+	cmp	rax, 158
 	je	.L8910
-	cmp	rax, 171
+	cmp	rax, 159
 	je	.L8911
-	cmp	rax, 172
+	cmp	rax, 160
 	je	.L8912
-	cmp	rax, 173
+	cmp	rax, 161
 	je	.L8913
-	cmp	rax, 174
+	cmp	rax, 162
 	je	.L8914
-	cmp	rax, 175
+	cmp	rax, 163
 	je	.L8915
-	cmp	rax, 176
+	cmp	rax, 164
 	je	.L8916
-	cmp	rax, 177
+	cmp	rax, 165
 	je	.L8917
-	cmp	rax, 178
+	cmp	rax, 166
 	je	.L8918
-	cmp	rax, 179
+	cmp	rax, 167
 	je	.L8919
-	cmp	rax, 180
+	cmp	rax, 168
 	je	.L8920
-	cmp	rax, 181
+	cmp	rax, 169
 	je	.L8921
-	cmp	rax, 182
+	cmp	rax, 170
 	je	.L8922
-	cmp	rax, 183
+	cmp	rax, 171
 	je	.L8923
-	cmp	rax, 184
+	cmp	rax, 172
 	je	.L8924
+	cmp	rax, 173
+	je	.L8925
+	cmp	rax, 174
+	je	.L8926
+	cmp	rax, 175
+	je	.L8927
+	cmp	rax, 176
+	je	.L8928
+	cmp	rax, 177
+	je	.L8929
+	cmp	rax, 178
+	je	.L8930
+	cmp	rax, 179
+	je	.L8931
+	cmp	rax, 180
+	je	.L8932
+	cmp	rax, 181
+	je	.L8933
+	cmp	rax, 182
+	je	.L8934
+	cmp	rax, 183
+	je	.L8935
+	cmp	rax, 184
+	je	.L8936
 	lea	rdx, -185[rax]
 	cmp	rdx, 1
-	jbe	.L8925
+	jbe	.L8937
 	cmp	rax, 187
 	je	.L3450
 	cmp	rax, 188
-	je	.L8926
-	cmp	rax, 189
-	je	.L8927
-	cmp	rax, 190
-	je	.L8928
-	cmp	rax, 191
-	je	.L8929
-	cmp	rax, 192
-	je	.L8930
-	cmp	rax, 193
-	je	.L8931
-	cmp	rax, 194
-	je	.L8932
-	cmp	rax, 195
-	je	.L8933
-	cmp	rax, 196
-	je	.L8934
-	cmp	rax, 197
-	je	.L8935
-	cmp	rax, 198
-	je	.L8936
-	cmp	rax, 199
-	je	.L8937
-	cmp	rax, 200
 	je	.L8938
-	cmp	rax, 201
+	cmp	rax, 189
 	je	.L8939
-	cmp	rax, 202
+	cmp	rax, 190
 	je	.L8940
-	cmp	rax, 203
+	cmp	rax, 191
 	je	.L8941
-	cmp	rax, 204
+	cmp	rax, 192
 	je	.L8942
-	cmp	rax, 205
+	cmp	rax, 193
 	je	.L8943
-	cmp	rax, 206
+	cmp	rax, 194
 	je	.L8944
-	cmp	rax, 207
+	cmp	rax, 195
 	je	.L8945
-	cmp	rax, 208
+	cmp	rax, 196
 	je	.L8946
-	cmp	rax, 209
+	cmp	rax, 197
 	je	.L8947
-	cmp	rax, 210
+	cmp	rax, 198
 	je	.L8948
-	cmp	rax, 211
+	cmp	rax, 199
 	je	.L8949
-	cmp	rax, 212
+	cmp	rax, 200
 	je	.L8950
-	cmp	rax, 213
+	cmp	rax, 201
 	je	.L8951
-	cmp	rax, 214
+	cmp	rax, 202
 	je	.L8952
-	cmp	rax, 215
+	cmp	rax, 203
 	je	.L8953
-	cmp	rax, 216
+	cmp	rax, 204
 	je	.L8954
-	cmp	rax, 217
+	cmp	rax, 205
 	je	.L8955
-	cmp	rax, 218
+	cmp	rax, 206
 	je	.L8956
-	cmp	rax, 219
+	cmp	rax, 207
 	je	.L8957
-	cmp	rax, 220
+	cmp	rax, 208
 	je	.L8958
-	cmp	rax, 221
+	cmp	rax, 209
 	je	.L8959
-	cmp	rax, 222
+	cmp	rax, 210
 	je	.L8960
-	cmp	rax, 223
+	cmp	rax, 211
 	je	.L8961
-	cmp	rax, 224
+	cmp	rax, 212
 	je	.L8962
-	cmp	rax, 225
+	cmp	rax, 213
 	je	.L8963
-	cmp	rax, 226
+	cmp	rax, 214
 	je	.L8964
-	cmp	rax, 227
+	cmp	rax, 215
 	je	.L8965
-	cmp	rax, 228
+	cmp	rax, 216
 	je	.L8966
-	cmp	rax, 229
+	cmp	rax, 217
 	je	.L8967
-	cmp	rax, 230
+	cmp	rax, 218
 	je	.L8968
-	cmp	rax, 231
+	cmp	rax, 219
 	je	.L8969
-	cmp	rax, 232
+	cmp	rax, 220
 	je	.L8970
-	cmp	rax, 233
+	cmp	rax, 221
 	je	.L8971
-	cmp	rax, 234
+	cmp	rax, 222
 	je	.L8972
-	cmp	rax, 235
+	cmp	rax, 223
 	je	.L8973
-	cmp	rax, 236
+	cmp	rax, 224
 	je	.L8974
-	cmp	rax, 237
+	cmp	rax, 225
 	je	.L8975
-	cmp	rax, 238
+	cmp	rax, 226
 	je	.L8976
-	cmp	rax, 239
+	cmp	rax, 227
 	je	.L8977
-	cmp	rax, 240
+	cmp	rax, 228
 	je	.L8978
-	cmp	rax, 241
+	cmp	rax, 229
 	je	.L8979
-	cmp	rax, 242
+	cmp	rax, 230
 	je	.L8980
-	cmp	rax, 243
+	cmp	rax, 231
 	je	.L8981
-	cmp	rax, 244
+	cmp	rax, 232
 	je	.L8982
-	cmp	rax, 245
+	cmp	rax, 233
 	je	.L8983
-	cmp	rax, 246
+	cmp	rax, 234
 	je	.L8984
-	cmp	rax, 247
+	cmp	rax, 235
 	je	.L8985
-	cmp	rax, 248
+	cmp	rax, 236
 	je	.L8986
-	cmp	rax, 249
+	cmp	rax, 237
 	je	.L8987
-	cmp	rax, 250
+	cmp	rax, 238
 	je	.L8988
-	cmp	rax, 251
+	cmp	rax, 239
 	je	.L8989
-	cmp	rax, 252
+	cmp	rax, 240
 	je	.L8990
-	cmp	rax, 253
+	cmp	rax, 241
 	je	.L8991
-	cmp	rax, 254
+	cmp	rax, 242
 	je	.L8992
+	cmp	rax, 243
+	je	.L8993
+	cmp	rax, 244
+	je	.L8994
+	cmp	rax, 245
+	je	.L8995
+	cmp	rax, 246
+	je	.L8996
+	cmp	rax, 247
+	je	.L8997
+	cmp	rax, 248
+	je	.L8998
+	cmp	rax, 249
+	je	.L8999
+	cmp	rax, 250
+	je	.L9000
+	cmp	rax, 251
+	je	.L9001
+	cmp	rax, 252
+	je	.L9002
+	cmp	rax, 253
+	je	.L9003
+	cmp	rax, 254
+	je	.L9004
 	cmp	rax, 255
 	jne	.L742
 .L3585:
@@ -35911,7 +35931,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7268:
+.L7280:
 .L3023:
 	movsd	xmm0, QWORD PTR 394888[r13]
 	call	nearbyint@PLT
@@ -35925,53 +35945,53 @@ _ZN8MEMORY_T6POKE64Edd:
 	test	rbx, rbx
 	je	.L3030
 	cmp	rbx, 1
-	je	.L8993
-	cmp	rbx, 2
-	je	.L8994
-	cmp	rbx, 3
-	je	.L8995
-	cmp	rbx, 4
-	je	.L8996
-	cmp	rbx, 5
-	je	.L8997
-	cmp	rbx, 6
-	je	.L8998
-	cmp	rbx, 7
-	je	.L8999
-	cmp	rbx, 8
-	je	.L9000
-	cmp	rbx, 9
-	je	.L9001
-	cmp	rbx, 10
-	je	.L9002
-	cmp	rbx, 11
-	je	.L9003
-	cmp	rbx, 12
-	je	.L9004
-	cmp	rbx, 13
 	je	.L9005
-	cmp	rbx, 14
+	cmp	rbx, 2
 	je	.L9006
-	cmp	rbx, 15
+	cmp	rbx, 3
 	je	.L9007
-	cmp	rbx, 16
+	cmp	rbx, 4
 	je	.L9008
-	cmp	rbx, 17
+	cmp	rbx, 5
 	je	.L9009
-	cmp	rbx, 18
+	cmp	rbx, 6
 	je	.L9010
-	cmp	rbx, 19
+	cmp	rbx, 7
 	je	.L9011
-	cmp	rbx, 20
+	cmp	rbx, 8
 	je	.L9012
-	cmp	rbx, 21
+	cmp	rbx, 9
 	je	.L9013
+	cmp	rbx, 10
+	je	.L9014
+	cmp	rbx, 11
+	je	.L9015
+	cmp	rbx, 12
+	je	.L9016
+	cmp	rbx, 13
+	je	.L9017
+	cmp	rbx, 14
+	je	.L9018
+	cmp	rbx, 15
+	je	.L9019
+	cmp	rbx, 16
+	je	.L9020
+	cmp	rbx, 17
+	je	.L9021
+	cmp	rbx, 18
+	je	.L9022
+	cmp	rbx, 19
+	je	.L9023
+	cmp	rbx, 20
+	je	.L9024
+	cmp	rbx, 21
+	je	.L9025
 	cmp	rbx, 22
 	jne	.L742
 .L3073:
 	mov	esi, 9
 	lea	rdi, .LC1091[rip]
-.L7188:
+.L7196:
 	call	fb_StrAllocTempDescZEx@PLT
 	xor	esi, esi
 	xor	ebx, ebx
@@ -35994,7 +36014,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	rdi, r9
 	mov	eax, ebx
-.L7189:
+.L7197:
 	rep stosd
 	or	rdx, -1
 	mov	rdi, r9
@@ -36006,7 +36026,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	call	fb_PrintString@PLT
 	jmp	.L742
-.L8992:
+.L9004:
 .L3584:
 	mov	esi, 4
 	lea	rdi, .LC1336[rip]
@@ -36022,7 +36042,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8991:
+.L9003:
 .L3582:
 	mov	esi, 6
 	lea	rdi, .LC1335[rip]
@@ -36038,82 +36058,82 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L9013:
+.L9025:
 .L3072:
 	mov	esi, 12
 	lea	rdi, .LC1090[rip]
-	jmp	.L7188
-.L9012:
+	jmp	.L7196
+.L9024:
 .L3070:
 	mov	esi, 12
 	lea	rdi, .LC1089[rip]
-	jmp	.L7188
-.L9011:
+	jmp	.L7196
+.L9023:
 .L3068:
 	mov	esi, 10
 	lea	rdi, .LC1088[rip]
-	jmp	.L7188
-.L9010:
+	jmp	.L7196
+.L9022:
 .L3066:
 	mov	esi, 11
 	lea	rdi, .LC1087[rip]
-	jmp	.L7188
-.L9009:
+	jmp	.L7196
+.L9021:
 .L3064:
 	mov	esi, 11
 	lea	rdi, .LC1086[rip]
-	jmp	.L7188
-.L9008:
+	jmp	.L7196
+.L9020:
 .L3062:
 	mov	esi, 12
 	lea	rdi, .LC1085[rip]
-	jmp	.L7188
-.L9007:
+	jmp	.L7196
+.L9019:
 .L3060:
 	mov	esi, 10
 	lea	rdi, .LC1084[rip]
-	jmp	.L7188
-.L9006:
+	jmp	.L7196
+.L9018:
 .L3058:
 	mov	esi, 9
 	lea	rdi, .LC1083[rip]
-	jmp	.L7188
-.L9005:
+	jmp	.L7196
+.L9017:
 .L3056:
 	mov	esi, 10
 	lea	rdi, .LC1082[rip]
-	jmp	.L7188
-.L9004:
+	jmp	.L7196
+.L9016:
 .L3054:
 	mov	esi, 9
 	lea	rdi, .LC1081[rip]
-	jmp	.L7188
-.L9003:
+	jmp	.L7196
+.L9015:
 .L3052:
 	mov	esi, 11
 	lea	rdi, .LC1080[rip]
-	jmp	.L7188
-.L9002:
+	jmp	.L7196
+.L9014:
 .L3050:
 	mov	esi, 10
 	lea	rdi, .LC1079[rip]
-	jmp	.L7188
-.L9001:
+	jmp	.L7196
+.L9013:
 .L3048:
 	mov	esi, 11
 	lea	rdi, .LC1078[rip]
-	jmp	.L7188
-.L9000:
+	jmp	.L7196
+.L9012:
 .L3046:
 	mov	esi, 11
 	lea	rdi, .LC1077[rip]
-	jmp	.L7188
-.L8999:
+	jmp	.L7196
+.L9011:
 .L3044:
 	mov	esi, 10
 	lea	rdi, .LC1076[rip]
-	jmp	.L7188
-.L8998:
+	jmp	.L7196
+.L9010:
 .L3042:
 	mov	esi, 9
 	lea	rdi, .LC1075[rip]
@@ -36139,37 +36159,37 @@ _ZN8MEMORY_T6POKE64Edd:
 	mov	rsi, rax
 	mov	rdi, r9
 	mov	eax, ebp
-	jmp	.L7189
-.L8997:
+	jmp	.L7197
+.L9009:
 .L3040:
 	mov	esi, 9
 	lea	rdi, .LC1074[rip]
-	jmp	.L7188
-.L8996:
+	jmp	.L7196
+.L9008:
 .L3038:
 	mov	esi, 10
 	lea	rdi, .LC1073[rip]
-	jmp	.L7188
-.L8995:
+	jmp	.L7196
+.L9007:
 .L3036:
 	mov	esi, 9
 	lea	rdi, .LC1072[rip]
-	jmp	.L7188
-.L8994:
+	jmp	.L7196
+.L9006:
 .L3034:
 	mov	esi, 10
 	lea	rdi, .LC1071[rip]
-	jmp	.L7188
-.L8993:
+	jmp	.L7196
+.L9005:
 .L3032:
 	mov	esi, 10
 	lea	rdi, .LC1070[rip]
-	jmp	.L7188
+	jmp	.L7196
 .L3030:
 	mov	esi, 9
 	lea	rdi, .LC1067[rip]
-	jmp	.L7188
-.L8990:
+	jmp	.L7196
+.L9002:
 .L3580:
 	mov	esi, 8
 	lea	rdi, .LC1334[rip]
@@ -36185,7 +36205,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8989:
+.L9001:
 .L3578:
 	mov	esi, 3
 	lea	rdi, .LC1333[rip]
@@ -36201,7 +36221,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8988:
+.L9000:
 .L3576:
 	mov	esi, 6
 	lea	rdi, .LC1332[rip]
@@ -36217,7 +36237,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8987:
+.L8999:
 .L3574:
 	mov	esi, 12
 	lea	rdi, .LC1331[rip]
@@ -36233,7 +36253,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8986:
+.L8998:
 .L3572:
 	mov	esi, 9
 	lea	rdi, .LC1330[rip]
@@ -36249,7 +36269,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8985:
+.L8997:
 .L3570:
 	mov	esi, 10
 	lea	rdi, .LC1329[rip]
@@ -36265,7 +36285,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8984:
+.L8996:
 .L3568:
 	mov	esi, 4
 	lea	rdi, .LC1328[rip]
@@ -36281,7 +36301,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8983:
+.L8995:
 .L3566:
 	mov	esi, 6
 	lea	rdi, .LC1327[rip]
@@ -36297,7 +36317,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8982:
+.L8994:
 .L3564:
 	mov	esi, 5
 	lea	rdi, .LC1326[rip]
@@ -36313,7 +36333,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8981:
+.L8993:
 .L3562:
 	mov	esi, 6
 	lea	rdi, .LC1325[rip]
@@ -36329,7 +36349,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8980:
+.L8992:
 .L3560:
 	mov	esi, 10
 	lea	rdi, .LC1324[rip]
@@ -36345,7 +36365,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8979:
+.L8991:
 .L3558:
 	mov	esi, 6
 	lea	rdi, .LC1323[rip]
@@ -36361,7 +36381,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8978:
+.L8990:
 .L3556:
 	mov	esi, 1
 	lea	rdi, .LC240[rip]
@@ -36377,7 +36397,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8977:
+.L8989:
 .L3554:
 	mov	esi, 9
 	lea	rdi, .LC1322[rip]
@@ -36393,7 +36413,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8976:
+.L8988:
 .L3552:
 	mov	esi, 4
 	lea	rdi, .LC1321[rip]
@@ -36409,7 +36429,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8975:
+.L8987:
 .L3550:
 	mov	esi, 6
 	lea	rdi, .LC1320[rip]
@@ -36425,7 +36445,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8974:
+.L8986:
 .L3548:
 	mov	esi, 4
 	lea	rdi, .LC1319[rip]
@@ -36441,7 +36461,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8973:
+.L8985:
 .L3546:
 	mov	esi, 4
 	lea	rdi, .LC1318[rip]
@@ -36457,7 +36477,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8972:
+.L8984:
 .L3544:
 	mov	esi, 10
 	lea	rdi, .LC1317[rip]
@@ -36473,7 +36493,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8971:
+.L8983:
 .L3542:
 	mov	esi, 9
 	lea	rdi, .LC1316[rip]
@@ -36489,7 +36509,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8970:
+.L8982:
 .L3540:
 	mov	esi, 4
 	lea	rdi, .LC1315[rip]
@@ -36505,7 +36525,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8969:
+.L8981:
 .L3538:
 	mov	esi, 16
 	lea	rdi, .LC1314[rip]
@@ -36521,7 +36541,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8968:
+.L8980:
 .L3536:
 	mov	esi, 8
 	lea	rdi, .LC1313[rip]
@@ -36537,7 +36557,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8967:
+.L8979:
 .L3534:
 	mov	esi, 5
 	lea	rdi, .LC1312[rip]
@@ -36553,7 +36573,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8966:
+.L8978:
 .L3532:
 	mov	esi, 4
 	lea	rdi, .LC1311[rip]
@@ -36569,7 +36589,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8965:
+.L8977:
 .L3530:
 	mov	esi, 10
 	lea	rdi, .LC1310[rip]
@@ -36585,7 +36605,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8964:
+.L8976:
 .L3528:
 	mov	esi, 7
 	lea	rdi, .LC1309[rip]
@@ -36601,7 +36621,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8963:
+.L8975:
 .L3526:
 	mov	esi, 4
 	lea	rdi, .LC1308[rip]
@@ -36617,7 +36637,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8962:
+.L8974:
 .L3524:
 	mov	esi, 7
 	lea	rdi, .LC1307[rip]
@@ -36633,7 +36653,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8961:
+.L8973:
 .L3522:
 	mov	esi, 4
 	lea	rdi, .LC1306[rip]
@@ -36649,7 +36669,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8960:
+.L8972:
 .L3520:
 	mov	esi, 4
 	lea	rdi, .LC1305[rip]
@@ -36665,7 +36685,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8959:
+.L8971:
 .L3518:
 	mov	esi, 5
 	lea	rdi, .LC1304[rip]
@@ -36681,7 +36701,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8958:
+.L8970:
 .L3516:
 	mov	esi, 3
 	lea	rdi, .LC1303[rip]
@@ -36697,7 +36717,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8957:
+.L8969:
 .L3514:
 	mov	esi, 3
 	lea	rdi, .LC1302[rip]
@@ -36713,7 +36733,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8956:
+.L8968:
 .L3512:
 	mov	esi, 4
 	lea	rdi, .LC1301[rip]
@@ -36729,7 +36749,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8955:
+.L8967:
 .L3510:
 	mov	esi, 8
 	lea	rdi, .LC1300[rip]
@@ -36745,7 +36765,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8954:
+.L8966:
 .L3508:
 	mov	esi, 6
 	lea	rdi, .LC1299[rip]
@@ -36761,7 +36781,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8953:
+.L8965:
 .L3506:
 	mov	esi, 13
 	lea	rdi, .LC1298[rip]
@@ -36777,7 +36797,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8952:
+.L8964:
 .L3504:
 	mov	esi, 5
 	lea	rdi, .LC1297[rip]
@@ -36793,7 +36813,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8951:
+.L8963:
 .L3502:
 	mov	esi, 3
 	lea	rdi, .LC1296[rip]
@@ -36809,7 +36829,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8950:
+.L8962:
 .L3500:
 	mov	esi, 9
 	lea	rdi, .LC1295[rip]
@@ -36825,7 +36845,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8949:
+.L8961:
 .L3498:
 	mov	esi, 4
 	lea	rdi, .LC1294[rip]
@@ -36841,7 +36861,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8948:
+.L8960:
 .L3496:
 	mov	esi, 2
 	lea	rdi, .LC1293[rip]
@@ -36857,7 +36877,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8947:
+.L8959:
 .L3494:
 	mov	esi, 5
 	lea	rdi, .LC1292[rip]
@@ -36873,7 +36893,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8946:
+.L8958:
 .L3492:
 	mov	esi, 4
 	lea	rdi, .LC1291[rip]
@@ -36889,7 +36909,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8945:
+.L8957:
 .L3490:
 	mov	esi, 7
 	lea	rdi, .LC1290[rip]
@@ -36905,7 +36925,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8944:
+.L8956:
 .L3488:
 	mov	esi, 5
 	lea	rdi, .LC1289[rip]
@@ -36921,7 +36941,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8943:
+.L8955:
 .L3486:
 	mov	esi, 12
 	lea	rdi, .LC1288[rip]
@@ -36937,7 +36957,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8942:
+.L8954:
 .L3484:
 	mov	esi, 12
 	lea	rdi, .LC1287[rip]
@@ -36953,7 +36973,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8941:
+.L8953:
 .L3482:
 	mov	esi, 10
 	lea	rdi, .LC1286[rip]
@@ -36969,7 +36989,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8940:
+.L8952:
 .L3480:
 	mov	esi, 13
 	lea	rdi, .LC1285[rip]
@@ -36985,7 +37005,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8939:
+.L8951:
 .L3478:
 	mov	esi, 4
 	lea	rdi, .LC1284[rip]
@@ -37001,7 +37021,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8938:
+.L8950:
 .L3476:
 	mov	esi, 14
 	lea	rdi, .LC1283[rip]
@@ -37017,7 +37037,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8937:
+.L8949:
 .L3474:
 	mov	esi, 6
 	lea	rdi, .LC1282[rip]
@@ -37033,7 +37053,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8936:
+.L8948:
 .L3472:
 	mov	esi, 6
 	lea	rdi, .LC1281[rip]
@@ -37049,7 +37069,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8935:
+.L8947:
 .L3470:
 	mov	esi, 5
 	lea	rdi, .LC1280[rip]
@@ -37065,7 +37085,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8934:
+.L8946:
 .L3468:
 	mov	esi, 4
 	lea	rdi, .LC1279[rip]
@@ -37081,7 +37101,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8933:
+.L8945:
 .L3466:
 	mov	esi, 12
 	lea	rdi, .LC1278[rip]
@@ -37097,7 +37117,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8932:
+.L8944:
 .L3464:
 	mov	esi, 11
 	lea	rdi, .LC1277[rip]
@@ -37113,7 +37133,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8931:
+.L8943:
 .L3462:
 	mov	esi, 8
 	lea	rdi, .LC1276[rip]
@@ -37129,7 +37149,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8930:
+.L8942:
 .L3460:
 	mov	esi, 3
 	lea	rdi, .LC1275[rip]
@@ -37145,7 +37165,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8929:
+.L8941:
 .L3458:
 	mov	esi, 6
 	lea	rdi, .LC1274[rip]
@@ -37161,7 +37181,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8928:
+.L8940:
 .L3456:
 	mov	esi, 4
 	lea	rdi, .LC1273[rip]
@@ -37177,7 +37197,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8927:
+.L8939:
 .L3454:
 	mov	esi, 7
 	lea	rdi, .LC1272[rip]
@@ -37193,7 +37213,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8926:
+.L8938:
 .L3452:
 	mov	esi, 6
 	lea	rdi, .LC1271[rip]
@@ -37225,7 +37245,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r15
 	jmp	fb_PrintString@PLT
 .L3448:
-.L8925:
+.L8937:
 .L3449:
 	mov	esi, 4
 	lea	rdi, .LC1269[rip]
@@ -37241,7 +37261,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8924:
+.L8936:
 .L3446:
 	mov	esi, 5
 	lea	rdi, .LC1268[rip]
@@ -37257,7 +37277,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8923:
+.L8935:
 .L3444:
 	mov	esi, 7
 	lea	rdi, .LC1267[rip]
@@ -37273,7 +37293,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8922:
+.L8934:
 .L3442:
 	mov	esi, 5
 	lea	rdi, .LC1266[rip]
@@ -37289,7 +37309,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8921:
+.L8933:
 .L3440:
 	mov	esi, 6
 	lea	rdi, .LC1265[rip]
@@ -37305,7 +37325,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8920:
+.L8932:
 .L3438:
 	mov	esi, 5
 	lea	rdi, .LC1264[rip]
@@ -37321,7 +37341,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8919:
+.L8931:
 .L3436:
 	mov	esi, 4
 	lea	rdi, .LC1263[rip]
@@ -37337,7 +37357,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8918:
+.L8930:
 .L3434:
 	mov	esi, 6
 	lea	rdi, .LC1262[rip]
@@ -37353,7 +37373,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8917:
+.L8929:
 .L3432:
 	mov	esi, 5
 	lea	rdi, .LC1261[rip]
@@ -37369,7 +37389,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8916:
+.L8928:
 .L3430:
 	mov	esi, 1
 	lea	rdi, .LC239[rip]
@@ -37385,7 +37405,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8915:
+.L8927:
 .L3428:
 	mov	esi, 4
 	lea	rdi, .LC1260[rip]
@@ -37401,7 +37421,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8914:
+.L8926:
 .L3426:
 	mov	esi, 3
 	lea	rdi, .LC1259[rip]
@@ -37417,7 +37437,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8913:
+.L8925:
 .L3424:
 	mov	esi, 5
 	lea	rdi, .LC1258[rip]
@@ -37433,7 +37453,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8912:
+.L8924:
 .L3422:
 	mov	esi, 1
 	lea	rdi, .LC238[rip]
@@ -37449,7 +37469,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8911:
+.L8923:
 .L3420:
 	mov	esi, 9
 	lea	rdi, .LC1257[rip]
@@ -37465,7 +37485,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8910:
+.L8922:
 .L3418:
 	mov	esi, 4
 	lea	rdi, .LC1256[rip]
@@ -37481,7 +37501,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8909:
+.L8921:
 .L3416:
 	mov	esi, 13
 	lea	rdi, .LC1255[rip]
@@ -37497,7 +37517,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8908:
+.L8920:
 .L3414:
 	mov	esi, 5
 	lea	rdi, .LC1254[rip]
@@ -37513,7 +37533,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8907:
+.L8919:
 .L3412:
 	mov	esi, 4
 	lea	rdi, .LC1253[rip]
@@ -37529,7 +37549,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8906:
+.L8918:
 .L3410:
 	mov	esi, 4
 	lea	rdi, .LC1252[rip]
@@ -37545,7 +37565,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8905:
+.L8917:
 .L3408:
 	mov	esi, 6
 	lea	rdi, .LC1251[rip]
@@ -37561,7 +37581,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8904:
+.L8916:
 .L3406:
 	mov	esi, 1
 	lea	rdi, .LC237[rip]
@@ -37577,7 +37597,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8903:
+.L8915:
 .L3404:
 	mov	esi, 5
 	lea	rdi, .LC1250[rip]
@@ -37593,7 +37613,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8902:
+.L8914:
 .L3402:
 	mov	esi, 5
 	lea	rdi, .LC1249[rip]
@@ -37609,7 +37629,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8901:
+.L8913:
 .L3400:
 	mov	esi, 5
 	lea	rdi, .LC1248[rip]
@@ -37625,7 +37645,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8900:
+.L8912:
 .L3398:
 	mov	esi, 10
 	lea	rdi, .LC1247[rip]
@@ -37641,7 +37661,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8899:
+.L8911:
 .L3396:
 	mov	esi, 5
 	lea	rdi, .LC1246[rip]
@@ -37657,7 +37677,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8898:
+.L8910:
 .L3394:
 	mov	esi, 6
 	lea	rdi, .LC1245[rip]
@@ -37673,7 +37693,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8897:
+.L8909:
 .L3392:
 	mov	esi, 7
 	lea	rdi, .LC1244[rip]
@@ -37689,7 +37709,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8896:
+.L8908:
 .L3390:
 	mov	esi, 9
 	lea	rdi, .LC1243[rip]
@@ -37705,7 +37725,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8895:
+.L8907:
 .L3388:
 	mov	esi, 10
 	lea	rdi, .LC1242[rip]
@@ -37721,7 +37741,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8894:
+.L8906:
 .L3386:
 	mov	esi, 5
 	lea	rdi, .LC1241[rip]
@@ -37737,7 +37757,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8893:
+.L8905:
 .L3384:
 	mov	esi, 5
 	lea	rdi, .LC1240[rip]
@@ -37753,7 +37773,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8892:
+.L8904:
 .L3382:
 	mov	esi, 8
 	lea	rdi, .LC1239[rip]
@@ -37769,7 +37789,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8891:
+.L8903:
 .L3380:
 	mov	esi, 10
 	lea	rdi, .LC1238[rip]
@@ -37785,7 +37805,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8890:
+.L8902:
 .L3378:
 	mov	esi, 11
 	lea	rdi, .LC1237[rip]
@@ -37801,7 +37821,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8889:
+.L8901:
 .L3376:
 	mov	esi, 12
 	lea	rdi, .LC1236[rip]
@@ -37817,7 +37837,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8888:
+.L8900:
 .L3374:
 	mov	esi, 14
 	lea	rdi, .LC1235[rip]
@@ -37833,7 +37853,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8887:
+.L8899:
 .L3372:
 	mov	esi, 11
 	lea	rdi, .LC1234[rip]
@@ -37849,7 +37869,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8886:
+.L8898:
 .L3370:
 	mov	esi, 10
 	lea	rdi, .LC1233[rip]
@@ -37865,7 +37885,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8885:
+.L8897:
 .L3368:
 	mov	esi, 14
 	lea	rdi, .LC1232[rip]
@@ -37881,7 +37901,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8884:
+.L8896:
 .L3366:
 	mov	esi, 15
 	lea	rdi, .LC1231[rip]
@@ -37897,7 +37917,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8883:
+.L8895:
 .L3364:
 	mov	esi, 10
 	lea	rdi, .LC1230[rip]
@@ -37913,7 +37933,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8882:
+.L8894:
 .L3362:
 	mov	esi, 15
 	lea	rdi, .LC1229[rip]
@@ -37929,7 +37949,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8881:
+.L8893:
 .L3360:
 	mov	esi, 10
 	lea	rdi, .LC1228[rip]
@@ -37945,7 +37965,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8880:
+.L8892:
 .L3358:
 	mov	esi, 2
 	lea	rdi, .LC1227[rip]
@@ -37961,7 +37981,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8879:
+.L8891:
 .L3356:
 	mov	esi, 15
 	lea	rdi, .LC1226[rip]
@@ -37977,7 +37997,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8878:
+.L8890:
 .L3354:
 	mov	esi, 4
 	lea	rdi, .LC1225[rip]
@@ -37993,7 +38013,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8877:
+.L8889:
 .L3352:
 	mov	esi, 11
 	lea	rdi, .LC540[rip]
@@ -38009,7 +38029,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8876:
+.L8888:
 .L3350:
 	mov	esi, 12
 	lea	rdi, .LC1224[rip]
@@ -38025,7 +38045,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8875:
+.L8887:
 .L3348:
 	mov	esi, 3
 	lea	rdi, .LC1223[rip]
@@ -38041,7 +38061,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8874:
+.L8886:
 .L3346:
 	mov	esi, 5
 	lea	rdi, .LC1222[rip]
@@ -38057,7 +38077,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8873:
+.L8885:
 .L3344:
 	mov	esi, 11
 	lea	rdi, .LC1221[rip]
@@ -38073,7 +38093,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8872:
+.L8884:
 .L3342:
 	mov	esi, 3
 	lea	rdi, .LC1220[rip]
@@ -38089,7 +38109,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8871:
+.L8883:
 .L3340:
 	mov	esi, 6
 	lea	rdi, .LC1219[rip]
@@ -38105,7 +38125,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8870:
+.L8882:
 .L3338:
 	mov	esi, 10
 	lea	rdi, .LC1218[rip]
@@ -38121,7 +38141,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8869:
+.L8881:
 .L3336:
 	mov	esi, 7
 	lea	rdi, .LC1217[rip]
@@ -38137,7 +38157,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8868:
+.L8880:
 .L3334:
 	mov	esi, 9
 	lea	rdi, .LC1216[rip]
@@ -38153,7 +38173,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8867:
+.L8879:
 .L3332:
 	mov	esi, 7
 	lea	rdi, .LC1215[rip]
@@ -38169,7 +38189,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8866:
+.L8878:
 .L3330:
 	mov	esi, 9
 	lea	rdi, .LC1214[rip]
@@ -38185,7 +38205,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8865:
+.L8877:
 .L3328:
 	mov	esi, 4
 	lea	rdi, .LC1213[rip]
@@ -38201,7 +38221,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8864:
+.L8876:
 .L3326:
 	mov	esi, 9
 	lea	rdi, .LC1212[rip]
@@ -38217,7 +38237,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8863:
+.L8875:
 .L3324:
 	mov	esi, 8
 	lea	rdi, .LC1211[rip]
@@ -38233,7 +38253,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8862:
+.L8874:
 .L3322:
 	mov	esi, 12
 	lea	rdi, .LC1210[rip]
@@ -38249,7 +38269,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8861:
+.L8873:
 .L3320:
 	mov	esi, 9
 	lea	rdi, .LC1209[rip]
@@ -38265,7 +38285,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8860:
+.L8872:
 .L3318:
 	mov	esi, 11
 	lea	rdi, .LC1208[rip]
@@ -38281,7 +38301,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8859:
+.L8871:
 .L3316:
 	mov	esi, 8
 	lea	rdi, .LC1207[rip]
@@ -38297,7 +38317,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8858:
+.L8870:
 .L3314:
 	mov	esi, 16
 	lea	rdi, .LC1206[rip]
@@ -38313,7 +38333,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8857:
+.L8869:
 .L3312:
 	mov	esi, 8
 	lea	rdi, .LC1205[rip]
@@ -38329,7 +38349,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8856:
+.L8868:
 .L3310:
 	mov	esi, 9
 	lea	rdi, .LC1204[rip]
@@ -38345,7 +38365,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8855:
+.L8867:
 .L3308:
 	mov	esi, 7
 	lea	rdi, .LC1203[rip]
@@ -38361,7 +38381,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8854:
+.L8866:
 .L3306:
 	mov	esi, 3
 	lea	rdi, .LC1202[rip]
@@ -38377,7 +38397,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8853:
+.L8865:
 .L3304:
 	mov	esi, 5
 	lea	rdi, .LC1201[rip]
@@ -38393,7 +38413,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8852:
+.L8864:
 .L3302:
 	mov	esi, 12
 	lea	rdi, .LC1200[rip]
@@ -38409,7 +38429,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8851:
+.L8863:
 .L3300:
 	mov	esi, 7
 	lea	rdi, .LC1199[rip]
@@ -38425,7 +38445,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8850:
+.L8862:
 .L3298:
 	mov	esi, 13
 	lea	rdi, .LC1198[rip]
@@ -38441,7 +38461,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8849:
+.L8861:
 .L3296:
 	mov	esi, 6
 	lea	rdi, .LC1197[rip]
@@ -38457,7 +38477,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8848:
+.L8860:
 .L3294:
 	mov	esi, 6
 	lea	rdi, .LC1196[rip]
@@ -38473,7 +38493,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8847:
+.L8859:
 .L3292:
 	mov	esi, 7
 	lea	rdi, .LC1195[rip]
@@ -38489,7 +38509,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8846:
+.L8858:
 .L3290:
 	mov	esi, 12
 	lea	rdi, .LC1194[rip]
@@ -38505,7 +38525,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8845:
+.L8857:
 .L3288:
 	mov	esi, 5
 	lea	rdi, .LC1193[rip]
@@ -38521,7 +38541,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8844:
+.L8856:
 .L3286:
 	mov	esi, 3
 	lea	rdi, .LC1192[rip]
@@ -38537,7 +38557,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8843:
+.L8855:
 .L3284:
 	mov	esi, 5
 	lea	rdi, .LC1191[rip]
@@ -38553,7 +38573,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8842:
+.L8854:
 .L3282:
 	mov	esi, 5
 	lea	rdi, .LC1190[rip]
@@ -38569,7 +38589,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8841:
+.L8853:
 .L3280:
 	mov	esi, 9
 	lea	rdi, .LC1189[rip]
@@ -38585,7 +38605,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8840:
+.L8852:
 .L3278:
 	mov	esi, 14
 	lea	rdi, .LC1188[rip]
@@ -38601,7 +38621,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8839:
+.L8851:
 .L3276:
 	mov	esi, 6
 	lea	rdi, .LC1187[rip]
@@ -38617,7 +38637,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8838:
+.L8850:
 .L3274:
 	mov	esi, 5
 	lea	rdi, .LC1186[rip]
@@ -38633,7 +38653,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8837:
+.L8849:
 .L3272:
 	mov	esi, 8
 	lea	rdi, .LC1185[rip]
@@ -38649,7 +38669,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8836:
+.L8848:
 .L3270:
 	mov	esi, 10
 	lea	rdi, .LC1184[rip]
@@ -38665,7 +38685,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8835:
+.L8847:
 .L3268:
 	mov	esi, 14
 	lea	rdi, .LC1183[rip]
@@ -38681,7 +38701,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8834:
+.L8846:
 .L3266:
 	mov	esi, 13
 	lea	rdi, .LC1182[rip]
@@ -38697,7 +38717,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8833:
+.L8845:
 .L3264:
 	mov	esi, 13
 	lea	rdi, .LC1181[rip]
@@ -38713,7 +38733,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8832:
+.L8844:
 .L3262:
 	mov	esi, 7
 	lea	rdi, .LC1180[rip]
@@ -38729,7 +38749,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8831:
+.L8843:
 .L3260:
 	mov	esi, 8
 	lea	rdi, .LC1179[rip]
@@ -38745,7 +38765,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8830:
+.L8842:
 .L3258:
 	mov	esi, 9
 	lea	rdi, .LC1178[rip]
@@ -38761,7 +38781,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8829:
+.L8841:
 .L3256:
 	mov	esi, 8
 	lea	rdi, .LC1177[rip]
@@ -38777,7 +38797,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8828:
+.L8840:
 .L3254:
 	mov	esi, 7
 	lea	rdi, .LC1176[rip]
@@ -38793,7 +38813,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8827:
+.L8839:
 .L3252:
 	mov	esi, 5
 	lea	rdi, .LC1175[rip]
@@ -38809,7 +38829,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8826:
+.L8838:
 .L3250:
 	mov	esi, 7
 	lea	rdi, .LC1174[rip]
@@ -38825,7 +38845,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8825:
+.L8837:
 .L3248:
 	mov	esi, 2
 	lea	rdi, .LC1173[rip]
@@ -38841,7 +38861,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8824:
+.L8836:
 .L3246:
 	mov	esi, 6
 	lea	rdi, .LC1172[rip]
@@ -38857,7 +38877,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8823:
+.L8835:
 .L3244:
 	mov	esi, 14
 	lea	rdi, .LC1171[rip]
@@ -38873,7 +38893,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8822:
+.L8834:
 .L3242:
 	mov	esi, 3
 	lea	rdi, .LC1170[rip]
@@ -38889,7 +38909,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8821:
+.L8833:
 .L3240:
 	mov	esi, 6
 	lea	rdi, .LC1169[rip]
@@ -38905,7 +38925,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8820:
+.L8832:
 .L3238:
 	mov	esi, 11
 	lea	rdi, .LC1168[rip]
@@ -38921,7 +38941,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8819:
+.L8831:
 .L3236:
 	mov	esi, 13
 	lea	rdi, .LC1167[rip]
@@ -38937,7 +38957,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8818:
+.L8830:
 .L3234:
 	mov	esi, 9
 	lea	rdi, .LC1166[rip]
@@ -38953,7 +38973,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8817:
+.L8829:
 .L3232:
 	mov	esi, 12
 	lea	rdi, .LC1165[rip]
@@ -38969,7 +38989,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8816:
+.L8828:
 .L3230:
 	mov	esi, 9
 	lea	rdi, .LC1164[rip]
@@ -38985,7 +39005,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8815:
+.L8827:
 .L3228:
 	mov	esi, 11
 	lea	rdi, .LC1163[rip]
@@ -39001,7 +39021,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8814:
+.L8826:
 .L3226:
 	mov	esi, 7
 	lea	rdi, .LC1162[rip]
@@ -39017,7 +39037,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8813:
+.L8825:
 .L3224:
 	mov	esi, 13
 	lea	rdi, .LC1161[rip]
@@ -39033,7 +39053,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8812:
+.L8824:
 .L3222:
 	mov	esi, 18
 	lea	rdi, .LC1160[rip]
@@ -39049,7 +39069,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8811:
+.L8823:
 .L3220:
 	mov	esi, 12
 	lea	rdi, .LC1159[rip]
@@ -39065,7 +39085,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8810:
+.L8822:
 .L3218:
 	mov	esi, 7
 	lea	rdi, .LC1158[rip]
@@ -39081,7 +39101,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8809:
+.L8821:
 .L3216:
 	mov	esi, 13
 	lea	rdi, .LC1157[rip]
@@ -39097,7 +39117,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8808:
+.L8820:
 .L3214:
 	mov	esi, 18
 	lea	rdi, .LC1156[rip]
@@ -39113,7 +39133,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8807:
+.L8819:
 .L3212:
 	mov	esi, 12
 	lea	rdi, .LC1155[rip]
@@ -39129,7 +39149,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8806:
+.L8818:
 .L3210:
 	mov	esi, 7
 	lea	rdi, .LC1154[rip]
@@ -39145,7 +39165,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8805:
+.L8817:
 .L3208:
 	mov	esi, 5
 	lea	rdi, .LC1153[rip]
@@ -39161,7 +39181,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8804:
+.L8816:
 .L3206:
 	mov	esi, 10
 	lea	rdi, .LC1152[rip]
@@ -39177,7 +39197,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8803:
+.L8815:
 .L3204:
 	mov	esi, 12
 	lea	rdi, .LC1151[rip]
@@ -39193,7 +39213,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8802:
+.L8814:
 .L3202:
 	mov	esi, 8
 	lea	rdi, .LC1150[rip]
@@ -39209,7 +39229,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8801:
+.L8813:
 .L3200:
 	mov	esi, 13
 	lea	rdi, .LC1149[rip]
@@ -39225,7 +39245,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8800:
+.L8812:
 .L3198:
 	mov	esi, 8
 	lea	rdi, .LC1148[rip]
@@ -39241,7 +39261,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8799:
+.L8811:
 .L3196:
 	mov	esi, 13
 	lea	rdi, .LC1147[rip]
@@ -39257,7 +39277,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8798:
+.L8810:
 .L3194:
 	mov	esi, 8
 	lea	rdi, .LC1146[rip]
@@ -39273,7 +39293,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8797:
+.L8809:
 .L3192:
 	mov	esi, 11
 	lea	rdi, .LC538[rip]
@@ -39289,7 +39309,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8796:
+.L8808:
 .L3190:
 	mov	esi, 10
 	lea	rdi, .LC1145[rip]
@@ -39305,7 +39325,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8795:
+.L8807:
 .L3188:
 	mov	esi, 6
 	lea	rdi, .LC1144[rip]
@@ -39321,7 +39341,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8794:
+.L8806:
 .L3186:
 	mov	esi, 6
 	lea	rdi, .LC1143[rip]
@@ -39337,7 +39357,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8793:
+.L8805:
 .L3184:
 	mov	esi, 3
 	lea	rdi, .LC1142[rip]
@@ -39353,7 +39373,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8792:
+.L8804:
 .L3182:
 	mov	esi, 6
 	lea	rdi, .LC1141[rip]
@@ -39369,7 +39389,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8791:
+.L8803:
 .L3180:
 	mov	esi, 5
 	lea	rdi, .LC1140[rip]
@@ -39385,7 +39405,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8790:
+.L8802:
 .L3178:
 	mov	esi, 2
 	lea	rdi, .LC1139[rip]
@@ -39401,7 +39421,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8789:
+.L8801:
 .L3176:
 	mov	esi, 14
 	lea	rdi, .LC1138[rip]
@@ -39417,7 +39437,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8788:
+.L8800:
 .L3174:
 	mov	esi, 5
 	lea	rdi, .LC1137[rip]
@@ -39433,7 +39453,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8787:
+.L8799:
 .L3172:
 	mov	esi, 2
 	lea	rdi, .LC1136[rip]
@@ -39449,7 +39469,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8786:
+.L8798:
 .L3170:
 	mov	esi, 5
 	lea	rdi, .LC1135[rip]
@@ -39465,7 +39485,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8785:
+.L8797:
 .L3168:
 	mov	esi, 12
 	lea	rdi, .LC1134[rip]
@@ -39481,7 +39501,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8784:
+.L8796:
 .L3166:
 	mov	esi, 18
 	lea	rdi, .LC1133[rip]
@@ -39497,7 +39517,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8783:
+.L8795:
 .L3164:
 	mov	esi, 9
 	lea	rdi, .LC1132[rip]
@@ -39513,7 +39533,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8782:
+.L8794:
 .L3162:
 	mov	esi, 9
 	lea	rdi, .LC1131[rip]
@@ -39529,7 +39549,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8781:
+.L8793:
 .L3160:
 	mov	esi, 9
 	lea	rdi, .LC1130[rip]
@@ -39545,7 +39565,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8780:
+.L8792:
 .L3158:
 	mov	esi, 9
 	lea	rdi, .LC537[rip]
@@ -39561,7 +39581,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8779:
+.L8791:
 .L3156:
 	mov	esi, 1
 	lea	rdi, .LC236[rip]
@@ -39577,7 +39597,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8778:
+.L8790:
 .L3154:
 	mov	esi, 5
 	lea	rdi, .LC1129[rip]
@@ -39593,7 +39613,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8777:
+.L8789:
 .L3152:
 	mov	esi, 12
 	lea	rdi, .LC1128[rip]
@@ -39609,7 +39629,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8776:
+.L8788:
 .L3150:
 	mov	esi, 5
 	lea	rdi, .LC1127[rip]
@@ -39625,7 +39645,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8775:
+.L8787:
 .L3148:
 	mov	esi, 5
 	lea	rdi, .LC1126[rip]
@@ -39641,7 +39661,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8774:
+.L8786:
 .L3146:
 	mov	esi, 5
 	lea	rdi, .LC1125[rip]
@@ -39657,7 +39677,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8773:
+.L8785:
 .L3144:
 	mov	esi, 4
 	lea	rdi, .LC1124[rip]
@@ -39673,7 +39693,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8772:
+.L8784:
 .L3142:
 	mov	esi, 6
 	lea	rdi, .LC1123[rip]
@@ -39689,7 +39709,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8771:
+.L8783:
 .L3140:
 	mov	esi, 7
 	lea	rdi, .LC1122[rip]
@@ -39705,7 +39725,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8770:
+.L8782:
 .L3138:
 	mov	esi, 9
 	lea	rdi, .LC1121[rip]
@@ -39721,7 +39741,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8769:
+.L8781:
 .L3136:
 	mov	esi, 10
 	lea	rdi, .LC1120[rip]
@@ -39737,7 +39757,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8768:
+.L8780:
 .L3134:
 	mov	esi, 7
 	lea	rdi, .LC1119[rip]
@@ -39753,7 +39773,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8767:
+.L8779:
 .L3132:
 	mov	esi, 11
 	lea	rdi, .LC1118[rip]
@@ -39769,7 +39789,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8766:
+.L8778:
 .L3130:
 	mov	esi, 11
 	lea	rdi, .LC1117[rip]
@@ -39785,7 +39805,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8765:
+.L8777:
 .L3128:
 	mov	esi, 10
 	lea	rdi, .LC1116[rip]
@@ -39801,7 +39821,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8764:
+.L8776:
 .L3126:
 	mov	esi, 5
 	lea	rdi, .LC1115[rip]
@@ -39817,7 +39837,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8763:
+.L8775:
 .L3124:
 	mov	esi, 9
 	lea	rdi, .LC1114[rip]
@@ -39833,7 +39853,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8762:
+.L8774:
 .L3122:
 	mov	esi, 10
 	lea	rdi, .LC1113[rip]
@@ -39849,7 +39869,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8761:
+.L8773:
 .L3120:
 	mov	esi, 7
 	lea	rdi, .LC1112[rip]
@@ -39865,7 +39885,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8760:
+.L8772:
 .L3118:
 	mov	esi, 3
 	lea	rdi, .LC1111[rip]
@@ -39881,7 +39901,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8759:
+.L8771:
 .L3116:
 	mov	esi, 17
 	lea	rdi, .LC1110[rip]
@@ -39897,7 +39917,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8758:
+.L8770:
 .L3114:
 	mov	esi, 12
 	lea	rdi, .LC1109[rip]
@@ -39913,7 +39933,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8757:
+.L8769:
 .L3112:
 	mov	esi, 7
 	lea	rdi, .LC1108[rip]
@@ -39929,7 +39949,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8756:
+.L8768:
 .L3110:
 	mov	esi, 6
 	lea	rdi, .LC1107[rip]
@@ -39945,7 +39965,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8755:
+.L8767:
 .L3108:
 	mov	esi, 6
 	lea	rdi, .LC1106[rip]
@@ -39961,7 +39981,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8754:
+.L8766:
 .L3106:
 	mov	esi, 9
 	lea	rdi, .LC1105[rip]
@@ -39977,7 +39997,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8753:
+.L8765:
 .L3104:
 	mov	esi, 4
 	lea	rdi, .LC1104[rip]
@@ -39993,7 +40013,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8752:
+.L8764:
 .L3102:
 	mov	esi, 4
 	lea	rdi, .LC1103[rip]
@@ -40009,7 +40029,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8751:
+.L8763:
 .L3100:
 	mov	esi, 1
 	lea	rdi, .LC235[rip]
@@ -40025,7 +40045,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8750:
+.L8762:
 .L3098:
 	mov	esi, 8
 	lea	rdi, .LC1102[rip]
@@ -40041,7 +40061,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8749:
+.L8761:
 .L3096:
 	mov	esi, 5
 	lea	rdi, .LC1101[rip]
@@ -40057,7 +40077,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8748:
+.L8760:
 .L3094:
 	mov	esi, 5
 	lea	rdi, .LC1100[rip]
@@ -40073,7 +40093,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8747:
+.L8759:
 .L3092:
 	mov	esi, 7
 	lea	rdi, .LC1099[rip]
@@ -40089,7 +40109,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8746:
+.L8758:
 .L3090:
 	mov	esi, 8
 	lea	rdi, .LC1098[rip]
@@ -40105,7 +40125,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8745:
+.L8757:
 .L3088:
 	mov	esi, 14
 	lea	rdi, .LC1097[rip]
@@ -40121,7 +40141,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8744:
+.L8756:
 .L3086:
 	mov	esi, 4
 	lea	rdi, .LC1096[rip]
@@ -40137,7 +40157,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8743:
+.L8755:
 .L3084:
 	mov	esi, 7
 	lea	rdi, .LC1095[rip]
@@ -40153,7 +40173,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8742:
+.L8754:
 .L3082:
 	mov	esi, 8
 	lea	rdi, .LC1094[rip]
@@ -40169,7 +40189,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8741:
+.L8753:
 .L3080:
 	mov	esi, 4
 	lea	rdi, .LC1093[rip]
@@ -40200,21 +40220,21 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7969:
-.L5125:
+.L7981:
+.L5133:
 	comisd	xmm5, xmm2
-	je	.L7147
+	je	.L7155
 	comisd	xmm5, QWORD PTR .LC1[rip]
-	je	.L9014
+	je	.L9026
 	comisd	xmm5, QWORD PTR .LC105[rip]
-	je	.L9015
+	je	.L9027
 	comisd	xmm5, QWORD PTR .LC106[rip]
-	je	.L9016
+	je	.L9028
 	comisd	xmm5, QWORD PTR .LC107[rip]
-	je	.L9017
+	je	.L9029
 	comisd	xmm5, QWORD PTR .LC108[rip]
 	jne	.L742
-.L5138:
+.L5146:
 	pxor	xmm0, xmm0
 	pxor	xmm2, xmm2
 	pxor	xmm3, xmm3
@@ -40234,8 +40254,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxLine@PLT
-.L7968:
-.L5123:
+.L7980:
+.L5131:
 	movsd	xmm0, QWORD PTR YS$[rip]
 	movsd	xmm1, QWORD PTR .LC111[rip]
 	add	rsp, 280
@@ -40249,8 +40269,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r15
 	cvtsd2si	esi, xmm1
 	jmp	fb_GfxUnlock@PLT
-.L9017:
-.L5137:
+.L9029:
+.L5145:
 	pxor	xmm0, xmm0
 	pxor	xmm2, xmm2
 	pxor	xmm3, xmm3
@@ -40270,8 +40290,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxLine@PLT
-.L9016:
-.L5135:
+.L9028:
+.L5143:
 	pxor	xmm0, xmm0
 	pxor	xmm2, xmm2
 	pxor	xmm3, xmm3
@@ -40291,8 +40311,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxLine@PLT
-.L9015:
-.L5133:
+.L9027:
+.L5141:
 	pxor	xmm0, xmm0
 	pxor	xmm2, xmm2
 	pxor	xmm3, xmm3
@@ -40312,8 +40332,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxLine@PLT
-.L9014:
-.L5131:
+.L9026:
+.L5139:
 	pxor	xmm0, xmm0
 	xor	ecx, ecx
 	pxor	xmm1, xmm1
@@ -40329,8 +40349,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxPset@PLT
-.L7147:
-.L5128:
+.L7155:
+.L5136:
 	pxor	xmm0, xmm0
 	xor	ecx, ecx
 	pxor	xmm1, xmm1
@@ -40346,8 +40366,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxPset@PLT
-.L7967:
-.L5121:
+.L7979:
+.L5129:
 	movsd	xmm0, QWORD PTR 394848[r13]
 	movsd	xmm1, QWORD PTR .LC111[rip]
 	add	rsp, 280
@@ -40361,8 +40381,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r15
 	cvtsd2si	esi, xmm1
 	jmp	fb_GfxUnlock@PLT
-.L7966:
-.L5106:
+.L7978:
+.L5114:
 	add	rsp, 280
 	pop	rbx
 	pop	rbp
@@ -40371,8 +40391,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxLock@PLT
-.L7965:
-.L5097:
+.L7977:
+.L5105:
 	cvtsd2si	rax, QWORD PTR 394984[r13]
 	comisd	xmm5, xmm2
 	movsd	xmm0, QWORD PTR 394848[r13]
@@ -40447,20 +40467,20 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm3, xmm9
 	movsd	QWORD PTR 394960[r13], xmm3
 	movapd	xmm1, xmm3
-	je	.L7136
+	je	.L7144
 	comisd	xmm5, QWORD PTR .LC1[rip]
-	je	.L9018
+	je	.L9030
 	comisd	xmm5, QWORD PTR .LC105[rip]
-	je	.L9019
+	je	.L9031
 	comisd	xmm5, QWORD PTR .LC106[rip]
-	je	.L9020
+	je	.L9032
 	comisd	xmm5, QWORD PTR .LC107[rip]
-	je	.L9021
+	je	.L9033
 	comisd	xmm5, QWORD PTR .LC108[rip]
-	je	.L9022
+	je	.L9034
 	comisd	xmm5, QWORD PTR .LC109[rip]
 	jne	.L742
-.L5119:
+.L5127:
 	xor	esi, esi
 	lea	rdi, .LC3[rip]
 	call	fb_StrAllocTempDescZEx@PLT
@@ -40490,22 +40510,22 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2ss	xmm0, rdx
 	xor	edx, edx
 	jmp	fb_GfxPaint@PLT
-.L7964:
-.L5095:
+.L7976:
+.L5103:
 	comisd	xmm5, xmm2
-	je	.L7131
+	je	.L7139
 	comisd	xmm5, QWORD PTR .LC1[rip]
-	je	.L9023
+	je	.L9035
 	comisd	xmm5, QWORD PTR .LC105[rip]
-	je	.L9024
+	je	.L9036
 	comisd	xmm5, QWORD PTR .LC106[rip]
 	jne	.L742
-.L5104:
+.L5112:
 	movapd	xmm0, XMMWORD PTR .LC2070[rip]
 	movups	XMMWORD PTR 395032[r13], xmm0
 	jmp	.L742
-.L9022:
-.L5118:
+.L9034:
+.L5126:
 	addsd	xmm1, xmm4
 	addsd	xmm0, xmm7
 	pxor	xmm2, xmm2
@@ -40536,8 +40556,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r15
 	cvtsi2ss	xmm2, rax
 	jmp	fb_GfxLine@PLT
-.L9020:
-.L5114:
+.L9032:
+.L5122:
 	addsd	xmm1, xmm4
 	addsd	xmm0, xmm7
 	pxor	xmm3, xmm3
@@ -40563,8 +40583,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxLine@PLT
-.L9019:
-.L5112:
+.L9031:
+.L5120:
 	addsd	xmm1, xmm4
 	addsd	xmm0, xmm7
 	pxor	xmm3, xmm3
@@ -40590,8 +40610,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxLine@PLT
-.L9018:
-.L5110:
+.L9030:
+.L5118:
 	addsd	xmm1, xmm4
 	addsd	xmm0, xmm7
 	pxor	xmm2, xmm2
@@ -40619,8 +40639,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2ss	xmm0, rdx
 	xor	edx, edx
 	jmp	fb_GfxEllipse@PLT
-.L7136:
-.L5107:
+.L7144:
+.L5115:
 	addsd	xmm1, xmm4
 	addsd	xmm0, xmm7
 	mov	rdi, QWORD PTR FGIMAGE$[rip]
@@ -40643,8 +40663,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2ss	xmm0, rdx
 	mov	edx, 4
 	jmp	fb_GfxPset@PLT
-.L7963:
-.L5093:
+.L7975:
+.L5101:
 	mov	rax, QWORD PTR .LC270[rip]
 	mov	rdi, r13
 	pxor	xmm1, xmm1
@@ -40663,8 +40683,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7127:
-.L5090:
+.L7135:
+.L5098:
 	cvtsd2si	rsi, xmm5
 	mov	edi, 1
 	xor	eax, eax
@@ -40685,8 +40705,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrConcatAssign@PLT
-.L9021:
-.L5116:
+.L9033:
+.L5124:
 	addsd	xmm1, xmm4
 	addsd	xmm0, xmm7
 	pxor	xmm3, xmm3
@@ -40712,22 +40732,22 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_GfxLine@PLT
-.L9024:
-.L5103:
+.L9036:
+.L5111:
 	movapd	xmm0, XMMWORD PTR .LC2069[rip]
 	movups	XMMWORD PTR 395032[r13], xmm0
 	jmp	.L742
-.L9023:
-.L5101:
+.L9035:
+.L5109:
 	movq	xmm0, QWORD PTR .LC2068[rip]
 	movups	XMMWORD PTR 395032[r13], xmm0
 	jmp	.L742
-.L7131:
-.L5098:
+.L7139:
+.L5106:
 	pxor	xmm0, xmm0
 	movups	XMMWORD PTR 395032[r13], xmm0
 	jmp	.L742
-.L7480:
+.L7492:
 .L1108:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40736,7 +40756,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7479:
+.L7491:
 .L1106:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40745,7 +40765,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7478:
+.L7490:
 .L1104:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40754,7 +40774,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7477:
+.L7489:
 .L1102:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40763,7 +40783,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7476:
+.L7488:
 .L1100:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40772,7 +40792,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7475:
+.L7487:
 .L1098:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40781,7 +40801,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7474:
+.L7486:
 .L1096:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40790,7 +40810,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7473:
+.L7485:
 .L1094:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40799,7 +40819,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7472:
+.L7484:
 .L1092:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40808,7 +40828,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7471:
+.L7483:
 .L1090:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40817,7 +40837,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7470:
+.L7482:
 .L1088:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40826,7 +40846,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7469:
+.L7481:
 .L1086:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40835,7 +40855,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7468:
+.L7480:
 .L1084:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40844,7 +40864,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7467:
+.L7479:
 .L1082:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40853,7 +40873,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7466:
+.L7478:
 .L1080:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40861,7 +40881,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7465:
+.L7477:
 .L1078:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40870,7 +40890,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7704:
+.L7716:
 .L1556:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40879,7 +40899,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7703:
+.L7715:
 .L1554:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40888,7 +40908,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7702:
+.L7714:
 .L1552:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40897,7 +40917,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7701:
+.L7713:
 .L1550:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40906,7 +40926,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7700:
+.L7712:
 .L1548:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40915,7 +40935,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7699:
+.L7711:
 .L1546:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40924,7 +40944,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7698:
+.L7710:
 .L1544:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40933,7 +40953,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7697:
+.L7709:
 .L1542:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40942,7 +40962,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7696:
+.L7708:
 .L1540:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40951,7 +40971,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7695:
+.L7707:
 .L1538:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40960,7 +40980,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7694:
+.L7706:
 .L1536:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40969,7 +40989,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7693:
+.L7705:
 .L1534:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40978,7 +40998,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7692:
+.L7704:
 .L1532:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40987,7 +41007,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7691:
+.L7703:
 .L1530:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -40996,7 +41016,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7690:
+.L7702:
 .L1528:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41005,7 +41025,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7689:
+.L7701:
 .L1526:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41014,7 +41034,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7688:
+.L7700:
 .L1524:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41023,7 +41043,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7687:
+.L7699:
 .L1522:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41032,7 +41052,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7686:
+.L7698:
 .L1520:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41041,7 +41061,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7685:
+.L7697:
 .L1518:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41050,7 +41070,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7684:
+.L7696:
 .L1516:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41059,7 +41079,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7683:
+.L7695:
 .L1514:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41068,7 +41088,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7682:
+.L7694:
 .L1512:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41077,7 +41097,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7681:
+.L7693:
 .L1510:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41086,7 +41106,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7680:
+.L7692:
 .L1508:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41095,7 +41115,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7679:
+.L7691:
 .L1506:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41104,7 +41124,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7678:
+.L7690:
 .L1504:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41113,7 +41133,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7677:
+.L7689:
 .L1502:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41122,7 +41142,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7676:
+.L7688:
 .L1500:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41131,7 +41151,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7675:
+.L7687:
 .L1498:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41140,7 +41160,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7674:
+.L7686:
 .L1496:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41149,7 +41169,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7673:
+.L7685:
 .L1494:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41158,7 +41178,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7980:
+.L7992:
 .L3008:
 	movsd	xmm0, QWORD PTR .LC1066[rip]
 	mulsd	xmm0, QWORD PTR 394896[r13]
@@ -41174,7 +41194,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7979:
+.L7991:
 .L3006:
 	movsd	xmm0, QWORD PTR .LC1065[rip]
 	mulsd	xmm0, QWORD PTR 394896[r13]
@@ -41190,7 +41210,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7436:
+.L7448:
 .L4943:
 	xor	r8d, r8d
 	mov	ecx, 9
@@ -41211,7 +41231,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7435:
+.L7447:
 .L4941:
 	xor	r8d, r8d
 	mov	ecx, 8
@@ -41232,7 +41252,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7440:
+.L7452:
 .L4951:
 	xor	r8d, r8d
 	mov	ecx, 7
@@ -41253,7 +41273,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7439:
+.L7451:
 .L4949:
 	xor	r8d, r8d
 	mov	ecx, 7
@@ -41274,7 +41294,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7438:
+.L7450:
 .L4947:
 	xor	r8d, r8d
 	mov	ecx, 8
@@ -41295,7 +41315,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7437:
+.L7449:
 .L4945:
 	xor	r8d, r8d
 	mov	ecx, 6
@@ -41316,7 +41336,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7448:
+.L7460:
 .L4967:
 	add	rsp, 280
 	xor	r9d, r9d
@@ -41332,7 +41352,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_FileOpen@PLT
-.L7447:
+.L7459:
 .L4965:
 	xor	r8d, r8d
 	mov	ecx, 10
@@ -41353,7 +41373,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7446:
+.L7458:
 .L4963:
 	xor	r8d, r8d
 	mov	ecx, 9
@@ -41374,7 +41394,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7445:
+.L7457:
 .L4961:
 	xor	r8d, r8d
 	mov	ecx, 6
@@ -41395,7 +41415,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7444:
+.L7456:
 .L4959:
 	xor	r8d, r8d
 	mov	ecx, 7
@@ -41416,7 +41436,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7443:
+.L7455:
 .L4957:
 	xor	r8d, r8d
 	mov	ecx, 6
@@ -41437,7 +41457,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7442:
+.L7454:
 .L4955:
 	xor	r8d, r8d
 	mov	ecx, 10
@@ -41458,7 +41478,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7441:
+.L7453:
 .L4953:
 	xor	r8d, r8d
 	mov	ecx, 8
@@ -41479,44 +41499,44 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L5179:
+.L5187:
 	movsd	xmm1, QWORD PTR .LC313[rip]
 	addsd	xmm1, xmm0
 	comisd	xmm1, xmm4
-	ja	.L5215
+	ja	.L5223
 	addsd	xmm0, QWORD PTR .LC2082[rip]
 	comisd	xmm4, xmm0
 	jbe	.L742
-.L5215:
-	comisd	xmm4, QWORD PTR .LC2083[rip]
-	ja	.L5217
-	comisd	xmm4, QWORD PTR .LC2084[rip]
-	jnb	.L9025
-.L5217:
-	comisd	xmm4, QWORD PTR .LC261[rip]
-	jb	.L5221
-	comisd	xmm4, QWORD PTR .LC260[rip]
-	jbe	.L5219
-.L5221:
-	comisd	xmm4, QWORD PTR .LC263[rip]
-	jb	.L5223
-	comisd	xmm4, QWORD PTR .LC262[rip]
-	jbe	.L5219
 .L5223:
+	comisd	xmm4, QWORD PTR .LC2083[rip]
+	ja	.L5225
+	comisd	xmm4, QWORD PTR .LC2084[rip]
+	jnb	.L9037
+.L5225:
+	comisd	xmm4, QWORD PTR .LC261[rip]
+	jb	.L5229
+	comisd	xmm4, QWORD PTR .LC260[rip]
+	jbe	.L5227
+.L5229:
+	comisd	xmm4, QWORD PTR .LC263[rip]
+	jb	.L5231
+	comisd	xmm4, QWORD PTR .LC262[rip]
+	jbe	.L5227
+.L5231:
 	comisd	xmm4, QWORD PTR .LC265[rip]
 	jb	.L742
 	comisd	xmm4, QWORD PTR .LC264[rip]
 	ja	.L742
-.L5219:
-.L1821:
-.L5224:
-.L5225:
-.L5226:
 .L5227:
-.L5228:
+.L1821:
+.L5232:
+.L5233:
+.L5234:
+.L5235:
+.L5236:
 	movsd	QWORD PTR 0[r13+rbx*8], xmm5
 	jmp	.L742
-.L7464:
+.L7476:
 .L1076:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41525,7 +41545,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7463:
+.L7475:
 .L1074:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41534,7 +41554,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7462:
+.L7474:
 .L1072:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41543,7 +41563,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7461:
+.L7473:
 .L1070:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41552,7 +41572,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7460:
+.L7472:
 .L1068:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41561,7 +41581,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7459:
+.L7471:
 .L1066:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41570,7 +41590,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7458:
+.L7470:
 .L1064:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41579,7 +41599,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7457:
+.L7469:
 .L1062:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -41588,7 +41608,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7267:
+.L7279:
 .L3019:
 	movsd	xmm0, QWORD PTR 394896[r13]
 	call	nearbyint@PLT
@@ -41623,7 +41643,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7266:
+.L7278:
 .L3017:
 	movsd	xmm0, QWORD PTR 394896[r13]
 	call	nearbyint@PLT
@@ -41658,7 +41678,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7265:
+.L7277:
 .L3015:
 	movsd	xmm0, QWORD PTR 394896[r13]
 	call	fb_DoubleToStr@PLT
@@ -41685,7 +41705,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7264:
+.L7276:
 .L3013:
 	movsd	xmm0, QWORD PTR 394896[r13]
 	call	fb_DoubleToStr@PLT
@@ -41712,7 +41732,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7263:
+.L7275:
 .L3011:
 	cvtsd2si	rsi, QWORD PTR 394896[r13]
 	mov	edi, 1
@@ -41741,7 +41761,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7262:
+.L7274:
 .L2987:
 	cvtsd2si	rsi, QWORD PTR 394896[r13]
 	mov	edi, 1
@@ -41770,12 +41790,12 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L7194:
+.L7206:
 	comisd	xmm5, QWORD PTR [rsp]
-	je	.L9026
+	je	.L9038
 	movsd	xmm3, QWORD PTR .LC105[rip]
 	comisd	xmm5, xmm3
-	je	.L9027
+	je	.L9039
 	comisd	xmm5, QWORD PTR .LC106[rip]
 	jne	.L742
 	cvtsd2si	rax, xmm4
@@ -41802,16 +41822,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	QWORD PTR YS$[rip], xmm0
 	movsd	xmm0, QWORD PTR 395088[r13]
 	movsd	QWORD PTR Y$[rip], xmm0
-.L5209:
+.L5217:
 	comisd	xmm2, QWORD PTR Y$[rip]
-	ja	.L7180
+	ja	.L7188
 	mov	QWORD PTR X$[rip], 0x000000000
 	mov	rbx, QWORD PTR 395080[r13]
 	pxor	xmm0, xmm0
-.L5210:
+.L5218:
 	movq	xmm6, rbx
 	comisd	xmm6, xmm0
-	jb	.L7179
+	jb	.L7187
 	mov	rax, QWORD PTR .LC2062[rip]
 	mov	rdi, r13
 	movsd	xmm1, QWORD PTR XS$[rip]
@@ -41855,9 +41875,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm2, QWORD PTR 16[rsp]
 	movsd	QWORD PTR X$[rip], xmm0
 	movq	xmm4, rax
-	jmp	.L5210
-.L9025:
-.L5218:
+	jmp	.L5218
+.L9037:
+.L5226:
 	add	rsp, 280
 	movapd	xmm1, xmm5
 	movapd	xmm0, xmm4
@@ -41869,8 +41889,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	_ZN8MEMORY_T5POKEBEdd
-.L7179:
-.L5211:
+.L7187:
+.L5219:
 	movsd	xmm7, QWORD PTR [rsp]
 	movsd	xmm0, QWORD PTR C$[rip]
 	addsd	xmm0, xmm7
@@ -41878,9 +41898,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR Y$[rip]
 	subsd	xmm0, xmm7
 	movsd	QWORD PTR Y$[rip], xmm0
-	jmp	.L5209
-.L7180:
-.L5213:
+	jmp	.L5217
+.L7188:
+.L5221:
 	movsd	xmm0, QWORD PTR YS$[rip]
 	movsd	xmm1, QWORD PTR .LC111[rip]
 	add	rsp, 280
@@ -41894,7 +41914,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r15
 	cvtsd2si	esi, xmm1
 	jmp	fb_GfxUnlock@PLT
-.L9027:
+.L9039:
 	cvtsd2si	rax, xmm4
 	mov	ecx, 40
 	pxor	xmm0, xmm0
@@ -41918,17 +41938,17 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	addsd	xmm0, xmm1
 	movsd	QWORD PTR YS$[rip], xmm0
-.L5203:
+.L5211:
 	movq	xmm7, rbx
 	comisd	xmm7, QWORD PTR Y$[rip]
-	jb	.L7178
+	jb	.L7186
 	mov	QWORD PTR X$[rip], 0x000000000
 	mov	rbp, QWORD PTR 395080[r13]
 	pxor	xmm0, xmm0
-.L5204:
+.L5212:
 	movq	xmm6, rbp
 	comisd	xmm6, xmm0
-	jb	.L7177
+	jb	.L7185
 	addsd	xmm0, QWORD PTR XS$[rip]
 	mov	rdi, r13
 	movsd	xmm1, QWORD PTR .LC2080[rip]
@@ -41962,8 +41982,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	addsd	xmm6, QWORD PTR X$[rip]
 	movapd	xmm0, xmm6
 	movsd	QWORD PTR X$[rip], xmm6
-	jmp	.L5204
-.L9026:
+	jmp	.L5212
+.L9038:
 	cvtsd2si	rax, xmm4
 	mov	ecx, 40
 	pxor	xmm0, xmm0
@@ -41988,16 +42008,16 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	QWORD PTR YS$[rip], xmm0
 	movsd	xmm0, QWORD PTR 395088[r13]
 	movsd	QWORD PTR Y$[rip], xmm0
-.L5196:
+.L5204:
 	comisd	xmm2, QWORD PTR Y$[rip]
-	ja	.L7175
+	ja	.L7183
 	mov	QWORD PTR X$[rip], 0x000000000
 	mov	rbx, QWORD PTR 395080[r13]
 	pxor	xmm4, xmm4
-.L5197:
+.L5205:
 	movq	xmm7, rbx
 	comisd	xmm7, xmm4
-	jb	.L7174
+	jb	.L7182
 	mov	rax, QWORD PTR .LC2062[rip]
 	movsd	xmm0, QWORD PTR XS$[rip]
 	mov	rdi, r13
@@ -42032,18 +42052,18 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm2, QWORD PTR 8[rsp]
 	movsd	QWORD PTR X$[rip], xmm4
 	movq	xmm3, rax
-	jmp	.L5197
-.L7177:
-.L5205:
+	jmp	.L5205
+.L7185:
+.L5213:
 	movsd	xmm7, QWORD PTR [rsp]
 	movsd	xmm0, QWORD PTR C$[rip]
 	addsd	xmm0, xmm7
 	addsd	xmm7, QWORD PTR Y$[rip]
 	movsd	QWORD PTR C$[rip], xmm0
 	movsd	QWORD PTR Y$[rip], xmm7
-	jmp	.L5203
-.L7178:
-.L5207:
+	jmp	.L5211
+.L7186:
+.L5215:
 	movsd	xmm0, QWORD PTR YS$[rip]
 	movsd	xmm1, QWORD PTR .LC111[rip]
 	add	rsp, 280
@@ -42057,8 +42077,8 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r15
 	cvtsd2si	esi, xmm1
 	jmp	fb_GfxUnlock@PLT
-.L7174:
-.L5198:
+.L7182:
+.L5206:
 	movsd	xmm7, QWORD PTR [rsp]
 	movsd	xmm0, QWORD PTR C$[rip]
 	addsd	xmm0, xmm7
@@ -42066,9 +42086,9 @@ _ZN8MEMORY_T6POKE64Edd:
 	movsd	xmm0, QWORD PTR Y$[rip]
 	subsd	xmm0, xmm7
 	movsd	QWORD PTR Y$[rip], xmm0
-	jmp	.L5196
-.L7175:
-.L5200:
+	jmp	.L5204
+.L7183:
+.L5208:
 	movsd	xmm0, QWORD PTR YS$[rip]
 	movsd	xmm1, QWORD PTR .LC111[rip]
 	add	rsp, 280
@@ -42082,7 +42102,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r15
 	cvtsd2si	esi, xmm1
 	jmp	fb_GfxUnlock@PLT
-.L7429:
+.L7441:
 .L4922:
 	mov	esi, 6
 	lea	rdi, .LC1990[rip]
@@ -42098,7 +42118,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7428:
+.L7440:
 .L4920:
 	mov	esi, 4
 	lea	rdi, .LC1989[rip]
@@ -42114,7 +42134,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7427:
+.L7439:
 .L4918:
 	mov	esi, 1
 	lea	rdi, .LC253[rip]
@@ -42130,7 +42150,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7426:
+.L7438:
 .L4916:
 	mov	esi, 5
 	lea	rdi, .LC1988[rip]
@@ -42146,7 +42166,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7425:
+.L7437:
 .L4914:
 	mov	esi, 3
 	lea	rdi, .LC1987[rip]
@@ -42162,7 +42182,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7424:
+.L7436:
 .L4912:
 	mov	esi, 4
 	lea	rdi, .LC1986[rip]
@@ -42178,7 +42198,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7423:
+.L7435:
 .L4910:
 	mov	esi, 1
 	lea	rdi, .LC252[rip]
@@ -42194,7 +42214,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7422:
+.L7434:
 .L4908:
 	mov	esi, 8
 	lea	rdi, .LC1985[rip]
@@ -42210,7 +42230,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7421:
+.L7433:
 .L4906:
 	mov	esi, 3
 	lea	rdi, .LC1984[rip]
@@ -42226,7 +42246,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7420:
+.L7432:
 .L4904:
 	mov	esi, 1
 	lea	rdi, .LC251[rip]
@@ -42242,7 +42262,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7419:
+.L7431:
 .L4902:
 	mov	esi, 10
 	lea	rdi, .LC1983[rip]
@@ -42258,7 +42278,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7418:
+.L7430:
 .L4900:
 	mov	esi, 5
 	lea	rdi, .LC1982[rip]
@@ -42274,7 +42294,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7417:
+.L7429:
 .L4898:
 	mov	esi, 8
 	lea	rdi, .LC1981[rip]
@@ -42290,7 +42310,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7416:
+.L7428:
 .L4896:
 	mov	esi, 15
 	lea	rdi, .LC1980[rip]
@@ -42306,7 +42326,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7415:
+.L7427:
 .L4894:
 	mov	esi, 5
 	lea	rdi, .LC1979[rip]
@@ -42322,7 +42342,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7414:
+.L7426:
 .L4892:
 	mov	esi, 4
 	lea	rdi, .LC1978[rip]
@@ -42338,7 +42358,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7413:
+.L7425:
 .L4890:
 	mov	esi, 4
 	lea	rdi, .LC1977[rip]
@@ -42354,7 +42374,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7412:
+.L7424:
 .L4888:
 	mov	esi, 6
 	lea	rdi, .LC1976[rip]
@@ -42370,7 +42390,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7411:
+.L7423:
 .L4886:
 	mov	esi, 5
 	lea	rdi, .LC1975[rip]
@@ -42386,7 +42406,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7410:
+.L7422:
 .L4884:
 	mov	esi, 5
 	lea	rdi, .LC1974[rip]
@@ -42402,7 +42422,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7409:
+.L7421:
 .L4882:
 	mov	esi, 5
 	lea	rdi, .LC1973[rip]
@@ -42418,7 +42438,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7408:
+.L7420:
 .L4880:
 	mov	esi, 13
 	lea	rdi, .LC1972[rip]
@@ -42434,7 +42454,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7407:
+.L7419:
 .L4878:
 	mov	esi, 4
 	lea	rdi, .LC1971[rip]
@@ -42450,7 +42470,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7406:
+.L7418:
 .L4876:
 	mov	esi, 4
 	lea	rdi, .LC1970[rip]
@@ -42466,7 +42486,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7405:
+.L7417:
 .L4874:
 	mov	esi, 5
 	lea	rdi, .LC1969[rip]
@@ -42482,7 +42502,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7404:
+.L7416:
 .L4872:
 	mov	esi, 16
 	lea	rdi, .LC1968[rip]
@@ -42498,7 +42518,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7403:
+.L7415:
 .L4870:
 	mov	esi, 11
 	lea	rdi, .LC1967[rip]
@@ -42514,7 +42534,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7402:
+.L7414:
 .L4868:
 	mov	esi, 4
 	lea	rdi, .LC1966[rip]
@@ -42530,7 +42550,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7401:
+.L7413:
 .L4866:
 	mov	esi, 7
 	lea	rdi, .LC1965[rip]
@@ -42546,7 +42566,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7400:
+.L7412:
 .L4864:
 	mov	esi, 4
 	lea	rdi, .LC1964[rip]
@@ -42562,7 +42582,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7399:
+.L7411:
 .L4862:
 	mov	esi, 4
 	lea	rdi, .LC1963[rip]
@@ -42578,7 +42598,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7398:
+.L7410:
 .L4860:
 	mov	esi, 1
 	lea	rdi, .LC250[rip]
@@ -42594,7 +42614,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7397:
+.L7409:
 .L4858:
 	mov	esi, 11
 	lea	rdi, .LC1962[rip]
@@ -42610,7 +42630,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7396:
+.L7408:
 .L4856:
 	mov	esi, 4
 	lea	rdi, .LC1961[rip]
@@ -42626,7 +42646,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7395:
+.L7407:
 .L4854:
 	mov	esi, 7
 	lea	rdi, .LC1960[rip]
@@ -42642,7 +42662,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7394:
+.L7406:
 .L4852:
 	mov	esi, 7
 	lea	rdi, .LC1959[rip]
@@ -42658,7 +42678,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7393:
+.L7405:
 .L4850:
 	mov	esi, 8
 	lea	rdi, .LC1958[rip]
@@ -42674,7 +42694,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7392:
+.L7404:
 .L4848:
 	mov	esi, 4
 	lea	rdi, .LC1957[rip]
@@ -42690,7 +42710,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7391:
+.L7403:
 .L4846:
 	mov	esi, 10
 	lea	rdi, .LC1956[rip]
@@ -42706,7 +42726,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7390:
+.L7402:
 .L4844:
 	mov	esi, 7
 	lea	rdi, .LC1955[rip]
@@ -42722,7 +42742,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7389:
+.L7401:
 .L4842:
 	mov	esi, 7
 	lea	rdi, .LC1954[rip]
@@ -42738,7 +42758,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7388:
+.L7400:
 .L4840:
 	mov	esi, 4
 	lea	rdi, .LC1953[rip]
@@ -42754,7 +42774,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7387:
+.L7399:
 .L4838:
 	mov	esi, 14
 	lea	rdi, .LC1952[rip]
@@ -42770,7 +42790,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7386:
+.L7398:
 .L4836:
 	mov	esi, 7
 	lea	rdi, .LC1951[rip]
@@ -42786,7 +42806,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7385:
+.L7397:
 .L4834:
 	mov	esi, 6
 	lea	rdi, .LC1950[rip]
@@ -42802,7 +42822,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7384:
+.L7396:
 .L4832:
 	mov	esi, 4
 	lea	rdi, .LC1949[rip]
@@ -42818,7 +42838,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7383:
+.L7395:
 .L4830:
 	mov	esi, 4
 	lea	rdi, .LC1948[rip]
@@ -42834,7 +42854,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7382:
+.L7394:
 .L4828:
 	mov	esi, 4
 	lea	rdi, .LC1947[rip]
@@ -42850,7 +42870,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7381:
+.L7393:
 .L4826:
 	mov	esi, 4
 	lea	rdi, .LC1946[rip]
@@ -42866,7 +42886,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7380:
+.L7392:
 .L4824:
 	mov	esi, 6
 	lea	rdi, .LC1945[rip]
@@ -42882,7 +42902,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7379:
+.L7391:
 .L4822:
 	mov	esi, 12
 	lea	rdi, .LC1944[rip]
@@ -42898,7 +42918,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7378:
+.L7390:
 .L4820:
 	mov	esi, 7
 	lea	rdi, .LC1943[rip]
@@ -42914,7 +42934,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7377:
+.L7389:
 .L4818:
 	mov	esi, 6
 	lea	rdi, .LC1942[rip]
@@ -42930,7 +42950,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7376:
+.L7388:
 .L4816:
 	mov	esi, 8
 	lea	rdi, .LC1941[rip]
@@ -42946,7 +42966,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7375:
+.L7387:
 .L4814:
 	mov	esi, 7
 	lea	rdi, .LC1940[rip]
@@ -42962,7 +42982,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7374:
+.L7386:
 .L4812:
 	mov	esi, 3
 	lea	rdi, .LC1939[rip]
@@ -42978,7 +42998,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7373:
+.L7385:
 .L4810:
 	mov	esi, 6
 	lea	rdi, .LC1938[rip]
@@ -42994,7 +43014,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7372:
+.L7384:
 .L4808:
 	mov	esi, 5
 	lea	rdi, .LC1937[rip]
@@ -43010,7 +43030,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7371:
+.L7383:
 .L4806:
 	mov	esi, 3
 	lea	rdi, .LC1936[rip]
@@ -43026,7 +43046,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7370:
+.L7382:
 .L4804:
 	mov	esi, 1
 	lea	rdi, .LC249[rip]
@@ -43042,7 +43062,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7369:
+.L7381:
 .L4802:
 	mov	esi, 10
 	lea	rdi, .LC1935[rip]
@@ -43058,7 +43078,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7368:
+.L7380:
 .L4800:
 	mov	esi, 10
 	lea	rdi, .LC1934[rip]
@@ -43074,7 +43094,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7367:
+.L7379:
 .L4798:
 	mov	esi, 10
 	lea	rdi, .LC1933[rip]
@@ -43090,7 +43110,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7366:
+.L7378:
 .L4796:
 	mov	esi, 5
 	lea	rdi, .LC1932[rip]
@@ -43106,7 +43126,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7365:
+.L7377:
 .L4794:
 	mov	esi, 5
 	lea	rdi, .LC1931[rip]
@@ -43122,7 +43142,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7364:
+.L7376:
 .L4792:
 	mov	esi, 5
 	lea	rdi, .LC1930[rip]
@@ -43138,7 +43158,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7363:
+.L7375:
 .L4790:
 	mov	esi, 5
 	lea	rdi, .LC1929[rip]
@@ -43154,7 +43174,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7362:
+.L7374:
 .L4788:
 	mov	esi, 5
 	lea	rdi, .LC1928[rip]
@@ -43170,7 +43190,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7361:
+.L7373:
 .L4786:
 	mov	esi, 4
 	lea	rdi, .LC1927[rip]
@@ -43186,7 +43206,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7360:
+.L7372:
 .L4784:
 	mov	esi, 7
 	lea	rdi, .LC1926[rip]
@@ -43202,7 +43222,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7359:
+.L7371:
 .L4782:
 	mov	esi, 3
 	lea	rdi, .LC1925[rip]
@@ -43218,7 +43238,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7358:
+.L7370:
 .L4780:
 	mov	esi, 5
 	lea	rdi, .LC1924[rip]
@@ -43234,7 +43254,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7357:
+.L7369:
 .L4778:
 	mov	esi, 4
 	lea	rdi, .LC1923[rip]
@@ -43250,7 +43270,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7356:
+.L7368:
 .L4776:
 	mov	esi, 9
 	lea	rdi, .LC1922[rip]
@@ -43266,7 +43286,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7355:
+.L7367:
 .L4774:
 	mov	esi, 10
 	lea	rdi, .LC1921[rip]
@@ -43282,7 +43302,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7354:
+.L7366:
 .L4772:
 	mov	esi, 9
 	lea	rdi, .LC1920[rip]
@@ -43298,7 +43318,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7353:
+.L7365:
 .L4770:
 	mov	esi, 9
 	lea	rdi, .LC1919[rip]
@@ -43314,7 +43334,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7352:
+.L7364:
 .L4768:
 	mov	esi, 3
 	lea	rdi, .LC1918[rip]
@@ -43330,7 +43350,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7351:
+.L7363:
 .L4766:
 	mov	esi, 12
 	lea	rdi, .LC1917[rip]
@@ -43346,7 +43366,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7350:
+.L7362:
 .L4764:
 	mov	esi, 20
 	lea	rdi, .LC1916[rip]
@@ -43362,7 +43382,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7349:
+.L7361:
 .L4762:
 	mov	esi, 10
 	lea	rdi, .LC1915[rip]
@@ -43378,7 +43398,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7348:
+.L7360:
 .L4760:
 	mov	esi, 14
 	lea	rdi, .LC1914[rip]
@@ -43394,7 +43414,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7347:
+.L7359:
 .L4758:
 	mov	esi, 15
 	lea	rdi, .LC1913[rip]
@@ -43410,7 +43430,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7346:
+.L7358:
 .L4756:
 	mov	esi, 10
 	lea	rdi, .LC1912[rip]
@@ -43426,7 +43446,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7345:
+.L7357:
 .L4754:
 	mov	esi, 15
 	lea	rdi, .LC1911[rip]
@@ -43442,7 +43462,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7344:
+.L7356:
 .L4752:
 	mov	esi, 10
 	lea	rdi, .LC1910[rip]
@@ -43458,7 +43478,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7343:
+.L7355:
 .L4750:
 	mov	esi, 5
 	lea	rdi, .LC1909[rip]
@@ -43474,7 +43494,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7342:
+.L7354:
 .L4748:
 	mov	esi, 8
 	lea	rdi, .LC1908[rip]
@@ -43490,7 +43510,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7341:
+.L7353:
 .L4746:
 	mov	esi, 5
 	lea	rdi, .LC1907[rip]
@@ -43506,7 +43526,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7340:
+.L7352:
 .L4744:
 	mov	esi, 4
 	lea	rdi, .LC1906[rip]
@@ -43522,7 +43542,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7339:
+.L7351:
 .L4742:
 	mov	esi, 6
 	lea	rdi, .LC1905[rip]
@@ -43538,7 +43558,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7338:
+.L7350:
 .L4740:
 	mov	esi, 2
 	lea	rdi, .LC1904[rip]
@@ -43554,7 +43574,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7337:
+.L7349:
 .L4738:
 	mov	esi, 5
 	lea	rdi, .LC1903[rip]
@@ -43570,7 +43590,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7336:
+.L7348:
 .L4736:
 	mov	esi, 8
 	lea	rdi, .LC1902[rip]
@@ -43586,7 +43606,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7335:
+.L7347:
 .L4734:
 	mov	esi, 8
 	lea	rdi, .LC1901[rip]
@@ -43602,7 +43622,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7334:
+.L7346:
 .L4732:
 	mov	esi, 6
 	lea	rdi, .LC1900[rip]
@@ -43618,7 +43638,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7333:
+.L7345:
 .L4730:
 	mov	esi, 7
 	lea	rdi, .LC1899[rip]
@@ -43634,7 +43654,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7332:
+.L7344:
 .L4728:
 	mov	esi, 4
 	lea	rdi, .LC1898[rip]
@@ -43650,7 +43670,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7331:
+.L7343:
 .L4726:
 	mov	esi, 5
 	lea	rdi, .LC1897[rip]
@@ -43666,7 +43686,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7330:
+.L7342:
 .L4724:
 	mov	esi, 7
 	lea	rdi, .LC1896[rip]
@@ -43682,7 +43702,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7329:
+.L7341:
 .L4722:
 	mov	esi, 5
 	lea	rdi, .LC1895[rip]
@@ -43698,7 +43718,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7328:
+.L7340:
 .L4720:
 	mov	esi, 16
 	lea	rdi, .LC1894[rip]
@@ -43714,7 +43734,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7327:
+.L7339:
 .L4718:
 	mov	esi, 4
 	lea	rdi, .LC1893[rip]
@@ -43730,7 +43750,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7326:
+.L7338:
 .L4716:
 	mov	esi, 10
 	lea	rdi, .LC1892[rip]
@@ -43746,7 +43766,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7325:
+.L7337:
 .L4714:
 	mov	esi, 12
 	lea	rdi, .LC1891[rip]
@@ -43762,7 +43782,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7324:
+.L7336:
 .L4712:
 	mov	esi, 8
 	lea	rdi, .LC1890[rip]
@@ -43778,7 +43798,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7323:
+.L7335:
 .L4710:
 	mov	esi, 13
 	lea	rdi, .LC1889[rip]
@@ -43794,7 +43814,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7322:
+.L7334:
 .L4708:
 	mov	esi, 8
 	lea	rdi, .LC1888[rip]
@@ -43810,7 +43830,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7321:
+.L7333:
 .L4706:
 	mov	esi, 13
 	lea	rdi, .LC1887[rip]
@@ -43826,7 +43846,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7320:
+.L7332:
 .L4704:
 	mov	esi, 8
 	lea	rdi, .LC1886[rip]
@@ -43842,7 +43862,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7319:
+.L7331:
 .L4702:
 	mov	esi, 1
 	lea	rdi, .LC248[rip]
@@ -43858,7 +43878,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7318:
+.L7330:
 .L4700:
 	mov	esi, 7
 	lea	rdi, .LC1885[rip]
@@ -43874,7 +43894,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7317:
+.L7329:
 .L4698:
 	mov	esi, 4
 	lea	rdi, .LC1884[rip]
@@ -43890,7 +43910,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7316:
+.L7328:
 .L4696:
 	mov	esi, 10
 	lea	rdi, .LC1883[rip]
@@ -43906,7 +43926,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7315:
+.L7327:
 .L4694:
 	mov	esi, 10
 	lea	rdi, .LC1882[rip]
@@ -43922,7 +43942,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7314:
+.L7326:
 .L4692:
 	mov	esi, 3
 	lea	rdi, .LC1881[rip]
@@ -43938,7 +43958,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7313:
+.L7325:
 .L4690:
 	mov	esi, 3
 	lea	rdi, .LC1880[rip]
@@ -43954,7 +43974,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7312:
+.L7324:
 .L4688:
 	mov	esi, 5
 	lea	rdi, .LC1879[rip]
@@ -43970,7 +43990,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7311:
+.L7323:
 .L4686:
 	mov	esi, 4
 	lea	rdi, .LC1878[rip]
@@ -43986,7 +44006,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7310:
+.L7322:
 .L4684:
 	mov	esi, 4
 	lea	rdi, .LC1877[rip]
@@ -44002,7 +44022,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7309:
+.L7321:
 .L4682:
 	mov	esi, 5
 	lea	rdi, .LC1876[rip]
@@ -44018,7 +44038,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7308:
+.L7320:
 .L4680:
 	mov	esi, 7
 	lea	rdi, .LC1875[rip]
@@ -44034,7 +44054,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7307:
+.L7319:
 .L4678:
 	mov	esi, 6
 	lea	rdi, .LC1874[rip]
@@ -44050,7 +44070,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7306:
+.L7318:
 .L4676:
 	mov	esi, 4
 	lea	rdi, .LC1873[rip]
@@ -44066,7 +44086,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7305:
+.L7317:
 .L4674:
 	mov	esi, 13
 	lea	rdi, .LC1872[rip]
@@ -44082,7 +44102,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7304:
+.L7316:
 .L4672:
 	mov	esi, 8
 	lea	rdi, .LC1871[rip]
@@ -44098,7 +44118,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7303:
+.L7315:
 .L4670:
 	mov	esi, 9
 	lea	rdi, .LC1870[rip]
@@ -44114,7 +44134,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7302:
+.L7314:
 .L4668:
 	mov	esi, 11
 	lea	rdi, .LC1869[rip]
@@ -44130,7 +44150,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7301:
+.L7313:
 .L4666:
 	mov	esi, 8
 	lea	rdi, .LC1868[rip]
@@ -44146,7 +44166,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7300:
+.L7312:
 .L4664:
 	mov	esi, 11
 	lea	rdi, .LC1867[rip]
@@ -44162,7 +44182,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7299:
+.L7311:
 .L4662:
 	mov	esi, 9
 	lea	rdi, .LC1866[rip]
@@ -44178,7 +44198,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7298:
+.L7310:
 .L4660:
 	mov	esi, 10
 	lea	rdi, .LC1865[rip]
@@ -44194,7 +44214,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7297:
+.L7309:
 .L4658:
 	mov	esi, 10
 	lea	rdi, .LC1864[rip]
@@ -44210,7 +44230,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7296:
+.L7308:
 .L4656:
 	mov	esi, 9
 	lea	rdi, .LC1863[rip]
@@ -44226,7 +44246,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7295:
+.L7307:
 .L4654:
 	mov	esi, 8
 	lea	rdi, .LC1862[rip]
@@ -44242,7 +44262,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7294:
+.L7306:
 .L4652:
 	mov	esi, 5
 	lea	rdi, .LC1861[rip]
@@ -44258,7 +44278,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7293:
+.L7305:
 .L4650:
 	mov	esi, 5
 	lea	rdi, .LC1860[rip]
@@ -44274,7 +44294,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7292:
+.L7304:
 .L4648:
 	mov	esi, 8
 	lea	rdi, .LC1859[rip]
@@ -44290,7 +44310,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7291:
+.L7303:
 .L4646:
 	mov	esi, 3
 	lea	rdi, .LC1858[rip]
@@ -44306,7 +44326,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7290:
+.L7302:
 .L4644:
 	mov	esi, 9
 	lea	rdi, .LC1857[rip]
@@ -44322,7 +44342,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7289:
+.L7301:
 .L4642:
 	mov	esi, 2
 	lea	rdi, .LC1856[rip]
@@ -44338,7 +44358,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7288:
+.L7300:
 .L4640:
 	mov	esi, 5
 	lea	rdi, .LC1855[rip]
@@ -44354,7 +44374,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7287:
+.L7299:
 .L4638:
 	mov	esi, 8
 	lea	rdi, .LC1854[rip]
@@ -44370,7 +44390,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7286:
+.L7298:
 .L4636:
 	mov	esi, 9
 	lea	rdi, .LC1853[rip]
@@ -44386,7 +44406,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7285:
+.L7297:
 .L4634:
 	mov	esi, 5
 	lea	rdi, .LC1852[rip]
@@ -44418,7 +44438,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r15
 	jmp	fb_PrintString@PLT
 .L4630:
-.L7284:
+.L7296:
 .L4631:
 	mov	esi, 4
 	lea	rdi, .LC1850[rip]
@@ -44434,7 +44454,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7283:
+.L7295:
 .L4628:
 	mov	esi, 5
 	lea	rdi, .LC1849[rip]
@@ -44450,7 +44470,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7282:
+.L7294:
 .L4626:
 	mov	esi, 5
 	lea	rdi, .LC1848[rip]
@@ -44466,7 +44486,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7281:
+.L7293:
 .L4624:
 	mov	esi, 9
 	lea	rdi, .LC1847[rip]
@@ -44482,7 +44502,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7280:
+.L7292:
 .L4622:
 	mov	esi, 4
 	lea	rdi, .LC1846[rip]
@@ -44498,7 +44518,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7279:
+.L7291:
 .L4620:
 	mov	esi, 4
 	lea	rdi, .LC1845[rip]
@@ -44514,7 +44534,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7278:
+.L7290:
 .L4618:
 	mov	esi, 7
 	lea	rdi, .LC1844[rip]
@@ -44530,7 +44550,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7277:
+.L7289:
 .L4616:
 	mov	esi, 9
 	lea	rdi, .LC1843[rip]
@@ -44546,7 +44566,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7276:
+.L7288:
 .L4614:
 	mov	esi, 9
 	lea	rdi, .LC1842[rip]
@@ -44562,7 +44582,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7275:
+.L7287:
 .L4612:
 	mov	esi, 4
 	lea	rdi, .LC1841[rip]
@@ -44578,7 +44598,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7274:
+.L7286:
 .L4610:
 	mov	esi, 9
 	lea	rdi, .LC1840[rip]
@@ -44594,7 +44614,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7273:
+.L7285:
 .L4608:
 	mov	esi, 4
 	lea	rdi, .LC1839[rip]
@@ -44610,7 +44630,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7272:
+.L7284:
 .L4606:
 	mov	esi, 4
 	lea	rdi, .LC1838[rip]
@@ -44641,7 +44661,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7456:
+.L7468:
 .L1060:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -44650,7 +44670,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7709:
+.L7721:
 .L1964:
 	mov	esi, 8
 	lea	rdi, .LC558[rip]
@@ -44666,7 +44686,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7711:
+.L7723:
 .L1968:
 	mov	esi, 12
 	lea	rdi, .LC560[rip]
@@ -44682,7 +44702,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7710:
+.L7722:
 .L1966:
 	mov	esi, 6
 	lea	rdi, .LC559[rip]
@@ -44698,7 +44718,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7715:
+.L7727:
 .L1976:
 	mov	esi, 8
 	lea	rdi, .LC564[rip]
@@ -44714,7 +44734,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7714:
+.L7726:
 .L1974:
 	mov	esi, 10
 	lea	rdi, .LC563[rip]
@@ -44730,7 +44750,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7713:
+.L7725:
 .L1972:
 	mov	esi, 8
 	lea	rdi, .LC562[rip]
@@ -44746,7 +44766,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7712:
+.L7724:
 .L1970:
 	mov	esi, 3
 	lea	rdi, .LC561[rip]
@@ -44762,7 +44782,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7723:
+.L7735:
 .L1992:
 	mov	esi, 11
 	lea	rdi, .LC572[rip]
@@ -44778,7 +44798,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7722:
+.L7734:
 .L1990:
 	mov	esi, 8
 	lea	rdi, .LC571[rip]
@@ -44794,7 +44814,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7721:
+.L7733:
 .L1988:
 	mov	esi, 6
 	lea	rdi, .LC570[rip]
@@ -44810,7 +44830,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7720:
+.L7732:
 .L1986:
 	mov	esi, 5
 	lea	rdi, .LC569[rip]
@@ -44826,7 +44846,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7719:
+.L7731:
 .L1984:
 	mov	esi, 4
 	lea	rdi, .LC568[rip]
@@ -44842,7 +44862,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7718:
+.L7730:
 .L1982:
 	mov	esi, 8
 	lea	rdi, .LC567[rip]
@@ -44858,7 +44878,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7717:
+.L7729:
 .L1980:
 	mov	esi, 6
 	lea	rdi, .LC566[rip]
@@ -44874,7 +44894,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7716:
+.L7728:
 .L1978:
 	mov	esi, 6
 	lea	rdi, .LC565[rip]
@@ -44890,7 +44910,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7739:
+.L7751:
 .L2024:
 	mov	esi, 19
 	lea	rdi, .LC588[rip]
@@ -44906,7 +44926,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7738:
+.L7750:
 .L2022:
 	mov	esi, 12
 	lea	rdi, .LC587[rip]
@@ -44922,7 +44942,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7737:
+.L7749:
 .L2020:
 	mov	esi, 16
 	lea	rdi, .LC586[rip]
@@ -44938,7 +44958,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7736:
+.L7748:
 .L2018:
 	mov	esi, 16
 	lea	rdi, .LC585[rip]
@@ -44954,7 +44974,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7735:
+.L7747:
 .L2016:
 	mov	esi, 10
 	lea	rdi, .LC584[rip]
@@ -44970,7 +44990,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7734:
+.L7746:
 .L2014:
 	mov	esi, 8
 	lea	rdi, .LC583[rip]
@@ -44986,7 +45006,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7733:
+.L7745:
 .L2012:
 	mov	esi, 5
 	lea	rdi, .LC582[rip]
@@ -45002,7 +45022,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7732:
+.L7744:
 .L2010:
 	mov	esi, 17
 	lea	rdi, .LC581[rip]
@@ -45018,7 +45038,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7731:
+.L7743:
 .L2008:
 	mov	esi, 3
 	lea	rdi, .LC580[rip]
@@ -45034,7 +45054,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7730:
+.L7742:
 .L2006:
 	mov	esi, 5
 	lea	rdi, .LC579[rip]
@@ -45050,7 +45070,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7729:
+.L7741:
 .L2004:
 	mov	esi, 10
 	lea	rdi, .LC578[rip]
@@ -45066,7 +45086,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7728:
+.L7740:
 .L2002:
 	mov	esi, 5
 	lea	rdi, .LC577[rip]
@@ -45082,7 +45102,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7727:
+.L7739:
 .L2000:
 	mov	esi, 5
 	lea	rdi, .LC576[rip]
@@ -45098,7 +45118,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7726:
+.L7738:
 .L1998:
 	mov	esi, 9
 	lea	rdi, .LC575[rip]
@@ -45114,7 +45134,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7725:
+.L7737:
 .L1996:
 	mov	esi, 7
 	lea	rdi, .LC574[rip]
@@ -45130,7 +45150,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7724:
+.L7736:
 .L1994:
 	mov	esi, 3
 	lea	rdi, .LC573[rip]
@@ -45146,7 +45166,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7771:
+.L7783:
 .L2088:
 	mov	esi, 13
 	lea	rdi, .LC620[rip]
@@ -45162,7 +45182,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7770:
+.L7782:
 .L2086:
 	mov	esi, 6
 	lea	rdi, .LC619[rip]
@@ -45178,7 +45198,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7769:
+.L7781:
 .L2084:
 	mov	esi, 6
 	lea	rdi, .LC618[rip]
@@ -45194,7 +45214,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7768:
+.L7780:
 .L2082:
 	mov	esi, 9
 	lea	rdi, .LC617[rip]
@@ -45210,7 +45230,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7767:
+.L7779:
 .L2080:
 	mov	esi, 3
 	lea	rdi, .LC616[rip]
@@ -45226,7 +45246,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7766:
+.L7778:
 .L2078:
 	mov	esi, 5
 	lea	rdi, .LC615[rip]
@@ -45242,7 +45262,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7765:
+.L7777:
 .L2076:
 	mov	esi, 4
 	lea	rdi, .LC614[rip]
@@ -45258,7 +45278,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7764:
+.L7776:
 .L2074:
 	mov	esi, 5
 	lea	rdi, .LC613[rip]
@@ -45274,7 +45294,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7763:
+.L7775:
 .L2072:
 	mov	esi, 9
 	lea	rdi, .LC612[rip]
@@ -45290,7 +45310,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7762:
+.L7774:
 .L2070:
 	mov	esi, 3
 	lea	rdi, .LC611[rip]
@@ -45306,7 +45326,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7761:
+.L7773:
 .L2068:
 	mov	esi, 2
 	lea	rdi, .LC610[rip]
@@ -45322,7 +45342,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7760:
+.L7772:
 .L2066:
 	mov	esi, 11
 	lea	rdi, .LC609[rip]
@@ -45338,7 +45358,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7759:
+.L7771:
 .L2064:
 	mov	esi, 5
 	lea	rdi, .LC608[rip]
@@ -45354,7 +45374,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7758:
+.L7770:
 .L2062:
 	mov	esi, 5
 	lea	rdi, .LC607[rip]
@@ -45370,7 +45390,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7757:
+.L7769:
 .L2060:
 	mov	esi, 10
 	lea	rdi, .LC606[rip]
@@ -45386,7 +45406,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7756:
+.L7768:
 .L2058:
 	mov	esi, 4
 	lea	rdi, .LC605[rip]
@@ -45402,7 +45422,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7755:
+.L7767:
 .L2056:
 	mov	esi, 3
 	lea	rdi, .LC604[rip]
@@ -45418,7 +45438,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7754:
+.L7766:
 .L2054:
 	mov	esi, 9
 	lea	rdi, .LC603[rip]
@@ -45434,7 +45454,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7753:
+.L7765:
 .L2052:
 	mov	esi, 5
 	lea	rdi, .LC602[rip]
@@ -45450,7 +45470,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7752:
+.L7764:
 .L2050:
 	mov	esi, 6
 	lea	rdi, .LC601[rip]
@@ -45466,7 +45486,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7751:
+.L7763:
 .L2048:
 	mov	esi, 8
 	lea	rdi, .LC600[rip]
@@ -45482,7 +45502,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7750:
+.L7762:
 .L2046:
 	mov	esi, 3
 	lea	rdi, .LC599[rip]
@@ -45498,7 +45518,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7749:
+.L7761:
 .L2044:
 	mov	esi, 5
 	lea	rdi, .LC598[rip]
@@ -45514,7 +45534,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7748:
+.L7760:
 .L2042:
 	mov	esi, 8
 	lea	rdi, .LC597[rip]
@@ -45530,7 +45550,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7747:
+.L7759:
 .L2040:
 	mov	esi, 3
 	lea	rdi, .LC596[rip]
@@ -45546,7 +45566,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7746:
+.L7758:
 .L2038:
 	mov	esi, 13
 	lea	rdi, .LC595[rip]
@@ -45562,7 +45582,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7745:
+.L7757:
 .L2036:
 	mov	esi, 7
 	lea	rdi, .LC594[rip]
@@ -45578,7 +45598,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7744:
+.L7756:
 .L2034:
 	mov	esi, 13
 	lea	rdi, .LC593[rip]
@@ -45594,7 +45614,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7743:
+.L7755:
 .L2032:
 	mov	esi, 8
 	lea	rdi, .LC592[rip]
@@ -45610,7 +45630,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7742:
+.L7754:
 .L2030:
 	mov	esi, 9
 	lea	rdi, .LC591[rip]
@@ -45626,7 +45646,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7741:
+.L7753:
 .L2028:
 	mov	esi, 5
 	lea	rdi, .LC590[rip]
@@ -45642,7 +45662,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7740:
+.L7752:
 .L2026:
 	mov	esi, 4
 	lea	rdi, .LC589[rip]
@@ -45658,7 +45678,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7672:
+.L7684:
 .L1492:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45667,7 +45687,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7671:
+.L7683:
 .L1490:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45676,7 +45696,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7670:
+.L7682:
 .L1488:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45685,7 +45705,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7669:
+.L7681:
 .L1486:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45694,7 +45714,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7668:
+.L7680:
 .L1484:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45703,7 +45723,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7667:
+.L7679:
 .L1482:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45712,7 +45732,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7666:
+.L7678:
 .L1480:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45721,7 +45741,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7665:
+.L7677:
 .L1478:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45730,7 +45750,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7664:
+.L7676:
 .L1476:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45739,7 +45759,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7663:
+.L7675:
 .L1474:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45748,7 +45768,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7662:
+.L7674:
 .L1472:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45757,7 +45777,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7661:
+.L7673:
 .L1470:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45766,7 +45786,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7660:
+.L7672:
 .L1468:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45775,7 +45795,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7659:
+.L7671:
 .L1466:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45784,7 +45804,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7658:
+.L7670:
 .L1464:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45793,7 +45813,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7657:
+.L7669:
 .L1462:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45802,7 +45822,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7656:
+.L7668:
 .L1460:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45811,7 +45831,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7655:
+.L7667:
 .L1458:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45820,7 +45840,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7654:
+.L7666:
 .L1456:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45829,7 +45849,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7653:
+.L7665:
 .L1454:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45838,7 +45858,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7652:
+.L7664:
 .L1452:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45847,7 +45867,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7651:
+.L7663:
 .L1450:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45856,7 +45876,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7650:
+.L7662:
 .L1448:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45865,7 +45885,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7649:
+.L7661:
 .L1446:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45874,7 +45894,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7648:
+.L7660:
 .L1444:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45883,7 +45903,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7647:
+.L7659:
 .L1442:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45892,7 +45912,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7646:
+.L7658:
 .L1440:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45901,7 +45921,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7645:
+.L7657:
 .L1438:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45910,7 +45930,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7644:
+.L7656:
 .L1436:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45919,7 +45939,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7643:
+.L7655:
 .L1434:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45928,7 +45948,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7642:
+.L7654:
 .L1432:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45937,7 +45957,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7641:
+.L7653:
 .L1430:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45946,7 +45966,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7640:
+.L7652:
 .L1428:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45955,7 +45975,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7639:
+.L7651:
 .L1426:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45964,7 +45984,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7638:
+.L7650:
 .L1424:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45973,7 +45993,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7637:
+.L7649:
 .L1422:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45982,7 +46002,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7636:
+.L7648:
 .L1420:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -45991,7 +46011,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7635:
+.L7647:
 .L1418:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46000,7 +46020,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7634:
+.L7646:
 .L1416:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46009,7 +46029,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7633:
+.L7645:
 .L1414:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46018,7 +46038,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7632:
+.L7644:
 .L1412:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46027,7 +46047,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7631:
+.L7643:
 .L1410:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46036,7 +46056,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7630:
+.L7642:
 .L1408:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46045,7 +46065,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7629:
+.L7641:
 .L1406:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46054,7 +46074,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7628:
+.L7640:
 .L1404:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46063,7 +46083,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7627:
+.L7639:
 .L1402:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46072,7 +46092,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7626:
+.L7638:
 .L1400:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46081,7 +46101,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7625:
+.L7637:
 .L1398:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46090,7 +46110,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7624:
+.L7636:
 .L1396:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46099,7 +46119,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7623:
+.L7635:
 .L1394:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46108,7 +46128,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7622:
+.L7634:
 .L1392:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46117,7 +46137,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7621:
+.L7633:
 .L1390:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46126,7 +46146,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7620:
+.L7632:
 .L1388:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46135,7 +46155,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7619:
+.L7631:
 .L1386:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46144,7 +46164,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7618:
+.L7630:
 .L1384:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46153,7 +46173,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7617:
+.L7629:
 .L1382:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46162,7 +46182,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7616:
+.L7628:
 .L1380:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46171,7 +46191,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7615:
+.L7627:
 .L1378:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46180,7 +46200,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7614:
+.L7626:
 .L1376:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46189,7 +46209,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7613:
+.L7625:
 .L1374:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46198,7 +46218,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7612:
+.L7624:
 .L1372:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46207,7 +46227,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7611:
+.L7623:
 .L1370:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46216,7 +46236,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7610:
+.L7622:
 .L1368:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46225,7 +46245,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7609:
+.L7621:
 .L1366:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46234,7 +46254,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7608:
+.L7620:
 .L1364:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46243,7 +46263,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7607:
+.L7619:
 .L1362:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46252,7 +46272,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7606:
+.L7618:
 .L1360:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46261,7 +46281,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7605:
+.L7617:
 .L1358:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46270,7 +46290,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7604:
+.L7616:
 .L1356:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46279,7 +46299,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7603:
+.L7615:
 .L1354:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46288,7 +46308,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7602:
+.L7614:
 .L1352:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46297,7 +46317,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7601:
+.L7613:
 .L1350:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46306,7 +46326,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7600:
+.L7612:
 .L1348:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46315,7 +46335,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7599:
+.L7611:
 .L1346:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46324,7 +46344,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7598:
+.L7610:
 .L1344:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46333,7 +46353,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7597:
+.L7609:
 .L1342:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46342,7 +46362,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7596:
+.L7608:
 .L1340:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46351,7 +46371,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7595:
+.L7607:
 .L1338:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46360,7 +46380,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7594:
+.L7606:
 .L1336:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46369,7 +46389,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7593:
+.L7605:
 .L1334:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46378,7 +46398,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7592:
+.L7604:
 .L1332:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46387,7 +46407,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7591:
+.L7603:
 .L1330:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46396,7 +46416,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7590:
+.L7602:
 .L1328:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46405,7 +46425,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7589:
+.L7601:
 .L1326:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46414,7 +46434,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7588:
+.L7600:
 .L1324:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46423,7 +46443,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7587:
+.L7599:
 .L1322:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46432,7 +46452,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7586:
+.L7598:
 .L1320:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46441,7 +46461,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7585:
+.L7597:
 .L1318:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46450,7 +46470,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7584:
+.L7596:
 .L1316:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46459,7 +46479,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7583:
+.L7595:
 .L1314:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46468,7 +46488,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7582:
+.L7594:
 .L1312:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46477,7 +46497,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7581:
+.L7593:
 .L1310:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46486,7 +46506,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7580:
+.L7592:
 .L1308:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46495,7 +46515,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7579:
+.L7591:
 .L1306:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46504,7 +46524,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7578:
+.L7590:
 .L1304:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46513,7 +46533,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7577:
+.L7589:
 .L1302:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46522,7 +46542,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7576:
+.L7588:
 .L1300:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46531,7 +46551,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7575:
+.L7587:
 .L1298:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46540,7 +46560,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7574:
+.L7586:
 .L1296:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46549,7 +46569,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7573:
+.L7585:
 .L1294:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46558,7 +46578,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7572:
+.L7584:
 .L1292:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46567,7 +46587,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7571:
+.L7583:
 .L1290:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46576,7 +46596,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7570:
+.L7582:
 .L1288:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46585,7 +46605,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7569:
+.L7581:
 .L1286:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46594,7 +46614,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7568:
+.L7580:
 .L1284:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46603,7 +46623,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7567:
+.L7579:
 .L1282:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46612,7 +46632,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7566:
+.L7578:
 .L1280:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46621,7 +46641,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7565:
+.L7577:
 .L1278:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46630,7 +46650,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7564:
+.L7576:
 .L1276:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46639,7 +46659,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7563:
+.L7575:
 .L1274:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46648,7 +46668,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7562:
+.L7574:
 .L1272:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46657,7 +46677,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7561:
+.L7573:
 .L1270:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46666,7 +46686,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7560:
+.L7572:
 .L1268:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46675,7 +46695,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7559:
+.L7571:
 .L1266:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46684,7 +46704,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7558:
+.L7570:
 .L1264:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46693,7 +46713,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7557:
+.L7569:
 .L1262:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46702,7 +46722,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7556:
+.L7568:
 .L1260:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46711,7 +46731,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7555:
+.L7567:
 .L1258:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46720,7 +46740,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7554:
+.L7566:
 .L1256:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46729,7 +46749,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7553:
+.L7565:
 .L1254:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46738,7 +46758,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7552:
+.L7564:
 .L1252:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46747,7 +46767,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7551:
+.L7563:
 .L1250:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46756,7 +46776,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7550:
+.L7562:
 .L1248:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46765,7 +46785,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7549:
+.L7561:
 .L1246:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46774,7 +46794,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7548:
+.L7560:
 .L1244:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46783,7 +46803,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7547:
+.L7559:
 .L1242:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46792,7 +46812,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7546:
+.L7558:
 .L1240:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46801,7 +46821,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7545:
+.L7557:
 .L1238:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46810,7 +46830,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7544:
+.L7556:
 .L1236:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46819,7 +46839,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7543:
+.L7555:
 .L1234:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46828,7 +46848,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7542:
+.L7554:
 .L1232:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46837,7 +46857,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7541:
+.L7553:
 .L1230:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46846,7 +46866,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7540:
+.L7552:
 .L1228:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46855,7 +46875,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7539:
+.L7551:
 .L1226:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46864,7 +46884,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7538:
+.L7550:
 .L1224:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46873,7 +46893,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7537:
+.L7549:
 .L1222:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46882,7 +46902,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7536:
+.L7548:
 .L1220:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46891,7 +46911,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7535:
+.L7547:
 .L1218:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46900,7 +46920,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7534:
+.L7546:
 .L1216:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46909,7 +46929,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7533:
+.L7545:
 .L1214:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46918,7 +46938,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7532:
+.L7544:
 .L1212:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46927,7 +46947,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7531:
+.L7543:
 .L1210:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46936,7 +46956,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7530:
+.L7542:
 .L1208:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46945,7 +46965,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7529:
+.L7541:
 .L1206:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46954,7 +46974,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7528:
+.L7540:
 .L1204:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46963,7 +46983,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7527:
+.L7539:
 .L1202:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46972,7 +46992,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7526:
+.L7538:
 .L1200:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46981,7 +47001,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7525:
+.L7537:
 .L1198:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46990,7 +47010,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7524:
+.L7536:
 .L1196:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -46999,7 +47019,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7523:
+.L7535:
 .L1194:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47008,7 +47028,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7522:
+.L7534:
 .L1192:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47017,7 +47037,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7521:
+.L7533:
 .L1190:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47026,7 +47046,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7520:
+.L7532:
 .L1188:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47035,7 +47055,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7519:
+.L7531:
 .L1186:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47044,7 +47064,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7518:
+.L7530:
 .L1184:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47053,7 +47073,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7517:
+.L7529:
 .L1182:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47062,7 +47082,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7516:
+.L7528:
 .L1180:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47071,7 +47091,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7515:
+.L7527:
 .L1178:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47080,7 +47100,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7514:
+.L7526:
 .L1176:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47089,7 +47109,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7513:
+.L7525:
 .L1174:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47098,7 +47118,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7512:
+.L7524:
 .L1172:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47107,7 +47127,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7511:
+.L7523:
 .L1170:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47116,7 +47136,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7510:
+.L7522:
 .L1168:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47125,7 +47145,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7509:
+.L7521:
 .L1166:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47134,7 +47154,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7508:
+.L7520:
 .L1164:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47143,7 +47163,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7507:
+.L7519:
 .L1162:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47152,7 +47172,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7506:
+.L7518:
 .L1160:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47161,7 +47181,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7505:
+.L7517:
 .L1158:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47170,7 +47190,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7504:
+.L7516:
 .L1156:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47179,7 +47199,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7503:
+.L7515:
 .L1154:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47188,7 +47208,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7502:
+.L7514:
 .L1152:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47197,7 +47217,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7501:
+.L7513:
 .L1150:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47206,7 +47226,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7500:
+.L7512:
 .L1148:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47215,7 +47235,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7499:
+.L7511:
 .L1146:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47224,7 +47244,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7498:
+.L7510:
 .L1144:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47233,7 +47253,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7497:
+.L7509:
 .L1142:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47242,7 +47262,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7496:
+.L7508:
 .L1140:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47251,7 +47271,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7495:
+.L7507:
 .L1138:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47260,7 +47280,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7494:
+.L7506:
 .L1136:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47269,7 +47289,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7493:
+.L7505:
 .L1134:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47278,7 +47298,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7492:
+.L7504:
 .L1132:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47287,7 +47307,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7491:
+.L7503:
 .L1130:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47296,7 +47316,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7490:
+.L7502:
 .L1128:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47305,7 +47325,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7489:
+.L7501:
 .L1126:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47314,7 +47334,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7488:
+.L7500:
 .L1124:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47323,7 +47343,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7487:
+.L7499:
 .L1122:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47332,7 +47352,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7486:
+.L7498:
 .L1120:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47341,7 +47361,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7485:
+.L7497:
 .L1118:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47350,7 +47370,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7484:
+.L7496:
 .L1116:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47359,7 +47379,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7483:
+.L7495:
 .L1114:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47368,7 +47388,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7482:
+.L7494:
 .L1112:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47377,7 +47397,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7481:
+.L7493:
 .L1110:
 	cvtsd2si	rax, QWORD PTR 393288[r13]
 	pxor	xmm0, xmm0
@@ -47386,7 +47406,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR BD_COLOR$[rip], xmm0
 	jmp	.L1558
-.L7434:
+.L7446:
 .L4939:
 	xor	r8d, r8d
 	mov	ecx, 8
@@ -47407,7 +47427,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_StrAssign@PLT
-.L8234:
+.L8246:
 .L2984:
 	mov	esi, 2
 	lea	rdi, .LC1061[rip]
@@ -47423,7 +47443,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8233:
+.L8245:
 .L2982:
 	mov	esi, 15
 	lea	rdi, .LC1060[rip]
@@ -47439,7 +47459,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8232:
+.L8244:
 .L2980:
 	mov	esi, 13
 	lea	rdi, .LC1059[rip]
@@ -47455,7 +47475,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8231:
+.L8243:
 .L2978:
 	mov	esi, 6
 	lea	rdi, .LC1058[rip]
@@ -47471,7 +47491,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8230:
+.L8242:
 .L2976:
 	mov	esi, 15
 	lea	rdi, .LC1057[rip]
@@ -47487,7 +47507,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8229:
+.L8241:
 .L2974:
 	mov	esi, 12
 	lea	rdi, .LC1056[rip]
@@ -47503,7 +47523,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8228:
+.L8240:
 .L2972:
 	mov	esi, 6
 	lea	rdi, .LC1055[rip]
@@ -47519,7 +47539,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8227:
+.L8239:
 .L2970:
 	mov	esi, 3
 	lea	rdi, .LC1054[rip]
@@ -47535,7 +47555,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8226:
+.L8238:
 .L2968:
 	mov	esi, 14
 	lea	rdi, .LC1053[rip]
@@ -47551,7 +47571,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8225:
+.L8237:
 .L2966:
 	mov	esi, 10
 	lea	rdi, .LC1052[rip]
@@ -47567,7 +47587,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8224:
+.L8236:
 .L2964:
 	mov	esi, 9
 	lea	rdi, .LC1051[rip]
@@ -47583,7 +47603,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8223:
+.L8235:
 .L2962:
 	mov	esi, 7
 	lea	rdi, .LC1050[rip]
@@ -47599,7 +47619,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8222:
+.L8234:
 .L2960:
 	mov	esi, 12
 	lea	rdi, .LC1049[rip]
@@ -47615,7 +47635,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8221:
+.L8233:
 .L2958:
 	mov	esi, 3
 	lea	rdi, .LC1048[rip]
@@ -47631,7 +47651,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8220:
+.L8232:
 .L2956:
 	mov	esi, 7
 	lea	rdi, .LC1047[rip]
@@ -47647,7 +47667,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8219:
+.L8231:
 .L2954:
 	mov	esi, 8
 	lea	rdi, .LC1046[rip]
@@ -47663,7 +47683,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8218:
+.L8230:
 .L2952:
 	mov	esi, 6
 	lea	rdi, .LC1045[rip]
@@ -47679,7 +47699,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8217:
+.L8229:
 .L2950:
 	mov	esi, 1
 	lea	rdi, .LC234[rip]
@@ -47695,7 +47715,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8216:
+.L8228:
 .L2948:
 	mov	esi, 5
 	lea	rdi, .LC1044[rip]
@@ -47711,7 +47731,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8215:
+.L8227:
 .L2946:
 	mov	esi, 5
 	lea	rdi, .LC1043[rip]
@@ -47727,7 +47747,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8214:
+.L8226:
 .L2944:
 	mov	esi, 5
 	lea	rdi, .LC1042[rip]
@@ -47743,7 +47763,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8213:
+.L8225:
 .L2942:
 	mov	esi, 8
 	lea	rdi, .LC1041[rip]
@@ -47759,7 +47779,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8212:
+.L8224:
 .L2940:
 	mov	esi, 4
 	lea	rdi, .LC1040[rip]
@@ -47775,7 +47795,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8211:
+.L8223:
 .L2938:
 	mov	esi, 4
 	lea	rdi, .LC1039[rip]
@@ -47791,7 +47811,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8210:
+.L8222:
 .L2936:
 	mov	esi, 7
 	lea	rdi, .LC1038[rip]
@@ -47807,7 +47827,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8209:
+.L8221:
 .L2934:
 	mov	esi, 9
 	lea	rdi, .LC1037[rip]
@@ -47823,7 +47843,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8208:
+.L8220:
 .L2932:
 	mov	esi, 3
 	lea	rdi, .LC1036[rip]
@@ -47839,7 +47859,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8207:
+.L8219:
 .L2930:
 	mov	esi, 12
 	lea	rdi, .LC1035[rip]
@@ -47855,7 +47875,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8206:
+.L8218:
 .L2928:
 	mov	esi, 9
 	lea	rdi, .LC1034[rip]
@@ -47871,7 +47891,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8205:
+.L8217:
 .L2926:
 	mov	esi, 10
 	lea	rdi, .LC1033[rip]
@@ -47887,7 +47907,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8204:
+.L8216:
 .L2924:
 	mov	esi, 9
 	lea	rdi, .LC1032[rip]
@@ -47903,7 +47923,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8203:
+.L8215:
 .L2922:
 	mov	esi, 10
 	lea	rdi, .LC1031[rip]
@@ -47919,7 +47939,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8202:
+.L8214:
 .L2920:
 	mov	esi, 7
 	lea	rdi, .LC1030[rip]
@@ -47935,7 +47955,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8201:
+.L8213:
 .L2918:
 	mov	esi, 7
 	lea	rdi, .LC1029[rip]
@@ -47951,7 +47971,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8200:
+.L8212:
 .L2916:
 	mov	esi, 6
 	lea	rdi, .LC1028[rip]
@@ -47967,7 +47987,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8199:
+.L8211:
 .L2914:
 	mov	esi, 4
 	lea	rdi, .LC1027[rip]
@@ -47983,7 +48003,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8198:
+.L8210:
 .L2912:
 	mov	esi, 3
 	lea	rdi, .LC1026[rip]
@@ -47999,7 +48019,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8197:
+.L8209:
 .L2910:
 	mov	esi, 5
 	lea	rdi, .LC1025[rip]
@@ -48015,7 +48035,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8196:
+.L8208:
 .L2908:
 	mov	esi, 7
 	lea	rdi, .LC1024[rip]
@@ -48031,7 +48051,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8195:
+.L8207:
 .L2906:
 	mov	esi, 8
 	lea	rdi, .LC1023[rip]
@@ -48047,7 +48067,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8194:
+.L8206:
 .L2904:
 	mov	esi, 10
 	lea	rdi, .LC1022[rip]
@@ -48063,7 +48083,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8193:
+.L8205:
 .L2902:
 	mov	esi, 7
 	lea	rdi, .LC1021[rip]
@@ -48079,7 +48099,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8192:
+.L8204:
 .L2900:
 	mov	esi, 3
 	lea	rdi, .LC1020[rip]
@@ -48095,7 +48115,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8191:
+.L8203:
 .L2898:
 	mov	esi, 11
 	lea	rdi, .LC1019[rip]
@@ -48111,7 +48131,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8190:
+.L8202:
 .L2896:
 	mov	esi, 2
 	lea	rdi, .LC1018[rip]
@@ -48127,7 +48147,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8189:
+.L8201:
 .L2894:
 	mov	esi, 4
 	lea	rdi, .LC1017[rip]
@@ -48143,7 +48163,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8188:
+.L8200:
 .L2892:
 	mov	esi, 5
 	lea	rdi, .LC1016[rip]
@@ -48159,7 +48179,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8187:
+.L8199:
 .L2890:
 	mov	esi, 5
 	lea	rdi, .LC1015[rip]
@@ -48175,7 +48195,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8186:
+.L8198:
 .L2888:
 	mov	esi, 4
 	lea	rdi, .LC1014[rip]
@@ -48191,7 +48211,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8185:
+.L8197:
 .L2886:
 	mov	esi, 8
 	lea	rdi, .LC1013[rip]
@@ -48207,7 +48227,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8184:
+.L8196:
 .L2884:
 	mov	esi, 4
 	lea	rdi, .LC1012[rip]
@@ -48223,7 +48243,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8183:
+.L8195:
 .L2882:
 	mov	esi, 5
 	lea	rdi, .LC1011[rip]
@@ -48239,7 +48259,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8182:
+.L8194:
 .L2880:
 	mov	esi, 3
 	lea	rdi, .LC1010[rip]
@@ -48255,7 +48275,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8181:
+.L8193:
 .L2878:
 	mov	esi, 7
 	lea	rdi, .LC1009[rip]
@@ -48271,7 +48291,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8180:
+.L8192:
 .L2876:
 	mov	esi, 5
 	lea	rdi, .LC1008[rip]
@@ -48287,7 +48307,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8179:
+.L8191:
 .L2874:
 	mov	esi, 6
 	lea	rdi, .LC1007[rip]
@@ -48303,7 +48323,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8178:
+.L8190:
 .L2872:
 	mov	esi, 7
 	lea	rdi, .LC1006[rip]
@@ -48319,7 +48339,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8177:
+.L8189:
 .L2870:
 	mov	esi, 12
 	lea	rdi, .LC1005[rip]
@@ -48335,7 +48355,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8176:
+.L8188:
 .L2868:
 	mov	esi, 11
 	lea	rdi, .LC1004[rip]
@@ -48351,7 +48371,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8175:
+.L8187:
 .L2866:
 	mov	esi, 11
 	lea	rdi, .LC1003[rip]
@@ -48367,7 +48387,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8174:
+.L8186:
 .L2864:
 	mov	esi, 5
 	lea	rdi, .LC1002[rip]
@@ -48383,7 +48403,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8173:
+.L8185:
 .L2862:
 	mov	esi, 11
 	lea	rdi, .LC1001[rip]
@@ -48399,7 +48419,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8172:
+.L8184:
 .L2860:
 	mov	esi, 6
 	lea	rdi, .LC1000[rip]
@@ -48415,7 +48435,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8171:
+.L8183:
 .L2858:
 	mov	esi, 6
 	lea	rdi, .LC999[rip]
@@ -48431,7 +48451,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8170:
+.L8182:
 .L2856:
 	mov	esi, 5
 	lea	rdi, .LC998[rip]
@@ -48447,7 +48467,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8169:
+.L8181:
 .L2854:
 	mov	esi, 11
 	lea	rdi, .LC997[rip]
@@ -48463,7 +48483,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8168:
+.L8180:
 .L2852:
 	mov	esi, 12
 	lea	rdi, .LC996[rip]
@@ -48479,7 +48499,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8167:
+.L8179:
 .L2850:
 	mov	esi, 4
 	lea	rdi, .LC995[rip]
@@ -48495,7 +48515,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8166:
+.L8178:
 .L2848:
 	mov	esi, 5
 	lea	rdi, .LC994[rip]
@@ -48511,7 +48531,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8165:
+.L8177:
 .L2846:
 	mov	esi, 2
 	lea	rdi, .LC993[rip]
@@ -48527,7 +48547,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8164:
+.L8176:
 .L2844:
 	mov	esi, 6
 	lea	rdi, .LC992[rip]
@@ -48543,7 +48563,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8163:
+.L8175:
 .L2842:
 	mov	esi, 3
 	lea	rdi, .LC991[rip]
@@ -48559,7 +48579,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8162:
+.L8174:
 .L2840:
 	mov	esi, 5
 	lea	rdi, .LC990[rip]
@@ -48575,7 +48595,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8161:
+.L8173:
 .L2838:
 	mov	esi, 13
 	lea	rdi, .LC989[rip]
@@ -48591,7 +48611,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8160:
+.L8172:
 .L2836:
 	mov	esi, 7
 	lea	rdi, .LC988[rip]
@@ -48607,7 +48627,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8159:
+.L8171:
 .L2834:
 	mov	esi, 10
 	lea	rdi, .LC987[rip]
@@ -48623,7 +48643,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8158:
+.L8170:
 .L2832:
 	mov	esi, 13
 	lea	rdi, .LC986[rip]
@@ -48639,7 +48659,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8157:
+.L8169:
 .L2830:
 	mov	esi, 11
 	lea	rdi, .LC985[rip]
@@ -48655,7 +48675,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8156:
+.L8168:
 .L2828:
 	mov	esi, 10
 	lea	rdi, .LC984[rip]
@@ -48671,7 +48691,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8155:
+.L8167:
 .L2826:
 	mov	esi, 6
 	lea	rdi, .LC983[rip]
@@ -48687,7 +48707,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8154:
+.L8166:
 .L2824:
 	mov	esi, 12
 	lea	rdi, .LC982[rip]
@@ -48703,7 +48723,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8153:
+.L8165:
 .L2822:
 	mov	esi, 11
 	lea	rdi, .LC981[rip]
@@ -48719,7 +48739,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8152:
+.L8164:
 .L2820:
 	mov	esi, 4
 	lea	rdi, .LC980[rip]
@@ -48735,7 +48755,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8151:
+.L8163:
 .L2818:
 	mov	esi, 1
 	lea	rdi, .LC233[rip]
@@ -48751,7 +48771,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8150:
+.L8162:
 .L2816:
 	mov	esi, 7
 	lea	rdi, .LC979[rip]
@@ -48767,7 +48787,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8149:
+.L8161:
 .L2814:
 	mov	esi, 10
 	lea	rdi, .LC978[rip]
@@ -48783,7 +48803,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8148:
+.L8160:
 .L2812:
 	mov	esi, 6
 	lea	rdi, .LC977[rip]
@@ -48799,7 +48819,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8147:
+.L8159:
 .L2810:
 	mov	esi, 8
 	lea	rdi, .LC976[rip]
@@ -48815,7 +48835,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8146:
+.L8158:
 .L2808:
 	mov	esi, 6
 	lea	rdi, .LC975[rip]
@@ -48831,7 +48851,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8145:
+.L8157:
 .L2806:
 	mov	esi, 8
 	lea	rdi, .LC974[rip]
@@ -48847,7 +48867,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8144:
+.L8156:
 .L2804:
 	mov	esi, 6
 	lea	rdi, .LC973[rip]
@@ -48863,7 +48883,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8143:
+.L8155:
 .L2802:
 	mov	esi, 7
 	lea	rdi, .LC972[rip]
@@ -48879,7 +48899,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8142:
+.L8154:
 .L2800:
 	mov	esi, 6
 	lea	rdi, .LC971[rip]
@@ -48895,7 +48915,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8141:
+.L8153:
 .L2798:
 	mov	esi, 8
 	lea	rdi, .LC970[rip]
@@ -48911,7 +48931,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8140:
+.L8152:
 .L2796:
 	mov	esi, 5
 	lea	rdi, .LC969[rip]
@@ -48927,7 +48947,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8139:
+.L8151:
 .L2794:
 	mov	esi, 17
 	lea	rdi, .LC968[rip]
@@ -48943,7 +48963,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8138:
+.L8150:
 .L2792:
 	mov	esi, 6
 	lea	rdi, .LC967[rip]
@@ -48959,7 +48979,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8137:
+.L8149:
 .L2790:
 	mov	esi, 4
 	lea	rdi, .LC966[rip]
@@ -48975,7 +48995,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8136:
+.L8148:
 .L2788:
 	mov	esi, 3
 	lea	rdi, .LC965[rip]
@@ -48991,7 +49011,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8135:
+.L8147:
 .L2786:
 	mov	esi, 4
 	lea	rdi, .LC964[rip]
@@ -49007,7 +49027,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8134:
+.L8146:
 .L2784:
 	mov	esi, 9
 	lea	rdi, .LC963[rip]
@@ -49023,7 +49043,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8133:
+.L8145:
 .L2782:
 	mov	esi, 6
 	lea	rdi, .LC962[rip]
@@ -49039,7 +49059,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8132:
+.L8144:
 .L2780:
 	mov	esi, 5
 	lea	rdi, .LC961[rip]
@@ -49055,7 +49075,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8131:
+.L8143:
 .L2778:
 	mov	esi, 8
 	lea	rdi, .LC960[rip]
@@ -49071,7 +49091,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8130:
+.L8142:
 .L2776:
 	mov	esi, 3
 	lea	rdi, .LC959[rip]
@@ -49087,7 +49107,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8129:
+.L8141:
 .L2774:
 	mov	esi, 6
 	lea	rdi, .LC958[rip]
@@ -49103,7 +49123,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8128:
+.L8140:
 .L2772:
 	mov	esi, 11
 	lea	rdi, .LC957[rip]
@@ -49119,7 +49139,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8127:
+.L8139:
 .L2770:
 	mov	esi, 5
 	lea	rdi, .LC956[rip]
@@ -49135,7 +49155,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8126:
+.L8138:
 .L2768:
 	mov	esi, 3
 	lea	rdi, .LC955[rip]
@@ -49151,7 +49171,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8125:
+.L8137:
 .L2766:
 	mov	esi, 3
 	lea	rdi, .LC954[rip]
@@ -49167,7 +49187,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8124:
+.L8136:
 .L2764:
 	mov	esi, 4
 	lea	rdi, .LC953[rip]
@@ -49183,7 +49203,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8123:
+.L8135:
 .L2762:
 	mov	esi, 3
 	lea	rdi, .LC952[rip]
@@ -49199,7 +49219,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8122:
+.L8134:
 .L2760:
 	mov	esi, 5
 	lea	rdi, .LC951[rip]
@@ -49215,7 +49235,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8121:
+.L8133:
 .L2758:
 	mov	esi, 5
 	lea	rdi, .LC950[rip]
@@ -49231,7 +49251,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8120:
+.L8132:
 .L2756:
 	mov	esi, 3
 	lea	rdi, .LC949[rip]
@@ -49247,7 +49267,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8119:
+.L8131:
 .L2754:
 	mov	esi, 11
 	lea	rdi, .LC948[rip]
@@ -49263,7 +49283,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8118:
+.L8130:
 .L2752:
 	mov	esi, 5
 	lea	rdi, .LC947[rip]
@@ -49279,7 +49299,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8117:
+.L8129:
 .L2750:
 	mov	esi, 3
 	lea	rdi, .LC946[rip]
@@ -49295,7 +49315,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8116:
+.L8128:
 .L2748:
 	mov	esi, 3
 	lea	rdi, .LC945[rip]
@@ -49311,7 +49331,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8115:
+.L8127:
 .L2746:
 	mov	esi, 11
 	lea	rdi, .LC944[rip]
@@ -49327,7 +49347,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8114:
+.L8126:
 .L2744:
 	mov	esi, 7
 	lea	rdi, .LC943[rip]
@@ -49343,7 +49363,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8113:
+.L8125:
 .L2742:
 	mov	esi, 4
 	lea	rdi, .LC942[rip]
@@ -49359,7 +49379,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8112:
+.L8124:
 .L2740:
 	mov	esi, 5
 	lea	rdi, .LC941[rip]
@@ -49375,7 +49395,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8111:
+.L8123:
 .L2738:
 	mov	esi, 5
 	lea	rdi, .LC940[rip]
@@ -49391,7 +49411,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8110:
+.L8122:
 .L2736:
 	mov	esi, 9
 	lea	rdi, .LC939[rip]
@@ -49407,7 +49427,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8109:
+.L8121:
 .L2734:
 	mov	esi, 12
 	lea	rdi, .LC938[rip]
@@ -49423,7 +49443,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8108:
+.L8120:
 .L2732:
 	mov	esi, 8
 	lea	rdi, .LC937[rip]
@@ -49439,7 +49459,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8107:
+.L8119:
 .L2730:
 	mov	esi, 12
 	lea	rdi, .LC936[rip]
@@ -49455,7 +49475,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8106:
+.L8118:
 .L2728:
 	mov	esi, 10
 	lea	rdi, .LC935[rip]
@@ -49471,7 +49491,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8105:
+.L8117:
 .L2726:
 	mov	esi, 9
 	lea	rdi, .LC934[rip]
@@ -49487,7 +49507,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8104:
+.L8116:
 .L2724:
 	mov	esi, 10
 	lea	rdi, .LC933[rip]
@@ -49503,7 +49523,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8103:
+.L8115:
 .L2722:
 	mov	esi, 11
 	lea	rdi, .LC932[rip]
@@ -49519,7 +49539,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8102:
+.L8114:
 .L2720:
 	mov	esi, 10
 	lea	rdi, .LC931[rip]
@@ -49535,7 +49555,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8101:
+.L8113:
 .L2718:
 	mov	esi, 11
 	lea	rdi, .LC930[rip]
@@ -49551,7 +49571,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8100:
+.L8112:
 .L2716:
 	mov	esi, 8
 	lea	rdi, .LC929[rip]
@@ -49567,7 +49587,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8099:
+.L8111:
 .L2714:
 	mov	esi, 11
 	lea	rdi, .LC928[rip]
@@ -49583,7 +49603,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8098:
+.L8110:
 .L2712:
 	mov	esi, 11
 	lea	rdi, .LC927[rip]
@@ -49599,7 +49619,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8097:
+.L8109:
 .L2710:
 	mov	esi, 9
 	lea	rdi, .LC926[rip]
@@ -49615,7 +49635,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8096:
+.L8108:
 .L2708:
 	mov	esi, 12
 	lea	rdi, .LC925[rip]
@@ -49631,7 +49651,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8095:
+.L8107:
 .L2706:
 	mov	esi, 10
 	lea	rdi, .LC924[rip]
@@ -49647,7 +49667,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8094:
+.L8106:
 .L2704:
 	mov	esi, 6
 	lea	rdi, .LC923[rip]
@@ -49663,7 +49683,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8093:
+.L8105:
 .L2702:
 	mov	esi, 6
 	lea	rdi, .LC922[rip]
@@ -49679,7 +49699,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8092:
+.L8104:
 .L2700:
 	mov	esi, 12
 	lea	rdi, .LC921[rip]
@@ -49695,7 +49715,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8091:
+.L8103:
 .L2698:
 	mov	esi, 10
 	lea	rdi, .LC920[rip]
@@ -49711,7 +49731,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8090:
+.L8102:
 .L2696:
 	mov	esi, 10
 	lea	rdi, .LC919[rip]
@@ -49727,7 +49747,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8089:
+.L8101:
 .L2694:
 	mov	esi, 11
 	lea	rdi, .LC918[rip]
@@ -49743,7 +49763,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8088:
+.L8100:
 .L2692:
 	mov	esi, 8
 	lea	rdi, .LC917[rip]
@@ -49759,7 +49779,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8087:
+.L8099:
 .L2690:
 	mov	esi, 7
 	lea	rdi, .LC916[rip]
@@ -49775,7 +49795,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8086:
+.L8098:
 .L2688:
 	mov	esi, 3
 	lea	rdi, .LC915[rip]
@@ -49791,7 +49811,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8085:
+.L8097:
 .L2686:
 	mov	esi, 6
 	lea	rdi, .LC914[rip]
@@ -49807,7 +49827,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8084:
+.L8096:
 .L2684:
 	mov	esi, 6
 	lea	rdi, .LC913[rip]
@@ -49823,7 +49843,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8083:
+.L8095:
 .L2682:
 	mov	esi, 8
 	lea	rdi, .LC912[rip]
@@ -49839,7 +49859,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8082:
+.L8094:
 .L2680:
 	mov	esi, 3
 	lea	rdi, .LC911[rip]
@@ -49855,7 +49875,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8081:
+.L8093:
 .L2678:
 	mov	esi, 6
 	lea	rdi, .LC910[rip]
@@ -49871,7 +49891,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8080:
+.L8092:
 .L2676:
 	mov	esi, 4
 	lea	rdi, .LC909[rip]
@@ -49887,7 +49907,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8079:
+.L8091:
 .L2674:
 	mov	esi, 4
 	lea	rdi, .LC908[rip]
@@ -49903,7 +49923,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8078:
+.L8090:
 .L2672:
 	mov	esi, 5
 	lea	rdi, .LC907[rip]
@@ -49919,7 +49939,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8077:
+.L8089:
 .L2670:
 	mov	esi, 3
 	lea	rdi, .LC906[rip]
@@ -49935,7 +49955,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8076:
+.L8088:
 .L2668:
 	mov	esi, 4
 	lea	rdi, .LC905[rip]
@@ -49951,7 +49971,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8075:
+.L8087:
 .L2666:
 	mov	esi, 4
 	lea	rdi, .LC904[rip]
@@ -49967,7 +49987,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8074:
+.L8086:
 .L2664:
 	mov	esi, 12
 	lea	rdi, .LC903[rip]
@@ -49983,7 +50003,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8073:
+.L8085:
 .L2662:
 	mov	esi, 1
 	lea	rdi, .LC232[rip]
@@ -49999,7 +50019,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8072:
+.L8084:
 .L2660:
 	mov	esi, 2
 	lea	rdi, .LC902[rip]
@@ -50015,7 +50035,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8071:
+.L8083:
 .L2658:
 	mov	esi, 7
 	lea	rdi, .LC901[rip]
@@ -50031,7 +50051,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8070:
+.L8082:
 .L2656:
 	mov	esi, 2
 	lea	rdi, .LC900[rip]
@@ -50047,7 +50067,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8069:
+.L8081:
 .L2654:
 	mov	esi, 2
 	lea	rdi, .LC899[rip]
@@ -50063,7 +50083,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8068:
+.L8080:
 .L2652:
 	mov	esi, 5
 	lea	rdi, .LC898[rip]
@@ -50079,7 +50099,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8067:
+.L8079:
 .L2650:
 	mov	esi, 5
 	lea	rdi, .LC897[rip]
@@ -50095,7 +50115,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8066:
+.L8078:
 .L2648:
 	mov	esi, 5
 	lea	rdi, .LC896[rip]
@@ -50111,7 +50131,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8065:
+.L8077:
 .L2646:
 	mov	esi, 10
 	lea	rdi, .LC895[rip]
@@ -50127,7 +50147,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8064:
+.L8076:
 .L2644:
 	mov	esi, 4
 	lea	rdi, .LC894[rip]
@@ -50143,7 +50163,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8063:
+.L8075:
 .L2642:
 	mov	esi, 6
 	lea	rdi, .LC893[rip]
@@ -50159,7 +50179,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8062:
+.L8074:
 .L2640:
 	mov	esi, 4
 	lea	rdi, .LC892[rip]
@@ -50175,7 +50195,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8061:
+.L8073:
 .L2638:
 	mov	esi, 17
 	lea	rdi, .LC891[rip]
@@ -50191,7 +50211,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8060:
+.L8072:
 .L2636:
 	mov	esi, 16
 	lea	rdi, .LC890[rip]
@@ -50207,7 +50227,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8059:
+.L8071:
 .L2634:
 	mov	esi, 6
 	lea	rdi, .LC889[rip]
@@ -50223,7 +50243,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8058:
+.L8070:
 .L2632:
 	mov	esi, 3
 	lea	rdi, .LC888[rip]
@@ -50239,7 +50259,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8057:
+.L8069:
 .L2630:
 	mov	esi, 2
 	lea	rdi, .LC887[rip]
@@ -50255,7 +50275,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8056:
+.L8068:
 .L2628:
 	mov	esi, 8
 	lea	rdi, .LC886[rip]
@@ -50271,7 +50291,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8055:
+.L8067:
 .L2626:
 	mov	esi, 6
 	lea	rdi, .LC885[rip]
@@ -50287,7 +50307,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8054:
+.L8066:
 .L2624:
 	mov	esi, 3
 	lea	rdi, .LC884[rip]
@@ -50303,7 +50323,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8053:
+.L8065:
 .L2622:
 	mov	esi, 8
 	lea	rdi, .LC883[rip]
@@ -50319,7 +50339,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8052:
+.L8064:
 .L2620:
 	mov	esi, 8
 	lea	rdi, .LC882[rip]
@@ -50335,7 +50355,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8051:
+.L8063:
 .L2618:
 	mov	esi, 8
 	lea	rdi, .LC881[rip]
@@ -50351,7 +50371,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8050:
+.L8062:
 .L2616:
 	mov	esi, 7
 	lea	rdi, .LC880[rip]
@@ -50367,7 +50387,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8049:
+.L8061:
 .L2614:
 	mov	esi, 9
 	lea	rdi, .LC879[rip]
@@ -50383,7 +50403,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8048:
+.L8060:
 .L2612:
 	mov	esi, 7
 	lea	rdi, .LC878[rip]
@@ -50399,7 +50419,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8047:
+.L8059:
 .L2610:
 	mov	esi, 8
 	lea	rdi, .LC877[rip]
@@ -50415,7 +50435,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8046:
+.L8058:
 .L2608:
 	mov	esi, 18
 	lea	rdi, .LC876[rip]
@@ -50431,7 +50451,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8045:
+.L8057:
 .L2606:
 	mov	esi, 10
 	lea	rdi, .LC875[rip]
@@ -50447,7 +50467,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8044:
+.L8056:
 .L2604:
 	mov	esi, 7
 	lea	rdi, .LC874[rip]
@@ -50463,7 +50483,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8043:
+.L8055:
 .L2602:
 	mov	esi, 4
 	lea	rdi, .LC873[rip]
@@ -50479,7 +50499,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8042:
+.L8054:
 .L2600:
 	mov	esi, 15
 	lea	rdi, .LC872[rip]
@@ -50495,7 +50515,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8041:
+.L8053:
 .L2598:
 	mov	esi, 9
 	lea	rdi, .LC871[rip]
@@ -50511,7 +50531,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8040:
+.L8052:
 .L2596:
 	mov	esi, 14
 	lea	rdi, .LC870[rip]
@@ -50527,7 +50547,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8039:
+.L8051:
 .L2594:
 	mov	esi, 10
 	lea	rdi, .LC869[rip]
@@ -50543,7 +50563,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8038:
+.L8050:
 .L2592:
 	mov	esi, 9
 	lea	rdi, .LC868[rip]
@@ -50559,7 +50579,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8037:
+.L8049:
 .L2590:
 	mov	esi, 3
 	lea	rdi, .LC867[rip]
@@ -50575,7 +50595,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8036:
+.L8048:
 .L2588:
 	mov	esi, 7
 	lea	rdi, .LC866[rip]
@@ -50591,7 +50611,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8035:
+.L8047:
 .L2586:
 	mov	esi, 10
 	lea	rdi, .LC865[rip]
@@ -50607,7 +50627,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8034:
+.L8046:
 .L2584:
 	mov	esi, 10
 	lea	rdi, .LC864[rip]
@@ -50623,7 +50643,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8033:
+.L8045:
 .L2582:
 	mov	esi, 9
 	lea	rdi, .LC863[rip]
@@ -50639,7 +50659,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8032:
+.L8044:
 .L2580:
 	mov	esi, 9
 	lea	rdi, .LC862[rip]
@@ -50655,7 +50675,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8031:
+.L8043:
 .L2578:
 	mov	esi, 3
 	lea	rdi, .LC861[rip]
@@ -50671,7 +50691,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8030:
+.L8042:
 .L2576:
 	mov	esi, 11
 	lea	rdi, .LC860[rip]
@@ -50687,7 +50707,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8029:
+.L8041:
 .L2574:
 	mov	esi, 6
 	lea	rdi, .LC859[rip]
@@ -50703,7 +50723,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8028:
+.L8040:
 .L2572:
 	mov	esi, 10
 	lea	rdi, .LC858[rip]
@@ -50719,7 +50739,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8027:
+.L8039:
 .L2570:
 	mov	esi, 11
 	lea	rdi, .LC857[rip]
@@ -50735,7 +50755,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8026:
+.L8038:
 .L2568:
 	mov	esi, 10
 	lea	rdi, .LC856[rip]
@@ -50751,7 +50771,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8025:
+.L8037:
 .L2566:
 	mov	esi, 4
 	lea	rdi, .LC855[rip]
@@ -50767,7 +50787,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8024:
+.L8036:
 .L2564:
 	mov	esi, 9
 	lea	rdi, .LC854[rip]
@@ -50783,7 +50803,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8023:
+.L8035:
 .L2562:
 	mov	esi, 5
 	lea	rdi, .LC853[rip]
@@ -50799,7 +50819,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8022:
+.L8034:
 .L2560:
 	mov	esi, 11
 	lea	rdi, .LC852[rip]
@@ -50815,7 +50835,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8021:
+.L8033:
 .L2558:
 	mov	esi, 12
 	lea	rdi, .LC851[rip]
@@ -50831,7 +50851,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8020:
+.L8032:
 .L2556:
 	mov	esi, 7
 	lea	rdi, .LC850[rip]
@@ -50847,7 +50867,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8019:
+.L8031:
 .L2554:
 	mov	esi, 9
 	lea	rdi, .LC849[rip]
@@ -50863,7 +50883,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8018:
+.L8030:
 .L2552:
 	mov	esi, 9
 	lea	rdi, .LC848[rip]
@@ -50879,7 +50899,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8017:
+.L8029:
 .L2550:
 	mov	esi, 6
 	lea	rdi, .LC847[rip]
@@ -50895,7 +50915,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8016:
+.L8028:
 .L2548:
 	mov	esi, 7
 	lea	rdi, .LC846[rip]
@@ -50911,7 +50931,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8015:
+.L8027:
 .L2546:
 	mov	esi, 6
 	lea	rdi, .LC845[rip]
@@ -50927,7 +50947,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8014:
+.L8026:
 .L2544:
 	mov	esi, 6
 	lea	rdi, .LC844[rip]
@@ -50943,7 +50963,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8013:
+.L8025:
 .L2542:
 	mov	esi, 6
 	lea	rdi, .LC843[rip]
@@ -50959,7 +50979,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8012:
+.L8024:
 .L2540:
 	mov	esi, 7
 	lea	rdi, .LC842[rip]
@@ -50975,7 +50995,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8011:
+.L8023:
 .L2538:
 	mov	esi, 6
 	lea	rdi, .LC841[rip]
@@ -50991,7 +51011,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8010:
+.L8022:
 .L2536:
 	mov	esi, 6
 	lea	rdi, .LC840[rip]
@@ -51007,7 +51027,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8009:
+.L8021:
 .L2534:
 	mov	esi, 7
 	lea	rdi, .LC839[rip]
@@ -51023,7 +51043,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8008:
+.L8020:
 .L2532:
 	mov	esi, 3
 	lea	rdi, .LC838[rip]
@@ -51039,7 +51059,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8007:
+.L8019:
 .L2530:
 	mov	esi, 6
 	lea	rdi, .LC837[rip]
@@ -51055,7 +51075,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8006:
+.L8018:
 .L2528:
 	mov	esi, 7
 	lea	rdi, .LC836[rip]
@@ -51071,7 +51091,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8005:
+.L8017:
 .L2526:
 	mov	esi, 12
 	lea	rdi, .LC835[rip]
@@ -51087,7 +51107,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8004:
+.L8016:
 .L2524:
 	mov	esi, 13
 	lea	rdi, .LC834[rip]
@@ -51103,7 +51123,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8003:
+.L8015:
 .L2522:
 	mov	esi, 7
 	lea	rdi, .LC833[rip]
@@ -51119,7 +51139,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8002:
+.L8014:
 .L2520:
 	mov	esi, 3
 	lea	rdi, .LC832[rip]
@@ -51135,7 +51155,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8001:
+.L8013:
 .L2518:
 	mov	esi, 11
 	lea	rdi, .LC831[rip]
@@ -51151,7 +51171,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L8000:
+.L8012:
 .L2516:
 	mov	esi, 11
 	lea	rdi, .LC830[rip]
@@ -51167,7 +51187,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7999:
+.L8011:
 .L2514:
 	mov	esi, 11
 	lea	rdi, .LC829[rip]
@@ -51183,7 +51203,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7998:
+.L8010:
 .L2512:
 	mov	esi, 10
 	lea	rdi, .LC828[rip]
@@ -51199,7 +51219,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7997:
+.L8009:
 .L2510:
 	mov	esi, 10
 	lea	rdi, .LC827[rip]
@@ -51215,7 +51235,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7996:
+.L8008:
 .L2508:
 	mov	esi, 10
 	lea	rdi, .LC826[rip]
@@ -51231,7 +51251,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7995:
+.L8007:
 .L2506:
 	mov	esi, 9
 	lea	rdi, .LC825[rip]
@@ -51247,7 +51267,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7994:
+.L8006:
 .L2504:
 	mov	esi, 14
 	lea	rdi, .LC824[rip]
@@ -51263,7 +51283,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7993:
+.L8005:
 .L2502:
 	mov	esi, 5
 	lea	rdi, .LC823[rip]
@@ -51279,7 +51299,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7992:
+.L8004:
 .L2500:
 	mov	esi, 2
 	lea	rdi, .LC822[rip]
@@ -51295,7 +51315,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7991:
+.L8003:
 .L2498:
 	mov	esi, 14
 	lea	rdi, .LC821[rip]
@@ -51311,7 +51331,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7990:
+.L8002:
 .L2496:
 	mov	esi, 4
 	lea	rdi, .LC820[rip]
@@ -51327,7 +51347,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7989:
+.L8001:
 .L2494:
 	mov	esi, 11
 	lea	rdi, .LC819[rip]
@@ -51343,7 +51363,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7988:
+.L8000:
 .L2492:
 	mov	esi, 3
 	lea	rdi, .LC818[rip]
@@ -51359,7 +51379,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7987:
+.L7999:
 .L2490:
 	mov	esi, 12
 	lea	rdi, .LC817[rip]
@@ -51375,7 +51395,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7986:
+.L7998:
 .L2488:
 	mov	esi, 13
 	lea	rdi, .LC816[rip]
@@ -51391,7 +51411,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7985:
+.L7997:
 .L2486:
 	mov	esi, 4
 	lea	rdi, .LC815[rip]
@@ -51407,7 +51427,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7984:
+.L7996:
 .L2484:
 	mov	esi, 7
 	lea	rdi, .LC814[rip]
@@ -51423,7 +51443,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7983:
+.L7995:
 .L2482:
 	mov	esi, 4
 	lea	rdi, .LC813[rip]
@@ -51439,7 +51459,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7982:
+.L7994:
 .L2480:
 	mov	esi, 1
 	lea	rdi, .LC231[rip]
@@ -51455,7 +51475,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	pop	r14
 	pop	r15
 	jmp	fb_PrintString@PLT
-.L7981:
+.L7993:
 .L2478:
 	mov	esi, 11
 	lea	rdi, .LC812[rip]
@@ -51509,7 +51529,7 @@ _ZN8MEMORY_T6POKE64Edd:
 	.globl	_ZN8MEMORY_TC1Ev
 	.type	_ZN8MEMORY_TC1Ev, @function
 _ZN8MEMORY_TC1Ev:
-.L9029:
+.L9041:
 	push	r15
 	mov	edx, 134217728
 	xor	esi, esi
@@ -51575,7 +51595,7 @@ _ZN8MEMORY_TC1Ev:
 	mov	QWORD PTR SYS_OFFSET$[rip], rax
 	.p2align 4,,10
 	.p2align 3
-.L9030:
+.L9042:
 	mov	rdi, r15
 	add	rbx, 8
 	call	fb_DataReadLongint@PLT
@@ -51583,18 +51603,18 @@ _ZN8MEMORY_TC1Ev:
 	cvtsi2sd	xmm0, QWORD PTR 40[rsp]
 	movsd	QWORD PTR -8[rbx], xmm0
 	cmp	r14, rbx
-	jne	.L9030
+	jne	.L9042
 	lea	rax, 8192[r13]
-.L9031:
+.L9043:
 	.p2align 4,,10
 	.p2align 3
-.L9125:
-.L9032:
+.L9137:
+.L9044:
 	movapd	xmm3, XMMWORD PTR .LC2087[rip]
 	add	r14, 16
 	movups	XMMWORD PTR -16[r14], xmm3
 	cmp	rax, r14
-	jne	.L9125
+	jne	.L9137
 	mov	ebx, 1
 	lea	r15, 24[rsp]
 	lea	r14, 16[rsp]
@@ -51606,7 +51626,7 @@ _ZN8MEMORY_TC1Ev:
 	movsd	QWORD PTR [rsp], xmm0
 	.p2align 4,,10
 	.p2align 3
-.L9033:
+.L9045:
 	pxor	xmm0, xmm0
 	mov	rsi, r14
 	mov	rdi, r15
@@ -51619,8 +51639,8 @@ _ZN8MEMORY_TC1Ev:
 	movsd	QWORD PTR 134750088[r13+rbx*8], xmm1
 	add	rbx, 1
 	cmp	rbx, 360
-	jne	.L9033
-.L9034:
+	jne	.L9045
+.L9046:
 	movsd	xmm1, QWORD PTR .LC259[rip]
 	mov	rdi, r13
 	movsd	xmm0, QWORD PTR .LC281[rip]
@@ -51685,7 +51705,7 @@ _ZN8MEMORY_TC1Ev:
 	call	fb_FileOpen@PLT
 	.p2align 4,,10
 	.p2align 3
-.L9035:
+.L9047:
 	mov	ecx, 1
 	mov	rdx, r14
 	xor	esi, esi
@@ -51697,13 +51717,13 @@ _ZN8MEMORY_TC1Ev:
 	cvtsi2sd	xmm0, eax
 	movsd	QWORD PTR -8[r12], xmm0
 	cmp	r15, r12
-	jne	.L9035
+	jne	.L9047
 	lea	r12, 134283264[r13]
-.L9036:
+.L9048:
 	.p2align 4,,10
 	.p2align 3
-.L9126:
-.L9037:
+.L9138:
+.L9049:
 	mov	ecx, 1
 	mov	rdx, r14
 	xor	esi, esi
@@ -51715,8 +51735,8 @@ _ZN8MEMORY_TC1Ev:
 	cvtsi2sd	xmm0, eax
 	movsd	QWORD PTR -8[rbp], xmm0
 	cmp	r12, rbp
-	jne	.L9126
-.L9038:
+	jne	.L9138
+.L9050:
 	mov	edi, 1
 	lea	rbx, 134545408[r13]
 	call	fb_FileClose@PLT
@@ -51733,7 +51753,7 @@ _ZN8MEMORY_TC1Ev:
 	mov	rbp, QWORD PTR 8[rsp]
 	.p2align 4,,10
 	.p2align 3
-.L9039:
+.L9051:
 	mov	ecx, 1
 	mov	rdx, r14
 	xor	esi, esi
@@ -51745,8 +51765,8 @@ _ZN8MEMORY_TC1Ev:
 	cvtsi2sd	xmm0, eax
 	movsd	QWORD PTR -8[rbp], xmm0
 	cmp	rbx, rbp
-	jne	.L9039
-.L9040:
+	jne	.L9051
+.L9052:
 	mov	edi, 1
 	lea	rbp, 134610944[r13]
 	call	fb_FileClose@PLT
@@ -51762,7 +51782,7 @@ _ZN8MEMORY_TC1Ev:
 	call	fb_FileOpen@PLT
 	.p2align 4,,10
 	.p2align 3
-.L9041:
+.L9053:
 	mov	ecx, 1
 	mov	rdx, r14
 	xor	esi, esi
@@ -51774,8 +51794,8 @@ _ZN8MEMORY_TC1Ev:
 	cvtsi2sd	xmm0, eax
 	movsd	QWORD PTR -8[rbx], xmm0
 	cmp	rbp, rbx
-	jne	.L9041
-.L9042:
+	jne	.L9053
+.L9054:
 	mov	edi, 1
 	lea	rbp, 48[rsp]
 	mov	ebx, 1
@@ -51857,10 +51877,10 @@ _ZN8MEMORY_TC1Ev:
 	call	fb_StrLen@PLT
 	mov	r12, rax
 	test	rax, rax
-	jle	.L9044
+	jle	.L9056
 	.p2align 4,,10
 	.p2align 3
-.L9043:
+.L9055:
 	mov	edx, 1
 	mov	rsi, rbx
 	mov	rdi, rbp
@@ -51878,17 +51898,17 @@ _ZN8MEMORY_TC1Ev:
 	cmp	eax, 64
 	sbb	eax, eax
 	test	edx, eax
-	je	.L9129
+	je	.L9141
 	addsd	xmm0, QWORD PTR .LC73[rip]
-.L9129:
-.L9045:
-.L9046:
-.L9047:
+.L9141:
+.L9057:
+.L9058:
+.L9059:
 	movsd	QWORD PTR 134226736[r13+rbx*8], xmm0
 	add	rbx, 1
 	cmp	r12, rbx
-	jge	.L9043
-.L9044:
+	jge	.L9055
+.L9056:
 	xor	r8d, r8d
 	mov	ecx, 5
 	mov	rdi, rbp
@@ -51901,10 +51921,10 @@ _ZN8MEMORY_TC1Ev:
 	call	fb_StrLen@PLT
 	mov	r12, rax
 	test	rax, rax
-	jle	.L9052
+	jle	.L9064
 	.p2align 4,,10
 	.p2align 3
-.L9051:
+.L9063:
 	mov	edx, 1
 	mov	rsi, rbx
 	mov	rdi, rbp
@@ -51922,17 +51942,17 @@ _ZN8MEMORY_TC1Ev:
 	cmp	eax, 64
 	sbb	eax, eax
 	test	edx, eax
-	je	.L9130
+	je	.L9142
 	addsd	xmm0, QWORD PTR .LC73[rip]
-.L9130:
-.L9053:
-.L9054:
-.L9055:
+.L9142:
+.L9065:
+.L9066:
+.L9067:
 	movsd	QWORD PTR 134226784[r13+rbx*8], xmm0
 	add	rbx, 1
 	cmp	r12, rbx
-	jge	.L9051
-.L9052:
+	jge	.L9063
+.L9064:
 	mov	rax, QWORD PTR .LC73[rip]
 	xor	r8d, r8d
 	mov	ecx, 10
@@ -51949,10 +51969,10 @@ _ZN8MEMORY_TC1Ev:
 	call	fb_StrLen@PLT
 	mov	r12, rax
 	test	rax, rax
-	jle	.L9060
+	jle	.L9072
 	.p2align 4,,10
 	.p2align 3
-.L9059:
+.L9071:
 	mov	edx, 1
 	mov	rsi, rbx
 	mov	rdi, rbp
@@ -51970,17 +51990,17 @@ _ZN8MEMORY_TC1Ev:
 	cmp	eax, 64
 	sbb	eax, eax
 	test	edx, eax
-	je	.L9131
+	je	.L9143
 	addsd	xmm0, QWORD PTR .LC73[rip]
-.L9131:
-.L9061:
-.L9062:
-.L9063:
+.L9143:
+.L9073:
+.L9074:
+.L9075:
 	movsd	QWORD PTR 134226936[r13+rbx*8], xmm0
 	add	rbx, 1
 	cmp	r12, rbx
-	jge	.L9059
-.L9060:
+	jge	.L9071
+.L9072:
 	xor	r8d, r8d
 	mov	ecx, 6
 	mov	rdi, rbp
@@ -51995,10 +52015,10 @@ _ZN8MEMORY_TC1Ev:
 	call	fb_StrLen@PLT
 	mov	r12, rax
 	test	rax, rax
-	jle	.L9068
+	jle	.L9080
 	.p2align 4,,10
 	.p2align 3
-.L9067:
+.L9079:
 	mov	edx, 1
 	mov	rsi, rbx
 	mov	rdi, rbp
@@ -52016,11 +52036,11 @@ _ZN8MEMORY_TC1Ev:
 	cmp	eax, 64
 	sbb	eax, eax
 	test	edx, eax
-	je	.L9132
+	je	.L9144
 	addsd	xmm0, QWORD PTR .LC73[rip]
-.L9132:
-.L9069:
-.L9070:
+.L9144:
+.L9081:
+.L9082:
 	movsd	QWORD PTR 134226688[r13+rbx*8], xmm0
 	mov	edx, 1
 	mov	rsi, rbx
@@ -52039,17 +52059,17 @@ _ZN8MEMORY_TC1Ev:
 	cmp	eax, 64
 	sbb	eax, eax
 	test	edx, eax
-	je	.L9133
+	je	.L9145
 	addsd	xmm0, QWORD PTR .LC73[rip]
-.L9133:
-.L9074:
-.L9075:
-.L9076:
+.L9145:
+.L9086:
+.L9087:
+.L9088:
 	movsd	QWORD PTR 134227016[r13+rbx*8], xmm0
 	add	rbx, 1
 	cmp	r12, rbx
-	jge	.L9067
-.L9068:
+	jge	.L9079
+.L9080:
 	movapd	xmm0, XMMWORD PTR .LC2108[rip]
 	xor	r8d, r8d
 	mov	ecx, 11
@@ -52068,10 +52088,10 @@ _ZN8MEMORY_TC1Ev:
 	call	fb_StrLen@PLT
 	mov	r12, rax
 	test	rax, rax
-	jle	.L9081
+	jle	.L9093
 	.p2align 4,,10
 	.p2align 3
-.L9080:
+.L9092:
 	mov	edx, 1
 	mov	rsi, rbx
 	mov	rdi, rbp
@@ -52089,17 +52109,17 @@ _ZN8MEMORY_TC1Ev:
 	cmp	eax, 64
 	sbb	eax, eax
 	test	edx, eax
-	je	.L9134
+	je	.L9146
 	addsd	xmm0, QWORD PTR .LC73[rip]
-.L9134:
-.L9082:
-.L9083:
-.L9084:
+.L9146:
+.L9094:
+.L9095:
+.L9096:
 	movsd	QWORD PTR 134227184[r13+rbx*8], xmm0
 	add	rbx, 1
 	cmp	r12, rbx
-	jge	.L9080
-.L9081:
+	jge	.L9092
+.L9093:
 	mov	rax, QWORD PTR .LC73[rip]
 	cvtsd2si	edi, QWORD PTR 0[r13]
 	mov	QWORD PTR 134227216[r13], rax
@@ -52117,11 +52137,11 @@ _ZN8MEMORY_TC1Ev:
 	mov	rdi, rbp
 	call	fb_StrLen@PLT
 	cmp	rax, 1
-	je	.L9088
+	je	.L9100
 	cmp	rax, 2
-	je	.L9136
-.L9089:
-.L9105:
+	je	.L9148
+.L9101:
+.L9117:
 	mov	rax, QWORD PTR .LC483[rip]
 	movapd	xmm4, XMMWORD PTR .LC2087[rip]
 	mov	rdi, rbp
@@ -52136,7 +52156,7 @@ _ZN8MEMORY_TC1Ev:
 	pop	r14
 	pop	r15
 	ret
-.L9088:
+.L9100:
 	mov	esi, 1
 	mov	rdi, rbp
 	call	fb_ASC@PLT
@@ -52148,9 +52168,9 @@ _ZN8MEMORY_TC1Ev:
 	mov	rax, QWORD PTR .LC352[rip]
 	movsd	QWORD PTR 134227160[r13], xmm0
 	mov	QWORD PTR 134227176[r13], rax
-	jmp	.L9105
-.L9136:
-.L9090:
+	jmp	.L9117
+.L9148:
+.L9102:
 	mov	edx, 1
 	mov	esi, 1
 	mov	rdi, rbp
@@ -52189,10 +52209,10 @@ _ZN8MEMORY_TC1Ev:
 	call	fb_StrLen@PLT
 	mov	r12, rax
 	test	rax, rax
-	jle	.L9098
+	jle	.L9110
 	.p2align 4,,10
 	.p2align 3
-.L9097:
+.L9109:
 	mov	edx, 1
 	mov	rsi, rbx
 	mov	rdi, rbp
@@ -52210,21 +52230,21 @@ _ZN8MEMORY_TC1Ev:
 	cmp	eax, 64
 	sbb	eax, eax
 	test	edx, eax
-	je	.L9135
+	je	.L9147
 	addsd	xmm0, QWORD PTR .LC73[rip]
-.L9135:
-.L9099:
-.L9100:
-.L9101:
+.L9147:
+.L9111:
+.L9112:
+.L9113:
 	movsd	QWORD PTR 134227184[r13+rbx*8], xmm0
 	add	rbx, 1
 	cmp	r12, rbx
-	jge	.L9097
-.L9098:
+	jge	.L9109
+.L9110:
 	mov	rax, QWORD PTR .LC73[rip]
 	mov	QWORD PTR 134227192[r13], rax
 	mov	QWORD PTR 134227224[r13], rax
-	jmp	.L9105
+	jmp	.L9117
 	.size	_ZN8MEMORY_TC1Ev, .-_ZN8MEMORY_TC1Ev
 	.section	.rodata.str1.1
 .LC2112:
@@ -52245,256 +52265,256 @@ _ZN8MEMORY_T5POKEBEdd:
 	mov	rbp, rdi
 	push	rbx
 	sub	rsp, 56
-.L9138:
+.L9150:
 	cvtsd2si	rax, xmm0
 	comisd	xmm0, QWORD PTR .LC1[rip]
 	movsd	QWORD PTR 0[rbp+rax*8], xmm1
-	je	.L9508
+	je	.L9520
 	comisd	xmm0, QWORD PTR .LC105[rip]
-	je	.L9604
-	comisd	xmm0, QWORD PTR .LC106[rip]
-	je	.L9605
-	comisd	xmm0, QWORD PTR .LC107[rip]
-	je	.L9606
-	comisd	xmm0, QWORD PTR .LC108[rip]
-	je	.L9607
-	comisd	xmm0, QWORD PTR .LC109[rip]
-	je	.L9608
-	comisd	xmm0, QWORD PTR .LC110[rip]
-	je	.L9609
-	comisd	xmm0, QWORD PTR .LC111[rip]
-	je	.L9610
-	comisd	xmm0, QWORD PTR .LC5[rip]
-	je	.L9611
-	comisd	xmm0, QWORD PTR .LC112[rip]
-	je	.L9612
-	comisd	xmm0, QWORD PTR .LC113[rip]
-	je	.L9613
-	comisd	xmm0, QWORD PTR .LC114[rip]
-	je	.L9614
-	comisd	xmm0, QWORD PTR .LC115[rip]
-	je	.L9615
-	comisd	xmm0, QWORD PTR .LC116[rip]
 	je	.L9616
-	comisd	xmm0, QWORD PTR .LC117[rip]
+	comisd	xmm0, QWORD PTR .LC106[rip]
 	je	.L9617
-	comisd	xmm0, QWORD PTR .LC6[rip]
+	comisd	xmm0, QWORD PTR .LC107[rip]
 	je	.L9618
-	comisd	xmm0, QWORD PTR .LC118[rip]
+	comisd	xmm0, QWORD PTR .LC108[rip]
 	je	.L9619
-	comisd	xmm0, QWORD PTR .LC119[rip]
+	comisd	xmm0, QWORD PTR .LC109[rip]
 	je	.L9620
+	comisd	xmm0, QWORD PTR .LC110[rip]
+	je	.L9621
+	comisd	xmm0, QWORD PTR .LC111[rip]
+	je	.L9622
+	comisd	xmm0, QWORD PTR .LC5[rip]
+	je	.L9623
+	comisd	xmm0, QWORD PTR .LC112[rip]
+	je	.L9624
+	comisd	xmm0, QWORD PTR .LC113[rip]
+	je	.L9625
+	comisd	xmm0, QWORD PTR .LC114[rip]
+	je	.L9626
+	comisd	xmm0, QWORD PTR .LC115[rip]
+	je	.L9627
+	comisd	xmm0, QWORD PTR .LC116[rip]
+	je	.L9628
+	comisd	xmm0, QWORD PTR .LC117[rip]
+	je	.L9629
+	comisd	xmm0, QWORD PTR .LC6[rip]
+	je	.L9630
+	comisd	xmm0, QWORD PTR .LC118[rip]
+	je	.L9631
+	comisd	xmm0, QWORD PTR .LC119[rip]
+	je	.L9632
 	comisd	xmm0, QWORD PTR .LC121[rip]
 	setne	dl
 	comisd	xmm0, QWORD PTR .LC120[rip]
 	setne	al
 	test	dl, al
-	je	.L9137
+	je	.L9149
 	comisd	xmm0, QWORD PTR .LC122[rip]
-	je	.L9137
+	je	.L9149
 	comisd	xmm0, QWORD PTR .LC123[rip]
-	je	.L9194
+	je	.L9206
 	comisd	xmm0, QWORD PTR .LC124[rip]
-	je	.L9194
+	je	.L9206
 	comisd	xmm0, QWORD PTR .LC125[rip]
-	je	.L9194
+	je	.L9206
 	comisd	xmm0, QWORD PTR .LC126[rip]
-	je	.L9200
+	je	.L9212
 	comisd	xmm0, QWORD PTR .LC127[rip]
-	je	.L9200
+	je	.L9212
 	comisd	xmm0, QWORD PTR .LC128[rip]
-	je	.L9200
+	je	.L9212
 	comisd	xmm0, QWORD PTR .LC129[rip]
-	je	.L9206
+	je	.L9218
 	comisd	xmm0, QWORD PTR .LC130[rip]
-	je	.L9206
+	je	.L9218
 	comisd	xmm0, QWORD PTR .LC131[rip]
-	je	.L9206
+	je	.L9218
 	comisd	xmm0, QWORD PTR .LC132[rip]
-	je	.L9212
+	je	.L9224
 	comisd	xmm0, QWORD PTR .LC73[rip]
-	je	.L9212
+	je	.L9224
 	comisd	xmm0, QWORD PTR .LC74[rip]
-	je	.L9212
+	je	.L9224
 	comisd	xmm0, QWORD PTR .LC75[rip]
-	je	.L9526
+	je	.L9538
 	comisd	xmm0, QWORD PTR .LC76[rip]
-	je	.L9621
-	comisd	xmm0, QWORD PTR .LC77[rip]
-	je	.L9622
-	comisd	xmm0, QWORD PTR .LC78[rip]
-	je	.L9623
-	comisd	xmm0, QWORD PTR .LC79[rip]
-	je	.L9624
-	comisd	xmm0, QWORD PTR .LC80[rip]
-	je	.L9625
-	comisd	xmm0, QWORD PTR .LC81[rip]
-	je	.L9626
-	comisd	xmm0, QWORD PTR .LC82[rip]
-	je	.L9627
-	comisd	xmm0, QWORD PTR .LC83[rip]
-	je	.L9628
-	comisd	xmm0, QWORD PTR .LC84[rip]
-	je	.L9629
-	comisd	xmm0, QWORD PTR .LC85[rip]
-	je	.L9137
-	comisd	xmm0, QWORD PTR .LC86[rip]
-	je	.L9536
-	comisd	xmm0, QWORD PTR .LC87[rip]
-	je	.L9630
-	comisd	xmm0, QWORD PTR .LC88[rip]
-	je	.L9631
-	comisd	xmm0, QWORD PTR .LC89[rip]
-	je	.L9632
-	comisd	xmm0, QWORD PTR .LC90[rip]
 	je	.L9633
-	comisd	xmm0, QWORD PTR .LC91[rip]
-	je	.L9137
-	comisd	xmm0, QWORD PTR .LC92[rip]
-	je	.L9541
-	comisd	xmm0, QWORD PTR .LC93[rip]
+	comisd	xmm0, QWORD PTR .LC77[rip]
 	je	.L9634
-	comisd	xmm0, QWORD PTR .LC94[rip]
+	comisd	xmm0, QWORD PTR .LC78[rip]
 	je	.L9635
-	comisd	xmm0, QWORD PTR .LC95[rip]
+	comisd	xmm0, QWORD PTR .LC79[rip]
 	je	.L9636
-	comisd	xmm0, QWORD PTR .LC96[rip]
+	comisd	xmm0, QWORD PTR .LC80[rip]
 	je	.L9637
-	comisd	xmm0, QWORD PTR .LC97[rip]
+	comisd	xmm0, QWORD PTR .LC81[rip]
 	je	.L9638
-	comisd	xmm0, QWORD PTR .LC98[rip]
-	je	.L9265
-	comisd	xmm0, QWORD PTR .LC99[rip]
-	je	.L9269
-	comisd	xmm0, QWORD PTR .LC100[rip]
+	comisd	xmm0, QWORD PTR .LC82[rip]
 	je	.L9639
-	comisd	xmm0, QWORD PTR .LC101[rip]
-	je	.L9265
-	comisd	xmm0, QWORD PTR .LC102[rip]
-	je	.L9269
-	comisd	xmm0, QWORD PTR .LC103[rip]
-	je	.L9281
-	comisd	xmm0, QWORD PTR .LC104[rip]
-	je	.L9281
-	comisd	xmm0, QWORD PTR .LC351[rip]
-	je	.L9281
-	comisd	xmm0, QWORD PTR .LC294[rip]
-	je	.L9281
-	comisd	xmm0, QWORD PTR .LC352[rip]
-	je	.L9281
-	comisd	xmm0, QWORD PTR .LC353[rip]
-	je	.L9281
-	comisd	xmm0, QWORD PTR .LC354[rip]
-	je	.L9281
-	comisd	xmm0, QWORD PTR .LC286[rip]
-	je	.L9281
-	comisd	xmm0, QWORD PTR .LC355[rip]
-	je	.L9269
-	comisd	xmm0, QWORD PTR .LC356[rip]
-	je	.L9548
-	comisd	xmm0, QWORD PTR .LC357[rip]
+	comisd	xmm0, QWORD PTR .LC83[rip]
 	je	.L9640
-	comisd	xmm0, QWORD PTR .LC358[rip]
+	comisd	xmm0, QWORD PTR .LC84[rip]
 	je	.L9641
-	comisd	xmm0, QWORD PTR .LC359[rip]
+	comisd	xmm0, QWORD PTR .LC85[rip]
+	je	.L9149
+	comisd	xmm0, QWORD PTR .LC86[rip]
+	je	.L9548
+	comisd	xmm0, QWORD PTR .LC87[rip]
 	je	.L9642
-	comisd	xmm0, QWORD PTR .LC360[rip]
+	comisd	xmm0, QWORD PTR .LC88[rip]
 	je	.L9643
-	comisd	xmm0, QWORD PTR .LC361[rip]
+	comisd	xmm0, QWORD PTR .LC89[rip]
 	je	.L9644
-	comisd	xmm0, QWORD PTR .LC362[rip]
+	comisd	xmm0, QWORD PTR .LC90[rip]
 	je	.L9645
-	comisd	xmm0, QWORD PTR .LC363[rip]
+	comisd	xmm0, QWORD PTR .LC91[rip]
+	je	.L9149
+	comisd	xmm0, QWORD PTR .LC92[rip]
+	je	.L9553
+	comisd	xmm0, QWORD PTR .LC93[rip]
 	je	.L9646
-	comisd	xmm0, QWORD PTR .LC364[rip]
+	comisd	xmm0, QWORD PTR .LC94[rip]
 	je	.L9647
-	comisd	xmm0, QWORD PTR .LC365[rip]
+	comisd	xmm0, QWORD PTR .LC95[rip]
 	je	.L9648
-	comisd	xmm0, QWORD PTR .LC287[rip]
+	comisd	xmm0, QWORD PTR .LC96[rip]
 	je	.L9649
-	comisd	xmm0, QWORD PTR .LC366[rip]
+	comisd	xmm0, QWORD PTR .LC97[rip]
 	je	.L9650
-	comisd	xmm0, QWORD PTR .LC367[rip]
+	comisd	xmm0, QWORD PTR .LC98[rip]
+	je	.L9277
+	comisd	xmm0, QWORD PTR .LC99[rip]
+	je	.L9281
+	comisd	xmm0, QWORD PTR .LC100[rip]
 	je	.L9651
-	comisd	xmm0, QWORD PTR .LC368[rip]
+	comisd	xmm0, QWORD PTR .LC101[rip]
+	je	.L9277
+	comisd	xmm0, QWORD PTR .LC102[rip]
+	je	.L9281
+	comisd	xmm0, QWORD PTR .LC103[rip]
+	je	.L9293
+	comisd	xmm0, QWORD PTR .LC104[rip]
+	je	.L9293
+	comisd	xmm0, QWORD PTR .LC351[rip]
+	je	.L9293
+	comisd	xmm0, QWORD PTR .LC294[rip]
+	je	.L9293
+	comisd	xmm0, QWORD PTR .LC352[rip]
+	je	.L9293
+	comisd	xmm0, QWORD PTR .LC353[rip]
+	je	.L9293
+	comisd	xmm0, QWORD PTR .LC354[rip]
+	je	.L9293
+	comisd	xmm0, QWORD PTR .LC286[rip]
+	je	.L9293
+	comisd	xmm0, QWORD PTR .LC355[rip]
+	je	.L9281
+	comisd	xmm0, QWORD PTR .LC356[rip]
+	je	.L9560
+	comisd	xmm0, QWORD PTR .LC357[rip]
 	je	.L9652
-	comisd	xmm0, QWORD PTR .LC285[rip]
+	comisd	xmm0, QWORD PTR .LC358[rip]
 	je	.L9653
-	comisd	xmm0, QWORD PTR .LC369[rip]
+	comisd	xmm0, QWORD PTR .LC359[rip]
 	je	.L9654
-	comisd	xmm0, QWORD PTR .LC370[rip]
+	comisd	xmm0, QWORD PTR .LC360[rip]
 	je	.L9655
-	comisd	xmm0, QWORD PTR .LC371[rip]
+	comisd	xmm0, QWORD PTR .LC361[rip]
 	je	.L9656
-	comisd	xmm0, QWORD PTR .LC301[rip]
+	comisd	xmm0, QWORD PTR .LC362[rip]
 	je	.L9657
-	comisd	xmm0, QWORD PTR .LC372[rip]
+	comisd	xmm0, QWORD PTR .LC363[rip]
 	je	.L9658
-	comisd	xmm0, QWORD PTR .LC373[rip]
+	comisd	xmm0, QWORD PTR .LC364[rip]
 	je	.L9659
-	comisd	xmm0, QWORD PTR .LC374[rip]
+	comisd	xmm0, QWORD PTR .LC365[rip]
 	je	.L9660
-	comisd	xmm0, QWORD PTR .LC375[rip]
+	comisd	xmm0, QWORD PTR .LC287[rip]
 	je	.L9661
-	comisd	xmm0, QWORD PTR .LC376[rip]
+	comisd	xmm0, QWORD PTR .LC366[rip]
 	je	.L9662
-	comisd	xmm0, QWORD PTR .LC377[rip]
+	comisd	xmm0, QWORD PTR .LC367[rip]
 	je	.L9663
-	comisd	xmm0, QWORD PTR .LC378[rip]
+	comisd	xmm0, QWORD PTR .LC368[rip]
 	je	.L9664
-	comisd	xmm0, QWORD PTR .LC288[rip]
+	comisd	xmm0, QWORD PTR .LC285[rip]
 	je	.L9665
-	comisd	xmm0, QWORD PTR .LC379[rip]
+	comisd	xmm0, QWORD PTR .LC369[rip]
 	je	.L9666
-	comisd	xmm0, QWORD PTR .LC380[rip]
+	comisd	xmm0, QWORD PTR .LC370[rip]
 	je	.L9667
-	comisd	xmm0, QWORD PTR .LC381[rip]
+	comisd	xmm0, QWORD PTR .LC371[rip]
 	je	.L9668
-	comisd	xmm0, QWORD PTR .LC382[rip]
+	comisd	xmm0, QWORD PTR .LC301[rip]
 	je	.L9669
-	comisd	xmm0, QWORD PTR .LC305[rip]
+	comisd	xmm0, QWORD PTR .LC372[rip]
 	je	.L9670
-	comisd	xmm0, QWORD PTR .LC383[rip]
+	comisd	xmm0, QWORD PTR .LC373[rip]
 	je	.L9671
-	comisd	xmm0, QWORD PTR .LC384[rip]
+	comisd	xmm0, QWORD PTR .LC374[rip]
 	je	.L9672
-	comisd	xmm0, QWORD PTR .LC302[rip]
+	comisd	xmm0, QWORD PTR .LC375[rip]
 	je	.L9673
-	comisd	xmm0, QWORD PTR .LC385[rip]
+	comisd	xmm0, QWORD PTR .LC376[rip]
 	je	.L9674
-	comisd	xmm0, QWORD PTR .LC386[rip]
+	comisd	xmm0, QWORD PTR .LC377[rip]
 	je	.L9675
+	comisd	xmm0, QWORD PTR .LC378[rip]
+	je	.L9676
+	comisd	xmm0, QWORD PTR .LC288[rip]
+	je	.L9677
+	comisd	xmm0, QWORD PTR .LC379[rip]
+	je	.L9678
+	comisd	xmm0, QWORD PTR .LC380[rip]
+	je	.L9679
+	comisd	xmm0, QWORD PTR .LC381[rip]
+	je	.L9680
+	comisd	xmm0, QWORD PTR .LC382[rip]
+	je	.L9681
+	comisd	xmm0, QWORD PTR .LC305[rip]
+	je	.L9682
+	comisd	xmm0, QWORD PTR .LC383[rip]
+	je	.L9683
+	comisd	xmm0, QWORD PTR .LC384[rip]
+	je	.L9684
+	comisd	xmm0, QWORD PTR .LC302[rip]
+	je	.L9685
+	comisd	xmm0, QWORD PTR .LC385[rip]
+	je	.L9686
+	comisd	xmm0, QWORD PTR .LC386[rip]
+	je	.L9687
 	comisd	xmm0, QWORD PTR .LC387[rip]
-	jne	.L9676
-.L9364:
+	jne	.L9688
+.L9376:
 	movapd	xmm0, xmm1
 	movsd	xmm1, QWORD PTR 394888[rbp]
-	jmp	.L9138
-.L9272:
-.L9275:
-.L9276:
-.L9277:
-.L9278:
-.L9279:
-.L9280:
+	jmp	.L9150
+.L9284:
+.L9287:
+.L9288:
+.L9289:
+.L9290:
+.L9291:
+.L9292:
 	.p2align 4,,10
 	.p2align 3
-.L9281:
+.L9293:
 	mov	QWORD PTR 394888[rbp], 0x000000000
-.L9137:
+.L9149:
 	add	rsp, 56
 	pop	rbx
 	pop	rbp
 	pop	r12
 	pop	r13
 	ret
-.L9627:
-.L9229:
+.L9639:
+.L9241:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 394832[rbp], xmm0
-	jmp	.L9137
-.L9654:
-.L9320:
+	jmp	.L9149
+.L9666:
+.L9332:
 	movsd	xmm0, QWORD PTR 394896[rbp]
 	xor	eax, eax
 	comisd	xmm0, QWORD PTR 394904[rbp]
@@ -52503,19 +52523,19 @@ _ZN8MEMORY_T5POKEBEdd:
 	neg	eax
 	cvtsi2sd	xmm0, eax
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
+	jmp	.L9149
 	.p2align 4,,10
 	.p2align 3
-.L9676:
+.L9688:
 	comisd	xmm0, QWORD PTR .LC388[rip]
-	je	.L9677
+	je	.L9689
 	comisd	xmm0, QWORD PTR .LC389[rip]
-	je	.L9678
+	je	.L9690
 	comisd	xmm0, QWORD PTR .LC390[rip]
-	je	.L9679
+	je	.L9691
 	comisd	xmm0, QWORD PTR .LC391[rip]
-	jne	.L9680
-.L9386:
+	jne	.L9692
+.L9398:
 	movsd	xmm1, QWORD PTR 395344[rbp]
 	movsd	xmm0, QWORD PTR .LC1[rip]
 	addsd	xmm0, xmm1
@@ -52554,11 +52574,11 @@ _ZN8MEMORY_T5POKEBEdd:
 	movsd	xmm1, QWORD PTR [rsp]
 	cvttsd2si	rax, xmm0
 	comisd	xmm0, xmm2
-	jb	.L9394
+	jb	.L9406
 	subsd	xmm0, xmm2
 	cvttsd2si	rax, xmm0
 	btc	rax, 63
-.L9394:
+.L9406:
 	addsd	xmm1, QWORD PTR .LC109[rip]
 	pxor	xmm0, xmm0
 	mov	QWORD PTR ADR0$[rip], rax
@@ -52567,7 +52587,7 @@ _ZN8MEMORY_T5POKEBEdd:
 	movsd	xmm1, QWORD PTR 0[rbp+rdx*8]
 	movsd	QWORD PTR 394912[rbp], xmm1
 	test	rax, rax
-	jns	.L9138
+	jns	.L9150
 	mov	rdx, rax
 	and	eax, 1
 	pxor	xmm0, xmm0
@@ -52575,179 +52595,143 @@ _ZN8MEMORY_T5POKEBEdd:
 	or	rdx, rax
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-	jmp	.L9138
-.L9190:
-.L9193:
-	.p2align 4,,10
-	.p2align 3
-.L9194:
-	movsd	xmm0, QWORD PTR 394888[rbp]
-	movsd	QWORD PTR 393232[rbp], xmm0
-	jmp	.L9137
-.L9196:
-.L9199:
-	.p2align 4,,10
-	.p2align 3
-.L9200:
-	movsd	xmm0, QWORD PTR 394888[rbp]
-	movsd	QWORD PTR 393240[rbp], xmm0
-	jmp	.L9137
+	jmp	.L9150
 .L9202:
 .L9205:
 	.p2align 4,,10
 	.p2align 3
 .L9206:
 	movsd	xmm0, QWORD PTR 394888[rbp]
-	movsd	QWORD PTR 393248[rbp], xmm0
-	jmp	.L9137
+	movsd	QWORD PTR 393232[rbp], xmm0
+	jmp	.L9149
 .L9208:
 .L9211:
 	.p2align 4,,10
 	.p2align 3
 .L9212:
 	movsd	xmm0, QWORD PTR 394888[rbp]
+	movsd	QWORD PTR 393240[rbp], xmm0
+	jmp	.L9149
+.L9214:
+.L9217:
+	.p2align 4,,10
+	.p2align 3
+.L9218:
+	movsd	xmm0, QWORD PTR 394888[rbp]
+	movsd	QWORD PTR 393248[rbp], xmm0
+	jmp	.L9149
+.L9220:
+.L9223:
+	.p2align 4,,10
+	.p2align 3
+.L9224:
+	movsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 393256[rbp], xmm0
-	jmp	.L9137
+	jmp	.L9149
 	.p2align 4,,10
 	.p2align 3
-.L9508:
-.L9139:
-	movsd	QWORD PTR 394888[rbp], xmm1
-	jmp	.L9137
-	.p2align 4,,10
-	.p2align 3
-.L9604:
-.L9142:
-	movsd	QWORD PTR 394896[rbp], xmm1
-	jmp	.L9137
-	.p2align 4,,10
-	.p2align 3
-.L9605:
-.L9145:
-	movsd	QWORD PTR 394904[rbp], xmm1
-	jmp	.L9137
-	.p2align 4,,10
-	.p2align 3
-.L9606:
-.L9147:
-	movsd	xmm0, QWORD PTR 394896[rbp]
-	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-	.p2align 4,,10
-	.p2align 3
-.L9607:
-.L9149:
-	movsd	xmm0, QWORD PTR 394904[rbp]
-	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-	.p2align 4,,10
-	.p2align 3
-.L9608:
+.L9520:
 .L9151:
-	movsd	xmm0, QWORD PTR 394888[rbp]
-	movsd	QWORD PTR 394896[rbp], xmm0
-	jmp	.L9137
-	.p2align 4,,10
-	.p2align 3
-.L9609:
-.L9153:
-	movsd	xmm0, QWORD PTR 394904[rbp]
-	movsd	QWORD PTR 394896[rbp], xmm0
-	jmp	.L9137
-	.p2align 4,,10
-	.p2align 3
-.L9610:
-.L9155:
-	movsd	xmm0, QWORD PTR 394888[rbp]
-	movsd	QWORD PTR 394904[rbp], xmm0
-	jmp	.L9137
-.L9264:
-.L9268:
-	.p2align 4,,10
-	.p2align 3
-.L9269:
-	movsd	xmm0, QWORD PTR 394880[rbp]
-	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-	.p2align 4,,10
-	.p2align 3
-.L9611:
-.L9157:
-	movsd	xmm0, QWORD PTR 394896[rbp]
-	movsd	QWORD PTR 394904[rbp], xmm0
-	jmp	.L9137
-	.p2align 4,,10
-	.p2align 3
-.L9612:
-.L9159:
-	movsd	xmm0, QWORD PTR 394888[rbp]
-	movsd	QWORD PTR 395344[rbp], xmm0
-	jmp	.L9137
-	.p2align 4,,10
-	.p2align 3
-.L9613:
-.L9161:
-	movsd	xmm0, QWORD PTR 394896[rbp]
-	movsd	QWORD PTR 395344[rbp], xmm0
-	jmp	.L9137
-	.p2align 4,,10
-	.p2align 3
-.L9614:
-.L9163:
-	movsd	xmm0, QWORD PTR 394904[rbp]
-	movsd	QWORD PTR 395344[rbp], xmm0
-	jmp	.L9137
-	.p2align 4,,10
-	.p2align 3
-.L9615:
-.L9165:
-	movsd	xmm0, QWORD PTR 394888[rbp]
-	call	nearbyint@PLT
-	movsd	xmm1, QWORD PTR .LC280[rip]
-	comisd	xmm0, xmm1
-	jnb	.L9168
-	cvttsd2si	rax, xmm0
-	mov	QWORD PTR ADR0$[rip], rax
-	jmp	.L9137
+	movsd	QWORD PTR 394888[rbp], xmm1
+	jmp	.L9149
 	.p2align 4,,10
 	.p2align 3
 .L9616:
-.L9167:
-	movsd	xmm0, QWORD PTR 394896[rbp]
-	call	nearbyint@PLT
-	movsd	xmm1, QWORD PTR .LC280[rip]
-	comisd	xmm0, xmm1
-	jnb	.L9172
-	cvttsd2si	rax, xmm0
-	mov	QWORD PTR ADR0$[rip], rax
-	jmp	.L9137
+.L9154:
+	movsd	QWORD PTR 394896[rbp], xmm1
+	jmp	.L9149
 	.p2align 4,,10
 	.p2align 3
 .L9617:
-.L9171:
-	movsd	xmm0, QWORD PTR 394904[rbp]
-	call	nearbyint@PLT
-	movsd	xmm1, QWORD PTR .LC280[rip]
-	comisd	xmm0, xmm1
-	jnb	.L9176
-	cvttsd2si	rax, xmm0
-	mov	QWORD PTR ADR0$[rip], rax
-	jmp	.L9137
+.L9157:
+	movsd	QWORD PTR 394904[rbp], xmm1
+	jmp	.L9149
 	.p2align 4,,10
 	.p2align 3
 .L9618:
+.L9159:
+	movsd	xmm0, QWORD PTR 394896[rbp]
+	movsd	QWORD PTR 394888[rbp], xmm0
+	jmp	.L9149
+	.p2align 4,,10
+	.p2align 3
+.L9619:
+.L9161:
+	movsd	xmm0, QWORD PTR 394904[rbp]
+	movsd	QWORD PTR 394888[rbp], xmm0
+	jmp	.L9149
+	.p2align 4,,10
+	.p2align 3
+.L9620:
+.L9163:
+	movsd	xmm0, QWORD PTR 394888[rbp]
+	movsd	QWORD PTR 394896[rbp], xmm0
+	jmp	.L9149
+	.p2align 4,,10
+	.p2align 3
+.L9621:
+.L9165:
+	movsd	xmm0, QWORD PTR 394904[rbp]
+	movsd	QWORD PTR 394896[rbp], xmm0
+	jmp	.L9149
+	.p2align 4,,10
+	.p2align 3
+.L9622:
+.L9167:
+	movsd	xmm0, QWORD PTR 394888[rbp]
+	movsd	QWORD PTR 394904[rbp], xmm0
+	jmp	.L9149
+.L9276:
+.L9280:
+	.p2align 4,,10
+	.p2align 3
+.L9281:
+	movsd	xmm0, QWORD PTR 394880[rbp]
+	movsd	QWORD PTR 394888[rbp], xmm0
+	jmp	.L9149
+	.p2align 4,,10
+	.p2align 3
+.L9623:
+.L9169:
+	movsd	xmm0, QWORD PTR 394896[rbp]
+	movsd	QWORD PTR 394904[rbp], xmm0
+	jmp	.L9149
+	.p2align 4,,10
+	.p2align 3
+.L9624:
+.L9171:
+	movsd	xmm0, QWORD PTR 394888[rbp]
+	movsd	QWORD PTR 395344[rbp], xmm0
+	jmp	.L9149
+	.p2align 4,,10
+	.p2align 3
+.L9625:
+.L9173:
+	movsd	xmm0, QWORD PTR 394896[rbp]
+	movsd	QWORD PTR 395344[rbp], xmm0
+	jmp	.L9149
+	.p2align 4,,10
+	.p2align 3
+.L9626:
 .L9175:
+	movsd	xmm0, QWORD PTR 394904[rbp]
+	movsd	QWORD PTR 395344[rbp], xmm0
+	jmp	.L9149
+	.p2align 4,,10
+	.p2align 3
+.L9627:
+.L9177:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	call	nearbyint@PLT
 	movsd	xmm1, QWORD PTR .LC280[rip]
 	comisd	xmm0, xmm1
 	jnb	.L9180
 	cvttsd2si	rax, xmm0
-	mov	QWORD PTR ADR1$[rip], rax
-	jmp	.L9137
+	mov	QWORD PTR ADR0$[rip], rax
+	jmp	.L9149
 	.p2align 4,,10
 	.p2align 3
-.L9619:
+.L9628:
 .L9179:
 	movsd	xmm0, QWORD PTR 394896[rbp]
 	call	nearbyint@PLT
@@ -52755,30 +52739,66 @@ _ZN8MEMORY_T5POKEBEdd:
 	comisd	xmm0, xmm1
 	jnb	.L9184
 	cvttsd2si	rax, xmm0
-	mov	QWORD PTR ADR1$[rip], rax
-	jmp	.L9137
+	mov	QWORD PTR ADR0$[rip], rax
+	jmp	.L9149
 	.p2align 4,,10
 	.p2align 3
-.L9620:
+.L9629:
 .L9183:
 	movsd	xmm0, QWORD PTR 394904[rbp]
 	call	nearbyint@PLT
 	movsd	xmm1, QWORD PTR .LC280[rip]
 	comisd	xmm0, xmm1
-	jnb	.L9186
+	jnb	.L9188
 	cvttsd2si	rax, xmm0
-	mov	QWORD PTR ADR1$[rip], rax
-	jmp	.L9137
+	mov	QWORD PTR ADR0$[rip], rax
+	jmp	.L9149
 	.p2align 4,,10
 	.p2align 3
-.L9680:
+.L9630:
+.L9187:
+	movsd	xmm0, QWORD PTR 394888[rbp]
+	call	nearbyint@PLT
+	movsd	xmm1, QWORD PTR .LC280[rip]
+	comisd	xmm0, xmm1
+	jnb	.L9192
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR ADR1$[rip], rax
+	jmp	.L9149
+	.p2align 4,,10
+	.p2align 3
+.L9631:
+.L9191:
+	movsd	xmm0, QWORD PTR 394896[rbp]
+	call	nearbyint@PLT
+	movsd	xmm1, QWORD PTR .LC280[rip]
+	comisd	xmm0, xmm1
+	jnb	.L9196
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR ADR1$[rip], rax
+	jmp	.L9149
+	.p2align 4,,10
+	.p2align 3
+.L9632:
+.L9195:
+	movsd	xmm0, QWORD PTR 394904[rbp]
+	call	nearbyint@PLT
+	movsd	xmm1, QWORD PTR .LC280[rip]
+	comisd	xmm0, xmm1
+	jnb	.L9198
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR ADR1$[rip], rax
+	jmp	.L9149
+	.p2align 4,,10
+	.p2align 3
+.L9692:
 	comisd	xmm0, QWORD PTR .LC289[rip]
-	je	.L9681
+	je	.L9693
 	comisd	xmm0, QWORD PTR .LC392[rip]
-	je	.L9682
+	je	.L9694
 	comisd	xmm0, QWORD PTR .LC393[rip]
-	jne	.L9683
-.L9404:
+	jne	.L9695
+.L9416:
 	movsd	xmm1, QWORD PTR 395344[rbp]
 	movsd	xmm0, QWORD PTR .LC1[rip]
 	addsd	xmm0, xmm1
@@ -52817,11 +52837,11 @@ _ZN8MEMORY_T5POKEBEdd:
 	movsd	xmm1, QWORD PTR [rsp]
 	cvttsd2si	rbx, xmm0
 	comisd	xmm0, xmm2
-	jb	.L9412
+	jb	.L9424
 	subsd	xmm0, xmm2
 	cvttsd2si	rbx, xmm0
 	btc	rbx, 63
-.L9412:
+.L9424:
 	movsd	xmm0, QWORD PTR .LC109[rip]
 	movsd	QWORD PTR [rsp], xmm2
 	mov	QWORD PTR ADR0$[rip], rbx
@@ -52858,16 +52878,16 @@ _ZN8MEMORY_T5POKEBEdd:
 	movsd	xmm2, QWORD PTR [rsp]
 	cvttsd2si	rax, xmm0
 	comisd	xmm0, xmm2
-	jb	.L9414
+	jb	.L9426
 	subsd	xmm0, xmm2
 	cvttsd2si	rax, xmm0
 	btc	rax, 63
-.L9414:
+.L9426:
 	pxor	xmm0, xmm0
 	mov	QWORD PTR ADR1$[rip], rax
 	cvtsi2sd	xmm0, rax
 	test	rax, rax
-	jns	.L9416
+	jns	.L9428
 	mov	rdx, rax
 	and	eax, 1
 	pxor	xmm0, xmm0
@@ -52875,14 +52895,14 @@ _ZN8MEMORY_T5POKEBEdd:
 	or	rdx, rax
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L9416:
+.L9428:
 	mov	rdi, rbp
 	call	_ZN8MEMORY_T5PEEKBEd
 	movapd	xmm1, xmm0
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rbx
 	test	rbx, rbx
-	jns	.L9138
+	jns	.L9150
 	mov	rax, rbx
 	and	ebx, 1
 	pxor	xmm0, xmm0
@@ -52890,192 +52910,192 @@ _ZN8MEMORY_T5POKEBEdd:
 	or	rax, rbx
 	cvtsi2sd	xmm0, rax
 	addsd	xmm0, xmm0
-	jmp	.L9138
-.L9262:
+	jmp	.L9150
+.L9274:
 	.p2align 4,,10
 	.p2align 3
-.L9265:
+.L9277:
 	movsd	xmm0, QWORD PTR 394872[rbp]
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
+	jmp	.L9149
 	.p2align 4,,10
 	.p2align 3
-.L9526:
-.L9214:
+.L9538:
+.L9226:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 394840[rbp], xmm0
-	jmp	.L9137
+	jmp	.L9149
 	.p2align 4,,10
 	.p2align 3
-.L9621:
-.L9217:
+.L9633:
+.L9229:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 394864[rbp], xmm0
-	jmp	.L9137
-.L9622:
-.L9219:
+	jmp	.L9149
+.L9634:
+.L9231:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 394848[rbp], xmm0
-	jmp	.L9137
-.L9623:
-.L9221:
+	jmp	.L9149
+.L9635:
+.L9233:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 394872[rbp], xmm0
-	jmp	.L9137
-.L9624:
-.L9223:
+	jmp	.L9149
+.L9636:
+.L9235:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 394856[rbp], xmm0
-	jmp	.L9137
-.L9625:
-.L9225:
+	jmp	.L9149
+.L9637:
+.L9237:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 394880[rbp], xmm0
-	jmp	.L9137
-.L9626:
-.L9227:
+	jmp	.L9149
+.L9638:
+.L9239:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 394824[rbp], xmm0
-	jmp	.L9137
-.L9628:
-.L9231:
+	jmp	.L9149
+.L9640:
+.L9243:
 	pxor	xmm0, xmm0
 	cvtsd2ss	xmm0, QWORD PTR 394888[rbp]
 	movss	DWORD PTR CHAR_H$[rip], xmm0
-	jmp	.L9137
-.L9629:
-.L9233:
+	jmp	.L9149
+.L9641:
+.L9245:
 	pxor	xmm0, xmm0
 	cvtsd2ss	xmm0, QWORD PTR 394888[rbp]
 	movss	DWORD PTR CHAR_W$[rip], xmm0
-	jmp	.L9137
-.L9536:
-.L9236:
+	jmp	.L9149
+.L9548:
+.L9248:
 	cvtsd2si	rax, QWORD PTR 394888[rbp]
 	mov	DWORD PTR CHAR_BUFFER$[rip], eax
-	jmp	.L9137
-.L9630:
-.L9239:
+	jmp	.L9149
+.L9642:
+.L9251:
 	cvtsd2si	rax, QWORD PTR 394888[rbp]
 	mov	DWORD PTR BITMASK$[rip], eax
-	jmp	.L9137
-.L9631:
-.L9241:
+	jmp	.L9149
+.L9643:
+.L9253:
 	cvtsd2si	rax, QWORD PTR 394888[rbp]
 	mov	DWORD PTR PIXEL_SIZE$[rip], eax
-	jmp	.L9137
-.L9168:
+	jmp	.L9149
+.L9180:
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR ADR0$[rip], rax
 	btc	QWORD PTR ADR0$[rip], 63
-	jmp	.L9137
-.L9172:
+	jmp	.L9149
+.L9184:
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR ADR0$[rip], rax
 	btc	QWORD PTR ADR0$[rip], 63
-	jmp	.L9137
-.L9632:
-.L9243:
+	jmp	.L9149
+.L9644:
+.L9255:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	call	nearbyint@PLT
 	movsd	xmm1, QWORD PTR .LC280[rip]
 	comisd	xmm0, xmm1
-	jnb	.L9246
+	jnb	.L9258
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR RADIUS$[rip], rax
-	jmp	.L9137
-.L9633:
-.L9245:
+	jmp	.L9149
+.L9645:
+.L9257:
 	cvtsd2si	rax, QWORD PTR 394888[rbp]
 	mov	DWORD PTR STRING_ADR$[rip], eax
-	jmp	.L9137
-.L9176:
+	jmp	.L9149
+.L9188:
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR ADR0$[rip], rax
 	btc	QWORD PTR ADR0$[rip], 63
-	jmp	.L9137
-.L9180:
+	jmp	.L9149
+.L9192:
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR ADR1$[rip], rax
 	btc	QWORD PTR ADR1$[rip], 63
-	jmp	.L9137
-.L9541:
-.L9249:
+	jmp	.L9149
+.L9553:
+.L9261:
 	movsd	xmm0, QWORD PTR 394840[rbp]
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9184:
+	jmp	.L9149
+.L9196:
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR ADR1$[rip], rax
 	btc	QWORD PTR ADR1$[rip], 63
-	jmp	.L9137
-.L9634:
-.L9252:
+	jmp	.L9149
+.L9646:
+.L9264:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 394840[rbp], xmm0
-	jmp	.L9137
-.L9186:
+	jmp	.L9149
+.L9198:
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR ADR1$[rip], rax
 	btc	QWORD PTR ADR1$[rip], 63
-	jmp	.L9137
-.L9635:
-.L9254:
+	jmp	.L9149
+.L9647:
+.L9266:
 	movsd	xmm0, QWORD PTR 394848[rbp]
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9636:
-.L9256:
+	jmp	.L9149
+.L9648:
+.L9268:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 394848[rbp], xmm0
-	jmp	.L9137
-.L9637:
-.L9258:
+	jmp	.L9149
+.L9649:
+.L9270:
 	movsd	xmm0, QWORD PTR 394856[rbp]
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9638:
-.L9260:
+	jmp	.L9149
+.L9650:
+.L9272:
 	movsd	xmm0, QWORD PTR 394864[rbp]
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9639:
-.L9267:
+	jmp	.L9149
+.L9651:
+.L9279:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 394880[rbp], xmm0
-	jmp	.L9137
-.L9548:
-.L9289:
+	jmp	.L9149
+.L9560:
+.L9301:
 	movsd	xmm0, QWORD PTR 394896[rbp]
 	addsd	xmm0, QWORD PTR 394904[rbp]
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9640:
-.L9292:
+	jmp	.L9149
+.L9652:
+.L9304:
 	movsd	xmm0, QWORD PTR 394896[rbp]
 	subsd	xmm0, QWORD PTR 394904[rbp]
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9641:
-.L9294:
+	jmp	.L9149
+.L9653:
+.L9306:
 	movsd	xmm0, QWORD PTR 394896[rbp]
 	mulsd	xmm0, QWORD PTR 394904[rbp]
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9642:
-.L9296:
+	jmp	.L9149
+.L9654:
+.L9308:
 	movsd	xmm0, QWORD PTR 394896[rbp]
 	divsd	xmm0, QWORD PTR 394904[rbp]
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9643:
-.L9298:
+	jmp	.L9149
+.L9655:
+.L9310:
 	cvtsd2si	rax, QWORD PTR 394896[rbp]
 	pxor	xmm0, xmm0
 	cvtsd2si	rcx, QWORD PTR 394904[rbp]
@@ -53083,16 +53103,16 @@ _ZN8MEMORY_T5POKEBEdd:
 	idiv	rcx
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9644:
-.L9300:
+	jmp	.L9149
+.L9656:
+.L9312:
 	movsd	xmm0, QWORD PTR 394896[rbp]
 	movsd	xmm1, QWORD PTR 394904[rbp]
 	call	pow@PLT
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9645:
-.L9302:
+	jmp	.L9149
+.L9657:
+.L9314:
 	cvtsd2si	rax, QWORD PTR 394896[rbp]
 	pxor	xmm0, xmm0
 	cvtsd2si	rcx, QWORD PTR 394904[rbp]
@@ -53100,33 +53120,33 @@ _ZN8MEMORY_T5POKEBEdd:
 	idiv	rcx
 	cvtsi2sd	xmm0, rdx
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9646:
-.L9304:
+	jmp	.L9149
+.L9658:
+.L9316:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	xorpd	xmm0, XMMWORD PTR .LC258[rip]
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9648:
-.L9308:
+	jmp	.L9149
+.L9660:
+.L9320:
 	cvtsd2si	rax, QWORD PTR 394896[rbp]
 	pxor	xmm0, xmm0
 	cvtsd2si	rcx, QWORD PTR 394904[rbp]
 	sar	rax, cl
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9647:
-.L9306:
+	jmp	.L9149
+.L9659:
+.L9318:
 	cvtsd2si	rax, QWORD PTR 394896[rbp]
 	pxor	xmm0, xmm0
 	cvtsd2si	rcx, QWORD PTR 394904[rbp]
 	sal	rax, cl
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9649:
-.L9310:
+	jmp	.L9149
+.L9661:
+.L9322:
 	movsd	xmm0, QWORD PTR 394896[rbp]
 	xor	eax, eax
 	comisd	xmm0, QWORD PTR 394904[rbp]
@@ -53135,9 +53155,9 @@ _ZN8MEMORY_T5POKEBEdd:
 	neg	eax
 	cvtsi2sd	xmm0, eax
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9650:
-.L9312:
+	jmp	.L9149
+.L9662:
+.L9324:
 	movsd	xmm0, QWORD PTR 394896[rbp]
 	xor	eax, eax
 	comisd	xmm0, QWORD PTR 394904[rbp]
@@ -53146,15 +53166,15 @@ _ZN8MEMORY_T5POKEBEdd:
 	neg	eax
 	cvtsi2sd	xmm0, eax
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9246:
+	jmp	.L9149
+.L9258:
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR RADIUS$[rip], rax
 	btc	QWORD PTR RADIUS$[rip], 63
-	jmp	.L9137
-.L9651:
-.L9314:
+	jmp	.L9149
+.L9663:
+.L9326:
 	movsd	xmm0, QWORD PTR 394904[rbp]
 	xor	eax, eax
 	comisd	xmm0, QWORD PTR 394896[rbp]
@@ -53163,9 +53183,9 @@ _ZN8MEMORY_T5POKEBEdd:
 	neg	eax
 	cvtsi2sd	xmm0, eax
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9652:
-.L9316:
+	jmp	.L9149
+.L9664:
+.L9328:
 	movsd	xmm0, QWORD PTR 394904[rbp]
 	xor	eax, eax
 	comisd	xmm0, QWORD PTR 394896[rbp]
@@ -53174,9 +53194,9 @@ _ZN8MEMORY_T5POKEBEdd:
 	neg	eax
 	cvtsi2sd	xmm0, eax
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9653:
-.L9318:
+	jmp	.L9149
+.L9665:
+.L9330:
 	movsd	xmm0, QWORD PTR 394896[rbp]
 	xor	eax, eax
 	comisd	xmm0, QWORD PTR 394904[rbp]
@@ -53185,18 +53205,18 @@ _ZN8MEMORY_T5POKEBEdd:
 	neg	eax
 	cvtsi2sd	xmm0, eax
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9655:
-.L9322:
+	jmp	.L9149
+.L9667:
+.L9334:
 	cvtsd2si	rax, QWORD PTR 394896[rbp]
 	pxor	xmm0, xmm0
 	cvtsd2si	rdx, QWORD PTR 394904[rbp]
 	and	rax, rdx
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9656:
-.L9324:
+	jmp	.L9149
+.L9668:
+.L9336:
 	cvtsd2si	rax, QWORD PTR 394896[rbp]
 	pxor	xmm0, xmm0
 	cvtsd2si	rdx, QWORD PTR 394904[rbp]
@@ -53204,9 +53224,9 @@ _ZN8MEMORY_T5POKEBEdd:
 	not	rax
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9657:
-.L9326:
+	jmp	.L9149
+.L9669:
+.L9338:
 	cvtsd2si	rax, QWORD PTR 394896[rbp]
 	pxor	xmm0, xmm0
 	cvtsd2si	rdx, QWORD PTR 394904[rbp]
@@ -53214,126 +53234,126 @@ _ZN8MEMORY_T5POKEBEdd:
 	or	rax, rdx
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9658:
-.L9328:
+	jmp	.L9149
+.L9670:
+.L9340:
 	cvtsd2si	rax, QWORD PTR 394896[rbp]
 	pxor	xmm0, xmm0
 	cvtsd2si	rdx, QWORD PTR 394904[rbp]
 	or	rax, rdx
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9660:
-.L9332:
+	jmp	.L9149
+.L9672:
+.L9344:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 394896[rbp], xmm0
-	jmp	.L9137
-.L9659:
-.L9330:
+	jmp	.L9149
+.L9671:
+.L9342:
 	cvtsd2si	rax, QWORD PTR 394896[rbp]
 	pxor	xmm0, xmm0
 	cvtsd2si	rdx, QWORD PTR 394904[rbp]
 	xor	rax, rdx
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9662:
-.L9336:
+	jmp	.L9149
+.L9674:
+.L9348:
 	movsd	xmm0, QWORD PTR .LC1[rip]
 	addsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9661:
-.L9334:
+	jmp	.L9149
+.L9673:
+.L9346:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	movsd	QWORD PTR 394904[rbp], xmm0
-	jmp	.L9137
-.L9663:
-.L9338:
+	jmp	.L9149
+.L9675:
+.L9350:
 	movsd	xmm0, QWORD PTR .LC1[rip]
 	addsd	xmm0, QWORD PTR 394896[rbp]
 	movsd	QWORD PTR 394896[rbp], xmm0
-	jmp	.L9137
-.L9664:
-.L9340:
+	jmp	.L9149
+.L9676:
+.L9352:
 	movsd	xmm0, QWORD PTR .LC1[rip]
 	addsd	xmm0, QWORD PTR 394904[rbp]
 	movsd	QWORD PTR 394904[rbp], xmm0
-	jmp	.L9137
-.L9665:
-.L9342:
+	jmp	.L9149
+.L9677:
+.L9354:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	subsd	xmm0, QWORD PTR .LC1[rip]
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9666:
-.L9344:
+	jmp	.L9149
+.L9678:
+.L9356:
 	movsd	xmm0, QWORD PTR 394896[rbp]
 	subsd	xmm0, QWORD PTR .LC1[rip]
 	movsd	QWORD PTR 394896[rbp], xmm0
-	jmp	.L9137
-.L9667:
-.L9346:
+	jmp	.L9149
+.L9679:
+.L9358:
 	movsd	xmm0, QWORD PTR 394904[rbp]
 	subsd	xmm0, QWORD PTR .LC1[rip]
 	movsd	QWORD PTR 394904[rbp], xmm0
-	jmp	.L9137
-.L9668:
-.L9348:
-	movsd	xmm0, QWORD PTR 394896[rbp]
-	comisd	xmm0, QWORD PTR 394904[rbp]
-	jne	.L9137
-	movsd	QWORD PTR 395344[rbp], xmm1
-	jmp	.L9137
-.L9669:
-.L9350:
-	movsd	xmm0, QWORD PTR 394896[rbp]
-	comisd	xmm0, QWORD PTR 394904[rbp]
-	je	.L9137
-	movsd	QWORD PTR 395344[rbp], xmm1
-	jmp	.L9137
-.L9670:
-.L9352:
-	movsd	xmm0, QWORD PTR 394904[rbp]
-	comisd	xmm0, QWORD PTR 394896[rbp]
-	jnb	.L9137
-	movsd	QWORD PTR 395344[rbp], xmm1
-	jmp	.L9137
-.L9672:
-.L9356:
-	movsd	xmm0, QWORD PTR 394896[rbp]
-	comisd	xmm0, QWORD PTR 394904[rbp]
-	ja	.L9137
-	movsd	QWORD PTR 395344[rbp], xmm1
-	jmp	.L9137
-.L9671:
-.L9354:
-	movsd	xmm0, QWORD PTR 394904[rbp]
-	comisd	xmm0, QWORD PTR 394896[rbp]
-	ja	.L9137
-	movsd	QWORD PTR 395344[rbp], xmm1
-	jmp	.L9137
-.L9674:
+	jmp	.L9149
+.L9680:
 .L9360:
-	movsd	QWORD PTR 395344[rbp], xmm1
-	jmp	.L9137
-.L9673:
-.L9358:
 	movsd	xmm0, QWORD PTR 394896[rbp]
 	comisd	xmm0, QWORD PTR 394904[rbp]
-	jnb	.L9137
+	jne	.L9149
 	movsd	QWORD PTR 395344[rbp], xmm1
-	jmp	.L9137
-.L9675:
+	jmp	.L9149
+.L9681:
 .L9362:
+	movsd	xmm0, QWORD PTR 394896[rbp]
+	comisd	xmm0, QWORD PTR 394904[rbp]
+	je	.L9149
+	movsd	QWORD PTR 395344[rbp], xmm1
+	jmp	.L9149
+.L9682:
+.L9364:
+	movsd	xmm0, QWORD PTR 394904[rbp]
+	comisd	xmm0, QWORD PTR 394896[rbp]
+	jnb	.L9149
+	movsd	QWORD PTR 395344[rbp], xmm1
+	jmp	.L9149
+.L9684:
+.L9368:
+	movsd	xmm0, QWORD PTR 394896[rbp]
+	comisd	xmm0, QWORD PTR 394904[rbp]
+	ja	.L9149
+	movsd	QWORD PTR 395344[rbp], xmm1
+	jmp	.L9149
+.L9683:
+.L9366:
+	movsd	xmm0, QWORD PTR 394904[rbp]
+	comisd	xmm0, QWORD PTR 394896[rbp]
+	ja	.L9149
+	movsd	QWORD PTR 395344[rbp], xmm1
+	jmp	.L9149
+.L9686:
+.L9372:
+	movsd	QWORD PTR 395344[rbp], xmm1
+	jmp	.L9149
+.L9685:
+.L9370:
+	movsd	xmm0, QWORD PTR 394896[rbp]
+	comisd	xmm0, QWORD PTR 394904[rbp]
+	jnb	.L9149
+	movsd	QWORD PTR 395344[rbp], xmm1
+	jmp	.L9149
+.L9687:
+.L9374:
 	movapd	xmm0, xmm1
 	mov	rdi, rbp
 	call	_ZN8MEMORY_T5PEEKBEd
 	movsd	QWORD PTR 394888[rbp], xmm0
-	jmp	.L9137
-.L9677:
-.L9366:
+	jmp	.L9149
+.L9689:
+.L9378:
 	movsd	xmm1, QWORD PTR 395344[rbp]
 	movsd	xmm0, QWORD PTR .LC1[rip]
 	addsd	xmm0, xmm1
@@ -53369,10 +53389,10 @@ _ZN8MEMORY_T5POKEBEdd:
 	movsd	xmm2, QWORD PTR .LC280[rip]
 	movsd	xmm1, QWORD PTR [rsp]
 	comisd	xmm0, xmm2
-	jnb	.L9370
+	jnb	.L9382
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR ADR0$[rip], rax
-.L9371:
+.L9383:
 	movsd	xmm0, QWORD PTR .LC109[rip]
 	movsd	QWORD PTR 8[rsp], xmm2
 	movsd	QWORD PTR [rsp], xmm1
@@ -53408,10 +53428,10 @@ _ZN8MEMORY_T5POKEBEdd:
 	movsd	xmm2, QWORD PTR 8[rsp]
 	movsd	xmm1, QWORD PTR [rsp]
 	comisd	xmm0, xmm2
-	jnb	.L9372
+	jnb	.L9384
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR ADR1$[rip], rax
-.L9373:
+.L9385:
 	movsd	xmm0, QWORD PTR .LC113[rip]
 	movsd	QWORD PTR [rsp], xmm2
 	addsd	xmm0, xmm1
@@ -53445,21 +53465,21 @@ _ZN8MEMORY_T5POKEBEdd:
 	movsd	xmm2, QWORD PTR [rsp]
 	cvttsd2si	rbx, xmm0
 	comisd	xmm0, xmm2
-	jb	.L9375
+	jb	.L9387
 	subsd	xmm0, xmm2
 	cvttsd2si	rbx, xmm0
 	btc	rbx, 63
-.L9375:
+.L9387:
 	test	rbx, rbx
-	je	.L9137
+	je	.L9149
 	xor	r13d, r13d
-.L9470:
+.L9482:
 	mov	rcx, QWORD PTR ADR0$[rip]
 	mov	r12, QWORD PTR ADR1$[rip]
 	mov	QWORD PTR PC$[rip], rcx
 	cmp	rcx, r12
-	ja	.L9684
-.L9376:
+	ja	.L9696
+.L9388:
 	movsd	xmm0, QWORD PTR 0[rbp+rcx*8]
 	pxor	xmm1, xmm1
 	mov	rdi, rbp
@@ -53468,151 +53488,16 @@ _ZN8MEMORY_T5POKEBEdd:
 	lea	rcx, 1[rax]
 	mov	QWORD PTR PC$[rip], rcx
 	cmp	rcx, r12
-	jbe	.L9376
+	jbe	.L9388
 	lea	rax, 1[r13]
 	xor	edx, edx
 	div	rbx
 	mov	r13, rdx
 	cmp	rbx, rdx
-	jne	.L9470
-	jmp	.L9137
-.L9679:
-.L9382:
-	movsd	xmm0, QWORD PTR 395344[rbp]
-	movsd	xmm1, QWORD PTR .LC1[rip]
-	addsd	xmm1, xmm0
-	cvtsd2si	rax, xmm1
-	movsd	xmm1, QWORD PTR .LC105[rip]
-	addsd	xmm1, xmm0
-	cvtsd2si	rax, QWORD PTR 0[rbp+rax*8]
-	cvtsd2si	rdx, xmm1
-	movsd	xmm1, QWORD PTR .LC106[rip]
-	addsd	xmm1, xmm0
-	sal	rax, 32
-	cvtsd2si	rsi, QWORD PTR 0[rbp+rdx*8]
-	cvtsd2si	rdx, xmm1
-	movsd	xmm1, QWORD PTR .LC107[rip]
-	addsd	xmm1, xmm0
-	addsd	xmm0, QWORD PTR .LC108[rip]
-	sal	rsi, 24
-	cvtsd2si	rcx, QWORD PTR 0[rbp+rdx*8]
-	add	rax, rsi
-	cvtsd2si	rdx, xmm1
-	cvtsd2si	rdi, xmm0
-	pxor	xmm0, xmm0
-	sal	rcx, 16
-	cvtsd2si	rdx, QWORD PTR 0[rbp+rdx*8]
-	add	rax, rcx
-	sal	rdx, 8
-	add	rax, rdx
-	cvtsi2sd	xmm0, rax
-	addsd	xmm0, QWORD PTR 0[rbp+rdi*8]
-	call	nearbyint@PLT
-	movsd	xmm1, QWORD PTR .LC280[rip]
-	cvttsd2si	rax, xmm0
-	comisd	xmm0, xmm1
-	jb	.L9388
-	subsd	xmm0, xmm1
-	cvttsd2si	rax, xmm0
-	btc	rax, 63
-.L9388:
-	pxor	xmm0, xmm0
-	mov	QWORD PTR ADR0$[rip], rax
-	cvtsi2sd	xmm0, rax
-	test	rax, rax
-	jns	.L9390
-	mov	rdx, rax
-	and	eax, 1
-	pxor	xmm0, xmm0
-	shr	rdx
-	or	rdx, rax
-	cvtsi2sd	xmm0, rdx
-	addsd	xmm0, xmm0
-.L9390:
-	mov	rdi, rbp
-	call	_ZN8MEMORY_T5PEEKBEd
-	movsd	QWORD PTR 394912[rbp], xmm0
-	jmp	.L9137
-.L9678:
-.L9369:
-	mov	edi, -65536
-	lea	rbp, 16[rsp]
-	call	fb_Cls@PLT
-	xor	eax, eax
-	mov	rdi, rbp
-	mov	ecx, 6
-	rep stosd
-	mov	esi, 21
-	lea	rdi, .LC2112[rip]
-	call	fb_StrAllocTempDescZEx@PLT
-	mov	rdi, rax
-	call	fb_Shell@PLT
-	mov	esi, 15
-	lea	rdi, .LC2029[rip]
-	call	fb_StrAllocTempDescZEx@PLT
-	mov	rdi, rax
-	call	fb_Shell@PLT
-	mov	esi, 7
-	lea	rdi, .LC2030[rip]
-	call	fb_StrAllocTempDescZEx@PLT
-	xor	r9d, r9d
-	mov	r8d, 1
-	xor	ecx, ecx
-	mov	rdi, rax
-	xor	edx, edx
-	mov	esi, 2
-	call	fb_FileOpen@PLT
-	jmp	.L9383
-.L9384:
-	call	fb_FileInput@PLT
-	xor	edx, edx
-	mov	rsi, -1
-	mov	rdi, rbp
-	call	fb_InputString@PLT
-	mov	edx, 1
-	mov	rsi, rbp
-	xor	edi, edi
-	call	fb_PrintString@PLT
-.L9383:
-	mov	edi, 1
-	call	fb_FileEof@PLT
-	mov	edi, 1
-	test	eax, eax
-	je	.L9384
-	call	fb_FileClose@PLT
-	mov	esi, 26
-	lea	rdi, .LC2113[rip]
-	call	fb_StrAllocTempDescZEx@PLT
-	mov	edx, 1
-	xor	edi, edi
-	mov	rsi, rax
-	call	fb_PrintString@PLT
-	or	edi, -1
-	call	fb_Sleep@PLT
-	mov	rdi, rbp
-	call	fb_StrDelete@PLT
-	jmp	.L9137
-.L9684:
-	lea	rax, 1[r13]
-	xor	edx, edx
-	div	rbx
-	cmp	rbx, rdx
-	jne	.L9378
-	jmp	.L9137
-.L9372:
-	subsd	xmm0, xmm2
-	cvttsd2si	rax, xmm0
-	mov	QWORD PTR ADR1$[rip], rax
-	btc	QWORD PTR ADR1$[rip], 63
-	jmp	.L9373
-.L9370:
-	subsd	xmm0, xmm2
-	cvttsd2si	rax, xmm0
-	mov	QWORD PTR ADR0$[rip], rax
-	btc	QWORD PTR ADR0$[rip], 63
-	jmp	.L9371
-.L9681:
-.L9392:
+	jne	.L9482
+	jmp	.L9149
+.L9691:
+.L9394:
 	movsd	xmm0, QWORD PTR 395344[rbp]
 	movsd	xmm1, QWORD PTR .LC1[rip]
 	addsd	xmm1, xmm0
@@ -53665,21 +53550,156 @@ _ZN8MEMORY_T5POKEBEdd:
 	addsd	xmm0, xmm0
 .L9402:
 	mov	rdi, rbp
+	call	_ZN8MEMORY_T5PEEKBEd
+	movsd	QWORD PTR 394912[rbp], xmm0
+	jmp	.L9149
+.L9690:
+.L9381:
+	mov	edi, -65536
+	lea	rbp, 16[rsp]
+	call	fb_Cls@PLT
+	xor	eax, eax
+	mov	rdi, rbp
+	mov	ecx, 6
+	rep stosd
+	mov	esi, 21
+	lea	rdi, .LC2112[rip]
+	call	fb_StrAllocTempDescZEx@PLT
+	mov	rdi, rax
+	call	fb_Shell@PLT
+	mov	esi, 15
+	lea	rdi, .LC2029[rip]
+	call	fb_StrAllocTempDescZEx@PLT
+	mov	rdi, rax
+	call	fb_Shell@PLT
+	mov	esi, 7
+	lea	rdi, .LC2030[rip]
+	call	fb_StrAllocTempDescZEx@PLT
+	xor	r9d, r9d
+	mov	r8d, 1
+	xor	ecx, ecx
+	mov	rdi, rax
+	xor	edx, edx
+	mov	esi, 2
+	call	fb_FileOpen@PLT
+	jmp	.L9395
+.L9396:
+	call	fb_FileInput@PLT
+	xor	edx, edx
+	mov	rsi, -1
+	mov	rdi, rbp
+	call	fb_InputString@PLT
+	mov	edx, 1
+	mov	rsi, rbp
+	xor	edi, edi
+	call	fb_PrintString@PLT
+.L9395:
+	mov	edi, 1
+	call	fb_FileEof@PLT
+	mov	edi, 1
+	test	eax, eax
+	je	.L9396
+	call	fb_FileClose@PLT
+	mov	esi, 26
+	lea	rdi, .LC2113[rip]
+	call	fb_StrAllocTempDescZEx@PLT
+	mov	edx, 1
+	xor	edi, edi
+	mov	rsi, rax
+	call	fb_PrintString@PLT
+	or	edi, -1
+	call	fb_Sleep@PLT
+	mov	rdi, rbp
+	call	fb_StrDelete@PLT
+	jmp	.L9149
+.L9696:
+	lea	rax, 1[r13]
+	xor	edx, edx
+	div	rbx
+	cmp	rbx, rdx
+	jne	.L9390
+	jmp	.L9149
+.L9384:
+	subsd	xmm0, xmm2
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR ADR1$[rip], rax
+	btc	QWORD PTR ADR1$[rip], 63
+	jmp	.L9385
+.L9382:
+	subsd	xmm0, xmm2
+	cvttsd2si	rax, xmm0
+	mov	QWORD PTR ADR0$[rip], rax
+	btc	QWORD PTR ADR0$[rip], 63
+	jmp	.L9383
+.L9693:
+.L9404:
+	movsd	xmm0, QWORD PTR 395344[rbp]
+	movsd	xmm1, QWORD PTR .LC1[rip]
+	addsd	xmm1, xmm0
+	cvtsd2si	rax, xmm1
+	movsd	xmm1, QWORD PTR .LC105[rip]
+	addsd	xmm1, xmm0
+	cvtsd2si	rax, QWORD PTR 0[rbp+rax*8]
+	cvtsd2si	rdx, xmm1
+	movsd	xmm1, QWORD PTR .LC106[rip]
+	addsd	xmm1, xmm0
+	sal	rax, 32
+	cvtsd2si	rsi, QWORD PTR 0[rbp+rdx*8]
+	cvtsd2si	rdx, xmm1
+	movsd	xmm1, QWORD PTR .LC107[rip]
+	addsd	xmm1, xmm0
+	addsd	xmm0, QWORD PTR .LC108[rip]
+	sal	rsi, 24
+	cvtsd2si	rcx, QWORD PTR 0[rbp+rdx*8]
+	add	rax, rsi
+	cvtsd2si	rdx, xmm1
+	cvtsd2si	rdi, xmm0
+	pxor	xmm0, xmm0
+	sal	rcx, 16
+	cvtsd2si	rdx, QWORD PTR 0[rbp+rdx*8]
+	add	rax, rcx
+	sal	rdx, 8
+	add	rax, rdx
+	cvtsi2sd	xmm0, rax
+	addsd	xmm0, QWORD PTR 0[rbp+rdi*8]
+	call	nearbyint@PLT
+	movsd	xmm1, QWORD PTR .LC280[rip]
+	cvttsd2si	rax, xmm0
+	comisd	xmm0, xmm1
+	jb	.L9412
+	subsd	xmm0, xmm1
+	cvttsd2si	rax, xmm0
+	btc	rax, 63
+.L9412:
+	pxor	xmm0, xmm0
+	mov	QWORD PTR ADR0$[rip], rax
+	cvtsi2sd	xmm0, rax
+	test	rax, rax
+	jns	.L9414
+	mov	rdx, rax
+	and	eax, 1
+	pxor	xmm0, xmm0
+	shr	rdx
+	or	rdx, rax
+	cvtsi2sd	xmm0, rdx
+	addsd	xmm0, xmm0
+.L9414:
+	mov	rdi, rbp
 	call	_ZN8MEMORY_T5PEEKWEd
 	movsd	QWORD PTR 394912[rbp], xmm0
-	jmp	.L9137
-.L9683:
+	jmp	.L9149
+.L9695:
 	comisd	xmm0, QWORD PTR .LC394[rip]
-	je	.L9685
+	je	.L9697
 	comisd	xmm0, QWORD PTR .LC395[rip]
-	je	.L9686
+	je	.L9698
 	comisd	xmm0, QWORD PTR .LC396[rip]
-	je	.L9687
+	je	.L9699
 	comisd	xmm0, QWORD PTR .LC2084[rip]
-	jb	.L9443
+	jb	.L9455
 	comisd	xmm0, QWORD PTR .LC2083[rip]
-	ja	.L9443
-.L9444:
+	ja	.L9455
+.L9456:
 	subsd	xmm0, QWORD PTR .LC2084[rip]
 	movsd	xmm2, QWORD PTR .LC2079[rip]
 	pxor	xmm6, xmm6
@@ -53715,35 +53735,35 @@ _ZN8MEMORY_T5POKEBEdd:
 	cvtsi2sd	xmm0, rax
 	addsd	xmm0, xmm2
 	movsd	QWORD PTR YS$[rip], xmm0
-	je	.L9445
+	je	.L9457
 	cvtsd2si	rax, xmm1
 	pxor	xmm0, xmm0
 	movzx	eax, al
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR C$[rip], xmm0
-.L9445:
+.L9457:
 	movsd	xmm7, QWORD PTR .LC1[rip]
 	comisd	xmm7, QWORD PTR 394856[rbp]
-	jbe	.L9446
+	jbe	.L9458
 	movsd	QWORD PTR 394856[rbp], xmm7
-.L9446:
+.L9458:
 	movsd	xmm0, QWORD PTR .LC2071[rip]
 	pxor	xmm1, xmm1
 	mov	rdi, rbp
 	call	_ZN8MEMORY_T6POKE64Edd
 	mov	rbx, QWORD PTR 395088[rbp]
 	mov	QWORD PTR Y$[rip], 0x000000000
-.L9447:
+.L9459:
 	movq	xmm6, rbx
 	comisd	xmm6, QWORD PTR Y$[rip]
-	jb	.L9598
+	jb	.L9610
 	movsd	xmm3, QWORD PTR 395080[rbp]
 	pxor	xmm7, xmm7
 	pxor	xmm0, xmm0
 	mov	QWORD PTR X$[rip], 0x000000000
 	comisd	xmm3, xmm7
-	jb	.L9451
-.L9448:
+	jb	.L9463
+.L9460:
 	addsd	xmm0, QWORD PTR XS$[rip]
 	movsd	xmm1, QWORD PTR .LC2080[rip]
 	mov	rdi, rbp
@@ -53780,17 +53800,17 @@ _ZN8MEMORY_T5POKEBEdd:
 	addsd	xmm0, QWORD PTR X$[rip]
 	comisd	xmm3, xmm0
 	movsd	QWORD PTR X$[rip], xmm0
-	jnb	.L9448
-.L9451:
+	jnb	.L9460
+.L9463:
 	movsd	xmm0, QWORD PTR .LC1[rip]
 	addsd	xmm0, QWORD PTR C$[rip]
 	movsd	QWORD PTR C$[rip], xmm0
 	movsd	xmm0, QWORD PTR .LC1[rip]
 	addsd	xmm0, QWORD PTR Y$[rip]
 	movsd	QWORD PTR Y$[rip], xmm0
-	jmp	.L9447
-.L9682:
-.L9398:
+	jmp	.L9459
+.L9694:
+.L9410:
 	movsd	xmm1, QWORD PTR 395344[rbp]
 	movsd	xmm0, QWORD PTR .LC1[rip]
 	addsd	xmm0, xmm1
@@ -53827,11 +53847,11 @@ _ZN8MEMORY_T5POKEBEdd:
 	movsd	xmm1, QWORD PTR [rsp]
 	cvttsd2si	rax, xmm0
 	comisd	xmm0, xmm2
-	jb	.L9406
+	jb	.L9418
 	subsd	xmm0, xmm2
 	cvttsd2si	rax, xmm0
 	btc	rax, 63
-.L9406:
+.L9418:
 	movsd	xmm0, QWORD PTR .LC109[rip]
 	mov	QWORD PTR ADR0$[rip], rax
 	addsd	xmm0, xmm1
@@ -53865,7 +53885,7 @@ _ZN8MEMORY_T5POKEBEdd:
 	addsd	xmm1, QWORD PTR 0[rbp+r8*8]
 	movsd	QWORD PTR 394912[rbp], xmm1
 	test	rax, rax
-	jns	.L9428
+	jns	.L9440
 	mov	rdx, rax
 	and	eax, 1
 	pxor	xmm0, xmm0
@@ -53873,7 +53893,7 @@ _ZN8MEMORY_T5POKEBEdd:
 	or	rdx, rax
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L9428:
+.L9440:
 	add	rsp, 56
 	mov	rdi, rbp
 	pop	rbx
@@ -53881,8 +53901,8 @@ _ZN8MEMORY_T5POKEBEdd:
 	pop	r12
 	pop	r13
 	jmp	_ZN8MEMORY_T5POKEWEdd
-.L9687:
-.L9430:
+.L9699:
+.L9442:
 	movsd	xmm1, QWORD PTR 395344[rbp]
 	movsd	xmm0, QWORD PTR .LC1[rip]
 	addsd	xmm0, xmm1
@@ -53979,15 +53999,15 @@ _ZN8MEMORY_T5POKEBEdd:
 	movsd	xmm2, QWORD PTR .LC280[rip]
 	movsd	xmm1, QWORD PTR [rsp]
 	comisd	xmm0, xmm2
-	jnb	.L9438
+	jnb	.L9450
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR ADR0$[rip], rax
-.L9439:
+.L9451:
 	addsd	xmm1, QWORD PTR .LC6[rip]
 	xor	eax, eax
 	mov	DWORD PTR R3$[rip], 0
 	movsd	QWORD PTR 395344[rbp], xmm1
-.L9442:
+.L9454:
 	mov	edx, DWORD PTR STRING_ADR$[rip]
 	mov	rdi, rbp
 	add	rax, rdx
@@ -54000,7 +54020,7 @@ _ZN8MEMORY_T5POKEBEdd:
 	add	rax, rdx
 	add	rax, QWORD PTR ADR0$[rip]
 	cvtsi2sd	xmm0, rax
-	jns	.L9441
+	jns	.L9453
 	mov	rdx, rax
 	and	eax, 1
 	pxor	xmm0, xmm0
@@ -54008,17 +54028,17 @@ _ZN8MEMORY_T5POKEBEdd:
 	or	rdx, rax
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L9441:
+.L9453:
 	mov	rdi, rbp
 	call	_ZN8MEMORY_T5POKEBEdd
 	mov	eax, DWORD PTR R3$[rip]
 	add	eax, 1
 	mov	DWORD PTR R3$[rip], eax
 	cmp	ebx, eax
-	jnb	.L9442
-	jmp	.L9137
-.L9686:
-.L9420:
+	jnb	.L9454
+	jmp	.L9149
+.L9698:
+.L9432:
 	movsd	xmm0, QWORD PTR 395344[rbp]
 	movsd	xmm1, QWORD PTR .LC1[rip]
 	addsd	xmm1, xmm0
@@ -54051,10 +54071,10 @@ _ZN8MEMORY_T5POKEBEdd:
 	call	nearbyint@PLT
 	movsd	xmm1, QWORD PTR .LC280[rip]
 	comisd	xmm0, xmm1
-	jnb	.L9431
+	jnb	.L9443
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR ADR0$[rip], rax
-.L9432:
+.L9444:
 	movsd	xmm0, QWORD PTR 394888[rbp]
 	lea	r12, STRING_DATA$[rip]
 	call	fb_DoubleToStr@PLT
@@ -54069,10 +54089,10 @@ _ZN8MEMORY_T5POKEBEdd:
 	mov	DWORD PTR R3$[rip], 1
 	call	fb_StrLen@PLT
 	mov	ebx, eax
-.L9433:
+.L9445:
 	mov	eax, DWORD PTR R3$[rip]
 	cmp	eax, ebx
-	ja	.L9137
+	ja	.L9149
 	mov	edx, 1
 	mov	esi, eax
 	mov	rdi, r12
@@ -54093,7 +54113,7 @@ _ZN8MEMORY_T5POKEBEdd:
 	lea	rax, -1[rax+rdx]
 	cvtsi2sd	xmm0, rax
 	test	rax, rax
-	jns	.L9437
+	jns	.L9449
 	mov	rdx, rax
 	and	eax, 1
 	pxor	xmm0, xmm0
@@ -54101,13 +54121,13 @@ _ZN8MEMORY_T5POKEBEdd:
 	or	rdx, rax
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L9437:
+.L9449:
 	mov	rdi, rbp
 	call	_ZN8MEMORY_T5POKEBEdd
 	add	DWORD PTR R3$[rip], 1
-	jmp	.L9433
-.L9685:
-.L9410:
+	jmp	.L9445
+.L9697:
+.L9422:
 	movsd	xmm1, QWORD PTR 395344[rbp]
 	movsd	xmm0, QWORD PTR .LC1[rip]
 	addsd	xmm0, xmm1
@@ -54144,11 +54164,11 @@ _ZN8MEMORY_T5POKEBEdd:
 	movsd	xmm1, QWORD PTR [rsp]
 	cvttsd2si	rbx, xmm0
 	comisd	xmm0, xmm2
-	jb	.L9422
+	jb	.L9434
 	subsd	xmm0, xmm2
 	cvttsd2si	rbx, xmm0
 	btc	rbx, 63
-.L9422:
+.L9434:
 	movsd	xmm0, QWORD PTR .LC109[rip]
 	movsd	QWORD PTR 8[rsp], xmm2
 	movsd	QWORD PTR [rsp], xmm1
@@ -54186,18 +54206,18 @@ _ZN8MEMORY_T5POKEBEdd:
 	movsd	xmm1, QWORD PTR [rsp]
 	cvttsd2si	rax, xmm0
 	comisd	xmm0, xmm2
-	jb	.L9424
+	jb	.L9436
 	subsd	xmm0, xmm2
 	cvttsd2si	rax, xmm0
 	btc	rax, 63
-.L9424:
+.L9436:
 	addsd	xmm1, QWORD PTR .LC113[rip]
 	pxor	xmm0, xmm0
 	mov	QWORD PTR ADR1$[rip], rax
 	cvtsi2sd	xmm0, rax
 	movsd	QWORD PTR 395344[rbp], xmm1
 	test	rax, rax
-	jns	.L9426
+	jns	.L9438
 	mov	rdx, rax
 	and	eax, 1
 	pxor	xmm0, xmm0
@@ -54205,14 +54225,14 @@ _ZN8MEMORY_T5POKEBEdd:
 	or	rdx, rax
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L9426:
+.L9438:
 	mov	rdi, rbp
 	call	_ZN8MEMORY_T5PEEKWEd
 	movapd	xmm1, xmm0
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rbx
 	test	rbx, rbx
-	jns	.L9428
+	jns	.L9440
 	mov	rax, rbx
 	and	ebx, 1
 	pxor	xmm0, xmm0
@@ -54220,47 +54240,47 @@ _ZN8MEMORY_T5POKEBEdd:
 	or	rax, rbx
 	cvtsi2sd	xmm0, rax
 	addsd	xmm0, xmm0
-	jmp	.L9428
-.L9431:
+	jmp	.L9440
+.L9443:
 	subsd	xmm0, xmm1
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR ADR0$[rip], rax
 	btc	QWORD PTR ADR0$[rip], 63
-	jmp	.L9432
-.L9438:
+	jmp	.L9444
+.L9450:
 	subsd	xmm0, xmm2
 	cvttsd2si	rax, xmm0
 	mov	QWORD PTR ADR0$[rip], rax
 	btc	QWORD PTR ADR0$[rip], 63
-	jmp	.L9439
-.L9443:
+	jmp	.L9451
+.L9455:
 	comisd	xmm0, QWORD PTR .LC2114[rip]
-	je	.L9599
+	je	.L9611
 	comisd	xmm0, QWORD PTR .LC2115[rip]
-	je	.L9688
+	je	.L9700
 	comisd	xmm0, QWORD PTR .LC2116[rip]
-	je	.L9689
+	je	.L9701
 	comisd	xmm0, QWORD PTR .LC2117[rip]
-	ja	.L9137
+	ja	.L9149
 	comisd	xmm0, QWORD PTR .LC2118[rip]
-	jb	.L9137
-.L9460:
-.L9143:
-.L9461:
-.L9462:
-.L9463:
-.L9464:
-.L9465:
-.L9466:
-.L9467:
-.L9468:
-.L9469:
+	jb	.L9149
+.L9472:
+.L9155:
+.L9473:
+.L9474:
+.L9475:
+.L9476:
+.L9477:
+.L9478:
+.L9479:
+.L9480:
+.L9481:
 	subsd	xmm0, QWORD PTR .LC2118[rip]
 	cvtsd2si	rax, xmm0
 	movsd	QWORD PTR 134479872[rbp+rax*8], xmm1
-	jmp	.L9137
-.L9598:
-.L9449:
+	jmp	.L9149
+.L9610:
+.L9461:
 	movsd	xmm0, QWORD PTR .LC269[rip]
 	add	rsp, 56
 	mov	rdi, rbp
@@ -54270,13 +54290,13 @@ _ZN8MEMORY_T5POKEBEdd:
 	pop	r12
 	pop	r13
 	jmp	_ZN8MEMORY_T6POKE64Edd
-.L9689:
-.L9457:
+.L9701:
+.L9469:
 	mov	rax, QWORD PTR RADIUS$[rip]
 	pxor	xmm2, xmm2
 	cvtsi2ss	xmm2, rax
 	test	rax, rax
-	jns	.L9459
+	jns	.L9471
 	mov	rdx, rax
 	and	eax, 1
 	pxor	xmm2, xmm2
@@ -54284,7 +54304,7 @@ _ZN8MEMORY_T5POKEBEdd:
 	or	rdx, rax
 	cvtsi2ss	xmm2, rdx
 	addss	xmm2, xmm2
-.L9459:
+.L9471:
 	pxor	xmm4, xmm4
 	movss	xmm5, DWORD PTR .LC2072[rip]
 	xor	edx, edx
@@ -54300,8 +54320,8 @@ _ZN8MEMORY_T5POKEBEdd:
 	pop	r12
 	pop	r13
 	jmp	fb_GfxEllipse@PLT
-.L9688:
-.L9455:
+.L9700:
+.L9467:
 	pxor	xmm3, xmm3
 	mov	ecx, DWORD PTR BITMASK$[rip]
 	xor	r8d, r8d
@@ -54309,7 +54329,7 @@ _ZN8MEMORY_T5POKEBEdd:
 	or	esi, -1
 	movaps	xmm2, xmm3
 	movaps	xmm1, xmm3
-.L9603:
+.L9615:
 	add	rsp, 56
 	movaps	xmm0, xmm1
 	xor	edi, edi
@@ -54318,8 +54338,8 @@ _ZN8MEMORY_T5POKEBEdd:
 	pop	r12
 	pop	r13
 	jmp	fb_GfxLine@PLT
-.L9599:
-.L9452:
+.L9611:
+.L9464:
 	mov	eax, DWORD PTR PIXEL_SIZE$[rip]
 	pxor	xmm2, xmm2
 	xor	r8d, r8d
@@ -54329,18 +54349,18 @@ _ZN8MEMORY_T5POKEBEdd:
 	pxor	xmm1, xmm1
 	cvtsi2ss	xmm2, rax
 	movaps	xmm3, xmm2
-	jmp	.L9603
+	jmp	.L9615
 	.section	.text.unlikely
 	.type	_ZN8MEMORY_T5POKEBEdd.cold, @function
 _ZN8MEMORY_T5POKEBEdd.cold:
-.L9378:
+.L9390:
 	lea	rax, 1[rdx]
 	xor	edx, edx
 	div	rbx
 	cmp	rbx, rdx
-	jne	.L9378
+	jne	.L9390
 	mov	QWORD PTR PC$[rip], rcx
-	jmp	.L9137
+	jmp	.L9149
 	.text
 	.size	_ZN8MEMORY_T5POKEBEdd, .-_ZN8MEMORY_T5POKEBEdd
 	.section	.text.unlikely
@@ -54352,7 +54372,7 @@ _ZN8MEMORY_T5POKEBEdd.cold:
 	.globl	_ZN8MEMORY_T5POKEWEdd
 	.type	_ZN8MEMORY_T5POKEWEdd, @function
 _ZN8MEMORY_T5POKEWEdd:
-.L9691:
+.L9703:
 	push	r14
 	movq	r14, xmm0
 	movapd	xmm0, xmm1
@@ -54363,11 +54383,11 @@ _ZN8MEMORY_T5POKEWEdd:
 	movsd	xmm1, QWORD PTR .LC280[rip]
 	cvttsd2si	rbx, xmm0
 	comisd	xmm0, xmm1
-	jb	.L9693
+	jb	.L9705
 	subsd	xmm0, xmm1
 	cvttsd2si	rbx, xmm0
 	btc	rbx, 63
-.L9693:
+.L9705:
 	movzx	eax, bl
 	pxor	xmm1, xmm1
 	movq	xmm0, r14
@@ -54389,7 +54409,7 @@ _ZN8MEMORY_T5POKEWEdd:
 	.globl	INS_W32
 	.type	INS_W32, @function
 INS_W32:
-.L9696:
+.L9708:
 	movzx	eax, BYTE PTR 8[rdi]
 	mov	edx, DWORD PTR 64[rdi]
 	pxor	xmm0, xmm0
@@ -54403,7 +54423,7 @@ INS_W32:
 	.globl	INS_W64
 	.type	INS_W64, @function
 INS_W64:
-.L9700:
+.L9712:
 	movzx	eax, BYTE PTR 8[rdi]
 	pxor	xmm1, xmm1
 	pxor	xmm0, xmm0
@@ -54411,7 +54431,7 @@ INS_W64:
 	mov	rax, QWORD PTR 64[rdi]
 	cvtsi2sd	xmm0, rax
 	test	rax, rax
-	jns	.L9702
+	jns	.L9714
 	mov	rdx, rax
 	and	eax, 1
 	pxor	xmm0, xmm0
@@ -54419,7 +54439,7 @@ INS_W64:
 	or	rdx, rax
 	cvtsi2sd	xmm0, rdx
 	addsd	xmm0, xmm0
-.L9702:
+.L9714:
 	mov	rdi, QWORD PTR 16[rdi]
 	jmp	_ZN8MEMORY_T6POKE64Edd
 	.size	INS_W64, .-INS_W64
@@ -54435,7 +54455,7 @@ _ZN8MEMORY_T9READUBYTEEd:
 	.globl	INS_ADC
 	.type	INS_ADC, @function
 INS_ADC:
-.L9705:
+.L9717:
 	movzx	eax, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
 	mov	rcx, rdi
@@ -54451,13 +54471,13 @@ INS_ADC:
 	mov	rax, QWORD PTR [rcx]
 	mov	r9w, si
 	test	al, 1
-	je	.L9706
+	je	.L9718
 	add	esi, 1
 	mov	r9w, si
-.L9706:
-.L9707:
-.L9708:
-.L9709:
+.L9718:
+.L9719:
+.L9720:
+.L9721:
 	xor	edx, edi
 	xor	edi, r9d
 	movzx	esi, si
@@ -54496,9 +54516,9 @@ INS_ADC:
 	.globl	INS_AND
 	.type	INS_AND, @function
 INS_AND:
-.L9717:
-.L9718:
-.L9719:
+.L9729:
+.L9730:
+.L9731:
 	movzx	eax, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
 	mov	rdx, rdi
@@ -54527,9 +54547,9 @@ INS_AND:
 	.globl	INS_CMP
 	.type	INS_CMP, @function
 INS_CMP:
-.L9723:
-.L9724:
-.L9725:
+.L9735:
+.L9736:
+.L9737:
 	movzx	eax, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
 	mov	rdx, rdi
@@ -54568,9 +54588,9 @@ INS_CMP:
 	.globl	INS_CPX
 	.type	INS_CPX, @function
 INS_CPX:
-.L9729:
-.L9730:
-.L9731:
+.L9741:
+.L9742:
+.L9743:
 	movzx	eax, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
 	mov	rdx, rdi
@@ -54609,9 +54629,9 @@ INS_CPX:
 	.globl	INS_CPY
 	.type	INS_CPY, @function
 INS_CPY:
-.L9735:
-.L9736:
-.L9737:
+.L9747:
+.L9748:
+.L9749:
 	movzx	eax, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
 	mov	rdx, rdi
@@ -54650,9 +54670,9 @@ INS_CPY:
 	.globl	INS_EOR
 	.type	INS_EOR, @function
 INS_EOR:
-.L9741:
-.L9742:
-.L9743:
+.L9753:
+.L9754:
+.L9755:
 	movzx	eax, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
 	mov	rdx, rdi
@@ -54681,9 +54701,9 @@ INS_EOR:
 	.globl	INS_LDA
 	.type	INS_LDA, @function
 INS_LDA:
-.L9747:
-.L9748:
-.L9749:
+.L9759:
+.L9760:
+.L9761:
 	movzx	eax, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
 	mov	rdx, rdi
@@ -54711,9 +54731,9 @@ INS_LDA:
 	.globl	INS_LDX
 	.type	INS_LDX, @function
 INS_LDX:
-.L9753:
-.L9754:
-.L9755:
+.L9765:
+.L9766:
+.L9767:
 	movzx	eax, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
 	mov	rdx, rdi
@@ -54741,9 +54761,9 @@ INS_LDX:
 	.globl	INS_LDY
 	.type	INS_LDY, @function
 INS_LDY:
-.L9759:
-.L9760:
-.L9761:
+.L9771:
+.L9772:
+.L9773:
 	movzx	eax, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
 	mov	rdx, rdi
@@ -54771,9 +54791,9 @@ INS_LDY:
 	.globl	INS_ORA
 	.type	INS_ORA, @function
 INS_ORA:
-.L9765:
-.L9766:
-.L9767:
+.L9777:
+.L9778:
+.L9779:
 	movzx	eax, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
 	mov	rdx, rdi
@@ -54802,7 +54822,7 @@ INS_ORA:
 	.globl	INS_SBC
 	.type	INS_SBC, @function
 INS_SBC:
-.L9771:
+.L9783:
 	movzx	eax, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
 	mov	rcx, rdi
@@ -54823,17 +54843,17 @@ INS_SBC:
 	and	r9d, 1
 	cvtsi2sd	xmm1, r9
 	comisd	xmm1, xmm0
-	jne	.L9772
+	jne	.L9784
 	movsx	r8d, r8w
 	pxor	xmm1, xmm1
 	cvtsi2sd	xmm1, r8d
 	subsd	xmm1, QWORD PTR .LC1[rip]
 	cvttsd2si	r8d, xmm1
 	mov	si, r8w
-.L9772:
-.L9773:
-.L9774:
-.L9775:
+.L9784:
+.L9785:
+.L9786:
+.L9787:
 	xor	edx, edi
 	xor	edi, esi
 	mov	r8d, esi
@@ -54876,17 +54896,17 @@ _ZN8MEMORY_T8READBYTEEd:
 	.globl	INS_BCC
 	.type	INS_BCC, @function
 INS_BCC:
-.L9781:
+.L9793:
 	mov	rdx, rdi
 	test	BYTE PTR [rdi], 1
-	je	.L9785
-.L9782:
-.L9783:
-.L9784:
+	je	.L9797
+.L9794:
+.L9795:
+.L9796:
 	ret
 	.p2align 4,,10
 	.p2align 3
-.L9785:
+.L9797:
 	movsx	eax, WORD PTR 12[rdi]
 	pxor	xmm0, xmm0
 	movsd	xmm1, QWORD PTR .LC1[rip]
@@ -54914,17 +54934,17 @@ INS_BCC:
 	.globl	INS_BCS
 	.type	INS_BCS, @function
 INS_BCS:
-.L9787:
+.L9799:
 	mov	rdx, rdi
 	test	BYTE PTR [rdi], 1
-	jne	.L9794
-.L9788:
-.L9789:
-.L9790:
+	jne	.L9806
+.L9800:
+.L9801:
+.L9802:
 	ret
 	.p2align 4,,10
 	.p2align 3
-.L9794:
+.L9806:
 	movsx	eax, WORD PTR 12[rdi]
 	pxor	xmm0, xmm0
 	movsd	xmm1, QWORD PTR .LC1[rip]
@@ -54952,7 +54972,7 @@ INS_BCS:
 	.globl	INS_BEQ
 	.type	INS_BEQ, @function
 INS_BEQ:
-.L9796:
+.L9808:
 	mov	rax, QWORD PTR [rdi]
 	pxor	xmm0, xmm0
 	movsd	xmm1, QWORD PTR .LC1[rip]
@@ -54961,14 +54981,14 @@ INS_BEQ:
 	and	eax, 1
 	cvtsi2sd	xmm0, rax
 	comisd	xmm0, xmm1
-	je	.L9800
-.L9797:
-.L9798:
-.L9799:
+	je	.L9812
+.L9809:
+.L9810:
+.L9811:
 	ret
 	.p2align 4,,10
 	.p2align 3
-.L9800:
+.L9812:
 	movsx	eax, WORD PTR 12[rdi]
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, eax
@@ -54995,10 +55015,10 @@ INS_BEQ:
 	.globl	INS_BIT
 	.type	INS_BIT, @function
 INS_BIT:
-.L9802:
-.L9803:
-.L9804:
-.L9805:
+.L9814:
+.L9815:
+.L9816:
+.L9817:
 	movzx	eax, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
 	mov	rdx, rdi
@@ -55027,17 +55047,17 @@ INS_BIT:
 	.globl	INS_BMI
 	.type	INS_BMI, @function
 INS_BMI:
-.L9810:
+.L9822:
 	mov	rdx, rdi
 	test	BYTE PTR [rdi], -128
-	jne	.L9817
-.L9811:
-.L9812:
-.L9813:
+	jne	.L9829
+.L9823:
+.L9824:
+.L9825:
 	ret
 	.p2align 4,,10
 	.p2align 3
-.L9817:
+.L9829:
 	movsx	eax, WORD PTR 12[rdi]
 	pxor	xmm0, xmm0
 	movsd	xmm1, QWORD PTR .LC1[rip]
@@ -55065,7 +55085,7 @@ INS_BMI:
 	.globl	INS_BNE
 	.type	INS_BNE, @function
 INS_BNE:
-.L9819:
+.L9831:
 	mov	rax, QWORD PTR [rdi]
 	pxor	xmm0, xmm0
 	mov	rdx, rdi
@@ -55073,82 +55093,6 @@ INS_BNE:
 	and	eax, 1
 	cvtsi2sd	xmm0, rax
 	comisd	xmm0, QWORD PTR .LC0[rip]
-	je	.L9823
-.L9820:
-.L9821:
-.L9822:
-	ret
-	.p2align 4,,10
-	.p2align 3
-.L9823:
-	movsx	eax, WORD PTR 12[rdi]
-	pxor	xmm0, xmm0
-	movsd	xmm1, QWORD PTR .LC1[rip]
-	cvtsi2sd	xmm0, eax
-	movzx	eax, WORD PTR 64[rdi]
-	mov	rdi, QWORD PTR 16[rdi]
-	subsd	xmm0, xmm1
-	cvttsd2si	ecx, xmm0
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, eax
-	movsx	ecx, cx
-	call	_ZN8MEMORY_T8READBYTEEd
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, ecx
-	movsx	eax, al
-	addsd	xmm0, xmm1
-	pxor	xmm1, xmm1
-	cvtsi2sd	xmm1, eax
-	addsd	xmm0, xmm1
-	cvttsd2si	eax, xmm0
-	mov	WORD PTR 12[rdx], ax
-	ret
-	.size	INS_BNE, .-INS_BNE
-	.p2align 4
-	.globl	INS_BPL
-	.type	INS_BPL, @function
-INS_BPL:
-.L9825:
-	mov	rdx, rdi
-	test	BYTE PTR [rdi], -128
-	je	.L9829
-.L9826:
-.L9827:
-.L9828:
-	ret
-	.p2align 4,,10
-	.p2align 3
-.L9829:
-	movsx	eax, WORD PTR 12[rdi]
-	pxor	xmm0, xmm0
-	movsd	xmm1, QWORD PTR .LC1[rip]
-	cvtsi2sd	xmm0, eax
-	movzx	eax, WORD PTR 64[rdi]
-	mov	rdi, QWORD PTR 16[rdi]
-	subsd	xmm0, xmm1
-	cvttsd2si	ecx, xmm0
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, eax
-	movsx	ecx, cx
-	call	_ZN8MEMORY_T8READBYTEEd
-	pxor	xmm0, xmm0
-	cvtsi2sd	xmm0, ecx
-	movsx	eax, al
-	addsd	xmm0, xmm1
-	pxor	xmm1, xmm1
-	cvtsi2sd	xmm1, eax
-	addsd	xmm0, xmm1
-	cvttsd2si	eax, xmm0
-	mov	WORD PTR 12[rdx], ax
-	ret
-	.size	INS_BPL, .-INS_BPL
-	.p2align 4
-	.globl	INS_BVC
-	.type	INS_BVC, @function
-INS_BVC:
-.L9831:
-	mov	rdx, rdi
-	test	BYTE PTR [rdi], 64
 	je	.L9835
 .L9832:
 .L9833:
@@ -55179,22 +55123,98 @@ INS_BVC:
 	cvttsd2si	eax, xmm0
 	mov	WORD PTR 12[rdx], ax
 	ret
-	.size	INS_BVC, .-INS_BVC
+	.size	INS_BNE, .-INS_BNE
 	.p2align 4
-	.globl	INS_BVS
-	.type	INS_BVS, @function
-INS_BVS:
+	.globl	INS_BPL
+	.type	INS_BPL, @function
+INS_BPL:
 .L9837:
 	mov	rdx, rdi
-	test	BYTE PTR [rdi], 64
-	jne	.L9844
+	test	BYTE PTR [rdi], -128
+	je	.L9841
 .L9838:
 .L9839:
 .L9840:
 	ret
 	.p2align 4,,10
 	.p2align 3
+.L9841:
+	movsx	eax, WORD PTR 12[rdi]
+	pxor	xmm0, xmm0
+	movsd	xmm1, QWORD PTR .LC1[rip]
+	cvtsi2sd	xmm0, eax
+	movzx	eax, WORD PTR 64[rdi]
+	mov	rdi, QWORD PTR 16[rdi]
+	subsd	xmm0, xmm1
+	cvttsd2si	ecx, xmm0
+	pxor	xmm0, xmm0
+	cvtsi2sd	xmm0, eax
+	movsx	ecx, cx
+	call	_ZN8MEMORY_T8READBYTEEd
+	pxor	xmm0, xmm0
+	cvtsi2sd	xmm0, ecx
+	movsx	eax, al
+	addsd	xmm0, xmm1
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, eax
+	addsd	xmm0, xmm1
+	cvttsd2si	eax, xmm0
+	mov	WORD PTR 12[rdx], ax
+	ret
+	.size	INS_BPL, .-INS_BPL
+	.p2align 4
+	.globl	INS_BVC
+	.type	INS_BVC, @function
+INS_BVC:
+.L9843:
+	mov	rdx, rdi
+	test	BYTE PTR [rdi], 64
+	je	.L9847
 .L9844:
+.L9845:
+.L9846:
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L9847:
+	movsx	eax, WORD PTR 12[rdi]
+	pxor	xmm0, xmm0
+	movsd	xmm1, QWORD PTR .LC1[rip]
+	cvtsi2sd	xmm0, eax
+	movzx	eax, WORD PTR 64[rdi]
+	mov	rdi, QWORD PTR 16[rdi]
+	subsd	xmm0, xmm1
+	cvttsd2si	ecx, xmm0
+	pxor	xmm0, xmm0
+	cvtsi2sd	xmm0, eax
+	movsx	ecx, cx
+	call	_ZN8MEMORY_T8READBYTEEd
+	pxor	xmm0, xmm0
+	cvtsi2sd	xmm0, ecx
+	movsx	eax, al
+	addsd	xmm0, xmm1
+	pxor	xmm1, xmm1
+	cvtsi2sd	xmm1, eax
+	addsd	xmm0, xmm1
+	cvttsd2si	eax, xmm0
+	mov	WORD PTR 12[rdx], ax
+	ret
+	.size	INS_BVC, .-INS_BVC
+	.p2align 4
+	.globl	INS_BVS
+	.type	INS_BVS, @function
+INS_BVS:
+.L9849:
+	mov	rdx, rdi
+	test	BYTE PTR [rdi], 64
+	jne	.L9856
+.L9850:
+.L9851:
+.L9852:
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L9856:
 	movsx	eax, WORD PTR 12[rdi]
 	pxor	xmm0, xmm0
 	movsd	xmm1, QWORD PTR .LC1[rip]
@@ -55238,16 +55258,16 @@ _ZN8MEMORY_T10READUSHORTEd:
 	.globl	_ZN8MEMORY_T9WRITEBYTEEdd
 	.type	_ZN8MEMORY_T9WRITEBYTEEdd, @function
 _ZN8MEMORY_T9WRITEBYTEEdd:
-.L9847:
+.L9859:
 	jmp	_ZN8MEMORY_T6POKE64Edd
 	.size	_ZN8MEMORY_T9WRITEBYTEEdd, .-_ZN8MEMORY_T9WRITEBYTEEdd
 	.p2align 4
 	.globl	INS_INC
 	.type	INS_INC, @function
 INS_INC:
-.L9849:
-.L9850:
-.L9851:
+.L9861:
+.L9862:
+.L9863:
 	push	rbp
 	xor	eax, eax
 	pxor	xmm0, xmm0
@@ -55297,7 +55317,7 @@ INS_INC:
 	.globl	INS_STY
 	.type	INS_STY, @function
 INS_STY:
-.L9856:
+.L9868:
 	movzx	eax, BYTE PTR 10[rdi]
 	movzx	edx, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
@@ -55311,7 +55331,7 @@ INS_STY:
 	.globl	INS_STX
 	.type	INS_STX, @function
 INS_STX:
-.L9858:
+.L9870:
 	movzx	eax, BYTE PTR 9[rdi]
 	movzx	edx, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
@@ -55325,7 +55345,7 @@ INS_STX:
 	.globl	INS_STA
 	.type	INS_STA, @function
 INS_STA:
-.L9860:
+.L9872:
 	movzx	eax, BYTE PTR 8[rdi]
 	movzx	edx, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
@@ -55339,7 +55359,7 @@ INS_STA:
 	.globl	INS_ROR
 	.type	INS_ROR, @function
 INS_ROR:
-.L9862:
+.L9874:
 	push	rbp
 	pxor	xmm1, xmm1
 	push	rbx
@@ -55350,8 +55370,8 @@ INS_ROR:
 	and	eax, 1
 	cvtsi2sd	xmm1, rax
 	comisd	xmm1, xmm0
-	je	.L9877
-.L9865:
+	je	.L9889
+.L9877:
 	movzx	eax, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
 	mov	rdi, QWORD PTR 16[rdi]
@@ -55362,18 +55382,18 @@ INS_ROR:
 	call	_ZN8MEMORY_T9READUBYTEEd
 	mov	ebp, eax
 	test	al, 1
-	je	.L9875
-.L9874:
+	je	.L9887
+.L9886:
 	mov	edx, 1
-.L9866:
+.L9878:
 	mov	rax, QWORD PTR [rbx]
 	shr	bpl
 	and	rax, -2
 	or	rax, rdx
 	comisd	xmm1, QWORD PTR 8[rsp]
 	mov	QWORD PTR [rbx], rax
-	je	.L9867
-.L9872:
+	je	.L9879
+.L9884:
 	or	ebp, -128
 	movzx	edx, WORD PTR 64[rbx]
 	pxor	xmm0, xmm0
@@ -55387,9 +55407,9 @@ INS_ROR:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
 	comisd	xmm0, QWORD PTR 8[rsp]
-	jne	.L9868
-.L9869:
-.L9870:
+	jne	.L9880
+.L9881:
+.L9882:
 	mov	rdx, QWORD PTR [rbx]
 	and	ebp, 128
 	or	rdx, 2
@@ -55402,7 +55422,7 @@ INS_ROR:
 	ret
 	.p2align 4,,10
 	.p2align 3
-.L9877:
+.L9889:
 	movzx	eax, WORD PTR 64[rdi]
 	movsd	QWORD PTR CARY$[rip], xmm0
 	pxor	xmm0, xmm0
@@ -55411,15 +55431,15 @@ INS_ROR:
 	call	_ZN8MEMORY_T9READUBYTEEd
 	mov	ebp, eax
 	test	al, 1
-	jne	.L9880
+	jne	.L9892
 	pxor	xmm5, xmm5
 	and	QWORD PTR [rbx], -2
 	shr	bpl
 	movsd	QWORD PTR 8[rsp], xmm5
-	jmp	.L9872
+	jmp	.L9884
 	.p2align 4,,10
 	.p2align 3
-.L9867:
+.L9879:
 	movzx	edx, WORD PTR 64[rbx]
 	movzx	eax, bpl
 	pxor	xmm0, xmm0
@@ -55432,7 +55452,7 @@ INS_ROR:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, rax
 	comisd	xmm0, QWORD PTR 8[rsp]
-	je	.L9869
+	je	.L9881
 	mov	rdx, QWORD PTR [rbx]
 	xor	ebp, ebp
 	and	rdx, -3
@@ -55445,7 +55465,7 @@ INS_ROR:
 	ret
 	.p2align 4,,10
 	.p2align 3
-.L9868:
+.L9880:
 	mov	rdx, QWORD PTR [rbx]
 	mov	ebp, 128
 	and	rdx, -3
@@ -55458,22 +55478,22 @@ INS_ROR:
 	ret
 	.p2align 4,,10
 	.p2align 3
-.L9875:
+.L9887:
 	pxor	xmm1, xmm1
 	xor	edx, edx
-	jmp	.L9866
+	jmp	.L9878
 	.p2align 4,,10
 	.p2align 3
-.L9880:
+.L9892:
 	pxor	xmm6, xmm6
 	movsd	QWORD PTR 8[rsp], xmm6
-	jmp	.L9874
+	jmp	.L9886
 	.size	INS_ROR, .-INS_ROR
 	.p2align 4
 	.globl	INS_ROL
 	.type	INS_ROL, @function
 INS_ROL:
-.L9882:
+.L9894:
 	push	rbp
 	pxor	xmm0, xmm0
 	pxor	xmm1, xmm1
@@ -55491,7 +55511,7 @@ INS_ROL:
 	and	ecx, 1
 	cvtsi2sd	xmm1, rcx
 	comisd	xmm1, xmm0
-	je	.L9898
+	je	.L9910
 	mov	rcx, rax
 	or	rax, 1
 	lea	ebp, [rdx+rdx]
@@ -55500,9 +55520,9 @@ INS_ROL:
 	test	dl, dl
 	cmovns	rax, rcx
 	mov	QWORD PTR [rbx], rax
-.L9885:
-.L9886:
-.L9887:
+.L9897:
+.L9898:
+.L9899:
 	movzx	edx, WORD PTR 64[rbx]
 	movzx	eax, bpl
 	pxor	xmm0, xmm0
@@ -55533,7 +55553,7 @@ INS_ROL:
 	ret
 	.p2align 4,,10
 	.p2align 3
-.L9898:
+.L9910:
 	mov	rcx, rax
 	or	rax, 1
 	movsd	QWORD PTR CARY$[rip], xmm0
@@ -55542,15 +55562,15 @@ INS_ROL:
 	test	dl, dl
 	cmovns	rax, rcx
 	mov	QWORD PTR [rbx], rax
-	jmp	.L9885
+	jmp	.L9897
 	.size	INS_ROL, .-INS_ROL
 	.p2align 4
 	.globl	INS_LSR
 	.type	INS_LSR, @function
 INS_LSR:
-.L9900:
-.L9901:
-.L9902:
+.L9912:
+.L9913:
+.L9914:
 	push	rbp
 	pxor	xmm0, xmm0
 	pxor	xmm1, xmm1
@@ -55601,7 +55621,7 @@ INS_LSR:
 	.globl	INS_DEC
 	.type	INS_DEC, @function
 INS_DEC:
-.L9907:
+.L9919:
 	sub	rsp, 8
 	movzx	eax, WORD PTR 64[rdi]
 	pxor	xmm0, xmm0
@@ -55616,12 +55636,12 @@ INS_DEC:
 	mov	rax, QWORD PTR [rdx]
 	cvttsd2si	ecx, xmm0
 	test	cl, cl
-	je	.L9908
-.L9909:
+	je	.L9920
+.L9921:
 	mov	esi, ecx
 	and	rax, -3
 	and	esi, 128
-.L9910:
+.L9922:
 	and	al, 127
 	movzx	ecx, cl
 	pxor	xmm0, xmm0
@@ -55636,18 +55656,18 @@ INS_DEC:
 	jmp	_ZN8MEMORY_T9WRITEBYTEEdd
 	.p2align 4,,10
 	.p2align 3
-.L9908:
+.L9920:
 	or	rax, 2
 	xor	esi, esi
-	jmp	.L9910
+	jmp	.L9922
 	.size	INS_DEC, .-INS_DEC
 	.p2align 4
 	.globl	INS_ASL
 	.type	INS_ASL, @function
 INS_ASL:
-.L9914:
-.L9915:
-.L9916:
+.L9926:
+.L9927:
+.L9928:
 	push	rbp
 	pxor	xmm0, xmm0
 	pxor	xmm1, xmm1
@@ -55700,7 +55720,7 @@ _ZN8MEMORY_T10WRITEUBYTEEdd:
 	.globl	_ZN8MEMORY_T11WRITEUSHORTEdd
 	.type	_ZN8MEMORY_T11WRITEUSHORTEdd, @function
 _ZN8MEMORY_T11WRITEUSHORTEdd:
-.L9922:
+.L9934:
 	push	r14
 	movq	r14, xmm0
 	movapd	xmm0, xmm1
@@ -55711,11 +55731,11 @@ _ZN8MEMORY_T11WRITEUSHORTEdd:
 	movsd	xmm1, QWORD PTR .LC280[rip]
 	cvttsd2si	rbx, xmm0
 	comisd	xmm0, xmm1
-	jb	.L9924
+	jb	.L9936
 	subsd	xmm0, xmm1
 	cvttsd2si	rbx, xmm0
 	btc	rbx, 63
-.L9924:
+.L9936:
 	movzx	eax, bl
 	pxor	xmm1, xmm1
 	movq	xmm0, r14
@@ -55737,7 +55757,7 @@ _ZN8MEMORY_T11WRITEUSHORTEdd:
 	.globl	_ZN7CPU6510C1EP8MEMORY_T
 	.type	_ZN7CPU6510C1EP8MEMORY_T, @function
 _ZN7CPU6510C1EP8MEMORY_T:
-.L9927:
+.L9939:
 	push	r13
 	xor	ecx, ecx
 	xor	edx, edx
@@ -55779,7 +55799,7 @@ _ZN7CPU6510C1EP8MEMORY_T:
 	call	fb_DataRestore@PLT
 	.p2align 4,,10
 	.p2align 3
-.L9928:
+.L9940:
 	mov	rdi, rbx
 	call	fb_DataReadULongint@PLT
 	xor	edx, edx
@@ -55796,22 +55816,22 @@ _ZN7CPU6510C1EP8MEMORY_T:
 	add	rbx, 56
 	call	fb_DataReadLongint@PLT
 	cmp	rbx, r12
-	jne	.L9928
-.L9929:
+	jne	.L9940
+.L9941:
 	lea	rdi, label$5347[rip]
 	lea	r12, 14728[rbp]
 	call	fb_DataRestore@PLT
 	.p2align 4,,10
 	.p2align 3
-.L9930:
+.L9942:
 	mov	rdi, rbx
 	xor	edx, edx
 	mov	rsi, -1
 	add	rbx, 24
 	call	fb_DataReadStr@PLT
 	cmp	r12, rbx
-	jne	.L9930
-.L9931:
+	jne	.L9942
+.L9943:
 	mov	eax, -798
 	mov	BYTE PTR 15[rbp], 1
 	mov	WORD PTR 12[rbp], ax
@@ -55826,7 +55846,7 @@ _ZN7CPU6510C1EP8MEMORY_T:
 	.globl	_ZN5C64_TC1Ev
 	.type	_ZN5C64_TC1Ev, @function
 _ZN5C64_TC1Ev:
-.L9936:
+.L9948:
 	push	r12
 	xor	r9d, r9d
 	mov	r8d, 64
@@ -55894,7 +55914,7 @@ _ZN5C64_TC1Ev:
 	lea	rbp, 40[rsp]
 	.p2align 4,,10
 	.p2align 3
-.L9937:
+.L9949:
 	mov	rdi, rbp
 	call	fb_DataReadLongint@PLT
 	mov	esi, DWORD PTR 40[rsp]
@@ -55904,26 +55924,26 @@ _ZN5C64_TC1Ev:
 	add	rbx, 1
 	call	fb_GfxPalette@PLT
 	cmp	rbx, 16
-	jne	.L9937
-.L9938:
+	jne	.L9949
+.L9950:
 	mov	edi, 134755848
 	call	malloc@PLT
 	mov	rbp, rax
 	test	rax, rax
-	je	.L9939
+	je	.L9951
 	mov	rdi, rax
 	call	_ZN8MEMORY_TC1Ev
-.L9939:
+.L9951:
 	mov	QWORD PTR [r12], rbp
 	mov	edi, 14728
 	call	malloc@PLT
 	mov	rbx, rax
 	test	rax, rax
-	je	.L9940
+	je	.L9952
 	mov	rsi, rbp
 	mov	rdi, rax
 	call	_ZN7CPU6510C1EP8MEMORY_T
-.L9940:
+.L9952:
 	mov	QWORD PTR 8[r12], rbx
 	add	rsp, 48
 	pop	rbx
@@ -55935,7 +55955,7 @@ _ZN5C64_TC1Ev:
 	.globl	_ZN7CPU6510D1Ev
 	.type	_ZN7CPU6510D1Ev, @function
 _ZN7CPU6510D1Ev:
-.L9950:
+.L9962:
 	sub	rsp, 88
 	add	rdi, 14416
 	mov	QWORD PTR [rsp], rdi
@@ -55956,21 +55976,21 @@ _ZN7CPU6510D1Ev:
 	.globl	_ZN5C64_TD1Ev
 	.type	_ZN5C64_TD1Ev, @function
 _ZN5C64_TD1Ev:
-.L9953:
+.L9965:
 	push	rbx
 	mov	rbx, rdi
 	mov	rdi, QWORD PTR 8[rdi]
 	test	rdi, rdi
-	je	.L9954
+	je	.L9966
 	call	_ZN7CPU6510D1Ev
 	mov	rdi, QWORD PTR 8[rbx]
 	call	free@PLT
-.L9954:
+.L9966:
 	mov	rdi, QWORD PTR [rbx]
 	test	rdi, rdi
-	je	.L9955
+	je	.L9967
 	call	free@PLT
-.L9955:
+.L9967:
 	mov	rdi, QWORD PTR BGIMAGE$[rip]
 	call	fb_GfxImageDestroy@PLT
 	mov	rdi, QWORD PTR FGIMAGE$[rip]
@@ -56612,16 +56632,16 @@ _ZN7CPU65104TICKEd:
 	mov	WORD PTR 12[rbx], ax
 	mov	rax, QWORD PTR 40[rbx]
 	cmp	rax, 12
-	ja	.L9979
+	ja	.L9991
 	lea	rdx, tmp$2535.1[rip]
 	jmp	[QWORD PTR [rdx+rax*8]]
 	.p2align 4,,10
 	.p2align 3
-.L9982:
-.L9996:
+.L9994:
+.L10008:
 	mov	rdi, rbx
 	call	[QWORD PTR 72[rbx]]
-.L9979:
+.L9991:
 	mov	rdi, rbp
 	call	fb_StrDelete@PLT
 	add	rsp, 56
@@ -56631,112 +56651,112 @@ _ZN7CPU65104TICKEd:
 	ret
 	.p2align 4,,10
 	.p2align 3
-.L9983:
-.L9990:
+.L9995:
+.L10002:
 	mov	rdi, rbx
 	call	_ZN7CPU65107ADR_IMMEv
 	cvtsd2si	eax, xmm0
 	mov	WORD PTR 64[rbx], ax
 	call	[QWORD PTR 72[rbx]]
-	jmp	.L9979
+	jmp	.L9991
 	.p2align 4,,10
 	.p2align 3
-.L9991:
+.L10003:
 	mov	rdi, rbx
 	call	_ZN7CPU65108ADR_INDXEv
 	mov	rdi, rbx
 	cvtsd2si	eax, xmm0
 	mov	WORD PTR 64[rbx], ax
 	call	[QWORD PTR 72[rbx]]
-	jmp	.L9979
+	jmp	.L9991
 	.p2align 4,,10
 	.p2align 3
-.L9992:
+.L10004:
 	mov	rdi, rbx
 	call	_ZN7CPU65108ADR_INDYEv
 	mov	rdi, rbx
 	cvtsd2si	eax, xmm0
 	mov	WORD PTR 64[rbx], ax
 	call	[QWORD PTR 72[rbx]]
-	jmp	.L9979
+	jmp	.L9991
 	.p2align 4,,10
 	.p2align 3
-.L9993:
+.L10005:
 	mov	rdi, rbx
 	call	_ZN7CPU65107ADR_INDEv
 	mov	rdi, rbx
 	cvtsd2si	eax, xmm0
 	mov	WORD PTR 64[rbx], ax
 	call	[QWORD PTR 72[rbx]]
-	jmp	.L9979
+	jmp	.L9991
 	.p2align 4,,10
 	.p2align 3
-.L9981:
-	jmp	.L9979
+.L9993:
+	jmp	.L9991
 	.p2align 4,,10
 	.p2align 3
-.L9984:
+.L9996:
 	mov	rdi, rbx
 	call	_ZN7CPU65107ADR_ABSEv
 	cvtsd2si	eax, xmm0
 	mov	WORD PTR 64[rbx], ax
-	jmp	.L9996
+	jmp	.L10008
 	.p2align 4,,10
 	.p2align 3
-.L9985:
+.L9997:
 	mov	rdi, rbx
 	call	_ZN7CPU65108ADR_ZEROEv
 	mov	rdi, rbx
 	cvtsd2si	eax, xmm0
 	mov	WORD PTR 64[rbx], ax
 	call	[QWORD PTR 72[rbx]]
-	jmp	.L9979
+	jmp	.L9991
 	.p2align 4,,10
 	.p2align 3
-.L9986:
+.L9998:
 	mov	rdi, rbx
 	call	_ZN7CPU65109ADR_ZEROXEv
 	mov	rdi, rbx
 	cvtsd2si	eax, xmm0
 	mov	WORD PTR 64[rbx], ax
 	call	[QWORD PTR 72[rbx]]
-	jmp	.L9979
+	jmp	.L9991
 	.p2align 4,,10
 	.p2align 3
-.L9987:
+.L9999:
 	mov	rdi, rbx
 	call	_ZN7CPU65109ADR_ZEROYEv
 	mov	rdi, rbx
 	cvtsd2si	eax, xmm0
 	mov	WORD PTR 64[rbx], ax
 	call	[QWORD PTR 72[rbx]]
-	jmp	.L9979
+	jmp	.L9991
 	.p2align 4,,10
 	.p2align 3
-.L9988:
+.L10000:
 	mov	rdi, rbx
 	call	_ZN7CPU65108ADR_ABSXEv
 	mov	rdi, rbx
 	cvtsd2si	eax, xmm0
 	mov	WORD PTR 64[rbx], ax
 	call	[QWORD PTR 72[rbx]]
-	jmp	.L9979
+	jmp	.L9991
 	.p2align 4,,10
 	.p2align 3
-.L9989:
+.L10001:
 	mov	rdi, rbx
 	call	_ZN7CPU65108ADR_ABSYEv
 	mov	rdi, rbx
 	cvtsd2si	eax, xmm0
 	mov	WORD PTR 64[rbx], ax
 	call	[QWORD PTR 72[rbx]]
-	jmp	.L9979
+	jmp	.L9991
 	.size	_ZN7CPU65104TICKEd, .-_ZN7CPU65104TICKEd
 	.p2align 4
 	.globl	_ZN7CPU65104PUSHEd
 	.type	_ZN7CPU65104PUSHEd, @function
 _ZN7CPU65104PUSHEd:
-.L9998:
+.L10010:
 	push	rbx
 	movzx	eax, WORD PTR 14[rdi]
 	movapd	xmm1, xmm0
@@ -56758,7 +56778,7 @@ _ZN7CPU65104PUSHEd:
 	.globl	INS_BRK
 	.type	INS_BRK, @function
 INS_BRK:
-.L10001:
+.L10013:
 	push	rbx
 	movzx	eax, WORD PTR 12[rdi]
 	pxor	xmm0, xmm0
@@ -56793,7 +56813,7 @@ INS_BRK:
 	.globl	INS_JSR
 	.type	INS_JSR, @function
 INS_JSR:
-.L10004:
+.L10016:
 	push	rbx
 	movzx	eax, WORD PTR 12[rdi]
 	pxor	xmm0, xmm0
@@ -56817,7 +56837,7 @@ INS_JSR:
 	.globl	INS_PHA
 	.type	INS_PHA, @function
 INS_PHA:
-.L10007:
+.L10019:
 	movzx	eax, BYTE PTR 8[rdi]
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, eax
@@ -56827,7 +56847,7 @@ INS_PHA:
 	.globl	INS_PHP
 	.type	INS_PHP, @function
 INS_PHP:
-.L10009:
+.L10021:
 	movzx	eax, BYTE PTR [rdi]
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, eax
@@ -56857,9 +56877,9 @@ _ZN7CPU65104PULLEv:
 	.globl	INS_PLA
 	.type	INS_PLA, @function
 INS_PLA:
-.L10012:
-.L10013:
-.L10014:
+.L10024:
+.L10025:
+.L10026:
 	mov	rdx, rdi
 	xor	esi, esi
 	call	_ZN7CPU65104PULLEv
@@ -56883,7 +56903,7 @@ INS_PLA:
 	.globl	INS_PLP
 	.type	INS_PLP, @function
 INS_PLP:
-.L10018:
+.L10030:
 	mov	rdx, rdi
 	call	_ZN7CPU65104PULLEv
 	cvtsd2si	eax, xmm0
@@ -56894,7 +56914,7 @@ INS_PLP:
 	.globl	INS_RTI
 	.type	INS_RTI, @function
 INS_RTI:
-.L10020:
+.L10032:
 	mov	rdx, rdi
 	call	_ZN7CPU65104PULLEv
 	mov	rdi, rdx
@@ -56919,7 +56939,7 @@ INS_RTI:
 	.globl	INS_RTS
 	.type	INS_RTS, @function
 INS_RTS:
-.L10022:
+.L10034:
 	mov	rdx, rdi
 	call	_ZN7CPU65104PULLEv
 	mov	rdi, rdx
@@ -56950,7 +56970,7 @@ INS_RTS:
 	.globl	INTERRUPTSERVICE
 	.type	INTERRUPTSERVICE, @function
 INTERRUPTSERVICE:
-.L10024:
+.L10036:
 	push	r15
 	push	r14
 	push	r13
@@ -56960,8 +56980,8 @@ INTERRUPTSERVICE:
 	push	rbx
 	sub	rsp, 88
 	test	BYTE PTR [rdi], 4
-	je	.L10098
-.L10023:
+	je	.L10110
+.L10035:
 	add	rsp, 88
 	mov	rax, r12
 	pop	rbx
@@ -56973,7 +56993,7 @@ INTERRUPTSERVICE:
 	ret
 	.p2align 4,,10
 	.p2align 3
-.L10098:
+.L10110:
 	mov	rax, QWORD PTR .LC298[rip]
 	mov	rbx, rdi
 	mov	rdi, QWORD PTR 16[rdi]
@@ -56982,9 +57002,9 @@ INTERRUPTSERVICE:
 	call	_ZN8MEMORY_T9READUBYTEEd
 	movzx	r12d, al
 	cmp	r12, 9
-	jle	.L10099
-.L10025:
-.L10063:
+	jle	.L10111
+.L10037:
+.L10075:
 	movzx	eax, BYTE PTR 13[rbx]
 	pxor	xmm0, xmm0
 	mov	rdi, rbx
@@ -57014,18 +57034,18 @@ INTERRUPTSERVICE:
 	or	rax, 4
 	cmp	QWORD PTR 24[rbx], 64
 	mov	QWORD PTR [rbx], rax
-	je	.L10067
+	je	.L10079
 	.p2align 4,,10
 	.p2align 3
-.L10064:
+.L10076:
 	mov	rax, QWORD PTR .LC2096[rip]
 	mov	rdi, rbx
 	add	r12, 1
 	movq	xmm0, rax
 	call	_ZN7CPU65104TICKEd
 	cmp	QWORD PTR 24[rbx], 64
-	jne	.L10064
-.L10067:
+	jne	.L10076
+.L10079:
 	mov	rdi, rbx
 	call	_ZN7CPU65104PULLEv
 	mov	rdi, rbx
@@ -57042,10 +57062,10 @@ INTERRUPTSERVICE:
 	cmp	rbp, 13
 	sete	al
 	mov	QWORD PTR FLAG$[rip], rax
-	jmp	.L10023
+	jmp	.L10035
 	.p2align 4,,10
 	.p2align 3
-.L10099:
+.L10111:
 	call	fb_Inkey@PLT
 	lea	r13, 16[rsp]
 	xor	r8d, r8d
@@ -57059,47 +57079,47 @@ INTERRUPTSERVICE:
 	call	fb_StrLen@PLT
 	mov	rbp, rax
 	test	rax, rax
-	je	.L10062
+	je	.L10074
 	mov	rax, QWORD PTR 16[rsp]
 	movzx	edx, BYTE PTR -1[rax+rbp]
 	sal	rbp, 8
 	lea	rax, [rdx+rbp]
 	lea	rbp, -256[rax]
 	cmp	rax, 283
-	je	.L10100
+	je	.L10112
 	lea	rdx, -321[rax]
 	cmp	rdx, 25
-	jbe	.L10101
-.L10030:
+	jbe	.L10113
+.L10042:
 	lea	rdx, -353[rax]
 	cmp	rdx, 25
-	jbe	.L10102
-.L10033:
+	jbe	.L10114
+.L10045:
 	cmp	rbp, 316
-	je	.L10035
+	je	.L10047
 	cmp	rbp, 317
-	je	.L10103
+	je	.L10115
 	cmp	rbp, 327
-	je	.L10104
+	je	.L10116
 	cmp	rbp, 8
-	je	.L10073
+	je	.L10085
 	cmp	rbp, 331
-	je	.L10074
+	je	.L10086
 	cmp	rbp, 328
-	je	.L10075
+	je	.L10087
 	cmp	rbp, 333
-	je	.L10076
+	je	.L10088
 	cmp	rbp, 336
-	jne	.L10105
+	jne	.L10117
 	movsd	xmm1, QWORD PTR .LC118[rip]
 	mov	ebp, 17
-.L10029:
-.L10056:
-.L10057:
-.L10058:
+.L10041:
+.L10068:
+.L10069:
+.L10070:
 	.p2align 4,,10
 	.p2align 3
-.L10059:
+.L10071:
 	lea	rax, 631[r12]
 	pxor	xmm0, xmm0
 	mov	rdi, QWORD PTR 16[rbx]
@@ -57112,14 +57132,14 @@ INTERRUPTSERVICE:
 	cvtsi2sd	xmm1, r12
 	movq	xmm0, rax
 	call	_ZN8MEMORY_T9WRITEBYTEEdd
-.L10026:
-.L10060:
-.L10061:
-.L10062:
+.L10038:
+.L10072:
+.L10073:
+.L10074:
 	mov	rdi, r13
 	call	fb_StrDelete@PLT
-	jmp	.L10063
-.L10035:
+	jmp	.L10075
+.L10047:
 	xor	r8d, r8d
 	xor	ecx, ecx
 	mov	edx, -1
@@ -57153,7 +57173,7 @@ INTERRUPTSERVICE:
 	mov	rdi, r13
 	call	fb_StrLen@PLT
 	test	rax, rax
-	je	.L10047
+	je	.L10059
 	call	fb_FileFree@PLT
 	xor	r9d, r9d
 	xor	ecx, ecx
@@ -57164,7 +57184,7 @@ INTERRUPTSERVICE:
 	mov	r14d, eax
 	call	fb_FileOpen@PLT
 	test	eax, eax
-	je	.L10040
+	je	.L10052
 	xor	r8d, r8d
 	xor	ecx, ecx
 	mov	edx, -1
@@ -57191,7 +57211,7 @@ INTERRUPTSERVICE:
 	mov	edx, 15
 	lea	rsi, .LC2135[rip]
 	movups	XMMWORD PTR 48[rsp], xmm0
-.L10096:
+.L10108:
 	call	fb_StrConcat@PLT
 	xor	edi, edi
 	mov	edx, 1
@@ -57200,12 +57220,12 @@ INTERRUPTSERVICE:
 	call	fb_Beep@PLT
 	mov	edi, -1
 	call	fb_Sleep@PLT
-.L10039:
-.L10043:
-.L10044:
-.L10045:
-.L10046:
-.L10047:
+.L10051:
+.L10055:
+.L10056:
+.L10057:
+.L10058:
+.L10059:
 	pxor	xmm1, xmm1
 	movss	xmm3, DWORD PTR .LC2136[rip]
 	xor	edi, edi
@@ -57217,29 +57237,29 @@ INTERRUPTSERVICE:
 	movss	xmm2, DWORD PTR .LC2137[rip]
 	mov	esi, 3
 	call	fb_GfxLine@PLT
-	jmp	.L10062
-.L10105:
-.L10053:
-.L10054:
-.L10055:
+	jmp	.L10074
+.L10117:
+.L10065:
+.L10066:
+.L10067:
 	test	rbp, rbp
-	je	.L10062
+	je	.L10074
 	.p2align 4,,10
 	.p2align 3
-.L10068:
+.L10080:
 	pxor	xmm1, xmm1
 	cvtsi2sd	xmm1, rbp
-	jmp	.L10059
-.L10100:
-.L10028:
+	jmp	.L10071
+.L10112:
+.L10040:
 	xor	edi, edi
 	call	fb_End@PLT
 	movsd	xmm1, QWORD PTR .LC128[rip]
-	jmp	.L10059
-.L10101:
-.L10031:
+	jmp	.L10071
+.L10113:
+.L10043:
 	lea	rbp, -224[rax]
-.L10097:
+.L10109:
 	mov	rsi, rbp
 	mov	edi, 1
 	xor	eax, eax
@@ -57250,17 +57270,17 @@ INTERRUPTSERVICE:
 	mov	rdx, rax
 	lea	rdi, S$1.0[rip]
 	call	fb_StrConcatAssign@PLT
-	jmp	.L10068
-.L10102:
-.L10034:
+	jmp	.L10080
+.L10114:
+.L10046:
 	lea	rbp, -288[rax]
-	jmp	.L10097
-.L10104:
+	jmp	.L10109
+.L10116:
 	movsd	xmm1, QWORD PTR .LC120[rip]
 	mov	ebp, 19
-	jmp	.L10059
-.L10103:
-.L10037:
+	jmp	.L10071
+.L10115:
+.L10049:
 	xor	r8d, r8d
 	xor	ecx, ecx
 	mov	edx, -1
@@ -57294,7 +57314,7 @@ INTERRUPTSERVICE:
 	mov	rdi, r13
 	call	fb_StrLen@PLT
 	test	rax, rax
-	je	.L10047
+	je	.L10059
 	call	fb_FileFree@PLT
 	xor	r9d, r9d
 	xor	ecx, ecx
@@ -57305,7 +57325,7 @@ INTERRUPTSERVICE:
 	mov	r14d, eax
 	call	fb_FileOpen@PLT
 	test	eax, eax
-	je	.L10050
+	je	.L10062
 	xor	r8d, r8d
 	xor	ecx, ecx
 	mov	edx, -1
@@ -57332,20 +57352,20 @@ INTERRUPTSERVICE:
 	mov	edx, 13
 	lea	rsi, .LC2139[rip]
 	movups	XMMWORD PTR 48[rsp], xmm0
-	jmp	.L10096
-.L10073:
+	jmp	.L10108
+.L10085:
 	movsd	xmm1, QWORD PTR .LC121[rip]
 	mov	ebp, 20
-	jmp	.L10059
-.L10074:
+	jmp	.L10071
+.L10086:
 	movsd	xmm1, QWORD PTR .LC162[rip]
 	mov	ebp, 157
-	jmp	.L10059
-.L10075:
+	jmp	.L10071
+.L10087:
 	movsd	xmm1, QWORD PTR .LC150[rip]
 	mov	ebp, 145
-	jmp	.L10059
-.L10040:
+	jmp	.L10071
+.L10052:
 	mov	rdi, QWORD PTR 16[rbx]
 	movsd	xmm0, QWORD PTR .LC86[rip]
 	xor	esi, esi
@@ -57362,8 +57382,8 @@ INTERRUPTSERVICE:
 	call	fb_FilePutLarge@PLT
 	mov	r15, QWORD PTR 48[rsp]
 	sub	r15, 1
-	js	.L10042
-.L10041:
+	js	.L10054
+.L10053:
 	lea	rax, 2048[rbp]
 	pxor	xmm0, xmm0
 	mov	rdx, r12
@@ -57377,16 +57397,16 @@ INTERRUPTSERVICE:
 	mov	BYTE PTR 15[rsp], al
 	call	fb_FilePutLarge@PLT
 	cmp	r15, rbp
-	jge	.L10041
-.L10042:
+	jge	.L10053
+.L10054:
 	mov	edi, r14d
 	call	fb_FileClose@PLT
-	jmp	.L10047
-.L10076:
+	jmp	.L10059
+.L10088:
 	movsd	xmm1, QWORD PTR .LC130[rip]
 	mov	ebp, 29
-	jmp	.L10059
-.L10050:
+	jmp	.L10071
+.L10062:
 	lea	rdx, 48[rsp]
 	mov	ecx, 8
 	xor	esi, esi
@@ -57398,8 +57418,8 @@ INTERRUPTSERVICE:
 	call	fb_FileGetLarge@PLT
 	mov	r15, QWORD PTR 48[rsp]
 	sub	r15, 1
-	js	.L10052
-.L10051:
+	js	.L10064
+.L10063:
 	mov	ecx, 1
 	mov	rdx, r12
 	xor	esi, esi
@@ -57415,8 +57435,8 @@ INTERRUPTSERVICE:
 	cvtsi2sd	xmm1, eax
 	call	_ZN8MEMORY_T9WRITEBYTEEdd
 	cmp	r15, rbp
-	jge	.L10051
-.L10052:
+	jge	.L10063
+.L10064:
 	mov	edi, r14d
 	call	fb_FileClose@PLT
 	mov	rax, QWORD PTR 48[rsp]
@@ -57429,7 +57449,7 @@ INTERRUPTSERVICE:
 	call	_ZN8MEMORY_T11WRITEUSHORTEdd
 	mov	eax, -23254
 	mov	WORD PTR 12[rbx], ax
-	jmp	.L10047
+	jmp	.L10059
 	.size	INTERRUPTSERVICE, .-INTERRUPTSERVICE
 	.section	.text.startup,"ax",@progbits
 	.p2align 4
@@ -57459,7 +57479,7 @@ main:
 	mov	rbp, QWORD PTR fb_hPutOr@GOTPCREL[rip]
 	.p2align 4,,10
 	.p2align 3
-.L10111:
+.L10123:
 	pxor	xmm0, xmm0
 	mov	rdi, QWORD PTR 8[rsp]
 	cvtsi2sd	xmm0, r13
@@ -57468,11 +57488,11 @@ main:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, QWORD PTR FLAG$[rip]
 	comisd	xmm0, QWORD PTR .LC1[rip]
-	je	.L10114
+	je	.L10126
 	mov	rax, QWORD PTR .LC2096[rip]
 	movq	xmm0, rax
 	call	_ZN7CPU65104TICKEd
-.L10110:
+.L10122:
 	mov	rax, r13
 	pxor	xmm0, xmm0
 	pxor	xmm2, xmm2
@@ -57487,8 +57507,8 @@ main:
 	sub	rax, rdx
 	cvtsi2sd	xmm0, rax
 	comisd	xmm0, xmm2
-	jne	.L10111
-.L10107:
+	jne	.L10123
+.L10119:
 	mov	rdi, QWORD PTR 8[rsp]
 	call	INTERRUPTSERVICE
 	add	r13, rax
@@ -57528,14 +57548,14 @@ main:
 	mov	esi, -1
 	mov	edi, -1
 	call	fb_GfxUnlock@PLT
-	jmp	.L10111
+	jmp	.L10123
 	.p2align 4,,10
 	.p2align 3
-.L10114:
+.L10126:
 	pxor	xmm0, xmm0
 	cvtsi2sd	xmm0, r13
 	call	_ZN7CPU65104TICKEd
-	jmp	.L10110
+	jmp	.L10122
 	.size	main, .-main
 	.local	S$1.0
 	.comm	S$1.0,24,16
@@ -57544,19 +57564,19 @@ main:
 	.type	tmp$2535.1, @object
 	.size	tmp$2535.1, 104
 tmp$2535.1:
-	.quad	.L9981
-	.quad	.L9982
-	.quad	.L9983
-	.quad	.L9984
-	.quad	.L9985
-	.quad	.L9986
-	.quad	.L9987
-	.quad	.L9988
-	.quad	.L9989
-	.quad	.L9990
-	.quad	.L9991
-	.quad	.L9992
 	.quad	.L9993
+	.quad	.L9994
+	.quad	.L9995
+	.quad	.L9996
+	.quad	.L9997
+	.quad	.L9998
+	.quad	.L9999
+	.quad	.L10000
+	.quad	.L10001
+	.quad	.L10002
+	.quad	.L10003
+	.quad	.L10004
+	.quad	.L10005
 	.align 32
 	.type	tmp$2492.2, @object
 	.size	tmp$2492.2, 2048

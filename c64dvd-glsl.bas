@@ -917,8 +917,8 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
 '                  r0   
     pokeb v, mem64(49361d)
    case &H00000006D                   ' loop [start],[stop],[times]
-'                                              pc   
-    dim as uinteger tmp, times: old_pc = mem64(49418d)
+'                                                pc   
+    dim as uinteger tmp, times: mov(old_pc,mem64(49418d))
 '                       pc                                pc                                pc 
 	adr0 =  mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_ 
 	        mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
@@ -931,12 +931,11 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
 	times = mem64(mem64(49418d) + 11) shl 32 + mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_ 
 	        mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15)
 '                       pc                                 pc	        		       
-    do until tmp = times
-     for pc = adr0 to adr1
-      pokeb mem64(pc), 0
-                         
+    do until mov(tmp,times)
+     for in range(mov(pc ,adr0), adr1)
+      pokeb mem64(pc), 0                         
      next pc
-     tmp = (tmp + 1) mod times
+     mov(tmp,(tmp add 1) mod times)
     loop
    case &H00000006E
     cls
@@ -1780,7 +1779,9 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 	    shell "rm ./tmp; ./" add filename
 	    mov(scr_pos,0):mov(strCode,"")
 	    put (0,0),fgimage,pset
-	    sleep	    
+	    sleep
+	    line fgimage, (0,0)-(scr_w, scr_h), rgba(0,0,0,255),bf
+	    put (0,0),fgimage,pset	    
 	   case 027
 	    mov(mem64(49355d),0d):mov(mem64(49356d),0d) ' Clears x0 and y0
 	    line fgimage, (0,0)-(scr_w, scr_h), rgba(0,0,0,255),bf
@@ -1813,7 +1814,9 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
         next
 	    mov(scr_pos,0):mov(strCode,"")
 	    put (0,0),fgimage,pset
-	    sleep   	          	      	         	      	     
+	    sleep
+	    line fgimage, (0,0)-(scr_w, scr_h), rgba(0,0,0,255),bf
+	    put (0,0),fgimage,pset   	          	      	         	      	     
 	 end select
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
     case 49315d 'Load and compile tmp.glsl

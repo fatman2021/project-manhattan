@@ -24380,6 +24380,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
      fb_GfxPut( (void*)0ull, 0x0p+0f, 0x0p+0f, (void*)FGIMAGE$, -65536, -65536, -65536, -65536, 0, 1, (void*)&fb_hPutPSet, -1, (void*)0ull, (void*)0ull );
      fb_Sleep( -1 );
+     fb_GfxLine( FGIMAGE$, 0x0p+0f, 0x0p+0f, (float)SCR_W$, (float)SCR_H$, 4278190080u, 2, 65535u, 0 );
+     fb_GfxPut( (void*)0ull, 0x0p+0f, 0x0p+0f, (void*)FGIMAGE$, -65536, -65536, -65536, -65536, 0, 1, (void*)&fb_hPutPSet, -1, (void*)0ull, (void*)0ull );
     }
     goto label$4975;
     label$5028:;
@@ -24395,21 +24397,21 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      *(double*)((uint8*)THIS$1 + 394904ll) = 0x0p+0;
      *(double*)((uint8*)THIS$1 + 394912ll) = 0x0p+0;
      label$5046:;
-     int32 vr$4165 = fb_FileEof( 1 );
-     if( (int64)vr$4165 != 0ll ) goto label$5047;
+     int32 vr$4167 = fb_FileEof( 1 );
+     if( (int64)vr$4167 != 0ll ) goto label$5047;
      {
       fb_FileLineInput( 1, (void*)&STRCODE$, -1ll, 0 );
       {
        INDEX$ = (uint16)1u;
        uint16 TMP$2451$7;
-       int64 vr$4167 = fb_StrLen( (void*)&STRCODE$, -1ll );
-       TMP$2451$7 = (uint16)vr$4167;
+       int64 vr$4169 = fb_StrLen( (void*)&STRCODE$, -1ll );
+       TMP$2451$7 = (uint16)vr$4169;
        goto label$5048;
        label$5051:;
        {
-        FBSTRING* vr$4170 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
-        uint32 vr$4171 = fb_ASC( (FBSTRING*)vr$4170, 1ll );
-        *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$4171;
+        FBSTRING* vr$4172 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
+        uint32 vr$4173 = fb_ASC( (FBSTRING*)vr$4172, 1ll );
+        *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$4173;
         if( ((int64)-(*(double*)((uint8*)THIS$1 + 394888ll) > 0x1.Fp+4) & (int64)-(*(double*)((uint8*)THIS$1 + 394888ll) < 0x1.p+6)) == 0ll ) goto label$5053;
         {
          *(double*)((uint8*)THIS$1 + 394888ll) = *(double*)((uint8*)THIS$1 + 394888ll) + 0x1.p+5;
@@ -24434,14 +24436,14 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      {
       INDEX$ = (uint16)1u;
       uint16 TMP$2452$6;
-      int64 vr$4198 = fb_StrLen( (void*)&STRCODE$, -1ll );
-      TMP$2452$6 = (uint16)vr$4198;
+      int64 vr$4200 = fb_StrLen( (void*)&STRCODE$, -1ll );
+      TMP$2452$6 = (uint16)vr$4200;
       goto label$5054;
       label$5057:;
       {
-       FBSTRING* vr$4201 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
-       uint32 vr$4202 = fb_ASC( (FBSTRING*)vr$4201, 1ll );
-       *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$4202;
+       FBSTRING* vr$4203 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
+       uint32 vr$4204 = fb_ASC( (FBSTRING*)vr$4203, 1ll );
+       *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$4204;
        if( ((int64)-(*(double*)((uint8*)THIS$1 + 394888ll) > 0x1.Fp+4) & (int64)-(*(double*)((uint8*)THIS$1 + 394888ll) < 0x1.p+6)) == 0ll ) goto label$5059;
        {
         *(double*)((uint8*)THIS$1 + 394888ll) = *(double*)((uint8*)THIS$1 + 394888ll) + 0x1.p+5;
@@ -24459,6 +24461,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
      fb_GfxPut( (void*)0ull, 0x0p+0f, 0x0p+0f, (void*)FGIMAGE$, -65536, -65536, -65536, -65536, 0, 1, (void*)&fb_hPutPSet, -1, (void*)0ull, (void*)0ull );
      fb_Sleep( -1 );
+     fb_GfxLine( FGIMAGE$, 0x0p+0f, 0x0p+0f, (float)SCR_W$, (float)SCR_H$, 4278190080u, 2, 65535u, 0 );
+     fb_GfxPut( (void*)0ull, 0x0p+0f, 0x0p+0f, (void*)FGIMAGE$, -65536, -65536, -65536, -65536, 0, 1, (void*)&fb_hPutPSet, -1, (void*)0ull, (void*)0ull );
     }
     label$5044:;
     label$4975:;
@@ -24491,8 +24495,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    __builtin_memset( &RES$3, 0, 8ll );
    TMP$2455$3 = 0ll;
    TMP$2454$3 = 0ll;
-   int32 vr$4237 = fb_GetMouse64( (int64*)&X$3, (int64*)&Y$3, &TMP$2454$3, (int64*)&BUTTONS$3, &TMP$2455$3 );
-   *(double*)((uint8*)THIS$1 + 394576ll) = (double)vr$4237;
+   int32 vr$4241 = fb_GetMouse64( (int64*)&X$3, (int64*)&Y$3, &TMP$2454$3, (int64*)&BUTTONS$3, &TMP$2455$3 );
+   *(double*)((uint8*)THIS$1 + 394576ll) = (double)vr$4241;
    *(double*)((uint8*)THIS$1 + 394840ll) = (double)X$3;
    *(double*)((uint8*)THIS$1 + 394848ll) = (double)Y$3;
    *(double*)((uint8*)THIS$1 + 394856ll) = (double)WHEEL$3;
@@ -24541,18 +24545,18 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
     if( C$4 <= 8191ll ) goto label$5077;
     label$5076:;
    }
-   FBSTRING* vr$4260 = fb_DoubleToStr( V$1 );
+   FBSTRING* vr$4264 = fb_DoubleToStr( V$1 );
    __builtin_memset( &TMP$2458$3, 0, 24ll );
-   FBSTRING* vr$4263 = fb_StrConcat( &TMP$2458$3, (void*)"./chargen/", 11ll, (void*)vr$4260, -1ll );
+   FBSTRING* vr$4267 = fb_StrConcat( &TMP$2458$3, (void*)"./chargen/", 11ll, (void*)vr$4264, -1ll );
    __builtin_memset( &TMP$2459$3, 0, 24ll );
-   FBSTRING* vr$4266 = fb_StrConcat( &TMP$2459$3, (void*)vr$4263, -1ll, (void*)".c64", 5ll );
-   fb_FileOpen( (FBSTRING*)vr$4266, 0u, 0u, 0u, 1, 0 );
+   FBSTRING* vr$4270 = fb_StrConcat( &TMP$2459$3, (void*)vr$4267, -1ll, (void*)".c64", 5ll );
+   fb_FileOpen( (FBSTRING*)vr$4270, 0u, 0u, 0u, 1, 0 );
    {
     int64 I$4;
     I$4 = 0ll;
     int64 TMP$2460$4;
-    int64 vr$4267 = fb_FileSize( 1 );
-    TMP$2460$4 = vr$4267;
+    int64 vr$4271 = fb_FileSize( 1 );
+    TMP$2460$4 = vr$4271;
     goto label$5078;
     label$5081:;
     {
@@ -24615,10 +24619,10 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    }
    if( ADR$1 != (SYS_OFFSET$ + 0x1.D8p+7) ) goto label$5096;
    {
-    double vr$4302 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.8192p+15 );
-    _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)EXTCOL$, vr$4302 );
-    double vr$4304 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.8192p+15 );
-    _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)BGCOL0$, vr$4304 );
+    double vr$4306 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.8192p+15 );
+    _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)EXTCOL$, vr$4306 );
+    double vr$4308 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.8192p+15 );
+    _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)BGCOL0$, vr$4308 );
    }
    label$5096:;
    label$5095:;
@@ -24692,8 +24696,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
    fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
    fb_Cls( -65536 );
-   FBSTRING* vr$4354 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4354, 0, 1073741828 );
+   FBSTRING* vr$4358 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4358, 0, 1073741828 );
    {
     OFFSET$ = 0x0p+0;
     label$5118:;
@@ -24715,13 +24719,13 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    FBSTRING TMP$2462$3;
    fb_GfxScreen( 0, 8, 0, 0, 0 );
    __builtin_memset( &TMP$2462$3, 0, 24ll );
-   FBSTRING* vr$4360 = fb_StrConcat( &TMP$2462$3, (void*)"wine ", 6ll, (void*)&STRCODE$, -1ll );
-   fb_Shell( (FBSTRING*)vr$4360 );
+   FBSTRING* vr$4364 = fb_StrConcat( &TMP$2462$3, (void*)"wine ", 6ll, (void*)&STRCODE$, -1ll );
+   fb_Shell( (FBSTRING*)vr$4364 );
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
    fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
    fb_Cls( -65536 );
-   FBSTRING* vr$4361 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4361, 0, 1073741828 );
+   FBSTRING* vr$4365 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4365, 0, 1073741828 );
    {
     OFFSET$ = 0x0p+0;
     label$5124:;
@@ -24744,15 +24748,15 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    FBSTRING TMP$2466$3;
    fb_GfxScreen( 0, 8, 0, 0, 0 );
    __builtin_memset( &TMP$2465$3, 0, 24ll );
-   FBSTRING* vr$4367 = fb_StrConcat( &TMP$2465$3, (void*)"dosbox ", 8ll, (void*)&STRCODE$, -1ll );
+   FBSTRING* vr$4371 = fb_StrConcat( &TMP$2465$3, (void*)"dosbox ", 8ll, (void*)&STRCODE$, -1ll );
    __builtin_memset( &TMP$2466$3, 0, 24ll );
-   FBSTRING* vr$4370 = fb_StrConcat( &TMP$2466$3, (void*)vr$4367, -1ll, (void*)" -fullscreen -exit", 19ll );
-   fb_Shell( (FBSTRING*)vr$4370 );
+   FBSTRING* vr$4374 = fb_StrConcat( &TMP$2466$3, (void*)vr$4371, -1ll, (void*)" -fullscreen -exit", 19ll );
+   fb_Shell( (FBSTRING*)vr$4374 );
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
    fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
    fb_Cls( -65536 );
-   FBSTRING* vr$4371 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4371, 0, 1073741828 );
+   FBSTRING* vr$4375 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4375, 0, 1073741828 );
   }
   goto label$1830;
   label$5125:;
@@ -24761,8 +24765,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
   {
    FBSTRING TMP$2468$3;
    __builtin_memset( &TMP$2468$3, 0, 24ll );
-   FBSTRING* vr$4374 = fb_StrConcat( &TMP$2468$3, (void*)&STRCODE$, -1ll, (void*)".asm", 5ll );
-   fb_FileOpen( (FBSTRING*)vr$4374, 3u, 0u, 0u, 1, 0 );
+   FBSTRING* vr$4378 = fb_StrConcat( &TMP$2468$3, (void*)&STRCODE$, -1ll, (void*)".asm", 5ll );
+   fb_FileOpen( (FBSTRING*)vr$4378, 3u, 0u, 0u, 1, 0 );
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
   }
   goto label$1830;
@@ -24791,14 +24795,14 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    FBSTRING TMP$2474$3;
    FBSTRING TMP$2475$3;
    __builtin_memset( &TMP$2472$3, 0, 24ll );
-   FBSTRING* vr$4377 = fb_StrConcat( &TMP$2472$3, (void*)"nasm ", 6ll, (void*)&STRCODE$, -1ll );
+   FBSTRING* vr$4381 = fb_StrConcat( &TMP$2472$3, (void*)"nasm ", 6ll, (void*)&STRCODE$, -1ll );
    __builtin_memset( &TMP$2473$3, 0, 24ll );
-   FBSTRING* vr$4380 = fb_StrConcat( &TMP$2473$3, (void*)vr$4377, -1ll, (void*)".asm -f bin -o", 15ll );
+   FBSTRING* vr$4384 = fb_StrConcat( &TMP$2473$3, (void*)vr$4381, -1ll, (void*)".asm -f bin -o", 15ll );
    __builtin_memset( &TMP$2474$3, 0, 24ll );
-   FBSTRING* vr$4383 = fb_StrConcat( &TMP$2474$3, (void*)vr$4380, -1ll, (void*)&STRCODE$, -1ll );
+   FBSTRING* vr$4387 = fb_StrConcat( &TMP$2474$3, (void*)vr$4384, -1ll, (void*)&STRCODE$, -1ll );
    __builtin_memset( &TMP$2475$3, 0, 24ll );
-   FBSTRING* vr$4386 = fb_StrConcat( &TMP$2475$3, (void*)vr$4383, -1ll, (void*)".bin", 5ll );
-   fb_Shell( (FBSTRING*)vr$4386 );
+   FBSTRING* vr$4390 = fb_StrConcat( &TMP$2475$3, (void*)vr$4387, -1ll, (void*)".bin", 5ll );
+   fb_Shell( (FBSTRING*)vr$4390 );
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
   }
   goto label$1830;
@@ -24812,20 +24816,20 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    FBSTRING TMP$2482$3;
    fb_GfxScreen( 0, 8, 0, 0, 0 );
    __builtin_memset( &TMP$2478$3, 0, 24ll );
-   FBSTRING* vr$4389 = fb_StrConcat( &TMP$2478$3, (void*)"dosbox -c 'boot ", 17ll, (void*)&STRCODE$, -1ll );
+   FBSTRING* vr$4393 = fb_StrConcat( &TMP$2478$3, (void*)"dosbox -c 'boot ", 17ll, (void*)&STRCODE$, -1ll );
    __builtin_memset( &TMP$2479$3, 0, 24ll );
-   FBSTRING* vr$4392 = fb_StrConcat( &TMP$2479$3, (void*)vr$4389, -1ll, (void*)"'", 2ll );
+   FBSTRING* vr$4396 = fb_StrConcat( &TMP$2479$3, (void*)vr$4393, -1ll, (void*)"'", 2ll );
    __builtin_memset( &TMP$2480$3, 0, 24ll );
-   FBSTRING* vr$4395 = fb_StrConcat( &TMP$2480$3, (void*)vr$4392, -1ll, (void*)" -exit", 7ll );
-   fb_Shell( (FBSTRING*)vr$4395 );
+   FBSTRING* vr$4399 = fb_StrConcat( &TMP$2480$3, (void*)vr$4396, -1ll, (void*)" -exit", 7ll );
+   fb_Shell( (FBSTRING*)vr$4399 );
    __builtin_memset( &TMP$2482$3, 0, 24ll );
-   FBSTRING* vr$4398 = fb_StrConcat( &TMP$2482$3, (void*)"rm ", 4ll, (void*)&STRCODE$, -1ll );
-   fb_Shell( (FBSTRING*)vr$4398 );
+   FBSTRING* vr$4402 = fb_StrConcat( &TMP$2482$3, (void*)"rm ", 4ll, (void*)&STRCODE$, -1ll );
+   fb_Shell( (FBSTRING*)vr$4402 );
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
    fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
    fb_Cls( -65536 );
-   FBSTRING* vr$4399 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4399, 0, 1073741828 );
+   FBSTRING* vr$4403 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4403, 0, 1073741828 );
    {
     OFFSET$ = 0x0p+0;
     label$5140:;
@@ -24859,9 +24863,9 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
   if( ADR$1 != 0x1.81F4p+15 ) goto label$5145;
   label$5146:;
   {
-   FBSTRING* vr$4407 = fb_CHR( 1, ((int64)__builtin_nearbyint( V$1 )) );
-   FBSTRING* vr$4408 = fb_StrLcase2( (FBSTRING*)vr$4407, 0 );
-   FBSTRING* vr$4409 = fb_StrConcatAssign( (void*)&STRCODE$, -1ll, (void*)vr$4408, -1ll, 0 );
+   FBSTRING* vr$4411 = fb_CHR( 1, ((int64)__builtin_nearbyint( V$1 )) );
+   FBSTRING* vr$4412 = fb_StrLcase2( (FBSTRING*)vr$4411, 0 );
+   FBSTRING* vr$4413 = fb_StrConcatAssign( (void*)&STRCODE$, -1ll, (void*)vr$4412, -1ll, 0 );
   }
   goto label$1830;
   label$5145:;
@@ -24918,9 +24922,9 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
   if( ADR$1 != 0x1.81FCp+15 ) goto label$5159;
   label$5160:;
   {
-   FBSTRING* vr$4427 = fb_CHR( 1, ((int64)__builtin_nearbyint( V$1 )) );
-   FBSTRING* vr$4428 = fb_StrLcase2( (FBSTRING*)vr$4427, 0 );
-   FBSTRING* vr$4429 = fb_StrConcatAssign( (void*)&FILENAME$, -1ll, (void*)vr$4428, -1ll, 0 );
+   FBSTRING* vr$4431 = fb_CHR( 1, ((int64)__builtin_nearbyint( V$1 )) );
+   FBSTRING* vr$4432 = fb_StrLcase2( (FBSTRING*)vr$4431, 0 );
+   FBSTRING* vr$4433 = fb_StrConcatAssign( (void*)&FILENAME$, -1ll, (void*)vr$4432, -1ll, 0 );
   }
   goto label$1830;
   label$5159:;
@@ -25037,8 +25041,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
     if( V$1 != 0x1.8p+2 ) goto label$5189;
     label$5190:;
     {
-     FBSTRING* vr$4667 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-     fb_GfxPaint( FGIMAGE$, (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394936ll) + *(double*)((uint8*)THIS$1 + 394952ll) )) >> (1ll & 63ll)), (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394944ll) + *(double*)((uint8*)THIS$1 + 394960ll) )) >> (1ll & 63ll)), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 0u, (FBSTRING*)vr$4667, 0, 1073741828 );
+     FBSTRING* vr$4671 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+     fb_GfxPaint( FGIMAGE$, (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394936ll) + *(double*)((uint8*)THIS$1 + 394952ll) )) >> (1ll & 63ll)), (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394944ll) + *(double*)((uint8*)THIS$1 + 394960ll) )) >> (1ll & 63ll)), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 0u, (FBSTRING*)vr$4671, 0, 1073741828 );
     }
     label$5189:;
     label$5176:;
@@ -25346,8 +25350,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
         *(double*)((uint8*)THIS$1 + 394848ll) = ((YS$ + Y$) * 0x1.p+2) + *(double*)((uint8*)THIS$1 + 395040ll);
         *(double*)((uint8*)THIS$1 + 394864ll) = (((XS$ + X$) * 0x1.4p+2) + *(double*)((uint8*)THIS$1 + 395032ll)) + 0x1.Cp+2;
         *(double*)((uint8*)THIS$1 + 394872ll) = (((YS$ + Y$) * 0x1.p+2) + *(double*)((uint8*)THIS$1 + 395040ll)) + 0x1.p+2;
-        double vr$5040 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
-        _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$5040 );
+        double vr$5044 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
+        _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$5044 );
        }
        label$5274:;
        X$ = X$ + 0x1.p+0;
@@ -25391,8 +25395,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
         *(double*)((uint8*)THIS$1 + 394872ll) = (((YS$ - Y$) * 0x1.p+2) + *(double*)((uint8*)THIS$1 + 395040ll)) + 0x1.p+1;
         *(double*)((uint8*)THIS$1 + 394840ll) = (((XS$ - X$) * 0x1.4p+2) + *(double*)((uint8*)THIS$1 + 395032ll)) + -0x1.p+1;
         *(double*)((uint8*)THIS$1 + 394848ll) = (((YS$ - Y$) * 0x1.p+2) + *(double*)((uint8*)THIS$1 + 395040ll)) + -0x1.p+1;
-        double vr$5085 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
-        _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$5085 );
+        double vr$5089 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
+        _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$5089 );
        }
        label$5283:;
        X$ = X$ + 0x1.p+0;
@@ -25438,8 +25442,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
         *(double*)((uint8*)THIS$1 + 394848ll) = (((YS$ + Y$) * 0x1.p+2) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395040ll);
         *(double*)((uint8*)THIS$1 + 394864ll) = ((((XS$ + X$) * 0x1.4p+2) + 0x1.Cp+2) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395032ll);
         *(double*)((uint8*)THIS$1 + 394872ll) = ((((YS$ + Y$) * 0x1.p+2) + 0x1.p+2) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395040ll);
-        double vr$5135 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
-        _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$5135 );
+        double vr$5139 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
+        _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$5139 );
        }
        label$5292:;
        X$ = X$ + 0x1.p+0;
@@ -25483,8 +25487,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
         *(double*)((uint8*)THIS$1 + 394872ll) = ((((YS$ - Y$) * 0x1.p+2) + 0x1.p+1) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395040ll);
         *(double*)((uint8*)THIS$1 + 394840ll) = ((((XS$ - X$) * 0x1.4p+2) + -0x1.p+1) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395032ll);
         *(double*)((uint8*)THIS$1 + 394848ll) = ((((YS$ - Y$) * 0x1.p+2) + -0x1.p+1) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395040ll);
-        double vr$5187 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
-        _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$5187 );
+        double vr$5191 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
+        _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$5191 );
        }
        label$5301:;
        X$ = X$ + 0x1.p+0;
