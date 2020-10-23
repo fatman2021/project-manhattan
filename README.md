@@ -39,13 +39,13 @@ Next generation APU emulator for gaming and business applications.
 
 CPU - 4Ghz, 64-Bit, MOS 6510/VICE compatible, can address up to 1.797693134862316e+308 bytes of system memory.
 
-NOTE: System memory addresses can have any positive values in the range 4.940656458412465e-324 to 1.797693134862316e+308, 
+NOTE: System memory addresses can have any positive value in the range 4.940656458412465e-324 to 1.797693134862316e+308, 
 or any negative values in the range -4.940656458412465e-324 to -1.797693134862316e+308, or zero (0). They contain at 
 most be 53 bits of precision, or about 15 decimal digits.
 
 GPU - 17GHz, 512-Bit, can address up to 1.797693134862316e+308x8 bytes of video memory. 
 
-NOTE: Video memory addresses can have any positive values in the range 4.940656458412465e-324x8 to 
+NOTE: Video memory addresses can have any positive value in the range 4.940656458412465e-324x8 to 
 1.797693134862316e+308x8, or any negative values in the range -4.940656458412465e-324x8 to -1.797693134862316e+308x8,
 or zero (0). They contain at most be 53 bits of precision, or about 15 decimal digits.
 
