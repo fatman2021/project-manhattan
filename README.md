@@ -37,11 +37,21 @@ Project Manhattan       Copyright © 2019-present The Project Manhattan Team
 # project-manhattan
 Next generation APU emulator for gaming and business applications.
 
-CPU - 4Ghz, 64-Bit, MOS 6510/VICE compatible, can address up to 1.797693134862316e+308 bytes of system memory
+CPU - 4Ghz, 64-Bit, MOS 6510/VICE compatible, can address up to 1.797693134862316e+308 bytes of system memory.
 
-GPU - 17GHz, 512-Bit, can address up to 1.797693134862316e+308x8 bytes of video memory
+NOTE: System memory addresses can have any positive values in the range 4.940656458412465e-324 to 1.797693134862316e+308, 
+or any negative values in the range -4.940656458412465e-324 to -1.797693134862316e+308, or zero (0). They contain at 
+most be 53 bits of precision, or about 15 decimal digits.
 
-FUN FACT #1: AMD's 3Ghz Epyc Rome CPU has 39,540,000,000 transistors vs. the MOS 6502 with it's 4,528 transistors. It is therefore possible to create a 64-bit MOS 6510 compatible CPU(about 36,224 transistors) with a clock speed of 4Ghz using current CPU manufacturing technology.
+GPU - 17GHz, 512-Bit, can address up to 1.797693134862316e+308x8 bytes of video memory. 
+
+NOTE: Video memory addresses can have any positive values in the range 4.940656458412465e-324x8 to 
+1.797693134862316e+308x8, or any negative values in the range -4.940656458412465e-324x8 to -1.797693134862316e+308x8,
+or zero (0). They contain at most be 53 bits of precision, or about 15 decimal digits.
+
+FUN FACT #1: AMD's 3Ghz Epyc Rome CPU has 39,540,000,000 transistors vs. the MOS 6502 with it's 4,528 transistors. 
+It is therefore possible to create a 64-bit MOS 6510 compatible CPU(about 36,224 transistors) with a clock speed of
+4Ghz using current CPU manufacturing technology.
 
 FUN FACT #2: The universities have already produced multicore 8-bit CPUs that run at 150GHz or more in the lab.
 
@@ -71,7 +81,9 @@ $C008     - Sets blue channel for background color
 
 $C009     - Sets alpha channel for background color
 
-NOTE: Color channels can hold values in the range -4.940656458412465e-324 to 4.940656458412465e-324. They contain at most 53 bits of precision, or about 15 decimal digits.
+NOTE: Color channels can hold positive values in the range 4.940656458412465e-324 to 1.797693134862316e+308, 
+or negative values in the range -4.940656458412465e-324 to -1.797693134862316e+308, or zero (0). They contain
+at most be 53 bits of precision, or about 15 decimal digits.
 
 $C00A     - Copies $C00B through $C00F to $C0CB
 
