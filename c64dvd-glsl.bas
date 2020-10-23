@@ -471,9 +471,9 @@ constructor MEMORY_T
   'for a as integer = 0 to 255: poke64(1024+a,a): next a
   'locate 50,1: print "./chargen/"+str(b)+".c64"
   'sleep : next b: end
-  'Sets top of memory    
+  'Sets top of system memory  
   poke64(0d,1.797693134862316e+308):poke64(1d,1.797693134862316e+308)
-  'Sets reset vector to top of memory
+  'Sets reset vector to top of system memory
   poke64(&HFFFC,1.797693134862316e+308):poke64(&HFFFD,1.797693134862316e+308)
   paint(0d,0d), rgba(0d, 0d, 0d, 255d)
   'SYS calls
@@ -687,78 +687,78 @@ end proc
 def MEMORY_T.pokeb(byval adr  as double, byval v as double)
   mem64(adr)=v
   select case adr
-'                              r0                               r0 
-   case &H000000001: mov(mem64(49361d),v)          ' move mem64(49361d), v
-'                          r1                                   r1
-   case &H000000002: mem64(49362d) = v             ' move mem64(49362d), v
-'                          r2                                   r2     
-   case &H000000003: mem64(49363d) = v             ' move mem64(49363d), v
-'                          r0              r1                   r0             r1    
-   case &H000000004: mem64(49361d) = mem64(49362d) ' move mem64(49361d), mem64(49362d)
-'                          r0              r2                   r0             r2    
-   case &H000000005: mem64(49361d) = mem64(49363d) ' move mem64(49361d), mem64(49363d)
-'                          r1              r0                   r1             r0   
-   case &H000000006: mem64(49362d) = mem64(49361d) ' move mem64(49362d), mem64(49361d)
-'                          r1              r2    
-   case &H000000007: mem64(49362d) = mem64(49363d) ' move mem64(49362d), mem64(49363d)
-'                          r2              r0                   r2             r0   
-   case &H000000008: mem64(49363d) = mem64(49361d) ' move mem64(49363d), mem64(49361d)
-'                          r2              r1                   r2             r1   
-   case &H000000009: mem64(49363d) = mem64(49362d) ' move mem64(49363d), mem64(49362d)
-'                          pc              r0                   pc             r0   
-   case &H00000000A: mem64(49418d) = mem64(49361d) ' move mem64(49418d), mem64(49361d)
-'                          pc              r1                   pc             r1   
-   case &H00000000B: mem64(49418d) = mem64(49362d) ' move mem64(49418d), mem64(49362d)
-'                          pc              r2                   pc             r2   
-   case &H00000000C: mem64(49418d) = mem64(49363d) ' move mem64(49418d), mem64(49363d)
-'                                 r0                                r0 
-   case &H00000000D: adr0 = mem64(49361d)        ' move adr0, mem64(49361d)
-'                                 r1                                r1   
-   case &H00000000E: adr0 = mem64(49362d)        ' move adr0, mem64(49362d)
-'                                 r2                                r2   
-   case &H00000000F: adr0 = mem64(49363d)        ' move adr0, mem64(49363d)
-'                                 r0                                r0   
-   case &H000000010: adr1 = mem64(49361d)        ' move adr1, mem64(49361d)
-'                                 r1                                r1    
-   case &H000000011: adr1 = mem64(49362d)        ' move adr1, mem64(49362d)
-'                                 r2                                r2   
-   case &H000000012: adr1 = mem64(49363d)        ' move adr1, mem64(49363d)
-'                                 r0                                r0     
-   case &H000000013: adr3 = mem64(49361d)        ' move adr3, mem64(49361d)
-'                                 r1                                r1   
-   case &H000000014: adr3 = mem64(49362d)        ' move adr3, mem64(49362d)
-'                                 r2                                r2  
-   case &H000000015: adr3 = mem64(49363d)        ' move adr3, mem64(49363d)
-'                          red             r0                   red            r0   
-   case &H000000016: mem64(49154d) = mem64(49361d) ' move mem64(49154d), mem64(49361d)
-'                          red             r0                   red            r0   
-   case &H000000017: mem64(49154d) = mem64(49361d) ' move mem64(49154d), mem64(49361d)
-'                          red             r0                   red            r0   
-   case &H000000018: mem64(49154d) = mem64(49361d) ' move mem64(49154d), mem64(49361d)
-'                          green           r0                   green          r0    
-   case &H000000019: mem64(49155d) = mem64(49361d) ' move mem64(49155d), mem64(49361d)
-'                          green           r0                   green          r0   
-   case &H00000001A: mem64(49155d) = mem64(49361d) ' move mem64(49155d), mem64(49361d)
-'                          green           r0                   green          r0   
-   case &H00000001B: mem64(49155d) = mem64(49361d) ' move mem64(49155d), mem64(49361d)
-'                          blue            r0                   blue           r0    
-   case &H00000001C: mem64(49156d) = mem64(49361d) ' move mem64(49156d), mem64(49361d)
-'                          blue            r0                   blue           r0   
-   case &H00000001D: mem64(49156d) = mem64(49361d) ' move mem64(49156d), mem64(49361d)
-'                          blue            r0                   blue           r0   
-   case &H00000001E: mem64(49156d) = mem64(49361d) ' move mem64(49156d), mem64(49361d)
-'                          alpha           r0                   alpha          r0   
-   case &H00000001F: mem64(49157d) = mem64(49361d) ' move mem64(49157d), mem64(49361d)
-'                          alpha           r0                   alpha          r0
-   case &H000000020: mem64(49157d) = mem64(49361d) ' move mem64(49157d), mem64(49361d)
-'                          alpha           r0                   alpha          r0   
-   case &H000000021: mem64(49157d) = mem64(49361d) ' move mem64(49157d), mem64(49361d)
-'                          x0              r0                   x0             r0      
-   case &H000000022: mem64(49355d) = mem64(49361d) ' move mem64(49355d), mem64(49361d)
-'                          x1              r0                   x1             r0   
-   case &H000000023: mem64(49358d) = mem64(49361d) ' move mem64(49358d), mem64(49361d)
-'                          y0              r0                   y0             r0   
-   case &H000000024: mem64(49356d) = mem64(49361d) ' move mem64(49356d), mem64(49361d)
+'                              r0                                  r0 
+   case &H000000001: mov(mem64(49361d),v)             ' move mem64(49361d), v
+'                              r1                                  r1
+   case &H000000002: mov(mem64(49362d),v)             ' move mem64(49362d), v
+'                              r2                                  r2     
+   case &H000000003: mov(mem64(49363d),v)             ' move mem64(49363d), v
+'                              r0            r1                    r0             r1    
+   case &H000000004: mov(mem64(49361d),mem64(49362d)) ' move mem64(49361d), mem64(49362d)
+'                              r0            r2                    r0             r2    
+   case &H000000005: mov(mem64(49361d),mem64(49363d)) ' move mem64(49361d), mem64(49363d)
+'                              r1            r0                    r1             r0   
+   case &H000000006: mov(mem64(49362d),mem64(49361d)) ' move mem64(49362d), mem64(49361d)
+'                              r1            r2                    r1             r0  
+   case &H000000007: mov(mem64(49362d),mem64(49363d)) ' move mem64(49362d), mem64(49363d)
+'                              r2            r0                    r2             r0   
+   case &H000000008: mov(mem64(49363d),mem64(49361d)) ' move mem64(49363d), mem64(49361d)
+'                              r2            r1                    r2             r1   
+   case &H000000009: mov(mem64(49363d),mem64(49362d)) ' move mem64(49363d), mem64(49362d)
+'                              pc            r0                    pc             r0   
+   case &H00000000A: mov(mem64(49418d),mem64(49361d)) ' move mem64(49418d), mem64(49361d)
+'                              pc            r1                    pc             r1   
+   case &H00000000B: mov(mem64(49418d),mem64(49362d)) ' move mem64(49418d), mem64(49362d)
+'                              pc            r2                    pc             r2   
+   case &H00000000C: mov(mem64(49418d),mem64(49363d)) ' move mem64(49418d), mem64(49363d)
+'                              adr0          r0                    adr0           r0 
+   case &H00000000D: mov(mem64(49425d),mem64(49361d)) ' move mem64(49425d), mem64(49361d)
+'                              adr0          r1                    adr0           r1   
+   case &H00000000E: mov(mem64(49425d),mem64(49362d)) ' move mem64(49425d), mem64(49362d)
+'                              adr0          r2                    adr0           r2   
+   case &H00000000F: mov(mem64(49425d),mem64(49363d)) ' move mem64(49425d), mem64(49363d)
+'                              adr1          r0                    adr1           r0   
+   case &H000000010: mov(mem64(49432d),mem64(49361d)) ' move mem64(49432d), mem64(49361d)
+'                              adr1          r1                    adr1           r1    
+   case &H000000011: mov(mem64(49432d),mem64(49362d)) ' move mem64(49432d), mem64(49362d)
+'                              adr1          r2                    adr1           r2   
+   case &H000000012: mov(mem64(49432d),mem64(49363d)) ' move mem64(49432d), mem64(49363d)
+'                              adr3          r0                    adr3           r0     
+   case &H000000013: mov(mem64(49446d),mem64(49361d)) ' move mem64(49446d), mem64(49361d)
+'                              adr3          r1                    adr3           r1   
+   case &H000000014: mov(mem64(49446d),mem64(49362d)) ' move mem64(49446d), mem64(49362d)
+'                              adr3            r2                  adr3           r2  
+   case &H000000015: mov(mem64(49446d),mem64(49363d)) ' move mem64(49446d), mem64(49363d)
+'                              red             r0                  red            r0   
+   case &H000000016: mov(mem64(49154d),mem64(49361d)) ' move mem64(49154d), mem64(49361d)
+'                              red           r0                    red            r0   
+   case &H000000017: mov(mem64(49154d),mem64(49361d)) ' move mem64(49154d), mem64(49361d)
+'                              red           r0                    red            r0   
+   case &H000000018: mov(mem64(49154d),mem64(49361d)) ' move mem64(49154d), mem64(49361d)
+'                              green         r0                    green          r0    
+   case &H000000019: mov(mem64(49155d),mem64(49361d)) ' move mem64(49155d), mem64(49361d)
+'                              green         r0                    green          r0   
+   case &H00000001A: mov(mem64(49155d),mem64(49361d)) ' move mem64(49155d), mem64(49361d)
+'                              green         r0                    green          r0   
+   case &H00000001B: mov(mem64(49155d),mem64(49361d)) ' move mem64(49155d), mem64(49361d)
+'                              blue          r0                    blue           r0    
+   case &H00000001C: mov(mem64(49156d),mem64(49361d)) ' move mem64(49156d), mem64(49361d)
+'                              blue          r0                    blue           r0   
+   case &H00000001D: mov(mem64(49156d),mem64(49361d)) ' move mem64(49156d), mem64(49361d)
+'                              blue          r0                    blue           r0   
+   case &H00000001E: mov(mem64(49156d),mem64(49361d)) ' move mem64(49156d), mem64(49361d)
+'                              alpha         r0                    alpha          r0   
+   case &H00000001F: mov(mem64(49157d),mem64(49361d)) ' move mem64(49157d), mem64(49361d)
+'                              alpha         r0                    alpha          r0
+   case &H000000020: mov(mem64(49157d),mem64(49361d)) ' move mem64(49157d), mem64(49361d)
+'                              alpha         r0                    alpha          r0   
+   case &H000000021: mov(mem64(49157d),mem64(49361d)) ' move mem64(49157d), mem64(49361d)
+'                              x0            r0                    x0             r0      
+   case &H000000022: mov(mem64(49355d),mem64(49361d)) ' move mem64(49355d), mem64(49361d)
+'                              x1            r0                    x1             r0   
+   case &H000000023: mov(mem64(49358d),mem64(49361d)) ' move mem64(49358d), mem64(49361d)
+'                              y0            r0                    y0             r0   
+   case &H000000024: mov(mem64(49356d),mem64(49361d)) ' move mem64(49356d), mem64(49361d)
 '                          y1              r0                   y1             r0   
    case &H000000025: mem64(49359d) = mem64(49361d) ' move mem64(49359d), mem64(49361d)
 '                          z0              r0                   z0             r0   
@@ -919,14 +919,15 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
    case &H00000006D                   ' loop [start],[stop],[times]
 '                                                pc   
     dim as uinteger tmp, times: mov(old_pc,mem64(49418d))
-'                       pc                                pc                                pc 
-	adr0 =  mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_ 
-	        mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                       pc                                pc	        
+'         adr0                pc                                pc                                pc 
+	mem64(49425d)=mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_ 
+	              mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                             pc                                pc	        
 
-'	                    pc                                pc                                pc
-	adr1 =  mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
+'	      adr1                   pc                                pc                                pc
+	mem64(49432d) =  mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
 	        mem64(mem64(49418d)+ 9) shl 08 + mem64(mem64(49418d) + 10)
+
 '                       pc                                 pc	        
 	times = mem64(mem64(49418d) + 11) shl 32 + mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_ 
 	        mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15)
@@ -950,18 +951,18 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
     close #1
     print "press any key to contiune.": sleep
    case &H00000006F ' peekb adr0
-'                      pc                                pc                                pc   
-	adr0 = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	       mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                      pc                                pc	       
+'         adr0                  pc                                pc                                pc   
+	mem64(49425d) = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                               pc                                pc	       
 
 '         r3
 	mem64(49364d) = peekb(adr0)      
    case &H000000070 ' pokeb adr0, r3
-'                      pc                                pc                                pc   
-	adr0 = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	       mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                      pc                                pc	       
+'         adr0                  pc                                pc                                pc   
+	mem64(49425d) = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                               pc                                pc	       
 
 '         r3                      pc                   	       
 	mem64(49364d)   = mem64(mem64(49418d) + 6)
@@ -969,18 +970,18 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
 '                     r3	
 	     
    case &H000000071 ' peekw r3
-'                      pc                                pc                                pc   
-	adr0 = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	       mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)	       
-'                      pc                                pc
+'         adr0                  pc                                pc                                pc   
+	mem64(49425d) = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)	       
+'                               pc                                pc
 
 '         r3	       
 	mem64(49364d) = peekw(adr0)       
    case &H000000072 ' pokew adr0, r3
-'                      pc                                pc                                pc   
-	adr0 = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	       mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                      pc                                pc
+'         adr0                  pc                                pc                                pc   
+	mem64(49425d) = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                               pc                                pc
 
 '         r3                      pc                                pc                                pc
 	mem64(49364d)  =  mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
@@ -989,34 +990,34 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
 
 	pokew adr0, mem64(49364d)
    case &H000000073 ' pokeb [address],[address]
-'                      pc                                pc                                pc   
-	adr0 = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	       mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                      pc                                pc	       
+'         adr0                  pc                                pc                                pc   
+	mem64(49425d) = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                               pc                                pc	       
 
-'                      pc                                pc                                pc	       
-	adr1 = mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
-	       mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
-'                      pc                                pc
+'         adr1                  pc                                pc                                pc	       
+	mem64(49432d) = mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
+	                mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
+'                               pc                                pc
 	       
 	pokeb adr0, peekb(adr1)       
    case &H000000074 ' pokew [address],[address]
-'                         pc                                pc                                pc   
-	   adr0 = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	          mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                         pc                                pc	          
+'            adr0                  pc                                pc                                pc   
+	   mem64(49425d) = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	                   mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                                  pc                                pc	          
 
-'                         pc                                pc                                pc	          
-	   adr1 = mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_ 
-	          mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10): mem64(49418d) = mem64(49418d) + 11
-'                         pc 
-	pokew adr0, peekw(adr1)
+'            adr1                   pc                               pc                                pc	          
+	   mem64(49432d) = mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_ 
+	                   mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10): mem64(49418d) = mem64(49418d) + 11
+'                                   pc                               pc                   pc              pc
+	pokew adr0, peekw(adr1) 
    case &H000000075 ' Display number [screen memory address]
    
-'                      pc                                pc                                pc   
-	adr0 = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	       mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                      pc                                pc	       
+'         adr0                 pc                                pc                                pc   
+	mem64(49425d)= mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	               mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                              pc                                pc	       
 
 '                           r0	       
 	string_data = str(mem64(49361d))             
@@ -1036,13 +1037,13 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
 	             mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
 '                            pc                                pc	             
 	             
-'                            pc                                 pc                                 pc	             
-	adr0       = mem64(mem64(49418d) + 11) shl 32 + mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_
-	             mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15): mem64(49418d) = mem64(49418d) + 16
-'                            pc                                 pc                   pc              pc	             
+'         adr0                  pc                                 pc                                 pc	             
+	mem64(49425d) = mem64(mem64(49418d) + 11) shl 32 + mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_
+	                mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15): mem64(49418d) = mem64(49418d) + 16
+'                               pc                                 pc                   pc              pc	             
 	             		                
 	for r3 = 0 to string_len
-	 pokeb (char_buffer + adr0) + r3,_
+	 pokeb (char_buffer + mem64(49425d)) + r3,_
 	 screencode(mem64(string_adr + r3)) 		    
 	next r3
   /'	
@@ -2168,17 +2169,20 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 '                                    pc                        pc              pc
                    pokeb mem64(mem64(49418d)), &H00: mov(mem64(49418d), mem64(49418d) add 4) 
        end select
-'                           pc                                     pc              	
-       mov(adr0,mem64(mem64(49418d) add 1) shl  32 add mem64(mem64(49418d) add 2) shl 24  add _
-                mem64(mem64(49418d) add 3) shl  16 add mem64(mem64(49418d) add 4) shl 08 add mem64(mem64(49418d) add 5))
-'                           pc                                     pc                                    pc		    	
-       select case adr0
+'                                    pc                                     pc              	
+       mov(mem64(49425d),mem64(mem64(49418d) add 1) shl  32 add mem64(mem64(49418d) add 2) shl 24  add _
+       mem64(mem64(49418d) add 3) shl  16 add mem64(mem64(49418d) add 4) shl 08 add mem64(mem64(49418d) add 5))
+'                  pc                                     pc                                    pc		    	
+
+'                        adr0
+       select case mem64(49425d)
               case &H000004000 to &H000007E70 ' text memory
 '                            r3                                            r3                pc             pc
 	               mov(mem64(49364d),mem64(adr0 add 1)): pokeb adr0, mem64(49364d): mov(mem64(49418d),mem64(49418d) add 3) 
               case &H0000A0000 to &H0000AFFFF ' graphics port addresses
-'                                           pc            pc     
-	               pokeb adr0, 0: mov(mem64(49418d),mem64(49418d) add 4)		    	
+
+'                              adr0                  pc            pc     
+	               pokeb mem64(49425d), 0: mov(mem64(49418d),mem64(49418d) add 4)		    	
        end select
 '                       pc               pc
     case 49416d:  mem64(49418d) = (mem64(49418d) mod &HFFFFFFFFFFFFFFFF)
@@ -2186,12 +2190,302 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 '                           pc           pcd4 	                    pcd3                      pcd2          
 	              mov(mem64(49418d),mem64(49419d) shl 32d add mem64(49420d) shl 24d add mem64(49421d) shl 16d add _        
 	                                mem64(49422d) shl 08d add mem64(49423d))
-'                                         pcd1                      pcd0	    
+'                                         pcd1                      pcd0
+    case 49424d ' ld adr0	    
+'                           adr0          adr0d4 	                adr0d3                    adr0d2          
+	              mov(mem64(49425d),mem64(49426d) shl 32d add mem64(49427d) shl 24d add mem64(49428d) shl 16d add _        
+	                                mem64(49429d) shl 08d add mem64(49430d))
+'                                         adr0d1                    adr0d0
+    
+    case 49431d ' ld adr1	    
+'                           adr1          adr1d4 	                adr1d3                    adr1d2          
+	              mov(mem64(49432d),mem64(49433d) shl 32d add mem64(49434d) shl 24d add mem64(49435d) shl 16d add _        
+	                                mem64(49436d) shl 08d add mem64(49437d))
+'                                         adr1d1                    adr1d0
+    case 49438d ' ld adr2	    
+'                           adr2          adr2d4 	                adr2d3                    adr2d2          
+	              mov(mem64(49439d),mem64(49440d) shl 32d add mem64(49441d) shl 24d add mem64(49442d) shl 16d add _        
+	                                mem64(49443d) shl 08d add mem64(49444d))
+'                                         adr2d1                    adr2d0
+    case 49445d ' ld adr3	    
+'                           adr3          adr3d4 	                adr3d3                    adr3d2          
+	              mov(mem64(49446d),mem64(49447d) shl 32d add mem64(49448d) shl 24d add mem64(49449d) shl 16d add _        
+	                                mem64(49450d) shl 08d add mem64(49451d))
+'                                         adr3d1                    adr3d0
+    case 49452d ' ld pc_status	    
+'                           pc_status  pc_status_d4 	         pc_status_d3              pc_status_d2          
+	              mov(mem64(49453d),mem64(49454d) shl 32d add mem64(49455d) shl 24d add mem64(49456d) shl 16d add _        
+	                                mem64(49457d) shl 08d add mem64(49458d))
+'                                      pc_status_d1              pc_status_d0
 
+    case 49459d ' ld adr0_512
+'                          adr0_512    adr0_512d7               adr0_512d6                 adr0_512d5
+                  mov(mem64(49460d),mem64(49461d) shl 56d add mem64(49462d) shl 48d add mem64(49463d) shl 40d add _
+                                    mem64(49464d) shl 32d add mem64(49465d) shl 24d add mem64(49466d) shl 16d add _
+                                    mem64(49467d) shl 08d add mem64(49468d)) '             adr0_512d2
+'                                      adr0_512d1               adr0_512d0
+    case 49469d ' ld adr1_512
+'                          adr1_512    adr1_512d7               adr1_512d6                 adr1_512d5
+                  mov(mem64(49470d),mem64(49471d) shl 56d add mem64(49472d) shl 48d add mem64(49473d) shl 40d add _
+                                    mem64(49474d) shl 32d add mem64(49475d) shl 24d add mem64(49476d) shl 16d add _
+                                    mem64(49477d) shl 08d add mem64(49478d)) '             adr1_512d2
+'                                      adr1_512d1               adr1_512d0
+    case 49479d ' ld adr2_512
+'                          adr3_512    adr3_512d7               adr3_512d6                 adr3_512d5
+                  mov(mem64(49480d),mem64(49481d) shl 56d add mem64(49482d) shl 48d add mem64(49483d) shl 40d add _
+                                    mem64(49484d) shl 32d add mem64(49485d) shl 24d add mem64(49486d) shl 16d add _
+                                    mem64(49487d) shl 08d add mem64(49488d)) '             adr3_512d2
+'                                      adr3_512d1               adr3_512d0
+    case 49489d ' ld adr3_512
+'                          adr3_512    adr3_512d7               adr3_512d6                 adr3_512d5
+                  mov(mem64(49490d),mem64(49491d) shl 56d add mem64(49492d) shl 48d add mem64(49493d) shl 40d add _
+                                    mem64(49494d) shl 32d add mem64(49495d) shl 24d add mem64(49496d) shl 16d add _
+                                    mem64(49497d) shl 08d add mem64(49498d)) '             adr3_512d2
+'                                      adr3_512d1               adr3_512d0
+    case 49499d ' ld pc_512
+'                          pc_512        pc_512d7                 pc_512d6                  pc_512d5
+                  mov(mem64(49500d),mem64(49501d) shl 56d add mem64(49502d) shl 48d add mem64(49503d) shl 40d add _
+                                    mem64(49504d) shl 32d add mem64(49505d) shl 24d add mem64(49506d) shl 16d add _
+                                    mem64(49507d) shl 08d add mem64(49508d)) '              pc_512d2
+'                                        pc_512d1                 pc_512d0
+    case 49509d ' ld pc_status_512
+    
+'                     pc_status_512 pc_status_512d7           pc_status_512d6           pc_status_512d5
+                  mov(mem64(49510d),mem64(49511d) shl 56d add mem64(49512d) shl 48d add mem64(49513d) shl 40d add _
+                                    mem64(49514d) shl 32d add mem64(49515d) shl 24d add mem64(49516d) shl 16d add _
+                                    mem64(49517d) shl 08d add mem64(49518d)) '          pc_status_512d2
+'                                   pc_status_512d1           pc_status_512d0
+
+'                          pc_512        r0                    pc_512         r0   
+    case 49519d: mov(mem64(49500d),mem64(49361d)) ' move mem64(49500d), mem64(49361d)
+'                          pc_512        r1                    pc_512         r1   
+    case 49520d: mov(mem64(49500d),mem64(49362d)) ' move mem64(49500d), mem64(49362d)
+'                          pc_512        r2                    pc_512         r2   
+    case 49521d: mov(mem64(49500d),mem64(49363d)) ' move mem64(49500d), mem64(49363d)
+'                          adr0_512      r0                    adr0_512       r0 
+    case 49522d: mov(mem64(49460d),mem64(49361d)) ' move mem64(49460d), mem64(49361d)
+'                          adr0_512      r1                    adr0_512       r1   
+    case 49523d: mov(mem64(49460d),mem64(49362d)) ' move mem64(49460d), mem64(49362d)
+'                          adr0_512      r2                    adr0_512       r2   
+    case 49524d: mov(mem64(49460d),mem64(49363d)) ' move mem64(49460d), mem64(49363d)
+'                          adr1_512      r0                    adr1_512       r0   
+    case 49525d: mov(mem64(49470d),mem64(49361d)) ' move mem64(49470d), mem64(49361d)
+'                          adr1_512      r1                    adr1_512       r1    
+    case 49526d: mov(mem64(49470d),mem64(49362d)) ' move mem64(49470d), mem64(49362d)
+'                          adr1_512      r2                    adr1_512       r2   
+    case 49527d: mov(mem64(49470d),mem64(49363d)) ' move mem64(49470d), mem64(49363d)
+'                          adr3_512      r0                    adr3_512       r0     
+    case 49528d: mov(mem64(49490d),mem64(49361d)) ' move mem64(49490d), mem64(49361d)
+'                          adr3_512      r1                    adr3_512       r1   
+    case 49529d: mov(mem64(49490d),mem64(49390d)) ' move mem64(49490d), mem64(49362d)
+'                          adr3_512      r2                    adr3_512       r2  
+    case 49529d: mov(mem64(49490d),mem64(49363d)) ' move mem64(49490d), mem64(49363d)
+'                          red           adr0_512              red           adr0_512   
+    case 49530d: mov(mem64(49154d),mem64(49460d)) ' move mem64(49154d), mem64(49460d)
+'                          red           adr0_512              red           adr0_512   
+    case 49531d: mov(mem64(49154d),mem64(49460d)) ' move mem64(49154d), mem64(49460d)
+'                          red           adr0_512              red           adr0_512   
+    case 49532d: mov(mem64(49154d),mem64(49460d)) ' move mem64(49154d), mem64(49460d)
+'                          green         adr0_512              green         adr0_512    
+    case 49533d: mov(mem64(49155d),mem64(49460d)) ' move mem64(49155d), mem64(49460d)
+'                          green         adr0_512              green         adr0_512   
+    case 49534d: mov(mem64(49155d),mem64(49460d)) ' move mem64(49155d), mem64(49460d)
+'                          green         adr0_512              green         adr0_512   
+    case 49535d: mov(mem64(49155d),mem64(49460d)) ' move mem64(49155d), mem64(49460d)
+'                          blue          adr0_512              blue          adr0_512    
+    case 49536d: mov(mem64(49156d),mem64(49460d)) ' move mem64(49156d), mem64(49460d)
+'                          blue          adr0_512              blue          adr0_512   
+    case 59537d: mov(mem64(49156d),mem64(49460d)) ' move mem64(49156d), mem64(49460d)
+'                          blue          adr0_512              blue          adr0_512   
+    case 59538d: mov(mem64(49156d),mem64(49460d)) ' move mem64(49156d), mem64(49460d)
+'                          alpha         adr0_512              alpha         adr0_512   
+    case 59539d: mov(mem64(49157d),mem64(49460d)) ' move mem64(49157d), mem64(49460d)
+'                          alpha         adr0_512              alpha         adr0_512
+    case 59560d: mov(mem64(49157d),mem64(49460d)) ' move mem64(49157d), mem64(49460d)
+'                          alpha         adr0_512              alpha         adr0_512   
+    case 59561d: mov(mem64(49157d),mem64(49460d)) ' move mem64(49157d), mem64(49460d)
+'                          x0            adr0_512              x0            adr0_512      
+    case 59562d: mov(mem64(49355d),mem64(49460d)) ' move mem64(49355d), mem64(49460d)
+'                          x1            adr0_512              x1            adr0_512   
+    case 59563d: mov(mem64(49358d),mem64(49460d)) ' move mem64(49358d), mem64(49460d)
+'                          y0            adr0_512              y0            adr0_512   
+    case 59564d: mov(mem64(49356d),mem64(49460d)) ' move mem64(49356d), mem64(49460d)
+'                          y1            adr0_512              y1            adr0_512   
+    case 59565d: mov(mem64(49359d),mem64(49460d)) ' move mem64(49359d), mem64(49460d)
+'                          z0            adr0_512              z0            adr0_512   
+    case 59566d: mov(mem64(49357d),mem64(49460d)) ' move mem64(49357d), mem64(49460d)
+'                          z1            adr0_512              z1            adr0_512   
+    case 59567d: mov(mem64(49360d),mem64(49460d)) ' move mem64(49360d), mem64(49460d)
+'                          fg_color      adr0_512              fg_color      adr0_512   
+    case 59568d: mov(mem64(49353d),mem64(49460d)) ' move mem64(49353d), mem64(49460d)
+'                          bg_color      adr0_512              bg_color      adr0_512   
+    case 59569d: mov(mem64(49354d),mem64(49460d)) ' move mem64(49354d), mem64(49460d)
+'                          adr0_512      x0                    adr0_512      x0
+    case 59570d: mov(mem64(49460d),mem64(49355d)) ' move mem64(49460d), mem64(49355d)
+'                          x0            adr0_512              x0            adr0_512  
+    case 59571d: mov(mem64(49355d),mem64(49460d)) ' move mem64(49355d), mem64(49460d)
+'                          adr0_512      y0                    adr0_512      y0
+    case 59572d: mov(mem64(49460d),mem64(49356d)) ' move mem64(49460d), mem64(49356d)
+'                          x0            adr0_512              x0            adr0_512   
+    case 59573d: mov(mem64(49356d),mem64(49460d)) ' move mem64(49356d), mem64(49460d)
+'                          adr0_512      z0                    adr0_512      z0   
+    case 59574d: mov(mem64(49460d),mem64(49357d)) ' move mem64(49460d), mem64(49357d)
+'                          adr0_512      x1                    adr0_512      x1 
+    case 59575d: mov(mem64(49460d),mem64(49358d)) ' move mem64(49460d), mem64(49358d)
+'                          adr0_512      y1                    adr0_512      y1
+    case 59576d: mov(mem64(49460d),mem64(49359d)) ' move mem64(49460d), mem64(49359d)
+'                          adr0_512      z1                    adr0_512      z1
+    case 59577d: mov(mem64(49460d),mem64(49360d)) ' move mem64(49460d), mem64(49360d)
+'                          z1            adr0_512              z1            adr0_512   
+    case 59578d: mov(mem64(49360d),mem64(49460d)) ' move mem64(49460d), mem64(49460d)
+'                          adr0_512      y1                    adr0_512       y1
+    case 59579d: mov(mem64(49460d),mem64(49359d)) ' move mem64(49460d), mem64(49359d)
+'                          adr0_512      z1                    adr0_512       z1
+    case 59580d: mov(mem64(49460d),mem64(49360d)) ' move mem64(49460d), mem64(49360d) 
+'                          adr0_512      z1                    adr0_512       z1
+    case 59581d: mov(mem64(49460d),mem64(49360d)) ' move mem64(49460d), mem64(49360d)
+'                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512    
+    case 59582d: mov(mem64(49460d),mem64(49470d) add  mem64(49480d)) ' add mem64(49470d), mem64(49480d)
+'                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512   
+    case 59583d: mov(mem64(49460d),mem64(49470d) subt mem64(49480d)) ' sub mem64(49470d), mem64(49480d)
+'                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512   
+    case 59584d: mov(mem64(49460d),mem64(49470d) mul  mem64(49480d)) ' mul mem64(49470d), mem64(49480d)
+'                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512   
+    case 59585d: mov(mem64(49460d),mem64(49470d) div  mem64(49480d)) ' div mem64(49470d), mem64(49480d)
+'                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512  
+    case 59586d: mov(mem64(49460d),mem64(49470d) idiv mem64(49480d)) ' idiv mem64(49470d),mem64(49480d)
+'                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512   
+    case 59587d: mov(mem64(49460d),mem64(49470d) expt mem64(49480d)) ' exp mem64(49470d), mem64(49480d)
+'                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512   
+    case 59588d: mov(mem64(49460d),mem64(49470d) mod  mem64(49480d)) ' mod mem64(49470d), mem64(49480d)
+'                          adr0_512          adr0_512                           adr0_512    
+    case 59589d: mov(mem64(49460d), neg mem64(49460d))               ' neg mem64(49460d)
+'                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
+    case 59590d: mov(mem64(49460d),mem64(49470d) shl  mem64(49480d)) ' shl mem64(49470d), mem64(49480d)
+'                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
+    case 59591d: mov(mem64(49460d),mem64(49470d) shr  mem64(49480d)) ' shr mem64(49470d), mem64(49480d)
+'                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
+    case 59592d: mov(mem64(49460d),mem64(49470d) eq   mem64(49480d)) ' equ mem64(49470d), mem64(49480d)
+'                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
+    case 59593d: mov(mem64(49460d),mem64(49470d) ne   mem64(49480d)) ' ne  mem64(49470d), mem64(49480d)
+'                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
+    case 59594d: mov(mem64(49460d),mem64(49470d) lt   mem64(49480d)) ' lt  mem64(49470d), mem64(49480d)   
+'                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
+    case 59595d: mov(mem64(49460d),mem64(49470d) ls   mem64(49480d)) ' lte mem64(49470d), mem64(49480d)
+'                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
+    case 59596d: mov(mem64(49460d),mem64(49470d) gs   mem64(49480d)) ' gte mem64(49470d), mem64(49480d)
+'                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512      
+    case 59597d: mov(mem64(49460d),mem64(49470d) gt   mem64(49480d)) ' gt  mem64(49470d), mem64(49480d)
+'                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512    
+    case 59598d: mov(mem64(49460d),mem64(49470d) and  mem64(49480d)) ' and mem64(494670d),mem64(49480d)
+'                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
+    case 59599d: mov(mem64(49460d),mem64(49370d) eqv  mem64(49380d)) ' eqv mem64(49370d), mem64(49380d)
+'                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
+    case 59600d: mov(mem64(49460d),mem64(49370d) imp  mem64(49380d)) ' imp mem64(49370d), mem64(49380d)
+'                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
+    case 59601d: mov(mem64(49460d),mem64(49470d) or   mem64(49480d)) ' or  mem64(49470d), mem64(49480d)
+'                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
+    case 59602d: mov(mem64(49460d),mem64(49470d) xor  mem64(49480d)) ' xor mem64(49470d), mem64(49480d)
+'                          adr1_512      adr0_512                               adr1_512       adr2_512   
+    case 59603d: mov(mem64(49470d),mem64(49460d))                    ' move mem64(49470d), mem64(49460d)
+'                          adr2_512      adr0_512                               adr2_512       adr0_512   
+    case 59604d: mov(mem64(49480d),mem64(49460d))                    ' move mem64(49480d), mem64(49460d)
+'                          adr0_512      adr0_512                               adr0_512   
+    case 59605d: mov(mem64(49460d),mem64(49460d) add 1)              ' inc mem64(49460d)
+'                          adr1_512      adr1_512                               adr1_512   
+    case 59606d: mov(mem64(49470d),mem64(49470d) add 1)              ' inc mem64(49470d)
+'                          adr2_512      adr2_512                               adr2_512
+    case 59607d: mov(mem64(49480d),mem64(49480d) add 1)              ' inc mem64(49480d)
+'                          adr0_512      adr0_512                               adr0_512   
+    case 59608d: mov(mem64(49460d),mem64(49460d) subt 1)             ' dec mem64(49460d)
+'                          adr1_512      adr1_512                               adr1_512   
+    case 59609d: mov(mem64(49470d),mem64(49470d) subt 1)             ' dec mem64(49470d)
+'                          adr2_512      adr2_512                               adr2_512   
+    case 59610d: mov(mem64(49480d),mem64(49480d) subt 1)             ' dec mem64(49480d)
+    case 59611d:                  ' be  [address]
+'             adr1_512        adr2_512                  pc_512     
+     if (mem64(49470d) eq mem64(49480d)) then mov(mem64(49500d),v)
+    case 59611d:                  ' bne [address]
+'             adr1_512        adr2_512                  pc_512   
+     if (mem64(49470d) ne mem64(49480d)) then mov(mem64(49500d),v)
+    case 59612d:                  ' bg  [address]
+'             adr1_512        adr2_512             pc_512   
+     if (mem64(49470d) gt mem64(49480d)) then mov(mem64(49500d),v)          
+    case 59613d:                  ' bge [address]
+'             adr1_512        adr2_512             pc_512   
+     if (mem64(49470d) gs mem64(49480d)) then mov(mem64(49500d),v)
+    case 59614d:                  ' ble [address]
+'             adr1_512        adr2_512             pc_512   
+     if (mem64(49470d) ls mem64(49480d)) then mov(mem64(49500d),v)
+    case 59615d:                  ' bl  [address]
+'             adr1_512        adr2_512             pc_512 
+     if (mem64(49470d) gt mem64(49480d)) then mov(mem64(49500d),v)
+    case 59616d:                  ' jmp [address]
+'         pc_512
+     mem64(49500d) = v 
+
+'                                              adr0_512
+    case 59617d:                  ' move.b mem64(49460d), [address]
+'         adr0_512
+     mem64(49460d) = peekb(v) 
+
+'                                                         adr0_512
+    case 59618d:                  ' move.b [address], mem64(49461d)
+'                  adr0_512   
+     pokeb v, mem64(49460d)
+    case 59619d                   ' loop [start],[stop],[times]
+    
+'                                          old_pc        pc_512   
+     dim as uinteger tmp, times: mov(mem64(49630d),mem64(49500d))
+'            adr0_512             pc_512                                pc_512
+	 mov(mem64(49460d),mem64(mem64(49500d) add 1) shl 32 add mem64(mem64(49500d) add 2) shl 24 add _
+	                   mem64(mem64(49500d) add 3) shl 16 add mem64(mem64(49500d) add 4) shl 08 add _ 
+	                   mem64(mem64(49500d) add 5)) '                    pc_512
+'                                 pc_512        
+
+'	         adr1_512             pc_512                                pc_512 
+	 mov(mem64(49470d),mem64(mem64(49500d) add 6) shl 32 add mem64(mem64(49500d) add 7) shl 24 add _
+	                   mem64(mem64(49500d) add 8) shl 16 add mem64(mem64(49500d) add 9) shl 08 add _
+	                   mem64(mem64(49500d) add 10)) '                   pc_512
+'                                 pc_512
+
+'         times                   pc_512                                pc_512	        
+	 mov(mem64(49621d),mem64(mem64(49500d) add 11) shl 32 add mem64(mem64(49500d) add 12) shl 24 add _
+	                   mem64(mem64(49500d) add 13) shl 16 add mem64(mem64(49500d) add 14) shl 08 add _
+	                   mem64(mem64(49418d) add 15)) '                   pc_512
+'                                 pc_512
+
+'                           times        		       
+     do until mov(tmp,mem64(49621d))
+'                               adr1_512        adr2_512     
+      for in range(mov(pc ,mem64(49460d)), mem64(49470d))
+       poke64 mem64(pc), 0                         
+      next pc
+'                                  times
+      mov(tmp,(tmp add 1) mod mem64(49621d))
+    loop
+    
+   case 49620d ' ld times
+    
+'            times         timesd7                   timesd6                   timesd5
+    mov(mem64(49621d),mem64(49622d) shl 56d add mem64(49623d) shl 48d add mem64(49624d) shl 40d add _
+                      mem64(49625d) shl 32d add mem64(49626d) shl 24d add mem64(49627d) shl 16d add _
+                      mem64(49628d) shl 08d add mem64(49629d)) '               timesd2
+'                          timesd1                   timesd0
+
+   case 49629d 'ld old_pc
+'            old_pc        old_pcd7                   old_pcd6                 old_pcd5
+    mov(mem64(49630d),mem64(49631d) shl 56d add mem64(49631d) shl 48d add mem64(49633d) shl 40d add _
+                      mem64(49634d) shl 32d add mem64(49635d) shl 24d add mem64(49636d) shl 16d add _
+                      mem64(49637d) shl 08d add mem64(49638d)) '               old_pcd2
+'                          old_pcd1                   old_pcd0
+
+'                        pc_512         pc_512
+   case 49416d:  mov(mem64(49500d),(mem64(49500d) mod &HFFFFFFFFFFFFFFFF))
 
 '                       scr_ptr	      scr_ptr     			  		
-    case in range(mem64(49451d),mem64(49451d) add 1023d)
-     #include "font.bas"
+   case in range(mem64(49451d),mem64(49451d) add 1023d)
+    #include "font.bas"
       /'
       dim as integer xs=adr mod 40:xs shl =3:xs+=8*4
       dim as integer ys=adr  \  40:ys shl =3:ys+=8*4
@@ -3286,7 +3580,7 @@ db "IND"
 #include "kernal.bas"
 #include "basic.bas"
 '/
-#include "char.bas"
+'#include "char.bas"
 
 
 enum FB_KEYS
