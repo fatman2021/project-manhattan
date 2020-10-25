@@ -582,8 +582,8 @@ L23:
   '64-bit memory detection
   '.:E47B 2A 2A (mem) 47 42 4D 4D 4F  (cr) (cr) (mem)gb ram system
   mov(mem, str(int(fre(mem64(0d)) idiv 1024d expt 3d)))
-  cmp len(mem) eq 1d jmp L24
-  cmp len(mem) eq 2d jmp L25
+  cmp len(mem) eq 1 jmp L24
+  cmp len(mem) eq 2 jmp L25
 L24:
   mov(kernal(&H49B), asc(mem))
   mov(kernal(&H49C), &H47): mov(kernal(&H49D), &H42)
@@ -594,17 +594,18 @@ L25:
   mov(kernal(&H49D), &H47): mov(kernal(&H49E), &H42)
   mov(mem, " RAM SYSTEM")
   mov(a, 1d)
-L26:  
+L26:
   mov(kernal(&H49E add a), asc(mid(mem,a,1d)))
-  cmp logic_and(kernal(&H49E add a) gt 31,kernal(&H49E add a) lt 64) jmp L27
-  mov(kernal(&H49E add a),kernal(&H49E add a)+32)  
-  cmp a ls len(mem) jmp L26
-  mov(kernal(&H49F), &H20): mov(kernal(&H4A3), &H20) ' Replace "@" at E49F and E4A3 with " ".   
-  jmp L28
-L27:
+  cmp logic_and(kernal(&H49E add a) gt 31,kernal(&H49E add a) lt 64) jmp L28
+L27:  
+  mov(a add, 1d)  
+  cmp a ls len(mem) jmp L26          
+  mov(kernal(&H49F), &H20): mov(kernal(&H4A3), &H20) ' Replace "@" at E49F and E4A3 with " ".
+  jmp L29
+L28:
   mov(kernal(&H49E add a),kernal(&H49E add a) add 32)
-  jmp L26
-L28: 
+  jmp L27            
+L29:
   mov(kernal(&H535), &HFA) '.,E534 A9 FA    LDA #$FA     ;set default text color to FA(Apple ][ Green)
   mov(kernal(&HCD9), &HFF) '.:ECD9 FF                    ;set default border color to FF(Black)
   mov(kernal(&HCDA), &HFF) '.:ECDA FF                    ;set default background color to FF(Black)
