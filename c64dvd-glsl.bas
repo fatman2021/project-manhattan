@@ -25,21 +25,23 @@
 #define range(x, y) x to y
 
 'Assembly Mnemonics
-#define equ  = 'Equal
-#define add  + 'Add
-#define subt - 'Subtract
-#define mul  * 'Multiply
-#define div  / 'Divide
-#define idiv \ 'Integer Devide
-#define expt ^ 'Exponentiate
-#define neg  - 'Negate
-#define mov(x, y) x equ y ' Move
-#define eq  =  'Equal
-#define ne  <> 'Not equal
-#define lt  <  'Less than
-#define ls  <= 'Less than or equal
-#define gs  >= 'Greater than or equal
-#define gt  >  'Greater than
+#define equ  =            'Equal
+#define add  +            'Add
+#define subt -            'Subtract
+#define mul  *            'Multiply
+#define div  /            'Divide
+#define idiv \            'Integer Devide
+#define expt ^            'Exponentiate
+#define neg  -            'Negate
+#define mov(x, y) x equ y 'Move
+#define jmp goto          'Jump
+#define cmp if            'Compare
+#define eq  =             'Equal
+#define ne  <>            'Not equal
+#define lt  <             'Less than
+#define ls  <=            'Less than or equal
+#define gs  >=            'Greater than or equal
+#define gt  >             'Greater than
 #define db data
 #define dw db
 #define dd dw
@@ -357,10 +359,12 @@ constructor C64_T
   mov(bgimage, ImageCreate(scr_w, scr_h,0d,32d))
   mov(fgimage, ImageCreate(scr_w, scr_h,0d,32d))
   mov(raster,  ImageCreate(scr_w,0d,0d,32d))
-  mov(render,  ImageCreate(scr_w,1080d,0d,32d))  
-  for in range(mov(i, 0d), 15d)
-    read c:palette i,c
-  next
+  mov(render,  ImageCreate(scr_w,1080d,0d,32d))
+  mov(i, 0)  
+L0:
+  read c:palette i,c
+  mov(i add, 1d)
+  cmp i lt 15d jmp L0
   mov(mem, new MEMORY_T)
   mov(cpu, new CPU6510(mem))
 end constructor
@@ -372,9 +376,7 @@ destructor C64_T
   ImageDestroy(bgimage)
   ImageDestroy(fgimage)
   ImageDestroy(raster)
-#if defined(__FB_DOS__)
-  ImageDestroy(render)
-#endif  
+  ImageDestroy(render)  
   sleep 1000d
 end destructor
 
@@ -383,17 +385,22 @@ constructor MEMORY_T
   mov(sys_offset,49152d)
   ' initialize zero page and the stack
   var mov(b,0), mov(index,0)
-  for in range(mov(index, 0000d), 0511d)
-	read b: mov(mem64(index), b)
-  next index
-  for in range(mov(index, 0512d), 1023d)
-   mov(mem64(index), 255d)
-  next index 
+L1:  
+  read b: mov(mem64(index), b)
+  mov(index add, 1d)
+  cmp index ls 511d jmp L1
+  mov(index, 512d)
+L2:
+  mov(mem64(index), 255d)
+  mov(index add, 1d)
+  cmp index ls 1023d jmp L2
   ' initialize sine and cosine tables
-  for in range(mov(index,0000d),359d)
-   mov(SINTable(index),SIN(index mul M_PI div 180d))  
-   mov(COSTable(index),COS(index mul M_PI div 180d))  
-  next index
+  mov(index, 0d)
+L3:  
+  mov(SINTable(index),SIN(index mul M_PI div 180d))  
+  mov(COSTable(index),COS(index mul M_PI div 180d))  
+  mov(index add, 1d)
+  cmp index ls 359d jmp L3
   ' Set text color
   poke64(49154d,255d) ' Red
   poke64(49155d,255d) ' Greem
@@ -421,16 +428,19 @@ constructor MEMORY_T
   poke64(49385d,7d) 'Font width 
 '        font_h
   poke64(49386d,7d) 'Font height 
-  var i=0
+  var mov(i, 0d)
   dim as ubyte tmp
   ' init all ROM's
   open "64c.251913-01.bin" for binary as #1
-   for in range(mov(i, 0d), 8191d)
-     get #1,,tmp: mov(basic(i), tmp)
-   next i  
-   for in range(mov(i, 0d), 8191d)
-	 get #1,,tmp: mov(kernal(i), tmp)
-   next i
+L4:  
+  get #1,,tmp: mov(basic(i), tmp)
+  mov(i add, 1d)
+  cmp i ls 8191d jmp L4
+  mov(i, 0d)
+L5: 
+  get #1,,tmp: mov(kernal(i), tmp)
+  mov(i add, 1d)  
+  cmp i ls 8191d jmp L5
   close #1
   'for b as integer = 617 to 641
   /'
@@ -444,14 +454,19 @@ constructor MEMORY_T
   '/
   
   open "./chargen/2.c64" for binary as #1
-   for in range(mov(i, 0d), 8191d)
-     get #1,,tmp: mov(char(i), tmp)
-   next i
-  close #1
-  open "./chargen/2.c64" for binary as #1
-   for in range(mov(i, 8192d), 16383d)
-     get #1,,tmp: mov(char(i), tmp)
-   next i
+  mov(i,0d)
+L6:  
+  get #1,,tmp: mov(char(i), tmp)
+  mov(i add, 1d)
+  cmp i ls 8191d jmp L6
+  'close #1
+  'open "./chargen/2.c64" for binary as #1
+  seek #1, 0
+  mov(i,8192d)
+L7:  
+  get #1,,tmp: mov(char(i), tmp)
+  mov(i add, 1d)
+  cmp i ls 16383d jmp L7
   close #1
 /'
   restore CHAR_ROM
@@ -489,48 +504,75 @@ constructor MEMORY_T
   'Patch BASIC startup messages" 
 
   mov(mem, "BYTES")
-  for in range(mov(a, 1d), len(mem))
-    mov(kernal(&H466 add a),  asc(mid(mem,a,1d)))
-	if logic_and(kernal(&H466 add a) gt 31,kernal(&H466 add a) lt 64) then 
-	   mov(kernal(&H466 add a),kernal(&H466 add a) add 32)
-	end if   
-  next a
+  mov(a,1d)
+L8:
+  mov(kernal(&H466 add a),  asc(mid(mem,a,1d)))
+  cmp logic_and(kernal(&H466 add a) gt 31,kernal(&H466 add a) lt 64) jmp L9:
+  mov(a add,1d)
+  cmp a ls len(mem) jmp L8
+  jmp L10
+L9:
+  mov(kernal(&H466 add a),kernal(&H466 add a) add 32)
+  jmp L8
+L10:  	   
   mov(mem, "FREE")
-  for in range(mov(a, 1d), len(mem))
-	mov(kernal(&H46C add a),  asc(mid(mem,a,1d)))
-	if logic_and(kernal(&H46C add a) gt 31, kernal(&H46C add a) lt 64) then 
-	   mov(kernal(&H46C add a),kernal(&H46C add a) add 32)
-	end if  
-  next a 
+  mov(a,1d)
+L11:  
+  mov(kernal(&H46C add a),  asc(mid(mem,a,1d)))
+  cmp logic_and(kernal(&H46C add a) gt 31, kernal(&H46C add a) lt 64) jmp L12 	   
+  mov(a add,1d) 
+  cmp a ls len(mem) jmp L11
+  jmp L13	 
+L12:
+  mov(kernal(&H46C add a),kernal(&H46C add a) add 32)
+  jmp L11
+L13:  
   mov(kernal(&H47D), &H2A): mov(kernal(&H47E), &H20)
   mov(kernal(&H47F), &H20) 
   mov(mem, "MICROSOFT")
-  for in range(mov(a, 1d), len(mem))
-	mov(kernal(&H47F add a),  asc(mid(mem,a,1d)))
-	if logic_and(kernal(&H47F add a) gt 31, kernal(&H47F add a) lt 64) then 
-	   mov(kernal(&H47F add a),kernal(&H47F add a) add 32)
-	end if   
-  next a: mov(kernal(&H489), &H20)
-  mov(mem, "BASIC") 
-  for in range(mov(a, 1d), len(mem))
-	mov(kernal(&H460 add a), asc(mid(mem,a,1d)))
-	if logic_and(kernal(&H460 add a) gt 31, kernal(&H460 add a) lt 64) then 
-	   mov(kernal(&H460 add a),kernal(&H460 add a) add 32)
-	end if   
-	mov(kernal(&H489 add a),  asc(mid(mem,a,1d)))
-	if logic_and(kernal(&H489 add a) gt 31, kernal(&H489 add a) lt 64) then 
-	   mov(kernal(&H489 add a),kernal(&H489 add a) add 32)
-	end if   
-  next a: mov(kernal(&H48F), &H20): mov(kernal(&H490), &H86)
+  mov(a, 1d)
+L14:  
+  mov(kernal(&H47F add a),  asc(mid(mem,a,1d)))
+  cmp logic_and(kernal(&H47F add a) gt 31, kernal(&H47F add a) lt 64) jmp L15
+  mov(a add, 1d)
+  cmp a ls len(mem) jmp L14
+  jmp L16
+L15:
+  mov(kernal(&H47F add a),kernal(&H47F add a) add 32)
+  jmp L14:
+L16:  
+  mov(kernal(&H489), &H20)
+  mov(mem, "BASIC")
+  mov(a, 1d)
+L17:   
+  mov(kernal(&H460 add a), asc(mid(mem,a,1d)))
+  cmp logic_and(kernal(&H460 add a) gt 31, kernal(&H460 add a) lt 64) jmp L18
+  mov(kernal(&H489 add a), asc(mid(mem,a,1d)))
+  cmp logic_and(kernal(&H489 add a) gt 31, kernal(&H489 add a) lt 64) jmp L19
+  mov(a add, 1d)
+  cmp a ls len(mem) jmp L17
+  jmp L20
+L18:
+  mov(kernal(&H460 add a),kernal(&H460 add a) add 32)
+  jmp L17
+L19:
+  mov(kernal(&H489 add a),kernal(&H489 add a) add 32)
+  jmp L17
+L20: 
+  mov(kernal(&H48F), &H20): mov(kernal(&H490), &H86)
   mov(kernal(&H491), &H32): mov(kernal(&H492), &H20)
   mov(kernal(&H493), &H2A) 
   mov(mem, "RAM SYSTEM")
-  for in range(mov(a, 1d), len(mem))
-	mov(kernal(&H49E add a), asc(mid(mem,a,1d)))
-	if logic_and(kernal(&H49E add a) gt 31, kernal(&H49E add a) lt 64) then 
-	   mov(kernal(&H49E add a),kernal(&H49E add a) add 32)
-	end if   
-  next a 
+  mov(a,1d)
+L21:
+  mov(kernal(&H49E add a), asc(mid(mem,a,1d)))
+  cmp logic_and(kernal(&H49E add a) gt 31, kernal(&H49E add a) lt 64) jmp L22
+  mov(a add,1d)
+  cmp a ls asc(mid(mem,a,1d)) jmp L21
+  jmp L23 
+L22:
+  mov(kernal(&H49E add a),kernal(&H49E add a) add 32)
+L23:
   mov(kernal(&H4A2), &H20)
   /'
   mov(mem, "READY") 'Patch BASIC "READY." message 
@@ -540,23 +582,29 @@ constructor MEMORY_T
   '64-bit memory detection
   '.:E47B 2A 2A (mem) 47 42 4D 4D 4F  (cr) (cr) (mem)gb ram system
   mov(mem, str(int(fre(mem64(0d)) idiv 1024d expt 3d)))
-  select case len(mem) 
-         case 1
-          mov(kernal(&H49B), asc(mem))
-          mov(kernal(&H49C), &H47): mov(kernal(&H49D), &H42)
-         case 2 
-          mov(kernal(&H49B), asc(mid(mem,1d,1d)))
-          mov(kernal(&H49C), asc(mid(mem,2d,1d)))
-          mov(kernal(&H49D), &H47): mov(kernal(&H49E), &H42)
-          mov(mem, " RAM SYSTEM")
-          for in range(mov(a, 1d), len(mem))
-			mov(kernal(&H49E add a), asc(mid(mem,a,1d)))
-			if logic_and(kernal(&H49E add a)>31,kernal(&H49E add a)<64) then 
-			   mov(kernal(&H49E add a),kernal(&H49E add a)+32)
-			end if   
-          next a
-          mov(kernal(&H49F), &H20): mov(kernal(&H4A3), &H20) ' Replace "@" at E49F and E4A3 with " ".         
-  end select 
+  cmp len(mem) eq 1d jmp L24
+  cmp len(mem) eq 2d jmp L25
+L24:
+  mov(kernal(&H49B), asc(mem))
+  mov(kernal(&H49C), &H47): mov(kernal(&H49D), &H42)
+  jmp L28
+L25:
+  mov(kernal(&H49B), asc(mid(mem,1d,1d)))
+  mov(kernal(&H49C), asc(mid(mem,2d,1d)))
+  mov(kernal(&H49D), &H47): mov(kernal(&H49E), &H42)
+  mov(mem, " RAM SYSTEM")
+  mov(a, 1d)
+L26:  
+  mov(kernal(&H49E add a), asc(mid(mem,a,1d)))
+  cmp logic_and(kernal(&H49E add a) gt 31,kernal(&H49E add a) lt 64) jmp L27
+  mov(kernal(&H49E add a),kernal(&H49E add a)+32)  
+  cmp a ls len(mem) jmp L26
+  mov(kernal(&H49F), &H20): mov(kernal(&H4A3), &H20) ' Replace "@" at E49F and E4A3 with " ".   
+  jmp L28
+L27:
+  mov(kernal(&H49E add a),kernal(&H49E add a) add 32)
+  jmp L26
+L28: 
   mov(kernal(&H535), &HFA) '.,E534 A9 FA    LDA #$FA     ;set default text color to FA(Apple ][ Green)
   mov(kernal(&HCD9), &HFF) '.:ECD9 FF                    ;set default border color to FF(Black)
   mov(kernal(&HCDA), &HFF) '.:ECDA FF                    ;set default background color to FF(Black)
@@ -578,101 +626,101 @@ end destructor
 
 proc MEMORY_T.screencode (byval code as double) as double
   select case chr(code)
-   case " ":     return &H20
-   case "!":     return &H21
-   case chr(22): return &H22
-   case "#":     return &H23
-   case "$":     return &H24 
-   case "%":     return &H25
-   case "&":     return &H26
-   case "'":     return &H27 
-   case "(":     return &H28
-   case ")":     return &H29
-   case "*":     return &H2A
-   case "+":     return &H2B
-   case ",":     return &H2C
-   case "-":     return &H2D
-   case ".":     return &H2E
-   case "/":     return &H2F
-   case "0":     return &H30
-   case "1":     return &H31
-   case "2":     return &H32
-   case "3":     return &H33
-   case "4":     return &H34
-   case "5":     return &H35 
-   case "6":     return &H36
-   case "7":     return &H37
-   case "8":     return &H38
-   case "9":     return &H39
-   case ":":     return &H3A
-   case ";":     return &H3B
-   case "<":     return &H3C
-   case "=":     return &H3D
-   case ">":     return &H3E
-   case "?":     return &H3F
-   case "@":     return &H00
-   case "A":     return &H01
-   case "B":     return &H02
-   case "C":     return &H03
-   case "D":     return &H04
-   case "E":     return &H05
-   case "F":     return &H06
-   case "G":     return &H07
-   case "H":     return &H08
-   case "I":     return &H09
-   case "J":     return &H0A
-   case "K":     return &H0B
-   case "L":     return &H0C 
-   case "M":     return &H0D
-   case "N":     return &H0E
-   case "O":     return &H0F
-   case "P":     return &H10
-   case "Q":     return &H11
-   case "R":     return &H12
-   case "S":     return &H13
-   case "T":     return &H14
-   case "U":     return &H15
-   case "V":     return &H16
-   case "W":     return &H17
-   case "X":     return &H18
-   case "Y":     return &H19 
-   case "Z":     return &H1A
-   case "[":     return &H1B
-   case "\":     return &H1C
-   case "]":     return &H1D     
-   case "^":     return &H1E
-   case "_":     return &H1F
-   case chr(96): return &H80
-   case "a":     return &H81
-   case "b":     return &H82
-   case "c":     return &H83
-   case "d":     return &H84
-   case "e":     return &H85
-   case "f":     return &H86
-   case "g":     return &H87 
-   case "h":     return &H88
-   case "i":     return &H89
-   case "j":     return &H8A
-   case "k":     return &H8B
-   case "l":     return &H8C
-   case "m":     return &H8D
-   case "n":     return &H8E
-   case "o":     return &H8F
-   case "p":     return &H90
-   case "q":     return &H91
-   case "r":     return &H92
-   case "s":     return &H93
-   case "t":     return &H94
-   case "u":     return &H95
-   case "v":     return &H96
-   case "w":     return &H97
-   case "x":     return &H98
-   case "y":     return &H99
-   case "z":     return &H9A
-   case "{":     return &H9B
-   case "|":     return &H9C
-   case "}":     return &H9D 
-   case "~":     return &H9E
+   case " ":     mov(proc, &H20)
+   case "!":     mov(proc, &H21)
+   case chr(22): mov(proc, &H22)
+   case "#":     mov(proc, &H23)
+   case "$":     mov(proc, &H24) 
+   case "%":     mov(proc, &H25)
+   case "&":     mov(proc, &H26)
+   case "'":     mov(proc, &H27) 
+   case "(":     mov(proc, &H28)
+   case ")":     mov(proc, &H29)
+   case "*":     mov(proc, &H2A)
+   case "+":     mov(proc, &H2B)
+   case ",":     mov(proc, &H2C)
+   case "-":     mov(proc, &H2D)
+   case ".":     mov(proc, &H2E)
+   case "/":     mov(proc, &H2F)
+   case "0":     mov(proc, &H30)
+   case "1":     mov(proc, &H31)
+   case "2":     mov(proc, &H32)
+   case "3":     mov(proc, &H33)
+   case "4":     mov(proc, &H34)
+   case "5":     mov(proc, &H35)
+   case "6":     mov(proc, &H36)
+   case "7":     mov(proc, &H37)
+   case "8":     mov(proc, &H38)
+   case "9":     mov(proc, &H39)
+   case ":":     mov(proc, &H3A)
+   case ";":     mov(proc, &H3B)
+   case "<":     mov(proc, &H3C)
+   case "=":     mov(proc, &H3D)
+   case ">":     mov(proc, &H3E)
+   case "?":     mov(proc, &H3F)
+   case "@":     mov(proc, &H00)
+   case "A":     mov(proc, &H01)
+   case "B":     mov(proc, &H02)
+   case "C":     mov(proc, &H03)
+   case "D":     mov(proc, &H04)
+   case "E":     mov(proc, &H05)
+   case "F":     mov(proc, &H06)
+   case "G":     mov(proc, &H07)
+   case "H":     mov(proc, &H08)
+   case "I":     mov(proc, &H09)
+   case "J":     mov(proc, &H0A)
+   case "K":     mov(proc, &H0B)
+   case "L":     mov(proc, &H0C)
+   case "M":     mov(proc, &H0D)
+   case "N":     mov(proc, &H0E)
+   case "O":     mov(proc, &H0F)
+   case "P":     mov(proc, &H10)
+   case "Q":     mov(proc, &H11)
+   case "R":     mov(proc, &H12)
+   case "S":     mov(proc, &H13)
+   case "T":     mov(proc, &H14)
+   case "U":     mov(proc, &H15)
+   case "V":     mov(proc, &H16)
+   case "W":     mov(proc, &H17)
+   case "X":     mov(proc, &H18)
+   case "Y":     mov(proc, &H19)
+   case "Z":     mov(proc, &H1A)
+   case "[":     mov(proc, &H1B)
+   case "\":     mov(proc, &H1C)
+   case "]":     mov(proc, &H1D)    
+   case "^":     mov(proc, &H1E)
+   case "_":     mov(proc, &H1F)
+   case chr(96): mov(proc, &H80)
+   case "a":     mov(proc, &H81)
+   case "b":     mov(proc, &H82)
+   case "c":     mov(proc, &H83)
+   case "d":     mov(proc, &H84)
+   case "e":     mov(proc, &H85)
+   case "f":     mov(proc, &H86)
+   case "g":     mov(proc, &H87)
+   case "h":     mov(proc, &H88)
+   case "i":     mov(proc, &H89)
+   case "j":     mov(proc, &H8A)
+   case "k":     mov(proc, &H8B)
+   case "l":     mov(proc, &H8C)
+   case "m":     mov(proc, &H8D)
+   case "n":     mov(proc, &H8E)
+   case "o":     mov(proc, &H8F)
+   case "p":     mov(proc, &H90)
+   case "q":     mov(proc, &H91)
+   case "r":     mov(proc, &H92)
+   case "s":     mov(proc, &H93)
+   case "t":     mov(proc, &H94)
+   case "u":     mov(proc, &H95)
+   case "v":     mov(proc, &H96)
+   case "w":     mov(proc, &H97)
+   case "x":     mov(proc, &H98)
+   case "y":     mov(proc, &H99)
+   case "z":     mov(proc, &H9A)
+   case "{":     mov(proc, &H9B)
+   case "|":     mov(proc, &H9C)
+   case "}":     mov(proc, &H9D)
+   case "~":     mov(proc, &H9E)
   end select 
 end proc
 
@@ -917,8 +965,9 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
 '                  r0   
     pokeb v, mem64(49361d)
    case &H00000006D                   ' loop [start],[stop],[times]
-'                                                pc   
-    dim as uinteger tmp, times: mov(old_pc,mem64(49418d))
+   
+'                                         old_pc        pc   
+    dim as uinteger tmp, times: mov(mem64(49630d),mem64(49418d))
 '         adr0                pc                                pc                                pc 
 	mem64(49425d)=mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_ 
 	              mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
@@ -928,15 +977,19 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
 	mem64(49432d) =  mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
 	        mem64(mem64(49418d)+ 9) shl 08 + mem64(mem64(49418d) + 10)
 
-'                       pc                                 pc	        
-	times = mem64(mem64(49418d) + 11) shl 32 + mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_ 
+'         times              pc                                 pc	        
+	mem64(49621d) = mem64(mem64(49418d) + 11) shl 32 + mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_ 
 	        mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15)
-'                       pc                                 pc	        		       
-    do until mov(tmp,times)
-     for in range(mov(pc ,adr0), adr1)
+'                       pc                                 pc	
+
+'                          times        		       
+    do until mov(tmp,mem64(49621d))
+'                          adr0            adr1    
+     for in range(mov(pc ,(49425d)), mem64(49432d))
       pokeb mem64(pc), 0                         
      next pc
-     mov(tmp,(tmp add 1) mod times)
+'                                  times     
+     mov(tmp,(tmp add 1) mod mem64(49621d))
     loop
    case &H00000006E
     cls
@@ -1043,8 +1096,8 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
 '                               pc                                 pc                   pc              pc	             
 	             		                
 	for r3 = 0 to string_len
-	 pokeb (char_buffer + mem64(49425d)) + r3,_
-	 screencode(mem64(string_adr + r3)) 		    
+	 pokeb (char_buffer add mem64(49425d)) add r3,_
+	 screencode(mem64(string_adr add r3)) 		    
 	next r3
   /'	
    case &H000000077	
@@ -1146,10 +1199,9 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
     if mem64(RVS)<>0d then mov(c and,255d)
     if mem64(49357d) < 1 then mem64(49357d)=1
     poke64(49410d,0) 'Screen lock
-'                                  font_h             
-      for in range(mov(y,0d),mem64(49386d))
-'                                    font_w      
-        for in range(mov(x,0d),mem64(49385d))
+    mov(y,0d):mov(x,0d)
+'                                    font_h               font_w             
+      do until logic_and(mov(y,mem64(49386d)),mov(x,mem64(49385d)))
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
 '                 x0                                              scro_x        
         mov(mem64(49355d),((((xs add x) mul 5d) div 2d) add mem64(49379d)))
@@ -1170,9 +1222,9 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
         mov(mem64(49359d),(((((ys add y) mul 2.22d) add 4d) div 2d) add mem64(49380d))) 
 #endif
 	    poke64(49404d,peek64(49404d)) 'Flag: Print Reverse Characters?0=No
-       next 
-       mov(c add,1d)
-      next
+'                                    font_w	    
+        mov(x add,1d): if x gt mem64(49385d) then mov(x,0d): mov(y add,1d): mov(c add,1d)
+      loop
       poke64(49412d,0) 'Screen Unlock
 '                scr_ptr      
     mov(adr add,&H000004000):mov(v,mem64(adr))
@@ -1817,7 +1869,8 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 	    put (0,0),fgimage,pset
 	    sleep
 	    line fgimage, (0,0)-(scr_w, scr_h), rgba(0,0,0,255),bf
-	    put (0,0),fgimage,pset   	          	      	         	      	     
+	    put (0,0),fgimage,pset
+	   case 28: mov(filename,"")    	          	      	         	      	     
 	 end select
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
     case 49315d 'Load and compile tmp.glsl
@@ -1912,48 +1965,48 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
     case 49394d ' Execute MS-DOS program
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)    
      screen 0:shell "dosbox " + strCode+" -fullscreen -exit": strCode = ""
-     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+     ScreenRes 1920,1080, 32, 0, logic_or(GFX_FULLSCREEN,GFX_ALPHA_PRIMITIVES): Cls
      paint(0,0), rgba(0, 0, 0, 255)
      'for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset            
 #elseif defined(__FB_DOS__)
      screen 0: shell strCode: strCode = ""
-     ScreenRes 800,600, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+     ScreenRes 800,600, 32, 0, logic_or(GFX_FULLSCREEN,GFX_ALPHA_PRIMITIVES): Cls
      paint(0,0), rgba(0, 0, 0, 255)     
 #endif
     case 49395d ' Open Intel Assembly Language File
-     open strCode+".asm" for output as #1
+     open strCode add ".asm" for output as #1
      strCode=""
     case 49396d ' Write to Intel ASM file
-     print #1, strCode: strCode = ""
+     print #1, strCode: mov(strCode,"")
     case 49397d ' Close Intel ASM File
-     close #1: strCode = "" 
+     close #1: mov(strCode,"") 
     case 49398d
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
-     shell "nasm "+strCode+".asm -f bin -o"+strCode+".bin": strCode = ""
+     shell "nasm " add strCode+".asm -f bin -o" add strCode+".bin": mov(strCode,"")
 #elseif defined(__FB_DOS__)
-     shell "nasm "+strCode+".asm -f bin -o"+strCode+".com": strCode = ""
+     shell "nasm " add strCode+".asm -f bin -o" add strCode add ".com": mov(strCode,"")
 #endif     
     case 49399d ' Execute external boot sector
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
-     screen 0: shell "dosbox -c 'boot "+strCode+"'"+" -exit"
-     shell "rm " + strCode: strCode = ""
-     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls     
+     screen 0: shell "dosbox -c 'boot " add strCode add "'" add " -exit"
+     shell "rm " add strCode: mov(strCode,"")
+     ScreenRes 1920,1080, 32, 0, logic_or(GFX_FULLSCREEN,GFX_ALPHA_PRIMITIVES): Cls     
 #elseif defined(__FB_DOS__)
-     shell strCode+".com": strCode = ""
-     ScreenRes 800,600, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+     shell strCode add ".com": mov(strCode,"")
+     ScreenRes 800,600, 32, 0, logic_or(GFX_FULLSCREEN,GFX_ALPHA_PRIMITIVES): Cls
 #endif    
      paint(0,0), rgba(0, 0, 0, 255)
-     for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset     
+     for in range(mov(offset,&H000),&H400): poke64(mem64(sys_offset+&H12B) add offset, 32): next offset     
     case 49400d ' Execute external program using the shell command.
-     shell strCode: strCode = ""
-    case 49401d: swch = v ' Set swch to v
+     shell strCode: mov(strCode,"")
+    case 49401d: mov(swch,v) ' Set swch to v
     case 49402d ' Add byte to string
      strCode=strCode+lcase(chr(v)) 
     case 49403d 'Write string to file
-     print #1, strCode: strCode = ""
+     print #1, strCode: mov(strCode,"")
     case 49404d 'Flag: Print Reverse Characters?0=No
      mov(mem64(RVS), v) ' RVS=v
-     if char(c) and (128d shr x) then
+     if logic_and(char(c),(128d shr x)) then
 '                                     HAM8_BG                HAM8_FG     
         if mem64(RVS)<>0d then poke64(49391d,0d) else poke64(49390d,0d)         
      else
@@ -1968,7 +2021,7 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 	 poke64(49313d,0d): filename=""
 	case 49408d ' Text buffer bank switching
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
-	 select case v
+	 select case as const cast(ulongint, v)
 	        case 0
 '                      scro_x	        
 	         mov(mem64(49379d),0d)
@@ -1991,7 +2044,7 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 	         mov(mem64(49380d),390d)
 	 end select
 #elseif defined(__FB_DOS__)
-	 select case v
+	 select case as const cast(ulongint, v)
 	        case 0
 '                      scro_x	        
 	         mov(mem64(49379d),0d)
@@ -2055,7 +2108,7 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 '                                 FOV     mul       Y       div (      Z       add       ZCENTER)  add       YCENTER
 
       
-         select case v
+   select case as const cast(ulongint, v)
           case 0 '               r6               r8                   r7               r9                   fg_color
            pset fgimage, ((mem64(49367) add mem64(49369)) shr 1,(mem64(49368) add mem64(49370)) shr 1),mem64(49353d)
           case 1 '                 r6               r8                 r7                 r9
@@ -2084,7 +2137,7 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
     case 49412d 'Screen unlock
          screenunlock ys,ys add 8d        
     case 49413d 'Write to to raster     
-     select case v
+     select case as const cast(ulongint, v)
        case 0 'Draw pixel to to raster foreground
 '                           x0             fg_color                            
         pset raster,(mem64(49355d),0),mem64(49353d)
@@ -2143,29 +2196,30 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 '                           x0            y0              x1            y1            bg_color        r0        
         line bgimage,(mem64(49355d),mem64(49356d))-(mem64(49358d),mem64(49359d)),mem64(49354d),,mem64(49198d)          
      end select
-    case 49415d : print #1, strCode;: draw string fgimage,(0,0), strCode:strCode=""
+    case 49415d : print #1, strCode;: draw string fgimage,(0,0), strCode:mov(strCode,"")
     case 49416d ' E6510CPU
 '                              pc    
        select case mem64(mem64(49418d))
 	          ' register port addresses 0x000000001-0x000000076 
-	          case &H000000001 to &H000000076
-'                                     pc	                                pc   
-	               mov(r3,mem64(mem64(49418d) add 1) shl 32 add mem64(mem64(49418d) add 2) shl 24 add _
-	               mem64(mem64(49418d) add 3) shl 16 add mem64(mem64(49418d) add 4) shl 08 add mem64(mem64(49418d) add 5))
-'                              pc                                    pc                                    pc
+	          case in range(&H000000001, &H000000076)
+'                            r3                  pc	                                   pc   
+	               mov(mem64(49364d),mem64(mem64(49418d) add 1) shl 32 add mem64(mem64(49418d) add 2) shl 24 add _
+	               mem64(mem64(49418d) add 3) shl 16 add mem64(mem64(49418d) add 4) shl 08 add _
+	               mem64(mem64(49418d) add 5)) '                     pc
+'                              pc
 
 '                                    pc              r3                 pc              pc		                
 	               pokeb mem64(mem64(49418d)), mem64(49364d): mov(mem64(49418d), mem64(49418d) add 6)
               ' identification division 0x000000078-0x00000007F
-              case &H000000077 to &H00000007F
+              case in range(&H000000077, &H00000007F)
 '                                    pc                        pc              pc                       
                    pokeb mem64(mem64(49418d)), &H00: mov(mem64(49418d), mem64(49418d) add 4)
               ' data division(working storage sction) 0x000000080-0x000000086   
-              case &H000000080 to &H000000086
+              case in range (&H000000080, &H000000086)
 '                                    pc                        pc              pc              
                    pokeb mem64(mem64(49418d)), &H00: mov(mem64(49418d), mem64(49418d) add 4) 
               ' procedure division 0x000000087-0x0000000A2          
-              case &H000000087 to &H0000000A2
+              case in range(&H000000087, &H0000000A2)
 '                                    pc                        pc              pc
                    pokeb mem64(mem64(49418d)), &H00: mov(mem64(49418d), mem64(49418d) add 4) 
        end select
@@ -2176,16 +2230,16 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 
 '                        adr0
        select case mem64(49425d)
-              case &H000004000 to &H000007E70 ' text memory
+              case in range(&H000004000, &H000007E70) ' text memory
 '                            r3                                            r3                pc             pc
 	               mov(mem64(49364d),mem64(adr0 add 1)): pokeb adr0, mem64(49364d): mov(mem64(49418d),mem64(49418d) add 3) 
-              case &H0000A0000 to &H0000AFFFF ' graphics port addresses
+              case in range(&H0000A0000, &H0000AFFFF) ' graphics port addresses
 
 '                              adr0                  pc            pc     
 	               pokeb mem64(49425d), 0: mov(mem64(49418d),mem64(49418d) add 4)		    	
        end select
-'                       pc               pc
-    case 49416d:  mem64(49418d) = (mem64(49418d) mod &HFFFFFFFFFFFFFFFF)
+'                           pc             pc
+    case 49416d:  mov(mem64(49418d), mem64(49418d) mod &HFFFFFFFFFFFFFFFF)
     case 49417d ' ld pc
 '                           pc           pcd4 	                    pcd3                      pcd2          
 	              mov(mem64(49418d),mem64(49419d) shl 32d add mem64(49420d) shl 24d add mem64(49421d) shl 16d add _        
@@ -2426,8 +2480,8 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 
 '                                              adr0_512
     case 59617d:                  ' move.b mem64(49460d), [address]
-'         adr0_512
-     mem64(49460d) = peekb(v) 
+'              adr0_512
+     mov(mem64(49460d), peekb(v)) 
 
 '                                                         adr0_512
     case 59618d:                  ' move.b [address], mem64(49461d)
@@ -2480,8 +2534,8 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
                       mem64(49637d) shl 08d add mem64(49638d)) '               old_pcd2
 '                          old_pcd1                   old_pcd0
 
-'                        pc_512         pc_512
-   case 49416d:  mov(mem64(49500d),(mem64(49500d) mod &HFFFFFFFFFFFFFFFF))
+'                          pc_512       pc_512
+   case 49416d:  mov(mem64(49500d),mem64(49500d) mod &HFFFFFFFFFFFFFFFF)
 
 '                       scr_ptr	      scr_ptr     			  		
    case in range(mem64(49451d),mem64(49451d) add 1023d)
@@ -2504,7 +2558,7 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
 '/
   case in range(16384d,32368d) ' Screen Memory(Text 0x000004000-0x000007E70)
    pokeb(adr,v)     
-  case in range(57344d,65535d), in range(40960d,49151d), in range(55296d,56319d): mem64(adr)=v              
+  case in range(57344d,65535d), in range(40960d,49151d), in range(55296d,56319d): mov(mem64(adr),v)              
   end select
 end def
 

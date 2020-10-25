@@ -1,4 +1,4 @@
-     select case v
+     select case as const cast(ulongint, v)
           case &H00: mov(bd_color,mem64(49161d) shl 24 add &H00 shl 16 add &H00 shl 08 add &H00)
           case &H01: mov(bd_color,mem64(49161d) shl 24 add &H00 shl 16 add &H00 shl 08 add &HAA)
           case &H02: mov(bd_color,mem64(49161d) shl 24 add &H00 shl 16 add &HAA shl 08 add &H00)

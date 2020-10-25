@@ -1,5 +1,5 @@
 	case 49313d 
-         select case cast(ulongint, v)	
+         select case as const cast(ulongint, v)	
 #if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
                 case 000d ' Compile and execute glsl        
 					 dim as boolean bFullscreen
@@ -202,7 +202,7 @@
                      next frame
                 case 006d ' Graphics Processing Unit - 1
 '                                                     r0				
-				     select case cast(ulongint, mem64(49361))  
+				     select case as const cast(ulongint, mem64(49361))  
 						case 000: print #1, "a";
 						case 001: print #1, "aa_level";
 						case 002: print #1, "aastep";
@@ -462,7 +462,7 @@
 					 end select
 				case 007d ' Graphics Processing Unit - 2
 '                                                     r0				
-				     select case cast(ulongint, mem64(49361))  
+				     select case as const cast(ulongint, mem64(49361))  
 						case 000: print #1, "cylinder";
 						case 001: print #1, "cylindrical";
 						case 002: print #1, "d";
@@ -722,7 +722,7 @@
 					 end select       
 				case 009d ' Numeric Processing Unit
 '                                                     r0				
-				     select case cast(ulongint, mem64(49361))  
+				     select case as const cast(ulongint, mem64(49361))  
 					  case 0: '            r1        
 					   print #1, str(mem64(49362));
 					  case 1: '            r1
@@ -762,7 +762,7 @@
 				     msg=hex(mem64(49362)): print #1, msg: msg=""        
 				case 016d ' Header selector
 '                                                     r0				
-				     select case cast(ulongint, mem64(49361))       
+				     select case as const cast(ulongint, mem64(49361))       
 					  case 0 : print #1, "#include " + chr(13) + lcase("CHARS.INC") + chr(13)
 					  case 1 : print #1, "#include " + chr(13) + lcase("COLORS.INC") + chr(13)
 					  case 2 : print #1, "#include " + chr(13) + lcase("CONSTS.INC") + chr(13)
@@ -789,7 +789,7 @@
 				     end select
 				case 017d ' Graphics Processing Unit - 3
 '                                                     r0				
-				     select case cast(ulongint, mem64(49361))       				
+				     select case as const cast(ulongint, mem64(49361))       				
 						case 000: print #1, "gosub";
 						case 001: print #1, "goto";
 						case 002: print #1, "gradient";
@@ -1049,7 +1049,7 @@
 				     end select     				      
 				case 018d ' Graphics Processing Unit - 4
 '                                                     r0				
-				     select case cast(ulongint, mem64(49361))     								      
+				     select case as const cast(ulongint, mem64(49361))     								      
 						case 000: print #1, "mat2x3";
 						case 001: print #1, "mat2x4";
 						case 002: print #1, "mat3";
@@ -1569,7 +1569,7 @@
 					 end select                      
 				case 020d ' Graphics Processing Unit - 6
 '                                                     r0				
-				     select case cast(ulongint, mem64(49361))                       
+				     select case as const cast(ulongint, mem64(49361))                       
 						case 000: print #1, "tga";
 						case 001: print #1, "than";
 						case 002: print #1, "then";
