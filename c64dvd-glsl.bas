@@ -57,6 +57,7 @@
 #define logic_or(x, y)   x or y       'OR
 #define logic_nand(x, y) not(x and y) 'NAND 
 #define logic_and(x, y)  x and y      'AND
+#define logic_not(x)     not x        'NOT
 
 'Byte Operations
 #define check_bit(x, y) (logic_and((x),(1 shl (y))))
@@ -558,54 +559,73 @@ L18:
 L19:
   mov(kernal(&H489 add a),kernal(&H489 add a) add 32)
   jmp L17
+  
 L20: 
   mov(kernal(&H48F), &H20): mov(kernal(&H490), &H86)
   mov(kernal(&H491), &H32): mov(kernal(&H492), &H20)
   mov(kernal(&H493), &H2A) 
-  mov(mem, "RAM SYSTEM")
+  mov(mem, " RAM SYSTEM")
   mov(a,1d)
 L21:
   mov(kernal(&H49E add a), asc(mid(mem,a,1d)))
-  cmp logic_and(kernal(&H49E add a) gt 31, kernal(&H49E add a) lt 64) jmp L22
-  mov(a add,1d)
-  cmp a ls asc(mid(mem,a,1d)) jmp L21
-  jmp L23 
-L22:
-  mov(kernal(&H49E add a),kernal(&H49E add a) add 32)
+  cmp logic_and(kernal(&H495 add a) gt 31, kernal(&H495 add a) lt 64) jmp L22
+L22:  
+  mov(a add, 1d)  
+  cmp a ls len(mem) jmp L21
+  jmp L23a
 L23:
-  mov(kernal(&H4A2), &H20)
-  /'
+  mov(kernal(&H495 add a),kernal(&H495 add a) add 32)
+  jmp L22           
+L23a:
+/'     
   mov(mem, "READY") 'Patch BASIC "READY." message 
   for in range(mov(a, 1d), len(mem))
     mov(basic(&H377 add a), asc(mid(mem,a,1d)) add &H20)
-  next a '/
+  next a 
+'/  
   '64-bit memory detection
   '.:E47B 2A 2A (mem) 47 42 4D 4D 4F  (cr) (cr) (mem)gb ram system
+/' 
+  mov(mem, str(int(fre(mem64(0d)) idiv 1024d expt 3d)))
+  select case len(mem) 
+         case 1
+          mov(kernal(&H49B), asc(mem))
+          mov(kernal(&H49C), &H47): mov(kernal(&H49D), &H42)
+         case 2 
+          mov(kernal(&H49B), asc(mid(mem,1d,1d)))
+          mov(kernal(&H49C), asc(mid(mem,2d,1d)))
+          mov(kernal(&H49D), &H47): mov(kernal(&H49E), &H42)
+          mov(mem, " RAM SYSTEM")
+          for in range(mov(a, 1d), len(mem))
+			mov(kernal(&H49E add a), asc(mid(mem,a,1d)) add &H20)
+          next a
+          mov(kernal(&H49F), &H20): mov(kernal(&H4A3), &H20) ' Replace "@" at E49F and E4A3 with " ".         
+  end select
+'/
+  '64-bit memory detection
+  '.:E47B 2A 2A (mem) 47 42 4D 4D 4F  (cr) (cr) (mem)gb ram system
+  
   mov(mem, str(int(fre(mem64(0d)) idiv 1024d expt 3d)))
   cmp len(mem) eq 1 jmp L24
   cmp len(mem) eq 2 jmp L25
 L24:
   mov(kernal(&H49B), asc(mem))
   mov(kernal(&H49C), &H47): mov(kernal(&H49D), &H42)
-  jmp L28
+  jmp L27
 L25:
   mov(kernal(&H49B), asc(mid(mem,1d,1d)))
   mov(kernal(&H49C), asc(mid(mem,2d,1d)))
   mov(kernal(&H49D), &H47): mov(kernal(&H49E), &H42)
   mov(mem, " RAM SYSTEM")
-  mov(a, 1d)
-L26:
-  mov(kernal(&H49E add a), asc(mid(mem,a,1d)))
-  cmp logic_and(kernal(&H49E add a) gt 31,kernal(&H49E add a) lt 64) jmp L28
-L27:  
+  mov(a,1d)
+L26:          
+  mov(kernal(&H49E add a), asc(mid(mem,a,1d)))   
   mov(a add, 1d)  
-  cmp a ls len(mem) jmp L26          
+  cmp a ls len(mem) jmp L26
   mov(kernal(&H49F), &H20): mov(kernal(&H4A3), &H20) ' Replace "@" at E49F and E4A3 with " ".
-  jmp L29
-L28:
-  mov(kernal(&H49E add a),kernal(&H49E add a) add 32)
-  jmp L27            
-L29:
+  jmp L27
+L27:
+
   mov(kernal(&H535), &HFA) '.,E534 A9 FA    LDA #$FA     ;set default text color to FA(Apple ][ Green)
   mov(kernal(&HCD9), &HFF) '.:ECD9 FF                    ;set default border color to FF(Black)
   mov(kernal(&HCDA), &HFF) '.:ECDA FF                    ;set default background color to FF(Black)
@@ -1355,13 +1375,32 @@ end proc
 
 def MEMORY_T.poke64(byval adr as double,byval v as double)
   mov(mem64(adr), v)
-  if logic_and(adr gs 55296d,adr ls 56319d) then
-    mov(adr subt, 55296d): mov(col(adr), v)
-'                      scr_ptr
-    mov(adr add, mem64(49451d))
-    mov(v, mem64(adr))
-  end if
-  if mov(adr, 199d) then 
+  cmp logic_and(adr gs 55296d,adr ls 56319d) jmp L670
+  jmp L671
+L670:
+  mov(adr subt, 55296d): mov(col(adr), v)
+'                    scr_ptr
+  mov(adr add, mem64(49451d))
+  mov(v, mem64(adr))
+L671:  
+  cmp adr eq 199d jmp L672 ' Reverse Print Mode(0=Off)
+  jmp L673
+L672:
+  /'
+  The zeropage address of 199 ($C7 in hexadecimal) is a system flag
+  used to indicate whether the text output to the screen has been set 
+  to print in reverse on mode: This address contains the value 18/$12 
+  when the reverse video mode is on, and a zero byte if reverse video 
+  is off.
+
+  From BASIC or machine language code, this address can be used both to
+  "read" whether reverse video on the text screen is on or not, and 
+  "written" into to select or de-select reverse video mode.
+  
+  NOTE: The reverse text output is dependent on the contents of
+        character RAM.
+  '/   
+L673:     
   /'
   Current Foreground Color for Text
   
@@ -1378,8 +1417,10 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
   this location.
   '/
   'if adr = 0 then Locate 1,1: Print "Hello from address 0": sleep
-  elseif mov(adr, FCOLOR) then ' Set foreground color							  							  
-   #include once "fg_color.bi"
+  cmp adr eq FCOLOR jmp L674: ' Set foreground color							  							  
+  jmp L931
+L674:
+  #include once "fg_color.bi"
   /'
   VIC-II Chip Memory Control Register
   Bit 0: Unused
@@ -1399,7 +1440,7 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
   memory. If they equal 2, the data area starts 2*1K (2*1024) or 2048
   bytes from the biginning of VIC memory. The default value of this nybble
   is 4.This sets the address of the Character Dot-Data to 4096($1000), which
-  is the starting address of the VIC-II chip address of the Character ROM.
+  is the starting address of the VIC-II chip address of the Character RAM.
   The normal character set which contains uppercase and graphics occupies the
   first 2K of that ROM. The alternate character set which contains both upper
   and lowercase uses the second 2K. Therefore, to shift to the alternate
@@ -1440,7 +1481,8 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
   using Bank 2(32768-49151), the actual starting address of screen memory is
   32768+1024=33792 ($8400).
   '/
-  elseif mov(adr, VMCSB) then
+L931:  
+  if mov(adr, VMCSB) then
   'dim as ubyte mov(hnibble,high_nibble(cast(ubyte,v)))
   'dim as ubyte mov(lnibble,low_nibble(cast(ubyte,v)))
     select case as const cast(ulongint, v)
@@ -2561,6 +2603,7 @@ def MEMORY_T.poke64(byval adr as double,byval v as double)
    pokeb(adr,v)     
   case in range(57344d,65535d), in range(40960d,49151d), in range(55296d,56319d): mov(mem64(adr),v)              
   end select
+L2150:  
 end def
 
 proc MEMORY_T.ReadUByte(byval adr as double) as ubyte
