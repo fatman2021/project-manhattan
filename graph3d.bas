@@ -1,6 +1,8 @@
 	case 49313d 
          select case as const cast(ulongint, v)	
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
                 case 000d ' Compile and execute glsl        
 					 dim as boolean bFullscreen
 					 dim as boolean bTextured
@@ -170,7 +172,9 @@
                      print #1, "// End of file"
                      close #1
                 case 003d ' Render                    
-#if defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
                      shell "povray -d -H600 -W800 tmp.pov"
 	                 shell "convert tmp.png -w --o tmp.bmp"
 '                                                           r0	                 
@@ -178,7 +182,7 @@
 	                 shell "rm tmp.pov tmp.png": cls
 '                                              r0	                 
 	                 bload "./vram/"+str(mem64(49361))+".bmp",fgimage
-#elseif defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_DOS__)
+#elseif defined(__FB_PCOS__)
                      shell "povray -d -H600 -W800 tmp.pov"
 	                 shell "pictview tmp.tga -w --o tmp.bmp"
 '                                                           r0	                 
@@ -193,9 +197,11 @@
                 case 005d ' Anamation player
 '                                               r1              r2                
                      for frame as ubyte = mem64(49362) to mem64(49363)
-#if defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)                     
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
  	                 bload ".\vram\"+str(frame)+".bmp", render
-#elseif defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_DOS__)
+#elseif defined(__FB_PCOS__)
  	                 bload "./vram/"+str(frame)+".bmp", render
 #endif 	                 	                   	                 
  	                 sleep(10,1): put fgimage,(0,0), render, pset 
@@ -731,8 +737,8 @@
 					   print #1, str(0-mem64(49362));
 					  case 3: '              r1
 					   print #1, str(0-mem64(49362))
-					  case 4: '       CR           LF
-					   print #1, chr$(13) add chr$(10)
+					  case 4: '      CR           LF
+					   print #1, chr(13) add chr(10)
                       case 5: '        r1
                        print #1, str(mem64(49362) * .1);
                       case 6:

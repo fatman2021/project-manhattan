@@ -3,8 +3,12 @@
 #include once "fbgfx.bi"
 #include once "address.bi"
 
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
-#include once "glsl.bi"
+using FB
+
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
+    #include once "glsl.bi"
 #endif
 
 
@@ -66,7 +70,7 @@
 
 'ASCII To PETSCII converter
 #define ASCII_TO_PETSCII(adr, a) if logic_and(mem64(adr add a) gt 31,mem64(adr add a) lt 64) then _
-	                                mov(mem64(adr add a),mem64(adr add a) add 32)
+	                                mov(mem64(adr add a),mem64(adr add a) add 32
 
 ' memory registers
 dim shared as uinteger pc,old_pc=&H00,adr0,adr1,adr2,adr3,pc_status
@@ -165,7 +169,9 @@ type MEMORY_T
   const as ulongint mov(basic_base,  &HA000) '  8 K
 #endif
   'Define datasets
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
   as double   mem64   (16777215d) ' Ram
   as double   kernal  (00016383d) ' OS
   as double   basic   (00016383d) ' Basic
@@ -214,14 +220,14 @@ enum ADR_MODES
 end enum
 
 type FLAGS
-  as ulongint  C:1d
-  as ulongint  Z:1d
-  as ulongint  I:1d
-  as ulongint  D:1d
-  as ulongint  B:1d
-  as ulongint  H:1d
-  as ulongint  V:1d
-  as ulongint  N:1d
+  as ubyte  C:1 ' cary
+  as ubyte  Z:1 ' zero 
+  as ubyte  I:1 ' interrupt
+  as ubyte  D:1 ' decimal
+  as ubyte  B:1 ' borrow
+  as ubyte  H:1 ' half carry
+  as ubyte  V:1 ' overflow
+  as ubyte  N:1 ' negative
 end type
 
 type CPU6510_T as CPU6510 ptr
@@ -285,7 +291,13 @@ type CPU6510
   declare constructor(byval mem  as MEMORY_T ptr)
   declare destructor
   declare operator CAST      as string
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)   
   declare function Tick(byval mov(flg as double, 1.797693134862316e+308)) as double
+#elseif defined(__FB_DOS__)
+  declare function Tick(byval flg as integer=&H7FFFFFFF) as integer
+#endif    
   declare function ADR_IMM   as double
   declare function ADR_REL   as double
   declare function ADR_ZERO  as double
@@ -349,14 +361,16 @@ end type
 constructor C64_T
   dim as integer i,c
   dprint("C64_T()")  
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
   'ScreenRes 1920d,1080d, 32d, 0d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
   ScreenRes 1920d,1080d, 32d, 0d, GFX_ALPHA_PRIMITIVES: Cls
 #elseif defined(__FB_DOS__)
   ScreenRes 800d,600d, 32d, 0d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
 #endif
   ' get curent resolution
-  screeninfo scr_w, scr_h
+  screeninfo cast(uinteger,scr_w), cast(uinteger,scr_h)
   mov(bgimage, ImageCreate(scr_w, scr_h,0d,32d))
   mov(fgimage, ImageCreate(scr_w, scr_h,0d,32d))
   mov(raster,  ImageCreate(scr_w,0d,0d,32d))
@@ -482,15 +496,24 @@ L7:
 '               r0    
       mov(mem64(49361d),0d): restore CHAR_ROM
    end if  
-  next
+  next   poke8(0,255):poke8(1,255)
 '/  
   'for a as integer = 0 to 255: poke64(1024+a,a): next a
   'locate 50,1: print "./chargen/"+str(b)+".c64"
   'sleep : next b: end
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)    
   'Sets top of system memory  
   poke64(0d,1.797693134862316e+308):poke64(1d,1.797693134862316e+308)
   'Sets reset vector to top of system memory
   poke64(&HFFFC,1.797693134862316e+308):poke64(&HFFFD,1.797693134862316e+308)
+#elseif defined(__FB_DOS__)
+  'Sets top of system memory   
+  poke64(0d,255d):poke64(1d,255d)
+  'Sets reset vector to top of system memory
+  poke64(&HFFFC,&H00):poke64(&HFFFD,&H80)
+#endif  
   paint(0d,0d), rgba(0d, 0d, 0d, 255d)
   'SYS calls
   poke64(&HC0A6,&HA9): poke64(&HC0A7,&H00)                      ' LDA #$00        A9 00
@@ -989,20 +1012,39 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
    
 '                                         old_pc        pc   
     dim as uinteger tmp, times: mov(mem64(49630d),mem64(49418d))
+#if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__)  or defined(__FB_XBOX__) or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)     
 '         adr0                pc                                pc                                pc 
 	mem64(49425d)=mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_ 
 	              mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
 '                             pc                                pc	        
 
-'	      adr1                   pc                                pc                                pc
-	mem64(49432d) =  mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
-	        mem64(mem64(49418d)+ 9) shl 08 + mem64(mem64(49418d) + 10)
+'	      adr1                pc                                pc                                pc
+	mem64(49432d)=mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
+	              mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
+'                             pc                 	            pc  
 
-'         times              pc                                 pc	        
-	mem64(49621d) = mem64(mem64(49418d) + 11) shl 32 + mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_ 
-	        mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15)
-'                       pc                                 pc	
+'         times               pc                                 pc	                                pc 
+	mem64(49621d)=mem64(mem64(49418d) + 11) shl 32 + mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_ 
+	              mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15)
+'                             pc                                 pc	
+#elseif defined(__FB_DOS__) or defined(__FB_WIN32__)
+'         adr0                pc                                pc 
+	mem64(49425d)=mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_ 
+	              mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                             pc                                pc	        
 
+'	      adr1                pc                                pc 
+	mem64(49432d)=mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
+	              mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
+'                             pc                                pc   	               
+
+'         times               pc                                 pc	        
+	mem64(49621d)=mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_ 
+	              mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15)
+'                             pc                                 pc
+#endif	
 '                          times        		       
     do until mov(tmp,mem64(49621d))
 '                          adr0            adr1    
@@ -1024,6 +1066,9 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
      loop
     close #1
     print "press any key to contiune.": sleep
+#if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__) or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)     
    case &H00000006F ' peekb adr0
 '         adr0                  pc                                pc                                pc   
 	mem64(49425d) = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
@@ -1115,7 +1160,99 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
 	mem64(49425d) = mem64(mem64(49418d) + 11) shl 32 + mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_
 	                mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15): mem64(49418d) = mem64(49418d) + 16
 '                               pc                                 pc                   pc              pc	             
-	             		                
+#elseif defined(__FB_DOS__) or defined(__FB_WIN32__)
+   case &H00000006F ' peekb adr0
+'         adr0                  pc                                pc   
+	mem64(49425d) = mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                               pc                                pc	       
+
+'         r3
+	mem64(49364d) = peekb(adr0)      
+   case &H000000070 ' pokeb adr0, r3
+'         adr0                  pc                                pc  
+	mem64(49425d) = mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                               pc                                pc	       
+
+'         r3                      pc                   	       
+	mem64(49364d)   = mem64(mem64(49418d) + 6)
+	pokeb adr0, mem64(49364d)
+'                     r3	
+	     
+   case &H000000071 ' peekw r3
+'         adr0                  pc                                pc  
+	mem64(49425d) = mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)	       
+'                               pc                                pc
+
+'         r3	       
+	mem64(49364d) = peekw(adr0)       
+   case &H000000072 ' pokew adr0, r3
+'         adr0                  pc                                pc
+	mem64(49425d) = mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                               pc                                pc
+
+'         r3                    pc                                pc
+	mem64(49364d) = mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
+	                mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
+'                               pc                                pc	       
+
+	pokew adr0, mem64(49364d)
+   case &H000000073 ' pokeb [address],[address]
+'         adr0                  pc                                pc   
+	mem64(49425d) = mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                               pc                                pc	       
+
+'         adr1                  pc                                pc       
+	mem64(49432d) = mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
+	                mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
+'                               pc                                pc
+	       
+	pokeb adr0, peekb(adr1)       
+   case &H000000074 ' pokew [address],[address]
+'            adr0                  pc                                pc
+	   mem64(49425d) = mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	                   mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                                  pc                                pc	          
+
+'            adr1                   pc                               pc	          
+	   mem64(49432d) = mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_ 
+	                   mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10): mem64(49418d) = mem64(49418d) + 11
+'                                   pc                               pc                   pc              pc
+	pokew adr0, peekw(adr1) 
+   case &H000000075 ' Display number [screen memory address]
+   
+'         adr0                 pc                                pc
+	mem64(49425d)= mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	               mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                              pc                                pc	       
+
+'                           r0	       
+	string_data = str(mem64(49361d))             
+	for r3 = 1 to len(string_data)             
+	  pokeb (char_buffer+adr0)+(r3-1),_
+	  screencode(asc(mid(string_data,r3,1)))
+	next r3
+   case &H000000076 ' Display text [string address],[length],
+					'              [screen adr]
+'                            pc                                pc           					
+	string_adr = mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
+	             mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
+'                            pc                                pc	             
+
+'                            pc                                pc         	             
+	string_len = mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
+	             mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
+'                            pc                                pc	             
+	             
+'         adr0                  pc                                 pc	             
+	mem64(49425d) = mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_
+	                mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15): mem64(49418d) = mem64(49418d) + 16
+'                               pc                                 pc                   pc              pc	   
+#endif	             		                
 	for r3 = 0 to string_len
 	 pokeb (char_buffer add mem64(49425d)) add r3,_
 	 screencode(mem64(string_adr add r3)) 		    
@@ -1223,7 +1360,9 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
     mov(y,0d):mov(x,0d)
 '                                    font_h               font_w             
       do until logic_and(mov(y,mem64(49386d)),mov(x,mem64(49385d)))
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
 '                 x0                                              scro_x        
         mov(mem64(49355d),((((xs add x) mul 5d) div 2d) add mem64(49379d)))
 '                 y0                                              scro_y
@@ -1597,7 +1736,7 @@ L931:
    value is 14.
    '/                 
   elseif mov(adr,EXTCOL) then ' Set border color
-    #include "bd_color.bi"
+    #include once "bd_color.bi"
   /'
   Background Color Registers
   Sets the background color for all text modes, sprite graphics, and multicolor bitmap graphics.
@@ -1605,6 +1744,8 @@ L931:
   elseif logic_or(logic_or(mov(adr, BGCOL0), mov(adr, BGCOL1)), logic_or(mov(adr, BGCOL2), mov(adr, BGCOL3))) then 
    ' Set background color
    #include once "bg_color.bi"
+L2086:
+  end if
   select case adr
     case &H00  
 	case 49152d 'Play DVD
@@ -1655,6 +1796,9 @@ L931:
 	case 49161d ' Background Alapha
 '              bg_color      alpha                     red                       green                     blue 
 	 mov(mem64(49354d),mem64(49161d) shl 24d add mem64(49158d) shl 16d add mem64(49159d) shl 08d add mem64(49160d))
+#if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__)  or defined(__FB_XBOX__) or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
 	case 49162d 'ld x0
 '              x0            x0d4 	                   x0d3                      x0d2          
 	 mov(mem64(49355d),mem64(49163d) shl 32d add mem64(49164d) shl 24d add mem64(49165d) shl 16d add _        
@@ -1779,15 +1923,144 @@ L931:
 '              rot6          rot6d4                    rot6d3                    rot6d2	
 	 mov(mem64(49379d),mem64(49307d) shl 32d add mem64(49308d) shl 24d add mem64(49309d) shl 16d add _
 	                   mem64(49310d) shl 08d add mem64(49311d))
-'                             rot6d1     	           rot6d0               
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
-	case 49312d 'glScreen
+'                             rot6d1     	           rot6d0  
+#elseif defined(__FB_DOS__) or defined(__FB_WIN32__)
+	case 49162d 'ld x0
+'              x0            x0d3                      x0d2          
+	 mov(mem64(49355d),mem64(49164d) shl 24d add mem64(49165d) shl 16d add _        
+	                   mem64(49166d) shl 08d add mem64(49167))
+'                            x0d1                      x0d0		                   
+	case 49168d 'ld y0
+'              y0            y0d3                      y0d2 
+	 mov(mem64(49356d),mem64(49170d) shl 24d add mem64(49171d) shl 16d add _
+	                   mem64(49172d) shl 08d add mem64(49173d))
+'                            y0d1                      y0d0	                   
+	case 49174d 'ld z0
+'              z0            z0d3                      z0d2   	           
+	 mov(mem64(49357d),mem64(49176d) shl 24d add mem64(49177d) shl 16d add _
+	                   mem64(49178d) shl 08d add mem64(49179d))
+'                            z0d1                      z0d0	                   
+	case 49180d 'ld x1
+'              x1            x1d3                      x1d2 
+	 mov(mem64(49358d),mem64(49182d) shl 24d add mem64(49183d) shl 16d add _
+	                   mem64(49184d) shl 08d add mem64(49185d))
+'                            x1d1                      x1d0	                   
+	case 49186d 'ld y1
+'              y1            y1d3                      y1d2	
+	 mov(mem64(49359d),mem64(49188d) shl 24d add mem64(49189d) shl 16d add _
+	                   mem64(49190d) shl 08d add mem64(49191d))
+'                            y1d1                      y1d0	                   
+	case 49192d 'ld z1
+'              z1            z1d3                      z1d2	
+	 mov(mem64(49360d),mem64(49194d) shl 24d add mem64(49195d) shl 16d add _
+	                   mem64(49196d) shl 08d add mem64(49197d))
+'                            z1d1                      z1d0	                   
+	case 49198d 'ld r0
+'              r0            r0d3                      r0d2
+	 mov(mem64(49361d),mem64(49200d) shl 24d add mem64(49201d) shl 16d add _
+	                   mem64(49202d) shl 08d add mem64(49203d))
+'                            r0d1                      r0d0	                   
+	case 49204d 'ld r1
+'              r1            r1d3                      r1d2   	
+	 mov(mem64(49362d),mem64(49206d) shl 24d add mem64(49207d) shl 16d add _
+	                   mem64(49208d) shl 08d add mem64(49209d))
+'                            r1d1                      r1d0  	                   
+	case 49210d 'ld r2
+'              r2            r2d3                      r2d2 	
+	 mov(mem64(49363d),mem64(49212d) shl 24d add mem64(49213d) shl 16d add _
+	                   mem64(49214d) shl 08d add mem64(49215d))
+'                            r2d1                      r2d0	                   
+	case 49216d 'ld r3
+'	           r3            r3d3                      r3d2 
+	 mov(mem64(49364d),mem64(49218d) shl 24d add mem64(49219d) shl 16d add _
+	                   mem64(49221d) shl 08d add mem64(49222d))
+'                            r3d1                      r3d0	                   
+	case 49223d 'ld r4
+'              r4            r4d3                      r4d2	
+	 mov(mem64(49365d),mem64(49225d) shl 24d add mem64(49226d) shl 16d add _
+	                   mem64(49227d) shl 08d add mem64(49228d))
+'                            r4d1                      r4d0	                   
+	case 49227d 'ld r5
+'              r5            r5d3	                   r5d2
+	 mov(mem64(49366d),mem64(49230d) shl 24d add mem64(49231d) shl 16d add _
+	                   mem64(49232d) shl 08d add mem64(49233d))
+'                            r5d1                      r5d0	                   
+	case 49234d 'ld r6
+'              r6            r6d3                      r6d2	
+	 mov(mem64(49367d),mem64(49236d) shl 24d add mem64(49237d) shl 16d add _
+	                   mem64(49238d) shl 08d add mem64(49239d))
+'                            r6d1                      r6d0	                   
+	case 49240d 'ld r7
+'              r7            r7d3                      r7d2	
+	 mov(mem64(49368d),mem64(49242d) shl 24d add mem64(49243d) shl 16d add _
+	                   mem64(49244d) shl 08d add mem64(49245d))
+'                            r7d1                      r7d0	                   
+	case 49246d 'ld r8
+'              r8            r8d3                      r8d2	
+	 mov(mem64(49369d),mem64(49248d) shl 24d add mem64(49249d) shl 16d add _
+	                   mem64(49250d) shl 08d add mem64(49251d))
+'                            r8d1                      r8d0	                   
+	case 49252d 'ld r9
+'              r9            r9d3                      r9d2	                        
+	 mov(mem64(49370d),mem64(49254d) shl 24d add mem64(48255d) shl 16d add _
+	                   mem64(49256d) shl 08d add mem64(49257d))
+'                            r9d1                      r9d0	                   
+	case 49258d 'ld r10
+'              r10           r10d3                     r10d2	
+	 mov(mem64(49371d),mem64(49260d) shl 24d add mem64(49261d) shl 16d add _
+	                   mem64(49262d) shl 08d add mem64(49263d))
+'                            r10d1                     r10d0	                   
+	case 49264d 'ld r11
+'	           r11           r11d3                     r11d2
+	 mov(mem64(49372d),mem64(49266d) shl 24d add mem64(49267d) shl 16d add _
+	                   mem64(49268d) shl 08d add mem64(49269d))
+'                            r11d1                     r11d0	                   
+	case 49270d 'ld rot0
+'              rot0          rot0d3                    rot0d2	
+	 mov(mem64(49373d),mem64(49272d) shl 24d add mem64(49273d) shl 16d add _
+	                   mem64(49274d) shl 08d add mem64(49275d))
+'                            rot0d1                    rot0d0	                   
+	case 49276d 'ld rot1
+'              rot1          rot1d3                    rot1d2	
+	 mov(mem64(49374d),mem64(49278d) shl 24d add mem64(49279d) shl 16d add _
+	                   mem64(49280d) shl 08d add mem64(49281d))
+'                            rot1d1                    rot1d0	                   
+	case 49282d 'ld rot2
+'               rot2         rot2d3                    rot2d2	
+	 mov(mem64(49375d),mem64(49284d) shl 24d add mem64(49285d) shl 16d add _
+	                   mem64(49286d) shl 08d add mem64(49287d))
+'                            rot2d1                    rot2d0	                   
+	case 49288d 'ld rot3
+'              rot3          rot3d3                    rot3d2	
+	 mov(mem64(49376d),mem64(49290d) shl 24d add mem64(49291d) shl 16d add _
+	                   mem64(49292d) shl 08d add mem64(49293d))
+'                            rot3d1                    rot3d0
+	case 49294d 'ld rot4
+'              rot4          rot4d3                   rot4d2	
+	 mov(mem64(49377d),mem64(49296d) shl 24d add mem64(49297d) shl 16d add _
+	                   mem64(49298d) shl 08d add mem64(49299d))
+'                            rot4d1                    rot4d0	                   
+	case 49300d 'ld rot5
+'              rot5          rot5d3                    rot5d2	
+	 mov(mem64(49378d),mem64(49302d) shl 24d add mem64(49303d) shl 16d add _
+	                   mem64(49304d) shl 08d add mem64(49305d))
+'                            rot5d1                    rot5d0	                   		  		  		  		  		  		  		  		  		  		  		  		  		  		  
+	case 49306d 'ld rot6
+'              rot6          rot6d3                    rot6d2	
+	 mov(mem64(49379d),mem64(49308d) shl 24d add mem64(49309d) shl 16d add _
+	                   mem64(49310d) shl 08d add mem64(49311d))
+'                             rot6d1     	           rot6d0  
+#endif             
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
+  	case 49312d 'glScreen
 '                   x0            y0	
 	 glScreen(mem64(49355d),mem64(49356d),,,true)
 #elseif defined(__FB_DOS__)
 	case 49312d 'screenres
 '                    x0            y0	
-	 screenres(mem64(49355d),mem64(49356d),0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+	 screenres(mem64(49355d),mem64(49356d),0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES): Cls
 #endif		 						  							  
     #include once "graph3d.bas" '-> Compile, execute GLSL/OS, keyword database 
 	case 49314d ' language/compiler selector
@@ -1915,7 +2188,9 @@ L931:
 	    put (0,0),fgimage,pset
 	   case 28: mov(filename,"")    	          	      	         	      	     
 	 end select
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
     case 49315d 'Load and compile tmp.glsl
      filename  = "tmp.glsl": poke64(&HC0A1,&H00)
 #endif     
@@ -1984,7 +2259,9 @@ L931:
           line fgimage,(mem64(49355d),mem64(49356d))-(mem64(49358d),mem64(49359d)),mem64(49354d), BF              
     case 49392d ' Execute external program using the chain command.
      'locate 1,1: print strCode
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
      screen 0: chain strCode: strCode = ""
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
@@ -1998,7 +2275,9 @@ L931:
      for offset = &H000 to &H400: poke64(mem64(49451d) add offset, 32): next offset
 #endif                      
     case 49393d ' Execute MS-Windows program
-#if defined(__FB_LINUX__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)    
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)    
      screen 0: shell "wine " + strCode: strCode = ""
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)
@@ -2006,7 +2285,9 @@ L931:
      for offset = &H000 to &H400: poke64(mem64(49451d) add offset, 32): next offset 
 #endif                    
     case 49394d ' Execute MS-DOS program
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)    
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
      screen 0:shell "dosbox " + strCode+" -fullscreen -exit": strCode = ""
      ScreenRes 1920,1080, 32, 0, logic_or(GFX_FULLSCREEN,GFX_ALPHA_PRIMITIVES): Cls
      paint(0,0), rgba(0, 0, 0, 255)
@@ -2024,13 +2305,17 @@ L931:
     case 49397d ' Close Intel ASM File
      close #1: mov(strCode,"") 
     case 49398d
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
      shell "nasm " add strCode+".asm -f bin -o" add strCode+".bin": mov(strCode,"")
 #elseif defined(__FB_DOS__)
      shell "nasm " add strCode+".asm -f bin -o" add strCode add ".com": mov(strCode,"")
 #endif     
     case 49399d ' Execute external boot sector
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
      screen 0: shell "dosbox -c 'boot " add strCode add "'" add " -exit"
      shell "rm " add strCode: mov(strCode,"")
      ScreenRes 1920,1080, 32, 0, logic_or(GFX_FULLSCREEN,GFX_ALPHA_PRIMITIVES): Cls     
@@ -2063,7 +2348,9 @@ L931:
 	 'locate 1,1: print filename: sleep 1
 	 poke64(49313d,0d): filename=""
 	case 49408d ' Text buffer bank switching
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)     
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
 	 select case as const cast(ulongint, v)
 	        case 0
 '                      scro_x	        
@@ -2240,6 +2527,9 @@ L931:
         line bgimage,(mem64(49355d),mem64(49356d))-(mem64(49358d),mem64(49359d)),mem64(49354d),,mem64(49198d)          
      end select
     case 49415d : print #1, strCode;: draw string fgimage,(0,0), strCode:mov(strCode,"")
+#if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)    
     case 49416d ' E6510CPU
 '                              pc    
        select case mem64(mem64(49418d))
@@ -2580,6 +2870,83 @@ L931:
 '                          pc_512       pc_512
    case 49416d:  mov(mem64(49500d),mem64(49500d) mod &HFFFFFFFFFFFFFFFF)
 
+#elseif defined(__FB_DOS__) or defined(__FB_WIN32__)
+    case 49416d ' E6510CPU
+'                              pc    
+       select case mem64(mem64(49418d))
+	          ' register port addresses 0x000000001-0x000000076 
+	          case in range(&H000000001, &H000000076)
+'                            r3                  pc  
+	               mov(mem64(49364d),mem64(mem64(49418d) add 2) shl 24 add _
+	               mem64(mem64(49418d) add 3) shl 16 add mem64(mem64(49418d) add 4) shl 08 add _
+	               mem64(mem64(49418d) add 5)) '                     pc
+'                              pc
+
+'                                    pc              r3                 pc              pc		                
+	               pokeb mem64(mem64(49418d)), mem64(49364d): mov(mem64(49418d), mem64(49418d) add 6)
+              ' identification division 0x000000078-0x00000007F
+              case in range(&H000000077, &H00000007F)
+'                                    pc                        pc              pc                       
+                   pokeb mem64(mem64(49418d)), &H00: mov(mem64(49418d), mem64(49418d) add 4)
+              ' data division(working storage sction) 0x000000080-0x000000086   
+              case in range (&H000000080, &H000000086)
+'                                    pc                        pc              pc              
+                   pokeb mem64(mem64(49418d)), &H00: mov(mem64(49418d), mem64(49418d) add 4) 
+              ' procedure division 0x000000087-0x0000000A2          
+              case in range(&H000000087, &H0000000A2)
+'                                    pc                        pc              pc
+                   pokeb mem64(mem64(49418d)), &H00: mov(mem64(49418d), mem64(49418d) add 4) 
+       end select
+'                                    pc            	
+       mov(mem64(49425d),mem64(mem64(49418d) add 2) shl 24  add _
+       mem64(mem64(49418d) add 3) shl  16 add mem64(mem64(49418d) add 4) shl 08 add mem64(mem64(49418d) add 5))
+'                  pc                                     pc                                    pc		    	
+
+'                        adr0
+       select case mem64(49425d)
+              case in range(&H000004000, &H000007E70) ' text memory
+'                            r3                                            r3                pc             pc
+	               mov(mem64(49364d),mem64(adr0 add 1)): pokeb adr0, mem64(49364d): mov(mem64(49418d),mem64(49418d) add 3) 
+              case in range(&H0000A0000, &H0000AFFFF) ' graphics port addresses
+
+'                              adr0                  pc            pc     
+	               pokeb mem64(49425d), 0: mov(mem64(49418d),mem64(49418d) add 4)		    	
+       end select
+'                           pc             pc
+    case 49416d:  mov(mem64(49418d), mem64(49418d) mod &HFFFFFFFF)
+    case 49417d ' ld pc
+'                           pc            pcd3                      pcd2          
+	              mov(mem64(49418d),mem64(49420d) shl 24d add mem64(49421d) shl 16d add _        
+	                                mem64(49422d) shl 08d add mem64(49423d))
+'                                         pcd1                      pcd0
+    case 49424d ' ld adr0	    
+'                           adr0          adr0d3                    adr0d2          
+	              mov(mem64(49425d),mem64(49427d) shl 24d add mem64(49428d) shl 16d add _        
+	                                mem64(49429d) shl 08d add mem64(49430d))
+'                                         adr0d1                    adr0d0
+    
+    case 49431d ' ld adr1	    
+'                           adr1          adr1d3                    adr1d2          
+	              mov(mem64(49432d),mem64(49434d) shl 24d add mem64(49435d) shl 16d add _        
+	                                mem64(49436d) shl 08d add mem64(49437d))
+'                                         adr1d1                    adr1d0
+    case 49438d ' ld adr2	    
+'                           adr2          adr2d3                    adr2d2          
+	              mov(mem64(49439d),mem64(49441d) shl 24d add mem64(49442d) shl 16d add _        
+	                                mem64(49443d) shl 08d add mem64(49444d))
+'                                         adr2d1                    adr2d0
+    case 49445d ' ld adr3	    
+'                           adr3          adr3d3                    adr3d2          
+	              mov(mem64(49446d),mem64(49448d) shl 24d add mem64(49449d) shl 16d add _        
+	                                mem64(49450d) shl 08d add mem64(49451d))
+'                                         adr3d1                    adr3d0
+    case 49452d ' ld pc_status	    
+'                           pc_status  pc_status_d3              pc_status_d2          
+	              mov(mem64(49453d),mem64(49455d) shl 24d add mem64(49456d) shl 16d add _        
+	                                mem64(49457d) shl 08d add mem64(49458d))
+'                                      pc_status_d1              pc_status_d0
+
+#endif
 '                       scr_ptr	      scr_ptr     			  		
    case in range(mem64(49451d),mem64(49451d) add 1023d)
     #include "font.bas"

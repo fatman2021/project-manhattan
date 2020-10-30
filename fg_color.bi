@@ -256,770 +256,1026 @@
    cmp v eq &HFF jmp L930
    jmp L931
 L675:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H00):poke64(49156d,&H00)
    jmp L931
 L676:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H00):poke64(49156d,&HAA)
    jmp L931
 L677:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&HAA):poke64(49156d,&H00)
    jmp L931
 L678:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&HAA):poke64(49156d,&HAA)
    jmp L931
 L679:
+'         Red                 Green               Blue
    poke64(49154d,&HAA):poke64(49155d,&H00):poke64(49156d,&H00)
    jmp L931
 L680:
+'         Red                 Green               Blue
    poke64(49154d,&HAA):poke64(49155d,&H00):poke64(49156d,&HAA)
    jmp L931
 L681:
+'         Red                 Green               Blue
    poke64(49154d,&HAA):poke64(49155d,&H55):poke64(49156d,&H00)
    jmp L931
 L682:
+'         Red                 Green               Blue
    poke64(49154d,&HAA):poke64(49155d,&HAA):poke64(49156d,&HAA)
    jmp L931
 L683:
+'         Red                 Green               Blue
    poke64(49154d,&H55):poke64(49155d,&H55):poke64(49156d,&H55)
    jmp L931
 L684:
+'         Red                 Green               Blue
    poke64(49154d,&H55):poke64(49155d,&H55):poke64(49156d,&HFF)
    jmp L931
 L685:
+'         Red                 Green               Blue
    poke64(49154d,&H55):poke64(49155d,&HFF):poke64(49156d,&H55)
    jmp L931
 L686:
+'         Red                 Green               Blue
    poke64(49154d,&H55):poke64(49155d,&HFF):poke64(49156d,&HFF)
    jmp L931
 L687:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&H55):poke64(49156d,&H55)
    jmp L931
 L688:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&H55):poke64(49156d,&HFF)
    jmp L931
 L689:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HFF):poke64(49156d,&H55)
    jmp L931
 L690:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HFF):poke64(49156d,&HFF)
    jmp L931
 L691:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H00):poke64(49156d,&H00)
    jmp L931
 L692:
+'         Red                 Green               Blue
    poke64(49154d,&H14):poke64(49155d,&H14):poke64(49156d,&H14)
    jmp L931
 L693:
+'         Red                 Green               Blue
    poke64(49154d,&H20):poke64(49155d,&H20):poke64(49156d,&H20)
    jmp L931
 L694:
+'         Red                 Green               Blue
    poke64(49154d,&H2D):poke64(49155d,&H2D):poke64(49156d,&H2D)
    jmp L931
 L695:
+'         Red                 Green               Blue
    poke64(49154d,&H39):poke64(49155d,&H39):poke64(49156d,&H39)
    jmp L931
 L696:
+'         Red                 Green               Blue
    poke64(49154d,&H45):poke64(49155d,&H45):poke64(49156d,&H45)
    jmp L931
 L697:
+'         Red                 Green               Blue
    poke64(49154d,&H51):poke64(49155d,&H51):poke64(49156d,&H51)
    jmp L931
 L698:
+'         Red                 Green               Blue
    poke64(49154d,&H61):poke64(49155d,&H61):poke64(49156d,&H61)
    jmp L931
 L699:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H71):poke64(49156d,&H71)
    jmp L931
 L700:
+'         Red                 Green               Blue
    poke64(49154d,&H82):poke64(49155d,&H82):poke64(49156d,&H82)
    jmp L931
 L701:
+'         Red                 Green               Blue
    poke64(49154d,&H92):poke64(49155d,&H92):poke64(49156d,&H92)
    jmp L931
 L702:
+'         Red                 Green               Blue
    poke64(49154d,&HA2):poke64(49155d,&HA2):poke64(49156d,&HA2)
    jmp L931
 L703:
+'         Red                 Green               Blue
    poke64(49154d,&HB6):poke64(49155d,&HB6):poke64(49156d,&HB6)
    jmp L931
 L704:
+'         Red                 Green               Blue
    poke64(49154d,&HCA):poke64(49155d,&HCA):poke64(49156d,&HCA)
    jmp L931
 L705:
+'         Red                 Green               Blue
    poke64(49154d,&HE3):poke64(49155d,&HE3):poke64(49156d,&HE3)
    jmp L931
 L706:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HFF):poke64(49156d,&HFF)
    jmp L931
 L707:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H00):poke64(49156d,&HFF)
    jmp L931
 L708:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H00):poke64(49156d,&HFF)
    jmp L931
 L709:
+'         Red                 Green               Blue
    poke64(49154d,&H7D):poke64(49155d,&H00):poke64(49156d,&HFF)
    jmp L931
 L710:
+'         Red                 Green               Blue
    poke64(49154d,&HBE):poke64(49155d,&H00):poke64(49156d,&HFF)
    jmp L931
 L711:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&H00):poke64(49156d,&HFF)
    jmp L931
 L712:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&H00):poke64(49156d,&HBE)
    jmp L931
 L713:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&H00):poke64(49156d,&H7D)
    jmp L931
 L714:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&H00):poke64(49156d,&H41)
    jmp L931
 L715:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&H00):poke64(49156d,&H00)
    jmp L931
 L716:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&H41):poke64(49156d,&H00)
    jmp L931
 L717:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&H7D):poke64(49156d,&H00)
    jmp L931
 L718:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HBE):poke64(49156d,&H00)
    jmp L931
 L719:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HFF):poke64(49156d,&H00)
    jmp L931
 L720:
+'         Red                 Green               Blue
    poke64(49154d,&HBE):poke64(49155d,&HFF):poke64(49156d,&H00)
    jmp L931
 L721:
+'         Red                 Green               Blue
    poke64(49154d,&H7D):poke64(49155d,&HFF):poke64(49156d,&H00)
    jmp L931
 L722:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&HFF):poke64(49156d,&H00)
    jmp L931
 L723:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&H00)
    jmp L931
 L724:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&H41)
    jmp L931
 L725:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&H7D)
    jmp L931
 L726:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&HBE)
    jmp L931
 L727:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&HFF)
    jmp L931
 L728:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&HBE):poke64(49156d,&HFF)
    jmp L931
 L729:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H7D):poke64(49156d,&HFF)
    jmp L931
 L730:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H41):poke64(49156d,&HFF)
    jmp L931
 L731:
+'         Red                 Green               Blue
    poke64(49154d,&H7D):poke64(49155d,&H7D):poke64(49156d,&HFF)
    jmp L931
 L732:
+'         Red                 Green               Blue
    poke64(49154d,&H9E):poke64(49155d,&H7D):poke64(49156d,&HFF)
    jmp L931
 L733:
+'         Red                 Green               Blue
    poke64(49154d,&HBE):poke64(49155d,&H7D):poke64(49156d,&HFF)
    jmp L931
 L734:
+'         Red                 Green               Blue
    poke64(49154d,&HDF):poke64(49155d,&H7D):poke64(49156d,&HFF)
    jmp L931
+'         Red                 Green               Blue   
 L735:
    poke64(49154d,&HFF):poke64(49155d,&H7D):poke64(49156d,&HFF)
    jmp L931
+'         Red                 Green               Blue   
 L736:
    poke64(49154d,&HFF):poke64(49155d,&H7D):poke64(49156d,&HDF)
    jmp L931
 L737:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&H7D):poke64(49156d,&HBE)
    jmp L931
 L738:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&H7D):poke64(49156d,&H9E)
    jmp L931
 L739:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&H7D):poke64(49156d,&H7D)
    jmp L931
 L740:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&H9E):poke64(49156d,&H7D)
    jmp L931
 L741:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HBE):poke64(49156d,&H7D)
    jmp L931
 L742:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HDF):poke64(49156d,&H7D)
    jmp L931
 L743:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HFF):poke64(49156d,&H7D)
    jmp L931
 L744:
+'         Red                 Green               Blue
    poke64(49154d,&HDF):poke64(49155d,&HFF):poke64(49156d,&H7D)
    jmp L931
 L745:
+'         Red                 Green               Blue
    poke64(49154d,&HBE):poke64(49155d,&HFF):poke64(49156d,&H7D)
    jmp L931
 L746:
+'         Red                 Green               Blue
    poke64(49154d,&H9E):poke64(49155d,&HFF):poke64(49156d,&H7D)
    jmp L931
 L747:
+'         Red                 Green               Blue
    poke64(49154d,&H7D):poke64(49155d,&HFF):poke64(49156d,&H7D)
    jmp L931
 L748:
+'         Red                 Green               Blue
    poke64(49154d,&H7D):poke64(49155d,&HFF):poke64(49156d,&H9E)
    jmp L931
 L749:
+'         Red                 Green               Blue
    poke64(49154d,&H7D):poke64(49155d,&HFF):poke64(49156d,&HBE)
    jmp L931
 L750:
+'         Red                 Green               Blue
    poke64(49154d,&H7D):poke64(49155d,&HFF):poke64(49156d,&HDF)
    jmp L931
 L751:
+'         Red                 Green               Blue
    poke64(49154d,&H7D):poke64(49155d,&HFF):poke64(49156d,&HFF)
    jmp L931
 L752:
+'         Red                 Green               Blue
    poke64(49154d,&H7D):poke64(49155d,&HDF):poke64(49156d,&HFF)
    jmp L931
 L753:
+'         Red                 Green               Blue
    poke64(49154d,&H7D):poke64(49155d,&HBE):poke64(49156d,&HFF)
    jmp L931
 L754:
+'         Red                 Green               Blue
    poke64(49154d,&H7D):poke64(49155d,&H9E):poke64(49156d,&HFF)
    jmp L931
 L755:
+'         Red                 Green               Blue
    poke64(49154d,&HB6):poke64(49155d,&HB6):poke64(49156d,&HFF)
    jmp L931
 L756:
+'         Red                 Green               Blue
    poke64(49154d,&HC6):poke64(49155d,&HB6):poke64(49156d,&HFF)
    jmp L931
 L757:
+'         Red                 Green               Blue
    poke64(49154d,&HDB):poke64(49155d,&HB6):poke64(49156d,&HFF)
    jmp L931
 L758:
+'         Red                 Green               Blue
    poke64(49154d,&HEB):poke64(49155d,&HB6):poke64(49156d,&HFF)
    jmp L931
 L759:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HB6):poke64(49156d,&HFF)
    jmp L931
 L760:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HB6):poke64(49156d,&HEB)
    jmp L931
 L761:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HB6):poke64(49156d,&HDB)
    jmp L931
 L762:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HB6):poke64(49156d,&HC6)
    jmp L931
 L763:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HB6):poke64(49156d,&HB6)
    jmp L931
 L764:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HC6):poke64(49156d,&HB6)
    jmp L931
 L765:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HDB):poke64(49156d,&HB6)
    jmp L931
 L766:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HEB):poke64(49156d,&HB6)
    jmp L931
 L767:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HFF):poke64(49156d,&HB6)
    jmp L931
 L768:
+'         Red                 Green               Blue
    poke64(49154d,&HEB):poke64(49155d,&HFF):poke64(49156d,&HB6)
    jmp L931
 L769:
+'         Red                 Green               Blue
    poke64(49154d,&HDB):poke64(49155d,&HFF):poke64(49156d,&HB6)
    jmp L931
 L770:
+'         Red                 Green               Blue
    poke64(49154d,&HC6):poke64(49155d,&HFF):poke64(49156d,&HB6)
    jmp L931
 L771:
+'         Red                 Green               Blue
    poke64(49154d,&HB6):poke64(49155d,&HFF):poke64(49156d,&HB6)
    jmp L931
 L772:
+'         Red                 Green               Blue
    poke64(49154d,&HB6):poke64(49155d,&HFF):poke64(49156d,&HC6)
    jmp L931
 L773:
+'         Red                 Green               Blue
    poke64(49154d,&HB6):poke64(49155d,&HFF):poke64(49156d,&HDB)
    jmp L931
 L774:
+'         Red                 Green               Blue
    poke64(49154d,&HB6):poke64(49155d,&HFF):poke64(49156d,&HEB)
    jmp L931
 L775:
+'         Red                 Green               Blue
    poke64(49154d,&HB6):poke64(49155d,&HFF):poke64(49156d,&HFF)
    jmp L931
 L776:
+'         Red                 Green               Blue
    poke64(49154d,&HB6):poke64(49155d,&HEB):poke64(49156d,&HFF)
    jmp L931
 L777:
+'         Red                 Green               Blue
    poke64(49154d,&HB6):poke64(49155d,&HDB):poke64(49156d,&HFF)
    jmp L931
 L778:
+'         Red                 Green               Blue
    poke64(49154d,&HB6):poke64(49155d,&HC6):poke64(49156d,&HFF)
    jmp L931
 L779:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H00):poke64(49156d,&H71)
    jmp L931
 L780:
+'         Red                 Green               Blue
    poke64(49154d,&H1C):poke64(49155d,&H00):poke64(49156d,&H71)
    jmp L931
 L781:
+'         Red                 Green               Blue
    poke64(49154d,&H39):poke64(49155d,&H00):poke64(49156d,&H71)
    jmp L931
 L782:
+'         Red                 Green               Blue
    poke64(49154d,&H55):poke64(49155d,&H00):poke64(49156d,&H71)
    jmp L931
 L783:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H00):poke64(49156d,&H71)
    jmp L931
 L784:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H00):poke64(49156d,&H55)
    jmp L931
 L785:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H00):poke64(49156d,&H39)
    jmp L931
 L786:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H00):poke64(49156d,&H1C)
    jmp L931
 L787:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H00):poke64(49156d,&H00)
    jmp L931
 L788:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H1C):poke64(49156d,&H00)
    jmp L931
 L789:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H39):poke64(49156d,&H00)
    jmp L931
 L790:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H55):poke64(49156d,&H00)
    jmp L931
 L791:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H71):poke64(49156d,&H00)
    jmp L931
 L792:
+'         Red                 Green               Blue
    poke64(49154d,&H55):poke64(49155d,&H71):poke64(49156d,&H00)
    jmp L931
 L793:
+'         Red                 Green               Blue
    poke64(49154d,&H39):poke64(49155d,&H71):poke64(49156d,&H00)
    jmp L931
 L794:
+'         Red                 Green               Blue
    poke64(49154d,&H1C):poke64(49155d,&H71):poke64(49156d,&H00)
    jmp L931
 L795:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H71):poke64(49156d,&H00)
    jmp L931
 L796:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H71):poke64(49156d,&H1C)
    jmp L931
 L797:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H71):poke64(49156d,&H39)
    jmp L931
 L798:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H71):poke64(49156d,&H55)
    jmp L931
 L799:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H71):poke64(49156d,&H71)
    jmp L931
 L800:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H55):poke64(49156d,&H71)
    jmp L931
 L801:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H39):poke64(49156d,&H71)
    jmp L931
 L802:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H1C):poke64(49156d,&H71)
    jmp L931
 L803:
+'         Red                 Green               Blue
    poke64(49154d,&H39):poke64(49155d,&H39):poke64(49156d,&H71)
    jmp L931
 L804:
+'         Red                 Green               Blue
    poke64(49154d,&H45):poke64(49155d,&H39):poke64(49156d,&H71)
    jmp L931
 L805:
+'         Red                 Green               Blue
    poke64(49154d,&H55):poke64(49155d,&H39):poke64(49156d,&H71)
    jmp L931
 L806:
+'         Red                 Green               Blue
    poke64(49154d,&H61):poke64(49155d,&H39):poke64(49156d,&H71)
    jmp L931
 L807:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H39):poke64(49156d,&H71)
    jmp L931
 L808:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H39):poke64(49156d,&H61)
    jmp L931
 L809:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H39):poke64(49156d,&H55)
    jmp L931
 L810:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H39):poke64(49156d,&H45)
    jmp L931
 L811:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H39):poke64(49156d,&H39)
    jmp L931
 L812:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H45):poke64(49156d,&H39)
    jmp L931
 L813:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H55):poke64(49156d,&H39)
    jmp L931
 L814:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H61):poke64(49156d,&H39)
    jmp L931
 L815:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H71):poke64(49156d,&H39)
    jmp L931
 L816:
+'         Red                 Green               Blue
    poke64(49154d,&H61):poke64(49155d,&H71):poke64(49156d,&H39)
    jmp L931
 L817:
+'         Red                 Green               Blue
    poke64(49154d,&H55):poke64(49155d,&H71):poke64(49156d,&H39)
    jmp L931
 L818:
+'         Red                 Green               Blue
    poke64(49154d,&H45):poke64(49155d,&H71):poke64(49156d,&H39)
    jmp L931
 L819:
+'         Red                 Green               Blue
    poke64(49154d,&H39):poke64(49155d,&H71):poke64(49156d,&H39)
    jmp L931
 L820:
+'         Red                 Green               Blue
    poke64(49154d,&H39):poke64(49155d,&H71):poke64(49156d,&H45)
    jmp L931
 L821:
+'         Red                 Green               Blue
    poke64(49154d,&H39):poke64(49155d,&H71):poke64(49156d,&H55)
    jmp L931
 L822:
+'         Red                 Green               Blue
    poke64(49154d,&H39):poke64(49155d,&H71):poke64(49156d,&H61)
    jmp L931
 L823:
+'         Red                 Green               Blue
    poke64(49154d,&H39):poke64(49155d,&H71):poke64(49156d,&H71)
    jmp L931
 L824:
+'         Red                 Green               Blue
    poke64(49154d,&H39):poke64(49155d,&H61):poke64(49156d,&H71)
    jmp L931
 L825:
+'         Red                 Green               Blue
    poke64(49154d,&H39):poke64(49155d,&H55):poke64(49156d,&H71)
    jmp L931
 L826:
+'         Red                 Green               Blue
    poke64(49154d,&H39):poke64(49155d,&H45):poke64(49156d,&H71)
    jmp L931
 L827:
+'         Red                 Green               Blue
    poke64(49154d,&H51):poke64(49155d,&H51):poke64(49156d,&H71)
    jmp L931
 L828:
+'         Red                 Green               Blue
    poke64(49154d,&H59):poke64(49155d,&H51):poke64(49156d,&H71)
    jmp L931
 L829:
+'         Red                 Green               Blue
    poke64(49154d,&H61):poke64(49155d,&H51):poke64(49156d,&H71)
    jmp L931
 L830:
+'         Red                 Green               Blue
    poke64(49154d,&H69):poke64(49155d,&H51):poke64(49156d,&H71)
    jmp L931
 L831:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H51):poke64(49156d,&H71)
    jmp L931
 L832:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H51):poke64(49156d,&H69)
    jmp L931
 L833:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H51):poke64(49156d,&H61)
    jmp L931
 L834:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H51):poke64(49156d,&H59)
    jmp L931
 L835:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H51):poke64(49156d,&H51)
    jmp L931
 L836:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H59):poke64(49156d,&H51)
    jmp L931
 L837:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H61):poke64(49156d,&H51)
    jmp L931
 L838:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H69):poke64(49156d,&H51)
    jmp L931
 L839:
+'         Red                 Green               Blue
    poke64(49154d,&H71):poke64(49155d,&H71):poke64(49156d,&H51)
    jmp L931
 L840:
+'         Red                 Green               Blue
    poke64(49154d,&H69):poke64(49155d,&H71):poke64(49156d,&H51)
    jmp L931
 L841:
+'         Red                 Green               Blue
    poke64(49154d,&H61):poke64(49155d,&H71):poke64(49156d,&H51)
    jmp L931
 L842:
+'         Red                 Green               Blue
    poke64(49154d,&H59):poke64(49155d,&H71):poke64(49156d,&H51)
    jmp L931
 L843:
+'         Red                 Green               Blue
    poke64(49154d,&H51):poke64(49155d,&H71):poke64(49156d,&H51)
    jmp L931
 L844:
+'         Red                 Green               Blue
    poke64(49154d,&H51):poke64(49155d,&H71):poke64(49156d,&H59)
    jmp L931
 L845:
+'         Red                 Green               Blue
    poke64(49154d,&H51):poke64(49155d,&H71):poke64(49156d,&H61)
    jmp L931
 L846:
+'         Red                 Green               Blue
    poke64(49154d,&H51):poke64(49155d,&H71):poke64(49156d,&H69)
    jmp L931
 L847:
+'         Red                 Green               Blue
    poke64(49154d,&H51):poke64(49155d,&H71):poke64(49156d,&H71)
    jmp L931
 L848:
+'         Red                 Green               Blue
    poke64(49154d,&H51):poke64(49155d,&H69):poke64(49156d,&H71)
    jmp L931
 L849:
+'         Red                 Green               Blue
    poke64(49154d,&H51):poke64(49155d,&H61):poke64(49156d,&H71)
    jmp L931
 L850:
+'         Red                 Green               Blue
    poke64(49154d,&H51):poke64(49155d,&H59):poke64(49156d,&H71)
    jmp L931
 L851:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H00):poke64(49156d,&H41)
    jmp L931
 L852:
+'         Red                 Green               Blue
    poke64(49154d,&H10):poke64(49155d,&H00):poke64(49156d,&H41)
    jmp L931
 L853:
+'         Red                 Green               Blue
    poke64(49154d,&H20):poke64(49155d,&H00):poke64(49156d,&H41)
    jmp L931
 L854:
+'         Red                 Green               Blue
    poke64(49154d,&H31):poke64(49155d,&H00):poke64(49156d,&H41)
    jmp L931
 L855:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H00):poke64(49156d,&H41)
    jmp L931
 L856:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H00):poke64(49156d,&H31)
    jmp L931
 L857:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H00):poke64(49156d,&H20)
    jmp L931
 L858:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H00):poke64(49156d,&H10)
    jmp L931
 L859:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H00):poke64(49156d,&H00)
    jmp L931
 L860:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H10):poke64(49156d,&H00)
    jmp L931
 L861:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H20):poke64(49156d,&H00)
    jmp L931
 L862:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H31):poke64(49156d,&H00)
    jmp L931
 L863:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H41):poke64(49156d,&H00)
    jmp L931
 L864:
+'         Red                 Green               Blue
    poke64(49154d,&H31):poke64(49155d,&H41):poke64(49156d,&H0)
    jmp L931
 L865:
+'         Red                 Green               Blue
    poke64(49154d,&H20):poke64(49155d,&H41):poke64(49156d,&H00)
    jmp L931
 L866:
+'         Red                 Green               Blue
    poke64(49154d,&H10):poke64(49155d,&H41):poke64(49156d,&H0)
    jmp L931
 L867:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H41):poke64(49156d,&H00)
    jmp L931
 L868:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H41):poke64(49156d,&H10)
    jmp L931
 L869:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H41):poke64(49156d,&H20)
    jmp L931
 L870:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H41):poke64(49156d,&H31)
    jmp L931
 L871:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H41):poke64(49156d,&H41)
    jmp L931
 L872:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H31):poke64(49156d,&H41)
    jmp L931
 L873:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H20):poke64(49156d,&H41)
    jmp L931
 L874:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&H10):poke64(49156d,&H41)
    jmp L931
 L875:
+'         Red                 Green               Blue
    poke64(49154d,&H20):poke64(49155d,&H20):poke64(49156d,&H41)
    jmp L931
 L876:
+'         Red                 Green               Blue
    poke64(49154d,&H28):poke64(49155d,&H20):poke64(49156d,&H41)
    jmp L931
 L877:
+'         Red                 Green               Blue
    poke64(49154d,&H31):poke64(49155d,&H20):poke64(49156d,&H41)
    jmp L931
 L878:
+'         Red                 Green               Blue
    poke64(49154d,&H39):poke64(49155d,&H20):poke64(49156d,&H41)
    jmp L931
 L879:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H20):poke64(49156d,&H41)
    jmp L931
 L880:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H20):poke64(49156d,&H39)
    jmp L931
 L881:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H20):poke64(49156d,&H31)
    jmp L931
 L882:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H20):poke64(49156d,&H28)
    jmp L931
 L883:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H20):poke64(49156d,&H20)
    jmp L931
 L884:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H28):poke64(49156d,&H20)
    jmp L931
 L885:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H31):poke64(49156d,&H20)
    jmp L931
 L886:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H39):poke64(49156d,&H20)
    jmp L931
 L887:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H41):poke64(49156d,&H20)
    jmp L931
 L888:
+'         Red                 Green               Blue
    poke64(49154d,&H39):poke64(49155d,&H41):poke64(49156d,&H20)
    jmp L931
 L889:
+'         Red                 Green               Blue
    poke64(49154d,&H31):poke64(49155d,&H41):poke64(49156d,&H20)
    jmp L931
 L890:
+'         Red                 Green               Blue
    poke64(49154d,&H28):poke64(49155d,&H41):poke64(49156d,&H20)
    jmp L931
 L891:
+'         Red                 Green               Blue
    poke64(49154d,&H20):poke64(49155d,&H41):poke64(49156d,&H20)
    jmp L931
 L892:
+'         Red                 Green               Blue
    poke64(49154d,&H20):poke64(49155d,&H41):poke64(49156d,&H28)
    jmp L931
 L893:
+'         Red                 Green               Blue
    poke64(49154d,&H20):poke64(49155d,&H41):poke64(49156d,&H31)
    jmp L931
 L894:
+'         Red                 Green               Blue
    poke64(49154d,&H20):poke64(49155d,&H41):poke64(49156d,&H39)
    jmp L931
 L895:
+'         Red                 Green               Blue
    poke64(49154d,&H20):poke64(49155d,&H41):poke64(49156d,&H41)
    jmp L931
 L896:
+'         Red                 Green               Blue
    poke64(49154d,&H20):poke64(49155d,&H39):poke64(49156d,&H41)
    jmp L931
 L897:
+'         Red                 Green               Blue
    poke64(49154d,&H20):poke64(49155d,&H31):poke64(49156d,&H41)
    jmp L931
 L898:
+'         Red                 Green               Blue
    poke64(49154d,&H20):poke64(49155d,&H28):poke64(49156d,&H41)
    jmp L931
 L899:
+'         Red                 Green               Blue
    poke64(49154d,&H2D):poke64(49155d,&H2D):poke64(49156d,&H41)
    jmp L931
 L900:
+'         Red                 Green               Blue
    poke64(49154d,&H31):poke64(49155d,&H2D):poke64(49156d,&H41)
    jmp L931
 L901:
+'         Red                 Green               Blue
    poke64(49154d,&H35):poke64(49155d,&H2D):poke64(49156d,&H41)
    jmp L931
 L902:
+'         Red                 Green               Blue
    poke64(49154d,&H3D):poke64(49155d,&H2D):poke64(49156d,&H41)
    jmp L931
 L903:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H2D):poke64(49156d,&H41)
    jmp L931
 L904:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H2D):poke64(49156d,&H3D)
    jmp L931
 L905:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H2D):poke64(49156d,&H35)
    jmp L931
 L906:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H2D):poke64(49156d,&H31)
    jmp L931
 L907:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H2D):poke64(49156d,&H2D)
    jmp L931
 L908:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H31):poke64(49156d,&H2D)
    jmp L931
 L909:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H35):poke64(49156d,&H2D)
    jmp L931
 L910:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H3D):poke64(49156d,&H2D)
    jmp L931
 L911:
+'         Red                 Green               Blue
    poke64(49154d,&H41):poke64(49155d,&H41):poke64(49156d,&H2D)
    jmp L931
 L912:
+'         Red                 Green               Blue
    poke64(49154d,&H3D):poke64(49155d,&H41):poke64(49156d,&H2D)
    jmp L931
 L913:
+'         Red                 Green               Blue
    poke64(49154d,&H35):poke64(49155d,&H41):poke64(49156d,&H2D)
    jmp L931
 L914:
+'         Red                 Green               Blue
    poke64(49154d,&H31):poke64(49155d,&H41):poke64(49156d,&H2D)
    jmp L931
 L915:
+'         Red                 Green               Blue
    poke64(49154d,&H2D):poke64(49155d,&H41):poke64(49156d,&H2D)
    jmp L931
 L916:
+'         Red                 Green               Blue
    poke64(49154d,&H2D):poke64(49155d,&H41):poke64(49156d,&H31)
    jmp L931
 L917:
+'         Red                 Green               Blue
    poke64(49154d,&H2D):poke64(49155d,&H41):poke64(49156d,&H35)
    jmp L931
 L918:
+'         Red                 Green               Blue
    poke64(49154d,&H2D):poke64(49155d,&H41):poke64(49156d,&H3D)
    jmp L931
 L919:
+'         Red                 Green               Blue
    poke64(49154d,&H2D):poke64(49155d,&H41):poke64(49156d,&H41)
    jmp L931
 L920:
+'         Red                 Green               Blue
    poke64(49154d,&H2D):poke64(49155d,&H3D):poke64(49156d,&H41)
    jmp L931
 L921:
+'         Red                 Green               Blue
    poke64(49154d,&H2D):poke64(49155d,&H35):poke64(49156d,&H41)
    jmp L931
 L922:
+'         Red                 Green               Blue
    poke64(49154d,&H2D):poke64(49155d,&H31):poke64(49156d,&H41)
    jmp L931
 L923:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HB0):poke64(49156d,&H00)
    jmp L931
 L924:
+'         Red                 Green               Blue
    poke64(49154d,&HFF):poke64(49155d,&HC0):poke64(49156d,&H00)
    jmp L931
 L925:
+'         Red                 Green               Blue
    poke64(49154d,&H33):poke64(49155d,&HFF):poke64(49156d,&H00)
    jmp L931
 L926:
+'         Red                 Green               Blue
    poke64(49154d,&H33):poke64(49155d,&HFF):poke64(49156d,&H33)
    jmp L931
 L927:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&H33)
    jmp L931
 L928:
+'         Red                 Green               Blue
    poke64(49154d,&H66):poke64(49155d,&HFF):poke64(49156d,&H66)
    jmp L931
 L929:
+'         Red                 Green               Blue
    poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&H66)
    jmp L931
 L930:
+'         Red                 Green               Blue
    poke64(49154d,&H28):poke64(49155d,&H28):poke64(49156d,&H28)
    jmp L931

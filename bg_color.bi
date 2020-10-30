@@ -1,260 +1,1025 @@
-   select case as const cast(ulongint, v)
-          case &H00: poke64(49558d,&H00):poke64(49559d,&H00):poke64(49560d,&H00)
-          case &H01: poke64(49558d,&H00):poke64(49559d,&H00):poke64(49560d,&HAA)
-          case &H02: poke64(49558d,&H00):poke64(49559d,&HAA):poke64(49560d,&H00)
-          case &H03: poke64(49558d,&H00):poke64(49559d,&HAA):poke64(49560d,&HAA)
-          case &H04: poke64(49558d,&HAA):poke64(49559d,&H00):poke64(49560d,&H00)
-          case &H05: poke64(49558d,&HAA):poke64(49559d,&H00):poke64(49560d,&HAA)
-          case &H06: poke64(49558d,&HAA):poke64(49559d,&H55):poke64(49560d,&H00)
-          case &H07: poke64(49558d,&HAA):poke64(49559d,&HAA):poke64(49560d,&HAA)
-          case &H08: poke64(49558d,&H55):poke64(49559d,&H55):poke64(49560d,&H55)
-          case &H09: poke64(49558d,&H55):poke64(49559d,&H55):poke64(49560d,&HFF)
-          case &H0A: poke64(49558d,&H55):poke64(49559d,&HFF):poke64(49560d,&H55)
-          case &H0B: poke64(49558d,&H55):poke64(49559d,&HFF):poke64(49560d,&HFF)
-          case &H0C: poke64(49558d,&HFF):poke64(49559d,&H55):poke64(49560d,&H55)
-          case &H0D: poke64(49558d,&HFF):poke64(49559d,&H55):poke64(49560d,&HFF)
-          case &H0E: poke64(49558d,&HFF):poke64(49559d,&HFF):poke64(49560d,&H55)
-          case &H0F: poke64(49558d,&HFF):poke64(49559d,&HFF):poke64(49560d,&HFF)
-          case &H10: poke64(49558d,&H00):poke64(49559d,&H00):poke64(49560d,&H00)
-          case &H11: poke64(49558d,&H14):poke64(49559d,&H14):poke64(49560d,&H14)
-          case &H12: poke64(49558d,&H20):poke64(49559d,&H20):poke64(49560d,&H20)
-          case &H13: poke64(49558d,&H2D):poke64(49559d,&H2D):poke64(49560d,&H2D)
-          case &H14: poke64(49558d,&H39):poke64(49559d,&H39):poke64(49560d,&H39)
-          case &H15: poke64(49558d,&H45):poke64(49559d,&H45):poke64(49560d,&H45)
-          case &H16: poke64(49558d,&H51):poke64(49559d,&H51):poke64(49560d,&H51)
-          case &H17: poke64(49558d,&H61):poke64(49559d,&H61):poke64(49560d,&H61)
-          case &H18: poke64(49558d,&H71):poke64(49559d,&H71):poke64(49560d,&H71)
-          case &H19: poke64(49558d,&H82):poke64(49559d,&H82):poke64(49560d,&H82)
-          case &H1A: poke64(49558d,&H92):poke64(49559d,&H92):poke64(49560d,&H92)
-          case &H1B: poke64(49558d,&HA2):poke64(49559d,&HA2):poke64(49560d,&HA2)
-          case &H1C: poke64(49558d,&HB6):poke64(49559d,&HB6):poke64(49560d,&HB6)
-          case &H1D: poke64(49558d,&HCA):poke64(49559d,&HCA):poke64(49560d,&HCA)
-          case &H1E: poke64(49558d,&HE3):poke64(49559d,&HE3):poke64(49560d,&HE3)
-          case &H1F: poke64(49558d,&HFF):poke64(49559d,&HFF):poke64(49560d,&HFF)
-          case &H20: poke64(49558d,&H00):poke64(49559d,&H00):poke64(49560d,&HFF)
-          case &H21: poke64(49558d,&H41):poke64(49559d,&H00):poke64(49560d,&HFF)
-          case &H22: poke64(49558d,&H7D):poke64(49559d,&H00):poke64(49560d,&HFF)
-          case &H23: poke64(49558d,&HBE):poke64(49559d,&H00):poke64(49560d,&HFF)
-          case &H24: poke64(49558d,&HFF):poke64(49559d,&H00):poke64(49560d,&HFF)
-          case &H25: poke64(49558d,&HFF):poke64(49559d,&H00):poke64(49560d,&HBE)
-          case &H26: poke64(49558d,&HFF):poke64(49559d,&H00):poke64(49560d,&H7D)
-          case &H27: poke64(49558d,&HFF):poke64(49559d,&H00):poke64(49560d,&H41)
-          case &H28: poke64(49558d,&HFF):poke64(49559d,&H00):poke64(49560d,&H00)
-          case &H29: poke64(49558d,&HFF):poke64(49559d,&H41):poke64(49560d,&H00)
-          case &H2A: poke64(49558d,&HFF):poke64(49559d,&H7D):poke64(49560d,&H00)
-          case &H2B: poke64(49558d,&HFF):poke64(49559d,&HBE):poke64(49560d,&H00)
-          case &H2C: poke64(49558d,&HFF):poke64(49559d,&HFF):poke64(49560d,&H00)
-          case &H2D: poke64(49558d,&HBE):poke64(49559d,&HFF):poke64(49560d,&H00)
-          case &H2E: poke64(49558d,&H7D):poke64(49559d,&HFF):poke64(49560d,&H00)
-          case &H2F: poke64(49558d,&H41):poke64(49559d,&HFF):poke64(49560d,&H00)
-          case &H30: poke64(49558d,&H00):poke64(49559d,&HFF):poke64(49560d,&H00)
-          case &H31: poke64(49558d,&H00):poke64(49559d,&HFF):poke64(49560d,&H41)
-          case &H32: poke64(49558d,&H00):poke64(49559d,&HFF):poke64(49560d,&H7D)
-          case &H33: poke64(49558d,&H00):poke64(49559d,&HFF):poke64(49560d,&HBE)
-          case &H34: poke64(49558d,&H00):poke64(49559d,&HFF):poke64(49560d,&HFF)
-          case &H35: poke64(49558d,&H00):poke64(49559d,&HBE):poke64(49560d,&HFF)
-          case &H36: poke64(49558d,&H00):poke64(49559d,&H7D):poke64(49560d,&HFF)
-          case &H37: poke64(49558d,&H00):poke64(49559d,&H41):poke64(49560d,&HFF)
-          case &H38: poke64(49558d,&H7D):poke64(49559d,&H7D):poke64(49560d,&HFF)
-          case &H39: poke64(49558d,&H9E):poke64(49559d,&H7D):poke64(49560d,&HFF)
-          case &H3A: poke64(49558d,&HBE):poke64(49559d,&H7D):poke64(49560d,&HFF)
-          case &H3B: poke64(49558d,&HDF):poke64(49559d,&H7D):poke64(49560d,&HFF)
-          case &H3C: poke64(49558d,&HFF):poke64(49559d,&H7D):poke64(49560d,&HFF)
-          case &H3D: poke64(49558d,&HFF):poke64(49559d,&H7D):poke64(49560d,&HDF)
-          case &H3E: poke64(49558d,&HFF):poke64(49559d,&H7D):poke64(49560d,&HBE)
-          case &H3F: poke64(49558d,&HFF):poke64(49559d,&H7D):poke64(49560d,&H9E)
-          case &H40: poke64(49558d,&HFF):poke64(49559d,&H7D):poke64(49560d,&H7D)
-          case &H41: poke64(49558d,&HFF):poke64(49559d,&H9E):poke64(49560d,&H7D)
-          case &H42: poke64(49558d,&HFF):poke64(49559d,&HBE):poke64(49560d,&H7D)
-          case &H43: poke64(49558d,&HFF):poke64(49559d,&HDF):poke64(49560d,&H7D)
-          case &H44: poke64(49558d,&HFF):poke64(49559d,&HFF):poke64(49560d,&H7D)
-          case &H45: poke64(49558d,&HDF):poke64(49559d,&HFF):poke64(49560d,&H7D)
-          case &H46: poke64(49558d,&HBE):poke64(49559d,&HFF):poke64(49560d,&H7D)
-          case &H47: poke64(49558d,&H9E):poke64(49559d,&HFF):poke64(49560d,&H7D)
-          case &H48: poke64(49558d,&H7D):poke64(49559d,&HFF):poke64(49560d,&H7D)
-          case &H49: poke64(49558d,&H7D):poke64(49559d,&HFF):poke64(49560d,&H9E)
-          case &H4A: poke64(49558d,&H7D):poke64(49559d,&HFF):poke64(49560d,&HBE)
-          case &H4B: poke64(49558d,&H7D):poke64(49559d,&HFF):poke64(49560d,&HDF)
-          case &H4C: poke64(49558d,&H7D):poke64(49559d,&HFF):poke64(49560d,&HFF)
-          case &H4D: poke64(49558d,&H7D):poke64(49559d,&HDF):poke64(49560d,&HFF)
-          case &H4E: poke64(49558d,&H7D):poke64(49559d,&HBE):poke64(49560d,&HFF)
-          case &H4F: poke64(49558d,&H7D):poke64(49559d,&H9E):poke64(49560d,&HFF)
-          case &H50: poke64(49558d,&HB6):poke64(49559d,&HB6):poke64(49560d,&HFF)
-          case &H51: poke64(49558d,&HC6):poke64(49559d,&HB6):poke64(49560d,&HFF)
-          case &H52: poke64(49558d,&HDB):poke64(49559d,&HB6):poke64(49560d,&HFF)
-          case &H53: poke64(49558d,&HEB):poke64(49559d,&HB6):poke64(49560d,&HFF)
-          case &H54: poke64(49558d,&HFF):poke64(49559d,&HB6):poke64(49560d,&HFF)
-          case &H55: poke64(49558d,&HFF):poke64(49559d,&HB6):poke64(49560d,&HEB)
-          case &H56: poke64(49558d,&HFF):poke64(49559d,&HB6):poke64(49560d,&HDB)
-          case &H57: poke64(49558d,&HFF):poke64(49559d,&HB6):poke64(49560d,&HC6)
-          case &H58: poke64(49558d,&HFF):poke64(49559d,&HB6):poke64(49560d,&HB6)
-          case &H59: poke64(49558d,&HFF):poke64(49559d,&HC6):poke64(49560d,&HB6)
-          case &H5A: poke64(49558d,&HFF):poke64(49559d,&HDB):poke64(49560d,&HB6)
-          case &H5B: poke64(49558d,&HFF):poke64(49559d,&HEB):poke64(49560d,&HB6)
-          case &H5C: poke64(49558d,&HFF):poke64(49559d,&HFF):poke64(49560d,&HB6)
-          case &H5D: poke64(49558d,&HEB):poke64(49559d,&HFF):poke64(49560d,&HB6)
-          case &H5E: poke64(49558d,&HDB):poke64(49559d,&HFF):poke64(49560d,&HB6)
-          case &H5F: poke64(49558d,&HC6):poke64(49559d,&HFF):poke64(49560d,&HB6)
-          case &H60: poke64(49558d,&HB6):poke64(49559d,&HFF):poke64(49560d,&HB6)
-          case &H61: poke64(49558d,&HB6):poke64(49559d,&HFF):poke64(49560d,&HC6)
-          case &H62: poke64(49558d,&HB6):poke64(49559d,&HFF):poke64(49560d,&HDB)
-          case &H63: poke64(49558d,&HB6):poke64(49559d,&HFF):poke64(49560d,&HEB)
-          case &H64: poke64(49558d,&HB6):poke64(49559d,&HFF):poke64(49560d,&HFF)
-          case &H65: poke64(49558d,&HB6):poke64(49559d,&HEB):poke64(49560d,&HFF)
-          case &H66: poke64(49558d,&HB6):poke64(49559d,&HDB):poke64(49560d,&HFF)
-          case &H67: poke64(49558d,&HB6):poke64(49559d,&HC6):poke64(49560d,&HFF)
-          case &H68: poke64(49558d,&H00):poke64(49559d,&H00):poke64(49560d,&H71)
-          case &H69: poke64(49558d,&H1C):poke64(49559d,&H00):poke64(49560d,&H71)
-          case &H6A: poke64(49558d,&H39):poke64(49559d,&H00):poke64(49560d,&H71)
-          case &H6B: poke64(49558d,&H55):poke64(49559d,&H00):poke64(49560d,&H71)
-          case &H6C: poke64(49558d,&H71):poke64(49559d,&H00):poke64(49560d,&H71)
-          case &H6D: poke64(49558d,&H71):poke64(49559d,&H00):poke64(49560d,&H55)
-          case &H6E: poke64(49558d,&H71):poke64(49559d,&H00):poke64(49560d,&H39)
-          case &H6F: poke64(49558d,&H71):poke64(49559d,&H00):poke64(49560d,&H1C)
-          case &H70: poke64(49558d,&H71):poke64(49559d,&H00):poke64(49560d,&H00)
-          case &H71: poke64(49558d,&H71):poke64(49559d,&H1C):poke64(49560d,&H00)
-          case &H72: poke64(49558d,&H71):poke64(49559d,&H39):poke64(49560d,&H00)
-          case &H73: poke64(49558d,&H71):poke64(49559d,&H55):poke64(49560d,&H00)
-          case &H74: poke64(49558d,&H71):poke64(49559d,&H71):poke64(49560d,&H00)
-          case &H75: poke64(49558d,&H55):poke64(49559d,&H71):poke64(49560d,&H00)
-          case &H76: poke64(49558d,&H39):poke64(49559d,&H71):poke64(49560d,&H00)
-          case &H77: poke64(49558d,&H1C):poke64(49559d,&H71):poke64(49560d,&H00)
-          case &H78: poke64(49558d,&H00):poke64(49559d,&H71):poke64(49560d,&H00)
-          case &H79: poke64(49558d,&H00):poke64(49559d,&H71):poke64(49560d,&H1C)
-          case &H7A: poke64(49558d,&H00):poke64(49559d,&H71):poke64(49560d,&H39)
-          case &H7B: poke64(49558d,&H00):poke64(49559d,&H71):poke64(49560d,&H55)
-          case &H7C: poke64(49558d,&H00):poke64(49559d,&H71):poke64(49560d,&H71)
-          case &H7D: poke64(49558d,&H00):poke64(49559d,&H55):poke64(49560d,&H71)
-          case &H7E: poke64(49558d,&H00):poke64(49559d,&H39):poke64(49560d,&H71)
-          case &H7F: poke64(49558d,&H00):poke64(49559d,&H1C):poke64(49560d,&H71)
-          case &H80: poke64(49558d,&H39):poke64(49559d,&H39):poke64(49560d,&H71)
-          case &H81: poke64(49558d,&H45):poke64(49559d,&H39):poke64(49560d,&H71)
-          case &H82: poke64(49558d,&H55):poke64(49559d,&H39):poke64(49560d,&H71)
-          case &H83: poke64(49558d,&H61):poke64(49559d,&H39):poke64(49560d,&H71)
-          case &H84: poke64(49558d,&H71):poke64(49559d,&H39):poke64(49560d,&H71)
-          case &H85: poke64(49558d,&H71):poke64(49559d,&H39):poke64(49560d,&H61)
-          case &H86: poke64(49558d,&H71):poke64(49559d,&H39):poke64(49560d,&H55)
-          case &H87: poke64(49558d,&H71):poke64(49559d,&H39):poke64(49560d,&H45)
-          case &H88: poke64(49558d,&H71):poke64(49559d,&H39):poke64(49560d,&H39)
-          case &H89: poke64(49558d,&H71):poke64(49559d,&H45):poke64(49560d,&H39)
-          case &H8A: poke64(49558d,&H71):poke64(49559d,&H55):poke64(49560d,&H39)
-          case &H8B: poke64(49558d,&H71):poke64(49559d,&H61):poke64(49560d,&H39)
-          case &H8C: poke64(49558d,&H71):poke64(49559d,&H71):poke64(49560d,&H39)
-          case &H8D: poke64(49558d,&H61):poke64(49559d,&H71):poke64(49560d,&H39)
-          case &H8E: poke64(49558d,&H55):poke64(49559d,&H71):poke64(49560d,&H39)
-          case &H8F: poke64(49558d,&H45):poke64(49559d,&H71):poke64(49560d,&H39)
-          case &H90: poke64(49558d,&H39):poke64(49559d,&H71):poke64(49560d,&H39)
-          case &H91: poke64(49558d,&H39):poke64(49559d,&H71):poke64(49560d,&H45)
-          case &H92: poke64(49558d,&H39):poke64(49559d,&H71):poke64(49560d,&H55)
-          case &H93: poke64(49558d,&H39):poke64(49559d,&H71):poke64(49560d,&H61)
-          case &H94: poke64(49558d,&H39):poke64(49559d,&H71):poke64(49560d,&H71)
-          case &H95: poke64(49558d,&H39):poke64(49559d,&H61):poke64(49560d,&H71)
-          case &H96: poke64(49558d,&H39):poke64(49559d,&H55):poke64(49560d,&H71)
-          case &H97: poke64(49558d,&H39):poke64(49559d,&H45):poke64(49560d,&H71)
-          case &H98: poke64(49558d,&H51):poke64(49559d,&H51):poke64(49560d,&H71)
-          case &H99: poke64(49558d,&H59):poke64(49559d,&H51):poke64(49560d,&H71)
-          case &H9A: poke64(49558d,&H61):poke64(49559d,&H51):poke64(49560d,&H71)
-          case &H9B: poke64(49558d,&H69):poke64(49559d,&H51):poke64(49560d,&H71)
-          case &H9C: poke64(49558d,&H71):poke64(49559d,&H51):poke64(49560d,&H71)
-          case &H9D: poke64(49558d,&H71):poke64(49559d,&H51):poke64(49560d,&H69)
-          case &H9E: poke64(49558d,&H71):poke64(49559d,&H51):poke64(49560d,&H61)
-          case &H9F: poke64(49558d,&H71):poke64(49559d,&H51):poke64(49560d,&H59)
-          case &HA0: poke64(49558d,&H71):poke64(49559d,&H51):poke64(49560d,&H51)
-          case &HA1: poke64(49558d,&H71):poke64(49559d,&H59):poke64(49560d,&H51)
-          case &HA2: poke64(49558d,&H71):poke64(49559d,&H61):poke64(49560d,&H51)
-          case &HA3: poke64(49558d,&H71):poke64(49559d,&H69):poke64(49560d,&H51)
-          case &HA4: poke64(49558d,&H71):poke64(49559d,&H71):poke64(49560d,&H51)
-          case &HA5: poke64(49558d,&H69):poke64(49559d,&H71):poke64(49560d,&H51)
-          case &HA6: poke64(49558d,&H61):poke64(49559d,&H71):poke64(49560d,&H51)
-          case &HA7: poke64(49558d,&H59):poke64(49559d,&H71):poke64(49560d,&H51)
-          case &HA8: poke64(49558d,&H51):poke64(49559d,&H71):poke64(49560d,&H51)
-          case &HA9: poke64(49558d,&H51):poke64(49559d,&H71):poke64(49560d,&H59)
-          case &HAA: poke64(49558d,&H51):poke64(49559d,&H71):poke64(49560d,&H61)
-          case &HAB: poke64(49558d,&H51):poke64(49559d,&H71):poke64(49560d,&H69)
-          case &HAC: poke64(49558d,&H51):poke64(49559d,&H71):poke64(49560d,&H71)
-          case &HAD: poke64(49558d,&H51):poke64(49559d,&H69):poke64(49560d,&H71)
-          case &HAE: poke64(49558d,&H51):poke64(49559d,&H61):poke64(49560d,&H71)
-          case &HAF: poke64(49558d,&H51):poke64(49559d,&H59):poke64(49560d,&H71)
-          case &HB0: poke64(49558d,&H00):poke64(49559d,&H00):poke64(49560d,&H41)
-          case &HB1: poke64(49558d,&H10):poke64(49559d,&H00):poke64(49560d,&H41)
-          case &HB2: poke64(49558d,&H20):poke64(49559d,&H00):poke64(49560d,&H41)
-          case &HB3: poke64(49558d,&H31):poke64(49559d,&H00):poke64(49560d,&H41)
-          case &HB4: poke64(49558d,&H41):poke64(49559d,&H00):poke64(49560d,&H41)
-          case &HB5: poke64(49558d,&H41):poke64(49559d,&H00):poke64(49560d,&H31)
-          case &HB6: poke64(49558d,&H41):poke64(49559d,&H00):poke64(49560d,&H20)
-          case &HB7: poke64(49558d,&H41):poke64(49559d,&H00):poke64(49560d,&H10)
-          case &HB8: poke64(49558d,&H41):poke64(49559d,&H00):poke64(49560d,&H00)
-          case &HB9: poke64(49558d,&H41):poke64(49559d,&H10):poke64(49560d,&H00)
-          case &HBA: poke64(49558d,&H41):poke64(49559d,&H20):poke64(49560d,&H00)
-          case &HBB: poke64(49558d,&H41):poke64(49559d,&H31):poke64(49560d,&H00)
-          case &HBC: poke64(49558d,&H41):poke64(49559d,&H41):poke64(49560d,&H00)
-          case &HBD: poke64(49558d,&H31):poke64(49559d,&H41):poke64(49560d,&H00)
-          case &HBE: poke64(49558d,&H20):poke64(49559d,&H41):poke64(49560d,&H00)
-          case &HBF: poke64(49558d,&H10):poke64(49559d,&H41):poke64(49560d,&H00)
-          case &HC0: poke64(49558d,&H00):poke64(49559d,&H41):poke64(49560d,&H00)
-          case &HC1: poke64(49558d,&H00):poke64(49559d,&H41):poke64(49560d,&H10)
-          case &HC2: poke64(49558d,&H00):poke64(49559d,&H41):poke64(49560d,&H20)
-          case &HC3: poke64(49558d,&H00):poke64(49559d,&H41):poke64(49560d,&H31)
-          case &HC4: poke64(49558d,&H00):poke64(49559d,&H41):poke64(49560d,&H41)
-          case &HC5: poke64(49558d,&H00):poke64(49559d,&H31):poke64(49560d,&H41)
-          case &HC6: poke64(49558d,&H00):poke64(49559d,&H20):poke64(49560d,&H41)
-          case &HC7: poke64(49558d,&H00):poke64(49559d,&H10):poke64(49560d,&H41)
-          case &HC8: poke64(49558d,&H20):poke64(49559d,&H20):poke64(49560d,&H41)
-          case &HC9: poke64(49558d,&H28):poke64(49559d,&H20):poke64(49560d,&H41)
-          case &HCA: poke64(49558d,&H31):poke64(49559d,&H20):poke64(49560d,&H41)
-          case &HCB: poke64(49558d,&H39):poke64(49559d,&H20):poke64(49560d,&H41)
-          case &HCC: poke64(49558d,&H41):poke64(49559d,&H20):poke64(49560d,&H41)
-          case &HCD: poke64(49558d,&H41):poke64(49559d,&H20):poke64(49560d,&H39)
-          case &HCE: poke64(49558d,&H41):poke64(49559d,&H20):poke64(49560d,&H31)
-          case &HCF: poke64(49558d,&H41):poke64(49559d,&H20):poke64(49560d,&H28)
-          case &HD0: poke64(49558d,&H41):poke64(49559d,&H20):poke64(49560d,&H20)
-          case &HD1: poke64(49558d,&H41):poke64(49559d,&H28):poke64(49560d,&H20)
-          case &HD2: poke64(49558d,&H41):poke64(49559d,&H31):poke64(49560d,&H20)
-          case &HD3: poke64(49558d,&H41):poke64(49559d,&H39):poke64(49560d,&H20)
-          case &HD4: poke64(49558d,&H41):poke64(49559d,&H41):poke64(49560d,&H20)
-          case &HD5: poke64(49558d,&H39):poke64(49559d,&H41):poke64(49560d,&H20)
-          case &HD6: poke64(49558d,&H31):poke64(49559d,&H41):poke64(49560d,&H20)
-          case &HD7: poke64(49558d,&H28):poke64(49559d,&H41):poke64(49560d,&H20)
-          case &HD8: poke64(49558d,&H20):poke64(49559d,&H41):poke64(49560d,&H20)
-          case &HD9: poke64(49558d,&H20):poke64(49559d,&H41):poke64(49560d,&H28)
-          case &HDA: poke64(49558d,&H20):poke64(49559d,&H41):poke64(49560d,&H31)
-          case &HDB: poke64(49558d,&H20):poke64(49559d,&H41):poke64(49560d,&H39)
-          case &HDC: poke64(49558d,&H20):poke64(49559d,&H41):poke64(49560d,&H41)
-          case &HDD: poke64(49558d,&H20):poke64(49559d,&H39):poke64(49560d,&H41)
-          case &HDE: poke64(49558d,&H20):poke64(49559d,&H31):poke64(49560d,&H41)
-          case &HDF: poke64(49558d,&H20):poke64(49559d,&H28):poke64(49560d,&H41)
-          case &HE0: poke64(49558d,&H2D):poke64(49559d,&H2D):poke64(49560d,&H41)
-          case &HE1: poke64(49558d,&H31):poke64(49559d,&H2D):poke64(49560d,&H41)
-          case &HE2: poke64(49558d,&H35):poke64(49559d,&H2D):poke64(49560d,&H41)
-          case &HE3: poke64(49558d,&H3D):poke64(49559d,&H2D):poke64(49560d,&H41)
-          case &HE4: poke64(49558d,&H41):poke64(49559d,&H2D):poke64(49560d,&H41)
-          case &HE5: poke64(49558d,&H41):poke64(49559d,&H2D):poke64(49560d,&H3D)
-          case &HE6: poke64(49558d,&H41):poke64(49559d,&H2D):poke64(49560d,&H35)
-          case &HE7: poke64(49558d,&H41):poke64(49559d,&H2D):poke64(49560d,&H31)
-          case &HE8: poke64(49558d,&H41):poke64(49559d,&H2D):poke64(49560d,&H2D)
-          case &HE9: poke64(49558d,&H41):poke64(49559d,&H31):poke64(49560d,&H2D)
-          case &HEA: poke64(49558d,&H41):poke64(49559d,&H35):poke64(49560d,&H2D)
-          case &HEB: poke64(49558d,&H41):poke64(49559d,&H3D):poke64(49560d,&H2D)
-          case &HEC: poke64(49558d,&H41):poke64(49559d,&H41):poke64(49560d,&H2D)
-          case &HED: poke64(49558d,&H3D):poke64(49559d,&H41):poke64(49560d,&H2D)
-          case &HEE: poke64(49558d,&H35):poke64(49559d,&H41):poke64(49560d,&H2D)
-          case &HEF: poke64(49558d,&H31):poke64(49559d,&H41):poke64(49560d,&H2D)
-          case &HF0: poke64(49558d,&H2D):poke64(49559d,&H41):poke64(49560d,&H2D)
-          case &HF1: poke64(49558d,&H2D):poke64(49559d,&H41):poke64(49560d,&H31)
-          case &HF2: poke64(49558d,&H2D):poke64(49559d,&H41):poke64(49560d,&H35)
-          case &HF3: poke64(49558d,&H2D):poke64(49559d,&H41):poke64(49560d,&H3D)
-          case &HF4: poke64(49558d,&H2D):poke64(49559d,&H41):poke64(49560d,&H41)
-          case &HF5: poke64(49558d,&H2D):poke64(49559d,&H3D):poke64(49560d,&H41)
-          case &HF6: poke64(49558d,&H2D):poke64(49559d,&H35):poke64(49560d,&H41)
-          case &HF7: poke64(49558d,&H2D):poke64(49559d,&H31):poke64(49560d,&H41)
-          case &HF8: poke64(49558d,&HFF):poke64(49559d,&HB0):poke64(49560d,&H00)
-          case &HF9: poke64(49558d,&HFF):poke64(49559d,&HC0):poke64(49560d,&H00)
-          case &HFA: poke64(49558d,&H33):poke64(49559d,&HFF):poke64(49560d,&H00)
-          case &HFB: poke64(49558d,&H33):poke64(49559d,&HFF):poke64(49560d,&H33)
-          case &HFC: poke64(49558d,&H00):poke64(49559d,&HFF):poke64(49560d,&H33)
-          case &HFD: poke64(49558d,&H66):poke64(49559d,&HFF):poke64(49560d,&H66)
-          case &HFE: poke64(49558d,&H00):poke64(49559d,&HFF):poke64(49560d,&H66)
-          case &HFF: poke64(49558d,&H28):poke64(49559d,&H28):poke64(49560d,&H28)        
-   end select
-  elseif mov(adr, 55487d) then  poke64(53281d,v)	
-  end if
+   cmp v eq &H00 jmp L1830
+   cmp v eq &H01 jmp L1831
+   cmp v eq &H02 jmp L1832
+   cmp v eq &H03 jmp L1833
+   cmp v eq &H04 jmp L1834
+   cmp v eq &H05 jmp L1835
+   cmp v eq &H06 jmp L1836
+   cmp v eq &H07 jmp L1837
+   cmp v eq &H08 jmp L1838
+   cmp v eq &H09 jmp L1839
+   cmp v eq &H0A jmp L1840
+   cmp v eq &H0B jmp L1841
+   cmp v eq &H0C jmp L1842
+   cmp v eq &H0D jmp L1843
+   cmp v eq &H0E jmp L1844
+   cmp v eq &H0F jmp L1845
+   cmp v eq &H10 jmp L1846
+   cmp v eq &H11 jmp L1847
+   cmp v eq &H12 jmp L1848
+   cmp v eq &H13 jmp L1849
+   cmp v eq &H14 jmp L1850
+   cmp v eq &H15 jmp L1851
+   cmp v eq &H16 jmp L1852
+   cmp v eq &H17 jmp L1853
+   cmp v eq &H18 jmp L1854
+   cmp v eq &H19 jmp L1855
+   cmp v eq &H1A jmp L1856
+   cmp v eq &H1B jmp L1857
+   cmp v eq &H1C jmp L1858
+   cmp v eq &H1D jmp L1859
+   cmp v eq &H1E jmp L1860
+   cmp v eq &H1F jmp L1861
+   cmp v eq &H20 jmp L1862
+   cmp v eq &H21 jmp L1863
+   cmp v eq &H22 jmp L1864
+   cmp v eq &H23 jmp L1865
+   cmp v eq &H24 jmp L1866
+   cmp v eq &H25 jmp L1867
+   cmp v eq &H26 jmp L1868
+   cmp v eq &H27 jmp L1869
+   cmp v eq &H28 jmp L1870
+   cmp v eq &H29 jmp L1871
+   cmp v eq &H2A jmp L1872
+   cmp v eq &H2B jmp L1873
+   cmp v eq &H2C jmp L1874
+   cmp v eq &H2D jmp L1875
+   cmp v eq &H2E jmp L1876
+   cmp v eq &H2F jmp L1877
+   cmp v eq &H30 jmp L1878
+   cmp v eq &H31 jmp L1879
+   cmp v eq &H32 jmp L1880
+   cmp v eq &H33 jmp L1881
+   cmp v eq &H34 jmp L1882
+   cmp v eq &H35 jmp L1883
+   cmp v eq &H36 jmp L1884
+   cmp v eq &H37 jmp L1885
+   cmp v eq &H38 jmp L1886
+   cmp v eq &H39 jmp L1887
+   cmp v eq &H3A jmp L1888
+   cmp v eq &H3B jmp L1889
+   cmp v eq &H3C jmp L1890
+   cmp v eq &H3D jmp L1891
+   cmp v eq &H3E jmp L1892
+   cmp v eq &H3F jmp L1893
+   cmp v eq &H40 jmp L1894
+   cmp v eq &H41 jmp L1895
+   cmp v eq &H42 jmp L1896
+   cmp v eq &H43 jmp L1897
+   cmp v eq &H44 jmp L1898
+   cmp v eq &H45 jmp L1899
+   cmp v eq &H46 jmp L1900
+   cmp v eq &H47 jmp L1901
+   cmp v eq &H48 jmp L1902
+   cmp v eq &H49 jmp L1903
+   cmp v eq &H4A jmp L1904
+   cmp v eq &H4B jmp L1905
+   cmp v eq &H4C jmp L1906
+   cmp v eq &H4D jmp L1907
+   cmp v eq &H4E jmp L1908
+   cmp v eq &H4F jmp L1909
+   cmp v eq &H50 jmp L1910
+   cmp v eq &H51 jmp L1911
+   cmp v eq &H52 jmp L1912
+   cmp v eq &H53 jmp L1913
+   cmp v eq &H54 jmp L1914
+   cmp v eq &H55 jmp L1915
+   cmp v eq &H56 jmp L1916
+   cmp v eq &H57 jmp L1917
+   cmp v eq &H58 jmp L1918
+   cmp v eq &H59 jmp L1919
+   cmp v eq &H5A jmp L1920
+   cmp v eq &H5B jmp L1921
+   cmp v eq &H5C jmp L1922
+   cmp v eq &H5D jmp L1923
+   cmp v eq &H5E jmp L1924
+   cmp v eq &H5F jmp L1925
+   cmp v eq &H60 jmp L1926
+   cmp v eq &H61 jmp L1927
+   cmp v eq &H62 jmp L1928
+   cmp v eq &H63 jmp L1929
+   cmp v eq &H64 jmp L1930
+   cmp v eq &H65 jmp L1931
+   cmp v eq &H66 jmp L1932
+   cmp v eq &H67 jmp L1933
+   cmp v eq &H68 jmp L1934
+   cmp v eq &H69 jmp L1935
+   cmp v eq &H6A jmp L1936
+   cmp v eq &H6B jmp L1937
+   cmp v eq &H6C jmp L1938
+   cmp v eq &H6D jmp L1939
+   cmp v eq &H6E jmp L1940
+   cmp v eq &H6F jmp L1941
+   cmp v eq &H70 jmp L1942
+   cmp v eq &H71 jmp L1943
+   cmp v eq &H72 jmp L1944
+   cmp v eq &H73 jmp L1945
+   cmp v eq &H74 jmp L1946
+   cmp v eq &H75 jmp L1947
+   cmp v eq &H76 jmp L1948
+   cmp v eq &H77 jmp L1949
+   cmp v eq &H78 jmp L1950
+   cmp v eq &H79 jmp L1951
+   cmp v eq &H7A jmp L1952
+   cmp v eq &H7B jmp L1953
+   cmp v eq &H7C jmp L1954
+   cmp v eq &H7D jmp L1955
+   cmp v eq &H7E jmp L1956
+   cmp v eq &H7F jmp L1957
+   cmp v eq &H80 jmp L1958
+   cmp v eq &H81 jmp L1959
+   cmp v eq &H82 jmp L1960
+   cmp v eq &H83 jmp L1961
+   cmp v eq &H84 jmp L1962
+   cmp v eq &H85 jmp L1963
+   cmp v eq &H86 jmp L1964
+   cmp v eq &H87 jmp L1965
+   cmp v eq &H88 jmp L1966
+   cmp v eq &H89 jmp L1967
+   cmp v eq &H8A jmp L1968
+   cmp v eq &H8B jmp L1969
+   cmp v eq &H8C jmp L1970
+   cmp v eq &H8D jmp L1971
+   cmp v eq &H8E jmp L1972
+   cmp v eq &H8F jmp L1973
+   cmp v eq &H90 jmp L1974
+   cmp v eq &H91 jmp L1975
+   cmp v eq &H92 jmp L1976
+   cmp v eq &H93 jmp L1977
+   cmp v eq &H94 jmp L1978
+   cmp v eq &H95 jmp L1979
+   cmp v eq &H96 jmp L1980
+   cmp v eq &H97 jmp L1981
+   cmp v eq &H98 jmp L1982
+   cmp v eq &H99 jmp L1983
+   cmp v eq &H9A jmp L1984
+   cmp v eq &H9B jmp L1985
+   cmp v eq &H9C jmp L1986
+   cmp v eq &H9D jmp L1987
+   cmp v eq &H9E jmp L1988
+   cmp v eq &H9F jmp L1989
+   cmp v eq &HA0 jmp L1990
+   cmp v eq &HA1 jmp L1991
+   cmp v eq &HA2 jmp L1992
+   cmp v eq &HA3 jmp L1993
+   cmp v eq &HA4 jmp L1994
+   cmp v eq &HA5 jmp L1995
+   cmp v eq &HA6 jmp L1996
+   cmp v eq &HA7 jmp L1997
+   cmp v eq &HA8 jmp L1998
+   cmp v eq &HA9 jmp L1999
+   cmp v eq &HAA jmp L2000
+   cmp v eq &HAB jmp L2001
+   cmp v eq &HAC jmp L2002
+   cmp v eq &HAD jmp L2003
+   cmp v eq &HAE jmp L2004
+   cmp v eq &HAF jmp L2005
+   cmp v eq &HB0 jmp L2006
+   cmp v eq &HB1 jmp L2007
+   cmp v eq &HB2 jmp L2008
+   cmp v eq &HB3 jmp L2009
+   cmp v eq &HB4 jmp L2010
+   cmp v eq &HB5 jmp L2011
+   cmp v eq &HB6 jmp L2012
+   cmp v eq &HB7 jmp L2013
+   cmp v eq &HB8 jmp L2014
+   cmp v eq &HB9 jmp L2015
+   cmp v eq &HBA jmp L2016
+   cmp v eq &HBB jmp L2017
+   cmp v eq &HBC jmp L2018
+   cmp v eq &HBD jmp L2019
+   cmp v eq &HBE jmp L2020
+   cmp v eq &HBF jmp L2021
+   cmp v eq &HC0 jmp L2022
+   cmp v eq &HC1 jmp L2023
+   cmp v eq &HC2 jmp L2024
+   cmp v eq &HC3 jmp L2025
+   cmp v eq &HC4 jmp L2026
+   cmp v eq &HC5 jmp L2027
+   cmp v eq &HC6 jmp L2028
+   cmp v eq &HC7 jmp L2029
+   cmp v eq &HC8 jmp L2030
+   cmp v eq &HC9 jmp L2031
+   cmp v eq &HCA jmp L2032
+   cmp v eq &HCB jmp L2033
+   cmp v eq &HCC jmp L2034
+   cmp v eq &HCD jmp L2035
+   cmp v eq &HCE jmp L2036
+   cmp v eq &HCF jmp L2037
+   cmp v eq &HD0 jmp L2038
+   cmp v eq &HD1 jmp L2039
+   cmp v eq &HD2 jmp L2040
+   cmp v eq &HD3 jmp L2041
+   cmp v eq &HD4 jmp L2042
+   cmp v eq &HD5 jmp L2043
+   cmp v eq &HD6 jmp L2044
+   cmp v eq &HD7 jmp L2045
+   cmp v eq &HD8 jmp L2046
+   cmp v eq &HD9 jmp L2047
+   cmp v eq &HDA jmp L2048
+   cmp v eq &HDB jmp L2049
+   cmp v eq &HDC jmp L2050
+   cmp v eq &HDD jmp L2051
+   cmp v eq &HDE jmp L2052
+   cmp v eq &HDF jmp L2053
+   cmp v eq &HE0 jmp L2054
+   cmp v eq &HE1 jmp L2055
+   cmp v eq &HE2 jmp L2056
+   cmp v eq &HE3 jmp L2057
+   cmp v eq &HE4 jmp L2058
+   cmp v eq &HE5 jmp L2059
+   cmp v eq &HE6 jmp L2060
+   cmp v eq &HE7 jmp L2061
+   cmp v eq &HE8 jmp L2062
+   cmp v eq &HE9 jmp L2063
+   cmp v eq &HEA jmp L2064
+   cmp v eq &HEB jmp L2065
+   cmp v eq &HEC jmp L2066
+   cmp v eq &HED jmp L2067
+   cmp v eq &HEE jmp L2068
+   cmp v eq &HEF jmp L2069
+   cmp v eq &HF0 jmp L2070
+   cmp v eq &HF1 jmp L2071
+   cmp v eq &HF2 jmp L2072
+   cmp v eq &HF3 jmp L2073
+   cmp v eq &HF4 jmp L2074
+   cmp v eq &HF5 jmp L2075
+   cmp v eq &HF6 jmp L2076
+   cmp v eq &HF7 jmp L2077
+   cmp v eq &HF8 jmp L2078
+   cmp v eq &HF9 jmp L2079
+   cmp v eq &HFA jmp L2080
+   cmp v eq &HFB jmp L2081
+   cmp v eq &HFC jmp L2082
+   cmp v eq &HFD jmp L2083
+   cmp v eq &HFE jmp L2084
+   cmp v eq &HFF jmp L2085
+   jmp L2086
+L1830:
+   poke64(49158,&H0):poke64(49159,&H0):poke64(49160,&H0)
+   jmp L2086
+L1831:
+   poke64(49158,&H0):poke64(49159,&H0):poke64(49160,&HAA)
+   jmp L2086
+L1832:
+   poke64(49158,&H0):poke64(49159,&HAA):poke64(49160,&H0)
+   jmp L2086
+L1833:
+   poke64(49158,&H0):poke64(49159,&HAA):poke64(49160,&HAA)
+   jmp L2086
+L1834:
+   poke64(49158,&HAA):poke64(49159,&H0):poke64(49160,&H0)
+   jmp L2086
+L1835:
+   poke64(49158,&HAA):poke64(49159,&H0):poke64(49160,&HAA)
+   jmp L2086
+L1836:
+   poke64(49158,&HAA):poke64(49159,&H55):poke64(49160,&H0)
+   jmp L2086
+L1837:
+   poke64(49158,&HAA):poke64(49159,&HAA):poke64(49160,&HAA)
+   jmp L2086
+L1838:
+   poke64(49158,&H55):poke64(49159,&H55):poke64(49160,&H55)
+   jmp L2086
+L1839:
+   poke64(49158,&H55):poke64(49159,&H55):poke64(49160,&HFF)
+   jmp L2086
+L1840:
+   poke64(49158,&H55):poke64(49159,&HFF):poke64(49160,&H55)
+   jmp L2086
+L1841:
+   poke64(49158,&H55):poke64(49159,&HFF):poke64(49160,&HFF)
+   jmp L2086
+L1842:
+   poke64(49158,&HFF):poke64(49159,&H55):poke64(49160,&H55)
+   jmp L2086
+L1843:
+   poke64(49158,&HFF):poke64(49159,&H55):poke64(49160,&HFF)
+   jmp L2086
+L1844:
+   poke64(49158,&HFF):poke64(49159,&HFF):poke64(49160,&H55)
+   jmp L2086
+L1845:
+   poke64(49158,&HFF):poke64(49159,&HFF):poke64(49160,&HFF)
+   jmp L2086
+L1846:
+   poke64(49158,&H0):poke64(49159,&H0):poke64(49160,&H0)
+   jmp L2086
+L1847:
+   poke64(49158,&H14):poke64(49159,&H14):poke64(49160,&H14)
+   jmp L2086
+L1848:
+   poke64(49158,&H20):poke64(49159,&H20):poke64(49160,&H20)
+   jmp L2086
+L1849:
+   poke64(49158,&H2D):poke64(49159,&H2D):poke64(49160,&H2D)
+   jmp L2086
+L1850:
+   poke64(49158,&H39):poke64(49159,&H39):poke64(49160,&H39)
+   jmp L2086
+L1851:
+   poke64(49158,&H45):poke64(49159,&H45):poke64(49160,&H45)
+   jmp L2086
+L1852:
+   poke64(49158,&H51):poke64(49159,&H51):poke64(49160,&H51)
+   jmp L2086
+L1853:
+   poke64(49158,&H61):poke64(49159,&H61):poke64(49160,&H61)
+   jmp L2086
+L1854:
+   poke64(49158,&H71):poke64(49159,&H71):poke64(49160,&H71)
+   jmp L2086
+L1855:
+   poke64(49158,&H82):poke64(49159,&H82):poke64(49160,&H82)
+   jmp L2086
+L1856:
+   poke64(49158,&H92):poke64(49159,&H92):poke64(49160,&H92)
+   jmp L2086
+L1857:
+   poke64(49158,&HA2):poke64(49159,&HA2):poke64(49160,&HA2)
+   jmp L2086
+L1858:
+   poke64(49158,&HB6):poke64(49159,&HB6):poke64(49160,&HB6)
+   jmp L2086
+L1859:
+   poke64(49158,&HCA):poke64(49159,&HCA):poke64(49160,&HCA)
+   jmp L2086
+L1860:
+   poke64(49158,&HE3):poke64(49159,&HE3):poke64(49160,&HE3)
+   jmp L2086
+L1861:
+   poke64(49158,&HFF):poke64(49159,&HFF):poke64(49160,&HFF)
+   jmp L2086
+L1862:
+   poke64(49158,&H0):poke64(49159,&H0):poke64(49160,&HFF)
+   jmp L2086
+L1863:
+   poke64(49158,&H41):poke64(49159,&H0):poke64(49160,&HFF)
+   jmp L2086
+L1864:
+   poke64(49158,&H7D):poke64(49159,&H0):poke64(49160,&HFF)
+   jmp L2086
+L1865:
+   poke64(49158,&HBE):poke64(49159,&H0):poke64(49160,&HFF)
+   jmp L2086
+L1866:
+   poke64(49158,&HFF):poke64(49159,&H0):poke64(49160,&HFF)
+   jmp L2086
+L1867:
+   poke64(49158,&HFF):poke64(49159,&H0):poke64(49160,&HBE)
+   jmp L2086
+L1868:
+   poke64(49158,&HFF):poke64(49159,&H0):poke64(49160,&H7D)
+   jmp L2086
+L1869:
+   poke64(49158,&HFF):poke64(49159,&H0):poke64(49160,&H41)
+   jmp L2086
+L1870:
+   poke64(49158,&HFF):poke64(49159,&H0):poke64(49160,&H0)
+   jmp L2086
+L1871:
+   poke64(49158,&HFF):poke64(49159,&H41):poke64(49160,&H0)
+   jmp L2086
+L1872:
+   poke64(49158,&HFF):poke64(49159,&H7D):poke64(49160,&H0)
+   jmp L2086
+L1873:
+   poke64(49158,&HFF):poke64(49159,&HBE):poke64(49160,&H0)
+   jmp L2086
+L1874:
+   poke64(49158,&HFF):poke64(49159,&HFF):poke64(49160,&H0)
+   jmp L2086
+L1875:
+   poke64(49158,&HBE):poke64(49159,&HFF):poke64(49160,&H0)
+   jmp L2086
+L1876:
+   poke64(49158,&H7D):poke64(49159,&HFF):poke64(49160,&H0)
+   jmp L2086
+L1877:
+   poke64(49158,&H41):poke64(49159,&HFF):poke64(49160,&H0)
+   jmp L2086
+L1878:
+   poke64(49158,&H0):poke64(49159,&HFF):poke64(49160,&H0)
+   jmp L2086
+L1879:
+   poke64(49158,&H0):poke64(49159,&HFF):poke64(49160,&H41)
+   jmp L2086
+L1880:
+   poke64(49158,&H0):poke64(49159,&HFF):poke64(49160,&H7D)
+   jmp L2086
+L1881:
+   poke64(49158,&H0):poke64(49159,&HFF):poke64(49160,&HBE)
+   jmp L2086
+L1882:
+   poke64(49158,&H0):poke64(49159,&HFF):poke64(49160,&HFF)
+   jmp L2086
+L1883:
+   poke64(49158,&H0):poke64(49159,&HBE):poke64(49160,&HFF)
+   jmp L2086
+L1884:
+   poke64(49158,&H0):poke64(49159,&H7D):poke64(49160,&HFF)
+   jmp L2086
+L1885:
+   poke64(49158,&H0):poke64(49159,&H41):poke64(49160,&HFF)
+   jmp L2086
+L1886:
+   poke64(49158,&H7D):poke64(49159,&H7D):poke64(49160,&HFF)
+   jmp L2086
+L1887:
+   poke64(49158,&H9E):poke64(49159,&H7D):poke64(49160,&HFF)
+   jmp L2086
+L1888:
+   poke64(49158,&HBE):poke64(49159,&H7D):poke64(49160,&HFF)
+   jmp L2086
+L1889:
+   poke64(49158,&HDF):poke64(49159,&H7D):poke64(49160,&HFF)
+   jmp L2086
+L1890:
+   poke64(49158,&HFF):poke64(49159,&H7D):poke64(49160,&HFF)
+   jmp L2086
+L1891:
+   poke64(49158,&HFF):poke64(49159,&H7D):poke64(49160,&HDF)
+   jmp L2086
+L1892:
+   poke64(49158,&HFF):poke64(49159,&H7D):poke64(49160,&HBE)
+   jmp L2086
+L1893:
+   poke64(49158,&HFF):poke64(49159,&H7D):poke64(49160,&H9E)
+   jmp L2086
+L1894:
+   poke64(49158,&HFF):poke64(49159,&H7D):poke64(49160,&H7D)
+   jmp L2086
+L1895:
+   poke64(49158,&HFF):poke64(49159,&H9E):poke64(49160,&H7D)
+   jmp L2086
+L1896:
+   poke64(49158,&HFF):poke64(49159,&HBE):poke64(49160,&H7D)
+   jmp L2086
+L1897:
+   poke64(49158,&HFF):poke64(49159,&HDF):poke64(49160,&H7D)
+   jmp L2086
+L1898:
+   poke64(49158,&HFF):poke64(49159,&HFF):poke64(49160,&H7D)
+   jmp L2086
+L1899:
+   poke64(49158,&HDF):poke64(49159,&HFF):poke64(49160,&H7D)
+   jmp L2086
+L1900:
+   poke64(49158,&HBE):poke64(49159,&HFF):poke64(49160,&H7D)
+   jmp L2086
+L1901:
+   poke64(49158,&H9E):poke64(49159,&HFF):poke64(49160,&H7D)
+   jmp L2086
+L1902:
+   poke64(49158,&H7D):poke64(49159,&HFF):poke64(49160,&H7D)
+   jmp L2086
+L1903:
+   poke64(49158,&H7D):poke64(49159,&HFF):poke64(49160,&H9E)
+   jmp L2086
+L1904:
+   poke64(49158,&H7D):poke64(49159,&HFF):poke64(49160,&HBE)
+   jmp L2086
+L1905:
+   poke64(49158,&H7D):poke64(49159,&HFF):poke64(49160,&HDF)
+   jmp L2086
+L1906:
+   poke64(49158,&H7D):poke64(49159,&HFF):poke64(49160,&HFF)
+   jmp L2086
+L1907:
+   poke64(49158,&H7D):poke64(49159,&HDF):poke64(49160,&HFF)
+   jmp L2086
+L1908:
+   poke64(49158,&H7D):poke64(49159,&HBE):poke64(49160,&HFF)
+   jmp L2086
+L1909:
+   poke64(49158,&H7D):poke64(49159,&H9E):poke64(49160,&HFF)
+   jmp L2086
+L1910:
+   poke64(49158,&HB6):poke64(49159,&HB6):poke64(49160,&HFF)
+   jmp L2086
+L1911:
+   poke64(49158,&HC6):poke64(49159,&HB6):poke64(49160,&HFF)
+   jmp L2086
+L1912:
+   poke64(49158,&HDB):poke64(49159,&HB6):poke64(49160,&HFF)
+   jmp L2086
+L1913:
+   poke64(49158,&HEB):poke64(49159,&HB6):poke64(49160,&HFF)
+   jmp L2086
+L1914:
+   poke64(49158,&HFF):poke64(49159,&HB6):poke64(49160,&HFF)
+   jmp L2086
+L1915:
+   poke64(49158,&HFF):poke64(49159,&HB6):poke64(49160,&HEB)
+   jmp L2086
+L1916:
+   poke64(49158,&HFF):poke64(49159,&HB6):poke64(49160,&HDB)
+   jmp L2086
+L1917:
+   poke64(49158,&HFF):poke64(49159,&HB6):poke64(49160,&HC6)
+   jmp L2086
+L1918:
+   poke64(49158,&HFF):poke64(49159,&HB6):poke64(49160,&HB6)
+   jmp L2086
+L1919:
+   poke64(49158,&HFF):poke64(49159,&HC6):poke64(49160,&HB6)
+   jmp L2086
+L1920:
+   poke64(49158,&HFF):poke64(49159,&HDB):poke64(49160,&HB6)
+   jmp L2086
+L1921:
+   poke64(49158,&HFF):poke64(49159,&HEB):poke64(49160,&HB6)
+   jmp L2086
+L1922:
+   poke64(49158,&HFF):poke64(49159,&HFF):poke64(49160,&HB6)
+   jmp L2086
+L1923:
+   poke64(49158,&HEB):poke64(49159,&HFF):poke64(49160,&HB6)
+   jmp L2086
+L1924:
+   poke64(49158,&HDB):poke64(49159,&HFF):poke64(49160,&HB6)
+   jmp L2086
+L1925:
+   poke64(49158,&HC6):poke64(49159,&HFF):poke64(49160,&HB6)
+   jmp L2086
+L1926:
+   poke64(49158,&HB6):poke64(49159,&HFF):poke64(49160,&HB6)
+   jmp L2086
+L1927:
+   poke64(49158,&HB6):poke64(49159,&HFF):poke64(49160,&HC6)
+   jmp L2086
+L1928:
+   poke64(49158,&HB6):poke64(49159,&HFF):poke64(49160,&HDB)
+   jmp L2086
+L1929:
+   poke64(49158,&HB6):poke64(49159,&HFF):poke64(49160,&HEB)
+   jmp L2086
+L1930:
+   poke64(49158,&HB6):poke64(49159,&HFF):poke64(49160,&HFF)
+   jmp L2086
+L1931:
+   poke64(49158,&HB6):poke64(49159,&HEB):poke64(49160,&HFF)
+   jmp L2086
+L1932:
+   poke64(49158,&HB6):poke64(49159,&HDB):poke64(49160,&HFF)
+   jmp L2086
+L1933:
+   poke64(49158,&HB6):poke64(49159,&HC6):poke64(49160,&HFF)
+   jmp L2086
+L1934:
+   poke64(49158,&H0):poke64(49159,&H0):poke64(49160,&H71)
+   jmp L2086
+L1935:
+   poke64(49158,&H1C):poke64(49159,&H0):poke64(49160,&H71)
+   jmp L2086
+L1936:
+   poke64(49158,&H39):poke64(49159,&H0):poke64(49160,&H71)
+   jmp L2086
+L1937:
+   poke64(49158,&H55):poke64(49159,&H0):poke64(49160,&H71)
+   jmp L2086
+L1938:
+   poke64(49158,&H71):poke64(49159,&H0):poke64(49160,&H71)
+   jmp L2086
+L1939:
+   poke64(49158,&H71):poke64(49159,&H0):poke64(49160,&H55)
+   jmp L2086
+L1940:
+   poke64(49158,&H71):poke64(49159,&H0):poke64(49160,&H39)
+   jmp L2086
+L1941:
+   poke64(49158,&H71):poke64(49159,&H0):poke64(49160,&H1C)
+   jmp L2086
+L1942:
+   poke64(49158,&H71):poke64(49159,&H0):poke64(49160,&H0)
+   jmp L2086
+L1943:
+   poke64(49158,&H71):poke64(49159,&H1C):poke64(49160,&H0)
+   jmp L2086
+L1944:
+   poke64(49158,&H71):poke64(49159,&H39):poke64(49160,&H0)
+   jmp L2086
+L1945:
+   poke64(49158,&H71):poke64(49159,&H55):poke64(49160,&H0)
+   jmp L2086
+L1946:
+   poke64(49158,&H71):poke64(49159,&H71):poke64(49160,&H0)
+   jmp L2086
+L1947:
+   poke64(49158,&H55):poke64(49159,&H71):poke64(49160,&H0)
+   jmp L2086
+L1948:
+   poke64(49158,&H39):poke64(49159,&H71):poke64(49160,&H0)
+   jmp L2086
+L1949:
+   poke64(49158,&H1C):poke64(49159,&H71):poke64(49160,&H0)
+   jmp L2086
+L1950:
+   poke64(49158,&H0):poke64(49159,&H71):poke64(49160,&H0)
+   jmp L2086
+L1951:
+   poke64(49158,&H0):poke64(49159,&H71):poke64(49160,&H1C)
+   jmp L2086
+L1952:
+   poke64(49158,&H0):poke64(49159,&H71):poke64(49160,&H39)
+   jmp L2086
+L1953:
+   poke64(49158,&H0):poke64(49159,&H71):poke64(49160,&H55)
+   jmp L2086
+L1954:
+   poke64(49158,&H0):poke64(49159,&H71):poke64(49160,&H71)
+   jmp L2086
+L1955:
+   poke64(49158,&H0):poke64(49159,&H55):poke64(49160,&H71)
+   jmp L2086
+L1956:
+   poke64(49158,&H0):poke64(49159,&H39):poke64(49160,&H71)
+   jmp L2086
+L1957:
+   poke64(49158,&H0):poke64(49159,&H1C):poke64(49160,&H71)
+   jmp L2086
+L1958:
+   poke64(49158,&H39):poke64(49159,&H39):poke64(49160,&H71)
+   jmp L2086
+L1959:
+   poke64(49158,&H45):poke64(49159,&H39):poke64(49160,&H71)
+   jmp L2086
+L1960:
+   poke64(49158,&H55):poke64(49159,&H39):poke64(49160,&H71)
+   jmp L2086
+L1961:
+   poke64(49158,&H61):poke64(49159,&H39):poke64(49160,&H71)
+   jmp L2086
+L1962:
+   poke64(49158,&H71):poke64(49159,&H39):poke64(49160,&H71)
+   jmp L2086
+L1963:
+   poke64(49158,&H71):poke64(49159,&H39):poke64(49160,&H61)
+   jmp L2086
+L1964:
+   poke64(49158,&H71):poke64(49159,&H39):poke64(49160,&H55)
+   jmp L2086
+L1965:
+   poke64(49158,&H71):poke64(49159,&H39):poke64(49160,&H45)
+   jmp L2086
+L1966:
+   poke64(49158,&H71):poke64(49159,&H39):poke64(49160,&H39)
+   jmp L2086
+L1967:
+   poke64(49158,&H71):poke64(49159,&H45):poke64(49160,&H39)
+   jmp L2086
+L1968:
+   poke64(49158,&H71):poke64(49159,&H55):poke64(49160,&H39)
+   jmp L2086
+L1969:
+   poke64(49158,&H71):poke64(49159,&H61):poke64(49160,&H39)
+   jmp L2086
+L1970:
+   poke64(49158,&H71):poke64(49159,&H71):poke64(49160,&H39)
+   jmp L2086
+L1971:
+   poke64(49158,&H61):poke64(49159,&H71):poke64(49160,&H39)
+   jmp L2086
+L1972:
+   poke64(49158,&H55):poke64(49159,&H71):poke64(49160,&H39)
+   jmp L2086
+L1973:
+   poke64(49158,&H45):poke64(49159,&H71):poke64(49160,&H39)
+   jmp L2086
+L1974:
+   poke64(49158,&H39):poke64(49159,&H71):poke64(49160,&H39)
+   jmp L2086
+L1975:
+   poke64(49158,&H39):poke64(49159,&H71):poke64(49160,&H45)
+   jmp L2086
+L1976:
+   poke64(49158,&H39):poke64(49159,&H71):poke64(49160,&H55)
+   jmp L2086
+L1977:
+   poke64(49158,&H39):poke64(49159,&H71):poke64(49160,&H61)
+   jmp L2086
+L1978:
+   poke64(49158,&H39):poke64(49159,&H71):poke64(49160,&H71)
+   jmp L2086
+L1979:
+   poke64(49158,&H39):poke64(49159,&H61):poke64(49160,&H71)
+   jmp L2086
+L1980:
+   poke64(49158,&H39):poke64(49159,&H55):poke64(49160,&H71)
+   jmp L2086
+L1981:
+   poke64(49158,&H39):poke64(49159,&H45):poke64(49160,&H71)
+   jmp L2086
+L1982:
+   poke64(49158,&H51):poke64(49159,&H51):poke64(49160,&H71)
+   jmp L2086
+L1983:
+   poke64(49158,&H59):poke64(49159,&H51):poke64(49160,&H71)
+   jmp L2086
+L1984:
+   poke64(49158,&H61):poke64(49159,&H51):poke64(49160,&H71)
+   jmp L2086
+L1985:
+   poke64(49158,&H69):poke64(49159,&H51):poke64(49160,&H71)
+   jmp L2086
+L1986:
+   poke64(49158,&H71):poke64(49159,&H51):poke64(49160,&H71)
+   jmp L2086
+L1987:
+   poke64(49158,&H71):poke64(49159,&H51):poke64(49160,&H69)
+   jmp L2086
+L1988:
+   poke64(49158,&H71):poke64(49159,&H51):poke64(49160,&H61)
+   jmp L2086
+L1989:
+   poke64(49158,&H71):poke64(49159,&H51):poke64(49160,&H59)
+   jmp L2086
+L1990:
+   poke64(49158,&H71):poke64(49159,&H51):poke64(49160,&H51)
+   jmp L2086
+L1991:
+   poke64(49158,&H71):poke64(49159,&H59):poke64(49160,&H51)
+   jmp L2086
+L1992:
+   poke64(49158,&H71):poke64(49159,&H61):poke64(49160,&H51)
+   jmp L2086
+L1993:
+   poke64(49158,&H71):poke64(49159,&H69):poke64(49160,&H51)
+   jmp L2086
+L1994:
+   poke64(49158,&H71):poke64(49159,&H71):poke64(49160,&H51)
+   jmp L2086
+L1995:
+   poke64(49158,&H69):poke64(49159,&H71):poke64(49160,&H51)
+   jmp L2086
+L1996:
+   poke64(49158,&H61):poke64(49159,&H71):poke64(49160,&H51)
+   jmp L2086
+L1997:
+   poke64(49158,&H59):poke64(49159,&H71):poke64(49160,&H51)
+   jmp L2086
+L1998:
+   poke64(49158,&H51):poke64(49159,&H71):poke64(49160,&H51)
+   jmp L2086
+L1999:
+   poke64(49158,&H51):poke64(49159,&H71):poke64(49160,&H59)
+   jmp L2086
+L2000:
+   poke64(49158,&H51):poke64(49159,&H71):poke64(49160,&H61)
+   jmp L2086
+L2001:
+   poke64(49158,&H51):poke64(49159,&H71):poke64(49160,&H69)
+   jmp L2086
+L2002:
+   poke64(49158,&H51):poke64(49159,&H71):poke64(49160,&H71)
+   jmp L2086
+L2003:
+   poke64(49158,&H51):poke64(49159,&H69):poke64(49160,&H71)
+   jmp L2086
+L2004:
+   poke64(49158,&H51):poke64(49159,&H61):poke64(49160,&H71)
+   jmp L2086
+L2005:
+   poke64(49158,&H51):poke64(49159,&H59):poke64(49160,&H71)
+   jmp L2086
+L2006:
+   poke64(49158,&H0):poke64(49159,&H0):poke64(49160,&H41)
+   jmp L2086
+L2007:
+   poke64(49158,&H10):poke64(49159,&H0):poke64(49160,&H41)
+   jmp L2086
+L2008:
+   poke64(49158,&H20):poke64(49159,&H0):poke64(49160,&H41)
+   jmp L2086
+L2009:
+   poke64(49158,&H31):poke64(49159,&H0):poke64(49160,&H41)
+   jmp L2086
+L2010:
+   poke64(49158,&H41):poke64(49159,&H0):poke64(49160,&H41)
+   jmp L2086
+L2011:
+   poke64(49158,&H41):poke64(49159,&H0):poke64(49160,&H31)
+   jmp L2086
+L2012:
+   poke64(49158,&H41):poke64(49159,&H0):poke64(49160,&H20)
+   jmp L2086
+L2013:
+   poke64(49158,&H41):poke64(49159,&H0):poke64(49160,&H10)
+   jmp L2086
+L2014:
+   poke64(49158,&H41):poke64(49159,&H0):poke64(49160,&H0)
+   jmp L2086
+L2015:
+   poke64(49158,&H41):poke64(49159,&H10):poke64(49160,&H0)
+   jmp L2086
+L2016:
+   poke64(49158,&H41):poke64(49159,&H20):poke64(49160,&H0)
+   jmp L2086
+L2017:
+   poke64(49158,&H41):poke64(49159,&H31):poke64(49160,&H0)
+   jmp L2086
+L2018:
+   poke64(49158,&H41):poke64(49159,&H41):poke64(49160,&H0)
+   jmp L2086
+L2019:
+   poke64(49158,&H31):poke64(49159,&H41):poke64(49160,&H0)
+   jmp L2086
+L2020:
+   poke64(49158,&H20):poke64(49159,&H41):poke64(49160,&H0)
+   jmp L2086
+L2021:
+   poke64(49158,&H10):poke64(49159,&H41):poke64(49160,&H0)
+   jmp L2086
+L2022:
+   poke64(49158,&H0):poke64(49159,&H41):poke64(49160,&H0)
+   jmp L2086
+L2023:
+   poke64(49158,&H0):poke64(49159,&H41):poke64(49160,&H10)
+   jmp L2086
+L2024:
+   poke64(49158,&H0):poke64(49159,&H41):poke64(49160,&H20)
+   jmp L2086
+L2025:
+   poke64(49158,&H0):poke64(49159,&H41):poke64(49160,&H31)
+   jmp L2086
+L2026:
+   poke64(49158,&H0):poke64(49159,&H41):poke64(49160,&H41)
+   jmp L2086
+L2027:
+   poke64(49158,&H0):poke64(49159,&H31):poke64(49160,&H41)
+   jmp L2086
+L2028:
+   poke64(49158,&H0):poke64(49159,&H20):poke64(49160,&H41)
+   jmp L2086
+L2029:
+   poke64(49158,&H0):poke64(49159,&H10):poke64(49160,&H41)
+   jmp L2086
+L2030:
+   poke64(49158,&H20):poke64(49159,&H20):poke64(49160,&H41)
+   jmp L2086
+L2031:
+   poke64(49158,&H28):poke64(49159,&H20):poke64(49160,&H41)
+   jmp L2086
+L2032:
+   poke64(49158,&H31):poke64(49159,&H20):poke64(49160,&H41)
+   jmp L2086
+L2033:
+   poke64(49158,&H39):poke64(49159,&H20):poke64(49160,&H41)
+   jmp L2086
+L2034:
+   poke64(49158,&H41):poke64(49159,&H20):poke64(49160,&H41)
+   jmp L2086
+L2035:
+   poke64(49158,&H41):poke64(49159,&H20):poke64(49160,&H39)
+   jmp L2086
+L2036:
+   poke64(49158,&H41):poke64(49159,&H20):poke64(49160,&H31)
+   jmp L2086
+L2037:
+   poke64(49158,&H41):poke64(49159,&H20):poke64(49160,&H28)
+   jmp L2086
+L2038:
+   poke64(49158,&H41):poke64(49159,&H20):poke64(49160,&H20)
+   jmp L2086
+L2039:
+   poke64(49158,&H41):poke64(49159,&H28):poke64(49160,&H20)
+   jmp L2086
+L2040:
+   poke64(49158,&H41):poke64(49159,&H31):poke64(49160,&H20)
+   jmp L2086
+L2041:
+   poke64(49158,&H41):poke64(49159,&H39):poke64(49160,&H20)
+   jmp L2086
+L2042:
+   poke64(49158,&H41):poke64(49159,&H41):poke64(49160,&H20)
+   jmp L2086
+L2043:
+   poke64(49158,&H39):poke64(49159,&H41):poke64(49160,&H20)
+   jmp L2086
+L2044:
+   poke64(49158,&H31):poke64(49159,&H41):poke64(49160,&H20)
+   jmp L2086
+L2045:
+   poke64(49158,&H28):poke64(49159,&H41):poke64(49160,&H20)
+   jmp L2086
+L2046:
+   poke64(49158,&H20):poke64(49159,&H41):poke64(49160,&H20)
+   jmp L2086
+L2047:
+   poke64(49158,&H20):poke64(49159,&H41):poke64(49160,&H28)
+   jmp L2086
+L2048:
+   poke64(49158,&H20):poke64(49159,&H41):poke64(49160,&H31)
+   jmp L2086
+L2049:
+   poke64(49158,&H20):poke64(49159,&H41):poke64(49160,&H39)
+   jmp L2086
+L2050:
+   poke64(49158,&H20):poke64(49159,&H41):poke64(49160,&H41)
+   jmp L2086
+L2051:
+   poke64(49158,&H20):poke64(49159,&H39):poke64(49160,&H41)
+   jmp L2086
+L2052:
+   poke64(49158,&H20):poke64(49159,&H31):poke64(49160,&H41)
+   jmp L2086
+L2053:
+   poke64(49158,&H20):poke64(49159,&H28):poke64(49160,&H41)
+   jmp L2086
+L2054:
+   poke64(49158,&H2D):poke64(49159,&H2D):poke64(49160,&H41)
+   jmp L2086
+L2055:
+   poke64(49158,&H31):poke64(49159,&H2D):poke64(49160,&H41)
+   jmp L2086
+L2056:
+   poke64(49158,&H35):poke64(49159,&H2D):poke64(49160,&H41)
+   jmp L2086
+L2057:
+   poke64(49158,&H3D):poke64(49159,&H2D):poke64(49160,&H41)
+   jmp L2086
+L2058:
+   poke64(49158,&H41):poke64(49159,&H2D):poke64(49160,&H41)
+   jmp L2086
+L2059:
+   poke64(49158,&H41):poke64(49159,&H2D):poke64(49160,&H3D)
+   jmp L2086
+L2060:
+   poke64(49158,&H41):poke64(49159,&H2D):poke64(49160,&H35)
+   jmp L2086
+L2061:
+   poke64(49158,&H41):poke64(49159,&H2D):poke64(49160,&H31)
+   jmp L2086
+L2062:
+   poke64(49158,&H41):poke64(49159,&H2D):poke64(49160,&H2D)
+   jmp L2086
+L2063:
+   poke64(49158,&H41):poke64(49159,&H31):poke64(49160,&H2D)
+   jmp L2086
+L2064:
+   poke64(49158,&H41):poke64(49159,&H35):poke64(49160,&H2D)
+   jmp L2086
+L2065:
+   poke64(49158,&H41):poke64(49159,&H3D):poke64(49160,&H2D)
+   jmp L2086
+L2066:
+   poke64(49158,&H41):poke64(49159,&H41):poke64(49160,&H2D)
+   jmp L2086
+L2067:
+   poke64(49158,&H3D):poke64(49159,&H41):poke64(49160,&H2D)
+   jmp L2086
+L2068:
+   poke64(49158,&H35):poke64(49159,&H41):poke64(49160,&H2D)
+   jmp L2086
+L2069:
+   poke64(49158,&H31):poke64(49159,&H41):poke64(49160,&H2D)
+   jmp L2086
+L2070:
+   poke64(49158,&H2D):poke64(49159,&H41):poke64(49160,&H2D)
+   jmp L2086
+L2071:
+   poke64(49158,&H2D):poke64(49159,&H41):poke64(49160,&H31)
+   jmp L2086
+L2072:
+   poke64(49158,&H2D):poke64(49159,&H41):poke64(49160,&H35)
+   jmp L2086
+L2073:
+   poke64(49158,&H2D):poke64(49159,&H41):poke64(49160,&H3D)
+   jmp L2086
+L2074:
+   poke64(49158,&H2D):poke64(49159,&H41):poke64(49160,&H41)
+   jmp L2086
+L2075:
+   poke64(49158,&H2D):poke64(49159,&H3D):poke64(49160,&H41)
+   jmp L2086
+L2076:
+   poke64(49158,&H2D):poke64(49159,&H35):poke64(49160,&H41)
+   jmp L2086
+L2077:
+   poke64(49158,&H2D):poke64(49159,&H31):poke64(49160,&H41)
+   jmp L2086
+L2078:
+   poke64(49158,&H0):poke64(49159,&H0):poke64(49160,&H0)
+   jmp L2086
+L2079:
+   poke64(49158,&H0):poke64(49159,&H0):poke64(49160,&H0)
+   jmp L2086
+L2080:
+   poke64(49158,&H0):poke64(49159,&H0):poke64(49160,&H0)
+   jmp L2086
+L2081:
+   poke64(49158,&H0):poke64(49159,&H0):poke64(49160,&H0)
+   jmp L2086
+L2082:
+   poke64(49158,&H0):poke64(49159,&H0):poke64(49160,&H0)
+   jmp L2086
+L2083:
+   poke64(49158,&H0):poke64(49159,&H0):poke64(49160,&H0)
+   jmp L2086
+L2084:
+   poke64(49158,&H0):poke64(49159,&H0):poke64(49160,&H0)
+   jmp L2086
+L2085:
+   poke64(49158,&H0):poke64(49159,&H0):poke64(49160,&H0)
+   jmp L2086

@@ -1,5 +1,7 @@
 
-#if defined(__FB_WIN32__) or defined(__FB_WIN64__) or defined(__FB_LINUX__) or defined(__FB_MACOS__) or defined(__FB_ARM_) or defined(__FB_BSD__) or defined(__FB_SOLARIS__)
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
 '                        scr_ptr
       mov(adr subt,mem64(49451d))
 '                                             font_o      
@@ -93,7 +95,7 @@
 #elseif defined(__FB_DOS__)
 '                        scr_ptr
       mov(adr subt,mem64(49451d))
-                                              font_o
+'                                             font_o
       mov(c, v):mov(c shl,3d):mov(c add,mem64(49384d))
       if mem64(RVS)<>0d then mov(c and,255d)
       screenlock
