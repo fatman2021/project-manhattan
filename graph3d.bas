@@ -312,7 +312,8 @@
 'Microsoft BASIC: AS is part of a declaration which specifies a data type, or
 '                 part of the OPEN statement which specifies a file handle.
 'C#: AS is a operator that explicitly converts the result of an expression to a  given reference
-'    or nullable value type.						
+'    or nullable value type.
+'KOTLIN: AS is used for type casts or specifies a allas for an import.						
 						case 053: print #1, "as";
 'Microsoft BASIC: ASC returns the corresponding ASCII or Unicode integer representation
 '                 of a character.
@@ -409,7 +410,9 @@
 						case 106: print #1, "bozo";
 'C#: BREAK statement terminates the closest envlodinh loop or the SWITCH statement in which
 '    which it appears. Control is passed to the statement that follows the terminated statement
-'    if any.						
+'    if any.
+'R: BREAK is used to terminate the loop if the condition is TRUE.
+'KOTLIN: BREAK terminates the execution of a loop.						
 						case 107: print #1, "break";
 						case 108: print #1, "brick";
 						case 109: print #1, "brick_size";
@@ -426,7 +429,9 @@
 						case 119: print #1, "bvec3";
 						case 120: print #1, "bvec4";
 'C#: BY contextual keyword is used in the group clause in query expression to specify
-'    how the returned items should be grouped.						
+'    how the returned items should be grouped.
+'KOTLIN: BY delegates the implementation of an interface to another object or delegates the implementation
+'        of accessors for a property to another object.						
 						case 121: print #1, "by";
 'Microsoft BASIC: BYTE is a standard DATA TYPE: 8-bit signed.
 'FreePASCAL BYTE is a standard DATA TYPE: 8-bit unsigned.
@@ -493,7 +498,8 @@
 						case 164: print #1, "clamp";
 'Microsoft BASIC: CLASS declares a class object.
 'FreePASCAL: CLASS declares a class object in MacPas compiler mode.
-'C#: CLASS declares a class object.						
+'C#: CLASS declares a class object.
+'KOTLIN: CLASS declars a class.						
 'GNU COBOL: CLASS defines user define classes. The literals specified on the clause defines
 '           the possible characters that may be found in a data item's value in order to be
 '           considered part of the class.						
@@ -585,6 +591,7 @@
 						case 219: print #1, "constref";
 'Microsoft BASIC: CONSTRUCTOR is called automatically when a class or type is created, or
 '                 specifies execution of a procedure before module level code.
+'KOTLIN: CONSTRUCTOR declares a primary or secondary constructor.
 'FreePASCAL: CONSTRUCTOR is a routine that is used to create an object.						
 						case 220: print #1, "constructor";
 'Microsoft BASIC: CONT continue program execution after a break.						
@@ -595,7 +602,8 @@
 'Microsoft BASIC: CONTINUE a control flow statement that continues the next
 '                 iteration of a loop.
 'C#: CONTINUE statement passes control to the next iteration of the enclosing WHILE, DO, 
-'    FOR. OR FOREACH statement in which it appears.						
+'    FOR. OR FOREACH statement in which it appears.
+'KOTLIN: CONTINUE preceeds the next step of neares enclosing loop.						
 						case 225: print #1, "continue";
 						case 226: print #1, "control";
 						case 227: print #1, "control0";
@@ -767,6 +775,7 @@
 'FreePASCAL: DO is used to indicate the start of a loop.
 'C#: DO statement executes a statement of block of statements while a specified Boolean
 '    expression evaluates to TRUE.
+'KOTLIN: DO begins a DO or WHILE loop.
 'GNU FORTRAN: DO statement specifies a controlled loop, called a DO loop and 
 '             establishes the control variable, indexing parameters, and rannge of
 '             the loop.						
@@ -794,7 +803,8 @@
 						case 089: print #1, "dx";
 						case 090: print #1, "dy";
 'C#: DYNAMIC indicates a the use of the variable and references to its members bypass
-'    compile time type checking. Instead these operations are resolved at run time.						
+'    compile time type checking. Instead these operations are resolved at run time.
+'KOTLIN: DYNAMIC references a dynamic type in KOTLIN/JS code.						
 						case 091: print #1, "dynamic";
 						case 092: print #1, "dz";
 						case 093: print #1, "e";
@@ -807,6 +817,9 @@
 						case 098: print #1, "eject";
 						case 099: print #1, "elif";
 'Microsoft BASIC: ELSE is a program flow control statement for conditional branching.
+'R: ELSE is associated with IF statement and is executed when the IF statement's condition
+'   is FALSE.
+'KOTLIN: ELSE defines the branch of an IF expression which is executed when the condition is FALSE.
 'FreePASCAL: ELSE is used an IF statement to provide an execution path when the if test fails.
 'GNU FORTRAN: ELSE statement is used in conjunction with the block IF or
 '             ELSE IF statements in a IF block statement.							
@@ -932,15 +945,19 @@
 						case 180: print #1, "falloff";
 						case 181: print #1, "falloff_angle";
 'Microsoft BASIC: FALSE is a intrinsic constant set by the compiler.
+'R: FALSE is used to represent a Boolean FALSE.
+'KOTLIN: FALSE specifies the FALSE value of a Boolean type.
 'FreePASCAL: FALSE is a boolean value indicating a test has faild.						
 						case 182: print #1, "false";
 'FreePASCAL: FAR - allows access to addresses outside of the current segment.						
 						case 183: print #1, "far";
 						case 184: print #1, "fclose";
 						case 185: print #1, "fd";
-'Microsoft BASIC: FIELD specifies a field alignment.						
+'Microsoft BASIC: FIELD specifies a field alignment.
+'KOTLIN: FIELD is used as an annotation use style target.						
 						case 186: print #1, "field";
-'FreePASCAL: FILE is an external data structure, typically stored on disk.						
+'FreePASCAL: FILE is an external data structure, typically stored on disk.
+'KOTLIN: FILE is used as an annotation uses style target.						
 						case 187: print #1, "file";
 						case 188: print #1, "file-control";
 'POVRAY: file_exists attempts to open the file specified. The current directory and all
@@ -961,7 +978,8 @@
 						case 196: print #1, "final_frame";
 'FreePASCAL: FINALIZATION introduces an optional "initialization" part of a PROGRAM UNIT.						
 						case 197: print #1, "finalization";
-'C#: FINALLY code block cleans up any resources that are allocated in a TRY code block.					
+'C#: FINALLY code block cleans up any resources that are allocated in a TRY code block.
+'KOTLIN: FINALLY  begins a code block that is always executed when a TRY code block exits.					
 						case 198: print #1, "finally";
 						case 199: print #1, "finish";
 						case 200: print #1, "first";
@@ -992,6 +1010,7 @@
 '                 depending on the context.
 'C#: FOR is a statement that executes a statement or code block while a specified boolean
 '    expression evaluates to TRUE.
+'R: FOR is USED for looping or iterating over a dictionary, string, list, set, or tuple.
 'FreePASCAL: FOR is a loop used to increment of decrement a control variable.						
 						case 218: print #1, "for";					
 						case 219: print #1, "form";
@@ -1016,9 +1035,10 @@
 						case 232: print #1, "full";
 'Microsoft BASIC: FUNCTION defines a procedure returning a value, declares or defines a
 '                 member procedure returning a value, or a data type that stores a pointer
-'                 to a procedure.						
+'                 to a procedure.
+'R: FUNCTION is used to create a user defined FUNCTION in R.						
 'GNU FORTRAN: FUNCTION statement is the first statement of a function block. It specifies
-'             the symbolic name of the function and its type.
+'             the symbolic name of the FUNCTION and its type.
 'FreePASCAL: FUNCTION defines the start of a routine that returns a value.						
 						case 233: print #1, "function";
 						case 234: print #1, "fvec2";
@@ -1033,7 +1053,8 @@
 '                       gets a copy of an image buffer, or reads data from a
 '                       file to a buffer.
 'C#: GET defines an accessor method in a property or indexer that returns the
-'    property value of the indexer element.						
+'    property value of the indexer element.
+'KOTLIN: GET declares the getter of a property, or is used as an annotation use style target.						
 						case 241: print #1, "get";
 						case 242: print #1, "getattribute";
 						case 243: print #1, "getchar";
@@ -1194,6 +1215,8 @@
 'Microsoft BASIC: IF is a flow control statement for conditional branching.
 'FreePASCAL: IF is a test condition statement and performs a set of instruction based on a result.
 'C#: IF statement identifies which statement to run based on the value of a Boolean expression.
+'R: IF statemen consists of a Boolean expression which is followed by one or more statement.
+'KOTLIN: IF begins an if expression.
 'GNU FORTRAN: IF statement allows for conditional branching, conditional statement
 '             execution, or conditional execution of blocks of code. The block IF
 '             ends with the END IF statement.						
@@ -1244,12 +1267,16 @@
 'Microsoft BASIC: IMP returns the bitwise implication of two values.						
 						case 082: print #1, "imp";
 						case 083: print #1, "implementation";
-'Microsoft BASIC: IMPORT sets external linkage attribute for public data located in a shared library.						
+'Microsoft BASIC: IMPORT sets external linkage attribute for public data located in a shared library.
+'KOTLIN: IMPORT imports a declaration from another package into the current file.						
 						case 084: print #1, "import";
 'FreePASCAL: IN identifies elements in a collection.
 'C#: IN is used in generic type parameters in generic interfaces and delgates, as a parameter modifier,
 '    which lets you pass an argument to a method by refence rather than value, in a foreach statement,
-'    with from clauses in a KINQ query expressions, or with join clauses in LINQ query expressions.						
+'    with from clauses in a KINQ query expressions, or with join clauses in LINQ query expressions.
+'KOTLIN: IN specifies the object being itrated in a for loop, is used as infix operator to check that a value
+'        belong to a range, a collectio, in a WHEN expression, or any other entity that defines the 'contains'
+'        method.					
 						case 085: print #1, "in";						
 'GNU FORTRAN: INCLUDE statement incorporates the contents of a designated file into
 '             FORTRAN compilation directly following this statement.						
@@ -1306,7 +1333,8 @@
 'GNU FORTRAN: INTEGER is a positive and negitive integral data type.
 'FreePASCAL INTEGER is a 16-bit or 32-bit integer.						
 						case 115: print #1, "integer";
-'C#: INTERFACE defines a contract.						
+'C#: INTERFACE defines a contract.
+'KOTLIN: declares an INTERFACE.						
 'FreePASCAL INTERFACE defines a public declaration of a routine in a program unit.						
 						case 116: print #1, "interface";
 						case 117: print #1, "interior";
@@ -1341,7 +1369,8 @@
 '                 evaluated based on an expression operator and a value, or checks if an 
 '                 object is compatible to a type derived from its compile time type.
 'C#: IS operator checks if the result of an expression is compatible with a given type, or
-'    test an expression against a pattern.					
+'    test an expression against a pattern.
+'KOTLIN: IS checks  tha a value is in a certain type.					
 'GNU COBOL: IS clause allows you to specify an alternate name for one of the built-in
 '           GNU COBOL/OpenCOBOL device names specified before the "IS".						
 						case 140: print #1, "is";
@@ -1628,7 +1657,8 @@
 'C#: NEW operator creates a new instance of a type.						
 						case 079: print #1, "new";
 'Microsoft BASIC: NEXT is a flow control statement that marks the end of a FOR..NEXT loop, or
-'                 a ERROR handling statement to resume execution after a jump(JMP) to a error handler.						
+'                 a ERROR handling statement to resume execution after a jump(JMP) to a error handler.
+'R: NEXT skips the current iteration of a loop without terminating it.						
 						case 080: print #1, "next";
 'FreePASCAL: NIL is a pointer value indicating the pointer does not contain a value.						
 						case 081: print #1, "nil";
@@ -1657,7 +1687,8 @@
 'GNU COBOL: NULL A character comprised entirely of zero bits regardless of
 '           the program calling sequence,
 'C#: NULL is a literal that represents a NULL reference, on that does not refer to
-'    any object.						
+'    any object.
+'KOTLIN: NULL is a constant representing an object reference that doesn't point to any object.						
 						case 101: print #1, "null";
 						case 102: print #1, "nulls";
 						case 103: print #1, "number"
@@ -1667,7 +1698,8 @@
 						case 107: print #1, "o";
 'Microsoft BASIC: OBJECT is a built-in type providing run-time information.
 'FreePASCAL: OBJECT defines an object construct.
-'C#: OBJECT is an alias for System.Object in .NET.						
+'C#: OBJECT is an alias for System.Object in .NET.
+'KOTLIN: OBJECT declares a class and its instance at the same time.						
 						case 108: print #1, "object";
 'GNU COBOL: OBJECT-COMPUTER paragraph describes the computer upon which the program
 '           will execute.						
@@ -1863,7 +1895,8 @@
 'GNU COBOL: PROGRAM-ID definces the name by which other programs my refer to it.						
 						case 224: print #1, "program-id";
 						case 225: print #1, "projected_through";
-'Microsoft BASIC: PROPERTY declares or defines a property in a TYPE or CLASS.						
+'Microsoft BASIC: PROPERTY declares or defines a property in a TYPE or CLASS.
+'KOTLIN: PROPERTY is used as an annotation use style target.						
 						case 226: print #1, "property";
 'Microsoft BASIC: PROTECTED specifies protected member access control in a TYPE or CLASS.
 'C# PROTECTED is a member access modifier.
@@ -1974,6 +2007,7 @@
 						case 037: print #1, "render";
 'Microsoft BASIC: RENUM renumbers program lines.						
 						case 038: print #1, "renum";
+'R: REPEAT is used to iterate over a code block multiple number of times.						
 'FreePASCAL: REPEAT loops through a section of code through an UNTIL statement as long as the
 '            result of the test of TRUE.						
 						case 039: print #1, "repeat";
@@ -1999,6 +2033,7 @@
 '                 code block was executed off the stack using the return instruction(RET).
 'C#: RETURN statement termintaes the execution of a method in which it appears and returns
 '    control to the calling method.
+'KOTLIN: RETURN retirms from the nearest enclosing function or anonymous function.
 'GNU FORTRAN: RETURN statement returns control to the referencing program unit. It can appear
 '             in a function or subprogram.						
 						case 051: print #1, "return";
@@ -2105,7 +2140,8 @@
 						case 122: print #1, "service";
 'FreePASCAL: SET groups a collection.
 'C#: SET is a accessor method in a property or indexer that assigns a value to the property
-'    or the indexer element.						
+'    or the indexer element.
+'KOTLIN: SET declares the setter of a property or is used as an annotation use site target.						
 						case 123: print #1, "set";
 'Microsoft BASIC: SGN returns the sign part of a number.						
 						case 124: print #1, "sgn";
@@ -2264,6 +2300,8 @@
 						case 222: print #1, "substring_mb";
 						case 223: print #1, "subtract";
 						case 224: print #1, "sum";
+'KOLTLIN: SUPER refers to the siperclass implementation of a method or property, or calls
+'         the superclass constructer from a secondary constructor.  						
 						case 225: print #1, "super";
 						case 226: print #1, "superellipsoid";
 						case 227: print #1, "superp";
@@ -2317,7 +2355,9 @@
 'Microsoft BASIC: THIS is a hidden instance parameter passed to non-static member functions
 '                 in a TYPE or a CLASS.
 'C#: THIS refers to the current instance of the CLASS and is also used as a modifier of the first
-'    parameter of an extension method. 						
+'    parameter of an extension method.
+'KOTLIN: THIS refers to the current recever, or calls another constructor of the same class form
+'        a secondary constructor. 						
 						case 004: print #1, "this";
 'FreePASCAL: THREADVAR declares a variable to thread local.						
 						case 005: print #1, "threadvar";
@@ -2369,11 +2409,13 @@
 '                 program being executed.						
 						case 041: print #1, "tron";
 'Microsoft BASIC: TRUE is an intrinsic cconstant sey by the compiler.
-'FreeBASIC: TRUE is a boolean value indicating a test has succeeded.						
+'R: TURE is used to represent a Boolean TRUE.
+'FreePASCAL: TRUE is a boolean value indicating a test has succeeded.						
 						case 042: print #1, "true";
 						case 043: print #1, "trunc";
 'FreePASCAL: TRY is part of an exception block.
-'C#: TRY is the first statement in a TRY-CATCH code block.						
+'C#: TRY is the first statement in a TRY-CATCH code block.
+'KOLTLIN: TRY begins an eception handling block.						
 						case 044: print #1, "try";
 						case 045: print #1, "ttf";
 						case 046: print #1, "turb_depth";
@@ -2459,14 +2501,16 @@
 						case 100: print #1, "uv_vectors";
 						case 101: print #1, "v";
 'Microsoft BASIC: VAL converts a string to a flating point number.
-'POVRAY: val returns a floating point value that is represented by a
+'KOTLIN: VAL declares a read-only  property or local variable.
+'POVRAY: VAL returns a floating point value that is represented by a
 '        text string.						
 						case 102: print #1, "val";
 'C#: VALUE is used in the set accessor in property and indexer declarations.						
 						case 103: print #1, "value";
 						case 104: print #1, "values";
 'FreePASCAL: VAR deckares a variable.
-'C#: VAR is used to declare variables at method scope and can have an implicit type.						
+'C#: VAR is used to declare variables at method scope and can have an implicit type.
+'KOTLIN: VAR declares a mutable property or local variable.						
 						case 105: print #1, "var";
 						case 106: print #1, "varchar";
 						case 107: print #1, "variance";
@@ -2527,18 +2571,22 @@
 'Microsoft BASIC: WEND is a flow control statement.						
 						case 137: print #1, "wend";
 'C#: WHEN is used to specify a filter condition in the catch statement, a case label of a switch statement,
-'    or in a switch expression.						
+'    or in a switch expression.
+'KOTLIN: WHEN begins a when expression and executes on of the given branches.						
 						case 138: print #1, "when";
 						case 139: print #1, "when-compiled";
 'C#: WHERE clause in a generic definition specifies constraints on the types that are used as arguments for
 '    type parameters in a generic type, method, delegate, local function, or in a query expression to specofy
-'    which elements from the data source will be returned in the query expression.						
+'    which elements from the data source will be returned in the query expression.
+'KOTLIN: WHERE specifies constraints for a generic type parameter.						
 						case 140: print #1, "where";
 'Microsoft BASIC: WHILE is a flow control statement.
 'C#: WHILE statement executes a statement or code block while a specified boolean expression is TRUE.
+'R: WHILE keyword loop is executed until the given condition is TRUE.
+'KOTLIN: WHILE begins a WHILE loop.
 'FreePASCAL: WHILE tests a variable and if true loops through a section of code.
 'GNU FORTRAN: WHILE statement specifies a controlled loop, called a DO loop, based on a
-'             test for true of a logical expression.						
+'             test for TRUE of a logical expression.						
 						case 141: print #1, "while";
 'Microsoft BASIC: WIDTH sets or gets the number of row and columns of the display.
 'C#: WITH produces a copy of its record iperand with the specified properties and fields medifieds.						
@@ -2745,6 +2793,7 @@
 'C#: ULONG is a unsigned 64-bit integer
                        case 088: print #1, "ulong";
 'C#: CATCH is the first statement in a catch code block.
+'KOLTLIN: CATCH begins a block that handles a specific exeception type.
                        case 089: print #1, "catch";
 'C#: CHECKED is used to explicitly enable overflow checking for integral type arithmetic operations
 '    and convensions.
@@ -2752,7 +2801,8 @@
 'C#: DECIMAL is a 16-bytes floating point number.
                        case 091: print #1, "decimal";
 'C#: DELEGATE is a type similar to a method signature. It has a retur value and any number of 
-'    parameters of any type. 
+'    parameters of any type.
+'KOTLIN: DELEGATE is used as an annotation use style target. 
                        case 092: print #1, "delegate";
 'C#: EVENT is a keyword used to declare an event in a publisher class.
                        case 093: print #1, "event";
@@ -2775,8 +2825,10 @@
 'C#: STACKALLOC expression allocates a block of memory on the stack.
                        case 099: print #1, "stackalloc";
 'C#: TYPEOF operator obtains the System.Type for a type.
+'KOLTIN: TYPEOF is reserved for future use.
                        case 100: print #1, "typeof";
 'C#: THROW: signals the occurence of  an exception during program execution.
+'KOLTLIN: trows an exception.
                        case 101: print #1, "throw";
 'C#: UNCHECKED is used to suppress overflow checking for integral type arithmetic operations and conversions.
                        case 102: print #1, "unchecked";
@@ -2803,6 +2855,33 @@
 '    from you event.
                        case 111: print #1, "remove";
 'C#: UNMANAGED  is a constraint that is used to specify that a type parameter must be a non nullable unmanaged type.
-                       case 112: print #1, "unmanaged";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         				                   				        
+                       case 112: print #1, "unmanaged";
+'R: INF and NAN returns a vector the same length indication which elements are finite or infinite.
+                       case 113: print #1, "inf";
+                       case 114: print #1, "NaN";
+'R: NA is a logical constant of length 1 that contains a missing indicator.
+                       case 115: print #1, "NA";
+'KOTLIN: AS? is used for safe type casts.
+                       case 116: print #1, "as?";
+'KOTLIN: FUN defines a function.
+                       case 117: print #1, "fun";
+'KOTLIN: !IN is used as an operator to check that a value does NOT belong to a range, a collection, a when expression,
+'        or in any other entity that defines the 'contains' method.
+                       case 118: print #1, "!in";
+'KOTLIN: !IS checks that a value does NOT have a certian type.
+                       case 119: print #1, "!is";
+'KOTLIN: PACKAGE specifies the package for the current file.
+                       case 120: print #1, "package";
+'KOTLIN: TYPEALIAS declares a type alias.
+                       case 121: print #1, "typealias";
+'KOTLIN: INIT begins an initializer code block.
+                       case 122: print #1, "init";
+'KOTLIN: PARAM is used as an annotation use site target.
+                       case 123: print #1, "param";
+'KOTLIN: RECEIVER is used as a annotation use site target.
+                       case 124: print #1, "receiver";                       
+'KOTLIN: SETPARAM is used as a annotation use site target.
+                       case 125: print #1, "setparam";
+'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   				                   				        
 				     end select 				                          
 	       end select                 	       
