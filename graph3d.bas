@@ -217,7 +217,7 @@
 						case 002: print #1, "aastep";
 'POVRAY: aa_threshold specifies the anti-aliasing threshold.						
 						case 003: print #1, "aa_threshold";
-'Microsoft BASIC: ABS calculates the absolute value of an number.
+'Microsoft BASIC: ABS retuns the absolute value of a specified numeric expression.
 'GNU FORTRAN: ABS computes the absolute value of an numeric expression.
 'POVRAY: ABS returns the absoloute value of an numeric expression			
 						case 004: print #1, "abs";
@@ -229,7 +229,10 @@
 'Microsoft BASIC: ABSTRACT declares abstract methods.
 'FreePASCAL: ABSTRACT - declares an abstract class that cannot be instantiated, only inherited.
 'C# ABSTRACT is a modifier that indicates that the thing being modified has a missing or 
- '  incomplete implementation. 						
+'  incomplete implementation.
+'KOTLIN: ABSTRACT marks a class or member as abstract.
+'PHP: ABSTRACT declares a class abstract.
+'JAVA: ABSTRACT keyword declares a abstract class. 						
 						case 007: print #1, "abstract";
 'GNU FORTRAN: ACCEPT statement transfers data from the standard input unit to the items specified by
 '             the input list.						
@@ -260,7 +263,7 @@
 						case 020: print #1, "agate";
 						case 021: print #1, "agate_turb";
 'Microsoft BASIC: ALIAS clause of the SUB or FUNCTION statements that provides and
-'                 alternate internal name or modifes a data type name mangling of
+'                 alternate internal name or modifes a DATA TYPE name mangling of
 '                 the public symbol.
 'C#: ALIAS is used to reference two versions of assemblies that have the the same fully-qualified
 '    type name. 					
@@ -290,15 +293,18 @@
 'FreePASCAL AND is a boolean operator requiring both conditions are true for a result to be true.						
 'GNU FORTRAN: AND Bitwise logical AND. This intrinsic routine is provided for backwards 
 '             compatibility with GNU Fortran 77. For integer arguments, programs should
-'             consider the use the IAND intrinsic defined by the Fortran standard.              						
+'             consider the use the IAND intrinsic defined by the Fortran standard.
+'PHP: AND is a logical operator.
+' Python: AND is a logical operator              						
 						case 039: print #1, "and";
 						case 040: print #1, "and_bits";
 						case 041: print #1, "angle";
-'Microsoft BASIC: ANY is used as a placeholder for a type or value in various ways.						
+'Microsoft BASIC: ANY is used as a placeholder for a TYPE or value in various ways.						
 'GNU FORTRAN: ANY determines if any values in the logical array MASK along dimension DIM are TRUE.						
 						case 042: print #1, "any";
 						case 043: print #1, "aperture";
-'Microsft BASIC: APPEND specifies the text file to be opened for append mode.						
+'Microsft BASIC: APPEND specifies the text file to be opened for append mode, or merges an existing an
+'                BASIC source program  with the program currently in memory.						
 						case 044: print #1, "append";
 						case 045: print #1, "apply";
 						case 046: print #1, "arc_angle";
@@ -309,11 +315,12 @@
 'FreePASCAL: ARRAY is a data type that stores multiple elements with the same name.						
 						case 051: print #1, "array";
 						case 052: print #1, "arraylength";
-'Microsoft BASIC: AS is part of a declaration which specifies a data type, or
+'Microsoft BASIC: AS is part of a declaration which specifies a DATA TYPE, or
 '                 part of the OPEN statement which specifies a file handle.
 'C#: AS is a operator that explicitly converts the result of an expression to a  given reference
 '    or nullable value type.
-'KOTLIN: AS is used for type casts or specifies a allas for an import.						
+'KOTLIN: AS is used for type casts or specifies a allas for an import.
+'Python: AS creates an alias.						
 						case 053: print #1, "as";
 'Microsoft BASIC: ASC returns the corresponding ASCII or Unicode integer representation
 '                 of a character.
@@ -323,6 +330,7 @@
 'C#: ASCENDING contextual keyword is used in the orderby clause in query expressions to specify
 '    that the sort order is from smallest to largest.						
 						case 055: print #1, "ascending";
+'Microsoft BASIC: ASCII returns the ASCII value in decimal of a string's first character.						
 						case 056: print #1, "ascii";
 'Microsoft BASIC: ASIN finds the arcsine of a number.
 'POVRAY: ASIN returns the angle, measured in radians, whose sine is a numeric expression.						
@@ -335,8 +343,11 @@
 'FreePASCAL: ASSEMBLER marks a pure assembler routine. The rouine is define between ASM and END.						
 						case 060: print #1, "assembler";
 'Microsoft BASIC: ASSERT is a debugging macro that halts program execution if an expression
-'                 is evaluated to be FALSE.						
+'                 is evaluated to be FALSE.
+'Python: ASSERT is used for debugging.						
 						case 061: print #1, "assert";
+'Microsoft BASIC: ASSIGN equates a logical name to a complete file specification, a device, or another
+'                 logical name within the context of the BASIC environment.
 'GNU FORTRAN: ASSIGN - assigns a statement label to an integer variable and is used in conjunction
 '             with an assigned GOTO statement or an I/O statement.        						
 						case 062: print #1, "assign";
@@ -351,12 +362,13 @@
 						case 067: print #1, "atan2";
 'POVRAY: ATANH returns the inverse hyperbolic tangent of an numeric expression.						
 						case 068: print #1, "atanh";
-'Microsoft BASIC: ATN returns the arctangent of an number.					
+'Microsoft BASIC: ATN returns the arctangent of a specified tangent in radians or degrees.					
 						case 069: print #1, "atn";
 						case 070: print #1, "attribute";
 						case 071: print #1, "author";
 'Microsoft BASIC: AUTO generates and increment line numbers automatically each time the
-'                 RETURN/ENTER key is pressed.						
+'                 RETURN/ENTER key is pressed.
+'C AUTO defines a local variable as having a local lifetime.						
 						case 072: print #1, "auto";
 'GNU FORTRAN: AUTOMATIC control, within a called subprogram, the allocation of storage
 '             to variables and the inital values of variables.						
@@ -412,7 +424,11 @@
 '    which it appears. Control is passed to the statement that follows the terminated statement
 '    if any.
 'R: BREAK is used to terminate the loop if the condition is TRUE.
-'KOTLIN: BREAK terminates the execution of a loop.						
+'KOTLIN: BREAK terminates the execution of a loop.
+'PHP: BREAK - breaks out of a loop.
+'Python: BREAK - breaks out a loop.
+'C: BREAK passes control out of a compound loop.
+'JAVA: BREAK is used to BREAK a loop or SWITCH statement.						
 						case 107: print #1, "break";
 						case 108: print #1, "brick";
 						case 109: print #1, "brick_size";
@@ -435,12 +451,15 @@
 						case 121: print #1, "by";
 'Microsoft BASIC: BYTE is a standard DATA TYPE: 8-bit signed.
 'FreePASCAL BYTE is a standard DATA TYPE: 8-bit unsigned.
-'C#: BYTE is a unsigned 8-bit integer.						
+'C#: BYTE is a unsigned 8-bit integer.
+'JAVA: BYTE is used to declare a variable that can hold a 8-bit data values.						
 						case 122: print #1, "byte";
 						case 123: print #1, "c";
 						case 124: print #1, "cache";
 						case 125: print #1, "calculatenormal";
-'Microsoft BASIC: CALL - invokes an machine language or source code subroutine.						
+'Microsoft BASIC: CALL transfers control to a subprogram, external function, or other callable routine. You can pass
+'                 pass arguments to the routine and can optionally specify passing mechanisms. When the called 
+'                 routine finishes executing, control returns to the calling program.					
 						case 126: print #1, "call";
 						case 127: print #1, "calls";
 						case 128: print #1, "camera";
@@ -448,9 +467,12 @@
 						case 130: print #1, "cardinality";
 'Microsoft BASIC: CASE  program flow control statement.
 'FreePASCAL: CASE selects a particular segment of code to be executed.
-'C# CASE selelecs a code block to be executed.					
+'C# CASE selelecs a code block to be executed.
+'C: CASE is a branch control statement.
+'PHP: CASE is used in the switch conditional.
+'JAVA: CASE is use with the SWITCH statement to marke code blocks. 					
 						case 131: print #1, "case";
-'Microsoft BASIC: CAST converts an expression to a specified data type.						
+'Microsoft BASIC: CAST converts an expression to a specified DATA TYPE.						
 						case 132: print #1, "cast";
 						case 133: print #1, "castnamespace";
 						case 134: print #1, "caustics";
@@ -469,9 +491,12 @@
 						case 143: print #1, "centroid";
 						case 144: print #1, "cf";
 						case 145: print #1, "ch";
-'Microsoft BASIC: CHAIN temporarily transfer control to an external program.
+'Microsoft BASIC: CHAIN transfers control from the current program to another program. CHAIN closes all files,
+'                 then requests that the new program begins execution.
 						case 146: print #1, "chain";
-'C#: CHAR is an alias for the .NET SystemChar structure type that represents a Unicode UTF-16 character. 								
+'C#: CHAR is an alias for the .NET SystemChar structure type that represents a Unicode UTF-16 character.
+'C: CHAR is a basic character data type.
+'JAVA: CHAR is used to declare a variable that can hold unsigned 16-bit UNICODE characters. 								
 						case 147: print #1, "char";
 'GNU FORTRAN: CHARACTER - character string.						
 						case 148: print #1, "character";
@@ -487,7 +512,7 @@
 						case 157: print #1, "chdir";
 						case 158: print #1, "check";
 						case 159: print #1, "checker";
-'Microsoft BASIC: CHR retruns a string of characters from one or more ASCII integer values.						
+'Microsoft BASIC: CHR retruns a 1 character string that corresponds to the ASCII value you specify.						
 						case 160: print #1, "chr";
 'Microsoft BASIC: CINT converts a numeric or string expression to an integer or
 '                 an integer<bits>.						
@@ -496,13 +521,16 @@
 						case 162: print #1, "circle";
 						case 163: print #1, "circular";
 						case 164: print #1, "clamp";
-'Microsoft BASIC: CLASS declares a class object.
-'FreePASCAL: CLASS declares a class object in MacPas compiler mode.
-'C#: CLASS declares a class object.
-'KOTLIN: CLASS declars a class.						
+'Microsoft BASIC: CLASS declares a CLASS OBJECT.
+'FreePASCAL: CLASS declares a CLASS object in MacPas compiler mode.
+'C#: CLASS declares a CLASS object.
+'PHP: CLASS declares a CLASS.
+'KOTLIN: CLASS declars a CLASS.
+'Python: CLASS defines a CLASS.						
 'GNU COBOL: CLASS defines user define classes. The literals specified on the clause defines
 '           the possible characters that may be found in a data item's value in order to be
-'           considered part of the class.						
+'           considered part of the CLASS.
+'JAVA: CLASS is used to declare a CLASS.						
 						case 165: print #1, "class";
 						case 166: print #1, "class-id";
 'Microsoft BASIC: CLEAR - clears or initalize some memory.					
@@ -517,7 +545,7 @@
 '        or 1 for animations.						
 						case 171: print #1, "clock_on";
 						case 172: print #1, "clock-units";
-'Microsoft BASIC: CLOSE a stream I/O function that terminates access to a device.
+'Microsoft BASIC: CLOSE ends I/O processing to a device or file on the specified channel.
 'GNU FORTRAN: CLOSE statement disconnects a particular file from a unit. 						
 						case 173: print #1, "close";
 						case 174: print #1, "closure";
@@ -536,22 +564,24 @@
 						case 184: print #1, "colour";
 						case 185: print #1, "colour_map";
 						case 186: print #1, "column";
-'Microsoft BASIC: COM enables or disables the trapping of communications activity
-'                 to a specified communications device. When prefixed with OPEN
-'                 COM allocates a buffer for asynchronous communications with
-'                 other computers.						
+'Microsoft BASIC: COM enables or disables the trapping of communications activity to a specified communications device. 
+'                 When prefixed with OPEN COM allocates a buffer for asynchronous communications with other computers. 
+'                 COM is also defines a named, shared storage area called a COMMON block or program section. BASIC
+'                 program modules con access the values stored in the COMMON block by specifying a COMMON block with 
+'                 the same name. 						
 						case 187: print #1, "com";
 						case 188: print #1, "comma";
 						case 189: print #1, "comment";
 						case 190: print #1, "commit";
-'Microsoft BASIC: COMMON is a variable and scope modifier.
-'GNU FORTRAN: COMMON declares variables  and arrays to be put in a storage area that is
-'             accessible to multiple program units, thus allowing allowing program units
-'             to share data without using arguments.
-'GNU COBOL: COMMON clause makes a nested source program unit availble to
-'           the parent program.							
+'Microsoft BASIC: COMMON is a variable and scope modifier. It defines a named, shared storage area called a COMMON block
+'                 or program section. BASIC program modules can access the values stored in the COMMON block by specifying
+'                 a COMMON block with the same name.
+'GNU FORTRAN: COMMON declares variables  and arrays to be put in a storage area that is accessible to multiple program 
+'             units, thus allowing allowing program units to share data without using arguments.
+'GNU COBOL: COMMON clause makes a nested source program unit availble to the parent program.							
 						case 191: print #1, "common";
 						case 192: print #1, "communication";
+'Microsoft BASIC: COMP compares two numeric strings and returns a -1, 0, or 1 depending on the results of the comparison.						
 'FreePASCAL COMP is a 64-bit floating point data type.						
 						case 193: print #1, "comp";
 						case 194: print #1, "comp-1";
@@ -586,10 +616,13 @@
 'Microsoft BASIC: CONST creates a non-modifiable variable declaration, or specifies that a member
 '                 procedure is read only, or specifies that a data type is read only.
 'C#: CONST declares  a constant field or a constant local.
+'PHP: CONST defines a class constant.
+'KOTLIN: CONST marks a property as a compile time constant.
+'C: CONST makes a variable value or pointer parameter unmodifiable.
 'FreePASCAL: CONST decleares an identifier with a fixed value, or a variable with an initialized value.  						
 						case 218: print #1, "const";
 						case 219: print #1, "constref";
-'Microsoft BASIC: CONSTRUCTOR is called automatically when a class or type is created, or
+'Microsoft BASIC: CONSTRUCTOR is called automatically when a CLASS or TYPE is created, or
 '                 specifies execution of a procedure before module level code.
 'KOTLIN: CONSTRUCTOR declares a primary or secondary constructor.
 'FreePASCAL: CONSTRUCTOR is a routine that is used to create an object.						
@@ -599,11 +632,17 @@
 						case 222: print #1, "contained_by";
 						case 223: print #1, "contains";
 						case 224: print #1, "content";
-'Microsoft BASIC: CONTINUE a control flow statement that continues the next
-'                 iteration of a loop.
+'Microsoft BASIC: CONTINUE a control flow statement that continues the next iteration of a loop, or  continues 
+'                 program execution after the execution of a STOP statement or encounters a CTRL+C, or cayses BASIC
+'                 to clear an error condition and resumes execution at the statement following the statement that
+'                 caused the error or at a specified target.
 'C#: CONTINUE statement passes control to the next iteration of the enclosing WHILE, DO, 
 '    FOR. OR FOREACH statement in which it appears.
-'KOTLIN: CONTINUE preceeds the next step of neares enclosing loop.						
+'PHP: CONTINUE Jumps(JMP) to the next iteration of a loop.
+'KOTLIN: CONTINUE preceeds the next step of neares enclosing loop.
+'Python: CONTINUE - continues to the next iteration in a loop.
+'C: CONTINUE passes control to the begining of the loop.
+'JAVA: CONTINUE is used to CONTUNUE a loop.						
 						case 225: print #1, "continue";
 						case 226: print #1, "control";
 						case 227: print #1, "control0";
@@ -613,7 +652,7 @@
 						case 231: print #1, "coords";
 						case 232: print #1, "corr";
 						case 233: print #1, "corresponding";
-'Microsoft BASIC: COS returns the cosine of an angle.				
+'Microsoft BASIC: COS returns the cosine of an angle in radians or degrees.				
 						case 234: print #1, "cos";
 'POVRAY: cosh returns the hyperbolic cosine of an numeric expression. 						
 						case 235: print #1, "cosh";
@@ -623,7 +662,7 @@
 						case 238: print #1, "crackle";
 						case 239: print #1, "crand";
 						case 240: print #1, "cross";
-'Microsoft BASIC: CSNG: Converts an numeric or string expression to a SINGLE precision number.
+'Microsoft BASIC: CSNG: Converts an numeric or STRING expression to a SINGLE precision number.
 						case 241: print #1, "csng";
 'Microsoft BASIC: SCRLIN returns the row position of the cursor.						
 						case 242: print #1, "csrlin";
@@ -640,7 +679,7 @@
 						case 250: print #1, "current_timestamp";
 						case 251: print #1, "cursor";
 						case 252: print #1, "cutaway_textures";
-'Microsoft BASIC:CVD converts a 64-bit integer or 8-byte string to a DOUBLE precision variable.					
+'Microsoft BASIC:CVD converts a 64-bit INTEGER or 8-byte STRING to a DOUBLE precision variable.					
 						case 253: print #1, "cvd";
 'Microsoft BASIC:CVI converts a a floating point number or string to an integer using a binary copy.						
 						case 254: print #1, "cvi";
@@ -653,14 +692,15 @@
 						case 000: print #1, "cylinder";
 						case 001: print #1, "cylindrical";
 						case 002: print #1, "d";
-'Microsoft BASIC: DATA statement to store data at compile time.
+'Microsoft BASIC: DATA statement creates a data block for the READ statement.
+'KOTLIN: DATA instructs the compiler to generate cononicla members for a class.
 'GNU COBOL: DATA is a program division that is used to define all data that
 '           will be processed by the program.
 'GNU FORTRAN: DATA supplies inital values of variables, array elements,
 '             arrays or substrings.						
 						case 003: print #1, "data";
 						case 004: print #1, "dataxel";
-'Microsoft BASIC: DATE sets or retrieve current system date.						
+'Microsoft BASIC: DATE sets or returns a string containing the current DATE.						
 						case 005: print #1, "date";
 						case 006: print #1, "date-compiled";
 						case 007: print #1, "date-written";
@@ -680,19 +720,26 @@
 						case 020: print #1, "debug-sub-2";
 						case 021: print #1, "debug-sub-3";
 						case 022: print #1, "dec";
+'Microsoft BASIC: DECIMAL converts a numeric expression or numeric string to the DECIMAL DATA TYPE.						
 						case 023: print #1, "decimal";
 						case 024: print #1, "decimal-point";
 						case 025: print #1, "declaratives";
-'Microsoft BASIC: DECLARE - declares a module level or member procedure.						
+'Microsoft BASIC: DECLARE explicitly assigns a name and a DATA TYPE to a variable, an entire array, a function
+'                 or a constant.
+'PHP: DECLARE sets directives for a code block.						
 						case 026: print #1, "declare";
 'GNU FORTRAN: DECODE statement transfers data between internal files, decoding the transferred
 '             data from character format to internal format.						
 						case 027: print #1, "decode";
-'Microsoft BASIC: DEF defines a function or sets current segment address.						
+'Microsoft BASIC: DEF lets you define a single function, or a multi-line function, or sets current segment address.
+'Python: DEF defines a function.						
 						case 028: print #1, "def";
 'C#: DEFAULT is used to specify the default label in a SWITCH code block, or as a operator literal
-'    to produce the default value of a type.						
-'FreePASCAL: DEFAULT is used for indexed properties to use them without specifying the property name.						
+'    to produce the default value of a type.
+'C: DEFAULT is a branch control statement.
+'PHP: DEFAULT is used in the switch code block to specify the default code block.						
+'FreePASCAL: DEFAULT is used for indexed properties to use them without specifying the property name.
+'JAVA: DEFAULT is used to specify the DEFAULT code block in a SWITCH statement.						
 						case 029: print #1, "default";
 'Microsoft BASIC: DEFDBL specifies a default data type for a range of variable names.						
 						case 030: print #1, "defdbl";
@@ -710,8 +757,9 @@
 'POVRAY: degrees returns the angle measured in degress whose value in radians is
  '       a numeric expression in radians.						
 						case 036: print #1, "degrees";
-'Microsoft BASIC: DELETE deletes a program lines, or a operator that destroys data and 
-'                 free memory that was allocated with the operator New.
+'Microsoft BASIC: DELETE removes a specified line or range of lines from the program currently running in memory
+'                        or a operator that destroys data and free memory that was allocated with the operator New, or
+'                        removes a record from a relative or index file.
 'GNU FORTRAN: DELETE statement removes a record from an indexed file. An error condition
 '             occirs if the file is not indexed.						
 						case 037: print #1, "delete";
@@ -739,8 +787,13 @@
 						case 054: print #1, "dict_value";
 						case 055: print #1, "difference";
 						case 056: print #1, "diffuse";
-'Microsoft BASIC: DIM declares an array or variable.				
+'Microsoft BASIC: DIM declares and names a statuc, dynamic, or virtual array or variable. The array subscripts determine
+'                 the size of the array. You can specify the DATA TYPE of the array or variable and associate the array
+'                 variable with an I/O channel.				
 						case 057: print #1, "dim";
+'Microsoft BASIC: DIMENSION declares and names a statuc, dynamic, or virtual array or variable. The array subscripts 
+'                 determine the size of the array. You can specify the DATA TYPE of the array or variable and associate 
+'                 the array variable with an I/O channel.	
 'GNU FORTRAN: DIMENSION specifies the symbolic names and dimension
 '             specifications of arrays.						
 						case 058: print #1, "dimension";
@@ -775,7 +828,10 @@
 'FreePASCAL: DO is used to indicate the start of a loop.
 'C#: DO statement executes a statement of block of statements while a specified Boolean
 '    expression evaluates to TRUE.
+'PHP: DO creates a DO...WHILE loop.
 'KOTLIN: DO begins a DO or WHILE loop.
+'C: DO begins a DO-WHILE loop.
+'JAVA: DO is used in a control statement to declare a loop.
 'GNU FORTRAN: DO statement specifies a controlled loop, called a DO loop and 
 '             establishes the control variable, indexing parameters, and rannge of
 '             the loop.						
@@ -784,6 +840,8 @@
 'Microsoft BASIC: DOUBLE is a standard data type: 64-bit floating point.
 'FreePASCAL DOUBLE is a 64-bit floating point number.
 'C#: DOUBLE is a 8-bytes floating point number.
+'C: DOUBLE is a floating point data type.
+'JAVA: DOUBLE is used to declare a variable that can hold a 64-bit floating point number.
 'GLSL: DOUBLE is a single double persision floating point scalar.						
 						case 079: print #1, "double";
 						case 080: print #1, "doublegreatethan";
@@ -791,7 +849,8 @@
 						case 082: print #1, "down";
 'FreePASCAL: DOWNTO is used in a FOR loop to indicate that the index is decremented.						
 						case 083: print #1, "downto";
-'Microsoft BASIC: DRAW is a statement for sequenced pixel ploting.					
+'Microsoft BASIC: DRAW is a statement for sequenced pixel ploting, or a graphics statement to render text
+'                 to the screen.				
 						case 084: print #1, "draw";
 						case 085: print #1, "duplicates";
 'GLSL: dvec2 is a two component double percision floating point vector.						
@@ -802,29 +861,38 @@
 						case 088: print #1, "dvec4";
 						case 089: print #1, "dx";
 						case 090: print #1, "dy";
-'C#: DYNAMIC indicates a the use of the variable and references to its members bypass
-'    compile time type checking. Instead these operations are resolved at run time.
+'Microsoft BASIC: DYNAMIC names the variables and arrays whose size and position in a storage area can change at run time.
+'C#: DYNAMIC indicates a the use of the variable and references to its members bypass compile time type checking. 
+'    Instead these operations are resolved at run time.
 'KOTLIN: DYNAMIC references a dynamic type in KOTLIN/JS code.						
 						case 091: print #1, "dynamic";
 						case 092: print #1, "dz";
 						case 093: print #1, "e";
 						case 094: print #1, "eccentricity";
-'Microsoft BASIC: EDIT displays a specified line, and position the cursor under the first
-'                 first digit of the line number, so that the line may be edited.						
+'Microsoft BASIC: EDIT allows you to edit indivialual program lines in the BASIC environment while envoking an
+'                 editor. EDIT with no arguments invoke a text editor and reads the current program into the 
+'                 editor's buffer. EDIT can also be use to perform one or more string editing functions depending
+'                 on the value of its integer argument.						
 						case 095: print #1, "edit";
 						case 096: print #1, "egcs";
 						case 097: print #1, "egi";
 						case 098: print #1, "eject";
+'Python: ELIF is used in conditional statements; the same as else if.						
 						case 099: print #1, "elif";
 'Microsoft BASIC: ELSE is a program flow control statement for conditional branching.
+'C: ELSE is used for conditional execution.
+'JAVA: ELSE is used to indicate the alternative branches in an IF statement.
 'R: ELSE is associated with IF statement and is executed when the IF statement's condition
 '   is FALSE.
+'PHP: ELSE is used in conditional statements.
 'KOTLIN: ELSE defines the branch of an IF expression which is executed when the condition is FALSE.
+'Python: ELSE is used in conditional statements.
 'FreePASCAL: ELSE is used an IF statement to provide an execution path when the if test fails.
 'GNU FORTRAN: ELSE statement is used in conjunction with the block IF or
 '             ELSE IF statements in a IF block statement.							
 						case 100: print #1, "else";
-'Microsoft BASIC: ELSEIF is a program flow control statement for conditional branching.						
+'Microsoft BASIC: ELSEIF is a program flow control statement for conditional branching.
+'PHP: ELSEIF is used in conditional statements.						
 						case 101: print #1, "elseif";
 						case 102: print #1, "emi";
 						case 103: print #1, "emission";
@@ -832,8 +900,7 @@
 'GNU FORTRAN:ENCODE statement transfer data between interal files, encoding the transferred
 '                   data from internal format to character format.						
 						case 105: print #1, "encode";
-'Microsoft BASIC: END indicates the end of compound statement block, or a flow control
-'                 statement to end the program.
+'Microsoft BASIC: END marks the physical and logical end of a main program, a program module, or a block of statements.
 'FreePASCAL: END marks the end of a code block, a record, or certain other constructs.
 'GNU FORTRAN: END statement designates the end of a program unit.						
 						case 106: print #1, "end";
@@ -867,11 +934,14 @@
 '             within the function or subroutine in which ENTRY statement appears.						
 						case 132: print #1, "entry";
 'Microsoft BASIC: ENUM declares an enumerated type.
-'C# ENUM type is a value type defined by a set of named constants of the underlying integral
-'   numeric type.						
+'C#: ENUM type is a value type defined by a set of named constants of the underlying integral
+'   numeric type.
+'C: ENUM defines a set of constants of type INT.
+'JAVA: ENUM is used to define a fixed set of constants.						
 						case 133: print #1, "enum";
 'Microsoft BASIC: ENVIRON allows the user to modify the environment string table or retrieve the
-'                 specified environment string.						
+'                 specified environment string.
+'KOTLIN: ENUM decleares an enumeration.						
 						case 134: print #1, "environ";
 'GNU COBOL: ENVIRONMENT is a program division that defines the external computer environment in
 '           which the program will be operating. This includes defining any files that the program
@@ -884,6 +954,7 @@
 'GNU FORTRAN: EQUIVALENCE specifies the sharing of storage units by two or more entities in
  '            a program unit, thus associating those enities.						
 						case 139: print #1, "equivalence";
+'Microsoft BASIC: EQV returns the bitwise AND equivalence of two numeric values.
 'GNU FORTRAN: EQV returns the bitwise and equivalence of two numeric values.						
 						case 140: print #1, "eqv";
 'Microsoft BASIC: ERASE a statement that erases arrays.					
@@ -893,9 +964,9 @@
 						case 142: print #1, "erdev";
 						case 143: print #1, "erf";
 						case 144: print #1, "erfc";
-'Microsoft BASIC: ERL  is a error handling function that returns the line where the error occurred.					
+'Microsoft BASIC: ERL returns the number of the BASIC line where the last error occured.					
 						case 145: print #1, "erl";
-'Microsoft BASIC: ERR gets of sets the run-time error number.					
+'Microsoft BASIC: ERR returns the error number of the current run-time error.					
 						case 146: print #1, "err";
 'Microsoft BASIC: ERROR is a error handling statement that generates an error.						
 						case 147: print #1, "error";
@@ -904,11 +975,13 @@
 						case 150: print #1, "esi";
 						case 151: print #1, "evaluate";
 						case 152: print #1, "every";
+'Python: EXCEPT is used with exceptions.						
 						case 153: print #1, "except";
 						case 154: print #1, "exception";
-'Microsoft BASIC: EXIT allows the immediate exit from a subroutine or loop.						
+'Microsoft BASIC: EXIT lets a SUB, FUNCTION, PICTURE subprogram or a LOOP or clears memory and returns control
+'         to the operating system.						
 						case 155: print #1, "exit";
-'Microsoft BASIC: EXP returns e raised to the power of a given number.					
+'Microsoft BASIC: EXP returns the value of the mathematical constant e raised to a specified power.					
 						case 156: print #1, "exp";
 						case 157: print #1, "exp2";
 						case 158: print #1, "expand";
@@ -925,8 +998,12 @@
 'Microsoft BASIC: EXTERN declares a varable, array or object having external linkage, or
 '                 a statement block to allow calling of functions for specific languages or
 '                 platforms.
-'C#: EXTERN is a modifier used to declare a method that implemented externally.						
+'C#: EXTERN is a modifier used to declare a method that implemented externally.
+'C: EXTERN indicates that an identifier is defined elsewhere.						
 						case 166: print #1, "extern";
+'Microsoft BASIC: EXTERNAL declares constants, variables, functions, adnd subroutines external to your program.
+'KOTLIN: EXTERNAL marks a declaration as implemented not in Kotlin and is accessible through 
+'        JNI or in JavaScript.						
 'GNU FORTRAN: EXTERNAL identifies an external or dummy procedure.						
 						case 167: print #1, "external";
 'Microsoft BASIC: EXTERR returns extended error information.						
@@ -947,14 +1024,16 @@
 'Microsoft BASIC: FALSE is a intrinsic constant set by the compiler.
 'R: FALSE is used to represent a Boolean FALSE.
 'KOTLIN: FALSE specifies the FALSE value of a Boolean type.
+'Python: FALSE is a boolean value or result of comparision operation. 
 'FreePASCAL: FALSE is a boolean value indicating a test has faild.						
 						case 182: print #1, "false";
 'FreePASCAL: FAR - allows access to addresses outside of the current segment.						
 						case 183: print #1, "far";
 						case 184: print #1, "fclose";
 						case 185: print #1, "fd";
-'Microsoft BASIC: FIELD specifies a field alignment.
-'KOTLIN: FIELD is used as an annotation use style target.						
+'Microsoft BASIC: FIELD dynamically associates STRING variables with all or parts of a RECORD buffer.
+'KOTLIN: FIELD is used as an annotation use style target, or is used inside a property accessor to refer to
+'        to the backing field of the property.						
 						case 186: print #1, "field";
 'FreePASCAL: FILE is an external data structure, typically stored on disk.
 'KOTLIN: FILE is used as an annotation uses style target.						
@@ -969,6 +1048,8 @@
 						case 191: print #1, "filler";
 						case 192: print #1, "filter";
 						case 193: print #1, "filterwidth";
+'KOTLIN: FINAL forbids overriding a member.
+'PHP: FINAL declares a class, property or method as final.						
 						case 194: print #1, "final";
 'POVRAY: final_clock: returns the value set through the INI file option Final_Clock=n.n or
 '        the command line switch +KFn.n						
@@ -979,12 +1060,17 @@
 'FreePASCAL: FINALIZATION introduces an optional "initialization" part of a PROGRAM UNIT.						
 						case 197: print #1, "finalization";
 'C#: FINALLY code block cleans up any resources that are allocated in a TRY code block.
-'KOTLIN: FINALLY  begins a code block that is always executed when a TRY code block exits.					
+'JAVA: FINALLY indicates a code block in a TRY...CATCH structure.
+'KOTLIN: FINALLY  begins a code block that is always executed when a TRY code block exits.
+'PHP: FINALLY is used in the TRY..CATCH statement.
+'Python: FINALLY is used with exceptions to define a code block that will be executed no matter
+'        if there is an exception or not.					
 						case 198: print #1, "finally";
 						case 199: print #1, "finish";
 						case 200: print #1, "first";
 						case 201: print #1, "fisheye";
-'Microsoft BASIC: FIX returns the integer part of a number rounding towards zero.					
+'Microsoft BASIC: FIX truncates a floating point value at the decimal point and returns the INTEGER
+'                 portion represented as a floating point value.					
 						case 202: print #1, "fix";
 'C#: FIXED statment prevents the garpage collector from relocating a movable variable.						
 						case 203: print #1, "fixed";
@@ -993,11 +1079,14 @@
 'Microsoft BASIC: FLIP changes the current video page. 						
 						case 206: print #1, "flip";
 'GLSL: FLOAT is a single persision floating point scalar.
-'C#: FLOAT is a 4-bytes floating point type.					
+'C#: FLOAT is a 4-bytes floating point type.
+'C: FLOAT is a floating point data type.
+'JAVA: FLOAT is used to declare a variable that can hold a 32-bit floating point value.					
 						case 207: print #1, "float";
 'POVRAY: floor returns the floor of a numeric expression.						
 						case 208: print #1, "floor";
 						case 209: print #1, "fmod";
+'PHP: FN declares an arrow function.						
 						case 210: print #1, "fn";
 						case 211: print #1, "focal_point";
 						case 212: print #1, "fog";
@@ -1006,15 +1095,20 @@
 						case 215: print #1, "fog_type";
 						case 216: print #1, "footing";
 						case 217: print #1, "fopen";
-'Microsoft BASIC: FOR is a flow control statement, an open statement clause or an operator
+'Microsoft BASIC: FOR repeatedly executes a code block while incrementing a specified control
+'                 variable for each execution of the code block, an open statement clause, or an operator
 '                 depending on the context.
 'C#: FOR is a statement that executes a statement or code block while a specified boolean
 '    expression evaluates to TRUE.
+'C: FOR starts a FOR loop.
+'JAVA: FOR is used to start a FOR loop.
 'R: FOR is USED for looping or iterating over a dictionary, string, list, set, or tuple.
+'FOR  creates a FOR loop.
+'Python: FOR creates a FOR loop.
 'FreePASCAL: FOR is a loop used to increment of decrement a control variable.						
 						case 218: print #1, "for";					
 						case 219: print #1, "form";
-'Microsoft BASIC: FORMAT - formats a number in a specified format.												
+'Microsoft BASIC: FORMAT converts an expression to a formatted string.												
 'GNU FORTRAN: FORMAT statemant is an non-executable statemant that defines a format specification.						
 						case 220: print #1, "format";
 'FreePASCAL: FORWARD allows a subroutine to be used before it is declared.						
@@ -1030,13 +1124,13 @@
 						case 228: print #1, "fre";
 						case 229: print #1, "frequency";
 						case 230: print #1, "fresnel";
-'C#: FROM is the first statement in a query expression.						
+'C#: FROM is the first statement in a query expression.
+'Python: FROM imports specific parts of a module.						
 						case 231: print #1, "from";
 						case 232: print #1, "full";
-'Microsoft BASIC: FUNCTION defines a procedure returning a value, declares or defines a
-'                 member procedure returning a value, or a data type that stores a pointer
-'                 to a procedure.
-'R: FUNCTION is used to create a user defined FUNCTION in R.						
+'Microsoft BASIC: FUNCTION marks the beginning of a FUNCTION subprogram and defines the subprograms parameters.
+'R: FUNCTION is used to create a user defined FUNCTION in R.
+'PHP: FUNCTION creates a function.						
 'GNU FORTRAN: FUNCTION statement is the first statement of a function block. It specifies
 '             the symbolic name of the FUNCTION and its type.
 'FreePASCAL: FUNCTION defines the start of a routine that returns a value.						
@@ -1049,9 +1143,8 @@
 						case 239: print #1, "generate";
 'FreePASCAL: GENERIC is a class creation modifier.						
 						case 240: print #1, "generic";
-'Microsoft BASIC: GET - Gets a copy of a portion of the current working page, 
-'                       gets a copy of an image buffer, or reads data from a
-'                       file to a buffer.
+'Microsoft BASIC: GET - Gets a copy of a portion of the current working page, gets a copy of an image buffer, 
+'                       or moves a RECORD from a file to a RECORD buffer and makes the data available for processing. 
 'C#: GET defines an accessor method in a property or indexer that returns the
 '    property value of the indexer element.
 'KOTLIN: GET declares the getter of a property, or is used as an annotation use style target.						
@@ -1065,6 +1158,7 @@
 						case 248: print #1, "giving";
 						case 249: print #1, "gl_fragcolor";
 						case 250: print #1, "gl_fragcoord.xy";
+'Python: GLOBAL declares a GLOBAL variable.						
 						case 251: print #1, "global";
 						case 252: print #1, "global_lights";
 						case 253: print #1, "global_settings";
@@ -1141,16 +1235,14 @@
 				case 017d ' CORE - 3
 '                                                     r0				
 				     select case as const cast(ulongint, mem64(49361))
-'Microsoft BASIC: GOSUB is a flow control statement that pushes(PUSH) the current program counter(PC)
-'                 onto the stack and then sets the program counter(PC) to the address(line number)
-'                 of the block of code that is to be executed using a jump instruction(JMP). The RETURN 
-'                 statement pops(POP) value that the program counter(PC) had before executing the current 
-'                 code block and writes it to the program counter using a return instruction(RET).			            				
+'Microsoft BASIC: GOSUB transfers control to a specified line number or label and stores the location of
+'                 the GOSUB statement for eventual return from the subroutine.			            				
 						case 000: print #1, "gosub";
-'Microsoft BASIC: GOTO is a flow control statement that sets the program counter(PC) to the address(line number) 
-'                 of the block of code that is to be executed using a jump instrcuction(JMP).
-'C#: GOTO(JMP) is a statemen that transfers the program control directly to a labeled statement. 
-'FreePASCAL: GOTO is used to exit a segment of code and jumps(JMP) to another code setment.						
+'Microsoft BASIC: GOTO transfer control to a specified line number or label.
+'C#: GOTO(JMP) is a statemen that transfers the program control directly to a labeled statement.
+'C: GOTO(JMP) unconditionally transfer control.
+'PHP: GOTO jumps(JMP) to a line of code. 
+'FreePASCAL: GOTO(JMP) is used to exit a segment of code and jumps(JMP) to another code setment.						
 						case 001: print #1, "goto";
 						case 002: print #1, "gradient";
 						case 003: print #1, "granite";
@@ -1212,11 +1304,16 @@
 'GNU COBOL: IDENTIFICATION is a program division that provides the basic identification of
 '           the program, programmer, and the compiler used.				
 						case 049: print #1, "identification";
-'Microsoft BASIC: IF is a flow control statement for conditional branching.
+'Microsoft BASIC: IF evaluates a conditional expression and transfers program control depending on
+'                 the resulting values.
 'FreePASCAL: IF is a test condition statement and performs a set of instruction based on a result.
 'C#: IF statement identifies which statement to run based on the value of a Boolean expression.
+'C: IF is used for conditional execution.
+'JAVA: IF executes a code block if a condition is TRUE.
 'R: IF statemen consists of a Boolean expression which is followed by one or more statement.
 'KOTLIN: IF begins an if expression.
+'PHP: IF creates a cinditional statement.
+'Python: IF makes a conditional statement.
 'GNU FORTRAN: IF statement allows for conditional branching, conditional statement
 '             execution, or conditional execution of blocks of code. The block IF
 '             ends with the END IF statement.						
@@ -1268,18 +1365,22 @@
 						case 082: print #1, "imp";
 						case 083: print #1, "implementation";
 'Microsoft BASIC: IMPORT sets external linkage attribute for public data located in a shared library.
-'KOTLIN: IMPORT imports a declaration from another package into the current file.						
+'KOTLIN: IMPORT imports a declaration from another package into the current file.
+'Python: IMPORT is used to import a module.
+'JAVA: IMPORT marks classes and interfaces available and accessible to the current source code.						
 						case 084: print #1, "import";
 'FreePASCAL: IN identifies elements in a collection.
 'C#: IN is used in generic type parameters in generic interfaces and delgates, as a parameter modifier,
 '    which lets you pass an argument to a method by refence rather than value, in a foreach statement,
 '    with from clauses in a KINQ query expressions, or with join clauses in LINQ query expressions.
+'Python: IN checks if a value is present in a list, tuple, etc.
 'KOTLIN: IN specifies the object being itrated in a for loop, is used as infix operator to check that a value
 '        belong to a range, a collectio, in a WHEN expression, or any other entity that defines the 'contains'
 '        method.					
 						case 085: print #1, "in";						
 'GNU FORTRAN: INCLUDE statement incorporates the contents of a designated file into
-'             FORTRAN compilation directly following this statement.						
+'             FORTRAN compilation directly following this statement.
+'PHP: INCLUDE embeds code from another file.						
 						case 086: print #1, "include";
 						case 087: print #1, "index";
 						case 088: print #1, "indexed";
@@ -1298,22 +1399,25 @@
 						case 095: print #1, "initialization";
 						case 096: print #1, "initialize";
 						case 097: print #1, "initiate";
-'Microsoft BASIC: INKEY returns a string representing the first key watting in the
-'                 keyboard buffer.						
+'Microsoft BASIC: INKEY reads a single keystroke from a terminal opened on a specified channel and returns
+'                 returns the typed character. 						
 						case 098: print #1, "inkey";
 'FreePASCAL: INLINE inserts machine code directly into a routine.						
 						case 099: print #1, "inline";
 						case 100: print #1, "inlinenoinline";
 						case 101: print #1, "in_memory";
+'KOTLIN: INNER allows referring to the outer class instance from a nested class.						
 						case 102: print #1, "inner";
 						case 103: print #1, "inout";
 'Microsoft BASIC: INP returns one byte from a machine port address.						
 						case 104: print #1, "inp";
-'Microsoft BASIC: INPUT reads a list of values from the keyboard, specifies a text file to
-'                 be opened for  input mode, reads a list of values from a text file, or reads
-'                 a number of characters from the console or a file.					
+'Microsoft BASIC: INPUT assignes values from your terminal or from a terminal formated file to program variables, 
+'                 specifies a text file to be opened for  input mode, reads a list of values from a text file, reads
+'                 a number of characters from the terminal or a file, or assigns values from a terminal or terminal
+'                 formated file to array elements.					
 						case 105: print #1, "input";						
 						case 106: print #1, "input-output";
+'Microsoft BASIC: INQUIRE is a synonym for the HELP command.						
 						case 107: print #1, "inquire";
 						case 108: print #1, "insert";
 'POVRAY: inside returns either 0.0 when the a given vector is outside an object or
@@ -1322,24 +1426,31 @@
 						case 110: print #1, "inside_vector";
 						case 111: print #1, "inspect";
 						case 112: print #1, "installation";
-'Microsoft BASIC: INSTR locates the first occurrence of a substring or character
-'                 within a string.						
+'Microsoft BASIC: INSTR searches for a substring within a string and returns the position of the substring's
+'                 starting character.						
 						case 113: print #1, "instr";
-'Microsoft BASIC: INT returns the floor of a number.
+'Microsoft BASIC: INT returns the floating point value of the largest whole number less than or equal to a
+'                 specified expression.
 'C# INT is a signed 32-bit integer.
-'GLSL: int is a signed integer type.			
+'C: INT is a basic integer data type.
+'GLSL: INT is a signed integer type.
+'JAVA: INT is used to declare a variable that can hold a 32-bit signed integer.			
 						case 114: print #1, "int";
-'Microsoft BASIC: INTEGER is a standard 32-bit or 64-bit signed data type.						
+'Microsoft BASIC: INTEGER is a standard 32-bit or 64-bit signed INTEGER DATA TYPE, or converts a numeric expression or
+'                 string expression to a specified or default INTEGER DATA TYPE. 						
 'GNU FORTRAN: INTEGER is a positive and negitive integral data type.
 'FreePASCAL INTEGER is a 16-bit or 32-bit integer.						
 						case 115: print #1, "integer";
 'C#: INTERFACE defines a contract.
+'JAVA: INTERFACE is used to declare an INTERFACE.
 'KOTLIN: declares an INTERFACE.						
-'FreePASCAL INTERFACE defines a public declaration of a routine in a program unit.						
+'FreePASCAL INTERFACE defines a public declaration of a routine in a program unit.
+'PHP: INTERFACE creates and implements an interface.				
 						case 116: print #1, "interface";
 						case 117: print #1, "interior";
 						case 118: print #1, "interior_texture";
-'C#: INTERNAL is a access modifier for types and type members.						
+'C#: INTERNAL is a access modifier for types and type members.
+'KOTLIN: INTERNAL marks a declaration as visible in the current module.						
 						case 119: print #1, "internal";
 						case 120: print #1, "interpolate";
 						case 121: print #1, "intersect";
@@ -1370,7 +1481,8 @@
 '                 object is compatible to a type derived from its compile time type.
 'C#: IS operator checks if the result of an expression is compatible with a given type, or
 '    test an expression against a pattern.
-'KOTLIN: IS checks  tha a value is in a certain type.					
+'KOTLIN: IS checks  tha a value is in a certain type.
+'Python: IS - used to test if two values are equal.					
 'GNU COBOL: IS clause allows you to specify an alternate name for one of the built-in
 '           GNU COBOL/OpenCOBOL device names specified before the "IS".						
 						case 140: print #1, "is";
@@ -1392,6 +1504,7 @@
 						case 154: print #1, "isnan";
 						case 155: print #1, "isosurface";
 						case 156: print #1, "isotropic";
+'Microsoft BASIC: ITERATE statement allows you to explicitly reexeccute a loop.
 						case 157: print #1, "iterate";
 						case 158: print #1, "i_time";
 						case 159: print #1, "itime";
@@ -1415,11 +1528,13 @@
 						case 172: print #1, "k";
 						case 173: print #1, "kanji";
 						case 174: print #1, "key";
-'Microsoft BASIC: KILL deletes a file from a device.						
+'Microsoft BASIC: KILL deletes deletes a disk file, removes the file's directory entry, 
+'                 and releases the file storage space.					
 						case 175: print #1, "kill";
 						case 176: print #1, "l";
 'FreePASCAL: LABEL defines a target jump(JMP) pointer for a goto(JMP).						
 						case 177: print #1, "label";
+'Python: LAMBDA is used to create an anonymous function.						
 						case 178: print #1, "lambda";
 						case 179: print #1, "last";
 						case 180: print #1, "lathe";
@@ -1427,17 +1542,17 @@
 						case 182: print #1, "lcopy";
 						case 183: print #1, "leading";
 						case 184: print #1, "leave";
-'Microsoft BASIC: LEFT returns the leftmost substring of a string.						
+'Microsoft BASIC: LEFT extracts a specified substring from a string's left side.						
 						case 185: print #1, "left";
 						case 186: 'print #1, "left";
-'Microsoft BASIC: LEN returns the length of an expression or data type.						
+'Microsoft BASIC: LEN returns an integer value equal to the number of characters in a specified STRING.						
 						case 187: print #1, "len";
 'GNU COBOL: length returns the length of a string.						
 						case 188: print #1, "length";
 						case 189: print #1, "leopard";
 						case 190: print #1, "less";
 						case 191: print #1, "lesseq";
-'Microsoft BASIC: LET indicates the assignment operator.
+'Microsoft BASIC: LET assigns a value to one or more variables.
 'C#: LET used to store the result of a sub expression in order to use it in sebsequent clauses.					
 						case 192: print #1, "let";
 						case 193: print #1, "libraryt";
@@ -1448,8 +1563,8 @@
 						case 198: print #1, "limits";
 						case 199: print #1, "linage";
 						case 200: print #1, "linage-counter";
-'Microsoft BASIC: LINE draws a line or box to the screen, reads one line of input from the
-'                 keyboard, or reads one line of input from a file.						
+'Microsoft BASIC: LINE draws a line or box to the screen, assigns a STRING value from a terminal or terminal formated
+'                 file  to a STRING variable.						
 						case 201: print #1, "line";
 						case 202: print #1, "linear_spline";
 						case 203: print #1, "linearstep";
@@ -1457,16 +1572,21 @@
 						case 205: print #1, "line-counter";
 						case 206: print #1, "lines";
 						case 207: print #1, "linkage";
-'Microsoft BASIC: LIST - list all or part of a program.							
+'Microsoft BASIC: LIST displays the program lines of the program currently in memory. The line numbers are sequenced
+'                 in ascending order.
+'PHP: LIST assigns array elements into variables.							
 						case 208: print #1, "list";
 'Microsoft BASIC: LLIST - lists all or part of a program in momory to the printer.						
 						case 209: print #1, "llist";
 'POVRAY: ln returns the natural logarithm of base e of a numeric expression.						
 						case 210: print #1, "ln";
-'Microsoft BASIC: LOAD - loads a file into memory.						
+'Microsoft BASIC: LOAD makes one or more previously created object module or source file available for
+'                 execution with the RUN command.						
 						case 211: print #1, "load";
 						case 212: print #1, "load_file";
-'Microsoft BASIC: LOC returns the file position where the last file read / write was performed.						
+'Microsoft BASIC: LOC returns the file position where the last file read / write was performed, or returns
+'                  a longword INTEGER specifying the virtual address of a simple  or subscripted variable, or
+'                  the address of an external FUNCTION.						
 						case 213: print #1, "loc";
 'Microsoft BASIC: LOCAL is an error handling statement that sets the current error handler.
 'FreePASCAL LOCAL: A function / procedure modifier only usable with Linux for Kylix compatiblity.						
@@ -1477,21 +1597,25 @@
 'Microsoft BASIC: LOCATE sets the current cursor position.						
 						case 216: print #1, "locate";
 						case 217: print #1, "location";
-'Microsoft BASIC: LOCK restricts read / write access to a file or protion of a file.
+'Microsoft BASIC: LOCK restricts read / write access to a file or protion of a file, or changes the default valus for
+'                 COMPILE command qualifiers.
 'C#: LOCK acquires a mutual exclusion lock for a given object, executes a code block, and then
 '    releases the LOCK.						
 						case 218: print #1, "lock";
 'Microsoft BASIC: LOF returns the length of a open file or device in bytes.					
 						case 219: print #1, "lof";
-'Microsoft BASIC: LOG returns the natural logarithm of a given number.
-						case 220: print #1, "log";						
+'Microsoft BASIC: LOG returns the natural logarithm (base e) of a specified number.
+						case 220: print #1, "log";
+'Microsoft BASIC: LOG10 returns the common logarithm (base 10) of a specified number.
 						case 221: print #1, "log10";
 						case 222: print #1, "log2";
 						case 223: print #1, "logb";
 'GNU FORTRAN: LOGICAL - Boolean data representing TRUE or FALSE.						
 						case 224: print #1, "logical";
 'Microsoft BASIC: LONG is a standard 32-bit data type.
-'C#: LONG is a signed 64-bit integer.						
+'C#: LONG is a signed 64-bit integer.
+'C: LONG is a type modifier.
+'JAVA: LONG is used to declare a variable that can hold a 64-bit integer.						
 						case 225: print #1, "long";
 						case 226: print #1, "look_at";
 						case 227: print #1, "looks_like";
@@ -1514,7 +1638,7 @@
 						case 236: print #1, "lpos";
 'Microsoft BASIC: LPRINT sends data to a device.					
 						case 237: print #1, "lprint";
-'Microsoft BASIC: LSET left justifies a string.						
+'Microsoft BASIC: LSET assigns left justified DATA to a STRING variable.						
 						case 238: print #1, "lset";
 						case 239: print #1, "luminance";
 						case 240: print #1, "m";
@@ -1528,6 +1652,8 @@
 						case 248: print #1, "mainImage";
 						case 249: print #1, "major_radius";
 						case 250: print #1, "mandel";
+'Microsoft BASIC: MAP defines a named area of statically allocated storage called a PSECT, declares DATA fields in the
+'                 RECORD, and associates them with program variables.
 						case 251: print #1, "map";
 						case 252: print #1, "map_type";
 						case 253: print #1, "marble";
@@ -1562,6 +1688,7 @@
 						case 010: print #1, "material";
 						case 011: print #1, "material_map";
 						case 012: print #1, "matrix";
+'Microsoft BASIC: MAX compares the values of two or more numeric expressions and returns the highest value.
 'POVRAY: max returns the maximum of two or more floating point values.						
 						case 013: print #1, "max";
 'POVRAY: max_extent returns the maximum coordinates of a objects bounding box, in effect
@@ -1592,9 +1719,10 @@
 						case 036: print #1, "method-id";
 						case 037: print #1, "metric";
 						case 038: print #1, "microfacet";
-'Microsoft BASIC: MID overwrites a substring of a string with another, or returns a
-'                 substring of a string.						
+'Microsoft BASIC: MID can be used as a statement or function. The MID statement performs substring insertion into
+'                 a STRING. The MID function extracts a specified substring from a STRING expression.						
 						case 039: print #1, "mid";
+'Microsoft BASIC: MIN compares the values of two or more numeric expressions and returns the smallest value.
 'POVRAY: min returns the minimum of two or more floating point values.						
 						case 040: print #1, "min";
 'POVRAY: min_extent returns the minum coordinates of a declared object's bounding box, in effect
@@ -1616,7 +1744,7 @@
 						case 049: print #1, "M_LN2";
 						case 050: print #1, "M_LOG10E";
 						case 051: print #1, "M_LOG2E";
-'Microsoft BASIC: MOD finds the remainder from a division operation.
+'Microsoft BASIC: MOD divides a numeric value by another numeric value and returns the remainder.
 'FreePASCAL: MOD is an operator that is used to return the remainder of an integer division.						
 						case 052: print #1, "mod";
 						case 053: print #1, "mode";
@@ -1626,6 +1754,7 @@
 						case 056: print #1, "more-labels";
 						case 057: print #1, "mortar";
 						case 058: print #1, "motor";
+'Microsoft BASIC: MOVE transfers DATA between a RECORD buffer and a list of variables.
 						case 059: print #1, "move";
 						case 060: print #1, "M_PI";
 						case 061: print #1, "M_PI_2";
@@ -1635,7 +1764,7 @@
 						case 065: print #1, "multiple";
 						case 066: print #1, "multiply";
 						case 067: print #1, "n";
-'Microsoft BASIC: NAME renames a file on disk.						
+'Microsoft BASIC: NAME renames a specified file.						
 						case 068: print #1, "name";
 'GNU FORTRAN: NAMELIST associates a group of variables or array names with a
 '             unique group name.						
@@ -1650,14 +1779,15 @@
 						case 076: print #1, "nearest_count";
 						case 077: print #1, "negative";
 						case 078: print #1, "nested_loop";
-'Microsoft BASIC: NEW deletes the program currently in memory and clear all variables, 
-'                 is an operator to dynamically allocate memory and construct data
-'                 of a specified type, is or an operator to construct an object at a
-'                 specified memory address.
-'C#: NEW operator creates a new instance of a type.						
+'Microsoft BASIC: NEW clears BASIC memory and allows you to assign a name to a new progra, or 
+'                 is an operator to dynamically allocate memory and construct data of a specified type, or 
+'                 is or an operator to construct an object at a specified memory address.
+'C#: NEW operator creates a new instance of a type.
+'JAVA: NEW is used to create NEW objects
+'PHP: NEW creates an object.						
 						case 079: print #1, "new";
-'Microsoft BASIC: NEXT is a flow control statement that marks the end of a FOR..NEXT loop, or
-'                 a ERROR handling statement to resume execution after a jump(JMP) to a error handler.
+'Microsoft BASIC: NEXT is a flow control statement that marks the end of a loop, or a ERROR handling statement to 
+'                 RESUME execution after a jump(JMP) to a error handler.
 'R: NEXT skips the current iteration of a loop without terminating it.						
 						case 080: print #1, "next";
 'FreePASCAL: NIL is a pointer value indicating the pointer does not contain a value.						
@@ -1668,7 +1798,9 @@
 						case 085: print #1, "no_image";
 						case 086: print #1, "noise";
 						case 087: print #1, "noise_generator";
+'PYTHON: NONE repersents a null value.						
 						case 088: print #1, "none";
+'PYTHON: nonlocal declares a non local variable.						
 						case 089: print #1, "nonlocal";
 						case 090: print #1, "noperspective";
 						case 091: print #1, "no_reflection";
@@ -1679,7 +1811,8 @@
 						case 096: print #1, "normal_vectors";
 						case 097: print #1, "no_shadow";
 						case 098: print #1, "nostackframe";
-'Microsoft BASIC: NOT returns the bitwise complemnt of a numeric value.						
+'Microsoft BASIC: NOT returns the bitwise complemnt of a numeric value.
+'Python: NOT - a logical operator.						
 'GNU FORTRAN:NOT - logical negation.
 'FreePASCAL: NOT is a boolean operator that negates the result of a test.						
 						case 099: print #1, "not";
@@ -1688,6 +1821,7 @@
 '           the program calling sequence,
 'C#: NULL is a literal that represents a NULL reference, on that does not refer to
 '    any object.
+'JAVA: NULL is used to indicate that a reference does not refer to anything.
 'KOTLIN: NULL is a constant representing an object reference that doesn't point to any object.						
 						case 101: print #1, "null";
 						case 102: print #1, "nulls";
@@ -1733,10 +1867,12 @@
 '                 for file operations, opens both standard input(STDIN) and standard error(STDERR) streams for
 '                 file operations, open a printer device, open an external process' standard input(STDIN) and / or 
 '                 standard output(STDOUT) steams for file operations, or opens the console directly for input and / or
-'                 output as a file.						
+'                 output as a file.
+'KOTLIN: OPEN allows subclassing a class or overriding a member.						
 						case 124: print #1, "open";
 'Microsoft BASIC: OPERATOR declares or defines an overloaded operator.
 'C# OPERATOR overloads a predefined C# operator.
+'KOTLIN: OPERATOR marks a function as overloading an operator or implementing a convention.
 'FreePASCAL: OPERATOR defines a routine used to implement an operator.						
 						case 125: print #1, "operator";
 'Microsoft BASIC: OPTION specifies an addional attributes and / or characteristics of symbols, specifies a default
@@ -1745,15 +1881,17 @@
 '                 literals should be processed for C-like excape sequences by default, enables support for GOSUB
 '                 and ON GOSUB, disables support for GOSUB and ON GOSUB, undefines a reserved keyword, specifies
 '                 internal linkage by default for procedure declartions, or reverts to default array declaration
-'                 behavior.						
+'                 behavior, or allows you to set compilation qualifiers such as default data type, size, and scale
+'                 factor.					
 						case 126: print #1, "option";
-						case 127: print #1, "optional";
-'GNU FORTRAN: OPTIONS						
+						case 127: print #1, "optional";						
 						case 128: print #1, "options";
 'Microsoft BASIC: OR returns the bitwise inclusive disjunction of two numeric values, or is a parameter to the
 '                 PUT statement which uses a bit-wise  OR as the blitting method.
 'FreePASCAL: OR is a boolean operator which allows either of two choices to be used.						
-'GNU FORTRAN: OR - Logical OR						
+'GNU FORTRAN: OR - Logical OR
+'PHP: OR - a logical OR.
+'Python: OR - a logical operator. 						
 						case 129: print #1, "or";
 						case 130: print #1, "or_bits";
 						case 131: print #1, "order";
@@ -1767,7 +1905,8 @@
 'Microsoft BASIC: OUT outputs a value to a hardware port.
 'C#: OUT can be used as a parameter modifier, which lets you pass an argument to a method
 '    by reference rather than by value, or in generic type parameter declarations for interfaces, and
-'    delegates, which specifies that a type parameter is covariant.						
+'    delegates, which specifies that a type parameter is covariant.
+'KOTLIN: OUT marks a type parameter as covariant.						
 						case 139: print #1, "out";
 						case 140: print #1, "outer";
 'Microsoft BASIC: OUTPUT specifies a text file or device to opened for output mode.						
@@ -1778,6 +1917,8 @@
 '                 virtual or abstract method.
 'C#: OVERRIDE modifier is required to extend or modify the abstract or virtual
 '    implementation of an inherited method, property, indexer, or event.
+'
+'KOTLIN: OVERRIDE marks a member as an override of a superclass member.
 'FreePASCAL: OVERRIDE is used in the overriding of virtual functions.						
 						case 144: print #1, "override";
 						case 145: print #1, "p";
@@ -1800,6 +1941,7 @@
 'Microsoft BASIC: PASCAL specifies a Pascal-style colling convention in a procedure declaraion.
 'FreePASCAL: PASCAL specifies PASCAL calling convention.						
 						case 158: print #1, "pascal";
+'Python: PASS is a null statement that will do nothing.						
 						case 159: print #1, "pass";
 						case 160: print #1, "pass_through";
 						case 161: print #1, "password";
@@ -1843,6 +1985,7 @@
 						case 191: print #1, "pointcloud_get";
 						case 192: print #1, "pointcloud_search";
 						case 193: print #1, "pointcloud_write";
+'Microsoft BASIC: POINTER is a variable declaration TYPE modifier.
 'GNU FORTRAN: POINTER statement establishes pairs of variables and pointers
 '             where each pointer contains the address of its paired variable.						
 						case 194: print #1, "pointer";
@@ -1851,7 +1994,8 @@
 						case 196: print #1, "poly";
 						case 197: print #1, "polygon";
 						case 198: print #1, "poly_wave";
-'Microsoft BASIC: POS returns the horizontal (left to right) position of text cursor.						
+'Microsoft BASIC: POS returns the horizontal (left to right) position of text cursor, or searches for a substring within
+'                 a STRING and returns the substring's starting position.						
 						case 199: print #1, "pos";
 						case 200: print #1, "position";
 						case 201: print #1, "position_b";
@@ -1867,10 +2011,12 @@
 						case 209: print #1, "preset";
 						case 210: print #1, "pretrace_end";
 						case 211: print #1, "pretrace_start";
-'Microsoft BASIC: PRINT writes text to the screen, writes a list of values to a file or device,
-'                 or outputs formated text to the screen or output device. 
+'Microsoft BASIC: PRINT writes data to the screen, writes a list of values to a file or device, or outputs formated
+'                 text to the screen or output device, or prints the contents of a one or two dimensional array to your
+'                 terminal or assigns the value of each array element to a RECORD in a terminal formated file.
 'GNU FROTRAN: PRINT statement transfers data from the output list items to the file associated with
-'             the system output unit.						
+'             the system output unit.
+'PHP: PRINT statement is used to output text.						
 						case 212: print #1, "print";
 						case 213: print #1, "printf";
 						case 214: print #1, "printing";
@@ -1878,9 +2024,13 @@
 'Microsoft BASIC: PRIVATE specifies a procedure having internal linkage, or specifies private member
 '                 access control in a TYPE or CLASS.
 'C# PRIVATE keyword is a member access modifier.
+'JAVA: PRIVATE is an access modifier that indicates that a method or variable may be accessed only in
+'      the CLASS in which it is declared.
+'KOTLIN: PRIVATE marks a declaration as visible in the current class or file.
+'PHP: PRIVATE declares a property, method, or constant as private.
 'FreePASCAL: PRIVATE is a private accesibility modifier, only class member can access data, functions, and
 '            procedures.						
-						case 216: print #1, "private";
+						case 216: print #1, "private";						
 'FreePASCAL: PROCEDURE defines the start of a routine that does not return a value.						
 'GNU COBOL: PROCEDURE is a program division that cantains all executable program code.						
 						case 217: print #1, "procedure";
@@ -1888,7 +2038,9 @@
 						case 219: print #1, "procedures";
 						case 220: print #1, "proceed";
 						case 221: print #1, "processing";
+'Microsoft BASIC: PROD returns a numeric string that is the product of two numeric strings.
 						case 222: print #1, "prod";
+'Microsoft BASIC: PROGRAM allows you to identify a main program with a name other than the file name.
 'FreePASCAL: PROGRAM defines the start of an application program.						
 'GNU FORTRAM: PROGRAM statement defines a symbolic name for the main program.						
 						case 223: print #1, "program";
@@ -1900,6 +2052,10 @@
 						case 226: print #1, "property";
 'Microsoft BASIC: PROTECTED specifies protected member access control in a TYPE or CLASS.
 'C# PROTECTED is a member access modifier.
+'JAVA: PROTECTED is an access modifier that is used to indicate that an item is accessable within a package and
+'      outside the package through inheritance only.
+'PHP: RPOTECTED declares a property, method, or constant as protected.
+'KOTLIN: PROTECTED marks a declaration as visible in the current class and its subclasses.
 'FreePASCAL: PROTECTED specifies protected accessibility modifier, asscessibility modifier, class
 '            members and inherited classes can access data, functions, or procedures.						
 						case 227: print #1, "protected";
@@ -1911,6 +2067,8 @@
 'Microsoft BASIC: PUBLIC specifies a procedure having external linkage or specifies public member
 '                 control in a CLASS or TYPE.
 'C#: PUBLIC is a access modifier for types and type members.
+'JAVA: PUBLIC is a access modifier is used to indicate that an item is accessable anywhre. 
+'PHP: PUBLIC deckares a property, method, or constant as public.
 'FreePASCAL: PUBLIC - PUBLIC accessibility modifier, PUBLIC acces to data, functions, and procedures.						
 						case 231: print #1, "public";
 'FreePASCAL: PUBLISHED accessibility modifier, published properties are visible in IDE or can be written to ,lfm file.						
@@ -1935,12 +2093,13 @@
 						case 246: print #1, "quotes";
 						case 247: print #1, "r";
 						case 248: print #1, "radial";
-'POVRAY: radians returns the angles measured in radians whose value in degrees
+'POVRAY: RADIANS returns the angles measured in radians whose value in degrees
 '        is an numeric expression.						
 						case 249: print #1, "radians";
 						case 250: print #1, "radiosity";
 						case 251: print #1, "radius";
 						case 252: print #1, "rainbow";
+'Python: RAISE is used to raise an eception.					
 'FreePASCAL: RAISE causes an exception.						
 						case 253: print #1, "raise";
 						case 254: print #1, "ramp_wave";
@@ -1960,7 +2119,8 @@
 						case 003: print #1, "ratio";
 						case 004: print #1, "raytype";
 						case 005: print #1, "rd";
-'Microsoft BASIC: READ reads values with the DATA statement, or a file access specifier.
+'Microsoft BASIC: READ reads values with the DATA statement, or a file access specifier, or assigns values from DATA
+'                 statements to array statements.
 'FreePASCAL: READ property read access.  
 'GNU FORTRAN: READ statement transfer data from an external file to the items specified by the input
 '             list, transfers data from an external indexed file to the items specified by the input
@@ -1993,6 +2153,7 @@
 						case 025: print #1, "refraction";
 						case 026: print #1, "regex_match";
 						case 027: print #1, "regex_search";
+'C: Tells the compiler to store the variable being declared in a CPU register.						
 'FreePASCAL: REGISTER defines  a routine's calling convention: pass n parameters via GPRs.						
 						case 028: print #1, "register";
 						case 029: print #1, "reintroduce";
@@ -2011,6 +2172,8 @@
 'FreePASCAL: REPEAT loops through a section of code through an UNTIL statement as long as the
 '            result of the test of TRUE.						
 						case 039: print #1, "repeat";
+'Microsoft BASIC: REPLACE writes the current program back to the file specified by the last 
+'                 OLD or LOAD command.						
 						case 040: print #1, "replace";
 						case 041: print #1, "replacing";
 						case 042: print #1, "report";
@@ -2033,7 +2196,11 @@
 '                 code block was executed off the stack using the return instruction(RET).
 'C#: RETURN statement termintaes the execution of a method in which it appears and returns
 '    control to the calling method.
-'KOTLIN: RETURN retirms from the nearest enclosing function or anonymous function.
+'C: RETURN exits from a function and returns a value.
+'JAVA: RETRUN is used to retrun from a method when its execution is complete.
+'KOTLIN: RETURN - returns from the nearest enclosing function or anonymous function.
+'PHP: RETURN exits a function and returns a value.
+'Python: RETURN exits a function and returns a value.
 'GNU FORTRAN: RETURN statement returns control to the referencing program unit. It can appear
 '             in a function or subprogram.						
 						case 051: print #1, "return";
@@ -2071,7 +2238,9 @@
 						case 074: print #1, "rpad";
 'Microsoft BASIC: RSET right justifies a string in a string buffer.						
 						case 075: print #1, "rset";
-'Microsoft BASIC: RUN transfer execution to an external program.						
+'Microsoft BASIC: RUN allows you to execute a program from the BASIC environment without first invoking
+'                 a linker to construct an executable. In addition, the RUN command allows you to access
+'                 a user specified and system shareable libraries for undefined sysmols.						
 						case 076: print #1, "run";
 						case 077: print #1, "s";
 'FreePASCAL: SAFECALL is a subroutine calling convention.						
@@ -2102,11 +2271,14 @@
 						case 094: print #1, "samplerCube";
 						case 095: print #1, "samplerCubeShadow";
 						case 096: print #1, "samples";
-'Microsoft BASIC: SAVE - saves a program file to disk.
+'Microsoft BASIC: SAVE writes the BASIC source program currently in memory to a file on the default
+'                 or specified device.
 'GNU FORTRAN: SAVE returns the values of variables and arrays after the execution of a
 '             RETURN or END.						
 						case 097: print #1, "save";
 						case 098: print #1, "save_file";
+'Microsoft BASIC: SCALE allows you to control accumulated round off errors by multiplying numeric values
+'                 by 10 raised to the scale factor before storing them.						
 						case 099: print #1, "scale";
 						case 100: print #1, "scallop_wave";
 						case 101: print #1, "scattering";
@@ -2124,20 +2296,24 @@
 						case 109: print #1, "segment";
 						case 110: print #1, "segment-limit";
                         case 111: print #1, "section";
- 'Microsoft BASIC: SELECT is the firest statement in a conditional statement block.
- 'C#: SELECT clause specifies the type of values that will be produced when the query is executed.                       
+'Microsoft BASIC: SELECT is the firest statement in a conditional statement block.
+'C#: SELECT clause specifies the type of values that will be produced when the query is executed.                       
 						case 112: print #1, "select";
 						case 113: print #1, "selector";
                         case 114: print #1, "selection";
- 'FreePASCAL: SELF is a reference to a class.                     
+'FreePASCAL: SELF is a reference to a class.                     
 						case 115: print #1, "self";
 						case 116: print #1, "send";
 						case 117: print #1, "sentence";
 						case 118: print #1, "separate";
+'Microsoft BASIC: SEQUENCE causes BASIC to automatically generate line number for you program text. BASIC
+'                 supplies line number for your text until you end the procedure or reach the maximum line number.						
 						case 119: print #1, "sequence";
 						case 120: print #1, "sequential";
 						case 121: print #1, "sequentially";
 						case 122: print #1, "service";
+'Microsoft BASIC: SET allows you to specify BASIC defaults for all BASIC qualifiers. Qualifiers control the compilation
+'                 process and the run-time environment.						
 'FreePASCAL: SET groups a collection.
 'C#: SET is a accessor method in a property or indexer that assigns a value to the property
 '    or the indexer element.
@@ -2154,7 +2330,9 @@
 'FreePASCAL: SHL operator shifts a value to the left; equivalent to multiplying by a power of 2.						
 						case 129: print #1, "shl";
 'Microsoft BASIC: SHORT is a standard 16-bit data type.
-'C#: SHORT is a signed 16-bit integer.						
+'C#: SHORT is a signed 16-bit integer.
+'C: SHORT is a type modifier.
+'JAVA: SHORT is used to declare a variable that can hold a 16-bit integer.						
 						case 130: print #1, "short";
 'Microsoft BASIC: SHR shifts the bits of a numeric expression to the right.
 'FreePASCAL: SHR operator shifts a value to the right, equivalent to dividing by a power of 2.						
@@ -2169,7 +2347,8 @@
 						case 136: print #1, "sinh";
 						case 137: print #1, "size";
 'Microsoft BASIC SIZEOF returns the size of a variable or type in bytes.
-'C#: SIZEOF operator returns the number of bytes occupied by a variable of a given type.						
+'C#: SIZEOF operator returns the number of bytes occupied by a variable of a given type.
+'C: SIZEOF returns the size of a expression or type.						
 						case 138: print #1, "sizeof";
 						case 139: print #1, "skip1";
 						case 140: print #1, "skip2";
@@ -2245,7 +2424,10 @@
 'GNU FORTRAN: STATIC control, within  a called subprogram, the allocation of 
 '             storage to varables and the initial value of variables.
 'C#: STATIC modifier is used to declare a static member of a class, field, method, variable, or 
-'    lambda expression.   						
+'    lambda expression.
+'C: STATIC preserves variable value to survive after its scope ends.
+'JAVA: STATIC is used to indicate that a variable or method is a CLASS is static.
+'PHP: STATIC declares a property of method as static.   						
 						case 193: print #1, "static";
 						case 194: print #1, "statistics";
 						case 195: print #1, "status";
@@ -2300,6 +2482,7 @@
 						case 222: print #1, "substring_mb";
 						case 223: print #1, "subtract";
 						case 224: print #1, "sum";
+'JAVA: SUPER is a reference variable that is used to refer to a parent CLASS object.						
 'KOLTLIN: SUPER refers to the siperclass implementation of a method or property, or calls
 '         the superclass constructer from a secondary constructor.  						
 						case 225: print #1, "super";
@@ -2309,11 +2492,15 @@
 						case 229: print #1, "surfacearea";
 'Microsoft BASIC: SWAP exchanges the values of two variables.						
 						case 230: print #1, "swap";
-'C# SWITCH is a selection statement that chooses a single switch selection for execution
-'   from a list of candidates based on a pattern match with the match expression.						
+'C#: SWITCH is a selection statement that chooses a single switch selection for execution
+'    from a list of candidates based on a pattern match with the match expression.
+'C: SWITCH is a branch control statement.
+'JAVA: SWITCH is a statement that executes a code block based on a test value.
+'PHP: SWITCH creates a switch code block.						
 						case 231: print #1, "switch";
 						case 232: print #1, "symbolic";
 						case 233: print #1, "sync";
+'JAVA: SYNCHRONIZED is used to specify the critical sections or methods in multithreaded code.						
 						case 234: print #1, "synchronized";
 						case 235: print #1, "sys";
 'Microsoft BASIC: SYSTEM closes all open files and ends the program.						
@@ -2356,6 +2543,7 @@
 '                 in a TYPE or a CLASS.
 'C#: THIS refers to the current instance of the CLASS and is also used as a modifier of the first
 '    parameter of an extension method.
+'JAVA: THIS is used to used to refer the current object in a method or constructor.
 'KOTLIN: THIS refers to the current recever, or calls another constructor of the same class form
 '        a secondary constructor. 						
 						case 004: print #1, "this";
@@ -2410,12 +2598,16 @@
 						case 041: print #1, "tron";
 'Microsoft BASIC: TRUE is an intrinsic cconstant sey by the compiler.
 'R: TURE is used to represent a Boolean TRUE.
+'Python: TRUE is a boolean value, or a result of a comparision operation.
 'FreePASCAL: TRUE is a boolean value indicating a test has succeeded.						
 						case 042: print #1, "true";
 						case 043: print #1, "trunc";
 'FreePASCAL: TRY is part of an exception block.
 'C#: TRY is the first statement in a TRY-CATCH code block.
-'KOLTLIN: TRY begins an eception handling block.						
+'JAVA: TRY is used to start a code block that will be tested for exceptions. 
+'KOLTLIN: TRY begins an eception handling block.
+'PHP: TRY creates a TRY..CATCH structure.
+'Python: TRY is used to make a TRY..EXCEPT statement.						
 						case 044: print #1, "try";
 						case 045: print #1, "ttf";
 						case 046: print #1, "turb_depth";
@@ -2426,6 +2618,7 @@
 'GNU FORTRAN: TYPE statement trnasfers data from the output list items to the file associated with
 '             the system output unit.						
 						case 048: print #1, "type";
+'C: TYPEDEF creates a new type.						
 						case 049: print #1, "typedef";
 						case 050: print #1, "u";
 						case 051: print #1, "uimage1D";
@@ -2440,7 +2633,8 @@
 						case 059: print #1, "ultra_wide_angle";
 						case 060: print #1, "undef";
 						case 061: print #1, "uniform";
-'Microsoft BASIC: UNION declares a UNION user defined TYPE.						
+'Microsoft BASIC: UNION declares a UNION user defined TYPE.
+'C: UNION groups variables which share the same storage space.						
 'GNU FORTRAN: UNION declaration is enclosed between UNION and END UNION statements, which
 '             contain two more map declarations. Each map declaration is enclosed between
 '             MAP and END MAP.						
@@ -2453,7 +2647,8 @@
 'GNU FORTRAN: UNLOCK statement makes the last record read from an indexed file available for
 '             access by other users.						
 						case 065: print #1, "unlock";
-'Microsoft BASIC: UNSIGNED is a DATA TYPE modifier.						
+'Microsoft BASIC: UNSIGNED is a DATA TYPE modifier.
+'C: UNSIGNED is a type modifier.						
 						case 066: print #1, "unsigned";
 						case 067: print #1, "unstring";
 'Microsoft BASIC: UNTIL is a contitional clause used in DO LOOP statements.
@@ -2473,6 +2668,7 @@
 						case 080: print #1, "usampler3D";
 						case 081: print #1, "usamplerBufferStruct";
 						case 082: print #1, "usamplerCube";
+'PHP: USE selects a namespace for use.						
 						case 083: print #1, "use";
 						case 084: print #1, "use_alpha";
 						case 085: print #1, "use_color";
@@ -2480,8 +2676,7 @@
 						case 087: print #1, "use_index";
 'FreePASCAL: USES tells the compiler to use one or more named PROGRAM UNIT.						
 						case 088: print #1, "uses";
-'Microsoft BASIC: USING outputs formated text to the screen or other output device,
-'                       or brings namespece symbols into the current scope.
+'Microsoft BASIC: USING generates output formatted according to a format string to a terminal or a terminal formated file.
 'C#: USING defines a scope at the of which an object will be disposed of, creates an alias for a
 '    namespace or imports types define in other namespaces, or imports the members of a single class.						
 						case 089: print #1, "using";
@@ -2508,9 +2703,11 @@
 'C#: VALUE is used in the set accessor in property and indexer declarations.						
 						case 103: print #1, "value";
 						case 104: print #1, "values";
-'FreePASCAL: VAR deckares a variable.
+'Microsoft BASIC: VAR declares a variable whose TYPE is implied from the initializer expression.
+'FreePASCAL: VAR declares a variable.
 'C#: VAR is used to declare variables at method scope and can have an implicit type.
-'KOTLIN: VAR declares a mutable property or local variable.						
+'KOTLIN: VAR declares a mutable property or local variable.
+'PHP: VAR declares a variable.						
 						case 105: print #1, "var";
 						case 106: print #1, "varchar";
 						case 107: print #1, "variance";
@@ -2548,10 +2745,14 @@
 						case 121: print #1, "vlength";
 						case 122: print #1, "vnormalize";
 'GLSL: VIOD is for functions the do not RETURN a value.
-'C#: VOID is used as the RETURN type of a method or local function that doesn't RETURN a value.						
+'C#: VOID is used as the RETURN type of a method or local function that doesn't RETURN a value.
+'C: VOID is an empty data type.
+'JAVA: VOID is used to specify that a method doesn not have a return value.						
 						case 123: print #1, "void";
 'C#: VOLITILE indicates that a field might be modified by multiple threads that are executing at
-'    the same time.						
+'    the same time.
+'C: VOLATILE indicates that a variable can be changed by a background routine.
+'JAVA: VOLATILE is used to indicate that a variable may change asynchronously.						
 'GNU FORTRAN: VOLATILE prevents the compiler from optimizing specified variables, arrays, and
 '             common blocks of data.						
 						case 124: print #1, "volatile";
@@ -2582,8 +2783,12 @@
 						case 140: print #1, "where";
 'Microsoft BASIC: WHILE is a flow control statement.
 'C#: WHILE statement executes a statement or code block while a specified boolean expression is TRUE.
+'C: WHILE repeats execution while a condition is TRUE.
+'JAVA: WHILE is used to start a WHILE loop.
 'R: WHILE keyword loop is executed until the given condition is TRUE.
 'KOTLIN: WHILE begins a WHILE loop.
+'PHP: WHILE creates a WHILE loop or ends a DO...WHILE loop.
+'Python: WHILE creates a WHILE loop.
 'FreePASCAL: WHILE tests a variable and if true loops through a section of code.
 'GNU FORTRAN: WHILE statement specifies a controlled loop, called a DO loop, based on a
 '             test for TRUE of a logical expression.						
@@ -2595,6 +2800,7 @@
 						case 143: print #1, "window";
 'Microsoft BASIC: WITH is a statement block that allows implicit acces to fields in a
 '                 user defined TYPE variable.
+'Python: WITH is used to simplify exception handling.
 'FreePASCAL: WITH references the internal variable within  a record without having to refer to
 '            the record itself.						
 						case 144: print #1, "with";
@@ -2603,7 +2809,7 @@
 						case 147: print #1, "working-storage";
 						case 148: print #1, "wrinkles";
 'Microsoft BASIC: WRITE writes a comma seperated list of values to the screen, or writes
-'                 a comma seperated list of values to a file or device,
+'                 a comma seperated list of values to a file or device, or is a access specifier.
 'FreePASCAL: WRITE proerty write access. 
 'GNU FORTRAN: WRITE statement transfer data from internal storage to an external file
 '             connected to logical unit 10, transfer data from internal storage to 
@@ -2616,16 +2822,19 @@
 						case 151: print #1, "x";
 'Microsft BASIC: XOR returns the bitwise xor exclusive disjunction of two numeric values, or
 '         is a parameter to the PUT statement which uses a bitwise XOR as the blitting method.
+'PHP: XOR is a logical operator.
 'FreePASCAL: XOR is a boolean operator used to invert and OR test.						
 'GNU FORTRAN: XOR - Logical exclusive or							
 						case 152: print #1, "xor";
 						case 153: print #1, "xor_bits";
-						case 154: print #1, "y";
+						case 154: print #1, "y"
+'Microsoft BASIC: YEAR gets the year from a data serial.
 						case 155: print #1, "year";
 						case 156: print #1, "yes";
 'C#: YIELD is used in a statement indicates that the method, operator, or get accessor in which it appears
 '    is an iterator. Using YIELD to define an iterator removes the need for an explicit extra class when 
-'    you implement the IEnumerable and IEnumerator pattern for a custom collection type.						
+'    you implement the IEnumerable and IEnumerator pattern for a custom collection type.
+'PHP: YIELD is used in generator functions.						
 						case 157: print #1, "yield";
 						case 158: print #1, "z";
 'GNU COBOL: ZERO inserts a zero						
@@ -2639,6 +2848,7 @@
 '                                                              r0				
 				     select case as const cast(ulongint, mem64(49361))
 				        case 000: print #1, "buffer";
+'Microsoft BASIC: SHARED is a variable declaration modifier specifying visibility thoughout a module.
 				        case 001: print #1, "shared";
 				        case 002: print #1, "coherent";
 				        case 004: print #1, "restrict";
@@ -2681,7 +2891,8 @@
 				        case 027: print #1, "image2DMSArray";
 				        case 028: print #1, "iimage2DMSArray";
 				        case 029: print #1, "uimage2DMSArray";
-'C#: STRUCT is a value type that can encapsulate data and related functionality.				        
+'C#: STRUCT is a value type that can encapsulate data and related functionality.
+'C: STRUCT groups variables into a single record.				        
 				        case 030: print #1, "struct";
 'GLSL: sampler2DRect is a floating point handle to rectanglar texture.				        				        			        
 				        case 031: print #1, "sampler2DRect";
@@ -2748,8 +2959,8 @@
 				        case 068: print #1, "alocated";
 'GNU FORTRAN: IMPLICIT changes or defines  default implicit type of names.
                         case 069: print #1, "implicit";
-'GNU FORTRAN: ENDFILE statement writes an endfile record as the next record of the file. It can be used
-'             with unformated and formated data files.
+'Microsoft BASIC: FIND locates a specified RECORD in a disk file and makes it the current RECORD for a GET,
+'                 UPDATE, or DELETE operations. 
 'GNU FORTRAN: FIND statement position a file to a specified record number and sets associate  variable
 '             number (defined in an OPEN or DEFINE FILE statement to reflect the new position. It is
 '             functionally equivalent to a direct acces READ statement except that no iolist is specified
@@ -2768,32 +2979,41 @@
                        case 075: print #1, "word";
 'FreePASCAL CARDINAL is a 32-bit unsigned integer.
                        case 076: print #1, "cardinal";
-'FreePASCAL LONGINT is 32-bit signed integer.
+'Microsoft BASIC: LONGINT is a standard DATA TYPE: 64-bit singed integer.
+'FreePASCAL: LONGINT is 32-bit signed integer.
                        case 077: print #1, "longint";
-'FreePASCAL LONGWORD is a 32-bit unsigned integer.
+'FreePASCAL: LONGWORD is a 32-bit unsigned integer.
                        case 078: print #1, "longword";
-'FreePASCAL INT64 is a 64-bit singed integer.
+'FreePASCAL: INT64 is a 64-bit singed integer.
                        case 079: print #1, "int64";
-'FreePASCAL QWORD is a 64-bit unsigned integer.
+'FreePASCAL: QWORD is a 64-bit unsigned integer.
                        case 080: print #1, "qword";
-'FreePASCAL SINGLE is a 32-bit floating point data type.
+'Microsoft BASIC: SINGLE is a standard 32-bit floating point TYPE.
+'FreePASCAL: SINGLE is a 32-bit floating point data type.
                        case 081: print #1, "single";
-'FreePASCAL EXTENDED is a 80-bit floating point data type.
+'FreePASCAL: EXTENDED is a 80-bit floating point data type.
                        case 082: print #1, "extended";
-'FreePASCAL BOOLEAN is a logical data type that can only has two values(TRUE for FALSE).
+'FreePASCAL: BOOLEAN is a logical data type that can only has two values(TRUE for FALSE).
+'JAVA: BOOLEAN is used to declare a variable as a BOOLEAN type.
                        case 083: print #1, "boolean";
-'FreePASCAL INHERITED calls a function or procedure from a ancestor class.
+'FreePASCAL: INHERITED calls a function or procedure from a ancestor class.
                        case 084: print #1, "inherited";
+'Microsoft BASIC: BASE specifies an initializer for the base UDT in derived UDT constructors, or
+'                 or provides explicit access to base TYPE members in non-static methods of a TYPE.                       
 'C#: BASE is used to acces member of the base class from within a derived class.
                        case 085: print #1, "base";
 'C#: SBYTE is a signed 8-bit integer
                        case 086: print #1, "sbyte";
+'Microsoft BASIC USHORT is a standard DATA TYPE: 16-bit UNSIGNED.
 'C#: USHORT is a unsigned 16-bit integer.
                        case 087: print #1, "ushort";
+'Microsoft BASIC: ULONG is a standard DATA TYPE: 32-bit UNSIGNED INTEGER.
 'C#: ULONG is a unsigned 64-bit integer
                        case 088: print #1, "ulong";
 'C#: CATCH is the first statement in a catch code block.
 'KOLTLIN: CATCH begins a block that handles a specific exeception type.
+'PHP: CATCH is used in the TRY,,,CATCH statement.
+'JAVA: CATCH is used to CATCH exceptions generated by TRY statement.
                        case 089: print #1, "catch";
 'C#: CHECKED is used to explicitly enable overflow checking for integral type arithmetic operations
 '    and convensions.
@@ -2804,13 +3024,17 @@
 '    parameters of any type.
 'KOTLIN: DELEGATE is used as an annotation use style target. 
                        case 092: print #1, "delegate";
+'Microsoft BASIC: EVENT is a predefined structure from fbgfx.bi used by SCREENEVENT to return event data.                        
 'C#: EVENT is a keyword used to declare an event in a publisher class.
                        case 093: print #1, "event";
 'C#: FOREACH is statement that executes another statement or code block for each element in
 '    an instance of the type that implements the SystemCollection.IEnumberable or 
 '    SystemCollection.Generic.IEnumerable<T> interface.
+'PHP: FOREACH creates a FOREACH loop.
                        case 094: print #1, "foreach";
-'C#: NAMESPACE is used to declare a scope that contains a set of related object.
+'Microsoft BASIC: NAMESPACE declares a NAMESPACE code block.
+'C#: NAMESPACE is used to DECLARE a scope that contains a set of related OBJECT.
+'PHP: NAMESPACE declares a NAMESPACE.
                        case 095: print #1, "namespace";
 'C#: PARAMS is used to specify a method parameter that takes a variable member of arguments.
 '    The parameter type must be a single dimensional array.
@@ -2821,14 +3045,18 @@
 '    accesses another value by reference, or in a STRUCT declaration to declare a REF STRUCT or a READONLY REF.
                        case 097: print #1, "ref";
 'C#: SEALED modifier prevents other classes from inheriting from it.
+'KOTLIN SEALED declares a sealed class with restricted subclassing.
                        case 098: print #1, "sealed";
 'C#: STACKALLOC expression allocates a block of memory on the stack.
                        case 099: print #1, "stackalloc";
+'Microsoft BASIC: TYPEOF returns the TYPE of a variable.
 'C#: TYPEOF operator obtains the System.Type for a type.
 'KOLTIN: TYPEOF is reserved for future use.
                        case 100: print #1, "typeof";
-'C#: THROW: signals the occurence of  an exception during program execution.
+'C#: THROW signals the occurence of  an exception during program execution.
+'JAVA: THROW is used to explicity throw an exception.
 'KOLTLIN: trows an exception.
+'PHP: THROW throws an exception. 
                        case 101: print #1, "throw";
 'C#: UNCHECKED is used to suppress overflow checking for integral type arithmetic operations and conversions.
                        case 102: print #1, "unchecked";
@@ -2882,6 +3110,503 @@
                        case 124: print #1, "receiver";                       
 'KOTLIN: SETPARAM is used as a annotation use site target.
                        case 125: print #1, "setparam";
-'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   				                   				        
-				     end select 				                          
+'KOTLIN: ACTUAL denotes a platform specific implementation in multiplatform.
+                       case 126: print #1, "actual";
+'KOTLIN: ANNOTATION declares an annotation class.
+                       case 129: print #1, "annotation";
+'KOTLIN: COMPANION declares a companion object.
+                       case 130: print #1, "companion";
+'KOTLIN: CROSSINLINE forbids no local returns in a lambda passed to an inline function.
+                       case 131: print #1, "crossinline";
+'KOTLIN: EXPECT marks a declaration as platfor specific, expecting an implementation in platform modules.
+                       case 132: print #1, "expect";
+'KOTLIN: INFIX allows calling a function in infix notation.
+                       case 133: print #1, "infix";
+'KOTLIN: LATEINIT allows initializing a non NULL property outside of a constructor.
+                       case 134: print #1, "lateinit";
+'KOTLIN: NOINLINE turns off inlining of a lambda passed to an inline function.
+                       case 135: print #1, "noinline";
+'KOTLIN: REIFIED marks a type parameter of an inline function as accessible at runtine.
+                       case 136: print #1, "reified";
+'KOTLIN: SUSPEND marks a function a function or lambda as supending.
+                       case 137: print #1, "suspend";
+'KOTLIN: TAILREC marks a function as tail recursive allowing the compiler to replace recursion with iteration.
+                       case 138: print #1, "tailrec";
+'KOTLIN: VARARG allows passing a variable number of arguments for a parameter.
+                       case 139: print #1, "vararg";
+'KOTLIN: IT is used inside a lambda to refer to its parameter implicitly.
+                       case 140: print #1, "it";
+'PHP: CALLABLE is a data type which can be executed as a function.
+                       case 141: print #1, "callable";
+'PHP: CLONE creates a copy of an object.
+                       case 142: print #1, "clone";
+'Microsoft BASIC: ECHO causes characters to be echoed at a terminal that is opened on a specified channel.
+'PHP: ECHO outputs text.
+                       case 143: print #1, "echo";
+'PHP: EMPTY checkes if an expression is empty.
+                       case 144: print #1, "empty";
+'PHP: ENDDECLARE ends a declare code block.
+                       case 145: print #1, "enddeclare";
+'PHP: ENDFOR ends a for code block.
+                       case 146: print #1, "endfor";
+'PHP: ENDFOREACH ends a foreach code block.
+                       case 147: print #1, "endforeach";
+'PHP: ENDIF ends a if or elseif code block.
+                       case 148: print #1, "endif";
+'PHP: ENDSWITCH ends a switch code block.
+                       case 149: print #1, "endswitch";
+'PHP: ENDWILE ends a while code block.
+                       case 150: print #1, "endwile";
+'Microsoft BASIC: EXTENDS specifies a base type from which to derive a NEW TYPE.                       
+'PHP: EXTENDS - extends a class or interface.
+'JAVA: EXTENDS is used to indicate that a class is derived from another CLASS or INTERFACE.
+                       case 151: print #1, "extends";
+'PHP: INSTANCEOF - resolve conflicts with traits.
+'JAVA: INSTANCEOF is used to test whether the object in an instance of the specified class or
+'      or implements an interface.
+                       case 152: print #1, "instanceof";
+'PHP: ISSET checkes if a variable exists and is not NULL.
+                       case 153: print #1, "isset";
+'PHP: REQUIRE embeds code from another file.
+                       case 154: print #1, "require";
+'PHP: TRAIT declares a trait.
+                       case 155: print #1, "trait";
+'PHP: UNSET deletes a variable or array element.
+                       case 156: print #1, "unset";
+'Python: DEL deletes a object
+                       case 157: print #1, "del";
+'Python: YIELD ends a function, returns a generator.
+                       case 158: print #1, "yield";
+'C: SIGNED is a type modifier.
+                       case 159: print #1, "signed";
+'JAVA: FINAL is used to indicate that variable holds a constant value.
+                       case 160: print #1, "final";
+'Microsoft BASIC: IMPLEMENTS specifies an interface to be implemented by a user DEFINED TYPE.
+'JAVA: IMPLEMENTS is used to implement an INTERFACE.
+                       case 161: print #1, "implements";
+'JAVA: STRICTFP is used to restrict the floating point calculations to ensure portabillity.
+                       case 162: print #1, "strictfp";
+'JAVA: THROWS is used to declare an exception.
+                       case 163: print #1, "throws";
+'JAVA: TRANSIENT is used in serialization.
+                       case 164: print #1, "transient";
+'Microsoft BASIC: ALLOCATE - allocates a block of memory from the free store.
+                       case 165: print #1, "allocate";
+'Microsoft BASIC: ANDALSO returns the short circuit and conjunction of two numeric values.
+                       case 166: print #1, "andalso";
+'Microsoft BASIC: ASSERTWARN is a debugging macro that prints a warning if an expression evaluates to 0.
+                       case 167: print #1, "assertwarn";
+'Microsoft BASIC: BIN returns a binary string representation of an integer.
+                       case 168: print #1, "bin";
+'Microsoft BASIC: BIT gets the status of an individual BIT in an integer value.
+                       case 169: print #1, "bit";
+'Microsoft BASIC: BITRESET gets the value of an integer with a specified bit cleared.
+                       case 170: print #1, "bitreset";
+'Microsoft BASIC: BITSET gets the value of integer with a soecified bit set.
+                       case 171: print #1, "bitset";
+'Microsoft BASIC: BYREF is a declaration specifier to explicitly pass a parameter by reference, specifies that a function
+'                 result is returned by reference, or declares a reference.
+                       case 172: print #1, "byref";
+'Microsoft BASIC: BYVAL is a declaration specifier to explicitly pass a parameter by value.
+                       case 173: print #1, "byval";
+'Microsoft BASIC: CALLOCATE allocates memory for a certain number of elements from the free store and clears the contents.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  				                   				        
+                       case 174: print #1, "callocate";
+'Microsoft BASIC: CBOOL converts a numeric or string expression to a BOOLEAN.
+                       case 175: print #1, "cbool";
+'Microsoft BASIC: CBYTE converts a numeric or string expression to a BYTE.
+                       case 176: print #1, "cbyte";
+'Microsoft BASIC: CLNG converts a numeric or string expression to a LONG.
+                       case 177: print #1, "clng";
+'Microsoft BASIC: CLNGINT converts a numeric or string expression to a 64-bit integer.
+                       case 178: print #1, "clongint";
+'Microsoft BASIC: COMMAND returns command line parameters used to call the program.
+                       case 179: print #1, "command";
+'Microsoft BASIC: CONDBROADCAST returns all threads CONDWAITING for a handle.
+                       case 180: print #1, "condbroadcast";
+'Microsoft BASIC: CONDCREATE creates a conditional variable to be used in synchronizing threads.
+                       case 181: print #1, "condcreate";
+'Microsoft BASIC: CONDDESTROY destroys a multi threading conditional variable when it no longer needed.
+                       case 182: print #1, "conddestroy";
+'Microsoft BASIC: CONDSIGNAL restarts a thread suspended by a call to CONDWAIT
+                       case 183: print #1, "condsignal";
+'Microsoft BASIC: CONDWAIT stops execution of the current thread until a condition becomes true.
+                       case 184: print #1, "condwait";
+'Microsoft BASIC: CPTR converts a pointer expression to a specified DATA TYPE POINTER.
+                       case 185: print #1, "cptr";
+'Microsoft BASIC: CSHORT converts a numeric expression to an integer.
+                       case 186: print #1, "cshort";
+'Microsoft BASIC: CSIGN converts an expression to a SIGNED expression.
+                       case 187: print #1, "csign";
+'Microsoft BASIC: CUBYTE converts a number or string expression to an UNSIGNED BYTE.
+                       case 188: print #1, "cubyte";
+'Microsoft BASIC: CUINT converts a numeric or string expression to a UINITEGER or UINTEGER<BITS>
+                       case 189: print #1, "cuint";
+'Microsoft BASIC: CULNG converts a numeric or string expression to an ULONG.
+                       case 190: print #1, "culng";
+'Miceoaoft BASIC: CULNGINT converts a numeric or string expression to an 64-bit UNSIGNED INTEGER.
+                       case 191: print #1, "culngint";
+'Microsoft BASIC: CUNSG converts a numeric or string expression to a 32-bit UNSIGNED INTEGER.
+                       case 192: print #1, "cunsg";
+'Microsoft BASIC: CURDIR returns the current directory / folder.
+                       case 193: print #1, "curdir";
+'Microsoft BASIC: CUSHORT converts a numeric or string expression to a 16-bit UNSIGNED INTEGER.
+                       case 194: print #1, "cushort";
+'Microsoft BASIC: CUSTOM is a parameter to the PUT graphics statement which selects a custom method.
+                       case 195: print #1, "custom";
+'Microsoft BASIC: CVA_ARG is a macro that obtains the next argument from a variadic argument LIST OBJECT variable.
+                       case 196: print #1, "cva_arg";
+'Microsoft BASIC: CVA_COPY is a macro that initializes an variadic argument LIST OBJECT variable form an already
+'                 initialized variadic argument LIST OBJECT variable.
+                       case 197: print #1, "cva_copy";
+'Microsoft BASIC: CVA_LIST is a varaidic LIST OBJECT TYPE.
+                       case 198: print #1, "cva_list";
+'Microsoft BASIC: CVA_END is a macro that cleans up a variadic argument LIST OBJECT variable.
+                       case 199: print #1, "cva_end";
+'Microsoft BASIC: CVA_START is a macro that initializes a variadic argument LIST OBJECT variable.
+                       case 200: print #1, "cva_start";
+'Microsoft BASIC: CVL converts a single percision floating point number or four byte string to an 32-bit integer.
+                       case 201: print #1, "cvl";
+'Microsoft BASIC: CVLONGINT converts a double percision floating point number or eight byte string to an 64-bit integer.
+                       case 202: print #1, "cvlongint";
+'Microsoft BASIC: CVSHORT converts a two byte string to an 16-bit integer.
+                       case 203: print #1, "cvshort";
+'Microsoft BASIC: DATEADD offsets a date with a specified interval.
+                       case 204: print #1, "dateadd";
+'Microsoft BASIC: DATEDIFF gets the difference of two dates measured by a specified interval.
+                       case 205: print #1, "datediff";
+'Microsoft BASIC: DATEPART gets an interval from a date.
+                       case 206: print #1, "datepart";
+'Microsoft BASIC: DATESERIAL creates a DATE serial.
+                       case 207: print #1, "dateserial";
+'Microsoft BASIC: DATEVALUE returns a date serial from a STRING.
+                       case 208: print #1, "datevalue";
+'Microsoft BASIC: DEALLOCATE frees previously memory.
+                       case 209: print #1, "deallocate";
+'Microsoft BASIC: DEFBYTE specifies a default DATA TYPE for a range of variable names.
+                       case 210: print #1, "defbyte";
+'Microsoft BASIC: DEFLNG  specifies a default DATA TYPE for a range of variable names.
+                       case 211: print #1, "deflng";
+'Microsoft BASIC: DEFLONGINT specifies a default DATA TYPE for a range of variable names.
+                       case 212: print #1, "deflongint";
+'Microsoft BASIC: DEFSHORT specifies a default DATA TYPE for a range of variable names.
+                       case 213: print #1, "defshort";
+'Microsoft BASIC: DEFUBYTE specifies a default DATA TYPE for a range of variable names.
+                       case 214: print #1, "defubyte";
+'Microsoft BASIC: DEFUINT specifies a default DATA TYPE for a range of variable names.
+                       case 215: print #1, "defuint";
+'Microsoft BASIC: DEFULONGINT specifies a default DATA TYPE for a range of variable names.
+                       case 216: print #1, "defulongint";
+'Microsoft BASIC: DEFUSHORT sepecifies a default DATA TYPE for a range of variable names.
+                       case 217: print #1, "defushort";
+'Microsoft BASIC: DIR searches for, returns information about an item in the filesystem, 
+'                 and perform a directory searchattrib.
+                       case 218: print #1, "dir";
+'Microsoft BASIC: DYLIBFREE unloads a dynamic link library from memory.
+                       case 219: print #1, "dylibfree";
+'Microsoft BASIC: DYLIBLOAD loads a dynamic link library into memory at runtime.
+                       case 220: print #1, "dylibload";
+'Microsoft BASIC: DYLIBSYMBOL returns the address of a function or variable in a dynamic link library.
+                       case 221: print #1, "dylibsymbol"
+'Microsoft BASIC: ENCODING specifies the character format of a text file.
+                       case 222: print #1, "encoding";
+'Microsoft BASIC: ERFN returns a pointer to the string identifying the function where the error occurred.
+                       case 223: print #1, "erfn";
+'Microsoft BASIC: ERMN returns a pointer to the string identifying the module where the error occurred.
+                       case 224: print #1, "ermn";
+'Microsoft BASIC: EXEC temporarily transfers execution to an external program.
+                       case 225: print #1, "exec";
+'Microsoft BASIC: EXEPATH returns the path of the running program.
+                       case 226: print #1, "exepath";
+'Microsoft BASIC: COMPILE converts a BASIC source program to an OBJECT module and writes the OBJECT file to disk.
+                       case 227: print #1, "compile";
+'Microsoft BASIC: HELP displays online documentation for BASIC commands, keywords, statements, functions
+'                 and conventions.
+                       case 228: print #1, "help";
+'Microsoft BASIC: IDENTIFY displays an identification header on the controlling terminal. The header contains the name
+'                 and version number of Microsoft BASIC.
+                       case 229: print #1, "identify";
+'Microsoft BASIC: LISTNH displays program lines without the program header.
+                       case 230: print #1, "listnh";
+'Microsoft BASIC: OLD brings a previously created BASIC program into memory.
+                       case 231: print #1, "old"; 
+'Microsoft BASIC: RENAME allows you to assign a NEW name to the program currently in memory.
+                       case 232: print #1, "rename";
+'Microsoft BASIC: RESEQUENCE allows you to resequence the line numbers of the program currently in memory.
+                       case 233: print #1, "resequence";
+'Microsoft BASIC: SCRATCH clears any program currently in memory, removes any object file loaded with the LOAD command
+'                 and resets the program name to NONAME.
+                       case 234: print #1, "scratch";
+'Microsoft BASIC: SHOW displays the current defaults for the BASIC compiler on your terminal.
+                       case 235: print #1, "show";
+'Microsoft BASIC: UNSAVE deletes a specified file from storage.
+                       case 236: print #1, "unsave";
+'Microsoft BASIC: BUFSIZ returns the record buffer size, in bytes, of a specified channel.
+                       case 237: print #1, "bufsiz";
+'Microsoft BASIC: CCPOS returns the current character or cursor position othe output record on a specified channel.
+                       case 238: print #1, "ccpos";
+'Microsoft BASIC: CHANGE either converts a string of characters to their ASCII integer values or converts, a list
+'                 of number to a string of ASCII characters.
+                       case 239: print #1, "change";
+'Microsoft BASIC: CTRLC enables CTRL+C trapping. When CTRL+C trapping is enabled, a CTRL+C typed at the terminal causes
+'                 control to be transferred to the error handler currently in effect.
+                       case 240: print #1, "ctrlc";
+'Microsoft BASIC: DET returns the value of the determinant of the last inverted matrix.
+                       case 241: print #1, "det";
+'Microsoft BASIC: DIF returns a numeric string whose value is the difference between two numeric strings.
+                       case 242: print #1, "dif";
+'Microsoft BASIC: ERN returns the name of the main program, subprogram, or function that was executing when the last
+'                 error occurred.
+                       case 243: print #1, "ern";
+'Microsoft BASIC: FILEATTR returns infromation about an open file number.
+                       case 244: print #1, "fileattr";
+'Microsoft BASIC: FILECOPY copies a file.
+                       case 245: print #1, "filecopy";
+'Microsoft BASIC: FILEDATETIME returns the last modified date and time of a file as a date serial.
+                       case 246: print #1, "filedatetime";
+'Microsoft BASIC: FILEEXISTS tests for the existence of a file.
+                       case 247: print #1, "fileexists";
+'Microsoft BASIC: FILELEN returns the length of a file given its filename.
+                       case 248: print #1, "filelen";
+'Microsoft BASIC: FREEFILE returns a free file number.
+                       case 249: print #1, "freefile";
+'Microsoft BASIC: FRAC returns the decimal part of a number.
+                       case 250: print #1, "frac";
+'Microsoft BASIC: GETJOYSTICK reads buttons and axis infromation from an attached gaming device.
+                       case 251: print #1, "getjoystick";
+'Microsoft BASIC: GETKEY returns the ASCII code of the first key in the keyboard buffer.
+                       case 252: print #1, "getkey";
+'Microsoft BASIC: GETMOUSE retrieves the status of the mouse pointing device.
+                       case 253: print #1, "getmouse";
+'Microsoft BASIC: HIBYTE returns the second byte of the operand.
+                       case 254: print #1, "hibyte";
+'Microsoft BASIC: HIWORD retruns the second 16-bit word of the operand.
+                       case 255: print #1, "hiword";
+				     end select
+				case 022d ' CORE - 7
+'                                                              r0				
+				     select case as const cast(ulongint, mem64(49361))
+'Microsoft BASIC: IMAGECONVERTROW converts a row of image data into another color depth.
+                       case 000: print #1, "imageconvertrow";
+'Microsoft BASIC: IMAGECREATE allocates and initializes storage for an image.
+                       case 001: print #1, "imagecreate";
+'Microsoft BASIC: IMAGEDESTROY deallocates storage for an image.
+				       case 002: print #1, "imagedestroy";
+'Microsoft BASIC: IMAGEINFO retrieves information about an image.
+                       case 003: print #1, "imageinfo";
+'Microsoft BASIC: INSTRREV locates the last occurrence of a substring or character within a string.
+                       case 004: print #1, "instrrev";
+'Microsoft BASIC: ISDATE tests to see if a string can be converted to a date serial.
+                       case 005: print #1, "isdate";
+'Microsoft BASIC: ISREDIRECTED checkes whether STDIN or STDOUT is redirected to a file.
+                       case 006: print #1, "isredirected";
+'Microsoft BASIC: LBOUND returns the lower bounds of a compile time or run time  dimensioned array.
+                       case 007: print #1, "lbound";
+'Microsoft BASIC: LCASE retuns a lower case copy of a STRING.
+                       case 008: print #1, "lcase";
+'Microsoft BASIC: LIB specifies the library where a subprogram or function can be found as part of a declaration.
+                       case 009: print #1, "lib";
+'Microsoft BASIC: LOBYTE returns the lowest byte of an operand.
+                       case 010: print #1, "lobyte";
+'Microsoft BASIC: LOWORD returns the lowest 16-bit word of the operand.
+                       case 012: print #1, "loword";
+'Microsoft BASIC: LTRIM removes surrounding substrings or characters of the left side of a string.
+                       case 013: print #1, "ltrim";
+'Microsoft BASIC: MKL does a binary copy from a LONG variable to a STRING, setting its length to 4 bytes.
+                       case 014: print #1, "mkl";
+'Microsoft BASIC: MKLONGINT does a binary copy from a LONGINT variable to a STRING setting its length to 8 bytes.
+                       case 015: print #1, "mklongint";
+'Microsoft BASIC: MKSHORT does a binary copy from a SHORT variable to a STRING. setting its length to 2 bytes.
+                       case 016: print #1, "mkshort";
+'Microsoft BASIC: MONTHNAME returns the name of a month from its integral representation.
+                       case 017: print #1, "monthname"
+'Microsoft BASIC: MULTIKEY detects the status of keys by keyboard scancode.
+                       case 018: print #1, "multikey";
+'Microsoft BASIC: MUTEXCREATE creates a mutex used for synchronizing the execution of threads.
+                       case 019: print #1, "mutexcreate";
+'Microsoft BASIC: MUTEXDESTROY destroys a mutex.
+                       case 020: print #1, "mutexdestroy";
+'Microsoft BASIC: MUTEXLOCK acquires a mutix
+                       case 021: print #1, "mutexlock";
+'Microsoft BASIC: MUTEXUNLOCK rekeases a mutex lock
+                       case 022: print #1, "mutexunlock";
+'Microsoft BASIC: NAKED writes functions without prolog / epilog code
+                       case 023: print #1, "naked";
+'Microsoft BASIC: NOW gets the current system time as a date serial.
+                       case 024: print #1, "now"
+'Microsoft BASIC: OFFSETOF returns the offset of a field within a TYPE.
+                       case 025: print #1, "offsetof";
+'Microsoft BASIC: ORELSE returns the short circuit or inclusive disjunction of two numeric values.
+                       case 026: print #1, "orelse";
+'Microsoft BASIC: OVERLOAD specifies that a procedure name can be overloaded.
+                       case 027: print #1, "overload";
+'Microsoft BASIC: POINTCOORD queries DRAW's pen position in graphics mode.
+                       case 028: print #1, "pointcoord";
+'Microsoft BASIC: PTR is a variable declaration TYPE modifier.
+                       case 029: print #1, "ptr";
+'Microsoft BASIC: PRESERVE is used with REDIM tp preserve the contents of an array while resizing.
+                       case 030: print #1, "preserve";
+'Microsoft BASIC: PROCPTR returns the address of a procedure.
+                       case 031: print #1, "procptr";
+'Microsoft BASIC: REDIM defines or resizes a variable length array.
+                       case 032: print #1, "redim";
+'Microsoft BASIC: RGBA computes a valid 32-bit color value for 24-bit and 32-bit graphics modes.
+                       case 033: print #1, "rgba";
+'Microsoft BASIC: RTRIM removes surrounding substrings or characters on the right side of a STRING.
+                       case 034: print #1, "rtrim";
+'Microsoft BASIC: SADD returns a POINTER to a STRING variable's DATA.
+                       case 035: print #1, "sadd";
+'Microsoft BASIC: SCOPE begins a new SCOPE code block.
+                       case 036: print #1, "scope";
+'Microsoft BASIC: SCREENCOPY copies the contents of one screen to another screen.
+                       case 037: print #1, "screencopy";
+'Microsoft BASIC: SCREENCONTROL sets or gets the internal graphics library settings.
+                       case 038: print #1, "screencontrol";
+'Microsoft BASIC: SCREENENVENT queries for and retrievees system events.
+                       case 039: print #1, "screenevent";
+'Microsoft BASIC: SCREENGLPROC gets the addres of an OpenGL procedure.
+                       case 040: print #1, "screenglproc";
+'Microsoft BASIC: SCREENINFO retrieves the information about the current video mod or the desktop.
+                       case 041: print #1, "screeninfo";
+'Microsoft BASIC: SCREENLIST finds all available fullscreen video modes.
+					   case 042: print #1, "screenlist";
+'Microsoft BASIC: SCREENLOCK locks the working page's frame buffer.
+                       case 043: print #1, "screenlock";
+'Microsoft BASIC: SCREENPTR returns a POINTER to the current woking page's frame buffer.
+                       case 044: print #1, "screenptr";
+'Microsoft BASIC: SCREENRES initializes a graphics mode by specifying hrorizontal and vertical resolution.
+                       case 045: print #1, "screenres";
+'Microsoft BASIC: SCREENSET sets the current work and visible pages.
+                       case 046: print #1, "screenset";
+'Microsoft BASIC: SCREENSYNC synchronizes display updates with the hardware.
+                       case 047: print #1, "screensync";
+'Microsoft BASIC: SCREENUNLOCK unlocks the current working page's frame buffer.
+                       case 048: print #1, "screenunlock";
+'Microsoft BASIC: SETDATE sets the current system date.
+                       case 049: print #1, "setdate";
+'Microsoft BASIC: SETENVIRON sets a system environment variable.
+                       case 050: print #1, "setenviron";
+'Microsoft BASIC: SETMOUSE sets the position and visibility of the mouse cursor.
+                       case 051: print #1, "setmouse";
+'Microsoft BASIC: SETTIME sets the current system time.
+                       case 052: print #1, "settime";
+'Microsoft BASIC: SUB defines a procedure, a DATA TYPE that stores a POINTER to a procedure, or declares
+'                 or defines a member procedure.
+                       case 053: print #1, "sub";
+'Microsoft BASIC: THREADCALL starts a user defined procedure with parameters in a separate execution thread.
+                       case 054: print #1, "threadcall";
+'Microsoft BASIC: THREADCREATE starts a user defined procedure in a separate execution thread.
+                       case 055: print #1, "threadcreate";
+'Microsoft BASIC: THREADDETACH releases a thread handle without waiting for the thread to finish.
+                       case 056: print #1, "threaddetach";
+'Microsoft BASIC: THREADWAIT waits for a thread to finish execution and releases the thread handle.
+                       case 057: print #1, "threadwait";
+'Microsoft BASIC: TRANS is a parameter to the PUT graphics statememt which selects transparent background
+'                 as the blitting method.
+                       case 058: print #1, "trans";
+'Microsoft BASIC: UBOUND returns the upper bound of an array's dimension.
+                       case 059: print #1, "ubound";
+'Microsoft BASIC: UBYTE is a standard DATA TYPE: 8-bit UNSIGNED.
+                       case 060: print #1, "ubyte";
+'Microsoft BASIC: UCASE returns an upper case copy of a STRING.
+                       case 061: print #1, "ucase";
+'Microsoft BASIC: UINTEGER is a standard DATA TYPE: 32-bit or 64-bit UNSIGNED.
+                       case 062: print #1, "uinteger";
+'Microsoft BASIC: ULONGINT is a standard DATA TYPE: 64-bit UNSIGNED.
+                       case 063: print #1, "ulongint";
+'Microsoft BASIC: VA_ARG returns the current argument from a variable argument list.
+                       case 064: print #1, "va_arg";
+'Microsoft BASIC: VA_FIRST returns a pointer to the first argument in a variable argument list.
+                       case 065: print #1, "va_first";
+'Microsoft BASIC: VA_NEXT returns a pointer to the next argument in a variable argument list.
+                       case 066: print #1, "va_next";
+'Microsoft BASIC: VALLNG converts a string to a 64-bit INTEGER.
+                       case 067: print #1, "vallng";
+'Microsoft BASIC: VALINT converts a string to a 32-bit INTEGER.
+                       case 068: print #1, "valint";
+'Microsoft BASIC: VIEW sets the printable text area of the SCREEN, or sets new physical coordinate mapping and clipp
+'                 region for graphics keywords.
+                       case 069: print #1, "view";
+'Microsoft BASIC: WBIN returns the binary WSTRING unicode representation of a number.
+                       case 070: print #1, "wbin";
+'Microsoft BASIC: WCHR returns the wide character  containing one or more unicode characters.
+                       case 071: print #1, "wchr";
+'Microsoft BASIC: WEEKDAY gets the number of day of the week from a data serial.
+                       case 072: print #1, "weekday";
+'Microsoft BASIC: WEEKDAYNAME gets the name of a week day from its integral representation.
+                       case 073: print #1, "weekdayname";
+'Microsoft BASIC: WHEX returns the hexadecimal WSTRING unicode representation of a number.
+                       case 074: print #1, "whex";
+'Microsoft BASIC: WINDOWTITLE sets the program title window.
+                       case 075: print #1, "windowtitle";
+'Microsoft BASIC: WINPUT reads a number of wide characters from the console or file.
+                       case 076: print #1, "winput";
+'Microsoft BASIC: WOCT converts a number to a unicode octal representation.
+                       case 077: print #1, "woct";
+'Microsoft BASIC: WSPACE creates a WSTRING of a given length filled with spaces.
+                       case 078: print #1, "wspace";
+'Microsoft BASIC: WSTR returns a wide character STRING representation of a number or ASCII character STRING.
+                       case 079: print #1, "wstr";
+'Microsoft BASIC: WSTRING is a standard DATA TYPE: wide character STRING, or fills a WSTRING with a certain length
+'                 of wide character.
+                       case 080: print #1, "wstring";
+'Microsoft BASIC: ZSTRING is a standard DATA TYPE: C style 8-bit character string.
+                       case 081: print #1, "zstring";
+'Microsoft BASIC: ERT returns explanatory text associated with an ERROR number.
+                       case 082: print #1, "ert";
+'GNU FORTRAN: ENDFILE statement writes an endfile record as the next record of the file. It can be used
+'             with unformated and formated data files.
+                       case 083: print #1, "endifle";
+'Microsoft BASIC: FNEND is a synonym for the END DEF statement.
+                       case 084: print #1, "fnend";
+'Microsoft BASIC: FNEXIT is a synonym for the EXIT DEF statement.
+                       case 085: print #1, "fnexit";
+'Microsoft BASIC: FREE ublocks all records and buckets associated with a specified channel.
+                       case 086: print #1, "free";
+'Microsoft BASIC: FSP returns a STRING describing an OPEN file on a specified channel.
+                       case 087: print #1, "fsp";
+'Microsoft BASIC: FUNCTIONEND is a synonym for the END FUNCTION statement
+                       case 088: print #!, "functionend";
+'Microsoft BASIC: FUNCTIONEXIT is a synonym for the EXIT FUNCTION statement
+                       case 089: print #1, "functionexit";
+'Microsoft BASIC: GETRFA returns a record's file address of the last RECORD accessed in a RMS file
+'                 open on a specified channel.
+                       case 090: print #1, "getrfa";
+'Microsoft BASIC: HANDLER marks the beginning of a detached handler.
+                       case 091: print #1, "handler";
+'Microsoft BASIC: LINPUT assigns a string value, without line terminators from a terminal or terminal formated file
+'                 to a STRING variable, or receives STRING DATA from a terminal or terminal formated file and assigns it
+'                 to STRING array elements.
+                       case 092: print #1, "linput";
+'Microsoft BASIC: MAG returns the absolute value of a specified expression.
+                       case 093: print #1, "mag";
+'Microsoft BASIC: MAGTAPE permits your program to control unformatted magnetic tape files.
+                       case 094: print #1, "magtape";
+'Microsoft BASIC: MAR returns the current MARGIN WIDTH of a specified channel.
+                       case 095: print #1, "mar";
+'Microsoft BASIC: MARGIN specifies the MARGIN WIDTH for a terminal or for records in a terminal formated file.
+                       case 096: print #1, "margin";
+'Microsoft BASIC: MAT lets you implicitly create and manipulate one and two dimensional arrays. You can use the MAT
+'                 statemant to assign values to array elements, or to redimension a previousaly dimensioned array.
+'                 You can also perform matrix arithmetic operation such as multiplication, addition, and subtraction,
+'                 and other matrix operations such as transposing and inverting matrices.
+                       case 097: print #1, "mat";
+'Microsoft BASIC: NOECHO disables echoing of input to the terminal.
+                       case 098: print #1, "noecho";
+'Microsoft BASIC: NOMARGIN removes the right margin limit set with the MARGIN statement for a terminal or a terminal
+'                 formated file.
+                       case 099: print #1, "nomargin";
+'Microsoft BASIC: NUM returns the row number of the last DATA element transferred into an array by a MAT I/O statement,
+'                 or evaluates a numeric expression and returns a string of characters in PRINT statement format with
+'                 leading and trailing spaces.
+                       case 100: print #1, "num";
+'Microsoft BASIC: NUM2 returns the column number of the last DATA element transferred into an array by a
+'                 I/O statement.
+                       case 101: print #1, "num2";
+'Microsoft BASIC: NUM1 changes a numeric exoression to a numberic character string without leading and trailing spaces and
+'                 without rounding.
+                       case 102: print #1, "num1";
+'Microsoft BASIC: PLACE explicitly changes the procision of a numeric STRING. PLACE returns a numeric STING, turncated or
+'                 rounded, according to the value of an INTEGER argument you supply.
+                       case 103: print #1, "place";
+                     end select
 	       end select                 	       

@@ -1388,13 +1388,13 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
 '                 x0                                              scro_x        
-        mov(mem64(49355d),((((xs add x) mul 5d) div 2d) add mem64(49379d)))
+        mov(mem64(49355d),((((xs add x) and 5d) div 2d) add mem64(49379d)))
 '                 y0                                              scro_y
-        mov(mem64(49356d),((((ys add y) mul 4d) div 2d) add mem64(49380d)))
+        mov(mem64(49356d),((((ys add y) and 4d) div 2d) add mem64(49380d)))
 '                 x1                                                       scro_x          
-        mov(mem64(49358d),(((((xs add x) mul 5d) add 7d) div 2d) add mem64(49379d)))
+        mov(mem64(49358d),(((((xs add x) and 5d) add 7d) div 2d) add mem64(49379d)))
 '                 y1                                                       scro_y          
-        mov(mem64(49359d),(((((ys add y) mul 4d) add 4d) div 2d) add mem64(49380d))) 
+        mov(mem64(49359d),(((((ys add y) and 4d) add 4d) div 2d) add mem64(49380d))) 
 #elseif defined(__FB_DOS__)
 '                 x0                                                 scro_x        
         mov(mem64(49355d),((((xs add x) mul 2.08d) div 2d) add mem64(49379d)))
