@@ -268,12 +268,10 @@
 'C#: ALIAS is used to reference two versions of assemblies that have the the same fully-qualified
 '    type name. 					
 						case 022: print #1, "alias";
-'GNU FORTRAN: ALL determines if all the values are true in MASK in the array
-'             along dimension DIM.						
+'GNU FORTRAN: ALL determinines if all the values are true in MASK in the array along dimension DIM.					
 						case 023: print #1, "all";
 						case 024: print #1, "all_intersections";
-'Microsoft BASIC: ALPHA parameter to the PUT graphics statement which selects
-'                 alpha blending as the blitting method.						
+'Microsoft BASIC: ALPHA parameter to the PUT graphics statement which selects alpha blending as the blitting method.						
 						case 025: print #1, "alpha";
 						case 026: print #1, "alphabet";
 						case 027: print #1, "alphabetic";
@@ -333,8 +331,10 @@
 'Microsoft BASIC: ASCII returns the ASCII value in decimal of a string's first character.						
 						case 056: print #1, "ascii";
 'Microsoft BASIC: ASIN finds the arcsine of a number.
+'GNU FORTRAN: ASIN computes the arcsine of a numeric expression (inverse of SIN).
 'POVRAY: ASIN returns the angle, measured in radians, whose sine is a numeric expression.						
 						case 057: print #1, "asin";
+'GNU FORTRAN: ASINH computes the inverse hyperbolic sine of a numeric expression.
 'POVRAY: ASINH returns the inverse hyperbolic sine of a numeric expression.						
 						case 058: print #1, "asinh";
 'Microsoft BASIC: ASM  - code block that allows the of architecture specific instructions.
@@ -354,12 +354,17 @@
 						case 063: print #1, "assumed_gamma";
 'C#: ASYNC modifier is to specifly that a method lambda expression of anonymous method is asynchronous.						
 						case 064: print #1, "async";
-						case 065: print #1, "at";						
+						case 065: print #1, "at";
+'GNU FORTRAN: ATAN computes the arctangent of a numeric expression.
 						case 066: print #1, "atan";
 'Micrisift BASIC: ATAN2 returns the arctangent of a ratio.
+'GNU FORTRAN: ATAN2 computes the principal value of the argument function a complex number. This function can be used to
+'             transform cartesian into polar coordinates and allows you to determine if the angle is in the correct 
+'             quadrant.
 'POVRAY: ATAN2 Returns the angle, measured in radians, whose tangent is 
 '        an numeric expression.						
 						case 067: print #1, "atan2";
+'GNU FORTRAN computes the inverse hyperbolic tangant of a numreic expression.
 'POVRAY: ATANH returns the inverse hyperbolic tangent of an numeric expression.						
 						case 068: print #1, "atanh";
 'Microsoft BASIC: ATN returns the arctangent of a specified tangent in radians or degrees.					
@@ -368,7 +373,7 @@
 						case 071: print #1, "author";
 'Microsoft BASIC: AUTO generates and increment line numbers automatically each time the
 '                 RETURN/ENTER key is pressed.
-'C AUTO defines a local variable as having a local lifetime.						
+'C#: AUTO defines a local variable as having a local lifetime.						
 						case 072: print #1, "auto";
 'GNU FORTRAN: AUTOMATIC control, within a called subprogram, the allocation of storage
 '             to variables and the inital values of variables.						
@@ -1086,6 +1091,7 @@
 'POVRAY: floor returns the floor of a numeric expression.						
 						case 208: print #1, "floor";
 						case 209: print #1, "fmod";
+'Microsoft BASIC: FN defines a user defined function. The arguments ar variable names that may be used in the expression. 
 'PHP: FN declares an arrow function.						
 						case 210: print #1, "fn";
 						case 211: print #1, "focal_point";
@@ -1719,7 +1725,7 @@
 						case 036: print #1, "method-id";
 						case 037: print #1, "metric";
 						case 038: print #1, "microfacet";
-'Microsoft BASIC: MID can be used as a statement or function. The MID statement performs substring insertion into
+'Microsoft BASIC: can be used as a statement or function. The MID statement performs substring insertion into
 '                 a STRING. The MID function extracts a specified substring from a STRING expression.						
 						case 039: print #1, "mid";
 'Microsoft BASIC: MIN compares the values of two or more numeric expressions and returns the smallest value.
@@ -2074,8 +2080,8 @@
 'FreePASCAL: PUBLISHED accessibility modifier, published properties are visible in IDE or can be written to ,lfm file.						
 						case 232: print #1, "published";
 						case 233: print #1, "purge";
-'Microsoft BASIC: PUT copies an image on to another image or screen, or writes date from a buffer
-'                 to a file or device.						
+'Microsoft BASIC: PUT 1) Copies an image on to another image or screen.
+'                     2) Transfers DATA from the RECORD buffer a file or device					
 						case 234: print #1, "put";
 						case 235: print #1, "pwr";
 						case 236: print #1, "q";
@@ -2110,17 +2116,20 @@
 				case 019d ' CORE - 5
 '                                                     r0				
 				     select case cast(ulongint, mem64(49361))
-'Microsoft BASIC: RANDOM specifies a file or device to be opened for RANDOM access mode.				            								      
+'Microsoft BASIC: RANDOM 1) specifies a file or device to be opened for RANDOM access mode.
+'                        2) gives the random number function, RND, a new starting value using a numeric expression
+'                           or the TIMER function.				            								      
 						case 000: print #1, "random";
-'Microsoft BASIC: RANDOMIZE seeds the RANDOM number generator using a numeric expression
-'                 or the TIMER function.						
+'Microsoft BASIC: RANDOMIZE gives the random number function, RND, a new starting value using a numeric expression
+'                           or the TIMER function.						
 						case 001: print #1, "randomize";
 						case 002: print #1, "range";
 						case 003: print #1, "ratio";
 						case 004: print #1, "raytype";
 						case 005: print #1, "rd";
-'Microsoft BASIC: READ reads values with the DATA statement, or a file access specifier, or assigns values from DATA
-'                 statements to array statements.
+'Microsoft BASIC: READ 1) assigns values from a DATA statement to variables
+'                      2) assigns values from DATA statements to array statements.
+'                      2) a file access specifier
 'FreePASCAL: READ property read access.  
 'GNU FORTRAN: READ statement transfer data from an external file to the items specified by the input
 '             list, transfers data from an external indexed file to the items specified by the input
@@ -2128,11 +2137,14 @@
 '             from an external record to the items specified by the input list,						
 						case 006: print #1, "read";
 						case 007: print #1, "ready";
+'Microsoft BASIC: REAL converts a numeric expression or numeric string to a specified or default floating point value.
 'GNU FORTRAN: REAL positive and negitive data type with fractional part.
 'FreePASCAL REAL is a 32-bit or 64-bit floating point data type.						
 						case 008: print #1, "real";
 						case 009: print #1, "receive";
 						case 010: print #1, "reciprocal";
+'Microsoft BASIC: RECORD lets you name and define DATA structures in a BASIC program and provides the BASIC interface to 
+'                 the Common Data Directory.
 'FreePASCAL: RECORD groups a series of variables under a single name.						
 'GNU FORTRAN: RECORD creates a record in the format specified by a previously
 '             declared STRUCTURE statement.						
@@ -2160,7 +2172,7 @@
 						case 030: print #1, "relative";
 						case 031: print #1, "release";
 						case 032: print #1, "reload";
-'Microsoft BASIC: REM indicates comments in the source code.					
+'Microsoft BASIC: REM allows you to document your program.					
 						case 033: print #1, "rem";
 						case 034: print #1, "remainder";
 						case 035: print #1, "removal";
@@ -2184,16 +2196,17 @@
 						case 045: print #1, "repository";
 						case 046: print #1, "rerun";
 						case 047: print #1, "reserve";
-'Microsoft BASIC: RESET closes all files or resets standard I/O handles.						
+'Microsoft BASIC: RESET 1) closes all files or resets standard I/O handles.
+'                       2) a synonym for the RESTORE statement.						
 						case 048: print #1, "reset";
-'Microsoft BASIC: RESTORE changes the next READ location for values stored with the DATA statement.					
+'Microsoft BASIC: RESTORE 1) resets the DATA pointer to the beginning of the DATA sequence.
+'                         2) sets the RECORD pointer to the first RECORD in a file.				
 						case 049: print #1, "restore";
-'Microsoft BASIC: RESUME is a ERROR handling statement that resumes execution after a jump(JMP)
-'                 to an ERROR handler.
+'Microsoft BASIC: RESUME marks an exit point from an ON ERROR error handling routine. BASIC clears the error condition
+'                 and returns program control to a specified line number, label, or code block in which the error ocurred.
 						case 050: print #1, "resume";
-'Microsoft BASIC: RETURN - is a flow control statement that returns from a procedure of a 
-'                 GUSUB by popping(POP) the program counter(PC) that was used before the current
-'                 code block was executed off the stack using the return instruction(RET).
+'Microsoft BASIC: RETURN transfers control to the statemnt immediately following the most recently executed 
+'                 GOSUB or ON GOSUB statement in the current program unit.
 'C#: RETURN statement termintaes the execution of a method in which it appears and returns
 '    control to the calling method.
 'C: RETURN exits from a function and returns a value.
@@ -2215,19 +2228,19 @@
 '             using an indexed READ.						
 						case 056: print #1, "rewrite";
 						case 057: print #1, "rf";
-'Microsoft BASIC: Computers a valid color value for 15-bit, 16-bit, 24-bit, and 32-bit video modes.						
+'Microsoft BASIC: RGB computers a valid color value for 15-bit, 16-bit, 24-bit, and 32-bit video modes.						
 						case 058: print #1, "rgb";
 						case 059: print #1, "rgbf";
 						case 060: print #1, "rgbft";
 						case 061: print #1, "rgbt";
 						case 062: print #1, "rh";
-'Microsoft BASIC: RIGHT returns the rightmost substring of a string.							
+'Microsoft BASIC: RIGHT extracts a substring from a string's right side, leaving the string unchanged.							
 						case 063: print #1, "right";
 '						case 064: print #1, "right";
 						case 065: print #1, "ripples";
 'Microsoft BASIC: RMDIR removes a folder / directory from a device.					
 						case 066: print #1, "rmdir";
-'Microsoft BASIC: RND returns a random DOUBLE precision number.					
+'Microsoft BASIC: RND returns a random number greater than  or equal to zero and less than one.				
 						case 067: print #1, "rnd";
 						case 068: print #1, "rotate";
 						case 069: print #1, "roughness";
@@ -2236,7 +2249,8 @@
 						case 072: print #1, "row";
 						case 073: print #1, "row_major";
 						case 074: print #1, "rpad";
-'Microsoft BASIC: RSET right justifies a string in a string buffer.						
+'Microsoft BASIC: RSET assigns right justified DATA to a STRING variable. RSET does not change a STRINGS 
+'                 variable's length.					
 						case 075: print #1, "rset";
 'Microsoft BASIC: RUN allows you to execute a program from the BASIC environment without first invoking
 '                 a linker to construct an executable. In addition, the RUN command allows you to access
@@ -2296,7 +2310,8 @@
 						case 109: print #1, "segment";
 						case 110: print #1, "segment-limit";
                         case 111: print #1, "section";
-'Microsoft BASIC: SELECT is the firest statement in a conditional statement block.
+'Microsoft BASIC: SELECT lets you specify an expression, a number of possible values an expression may have, and a number
+'                 of alternative code blocks to be executed for each possible case.
 'C#: SELECT clause specifies the type of values that will be produced when the query is executed.                       
 						case 112: print #1, "select";
 						case 113: print #1, "selector";
@@ -2319,7 +2334,8 @@
 '    or the indexer element.
 'KOTLIN: SET declares the setter of a property or is used as an annotation use site target.						
 						case 123: print #1, "set";
-'Microsoft BASIC: SGN returns the sign part of a number.						
+'Microsoft BASIC: SGN detrmines whether a numeric expression is positive, negative, or zero. It returns a 1 if the 
+'                 expression is positive, a -1 if the expression is negative, and zero if the expression is zero.						
 						case 124: print #1, "sgn";
 						case 125: print #1, "shadowless";
 'Microsoft BASIC: SHELL loads and execute another program or batch file.						
@@ -2340,7 +2356,7 @@
 'GNU COBOL: SIGN defines the  currency sign used in PICTURE symbol editing.						
 						case 132: print #1, "sign";
 						case 133: print #1, "simple_nested_loop";
-'Microsoft BASIC: SIN return the sign of an angle.						
+'Microsoft BASIC: SIN returns the sine of an angle in radians or degrees.					
 						case 134: print #1, "sin";
 						case 135: print #1, "sine_wave";
 'POVRAY: sinh returns the hpyerbolic sine of a numeric expression.						
@@ -2382,8 +2398,8 @@
 'GNU COBOL: SOURCE-COMPUTER paragraphs define the computer upon which
 '           the program is being compiled.						
 						case 166: print #1, "source-computer";
-'Microsoft BASIC: SPACE creates a string of a given length filled with spaces.						
-'GNU COBOL: SPACE inserts a space into a string
+'Microsoft BASIC: SPACE creates a STRING containing a specified number of spaces.					
+'GNU COBOL: SPACE inserts a space into a string.
 						case 167: print #1, "space";
 '						case 168: print #1, "space";
 'GNU COBOL: SPACES pad string with spaces.
@@ -2410,7 +2426,7 @@
 						case 183: print #1, "split_union";
 						case 184: print #1, "spotlight";
 						case 185: print #1, "spotted";
-'Microsoft BASIC: SQR returns a square root of a number.						
+'Microsoft BASIC: SQR returns the square root of a number.						
 						case 186: print #1, "sqr";
 'POVRAY: sqrt returns the square root of a numeric expression.						
 						case 187: print #1, "sqrt";
@@ -2430,6 +2446,7 @@
 'PHP: STATIC declares a property of method as static.   						
 						case 193: print #1, "static";
 						case 194: print #1, "statistics";
+'Microsoft BASIC: STATUS returns an INTEGER value containing information about the last open channel.
 						case 195: print #1, "status";
 'Microsoft BASIC: STDCALL specifies a STDCALL style calling convention in a procedure declaration.
 'FreePASCAL: STDCALL is a subroutine calling convention.						
@@ -2441,12 +2458,12 @@
 						case 199: print #1, "stick";
 						case 200: print #1, "stof";
 						case 201: print #1, "stoi";
-'Microsoft BASIC: STOP halts program execution and waits for a key to be pressed before 
-'                 ending the program.
+'Microsoft BASIC: STOP 1) halts program execution and waits for a key to be pressed before 
+'                         ending the program.
+'                      2) halts program execution allowing you to optionally continue execution.
 'GNU FORTRAN: STOP statement terminates an executing program.						
 						case 202: print #1, "stop";
-'Microsoft BASIC: STR returns a string repersentation of a number, boolean, or Unicode
-'                 character string.						
+'Microsoft BASIC: STR changes a numeric expression to a numeric character string without leading and trailing speces.					
 						case 203: print #1, "str";
 '						case 204: print #1, "str";
 'POVRAY: strcmp returns the floating point value of zero if both strings are equal,
@@ -2456,13 +2473,13 @@
 						case 206: print #1, "strength";
 'Microsoft BASIC: STRIG reads the button states from attached gaming devices.					
 						case 207: print #1, "strig";
-'Microsoft BASIC: STRING creates and fill a string of a certain length with a certain character, or
-'                 a standard data type: 8-bit character string.
+'Microsoft BASIC: STRING 1) creates a string containing a specified number of identical characters.
+'                        2) a standard data type: 8-bit character string.
 'FreePASCAL: STRING declares a variable that contains multiple characters.
 'C#: STRING type represents a sequence of zero of more Unicode characters. STRING is an alias for
 '    alias for System.String in .NET.					
 						case 208: print #1, "string";
-'Microsoft BASIC: STRPTR returns the address of a string's character data.						
+'Microsoft BASIC: STRPTR returns the address of a string's character DATA.						
 						case 209: print #1, "strptr";
 						case 210: print #1, "strlen";
 						case 211: print #1, "strlwr";
@@ -2481,6 +2498,7 @@
 						case 221: print #1, "substring";
 						case 222: print #1, "substring_mb";
 						case 223: print #1, "subtract";
+'Microsoft BASIC: SUM returns a string whose value is the sum of two numeric strings.
 						case 224: print #1, "sum";
 'JAVA: SUPER is a reference variable that is used to refer to a parent CLASS object.						
 'KOLTLIN: SUPER refers to the siperclass implementation of a method or property, or calls
@@ -2506,13 +2524,14 @@
 'Microsoft BASIC: SYSTEM closes all open files and ends the program.						
 						case 236: print #1, "system";
 						case 237: print #1, "t";
-'Microsoft BASIC: TAB sets the column when writing to a file, screen, or other device.						
+'Microsoft BASIC: TAB 1) sets the column when writing to a file, screen, or other device.
+'                     2) creates a string containing a specified number of spaces.						
 						case 238: print #1, "tab";
 						case 239: print #1, "table";
 						case 240: print #1, "tally";
 						case 241: print #1, "tallying";
-'Microsoft BASIC: TAN returns the tangent of an angle.
-'POVRAY: tan returns the tangent of the angle of a numeric expression where the numeric expression
+'Microsoft BASIC: TAN returns the tangent of an angle in radians or dagrees.
+'POVRAY: TAN returns the tangent of the angle of a numeric expression where the numeric expression
 '        is measured in radians.						
 						case 242: print #1, "tan";
 'POVRAY: tanh returns the hyperbolic tangent of a numeric expression.						
@@ -2556,7 +2575,11 @@
 						case 010: print #1, "tightness";
 						case 011: print #1, "tile2";
 						case 012: print #1, "tiles";
-'Microsoft BASIC: TIME sets or returns the current system time using a STRING.
+'Microsoft BASIC: TIME 1) sets the current system TIME USING a STRING.
+'                      2) returns the TIME of day in seconds as a floating POINT number.
+'                      3) returns CPU TIME in seconds as a floating POINT number.
+'                      4) returns connecting TIME in seconds as a floating POINT number.
+'                      5) returns a string displaying the TIME of day in the form HH:MM AM or HH:MM PM.
 						case 013: print #1, "time";
 '						case 014: print #1, "time";
 'Microsoft BASIC: TIMER returns the amount of time that has passed since a static
@@ -2643,7 +2666,8 @@
 'GLSL: unit is an unsigned integer.						
 						case 063: print #1, "unit";
 						case 064: print #1, "unknown";
-'Microsoft BASIC: UNLOCK removes a previous access restriction (LOCK) on a file or device.
+'Microsoft BASIC: UNLOCK 1) removes a previous access restriction (LOCK) on a file or device.
+'                        2) unlocks the current RECORD or bucket locked by the last FIND or GET statement.`
 'GNU FORTRAN: UNLOCK statement makes the last record read from an indexed file available for
 '             access by other users.						
 						case 065: print #1, "unlock";
@@ -2651,10 +2675,12 @@
 'C: UNSIGNED is a type modifier.						
 						case 066: print #1, "unsigned";
 						case 067: print #1, "unstring";
-'Microsoft BASIC: UNTIL is a contitional clause used in DO LOOP statements.
+'Microsoft BASIC: UNTIL marks the beginning of an UNTIL loop or modifies the execution of another statement.
 'FreePASCAL: UNTIL indicates the end test of a REPEAT code block.						
 						case 068: print #1, "until";
 						case 069: print #1, "up";
+'Microsoft BASIC: UPDATE replaces a RECORD in a file with a RECORD in the RECORD buffer. The UPDATE statement is valid
+'                 on  sequential, relative, and indexed files.
 						case 070: print #1, "update";
 						case 071: print #1, "upon";
 						case 072: print #1, "upper";
@@ -2695,7 +2721,7 @@
 						case 099: print #1, "uv_mapping";
 						case 100: print #1, "uv_vectors";
 						case 101: print #1, "v";
-'Microsoft BASIC: VAL converts a string to a flating point number.
+'Microsoft BASIC: VAL converts a string to a flating point value.
 'KOTLIN: VAL declares a read-only  property or local variable.
 'POVRAY: VAL returns a floating point value that is represented by a
 '        text string.						
@@ -2761,7 +2787,9 @@
 						case 127: print #1, "vstr";
 						case 128: print #1, "vturbulence";
 						case 129: print #1, "w";
-'Microsoft BASIC: WAIT reads from a hardware port with a mask.						
+'Microsoft BASIC: WAIT 1) reads from a hardware port with a mask.
+'                      2) specifies the number of seconds the program should wait for terminal input
+'                         before signaling an error.						
 						case 130: print #1, "wait";
 						case 131: print #1, "ward";
 						case 132: print #1, "warning";
@@ -2771,8 +2799,9 @@
 						case 136: print #1, "waves";
 'Microsoft BASIC: WEND is a flow control statement.						
 						case 137: print #1, "wend";
-'C#: WHEN is used to specify a filter condition in the catch statement, a case label of a switch statement,
-'    or in a switch expression.
+'Microsoft BASIC: WHEN markes the bigininning of an WHEN ERROR construct.
+'C#: WHEN 1) is used to specify a filter condition in the catch statement
+'         2) a case label of a switch statement or in a switch expression.
 'KOTLIN: WHEN begins a when expression and executes on of the given branches.						
 						case 138: print #1, "when";
 						case 139: print #1, "when-compiled";
@@ -2781,7 +2810,7 @@
 '    which elements from the data source will be returned in the query expression.
 'KOTLIN: WHERE specifies constraints for a generic type parameter.						
 						case 140: print #1, "where";
-'Microsoft BASIC: WHILE is a flow control statement.
+'Microsoft BASIC: WHILE marks the beginning of a WHILE loop or modifies the execution of another statement.
 'C#: WHILE statement executes a statement or code block while a specified boolean expression is TRUE.
 'C: WHILE repeats execution while a condition is TRUE.
 'JAVA: WHILE is used to start a WHILE loop.
@@ -2912,11 +2941,13 @@
 				        case 045: print #1, "M_SQRT1_2";
 				        case 046: print #1, "sincos";
 				        case 047: print #1, "inversesqrt";
-'Microsoft BASIC: SEG set current segment address.				        
+'Microsoft BASIC: SEG 1) set current segment address.
+'                     2) extracts a substring from a main STRING, leaving the original STRING unchanged. 
 				        case 048: print #1, "seg";
-'Microsoft BASIC SEEK sets the position of the next read / write operation on a file or device.				        
+'Microsoft BASIC: SEEK sets the position of the next read / write operation on a file or device.				        
 				        case 049: print #1, "seek";
-'Microsoft BASIC SLEEP Waits until a specified time has elapsed of a key is pressed.			        
+'Microsoft BASIC: SLEEP suspends program execution for a specified number of seconds or until a carriage return is
+'                 is entered from the controlling terminal.
 				        case 050: print #1, "sleep";
 'GNU COBOL: CONSOLE clause exists to provide source code compatibility with other versions of
 '           GNU COBOL/OpenCOBOL. It allows the devices "CRT" and "CONSOLE" to be used interchangeably
@@ -2939,7 +2970,7 @@
 'GNU FORTRAN: ACHAR retruns the character at a position as defined by an numeric expression in the ASCII
 '             collating sequence.				        
 				        case 061: print #1, "achar";
-'GNU FORTRAN: ACOSD computes the arccosine of X in degrees.				        
+'GNU FORTRAN: ACOSD computees the arccosine of X in degrees (inverse of COSD(X)).				        
 				        case 062: print #1, "acosd";
 'GNU FORTRAN: ADJUSTL left adjust a string by removing leading spaces. Spaces are inserted at the end
 '             of the string as needed.				        
@@ -2953,7 +2984,10 @@
 				        case 065: print #1, "aimag";
 'GNU FORTRAN: AINT truncates it argument to a whole number.				        
 				        case 066: print #1, "aint";
-'GNU FORTRAN: ALARM causes an external subroutine to executed after a delay of a given number of seconds.				        
+'GNU FORTRAN: ALARM causes external subroutine HANDLER to be executed after a delay of SECONDS by using ALARM to set a
+'             a signal and SIGNAL to catch it. If STATUS is supplied, it will be returned with the number of seconds
+'             remaining unti any previously scheduled ALARM was due to be livered, or zero if there was no previously
+'             scheduled ALARM.				        
 				        case 067: print #1, "alarm";
 'GNU FORTRAN: ALOCATED check the allocation status of ARRAY and SCALAR respectively.				        
 				        case 068: print #1, "alocated";
@@ -3333,8 +3367,9 @@
                        case 232: print #1, "rename";
 'Microsoft BASIC: RESEQUENCE allows you to resequence the line numbers of the program currently in memory.
                        case 233: print #1, "resequence";
-'Microsoft BASIC: SCRATCH clears any program currently in memory, removes any object file loaded with the LOAD command
-'                 and resets the program name to NONAME.
+'Microsoft BASIC: SCRATCH 1) clears any program currently in memory removes any object file loaded with the LOAD command
+'                            and resets the program name to NONAME.
+'                         2) deletes the current RECORD and all following records in a sequential file.
                        case 234: print #1, "scratch";
 'Microsoft BASIC: SHOW displays the current defaults for the BASIC compiler on your terminal.
                        case 235: print #1, "show";
@@ -3489,8 +3524,10 @@
                        case 051: print #1, "setmouse";
 'Microsoft BASIC: SETTIME sets the current system time.
                        case 052: print #1, "settime";
-'Microsoft BASIC: SUB defines a procedure, a DATA TYPE that stores a POINTER to a procedure, or declares
-'                 or defines a member procedure.
+'Microsoft BASIC: SUB 1) marks the beginning of a BASIC subprogram and specifies the number
+'                        and DATA TYPE of its parameters
+'                     2) a DATA TYPE that stores a POINTER to a procedure
+'                     3) or declares or defines a member procedure.
                        case 053: print #1, "sub";
 'Microsoft BASIC: THREADCALL starts a user defined procedure with parameters in a separate execution thread.
                        case 054: print #1, "threadcall";
@@ -3503,7 +3540,7 @@
 'Microsoft BASIC: TRANS is a parameter to the PUT graphics statememt which selects transparent background
 '                 as the blitting method.
                        case 058: print #1, "trans";
-'Microsoft BASIC: UBOUND returns the upper bound of an array's dimension.
+'Microsoft BASIC: UBOUND returns the upper bounds of a compile time or run time dimensioned array.
                        case 059: print #1, "ubound";
 'Microsoft BASIC: UBYTE is a standard DATA TYPE: 8-bit UNSIGNED.
                        case 060: print #1, "ubyte";
@@ -3565,7 +3602,7 @@
 'Microsoft BASIC: FSP returns a STRING describing an OPEN file on a specified channel.
                        case 087: print #1, "fsp";
 'Microsoft BASIC: FUNCTIONEND is a synonym for the END FUNCTION statement
-                       case 088: print #!, "functionend";
+                       case 088: print #1, "functionend";
 'Microsoft BASIC: FUNCTIONEXIT is a synonym for the EXIT FUNCTION statement
                        case 089: print #1, "functionexit";
 'Microsoft BASIC: GETRFA returns a record's file address of the last RECORD accessed in a RMS file
@@ -3608,5 +3645,75 @@
 'Microsoft BASIC: PLACE explicitly changes the procision of a numeric STRING. PLACE returns a numeric STING, turncated or
 '                 rounded, according to the value of an INTEGER argument you supply.
                        case 103: print #1, "place";
+'Microsoft BASIC: QUO returns a numeric STRINGS that is the quotient of two numeric STRINGS.
+                       case 104: print #1, "quo";
+'Microsoft BASIC: RAD converts a specified INTEGER in Radix-50 format to a character STRING.
+                       case 105: print #1, "rad";
+'Microsoft BASIC: RCTRLC disalbes CTRL-C trapping.
+                       case 106: print #1, "rctrlc";
+'Microsoft BASIC: RCTRLO cancels the effect of a CTRL-O typed on specified channel.
+                       case 107: print #1, "rctrl0";
+'Microsoft BASIC: RECOUNT returns the number of characters transferred by the last operation.
+                       case 108: print #1, "recount";
+'Microsoft BASIC: REMAP defines or redefines the position in the storage area of variables named for
+'                 the MAP DYNAMIC statement.
+                       case 109: print #1, "remap";
+'Microsoft BASIC: RETRY clears an ERROR condition and reexecutes the statement that caused the ERROR inside a protected
+'                 region of a WHEN code block.
+                       case 110: print #1, "retry";
+'Microsoft BASIC: RMSSTATUS returns the RMS status or the status value of the last I/O operation on a specified open 
+'                 I/O channel.
+                       case 111: print #1, "rmsstatus";
+'Microsoft BASIC: PROMPT enables a question mark prompt to appear after BASIC executes either an INPUT, LINPUT,
+'                 INPUT LINE, LINE INPUT, MAT INPUT, or MAT LINPUT statement on channel #0. The SET NO PROMPT statement
+'                 disables the question mark prompt.
+                       case 112: print #1, "prompt";
+'Microsoft BASIC: SUBEND is synomyn for the END SUB statement.
+                       case 113: print #1, "subend";
+'Microsoft BASIC: SUBEXIT is a synomyn for the EXIT SUB statement.
+                       case 114: print #1, "exitsub";
+'Microsoft BASIC: TRM removes all tralling blanks and tabs from a specified STRING.
+                       case 115: print #1, "trm";
+'Microsoft BASIC: UNLESS qualifier modifies a stetement. BASIC executes the modified statement only if a conditional
+'                 expression is FALSE.
+                       case 116: print #1, "unless";
+'Microsoft BASIC: VMSSTATUS returns the underlying VMS condition code when control is transferred
+'                 to a BASIC ERROR handler.
+                       case 117: print #1, "vmsstatus";
+'Microsoft BASIC: XLATE translate one STRING to another by refencing a supplied table STRING.
+                       case 118: print #1, "xlate";
+'GNU FORTRAN: ALLOCATED checks the allocation status of ARRAY and SCALAR.
+                       case 119: print #1, "allocated";
+'GNU FORTRAN: ANINT rounds its argument to the nearest whole number.
+                       case 120: print #1, "anint";
+'GNU FORTRAN: ASIND cumputes the arcsine of a numeric expression in degrees (inverse of SIND(X)).
+                       case 121: print #1, "asind";
+'GNU FORTRAN: ASSOCIATED determines the status of a POINTER or if the POINTER is associated with the TARGET.
+                       case 122: print #1, "associated";
+'GNU FORTRAN: ATAND computes the arctangent of a numeric expression in degrees (inverse of TAND).
+                       case 123: print #1, "atand";
+'GNU FORTRAN: ATAN2D computes the principal value of the argument function of a complex number in degrees. This function
+'             can be used to transform a cartesian into polar coordinates and allows you to determine if the angle is
+'             in the correct quadrant.
+                       case 124: print #1, "atan2d";
+'GNU FORTRAN: ATOMIC_ADD atomically adds the value of VAR to the variable ATOM.
+                       case 125: print #1, "atomic_add";
+'GNU FORTRAN: ATOMIC_AND atomically defines ATOM with the bitwise AND between the values of ATOM and VALUE.
+                       case 126: print #1, "atomic_and";
+'GNU FORTRAN: ATOMIC_CAS compares the variable ATOM with the value of COMPARE.
+                      case 127: print #1, "atomic_cas";
+'GNU FORTRAN: ATOMIC_DEFINE defines the variable ATOM with the value VALUE atomically.
+                      case 128: print #1, "atomic_define";
+'GNU FORTRAN: ATOMIC_FETCH_ADD atomically stores the value of ATOM in OLD and adds the value of VAR to the variable ATOM.
+                      case 129: print #1, "atomic_fetch_add";
+'GNU FORTRAN: ATOMIC_FETCH_AND atomically stores the value of ATOM in OLD and defines ATOM with bitwise AND between the 
+'             value of ATOM and VALUE.
+                      case 130: print #1, "atomic_fetch and";
+'GNU FORTRAN: ATOMIC_FETCH_OR atomically stores the value of ATOM in OLD and defines ATOM with the bitwise OR between the
+'             the values of ATOM and VALUE.
+                      case 131: print #1, "atomic_fetch_or";
+'GNU FORTRAN ATOMIC_FETCH_XOR atomically stores the value of ATOM in OLD and defines ATOM with the bitwise XOR between the
+'            the values of ATOM and VALUE.
+                      case 132: print #1, "atomic_fetch_xor";
                      end select
 	       end select                 	       

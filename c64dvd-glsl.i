@@ -520,275 +520,275 @@ struct $14__FB_DATADESC$ {
  void* NODE __attribute__((packed, aligned(1)));
 };
 extern int __$fb_structsizecheck[(sizeof( struct $14__FB_DATADESC$ ) == 10) ? 1 : -1];
-static struct $14__FB_DATADESC$ label$6836[2] = { { (int16)3, (void*)"IND" }, { (int16)-1, (void*)0ull } };
-static struct $14__FB_DATADESC$ label$6834[2] = { { (int16)4, (void*)"INDY" }, { (int16)-1, (void*)label$6836 } };
-static struct $14__FB_DATADESC$ label$6832[2] = { { (int16)4, (void*)"INDX" }, { (int16)-1, (void*)label$6834 } };
-static struct $14__FB_DATADESC$ label$6830[2] = { { (int16)3, (void*)"REL" }, { (int16)-1, (void*)label$6832 } };
-static struct $14__FB_DATADESC$ label$6828[2] = { { (int16)4, (void*)"ABSY" }, { (int16)-1, (void*)label$6830 } };
-static struct $14__FB_DATADESC$ label$6826[2] = { { (int16)4, (void*)"ABSX" }, { (int16)-1, (void*)label$6828 } };
-static struct $14__FB_DATADESC$ label$6824[2] = { { (int16)5, (void*)"ZEROY" }, { (int16)-1, (void*)label$6826 } };
-static struct $14__FB_DATADESC$ label$6822[2] = { { (int16)5, (void*)"ZEROX" }, { (int16)-1, (void*)label$6824 } };
-static struct $14__FB_DATADESC$ label$6820[2] = { { (int16)4, (void*)"ZERO" }, { (int16)-1, (void*)label$6822 } };
-static struct $14__FB_DATADESC$ label$6818[2] = { { (int16)3, (void*)"ABS" }, { (int16)-1, (void*)label$6820 } };
-static struct $14__FB_DATADESC$ label$6816[2] = { { (int16)3, (void*)"IMM" }, { (int16)-1, (void*)label$6818 } };
-static struct $14__FB_DATADESC$ label$6814[2] = { { (int16)3, (void*)"IMP" }, { (int16)-1, (void*)label$6816 } };
-static struct $14__FB_DATADESC$ label$5923[2] = { { (int16)3, (void*)"UNK" }, { (int16)-1, (void*)label$6814 } };
-static struct $14__FB_DATADESC$ label$6812[7] = { { (int16)3, (void*)"255" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$5923 } };
-static struct $14__FB_DATADESC$ label$6810[7] = { { (int16)3, (void*)"254" }, { (int16)3, (void*)"INC" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_INC }, { (int16)-1, (void*)label$6812 } };
-static struct $14__FB_DATADESC$ label$6808[7] = { { (int16)3, (void*)"253" }, { (int16)3, (void*)"SBC" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6810 } };
-static struct $14__FB_DATADESC$ label$6806[7] = { { (int16)3, (void*)"252" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6808 } };
-static struct $14__FB_DATADESC$ label$6804[7] = { { (int16)3, (void*)"251" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6806 } };
-static struct $14__FB_DATADESC$ label$6802[7] = { { (int16)3, (void*)"250" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6804 } };
-static struct $14__FB_DATADESC$ label$6800[7] = { { (int16)3, (void*)"249" }, { (int16)3, (void*)"SBC" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6802 } };
-static struct $14__FB_DATADESC$ label$6798[7] = { { (int16)3, (void*)"248" }, { (int16)3, (void*)"SED" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SED }, { (int16)-1, (void*)label$6800 } };
-static struct $14__FB_DATADESC$ label$6796[7] = { { (int16)3, (void*)"247" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6798 } };
-static struct $14__FB_DATADESC$ label$6794[7] = { { (int16)3, (void*)"246" }, { (int16)3, (void*)"INC" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_INC }, { (int16)-1, (void*)label$6796 } };
-static struct $14__FB_DATADESC$ label$6792[7] = { { (int16)3, (void*)"245" }, { (int16)3, (void*)"SBC" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6794 } };
-static struct $14__FB_DATADESC$ label$6790[7] = { { (int16)3, (void*)"244" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6792 } };
-static struct $14__FB_DATADESC$ label$6788[7] = { { (int16)3, (void*)"243" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6790 } };
-static struct $14__FB_DATADESC$ label$6786[7] = { { (int16)3, (void*)"242" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6788 } };
-static struct $14__FB_DATADESC$ label$6784[7] = { { (int16)3, (void*)"241" }, { (int16)3, (void*)"SBC" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6786 } };
-static struct $14__FB_DATADESC$ label$6782[7] = { { (int16)3, (void*)"240" }, { (int16)3, (void*)"BEQ" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BEQ }, { (int16)-1, (void*)label$6784 } };
-static struct $14__FB_DATADESC$ label$6780[7] = { { (int16)3, (void*)"239" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6782 } };
-static struct $14__FB_DATADESC$ label$6778[7] = { { (int16)3, (void*)"238" }, { (int16)3, (void*)"INC" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_INC }, { (int16)-1, (void*)label$6780 } };
-static struct $14__FB_DATADESC$ label$6776[7] = { { (int16)3, (void*)"237" }, { (int16)3, (void*)"SBC" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6778 } };
-static struct $14__FB_DATADESC$ label$6774[7] = { { (int16)3, (void*)"236" }, { (int16)3, (void*)"CPX" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CPX }, { (int16)-1, (void*)label$6776 } };
-static struct $14__FB_DATADESC$ label$6772[7] = { { (int16)3, (void*)"235" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6774 } };
-static struct $14__FB_DATADESC$ label$6770[7] = { { (int16)3, (void*)"234" }, { (int16)3, (void*)"NOP" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_NOP }, { (int16)-1, (void*)label$6772 } };
-static struct $14__FB_DATADESC$ label$6768[7] = { { (int16)3, (void*)"233" }, { (int16)3, (void*)"SBC" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6770 } };
-static struct $14__FB_DATADESC$ label$6766[7] = { { (int16)3, (void*)"232" }, { (int16)3, (void*)"INX" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_INX }, { (int16)-1, (void*)label$6768 } };
-static struct $14__FB_DATADESC$ label$6764[7] = { { (int16)3, (void*)"231" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6766 } };
-static struct $14__FB_DATADESC$ label$6762[7] = { { (int16)3, (void*)"230" }, { (int16)3, (void*)"INC" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_INC }, { (int16)-1, (void*)label$6764 } };
-static struct $14__FB_DATADESC$ label$6760[7] = { { (int16)3, (void*)"229" }, { (int16)3, (void*)"SBC" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6762 } };
-static struct $14__FB_DATADESC$ label$6758[7] = { { (int16)3, (void*)"228" }, { (int16)3, (void*)"CPX" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CPX }, { (int16)-1, (void*)label$6760 } };
-static struct $14__FB_DATADESC$ label$6756[7] = { { (int16)3, (void*)"227" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6758 } };
-static struct $14__FB_DATADESC$ label$6754[7] = { { (int16)3, (void*)"226" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6756 } };
-static struct $14__FB_DATADESC$ label$6752[7] = { { (int16)3, (void*)"225" }, { (int16)3, (void*)"SBC" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6754 } };
-static struct $14__FB_DATADESC$ label$6750[7] = { { (int16)3, (void*)"224" }, { (int16)3, (void*)"CPX" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CPX }, { (int16)-1, (void*)label$6752 } };
-static struct $14__FB_DATADESC$ label$6748[7] = { { (int16)3, (void*)"223" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6750 } };
-static struct $14__FB_DATADESC$ label$6746[7] = { { (int16)3, (void*)"222" }, { (int16)3, (void*)"DEC" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_DEC }, { (int16)-1, (void*)label$6748 } };
-static struct $14__FB_DATADESC$ label$6744[7] = { { (int16)3, (void*)"221" }, { (int16)3, (void*)"CMP" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6746 } };
-static struct $14__FB_DATADESC$ label$6742[7] = { { (int16)3, (void*)"220" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6744 } };
-static struct $14__FB_DATADESC$ label$6740[7] = { { (int16)3, (void*)"219" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6742 } };
-static struct $14__FB_DATADESC$ label$6738[7] = { { (int16)3, (void*)"218" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6740 } };
-static struct $14__FB_DATADESC$ label$6736[7] = { { (int16)3, (void*)"217" }, { (int16)3, (void*)"CMP" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6738 } };
-static struct $14__FB_DATADESC$ label$6734[7] = { { (int16)3, (void*)"216" }, { (int16)3, (void*)"CLD" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CLD }, { (int16)-1, (void*)label$6736 } };
-static struct $14__FB_DATADESC$ label$6732[7] = { { (int16)3, (void*)"215" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6734 } };
-static struct $14__FB_DATADESC$ label$6730[7] = { { (int16)3, (void*)"214" }, { (int16)3, (void*)"DEC" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_DEC }, { (int16)-1, (void*)label$6732 } };
-static struct $14__FB_DATADESC$ label$6728[7] = { { (int16)3, (void*)"213" }, { (int16)3, (void*)"CMP" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6730 } };
-static struct $14__FB_DATADESC$ label$6726[7] = { { (int16)3, (void*)"212" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6728 } };
-static struct $14__FB_DATADESC$ label$6724[7] = { { (int16)3, (void*)"211" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6726 } };
-static struct $14__FB_DATADESC$ label$6722[7] = { { (int16)3, (void*)"210" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6724 } };
-static struct $14__FB_DATADESC$ label$6720[7] = { { (int16)3, (void*)"209" }, { (int16)3, (void*)"CMP" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6722 } };
-static struct $14__FB_DATADESC$ label$6718[7] = { { (int16)3, (void*)"208" }, { (int16)3, (void*)"BNE" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BNE }, { (int16)-1, (void*)label$6720 } };
-static struct $14__FB_DATADESC$ label$6716[7] = { { (int16)3, (void*)"207" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6718 } };
-static struct $14__FB_DATADESC$ label$6714[7] = { { (int16)3, (void*)"206" }, { (int16)3, (void*)"DEC" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_DEC }, { (int16)-1, (void*)label$6716 } };
-static struct $14__FB_DATADESC$ label$6712[7] = { { (int16)3, (void*)"205" }, { (int16)3, (void*)"CMP" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6714 } };
-static struct $14__FB_DATADESC$ label$6710[7] = { { (int16)3, (void*)"204" }, { (int16)3, (void*)"CPY" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CPY }, { (int16)-1, (void*)label$6712 } };
-static struct $14__FB_DATADESC$ label$6708[7] = { { (int16)3, (void*)"203" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6710 } };
-static struct $14__FB_DATADESC$ label$6706[7] = { { (int16)3, (void*)"202" }, { (int16)3, (void*)"DEX" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_DEX }, { (int16)-1, (void*)label$6708 } };
-static struct $14__FB_DATADESC$ label$6704[7] = { { (int16)3, (void*)"201" }, { (int16)3, (void*)"CMP" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6706 } };
-static struct $14__FB_DATADESC$ label$6702[7] = { { (int16)3, (void*)"200" }, { (int16)3, (void*)"INY" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_INY }, { (int16)-1, (void*)label$6704 } };
-static struct $14__FB_DATADESC$ label$6700[7] = { { (int16)3, (void*)"199" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6702 } };
-static struct $14__FB_DATADESC$ label$6698[7] = { { (int16)3, (void*)"198" }, { (int16)3, (void*)"DEC" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_DEC }, { (int16)-1, (void*)label$6700 } };
-static struct $14__FB_DATADESC$ label$6696[7] = { { (int16)3, (void*)"197" }, { (int16)3, (void*)"CMP" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6698 } };
-static struct $14__FB_DATADESC$ label$6694[7] = { { (int16)3, (void*)"196" }, { (int16)3, (void*)"CPY" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CPY }, { (int16)-1, (void*)label$6696 } };
-static struct $14__FB_DATADESC$ label$6692[7] = { { (int16)3, (void*)"195" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6694 } };
-static struct $14__FB_DATADESC$ label$6690[7] = { { (int16)3, (void*)"194" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6692 } };
-static struct $14__FB_DATADESC$ label$6688[7] = { { (int16)3, (void*)"193" }, { (int16)3, (void*)"CMP" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6690 } };
-static struct $14__FB_DATADESC$ label$6686[7] = { { (int16)3, (void*)"192" }, { (int16)3, (void*)"CPY" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CPY }, { (int16)-1, (void*)label$6688 } };
-static struct $14__FB_DATADESC$ label$6684[7] = { { (int16)3, (void*)"191" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6686 } };
-static struct $14__FB_DATADESC$ label$6682[7] = { { (int16)3, (void*)"190" }, { (int16)3, (void*)"LDX" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDX }, { (int16)-1, (void*)label$6684 } };
-static struct $14__FB_DATADESC$ label$6680[7] = { { (int16)3, (void*)"189" }, { (int16)3, (void*)"LDA" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6682 } };
-static struct $14__FB_DATADESC$ label$6678[7] = { { (int16)3, (void*)"188" }, { (int16)3, (void*)"LDY" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDY }, { (int16)-1, (void*)label$6680 } };
-static struct $14__FB_DATADESC$ label$6676[7] = { { (int16)3, (void*)"187" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6678 } };
-static struct $14__FB_DATADESC$ label$6674[7] = { { (int16)3, (void*)"186" }, { (int16)3, (void*)"TSX" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_TSX }, { (int16)-1, (void*)label$6676 } };
-static struct $14__FB_DATADESC$ label$6672[7] = { { (int16)3, (void*)"185" }, { (int16)3, (void*)"LDA" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6674 } };
-static struct $14__FB_DATADESC$ label$6670[7] = { { (int16)3, (void*)"184" }, { (int16)3, (void*)"CLV" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CLV }, { (int16)-1, (void*)label$6672 } };
-static struct $14__FB_DATADESC$ label$6668[7] = { { (int16)3, (void*)"183" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6670 } };
-static struct $14__FB_DATADESC$ label$6666[7] = { { (int16)3, (void*)"182" }, { (int16)3, (void*)"LDX" }, { (int16)1, (void*)"6" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDX }, { (int16)-1, (void*)label$6668 } };
-static struct $14__FB_DATADESC$ label$6664[7] = { { (int16)3, (void*)"181" }, { (int16)3, (void*)"LDA" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6666 } };
-static struct $14__FB_DATADESC$ label$6662[7] = { { (int16)3, (void*)"180" }, { (int16)3, (void*)"LDY" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDY }, { (int16)-1, (void*)label$6664 } };
-static struct $14__FB_DATADESC$ label$6660[7] = { { (int16)3, (void*)"179" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6662 } };
-static struct $14__FB_DATADESC$ label$6658[7] = { { (int16)3, (void*)"178" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6660 } };
-static struct $14__FB_DATADESC$ label$6656[7] = { { (int16)3, (void*)"177" }, { (int16)3, (void*)"LDA" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6658 } };
-static struct $14__FB_DATADESC$ label$6654[7] = { { (int16)3, (void*)"176" }, { (int16)3, (void*)"BCS" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BCS }, { (int16)-1, (void*)label$6656 } };
-static struct $14__FB_DATADESC$ label$6652[7] = { { (int16)3, (void*)"175" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6654 } };
-static struct $14__FB_DATADESC$ label$6650[7] = { { (int16)3, (void*)"174" }, { (int16)3, (void*)"LDX" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDX }, { (int16)-1, (void*)label$6652 } };
-static struct $14__FB_DATADESC$ label$6648[7] = { { (int16)3, (void*)"173" }, { (int16)3, (void*)"LDA" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6650 } };
-static struct $14__FB_DATADESC$ label$6646[7] = { { (int16)3, (void*)"172" }, { (int16)3, (void*)"LDY" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDY }, { (int16)-1, (void*)label$6648 } };
-static struct $14__FB_DATADESC$ label$6644[7] = { { (int16)3, (void*)"171" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6646 } };
-static struct $14__FB_DATADESC$ label$6642[7] = { { (int16)3, (void*)"170" }, { (int16)3, (void*)"TAX" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_TAX }, { (int16)-1, (void*)label$6644 } };
-static struct $14__FB_DATADESC$ label$6640[7] = { { (int16)3, (void*)"169" }, { (int16)3, (void*)"LDA" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6642 } };
-static struct $14__FB_DATADESC$ label$6638[7] = { { (int16)3, (void*)"168" }, { (int16)3, (void*)"TAY" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_TAY }, { (int16)-1, (void*)label$6640 } };
-static struct $14__FB_DATADESC$ label$6636[7] = { { (int16)3, (void*)"167" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6638 } };
-static struct $14__FB_DATADESC$ label$6634[7] = { { (int16)3, (void*)"166" }, { (int16)3, (void*)"LDX" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDX }, { (int16)-1, (void*)label$6636 } };
-static struct $14__FB_DATADESC$ label$6632[7] = { { (int16)3, (void*)"165" }, { (int16)3, (void*)"LDA" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6634 } };
-static struct $14__FB_DATADESC$ label$6630[7] = { { (int16)3, (void*)"164" }, { (int16)3, (void*)"LDY" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDY }, { (int16)-1, (void*)label$6632 } };
-static struct $14__FB_DATADESC$ label$6628[7] = { { (int16)3, (void*)"163" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6630 } };
-static struct $14__FB_DATADESC$ label$6626[7] = { { (int16)3, (void*)"162" }, { (int16)3, (void*)"LDX" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDX }, { (int16)-1, (void*)label$6628 } };
-static struct $14__FB_DATADESC$ label$6624[7] = { { (int16)3, (void*)"161" }, { (int16)3, (void*)"LDA" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6626 } };
-static struct $14__FB_DATADESC$ label$6622[7] = { { (int16)3, (void*)"160" }, { (int16)3, (void*)"LDY" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDY }, { (int16)-1, (void*)label$6624 } };
-static struct $14__FB_DATADESC$ label$6620[7] = { { (int16)3, (void*)"159" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6622 } };
-static struct $14__FB_DATADESC$ label$6618[7] = { { (int16)3, (void*)"158" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6620 } };
-static struct $14__FB_DATADESC$ label$6616[7] = { { (int16)3, (void*)"157" }, { (int16)3, (void*)"STA" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STA }, { (int16)-1, (void*)label$6618 } };
-static struct $14__FB_DATADESC$ label$6614[7] = { { (int16)3, (void*)"156" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6616 } };
-static struct $14__FB_DATADESC$ label$6612[7] = { { (int16)3, (void*)"155" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6614 } };
-static struct $14__FB_DATADESC$ label$6610[7] = { { (int16)3, (void*)"154" }, { (int16)3, (void*)"TXS" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_TXS }, { (int16)-1, (void*)label$6612 } };
-static struct $14__FB_DATADESC$ label$6608[7] = { { (int16)3, (void*)"153" }, { (int16)3, (void*)"STA" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STA }, { (int16)-1, (void*)label$6610 } };
-static struct $14__FB_DATADESC$ label$6606[7] = { { (int16)3, (void*)"152" }, { (int16)3, (void*)"TYA" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_TYA }, { (int16)-1, (void*)label$6608 } };
-static struct $14__FB_DATADESC$ label$6604[7] = { { (int16)3, (void*)"151" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6606 } };
-static struct $14__FB_DATADESC$ label$6602[7] = { { (int16)3, (void*)"150" }, { (int16)3, (void*)"STX" }, { (int16)1, (void*)"6" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STX }, { (int16)-1, (void*)label$6604 } };
-static struct $14__FB_DATADESC$ label$6600[7] = { { (int16)3, (void*)"149" }, { (int16)3, (void*)"STA" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STA }, { (int16)-1, (void*)label$6602 } };
-static struct $14__FB_DATADESC$ label$6598[7] = { { (int16)3, (void*)"148" }, { (int16)3, (void*)"STY" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STY }, { (int16)-1, (void*)label$6600 } };
-static struct $14__FB_DATADESC$ label$6596[7] = { { (int16)3, (void*)"147" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6598 } };
-static struct $14__FB_DATADESC$ label$6594[7] = { { (int16)3, (void*)"146" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6596 } };
-static struct $14__FB_DATADESC$ label$6592[7] = { { (int16)3, (void*)"145" }, { (int16)3, (void*)"STA" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STA }, { (int16)-1, (void*)label$6594 } };
-static struct $14__FB_DATADESC$ label$6590[7] = { { (int16)3, (void*)"144" }, { (int16)3, (void*)"BCC" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BCC }, { (int16)-1, (void*)label$6592 } };
-static struct $14__FB_DATADESC$ label$6588[7] = { { (int16)3, (void*)"143" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6590 } };
-static struct $14__FB_DATADESC$ label$6586[7] = { { (int16)3, (void*)"142" }, { (int16)3, (void*)"STX" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STX }, { (int16)-1, (void*)label$6588 } };
-static struct $14__FB_DATADESC$ label$6584[7] = { { (int16)3, (void*)"141" }, { (int16)3, (void*)"STA" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STA }, { (int16)-1, (void*)label$6586 } };
-static struct $14__FB_DATADESC$ label$6582[7] = { { (int16)3, (void*)"140" }, { (int16)3, (void*)"STY" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STY }, { (int16)-1, (void*)label$6584 } };
-static struct $14__FB_DATADESC$ label$6580[7] = { { (int16)3, (void*)"139" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6582 } };
-static struct $14__FB_DATADESC$ label$6578[7] = { { (int16)3, (void*)"138" }, { (int16)3, (void*)"TXA" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_TXA }, { (int16)-1, (void*)label$6580 } };
-static struct $14__FB_DATADESC$ label$6576[7] = { { (int16)3, (void*)"137" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6578 } };
-static struct $14__FB_DATADESC$ label$6574[7] = { { (int16)3, (void*)"136" }, { (int16)3, (void*)"DEY" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_DEY }, { (int16)-1, (void*)label$6576 } };
-static struct $14__FB_DATADESC$ label$6572[7] = { { (int16)3, (void*)"135" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6574 } };
-static struct $14__FB_DATADESC$ label$6570[7] = { { (int16)3, (void*)"134" }, { (int16)3, (void*)"STX" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STX }, { (int16)-1, (void*)label$6572 } };
-static struct $14__FB_DATADESC$ label$6568[7] = { { (int16)3, (void*)"133" }, { (int16)3, (void*)"STA" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STA }, { (int16)-1, (void*)label$6570 } };
-static struct $14__FB_DATADESC$ label$6566[7] = { { (int16)3, (void*)"132" }, { (int16)3, (void*)"STY" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STY }, { (int16)-1, (void*)label$6568 } };
-static struct $14__FB_DATADESC$ label$6564[7] = { { (int16)3, (void*)"131" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6566 } };
-static struct $14__FB_DATADESC$ label$6562[7] = { { (int16)3, (void*)"130" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6564 } };
-static struct $14__FB_DATADESC$ label$6560[7] = { { (int16)3, (void*)"129" }, { (int16)3, (void*)"STA" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STA }, { (int16)-1, (void*)label$6562 } };
-static struct $14__FB_DATADESC$ label$6558[7] = { { (int16)3, (void*)"128" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6560 } };
-static struct $14__FB_DATADESC$ label$6556[7] = { { (int16)3, (void*)"127" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6558 } };
-static struct $14__FB_DATADESC$ label$6554[7] = { { (int16)3, (void*)"126" }, { (int16)3, (void*)"ROR" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROR }, { (int16)-1, (void*)label$6556 } };
-static struct $14__FB_DATADESC$ label$6552[7] = { { (int16)3, (void*)"125" }, { (int16)3, (void*)"ADC" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6554 } };
-static struct $14__FB_DATADESC$ label$6550[7] = { { (int16)3, (void*)"124" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6552 } };
-static struct $14__FB_DATADESC$ label$6548[7] = { { (int16)3, (void*)"123" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6550 } };
-static struct $14__FB_DATADESC$ label$6546[7] = { { (int16)3, (void*)"122" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6548 } };
-static struct $14__FB_DATADESC$ label$6544[7] = { { (int16)3, (void*)"121" }, { (int16)3, (void*)"ADC" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6546 } };
-static struct $14__FB_DATADESC$ label$6542[7] = { { (int16)3, (void*)"120" }, { (int16)3, (void*)"SEI" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SEI }, { (int16)-1, (void*)label$6544 } };
-static struct $14__FB_DATADESC$ label$6540[7] = { { (int16)3, (void*)"119" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6542 } };
-static struct $14__FB_DATADESC$ label$6538[7] = { { (int16)3, (void*)"118" }, { (int16)3, (void*)"ROR" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROR }, { (int16)-1, (void*)label$6540 } };
-static struct $14__FB_DATADESC$ label$6536[7] = { { (int16)3, (void*)"117" }, { (int16)3, (void*)"ADC" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6538 } };
-static struct $14__FB_DATADESC$ label$6534[7] = { { (int16)3, (void*)"116" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6536 } };
-static struct $14__FB_DATADESC$ label$6532[7] = { { (int16)3, (void*)"115" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6534 } };
-static struct $14__FB_DATADESC$ label$6530[7] = { { (int16)3, (void*)"114" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6532 } };
-static struct $14__FB_DATADESC$ label$6528[7] = { { (int16)3, (void*)"113" }, { (int16)3, (void*)"ADC" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6530 } };
-static struct $14__FB_DATADESC$ label$6526[7] = { { (int16)3, (void*)"112" }, { (int16)3, (void*)"BVS" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BVS }, { (int16)-1, (void*)label$6528 } };
-static struct $14__FB_DATADESC$ label$6524[7] = { { (int16)3, (void*)"111" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6526 } };
-static struct $14__FB_DATADESC$ label$6522[7] = { { (int16)3, (void*)"110" }, { (int16)3, (void*)"ROR" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROR }, { (int16)-1, (void*)label$6524 } };
-static struct $14__FB_DATADESC$ label$6520[7] = { { (int16)3, (void*)"109" }, { (int16)3, (void*)"ADC" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6522 } };
-static struct $14__FB_DATADESC$ label$6518[7] = { { (int16)3, (void*)"108" }, { (int16)3, (void*)"JMP" }, { (int16)2, (void*)"12" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_JMP }, { (int16)-1, (void*)label$6520 } };
-static struct $14__FB_DATADESC$ label$6516[7] = { { (int16)3, (void*)"107" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6518 } };
-static struct $14__FB_DATADESC$ label$6514[7] = { { (int16)3, (void*)"106" }, { (int16)3, (void*)"ROR" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_RORA }, { (int16)-1, (void*)label$6516 } };
-static struct $14__FB_DATADESC$ label$6512[7] = { { (int16)3, (void*)"105" }, { (int16)3, (void*)"ADC" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6514 } };
-static struct $14__FB_DATADESC$ label$6510[7] = { { (int16)3, (void*)"104" }, { (int16)3, (void*)"PLA" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_PLA }, { (int16)-1, (void*)label$6512 } };
-static struct $14__FB_DATADESC$ label$6508[7] = { { (int16)3, (void*)"103" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6510 } };
-static struct $14__FB_DATADESC$ label$6506[7] = { { (int16)3, (void*)"102" }, { (int16)3, (void*)"ROR" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROR }, { (int16)-1, (void*)label$6508 } };
-static struct $14__FB_DATADESC$ label$6504[7] = { { (int16)3, (void*)"101" }, { (int16)3, (void*)"ADC" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6506 } };
-static struct $14__FB_DATADESC$ label$6502[7] = { { (int16)3, (void*)"100" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6504 } };
-static struct $14__FB_DATADESC$ label$6500[7] = { { (int16)2, (void*)"99" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6502 } };
-static struct $14__FB_DATADESC$ label$6498[7] = { { (int16)2, (void*)"98" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6500 } };
-static struct $14__FB_DATADESC$ label$6496[7] = { { (int16)2, (void*)"97" }, { (int16)3, (void*)"ADC" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6498 } };
-static struct $14__FB_DATADESC$ label$6494[7] = { { (int16)2, (void*)"96" }, { (int16)3, (void*)"RTS" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_RTS }, { (int16)-1, (void*)label$6496 } };
-static struct $14__FB_DATADESC$ label$6492[7] = { { (int16)2, (void*)"95" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6494 } };
-static struct $14__FB_DATADESC$ label$6490[7] = { { (int16)2, (void*)"94" }, { (int16)3, (void*)"LSR" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LSR }, { (int16)-1, (void*)label$6492 } };
-static struct $14__FB_DATADESC$ label$6488[7] = { { (int16)2, (void*)"93" }, { (int16)3, (void*)"EOR" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6490 } };
-static struct $14__FB_DATADESC$ label$6486[7] = { { (int16)2, (void*)"92" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6488 } };
-static struct $14__FB_DATADESC$ label$6484[7] = { { (int16)2, (void*)"91" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6486 } };
-static struct $14__FB_DATADESC$ label$6482[7] = { { (int16)2, (void*)"90" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6484 } };
-static struct $14__FB_DATADESC$ label$6480[7] = { { (int16)2, (void*)"89" }, { (int16)3, (void*)"EOR" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6482 } };
-static struct $14__FB_DATADESC$ label$6478[7] = { { (int16)2, (void*)"88" }, { (int16)3, (void*)"CLI" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CLI }, { (int16)-1, (void*)label$6480 } };
-static struct $14__FB_DATADESC$ label$6476[7] = { { (int16)2, (void*)"87" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6478 } };
-static struct $14__FB_DATADESC$ label$6474[7] = { { (int16)2, (void*)"86" }, { (int16)3, (void*)"LSR" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LSR }, { (int16)-1, (void*)label$6476 } };
-static struct $14__FB_DATADESC$ label$6472[7] = { { (int16)2, (void*)"85" }, { (int16)3, (void*)"EOR" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6474 } };
-static struct $14__FB_DATADESC$ label$6470[7] = { { (int16)2, (void*)"84" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6472 } };
-static struct $14__FB_DATADESC$ label$6468[7] = { { (int16)2, (void*)"83" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6470 } };
-static struct $14__FB_DATADESC$ label$6466[7] = { { (int16)2, (void*)"82" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6468 } };
-static struct $14__FB_DATADESC$ label$6464[7] = { { (int16)2, (void*)"81" }, { (int16)3, (void*)"EOR" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6466 } };
-static struct $14__FB_DATADESC$ label$6462[7] = { { (int16)2, (void*)"80" }, { (int16)3, (void*)"BVC" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BVC }, { (int16)-1, (void*)label$6464 } };
-static struct $14__FB_DATADESC$ label$6460[7] = { { (int16)2, (void*)"79" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6462 } };
-static struct $14__FB_DATADESC$ label$6458[7] = { { (int16)2, (void*)"78" }, { (int16)3, (void*)"LSR" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LSR }, { (int16)-1, (void*)label$6460 } };
-static struct $14__FB_DATADESC$ label$6456[7] = { { (int16)2, (void*)"77" }, { (int16)3, (void*)"EOR" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6458 } };
-static struct $14__FB_DATADESC$ label$6454[7] = { { (int16)2, (void*)"76" }, { (int16)3, (void*)"JMP" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_JMP }, { (int16)-1, (void*)label$6456 } };
-static struct $14__FB_DATADESC$ label$6452[7] = { { (int16)2, (void*)"75" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6454 } };
-static struct $14__FB_DATADESC$ label$6450[7] = { { (int16)2, (void*)"74" }, { (int16)3, (void*)"LSR" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LSRA }, { (int16)-1, (void*)label$6452 } };
-static struct $14__FB_DATADESC$ label$6448[7] = { { (int16)2, (void*)"73" }, { (int16)3, (void*)"EOR" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6450 } };
-static struct $14__FB_DATADESC$ label$6446[7] = { { (int16)2, (void*)"72" }, { (int16)3, (void*)"PHA" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_PHA }, { (int16)-1, (void*)label$6448 } };
-static struct $14__FB_DATADESC$ label$6444[7] = { { (int16)2, (void*)"71" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6446 } };
-static struct $14__FB_DATADESC$ label$6442[7] = { { (int16)2, (void*)"70" }, { (int16)3, (void*)"LSR" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LSR }, { (int16)-1, (void*)label$6444 } };
-static struct $14__FB_DATADESC$ label$6440[7] = { { (int16)2, (void*)"69" }, { (int16)3, (void*)"EOR" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6442 } };
-static struct $14__FB_DATADESC$ label$6438[7] = { { (int16)2, (void*)"68" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6440 } };
-static struct $14__FB_DATADESC$ label$6436[7] = { { (int16)2, (void*)"67" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6438 } };
-static struct $14__FB_DATADESC$ label$6434[7] = { { (int16)2, (void*)"66" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6436 } };
-static struct $14__FB_DATADESC$ label$6432[7] = { { (int16)2, (void*)"65" }, { (int16)3, (void*)"EOR" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6434 } };
-static struct $14__FB_DATADESC$ label$6430[7] = { { (int16)2, (void*)"64" }, { (int16)3, (void*)"RTI" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_RTI }, { (int16)-1, (void*)label$6432 } };
-static struct $14__FB_DATADESC$ label$6428[7] = { { (int16)2, (void*)"63" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6430 } };
-static struct $14__FB_DATADESC$ label$6426[7] = { { (int16)2, (void*)"62" }, { (int16)3, (void*)"ROL" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROL }, { (int16)-1, (void*)label$6428 } };
-static struct $14__FB_DATADESC$ label$6424[7] = { { (int16)2, (void*)"61" }, { (int16)3, (void*)"AND" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6426 } };
-static struct $14__FB_DATADESC$ label$6422[7] = { { (int16)2, (void*)"60" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6424 } };
-static struct $14__FB_DATADESC$ label$6420[7] = { { (int16)2, (void*)"59" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6422 } };
-static struct $14__FB_DATADESC$ label$6418[7] = { { (int16)2, (void*)"58" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6420 } };
-static struct $14__FB_DATADESC$ label$6416[7] = { { (int16)2, (void*)"57" }, { (int16)3, (void*)"AND" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6418 } };
-static struct $14__FB_DATADESC$ label$6414[7] = { { (int16)2, (void*)"56" }, { (int16)3, (void*)"SEC" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SEC }, { (int16)-1, (void*)label$6416 } };
-static struct $14__FB_DATADESC$ label$6412[7] = { { (int16)2, (void*)"55" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6414 } };
-static struct $14__FB_DATADESC$ label$6410[7] = { { (int16)2, (void*)"54" }, { (int16)3, (void*)"ROL" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROL }, { (int16)-1, (void*)label$6412 } };
-static struct $14__FB_DATADESC$ label$6408[7] = { { (int16)2, (void*)"53" }, { (int16)3, (void*)"AND" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6410 } };
-static struct $14__FB_DATADESC$ label$6406[7] = { { (int16)2, (void*)"52" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6408 } };
-static struct $14__FB_DATADESC$ label$6404[7] = { { (int16)2, (void*)"51" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6406 } };
-static struct $14__FB_DATADESC$ label$6402[7] = { { (int16)2, (void*)"50" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6404 } };
-static struct $14__FB_DATADESC$ label$6400[7] = { { (int16)2, (void*)"49" }, { (int16)3, (void*)"AND" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6402 } };
-static struct $14__FB_DATADESC$ label$6398[7] = { { (int16)2, (void*)"48" }, { (int16)3, (void*)"BMI" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BMI }, { (int16)-1, (void*)label$6400 } };
-static struct $14__FB_DATADESC$ label$6396[7] = { { (int16)2, (void*)"47" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6398 } };
-static struct $14__FB_DATADESC$ label$6394[7] = { { (int16)2, (void*)"46" }, { (int16)3, (void*)"ROL" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROL }, { (int16)-1, (void*)label$6396 } };
-static struct $14__FB_DATADESC$ label$6392[7] = { { (int16)2, (void*)"45" }, { (int16)3, (void*)"AND" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6394 } };
-static struct $14__FB_DATADESC$ label$6390[7] = { { (int16)2, (void*)"44" }, { (int16)3, (void*)"BIT" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BIT }, { (int16)-1, (void*)label$6392 } };
-static struct $14__FB_DATADESC$ label$6388[7] = { { (int16)2, (void*)"43" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6390 } };
-static struct $14__FB_DATADESC$ label$6386[7] = { { (int16)2, (void*)"42" }, { (int16)3, (void*)"ROL" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROLA }, { (int16)-1, (void*)label$6388 } };
-static struct $14__FB_DATADESC$ label$6384[7] = { { (int16)2, (void*)"41" }, { (int16)3, (void*)"AND" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6386 } };
-static struct $14__FB_DATADESC$ label$6382[7] = { { (int16)2, (void*)"40" }, { (int16)3, (void*)"PLP" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_PLP }, { (int16)-1, (void*)label$6384 } };
-static struct $14__FB_DATADESC$ label$6380[7] = { { (int16)2, (void*)"39" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6382 } };
-static struct $14__FB_DATADESC$ label$6378[7] = { { (int16)2, (void*)"38" }, { (int16)3, (void*)"ROL" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROL }, { (int16)-1, (void*)label$6380 } };
-static struct $14__FB_DATADESC$ label$6376[7] = { { (int16)2, (void*)"37" }, { (int16)3, (void*)"AND" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6378 } };
-static struct $14__FB_DATADESC$ label$6374[7] = { { (int16)2, (void*)"36" }, { (int16)3, (void*)"BIT" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BIT }, { (int16)-1, (void*)label$6376 } };
-static struct $14__FB_DATADESC$ label$6372[7] = { { (int16)2, (void*)"35" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6374 } };
-static struct $14__FB_DATADESC$ label$6370[7] = { { (int16)2, (void*)"34" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6372 } };
-static struct $14__FB_DATADESC$ label$6368[7] = { { (int16)2, (void*)"33" }, { (int16)3, (void*)"AND" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6370 } };
-static struct $14__FB_DATADESC$ label$6366[7] = { { (int16)2, (void*)"32" }, { (int16)3, (void*)"JSR" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_JSR }, { (int16)-1, (void*)label$6368 } };
-static struct $14__FB_DATADESC$ label$6364[7] = { { (int16)2, (void*)"31" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6366 } };
-static struct $14__FB_DATADESC$ label$6362[7] = { { (int16)2, (void*)"30" }, { (int16)3, (void*)"ASL" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ASL }, { (int16)-1, (void*)label$6364 } };
-static struct $14__FB_DATADESC$ label$6360[7] = { { (int16)2, (void*)"29" }, { (int16)3, (void*)"ORA" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6362 } };
-static struct $14__FB_DATADESC$ label$6358[7] = { { (int16)2, (void*)"28" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6360 } };
-static struct $14__FB_DATADESC$ label$6356[7] = { { (int16)2, (void*)"27" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6358 } };
-static struct $14__FB_DATADESC$ label$6354[7] = { { (int16)2, (void*)"26" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6356 } };
-static struct $14__FB_DATADESC$ label$6352[7] = { { (int16)2, (void*)"25" }, { (int16)3, (void*)"ORA" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6354 } };
-static struct $14__FB_DATADESC$ label$6350[7] = { { (int16)2, (void*)"24" }, { (int16)3, (void*)"CLC" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CLC }, { (int16)-1, (void*)label$6352 } };
-static struct $14__FB_DATADESC$ label$6348[7] = { { (int16)2, (void*)"23" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6350 } };
-static struct $14__FB_DATADESC$ label$6346[7] = { { (int16)2, (void*)"22" }, { (int16)3, (void*)"ASL" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ASL }, { (int16)-1, (void*)label$6348 } };
-static struct $14__FB_DATADESC$ label$6344[7] = { { (int16)2, (void*)"21" }, { (int16)3, (void*)"ORA" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6346 } };
-static struct $14__FB_DATADESC$ label$6342[7] = { { (int16)2, (void*)"20" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6344 } };
-static struct $14__FB_DATADESC$ label$6340[7] = { { (int16)2, (void*)"19" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6342 } };
-static struct $14__FB_DATADESC$ label$6338[7] = { { (int16)2, (void*)"18" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6340 } };
-static struct $14__FB_DATADESC$ label$6336[7] = { { (int16)2, (void*)"17" }, { (int16)3, (void*)"ORA" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6338 } };
-static struct $14__FB_DATADESC$ label$6334[7] = { { (int16)2, (void*)"16" }, { (int16)3, (void*)"BPL" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BPL }, { (int16)-1, (void*)label$6336 } };
-static struct $14__FB_DATADESC$ label$6332[7] = { { (int16)2, (void*)"15" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6334 } };
-static struct $14__FB_DATADESC$ label$6330[7] = { { (int16)2, (void*)"14" }, { (int16)3, (void*)"ASL" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ASL }, { (int16)-1, (void*)label$6332 } };
-static struct $14__FB_DATADESC$ label$6328[7] = { { (int16)2, (void*)"13" }, { (int16)3, (void*)"ORA" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"3" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6330 } };
-static struct $14__FB_DATADESC$ label$6326[7] = { { (int16)2, (void*)"12" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6328 } };
-static struct $14__FB_DATADESC$ label$6324[7] = { { (int16)2, (void*)"11" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6326 } };
-static struct $14__FB_DATADESC$ label$6322[7] = { { (int16)2, (void*)"10" }, { (int16)3, (void*)"ASL" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"1" }, { (int16)-2, (void*)&INS_ASLA }, { (int16)-1, (void*)label$6324 } };
-static struct $14__FB_DATADESC$ label$6320[7] = { { (int16)1, (void*)"9" }, { (int16)3, (void*)"ORA" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"2" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6322 } };
-static struct $14__FB_DATADESC$ label$6318[7] = { { (int16)1, (void*)"8" }, { (int16)3, (void*)"PHP" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"1" }, { (int16)-2, (void*)&INS_PHP }, { (int16)-1, (void*)label$6320 } };
-static struct $14__FB_DATADESC$ label$6316[7] = { { (int16)1, (void*)"7" }, { (int16)3, (void*)"W64" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_W64 }, { (int16)-1, (void*)label$6318 } };
-static struct $14__FB_DATADESC$ label$6314[7] = { { (int16)1, (void*)"6" }, { (int16)3, (void*)"ASL" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ASL }, { (int16)-1, (void*)label$6316 } };
-static struct $14__FB_DATADESC$ label$6312[7] = { { (int16)1, (void*)"5" }, { (int16)3, (void*)"ORA" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"2" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6314 } };
-static struct $14__FB_DATADESC$ label$6310[7] = { { (int16)1, (void*)"4" }, { (int16)3, (void*)"R64" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_R64 }, { (int16)-1, (void*)label$6312 } };
-static struct $14__FB_DATADESC$ label$6308[7] = { { (int16)1, (void*)"3" }, { (int16)3, (void*)"W32" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_W32 }, { (int16)-1, (void*)label$6310 } };
-static struct $14__FB_DATADESC$ label$6306[7] = { { (int16)1, (void*)"2" }, { (int16)3, (void*)"R32" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_R32 }, { (int16)-1, (void*)label$6308 } };
-static struct $14__FB_DATADESC$ label$6304[7] = { { (int16)1, (void*)"1" }, { (int16)3, (void*)"ORA" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"6" }, { (int16)1, (void*)"2" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6306 } };
-static struct $14__FB_DATADESC$ label$5917[7] = { { (int16)1, (void*)"0" }, { (int16)3, (void*)"BRK" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BRK }, { (int16)-1, (void*)label$6304 } };
+static struct $14__FB_DATADESC$ label$6860[2] = { { (int16)3, (void*)"IND" }, { (int16)-1, (void*)0ull } };
+static struct $14__FB_DATADESC$ label$6858[2] = { { (int16)4, (void*)"INDY" }, { (int16)-1, (void*)label$6860 } };
+static struct $14__FB_DATADESC$ label$6856[2] = { { (int16)4, (void*)"INDX" }, { (int16)-1, (void*)label$6858 } };
+static struct $14__FB_DATADESC$ label$6854[2] = { { (int16)3, (void*)"REL" }, { (int16)-1, (void*)label$6856 } };
+static struct $14__FB_DATADESC$ label$6852[2] = { { (int16)4, (void*)"ABSY" }, { (int16)-1, (void*)label$6854 } };
+static struct $14__FB_DATADESC$ label$6850[2] = { { (int16)4, (void*)"ABSX" }, { (int16)-1, (void*)label$6852 } };
+static struct $14__FB_DATADESC$ label$6848[2] = { { (int16)5, (void*)"ZEROY" }, { (int16)-1, (void*)label$6850 } };
+static struct $14__FB_DATADESC$ label$6846[2] = { { (int16)5, (void*)"ZEROX" }, { (int16)-1, (void*)label$6848 } };
+static struct $14__FB_DATADESC$ label$6844[2] = { { (int16)4, (void*)"ZERO" }, { (int16)-1, (void*)label$6846 } };
+static struct $14__FB_DATADESC$ label$6842[2] = { { (int16)3, (void*)"ABS" }, { (int16)-1, (void*)label$6844 } };
+static struct $14__FB_DATADESC$ label$6840[2] = { { (int16)3, (void*)"IMM" }, { (int16)-1, (void*)label$6842 } };
+static struct $14__FB_DATADESC$ label$6838[2] = { { (int16)3, (void*)"IMP" }, { (int16)-1, (void*)label$6840 } };
+static struct $14__FB_DATADESC$ label$5947[2] = { { (int16)3, (void*)"UNK" }, { (int16)-1, (void*)label$6838 } };
+static struct $14__FB_DATADESC$ label$6836[7] = { { (int16)3, (void*)"255" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$5947 } };
+static struct $14__FB_DATADESC$ label$6834[7] = { { (int16)3, (void*)"254" }, { (int16)3, (void*)"INC" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_INC }, { (int16)-1, (void*)label$6836 } };
+static struct $14__FB_DATADESC$ label$6832[7] = { { (int16)3, (void*)"253" }, { (int16)3, (void*)"SBC" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6834 } };
+static struct $14__FB_DATADESC$ label$6830[7] = { { (int16)3, (void*)"252" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6832 } };
+static struct $14__FB_DATADESC$ label$6828[7] = { { (int16)3, (void*)"251" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6830 } };
+static struct $14__FB_DATADESC$ label$6826[7] = { { (int16)3, (void*)"250" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6828 } };
+static struct $14__FB_DATADESC$ label$6824[7] = { { (int16)3, (void*)"249" }, { (int16)3, (void*)"SBC" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6826 } };
+static struct $14__FB_DATADESC$ label$6822[7] = { { (int16)3, (void*)"248" }, { (int16)3, (void*)"SED" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SED }, { (int16)-1, (void*)label$6824 } };
+static struct $14__FB_DATADESC$ label$6820[7] = { { (int16)3, (void*)"247" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6822 } };
+static struct $14__FB_DATADESC$ label$6818[7] = { { (int16)3, (void*)"246" }, { (int16)3, (void*)"INC" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_INC }, { (int16)-1, (void*)label$6820 } };
+static struct $14__FB_DATADESC$ label$6816[7] = { { (int16)3, (void*)"245" }, { (int16)3, (void*)"SBC" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6818 } };
+static struct $14__FB_DATADESC$ label$6814[7] = { { (int16)3, (void*)"244" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6816 } };
+static struct $14__FB_DATADESC$ label$6812[7] = { { (int16)3, (void*)"243" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6814 } };
+static struct $14__FB_DATADESC$ label$6810[7] = { { (int16)3, (void*)"242" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6812 } };
+static struct $14__FB_DATADESC$ label$6808[7] = { { (int16)3, (void*)"241" }, { (int16)3, (void*)"SBC" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6810 } };
+static struct $14__FB_DATADESC$ label$6806[7] = { { (int16)3, (void*)"240" }, { (int16)3, (void*)"BEQ" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BEQ }, { (int16)-1, (void*)label$6808 } };
+static struct $14__FB_DATADESC$ label$6804[7] = { { (int16)3, (void*)"239" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6806 } };
+static struct $14__FB_DATADESC$ label$6802[7] = { { (int16)3, (void*)"238" }, { (int16)3, (void*)"INC" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_INC }, { (int16)-1, (void*)label$6804 } };
+static struct $14__FB_DATADESC$ label$6800[7] = { { (int16)3, (void*)"237" }, { (int16)3, (void*)"SBC" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6802 } };
+static struct $14__FB_DATADESC$ label$6798[7] = { { (int16)3, (void*)"236" }, { (int16)3, (void*)"CPX" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CPX }, { (int16)-1, (void*)label$6800 } };
+static struct $14__FB_DATADESC$ label$6796[7] = { { (int16)3, (void*)"235" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6798 } };
+static struct $14__FB_DATADESC$ label$6794[7] = { { (int16)3, (void*)"234" }, { (int16)3, (void*)"NOP" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_NOP }, { (int16)-1, (void*)label$6796 } };
+static struct $14__FB_DATADESC$ label$6792[7] = { { (int16)3, (void*)"233" }, { (int16)3, (void*)"SBC" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6794 } };
+static struct $14__FB_DATADESC$ label$6790[7] = { { (int16)3, (void*)"232" }, { (int16)3, (void*)"INX" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_INX }, { (int16)-1, (void*)label$6792 } };
+static struct $14__FB_DATADESC$ label$6788[7] = { { (int16)3, (void*)"231" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6790 } };
+static struct $14__FB_DATADESC$ label$6786[7] = { { (int16)3, (void*)"230" }, { (int16)3, (void*)"INC" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_INC }, { (int16)-1, (void*)label$6788 } };
+static struct $14__FB_DATADESC$ label$6784[7] = { { (int16)3, (void*)"229" }, { (int16)3, (void*)"SBC" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6786 } };
+static struct $14__FB_DATADESC$ label$6782[7] = { { (int16)3, (void*)"228" }, { (int16)3, (void*)"CPX" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CPX }, { (int16)-1, (void*)label$6784 } };
+static struct $14__FB_DATADESC$ label$6780[7] = { { (int16)3, (void*)"227" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6782 } };
+static struct $14__FB_DATADESC$ label$6778[7] = { { (int16)3, (void*)"226" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6780 } };
+static struct $14__FB_DATADESC$ label$6776[7] = { { (int16)3, (void*)"225" }, { (int16)3, (void*)"SBC" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SBC }, { (int16)-1, (void*)label$6778 } };
+static struct $14__FB_DATADESC$ label$6774[7] = { { (int16)3, (void*)"224" }, { (int16)3, (void*)"CPX" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CPX }, { (int16)-1, (void*)label$6776 } };
+static struct $14__FB_DATADESC$ label$6772[7] = { { (int16)3, (void*)"223" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6774 } };
+static struct $14__FB_DATADESC$ label$6770[7] = { { (int16)3, (void*)"222" }, { (int16)3, (void*)"DEC" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_DEC }, { (int16)-1, (void*)label$6772 } };
+static struct $14__FB_DATADESC$ label$6768[7] = { { (int16)3, (void*)"221" }, { (int16)3, (void*)"CMP" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6770 } };
+static struct $14__FB_DATADESC$ label$6766[7] = { { (int16)3, (void*)"220" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6768 } };
+static struct $14__FB_DATADESC$ label$6764[7] = { { (int16)3, (void*)"219" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6766 } };
+static struct $14__FB_DATADESC$ label$6762[7] = { { (int16)3, (void*)"218" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6764 } };
+static struct $14__FB_DATADESC$ label$6760[7] = { { (int16)3, (void*)"217" }, { (int16)3, (void*)"CMP" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6762 } };
+static struct $14__FB_DATADESC$ label$6758[7] = { { (int16)3, (void*)"216" }, { (int16)3, (void*)"CLD" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CLD }, { (int16)-1, (void*)label$6760 } };
+static struct $14__FB_DATADESC$ label$6756[7] = { { (int16)3, (void*)"215" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6758 } };
+static struct $14__FB_DATADESC$ label$6754[7] = { { (int16)3, (void*)"214" }, { (int16)3, (void*)"DEC" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_DEC }, { (int16)-1, (void*)label$6756 } };
+static struct $14__FB_DATADESC$ label$6752[7] = { { (int16)3, (void*)"213" }, { (int16)3, (void*)"CMP" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6754 } };
+static struct $14__FB_DATADESC$ label$6750[7] = { { (int16)3, (void*)"212" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6752 } };
+static struct $14__FB_DATADESC$ label$6748[7] = { { (int16)3, (void*)"211" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6750 } };
+static struct $14__FB_DATADESC$ label$6746[7] = { { (int16)3, (void*)"210" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6748 } };
+static struct $14__FB_DATADESC$ label$6744[7] = { { (int16)3, (void*)"209" }, { (int16)3, (void*)"CMP" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6746 } };
+static struct $14__FB_DATADESC$ label$6742[7] = { { (int16)3, (void*)"208" }, { (int16)3, (void*)"BNE" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BNE }, { (int16)-1, (void*)label$6744 } };
+static struct $14__FB_DATADESC$ label$6740[7] = { { (int16)3, (void*)"207" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6742 } };
+static struct $14__FB_DATADESC$ label$6738[7] = { { (int16)3, (void*)"206" }, { (int16)3, (void*)"DEC" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_DEC }, { (int16)-1, (void*)label$6740 } };
+static struct $14__FB_DATADESC$ label$6736[7] = { { (int16)3, (void*)"205" }, { (int16)3, (void*)"CMP" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6738 } };
+static struct $14__FB_DATADESC$ label$6734[7] = { { (int16)3, (void*)"204" }, { (int16)3, (void*)"CPY" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CPY }, { (int16)-1, (void*)label$6736 } };
+static struct $14__FB_DATADESC$ label$6732[7] = { { (int16)3, (void*)"203" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6734 } };
+static struct $14__FB_DATADESC$ label$6730[7] = { { (int16)3, (void*)"202" }, { (int16)3, (void*)"DEX" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_DEX }, { (int16)-1, (void*)label$6732 } };
+static struct $14__FB_DATADESC$ label$6728[7] = { { (int16)3, (void*)"201" }, { (int16)3, (void*)"CMP" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6730 } };
+static struct $14__FB_DATADESC$ label$6726[7] = { { (int16)3, (void*)"200" }, { (int16)3, (void*)"INY" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_INY }, { (int16)-1, (void*)label$6728 } };
+static struct $14__FB_DATADESC$ label$6724[7] = { { (int16)3, (void*)"199" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6726 } };
+static struct $14__FB_DATADESC$ label$6722[7] = { { (int16)3, (void*)"198" }, { (int16)3, (void*)"DEC" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_DEC }, { (int16)-1, (void*)label$6724 } };
+static struct $14__FB_DATADESC$ label$6720[7] = { { (int16)3, (void*)"197" }, { (int16)3, (void*)"CMP" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6722 } };
+static struct $14__FB_DATADESC$ label$6718[7] = { { (int16)3, (void*)"196" }, { (int16)3, (void*)"CPY" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CPY }, { (int16)-1, (void*)label$6720 } };
+static struct $14__FB_DATADESC$ label$6716[7] = { { (int16)3, (void*)"195" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6718 } };
+static struct $14__FB_DATADESC$ label$6714[7] = { { (int16)3, (void*)"194" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6716 } };
+static struct $14__FB_DATADESC$ label$6712[7] = { { (int16)3, (void*)"193" }, { (int16)3, (void*)"CMP" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CMP }, { (int16)-1, (void*)label$6714 } };
+static struct $14__FB_DATADESC$ label$6710[7] = { { (int16)3, (void*)"192" }, { (int16)3, (void*)"CPY" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CPY }, { (int16)-1, (void*)label$6712 } };
+static struct $14__FB_DATADESC$ label$6708[7] = { { (int16)3, (void*)"191" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6710 } };
+static struct $14__FB_DATADESC$ label$6706[7] = { { (int16)3, (void*)"190" }, { (int16)3, (void*)"LDX" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDX }, { (int16)-1, (void*)label$6708 } };
+static struct $14__FB_DATADESC$ label$6704[7] = { { (int16)3, (void*)"189" }, { (int16)3, (void*)"LDA" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6706 } };
+static struct $14__FB_DATADESC$ label$6702[7] = { { (int16)3, (void*)"188" }, { (int16)3, (void*)"LDY" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDY }, { (int16)-1, (void*)label$6704 } };
+static struct $14__FB_DATADESC$ label$6700[7] = { { (int16)3, (void*)"187" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6702 } };
+static struct $14__FB_DATADESC$ label$6698[7] = { { (int16)3, (void*)"186" }, { (int16)3, (void*)"TSX" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_TSX }, { (int16)-1, (void*)label$6700 } };
+static struct $14__FB_DATADESC$ label$6696[7] = { { (int16)3, (void*)"185" }, { (int16)3, (void*)"LDA" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6698 } };
+static struct $14__FB_DATADESC$ label$6694[7] = { { (int16)3, (void*)"184" }, { (int16)3, (void*)"CLV" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CLV }, { (int16)-1, (void*)label$6696 } };
+static struct $14__FB_DATADESC$ label$6692[7] = { { (int16)3, (void*)"183" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6694 } };
+static struct $14__FB_DATADESC$ label$6690[7] = { { (int16)3, (void*)"182" }, { (int16)3, (void*)"LDX" }, { (int16)1, (void*)"6" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDX }, { (int16)-1, (void*)label$6692 } };
+static struct $14__FB_DATADESC$ label$6688[7] = { { (int16)3, (void*)"181" }, { (int16)3, (void*)"LDA" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6690 } };
+static struct $14__FB_DATADESC$ label$6686[7] = { { (int16)3, (void*)"180" }, { (int16)3, (void*)"LDY" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDY }, { (int16)-1, (void*)label$6688 } };
+static struct $14__FB_DATADESC$ label$6684[7] = { { (int16)3, (void*)"179" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6686 } };
+static struct $14__FB_DATADESC$ label$6682[7] = { { (int16)3, (void*)"178" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6684 } };
+static struct $14__FB_DATADESC$ label$6680[7] = { { (int16)3, (void*)"177" }, { (int16)3, (void*)"LDA" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6682 } };
+static struct $14__FB_DATADESC$ label$6678[7] = { { (int16)3, (void*)"176" }, { (int16)3, (void*)"BCS" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BCS }, { (int16)-1, (void*)label$6680 } };
+static struct $14__FB_DATADESC$ label$6676[7] = { { (int16)3, (void*)"175" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6678 } };
+static struct $14__FB_DATADESC$ label$6674[7] = { { (int16)3, (void*)"174" }, { (int16)3, (void*)"LDX" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDX }, { (int16)-1, (void*)label$6676 } };
+static struct $14__FB_DATADESC$ label$6672[7] = { { (int16)3, (void*)"173" }, { (int16)3, (void*)"LDA" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6674 } };
+static struct $14__FB_DATADESC$ label$6670[7] = { { (int16)3, (void*)"172" }, { (int16)3, (void*)"LDY" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDY }, { (int16)-1, (void*)label$6672 } };
+static struct $14__FB_DATADESC$ label$6668[7] = { { (int16)3, (void*)"171" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6670 } };
+static struct $14__FB_DATADESC$ label$6666[7] = { { (int16)3, (void*)"170" }, { (int16)3, (void*)"TAX" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_TAX }, { (int16)-1, (void*)label$6668 } };
+static struct $14__FB_DATADESC$ label$6664[7] = { { (int16)3, (void*)"169" }, { (int16)3, (void*)"LDA" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6666 } };
+static struct $14__FB_DATADESC$ label$6662[7] = { { (int16)3, (void*)"168" }, { (int16)3, (void*)"TAY" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_TAY }, { (int16)-1, (void*)label$6664 } };
+static struct $14__FB_DATADESC$ label$6660[7] = { { (int16)3, (void*)"167" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6662 } };
+static struct $14__FB_DATADESC$ label$6658[7] = { { (int16)3, (void*)"166" }, { (int16)3, (void*)"LDX" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDX }, { (int16)-1, (void*)label$6660 } };
+static struct $14__FB_DATADESC$ label$6656[7] = { { (int16)3, (void*)"165" }, { (int16)3, (void*)"LDA" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6658 } };
+static struct $14__FB_DATADESC$ label$6654[7] = { { (int16)3, (void*)"164" }, { (int16)3, (void*)"LDY" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDY }, { (int16)-1, (void*)label$6656 } };
+static struct $14__FB_DATADESC$ label$6652[7] = { { (int16)3, (void*)"163" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6654 } };
+static struct $14__FB_DATADESC$ label$6650[7] = { { (int16)3, (void*)"162" }, { (int16)3, (void*)"LDX" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDX }, { (int16)-1, (void*)label$6652 } };
+static struct $14__FB_DATADESC$ label$6648[7] = { { (int16)3, (void*)"161" }, { (int16)3, (void*)"LDA" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDA }, { (int16)-1, (void*)label$6650 } };
+static struct $14__FB_DATADESC$ label$6646[7] = { { (int16)3, (void*)"160" }, { (int16)3, (void*)"LDY" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LDY }, { (int16)-1, (void*)label$6648 } };
+static struct $14__FB_DATADESC$ label$6644[7] = { { (int16)3, (void*)"159" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6646 } };
+static struct $14__FB_DATADESC$ label$6642[7] = { { (int16)3, (void*)"158" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6644 } };
+static struct $14__FB_DATADESC$ label$6640[7] = { { (int16)3, (void*)"157" }, { (int16)3, (void*)"STA" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STA }, { (int16)-1, (void*)label$6642 } };
+static struct $14__FB_DATADESC$ label$6638[7] = { { (int16)3, (void*)"156" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6640 } };
+static struct $14__FB_DATADESC$ label$6636[7] = { { (int16)3, (void*)"155" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6638 } };
+static struct $14__FB_DATADESC$ label$6634[7] = { { (int16)3, (void*)"154" }, { (int16)3, (void*)"TXS" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_TXS }, { (int16)-1, (void*)label$6636 } };
+static struct $14__FB_DATADESC$ label$6632[7] = { { (int16)3, (void*)"153" }, { (int16)3, (void*)"STA" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STA }, { (int16)-1, (void*)label$6634 } };
+static struct $14__FB_DATADESC$ label$6630[7] = { { (int16)3, (void*)"152" }, { (int16)3, (void*)"TYA" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_TYA }, { (int16)-1, (void*)label$6632 } };
+static struct $14__FB_DATADESC$ label$6628[7] = { { (int16)3, (void*)"151" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6630 } };
+static struct $14__FB_DATADESC$ label$6626[7] = { { (int16)3, (void*)"150" }, { (int16)3, (void*)"STX" }, { (int16)1, (void*)"6" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STX }, { (int16)-1, (void*)label$6628 } };
+static struct $14__FB_DATADESC$ label$6624[7] = { { (int16)3, (void*)"149" }, { (int16)3, (void*)"STA" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STA }, { (int16)-1, (void*)label$6626 } };
+static struct $14__FB_DATADESC$ label$6622[7] = { { (int16)3, (void*)"148" }, { (int16)3, (void*)"STY" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STY }, { (int16)-1, (void*)label$6624 } };
+static struct $14__FB_DATADESC$ label$6620[7] = { { (int16)3, (void*)"147" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6622 } };
+static struct $14__FB_DATADESC$ label$6618[7] = { { (int16)3, (void*)"146" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6620 } };
+static struct $14__FB_DATADESC$ label$6616[7] = { { (int16)3, (void*)"145" }, { (int16)3, (void*)"STA" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STA }, { (int16)-1, (void*)label$6618 } };
+static struct $14__FB_DATADESC$ label$6614[7] = { { (int16)3, (void*)"144" }, { (int16)3, (void*)"BCC" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BCC }, { (int16)-1, (void*)label$6616 } };
+static struct $14__FB_DATADESC$ label$6612[7] = { { (int16)3, (void*)"143" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6614 } };
+static struct $14__FB_DATADESC$ label$6610[7] = { { (int16)3, (void*)"142" }, { (int16)3, (void*)"STX" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STX }, { (int16)-1, (void*)label$6612 } };
+static struct $14__FB_DATADESC$ label$6608[7] = { { (int16)3, (void*)"141" }, { (int16)3, (void*)"STA" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STA }, { (int16)-1, (void*)label$6610 } };
+static struct $14__FB_DATADESC$ label$6606[7] = { { (int16)3, (void*)"140" }, { (int16)3, (void*)"STY" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STY }, { (int16)-1, (void*)label$6608 } };
+static struct $14__FB_DATADESC$ label$6604[7] = { { (int16)3, (void*)"139" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6606 } };
+static struct $14__FB_DATADESC$ label$6602[7] = { { (int16)3, (void*)"138" }, { (int16)3, (void*)"TXA" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_TXA }, { (int16)-1, (void*)label$6604 } };
+static struct $14__FB_DATADESC$ label$6600[7] = { { (int16)3, (void*)"137" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6602 } };
+static struct $14__FB_DATADESC$ label$6598[7] = { { (int16)3, (void*)"136" }, { (int16)3, (void*)"DEY" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_DEY }, { (int16)-1, (void*)label$6600 } };
+static struct $14__FB_DATADESC$ label$6596[7] = { { (int16)3, (void*)"135" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6598 } };
+static struct $14__FB_DATADESC$ label$6594[7] = { { (int16)3, (void*)"134" }, { (int16)3, (void*)"STX" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STX }, { (int16)-1, (void*)label$6596 } };
+static struct $14__FB_DATADESC$ label$6592[7] = { { (int16)3, (void*)"133" }, { (int16)3, (void*)"STA" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STA }, { (int16)-1, (void*)label$6594 } };
+static struct $14__FB_DATADESC$ label$6590[7] = { { (int16)3, (void*)"132" }, { (int16)3, (void*)"STY" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STY }, { (int16)-1, (void*)label$6592 } };
+static struct $14__FB_DATADESC$ label$6588[7] = { { (int16)3, (void*)"131" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6590 } };
+static struct $14__FB_DATADESC$ label$6586[7] = { { (int16)3, (void*)"130" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6588 } };
+static struct $14__FB_DATADESC$ label$6584[7] = { { (int16)3, (void*)"129" }, { (int16)3, (void*)"STA" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_STA }, { (int16)-1, (void*)label$6586 } };
+static struct $14__FB_DATADESC$ label$6582[7] = { { (int16)3, (void*)"128" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6584 } };
+static struct $14__FB_DATADESC$ label$6580[7] = { { (int16)3, (void*)"127" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6582 } };
+static struct $14__FB_DATADESC$ label$6578[7] = { { (int16)3, (void*)"126" }, { (int16)3, (void*)"ROR" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROR }, { (int16)-1, (void*)label$6580 } };
+static struct $14__FB_DATADESC$ label$6576[7] = { { (int16)3, (void*)"125" }, { (int16)3, (void*)"ADC" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6578 } };
+static struct $14__FB_DATADESC$ label$6574[7] = { { (int16)3, (void*)"124" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6576 } };
+static struct $14__FB_DATADESC$ label$6572[7] = { { (int16)3, (void*)"123" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6574 } };
+static struct $14__FB_DATADESC$ label$6570[7] = { { (int16)3, (void*)"122" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6572 } };
+static struct $14__FB_DATADESC$ label$6568[7] = { { (int16)3, (void*)"121" }, { (int16)3, (void*)"ADC" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6570 } };
+static struct $14__FB_DATADESC$ label$6566[7] = { { (int16)3, (void*)"120" }, { (int16)3, (void*)"SEI" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SEI }, { (int16)-1, (void*)label$6568 } };
+static struct $14__FB_DATADESC$ label$6564[7] = { { (int16)3, (void*)"119" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6566 } };
+static struct $14__FB_DATADESC$ label$6562[7] = { { (int16)3, (void*)"118" }, { (int16)3, (void*)"ROR" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROR }, { (int16)-1, (void*)label$6564 } };
+static struct $14__FB_DATADESC$ label$6560[7] = { { (int16)3, (void*)"117" }, { (int16)3, (void*)"ADC" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6562 } };
+static struct $14__FB_DATADESC$ label$6558[7] = { { (int16)3, (void*)"116" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6560 } };
+static struct $14__FB_DATADESC$ label$6556[7] = { { (int16)3, (void*)"115" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6558 } };
+static struct $14__FB_DATADESC$ label$6554[7] = { { (int16)3, (void*)"114" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6556 } };
+static struct $14__FB_DATADESC$ label$6552[7] = { { (int16)3, (void*)"113" }, { (int16)3, (void*)"ADC" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6554 } };
+static struct $14__FB_DATADESC$ label$6550[7] = { { (int16)3, (void*)"112" }, { (int16)3, (void*)"BVS" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BVS }, { (int16)-1, (void*)label$6552 } };
+static struct $14__FB_DATADESC$ label$6548[7] = { { (int16)3, (void*)"111" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6550 } };
+static struct $14__FB_DATADESC$ label$6546[7] = { { (int16)3, (void*)"110" }, { (int16)3, (void*)"ROR" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROR }, { (int16)-1, (void*)label$6548 } };
+static struct $14__FB_DATADESC$ label$6544[7] = { { (int16)3, (void*)"109" }, { (int16)3, (void*)"ADC" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6546 } };
+static struct $14__FB_DATADESC$ label$6542[7] = { { (int16)3, (void*)"108" }, { (int16)3, (void*)"JMP" }, { (int16)2, (void*)"12" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_JMP }, { (int16)-1, (void*)label$6544 } };
+static struct $14__FB_DATADESC$ label$6540[7] = { { (int16)3, (void*)"107" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6542 } };
+static struct $14__FB_DATADESC$ label$6538[7] = { { (int16)3, (void*)"106" }, { (int16)3, (void*)"ROR" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_RORA }, { (int16)-1, (void*)label$6540 } };
+static struct $14__FB_DATADESC$ label$6536[7] = { { (int16)3, (void*)"105" }, { (int16)3, (void*)"ADC" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6538 } };
+static struct $14__FB_DATADESC$ label$6534[7] = { { (int16)3, (void*)"104" }, { (int16)3, (void*)"PLA" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_PLA }, { (int16)-1, (void*)label$6536 } };
+static struct $14__FB_DATADESC$ label$6532[7] = { { (int16)3, (void*)"103" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6534 } };
+static struct $14__FB_DATADESC$ label$6530[7] = { { (int16)3, (void*)"102" }, { (int16)3, (void*)"ROR" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROR }, { (int16)-1, (void*)label$6532 } };
+static struct $14__FB_DATADESC$ label$6528[7] = { { (int16)3, (void*)"101" }, { (int16)3, (void*)"ADC" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6530 } };
+static struct $14__FB_DATADESC$ label$6526[7] = { { (int16)3, (void*)"100" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6528 } };
+static struct $14__FB_DATADESC$ label$6524[7] = { { (int16)2, (void*)"99" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6526 } };
+static struct $14__FB_DATADESC$ label$6522[7] = { { (int16)2, (void*)"98" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6524 } };
+static struct $14__FB_DATADESC$ label$6520[7] = { { (int16)2, (void*)"97" }, { (int16)3, (void*)"ADC" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ADC }, { (int16)-1, (void*)label$6522 } };
+static struct $14__FB_DATADESC$ label$6518[7] = { { (int16)2, (void*)"96" }, { (int16)3, (void*)"RTS" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_RTS }, { (int16)-1, (void*)label$6520 } };
+static struct $14__FB_DATADESC$ label$6516[7] = { { (int16)2, (void*)"95" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6518 } };
+static struct $14__FB_DATADESC$ label$6514[7] = { { (int16)2, (void*)"94" }, { (int16)3, (void*)"LSR" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LSR }, { (int16)-1, (void*)label$6516 } };
+static struct $14__FB_DATADESC$ label$6512[7] = { { (int16)2, (void*)"93" }, { (int16)3, (void*)"EOR" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6514 } };
+static struct $14__FB_DATADESC$ label$6510[7] = { { (int16)2, (void*)"92" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6512 } };
+static struct $14__FB_DATADESC$ label$6508[7] = { { (int16)2, (void*)"91" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6510 } };
+static struct $14__FB_DATADESC$ label$6506[7] = { { (int16)2, (void*)"90" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6508 } };
+static struct $14__FB_DATADESC$ label$6504[7] = { { (int16)2, (void*)"89" }, { (int16)3, (void*)"EOR" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6506 } };
+static struct $14__FB_DATADESC$ label$6502[7] = { { (int16)2, (void*)"88" }, { (int16)3, (void*)"CLI" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CLI }, { (int16)-1, (void*)label$6504 } };
+static struct $14__FB_DATADESC$ label$6500[7] = { { (int16)2, (void*)"87" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6502 } };
+static struct $14__FB_DATADESC$ label$6498[7] = { { (int16)2, (void*)"86" }, { (int16)3, (void*)"LSR" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LSR }, { (int16)-1, (void*)label$6500 } };
+static struct $14__FB_DATADESC$ label$6496[7] = { { (int16)2, (void*)"85" }, { (int16)3, (void*)"EOR" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6498 } };
+static struct $14__FB_DATADESC$ label$6494[7] = { { (int16)2, (void*)"84" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6496 } };
+static struct $14__FB_DATADESC$ label$6492[7] = { { (int16)2, (void*)"83" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6494 } };
+static struct $14__FB_DATADESC$ label$6490[7] = { { (int16)2, (void*)"82" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6492 } };
+static struct $14__FB_DATADESC$ label$6488[7] = { { (int16)2, (void*)"81" }, { (int16)3, (void*)"EOR" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6490 } };
+static struct $14__FB_DATADESC$ label$6486[7] = { { (int16)2, (void*)"80" }, { (int16)3, (void*)"BVC" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BVC }, { (int16)-1, (void*)label$6488 } };
+static struct $14__FB_DATADESC$ label$6484[7] = { { (int16)2, (void*)"79" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6486 } };
+static struct $14__FB_DATADESC$ label$6482[7] = { { (int16)2, (void*)"78" }, { (int16)3, (void*)"LSR" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LSR }, { (int16)-1, (void*)label$6484 } };
+static struct $14__FB_DATADESC$ label$6480[7] = { { (int16)2, (void*)"77" }, { (int16)3, (void*)"EOR" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6482 } };
+static struct $14__FB_DATADESC$ label$6478[7] = { { (int16)2, (void*)"76" }, { (int16)3, (void*)"JMP" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_JMP }, { (int16)-1, (void*)label$6480 } };
+static struct $14__FB_DATADESC$ label$6476[7] = { { (int16)2, (void*)"75" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6478 } };
+static struct $14__FB_DATADESC$ label$6474[7] = { { (int16)2, (void*)"74" }, { (int16)3, (void*)"LSR" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LSRA }, { (int16)-1, (void*)label$6476 } };
+static struct $14__FB_DATADESC$ label$6472[7] = { { (int16)2, (void*)"73" }, { (int16)3, (void*)"EOR" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6474 } };
+static struct $14__FB_DATADESC$ label$6470[7] = { { (int16)2, (void*)"72" }, { (int16)3, (void*)"PHA" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_PHA }, { (int16)-1, (void*)label$6472 } };
+static struct $14__FB_DATADESC$ label$6468[7] = { { (int16)2, (void*)"71" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6470 } };
+static struct $14__FB_DATADESC$ label$6466[7] = { { (int16)2, (void*)"70" }, { (int16)3, (void*)"LSR" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_LSR }, { (int16)-1, (void*)label$6468 } };
+static struct $14__FB_DATADESC$ label$6464[7] = { { (int16)2, (void*)"69" }, { (int16)3, (void*)"EOR" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6466 } };
+static struct $14__FB_DATADESC$ label$6462[7] = { { (int16)2, (void*)"68" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6464 } };
+static struct $14__FB_DATADESC$ label$6460[7] = { { (int16)2, (void*)"67" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6462 } };
+static struct $14__FB_DATADESC$ label$6458[7] = { { (int16)2, (void*)"66" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6460 } };
+static struct $14__FB_DATADESC$ label$6456[7] = { { (int16)2, (void*)"65" }, { (int16)3, (void*)"EOR" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_EOR }, { (int16)-1, (void*)label$6458 } };
+static struct $14__FB_DATADESC$ label$6454[7] = { { (int16)2, (void*)"64" }, { (int16)3, (void*)"RTI" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_RTI }, { (int16)-1, (void*)label$6456 } };
+static struct $14__FB_DATADESC$ label$6452[7] = { { (int16)2, (void*)"63" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6454 } };
+static struct $14__FB_DATADESC$ label$6450[7] = { { (int16)2, (void*)"62" }, { (int16)3, (void*)"ROL" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROL }, { (int16)-1, (void*)label$6452 } };
+static struct $14__FB_DATADESC$ label$6448[7] = { { (int16)2, (void*)"61" }, { (int16)3, (void*)"AND" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6450 } };
+static struct $14__FB_DATADESC$ label$6446[7] = { { (int16)2, (void*)"60" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6448 } };
+static struct $14__FB_DATADESC$ label$6444[7] = { { (int16)2, (void*)"59" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6446 } };
+static struct $14__FB_DATADESC$ label$6442[7] = { { (int16)2, (void*)"58" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6444 } };
+static struct $14__FB_DATADESC$ label$6440[7] = { { (int16)2, (void*)"57" }, { (int16)3, (void*)"AND" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6442 } };
+static struct $14__FB_DATADESC$ label$6438[7] = { { (int16)2, (void*)"56" }, { (int16)3, (void*)"SEC" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_SEC }, { (int16)-1, (void*)label$6440 } };
+static struct $14__FB_DATADESC$ label$6436[7] = { { (int16)2, (void*)"55" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6438 } };
+static struct $14__FB_DATADESC$ label$6434[7] = { { (int16)2, (void*)"54" }, { (int16)3, (void*)"ROL" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROL }, { (int16)-1, (void*)label$6436 } };
+static struct $14__FB_DATADESC$ label$6432[7] = { { (int16)2, (void*)"53" }, { (int16)3, (void*)"AND" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6434 } };
+static struct $14__FB_DATADESC$ label$6430[7] = { { (int16)2, (void*)"52" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6432 } };
+static struct $14__FB_DATADESC$ label$6428[7] = { { (int16)2, (void*)"51" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6430 } };
+static struct $14__FB_DATADESC$ label$6426[7] = { { (int16)2, (void*)"50" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6428 } };
+static struct $14__FB_DATADESC$ label$6424[7] = { { (int16)2, (void*)"49" }, { (int16)3, (void*)"AND" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6426 } };
+static struct $14__FB_DATADESC$ label$6422[7] = { { (int16)2, (void*)"48" }, { (int16)3, (void*)"BMI" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BMI }, { (int16)-1, (void*)label$6424 } };
+static struct $14__FB_DATADESC$ label$6420[7] = { { (int16)2, (void*)"47" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6422 } };
+static struct $14__FB_DATADESC$ label$6418[7] = { { (int16)2, (void*)"46" }, { (int16)3, (void*)"ROL" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROL }, { (int16)-1, (void*)label$6420 } };
+static struct $14__FB_DATADESC$ label$6416[7] = { { (int16)2, (void*)"45" }, { (int16)3, (void*)"AND" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6418 } };
+static struct $14__FB_DATADESC$ label$6414[7] = { { (int16)2, (void*)"44" }, { (int16)3, (void*)"BIT" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BIT }, { (int16)-1, (void*)label$6416 } };
+static struct $14__FB_DATADESC$ label$6412[7] = { { (int16)2, (void*)"43" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6414 } };
+static struct $14__FB_DATADESC$ label$6410[7] = { { (int16)2, (void*)"42" }, { (int16)3, (void*)"ROL" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROLA }, { (int16)-1, (void*)label$6412 } };
+static struct $14__FB_DATADESC$ label$6408[7] = { { (int16)2, (void*)"41" }, { (int16)3, (void*)"AND" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6410 } };
+static struct $14__FB_DATADESC$ label$6406[7] = { { (int16)2, (void*)"40" }, { (int16)3, (void*)"PLP" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_PLP }, { (int16)-1, (void*)label$6408 } };
+static struct $14__FB_DATADESC$ label$6404[7] = { { (int16)2, (void*)"39" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6406 } };
+static struct $14__FB_DATADESC$ label$6402[7] = { { (int16)2, (void*)"38" }, { (int16)3, (void*)"ROL" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ROL }, { (int16)-1, (void*)label$6404 } };
+static struct $14__FB_DATADESC$ label$6400[7] = { { (int16)2, (void*)"37" }, { (int16)3, (void*)"AND" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6402 } };
+static struct $14__FB_DATADESC$ label$6398[7] = { { (int16)2, (void*)"36" }, { (int16)3, (void*)"BIT" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BIT }, { (int16)-1, (void*)label$6400 } };
+static struct $14__FB_DATADESC$ label$6396[7] = { { (int16)2, (void*)"35" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6398 } };
+static struct $14__FB_DATADESC$ label$6394[7] = { { (int16)2, (void*)"34" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6396 } };
+static struct $14__FB_DATADESC$ label$6392[7] = { { (int16)2, (void*)"33" }, { (int16)3, (void*)"AND" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_AND }, { (int16)-1, (void*)label$6394 } };
+static struct $14__FB_DATADESC$ label$6390[7] = { { (int16)2, (void*)"32" }, { (int16)3, (void*)"JSR" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_JSR }, { (int16)-1, (void*)label$6392 } };
+static struct $14__FB_DATADESC$ label$6388[7] = { { (int16)2, (void*)"31" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6390 } };
+static struct $14__FB_DATADESC$ label$6386[7] = { { (int16)2, (void*)"30" }, { (int16)3, (void*)"ASL" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ASL }, { (int16)-1, (void*)label$6388 } };
+static struct $14__FB_DATADESC$ label$6384[7] = { { (int16)2, (void*)"29" }, { (int16)3, (void*)"ORA" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6386 } };
+static struct $14__FB_DATADESC$ label$6382[7] = { { (int16)2, (void*)"28" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6384 } };
+static struct $14__FB_DATADESC$ label$6380[7] = { { (int16)2, (void*)"27" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6382 } };
+static struct $14__FB_DATADESC$ label$6378[7] = { { (int16)2, (void*)"26" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6380 } };
+static struct $14__FB_DATADESC$ label$6376[7] = { { (int16)2, (void*)"25" }, { (int16)3, (void*)"ORA" }, { (int16)1, (void*)"8" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6378 } };
+static struct $14__FB_DATADESC$ label$6374[7] = { { (int16)2, (void*)"24" }, { (int16)3, (void*)"CLC" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_CLC }, { (int16)-1, (void*)label$6376 } };
+static struct $14__FB_DATADESC$ label$6372[7] = { { (int16)2, (void*)"23" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6374 } };
+static struct $14__FB_DATADESC$ label$6370[7] = { { (int16)2, (void*)"22" }, { (int16)3, (void*)"ASL" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ASL }, { (int16)-1, (void*)label$6372 } };
+static struct $14__FB_DATADESC$ label$6368[7] = { { (int16)2, (void*)"21" }, { (int16)3, (void*)"ORA" }, { (int16)1, (void*)"5" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6370 } };
+static struct $14__FB_DATADESC$ label$6366[7] = { { (int16)2, (void*)"20" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6368 } };
+static struct $14__FB_DATADESC$ label$6364[7] = { { (int16)2, (void*)"19" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6366 } };
+static struct $14__FB_DATADESC$ label$6362[7] = { { (int16)2, (void*)"18" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6364 } };
+static struct $14__FB_DATADESC$ label$6360[7] = { { (int16)2, (void*)"17" }, { (int16)3, (void*)"ORA" }, { (int16)2, (void*)"11" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6362 } };
+static struct $14__FB_DATADESC$ label$6358[7] = { { (int16)2, (void*)"16" }, { (int16)3, (void*)"BPL" }, { (int16)1, (void*)"9" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BPL }, { (int16)-1, (void*)label$6360 } };
+static struct $14__FB_DATADESC$ label$6356[7] = { { (int16)2, (void*)"15" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6358 } };
+static struct $14__FB_DATADESC$ label$6354[7] = { { (int16)2, (void*)"14" }, { (int16)3, (void*)"ASL" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ASL }, { (int16)-1, (void*)label$6356 } };
+static struct $14__FB_DATADESC$ label$6352[7] = { { (int16)2, (void*)"13" }, { (int16)3, (void*)"ORA" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"3" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6354 } };
+static struct $14__FB_DATADESC$ label$6350[7] = { { (int16)2, (void*)"12" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6352 } };
+static struct $14__FB_DATADESC$ label$6348[7] = { { (int16)2, (void*)"11" }, { (int16)3, (void*)"***" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_UNK }, { (int16)-1, (void*)label$6350 } };
+static struct $14__FB_DATADESC$ label$6346[7] = { { (int16)2, (void*)"10" }, { (int16)3, (void*)"ASL" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"1" }, { (int16)-2, (void*)&INS_ASLA }, { (int16)-1, (void*)label$6348 } };
+static struct $14__FB_DATADESC$ label$6344[7] = { { (int16)1, (void*)"9" }, { (int16)3, (void*)"ORA" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"2" }, { (int16)1, (void*)"2" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6346 } };
+static struct $14__FB_DATADESC$ label$6342[7] = { { (int16)1, (void*)"8" }, { (int16)3, (void*)"PHP" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"1" }, { (int16)-2, (void*)&INS_PHP }, { (int16)-1, (void*)label$6344 } };
+static struct $14__FB_DATADESC$ label$6340[7] = { { (int16)1, (void*)"7" }, { (int16)3, (void*)"W64" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_W64 }, { (int16)-1, (void*)label$6342 } };
+static struct $14__FB_DATADESC$ label$6338[7] = { { (int16)1, (void*)"6" }, { (int16)3, (void*)"ASL" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_ASL }, { (int16)-1, (void*)label$6340 } };
+static struct $14__FB_DATADESC$ label$6336[7] = { { (int16)1, (void*)"5" }, { (int16)3, (void*)"ORA" }, { (int16)1, (void*)"4" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"2" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6338 } };
+static struct $14__FB_DATADESC$ label$6334[7] = { { (int16)1, (void*)"4" }, { (int16)3, (void*)"R64" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_R64 }, { (int16)-1, (void*)label$6336 } };
+static struct $14__FB_DATADESC$ label$6332[7] = { { (int16)1, (void*)"3" }, { (int16)3, (void*)"W32" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_W32 }, { (int16)-1, (void*)label$6334 } };
+static struct $14__FB_DATADESC$ label$6330[7] = { { (int16)1, (void*)"2" }, { (int16)3, (void*)"R32" }, { (int16)1, (void*)"3" }, { (int16)1, (void*)"0" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_R32 }, { (int16)-1, (void*)label$6332 } };
+static struct $14__FB_DATADESC$ label$6328[7] = { { (int16)1, (void*)"1" }, { (int16)3, (void*)"ORA" }, { (int16)2, (void*)"10" }, { (int16)1, (void*)"6" }, { (int16)1, (void*)"2" }, { (int16)-2, (void*)&INS_ORA }, { (int16)-1, (void*)label$6330 } };
+static struct $14__FB_DATADESC$ label$5941[7] = { { (int16)1, (void*)"0" }, { (int16)3, (void*)"BRK" }, { (int16)1, (void*)"1" }, { (int16)1, (void*)"7" }, { (int16)1, (void*)"0" }, { (int16)-2, (void*)&INS_BRK }, { (int16)-1, (void*)label$6328 } };
 double SWCH$;
 double OFFSET$;
 void* IMAGE$;
@@ -6250,7 +6250,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    }
    goto label$1545;
    label$1546:;
-   static const void* tmp$2795[241ll] = {
+   static const void* tmp$2817[241ll] = {
     &&label$1547,
     &&label$1545,
     &&label$1545,
@@ -6494,7 +6494,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
     &&label$1562,
    };
    if( (TMP$853$3 - 15ull) > 240ull ) goto label$1545;
-   goto *tmp$2795[TMP$853$3 - 15ull];
+   goto *tmp$2817[TMP$853$3 - 15ull];
    label$1545:;
   }
  }
@@ -10553,10 +10553,10 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
             uint64 TMP$871$12;
             if( ((X$11 + Y$9) % 2ll) != 0ll ) goto label$3215;
             TMP$871$12 = 4294967295ull;
-            goto label$5899;
+            goto label$5923;
             label$3215:;
             TMP$871$12 = 4278190080ull;
-            label$5899:;
+            label$5923:;
             fb_GfxLine( FGIMAGE$, (float)((double)(X$11 << (9ll & 63ll)) / 0x1.p+4), (float)((double)(Y$9 << (9ll & 63ll)) / 0x1.p+4), 0x1.Fp+4f, 0x1.Fp+4f, (uint32)TMP$871$12, 2, 65535u, 1 );
            }
            label$3212:;
@@ -10736,16 +10736,16 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
         int64 TMP$884$8;
         if( OX$5 != MX$5 ) goto label$3240;
         TMP$883$8 = (int64)-(OY$5 != MY$5);
-        goto label$5900;
+        goto label$5924;
         label$3240:;
         TMP$883$8 = -1ll;
-        label$5900:;
+        label$5924:;
         if( TMP$883$8 != 0ll ) goto label$3241;
         TMP$884$8 = (int64)-(OB$5 != MB$5);
-        goto label$5901;
+        goto label$5925;
         label$3241:;
         TMP$884$8 = -1ll;
-        label$5901:;
+        label$5925:;
         if( TMP$884$8 == 0ll ) goto label$3243;
         {
          (GLUNIFORM4F$)( IMOUSE$5, (float)MX$5, (float)(SCR_H$ - (uint64)MY$5), (float)MB$5, 0x1.p+0f );
@@ -12422,7 +12422,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       }
       goto label$3260;
       label$3261:;
-      static const void* tmp$2796[256ll] = {
+      static const void* tmp$2818[256ll] = {
        &&label$3262,
        &&label$3263,
        &&label$3264,
@@ -12681,7 +12681,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
        &&label$3517,
       };
       if( TMP$907$6 > 255ull ) goto label$3260;
-      goto *tmp$2796[TMP$907$6 - 0ull];
+      goto *tmp$2818[TMP$907$6 - 0ull];
       label$3260:;
      }
     }
@@ -14229,7 +14229,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       }
       goto label$3519;
       label$3520:;
-      static const void* tmp$2797[256ll] = {
+      static const void* tmp$2819[256ll] = {
        &&label$3521,
        &&label$3522,
        &&label$3523,
@@ -14488,7 +14488,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
        &&label$3776,
       };
       if( TMP$1161$6 > 255ull ) goto label$3519;
-      goto *tmp$2797[TMP$1161$6 - 0ull];
+      goto *tmp$2819[TMP$1161$6 - 0ull];
       label$3519:;
      }
     }
@@ -14566,7 +14566,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       }
       goto label$3778;
       label$3779:;
-      static const void* tmp$2798[11ll] = {
+      static const void* tmp$2820[11ll] = {
        &&label$3780,
        &&label$3781,
        &&label$3782,
@@ -14580,7 +14580,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
        &&label$3790,
       };
       if( TMP$1414$6 > 10ull ) goto label$3778;
-      goto *tmp$2798[TMP$1414$6 - 0ull];
+      goto *tmp$2820[TMP$1414$6 - 0ull];
       label$3778:;
      }
     }
@@ -14939,7 +14939,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       }
       goto label$3798;
       label$3799:;
-      static const void* tmp$2799[23ll] = {
+      static const void* tmp$2821[23ll] = {
        &&label$3800,
        &&label$3801,
        &&label$3802,
@@ -14965,7 +14965,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
        &&label$3822,
       };
       if( TMP$1415$6 > 22ull ) goto label$3798;
-      goto *tmp$2799[TMP$1415$6 - 0ull];
+      goto *tmp$2821[TMP$1415$6 - 0ull];
       label$3798:;
      }
     }
@@ -16505,7 +16505,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       }
       goto label$3824;
       label$3825:;
-      static const void* tmp$2800[256ll] = {
+      static const void* tmp$2822[256ll] = {
        &&label$3826,
        &&label$3827,
        &&label$3828,
@@ -16764,7 +16764,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
        &&label$4080,
       };
       if( TMP$1487$6 > 255ull ) goto label$3824;
-      goto *tmp$2800[TMP$1487$6 - 0ull];
+      goto *tmp$2822[TMP$1487$6 - 0ull];
       label$3824:;
      }
     }
@@ -18312,7 +18312,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       }
       goto label$4082;
       label$4083:;
-      static const void* tmp$2801[256ll] = {
+      static const void* tmp$2823[256ll] = {
        &&label$4084,
        &&label$4085,
        &&label$4086,
@@ -18571,7 +18571,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
        &&label$4339,
       };
       if( TMP$1733$6 > 255ull ) goto label$4082;
-      goto *tmp$2801[TMP$1733$6 - 0ull];
+      goto *tmp$2823[TMP$1733$6 - 0ull];
       label$4082:;
      }
     }
@@ -21581,7 +21581,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       }
       goto label$4849;
       label$4850:;
-      static const void* tmp$2802[162ll] = {
+      static const void* tmp$2824[162ll] = {
        &&label$4851,
        &&label$4852,
        &&label$4853,
@@ -21746,7 +21746,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
        &&label$5011,
       };
       if( TMP$2236$6 > 161ull ) goto label$4849;
-      goto *tmp$2802[TMP$2236$6 - 0ull];
+      goto *tmp$2824[TMP$2236$6 - 0ull];
       label$4849:;
      }
     }
@@ -23264,7 +23264,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       }
       goto label$5013;
       label$5014:;
-      static const void* tmp$2803[256ll] = {
+      static const void* tmp$2825[256ll] = {
        &&label$5015,
        &&label$5016,
        &&label$5017,
@@ -23523,7 +23523,7 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
        &&label$5265,
       };
       if( TMP$2392$6 > 255ull ) goto label$5013;
-      goto *tmp$2803[TMP$2392$6 - 0ull];
+      goto *tmp$2825[TMP$2392$6 - 0ull];
       label$5013:;
      }
     }
@@ -24020,8 +24020,140 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
        fb_PrintString( 1, (FBSTRING*)vr$4649, 0 );
       }
       goto label$5267;
+      label$5350:;
+      {
+       FBSTRING* vr$4650 = fb_StrAllocTempDescZEx( (uint8*)"ert", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4650, 0 );
+      }
+      goto label$5267;
+      label$5351:;
+      {
+       FBSTRING* vr$4651 = fb_StrAllocTempDescZEx( (uint8*)"endifle", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4651, 0 );
+      }
+      goto label$5267;
+      label$5352:;
+      {
+       FBSTRING* vr$4652 = fb_StrAllocTempDescZEx( (uint8*)"fnend", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4652, 0 );
+      }
+      goto label$5267;
+      label$5353:;
+      {
+       FBSTRING* vr$4653 = fb_StrAllocTempDescZEx( (uint8*)"fnexit", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4653, 0 );
+      }
+      goto label$5267;
+      label$5354:;
+      {
+       FBSTRING* vr$4654 = fb_StrAllocTempDescZEx( (uint8*)"free", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4654, 0 );
+      }
+      goto label$5267;
+      label$5355:;
+      {
+       FBSTRING* vr$4655 = fb_StrAllocTempDescZEx( (uint8*)"fsp", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4655, 0 );
+      }
+      goto label$5267;
+      label$5356:;
+      {
+       FBSTRING* vr$4656 = fb_StrAllocTempDescZEx( (uint8*)"functionend", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4656, 0 );
+      }
+      goto label$5267;
+      label$5357:;
+      {
+       FBSTRING* vr$4657 = fb_StrAllocTempDescZEx( (uint8*)"functionexit", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4657, 0 );
+      }
+      goto label$5267;
+      label$5358:;
+      {
+       FBSTRING* vr$4658 = fb_StrAllocTempDescZEx( (uint8*)"getrfa", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4658, 0 );
+      }
+      goto label$5267;
+      label$5359:;
+      {
+       FBSTRING* vr$4659 = fb_StrAllocTempDescZEx( (uint8*)"handler", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4659, 0 );
+      }
+      goto label$5267;
+      label$5360:;
+      {
+       FBSTRING* vr$4660 = fb_StrAllocTempDescZEx( (uint8*)"linput", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4660, 0 );
+      }
+      goto label$5267;
+      label$5361:;
+      {
+       FBSTRING* vr$4661 = fb_StrAllocTempDescZEx( (uint8*)"mag", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4661, 0 );
+      }
+      goto label$5267;
+      label$5362:;
+      {
+       FBSTRING* vr$4662 = fb_StrAllocTempDescZEx( (uint8*)"magtape", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4662, 0 );
+      }
+      goto label$5267;
+      label$5363:;
+      {
+       FBSTRING* vr$4663 = fb_StrAllocTempDescZEx( (uint8*)"mar", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4663, 0 );
+      }
+      goto label$5267;
+      label$5364:;
+      {
+       FBSTRING* vr$4664 = fb_StrAllocTempDescZEx( (uint8*)"margin", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4664, 0 );
+      }
+      goto label$5267;
+      label$5365:;
+      {
+       FBSTRING* vr$4665 = fb_StrAllocTempDescZEx( (uint8*)"mat", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4665, 0 );
+      }
+      goto label$5267;
+      label$5366:;
+      {
+       FBSTRING* vr$4666 = fb_StrAllocTempDescZEx( (uint8*)"noecho", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4666, 0 );
+      }
+      goto label$5267;
+      label$5367:;
+      {
+       FBSTRING* vr$4667 = fb_StrAllocTempDescZEx( (uint8*)"nomargin", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4667, 0 );
+      }
+      goto label$5267;
+      label$5368:;
+      {
+       FBSTRING* vr$4668 = fb_StrAllocTempDescZEx( (uint8*)"num", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4668, 0 );
+      }
+      goto label$5267;
+      label$5369:;
+      {
+       FBSTRING* vr$4669 = fb_StrAllocTempDescZEx( (uint8*)"num2", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4669, 0 );
+      }
+      goto label$5267;
+      label$5370:;
+      {
+       FBSTRING* vr$4670 = fb_StrAllocTempDescZEx( (uint8*)"num1", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4670, 0 );
+      }
+      goto label$5267;
+      label$5371:;
+      {
+       FBSTRING* vr$4671 = fb_StrAllocTempDescZEx( (uint8*)"place", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4671, 0 );
+      }
+      goto label$5267;
       label$5268:;
-      static const void* tmp$2804[82ll] = {
+      static const void* tmp$2826[104ll] = {
        &&label$5269,
        &&label$5270,
        &&label$5271,
@@ -24104,15 +24236,37 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
        &&label$5347,
        &&label$5348,
        &&label$5349,
+       &&label$5350,
+       &&label$5351,
+       &&label$5352,
+       &&label$5353,
+       &&label$5354,
+       &&label$5355,
+       &&label$5356,
+       &&label$5357,
+       &&label$5358,
+       &&label$5359,
+       &&label$5360,
+       &&label$5361,
+       &&label$5362,
+       &&label$5363,
+       &&label$5364,
+       &&label$5365,
+       &&label$5366,
+       &&label$5367,
+       &&label$5368,
+       &&label$5369,
+       &&label$5370,
+       &&label$5371,
       };
-      if( TMP$2630$6 > 81ull ) goto label$5267;
-      goto *tmp$2804[TMP$2630$6 - 0ull];
+      if( TMP$2630$6 > 103ull ) goto label$5267;
+      goto *tmp$2826[TMP$2630$6 - 0ull];
       label$5267:;
      }
     }
     goto label$3186;
     label$3187:;
-    static const void* tmp$2805[23ll] = {
+    static const void* tmp$2827[23ll] = {
      &&label$3188,
      &&label$3250,
      &&label$3251,
@@ -24138,297 +24292,297 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      &&label$5266,
     };
     if( TMP$860$4 > 22ull ) goto label$3186;
-    goto *tmp$2805[TMP$860$4 - 0ull];
+    goto *tmp$2827[TMP$860$4 - 0ull];
     label$3186:;
    }
   }
   goto label$3109;
   label$3184:;
-  if( ADR$1 != 0x1.8144p+15 ) goto label$5350;
-  label$5351:;
+  if( ADR$1 != 0x1.8144p+15 ) goto label$5372;
+  label$5373:;
   {
    {
-    if( V$1 != 0x0p+0 ) goto label$5353;
-    label$5354:;
+    if( V$1 != 0x0p+0 ) goto label$5375;
+    label$5376:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.bas", 8ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"fbc ", 5ll, 0 );
     }
-    goto label$5352;
-    label$5353:;
-    if( V$1 != 0x1.p+0 ) goto label$5355;
-    label$5356:;
+    goto label$5374;
+    label$5375:;
+    if( V$1 != 0x1.p+0 ) goto label$5377;
+    label$5378:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.bas", 8ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"fbc -lang qb ", 14ll, 0 );
     }
-    goto label$5352;
-    label$5355:;
-    if( V$1 != 0x1.p+1 ) goto label$5357;
-    label$5358:;
+    goto label$5374;
+    label$5377:;
+    if( V$1 != 0x1.p+1 ) goto label$5379;
+    label$5380:;
     {
     }
-    goto label$5352;
-    label$5357:;
-    if( V$1 != 0x1.8p+1 ) goto label$5359;
-    label$5360:;
+    goto label$5374;
+    label$5379:;
+    if( V$1 != 0x1.8p+1 ) goto label$5381;
+    label$5382:;
     {
     }
-    goto label$5352;
-    label$5359:;
-    if( V$1 != 0x1.p+2 ) goto label$5361;
-    label$5362:;
+    goto label$5374;
+    label$5381:;
+    if( V$1 != 0x1.p+2 ) goto label$5383;
+    label$5384:;
     {
     }
-    goto label$5352;
-    label$5361:;
-    if( V$1 != 0x1.4p+2 ) goto label$5363;
-    label$5364:;
+    goto label$5374;
+    label$5383:;
+    if( V$1 != 0x1.4p+2 ) goto label$5385;
+    label$5386:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.glsl", 9ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"", 1ll, 0 );
     }
-    goto label$5352;
-    label$5363:;
-    if( V$1 != 0x1.8p+2 ) goto label$5365;
-    label$5366:;
+    goto label$5374;
+    label$5385:;
+    if( V$1 != 0x1.8p+2 ) goto label$5387;
+    label$5388:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.cob", 8ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"cobc ", 6ll, 0 );
     }
-    goto label$5352;
-    label$5365:;
-    if( V$1 != 0x1.Cp+2 ) goto label$5367;
-    label$5368:;
+    goto label$5374;
+    label$5387:;
+    if( V$1 != 0x1.Cp+2 ) goto label$5389;
+    label$5390:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.f77", 8ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"gfortran ", 10ll, 0 );
     }
-    goto label$5352;
-    label$5367:;
-    if( V$1 != 0x1.p+3 ) goto label$5369;
-    label$5370:;
+    goto label$5374;
+    label$5389:;
+    if( V$1 != 0x1.p+3 ) goto label$5391;
+    label$5392:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.pas", 8ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"fpc ", 5ll, 0 );
     }
-    goto label$5352;
-    label$5369:;
-    if( V$1 != 0x1.2p+3 ) goto label$5371;
-    label$5372:;
+    goto label$5374;
+    label$5391:;
+    if( V$1 != 0x1.2p+3 ) goto label$5393;
+    label$5394:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.osl", 8ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"", 1ll, 0 );
     }
-    goto label$5352;
-    label$5371:;
-    if( V$1 != 0x1.4p+3 ) goto label$5373;
-    label$5374:;
+    goto label$5374;
+    label$5393:;
+    if( V$1 != 0x1.4p+3 ) goto label$5395;
+    label$5396:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.pov", 8ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"povray ", 8ll, 0 );
     }
-    goto label$5352;
-    label$5373:;
-    if( V$1 != 0x1.6p+3 ) goto label$5375;
-    label$5376:;
+    goto label$5374;
+    label$5395:;
+    if( V$1 != 0x1.6p+3 ) goto label$5397;
+    label$5398:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.java", 9ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"java ", 6ll, 0 );
     }
-    goto label$5352;
-    label$5375:;
-    if( V$1 != 0x1.8p+3 ) goto label$5377;
-    label$5378:;
+    goto label$5374;
+    label$5397:;
+    if( V$1 != 0x1.8p+3 ) goto label$5399;
+    label$5400:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.c", 6ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"gcc ", 5ll, 0 );
     }
-    goto label$5352;
-    label$5377:;
-    if( V$1 != 0x1.Ap+3 ) goto label$5379;
-    label$5380:;
+    goto label$5374;
+    label$5399:;
+    if( V$1 != 0x1.Ap+3 ) goto label$5401;
+    label$5402:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.cpp", 8ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"g++ ", 5ll, 0 );
     }
-    goto label$5352;
-    label$5379:;
-    if( V$1 != 0x1.Cp+3 ) goto label$5381;
-    label$5382:;
+    goto label$5374;
+    label$5401:;
+    if( V$1 != 0x1.Cp+3 ) goto label$5403;
+    label$5404:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.cs", 7ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"csc ", 5ll, 0 );
     }
-    goto label$5352;
-    label$5381:;
-    if( V$1 != 0x1.Ep+3 ) goto label$5383;
-    label$5384:;
+    goto label$5374;
+    label$5403:;
+    if( V$1 != 0x1.Ep+3 ) goto label$5405;
+    label$5406:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.js", 7ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"node ", 6ll, 0 );
     }
-    goto label$5352;
-    label$5383:;
-    if( V$1 != 0x1.p+4 ) goto label$5385;
-    label$5386:;
+    goto label$5374;
+    label$5405:;
+    if( V$1 != 0x1.p+4 ) goto label$5407;
+    label$5408:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.php", 8ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"php -f ", 8ll, 0 );
     }
-    goto label$5352;
-    label$5385:;
-    if( V$1 != 0x1.p+0 ) goto label$5387;
-    label$5388:;
+    goto label$5374;
+    label$5407:;
+    if( V$1 != 0x1.p+0 ) goto label$5409;
+    label$5410:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.py", 7ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"python ", 8ll, 0 );
     }
-    goto label$5352;
-    label$5387:;
-    if( V$1 != 0x1.2p+4 ) goto label$5389;
-    label$5390:;
+    goto label$5374;
+    label$5409:;
+    if( V$1 != 0x1.2p+4 ) goto label$5411;
+    label$5412:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.swift", 10ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"swift ", 7ll, 0 );
     }
-    goto label$5352;
-    label$5389:;
-    if( V$1 != 0x1.3p+4 ) goto label$5391;
-    label$5392:;
+    goto label$5374;
+    label$5411:;
+    if( V$1 != 0x1.3p+4 ) goto label$5413;
+    label$5414:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.m", 6ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"octave --persist ", 18ll, 0 );
     }
-    goto label$5352;
-    label$5391:;
-    if( V$1 != 0x1.4p+4 ) goto label$5393;
-    label$5394:;
+    goto label$5374;
+    label$5413:;
+    if( V$1 != 0x1.4p+4 ) goto label$5415;
+    label$5416:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.kt", 7ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"kotlinc ", 9ll, 0 );
     }
-    goto label$5352;
-    label$5393:;
-    if( V$1 != 0x1.5p+4 ) goto label$5395;
-    label$5396:;
+    goto label$5374;
+    label$5415:;
+    if( V$1 != 0x1.5p+4 ) goto label$5417;
+    label$5418:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.r", 6ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"rscript ", 9ll, 0 );
     }
-    goto label$5352;
-    label$5395:;
-    if( V$1 != 0x1.6p+4 ) goto label$5397;
-    label$5398:;
+    goto label$5374;
+    label$5417:;
+    if( V$1 != 0x1.6p+4 ) goto label$5419;
+    label$5420:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.dart", 9ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"dart ", 6ll, 0 );
     }
-    goto label$5352;
-    label$5397:;
-    if( V$1 != 0x1.7p+4 ) goto label$5399;
-    label$5400:;
+    goto label$5374;
+    label$5419:;
+    if( V$1 != 0x1.7p+4 ) goto label$5421;
+    label$5422:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.scala", 10ll, 0 );
      fb_StrAssign( (void*)&COMPILER$, -1ll, (void*)"scalac ", 8ll, 0 );
     }
-    goto label$5352;
-    label$5399:;
-    if( V$1 != 0x1.8p+4 ) goto label$5401;
-    label$5402:;
+    goto label$5374;
+    label$5421:;
+    if( V$1 != 0x1.8p+4 ) goto label$5423;
+    label$5424:;
     {
      fb_FileOpen( (FBSTRING*)&FILENAME$, 3u, 0u, 0u, 1, 0 );
     }
-    goto label$5352;
-    label$5401:;
-    if( V$1 != 0x1.9p+4 ) goto label$5403;
-    label$5404:;
+    goto label$5374;
+    label$5423:;
+    if( V$1 != 0x1.9p+4 ) goto label$5425;
+    label$5426:;
     {
      fb_FileClose( 1 );
     }
-    goto label$5352;
-    label$5403:;
-    if( V$1 != 0x1.Ap+4 ) goto label$5405;
-    label$5406:;
+    goto label$5374;
+    label$5425:;
+    if( V$1 != 0x1.Ap+4 ) goto label$5427;
+    label$5428:;
     {
-     FBSTRING TMP$2749$5;
-     FBSTRING TMP$2754$5;
+     FBSTRING TMP$2771$5;
+     FBSTRING TMP$2776$5;
      fb_GfxLine( FGIMAGE$, 0x0p+0f, 0x0p+0f, (float)SCR_W$, (float)SCR_H$, 4278190080u, 2, 65535u, 0 );
-     __builtin_memset( &TMP$2749$5, 0, 24ll );
-     FBSTRING* vr$4654 = fb_StrConcat( &TMP$2749$5, (void*)&COMPILER$, -1ll, (void*)&FILENAME$, -1ll );
-     fb_Shell( (FBSTRING*)vr$4654 );
-     FBSTRING* vr$4655 = fb_StrAllocTempDescZEx( (uint8*)"./tmp > tmp.txt", 15ll );
-     fb_Shell( (FBSTRING*)vr$4655 );
-     FBSTRING* vr$4656 = fb_StrAllocTempDescZEx( (uint8*)"tmp.txt", 7ll );
-     fb_FileOpen( (FBSTRING*)vr$4656, 2u, 0u, 0u, 1, 0 );
+     __builtin_memset( &TMP$2771$5, 0, 24ll );
+     FBSTRING* vr$4676 = fb_StrConcat( &TMP$2771$5, (void*)&COMPILER$, -1ll, (void*)&FILENAME$, -1ll );
+     fb_Shell( (FBSTRING*)vr$4676 );
+     FBSTRING* vr$4677 = fb_StrAllocTempDescZEx( (uint8*)"./tmp > tmp.txt", 15ll );
+     fb_Shell( (FBSTRING*)vr$4677 );
+     FBSTRING* vr$4678 = fb_StrAllocTempDescZEx( (uint8*)"tmp.txt", 7ll );
+     fb_FileOpen( (FBSTRING*)vr$4678, 2u, 0u, 0u, 1, 0 );
      SCR_POS$ = 0ull;
      *(double*)((uint8*)THIS$1 + 394896ll) = 0x0p+0;
      *(double*)((uint8*)THIS$1 + 394904ll) = 0x0p+0;
      *(double*)((uint8*)THIS$1 + 394912ll) = 0x0p+0;
-     label$5407:;
-     int32 vr$4660 = fb_FileEof( 1 );
-     if( (int64)vr$4660 != 0ll ) goto label$5408;
+     label$5429:;
+     int32 vr$4682 = fb_FileEof( 1 );
+     if( (int64)vr$4682 != 0ll ) goto label$5430;
      {
       fb_FileLineInput( 1, (void*)&STRCODE$, -1ll, 0 );
       {
        INDEX$ = (uint16)1u;
-       uint16 TMP$2750$7;
-       int64 vr$4662 = fb_StrLen( (void*)&STRCODE$, -1ll );
-       TMP$2750$7 = (uint16)vr$4662;
-       goto label$5409;
-       label$5412:;
+       uint16 TMP$2772$7;
+       int64 vr$4684 = fb_StrLen( (void*)&STRCODE$, -1ll );
+       TMP$2772$7 = (uint16)vr$4684;
+       goto label$5431;
+       label$5434:;
        {
-        FBSTRING* vr$4665 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
-        uint32 vr$4666 = fb_ASC( (FBSTRING*)vr$4665, 1ll );
-        *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$4666;
-        if( ((int64)-(*(double*)((uint8*)THIS$1 + 394888ll) > 0x1.Fp+4) & (int64)-(*(double*)((uint8*)THIS$1 + 394888ll) < 0x1.p+6)) == 0ll ) goto label$5414;
+        FBSTRING* vr$4687 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
+        uint32 vr$4688 = fb_ASC( (FBSTRING*)vr$4687, 1ll );
+        *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$4688;
+        if( ((int64)-(*(double*)((uint8*)THIS$1 + 394888ll) > 0x1.Fp+4) & (int64)-(*(double*)((uint8*)THIS$1 + 394888ll) < 0x1.p+6)) == 0ll ) goto label$5436;
         {
          *(double*)((uint8*)THIS$1 + 394888ll) = *(double*)((uint8*)THIS$1 + 394888ll) + 0x1.p+5;
-         label$5414:;
+         label$5436:;
         }
         _ZN8MEMORY_T5POKEBEdd( THIS$1, (double)((uint64)((int64)INDEX$ + 16383ll) + SCR_POS$), (double)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394888ll) + 0x1.p+5 )) & 63ll) );
        }
-       label$5410:;
+       label$5432:;
        INDEX$ = (uint16)((int64)INDEX$ + 1ll);
-       label$5409:;
-       if( (int64)INDEX$ <= (int64)TMP$2750$7 ) goto label$5412;
-       label$5411:;
+       label$5431:;
+       if( (int64)INDEX$ <= (int64)TMP$2772$7 ) goto label$5434;
+       label$5433:;
       }
       SCR_POS$ = SCR_POS$ + 90ull;
      }
-     goto label$5407;
-     label$5408:;
+     goto label$5429;
+     label$5430:;
      SCR_POS$ = 5400ull;
      *(double*)((uint8*)THIS$1 + 394912ll) = 0x0p+0;
      fb_FileClose( 1 );
      fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"press any key to continue.", 27ll, 0 );
      {
       INDEX$ = (uint16)1u;
-      uint16 TMP$2752$6;
-      int64 vr$4693 = fb_StrLen( (void*)&STRCODE$, -1ll );
-      TMP$2752$6 = (uint16)vr$4693;
-      goto label$5415;
-      label$5418:;
+      uint16 TMP$2774$6;
+      int64 vr$4715 = fb_StrLen( (void*)&STRCODE$, -1ll );
+      TMP$2774$6 = (uint16)vr$4715;
+      goto label$5437;
+      label$5440:;
       {
-       FBSTRING* vr$4696 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
-       uint32 vr$4697 = fb_ASC( (FBSTRING*)vr$4696, 1ll );
-       *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$4697;
-       if( ((int64)-(*(double*)((uint8*)THIS$1 + 394888ll) > 0x1.Fp+4) & (int64)-(*(double*)((uint8*)THIS$1 + 394888ll) < 0x1.p+6)) == 0ll ) goto label$5420;
+       FBSTRING* vr$4718 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
+       uint32 vr$4719 = fb_ASC( (FBSTRING*)vr$4718, 1ll );
+       *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$4719;
+       if( ((int64)-(*(double*)((uint8*)THIS$1 + 394888ll) > 0x1.Fp+4) & (int64)-(*(double*)((uint8*)THIS$1 + 394888ll) < 0x1.p+6)) == 0ll ) goto label$5442;
        {
         *(double*)((uint8*)THIS$1 + 394888ll) = *(double*)((uint8*)THIS$1 + 394888ll) + 0x1.p+5;
-        label$5420:;
+        label$5442:;
        }
        _ZN8MEMORY_T5POKEBEdd( THIS$1, (double)((uint64)((int64)INDEX$ + 16383ll) + SCR_POS$), (double)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394888ll) + 0x1.p+5 )) & 63ll) );
       }
-      label$5416:;
+      label$5438:;
       INDEX$ = (uint16)((int64)INDEX$ + 1ll);
-      label$5415:;
-      if( (int64)INDEX$ <= (int64)TMP$2752$6 ) goto label$5418;
-      label$5417:;
+      label$5437:;
+      if( (int64)INDEX$ <= (int64)TMP$2774$6 ) goto label$5440;
+      label$5439:;
      }
-     __builtin_memset( &TMP$2754$5, 0, 24ll );
-     FBSTRING* vr$4724 = fb_StrConcat( &TMP$2754$5, (void*)"rm ./tmp; ./", 13ll, (void*)&FILENAME$, -1ll );
-     fb_Shell( (FBSTRING*)vr$4724 );
+     __builtin_memset( &TMP$2776$5, 0, 24ll );
+     FBSTRING* vr$4746 = fb_StrConcat( &TMP$2776$5, (void*)"rm ./tmp; ./", 13ll, (void*)&FILENAME$, -1ll );
+     fb_Shell( (FBSTRING*)vr$4746 );
      SCR_POS$ = 0ull;
      fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
      fb_GfxPut( (void*)0ull, 0x0p+0f, 0x0p+0f, (void*)FGIMAGE$, -65536, -65536, -65536, -65536, 0, 1, (void*)&fb_hPutPSet, -1, (void*)0ull, (void*)0ull );
@@ -24436,10 +24590,10 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      fb_GfxLine( FGIMAGE$, 0x0p+0f, 0x0p+0f, (float)SCR_W$, (float)SCR_H$, 4278190080u, 2, 65535u, 0 );
      fb_GfxPut( (void*)0ull, 0x0p+0f, 0x0p+0f, (void*)FGIMAGE$, -65536, -65536, -65536, -65536, 0, 1, (void*)&fb_hPutPSet, -1, (void*)0ull, (void*)0ull );
     }
-    goto label$5352;
-    label$5405:;
-    if( V$1 != 0x1.Bp+4 ) goto label$5421;
-    label$5422:;
+    goto label$5374;
+    label$5427:;
+    if( V$1 != 0x1.Bp+4 ) goto label$5443;
+    label$5444:;
     {
      *(double*)((uint8*)THIS$1 + 394840ll) = 0x0p+0;
      *(double*)((uint8*)THIS$1 + 394848ll) = 0x0p+0;
@@ -24449,66 +24603,66 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      *(double*)((uint8*)THIS$1 + 394896ll) = 0x0p+0;
      *(double*)((uint8*)THIS$1 + 394904ll) = 0x0p+0;
      *(double*)((uint8*)THIS$1 + 394912ll) = 0x0p+0;
-     label$5423:;
-     int32 vr$4734 = fb_FileEof( 1 );
-     if( (int64)vr$4734 != 0ll ) goto label$5424;
+     label$5445:;
+     int32 vr$4756 = fb_FileEof( 1 );
+     if( (int64)vr$4756 != 0ll ) goto label$5446;
      {
       fb_FileLineInput( 1, (void*)&STRCODE$, -1ll, 0 );
       {
        INDEX$ = (uint16)1u;
-       uint16 TMP$2756$7;
-       int64 vr$4736 = fb_StrLen( (void*)&STRCODE$, -1ll );
-       TMP$2756$7 = (uint16)vr$4736;
-       goto label$5425;
-       label$5428:;
+       uint16 TMP$2778$7;
+       int64 vr$4758 = fb_StrLen( (void*)&STRCODE$, -1ll );
+       TMP$2778$7 = (uint16)vr$4758;
+       goto label$5447;
+       label$5450:;
        {
-        FBSTRING* vr$4739 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
-        uint32 vr$4740 = fb_ASC( (FBSTRING*)vr$4739, 1ll );
-        *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$4740;
-        if( ((int64)-(*(double*)((uint8*)THIS$1 + 394888ll) > 0x1.Fp+4) & (int64)-(*(double*)((uint8*)THIS$1 + 394888ll) < 0x1.p+6)) == 0ll ) goto label$5430;
+        FBSTRING* vr$4761 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
+        uint32 vr$4762 = fb_ASC( (FBSTRING*)vr$4761, 1ll );
+        *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$4762;
+        if( ((int64)-(*(double*)((uint8*)THIS$1 + 394888ll) > 0x1.Fp+4) & (int64)-(*(double*)((uint8*)THIS$1 + 394888ll) < 0x1.p+6)) == 0ll ) goto label$5452;
         {
          *(double*)((uint8*)THIS$1 + 394888ll) = *(double*)((uint8*)THIS$1 + 394888ll) + 0x1.p+5;
-         label$5430:;
+         label$5452:;
         }
         _ZN8MEMORY_T5POKEBEdd( THIS$1, (double)((uint64)((int64)INDEX$ + 16383ll) + SCR_POS$), (double)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394888ll) + 0x1.p+5 )) & 63ll) );
        }
-       label$5426:;
+       label$5448:;
        INDEX$ = (uint16)((int64)INDEX$ + 1ll);
-       label$5425:;
-       if( (int64)INDEX$ <= (int64)TMP$2756$7 ) goto label$5428;
-       label$5427:;
+       label$5447:;
+       if( (int64)INDEX$ <= (int64)TMP$2778$7 ) goto label$5450;
+       label$5449:;
       }
       SCR_POS$ = SCR_POS$ + 90ull;
      }
-     goto label$5423;
-     label$5424:;
+     goto label$5445;
+     label$5446:;
      SCR_POS$ = 5400ull;
      *(double*)((uint8*)THIS$1 + 394912ll) = 0x0p+0;
      fb_FileClose( 1 );
      fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"press any key to continue.", 27ll, 0 );
      {
       INDEX$ = (uint16)1u;
-      uint16 TMP$2757$6;
-      int64 vr$4767 = fb_StrLen( (void*)&STRCODE$, -1ll );
-      TMP$2757$6 = (uint16)vr$4767;
-      goto label$5431;
-      label$5434:;
+      uint16 TMP$2779$6;
+      int64 vr$4789 = fb_StrLen( (void*)&STRCODE$, -1ll );
+      TMP$2779$6 = (uint16)vr$4789;
+      goto label$5453;
+      label$5456:;
       {
-       FBSTRING* vr$4770 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
-       uint32 vr$4771 = fb_ASC( (FBSTRING*)vr$4770, 1ll );
-       *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$4771;
-       if( ((int64)-(*(double*)((uint8*)THIS$1 + 394888ll) > 0x1.Fp+4) & (int64)-(*(double*)((uint8*)THIS$1 + 394888ll) < 0x1.p+6)) == 0ll ) goto label$5436;
+       FBSTRING* vr$4792 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
+       uint32 vr$4793 = fb_ASC( (FBSTRING*)vr$4792, 1ll );
+       *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$4793;
+       if( ((int64)-(*(double*)((uint8*)THIS$1 + 394888ll) > 0x1.Fp+4) & (int64)-(*(double*)((uint8*)THIS$1 + 394888ll) < 0x1.p+6)) == 0ll ) goto label$5458;
        {
         *(double*)((uint8*)THIS$1 + 394888ll) = *(double*)((uint8*)THIS$1 + 394888ll) + 0x1.p+5;
-        label$5436:;
+        label$5458:;
        }
        _ZN8MEMORY_T5POKEBEdd( THIS$1, (double)((uint64)((int64)INDEX$ + 16383ll) + SCR_POS$), (double)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394888ll) + 0x1.p+5 )) & 63ll) );
       }
-      label$5432:;
+      label$5454:;
       INDEX$ = (uint16)((int64)INDEX$ + 1ll);
-      label$5431:;
-      if( (int64)INDEX$ <= (int64)TMP$2757$6 ) goto label$5434;
-      label$5433:;
+      label$5453:;
+      if( (int64)INDEX$ <= (int64)TMP$2779$6 ) goto label$5456;
+      label$5455:;
      }
      SCR_POS$ = 0ull;
      fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
@@ -24517,32 +24671,32 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      fb_GfxLine( FGIMAGE$, 0x0p+0f, 0x0p+0f, (float)SCR_W$, (float)SCR_H$, 4278190080u, 2, 65535u, 0 );
      fb_GfxPut( (void*)0ull, 0x0p+0f, 0x0p+0f, (void*)FGIMAGE$, -65536, -65536, -65536, -65536, 0, 1, (void*)&fb_hPutPSet, -1, (void*)0ull, (void*)0ull );
     }
-    goto label$5352;
-    label$5421:;
-    if( V$1 != 0x1.Cp+4 ) goto label$5437;
-    label$5438:;
+    goto label$5374;
+    label$5443:;
+    if( V$1 != 0x1.Cp+4 ) goto label$5459;
+    label$5460:;
     {
      fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"", 1ll, 0 );
     }
-    label$5437:;
-    label$5352:;
+    label$5459:;
+    label$5374:;
    }
   }
   goto label$3109;
-  label$5350:;
-  if( ADR$1 != 0x1.8146p+15 ) goto label$5439;
-  label$5440:;
+  label$5372:;
+  if( ADR$1 != 0x1.8146p+15 ) goto label$5461;
+  label$5462:;
   {
    fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"tmp.glsl", 9ll, 0 );
    _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.8142p+15, 0x0p+0 );
   }
   goto label$3109;
-  label$5439:;
-  if( ADR$1 != 0x1.8154p+15 ) goto label$5441;
-  label$5442:;
+  label$5461:;
+  if( ADR$1 != 0x1.8154p+15 ) goto label$5463;
+  label$5464:;
   {
-   int64 TMP$2759$3;
-   int64 TMP$2760$3;
+   int64 TMP$2781$3;
+   int64 TMP$2782$3;
    int64 X$3;
    __builtin_memset( &X$3, 0, 8ll );
    int64 Y$3;
@@ -24553,348 +24707,216 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    __builtin_memset( &BUTTONS$3, 0, 8ll );
    int64 RES$3;
    __builtin_memset( &RES$3, 0, 8ll );
-   TMP$2760$3 = 0ll;
-   TMP$2759$3 = 0ll;
-   int32 vr$4808 = fb_GetMouse64( (int64*)&X$3, (int64*)&Y$3, &TMP$2759$3, (int64*)&BUTTONS$3, &TMP$2760$3 );
-   *(double*)((uint8*)THIS$1 + 394576ll) = (double)vr$4808;
+   TMP$2782$3 = 0ll;
+   TMP$2781$3 = 0ll;
+   int32 vr$4830 = fb_GetMouse64( (int64*)&X$3, (int64*)&Y$3, &TMP$2781$3, (int64*)&BUTTONS$3, &TMP$2782$3 );
+   *(double*)((uint8*)THIS$1 + 394576ll) = (double)vr$4830;
    *(double*)((uint8*)THIS$1 + 394840ll) = (double)X$3;
    *(double*)((uint8*)THIS$1 + 394848ll) = (double)Y$3;
    *(double*)((uint8*)THIS$1 + 394856ll) = (double)WHEEL$3;
-   if( (BUTTONS$3 & 1ll) == 0ll ) goto label$5444;
+   if( (BUTTONS$3 & 1ll) == 0ll ) goto label$5466;
    {
     *(double*)((uint8*)THIS$1 + 394864ll) = 0x1.p+0;
-    label$5444:;
+    label$5466:;
    }
-   if( (BUTTONS$3 & 2ll) == 0ll ) goto label$5446;
+   if( (BUTTONS$3 & 2ll) == 0ll ) goto label$5468;
    {
     *(double*)((uint8*)THIS$1 + 394864ll) = 0x1.p+1;
-    label$5446:;
+    label$5468:;
    }
-   if( (BUTTONS$3 & 4ll) == 0ll ) goto label$5448;
+   if( (BUTTONS$3 & 4ll) == 0ll ) goto label$5470;
    {
     *(double*)((uint8*)THIS$1 + 394864ll) = 0x1.p+2;
-    label$5448:;
+    label$5470:;
    }
   }
   goto label$3109;
-  label$5441:;
-  if( ADR$1 != 0x1.8156p+15 ) goto label$5449;
-  label$5450:;
+  label$5463:;
+  if( ADR$1 != 0x1.8156p+15 ) goto label$5471;
+  label$5472:;
   {
    fb_PageCopy( ((int32)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394840ll) )), ((int32)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394848ll) )) );
   }
   goto label$3109;
-  label$5449:;
-  if( ADR$1 != 0x1.81CCp+15 ) goto label$5451;
-  label$5452:;
+  label$5471:;
+  if( ADR$1 != 0x1.81CCp+15 ) goto label$5473;
+  label$5474:;
   {
-   FBSTRING TMP$2763$3;
-   FBSTRING TMP$2764$3;
+   FBSTRING TMP$2785$3;
+   FBSTRING TMP$2786$3;
    uint8 TMP$3;
    __builtin_memset( &TMP$3, 0, 1ll );
    {
     int64 C$4;
     C$4 = 0ll;
-    label$5456:;
+    label$5478:;
     {
      *(double*)((uint8*)((uint8*)THIS$1 + (C$4 << (3ll & 63ll))) + 134479872ll) = 0x0p+0;
     }
-    label$5454:;
+    label$5476:;
     C$4 = C$4 + 1ll;
-    label$5453:;
-    if( C$4 <= 8191ll ) goto label$5456;
-    label$5455:;
+    label$5475:;
+    if( C$4 <= 8191ll ) goto label$5478;
+    label$5477:;
    }
-   FBSTRING* vr$4831 = fb_DoubleToStr( V$1 );
-   __builtin_memset( &TMP$2763$3, 0, 24ll );
-   FBSTRING* vr$4834 = fb_StrConcat( &TMP$2763$3, (void*)"./chargen/", 11ll, (void*)vr$4831, -1ll );
-   __builtin_memset( &TMP$2764$3, 0, 24ll );
-   FBSTRING* vr$4837 = fb_StrConcat( &TMP$2764$3, (void*)vr$4834, -1ll, (void*)".c64", 5ll );
-   fb_FileOpen( (FBSTRING*)vr$4837, 0u, 0u, 0u, 1, 0 );
+   FBSTRING* vr$4853 = fb_DoubleToStr( V$1 );
+   __builtin_memset( &TMP$2785$3, 0, 24ll );
+   FBSTRING* vr$4856 = fb_StrConcat( &TMP$2785$3, (void*)"./chargen/", 11ll, (void*)vr$4853, -1ll );
+   __builtin_memset( &TMP$2786$3, 0, 24ll );
+   FBSTRING* vr$4859 = fb_StrConcat( &TMP$2786$3, (void*)vr$4856, -1ll, (void*)".c64", 5ll );
+   fb_FileOpen( (FBSTRING*)vr$4859, 0u, 0u, 0u, 1, 0 );
    {
     int64 I$4;
     I$4 = 0ll;
-    int64 TMP$2765$4;
-    int64 vr$4838 = fb_FileSize( 1 );
-    TMP$2765$4 = vr$4838;
-    goto label$5457;
-    label$5460:;
+    int64 TMP$2787$4;
+    int64 vr$4860 = fb_FileSize( 1 );
+    TMP$2787$4 = vr$4860;
+    goto label$5479;
+    label$5482:;
     {
      fb_FileGetLarge( 1, 0ll, (void*)&TMP$3, 1ull );
      *(double*)((uint8*)((uint8*)THIS$1 + (I$4 << (3ll & 63ll))) + 134479872ll) = (double)TMP$3;
     }
-    label$5458:;
+    label$5480:;
     I$4 = I$4 + 1ll;
-    label$5457:;
-    if( I$4 <= TMP$2765$4 ) goto label$5460;
-    label$5459:;
+    label$5479:;
+    if( I$4 <= TMP$2787$4 ) goto label$5482;
+    label$5481:;
    }
    fb_FileClose( 1 );
   }
   goto label$3109;
-  label$5451:;
-  if( ADR$1 == 0x1.81D6p+15 ) goto label$5462;
-  label$5463:;
-  if( ADR$1 != 0x1.81D8p+15 ) goto label$5461;
-  label$5462:;
+  label$5473:;
+  if( ADR$1 == 0x1.81D6p+15 ) goto label$5484;
+  label$5485:;
+  if( ADR$1 != 0x1.81D8p+15 ) goto label$5483;
+  label$5484:;
   {
    {
-    if( V$1 < 0x0p+0 ) goto label$5465;
-    if( V$1 > 0x1.Ep+3 ) goto label$5465;
-    label$5466:;
+    if( V$1 < 0x0p+0 ) goto label$5487;
+    if( V$1 > 0x1.Ep+3 ) goto label$5487;
+    label$5488:;
     {
      _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)FCOLOR$, (double)(((int64)__builtin_nearbyint( V$1 )) % 255ll) );
     }
-    goto label$5464;
-    label$5465:;
-    if( V$1 < 0x1.p+4 ) goto label$5467;
-    if( V$1 > 0x1.Fp+4 ) goto label$5467;
-    label$5468:;
+    goto label$5486;
+    label$5487:;
+    if( V$1 < 0x1.p+4 ) goto label$5489;
+    if( V$1 > 0x1.Fp+4 ) goto label$5489;
+    label$5490:;
     {
      _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.8004p+15, (double)(((((int64)__builtin_nearbyint( V$1 + -0x1.p+4 )) % 255ll) * 17ll) % 255ll) );
     }
-    goto label$5464;
-    label$5467:;
-    if( V$1 < 0x1.p+5 ) goto label$5469;
-    if( V$1 > 0x1.78p+5 ) goto label$5469;
-    label$5470:;
+    goto label$5486;
+    label$5489:;
+    if( V$1 < 0x1.p+5 ) goto label$5491;
+    if( V$1 > 0x1.78p+5 ) goto label$5491;
+    label$5492:;
     {
      _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.8006p+15, (double)(((((int64)__builtin_nearbyint( V$1 + -0x1.p+5 )) % 255ll) * 17ll) % 255ll) );
     }
-    goto label$5464;
-    label$5469:;
-    if( V$1 < 0x1.8p+5 ) goto label$5471;
-    if( V$1 > 0x1.F8p+5 ) goto label$5471;
-    label$5472:;
+    goto label$5486;
+    label$5491:;
+    if( V$1 < 0x1.8p+5 ) goto label$5493;
+    if( V$1 > 0x1.F8p+5 ) goto label$5493;
+    label$5494:;
     {
      _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.8008p+15, (double)(((((int64)__builtin_nearbyint( V$1 + -0x1.8p+5 )) % 255ll) * 17ll) % 255ll) );
     }
-    goto label$5464;
-    label$5471:;
+    goto label$5486;
+    label$5493:;
     {
      _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.800Ap+15, (double)(((((int64)__builtin_nearbyint( V$1 + -0x1.p+6 )) % 255ll) * 17ll) % 255ll) );
     }
-    label$5473:;
-    label$5464:;
+    label$5495:;
+    label$5486:;
    }
-   if( ADR$1 != (SYS_OFFSET$ + 0x1.D8p+7) ) goto label$5475;
+   if( ADR$1 != (SYS_OFFSET$ + 0x1.D8p+7) ) goto label$5497;
    {
-    double vr$4873 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.8192p+15 );
-    _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)EXTCOL$, vr$4873 );
-    double vr$4875 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.8192p+15 );
-    _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)BGCOL0$, vr$4875 );
+    double vr$4895 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.8192p+15 );
+    _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)EXTCOL$, vr$4895 );
+    double vr$4897 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.8192p+15 );
+    _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)BGCOL0$, vr$4897 );
    }
-   label$5475:;
-   label$5474:;
+   label$5497:;
+   label$5496:;
   }
   goto label$3109;
-  label$5461:;
-  if( ADR$1 != 0x1.81DAp+15 ) goto label$5476;
-  label$5477:;
+  label$5483:;
+  if( ADR$1 != 0x1.81DAp+15 ) goto label$5498;
+  label$5499:;
   {
    {
-    if( V$1 < 0x0p+0 ) goto label$5479;
-    if( V$1 > 0x1.Ep+3 ) goto label$5479;
-    label$5480:;
+    if( V$1 < 0x0p+0 ) goto label$5501;
+    if( V$1 > 0x1.Ep+3 ) goto label$5501;
+    label$5502:;
     {
      _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)BGCOL0$, (double)(((int64)__builtin_nearbyint( V$1 )) % 255ll) );
     }
-    goto label$5478;
-    label$5479:;
-    if( V$1 < 0x1.p+4 ) goto label$5481;
-    if( V$1 > 0x1.Fp+4 ) goto label$5481;
-    label$5482:;
+    goto label$5500;
+    label$5501:;
+    if( V$1 < 0x1.p+4 ) goto label$5503;
+    if( V$1 > 0x1.Fp+4 ) goto label$5503;
+    label$5504:;
     {
      _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.800Cp+15, (double)(((((int64)__builtin_nearbyint( V$1 + -0x1.p+4 )) % 255ll) * 17ll) % 255ll) );
     }
-    goto label$5478;
-    label$5481:;
-    if( V$1 < 0x1.p+5 ) goto label$5483;
-    if( V$1 > 0x1.78p+5 ) goto label$5483;
-    label$5484:;
+    goto label$5500;
+    label$5503:;
+    if( V$1 < 0x1.p+5 ) goto label$5505;
+    if( V$1 > 0x1.78p+5 ) goto label$5505;
+    label$5506:;
     {
      _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.800Ep+15, (double)(((((int64)__builtin_nearbyint( V$1 + -0x1.p+5 )) % 255ll) * 17ll) % 255ll) );
     }
-    goto label$5478;
-    label$5483:;
-    if( V$1 < 0x1.8p+5 ) goto label$5485;
-    if( V$1 > 0x1.F8p+5 ) goto label$5485;
-    label$5486:;
+    goto label$5500;
+    label$5505:;
+    if( V$1 < 0x1.8p+5 ) goto label$5507;
+    if( V$1 > 0x1.F8p+5 ) goto label$5507;
+    label$5508:;
     {
      _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.801p+15, (double)(((((int64)__builtin_nearbyint( V$1 + -0x1.8p+5 )) % 255ll) * 17ll) % 255ll) );
     }
-    goto label$5478;
-    label$5485:;
+    goto label$5500;
+    label$5507:;
     {
      _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.8012p+15, (double)(((((int64)__builtin_nearbyint( V$1 + -0x1.p+6 )) % 255ll) * 17ll) % 255ll) );
     }
-    label$5487:;
-    label$5478:;
+    label$5509:;
+    label$5500:;
    }
   }
   goto label$3109;
-  label$5476:;
-  if( ADR$1 != 0x1.81DCp+15 ) goto label$5488;
-  label$5489:;
+  label$5498:;
+  if( ADR$1 != 0x1.81DCp+15 ) goto label$5510;
+  label$5511:;
   {
    fb_GfxLine( FGIMAGE$, (float)*(double*)((uint8*)THIS$1 + 394840ll), (float)*(double*)((uint8*)THIS$1 + 394848ll), (float)*(double*)((uint8*)THIS$1 + 394864ll), (float)*(double*)((uint8*)THIS$1 + 394872ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 2, 65535u, 0 );
   }
   goto label$3109;
-  label$5488:;
-  if( ADR$1 != 0x1.81DEp+15 ) goto label$5490;
-  label$5491:;
+  label$5510:;
+  if( ADR$1 != 0x1.81DEp+15 ) goto label$5512;
+  label$5513:;
   {
    fb_GfxLine( FGIMAGE$, (float)*(double*)((uint8*)THIS$1 + 394840ll), (float)*(double*)((uint8*)THIS$1 + 394848ll), (float)*(double*)((uint8*)THIS$1 + 394864ll), (float)*(double*)((uint8*)THIS$1 + 394872ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394832ll) )), 2, 65535u, 0 );
   }
   goto label$3109;
-  label$5490:;
-  if( ADR$1 != 0x1.81Ep+15 ) goto label$5492;
-  label$5493:;
+  label$5512:;
+  if( ADR$1 != 0x1.81Ep+15 ) goto label$5514;
+  label$5515:;
   {
    fb_GfxScreen( 0, 8, 0, 0, 0 );
    fb_Chain( (FBSTRING*)&STRCODE$ );
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
    fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
    fb_Cls( -65536 );
-   FBSTRING* vr$4925 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4925, 0, 1073741828 );
-   {
-    OFFSET$ = 0x0p+0;
-    label$5497:;
-    {
-     _ZN8MEMORY_T6POKE64Edd( THIS$1, *(double*)((uint8*)THIS$1 + 395608ll) + OFFSET$, 0x1.p+5 );
-    }
-    label$5495:;
-    OFFSET$ = OFFSET$ + 0x1.p+0;
-    label$5494:;
-    if( OFFSET$ <= 0x1.p+10 ) goto label$5497;
-    label$5496:;
-   }
-  }
-  goto label$3109;
-  label$5492:;
-  if( ADR$1 != 0x1.81E2p+15 ) goto label$5498;
-  label$5499:;
-  {
-   FBSTRING TMP$2767$3;
-   fb_GfxScreen( 0, 8, 0, 0, 0 );
-   __builtin_memset( &TMP$2767$3, 0, 24ll );
-   FBSTRING* vr$4931 = fb_StrConcat( &TMP$2767$3, (void*)"wine ", 6ll, (void*)&STRCODE$, -1ll );
-   fb_Shell( (FBSTRING*)vr$4931 );
-   fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
-   fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
-   fb_Cls( -65536 );
-   FBSTRING* vr$4932 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4932, 0, 1073741828 );
-   {
-    OFFSET$ = 0x0p+0;
-    label$5503:;
-    {
-     _ZN8MEMORY_T6POKE64Edd( THIS$1, *(double*)((uint8*)THIS$1 + 395608ll) + OFFSET$, 0x1.p+5 );
-    }
-    label$5501:;
-    OFFSET$ = OFFSET$ + 0x1.p+0;
-    label$5500:;
-    if( OFFSET$ <= 0x1.p+10 ) goto label$5503;
-    label$5502:;
-   }
-  }
-  goto label$3109;
-  label$5498:;
-  if( ADR$1 != 0x1.81E4p+15 ) goto label$5504;
-  label$5505:;
-  {
-   FBSTRING TMP$2770$3;
-   FBSTRING TMP$2771$3;
-   fb_GfxScreen( 0, 8, 0, 0, 0 );
-   __builtin_memset( &TMP$2770$3, 0, 24ll );
-   FBSTRING* vr$4938 = fb_StrConcat( &TMP$2770$3, (void*)"dosbox ", 8ll, (void*)&STRCODE$, -1ll );
-   __builtin_memset( &TMP$2771$3, 0, 24ll );
-   FBSTRING* vr$4941 = fb_StrConcat( &TMP$2771$3, (void*)vr$4938, -1ll, (void*)" -fullscreen -exit", 19ll );
-   fb_Shell( (FBSTRING*)vr$4941 );
-   fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
-   fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
-   fb_Cls( -65536 );
-   FBSTRING* vr$4942 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4942, 0, 1073741828 );
-  }
-  goto label$3109;
-  label$5504:;
-  if( ADR$1 != 0x1.81E6p+15 ) goto label$5506;
-  label$5507:;
-  {
-   FBSTRING TMP$2773$3;
-   __builtin_memset( &TMP$2773$3, 0, 24ll );
-   FBSTRING* vr$4945 = fb_StrConcat( &TMP$2773$3, (void*)&STRCODE$, -1ll, (void*)".asm", 5ll );
-   fb_FileOpen( (FBSTRING*)vr$4945, 3u, 0u, 0u, 1, 0 );
-   fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
-  }
-  goto label$3109;
-  label$5506:;
-  if( ADR$1 != 0x1.81E8p+15 ) goto label$5508;
-  label$5509:;
-  {
-   fb_PrintString( 1, (FBSTRING*)&STRCODE$, 1 );
-   fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
-  }
-  goto label$3109;
-  label$5508:;
-  if( ADR$1 != 0x1.81EAp+15 ) goto label$5510;
-  label$5511:;
-  {
-   fb_FileClose( 1 );
-   fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
-  }
-  goto label$3109;
-  label$5510:;
-  if( ADR$1 != 0x1.81ECp+15 ) goto label$5512;
-  label$5513:;
-  {
-   FBSTRING TMP$2777$3;
-   FBSTRING TMP$2778$3;
-   FBSTRING TMP$2779$3;
-   FBSTRING TMP$2780$3;
-   __builtin_memset( &TMP$2777$3, 0, 24ll );
-   FBSTRING* vr$4948 = fb_StrConcat( &TMP$2777$3, (void*)"nasm ", 6ll, (void*)&STRCODE$, -1ll );
-   __builtin_memset( &TMP$2778$3, 0, 24ll );
-   FBSTRING* vr$4951 = fb_StrConcat( &TMP$2778$3, (void*)vr$4948, -1ll, (void*)".asm -f bin -o", 15ll );
-   __builtin_memset( &TMP$2779$3, 0, 24ll );
-   FBSTRING* vr$4954 = fb_StrConcat( &TMP$2779$3, (void*)vr$4951, -1ll, (void*)&STRCODE$, -1ll );
-   __builtin_memset( &TMP$2780$3, 0, 24ll );
-   FBSTRING* vr$4957 = fb_StrConcat( &TMP$2780$3, (void*)vr$4954, -1ll, (void*)".bin", 5ll );
-   fb_Shell( (FBSTRING*)vr$4957 );
-   fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
-  }
-  goto label$3109;
-  label$5512:;
-  if( ADR$1 != 0x1.81EEp+15 ) goto label$5514;
-  label$5515:;
-  {
-   FBSTRING TMP$2783$3;
-   FBSTRING TMP$2784$3;
-   FBSTRING TMP$2785$3;
-   FBSTRING TMP$2787$3;
-   fb_GfxScreen( 0, 8, 0, 0, 0 );
-   __builtin_memset( &TMP$2783$3, 0, 24ll );
-   FBSTRING* vr$4960 = fb_StrConcat( &TMP$2783$3, (void*)"dosbox -c 'boot ", 17ll, (void*)&STRCODE$, -1ll );
-   __builtin_memset( &TMP$2784$3, 0, 24ll );
-   FBSTRING* vr$4963 = fb_StrConcat( &TMP$2784$3, (void*)vr$4960, -1ll, (void*)"'", 2ll );
-   __builtin_memset( &TMP$2785$3, 0, 24ll );
-   FBSTRING* vr$4966 = fb_StrConcat( &TMP$2785$3, (void*)vr$4963, -1ll, (void*)" -exit", 7ll );
-   fb_Shell( (FBSTRING*)vr$4966 );
-   __builtin_memset( &TMP$2787$3, 0, 24ll );
-   FBSTRING* vr$4969 = fb_StrConcat( &TMP$2787$3, (void*)"rm ", 4ll, (void*)&STRCODE$, -1ll );
-   fb_Shell( (FBSTRING*)vr$4969 );
-   fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
-   fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
-   fb_Cls( -65536 );
-   FBSTRING* vr$4970 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4970, 0, 1073741828 );
+   FBSTRING* vr$4947 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4947, 0, 1073741828 );
    {
     OFFSET$ = 0x0p+0;
     label$5519:;
     {
-     _ZN8MEMORY_T6POKE64Edd( THIS$1, *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( SYS_OFFSET$ + 0x1.2Bp+8 )) << (3ll & 63ll))) + OFFSET$, 0x1.p+5 );
+     _ZN8MEMORY_T6POKE64Edd( THIS$1, *(double*)((uint8*)THIS$1 + 395608ll) + OFFSET$, 0x1.p+5 );
     }
     label$5517:;
     OFFSET$ = OFFSET$ + 0x1.p+0;
@@ -24905,144 +24927,276 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
   }
   goto label$3109;
   label$5514:;
-  if( ADR$1 != 0x1.81Fp+15 ) goto label$5520;
+  if( ADR$1 != 0x1.81E2p+15 ) goto label$5520;
   label$5521:;
   {
-   fb_Shell( (FBSTRING*)&STRCODE$ );
+   FBSTRING TMP$2789$3;
+   fb_GfxScreen( 0, 8, 0, 0, 0 );
+   __builtin_memset( &TMP$2789$3, 0, 24ll );
+   FBSTRING* vr$4953 = fb_StrConcat( &TMP$2789$3, (void*)"wine ", 6ll, (void*)&STRCODE$, -1ll );
+   fb_Shell( (FBSTRING*)vr$4953 );
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
+   fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
+   fb_Cls( -65536 );
+   FBSTRING* vr$4954 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4954, 0, 1073741828 );
+   {
+    OFFSET$ = 0x0p+0;
+    label$5525:;
+    {
+     _ZN8MEMORY_T6POKE64Edd( THIS$1, *(double*)((uint8*)THIS$1 + 395608ll) + OFFSET$, 0x1.p+5 );
+    }
+    label$5523:;
+    OFFSET$ = OFFSET$ + 0x1.p+0;
+    label$5522:;
+    if( OFFSET$ <= 0x1.p+10 ) goto label$5525;
+    label$5524:;
+   }
   }
   goto label$3109;
   label$5520:;
-  if( ADR$1 != 0x1.81F2p+15 ) goto label$5522;
-  label$5523:;
-  {
-   SWCH$ = V$1;
-  }
-  goto label$3109;
-  label$5522:;
-  if( ADR$1 != 0x1.81F4p+15 ) goto label$5524;
-  label$5525:;
-  {
-   FBSTRING* vr$4978 = fb_CHR( 1, ((int64)__builtin_nearbyint( V$1 )) );
-   FBSTRING* vr$4979 = fb_StrLcase2( (FBSTRING*)vr$4978, 0 );
-   FBSTRING* vr$4980 = fb_StrConcatAssign( (void*)&STRCODE$, -1ll, (void*)vr$4979, -1ll, 0 );
-  }
-  goto label$3109;
-  label$5524:;
-  if( ADR$1 != 0x1.81F6p+15 ) goto label$5526;
+  if( ADR$1 != 0x1.81E4p+15 ) goto label$5526;
   label$5527:;
+  {
+   FBSTRING TMP$2792$3;
+   FBSTRING TMP$2793$3;
+   fb_GfxScreen( 0, 8, 0, 0, 0 );
+   __builtin_memset( &TMP$2792$3, 0, 24ll );
+   FBSTRING* vr$4960 = fb_StrConcat( &TMP$2792$3, (void*)"dosbox ", 8ll, (void*)&STRCODE$, -1ll );
+   __builtin_memset( &TMP$2793$3, 0, 24ll );
+   FBSTRING* vr$4963 = fb_StrConcat( &TMP$2793$3, (void*)vr$4960, -1ll, (void*)" -fullscreen -exit", 19ll );
+   fb_Shell( (FBSTRING*)vr$4963 );
+   fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
+   fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
+   fb_Cls( -65536 );
+   FBSTRING* vr$4964 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4964, 0, 1073741828 );
+  }
+  goto label$3109;
+  label$5526:;
+  if( ADR$1 != 0x1.81E6p+15 ) goto label$5528;
+  label$5529:;
+  {
+   FBSTRING TMP$2795$3;
+   __builtin_memset( &TMP$2795$3, 0, 24ll );
+   FBSTRING* vr$4967 = fb_StrConcat( &TMP$2795$3, (void*)&STRCODE$, -1ll, (void*)".asm", 5ll );
+   fb_FileOpen( (FBSTRING*)vr$4967, 3u, 0u, 0u, 1, 0 );
+   fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
+  }
+  goto label$3109;
+  label$5528:;
+  if( ADR$1 != 0x1.81E8p+15 ) goto label$5530;
+  label$5531:;
   {
    fb_PrintString( 1, (FBSTRING*)&STRCODE$, 1 );
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
   }
   goto label$3109;
-  label$5526:;
-  if( ADR$1 != 0x1.81F8p+15 ) goto label$5528;
-  label$5529:;
+  label$5530:;
+  if( ADR$1 != 0x1.81EAp+15 ) goto label$5532;
+  label$5533:;
   {
-   *(double*)((uint8*)THIS$1 + ((int64)RVS$ << (3ll & 63ll))) = V$1;
-   if( (((int64)__builtin_nearbyint( *(double*)((uint8*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( C$ )) << (3ll & 63ll))) + 134479872ll) )) & (128ll >> (((int64)__builtin_nearbyint( X$ )) & 63ll))) == 0ll ) goto label$5531;
-   {
-    if( *(double*)((uint8*)THIS$1 + ((int64)RVS$ << (3ll & 63ll))) == 0x0p+0 ) goto label$5533;
-    {
-     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81DEp+15, 0x0p+0 );
-    }
-    goto label$5532;
-    label$5533:;
-    {
-     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81DCp+15, 0x0p+0 );
-     label$5532:;
-    }
-   }
-   goto label$5530;
-   label$5531:;
-   {
-    if( *(double*)((uint8*)THIS$1 + ((int64)RVS$ << (3ll & 63ll))) == 0x0p+0 ) goto label$5535;
-    {
-     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81DCp+15, 0x0p+0 );
-    }
-    goto label$5534;
-    label$5535:;
-    {
-     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81DEp+15, 0x0p+0 );
-     label$5534:;
-    }
-   }
-   label$5530:;
+   fb_FileClose( 1 );
+   fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
   }
   goto label$3109;
-  label$5528:;
-  if( ADR$1 != 0x1.81FAp+15 ) goto label$5536;
+  label$5532:;
+  if( ADR$1 != 0x1.81ECp+15 ) goto label$5534;
+  label$5535:;
+  {
+   FBSTRING TMP$2799$3;
+   FBSTRING TMP$2800$3;
+   FBSTRING TMP$2801$3;
+   FBSTRING TMP$2802$3;
+   __builtin_memset( &TMP$2799$3, 0, 24ll );
+   FBSTRING* vr$4970 = fb_StrConcat( &TMP$2799$3, (void*)"nasm ", 6ll, (void*)&STRCODE$, -1ll );
+   __builtin_memset( &TMP$2800$3, 0, 24ll );
+   FBSTRING* vr$4973 = fb_StrConcat( &TMP$2800$3, (void*)vr$4970, -1ll, (void*)".asm -f bin -o", 15ll );
+   __builtin_memset( &TMP$2801$3, 0, 24ll );
+   FBSTRING* vr$4976 = fb_StrConcat( &TMP$2801$3, (void*)vr$4973, -1ll, (void*)&STRCODE$, -1ll );
+   __builtin_memset( &TMP$2802$3, 0, 24ll );
+   FBSTRING* vr$4979 = fb_StrConcat( &TMP$2802$3, (void*)vr$4976, -1ll, (void*)".bin", 5ll );
+   fb_Shell( (FBSTRING*)vr$4979 );
+   fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
+  }
+  goto label$3109;
+  label$5534:;
+  if( ADR$1 != 0x1.81EEp+15 ) goto label$5536;
   label$5537:;
+  {
+   FBSTRING TMP$2805$3;
+   FBSTRING TMP$2806$3;
+   FBSTRING TMP$2807$3;
+   FBSTRING TMP$2809$3;
+   fb_GfxScreen( 0, 8, 0, 0, 0 );
+   __builtin_memset( &TMP$2805$3, 0, 24ll );
+   FBSTRING* vr$4982 = fb_StrConcat( &TMP$2805$3, (void*)"dosbox -c 'boot ", 17ll, (void*)&STRCODE$, -1ll );
+   __builtin_memset( &TMP$2806$3, 0, 24ll );
+   FBSTRING* vr$4985 = fb_StrConcat( &TMP$2806$3, (void*)vr$4982, -1ll, (void*)"'", 2ll );
+   __builtin_memset( &TMP$2807$3, 0, 24ll );
+   FBSTRING* vr$4988 = fb_StrConcat( &TMP$2807$3, (void*)vr$4985, -1ll, (void*)" -exit", 7ll );
+   fb_Shell( (FBSTRING*)vr$4988 );
+   __builtin_memset( &TMP$2809$3, 0, 24ll );
+   FBSTRING* vr$4991 = fb_StrConcat( &TMP$2809$3, (void*)"rm ", 4ll, (void*)&STRCODE$, -1ll );
+   fb_Shell( (FBSTRING*)vr$4991 );
+   fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
+   fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
+   fb_Cls( -65536 );
+   FBSTRING* vr$4992 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$4992, 0, 1073741828 );
+   {
+    OFFSET$ = 0x0p+0;
+    label$5541:;
+    {
+     _ZN8MEMORY_T6POKE64Edd( THIS$1, *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( SYS_OFFSET$ + 0x1.2Bp+8 )) << (3ll & 63ll))) + OFFSET$, 0x1.p+5 );
+    }
+    label$5539:;
+    OFFSET$ = OFFSET$ + 0x1.p+0;
+    label$5538:;
+    if( OFFSET$ <= 0x1.p+10 ) goto label$5541;
+    label$5540:;
+   }
+  }
+  goto label$3109;
+  label$5536:;
+  if( ADR$1 != 0x1.81Fp+15 ) goto label$5542;
+  label$5543:;
+  {
+   fb_Shell( (FBSTRING*)&STRCODE$ );
+   fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
+  }
+  goto label$3109;
+  label$5542:;
+  if( ADR$1 != 0x1.81F2p+15 ) goto label$5544;
+  label$5545:;
+  {
+   SWCH$ = V$1;
+  }
+  goto label$3109;
+  label$5544:;
+  if( ADR$1 != 0x1.81F4p+15 ) goto label$5546;
+  label$5547:;
+  {
+   FBSTRING* vr$5000 = fb_CHR( 1, ((int64)__builtin_nearbyint( V$1 )) );
+   FBSTRING* vr$5001 = fb_StrLcase2( (FBSTRING*)vr$5000, 0 );
+   FBSTRING* vr$5002 = fb_StrConcatAssign( (void*)&STRCODE$, -1ll, (void*)vr$5001, -1ll, 0 );
+  }
+  goto label$3109;
+  label$5546:;
+  if( ADR$1 != 0x1.81F6p+15 ) goto label$5548;
+  label$5549:;
+  {
+   fb_PrintString( 1, (FBSTRING*)&STRCODE$, 1 );
+   fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
+  }
+  goto label$3109;
+  label$5548:;
+  if( ADR$1 != 0x1.81F8p+15 ) goto label$5550;
+  label$5551:;
+  {
+   *(double*)((uint8*)THIS$1 + ((int64)RVS$ << (3ll & 63ll))) = V$1;
+   if( (((int64)__builtin_nearbyint( *(double*)((uint8*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( C$ )) << (3ll & 63ll))) + 134479872ll) )) & (128ll >> (((int64)__builtin_nearbyint( X$ )) & 63ll))) == 0ll ) goto label$5553;
+   {
+    if( *(double*)((uint8*)THIS$1 + ((int64)RVS$ << (3ll & 63ll))) == 0x0p+0 ) goto label$5555;
+    {
+     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81DEp+15, 0x0p+0 );
+    }
+    goto label$5554;
+    label$5555:;
+    {
+     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81DCp+15, 0x0p+0 );
+     label$5554:;
+    }
+   }
+   goto label$5552;
+   label$5553:;
+   {
+    if( *(double*)((uint8*)THIS$1 + ((int64)RVS$ << (3ll & 63ll))) == 0x0p+0 ) goto label$5557;
+    {
+     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81DCp+15, 0x0p+0 );
+    }
+    goto label$5556;
+    label$5557:;
+    {
+     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81DEp+15, 0x0p+0 );
+     label$5556:;
+    }
+   }
+   label$5552:;
+  }
+  goto label$3109;
+  label$5550:;
+  if( ADR$1 != 0x1.81FAp+15 ) goto label$5558;
+  label$5559:;
   {
    fb_FileClose( 1 );
   }
   goto label$3109;
-  label$5536:;
-  if( ADR$1 != 0x1.81FCp+15 ) goto label$5538;
-  label$5539:;
+  label$5558:;
+  if( ADR$1 != 0x1.81FCp+15 ) goto label$5560;
+  label$5561:;
   {
-   FBSTRING* vr$4998 = fb_CHR( 1, ((int64)__builtin_nearbyint( V$1 )) );
-   FBSTRING* vr$4999 = fb_StrLcase2( (FBSTRING*)vr$4998, 0 );
-   FBSTRING* vr$5000 = fb_StrConcatAssign( (void*)&FILENAME$, -1ll, (void*)vr$4999, -1ll, 0 );
+   FBSTRING* vr$5020 = fb_CHR( 1, ((int64)__builtin_nearbyint( V$1 )) );
+   FBSTRING* vr$5021 = fb_StrLcase2( (FBSTRING*)vr$5020, 0 );
+   FBSTRING* vr$5022 = fb_StrConcatAssign( (void*)&FILENAME$, -1ll, (void*)vr$5021, -1ll, 0 );
   }
   goto label$3109;
-  label$5538:;
-  if( ADR$1 != 0x1.81FEp+15 ) goto label$5540;
-  label$5541:;
+  label$5560:;
+  if( ADR$1 != 0x1.81FEp+15 ) goto label$5562;
+  label$5563:;
   {
    _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.8142p+15, 0x0p+0 );
    fb_StrAssign( (void*)&FILENAME$, -1ll, (void*)"", 1ll, 0 );
   }
   goto label$3109;
-  label$5540:;
-  if( ADR$1 != 0x1.82p+15 ) goto label$5542;
-  label$5543:;
+  label$5562:;
+  if( ADR$1 != 0x1.82p+15 ) goto label$5564;
+  label$5565:;
   {
    {
-    uint64 TMP$2788$4;
-    TMP$2788$4 = ((uint64)__builtin_nearbyint( V$1 ));
-    goto label$5545;
-    label$5546:;
+    uint64 TMP$2810$4;
+    TMP$2810$4 = ((uint64)__builtin_nearbyint( V$1 ));
+    goto label$5567;
+    label$5568:;
     {
      *(double*)((uint8*)THIS$1 + 395032ll) = 0x0p+0;
      *(double*)((uint8*)THIS$1 + 395040ll) = 0x0p+0;
     }
-    goto label$5544;
-    label$5547:;
+    goto label$5566;
+    label$5569:;
     {
      *(double*)((uint8*)THIS$1 + 395032ll) = 0x1.91p+9;
      *(double*)((uint8*)THIS$1 + 395040ll) = 0x0p+0;
     }
-    goto label$5544;
-    label$5548:;
+    goto label$5566;
+    label$5570:;
     {
      *(double*)((uint8*)THIS$1 + 395032ll) = 0x0p+0;
      *(double*)((uint8*)THIS$1 + 395040ll) = 0x1.86p+8;
     }
-    goto label$5544;
-    label$5549:;
+    goto label$5566;
+    label$5571:;
     {
      *(double*)((uint8*)THIS$1 + 395032ll) = 0x1.91p+9;
      *(double*)((uint8*)THIS$1 + 395040ll) = 0x1.86p+8;
     }
-    goto label$5544;
-    label$5545:;
-    static const void* tmp$2806[4ll] = {
-     &&label$5546,
-     &&label$5547,
-     &&label$5548,
-     &&label$5549,
+    goto label$5566;
+    label$5567:;
+    static const void* tmp$2828[4ll] = {
+     &&label$5568,
+     &&label$5569,
+     &&label$5570,
+     &&label$5571,
     };
-    if( TMP$2788$4 > 3ull ) goto label$5544;
-    goto *tmp$2806[TMP$2788$4 - 0ull];
-    label$5544:;
+    if( TMP$2810$4 > 3ull ) goto label$5566;
+    goto *tmp$2828[TMP$2810$4 - 0ull];
+    label$5566:;
    }
   }
   goto label$3109;
-  label$5542:;
-  if( ADR$1 != 0x1.8202p+15 ) goto label$5550;
-  label$5551:;
+  label$5564:;
+  if( ADR$1 != 0x1.8202p+15 ) goto label$5572;
+  label$5573:;
   {
    *(double*)((uint8*)THIS$1 + 394872ll) = (*(double*)((uint8*)THIS$1 + 394848ll) * *(double*)((uint8*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394984ll) )) << (3ll & 63ll))) + 134752968ll)) - (*(double*)((uint8*)THIS$1 + 394856ll) * *(double*)((uint8*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394984ll) )) << (3ll & 63ll))) + 134750088ll));
    *(double*)((uint8*)THIS$1 + 394880ll) = (*(double*)((uint8*)THIS$1 + 394856ll) * *(double*)((uint8*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394984ll) )) << (3ll & 63ll))) + 134752968ll)) + (*(double*)((uint8*)THIS$1 + 394848ll) * *(double*)((uint8*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394984ll) )) << (3ll & 63ll))) + 134750088ll));
@@ -25061,1001 +25215,1001 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    *(double*)((uint8*)THIS$1 + 394952ll) = ((*(double*)((uint8*)THIS$1 + 394888ll) * *(double*)((uint8*)THIS$1 + 394840ll)) / (*(double*)((uint8*)THIS$1 + 394856ll) + *(double*)((uint8*)THIS$1 + 394912ll))) + *(double*)((uint8*)THIS$1 + 394896ll);
    *(double*)((uint8*)THIS$1 + 394960ll) = ((*(double*)((uint8*)THIS$1 + 394888ll) * *(double*)((uint8*)THIS$1 + 394848ll)) / (*(double*)((uint8*)THIS$1 + 394856ll) + *(double*)((uint8*)THIS$1 + 394912ll))) + *(double*)((uint8*)THIS$1 + 394904ll);
    {
-    uint64 TMP$2789$4;
-    TMP$2789$4 = ((uint64)__builtin_nearbyint( V$1 ));
-    goto label$5553;
-    label$5554:;
+    uint64 TMP$2811$4;
+    TMP$2811$4 = ((uint64)__builtin_nearbyint( V$1 ));
+    goto label$5575;
+    label$5576:;
     {
      fb_GfxPset( FGIMAGE$, (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394936ll) + *(double*)((uint8*)THIS$1 + 394952ll) )) >> (1ll & 63ll)), (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394944ll) + *(double*)((uint8*)THIS$1 + 394960ll) )) >> (1ll & 63ll)), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 4, 0 );
     }
-    goto label$5552;
-    label$5555:;
+    goto label$5574;
+    label$5577:;
     {
      fb_GfxEllipse( FGIMAGE$, (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394936ll) + *(double*)((uint8*)THIS$1 + 394952ll) )) >> (1ll & 63ll)), (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394944ll) + *(double*)((uint8*)THIS$1 + 394960ll) )) >> (1ll & 63ll)), (float)*(double*)((uint8*)THIS$1 + 394968ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 0x0p+0f, 0x0p+0f, 0x1.921FB8p+2f, 0, 4 );
     }
-    goto label$5552;
-    label$5556:;
+    goto label$5574;
+    label$5578:;
     {
      fb_GfxLine( FGIMAGE$, 0x0p+0f, 0x0p+0f, (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394936ll) + *(double*)((uint8*)THIS$1 + 394952ll) )) >> (1ll & 63ll)), (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394944ll) + *(double*)((uint8*)THIS$1 + 394960ll) )) >> (1ll & 63ll)), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 0, 65535u, 2 );
     }
-    goto label$5552;
-    label$5557:;
+    goto label$5574;
+    label$5579:;
     {
      fb_GfxLine( FGIMAGE$, 0x0p+0f, 0x0p+0f, (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394936ll) + *(double*)((uint8*)THIS$1 + 394952ll) )) >> (1ll & 63ll)), (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394944ll) + *(double*)((uint8*)THIS$1 + 394960ll) )) >> (1ll & 63ll)), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 1, 65535u, 2 );
     }
-    goto label$5552;
-    label$5558:;
+    goto label$5574;
+    label$5580:;
     {
      fb_GfxLine( FGIMAGE$, 0x0p+0f, 0x0p+0f, (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394936ll) + *(double*)((uint8*)THIS$1 + 394952ll) )) >> (1ll & 63ll)), (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394944ll) + *(double*)((uint8*)THIS$1 + 394960ll) )) >> (1ll & 63ll)), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 2, 65535u, 2 );
     }
-    goto label$5552;
-    label$5559:;
+    goto label$5574;
+    label$5581:;
     {
      fb_GfxLine( FGIMAGE$, 0x0p+0f, 0x0p+0f, (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394936ll) + *(double*)((uint8*)THIS$1 + 394952ll) )) >> (1ll & 63ll)), (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394944ll) + *(double*)((uint8*)THIS$1 + 394960ll) )) >> (1ll & 63ll)), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 0, (uint32)((int64)__builtin_nearbyint( (double)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394968ll) )) << (8ll & 63ll)) + *(double*)((uint8*)THIS$1 + 394976ll) )), 2 );
     }
-    goto label$5552;
-    label$5560:;
+    goto label$5574;
+    label$5582:;
     {
-     FBSTRING* vr$5240 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-     fb_GfxPaint( FGIMAGE$, (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394936ll) + *(double*)((uint8*)THIS$1 + 394952ll) )) >> (1ll & 63ll)), (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394944ll) + *(double*)((uint8*)THIS$1 + 394960ll) )) >> (1ll & 63ll)), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 0u, (FBSTRING*)vr$5240, 0, 1073741828 );
+     FBSTRING* vr$5262 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+     fb_GfxPaint( FGIMAGE$, (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394936ll) + *(double*)((uint8*)THIS$1 + 394952ll) )) >> (1ll & 63ll)), (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394944ll) + *(double*)((uint8*)THIS$1 + 394960ll) )) >> (1ll & 63ll)), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 0u, (FBSTRING*)vr$5262, 0, 1073741828 );
     }
-    goto label$5552;
-    label$5553:;
-    static const void* tmp$2807[7ll] = {
-     &&label$5554,
-     &&label$5555,
-     &&label$5556,
-     &&label$5557,
-     &&label$5558,
-     &&label$5559,
-     &&label$5560,
+    goto label$5574;
+    label$5575:;
+    static const void* tmp$2829[7ll] = {
+     &&label$5576,
+     &&label$5577,
+     &&label$5578,
+     &&label$5579,
+     &&label$5580,
+     &&label$5581,
+     &&label$5582,
     };
-    if( TMP$2789$4 > 6ull ) goto label$5552;
-    goto *tmp$2807[TMP$2789$4 - 0ull];
-    label$5552:;
+    if( TMP$2811$4 > 6ull ) goto label$5574;
+    goto *tmp$2829[TMP$2811$4 - 0ull];
+    label$5574:;
    }
   }
   goto label$3109;
-  label$5550:;
-  if( ADR$1 != 0x1.8204p+15 ) goto label$5561;
-  label$5562:;
+  label$5572:;
+  if( ADR$1 != 0x1.8204p+15 ) goto label$5583;
+  label$5584:;
   {
    fb_GfxLock( );
   }
   goto label$3109;
-  label$5561:;
-  if( ADR$1 != 0x1.8206p+15 ) goto label$5563;
-  label$5564:;
+  label$5583:;
+  if( ADR$1 != 0x1.8206p+15 ) goto label$5585;
+  label$5586:;
   {
    fb_GfxUnlock( ((int32)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394848ll) )), ((int32)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394848ll) + 0x1.p+3 )) );
   }
   goto label$3109;
-  label$5563:;
-  if( ADR$1 != 0x1.8208p+15 ) goto label$5565;
-  label$5566:;
+  label$5585:;
+  if( ADR$1 != 0x1.8208p+15 ) goto label$5587;
+  label$5588:;
   {
    fb_GfxUnlock( ((int32)__builtin_nearbyint( YS$ )), ((int32)__builtin_nearbyint( YS$ + 0x1.p+3 )) );
   }
   goto label$3109;
-  label$5565:;
-  if( ADR$1 != 0x1.820Ap+15 ) goto label$5567;
-  label$5568:;
+  label$5587:;
+  if( ADR$1 != 0x1.820Ap+15 ) goto label$5589;
+  label$5590:;
   {
    {
-    uint64 TMP$2790$4;
-    TMP$2790$4 = ((uint64)__builtin_nearbyint( V$1 ));
-    goto label$5570;
-    label$5571:;
+    uint64 TMP$2812$4;
+    TMP$2812$4 = ((uint64)__builtin_nearbyint( V$1 ));
+    goto label$5592;
+    label$5593:;
     {
      fb_GfxPset( RASTER$, (float)*(double*)((uint8*)THIS$1 + 394840ll), 0x0p+0f, (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 4, 0 );
     }
-    goto label$5569;
-    label$5572:;
+    goto label$5591;
+    label$5594:;
     {
      fb_GfxPset( RASTER$, (float)*(double*)((uint8*)THIS$1 + 394840ll), 0x0p+0f, (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394832ll) )), 4, 0 );
     }
-    goto label$5569;
-    label$5573:;
+    goto label$5591;
+    label$5595:;
     {
      fb_GfxLine( RASTER$, (float)*(double*)((uint8*)THIS$1 + 394840ll), 0x0p+0f, (float)*(double*)((uint8*)THIS$1 + 394864ll), 0x0p+0f, (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 0, 65535u, 0 );
     }
-    goto label$5569;
-    label$5574:;
+    goto label$5591;
+    label$5596:;
     {
      fb_GfxLine( RASTER$, (float)*(double*)((uint8*)THIS$1 + 394840ll), 0x0p+0f, (float)*(double*)((uint8*)THIS$1 + 394864ll), 0x0p+0f, (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394832ll) )), 0, 65535u, 0 );
     }
-    goto label$5569;
-    label$5575:;
+    goto label$5591;
+    label$5597:;
     {
      fb_GfxLine( RASTER$, (float)*(double*)((uint8*)THIS$1 + 394840ll), 0x0p+0f, (float)*(double*)((uint8*)THIS$1 + 394864ll), 0x0p+0f, (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 0, (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 393584ll) )), 0 );
     }
-    goto label$5569;
-    label$5576:;
+    goto label$5591;
+    label$5598:;
     {
      fb_GfxLine( RASTER$, (float)*(double*)((uint8*)THIS$1 + 394840ll), 0x0p+0f, (float)*(double*)((uint8*)THIS$1 + 394864ll), 0x0p+0f, (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394832ll) )), 0, (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 393584ll) )), 0 );
     }
-    goto label$5569;
-    label$5570:;
-    static const void* tmp$2808[6ll] = {
-     &&label$5571,
-     &&label$5572,
-     &&label$5573,
-     &&label$5574,
-     &&label$5575,
-     &&label$5576,
+    goto label$5591;
+    label$5592:;
+    static const void* tmp$2830[6ll] = {
+     &&label$5593,
+     &&label$5594,
+     &&label$5595,
+     &&label$5596,
+     &&label$5597,
+     &&label$5598,
     };
-    if( TMP$2790$4 > 5ull ) goto label$5569;
-    goto *tmp$2808[TMP$2790$4 - 0ull];
-    label$5569:;
+    if( TMP$2812$4 > 5ull ) goto label$5591;
+    goto *tmp$2830[TMP$2812$4 - 0ull];
+    label$5591:;
    }
   }
   goto label$3109;
-  label$5567:;
-  if( ADR$1 != 0x1.820Cp+15 ) goto label$5577;
-  label$5578:;
+  label$5589:;
+  if( ADR$1 != 0x1.820Cp+15 ) goto label$5599;
+  label$5600:;
   {
    {
-    if( V$1 != 0x0p+0 ) goto label$5580;
-    label$5581:;
+    if( V$1 != 0x0p+0 ) goto label$5602;
+    label$5603:;
     {
      fb_GfxPset( FGIMAGE$, (float)*(double*)((uint8*)THIS$1 + 394840ll), (float)*(double*)((uint8*)THIS$1 + 394848ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 4, 0 );
     }
-    goto label$5579;
-    label$5580:;
-    if( V$1 != 0x1.p+0 ) goto label$5582;
-    label$5583:;
+    goto label$5601;
+    label$5602:;
+    if( V$1 != 0x1.p+0 ) goto label$5604;
+    label$5605:;
     {
      fb_GfxPset( BGIMAGE$, (float)*(double*)((uint8*)THIS$1 + 394840ll), (float)*(double*)((uint8*)THIS$1 + 394848ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394832ll) )), 4, 0 );
     }
-    goto label$5579;
-    label$5582:;
-    if( V$1 != 0x1.p+1 ) goto label$5584;
-    label$5585:;
+    goto label$5601;
+    label$5604:;
+    if( V$1 != 0x1.p+1 ) goto label$5606;
+    label$5607:;
     {
      fb_GfxLine( FGIMAGE$, (float)*(double*)((uint8*)THIS$1 + 394840ll), (float)*(double*)((uint8*)THIS$1 + 394848ll), (float)*(double*)((uint8*)THIS$1 + 394864ll), (float)*(double*)((uint8*)THIS$1 + 394872ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 0, 65535u, 0 );
     }
-    goto label$5579;
-    label$5584:;
-    if( V$1 != 0x1.8p+1 ) goto label$5586;
-    label$5587:;
+    goto label$5601;
+    label$5606:;
+    if( V$1 != 0x1.8p+1 ) goto label$5608;
+    label$5609:;
     {
      fb_GfxLine( BGIMAGE$, (float)*(double*)((uint8*)THIS$1 + 394840ll), (float)*(double*)((uint8*)THIS$1 + 394848ll), (float)*(double*)((uint8*)THIS$1 + 394864ll), (float)*(double*)((uint8*)THIS$1 + 394872ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394832ll) )), 0, 65535u, 0 );
     }
-    goto label$5579;
-    label$5586:;
-    if( V$1 != 0x1.p+2 ) goto label$5588;
-    label$5589:;
+    goto label$5601;
+    label$5608:;
+    if( V$1 != 0x1.p+2 ) goto label$5610;
+    label$5611:;
     {
      fb_GfxLine( FGIMAGE$, (float)*(double*)((uint8*)THIS$1 + 394840ll), (float)*(double*)((uint8*)THIS$1 + 394848ll), (float)*(double*)((uint8*)THIS$1 + 394864ll), (float)*(double*)((uint8*)THIS$1 + 394872ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 1, 65535u, 0 );
     }
-    goto label$5579;
-    label$5588:;
-    if( V$1 != 0x1.4p+2 ) goto label$5590;
-    label$5591:;
+    goto label$5601;
+    label$5610:;
+    if( V$1 != 0x1.4p+2 ) goto label$5612;
+    label$5613:;
     {
      fb_GfxLine( BGIMAGE$, (float)*(double*)((uint8*)THIS$1 + 394840ll), (float)*(double*)((uint8*)THIS$1 + 394848ll), (float)*(double*)((uint8*)THIS$1 + 394864ll), (float)*(double*)((uint8*)THIS$1 + 394872ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394832ll) )), 1, 65535u, 0 );
     }
-    goto label$5579;
-    label$5590:;
-    if( V$1 != 0x1.8p+2 ) goto label$5592;
-    label$5593:;
+    goto label$5601;
+    label$5612:;
+    if( V$1 != 0x1.8p+2 ) goto label$5614;
+    label$5615:;
     {
      fb_GfxLine( FGIMAGE$, (float)*(double*)((uint8*)THIS$1 + 394840ll), (float)*(double*)((uint8*)THIS$1 + 394848ll), (float)*(double*)((uint8*)THIS$1 + 394864ll), (float)*(double*)((uint8*)THIS$1 + 394872ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 2, 65535u, 0 );
     }
-    goto label$5579;
-    label$5592:;
-    if( V$1 != 0x1.Cp+2 ) goto label$5594;
-    label$5595:;
+    goto label$5601;
+    label$5614:;
+    if( V$1 != 0x1.Cp+2 ) goto label$5616;
+    label$5617:;
     {
      fb_GfxLine( BGIMAGE$, (float)*(double*)((uint8*)THIS$1 + 394840ll), (float)*(double*)((uint8*)THIS$1 + 394848ll), (float)*(double*)((uint8*)THIS$1 + 394864ll), (float)*(double*)((uint8*)THIS$1 + 394872ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394832ll) )), 2, 65535u, 0 );
     }
-    goto label$5579;
-    label$5594:;
-    if( V$1 != 0x1.Cp+2 ) goto label$5596;
-    label$5597:;
+    goto label$5601;
+    label$5616:;
+    if( V$1 != 0x1.Cp+2 ) goto label$5618;
+    label$5619:;
     {
      fb_GfxEllipse( FGIMAGE$, (float)*(double*)((uint8*)THIS$1 + 394840ll), (float)*(double*)((uint8*)THIS$1 + 394848ll), (float)*(double*)((uint8*)THIS$1 + 393584ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 0x0p+0f, 0x0p+0f, 0x1.921FB8p+2f, 0, 4 );
     }
-    goto label$5579;
-    label$5596:;
-    if( V$1 != 0x1.p+3 ) goto label$5598;
-    label$5599:;
+    goto label$5601;
+    label$5618:;
+    if( V$1 != 0x1.p+3 ) goto label$5620;
+    label$5621:;
     {
      fb_GfxEllipse( BGIMAGE$, (float)*(double*)((uint8*)THIS$1 + 394840ll), (float)*(double*)((uint8*)THIS$1 + 394848ll), (float)*(double*)((uint8*)THIS$1 + 393584ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394832ll) )), 0x0p+0f, 0x0p+0f, 0x1.921FB8p+2f, 0, 4 );
     }
-    goto label$5579;
-    label$5598:;
-    if( V$1 != 0x1.2p+3 ) goto label$5600;
-    label$5601:;
+    goto label$5601;
+    label$5620:;
+    if( V$1 != 0x1.2p+3 ) goto label$5622;
+    label$5623:;
     {
      fb_GfxLine( FGIMAGE$, (float)*(double*)((uint8*)THIS$1 + 394840ll), (float)*(double*)((uint8*)THIS$1 + 394848ll), (float)*(double*)((uint8*)THIS$1 + 394864ll), (float)*(double*)((uint8*)THIS$1 + 394872ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 0, (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 393584ll) )), 0 );
     }
-    goto label$5579;
-    label$5600:;
-    if( V$1 != 0x1.4p+3 ) goto label$5602;
-    label$5603:;
+    goto label$5601;
+    label$5622:;
+    if( V$1 != 0x1.4p+3 ) goto label$5624;
+    label$5625:;
     {
      fb_GfxLine( BGIMAGE$, (float)*(double*)((uint8*)THIS$1 + 394840ll), (float)*(double*)((uint8*)THIS$1 + 394848ll), (float)*(double*)((uint8*)THIS$1 + 394864ll), (float)*(double*)((uint8*)THIS$1 + 394872ll), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394832ll) )), 0, (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 393584ll) )), 0 );
     }
-    label$5602:;
-    label$5579:;
+    label$5624:;
+    label$5601:;
    }
   }
   goto label$3109;
-  label$5577:;
-  if( ADR$1 != 0x1.820Ep+15 ) goto label$5604;
-  label$5605:;
+  label$5599:;
+  if( ADR$1 != 0x1.820Ep+15 ) goto label$5626;
+  label$5627:;
   {
    fb_PrintString( 1, (FBSTRING*)&STRCODE$, 0 );
    fb_GfxDrawString( FGIMAGE$, 0x0p+0f, 0x0p+0f, -2147483644, (FBSTRING*)&STRCODE$, 0u, (void*)0ull, 0, (void*)0ull, (void*)0ull, (void*)0ull );
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
   }
   goto label$3109;
-  label$5604:;
-  if( ADR$1 != 0x1.821p+15 ) goto label$5606;
-  label$5607:;
+  label$5626:;
+  if( ADR$1 != 0x1.821p+15 ) goto label$5628;
+  label$5629:;
   {
    {
-    double TMP$2791$4;
-    TMP$2791$4 = *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) )) << (3ll & 63ll)));
-    if( TMP$2791$4 < 0x1.p+0 ) goto label$5609;
-    if( TMP$2791$4 > 0x1.D8p+6 ) goto label$5609;
-    label$5610:;
+    double TMP$2813$4;
+    TMP$2813$4 = *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) )) << (3ll & 63ll)));
+    if( TMP$2813$4 < 0x1.p+0 ) goto label$5631;
+    if( TMP$2813$4 > 0x1.D8p+6 ) goto label$5631;
+    label$5632:;
     {
      *(double*)((uint8*)THIS$1 + 394912ll) = (double)((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.p+0 )) << (3ll & 63ll))) )) << (32ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.p+1 )) << (3ll & 63ll))) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.8p+1 )) << (3ll & 63ll))) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.p+2 )) << (3ll & 63ll))) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.4p+2 )) << (3ll & 63ll)));
      _ZN8MEMORY_T5POKEBEdd( THIS$1, *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) )) << (3ll & 63ll))), *(double*)((uint8*)THIS$1 + 394912ll) );
      *(double*)((uint8*)THIS$1 + 395344ll) = *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.8p+2;
     }
-    goto label$5608;
-    label$5609:;
-    if( TMP$2791$4 < 0x1.DCp+6 ) goto label$5611;
-    if( TMP$2791$4 > 0x1.FCp+6 ) goto label$5611;
-    label$5612:;
+    goto label$5630;
+    label$5631:;
+    if( TMP$2813$4 < 0x1.DCp+6 ) goto label$5633;
+    if( TMP$2813$4 > 0x1.FCp+6 ) goto label$5633;
+    label$5634:;
     {
      _ZN8MEMORY_T5POKEBEdd( THIS$1, *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) )) << (3ll & 63ll))), 0x0p+0 );
      *(double*)((uint8*)THIS$1 + 395344ll) = *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.p+2;
     }
-    goto label$5608;
-    label$5611:;
-    if( TMP$2791$4 < 0x1.p+7 ) goto label$5613;
-    if( TMP$2791$4 > 0x1.0Cp+7 ) goto label$5613;
-    label$5614:;
+    goto label$5630;
+    label$5633:;
+    if( TMP$2813$4 < 0x1.p+7 ) goto label$5635;
+    if( TMP$2813$4 > 0x1.0Cp+7 ) goto label$5635;
+    label$5636:;
     {
      _ZN8MEMORY_T5POKEBEdd( THIS$1, *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) )) << (3ll & 63ll))), 0x0p+0 );
      *(double*)((uint8*)THIS$1 + 395344ll) = *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.p+2;
     }
-    goto label$5608;
-    label$5613:;
-    if( TMP$2791$4 < 0x1.0Ep+7 ) goto label$5615;
-    if( TMP$2791$4 > 0x1.44p+7 ) goto label$5615;
-    label$5616:;
+    goto label$5630;
+    label$5635:;
+    if( TMP$2813$4 < 0x1.0Ep+7 ) goto label$5637;
+    if( TMP$2813$4 > 0x1.44p+7 ) goto label$5637;
+    label$5638:;
     {
      _ZN8MEMORY_T5POKEBEdd( THIS$1, *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) )) << (3ll & 63ll))), 0x0p+0 );
      *(double*)((uint8*)THIS$1 + 395344ll) = *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.p+2;
     }
-    label$5615:;
-    label$5608:;
+    label$5637:;
+    label$5630:;
    }
    *(double*)((uint8*)THIS$1 + 395400ll) = (double)((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.p+0 )) << (3ll & 63ll))) )) << (32ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.p+1 )) << (3ll & 63ll))) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.8p+1 )) << (3ll & 63ll))) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.p+2 )) << (3ll & 63ll))) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.4p+2 )) << (3ll & 63ll)));
    {
-    double TMP$2792$4;
-    TMP$2792$4 = *(double*)((uint8*)THIS$1 + 395400ll);
-    if( TMP$2792$4 < 0x1.p+14 ) goto label$5618;
-    if( TMP$2792$4 > 0x1.F9Cp+14 ) goto label$5618;
-    label$5619:;
+    double TMP$2814$4;
+    TMP$2814$4 = *(double*)((uint8*)THIS$1 + 395400ll);
+    if( TMP$2814$4 < 0x1.p+14 ) goto label$5640;
+    if( TMP$2814$4 > 0x1.F9Cp+14 ) goto label$5640;
+    label$5641:;
     {
      *(double*)((uint8*)THIS$1 + 394912ll) = *(double*)((uint8*)THIS$1 + ((int64)(ADR0$ + 1ull) << (3ll & 63ll)));
      _ZN8MEMORY_T5POKEBEdd( THIS$1, (double)ADR0$, *(double*)((uint8*)THIS$1 + 394912ll) );
      *(double*)((uint8*)THIS$1 + 395344ll) = *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.8p+1;
     }
-    goto label$5617;
-    label$5618:;
-    if( TMP$2792$4 < 0x1.4p+19 ) goto label$5620;
-    if( TMP$2792$4 > 0x1.5FFFEp+19 ) goto label$5620;
-    label$5621:;
+    goto label$5639;
+    label$5640:;
+    if( TMP$2814$4 < 0x1.4p+19 ) goto label$5642;
+    if( TMP$2814$4 > 0x1.5FFFEp+19 ) goto label$5642;
+    label$5643:;
     {
      _ZN8MEMORY_T5POKEBEdd( THIS$1, *(double*)((uint8*)THIS$1 + 395400ll), 0x0p+0 );
      *(double*)((uint8*)THIS$1 + 395344ll) = *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.p+2;
     }
-    label$5620:;
-    label$5617:;
+    label$5642:;
+    label$5639:;
    }
   }
   goto label$3109;
-  label$5606:;
-  if( ADR$1 != 0x1.821p+15 ) goto label$5622;
-  label$5623:;
+  label$5628:;
+  if( ADR$1 != 0x1.821p+15 ) goto label$5644;
+  label$5645:;
   {
    *(double*)((uint8*)THIS$1 + 395344ll) = (double)0ll;
   }
   goto label$3109;
-  label$5622:;
-  if( ADR$1 != 0x1.8212p+15 ) goto label$5624;
-  label$5625:;
+  label$5644:;
+  if( ADR$1 != 0x1.8212p+15 ) goto label$5646;
+  label$5647:;
   {
    *(double*)((uint8*)THIS$1 + 395344ll) = (double)((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395352ll) )) << (32ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395360ll) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395368ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395376ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 395384ll);
   }
   goto label$3109;
-  label$5624:;
-  if( ADR$1 != 0x1.822p+15 ) goto label$5626;
-  label$5627:;
+  label$5646:;
+  if( ADR$1 != 0x1.822p+15 ) goto label$5648;
+  label$5649:;
   {
    *(double*)((uint8*)THIS$1 + 395400ll) = (double)((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395408ll) )) << (32ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395416ll) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395424ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395432ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 395440ll);
   }
   goto label$3109;
-  label$5626:;
-  if( ADR$1 != 0x1.822Ep+15 ) goto label$5628;
-  label$5629:;
+  label$5648:;
+  if( ADR$1 != 0x1.822Ep+15 ) goto label$5650;
+  label$5651:;
   {
    *(double*)((uint8*)THIS$1 + 395456ll) = (double)((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395464ll) )) << (32ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395472ll) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395480ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395488ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 395496ll);
   }
   goto label$3109;
-  label$5628:;
-  if( ADR$1 != 0x1.823Cp+15 ) goto label$5630;
-  label$5631:;
+  label$5650:;
+  if( ADR$1 != 0x1.823Cp+15 ) goto label$5652;
+  label$5653:;
   {
    *(double*)((uint8*)THIS$1 + 395512ll) = (double)((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395520ll) )) << (32ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395528ll) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395536ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395544ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 395552ll);
   }
   goto label$3109;
-  label$5630:;
-  if( ADR$1 != 0x1.824Ap+15 ) goto label$5632;
-  label$5633:;
+  label$5652:;
+  if( ADR$1 != 0x1.824Ap+15 ) goto label$5654;
+  label$5655:;
   {
    *(double*)((uint8*)THIS$1 + 395568ll) = (double)((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395576ll) )) << (32ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395584ll) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395592ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395600ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 395608ll);
   }
   goto label$3109;
-  label$5632:;
-  if( ADR$1 != 0x1.8258p+15 ) goto label$5634;
-  label$5635:;
+  label$5654:;
+  if( ADR$1 != 0x1.8258p+15 ) goto label$5656;
+  label$5657:;
   {
    *(double*)((uint8*)THIS$1 + 395624ll) = (double)((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395632ll) )) << (32ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395640ll) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395648ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395656ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 395664ll);
   }
   goto label$3109;
-  label$5634:;
-  if( ADR$1 != 0x1.8266p+15 ) goto label$5636;
-  label$5637:;
+  label$5656:;
+  if( ADR$1 != 0x1.8266p+15 ) goto label$5658;
+  label$5659:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(((((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395688ll) )) << (56ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395696ll) )) << (48ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395704ll) )) << (40ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395712ll) )) << (32ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395720ll) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395728ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395736ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 395744ll);
   }
   goto label$3109;
-  label$5636:;
-  if( ADR$1 != 0x1.827Ap+15 ) goto label$5638;
-  label$5639:;
+  label$5658:;
+  if( ADR$1 != 0x1.827Ap+15 ) goto label$5660;
+  label$5661:;
   {
    *(double*)((uint8*)THIS$1 + 395760ll) = (double)(((((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395768ll) )) << (56ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395776ll) )) << (48ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395784ll) )) << (40ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395792ll) )) << (32ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395800ll) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395808ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395816ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 395824ll);
   }
   goto label$3109;
-  label$5638:;
-  if( ADR$1 != 0x1.828Ep+15 ) goto label$5640;
-  label$5641:;
+  label$5660:;
+  if( ADR$1 != 0x1.828Ep+15 ) goto label$5662;
+  label$5663:;
   {
    *(double*)((uint8*)THIS$1 + 395840ll) = (double)(((((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395848ll) )) << (56ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395856ll) )) << (48ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395864ll) )) << (40ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395872ll) )) << (32ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395880ll) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395888ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395896ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 395904ll);
   }
   goto label$3109;
-  label$5640:;
-  if( ADR$1 != 0x1.82A2p+15 ) goto label$5642;
-  label$5643:;
+  label$5662:;
+  if( ADR$1 != 0x1.82A2p+15 ) goto label$5664;
+  label$5665:;
   {
    *(double*)((uint8*)THIS$1 + 395920ll) = (double)(((((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395928ll) )) << (56ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395936ll) )) << (48ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395944ll) )) << (40ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395952ll) )) << (32ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395960ll) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395968ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395976ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 395984ll);
   }
   goto label$3109;
-  label$5642:;
-  if( ADR$1 != 0x1.82B6p+15 ) goto label$5644;
-  label$5645:;
+  label$5664:;
+  if( ADR$1 != 0x1.82B6p+15 ) goto label$5666;
+  label$5667:;
   {
    *(double*)((uint8*)THIS$1 + 396000ll) = (double)(((((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396008ll) )) << (56ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396016ll) )) << (48ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396024ll) )) << (40ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396032ll) )) << (32ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396040ll) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396048ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396056ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 396064ll);
   }
   goto label$3109;
-  label$5644:;
-  if( ADR$1 != 0x1.82CAp+15 ) goto label$5646;
-  label$5647:;
+  label$5666:;
+  if( ADR$1 != 0x1.82CAp+15 ) goto label$5668;
+  label$5669:;
   {
    *(double*)((uint8*)THIS$1 + 396080ll) = (double)(((((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396088ll) )) << (56ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396096ll) )) << (48ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396104ll) )) << (40ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396112ll) )) << (32ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396120ll) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396128ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396136ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 396144ll);
   }
   goto label$3109;
-  label$5646:;
-  if( ADR$1 != 0x1.82DEp+15 ) goto label$5648;
-  label$5649:;
+  label$5668:;
+  if( ADR$1 != 0x1.82DEp+15 ) goto label$5670;
+  label$5671:;
   {
    *(double*)((uint8*)THIS$1 + 396000ll) = *(double*)((uint8*)THIS$1 + 394888ll);
   }
   goto label$3109;
-  label$5648:;
-  if( ADR$1 != 0x1.82Ep+15 ) goto label$5650;
-  label$5651:;
+  label$5670:;
+  if( ADR$1 != 0x1.82Ep+15 ) goto label$5672;
+  label$5673:;
   {
    *(double*)((uint8*)THIS$1 + 396000ll) = *(double*)((uint8*)THIS$1 + 394896ll);
   }
   goto label$3109;
-  label$5650:;
-  if( ADR$1 != 0x1.82E2p+15 ) goto label$5652;
-  label$5653:;
+  label$5672:;
+  if( ADR$1 != 0x1.82E2p+15 ) goto label$5674;
+  label$5675:;
   {
    *(double*)((uint8*)THIS$1 + 396000ll) = *(double*)((uint8*)THIS$1 + 394904ll);
   }
   goto label$3109;
-  label$5652:;
-  if( ADR$1 != 0x1.82E4p+15 ) goto label$5654;
-  label$5655:;
+  label$5674:;
+  if( ADR$1 != 0x1.82E4p+15 ) goto label$5676;
+  label$5677:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394888ll);
   }
   goto label$3109;
-  label$5654:;
-  if( ADR$1 != 0x1.82E6p+15 ) goto label$5656;
-  label$5657:;
+  label$5676:;
+  if( ADR$1 != 0x1.82E6p+15 ) goto label$5678;
+  label$5679:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394896ll);
   }
   goto label$3109;
-  label$5656:;
-  if( ADR$1 != 0x1.82E8p+15 ) goto label$5658;
-  label$5659:;
+  label$5678:;
+  if( ADR$1 != 0x1.82E8p+15 ) goto label$5680;
+  label$5681:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394904ll);
   }
   goto label$3109;
-  label$5658:;
-  if( ADR$1 != 0x1.82EAp+15 ) goto label$5660;
-  label$5661:;
+  label$5680:;
+  if( ADR$1 != 0x1.82EAp+15 ) goto label$5682;
+  label$5683:;
   {
    *(double*)((uint8*)THIS$1 + 395760ll) = *(double*)((uint8*)THIS$1 + 394888ll);
   }
   goto label$3109;
-  label$5660:;
-  if( ADR$1 != 0x1.82ECp+15 ) goto label$5662;
-  label$5663:;
+  label$5682:;
+  if( ADR$1 != 0x1.82ECp+15 ) goto label$5684;
+  label$5685:;
   {
    *(double*)((uint8*)THIS$1 + 395760ll) = *(double*)((uint8*)THIS$1 + 394896ll);
   }
   goto label$3109;
-  label$5662:;
-  if( ADR$1 != 0x1.82EEp+15 ) goto label$5664;
-  label$5665:;
+  label$5684:;
+  if( ADR$1 != 0x1.82EEp+15 ) goto label$5686;
+  label$5687:;
   {
    *(double*)((uint8*)THIS$1 + 395760ll) = *(double*)((uint8*)THIS$1 + 394904ll);
   }
   goto label$3109;
-  label$5664:;
-  if( ADR$1 != 0x1.82Fp+15 ) goto label$5666;
-  label$5667:;
+  label$5686:;
+  if( ADR$1 != 0x1.82Fp+15 ) goto label$5688;
+  label$5689:;
   {
    *(double*)((uint8*)THIS$1 + 395920ll) = *(double*)((uint8*)THIS$1 + 394888ll);
   }
   goto label$3109;
-  label$5666:;
-  if( ADR$1 != 0x1.82F2p+15 ) goto label$5668;
-  label$5669:;
+  label$5688:;
+  if( ADR$1 != 0x1.82F2p+15 ) goto label$5690;
+  label$5691:;
   {
    *(double*)((uint8*)THIS$1 + 395920ll) = *(double*)((uint8*)THIS$1 + 395120ll);
   }
   goto label$3109;
-  label$5668:;
-  if( ADR$1 != 0x1.82F2p+15 ) goto label$5670;
-  label$5671:;
+  label$5690:;
+  if( ADR$1 != 0x1.82F2p+15 ) goto label$5692;
+  label$5693:;
   {
    *(double*)((uint8*)THIS$1 + 395920ll) = *(double*)((uint8*)THIS$1 + 394904ll);
   }
   goto label$3109;
-  label$5670:;
-  if( ADR$1 != 0x1.82F4p+15 ) goto label$5672;
-  label$5673:;
-  {
-   *(double*)((uint8*)THIS$1 + 393232ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5672:;
-  if( ADR$1 != 0x1.82F6p+15 ) goto label$5674;
-  label$5675:;
-  {
-   *(double*)((uint8*)THIS$1 + 393232ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5674:;
-  if( ADR$1 != 0x1.82F8p+15 ) goto label$5676;
-  label$5677:;
-  {
-   *(double*)((uint8*)THIS$1 + 393232ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5676:;
-  if( ADR$1 != 0x1.82FAp+15 ) goto label$5678;
-  label$5679:;
-  {
-   *(double*)((uint8*)THIS$1 + 393240ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5678:;
-  if( ADR$1 != 0x1.82FCp+15 ) goto label$5680;
-  label$5681:;
-  {
-   *(double*)((uint8*)THIS$1 + 393240ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5680:;
-  if( ADR$1 != 0x1.82FEp+15 ) goto label$5682;
-  label$5683:;
-  {
-   *(double*)((uint8*)THIS$1 + 393240ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5682:;
-  if( ADR$1 != 0x1.83p+15 ) goto label$5684;
-  label$5685:;
-  {
-   *(double*)((uint8*)THIS$1 + 393248ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5684:;
-  if( ADR$1 != 0x1.D122p+15 ) goto label$5686;
-  label$5687:;
-  {
-   *(double*)((uint8*)THIS$1 + 393248ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5686:;
-  if( ADR$1 != 0x1.D124p+15 ) goto label$5688;
-  label$5689:;
-  {
-   *(double*)((uint8*)THIS$1 + 393248ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5688:;
-  if( ADR$1 != 0x1.D126p+15 ) goto label$5690;
-  label$5691:;
-  {
-   *(double*)((uint8*)THIS$1 + 393256ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5690:;
-  if( ADR$1 != 0x1.D15p+15 ) goto label$5692;
-  label$5693:;
-  {
-   *(double*)((uint8*)THIS$1 + 393256ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
   label$5692:;
-  if( ADR$1 != 0x1.D152p+15 ) goto label$5694;
+  if( ADR$1 != 0x1.82F4p+15 ) goto label$5694;
   label$5695:;
   {
-   *(double*)((uint8*)THIS$1 + 393256ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+   *(double*)((uint8*)THIS$1 + 393232ll) = *(double*)((uint8*)THIS$1 + 395680ll);
   }
   goto label$3109;
   label$5694:;
-  if( ADR$1 != 0x1.D154p+15 ) goto label$5696;
+  if( ADR$1 != 0x1.82F6p+15 ) goto label$5696;
   label$5697:;
+  {
+   *(double*)((uint8*)THIS$1 + 393232ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5696:;
+  if( ADR$1 != 0x1.82F8p+15 ) goto label$5698;
+  label$5699:;
+  {
+   *(double*)((uint8*)THIS$1 + 393232ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5698:;
+  if( ADR$1 != 0x1.82FAp+15 ) goto label$5700;
+  label$5701:;
+  {
+   *(double*)((uint8*)THIS$1 + 393240ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5700:;
+  if( ADR$1 != 0x1.82FCp+15 ) goto label$5702;
+  label$5703:;
+  {
+   *(double*)((uint8*)THIS$1 + 393240ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5702:;
+  if( ADR$1 != 0x1.82FEp+15 ) goto label$5704;
+  label$5705:;
+  {
+   *(double*)((uint8*)THIS$1 + 393240ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5704:;
+  if( ADR$1 != 0x1.83p+15 ) goto label$5706;
+  label$5707:;
+  {
+   *(double*)((uint8*)THIS$1 + 393248ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5706:;
+  if( ADR$1 != 0x1.D122p+15 ) goto label$5708;
+  label$5709:;
+  {
+   *(double*)((uint8*)THIS$1 + 393248ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5708:;
+  if( ADR$1 != 0x1.D124p+15 ) goto label$5710;
+  label$5711:;
+  {
+   *(double*)((uint8*)THIS$1 + 393248ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5710:;
+  if( ADR$1 != 0x1.D126p+15 ) goto label$5712;
+  label$5713:;
+  {
+   *(double*)((uint8*)THIS$1 + 393256ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5712:;
+  if( ADR$1 != 0x1.D15p+15 ) goto label$5714;
+  label$5715:;
+  {
+   *(double*)((uint8*)THIS$1 + 393256ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5714:;
+  if( ADR$1 != 0x1.D152p+15 ) goto label$5716;
+  label$5717:;
+  {
+   *(double*)((uint8*)THIS$1 + 393256ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5716:;
+  if( ADR$1 != 0x1.D154p+15 ) goto label$5718;
+  label$5719:;
   {
    *(double*)((uint8*)THIS$1 + 394840ll) = *(double*)((uint8*)THIS$1 + 395680ll);
   }
   goto label$3109;
-  label$5696:;
-  if( ADR$1 != 0x1.D156p+15 ) goto label$5698;
-  label$5699:;
+  label$5718:;
+  if( ADR$1 != 0x1.D156p+15 ) goto label$5720;
+  label$5721:;
   {
    *(double*)((uint8*)THIS$1 + 394864ll) = *(double*)((uint8*)THIS$1 + 395680ll);
   }
   goto label$3109;
-  label$5698:;
-  if( ADR$1 != 0x1.D158p+15 ) goto label$5700;
-  label$5701:;
+  label$5720:;
+  if( ADR$1 != 0x1.D158p+15 ) goto label$5722;
+  label$5723:;
   {
    *(double*)((uint8*)THIS$1 + 394848ll) = *(double*)((uint8*)THIS$1 + 395680ll);
   }
   goto label$3109;
-  label$5700:;
-  if( ADR$1 != 0x1.D15Ap+15 ) goto label$5702;
-  label$5703:;
+  label$5722:;
+  if( ADR$1 != 0x1.D15Ap+15 ) goto label$5724;
+  label$5725:;
   {
    *(double*)((uint8*)THIS$1 + 394872ll) = *(double*)((uint8*)THIS$1 + 395680ll);
   }
   goto label$3109;
-  label$5702:;
-  if( ADR$1 != 0x1.D15Cp+15 ) goto label$5704;
-  label$5705:;
+  label$5724:;
+  if( ADR$1 != 0x1.D15Cp+15 ) goto label$5726;
+  label$5727:;
   {
    *(double*)((uint8*)THIS$1 + 394856ll) = *(double*)((uint8*)THIS$1 + 395680ll);
   }
   goto label$3109;
-  label$5704:;
-  if( ADR$1 != 0x1.D15Ep+15 ) goto label$5706;
-  label$5707:;
-  {
-   *(double*)((uint8*)THIS$1 + 394880ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5706:;
-  if( ADR$1 != 0x1.D16p+15 ) goto label$5708;
-  label$5709:;
-  {
-   *(double*)((uint8*)THIS$1 + 394824ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5708:;
-  if( ADR$1 != 0x1.D162p+15 ) goto label$5710;
-  label$5711:;
-  {
-   *(double*)((uint8*)THIS$1 + 394832ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5710:;
-  if( ADR$1 != 0x1.D164p+15 ) goto label$5712;
-  label$5713:;
-  {
-   *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394840ll);
-  }
-  goto label$3109;
-  label$5712:;
-  if( ADR$1 != 0x1.D166p+15 ) goto label$5714;
-  label$5715:;
-  {
-   *(double*)((uint8*)THIS$1 + 394840ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5714:;
-  if( ADR$1 != 0x1.D168p+15 ) goto label$5716;
-  label$5717:;
-  {
-   *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394848ll);
-  }
-  goto label$3109;
-  label$5716:;
-  if( ADR$1 != 0x1.D16Ap+15 ) goto label$5718;
-  label$5719:;
-  {
-   *(double*)((uint8*)THIS$1 + 394848ll) = *(double*)((uint8*)THIS$1 + 395680ll);
-  }
-  goto label$3109;
-  label$5718:;
-  if( ADR$1 != 0x1.D16Cp+15 ) goto label$5720;
-  label$5721:;
-  {
-   *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394856ll);
-  }
-  goto label$3109;
-  label$5720:;
-  if( ADR$1 != 0x1.D16Ep+15 ) goto label$5722;
-  label$5723:;
-  {
-   *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394864ll);
-  }
-  goto label$3109;
-  label$5722:;
-  if( ADR$1 != 0x1.D17p+15 ) goto label$5724;
-  label$5725:;
-  {
-   *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394872ll);
-  }
-  goto label$3109;
-  label$5724:;
-  if( ADR$1 != 0x1.D172p+15 ) goto label$5726;
-  label$5727:;
-  {
-   *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394880ll);
-  }
-  goto label$3109;
   label$5726:;
-  if( ADR$1 != 0x1.D174p+15 ) goto label$5728;
+  if( ADR$1 != 0x1.D15Ep+15 ) goto label$5728;
   label$5729:;
   {
    *(double*)((uint8*)THIS$1 + 394880ll) = *(double*)((uint8*)THIS$1 + 395680ll);
   }
   goto label$3109;
   label$5728:;
-  if( ADR$1 != 0x1.D176p+15 ) goto label$5730;
+  if( ADR$1 != 0x1.D16p+15 ) goto label$5730;
   label$5731:;
+  {
+   *(double*)((uint8*)THIS$1 + 394824ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5730:;
+  if( ADR$1 != 0x1.D162p+15 ) goto label$5732;
+  label$5733:;
+  {
+   *(double*)((uint8*)THIS$1 + 394832ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5732:;
+  if( ADR$1 != 0x1.D164p+15 ) goto label$5734;
+  label$5735:;
+  {
+   *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394840ll);
+  }
+  goto label$3109;
+  label$5734:;
+  if( ADR$1 != 0x1.D166p+15 ) goto label$5736;
+  label$5737:;
+  {
+   *(double*)((uint8*)THIS$1 + 394840ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5736:;
+  if( ADR$1 != 0x1.D168p+15 ) goto label$5738;
+  label$5739:;
+  {
+   *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394848ll);
+  }
+  goto label$3109;
+  label$5738:;
+  if( ADR$1 != 0x1.D16Ap+15 ) goto label$5740;
+  label$5741:;
+  {
+   *(double*)((uint8*)THIS$1 + 394848ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5740:;
+  if( ADR$1 != 0x1.D16Cp+15 ) goto label$5742;
+  label$5743:;
+  {
+   *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394856ll);
+  }
+  goto label$3109;
+  label$5742:;
+  if( ADR$1 != 0x1.D16Ep+15 ) goto label$5744;
+  label$5745:;
+  {
+   *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394864ll);
+  }
+  goto label$3109;
+  label$5744:;
+  if( ADR$1 != 0x1.D17p+15 ) goto label$5746;
+  label$5747:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394872ll);
   }
   goto label$3109;
-  label$5730:;
-  if( ADR$1 != 0x1.D178p+15 ) goto label$5732;
-  label$5733:;
+  label$5746:;
+  if( ADR$1 != 0x1.D172p+15 ) goto label$5748;
+  label$5749:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394880ll);
   }
   goto label$3109;
-  label$5732:;
-  if( ADR$1 != 0x1.D17Ap+15 ) goto label$5734;
-  label$5735:;
+  label$5748:;
+  if( ADR$1 != 0x1.D174p+15 ) goto label$5750;
+  label$5751:;
+  {
+   *(double*)((uint8*)THIS$1 + 394880ll) = *(double*)((uint8*)THIS$1 + 395680ll);
+  }
+  goto label$3109;
+  label$5750:;
+  if( ADR$1 != 0x1.D176p+15 ) goto label$5752;
+  label$5753:;
+  {
+   *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394872ll);
+  }
+  goto label$3109;
+  label$5752:;
+  if( ADR$1 != 0x1.D178p+15 ) goto label$5754;
+  label$5755:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394880ll);
   }
   goto label$3109;
-  label$5734:;
-  if( ADR$1 != 0x1.D17Cp+15 ) goto label$5736;
-  label$5737:;
+  label$5754:;
+  if( ADR$1 != 0x1.D17Ap+15 ) goto label$5756;
+  label$5757:;
+  {
+   *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 394880ll);
+  }
+  goto label$3109;
+  label$5756:;
+  if( ADR$1 != 0x1.D17Cp+15 ) goto label$5758;
+  label$5759:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 395760ll) + *(double*)((uint8*)THIS$1 + 395840ll);
   }
   goto label$3109;
-  label$5736:;
-  if( ADR$1 != 0x1.D17Ep+15 ) goto label$5738;
-  label$5739:;
+  label$5758:;
+  if( ADR$1 != 0x1.D17Ep+15 ) goto label$5760;
+  label$5761:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 395760ll) - *(double*)((uint8*)THIS$1 + 395840ll);
   }
   goto label$3109;
-  label$5738:;
-  if( ADR$1 != 0x1.D18p+15 ) goto label$5740;
-  label$5741:;
+  label$5760:;
+  if( ADR$1 != 0x1.D18p+15 ) goto label$5762;
+  label$5763:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 395760ll) * *(double*)((uint8*)THIS$1 + 395840ll);
   }
   goto label$3109;
-  label$5740:;
-  if( ADR$1 != 0x1.D182p+15 ) goto label$5742;
-  label$5743:;
+  label$5762:;
+  if( ADR$1 != 0x1.D182p+15 ) goto label$5764;
+  label$5765:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 395760ll) / *(double*)((uint8*)THIS$1 + 395840ll);
   }
   goto label$3109;
-  label$5742:;
-  if( ADR$1 != 0x1.D184p+15 ) goto label$5744;
-  label$5745:;
+  label$5764:;
+  if( ADR$1 != 0x1.D184p+15 ) goto label$5766;
+  label$5767:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395760ll) )) / ((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395840ll) )));
   }
   goto label$3109;
-  label$5744:;
-  if( ADR$1 != 0x1.D186p+15 ) goto label$5746;
-  label$5747:;
+  label$5766:;
+  if( ADR$1 != 0x1.D186p+15 ) goto label$5768;
+  label$5769:;
   {
-   double vr$5952 = pow( *(double*)((uint8*)THIS$1 + 395760ll), *(double*)((uint8*)THIS$1 + 395840ll) );
-   *(double*)((uint8*)THIS$1 + 395680ll) = vr$5952;
+   double vr$5974 = pow( *(double*)((uint8*)THIS$1 + 395760ll), *(double*)((uint8*)THIS$1 + 395840ll) );
+   *(double*)((uint8*)THIS$1 + 395680ll) = vr$5974;
   }
   goto label$3109;
-  label$5746:;
-  if( ADR$1 != 0x1.D188p+15 ) goto label$5748;
-  label$5749:;
+  label$5768:;
+  if( ADR$1 != 0x1.D188p+15 ) goto label$5770;
+  label$5771:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395760ll) )) % ((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395840ll) )));
   }
   goto label$3109;
-  label$5748:;
-  if( ADR$1 != 0x1.D18Ap+15 ) goto label$5750;
-  label$5751:;
+  label$5770:;
+  if( ADR$1 != 0x1.D18Ap+15 ) goto label$5772;
+  label$5773:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = -(*(double*)((uint8*)THIS$1 + 395680ll));
   }
   goto label$3109;
-  label$5750:;
-  if( ADR$1 != 0x1.D18Cp+15 ) goto label$5752;
-  label$5753:;
+  label$5772:;
+  if( ADR$1 != 0x1.D18Cp+15 ) goto label$5774;
+  label$5775:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395760ll) )) << (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395840ll) )) & 63ll));
   }
   goto label$3109;
-  label$5752:;
-  if( ADR$1 != 0x1.D18Ep+15 ) goto label$5754;
-  label$5755:;
+  label$5774:;
+  if( ADR$1 != 0x1.D18Ep+15 ) goto label$5776;
+  label$5777:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395760ll) )) >> (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395840ll) )) & 63ll));
   }
   goto label$3109;
-  label$5754:;
-  if( ADR$1 != 0x1.D19p+15 ) goto label$5756;
-  label$5757:;
+  label$5776:;
+  if( ADR$1 != 0x1.D19p+15 ) goto label$5778;
+  label$5779:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(int64)-(*(double*)((uint8*)THIS$1 + 395760ll) == *(double*)((uint8*)THIS$1 + 395840ll));
   }
   goto label$3109;
-  label$5756:;
-  if( ADR$1 != 0x1.D192p+15 ) goto label$5758;
-  label$5759:;
+  label$5778:;
+  if( ADR$1 != 0x1.D192p+15 ) goto label$5780;
+  label$5781:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(int64)-(*(double*)((uint8*)THIS$1 + 395760ll) != *(double*)((uint8*)THIS$1 + 395840ll));
   }
   goto label$3109;
-  label$5758:;
-  if( ADR$1 != 0x1.D194p+15 ) goto label$5760;
-  label$5761:;
+  label$5780:;
+  if( ADR$1 != 0x1.D194p+15 ) goto label$5782;
+  label$5783:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(int64)-(*(double*)((uint8*)THIS$1 + 395760ll) < *(double*)((uint8*)THIS$1 + 395840ll));
   }
   goto label$3109;
-  label$5760:;
-  if( ADR$1 != 0x1.D196p+15 ) goto label$5762;
-  label$5763:;
+  label$5782:;
+  if( ADR$1 != 0x1.D196p+15 ) goto label$5784;
+  label$5785:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(int64)-(*(double*)((uint8*)THIS$1 + 395760ll) <= *(double*)((uint8*)THIS$1 + 395840ll));
   }
   goto label$3109;
-  label$5762:;
-  if( ADR$1 != 0x1.D198p+15 ) goto label$5764;
-  label$5765:;
+  label$5784:;
+  if( ADR$1 != 0x1.D198p+15 ) goto label$5786;
+  label$5787:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(int64)-(*(double*)((uint8*)THIS$1 + 395760ll) >= *(double*)((uint8*)THIS$1 + 395840ll));
   }
   goto label$3109;
-  label$5764:;
-  if( ADR$1 != 0x1.D19Ap+15 ) goto label$5766;
-  label$5767:;
+  label$5786:;
+  if( ADR$1 != 0x1.D19Ap+15 ) goto label$5788;
+  label$5789:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(int64)-(*(double*)((uint8*)THIS$1 + 395760ll) > *(double*)((uint8*)THIS$1 + 395840ll));
   }
   goto label$3109;
-  label$5766:;
-  if( ADR$1 != 0x1.D19Cp+15 ) goto label$5768;
-  label$5769:;
+  label$5788:;
+  if( ADR$1 != 0x1.D19Cp+15 ) goto label$5790;
+  label$5791:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395760ll) )) & ((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395840ll) )));
   }
   goto label$3109;
-  label$5768:;
-  if( ADR$1 != 0x1.D19Ep+15 ) goto label$5770;
-  label$5771:;
+  label$5790:;
+  if( ADR$1 != 0x1.D19Ep+15 ) goto label$5792;
+  label$5793:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)~(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394960ll) )) ^ ((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395040ll) )));
   }
   goto label$3109;
-  label$5770:;
-  if( ADR$1 != 0x1.D1Ap+15 ) goto label$5772;
-  label$5773:;
+  label$5792:;
+  if( ADR$1 != 0x1.D1Ap+15 ) goto label$5794;
+  label$5795:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(~((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394960ll) )) | ((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395040ll) )));
   }
   goto label$3109;
-  label$5772:;
-  if( ADR$1 != 0x1.D1A2p+15 ) goto label$5774;
-  label$5775:;
+  label$5794:;
+  if( ADR$1 != 0x1.D1A2p+15 ) goto label$5796;
+  label$5797:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395760ll) )) | ((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395840ll) )));
   }
   goto label$3109;
-  label$5774:;
-  if( ADR$1 != 0x1.D1A4p+15 ) goto label$5776;
-  label$5777:;
+  label$5796:;
+  if( ADR$1 != 0x1.D1A4p+15 ) goto label$5798;
+  label$5799:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395760ll) )) ^ ((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395840ll) )));
   }
   goto label$3109;
-  label$5776:;
-  if( ADR$1 != 0x1.D1A6p+15 ) goto label$5778;
-  label$5779:;
+  label$5798:;
+  if( ADR$1 != 0x1.D1A6p+15 ) goto label$5800;
+  label$5801:;
   {
    *(double*)((uint8*)THIS$1 + 395760ll) = *(double*)((uint8*)THIS$1 + 395680ll);
   }
   goto label$3109;
-  label$5778:;
-  if( ADR$1 != 0x1.D1A8p+15 ) goto label$5780;
-  label$5781:;
+  label$5800:;
+  if( ADR$1 != 0x1.D1A8p+15 ) goto label$5802;
+  label$5803:;
   {
    *(double*)((uint8*)THIS$1 + 395840ll) = *(double*)((uint8*)THIS$1 + 395680ll);
   }
   goto label$3109;
-  label$5780:;
-  if( ADR$1 != 0x1.D1AAp+15 ) goto label$5782;
-  label$5783:;
+  label$5802:;
+  if( ADR$1 != 0x1.D1AAp+15 ) goto label$5804;
+  label$5805:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 395680ll) + 0x1.p+0;
   }
   goto label$3109;
-  label$5782:;
-  if( ADR$1 != 0x1.D1ACp+15 ) goto label$5784;
-  label$5785:;
+  label$5804:;
+  if( ADR$1 != 0x1.D1ACp+15 ) goto label$5806;
+  label$5807:;
   {
    *(double*)((uint8*)THIS$1 + 395760ll) = *(double*)((uint8*)THIS$1 + 395760ll) + 0x1.p+0;
   }
   goto label$3109;
-  label$5784:;
-  if( ADR$1 != 0x1.D1AEp+15 ) goto label$5786;
-  label$5787:;
+  label$5806:;
+  if( ADR$1 != 0x1.D1AEp+15 ) goto label$5808;
+  label$5809:;
   {
    *(double*)((uint8*)THIS$1 + 395840ll) = *(double*)((uint8*)THIS$1 + 395840ll) + 0x1.p+0;
   }
   goto label$3109;
-  label$5786:;
-  if( ADR$1 != 0x1.D1Bp+15 ) goto label$5788;
-  label$5789:;
+  label$5808:;
+  if( ADR$1 != 0x1.D1Bp+15 ) goto label$5810;
+  label$5811:;
   {
    *(double*)((uint8*)THIS$1 + 395680ll) = *(double*)((uint8*)THIS$1 + 395680ll) + -0x1.p+0;
   }
   goto label$3109;
-  label$5788:;
-  if( ADR$1 != 0x1.D1B2p+15 ) goto label$5790;
-  label$5791:;
+  label$5810:;
+  if( ADR$1 != 0x1.D1B2p+15 ) goto label$5812;
+  label$5813:;
   {
    *(double*)((uint8*)THIS$1 + 395760ll) = *(double*)((uint8*)THIS$1 + 395760ll) + -0x1.p+0;
   }
   goto label$3109;
-  label$5790:;
-  if( ADR$1 != 0x1.D1B4p+15 ) goto label$5792;
-  label$5793:;
+  label$5812:;
+  if( ADR$1 != 0x1.D1B4p+15 ) goto label$5814;
+  label$5815:;
   {
    *(double*)((uint8*)THIS$1 + 395840ll) = *(double*)((uint8*)THIS$1 + 395840ll) + -0x1.p+0;
   }
   goto label$3109;
-  label$5792:;
-  if( ADR$1 != 0x1.D1B6p+15 ) goto label$5794;
-  label$5795:;
-  {
-   if( *(double*)((uint8*)THIS$1 + 395760ll) != *(double*)((uint8*)THIS$1 + 395840ll) ) goto label$5797;
-   {
-    *(double*)((uint8*)THIS$1 + 396000ll) = V$1;
-    label$5797:;
-   }
-  }
-  goto label$3109;
-  label$5794:;
-  if( ADR$1 != 0x1.D1B6p+15 ) goto label$5798;
-  label$5799:;
-  {
-   if( *(double*)((uint8*)THIS$1 + 395760ll) == *(double*)((uint8*)THIS$1 + 395840ll) ) goto label$5801;
-   {
-    *(double*)((uint8*)THIS$1 + 396000ll) = V$1;
-    label$5801:;
-   }
-  }
-  goto label$3109;
-  label$5798:;
-  if( ADR$1 != 0x1.D1B8p+15 ) goto label$5802;
-  label$5803:;
-  {
-   if( *(double*)((uint8*)THIS$1 + 395760ll) <= *(double*)((uint8*)THIS$1 + 395840ll) ) goto label$5805;
-   {
-    *(double*)((uint8*)THIS$1 + 396000ll) = V$1;
-    label$5805:;
-   }
-  }
-  goto label$3109;
-  label$5802:;
-  if( ADR$1 != 0x1.D1BAp+15 ) goto label$5806;
-  label$5807:;
-  {
-   if( *(double*)((uint8*)THIS$1 + 395760ll) < *(double*)((uint8*)THIS$1 + 395840ll) ) goto label$5809;
-   {
-    *(double*)((uint8*)THIS$1 + 396000ll) = V$1;
-    label$5809:;
-   }
-  }
-  goto label$3109;
-  label$5806:;
-  if( ADR$1 != 0x1.D1BCp+15 ) goto label$5810;
-  label$5811:;
-  {
-   if( *(double*)((uint8*)THIS$1 + 395760ll) > *(double*)((uint8*)THIS$1 + 395840ll) ) goto label$5813;
-   {
-    *(double*)((uint8*)THIS$1 + 396000ll) = V$1;
-    label$5813:;
-   }
-  }
-  goto label$3109;
-  label$5810:;
-  if( ADR$1 != 0x1.D1BEp+15 ) goto label$5814;
-  label$5815:;
-  {
-   if( *(double*)((uint8*)THIS$1 + 395760ll) <= *(double*)((uint8*)THIS$1 + 395840ll) ) goto label$5817;
-   {
-    *(double*)((uint8*)THIS$1 + 396000ll) = V$1;
-    label$5817:;
-   }
-  }
-  goto label$3109;
   label$5814:;
-  if( ADR$1 != 0x1.D1Cp+15 ) goto label$5818;
-  label$5819:;
+  if( ADR$1 != 0x1.D1B6p+15 ) goto label$5816;
+  label$5817:;
+  {
+   if( *(double*)((uint8*)THIS$1 + 395760ll) != *(double*)((uint8*)THIS$1 + 395840ll) ) goto label$5819;
+   {
+    *(double*)((uint8*)THIS$1 + 396000ll) = V$1;
+    label$5819:;
+   }
+  }
+  goto label$3109;
+  label$5816:;
+  if( ADR$1 != 0x1.D1B6p+15 ) goto label$5820;
+  label$5821:;
+  {
+   if( *(double*)((uint8*)THIS$1 + 395760ll) == *(double*)((uint8*)THIS$1 + 395840ll) ) goto label$5823;
+   {
+    *(double*)((uint8*)THIS$1 + 396000ll) = V$1;
+    label$5823:;
+   }
+  }
+  goto label$3109;
+  label$5820:;
+  if( ADR$1 != 0x1.D1B8p+15 ) goto label$5824;
+  label$5825:;
+  {
+   if( *(double*)((uint8*)THIS$1 + 395760ll) <= *(double*)((uint8*)THIS$1 + 395840ll) ) goto label$5827;
+   {
+    *(double*)((uint8*)THIS$1 + 396000ll) = V$1;
+    label$5827:;
+   }
+  }
+  goto label$3109;
+  label$5824:;
+  if( ADR$1 != 0x1.D1BAp+15 ) goto label$5828;
+  label$5829:;
+  {
+   if( *(double*)((uint8*)THIS$1 + 395760ll) < *(double*)((uint8*)THIS$1 + 395840ll) ) goto label$5831;
+   {
+    *(double*)((uint8*)THIS$1 + 396000ll) = V$1;
+    label$5831:;
+   }
+  }
+  goto label$3109;
+  label$5828:;
+  if( ADR$1 != 0x1.D1BCp+15 ) goto label$5832;
+  label$5833:;
+  {
+   if( *(double*)((uint8*)THIS$1 + 395760ll) > *(double*)((uint8*)THIS$1 + 395840ll) ) goto label$5835;
+   {
+    *(double*)((uint8*)THIS$1 + 396000ll) = V$1;
+    label$5835:;
+   }
+  }
+  goto label$3109;
+  label$5832:;
+  if( ADR$1 != 0x1.D1BEp+15 ) goto label$5836;
+  label$5837:;
+  {
+   if( *(double*)((uint8*)THIS$1 + 395760ll) <= *(double*)((uint8*)THIS$1 + 395840ll) ) goto label$5839;
+   {
+    *(double*)((uint8*)THIS$1 + 396000ll) = V$1;
+    label$5839:;
+   }
+  }
+  goto label$3109;
+  label$5836:;
+  if( ADR$1 != 0x1.D1Cp+15 ) goto label$5840;
+  label$5841:;
   {
    *(double*)((uint8*)THIS$1 + 396000ll) = V$1;
   }
   goto label$3109;
-  label$5818:;
-  if( ADR$1 != 0x1.D1C2p+15 ) goto label$5820;
-  label$5821:;
+  label$5840:;
+  if( ADR$1 != 0x1.D1C2p+15 ) goto label$5842;
+  label$5843:;
   {
-   double vr$6084 = _ZN8MEMORY_T5PEEKBEd( THIS$1, V$1 );
-   *(double*)((uint8*)THIS$1 + 395680ll) = vr$6084;
+   double vr$6106 = _ZN8MEMORY_T5PEEKBEd( THIS$1, V$1 );
+   *(double*)((uint8*)THIS$1 + 395680ll) = vr$6106;
   }
   goto label$3109;
-  label$5820:;
-  if( ADR$1 != 0x1.D1C4p+15 ) goto label$5822;
-  label$5823:;
+  label$5842:;
+  if( ADR$1 != 0x1.D1C4p+15 ) goto label$5844;
+  label$5845:;
   {
    _ZN8MEMORY_T5POKEBEdd( THIS$1, V$1, *(double*)((uint8*)THIS$1 + 395680ll) );
   }
   goto label$3109;
-  label$5822:;
-  if( ADR$1 != 0x1.D1C6p+15 ) goto label$5824;
-  label$5825:;
+  label$5844:;
+  if( ADR$1 != 0x1.D1C6p+15 ) goto label$5846;
+  label$5847:;
   {
    uint64 TMP$3;
    __builtin_memset( &TMP$3, 0, 8ll );
@@ -26065,106 +26219,106 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    *(double*)((uint8*)THIS$1 + 395680ll) = (double)((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396000ll) + 0x1.p+0 )) << (3ll & 63ll))) )) << (32ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396000ll) + 0x1.p+1 )) << (3ll & 63ll))) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396000ll) + 0x1.8p+1 )) << (3ll & 63ll))) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396000ll) + 0x1.p+2 )) << (3ll & 63ll))) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396000ll) + 0x1.4p+2 )) << (3ll & 63ll)));
    *(double*)((uint8*)THIS$1 + 395760ll) = (double)((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396000ll) + 0x1.8p+2 )) << (3ll & 63ll))) )) << (32ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396000ll) + 0x1.Cp+2 )) << (3ll & 63ll))) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396000ll) + 0x1.p+3 )) << (3ll & 63ll))) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396000ll) + 0x1.2p+3 )) << (3ll & 63ll))) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396000ll) + 0x1.4p+3 )) << (3ll & 63ll)));
    *(double*)((uint8*)THIS$1 + 396968ll) = (double)((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396000ll) + 0x1.6p+3 )) << (3ll & 63ll))) )) << (32ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396000ll) + 0x1.8p+3 )) << (3ll & 63ll))) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396000ll) + 0x1.Ap+3 )) << (3ll & 63ll))) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396000ll) + 0x1.Cp+3 )) << (3ll & 63ll))) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.Ep+3 )) << (3ll & 63ll)));
-   label$5826:;
-   if( (double)TMP$3 == *(double*)((uint8*)THIS$1 + 396968ll) ) goto label$5827;
+   label$5848:;
+   if( (double)TMP$3 == *(double*)((uint8*)THIS$1 + 396968ll) ) goto label$5849;
    {
     {
      PC$ = ((uint64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395680ll) ));
-     uint64 TMP$2793$5;
-     TMP$2793$5 = ((uint64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395760ll) ));
-     goto label$5828;
-     label$5831:;
+     uint64 TMP$2815$5;
+     TMP$2815$5 = ((uint64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395760ll) ));
+     goto label$5850;
+     label$5853:;
      {
       _ZN8MEMORY_T6POKE64Edd( THIS$1, *(double*)((uint8*)THIS$1 + ((int64)PC$ << (3ll & 63ll))), 0x0p+0 );
      }
-     label$5829:;
+     label$5851:;
      PC$ = PC$ + 1ull;
-     label$5828:;
-     if( PC$ <= TMP$2793$5 ) goto label$5831;
-     label$5830:;
+     label$5850:;
+     if( PC$ <= TMP$2815$5 ) goto label$5853;
+     label$5852:;
     }
     TMP$3 = (TMP$3 + 1ull) % ((uint64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396968ll) ));
    }
-   goto label$5826;
-   label$5827:;
+   goto label$5848;
+   label$5849:;
   }
   goto label$3109;
-  label$5824:;
-  if( ADR$1 != 0x1.83A8p+15 ) goto label$5832;
-  label$5833:;
+  label$5846:;
+  if( ADR$1 != 0x1.83A8p+15 ) goto label$5854;
+  label$5855:;
   {
    *(double*)((uint8*)THIS$1 + 396968ll) = (double)(((((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396976ll) )) << (56ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396984ll) )) << (48ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 396992ll) )) << (40ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 397000ll) )) << (32ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 397008ll) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 397016ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 397024ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 397032ll);
   }
   goto label$3109;
-  label$5832:;
-  if( ADR$1 != 0x1.83BAp+15 ) goto label$5834;
-  label$5835:;
+  label$5854:;
+  if( ADR$1 != 0x1.83BAp+15 ) goto label$5856;
+  label$5857:;
   {
    *(double*)((uint8*)THIS$1 + 397040ll) = (double)(((((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 397048ll) )) << (56ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 397048ll) )) << (48ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 397064ll) )) << (40ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 397072ll) )) << (32ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 397080ll) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 397088ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 397096ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 397104ll);
   }
   goto label$3109;
-  label$5834:;
-  if( ADR$1 != 0x1.821p+15 ) goto label$5836;
-  label$5837:;
+  label$5856:;
+  if( ADR$1 != 0x1.821p+15 ) goto label$5858;
+  label$5859:;
   {
    *(double*)((uint8*)THIS$1 + 396000ll) = (double)0ll;
   }
   goto label$3109;
-  label$5836:;
-  if( ADR$1 != 0x1.825Ap+15 ) goto label$5838;
-  label$5839:;
+  label$5858:;
+  if( ADR$1 != 0x1.825Ap+15 ) goto label$5860;
+  label$5861:;
   {
    *(double*)((uint8*)THIS$1 + 395656ll) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395648ll) )) << (24ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395624ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395632ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 395640ll);
   }
   goto label$3109;
-  label$5838:;
-  if( ADR$1 != 0x1.825Cp+15 ) goto label$5840;
-  label$5841:;
+  label$5860:;
+  if( ADR$1 != 0x1.825Cp+15 ) goto label$5862;
+  label$5863:;
   {
    *(double*)((uint8*)THIS$1 + 395656ll) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395648ll) )) << (24ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395624ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395632ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 395640ll);
   }
   goto label$3109;
-  label$5840:;
-  if( ADR$1 != 0x1.825Ep+15 ) goto label$5842;
-  label$5843:;
+  label$5862:;
+  if( ADR$1 != 0x1.825Ep+15 ) goto label$5864;
+  label$5865:;
   {
    *(double*)((uint8*)THIS$1 + 395656ll) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395648ll) )) << (24ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395624ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395632ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 395640ll);
   }
   goto label$3109;
-  label$5842:;
-  if( ADR$1 != 0x1.826p+15 ) goto label$5844;
-  label$5845:;
+  label$5864:;
+  if( ADR$1 != 0x1.826p+15 ) goto label$5866;
+  label$5867:;
   {
    *(double*)((uint8*)THIS$1 + 395656ll) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395648ll) )) << (24ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395624ll) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395632ll) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + 395640ll);
   }
   goto label$3109;
-  label$5844:;
-  if( ADR$1 != 0x1.8262p+15 ) goto label$5846;
-  label$5847:;
+  label$5866:;
+  if( ADR$1 != 0x1.8262p+15 ) goto label$5868;
+  label$5869:;
   {
   }
   goto label$3109;
-  label$5846:;
-  if( ADR$1 < *(double*)((uint8*)THIS$1 + 395608ll) ) goto label$5848;
-  if( ADR$1 > (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.FF8p+9) ) goto label$5848;
-  label$5849:;
+  label$5868:;
+  if( ADR$1 < *(double*)((uint8*)THIS$1 + 395608ll) ) goto label$5870;
+  if( ADR$1 > (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.FF8p+9) ) goto label$5870;
+  label$5871:;
   {
    ADR$1 = ADR$1 - *(double*)((uint8*)THIS$1 + 395608ll);
    C$ = V$1;
    C$ = (double)(((int64)__builtin_nearbyint( C$ )) << (3ll & 63ll));
    C$ = C$ + *(double*)((uint8*)THIS$1 + 395072ll);
-   if( *(double*)((uint8*)THIS$1 + ((int64)RVS$ << (3ll & 63ll))) == 0x0p+0 ) goto label$5851;
+   if( *(double*)((uint8*)THIS$1 + ((int64)RVS$ << (3ll & 63ll))) == 0x0p+0 ) goto label$5873;
    {
     C$ = (double)(((int64)__builtin_nearbyint( C$ )) & 255ll);
-    label$5851:;
+    label$5873:;
    }
-   if( *(double*)((uint8*)THIS$1 + 394856ll) >= 0x1.p+0 ) goto label$5853;
+   if( *(double*)((uint8*)THIS$1 + 394856ll) >= 0x1.p+0 ) goto label$5875;
    {
     *(double*)((uint8*)THIS$1 + 394856ll) = 0x1.p+0;
-    label$5853:;
+    label$5875:;
    }
    _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.8204p+15, 0x0p+0 );
-   if( *(double*)((uint8*)THIS$1 + 395064ll) != 0x0p+0 ) goto label$5855;
+   if( *(double*)((uint8*)THIS$1 + 395064ll) != 0x0p+0 ) goto label$5877;
    {
     XS$ = (double)(((int64)__builtin_nearbyint( ADR$1 )) % 40ll);
     XS$ = (double)(((int64)__builtin_nearbyint( XS$ )) << (3ll & 63ll));
@@ -26174,31 +26328,31 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
     YS$ = YS$ + 0x1.88p+4;
     Y$ = 0x0p+0;
     X$ = 0x0p+0;
-    label$5856:;
-    if( ((int64)-(Y$ == *(double*)((uint8*)THIS$1 + 395088ll)) & (int64)-(X$ == *(double*)((uint8*)THIS$1 + 395080ll))) != 0ll ) goto label$5857;
+    label$5878:;
+    if( ((int64)-(Y$ == *(double*)((uint8*)THIS$1 + 395088ll)) & (int64)-(X$ == *(double*)((uint8*)THIS$1 + 395080ll))) != 0ll ) goto label$5879;
     {
      *(double*)((uint8*)THIS$1 + 394840ll) = ((XS$ + X$) * 0x1.4p+2) + *(double*)((uint8*)THIS$1 + 395032ll);
      *(double*)((uint8*)THIS$1 + 394848ll) = ((YS$ + Y$) * 0x1.p+2) + *(double*)((uint8*)THIS$1 + 395040ll);
      *(double*)((uint8*)THIS$1 + 394864ll) = (((XS$ + X$) * 0x1.4p+2) + *(double*)((uint8*)THIS$1 + 395032ll)) + 0x1.Cp+2;
      *(double*)((uint8*)THIS$1 + 394872ll) = (((YS$ + Y$) * 0x1.p+2) + *(double*)((uint8*)THIS$1 + 395040ll)) + 0x1.p+2;
-     double vr$6405 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
-     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$6405 );
+     double vr$6427 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
+     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$6427 );
      X$ = X$ + 0x1.p+0;
-     if( X$ <= *(double*)((uint8*)THIS$1 + 395080ll) ) goto label$5859;
+     if( X$ <= *(double*)((uint8*)THIS$1 + 395080ll) ) goto label$5881;
      {
       X$ = 0x0p+0;
       Y$ = Y$ + 0x1.p+0;
       C$ = C$ + 0x1.p+0;
-      label$5859:;
+      label$5881:;
      }
     }
-    goto label$5856;
-    label$5857:;
+    goto label$5878;
+    label$5879:;
     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.8208p+15, 0x0p+0 );
    }
-   goto label$5854;
-   label$5855:;
-   if( *(double*)((uint8*)THIS$1 + 395064ll) != 0x1.p+0 ) goto label$5860;
+   goto label$5876;
+   label$5877:;
+   if( *(double*)((uint8*)THIS$1 + 395064ll) != 0x1.p+0 ) goto label$5882;
    {
     XS$ = (double)(((int64)__builtin_nearbyint( ADR$1 )) % 40ll);
     XS$ = (double)(((int64)__builtin_nearbyint( XS$ )) << (3ll & 63ll));
@@ -26208,31 +26362,31 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
     YS$ = YS$ + 0x1.p+5;
     Y$ = *(double*)((uint8*)THIS$1 + 395088ll);
     X$ = *(double*)((uint8*)THIS$1 + 395080ll);
-    label$5861:;
-    if( ((int64)-(Y$ == 0x0p+0) & (int64)-(X$ == 0x0p+0)) != 0ll ) goto label$5862;
+    label$5883:;
+    if( ((int64)-(Y$ == 0x0p+0) & (int64)-(X$ == 0x0p+0)) != 0ll ) goto label$5884;
     {
      *(double*)((uint8*)THIS$1 + 394864ll) = (((XS$ - X$) * 0x1.4p+2) + *(double*)((uint8*)THIS$1 + 395032ll)) + 0x1.p+1;
      *(double*)((uint8*)THIS$1 + 394872ll) = (((YS$ - Y$) * 0x1.p+2) + *(double*)((uint8*)THIS$1 + 395040ll)) + 0x1.p+1;
      *(double*)((uint8*)THIS$1 + 394840ll) = (((XS$ - X$) * 0x1.4p+2) + *(double*)((uint8*)THIS$1 + 395032ll)) + -0x1.p+1;
      *(double*)((uint8*)THIS$1 + 394848ll) = (((YS$ - Y$) * 0x1.p+2) + *(double*)((uint8*)THIS$1 + 395040ll)) + -0x1.p+1;
-     double vr$6454 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
-     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$6454 );
+     double vr$6476 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
+     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$6476 );
      X$ = X$ + -0x1.p+0;
-     if( X$ >= 0x0p+0 ) goto label$5864;
+     if( X$ >= 0x0p+0 ) goto label$5886;
      {
       X$ = *(double*)((uint8*)THIS$1 + 395080ll);
       Y$ = Y$ + -0x1.p+0;
       C$ = C$ + 0x1.p+0;
-      label$5864:;
+      label$5886:;
      }
     }
-    goto label$5861;
-    label$5862:;
+    goto label$5883;
+    label$5884:;
     fb_GfxUnlock( ((int32)__builtin_nearbyint( YS$ )), ((int32)__builtin_nearbyint( YS$ + 0x1.p+3 )) );
    }
-   goto label$5854;
-   label$5860:;
-   if( *(double*)((uint8*)THIS$1 + 395064ll) != 0x1.p+1 ) goto label$5865;
+   goto label$5876;
+   label$5882:;
+   if( *(double*)((uint8*)THIS$1 + 395064ll) != 0x1.p+1 ) goto label$5887;
    {
     XS$ = (double)(((int64)__builtin_nearbyint( ADR$1 )) % 40ll);
     XS$ = (double)(((int64)__builtin_nearbyint( XS$ )) << (3ll & 63ll));
@@ -26242,31 +26396,31 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
     YS$ = YS$ + 0x1.88p+4;
     Y$ = 0x0p+0;
     X$ = 0x0p+0;
-    label$5866:;
-    if( ((int64)-(Y$ == *(double*)((uint8*)THIS$1 + 395088ll)) & (int64)-(X$ == *(double*)((uint8*)THIS$1 + 395080ll))) != 0ll ) goto label$5867;
+    label$5888:;
+    if( ((int64)-(Y$ == *(double*)((uint8*)THIS$1 + 395088ll)) & (int64)-(X$ == *(double*)((uint8*)THIS$1 + 395080ll))) != 0ll ) goto label$5889;
     {
      *(double*)((uint8*)THIS$1 + 394840ll) = (((XS$ + X$) * 0x1.4p+2) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395032ll);
      *(double*)((uint8*)THIS$1 + 394848ll) = (((YS$ + Y$) * 0x1.p+2) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395040ll);
      *(double*)((uint8*)THIS$1 + 394864ll) = ((((XS$ + X$) * 0x1.4p+2) + 0x1.Cp+2) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395032ll);
      *(double*)((uint8*)THIS$1 + 394872ll) = ((((YS$ + Y$) * 0x1.p+2) + 0x1.p+2) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395040ll);
-     double vr$6508 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
-     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$6508 );
+     double vr$6530 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
+     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$6530 );
      X$ = X$ + 0x1.p+0;
-     if( X$ <= *(double*)((uint8*)THIS$1 + 395080ll) ) goto label$5869;
+     if( X$ <= *(double*)((uint8*)THIS$1 + 395080ll) ) goto label$5891;
      {
       X$ = 0x0p+0;
       Y$ = Y$ + 0x1.p+0;
       C$ = C$ + 0x1.p+0;
-      label$5869:;
+      label$5891:;
      }
     }
-    goto label$5866;
-    label$5867:;
+    goto label$5888;
+    label$5889:;
     fb_GfxUnlock( ((int32)__builtin_nearbyint( YS$ )), ((int32)__builtin_nearbyint( YS$ + 0x1.p+3 )) );
    }
-   goto label$5854;
-   label$5865:;
-   if( *(double*)((uint8*)THIS$1 + 395064ll) != 0x1.8p+1 ) goto label$5870;
+   goto label$5876;
+   label$5887:;
+   if( *(double*)((uint8*)THIS$1 + 395064ll) != 0x1.8p+1 ) goto label$5892;
    {
     XS$ = (double)(((int64)__builtin_nearbyint( ADR$1 )) % 80ll);
     XS$ = (double)(((int64)__builtin_nearbyint( XS$ )) << (3ll & 63ll));
@@ -26276,107 +26430,116 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
     YS$ = YS$ + 0x1.p+5;
     {
      Y$ = *(double*)((uint8*)THIS$1 + 395088ll);
-     goto label$5871;
-     label$5874:;
+     goto label$5893;
+     label$5896:;
      {
       {
        X$ = 0x0p+0;
-       double TMP$2794$7;
-       TMP$2794$7 = *(double*)((uint8*)THIS$1 + 395080ll);
-       goto label$5875;
-       label$5878:;
+       double TMP$2816$7;
+       TMP$2816$7 = *(double*)((uint8*)THIS$1 + 395080ll);
+       goto label$5897;
+       label$5900:;
        {
         *(double*)((uint8*)THIS$1 + 394864ll) = ((((XS$ - X$) * 0x1.4p+2) + 0x1.p+1) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395032ll);
         *(double*)((uint8*)THIS$1 + 394872ll) = ((((YS$ - Y$) * 0x1.p+2) + 0x1.p+1) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395040ll);
         *(double*)((uint8*)THIS$1 + 394840ll) = ((((XS$ - X$) * 0x1.4p+2) + -0x1.p+1) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395032ll);
         *(double*)((uint8*)THIS$1 + 394848ll) = ((((YS$ - Y$) * 0x1.p+2) + -0x1.p+1) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395040ll);
-        double vr$6561 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
-        _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$6561 );
+        double vr$6583 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
+        _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$6583 );
        }
-       label$5876:;
+       label$5898:;
        X$ = X$ + 0x1.p+0;
-       label$5875:;
-       if( X$ <= TMP$2794$7 ) goto label$5878;
-       label$5877:;
+       label$5897:;
+       if( X$ <= TMP$2816$7 ) goto label$5900;
+       label$5899:;
       }
       C$ = C$ + 0x1.p+0;
      }
-     label$5872:;
+     label$5894:;
      Y$ = Y$ + -0x1.p+0;
-     label$5871:;
-     if( Y$ >= 0x0p+0 ) goto label$5874;
-     label$5873:;
+     label$5893:;
+     if( Y$ >= 0x0p+0 ) goto label$5896;
+     label$5895:;
     }
     fb_GfxUnlock( ((int32)__builtin_nearbyint( YS$ )), ((int32)__builtin_nearbyint( YS$ + 0x1.p+3 )) );
    }
-   label$5870:;
-   label$5854:;
+   label$5892:;
+   label$5876:;
   }
   goto label$3109;
-  label$5848:;
-  if( ADR$1 < (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.p+10) ) goto label$5879;
-  if( ADR$1 > (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.01Cp+10) ) goto label$5879;
-  label$5880:;
+  label$5870:;
+  if( ADR$1 < (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.p+10) ) goto label$5901;
+  if( ADR$1 > (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.01Cp+10) ) goto label$5901;
+  label$5902:;
   {
    {
-    if( ADR$1 != (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.p+10) ) goto label$5882;
-    label$5883:;
+    if( ADR$1 != (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.p+10) ) goto label$5904;
+    label$5905:;
     {
     }
-    goto label$5881;
-    label$5882:;
-    if( ADR$1 != (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.01p+10) ) goto label$5884;
-    label$5885:;
+    goto label$5903;
+    label$5904:;
+    if( ADR$1 != (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.01p+10) ) goto label$5906;
+    label$5907:;
     {
     }
-    goto label$5881;
-    label$5884:;
-    if( ADR$1 != (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.014p+10) ) goto label$5886;
-    label$5887:;
+    goto label$5903;
+    label$5906:;
+    if( ADR$1 != (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.014p+10) ) goto label$5908;
+    label$5909:;
     {
     }
-    goto label$5881;
-    label$5886:;
-    if( ADR$1 != (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.018p+10) ) goto label$5888;
-    label$5889:;
+    goto label$5903;
+    label$5908:;
+    if( ADR$1 != (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.018p+10) ) goto label$5910;
+    label$5911:;
     {
     }
-    goto label$5881;
-    label$5888:;
-    if( ADR$1 != (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.01Cp+10) ) goto label$5890;
-    label$5891:;
+    goto label$5903;
+    label$5910:;
+    if( ADR$1 != (*(double*)((uint8*)THIS$1 + 395608ll) + 0x1.01Cp+10) ) goto label$5912;
+    label$5913:;
     {
     }
-    label$5890:;
-    label$5881:;
+    label$5912:;
+    label$5903:;
    }
   }
   goto label$3109;
-  label$5879:;
-  if( ADR$1 < 0x1.p+14 ) goto label$5892;
-  if( ADR$1 > 0x1.F9Cp+14 ) goto label$5892;
-  label$5893:;
+  label$5901:;
+  if( ADR$1 < 0x1.p+14 ) goto label$5914;
+  if( ADR$1 > 0x1.F9Cp+14 ) goto label$5914;
+  label$5915:;
   {
    _ZN8MEMORY_T5POKEBEdd( THIS$1, ADR$1, V$1 );
   }
   goto label$3109;
-  label$5892:;
-  if( ADR$1 < 0x1.Cp+15 ) goto label$5896;
-  if( ADR$1 <= 0x1.FFFEp+15 ) goto label$5895;
-  label$5896:;
-  if( ADR$1 < 0x1.4p+15 ) goto label$5897;
-  if( ADR$1 <= 0x1.7FFEp+15 ) goto label$5895;
-  label$5897:;
-  if( ADR$1 < 0x1.Bp+15 ) goto label$5894;
-  if( ADR$1 > 0x1.B7FEp+15 ) goto label$5894;
-  label$5895:;
+  label$5914:;
+  if( ADR$1 != 0x1.F9C4p+14 ) goto label$5916;
+  label$5917:;
+  {
+   _ZN8MEMORY_T6POKE64Edd( THIS$1, *(double*)((uint8*)THIS$1 + 394888ll), *(double*)((uint8*)THIS$1 + 394896ll) );
+   double vr$6607 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, *(double*)((uint8*)THIS$1 + 394888ll) );
+   *(double*)((uint8*)THIS$1 + 258952ll) = vr$6607;
+  }
+  goto label$3109;
+  label$5916:;
+  if( ADR$1 < 0x1.Cp+15 ) goto label$5920;
+  if( ADR$1 <= 0x1.FFFEp+15 ) goto label$5919;
+  label$5920:;
+  if( ADR$1 < 0x1.4p+15 ) goto label$5921;
+  if( ADR$1 <= 0x1.7FFEp+15 ) goto label$5919;
+  label$5921:;
+  if( ADR$1 < 0x1.Bp+15 ) goto label$5918;
+  if( ADR$1 > 0x1.B7FEp+15 ) goto label$5918;
+  label$5919:;
   {
    *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( ADR$1 )) << (3ll & 63ll))) = V$1;
   }
-  label$5894:;
+  label$5918:;
   label$3109:;
  }
- label$5898:;
+ label$5922:;
  label$762:;
 }
 
@@ -26384,11 +26547,11 @@ uint8 _ZN8MEMORY_T9READUBYTEEd( struct $8MEMORY_T* THIS$1, double ADR$1 )
 {
  uint8 fb$result$1;
  __builtin_memset( &fb$result$1, 0, 1ll );
- label$5902:;
+ label$5926:;
  double vr$1 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, ADR$1 );
  fb$result$1 = (uint8)((int32)__builtin_nearbyint( vr$1 ));
- goto label$5903;
- label$5903:;
+ goto label$5927;
+ label$5927:;
  return fb$result$1;
 }
 
@@ -26396,11 +26559,11 @@ int8 _ZN8MEMORY_T8READBYTEEd( struct $8MEMORY_T* THIS$1, double ADR$1 )
 {
  int8 fb$result$1;
  __builtin_memset( &fb$result$1, 0, 1ll );
- label$5904:;
+ label$5928:;
  double vr$1 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, ADR$1 );
  fb$result$1 = (int8)((int32)__builtin_nearbyint( vr$1 ));
- goto label$5905;
- label$5905:;
+ goto label$5929;
+ label$5929:;
  return fb$result$1;
 }
 
@@ -26408,40 +26571,40 @@ uint16 _ZN8MEMORY_T10READUSHORTEd( struct $8MEMORY_T* THIS$1, double ADR$1 )
 {
  uint16 fb$result$1;
  __builtin_memset( &fb$result$1, 0, 2ll );
- label$5906:;
+ label$5930:;
  double vr$1 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, ADR$1 );
  double vr$4 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, ADR$1 + 0x1.p+0 );
  fb$result$1 = (uint16)(((int64)__builtin_nearbyint( vr$1 )) | (((int64)__builtin_nearbyint( vr$4 )) << (8ll & 63ll)));
- goto label$5907;
- label$5907:;
+ goto label$5931;
+ label$5931:;
  return fb$result$1;
 }
 
 void _ZN8MEMORY_T9WRITEBYTEEdd( struct $8MEMORY_T* THIS$1, double ADR$1, double B8$1 )
 {
- label$5908:;
+ label$5932:;
  _ZN8MEMORY_T6POKE64Edd( THIS$1, ADR$1, B8$1 );
- label$5909:;
+ label$5933:;
 }
 
 void _ZN8MEMORY_T10WRITEUBYTEEdd( struct $8MEMORY_T* THIS$1, double ADR$1, double B8$1 )
 {
- label$5910:;
+ label$5934:;
  _ZN8MEMORY_T6POKE64Edd( THIS$1, ADR$1, B8$1 );
- label$5911:;
+ label$5935:;
 }
 
 void _ZN8MEMORY_T11WRITEUSHORTEdd( struct $8MEMORY_T* THIS$1, double ADR$1, double W16$1 )
 {
- label$5912:;
+ label$5936:;
  _ZN8MEMORY_T6POKE64Edd( THIS$1, ADR$1, (double)(((uint64)__builtin_nearbyint( W16$1 )) & 255ull) );
  _ZN8MEMORY_T6POKE64Edd( THIS$1, ADR$1 + 0x1.p+0, (double)((((uint64)__builtin_nearbyint( W16$1 )) & 65280ull) >> (8ll & 63ll)) );
- label$5913:;
+ label$5937:;
 }
 
 void _ZN7CPU6510C1EP8MEMORY_T( struct $7CPU6510* THIS$1, struct $8MEMORY_T* LPMEM$1 )
 {
- label$5914:;
+ label$5938:;
  __builtin_memset( (uint8*)THIS$1, 0, 1ll );
  __builtin_memset( (uint8*)((uint8*)THIS$1 + 1ll), 0, 1ll );
  __builtin_memset( (uint8*)((uint8*)THIS$1 + 2ll), 0, 1ll );
@@ -26455,50 +26618,50 @@ void _ZN7CPU6510C1EP8MEMORY_T( struct $7CPU6510* THIS$1, struct $8MEMORY_T* LPME
  *(struct $8MEMORY_T**)((uint8*)THIS$1 + 8ll) = LPMEM$1;
  int64 I$1;
  I$1 = 0ll;
- fb_DataRestore( (void*)label$5917 );
+ fb_DataRestore( (void*)label$5941 );
  {
   I$1 = 0ll;
-  label$5921:;
+  label$5945:;
   {
    {
-    struct $6OPCODE* TMP$2810$4;
-    TMP$2810$4 = (struct $6OPCODE*)((uint8*)((uint8*)THIS$1 + (I$1 * 56ll)) + 72ll);
-    fb_DataReadULongint( (uint64*)TMP$2810$4 );
-    fb_DataReadStr( (void*)((uint8*)TMP$2810$4 + 8ll), 4ll, 0 );
-    fb_DataReadULongint( (uint64*)((uint8*)TMP$2810$4 + 16ll) );
-    fb_DataReadULongint( (uint64*)((uint8*)TMP$2810$4 + 24ll) );
-    fb_DataReadULongint( (uint64*)((uint8*)TMP$2810$4 + 32ll) );
-    fb_DataReadLongint( (int64*)((uint8*)TMP$2810$4 + 48ll) );
+    struct $6OPCODE* TMP$2832$4;
+    TMP$2832$4 = (struct $6OPCODE*)((uint8*)((uint8*)THIS$1 + (I$1 * 56ll)) + 72ll);
+    fb_DataReadULongint( (uint64*)TMP$2832$4 );
+    fb_DataReadStr( (void*)((uint8*)TMP$2832$4 + 8ll), 4ll, 0 );
+    fb_DataReadULongint( (uint64*)((uint8*)TMP$2832$4 + 16ll) );
+    fb_DataReadULongint( (uint64*)((uint8*)TMP$2832$4 + 24ll) );
+    fb_DataReadULongint( (uint64*)((uint8*)TMP$2832$4 + 32ll) );
+    fb_DataReadLongint( (int64*)((uint8*)TMP$2832$4 + 48ll) );
    }
   }
-  label$5919:;
+  label$5943:;
   I$1 = I$1 + 1ll;
-  label$5918:;
-  if( I$1 <= 255ll ) goto label$5921;
-  label$5920:;
+  label$5942:;
+  if( I$1 <= 255ll ) goto label$5945;
+  label$5944:;
  }
- fb_DataRestore( (void*)label$5923 );
+ fb_DataRestore( (void*)label$5947 );
  {
   I$1 = 0ll;
-  label$5927:;
+  label$5951:;
   {
    fb_DataReadStr( (void*)((uint8*)((uint8*)THIS$1 + (I$1 * 24ll)) + 14408ll), -1ll, 0 );
   }
-  label$5925:;
+  label$5949:;
   I$1 = I$1 + 1ll;
-  label$5924:;
-  if( I$1 <= 12ll ) goto label$5927;
-  label$5926:;
+  label$5948:;
+  if( I$1 <= 12ll ) goto label$5951;
+  label$5950:;
  }
  *(uint8*)((uint8*)THIS$1 + 7ll) = (uint8)1u;
  *(uint16*)((uint8*)THIS$1 + 4ll) = (uint16)64738u;
- label$5915:;
+ label$5939:;
 }
 
 void _ZN7CPU6510D1Ev( struct $7CPU6510* THIS$1 )
 {
- label$5928:;
- label$5929:;
+ label$5952:;
+ label$5953:;
  struct $N7CPU65108FBARRAY1I8FBSTRINGEE {
   FBSTRING* DATA;
   FBSTRING* PTR;
@@ -26509,48 +26672,48 @@ void _ZN7CPU6510D1Ev( struct $7CPU6510* THIS$1 )
   struct $16__FB_ARRAYDIMTB$ DIMTB[1];
  };
  extern int __$fb_structsizecheck[(sizeof( struct $N7CPU65108FBARRAY1I8FBSTRINGEE ) == 72) ? 1 : -1];
- struct $N7CPU65108FBARRAY1I8FBSTRINGEE tmp$2812$1;
- *(FBSTRING**)&tmp$2812$1 = (FBSTRING*)((uint8*)THIS$1 + 14408ll);
- *(FBSTRING**)((uint8*)&tmp$2812$1 + 8ll) = (FBSTRING*)((uint8*)THIS$1 + 14408ll);
- *(int64*)((uint8*)&tmp$2812$1 + 16ll) = 312ll;
- *(int64*)((uint8*)&tmp$2812$1 + 24ll) = 24ll;
- *(int64*)((uint8*)&tmp$2812$1 + 32ll) = 1ll;
- *(int64*)((uint8*)&tmp$2812$1 + 40ll) = 49ll;
- *(int64*)((uint8*)&tmp$2812$1 + 48ll) = 13ll;
- *(int64*)((uint8*)&tmp$2812$1 + 56ll) = 0ll;
- *(int64*)((uint8*)&tmp$2812$1 + 64ll) = 12ll;
- fb_ArrayDestructStr( (struct $7FBARRAYIvE*)&tmp$2812$1 );
+ struct $N7CPU65108FBARRAY1I8FBSTRINGEE tmp$2834$1;
+ *(FBSTRING**)&tmp$2834$1 = (FBSTRING*)((uint8*)THIS$1 + 14408ll);
+ *(FBSTRING**)((uint8*)&tmp$2834$1 + 8ll) = (FBSTRING*)((uint8*)THIS$1 + 14408ll);
+ *(int64*)((uint8*)&tmp$2834$1 + 16ll) = 312ll;
+ *(int64*)((uint8*)&tmp$2834$1 + 24ll) = 24ll;
+ *(int64*)((uint8*)&tmp$2834$1 + 32ll) = 1ll;
+ *(int64*)((uint8*)&tmp$2834$1 + 40ll) = 49ll;
+ *(int64*)((uint8*)&tmp$2834$1 + 48ll) = 13ll;
+ *(int64*)((uint8*)&tmp$2834$1 + 56ll) = 0ll;
+ *(int64*)((uint8*)&tmp$2834$1 + 64ll) = 12ll;
+ fb_ArrayDestructStr( (struct $7FBARRAYIvE*)&tmp$2834$1 );
 }
 
 FBSTRING* _ZN7CPU6510cv8FBSTRINGEv( struct $7CPU6510* THIS$1 )
 {
- FBSTRING TMP$2826$1;
- FBSTRING TMP$2827$1;
- FBSTRING TMP$2828$1;
- FBSTRING TMP$2829$1;
- FBSTRING TMP$2830$1;
- FBSTRING TMP$2831$1;
- FBSTRING TMP$2832$1;
- FBSTRING TMP$2833$1;
- FBSTRING TMP$2834$1;
- FBSTRING TMP$2835$1;
- FBSTRING TMP$2836$1;
- FBSTRING TMP$2837$1;
- FBSTRING TMP$2838$1;
- FBSTRING TMP$2839$1;
- FBSTRING TMP$2840$1;
- FBSTRING TMP$2841$1;
- FBSTRING TMP$2842$1;
- FBSTRING TMP$2843$1;
- FBSTRING TMP$2844$1;
- FBSTRING TMP$2845$1;
- FBSTRING TMP$2846$1;
- FBSTRING TMP$2847$1;
  FBSTRING TMP$2848$1;
  FBSTRING TMP$2849$1;
+ FBSTRING TMP$2850$1;
+ FBSTRING TMP$2851$1;
+ FBSTRING TMP$2852$1;
+ FBSTRING TMP$2853$1;
+ FBSTRING TMP$2854$1;
+ FBSTRING TMP$2855$1;
+ FBSTRING TMP$2856$1;
+ FBSTRING TMP$2857$1;
+ FBSTRING TMP$2858$1;
+ FBSTRING TMP$2859$1;
+ FBSTRING TMP$2860$1;
+ FBSTRING TMP$2861$1;
+ FBSTRING TMP$2862$1;
+ FBSTRING TMP$2863$1;
+ FBSTRING TMP$2864$1;
+ FBSTRING TMP$2865$1;
+ FBSTRING TMP$2866$1;
+ FBSTRING TMP$2867$1;
+ FBSTRING TMP$2868$1;
+ FBSTRING TMP$2869$1;
+ FBSTRING TMP$2870$1;
+ FBSTRING TMP$2871$1;
  FBSTRING fb$result$1;
  __builtin_memset( &fb$result$1, 0, 24ll );
- label$5930:;
+ label$5954:;
  FBSTRING* vr$4 = fb_ULongintToStr( (uint64)(int64)*(uint8*)THIS$1 & 1ull );
  FBSTRING* vr$9 = fb_ULongintToStr( (uint64)((int64)*(uint8*)THIS$1 >> (1ll & 63ll)) & 1ull );
  FBSTRING* vr$14 = fb_ULongintToStr( (uint64)((int64)*(uint8*)THIS$1 >> (2ll & 63ll)) & 1ull );
@@ -26563,56 +26726,56 @@ FBSTRING* _ZN7CPU6510cv8FBSTRINGEv( struct $7CPU6510* THIS$1 )
  FBSTRING* vr$40 = fb_HEXEx_b( *(uint8*)((uint8*)THIS$1 + 2ll), 2 );
  FBSTRING* vr$42 = fb_HEXEx_b( *(uint8*)((uint8*)THIS$1 + 1ll), 2 );
  FBSTRING* vr$44 = fb_HEXEx_s( *(uint16*)((uint8*)THIS$1 + 4ll), 4 );
- __builtin_memset( &TMP$2826$1, 0, 24ll );
- FBSTRING* vr$47 = fb_StrConcat( &TMP$2826$1, (void*)"PC:", 4ll, (void*)vr$44, -1ll );
- __builtin_memset( &TMP$2827$1, 0, 24ll );
- FBSTRING* vr$50 = fb_StrConcat( &TMP$2827$1, (void*)vr$47, -1ll, (void*)" A:", 4ll );
- __builtin_memset( &TMP$2828$1, 0, 24ll );
- FBSTRING* vr$53 = fb_StrConcat( &TMP$2828$1, (void*)vr$50, -1ll, (void*)vr$42, -1ll );
- __builtin_memset( &TMP$2829$1, 0, 24ll );
- FBSTRING* vr$56 = fb_StrConcat( &TMP$2829$1, (void*)vr$53, -1ll, (void*)" X:", 4ll );
- __builtin_memset( &TMP$2830$1, 0, 24ll );
- FBSTRING* vr$59 = fb_StrConcat( &TMP$2830$1, (void*)vr$56, -1ll, (void*)vr$40, -1ll );
- __builtin_memset( &TMP$2831$1, 0, 24ll );
- FBSTRING* vr$62 = fb_StrConcat( &TMP$2831$1, (void*)vr$59, -1ll, (void*)" Y:", 4ll );
- __builtin_memset( &TMP$2832$1, 0, 24ll );
- FBSTRING* vr$65 = fb_StrConcat( &TMP$2832$1, (void*)vr$62, -1ll, (void*)vr$38, -1ll );
- __builtin_memset( &TMP$2833$1, 0, 24ll );
- FBSTRING* vr$68 = fb_StrConcat( &TMP$2833$1, (void*)vr$65, -1ll, (void*)" S:", 4ll );
- __builtin_memset( &TMP$2834$1, 0, 24ll );
- FBSTRING* vr$71 = fb_StrConcat( &TMP$2834$1, (void*)vr$68, -1ll, (void*)vr$36, -1ll );
- __builtin_memset( &TMP$2835$1, 0, 24ll );
- FBSTRING* vr$74 = fb_StrConcat( &TMP$2835$1, (void*)vr$71, -1ll, (void*)" N:", 4ll );
- __builtin_memset( &TMP$2836$1, 0, 24ll );
- FBSTRING* vr$77 = fb_StrConcat( &TMP$2836$1, (void*)vr$74, -1ll, (void*)vr$34, -1ll );
- __builtin_memset( &TMP$2837$1, 0, 24ll );
- FBSTRING* vr$80 = fb_StrConcat( &TMP$2837$1, (void*)vr$77, -1ll, (void*)" V:", 4ll );
- __builtin_memset( &TMP$2838$1, 0, 24ll );
- FBSTRING* vr$83 = fb_StrConcat( &TMP$2838$1, (void*)vr$80, -1ll, (void*)vr$29, -1ll );
- __builtin_memset( &TMP$2839$1, 0, 24ll );
- FBSTRING* vr$86 = fb_StrConcat( &TMP$2839$1, (void*)vr$83, -1ll, (void*)" -", 3ll );
- __builtin_memset( &TMP$2840$1, 0, 24ll );
- FBSTRING* vr$89 = fb_StrConcat( &TMP$2840$1, (void*)vr$86, -1ll, (void*)" B:", 4ll );
- __builtin_memset( &TMP$2841$1, 0, 24ll );
- FBSTRING* vr$92 = fb_StrConcat( &TMP$2841$1, (void*)vr$89, -1ll, (void*)vr$24, -1ll );
- __builtin_memset( &TMP$2842$1, 0, 24ll );
- FBSTRING* vr$95 = fb_StrConcat( &TMP$2842$1, (void*)vr$92, -1ll, (void*)" D:", 4ll );
- __builtin_memset( &TMP$2843$1, 0, 24ll );
- FBSTRING* vr$98 = fb_StrConcat( &TMP$2843$1, (void*)vr$95, -1ll, (void*)vr$19, -1ll );
- __builtin_memset( &TMP$2844$1, 0, 24ll );
- FBSTRING* vr$101 = fb_StrConcat( &TMP$2844$1, (void*)vr$98, -1ll, (void*)" I:", 4ll );
- __builtin_memset( &TMP$2845$1, 0, 24ll );
- FBSTRING* vr$104 = fb_StrConcat( &TMP$2845$1, (void*)vr$101, -1ll, (void*)vr$14, -1ll );
- __builtin_memset( &TMP$2846$1, 0, 24ll );
- FBSTRING* vr$107 = fb_StrConcat( &TMP$2846$1, (void*)vr$104, -1ll, (void*)" Z:", 4ll );
- __builtin_memset( &TMP$2847$1, 0, 24ll );
- FBSTRING* vr$110 = fb_StrConcat( &TMP$2847$1, (void*)vr$107, -1ll, (void*)vr$9, -1ll );
  __builtin_memset( &TMP$2848$1, 0, 24ll );
- FBSTRING* vr$113 = fb_StrConcat( &TMP$2848$1, (void*)vr$110, -1ll, (void*)" C:", 4ll );
+ FBSTRING* vr$47 = fb_StrConcat( &TMP$2848$1, (void*)"PC:", 4ll, (void*)vr$44, -1ll );
  __builtin_memset( &TMP$2849$1, 0, 24ll );
- FBSTRING* vr$116 = fb_StrConcat( &TMP$2849$1, (void*)vr$113, -1ll, (void*)vr$4, -1ll );
+ FBSTRING* vr$50 = fb_StrConcat( &TMP$2849$1, (void*)vr$47, -1ll, (void*)" A:", 4ll );
+ __builtin_memset( &TMP$2850$1, 0, 24ll );
+ FBSTRING* vr$53 = fb_StrConcat( &TMP$2850$1, (void*)vr$50, -1ll, (void*)vr$42, -1ll );
+ __builtin_memset( &TMP$2851$1, 0, 24ll );
+ FBSTRING* vr$56 = fb_StrConcat( &TMP$2851$1, (void*)vr$53, -1ll, (void*)" X:", 4ll );
+ __builtin_memset( &TMP$2852$1, 0, 24ll );
+ FBSTRING* vr$59 = fb_StrConcat( &TMP$2852$1, (void*)vr$56, -1ll, (void*)vr$40, -1ll );
+ __builtin_memset( &TMP$2853$1, 0, 24ll );
+ FBSTRING* vr$62 = fb_StrConcat( &TMP$2853$1, (void*)vr$59, -1ll, (void*)" Y:", 4ll );
+ __builtin_memset( &TMP$2854$1, 0, 24ll );
+ FBSTRING* vr$65 = fb_StrConcat( &TMP$2854$1, (void*)vr$62, -1ll, (void*)vr$38, -1ll );
+ __builtin_memset( &TMP$2855$1, 0, 24ll );
+ FBSTRING* vr$68 = fb_StrConcat( &TMP$2855$1, (void*)vr$65, -1ll, (void*)" S:", 4ll );
+ __builtin_memset( &TMP$2856$1, 0, 24ll );
+ FBSTRING* vr$71 = fb_StrConcat( &TMP$2856$1, (void*)vr$68, -1ll, (void*)vr$36, -1ll );
+ __builtin_memset( &TMP$2857$1, 0, 24ll );
+ FBSTRING* vr$74 = fb_StrConcat( &TMP$2857$1, (void*)vr$71, -1ll, (void*)" N:", 4ll );
+ __builtin_memset( &TMP$2858$1, 0, 24ll );
+ FBSTRING* vr$77 = fb_StrConcat( &TMP$2858$1, (void*)vr$74, -1ll, (void*)vr$34, -1ll );
+ __builtin_memset( &TMP$2859$1, 0, 24ll );
+ FBSTRING* vr$80 = fb_StrConcat( &TMP$2859$1, (void*)vr$77, -1ll, (void*)" V:", 4ll );
+ __builtin_memset( &TMP$2860$1, 0, 24ll );
+ FBSTRING* vr$83 = fb_StrConcat( &TMP$2860$1, (void*)vr$80, -1ll, (void*)vr$29, -1ll );
+ __builtin_memset( &TMP$2861$1, 0, 24ll );
+ FBSTRING* vr$86 = fb_StrConcat( &TMP$2861$1, (void*)vr$83, -1ll, (void*)" -", 3ll );
+ __builtin_memset( &TMP$2862$1, 0, 24ll );
+ FBSTRING* vr$89 = fb_StrConcat( &TMP$2862$1, (void*)vr$86, -1ll, (void*)" B:", 4ll );
+ __builtin_memset( &TMP$2863$1, 0, 24ll );
+ FBSTRING* vr$92 = fb_StrConcat( &TMP$2863$1, (void*)vr$89, -1ll, (void*)vr$24, -1ll );
+ __builtin_memset( &TMP$2864$1, 0, 24ll );
+ FBSTRING* vr$95 = fb_StrConcat( &TMP$2864$1, (void*)vr$92, -1ll, (void*)" D:", 4ll );
+ __builtin_memset( &TMP$2865$1, 0, 24ll );
+ FBSTRING* vr$98 = fb_StrConcat( &TMP$2865$1, (void*)vr$95, -1ll, (void*)vr$19, -1ll );
+ __builtin_memset( &TMP$2866$1, 0, 24ll );
+ FBSTRING* vr$101 = fb_StrConcat( &TMP$2866$1, (void*)vr$98, -1ll, (void*)" I:", 4ll );
+ __builtin_memset( &TMP$2867$1, 0, 24ll );
+ FBSTRING* vr$104 = fb_StrConcat( &TMP$2867$1, (void*)vr$101, -1ll, (void*)vr$14, -1ll );
+ __builtin_memset( &TMP$2868$1, 0, 24ll );
+ FBSTRING* vr$107 = fb_StrConcat( &TMP$2868$1, (void*)vr$104, -1ll, (void*)" Z:", 4ll );
+ __builtin_memset( &TMP$2869$1, 0, 24ll );
+ FBSTRING* vr$110 = fb_StrConcat( &TMP$2869$1, (void*)vr$107, -1ll, (void*)vr$9, -1ll );
+ __builtin_memset( &TMP$2870$1, 0, 24ll );
+ FBSTRING* vr$113 = fb_StrConcat( &TMP$2870$1, (void*)vr$110, -1ll, (void*)" C:", 4ll );
+ __builtin_memset( &TMP$2871$1, 0, 24ll );
+ FBSTRING* vr$116 = fb_StrConcat( &TMP$2871$1, (void*)vr$113, -1ll, (void*)vr$4, -1ll );
  FBSTRING* vr$118 = fb_StrAssign( (void*)&fb$result$1, -1ll, (void*)vr$116, -1ll, 0 );
- label$5931:;
+ label$5955:;
  FBSTRING* vr$120 = fb_StrAllocTempResult( (FBSTRING*)&fb$result$1 );
  return vr$120;
 }
@@ -26621,7 +26784,7 @@ double _ZN7CPU65104TICKEd( struct $7CPU6510* THIS$1, double FLG$1 )
 {
  double fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$5932:;
+ label$5956:;
  int64 TICKS$1;
  TICKS$1 = 0ll;
  FBSTRING MSG$1;
@@ -26635,118 +26798,118 @@ double _ZN7CPU65104TICKEd( struct $7CPU6510* THIS$1, double FLG$1 )
  TICKS$1 = ((int64)__builtin_nearbyint( (double)TICKS$1 + 0x1.p+0 ));
  *(uint16*)((uint8*)THIS$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)THIS$1 + 4ll) + 0x1.p+0 ));
  {
-  uint64 TMP$2850$2;
-  TMP$2850$2 = *(uint64*)((uint8*)THIS$1 + 32ll);
-  goto label$5935;
-  label$5936:;
+  uint64 TMP$2872$2;
+  TMP$2872$2 = *(uint64*)((uint8*)THIS$1 + 32ll);
+  goto label$5959;
+  label$5960:;
   {
   }
-  goto label$5934;
-  label$5937:;
+  goto label$5958;
+  label$5961:;
   {
    (*(tmp$714*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
-  goto label$5934;
-  label$5938:;
+  goto label$5958;
+  label$5962:;
   {
    double vr$27 = _ZN7CPU65107ADR_IMMEv( THIS$1 );
    *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$27 ));
    (*(tmp$714*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
-  goto label$5934;
-  label$5939:;
+  goto label$5958;
+  label$5963:;
   {
    double vr$31 = _ZN7CPU65107ADR_ABSEv( THIS$1 );
    *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$31 ));
    (*(tmp$714*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
-  goto label$5934;
-  label$5940:;
+  goto label$5958;
+  label$5964:;
   {
    double vr$35 = _ZN7CPU65108ADR_ZEROEv( THIS$1 );
    *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$35 ));
    (*(tmp$714*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
-  goto label$5934;
-  label$5941:;
+  goto label$5958;
+  label$5965:;
   {
    double vr$39 = _ZN7CPU65109ADR_ZEROXEv( THIS$1 );
    *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$39 ));
    (*(tmp$714*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
-  goto label$5934;
-  label$5942:;
+  goto label$5958;
+  label$5966:;
   {
    double vr$43 = _ZN7CPU65109ADR_ZEROYEv( THIS$1 );
    *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$43 ));
    (*(tmp$714*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
-  goto label$5934;
-  label$5943:;
+  goto label$5958;
+  label$5967:;
   {
    double vr$47 = _ZN7CPU65108ADR_ABSXEv( THIS$1 );
    *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$47 ));
    (*(tmp$714*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
-  goto label$5934;
-  label$5944:;
+  goto label$5958;
+  label$5968:;
   {
    double vr$51 = _ZN7CPU65108ADR_ABSYEv( THIS$1 );
    *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$51 ));
    (*(tmp$714*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
-  goto label$5934;
-  label$5945:;
+  goto label$5958;
+  label$5969:;
   {
    double vr$55 = _ZN7CPU65107ADR_RELEv( THIS$1 );
    *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$55 ));
    (*(tmp$714*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
-  goto label$5934;
-  label$5946:;
+  goto label$5958;
+  label$5970:;
   {
    double vr$59 = _ZN7CPU65108ADR_INDXEv( THIS$1 );
    *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$59 ));
    (*(tmp$714*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
-  goto label$5934;
-  label$5947:;
+  goto label$5958;
+  label$5971:;
   {
    double vr$63 = _ZN7CPU65108ADR_INDYEv( THIS$1 );
    *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$63 ));
    (*(tmp$714*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
-  goto label$5934;
-  label$5948:;
+  goto label$5958;
+  label$5972:;
   {
    double vr$67 = _ZN7CPU65107ADR_INDEv( THIS$1 );
    *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$67 ));
    (*(tmp$714*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
-  goto label$5934;
-  label$5935:;
-  static const void* tmp$2851[13ll] = {
-   &&label$5936,
-   &&label$5937,
-   &&label$5938,
-   &&label$5939,
-   &&label$5940,
-   &&label$5941,
-   &&label$5942,
-   &&label$5943,
-   &&label$5944,
-   &&label$5945,
-   &&label$5946,
-   &&label$5947,
-   &&label$5948,
+  goto label$5958;
+  label$5959:;
+  static const void* tmp$2873[13ll] = {
+   &&label$5960,
+   &&label$5961,
+   &&label$5962,
+   &&label$5963,
+   &&label$5964,
+   &&label$5965,
+   &&label$5966,
+   &&label$5967,
+   &&label$5968,
+   &&label$5969,
+   &&label$5970,
+   &&label$5971,
+   &&label$5972,
   };
-  if( TMP$2850$2 > 12ull ) goto label$5934;
-  goto *tmp$2851[TMP$2850$2 - 0ull];
-  label$5934:;
+  if( TMP$2872$2 > 12ull ) goto label$5958;
+  goto *tmp$2873[TMP$2872$2 - 0ull];
+  label$5958:;
  }
  fb$result$1 = 0x0p+0;
  fb_StrDelete( (FBSTRING*)&MSG$1 );
- label$5933:;
+ label$5957:;
  return fb$result$1;
 }
 
@@ -26754,11 +26917,11 @@ double _ZN7CPU65107ADR_UNKEv( struct $7CPU6510* THIS$1 )
 {
  double fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$5949:;
+ label$5973:;
  fb_Sleep( -1 );
  fb$result$1 = 0x0p+0;
- goto label$5950;
- label$5950:;
+ goto label$5974;
+ label$5974:;
  return fb$result$1;
 }
 
@@ -26766,10 +26929,10 @@ double _ZN7CPU65107ADR_IMMEv( struct $7CPU6510* THIS$1 )
 {
  double fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$5951:;
+ label$5975:;
  fb$result$1 = (double)*(uint16*)((uint8*)THIS$1 + 4ll);
  *(uint16*)((uint8*)THIS$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)THIS$1 + 4ll) + 0x1.p+0 ));
- label$5952:;
+ label$5976:;
  return fb$result$1;
 }
 
@@ -26777,10 +26940,10 @@ double _ZN7CPU65107ADR_RELEv( struct $7CPU6510* THIS$1 )
 {
  double fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$5953:;
+ label$5977:;
  fb$result$1 = (double)*(uint16*)((uint8*)THIS$1 + 4ll);
  *(uint16*)((uint8*)THIS$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)THIS$1 + 4ll) + 0x1.p+0 ));
- label$5954:;
+ label$5978:;
  return fb$result$1;
 }
 
@@ -26788,11 +26951,11 @@ double _ZN7CPU65107ADR_ABSEv( struct $7CPU6510* THIS$1 )
 {
  double fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$5955:;
+ label$5979:;
  uint16 vr$4 = _ZN8MEMORY_T10READUSHORTEd( *(struct $8MEMORY_T**)((uint8*)THIS$1 + 8ll), (double)*(uint16*)((uint8*)THIS$1 + 4ll) );
  fb$result$1 = (double)vr$4;
  *(uint16*)((uint8*)THIS$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)THIS$1 + 4ll) + 0x1.p+1 ));
- label$5956:;
+ label$5980:;
  return fb$result$1;
 }
 
@@ -26800,11 +26963,11 @@ double _ZN7CPU65108ADR_ZEROEv( struct $7CPU6510* THIS$1 )
 {
  double fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$5957:;
+ label$5981:;
  uint8 vr$4 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)THIS$1 + 8ll), (double)*(uint16*)((uint8*)THIS$1 + 4ll) );
  fb$result$1 = (double)((int64)vr$4 & 255ll);
  *(uint16*)((uint8*)THIS$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)THIS$1 + 4ll) + 0x1.p+0 ));
- label$5958:;
+ label$5982:;
  return fb$result$1;
 }
 
@@ -26812,11 +26975,11 @@ double _ZN7CPU65109ADR_ZEROXEv( struct $7CPU6510* THIS$1 )
 {
  double fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$5959:;
+ label$5983:;
  uint8 vr$4 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)THIS$1 + 8ll), (double)*(uint16*)((uint8*)THIS$1 + 4ll) );
  fb$result$1 = (double)(((int64)vr$4 + (int64)*(uint8*)((uint8*)THIS$1 + 2ll)) & 255ll);
  *(uint16*)((uint8*)THIS$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)THIS$1 + 4ll) + 0x1.p+0 ));
- label$5960:;
+ label$5984:;
  return fb$result$1;
 }
 
@@ -26824,11 +26987,11 @@ double _ZN7CPU65109ADR_ZEROYEv( struct $7CPU6510* THIS$1 )
 {
  double fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$5961:;
+ label$5985:;
  uint8 vr$4 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)THIS$1 + 8ll), (double)*(uint16*)((uint8*)THIS$1 + 4ll) );
  fb$result$1 = (double)(((int64)vr$4 + (int64)*(uint8*)((uint8*)THIS$1 + 3ll)) & 255ll);
  *(uint16*)((uint8*)THIS$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)THIS$1 + 4ll) + 0x1.p+0 ));
- label$5962:;
+ label$5986:;
  return fb$result$1;
 }
 
@@ -26836,11 +26999,11 @@ double _ZN7CPU65108ADR_ABSXEv( struct $7CPU6510* THIS$1 )
 {
  double fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$5963:;
+ label$5987:;
  uint16 vr$4 = _ZN8MEMORY_T10READUSHORTEd( *(struct $8MEMORY_T**)((uint8*)THIS$1 + 8ll), (double)*(uint16*)((uint8*)THIS$1 + 4ll) );
  fb$result$1 = (double)((int64)vr$4 + (int64)*(uint8*)((uint8*)THIS$1 + 2ll));
  *(uint16*)((uint8*)THIS$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)THIS$1 + 4ll) + 0x1.p+1 ));
- label$5964:;
+ label$5988:;
  return fb$result$1;
 }
 
@@ -26848,11 +27011,11 @@ double _ZN7CPU65108ADR_ABSYEv( struct $7CPU6510* THIS$1 )
 {
  double fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$5965:;
+ label$5989:;
  uint16 vr$4 = _ZN8MEMORY_T10READUSHORTEd( *(struct $8MEMORY_T**)((uint8*)THIS$1 + 8ll), (double)*(uint16*)((uint8*)THIS$1 + 4ll) );
  fb$result$1 = (double)((int64)vr$4 + (int64)*(uint8*)((uint8*)THIS$1 + 3ll));
  *(uint16*)((uint8*)THIS$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)THIS$1 + 4ll) + 0x1.p+1 ));
- label$5966:;
+ label$5990:;
  return fb$result$1;
 }
 
@@ -26860,7 +27023,7 @@ double _ZN7CPU65108ADR_INDXEv( struct $7CPU6510* THIS$1 )
 {
  double fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$5967:;
+ label$5991:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  uint8 vr$5 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)THIS$1 + 8ll), (double)*(uint16*)((uint8*)THIS$1 + 4ll) );
@@ -26869,7 +27032,7 @@ double _ZN7CPU65108ADR_INDXEv( struct $7CPU6510* THIS$1 )
  *(uint16*)&V$1 = vr$14;
  *(uint16*)((uint8*)THIS$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)THIS$1 + 4ll) + 0x1.p+0 ));
  fb$result$1 = (double)*(uint16*)&V$1;
- label$5968:;
+ label$5992:;
  return fb$result$1;
 }
 
@@ -26877,7 +27040,7 @@ double _ZN7CPU65108ADR_INDYEv( struct $7CPU6510* THIS$1 )
 {
  double fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$5969:;
+ label$5993:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  uint8 vr$5 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)THIS$1 + 8ll), (double)*(uint16*)((uint8*)THIS$1 + 4ll) );
@@ -26886,7 +27049,7 @@ double _ZN7CPU65108ADR_INDYEv( struct $7CPU6510* THIS$1 )
  *(uint16*)&V$1 = (uint16)((int64)*(uint16*)&V$1 + (int64)*(uint8*)((uint8*)THIS$1 + 3ll));
  fb$result$1 = (double)*(uint16*)&V$1;
  *(uint16*)((uint8*)THIS$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)THIS$1 + 4ll) + 0x1.p+0 ));
- label$5970:;
+ label$5994:;
  return fb$result$1;
 }
 
@@ -26894,7 +27057,7 @@ double _ZN7CPU65107ADR_INDEv( struct $7CPU6510* THIS$1 )
 {
  double fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$5971:;
+ label$5995:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  uint16 vr$5 = _ZN8MEMORY_T10READUSHORTEd( *(struct $8MEMORY_T**)((uint8*)THIS$1 + 8ll), (double)*(uint16*)((uint8*)THIS$1 + 4ll) );
@@ -26903,43 +27066,43 @@ double _ZN7CPU65107ADR_INDEv( struct $7CPU6510* THIS$1 )
  *(uint16*)&V$1 = vr$8;
  *(uint16*)((uint8*)THIS$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)THIS$1 + 4ll) + 0x1.p+1 ));
  fb$result$1 = (double)*(uint16*)&V$1;
- label$5972:;
+ label$5996:;
  return fb$result$1;
 }
 
 void _ZN7CPU65104PUSHEd( struct $7CPU6510* THIS$1, double B$1 )
 {
- label$5973:;
+ label$5997:;
  _ZN8MEMORY_T10WRITEUBYTEEdd( *(struct $8MEMORY_T**)((uint8*)THIS$1 + 8ll), (double)*(uint16*)((uint8*)THIS$1 + 6ll), B$1 );
  *(uint8*)((uint8*)THIS$1 + 6ll) = (uint8)((int32)__builtin_nearbyint( (double)(int64)*(uint8*)((uint8*)THIS$1 + 6ll) + -0x1.p+0 ));
- label$5974:;
+ label$5998:;
 }
 
 double _ZN7CPU65104PULLEv( struct $7CPU6510* THIS$1 )
 {
  double fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$5975:;
+ label$5999:;
  *(uint8*)((uint8*)THIS$1 + 6ll) = (uint8)((int32)__builtin_nearbyint( (double)(int64)*(uint8*)((uint8*)THIS$1 + 6ll) + 0x1.p+0 ));
  uint8 vr$10 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)THIS$1 + 8ll), (double)*(uint16*)((uint8*)THIS$1 + 6ll) );
  fb$result$1 = (double)vr$10;
- label$5976:;
+ label$6000:;
  return fb$result$1;
 }
 
 void INS_UNK( struct $7CPU6510* CPU$1 )
 {
- label$5977:;
- label$5978:;
+ label$6001:;
+ label$6002:;
 }
 
 void INS_ADC( struct $7CPU6510* CPU$1 )
 {
- double TMP$2852$1;
- double TMP$2853$1;
- double TMP$2854$1;
- double TMP$2855$1;
- label$5979:;
+ double TMP$2874$1;
+ double TMP$2875$1;
+ double TMP$2876$1;
+ double TMP$2877$1;
+ label$6003:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  int64 UB$1;
@@ -26947,251 +27110,145 @@ void INS_ADC( struct $7CPU6510* CPU$1 )
  uint8 vr$4 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  UB$1 = (int64)vr$4;
  *(uint16*)&V$1 = (uint16)((int64)*(uint8*)((uint8*)CPU$1 + 1ll) + UB$1);
- if( ((uint64)(int64)*(uint8*)CPU$1 & 1ull) != 1ull ) goto label$5982;
+ if( ((uint64)(int64)*(uint8*)CPU$1 & 1ull) != 1ull ) goto label$6006;
  {
   *(uint16*)&V$1 = (uint16)((int64)*(uint16*)&V$1 + 1ll);
-  label$5982:;
+  label$6006:;
  }
- if( (~(((int64)*(uint8*)((uint8*)CPU$1 + 1ll) ^ UB$1) | -129ll) & (((int64)*(uint8*)((uint8*)CPU$1 + 1ll) ^ (int64)*(uint8*)&V$1) & 128ll)) == 0ll ) goto label$5983;
- TMP$2852$1 = 0x1.p+0;
- goto label$5987;
- label$5983:;
- TMP$2852$1 = 0x0p+0;
- label$5987:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551551ull) | ((((uint64)__builtin_nearbyint( TMP$2852$1 )) & 1ull) << (6ll & 63ll)));
+ if( (~(((int64)*(uint8*)((uint8*)CPU$1 + 1ll) ^ UB$1) | -129ll) & (((int64)*(uint8*)((uint8*)CPU$1 + 1ll) ^ (int64)*(uint8*)&V$1) & 128ll)) == 0ll ) goto label$6007;
+ TMP$2874$1 = 0x1.p+0;
+ goto label$6011;
+ label$6007:;
+ TMP$2874$1 = 0x0p+0;
+ label$6011:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551551ull) | ((((uint64)__builtin_nearbyint( TMP$2874$1 )) & 1ull) << (6ll & 63ll)));
  *(uint8*)((uint8*)CPU$1 + 1ll) = *(uint8*)&V$1;
- if( (double)(int64)*(uint16*)&V$1 <= 0x1.FEp+7 ) goto label$5984;
- TMP$2853$1 = 0x1.p+0;
- goto label$5988;
- label$5984:;
- TMP$2853$1 = 0x0p+0;
- label$5988:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2853$1 )) & 1ull));
- if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$5985;
- TMP$2854$1 = 0x1.p+0;
- goto label$5989;
- label$5985:;
- TMP$2854$1 = 0x0p+0;
- label$5989:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2854$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$5986;
- TMP$2855$1 = 0x1.p+0;
- goto label$5990;
- label$5986:;
- TMP$2855$1 = 0x0p+0;
- label$5990:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2855$1 )) & 1ull) << (7ll & 63ll)));
- label$5980:;
+ if( (double)(int64)*(uint16*)&V$1 <= 0x1.FEp+7 ) goto label$6008;
+ TMP$2875$1 = 0x1.p+0;
+ goto label$6012;
+ label$6008:;
+ TMP$2875$1 = 0x0p+0;
+ label$6012:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2875$1 )) & 1ull));
+ if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6009;
+ TMP$2876$1 = 0x1.p+0;
+ goto label$6013;
+ label$6009:;
+ TMP$2876$1 = 0x0p+0;
+ label$6013:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2876$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6010;
+ TMP$2877$1 = 0x1.p+0;
+ goto label$6014;
+ label$6010:;
+ TMP$2877$1 = 0x0p+0;
+ label$6014:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2877$1 )) & 1ull) << (7ll & 63ll)));
+ label$6004:;
 }
 
 void INS_AND( struct $7CPU6510* CPU$1 )
 {
- double TMP$2856$1;
- double TMP$2857$1;
- label$5991:;
+ double TMP$2878$1;
+ double TMP$2879$1;
+ label$6015:;
  uint8 vr$5 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint8*)((uint8*)CPU$1 + 1ll) = (uint8)((int64)*(uint8*)((uint8*)CPU$1 + 1ll) & (int64)vr$5);
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$5993;
- TMP$2856$1 = 0x1.p+0;
- goto label$5995;
- label$5993:;
- TMP$2856$1 = 0x0p+0;
- label$5995:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2856$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$5994;
- TMP$2857$1 = 0x1.p+0;
- goto label$5996;
- label$5994:;
- TMP$2857$1 = 0x0p+0;
- label$5996:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2857$1 )) & 1ull) << (7ll & 63ll)));
- label$5992:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6017;
+ TMP$2878$1 = 0x1.p+0;
+ goto label$6019;
+ label$6017:;
+ TMP$2878$1 = 0x0p+0;
+ label$6019:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2878$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6018;
+ TMP$2879$1 = 0x1.p+0;
+ goto label$6020;
+ label$6018:;
+ TMP$2879$1 = 0x0p+0;
+ label$6020:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2879$1 )) & 1ull) << (7ll & 63ll)));
+ label$6016:;
 }
 
 void INS_ASL( struct $7CPU6510* CPU$1 )
 {
- double TMP$2858$1;
- double TMP$2859$1;
- double TMP$2860$1;
- label$5997:;
+ double TMP$2880$1;
+ double TMP$2881$1;
+ double TMP$2882$1;
+ label$6021:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  uint8 vr$4 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint8*)&V$1 = vr$4;
- if( ((int64)*(uint8*)&V$1 & 128ll) == 0ll ) goto label$5999;
- TMP$2858$1 = 0x1.p+0;
- goto label$6002;
- label$5999:;
- TMP$2858$1 = 0x0p+0;
- label$6002:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2858$1 )) & 1ull));
+ if( ((int64)*(uint8*)&V$1 & 128ll) == 0ll ) goto label$6023;
+ TMP$2880$1 = 0x1.p+0;
+ goto label$6026;
+ label$6023:;
+ TMP$2880$1 = 0x0p+0;
+ label$6026:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2880$1 )) & 1ull));
  *(uint8*)&V$1 = (uint8)((int64)*(uint8*)&V$1 << (1ll & 63ll));
  _ZN8MEMORY_T10WRITEUBYTEEdd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll), (double)*(uint8*)&V$1 );
- if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6000;
- TMP$2859$1 = 0x1.p+0;
- goto label$6003;
- label$6000:;
- TMP$2859$1 = 0x0p+0;
- label$6003:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2859$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6001;
- TMP$2860$1 = 0x1.p+0;
- goto label$6004;
- label$6001:;
- TMP$2860$1 = 0x0p+0;
- label$6004:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2860$1 )) & 1ull) << (7ll & 63ll)));
- label$5998:;
+ if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6024;
+ TMP$2881$1 = 0x1.p+0;
+ goto label$6027;
+ label$6024:;
+ TMP$2881$1 = 0x0p+0;
+ label$6027:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2881$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6025;
+ TMP$2882$1 = 0x1.p+0;
+ goto label$6028;
+ label$6025:;
+ TMP$2882$1 = 0x0p+0;
+ label$6028:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2882$1 )) & 1ull) << (7ll & 63ll)));
+ label$6022:;
 }
 
 void INS_ASLA( struct $7CPU6510* CPU$1 )
 {
- double TMP$2861$1;
- double TMP$2862$1;
- double TMP$2863$1;
- label$6005:;
- if( ((int64)*(uint8*)((uint8*)CPU$1 + 1ll) & 128ll) == 0ll ) goto label$6007;
- TMP$2861$1 = 0x1.p+0;
- goto label$6010;
- label$6007:;
- TMP$2861$1 = 0x0p+0;
- label$6010:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2861$1 )) & 1ull));
+ double TMP$2883$1;
+ double TMP$2884$1;
+ double TMP$2885$1;
+ label$6029:;
+ if( ((int64)*(uint8*)((uint8*)CPU$1 + 1ll) & 128ll) == 0ll ) goto label$6031;
+ TMP$2883$1 = 0x1.p+0;
+ goto label$6034;
+ label$6031:;
+ TMP$2883$1 = 0x0p+0;
+ label$6034:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2883$1 )) & 1ull));
  *(uint8*)((uint8*)CPU$1 + 1ll) = (uint8)((int64)*(uint8*)((uint8*)CPU$1 + 1ll) << (1ll & 63ll));
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6008;
- TMP$2862$1 = 0x1.p+0;
- goto label$6011;
- label$6008:;
- TMP$2862$1 = 0x0p+0;
- label$6011:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2862$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6009;
- TMP$2863$1 = 0x1.p+0;
- goto label$6012;
- label$6009:;
- TMP$2863$1 = 0x0p+0;
- label$6012:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2863$1 )) & 1ull) << (7ll & 63ll)));
- label$6006:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6032;
+ TMP$2884$1 = 0x1.p+0;
+ goto label$6035;
+ label$6032:;
+ TMP$2884$1 = 0x0p+0;
+ label$6035:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2884$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6033;
+ TMP$2885$1 = 0x1.p+0;
+ goto label$6036;
+ label$6033:;
+ TMP$2885$1 = 0x0p+0;
+ label$6036:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2885$1 )) & 1ull) << (7ll & 63ll)));
+ label$6030:;
 }
 
 void INS_BCC( struct $7CPU6510* CPU$1 )
 {
- label$6013:;
- if( ((uint64)(int64)*(uint8*)CPU$1 & 1ull) != 0ull ) goto label$6016;
- {
-  struct $5MULTI V$2;
-  __builtin_memset( &V$2, 0, 8ll );
-  *(uint16*)&V$2 = *(uint16*)((uint8*)CPU$1 + 4ll);
-  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( (double)(int64)*(int16*)&V$2 + -0x1.p+0 ));
-  int8 vr$14 = _ZN8MEMORY_T8READBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
-  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( ((double)(int64)*(int16*)&V$2 + (double)(int64)vr$14) + 0x1.p+0 ));
-  *(uint16*)((uint8*)CPU$1 + 4ll) = *(uint16*)&V$2;
- }
- label$6016:;
- label$6015:;
- label$6014:;
-}
-
-void INS_BCS( struct $7CPU6510* CPU$1 )
-{
- label$6017:;
- if( ((uint64)(int64)*(uint8*)CPU$1 & 1ull) == 0ull ) goto label$6020;
- {
-  struct $5MULTI V$2;
-  __builtin_memset( &V$2, 0, 8ll );
-  *(uint16*)&V$2 = *(uint16*)((uint8*)CPU$1 + 4ll);
-  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( (double)(int64)*(int16*)&V$2 + -0x1.p+0 ));
-  int8 vr$14 = _ZN8MEMORY_T8READBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
-  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( ((double)(int64)*(int16*)&V$2 + (double)(int64)vr$14) + 0x1.p+0 ));
-  *(uint16*)((uint8*)CPU$1 + 4ll) = *(uint16*)&V$2;
- }
- label$6020:;
- label$6019:;
- label$6018:;
-}
-
-void INS_BEQ( struct $7CPU6510* CPU$1 )
-{
- label$6021:;
- if( (double)((uint64)((int64)*(uint8*)CPU$1 >> (1ll & 63ll)) & 1ull) != 0x1.p+0 ) goto label$6024;
- {
-  struct $5MULTI V$2;
-  __builtin_memset( &V$2, 0, 8ll );
-  *(uint16*)&V$2 = *(uint16*)((uint8*)CPU$1 + 4ll);
-  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( (double)(int64)*(int16*)&V$2 + -0x1.p+0 ));
-  int8 vr$16 = _ZN8MEMORY_T8READBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
-  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( ((double)(int64)*(int16*)&V$2 + (double)(int64)vr$16) + 0x1.p+0 ));
-  *(uint16*)((uint8*)CPU$1 + 4ll) = *(uint16*)&V$2;
- }
- label$6024:;
- label$6023:;
- label$6022:;
-}
-
-void INS_BIT( struct $7CPU6510* CPU$1 )
-{
- double TMP$2864$1;
- double TMP$2865$1;
- double TMP$2866$1;
- label$6025:;
- int8 B$1;
- __builtin_memset( &B$1, 0, 1ll );
- int8 vr$4 = _ZN8MEMORY_T8READBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
- B$1 = vr$4;
- if( ((int64)B$1 & 128ll) == 0ll ) goto label$6027;
- TMP$2864$1 = 0x1.p+0;
- goto label$6030;
- label$6027:;
- TMP$2864$1 = 0x0p+0;
- label$6030:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2864$1 )) & 1ull) << (7ll & 63ll)));
- if( ((int64)B$1 & 64ll) == 0ll ) goto label$6028;
- TMP$2865$1 = 0x1.p+0;
- goto label$6031;
- label$6028:;
- TMP$2865$1 = 0x0p+0;
- label$6031:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551551ull) | ((((uint64)__builtin_nearbyint( TMP$2865$1 )) & 1ull) << (6ll & 63ll)));
- if( ((int64)B$1 & (int64)*(int8*)((uint8*)CPU$1 + 2ll)) != 0ll ) goto label$6029;
- TMP$2866$1 = 0x1.p+0;
- goto label$6032;
- label$6029:;
- TMP$2866$1 = 0x0p+0;
- label$6032:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2866$1 )) & 1ull) << (1ll & 63ll)));
- label$6026:;
-}
-
-void INS_BMI( struct $7CPU6510* CPU$1 )
-{
- label$6033:;
- if( ((uint64)((int64)*(uint8*)CPU$1 >> (7ll & 63ll)) & 1ull) == 0ull ) goto label$6036;
- {
-  struct $5MULTI V$2;
-  __builtin_memset( &V$2, 0, 8ll );
-  *(uint16*)&V$2 = *(uint16*)((uint8*)CPU$1 + 4ll);
-  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( (double)(int64)*(int16*)&V$2 + -0x1.p+0 ));
-  int8 vr$15 = _ZN8MEMORY_T8READBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
-  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( ((double)(int64)*(int16*)&V$2 + (double)(int64)vr$15) + 0x1.p+0 ));
-  *(uint16*)((uint8*)CPU$1 + 4ll) = *(uint16*)&V$2;
- }
- label$6036:;
- label$6035:;
- label$6034:;
-}
-
-void INS_BNE( struct $7CPU6510* CPU$1 )
-{
  label$6037:;
- if( (double)((uint64)((int64)*(uint8*)CPU$1 >> (1ll & 63ll)) & 1ull) != 0x0p+0 ) goto label$6040;
+ if( ((uint64)(int64)*(uint8*)CPU$1 & 1ull) != 0ull ) goto label$6040;
  {
   struct $5MULTI V$2;
   __builtin_memset( &V$2, 0, 8ll );
   *(uint16*)&V$2 = *(uint16*)((uint8*)CPU$1 + 4ll);
   *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( (double)(int64)*(int16*)&V$2 + -0x1.p+0 ));
-  int8 vr$16 = _ZN8MEMORY_T8READBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
-  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( ((double)(int64)*(int16*)&V$2 + (double)(int64)vr$16) + 0x1.p+0 ));
+  int8 vr$14 = _ZN8MEMORY_T8READBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
+  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( ((double)(int64)*(int16*)&V$2 + (double)(int64)vr$14) + 0x1.p+0 ));
   *(uint16*)((uint8*)CPU$1 + 4ll) = *(uint16*)&V$2;
  }
  label$6040:;
@@ -27199,10 +27256,80 @@ void INS_BNE( struct $7CPU6510* CPU$1 )
  label$6038:;
 }
 
-void INS_BPL( struct $7CPU6510* CPU$1 )
+void INS_BCS( struct $7CPU6510* CPU$1 )
 {
  label$6041:;
- if( ((uint64)((int64)*(uint8*)CPU$1 >> (7ll & 63ll)) & 1ull) != 0ull ) goto label$6044;
+ if( ((uint64)(int64)*(uint8*)CPU$1 & 1ull) == 0ull ) goto label$6044;
+ {
+  struct $5MULTI V$2;
+  __builtin_memset( &V$2, 0, 8ll );
+  *(uint16*)&V$2 = *(uint16*)((uint8*)CPU$1 + 4ll);
+  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( (double)(int64)*(int16*)&V$2 + -0x1.p+0 ));
+  int8 vr$14 = _ZN8MEMORY_T8READBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
+  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( ((double)(int64)*(int16*)&V$2 + (double)(int64)vr$14) + 0x1.p+0 ));
+  *(uint16*)((uint8*)CPU$1 + 4ll) = *(uint16*)&V$2;
+ }
+ label$6044:;
+ label$6043:;
+ label$6042:;
+}
+
+void INS_BEQ( struct $7CPU6510* CPU$1 )
+{
+ label$6045:;
+ if( (double)((uint64)((int64)*(uint8*)CPU$1 >> (1ll & 63ll)) & 1ull) != 0x1.p+0 ) goto label$6048;
+ {
+  struct $5MULTI V$2;
+  __builtin_memset( &V$2, 0, 8ll );
+  *(uint16*)&V$2 = *(uint16*)((uint8*)CPU$1 + 4ll);
+  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( (double)(int64)*(int16*)&V$2 + -0x1.p+0 ));
+  int8 vr$16 = _ZN8MEMORY_T8READBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
+  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( ((double)(int64)*(int16*)&V$2 + (double)(int64)vr$16) + 0x1.p+0 ));
+  *(uint16*)((uint8*)CPU$1 + 4ll) = *(uint16*)&V$2;
+ }
+ label$6048:;
+ label$6047:;
+ label$6046:;
+}
+
+void INS_BIT( struct $7CPU6510* CPU$1 )
+{
+ double TMP$2886$1;
+ double TMP$2887$1;
+ double TMP$2888$1;
+ label$6049:;
+ int8 B$1;
+ __builtin_memset( &B$1, 0, 1ll );
+ int8 vr$4 = _ZN8MEMORY_T8READBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
+ B$1 = vr$4;
+ if( ((int64)B$1 & 128ll) == 0ll ) goto label$6051;
+ TMP$2886$1 = 0x1.p+0;
+ goto label$6054;
+ label$6051:;
+ TMP$2886$1 = 0x0p+0;
+ label$6054:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2886$1 )) & 1ull) << (7ll & 63ll)));
+ if( ((int64)B$1 & 64ll) == 0ll ) goto label$6052;
+ TMP$2887$1 = 0x1.p+0;
+ goto label$6055;
+ label$6052:;
+ TMP$2887$1 = 0x0p+0;
+ label$6055:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551551ull) | ((((uint64)__builtin_nearbyint( TMP$2887$1 )) & 1ull) << (6ll & 63ll)));
+ if( ((int64)B$1 & (int64)*(int8*)((uint8*)CPU$1 + 2ll)) != 0ll ) goto label$6053;
+ TMP$2888$1 = 0x1.p+0;
+ goto label$6056;
+ label$6053:;
+ TMP$2888$1 = 0x0p+0;
+ label$6056:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2888$1 )) & 1ull) << (1ll & 63ll)));
+ label$6050:;
+}
+
+void INS_BMI( struct $7CPU6510* CPU$1 )
+{
+ label$6057:;
+ if( ((uint64)((int64)*(uint8*)CPU$1 >> (7ll & 63ll)) & 1ull) == 0ull ) goto label$6060;
  {
   struct $5MULTI V$2;
   __builtin_memset( &V$2, 0, 8ll );
@@ -27212,14 +27339,50 @@ void INS_BPL( struct $7CPU6510* CPU$1 )
   *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( ((double)(int64)*(int16*)&V$2 + (double)(int64)vr$15) + 0x1.p+0 ));
   *(uint16*)((uint8*)CPU$1 + 4ll) = *(uint16*)&V$2;
  }
- label$6044:;
- label$6043:;
- label$6042:;
+ label$6060:;
+ label$6059:;
+ label$6058:;
+}
+
+void INS_BNE( struct $7CPU6510* CPU$1 )
+{
+ label$6061:;
+ if( (double)((uint64)((int64)*(uint8*)CPU$1 >> (1ll & 63ll)) & 1ull) != 0x0p+0 ) goto label$6064;
+ {
+  struct $5MULTI V$2;
+  __builtin_memset( &V$2, 0, 8ll );
+  *(uint16*)&V$2 = *(uint16*)((uint8*)CPU$1 + 4ll);
+  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( (double)(int64)*(int16*)&V$2 + -0x1.p+0 ));
+  int8 vr$16 = _ZN8MEMORY_T8READBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
+  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( ((double)(int64)*(int16*)&V$2 + (double)(int64)vr$16) + 0x1.p+0 ));
+  *(uint16*)((uint8*)CPU$1 + 4ll) = *(uint16*)&V$2;
+ }
+ label$6064:;
+ label$6063:;
+ label$6062:;
+}
+
+void INS_BPL( struct $7CPU6510* CPU$1 )
+{
+ label$6065:;
+ if( ((uint64)((int64)*(uint8*)CPU$1 >> (7ll & 63ll)) & 1ull) != 0ull ) goto label$6068;
+ {
+  struct $5MULTI V$2;
+  __builtin_memset( &V$2, 0, 8ll );
+  *(uint16*)&V$2 = *(uint16*)((uint8*)CPU$1 + 4ll);
+  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( (double)(int64)*(int16*)&V$2 + -0x1.p+0 ));
+  int8 vr$15 = _ZN8MEMORY_T8READBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
+  *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( ((double)(int64)*(int16*)&V$2 + (double)(int64)vr$15) + 0x1.p+0 ));
+  *(uint16*)((uint8*)CPU$1 + 4ll) = *(uint16*)&V$2;
+ }
+ label$6068:;
+ label$6067:;
+ label$6066:;
 }
 
 void INS_BRK( struct $7CPU6510* CPU$1 )
 {
- label$6045:;
+ label$6069:;
  *(uint16*)((uint8*)CPU$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)CPU$1 + 4ll) + 0x1.p+0 ));
  _ZN7CPU65104PUSHEd( CPU$1, (double)*(uint8*)((uint8*)CPU$1 + 5ll) );
  _ZN7CPU65104PUSHEd( CPU$1, (double)*(uint8*)((uint8*)CPU$1 + 4ll) );
@@ -27228,13 +27391,13 @@ void INS_BRK( struct $7CPU6510* CPU$1 )
  *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551611ull) | 4ull);
  uint16 vr$23 = _ZN8MEMORY_T10READUSHORTEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), 0x1.FFFCp+15 );
  *(uint16*)((uint8*)CPU$1 + 4ll) = vr$23;
- label$6046:;
+ label$6070:;
 }
 
 void INS_BVC( struct $7CPU6510* CPU$1 )
 {
- label$6047:;
- if( ((uint64)((int64)*(uint8*)CPU$1 >> (6ll & 63ll)) & 1ull) != 0ull ) goto label$6050;
+ label$6071:;
+ if( ((uint64)((int64)*(uint8*)CPU$1 >> (6ll & 63ll)) & 1ull) != 0ull ) goto label$6074;
  {
   struct $5MULTI V$2;
   __builtin_memset( &V$2, 0, 8ll );
@@ -27244,15 +27407,15 @@ void INS_BVC( struct $7CPU6510* CPU$1 )
   *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( ((double)(int64)*(int16*)&V$2 + (double)(int64)vr$15) + 0x1.p+0 ));
   *(uint16*)((uint8*)CPU$1 + 4ll) = *(uint16*)&V$2;
  }
- label$6050:;
- label$6049:;
- label$6048:;
+ label$6074:;
+ label$6073:;
+ label$6072:;
 }
 
 void INS_BVS( struct $7CPU6510* CPU$1 )
 {
- label$6051:;
- if( ((uint64)((int64)*(uint8*)CPU$1 >> (6ll & 63ll)) & 1ull) == 0ull ) goto label$6054;
+ label$6075:;
+ if( ((uint64)((int64)*(uint8*)CPU$1 >> (6ll & 63ll)) & 1ull) == 0ull ) goto label$6078;
  {
   struct $5MULTI V$2;
   __builtin_memset( &V$2, 0, 8ll );
@@ -27262,742 +27425,742 @@ void INS_BVS( struct $7CPU6510* CPU$1 )
   *(int16*)&V$2 = (int16)((int32)__builtin_nearbyint( ((double)(int64)*(int16*)&V$2 + (double)(int64)vr$15) + 0x1.p+0 ));
   *(uint16*)((uint8*)CPU$1 + 4ll) = *(uint16*)&V$2;
  }
- label$6054:;
- label$6053:;
- label$6052:;
+ label$6078:;
+ label$6077:;
+ label$6076:;
 }
 
 void INS_CLC( struct $7CPU6510* CPU$1 )
 {
- label$6055:;
+ label$6079:;
  *(uint8*)CPU$1 = (uint8)((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull);
- label$6056:;
+ label$6080:;
 }
 
 void INS_CLD( struct $7CPU6510* CPU$1 )
 {
- label$6057:;
+ label$6081:;
  *(uint8*)CPU$1 = (uint8)((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551607ull);
- label$6058:;
+ label$6082:;
 }
 
 void INS_CLI( struct $7CPU6510* CPU$1 )
 {
- label$6059:;
+ label$6083:;
  *(uint8*)CPU$1 = (uint8)((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551611ull);
- label$6060:;
+ label$6084:;
 }
 
 void INS_CLV( struct $7CPU6510* CPU$1 )
 {
- label$6061:;
+ label$6085:;
  *(uint8*)CPU$1 = (uint8)((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551551ull);
- label$6062:;
+ label$6086:;
 }
 
 void INS_CMP( struct $7CPU6510* CPU$1 )
 {
- double TMP$2867$1;
- double TMP$2868$1;
- double TMP$2869$1;
- label$6063:;
+ double TMP$2889$1;
+ double TMP$2890$1;
+ double TMP$2891$1;
+ label$6087:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  uint8 vr$6 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint16*)&V$1 = (uint16)((int64)*(uint8*)((uint8*)CPU$1 + 1ll) - (int64)vr$6);
- if( (double)(int64)*(uint16*)&V$1 > 0x1.FEp+7 ) goto label$6065;
- TMP$2867$1 = 0x1.p+0;
- goto label$6068;
- label$6065:;
- TMP$2867$1 = 0x0p+0;
- label$6068:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2867$1 )) & 1ull));
- if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6066;
- TMP$2868$1 = 0x1.p+0;
- goto label$6069;
- label$6066:;
- TMP$2868$1 = 0x0p+0;
- label$6069:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2868$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6067;
- TMP$2869$1 = 0x1.p+0;
- goto label$6070;
- label$6067:;
- TMP$2869$1 = 0x0p+0;
- label$6070:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2869$1 )) & 1ull) << (7ll & 63ll)));
- label$6064:;
+ if( (double)(int64)*(uint16*)&V$1 > 0x1.FEp+7 ) goto label$6089;
+ TMP$2889$1 = 0x1.p+0;
+ goto label$6092;
+ label$6089:;
+ TMP$2889$1 = 0x0p+0;
+ label$6092:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2889$1 )) & 1ull));
+ if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6090;
+ TMP$2890$1 = 0x1.p+0;
+ goto label$6093;
+ label$6090:;
+ TMP$2890$1 = 0x0p+0;
+ label$6093:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2890$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6091;
+ TMP$2891$1 = 0x1.p+0;
+ goto label$6094;
+ label$6091:;
+ TMP$2891$1 = 0x0p+0;
+ label$6094:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2891$1 )) & 1ull) << (7ll & 63ll)));
+ label$6088:;
 }
 
 void INS_CPX( struct $7CPU6510* CPU$1 )
 {
- double TMP$2870$1;
- double TMP$2871$1;
- double TMP$2872$1;
- label$6071:;
+ double TMP$2892$1;
+ double TMP$2893$1;
+ double TMP$2894$1;
+ label$6095:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  uint8 vr$6 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint16*)&V$1 = (uint16)((int64)*(uint8*)((uint8*)CPU$1 + 2ll) - (int64)vr$6);
- if( (double)(int64)*(uint16*)&V$1 > 0x1.FEp+7 ) goto label$6073;
- TMP$2870$1 = 0x1.p+0;
- goto label$6076;
- label$6073:;
- TMP$2870$1 = 0x0p+0;
- label$6076:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2870$1 )) & 1ull));
- if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6074;
- TMP$2871$1 = 0x1.p+0;
- goto label$6077;
- label$6074:;
- TMP$2871$1 = 0x0p+0;
- label$6077:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2871$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6075;
- TMP$2872$1 = 0x1.p+0;
- goto label$6078;
- label$6075:;
- TMP$2872$1 = 0x0p+0;
- label$6078:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2872$1 )) & 1ull) << (7ll & 63ll)));
- label$6072:;
+ if( (double)(int64)*(uint16*)&V$1 > 0x1.FEp+7 ) goto label$6097;
+ TMP$2892$1 = 0x1.p+0;
+ goto label$6100;
+ label$6097:;
+ TMP$2892$1 = 0x0p+0;
+ label$6100:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2892$1 )) & 1ull));
+ if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6098;
+ TMP$2893$1 = 0x1.p+0;
+ goto label$6101;
+ label$6098:;
+ TMP$2893$1 = 0x0p+0;
+ label$6101:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2893$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6099;
+ TMP$2894$1 = 0x1.p+0;
+ goto label$6102;
+ label$6099:;
+ TMP$2894$1 = 0x0p+0;
+ label$6102:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2894$1 )) & 1ull) << (7ll & 63ll)));
+ label$6096:;
 }
 
 void INS_CPY( struct $7CPU6510* CPU$1 )
 {
- double TMP$2873$1;
- double TMP$2874$1;
- double TMP$2875$1;
- label$6079:;
+ double TMP$2895$1;
+ double TMP$2896$1;
+ double TMP$2897$1;
+ label$6103:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  uint8 vr$6 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint16*)&V$1 = (uint16)((int64)*(uint8*)((uint8*)CPU$1 + 3ll) - (int64)vr$6);
- if( (double)(int64)*(uint16*)&V$1 > 0x1.FEp+7 ) goto label$6081;
- TMP$2873$1 = 0x1.p+0;
- goto label$6084;
- label$6081:;
- TMP$2873$1 = 0x0p+0;
- label$6084:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2873$1 )) & 1ull));
- if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6082;
- TMP$2874$1 = 0x1.p+0;
- goto label$6085;
- label$6082:;
- TMP$2874$1 = 0x0p+0;
- label$6085:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2874$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6083;
- TMP$2875$1 = 0x1.p+0;
- goto label$6086;
- label$6083:;
- TMP$2875$1 = 0x0p+0;
- label$6086:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2875$1 )) & 1ull) << (7ll & 63ll)));
- label$6080:;
+ if( (double)(int64)*(uint16*)&V$1 > 0x1.FEp+7 ) goto label$6105;
+ TMP$2895$1 = 0x1.p+0;
+ goto label$6108;
+ label$6105:;
+ TMP$2895$1 = 0x0p+0;
+ label$6108:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2895$1 )) & 1ull));
+ if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6106;
+ TMP$2896$1 = 0x1.p+0;
+ goto label$6109;
+ label$6106:;
+ TMP$2896$1 = 0x0p+0;
+ label$6109:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2896$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6107;
+ TMP$2897$1 = 0x1.p+0;
+ goto label$6110;
+ label$6107:;
+ TMP$2897$1 = 0x0p+0;
+ label$6110:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2897$1 )) & 1ull) << (7ll & 63ll)));
+ label$6104:;
 }
 
 void INS_DEC( struct $7CPU6510* CPU$1 )
 {
- double TMP$2876$1;
- double TMP$2877$1;
- label$6087:;
+ double TMP$2898$1;
+ double TMP$2899$1;
+ label$6111:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  uint8 vr$4 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint8*)&V$1 = vr$4;
  *(int8*)&V$1 = (int8)((int32)__builtin_nearbyint( (double)(int64)*(int8*)&V$1 + -0x1.p+0 ));
- if( (double)(int64)*(int8*)&V$1 != 0x0p+0 ) goto label$6089;
- TMP$2876$1 = 0x1.p+0;
- goto label$6091;
- label$6089:;
- TMP$2876$1 = 0x0p+0;
- label$6091:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2876$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6090;
- TMP$2877$1 = 0x1.p+0;
- goto label$6092;
- label$6090:;
- TMP$2877$1 = 0x0p+0;
- label$6092:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2877$1 )) & 1ull) << (7ll & 63ll)));
+ if( (double)(int64)*(int8*)&V$1 != 0x0p+0 ) goto label$6113;
+ TMP$2898$1 = 0x1.p+0;
+ goto label$6115;
+ label$6113:;
+ TMP$2898$1 = 0x0p+0;
+ label$6115:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2898$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6114;
+ TMP$2899$1 = 0x1.p+0;
+ goto label$6116;
+ label$6114:;
+ TMP$2899$1 = 0x0p+0;
+ label$6116:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2899$1 )) & 1ull) << (7ll & 63ll)));
  _ZN8MEMORY_T10WRITEUBYTEEdd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll), (double)*(uint8*)&V$1 );
- label$6088:;
+ label$6112:;
 }
 
 void INS_DEX( struct $7CPU6510* CPU$1 )
 {
- double TMP$2878$1;
- double TMP$2879$1;
- label$6093:;
+ double TMP$2900$1;
+ double TMP$2901$1;
+ label$6117:;
  *(int8*)((uint8*)CPU$1 + 2ll) = (int8)((int32)__builtin_nearbyint( (double)(int64)*(int8*)((uint8*)CPU$1 + 2ll) + -0x1.p+0 ));
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 2ll) != 0x0p+0 ) goto label$6095;
- TMP$2878$1 = 0x1.p+0;
- goto label$6097;
- label$6095:;
- TMP$2878$1 = 0x0p+0;
- label$6097:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2878$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 2ll) >= 0x0p+0 ) goto label$6096;
- TMP$2879$1 = 0x1.p+0;
- goto label$6098;
- label$6096:;
- TMP$2879$1 = 0x0p+0;
- label$6098:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2879$1 )) & 1ull) << (7ll & 63ll)));
- label$6094:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 2ll) != 0x0p+0 ) goto label$6119;
+ TMP$2900$1 = 0x1.p+0;
+ goto label$6121;
+ label$6119:;
+ TMP$2900$1 = 0x0p+0;
+ label$6121:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2900$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 2ll) >= 0x0p+0 ) goto label$6120;
+ TMP$2901$1 = 0x1.p+0;
+ goto label$6122;
+ label$6120:;
+ TMP$2901$1 = 0x0p+0;
+ label$6122:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2901$1 )) & 1ull) << (7ll & 63ll)));
+ label$6118:;
 }
 
 void INS_DEY( struct $7CPU6510* CPU$1 )
 {
- double TMP$2880$1;
- double TMP$2881$1;
- label$6099:;
+ double TMP$2902$1;
+ double TMP$2903$1;
+ label$6123:;
  *(int8*)((uint8*)CPU$1 + 3ll) = (int8)((int32)__builtin_nearbyint( (double)(int64)*(int8*)((uint8*)CPU$1 + 3ll) + -0x1.p+0 ));
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 3ll) != 0x0p+0 ) goto label$6101;
- TMP$2880$1 = 0x1.p+0;
- goto label$6103;
- label$6101:;
- TMP$2880$1 = 0x0p+0;
- label$6103:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2880$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 3ll) >= 0x0p+0 ) goto label$6102;
- TMP$2881$1 = 0x1.p+0;
- goto label$6104;
- label$6102:;
- TMP$2881$1 = 0x0p+0;
- label$6104:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2881$1 )) & 1ull) << (7ll & 63ll)));
- label$6100:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 3ll) != 0x0p+0 ) goto label$6125;
+ TMP$2902$1 = 0x1.p+0;
+ goto label$6127;
+ label$6125:;
+ TMP$2902$1 = 0x0p+0;
+ label$6127:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2902$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 3ll) >= 0x0p+0 ) goto label$6126;
+ TMP$2903$1 = 0x1.p+0;
+ goto label$6128;
+ label$6126:;
+ TMP$2903$1 = 0x0p+0;
+ label$6128:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2903$1 )) & 1ull) << (7ll & 63ll)));
+ label$6124:;
 }
 
 void INS_EOR( struct $7CPU6510* CPU$1 )
 {
- double TMP$2882$1;
- double TMP$2883$1;
- label$6105:;
+ double TMP$2904$1;
+ double TMP$2905$1;
+ label$6129:;
  uint8 vr$5 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint8*)((uint8*)CPU$1 + 1ll) = (uint8)((int64)*(uint8*)((uint8*)CPU$1 + 1ll) ^ (int64)vr$5);
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6107;
- TMP$2882$1 = 0x1.p+0;
- goto label$6109;
- label$6107:;
- TMP$2882$1 = 0x0p+0;
- label$6109:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2882$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6108;
- TMP$2883$1 = 0x1.p+0;
- goto label$6110;
- label$6108:;
- TMP$2883$1 = 0x0p+0;
- label$6110:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2883$1 )) & 1ull) << (7ll & 63ll)));
- label$6106:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6131;
+ TMP$2904$1 = 0x1.p+0;
+ goto label$6133;
+ label$6131:;
+ TMP$2904$1 = 0x0p+0;
+ label$6133:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2904$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6132;
+ TMP$2905$1 = 0x1.p+0;
+ goto label$6134;
+ label$6132:;
+ TMP$2905$1 = 0x0p+0;
+ label$6134:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2905$1 )) & 1ull) << (7ll & 63ll)));
+ label$6130:;
 }
 
 void INS_INC( struct $7CPU6510* CPU$1 )
 {
- double TMP$2884$1;
- double TMP$2885$1;
- label$6111:;
+ double TMP$2906$1;
+ double TMP$2907$1;
+ label$6135:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  uint8 vr$4 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint8*)&V$1 = vr$4;
  *(int16*)&V$1 = (int16)((int32)__builtin_nearbyint( (double)(int64)*(int16*)&V$1 + 0x1.p+0 ));
  _ZN8MEMORY_T9WRITEBYTEEdd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll), (double)*(uint8*)&V$1 );
- if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6113;
- TMP$2884$1 = 0x1.p+0;
- goto label$6115;
- label$6113:;
- TMP$2884$1 = 0x0p+0;
- label$6115:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2884$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6114;
- TMP$2885$1 = 0x1.p+0;
- goto label$6116;
- label$6114:;
- TMP$2885$1 = 0x0p+0;
- label$6116:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2885$1 )) & 1ull) << (7ll & 63ll)));
- label$6112:;
+ if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6137;
+ TMP$2906$1 = 0x1.p+0;
+ goto label$6139;
+ label$6137:;
+ TMP$2906$1 = 0x0p+0;
+ label$6139:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2906$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6138;
+ TMP$2907$1 = 0x1.p+0;
+ goto label$6140;
+ label$6138:;
+ TMP$2907$1 = 0x0p+0;
+ label$6140:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2907$1 )) & 1ull) << (7ll & 63ll)));
+ label$6136:;
 }
 
 void INS_INX( struct $7CPU6510* CPU$1 )
 {
- double TMP$2886$1;
- double TMP$2887$1;
- label$6117:;
+ double TMP$2908$1;
+ double TMP$2909$1;
+ label$6141:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  *(uint8*)&V$1 = *(uint8*)((uint8*)CPU$1 + 2ll);
  *(int16*)&V$1 = (int16)((int32)__builtin_nearbyint( (double)(int64)*(int16*)&V$1 + 0x1.p+0 ));
  *(uint8*)((uint8*)CPU$1 + 2ll) = *(uint8*)&V$1;
- if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6119;
- TMP$2886$1 = 0x1.p+0;
- goto label$6121;
- label$6119:;
- TMP$2886$1 = 0x0p+0;
- label$6121:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2886$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6120;
- TMP$2887$1 = 0x1.p+0;
- goto label$6122;
- label$6120:;
- TMP$2887$1 = 0x0p+0;
- label$6122:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2887$1 )) & 1ull) << (7ll & 63ll)));
- label$6118:;
+ if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6143;
+ TMP$2908$1 = 0x1.p+0;
+ goto label$6145;
+ label$6143:;
+ TMP$2908$1 = 0x0p+0;
+ label$6145:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2908$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6144;
+ TMP$2909$1 = 0x1.p+0;
+ goto label$6146;
+ label$6144:;
+ TMP$2909$1 = 0x0p+0;
+ label$6146:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2909$1 )) & 1ull) << (7ll & 63ll)));
+ label$6142:;
 }
 
 void INS_INY( struct $7CPU6510* CPU$1 )
 {
- double TMP$2888$1;
- double TMP$2889$1;
- label$6123:;
+ double TMP$2910$1;
+ double TMP$2911$1;
+ label$6147:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  *(uint8*)&V$1 = *(uint8*)((uint8*)CPU$1 + 3ll);
  *(int16*)&V$1 = (int16)((int32)__builtin_nearbyint( (double)(int64)*(int16*)&V$1 + 0x1.p+0 ));
  *(uint8*)((uint8*)CPU$1 + 3ll) = *(uint8*)&V$1;
- if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6125;
- TMP$2888$1 = 0x1.p+0;
- goto label$6127;
- label$6125:;
- TMP$2888$1 = 0x0p+0;
- label$6127:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2888$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6126;
- TMP$2889$1 = 0x1.p+0;
- goto label$6128;
- label$6126:;
- TMP$2889$1 = 0x0p+0;
- label$6128:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2889$1 )) & 1ull) << (7ll & 63ll)));
- label$6124:;
+ if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6149;
+ TMP$2910$1 = 0x1.p+0;
+ goto label$6151;
+ label$6149:;
+ TMP$2910$1 = 0x0p+0;
+ label$6151:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2910$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6150;
+ TMP$2911$1 = 0x1.p+0;
+ goto label$6152;
+ label$6150:;
+ TMP$2911$1 = 0x0p+0;
+ label$6152:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2911$1 )) & 1ull) << (7ll & 63ll)));
+ label$6148:;
 }
 
 void INS_JMP( struct $7CPU6510* CPU$1 )
 {
- label$6129:;
+ label$6153:;
  *(uint16*)((uint8*)CPU$1 + 4ll) = *(uint16*)((uint8*)CPU$1 + 56ll);
- label$6130:;
+ label$6154:;
 }
 
 void INS_JSR( struct $7CPU6510* CPU$1 )
 {
- label$6131:;
+ label$6155:;
  *(uint16*)((uint8*)CPU$1 + 4ll) = (uint16)((int64)*(uint16*)((uint8*)CPU$1 + 4ll) + -1ll);
  _ZN7CPU65104PUSHEd( CPU$1, (double)*(uint8*)((uint8*)CPU$1 + 5ll) );
  _ZN7CPU65104PUSHEd( CPU$1, (double)*(uint8*)((uint8*)CPU$1 + 4ll) );
  *(uint16*)((uint8*)CPU$1 + 4ll) = *(uint16*)((uint8*)CPU$1 + 56ll);
- label$6132:;
+ label$6156:;
 }
 
 void INS_LDA( struct $7CPU6510* CPU$1 )
 {
- double TMP$2890$1;
- double TMP$2891$1;
- label$6133:;
+ double TMP$2912$1;
+ double TMP$2913$1;
+ label$6157:;
  uint8 vr$3 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint8*)((uint8*)CPU$1 + 1ll) = vr$3;
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6135;
- TMP$2890$1 = 0x1.p+0;
- goto label$6137;
- label$6135:;
- TMP$2890$1 = 0x0p+0;
- label$6137:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2890$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6136;
- TMP$2891$1 = 0x1.p+0;
- goto label$6138;
- label$6136:;
- TMP$2891$1 = 0x0p+0;
- label$6138:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2891$1 )) & 1ull) << (7ll & 63ll)));
- label$6134:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6159;
+ TMP$2912$1 = 0x1.p+0;
+ goto label$6161;
+ label$6159:;
+ TMP$2912$1 = 0x0p+0;
+ label$6161:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2912$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6160;
+ TMP$2913$1 = 0x1.p+0;
+ goto label$6162;
+ label$6160:;
+ TMP$2913$1 = 0x0p+0;
+ label$6162:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2913$1 )) & 1ull) << (7ll & 63ll)));
+ label$6158:;
 }
 
 void INS_LDX( struct $7CPU6510* CPU$1 )
 {
- double TMP$2892$1;
- double TMP$2893$1;
- label$6139:;
+ double TMP$2914$1;
+ double TMP$2915$1;
+ label$6163:;
  uint8 vr$3 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint8*)((uint8*)CPU$1 + 2ll) = vr$3;
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 2ll) != 0x0p+0 ) goto label$6141;
- TMP$2892$1 = 0x1.p+0;
- goto label$6143;
- label$6141:;
- TMP$2892$1 = 0x0p+0;
- label$6143:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2892$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 2ll) >= 0x0p+0 ) goto label$6142;
- TMP$2893$1 = 0x1.p+0;
- goto label$6144;
- label$6142:;
- TMP$2893$1 = 0x0p+0;
- label$6144:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2893$1 )) & 1ull) << (7ll & 63ll)));
- label$6140:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 2ll) != 0x0p+0 ) goto label$6165;
+ TMP$2914$1 = 0x1.p+0;
+ goto label$6167;
+ label$6165:;
+ TMP$2914$1 = 0x0p+0;
+ label$6167:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2914$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 2ll) >= 0x0p+0 ) goto label$6166;
+ TMP$2915$1 = 0x1.p+0;
+ goto label$6168;
+ label$6166:;
+ TMP$2915$1 = 0x0p+0;
+ label$6168:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2915$1 )) & 1ull) << (7ll & 63ll)));
+ label$6164:;
 }
 
 void INS_LDY( struct $7CPU6510* CPU$1 )
 {
- double TMP$2894$1;
- double TMP$2895$1;
- label$6145:;
+ double TMP$2916$1;
+ double TMP$2917$1;
+ label$6169:;
  uint8 vr$3 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint8*)((uint8*)CPU$1 + 3ll) = vr$3;
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 3ll) != 0x0p+0 ) goto label$6147;
- TMP$2894$1 = 0x1.p+0;
- goto label$6149;
- label$6147:;
- TMP$2894$1 = 0x0p+0;
- label$6149:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2894$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 3ll) >= 0x0p+0 ) goto label$6148;
- TMP$2895$1 = 0x1.p+0;
- goto label$6150;
- label$6148:;
- TMP$2895$1 = 0x0p+0;
- label$6150:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2895$1 )) & 1ull) << (7ll & 63ll)));
- label$6146:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 3ll) != 0x0p+0 ) goto label$6171;
+ TMP$2916$1 = 0x1.p+0;
+ goto label$6173;
+ label$6171:;
+ TMP$2916$1 = 0x0p+0;
+ label$6173:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2916$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 3ll) >= 0x0p+0 ) goto label$6172;
+ TMP$2917$1 = 0x1.p+0;
+ goto label$6174;
+ label$6172:;
+ TMP$2917$1 = 0x0p+0;
+ label$6174:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2917$1 )) & 1ull) << (7ll & 63ll)));
+ label$6170:;
 }
 
 void INS_LSR( struct $7CPU6510* CPU$1 )
 {
- double TMP$2896$1;
- double TMP$2897$1;
- double TMP$2898$1;
- label$6151:;
+ double TMP$2918$1;
+ double TMP$2919$1;
+ double TMP$2920$1;
+ label$6175:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  uint8 vr$4 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint8*)&V$1 = vr$4;
- if( ((int64)*(uint8*)&V$1 & 1ll) == 0ll ) goto label$6153;
- TMP$2896$1 = 0x1.p+0;
- goto label$6156;
- label$6153:;
- TMP$2896$1 = 0x0p+0;
- label$6156:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2896$1 )) & 1ull));
+ if( ((int64)*(uint8*)&V$1 & 1ll) == 0ll ) goto label$6177;
+ TMP$2918$1 = 0x1.p+0;
+ goto label$6180;
+ label$6177:;
+ TMP$2918$1 = 0x0p+0;
+ label$6180:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2918$1 )) & 1ull));
  *(uint8*)&V$1 = (uint8)((int64)*(uint8*)&V$1 >> (1ll & 63ll));
  _ZN8MEMORY_T10WRITEUBYTEEdd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll), (double)*(uint8*)&V$1 );
- if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6154;
- TMP$2897$1 = 0x1.p+0;
- goto label$6157;
- label$6154:;
- TMP$2897$1 = 0x0p+0;
- label$6157:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2897$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)&V$1 >= 0x1.p+0 ) goto label$6155;
- TMP$2898$1 = 0x1.p+0;
- goto label$6158;
- label$6155:;
- TMP$2898$1 = 0x0p+0;
- label$6158:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2898$1 )) & 1ull) << (7ll & 63ll)));
- label$6152:;
+ if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6178;
+ TMP$2919$1 = 0x1.p+0;
+ goto label$6181;
+ label$6178:;
+ TMP$2919$1 = 0x0p+0;
+ label$6181:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2919$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)&V$1 >= 0x1.p+0 ) goto label$6179;
+ TMP$2920$1 = 0x1.p+0;
+ goto label$6182;
+ label$6179:;
+ TMP$2920$1 = 0x0p+0;
+ label$6182:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2920$1 )) & 1ull) << (7ll & 63ll)));
+ label$6176:;
 }
 
 void INS_LSRA( struct $7CPU6510* CPU$1 )
 {
- double TMP$2899$1;
- double TMP$2900$1;
- double TMP$2901$1;
- label$6159:;
- if( ((int64)*(uint8*)((uint8*)CPU$1 + 1ll) & 1ll) == 0ll ) goto label$6161;
- TMP$2899$1 = 0x1.p+0;
- goto label$6164;
- label$6161:;
- TMP$2899$1 = 0x0p+0;
- label$6164:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2899$1 )) & 1ull));
+ double TMP$2921$1;
+ double TMP$2922$1;
+ double TMP$2923$1;
+ label$6183:;
+ if( ((int64)*(uint8*)((uint8*)CPU$1 + 1ll) & 1ll) == 0ll ) goto label$6185;
+ TMP$2921$1 = 0x1.p+0;
+ goto label$6188;
+ label$6185:;
+ TMP$2921$1 = 0x0p+0;
+ label$6188:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2921$1 )) & 1ull));
  *(uint8*)((uint8*)CPU$1 + 1ll) = (uint8)((int64)*(uint8*)((uint8*)CPU$1 + 1ll) >> (1ll & 63ll));
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6162;
- TMP$2900$1 = 0x1.p+0;
- goto label$6165;
- label$6162:;
- TMP$2900$1 = 0x0p+0;
- label$6165:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2900$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6163;
- TMP$2901$1 = 0x1.p+0;
- goto label$6166;
- label$6163:;
- TMP$2901$1 = 0x0p+0;
- label$6166:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2901$1 )) & 1ull) << (7ll & 63ll)));
- label$6160:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6186;
+ TMP$2922$1 = 0x1.p+0;
+ goto label$6189;
+ label$6186:;
+ TMP$2922$1 = 0x0p+0;
+ label$6189:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2922$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6187;
+ TMP$2923$1 = 0x1.p+0;
+ goto label$6190;
+ label$6187:;
+ TMP$2923$1 = 0x0p+0;
+ label$6190:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2923$1 )) & 1ull) << (7ll & 63ll)));
+ label$6184:;
 }
 
 void INS_NOP( struct $7CPU6510* CPU$1 )
 {
- label$6167:;
- label$6168:;
+ label$6191:;
+ label$6192:;
 }
 
 void INS_ORA( struct $7CPU6510* CPU$1 )
 {
- double TMP$2902$1;
- double TMP$2903$1;
- label$6169:;
+ double TMP$2924$1;
+ double TMP$2925$1;
+ label$6193:;
  uint8 vr$5 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint8*)((uint8*)CPU$1 + 1ll) = (uint8)((int64)*(uint8*)((uint8*)CPU$1 + 1ll) | (int64)vr$5);
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6171;
- TMP$2902$1 = 0x1.p+0;
- goto label$6173;
- label$6171:;
- TMP$2902$1 = 0x0p+0;
- label$6173:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2902$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6172;
- TMP$2903$1 = 0x1.p+0;
- goto label$6174;
- label$6172:;
- TMP$2903$1 = 0x0p+0;
- label$6174:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2903$1 )) & 1ull) << (7ll & 63ll)));
- label$6170:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6195;
+ TMP$2924$1 = 0x1.p+0;
+ goto label$6197;
+ label$6195:;
+ TMP$2924$1 = 0x0p+0;
+ label$6197:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2924$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6196;
+ TMP$2925$1 = 0x1.p+0;
+ goto label$6198;
+ label$6196:;
+ TMP$2925$1 = 0x0p+0;
+ label$6198:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2925$1 )) & 1ull) << (7ll & 63ll)));
+ label$6194:;
 }
 
 void INS_PHA( struct $7CPU6510* CPU$1 )
 {
- label$6175:;
+ label$6199:;
  _ZN7CPU65104PUSHEd( CPU$1, (double)*(uint8*)((uint8*)CPU$1 + 1ll) );
- label$6176:;
+ label$6200:;
 }
 
 void INS_PHP( struct $7CPU6510* CPU$1 )
 {
- label$6177:;
+ label$6201:;
  _ZN7CPU65104PUSHEd( CPU$1, (double)*(uint8*)CPU$1 );
- label$6178:;
+ label$6202:;
 }
 
 void INS_PLA( struct $7CPU6510* CPU$1 )
 {
- double TMP$2904$1;
- double TMP$2905$1;
- label$6179:;
+ double TMP$2926$1;
+ double TMP$2927$1;
+ label$6203:;
  double vr$0 = _ZN7CPU65104PULLEv( CPU$1 );
  *(uint8*)((uint8*)CPU$1 + 1ll) = (uint8)((int32)__builtin_nearbyint( vr$0 ));
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6181;
- TMP$2904$1 = 0x1.p+0;
- goto label$6183;
- label$6181:;
- TMP$2904$1 = 0x0p+0;
- label$6183:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2904$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6182;
- TMP$2905$1 = 0x1.p+0;
- goto label$6184;
- label$6182:;
- TMP$2905$1 = 0x0p+0;
- label$6184:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2905$1 )) & 1ull) << (7ll & 63ll)));
- label$6180:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6205;
+ TMP$2926$1 = 0x1.p+0;
+ goto label$6207;
+ label$6205:;
+ TMP$2926$1 = 0x0p+0;
+ label$6207:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2926$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6206;
+ TMP$2927$1 = 0x1.p+0;
+ goto label$6208;
+ label$6206:;
+ TMP$2927$1 = 0x0p+0;
+ label$6208:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2927$1 )) & 1ull) << (7ll & 63ll)));
+ label$6204:;
 }
 
 void INS_PLP( struct $7CPU6510* CPU$1 )
 {
- label$6185:;
+ label$6209:;
  double vr$0 = _ZN7CPU65104PULLEv( CPU$1 );
  *(uint8*)CPU$1 = (uint8)((int32)__builtin_nearbyint( vr$0 ));
- label$6186:;
+ label$6210:;
 }
 
 void INS_ROL( struct $7CPU6510* CPU$1 )
 {
- double TMP$2906$1;
- double TMP$2907$1;
- double TMP$2908$1;
- double TMP$2909$1;
- label$6187:;
+ double TMP$2928$1;
+ double TMP$2929$1;
+ double TMP$2930$1;
+ double TMP$2931$1;
+ label$6211:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  uint8 vr$4 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint8*)&V$1 = vr$4;
- if( (double)((uint64)(int64)*(uint8*)CPU$1 & 1ull) != 0x1.p+0 ) goto label$6189;
- TMP$2906$1 = 0x1.p+0;
- goto label$6195;
- label$6189:;
- TMP$2906$1 = 0x0p+0;
- label$6195:;
- CARY$ = TMP$2906$1;
- if( ((int64)*(uint8*)&V$1 & 128ll) == 0ll ) goto label$6190;
- TMP$2907$1 = 0x1.p+0;
- goto label$6196;
- label$6190:;
- TMP$2907$1 = 0x0p+0;
- label$6196:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2907$1 )) & 1ull));
- *(uint8*)&V$1 = (uint8)((int64)*(uint8*)&V$1 << (1ll & 63ll));
- if( CARY$ == 0x0p+0 ) goto label$6192;
- {
-  *(uint8*)&V$1 = (uint8)((int64)*(uint8*)&V$1 | 1ll);
-  label$6192:;
- }
- _ZN8MEMORY_T10WRITEUBYTEEdd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll), (double)*(uint8*)&V$1 );
- if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6193;
- TMP$2908$1 = 0x1.p+0;
- goto label$6197;
- label$6193:;
- TMP$2908$1 = 0x0p+0;
- label$6197:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2908$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)&V$1 >= 0x1.p+0 ) goto label$6194;
- TMP$2909$1 = 0x1.p+0;
- goto label$6198;
- label$6194:;
- TMP$2909$1 = 0x0p+0;
- label$6198:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2909$1 )) & 1ull) << (7ll & 63ll)));
- label$6188:;
-}
-
-void INS_ROLA( struct $7CPU6510* CPU$1 )
-{
- double TMP$2910$1;
- double TMP$2911$1;
- double TMP$2912$1;
- double TMP$2913$1;
- label$6199:;
- if( (double)((uint64)(int64)*(uint8*)CPU$1 & 1ull) != 0x1.p+0 ) goto label$6201;
- TMP$2910$1 = 0x1.p+0;
- goto label$6207;
- label$6201:;
- TMP$2910$1 = 0x0p+0;
- label$6207:;
- CARY$ = TMP$2910$1;
- if( ((int64)*(uint8*)((uint8*)CPU$1 + 1ll) & 128ll) == 0ll ) goto label$6202;
- TMP$2911$1 = 0x1.p+0;
- goto label$6208;
- label$6202:;
- TMP$2911$1 = 0x0p+0;
- label$6208:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2911$1 )) & 1ull));
- *(uint8*)((uint8*)CPU$1 + 1ll) = (uint8)((int64)*(uint8*)((uint8*)CPU$1 + 1ll) << (1ll & 63ll));
- if( CARY$ == 0x0p+0 ) goto label$6204;
- {
-  *(uint8*)((uint8*)CPU$1 + 1ll) = (uint8)((int64)*(uint8*)((uint8*)CPU$1 + 1ll) | 1ll);
-  label$6204:;
- }
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6205;
- TMP$2912$1 = 0x1.p+0;
- goto label$6209;
- label$6205:;
- TMP$2912$1 = 0x0p+0;
- label$6209:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2912$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6206;
- TMP$2913$1 = 0x1.p+0;
- goto label$6210;
- label$6206:;
- TMP$2913$1 = 0x0p+0;
- label$6210:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2913$1 )) & 1ull) << (7ll & 63ll)));
- label$6200:;
-}
-
-void INS_ROR( struct $7CPU6510* CPU$1 )
-{
- double TMP$2914$1;
- double TMP$2915$1;
- double TMP$2916$1;
- double TMP$2917$1;
- label$6211:;
- struct $5MULTI V$1;
- __builtin_memset( &V$1, 0, 8ll );
  if( (double)((uint64)(int64)*(uint8*)CPU$1 & 1ull) != 0x1.p+0 ) goto label$6213;
- TMP$2914$1 = 0x1.p+0;
+ TMP$2928$1 = 0x1.p+0;
  goto label$6219;
  label$6213:;
- TMP$2914$1 = 0x0p+0;
+ TMP$2928$1 = 0x0p+0;
  label$6219:;
- CARY$ = TMP$2914$1;
- uint8 vr$8 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
- *(uint8*)&V$1 = vr$8;
- if( ((int64)*(uint8*)&V$1 & 1ll) == 0ll ) goto label$6214;
- TMP$2915$1 = 0x1.p+0;
+ CARY$ = TMP$2928$1;
+ if( ((int64)*(uint8*)&V$1 & 128ll) == 0ll ) goto label$6214;
+ TMP$2929$1 = 0x1.p+0;
  goto label$6220;
  label$6214:;
- TMP$2915$1 = 0x0p+0;
+ TMP$2929$1 = 0x0p+0;
  label$6220:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2915$1 )) & 1ull));
- *(uint8*)&V$1 = (uint8)((int64)*(uint8*)&V$1 >> (1ll & 63ll));
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2929$1 )) & 1ull));
+ *(uint8*)&V$1 = (uint8)((int64)*(uint8*)&V$1 << (1ll & 63ll));
  if( CARY$ == 0x0p+0 ) goto label$6216;
  {
-  *(uint8*)&V$1 = (uint8)((int64)*(uint8*)&V$1 | 128ll);
+  *(uint8*)&V$1 = (uint8)((int64)*(uint8*)&V$1 | 1ll);
   label$6216:;
  }
  _ZN8MEMORY_T10WRITEUBYTEEdd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll), (double)*(uint8*)&V$1 );
  if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6217;
- TMP$2916$1 = 0x1.p+0;
+ TMP$2930$1 = 0x1.p+0;
  goto label$6221;
  label$6217:;
- TMP$2916$1 = 0x0p+0;
+ TMP$2930$1 = 0x0p+0;
  label$6221:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2916$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6218;
- TMP$2917$1 = 0x1.p+0;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2930$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)&V$1 >= 0x1.p+0 ) goto label$6218;
+ TMP$2931$1 = 0x1.p+0;
  goto label$6222;
  label$6218:;
- TMP$2917$1 = 0x0p+0;
+ TMP$2931$1 = 0x0p+0;
  label$6222:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2917$1 )) & 1ull) << (7ll & 63ll)));
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2931$1 )) & 1ull) << (7ll & 63ll)));
  label$6212:;
+}
+
+void INS_ROLA( struct $7CPU6510* CPU$1 )
+{
+ double TMP$2932$1;
+ double TMP$2933$1;
+ double TMP$2934$1;
+ double TMP$2935$1;
+ label$6223:;
+ if( (double)((uint64)(int64)*(uint8*)CPU$1 & 1ull) != 0x1.p+0 ) goto label$6225;
+ TMP$2932$1 = 0x1.p+0;
+ goto label$6231;
+ label$6225:;
+ TMP$2932$1 = 0x0p+0;
+ label$6231:;
+ CARY$ = TMP$2932$1;
+ if( ((int64)*(uint8*)((uint8*)CPU$1 + 1ll) & 128ll) == 0ll ) goto label$6226;
+ TMP$2933$1 = 0x1.p+0;
+ goto label$6232;
+ label$6226:;
+ TMP$2933$1 = 0x0p+0;
+ label$6232:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2933$1 )) & 1ull));
+ *(uint8*)((uint8*)CPU$1 + 1ll) = (uint8)((int64)*(uint8*)((uint8*)CPU$1 + 1ll) << (1ll & 63ll));
+ if( CARY$ == 0x0p+0 ) goto label$6228;
+ {
+  *(uint8*)((uint8*)CPU$1 + 1ll) = (uint8)((int64)*(uint8*)((uint8*)CPU$1 + 1ll) | 1ll);
+  label$6228:;
+ }
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6229;
+ TMP$2934$1 = 0x1.p+0;
+ goto label$6233;
+ label$6229:;
+ TMP$2934$1 = 0x0p+0;
+ label$6233:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2934$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6230;
+ TMP$2935$1 = 0x1.p+0;
+ goto label$6234;
+ label$6230:;
+ TMP$2935$1 = 0x0p+0;
+ label$6234:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2935$1 )) & 1ull) << (7ll & 63ll)));
+ label$6224:;
+}
+
+void INS_ROR( struct $7CPU6510* CPU$1 )
+{
+ double TMP$2936$1;
+ double TMP$2937$1;
+ double TMP$2938$1;
+ double TMP$2939$1;
+ label$6235:;
+ struct $5MULTI V$1;
+ __builtin_memset( &V$1, 0, 8ll );
+ if( (double)((uint64)(int64)*(uint8*)CPU$1 & 1ull) != 0x1.p+0 ) goto label$6237;
+ TMP$2936$1 = 0x1.p+0;
+ goto label$6243;
+ label$6237:;
+ TMP$2936$1 = 0x0p+0;
+ label$6243:;
+ CARY$ = TMP$2936$1;
+ uint8 vr$8 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
+ *(uint8*)&V$1 = vr$8;
+ if( ((int64)*(uint8*)&V$1 & 1ll) == 0ll ) goto label$6238;
+ TMP$2937$1 = 0x1.p+0;
+ goto label$6244;
+ label$6238:;
+ TMP$2937$1 = 0x0p+0;
+ label$6244:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2937$1 )) & 1ull));
+ *(uint8*)&V$1 = (uint8)((int64)*(uint8*)&V$1 >> (1ll & 63ll));
+ if( CARY$ == 0x0p+0 ) goto label$6240;
+ {
+  *(uint8*)&V$1 = (uint8)((int64)*(uint8*)&V$1 | 128ll);
+  label$6240:;
+ }
+ _ZN8MEMORY_T10WRITEUBYTEEdd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll), (double)*(uint8*)&V$1 );
+ if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6241;
+ TMP$2938$1 = 0x1.p+0;
+ goto label$6245;
+ label$6241:;
+ TMP$2938$1 = 0x0p+0;
+ label$6245:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2938$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6242;
+ TMP$2939$1 = 0x1.p+0;
+ goto label$6246;
+ label$6242:;
+ TMP$2939$1 = 0x0p+0;
+ label$6246:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2939$1 )) & 1ull) << (7ll & 63ll)));
+ label$6236:;
 }
 
 void INS_RORA( struct $7CPU6510* CPU$1 )
 {
- double TMP$2918$1;
- double TMP$2919$1;
- int64 TMP$2920$1;
- int64 TMP$2921$1;
- label$6223:;
- if( (double)((uint64)(int64)*(uint8*)CPU$1 & 1ull) != 0x1.p+0 ) goto label$6225;
- TMP$2918$1 = 0x1.p+0;
- goto label$6231;
- label$6225:;
- TMP$2918$1 = 0x0p+0;
- label$6231:;
- CARY$ = TMP$2918$1;
- if( ((int64)*(uint8*)((uint8*)CPU$1 + 1ll) & 1ll) == 0ll ) goto label$6226;
- TMP$2919$1 = 0x1.p+0;
- goto label$6232;
- label$6226:;
- TMP$2919$1 = 0x0p+0;
- label$6232:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2919$1 )) & 1ull));
+ double TMP$2940$1;
+ double TMP$2941$1;
+ int64 TMP$2942$1;
+ int64 TMP$2943$1;
+ label$6247:;
+ if( (double)((uint64)(int64)*(uint8*)CPU$1 & 1ull) != 0x1.p+0 ) goto label$6249;
+ TMP$2940$1 = 0x1.p+0;
+ goto label$6255;
+ label$6249:;
+ TMP$2940$1 = 0x0p+0;
+ label$6255:;
+ CARY$ = TMP$2940$1;
+ if( ((int64)*(uint8*)((uint8*)CPU$1 + 1ll) & 1ll) == 0ll ) goto label$6250;
+ TMP$2941$1 = 0x1.p+0;
+ goto label$6256;
+ label$6250:;
+ TMP$2941$1 = 0x0p+0;
+ label$6256:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2941$1 )) & 1ull));
  *(uint8*)((uint8*)CPU$1 + 1ll) = (uint8)((int64)*(uint8*)((uint8*)CPU$1 + 1ll) >> (1ll & 63ll));
- if( CARY$ == 0x0p+0 ) goto label$6228;
+ if( CARY$ == 0x0p+0 ) goto label$6252;
  {
   *(uint8*)((uint8*)CPU$1 + 1ll) = (uint8)((int64)*(uint8*)((uint8*)CPU$1 + 1ll) | 128ll);
-  label$6228:;
+  label$6252:;
  }
- if( (int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0ll ) goto label$6229;
- TMP$2920$1 = 1ll;
- goto label$6233;
- label$6229:;
- TMP$2920$1 = 0ll;
- label$6233:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | (((uint64)TMP$2920$1 & 1ull) << (1ll & 63ll)));
- if( (int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0ll ) goto label$6230;
- TMP$2921$1 = 1ll;
- goto label$6234;
- label$6230:;
- TMP$2921$1 = 0ll;
- label$6234:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | (((uint64)TMP$2921$1 & 1ull) << (7ll & 63ll)));
- label$6224:;
+ if( (int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0ll ) goto label$6253;
+ TMP$2942$1 = 1ll;
+ goto label$6257;
+ label$6253:;
+ TMP$2942$1 = 0ll;
+ label$6257:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | (((uint64)TMP$2942$1 & 1ull) << (1ll & 63ll)));
+ if( (int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0ll ) goto label$6254;
+ TMP$2943$1 = 1ll;
+ goto label$6258;
+ label$6254:;
+ TMP$2943$1 = 0ll;
+ label$6258:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | (((uint64)TMP$2943$1 & 1ull) << (7ll & 63ll)));
+ label$6248:;
 }
 
 void INS_RTI( struct $7CPU6510* CPU$1 )
 {
- label$6235:;
+ label$6259:;
  double vr$0 = _ZN7CPU65104PULLEv( CPU$1 );
  *(uint8*)CPU$1 = (uint8)((int32)__builtin_nearbyint( vr$0 ));
  double vr$3 = _ZN7CPU65104PULLEv( CPU$1 );
@@ -28005,27 +28168,27 @@ void INS_RTI( struct $7CPU6510* CPU$1 )
  double vr$6 = _ZN7CPU65104PULLEv( CPU$1 );
  *(uint8*)((uint8*)CPU$1 + 5ll) = (uint8)((int32)__builtin_nearbyint( vr$6 ));
  *(uint16*)((uint8*)CPU$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)CPU$1 + 4ll) + 0x1.p+0 ));
- label$6236:;
+ label$6260:;
 }
 
 void INS_RTS( struct $7CPU6510* CPU$1 )
 {
- label$6237:;
+ label$6261:;
  double vr$0 = _ZN7CPU65104PULLEv( CPU$1 );
  *(uint8*)((uint8*)CPU$1 + 4ll) = (uint8)((int32)__builtin_nearbyint( vr$0 ));
  double vr$3 = _ZN7CPU65104PULLEv( CPU$1 );
  *(uint8*)((uint8*)CPU$1 + 5ll) = (uint8)((int32)__builtin_nearbyint( vr$3 ));
  *(uint16*)((uint8*)CPU$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)CPU$1 + 4ll) + 0x1.p+0 ));
- label$6238:;
+ label$6262:;
 }
 
 void INS_SBC( struct $7CPU6510* CPU$1 )
 {
- double TMP$2922$1;
- double TMP$2923$1;
- double TMP$2924$1;
- double TMP$2925$1;
- label$6239:;
+ double TMP$2944$1;
+ double TMP$2945$1;
+ double TMP$2946$1;
+ double TMP$2947$1;
+ label$6263:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  struct $5MULTI B$1;
@@ -28033,300 +28196,300 @@ void INS_SBC( struct $7CPU6510* CPU$1 )
  uint8 vr$5 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll) );
  *(uint8*)&B$1 = vr$5;
  *(uint16*)&V$1 = (uint16)((int64)*(uint8*)((uint8*)CPU$1 + 1ll) - (int64)*(uint8*)&B$1);
- if( (double)((uint64)(int64)*(uint8*)CPU$1 & 1ull) != 0x0p+0 ) goto label$6242;
+ if( (double)((uint64)(int64)*(uint8*)CPU$1 & 1ull) != 0x0p+0 ) goto label$6266;
  {
   *(int16*)&V$1 = (int16)((int32)__builtin_nearbyint( (double)(int64)*(int16*)&V$1 + -0x1.p+0 ));
-  label$6242:;
+  label$6266:;
  }
- if( ((((int64)*(uint8*)((uint8*)CPU$1 + 1ll) ^ (int64)*(uint8*)&B$1) & 128ll) & (((int64)*(uint8*)((uint8*)CPU$1 + 1ll) ^ (int64)*(uint8*)&V$1) & 128ll)) == 0ll ) goto label$6243;
- TMP$2922$1 = 0x1.p+0;
- goto label$6247;
- label$6243:;
- TMP$2922$1 = 0x0p+0;
- label$6247:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551551ull) | ((((uint64)__builtin_nearbyint( TMP$2922$1 )) & 1ull) << (6ll & 63ll)));
+ if( ((((int64)*(uint8*)((uint8*)CPU$1 + 1ll) ^ (int64)*(uint8*)&B$1) & 128ll) & (((int64)*(uint8*)((uint8*)CPU$1 + 1ll) ^ (int64)*(uint8*)&V$1) & 128ll)) == 0ll ) goto label$6267;
+ TMP$2944$1 = 0x1.p+0;
+ goto label$6271;
+ label$6267:;
+ TMP$2944$1 = 0x0p+0;
+ label$6271:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551551ull) | ((((uint64)__builtin_nearbyint( TMP$2944$1 )) & 1ull) << (6ll & 63ll)));
  *(uint8*)((uint8*)CPU$1 + 1ll) = *(uint8*)&V$1;
- if( (double)(int64)*(uint16*)&V$1 > 0x1.FEp+7 ) goto label$6244;
- TMP$2923$1 = 0x1.p+0;
- goto label$6248;
- label$6244:;
- TMP$2923$1 = 0x0p+0;
- label$6248:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2923$1 )) & 1ull));
- if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6245;
- TMP$2924$1 = 0x1.p+0;
- goto label$6249;
- label$6245:;
- TMP$2924$1 = 0x0p+0;
- label$6249:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2924$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6246;
- TMP$2925$1 = 0x1.p+0;
- goto label$6250;
- label$6246:;
- TMP$2925$1 = 0x0p+0;
- label$6250:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2925$1 )) & 1ull) << (7ll & 63ll)));
- label$6240:;
+ if( (double)(int64)*(uint16*)&V$1 > 0x1.FEp+7 ) goto label$6268;
+ TMP$2945$1 = 0x1.p+0;
+ goto label$6272;
+ label$6268:;
+ TMP$2945$1 = 0x0p+0;
+ label$6272:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | (((uint64)__builtin_nearbyint( TMP$2945$1 )) & 1ull));
+ if( (double)(int64)*(uint8*)&V$1 != 0x0p+0 ) goto label$6269;
+ TMP$2946$1 = 0x1.p+0;
+ goto label$6273;
+ label$6269:;
+ TMP$2946$1 = 0x0p+0;
+ label$6273:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2946$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)&V$1 >= 0x0p+0 ) goto label$6270;
+ TMP$2947$1 = 0x1.p+0;
+ goto label$6274;
+ label$6270:;
+ TMP$2947$1 = 0x0p+0;
+ label$6274:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2947$1 )) & 1ull) << (7ll & 63ll)));
+ label$6264:;
 }
 
 void INS_SEC( struct $7CPU6510* CPU$1 )
 {
- label$6251:;
+ label$6275:;
  *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551614ull) | 1ull);
- label$6252:;
+ label$6276:;
 }
 
 void INS_SED( struct $7CPU6510* CPU$1 )
 {
- label$6253:;
+ label$6277:;
  *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551607ull) | 8ull);
- label$6254:;
+ label$6278:;
 }
 
 void INS_SEI( struct $7CPU6510* CPU$1 )
 {
- label$6255:;
+ label$6279:;
  *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551611ull) | 4ull);
- label$6256:;
+ label$6280:;
 }
 
 void INS_STA( struct $7CPU6510* CPU$1 )
 {
- label$6257:;
+ label$6281:;
  _ZN8MEMORY_T10WRITEUBYTEEdd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll), (double)*(uint8*)((uint8*)CPU$1 + 1ll) );
- label$6258:;
+ label$6282:;
 }
 
 void INS_STX( struct $7CPU6510* CPU$1 )
 {
- label$6259:;
+ label$6283:;
  _ZN8MEMORY_T10WRITEUBYTEEdd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll), (double)*(uint8*)((uint8*)CPU$1 + 2ll) );
- label$6260:;
+ label$6284:;
 }
 
 void INS_STY( struct $7CPU6510* CPU$1 )
 {
- label$6261:;
+ label$6285:;
  _ZN8MEMORY_T10WRITEUBYTEEdd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint16*)((uint8*)CPU$1 + 56ll), (double)*(uint8*)((uint8*)CPU$1 + 3ll) );
- label$6262:;
+ label$6286:;
 }
 
 void INS_TAX( struct $7CPU6510* CPU$1 )
 {
- double TMP$2926$1;
- double TMP$2927$1;
- label$6263:;
+ double TMP$2948$1;
+ double TMP$2949$1;
+ label$6287:;
  *(uint8*)((uint8*)CPU$1 + 2ll) = *(uint8*)((uint8*)CPU$1 + 1ll);
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 2ll) != 0x0p+0 ) goto label$6265;
- TMP$2926$1 = 0x1.p+0;
- goto label$6267;
- label$6265:;
- TMP$2926$1 = 0x0p+0;
- label$6267:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2926$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 2ll) >= 0x0p+0 ) goto label$6266;
- TMP$2927$1 = 0x1.p+0;
- goto label$6268;
- label$6266:;
- TMP$2927$1 = 0x0p+0;
- label$6268:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2927$1 )) & 1ull) << (7ll & 63ll)));
- label$6264:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 2ll) != 0x0p+0 ) goto label$6289;
+ TMP$2948$1 = 0x1.p+0;
+ goto label$6291;
+ label$6289:;
+ TMP$2948$1 = 0x0p+0;
+ label$6291:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2948$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 2ll) >= 0x0p+0 ) goto label$6290;
+ TMP$2949$1 = 0x1.p+0;
+ goto label$6292;
+ label$6290:;
+ TMP$2949$1 = 0x0p+0;
+ label$6292:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2949$1 )) & 1ull) << (7ll & 63ll)));
+ label$6288:;
 }
 
 void INS_TAY( struct $7CPU6510* CPU$1 )
 {
- double TMP$2928$1;
- double TMP$2929$1;
- label$6269:;
+ double TMP$2950$1;
+ double TMP$2951$1;
+ label$6293:;
  *(uint8*)((uint8*)CPU$1 + 3ll) = *(uint8*)((uint8*)CPU$1 + 1ll);
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 3ll) != 0x0p+0 ) goto label$6271;
- TMP$2928$1 = 0x1.p+0;
- goto label$6273;
- label$6271:;
- TMP$2928$1 = 0x0p+0;
- label$6273:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2928$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 3ll) >= 0x0p+0 ) goto label$6272;
- TMP$2929$1 = 0x1.p+0;
- goto label$6274;
- label$6272:;
- TMP$2929$1 = 0x0p+0;
- label$6274:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2929$1 )) & 1ull) << (7ll & 63ll)));
- label$6270:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 3ll) != 0x0p+0 ) goto label$6295;
+ TMP$2950$1 = 0x1.p+0;
+ goto label$6297;
+ label$6295:;
+ TMP$2950$1 = 0x0p+0;
+ label$6297:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2950$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 3ll) >= 0x0p+0 ) goto label$6296;
+ TMP$2951$1 = 0x1.p+0;
+ goto label$6298;
+ label$6296:;
+ TMP$2951$1 = 0x0p+0;
+ label$6298:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2951$1 )) & 1ull) << (7ll & 63ll)));
+ label$6294:;
 }
 
 void INS_TSX( struct $7CPU6510* CPU$1 )
 {
- double TMP$2930$1;
- double TMP$2931$1;
- label$6275:;
+ double TMP$2952$1;
+ double TMP$2953$1;
+ label$6299:;
  *(uint8*)((uint8*)CPU$1 + 2ll) = *(uint8*)((uint8*)CPU$1 + 6ll);
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 2ll) != 0x0p+0 ) goto label$6277;
- TMP$2930$1 = 0x1.p+0;
- goto label$6279;
- label$6277:;
- TMP$2930$1 = 0x0p+0;
- label$6279:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2930$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 2ll) >= 0x0p+0 ) goto label$6278;
- TMP$2931$1 = 0x1.p+0;
- goto label$6280;
- label$6278:;
- TMP$2931$1 = 0x0p+0;
- label$6280:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2931$1 )) & 1ull) << (7ll & 63ll)));
- label$6276:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 2ll) != 0x0p+0 ) goto label$6301;
+ TMP$2952$1 = 0x1.p+0;
+ goto label$6303;
+ label$6301:;
+ TMP$2952$1 = 0x0p+0;
+ label$6303:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2952$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 2ll) >= 0x0p+0 ) goto label$6302;
+ TMP$2953$1 = 0x1.p+0;
+ goto label$6304;
+ label$6302:;
+ TMP$2953$1 = 0x0p+0;
+ label$6304:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2953$1 )) & 1ull) << (7ll & 63ll)));
+ label$6300:;
 }
 
 void INS_TXA( struct $7CPU6510* CPU$1 )
 {
- double TMP$2932$1;
- double TMP$2933$1;
- label$6281:;
+ double TMP$2954$1;
+ double TMP$2955$1;
+ label$6305:;
  *(uint8*)((uint8*)CPU$1 + 1ll) = *(uint8*)((uint8*)CPU$1 + 2ll);
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6283;
- TMP$2932$1 = 0x1.p+0;
- goto label$6285;
- label$6283:;
- TMP$2932$1 = 0x0p+0;
- label$6285:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2932$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6284;
- TMP$2933$1 = 0x1.p+0;
- goto label$6286;
- label$6284:;
- TMP$2933$1 = 0x0p+0;
- label$6286:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2933$1 )) & 1ull) << (7ll & 63ll)));
- label$6282:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6307;
+ TMP$2954$1 = 0x1.p+0;
+ goto label$6309;
+ label$6307:;
+ TMP$2954$1 = 0x0p+0;
+ label$6309:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2954$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6308;
+ TMP$2955$1 = 0x1.p+0;
+ goto label$6310;
+ label$6308:;
+ TMP$2955$1 = 0x0p+0;
+ label$6310:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2955$1 )) & 1ull) << (7ll & 63ll)));
+ label$6306:;
 }
 
 void INS_TXS( struct $7CPU6510* CPU$1 )
 {
- label$6287:;
+ label$6311:;
  *(uint8*)((uint8*)CPU$1 + 6ll) = *(uint8*)((uint8*)CPU$1 + 2ll);
- label$6288:;
+ label$6312:;
 }
 
 void INS_TYA( struct $7CPU6510* CPU$1 )
 {
- double TMP$2934$1;
- double TMP$2935$1;
- label$6289:;
+ double TMP$2956$1;
+ double TMP$2957$1;
+ label$6313:;
  *(uint8*)((uint8*)CPU$1 + 1ll) = *(uint8*)((uint8*)CPU$1 + 3ll);
- if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6291;
- TMP$2934$1 = 0x1.p+0;
- goto label$6293;
- label$6291:;
- TMP$2934$1 = 0x0p+0;
- label$6293:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2934$1 )) & 1ull) << (1ll & 63ll)));
- if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6292;
- TMP$2935$1 = 0x1.p+0;
- goto label$6294;
- label$6292:;
- TMP$2935$1 = 0x0p+0;
- label$6294:;
- *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2935$1 )) & 1ull) << (7ll & 63ll)));
- label$6290:;
+ if( (double)(int64)*(uint8*)((uint8*)CPU$1 + 1ll) != 0x0p+0 ) goto label$6315;
+ TMP$2956$1 = 0x1.p+0;
+ goto label$6317;
+ label$6315:;
+ TMP$2956$1 = 0x0p+0;
+ label$6317:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551613ull) | ((((uint64)__builtin_nearbyint( TMP$2956$1 )) & 1ull) << (1ll & 63ll)));
+ if( (double)(int64)*(int8*)((uint8*)CPU$1 + 1ll) >= 0x0p+0 ) goto label$6316;
+ TMP$2957$1 = 0x1.p+0;
+ goto label$6318;
+ label$6316:;
+ TMP$2957$1 = 0x0p+0;
+ label$6318:;
+ *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551487ull) | ((((uint64)__builtin_nearbyint( TMP$2957$1 )) & 1ull) << (7ll & 63ll)));
+ label$6314:;
 }
 
 void INS_R32( struct $7CPU6510* CPU$1 )
 {
- label$6295:;
+ label$6319:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  double vr$4 = _ZN8MEMORY_T6PEEK64Ed( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint32*)((uint8*)CPU$1 + 56ll) );
  *(uint8*)((uint8*)CPU$1 + 1ll) = (uint8)((int32)__builtin_nearbyint( vr$4 ));
- label$6296:;
+ label$6320:;
 }
 
 void INS_W32( struct $7CPU6510* CPU$1 )
 {
- label$6297:;
+ label$6321:;
  _ZN8MEMORY_T6POKE64Edd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint32*)((uint8*)CPU$1 + 56ll), (double)*(uint8*)((uint8*)CPU$1 + 1ll) );
- label$6298:;
+ label$6322:;
 }
 
 void INS_R64( struct $7CPU6510* CPU$1 )
 {
- label$6299:;
+ label$6323:;
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
  double vr$4 = _ZN8MEMORY_T6PEEK64Ed( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint64*)((uint8*)CPU$1 + 56ll) );
  *(uint8*)((uint8*)CPU$1 + 1ll) = (uint8)((int32)__builtin_nearbyint( vr$4 ));
- label$6300:;
+ label$6324:;
 }
 
 void INS_W64( struct $7CPU6510* CPU$1 )
 {
- label$6301:;
+ label$6325:;
  _ZN8MEMORY_T6POKE64Edd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)*(uint64*)((uint8*)CPU$1 + 56ll), (double)*(uint8*)((uint8*)CPU$1 + 1ll) );
- label$6302:;
+ label$6326:;
 }
 
 int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
 {
  int64 fb$result$1;
  __builtin_memset( &fb$result$1, 0, 8ll );
- label$6837:;
+ label$6861:;
  static FBSTRING S$1;
  int64 KEY$1;
  __builtin_memset( &KEY$1, 0, 8ll );
  int64 IRQTICKS$1;
  __builtin_memset( &IRQTICKS$1, 0, 8ll );
- if( ((uint64)((int64)*(uint8*)CPU$1 >> (2ll & 63ll)) & 1ull) != 1ull ) goto label$6840;
+ if( ((uint64)((int64)*(uint8*)CPU$1 >> (2ll & 63ll)) & 1ull) != 1ull ) goto label$6864;
  {
   fb$result$1 = 0ll;
-  goto label$6838;
-  label$6840:;
+  goto label$6862;
+  label$6864:;
  }
  int64 NCHARS$1;
  uint8 vr$8 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), 0x1.8Cp+7 );
  NCHARS$1 = (int64)vr$8;
- if( NCHARS$1 >= 10ll ) goto label$6842;
+ if( NCHARS$1 >= 10ll ) goto label$6866;
  {
   FBSTRING STRKEY$2;
   FBSTRING* vr$10 = fb_Inkey( );
   FBSTRING* vr$12 = fb_StrInit( (void*)&STRKEY$2, -1ll, (void*)vr$10, -1ll, 0 );
   int64 vr$14 = fb_StrLen( (void*)&STRKEY$2, -1ll );
   KEY$1 = vr$14;
-  if( KEY$1 == 0ll ) goto label$6844;
+  if( KEY$1 == 0ll ) goto label$6868;
   {
    KEY$1 = ((int64)*(uint8*)((uint8*)((uint8*)*(uint8**)&STRKEY$2 + KEY$1) + -1ll) + (KEY$1 << (8ll & 63ll))) + -256ll;
    {
-    if( KEY$1 != 27ll ) goto label$6846;
-    label$6847:;
+    if( KEY$1 != 27ll ) goto label$6870;
+    label$6871:;
     {
      fb_End( 0 );
     }
-    goto label$6845;
-    label$6846:;
-    if( KEY$1 < 65ll ) goto label$6848;
-    if( KEY$1 > 90ll ) goto label$6848;
-    label$6849:;
+    goto label$6869;
+    label$6870:;
+    if( KEY$1 < 65ll ) goto label$6872;
+    if( KEY$1 > 90ll ) goto label$6872;
+    label$6873:;
     {
      KEY$1 = KEY$1 + 32ll;
      FBSTRING* vr$21 = fb_CHR( 1, KEY$1 );
      FBSTRING* vr$22 = fb_StrConcatAssign( (void*)&S$1, -1ll, (void*)vr$21, -1ll, 0 );
     }
-    goto label$6845;
-    label$6848:;
-    if( KEY$1 < 97ll ) goto label$6850;
-    if( KEY$1 > 122ll ) goto label$6850;
-    label$6851:;
+    goto label$6869;
+    label$6872:;
+    if( KEY$1 < 97ll ) goto label$6874;
+    if( KEY$1 > 122ll ) goto label$6874;
+    label$6875:;
     {
      KEY$1 = KEY$1 + -32ll;
      FBSTRING* vr$24 = fb_CHR( 1, KEY$1 );
      FBSTRING* vr$25 = fb_StrConcatAssign( (void*)&S$1, -1ll, (void*)vr$24, -1ll, 0 );
     }
-    goto label$6845;
-    label$6850:;
-    if( KEY$1 != 316ll ) goto label$6852;
-    label$6853:;
+    goto label$6869;
+    label$6874:;
+    if( KEY$1 != 316ll ) goto label$6876;
+    label$6877:;
     {
      fb_Locate( 1, 1, -1, 0, 0 );
      FBSTRING* vr$26 = fb_SPACE( 48ll );
@@ -28336,12 +28499,12 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
      fb_ConsoleInput( (FBSTRING*)vr$27, -1, -1 );
      fb_InputString( (void*)&STRKEY$2, -1ll, 0 );
      int64 vr$30 = fb_StrLen( (void*)&STRKEY$2, -1ll );
-     if( vr$30 == 0ll ) goto label$6855;
+     if( vr$30 == 0ll ) goto label$6879;
      {
       int32 vr$31 = fb_FileFree( );
       KEY$1 = (int64)vr$31;
       int32 vr$35 = fb_FileOpen( (FBSTRING*)&STRKEY$2, 0u, 2u, 0u, (int32)KEY$1, 0 );
-      if( (int64)vr$35 != 0ll ) goto label$6857;
+      if( (int64)vr$35 != 0ll ) goto label$6881;
       {
        uint8 U8$7;
        __builtin_memset( &U8$7, 0, 1ll );
@@ -28353,48 +28516,48 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
        {
         int64 I$8;
         I$8 = 0ll;
-        int64 TMP$3524$8;
-        TMP$3524$8 = NBYTES$7 + -1ll;
-        goto label$6858;
-        label$6861:;
+        int64 TMP$3546$8;
+        TMP$3546$8 = NBYTES$7 + -1ll;
+        goto label$6882;
+        label$6885:;
         {
          uint8 vr$48 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)(I$8 + 2048ll) );
          U8$7 = vr$48;
          fb_FilePutLarge( (int32)KEY$1, 0ll, (void*)&U8$7, 1ull );
         }
-        label$6859:;
+        label$6883:;
         I$8 = I$8 + 1ll;
-        label$6858:;
-        if( I$8 <= TMP$3524$8 ) goto label$6861;
-        label$6860:;
+        label$6882:;
+        if( I$8 <= TMP$3546$8 ) goto label$6885;
+        label$6884:;
        }
        fb_FileClose( (int32)KEY$1 );
       }
-      goto label$6856;
-      label$6857:;
+      goto label$6880;
+      label$6881:;
       {
-       FBSTRING TMP$3526$7;
+       FBSTRING TMP$3548$7;
        fb_Locate( 1, 1, -1, 0, 0 );
        FBSTRING* vr$53 = fb_SPACE( 48ll );
        fb_PrintString( 0, (FBSTRING*)vr$53, 1 );
        fb_Locate( 1, 1, -1, 0, 0 );
-       __builtin_memset( &TMP$3526$7, 0, 24ll );
-       FBSTRING* vr$57 = fb_StrConcat( &TMP$3526$7, (void*)"can't create: ", 15ll, (void*)&STRKEY$2, -1ll );
+       __builtin_memset( &TMP$3548$7, 0, 24ll );
+       FBSTRING* vr$57 = fb_StrConcat( &TMP$3548$7, (void*)"can't create: ", 15ll, (void*)&STRKEY$2, -1ll );
        fb_PrintString( 0, (FBSTRING*)vr$57, 1 );
        fb_Beep( );
        fb_Sleep( -1 );
       }
-      label$6856:;
+      label$6880:;
      }
-     label$6855:;
-     label$6854:;
+     label$6879:;
+     label$6878:;
      fb_GfxLine( (void*)0ull, 0x0p+0f, 0x0p+0f, 0x1.AF8p+9f, 0x1.Cp+2f, 3u, 2, 65535u, 0 );
      KEY$1 = 0ll;
     }
-    goto label$6845;
-    label$6852:;
-    if( KEY$1 != 317ll ) goto label$6862;
-    label$6863:;
+    goto label$6869;
+    label$6876:;
+    if( KEY$1 != 317ll ) goto label$6886;
+    label$6887:;
     {
      fb_Locate( 1, 1, -1, 0, 0 );
      FBSTRING* vr$58 = fb_SPACE( 48ll );
@@ -28404,12 +28567,12 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
      fb_ConsoleInput( (FBSTRING*)vr$59, -1, -1 );
      fb_InputString( (void*)&STRKEY$2, -1ll, 0 );
      int64 vr$62 = fb_StrLen( (void*)&STRKEY$2, -1ll );
-     if( vr$62 == 0ll ) goto label$6865;
+     if( vr$62 == 0ll ) goto label$6889;
      {
       int32 vr$63 = fb_FileFree( );
       KEY$1 = (int64)vr$63;
       int32 vr$67 = fb_FileOpen( (FBSTRING*)&STRKEY$2, 0u, 1u, 0u, (int32)KEY$1, 0 );
-      if( (int64)vr$67 != 0ll ) goto label$6867;
+      if( (int64)vr$67 != 0ll ) goto label$6891;
       {
        uint8 U8$7;
        __builtin_memset( &U8$7, 0, 1ll );
@@ -28419,105 +28582,105 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
        {
         int64 I$8;
         I$8 = 0ll;
-        int64 TMP$3528$8;
-        TMP$3528$8 = NBYTES$7 + -1ll;
-        goto label$6868;
-        label$6871:;
+        int64 TMP$3550$8;
+        TMP$3550$8 = NBYTES$7 + -1ll;
+        goto label$6892;
+        label$6895:;
         {
          fb_FileGetLarge( (int32)KEY$1, 0ll, (void*)&U8$7, 1ull );
          _ZN8MEMORY_T10WRITEUBYTEEdd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)(I$8 + 2048ll), (double)U8$7 );
         }
-        label$6869:;
+        label$6893:;
         I$8 = I$8 + 1ll;
-        label$6868:;
-        if( I$8 <= TMP$3528$8 ) goto label$6871;
-        label$6870:;
+        label$6892:;
+        if( I$8 <= TMP$3550$8 ) goto label$6895;
+        label$6894:;
        }
        fb_FileClose( (int32)KEY$1 );
        NBYTES$7 = NBYTES$7 + 2048ll;
        _ZN8MEMORY_T11WRITEUSHORTEdd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), 0x1.68p+5, (double)NBYTES$7 );
        *(uint16*)((uint8*)CPU$1 + 4ll) = (uint16)42282u;
       }
-      goto label$6866;
-      label$6867:;
+      goto label$6890;
+      label$6891:;
       {
-       FBSTRING TMP$3530$7;
+       FBSTRING TMP$3552$7;
        fb_Locate( 1, 1, -1, 0, 0 );
        FBSTRING* vr$86 = fb_SPACE( 48ll );
        fb_PrintString( 0, (FBSTRING*)vr$86, 1 );
        fb_Locate( 1, 1, -1, 0, 0 );
-       __builtin_memset( &TMP$3530$7, 0, 24ll );
-       FBSTRING* vr$90 = fb_StrConcat( &TMP$3530$7, (void*)"can't open: ", 13ll, (void*)&STRKEY$2, -1ll );
+       __builtin_memset( &TMP$3552$7, 0, 24ll );
+       FBSTRING* vr$90 = fb_StrConcat( &TMP$3552$7, (void*)"can't open: ", 13ll, (void*)&STRKEY$2, -1ll );
        fb_PrintString( 0, (FBSTRING*)vr$90, 1 );
        fb_Beep( );
        fb_Sleep( -1 );
       }
-      label$6866:;
+      label$6890:;
      }
-     label$6865:;
-     label$6864:;
+     label$6889:;
+     label$6888:;
      fb_GfxLine( (void*)0ull, 0x0p+0f, 0x0p+0f, 0x1.AF8p+9f, 0x1.Cp+2f, 3u, 2, 65535u, 0 );
      KEY$1 = 0ll;
     }
-    goto label$6845;
-    label$6862:;
-    if( KEY$1 != 327ll ) goto label$6872;
-    label$6873:;
+    goto label$6869;
+    label$6886:;
+    if( KEY$1 != 327ll ) goto label$6896;
+    label$6897:;
     {
      KEY$1 = 19ll;
     }
-    goto label$6845;
-    label$6872:;
-    if( KEY$1 != 8ll ) goto label$6874;
-    label$6875:;
+    goto label$6869;
+    label$6896:;
+    if( KEY$1 != 8ll ) goto label$6898;
+    label$6899:;
     {
      KEY$1 = 20ll;
     }
-    goto label$6845;
-    label$6874:;
-    if( KEY$1 != 331ll ) goto label$6876;
-    label$6877:;
+    goto label$6869;
+    label$6898:;
+    if( KEY$1 != 331ll ) goto label$6900;
+    label$6901:;
     {
      KEY$1 = 157ll;
     }
-    goto label$6845;
-    label$6876:;
-    if( KEY$1 != 328ll ) goto label$6878;
-    label$6879:;
+    goto label$6869;
+    label$6900:;
+    if( KEY$1 != 328ll ) goto label$6902;
+    label$6903:;
     {
      KEY$1 = 145ll;
     }
-    goto label$6845;
-    label$6878:;
-    if( KEY$1 != 333ll ) goto label$6880;
-    label$6881:;
+    goto label$6869;
+    label$6902:;
+    if( KEY$1 != 333ll ) goto label$6904;
+    label$6905:;
     {
      KEY$1 = 29ll;
     }
-    goto label$6845;
-    label$6880:;
-    if( KEY$1 != 336ll ) goto label$6882;
-    label$6883:;
+    goto label$6869;
+    label$6904:;
+    if( KEY$1 != 336ll ) goto label$6906;
+    label$6907:;
     {
      KEY$1 = 17ll;
     }
-    label$6882:;
-    label$6845:;
+    label$6906:;
+    label$6869:;
    }
-   if( KEY$1 == 0ll ) goto label$6885;
+   if( KEY$1 == 0ll ) goto label$6909;
    {
     _ZN8MEMORY_T10WRITEUBYTEEdd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)(NCHARS$1 + 631ll), (double)KEY$1 );
     _ZN8MEMORY_T10WRITEUBYTEEdd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), 0x1.8Cp+7, (double)(NCHARS$1 + 1ll) );
    }
-   label$6885:;
-   label$6884:;
+   label$6909:;
+   label$6908:;
   }
-  label$6844:;
-  label$6843:;
+  label$6868:;
+  label$6867:;
   fb_StrDelete( (FBSTRING*)&STRKEY$2 );
  }
- label$6842:;
- label$6841:;
+ label$6866:;
+ label$6865:;
  _ZN7CPU65104PUSHEd( CPU$1, (double)*(uint8*)((uint8*)CPU$1 + 5ll) );
  _ZN7CPU65104PUSHEd( CPU$1, (double)*(uint8*)((uint8*)CPU$1 + 4ll) );
  _ZN7CPU65104PUSHEd( CPU$1, (double)*(uint8*)CPU$1 );
@@ -28527,32 +28690,32 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
  *(uint8*)((uint8*)CPU$1 + 4ll) = vr$109;
  *(uint8*)CPU$1 = (uint8)((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551599ull);
  *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551611ull) | 4ull);
- label$6886:;
- if( *(uint64*)((uint8*)CPU$1 + 16ll) == 64ull ) goto label$6887;
+ label$6910:;
+ if( *(uint64*)((uint8*)CPU$1 + 16ll) == 64ull ) goto label$6911;
  {
   _ZN7CPU65104TICKEd( CPU$1, __builtin_inf() );
   IRQTICKS$1 = IRQTICKS$1 + 1ll;
  }
- goto label$6886;
- label$6887:;
+ goto label$6910;
+ label$6911:;
  double vr$122 = _ZN7CPU65104PULLEv( CPU$1 );
  *(uint8*)CPU$1 = (uint8)((int32)__builtin_nearbyint( vr$122 ));
  double vr$125 = _ZN7CPU65104PULLEv( CPU$1 );
  *(uint8*)((uint8*)CPU$1 + 4ll) = (uint8)((int32)__builtin_nearbyint( vr$125 ));
  double vr$128 = _ZN7CPU65104PULLEv( CPU$1 );
  *(uint8*)((uint8*)CPU$1 + 5ll) = (uint8)((int32)__builtin_nearbyint( vr$128 ));
- if( KEY$1 != 13ll ) goto label$6889;
+ if( KEY$1 != 13ll ) goto label$6913;
  {
   FLAG$ = 1ll;
  }
- goto label$6888;
- label$6889:;
+ goto label$6912;
+ label$6913:;
  {
   FLAG$ = 0ll;
  }
- label$6888:;
+ label$6912:;
  fb$result$1 = IRQTICKS$1;
- label$6838:;
+ label$6862:;
  return fb$result$1;
 }
 
@@ -28561,31 +28724,31 @@ int32 main( int32 __FB_ARGC__$0, char** __FB_ARGV__$0 )
  int32 fb$result$0;
  __builtin_memset( &fb$result$0, 0, 4ll );
  fb_Init( __FB_ARGC__$0, (uint8**)__FB_ARGV__$0, 0 );
- fb_DataRestore( (void*)label$5917 );
+ fb_DataRestore( (void*)label$5941 );
  label$0:;
  fb_StrAssign( (void*)&EOL$, -1ll, (void*)"\x0D\x0A", 3ll, 0 );
- label$5916:;
- label$5922:;
+ label$5940:;
+ label$5946:;
  struct $5C64_T COMPUTER$0;
  _ZN5C64_TC1Ev( &COMPUTER$0 );
  int64 TICKS$0;
  TICKS$0 = 0ll;
  int64 RES$0;
  RES$0 = 0ll;
- label$6890:;
+ label$6914:;
  {
   TICKS$0 = ((int64)__builtin_nearbyint( (double)TICKS$0 + 0x1.p+0 ));
-  if( (double)FLAG$ != 0x1.p+0 ) goto label$6894;
+  if( (double)FLAG$ != 0x1.p+0 ) goto label$6918;
   {
    _ZN7CPU65104TICKEd( *(struct $7CPU6510**)((uint8*)&COMPUTER$0 + 8ll), (double)TICKS$0 );
   }
-  goto label$6893;
-  label$6894:;
+  goto label$6917;
+  label$6918:;
   {
    _ZN7CPU65104TICKEd( *(struct $7CPU6510**)((uint8*)&COMPUTER$0 + 8ll), __builtin_inf() );
   }
-  label$6893:;
-  if( (double)(TICKS$0 % 24000ll) != 0x0p+0 ) goto label$6896;
+  label$6917:;
+  if( (double)(TICKS$0 % 24000ll) != 0x0p+0 ) goto label$6920;
   {
    int64 vr$9 = INTERRUPTSERVICE( *(struct $7CPU6510**)((uint8*)&COMPUTER$0 + 8ll) );
    TICKS$0 = TICKS$0 + vr$9;
@@ -28594,12 +28757,12 @@ int32 main( int32 __FB_ARGC__$0, char** __FB_ARGV__$0 )
    fb_GfxPut( (void*)0ull, 0x0p+0f, 0x0p+0f, (void*)FGIMAGE$, -65536, -65536, -65536, -65536, 0, 4, (void*)&fb_hPutOr, -1, (void*)0ull, (void*)0ull );
    fb_GfxUnlock( -1, -1 );
   }
-  label$6896:;
-  label$6895:;
+  label$6920:;
+  label$6919:;
  }
- label$6892:;
- goto label$6890;
- label$6891:;
+ label$6916:;
+ goto label$6914;
+ label$6915:;
  _ZN5C64_TD1Ev( &COMPUTER$0 );
  label$1:;
  fb_End( 0 );

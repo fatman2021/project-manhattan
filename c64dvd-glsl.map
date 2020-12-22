@@ -1213,7 +1213,7 @@ LOAD /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crtn.o
 .plt.sec
  *(.plt.sec)
 
-.text           0x0000000000405cd0    0x5a4a5
+.text           0x0000000000405cd0    0x5a935
  *(.text.unlikely .text.*_unlikely .text.unlikely.*)
  .text.unlikely
                 0x0000000000405cd0        0xa /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_scrn_read.o)
@@ -1241,7 +1241,7 @@ LOAD /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crtn.o
  *fill*         0x0000000000405fb6        0xa 
  .text          0x0000000000405fc0       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/fbrt0.o
  *fill*         0x0000000000405fd5        0xb 
- .text          0x0000000000405fe0    0x3da54 c64dvd-glsl.o
+ .text          0x0000000000405fe0    0x3dee4 c64dvd-glsl.o
                 0x0000000000405fe0                INS_ASLA
                 0x0000000000406040                INS_CLC
                 0x0000000000406050                INS_CLD
@@ -1282,1043 +1282,1043 @@ LOAD /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crtn.o
                 0x00000000004095b0                INS_R32
                 0x00000000004095e0                INS_R64
                 0x0000000000409630                MEMORY_T::POKE64(double, double)
-                0x000000000043cf80                MEMORY_T::MEMORY_T()
-                0x000000000043dc60                MEMORY_T::POKEB(double, double)
-                0x0000000000440e70                MEMORY_T::POKEW(double, double)
-                0x0000000000440ef0                INS_W32
-                0x0000000000440f20                INS_W64
-                0x0000000000440f80                MEMORY_T::READUBYTE(double)
-                0x0000000000440fa0                INS_ADC
-                0x0000000000441060                INS_AND
-                0x00000000004410c0                INS_CMP
-                0x0000000000441150                INS_CPX
-                0x00000000004411e0                INS_CPY
-                0x0000000000441270                INS_EOR
-                0x00000000004412d0                INS_LDA
-                0x0000000000441330                INS_LDX
-                0x0000000000441390                INS_LDY
-                0x00000000004413f0                INS_ORA
-                0x0000000000441450                INS_SBC
-                0x0000000000441510                MEMORY_T::READBYTE(double)
-                0x0000000000441530                INS_BCC
-                0x00000000004415a0                INS_BCS
-                0x0000000000441610                INS_BEQ
-                0x0000000000441680                INS_BIT
-                0x00000000004416c0                INS_BMI
-                0x0000000000441730                INS_BNE
-                0x00000000004417a0                INS_BPL
-                0x0000000000441810                INS_BVC
-                0x0000000000441880                INS_BVS
-                0x00000000004418f0                MEMORY_T::READUSHORT(double)
-                0x0000000000441970                MEMORY_T::WRITEBYTE(double, double)
-                0x0000000000441980                INS_INC
-                0x0000000000441a50                INS_STY
-                0x0000000000441a80                INS_STX
-                0x0000000000441ab0                INS_STA
-                0x0000000000441ae0                INS_ROR
-                0x0000000000441cb0                INS_ROL
-                0x0000000000441d90                INS_LSR
-                0x0000000000441e40                INS_DEC
-                0x0000000000441ed0                INS_ASL
-                0x0000000000441f70                MEMORY_T::WRITEUBYTE(double, double)
-                0x0000000000441f80                MEMORY_T::WRITEUSHORT(double, double)
-                0x0000000000442000                CPU6510::CPU6510(MEMORY_T*)
-                0x0000000000442140                C64_T::C64_T()
-                0x0000000000442300                CPU6510::~CPU6510()
-                0x0000000000442360                C64_T::~C64_T()
-                0x00000000004423d0                CPU6510::operator FBSTRING()
-                0x0000000000442aa0                CPU6510::ADR_UNK()
-                0x0000000000442ac0                CPU6510::ADR_IMM()
-                0x0000000000442af0                CPU6510::ADR_REL()
-                0x0000000000442b00                CPU6510::ADR_ABS()
-                0x0000000000442b50                CPU6510::ADR_ZERO()
-                0x0000000000442ba0                CPU6510::ADR_ZEROX()
-                0x0000000000442c00                CPU6510::ADR_ZEROY()
-                0x0000000000442c60                CPU6510::ADR_ABSX()
-                0x0000000000442cc0                CPU6510::ADR_ABSY()
-                0x0000000000442d20                CPU6510::ADR_INDX()
-                0x0000000000442d90                CPU6510::ADR_INDY()
-                0x0000000000442e00                CPU6510::ADR_IND()
-                0x0000000000442e60                CPU6510::TICK(double)
-                0x0000000000443010                CPU6510::PUSH(double)
-                0x0000000000443050                INS_BRK
-                0x00000000004430d0                INS_JSR
-                0x0000000000443110                INS_PHA
-                0x0000000000443130                INS_PHP
-                0x0000000000443140                CPU6510::PULL()
-                0x0000000000443190                INS_PLA
-                0x00000000004431f0                INS_PLP
-                0x0000000000443210                INS_RTI
-                0x0000000000443270                INS_RTS
-                0x00000000004432c0                INTERRUPTSERVICE
- *fill*         0x0000000000443a34        0xc 
- .text          0x0000000000443a40      0x149 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_access.o)
-                0x0000000000443a40                fb_GfxLock
-                0x0000000000443aa0                fb_GfxUnlock
-                0x0000000000443b50                fb_GfxScreenPtr
- *fill*         0x0000000000443b89        0x7 
- .text          0x0000000000443b90     0x18e7 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_bload.o)
-                0x0000000000445460                fb_GfxBload
-                0x0000000000445470                fb_GfxBloadQB
- *fill*         0x0000000000445477        0x9 
- .text          0x0000000000445480      0x9ca /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_circle.o)
-                0x0000000000445650                fb_GfxEllipse
- *fill*         0x0000000000445e4a        0x6 
- .text          0x0000000000445e50      0x655 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_control.o)
-                0x0000000000445e50                fb_GfxControl_s
-                0x0000000000445fb0                fb_GfxControl_i
- *fill*         0x00000000004464a5        0xb 
- .text          0x00000000004464b0      0x967 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_core.o)
-                0x0000000000446640                fb_hPixelSetAlpha4
-                0x0000000000446700                fb_hPostEvent_code_start
-                0x0000000000446710                fb_hPostEvent
-                0x0000000000446790                fb_hPostEvent_code_end
-                0x00000000004467a0                fb_hSetPixelTransfer
-                0x0000000000446810                fb_hTranslateCoord
-                0x00000000004468e0                fb_hFixRelative
-                0x00000000004469a0                fb_hFixCoordsOrder
-                0x00000000004469d0                fb_hSetupFuncs
-                0x0000000000446b20                fb_hPrepareTarget
-                0x0000000000446d10                fb_hGetContext
- *fill*         0x0000000000446e17        0x9 
- .text          0x0000000000446e20      0x74b /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_drawstring.o)
-                0x0000000000446e20                fb_GfxDrawString
- *fill*         0x000000000044756b        0x5 
- .text          0x0000000000447570      0x2e1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_image.o)
-                0x00000000004477c0                fb_GfxImageCreate
-                0x0000000000447800                fb_GfxImageCreateQB
-                0x0000000000447840                fb_GfxImageDestroy
- *fill*         0x0000000000447851        0xf 
- .text          0x0000000000447860      0x432 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_image_convert.o)
-                0x0000000000447860                fb_image_convert_8to8
-                0x0000000000447890                fb_image_convert_8to16
-                0x00000000004478f0                fb_image_convert_8to32
-                0x0000000000447950                fb_image_convert_24to16
-                0x00000000004479a0                fb_image_convert_24to32
-                0x00000000004479e0                fb_image_convert_32to16
-                0x0000000000447a30                fb_image_convert_32to32
-                0x0000000000447a60                fb_image_convert_24bgrto16
-                0x0000000000447ab0                fb_image_convert_24bgrto32
-                0x0000000000447ae0                fb_image_convert_32bgrto16
-                0x0000000000447b30                fb_image_convert_32bgrto32
-                0x0000000000447b50                fb_GfxImageConvertRow
- *fill*         0x0000000000447c92        0xe 
- .text          0x0000000000447ca0       0xea /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_image_info.o)
-                0x0000000000447ca0                fb_GfxImageInfo
- *fill*         0x0000000000447d8a        0x6 
- .text          0x0000000000447d90      0x847 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_line.o)
-                0x0000000000447de0                fb_GfxDrawLine
-                0x0000000000448440                fb_GfxLine
- *fill*         0x00000000004485d7        0x9 
- .text          0x00000000004485e0      0xc7a /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_opengl.o)
-                0x00000000004485e0                fb_GfxGetGLProcAddress
-                0x0000000000448610                fb_hGL_ExtensionSupported
-                0x0000000000448660                fb_hGL_SetState
-                0x00000000004486a0                fb_hGL_ImageCreate
-                0x00000000004487e0                fb_hGL_ScreenCreate
-                0x00000000004489d0                fb_hGL_ImageDestroy
-                0x00000000004489f0                fb_hGL_NormalizeParameters
-                0x0000000000448c70                fb_hGL_Init
-                0x0000000000448f20                fb_hGL_SetPalette
-                0x0000000000448f80                fb_hGL_SetupProjection
- *fill*         0x000000000044925a        0x6 
- .text          0x0000000000449260      0x3b8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_page.o)
-                0x0000000000449260                fb_GfxFlip
-                0x00000000004494b0                fb_GfxPageCopy
-                0x00000000004494c0                fb_GfxPageSet
- *fill*         0x0000000000449618        0x8 
- .text          0x0000000000449620      0x646 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_paint.o)
-                0x0000000000449740                fb_GfxPaint
- *fill*         0x0000000000449c66        0xa 
- .text          0x0000000000449c70      0x3f7 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_palette.o)
-                0x0000000000449c70                fb_hMakeColor
-                0x0000000000449ca0                fb_hFixColor
-                0x0000000000449ce0                fb_hRestorePalette
-                0x0000000000449d40                fb_hSetPaletteColorRgb
-                0x0000000000449da0                fb_hSetPaletteColor
-                0x0000000000449e60                fb_GfxPalette
- *fill*         0x000000000044a067        0x9 
- .text          0x000000000044a070      0x16c /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_pset.o)
-                0x000000000044a070                fb_GfxPset
- *fill*         0x000000000044a1dc        0x4 
- .text          0x000000000044a1e0      0x479 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_put.o)
-                0x000000000044a250                fb_GfxPut
- *fill*         0x000000000044a659        0x7 
- .text          0x000000000044a660      0x188 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_put_alpha.o)
-                0x000000000044a740                fb_hPutAlpha
- *fill*         0x000000000044a7e8        0x8 
- .text          0x000000000044a7f0      0x178 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_put_or.o)
-                0x000000000044a7f0                fb_hPutOrC
-                0x000000000044a8c0                fb_hPutOr
- *fill*         0x000000000044a968        0x8 
- .text          0x000000000044a970      0x108 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_put_pset.o)
-                0x000000000044a970                fb_hPutPSetC
-                0x000000000044a9d0                fb_hPutPSet
- *fill*         0x000000000044aa78        0x8 
- .text          0x000000000044aa80      0xe2e /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screen.o)
-                0x000000000044aa80                fb_GfxViewUpdate
-                0x000000000044aa90                fb_hClearCharCells
-                0x000000000044ab80                fb_hResetCharCells
-                0x000000000044b630                fb_GfxScreen
-                0x000000000044b710                fb_GfxScreenQB
-                0x000000000044b770                fb_GfxScreenRes
-                0x000000000044b830                fb_GfxSetWindowTitle
- *fill*         0x000000000044b8ae        0x2 
- .text          0x000000000044b8b0       0xc1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screeninfo.o)
-                0x000000000044b8b0                fb_GfxScreenInfo
- *fill*         0x000000000044b971        0xf 
- .text          0x000000000044b980      0x26d /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screenlist.o)
-                0x000000000044b9c0                fb_GfxScreenList
- *fill*         0x000000000044bbed        0x3 
- .text          0x000000000044bbf0       0x7a /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_setmouse.o)
-                0x000000000044bbf0                fb_GfxSetMouse
- *fill*         0x000000000044bc6a        0x6 
- .text          0x000000000044bc70       0x58 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_sleep.o)
-                0x000000000044bc70                fb_GfxSleep
- *fill*         0x000000000044bcc8        0x8 
- .text          0x000000000044bcd0       0x6f /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_unix.o)
-                0x000000000044bcd0                fb_hScreenInfo
- .text          0x000000000044bd3f        0x0 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_vars.o)
- *fill*         0x000000000044bd3f        0x1 
- .text          0x000000000044bd40      0x2b3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_vgaemu.o)
-                0x000000000044bd40                fb_GfxIn
-                0x000000000044bdf0                fb_GfxOut
- *fill*         0x000000000044bff3        0xd 
- .text          0x000000000044c000      0x12c /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_width.o)
-                0x000000000044c000                fb_GfxWidth
- *fill*         0x000000000044c12c        0x4 
- .text          0x000000000044c130     0x2348 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_x11.o)
-                0x000000000044c950                fb_hX11EnterFullscreen
-                0x000000000044cac0                fb_hX11LeaveFullscreen
-                0x000000000044cbc0                WaitMapped
-                0x000000000044cc40                fb_hX11InitWindow
-                0x000000000044cf30                fb_hXlibInit
-                0x000000000044cf60                fb_hX11Init
-                0x000000000044d970                fb_hX11Exit
-                0x000000000044dba0                fb_hX11Lock
-                0x000000000044dbc0                fb_hX11Unlock
-                0x000000000044dbe0                fb_hX11SetPalette
-                0x000000000044dc70                fb_hX11WaitVSync
-                0x000000000044dc90                fb_hX11GetMouse
-                0x000000000044ddb0                fb_hX11SetMouse
-                0x000000000044dfb0                fb_hX11SetWindowTitle
-                0x000000000044dfd0                fb_hX11SetWindowPos
-                0x000000000044e1d0                fb_hX11FetchModes
-                0x000000000044e320                fb_hX11ScreenInfo
-                0x000000000044e450                fb_hGetWindowHandle
-                0x000000000044e470                fb_hGetDisplayHandle
- .text          0x000000000044e478        0x0 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_x11_icon_stub.o)
- *fill*         0x000000000044e478        0x8 
- .text          0x000000000044e480      0x5cb /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_box.o)
-                0x000000000044e480                fb_hGfxBox
- *fill*         0x000000000044ea4b        0x5 
- .text          0x000000000044ea50      0x28e /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_cls.o)
-                0x000000000044ea50                fb_GfxClear
- *fill*         0x000000000044ecde        0x2 
- .text          0x000000000044ece0      0x1ff /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_color.o)
-                0x000000000044ece0                fb_GfxColor
- *fill*         0x000000000044eedf        0x1 
- .text          0x000000000044eee0       0x65 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_data.o)
-                0x000000000044eee0                fb_hSetupData
- *fill*         0x000000000044ef45        0xb 
- .text          0x000000000044ef50     0x192d /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_fbdev.o)
-                0x000000000044fd60                fb_hFBDevInfo
- *fill*         0x000000000045087d        0x3 
- .text          0x0000000000450880        0x1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_null.o)
- *fill*         0x0000000000450881        0xf 
- .text          0x0000000000450890      0x7db /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_opengl_x11.o)
-                0x0000000000451010                fb_hGL_GetProcAddress
- *fill*         0x000000000045106b        0x5 
- .text          0x0000000000451070      0xb31 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_x11.o)
-                0x0000000000451b30                fb_hX11WaitUnmapped
- *fill*         0x0000000000451ba1        0xf 
- .text          0x0000000000451bb0       0xfe /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_getmouse.o)
-                0x0000000000451bb0                fb_GfxGetMouse
- *fill*         0x0000000000451cae        0x2 
- .text          0x0000000000451cb0      0x213 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_inkey.o)
-                0x0000000000451cb0                fb_hGfxInputBufferChanged
-                0x0000000000451ce0                fb_hPostKey
-                0x0000000000451d20                fb_GfxGetkey
-                0x0000000000451de0                fb_GfxKeyHit
-                0x0000000000451e10                fb_GfxInkey
-                0x0000000000451ec0                fb_GfxIsRedir
- *fill*         0x0000000000451ec3        0xd 
- .text          0x0000000000451ed0       0xbe /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_lineinp.o)
-                0x0000000000451ed0                fb_GfxLineInput
- *fill*         0x0000000000451f8e        0x2 
- .text          0x0000000000451f90       0xa2 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_lineinp_wstr.o)
-                0x0000000000451f90                fb_GfxLineInputWstr
- *fill*         0x0000000000452032        0xe 
- .text          0x0000000000452040      0x249 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_lzw.o)
-                0x0000000000452040                fb_hDecode
- *fill*         0x0000000000452289        0x7 
- .text          0x0000000000452290       0x61 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_multikey.o)
-                0x0000000000452290                fb_GfxMultikey
- *fill*         0x00000000004522f1        0xf 
- .text          0x0000000000452300      0x929 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_print.o)
-                0x0000000000452880                fb_GfxPrintBufferEx
-                0x0000000000452ad0                fb_GfxPrintBuffer
-                0x0000000000452b00                fb_GfxLocateRaw
-                0x0000000000452b40                fb_GfxLocate
-                0x0000000000452bb0                fb_GfxGetX
-                0x0000000000452bc0                fb_GfxGetY
-                0x0000000000452bd0                fb_GfxGetXY
-                0x0000000000452c00                fb_GfxGetSize
- *fill*         0x0000000000452c29        0x7 
- .text          0x0000000000452c30      0x105 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_print_wstr.o)
-                0x0000000000452c30                fb_GfxPrintBufferWstrEx
-                0x0000000000452cb0                fb_GfxPrintBufferWstr
- *fill*         0x0000000000452d35        0xb 
- .text          0x0000000000452d40      0x205 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_readstr.o)
-                0x0000000000452d40                fb_GfxReadStr
- *fill*         0x0000000000452f45        0xb 
- .text          0x0000000000452f50      0x141 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_readxy.o)
-                0x0000000000452f50                fb_GfxReadXY
- *fill*         0x0000000000453091        0xf 
- .text          0x00000000004530a0      0x451 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_softcursor.o)
-                0x0000000000453160                fb_hSoftCursor_code_start
-                0x0000000000453170                fb_hColorDistance
-                0x00000000004531b0                fb_hSoftCursorInit
-                0x0000000000453220                fb_hSoftCursorExit
-                0x0000000000453230                fb_hSoftCursorPut
-                0x00000000004533d0                fb_hSoftCursorUnput
-                0x0000000000453410                fb_hSoftCursorPaletteChanged
-                0x00000000004534f0                fb_hSoftCursor_code_end
- *fill*         0x00000000004534f1        0xf 
- .text          0x0000000000453500      0x23f /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_view.o)
-                0x0000000000453500                fb_GfxView
- *fill*         0x000000000045373f        0x1 
- .text          0x0000000000453740     0x1861 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_blitter.o)
-                0x0000000000454cb0                fb_hBlit_code_start
-                0x0000000000454cc0                fb_hGetBlitter
-                0x0000000000454fa0                fb_hBlit_code_end
- *fill*         0x0000000000454fa1        0xf 
- .text          0x0000000000454fb0       0x99 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(array_destructstr.o)
-                0x0000000000454fb0                fb_hArrayDtorStr
-                0x0000000000455040                fb_ArrayDestructStr
- *fill*         0x0000000000455049        0x7 
- .text          0x0000000000455050       0x97 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_input.o)
-                0x0000000000455050                fb_ConsoleInput
- *fill*         0x00000000004550e7        0x9 
- .text          0x00000000004550f0       0x66 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_locate.o)
-                0x00000000004550f0                fb_Locate
- *fill*         0x0000000000455156        0xa 
- .text          0x0000000000455160      0x30f /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_print_tty.o)
-                0x0000000000455160                fb_ConPrintTTY
- *fill*         0x000000000045546f        0x1 
- .text          0x0000000000455470      0x897 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_readline.o)
-                0x0000000000455510                fb_ConReadLine
- *fill*         0x0000000000455d07        0x9 
- .text          0x0000000000455d10       0x8c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(data.o)
-                0x0000000000455d10                fb_DataRestore
-                0x0000000000455d50                fb_DataNext
- *fill*         0x0000000000455d9c        0x4 
- .text          0x0000000000455da0       0x6c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(data_readlong.o)
-                0x0000000000455da0                fb_DataReadLongint
- *fill*         0x0000000000455e0c        0x4 
- .text          0x0000000000455e10       0x6f /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(data_readstr.o)
-                0x0000000000455e10                fb_DataReadStr
- *fill*         0x0000000000455e7f        0x1 
- .text          0x0000000000455e80       0x6c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(data_readulong.o)
-                0x0000000000455e80                fb_DataReadULongint
- *fill*         0x0000000000455eec        0x4 
- .text          0x0000000000455ef0      0x224 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_scrn_init.o)
-                0x0000000000455ef0                fb_DevScrnUpdateWidth
-                0x0000000000455f50                fb_DevScrnMaybeUpdateWidth
-                0x0000000000455fb0                fb_DevScrnInit_Screen
-                0x0000000000456020                fb_DevScrnEnd
-                0x0000000000456040                fb_DevScrnInit_NoOpen
- *fill*         0x0000000000456114        0xc 
- .text          0x0000000000456120      0x13e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_scrn_read.o)
-                0x0000000000456120                fb_DevScrnRead
-                0x0000000000456210                fb_DevScrnInit_Read
- *fill*         0x000000000045625e        0x2 
- .text          0x0000000000456260       0xdd /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(error_getset.o)
-                0x0000000000456260                fb_ErrorGetNum
-                0x0000000000456280                fb_ErrorSetNum
-                0x00000000004562a0                fb_ErrorGetLineNum
-                0x00000000004562c0                fb_ErrorGetModName
-                0x00000000004562e0                fb_ErrorSetModName
-                0x0000000000456300                fb_ErrorGetFuncName
-                0x0000000000456320                fb_ErrorSetFuncName
- *fill*         0x000000000045633d        0x3 
- .text          0x0000000000456340       0xc4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_close.o)
-                0x0000000000456340                fb_FileCloseEx
-                0x00000000004563a0                fb_FileClose
-                0x00000000004563f0                fb_FileCloseAll
- *fill*         0x0000000000456404        0xc 
- .text          0x0000000000456410       0xa6 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_eof.o)
-                0x0000000000456410                fb_FileEofEx
-                0x0000000000456440                fb_FileEof
- *fill*         0x00000000004564b6        0xa 
- .text          0x00000000004564c0       0x37 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_free.o)
-                0x00000000004564c0                fb_FileFree
- *fill*         0x00000000004564f7        0x9 
- .text          0x0000000000456500      0x596 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_get.o)
-                0x0000000000456500                fb_FileGetDataEx
-                0x00000000004568c0                fb_FileGetData
-                0x0000000000456920                fb_FileGet
-                0x0000000000456980                fb_FileGetLarge
-                0x00000000004569e0                fb_FileGetIOB
-                0x0000000000456a40                fb_FileGetLargeIOB
- *fill*         0x0000000000456a96        0xa 
- .text          0x0000000000456aa0       0x2b /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_hconvpath.o)
-                0x0000000000456aa0                fb_hConvertPath
- *fill*         0x0000000000456acb        0x5 
- .text          0x0000000000456ad0       0xa9 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_input_file.o)
-                0x0000000000456ad0                fb_FileInput
- *fill*         0x0000000000456b79        0x7 
- .text          0x0000000000456b80       0x84 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_input_str.o)
-                0x0000000000456b80                fb_InputString
- *fill*         0x0000000000456c04        0xc 
- .text          0x0000000000456c10      0x447 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_input_tok.o)
-                0x0000000000456cd0                fb_FileInputNextToken
- *fill*         0x0000000000457057        0x9 
- .text          0x0000000000457060      0x331 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_lineinp.o)
-                0x0000000000457350                fb_FileLineInput
- *fill*         0x0000000000457391        0xf 
- .text          0x00000000004573a0       0x7a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_open.o)
-                0x00000000004573a0                fb_FileOpenEx
-                0x00000000004573c0                fb_FileOpen
- *fill*         0x000000000045741a        0x6 
- .text          0x0000000000457420      0x3f9 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_put.o)
-                0x0000000000457670                fb_FilePutDataEx
-                0x00000000004576a0                fb_FilePutData
-                0x0000000000457720                fb_FilePut
-                0x00000000004577a0                fb_FilePutLarge
- *fill*         0x0000000000457819        0x7 
- .text          0x0000000000457820      0x141 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_putback.o)
-                0x0000000000457820                fb_FilePutBackEx
-                0x0000000000457920                fb_FilePutBack
- *fill*         0x0000000000457961        0xf 
- .text          0x0000000000457970       0x62 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_reset.o)
-                0x0000000000457970                fb_FileReset
- *fill*         0x00000000004579d2        0xe 
- .text          0x00000000004579e0      0x179 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_seek.o)
-                0x00000000004579e0                fb_FileSeekEx
-                0x0000000000457a30                fb_FileSeek
-                0x0000000000457ad0                fb_FileSeekLarge
- *fill*         0x0000000000457b59        0x7 
- .text          0x0000000000457b60       0xf1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_size.o)
-                0x0000000000457b60                fb_FileSizeEx
-                0x0000000000457c10                fb_FileSize
- *fill*         0x0000000000457c51        0xf 
- .text          0x0000000000457c60      0x12a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hdynload.o)
-                0x0000000000457c60                fb_hDynLoad
-                0x0000000000457d10                fb_hDynLoadAlso
-                0x0000000000457d70                fb_hDynUnload
- *fill*         0x0000000000457d8a        0x6 
- .text          0x0000000000457d90       0x39 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_cls.o)
-                0x0000000000457d90                fb_Cls
- *fill*         0x0000000000457dc9        0x7 
- .text          0x0000000000457dd0       0x96 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_getmouse64.o)
-                0x0000000000457dd0                fb_GetMouse64
- *fill*         0x0000000000457e66        0xa 
- .text          0x0000000000457e70       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_getsize.o)
-                0x0000000000457e70                fb_GetSize
- *fill*         0x0000000000457e85        0xb 
- .text          0x0000000000457e90       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_getx.o)
-                0x0000000000457e90                fb_GetX
- *fill*         0x0000000000457ea5        0xb 
- .text          0x0000000000457eb0       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_getxy.o)
-                0x0000000000457eb0                fb_GetXY
- *fill*         0x0000000000457ec5        0xb 
- .text          0x0000000000457ed0       0x55 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_inkey.o)
-                0x0000000000457ed0                fb_Inkey
-                0x0000000000457ef0                fb_Getkey
-                0x0000000000457f10                fb_KeyHit
- *fill*         0x0000000000457f25        0xb 
- .text          0x0000000000457f30       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_isredir.o)
-                0x0000000000457f30                fb_IsRedirected
- *fill*         0x0000000000457f45        0xb 
- .text          0x0000000000457f50       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_lineinp.o)
-                0x0000000000457f50                fb_LineInput
- *fill*         0x0000000000457f65        0xb 
- .text          0x0000000000457f70       0xdc /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_locate_ex.o)
-                0x0000000000457f70                fb_LocateEx
- *fill*         0x000000000045804c        0x4 
- .text          0x0000000000458050       0x5d /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_pageset.o)
-                0x0000000000458050                fb_PageSet
- *fill*         0x00000000004580ad        0x3 
- .text          0x00000000004580b0       0x61 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_pcopy.o)
-                0x00000000004580b0                fb_PageCopy
- *fill*         0x0000000000458111        0xf 
- .text          0x0000000000458120       0x5c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_printstr.o)
-                0x0000000000458120                fb_PrintBufferEx
-                0x0000000000458140                fb_PrintBuffer
- *fill*         0x000000000045817c        0x4 
- .text          0x0000000000458180       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_sleep.o)
-                0x0000000000458180                fb_Sleep
- *fill*         0x0000000000458195        0xb 
- .text          0x00000000004581a0       0x57 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_width.o)
-                0x00000000004581a0                fb_Width
- *fill*         0x00000000004581f7        0x9 
- .text          0x0000000000458200       0xe8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(init.o)
-                0x0000000000458200                fb_hRtInit
-                0x0000000000458250                fb_hRtExit
-                0x00000000004582b0                fb_Init
-                0x00000000004582d0                fb_End
- *fill*         0x00000000004582e8        0x8 
- .text          0x00000000004582f0      0x15c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_cls.o)
-                0x00000000004582f0                fb_ConsoleClear
- *fill*         0x000000000045844c        0x4 
- .text          0x0000000000458450       0x6e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_getsize.o)
-                0x0000000000458450                fb_ConsoleGetSize
- *fill*         0x00000000004584be        0x2 
- .text          0x00000000004584c0       0x3e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_getx.o)
-                0x00000000004584c0                fb_ConsoleGetX
- *fill*         0x00000000004584fe        0x2 
- .text          0x0000000000458500       0x6e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_getxy.o)
-                0x0000000000458500                fb_ConsoleGetXY
- *fill*         0x000000000045856e        0x2 
- .text          0x0000000000458570       0x2c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_hinkey.o)
-                0x0000000000458570                fb_hMakeInkeyStr
- *fill*         0x000000000045859c        0x4 
- .text          0x00000000004585a0      0x47e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_inkey.o)
-                0x0000000000458790                fb_hAddCh
-                0x00000000004587f0                fb_hGetCh
-                0x0000000000458860                fb_ConsoleInkey
-                0x00000000004588f0                fb_ConsoleGetkey
-                0x00000000004589b0                fb_ConsoleKeyHit
- *fill*         0x0000000000458a1e        0x2 
- .text          0x0000000000458a20       0x30 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_isredir.o)
-                0x0000000000458a20                fb_ConsoleIsRedirected
- .text          0x0000000000458a50      0x142 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_locate.o)
-                0x0000000000458a50                fb_ConsoleLocate
- *fill*         0x0000000000458b92        0xe 
- .text          0x0000000000458ba0       0x36 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_maxrow.o)
-                0x0000000000458ba0                fb_ConsoleGetMaxRow
- *fill*         0x0000000000458bd6        0xa 
- .text          0x0000000000458be0      0xa39 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_multikey.o)
-                0x00000000004594b0                fb_ConsoleMultikey
-                0x0000000000459530                fb_hConsoleGfxMode
- *fill*         0x0000000000459619        0x7 
- .text          0x0000000000459620        0x6 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_pageset.o)
-                0x0000000000459620                fb_ConsolePageSet
- *fill*         0x0000000000459626        0xa 
- .text          0x0000000000459630        0xa /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_pcopy.o)
-                0x0000000000459630                fb_ConsolePageCopy
- *fill*         0x000000000045963a        0x6 
- .text          0x0000000000459640       0xa1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_print.o)
-                0x0000000000459640                fb_PrintStringEx
-                0x00000000004596a0                fb_PrintString
- *fill*         0x00000000004596e1        0xf 
- .text          0x00000000004596f0       0xea /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_print_fix.o)
-                0x00000000004596f0                fb_PrintFixStringEx
-                0x0000000000459740                fb_PrintFixString
- *fill*         0x00000000004597da        0x6 
- .text          0x00000000004597e0       0xea /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_print_wstr.o)
-                0x00000000004597e0                fb_PrintWstrEx
-                0x0000000000459830                fb_PrintWstr
- *fill*         0x00000000004598ca        0x6 
- .text          0x00000000004598d0      0x271 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printbuff.o)
-                0x0000000000459ac0                fb_ConsolePrintBufferEx
-                0x0000000000459b00                fb_ConsolePrintBuffer
- *fill*         0x0000000000459b41        0xf 
- .text          0x0000000000459b50       0xeb /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printvoid.o)
-                0x0000000000459b50                fb_PrintVoidEx
-                0x0000000000459ba0                fb_PrintVoid
- *fill*         0x0000000000459c3b        0x5 
- .text          0x0000000000459c40       0xeb /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printvoid_wstr.o)
-                0x0000000000459c40                fb_PrintVoidWstrEx
-                0x0000000000459c90                fb_PrintVoidWstr
- *fill*         0x0000000000459d2b        0x5 
- .text          0x0000000000459d30        0xa /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_setpos.o)
-                0x0000000000459d30                fb_SetPos
- *fill*         0x0000000000459d3a        0x6 
- .text          0x0000000000459d40      0x13a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_view.o)
-                0x0000000000459d40                fb_ConsoleViewEx
-                0x0000000000459e70                fb_ConsoleView
- *fill*         0x0000000000459e7a        0x6 
- .text          0x0000000000459e80      0x10b /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_viewhlp.o)
-                0x0000000000459e80                fb_ConsoleGetTopRow
-                0x0000000000459ea0                fb_ConsoleGetBotRow
-                0x0000000000459ef0                fb_ConsoleSetTopBotRows
-                0x0000000000459f00                fb_ConsoleGetView
- *fill*         0x0000000000459f8b        0x5 
- .text          0x0000000000459f90       0x95 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_width.o)
-                0x0000000000459f90                fb_ConsoleWidth
- *fill*         0x000000000045a025        0xb 
- .text          0x000000000045a030      0x177 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_xfocus.o)
-                0x000000000045a030                fb_hXTermInitFocus
-                0x000000000045a110                fb_hXTermExitFocus
-                0x000000000045a150                fb_hXTermHasFocus
- *fill*         0x000000000045a1a7        0x9 
- .text          0x000000000045a1b0       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(scancodes.o)
-                0x000000000045a1b0                fb_hScancodeToExtendedKey
- *fill*         0x000000000045a1c5        0xb 
- .text          0x000000000045a1d0      0x120 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(scancodes_x11.o)
-                0x000000000045a1d0                fb_hInitX11KeycodeToScancodeTb
- .text          0x000000000045a2f0       0x58 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_asc.o)
-                0x000000000045a2f0                fb_ASC
- *fill*         0x000000000045a348        0x8 
- .text          0x000000000045a350      0x27b /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_assign.o)
-                0x000000000045a350                fb_StrAssignEx
-                0x000000000045a5b0                fb_StrAssign
-                0x000000000045a5c0                fb_StrInit
- *fill*         0x000000000045a5cb        0x5 
- .text          0x000000000045a5d0       0xde /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_chr.o)
-                0x000000000045a5d0                fb_CHR
- *fill*         0x000000000045a6ae        0x2 
- .text          0x000000000045a6b0      0x189 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_comp.o)
-                0x000000000045a6b0                fb_StrCompare
- *fill*         0x000000000045a839        0x7 
- .text          0x000000000045a840      0x176 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_concat.o)
-                0x000000000045a840                fb_StrConcat
- *fill*         0x000000000045a9b6        0xa 
- .text          0x000000000045a9c0      0x14c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_concatassign.o)
-                0x000000000045a9c0                fb_StrConcatAssign
- *fill*         0x000000000045ab0c        0x4 
- .text          0x000000000045ab10      0x1b5 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convfrom.o)
-                0x000000000045ab10                fb_hStr2Double
-                0x000000000045ac70                fb_VAL
- *fill*         0x000000000045acc5        0xb 
- .text          0x000000000045acd0      0x11e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convfrom_lng.o)
-                0x000000000045acd0                fb_hStr2Longint
-                0x000000000045ad90                fb_VALLNG
- *fill*         0x000000000045adee        0x2 
- .text          0x000000000045adf0       0xd5 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convfrom_radlng.o)
-                0x000000000045adf0                fb_hStrRadix2Longint
- *fill*         0x000000000045aec5        0xb 
- .text          0x000000000045aed0      0x11e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convfrom_ulng.o)
-                0x000000000045aed0                fb_hStr2ULongint
-                0x000000000045af90                fb_VALULNG
- *fill*         0x000000000045afee        0x2 
- .text          0x000000000045aff0       0xd9 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convto.o)
-                0x000000000045aff0                fb_IntToStr
-                0x000000000045b060                fb_UIntToStr
- *fill*         0x000000000045b0c9        0x7 
- .text          0x000000000045b0d0      0x134 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convto_flt.o)
-                0x000000000045b0d0                fb_FloatToStr
-                0x000000000045b170                fb_DoubleToStr
- *fill*         0x000000000045b204        0xc 
- .text          0x000000000045b210       0xd9 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convto_lng.o)
-                0x000000000045b210                fb_LongintToStr
-                0x000000000045b280                fb_ULongintToStr
- *fill*         0x000000000045b2e9        0x7 
- .text          0x000000000045b2f0      0x5b4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_core.o)
-                0x000000000045b2f0                fb_hStrAllocTmpDesc
-                0x000000000045b360                fb_hStrDelTempDesc
-                0x000000000045b3c0                fb_hStrAlloc
-                0x000000000045b420                fb_hStrRealloc
-                0x000000000045b530                fb_hStrAllocTemp_NoLock
-                0x000000000045b660                fb_hStrAllocTemp
-                0x000000000045b790                fb_hStrDelTemp_NoLock
-                0x000000000045b800                fb_hStrDelTemp
-                0x000000000045b870                fb_hStrCopy
- *fill*         0x000000000045b8a4        0xc 
- .text          0x000000000045b8b0       0x31 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_del.o)
-                0x000000000045b8b0                fb_StrDelete
- *fill*         0x000000000045b8e1        0xf 
- .text          0x000000000045b8f0       0xe2 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_fill.o)
-                0x000000000045b8f0                fb_StrFill1
-                0x000000000045b950                fb_StrFill2
- *fill*         0x000000000045b9d2        0xe 
- .text          0x000000000045b9e0       0x57 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_hex.o)
-                0x000000000045b9e0                fb_HEX_b
-                0x000000000045b9f0                fb_HEX_s
-                0x000000000045ba00                fb_HEX_i
-                0x000000000045ba10                fb_HEXEx_b
-                0x000000000045ba20                fb_HEXEx_s
-                0x000000000045ba30                fb_HEXEx_i
- *fill*         0x000000000045ba37        0x9 
- .text          0x000000000045ba40       0xc7 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_hex_lng.o)
-                0x000000000045ba40                fb_HEXEx_l
-                0x000000000045bb00                fb_HEX_l
- *fill*         0x000000000045bb07        0x9 
- .text          0x000000000045bb10       0x81 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_hskip.o)
-                0x000000000045bb10                fb_hStrSkipChar
-                0x000000000045bb50                fb_hStrSkipCharRev
- *fill*         0x000000000045bb91        0xf 
- .text          0x000000000045bba0      0x130 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_lcase.o)
-                0x000000000045bba0                fb_StrLcase2
- .text          0x000000000045bcd0       0x41 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_len.o)
-                0x000000000045bcd0                fb_StrLen
- *fill*         0x000000000045bd11        0xf 
- .text          0x000000000045bd20       0xb3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_mid.o)
-                0x000000000045bd20                fb_StrMid
- *fill*         0x000000000045bdd3        0xd 
- .text          0x000000000045bde0       0x58 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_misc.o)
-                0x000000000045bde0                fb_SPACE
- *fill*         0x000000000045be38        0x8 
- .text          0x000000000045be40       0x6a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_tempdescf.o)
-                0x000000000045be40                fb_StrAllocTempDescF
- *fill*         0x000000000045beaa        0x6 
- .text          0x000000000045beb0       0x86 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_tempdescz.o)
-                0x000000000045beb0                fb_StrAllocTempDescZEx
-                0x000000000045bef0                fb_StrAllocTempDescZ
- *fill*         0x000000000045bf36        0xa 
- .text          0x000000000045bf40       0x59 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_tempres.o)
-                0x000000000045bf40                fb_StrAllocTempResult
- *fill*         0x000000000045bf99        0x7 
- .text          0x000000000045bfa0      0x28b /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(strw_convassign.o)
-                0x000000000045bfa0                fb_WstrAssignFromA
-                0x000000000045c050                fb_WstrAssignToAEx
-                0x000000000045c210                fb_WstrAssignToA
-                0x000000000045c220                fb_WstrAssignToA_Init
- *fill*         0x000000000045c22b        0x5 
- .text          0x000000000045c230       0xe3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(strw_convfrom_lng.o)
-                0x000000000045c230                fb_WstrToLongint
-                0x000000000045c2e0                fb_WstrValLng
- *fill*         0x000000000045c313        0xd 
- .text          0x000000000045c320      0x115 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(strw_convfrom_str.o)
-                0x000000000045c320                fb_wstr_ConvFromA
-                0x000000000045c3e0                fb_StrToWstr
- *fill*         0x000000000045c435        0xb 
- .text          0x000000000045c440       0xe3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(strw_convfrom_ulng.o)
-                0x000000000045c440                fb_WstrToULongint
-                0x000000000045c4f0                fb_WstrValULng
- *fill*         0x000000000045c523        0xd 
- .text          0x000000000045c530      0x119 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(strw_convto_str.o)
-                0x000000000045c530                fb_wstr_ConvToA
-                0x000000000045c5f0                fb_WstrToStr
- *fill*         0x000000000045c649        0x7 
- .text          0x000000000045c650        0xe /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_beep.o)
-                0x000000000045c650                fb_Beep
- *fill*         0x000000000045c65e        0x2 
- .text          0x000000000045c660        0xc /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_chain.o)
-                0x000000000045c660                fb_Chain
- *fill*         0x000000000045c66c        0x4 
- .text          0x000000000045c670       0x70 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_delay.o)
-                0x000000000045c670                fb_Delay
- .text          0x000000000045c6e0      0x22c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_execex.o)
-                0x000000000045c6e0                fb_ExecEx
- *fill*         0x000000000045c90c        0x4 
- .text          0x000000000045c910       0x19 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_fmem.o)
-                0x000000000045c910                fb_GetMemAvail
- *fill*         0x000000000045c929        0x7 
- .text          0x000000000045c930       0xb6 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_getexename.o)
-                0x000000000045c930                fb_hGetExeName
- *fill*         0x000000000045c9e6        0xa 
- .text          0x000000000045c9f0      0x163 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_parseargs.o)
-                0x000000000045c9f0                fb_hParseArgs
- *fill*         0x000000000045cb53        0xd 
- .text          0x000000000045cb60       0x40 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_shell.o)
-                0x000000000045cb60                fb_Shell
- .text          0x000000000045cba0       0xdb /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(thread_ctx.o)
-                0x000000000045cba0                fb_TlsGetCtx
-                0x000000000045cbe0                fb_TlsDelCtx
-                0x000000000045cc30                fb_TlsFreeCtxTb
- *fill*         0x000000000045cc7b        0x5 
- .text          0x000000000045cc80       0x91 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(thread_mutex.o)
-                0x000000000045cc80                fb_MutexCreate
-                0x000000000045ccb0                fb_MutexDestroy
-                0x000000000045cce0                fb_MutexLock
-                0x000000000045cd00                fb_MutexUnlock
- *fill*         0x000000000045cd11        0xf 
- .text          0x000000000045cd20       0x58 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(time_sleep.o)
-                0x000000000045cd20                fb_ConsoleSleep
- *fill*         0x000000000045cd78        0x8 
- .text          0x000000000045cd80       0x40 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(time_sleepex.o)
-                0x000000000045cd80                fb_SleepEx
- .text          0x000000000045cdc0       0x61 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(time_timer.o)
-                0x000000000045cdc0                fb_Timer
- *fill*         0x000000000045ce21        0xf 
- .text          0x000000000045ce30      0x26e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(vfs_open.o)
-                0x000000000045ce30                fb_FileOpenVfsRawEx
-                0x000000000045cfd0                fb_FileOpenVfsEx
- *fill*         0x000000000045d09e        0x2 
- .text          0x000000000045d0a0       0xbe /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_lineinp.o)
-                0x000000000045d0a0                fb_ConsoleLineInput
- *fill*         0x000000000045d15e        0x2 
- .text          0x000000000045d160       0x9e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_print_raw.o)
-                0x000000000045d160                fb_ConPrintRaw
- *fill*         0x000000000045d1fe        0x2 
- .text          0x000000000045d200      0x29a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_open.o)
-                0x000000000045d200                fb_hSetFileBufSize
-                0x000000000045d210                fb_DevFileOpen
- *fill*         0x000000000045d49a        0x6 
- .text          0x000000000045d4a0      0x11d /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_read.o)
-                0x000000000045d4a0                fb_DevFileRead
- *fill*         0x000000000045d5bd        0x3 
- .text          0x000000000045d5c0      0x174 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_read_wstr.o)
-                0x000000000045d5c0                fb_DevFileReadWstr
- *fill*         0x000000000045d734        0xc 
- .text          0x000000000045d740      0x26e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_readline.o)
-                0x000000000045d750                fb_DevFileReadLineDumb
-                0x000000000045d970                fb_DevFileReadLine
- *fill*         0x000000000045d9ae        0x2 
- .text          0x000000000045d9b0       0xdc /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_readline_wstr.o)
-                0x000000000045d9b0                fb_DevFileReadLineWstr
- *fill*         0x000000000045da8c        0x4 
- .text          0x000000000045da90       0x3a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_seek.o)
-                0x000000000045da90                fb_DevFileSeek
- *fill*         0x000000000045daca        0x6 
- .text          0x000000000045dad0       0xe3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_size.o)
-                0x000000000045dad0                fb_hDevFileSeekStart
-                0x000000000045db10                fb_DevFileGetSize
- *fill*         0x000000000045dbb3        0xd 
- .text          0x000000000045dbc0       0x2a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_tell.o)
-                0x000000000045dbc0                fb_DevFileTell
- *fill*         0x000000000045dbea        0x6 
- .text          0x000000000045dbf0       0x22 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_unlock.o)
-                0x000000000045dbf0                fb_DevFileUnlock
- *fill*         0x000000000045dc12        0xe 
- .text          0x000000000045dc20       0xd2 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_write.o)
-                0x000000000045dc20                fb_DevFileWrite
- *fill*         0x000000000045dcf2        0xe 
- .text          0x000000000045dd00      0x110 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_write_wstr.o)
-                0x000000000045dd00                fb_DevFileWriteWstr
- .text          0x000000000045de10       0xaf /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_scrn_eof.o)
-                0x000000000045de10                fb_DevScrnFillInput
-                0x000000000045de70                fb_DevScrnEof
- *fill*         0x000000000045debf        0x1 
- .text          0x000000000045dec0      0x100 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_hlock.o)
-                0x000000000045dec0                fb_hFileLock
-                0x000000000045df50                fb_hFileUnlock
- .text          0x000000000045dfc0       0xc4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_print.o)
-                0x000000000045dfc0                fb_hFilePrintBufferEx
-                0x000000000045e000                fb_hFilePrintBuffer
- *fill*         0x000000000045e084        0xc 
- .text          0x000000000045e090       0xc4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_print_wstr.o)
-                0x000000000045e090                fb_hFilePrintBufferWstrEx
-                0x000000000045e0d0                fb_hFilePrintBufferWstr
- *fill*         0x000000000045e154        0xc 
- .text          0x000000000045e160      0xdab /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hinit.o)
-                0x000000000045e210                fb_BgLock
-                0x000000000045e220                fb_BgUnlock
-                0x000000000045e230                fb_hStartBgThread
-                0x000000000045e270                fb_hTermOut
-                0x000000000045e3b0                fb_hTermQuery
-                0x000000000045e440                fb_hRecheckCursorPos
-                0x000000000045e4b0                fb_hRecheckConsoleSize
-                0x000000000045e8c0                fb_hInitConsole
-                0x000000000045ee00                fb_hExitConsole
-                0x000000000045ee20                fb_hInit
-                0x000000000045ee50                fb_hEnd
- .text          0x000000000045ef0b        0x0 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hinit_enable_vt100_escapes.o)
- *fill*         0x000000000045ef0b        0x5 
- .text          0x000000000045ef10       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_getmouse.o)
-                0x000000000045ef10                fb_GetMouse
- *fill*         0x000000000045ef25        0xb 
- .text          0x000000000045ef30       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_view_update.o)
-                0x000000000045ef30                fb_ViewUpdate
- *fill*         0x000000000045ef45        0xb 
- .text          0x000000000045ef50        0x5 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_input.o)
-                0x000000000045ef50                fb_hConsoleInputBufferChanged
- *fill*         0x000000000045ef55        0xb 
- .text          0x000000000045ef60      0x5aa /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_mouse.o)
-                0x000000000045f390                fb_ConsoleGetMouse
-                0x000000000045f500                fb_ConsoleSetMouse
- *fill*         0x000000000045f50a        0x6 
- .text          0x000000000045f510      0x141 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printpad.o)
-                0x000000000045f510                fb_PrintPadEx
-                0x000000000045f610                fb_PrintPad
- *fill*         0x000000000045f651        0xf 
- .text          0x000000000045f660      0x141 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printpad_wstr.o)
-                0x000000000045f660                fb_PrintPadWstrEx
-                0x000000000045f760                fb_PrintPadWstr
- *fill*         0x000000000045f7a1        0xf 
- .text          0x000000000045f7b0       0x3a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_viewupdate.o)
-                0x000000000045f7b0                fb_ConsoleViewUpdate
- *fill*         0x000000000045f7ea        0x6 
- .text          0x000000000045f7f0       0xb4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(list.o)
-                0x000000000045f7f0                fb_hListInit
-                0x000000000045f850                fb_hListAllocElem
-                0x000000000045f880                fb_hListFreeElem
- *fill*         0x000000000045f8a4        0xc 
- .text          0x000000000045f8b0       0x7f /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(listdyn.o)
-                0x000000000045f8b0                fb_hListDynInit
-                0x000000000045f8c0                fb_hListDynElemAdd
-                0x000000000045f8f0                fb_hListDynElemRemove
- *fill*         0x000000000045f92f        0x1 
- .text          0x000000000045f930       0x3c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_hshell.o)
-                0x000000000045f930                fb_hShell
- *fill*         0x000000000045f96c        0x4 
- .text          0x000000000045f970       0x22 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_close.o)
-                0x000000000045f970                fb_DevFileClose
- *fill*         0x000000000045f992        0xe 
- .text          0x000000000045f9a0       0x77 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_eof.o)
-                0x000000000045f9a0                fb_DevFileEof
- *fill*         0x000000000045fa17        0x9 
- .text          0x000000000045fa20       0x4a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_flush.o)
-                0x000000000045fa20                fb_DevFileFlush
- *fill*         0x000000000045fa6a        0x6 
- .text          0x000000000045fa70       0x22 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_lock.o)
-                0x000000000045fa70                fb_DevFileLock
- *fill*         0x000000000045fa92        0xe 
- .text          0x000000000045faa0       0x50 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_scrn_write.o)
-                0x000000000045faa0                fb_DevScrnWrite
-                0x000000000045fac0                fb_DevScrnInit_Write
- .text          0x000000000045faf0       0x50 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_scrn_write_wstr.o)
-                0x000000000045faf0                fb_DevScrnWriteWstr
-                0x000000000045fb10                fb_DevScrnInit_WriteWstr
- .text          0x000000000045fb40       0x5c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_print_wstr.o)
-                0x000000000045fb40                fb_PrintBufferWstrEx
-                0x000000000045fb60                fb_PrintBufferWstr
- *fill*         0x000000000045fb9c        0x4 
- .text          0x000000000045fba0      0x257 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printbuff_wstr.o)
-                0x000000000045fba0                fb_ConsolePrintBufferWstrEx
-                0x000000000045fdd0                fb_ConsolePrintBufferWstr
- *fill*         0x000000000045fdf7        0x9 
- .text          0x000000000045fe00      0x29a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(utf_convfrom_wchar.o)
-                0x000000000045fe00                fb_WCharToUTF
- *fill*         0x000000000046009a        0x6 
- .text          0x00000000004600a0       0x55 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(utf_core.o)
-                0x00000000004600a0                fb_hCharToUTF8
- *fill*         0x00000000004600f5        0xb 
- .text          0x0000000000460100       0x75 /usr/lib/libc_nonshared.a(elf-init.oS)
-                0x0000000000460100                __libc_csu_init
-                0x0000000000460170                __libc_csu_fini
- .text          0x0000000000460175        0x0 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o
- .text          0x0000000000460175        0x0 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crtn.o
+                0x000000000043d410                MEMORY_T::MEMORY_T()
+                0x000000000043e0f0                MEMORY_T::POKEB(double, double)
+                0x0000000000441300                MEMORY_T::POKEW(double, double)
+                0x0000000000441380                INS_W32
+                0x00000000004413b0                INS_W64
+                0x0000000000441410                MEMORY_T::READUBYTE(double)
+                0x0000000000441430                INS_ADC
+                0x00000000004414f0                INS_AND
+                0x0000000000441550                INS_CMP
+                0x00000000004415e0                INS_CPX
+                0x0000000000441670                INS_CPY
+                0x0000000000441700                INS_EOR
+                0x0000000000441760                INS_LDA
+                0x00000000004417c0                INS_LDX
+                0x0000000000441820                INS_LDY
+                0x0000000000441880                INS_ORA
+                0x00000000004418e0                INS_SBC
+                0x00000000004419a0                MEMORY_T::READBYTE(double)
+                0x00000000004419c0                INS_BCC
+                0x0000000000441a30                INS_BCS
+                0x0000000000441aa0                INS_BEQ
+                0x0000000000441b10                INS_BIT
+                0x0000000000441b50                INS_BMI
+                0x0000000000441bc0                INS_BNE
+                0x0000000000441c30                INS_BPL
+                0x0000000000441ca0                INS_BVC
+                0x0000000000441d10                INS_BVS
+                0x0000000000441d80                MEMORY_T::READUSHORT(double)
+                0x0000000000441e00                MEMORY_T::WRITEBYTE(double, double)
+                0x0000000000441e10                INS_INC
+                0x0000000000441ee0                INS_STY
+                0x0000000000441f10                INS_STX
+                0x0000000000441f40                INS_STA
+                0x0000000000441f70                INS_ROR
+                0x0000000000442140                INS_ROL
+                0x0000000000442220                INS_LSR
+                0x00000000004422d0                INS_DEC
+                0x0000000000442360                INS_ASL
+                0x0000000000442400                MEMORY_T::WRITEUBYTE(double, double)
+                0x0000000000442410                MEMORY_T::WRITEUSHORT(double, double)
+                0x0000000000442490                CPU6510::CPU6510(MEMORY_T*)
+                0x00000000004425d0                C64_T::C64_T()
+                0x0000000000442790                CPU6510::~CPU6510()
+                0x00000000004427f0                C64_T::~C64_T()
+                0x0000000000442860                CPU6510::operator FBSTRING()
+                0x0000000000442f30                CPU6510::ADR_UNK()
+                0x0000000000442f50                CPU6510::ADR_IMM()
+                0x0000000000442f80                CPU6510::ADR_REL()
+                0x0000000000442f90                CPU6510::ADR_ABS()
+                0x0000000000442fe0                CPU6510::ADR_ZERO()
+                0x0000000000443030                CPU6510::ADR_ZEROX()
+                0x0000000000443090                CPU6510::ADR_ZEROY()
+                0x00000000004430f0                CPU6510::ADR_ABSX()
+                0x0000000000443150                CPU6510::ADR_ABSY()
+                0x00000000004431b0                CPU6510::ADR_INDX()
+                0x0000000000443220                CPU6510::ADR_INDY()
+                0x0000000000443290                CPU6510::ADR_IND()
+                0x00000000004432f0                CPU6510::TICK(double)
+                0x00000000004434a0                CPU6510::PUSH(double)
+                0x00000000004434e0                INS_BRK
+                0x0000000000443560                INS_JSR
+                0x00000000004435a0                INS_PHA
+                0x00000000004435c0                INS_PHP
+                0x00000000004435d0                CPU6510::PULL()
+                0x0000000000443620                INS_PLA
+                0x0000000000443680                INS_PLP
+                0x00000000004436a0                INS_RTI
+                0x0000000000443700                INS_RTS
+                0x0000000000443750                INTERRUPTSERVICE
+ *fill*         0x0000000000443ec4        0xc 
+ .text          0x0000000000443ed0      0x149 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_access.o)
+                0x0000000000443ed0                fb_GfxLock
+                0x0000000000443f30                fb_GfxUnlock
+                0x0000000000443fe0                fb_GfxScreenPtr
+ *fill*         0x0000000000444019        0x7 
+ .text          0x0000000000444020     0x18e7 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_bload.o)
+                0x00000000004458f0                fb_GfxBload
+                0x0000000000445900                fb_GfxBloadQB
+ *fill*         0x0000000000445907        0x9 
+ .text          0x0000000000445910      0x9ca /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_circle.o)
+                0x0000000000445ae0                fb_GfxEllipse
+ *fill*         0x00000000004462da        0x6 
+ .text          0x00000000004462e0      0x655 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_control.o)
+                0x00000000004462e0                fb_GfxControl_s
+                0x0000000000446440                fb_GfxControl_i
+ *fill*         0x0000000000446935        0xb 
+ .text          0x0000000000446940      0x967 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_core.o)
+                0x0000000000446ad0                fb_hPixelSetAlpha4
+                0x0000000000446b90                fb_hPostEvent_code_start
+                0x0000000000446ba0                fb_hPostEvent
+                0x0000000000446c20                fb_hPostEvent_code_end
+                0x0000000000446c30                fb_hSetPixelTransfer
+                0x0000000000446ca0                fb_hTranslateCoord
+                0x0000000000446d70                fb_hFixRelative
+                0x0000000000446e30                fb_hFixCoordsOrder
+                0x0000000000446e60                fb_hSetupFuncs
+                0x0000000000446fb0                fb_hPrepareTarget
+                0x00000000004471a0                fb_hGetContext
+ *fill*         0x00000000004472a7        0x9 
+ .text          0x00000000004472b0      0x74b /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_drawstring.o)
+                0x00000000004472b0                fb_GfxDrawString
+ *fill*         0x00000000004479fb        0x5 
+ .text          0x0000000000447a00      0x2e1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_image.o)
+                0x0000000000447c50                fb_GfxImageCreate
+                0x0000000000447c90                fb_GfxImageCreateQB
+                0x0000000000447cd0                fb_GfxImageDestroy
+ *fill*         0x0000000000447ce1        0xf 
+ .text          0x0000000000447cf0      0x432 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_image_convert.o)
+                0x0000000000447cf0                fb_image_convert_8to8
+                0x0000000000447d20                fb_image_convert_8to16
+                0x0000000000447d80                fb_image_convert_8to32
+                0x0000000000447de0                fb_image_convert_24to16
+                0x0000000000447e30                fb_image_convert_24to32
+                0x0000000000447e70                fb_image_convert_32to16
+                0x0000000000447ec0                fb_image_convert_32to32
+                0x0000000000447ef0                fb_image_convert_24bgrto16
+                0x0000000000447f40                fb_image_convert_24bgrto32
+                0x0000000000447f70                fb_image_convert_32bgrto16
+                0x0000000000447fc0                fb_image_convert_32bgrto32
+                0x0000000000447fe0                fb_GfxImageConvertRow
+ *fill*         0x0000000000448122        0xe 
+ .text          0x0000000000448130       0xea /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_image_info.o)
+                0x0000000000448130                fb_GfxImageInfo
+ *fill*         0x000000000044821a        0x6 
+ .text          0x0000000000448220      0x847 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_line.o)
+                0x0000000000448270                fb_GfxDrawLine
+                0x00000000004488d0                fb_GfxLine
+ *fill*         0x0000000000448a67        0x9 
+ .text          0x0000000000448a70      0xc7a /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_opengl.o)
+                0x0000000000448a70                fb_GfxGetGLProcAddress
+                0x0000000000448aa0                fb_hGL_ExtensionSupported
+                0x0000000000448af0                fb_hGL_SetState
+                0x0000000000448b30                fb_hGL_ImageCreate
+                0x0000000000448c70                fb_hGL_ScreenCreate
+                0x0000000000448e60                fb_hGL_ImageDestroy
+                0x0000000000448e80                fb_hGL_NormalizeParameters
+                0x0000000000449100                fb_hGL_Init
+                0x00000000004493b0                fb_hGL_SetPalette
+                0x0000000000449410                fb_hGL_SetupProjection
+ *fill*         0x00000000004496ea        0x6 
+ .text          0x00000000004496f0      0x3b8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_page.o)
+                0x00000000004496f0                fb_GfxFlip
+                0x0000000000449940                fb_GfxPageCopy
+                0x0000000000449950                fb_GfxPageSet
+ *fill*         0x0000000000449aa8        0x8 
+ .text          0x0000000000449ab0      0x646 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_paint.o)
+                0x0000000000449bd0                fb_GfxPaint
+ *fill*         0x000000000044a0f6        0xa 
+ .text          0x000000000044a100      0x3f7 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_palette.o)
+                0x000000000044a100                fb_hMakeColor
+                0x000000000044a130                fb_hFixColor
+                0x000000000044a170                fb_hRestorePalette
+                0x000000000044a1d0                fb_hSetPaletteColorRgb
+                0x000000000044a230                fb_hSetPaletteColor
+                0x000000000044a2f0                fb_GfxPalette
+ *fill*         0x000000000044a4f7        0x9 
+ .text          0x000000000044a500      0x16c /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_pset.o)
+                0x000000000044a500                fb_GfxPset
+ *fill*         0x000000000044a66c        0x4 
+ .text          0x000000000044a670      0x479 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_put.o)
+                0x000000000044a6e0                fb_GfxPut
+ *fill*         0x000000000044aae9        0x7 
+ .text          0x000000000044aaf0      0x188 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_put_alpha.o)
+                0x000000000044abd0                fb_hPutAlpha
+ *fill*         0x000000000044ac78        0x8 
+ .text          0x000000000044ac80      0x178 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_put_or.o)
+                0x000000000044ac80                fb_hPutOrC
+                0x000000000044ad50                fb_hPutOr
+ *fill*         0x000000000044adf8        0x8 
+ .text          0x000000000044ae00      0x108 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_put_pset.o)
+                0x000000000044ae00                fb_hPutPSetC
+                0x000000000044ae60                fb_hPutPSet
+ *fill*         0x000000000044af08        0x8 
+ .text          0x000000000044af10      0xe2e /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screen.o)
+                0x000000000044af10                fb_GfxViewUpdate
+                0x000000000044af20                fb_hClearCharCells
+                0x000000000044b010                fb_hResetCharCells
+                0x000000000044bac0                fb_GfxScreen
+                0x000000000044bba0                fb_GfxScreenQB
+                0x000000000044bc00                fb_GfxScreenRes
+                0x000000000044bcc0                fb_GfxSetWindowTitle
+ *fill*         0x000000000044bd3e        0x2 
+ .text          0x000000000044bd40       0xc1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screeninfo.o)
+                0x000000000044bd40                fb_GfxScreenInfo
+ *fill*         0x000000000044be01        0xf 
+ .text          0x000000000044be10      0x26d /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screenlist.o)
+                0x000000000044be50                fb_GfxScreenList
+ *fill*         0x000000000044c07d        0x3 
+ .text          0x000000000044c080       0x7a /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_setmouse.o)
+                0x000000000044c080                fb_GfxSetMouse
+ *fill*         0x000000000044c0fa        0x6 
+ .text          0x000000000044c100       0x58 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_sleep.o)
+                0x000000000044c100                fb_GfxSleep
+ *fill*         0x000000000044c158        0x8 
+ .text          0x000000000044c160       0x6f /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_unix.o)
+                0x000000000044c160                fb_hScreenInfo
+ .text          0x000000000044c1cf        0x0 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_vars.o)
+ *fill*         0x000000000044c1cf        0x1 
+ .text          0x000000000044c1d0      0x2b3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_vgaemu.o)
+                0x000000000044c1d0                fb_GfxIn
+                0x000000000044c280                fb_GfxOut
+ *fill*         0x000000000044c483        0xd 
+ .text          0x000000000044c490      0x12c /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_width.o)
+                0x000000000044c490                fb_GfxWidth
+ *fill*         0x000000000044c5bc        0x4 
+ .text          0x000000000044c5c0     0x2348 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_x11.o)
+                0x000000000044cde0                fb_hX11EnterFullscreen
+                0x000000000044cf50                fb_hX11LeaveFullscreen
+                0x000000000044d050                WaitMapped
+                0x000000000044d0d0                fb_hX11InitWindow
+                0x000000000044d3c0                fb_hXlibInit
+                0x000000000044d3f0                fb_hX11Init
+                0x000000000044de00                fb_hX11Exit
+                0x000000000044e030                fb_hX11Lock
+                0x000000000044e050                fb_hX11Unlock
+                0x000000000044e070                fb_hX11SetPalette
+                0x000000000044e100                fb_hX11WaitVSync
+                0x000000000044e120                fb_hX11GetMouse
+                0x000000000044e240                fb_hX11SetMouse
+                0x000000000044e440                fb_hX11SetWindowTitle
+                0x000000000044e460                fb_hX11SetWindowPos
+                0x000000000044e660                fb_hX11FetchModes
+                0x000000000044e7b0                fb_hX11ScreenInfo
+                0x000000000044e8e0                fb_hGetWindowHandle
+                0x000000000044e900                fb_hGetDisplayHandle
+ .text          0x000000000044e908        0x0 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_x11_icon_stub.o)
+ *fill*         0x000000000044e908        0x8 
+ .text          0x000000000044e910      0x5cb /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_box.o)
+                0x000000000044e910                fb_hGfxBox
+ *fill*         0x000000000044eedb        0x5 
+ .text          0x000000000044eee0      0x28e /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_cls.o)
+                0x000000000044eee0                fb_GfxClear
+ *fill*         0x000000000044f16e        0x2 
+ .text          0x000000000044f170      0x1ff /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_color.o)
+                0x000000000044f170                fb_GfxColor
+ *fill*         0x000000000044f36f        0x1 
+ .text          0x000000000044f370       0x65 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_data.o)
+                0x000000000044f370                fb_hSetupData
+ *fill*         0x000000000044f3d5        0xb 
+ .text          0x000000000044f3e0     0x192d /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_fbdev.o)
+                0x00000000004501f0                fb_hFBDevInfo
+ *fill*         0x0000000000450d0d        0x3 
+ .text          0x0000000000450d10        0x1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_null.o)
+ *fill*         0x0000000000450d11        0xf 
+ .text          0x0000000000450d20      0x7db /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_opengl_x11.o)
+                0x00000000004514a0                fb_hGL_GetProcAddress
+ *fill*         0x00000000004514fb        0x5 
+ .text          0x0000000000451500      0xb31 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_x11.o)
+                0x0000000000451fc0                fb_hX11WaitUnmapped
+ *fill*         0x0000000000452031        0xf 
+ .text          0x0000000000452040       0xfe /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_getmouse.o)
+                0x0000000000452040                fb_GfxGetMouse
+ *fill*         0x000000000045213e        0x2 
+ .text          0x0000000000452140      0x213 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_inkey.o)
+                0x0000000000452140                fb_hGfxInputBufferChanged
+                0x0000000000452170                fb_hPostKey
+                0x00000000004521b0                fb_GfxGetkey
+                0x0000000000452270                fb_GfxKeyHit
+                0x00000000004522a0                fb_GfxInkey
+                0x0000000000452350                fb_GfxIsRedir
+ *fill*         0x0000000000452353        0xd 
+ .text          0x0000000000452360       0xbe /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_lineinp.o)
+                0x0000000000452360                fb_GfxLineInput
+ *fill*         0x000000000045241e        0x2 
+ .text          0x0000000000452420       0xa2 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_lineinp_wstr.o)
+                0x0000000000452420                fb_GfxLineInputWstr
+ *fill*         0x00000000004524c2        0xe 
+ .text          0x00000000004524d0      0x249 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_lzw.o)
+                0x00000000004524d0                fb_hDecode
+ *fill*         0x0000000000452719        0x7 
+ .text          0x0000000000452720       0x61 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_multikey.o)
+                0x0000000000452720                fb_GfxMultikey
+ *fill*         0x0000000000452781        0xf 
+ .text          0x0000000000452790      0x929 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_print.o)
+                0x0000000000452d10                fb_GfxPrintBufferEx
+                0x0000000000452f60                fb_GfxPrintBuffer
+                0x0000000000452f90                fb_GfxLocateRaw
+                0x0000000000452fd0                fb_GfxLocate
+                0x0000000000453040                fb_GfxGetX
+                0x0000000000453050                fb_GfxGetY
+                0x0000000000453060                fb_GfxGetXY
+                0x0000000000453090                fb_GfxGetSize
+ *fill*         0x00000000004530b9        0x7 
+ .text          0x00000000004530c0      0x105 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_print_wstr.o)
+                0x00000000004530c0                fb_GfxPrintBufferWstrEx
+                0x0000000000453140                fb_GfxPrintBufferWstr
+ *fill*         0x00000000004531c5        0xb 
+ .text          0x00000000004531d0      0x205 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_readstr.o)
+                0x00000000004531d0                fb_GfxReadStr
+ *fill*         0x00000000004533d5        0xb 
+ .text          0x00000000004533e0      0x141 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_readxy.o)
+                0x00000000004533e0                fb_GfxReadXY
+ *fill*         0x0000000000453521        0xf 
+ .text          0x0000000000453530      0x451 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_softcursor.o)
+                0x00000000004535f0                fb_hSoftCursor_code_start
+                0x0000000000453600                fb_hColorDistance
+                0x0000000000453640                fb_hSoftCursorInit
+                0x00000000004536b0                fb_hSoftCursorExit
+                0x00000000004536c0                fb_hSoftCursorPut
+                0x0000000000453860                fb_hSoftCursorUnput
+                0x00000000004538a0                fb_hSoftCursorPaletteChanged
+                0x0000000000453980                fb_hSoftCursor_code_end
+ *fill*         0x0000000000453981        0xf 
+ .text          0x0000000000453990      0x23f /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_view.o)
+                0x0000000000453990                fb_GfxView
+ *fill*         0x0000000000453bcf        0x1 
+ .text          0x0000000000453bd0     0x1861 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_blitter.o)
+                0x0000000000455140                fb_hBlit_code_start
+                0x0000000000455150                fb_hGetBlitter
+                0x0000000000455430                fb_hBlit_code_end
+ *fill*         0x0000000000455431        0xf 
+ .text          0x0000000000455440       0x99 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(array_destructstr.o)
+                0x0000000000455440                fb_hArrayDtorStr
+                0x00000000004554d0                fb_ArrayDestructStr
+ *fill*         0x00000000004554d9        0x7 
+ .text          0x00000000004554e0       0x97 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_input.o)
+                0x00000000004554e0                fb_ConsoleInput
+ *fill*         0x0000000000455577        0x9 
+ .text          0x0000000000455580       0x66 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_locate.o)
+                0x0000000000455580                fb_Locate
+ *fill*         0x00000000004555e6        0xa 
+ .text          0x00000000004555f0      0x30f /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_print_tty.o)
+                0x00000000004555f0                fb_ConPrintTTY
+ *fill*         0x00000000004558ff        0x1 
+ .text          0x0000000000455900      0x897 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_readline.o)
+                0x00000000004559a0                fb_ConReadLine
+ *fill*         0x0000000000456197        0x9 
+ .text          0x00000000004561a0       0x8c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(data.o)
+                0x00000000004561a0                fb_DataRestore
+                0x00000000004561e0                fb_DataNext
+ *fill*         0x000000000045622c        0x4 
+ .text          0x0000000000456230       0x6c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(data_readlong.o)
+                0x0000000000456230                fb_DataReadLongint
+ *fill*         0x000000000045629c        0x4 
+ .text          0x00000000004562a0       0x6f /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(data_readstr.o)
+                0x00000000004562a0                fb_DataReadStr
+ *fill*         0x000000000045630f        0x1 
+ .text          0x0000000000456310       0x6c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(data_readulong.o)
+                0x0000000000456310                fb_DataReadULongint
+ *fill*         0x000000000045637c        0x4 
+ .text          0x0000000000456380      0x224 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_scrn_init.o)
+                0x0000000000456380                fb_DevScrnUpdateWidth
+                0x00000000004563e0                fb_DevScrnMaybeUpdateWidth
+                0x0000000000456440                fb_DevScrnInit_Screen
+                0x00000000004564b0                fb_DevScrnEnd
+                0x00000000004564d0                fb_DevScrnInit_NoOpen
+ *fill*         0x00000000004565a4        0xc 
+ .text          0x00000000004565b0      0x13e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_scrn_read.o)
+                0x00000000004565b0                fb_DevScrnRead
+                0x00000000004566a0                fb_DevScrnInit_Read
+ *fill*         0x00000000004566ee        0x2 
+ .text          0x00000000004566f0       0xdd /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(error_getset.o)
+                0x00000000004566f0                fb_ErrorGetNum
+                0x0000000000456710                fb_ErrorSetNum
+                0x0000000000456730                fb_ErrorGetLineNum
+                0x0000000000456750                fb_ErrorGetModName
+                0x0000000000456770                fb_ErrorSetModName
+                0x0000000000456790                fb_ErrorGetFuncName
+                0x00000000004567b0                fb_ErrorSetFuncName
+ *fill*         0x00000000004567cd        0x3 
+ .text          0x00000000004567d0       0xc4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_close.o)
+                0x00000000004567d0                fb_FileCloseEx
+                0x0000000000456830                fb_FileClose
+                0x0000000000456880                fb_FileCloseAll
+ *fill*         0x0000000000456894        0xc 
+ .text          0x00000000004568a0       0xa6 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_eof.o)
+                0x00000000004568a0                fb_FileEofEx
+                0x00000000004568d0                fb_FileEof
+ *fill*         0x0000000000456946        0xa 
+ .text          0x0000000000456950       0x37 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_free.o)
+                0x0000000000456950                fb_FileFree
+ *fill*         0x0000000000456987        0x9 
+ .text          0x0000000000456990      0x596 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_get.o)
+                0x0000000000456990                fb_FileGetDataEx
+                0x0000000000456d50                fb_FileGetData
+                0x0000000000456db0                fb_FileGet
+                0x0000000000456e10                fb_FileGetLarge
+                0x0000000000456e70                fb_FileGetIOB
+                0x0000000000456ed0                fb_FileGetLargeIOB
+ *fill*         0x0000000000456f26        0xa 
+ .text          0x0000000000456f30       0x2b /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_hconvpath.o)
+                0x0000000000456f30                fb_hConvertPath
+ *fill*         0x0000000000456f5b        0x5 
+ .text          0x0000000000456f60       0xa9 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_input_file.o)
+                0x0000000000456f60                fb_FileInput
+ *fill*         0x0000000000457009        0x7 
+ .text          0x0000000000457010       0x84 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_input_str.o)
+                0x0000000000457010                fb_InputString
+ *fill*         0x0000000000457094        0xc 
+ .text          0x00000000004570a0      0x447 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_input_tok.o)
+                0x0000000000457160                fb_FileInputNextToken
+ *fill*         0x00000000004574e7        0x9 
+ .text          0x00000000004574f0      0x331 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_lineinp.o)
+                0x00000000004577e0                fb_FileLineInput
+ *fill*         0x0000000000457821        0xf 
+ .text          0x0000000000457830       0x7a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_open.o)
+                0x0000000000457830                fb_FileOpenEx
+                0x0000000000457850                fb_FileOpen
+ *fill*         0x00000000004578aa        0x6 
+ .text          0x00000000004578b0      0x3f9 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_put.o)
+                0x0000000000457b00                fb_FilePutDataEx
+                0x0000000000457b30                fb_FilePutData
+                0x0000000000457bb0                fb_FilePut
+                0x0000000000457c30                fb_FilePutLarge
+ *fill*         0x0000000000457ca9        0x7 
+ .text          0x0000000000457cb0      0x141 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_putback.o)
+                0x0000000000457cb0                fb_FilePutBackEx
+                0x0000000000457db0                fb_FilePutBack
+ *fill*         0x0000000000457df1        0xf 
+ .text          0x0000000000457e00       0x62 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_reset.o)
+                0x0000000000457e00                fb_FileReset
+ *fill*         0x0000000000457e62        0xe 
+ .text          0x0000000000457e70      0x179 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_seek.o)
+                0x0000000000457e70                fb_FileSeekEx
+                0x0000000000457ec0                fb_FileSeek
+                0x0000000000457f60                fb_FileSeekLarge
+ *fill*         0x0000000000457fe9        0x7 
+ .text          0x0000000000457ff0       0xf1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_size.o)
+                0x0000000000457ff0                fb_FileSizeEx
+                0x00000000004580a0                fb_FileSize
+ *fill*         0x00000000004580e1        0xf 
+ .text          0x00000000004580f0      0x12a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hdynload.o)
+                0x00000000004580f0                fb_hDynLoad
+                0x00000000004581a0                fb_hDynLoadAlso
+                0x0000000000458200                fb_hDynUnload
+ *fill*         0x000000000045821a        0x6 
+ .text          0x0000000000458220       0x39 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_cls.o)
+                0x0000000000458220                fb_Cls
+ *fill*         0x0000000000458259        0x7 
+ .text          0x0000000000458260       0x96 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_getmouse64.o)
+                0x0000000000458260                fb_GetMouse64
+ *fill*         0x00000000004582f6        0xa 
+ .text          0x0000000000458300       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_getsize.o)
+                0x0000000000458300                fb_GetSize
+ *fill*         0x0000000000458315        0xb 
+ .text          0x0000000000458320       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_getx.o)
+                0x0000000000458320                fb_GetX
+ *fill*         0x0000000000458335        0xb 
+ .text          0x0000000000458340       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_getxy.o)
+                0x0000000000458340                fb_GetXY
+ *fill*         0x0000000000458355        0xb 
+ .text          0x0000000000458360       0x55 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_inkey.o)
+                0x0000000000458360                fb_Inkey
+                0x0000000000458380                fb_Getkey
+                0x00000000004583a0                fb_KeyHit
+ *fill*         0x00000000004583b5        0xb 
+ .text          0x00000000004583c0       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_isredir.o)
+                0x00000000004583c0                fb_IsRedirected
+ *fill*         0x00000000004583d5        0xb 
+ .text          0x00000000004583e0       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_lineinp.o)
+                0x00000000004583e0                fb_LineInput
+ *fill*         0x00000000004583f5        0xb 
+ .text          0x0000000000458400       0xdc /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_locate_ex.o)
+                0x0000000000458400                fb_LocateEx
+ *fill*         0x00000000004584dc        0x4 
+ .text          0x00000000004584e0       0x5d /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_pageset.o)
+                0x00000000004584e0                fb_PageSet
+ *fill*         0x000000000045853d        0x3 
+ .text          0x0000000000458540       0x61 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_pcopy.o)
+                0x0000000000458540                fb_PageCopy
+ *fill*         0x00000000004585a1        0xf 
+ .text          0x00000000004585b0       0x5c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_printstr.o)
+                0x00000000004585b0                fb_PrintBufferEx
+                0x00000000004585d0                fb_PrintBuffer
+ *fill*         0x000000000045860c        0x4 
+ .text          0x0000000000458610       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_sleep.o)
+                0x0000000000458610                fb_Sleep
+ *fill*         0x0000000000458625        0xb 
+ .text          0x0000000000458630       0x57 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_width.o)
+                0x0000000000458630                fb_Width
+ *fill*         0x0000000000458687        0x9 
+ .text          0x0000000000458690       0xe8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(init.o)
+                0x0000000000458690                fb_hRtInit
+                0x00000000004586e0                fb_hRtExit
+                0x0000000000458740                fb_Init
+                0x0000000000458760                fb_End
+ *fill*         0x0000000000458778        0x8 
+ .text          0x0000000000458780      0x15c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_cls.o)
+                0x0000000000458780                fb_ConsoleClear
+ *fill*         0x00000000004588dc        0x4 
+ .text          0x00000000004588e0       0x6e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_getsize.o)
+                0x00000000004588e0                fb_ConsoleGetSize
+ *fill*         0x000000000045894e        0x2 
+ .text          0x0000000000458950       0x3e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_getx.o)
+                0x0000000000458950                fb_ConsoleGetX
+ *fill*         0x000000000045898e        0x2 
+ .text          0x0000000000458990       0x6e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_getxy.o)
+                0x0000000000458990                fb_ConsoleGetXY
+ *fill*         0x00000000004589fe        0x2 
+ .text          0x0000000000458a00       0x2c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_hinkey.o)
+                0x0000000000458a00                fb_hMakeInkeyStr
+ *fill*         0x0000000000458a2c        0x4 
+ .text          0x0000000000458a30      0x47e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_inkey.o)
+                0x0000000000458c20                fb_hAddCh
+                0x0000000000458c80                fb_hGetCh
+                0x0000000000458cf0                fb_ConsoleInkey
+                0x0000000000458d80                fb_ConsoleGetkey
+                0x0000000000458e40                fb_ConsoleKeyHit
+ *fill*         0x0000000000458eae        0x2 
+ .text          0x0000000000458eb0       0x30 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_isredir.o)
+                0x0000000000458eb0                fb_ConsoleIsRedirected
+ .text          0x0000000000458ee0      0x142 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_locate.o)
+                0x0000000000458ee0                fb_ConsoleLocate
+ *fill*         0x0000000000459022        0xe 
+ .text          0x0000000000459030       0x36 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_maxrow.o)
+                0x0000000000459030                fb_ConsoleGetMaxRow
+ *fill*         0x0000000000459066        0xa 
+ .text          0x0000000000459070      0xa39 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_multikey.o)
+                0x0000000000459940                fb_ConsoleMultikey
+                0x00000000004599c0                fb_hConsoleGfxMode
+ *fill*         0x0000000000459aa9        0x7 
+ .text          0x0000000000459ab0        0x6 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_pageset.o)
+                0x0000000000459ab0                fb_ConsolePageSet
+ *fill*         0x0000000000459ab6        0xa 
+ .text          0x0000000000459ac0        0xa /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_pcopy.o)
+                0x0000000000459ac0                fb_ConsolePageCopy
+ *fill*         0x0000000000459aca        0x6 
+ .text          0x0000000000459ad0       0xa1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_print.o)
+                0x0000000000459ad0                fb_PrintStringEx
+                0x0000000000459b30                fb_PrintString
+ *fill*         0x0000000000459b71        0xf 
+ .text          0x0000000000459b80       0xea /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_print_fix.o)
+                0x0000000000459b80                fb_PrintFixStringEx
+                0x0000000000459bd0                fb_PrintFixString
+ *fill*         0x0000000000459c6a        0x6 
+ .text          0x0000000000459c70       0xea /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_print_wstr.o)
+                0x0000000000459c70                fb_PrintWstrEx
+                0x0000000000459cc0                fb_PrintWstr
+ *fill*         0x0000000000459d5a        0x6 
+ .text          0x0000000000459d60      0x271 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printbuff.o)
+                0x0000000000459f50                fb_ConsolePrintBufferEx
+                0x0000000000459f90                fb_ConsolePrintBuffer
+ *fill*         0x0000000000459fd1        0xf 
+ .text          0x0000000000459fe0       0xeb /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printvoid.o)
+                0x0000000000459fe0                fb_PrintVoidEx
+                0x000000000045a030                fb_PrintVoid
+ *fill*         0x000000000045a0cb        0x5 
+ .text          0x000000000045a0d0       0xeb /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printvoid_wstr.o)
+                0x000000000045a0d0                fb_PrintVoidWstrEx
+                0x000000000045a120                fb_PrintVoidWstr
+ *fill*         0x000000000045a1bb        0x5 
+ .text          0x000000000045a1c0        0xa /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_setpos.o)
+                0x000000000045a1c0                fb_SetPos
+ *fill*         0x000000000045a1ca        0x6 
+ .text          0x000000000045a1d0      0x13a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_view.o)
+                0x000000000045a1d0                fb_ConsoleViewEx
+                0x000000000045a300                fb_ConsoleView
+ *fill*         0x000000000045a30a        0x6 
+ .text          0x000000000045a310      0x10b /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_viewhlp.o)
+                0x000000000045a310                fb_ConsoleGetTopRow
+                0x000000000045a330                fb_ConsoleGetBotRow
+                0x000000000045a380                fb_ConsoleSetTopBotRows
+                0x000000000045a390                fb_ConsoleGetView
+ *fill*         0x000000000045a41b        0x5 
+ .text          0x000000000045a420       0x95 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_width.o)
+                0x000000000045a420                fb_ConsoleWidth
+ *fill*         0x000000000045a4b5        0xb 
+ .text          0x000000000045a4c0      0x177 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_xfocus.o)
+                0x000000000045a4c0                fb_hXTermInitFocus
+                0x000000000045a5a0                fb_hXTermExitFocus
+                0x000000000045a5e0                fb_hXTermHasFocus
+ *fill*         0x000000000045a637        0x9 
+ .text          0x000000000045a640       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(scancodes.o)
+                0x000000000045a640                fb_hScancodeToExtendedKey
+ *fill*         0x000000000045a655        0xb 
+ .text          0x000000000045a660      0x120 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(scancodes_x11.o)
+                0x000000000045a660                fb_hInitX11KeycodeToScancodeTb
+ .text          0x000000000045a780       0x58 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_asc.o)
+                0x000000000045a780                fb_ASC
+ *fill*         0x000000000045a7d8        0x8 
+ .text          0x000000000045a7e0      0x27b /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_assign.o)
+                0x000000000045a7e0                fb_StrAssignEx
+                0x000000000045aa40                fb_StrAssign
+                0x000000000045aa50                fb_StrInit
+ *fill*         0x000000000045aa5b        0x5 
+ .text          0x000000000045aa60       0xde /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_chr.o)
+                0x000000000045aa60                fb_CHR
+ *fill*         0x000000000045ab3e        0x2 
+ .text          0x000000000045ab40      0x189 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_comp.o)
+                0x000000000045ab40                fb_StrCompare
+ *fill*         0x000000000045acc9        0x7 
+ .text          0x000000000045acd0      0x176 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_concat.o)
+                0x000000000045acd0                fb_StrConcat
+ *fill*         0x000000000045ae46        0xa 
+ .text          0x000000000045ae50      0x14c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_concatassign.o)
+                0x000000000045ae50                fb_StrConcatAssign
+ *fill*         0x000000000045af9c        0x4 
+ .text          0x000000000045afa0      0x1b5 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convfrom.o)
+                0x000000000045afa0                fb_hStr2Double
+                0x000000000045b100                fb_VAL
+ *fill*         0x000000000045b155        0xb 
+ .text          0x000000000045b160      0x11e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convfrom_lng.o)
+                0x000000000045b160                fb_hStr2Longint
+                0x000000000045b220                fb_VALLNG
+ *fill*         0x000000000045b27e        0x2 
+ .text          0x000000000045b280       0xd5 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convfrom_radlng.o)
+                0x000000000045b280                fb_hStrRadix2Longint
+ *fill*         0x000000000045b355        0xb 
+ .text          0x000000000045b360      0x11e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convfrom_ulng.o)
+                0x000000000045b360                fb_hStr2ULongint
+                0x000000000045b420                fb_VALULNG
+ *fill*         0x000000000045b47e        0x2 
+ .text          0x000000000045b480       0xd9 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convto.o)
+                0x000000000045b480                fb_IntToStr
+                0x000000000045b4f0                fb_UIntToStr
+ *fill*         0x000000000045b559        0x7 
+ .text          0x000000000045b560      0x134 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convto_flt.o)
+                0x000000000045b560                fb_FloatToStr
+                0x000000000045b600                fb_DoubleToStr
+ *fill*         0x000000000045b694        0xc 
+ .text          0x000000000045b6a0       0xd9 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convto_lng.o)
+                0x000000000045b6a0                fb_LongintToStr
+                0x000000000045b710                fb_ULongintToStr
+ *fill*         0x000000000045b779        0x7 
+ .text          0x000000000045b780      0x5b4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_core.o)
+                0x000000000045b780                fb_hStrAllocTmpDesc
+                0x000000000045b7f0                fb_hStrDelTempDesc
+                0x000000000045b850                fb_hStrAlloc
+                0x000000000045b8b0                fb_hStrRealloc
+                0x000000000045b9c0                fb_hStrAllocTemp_NoLock
+                0x000000000045baf0                fb_hStrAllocTemp
+                0x000000000045bc20                fb_hStrDelTemp_NoLock
+                0x000000000045bc90                fb_hStrDelTemp
+                0x000000000045bd00                fb_hStrCopy
+ *fill*         0x000000000045bd34        0xc 
+ .text          0x000000000045bd40       0x31 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_del.o)
+                0x000000000045bd40                fb_StrDelete
+ *fill*         0x000000000045bd71        0xf 
+ .text          0x000000000045bd80       0xe2 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_fill.o)
+                0x000000000045bd80                fb_StrFill1
+                0x000000000045bde0                fb_StrFill2
+ *fill*         0x000000000045be62        0xe 
+ .text          0x000000000045be70       0x57 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_hex.o)
+                0x000000000045be70                fb_HEX_b
+                0x000000000045be80                fb_HEX_s
+                0x000000000045be90                fb_HEX_i
+                0x000000000045bea0                fb_HEXEx_b
+                0x000000000045beb0                fb_HEXEx_s
+                0x000000000045bec0                fb_HEXEx_i
+ *fill*         0x000000000045bec7        0x9 
+ .text          0x000000000045bed0       0xc7 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_hex_lng.o)
+                0x000000000045bed0                fb_HEXEx_l
+                0x000000000045bf90                fb_HEX_l
+ *fill*         0x000000000045bf97        0x9 
+ .text          0x000000000045bfa0       0x81 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_hskip.o)
+                0x000000000045bfa0                fb_hStrSkipChar
+                0x000000000045bfe0                fb_hStrSkipCharRev
+ *fill*         0x000000000045c021        0xf 
+ .text          0x000000000045c030      0x130 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_lcase.o)
+                0x000000000045c030                fb_StrLcase2
+ .text          0x000000000045c160       0x41 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_len.o)
+                0x000000000045c160                fb_StrLen
+ *fill*         0x000000000045c1a1        0xf 
+ .text          0x000000000045c1b0       0xb3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_mid.o)
+                0x000000000045c1b0                fb_StrMid
+ *fill*         0x000000000045c263        0xd 
+ .text          0x000000000045c270       0x58 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_misc.o)
+                0x000000000045c270                fb_SPACE
+ *fill*         0x000000000045c2c8        0x8 
+ .text          0x000000000045c2d0       0x6a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_tempdescf.o)
+                0x000000000045c2d0                fb_StrAllocTempDescF
+ *fill*         0x000000000045c33a        0x6 
+ .text          0x000000000045c340       0x86 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_tempdescz.o)
+                0x000000000045c340                fb_StrAllocTempDescZEx
+                0x000000000045c380                fb_StrAllocTempDescZ
+ *fill*         0x000000000045c3c6        0xa 
+ .text          0x000000000045c3d0       0x59 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_tempres.o)
+                0x000000000045c3d0                fb_StrAllocTempResult
+ *fill*         0x000000000045c429        0x7 
+ .text          0x000000000045c430      0x28b /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(strw_convassign.o)
+                0x000000000045c430                fb_WstrAssignFromA
+                0x000000000045c4e0                fb_WstrAssignToAEx
+                0x000000000045c6a0                fb_WstrAssignToA
+                0x000000000045c6b0                fb_WstrAssignToA_Init
+ *fill*         0x000000000045c6bb        0x5 
+ .text          0x000000000045c6c0       0xe3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(strw_convfrom_lng.o)
+                0x000000000045c6c0                fb_WstrToLongint
+                0x000000000045c770                fb_WstrValLng
+ *fill*         0x000000000045c7a3        0xd 
+ .text          0x000000000045c7b0      0x115 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(strw_convfrom_str.o)
+                0x000000000045c7b0                fb_wstr_ConvFromA
+                0x000000000045c870                fb_StrToWstr
+ *fill*         0x000000000045c8c5        0xb 
+ .text          0x000000000045c8d0       0xe3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(strw_convfrom_ulng.o)
+                0x000000000045c8d0                fb_WstrToULongint
+                0x000000000045c980                fb_WstrValULng
+ *fill*         0x000000000045c9b3        0xd 
+ .text          0x000000000045c9c0      0x119 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(strw_convto_str.o)
+                0x000000000045c9c0                fb_wstr_ConvToA
+                0x000000000045ca80                fb_WstrToStr
+ *fill*         0x000000000045cad9        0x7 
+ .text          0x000000000045cae0        0xe /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_beep.o)
+                0x000000000045cae0                fb_Beep
+ *fill*         0x000000000045caee        0x2 
+ .text          0x000000000045caf0        0xc /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_chain.o)
+                0x000000000045caf0                fb_Chain
+ *fill*         0x000000000045cafc        0x4 
+ .text          0x000000000045cb00       0x70 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_delay.o)
+                0x000000000045cb00                fb_Delay
+ .text          0x000000000045cb70      0x22c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_execex.o)
+                0x000000000045cb70                fb_ExecEx
+ *fill*         0x000000000045cd9c        0x4 
+ .text          0x000000000045cda0       0x19 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_fmem.o)
+                0x000000000045cda0                fb_GetMemAvail
+ *fill*         0x000000000045cdb9        0x7 
+ .text          0x000000000045cdc0       0xb6 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_getexename.o)
+                0x000000000045cdc0                fb_hGetExeName
+ *fill*         0x000000000045ce76        0xa 
+ .text          0x000000000045ce80      0x163 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_parseargs.o)
+                0x000000000045ce80                fb_hParseArgs
+ *fill*         0x000000000045cfe3        0xd 
+ .text          0x000000000045cff0       0x40 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_shell.o)
+                0x000000000045cff0                fb_Shell
+ .text          0x000000000045d030       0xdb /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(thread_ctx.o)
+                0x000000000045d030                fb_TlsGetCtx
+                0x000000000045d070                fb_TlsDelCtx
+                0x000000000045d0c0                fb_TlsFreeCtxTb
+ *fill*         0x000000000045d10b        0x5 
+ .text          0x000000000045d110       0x91 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(thread_mutex.o)
+                0x000000000045d110                fb_MutexCreate
+                0x000000000045d140                fb_MutexDestroy
+                0x000000000045d170                fb_MutexLock
+                0x000000000045d190                fb_MutexUnlock
+ *fill*         0x000000000045d1a1        0xf 
+ .text          0x000000000045d1b0       0x58 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(time_sleep.o)
+                0x000000000045d1b0                fb_ConsoleSleep
+ *fill*         0x000000000045d208        0x8 
+ .text          0x000000000045d210       0x40 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(time_sleepex.o)
+                0x000000000045d210                fb_SleepEx
+ .text          0x000000000045d250       0x61 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(time_timer.o)
+                0x000000000045d250                fb_Timer
+ *fill*         0x000000000045d2b1        0xf 
+ .text          0x000000000045d2c0      0x26e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(vfs_open.o)
+                0x000000000045d2c0                fb_FileOpenVfsRawEx
+                0x000000000045d460                fb_FileOpenVfsEx
+ *fill*         0x000000000045d52e        0x2 
+ .text          0x000000000045d530       0xbe /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_lineinp.o)
+                0x000000000045d530                fb_ConsoleLineInput
+ *fill*         0x000000000045d5ee        0x2 
+ .text          0x000000000045d5f0       0x9e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_print_raw.o)
+                0x000000000045d5f0                fb_ConPrintRaw
+ *fill*         0x000000000045d68e        0x2 
+ .text          0x000000000045d690      0x29a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_open.o)
+                0x000000000045d690                fb_hSetFileBufSize
+                0x000000000045d6a0                fb_DevFileOpen
+ *fill*         0x000000000045d92a        0x6 
+ .text          0x000000000045d930      0x11d /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_read.o)
+                0x000000000045d930                fb_DevFileRead
+ *fill*         0x000000000045da4d        0x3 
+ .text          0x000000000045da50      0x174 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_read_wstr.o)
+                0x000000000045da50                fb_DevFileReadWstr
+ *fill*         0x000000000045dbc4        0xc 
+ .text          0x000000000045dbd0      0x26e /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_readline.o)
+                0x000000000045dbe0                fb_DevFileReadLineDumb
+                0x000000000045de00                fb_DevFileReadLine
+ *fill*         0x000000000045de3e        0x2 
+ .text          0x000000000045de40       0xdc /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_readline_wstr.o)
+                0x000000000045de40                fb_DevFileReadLineWstr
+ *fill*         0x000000000045df1c        0x4 
+ .text          0x000000000045df20       0x3a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_seek.o)
+                0x000000000045df20                fb_DevFileSeek
+ *fill*         0x000000000045df5a        0x6 
+ .text          0x000000000045df60       0xe3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_size.o)
+                0x000000000045df60                fb_hDevFileSeekStart
+                0x000000000045dfa0                fb_DevFileGetSize
+ *fill*         0x000000000045e043        0xd 
+ .text          0x000000000045e050       0x2a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_tell.o)
+                0x000000000045e050                fb_DevFileTell
+ *fill*         0x000000000045e07a        0x6 
+ .text          0x000000000045e080       0x22 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_unlock.o)
+                0x000000000045e080                fb_DevFileUnlock
+ *fill*         0x000000000045e0a2        0xe 
+ .text          0x000000000045e0b0       0xd2 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_write.o)
+                0x000000000045e0b0                fb_DevFileWrite
+ *fill*         0x000000000045e182        0xe 
+ .text          0x000000000045e190      0x110 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_write_wstr.o)
+                0x000000000045e190                fb_DevFileWriteWstr
+ .text          0x000000000045e2a0       0xaf /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_scrn_eof.o)
+                0x000000000045e2a0                fb_DevScrnFillInput
+                0x000000000045e300                fb_DevScrnEof
+ *fill*         0x000000000045e34f        0x1 
+ .text          0x000000000045e350      0x100 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_hlock.o)
+                0x000000000045e350                fb_hFileLock
+                0x000000000045e3e0                fb_hFileUnlock
+ .text          0x000000000045e450       0xc4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_print.o)
+                0x000000000045e450                fb_hFilePrintBufferEx
+                0x000000000045e490                fb_hFilePrintBuffer
+ *fill*         0x000000000045e514        0xc 
+ .text          0x000000000045e520       0xc4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_print_wstr.o)
+                0x000000000045e520                fb_hFilePrintBufferWstrEx
+                0x000000000045e560                fb_hFilePrintBufferWstr
+ *fill*         0x000000000045e5e4        0xc 
+ .text          0x000000000045e5f0      0xdab /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hinit.o)
+                0x000000000045e6a0                fb_BgLock
+                0x000000000045e6b0                fb_BgUnlock
+                0x000000000045e6c0                fb_hStartBgThread
+                0x000000000045e700                fb_hTermOut
+                0x000000000045e840                fb_hTermQuery
+                0x000000000045e8d0                fb_hRecheckCursorPos
+                0x000000000045e940                fb_hRecheckConsoleSize
+                0x000000000045ed50                fb_hInitConsole
+                0x000000000045f290                fb_hExitConsole
+                0x000000000045f2b0                fb_hInit
+                0x000000000045f2e0                fb_hEnd
+ .text          0x000000000045f39b        0x0 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hinit_enable_vt100_escapes.o)
+ *fill*         0x000000000045f39b        0x5 
+ .text          0x000000000045f3a0       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_getmouse.o)
+                0x000000000045f3a0                fb_GetMouse
+ *fill*         0x000000000045f3b5        0xb 
+ .text          0x000000000045f3c0       0x15 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_view_update.o)
+                0x000000000045f3c0                fb_ViewUpdate
+ *fill*         0x000000000045f3d5        0xb 
+ .text          0x000000000045f3e0        0x5 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_input.o)
+                0x000000000045f3e0                fb_hConsoleInputBufferChanged
+ *fill*         0x000000000045f3e5        0xb 
+ .text          0x000000000045f3f0      0x5aa /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_mouse.o)
+                0x000000000045f820                fb_ConsoleGetMouse
+                0x000000000045f990                fb_ConsoleSetMouse
+ *fill*         0x000000000045f99a        0x6 
+ .text          0x000000000045f9a0      0x141 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printpad.o)
+                0x000000000045f9a0                fb_PrintPadEx
+                0x000000000045faa0                fb_PrintPad
+ *fill*         0x000000000045fae1        0xf 
+ .text          0x000000000045faf0      0x141 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printpad_wstr.o)
+                0x000000000045faf0                fb_PrintPadWstrEx
+                0x000000000045fbf0                fb_PrintPadWstr
+ *fill*         0x000000000045fc31        0xf 
+ .text          0x000000000045fc40       0x3a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_viewupdate.o)
+                0x000000000045fc40                fb_ConsoleViewUpdate
+ *fill*         0x000000000045fc7a        0x6 
+ .text          0x000000000045fc80       0xb4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(list.o)
+                0x000000000045fc80                fb_hListInit
+                0x000000000045fce0                fb_hListAllocElem
+                0x000000000045fd10                fb_hListFreeElem
+ *fill*         0x000000000045fd34        0xc 
+ .text          0x000000000045fd40       0x7f /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(listdyn.o)
+                0x000000000045fd40                fb_hListDynInit
+                0x000000000045fd50                fb_hListDynElemAdd
+                0x000000000045fd80                fb_hListDynElemRemove
+ *fill*         0x000000000045fdbf        0x1 
+ .text          0x000000000045fdc0       0x3c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_hshell.o)
+                0x000000000045fdc0                fb_hShell
+ *fill*         0x000000000045fdfc        0x4 
+ .text          0x000000000045fe00       0x22 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_close.o)
+                0x000000000045fe00                fb_DevFileClose
+ *fill*         0x000000000045fe22        0xe 
+ .text          0x000000000045fe30       0x77 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_eof.o)
+                0x000000000045fe30                fb_DevFileEof
+ *fill*         0x000000000045fea7        0x9 
+ .text          0x000000000045feb0       0x4a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_flush.o)
+                0x000000000045feb0                fb_DevFileFlush
+ *fill*         0x000000000045fefa        0x6 
+ .text          0x000000000045ff00       0x22 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_lock.o)
+                0x000000000045ff00                fb_DevFileLock
+ *fill*         0x000000000045ff22        0xe 
+ .text          0x000000000045ff30       0x50 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_scrn_write.o)
+                0x000000000045ff30                fb_DevScrnWrite
+                0x000000000045ff50                fb_DevScrnInit_Write
+ .text          0x000000000045ff80       0x50 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_scrn_write_wstr.o)
+                0x000000000045ff80                fb_DevScrnWriteWstr
+                0x000000000045ffa0                fb_DevScrnInit_WriteWstr
+ .text          0x000000000045ffd0       0x5c /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hook_print_wstr.o)
+                0x000000000045ffd0                fb_PrintBufferWstrEx
+                0x000000000045fff0                fb_PrintBufferWstr
+ *fill*         0x000000000046002c        0x4 
+ .text          0x0000000000460030      0x257 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printbuff_wstr.o)
+                0x0000000000460030                fb_ConsolePrintBufferWstrEx
+                0x0000000000460260                fb_ConsolePrintBufferWstr
+ *fill*         0x0000000000460287        0x9 
+ .text          0x0000000000460290      0x29a /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(utf_convfrom_wchar.o)
+                0x0000000000460290                fb_WCharToUTF
+ *fill*         0x000000000046052a        0x6 
+ .text          0x0000000000460530       0x55 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(utf_core.o)
+                0x0000000000460530                fb_hCharToUTF8
+ *fill*         0x0000000000460585        0xb 
+ .text          0x0000000000460590       0x75 /usr/lib/libc_nonshared.a(elf-init.oS)
+                0x0000000000460590                __libc_csu_init
+                0x0000000000460600                __libc_csu_fini
+ .text          0x0000000000460605        0x0 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o
+ .text          0x0000000000460605        0x0 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crtn.o
  *(.gnu.warning)
 
-.fini           0x0000000000460178        0xd
+.fini           0x0000000000460608        0xd
  *(SORT_NONE(.fini))
- .fini          0x0000000000460178        0x8 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crti.o
-                0x0000000000460178                _fini
- .fini          0x0000000000460180        0x5 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crtn.o
+ .fini          0x0000000000460608        0x8 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crti.o
+                0x0000000000460608                _fini
+ .fini          0x0000000000460610        0x5 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crtn.o
                 [!provide]                        PROVIDE (__etext = .)
                 [!provide]                        PROVIDE (_etext = .)
                 [!provide]                        PROVIDE (etext = .)
                 0x0000000000461000                . = ALIGN (CONSTANT (MAXPAGESIZE))
                 0x0000000000461000                . = SEGMENT_START ("rodata-segment", (ALIGN (CONSTANT (MAXPAGESIZE)) + (. & (CONSTANT (MAXPAGESIZE) - 0x1))))
 
-.rodata         0x0000000000461000     0x8847
+.rodata         0x0000000000461000     0x88c7
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.cst4   0x0000000000461000        0x4 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crt1.o
                 0x0000000000461000                _IO_stdin_used
  .rodata.str1.1
-                0x0000000000461004     0x3cb3 c64dvd-glsl.o
-                                       0x45ef (size before relaxing)
- *fill*         0x0000000000464cb7        0x1 
+                0x0000000000461004     0x3d17 c64dvd-glsl.o
+                                       0x467f (size before relaxing)
+ *fill*         0x0000000000464d1b        0x5 
  .rodata.str1.8
-                0x0000000000464cb8      0x287 c64dvd-glsl.o
- *fill*         0x0000000000464f3f        0x1 
- .rodata.cst8   0x0000000000464f40     0x1808 c64dvd-glsl.o
- .rodata.cst4   0x0000000000466748       0x24 c64dvd-glsl.o
- *fill*         0x000000000046676c        0x4 
- .rodata.cst16  0x0000000000466770       0xe0 c64dvd-glsl.o
+                0x0000000000464d20      0x287 c64dvd-glsl.o
+ *fill*         0x0000000000464fa7        0x1 
+ .rodata.cst8   0x0000000000464fa8     0x1810 c64dvd-glsl.o
+ .rodata.cst4   0x00000000004667b8       0x24 c64dvd-glsl.o
+ *fill*         0x00000000004667dc        0x4 
+ .rodata.cst16  0x00000000004667e0       0xe0 c64dvd-glsl.o
  .rodata.str1.1
-                0x0000000000466850        0x3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_bload.o)
+                0x00000000004668c0        0x3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_bload.o)
                                           0x6 (size before relaxing)
- *fill*         0x0000000000466853        0x5 
- .rodata.cst8   0x0000000000466858       0x10 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_circle.o)
+ *fill*         0x00000000004668c3        0x5 
+ .rodata.cst8   0x00000000004668c8       0x10 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_circle.o)
                                          0x20 (size before relaxing)
- .rodata.cst4   0x0000000000466868        0x4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_circle.o)
+ .rodata.cst4   0x00000000004668d8        0x4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_circle.o)
                                           0xc (size before relaxing)
- *fill*         0x000000000046686c        0x4 
- .rodata.cst16  0x0000000000466870       0x10 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_circle.o)
- .rodata        0x0000000000466880      0x324 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_control.o)
- .rodata.cst8   0x0000000000466ba4        0x8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_core.o)
- .rodata        0x0000000000466ba4      0x108 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_opengl.o)
+ *fill*         0x00000000004668dc        0x4 
+ .rodata.cst16  0x00000000004668e0       0x10 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_circle.o)
+ .rodata        0x00000000004668f0      0x324 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_control.o)
+ .rodata.cst8   0x0000000000466c14        0x8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_core.o)
+ .rodata        0x0000000000466c14      0x108 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_opengl.o)
  .rodata.str1.1
-                0x0000000000466cac      0x1bd /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_opengl.o)
- *fill*         0x0000000000466e69        0x3 
- .rodata.cst4   0x0000000000466e6c        0x4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_opengl.o)
- .rodata.cst8   0x0000000000466e70        0x8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_opengl.o)
+                0x0000000000466d1c      0x1bd /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_opengl.o)
+ *fill*         0x0000000000466ed9        0x3 
+ .rodata.cst4   0x0000000000466edc        0x4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_opengl.o)
+ .rodata.cst8   0x0000000000466ee0        0x8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_opengl.o)
                                          0x10 (size before relaxing)
- *fill*         0x0000000000466e78        0x8 
- .rodata        0x0000000000466e80       0x34 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_palette.o)
- .rodata.cst8   0x0000000000466eb4       0x10 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_palette.o)
- *fill*         0x0000000000466eb4        0xc 
- .rodata        0x0000000000466ec0       0x20 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_put.o)
+ *fill*         0x0000000000466ee8       0x18 
+ .rodata        0x0000000000466f00       0x34 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_palette.o)
+ .rodata.cst8   0x0000000000466f34       0x10 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_palette.o)
+ *fill*         0x0000000000466f34        0xc 
+ .rodata        0x0000000000466f40       0x20 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_put.o)
  .rodata.str1.1
-                0x0000000000466ee0        0x6 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screen.o)
+                0x0000000000466f60        0x6 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screen.o)
                                           0xb (size before relaxing)
- *fill*         0x0000000000466ee6       0x1a 
- .rodata        0x0000000000466f00      0x1a8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screen.o)
- .rodata.cst8   0x00000000004670a8        0x8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screen.o)
- .rodata.cst4   0x00000000004670b0        0x4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screen.o)
+ *fill*         0x0000000000466f66       0x1a 
+ .rodata        0x0000000000466f80      0x1a8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screen.o)
+ .rodata.cst8   0x0000000000467128        0x8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screen.o)
+ .rodata.cst4   0x0000000000467130        0x4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screen.o)
  .rodata.str1.1
-                0x00000000004670b0        0x1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screeninfo.o)
- .rodata        0x00000000004670b0       0xa8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_x11.o)
+                0x0000000000467130        0x1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_screeninfo.o)
+ .rodata        0x0000000000467130       0xa8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_x11.o)
  .rodata.str1.1
-                0x0000000000467158       0x61 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_x11.o)
- *fill*         0x00000000004671b9        0x7 
- .rodata        0x00000000004671c0     0x1376 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_data.o)
+                0x00000000004671d8       0x61 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_x11.o)
+ *fill*         0x0000000000467239        0x7 
+ .rodata        0x0000000000467240     0x1376 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_data.o)
  .rodata.str1.1
-                0x0000000000468536       0x4a /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_fbdev.o)
- .rodata        0x0000000000468580       0x58 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_fbdev.o)
- .rodata.cst8   0x00000000004685d8        0x8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_fbdev.o)
+                0x00000000004685b6       0x4a /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_fbdev.o)
+ .rodata        0x0000000000468600       0x58 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_fbdev.o)
+ .rodata.cst8   0x0000000000468658        0x8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_fbdev.o)
  .rodata.str1.1
-                0x00000000004685e0        0x5 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_null.o)
+                0x0000000000468660        0x5 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_null.o)
  .rodata.str1.1
-                0x00000000004685e5       0x69 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_opengl_x11.o)
+                0x0000000000468665       0x69 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_opengl_x11.o)
  .rodata.str1.1
-                0x000000000046864e        0x4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_x11.o)
+                0x00000000004686ce        0x4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_driver_x11.o)
                                           0xa (size before relaxing)
  .rodata.str1.1
-                0x0000000000468652        0x3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_lineinp.o)
+                0x00000000004686d2        0x3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_lineinp.o)
  .rodata.str1.1
-                0x0000000000468655        0x3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_lineinp_wstr.o)
- *fill*         0x0000000000468655        0xb 
- .rodata        0x0000000000468660       0x58 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_softcursor.o)
- .rodata        0x00000000004686b8       0xe8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_blitter.o)
- .rodata        0x00000000004687a0       0x28 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_print_tty.o)
+                0x00000000004686d5        0x3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_lineinp_wstr.o)
+ *fill*         0x00000000004686d5        0xb 
+ .rodata        0x00000000004686e0       0x58 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_softcursor.o)
+ .rodata        0x0000000000468738       0xe8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_blitter.o)
+ .rodata        0x0000000000468820       0x28 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_print_tty.o)
  .rodata.str1.1
-                0x00000000004687c8        0x2 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_readline.o)
+                0x0000000000468848        0x2 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_readline.o)
                                           0x4 (size before relaxing)
  .rodata.str1.1
-                0x00000000004687ca        0x1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(data_readstr.o)
- *fill*         0x00000000004687ca        0x2 
- .rodata        0x00000000004687cc      0x174 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_input_tok.o)
+                0x000000000046884a        0x1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(data_readstr.o)
+ *fill*         0x000000000046884a        0x2 
+ .rodata        0x000000000046884c      0x174 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(file_input_tok.o)
  .rodata.str1.1
-                0x0000000000468940        0x1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(init.o)
+                0x00000000004689c0        0x1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(init.o)
  .rodata.str1.1
-                0x0000000000468940       0x45 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_inkey.o)
+                0x00000000004689c0       0x45 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_inkey.o)
                                          0x4b (size before relaxing)
  .rodata.str1.1
-                0x0000000000468985       0x5d /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_multikey.o)
- *fill*         0x00000000004689e2       0x1e 
- .rodata        0x0000000000468a00       0xf1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_multikey.o)
+                0x0000000000468a05       0x5d /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_multikey.o)
+ *fill*         0x0000000000468a62       0x1e 
+ .rodata        0x0000000000468a80       0xf1 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_multikey.o)
  .rodata.str1.1
-                0x0000000000468af1        0xa /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printbuff.o)
+                0x0000000000468b71        0xa /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printbuff.o)
  .rodata.str1.1
-                0x0000000000468afb        0x5 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printvoid.o)
- *fill*         0x0000000000468afb        0x1 
+                0x0000000000468b7b        0x5 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printvoid.o)
+ *fill*         0x0000000000468b7b        0x1 
  .rodata.str4.4
-                0x0000000000468afc        0xc /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printvoid_wstr.o)
+                0x0000000000468b7c        0xc /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printvoid_wstr.o)
                                          0x14 (size before relaxing)
  .rodata.str1.1
-                0x0000000000468b08        0xf /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_xfocus.o)
+                0x0000000000468b88        0xf /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_xfocus.o)
                                          0x34 (size before relaxing)
- *fill*         0x0000000000468b17        0x9 
- .rodata        0x0000000000468b20       0x64 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(scancodes.o)
- *fill*         0x0000000000468b84       0x1c 
- .rodata        0x0000000000468ba0      0x690 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(scancodes_x11.o)
- .rodata        0x0000000000469230       0xb8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convfrom.o)
- .rodata        0x00000000004692e8       0xb8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convfrom_lng.o)
- .rodata        0x00000000004693a0       0xb8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convfrom_ulng.o)
+ *fill*         0x0000000000468b97        0x9 
+ .rodata        0x0000000000468ba0       0x64 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(scancodes.o)
+ *fill*         0x0000000000468c04       0x1c 
+ .rodata        0x0000000000468c20      0x690 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(scancodes_x11.o)
+ .rodata        0x00000000004692b0       0xb8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convfrom.o)
+ .rodata        0x0000000000469368       0xb8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convfrom_lng.o)
+ .rodata        0x0000000000469420       0xb8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convfrom_ulng.o)
  .rodata.str1.1
-                0x0000000000469458        0x6 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convto.o)
+                0x00000000004694d8        0x6 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convto.o)
  .rodata.str1.1
-                0x000000000046945e        0xb /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convto_flt.o)
+                0x00000000004694de        0xb /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convto_flt.o)
  .rodata.str1.1
-                0x0000000000469469        0xa /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convto_lng.o)
- *fill*         0x0000000000469473        0xd 
- .rodata        0x0000000000469480       0x10 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_hex_lng.o)
- .rodata        0x0000000000469490       0xb8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(strw_convfrom_lng.o)
- .rodata        0x0000000000469548       0xb8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(strw_convfrom_ulng.o)
+                0x00000000004694e9        0xa /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_convto_lng.o)
+ *fill*         0x00000000004694f3        0xd 
+ .rodata        0x0000000000469500       0x10 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(str_hex_lng.o)
+ .rodata        0x0000000000469510       0xb8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(strw_convfrom_lng.o)
+ .rodata        0x00000000004695c8       0xb8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(strw_convfrom_ulng.o)
  .rodata.str1.1
-                0x0000000000469600        0xd /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_getexename.o)
- *fill*         0x000000000046960d        0x3 
- .rodata.cst8   0x0000000000469610       0x10 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(time_timer.o)
+                0x0000000000469680        0xd /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(sys_getexename.o)
+ *fill*         0x000000000046968d        0x3 
+ .rodata.cst8   0x0000000000469690       0x10 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(time_timer.o)
  .rodata.str1.1
-                0x0000000000469620        0x3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_lineinp.o)
+                0x00000000004696a0        0x3 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(con_lineinp.o)
  .rodata.str1.1
-                0x0000000000469620        0xf /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_open.o)
+                0x00000000004696a0        0xf /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_open.o)
                                          0x18 (size before relaxing)
- *fill*         0x000000000046962f        0x1 
- .rodata        0x0000000000469630       0x18 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_size.o)
+ *fill*         0x00000000004696af        0x1 
+ .rodata        0x00000000004696b0       0x18 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(dev_file_size.o)
  .rodata.str1.1
-                0x0000000000469648       0x8b /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hinit.o)
+                0x00000000004696c8       0x8b /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(hinit.o)
                                          0xbb (size before relaxing)
  .rodata.str1.1
-                0x00000000004696d3       0x33 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_mouse.o)
+                0x0000000000469753       0x33 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_mouse.o)
  .rodata.str1.1
-                0x0000000000469706        0x2 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printpad.o)
+                0x0000000000469786        0x2 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printpad.o)
  .rodata.str4.4
-                0x0000000000469706        0x8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printpad_wstr.o)
+                0x0000000000469786        0x8 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printpad_wstr.o)
  .rodata.str1.1
-                0x0000000000469706        0x4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printbuff_wstr.o)
+                0x0000000000469786        0x4 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(io_printbuff_wstr.o)
                                           0x8 (size before relaxing)
- *fill*         0x000000000046970a       0x16 
- .rodata        0x0000000000469720      0x127 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(utf_core.o)
-                0x0000000000469720                __fb_utf8_offsetsTb
-                0x0000000000469740                __fb_utf8_trailingTb
-                0x0000000000469840                __fb_utf8_bmarkTb
+ *fill*         0x000000000046978a       0x16 
+ .rodata        0x00000000004697a0      0x127 /usr/local/bin/../lib/freebasic/linux-x86_64/libfb.a(utf_core.o)
+                0x00000000004697a0                __fb_utf8_offsetsTb
+                0x00000000004697c0                __fb_utf8_trailingTb
+                0x00000000004698c0                __fb_utf8_bmarkTb
 
 .rodata1
  *(.rodata1)
@@ -2327,18 +2327,18 @@ LOAD /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crtn.o
  *(.eh_frame_hdr)
  *(.eh_frame_entry .eh_frame_entry.*)
 
-.eh_frame       0x0000000000469848       0xe0
+.eh_frame       0x00000000004698c8       0xe0
  *(.eh_frame)
- .eh_frame      0x0000000000469848       0x40 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crt1.o
+ .eh_frame      0x00000000004698c8       0x40 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crt1.o
                                          0x5c (size before relaxing)
- *fill*         0x0000000000469888        0x0 
- .eh_frame      0x0000000000469888       0x28 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crt1.o
+ *fill*         0x0000000000469908        0x0 
+ .eh_frame      0x0000000000469908       0x28 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crt1.o
                                          0x40 (size before relaxing)
- .eh_frame      0x00000000004698b0       0x18 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crt1.o
+ .eh_frame      0x0000000000469930       0x18 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crt1.o
                                          0x30 (size before relaxing)
- .eh_frame      0x00000000004698c8       0x5c /usr/lib/libc_nonshared.a(elf-init.oS)
+ .eh_frame      0x0000000000469948       0x5c /usr/lib/libc_nonshared.a(elf-init.oS)
                                          0x78 (size before relaxing)
- .eh_frame      0x0000000000469924        0x4 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o
+ .eh_frame      0x00000000004699a4        0x4 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtend.o
  *(.eh_frame.*)
 
 .gcc_except_table
@@ -2349,7 +2349,7 @@ LOAD /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crtn.o
 
 .exception_ranges
  *(.exception_ranges*)
-                0x000000000046af60                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+                0x000000000046aec0                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
 
 .eh_frame
  *(.eh_frame)
@@ -2364,7 +2364,7 @@ LOAD /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crtn.o
 .exception_ranges
  *(.exception_ranges*)
 
-.tdata          0x000000000046af60        0x0
+.tdata          0x000000000046aec0        0x0
                 [!provide]                        PROVIDE (__tdata_start = .)
  *(.tdata .tdata.* .gnu.linkonce.td.*)
 
@@ -2372,25 +2372,25 @@ LOAD /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crtn.o
  *(.tbss .tbss.* .gnu.linkonce.tb.*)
  *(.tcommon)
 
-.preinit_array  0x000000000046af60        0x0
+.preinit_array  0x000000000046aec0        0x0
                 [!provide]                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array)
                 [!provide]                        PROVIDE (__preinit_array_end = .)
 
-.init_array     0x000000000046af60       0x10
-                0x000000000046af60                PROVIDE (__init_array_start = .)
+.init_array     0x000000000046aec0       0x10
+                0x000000000046aec0                PROVIDE (__init_array_start = .)
  *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
- .ctors.65435   0x000000000046af60        0x8 /usr/local/bin/../lib/freebasic/linux-x86_64/fbrt0.o
+ .ctors.65435   0x000000000046aec0        0x8 /usr/local/bin/../lib/freebasic/linux-x86_64/fbrt0.o
  *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
- .init_array    0x000000000046af68        0x8 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o
-                0x000000000046af70                PROVIDE (__init_array_end = .)
+ .init_array    0x000000000046aec8        0x8 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o
+                0x000000000046aed0                PROVIDE (__init_array_end = .)
 
-.fini_array     0x000000000046af70       0x10
+.fini_array     0x000000000046aed0       0x10
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
- .dtors.65435   0x000000000046af70        0x8 /usr/local/bin/../lib/freebasic/linux-x86_64/fbrt0.o
+ .dtors.65435   0x000000000046aed0        0x8 /usr/local/bin/../lib/freebasic/linux-x86_64/fbrt0.o
  *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
- .fini_array    0x000000000046af78        0x8 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o
+ .fini_array    0x000000000046aed8        0x8 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
 
 .ctors
@@ -2410,10 +2410,10 @@ LOAD /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../lib/crtn.o
 .jcr
  *(.jcr)
 
-.data.rel.ro    0x000000000046af80     0x3d88
+.data.rel.ro    0x000000000046aee0     0x3e28
  *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
  .data.rel.ro.local
-                0x000000000046af80     0x3a48 c64dvd-glsl.o
+                0x000000000046aee0     0x3ae8 c64dvd-glsl.o
  *fill*         0x000000000046e9c8       0x18 
  .data.rel.ro.local
                 0x000000000046e9e0       0x70 /usr/local/bin/../lib/freebasic/linux-x86_64/libfbgfx.a(gfx_data.o)

@@ -3181,7 +3181,9 @@ L2086:
     next a
 '/
   case in range(16384d,32368d) ' Screen Memory(Text 0x000004000-0x000007E70)
-   pokeb(adr,v)     
+   pokeb(adr,v) 
+'                          r0            r1                                  r0
+  case 32369: poke64(mem64(49361d),mem64(49362d)): mem64(32369)=peek64(mem64(49361d))    
   case in range(57344d,65535d), in range(40960d,49151d), in range(55296d,56319d): mov(mem64(adr),v)              
   end select
 L2150:  
