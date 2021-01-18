@@ -297,7 +297,7 @@ type CPU6510
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)   
   declare function Tick(byval mov(flg as double, 1.797693134862316e+308)) as double
 #elseif defined(__FB_DOS__)
-  declare function Tick(byval flg as integer=&H7FFFFFFF) as integer
+  declare function Tick(byval flg as integer=&B1111111111111111111111111111111) as integer
 #endif    
   declare function ADR_IMM   as double
   declare function ADR_REL   as double
@@ -400,64 +400,64 @@ constructor MEMORY_T
   'Set default system offset
   mov(sys_offset,49152d)
   ' initialize zero page and the stack
-  var mov(b,0), mov(index,0)
+  var mov(b,&B00000000000000000), mov(index,&B0000000000000000)
 L1:  
   read b: mov(mem64(index), b)
-  mov(index add, 1d)
-  cmp index ls 511d jmp L1
-  mov(index, 512d)
+  mov(index add,    &B0000000000000001)
+  cmp index ls      &B0000000111111111 jmp L1
+  mov(index,        &B0000001000000000)
 L2:
-  mov(mem64(index), 255d)
-  mov(index add, 1d)
-  cmp index ls 1023d jmp L2
+  mov(mem64(index), &B0000000011111111)
+  mov(index add,    &B0000000000000001)
+  cmp index ls      &B0000001111111111 jmp L2
   ' initialize sine and cosine tables
-  mov(index, 0d)
+  mov(index,        &B0000000000000000)
 L3:  
-  mov(SINTable(index),SIN(index mul M_PI div 180d))  
-  mov(COSTable(index),COS(index mul M_PI div 180d))  
-  mov(index add, 1d)
-  cmp index ls 359d jmp L3
+  mov(SINTable(index),SIN(index mul M_PI div &B0000000010110100))  
+  mov(COSTable(index),COS(index mul M_PI div &B0000000010110100))  
+  mov(index add,                             &B0000000000000001)
+  cmp index ls                               &B0000000101100111 jmp L3
   ' Set text color
-  poke64(49154d,255d) ' Red
-  poke64(49155d,255d) ' Greem
-  poke64(49156d,255d) ' Blue
-  poke64(49157d,255d) ' Alpha
-  poke64(49161d,255d) ' Background Color(Alpha)
-  poke64(49456d,255d) ' Border Color(Alpha)
+  poke64(49154d,&B11111111) ' Red
+  poke64(49155d,&B11111111) ' Greem
+  poke64(49156d,&B11111111) ' Blue
+  poke64(49157d,&B11111111) ' Alpha
+  poke64(49161d,&B11111111) ' Background Color(Alpha)
+  poke64(49456d,&B11111111) ' Border Color(Alpha)
   
   ' 648 Address 648 ($288) holds a "pointer" (or more precisely, half a pointer) that tells 
   ' KERNAL where in RAM the text screen is currently located: The contents of address 648 is
   ' the most significant 8 bits, or the "high-byte", of the text screen's physical start address.
-  poke64(648d,04d)  
+  poke64(648d,  &B00000100)  
   ' Address 53272 ($D018) is a VIC-II register that generally tells the graphics chip where to "look for graphics", 
   ' in conjunction with both the text screen and with bitmap graphics. 
-: poke64(53272d,31d)
+: poke64(53272d,&B00011111)
 
   ' 49383d flip font       
   ' 49384d font offset
   ' 49385d font width
   ' 49386d font height
 '        font_f 
-  poke64(49383d,0d) 'Flip font
+  poke64(49383d,&B00000000) 'Flip font
 '        font_o    
-  poke64(49384d,2d) 'Font offset
+  poke64(49384d,&B00000010) 'Font offset
 '        font_w
-  poke64(49385d,7d) 'Font width 
+  poke64(49385d,&B00000111) 'Font width 
 '        font_h
-  poke64(49386d,7d) 'Font height 
+  poke64(49386d,&B00000111) 'Font height 
   var mov(i, 0d)
   dim as ubyte tmp
   ' init all ROM's
   open "64c.251913-01.bin" for binary as #1
 L4:  
   get #1,,tmp: mov(basic(i), tmp)
-  mov(i add, 1d)
-  cmp i ls 8191d jmp L4
-  mov(i, 0d)
+  mov(i add, &B0000000000000001)
+  cmp i ls   &B0001111111111111 jmp L4
+  mov(i,     &B0000000000000000)
 L5: 
   get #1,,tmp: mov(kernal(i), tmp)
-  mov(i add, 1d)  
-  cmp i ls 8191d jmp L5
+  mov(i add, &B0000000000000001)  
+  cmp i ls   &B0001111111111111 jmp L5
   close #1
   'for b as integer = 617 to 641
   /'
@@ -471,19 +471,19 @@ L5:
   '/
   
   open "./chargen/2.c64" for binary as #1
-  mov(i,0d)
+  mov(i,     &B0000000000000000)
 L6:  
   get #1,,tmp: mov(char(i), tmp)
   mov(i add, 1d)
-  cmp i ls 8191d jmp L6
+  cmp i ls   &B0001111111111111 jmp L6
   'close #1
   'open "./chargen/2.c64" for binary as #1
-  seek #1, 0
-  mov(i,8192d)
+  seek #1,   &B0000000000000000
+  mov(i,     &B0010000000000000)
 L7:  
   get #1,,tmp: mov(char(i), tmp)
-  mov(i add, 1d)
-  cmp i ls 16383d jmp L7
+  mov(i add, &B0000000000000001)
+  cmp i ls   &B0011111111111111 jmp L7
   close #1
 /'
   restore CHAR_ROM
@@ -512,15 +512,15 @@ L7:
   poke64(&HFFFC,1.797693134862316e+308):poke64(&HFFFD,1.797693134862316e+308)
 #elseif defined(__FB_DOS__)
   'Sets top of system memory   
-  poke64(0d,255d):poke64(1d,255d)
+  poke64(0d,    &B00000000):poke64(1d,    &B00000000)
   'Sets reset vector to top of system memory
-  poke64(&HFFFC,&H00):poke64(&HFFFD,&H80)
+  poke64(&HFFFC,&B00000000):poke64(&HFFFD,&B10000000)
 #endif  
-  paint(0d,0d), rgba(0d, 0d, 0d, 255d)
-  'SYS calls
-  poke64(&HC0A6,&HA9): poke64(&HC0A7,&H00)                      ' LDA #$00        A9 00
-  poke64(&HC0A8,&H8D): poke64(&HC0A9,&H00): poke64(&HC0AA,&HC0) ' STA $C000       8D 00 C0
-  poke64(&HC0AB,&H60)                                           ' RTS             60
+  paint(&B00000000,&B00000000), rgba(&B00000000, &B00000000, &B00000000, &B11111111)
+  'SYS calls 7E72
+  poke64(&H7E72,&B10101001): poke64(&H7E73,&B00000000)                            ' LDA #$00  10101001 00000000
+  poke64(&H7E74,&B10001101): poke64(&H7E75,&B00000000): poke64(&H7E76,&B11000000) ' STA $C000 10001101 00000000 11000000
+  poke64(&H7E77,&B01100000)                                                       ' RTS       01100000
   
   var mov(mem,chr(0)), mov(a,0)
   
@@ -1025,35 +1025,38 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
 #if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__)  or defined(__FB_XBOX__) or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)     
-'         adr0                pc                                pc                                pc 
-	mem64(49425d)=mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_ 
-	              mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                             pc                                pc	        
+'             adr0                 pc                                    pc 
+	mov(mem64(49425d), mem64(mem64(49418d) add 1) shl 32 add mem64(mem64(49418d) add 2) shl 24 add _
+	                   mem64(mem64(49418d) add 3) shl 16 add mem64(mem64(49418d) add 4) shl 08 add _ 
+	                   mem64(mem64(49418d) add 5)) '                     pc
+'                                  pc	        
 
-'	      adr1                pc                                pc                                pc
-	mem64(49432d)=mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
-	              mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
-'                             pc                 	            pc  
+'	          adr1                 pc                                    pc
+	mov(mem64(49432d), mem64(mem64(49418d) add 6) shl 32 add mem64(mem64(49418d) add 7) shl 24 add _ 
+	                   mem64(mem64(49418d) add 8) shl 16 add mem64(mem64(49418d) add 9) shl 08 add _
+	                   mem64(mem64(49418d) add 10)) '                    pc
+'                                  pc
 
-'         times               pc                                 pc	                                pc 
-	mem64(49621d)=mem64(mem64(49418d) + 11) shl 32 + mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_ 
-	              mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15)
-'                             pc                                 pc	
+'             times                pc                                     pc 
+	mov(mem64(49621d), mem64(mem64(49418d) add 11) shl 32 add mem64(mem64(49418d) add 12) shl 24 add _
+	                   mem64(mem64(49418d) add 13) shl 16 add mem64(mem64(49418d) add 14) shl 08 add _
+	                   mem64(mem64(49418d) add 15)) '                     pc
+'                                   pc
 #elseif defined(__FB_DOS__) or defined(__FB_WIN32__)
-'         adr0                pc                                pc 
-	mem64(49425d)=mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_ 
-	              mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                             pc                                pc	        
+'             adr0                 pc                                    pc 
+	mov(mem64(49425d), mem64(mem64(49418d) add 2) shl 24 add mem64(mem64(49418d) add 3) shl 16 add _ 
+	                   mem64(mem64(49418d) add 4) shl 08 add mem64(mem64(49418d) add 5))
+'                                  pc                                    pc	        
 
-'	      adr1                pc                                pc 
-	mem64(49432d)=mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
-	              mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
-'                             pc                                pc   	               
+'	          adr1                 pc                                    pc 
+	mov(mem64(49432d), mem64(mem64(49418d) add 7) shl 24 add mem64(mem64(49418d) add 8) shl 16 add _
+	                   mem64(mem64(49418d) add 9) shl 08 add mem64(mem64(49418d) add 10))
+'                                  pc                                    pc   	               
 
-'         times               pc                                 pc	        
-	mem64(49621d)=mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_ 
-	              mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15)
-'                             pc                                 pc
+'             times                pc                                     pc	        
+	mov(mem64(49621d), mem64(mem64(49418d) add 12) shl 24 add mem64(mem64(49418d) add 13) shl 16 add _ 
+	                   mem64(mem64(49418d) add 14) shl 08 add mem64(mem64(49418d) add 15))
+'                                  pc                                     pc
 #endif	
 '                          times        		       
     do until mov(tmp,mem64(49621d))
@@ -1130,152 +1133,186 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
 	
    case &H000000073 ' pokeb [address],[address]
    
-'         adr0                  pc                                pc                                pc   
-	mem64(49425d) = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                               pc                                pc	       
+'             adr0                 pc                                    pc   
+	mov(mem64(49425d), mem64(mem64(49418d) add 1) shl 32 add mem64(mem64(49418d) add 2) shl 24 add _
+	                   mem64(mem64(49418d) add 3) shl 16 add mem64(mem64(49418d) add 4) shl 08 add _
+	                   mem64(mem64(49418d) add 5)) '                     pc
+'                                  pc	       
 
-'         adr1                  pc                                pc                                pc	       
-	mem64(49432d) = mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
-	                mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
-'                               pc                                pc
+'             adr1                  pc                                   pc	       
+	mov(mem64(49432d), mem64(mem64(49418d) add 6) shl 32 add mem64(mem64(49418d) add 7) shl 24 add _
+	                   mem64(mem64(49418d) add 8) shl 16 add mem64(mem64(49418d) add 9) shl 08 add _
+	                   mem64(mem64(49418d) add 10)) '                    pc
+'                                  pc
 
 '               adr0	             adr1
 	pokeb mem64(49425d), peekb(mem64(49432d))       
    case &H000000074 ' pokew [address],[address]
-'            adr0                  pc                                pc                                pc   
-	   mem64(49425d) = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	                   mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                                  pc                                pc	          
+'             adr0                 pc                                    pc   
+	mov(mem64(49425d), mem64(mem64(49418d) add 1) shl 32 add mem64(mem64(49418d) add 2) shl 24 add _
+	                   mem64(mem64(49418d) add 3) shl 16 add mem64(mem64(49418d) add 4) shl 08 add _
+	                   mem64(mem64(49418d) add 5)) '                     pc
+'                                  pc       
 
-'            adr1                   pc                               pc                                pc	          
-	   mem64(49432d) = mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_ 
-	                   mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10): mem64(49418d) = mem64(49418d) + 11
-'                                   pc                               pc                   pc              pc
+'             adr1                 pc                                    pc          
+	mov(mem64(49432d), mem64(mem64(49418d) add 6) shl 32 add mem64(mem64(49418d) add 7) shl 24 add _
+	                   mem64(mem64(49418d) add 8) shl 16 add mem64(mem64(49418d) add 9) shl 08 add _ 
+	                   mem64(mem64(49418d) add 10)) '                    pc
+'                                  pc
+
+'             pc             pc	                   
+	mov(mem64(49418d), mem64(49418d) add 11)
 
 '               adr0                 adr1
 	pokew mem64(49425d), peekw(mem64(49432d)) 
    case &H000000075 ' Display number [screen memory address]
    
-'         adr0                 pc                                pc                                pc   
-	mem64(49425d)= mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	               mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                              pc                                pc	       
+'             adr0                 pc                                    pc   
+	mov(mem64(49425d), mem64(mem64(49418d) add 1) shl 32 add mem64(mem64(49418d) add 2) shl 24 add _
+	                   mem64(mem64(49418d) add 3) shl 16 add mem64(mem64(49418d) add 4) shl 08 add _
+	                   mem64(mem64(49418d) add 5))
+'                                  pc
 
 '                           r0	       
 	string_data = str(mem64(49361d))             
 	for r3 = 1 to len(string_data)             
-	  pokeb (char_buffer+adr0)+(r3-1),_
+	  pokeb (char_buffer add mem64(49425d))+(r3-1),_
 	  screencode(asc(mid(string_data,r3,1)))
 	next r3
    case &H000000076 ' Display text [string address],[length],
 					'              [screen adr]
-'                            pc                                pc                                pc            					
-	string_adr = mem64(mem64(49418d) + 1) shl 32 + mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	             mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                            pc                                pc	             
+'                               pc                                    pc
+	mov(string_adr, mem64(mem64(49418d) add 1) shl 32 add mem64(mem64(49418d) add 2) shl 24 add _
+	                mem64(mem64(49418d) add 3) shl 16 add mem64(mem64(49418d) add 4) shl 08 add _
+	                mem64(mem64(49418d) add 5)) '                     pc
+'                               pc
 
-'                            pc                                pc                                pc           	             
-	string_len = mem64(mem64(49418d) + 6) shl 32 + mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
-	             mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
-'                            pc                                pc	             
+'                               pc                                    pc
+	mov(string_len, mem64(mem64(49418d) add 6) shl 32 add mem64(mem64(49418d) add 7) shl 24 add _
+	                mem64(mem64(49418d) add 8) shl 16 add mem64(mem64(49418d) add 9) shl 08 add _
+	                mem64(mem64(49418d) add 10)) '                    pc
+'                               pc
 	             
-'         adr0                  pc                                 pc                                 pc	             
-	mem64(49425d) = mem64(mem64(49418d) + 11) shl 32 + mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_
-	                mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15): mem64(49418d) = mem64(49418d) + 16
-'                               pc                                 pc                   pc              pc	             
+'         adr0                     pc                                     pc	             
+	mov(mem64(49425d), mem64(mem64(49418d) add 11) shl 32 add mem64(mem64(49418d) add 12) shl 24 add _
+	                   mem64(mem64(49418d) add 13) shl 16 add mem64(mem64(49418d) add 14) shl 08 add _
+	                   mem64(mem64(49418d) add 15)) '                     pc
+'                                  pc
+
+'            pc             pc	                   
+   mov(mem64(49418d), mem64(49418d) add 16)
+
 #elseif defined(__FB_DOS__) or defined(__FB_WIN32__)
    case &H00000006F ' peekb adr0
-'         adr0                  pc                                pc   
-	mem64(49425d) = mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                               pc                                pc	       
+'             adr0                 pc                                    pc   
+	mov(mem64(49425d), mem64(mem64(49418d) add 2) shl 24 add mem64(mem64(49418d) add 3) shl 16 add _
+	                   mem64(mem64(49418d) add 4) shl 08 add mem64(mem64(49418d) add 5))
+'                                  pc                                    pc	       
 
-'         r3
-	mem64(49364d) = peekb(adr0)      
+'             r3
+	mov(mem64(49364d), peekb(adr0))      
+
    case &H000000070 ' pokeb adr0, r3
-'         adr0                  pc                                pc  
-	mem64(49425d) = mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                               pc                                pc	       
+   
+'             adr0                 pc                                    pc  
+	mov(mem64(49425d), mem64(mem64(49418d) add 2) shl 24 add mem64(mem64(49418d) add 3) shl 16 add _
+	                   mem64(mem64(49418d) add 4) shl 08 add mem64(mem64(49418d) add 5))
+'                                  pc                                    pc	       
 
-'         r3                      pc                   	       
-	mem64(49364d)   = mem64(mem64(49418d) + 6)
+'             r3                   pc                   	       
+	mov(mem64(49364d), mem64(mem64(49418d) add 6))
 	pokeb adr0, mem64(49364d)
 '                     r3	
 	     
    case &H000000071 ' peekw r3
-'         adr0                  pc                                pc  
-	mem64(49425d) = mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)	       
-'                               pc                                pc
 
-'         r3	       
-	mem64(49364d) = peekw(adr0)       
+'             adr0                 pc                                    pc  
+	mov(mem64(49425d), mem64(mem64(49418d) add 2) shl 24 add mem64(mem64(49418d) add 3) shl 16 add _
+	                   mem64(mem64(49418d) add 4) shl 08 add mem64(mem64(49418d) add 5))	       
+'                                  pc                                    pc
+
+'             r3	       
+	mov(mem64(49364d), peekw(adr0))
+	       
    case &H000000072 ' pokew adr0, r3
-'         adr0                  pc                                pc
-	mem64(49425d) = mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                               pc                                pc
 
-'         r3                    pc                                pc
-	mem64(49364d) = mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
-	                mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
-'                               pc                                pc	       
+'             adr0                 pc                                    pc
+	mov(mem64(49425d), mem64(mem64(49418d) add 2) shl 24 add mem64(mem64(49418d) add 3) shl 16 add _
+	                   mem64(mem64(49418d) add 4) shl 08 add mem64(mem64(49418d) add 5))
+'                                  pc                                    pc
+
+'             r3                   pc                                    pc
+	mov(mem64(49364d), mem64(mem64(49418d) add 7) shl 24 add mem64(mem64(49418d) add 8) shl 16 add _
+	                   mem64(mem64(49418d) add 9) shl 08 add mem64(mem64(49418d) add 10))
+'                                  pc                                    pc	       
 
 	pokew adr0, mem64(49364d)
+	
    case &H000000073 ' pokeb [address],[address]
-'         adr0                  pc                                pc   
-	mem64(49425d) = mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	                mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                               pc                                pc	       
 
-'         adr1                  pc                                pc       
-	mem64(49432d) = mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
-	                mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
-'                               pc                                pc
+'             adr0                 pc                                    pc   
+	mov(mem64(49425d), mem64(mem64(49418d) add 2) shl 24 add mem64(mem64(49418d) add 3) shl 16 add _
+	                   mem64(mem64(49418d) add 4) shl 08 add mem64(mem64(49418d) add 5))
+'                                  pc                                    pc	       
+
+'             adr1                 pc                                    pc       
+	mov(mem64(49432d), mem64(mem64(49418d) add 7) shl 24 add mem64(mem64(49418d) add 8) shl 16 add _
+	                   mem64(mem64(49418d) add 9) shl 08 add mem64(mem64(49418d) add 10))
+'                                  pc                                    pc
 	       
-	pokeb adr0, peekb(adr1)       
+'               adr0                 adr1
+	pokeb mem64(49425d), peekb(mem64(49432d))
+	       
    case &H000000074 ' pokew [address],[address]
-'            adr0                  pc                                pc
-	   mem64(49425d) = mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	                   mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                                  pc                                pc	          
 
-'            adr1                   pc                               pc	          
-	   mem64(49432d) = mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_ 
-	                   mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10): mem64(49418d) = mem64(49418d) + 11
-'                                   pc                               pc                   pc              pc
-	pokew adr0, peekw(adr1) 
+'             adr0                 pc                                    pc
+	mov(mem64(49425d), mem64(mem64(49418d) add 2) shl 24 add mem64(mem64(49418d) add 3) shl 16 add _
+	                   mem64(mem64(49418d) add 4) shl 08 add mem64(mem64(49418d) add 5))
+'                                  pc                                    pc	          
+
+'             adr1                 pc                                    pc	          
+	mov(mem64(49432d), mem64(mem64(49418d) add 7) shl 24 add mem64(mem64(49418d) add 8) shl 16 add _ 
+	                   mem64(mem64(49418d) add 9) shl 08 add mem64(mem64(49418d) add 10))
+'                                  pc                                    pc
+
+'             pc             pc
+	mov(mem64(49418d), mem64(49418d) add 11)
+
+'               adr0                 adr1
+	pokew mem64(49425d), peekw(mem64(49432d)) 
+
    case &H000000075 ' Display number [screen memory address]
    
-'         adr0                 pc                                pc
-	mem64(49425d)= mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	               mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                              pc                                pc	       
+'             adr0                 pc                                    pc
+	mov(mem64(49425d), mem64(mem64(49418d) add 2) shl 24 add mem64(mem64(49418d) add 3) shl 16 add _
+	                   mem64(mem64(49418d) add 4) shl 08 add mem64(mem64(49418d) add 5))
+'                                  pc                                    pc	       
 
 '                           r0	       
 	string_data = str(mem64(49361d))             
-	for r3 = 1 to len(string_data)             
-	  pokeb (char_buffer+adr0)+(r3-1),_
-	  screencode(asc(mid(string_data,r3,1)))
+	for r3 = 1 to len(string_data)
+'                              adr0	             
+	  pokeb (char_buffer+mem64(49425d))+(r3-1), screencode(asc(mid(string_data,r3,1)))
 	next r3
    case &H000000076 ' Display text [string address],[length],
 					'              [screen adr]
-'                            pc                                pc           					
-	string_adr = mem64(mem64(49418d) + 2) shl 24 + mem64(mem64(49418d) + 3) shl 16 +_
-	             mem64(mem64(49418d) + 4) shl 08 + mem64(mem64(49418d) + 5)
-'                            pc                                pc	             
+'                               pc                                    pc           					
+	mov(string_adr, mem64(mem64(49418d) add 2) shl 24 add mem64(mem64(49418d) add 3) shl 16 add _
+	                mem64(mem64(49418d) add 4) shl 08 add mem64(mem64(49418d) add 5))
+'                               pc                                    pc	             
 
-'                            pc                                pc         	             
-	string_len = mem64(mem64(49418d) + 7) shl 24 + mem64(mem64(49418d) + 8) shl 16 +_
-	             mem64(mem64(49418d) + 9) shl 08 + mem64(mem64(49418d) + 10)
-'                            pc                                pc	             
+'                               pc                                    pc         	             
+	mov(string_len, mem64(mem64(49418d) add 7) shl 24 add mem64(mem64(49418d) add 8) shl 16 add _
+	                mem64(mem64(49418d) add 9) shl 08 add mem64(mem64(49418d) add 10))
+'                               pc                                    pc	             
 	             
-'         adr0                  pc                                 pc	             
-	mem64(49425d) = mem64(mem64(49418d) + 12) shl 24 + mem64(mem64(49418d) + 13) shl 16 +_
-	                mem64(mem64(49418d) + 14) shl 08 + mem64(mem64(49418d) + 15): mem64(49418d) = mem64(49418d) + 16
-'                               pc                                 pc                   pc              pc	   
+'             adr0                 pc                                     pc	             
+	mov(mem64(49425d), mem64(mem64(49418d) add 12) shl 24 add mem64(mem64(49418d) add 13) shl 16 add _
+	                   mem64(mem64(49418d) add 14) shl 08 add mem64(mem64(49418d) add 15))
+'                                  pc                                     pc
+
+'             pc             pc	                   
+    mov(mem64(49418d), mem64(49418d) add 16)
 #endif	             		                
 	for r3 = 0 to string_len
 	 pokeb (char_buffer add mem64(49425d)) add r3,_
@@ -1483,7 +1520,7 @@ proc MEMORY_T.isnumber(byval s    as string, byval start as double) as double
  dim as integer tmp: mov(tmp,start)
  do
   select case asc(mid(get_data, tmp, 1))
-   case &H30 to &H39: mov(tmp, tmp add 1)
+   case in range(&H30, &H39): mov(tmp, tmp add 1)
    case &H26, &H2B, &H2D, &H2E, &H42: mov(tmp, tmp add 1)
    case &H62, &H48, &H68: mov(tmp, tmp add 1)
    case else: exit do
@@ -1526,10 +1563,10 @@ end sub
  
 proc MEMORY_T.Peek64(byval adr as double) as double
   select case adr 
-  case &HE000 to &HFFFF:mov(proc,kernal(adr subt &HE000))
-  case &HA000 to &HBFFF:mov(proc,basic (adr subt &HA000))
-  case &HD800 to &HDBFF:mov(proc,char  (adr subt &HD800))
-  case &HD000 to &HD3FF
+  case in range(&HE000, &HFFFF):mov(proc,kernal(adr subt &HE000))
+  case in range(&HA000, &HBFFF):mov(proc,basic (adr subt &HA000))
+  case in range(&HD800, &HDBFF):mov(proc,char  (adr subt &HD800))
+  case in range(&HD000, &HD3FF)
     var mov(reg,logic_and(adr,&H003f))
     if mov(reg, &H12) then mov(proc,0d) else mov(proc,&HFF)
   case else : mov(proc,mem64(adr))
@@ -1649,67 +1686,73 @@ L931:
   'dim as ubyte mov(hnibble,high_nibble(cast(ubyte,v)))
   'dim as ubyte mov(lnibble,low_nibble(cast(ubyte,v)))
     select case as const cast(ulongint, v)
-		   case 15:
+		   case &B00001111:
 '                     scr_ptr		     
-		    mov(mem64(49451d), &H0000) '    scr_ptr		    
+		    mov(mem64(49451d), &B0000000000000000) 
+'                                           scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 31:
+		   case &B00011111:
 '                     scr_ptr		   
-		    mov(mem64(49451d), &H0400) '    scr_ptr		    
+		    mov(mem64(49451d), &B0000010000000000) 
+'                                           scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 47:
+		   case &B00101111:
 '                     scr_ptr		     
-		    mov(mem64(49451d), &H0800) '    scr_ptr		    
+		    mov(mem64(49451d), &B0000100000000000)
+'                                           scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 63:
+		   case &B00111111:
 '                     scr_ptr		     
-		    mov(mem64(49451d), &H0C00) '    scr_ptr		    
+		    mov(mem64(49451d), &B0000110000000000) 
+'                                           scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 79:
+		   case &B01001111:
 '                     scr_ptr		     
-		    mov(mem64(49451d), &H1000) '    scr_ptr		    
+		    mov(mem64(49451d), &B0001000000000000) 
+'                                           scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 95:
+		   case &B01011111:
 '                     scr_ptr		     
-		    mov(mem64(49451d), &H1400) '    scr_ptr		    
+		    mov(mem64(49451d), &B0001010000000000) 
+'                                           scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 111:
+		   case &B01101111:
 '                     scr_ptr		    
 		    mov(mem64(49451d), &H1800) '   scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 127:
+		   case &B01111111:
 '                     scr_ptr		    
 		    mov(mem64(49451d), &H1C00) '    scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 143:
+		   case &B10001111:
 '                     scr_ptr		    
 		    mov(mem64(49451d), &H2000) '    scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 159:
+		   case &B10011111:
 '                     scr_ptr		    
 		    mov(mem64(49451d), &H2400) '    scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 175: 
+		   case &B10101111: 
 '                     scr_ptr		   
 		    mov(mem64(49451d), &H2800) '    scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 191:
+		   case &B10111111:
 '                     scr_ptr		    
 		    mov(mem64(49451d), &H2C00) '    scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 207: 
+		   case &B11001111: 
 '                     scr_ptr		   
 		    mov(mem64(49451d), &H3000) '    scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
-	       case 223:
+	       case &B11011111:
 '                     scr_ptr	        
 	        mov(mem64(49451d), &H3400) '    scr_ptr	        
 	        mov(mem64(HIBASE), hibyte(mem64(49451d)))
-		   case 239:
+		   case &B11101111:
 '                     scr_ptr		    
 		    mov(mem64(49451d), &H3800) '    scr_ptr
 		    mov(mem64(&H0288), hibyte(mem64(49451d)))
-		   case 255:
+		   case &B11111111:
 '                     scr_ptr		    
 		    mov(mem64(49451d), &H3C00) '    scr_ptr
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
@@ -2248,15 +2291,15 @@ L2086:
   ' 49386d font height
  case 49387d,49388d 'Amiga style Hold-and-Modify - foreground and boarder color
      select case v
-		case in range(&B000000, &B001111):poke64(FCOLOR,v mod 255)
+		case in range(&B000000, &B001111):poke64(FCOLOR,v mod &B11111111)
 '                                                fg_red		
-		case in range(&B010000, &B011111):poke64(49154d,(((v subt &B010000) mod 255) mul 17) mod 255)
+		case in range(&B010000, &B011111):poke64(49154d,(((v subt &B010000) mod &B11111111) mul &B00010001) mod &B11111111)
 '                                                fg_grn
-		case in range(&B100000, &B101111):poke64(49155d,(((v subt &B100000) mod 255) mul 17) mod 255)
+		case in range(&B100000, &B101111):poke64(49155d,(((v subt &B100000) mod &B11111111) mul &B00010001) mod &B11111111)
 '                                                fg_blu		
-		case in range(&B110000, &B111111):poke64(49156d,(((v subt &B110000) mod 255) mul 17) mod 255)
+		case in range(&B110000, &B111111):poke64(49156d,(((v subt &B110000) mod &B11111111) mul &B00010001) mod &B11111111)
 '                         fg_aph		
-     	case else: poke64(49157d,(((v subt &B1000000) mod 255) mul 17) mod 255)					  
+     	case else: poke64(49157d,(((v subt &B1000000) mod &B11111111) mul &B00010001) mod &B11111111)					  
      end select
      if mov(adr,sys_offset add &HEC) then
 '                           fg_color      
@@ -2266,15 +2309,15 @@ L2086:
      end if     
     case 49389d 'Amiga style Hold-and-Modify - background
      select case v
-		case in range(&B000000, &B001111):poke64(BGCOL0,v mod 255)
+		case in range(&B000000, &B001111):poke64(BGCOL0,v mod &B11111111)
 '                                                bg_red		
-		case in range(&B010000, &B011111):poke64(49158d,(((v subt &B010000) mod 255) mul 17) mod 255)
+		case in range(&B010000, &B011111):poke64(49158d,(((v subt &B010000) mod &B11111111) mul &B00010001) mod &B11111111)
 '                                                bg_grn
-		case in range(&B100000, &B101111):poke64(49159d,(((v subt &B100000) mod 255) mul 17) mod 255)
+		case in range(&B100000, &B101111):poke64(49159d,(((v subt &B100000) mod &B11111111) mul &B00010001) mod &B11111111)
 '                                                bg_blu
-		case in range(&B110000, &B111111):poke64(49160d,(((v subt &B110000) mod 255) mul 17) mod 255)
+		case in range(&B110000, &B111111):poke64(49160d,(((v subt &B110000) mod &B11111111) mul &B00010001) mod &B11111111)
 '                         bg_aph
-     	case else: poke64(49161d,(((v subt &B1000000) mod 255) mul 17) mod 255)					  
+     	case else: poke64(49161d,(((v subt &B1000000) mod &B11111111) mul &B00010001) mod &B11111111)					  
      end select      
     case 49390d ' Amiga style Hold-and-Modify - Draw foreground
 '                             x0            y0              x1            y1             fg_color      
@@ -3969,160 +4012,160 @@ def INS_W64(byval Cpu as CPU6510_T)
 end def
 
 INSTRUCTION_SET:
-dd   0d,"BRK",_IMP   ,7d,0d,@INS_BRK
-dd   1d,"ORA",_INDX  ,6d,2d,@INS_ORA
-dd   2d,"R32",_ABS   ,0d,0d,@INS_R32
-dd   3d,"W32",_ABS   ,0d,0d,@INS_W32
-dd   4d,"R64",_ABS   ,0d,0d,@INS_R64
-dd   5d,"ORA",_ZERO  ,3d,2d,@INS_ORA
-dd   6d,"ASL",_ZERO  ,0d,0d,@INS_ASL
-dd   7d,"W64",_ABS   ,0d,0d,@INS_W64
-dd   8d,"PHP",_IMP   ,3d,1d,@INS_PHP
-dd   9d,"ORA",_IMM   ,2d,2d,@INS_ORA
-dd  10d,"ASL",_IMP   ,2d,1d,@INS_ASLA
-dd  11d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  12d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  13d,"ORA",_ABS   ,4d,3d,@INS_ORA
-dd  14d,"ASL",_ABS   ,0d,0d,@INS_ASL
-dd  15d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00000000,"BRK",_IMP   ,7d,0d,@INS_BRK
+dd &B00000001,"ORA",_INDX  ,6d,2d,@INS_ORA
+dd &B00000010,"R32",_ABS   ,0d,0d,@INS_R32
+dd &B00000011,"W32",_ABS   ,0d,0d,@INS_W32
+dd &B00000100,"R64",_ABS   ,0d,0d,@INS_R64
+dd &B00000101,"ORA",_ZERO  ,3d,2d,@INS_ORA
+dd &B00000110,"ASL",_ZERO  ,0d,0d,@INS_ASL
+dd &B00000111,"W64",_ABS   ,0d,0d,@INS_W64
+dd &B00001000,"PHP",_IMP   ,3d,1d,@INS_PHP
+dd &B00001001,"ORA",_IMM   ,2d,2d,@INS_ORA
+dd &B00001010,"ASL",_IMP   ,2d,1d,@INS_ASLA
+dd &B00001011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00001100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00001101,"ORA",_ABS   ,4d,3d,@INS_ORA
+dd &B00001110,"ASL",_ABS   ,0d,0d,@INS_ASL
+dd &B00001111,"***",_UNK   ,0d,0d,@INS_UNK
 
-dd  16d,"BPL",_REL   ,0d,0d,@INS_BPL
-dd  17d,"ORA",_INDY  ,0d,0d,@INS_ORA
-dd  18d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  19d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  20d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  21d,"ORA",_ZEROX ,0d,0d,@INS_ORA
-dd  22d,"ASL",_ZEROX ,0d,0d,@INS_ASL
-dd  23d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  24d,"CLC",_IMP   ,0d,0d,@INS_CLC
-dd  25d,"ORA",_ABSY  ,0d,0d,@INS_ORA
-dd  26d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  27d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  28d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  29d,"ORA",_ABSX  ,0d,0d,@INS_ORA
-dd  30d,"ASL",_ABSX  ,0d,0d,@INS_ASL
-dd  31d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00010000,"BPL",_REL   ,0d,0d,@INS_BPL
+dd &B00010001,"ORA",_INDY  ,0d,0d,@INS_ORA
+dd &B00010010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00010011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00010100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00010101,"ORA",_ZEROX ,0d,0d,@INS_ORA
+dd &B00010110,"ASL",_ZEROX ,0d,0d,@INS_ASL
+dd &B00010111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00011000,"CLC",_IMP   ,0d,0d,@INS_CLC
+dd &B00011001,"ORA",_ABSY  ,0d,0d,@INS_ORA
+dd &B00011010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00011011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00011100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00011101,"ORA",_ABSX  ,0d,0d,@INS_ORA
+dd &B00011110,"ASL",_ABSX  ,0d,0d,@INS_ASL
+dd &B00011111,"***",_UNK   ,0d,0d,@INS_UNK
 
-dd  32d,"JSR",_ABS   ,0d,0d,@INS_JSR
-dd  33d,"AND",_INDX  ,0d,0d,@INS_AND
-dd  34d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  35d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  36d,"BIT",_ZERO  ,0d,0d,@INS_BIT
-dd  37d,"AND",_ZERO  ,0d,0d,@INS_AND
-dd  38d,"ROL",_ZERO  ,0d,0d,@INS_ROL
-dd  39d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  40d,"PLP",_IMP   ,0d,0d,@INS_PLP
-dd  41d,"AND",_IMM   ,0d,0d,@INS_AND
-dd  42d,"ROL",_IMP   ,0d,0d,@INS_ROLA
-dd  43d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  44d,"BIT",_ABS   ,0d,0d,@INS_BIT
-dd  45d,"AND",_ABS   ,0d,0d,@INS_AND
-dd  46d,"ROL",_ABS   ,0d,0d,@INS_ROL
-dd  47d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00100000,"JSR",_ABS   ,0d,0d,@INS_JSR
+dd &B00100001,"AND",_INDX  ,0d,0d,@INS_AND
+dd &B00100010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00100011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00100100,"BIT",_ZERO  ,0d,0d,@INS_BIT
+dd &B00100101,"AND",_ZERO  ,0d,0d,@INS_AND
+dd &B00100110,"ROL",_ZERO  ,0d,0d,@INS_ROL
+dd &B00100111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00101000,"PLP",_IMP   ,0d,0d,@INS_PLP
+dd &B00101001,"AND",_IMM   ,0d,0d,@INS_AND
+dd &B00101010,"ROL",_IMP   ,0d,0d,@INS_ROLA
+dd &B00101011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00101100,"BIT",_ABS   ,0d,0d,@INS_BIT
+dd &B00101101,"AND",_ABS   ,0d,0d,@INS_AND
+dd &B00101110,"ROL",_ABS   ,0d,0d,@INS_ROL
+dd &B00101111,"***",_UNK   ,0d,0d,@INS_UNK
 
-dd  48d,"BMI",_REL   ,0d,0d,@INS_BMI
-dd  49d,"AND",_INDY  ,0d,0d,@INS_AND
-dd  50d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  51d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  52d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  53d,"AND",_ZEROX ,0d,0d,@INS_AND
-dd  54d,"ROL",_ZEROX ,0d,0d,@INS_ROL
-dd  55d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  56d,"SEC",_IMP   ,0d,0d,@INS_SEC
-dd  57d,"AND",_ABSY  ,0d,0d,@INS_AND
-dd  58d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  59d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  60d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  61d,"AND",_ABSX  ,0d,0d,@INS_AND
-dd  62d,"ROL",_ABSX  ,0d,0d,@INS_ROL
-dd  63d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00110000,"BMI",_REL   ,0d,0d,@INS_BMI
+dd &B00110001,"AND",_INDY  ,0d,0d,@INS_AND
+dd &B00110010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00110011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00110100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00110101,"AND",_ZEROX ,0d,0d,@INS_AND
+dd &B00110110,"ROL",_ZEROX ,0d,0d,@INS_ROL
+dd &B00110111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00111000,"SEC",_IMP   ,0d,0d,@INS_SEC
+dd &B00111001,"AND",_ABSY  ,0d,0d,@INS_AND
+dd &B00111010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00111011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00111100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B00111101,"AND",_ABSX  ,0d,0d,@INS_AND
+dd &B00111110,"ROL",_ABSX  ,0d,0d,@INS_ROL
+dd &B00111111,"***",_UNK   ,0d,0d,@INS_UNK
 
-dd  64d,"RTI",_IMP   ,0d,0d,@INS_RTI
-dd  65d,"EOR",_INDX  ,0d,0d,@INS_EOR
-dd  66d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  67d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  68d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  69d,"EOR",_ZERO  ,0d,0d,@INS_EOR
-dd  70d,"LSR",_ZERO  ,0d,0d,@INS_LSR
-dd  71d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  72d,"PHA",_IMP   ,0d,0d,@INS_PHA
-dd  73d,"EOR",_IMM   ,0d,0d,@INS_EOR
-dd  74d,"LSR",_IMP   ,0d,0d,@INS_LSRA
-dd  75d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  76d,"JMP",_ABS   ,0d,0d,@INS_JMP
-dd  77d,"EOR",_ABS   ,0d,0d,@INS_EOR
-dd  78d,"LSR",_ABS   ,0d,0d,@INS_LSR
-dd  79d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01000000,"RTI",_IMP   ,0d,0d,@INS_RTI
+dd &B01000001,"EOR",_INDX  ,0d,0d,@INS_EOR
+dd &B01000010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01000011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01000100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01000101,"EOR",_ZERO  ,0d,0d,@INS_EOR
+dd &B01000110,"LSR",_ZERO  ,0d,0d,@INS_LSR
+dd &B01000111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01001000,"PHA",_IMP   ,0d,0d,@INS_PHA
+dd &B01001001,"EOR",_IMM   ,0d,0d,@INS_EOR
+dd &B01001010,"LSR",_IMP   ,0d,0d,@INS_LSRA
+dd &B01001011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01001100,"JMP",_ABS   ,0d,0d,@INS_JMP
+dd &B01001101,"EOR",_ABS   ,0d,0d,@INS_EOR
+dd &B01001110,"LSR",_ABS   ,0d,0d,@INS_LSR
+dd &B01001111,"***",_UNK   ,0d,0d,@INS_UNK
 
-dd  80d,"BVC",_REL   ,0d,0d,@INS_BVC
-dd  81d,"EOR",_INDY  ,0d,0d,@INS_EOR
-dd  82d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  83d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  84d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  85d,"EOR",_ZEROX ,0d,0d,@INS_EOR
-dd  86d,"LSR",_ZEROX ,0d,0d,@INS_LSR
-dd  87d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  88d,"CLI",_IMP   ,0d,0d,@INS_CLI
-dd  89d,"EOR",_ABSY  ,0d,0d,@INS_EOR
-dd  90d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  91d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  92d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  93d,"EOR",_ABSX  ,0d,0d,@INS_EOR
-dd  94d,"LSR",_ABSX  ,0d,0d,@INS_LSR
-dd  95d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01010000,"BVC",_REL   ,0d,0d,@INS_BVC
+dd &B01010001,"EOR",_INDY  ,0d,0d,@INS_EOR
+dd &B01010010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01010011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01010100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01010101,"EOR",_ZEROX ,0d,0d,@INS_EOR
+dd &B01010110,"LSR",_ZEROX ,0d,0d,@INS_LSR
+dd &B01010111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01011000,"CLI",_IMP   ,0d,0d,@INS_CLI
+dd &B01011001,"EOR",_ABSY  ,0d,0d,@INS_EOR
+dd &B01011010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01011011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01011100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01011101,"EOR",_ABSX  ,0d,0d,@INS_EOR
+dd &B01011110,"LSR",_ABSX  ,0d,0d,@INS_LSR
+dd &B01011111,"***",_UNK   ,0d,0d,@INS_UNK
 
-dd  96d,"RTS",_IMP   ,0d,0d,@INS_RTS
-dd  97d,"ADC",_INDX  ,0d,0d,@INS_ADC
-dd  98d,"***",_UNK   ,0d,0d,@INS_UNK
-dd  99d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 100d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 101d,"ADC",_ZERO  ,0d,0d,@INS_ADC
-dd 102d,"ROR",_ZERO  ,0d,0d,@INS_ROR
-dd 103d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 104d,"PLA",_IMP   ,0d,0d,@INS_PLA
-dd 105d,"ADC",_IMM   ,0d,0d,@INS_ADC
-dd 106d,"ROR",_IMP   ,0d,0d,@INS_RORA
-dd 107d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 108d,"JMP",_IND   ,0d,0d,@INS_JMP
-dd 109d,"ADC",_ABS   ,0d,0d,@INS_ADC
-dd 110d,"ROR",_ABS   ,0d,0d,@INS_ROR
-dd 111d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01100000,"RTS",_IMP   ,0d,0d,@INS_RTS
+dd &B01100001,"ADC",_INDX  ,0d,0d,@INS_ADC
+dd &B01100010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01100011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01100100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01100101,"ADC",_ZERO  ,0d,0d,@INS_ADC
+dd &B01100110,"ROR",_ZERO  ,0d,0d,@INS_ROR
+dd &B01100111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01101000,"PLA",_IMP   ,0d,0d,@INS_PLA
+dd &B01101001,"ADC",_IMM   ,0d,0d,@INS_ADC
+dd &B01101010,"ROR",_IMP   ,0d,0d,@INS_RORA
+dd &B01101011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01101100,"JMP",_IND   ,0d,0d,@INS_JMP
+dd &B01101101,"ADC",_ABS   ,0d,0d,@INS_ADC
+dd &B01101110,"ROR",_ABS   ,0d,0d,@INS_ROR
+dd &B01101111,"***",_UNK   ,0d,0d,@INS_UNK
 
-dd 112d,"BVS",_REL   ,0d,0d,@INS_BVS
-dd 113d,"ADC",_INDY  ,0d,0d,@INS_ADC
-dd 114d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 115d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 116d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 117d,"ADC",_ZEROX ,0d,0d,@INS_ADC
-dd 118d,"ROR",_ZEROX ,0d,0d,@INS_ROR
-dd 119d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 120d,"SEI",_IMP   ,0d,0d,@INS_SEI
-dd 121d,"ADC",_ABSY  ,0d,0d,@INS_ADC
-dd 122d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 123d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 124d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 125d,"ADC",_ABSX  ,0d,0d,@INS_ADC
-dd 126d,"ROR",_ABSX  ,0d,0d,@INS_ROR
-dd 127d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01110000,"BVS",_REL   ,0d,0d,@INS_BVS
+dd &B01110001,"ADC",_INDY  ,0d,0d,@INS_ADC
+dd &B01110010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01110011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01110100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01110101,"ADC",_ZEROX ,0d,0d,@INS_ADC
+dd &B01110110,"ROR",_ZEROX ,0d,0d,@INS_ROR
+dd &B01110111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01111000,"SEI",_IMP   ,0d,0d,@INS_SEI
+dd &B01111001,"ADC",_ABSY  ,0d,0d,@INS_ADC
+dd &B01111010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01111011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01111100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B01111101,"ADC",_ABSX  ,0d,0d,@INS_ADC
+dd &B01111110,"ROR",_ABSX  ,0d,0d,@INS_ROR
+dd &B01111111,"***",_UNK   ,0d,0d,@INS_UNK
 
-dd 128d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 129d,"STA",_INDX  ,0d,0d,@INS_STA
-dd 130d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 131d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 132d,"STY",_ZERO  ,0d,0d,@INS_STY
-dd 133d,"STA",_ZERO  ,0d,0d,@INS_STA
-dd 134d,"STX",_ZERO  ,0d,0d,@INs_STX
-dd 135d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 136d,"DEY",_IMP   ,0d,0d,@INS_DEY
-dd 137d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 138d,"TXA",_IMP   ,0d,0d,@INS_TXA
-dd 139d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 140d,"STY",_ABS   ,0d,0d,@INS_STY
-dd 141d,"STA",_ABS   ,0d,0d,@INS_STA
-dd 142d,"STX",_ABS   ,0d,0d,@INS_STX
-dd 143d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10000000,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10000001,"STA",_INDX  ,0d,0d,@INS_STA
+dd &B10000010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10000011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10000100,"STY",_ZERO  ,0d,0d,@INS_STY
+dd &B10000101,"STA",_ZERO  ,0d,0d,@INS_STA
+dd &B10000110,"STX",_ZERO  ,0d,0d,@INs_STX
+dd &B10000111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10001000,"DEY",_IMP   ,0d,0d,@INS_DEY
+dd &B10001001,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10001010,"TXA",_IMP   ,0d,0d,@INS_TXA
+dd &B10001011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10001100,"STY",_ABS   ,0d,0d,@INS_STY
+dd &B10001101,"STA",_ABS   ,0d,0d,@INS_STA
+dd &B10001110,"STX",_ABS   ,0d,0d,@INS_STX
+dd &B10001111,"***",_UNK   ,0d,0d,@INS_UNK
 
-dd 144d,"BCC",_REL   ,0d,0d,@INS_BCC
+dd &B10010000,"BCC",_REL   ,0d,0d,@INS_BCC
 dd 145d,"STA",_INDY  ,0d,0d,@INS_STA
 dd 146d,"***",_UNK   ,0d,0d,@INS_UNK
 dd 147d,"***",_UNK   ,0d,0d,@INS_UNK

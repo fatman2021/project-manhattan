@@ -57,9 +57,17 @@ FUN FACT #2: The universities have already produced multicore 8-bit CPUs that ru
 
 FUN FACT #3: Unlike real hardware, you can get an emulator to anything you want.
 
-# c64dvd-bpc.bas
+# c64dvd-glsl.bas
 
-c64dvd-bpc 
+c64dvd-glsl
+
+$0286(646)  - Sets the foreground color using the VGA color palette.
+
+$7E72(32370)-$7E77(32375) used for function calls
+
+poke64(&H7E72,&B10101001): poke64(&H7E73,&B00000000)                            ' LDA #$00  10101001 00000000
+poke64(&H7E74,&B10001101): poke64(&H7E75,&B00000000): poke64(&H7E76,&B11000000) ' STA $C000 10001101 00000000 11000000
+poke64(&H7E77,&B01100000)                                                       ' RTS       01100000
 
 $C000     - Play DVD track
 
@@ -95,7 +103,7 @@ $C01C     - Copies $C01D through $C021 to $C0CE
 
 $C022     - Copies $C023 through $C027 to $C0CF
 
-$C028     - Copies $C028 through $C02D to $C0B0
+$C028     - Copies $C029 through $C02D to $C0B0
 
 $C02E     - Copies $C02F through $C033 to $C0B1
 
@@ -143,8 +151,6 @@ $C0A2 49314 define GLSL program $A2 162
 
 $C0A3 49315 run GLSL program    $A3 163
 
-$C0A4-$C0A9 used for function calls
-
 $C0AA-$C0EF is free
 
 $C0F0 49392 run linux program   $F0 240
@@ -179,6 +185,8 @@ $C0FE 49406 define filename     $FE 254
 
 $C0FF 49407 run GLSL program    $FF 255
 
-POKE $00 0 through $FF 255 to address $C0A7 49319 to change function call
+$D020(53280)-$D024(53284) - Sets the background color using the VGA color palette.
 
-Type SYS $C0A4 49316 to make function call
+POKE $00 0 through $FF 255 to address $7E75 32373 to change function call
+
+Type SYS $7E72 32370 to make function call

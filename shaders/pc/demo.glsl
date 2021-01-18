@@ -1,952 +1,507 @@
-/*
-
-    Abstract Terrain Objects
-    ------------------------
-
-    Created by Shane in 2019-04-26
-    https://www.shadertoy.com/view/ttXGWH
-
-	Rendering some abstract geometry onto some terrain in a basic sci-fi tone.
-
-	This was inspired by one of Mike Winkelmann's images, which I've included 
-	a link to below. The original image is nicer -- partly due to the fact that
-	I'm restricted by realtime constraints, and possibly, because I have the
-	artistic vision of a programmer. :D
-	
-	Mike Winkelmann is the guy behind the amazing sci-fi flavored Beeple imagery 
-	that appears in various corners of the internet. For anyone not familiar 
-	with his work, it's well worth the look. Shau has been putting up a few 
-	Beeple inspired shaders lately, which reminded me that I'd been meaning to
-	do the same.
-
-	Most of this is pretty standard stuff: Render some sky, terrain, and some 
-	objects, with an extra reflective pass on the objects to make them shiny.
-	I went to the trouble to blend materials when the shiny objects were near 
-	the terrain. That involved a little bit of fiddly mixing, which complicated 
-	the code a little, but nothing that anyone here couldn't handle. :)
-
-
-	Original Image:
-
-	// Putting abstract geometry on terrain is a weird but common concept 
-	// amongst the graphics community, and this is a beautiful example.
-	TRIOMETRIC - Beeple
-	https://twitter.com/beeple/status/848029629973749760
-
-
-	Examples:
-
-	// One of Shau's Beeple inspired shaders.
-	Data Surge - shau
-	https://www.shadertoy.com/view/3dSXzm
-
-	// Cool and qwirky. I love the rendering style.
-	[SH16B] valley flight  - Bananaft
-	https://www.shadertoy.com/view/XldGR7
-
-	// I like the rendering style of this also.
-	RayCraft - jolle
-	https://www.shadertoy.com/view/tslGRX
-
-	// Another one of Shau's. Fun to watch.
-	XANNN - shau
-	https://www.shadertoy.com/view/llSfzR
-
-*/
-
-// Maximum ray distance. Analogous to the far plane.
-#define FAR 100. 
-
-// More correct third pass: The reflection off the reflected surface is less
-// noticeable, so we're saving some computing power and faking it, which means
-// this is not on by default. However, if your computer can afford it, this is 
-// a better option.
-//#define THIRD_PASS
-
-
-// Scene object ID. Either the Terrain object (0) or the chrome object (0).
-vec4 objID, oSvObjID;
-float svObjID; // Global ID to keep a copy of the above from pass to pass.
-
-
-// vec2 to vec2 hash.
-vec2 hash22(vec2 p) { 
-
-    // Faster, but doesn't disperse things quite as nicely. However, when framerate
-    // is an issue, and it often is, this is a good one to use. Basically, it's a tweaked 
-    // amalgamation I put together, based on a couple of other random algorithms I've 
-    // seen around... so use it with caution, because I make a tonne of mistakes. :)
-    float n = sin(dot(p, vec2(1, 113)));
-    return fract(vec2(262144, 32768)*n)*2. - 1.; 
-    
-    // Animated.
-    //p = fract(vec2(262144, 32768)*n); 
-    // Note the ".45," insted of ".5" that you'd expect to see. When edging, it can open 
-    // up the cells ever so slightly for a more even spread. In fact, lower numbers work 
-    // even better, but then the random movement would become too restricted. Zero would 
-    // give you square cells.
-    //return sin( p*6.2831853 + iTime ); 
-    
-}
-
-
-// Fabrice's consice, 2D rotation formula.
-//mat2 r2(float th){ vec2 a = sin(vec2(1.5707963, 0) + th); return mat2(a, -a.y, a.x); }
-// Standard 2D rotation formula.
-mat2 r2(in float a){ float c = cos(a), s = sin(a); return mat2(c, s, -s, c); }
-
-// The path is a 2D sinusoid that varies over time, depending upon the frequencies, and amplitudes.
-vec2 path(in float t){ 
-
-    //return vec2(0);
-    //float s = sin(t/24.)*cos(t/12.);
-    //return vec2(s*4., 0.);
-    
-    float a = sin(t*.11);
-    float b = cos(t*.14);
-    return vec2((a*2./2. - b*1.5/2.), b*1.7/4. + a*1.5/4.);
-    
-    //return vec2(sin(t*.15)*2.4, cos(t*.25)*1.7*.5); 
-}
-
-// Smooth fract function.
-float sFract(float x, float sf){
-    
-    x = fract(x);
-    return min(x, (1. - x)*x*sf);
-    
-}
-
-
-// Compact, self-contained version of IQ's 3D value noise function.
-float n3D(vec3 p){
-    
-	const vec3 s = vec3(113., 57., 27.);
-	vec3 ip = floor(p); p -= ip; 
-    vec4 h = vec4(0., s.yz, s.y + s.z) + dot(ip, s);
-    //p = p*p*(3. - 2.*p);
-    p *= p*p*(p*(p*6. - 15.) + 10.);
-    h = mix(fract(sin(h)*43758.5453), fract(sin(h + s.x)*43758.5453), p.x);
-    h.xy = mix(h.xz, h.yw, p.y);
-    return mix(h.x, h.y, p.z); // Range: [0, 1].
-}
-
-
-// Smooth maximum, based on IQ's smooth minimum.
-float smax(float a, float b, float s){
-    
-    float h = clamp(.5 + .5*(a - b)/s, 0., 1.);
-    return mix(b, a, h) + h*(1. - h)*s;
-}
-
-
-
-
-// Cheap and nasty 2D smooth noise function with inbuilt hash function -- based on IQ's 
-// original. Very trimmed down. In fact, I probably went a little overboard. I think it 
-// might also degrade with large time values.
-float n2D(vec2 p) {
-
-	vec2 i = floor(p); p -= i; //p *= p*(3. - p*2.);  
-    
-    p *= p*p*(p*p*6. - p*15. + 10.); 
-    
-    return dot(mat2(fract(sin(vec4(0, 1, 113, 114) + dot(i, vec2(1, 113)))*43758.5453))*
-                vec2(1. - p.y, p.y), vec2(1. - p.x, p.x) );
-
-}
-
-// FBM -- 4 accumulated noise layers of modulated amplitudes and frequencies.
-float fbm(vec2 p){ return n2D(p)*.533 + n2D(p*2.)*.267 + n2D(p*4.)*.133 + n2D(p*8.)*.067; }
-float fbmCam(vec2 p){ return n2D(p)*.533 + n2D(p*2.)*.267; }
-
-// The triangle function that Shadertoy user Nimitz has used in various triangle noise demonstrations.
-// See Xyptonjtroz - Very cool. Anyway, it's not really being used to its full potential here.
-vec2 tri(in vec2 x){return abs(x - floor(x) - .5);} // Triangle function.
-vec2 triS(in vec2 x){return cos(x*6.2831853)*.25 + .25;} // Smooth version.
-
-// Height function layers. 
-float h1(vec2 p){ return dot(tri(p + tri(p.yx*.5 + .25)), vec2(1)); }
-float h1Low(vec2 p){ return dot(triS(p + triS(p.yx*.5 + .25)), vec2(1)); }
-
-// Terrain height function. Just a few layers.
-float h(vec2 p) {
-    
-    float ret = 0., m = 1., a = 1., s = 0.;
-    
-    //for(int i=0; i<1; i++) {
-    
-        ret += a*h1Low(p/m);
-        //ret += a * n2D(p/m);
-        p = r2(1.57/3.73)*p;
-        //p = mat2(1, .75, -.75, 1)*p;
-        m *= -.375;
-        s += a;
-        a *= .3;
-    //}
-    
-    for(int i=1; i<5; i++) {
-        ret += a*h1(p/m);
-        //ret += a * n2D(p/m);
-        p = r2(1.57/3.73)*p;
-        //p = mat2(1, .75, -.75, 1)*p;
-        m *= -.375;
-        s += a;
-        a *= .3;
-    }
-    
-    ret /= s;
-    
-    return ret*.25 + ret*ret*ret*.75;
-
-}
-
-// The camera height function, which is a smoother version of the terrain function.
-float hLow(vec2 p) {
-    
-    float ret = 0., m = 1., a = 1., s = 0.;
-    for(int i=0; i<2; i++){
-        
-        ret += a*h1Low(p/m);
-        //ret += a * n2D(p/m);
-        p = r2(1.57/3.73)*p;
-        //p = mat2(1, .75, -.75, 1)*p;
-        m *= -.375;
-        s += a;
-        a *= .3;
-    }
-    
-    ret /= s;
-    
-    return ret*.25 + ret*ret*ret*.75;
-
-}
-
-// Surface function.
-float surfaceFunc(vec3 q){
-    
-    // Height.
-    float sf = h(q.xz/20.);
-    
-    // Experimental way to dig out a trench.
-    sf -= smax(1.4 - q.x*q.x*.5, 0., 1.)*.12;
-    
-    return (.5 - sf)*5.;
-}
-
-// Surface function for the camera.
-float surfaceFuncCam(vec3 q){
-    
-    // Height.
-    float sf = hLow(q.xz/20.);
-    
-    // Experimental way to dig out a trench.
-    sf -= smax(1.4 - q.x*q.x*.5, 0., 1.)*.12;
-    
-    return (.5 - sf)*3.;
-}
-
-// Toroidal distance function... Technically, a lot of these are just
-// bounds, so not exactly correct, which means shadows, glow, and other
-// things can be effected. However, they're cheaper, and you can't really
-// tell here.
-float distT(vec2 p){
-    
-    // Try some of the others, if you get bored enough. :)
-    
-    //return max(abs(p.x)*.866025 + p.y*.5, -p.y); // Triangle.
-    //return length(p); // Circle.
-    
-    p = abs(p);
-    return (p.x + p.y)*.7071; // Diamond.
-    //return max(p.x, p.y); // Square.
-    //return max(p.x*.866025 + p.y*.5, p.y); // Hexagon.
-    //return max((p.x + p.y)*.7071 - .4, max(p.x, p.y)); // Octagon.
-    
-}
-
-// Poloidal distance function. As mentioned above these are technically
-// bounds, but they work well enough.
-float distP(vec2 p){
-    
-    //return length(p); // Circle.
-    
-    p = abs(p);
-    return max((p.x + p.y)*.7071 - .06, max(p.x, p.y)); // Beveled square.
-    //return max(p.x*.866025 + p.y*.5, p.y); // Hexagon.
-    //return max(p.x, p.y); // Square.
-    
-}
-
-// Global scale, to space out the chrome objects.
-const vec3 sc = vec3(16, 4, 4);
-
-float objects(vec3 p){
-    
-    
-    p.xz += sc.xz/2.;
-    
-    vec3 ip = floor(p/sc)*sc;
-    
- 
-    // Repeating objects across the terrain in Z direction.
-    p.xz = vec2(p.x, p.z - ip.z) - sc.xz*.5; // Equivalent to: mod(p.xz, sc) - sc*.5;
-    // Repeating objects across the terrain in the X and Z directions.
-    //p.xz = (p.xz - ip.xz) - sc.xz*.5; // vec2(p.x, mod(p.z, sc.y)) - sc*.5;
-    
-    
-    // Obtaining the surface height at the center of the grid. This height is used
-    // to shift the object to the approximate top of the terrain.
-    float sf = surfaceFunc(ip);
-    
-    // Add the grid height to the object's Y position.
-    p.y += sf - 1.8;
-    
-    // Use the object's Z position to rotate it about the XY plane. This effect looks
-    // better on a flat terrain.
-    p.xy = r2(sc.z/16. - ip.z/16.)*p.xy;
-    // Random XZ rotation, just to show it can be done.
-    //p.xz = r2((hash(ip.z) - .5)/2.)*p.xz;
-    
-    
-    const float sz = 1.8;
-    const float th = .5;
-     
-    // Toroidal angle. 
-    //float a = atan(p.y, p.x);
-    
-    // Toroidal distance -- The large radius part.
-    p.xy = vec2(distT(p.xy) - sz, p.z);
-    // Windows logo warp. :)
-    //p.xy = vec2(distT(p.xy) - sz + sin(a*4.)*.125, p.z);
-    
-    // Mobius-like twisting: Twisting the toroidal axis one full revolution
-    // about the poloidal plane... Yeah, it confuses me too. :) Be sure to
-    // uncomment the "atan" bit above.
-    //p.xz = r2(a)*p.xz;
-    
-    
-    // Poloidal distance. The smaller radius part. 
-    float obj = distP(p.xz) - th/2.;
-    
-     
-    // Return the cell object.
-    return obj;
-    
-}
-
-
-// The distance function. Just some geometric objects and some terrain.
-float map(vec3 p){
-    
-    // Wrap everything around the path.
-    p.xy -= path(p.z);
-    
-    // The surface function. Essentially, the bumps we add to the terrain.
-    float sf = surfaceFunc(p);
-    
-    // The terrain, which we're lowering a bit.
-    float terr = p.y + .0 + sf;
-
-    // The chrome objects. 
-    float obj = objects(p);
-    
-    // Store the terrain and object IDs, for sorting later.
-    objID = vec4(terr, obj, 0, 0);
-    
-    // Return the minimum distance.
-    return min(terr, obj);
-    
-}
-
-
-// Standard raymarching routine.
-float trace(vec3 ro, vec3 rd){
-   
-    float t = 0., d;
-    
-    for (int i=0; i<80; i++){
-
-        d = map(ro + rd*t);
-        
-        if(abs(d)<.001*(t*.1 + 1.) || t>FAR) break;
-        
-        t += d*.866; // Using slightly more accuracy in the first pass.
-    }
-    
-    return min(t, FAR);
-}
-
-// Second pass, which is the first, and only, reflected bounce. 
-// Virtually the same as above, but with fewer iterations and less 
-// accuracy.
+// Robotic Arm. Created by Reinder Nijhoff 2019
+// Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+// @reindernijhoff
 //
-// The reason for a second, virtually identical equation is that 
-// raymarching is usually a pretty expensive exercise, so since the 
-// reflected ray doesn't require as much detail, you can relax things 
-// a bit - in the hope of speeding things up a little.
-float traceRef(vec3 ro, vec3 rd){
-    
-    float t = 0., d;
-    
-    for (int i=0; i<56; i++){
+// https://www.shadertoy.com/view/tlSSDV
+//
+// This shader is a proof of concept to find out if I could 
+// create a “typical” Shadertoy shader, i.e. a shader that renders 
+// a non-trivial animated 3D scene, by using a ray tracer instead 
+// of the commonly used raymarching techniques. 
+//
+// Some first conclusions:
+// 
+// - It is possible to visualize an animated 3D scene in a single 
+//   shader using ray tracing.
+// - The compile-time of this shader is quite long.
+// - The ray tracer is not super fast, so it was not possible to cast
+//   enough rays per pixel to support global illumination or soft
+//   shadows. Here I miss the cheap AO and soft shadow algorithms that
+//   are available when raymarching an SDF.
+// - Modelling a 3D scene for a ray tracer in code is verbose. It was
+//   not possible to exploit the symmetries in the arm and the domain
+//   repetition of the sphere-grid that would have simplified the
+//   description of an SDF.
+// - I ran in GPU-dependent unpredictable precision problems. Hopefully,
+//   most problems are solved now. I’m not sure if they are inherent
+//   to ray tracing, but I didn’t have these kinds of problems using
+//   raymarching before.
+//
 
-        d = map(ro + rd*t);//*rDir;
-        
-        if(abs(d)<.001*(t*.1 + 1.) || t>FAR) break;
-        
-        t += d*.9;
+#define AA 1 // Set AA to 1 if you have a slow GPU
+#define PATH_LENGTH 3
+#define MAX_DIST 60.
+#define MIN_DIST .001
+#define ZERO (min(iFrame,0))
+
+// Global variables
+float time;
+vec2[2] activeSpheres;
+vec2[3] joints;
+float joint0Rot;
+float jointYRot;
+
+//
+// Hash by Dave_Hoskins: https://www.shadertoy.com/view/4djSRW
+//
+vec2 hash22(vec2 p) {
+	vec3 p3 = fract(vec3(p.xyx) * vec3(.1031, .1030, .0973));
+    p3 += dot(p3, p3.yzx+33.33);
+    return fract((p3.xx+p3.yz)*p3.zy);
+}
+
+//
+// Ray-primitive intersection routines: https://www.shadertoy.com/view/tl23Rm
+//
+float dot2( in vec3 v ) { return dot(v,v); }
+
+// Plane 
+float iPlane( const in vec3 ro, const in vec3 rd, in vec2 distBound, inout vec3 normal,
+              const in vec3 planeNormal, const in float planeDist) {
+    float a = dot(rd, planeNormal);
+    float d = -(dot(ro, planeNormal)+planeDist)/a;
+    if (a > 0. || d < distBound.x || d > distBound.y) {
+        return MAX_DIST;
+    } else {
+        normal = planeNormal;
+    	return d;
     }
-    
-    return min(t, FAR);
 }
 
-
-
-// Bump function. 
-float bumpSurf3D( in vec3 p, float t){
-    
-    
-    float c, c0 = 0., c1 = 0.;
-    
-    //float bordTx0Tx1 = oSvObjID.x - oSvObjID.y;
-    //const float bordW = .0;
-    
-    
-    // Terrain.
-    if(svObjID == 0.){// || abs(bordTx0Tx1)<bordW) {
-        
-        c0 = fbm(p.xz*8.);
-        
-        c0 = (1. - c0)/3.;
-    }
-    /*
-    // Metallic objects. The original image has a metallic bump, 
-    // but I wanted to keep it smooth.
-    if(svObjID == 1.){// || abs(bordTx0Tx1)<bordW) {
-    
-        
-        c1 = (n3D(p*6.)*.66 + n3D(p*12.)*.34);
-        c1 = smoothstep(0., .1, n3D(p*3.) - .65)*c1/12.;
-        
-        //c1 = (1. - smoothstep(.05, .3, c1))/4.;
-        
-    }
-    */
-    // Used to fade the bump when objects are near one another, but
-    // I feel it's a little bit of overkill, for this particular example.
-    //c = mix(c0, c1, step(oSvObjID.y, oSvObjID.x));
-    //c = mix(c0, c1, smoothstep(-bordW/2., bordW/2., bordTx0Tx1));
-    
-    c = c0;
-    
-    // Fading the bump out over distance.
-    return c/(1. + t*t*3.);
-    
-}
-
-
-// Standard function-based bump mapping routine: This is the cheaper four tap version. There's
-// a six tap version (samples taken from either side of each axis), but this works well enough.
-vec3 doBumpMap(in vec3 p, in vec3 nor, float bumpfactor, float t){
-    
-    // Larger sample distances give a less defined bump, but can sometimes lessen the aliasing.
-    const vec2 e = vec2(.001, 0); 
-    
-    // Gradient vector: vec3(df/dx, df/dy, df/dz);
-    float ref = bumpSurf3D(p, t);
-    vec3 grad = (vec3(bumpSurf3D(p - e.xyy, t),
-                      bumpSurf3D(p - e.yxy, t),
-                      bumpSurf3D(p - e.yyx, t)) - ref)/e.x; 
-    
-    /*
-    // Six tap version, for comparisson. No discernible visual difference, in a lot of cases.
-    vec3 grad = vec3(bumpSurf3D(p - e.xyy, t) - bumpSurf3D(p + e.xyy, t),
-                     bumpSurf3D(p - e.yxy, t) - bumpSurf3D(p + e.yxy, t),
-                     bumpSurf3D(p - e.yyx, t) - bumpSurf3D(p + e.yyx, t))/e.x*.5;
-    */
-       
-    // Adjusting the tangent vector so that it's perpendicular to the normal. It's some kind 
-    // of orthogonal space fix using the Gram-Schmidt process, or something to that effect.
-    grad -= nor*dot(nor, grad);          
-         
-    // Applying the gradient vector to the normal. Larger bump factors make things more bumpy.
-    return normalize(nor + grad*bumpfactor);
-	
-}
-
-
-
-// Cheap shadows are the bain of my raymarching existence, since trying to alleviate artifacts is an excercise in
-// futility. In fact, I'd almost say, shadowing - in a setting like this - with limited  iterations is impossible... 
-// However, I'd be very grateful if someone could prove me wrong. :)
-float softShadow(vec3 ro, vec3 lp, float k, float t){
-
-    // More would be nicer. More is always nicer, but not really affordable... Not on my slow test machine, anyway.
-    const int maxIterationsShad = 32; 
-    
-    vec3 rd = lp - ro; // Unnormalized direction ray.
-
-    float shade = 1.;
-    float dist = .0015; // Coincides with the hit condition in the "trace" function.  
-    float end = max(length(rd), 0.0001);
-    //float stepDist = end/float(maxIterationsShad);
-    rd /= end;
-
-    // Max shadow iterations - More iterations make nicer shadows, but slow things down. Obviously, the lowest 
-    // number to give a decent shadow is the best one to choose. 
-    for (int i=0; i<maxIterationsShad; i++){
-
-        float h = map(ro + rd*dist);
-        shade = min(shade, k*h/dist);
-        //shade = min(shade, smoothstep(0.0, 1.0, k*h/dist)); // Subtle difference. Thanks to IQ for this tidbit.
-        // So many options here, and none are perfect: dist += min(h, .2), dist += clamp(h, .01, stepDist), etc.
-        dist += clamp(h, .05, .5); 
-        
-        // Early exits from accumulative distance function calls tend to be a good thing.
-        if (h<0. || dist > end) break; 
-    }
-
-    // I've added a constant to the final shade value, which lightens the shadow a bit. It's a preference thing. 
-    // Really dark shadows look too brutal to me. Sometimes, I'll add AO also just for kicks. :)
-    return min(max(shade, 0.) + .2, 1.); 
-}
-
-
-// Standard normal function. It's not as fast as the tetrahedral calculation, but more symmetrical.
-vec3 getNormal(in vec3 p) {
-	const vec2 e = vec2(.001, 0);
-	return normalize(vec3(map(p + e.xyy) - map(p - e.xyy), map(p + e.yxy) - map(p - e.yxy),	map(p + e.yyx) - map(p - e.yyx)));
-}
-
-
-
-vec3 getSky(vec3 ro, vec3 rd, vec3 lp){
-
-    // Gradient blues, and red, or something.
-    vec3 sky = max(mix(vec3(1, .7, .6), vec3(.7, .9, 1.5), rd.y + .0), 0.)/4.; 
-    
-    // Last minute contrast.
-    sky = pow(sky, vec3(1.25))*1.25;
-    
-    // Horizon strip.
-    sky = mix(sky, vec3(1, .1, .05), (1. - smoothstep(-.1, .25, rd.y))*.3);
-    
-    
-	// Blending in the sun.
-    float sun = max(dot(normalize(lp - ro), rd), 0.);
-    //sky = mix(sky, vec3(.6, 1, .5), pow(sun, 6.)*.5);
-    sky = mix(sky, vec3(1, .7, .6)*.9, pow(sun, 6.));
-    sky = mix(sky, vec3(1, .9, .8)*1.2, pow(sun, 32.));
-
-
-    // Subtle, fake sky curvature.
-    rd.z *= 1. + length(rd.xy)*.25;
-    rd = normalize(rd);
-
-    // A simple way to place some clouds on a distant plane above the terrain -- Based on something IQ uses.
-    const float SC = 1e5;
-    float tt = (SC - ro.y - .15)/(rd.y + .15); // Trace out to a distant XZ plane.
-    vec2 uv = (ro + tt*rd).xz; // UV coordinates.
-
-    // Mix the sky with the clouds, whilst fading out a little toward the horizon (The rd.y bit).
-    if(tt>0.) {
-
-        float cl = fbm(1.5*uv/SC);
-
-        // White clouds.
-        sky =  mix(sky, vec3(1)*vec3(1, .9, .85), smoothstep(.3, .95, cl)*
-                   smoothstep(.475, .575, rd.y*.5 + .5)*.5); 
-        // Fake dark shadow. Subtle, but kind of worth doing. :)
-        sky =  mix(sky, vec3(0), smoothstep(.0, .95, cl)*fbm(7.*uv/SC)*
-                   smoothstep(.475, .575, rd.y*.5 + .5)*.3);
-
-    }
-
-    // Speckles. Not science based, but it looks intering.
-    vec3 p = (ro + rd*FAR)/1. + vec3(0, 0, iTime);
-    float st = n3D(p)*.66 + n3D(p*2.)*.34;
-    st = smoothstep(.1, .9, st - .0);
-    sky = mix(sky, vec3(.7, .9, 1), (1. - sqrt(st))*.05);
-    
-    // The sky color.
-    return sky;
-
-}
-
-
-// Coloring\texturing the scene objects, according to the object IDs.
-vec3 getObjectColor(vec3 p, vec3 n){
-    
-    // Object texture color.
-
-    // Contorting the texture coordinates to math the contorted scene.
-    //vec3 txP = p - vec3(path(p.z), 0.);
-    p = p - vec3(path(p.z), 0.);
-
-    // Texture value, and individual texture values.
-    vec3 tx, tx0, tx1;
-    
-    float bordTx0Tx1 = oSvObjID.x - oSvObjID.y;
-    const float bordW = .075;
-    
-     
-    // If we hit the terrain, or hit the region near the terrain, color
-    // it up.
-    if(svObjID==0. || abs(bordTx0Tx1)<bordW){
-        
-        // Noisy color mixing. Tweaked until it looked right.
-        vec2 q = p.xz;
-
-        float c = n2D(q)*.6 + n2D(q*3.)*.3 + n2D(q*9.)*.1;
-        c = c*c*.7 + sFract(c*4., 12.)*.3;
-        c = c*.9 + .2;
-        tx0 = mix(vec3(1, .3, .2), vec3(1, .35, .25), n2D(q*6.));
-        tx0 *= c;
-
-        float c2 = n2D(q*20.)*.66 + n2D(q*40.)*.34;
-        c2 = smoothstep(.1, .6, c2*c2);
-
-
-        tx0 = mix(tx0*vec3(1.2, .8, .65).zyx, tx0, abs(n));
-        tx0 = mix(tx0, vec3(0), c2*.4);
-
-        //tx0 *= mix(vec3(1.2, .8, .6), vec3(1.2, .8, .6).yxz, -n.y*.5 + .5);
-
-        
-        /*
-        // Extra shadowing. A bit much, in this case.
- 		
-		// Matches the terrain height function.
-        float sf = h(p.xz/20.);
-    
-        // Experimental way to dig out a trench.
-    	sf -= smax(1.4 - q.x*q.x*.5, 0., 1.)*.12;
-        
-        tx0 *= smoothstep(-.1, .5, sf) + .5;
-        */
-        
-    }
-     
-    // If the ray hits the metallic object, or close to it, color it dark.
-    // The shininess is provided with the relective color. I used to get 
-    // this wrong all the time. :)
-    if(svObjID==1. || abs(bordTx0Tx1)<bordW) tx1 = vec3(.08, .1, .12);
-    
-    
-    // Return the color, which is either the terrain color, the shiny object color,
-    // or if we're in the vicinity of both, make it a mixture of the two.
-    tx = mix(tx0, tx1, smoothstep(-bordW, bordW, bordTx0Tx1));
-   
-    
-    return tx; // Return the object color.
-    
-}
-
-// Using the hit point, unit direction ray, etc, to color the scene. Diffuse, specular, falloff, etc. 
-// It's all pretty standard stuff.
-vec3 doColor(in vec3 ro, in vec3 sp, in vec3 rd, in vec3 sn, in vec3 lp, float edge, float crv, float ao, float t){
-    
-    // Initiate the scene (for this pass) to zero.
-    vec3 sceneCol = vec3(0);
-    
-    if(t<FAR){ // If we've hit a scene object, light it up.
-    
-        vec3 ld = lp - sp; // Light direction vector.
-        float lDist = max(length(ld), 0.001); // Light to surface distance.
-        ld /= lDist; // Normalizing the light vector.
-
-        // Attenuating the light, based on distance.
-        float atten = 1.5/(1. + lDist*0.001 + lDist*lDist*0.0001);
-
-        // Standard diffuse term.
-        float diff = max(dot(ld, sn), 0.);
-        //diff = pow(diff, 2.)*.66 + pow(diff, 4.)*.34;
-        // Standard specualr term.
-        float spec = pow(max(dot(reflect(-ld, sn), -rd), 0.), 32.);
-        float fres = clamp(1. + dot(rd, sn), 0., 1.);
-        //float Schlick = pow( 1. - max(dot(rd, normalize(rd + ld)), 0.), 5.0);
-        //float fre2 = mix(.5, 1., Schlick);  //F0 = .5.
-        
-        // Ramp up the diffuse value on the shiny geometric object. It's a cheap
-        // trick to make things look shiny.
-        if(svObjID==1.) diff *= diff*2.;
-
-        // Coloring the object, accoring to object ID,.        
-        vec3 objCol = getObjectColor(sp, sn);
-
-        
-        // Combining the above terms to produce the final scene color.
-        sceneCol = objCol*(diff + .35 + fres*fres*0. + vec3(.5, .7, 1)*spec);
-        
-        
-        // Attenuation only. To save cycles, the shadows and ambient occlusion
-        // from the first pass only are used.
-        sceneCol *= atten;
-    
-    }
-    
-    
-    // Get the sky color.  
-    vec3 sky = getSky(ro, rd, lp);
-    
-    // Smoothly blend it in, according to the FAR plane distance. Basically, we want it
-    // to fade in strongly as we hit the horizon.
-    sceneCol = mix(sceneCol, sky, smoothstep(0., .95, t/FAR)); // exp(-.002*t*t), etc.
- 
-    
-  
-    // Return the color. Done once for each pass.
-    return sceneCol;
-    
-}
-
-// I keep a collection of occlusion routines... OK, that sounded really nerdy. :)
-// Anyway, I like this one. I'm assuming it's based on IQ's original.
-float calculateAO(in vec3 pos, in vec3 nor)
-{
-	float sca = 2., occ = 0.;
-    for(int i=0; i<5; i++){
-    
-        float hr = .01 + float(i)*.5/4.;        
-        float dd = map(nor * hr + pos);
-        occ += (hr - dd)*sca;
-        sca *= .7;
-    }
-    return clamp(1. - occ, 0., 1.);    
-}
-
-
-void mainImage( out vec4 fragColor, in vec2 fragCoord ){
-
-    // Screen coordinates.
-	vec2 uv = (fragCoord - iResolution.xy*.5)/iResolution.y;
-    
-	
-	// Camera Setup.
-	vec3 ro = vec3(0, 1.25, iTime*2.); // Camera position, doubling as the ray origin.
-	vec3 lk = ro + vec3(0, 0, .5);  // "Look At" position.
-    
-    
-    // Light position. Set in up in the sky above the horizon -- out near the far plane.
-    vec3 lp = ro + vec3(-20, 30, 60);
-    
-   
-	// Using the Z-value to perturb the XY-plane.
-	// Sending the camera, "look at," and light vector down the path, which is 
-	// synchronized with the distance function.
-    ro.xy += path(ro.z);
-	lk.xy += path(lk.z);
-	lp.xy += path(lp.z);
-    
-    // Using a smoother version of the terrain function to move the camera up and down.
-    // Alternatively, you could thread it through some Bezier points... if you're not
-    // lazy, like me. :D
-    ro.y -= surfaceFuncCam(ro.xyz);
-    lk.y -= surfaceFuncCam(lk.xyz);
-    
-
-    // Using the above to produce the unit ray-direction vector.
-    float FOV = 3.14159/2.; // FOV - Field of view.
-    vec3 forward = normalize(lk-ro);
-    vec3 right = normalize(vec3(forward.z, 0., -forward.x )); 
-    vec3 up = cross(forward, right);
-
-    // rd - Ray direction.
-    //vec3 rd = normalize(forward + FOV*uv.x*right + FOV*uv.y*up);
-    
-    // Warped unit direction vector, for a warped lens effect.
-    vec3 rd = (forward + FOV*uv.x*right + FOV*uv.y*up);
-    rd = normalize(vec3(rd.xy, rd.z - length(rd.xy)*.15));
-    
-    
-    // Edge and curvature variables. Not used here.
-    float edge = 0., crv = 1.;
-
-    
-    // FIRST PASS.
-    //
-    float t = trace(ro, rd); // Trace.
-
-    // Save the object IDs after the first pass.
-    svObjID = objID.x<objID.y? 0. : 1.;
-    oSvObjID = objID;
-    
-    // Advancing the ray origin, "ro," to the new hit point.
-    vec3 sp = ro + rd*t;
-    
-    // Retrieving the normal at the hit point, plus the edge and curvature values.
-    //vec3 sn = getNormal(sp, edge, crv);
-    vec3 sn = getNormal(sp);
-    
-    // Function based bump mapping. the final value is a fade off with
-    // respect to distance.
-    sn = doBumpMap(sp, sn, .2, t/FAR);
-    
-
-    
-    // Fresnel. Handy for all kinds of aesthetic purposes. Not used here.
-    //float fr = clamp(1. + dot(rd, sn), 0., 1.);
-    
-    // Shading. Shadows, ambient occlusion, etc. We're only performing this on the 
-    // first pass. Not accurate, but faster, and in most cases, not that noticeable.
-    // In fact, the shadows almost didn't make the cut, but it didn't quite feel 
-    // right without them.
-    float sh = softShadow(sp + sn*.002, lp, 12., t); // Set to "1.," if you can do without them.
-    float ao = calculateAO(sp, sn);
-    sh = (sh + ao*.3)*ao;
-    
-
-    // Retrieving the color at the initial hit point.
-    vec3 sceneColor = doColor(ro, sp, rd, sn, lp, edge, crv, ao, t);
-
-    
-   
-    // SECOND PASS
-    
-    // Reflected and refracted rays.
-    vec3 refl = reflect(rd, sn); // Standard reflection.
-    //vec3 refr = refract(rd, sn, 1./1.33); // Water refraction. Note the inverted index.
-    
-    // We're branching off from the same spot in two directions, so we'll use this so as
-    // not to interfere with the original surface point vector, "sp." It was a style
-    // choice on my part, but there are other ways.
-    vec3 refSp; 
-    
-    // REFLECTED PASS
-    //
-    // Standard reflected ray, which is just a reflection of the unit
-    // direction ray off of the intersected surface. You use the normal
-    // at the surface point to do that.
-    
-    
-    // Making thing complicated for myself, and anyone trying to read this, just so I
-    // can blend the terrain into the object... In my defence, the unblended dirt doesn't
-    // quite look right sitting against the object. :)
-    float bordTx0Tx1 = oSvObjID.x - oSvObjID.y;
-    const float bordW = .075; // Blend border width... Kind of.
-    
-    // If the ray hits the chrome geometric object, or the ground nearby, perform a
-    // reflective pass.
-    if((svObjID==1. || abs(bordTx0Tx1)<bordW)  && t<FAR){
-
-        // The ray is edged off the surface, as required, but note that it has to be enough
-        // to avoid conflict with the break condition in the "reflected" trace algorithm.
-        t = traceRef(sp + refl*.002, refl);
-
-        // Save the object IDs after the second pass.
-        svObjID = objID.x<objID.y? 0. : 1.;
-    	oSvObjID = objID;
-
-
-        // Advancing the ray from the new origin, "sp," to the new reflected hit point.
-        refSp = sp + refl*t;
-
-        // Retrieving the normal at the reflected hit point.
-        sn = getNormal(refSp);
-        
-        // Color at the reflected hit point.
-        vec3 reflColor = doColor(sp, refSp, refl, sn, lp, edge, crv, 1., t);
-        sceneColor = mix(sceneColor, sceneColor + reflColor*1.33, smoothstep(-bordW/2., bordW/2., bordTx0Tx1));
-        //sceneColor = sceneColor + reflColor*1.33;
-        //sceneColor = sceneColor*.35 + mix(reflColor, sceneColor, fr*fr*.66 + .34)*2.5;
-        
-        
-        #ifndef THIRD_PASS
-        // Very cheap third pass: It'd be nice to put a proper third pass in, but we're 
-        // pushing our luck as it is, so we'll make do with a makeshift sky reflection.
-      
-        //if((svObjID==1. || abs(bordTx0Tx1)<bordW)  && t<FAR){
-        if(svObjID == 1. && t<FAR){
-            
-            refl = reflect(refl, sn);
-            vec3 sky = getSky(ro, refl, lp);
-            sceneColor = mix(sceneColor, sceneColor*.7 + sceneColor*sky*5.*vec3(1.15, 1, .85), smoothstep(-bordW/2., bordW/2., bordTx0Tx1));
-      
-            //sceneColor = sceneColor + tpCol*sky*4.;
-            //sceneColor = sceneColor*.7 + tpCol;
-            //sceneColor = sceneColor*.35 + mix(reflColor, sceneColor, fr*fr*.66 + .34)*2.5;
-            
+// Sphere: https://www.shadertoy.com/view/4d2XWV
+float iSphere( const in vec3 ro, const in vec3 rd, const in vec2 distBound, inout vec3 normal,
+               const float sphereRadius ) {
+    float b = dot(ro, rd);
+    float c = dot(ro, ro) - sphereRadius*sphereRadius;
+    float h = b*b - c;
+    if (h < 0.) {
+        return MAX_DIST;
+    } else {
+	    h = sqrt(h);
+        float d1 = -b-h;
+        float d2 = -b+h;
+        if (d1 >= distBound.x && d1 <= distBound.y) {
+            normal = normalize(ro + rd*d1);
+            return d1;
+        } else {
+            return MAX_DIST;
         }
-        #endif
-    
     }
-    
-    /*
-	// Really bad cheap reflection pass. Only here for debug purposes. 
-    //if(svObjID==1. && t<FAR){
-    if((svObjID==1. || abs(bordTx0Tx1)<bordW)  && t<FAR){
-        
-         vec3 sky = getSky(sp, refl, lp);
-         sceneColor = mix(sceneColor, sceneColor + sceneColor*sky*20., smoothstep(-bordW/2., bordW/2., bordTx0Tx1));
-      
-    }
-    */
-    
-    #ifdef THIRD_PASS
-    // More correct third pass: Since it's just a reflection off a reflection of one
-    // object, we're not using it by default, but it's there if you want it.
-    if(svObjID == 1. && t<FAR){
-        
-        refl = reflect(refl, sn);
-        
-        t = traceRef(refSp + refl*.002, refl);
-
-        // Save the object IDs after the third pass.
-        svObjID = objID.x<objID.y? 0. : 1.;
-    	oSvObjID = objID;
-        
-
-        // Advancing the ray from the new origin, "sp," to the new reflected hit point.
-        refSp = refSp + refl*t;
-
-        // Retrieving the normal at the reflected hit point.
-        sn = getNormal(refSp);//*rDir;
-        //edge = 0.;
-
-        
-        // Color at the reflected hit point.
-        vec3 reflColor = doColor(sp, refSp, refl, sn, lp, edge, crv, 1., t);
-        sceneColor = mix(sceneColor, sceneColor + reflColor*1.33, smoothstep(-bordW/2., bordW/2., bordTx0Tx1));
-     
-        //sceneColor = sceneColor + reflColor*1.25; 
-    }
-    #endif
-     
-    // APPLYING SHADOWS
-    //
-    // Multiply the shadow from the first pass by the final scene color. Ideally, you'd check to
-    // see if the reflected point was in shadow, and incorporate that too, but we're cheating to
-    // save cycles and skipping it. It's not really noticeable anyway.
-    sceneColor *= sh;
-    
-    
-    
-   
-    // POSTPROCESSING
-    // Interesting red to blueish mix.
-    //sceneColor = mix(sceneColor, pow(min(vec3(1.5, 1, 1)*sceneColor, 1.), vec3(1, 2.5, 12.)), uv.y);
-    //sceneColor = pow(max(sceneColor, 0.), vec3(1.25))*1.33; // Adding a bit of contrast.
-    //sceneColor *= mix(vec3(1.2, 1, .9).yxz, vec3(1.2, 1, .9).zyx, -rd.y*.5 + .5);
-    
-    /*
-    vec2 u2 = uv*r2(3.14159/6.);
-    float overlay = 1. + .35*sin(u2.x*3.14159*iResolution.y/1.5);
-    overlay *= 1. + .35*sin(u2.y*3.14159*iResolution.y/1.5); 
-    sceneColor *= overlay*1.1;
-    */
-    
-    // Subtle vignette.
-    uv = fragCoord/iResolution.xy;
-    sceneColor *= pow(16.*uv.x*uv.y*(1. - uv.x)*(1. - uv.y) , .0625)*.5 + .5;
-    // Colored varation.
-    //sceneColor = mix(pow(min(vec3(1.5, 1, 1)*sceneColor, 1.), vec3(1, 2.5, 12.)).zyx, sceneColor, 
-                    // pow( 16.0*uv.x*uv.y*(1.0-uv.x)*(1.0-uv.y) , .125)*.5 + .5);
-    
-    
-
-    // Clamping the scene color, then presenting to the screen.
-	fragColor = vec4(sqrt(max(sceneColor, 0.)), 1);
 }
 
+// Capped Cylinder: https://www.shadertoy.com/view/4lcSRn
+float iCylinder( const in vec3 oc, const in vec3 rd, const in vec2 distBound, inout vec3 normal,
+                 const in vec3 ca, const float ra, const bool traceCaps ) {
+    float caca = dot(ca,ca);
+    float card = dot(ca,rd);
+    float caoc = dot(ca,oc);
+    
+    float a = caca - card*card;
+    float b = caca*dot( oc, rd) - caoc*card;
+    float c = caca*dot( oc, oc) - caoc*caoc - ra*ra*caca;
+    float h = b*b - a*c;
+    
+    if (h < 0.) return MAX_DIST;
+    
+    h = sqrt(h);
+    float d = (-b-h)/a;
 
+    float y = caoc + d*card;
+    if (y >= 0. && y <= caca && d >= distBound.x && d <= distBound.y) {
+        normal = (oc+d*rd-ca*y/caca)/ra;
+        return d;
+    } else if(!traceCaps) {
+        return MAX_DIST;
+    } else {
+        d = ((y < 0. ? 0. : caca) - caoc)/card;
+
+        if( abs(b+a*d) < h && d >= distBound.x && d <= distBound.y) {
+            normal = normalize(ca*sign(y)/caca);
+            return d;
+        } else {
+            return MAX_DIST;
+        }
+    }
+}
+
+// Capped Cone: https://www.shadertoy.com/view/llcfRf
+float iCone( const in vec3 oa, const in vec3 rd, const in vec2 distBound, inout vec3 normal,
+             const in vec3 pb, const in float ra, const in float rb ) {
+    vec3  ba = pb;
+    vec3  ob = oa - pb;
+    
+    float m0 = dot(ba,ba);
+    float m1 = dot(oa,ba);
+    float m2 = dot(ob,ba); 
+    float m3 = dot(rd,ba);
+
+    //caps - only top cap needed for scene
+    if (m1 < 0. && dot2(oa*m3-rd*m1)<(ra*ra*m3*m3) ) {
+        float d = -m1/m3;
+        if (d >= distBound.x && d <= distBound.y) {
+            normal = -ba*inversesqrt(m0);
+            return d;
+        }
+    }
+    
+    // body
+    float m4 = dot(rd,oa);
+    float m5 = dot(oa,oa);
+    float rr = ra - rb;
+    float hy = m0 + rr*rr;
+
+    float k2 = m0*m0    - m3*m3*hy;
+    float k1 = m0*m0*m4 - m1*m3*hy + m0*ra*(rr*m3*1.0        );
+    float k0 = m0*m0*m5 - m1*m1*hy + m0*ra*(rr*m1*2.0 - m0*ra);
+
+    float h = k1*k1 - k2*k0;
+    if( h < 0. ) return MAX_DIST;
+
+    float t = (-k1-sqrt(h))/k2;
+
+    float y = m1 + t*m3;
+    if (y > 0. && y < m0 && t >= distBound.x && t <= distBound.y) {
+        normal = normalize(m0*(m0*(oa+t*rd)+rr*ba*ra)-ba*hy*y);
+        return t;
+    } else {   
+        return MAX_DIST;
+    }
+}
+
+// Box: https://www.shadertoy.com/view/ld23DV
+float iBox( const in vec3 ro, const in vec3 rd, const in vec2 distBound, inout vec3 normal, 
+            const in vec3 boxSize ) {
+    vec3 m = sign(rd)/max(abs(rd), 1e-8);
+    vec3 n = m*ro;
+    vec3 k = abs(m)*boxSize;
+	
+    vec3 t1 = -n - k;
+    vec3 t2 = -n + k;
+
+	float tN = max( max( t1.x, t1.y ), t1.z );
+	float tF = min( min( t2.x, t2.y ), t2.z );
+	
+    if (tN > tF || tF <= 0.) {
+        return MAX_DIST;
+    } else {
+        if (tN >= distBound.x && tN <= distBound.y) {
+        	normal = -sign(rd)*step(t1.yzx,t1.xyz)*step(t1.zxy,t1.xyz);
+            return tN;
+        } else if (tF >= distBound.x && tF <= distBound.y) {
+        //	normal = sign(rd)*step(t1.yzx,t1.xyz)*step(t1.zxy,t1.xyz);
+            return tF;
+        } else {
+            return MAX_DIST;
+        }
+    }
+}
+
+//
+// Ray tracer helper functions
+//
+vec3 FresnelSchlick(vec3 SpecularColor, vec3 E, vec3 H) {
+    return SpecularColor + (1. - SpecularColor) * pow(1.0 - max(0., dot(E, H)), 5.);
+}
+
+vec2 randomInUnitDisk(const vec2 seed) {
+    vec2 h = hash22(seed) * vec2(1.,6.28318530718);
+    float phi = h.y;
+    float r = sqrt(h.x);
+	return r*vec2(sin(phi),cos(phi));
+}
+
+//
+// Sphere functions
+//
+vec2 activeSphereGrid(float t) {
+  vec2 p = randomInUnitDisk(vec2(floor(t),.5));
+  return floor(p * 8.5 + 1.75*normalize(p));
+}
+
+vec3 sphereCenter(vec2 pos) {
+    vec3 c = vec3(pos.x, 0., pos.y)+vec3(.25,.25,.25);
+    c.xz += .5*hash22(pos);
+	return c;
+}
+
+vec3 sphereCol(in float t) {
+    return normalize(.5 + .5*cos(6.28318530718*(1.61803398875*floor(t)+vec3(0,.1,.2))));
+}
+
+//
+// Inverse Kinematics
+//
+// Very hacky, analytical,  inverse kinematics. I came up with the algorithm myself;
+// Íñigo Quílez can probably implement it without using trigonometry:
+// http://www.iquilezles.org/www/articles/noacos/noacos.htm
+//
+void initDynamics() {
+    time = iTime * .25;
+
+    activeSpheres[0] = activeSphereGrid(time);
+    activeSpheres[1] = activeSphereGrid(time+1.);
+
+    vec3 ta0 = sphereCenter(activeSpheres[0]);
+    vec3 ta1 = sphereCenter(activeSpheres[1]);
+
+    float taa0 = atan(-ta0.z, ta0.x);  
+    float taa1 = atan(-ta1.z, ta1.x);
+
+    if (abs(taa0-taa1) > 3.14159265359) {
+        taa1 += taa1 < taa0 ? 2. * 3.14159265359 : -2. * 3.14159265359;  
+    }
+    jointYRot = mix(taa0, taa1, clamp(fract(time)*2.-.5,0.,1.));    
+
+    float tal = mix(length(ta0), length(ta1), clamp(fract(time)*2.5-1.,0.,1.));
+
+    vec2 target = vec2(tal,.5-.5*smoothstep(.35,.4,abs(fract(time)-.5)));  
+
+    float c0 = length(target);
+    float b0 = min(11., 4. + 2. * c0 / 11.);
+
+    vec2 sd = normalize(target);
+    float t0 = asin(sd.y)+acos(-(b0*b0-25.-c0*c0)/(10.*c0));
+
+    joints[0] = vec2(5. * cos(t0), 5.* sin(t0));
+    joint0Rot = t0;
+
+    sd = normalize(target-joints[0]);  
+    float c1 = min(6., distance(joints[0], target));
+    const float b1 = 2.;  
+
+    float t1 = asin(sd.y) * sign(sd.x) + acos(-(b1*b1-16.-c1*c1)/(8.*c1));
+    t1 += sd.x < 0. ? 3.1415 : 0.;
+    joints[1] = joints[0] + 4. * vec2(cos(t1),sin(t1));
+    joints[2] = target;
+}
+
+//
+// Scene description
+//
+vec3 opU( const in vec3 d, const in float iResult, const in float mat ) {
+	return (iResult < d.y) ? vec3(d.x, iResult, mat) : d;
+}
+      
+vec3 iPlaneInt(vec3 ro, vec3 rd, float d) {
+    d = -(ro.y - d) / rd.y;
+    return ro + d * rd;
+}
+
+vec3 traceSphereGrid( in vec3 ro, in vec3 rd, in vec2 dist, out vec3 normal, const int maxsteps ) {  
+	float m = 0.;
+    if (ro.y < .5 || rd.y < 0.) {
+        vec3 ros = ro.y < .5 ? ro : iPlaneInt(ro, rd, .5);
+        if (length(ros.xz) < 11.) {
+            vec3 roe = iPlaneInt(ro, rd,rd.y < 0. ?0.:.5);
+            vec3 pos = floor(ros);
+            vec3 rdi = 1./rd;
+            vec3 rda = abs(rdi);
+            vec3 rds = sign(rd);
+            vec3 dis = (pos-ros+ .5 + rds*.5) * rdi;
+            bool b_hit = false;
+
+            // traverse grid in 2D
+            vec2 mm = vec2(0);
+            for (int i = ZERO; i<maxsteps; i++) {
+                float l = length(pos.xz+.5);
+                if (pos.y > .5 || pos.y < -1.5 || l > 11.) {
+                    break;
+                }
+                else if ( l > 2. && pos.y > -.5 && pos.y < 1.5 ) {
+                    float d = iSphere(ro-sphereCenter(pos.xz), rd, dist, normal, .25);
+                    if (d < dist.y) {
+                        m = 2.;
+                        dist.y = d;
+                        break;
+                    }
+                }	
+                vec3 mm = step(dis.xyz, dis.yxy) * step(dis.xyz, dis.zzx);
+                dis += mm*rda;
+                pos += mm*rds;
+            }
+        }
+    }
+	return vec3(dist, m);
+}
+
+vec3 rotateY( const in vec3 p, const in float t ) {
+    float co = cos(t);
+    float si = sin(t);
+    vec2 xz = mat2(co,si,-si,co)*p.xz;
+    return vec3(xz.x, p.y, xz.y);
+}
+
+vec3 worldhit( const in vec3 ro, const in vec3 rd, const in vec2 dist, out vec3 normal ) {
+    vec3 d = vec3(dist, 0.);
+    
+    d = traceSphereGrid(ro, rd, d.xy, normal, 10);
+    
+    d = opU(d, iPlane   (ro, rd, d.xy, normal, vec3(0,1,0), 0.), 1.);
+    d = opU(d, iCone    (ro-vec3(0,.2,0), rd, d.xy, normal, vec3(0,.2,0), 1.5, 1.4), 4.);
+    d = opU(d, iCylinder(ro, rd, d.xy, normal, vec3(0,.2,0), 1.5, false), 4.);
+    
+    float dmax = d.y;
+    vec3 roa = rotateY(vec3(ro.x, ro.y-1., ro.z), jointYRot);    
+    vec3 rda = rotateY(rd, jointYRot); 
+    
+    vec3 bb = vec3(.5*max(joints[1].x,joints[2].x), joints[0].y*.5, .0);
+    vec3 bbn;
+    
+    if (iBox(roa-bb, rda, vec2(0,100), bbn, bb+vec3(.75,.75,.8)) < 100.) {
+	    vec3 dr = vec3(-sin(joint0Rot), cos(joint0Rot), 0);
+        vec2 j21 = joints[2]-joints[1];
+        
+        for (int axis=0; axis<=1; axis++) {
+            float a = axis == 0 ? -1. : 1.;
+            d = opU(d, iCylinder(roa-vec3(0,0,a*.67), rda, d.xy, normal, vec3(0,0,-a*.2),.55, true), 3.);
+            d = opU(d, iCylinder(roa-vec3(0,0,a*.58)-.4*dr, rda, d.xy, normal, vec3(joints[0],-a*.24)-.24*dr,.07, false), 4.);
+            d = opU(d, iCylinder(roa-vec3(0,0,a*.58)+.4*dr, rda, d.xy, normal, vec3(joints[0],-a*.24)+.24*dr,.07, false), 4.);
+            d = opU(d, iCylinder(roa-vec3(joints[0],a*.45), rda, d.xy, normal, vec3(0,0,-a*.2),.35, true), 3.);
+            d = opU(d, iCylinder(roa-vec3(joints[1],a*.29), rda, d.xy, normal, vec3(0,0,-a*.08),.25, true), 3.);
+            d = opU(d, iCylinder(roa-vec3(joints[1],a*.24), rda, d.xy, normal, vec3(j21,a*.08),.03, false), 4.);
+        }
+
+        vec2 j10 = joints[1]-joints[0];
+        d = opU(d, iCylinder(roa-vec3(0,0,-.72), rda, d.xy, normal, vec3(0,0,1.44),.5, true), 5.);
+        d = opU(d, iBox     (roa+vec3(0,.5,0), rda, d.xy, normal, vec3(.5,.5,.47)), 5.);
+        d = opU(d, iCone    (roa-vec3(joints[0],0), rda, d.xy, normal, vec3(j10,0),.25, .15), 5.);
+        d = opU(d, iCylinder(roa-vec3(joints[0],-.5), rda, d.xy, normal, vec3(0,0,1.),.3, true), 5.);
+        d = opU(d, iCylinder(roa-vec3(joints[1],-.35), rda, d.xy, normal, vec3(0,0,.7),.2, true), 5.);
+        d = opU(d, iCylinder(roa-vec3(joints[2],-.4), rda, d.xy, normal, vec3(0,0,.8),.2, true), 3.);
+        d = opU(d, iSphere  (roa-vec3(joints[2],0), rda, d.xy, normal, .32), 5.);
+        d = opU(d, iCylinder(roa-vec3(joints[2],0), rda, d.xy, normal, vec3(0,-.5,0),.06, true), 3.);
+
+        if (d.y < dmax) {
+            normal = rotateY(normal, -jointYRot);
+        }
+    }    
+    return d;
+}
+
+float shadowhit( const vec3 ro, const vec3 rd, const float dist) {
+    vec3 normal;
+    float d = traceSphereGrid( ro, rd, vec2(.3, dist), normal, 4).y;
+    d = min(d, iCylinder(ro, rd, vec2(.3, dist), normal, vec3(0,.2,0), 1.5, false));
+    return d < dist-0.001 ? 0. : 1.;
+}
+
+//
+// Simple ray tracer
+//
+float getSphereLightIntensity(float num) {
+    return num > .5 ?
+        clamp(fract(time)*10.-1., 0., 1.) :
+		max(0., 1.-fract(time)*10.); 
+}
+
+float getLightIntensity( const vec3 pos, const vec3 normal, const vec3 light, const float intensity) {
+    vec3 rd = pos - light;
+    float i = max(0., dot(normal, -normalize(rd)) / dot(rd,rd));
+    i = i > 0.0001 ? i * intensity * shadowhit(light, normalize(rd), length(rd)) : 0.;
+    return max(0., i-0.0001);              
+}
+
+vec3 getLighting( vec3 p, vec3 normal ) {
+    vec3 l = vec3(0.);
+    
+    float i = getSphereLightIntensity(0.);
+    if (i > 0.) {
+	    l += sphereCol(time) * (i * getLightIntensity(p, normal, sphereCenter(activeSpheres[0]), .375));
+    } else {    
+        i = getSphereLightIntensity(1.);
+        if (i > 0.) {
+            l += sphereCol(time+1.) * (i * getLightIntensity(p, normal, sphereCenter(activeSpheres[1]), .25));
+        }
+    }
+    
+    vec3 robot = mix(sphereCol(time), sphereCol(time-1.), getSphereLightIntensity(0.));
+    vec3 lp = rotateY(vec3(joints[2].x, joints[2].y+1.,0), -jointYRot);
+    i = getLightIntensity(p, normal, lp, .5);
+    i += getLightIntensity(p, normal, vec3(0,2,0), .25);
+    l += i * robot;
+    
+    return l;
+}
+
+vec3 getEmissive( in vec2 pos, in float mat ) {
+    if (mat > 2.5 ) {
+	   return mix(sphereCol(time), sphereCol(time-1.), getSphereLightIntensity(0.));
+    } else if (mat > 1.5 ) {
+        float li0 = getSphereLightIntensity(0.);
+        float li1 = getSphereLightIntensity(1.);
+        if (li0 > 0. && pos == activeSpheres[0]) {
+            return sphereCol(time) * li0 * 1.25;
+        } else if (li1 > 0. && pos == activeSpheres[1]) {
+            return sphereCol(time+1.) * li1;
+        } else {
+            return vec3(0);
+        }
+    } else {
+        return vec3(0);
+    }
+}
+
+vec3 render( in vec3 ro, in vec3 rd) {
+    vec3 col = vec3(1);
+    vec3 emitted = vec3(0);
+    vec3 normal;
+        
+    for (int i=ZERO; i<PATH_LENGTH; ++i) {
+    	vec3 res = worldhit( ro, rd, vec2(MIN_DIST, MAX_DIST-1.), normal );
+		if (res.z > 0.) {
+			ro += rd * res.y;
+
+            if (res.z < 3.5) { 
+               	vec3 F = FresnelSchlick(vec3(0.4), normal, -rd);
+                emitted += (col * (getEmissive(floor(ro.xz), res.z) + .5 * getLighting(ro, normal))) * (1.-F);
+                col *= .5 * F;
+            } else {
+                col *= res.z < 4.5 ? vec3(.7,.75,.8) : vec3(.9,.6,.2);   
+            } 
+            
+            rd = normalize(reflect(rd,normal));
+        } else {
+			return emitted;
+        }
+    }  
+    return emitted;
+}
+
+mat3 setCamera( in vec3 ro, in vec3 ta, float cr ) {
+	vec3 cw = normalize(ta-ro);
+	vec3 cp = vec3(sin(cr), cos(cr),0.0);
+	vec3 cu = normalize( cross(cw,cp) );
+	vec3 cv =          ( cross(cu,cw) );
+    return mat3( cu, cv, cw );
+}
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
+    initDynamics();
+
+    vec2 mo = iMouse.xy == vec2(0) ? vec2(.4,-.1) : abs(iMouse.xy)/iResolution.xy - .5;
+
+    vec3 ro = vec3(10.5*cos(1.5+6.*mo.x), 6.+10.*mo.y, 8.5*sin(1.5+6.*mo.x));
+    vec3 ta = vec3(ro.x*ro.y*.02, .8, 0);
+    mat3 ca = setCamera(ro, ta, 0.);    
+    
+    vec3 col = vec3(0);
+    
+#if AA>1
+    for( int m=ZERO; m<AA; m++ )
+    for( int n=ZERO; n<AA; n++ ) {
+        vec2 o = vec2(float(m),float(n)) / float(AA) - 0.5;
+        vec2 p = (-iResolution.xy + 2.0*(fragCoord+o))/iResolution.y;
+#else    
+        vec2 p = (-iResolution.xy + 2.0*fragCoord)/iResolution.y;
+#endif
+        vec3 rd = ca * normalize( vec3(p.xy,1.6) );  
+        col += pow(8. * render(ro, rd), vec3(1./2.2));
+#if AA>1
+    }
+    col /= float(AA*AA);
+#endif
+    
+    col = clamp(col + ((hash22(fragCoord).x-.5)/64.), vec3(0), vec3(1));
+    
+	fragColor = vec4(col , 1);
+}

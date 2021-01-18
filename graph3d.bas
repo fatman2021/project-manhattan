@@ -14,15 +14,19 @@
 					 dim as boolean bMipmap
 					 dim as boolean bRepeat
 '                              x0
-					 mov(mem64(49355d),1920d) ' Set screen width to 1920
+					 mov(mem64(49355d),720d) ' Set screen width to 720
 '                              y0					   
-					 mov(mem64(49356d),1080d) ' Set screen height to 1080
+					 mov(mem64(49356d),576d) ' Set screen height to 576
 '                    Call glScreen
 					 poke64(49312d,0)
 
 					 dim as vec3 v3
-					 v3.x = scr_w     ' width  (in pixels)
-					 v3.y = scr_h     '`height (in pixels)
+					 'v3.x = scr_w     ' width  (in pixels)
+					 'v3.y = scr_h     '`height (in pixels)
+					 'v3.z = v3.x/v3.y ' pixel ratio
+					 
+					 v3.x = 720       ' width  (in pixels)
+					 v3.y = 576       '`height (in pixels)
 					 v3.z = v3.x/v3.y ' pixel ratio
 
 					 dim as ShaderToy Shader
@@ -3712,8 +3716,45 @@
 'GNU FORTRAN: ATOMIC_FETCH_OR atomically stores the value of ATOM in OLD and defines ATOM with the bitwise OR between the
 '             the values of ATOM and VALUE.
                       case 131: print #1, "atomic_fetch_or";
-'GNU FORTRAN ATOMIC_FETCH_XOR atomically stores the value of ATOM in OLD and defines ATOM with the bitwise XOR between the
-'            the values of ATOM and VALUE.
+'GNU FORTRAN: ATOMIC_FETCH_XOR atomically stores the value of ATOM in OLD and defines ATOM with the bitwise XOR between the
+'             the values of ATOM and VALUE.
                       case 132: print #1, "atomic_fetch_xor";
+'GNU FORTRAN: ATOMIC_OR atomically defines ATOM with the bitwise AND between the values of ATOM and VALUE.
+                      case 133: print #1, "atomic_or";
+'GNU FORTRAN: ATOMIC_REF atomically assigns the value of the variable ATOM to VALUE.
+                      case 134: print #1, "atomic_ref";
+'GNU FORTRAN: ATOMIC_XOR atomically defines ATOM with the bitwise XOR between the values of ATOM and VALUE.
+                      case 135: print #1, "atomic_xor";
+'GNU FORTRAN: BACKTRACE shows a BACKTRACE at an arbitrary place it user code.
+                      case 136: print #1, "backtrace";
+'GNU FORTRAN: BESSEL_J0 computes the Bessel function of the first kind of order 0 of X.
+                      case 137: print #1, "bessel_j0";
+'GNU FORTRAN: BESSEL_J1 computes the Bessel function of the first kind of order 1 of X.
+                      case 138: print #1, "bessel_j1";
+'GNU FORTRAN: BESSEL_JN computes the Bessel function of the first kind of order N of X.
+                      case 139: print #1, "bessel_jn";
+'GNU FORTRAN: BESSEL_Y0 computes the Bessel function of the second kind of order 0 of X.
+                      case 140: print #1, "bessel_y0";
+'GNU FORTRAN: BESSEL_Y1 computes the Bessel function of the second kind of order 1 of X.
+                      case 141: print #1, "bassel_y1";
+'GNU FORTRAN: BESSEL_YN computes the Bessel function of the second kind of order N of X.
+                      case 142: print #1, "bessel_yn";
+'GNU FORTRAN: BGE determines whether an integral is a bitwise greater than or equal to another.
+                      case 143: print #1, "bge";
+'GNU FORTRAN: BGT determines whether an integral is a bitwise greater then another.
+                      case 144: print #1, "bgt";
+'GNU FORTRAN: BIT_SIZE returns the number of bits (INTEGER procision plus sign bit) represented by the type of I.
+                      case 145: print #1, "bit_size";
+'GNU FORTRAN: BLE determines whether an integral is a bitwise less or equal to another.
+                      case 146: print #1, "ble";
+'GNU FORTRAN: BLT determines whether an integral is a bitwise less than another.
+                      case 147: print #1, "blt";
+'GNU FORTRAN: BTEST returns a logical TRUE if the bit at POS in I is set.
+                      case 148: print #1, "btest";
+'GNU FORTRAN: C_ASSOCIATED determines the status of the C pointer c_ptr_1 or if c_ptr_1 is associated with the 
+'             target c_ptr_2.
+                      case 149: print #1, "c_associated";
+'GNU FORTRAN: C_F_POINTER assigns dthe target of the C pointer CPTR to the Fortran pointer FPTR and specifies its shape.
+                      case 150: print #1, "c_f_pointer";
                      end select
 	       end select                 	       
