@@ -112,6 +112,8 @@ dim shared as string   get_key, get_data, old_data(10000)
 dim shared as short    data_pointer = 1, repeat
 dim shared as integer  prompt_flag = 1
 dim shared as string   eol: eol = chr(13) + chr(10)
+dim shared as ubyte    bytes(&H11111111)'
+dim shared as ushort   xwords(&B1111111111111111)
 
 var shared mov(bd_color,0d)
 var shared mov(b,0d),mov(c,0d),mov(x,0d),mov(y,0d),mov(xs,0d),mov(ys,0d)
@@ -361,26 +363,38 @@ end type
 
 constructor C64_T
   dim as integer i,c
+  ' initialize 8-bit values.
+  mov(i, &B00000000)
+L0A:
+  mov(bytes(i),i): mov(i add,                             &B00000001)
+  locate 1,1: print "BYTES: "; iif(i<&B100000000,i,i subt &B00000001)
+  cmp i ls &B100000000 jmp L0A
+  mov(i,   &B0000000000000000)
+L0B:
+  mov(xwords(i),i): mov(i add,                                  &B0000000000000001)
+  locate 2,1: print "WORDS: "; iif(i<&B1111111111111111,i,i add &B0000000000000001)
+  cmp i ls &B1111111111111111 jmp L0B
   dprint("C64_T()")  
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
   'ScreenRes 1920d,1080d, 32d, 0d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
-  ScreenRes 1920d,1080d, 32d, 0d, GFX_ALPHA_PRIMITIVES: Cls
+  'ScreenRes xwords(&B0000011110000000),xwords(&B0000010000111000),bytes(&B00100000),bytes(&B00000000),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+  ScreenRes xwords(&B0000011110000000),xwords(&B0000010000111000),bytes(&B00100000),bytes(&B00000000),GFX_ALPHA_PRIMITIVES: Cls
 #elseif defined(__FB_DOS__)
-  ScreenRes 800d,600d, 32d, 0d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+  ScreenRes xwords(&B0000001100100000),xwords(&B0000001001011000),bytes(&B00100000),bytes(&B00000000),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
 #endif
   ' get curent resolution
   screeninfo cast(uinteger,scr_w), cast(uinteger,scr_h), cast(uinteger,imgData), cast(uinteger,pitch)
-  mov(bgimage, ImageCreate(scr_w, scr_h,0d,32d))
-  mov(fgimage, ImageCreate(scr_w, scr_h,0d,32d))
-  mov(raster,  ImageCreate(scr_w,0d,0d,32d))
-  mov(render,  ImageCreate(scr_w,1080d,0d,32d))
-  mov(i, 0)  
+  mov(bgimage, ImageCreate(scr_w,scr_h,   bytes(&B00000000),bytes(&B00100000)))
+  mov(fgimage, ImageCreate(scr_w,scr_h,   bytes(&B00000000),bytes(&B00100000)))
+  mov(raster,  ImageCreate(scr_w,         bytes(&B00000000),bytes(&B00000000),bytes(&B00100000)))
+  mov(render,  ImageCreate(scr_w,xwords(&B0000010000111000),bytes(&B00000000),bytes(&B00100000)))
+  mov(i,                                                    bytes(&B00000000))  
 L0:
   read c:palette i,c
-  mov(i add, 1d)
-  cmp i lt 15d jmp L0
+  mov(i add, bytes(&B00000001))
+  cmp i lt   bytes(&B00001111) jmp L0
   mov(mem, new MEMORY_T)
   mov(cpu, new CPU6510(mem))
 end constructor
@@ -393,71 +407,71 @@ destructor C64_T
   ImageDestroy(fgimage)
   ImageDestroy(raster)
   ImageDestroy(render)  
-  sleep 1000d
+  sleep xwords(&B0000001111101000)
 end destructor
 
 constructor MEMORY_T
   'Set default system offset
   mov(sys_offset,49152d)
   ' initialize zero page and the stack
-  var mov(b,&B00000000000000000), mov(index,&B0000000000000000)
+  var mov(b,xwords(&B0000000000000000)), mov(index,xwords(&B0000000000000000))
 L1:  
   read b: mov(mem64(index), b)
-  mov(index add,    &B0000000000000001)
-  cmp index ls      &B0000000111111111 jmp L1
-  mov(index,        &B0000001000000000)
+  mov(index add,    xwords(&B0000000000000001))
+  cmp index ls      xwords(&B0000000111111111) jmp L1
+  mov(index,        xwords(&B0000001000000000))
 L2:
-  mov(mem64(index), &B0000000011111111)
-  mov(index add,    &B0000000000000001)
-  cmp index ls      &B0000001111111111 jmp L2
+  mov(mem64(index), xwords(&B0000000011111111))
+  mov(index add,    xwords(&B0000000000000001))
+  cmp index ls      xwords(&B0000001111111111) jmp L2
   ' initialize sine and cosine tables
-  mov(index,        &B0000000000000000)
+  mov(index,        xwords(&B0000000000000000))
 L3:  
-  mov(SINTable(index),SIN(index mul M_PI div &B0000000010110100))  
-  mov(COSTable(index),COS(index mul M_PI div &B0000000010110100))  
-  mov(index add,                             &B0000000000000001)
-  cmp index ls                               &B0000000101100111 jmp L3
+  mov(SINTable(index),SIN(index mul M_PI div xwords(&B0000000010110100)))  
+  mov(COSTable(index),COS(index mul M_PI div xwords(&B0000000010110100)))  
+  mov(index add,                             xwords(&B0000000000000001))
+  cmp index ls                               xwords(&B0000000101100111) jmp L3
   ' Set text color
-  poke64(49154d,&B11111111) ' Red
-  poke64(49155d,&B11111111) ' Greem
-  poke64(49156d,&B11111111) ' Blue
-  poke64(49157d,&B11111111) ' Alpha
-  poke64(49161d,&B11111111) ' Background Color(Alpha)
-  poke64(49456d,&B11111111) ' Border Color(Alpha)
+  poke64(49154d,bytes(&B11111111)) ' Red
+  poke64(49155d,bytes(&B11111111)) ' Greem
+  poke64(49156d,bytes(&B11111111)) ' Blue
+  poke64(49157d,bytes(&B11111111)) ' Alpha
+  poke64(49161d,bytes(&B11111111)) ' Background Color(Alpha)
+  poke64(49456d,bytes(&B11111111)) ' Border Color(Alpha)
   
   ' 648 Address 648 ($288) holds a "pointer" (or more precisely, half a pointer) that tells 
   ' KERNAL where in RAM the text screen is currently located: The contents of address 648 is
   ' the most significant 8 bits, or the "high-byte", of the text screen's physical start address.
-  poke64(648d,  &B00000100)  
+  poke64(648d,  bytes(&B00000100))  
   ' Address 53272 ($D018) is a VIC-II register that generally tells the graphics chip where to "look for graphics", 
   ' in conjunction with both the text screen and with bitmap graphics. 
-: poke64(53272d,&B00011111)
+: poke64(53272d,bytes(&B00011111))
 
   ' 49383d flip font       
   ' 49384d font offset
   ' 49385d font width
   ' 49386d font height
 '        font_f 
-  poke64(49383d,&B00000000) 'Flip font
+  poke64(49383d,bytes(&B00000000)) 'Flip font
 '        font_o    
-  poke64(49384d,&B00000010) 'Font offset
+  poke64(49384d,bytes(&B00000010)) 'Font offset
 '        font_w
-  poke64(49385d,&B00000111) 'Font width 
+  poke64(49385d,bytes(&B00000111)) 'Font width 
 '        font_h
-  poke64(49386d,&B00000111) 'Font height 
+  poke64(49386d,bytes(&B00000111)) 'Font height 
   var mov(i, 0d)
   dim as ubyte tmp
   ' init all ROM's
   open "64c.251913-01.bin" for binary as #1
 L4:  
   get #1,,tmp: mov(basic(i), tmp)
-  mov(i add, &B0000000000000001)
-  cmp i ls   &B0001111111111111 jmp L4
-  mov(i,     &B0000000000000000)
+  mov(i add, xwords(&B0000000000000001))
+  cmp i ls   xwords(&B0001111111111111) jmp L4
+  mov(i,     xwords(&B0000000000000000))
 L5: 
   get #1,,tmp: mov(kernal(i), tmp)
-  mov(i add, &B0000000000000001)  
-  cmp i ls   &B0001111111111111 jmp L5
+  mov(i add, xwords(&B0000000000000001))  
+  cmp i ls   xwords(&B0001111111111111) jmp L5
   close #1
   'for b as integer = 617 to 641
   /'
@@ -471,19 +485,19 @@ L5:
   '/
   
   open "./chargen/2.c64" for binary as #1
-  mov(i,     &B0000000000000000)
+  mov(i,     xwords(&B0000000000000000))
 L6:  
   get #1,,tmp: mov(char(i), tmp)
-  mov(i add, 1d)
-  cmp i ls   &B0001111111111111 jmp L6
+  mov(i add, xwords(&B0000000000000001))
+  cmp i ls   xwords(&B0001111111111111) jmp L6
   'close #1
   'open "./chargen/2.c64" for binary as #1
-  seek #1,   &B0000000000000000
-  mov(i,     &B0010000000000000)
+  seek #1,   xwords(&B0000000000000000)
+  mov(i,     xwords(&B0010000000000000))
 L7:  
   get #1,,tmp: mov(char(i), tmp)
-  mov(i add, &B0000000000000001)
-  cmp i ls   &B0011111111111111 jmp L7
+  mov(i add, xwords(&B0000000000000001))
+  cmp i ls   xwords(&B0011111111111111) jmp L7
   close #1
 /'
   restore CHAR_ROM
@@ -506,23 +520,33 @@ L7:
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)    
-  'Sets top of system memory  
-  poke64(0d,1.797693134862316e+308):poke64(1d,1.797693134862316e+308)
+  'Sets top of system memory
+  '      $0000(000000)                                                    $0001(00001)  
+  poke64(xwords(&B0000000000000000),1.797693134862316e+308):poke64(xwords(&B0000000000000001),1.797693134862316e+308)
   'Sets reset vector to top of system memory
-  poke64(&HFFFC,1.797693134862316e+308):poke64(&HFFFD,1.797693134862316e+308)
+  '      $FFFC(65532)                                                     $FFFD(65533)
+  poke64(xwords(&B1111111111111100),1.797693134862316e+308):poke64(xwords(&B1111111111111101),1.797693134862316e+308)
 #elseif defined(__FB_DOS__)
-  'Sets top of system memory   
-  poke64(0d,    &B00000000):poke64(1d,    &B00000000)
+  'Sets top of system memory
+  '      $0000(000000)                                        $0001(00001)
+  poke64(xwords(&B0000000000000000),bytes(&B00000000)):poke64(xwords(&B0000000000000001),bytes(&B00000001))
   'Sets reset vector to top of system memory
-  poke64(&HFFFC,&B00000000):poke64(&HFFFD,&B10000000)
+  '      $FFFC(65532)                                         $FFFD(65533)  
+  poke64(xwords(&B1111111111111100),bytes(&B00000000)):poke64(xwords(&B1111111111111101),bytes(&B10000000))
 #endif  
-  paint(&B00000000,&B00000000), rgba(&B00000000, &B00000000, &B00000000, &B11111111)
+  paint(bytes(&B00000000),bytes(&B00000000)),rgba(bytes(&B00000000),bytes(&B00000000),bytes(&B00000000),bytes(&B11111111))
   'SYS calls 7E72
-  poke64(&H7E72,&B10101001): poke64(&H7E73,&B00000000)                            ' LDA #$00  10101001 00000000
-  poke64(&H7E74,&B10001101): poke64(&H7E75,&B00000000): poke64(&H7E76,&B11000000) ' STA $C000 10001101 00000000 11000000
-  poke64(&H7E77,&B01100000)                                                       ' RTS       01100000
+  '.,7E72 LDA #$00  10101001 00000000
+  '.,7E74 STA $C000 10001101 00000000 11000000
+  '.,7E77 RTS       01100000
+  '      $7E72(32370)                                           $7E73(32371)
+  poke64(xwords(&B00111111001110010),bytes(&B10101001)): poke64(xwords(&B00111111001110011),bytes(&B00000000))
+  '      $7E74(32372)                                           $7E75(32373)                                                  $7E76(32374)                            
+  poke64(xwords(&B00111111001110100),bytes(&B10001101)): poke64(xwords(&B00111111001110101),bytes(&B00000000)): poke64(xwords(&B00111111001110110),bytes(&B11000000))
+  '      $7E77(32370)
+  poke64(xwords(&B00111111001110111),bytes(&B01100000))                                                       
   
-  var mov(mem,chr(0)), mov(a,0)
+  var mov(mem,chr(bytes(&B00000000))), mov(a,bytes(&B00000000))
   
   'mov(basic(&H0B46), &H00) '.,AB45 A9 00    LDA #$00        ;set input prompt to NULL
   'mov(basic(&H178E), &H00) '.,B78E F0 05    BEQ $B794       ;ASC() - Ignore NULL
@@ -530,76 +554,94 @@ L7:
   'Patch BASIC startup messages" 
 
   mov(mem, "BYTES")
-  mov(a,1d)
+  mov(a,&B00000001)
 L8:
-  mov(kernal(&H466 add a),  asc(mid(mem,a,1d)))
-  cmp logic_and(kernal(&H466 add a) gt 31,kernal(&H466 add a) lt 64) jmp L9:
-  mov(a add,1d)
+  '          $466(1126)
+  mov(kernal(xwords(&B000010001100110) add a),  asc(mid(mem,a,bytes(&B11111111))))
+  '                    $466(1126)                                                      $466(1126)
+  cmp logic_and(kernal(xwords(&B000010001100110) add a) gt    bytes(&B00011111),kernal(xwords(&B000010001100110) add a) lt bytes(&B01000000)) jmp L9
+  mov(a add,                                                  bytes(&B00000001))
   cmp a ls len(mem) jmp L8
   jmp L10
 L9:
-  mov(kernal(&H466 add a),kernal(&H466 add a) add 32)
+  '          $466(1126)                              $466(1126)
+  mov(kernal(xwords(&B000010001100110) add a),kernal(xwords(&B000010001100110) add a) add bytes(&B00100000))
   jmp L8
 L10:  	   
   mov(mem, "FREE")
-  mov(a,1d)
-L11:  
-  mov(kernal(&H46C add a),  asc(mid(mem,a,1d)))
-  cmp logic_and(kernal(&H46C add a) gt 31, kernal(&H46C add a) lt 64) jmp L12 	   
-  mov(a add,1d) 
+  mov(a,bytes(&B00000001))
+L11:
+  '          $46C(1132)
+  mov(kernal(xwords(&B0000010001101100) add a),  asc(mid(mem,a,bytes(&B00000001))))
+  '                    $46C(1132)                                                       $46C(1132)
+  cmp logic_and(kernal(xwords(&B0000010001101100) add a) gt    bytes(&B00011111),kernal(xwords(&B0000010001101100) add a) lt bytes(&B01000000)) jmp L12 	   
+  mov(a add,                                                   bytes(&B00000001)) 
   cmp a ls len(mem) jmp L11
   jmp L13	 
 L12:
-  mov(kernal(&H46C add a),kernal(&H46C add a) add 32)
+  '          $46C(1132)                               $46C(1132)
+  mov(kernal(xwords(&B0000010001101100) add a),kernal(xwords(&B0000010001101100) add a) add bytes(&B00100000))
   jmp L11
-L13:  
-  mov(kernal(&H47D), &H2A): mov(kernal(&H47E), &H20)
-  mov(kernal(&H47F), &H20) 
+L13:
+  '          $47D(1149)                                                 $47E(1150)
+  mov(kernal(xwords(&B000010001111101)), bytes(&B00101010)): mov(kernal(xwords(&B000010001111110)), bytes(&B00100000))
+  '          $47F(1151)
+  mov(kernal(xwords(&B000010001111111)), bytes(&B00100000)) 
   mov(mem, "MICROSOFT")
-  mov(a, 1d)
-L14:  
-  mov(kernal(&H47F add a),  asc(mid(mem,a,1d)))
-  cmp logic_and(kernal(&H47F add a) gt 31, kernal(&H47F add a) lt 64) jmp L15
-  mov(a add, 1d)
+  mov(a,bytes(&B00000001))
+L14:
+  '          $47F(1151)  
+  mov(kernal(xwords(&B000010001111111) add a),  asc(mid(mem,a,bytes(&B00000001))))
+  '                    $47F(1151)                                                       $47F(1151)
+  cmp logic_and(kernal(xwords(&B000010001111111) add a) gt    bytes(&B00011111), kernal(xwords(&B000010001111111) add a) lt bytes(&B01000000)) jmp L15
+  mov(a add,                              bytes(&B00000001)) 
   cmp a ls len(mem) jmp L14
   jmp L16
 L15:
-  mov(kernal(&H47F add a),kernal(&H47F add a) add 32)
+  '          $47F(1151)                              $47F(1151)
+  mov(kernal(xwords(&B000010001111111) add a),kernal(xwords(&B000010001111111) add a) add bytes(&H0100000))
   jmp L14:
-L16:  
-  mov(kernal(&H489), &H20)
+L16:
+  '          $489(1161)  
+  mov(kernal(&H489), bytes(&B00100000))
   mov(mem, "BASIC")
-  mov(a, 1d)
-L17:   
-  mov(kernal(&H460 add a), asc(mid(mem,a,1d)))
-  cmp logic_and(kernal(&H460 add a) gt 31, kernal(&H460 add a) lt 64) jmp L18
-  mov(kernal(&H489 add a), asc(mid(mem,a,1d)))
-  cmp logic_and(kernal(&H489 add a) gt 31, kernal(&H489 add a) lt 64) jmp L19
-  mov(a add, 1d)
+  mov(a, bytes(&B00000001))
+L17:
+  '          $460(1120)  
+  mov(kernal(&H460 add a), asc(mid(mem,a,bytes(&B00000001))))
+    '                  $460(1120)                                  $460(1120) 
+  cmp logic_and(kernal(&H460 add a) gt   bytes(&B00011111), kernal(&H460 add a) lt bytes(&B01000000)) jmp L18
+  '          $489(1161)
+  mov(kernal(&H489 add a), asc(mid(mem,a,bytes(&B00000001))))
+  '                    $489(1161)                                  $489(1161)
+  cmp logic_and(kernal(&H489 add a) gt   bytes(&B00011111), kernal(&H489 add a) lt bytes(&B01000000)) jmp L19
+  mov(a add,                             bytes(&B00000001))
   cmp a ls len(mem) jmp L17
   jmp L20
 L18:
-  mov(kernal(&H460 add a),kernal(&H460 add a) add 32)
+  '          $460(1120)          $460(1120)
+  mov(kernal(&H460 add a),kernal(&H460 add a) add bytes(&B00100000))
   jmp L17
 L19:
-  mov(kernal(&H489 add a),kernal(&H489 add a) add 32)
+  '          $489(1161)          $489(1161)
+  mov(kernal(&H489 add a),kernal(&H489 add a) add bytes(&B00100000))
   jmp L17
   
 L20: 
-  mov(kernal(&H48F), &H20): mov(kernal(&H490), &H86)
-  mov(kernal(&H491), &H32): mov(kernal(&H492), &H20)
-  mov(kernal(&H493), &H2A) 
+  mov(kernal(&H48F), bytes(&B00100000)): mov(kernal(&H490), bytes(&B10000110))
+  mov(kernal(&H491), bytes(&B00110010)): mov(kernal(&H492), bytes(&B00100000))
+  mov(kernal(&H493), bytes(&B00101010)) 
   mov(mem, " RAM SYSTEM")
-  mov(a,1d)
+  mov(a,bytes(&B00000001))
 L21:
-  mov(kernal(&H49E add a), asc(mid(mem,a,1d)))
-  cmp logic_and(kernal(&H495 add a) gt 31, kernal(&H495 add a) lt 64) jmp L22
+  mov(kernal(&H49E add a), asc(mid(mem,a,bytes(&B00000001))))
+  cmp logic_and(kernal(&H495 add a) gt   bytes(&B00001111), kernal(&H495 add a) lt bytes(&B01000000)) jmp L22
 L22:  
-  mov(a add, 1d)  
+  mov(a add, bytes(&B00000001))  
   cmp a ls len(mem) jmp L21
   jmp L23a
 L23:
-  mov(kernal(&H495 add a),kernal(&H495 add a) add 32)
+  mov(kernal(&H495 add a),kernal(&H495 add a) add bytes(&B00100000))
   jmp L22           
 L23a:
 /'     
@@ -630,30 +672,41 @@ L23a:
   '64-bit memory detection
   '.:E47B 2A 2A (mem) 47 42 4D 4D 4F  (cr) (cr) (mem)gb ram system
   
-  mov(mem, str(int(fre(mem64(0d)) idiv 1024d expt 3d)))
-  cmp len(mem) eq 1 jmp L24
-  cmp len(mem) eq 2 jmp L25
+  mov(mem, str(int(fre(mem64(bytes(&H00000000))) idiv &B0000010000000000 expt bytes(&B00000011))))
+  cmp len(mem) eq            bytes(&B00000001) jmp L24
+  cmp len(mem) eq            bytes(&B00000010) jmp L25
 L24:
-  mov(kernal(&H49B), asc(mem))
-  mov(kernal(&H49C), &H47): mov(kernal(&H49D), &H42)
+  '          $49B(1179)
+  mov(kernal(xwords(&B0000010010011011)), asc(mem))
+  '          $49C(1180)                                                  $49D(1181)      
+  mov(kernal(xwords(&B0000010010011100)), bytes(&B01000111)): mov(kernal(xwords(&B0000010010011101)), bytes(&B01000010))
   jmp L27
 L25:
-  mov(kernal(&H49B), asc(mid(mem,1d,1d)))
-  mov(kernal(&H49C), asc(mid(mem,2d,1d)))
-  mov(kernal(&H49D), &H47): mov(kernal(&H49E), &H42)
+  '          $49B(1179)
+  mov(kernal(xwords(&B0000010010011011)), asc(mid(mem,bytes(&B00000001),                                          bytes(&B00000001))))
+  '          $49C(1180)
+  mov(kernal(xwords(&B0000010010011100)), asc(mid(mem,bytes(&B00000010),                                          bytes(&B00000001))))
+  '          $49D(1181)                                                                     $49E(1182)
+  mov(kernal(xwords(&B0000010010011101)),             bytes(&B01000111)): mov(kernal(xwords(&B0000010010011110)), bytes(&B01000010))
   mov(mem, " RAM SYSTEM")
-  mov(a,1d)
-L26:          
-  mov(kernal(&H49E add a), asc(mid(mem,a,1d)))   
-  mov(a add, 1d)  
+  mov(a,bytes(&B00000001))
+L26:
+  '          $49E(1182)          
+  mov(kernal(xwords(&B0000010010011110) add a), asc(mid(mem,a,bytes(&B00000001))))   
+  mov(a add,                                                  bytes(&B00000001))  
   cmp a ls len(mem) jmp L26
-  mov(kernal(&H49F), &H20): mov(kernal(&H4A3), &H20) ' Replace "@" at E49F and E4A3 with " ".
+  '          $49F(1183)
+  mov(kernal(xwords(&B0000010010011111)),                     bytes(&B00100000)) ' Replace "@" at E49F with " ".
+  '          $4A3(1187)
+  mov(kernal(xwords(&B0000010010100011)),                     bytes(&B00100000)) ' Replace "@" at E4A3 with " ".
   jmp L27
 L27:
-
-  mov(kernal(&H535), &HFA) '.,E534 A9 FA    LDA #$FA     ;set default text color to FA(Apple ][ Green)
-  mov(kernal(&HCD9), &HFF) '.:ECD9 FF                    ;set default border color to FF(Black)
-  mov(kernal(&HCDA), &HFF) '.:ECDA FF                    ;set default background color to FF(Black)
+  '          $535(1333)
+  mov(kernal(xwords(&B0000010100110101)), bytes(&B11111010)) '.,E534 A9 FA    LDA #$FA     ;set default text color to FA(Apple ][ Green)
+  '          $CD9(3289)
+  mov(kernal(xwords(&B0000110011011001)), bytes(&B11111111)) '.:ECD9 FF                    ;set default border color to FF(Black)
+  '          $CDA(3290)
+  mov(kernal(xwords(&B0000110011011010)), bytes(&B11111111)) '.:ECDA FF                    ;set default background color to FF(Black)
   /'
   kernal(&H506) = &H50 'get the x size
   kernal(&H598) = &H3C 'get the y size
@@ -1575,15 +1628,17 @@ end proc
 
 def MEMORY_T.poke64(byval adr as double,byval v as double)
   mov(mem64(adr), v)
-  cmp logic_and(adr gs 55296d,adr ls 56319d) jmp L670
+  '                    $D800(55296)                      $DBFF(56319)
+  cmp logic_and(adr gs xwords(&B1101100000000000),adr ls xwords(&B1101101111111111)) jmp L670
   jmp L671
 L670:
-  mov(adr subt, 55296d): mov(col(adr), v)
-'                    scr_ptr
-  mov(adr add, mem64(49451d))
+  '                    $D800(55296)
+  mov(adr subt,        xwords(&B1101100000000000)): mov(col(adr), v)
+'                      scr_ptr=$C12B(49451) 
+  mov(adr add, mem64(  xwords(&B1100000100101011)))
   mov(v, mem64(adr))
-L671:  
-  cmp adr eq 199d jmp L672 ' Reverse Print Mode(0=Off)
+L671: '                $00C7(00199)  
+  cmp adr eq           xwords(&B0000000011000111) jmp L672 ' Reverse Print Mode(0=Off)
   jmp L673
 L672:
   /'
@@ -1688,32 +1743,32 @@ L931:
     select case as const cast(ulongint, v)
 		   case &B00001111:
 '                     scr_ptr		     
-		    mov(mem64(49451d), &B0000000000000000) 
+		    mov(mem64(49451d), xwords(&B0000000000000000)) 
 '                                           scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
 		   case &B00011111:
 '                     scr_ptr		   
-		    mov(mem64(49451d), &B0000010000000000) 
+		    mov(mem64(49451d), xwords(&B0000010000000000)) 
 '                                           scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
 		   case &B00101111:
 '                     scr_ptr		     
-		    mov(mem64(49451d), &B0000100000000000)
+		    mov(mem64(49451d), xwords(&B0000100000000000))
 '                                           scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
 		   case &B00111111:
 '                     scr_ptr		     
-		    mov(mem64(49451d), &B0000110000000000) 
+		    mov(mem64(49451d), xwords(&B0000110000000000)) 
 '                                           scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
 		   case &B01001111:
 '                     scr_ptr		     
-		    mov(mem64(49451d), &B0001000000000000) 
+		    mov(mem64(49451d), xwords(&B0001000000000000)) 
 '                                           scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
 		   case &B01011111:
 '                     scr_ptr		     
-		    mov(mem64(49451d), &B0001010000000000) 
+		    mov(mem64(49451d), xwords(&B0001010000000000)) 
 '                                           scr_ptr		    
 		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
 		   case &B01101111:
@@ -1841,283 +1896,283 @@ L2086:
      paint(0d,0d), rgba(0d, 0d, 0d, 255d)   
 #endif     	  
 	case 49154d ' Foreground Red
-'              fg_color      alpha                     red                       green                     blue                	     
-	 mov(mem64(49353d),mem64(49157d) shl 24d add mem64(49154d) shl 16d add mem64(49155d) shl 08d add mem64(49156d))
+'              fg_color      alpha                                   red                                     green                                   blue                	     
+	 mov(mem64(49353d),mem64(49157d) shl bytes(&B00011000) add mem64(49154d) shl bytes(&B00010000) add mem64(49155d) shl bytes(&B00001000) add mem64(49156d))
 	case 49155d ' Foreground Green
-'              fg_color      alpha                     red                       green                     blue 
-	 mov(mem64(49353d),mem64(49157d) shl 24d add mem64(49154d) shl 16d add mem64(49155d) shl 08d add mem64(49156d))
+'              fg_color      alpha                                   red                                     green                                   blue 
+	 mov(mem64(49353d),mem64(49157d) shl bytes(&B00011000) add mem64(49154d) shl bytes(&B00010000) add mem64(49155d) shl bytes(&B00001000) add mem64(49156d))
 	case 49156d ' Foreground Blue
-'              fg_color      alpha                     red                       green                     blue 	
-	 mov(mem64(49353d),mem64(49157d) shl 24d add mem64(49154d) shl 16d add mem64(49155d) shl 08d add mem64(49156d))
+'              fg_color      alpha                                   red                                     green                                   blue 	
+	 mov(mem64(49353d),mem64(49157d) shl bytes(&B00011000) add mem64(49154d) shl bytes(&B00010000) add mem64(49155d) shl bytes(&B00001000) add mem64(49156d))
 	case 49157d ' Foreground Alpha
-'              fg_color      alpha                     red                       green                     blue 
-	 mov(mem64(49353d),mem64(49157d) shl 24d add mem64(49154d) shl 16d add mem64(49155d) shl 08d add mem64(49156d))
+'              fg_color      alpha                                   red                                     green                                   blue 
+	 mov(mem64(49353d),mem64(49157d) shl bytes(&B00011000) add mem64(49154d) shl bytes(&B00010000) add mem64(49155d) shl bytes(&B00001000) add mem64(49156d))
 	case 49158d ' Background Red
-'              bg_color      alpha                     red                       green                     blue 
-	 mov(mem64(49354d),mem64(49161d) shl 24d add mem64(49158d) shl 16d add mem64(49159d) shl 08d add mem64(49160d))
+'              bg_color      alpha                                   red                                     green                                   blue 
+	 mov(mem64(49354d),mem64(49161d) shl bytes(&B00011000) add mem64(49158d) shl bytes(&B00010000) add mem64(49159d) shl bytes(&B00001000) add mem64(49160d))
 	case 49159d ' Background Green
-'              bg_color      alpha                     red                       green                     blue	
-	 mov(mem64(49354d),mem64(49161d) shl 24d add mem64(49158d) shl 16d add mem64(49159d) shl 08d add mem64(49160d))
+'              bg_color      alpha                                   red                                     green                                   blue	
+	 mov(mem64(49354d),mem64(49161d) shl bytes(&B00011000) add mem64(49158d) shl bytes(&B00010000) add mem64(49159d) shl bytes(&B00001000) add mem64(49160d))
 	case 49160d ' Background Blue
-'              bg_color      alpha                     red                       green                     blue	
-	 mov(mem64(49354d),mem64(49161d) shl 24d add mem64(49158d) shl 16d add mem64(49159d) shl 08d add mem64(49160d))
+'              bg_color      alpha                                   red                                     green                                   blue	
+	 mov(mem64(49354d),mem64(49161d) shl bytes(&B00011000) add mem64(49158d) shl bytes(&B00010000) add mem64(49159d) shl bytes(&B00001000) add mem64(49160d))
 	case 49161d ' Background Alapha
-'              bg_color      alpha                     red                       green                     blue 
-	 mov(mem64(49354d),mem64(49161d) shl 24d add mem64(49158d) shl 16d add mem64(49159d) shl 08d add mem64(49160d))
+'              bg_color      alpha                                   red                                     green                                   blue 
+	 mov(mem64(49354d),mem64(49161d) shl bytes(&B00011000) add mem64(49158d) shl bytes(&B00010000) add mem64(49159d) shl bytes(&B00001000) add mem64(49160d))
 #if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__)  or defined(__FB_XBOX__) or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
 	case 49162d 'ld x0
-'              x0            x0d4 	                   x0d3                      x0d2          
-	 mov(mem64(49355d),mem64(49163d) shl 32d add mem64(49164d) shl 24d add mem64(49165d) shl 16d add _        
-	                   mem64(49166d) shl 08d add mem64(49167))
-'                            x0d1                      x0d0		                   
+'              x0            x0d4 	                                 x0d3                                    x0d2          
+	 mov(mem64(49355d),mem64(49163d) shl bytes(&B00100000) add mem64(49164d) shl bytes(&B00011000) add mem64(49165d) shl bytes(&B00010000) add _        
+	                   mem64(49166d) shl bytes(&B00001000) add mem64(49167))
+'                            x0d1                                    x0d0		                   
 	case 49168d 'ld y0
-'              y0            y0d4      	               y0d3                      y0d2 
-	 mov(mem64(49356d),mem64(49169d) shl 32d add mem64(49170d) shl 24d add mem64(49171d) shl 16d add _
-	                   mem64(49172d) shl 08d add mem64(49173d))
-'                            y0d1                      y0d0	                   
+'              y0            y0d4      	                             y0d3                                    y0d2 
+	 mov(mem64(49356d),mem64(49169d) shl bytes(&B00100000) add mem64(49170d) shl bytes(&B00011000) add mem64(49171d) shl bytes(&B00010000) add _
+	                   mem64(49172d) shl bytes(&B00001000) add mem64(49173d))
+'                            y0d1                                    y0d0	                   
 	case 49174d 'ld z0
-'              z0            z0d4                      z0d3                      z0d2   	           
-	 mov(mem64(49357d),mem64(49175d) shl 32d add mem64(49176d) shl 24d add mem64(49177d) shl 16d add _
-	                   mem64(49178d) shl 08d add mem64(49179d))
-'                            z0d1                      z0d0	                   
+'              z0            z0d4                                    z0d3                                    z0d2   	           
+	 mov(mem64(49357d),mem64(49175d) shl bytes(&B00100000) add mem64(49176d) shl bytes(&B00011000) add mem64(49177d) shl bytes(&B00010000) add _
+	                   mem64(49178d) shl bytes(&B00001000) add mem64(49179d))
+'                            z0d1                                    z0d0	                   
 	case 49180d 'ld x1
-'              x1            x1d4                      x1d3                      x1d2 
-	 mov(mem64(49358d),mem64(49181d) shl 32d add mem64(49182d) shl 24d add mem64(49183d) shl 16d add _
-	                   mem64(49184d) shl 08d add mem64(49185d))
-'                            x1d1                      x1d0	                   
+'              x1            x1d4                                    x1d3                                    x1d2 
+	 mov(mem64(49358d),mem64(49181d) shl bytes(&B00100000) add mem64(49182d) shl bytes(&B00011000) add mem64(49183d) shl bytes(&B00010000) add _
+	                   mem64(49184d) shl bytes(&B00001000) add mem64(49185d))
+'                            x1d1                                    x1d0	                   
 	case 49186d 'ld y1
-'              y1            y1d4                      y1d3                      y1d2	
-	 mov(mem64(49359d),mem64(49187d) shl 32d add mem64(49188d) shl 24d add mem64(49189d) shl 16d add _
-	                   mem64(49190d) shl 08d add mem64(49191d))
-'                            y1d1                      y1d0	                   
+'              y1            y1d4                                    y1d3                                    y1d2	
+	 mov(mem64(49359d),mem64(49187d) shl bytes(&B00100000) add mem64(49188d) shl bytes(&B00011000) add mem64(49189d) shl bytes(&B00010000) add _
+	                   mem64(49190d) shl bytes(&B00001000) add mem64(49191d))
+'                            y1d1                                    y1d0	                   
 	case 49192d 'ld z1
-'              z1            z1d4                      z1d3                      z1d2	
-	 mov(mem64(49360d),mem64(49193d) shl 32d add mem64(49194d) shl 24d add mem64(49195d) shl 16d add _
-	                   mem64(49196d) shl 08d add mem64(49197d))
-'                            z1d1                      z1d0	                   
+'              z1            z1d4                                    z1d3                                    z1d2	
+	 mov(mem64(49360d),mem64(49193d) shl bytes(&B00100000) add mem64(49194d) shl bytes(&B00011000) add mem64(49195d) shl bytes(&B00010000) add _
+	                   mem64(49196d) shl bytes(&B00001000) add mem64(49197d))
+'                            z1d1                                    z1d0	                   
 	case 49198d 'ld r0
-'              r0            r0d4                      r0d3                      r0d2
-	 mov(mem64(49361d),mem64(49199d) shl 32d add mem64(49200d) shl 24d add mem64(49201d) shl 16d add _
-	                   mem64(49202d) shl 08d add mem64(49203d))
-'                            r0d1                      r0d0	                   
+'              r0            r0d4                                    r0d3                                    r0d2
+	 mov(mem64(49361d),mem64(49199d) shl bytes(&B00100000) add mem64(49200d) shl bytes(&B00011000) add mem64(49201d) shl bytes(&B00010000) add _
+	                   mem64(49202d) shl bytes(&B00001000) add mem64(49203d))
+'                            r0d1                                    r0d0	                   
 	case 49204d 'ld r1
-'              r1            r1d4                      r1d3                      r1d2   	
-	 mov(mem64(49362d),mem64(49205d) shl 32d add mem64(49206d) shl 24d add mem64(49207d) shl 16d add _
-	                   mem64(49208d) shl 08d add mem64(49209d))
-'                            r1d1                      r1d0  	                   
+'              r1            r1d4                                    r1d3                                    r1d2   	
+	 mov(mem64(49362d),mem64(49205d) shl bytes(&B00100000) add mem64(49206d) shl bytes(&B00011000) add mem64(49207d) shl bytes(&B00010000) add _
+	                   mem64(49208d) shl bytes(&B00001000) add mem64(49209d))
+'                            r1d1                                    r1d0  	                   
 	case 49210d 'ld r2
-'              r2            r2d4                      r2d3                      r2d2 	
-	 mov(mem64(49363d),mem64(49211d) shl 32d add mem64(49212d) shl 24d add mem64(49213d) shl 16d add _
-	                   mem64(49214d) shl 08d add mem64(49215d))
-'                            r2d1                      r2d0	                   
+'              r2            r2d4                                    r2d3                                    r2d2 	
+	 mov(mem64(49363d),mem64(49211d) shl bytes(&B00100000) add mem64(49212d) shl bytes(&B00011000) add mem64(49213d) shl bytes(&B00010000) add _
+	                   mem64(49214d) shl bytes(&B00001000) add mem64(49215d))
+'                            r2d1                                    r2d0	                   
 	case 49216d 'ld r3
-'	           r3            r3d4                      r3d3                      r3d2 
-	 mov(mem64(49364d),mem64(49217d) shl 32d add mem64(49218d) shl 24d add mem64(49219d) shl 16d add _
-	                   mem64(49221d) shl 08d add mem64(49222d))
-'                            r3d1                      r3d0	                   
+'	           r3            r3d4                                    r3d3                                    r3d2 
+	 mov(mem64(49364d),mem64(49217d) shl bytes(&B00100000) add mem64(49218d) shl bytes(&B00011000) add mem64(49219d) shl bytes(&B00010000) add _
+	                   mem64(49221d) shl bytes(&B00001000) add mem64(49222d))
+'                            r3d1                                    r3d0	                   
 	case 49223d 'ld r4
-'              r4            r4d4                      r4d3                      r4d2	
-	 mov(mem64(49365d),mem64(49224d) shl 32d add mem64(49225d) shl 24d add mem64(49226d) shl 16d add _
-	                   mem64(49227d) shl 08d add mem64(49228d))
-'                            r4d1                      r4d0	                   
+'              r4            r4d4                                    r4d3                                    r4d2	
+	 mov(mem64(49365d),mem64(49224d) shl bytes(&B00100000) add mem64(49225d) shl bytes(&B00011000) add mem64(49226d) shl bytes(&B00010000) add _
+	                   mem64(49227d) shl bytes(&B00001000) add mem64(49228d))
+'                            r4d1                                    r4d0	                   
 	case 49227d 'ld r5
-'              r5            r5d4                      r5d3	                     r5d2
-	 mov(mem64(49366d),mem64(49229d) shl 32d add mem64(49230d) shl 24d add mem64(49231d) shl 16d add _
-	                   mem64(49232d) shl 08d add mem64(49233d))
-'                            r5d1                      r5d0	                   
+'              r5            r5d4                                    r5d3	                                 r5d2
+	 mov(mem64(49366d),mem64(49229d) shl bytes(&B00100000) add mem64(49230d) shl bytes(&B00011000) add mem64(49231d) shl bytes(&B00010000) add _
+	                   mem64(49232d) shl bytes(&B00001000) add mem64(49233d))
+'                            r5d1                                    r5d0	                   
 	case 49234d 'ld r6
-'              r6            r6d4                      r6d3                      r6d2	
-	 mov(mem64(49367d),mem64(49235d) shl 32d add mem64(49236d) shl 24d add mem64(49237d) shl 16d add _
-	                   mem64(49238d) shl 08d add mem64(49239d))
-'                            r6d1                      r6d0	                   
+'              r6            r6d4                                    r6d3                                    r6d2	
+	 mov(mem64(49367d),mem64(49235d) shl bytes(&B00100000) add mem64(49236d) shl bytes(&B00011000) add mem64(49237d) shl bytes(&B00010000) add _
+	                   mem64(49238d) shl bytes(&B00001000) add mem64(49239d))
+'                            r6d1                                    r6d0	                   
 	case 49240d 'ld r7
-'              r7            r7d4                      r7d3                      r7d2	
-	 mov(mem64(49368d),mem64(49241d) shl 32d add mem64(49242d) shl 24d add mem64(49243d) shl 16d add _
-	                   mem64(49244d) shl 08d add mem64(49245d))
-'                            r7d1                      r7d0	                   
+'              r7            r7d4                                    r7d3                                    r7d2	
+	 mov(mem64(49368d),mem64(49241d) shl bytes(&B00100000) add mem64(49242d) shl bytes(&B00011000) add mem64(49243d) shl bytes(&B00010000) add _
+	                   mem64(49244d) shl bytes(&B00001000) add mem64(49245d))
+'                            r7d1                                    r7d0	                   
 	case 49246d 'ld r8
-'              r8            r8d4                      r8d3                      r8d2	
-	 mov(mem64(49369d),mem64(49247d) shl 32d add mem64(49248d) shl 24d add mem64(49249d) shl 16d add _
-	                   mem64(49250d) shl 08d add mem64(49251d))
-'                            r8d1                      r8d0	                   
+'              r8            r8d4                                    r8d3                                    r8d2	
+	 mov(mem64(49369d),mem64(49247d) shl bytes(&B00100000) add mem64(49248d) shl bytes(&B00011000) add mem64(49249d) shl bytes(&B00010000) add _
+	                   mem64(49250d) shl bytes(&B00001000) add mem64(49251d))
+'                            r8d1                                    r8d0	                   
 	case 49252d 'ld r9
-'              r9            r9d4                      r9d3                      r9d2	                        
-	 mov(mem64(49370d),mem64(49253d) shl 32d add mem64(49254d) shl 24d add mem64(48255d) shl 16d add _
-	                   mem64(49256d) shl 08d add mem64(49257d))
-'                            r9d1                      r9d0	                   
+'              r9            r9d4                                    r9d3                                    r9d2	                        
+	 mov(mem64(49370d),mem64(49253d) shl bytes(&B00100000) add mem64(49254d) shl bytes(&B00011000) add mem64(48255d) shl bytes(&B00010000) add _
+	                   mem64(49256d) shl bytes(&B00001000) add mem64(49257d))
+'                            r9d1                                    r9d0	                   
 	case 49258d 'ld r10
-'              r10           r10d4                     r10d3                     r10d2	
-	 mov(mem64(49371d),mem64(49259d) shl 32d add mem64(49260d) shl 24d add mem64(49261d) shl 16d add _
-	                   mem64(49262d) shl 08d add mem64(49263d))
-'                            r10d1                     r10d0	                   
+'              r10           r10d4                                   r10d3                                   r10d2	
+	 mov(mem64(49371d),mem64(49259d) shl bytes(&B00100000) add mem64(49260d) shl bytes(&B00011000) add mem64(49261d) shl bytes(&B00010000) add _
+	                   mem64(49262d) shl bytes(&B00001000) add mem64(49263d))
+'                            r10d1                                   r10d0	                   
 	case 49264d 'ld r11
-'	           r11           r11d4                     r11d3                     r11d2
-	 mov(mem64(49372d),mem64(49265d) shl 32d add mem64(49266d) shl 24d add mem64(49267d) shl 16d add _
-	                   mem64(49268d) shl 08d add mem64(49269d))
-'                            r11d1                     r11d0	                   
+'	           r11           r11d4                                   r11d3                                   r11d2
+	 mov(mem64(49372d),mem64(49265d) shl bytes(&B00100000) add mem64(49266d) shl bytes(&B00011000) add mem64(49267d) shl bytes(&B00010000) add _
+	                   mem64(49268d) shl bytes(&B00001000) add mem64(49269d))
+'                            r11d1                                   r11d0	                   
 	case 49270d 'ld rot0
-'              rot0          rot0d4                    rot0d3                    rot0d2	
-	 mov(mem64(49373d),mem64(49271d) shl 32d add mem64(49272d) shl 24d add mem64(49273d) shl 16d add _
-	                   mem64(49274d) shl 08d add mem64(49275d))
-'                            rot0d1                    rot0d0	                   
+'              rot0          rot0d4                                  rot0d3                                  rot0d2	
+	 mov(mem64(49373d),mem64(49271d) shl bytes(&B00100000) add mem64(49272d) shl bytes(&B00011000) add mem64(49273d) shl bytes(&B00010000) add _
+	                   mem64(49274d) shl bytes(&B00001000) add mem64(49275d))
+'                            rot0d1                                  rot0d0	                   
 	case 49276d 'ld rot1
-'              rot1          rot1d4                    rot1d3                   rot1d2	
-	 mov(mem64(49374d),mem64(49277d) shl 32d add mem64(49278d) shl 24d add mem64(49279d) shl 16d add _
-	                   mem64(49280d) shl 08d add mem64(49281d))
-'                            rot1d1                    rot1d0	                   
+'              rot1          rot1d4                                  rot1d3                                  rot1d2	
+	 mov(mem64(49374d),mem64(49277d) shl bytes(&B00100000) add mem64(49278d) shl bytes(&B00011000) add mem64(49279d) shl bytes(&B00010000) add _
+	                   mem64(49280d) shl bytes(&B00001000) add mem64(49281d))
+'                            rot1d1                                  rot1d0	                   
 	case 49282d 'ld rot2
-'               rot2         rot2d4                    rot2d3                    rot2d2	
-	 mov(mem64(49375d),mem64(49283d) shl 32d add mem64(49284d) shl 24d add mem64(49285d) shl 16d add _
-	                   mem64(49286d) shl 08d add mem64(49287d))
-'                            rot2d1                    rot2d0	                   
+'               rot2         rot2d4                                  rot2d3                                  rot2d2	
+	 mov(mem64(49375d),mem64(49283d) shl bytes(&B00100000) add mem64(49284d) shl bytes(&B00011000) add mem64(49285d) shl bytes(&B00010000) add _
+	                   mem64(49286d) shl bytes(&B00001000) add mem64(49287d))
+'                            rot2d1                                  rot2d0	                   
 	case 49288d 'ld rot3
-'              rot3          rot3d4                    rot3d3                    rot3d2	
-	 mov(mem64(49376d),mem64(49289d) shl 32d add mem64(49290d) shl 24d add mem64(49291d) shl 16d add _
-	                   mem64(49292d) shl 08d add mem64(49293d))
-'                            rot3d1                    rot3d0
+'              rot3          rot3d4                                  rot3d3                                  rot3d2	
+	 mov(mem64(49376d),mem64(49289d) shl bytes(&B00100000) add mem64(49290d) shl bytes(&B00011000) add mem64(49291d) shl bytes(&B00010000) add _
+	                   mem64(49292d) shl bytes(&B00001000) add mem64(49293d))
+'                            rot3d1                                  rot3d0
 	case 49294d 'ld rot4
-'              rot4          rot4d4                    rot4d3                   rot4d2	
-	 mov(mem64(49377d),mem64(49295d) shl 32d add mem64(49296d) shl 24d add mem64(49297d) shl 16d add _
-	                   mem64(49298d) shl 08d add mem64(49299d))
-'                            rot4d1                    rot4d0	                   
+'              rot4          rot4d4                                  rot4d3                                  rot4d2	
+	 mov(mem64(49377d),mem64(49295d) shl bytes(&B00100000) add mem64(49296d) shl bytes(&B00011000) add mem64(49297d) shl bytes(&B00010000) add _
+	                   mem64(49298d) shl bytes(&B00001000) add mem64(49299d))
+'                            rot4d1                                  rot4d0	                   
 	case 49300d 'ld rot5
-'              rot5          rot5d4                    rot5d3                    rot5d2	
-	 mov(mem64(49378d),mem64(49301d) shl 32d add mem64(49302d) shl 24d add mem64(49303d) shl 16d add _
-	                   mem64(49304d) shl 08d add mem64(49305d))
-'                            rot5d1                    rot5d0	                   		  		  		  		  		  		  		  		  		  		  		  		  		  		  
+'              rot5          rot5d4                                  rot5d3                                  rot5d2	
+	 mov(mem64(49378d),mem64(49301d) shl bytes(&B00100000) add mem64(49302d) shl bytes(&B00011000) add mem64(49303d) shl bytes(&B00010000) add _
+	                   mem64(49304d) shl bytes(&B00001000) add mem64(49305d))
+'                            rot5d1                                  rot5d0	                   		  		  		  		  		  		  		  		  		  		  		  		  		  		  
 	case 49306d 'ld rot6
-'              rot6          rot6d4                    rot6d3                    rot6d2	
-	 mov(mem64(49379d),mem64(49307d) shl 32d add mem64(49308d) shl 24d add mem64(49309d) shl 16d add _
-	                   mem64(49310d) shl 08d add mem64(49311d))
-'                             rot6d1     	           rot6d0  
+'              rot6          rot6d4                                  rot6d3                                  rot6d2	
+	 mov(mem64(49379d),mem64(49307d) shl bytes(&B00100000) add mem64(49308d) shl bytes(&B00011000) add mem64(49309d) shl bytes(&B00010000) add _
+	                   mem64(49310d) shl bytes(&B00001000) add mem64(49311d))
+'                             rot6d1     	                         rot6d0  
 #elseif defined(__FB_DOS__) or defined(__FB_WIN32__)
 	case 49162d 'ld x0
-'              x0            x0d3                      x0d2          
-	 mov(mem64(49355d),mem64(49164d) shl 24d add mem64(49165d) shl 16d add _        
-	                   mem64(49166d) shl 08d add mem64(49167))
-'                            x0d1                      x0d0		                   
+'              x0            x0d3                                    x0d2          
+	 mov(mem64(49355d),mem64(49164d) shl bytes(&B00011000) add mem64(49165d) shl bytes(&B00010000) add _        
+	                   mem64(49166d) shl bytes(&B00001000) add mem64(49167))
+'                            x0d1                                    x0d0		                   
 	case 49168d 'ld y0
-'              y0            y0d3                      y0d2 
-	 mov(mem64(49356d),mem64(49170d) shl 24d add mem64(49171d) shl 16d add _
-	                   mem64(49172d) shl 08d add mem64(49173d))
-'                            y0d1                      y0d0	                   
+'              y0            y0d3                                    y0d2 
+	 mov(mem64(49356d),mem64(49170d) shl bytes(&B00011000) add mem64(49171d) shl bytes(&B00010000) add _
+	                   mem64(49172d) shl bytes(&B00001000) add mem64(49173d))
+'                            y0d1                                    y0d0	                   
 	case 49174d 'ld z0
-'              z0            z0d3                      z0d2   	           
-	 mov(mem64(49357d),mem64(49176d) shl 24d add mem64(49177d) shl 16d add _
-	                   mem64(49178d) shl 08d add mem64(49179d))
-'                            z0d1                      z0d0	                   
+'              z0            z0d3                                    z0d2   	           
+	 mov(mem64(49357d),mem64(49176d) shl bytes(&B00011000) add mem64(49177d) shl bytes(&B00010000) add _
+	                   mem64(49178d) shl bytes(&B00001000) add mem64(49179d))
+'                            z0d1                                    z0d0	                   
 	case 49180d 'ld x1
-'              x1            x1d3                      x1d2 
-	 mov(mem64(49358d),mem64(49182d) shl 24d add mem64(49183d) shl 16d add _
-	                   mem64(49184d) shl 08d add mem64(49185d))
-'                            x1d1                      x1d0	                   
+'              x1            x1d3                                    x1d2 
+	 mov(mem64(49358d),mem64(49182d) shl bytes(&B00011000) add mem64(49183d) shl bytes(&B00010000) add _
+	                   mem64(49184d) shl bytes(&B00001000) add mem64(49185d))
+'                            x1d1                                    x1d0	                   
 	case 49186d 'ld y1
-'              y1            y1d3                      y1d2	
-	 mov(mem64(49359d),mem64(49188d) shl 24d add mem64(49189d) shl 16d add _
-	                   mem64(49190d) shl 08d add mem64(49191d))
-'                            y1d1                      y1d0	                   
+'              y1            y1d3                                    y1d2	
+	 mov(mem64(49359d),mem64(49188d) shl bytes(&B00011000) add mem64(49189d) shl bytes(&B00010000) add _
+	                   mem64(49190d) shl bytes(&B00001000) add mem64(49191d))
+'                            y1d1                                    y1d0	                   
 	case 49192d 'ld z1
-'              z1            z1d3                      z1d2	
-	 mov(mem64(49360d),mem64(49194d) shl 24d add mem64(49195d) shl 16d add _
-	                   mem64(49196d) shl 08d add mem64(49197d))
-'                            z1d1                      z1d0	                   
+'              z1            z1d3                                    z1d2	
+	 mov(mem64(49360d),mem64(49194d) shl bytes(&B00011000) add mem64(49195d) shl bytes(&B00010000) add _
+	                   mem64(49196d) shl bytes(&B00001000) add mem64(49197d))
+'                            z1d1                                    z1d0	                   
 	case 49198d 'ld r0
-'              r0            r0d3                      r0d2
-	 mov(mem64(49361d),mem64(49200d) shl 24d add mem64(49201d) shl 16d add _
-	                   mem64(49202d) shl 08d add mem64(49203d))
-'                            r0d1                      r0d0	                   
+'              r0            r0d3                                    r0d2
+	 mov(mem64(49361d),mem64(49200d) shl bytes(&B00011000) add mem64(49201d) shl bytes(&B00010000) add _
+	                   mem64(49202d) shl bytes(&B00001000) add mem64(49203d))
+'                            r0d1                                    r0d0	                   
 	case 49204d 'ld r1
-'              r1            r1d3                      r1d2   	
-	 mov(mem64(49362d),mem64(49206d) shl 24d add mem64(49207d) shl 16d add _
-	                   mem64(49208d) shl 08d add mem64(49209d))
-'                            r1d1                      r1d0  	                   
+'              r1            r1d3                                    r1d2   	
+	 mov(mem64(49362d),mem64(49206d) shl bytes(&B00011000) add mem64(49207d) shl bytes(&B00010000) add _
+	                   mem64(49208d) shl bytes(&B00001000) add mem64(49209d))
+'                            r1d1                                    r1d0  	                   
 	case 49210d 'ld r2
-'              r2            r2d3                      r2d2 	
-	 mov(mem64(49363d),mem64(49212d) shl 24d add mem64(49213d) shl 16d add _
-	                   mem64(49214d) shl 08d add mem64(49215d))
-'                            r2d1                      r2d0	                   
+'              r2            r2d3                                    r2d2 	
+	 mov(mem64(49363d),mem64(49212d) shl bytes(&B00011000) add mem64(49213d) shl bytes(&B00010000) add _
+	                   mem64(49214d) shl bytes(&B00001000) add mem64(49215d))
+'                            r2d1                                    r2d0	                   
 	case 49216d 'ld r3
-'	           r3            r3d3                      r3d2 
-	 mov(mem64(49364d),mem64(49218d) shl 24d add mem64(49219d) shl 16d add _
-	                   mem64(49221d) shl 08d add mem64(49222d))
-'                            r3d1                      r3d0	                   
+'	           r3            r3d3                                    r3d2 
+	 mov(mem64(49364d),mem64(49218d) shl bytes(&B00011000) add mem64(49219d) shl bytes(&B00010000) add _
+	                   mem64(49221d) shl bytes(&B00001000) add mem64(49222d))
+'                            r3d1                                    r3d0	                   
 	case 49223d 'ld r4
-'              r4            r4d3                      r4d2	
-	 mov(mem64(49365d),mem64(49225d) shl 24d add mem64(49226d) shl 16d add _
-	                   mem64(49227d) shl 08d add mem64(49228d))
-'                            r4d1                      r4d0	                   
+'              r4            r4d3                                    r4d2	
+	 mov(mem64(49365d),mem64(49225d) shl bytes(&B00011000) add mem64(49226d) shl bytes(&B00010000) add _
+	                   mem64(49227d) shl bytes(&B00001000) add mem64(49228d))
+'                            r4d1                                    r4d0	                   
 	case 49227d 'ld r5
-'              r5            r5d3	                   r5d2
-	 mov(mem64(49366d),mem64(49230d) shl 24d add mem64(49231d) shl 16d add _
-	                   mem64(49232d) shl 08d add mem64(49233d))
-'                            r5d1                      r5d0	                   
+'              r5            r5d3	                                 r5d2
+	 mov(mem64(49366d),mem64(49230d) shl bytes(&B00011000) add mem64(49231d) shl bytes(&B00010000) add _
+	                   mem64(49232d) shl bytes(&B00001000) add mem64(49233d))
+'                            r5d1                                    r5d0	                   
 	case 49234d 'ld r6
-'              r6            r6d3                      r6d2	
-	 mov(mem64(49367d),mem64(49236d) shl 24d add mem64(49237d) shl 16d add _
-	                   mem64(49238d) shl 08d add mem64(49239d))
-'                            r6d1                      r6d0	                   
+'              r6            r6d3                                    r6d2	
+	 mov(mem64(49367d),mem64(49236d) shl bytes(&B00011000) add mem64(49237d) shl bytes(&B00010000) add _
+	                   mem64(49238d) shl bytes(&B00001000) add mem64(49239d))
+'                            r6d1                                    r6d0	                   
 	case 49240d 'ld r7
-'              r7            r7d3                      r7d2	
-	 mov(mem64(49368d),mem64(49242d) shl 24d add mem64(49243d) shl 16d add _
-	                   mem64(49244d) shl 08d add mem64(49245d))
-'                            r7d1                      r7d0	                   
+'              r7            r7d3                                    r7d2	
+	 mov(mem64(49368d),mem64(49242d) shl bytes(&B00011000) add mem64(49243d) shl bytes(&B00010000) add _
+	                   mem64(49244d) shl bytes(&B00001000) add mem64(49245d))
+'                            r7d1                                    r7d0	                   
 	case 49246d 'ld r8
-'              r8            r8d3                      r8d2	
-	 mov(mem64(49369d),mem64(49248d) shl 24d add mem64(49249d) shl 16d add _
-	                   mem64(49250d) shl 08d add mem64(49251d))
-'                            r8d1                      r8d0	                   
+'              r8            r8d3                                    r8d2	
+	 mov(mem64(49369d),mem64(49248d) shl bytes(&B00011000) add mem64(49249d) shl bytes(&B00010000) add _
+	                   mem64(49250d) shl bytes(&B00001000) add mem64(49251d))
+'                            r8d1                                    r8d0	                   
 	case 49252d 'ld r9
-'              r9            r9d3                      r9d2	                        
-	 mov(mem64(49370d),mem64(49254d) shl 24d add mem64(48255d) shl 16d add _
-	                   mem64(49256d) shl 08d add mem64(49257d))
-'                            r9d1                      r9d0	                   
+'              r9            r9d3                                    r9d2	                        
+	 mov(mem64(49370d),mem64(49254d) shl bytes(&B00011000) add mem64(48255d) shl bytes(&B00010000) add _
+	                   mem64(49256d) shl bytes(&B00001000) add mem64(49257d))
+'                            r9d1                                    r9d0	                   
 	case 49258d 'ld r10
-'              r10           r10d3                     r10d2	
-	 mov(mem64(49371d),mem64(49260d) shl 24d add mem64(49261d) shl 16d add _
-	                   mem64(49262d) shl 08d add mem64(49263d))
-'                            r10d1                     r10d0	                   
+'              r10           r10d3                                   r10d2	
+	 mov(mem64(49371d),mem64(49260d) shl bytes(&B00011000) add mem64(49261d) shl bytes(&B00010000) add _
+	                   mem64(49262d) shl bytes(&B00001000) add mem64(49263d))
+'                            r10d1                                   r10d0	                   
 	case 49264d 'ld r11
-'	           r11           r11d3                     r11d2
-	 mov(mem64(49372d),mem64(49266d) shl 24d add mem64(49267d) shl 16d add _
-	                   mem64(49268d) shl 08d add mem64(49269d))
-'                            r11d1                     r11d0	                   
+'	           r11           r11d3                                   r11d2
+	 mov(mem64(49372d),mem64(49266d) shl bytes(&B00011000) add mem64(49267d) shl bytes(&B00010000) add _
+	                   mem64(49268d) shl bytes(&B00001000) add mem64(49269d))
+'                            r11d1                                   r11d0	                   
 	case 49270d 'ld rot0
-'              rot0          rot0d3                    rot0d2	
-	 mov(mem64(49373d),mem64(49272d) shl 24d add mem64(49273d) shl 16d add _
-	                   mem64(49274d) shl 08d add mem64(49275d))
-'                            rot0d1                    rot0d0	                   
+'              rot0          rot0d3                                  rot0d2	
+	 mov(mem64(49373d),mem64(49272d) shl bytes(&B00011000) add mem64(49273d) shl bytes(&B00010000) add _
+	                   mem64(49274d) shl bytes(&B00001000) add mem64(49275d))
+'                            rot0d1                                  rot0d0	                   
 	case 49276d 'ld rot1
-'              rot1          rot1d3                    rot1d2	
-	 mov(mem64(49374d),mem64(49278d) shl 24d add mem64(49279d) shl 16d add _
-	                   mem64(49280d) shl 08d add mem64(49281d))
-'                            rot1d1                    rot1d0	                   
+'              rot1          rot1d3                                  rot1d2	
+	 mov(mem64(49374d),mem64(49278d) shl bytes(&B00011000) add mem64(49279d) shl bytes(&B00010000) add _
+	                   mem64(49280d) shl bytes(&B00001000) add mem64(49281d))
+'                            rot1d1                                  rot1d0	                   
 	case 49282d 'ld rot2
-'               rot2         rot2d3                    rot2d2	
-	 mov(mem64(49375d),mem64(49284d) shl 24d add mem64(49285d) shl 16d add _
-	                   mem64(49286d) shl 08d add mem64(49287d))
-'                            rot2d1                    rot2d0	                   
+'               rot2         rot2d3                                  rot2d2	
+	 mov(mem64(49375d),mem64(49284d) shl bytes(&B00011000) add mem64(49285d) shl bytes(&B00010000) add _
+	                   mem64(49286d) shl bytes(&B00001000) add mem64(49287d))
+'                            rot2d1                                  rot2d0	                   
 	case 49288d 'ld rot3
-'              rot3          rot3d3                    rot3d2	
-	 mov(mem64(49376d),mem64(49290d) shl 24d add mem64(49291d) shl 16d add _
-	                   mem64(49292d) shl 08d add mem64(49293d))
-'                            rot3d1                    rot3d0
+'              rot3          rot3d3                                  rot3d2	
+	 mov(mem64(49376d),mem64(49290d) shl bytes(&B00011000) add mem64(49291d) shl bytes(&B00010000) add _
+	                   mem64(49292d) shl bytes(&B00001000) add mem64(49293d))
+'                            rot3d1                                  rot3d0
 	case 49294d 'ld rot4
-'              rot4          rot4d3                   rot4d2	
-	 mov(mem64(49377d),mem64(49296d) shl 24d add mem64(49297d) shl 16d add _
-	                   mem64(49298d) shl 08d add mem64(49299d))
-'                            rot4d1                    rot4d0	                   
+'              rot4          rot4d3                                  rot4d2	
+	 mov(mem64(49377d),mem64(49296d) shl bytes(&B00011000) add mem64(49297d) shl bytes(&B00010000) add _
+	                   mem64(49298d) shl bytes(&B00001000) add mem64(49299d))
+'                            rot4d1                                  rot4d0	                   
 	case 49300d 'ld rot5
-'              rot5          rot5d3                    rot5d2	
-	 mov(mem64(49378d),mem64(49302d) shl 24d add mem64(49303d) shl 16d add _
-	                   mem64(49304d) shl 08d add mem64(49305d))
-'                            rot5d1                    rot5d0	                   		  		  		  		  		  		  		  		  		  		  		  		  		  		  
+'              rot5          rot5d3                                  rot5d2	
+	 mov(mem64(49378d),mem64(49302d) shl bytes(&B00011000) add mem64(49303d) shl bytes(&B00010000) add _
+	                   mem64(49304d) shl bytes(&B00001000) add mem64(49305d))
+'                            rot5d1                                  rot5d0	                   		  		  		  		  		  		  		  		  		  		  		  		  		  		  
 	case 49306d 'ld rot6
-'              rot6          rot6d3                    rot6d2	
-	 mov(mem64(49379d),mem64(49308d) shl 24d add mem64(49309d) shl 16d add _
-	                   mem64(49310d) shl 08d add mem64(49311d))
-'                             rot6d1     	           rot6d0  
+'              rot6          rot6d3                                  rot6d2	
+	 mov(mem64(49379d),mem64(49308d) shl bytes(&B00011000) add mem64(49309d) shl bytes(&B00010000) add _
+	                   mem64(49310d) shl bytes(&B00001000) add mem64(49311d))
+'                            rot6d1     	                         rot6d0  
 #endif             
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
@@ -2291,15 +2346,15 @@ L2086:
   ' 49386d font height
  case 49387d,49388d 'Amiga style Hold-and-Modify - foreground and boarder color
      select case v
-		case in range(&B000000, &B001111):poke64(FCOLOR,v mod &B11111111)
-'                                                fg_red		
-		case in range(&B010000, &B011111):poke64(49154d,(((v subt &B010000) mod &B11111111) mul &B00010001) mod &B11111111)
-'                                                fg_grn
-		case in range(&B100000, &B101111):poke64(49155d,(((v subt &B100000) mod &B11111111) mul &B00010001) mod &B11111111)
-'                                                fg_blu		
-		case in range(&B110000, &B111111):poke64(49156d,(((v subt &B110000) mod &B11111111) mul &B00010001) mod &B11111111)
+		case in range(bytes(&B000000),bytes(&B001111)):poke64(FCOLOR,v mod bytes(&B11111111))
+'                                                             fg_red		
+		case in range(bytes(&B010000),bytes(&B011111)):poke64(49154d,(((v subt bytes(&B010000)) mod bytes(&B11111111)) mul bytes(&B00010001)) mod bytes(&B11111111))
+'                                                             fg_grn
+		case in range(bytes(&B100000),bytes(&B101111)):poke64(49155d,(((v subt bytes(&B100000)) mod bytes(&B11111111)) mul bytes(&B00010001)) mod bytes(&B11111111))
+'                                                             fg_blu		
+		case in range(bytes(&B110000),bytes(&B111111)):poke64(49156d,(((v subt bytes(&B110000)) mod bytes(&B11111111)) mul bytes(&B00010001)) mod bytes(&B11111111))
 '                         fg_aph		
-     	case else: poke64(49157d,(((v subt &B1000000) mod &B11111111) mul &B00010001) mod &B11111111)					  
+     	case else: poke64(49157d,(((v subt bytes(&B1000000)) mod bytes(&B11111111)) mul bytes(&B00010001)) mod bytes(&B11111111))					  
      end select
      if mov(adr,sys_offset add &HEC) then
 '                           fg_color      
@@ -2309,15 +2364,15 @@ L2086:
      end if     
     case 49389d 'Amiga style Hold-and-Modify - background
      select case v
-		case in range(&B000000, &B001111):poke64(BGCOL0,v mod &B11111111)
-'                                                bg_red		
-		case in range(&B010000, &B011111):poke64(49158d,(((v subt &B010000) mod &B11111111) mul &B00010001) mod &B11111111)
-'                                                bg_grn
-		case in range(&B100000, &B101111):poke64(49159d,(((v subt &B100000) mod &B11111111) mul &B00010001) mod &B11111111)
-'                                                bg_blu
-		case in range(&B110000, &B111111):poke64(49160d,(((v subt &B110000) mod &B11111111) mul &B00010001) mod &B11111111)
+		case in range(bytes(&B000000),bytes(&B001111)):poke64(BGCOL0,v mod bytes(&B11111111))
+'                                                             bg_red		
+		case in range(bytes(&B010000),bytes(&B011111)):poke64(49158d,(((v subt bytes(&B010000)) mod bytes(&B11111111)) mul bytes(&B00010001)) mod bytes(&B11111111))
+'                                                             bg_grn
+		case in range(bytes(&B100000),bytes(&B101111)):poke64(49159d,(((v subt bytes(&B100000)) mod bytes(&B11111111)) mul bytes(&B00010001)) mod bytes(&B11111111))
+'                                                             bg_blu
+		case in range(bytes(&B110000),bytes(&B111111)):poke64(49160d,(((v subt bytes(&B110000)) mod bytes(&B11111111)) mul bytes(&B00010001)) mod bytes(&B11111111))
 '                         bg_aph
-     	case else: poke64(49161d,(((v subt &B1000000) mod &B11111111) mul &B00010001) mod &B11111111)					  
+     	case else: poke64(49161d,(((v subt bytes(&B1000000)) mod bytes(&B11111111)) mul bytes(&B00010001)) mod bytes(&B11111111))					  
      end select      
     case 49390d ' Amiga style Hold-and-Modify - Draw foreground
 '                             x0            y0              x1            y1             fg_color      
@@ -2642,74 +2697,74 @@ L2086:
 '                           pc             pc
     case 49416d:  mov(mem64(49418d), mem64(49418d) mod &HFFFFFFFFFFFFFFFF)
     case 49417d ' ld pc
-'                           pc           pcd4 	                    pcd3                      pcd2          
-	              mov(mem64(49418d),mem64(49419d) shl 32d add mem64(49420d) shl 24d add mem64(49421d) shl 16d add _        
-	                                mem64(49422d) shl 08d add mem64(49423d))
-'                                         pcd1                      pcd0
+'                           pc            pcd4 	                                  pcd3                                    pcd2          
+	              mov(mem64(49418d),mem64(49419d) shl bytes(&B00100000) add mem64(49420d) shl bytes(&B00011000) add mem64(49421d) shl bytes(&B00010000) add _        
+	                                mem64(49422d) shl bytes(&B00001000) add mem64(49423d))
+'                                         pcd1                                    pcd0
     case 49424d ' ld adr0	    
-'                           adr0          adr0d4 	                adr0d3                    adr0d2          
-	              mov(mem64(49425d),mem64(49426d) shl 32d add mem64(49427d) shl 24d add mem64(49428d) shl 16d add _        
-	                                mem64(49429d) shl 08d add mem64(49430d))
-'                                         adr0d1                    adr0d0
+'                           adr0          adr0d4 	                              adr0d3                                  adr0d2          
+	              mov(mem64(49425d),mem64(49426d) shl bytes(&B00100000) add mem64(49427d) shl bytes(&B00011000) add mem64(49428d) shl bytes(&B00010000) add _        
+	                                mem64(49429d) shl bytes(&B00001000) add mem64(49430d))
+'                                         adr0d1                                  adr0d0
     
     case 49431d ' ld adr1	    
-'                           adr1          adr1d4 	                adr1d3                    adr1d2          
-	              mov(mem64(49432d),mem64(49433d) shl 32d add mem64(49434d) shl 24d add mem64(49435d) shl 16d add _        
-	                                mem64(49436d) shl 08d add mem64(49437d))
-'                                         adr1d1                    adr1d0
+'                           adr1          adr1d4 	                              adr1d3                                  adr1d2          
+	              mov(mem64(49432d),mem64(49433d) shl bytes(&B00100000) add mem64(49434d) shl bytes(&B00011000) add mem64(49435d) shl bytes(&B00010000) add _        
+	                                mem64(49436d) shl bytes(&B00001000) add mem64(49437d))
+'                                         adr1d1                                  adr1d0
     case 49438d ' ld adr2	    
-'                           adr2          adr2d4 	                adr2d3                    adr2d2          
-	              mov(mem64(49439d),mem64(49440d) shl 32d add mem64(49441d) shl 24d add mem64(49442d) shl 16d add _        
-	                                mem64(49443d) shl 08d add mem64(49444d))
-'                                         adr2d1                    adr2d0
+'                           adr2          adr2d4 	                              adr2d3                                  adr2d2          
+	              mov(mem64(49439d),mem64(49440d) shl bytes(&B00100000) add mem64(49441d) shl bytes(&B00011000) add mem64(49442d) shl bytes(&B00010000) add _        
+	                                mem64(49443d) shl bytes(&B00001000) add mem64(49444d))
+'                                         adr2d1                                  adr2d0
     case 49445d ' ld adr3	    
-'                           adr3          adr3d4 	                adr3d3                    adr3d2          
-	              mov(mem64(49446d),mem64(49447d) shl 32d add mem64(49448d) shl 24d add mem64(49449d) shl 16d add _        
-	                                mem64(49450d) shl 08d add mem64(49451d))
-'                                         adr3d1                    adr3d0
+'                           adr3          adr3d4 	                              adr3d3                                  adr3d2          
+	              mov(mem64(49446d),mem64(49447d) shl bytes(&B00100000) add mem64(49448d) shl bytes(&B00011000) add mem64(49449d) shl bytes(&B00010000) add _        
+	                                mem64(49450d) shl bytes(&B00001000) add mem64(49451d))
+'                                         adr3d1                                  adr3d0
     case 49452d ' ld pc_status	    
-'                           pc_status  pc_status_d4 	         pc_status_d3              pc_status_d2          
-	              mov(mem64(49453d),mem64(49454d) shl 32d add mem64(49455d) shl 24d add mem64(49456d) shl 16d add _        
-	                                mem64(49457d) shl 08d add mem64(49458d))
-'                                      pc_status_d1              pc_status_d0
+'                           pc_status     pc_status_d4 	                          pc_status_d3                            pc_status_d2          
+	              mov(mem64(49453d),mem64(49454d) shl bytes(&B00100000) add mem64(49455d) shl bytes(&B00011000) add mem64(49456d) shl bytes(&B00010000) add _        
+	                                mem64(49457d) shl bytes(&B00001000) add mem64(49458d))
+'                                         pc_status_d1                            pc_status_d0
 
     case 49459d ' ld adr0_512
-'                          adr0_512    adr0_512d7               adr0_512d6                 adr0_512d5
+'                          adr0_512       adr0_512d7                adr0_512d6                 adr0_512d5
                   mov(mem64(49460d),mem64(49461d) shl 56d add mem64(49462d) shl 48d add mem64(49463d) shl 40d add _
-                                    mem64(49464d) shl 32d add mem64(49465d) shl 24d add mem64(49466d) shl 16d add _
-                                    mem64(49467d) shl 08d add mem64(49468d)) '             adr0_512d2
-'                                      adr0_512d1               adr0_512d0
+                                    mem64(49464d) shl bytes(&B00100000) add mem64(49465d) shl bytes(&B00011000) add mem64(49466d) shl bytes(&B00010000) add _
+                                    mem64(49467d) shl bytes(&B00001000) add mem64(49468d)) '                              adr0_512d2
+'                                         adr0_512d1                              adr0_512d0
     case 49469d ' ld adr1_512
-'                          adr1_512    adr1_512d7               adr1_512d6                 adr1_512d5
+'                          adr1_512       adr1_512d7               adr1_512d6                 adr1_512d5
                   mov(mem64(49470d),mem64(49471d) shl 56d add mem64(49472d) shl 48d add mem64(49473d) shl 40d add _
-                                    mem64(49474d) shl 32d add mem64(49475d) shl 24d add mem64(49476d) shl 16d add _
-                                    mem64(49477d) shl 08d add mem64(49478d)) '             adr1_512d2
-'                                      adr1_512d1               adr1_512d0
+                                    mem64(49474d) shl bytes(&B00100000) add mem64(49475d) shl bytes(&B00011000) add mem64(49476d) shl bytes(&B00010000) add _
+                                    mem64(49477d) shl bytes(&B00001000) add mem64(49478d)) '                              adr1_512d2
+'                                         adr1_512d1                              adr1_512d0
     case 49479d ' ld adr2_512
-'                          adr3_512    adr3_512d7               adr3_512d6                 adr3_512d5
+'                          adr3_512       adr3_512d7                adr3_512d6               adr3_512d5
                   mov(mem64(49480d),mem64(49481d) shl 56d add mem64(49482d) shl 48d add mem64(49483d) shl 40d add _
-                                    mem64(49484d) shl 32d add mem64(49485d) shl 24d add mem64(49486d) shl 16d add _
-                                    mem64(49487d) shl 08d add mem64(49488d)) '             adr3_512d2
-'                                      adr3_512d1               adr3_512d0
+                                    mem64(49484d) shl bytes(&B00100000) add mem64(49485d) shl bytes(&B00011000) add mem64(49486d) shl bytes(&B00010000) add _
+                                    mem64(49487d) shl bytes(&B00001000) add mem64(49488d)) '                              adr3_512d2
+'                                         adr3_512d1                              adr3_512d0
     case 49489d ' ld adr3_512
-'                          adr3_512    adr3_512d7               adr3_512d6                 adr3_512d5
+'                          adr3_512       adr3_512d7                adr3_512d6                adr3_512d5
                   mov(mem64(49490d),mem64(49491d) shl 56d add mem64(49492d) shl 48d add mem64(49493d) shl 40d add _
-                                    mem64(49494d) shl 32d add mem64(49495d) shl 24d add mem64(49496d) shl 16d add _
-                                    mem64(49497d) shl 08d add mem64(49498d)) '             adr3_512d2
-'                                      adr3_512d1               adr3_512d0
+                                    mem64(49494d) shl bytes(&B00100000) add mem64(49495d) shl bytes(&B00011000) add mem64(49496d) shl bytes(&B00010000) add _
+                                    mem64(49497d) shl bytes(&B00001000) add mem64(49498d)) '                              adr3_512d2
+'                                         adr3_512d1                              adr3_512d0
     case 49499d ' ld pc_512
 '                          pc_512        pc_512d7                 pc_512d6                  pc_512d5
                   mov(mem64(49500d),mem64(49501d) shl 56d add mem64(49502d) shl 48d add mem64(49503d) shl 40d add _
-                                    mem64(49504d) shl 32d add mem64(49505d) shl 24d add mem64(49506d) shl 16d add _
-                                    mem64(49507d) shl 08d add mem64(49508d)) '              pc_512d2
+                                    mem64(49504d) shl bytes(&B00100000) add mem64(49505d) shl bytes(&B00011000) add mem64(49506d) shl bytes(&B00010000) add _
+                                    mem64(49507d) shl bytes(&B00001000) add mem64(49508d)) '                              pc_512d2
 '                                        pc_512d1                 pc_512d0
     case 49509d ' ld pc_status_512
     
 '                     pc_status_512 pc_status_512d7           pc_status_512d6           pc_status_512d5
                   mov(mem64(49510d),mem64(49511d) shl 56d add mem64(49512d) shl 48d add mem64(49513d) shl 40d add _
-                                    mem64(49514d) shl 32d add mem64(49515d) shl 24d add mem64(49516d) shl 16d add _
-                                    mem64(49517d) shl 08d add mem64(49518d)) '          pc_status_512d2
-'                                   pc_status_512d1           pc_status_512d0
+                                    mem64(49514d) shl bytes(&B00100000) add mem64(49515d) shl bytes(&B00011000) add mem64(49516d) shl bytes(&B00010000) add _
+                                    mem64(49517d) shl bytes(&B00001000) add mem64(49518d)) '                        pc_status_512d2
+'                                   pc_status_512d1                        pc_status_512d0
 
 '                          pc_512        r0                    pc_512         r0   
     case 49519d: mov(mem64(49500d),mem64(49361d)) ' move mem64(49500d), mem64(49361d)
@@ -2924,15 +2979,15 @@ L2086:
     
 '            times         timesd7                   timesd6                   timesd5
     mov(mem64(49621d),mem64(49622d) shl 56d add mem64(49623d) shl 48d add mem64(49624d) shl 40d add _
-                      mem64(49625d) shl 32d add mem64(49626d) shl 24d add mem64(49627d) shl 16d add _
-                      mem64(49628d) shl 08d add mem64(49629d)) '               timesd2
+                      mem64(49625d) shl bytes(&B00100000) add mem64(49626d) shl bytes(&B00011000) add mem64(49627d) shl bytes(&B00010000) add _
+                      mem64(49628d) shl bytes(&B00001000) add mem64(49629d)) '               timesd2
 '                          timesd1                   timesd0
 
    case 49629d 'ld old_pc
 '            old_pc        old_pcd7                   old_pcd6                 old_pcd5
     mov(mem64(49630d),mem64(49631d) shl 56d add mem64(49631d) shl 48d add mem64(49633d) shl 40d add _
-                      mem64(49634d) shl 32d add mem64(49635d) shl 24d add mem64(49636d) shl 16d add _
-                      mem64(49637d) shl 08d add mem64(49638d)) '               old_pcd2
+                      mem64(49634d) shl bytes(&B00100000) add mem64(49635d) shl bytes(&B00011000) add mem64(49636d) shl bytes(&B00010000) add _
+                      mem64(49637d) shl bytes(&B00001000) add mem64(49638d)) '               old_pcd2
 '                          old_pcd1                   old_pcd0
 
 '                          pc_512       pc_512
@@ -2983,179 +3038,179 @@ L2086:
 '                           pc             pc
     case 49416d:  mov(mem64(49418d), mem64(49418d) mod &HFFFFFFFF)
     case 49417d ' ld pc
-'                           pc            pcd3                      pcd2          
-	              mov(mem64(49418d),mem64(49420d) shl 24d add mem64(49421d) shl 16d add _        
-	                                mem64(49422d) shl 08d add mem64(49423d))
-'                                         pcd1                      pcd0
+'                           pc            pcd3                                    pcd2          
+	              mov(mem64(49418d),mem64(49420d) shl bytes(&B00011000) add mem64(49421d) shl bytes(&B00010000) add _        
+	                                mem64(49422d) shl bytes(&B00001000) add mem64(49423d))
+'                                         pcd1                                    pcd0
     case 49424d ' ld adr0	    
-'                           adr0          adr0d3                    adr0d2          
-	              mov(mem64(49425d),mem64(49427d) shl 24d add mem64(49428d) shl 16d add _        
-	                                mem64(49429d) shl 08d add mem64(49430d))
-'                                         adr0d1                    adr0d0
+'                           adr0          adr0d3                                  adr0d2          
+	              mov(mem64(49425d),mem64(49427d) shl bytes(&B00011000) add mem64(49428d) shl bytes(&B00010000) add _        
+	                                mem64(49429d) shl bytes(&B00001000) add mem64(49430d))
+'                                         adr0d1                                  adr0d0
     
     case 49431d ' ld adr1	    
-'                           adr1          adr1d3                    adr1d2          
-	              mov(mem64(49432d),mem64(49434d) shl 24d add mem64(49435d) shl 16d add _        
-	                                mem64(49436d) shl 08d add mem64(49437d))
-'                                         adr1d1                    adr1d0
+'                           adr1          adr1d3                                  adr1d2          
+	              mov(mem64(49432d),mem64(49434d) shl bytes(&B00011000) add mem64(49435d) shl bytes(&B00010000) add _        
+	                                mem64(49436d) shl bytes(&B00001000) add mem64(49437d))
+'                                         adr1d1                                  adr1d0
     case 49438d ' ld adr2	    
-'                           adr2          adr2d3                    adr2d2          
-	              mov(mem64(49439d),mem64(49441d) shl 24d add mem64(49442d) shl 16d add _        
-	                                mem64(49443d) shl 08d add mem64(49444d))
-'                                         adr2d1                    adr2d0
+'                           adr2          adr2d3                                  adr2d2          
+	              mov(mem64(49439d),mem64(49441d) shl bytes(&B00011000) add mem64(49442d) shl bytes(&B00010000) add _        
+	                                mem64(49443d) shl bytes(&B00001000) add mem64(49444d))
+'                                         adr2d1                                  adr2d0
     case 49445d ' ld adr3	    
-'                           adr3          adr3d3                    adr3d2          
-	              mov(mem64(49446d),mem64(49448d) shl 24d add mem64(49449d) shl 16d add _        
-	                                mem64(49450d) shl 08d add mem64(49451d))
-'                                         adr3d1                    adr3d0
+'                           adr3          adr3d3                                  adr3d2          
+	              mov(mem64(49446d),mem64(49448d) shl bytes(&B00011000) add mem64(49449d) shl bytes(&B00010000) add _        
+	                                mem64(49450d) shl bytes(&B00001000) add mem64(49451d))
+'                                         adr3d1                                  adr3d0
     case 49452d ' ld pc_status	    
-'                           pc_status  pc_status_d3              pc_status_d2          
-	              mov(mem64(49453d),mem64(49455d) shl 24d add mem64(49456d) shl 16d add _        
-	                                mem64(49457d) shl 08d add mem64(49458d))
-'                                      pc_status_d1              pc_status_d0
+'                           pc_status  pc_status_d3                              pc_status_d2          
+	              mov(mem64(49453d),mem64(49455d) shl bytes(&B00011000) add mem64(49456d) shl bytes(&B00010000) add _        
+	                                mem64(49457d) shl bytes(&B00001000) add mem64(49458d))
+'                                      pc_status_d1                              pc_status_d0
 
 #endif
    case 49453d ' Border Color Red
-'              bd_color      alpha                     red                       green                     blue 
-	 mov(mem64(49457d),mem64(49456d) shl 24d add mem64(49453d) shl 16d add mem64(49454d) shl 08d add mem64(49455d))
+'              bd_color      alpha                                   red                                     green                                   blue 
+	 mov(mem64(49457d),mem64(49456d) shl bytes(&B00011000) add mem64(49453d) shl bytes(&B00010000) add mem64(49454d) shl bytes(&B00001000) add mem64(49455d))
    case 49454d ' Border Color Green
-'              bd_color      alpha                     red                       green                     blue	
-	 mov(mem64(49457d),mem64(49456d) shl 24d add mem64(49453d) shl 16d add mem64(49454d) shl 08d add mem64(49455d))
+'              bd_color      alpha                                   red                                     green                                   blue	
+	 mov(mem64(49457d),mem64(49456d) shl bytes(&B00011000) add mem64(49453d) shl bytes(&B00010000) add mem64(49454d) shl bytes(&B00001000) add mem64(49455d))
    case 49455d ' Border Color Blue
-'              bd_color      alpha                     red                       green                     blue	
-	 mov(mem64(49457d),mem64(49456d) shl 24d add mem64(49453d) shl 16d add mem64(49454d) shl 08d add mem64(49455d))
+'              bd_color      alpha                                   red                                     green                                   blue	
+	 mov(mem64(49457d),mem64(49456d) shl bytes(&B00011000) add mem64(49453d) shl bytes(&B00010000) add mem64(49454d) shl bytes(&B00001000) add mem64(49455d))
    case 49456d ' Border Color Alapha
-'              bd_color      alpha                     red                       green                     blue 
-	 mov(mem64(49457d),mem64(49456d) shl 24d add mem64(49453d) shl 16d add mem64(49454d) shl 08d add mem64(49455d))
+'              bd_color      alpha                                   red                                     green                                   blue 
+	 mov(mem64(49457d),mem64(49456d) shl bytes(&B00011000) add mem64(49453d) shl bytes(&B00010000) add mem64(49454d) shl bytes(&B00001000) add mem64(49455d))
    case 49457d 
  '                           x0            y0              x1            y1            fg_color       
  '        line fgimage,(mem64(49355d),mem64(49356d))-(mem64(49358d),mem64(49359d)),mem64(49353d)
 /' 
 	case 49162d 'ld x0
-'              x0            x0d4 	                   x0d3                      x0d2          
-	 mov(mem64(49355d),mem64(49163d) shl 32d add mem64(49164d) shl 24d add mem64(49165d) shl 16d add _        
-	                   mem64(49166d) shl 08d add mem64(49167))
-'                            x0d1                      x0d0		                   
+'              x0            x0d4 	                                 x0d3                                    x0d2          
+	 mov(mem64(49355d),mem64(49163d) shl bytes(&B00100000) add mem64(49164d) shl bytes(&B00011000) add mem64(49165d) shl bytes(&B00010000) add _        
+	                   mem64(49166d) shl bytes(&B00001000) add mem64(49167))
+'                            x0d1                                    x0d0		                   
 	case 49168d 'ld y0
-'              y0            y0d4      	               y0d3                      y0d2 
-	 mov(mem64(49356d),mem64(49169d) shl 32d add mem64(49170d) shl 24d add mem64(49171d) shl 16d add _
-	                   mem64(49172d) shl 08d add mem64(49173d))
-'                            y0d1                      y0d0	                   
+'              y0            y0d4      	                             y0d3                                    y0d2 
+	 mov(mem64(49356d),mem64(49169d) shl bytes(&B00100000) add mem64(49170d) shl bytes(&B00011000) add mem64(49171d) shl bytes(&B00010000) add _
+	                   mem64(49172d) shl bytes(&B00001000) add mem64(49173d))
+'                            y0d1                                    y0d0	                   
 	case 49174d 'ld z0
-'              z0            z0d4                      z0d3                      z0d2   	           
-	 mov(mem64(49357d),mem64(49175d) shl 32d add mem64(49176d) shl 24d add mem64(49177d) shl 16d add _
-	                   mem64(49178d) shl 08d add mem64(49179d))
-'                            z0d1                      z0d0	                   
+'              z0            z0d4                                    z0d3                                    z0d2   	           
+	 mov(mem64(49357d),mem64(49175d) shl bytes(&B00100000) add mem64(49176d) shl bytes(&B00011000) add mem64(49177d) shl bytes(&B00010000) add _
+	                   mem64(49178d) shl bytes(&B00001000) add mem64(49179d))
+'                            z0d1                                    z0d0	                   
 	case 49180d 'ld x1
-'              x1            x1d4                      x1d3                      x1d2 
-	 mov(mem64(49358d),mem64(49181d) shl 32d add mem64(49182d) shl 24d add mem64(49183d) shl 16d add _
-	                   mem64(49184d) shl 08d add mem64(49185d))
-'                            x1d1                      x1d0	                   
+'              x1            x1d4                                    x1d3                                    x1d2 
+	 mov(mem64(49358d),mem64(49181d) shl bytes(&B00100000) add mem64(49182d) shl bytes(&B00011000) add mem64(49183d) shl bytes(&B00010000) add _
+	                   mem64(49184d) shl bytes(&B00001000) add mem64(49185d))
+'                            x1d1                                    x1d0	                   
 	case 49186d 'ld y1
-'              y1            y1d4                      y1d3                      y1d2	
-	 mov(mem64(49359d),mem64(49187d) shl 32d add mem64(49188d) shl 24d add mem64(49189d) shl 16d add _
-	                   mem64(49190d) shl 08d add mem64(49191d))
-'                            y1d1                      y1d0	                   
+'              y1            y1d4                                    y1d3                                    y1d2	
+	 mov(mem64(49359d),mem64(49187d) shl bytes(&B00100000) add mem64(49188d) shl bytes(&B00011000) add mem64(49189d) shl bytes(&B00010000) add _
+	                   mem64(49190d) shl bytes(&B00001000) add mem64(49191d))
+'                            y1d1                                    y1d0	                   
 	case 49192d 'ld z1
-'              z1            z1d4                      z1d3                      z1d2	
-	 mov(mem64(49360d),mem64(49193d) shl 32d add mem64(49194d) shl 24d add mem64(49195d) shl 16d add _
-	                   mem64(49196d) shl 08d add mem64(49197d))
-'                            z1d1                      z1d0	                   
+'              z1            z1d4                                    z1d3                                    z1d2	
+	 mov(mem64(49360d),mem64(49193d) shl bytes(&B00100000) add mem64(49194d) shl bytes(&B00011000) add mem64(49195d) shl bytes(&B00010000) add _
+	                   mem64(49196d) shl bytes(&B00001000) add mem64(49197d))
+'                            z1d1                                    z1d0	                   
 	case 49198d 'ld r0
-'              r0            r0d4                      r0d3                      r0d2
-	 mov(mem64(49361d),mem64(49199d) shl 32d add mem64(49200d) shl 24d add mem64(49201d) shl 16d add _
-	                   mem64(49202d) shl 08d add mem64(49203d))
-'                            r0d1                      r0d0	                   
+'              r0            r0d4                                    r0d3                                    r0d2
+	 mov(mem64(49361d),mem64(49199d) shl bytes(&B00100000) add mem64(49200d) shl bytes(&B00011000) add mem64(49201d) shl bytes(&B00010000) add _
+	                   mem64(49202d) shl bytes(&B00001000) add mem64(49203d))
+'                            r0d1                                    r0d0	                   
 	case 49204d 'ld r1
-'              r1            r1d4                      r1d3                      r1d2   	
-	 mov(mem64(49362d),mem64(49205d) shl 32d add mem64(49206d) shl 24d add mem64(49207d) shl 16d add _
-	                   mem64(49208d) shl 08d add mem64(49209d))
-'                            r1d1                      r1d0  	                   
+'              r1            r1d4                                    r1d3                                    r1d2   	
+	 mov(mem64(49362d),mem64(49205d) shl bytes(&B00100000) add mem64(49206d) shl bytes(&B00011000) add mem64(49207d) shl bytes(&B00010000) add _
+	                   mem64(49208d) shl bytes(&B00001000) add mem64(49209d))
+'                            r1d1                                    r1d0  	                   
 	case 49210d 'ld r2
-'              r2            r2d4                      r2d3                      r2d2 	
-	 mov(mem64(49363d),mem64(49211d) shl 32d add mem64(49212d) shl 24d add mem64(49213d) shl 16d add _
-	                   mem64(49214d) shl 08d add mem64(49215d))
-'                            r2d1                      r2d0	                   
+'              r2            r2d4                                    r2d3                                    r2d2 	
+	 mov(mem64(49363d),mem64(49211d) shl bytes(&B00100000) add mem64(49212d) shl bytes(&B00011000) add mem64(49213d) shl bytes(&B00010000) add _
+	                   mem64(49214d) shl bytes(&B00001000) add mem64(49215d))
+'                            r2d1                                    r2d0	                   
 	case 49216d 'ld r3
-'	           r3            r3d4                      r3d3                      r3d2 
-	 mov(mem64(49364d),mem64(49217d) shl 32d add mem64(49218d) shl 24d add mem64(49219d) shl 16d add _
-	                   mem64(49221d) shl 08d add mem64(49222d))
-'                            r3d1                      r3d0	                   
+'	           r3            r3d4                                    r3d3                                    r3d2 
+	 mov(mem64(49364d),mem64(49217d) shl bytes(&B00100000) add mem64(49218d) shl bytes(&B00011000) add mem64(49219d) shl bytes(&B00010000) add _
+	                   mem64(49221d) shl bytes(&B00001000) add mem64(49222d))
+'                            r3d1                                    r3d0	                   
 	case 49223d 'ld r4
-'              r4            r4d4                      r4d3                      r4d2	
-	 mov(mem64(49365d),mem64(49224d) shl 32d add mem64(49225d) shl 24d add mem64(49226d) shl 16d add _
-	                   mem64(49227d) shl 08d add mem64(49228d))
-'                            r4d1                      r4d0	                   
+'              r4            r4d4                                    r4d3                                    r4d2	
+	 mov(mem64(49365d),mem64(49224d) shl bytes(&B00100000) add mem64(49225d) shl bytes(&B00011000) add mem64(49226d) shl bytes(&B00010000) add _
+	                   mem64(49227d) shl bytes(&B00001000) add mem64(49228d))
+'                            r4d1                                    r4d0	                   
 	case 49227d 'ld r5
-'              r5            r5d4                      r5d3	                     r5d2
-	 mov(mem64(49366d),mem64(49229d) shl 32d add mem64(49230d) shl 24d add mem64(49231d) shl 16d add _
-	                   mem64(49232d) shl 08d add mem64(49233d))
-'                            r5d1                      r5d0	                   
+'              r5            r5d4                                    r5d3	                                 r5d2
+	 mov(mem64(49366d),mem64(49229d) shl bytes(&B00100000) add mem64(49230d) shl bytes(&B00011000) add mem64(49231d) shl bytes(&B00010000) add _
+	                   mem64(49232d) shl bytes(&B00001000) add mem64(49233d))
+'                            r5d1                                    r5d0	                   
 	case 49234d 'ld r6
-'              r6            r6d4                      r6d3                      r6d2	
-	 mov(mem64(49367d),mem64(49235d) shl 32d add mem64(49236d) shl 24d add mem64(49237d) shl 16d add _
-	                   mem64(49238d) shl 08d add mem64(49239d))
-'                            r6d1                      r6d0	                   
+'              r6            r6d4                                    r6d3                                    r6d2	
+	 mov(mem64(49367d),mem64(49235d) shl bytes(&B00100000) add mem64(49236d) shl bytes(&B00011000) add mem64(49237d) shl bytes(&B00010000) add _
+	                   mem64(49238d) shl bytes(&B00001000) add mem64(49239d))
+'                            r6d1                                    r6d0	                   
 	case 49240d 'ld r7
-'              r7            r7d4                      r7d3                      r7d2	
-	 mov(mem64(49368d),mem64(49241d) shl 32d add mem64(49242d) shl 24d add mem64(49243d) shl 16d add _
-	                   mem64(49244d) shl 08d add mem64(49245d))
-'                            r7d1                      r7d0	                   
+'              r7            r7d4                                    r7d3                                    r7d2	
+	 mov(mem64(49368d),mem64(49241d) shl bytes(&B00100000) add mem64(49242d) shl bytes(&B00011000) add mem64(49243d) shl bytes(&B00010000) add _
+	                   mem64(49244d) shl bytes(&B00001000) add mem64(49245d))
+'                            r7d1                                    r7d0	                   
 	case 49246d 'ld r8
-'              r8            r8d4                      r8d3                      r8d2	
-	 mov(mem64(49369d),mem64(49247d) shl 32d add mem64(49248d) shl 24d add mem64(49249d) shl 16d add _
-	                   mem64(49250d) shl 08d add mem64(49251d))
-'                            r8d1                      r8d0	                   
+'              r8            r8d4                                    r8d3                                    r8d2	
+	 mov(mem64(49369d),mem64(49247d) shl bytes(&B00100000) add mem64(49248d) shl bytes(&B00011000) add mem64(49249d) shl bytes(&B00010000) add _
+	                   mem64(49250d) shl bytes(&B00001000) add mem64(49251d))
+'                            r8d1                                    r8d0	                   
 	case 49252d 'ld r9
-'              r9            r9d4                      r9d3                      r9d2	                        
-	 mov(mem64(49370d),mem64(49253d) shl 32d add mem64(49254d) shl 24d add mem64(48255d) shl 16d add _
-	                   mem64(49256d) shl 08d add mem64(49257d))
-'                            r9d1                      r9d0	                   
+'              r9            r9d4                                    r9d3                                    r9d2	                        
+	 mov(mem64(49370d),mem64(49253d) shl bytes(&B00100000) add mem64(49254d) shl bytes(&B00011000) add mem64(48255d) shl bytes(&B00010000) add _
+	                   mem64(49256d) shl bytes(&B00001000) add mem64(49257d))
+'                            r9d1                                    r9d0	                   
 	case 49258d 'ld r10
-'              r10           r10d4                     r10d3                     r10d2	
-	 mov(mem64(49371d),mem64(49259d) shl 32d add mem64(49260d) shl 24d add mem64(49261d) shl 16d add _
-	                   mem64(49262d) shl 08d add mem64(49263d))
-'                            r10d1                     r10d0	                   
+'              r10           r10d4                                   r10d3                                   r10d2	
+	 mov(mem64(49371d),mem64(49259d) shl bytes(&B00100000) add mem64(49260d) shl bytes(&B00011000) add mem64(49261d) shl bytes(&B00010000) add _
+	                   mem64(49262d) shl bytes(&B00001000) add mem64(49263d))
+'                            r10d1                                   r10d0	                   
 	case 49264d 'ld r11
-'	           r11           r11d4                     r11d3                     r11d2
-	 mov(mem64(49372d),mem64(49265d) shl 32d add mem64(49266d) shl 24d add mem64(49267d) shl 16d add _
-	                   mem64(49268d) shl 08d add mem64(49269d))
-'                            r11d1                     r11d0	                   
+'	           r11           r11d4                                   r11d3                                   r11d2
+	 mov(mem64(49372d),mem64(49265d) shl bytes(&B00100000) add mem64(49266d) shl bytes(&B00011000) add mem64(49267d) shl bytes(&B00010000) add _
+	                   mem64(49268d) shl bytes(&B00001000) add mem64(49269d))
+'                            r11d1                                   r11d0	                   
 	case 49270d 'ld rot0
-'              rot0          rot0d4                    rot0d3                    rot0d2	
-	 mov(mem64(49373d),mem64(49271d) shl 32d add mem64(49272d) shl 24d add mem64(49273d) shl 16d add _
-	                   mem64(49274d) shl 08d add mem64(49275d))
-'                            rot0d1                    rot0d0	                   
+'              rot0          rot0d4                                  rot0d3                                  rot0d2	
+	 mov(mem64(49373d),mem64(49271d) shl bytes(&B00100000) add mem64(49272d) shl bytes(&B00011000) add mem64(49273d) shl bytes(&B00010000) add _
+	                   mem64(49274d) shl bytes(&B00001000) add mem64(49275d))
+'                            rot0d1                                  rot0d0	                   
 	case 49276d 'ld rot1
-'              rot1          rot1d4                    rot1d3                   rot1d2	
-	 mov(mem64(49374d),mem64(49277d) shl 32d add mem64(49278d) shl 24d add mem64(49279d) shl 16d add _
-	                   mem64(49280d) shl 08d add mem64(49281d))
-'                            rot1d1                    rot1d0	                   
+'              rot1          rot1d4                                  rot1d3                                  rot1d2	
+	 mov(mem64(49374d),mem64(49277d) shl bytes(&B00100000) add mem64(49278d) shl bytes(&B00011000) add mem64(49279d) shl bytes(&B00010000) add _
+	                   mem64(49280d) shl bytes(&B00001000) add mem64(49281d))
+'                            rot1d1                                  rot1d0	                   
 	case 49282d 'ld rot2
-'               rot2         rot2d4                    rot2d3                    rot2d2	
-	 mov(mem64(49375d),mem64(49283d) shl 32d add mem64(49284d) shl 24d add mem64(49285d) shl 16d add _
-	                   mem64(49286d) shl 08d add mem64(49287d))
-'                            rot2d1                    rot2d0	                   
+'               rot2         rot2d4                                  rot2d3                                  rot2d2	
+	 mov(mem64(49375d),mem64(49283d) shl bytes(&B00100000) add mem64(49284d) shl bytes(&B00011000) add mem64(49285d) shl bytes(&B00010000) add _
+	                   mem64(49286d) shl bytes(&B00001000) add mem64(49287d))
+'                            rot2d1                                  rot2d0	                   
 	case 49288d 'ld rot3
-'              rot3          rot3d4                    rot3d3                    rot3d2	
-	 mov(mem64(49376d),mem64(49289d) shl 32d add mem64(49290d) shl 24d add mem64(49291d) shl 16d add _
-	                   mem64(49292d) shl 08d add mem64(49293d))
+'              rot3          rot3d4                                  rot3d3                                  rot3d2	
+	 mov(mem64(49376d),mem64(49289d) shl bytes(&B00100000) add mem64(49290d) shl bytes(&B00011000) add mem64(49291d) shl bytes(&B00010000) add _
+	                   mem64(49292d) shl bytes(&B00001000) add mem64(49293d))
 '                            rot3d1                    rot3d0
 	case 49294d 'ld rot4
-'              rot4          rot4d4                    rot4d3                   rot4d2	
-	 mov(mem64(49377d),mem64(49295d) shl 32d add mem64(49296d) shl 24d add mem64(49297d) shl 16d add _
-	                   mem64(49298d) shl 08d add mem64(49299d))
-'                            rot4d1                    rot4d0	                   
+'              rot4          rot4d4                                  rot4d3                                  rot4d2	
+	 mov(mem64(49377d),mem64(49295d) shl bytes(&B00100000) add mem64(49296d) shl bytes(&B00011000) add mem64(49297d) shl bytes(&B00010000) add _
+	                   mem64(49298d) shl bytes(&B00001000) add mem64(49299d))
+'                            rot4d1                                  rot4d0	                   
 	case 49300d 'ld rot5
-'              rot5          rot5d4                    rot5d3                    rot5d2	
-	 mov(mem64(49378d),mem64(49301d) shl 32d add mem64(49302d) shl 24d add mem64(49303d) shl 16d add _
-	                   mem64(49304d) shl 08d add mem64(49305d))
-'                            rot5d1                    rot5d0	                   		  		  		  		  		  		  		  		  		  		  		  		  		  		  
+'              rot5          rot5d4                                  rot5d3                                  rot5d2	
+	 mov(mem64(49378d),mem64(49301d) shl bytes(&B00100000) add mem64(49302d) shl bytes(&B00011000) add mem64(49303d) shl bytes(&B00010000) add _
+	                   mem64(49304d) shl bytes(&B00001000) add mem64(49305d))
+'                            rot5d1                                  rot5d0	                   		  		  		  		  		  		  		  		  		  		  		  		  		  		  
 	case 49306d 'ld rot6
-'              rot6          rot6d4                    rot6d3                    rot6d2	
-	 mov(mem64(49379d),mem64(49307d) shl 32d add mem64(49308d) shl 24d add mem64(49309d) shl 16d add _
-	                   mem64(49310d) shl 08d add mem64(49311d))
-'                             rot6d1     	           rot6d0  
+'              rot6          rot6d4                                  rot6d3                                  rot6d2	
+	 mov(mem64(49379d),mem64(49307d) shl bytes(&B00100000) add mem64(49308d) shl bytes(&B00011000) add mem64(49309d) shl bytes(&B00010000) add _
+	                   mem64(49310d) shl bytes(&B00001000) add mem64(49311d))
+'                            rot6d1     	                         rot6d0  
 '/
    /'
 '                 r0                    r1
@@ -4166,123 +4221,123 @@ dd &B10001110,"STX",_ABS   ,0d,0d,@INS_STX
 dd &B10001111,"***",_UNK   ,0d,0d,@INS_UNK
 
 dd &B10010000,"BCC",_REL   ,0d,0d,@INS_BCC
-dd 145d,"STA",_INDY  ,0d,0d,@INS_STA
-dd 146d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 147d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 148d,"STY",_ZEROX ,0d,0d,@INS_STY
-dd 149d,"STA",_ZEROX ,0d,0d,@INS_STA
-dd 150d,"STX",_ZEROY ,0d,0d,@INS_STX
-dd 151d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 152d,"TYA",_IMP   ,0d,0d,@INS_TYA
-dd 153d,"STA",_ABSY  ,0d,0d,@INS_STA
-dd 154d,"TXS",_IMP   ,0d,0d,@INS_TXS
-dd 155d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 156d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 157d,"STA",_ABSX  ,0d,0d,@INS_STA
-dd 158d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 159d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10010001,"STA",_INDY  ,0d,0d,@INS_STA
+dd &B10010010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10010011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10010100,"STY",_ZEROX ,0d,0d,@INS_STY
+dd &B10010101,"STA",_ZEROX ,0d,0d,@INS_STA
+dd &B10010110,"STX",_ZEROY ,0d,0d,@INS_STX
+dd &B10010111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10011000,"TYA",_IMP   ,0d,0d,@INS_TYA
+dd &B10011001,"STA",_ABSY  ,0d,0d,@INS_STA
+dd &B10011010,"TXS",_IMP   ,0d,0d,@INS_TXS
+dd &B10011011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10011100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10011101,"STA",_ABSX  ,0d,0d,@INS_STA
+dd &B10011110,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10011111,"***",_UNK   ,0d,0d,@INS_UNK
 
-dd 160d,"LDY",_IMM   ,0d,0d,@INS_LDY
-dd 161d,"LDA",_INDX  ,0d,0d,@INS_LDA
-dd 162d,"LDX",_IMM   ,0d,0d,@INS_LDX
-dd 163d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 164d,"LDY",_ZERO  ,0d,0d,@INS_LDY
-dd 165d,"LDA",_ZERO  ,0d,0d,@INS_LDA
-dd 166d,"LDX",_ZERO  ,0d,0d,@INS_LDX
-dd 167d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 168d,"TAY",_IMP   ,0d,0d,@INS_TAY
-dd 169d,"LDA",_IMM   ,0d,0d,@INS_LDA
-dd 170d,"TAX",_IMP   ,0d,0d,@INS_TAX
-dd 171d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 172d,"LDY",_ABS   ,0d,0d,@INS_LDY
-dd 173d,"LDA",_ABS   ,0d,0d,@INS_LDA
-dd 174d,"LDX",_ABS   ,0d,0d,@INS_LDX
-dd 175d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10100000,"LDY",_IMM   ,0d,0d,@INS_LDY
+dd &B10100001,"LDA",_INDX  ,0d,0d,@INS_LDA
+dd &B10100010,"LDX",_IMM   ,0d,0d,@INS_LDX
+dd &B10100011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10100100,"LDY",_ZERO  ,0d,0d,@INS_LDY
+dd &B10100101,"LDA",_ZERO  ,0d,0d,@INS_LDA
+dd &B10100110,"LDX",_ZERO  ,0d,0d,@INS_LDX
+dd &B10100111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10101000,"TAY",_IMP   ,0d,0d,@INS_TAY
+dd &B10101001,"LDA",_IMM   ,0d,0d,@INS_LDA
+dd &B10101010,"TAX",_IMP   ,0d,0d,@INS_TAX
+dd &B10101011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10101100,"LDY",_ABS   ,0d,0d,@INS_LDY
+dd &B10101101,"LDA",_ABS   ,0d,0d,@INS_LDA
+dd &B10101110,"LDX",_ABS   ,0d,0d,@INS_LDX
+dd &B10101111,"***",_UNK   ,0d,0d,@INS_UNK
 
-dd 176d,"BCS",_REL   ,0d,0d,@INS_BCS
-dd 177d,"LDA",_INDY  ,0d,0d,@INS_LDA
-dd 178d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 179d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 180d,"LDY",_ZEROX ,0d,0d,@INS_LDY
-dd 181d,"LDA",_ZEROX ,0d,0d,@INS_LDA
-dd 182d,"LDX",_ZEROY ,0d,0d,@INS_LDX
-dd 183d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 184d,"CLV",_IMP   ,0d,0d,@INS_CLV
-dd 185d,"LDA",_ABSY  ,0d,0d,@INS_LDA
-dd 186d,"TSX",_IMP   ,0d,0d,@INS_TSX
-dd 187d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 188d,"LDY",_ABSX  ,0d,0d,@INS_LDY
-dd 189d,"LDA",_ABSX  ,0d,0d,@INS_LDA
-dd 190d,"LDX",_ABSY  ,0d,0d,@INS_LDX
-dd 191d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10110000,"BCS",_REL   ,0d,0d,@INS_BCS
+dd &B10110001,"LDA",_INDY  ,0d,0d,@INS_LDA
+dd &B10110010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10110011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10110100,"LDY",_ZEROX ,0d,0d,@INS_LDY
+dd &B10110101,"LDA",_ZEROX ,0d,0d,@INS_LDA
+dd &B10110110,"LDX",_ZEROY ,0d,0d,@INS_LDX
+dd &B10110111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10111000,"CLV",_IMP   ,0d,0d,@INS_CLV
+dd &B10111001,"LDA",_ABSY  ,0d,0d,@INS_LDA
+dd &B10111010,"TSX",_IMP   ,0d,0d,@INS_TSX
+dd &B10111011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B10111100,"LDY",_ABSX  ,0d,0d,@INS_LDY
+dd &B10111101,"LDA",_ABSX  ,0d,0d,@INS_LDA
+dd &B10111110,"LDX",_ABSY  ,0d,0d,@INS_LDX
+dd &B10111111,"***",_UNK   ,0d,0d,@INS_UNK
+ 
+dd &B11000000,"CPY",_IMM   ,0d,0d,@INS_CPY
+dd &B11000001,"CMP",_INDX  ,0d,0d,@INS_CMP
+dd &B11000010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11000011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11000100,"CPY",_ZERO  ,0d,0d,@INS_CPY
+dd &B11000101,"CMP",_ZERO  ,0d,0d,@INS_CMP
+dd &B11000110,"DEC",_ZERO  ,0d,0d,@INS_DEC
+dd &B11000111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11001000,"INY",_IMP   ,0d,0d,@INS_INY
+dd &B11001001,"CMP",_IMM   ,0d,0d,@INS_CMP
+dd &B11001010,"DEX",_IMP   ,0d,0d,@INS_DEX
+dd &B11001011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11001100,"CPY",_ABS   ,0d,0d,@INS_CPY
+dd &B11001101,"CMP",_ABS   ,0d,0d,@INS_CMP
+dd &B11001110,"DEC",_ABS   ,0d,0d,@INS_DEC
+dd &B11001111,"***",_UNK   ,0d,0d,@INS_UNK
 
-dd 192d,"CPY",_IMM   ,0d,0d,@INS_CPY
-dd 193d,"CMP",_INDX  ,0d,0d,@INS_CMP
-dd 194d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 195d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 196d,"CPY",_ZERO  ,0d,0d,@INS_CPY
-dd 197d,"CMP",_ZERO  ,0d,0d,@INS_CMP
-dd 198d,"DEC",_ZERO  ,0d,0d,@INS_DEC
-dd 199d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 200d,"INY",_IMP   ,0d,0d,@INS_INY
-dd 201d,"CMP",_IMM   ,0d,0d,@INS_CMP
-dd 202d,"DEX",_IMP   ,0d,0d,@INS_DEX
-dd 203d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 204d,"CPY",_ABS   ,0d,0d,@INS_CPY
-dd 205d,"CMP",_ABS   ,0d,0d,@INS_CMP
-dd 206d,"DEC",_ABS   ,0d,0d,@INS_DEC
-dd 207d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11010000,"BNE",_REL   ,0d,0d,@INS_BNE
+dd &B11010001,"CMP",_INDY  ,0d,0d,@INS_CMP
+dd &B11010010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11010011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11010100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11010101,"CMP",_ZEROX ,0d,0d,@INS_CMP
+dd &B11010110,"DEC",_ZEROX ,0d,0d,@INS_DEC
+dd &B11010111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11011000,"CLD",_IMP   ,0d,0d,@INS_CLD
+dd &B11011001,"CMP",_ABSY  ,0d,0d,@INS_CMP
+dd &B11011010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11011011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11011100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11011101,"CMP",_ABSX  ,0d,0d,@INS_CMP
+dd &B11011110,"DEC",_ABSX  ,0d,0d,@INS_DEC
+dd &B11011111,"***",_UNK   ,0d,0d,@INS_UNK
 
-dd 208d,"BNE",_REL   ,0d,0d,@INS_BNE
-dd 209d,"CMP",_INDY  ,0d,0d,@INS_CMP
-dd 210d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 211d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 212d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 213d,"CMP",_ZEROX ,0d,0d,@INS_CMP
-dd 214d,"DEC",_ZEROX ,0d,0d,@INS_DEC
-dd 215d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 216d,"CLD",_IMP   ,0d,0d,@INS_CLD
-dd 217d,"CMP",_ABSY  ,0d,0d,@INS_CMP
-dd 218d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 219d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 220d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 221d,"CMP",_ABSX  ,0d,0d,@INS_CMP
-dd 222d,"DEC",_ABSX  ,0d,0d,@INS_DEC
-dd 223d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11100000,"CPX",_IMM   ,0d,0d,@INS_CPX
+dd &B11100001,"SBC",_INDX  ,0d,0d,@INS_SBC
+dd &B11100010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11100011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11100100,"CPX",_ZERO  ,0d,0d,@INS_CPX
+dd &B11100101,"SBC",_ZERO  ,0d,0d,@INS_SBC
+dd &B11100110,"INC",_ZERO  ,0d,0d,@INS_INC
+dd &B11100111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11101000,"INX",_IMP   ,0d,0d,@INS_INX
+dd &B11101001,"SBC",_IMM   ,0d,0d,@INS_SBC
+dd &B11101010,"NOP",_IMP   ,0d,0d,@INS_NOP
+dd &B11101011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11101100,"CPX",_ABS   ,0d,0d,@INS_CPX
+dd &B11101101,"SBC",_ABS   ,0d,0d,@INS_SBC
+dd &B11101110,"INC",_ABS   ,0d,0d,@INS_INC
+dd &B11101111,"***",_UNK   ,0d,0d,@INS_UNK
 
-dd 224d,"CPX",_IMM   ,0d,0d,@INS_CPX
-dd 225d,"SBC",_INDX  ,0d,0d,@INS_SBC
-dd 226d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 227d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 228d,"CPX",_ZERO  ,0d,0d,@INS_CPX
-dd 229d,"SBC",_ZERO  ,0d,0d,@INS_SBC
-dd 230d,"INC",_ZERO  ,0d,0d,@INS_INC
-dd 231d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 232d,"INX",_IMP   ,0d,0d,@INS_INX
-dd 233d,"SBC",_IMM   ,0d,0d,@INS_SBC
-dd 234d,"NOP",_IMP   ,0d,0d,@INS_NOP
-dd 235d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 236d,"CPX",_ABS   ,0d,0d,@INS_CPX
-dd 237d,"SBC",_ABS   ,0d,0d,@INS_SBC
-dd 238d,"INC",_ABS   ,0d,0d,@INS_INC
-dd 239d,"***",_UNK   ,0d,0d,@INS_UNK
-
-dd 240d,"BEQ",_REL   ,0d,0d,@INS_BEQ
-dd 241d,"SBC",_INDY  ,0d,0d,@INS_SBC
-dd 242d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 243d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 244d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 245d,"SBC",_ZEROX ,0d,0d,@INS_SBC
-dd 246d,"INC",_ZEROX ,0d,0d,@INS_INC
-dd 247d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 248d,"SED",_IMP   ,0d,0d,@INS_SED
-dd 249d,"SBC",_ABSY  ,0d,0d,@INS_SBC
-dd 250d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 251d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 252d,"***",_UNK   ,0d,0d,@INS_UNK
-dd 253d,"SBC",_ABSX  ,0d,0d,@INS_SBC
-dd 254d,"INC",_ABSX  ,0d,0d,@INS_INC
-dd 255d,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11110000,"BEQ",_REL   ,0d,0d,@INS_BEQ
+dd &B11110001,"SBC",_INDY  ,0d,0d,@INS_SBC
+dd &B11110010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11110011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11110100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11110101,"SBC",_ZEROX ,0d,0d,@INS_SBC
+dd &B11110110,"INC",_ZEROX ,0d,0d,@INS_INC
+dd &B11110111,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11111000,"SED",_IMP   ,0d,0d,@INS_SED
+dd &B11111001,"SBC",_ABSY  ,0d,0d,@INS_SBC
+dd &B11111010,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11111011,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11111100,"***",_UNK   ,0d,0d,@INS_UNK
+dd &B11111101,"SBC",_ABSX  ,0d,0d,@INS_SBC
+dd &B11111110,"INC",_ABSX  ,0d,0d,@INS_INC
+dd &B11111111,"***",_UNK   ,0d,0d,@INS_UNK
 
 ADDRESS_MODES:
 db "UNK"
@@ -4308,10 +4363,10 @@ db "IND"
 
 
 enum FB_KEYS
-  fb_bspace =   8
-  fb_tab    =   9
-  fb_f2     = 316
-  fb_f3     = 317
+  fb_bspace = &B0000000000001000
+  fb_tab    = &B0000000000001001
+  fb_f2     = &B0000000100111100
+  fb_f3     = &B0000000100111101
   fb_pos1   = 327
   fb_up     = 328
   fb_left   = 331

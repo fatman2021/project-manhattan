@@ -256,1011 +256,1011 @@
    cmp v eq &HFF jmp L1825
    jmp L2086
 L1570:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 0d)
    jmp L1826
 L1571:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 170d)
    jmp L1826
 L1572:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 43520d)
    jmp L1826
 L1573:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 43690d)
    jmp L1826
 L1574:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 11141120d)
    jmp L1826
 L1575:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 11141290d)
    jmp L1826
 L1576:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 11162880d)
    jmp L1826
 L1577:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 11184810d)
    jmp L1826
 L1578:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5592405d)
    jmp L1826
 L1579:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5592575d)
    jmp L1826
 L1580:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5635925d)
    jmp L1826
 L1581:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5636095d)
    jmp L1826
 L1582:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16733525d)
    jmp L1826
 L1583:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16733695d)
    jmp L1826
 L1584:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16777045d)
    jmp L1826
 L1585:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16777215d)
    jmp L1826
 L1586:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 0d)
    jmp L1826
 L1587:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 1315860d)
    jmp L1826
 L1588:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2105376d)
    jmp L1826
 L1589:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2960685d)
    jmp L1826
 L1590:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3750201d)
    jmp L1826
 L1591:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4539717d)
    jmp L1826
 L1592:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5329233d)
    jmp L1826
 L1593:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 6381921d)
    jmp L1826
 L1594:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7434609d)
    jmp L1826
 L1595:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 8553090d)
    jmp L1826
 L1596:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 9605778d)
    jmp L1826
 L1597:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 10658466d)
    jmp L1826
 L1598:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 11974326d)
    jmp L1826
 L1599:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 13290186d)
    jmp L1826
 L1600:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 14935011d)
    jmp L1826
 L1601:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16777215d)
    jmp L1826
 L1602:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 255d)
    jmp L1826
 L1603:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4260095d)
    jmp L1826
 L1604:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 8192255d)
    jmp L1826
 L1605:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 12452095d)
    jmp L1826
 L1606:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16711935d)
    jmp L1826
 L1607:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16711870d)
    jmp L1826
 L1608:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16711805d)
    jmp L1826
 L1609:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16711745d)
    jmp L1826
 L1610:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16711680d)
    jmp L1826
 L1611:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16728320d)
    jmp L1826
 L1612:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16743680d)
    jmp L1826
 L1613:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16760320d)
    jmp L1826
 L1614:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16776960d)
    jmp L1826
 L1615:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 12517120d)
    jmp L1826
 L1616:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 8257280d)
    jmp L1826
 L1617:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4325120d)
    jmp L1826
 L1618:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 65280d)
    jmp L1826
 L1619:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 65345d)
    jmp L1826
 L1620:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 65405d)
    jmp L1826
 L1621:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 65470d)
    jmp L1826
 L1622:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 65535d)
    jmp L1826
 L1623:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 48895d)
    jmp L1826
 L1624:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 32255d)
    jmp L1826
 L1625:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16895d)
    jmp L1826
 L1626:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 8224255d)
    jmp L1826
 L1627:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 10386943d)
    jmp L1826
 L1628:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 12484095d)
    jmp L1826
 L1629:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 14646783d)
    jmp L1826
 L1630:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16743935d)
    jmp L1826
 L1631:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16743903d)
    jmp L1826
 L1632:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16743870d)
    jmp L1826
 L1633:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16743838d)
    jmp L1826
 L1634:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16743805d)
    jmp L1826
 L1635:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16752253d)
    jmp L1826
 L1636:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16760445d)
    jmp L1826
 L1637:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16768893d)
    jmp L1826
 L1638:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16777085d)
    jmp L1826
 L1639:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 14679933d)
    jmp L1826
 L1640:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 12517245d)
    jmp L1826
 L1641:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 10420093d)
    jmp L1826
 L1642:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 8257405d)
    jmp L1826
 L1643:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 8257438d)
    jmp L1826
 L1644:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 8257470d)
    jmp L1826
 L1645:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 8257503d)
    jmp L1826
 L1646:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 8257535d)
    jmp L1826
 L1647:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 8249343d)
    jmp L1826
 L1648:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 8240895d)
    jmp L1826
 L1649:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 8232703d)
    jmp L1826
 L1650:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 11974399d)
    jmp L1826
 L1651:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 13022975d)
    jmp L1826
 L1652:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 14399231d)
    jmp L1826
 L1653:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 15447807d)
    jmp L1826
 L1654:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16758527d)
    jmp L1826
 L1655:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16758507d)
    jmp L1826
 L1656:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16758491d)
    jmp L1826
 L1657:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16758470d)
    jmp L1826
 L1658:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16758454d)
    jmp L1826
 L1659:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16762550d)
    jmp L1826
 L1660:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16767926d)
    jmp L1826
 L1661:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16772022d)
    jmp L1826
 L1662:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16777142d)
    jmp L1826
 L1663:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 15466422d)
    jmp L1826
 L1664:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 14417846d)
    jmp L1826
 L1665:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 13041590d)
    jmp L1826
 L1666:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 11993014d)
    jmp L1826
 L1667:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 11993030d)
    jmp L1826
 L1668:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 11993051d)
    jmp L1826
 L1669:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 11993067d)
    jmp L1826
 L1670:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 11993087d)
    jmp L1826
 L1671:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 11987967d)
    jmp L1826
 L1672:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 11983871d)
    jmp L1826
 L1673:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 11978495d)
    jmp L1826
 L1674:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 113d)
    jmp L1826
 L1675:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 1835121d)
    jmp L1826
 L1676:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3735665d)
    jmp L1826
 L1677:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5570673d)
    jmp L1826
 L1678:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7405681d)
    jmp L1826
 L1679:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7405653d)
    jmp L1826
 L1680:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7405625d)
    jmp L1826
 L1681:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7405596d)
    jmp L1826
 L1682:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7405568d)
    jmp L1826
 L1683:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7412736d)
    jmp L1826
 L1684:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7420160d)
    jmp L1826
 L1685:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7427328d)
    jmp L1826
 L1686:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7434496d)
    jmp L1826
 L1687:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5599488d)
    jmp L1826
 L1688:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3764480d)
    jmp L1826
 L1689:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 1863936d)
    jmp L1826
 L1690:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 28928d)
    jmp L1826
 L1691:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 28956d)
    jmp L1826
 L1692:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 28985d)
    jmp L1826
 L1693:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 29013d)
    jmp L1826
 L1694:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 29041d)
    jmp L1826
 L1695:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 21873d)
    jmp L1826
 L1696:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 14705d)
    jmp L1826
 L1697:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7281d)
    jmp L1826
 L1698:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3750257d)
    jmp L1826
 L1699:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4536689d)
    jmp L1826
 L1700:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5585265d)
    jmp L1826
 L1701:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 6371697d)
    jmp L1826
 L1702:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7420273d)
    jmp L1826
 L1703:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7420257d)
    jmp L1826
 L1704:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7420245d)
    jmp L1826
 L1705:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7420229d)
    jmp L1826
 L1706:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7420217d)
    jmp L1826
 L1707:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7423289d)
    jmp L1826
 L1708:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7427385d)
    jmp L1826
 L1709:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7430457d)
    jmp L1826
 L1710:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7434553d)
    jmp L1826
 L1711:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 6385977d)
    jmp L1826
 L1712:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5599545d)
    jmp L1826
 L1713:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4550969d)
    jmp L1826
 L1714:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3764537d)
    jmp L1826
 L1715:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3764549d)
    jmp L1826
 L1716:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3764565d)
    jmp L1826
 L1717:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3764577d)
    jmp L1826
 L1718:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3764593d)
    jmp L1826
 L1719:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3760497d)
    jmp L1826
 L1720:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3757425d)
    jmp L1826
 L1721:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3753329d)
    jmp L1826
 L1722:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5329265d)
    jmp L1826
 L1723:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5853553d)
    jmp L1826
 L1724:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 6377841d)
    jmp L1826
 L1725:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 6902129d)
    jmp L1826
 L1726:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7426417d)
    jmp L1826
 L1727:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7426409d)
    jmp L1826
 L1728:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7426401d)
    jmp L1826
 L1729:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7426393d)
    jmp L1826
 L1730:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7426385d)
    jmp L1826
 L1731:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7428433d)
    jmp L1826
 L1732:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7430481d)
    jmp L1826
 L1733:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7432529d)
    jmp L1826
 L1734:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 7434577d)
    jmp L1826
 L1735:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 6910289d)
    jmp L1826
 L1736:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 6386001d)
    jmp L1826
 L1737:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5861713d)
    jmp L1826
 L1738:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5337425d)
    jmp L1826
 L1739:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5337433d)
    jmp L1826
 L1740:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5337441d)
    jmp L1826
 L1741:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5337449d)
    jmp L1826
 L1742:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5337457d)
    jmp L1826
 L1743:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5335409d)
    jmp L1826
 L1744:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5333361d)
    jmp L1826
 L1745:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 5331313d)
    jmp L1826
 L1746:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 65d)
    jmp L1826
 L1747:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 1048641d)
    jmp L1826
 L1748:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2097217d)
    jmp L1826
 L1749:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3211329d)
    jmp L1826
 L1750:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4259905d)
    jmp L1826
 L1751:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4259889d)
    jmp L1826
 L1752:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4259872d)
    jmp L1826
 L1753:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4259856d)
    jmp L1826
 L1754:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4259840d)
    jmp L1826
 L1755:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4263936d)
    jmp L1826
 L1756:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4268032d)
    jmp L1826
 L1757:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4272384d)
    jmp L1826
 L1758:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4276480d)
    jmp L1826
 L1759:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3227904d)
    jmp L1826
 L1760:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2113792d)
    jmp L1826
 L1761:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 1065216d)
    jmp L1826
 L1762:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16640d)
    jmp L1826
 L1763:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16656d)
    jmp L1826
 L1764:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16672d)
    jmp L1826
 L1765:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16689d)
    jmp L1826
 L1766:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16705d)
    jmp L1826
 L1767:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 12609d)
    jmp L1826
 L1768:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 8257d)
    jmp L1826
 L1769:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4161d)
    jmp L1826
 L1770:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2105409d)
    jmp L1826
 L1771:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2629697d)
    jmp L1826
 L1772:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3219521d)
    jmp L1826
 L1773:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3743809d)
    jmp L1826
 L1774:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4268097d)
    jmp L1826
 L1775:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4268089d)
    jmp L1826
 L1776:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4268081d)
    jmp L1826
 L1777:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4268072d)
    jmp L1826
 L1778:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4268064d)
    jmp L1826
 L1779:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4270112d)
    jmp L1826
 L1780:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4272416d)
    jmp L1826
 L1781:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4274464d)
    jmp L1826
 L1782:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4276512d)
    jmp L1826
 L1783:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3752224d)
    jmp L1826
 L1784:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3227936d)
    jmp L1826
 L1785:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2638112d)
    jmp L1826
 L1786:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2113824d)
    jmp L1826
 L1787:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2113832d)
    jmp L1826
 L1788:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2113841d)
    jmp L1826
 L1789:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2113849d)
    jmp L1826
 L1790:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2113857d)
    jmp L1826
 L1791:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2111809d)
    jmp L1826
 L1792:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2109761d)
    jmp L1826
 L1793:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2107457d)
    jmp L1826
 L1794:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2960705d)
    jmp L1826
 L1795:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3222849d)
    jmp L1826
 L1796:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3484993d)
    jmp L1826
 L1797:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4009281d)
    jmp L1826
 L1798:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4271425d)
    jmp L1826
 L1799:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4271421d)
    jmp L1826
 L1800:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4271413d)
    jmp L1826
 L1801:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4271409d)
    jmp L1826
 L1802:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4271405d)
    jmp L1826
 L1803:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4272429d)
    jmp L1826
 L1804:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4273453d)
    jmp L1826
 L1805:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4275501d)
    jmp L1826
 L1806:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4276525d)
    jmp L1826
 L1807:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 4014381d)
    jmp L1826
 L1808:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3490093d)
    jmp L1826
 L1809:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3227949d)
    jmp L1826
 L1810:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2965805d)
    jmp L1826
 L1811:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2965809d)
    jmp L1826
 L1812:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2965813d)
    jmp L1826
 L1813:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2965821d)
    jmp L1826
 L1814:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2965825d)
    jmp L1826
 L1815:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2964801d)
    jmp L1826
 L1816:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2962753d)
    jmp L1826
 L1817:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2961729d)
    jmp L1826
 L1818:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16756736d)
    jmp L1826
 L1819:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 16760832d)
    jmp L1826
 L1820:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3407616d)
    jmp L1826
 L1821:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 3407667d)
    jmp L1826
 L1822:
@@ -1268,15 +1268,15 @@ L1822:
    mov(mem64(49457d),mem64(49456d) shl 24 add 65331d)
    jmp L1826
 L1823:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 6750054d)
    jmp L1826
 L1824:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 65382d)
    jmp L1826
 L1825:
-'            fg_color      alpha              Color Code
+'            bd_color      alpha              Color Code
    mov(mem64(49457d),mem64(49456d) shl 24 add 2631720d)
    jmp L1826
 L1826:

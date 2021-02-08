@@ -255,6 +255,7 @@ function ShaderToy.CompileCode(UserCode as string) as boolean
   'Version =!"#version 120\n"
   'Version =!"#version 130\n"
   Version =!"#version 140\n"
+  'Version =!"#version 300 es\n"
   'Version =!"#version 460\n"
   
   ' set shader language version at first line !
