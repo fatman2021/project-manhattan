@@ -112,8 +112,9 @@ dim shared as string   get_key, get_data, old_data(10000)
 dim shared as short    data_pointer = 1, repeat
 dim shared as integer  prompt_flag = 1
 dim shared as string   eol: eol = chr(13) + chr(10)
-dim shared as ubyte    bytes(&H11111111)'
-dim shared as ushort   xwords(&B1111111111111111)
+dim shared as ubyte    nibbles(&B1111)
+dim shared as ubyte    bytes  (&H11111111)'
+dim shared as ushort   xwords (&B1111111111111111)
 
 var shared mov(bd_color,0d)
 var shared mov(b,0d),mov(c,0d),mov(x,0d),mov(y,0d),mov(xs,0d),mov(ys,0d)
@@ -363,38 +364,47 @@ end type
 
 constructor C64_T
   dim as integer i,c
-  ' initialize 8-bit values.
-  mov(i, &B00000000)
-L0A:
-  mov(bytes(i),i): mov(i add,                             &B00000001)
-  locate 1,1: print "BYTES: "; iif(i<&B100000000,i,i subt &B00000001)
-  cmp i ls &B100000000 jmp L0A
-  mov(i,   &B0000000000000000)
+  ' initialize nibbles, bytes, and words.
+  mov(nibbles(&B0000),&B0000)
+  mov(nibbles(&B0001),&B0001)
+  mov(nibbles(&B0101),&B0101)
+  mov(nibbles(&B1000),&B1000)  
+  mov(i,      nibbles(&B0000))
+L0A:  
+  mov(nibbles(i),i): mov(i add,                              nibbles(&B0001))
+  locate 1,1: print "NIBBLES: ";   iif(i<nibbles(&B1000) shl nibbles(&B0001),i, i subt nibbles(&B0001))
+  cmp i ls                               nibbles(&B1000) shl nibbles(&B0001) jmp L0A
+  mov(i,      nibbles(&B0000))
 L0B:
-  mov(xwords(i),i): mov(i add,                                  &B0000000000000001)
-  locate 2,1: print "WORDS: "; iif(i<&B1111111111111111,i,i add &B0000000000000001)
-  cmp i ls &B1111111111111111 jmp L0B
+  mov(bytes(i),i): mov(i add,                                nibbles(&B0001))
+  locate 2,1: print "BYTES:   ";   iif(i<nibbles(&B1000) shl nibbles(&B0101),i,i subt nibbles(&B0001))
+  cmp i ls                               nibbles(&B1000) shl nibbles(&B0101) jmp L0B
+  mov(i,      nibbles(&B0000))
+L0C:
+  mov(xwords(i),i): mov(i add,                               nibbles(&B0001))
+  locate 3,1: print "WORDS:   ";   iif(i<nibbles(&B1111) shl nibbles(&B1100) add nibbles(&B1111) shl nibbles(&B1000) add nibbles(&B1111) shl nibbles(&B0100) add &B1111,i,i subt nibbles(&B0001))
+  cmp i ls                               nibbles(&B1111) shl nibbles(&B1100) add nibbles(&B1111) shl nibbles(&B1000) add nibbles(&B1111) shl nibbles(&B0100) add &B1111 jmp L0C 
   dprint("C64_T()")  
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
   'ScreenRes 1920d,1080d, 32d, 0d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
   'ScreenRes xwords(&B0000011110000000),xwords(&B0000010000111000),bytes(&B00100000),bytes(&B00000000),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
-  ScreenRes xwords(&B0000011110000000),xwords(&B0000010000111000),bytes(&B00100000),bytes(&B00000000),GFX_ALPHA_PRIMITIVES: Cls
+  ScreenRes                                         nibbles(&B1111) shl nibbles(&B0111),nibbles(&B0100) shl nibbles(&B1000) add nibbles(&B0011) shl nibbles(&B0100) add nibbles(&B1000),nibbles(&B0010) shl nibbles(&B0100),nibbles(&B0000),GFX_ALPHA_PRIMITIVES: Cls
 #elseif defined(__FB_DOS__)
-  ScreenRes xwords(&B0000001100100000),xwords(&B0000001001011000),bytes(&B00100000),bytes(&B00000000),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+  ScreenRes nibbles(&B0011) shl nibbles(&B1000) add nibbles(&B0010) shl nibbles(&B0100),nibbles(&B0010) shl nibbles(&B1000) add nibbles(&B0101) shl nibbles(&B0100) add nibbles(&B1000),nibbles(&B0010) shl nibbles(&B0100),nibbles(&B0000),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
 #endif
   ' get curent resolution
   screeninfo cast(uinteger,scr_w), cast(uinteger,scr_h), cast(uinteger,imgData), cast(uinteger,pitch)
-  mov(bgimage, ImageCreate(scr_w,scr_h,   bytes(&B00000000),bytes(&B00100000)))
-  mov(fgimage, ImageCreate(scr_w,scr_h,   bytes(&B00000000),bytes(&B00100000)))
-  mov(raster,  ImageCreate(scr_w,         bytes(&B00000000),bytes(&B00000000),bytes(&B00100000)))
-  mov(render,  ImageCreate(scr_w,xwords(&B0000010000111000),bytes(&B00000000),bytes(&B00100000)))
-  mov(i,                                                    bytes(&B00000000))  
+  mov(bgimage, ImageCreate(scr_w,scr_h,                     nibbles(&B0000),nibbles(&B0010) shl nibbles(&B0100)))
+  mov(fgimage, ImageCreate(scr_w,scr_h,                     nibbles(&B0000),nibbles(&B0010) shl nibbles(&B0100)))
+  mov(raster,  ImageCreate(scr_w,           nibbles(&B0001),nibbles(&B0000),nibbles(&B0010) shl nibbles(&B0100)))
+  mov(render,  ImageCreate(scr_w,scr_h,                     nibbles(&B0000),nibbles(&B0010) shl nibbles(&B0100)))
+  mov(i,                                                                                        nibbles(&B0000))  
 L0:
   read c:palette i,c
-  mov(i add, bytes(&B00000001))
-  cmp i lt   bytes(&B00001111) jmp L0
+  mov(i add, nibbles(&B0001))
+  cmp i lt   nibbles(&B1111) jmp L0
   mov(mem, new MEMORY_T)
   mov(cpu, new CPU6510(mem))
 end constructor
@@ -407,46 +417,54 @@ destructor C64_T
   ImageDestroy(fgimage)
   ImageDestroy(raster)
   ImageDestroy(render)  
-  sleep xwords(&B0000001111101000)
+  sleep nibbles(&B0011) shl nibbles(&B1000) add nibbles(&B1110) shl nibbles(&B0100) add nibbles(&B1000)
 end destructor
 
 constructor MEMORY_T
-  'Set default system offset
-  mov(sys_offset,49152d)
+  'Set default system offset to $C000(49152)
+  mov(sys_offset,nibbles(&B1100) shl nibbles(&B1100))
   ' initialize zero page and the stack
-  var mov(b,xwords(&B0000000000000000)), mov(index,xwords(&B0000000000000000))
+  var mov(b,nibbles(&B0000)), mov(index,&B0000)
 L1:  
   read b: mov(mem64(index), b)
-  mov(index add,    xwords(&B0000000000000001))
-  cmp index ls      xwords(&B0000000111111111) jmp L1
-  mov(index,        xwords(&B0000001000000000))
+  mov(index add,    nibbles(&B0001))
+  cmp index ls      nibbles(&B0001) shl nibbles(&B1000) add nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111) jmp L1
+  mov(index,        nibbles(&B0010) shl nibbles(&B1000))
 L2:
-  mov(mem64(index), xwords(&B0000000011111111))
-  mov(index add,    xwords(&B0000000000000001))
-  cmp index ls      xwords(&B0000001111111111) jmp L2
+  mov(mem64(index), nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111))
+  mov(index add,    nibbles(&B0001))
+  cmp index ls      nibbles(&B0011) shl nibbles(&B1000) add nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111) jmp L2
   ' initialize sine and cosine tables
-  mov(index,        xwords(&B0000000000000000))
+  mov(index,        nibbles(&B0000))
 L3:  
-  mov(SINTable(index),SIN(index mul M_PI div xwords(&B0000000010110100)))  
-  mov(COSTable(index),COS(index mul M_PI div xwords(&B0000000010110100)))  
-  mov(index add,                             xwords(&B0000000000000001))
-  cmp index ls                               xwords(&B0000000101100111) jmp L3
+  mov(SINTable(index),SIN(index mul M_PI div nibbles(&B1011) shl nibbles(&B0100) add nibbles(&B0100)))  
+  mov(COSTable(index),COS(index mul M_PI div nibbles(&B1011) shl nibbles(&B0100) add nibbles(&B0100)))  
+  mov(index add,                             nibbles(&B0001))
+  cmp index ls                               nibbles(&B0001) shl nibbles(&B1000) add nibbles(&B0110) shl nibbles(&B0100) add nibbles(&B0111) jmp L3
+'1111 1110 1101 1100 1011 1010 1001 1000 0111 0110 0101 0100 0011 0010 0001 0000
+' F    E    D    C    B    A    9    8    7    6    5    4    3    2    1    0  
+'15   14   13   12   11   10   09   08   07   06   05   04   03   02   01   00
+' 1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1
   ' Set text color
-  poke64(49154d,bytes(&B11111111)) ' Red
-  poke64(49155d,bytes(&B11111111)) ' Greem
-  poke64(49156d,bytes(&B11111111)) ' Blue
-  poke64(49157d,bytes(&B11111111)) ' Alpha
-  poke64(49161d,bytes(&B11111111)) ' Background Color(Alpha)
-  poke64(49456d,bytes(&B11111111)) ' Border Color(Alpha)
-  
-  ' 648 Address 648 ($288) holds a "pointer" (or more precisely, half a pointer) that tells 
+  '      Red=($C002/49154)
+  poke64(nibbles(&B1100) shl nibbles(&B1100) add nibbles(&B0010),nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111)) 
+  '      Green=($C003/49155)
+  poke64(nibbles(&B1100) shl nibbles(&B1100) add nibbles(&B0011),nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111)) 
+  '      Blue=($C004/49156
+  poke64(nibbles(&B1100) shl nibbles(&B1100) add nibbles(&B0100),nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111)) 
+  '      Alpha=($C005/49157)
+  poke64(nibbles(&B1100) shl nibbles(&B1100) add nibbles(&B0101),nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111)) 
+  '      Background Color(Alpha)=($C009/49161)
+  poke64(nibbles(&B1100) shl nibbles(&B1100) add nibbles(&B1001),nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111)) 
+  '      Border Color(Alpha)=($C130/49456)
+  poke64(nibbles(&B1100) shl nibbles(&B1100) add nibbles(&B0100) shl nibbles(&B0110) add nibbles(&B1100) shl nibbles(&B0010),nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111)) 
+  ' Address 648 ($288) holds a "pointer" (or more precisely, half a pointer) that tells 
   ' KERNAL where in RAM the text screen is currently located: The contents of address 648 is
   ' the most significant 8 bits, or the "high-byte", of the text screen's physical start address.
   poke64(648d,  bytes(&B00000100))  
   ' Address 53272 ($D018) is a VIC-II register that generally tells the graphics chip where to "look for graphics", 
   ' in conjunction with both the text screen and with bitmap graphics. 
-: poke64(53272d,bytes(&B00011111))
-
+  poke64(53272d,bytes(&B00011111))
   ' 49383d flip font       
   ' 49384d font offset
   ' 49385d font width
@@ -1742,75 +1760,85 @@ L931:
   'dim as ubyte mov(lnibble,low_nibble(cast(ubyte,v)))
     select case as const cast(ulongint, v)
 		   case &B00001111:
-'                     scr_ptr		     
-		    mov(mem64(49451d), xwords(&B0000000000000000)) 
-'                                           scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		     
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0000000000000000)) 
+'                                                  scr_ptr=($C12B/49451)	    
+		    mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
 		   case &B00011111:
-'                     scr_ptr		   
-		    mov(mem64(49451d), xwords(&B0000010000000000)) 
-'                                           scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		   
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0000010000000000)) 
+'                                                  scr_ptr=($C12B/49451)	    
+		    mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
 		   case &B00101111:
-'                     scr_ptr		     
-		    mov(mem64(49451d), xwords(&B0000100000000000))
-'                                           scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		     
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0000100000000000))
+'                                                  scr_ptr=($C12B/49451)	    
+		    mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
 		   case &B00111111:
-'                     scr_ptr		     
-		    mov(mem64(49451d), xwords(&B0000110000000000)) 
-'                                           scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		     
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0000110000000000)) 
+'                                                  scr_ptr=($C12B/49451)		    
+		    mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
 		   case &B01001111:
-'                     scr_ptr		     
-		    mov(mem64(49451d), xwords(&B0001000000000000)) 
-'                                           scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		     
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0001000000000000)) 
+'                                                  scr_ptr=($C12B/49451)		    
+		    mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
 		   case &B01011111:
-'                     scr_ptr		     
-		    mov(mem64(49451d), xwords(&B0001010000000000)) 
-'                                           scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		     
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0001010000000000)) 
+'                                                  scr_ptr=($C12B/49451)		    
+		    mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
 		   case &B01101111:
-'                     scr_ptr		    
-		    mov(mem64(49451d), &H1800) '   scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		    
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0001100000000000)) 
+'                                                  scr_ptr=($C12B/49451)		    
+		    mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
 		   case &B01111111:
-'                     scr_ptr		    
-		    mov(mem64(49451d), &H1C00) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		    
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0001110000000000)) 
+'                                                  scr_ptr=($C12B/49451)		    
+		    mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
 		   case &B10001111:
-'                     scr_ptr		    
-		    mov(mem64(49451d), &H2000) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		    
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0010000000000000)) 
+'                                                  scr_ptr=($C12B/49451)		    
+		    mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
 		   case &B10011111:
-'                     scr_ptr		    
-		    mov(mem64(49451d), &H2400) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		    
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0010010000000000)) 
+'                                                  scr_ptr=($C12B/49451)		    
+		    mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
 		   case &B10101111: 
-'                     scr_ptr		   
-		    mov(mem64(49451d), &H2800) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		   
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0010100000000000)) 
+'                                                  scr_ptr=($C12B/49451)		    
+		    mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
 		   case &B10111111:
-'                     scr_ptr		    
-		    mov(mem64(49451d), &H2C00) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		    
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0010110000000000)) 
+'                                                  scr_ptr=($C12B/49451)		    
+		    mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
 		   case &B11001111: 
-'                     scr_ptr		   
-		    mov(mem64(49451d), &H3000) '    scr_ptr		    
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		   
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0011000000000000)) 
+'                                                  scr_ptr=($C12B/49451)		    
+		    mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
 	       case &B11011111:
-'                     scr_ptr	        
-	        mov(mem64(49451d), &H3400) '    scr_ptr	        
-	        mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)	        
+	        mov(mem64(xwords(&B1100000100101011)), xwords(&B0011010000000000)) 
+'                                                  scr_ptr=($C12B/49451)	        
+	        mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
 		   case &B11101111:
-'                     scr_ptr		    
-		    mov(mem64(49451d), &H3800) '    scr_ptr
-		    mov(mem64(&H0288), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		    
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0011100000000000)) 
+'                                                  scr_ptr=($C12B/49451)
+		    mov(mem64(&H0288),        hibyte(mem64(xwords(&B1100000100101011))))
 		   case &B11111111:
-'                     scr_ptr		    
-		    mov(mem64(49451d), &H3C00) '    scr_ptr
-		    mov(mem64(HIBASE), hibyte(mem64(49451d)))
+'                     scr_ptr=($C12B/49451)		    
+		    mov(mem64(xwords(&B1100000100101011)), xwords(&B0011110000000000)) 
+'                                                  scr_ptr=($C12B/49451)
+		    mov(mem64(HIBASE),        hibyte(mem64(xwords(&B1100000100101011))))
     end select
   ' Sprite X Registers  
   elseif logic_or(logic_or(logic_or(mov(adr, SP0X), mov(adr, SP1X)), logic_or(mov(adr, SP2X), mov(adr, SP3X))), _
@@ -1870,55 +1898,66 @@ L1827:
 L2086:
   end if
   select case adr
-    case &H00  
-	case 49152d 'Play DVD
+'   $0000(00000) used for testing and debuging source code.  
+    case xwords(&B0000000000000000)
+'   $C000(49152)    
+	case xwords(&B1100000000000000) 'Play DVD
 #if defined(__FB_LINUX__)
-	 screen 0d: shell "mplayer -vo xv -fs -alang en dvd://" + str(v) + " -dvd-device /dev/sr0"
-     ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
-     paint(0d,0d), rgba(0d, 0d, 0d, 255d)	 
+	 screen bytes(&B00000000): shell "mplayer -vo xv -fs -alang en dvd://" + str(v) + " -dvd-device /dev/sr0"
+     ScreenRes xwords(&B0000011110000000),xwords(&B0000010000111000), bytes(&B00100000),bytes(&B00000111),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+     paint(bytes(&B00000000),bytes(&B00000000)),rgba(bytes(&B00000000),bytes(&B00000000),bytes(&B00000000),bytes(&B11111111))	 
 #elseif defined(__FB_WIN32__) or defined(__FB_WIN64__)
-	 screen 0d: shell "mplayer -vo xv -fs -alang en dvd://" + str(v) + " -dvd-device d:"
-     ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
-     paint(0d,0d), rgba(0d, 0d, 0d, 255d)
+	 screen bytes(&B00000000): shell "mplayer -vo xv -fs -alang en dvd://" + str(v) + " -dvd-device d:"
+     ScreenRes xwords(&B0000011110000000),xwords(&B0000010000111000),bytes(&B00100000),bytes(&B00000111),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+     paint(bytes(&B00000000),bytes(&B00000000)),rgba(bytes(&B00000000),bytes(&B00000000),bytes(&B00000000),bytes(&B11111111))	
 #elseif defined(__FB_DOS__)
-	 screen 0d: shell "mplayer dvd://" + str(v) + " -dvd-device d:"
-     ScreenRes 800d,600d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
-     paint(0d,0d), rgba(0d, 0d, 0d, 255d)
+	 screen bytes(&B00000000): shell "mplayer dvd://" + str(v) + " -dvd-device d:"
+     ScreenRes xwords(&B0000001100100000),xwords(&B0000001001011000),bytes(&B00100000),bytes(&B00000111),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+     paint(bytes(&B00000000),bytes(&B00000000)),rgba(bytes(&B00000000),bytes(&B00000000),bytes(&B00000000),bytes(&B11111111))
 #endif
-	case 49153d 'Display DVD menu
+'   $C001(49153) 
+	case xwords(&B1100000000000001) 'Display DVD menu
 #if defined(__FB_LINUX__)
-	 screen 0d: shell "mplayer -vo xv -fs dvdnav:// -mouse-movements -dvd-device /dev/sr0"
-     ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
-     paint(0d,0d), rgba(0d, 0d, 0d, 255d)
+	 screen bytes(&B00000000): shell "mplayer -vo xv -fs dvdnav:// -mouse-movements -dvd-device /dev/sr0"
+     ScreenRes xwords(&B0000011110000000),xwords(&B0000010000111000),bytes(&B00100000),bytes(&B00000111),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+     paint(bytes(&B00000000),bytes(&B00000000)),rgba(bytes(&B00000000), bytes(&B00000000),bytes(&B00000000),bytes(&B11111111))	
 #elseif defined(__FB_WIN32__) or defined(__FB_WIN64__)
- 	 screen 0d: shell "mplayer -vo xv -fs dvdnav:// -mouse-movements -dvd-device d:"
-     ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
-     paint(0d,0d), rgba(0d, 0d, 0d, 255d)   
-#endif     	  
-	case 49154d ' Foreground Red
-'              fg_color      alpha                                   red                                     green                                   blue                	     
-	 mov(mem64(49353d),mem64(49157d) shl bytes(&B00011000) add mem64(49154d) shl bytes(&B00010000) add mem64(49155d) shl bytes(&B00001000) add mem64(49156d))
-	case 49155d ' Foreground Green
-'              fg_color      alpha                                   red                                     green                                   blue 
-	 mov(mem64(49353d),mem64(49157d) shl bytes(&B00011000) add mem64(49154d) shl bytes(&B00010000) add mem64(49155d) shl bytes(&B00001000) add mem64(49156d))
-	case 49156d ' Foreground Blue
-'              fg_color      alpha                                   red                                     green                                   blue 	
-	 mov(mem64(49353d),mem64(49157d) shl bytes(&B00011000) add mem64(49154d) shl bytes(&B00010000) add mem64(49155d) shl bytes(&B00001000) add mem64(49156d))
-	case 49157d ' Foreground Alpha
-'              fg_color      alpha                                   red                                     green                                   blue 
-	 mov(mem64(49353d),mem64(49157d) shl bytes(&B00011000) add mem64(49154d) shl bytes(&B00010000) add mem64(49155d) shl bytes(&B00001000) add mem64(49156d))
-	case 49158d ' Background Red
-'              bg_color      alpha                                   red                                     green                                   blue 
-	 mov(mem64(49354d),mem64(49161d) shl bytes(&B00011000) add mem64(49158d) shl bytes(&B00010000) add mem64(49159d) shl bytes(&B00001000) add mem64(49160d))
-	case 49159d ' Background Green
-'              bg_color      alpha                                   red                                     green                                   blue	
-	 mov(mem64(49354d),mem64(49161d) shl bytes(&B00011000) add mem64(49158d) shl bytes(&B00010000) add mem64(49159d) shl bytes(&B00001000) add mem64(49160d))
-	case 49160d ' Background Blue
-'              bg_color      alpha                                   red                                     green                                   blue	
-	 mov(mem64(49354d),mem64(49161d) shl bytes(&B00011000) add mem64(49158d) shl bytes(&B00010000) add mem64(49159d) shl bytes(&B00001000) add mem64(49160d))
-	case 49161d ' Background Alapha
-'              bg_color      alpha                                   red                                     green                                   blue 
-	 mov(mem64(49354d),mem64(49161d) shl bytes(&B00011000) add mem64(49158d) shl bytes(&B00010000) add mem64(49159d) shl bytes(&B00001000) add mem64(49160d))
+ 	 screen bytes(&B00000000): shell "mplayer -vo xv -fs dvdnav:// -mouse-movements -dvd-device d:"
+     ScreenRes xwords(&B0000011110000000),xwords(&B0000010000111000),bytes(&B00100000),bytes(&B00000111),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+     paint(bytes(&B00000000),bytes(&B00000000)),rgba(bytes(&B00000000),bytes(&B00000000),bytes(&B00000000),bytes(&B11111111))	 
+#endif
+'   $C002(49154)     	  
+	case xwords(&B1100000000000010) ' Foreground Red
+'              fg_color=($C0C9/49353)            alpha=($C005/49157)                                         red=($C002/49154)                                           green=($C003/49155)                                         blue=($C004/49156)                	     
+	 mov(mem64(xwords(&B1100000011001001)),mem64(xwords(&B1100000000000101)) shl bytes(&B00011000) add mem64(xwords(&B1100000000000010)) shl bytes(&B00010000) add mem64(xwords(&B1100000000000011)) shl bytes(&B00001000) add mem64(xwords(&B1100000000000100)))
+'   $C003(49155)
+	case xwords(&B1100000000000011) ' Foreground Green
+'              fg_color=($C0C9/49353)            alpha=($C005/49157)                                         red=($C002/49154)                                           green=($C003/49155)                                         blue=($C004/49156)
+	 mov(mem64(xwords(&B1100000011001001)),mem64(xwords(&B1100000000000101)) shl bytes(&B00011000) add mem64(xwords(&B1100000000000010)) shl bytes(&B00010000) add mem64(xwords(&B1100000000000011)) shl bytes(&B00001000) add mem64(xwords(&B1100000000000100)))
+'   $C004(49156)
+	case xwords(&B1100000000000100) ' Foreground Blue
+'              fg_color=($C0C9/49353)            alpha=($C005/49157)                                         red=($C002/49154)                                           green=($C003/49155)                                         blue=($C004/49156) 	
+	 mov(mem64(xwords(&B1100000011001001)),mem64(xwords(&B1100000000000101)) shl bytes(&B00011000) add mem64(xwords(&B1100000000000010)) shl bytes(&B00010000) add mem64(xwords(&B1100000000000011)) shl bytes(&B00001000) add mem64(xwords(&B1100000000000100)))
+'   $C005(49157)
+	case xwords(&B1100000000000101) ' Foreground Alpha
+'              fg_color=($C0C9/49353)            alpha=($C005/49157)                                         red=($C002/49154)                                           green=($C003/49155)                                         blue=($C004/49156) 
+	 mov(mem64(xwords(&B1100000011001001)),mem64(xwords(&B1100000000000101)) shl bytes(&B00011000) add mem64(xwords(&B1100000000000010)) shl bytes(&B00010000) add mem64(xwords(&B1100000000000011)) shl bytes(&B00001000) add mem64(xwords(&B1100000000000100)))
+'   $C006(49158)
+	case xwords(&B1100000000000110) ' Background Red
+'              bg_color=(C0CA/49354)             alpha=($C009/49161)                                         red=($C006/49158)                                           green=($C007/49159)                                         blue=($C008/49160) 
+	 mov(mem64(xwords(&B1100000011001010)),mem64(xwords(&B1100000000001001)) shl bytes(&B00011000) add mem64(xwords(&B1100000000000110)) shl bytes(&B00010000) add mem64(xwords(&B1100000000000111)) shl bytes(&B00001000) add mem64(xwords(&B1100000000001000)))
+'   $C007(49159)
+	case xwords(&B1100000000000111) ' Background Green
+'              bg_color=(C0CA/49354)             alpha=($C009/49161)                                         red=($C006/49158)                                           green=($C007/49159)                                         blue=($C008/49160)
+	 mov(mem64(xwords(&B1100000011001010)),mem64(xwords(&B1100000000001001)) shl bytes(&B00011000) add mem64(xwords(&B1100000000000110)) shl bytes(&B00010000) add mem64(xwords(&B1100000000000111)) shl bytes(&B00001000) add mem64(xwords(&B1100000000001000)))
+'   $C008(49160)
+	case xwords(&B1100000000001000) ' Background Blue
+'              bg_color=(C0CA/49354)             alpha=($C009/49161)                                         red=($C006/49158)                                           green=($C007/49159)                                         blue=($C008/49160)	
+	 mov(mem64(xwords(&B1100000011001010)),mem64(xwords(&B1100000000001001)) shl bytes(&B00011000) add mem64(xwords(&B1100000000000110)) shl bytes(&B00010000) add mem64(xwords(&B1100000000000111)) shl bytes(&B00001000) add mem64(xwords(&B1100000000001000)))
+'   $C009(49161)
+	case xwords(&B1100000000001001) ' Background Alapha
+'              bg_color=(C0CA/49354)             alpha=($C009/49161)                                         red=($C006/49158)                                           green=($C007/49159)                                         blue=($C008/49160) 
+	 mov(mem64(xwords(&B1100000011001010)),mem64(xwords(&B1100000000001001)) shl bytes(&B00011000) add mem64(xwords(&B1100000000000110)) shl bytes(&B00010000) add mem64(xwords(&B1100000000000111)) shl bytes(&B00001000) add mem64(xwords(&B1100000000001000)))
 #if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__)  or defined(__FB_XBOX__) or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
