@@ -441,16 +441,12 @@ L3:
   mov(COSTable(index),COS(index mul M_PI div nibbles(&B1011) shl nibbles(&B0100) add nibbles(&B0100)))  
   mov(index add,                             nibbles(&B0001))
   cmp index ls                               nibbles(&B0001) shl nibbles(&B1000) add nibbles(&B0110) shl nibbles(&B0100) add nibbles(&B0111) jmp L3
-'1111 1110 1101 1100 1011 1010 1001 1000 0111 0110 0101 0100 0011 0010 0001 0000
-' F    E    D    C    B    A    9    8    7    6    5    4    3    2    1    0  
-'15   14   13   12   11   10   09   08   07   06   05   04   03   02   01   00
-' 1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1
   ' Set text color
   '      Red=($C002/49154)
   poke64(nibbles(&B1100) shl nibbles(&B1100) add nibbles(&B0010),nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111)) 
   '      Green=($C003/49155)
   poke64(nibbles(&B1100) shl nibbles(&B1100) add nibbles(&B0011),nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111)) 
-  '      Blue=($C004/49156
+  '      Blue=($C004/49156)
   poke64(nibbles(&B1100) shl nibbles(&B1100) add nibbles(&B0100),nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111)) 
   '      Alpha=($C005/49157)
   poke64(nibbles(&B1100) shl nibbles(&B1100) add nibbles(&B0101),nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111)) 
@@ -461,35 +457,31 @@ L3:
   ' Address 648 ($288) holds a "pointer" (or more precisely, half a pointer) that tells 
   ' KERNAL where in RAM the text screen is currently located: The contents of address 648 is
   ' the most significant 8 bits, or the "high-byte", of the text screen's physical start address.
-  poke64(648d,  bytes(&B00000100))  
+  poke64(nibbles(&B0010) shl nibbles(&B1000) add nibbles(&B1000) shl nibbles(&B0100) add nibbles(&B1000),  nibbles(&B0100))  
   ' Address 53272 ($D018) is a VIC-II register that generally tells the graphics chip where to "look for graphics", 
   ' in conjunction with both the text screen and with bitmap graphics. 
-  poke64(53272d,bytes(&B00011111))
-  ' 49383d flip font       
-  ' 49384d font offset
-  ' 49385d font width
-  ' 49386d font height
-'        font_f 
-  poke64(49383d,bytes(&B00000000)) 'Flip font
-'        font_o    
-  poke64(49384d,bytes(&B00000010)) 'Font offset
-'        font_w
-  poke64(49385d,bytes(&B00000111)) 'Font width 
-'        font_h
-  poke64(49386d,bytes(&B00000111)) 'Font height 
-  var mov(i, 0d)
+  poke64(nibbles(&B1101) shl nibbles(&B1100) add nibbles(&B0001) shl nibbles(&B0100) add nibbles(&B1000),nibbles(&B0001) shl nibbles(&B0100) add nibbles(&B1111))
+'        font_f(Flip font)=($C0E7/49383) 
+  poke64(nibbles(&B1100) shl nibbles(&B1100) add nibbles(&B1110) shl nibbles(&B0100) add nibbles(&B0111),nibbles(&B0000))
+'        font_o(Font offset)=($C0E8/49384)    
+  poke64(nibbles(&B1100) shl nibbles(&B1100) add nibbles(&B1110) shl nibbles(&B0100) add nibbles(&B1000),nibbles(&B0010))
+'        font_w(Font width)=($C0E9/49385)
+  poke64(nibbles(&B1100) shl nibbles(&B1100) add nibbles(&B1110) shl nibbles(&B0100) add nibbles(&B1001),nibbles(&B0111)) 
+'        font_h(Font height)=($C0EA/49386)
+  poke64(nibbles(&B1100) shl nibbles(&B1100) add nibbles(&B1110) shl nibbles(&B0100) add nibbles(&B1010),nibbles(&B0111)) 
+  mov(index, nibbles(&B0000))
   dim as ubyte tmp
   ' init all ROM's
   open "64c.251913-01.bin" for binary as #1
 L4:  
-  get #1,,tmp: mov(basic(i), tmp)
-  mov(i add, xwords(&B0000000000000001))
-  cmp i ls   xwords(&B0001111111111111) jmp L4
-  mov(i,     xwords(&B0000000000000000))
+  get #1,,tmp: mov(basic(index), tmp)
+  mov(index add, nibbles(&B0001))
+  cmp index ls   nibbles(&B0001) shl nibbles(&B1100) add nibbles(&B1111) shl nibbles(&B1000) add nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111) jmp L4
+  mov(index,     nibbles(&B0000))
 L5: 
-  get #1,,tmp: mov(kernal(i), tmp)
-  mov(i add, xwords(&B0000000000000001))  
-  cmp i ls   xwords(&B0001111111111111) jmp L5
+  get #1,,tmp: mov(kernal(index), tmp)
+  mov(index add, nibbles(&B0001))  
+  cmp index ls   nibbles(&B0001) shl nibbles(&B1100) add nibbles(&B1111) shl nibbles(&B1000) add nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111) jmp L5
   close #1
   'for b as integer = 617 to 641
   /'
@@ -501,21 +493,20 @@ L5:
    next i
   close #1
   '/
-  
   open "./chargen/2.c64" for binary as #1
-  mov(i,     xwords(&B0000000000000000))
+  mov(index,     nibbles(&B0000))
 L6:  
-  get #1,,tmp: mov(char(i), tmp)
-  mov(i add, xwords(&B0000000000000001))
-  cmp i ls   xwords(&B0001111111111111) jmp L6
+  get #1,,tmp: mov(char(index), tmp)
+  mov(index add, nibbles(&B0001))
+  cmp index ls   nibbles(&B0001) shl nibbles(&B1100) add nibbles(&B1111) shl nibbles(&B1000) add nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111) jmp L6
   'close #1
   'open "./chargen/2.c64" for binary as #1
-  seek #1,   xwords(&B0000000000000000)
-  mov(i,     xwords(&B0010000000000000))
+  seek #1,       nibbles(&B0000)
+  mov(index,     nibbles(&B0010) shl nibbles(&B1100))
 L7:  
-  get #1,,tmp: mov(char(i), tmp)
-  mov(i add, xwords(&B0000000000000001))
-  cmp i ls   xwords(&B0011111111111111) jmp L7
+  get #1,,tmp: mov(char(index), tmp)
+  mov(index add, nibbles(&B0001))
+  cmp index ls   nibbles(&B0011) shl nibbles(&B1100) add nibbles(&B1111) shl nibbles(&B1000) add nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111) jmp L7
   close #1
 /'
   restore CHAR_ROM
@@ -537,68 +528,77 @@ L7:
   'sleep : next b: end
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
-    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)    
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)     
   'Sets top of system memory
-  '      $0000(000000)                                                    $0001(00001)  
-  poke64(xwords(&B0000000000000000),1.797693134862316e+308):poke64(xwords(&B0000000000000001),1.797693134862316e+308)
+  '      $0000(000000)                                  $0001(00001)  
+  poke64(nibbles(&B0000),1.797693134862316e+308):poke64(nibbles(&B0001),1.797693134862316e+308)
   'Sets reset vector to top of system memory
-  '      $FFFC(65532)                                                     $FFFD(65533)
-  poke64(xwords(&B1111111111111100),1.797693134862316e+308):poke64(xwords(&B1111111111111101),1.797693134862316e+308)
+  '      $FFFC(65532)
+  poke64(nibbles(&B1111) shl nibbles(&B1100) add nibbles(&B1111) shl nibbles(&B1000) add nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1100),1.797693134862316e+308)
+  '      $FFFD(65533)
+  poke64(nibbles(&B1111) shl nibbles(&B1100) add nibbles(&B1111) shl nibbles(&B1000) add nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1101),1.797693134862316e+308)
 #elseif defined(__FB_DOS__)
   'Sets top of system memory
-  '      $0000(000000)                                        $0001(00001)
-  poke64(xwords(&B0000000000000000),bytes(&B00000000)):poke64(xwords(&B0000000000000001),bytes(&B00000001))
+  '      $0000(000000)                           $0001(00001)
+  poke64(nibbles(&B0000),nibbles(&B0000)):poke64(nibbles(&B0001),nibbles(&B0001))
   'Sets reset vector to top of system memory
-  '      $FFFC(65532)                                         $FFFD(65533)  
-  poke64(xwords(&B1111111111111100),bytes(&B00000000)):poke64(xwords(&B1111111111111101),bytes(&B10000000))
+  '      $FFFC(65532)  
+  poke64(nibbles(&B1111) shl nibbles(&B1100) add nibbles(&B1111) shl nibbles(&B1000) add nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1100),nibbles(&B0000))
+  '      $FFFD(65533)
+  poke64(nibbles(&B1111) shl nibbles(&B1100) add nibbles(&B1111) shl nibbles(&B1000) add nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1100),nibbles(&B1001)) shl nibbles(&B0100) 
 #endif  
-  paint(bytes(&B00000000),bytes(&B00000000)),rgba(bytes(&B00000000),bytes(&B00000000),bytes(&B00000000),bytes(&B11111111))
+  paint(nibbles(&B0000),nibbles(&B0000)),rgba(nibbles(&B0000),nibbles(&B0000),nibbles(&B0000),nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111))
+
   'SYS calls 7E72
   '.,7E72 LDA #$00  10101001 00000000
   '.,7E74 STA $C000 10001101 00000000 11000000
   '.,7E77 RTS       01100000
-  '      $7E72(32370)                                           $7E73(32371)
-  poke64(xwords(&B00111111001110010),bytes(&B10101001)): poke64(xwords(&B00111111001110011),bytes(&B00000000))
-  '      $7E74(32372)                                           $7E75(32373)                                                  $7E76(32374)                            
-  poke64(xwords(&B00111111001110100),bytes(&B10001101)): poke64(xwords(&B00111111001110101),bytes(&B00000000)): poke64(xwords(&B00111111001110110),bytes(&B11000000))
+  '      $7E72(32370)                                                                                                                                                                                             $7E73(32371)
+  poke64(nibbles(&B0111) shl nibbles(&B1100) add nibbles(&B1110) shl nibbles(&B1000) add nibbles(&B0111) shl nibbles(&B0100) add nibbles(&B0010),nibbles(&B1010) shl nibbles(&B0100) add nibbles(&B1001)): poke64(nibbles(&B0111) shl nibbles(&B1100) add nibbles(&B1110) shl nibbles(&B1000) add nibbles(&B0111) shl nibbles(&B0100) add nibbles(&B0011),nibbles(&B0000))
+  '      $7E74(32372)                                                                                                                                                                                             $7E75(32373)                                                                                                                                                     $7E76(32374)                            
+  poke64(nibbles(&B0111) shl nibbles(&B1100) add nibbles(&B1110) shl nibbles(&B1000) add nibbles(&B0111) shl nibbles(&B0100) add nibbles(&B0100),nibbles(&B1000) shl nibbles(&B0100) add nibbles(&B1101)): poke64(nibbles(&B0111) shl nibbles(&B1100) add nibbles(&B1110) shl nibbles(&B1000) add nibbles(&B0111) shl nibbles(&B0100) add nibbles(&B0101),nibbles(&B0000)): poke64(nibbles(&B0111) shl nibbles(&B1100) add nibbles(&B1110) shl nibbles(&B1000) add nibbles(&B0111) shl nibbles(&B0100) add nibbles(&B0110),nibbles(&B1100) shl nibbles(&B0100))
   '      $7E77(32370)
-  poke64(xwords(&B00111111001110111),bytes(&B01100000))                                                       
+  poke64(nibbles(&B0111) shl nibbles(&B1100) add nibbles(&B1110) shl nibbles(&B1000) add nibbles(&B0111) shl nibbles(&B0100) add nibbles(&B0111),nibbles(&B0110) shl nibbles(&B0100))                                                       
   
-  var mov(mem,chr(bytes(&B00000000))), mov(a,bytes(&B00000000))
+  var mov(mem,chr(nibbles(&B0000)))
+  mov(index,nibbles(&B0000))
   
   'mov(basic(&H0B46), &H00) '.,AB45 A9 00    LDA #$00        ;set input prompt to NULL
   'mov(basic(&H178E), &H00) '.,B78E F0 05    BEQ $B794       ;ASC() - Ignore NULL
   
   'Patch BASIC startup messages" 
-
   mov(mem, "BYTES")
-  mov(a,&B00000001)
+  mov(index,nibbles(&B0001))
 L8:
   '          $466(1126)
-  mov(kernal(xwords(&B000010001100110) add a),  asc(mid(mem,a,bytes(&B11111111))))
-  '                    $466(1126)                                                      $466(1126)
-  cmp logic_and(kernal(xwords(&B000010001100110) add a) gt    bytes(&B00011111),kernal(xwords(&B000010001100110) add a) lt bytes(&B01000000)) jmp L9
-  mov(a add,                                                  bytes(&B00000001))
-  cmp a ls len(mem) jmp L8
+  mov(kernal(nibbles(&B0100) shl nibbles(&B1000) add nibbles(&B0110) shl nibbles(&B0100) add nibbles(&B0110) add index),  asc(mid(mem,index,nibbles(&B1111) shl nibbles(&B0100) add nibbles(&B1111))))
+  '                    $466(1126)                                                                                                                                                               $466(1126)
+  cmp logic_and(kernal(nibbles(&B0100) shl nibbles(&B1000) add nibbles(&B0110) shl nibbles(&B0100) add nibbles(&B0110) add index) gt    nibbles(&B0001) shl nibbles(&B0100) add nibbles(&B1111),kernal(nibbles(&B0100) shl nibbles(&B1000) add nibbles(&B0110) shl nibbles(&B0100) add nibbles(&B0110) add index) lt nibbles(&B0100) shl nibbles(&B0100)) jmp L9
+  mov(index add,                                                                                                                        nibbles(&B0001))
+  cmp index ls len(mem) jmp L8
   jmp L10
 L9:
-  '          $466(1126)                              $466(1126)
-  mov(kernal(xwords(&B000010001100110) add a),kernal(xwords(&B000010001100110) add a) add bytes(&B00100000))
+  '          $466(1126)                                                                                    $466(1126)
+  mov(kernal(nibbles(&B0100) shl nibbles(&B1000) add nibbles(&B0110) shl nibbles(&B0100) add index),kernal(nibbles(&B0100) shl nibbles(&B1000) add nibbles(&B0110) shl nibbles(&B0100) add index) add nibbles(&B0010) shl nibbles(&B0100))
   jmp L8
-L10:  	   
+L10:
+'1111 1110 1101 1100 1011 1010 1001 1000 0111 0110 0101 0100 0011 0010 0001 0000
+' F    E    D    C    B    A    9    8    7    6    5    4    3    2    1    0  
+'15   14   13   12   11   10   09   08   07   06   05   04   03   02   01   00
+' 1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1   	   
   mov(mem, "FREE")
-  mov(a,bytes(&B00000001))
+  mov(index,nibbles(&B0001))
 L11:
   '          $46C(1132)
-  mov(kernal(xwords(&B0000010001101100) add a),  asc(mid(mem,a,bytes(&B00000001))))
-  '                    $46C(1132)                                                       $46C(1132)
-  cmp logic_and(kernal(xwords(&B0000010001101100) add a) gt    bytes(&B00011111),kernal(xwords(&B0000010001101100) add a) lt bytes(&B01000000)) jmp L12 	   
-  mov(a add,                                                   bytes(&B00000001)) 
-  cmp a ls len(mem) jmp L11
+  mov(kernal(nibbles(&B0100) shl nibbles(&B1000) add nibbles(&B0110) shl nibbles(&B0100) add nibbles(&B1100) add index),  asc(mid(mem,index,nibbles(&B0001))))
+  '                    $46C(1132)                                                                                                                                                               $46C(1132)
+  cmp logic_and(kernal(nibbles(&B0100) shl nibbles(&B1000) add nibbles(&B0110) shl nibbles(&B0100) add nibbles(&B1100) add index) gt    nibbles(&B0001) shl nibbles(&B0100) add nibbles(&B1111),kernal(nibbles(&B0100) shl nibbles(&B1000) add nibbles(&B0110) shl nibbles(&B0100) add nibbles(&B1100) add index) lt nibbles(&B0100) shl nibbles(&B0100)) jmp L12 	   
+  mov(index add,                                                                                                                        nibbles(&B0001)) 
+  cmp index ls len(mem) jmp L11
   jmp L13	 
 L12:
-  '          $46C(1132)                               $46C(1132)
-  mov(kernal(xwords(&B0000010001101100) add a),kernal(xwords(&B0000010001101100) add a) add bytes(&B00100000))
+  '          $46C(1132)                                                                                                        $46C(1132)
+  mov(kernal(nibbles(&B0100) shl nibbles(&B1000) add nibbles(&B0110) shl nibbles(&B0100) add nibbles(&B1100) add index),kernal(nibbles(&B0100) shl nibbles(&B1000) add nibbles(&B0110) shl nibbles(&B0100) add nibbles(&B1100) add index) add nibbles(&B0010) shl nibbles(&B0100))
   jmp L11
 L13:
   '          $47D(1149)                                                 $47E(1150)
@@ -606,43 +606,43 @@ L13:
   '          $47F(1151)
   mov(kernal(xwords(&B000010001111111)), bytes(&B00100000)) 
   mov(mem, "MICROSOFT")
-  mov(a,bytes(&B00000001))
+  mov(index,bytes(&B00000001))
 L14:
   '          $47F(1151)  
-  mov(kernal(xwords(&B000010001111111) add a),  asc(mid(mem,a,bytes(&B00000001))))
-  '                    $47F(1151)                                                       $47F(1151)
-  cmp logic_and(kernal(xwords(&B000010001111111) add a) gt    bytes(&B00011111), kernal(xwords(&B000010001111111) add a) lt bytes(&B01000000)) jmp L15
-  mov(a add,                              bytes(&B00000001)) 
-  cmp a ls len(mem) jmp L14
+  mov(kernal(xwords(&B000010001111111) add index),  asc(mid(mem,index,bytes(&B00000001))))
+  '                    $47F(1151)                                                           $47F(1151)
+  cmp logic_and(kernal(xwords(&B000010001111111) add index) gt    bytes(&B00011111), kernal(xwords(&B000010001111111) add index) lt bytes(&B01000000)) jmp L15
+  mov(index add,                                                  bytes(&B00000001)) 
+  cmp index ls len(mem) jmp L14
   jmp L16
 L15:
-  '          $47F(1151)                              $47F(1151)
-  mov(kernal(xwords(&B000010001111111) add a),kernal(xwords(&B000010001111111) add a) add bytes(&H0100000))
+  '          $47F(1151)                                  $47F(1151)
+  mov(kernal(xwords(&B000010001111111) add index),kernal(xwords(&B000010001111111) add index) add bytes(&H0100000))
   jmp L14:
 L16:
   '          $489(1161)  
   mov(kernal(&H489), bytes(&B00100000))
   mov(mem, "BASIC")
-  mov(a, bytes(&B00000001))
+  mov(index, bytes(&B00000001))
 L17:
   '          $460(1120)  
-  mov(kernal(&H460 add a), asc(mid(mem,a,bytes(&B00000001))))
-    '                  $460(1120)                                  $460(1120) 
-  cmp logic_and(kernal(&H460 add a) gt   bytes(&B00011111), kernal(&H460 add a) lt bytes(&B01000000)) jmp L18
+  mov(kernal(&H460 add index), asc(mid(mem,index,bytes(&B00000001))))
+    '                  $460(1120)                                      $460(1120) 
+  cmp logic_and(kernal(&H460 add index) gt   bytes(&B00011111), kernal(&H460 add index) lt bytes(&B01000000)) jmp L18
   '          $489(1161)
-  mov(kernal(&H489 add a), asc(mid(mem,a,bytes(&B00000001))))
-  '                    $489(1161)                                  $489(1161)
-  cmp logic_and(kernal(&H489 add a) gt   bytes(&B00011111), kernal(&H489 add a) lt bytes(&B01000000)) jmp L19
-  mov(a add,                             bytes(&B00000001))
-  cmp a ls len(mem) jmp L17
+  mov(kernal(&H489 add index), asc(mid(mem,index,bytes(&B00000001))))
+  '                    $489(1161)                                      $489(1161)
+  cmp logic_and(kernal(&H489 add index) gt   bytes(&B00011111), kernal(&H489 add index) lt bytes(&B01000000)) jmp L19
+  mov(index add,                             bytes(&B00000001))
+  cmp index ls len(mem) jmp L17
   jmp L20
 L18:
-  '          $460(1120)          $460(1120)
-  mov(kernal(&H460 add a),kernal(&H460 add a) add bytes(&B00100000))
+  '          $460(1120)              $460(1120)
+  mov(kernal(&H460 add index),kernal(&H460 add index) add bytes(&B00100000))
   jmp L17
 L19:
-  '          $489(1161)          $489(1161)
-  mov(kernal(&H489 add a),kernal(&H489 add a) add bytes(&B00100000))
+  '          $489(1161)              $489(1161)
+  mov(kernal(&H489 add index),kernal(&H489 add index) add bytes(&B00100000))
   jmp L17
   
 L20: 
@@ -650,16 +650,16 @@ L20:
   mov(kernal(&H491), bytes(&B00110010)): mov(kernal(&H492), bytes(&B00100000))
   mov(kernal(&H493), bytes(&B00101010)) 
   mov(mem, " RAM SYSTEM")
-  mov(a,bytes(&B00000001))
+  mov(index,bytes(&B00000001))
 L21:
-  mov(kernal(&H49E add a), asc(mid(mem,a,bytes(&B00000001))))
-  cmp logic_and(kernal(&H495 add a) gt   bytes(&B00001111), kernal(&H495 add a) lt bytes(&B01000000)) jmp L22
+  mov(kernal(&H49E add index), asc(mid(mem,index,    bytes(&B00000001))))
+  cmp logic_and(kernal(&H495 add index) gt           bytes(&B00001111), kernal(&H495 add index) lt bytes(&B01000000)) jmp L22
 L22:  
-  mov(a add, bytes(&B00000001))  
-  cmp a ls len(mem) jmp L21
+  mov(index add, bytes(&B00000001))  
+  cmp index ls len(mem) jmp L21
   jmp L23a
 L23:
-  mov(kernal(&H495 add a),kernal(&H495 add a) add bytes(&B00100000))
+  mov(kernal(&H495 add index),kernal(&H495 add index) add bytes(&B00100000))
   jmp L22           
 L23a:
 /'     
@@ -707,12 +707,12 @@ L25:
   '          $49D(1181)                                                                     $49E(1182)
   mov(kernal(xwords(&B0000010010011101)),             bytes(&B01000111)): mov(kernal(xwords(&B0000010010011110)), bytes(&B01000010))
   mov(mem, " RAM SYSTEM")
-  mov(a,bytes(&B00000001))
+  mov(index,bytes(&B00000001))
 L26:
   '          $49E(1182)          
-  mov(kernal(xwords(&B0000010010011110) add a), asc(mid(mem,a,bytes(&B00000001))))   
-  mov(a add,                                                  bytes(&B00000001))  
-  cmp a ls len(mem) jmp L26
+  mov(kernal(xwords(&B0000010010011110) add index), asc(mid(mem,index,bytes(&B00000001))))   
+  mov(index add,                                                      bytes(&B00000001))  
+  cmp index ls len(mem) jmp L26
   '          $49F(1183)
   mov(kernal(xwords(&B0000010010011111)),                     bytes(&B00100000)) ' Replace "@" at E49F with " ".
   '          $4A3(1187)
