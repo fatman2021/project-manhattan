@@ -57,17 +57,9 @@ FUN FACT #2: The universities have already produced multicore 8-bit CPUs that ru
 
 FUN FACT #3: Unlike real hardware, you can get an emulator to anything you want.
 
-# c64dvd-glsl.bas
+# c64dvd-bpc.bas
 
-c64dvd-glsl
-
-$0286(646)  - Sets the foreground color using the VGA color palette.
-
-$7E72(32370)-$7E77(32375) used for function calls
-
-poke64(&H7E72,&B10101001): poke64(&H7E73,&B00000000)                            ' LDA #$00  10101001 00000000
-poke64(&H7E74,&B10001101): poke64(&H7E75,&B00000000): poke64(&H7E76,&B11000000) ' STA $C000 10001101 00000000 11000000
-poke64(&H7E77,&B01100000)                                                       ' RTS       01100000
+c64dvd-bpc 
 
 $C000     - Play DVD track
 
@@ -103,7 +95,7 @@ $C01C     - Copies $C01D through $C021 to $C0CE
 
 $C022     - Copies $C023 through $C027 to $C0CF
 
-$C028     - Copies $C029 through $C02D to $C0B0
+$C028     - Copies $C028 through $C02D to $C0B0
 
 $C02E     - Copies $C02F through $C033 to $C0B1
 
@@ -141,54 +133,52 @@ $C08E     - Copies $C08F through $C093 to $C0D1
 
 $C094     - Copies $C09F through $C099 to $C0D2
 
-$C09A     - Copies $C09B through $C09F to $C0D3
+$C09A     - Copies $C09B through $C09F to $C0D3		  		  		  		  		  		  		  		  		  		  		  		  	
 
-$C0A1(49313) run GLSL program    $A1(161)
+$C0A0     - Copies $C0A1 through $C0A5 to $C0D4
 
-$C0A2(49314) define GLSL program $A2(162)
+$C0A1 49313 run GLSL program    $A1 161
 
-$C0A3(49315) run GLSL program    $A3(163)
+$C0A2 49314 define GLSL program $A2 162
+
+$C0A3 49315 run GLSL program    $A3 163
+
+$C0A4-$C0A9 used for function calls
 
 $C0AA-$C0EF is free
 
-$C0F0(49392) run linux program   $F0(240)
+$C0F0 49392 run linux program   $F0 240
 
-$C0F1(49393) run windows program $F1(241)
+$C0F1 49393 run windows program $F1 241
 
-$C0F2(49394) run DOS program     $F2(242)
+$C0F2 49394 run DOS program     $F2 242
 
-$C0F3(49395) open ASM file       $F3(243)
+$C0F3 49395 open ASM file       $F3 243
 
-$C0F4(49396) write to ASM file   $F4(244)
+$C0F4 49396 write to ASM file   $F4 244
 
-$C0F5(49397) close ASM file      $F5(245)
+$C0F5 49397 close ASM file      $F5 245
 
-$C0F6(49398) compile .BIN file   $F6(246)
+$C0F6 49398 compile .BIN file   $F6 246
 
-$C0F7(49399) run .BIN file       $F7(247)
+$C0F7 49399 run .BIN file       $F7 247
 
-$C0F8(49400) run background task $F8(248)
+$C0F8 49400 run background task $F8 248
 
-$C0F9(49401) swich GLSL mode     $F9(249)
+$C0F9 49401 swich GLSL mode     $F9 249
 
-$COFA(49402) define strCode      $FA(250)
+$COFA 49402 define strCode      $FA 250
 
-$C0FB(49403) write to file       $FB(251)
+$C0FB 49403 write to file       $FB 251
 
-$C0FC(49404) display hires text  $FC(252)
+$C0FC 49404 display hires text  $FC 252
 
-$C0FD(49405) close file          $FD(253)
+$C0FD 49405 close file          $FD 253
 
-$C0FE(49406) define filename     $FE(254)
+$C0FE 49406 define filename     $FE 254
 
-$C0FF(49407) run GLSL program    $FF(255)
+$C0FF 49407 run GLSL program    $FF 255
 
-$D020(53280) Sets border using the VGA color palette.
+POKE $00 0 through $FF 255 to address $C0A7 49319 to change function call
 
-$D021(53281)-$D024(53284) Sets the background color using the VGA color palette.
-
-$D800(55296)-$DBE7(56295) Color RAM
-
-POKE $00(0) through $FF(255) to address $7E75(32373) to change function call
-
-Type SYS $7E72(32370) to make function call
+Type SYS $C0A4 49316 to make function call
