@@ -254,7 +254,8 @@ function ShaderToy.CompileCode(UserCode as string) as boolean
   ' define the right version
   'Version =!"#version 120\n"
   'Version =!"#version 130\n"
-  Version =!"#version 460\n"
+  Version =!"#version 140\n"
+  'Version =!"#version 460\n"
   
   ' set shader language version at first line !
   FragmentProlog = Version

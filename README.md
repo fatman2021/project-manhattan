@@ -182,3 +182,7 @@ $C0FF 49407 run GLSL program    $FF 255
 POKE $00 0 through $FF 255 to address $C0A7 49319 to change function call
 
 Type SYS $C0A4 49316 to make function call
+
+#Compiling Source Code
+
+fbc -fpmode fast -fpu sse -w all  "c64dvd-glsl.bas" -map c64dvd-glsl.map -strip  -Wc -mcmodel=small -Wc -msse2avx -Wc -Ofast -Wc -ffp-contract=fast -Wc -foptimize-sibling-calls -Wc -foptimize-strlen -Wc -fno-inline -Wc -save-temps -Wc -O3 -Wc -msse2avx

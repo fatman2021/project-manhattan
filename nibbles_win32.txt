@@ -1,0 +1,16 @@
+@nibbles(&B0000) = &H513688
+@nibbles(&B0001) = &H513689
+@nibbles(&B0010) = &H51368A
+@nibbles(&B0011) = &H51368B
+@nibbles(&B0100) = &H51368C
+@nibbles(&B0101) = &H51368D
+@nibbles(&B0110) = &H51368E
+@nibbles(&B0111) = &H51368F
+@nibbles(&B1000) = &H513690
+@nibbles(&B1001) = &H513691
+@nibbles(&B1010) = &H513692
+@nibbles(&B1011) = &H513693
+@nibbles(&B1100) = &H513694
+@nibbles(&B1101) = &H513695
+@nibbles(&B1110) = &H513696
+@nibbles(&B1111) = &H513697
