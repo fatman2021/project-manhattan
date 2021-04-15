@@ -181,7 +181,6 @@ int32 fb_PageCopy( int32, int32 );
 void fb_DataRestore( void* );
 void fb_DataReadStr( void*, int64, int32 );
 void fb_DataReadLongint( int64* );
-void fb_DataReadUShort( uint16* );
 void fb_DataReadULongint( uint64* );
 int32 fb_FileOpen( FBSTRING*, uint32, uint32, uint32, int32, int32 );
 int32 fb_FileClose( int32 );
@@ -494,6 +493,7 @@ static FBSTRING GET_KEY$;
 static FBSTRING GET_DATA$;
 static FBSTRING OLD_DATA$[10001];
 static int16 REPEAT$;
+static int64 I$;
 static FBSTRING EOL$;
 static uint8 NIBBLES$[16];
 static uint8 BYTES$[256];
@@ -1131,7 +1131,7 @@ void GLSCREEN( int64 PIXELWIDTH$1, int64 PIXELHEIGHT$1, int64 COLORBITS$1, int64
    FBSTRING* vr$101 = fb_StrConcat( &TMP$603$3, (void*)vr$98, -1ll, (void*)vr$91, -1ll );
    __builtin_memset( &TMP$604$3, 0, 24ll );
    FBSTRING* vr$104 = fb_StrConcat( &TMP$604$3, (void*)vr$101, -1ll, (void*)") failed !", 11ll );
-   FBSTRING* vr$106 = fb_StrAssign( (void*)&TMP$605$3, -1ll, (void*)vr$104, -1ll, 0 );
+   fb_StrAssign( (void*)&TMP$605$3, -1ll, (void*)vr$104, -1ll, 0 );
    ERROREXIT( &TMP$605$3 );
    fb_StrDelete( (FBSTRING*)&TMP$605$3 );
   }
@@ -1141,239 +1141,239 @@ void GLSCREEN( int64 PIXELWIDTH$1, int64 PIXELHEIGHT$1, int64 COLORBITS$1, int64
  label$54:;
  label$53:;
  fb_GfxFlip( -1, -1 );
- void* vr$109 = fb_GfxGetGLProcAddress( (uint8*)"glCreateShader" );
- GLCREATESHADER$ = (tmp$83)vr$109;
+ void* vr$108 = fb_GfxGetGLProcAddress( (uint8*)"glCreateShader" );
+ GLCREATESHADER$ = (tmp$83)vr$108;
  if( (uint64)GLCREATESHADER$ != 0ull ) goto label$58;
  {
   FBSTRING TMP$607$2;
   __builtin_memset( &TMP$607$2, 0, 24ll );
-  FBSTRING* vr$112 = fb_StrAssign( (void*)&TMP$607$2, -1ll, (void*)"glCreateShader", 15ll, 0 );
+  fb_StrAssign( (void*)&TMP$607$2, -1ll, (void*)"glCreateShader", 15ll, 0 );
   ERROREXIT( &TMP$607$2 );
   fb_StrDelete( (FBSTRING*)&TMP$607$2 );
   label$58:;
  }
- void* vr$115 = fb_GfxGetGLProcAddress( (uint8*)"glDeleteShader" );
- GLDELETESHADER$ = (tmp$12)vr$115;
+ void* vr$113 = fb_GfxGetGLProcAddress( (uint8*)"glDeleteShader" );
+ GLDELETESHADER$ = (tmp$12)vr$113;
  if( (uint64)GLDELETESHADER$ != 0ull ) goto label$60;
  {
   FBSTRING TMP$609$2;
   __builtin_memset( &TMP$609$2, 0, 24ll );
-  FBSTRING* vr$118 = fb_StrAssign( (void*)&TMP$609$2, -1ll, (void*)"glDeleteShader", 15ll, 0 );
+  fb_StrAssign( (void*)&TMP$609$2, -1ll, (void*)"glDeleteShader", 15ll, 0 );
   ERROREXIT( &TMP$609$2 );
   fb_StrDelete( (FBSTRING*)&TMP$609$2 );
   label$60:;
  }
- void* vr$121 = fb_GfxGetGLProcAddress( (uint8*)"glShaderSource" );
- GLSHADERSOURCE$ = (tmp$92)vr$121;
+ void* vr$118 = fb_GfxGetGLProcAddress( (uint8*)"glShaderSource" );
+ GLSHADERSOURCE$ = (tmp$92)vr$118;
  if( (uint64)GLSHADERSOURCE$ != 0ull ) goto label$62;
  {
   FBSTRING TMP$611$2;
   __builtin_memset( &TMP$611$2, 0, 24ll );
-  FBSTRING* vr$124 = fb_StrAssign( (void*)&TMP$611$2, -1ll, (void*)"glShaderSource", 15ll, 0 );
+  fb_StrAssign( (void*)&TMP$611$2, -1ll, (void*)"glShaderSource", 15ll, 0 );
   ERROREXIT( &TMP$611$2 );
   fb_StrDelete( (FBSTRING*)&TMP$611$2 );
   label$62:;
  }
- void* vr$127 = fb_GfxGetGLProcAddress( (uint8*)"glCompileShader" );
- GLCOMPILESHADER$ = (tmp$12)vr$127;
+ void* vr$123 = fb_GfxGetGLProcAddress( (uint8*)"glCompileShader" );
+ GLCOMPILESHADER$ = (tmp$12)vr$123;
  if( (uint64)GLCOMPILESHADER$ != 0ull ) goto label$64;
  {
   FBSTRING TMP$613$2;
   __builtin_memset( &TMP$613$2, 0, 24ll );
-  FBSTRING* vr$130 = fb_StrAssign( (void*)&TMP$613$2, -1ll, (void*)"glCompileShader", 16ll, 0 );
+  fb_StrAssign( (void*)&TMP$613$2, -1ll, (void*)"glCompileShader", 16ll, 0 );
   ERROREXIT( &TMP$613$2 );
   fb_StrDelete( (FBSTRING*)&TMP$613$2 );
   label$64:;
  }
- void* vr$133 = fb_GfxGetGLProcAddress( (uint8*)"glGetShaderiv" );
- GLGETSHADERIV$ = (tmp$73)vr$133;
+ void* vr$128 = fb_GfxGetGLProcAddress( (uint8*)"glGetShaderiv" );
+ GLGETSHADERIV$ = (tmp$73)vr$128;
  if( (uint64)GLGETSHADERIV$ != 0ull ) goto label$66;
  {
   FBSTRING TMP$615$2;
   __builtin_memset( &TMP$615$2, 0, 24ll );
-  FBSTRING* vr$136 = fb_StrAssign( (void*)&TMP$615$2, -1ll, (void*)"glGetShaderiv", 14ll, 0 );
+  fb_StrAssign( (void*)&TMP$615$2, -1ll, (void*)"glGetShaderiv", 14ll, 0 );
   ERROREXIT( &TMP$615$2 );
   fb_StrDelete( (FBSTRING*)&TMP$615$2 );
   label$66:;
  }
- void* vr$139 = fb_GfxGetGLProcAddress( (uint8*)"glGetShaderInfoLog" );
- GLGETSHADERINFOLOG$ = (tmp$87)vr$139;
+ void* vr$133 = fb_GfxGetGLProcAddress( (uint8*)"glGetShaderInfoLog" );
+ GLGETSHADERINFOLOG$ = (tmp$87)vr$133;
  if( (uint64)GLGETSHADERINFOLOG$ != 0ull ) goto label$68;
  {
   FBSTRING TMP$617$2;
   __builtin_memset( &TMP$617$2, 0, 24ll );
-  FBSTRING* vr$142 = fb_StrAssign( (void*)&TMP$617$2, -1ll, (void*)"glGetShaderInfoLog", 19ll, 0 );
+  fb_StrAssign( (void*)&TMP$617$2, -1ll, (void*)"glGetShaderInfoLog", 19ll, 0 );
   ERROREXIT( &TMP$617$2 );
   fb_StrDelete( (FBSTRING*)&TMP$617$2 );
   label$68:;
  }
- void* vr$145 = fb_GfxGetGLProcAddress( (uint8*)"glCreateProgram" );
- GLCREATEPROGRAM$ = (tmp$82)vr$145;
+ void* vr$138 = fb_GfxGetGLProcAddress( (uint8*)"glCreateProgram" );
+ GLCREATEPROGRAM$ = (tmp$82)vr$138;
  if( (uint64)GLCREATEPROGRAM$ != 0ull ) goto label$70;
  {
   FBSTRING TMP$619$2;
   __builtin_memset( &TMP$619$2, 0, 24ll );
-  FBSTRING* vr$148 = fb_StrAssign( (void*)&TMP$619$2, -1ll, (void*)"glCreateProgram", 16ll, 0 );
+  fb_StrAssign( (void*)&TMP$619$2, -1ll, (void*)"glCreateProgram", 16ll, 0 );
   ERROREXIT( &TMP$619$2 );
   fb_StrDelete( (FBSTRING*)&TMP$619$2 );
   label$70:;
  }
- void* vr$151 = fb_GfxGetGLProcAddress( (uint8*)"glDeleteProgram" );
- GLDELETEPROGRAM$ = (tmp$12)vr$151;
+ void* vr$143 = fb_GfxGetGLProcAddress( (uint8*)"glDeleteProgram" );
+ GLDELETEPROGRAM$ = (tmp$12)vr$143;
  if( (uint64)GLDELETEPROGRAM$ != 0ull ) goto label$72;
  {
   FBSTRING TMP$621$2;
   __builtin_memset( &TMP$621$2, 0, 24ll );
-  FBSTRING* vr$154 = fb_StrAssign( (void*)&TMP$621$2, -1ll, (void*)"glDeleteProgram", 16ll, 0 );
+  fb_StrAssign( (void*)&TMP$621$2, -1ll, (void*)"glDeleteProgram", 16ll, 0 );
   ERROREXIT( &TMP$621$2 );
   fb_StrDelete( (FBSTRING*)&TMP$621$2 );
   label$72:;
  }
- void* vr$157 = fb_GfxGetGLProcAddress( (uint8*)"glAttachShader" );
- GLATTACHSHADER$ = (tmp$72)vr$157;
+ void* vr$148 = fb_GfxGetGLProcAddress( (uint8*)"glAttachShader" );
+ GLATTACHSHADER$ = (tmp$72)vr$148;
  if( (uint64)GLATTACHSHADER$ != 0ull ) goto label$74;
  {
   FBSTRING TMP$623$2;
   __builtin_memset( &TMP$623$2, 0, 24ll );
-  FBSTRING* vr$160 = fb_StrAssign( (void*)&TMP$623$2, -1ll, (void*)"glAttachShader", 15ll, 0 );
+  fb_StrAssign( (void*)&TMP$623$2, -1ll, (void*)"glAttachShader", 15ll, 0 );
   ERROREXIT( &TMP$623$2 );
   fb_StrDelete( (FBSTRING*)&TMP$623$2 );
   label$74:;
  }
- void* vr$163 = fb_GfxGetGLProcAddress( (uint8*)"glDetachShader" );
- GLDETACHSHADER$ = (tmp$72)vr$163;
+ void* vr$153 = fb_GfxGetGLProcAddress( (uint8*)"glDetachShader" );
+ GLDETACHSHADER$ = (tmp$72)vr$153;
  if( (uint64)GLDETACHSHADER$ != 0ull ) goto label$76;
  {
   FBSTRING TMP$625$2;
   __builtin_memset( &TMP$625$2, 0, 24ll );
-  FBSTRING* vr$166 = fb_StrAssign( (void*)&TMP$625$2, -1ll, (void*)"glDetachShader", 15ll, 0 );
+  fb_StrAssign( (void*)&TMP$625$2, -1ll, (void*)"glDetachShader", 15ll, 0 );
   ERROREXIT( &TMP$625$2 );
   fb_StrDelete( (FBSTRING*)&TMP$625$2 );
   label$76:;
  }
- void* vr$169 = fb_GfxGetGLProcAddress( (uint8*)"glLinkProgram" );
- GLLINKPROGRAM$ = (tmp$12)vr$169;
+ void* vr$158 = fb_GfxGetGLProcAddress( (uint8*)"glLinkProgram" );
+ GLLINKPROGRAM$ = (tmp$12)vr$158;
  if( (uint64)GLLINKPROGRAM$ != 0ull ) goto label$78;
  {
   FBSTRING TMP$627$2;
   __builtin_memset( &TMP$627$2, 0, 24ll );
-  FBSTRING* vr$172 = fb_StrAssign( (void*)&TMP$627$2, -1ll, (void*)"glLinkProgram", 14ll, 0 );
+  fb_StrAssign( (void*)&TMP$627$2, -1ll, (void*)"glLinkProgram", 14ll, 0 );
   ERROREXIT( &TMP$627$2 );
   fb_StrDelete( (FBSTRING*)&TMP$627$2 );
   label$78:;
  }
- void* vr$175 = fb_GfxGetGLProcAddress( (uint8*)"glGetProgramiv" );
- GLGETPROGRAMIV$ = (tmp$73)vr$175;
+ void* vr$163 = fb_GfxGetGLProcAddress( (uint8*)"glGetProgramiv" );
+ GLGETPROGRAMIV$ = (tmp$73)vr$163;
  if( (uint64)GLGETPROGRAMIV$ != 0ull ) goto label$80;
  {
   FBSTRING TMP$629$2;
   __builtin_memset( &TMP$629$2, 0, 24ll );
-  FBSTRING* vr$178 = fb_StrAssign( (void*)&TMP$629$2, -1ll, (void*)"glGetProgramiv", 15ll, 0 );
+  fb_StrAssign( (void*)&TMP$629$2, -1ll, (void*)"glGetProgramiv", 15ll, 0 );
   ERROREXIT( &TMP$629$2 );
   fb_StrDelete( (FBSTRING*)&TMP$629$2 );
   label$80:;
  }
- void* vr$181 = fb_GfxGetGLProcAddress( (uint8*)"glGetProgramInfoLog" );
- GLGETPROGRAMINFOLOG$ = (tmp$87)vr$181;
+ void* vr$168 = fb_GfxGetGLProcAddress( (uint8*)"glGetProgramInfoLog" );
+ GLGETPROGRAMINFOLOG$ = (tmp$87)vr$168;
  if( (uint64)GLGETPROGRAMINFOLOG$ != 0ull ) goto label$82;
  {
   FBSTRING TMP$631$2;
   __builtin_memset( &TMP$631$2, 0, 24ll );
-  FBSTRING* vr$184 = fb_StrAssign( (void*)&TMP$631$2, -1ll, (void*)"glGetProgramInfoLog", 20ll, 0 );
+  fb_StrAssign( (void*)&TMP$631$2, -1ll, (void*)"glGetProgramInfoLog", 20ll, 0 );
   ERROREXIT( &TMP$631$2 );
   fb_StrDelete( (FBSTRING*)&TMP$631$2 );
   label$82:;
  }
- void* vr$187 = fb_GfxGetGLProcAddress( (uint8*)"glUseProgram" );
- GLUSEPROGRAM$ = (tmp$12)vr$187;
+ void* vr$173 = fb_GfxGetGLProcAddress( (uint8*)"glUseProgram" );
+ GLUSEPROGRAM$ = (tmp$12)vr$173;
  if( (uint64)GLUSEPROGRAM$ != 0ull ) goto label$84;
  {
   FBSTRING TMP$633$2;
   __builtin_memset( &TMP$633$2, 0, 24ll );
-  FBSTRING* vr$190 = fb_StrAssign( (void*)&TMP$633$2, -1ll, (void*)"glUseProgram", 13ll, 0 );
+  fb_StrAssign( (void*)&TMP$633$2, -1ll, (void*)"glUseProgram", 13ll, 0 );
   ERROREXIT( &TMP$633$2 );
   fb_StrDelete( (FBSTRING*)&TMP$633$2 );
   label$84:;
  }
- void* vr$193 = fb_GfxGetGLProcAddress( (uint8*)"glGetUniformLocation" );
- GLGETUNIFORMLOCATION$ = (tmp$86)vr$193;
+ void* vr$178 = fb_GfxGetGLProcAddress( (uint8*)"glGetUniformLocation" );
+ GLGETUNIFORMLOCATION$ = (tmp$86)vr$178;
  if( (uint64)GLGETUNIFORMLOCATION$ != 0ull ) goto label$86;
  {
   FBSTRING TMP$635$2;
   __builtin_memset( &TMP$635$2, 0, 24ll );
-  FBSTRING* vr$196 = fb_StrAssign( (void*)&TMP$635$2, -1ll, (void*)"glGetUniformLocation", 21ll, 0 );
+  fb_StrAssign( (void*)&TMP$635$2, -1ll, (void*)"glGetUniformLocation", 21ll, 0 );
   ERROREXIT( &TMP$635$2 );
   fb_StrDelete( (FBSTRING*)&TMP$635$2 );
   label$86:;
  }
- void* vr$199 = fb_GfxGetGLProcAddress( (uint8*)"glUniform1i" );
- GLUNIFORM1I$ = (tmp$66)vr$199;
+ void* vr$183 = fb_GfxGetGLProcAddress( (uint8*)"glUniform1i" );
+ GLUNIFORM1I$ = (tmp$66)vr$183;
  if( (uint64)GLUNIFORM1I$ != 0ull ) goto label$88;
  {
   FBSTRING TMP$637$2;
   __builtin_memset( &TMP$637$2, 0, 24ll );
-  FBSTRING* vr$202 = fb_StrAssign( (void*)&TMP$637$2, -1ll, (void*)"glUniform1i", 12ll, 0 );
+  fb_StrAssign( (void*)&TMP$637$2, -1ll, (void*)"glUniform1i", 12ll, 0 );
   ERROREXIT( &TMP$637$2 );
   fb_StrDelete( (FBSTRING*)&TMP$637$2 );
   label$88:;
  }
- void* vr$205 = fb_GfxGetGLProcAddress( (uint8*)"glUniform1f" );
- GLUNIFORM1F$ = (tmp$93)vr$205;
+ void* vr$188 = fb_GfxGetGLProcAddress( (uint8*)"glUniform1f" );
+ GLUNIFORM1F$ = (tmp$93)vr$188;
  if( (uint64)GLUNIFORM1F$ != 0ull ) goto label$90;
  {
   FBSTRING TMP$639$2;
   __builtin_memset( &TMP$639$2, 0, 24ll );
-  FBSTRING* vr$208 = fb_StrAssign( (void*)&TMP$639$2, -1ll, (void*)"glUniform1f", 12ll, 0 );
+  fb_StrAssign( (void*)&TMP$639$2, -1ll, (void*)"glUniform1f", 12ll, 0 );
   ERROREXIT( &TMP$639$2 );
   fb_StrDelete( (FBSTRING*)&TMP$639$2 );
   label$90:;
  }
- void* vr$211 = fb_GfxGetGLProcAddress( (uint8*)"glUniform3f" );
- GLUNIFORM3F$ = (tmp$95)vr$211;
+ void* vr$193 = fb_GfxGetGLProcAddress( (uint8*)"glUniform3f" );
+ GLUNIFORM3F$ = (tmp$95)vr$193;
  if( (uint64)GLUNIFORM3F$ != 0ull ) goto label$92;
  {
   FBSTRING TMP$641$2;
   __builtin_memset( &TMP$641$2, 0, 24ll );
-  FBSTRING* vr$214 = fb_StrAssign( (void*)&TMP$641$2, -1ll, (void*)"glUniform3f", 12ll, 0 );
+  fb_StrAssign( (void*)&TMP$641$2, -1ll, (void*)"glUniform3f", 12ll, 0 );
   ERROREXIT( &TMP$641$2 );
   fb_StrDelete( (FBSTRING*)&TMP$641$2 );
   label$92:;
  }
- void* vr$217 = fb_GfxGetGLProcAddress( (uint8*)"glUniform3fv" );
- GLUNIFORM3FV$ = (tmp$99)vr$217;
+ void* vr$198 = fb_GfxGetGLProcAddress( (uint8*)"glUniform3fv" );
+ GLUNIFORM3FV$ = (tmp$99)vr$198;
  if( (uint64)GLUNIFORM3FV$ != 0ull ) goto label$94;
  {
   FBSTRING TMP$643$2;
   __builtin_memset( &TMP$643$2, 0, 24ll );
-  FBSTRING* vr$220 = fb_StrAssign( (void*)&TMP$643$2, -1ll, (void*)"glUniform3fv", 13ll, 0 );
+  fb_StrAssign( (void*)&TMP$643$2, -1ll, (void*)"glUniform3fv", 13ll, 0 );
   ERROREXIT( &TMP$643$2 );
   fb_StrDelete( (FBSTRING*)&TMP$643$2 );
   label$94:;
  }
- void* vr$223 = fb_GfxGetGLProcAddress( (uint8*)"glUniform4f" );
- GLUNIFORM4F$ = (tmp$96)vr$223;
+ void* vr$203 = fb_GfxGetGLProcAddress( (uint8*)"glUniform4f" );
+ GLUNIFORM4F$ = (tmp$96)vr$203;
  if( (uint64)GLUNIFORM4F$ != 0ull ) goto label$96;
  {
   FBSTRING TMP$645$2;
   __builtin_memset( &TMP$645$2, 0, 24ll );
-  FBSTRING* vr$226 = fb_StrAssign( (void*)&TMP$645$2, -1ll, (void*)"glUniform4f", 12ll, 0 );
+  fb_StrAssign( (void*)&TMP$645$2, -1ll, (void*)"glUniform4f", 12ll, 0 );
   ERROREXIT( &TMP$645$2 );
   fb_StrDelete( (FBSTRING*)&TMP$645$2 );
   label$96:;
  }
- void* vr$229 = fb_GfxGetGLProcAddress( (uint8*)"glUniform4fv" );
- GLUNIFORM4FV$ = (tmp$99)vr$229;
+ void* vr$208 = fb_GfxGetGLProcAddress( (uint8*)"glUniform4fv" );
+ GLUNIFORM4FV$ = (tmp$99)vr$208;
  if( (uint64)GLUNIFORM4FV$ != 0ull ) goto label$98;
  {
   FBSTRING TMP$647$2;
   __builtin_memset( &TMP$647$2, 0, 24ll );
-  FBSTRING* vr$232 = fb_StrAssign( (void*)&TMP$647$2, -1ll, (void*)"glUniform4fv", 13ll, 0 );
+  fb_StrAssign( (void*)&TMP$647$2, -1ll, (void*)"glUniform4fv", 13ll, 0 );
   ERROREXIT( &TMP$647$2 );
   fb_StrDelete( (FBSTRING*)&TMP$647$2 );
   label$98:;
  }
- FBSTRING* vr$235 = fb_StrAllocTempDescZEx( (uint8*)"load and compile shader pese wait ...", 37ll );
- fb_GfxSetWindowTitle( (FBSTRING*)vr$235 );
+ FBSTRING* vr$213 = fb_StrAllocTempDescZEx( (uint8*)"load and compile shader pese wait ...", 37ll );
+ fb_GfxSetWindowTitle( (FBSTRING*)vr$213 );
  label$7:;
 }
 
@@ -1420,7 +1420,7 @@ boolean _ZN9SHADERTOY11COMPILEFILEER8FBSTRING( struct $9SHADERTOY* THIS$1, FBSTR
   FBSTRING* vr$10 = fb_StrConcat( &TMP$654$2, (void*)vr$7, -1ll, (void*)"\x22", 2ll );
   __builtin_memset( &TMP$655$2, 0, 24ll );
   FBSTRING* vr$13 = fb_StrConcat( &TMP$655$2, (void*)vr$10, -1ll, (void*)" !", 3ll );
-  FBSTRING* vr$16 = fb_StrAssign( (void*)((uint8*)THIS$1 + 8ll), -1ll, (void*)vr$13, -1ll, 0 );
+  fb_StrAssign( (void*)((uint8*)THIS$1 + 8ll), -1ll, (void*)vr$13, -1ll, 0 );
   fb$result$1 = (boolean)0ll;
   fb_StrDelete( (FBSTRING*)&CODE$1 );
   goto label$116;
@@ -1428,21 +1428,21 @@ boolean _ZN9SHADERTOY11COMPILEFILEER8FBSTRING( struct $9SHADERTOY* THIS$1, FBSTR
  label$118:;
  label$117:;
  label$119:;
- int32 vr$18 = fb_FileEof( HFILE$1 );
- if( ~(int64)vr$18 == 0ll ) goto label$120;
+ int32 vr$17 = fb_FileEof( HFILE$1 );
+ if( ~(int64)vr$17 == 0ll ) goto label$120;
  {
   FBSTRING ALINE$2;
   __builtin_memset( &ALINE$2, 0, 24ll );
   fb_FileLineInput( HFILE$1, (void*)&ALINE$2, -1ll, 0 );
-  FBSTRING* vr$25 = fb_StrConcatAssign( (void*)&CODE$1, -1ll, (void*)&ALINE$2, -1ll, 0 );
-  FBSTRING* vr$27 = fb_StrConcatAssign( (void*)&CODE$1, -1ll, (void*)"\x0A", 2ll, 0 );
+  fb_StrConcatAssign( (void*)&CODE$1, -1ll, (void*)&ALINE$2, -1ll, 0 );
+  fb_StrConcatAssign( (void*)&CODE$1, -1ll, (void*)"\x0A", 2ll, 0 );
   fb_StrDelete( (FBSTRING*)&ALINE$2 );
  }
  goto label$119;
  label$120:;
  fb_FileClose( HFILE$1 );
- boolean vr$30 = _ZN9SHADERTOY11COMPILECODEER8FBSTRING( THIS$1, &CODE$1 );
- fb$result$1 = vr$30;
+ boolean vr$27 = _ZN9SHADERTOY11COMPILECODEER8FBSTRING( THIS$1, &CODE$1 );
+ fb$result$1 = vr$27;
  fb_StrDelete( (FBSTRING*)&CODE$1 );
  goto label$116;
  fb_StrDelete( (FBSTRING*)&CODE$1 );
@@ -1466,60 +1466,60 @@ boolean _ZN9SHADERTOY11COMPILECODEER8FBSTRING( struct $9SHADERTOY* THIS$1, FBSTR
  FBSTRING VERSION$1;
  __builtin_memset( &VERSION$1, 0, 24ll );
  fb_StrAssign( (void*)&VERSION$1, -1ll, (void*)"#version 140\x0A", 14ll, 0 );
- FBSTRING* vr$8 = fb_StrAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)&VERSION$1, -1ll, 0 );
- FBSTRING* vr$10 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform float     iGlobalTime;\x0A", 32ll, 0 );
- FBSTRING* vr$12 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform float     iTime;\x0A", 26ll, 0 );
- FBSTRING* vr$14 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform vec3      iResolution;\x0A", 32ll, 0 );
- FBSTRING* vr$16 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform float     iTimeDelta;\x0A", 31ll, 0 );
- FBSTRING* vr$18 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform float     iFrameRate;\x0A", 31ll, 0 );
- FBSTRING* vr$20 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform int       iFrame;\x0A", 27ll, 0 );
- FBSTRING* vr$22 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform float     iChannelTime[4];\x0A", 36ll, 0 );
- FBSTRING* vr$24 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform vec3      iChannelResolution[4];\x0A", 42ll, 0 );
- FBSTRING* vr$26 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform float     iSampleRate;\x0A", 32ll, 0 );
- FBSTRING* vr$28 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform vec4      iMouse;\x0A", 27ll, 0 );
- FBSTRING* vr$30 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform vec4      iDate;\x0A", 26ll, 0 );
- FBSTRING* vr$32 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform sampler2D iChannel0;\x0A", 30ll, 0 );
- FBSTRING* vr$34 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform sampler2D iChannel1;\x0A", 30ll, 0 );
- FBSTRING* vr$36 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform sampler2D iChannel2;\x0A", 30ll, 0 );
- FBSTRING* vr$38 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform sampler2D iChannel3;\x0A", 30ll, 0 );
- FBSTRING* vr$40 = fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform samplerCube iCube;\x0A", 28ll, 0 );
+ fb_StrAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)&VERSION$1, -1ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform float     iGlobalTime;\x0A", 32ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform float     iTime;\x0A", 26ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform vec3      iResolution;\x0A", 32ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform float     iTimeDelta;\x0A", 31ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform float     iFrameRate;\x0A", 31ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform int       iFrame;\x0A", 27ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform float     iChannelTime[4];\x0A", 36ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform vec3      iChannelResolution[4];\x0A", 42ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform float     iSampleRate;\x0A", 32ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform vec4      iMouse;\x0A", 27ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform vec4      iDate;\x0A", 26ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform sampler2D iChannel0;\x0A", 30ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform sampler2D iChannel1;\x0A", 30ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform sampler2D iChannel2;\x0A", 30ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform sampler2D iChannel3;\x0A", 30ll, 0 );
+ fb_StrConcatAssign( (void*)&FRAGMENTPROLOG$1, -1ll, (void*)"uniform samplerCube iCube;\x0A", 28ll, 0 );
  FBSTRING FRAGMENTEPILOG$1;
  __builtin_memset( &FRAGMENTEPILOG$1, 0, 24ll );
  if( SWCH$ != 0x0p+0 ) goto label$124;
  {
-  FBSTRING* vr$43 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"void main() {\x0A", 15ll, 0 );
-  FBSTRING* vr$45 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  vec4 color;\x0A", 15ll, 0 );
-  FBSTRING* vr$47 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  // call user shader\x0A", 23ll, 0 );
-  FBSTRING* vr$49 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  mainImage(color, gl_FragCoord.xy);\x0A", 38ll, 0 );
-  FBSTRING* vr$51 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  color.w = 1.0;\x0A", 18ll, 0 );
-  FBSTRING* vr$53 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  gl_FragColor = color;\x0A", 25ll, 0 );
-  FBSTRING* vr$55 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"}\x0A", 3ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"void main() {\x0A", 15ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  vec4 color;\x0A", 15ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  // call user shader\x0A", 23ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  mainImage(color, gl_FragCoord.xy);\x0A", 38ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  color.w = 1.0;\x0A", 18ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  gl_FragColor = color;\x0A", 25ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"}\x0A", 3ll, 0 );
  }
  goto label$123;
  label$124:;
  {
-  FBSTRING* vr$57 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"#define main_image mainImage", 29ll, 0 );
-  FBSTRING* vr$59 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"#define frag_color fragColor", 29ll, 0 );
-  FBSTRING* vr$61 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"#define frag_coord fragCoord", 29ll, 0 );
-  FBSTRING* vr$63 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"#define i_resolution iResolution", 33ll, 0 );
-  FBSTRING* vr$65 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"#define i_time iTime", 21ll, 0 );
-  FBSTRING* vr$67 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"void main() {\x0A", 15ll, 0 );
-  FBSTRING* vr$69 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  vec4 color;\x0A", 15ll, 0 );
-  FBSTRING* vr$71 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  // call user shader\x0A", 23ll, 0 );
-  FBSTRING* vr$73 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  main_image(color, gl_FragCoord.xy);\x0A", 39ll, 0 );
-  FBSTRING* vr$75 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  color.w = 1.0;\x0A", 18ll, 0 );
-  FBSTRING* vr$77 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  gl_FragColor = color;\x0A", 25ll, 0 );
-  FBSTRING* vr$79 = fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"}\x0A", 3ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"#define main_image mainImage", 29ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"#define frag_color fragColor", 29ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"#define frag_coord fragCoord", 29ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"#define i_resolution iResolution", 33ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"#define i_time iTime", 21ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"void main() {\x0A", 15ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  vec4 color;\x0A", 15ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  // call user shader\x0A", 23ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  main_image(color, gl_FragCoord.xy);\x0A", 39ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  color.w = 1.0;\x0A", 18ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"  gl_FragColor = color;\x0A", 25ll, 0 );
+  fb_StrConcatAssign( (void*)&FRAGMENTEPILOG$1, -1ll, (void*)"}\x0A", 3ll, 0 );
  }
  label$123:;
  FBSTRING FRAGMENTCODE$1;
  __builtin_memset( &TMP$687$1, 0, 24ll );
- FBSTRING* vr$84 = fb_StrConcat( &TMP$687$1, (void*)&FRAGMENTPROLOG$1, -1ll, (void*)USERCODE$1, -1ll );
+ FBSTRING* vr$48 = fb_StrConcat( &TMP$687$1, (void*)&FRAGMENTPROLOG$1, -1ll, (void*)USERCODE$1, -1ll );
  __builtin_memset( &TMP$688$1, 0, 24ll );
- FBSTRING* vr$87 = fb_StrConcat( &TMP$688$1, (void*)vr$84, -1ll, (void*)&FRAGMENTEPILOG$1, -1ll );
- FBSTRING* vr$89 = fb_StrInit( (void*)&FRAGMENTCODE$1, -1ll, (void*)vr$87, -1ll, 0 );
- uint32 vr$90 = (GLCREATESHADER$)( 35632u );
- *(uint32*)THIS$1 = vr$90;
+ FBSTRING* vr$51 = fb_StrConcat( &TMP$688$1, (void*)vr$48, -1ll, (void*)&FRAGMENTEPILOG$1, -1ll );
+ fb_StrInit( (void*)&FRAGMENTCODE$1, -1ll, (void*)vr$51, -1ll, 0 );
+ uint32 vr$53 = (GLCREATESHADER$)( 35632u );
+ *(uint32*)THIS$1 = vr$53;
  if( (int64)*(uint32*)THIS$1 != 0ll ) goto label$126;
  {
   fb_StrAssign( (void*)((uint8*)THIS$1 + 8ll), -1ll, (void*)"glCreateShader(GL_FRAGMENT_SHADER) failed !", 44ll, 0 );
@@ -1541,12 +1541,12 @@ boolean _ZN9SHADERTOY11COMPILECODEER8FBSTRING( struct $9SHADERTOY* THIS$1, FBSTR
  {
   FBSTRING TMP$691$2;
   (GLGETSHADERIV$)( *(uint32*)THIS$1, 35716u, &LOGSIZE$1 );
-  FBSTRING* vr$109 = fb_SPACE( (int64)LOGSIZE$1 );
-  FBSTRING* vr$112 = fb_StrAssign( (void*)((uint8*)THIS$1 + 8ll), -1ll, (void*)vr$109, -1ll, 0 );
+  FBSTRING* vr$72 = fb_SPACE( (int64)LOGSIZE$1 );
+  fb_StrAssign( (void*)((uint8*)THIS$1 + 8ll), -1ll, (void*)vr$72, -1ll, 0 );
   (GLGETSHADERINFOLOG$)( *(uint32*)THIS$1, LOGSIZE$1, (int32*)0ull, *(uint8**)((uint8*)THIS$1 + 8ll) );
   __builtin_memset( &TMP$691$2, 0, 24ll );
-  FBSTRING* vr$119 = fb_StrConcat( &TMP$691$2, (void*)"glCompileShader(FragmentShader) failed !\x0A", 42ll, (void*)((uint8*)THIS$1 + 8ll), -1ll );
-  FBSTRING* vr$122 = fb_StrAssign( (void*)((uint8*)THIS$1 + 8ll), -1ll, (void*)vr$119, -1ll, 0 );
+  FBSTRING* vr$81 = fb_StrConcat( &TMP$691$2, (void*)"glCompileShader(FragmentShader) failed !\x0A", 42ll, (void*)((uint8*)THIS$1 + 8ll), -1ll );
+  fb_StrAssign( (void*)((uint8*)THIS$1 + 8ll), -1ll, (void*)vr$81, -1ll, 0 );
   (GLDELETESHADER$)( *(uint32*)THIS$1 );
   *(uint32*)THIS$1 = 0u;
   fb$result$1 = (boolean)0ll;
@@ -1558,8 +1558,8 @@ boolean _ZN9SHADERTOY11COMPILECODEER8FBSTRING( struct $9SHADERTOY* THIS$1, FBSTR
  }
  label$128:;
  label$127:;
- uint32 vr$129 = (GLCREATEPROGRAM$)( );
- *(uint32*)((uint8*)THIS$1 + 4ll) = vr$129;
+ uint32 vr$90 = (GLCREATEPROGRAM$)( );
+ *(uint32*)((uint8*)THIS$1 + 4ll) = vr$90;
  if( (int64)*(uint32*)((uint8*)THIS$1 + 4ll) != 0ll ) goto label$130;
  {
   fb_StrAssign( (void*)((uint8*)THIS$1 + 8ll), -1ll, (void*)"glCreateProgram() failed !", 27ll, 0 );
@@ -1581,12 +1581,12 @@ boolean _ZN9SHADERTOY11COMPILECODEER8FBSTRING( struct $9SHADERTOY* THIS$1, FBSTR
  {
   FBSTRING TMP$694$2;
   (GLGETPROGRAMIV$)( *(uint32*)((uint8*)THIS$1 + 4ll), 35716u, &LOGSIZE$1 );
-  FBSTRING* vr$150 = fb_SPACE( (int64)LOGSIZE$1 );
-  FBSTRING* vr$153 = fb_StrAssign( (void*)((uint8*)THIS$1 + 8ll), -1ll, (void*)vr$150, -1ll, 0 );
+  FBSTRING* vr$111 = fb_SPACE( (int64)LOGSIZE$1 );
+  fb_StrAssign( (void*)((uint8*)THIS$1 + 8ll), -1ll, (void*)vr$111, -1ll, 0 );
   (GLGETPROGRAMINFOLOG$)( *(uint32*)((uint8*)THIS$1 + 4ll), LOGSIZE$1, (int32*)0ull, *(uint8**)((uint8*)THIS$1 + 8ll) );
   __builtin_memset( &TMP$694$2, 0, 24ll );
-  FBSTRING* vr$160 = fb_StrConcat( &TMP$694$2, (void*)"glLinkProgram() failed !\x0A", 26ll, (void*)((uint8*)THIS$1 + 8ll), -1ll );
-  FBSTRING* vr$163 = fb_StrAssign( (void*)((uint8*)THIS$1 + 8ll), -1ll, (void*)vr$160, -1ll, 0 );
+  FBSTRING* vr$120 = fb_StrConcat( &TMP$694$2, (void*)"glLinkProgram() failed !\x0A", 26ll, (void*)((uint8*)THIS$1 + 8ll), -1ll );
+  fb_StrAssign( (void*)((uint8*)THIS$1 + 8ll), -1ll, (void*)vr$120, -1ll, 0 );
   (GLDELETESHADER$)( *(uint32*)THIS$1 );
   *(uint32*)THIS$1 = 0u;
   fb$result$1 = (boolean)0ll;
@@ -1622,97 +1622,93 @@ void _ZN5C64_TC1Ev( struct $5C64_T* THIS$1 )
  struct $8MEMORY_T* TMP$740$1;
  struct $7CPU6510* TMP$742$1;
  label$139:;
- int64 I$1;
- __builtin_memset( &I$1, 0, 8ll );
- int64 C$1;
- __builtin_memset( &C$1, 0, 8ll );
  __builtin_memset( (struct $8MEMORY_T**)THIS$1, 0, 8ll );
  __builtin_memset( (struct $7CPU6510**)((uint8*)THIS$1 + 8ll), 0, 8ll );
  *(uint8*)4808096ll = (uint8)0u;
  *(uint8*)4808097ll = (uint8)1u;
  *(uint8*)4808101ll = (uint8)5u;
  *(uint8*)4808104ll = (uint8)8u;
- I$1 = (int64)*(uint8*)4808096ll;
+ *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
  label$141:;
- *(uint8*)((uint8*)NIBBLES$ + I$1) = (uint8)I$1;
- I$1 = I$1 + (int64)*(uint8*)4808097ll;
+ *(uint8*)((uint8*)*(int64*)4808136ll + 4808096ll) = (uint8)*(int64*)4808136ll;
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
  fb_Locate( (int32)*(uint8*)4808097ll, (int32)*(uint8*)4808097ll, -1, 0, 0 );
- FBSTRING* vr$12 = fb_StrAllocTempDescZEx( (uint8*)"NIBBLES: ", 9ll );
- fb_PrintString( 0, (FBSTRING*)vr$12, 0 );
- if( I$1 >= ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808097ll & 63ll)) ) goto label$142;
- TMP$733$1 = I$1;
+ FBSTRING* vr$11 = fb_StrAllocTempDescZEx( (uint8*)"NIBBLES: ", 9ll );
+ fb_PrintString( 0, (FBSTRING*)vr$11, 0 );
+ if( *(int64*)4808136ll >= ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808097ll & 63ll)) ) goto label$142;
+ TMP$733$1 = *(int64*)4808136ll;
  goto label$158;
  label$142:;
- TMP$733$1 = I$1 - (int64)*(uint8*)4808097ll;
+ TMP$733$1 = *(int64*)4808136ll - (int64)*(uint8*)4808097ll;
  label$158:;
  fb_PrintLongint( 0, TMP$733$1, 1 );
- if( I$1 > ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808097ll & 63ll)) ) goto label$144;
+ if( *(int64*)4808136ll > ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808097ll & 63ll)) ) goto label$144;
  goto label$141;
  label$144:;
- I$1 = (int64)*(uint8*)4808096ll;
+ *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
  label$145:;
- *(uint8*)((uint8*)BYTES$ + I$1) = (uint8)I$1;
- I$1 = I$1 + (int64)*(uint8*)4808097ll;
+ *(uint8*)((uint8*)BYTES$ + *(int64*)4808136ll) = (uint8)*(int64*)4808136ll;
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
  fb_Locate( (int32)*(uint8*)4808098ll, (int32)*(uint8*)4808097ll, -1, 0, 0 );
- FBSTRING* vr$27 = fb_StrAllocTempDescZEx( (uint8*)"BYTES:   ", 9ll );
- fb_PrintString( 0, (FBSTRING*)vr$27, 0 );
- if( I$1 >= ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808101ll & 63ll)) ) goto label$146;
- TMP$735$1 = I$1;
+ FBSTRING* vr$26 = fb_StrAllocTempDescZEx( (uint8*)"BYTES:   ", 9ll );
+ fb_PrintString( 0, (FBSTRING*)vr$26, 0 );
+ if( *(int64*)4808136ll >= ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808101ll & 63ll)) ) goto label$146;
+ TMP$735$1 = *(int64*)4808136ll;
  goto label$159;
  label$146:;
- TMP$735$1 = I$1 - (int64)*(uint8*)4808097ll;
+ TMP$735$1 = *(int64*)4808136ll - (int64)*(uint8*)4808097ll;
  label$159:;
  fb_PrintLongint( 0, TMP$735$1, 1 );
- if( I$1 > ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808101ll & 63ll)) ) goto label$148;
+ if( *(int64*)4808136ll > ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808101ll & 63ll)) ) goto label$148;
  goto label$145;
  label$148:;
- I$1 = (int64)*(uint8*)4808096ll;
+ *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
  label$149:;
- *(uint16*)((uint8*)XWORDS$ + (I$1 << (1ll & 63ll))) = (uint16)I$1;
- I$1 = I$1 + (int64)*(uint8*)4808097ll;
+ *(uint16*)((uint8*)XWORDS$ + (*(int64*)4808136ll << (1ll & 63ll))) = (uint16)*(int64*)4808136ll;
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
  fb_Locate( (int32)*(uint8*)4808099ll, (int32)*(uint8*)4808097ll, -1, 0, 0 );
- FBSTRING* vr$43 = fb_StrAllocTempDescZEx( (uint8*)"WORDS:   ", 9ll );
- fb_PrintString( 0, (FBSTRING*)vr$43, 0 );
- if( I$1 >= (((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$150;
- TMP$737$1 = I$1;
+ FBSTRING* vr$42 = fb_StrAllocTempDescZEx( (uint8*)"WORDS:   ", 9ll );
+ fb_PrintString( 0, (FBSTRING*)vr$42, 0 );
+ if( *(int64*)4808136ll >= (((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$150;
+ TMP$737$1 = *(int64*)4808136ll;
  goto label$160;
  label$150:;
- TMP$737$1 = I$1 - (int64)*(uint8*)4808097ll;
+ TMP$737$1 = *(int64*)4808136ll - (int64)*(uint8*)4808097ll;
  label$160:;
  fb_PrintLongint( 0, TMP$737$1, 1 );
- if( I$1 > (((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$152;
+ if( *(int64*)4808136ll > (((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$152;
  goto label$149;
  label$152:;
  fb_GfxScreenRes( (int32)((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808103ll & 63ll)), (int32)((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808104ll), (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), (int32)*(uint8*)4808096ll, 64, 0 );
  fb_Cls( -65536 );
- FBSTRING* vr$91 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+ FBSTRING* vr$90 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
  TMP$739$1 = 0ll;
  TMP$738$1 = 0ll;
- fb_GfxScreenInfo( (int64*)&SCR_W$, (int64*)&SCR_H$, (int64*)&IMGDATA$, (int64*)&PITCH$, &TMP$738$1, &TMP$739$1, vr$91 );
- void* vr$101 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
- BGIMAGE$ = vr$101;
- void* vr$109 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
- FGIMAGE$ = vr$109;
- void* vr$117 = fb_GfxImageCreate( (int32)SCR_W$, (int32)*(uint8*)4808097ll, (uint32)*(uint8*)4808096ll, (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
- RASTER$ = vr$117;
- void* vr$125 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
- RENDER$ = vr$125;
- I$1 = (int64)*(uint8*)4808096ll;
+ fb_GfxScreenInfo( (int64*)&SCR_W$, (int64*)&SCR_H$, (int64*)&IMGDATA$, (int64*)&PITCH$, &TMP$738$1, &TMP$739$1, vr$90 );
+ void* vr$100 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
+ BGIMAGE$ = vr$100;
+ void* vr$108 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
+ FGIMAGE$ = vr$108;
+ void* vr$116 = fb_GfxImageCreate( (int32)SCR_W$, (int32)*(uint8*)4808097ll, (uint32)*(uint8*)4808096ll, (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
+ RASTER$ = vr$116;
+ void* vr$124 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
+ RENDER$ = vr$124;
+ *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
  label$153:;
- fb_DataReadLongint( (int64*)&C$1 );
- fb_GfxPalette( (int32)I$1, (int32)C$1, -1, -1 );
- I$1 = I$1 + (int64)*(uint8*)4808097ll;
- if( I$1 >= (int64)*(uint8*)4808111ll ) goto label$155;
+ fb_DataReadLongint( (int64*)&C$ );
+ fb_GfxPalette( (int32)*(int64*)4808136ll, (int32)*(int64*)4676760ll, -1, -1 );
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+ if( *(int64*)4808136ll >= (int64)*(uint8*)4808111ll ) goto label$155;
  goto label$153;
  label$155:;
- void* vr$133 = malloc( 134755848ull );
- TMP$740$1 = (struct $8MEMORY_T*)vr$133;
+ void* vr$131 = malloc( 134755848ull );
+ TMP$740$1 = (struct $8MEMORY_T*)vr$131;
  if( TMP$740$1 == (struct $8MEMORY_T*)0ull ) goto label$156;
  _ZN8MEMORY_TC1Ev( TMP$740$1 );
  label$156:;
  *(struct $8MEMORY_T**)THIS$1 = TMP$740$1;
- void* vr$135 = malloc( 14720ull );
- TMP$742$1 = (struct $7CPU6510*)vr$135;
+ void* vr$133 = malloc( 14720ull );
+ TMP$742$1 = (struct $7CPU6510*)vr$133;
  if( TMP$742$1 == (struct $7CPU6510*)0ull ) goto label$157;
  _ZN7CPU6510C1EP8MEMORY_T( TMP$742$1, *(struct $8MEMORY_T**)THIS$1 );
  label$157:;
@@ -1755,25 +1751,25 @@ void _ZN8MEMORY_TC1Ev( struct $8MEMORY_T* THIS$1 )
  uint16 INDEX$1;
  INDEX$1 = *(uint16*)4808096ll;
  label$167:;
- fb_DataReadUShort( &B$1 );
- *(double*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) = (double)B$1;
- INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
- if( (int64)INDEX$1 > ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$169;
+ fb_DataReadLongint( (int64*)&C$ );
+ *(double*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) = (double)*(int64*)4676760ll;
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+ if( *(int64*)4808136ll > ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$169;
  goto label$167;
  label$169:;
- INDEX$1 = (uint16)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808104ll & 63ll));
+ *(int64*)4808136ll = (int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808104ll & 63ll);
  label$170:;
- *(double*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) = (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll);
- INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
- if( (int64)INDEX$1 > ((((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$172;
+ *(double*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) = (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll);
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+ if( *(int64*)4808136ll > ((((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$172;
  goto label$170;
  label$172:;
- INDEX$1 = (uint16)*(uint8*)4808096ll;
+ *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
  label$173:;
- *(double*)((uint8*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) + 134750088ll) = __builtin_sin( (double)((((int64)__builtin_nearbyint( ((double)(int64)INDEX$1 * 0x1.921FB54442D18p+1) / (double)(int64)*(uint8*)4808107ll )) << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) );
- *(double*)((uint8*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) + 134752968ll) = __builtin_cos( (double)((((int64)__builtin_nearbyint( ((double)(int64)INDEX$1 * 0x1.921FB54442D18p+1) / (double)(int64)*(uint8*)4808107ll )) << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) );
- INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
- if( (int64)INDEX$1 > ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808103ll) ) goto label$175;
+ *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134750088ll) = __builtin_sin( (double)((((int64)__builtin_nearbyint( ((double)*(int64*)4808136ll * 0x1.921FB54442D18p+1) / (double)(int64)*(uint8*)4808107ll )) << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) );
+ *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134752968ll) = __builtin_cos( (double)((((int64)__builtin_nearbyint( ((double)*(int64*)4808136ll * 0x1.921FB54442D18p+1) / (double)(int64)*(uint8*)4808107ll )) << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) );
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+ if( *(int64*)4808136ll > ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808103ll) ) goto label$175;
  goto label$173;
  label$175:;
  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
@@ -1788,44 +1784,44 @@ void _ZN8MEMORY_TC1Ev( struct $8MEMORY_T* THIS$1 )
  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808104ll), (double)*(uint8*)4808098ll );
  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll), (double)*(uint8*)4808103ll );
  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808106ll), (double)*(uint8*)4808103ll );
- INDEX$1 = (uint16)*(uint8*)4808096ll;
+ *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
  uint8 TMP$1;
  __builtin_memset( &TMP$1, 0, 1ll );
- FBSTRING* vr$262 = fb_StrAllocTempDescZEx( (uint8*)"64c.251913-01.bin", 17ll );
- fb_FileOpen( (FBSTRING*)vr$262, 0u, 0u, 0u, 1, 0 );
+ FBSTRING* vr$246 = fb_StrAllocTempDescZEx( (uint8*)"64c.251913-01.bin", 17ll );
+ fb_FileOpen( (FBSTRING*)vr$246, 0u, 0u, 0u, (int32)*(uint8*)4808097ll, 0 );
  label$176:;
  fb_FileGetLarge( 1, 0ll, (void*)&TMP$1, 1ull );
- *(double*)((uint8*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) + 134348800ll) = (double)TMP$1;
- INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
- if( (int64)INDEX$1 > (((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$178;
+ *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134348800ll) = (double)TMP$1;
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+ if( *(int64*)4808136ll > (((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$178;
  goto label$176;
  label$178:;
- INDEX$1 = (uint16)*(uint8*)4808096ll;
+ *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
  label$179:;
  fb_FileGetLarge( 1, 0ll, (void*)&TMP$1, 1ull );
- *(double*)((uint8*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) + 134217728ll) = (double)TMP$1;
- INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
- if( (int64)INDEX$1 > (((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$181;
+ *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134217728ll) = (double)TMP$1;
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+ if( *(int64*)4808136ll > (((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$181;
  goto label$179;
  label$181:;
- fb_FileClose( 1 );
- FBSTRING* vr$311 = fb_StrAllocTempDescZEx( (uint8*)"./chargen/2.c64", 15ll );
- fb_FileOpen( (FBSTRING*)vr$311, 0u, 0u, 0u, (int32)*(uint8*)4808097ll, 0 );
- INDEX$1 = (uint16)*(uint8*)4808096ll;
+ fb_FileClose( (int32)*(uint8*)4808097ll );
+ FBSTRING* vr$288 = fb_StrAllocTempDescZEx( (uint8*)"./chargen/2.c64", 15ll );
+ fb_FileOpen( (FBSTRING*)vr$288, 0u, 0u, 0u, (int32)*(uint8*)4808097ll, 0 );
+ *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
  label$182:;
  fb_FileGetLarge( 1, 0ll, (void*)&TMP$1, 1ull );
- *(double*)((uint8*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) + 134479872ll) = (double)TMP$1;
- INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
- if( (int64)INDEX$1 > (((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$184;
+ *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134479872ll) = (double)TMP$1;
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+ if( *(int64*)4808136ll > (((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$184;
  goto label$182;
  label$184:;
  fb_FileSeek( (int32)*(uint8*)4808097ll, (int32)*(uint8*)4808096ll );
- INDEX$1 = (uint16)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808108ll & 63ll));
+ *(int64*)4808136ll = (int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808108ll & 63ll);
  label$185:;
  fb_FileGetLarge( 1, 0ll, (void*)&TMP$1, 1ull );
- *(double*)((uint8*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) + 134479872ll) = (double)TMP$1;
- INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
- if( (int64)INDEX$1 > (((((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$187;
+ *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134479872ll) = (double)TMP$1;
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+ if( *(int64*)4808136ll > (((((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$187;
  goto label$185;
  label$187:;
  fb_FileClose( (int32)*(uint8*)4808097ll );
@@ -1833,8 +1829,8 @@ void _ZN8MEMORY_TC1Ev( struct $8MEMORY_T* THIS$1 )
  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)*(uint8*)4808097ll, __builtin_inf() );
  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll), __builtin_inf() );
  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808109ll), __builtin_inf() );
- FBSTRING* vr$396 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
- fb_GfxPaint( (void*)0ull, (float)*(uint8*)4808096ll, (float)*(uint8*)4808096ll, (uint32)(((((uint64)*(uint8*)4808096ll << (16ll & 63ll)) | ((uint64)*(uint8*)4808096ll << (8ll & 63ll))) | (uint64)*(uint8*)4808096ll) | ((uint64)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) << (24ll & 63ll))), 0u, (FBSTRING*)vr$396, 0, 1073741828 );
+ FBSTRING* vr$364 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+ fb_GfxPaint( (void*)0ull, (float)*(uint8*)4808096ll, (float)*(uint8*)4808096ll, (uint32)(((((int64)(uint32)*(uint8*)4808096ll << (16ll & 63ll)) | ((int64)(uint32)*(uint8*)4808096ll << (8ll & 63ll))) | (int64)(uint32)*(uint8*)4808096ll) | ((int64)(uint32)(uint8)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) << (24ll & 63ll))), 0u, (FBSTRING*)vr$364, 0, 1073741828 );
  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808098ll), (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) );
  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808099ll), (double)*(uint8*)4808096ll );
  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808109ll) );
@@ -1842,96 +1838,96 @@ void _ZN8MEMORY_TC1Ev( struct $8MEMORY_T* THIS$1 )
  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll), (double)((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) );
  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808103ll), (double)((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) );
  FBSTRING MEM$1;
- FBSTRING* vr$521 = fb_CHR( 1, (int64)*(uint8*)4808096ll );
- FBSTRING* vr$523 = fb_StrInit( (void*)&MEM$1, -1ll, (void*)vr$521, -1ll, 0 );
- INDEX$1 = (uint16)*(uint8*)4808096ll;
+ FBSTRING* vr$495 = fb_CHR( 1, (int64)*(uint8*)4808096ll );
+ fb_StrInit( (void*)&MEM$1, -1ll, (void*)vr$495, -1ll, 0 );
+ *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
  fb_StrAssign( (void*)&MEM$1, -1ll, (void*)"BYTES", 6ll, 0 );
- INDEX$1 = (uint16)*(uint8*)4808097ll;
+ *(int64*)4808136ll = (int64)*(uint8*)4808097ll;
  label$188:;
- FBSTRING* vr$534 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)INDEX$1, ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll );
- uint32 vr$535 = fb_ASC( (FBSTRING*)vr$534, 1ll );
- *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = (double)vr$535;
- if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$190;
+ FBSTRING* vr$506 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll );
+ uint32 vr$507 = fb_ASC( (FBSTRING*)vr$506, 1ll );
+ *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$507;
+ if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$190;
  goto label$191;
  label$190:;
- INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
- int64 vr$595 = fb_StrLen( (void*)&MEM$1, -1ll );
- if( (int64)INDEX$1 > vr$595 ) goto label$193;
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+ int64 vr$562 = fb_StrLen( (void*)&MEM$1, -1ll );
+ if( *(int64*)4808136ll > vr$562 ) goto label$193;
  goto label$188;
  label$193:;
  goto label$194;
  label$191:;
- *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
+ *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
  goto label$188;
  label$194:;
  fb_StrAssign( (void*)&MEM$1, -1ll, (void*)"FREE", 5ll, 0 );
- INDEX$1 = (uint16)*(uint8*)4808097ll;
+ *(int64*)4808136ll = (int64)*(uint8*)4808097ll;
  label$195:;
- FBSTRING* vr$629 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)INDEX$1, (int64)*(uint8*)4808097ll );
- uint32 vr$630 = fb_ASC( (FBSTRING*)vr$629, 1ll );
- *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = (double)vr$630;
- if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint16*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$197;
+ FBSTRING* vr$593 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, (int64)*(uint8*)4808097ll );
+ uint32 vr$594 = fb_ASC( (FBSTRING*)vr$593, 1ll );
+ *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$594;
+ if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint16*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$197;
  goto label$198;
  label$197:;
- INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
- int64 vr$690 = fb_StrLen( (void*)&MEM$1, -1ll );
- if( (int64)INDEX$1 > vr$690 ) goto label$200;
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+ int64 vr$648 = fb_StrLen( (void*)&MEM$1, -1ll );
+ if( *(int64*)4808136ll > vr$648 ) goto label$200;
  goto label$195;
  label$200:;
  goto label$201;
  label$198:;
- *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
+ *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
  goto label$195;
  label$201:;
  *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808109ll) << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll);
  *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll));
  *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));
  fb_StrAssign( (void*)&MEM$1, -1ll, (void*)"MICROSOFT", 10ll, 0 );
- INDEX$1 = (uint16)*(uint8*)4808097ll;
+ *(int64*)4808136ll = (int64)*(uint8*)4808097ll;
  label$202:;
- FBSTRING* vr$775 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)INDEX$1, (int64)*(uint8*)4808097ll );
- uint32 vr$776 = fb_ASC( (FBSTRING*)vr$775, 1ll );
- *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = (double)vr$776;
- if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint16*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$204;
+ FBSTRING* vr$730 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, (int64)*(uint8*)4808097ll );
+ uint32 vr$731 = fb_ASC( (FBSTRING*)vr$730, 1ll );
+ *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$731;
+ if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint16*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$204;
  goto label$205;
  label$204:;
- INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
- int64 vr$836 = fb_StrLen( (void*)&MEM$1, -1ll );
- if( (int64)INDEX$1 > vr$836 ) goto label$207;
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+ int64 vr$785 = fb_StrLen( (void*)&MEM$1, -1ll );
+ if( *(int64*)4808136ll > vr$785 ) goto label$207;
  goto label$202;
  label$207:;
  goto label$208;
  label$205:;
- *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
+ *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
  goto label$202;
  label$208:;
  *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));
  fb_StrAssign( (void*)&MEM$1, -1ll, (void*)"BASIC", 6ll, 0 );
- INDEX$1 = (uint16)*(uint8*)4808097ll;
+ *(int64*)4808136ll = (int64)*(uint8*)4808097ll;
  label$209:;
- FBSTRING* vr$889 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)INDEX$1, (int64)*(uint8*)4808097ll );
- uint32 vr$890 = fb_ASC( (FBSTRING*)vr$889, 1ll );
- *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = (double)vr$890;
- if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$211;
+ FBSTRING* vr$836 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, (int64)*(uint8*)4808097ll );
+ uint32 vr$837 = fb_ASC( (FBSTRING*)vr$836, 1ll );
+ *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$837;
+ if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$211;
  goto label$212;
  label$211:;
- FBSTRING* vr$941 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)INDEX$1, (int64)*(uint8*)4808097ll );
- uint32 vr$942 = fb_ASC( (FBSTRING*)vr$941, 1ll );
- *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = (double)vr$942;
- if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) < (double)(int64)*(uint8*)((uint8*)NIBBLES$ + 4ll))) == 0ll ) goto label$214;
+ FBSTRING* vr$884 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, (int64)*(uint8*)4808097ll );
+ uint32 vr$885 = fb_ASC( (FBSTRING*)vr$884, 1ll );
+ *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$885;
+ if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) < (double)(int64)*(uint8*)((uint8*)NIBBLES$ + 4ll))) == 0ll ) goto label$214;
  goto label$215;
  label$214:;
- INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
- int64 vr$1000 = fb_StrLen( (void*)&MEM$1, -1ll );
- if( (int64)INDEX$1 > vr$1000 ) goto label$217;
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+ int64 vr$937 = fb_StrLen( (void*)&MEM$1, -1ll );
+ if( *(int64*)4808136ll > vr$937 ) goto label$217;
  goto label$209;
  label$217:;
  goto label$218;
  label$212:;
- *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
+ *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
  goto label$209;
  label$215:;
- *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
+ *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
  goto label$209;
  label$218:;
  *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));
@@ -1940,61 +1936,61 @@ void _ZN8MEMORY_TC1Ev( struct $8MEMORY_T* THIS$1 )
  *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808098ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));
  *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll);
  fb_StrAssign( (void*)&MEM$1, -1ll, (void*)" RAM SYSTEM", 12ll, 0 );
- INDEX$1 = (uint16)*(uint8*)4808097ll;
+ *(int64*)4808136ll = (int64)*(uint8*)4808097ll;
  label$219:;
- FBSTRING* vr$1145 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)INDEX$1, (int64)*(uint8*)4808097ll );
- uint32 vr$1146 = fb_ASC( (FBSTRING*)vr$1145, 1ll );
- *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = (double)vr$1146;
- if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) > (double)(int64)*(uint8*)4808111ll) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$221;
+ FBSTRING* vr$1077 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, (int64)*(uint8*)4808097ll );
+ uint32 vr$1078 = fb_ASC( (FBSTRING*)vr$1077, 1ll );
+ *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1078;
+ if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) > (double)(int64)*(uint8*)4808111ll) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$221;
  goto label$222;
  label$221:;
  label$222:;
- INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
- int64 vr$1202 = fb_StrLen( (void*)&MEM$1, -1ll );
- if( (int64)INDEX$1 > vr$1202 ) goto label$224;
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+ int64 vr$1128 = fb_StrLen( (void*)&MEM$1, -1ll );
+ if( *(int64*)4808136ll > vr$1128 ) goto label$224;
  goto label$219;
  label$224:;
  goto label$225;
  label$226:;
- *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
+ *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
  goto label$222;
  label$225:;
- uint64 vr$1239 = fb_GetMemAvail( ((int32)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((int64)*(uint8*)4808096ll << (3ll & 63ll))) )) );
- double vr$1246 = pow( (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)), (double)(int64)*(uint8*)4808099ll );
- FBSTRING* vr$1249 = fb_ULongintToStr( vr$1239 / ((uint64)__builtin_nearbyint( vr$1246 )) );
- FBSTRING* vr$1251 = fb_StrAssign( (void*)&MEM$1, -1ll, (void*)vr$1249, -1ll, 0 );
- int64 vr$1253 = fb_StrLen( (void*)&MEM$1, -1ll );
- if( vr$1253 != (int64)*(uint8*)4808097ll ) goto label$228;
+ uint64 vr$1163 = fb_GetMemAvail( ((int32)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((int64)*(uint8*)4808096ll << (3ll & 63ll))) )) );
+ double vr$1170 = pow( (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)), (double)(int64)*(uint8*)4808099ll );
+ FBSTRING* vr$1173 = fb_ULongintToStr( vr$1163 / ((uint64)__builtin_nearbyint( vr$1170 )) );
+ fb_StrAssign( (void*)&MEM$1, -1ll, (void*)vr$1173, -1ll, 0 );
+ int64 vr$1176 = fb_StrLen( (void*)&MEM$1, -1ll );
+ if( vr$1176 != (int64)*(uint8*)4808097ll ) goto label$228;
  goto label$229;
  label$228:;
- int64 vr$1256 = fb_StrLen( (void*)&MEM$1, -1ll );
- if( vr$1256 != (int64)*(uint8*)4808098ll ) goto label$231;
+ int64 vr$1179 = fb_StrLen( (void*)&MEM$1, -1ll );
+ if( vr$1179 != (int64)*(uint8*)4808098ll ) goto label$231;
  goto label$232;
  label$231:;
  label$229:;
- uint32 vr$1259 = fb_ASC( (FBSTRING*)&MEM$1, 1ll );
- *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808107ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1259;
+ uint32 vr$1182 = fb_ASC( (FBSTRING*)&MEM$1, 1ll );
+ *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808107ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1182;
  *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll);
  *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808109ll) << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll);
  goto label$233;
  label$232:;
- FBSTRING* vr$1309 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)*(uint8*)4808097ll, (int64)*(uint8*)4808097ll );
- uint32 vr$1310 = fb_ASC( (FBSTRING*)vr$1309, 1ll );
- *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808107ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1310;
- FBSTRING* vr$1326 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)*(uint8*)4808098ll, (int64)*(uint8*)4808097ll );
- uint32 vr$1327 = fb_ASC( (FBSTRING*)vr$1326, 1ll );
- *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1327;
+ FBSTRING* vr$1232 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)*(uint8*)4808097ll, (int64)*(uint8*)4808097ll );
+ uint32 vr$1233 = fb_ASC( (FBSTRING*)vr$1232, 1ll );
+ *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808107ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1233;
+ FBSTRING* vr$1249 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)*(uint8*)4808098ll, (int64)*(uint8*)4808097ll );
+ uint32 vr$1250 = fb_ASC( (FBSTRING*)vr$1249, 1ll );
+ *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1250;
  *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808109ll) << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll);
- *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808098ll & 63ll));
+ *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll);
  fb_StrAssign( (void*)&MEM$1, -1ll, (void*)" RAM SYSTEM", 12ll, 0 );
- INDEX$1 = (uint16)*(uint8*)4808097ll;
+ *(int64*)4808136ll = (int64)*(uint8*)4808097ll;
  label$234:;
- FBSTRING* vr$1377 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)INDEX$1, (int64)*(uint8*)4808097ll );
- uint32 vr$1378 = fb_ASC( (FBSTRING*)vr$1377, 1ll );
- *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = (double)vr$1378;
- INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
- int64 vr$1399 = fb_StrLen( (void*)&MEM$1, -1ll );
- if( (int64)INDEX$1 > vr$1399 ) goto label$236;
+ FBSTRING* vr$1301 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, (int64)*(uint8*)4808097ll );
+ uint32 vr$1302 = fb_ASC( (FBSTRING*)vr$1301, 1ll );
+ *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1302;
+ *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+ int64 vr$1319 = fb_StrLen( (void*)&MEM$1, -1ll );
+ if( *(int64*)4808136ll > vr$1319 ) goto label$236;
  goto label$234;
  label$236:;
  *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));
@@ -2022,761 +2018,761 @@ double _ZN8MEMORY_T10SCREENCODEEd( struct $8MEMORY_T* THIS$1, double CODE$1 )
  {
   FBSTRING TMP$751$2;
   FBSTRING* vr$2 = fb_CHR( 1, ((int64)__builtin_nearbyint( CODE$1 )) );
-  FBSTRING* vr$4 = fb_StrInit( (void*)&TMP$751$2, -1ll, (void*)vr$2, -1ll, 0 );
-  int32 vr$6 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)" ", 2ll );
-  if( (int64)vr$6 != 0ll ) goto label$242;
+  fb_StrInit( (void*)&TMP$751$2, -1ll, (void*)vr$2, -1ll, 0 );
+  int32 vr$5 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)" ", 2ll );
+  if( (int64)vr$5 != 0ll ) goto label$242;
   label$243:;
   {
    fb$result$1 = 0x1.p+5;
   }
   goto label$241;
   label$242:;
-  int32 vr$9 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"!", 2ll );
-  if( (int64)vr$9 != 0ll ) goto label$244;
+  int32 vr$8 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"!", 2ll );
+  if( (int64)vr$8 != 0ll ) goto label$244;
   label$245:;
   {
    fb$result$1 = 0x1.08p+5;
   }
   goto label$241;
   label$244:;
-  int32 vr$12 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"\x16", 2ll );
-  if( (int64)vr$12 != 0ll ) goto label$246;
+  int32 vr$11 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"\x16", 2ll );
+  if( (int64)vr$11 != 0ll ) goto label$246;
   label$247:;
   {
    fb$result$1 = 0x1.1p+5;
   }
   goto label$241;
   label$246:;
-  int32 vr$15 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"#", 2ll );
-  if( (int64)vr$15 != 0ll ) goto label$248;
+  int32 vr$14 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"#", 2ll );
+  if( (int64)vr$14 != 0ll ) goto label$248;
   label$249:;
   {
    fb$result$1 = 0x1.18p+5;
   }
   goto label$241;
   label$248:;
-  int32 vr$18 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"$", 2ll );
-  if( (int64)vr$18 != 0ll ) goto label$250;
+  int32 vr$17 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"$", 2ll );
+  if( (int64)vr$17 != 0ll ) goto label$250;
   label$251:;
   {
    fb$result$1 = 0x1.2p+5;
   }
   goto label$241;
   label$250:;
-  int32 vr$21 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"%", 2ll );
-  if( (int64)vr$21 != 0ll ) goto label$252;
+  int32 vr$20 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"%", 2ll );
+  if( (int64)vr$20 != 0ll ) goto label$252;
   label$253:;
   {
    fb$result$1 = 0x1.28p+5;
   }
   goto label$241;
   label$252:;
-  int32 vr$24 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"&", 2ll );
-  if( (int64)vr$24 != 0ll ) goto label$254;
+  int32 vr$23 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"&", 2ll );
+  if( (int64)vr$23 != 0ll ) goto label$254;
   label$255:;
   {
    fb$result$1 = 0x1.3p+5;
   }
   goto label$241;
   label$254:;
-  int32 vr$27 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"'", 2ll );
-  if( (int64)vr$27 != 0ll ) goto label$256;
+  int32 vr$26 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"'", 2ll );
+  if( (int64)vr$26 != 0ll ) goto label$256;
   label$257:;
   {
    fb$result$1 = 0x1.38p+5;
   }
   goto label$241;
   label$256:;
-  int32 vr$30 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"(", 2ll );
-  if( (int64)vr$30 != 0ll ) goto label$258;
+  int32 vr$29 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"(", 2ll );
+  if( (int64)vr$29 != 0ll ) goto label$258;
   label$259:;
   {
    fb$result$1 = 0x1.4p+5;
   }
   goto label$241;
   label$258:;
-  int32 vr$33 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)")", 2ll );
-  if( (int64)vr$33 != 0ll ) goto label$260;
+  int32 vr$32 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)")", 2ll );
+  if( (int64)vr$32 != 0ll ) goto label$260;
   label$261:;
   {
    fb$result$1 = 0x1.48p+5;
   }
   goto label$241;
   label$260:;
-  int32 vr$36 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"*", 2ll );
-  if( (int64)vr$36 != 0ll ) goto label$262;
+  int32 vr$35 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"*", 2ll );
+  if( (int64)vr$35 != 0ll ) goto label$262;
   label$263:;
   {
    fb$result$1 = 0x1.5p+5;
   }
   goto label$241;
   label$262:;
-  int32 vr$39 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"+", 2ll );
-  if( (int64)vr$39 != 0ll ) goto label$264;
+  int32 vr$38 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"+", 2ll );
+  if( (int64)vr$38 != 0ll ) goto label$264;
   label$265:;
   {
    fb$result$1 = 0x1.58p+5;
   }
   goto label$241;
   label$264:;
-  int32 vr$42 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)",", 2ll );
-  if( (int64)vr$42 != 0ll ) goto label$266;
+  int32 vr$41 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)",", 2ll );
+  if( (int64)vr$41 != 0ll ) goto label$266;
   label$267:;
   {
    fb$result$1 = 0x1.6p+5;
   }
   goto label$241;
   label$266:;
-  int32 vr$45 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"-", 2ll );
-  if( (int64)vr$45 != 0ll ) goto label$268;
+  int32 vr$44 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"-", 2ll );
+  if( (int64)vr$44 != 0ll ) goto label$268;
   label$269:;
   {
    fb$result$1 = 0x1.68p+5;
   }
   goto label$241;
   label$268:;
-  int32 vr$48 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)".", 2ll );
-  if( (int64)vr$48 != 0ll ) goto label$270;
+  int32 vr$47 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)".", 2ll );
+  if( (int64)vr$47 != 0ll ) goto label$270;
   label$271:;
   {
    fb$result$1 = 0x1.7p+5;
   }
   goto label$241;
   label$270:;
-  int32 vr$51 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"/", 2ll );
-  if( (int64)vr$51 != 0ll ) goto label$272;
+  int32 vr$50 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"/", 2ll );
+  if( (int64)vr$50 != 0ll ) goto label$272;
   label$273:;
   {
    fb$result$1 = 0x1.78p+5;
   }
   goto label$241;
   label$272:;
-  int32 vr$54 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"0", 2ll );
-  if( (int64)vr$54 != 0ll ) goto label$274;
+  int32 vr$53 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"0", 2ll );
+  if( (int64)vr$53 != 0ll ) goto label$274;
   label$275:;
   {
    fb$result$1 = 0x1.8p+5;
   }
   goto label$241;
   label$274:;
-  int32 vr$57 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"1", 2ll );
-  if( (int64)vr$57 != 0ll ) goto label$276;
+  int32 vr$56 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"1", 2ll );
+  if( (int64)vr$56 != 0ll ) goto label$276;
   label$277:;
   {
    fb$result$1 = 0x1.88p+5;
   }
   goto label$241;
   label$276:;
-  int32 vr$60 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"2", 2ll );
-  if( (int64)vr$60 != 0ll ) goto label$278;
+  int32 vr$59 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"2", 2ll );
+  if( (int64)vr$59 != 0ll ) goto label$278;
   label$279:;
   {
    fb$result$1 = 0x1.9p+5;
   }
   goto label$241;
   label$278:;
-  int32 vr$63 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"3", 2ll );
-  if( (int64)vr$63 != 0ll ) goto label$280;
+  int32 vr$62 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"3", 2ll );
+  if( (int64)vr$62 != 0ll ) goto label$280;
   label$281:;
   {
    fb$result$1 = 0x1.98p+5;
   }
   goto label$241;
   label$280:;
-  int32 vr$66 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"4", 2ll );
-  if( (int64)vr$66 != 0ll ) goto label$282;
+  int32 vr$65 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"4", 2ll );
+  if( (int64)vr$65 != 0ll ) goto label$282;
   label$283:;
   {
    fb$result$1 = 0x1.Ap+5;
   }
   goto label$241;
   label$282:;
-  int32 vr$69 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"5", 2ll );
-  if( (int64)vr$69 != 0ll ) goto label$284;
+  int32 vr$68 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"5", 2ll );
+  if( (int64)vr$68 != 0ll ) goto label$284;
   label$285:;
   {
    fb$result$1 = 0x1.A8p+5;
   }
   goto label$241;
   label$284:;
-  int32 vr$72 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"6", 2ll );
-  if( (int64)vr$72 != 0ll ) goto label$286;
+  int32 vr$71 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"6", 2ll );
+  if( (int64)vr$71 != 0ll ) goto label$286;
   label$287:;
   {
    fb$result$1 = 0x1.Bp+5;
   }
   goto label$241;
   label$286:;
-  int32 vr$75 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"7", 2ll );
-  if( (int64)vr$75 != 0ll ) goto label$288;
+  int32 vr$74 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"7", 2ll );
+  if( (int64)vr$74 != 0ll ) goto label$288;
   label$289:;
   {
    fb$result$1 = 0x1.B8p+5;
   }
   goto label$241;
   label$288:;
-  int32 vr$78 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"8", 2ll );
-  if( (int64)vr$78 != 0ll ) goto label$290;
+  int32 vr$77 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"8", 2ll );
+  if( (int64)vr$77 != 0ll ) goto label$290;
   label$291:;
   {
    fb$result$1 = 0x1.Cp+5;
   }
   goto label$241;
   label$290:;
-  int32 vr$81 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"9", 2ll );
-  if( (int64)vr$81 != 0ll ) goto label$292;
+  int32 vr$80 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"9", 2ll );
+  if( (int64)vr$80 != 0ll ) goto label$292;
   label$293:;
   {
    fb$result$1 = 0x1.C8p+5;
   }
   goto label$241;
   label$292:;
-  int32 vr$84 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)":", 2ll );
-  if( (int64)vr$84 != 0ll ) goto label$294;
+  int32 vr$83 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)":", 2ll );
+  if( (int64)vr$83 != 0ll ) goto label$294;
   label$295:;
   {
    fb$result$1 = 0x1.Dp+5;
   }
   goto label$241;
   label$294:;
-  int32 vr$87 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)";", 2ll );
-  if( (int64)vr$87 != 0ll ) goto label$296;
+  int32 vr$86 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)";", 2ll );
+  if( (int64)vr$86 != 0ll ) goto label$296;
   label$297:;
   {
    fb$result$1 = 0x1.D8p+5;
   }
   goto label$241;
   label$296:;
-  int32 vr$90 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"<", 2ll );
-  if( (int64)vr$90 != 0ll ) goto label$298;
+  int32 vr$89 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"<", 2ll );
+  if( (int64)vr$89 != 0ll ) goto label$298;
   label$299:;
   {
    fb$result$1 = 0x1.Ep+5;
   }
   goto label$241;
   label$298:;
-  int32 vr$93 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"=", 2ll );
-  if( (int64)vr$93 != 0ll ) goto label$300;
+  int32 vr$92 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"=", 2ll );
+  if( (int64)vr$92 != 0ll ) goto label$300;
   label$301:;
   {
    fb$result$1 = 0x1.E8p+5;
   }
   goto label$241;
   label$300:;
-  int32 vr$96 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)">", 2ll );
-  if( (int64)vr$96 != 0ll ) goto label$302;
+  int32 vr$95 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)">", 2ll );
+  if( (int64)vr$95 != 0ll ) goto label$302;
   label$303:;
   {
    fb$result$1 = 0x1.Fp+5;
   }
   goto label$241;
   label$302:;
-  int32 vr$99 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"?", 2ll );
-  if( (int64)vr$99 != 0ll ) goto label$304;
+  int32 vr$98 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"?", 2ll );
+  if( (int64)vr$98 != 0ll ) goto label$304;
   label$305:;
   {
    fb$result$1 = 0x1.F8p+5;
   }
   goto label$241;
   label$304:;
-  int32 vr$102 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"@", 2ll );
-  if( (int64)vr$102 != 0ll ) goto label$306;
+  int32 vr$101 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"@", 2ll );
+  if( (int64)vr$101 != 0ll ) goto label$306;
   label$307:;
   {
    fb$result$1 = 0x0p+0;
   }
   goto label$241;
   label$306:;
-  int32 vr$105 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"A", 2ll );
-  if( (int64)vr$105 != 0ll ) goto label$308;
+  int32 vr$104 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"A", 2ll );
+  if( (int64)vr$104 != 0ll ) goto label$308;
   label$309:;
   {
    fb$result$1 = 0x1.p+0;
   }
   goto label$241;
   label$308:;
-  int32 vr$108 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"B", 2ll );
-  if( (int64)vr$108 != 0ll ) goto label$310;
+  int32 vr$107 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"B", 2ll );
+  if( (int64)vr$107 != 0ll ) goto label$310;
   label$311:;
   {
    fb$result$1 = 0x1.p+1;
   }
   goto label$241;
   label$310:;
-  int32 vr$111 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"C", 2ll );
-  if( (int64)vr$111 != 0ll ) goto label$312;
+  int32 vr$110 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"C", 2ll );
+  if( (int64)vr$110 != 0ll ) goto label$312;
   label$313:;
   {
    fb$result$1 = 0x1.8p+1;
   }
   goto label$241;
   label$312:;
-  int32 vr$114 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"D", 2ll );
-  if( (int64)vr$114 != 0ll ) goto label$314;
+  int32 vr$113 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"D", 2ll );
+  if( (int64)vr$113 != 0ll ) goto label$314;
   label$315:;
   {
    fb$result$1 = 0x1.p+2;
   }
   goto label$241;
   label$314:;
-  int32 vr$117 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"E", 2ll );
-  if( (int64)vr$117 != 0ll ) goto label$316;
+  int32 vr$116 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"E", 2ll );
+  if( (int64)vr$116 != 0ll ) goto label$316;
   label$317:;
   {
    fb$result$1 = 0x1.4p+2;
   }
   goto label$241;
   label$316:;
-  int32 vr$120 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"F", 2ll );
-  if( (int64)vr$120 != 0ll ) goto label$318;
+  int32 vr$119 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"F", 2ll );
+  if( (int64)vr$119 != 0ll ) goto label$318;
   label$319:;
   {
    fb$result$1 = 0x1.8p+2;
   }
   goto label$241;
   label$318:;
-  int32 vr$123 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"G", 2ll );
-  if( (int64)vr$123 != 0ll ) goto label$320;
+  int32 vr$122 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"G", 2ll );
+  if( (int64)vr$122 != 0ll ) goto label$320;
   label$321:;
   {
    fb$result$1 = 0x1.Cp+2;
   }
   goto label$241;
   label$320:;
-  int32 vr$126 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"H", 2ll );
-  if( (int64)vr$126 != 0ll ) goto label$322;
+  int32 vr$125 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"H", 2ll );
+  if( (int64)vr$125 != 0ll ) goto label$322;
   label$323:;
   {
    fb$result$1 = 0x1.p+3;
   }
   goto label$241;
   label$322:;
-  int32 vr$129 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"I", 2ll );
-  if( (int64)vr$129 != 0ll ) goto label$324;
+  int32 vr$128 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"I", 2ll );
+  if( (int64)vr$128 != 0ll ) goto label$324;
   label$325:;
   {
    fb$result$1 = 0x1.2p+3;
   }
   goto label$241;
   label$324:;
-  int32 vr$132 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"J", 2ll );
-  if( (int64)vr$132 != 0ll ) goto label$326;
+  int32 vr$131 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"J", 2ll );
+  if( (int64)vr$131 != 0ll ) goto label$326;
   label$327:;
   {
    fb$result$1 = 0x1.4p+3;
   }
   goto label$241;
   label$326:;
-  int32 vr$135 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"K", 2ll );
-  if( (int64)vr$135 != 0ll ) goto label$328;
+  int32 vr$134 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"K", 2ll );
+  if( (int64)vr$134 != 0ll ) goto label$328;
   label$329:;
   {
    fb$result$1 = 0x1.6p+3;
   }
   goto label$241;
   label$328:;
-  int32 vr$138 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"L", 2ll );
-  if( (int64)vr$138 != 0ll ) goto label$330;
+  int32 vr$137 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"L", 2ll );
+  if( (int64)vr$137 != 0ll ) goto label$330;
   label$331:;
   {
    fb$result$1 = 0x1.8p+3;
   }
   goto label$241;
   label$330:;
-  int32 vr$141 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"M", 2ll );
-  if( (int64)vr$141 != 0ll ) goto label$332;
+  int32 vr$140 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"M", 2ll );
+  if( (int64)vr$140 != 0ll ) goto label$332;
   label$333:;
   {
    fb$result$1 = 0x1.Ap+3;
   }
   goto label$241;
   label$332:;
-  int32 vr$144 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"N", 2ll );
-  if( (int64)vr$144 != 0ll ) goto label$334;
+  int32 vr$143 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"N", 2ll );
+  if( (int64)vr$143 != 0ll ) goto label$334;
   label$335:;
   {
    fb$result$1 = 0x1.Cp+3;
   }
   goto label$241;
   label$334:;
-  int32 vr$147 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"O", 2ll );
-  if( (int64)vr$147 != 0ll ) goto label$336;
+  int32 vr$146 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"O", 2ll );
+  if( (int64)vr$146 != 0ll ) goto label$336;
   label$337:;
   {
    fb$result$1 = 0x1.Ep+3;
   }
   goto label$241;
   label$336:;
-  int32 vr$150 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"P", 2ll );
-  if( (int64)vr$150 != 0ll ) goto label$338;
+  int32 vr$149 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"P", 2ll );
+  if( (int64)vr$149 != 0ll ) goto label$338;
   label$339:;
   {
    fb$result$1 = 0x1.p+4;
   }
   goto label$241;
   label$338:;
-  int32 vr$153 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"Q", 2ll );
-  if( (int64)vr$153 != 0ll ) goto label$340;
+  int32 vr$152 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"Q", 2ll );
+  if( (int64)vr$152 != 0ll ) goto label$340;
   label$341:;
   {
    fb$result$1 = 0x1.1p+4;
   }
   goto label$241;
   label$340:;
-  int32 vr$156 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"R", 2ll );
-  if( (int64)vr$156 != 0ll ) goto label$342;
+  int32 vr$155 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"R", 2ll );
+  if( (int64)vr$155 != 0ll ) goto label$342;
   label$343:;
   {
    fb$result$1 = 0x1.2p+4;
   }
   goto label$241;
   label$342:;
-  int32 vr$159 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"S", 2ll );
-  if( (int64)vr$159 != 0ll ) goto label$344;
+  int32 vr$158 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"S", 2ll );
+  if( (int64)vr$158 != 0ll ) goto label$344;
   label$345:;
   {
    fb$result$1 = 0x1.3p+4;
   }
   goto label$241;
   label$344:;
-  int32 vr$162 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"T", 2ll );
-  if( (int64)vr$162 != 0ll ) goto label$346;
+  int32 vr$161 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"T", 2ll );
+  if( (int64)vr$161 != 0ll ) goto label$346;
   label$347:;
   {
    fb$result$1 = 0x1.4p+4;
   }
   goto label$241;
   label$346:;
-  int32 vr$165 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"U", 2ll );
-  if( (int64)vr$165 != 0ll ) goto label$348;
+  int32 vr$164 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"U", 2ll );
+  if( (int64)vr$164 != 0ll ) goto label$348;
   label$349:;
   {
    fb$result$1 = 0x1.5p+4;
   }
   goto label$241;
   label$348:;
-  int32 vr$168 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"V", 2ll );
-  if( (int64)vr$168 != 0ll ) goto label$350;
+  int32 vr$167 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"V", 2ll );
+  if( (int64)vr$167 != 0ll ) goto label$350;
   label$351:;
   {
    fb$result$1 = 0x1.6p+4;
   }
   goto label$241;
   label$350:;
-  int32 vr$171 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"W", 2ll );
-  if( (int64)vr$171 != 0ll ) goto label$352;
+  int32 vr$170 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"W", 2ll );
+  if( (int64)vr$170 != 0ll ) goto label$352;
   label$353:;
   {
    fb$result$1 = 0x1.7p+4;
   }
   goto label$241;
   label$352:;
-  int32 vr$174 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"X", 2ll );
-  if( (int64)vr$174 != 0ll ) goto label$354;
+  int32 vr$173 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"X", 2ll );
+  if( (int64)vr$173 != 0ll ) goto label$354;
   label$355:;
   {
    fb$result$1 = 0x1.8p+4;
   }
   goto label$241;
   label$354:;
-  int32 vr$177 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"Y", 2ll );
-  if( (int64)vr$177 != 0ll ) goto label$356;
+  int32 vr$176 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"Y", 2ll );
+  if( (int64)vr$176 != 0ll ) goto label$356;
   label$357:;
   {
    fb$result$1 = 0x1.9p+4;
   }
   goto label$241;
   label$356:;
-  int32 vr$180 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"Z", 2ll );
-  if( (int64)vr$180 != 0ll ) goto label$358;
+  int32 vr$179 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"Z", 2ll );
+  if( (int64)vr$179 != 0ll ) goto label$358;
   label$359:;
   {
    fb$result$1 = 0x1.Ap+4;
   }
   goto label$241;
   label$358:;
-  int32 vr$183 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"[", 2ll );
-  if( (int64)vr$183 != 0ll ) goto label$360;
+  int32 vr$182 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"[", 2ll );
+  if( (int64)vr$182 != 0ll ) goto label$360;
   label$361:;
   {
    fb$result$1 = 0x1.Bp+4;
   }
   goto label$241;
   label$360:;
-  int32 vr$186 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"\x5C", 2ll );
-  if( (int64)vr$186 != 0ll ) goto label$362;
+  int32 vr$185 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"\x5C", 2ll );
+  if( (int64)vr$185 != 0ll ) goto label$362;
   label$363:;
   {
    fb$result$1 = 0x1.Cp+4;
   }
   goto label$241;
   label$362:;
-  int32 vr$189 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"]", 2ll );
-  if( (int64)vr$189 != 0ll ) goto label$364;
+  int32 vr$188 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"]", 2ll );
+  if( (int64)vr$188 != 0ll ) goto label$364;
   label$365:;
   {
    fb$result$1 = 0x1.Dp+4;
   }
   goto label$241;
   label$364:;
-  int32 vr$192 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"^", 2ll );
-  if( (int64)vr$192 != 0ll ) goto label$366;
+  int32 vr$191 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"^", 2ll );
+  if( (int64)vr$191 != 0ll ) goto label$366;
   label$367:;
   {
    fb$result$1 = 0x1.Ep+4;
   }
   goto label$241;
   label$366:;
-  int32 vr$195 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"_", 2ll );
-  if( (int64)vr$195 != 0ll ) goto label$368;
+  int32 vr$194 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"_", 2ll );
+  if( (int64)vr$194 != 0ll ) goto label$368;
   label$369:;
   {
    fb$result$1 = 0x1.Fp+4;
   }
   goto label$241;
   label$368:;
-  int32 vr$198 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"`", 2ll );
-  if( (int64)vr$198 != 0ll ) goto label$370;
+  int32 vr$197 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"`", 2ll );
+  if( (int64)vr$197 != 0ll ) goto label$370;
   label$371:;
   {
    fb$result$1 = 0x1.p+7;
   }
   goto label$241;
   label$370:;
-  int32 vr$201 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"a", 2ll );
-  if( (int64)vr$201 != 0ll ) goto label$372;
+  int32 vr$200 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"a", 2ll );
+  if( (int64)vr$200 != 0ll ) goto label$372;
   label$373:;
   {
    fb$result$1 = 0x1.02p+7;
   }
   goto label$241;
   label$372:;
-  int32 vr$204 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"b", 2ll );
-  if( (int64)vr$204 != 0ll ) goto label$374;
+  int32 vr$203 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"b", 2ll );
+  if( (int64)vr$203 != 0ll ) goto label$374;
   label$375:;
   {
    fb$result$1 = 0x1.04p+7;
   }
   goto label$241;
   label$374:;
-  int32 vr$207 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"c", 2ll );
-  if( (int64)vr$207 != 0ll ) goto label$376;
+  int32 vr$206 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"c", 2ll );
+  if( (int64)vr$206 != 0ll ) goto label$376;
   label$377:;
   {
    fb$result$1 = 0x1.06p+7;
   }
   goto label$241;
   label$376:;
-  int32 vr$210 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"d", 2ll );
-  if( (int64)vr$210 != 0ll ) goto label$378;
+  int32 vr$209 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"d", 2ll );
+  if( (int64)vr$209 != 0ll ) goto label$378;
   label$379:;
   {
    fb$result$1 = 0x1.08p+7;
   }
   goto label$241;
   label$378:;
-  int32 vr$213 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"e", 2ll );
-  if( (int64)vr$213 != 0ll ) goto label$380;
+  int32 vr$212 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"e", 2ll );
+  if( (int64)vr$212 != 0ll ) goto label$380;
   label$381:;
   {
    fb$result$1 = 0x1.0Ap+7;
   }
   goto label$241;
   label$380:;
-  int32 vr$216 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"f", 2ll );
-  if( (int64)vr$216 != 0ll ) goto label$382;
+  int32 vr$215 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"f", 2ll );
+  if( (int64)vr$215 != 0ll ) goto label$382;
   label$383:;
   {
    fb$result$1 = 0x1.0Cp+7;
   }
   goto label$241;
   label$382:;
-  int32 vr$219 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"g", 2ll );
-  if( (int64)vr$219 != 0ll ) goto label$384;
+  int32 vr$218 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"g", 2ll );
+  if( (int64)vr$218 != 0ll ) goto label$384;
   label$385:;
   {
    fb$result$1 = 0x1.0Ep+7;
   }
   goto label$241;
   label$384:;
-  int32 vr$222 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"h", 2ll );
-  if( (int64)vr$222 != 0ll ) goto label$386;
+  int32 vr$221 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"h", 2ll );
+  if( (int64)vr$221 != 0ll ) goto label$386;
   label$387:;
   {
    fb$result$1 = 0x1.1p+7;
   }
   goto label$241;
   label$386:;
-  int32 vr$225 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"i", 2ll );
-  if( (int64)vr$225 != 0ll ) goto label$388;
+  int32 vr$224 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"i", 2ll );
+  if( (int64)vr$224 != 0ll ) goto label$388;
   label$389:;
   {
    fb$result$1 = 0x1.12p+7;
   }
   goto label$241;
   label$388:;
-  int32 vr$228 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"j", 2ll );
-  if( (int64)vr$228 != 0ll ) goto label$390;
+  int32 vr$227 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"j", 2ll );
+  if( (int64)vr$227 != 0ll ) goto label$390;
   label$391:;
   {
    fb$result$1 = 0x1.14p+7;
   }
   goto label$241;
   label$390:;
-  int32 vr$231 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"k", 2ll );
-  if( (int64)vr$231 != 0ll ) goto label$392;
+  int32 vr$230 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"k", 2ll );
+  if( (int64)vr$230 != 0ll ) goto label$392;
   label$393:;
   {
    fb$result$1 = 0x1.16p+7;
   }
   goto label$241;
   label$392:;
-  int32 vr$234 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"l", 2ll );
-  if( (int64)vr$234 != 0ll ) goto label$394;
+  int32 vr$233 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"l", 2ll );
+  if( (int64)vr$233 != 0ll ) goto label$394;
   label$395:;
   {
    fb$result$1 = 0x1.18p+7;
   }
   goto label$241;
   label$394:;
-  int32 vr$237 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"m", 2ll );
-  if( (int64)vr$237 != 0ll ) goto label$396;
+  int32 vr$236 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"m", 2ll );
+  if( (int64)vr$236 != 0ll ) goto label$396;
   label$397:;
   {
    fb$result$1 = 0x1.1Ap+7;
   }
   goto label$241;
   label$396:;
-  int32 vr$240 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"n", 2ll );
-  if( (int64)vr$240 != 0ll ) goto label$398;
+  int32 vr$239 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"n", 2ll );
+  if( (int64)vr$239 != 0ll ) goto label$398;
   label$399:;
   {
    fb$result$1 = 0x1.1Cp+7;
   }
   goto label$241;
   label$398:;
-  int32 vr$243 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"o", 2ll );
-  if( (int64)vr$243 != 0ll ) goto label$400;
+  int32 vr$242 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"o", 2ll );
+  if( (int64)vr$242 != 0ll ) goto label$400;
   label$401:;
   {
    fb$result$1 = 0x1.1Ep+7;
   }
   goto label$241;
   label$400:;
-  int32 vr$246 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"p", 2ll );
-  if( (int64)vr$246 != 0ll ) goto label$402;
+  int32 vr$245 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"p", 2ll );
+  if( (int64)vr$245 != 0ll ) goto label$402;
   label$403:;
   {
    fb$result$1 = 0x1.2p+7;
   }
   goto label$241;
   label$402:;
-  int32 vr$249 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"q", 2ll );
-  if( (int64)vr$249 != 0ll ) goto label$404;
+  int32 vr$248 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"q", 2ll );
+  if( (int64)vr$248 != 0ll ) goto label$404;
   label$405:;
   {
    fb$result$1 = 0x1.22p+7;
   }
   goto label$241;
   label$404:;
-  int32 vr$252 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"r", 2ll );
-  if( (int64)vr$252 != 0ll ) goto label$406;
+  int32 vr$251 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"r", 2ll );
+  if( (int64)vr$251 != 0ll ) goto label$406;
   label$407:;
   {
    fb$result$1 = 0x1.24p+7;
   }
   goto label$241;
   label$406:;
-  int32 vr$255 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"s", 2ll );
-  if( (int64)vr$255 != 0ll ) goto label$408;
+  int32 vr$254 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"s", 2ll );
+  if( (int64)vr$254 != 0ll ) goto label$408;
   label$409:;
   {
    fb$result$1 = 0x1.26p+7;
   }
   goto label$241;
   label$408:;
-  int32 vr$258 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"t", 2ll );
-  if( (int64)vr$258 != 0ll ) goto label$410;
+  int32 vr$257 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"t", 2ll );
+  if( (int64)vr$257 != 0ll ) goto label$410;
   label$411:;
   {
    fb$result$1 = 0x1.28p+7;
   }
   goto label$241;
   label$410:;
-  int32 vr$261 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"u", 2ll );
-  if( (int64)vr$261 != 0ll ) goto label$412;
+  int32 vr$260 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"u", 2ll );
+  if( (int64)vr$260 != 0ll ) goto label$412;
   label$413:;
   {
    fb$result$1 = 0x1.2Ap+7;
   }
   goto label$241;
   label$412:;
-  int32 vr$264 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"v", 2ll );
-  if( (int64)vr$264 != 0ll ) goto label$414;
+  int32 vr$263 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"v", 2ll );
+  if( (int64)vr$263 != 0ll ) goto label$414;
   label$415:;
   {
    fb$result$1 = 0x1.2Cp+7;
   }
   goto label$241;
   label$414:;
-  int32 vr$267 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"w", 2ll );
-  if( (int64)vr$267 != 0ll ) goto label$416;
+  int32 vr$266 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"w", 2ll );
+  if( (int64)vr$266 != 0ll ) goto label$416;
   label$417:;
   {
    fb$result$1 = 0x1.2Ep+7;
   }
   goto label$241;
   label$416:;
-  int32 vr$270 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"x", 2ll );
-  if( (int64)vr$270 != 0ll ) goto label$418;
+  int32 vr$269 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"x", 2ll );
+  if( (int64)vr$269 != 0ll ) goto label$418;
   label$419:;
   {
    fb$result$1 = 0x1.3p+7;
   }
   goto label$241;
   label$418:;
-  int32 vr$273 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"y", 2ll );
-  if( (int64)vr$273 != 0ll ) goto label$420;
+  int32 vr$272 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"y", 2ll );
+  if( (int64)vr$272 != 0ll ) goto label$420;
   label$421:;
   {
    fb$result$1 = 0x1.32p+7;
   }
   goto label$241;
   label$420:;
-  int32 vr$276 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"z", 2ll );
-  if( (int64)vr$276 != 0ll ) goto label$422;
+  int32 vr$275 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"z", 2ll );
+  if( (int64)vr$275 != 0ll ) goto label$422;
   label$423:;
   {
    fb$result$1 = 0x1.34p+7;
   }
   goto label$241;
   label$422:;
-  int32 vr$279 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"{", 2ll );
-  if( (int64)vr$279 != 0ll ) goto label$424;
+  int32 vr$278 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"{", 2ll );
+  if( (int64)vr$278 != 0ll ) goto label$424;
   label$425:;
   {
    fb$result$1 = 0x1.36p+7;
   }
   goto label$241;
   label$424:;
-  int32 vr$282 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"|", 2ll );
-  if( (int64)vr$282 != 0ll ) goto label$426;
+  int32 vr$281 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"|", 2ll );
+  if( (int64)vr$281 != 0ll ) goto label$426;
   label$427:;
   {
    fb$result$1 = 0x1.38p+7;
   }
   goto label$241;
   label$426:;
-  int32 vr$285 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"}", 2ll );
-  if( (int64)vr$285 != 0ll ) goto label$428;
+  int32 vr$284 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"}", 2ll );
+  if( (int64)vr$284 != 0ll ) goto label$428;
   label$429:;
   {
    fb$result$1 = 0x1.3Ap+7;
   }
   goto label$241;
   label$428:;
-  int32 vr$288 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"~", 2ll );
-  if( (int64)vr$288 != 0ll ) goto label$430;
+  int32 vr$287 = fb_StrCompare( (void*)&TMP$751$2, -1ll, (void*)"~", 2ll );
+  if( (int64)vr$287 != 0ll ) goto label$430;
   label$431:;
   {
    fb$result$1 = 0x1.3Cp+7;
@@ -3726,19 +3722,19 @@ void _ZN8MEMORY_T5POKEBEdd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1 
   {
    *(double*)((uint8*)THIS$1 + 395400ll) = (double)((((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.p+0 )) << (3ll & 63ll))) )) << (32ll & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.p+1 )) << (3ll & 63ll))) )) << (24ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.8p+1 )) << (3ll & 63ll))) )) << (16ll & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.p+2 )) << (3ll & 63ll))) )) << (8ll & 63ll))) + *(double*)((uint8*)THIS$1 + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 395344ll) + 0x1.4p+2 )) << (3ll & 63ll)));
    FBSTRING* vr$858 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394888ll) );
-   FBSTRING* vr$859 = fb_StrAssign( (void*)&STRING_DATA$, -1ll, (void*)vr$858, -1ll, 0 );
+   fb_StrAssign( (void*)&STRING_DATA$, -1ll, (void*)vr$858, -1ll, 0 );
    {
     R3$ = 1u;
     uint32 TMP$851$4;
-    int64 vr$860 = fb_StrLen( (void*)&STRING_DATA$, -1ll );
-    TMP$851$4 = (uint32)vr$860;
+    int64 vr$859 = fb_StrLen( (void*)&STRING_DATA$, -1ll );
+    TMP$851$4 = (uint32)vr$859;
     goto label$693;
     label$696:;
     {
-     FBSTRING* vr$863 = fb_StrMid( (FBSTRING*)&STRING_DATA$, (int64)R3$, 1ll );
-     uint32 vr$864 = fb_ASC( (FBSTRING*)vr$863, 1ll );
-     double vr$866 = _ZN8MEMORY_T10SCREENCODEEd( THIS$1, (double)vr$864 );
-     _ZN8MEMORY_T5POKEBEdd( THIS$1, (double)(((uint64)(int64)CHAR_BUFFER$ + ADR0$) + (uint64)((int64)R3$ + -1ll)), vr$866 );
+     FBSTRING* vr$862 = fb_StrMid( (FBSTRING*)&STRING_DATA$, (int64)R3$, 1ll );
+     uint32 vr$863 = fb_ASC( (FBSTRING*)vr$862, 1ll );
+     double vr$865 = _ZN8MEMORY_T10SCREENCODEEd( THIS$1, (double)vr$863 );
+     _ZN8MEMORY_T5POKEBEdd( THIS$1, (double)(((uint64)(int64)CHAR_BUFFER$ + ADR0$) + (uint64)((int64)R3$ + -1ll)), vr$865 );
     }
     label$694:;
     R3$ = (uint32)((int64)R3$ + 1ll);
@@ -3763,8 +3759,8 @@ void _ZN8MEMORY_T5POKEBEdd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1 
     goto label$699;
     label$702:;
     {
-     double vr$1003 = _ZN8MEMORY_T10SCREENCODEEd( THIS$1, *(double*)((uint8*)THIS$1 + (((int64)STRING_ADR$ + (int64)R3$) << (3ll & 63ll))) );
-     _ZN8MEMORY_T5POKEBEdd( THIS$1, ((double)(int64)CHAR_BUFFER$ + *(double*)((uint8*)THIS$1 + 395400ll)) + (double)(int64)R3$, vr$1003 );
+     double vr$1002 = _ZN8MEMORY_T10SCREENCODEEd( THIS$1, *(double*)((uint8*)THIS$1 + (((int64)STRING_ADR$ + (int64)R3$) << (3ll & 63ll))) );
+     _ZN8MEMORY_T5POKEBEdd( THIS$1, ((double)(int64)CHAR_BUFFER$ + *(double*)((uint8*)THIS$1 + 395400ll)) + (double)(int64)R3$, vr$1002 );
     }
     label$700:;
     R3$ = (uint32)((int64)R3$ + 1ll);
@@ -3809,8 +3805,8 @@ void _ZN8MEMORY_T5POKEBEdd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1 
     *(double*)((uint8*)THIS$1 + 394848ll) = (((double)(YS$ + Y$) * 0x1.p+2) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395040ll);
     *(double*)((uint8*)THIS$1 + 394864ll) = ((((double)(XS$ + X$) * 0x1.4p+2) + 0x1.Cp+2) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395032ll);
     *(double*)((uint8*)THIS$1 + 394872ll) = ((((double)(YS$ + Y$) * 0x1.p+2) + 0x1.p+2) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395040ll);
-    double vr$1080 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
-    _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$1080 );
+    double vr$1079 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
+    _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$1079 );
     X$ = ((int64)__builtin_nearbyint( (double)X$ + 0x1.p+0 ));
     if( (double)X$ <= *(double*)((uint8*)THIS$1 + 395080ll) ) goto label$712;
     {
@@ -3831,21 +3827,21 @@ void _ZN8MEMORY_T5POKEBEdd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1 
   if( ADR$1 != 0x1.4p+19 ) goto label$713;
   label$714:;
   {
-   fb_GfxLine( (void*)0ull, X_AXIS0$, Y_AXIS0$, X_AXIS0$ + (float)(int64)PIXEL_SIZE$, Y_AXIS0$ + (float)(int64)PIXEL_SIZE$, (uint32)(((((uint64)RED2$ << (16ll & 63ll)) | ((uint64)GREEN2$ << (8ll & 63ll))) | (uint64)BLUE2$) | ((uint64)XALPHA2$ << (24ll & 63ll))), 2, 65535u, 0 );
+   fb_GfxLine( (void*)0ull, X_AXIS0$, Y_AXIS0$, X_AXIS0$ + (float)(int64)PIXEL_SIZE$, Y_AXIS0$ + (float)(int64)PIXEL_SIZE$, (uint32)(((((int64)(uint32)(uint8)RED2$ << (16ll & 63ll)) | ((int64)(uint32)(uint8)GREEN2$ << (8ll & 63ll))) | (int64)(uint32)(uint8)BLUE2$) | ((int64)(uint32)(uint8)XALPHA2$ << (24ll & 63ll))), 2, 65535u, 0 );
   }
   goto label$438;
   label$713:;
   if( ADR$1 != 0x1.40002p+19 ) goto label$715;
   label$716:;
   {
-   fb_GfxLine( (void*)0ull, X_AXIS0$, Y_AXIS0$, X_AXIS1$, Y_AXIS1$, (uint32)(((((uint64)RED2$ << (16ll & 63ll)) | ((uint64)GREEN2$ << (8ll & 63ll))) | (uint64)BLUE2$) | ((uint64)XALPHA2$ << (24ll & 63ll))), 0, BITMASK$, 0 );
+   fb_GfxLine( (void*)0ull, X_AXIS0$, Y_AXIS0$, X_AXIS1$, Y_AXIS1$, (uint32)(((((int64)(uint32)(uint8)RED2$ << (16ll & 63ll)) | ((int64)(uint32)(uint8)GREEN2$ << (8ll & 63ll))) | (int64)(uint32)(uint8)BLUE2$) | ((int64)(uint32)(uint8)XALPHA2$ << (24ll & 63ll))), 0, BITMASK$, 0 );
   }
   goto label$438;
   label$715:;
   if( ADR$1 != 0x1.40004p+19 ) goto label$717;
   label$718:;
   {
-   fb_GfxEllipse( (void*)0ull, X_AXIS0$, Y_AXIS1$, (float)RADIUS$, (uint32)(((((uint64)RED2$ << (16ll & 63ll)) | ((uint64)GREEN2$ << (8ll & 63ll))) | (uint64)BLUE2$) | ((uint64)XALPHA2$ << (24ll & 63ll))), 0x0p+0f, 0x0p+0f, 0x1.921FB8p+2f, 0, 4 );
+   fb_GfxEllipse( (void*)0ull, X_AXIS0$, Y_AXIS1$, (float)RADIUS$, (uint32)(((((int64)(uint32)(uint8)RED2$ << (16ll & 63ll)) | ((int64)(uint32)(uint8)GREEN2$ << (8ll & 63ll))) | (int64)(uint32)(uint8)BLUE2$) | ((int64)(uint32)(uint8)XALPHA2$ << (24ll & 63ll))), 0x0p+0f, 0x0p+0f, 0x1.921FB8p+2f, 0, 4 );
   }
   goto label$438;
   label$717:;
@@ -3990,84 +3986,84 @@ void _ZN8MEMORY_T6GETXYZEv( struct $8MEMORY_T* THIS$1 )
  FBSTRING TMP$860$1;
  label$753:;
  __builtin_memset( &TMP$855$1, 0, 24ll );
- FBSTRING* vr$2 = fb_StrAssign( (void*)&TMP$855$1, -1ll, (void*)&GET_DATA$, -1ll, 0 );
- double vr$4 = _ZN8MEMORY_T8ISNUMBERE8FBSTRINGd( THIS$1, &TMP$855$1, 0x1.Cp+2 );
- *(double*)((uint8*)THIS$1 + 394840ll) = vr$4;
+ fb_StrAssign( (void*)&TMP$855$1, -1ll, (void*)&GET_DATA$, -1ll, 0 );
+ double vr$3 = _ZN8MEMORY_T8ISNUMBERE8FBSTRINGd( THIS$1, &TMP$855$1, 0x1.Cp+2 );
+ *(double*)((uint8*)THIS$1 + 394840ll) = vr$3;
  fb_StrDelete( (FBSTRING*)&TMP$855$1 );
  if( *(double*)((uint8*)THIS$1 + 394840ll) != 0x0p+0 ) goto label$756;
  {
   FBSTRING TMP$856$2;
-  FBSTRING* vr$9 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394840ll) );
-  int64 vr$10 = fb_StrLen( (void*)vr$9, -1ll );
+  FBSTRING* vr$8 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394840ll) );
+  int64 vr$9 = fb_StrLen( (void*)vr$8, -1ll );
   __builtin_memset( &TMP$856$2, 0, 24ll );
-  FBSTRING* vr$15 = fb_StrAssign( (void*)&TMP$856$2, -1ll, (void*)&GET_DATA$, -1ll, 0 );
-  double vr$17 = _ZN8MEMORY_T8ISNUMBERE8FBSTRINGd( THIS$1, &TMP$856$2, (double)(vr$10 + 7ll) );
-  *(double*)((uint8*)THIS$1 + 394840ll) = -vr$17 + 0x0p+0;
+  fb_StrAssign( (void*)&TMP$856$2, -1ll, (void*)&GET_DATA$, -1ll, 0 );
+  double vr$15 = _ZN8MEMORY_T8ISNUMBERE8FBSTRINGd( THIS$1, &TMP$856$2, (double)(vr$9 + 7ll) );
+  *(double*)((uint8*)THIS$1 + 394840ll) = -vr$15 + 0x0p+0;
   fb_StrDelete( (FBSTRING*)&TMP$856$2 );
  }
  goto label$755;
  label$756:;
- FBSTRING* vr$23 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394840ll) );
- int64 vr$24 = fb_StrLen( (void*)vr$23, -1ll );
- FBSTRING* vr$26 = fb_StrMid( (FBSTRING*)&GET_DATA$, vr$24 + 7ll, 1ll );
- int32 vr$27 = fb_StrCompare( (void*)vr$26, -1ll, (void*)"-", 2ll );
- if( (int64)vr$27 != 0ll ) goto label$757;
+ FBSTRING* vr$21 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394840ll) );
+ int64 vr$22 = fb_StrLen( (void*)vr$21, -1ll );
+ FBSTRING* vr$24 = fb_StrMid( (FBSTRING*)&GET_DATA$, vr$22 + 7ll, 1ll );
+ int32 vr$25 = fb_StrCompare( (void*)vr$24, -1ll, (void*)"-", 2ll );
+ if( (int64)vr$25 != 0ll ) goto label$757;
  {
   FBSTRING TMP$857$2;
-  FBSTRING* vr$30 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394840ll) );
-  int64 vr$31 = fb_StrLen( (void*)vr$30, -1ll );
+  FBSTRING* vr$28 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394840ll) );
+  int64 vr$29 = fb_StrLen( (void*)vr$28, -1ll );
   __builtin_memset( &TMP$857$2, 0, 24ll );
-  FBSTRING* vr$36 = fb_StrAssign( (void*)&TMP$857$2, -1ll, (void*)&GET_DATA$, -1ll, 0 );
-  double vr$38 = _ZN8MEMORY_T8ISNUMBERE8FBSTRINGd( THIS$1, &TMP$857$2, (double)(vr$31 + 8ll) );
-  *(double*)((uint8*)THIS$1 + 394840ll) = -vr$38 + 0x0p+0;
+  fb_StrAssign( (void*)&TMP$857$2, -1ll, (void*)&GET_DATA$, -1ll, 0 );
+  double vr$35 = _ZN8MEMORY_T8ISNUMBERE8FBSTRINGd( THIS$1, &TMP$857$2, (double)(vr$29 + 8ll) );
+  *(double*)((uint8*)THIS$1 + 394840ll) = -vr$35 + 0x0p+0;
   fb_StrDelete( (FBSTRING*)&TMP$857$2 );
  }
  label$757:;
  label$755:;
- FBSTRING* vr$44 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394840ll) );
- int64 vr$45 = fb_StrLen( (void*)vr$44, -1ll );
+ FBSTRING* vr$41 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394840ll) );
+ int64 vr$42 = fb_StrLen( (void*)vr$41, -1ll );
  __builtin_memset( &TMP$858$1, 0, 24ll );
- FBSTRING* vr$50 = fb_StrAssign( (void*)&TMP$858$1, -1ll, (void*)&GET_DATA$, -1ll, 0 );
- double vr$52 = _ZN8MEMORY_T8ISNUMBERE8FBSTRINGd( THIS$1, &TMP$858$1, (double)(vr$45 + 9ll) );
- *(double*)((uint8*)THIS$1 + 394848ll) = vr$52;
+ fb_StrAssign( (void*)&TMP$858$1, -1ll, (void*)&GET_DATA$, -1ll, 0 );
+ double vr$48 = _ZN8MEMORY_T8ISNUMBERE8FBSTRINGd( THIS$1, &TMP$858$1, (double)(vr$42 + 9ll) );
+ *(double*)((uint8*)THIS$1 + 394848ll) = vr$48;
  fb_StrDelete( (FBSTRING*)&TMP$858$1 );
- FBSTRING* vr$56 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394840ll) );
- int64 vr$57 = fb_StrLen( (void*)vr$56, -1ll );
- FBSTRING* vr$59 = fb_StrMid( (FBSTRING*)&GET_DATA$, vr$57 + 9ll, 1ll );
- int32 vr$60 = fb_StrCompare( (void*)vr$59, -1ll, (void*)"-", 2ll );
- if( (int64)vr$60 != 0ll ) goto label$759;
+ FBSTRING* vr$52 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394840ll) );
+ int64 vr$53 = fb_StrLen( (void*)vr$52, -1ll );
+ FBSTRING* vr$55 = fb_StrMid( (FBSTRING*)&GET_DATA$, vr$53 + 9ll, 1ll );
+ int32 vr$56 = fb_StrCompare( (void*)vr$55, -1ll, (void*)"-", 2ll );
+ if( (int64)vr$56 != 0ll ) goto label$759;
  {
   FBSTRING TMP$859$2;
-  FBSTRING* vr$63 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394840ll) );
-  int64 vr$64 = fb_StrLen( (void*)vr$63, -1ll );
+  FBSTRING* vr$59 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394840ll) );
+  int64 vr$60 = fb_StrLen( (void*)vr$59, -1ll );
   __builtin_memset( &TMP$859$2, 0, 24ll );
-  FBSTRING* vr$69 = fb_StrAssign( (void*)&TMP$859$2, -1ll, (void*)&GET_DATA$, -1ll, 0 );
-  double vr$71 = _ZN8MEMORY_T8ISNUMBERE8FBSTRINGd( THIS$1, &TMP$859$2, (double)(vr$64 + 10ll) );
-  *(double*)((uint8*)THIS$1 + 394848ll) = -vr$71 + 0x0p+0;
+  fb_StrAssign( (void*)&TMP$859$2, -1ll, (void*)&GET_DATA$, -1ll, 0 );
+  double vr$66 = _ZN8MEMORY_T8ISNUMBERE8FBSTRINGd( THIS$1, &TMP$859$2, (double)(vr$60 + 10ll) );
+  *(double*)((uint8*)THIS$1 + 394848ll) = -vr$66 + 0x0p+0;
   fb_StrDelete( (FBSTRING*)&TMP$859$2 );
  }
  label$759:;
  label$758:;
- FBSTRING* vr$77 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394848ll) );
- int64 vr$78 = fb_StrLen( (void*)vr$77, -1ll );
+ FBSTRING* vr$72 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394848ll) );
+ int64 vr$73 = fb_StrLen( (void*)vr$72, -1ll );
  __builtin_memset( &TMP$860$1, 0, 24ll );
- FBSTRING* vr$83 = fb_StrAssign( (void*)&TMP$860$1, -1ll, (void*)&GET_DATA$, -1ll, 0 );
- double vr$85 = _ZN8MEMORY_T8ISNUMBERE8FBSTRINGd( THIS$1, &TMP$860$1, (double)(vr$78 + 13ll) );
- *(double*)((uint8*)THIS$1 + 394856ll) = vr$85;
+ fb_StrAssign( (void*)&TMP$860$1, -1ll, (void*)&GET_DATA$, -1ll, 0 );
+ double vr$79 = _ZN8MEMORY_T8ISNUMBERE8FBSTRINGd( THIS$1, &TMP$860$1, (double)(vr$73 + 13ll) );
+ *(double*)((uint8*)THIS$1 + 394856ll) = vr$79;
  fb_StrDelete( (FBSTRING*)&TMP$860$1 );
- FBSTRING* vr$89 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394848ll) );
- int64 vr$90 = fb_StrLen( (void*)vr$89, -1ll );
- FBSTRING* vr$92 = fb_StrMid( (FBSTRING*)&GET_DATA$, vr$90 + 13ll, 1ll );
- int32 vr$93 = fb_StrCompare( (void*)vr$92, -1ll, (void*)"-", 2ll );
- if( (int64)vr$93 != 0ll ) goto label$761;
+ FBSTRING* vr$83 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394848ll) );
+ int64 vr$84 = fb_StrLen( (void*)vr$83, -1ll );
+ FBSTRING* vr$86 = fb_StrMid( (FBSTRING*)&GET_DATA$, vr$84 + 13ll, 1ll );
+ int32 vr$87 = fb_StrCompare( (void*)vr$86, -1ll, (void*)"-", 2ll );
+ if( (int64)vr$87 != 0ll ) goto label$761;
  {
   FBSTRING TMP$861$2;
-  FBSTRING* vr$96 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394848ll) );
-  int64 vr$97 = fb_StrLen( (void*)vr$96, -1ll );
+  FBSTRING* vr$90 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394848ll) );
+  int64 vr$91 = fb_StrLen( (void*)vr$90, -1ll );
   __builtin_memset( &TMP$861$2, 0, 24ll );
-  FBSTRING* vr$102 = fb_StrAssign( (void*)&TMP$861$2, -1ll, (void*)&GET_DATA$, -1ll, 0 );
-  double vr$104 = _ZN8MEMORY_T8ISNUMBERE8FBSTRINGd( THIS$1, &TMP$861$2, (double)(vr$97 + 14ll) );
-  *(double*)((uint8*)THIS$1 + 394856ll) = vr$104 + 0x0p+0;
+  fb_StrAssign( (void*)&TMP$861$2, -1ll, (void*)&GET_DATA$, -1ll, 0 );
+  double vr$97 = _ZN8MEMORY_T8ISNUMBERE8FBSTRINGd( THIS$1, &TMP$861$2, (double)(vr$91 + 14ll) );
+  *(double*)((uint8*)THIS$1 + 394856ll) = vr$97 + 0x0p+0;
   fb_StrDelete( (FBSTRING*)&TMP$861$2 );
  }
  label$761:;
@@ -10496,13 +10492,13 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      __builtin_memset( &BMIPMAP$5, 0, 1ll );
      boolean BREPEAT$5;
      __builtin_memset( &BREPEAT$5, 0, 1ll );
-     *(double*)((uint8*)THIS$1 + 394840ll) = 0x1.68p+9;
-     *(double*)((uint8*)THIS$1 + 394848ll) = 0x1.2p+9;
+     *(double*)((uint8*)THIS$1 + 394840ll) = 0x1.Ep+10;
+     *(double*)((uint8*)THIS$1 + 394848ll) = 0x1.0Ep+10;
      _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.814p+15, 0x0p+0 );
      struct $4VEC3 V3$5;
      __builtin_memset( &V3$5, 0, 12ll );
-     *(float*)&V3$5 = 0x1.68p+9f;
-     *(float*)((uint8*)&V3$5 + 4ll) = 0x1.2p+9f;
+     *(float*)&V3$5 = 0x1.Ep+10f;
+     *(float*)((uint8*)&V3$5 + 4ll) = 0x1.0Ep+10f;
      *(float*)((uint8*)&V3$5 + 8ll) = (float)((double)*(float*)&V3$5 / (double)*(float*)((uint8*)&V3$5 + 4ll));
      struct $9SHADERTOY SHADER$5;
      _ZN9SHADERTOYC1Ev( &SHADER$5 );
@@ -10528,15 +10524,15 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       FBSTRING* vr$3738 = fb_StrConcat( &TMP$874$6, (void*)vr$3735, -1ll, (void*)"\x0A\x0A", 3ll );
       __builtin_memset( &TMP$875$6, 0, 24ll );
       FBSTRING* vr$3741 = fb_StrConcat( &TMP$875$6, (void*)vr$3738, -1ll, (void*)((uint8*)&SHADER$5 + 8ll), -1ll );
-      FBSTRING* vr$3743 = fb_StrAssign( (void*)&TMP$876$6, -1ll, (void*)vr$3741, -1ll, 0 );
+      fb_StrAssign( (void*)&TMP$876$6, -1ll, (void*)vr$3741, -1ll, 0 );
       ERROREXIT( &TMP$876$6 );
       fb_StrDelete( (FBSTRING*)&TMP$876$6 );
      }
      label$3207:;
      label$3206:;
      __builtin_memset( &TMP$878$5, 0, 24ll );
-     FBSTRING* vr$3748 = fb_StrConcat( &TMP$878$5, (void*)&FILENAME$, -1ll, (void*)" ok ...", 8ll );
-     fb_GfxSetWindowTitle( (FBSTRING*)vr$3748 );
+     FBSTRING* vr$3747 = fb_StrConcat( &TMP$878$5, (void*)&FILENAME$, -1ll, (void*)" ok ...", 8ll );
+     fb_GfxSetWindowTitle( (FBSTRING*)vr$3747 );
      (GLUSEPROGRAM$)( *(uint32*)((uint8*)&SHADER$5 + 4ll) );
      int32 TEXTURES$5[4];
      __builtin_memset( (int32*)TEXTURES$5, 0, 16ll );
@@ -10566,8 +10562,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       int64 TMP$883$6;
       if( FGIMAGE$ != (void*)0ull ) goto label$3211;
       {
-       void* vr$3753 = fb_GfxImageCreate( 512, 512, 4278190080u, 32, 0 );
-       FGIMAGE$ = vr$3753;
+       void* vr$3752 = fb_GfxImageCreate( 512, 512, 4278190080u, 32, 0 );
+       FGIMAGE$ = vr$3752;
        if( BNOISE$5 != (boolean)1ll ) goto label$3213;
        {
         {
@@ -10580,10 +10576,10 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
            X$11 = 0ll;
            label$3221:;
            {
-            double vr$3754 = fb_Rnd( 0x1.p+0f );
-            double vr$3758 = fb_Rnd( 0x1.p+0f );
-            double vr$3763 = fb_Rnd( 0x1.p+0f );
-            fb_GfxPset( FGIMAGE$, (float)X$11, (float)Y$9, (uint32)((((((uint64)__builtin_nearbyint( vr$3754 * 0x1.FEp+7 )) << (16ll & 63ll)) | (((uint64)__builtin_nearbyint( vr$3758 * 0x1.FEp+7 )) << (8ll & 63ll))) | ((uint64)__builtin_nearbyint( vr$3763 * 0x1.FEp+7 ))) | 4278190080ull), 4, 0 );
+            double vr$3753 = fb_Rnd( 0x1.p+0f );
+            double vr$3759 = fb_Rnd( 0x1.p+0f );
+            double vr$3766 = fb_Rnd( 0x1.p+0f );
+            fb_GfxPset( FGIMAGE$, (float)X$11, (float)Y$9, (uint32)(((((int64)(uint32)(uint8)((int32)__builtin_nearbyint( vr$3753 * 0x1.FEp+7 )) << (16ll & 63ll)) | ((int64)(uint32)(uint8)((int32)__builtin_nearbyint( vr$3759 * 0x1.FEp+7 )) << (8ll & 63ll))) | (int64)(uint32)(uint8)((int32)__builtin_nearbyint( vr$3766 * 0x1.FEp+7 ))) | 4278190080ll), 4, 0 );
            }
            label$3219:;
            X$11 = X$11 + 1ll;
@@ -10612,14 +10608,14 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
            X$11 = 0ll;
            label$3229:;
            {
-            uint64 TMP$880$12;
+            uint32 TMP$880$12;
             if( ((X$11 + Y$9) % 2ll) != 0ll ) goto label$3230;
-            TMP$880$12 = 4294967295ull;
+            TMP$880$12 = 4294967295u;
             goto label$5983;
             label$3230:;
-            TMP$880$12 = 4278190080ull;
+            TMP$880$12 = 4278190080u;
             label$5983:;
-            fb_GfxLine( FGIMAGE$, (float)((double)(X$11 << (9ll & 63ll)) / 0x1.p+4), (float)((double)(Y$9 << (9ll & 63ll)) / 0x1.p+4), 0x1.Fp+4f, 0x1.Fp+4f, (uint32)TMP$880$12, 2, 65535u, 1 );
+            fb_GfxLine( FGIMAGE$, (float)((double)(X$11 << (9ll & 63ll)) / 0x1.p+4), (float)((double)(Y$9 << (9ll & 63ll)) / 0x1.p+4), 0x1.Fp+4f, 0x1.Fp+4f, TMP$880$12, 2, 65535u, 1 );
            }
            label$3227:;
            X$11 = X$11 + 1ll;
@@ -10634,10 +10630,10 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
          if( Y$9 <= 32ll ) goto label$3225;
          label$3224:;
         }
-        FBSTRING* vr$3786 = fb_StrAllocTempDescZEx( (uint8*)"FreeBASIC", 9ll );
-        fb_GfxDrawString( FGIMAGE$, 0x0p+0f, 0x0p+0f, 4, (FBSTRING*)vr$3786, 4294901760u, (void*)0ull, 0, (void*)0ull, (void*)0ull, (void*)0ull );
-        FBSTRING* vr$3787 = fb_StrAllocTempDescZEx( (uint8*)"Shadertoy.com", 13ll );
-        fb_GfxDrawString( FGIMAGE$, 0x1.8p+4f, 0x1.8p+4f, 4, (FBSTRING*)vr$3787, 4278255360u, (void*)0ull, 0, (void*)0ull, (void*)0ull, (void*)0ull );
+        FBSTRING* vr$3790 = fb_StrAllocTempDescZEx( (uint8*)"FreeBASIC", 9ll );
+        fb_GfxDrawString( FGIMAGE$, 0x0p+0f, 0x0p+0f, 4, (FBSTRING*)vr$3790, 4294901760u, (void*)0ull, 0, (void*)0ull, (void*)0ull, (void*)0ull );
+        FBSTRING* vr$3791 = fb_StrAllocTempDescZEx( (uint8*)"Shadertoy.com", 13ll );
+        fb_GfxDrawString( FGIMAGE$, 0x1.8p+4f, 0x1.8p+4f, 4, (FBSTRING*)vr$3791, 4278255360u, (void*)0ull, 0, (void*)0ull, (void*)0ull, (void*)0ull );
        }
        label$3212:;
       }
@@ -10705,8 +10701,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      label$3209:;
      label$3208:;
      int32 ICHANNEL0$5;
-     int32 vr$3801 = (GLGETUNIFORMLOCATION$)( *(uint32*)((uint8*)&SHADER$5 + 4ll), (uint8*)"iChannel0" );
-     ICHANNEL0$5 = vr$3801;
+     int32 vr$3805 = (GLGETUNIFORMLOCATION$)( *(uint32*)((uint8*)&SHADER$5 + 4ll), (uint8*)"iChannel0" );
+     ICHANNEL0$5 = vr$3805;
      if( (int64)ICHANNEL0$5 <= -1ll ) goto label$3241;
      {
       (GLUNIFORM1I$)( ICHANNEL0$5, 0 );
@@ -10716,20 +10712,20 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      label$3241:;
      label$3240:;
      int32 IGLOBALTIME$5;
-     int32 vr$3803 = (GLGETUNIFORMLOCATION$)( *(uint32*)((uint8*)&SHADER$5 + 4ll), (uint8*)"iGlobalTime" );
-     IGLOBALTIME$5 = vr$3803;
+     int32 vr$3807 = (GLGETUNIFORMLOCATION$)( *(uint32*)((uint8*)&SHADER$5 + 4ll), (uint8*)"iGlobalTime" );
+     IGLOBALTIME$5 = vr$3807;
      int32 ITIME$5;
-     int32 vr$3804 = (GLGETUNIFORMLOCATION$)( *(uint32*)((uint8*)&SHADER$5 + 4ll), (uint8*)"iTime" );
-     ITIME$5 = vr$3804;
+     int32 vr$3808 = (GLGETUNIFORMLOCATION$)( *(uint32*)((uint8*)&SHADER$5 + 4ll), (uint8*)"iTime" );
+     ITIME$5 = vr$3808;
      int32 IRESOLUTION$5;
-     int32 vr$3805 = (GLGETUNIFORMLOCATION$)( *(uint32*)((uint8*)&SHADER$5 + 4ll), (uint8*)"iResolution" );
-     IRESOLUTION$5 = vr$3805;
+     int32 vr$3809 = (GLGETUNIFORMLOCATION$)( *(uint32*)((uint8*)&SHADER$5 + 4ll), (uint8*)"iResolution" );
+     IRESOLUTION$5 = vr$3809;
      int32 IMOUSE$5;
-     int32 vr$3806 = (GLGETUNIFORMLOCATION$)( *(uint32*)((uint8*)&SHADER$5 + 4ll), (uint8*)"iMouse" );
-     IMOUSE$5 = vr$3806;
+     int32 vr$3810 = (GLGETUNIFORMLOCATION$)( *(uint32*)((uint8*)&SHADER$5 + 4ll), (uint8*)"iMouse" );
+     IMOUSE$5 = vr$3810;
      int32 IFRAME$5;
-     int32 vr$3807 = (GLGETUNIFORMLOCATION$)( *(uint32*)((uint8*)&SHADER$5 + 4ll), (uint8*)"iFrame" );
-     IFRAME$5 = vr$3807;
+     int32 vr$3811 = (GLGETUNIFORMLOCATION$)( *(uint32*)((uint8*)&SHADER$5 + 4ll), (uint8*)"iFrame" );
+     IFRAME$5 = vr$3811;
      if( (int64)IRESOLUTION$5 <= -1ll ) goto label$3243;
      {
       (GLUNIFORM3F$)( IRESOLUTION$5, *(float*)&V3$5, *(float*)((uint8*)&V3$5 + 4ll), *(float*)((uint8*)&V3$5 + 8ll) );
@@ -10754,19 +10750,19 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      double TRUNTIME$5;
      __builtin_memset( &TRUNTIME$5, 0, 8ll );
      double TSTART$5;
-     double vr$3815 = fb_Timer( );
-     TSTART$5 = vr$3815;
+     double vr$3819 = fb_Timer( );
+     TSTART$5 = vr$3819;
      double TNOW$5;
      __builtin_memset( &TNOW$5, 0, 8ll );
      double TLAST$5;
      TLAST$5 = TSTART$5;
      label$3244:;
-     FBSTRING* vr$3817 = fb_Inkey( );
-     int32 vr$3818 = fb_StrCompare( (void*)vr$3817, -1ll, (void*)"", 1ll );
-     if( (int64)vr$3818 != 0ll ) goto label$3245;
+     FBSTRING* vr$3821 = fb_Inkey( );
+     int32 vr$3822 = fb_StrCompare( (void*)vr$3821, -1ll, (void*)"", 1ll );
+     if( (int64)vr$3822 != 0ll ) goto label$3245;
      {
-      double vr$3820 = fb_Timer( );
-      TNOW$5 = vr$3820;
+      double vr$3824 = fb_Timer( );
+      TNOW$5 = vr$3824;
       TRUNTIME$5 = TNOW$5 - TSTART$5;
       if( (int64)ITIME$5 <= -1ll ) goto label$3247;
       {
@@ -10791,8 +10787,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
        int64 TMP$891$7;
        TMP$891$7 = 0ll;
        TMP$890$7 = 0ll;
-       int32 vr$3834 = fb_GetMouse64( (int64*)&MX$5, (int64*)&MY$5, &TMP$890$7, (int64*)&MB$5, &TMP$891$7 );
-       if( (int64)vr$3834 != 0ll ) goto label$3254;
+       int32 vr$3838 = fb_GetMouse64( (int64*)&MX$5, (int64*)&MY$5, &TMP$890$7, (int64*)&MB$5, &TMP$891$7 );
+       if( (int64)vr$3838 != 0ll ) goto label$3254;
        {
         int64 TMP$892$8;
         int64 TMP$893$8;
@@ -10830,16 +10826,16 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       {
        FBSTRING TMP$895$7;
        FBSTRING TMP$896$7;
-       double vr$3844 = fb_Timer( );
-       TNOW$5 = vr$3844;
+       double vr$3848 = fb_Timer( );
+       TNOW$5 = vr$3848;
        FPS$5 = ((int64)__builtin_nearbyint( 0x1.Ep+5 / (TNOW$5 - TLAST$5) ));
        TLAST$5 = TNOW$5;
-       FBSTRING* vr$3848 = fb_LongintToStr( FPS$5 );
+       FBSTRING* vr$3852 = fb_LongintToStr( FPS$5 );
        __builtin_memset( &TMP$895$7, 0, 24ll );
-       FBSTRING* vr$3851 = fb_StrConcat( &TMP$895$7, (void*)&FILENAME$, -1ll, (void*)" fps: ", 7ll );
+       FBSTRING* vr$3855 = fb_StrConcat( &TMP$895$7, (void*)&FILENAME$, -1ll, (void*)" fps: ", 7ll );
        __builtin_memset( &TMP$896$7, 0, 24ll );
-       FBSTRING* vr$3854 = fb_StrConcat( &TMP$896$7, (void*)vr$3851, -1ll, (void*)vr$3848, -1ll );
-       fb_GfxDrawString( (void*)0ull, 0x0p+0f, 0x0p+0f, -2147483644, (FBSTRING*)vr$3854, 0u, (void*)0ull, 0, (void*)0ull, (void*)0ull, (void*)0ull );
+       FBSTRING* vr$3858 = fb_StrConcat( &TMP$896$7, (void*)vr$3855, -1ll, (void*)vr$3852, -1ll );
+       fb_GfxDrawString( (void*)0ull, 0x0p+0f, 0x0p+0f, -2147483644, (FBSTRING*)vr$3858, 0u, (void*)0ull, 0, (void*)0ull, (void*)0ull, (void*)0ull );
       }
       label$3260:;
       label$3259:;
@@ -10866,16 +10862,16 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
     goto label$3201;
     label$3265:;
     {
-     FBSTRING* vr$3862 = fb_StrAllocTempDescZEx( (uint8*)"tmp.pov", 7ll );
-     fb_FileOpen( (FBSTRING*)vr$3862, 3u, 0u, 0u, 1, 0 );
-     FBSTRING* vr$3863 = fb_StrAllocTempDescZEx( (uint8*)"// Start of file", 16ll );
-     fb_PrintString( 1, (FBSTRING*)vr$3863, 1 );
+     FBSTRING* vr$3866 = fb_StrAllocTempDescZEx( (uint8*)"tmp.pov", 7ll );
+     fb_FileOpen( (FBSTRING*)vr$3866, 3u, 0u, 0u, 1, 0 );
+     FBSTRING* vr$3867 = fb_StrAllocTempDescZEx( (uint8*)"// Start of file", 16ll );
+     fb_PrintString( 1, (FBSTRING*)vr$3867, 1 );
     }
     goto label$3201;
     label$3266:;
     {
-     FBSTRING* vr$3864 = fb_StrAllocTempDescZEx( (uint8*)"// End of file", 14ll );
-     fb_PrintString( 1, (FBSTRING*)vr$3864, 1 );
+     FBSTRING* vr$3868 = fb_StrAllocTempDescZEx( (uint8*)"// End of file", 14ll );
+     fb_PrintString( 1, (FBSTRING*)vr$3868, 1 );
      fb_FileClose( 1 );
     }
     goto label$3201;
@@ -10885,25 +10881,25 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      FBSTRING TMP$905$5;
      FBSTRING TMP$908$5;
      FBSTRING TMP$909$5;
-     FBSTRING* vr$3865 = fb_StrAllocTempDescZEx( (uint8*)"povray -d -H600 -W800 tmp.pov", 29ll );
-     fb_Shell( (FBSTRING*)vr$3865 );
-     FBSTRING* vr$3866 = fb_StrAllocTempDescZEx( (uint8*)"convert tmp.png -w --o tmp.bmp", 30ll );
-     fb_Shell( (FBSTRING*)vr$3866 );
-     FBSTRING* vr$3868 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394888ll) );
+     FBSTRING* vr$3869 = fb_StrAllocTempDescZEx( (uint8*)"povray -d -H600 -W800 tmp.pov", 29ll );
+     fb_Shell( (FBSTRING*)vr$3869 );
+     FBSTRING* vr$3870 = fb_StrAllocTempDescZEx( (uint8*)"convert tmp.png -w --o tmp.bmp", 30ll );
+     fb_Shell( (FBSTRING*)vr$3870 );
+     FBSTRING* vr$3872 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394888ll) );
      __builtin_memset( &TMP$904$5, 0, 24ll );
-     FBSTRING* vr$3871 = fb_StrConcat( &TMP$904$5, (void*)"cp tmp.bmp ./vram/", 19ll, (void*)vr$3868, -1ll );
+     FBSTRING* vr$3875 = fb_StrConcat( &TMP$904$5, (void*)"cp tmp.bmp ./vram/", 19ll, (void*)vr$3872, -1ll );
      __builtin_memset( &TMP$905$5, 0, 24ll );
-     FBSTRING* vr$3874 = fb_StrConcat( &TMP$905$5, (void*)vr$3871, -1ll, (void*)".bmp", 5ll );
-     fb_Shell( (FBSTRING*)vr$3874 );
-     FBSTRING* vr$3875 = fb_StrAllocTempDescZEx( (uint8*)"rm tmp.pov tmp.png", 18ll );
-     fb_Shell( (FBSTRING*)vr$3875 );
+     FBSTRING* vr$3878 = fb_StrConcat( &TMP$905$5, (void*)vr$3875, -1ll, (void*)".bmp", 5ll );
+     fb_Shell( (FBSTRING*)vr$3878 );
+     FBSTRING* vr$3879 = fb_StrAllocTempDescZEx( (uint8*)"rm tmp.pov tmp.png", 18ll );
+     fb_Shell( (FBSTRING*)vr$3879 );
      fb_Cls( -65536 );
-     FBSTRING* vr$3877 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394888ll) );
+     FBSTRING* vr$3881 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394888ll) );
      __builtin_memset( &TMP$908$5, 0, 24ll );
-     FBSTRING* vr$3880 = fb_StrConcat( &TMP$908$5, (void*)"./vram/", 8ll, (void*)vr$3877, -1ll );
+     FBSTRING* vr$3884 = fb_StrConcat( &TMP$908$5, (void*)"./vram/", 8ll, (void*)vr$3881, -1ll );
      __builtin_memset( &TMP$909$5, 0, 24ll );
-     FBSTRING* vr$3883 = fb_StrConcat( &TMP$909$5, (void*)vr$3880, -1ll, (void*)".bmp", 5ll );
-     fb_GfxBload( (FBSTRING*)vr$3883, FGIMAGE$, (void*)0ull );
+     FBSTRING* vr$3887 = fb_StrConcat( &TMP$909$5, (void*)vr$3884, -1ll, (void*)".bmp", 5ll );
+     fb_GfxBload( (FBSTRING*)vr$3887, FGIMAGE$, (void*)0ull );
      fb_GfxPut( FGIMAGE$, 0x0p+0f, 0x0p+0f, (void*)RENDER$, -65536, -65536, -65536, -65536, 0, 1, (void*)&fb_hPutPSet, -1, (void*)0ull, (void*)0ull );
     }
     goto label$3201;
@@ -10924,12 +10920,12 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       {
        FBSTRING TMP$913$7;
        FBSTRING TMP$914$7;
-       FBSTRING* vr$3893 = fb_UIntToStr( (uint32)FRAME$6 );
+       FBSTRING* vr$3897 = fb_UIntToStr( (uint32)FRAME$6 );
        __builtin_memset( &TMP$913$7, 0, 24ll );
-       FBSTRING* vr$3896 = fb_StrConcat( &TMP$913$7, (void*)".\x5Cvram\x5C", 8ll, (void*)vr$3893, -1ll );
+       FBSTRING* vr$3900 = fb_StrConcat( &TMP$913$7, (void*)".\x5Cvram\x5C", 8ll, (void*)vr$3897, -1ll );
        __builtin_memset( &TMP$914$7, 0, 24ll );
-       FBSTRING* vr$3899 = fb_StrConcat( &TMP$914$7, (void*)vr$3896, -1ll, (void*)".bmp", 5ll );
-       fb_GfxBload( (FBSTRING*)vr$3899, RENDER$, (void*)0ull );
+       FBSTRING* vr$3903 = fb_StrConcat( &TMP$914$7, (void*)vr$3900, -1ll, (void*)".bmp", 5ll );
+       fb_GfxBload( (FBSTRING*)vr$3903, RENDER$, (void*)0ull );
        fb_SleepEx( 10, 1 );
        fb_GfxPut( FGIMAGE$, 0x0p+0f, 0x0p+0f, (void*)RENDER$, -65536, -65536, -65536, -65536, 0, 1, (void*)&fb_hPutPSet, -1, (void*)0ull, (void*)0ull );
       }
@@ -10949,1538 +10945,1538 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       goto label$3276;
       label$3277:;
       {
-       FBSTRING* vr$3907 = fb_StrAllocTempDescZEx( (uint8*)"a", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3907, 0 );
+       FBSTRING* vr$3911 = fb_StrAllocTempDescZEx( (uint8*)"a", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3911, 0 );
       }
       goto label$3275;
       label$3278:;
       {
-       FBSTRING* vr$3908 = fb_StrAllocTempDescZEx( (uint8*)"aa_level", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3908, 0 );
+       FBSTRING* vr$3912 = fb_StrAllocTempDescZEx( (uint8*)"aa_level", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3912, 0 );
       }
       goto label$3275;
       label$3279:;
       {
-       FBSTRING* vr$3909 = fb_StrAllocTempDescZEx( (uint8*)"aastep", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3909, 0 );
+       FBSTRING* vr$3913 = fb_StrAllocTempDescZEx( (uint8*)"aastep", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3913, 0 );
       }
       goto label$3275;
       label$3280:;
       {
-       FBSTRING* vr$3910 = fb_StrAllocTempDescZEx( (uint8*)"aa_threshold", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3910, 0 );
+       FBSTRING* vr$3914 = fb_StrAllocTempDescZEx( (uint8*)"aa_threshold", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3914, 0 );
       }
       goto label$3275;
       label$3281:;
       {
-       FBSTRING* vr$3911 = fb_StrAllocTempDescZEx( (uint8*)"abs", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3911, 0 );
+       FBSTRING* vr$3915 = fb_StrAllocTempDescZEx( (uint8*)"abs", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3915, 0 );
       }
       goto label$3275;
       label$3282:;
       {
-       FBSTRING* vr$3912 = fb_StrAllocTempDescZEx( (uint8*)"absolute", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3912, 0 );
+       FBSTRING* vr$3916 = fb_StrAllocTempDescZEx( (uint8*)"absolute", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3916, 0 );
       }
       goto label$3275;
       label$3283:;
       {
-       FBSTRING* vr$3913 = fb_StrAllocTempDescZEx( (uint8*)"absorption", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3913, 0 );
+       FBSTRING* vr$3917 = fb_StrAllocTempDescZEx( (uint8*)"absorption", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3917, 0 );
       }
       goto label$3275;
       label$3284:;
       {
-       FBSTRING* vr$3914 = fb_StrAllocTempDescZEx( (uint8*)"abstract", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3914, 0 );
+       FBSTRING* vr$3918 = fb_StrAllocTempDescZEx( (uint8*)"abstract", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3918, 0 );
       }
       goto label$3275;
       label$3285:;
       {
-       FBSTRING* vr$3915 = fb_StrAllocTempDescZEx( (uint8*)"accept", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3915, 0 );
+       FBSTRING* vr$3919 = fb_StrAllocTempDescZEx( (uint8*)"accept", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3919, 0 );
       }
       goto label$3275;
       label$3286:;
       {
-       FBSTRING* vr$3916 = fb_StrAllocTempDescZEx( (uint8*)"access", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3916, 0 );
+       FBSTRING* vr$3920 = fb_StrAllocTempDescZEx( (uint8*)"access", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3920, 0 );
       }
       goto label$3275;
       label$3287:;
       {
-       FBSTRING* vr$3917 = fb_StrAllocTempDescZEx( (uint8*)"accuracy", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3917, 0 );
+       FBSTRING* vr$3921 = fb_StrAllocTempDescZEx( (uint8*)"accuracy", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3921, 0 );
       }
       goto label$3275;
       label$3288:;
       {
-       FBSTRING* vr$3918 = fb_StrAllocTempDescZEx( (uint8*)"acos", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3918, 0 );
+       FBSTRING* vr$3922 = fb_StrAllocTempDescZEx( (uint8*)"acos", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3922, 0 );
       }
       goto label$3275;
       label$3289:;
       {
-       FBSTRING* vr$3919 = fb_StrAllocTempDescZEx( (uint8*)"acosh", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3919, 0 );
+       FBSTRING* vr$3923 = fb_StrAllocTempDescZEx( (uint8*)"acosh", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3923, 0 );
       }
       goto label$3275;
       label$3290:;
       {
-       FBSTRING* vr$3920 = fb_StrAllocTempDescZEx( (uint8*)"active", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3920, 0 );
+       FBSTRING* vr$3924 = fb_StrAllocTempDescZEx( (uint8*)"active", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3924, 0 );
       }
       goto label$3275;
       label$3291:;
       {
-       FBSTRING* vr$3921 = fb_StrAllocTempDescZEx( (uint8*)"adaptive", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3921, 0 );
+       FBSTRING* vr$3925 = fb_StrAllocTempDescZEx( (uint8*)"adaptive", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3925, 0 );
       }
       goto label$3275;
       label$3292:;
       {
-       FBSTRING* vr$3922 = fb_StrAllocTempDescZEx( (uint8*)"adc_bailout", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3922, 0 );
+       FBSTRING* vr$3926 = fb_StrAllocTempDescZEx( (uint8*)"adc_bailout", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3926, 0 );
       }
       goto label$3275;
       label$3293:;
       {
-       FBSTRING* vr$3923 = fb_StrAllocTempDescZEx( (uint8*)"add", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3923, 0 );
+       FBSTRING* vr$3927 = fb_StrAllocTempDescZEx( (uint8*)"add", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3927, 0 );
       }
       goto label$3275;
       label$3294:;
       {
-       FBSTRING* vr$3924 = fb_StrAllocTempDescZEx( (uint8*)"address", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3924, 0 );
+       FBSTRING* vr$3928 = fb_StrAllocTempDescZEx( (uint8*)"address", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3928, 0 );
       }
       goto label$3275;
       label$3295:;
       {
-       FBSTRING* vr$3925 = fb_StrAllocTempDescZEx( (uint8*)"advancing", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3925, 0 );
+       FBSTRING* vr$3929 = fb_StrAllocTempDescZEx( (uint8*)"advancing", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3929, 0 );
       }
       goto label$3275;
       label$3296:;
       {
-       FBSTRING* vr$3926 = fb_StrAllocTempDescZEx( (uint8*)"after", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3926, 0 );
+       FBSTRING* vr$3930 = fb_StrAllocTempDescZEx( (uint8*)"after", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3930, 0 );
       }
       goto label$3275;
       label$3297:;
       {
-       FBSTRING* vr$3927 = fb_StrAllocTempDescZEx( (uint8*)"agate", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3927, 0 );
+       FBSTRING* vr$3931 = fb_StrAllocTempDescZEx( (uint8*)"agate", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3931, 0 );
       }
       goto label$3275;
       label$3298:;
       {
-       FBSTRING* vr$3928 = fb_StrAllocTempDescZEx( (uint8*)"agate_turb", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3928, 0 );
+       FBSTRING* vr$3932 = fb_StrAllocTempDescZEx( (uint8*)"agate_turb", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3932, 0 );
       }
       goto label$3275;
       label$3299:;
       {
-       FBSTRING* vr$3929 = fb_StrAllocTempDescZEx( (uint8*)"alias", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3929, 0 );
+       FBSTRING* vr$3933 = fb_StrAllocTempDescZEx( (uint8*)"alias", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3933, 0 );
       }
       goto label$3275;
       label$3300:;
       {
-       FBSTRING* vr$3930 = fb_StrAllocTempDescZEx( (uint8*)"all", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3930, 0 );
+       FBSTRING* vr$3934 = fb_StrAllocTempDescZEx( (uint8*)"all", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3934, 0 );
       }
       goto label$3275;
       label$3301:;
       {
-       FBSTRING* vr$3931 = fb_StrAllocTempDescZEx( (uint8*)"all_intersections", 17ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3931, 0 );
+       FBSTRING* vr$3935 = fb_StrAllocTempDescZEx( (uint8*)"all_intersections", 17ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3935, 0 );
       }
       goto label$3275;
       label$3302:;
       {
-       FBSTRING* vr$3932 = fb_StrAllocTempDescZEx( (uint8*)"alpha", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3932, 0 );
+       FBSTRING* vr$3936 = fb_StrAllocTempDescZEx( (uint8*)"alpha", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3936, 0 );
       }
       goto label$3275;
       label$3303:;
       {
-       FBSTRING* vr$3933 = fb_StrAllocTempDescZEx( (uint8*)"alphabet", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3933, 0 );
+       FBSTRING* vr$3937 = fb_StrAllocTempDescZEx( (uint8*)"alphabet", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3937, 0 );
       }
       goto label$3275;
       label$3304:;
       {
-       FBSTRING* vr$3934 = fb_StrAllocTempDescZEx( (uint8*)"alphabetic", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3934, 0 );
+       FBSTRING* vr$3938 = fb_StrAllocTempDescZEx( (uint8*)"alphabetic", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3938, 0 );
       }
       goto label$3275;
       label$3305:;
       {
-       FBSTRING* vr$3935 = fb_StrAllocTempDescZEx( (uint8*)"alphabetic-lower", 16ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3935, 0 );
+       FBSTRING* vr$3939 = fb_StrAllocTempDescZEx( (uint8*)"alphabetic-lower", 16ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3939, 0 );
       }
       goto label$3275;
       label$3306:;
       {
-       FBSTRING* vr$3936 = fb_StrAllocTempDescZEx( (uint8*)"alphabetic-upper", 16ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3936, 0 );
+       FBSTRING* vr$3940 = fb_StrAllocTempDescZEx( (uint8*)"alphabetic-upper", 16ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3940, 0 );
       }
       goto label$3275;
       label$3307:;
       {
-       FBSTRING* vr$3937 = fb_StrAllocTempDescZEx( (uint8*)"alphanumeric", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3937, 0 );
+       FBSTRING* vr$3941 = fb_StrAllocTempDescZEx( (uint8*)"alphanumeric", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3941, 0 );
       }
       goto label$3275;
       label$3308:;
       {
-       FBSTRING* vr$3938 = fb_StrAllocTempDescZEx( (uint8*)"alphanumeric-edited", 19ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3938, 0 );
+       FBSTRING* vr$3942 = fb_StrAllocTempDescZEx( (uint8*)"alphanumeric-edited", 19ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3942, 0 );
       }
       goto label$3275;
       label$3309:;
       {
-       FBSTRING* vr$3939 = fb_StrAllocTempDescZEx( (uint8*)"also", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3939, 0 );
+       FBSTRING* vr$3943 = fb_StrAllocTempDescZEx( (uint8*)"also", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3943, 0 );
       }
       goto label$3275;
       label$3310:;
       {
-       FBSTRING* vr$3940 = fb_StrAllocTempDescZEx( (uint8*)"alter", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3940, 0 );
+       FBSTRING* vr$3944 = fb_StrAllocTempDescZEx( (uint8*)"alter", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3944, 0 );
       }
       goto label$3275;
       label$3311:;
       {
-       FBSTRING* vr$3941 = fb_StrAllocTempDescZEx( (uint8*)"alternate", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3941, 0 );
+       FBSTRING* vr$3945 = fb_StrAllocTempDescZEx( (uint8*)"alternate", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3945, 0 );
       }
       goto label$3275;
       label$3312:;
       {
-       FBSTRING* vr$3942 = fb_StrAllocTempDescZEx( (uint8*)"altitude", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3942, 0 );
+       FBSTRING* vr$3946 = fb_StrAllocTempDescZEx( (uint8*)"altitude", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3946, 0 );
       }
       goto label$3275;
       label$3313:;
       {
-       FBSTRING* vr$3943 = fb_StrAllocTempDescZEx( (uint8*)"always_sample", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3943, 0 );
+       FBSTRING* vr$3947 = fb_StrAllocTempDescZEx( (uint8*)"always_sample", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3947, 0 );
       }
       goto label$3275;
       label$3314:;
       {
-       FBSTRING* vr$3944 = fb_StrAllocTempDescZEx( (uint8*)"ambient", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3944, 0 );
+       FBSTRING* vr$3948 = fb_StrAllocTempDescZEx( (uint8*)"ambient", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3948, 0 );
       }
       goto label$3275;
       label$3315:;
       {
-       FBSTRING* vr$3945 = fb_StrAllocTempDescZEx( (uint8*)"ambient_light", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3945, 0 );
+       FBSTRING* vr$3949 = fb_StrAllocTempDescZEx( (uint8*)"ambient_light", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3949, 0 );
       }
       goto label$3275;
       label$3316:;
       {
-       FBSTRING* vr$3946 = fb_StrAllocTempDescZEx( (uint8*)"and", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3946, 0 );
+       FBSTRING* vr$3950 = fb_StrAllocTempDescZEx( (uint8*)"and", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3950, 0 );
       }
       goto label$3275;
       label$3317:;
       {
-       FBSTRING* vr$3947 = fb_StrAllocTempDescZEx( (uint8*)"and_bits", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3947, 0 );
+       FBSTRING* vr$3951 = fb_StrAllocTempDescZEx( (uint8*)"and_bits", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3951, 0 );
       }
       goto label$3275;
       label$3318:;
       {
-       FBSTRING* vr$3948 = fb_StrAllocTempDescZEx( (uint8*)"angle", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3948, 0 );
+       FBSTRING* vr$3952 = fb_StrAllocTempDescZEx( (uint8*)"angle", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3952, 0 );
       }
       goto label$3275;
       label$3319:;
       {
-       FBSTRING* vr$3949 = fb_StrAllocTempDescZEx( (uint8*)"any", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3949, 0 );
+       FBSTRING* vr$3953 = fb_StrAllocTempDescZEx( (uint8*)"any", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3953, 0 );
       }
       goto label$3275;
       label$3320:;
       {
-       FBSTRING* vr$3950 = fb_StrAllocTempDescZEx( (uint8*)"aperture", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3950, 0 );
+       FBSTRING* vr$3954 = fb_StrAllocTempDescZEx( (uint8*)"aperture", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3954, 0 );
       }
       goto label$3275;
       label$3321:;
       {
-       FBSTRING* vr$3951 = fb_StrAllocTempDescZEx( (uint8*)"append", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3951, 0 );
+       FBSTRING* vr$3955 = fb_StrAllocTempDescZEx( (uint8*)"append", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3955, 0 );
       }
       goto label$3275;
       label$3322:;
       {
-       FBSTRING* vr$3952 = fb_StrAllocTempDescZEx( (uint8*)"apply", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3952, 0 );
+       FBSTRING* vr$3956 = fb_StrAllocTempDescZEx( (uint8*)"apply", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3956, 0 );
       }
       goto label$3275;
       label$3323:;
       {
-       FBSTRING* vr$3953 = fb_StrAllocTempDescZEx( (uint8*)"arc_angle", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3953, 0 );
+       FBSTRING* vr$3957 = fb_StrAllocTempDescZEx( (uint8*)"arc_angle", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3957, 0 );
       }
       goto label$3275;
       label$3324:;
       {
-       FBSTRING* vr$3954 = fb_StrAllocTempDescZEx( (uint8*)"are", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3954, 0 );
+       FBSTRING* vr$3958 = fb_StrAllocTempDescZEx( (uint8*)"are", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3958, 0 );
       }
       goto label$3275;
       label$3325:;
       {
-       FBSTRING* vr$3955 = fb_StrAllocTempDescZEx( (uint8*)"area", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3955, 0 );
+       FBSTRING* vr$3959 = fb_StrAllocTempDescZEx( (uint8*)"area", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3959, 0 );
       }
       goto label$3275;
       label$3326:;
       {
-       FBSTRING* vr$3956 = fb_StrAllocTempDescZEx( (uint8*)"area_light", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3956, 0 );
+       FBSTRING* vr$3960 = fb_StrAllocTempDescZEx( (uint8*)"area_light", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3960, 0 );
       }
       goto label$3275;
       label$3327:;
       {
-       FBSTRING* vr$3957 = fb_StrAllocTempDescZEx( (uint8*)"areas", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3957, 0 );
+       FBSTRING* vr$3961 = fb_StrAllocTempDescZEx( (uint8*)"areas", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3961, 0 );
       }
       goto label$3275;
       label$3328:;
       {
-       FBSTRING* vr$3958 = fb_StrAllocTempDescZEx( (uint8*)"array", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3958, 0 );
+       FBSTRING* vr$3962 = fb_StrAllocTempDescZEx( (uint8*)"array", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3962, 0 );
       }
       goto label$3275;
       label$3329:;
       {
-       FBSTRING* vr$3959 = fb_StrAllocTempDescZEx( (uint8*)"arraylength", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3959, 0 );
+       FBSTRING* vr$3963 = fb_StrAllocTempDescZEx( (uint8*)"arraylength", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3963, 0 );
       }
       goto label$3275;
       label$3330:;
       {
-       FBSTRING* vr$3960 = fb_StrAllocTempDescZEx( (uint8*)"as", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3960, 0 );
+       FBSTRING* vr$3964 = fb_StrAllocTempDescZEx( (uint8*)"as", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3964, 0 );
       }
       goto label$3275;
       label$3331:;
       {
-       FBSTRING* vr$3961 = fb_StrAllocTempDescZEx( (uint8*)"asc", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3961, 0 );
+       FBSTRING* vr$3965 = fb_StrAllocTempDescZEx( (uint8*)"asc", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3965, 0 );
       }
       goto label$3275;
       label$3332:;
       {
-       FBSTRING* vr$3962 = fb_StrAllocTempDescZEx( (uint8*)"ascending", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3962, 0 );
+       FBSTRING* vr$3966 = fb_StrAllocTempDescZEx( (uint8*)"ascending", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3966, 0 );
       }
       goto label$3275;
       label$3333:;
       {
-       FBSTRING* vr$3963 = fb_StrAllocTempDescZEx( (uint8*)"ascii", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3963, 0 );
+       FBSTRING* vr$3967 = fb_StrAllocTempDescZEx( (uint8*)"ascii", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3967, 0 );
       }
       goto label$3275;
       label$3334:;
       {
-       FBSTRING* vr$3964 = fb_StrAllocTempDescZEx( (uint8*)"asin", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3964, 0 );
+       FBSTRING* vr$3968 = fb_StrAllocTempDescZEx( (uint8*)"asin", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3968, 0 );
       }
       goto label$3275;
       label$3335:;
       {
-       FBSTRING* vr$3965 = fb_StrAllocTempDescZEx( (uint8*)"asinh", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3965, 0 );
+       FBSTRING* vr$3969 = fb_StrAllocTempDescZEx( (uint8*)"asinh", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3969, 0 );
       }
       goto label$3275;
       label$3336:;
       {
-       FBSTRING* vr$3966 = fb_StrAllocTempDescZEx( (uint8*)"asm", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3966, 0 );
+       FBSTRING* vr$3970 = fb_StrAllocTempDescZEx( (uint8*)"asm", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3970, 0 );
       }
       goto label$3275;
       label$3337:;
       {
-       FBSTRING* vr$3967 = fb_StrAllocTempDescZEx( (uint8*)"assembler", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3967, 0 );
+       FBSTRING* vr$3971 = fb_StrAllocTempDescZEx( (uint8*)"assembler", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3971, 0 );
       }
       goto label$3275;
       label$3338:;
       {
-       FBSTRING* vr$3968 = fb_StrAllocTempDescZEx( (uint8*)"assert", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3968, 0 );
+       FBSTRING* vr$3972 = fb_StrAllocTempDescZEx( (uint8*)"assert", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3972, 0 );
       }
       goto label$3275;
       label$3339:;
       {
-       FBSTRING* vr$3969 = fb_StrAllocTempDescZEx( (uint8*)"assign", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3969, 0 );
+       FBSTRING* vr$3973 = fb_StrAllocTempDescZEx( (uint8*)"assign", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3973, 0 );
       }
       goto label$3275;
       label$3340:;
       {
-       FBSTRING* vr$3970 = fb_StrAllocTempDescZEx( (uint8*)"assumed_gamma", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3970, 0 );
+       FBSTRING* vr$3974 = fb_StrAllocTempDescZEx( (uint8*)"assumed_gamma", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3974, 0 );
       }
       goto label$3275;
       label$3341:;
       {
-       FBSTRING* vr$3971 = fb_StrAllocTempDescZEx( (uint8*)"async", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3971, 0 );
+       FBSTRING* vr$3975 = fb_StrAllocTempDescZEx( (uint8*)"async", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3975, 0 );
       }
       goto label$3275;
       label$3342:;
       {
-       FBSTRING* vr$3972 = fb_StrAllocTempDescZEx( (uint8*)"at", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3972, 0 );
+       FBSTRING* vr$3976 = fb_StrAllocTempDescZEx( (uint8*)"at", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3976, 0 );
       }
       goto label$3275;
       label$3343:;
       {
-       FBSTRING* vr$3973 = fb_StrAllocTempDescZEx( (uint8*)"atan", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3973, 0 );
+       FBSTRING* vr$3977 = fb_StrAllocTempDescZEx( (uint8*)"atan", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3977, 0 );
       }
       goto label$3275;
       label$3344:;
       {
-       FBSTRING* vr$3974 = fb_StrAllocTempDescZEx( (uint8*)"atan2", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3974, 0 );
+       FBSTRING* vr$3978 = fb_StrAllocTempDescZEx( (uint8*)"atan2", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3978, 0 );
       }
       goto label$3275;
       label$3345:;
       {
-       FBSTRING* vr$3975 = fb_StrAllocTempDescZEx( (uint8*)"atanh", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3975, 0 );
+       FBSTRING* vr$3979 = fb_StrAllocTempDescZEx( (uint8*)"atanh", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3979, 0 );
       }
       goto label$3275;
       label$3346:;
       {
-       FBSTRING* vr$3976 = fb_StrAllocTempDescZEx( (uint8*)"atn", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3976, 0 );
+       FBSTRING* vr$3980 = fb_StrAllocTempDescZEx( (uint8*)"atn", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3980, 0 );
       }
       goto label$3275;
       label$3347:;
       {
-       FBSTRING* vr$3977 = fb_StrAllocTempDescZEx( (uint8*)"attribute", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3977, 0 );
+       FBSTRING* vr$3981 = fb_StrAllocTempDescZEx( (uint8*)"attribute", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3981, 0 );
       }
       goto label$3275;
       label$3348:;
       {
-       FBSTRING* vr$3978 = fb_StrAllocTempDescZEx( (uint8*)"author", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3978, 0 );
+       FBSTRING* vr$3982 = fb_StrAllocTempDescZEx( (uint8*)"author", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3982, 0 );
       }
       goto label$3275;
       label$3349:;
       {
-       FBSTRING* vr$3979 = fb_StrAllocTempDescZEx( (uint8*)"auto", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3979, 0 );
+       FBSTRING* vr$3983 = fb_StrAllocTempDescZEx( (uint8*)"auto", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3983, 0 );
       }
       goto label$3275;
       label$3350:;
       {
-       FBSTRING* vr$3980 = fb_StrAllocTempDescZEx( (uint8*)"automatic", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3980, 0 );
+       FBSTRING* vr$3984 = fb_StrAllocTempDescZEx( (uint8*)"automatic", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3984, 0 );
       }
       goto label$3275;
       label$3351:;
       {
-       FBSTRING* vr$3981 = fb_StrAllocTempDescZEx( (uint8*)"autostop", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3981, 0 );
+       FBSTRING* vr$3985 = fb_StrAllocTempDescZEx( (uint8*)"autostop", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3985, 0 );
       }
       goto label$3275;
       label$3352:;
       {
-       FBSTRING* vr$3982 = fb_StrAllocTempDescZEx( (uint8*)"average", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3982, 0 );
+       FBSTRING* vr$3986 = fb_StrAllocTempDescZEx( (uint8*)"average", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3986, 0 );
       }
       goto label$3275;
       label$3353:;
       {
-       FBSTRING* vr$3983 = fb_StrAllocTempDescZEx( (uint8*)"avg", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3983, 0 );
+       FBSTRING* vr$3987 = fb_StrAllocTempDescZEx( (uint8*)"avg", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3987, 0 );
       }
       goto label$3275;
       label$3354:;
       {
-       FBSTRING* vr$3984 = fb_StrAllocTempDescZEx( (uint8*)"await", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3984, 0 );
+       FBSTRING* vr$3988 = fb_StrAllocTempDescZEx( (uint8*)"await", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3988, 0 );
       }
       goto label$3275;
       label$3355:;
       {
-       FBSTRING* vr$3985 = fb_StrAllocTempDescZEx( (uint8*)"b", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3985, 0 );
+       FBSTRING* vr$3989 = fb_StrAllocTempDescZEx( (uint8*)"b", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3989, 0 );
       }
       goto label$3275;
       label$3356:;
       {
-       FBSTRING* vr$3986 = fb_StrAllocTempDescZEx( (uint8*)"backfacing", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3986, 0 );
+       FBSTRING* vr$3990 = fb_StrAllocTempDescZEx( (uint8*)"backfacing", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3990, 0 );
       }
       goto label$3275;
       label$3357:;
       {
-       FBSTRING* vr$3987 = fb_StrAllocTempDescZEx( (uint8*)"background", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3987, 0 );
+       FBSTRING* vr$3991 = fb_StrAllocTempDescZEx( (uint8*)"background", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3991, 0 );
       }
       goto label$3275;
       label$3358:;
       {
-       FBSTRING* vr$3988 = fb_StrAllocTempDescZEx( (uint8*)"backspace", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3988, 0 );
+       FBSTRING* vr$3992 = fb_StrAllocTempDescZEx( (uint8*)"backspace", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3992, 0 );
       }
       goto label$3275;
       label$3359:;
       {
-       FBSTRING* vr$3989 = fb_StrAllocTempDescZEx( (uint8*)"basis", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3989, 0 );
+       FBSTRING* vr$3993 = fb_StrAllocTempDescZEx( (uint8*)"basis", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3993, 0 );
       }
       goto label$3275;
       label$3360:;
       {
-       FBSTRING* vr$3990 = fb_StrAllocTempDescZEx( (uint8*)"beep", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3990, 0 );
+       FBSTRING* vr$3994 = fb_StrAllocTempDescZEx( (uint8*)"beep", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3994, 0 );
       }
       goto label$3275;
       label$3361:;
       {
-       FBSTRING* vr$3991 = fb_StrAllocTempDescZEx( (uint8*)"before", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3991, 0 );
+       FBSTRING* vr$3995 = fb_StrAllocTempDescZEx( (uint8*)"before", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3995, 0 );
       }
       goto label$3275;
       label$3362:;
       {
-       FBSTRING* vr$3992 = fb_StrAllocTempDescZEx( (uint8*)"begin", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3992, 0 );
+       FBSTRING* vr$3996 = fb_StrAllocTempDescZEx( (uint8*)"begin", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3996, 0 );
       }
       goto label$3275;
       label$3363:;
       {
-       FBSTRING* vr$3993 = fb_StrAllocTempDescZEx( (uint8*)"beginning", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3993, 0 );
+       FBSTRING* vr$3997 = fb_StrAllocTempDescZEx( (uint8*)"beginning", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3997, 0 );
       }
       goto label$3275;
       label$3364:;
       {
-       FBSTRING* vr$3994 = fb_StrAllocTempDescZEx( (uint8*)"between", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3994, 0 );
+       FBSTRING* vr$3998 = fb_StrAllocTempDescZEx( (uint8*)"between", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3998, 0 );
       }
       goto label$3275;
       label$3365:;
       {
-       FBSTRING* vr$3995 = fb_StrAllocTempDescZEx( (uint8*)"bezier_spline", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3995, 0 );
+       FBSTRING* vr$3999 = fb_StrAllocTempDescZEx( (uint8*)"bezier_spline", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$3999, 0 );
       }
       goto label$3275;
       label$3366:;
       {
-       FBSTRING* vr$3996 = fb_StrAllocTempDescZEx( (uint8*)"bicubic_patch", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3996, 0 );
+       FBSTRING* vr$4000 = fb_StrAllocTempDescZEx( (uint8*)"bicubic_patch", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4000, 0 );
       }
       goto label$3275;
       label$3367:;
       {
-       FBSTRING* vr$3997 = fb_StrAllocTempDescZEx( (uint8*)"binary", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3997, 0 );
+       FBSTRING* vr$4001 = fb_StrAllocTempDescZEx( (uint8*)"binary", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4001, 0 );
       }
       goto label$3275;
       label$3368:;
       {
-       FBSTRING* vr$3998 = fb_StrAllocTempDescZEx( (uint8*)"bind", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3998, 0 );
+       FBSTRING* vr$4002 = fb_StrAllocTempDescZEx( (uint8*)"bind", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4002, 0 );
       }
       goto label$3275;
       label$3369:;
       {
-       FBSTRING* vr$3999 = fb_StrAllocTempDescZEx( (uint8*)"blackbody", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$3999, 0 );
+       FBSTRING* vr$4003 = fb_StrAllocTempDescZEx( (uint8*)"blackbody", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4003, 0 );
       }
       goto label$3275;
       label$3370:;
       {
-       FBSTRING* vr$4000 = fb_StrAllocTempDescZEx( (uint8*)"black_hole", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4000, 0 );
+       FBSTRING* vr$4004 = fb_StrAllocTempDescZEx( (uint8*)"black_hole", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4004, 0 );
       }
       goto label$3275;
       label$3371:;
       {
-       FBSTRING* vr$4001 = fb_StrAllocTempDescZEx( (uint8*)"blank", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4001, 0 );
+       FBSTRING* vr$4005 = fb_StrAllocTempDescZEx( (uint8*)"blank", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4005, 0 );
       }
       goto label$3275;
       label$3372:;
       {
-       FBSTRING* vr$4002 = fb_StrAllocTempDescZEx( (uint8*)"bload", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4002, 0 );
+       FBSTRING* vr$4006 = fb_StrAllocTempDescZEx( (uint8*)"bload", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4006, 0 );
       }
       goto label$3275;
       label$3373:;
       {
-       FBSTRING* vr$4003 = fb_StrAllocTempDescZEx( (uint8*)"blob", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4003, 0 );
+       FBSTRING* vr$4007 = fb_StrAllocTempDescZEx( (uint8*)"blob", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4007, 0 );
       }
       goto label$3275;
       label$3374:;
       {
-       FBSTRING* vr$4004 = fb_StrAllocTempDescZEx( (uint8*)"block", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4004, 0 );
+       FBSTRING* vr$4008 = fb_StrAllocTempDescZEx( (uint8*)"block", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4008, 0 );
       }
       goto label$3275;
       label$3375:;
       {
-       FBSTRING* vr$4005 = fb_StrAllocTempDescZEx( (uint8*)"blue", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4005, 0 );
+       FBSTRING* vr$4009 = fb_StrAllocTempDescZEx( (uint8*)"blue", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4009, 0 );
       }
       goto label$3275;
       label$3376:;
       {
-       FBSTRING* vr$4006 = fb_StrAllocTempDescZEx( (uint8*)"blur_samples", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4006, 0 );
+       FBSTRING* vr$4010 = fb_StrAllocTempDescZEx( (uint8*)"blur_samples", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4010, 0 );
       }
       goto label$3275;
       label$3377:;
       {
-       FBSTRING* vr$4007 = fb_StrAllocTempDescZEx( (uint8*)"bool", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4007, 0 );
+       FBSTRING* vr$4011 = fb_StrAllocTempDescZEx( (uint8*)"bool", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4011, 0 );
       }
       goto label$3275;
       label$3378:;
       {
-       FBSTRING* vr$4008 = fb_StrAllocTempDescZEx( (uint8*)"both", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4008, 0 );
+       FBSTRING* vr$4012 = fb_StrAllocTempDescZEx( (uint8*)"both", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4012, 0 );
       }
       goto label$3275;
       label$3379:;
       {
-       FBSTRING* vr$4009 = fb_StrAllocTempDescZEx( (uint8*)"bottom", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4009, 0 );
+       FBSTRING* vr$4013 = fb_StrAllocTempDescZEx( (uint8*)"bottom", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4013, 0 );
       }
       goto label$3275;
       label$3380:;
       {
-       FBSTRING* vr$4010 = fb_StrAllocTempDescZEx( (uint8*)"bounded_by", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4010, 0 );
+       FBSTRING* vr$4014 = fb_StrAllocTempDescZEx( (uint8*)"bounded_by", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4014, 0 );
       }
       goto label$3275;
       label$3381:;
       {
-       FBSTRING* vr$4011 = fb_StrAllocTempDescZEx( (uint8*)"box", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4011, 0 );
+       FBSTRING* vr$4015 = fb_StrAllocTempDescZEx( (uint8*)"box", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4015, 0 );
       }
       goto label$3275;
       label$3382:;
       {
-       FBSTRING* vr$4012 = fb_StrAllocTempDescZEx( (uint8*)"boxed", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4012, 0 );
+       FBSTRING* vr$4016 = fb_StrAllocTempDescZEx( (uint8*)"boxed", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4016, 0 );
       }
       goto label$3275;
       label$3383:;
       {
-       FBSTRING* vr$4013 = fb_StrAllocTempDescZEx( (uint8*)"bozo", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4013, 0 );
+       FBSTRING* vr$4017 = fb_StrAllocTempDescZEx( (uint8*)"bozo", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4017, 0 );
       }
       goto label$3275;
       label$3384:;
       {
-       FBSTRING* vr$4014 = fb_StrAllocTempDescZEx( (uint8*)"break", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4014, 0 );
+       FBSTRING* vr$4018 = fb_StrAllocTempDescZEx( (uint8*)"break", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4018, 0 );
       }
       goto label$3275;
       label$3385:;
       {
-       FBSTRING* vr$4015 = fb_StrAllocTempDescZEx( (uint8*)"brick", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4015, 0 );
+       FBSTRING* vr$4019 = fb_StrAllocTempDescZEx( (uint8*)"brick", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4019, 0 );
       }
       goto label$3275;
       label$3386:;
       {
-       FBSTRING* vr$4016 = fb_StrAllocTempDescZEx( (uint8*)"brick_size", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4016, 0 );
+       FBSTRING* vr$4020 = fb_StrAllocTempDescZEx( (uint8*)"brick_size", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4020, 0 );
       }
       goto label$3275;
       label$3387:;
       {
-       FBSTRING* vr$4017 = fb_StrAllocTempDescZEx( (uint8*)"brightness", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4017, 0 );
+       FBSTRING* vr$4021 = fb_StrAllocTempDescZEx( (uint8*)"brightness", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4021, 0 );
       }
       goto label$3275;
       label$3388:;
       {
-       FBSTRING* vr$4018 = fb_StrAllocTempDescZEx( (uint8*)"brilliance", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4018, 0 );
+       FBSTRING* vr$4022 = fb_StrAllocTempDescZEx( (uint8*)"brilliance", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4022, 0 );
       }
       goto label$3275;
       label$3389:;
       {
-       FBSTRING* vr$4019 = fb_StrAllocTempDescZEx( (uint8*)"bsave", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4019, 0 );
+       FBSTRING* vr$4023 = fb_StrAllocTempDescZEx( (uint8*)"bsave", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4023, 0 );
       }
       goto label$3275;
       label$3390:;
       {
-       FBSTRING* vr$4020 = fb_StrAllocTempDescZEx( (uint8*)"b_spline", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4020, 0 );
+       FBSTRING* vr$4024 = fb_StrAllocTempDescZEx( (uint8*)"b_spline", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4024, 0 );
       }
       goto label$3275;
       label$3391:;
       {
-       FBSTRING* vr$4021 = fb_StrAllocTempDescZEx( (uint8*)"bump", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4021, 0 );
+       FBSTRING* vr$4025 = fb_StrAllocTempDescZEx( (uint8*)"bump", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4025, 0 );
       }
       goto label$3275;
       label$3392:;
       {
-       FBSTRING* vr$4022 = fb_StrAllocTempDescZEx( (uint8*)"bump_map", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4022, 0 );
+       FBSTRING* vr$4026 = fb_StrAllocTempDescZEx( (uint8*)"bump_map", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4026, 0 );
       }
       goto label$3275;
       label$3393:;
       {
-       FBSTRING* vr$4023 = fb_StrAllocTempDescZEx( (uint8*)"bumps", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4023, 0 );
+       FBSTRING* vr$4027 = fb_StrAllocTempDescZEx( (uint8*)"bumps", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4027, 0 );
       }
       goto label$3275;
       label$3394:;
       {
-       FBSTRING* vr$4024 = fb_StrAllocTempDescZEx( (uint8*)"bump_size", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4024, 0 );
+       FBSTRING* vr$4028 = fb_StrAllocTempDescZEx( (uint8*)"bump_size", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4028, 0 );
       }
       goto label$3275;
       label$3395:;
       {
-       FBSTRING* vr$4025 = fb_StrAllocTempDescZEx( (uint8*)"bvec2", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4025, 0 );
+       FBSTRING* vr$4029 = fb_StrAllocTempDescZEx( (uint8*)"bvec2", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4029, 0 );
       }
       goto label$3275;
       label$3396:;
       {
-       FBSTRING* vr$4026 = fb_StrAllocTempDescZEx( (uint8*)"bvec3", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4026, 0 );
+       FBSTRING* vr$4030 = fb_StrAllocTempDescZEx( (uint8*)"bvec3", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4030, 0 );
       }
       goto label$3275;
       label$3397:;
       {
-       FBSTRING* vr$4027 = fb_StrAllocTempDescZEx( (uint8*)"bvec4", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4027, 0 );
+       FBSTRING* vr$4031 = fb_StrAllocTempDescZEx( (uint8*)"bvec4", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4031, 0 );
       }
       goto label$3275;
       label$3398:;
       {
-       FBSTRING* vr$4028 = fb_StrAllocTempDescZEx( (uint8*)"by", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4028, 0 );
+       FBSTRING* vr$4032 = fb_StrAllocTempDescZEx( (uint8*)"by", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4032, 0 );
       }
       goto label$3275;
       label$3399:;
       {
-       FBSTRING* vr$4029 = fb_StrAllocTempDescZEx( (uint8*)"byte", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4029, 0 );
+       FBSTRING* vr$4033 = fb_StrAllocTempDescZEx( (uint8*)"byte", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4033, 0 );
       }
       goto label$3275;
       label$3400:;
       {
-       FBSTRING* vr$4030 = fb_StrAllocTempDescZEx( (uint8*)"c", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4030, 0 );
+       FBSTRING* vr$4034 = fb_StrAllocTempDescZEx( (uint8*)"c", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4034, 0 );
       }
       goto label$3275;
       label$3401:;
       {
-       FBSTRING* vr$4031 = fb_StrAllocTempDescZEx( (uint8*)"cache", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4031, 0 );
+       FBSTRING* vr$4035 = fb_StrAllocTempDescZEx( (uint8*)"cache", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4035, 0 );
       }
       goto label$3275;
       label$3402:;
       {
-       FBSTRING* vr$4032 = fb_StrAllocTempDescZEx( (uint8*)"calculatenormal", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4032, 0 );
+       FBSTRING* vr$4036 = fb_StrAllocTempDescZEx( (uint8*)"calculatenormal", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4036, 0 );
       }
       goto label$3275;
       label$3403:;
       {
-       FBSTRING* vr$4033 = fb_StrAllocTempDescZEx( (uint8*)"call", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4033, 0 );
+       FBSTRING* vr$4037 = fb_StrAllocTempDescZEx( (uint8*)"call", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4037, 0 );
       }
       goto label$3275;
       label$3404:;
       {
-       FBSTRING* vr$4034 = fb_StrAllocTempDescZEx( (uint8*)"calls", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4034, 0 );
+       FBSTRING* vr$4038 = fb_StrAllocTempDescZEx( (uint8*)"calls", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4038, 0 );
       }
       goto label$3275;
       label$3405:;
       {
-       FBSTRING* vr$4035 = fb_StrAllocTempDescZEx( (uint8*)"camera", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4035, 0 );
+       FBSTRING* vr$4039 = fb_StrAllocTempDescZEx( (uint8*)"camera", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4039, 0 );
       }
       goto label$3275;
       label$3406:;
       {
-       FBSTRING* vr$4036 = fb_StrAllocTempDescZEx( (uint8*)"cancel", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4036, 0 );
+       FBSTRING* vr$4040 = fb_StrAllocTempDescZEx( (uint8*)"cancel", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4040, 0 );
       }
       goto label$3275;
       label$3407:;
       {
-       FBSTRING* vr$4037 = fb_StrAllocTempDescZEx( (uint8*)"cardinality", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4037, 0 );
+       FBSTRING* vr$4041 = fb_StrAllocTempDescZEx( (uint8*)"cardinality", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4041, 0 );
       }
       goto label$3275;
       label$3408:;
       {
-       FBSTRING* vr$4038 = fb_StrAllocTempDescZEx( (uint8*)"case", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4038, 0 );
+       FBSTRING* vr$4042 = fb_StrAllocTempDescZEx( (uint8*)"case", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4042, 0 );
       }
       goto label$3275;
       label$3409:;
       {
-       FBSTRING* vr$4039 = fb_StrAllocTempDescZEx( (uint8*)"cast", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4039, 0 );
+       FBSTRING* vr$4043 = fb_StrAllocTempDescZEx( (uint8*)"cast", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4043, 0 );
       }
       goto label$3275;
       label$3410:;
       {
-       FBSTRING* vr$4040 = fb_StrAllocTempDescZEx( (uint8*)"castnamespace", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4040, 0 );
+       FBSTRING* vr$4044 = fb_StrAllocTempDescZEx( (uint8*)"castnamespace", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4044, 0 );
       }
       goto label$3275;
       label$3411:;
       {
-       FBSTRING* vr$4041 = fb_StrAllocTempDescZEx( (uint8*)"caustics", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4041, 0 );
+       FBSTRING* vr$4045 = fb_StrAllocTempDescZEx( (uint8*)"caustics", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4045, 0 );
       }
       goto label$3275;
       label$3412:;
       {
-       FBSTRING* vr$4042 = fb_StrAllocTempDescZEx( (uint8*)"cbl", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4042, 0 );
+       FBSTRING* vr$4046 = fb_StrAllocTempDescZEx( (uint8*)"cbl", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4046, 0 );
       }
       goto label$3275;
       label$3413:;
       {
-       FBSTRING* vr$4043 = fb_StrAllocTempDescZEx( (uint8*)"cbrt", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4043, 0 );
+       FBSTRING* vr$4047 = fb_StrAllocTempDescZEx( (uint8*)"cbrt", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4047, 0 );
       }
       goto label$3275;
       label$3414:;
       {
-       FBSTRING* vr$4044 = fb_StrAllocTempDescZEx( (uint8*)"cd", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4044, 0 );
+       FBSTRING* vr$4048 = fb_StrAllocTempDescZEx( (uint8*)"cd", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4048, 0 );
       }
       goto label$3275;
       label$3415:;
       {
-       FBSTRING* vr$4045 = fb_StrAllocTempDescZEx( (uint8*)"cdbl", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4045, 0 );
+       FBSTRING* vr$4049 = fb_StrAllocTempDescZEx( (uint8*)"cdbl", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4049, 0 );
       }
       goto label$3275;
       label$3416:;
       {
-       FBSTRING* vr$4046 = fb_StrAllocTempDescZEx( (uint8*)"cdecl", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4046, 0 );
+       FBSTRING* vr$4050 = fb_StrAllocTempDescZEx( (uint8*)"cdecl", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4050, 0 );
       }
       goto label$3275;
       label$3417:;
       {
-       FBSTRING* vr$4047 = fb_StrAllocTempDescZEx( (uint8*)"ceil", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4047, 0 );
+       FBSTRING* vr$4051 = fb_StrAllocTempDescZEx( (uint8*)"ceil", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4051, 0 );
       }
       goto label$3275;
       label$3418:;
       {
-       FBSTRING* vr$4048 = fb_StrAllocTempDescZEx( (uint8*)"cellnoise", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4048, 0 );
+       FBSTRING* vr$4052 = fb_StrAllocTempDescZEx( (uint8*)"cellnoise", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4052, 0 );
       }
       goto label$3275;
       label$3419:;
       {
-       FBSTRING* vr$4049 = fb_StrAllocTempDescZEx( (uint8*)"cells", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4049, 0 );
+       FBSTRING* vr$4053 = fb_StrAllocTempDescZEx( (uint8*)"cells", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4053, 0 );
       }
       goto label$3275;
       label$3420:;
       {
-       FBSTRING* vr$4050 = fb_StrAllocTempDescZEx( (uint8*)"centroid", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4050, 0 );
+       FBSTRING* vr$4054 = fb_StrAllocTempDescZEx( (uint8*)"centroid", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4054, 0 );
       }
       goto label$3275;
       label$3421:;
       {
-       FBSTRING* vr$4051 = fb_StrAllocTempDescZEx( (uint8*)"cf", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4051, 0 );
+       FBSTRING* vr$4055 = fb_StrAllocTempDescZEx( (uint8*)"cf", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4055, 0 );
       }
       goto label$3275;
       label$3422:;
       {
-       FBSTRING* vr$4052 = fb_StrAllocTempDescZEx( (uint8*)"ch", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4052, 0 );
+       FBSTRING* vr$4056 = fb_StrAllocTempDescZEx( (uint8*)"ch", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4056, 0 );
       }
       goto label$3275;
       label$3423:;
       {
-       FBSTRING* vr$4053 = fb_StrAllocTempDescZEx( (uint8*)"chain", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4053, 0 );
+       FBSTRING* vr$4057 = fb_StrAllocTempDescZEx( (uint8*)"chain", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4057, 0 );
       }
       goto label$3275;
       label$3424:;
       {
-       FBSTRING* vr$4054 = fb_StrAllocTempDescZEx( (uint8*)"char", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4054, 0 );
+       FBSTRING* vr$4058 = fb_StrAllocTempDescZEx( (uint8*)"char", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4058, 0 );
       }
       goto label$3275;
       label$3425:;
       {
-       FBSTRING* vr$4055 = fb_StrAllocTempDescZEx( (uint8*)"character", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4055, 0 );
+       FBSTRING* vr$4059 = fb_StrAllocTempDescZEx( (uint8*)"character", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4059, 0 );
       }
       goto label$3275;
       label$3426:;
       {
-       FBSTRING* vr$4056 = fb_StrAllocTempDescZEx( (uint8*)"character_length", 16ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4056, 0 );
+       FBSTRING* vr$4060 = fb_StrAllocTempDescZEx( (uint8*)"character_length", 16ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4060, 0 );
       }
       goto label$3275;
       label$3427:;
       {
-       FBSTRING* vr$4057 = fb_StrAllocTempDescZEx( (uint8*)"character_length_b", 18ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4057, 0 );
+       FBSTRING* vr$4061 = fb_StrAllocTempDescZEx( (uint8*)"character_length_b", 18ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4061, 0 );
       }
       goto label$3275;
       label$3428:;
       {
-       FBSTRING* vr$4058 = fb_StrAllocTempDescZEx( (uint8*)"character_length_mb", 19ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4058, 0 );
+       FBSTRING* vr$4062 = fb_StrAllocTempDescZEx( (uint8*)"character_length_mb", 19ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4062, 0 );
       }
       goto label$3275;
       label$3429:;
       {
-       FBSTRING* vr$4059 = fb_StrAllocTempDescZEx( (uint8*)"characters", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4059, 0 );
+       FBSTRING* vr$4063 = fb_StrAllocTempDescZEx( (uint8*)"characters", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4063, 0 );
       }
       goto label$3275;
       label$3430:;
       {
-       FBSTRING* vr$4060 = fb_StrAllocTempDescZEx( (uint8*)"char_length", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4060, 0 );
+       FBSTRING* vr$4064 = fb_StrAllocTempDescZEx( (uint8*)"char_length", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4064, 0 );
       }
       goto label$3275;
       label$3431:;
       {
-       FBSTRING* vr$4061 = fb_StrAllocTempDescZEx( (uint8*)"char_length_b", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4061, 0 );
+       FBSTRING* vr$4065 = fb_StrAllocTempDescZEx( (uint8*)"char_length_b", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4065, 0 );
       }
       goto label$3275;
       label$3432:;
       {
-       FBSTRING* vr$4062 = fb_StrAllocTempDescZEx( (uint8*)"char_length_mb", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4062, 0 );
+       FBSTRING* vr$4066 = fb_StrAllocTempDescZEx( (uint8*)"char_length_mb", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4066, 0 );
       }
       goto label$3275;
       label$3433:;
       {
-       FBSTRING* vr$4063 = fb_StrAllocTempDescZEx( (uint8*)"charset", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4063, 0 );
+       FBSTRING* vr$4067 = fb_StrAllocTempDescZEx( (uint8*)"charset", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4067, 0 );
       }
       goto label$3275;
       label$3434:;
       {
-       FBSTRING* vr$4064 = fb_StrAllocTempDescZEx( (uint8*)"chdir", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4064, 0 );
+       FBSTRING* vr$4068 = fb_StrAllocTempDescZEx( (uint8*)"chdir", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4068, 0 );
       }
       goto label$3275;
       label$3435:;
       {
-       FBSTRING* vr$4065 = fb_StrAllocTempDescZEx( (uint8*)"check", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4065, 0 );
+       FBSTRING* vr$4069 = fb_StrAllocTempDescZEx( (uint8*)"check", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4069, 0 );
       }
       goto label$3275;
       label$3436:;
       {
-       FBSTRING* vr$4066 = fb_StrAllocTempDescZEx( (uint8*)"checker", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4066, 0 );
+       FBSTRING* vr$4070 = fb_StrAllocTempDescZEx( (uint8*)"checker", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4070, 0 );
       }
       goto label$3275;
       label$3437:;
       {
-       FBSTRING* vr$4067 = fb_StrAllocTempDescZEx( (uint8*)"chr", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4067, 0 );
+       FBSTRING* vr$4071 = fb_StrAllocTempDescZEx( (uint8*)"chr", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4071, 0 );
       }
       goto label$3275;
       label$3438:;
       {
-       FBSTRING* vr$4068 = fb_StrAllocTempDescZEx( (uint8*)"cint", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4068, 0 );
+       FBSTRING* vr$4072 = fb_StrAllocTempDescZEx( (uint8*)"cint", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4072, 0 );
       }
       goto label$3275;
       label$3439:;
       {
-       FBSTRING* vr$4069 = fb_StrAllocTempDescZEx( (uint8*)"circle", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4069, 0 );
+       FBSTRING* vr$4073 = fb_StrAllocTempDescZEx( (uint8*)"circle", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4073, 0 );
       }
       goto label$3275;
       label$3440:;
       {
-       FBSTRING* vr$4070 = fb_StrAllocTempDescZEx( (uint8*)"circular", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4070, 0 );
+       FBSTRING* vr$4074 = fb_StrAllocTempDescZEx( (uint8*)"circular", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4074, 0 );
       }
       goto label$3275;
       label$3441:;
       {
-       FBSTRING* vr$4071 = fb_StrAllocTempDescZEx( (uint8*)"clamp", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4071, 0 );
+       FBSTRING* vr$4075 = fb_StrAllocTempDescZEx( (uint8*)"clamp", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4075, 0 );
       }
       goto label$3275;
       label$3442:;
       {
-       FBSTRING* vr$4072 = fb_StrAllocTempDescZEx( (uint8*)"class", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4072, 0 );
+       FBSTRING* vr$4076 = fb_StrAllocTempDescZEx( (uint8*)"class", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4076, 0 );
       }
       goto label$3275;
       label$3443:;
       {
-       FBSTRING* vr$4073 = fb_StrAllocTempDescZEx( (uint8*)"class-id", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4073, 0 );
+       FBSTRING* vr$4077 = fb_StrAllocTempDescZEx( (uint8*)"class-id", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4077, 0 );
       }
       goto label$3275;
       label$3444:;
       {
-       FBSTRING* vr$4074 = fb_StrAllocTempDescZEx( (uint8*)"clear", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4074, 0 );
+       FBSTRING* vr$4078 = fb_StrAllocTempDescZEx( (uint8*)"clear", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4078, 0 );
       }
       goto label$3275;
       label$3445:;
       {
-       FBSTRING* vr$4075 = fb_StrAllocTempDescZEx( (uint8*)"clipped_by", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4075, 0 );
+       FBSTRING* vr$4079 = fb_StrAllocTempDescZEx( (uint8*)"clipped_by", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4079, 0 );
       }
       goto label$3275;
       label$3446:;
       {
-       FBSTRING* vr$4076 = fb_StrAllocTempDescZEx( (uint8*)"clock", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4076, 0 );
+       FBSTRING* vr$4080 = fb_StrAllocTempDescZEx( (uint8*)"clock", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4080, 0 );
       }
       goto label$3275;
       label$3447:;
       {
-       FBSTRING* vr$4077 = fb_StrAllocTempDescZEx( (uint8*)"clock_delta", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4077, 0 );
+       FBSTRING* vr$4081 = fb_StrAllocTempDescZEx( (uint8*)"clock_delta", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4081, 0 );
       }
       goto label$3275;
       label$3448:;
       {
-       FBSTRING* vr$4078 = fb_StrAllocTempDescZEx( (uint8*)"clock_on", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4078, 0 );
+       FBSTRING* vr$4082 = fb_StrAllocTempDescZEx( (uint8*)"clock_on", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4082, 0 );
       }
       goto label$3275;
       label$3449:;
       {
-       FBSTRING* vr$4079 = fb_StrAllocTempDescZEx( (uint8*)"clock-units", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4079, 0 );
+       FBSTRING* vr$4083 = fb_StrAllocTempDescZEx( (uint8*)"clock-units", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4083, 0 );
       }
       goto label$3275;
       label$3450:;
       {
-       FBSTRING* vr$4080 = fb_StrAllocTempDescZEx( (uint8*)"close", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4080, 0 );
+       FBSTRING* vr$4084 = fb_StrAllocTempDescZEx( (uint8*)"close", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4084, 0 );
       }
       goto label$3275;
       label$3451:;
       {
-       FBSTRING* vr$4081 = fb_StrAllocTempDescZEx( (uint8*)"closure", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4081, 0 );
+       FBSTRING* vr$4085 = fb_StrAllocTempDescZEx( (uint8*)"closure", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4085, 0 );
       }
       goto label$3275;
       label$3452:;
       {
-       FBSTRING* vr$4082 = fb_StrAllocTempDescZEx( (uint8*)"cls", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4082, 0 );
+       FBSTRING* vr$4086 = fb_StrAllocTempDescZEx( (uint8*)"cls", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4086, 0 );
       }
       goto label$3275;
       label$3453:;
       {
-       FBSTRING* vr$4083 = fb_StrAllocTempDescZEx( (uint8*)"cobol", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4083, 0 );
+       FBSTRING* vr$4087 = fb_StrAllocTempDescZEx( (uint8*)"cobol", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4087, 0 );
       }
       goto label$3275;
       label$3454:;
       {
-       FBSTRING* vr$4084 = fb_StrAllocTempDescZEx( (uint8*)"code", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4084, 0 );
+       FBSTRING* vr$4088 = fb_StrAllocTempDescZEx( (uint8*)"code", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4088, 0 );
       }
       goto label$3275;
       label$3455:;
       {
-       FBSTRING* vr$4085 = fb_StrAllocTempDescZEx( (uint8*)"code-set", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4085, 0 );
+       FBSTRING* vr$4089 = fb_StrAllocTempDescZEx( (uint8*)"code-set", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4089, 0 );
       }
       goto label$3275;
       label$3456:;
       {
-       FBSTRING* vr$4086 = fb_StrAllocTempDescZEx( (uint8*)"collating", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4086, 0 );
+       FBSTRING* vr$4090 = fb_StrAllocTempDescZEx( (uint8*)"collating", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4090, 0 );
       }
       goto label$3275;
       label$3457:;
       {
-       FBSTRING* vr$4087 = fb_StrAllocTempDescZEx( (uint8*)"collect", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4087, 0 );
+       FBSTRING* vr$4091 = fb_StrAllocTempDescZEx( (uint8*)"collect", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4091, 0 );
       }
       goto label$3275;
       label$3458:;
       {
-       FBSTRING* vr$4088 = fb_StrAllocTempDescZEx( (uint8*)"color", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4088, 0 );
+       FBSTRING* vr$4092 = fb_StrAllocTempDescZEx( (uint8*)"color", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4092, 0 );
       }
       goto label$3275;
       label$3459:;
       {
-       FBSTRING* vr$4089 = fb_StrAllocTempDescZEx( (uint8*)"color_map", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4089, 0 );
+       FBSTRING* vr$4093 = fb_StrAllocTempDescZEx( (uint8*)"color_map", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4093, 0 );
       }
       goto label$3275;
       label$3460:;
       {
-       FBSTRING* vr$4090 = fb_StrAllocTempDescZEx( (uint8*)"color.w", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4090, 0 );
+       FBSTRING* vr$4094 = fb_StrAllocTempDescZEx( (uint8*)"color.w", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4094, 0 );
       }
       goto label$3275;
       label$3461:;
       {
-       FBSTRING* vr$4091 = fb_StrAllocTempDescZEx( (uint8*)"colour", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4091, 0 );
+       FBSTRING* vr$4095 = fb_StrAllocTempDescZEx( (uint8*)"colour", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4095, 0 );
       }
       goto label$3275;
       label$3462:;
       {
-       FBSTRING* vr$4092 = fb_StrAllocTempDescZEx( (uint8*)"colour_map", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4092, 0 );
+       FBSTRING* vr$4096 = fb_StrAllocTempDescZEx( (uint8*)"colour_map", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4096, 0 );
       }
       goto label$3275;
       label$3463:;
       {
-       FBSTRING* vr$4093 = fb_StrAllocTempDescZEx( (uint8*)"column", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4093, 0 );
+       FBSTRING* vr$4097 = fb_StrAllocTempDescZEx( (uint8*)"column", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4097, 0 );
       }
       goto label$3275;
       label$3464:;
       {
-       FBSTRING* vr$4094 = fb_StrAllocTempDescZEx( (uint8*)"com", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4094, 0 );
+       FBSTRING* vr$4098 = fb_StrAllocTempDescZEx( (uint8*)"com", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4098, 0 );
       }
       goto label$3275;
       label$3465:;
       {
-       FBSTRING* vr$4095 = fb_StrAllocTempDescZEx( (uint8*)"comma", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4095, 0 );
+       FBSTRING* vr$4099 = fb_StrAllocTempDescZEx( (uint8*)"comma", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4099, 0 );
       }
       goto label$3275;
       label$3466:;
       {
-       FBSTRING* vr$4096 = fb_StrAllocTempDescZEx( (uint8*)"comment", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4096, 0 );
+       FBSTRING* vr$4100 = fb_StrAllocTempDescZEx( (uint8*)"comment", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4100, 0 );
       }
       goto label$3275;
       label$3467:;
       {
-       FBSTRING* vr$4097 = fb_StrAllocTempDescZEx( (uint8*)"commit", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4097, 0 );
+       FBSTRING* vr$4101 = fb_StrAllocTempDescZEx( (uint8*)"commit", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4101, 0 );
       }
       goto label$3275;
       label$3468:;
       {
-       FBSTRING* vr$4098 = fb_StrAllocTempDescZEx( (uint8*)"common", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4098, 0 );
+       FBSTRING* vr$4102 = fb_StrAllocTempDescZEx( (uint8*)"common", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4102, 0 );
       }
       goto label$3275;
       label$3469:;
       {
-       FBSTRING* vr$4099 = fb_StrAllocTempDescZEx( (uint8*)"communication", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4099, 0 );
+       FBSTRING* vr$4103 = fb_StrAllocTempDescZEx( (uint8*)"communication", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4103, 0 );
       }
       goto label$3275;
       label$3470:;
       {
-       FBSTRING* vr$4100 = fb_StrAllocTempDescZEx( (uint8*)"comp", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4100, 0 );
+       FBSTRING* vr$4104 = fb_StrAllocTempDescZEx( (uint8*)"comp", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4104, 0 );
       }
       goto label$3275;
       label$3471:;
       {
-       FBSTRING* vr$4101 = fb_StrAllocTempDescZEx( (uint8*)"comp-1", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4101, 0 );
+       FBSTRING* vr$4105 = fb_StrAllocTempDescZEx( (uint8*)"comp-1", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4105, 0 );
       }
       goto label$3275;
       label$3472:;
       {
-       FBSTRING* vr$4102 = fb_StrAllocTempDescZEx( (uint8*)"comp-2", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4102, 0 );
+       FBSTRING* vr$4106 = fb_StrAllocTempDescZEx( (uint8*)"comp-2", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4106, 0 );
       }
       goto label$3275;
       label$3473:;
       {
-       FBSTRING* vr$4103 = fb_StrAllocTempDescZEx( (uint8*)"comp-3", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4103, 0 );
+       FBSTRING* vr$4107 = fb_StrAllocTempDescZEx( (uint8*)"comp-3", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4107, 0 );
       }
       goto label$3275;
       label$3474:;
       {
-       FBSTRING* vr$4104 = fb_StrAllocTempDescZEx( (uint8*)"comp-4", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4104, 0 );
+       FBSTRING* vr$4108 = fb_StrAllocTempDescZEx( (uint8*)"comp-4", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4108, 0 );
       }
       goto label$3275;
       label$3475:;
       {
-       FBSTRING* vr$4105 = fb_StrAllocTempDescZEx( (uint8*)"comp-5", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4105, 0 );
+       FBSTRING* vr$4109 = fb_StrAllocTempDescZEx( (uint8*)"comp-5", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4109, 0 );
       }
       goto label$3275;
       label$3476:;
       {
-       FBSTRING* vr$4106 = fb_StrAllocTempDescZEx( (uint8*)"complex", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4106, 0 );
+       FBSTRING* vr$4110 = fb_StrAllocTempDescZEx( (uint8*)"complex", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4110, 0 );
       }
       goto label$3275;
       label$3477:;
       {
-       FBSTRING* vr$4107 = fb_StrAllocTempDescZEx( (uint8*)"component", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4107, 0 );
+       FBSTRING* vr$4111 = fb_StrAllocTempDescZEx( (uint8*)"component", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4111, 0 );
       }
       goto label$3275;
       label$3478:;
       {
-       FBSTRING* vr$4108 = fb_StrAllocTempDescZEx( (uint8*)"composite", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4108, 0 );
+       FBSTRING* vr$4112 = fb_StrAllocTempDescZEx( (uint8*)"composite", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4112, 0 );
       }
       goto label$3275;
       label$3479:;
       {
-       FBSTRING* vr$4109 = fb_StrAllocTempDescZEx( (uint8*)"computational", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4109, 0 );
+       FBSTRING* vr$4113 = fb_StrAllocTempDescZEx( (uint8*)"computational", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4113, 0 );
       }
       goto label$3275;
       label$3480:;
       {
-       FBSTRING* vr$4110 = fb_StrAllocTempDescZEx( (uint8*)"computational-1", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4110, 0 );
+       FBSTRING* vr$4114 = fb_StrAllocTempDescZEx( (uint8*)"computational-1", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4114, 0 );
       }
       goto label$3275;
       label$3481:;
       {
-       FBSTRING* vr$4111 = fb_StrAllocTempDescZEx( (uint8*)"computational-2", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4111, 0 );
+       FBSTRING* vr$4115 = fb_StrAllocTempDescZEx( (uint8*)"computational-2", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4115, 0 );
       }
       goto label$3275;
       label$3482:;
       {
-       FBSTRING* vr$4112 = fb_StrAllocTempDescZEx( (uint8*)"computational-3", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4112, 0 );
+       FBSTRING* vr$4116 = fb_StrAllocTempDescZEx( (uint8*)"computational-3", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4116, 0 );
       }
       goto label$3275;
       label$3483:;
       {
-       FBSTRING* vr$4113 = fb_StrAllocTempDescZEx( (uint8*)"computational-4", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4113, 0 );
+       FBSTRING* vr$4117 = fb_StrAllocTempDescZEx( (uint8*)"computational-4", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4117, 0 );
       }
       goto label$3275;
       label$3484:;
       {
-       FBSTRING* vr$4114 = fb_StrAllocTempDescZEx( (uint8*)"computational-5", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4114, 0 );
+       FBSTRING* vr$4118 = fb_StrAllocTempDescZEx( (uint8*)"computational-5", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4118, 0 );
       }
       goto label$3275;
       label$3485:;
       {
-       FBSTRING* vr$4115 = fb_StrAllocTempDescZEx( (uint8*)"compute", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4115, 0 );
+       FBSTRING* vr$4119 = fb_StrAllocTempDescZEx( (uint8*)"compute", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4119, 0 );
       }
       goto label$3275;
       label$3486:;
       {
-       FBSTRING* vr$4116 = fb_StrAllocTempDescZEx( (uint8*)"com-reg", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4116, 0 );
+       FBSTRING* vr$4120 = fb_StrAllocTempDescZEx( (uint8*)"com-reg", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4120, 0 );
       }
       goto label$3275;
       label$3487:;
       {
-       FBSTRING* vr$4117 = fb_StrAllocTempDescZEx( (uint8*)"concat", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4117, 0 );
+       FBSTRING* vr$4121 = fb_StrAllocTempDescZEx( (uint8*)"concat", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4121, 0 );
       }
       goto label$3275;
       label$3488:;
       {
-       FBSTRING* vr$4118 = fb_StrAllocTempDescZEx( (uint8*)"concatenate", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4118, 0 );
+       FBSTRING* vr$4122 = fb_StrAllocTempDescZEx( (uint8*)"concatenate", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4122, 0 );
       }
       goto label$3275;
       label$3489:;
       {
-       FBSTRING* vr$4119 = fb_StrAllocTempDescZEx( (uint8*)"cond", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4119, 0 );
+       FBSTRING* vr$4123 = fb_StrAllocTempDescZEx( (uint8*)"cond", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4123, 0 );
       }
       goto label$3275;
       label$3490:;
       {
-       FBSTRING* vr$4120 = fb_StrAllocTempDescZEx( (uint8*)"cone", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4120, 0 );
+       FBSTRING* vr$4124 = fb_StrAllocTempDescZEx( (uint8*)"cone", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4124, 0 );
       }
       goto label$3275;
       label$3491:;
       {
-       FBSTRING* vr$4121 = fb_StrAllocTempDescZEx( (uint8*)"confidence", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4121, 0 );
+       FBSTRING* vr$4125 = fb_StrAllocTempDescZEx( (uint8*)"confidence", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4125, 0 );
       }
       goto label$3275;
       label$3492:;
       {
-       FBSTRING* vr$4122 = fb_StrAllocTempDescZEx( (uint8*)"configuration", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4122, 0 );
+       FBSTRING* vr$4126 = fb_StrAllocTempDescZEx( (uint8*)"configuration", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4126, 0 );
       }
       goto label$3275;
       label$3493:;
       {
-       FBSTRING* vr$4123 = fb_StrAllocTempDescZEx( (uint8*)"conic_sweep", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4123, 0 );
+       FBSTRING* vr$4127 = fb_StrAllocTempDescZEx( (uint8*)"conic_sweep", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4127, 0 );
       }
       goto label$3275;
       label$3494:;
       {
-       FBSTRING* vr$4124 = fb_StrAllocTempDescZEx( (uint8*)"conserve_energy", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4124, 0 );
+       FBSTRING* vr$4128 = fb_StrAllocTempDescZEx( (uint8*)"conserve_energy", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4128, 0 );
       }
       goto label$3275;
       label$3495:;
       {
-       FBSTRING* vr$4125 = fb_StrAllocTempDescZEx( (uint8*)"const", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4125, 0 );
+       FBSTRING* vr$4129 = fb_StrAllocTempDescZEx( (uint8*)"const", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4129, 0 );
       }
       goto label$3275;
       label$3496:;
       {
-       FBSTRING* vr$4126 = fb_StrAllocTempDescZEx( (uint8*)"constref", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4126, 0 );
+       FBSTRING* vr$4130 = fb_StrAllocTempDescZEx( (uint8*)"constref", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4130, 0 );
       }
       goto label$3275;
       label$3497:;
       {
-       FBSTRING* vr$4127 = fb_StrAllocTempDescZEx( (uint8*)"constructor", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4127, 0 );
+       FBSTRING* vr$4131 = fb_StrAllocTempDescZEx( (uint8*)"constructor", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4131, 0 );
       }
       goto label$3275;
       label$3498:;
       {
-       FBSTRING* vr$4128 = fb_StrAllocTempDescZEx( (uint8*)"cont", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4128, 0 );
+       FBSTRING* vr$4132 = fb_StrAllocTempDescZEx( (uint8*)"cont", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4132, 0 );
       }
       goto label$3275;
       label$3499:;
       {
-       FBSTRING* vr$4129 = fb_StrAllocTempDescZEx( (uint8*)"contained_by", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4129, 0 );
+       FBSTRING* vr$4133 = fb_StrAllocTempDescZEx( (uint8*)"contained_by", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4133, 0 );
       }
       goto label$3275;
       label$3500:;
       {
-       FBSTRING* vr$4130 = fb_StrAllocTempDescZEx( (uint8*)"contains", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4130, 0 );
+       FBSTRING* vr$4134 = fb_StrAllocTempDescZEx( (uint8*)"contains", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4134, 0 );
       }
       goto label$3275;
       label$3501:;
       {
-       FBSTRING* vr$4131 = fb_StrAllocTempDescZEx( (uint8*)"content", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4131, 0 );
+       FBSTRING* vr$4135 = fb_StrAllocTempDescZEx( (uint8*)"content", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4135, 0 );
       }
       goto label$3275;
       label$3502:;
       {
-       FBSTRING* vr$4132 = fb_StrAllocTempDescZEx( (uint8*)"continue", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4132, 0 );
+       FBSTRING* vr$4136 = fb_StrAllocTempDescZEx( (uint8*)"continue", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4136, 0 );
       }
       goto label$3275;
       label$3503:;
       {
-       FBSTRING* vr$4133 = fb_StrAllocTempDescZEx( (uint8*)"control", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4133, 0 );
+       FBSTRING* vr$4137 = fb_StrAllocTempDescZEx( (uint8*)"control", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4137, 0 );
       }
       goto label$3275;
       label$3504:;
       {
-       FBSTRING* vr$4134 = fb_StrAllocTempDescZEx( (uint8*)"control0", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4134, 0 );
+       FBSTRING* vr$4138 = fb_StrAllocTempDescZEx( (uint8*)"control0", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4138, 0 );
       }
       goto label$3275;
       label$3505:;
       {
-       FBSTRING* vr$4135 = fb_StrAllocTempDescZEx( (uint8*)"control1", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4135, 0 );
+       FBSTRING* vr$4139 = fb_StrAllocTempDescZEx( (uint8*)"control1", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4139, 0 );
       }
       goto label$3275;
       label$3506:;
       {
-       FBSTRING* vr$4136 = fb_StrAllocTempDescZEx( (uint8*)"controls", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4136, 0 );
+       FBSTRING* vr$4140 = fb_StrAllocTempDescZEx( (uint8*)"controls", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4140, 0 );
       }
       goto label$3275;
       label$3507:;
       {
-       FBSTRING* vr$4137 = fb_StrAllocTempDescZEx( (uint8*)"converting", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4137, 0 );
+       FBSTRING* vr$4141 = fb_StrAllocTempDescZEx( (uint8*)"converting", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4141, 0 );
       }
       goto label$3275;
       label$3508:;
       {
-       FBSTRING* vr$4138 = fb_StrAllocTempDescZEx( (uint8*)"coords", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4138, 0 );
+       FBSTRING* vr$4142 = fb_StrAllocTempDescZEx( (uint8*)"coords", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4142, 0 );
       }
       goto label$3275;
       label$3509:;
       {
-       FBSTRING* vr$4139 = fb_StrAllocTempDescZEx( (uint8*)"corr", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4139, 0 );
+       FBSTRING* vr$4143 = fb_StrAllocTempDescZEx( (uint8*)"corr", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4143, 0 );
       }
       goto label$3275;
       label$3510:;
       {
-       FBSTRING* vr$4140 = fb_StrAllocTempDescZEx( (uint8*)"corresponding", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4140, 0 );
+       FBSTRING* vr$4144 = fb_StrAllocTempDescZEx( (uint8*)"corresponding", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4144, 0 );
       }
       goto label$3275;
       label$3511:;
       {
-       FBSTRING* vr$4141 = fb_StrAllocTempDescZEx( (uint8*)"cos", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4141, 0 );
+       FBSTRING* vr$4145 = fb_StrAllocTempDescZEx( (uint8*)"cos", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4145, 0 );
       }
       goto label$3275;
       label$3512:;
       {
-       FBSTRING* vr$4142 = fb_StrAllocTempDescZEx( (uint8*)"cosh", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4142, 0 );
+       FBSTRING* vr$4146 = fb_StrAllocTempDescZEx( (uint8*)"cosh", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4146, 0 );
       }
       goto label$3275;
       label$3513:;
       {
-       FBSTRING* vr$4143 = fb_StrAllocTempDescZEx( (uint8*)"count", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4143, 0 );
+       FBSTRING* vr$4147 = fb_StrAllocTempDescZEx( (uint8*)"count", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4147, 0 );
       }
       goto label$3275;
       label$3514:;
       {
-       FBSTRING* vr$4144 = fb_StrAllocTempDescZEx( (uint8*)"cppdecl", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4144, 0 );
+       FBSTRING* vr$4148 = fb_StrAllocTempDescZEx( (uint8*)"cppdecl", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4148, 0 );
       }
       goto label$3275;
       label$3515:;
       {
-       FBSTRING* vr$4145 = fb_StrAllocTempDescZEx( (uint8*)"crackle", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4145, 0 );
+       FBSTRING* vr$4149 = fb_StrAllocTempDescZEx( (uint8*)"crackle", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4149, 0 );
       }
       goto label$3275;
       label$3516:;
       {
-       FBSTRING* vr$4146 = fb_StrAllocTempDescZEx( (uint8*)"crand", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4146, 0 );
+       FBSTRING* vr$4150 = fb_StrAllocTempDescZEx( (uint8*)"crand", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4150, 0 );
       }
       goto label$3275;
       label$3517:;
       {
-       FBSTRING* vr$4147 = fb_StrAllocTempDescZEx( (uint8*)"cross", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4147, 0 );
+       FBSTRING* vr$4151 = fb_StrAllocTempDescZEx( (uint8*)"cross", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4151, 0 );
       }
       goto label$3275;
       label$3518:;
       {
-       FBSTRING* vr$4148 = fb_StrAllocTempDescZEx( (uint8*)"csng", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4148, 0 );
+       FBSTRING* vr$4152 = fb_StrAllocTempDescZEx( (uint8*)"csng", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4152, 0 );
       }
       goto label$3275;
       label$3519:;
       {
-       FBSTRING* vr$4149 = fb_StrAllocTempDescZEx( (uint8*)"csrlin", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4149, 0 );
+       FBSTRING* vr$4153 = fb_StrAllocTempDescZEx( (uint8*)"csrlin", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4153, 0 );
       }
       goto label$3275;
       label$3520:;
       {
-       FBSTRING* vr$4150 = fb_StrAllocTempDescZEx( (uint8*)"cube", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4150, 0 );
+       FBSTRING* vr$4154 = fb_StrAllocTempDescZEx( (uint8*)"cube", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4154, 0 );
       }
       goto label$3275;
       label$3521:;
       {
-       FBSTRING* vr$4151 = fb_StrAllocTempDescZEx( (uint8*)"cubic", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4151, 0 );
+       FBSTRING* vr$4155 = fb_StrAllocTempDescZEx( (uint8*)"cubic", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4155, 0 );
       }
       goto label$3275;
       label$3522:;
       {
-       FBSTRING* vr$4152 = fb_StrAllocTempDescZEx( (uint8*)"cubic_spline", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4152, 0 );
+       FBSTRING* vr$4156 = fb_StrAllocTempDescZEx( (uint8*)"cubic_spline", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4156, 0 );
       }
       goto label$3275;
       label$3523:;
       {
-       FBSTRING* vr$4153 = fb_StrAllocTempDescZEx( (uint8*)"cubic_wave", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4153, 0 );
+       FBSTRING* vr$4157 = fb_StrAllocTempDescZEx( (uint8*)"cubic_wave", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4157, 0 );
       }
       goto label$3275;
       label$3524:;
       {
-       FBSTRING* vr$4154 = fb_StrAllocTempDescZEx( (uint8*)"currency", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4154, 0 );
+       FBSTRING* vr$4158 = fb_StrAllocTempDescZEx( (uint8*)"currency", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4158, 0 );
       }
       goto label$3275;
       label$3525:;
       {
-       FBSTRING* vr$4155 = fb_StrAllocTempDescZEx( (uint8*)"current_date", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4155, 0 );
+       FBSTRING* vr$4159 = fb_StrAllocTempDescZEx( (uint8*)"current_date", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4159, 0 );
       }
       goto label$3275;
       label$3526:;
       {
-       FBSTRING* vr$4156 = fb_StrAllocTempDescZEx( (uint8*)"current_time", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4156, 0 );
+       FBSTRING* vr$4160 = fb_StrAllocTempDescZEx( (uint8*)"current_time", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4160, 0 );
       }
       goto label$3275;
       label$3527:;
       {
-       FBSTRING* vr$4157 = fb_StrAllocTempDescZEx( (uint8*)"current_timestamp", 17ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4157, 0 );
+       FBSTRING* vr$4161 = fb_StrAllocTempDescZEx( (uint8*)"current_timestamp", 17ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4161, 0 );
       }
       goto label$3275;
       label$3528:;
       {
-       FBSTRING* vr$4158 = fb_StrAllocTempDescZEx( (uint8*)"cursor", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4158, 0 );
+       FBSTRING* vr$4162 = fb_StrAllocTempDescZEx( (uint8*)"cursor", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4162, 0 );
       }
       goto label$3275;
       label$3529:;
       {
-       FBSTRING* vr$4159 = fb_StrAllocTempDescZEx( (uint8*)"cutaway_textures", 16ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4159, 0 );
+       FBSTRING* vr$4163 = fb_StrAllocTempDescZEx( (uint8*)"cutaway_textures", 16ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4163, 0 );
       }
       goto label$3275;
       label$3530:;
       {
-       FBSTRING* vr$4160 = fb_StrAllocTempDescZEx( (uint8*)"cvd", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4160, 0 );
+       FBSTRING* vr$4164 = fb_StrAllocTempDescZEx( (uint8*)"cvd", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4164, 0 );
       }
       goto label$3275;
       label$3531:;
       {
-       FBSTRING* vr$4161 = fb_StrAllocTempDescZEx( (uint8*)"cvi", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4161, 0 );
+       FBSTRING* vr$4165 = fb_StrAllocTempDescZEx( (uint8*)"cvi", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4165, 0 );
       }
       goto label$3275;
       label$3532:;
       {
-       FBSTRING* vr$4162 = fb_StrAllocTempDescZEx( (uint8*)"cvs", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4162, 0 );
+       FBSTRING* vr$4166 = fb_StrAllocTempDescZEx( (uint8*)"cvs", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4166, 0 );
       }
       goto label$3275;
       label$3276:;
@@ -12756,1538 +12752,1538 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       goto label$3535;
       label$3536:;
       {
-       FBSTRING* vr$4165 = fb_StrAllocTempDescZEx( (uint8*)"cylinder", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4165, 0 );
+       FBSTRING* vr$4169 = fb_StrAllocTempDescZEx( (uint8*)"cylinder", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4169, 0 );
       }
       goto label$3534;
       label$3537:;
       {
-       FBSTRING* vr$4166 = fb_StrAllocTempDescZEx( (uint8*)"cylindrical", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4166, 0 );
+       FBSTRING* vr$4170 = fb_StrAllocTempDescZEx( (uint8*)"cylindrical", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4170, 0 );
       }
       goto label$3534;
       label$3538:;
       {
-       FBSTRING* vr$4167 = fb_StrAllocTempDescZEx( (uint8*)"d", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4167, 0 );
+       FBSTRING* vr$4171 = fb_StrAllocTempDescZEx( (uint8*)"d", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4171, 0 );
       }
       goto label$3534;
       label$3539:;
       {
-       FBSTRING* vr$4168 = fb_StrAllocTempDescZEx( (uint8*)"data", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4168, 0 );
+       FBSTRING* vr$4172 = fb_StrAllocTempDescZEx( (uint8*)"data", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4172, 0 );
       }
       goto label$3534;
       label$3540:;
       {
-       FBSTRING* vr$4169 = fb_StrAllocTempDescZEx( (uint8*)"dataxel", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4169, 0 );
+       FBSTRING* vr$4173 = fb_StrAllocTempDescZEx( (uint8*)"dataxel", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4173, 0 );
       }
       goto label$3534;
       label$3541:;
       {
-       FBSTRING* vr$4170 = fb_StrAllocTempDescZEx( (uint8*)"date", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4170, 0 );
+       FBSTRING* vr$4174 = fb_StrAllocTempDescZEx( (uint8*)"date", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4174, 0 );
       }
       goto label$3534;
       label$3542:;
       {
-       FBSTRING* vr$4171 = fb_StrAllocTempDescZEx( (uint8*)"date-compiled", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4171, 0 );
+       FBSTRING* vr$4175 = fb_StrAllocTempDescZEx( (uint8*)"date-compiled", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4175, 0 );
       }
       goto label$3534;
       label$3543:;
       {
-       FBSTRING* vr$4172 = fb_StrAllocTempDescZEx( (uint8*)"date-written", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4172, 0 );
+       FBSTRING* vr$4176 = fb_StrAllocTempDescZEx( (uint8*)"date-written", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4176, 0 );
       }
       goto label$3534;
       label$3544:;
       {
-       FBSTRING* vr$4173 = fb_StrAllocTempDescZEx( (uint8*)"day", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4173, 0 );
+       FBSTRING* vr$4177 = fb_StrAllocTempDescZEx( (uint8*)"day", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4177, 0 );
       }
       goto label$3534;
       label$3545:;
       {
-       FBSTRING* vr$4174 = fb_StrAllocTempDescZEx( (uint8*)"day-of-week", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4174, 0 );
+       FBSTRING* vr$4178 = fb_StrAllocTempDescZEx( (uint8*)"day-of-week", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4178, 0 );
       }
       goto label$3534;
       label$3546:;
       {
-       FBSTRING* vr$4175 = fb_StrAllocTempDescZEx( (uint8*)"dbcs", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4175, 0 );
+       FBSTRING* vr$4179 = fb_StrAllocTempDescZEx( (uint8*)"dbcs", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4179, 0 );
       }
       goto label$3534;
       label$3547:;
       {
-       FBSTRING* vr$4176 = fb_StrAllocTempDescZEx( (uint8*)"dbms_in_memory", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4176, 0 );
+       FBSTRING* vr$4180 = fb_StrAllocTempDescZEx( (uint8*)"dbms_in_memory", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4180, 0 );
       }
       goto label$3534;
       label$3548:;
       {
-       FBSTRING* vr$4177 = fb_StrAllocTempDescZEx( (uint8*)"de", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4177, 0 );
+       FBSTRING* vr$4181 = fb_StrAllocTempDescZEx( (uint8*)"de", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4181, 0 );
       }
       goto label$3534;
       label$3549:;
       {
-       FBSTRING* vr$4178 = fb_StrAllocTempDescZEx( (uint8*)"debug", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4178, 0 );
+       FBSTRING* vr$4182 = fb_StrAllocTempDescZEx( (uint8*)"debug", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4182, 0 );
       }
       goto label$3534;
       label$3550:;
       {
-       FBSTRING* vr$4179 = fb_StrAllocTempDescZEx( (uint8*)"debug-contents", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4179, 0 );
+       FBSTRING* vr$4183 = fb_StrAllocTempDescZEx( (uint8*)"debug-contents", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4183, 0 );
       }
       goto label$3534;
       label$3551:;
       {
-       FBSTRING* vr$4180 = fb_StrAllocTempDescZEx( (uint8*)"debugging", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4180, 0 );
+       FBSTRING* vr$4184 = fb_StrAllocTempDescZEx( (uint8*)"debugging", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4184, 0 );
       }
       goto label$3534;
       label$3552:;
       {
-       FBSTRING* vr$4181 = fb_StrAllocTempDescZEx( (uint8*)"debug-item", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4181, 0 );
+       FBSTRING* vr$4185 = fb_StrAllocTempDescZEx( (uint8*)"debug-item", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4185, 0 );
       }
       goto label$3534;
       label$3553:;
       {
-       FBSTRING* vr$4182 = fb_StrAllocTempDescZEx( (uint8*)"debug-line", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4182, 0 );
+       FBSTRING* vr$4186 = fb_StrAllocTempDescZEx( (uint8*)"debug-line", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4186, 0 );
       }
       goto label$3534;
       label$3554:;
       {
-       FBSTRING* vr$4183 = fb_StrAllocTempDescZEx( (uint8*)"debug-name", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4183, 0 );
+       FBSTRING* vr$4187 = fb_StrAllocTempDescZEx( (uint8*)"debug-name", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4187, 0 );
       }
       goto label$3534;
       label$3555:;
       {
-       FBSTRING* vr$4184 = fb_StrAllocTempDescZEx( (uint8*)"debug-sub-1", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4184, 0 );
+       FBSTRING* vr$4188 = fb_StrAllocTempDescZEx( (uint8*)"debug-sub-1", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4188, 0 );
       }
       goto label$3534;
       label$3556:;
       {
-       FBSTRING* vr$4185 = fb_StrAllocTempDescZEx( (uint8*)"debug-sub-2", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4185, 0 );
+       FBSTRING* vr$4189 = fb_StrAllocTempDescZEx( (uint8*)"debug-sub-2", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4189, 0 );
       }
       goto label$3534;
       label$3557:;
       {
-       FBSTRING* vr$4186 = fb_StrAllocTempDescZEx( (uint8*)"debug-sub-3", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4186, 0 );
+       FBSTRING* vr$4190 = fb_StrAllocTempDescZEx( (uint8*)"debug-sub-3", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4190, 0 );
       }
       goto label$3534;
       label$3558:;
       {
-       FBSTRING* vr$4187 = fb_StrAllocTempDescZEx( (uint8*)"dec", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4187, 0 );
+       FBSTRING* vr$4191 = fb_StrAllocTempDescZEx( (uint8*)"dec", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4191, 0 );
       }
       goto label$3534;
       label$3559:;
       {
-       FBSTRING* vr$4188 = fb_StrAllocTempDescZEx( (uint8*)"decimal", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4188, 0 );
+       FBSTRING* vr$4192 = fb_StrAllocTempDescZEx( (uint8*)"decimal", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4192, 0 );
       }
       goto label$3534;
       label$3560:;
       {
-       FBSTRING* vr$4189 = fb_StrAllocTempDescZEx( (uint8*)"decimal-point", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4189, 0 );
+       FBSTRING* vr$4193 = fb_StrAllocTempDescZEx( (uint8*)"decimal-point", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4193, 0 );
       }
       goto label$3534;
       label$3561:;
       {
-       FBSTRING* vr$4190 = fb_StrAllocTempDescZEx( (uint8*)"declaratives", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4190, 0 );
+       FBSTRING* vr$4194 = fb_StrAllocTempDescZEx( (uint8*)"declaratives", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4194, 0 );
       }
       goto label$3534;
       label$3562:;
       {
-       FBSTRING* vr$4191 = fb_StrAllocTempDescZEx( (uint8*)"declare", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4191, 0 );
+       FBSTRING* vr$4195 = fb_StrAllocTempDescZEx( (uint8*)"declare", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4195, 0 );
       }
       goto label$3534;
       label$3563:;
       {
-       FBSTRING* vr$4192 = fb_StrAllocTempDescZEx( (uint8*)"decode", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4192, 0 );
+       FBSTRING* vr$4196 = fb_StrAllocTempDescZEx( (uint8*)"decode", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4196, 0 );
       }
       goto label$3534;
       label$3564:;
       {
-       FBSTRING* vr$4193 = fb_StrAllocTempDescZEx( (uint8*)"def", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4193, 0 );
+       FBSTRING* vr$4197 = fb_StrAllocTempDescZEx( (uint8*)"def", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4197, 0 );
       }
       goto label$3534;
       label$3565:;
       {
-       FBSTRING* vr$4194 = fb_StrAllocTempDescZEx( (uint8*)"default", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4194, 0 );
+       FBSTRING* vr$4198 = fb_StrAllocTempDescZEx( (uint8*)"default", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4198, 0 );
       }
       goto label$3534;
       label$3566:;
       {
-       FBSTRING* vr$4195 = fb_StrAllocTempDescZEx( (uint8*)"defdbl", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4195, 0 );
+       FBSTRING* vr$4199 = fb_StrAllocTempDescZEx( (uint8*)"defdbl", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4199, 0 );
       }
       goto label$3534;
       label$3567:;
       {
-       FBSTRING* vr$4196 = fb_StrAllocTempDescZEx( (uint8*)"define", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4196, 0 );
+       FBSTRING* vr$4200 = fb_StrAllocTempDescZEx( (uint8*)"define", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4200, 0 );
       }
       goto label$3534;
       label$3568:;
       {
-       FBSTRING* vr$4197 = fb_StrAllocTempDescZEx( (uint8*)"defined", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4197, 0 );
+       FBSTRING* vr$4201 = fb_StrAllocTempDescZEx( (uint8*)"defined", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4201, 0 );
       }
       goto label$3534;
       label$3569:;
       {
-       FBSTRING* vr$4198 = fb_StrAllocTempDescZEx( (uint8*)"defint", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4198, 0 );
+       FBSTRING* vr$4202 = fb_StrAllocTempDescZEx( (uint8*)"defint", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4202, 0 );
       }
       goto label$3534;
       label$3570:;
       {
-       FBSTRING* vr$4199 = fb_StrAllocTempDescZEx( (uint8*)"defsng", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4199, 0 );
+       FBSTRING* vr$4203 = fb_StrAllocTempDescZEx( (uint8*)"defsng", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4203, 0 );
       }
       goto label$3534;
       label$3571:;
       {
-       FBSTRING* vr$4200 = fb_StrAllocTempDescZEx( (uint8*)"defstr", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4200, 0 );
+       FBSTRING* vr$4204 = fb_StrAllocTempDescZEx( (uint8*)"defstr", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4204, 0 );
       }
       goto label$3534;
       label$3572:;
       {
-       FBSTRING* vr$4201 = fb_StrAllocTempDescZEx( (uint8*)"degrees", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4201, 0 );
+       FBSTRING* vr$4205 = fb_StrAllocTempDescZEx( (uint8*)"degrees", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4205, 0 );
       }
       goto label$3534;
       label$3573:;
       {
-       FBSTRING* vr$4202 = fb_StrAllocTempDescZEx( (uint8*)"delete", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4202, 0 );
+       FBSTRING* vr$4206 = fb_StrAllocTempDescZEx( (uint8*)"delete", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4206, 0 );
       }
       goto label$3534;
       label$3574:;
       {
-       FBSTRING* vr$4203 = fb_StrAllocTempDescZEx( (uint8*)"delimited", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4203, 0 );
+       FBSTRING* vr$4207 = fb_StrAllocTempDescZEx( (uint8*)"delimited", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4207, 0 );
       }
       goto label$3534;
       label$3575:;
       {
-       FBSTRING* vr$4204 = fb_StrAllocTempDescZEx( (uint8*)"delimiter", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4204, 0 );
+       FBSTRING* vr$4208 = fb_StrAllocTempDescZEx( (uint8*)"delimiter", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4208, 0 );
       }
       goto label$3534;
       label$3576:;
       {
-       FBSTRING* vr$4205 = fb_StrAllocTempDescZEx( (uint8*)"density", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4205, 0 );
+       FBSTRING* vr$4209 = fb_StrAllocTempDescZEx( (uint8*)"density", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4209, 0 );
       }
       goto label$3534;
       label$3577:;
       {
-       FBSTRING* vr$4206 = fb_StrAllocTempDescZEx( (uint8*)"density_file", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4206, 0 );
+       FBSTRING* vr$4210 = fb_StrAllocTempDescZEx( (uint8*)"density_file", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4210, 0 );
       }
       goto label$3534;
       label$3578:;
       {
-       FBSTRING* vr$4207 = fb_StrAllocTempDescZEx( (uint8*)"density_map", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4207, 0 );
+       FBSTRING* vr$4211 = fb_StrAllocTempDescZEx( (uint8*)"density_map", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4211, 0 );
       }
       goto label$3534;
       label$3579:;
       {
-       FBSTRING* vr$4208 = fb_StrAllocTempDescZEx( (uint8*)"dents", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4208, 0 );
+       FBSTRING* vr$4212 = fb_StrAllocTempDescZEx( (uint8*)"dents", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4212, 0 );
       }
       goto label$3534;
       label$3580:;
       {
-       FBSTRING* vr$4209 = fb_StrAllocTempDescZEx( (uint8*)"depending", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4209, 0 );
+       FBSTRING* vr$4213 = fb_StrAllocTempDescZEx( (uint8*)"depending", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4213, 0 );
       }
       goto label$3534;
       label$3581:;
       {
-       FBSTRING* vr$4210 = fb_StrAllocTempDescZEx( (uint8*)"desc", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4210, 0 );
+       FBSTRING* vr$4214 = fb_StrAllocTempDescZEx( (uint8*)"desc", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4214, 0 );
       }
       goto label$3534;
       label$3582:;
       {
-       FBSTRING* vr$4211 = fb_StrAllocTempDescZEx( (uint8*)"descending", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4211, 0 );
+       FBSTRING* vr$4215 = fb_StrAllocTempDescZEx( (uint8*)"descending", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4215, 0 );
       }
       goto label$3534;
       label$3583:;
       {
-       FBSTRING* vr$4212 = fb_StrAllocTempDescZEx( (uint8*)"destination", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4212, 0 );
+       FBSTRING* vr$4216 = fb_StrAllocTempDescZEx( (uint8*)"destination", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4216, 0 );
       }
       goto label$3534;
       label$3584:;
       {
-       FBSTRING* vr$4213 = fb_StrAllocTempDescZEx( (uint8*)"destructor", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4213, 0 );
+       FBSTRING* vr$4217 = fb_StrAllocTempDescZEx( (uint8*)"destructor", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4217, 0 );
       }
       goto label$3534;
       label$3585:;
       {
-       FBSTRING* vr$4214 = fb_StrAllocTempDescZEx( (uint8*)"detail", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4214, 0 );
+       FBSTRING* vr$4218 = fb_StrAllocTempDescZEx( (uint8*)"detail", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4218, 0 );
       }
       goto label$3534;
       label$3586:;
       {
-       FBSTRING* vr$4215 = fb_StrAllocTempDescZEx( (uint8*)"determinant", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4215, 0 );
+       FBSTRING* vr$4219 = fb_StrAllocTempDescZEx( (uint8*)"determinant", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4219, 0 );
       }
       goto label$3534;
       label$3587:;
       {
-       FBSTRING* vr$4216 = fb_StrAllocTempDescZEx( (uint8*)"df3", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4216, 0 );
+       FBSTRING* vr$4220 = fb_StrAllocTempDescZEx( (uint8*)"df3", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4220, 0 );
       }
       goto label$3534;
       label$3588:;
       {
-       FBSTRING* vr$4217 = fb_StrAllocTempDescZEx( (uint8*)"dict_find", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4217, 0 );
+       FBSTRING* vr$4221 = fb_StrAllocTempDescZEx( (uint8*)"dict_find", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4221, 0 );
       }
       goto label$3534;
       label$3589:;
       {
-       FBSTRING* vr$4218 = fb_StrAllocTempDescZEx( (uint8*)"dict_next", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4218, 0 );
+       FBSTRING* vr$4222 = fb_StrAllocTempDescZEx( (uint8*)"dict_next", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4222, 0 );
       }
       goto label$3534;
       label$3590:;
       {
-       FBSTRING* vr$4219 = fb_StrAllocTempDescZEx( (uint8*)"dict_value", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4219, 0 );
+       FBSTRING* vr$4223 = fb_StrAllocTempDescZEx( (uint8*)"dict_value", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4223, 0 );
       }
       goto label$3534;
       label$3591:;
       {
-       FBSTRING* vr$4220 = fb_StrAllocTempDescZEx( (uint8*)"difference", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4220, 0 );
+       FBSTRING* vr$4224 = fb_StrAllocTempDescZEx( (uint8*)"difference", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4224, 0 );
       }
       goto label$3534;
       label$3592:;
       {
-       FBSTRING* vr$4221 = fb_StrAllocTempDescZEx( (uint8*)"diffuse", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4221, 0 );
+       FBSTRING* vr$4225 = fb_StrAllocTempDescZEx( (uint8*)"diffuse", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4225, 0 );
       }
       goto label$3534;
       label$3593:;
       {
-       FBSTRING* vr$4222 = fb_StrAllocTempDescZEx( (uint8*)"dim", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4222, 0 );
+       FBSTRING* vr$4226 = fb_StrAllocTempDescZEx( (uint8*)"dim", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4226, 0 );
       }
       goto label$3534;
       label$3594:;
       {
-       FBSTRING* vr$4223 = fb_StrAllocTempDescZEx( (uint8*)"dimension", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4223, 0 );
+       FBSTRING* vr$4227 = fb_StrAllocTempDescZEx( (uint8*)"dimension", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4227, 0 );
       }
       goto label$3534;
       label$3595:;
       {
-       FBSTRING* vr$4224 = fb_StrAllocTempDescZEx( (uint8*)"dimensions", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4224, 0 );
+       FBSTRING* vr$4228 = fb_StrAllocTempDescZEx( (uint8*)"dimensions", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4228, 0 );
       }
       goto label$3534;
       label$3596:;
       {
-       FBSTRING* vr$4225 = fb_StrAllocTempDescZEx( (uint8*)"dimension_size", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4225, 0 );
+       FBSTRING* vr$4229 = fb_StrAllocTempDescZEx( (uint8*)"dimension_size", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4229, 0 );
       }
       goto label$3534;
       label$3597:;
       {
-       FBSTRING* vr$4226 = fb_StrAllocTempDescZEx( (uint8*)"direction", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4226, 0 );
+       FBSTRING* vr$4230 = fb_StrAllocTempDescZEx( (uint8*)"direction", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4230, 0 );
       }
       goto label$3534;
       label$3598:;
       {
-       FBSTRING* vr$4227 = fb_StrAllocTempDescZEx( (uint8*)"directive_error", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4227, 0 );
+       FBSTRING* vr$4231 = fb_StrAllocTempDescZEx( (uint8*)"directive_error", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4231, 0 );
       }
       goto label$3534;
       label$3599:;
       {
-       FBSTRING* vr$4228 = fb_StrAllocTempDescZEx( (uint8*)"disc", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4228, 0 );
+       FBSTRING* vr$4232 = fb_StrAllocTempDescZEx( (uint8*)"disc", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4232, 0 );
       }
       goto label$3534;
       label$3600:;
       {
-       FBSTRING* vr$4229 = fb_StrAllocTempDescZEx( (uint8*)"discard", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4229, 0 );
+       FBSTRING* vr$4233 = fb_StrAllocTempDescZEx( (uint8*)"discard", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4233, 0 );
       }
       goto label$3534;
       label$3601:;
       {
-       FBSTRING* vr$4230 = fb_StrAllocTempDescZEx( (uint8*)"dispersion", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4230, 0 );
+       FBSTRING* vr$4234 = fb_StrAllocTempDescZEx( (uint8*)"dispersion", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4234, 0 );
       }
       goto label$3534;
       label$3602:;
       {
-       FBSTRING* vr$4231 = fb_StrAllocTempDescZEx( (uint8*)"dispersion_samples", 18ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4231, 0 );
+       FBSTRING* vr$4235 = fb_StrAllocTempDescZEx( (uint8*)"dispersion_samples", 18ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4235, 0 );
       }
       goto label$3534;
       label$3603:;
       {
-       FBSTRING* vr$4232 = fb_StrAllocTempDescZEx( (uint8*)"displace", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4232, 0 );
+       FBSTRING* vr$4236 = fb_StrAllocTempDescZEx( (uint8*)"displace", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4236, 0 );
       }
       goto label$3534;
       label$3604:;
       {
-       FBSTRING* vr$4233 = fb_StrAllocTempDescZEx( (uint8*)"display", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4233, 0 );
+       FBSTRING* vr$4237 = fb_StrAllocTempDescZEx( (uint8*)"display", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4237, 0 );
       }
       goto label$3534;
       label$3605:;
       {
-       FBSTRING* vr$4234 = fb_StrAllocTempDescZEx( (uint8*)"display-1", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4234, 0 );
+       FBSTRING* vr$4238 = fb_StrAllocTempDescZEx( (uint8*)"display-1", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4238, 0 );
       }
       goto label$3534;
       label$3606:;
       {
-       FBSTRING* vr$4235 = fb_StrAllocTempDescZEx( (uint8*)"dispose", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4235, 0 );
+       FBSTRING* vr$4239 = fb_StrAllocTempDescZEx( (uint8*)"dispose", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4239, 0 );
       }
       goto label$3534;
       label$3607:;
       {
-       FBSTRING* vr$4236 = fb_StrAllocTempDescZEx( (uint8*)"distance", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4236, 0 );
+       FBSTRING* vr$4240 = fb_StrAllocTempDescZEx( (uint8*)"distance", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4240, 0 );
       }
       goto label$3534;
       label$3608:;
       {
-       FBSTRING* vr$4237 = fb_StrAllocTempDescZEx( (uint8*)"dist_exp", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4237, 0 );
+       FBSTRING* vr$4241 = fb_StrAllocTempDescZEx( (uint8*)"dist_exp", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4241, 0 );
       }
       goto label$3534;
       label$3609:;
       {
-       FBSTRING* vr$4238 = fb_StrAllocTempDescZEx( (uint8*)"distinct", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4238, 0 );
+       FBSTRING* vr$4242 = fb_StrAllocTempDescZEx( (uint8*)"distinct", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4242, 0 );
       }
       goto label$3534;
       label$3610:;
       {
-       FBSTRING* vr$4239 = fb_StrAllocTempDescZEx( (uint8*)"div", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4239, 0 );
+       FBSTRING* vr$4243 = fb_StrAllocTempDescZEx( (uint8*)"div", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4243, 0 );
       }
       goto label$3534;
       label$3611:;
       {
-       FBSTRING* vr$4240 = fb_StrAllocTempDescZEx( (uint8*)"divide", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4240, 0 );
+       FBSTRING* vr$4244 = fb_StrAllocTempDescZEx( (uint8*)"divide", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4244, 0 );
       }
       goto label$3534;
       label$3612:;
       {
-       FBSTRING* vr$4241 = fb_StrAllocTempDescZEx( (uint8*)"division", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4241, 0 );
+       FBSTRING* vr$4245 = fb_StrAllocTempDescZEx( (uint8*)"division", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4245, 0 );
       }
       goto label$3534;
       label$3613:;
       {
-       FBSTRING* vr$4242 = fb_StrAllocTempDescZEx( (uint8*)"do", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4242, 0 );
+       FBSTRING* vr$4246 = fb_StrAllocTempDescZEx( (uint8*)"do", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4246, 0 );
       }
       goto label$3534;
       label$3614:;
       {
-       FBSTRING* vr$4243 = fb_StrAllocTempDescZEx( (uint8*)"dot", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4243, 0 );
+       FBSTRING* vr$4247 = fb_StrAllocTempDescZEx( (uint8*)"dot", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4247, 0 );
       }
       goto label$3534;
       label$3615:;
       {
-       FBSTRING* vr$4244 = fb_StrAllocTempDescZEx( (uint8*)"double", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4244, 0 );
+       FBSTRING* vr$4248 = fb_StrAllocTempDescZEx( (uint8*)"double", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4248, 0 );
       }
       goto label$3534;
       label$3616:;
       {
-       FBSTRING* vr$4245 = fb_StrAllocTempDescZEx( (uint8*)"doublegreatethan", 16ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4245, 0 );
+       FBSTRING* vr$4249 = fb_StrAllocTempDescZEx( (uint8*)"doublegreatethan", 16ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4249, 0 );
       }
       goto label$3534;
       label$3617:;
       {
-       FBSTRING* vr$4246 = fb_StrAllocTempDescZEx( (uint8*)"double_illuminate", 17ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4246, 0 );
+       FBSTRING* vr$4250 = fb_StrAllocTempDescZEx( (uint8*)"double_illuminate", 17ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4250, 0 );
       }
       goto label$3534;
       label$3618:;
       {
-       FBSTRING* vr$4247 = fb_StrAllocTempDescZEx( (uint8*)"down", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4247, 0 );
+       FBSTRING* vr$4251 = fb_StrAllocTempDescZEx( (uint8*)"down", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4251, 0 );
       }
       goto label$3534;
       label$3619:;
       {
-       FBSTRING* vr$4248 = fb_StrAllocTempDescZEx( (uint8*)"downto", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4248, 0 );
+       FBSTRING* vr$4252 = fb_StrAllocTempDescZEx( (uint8*)"downto", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4252, 0 );
       }
       goto label$3534;
       label$3620:;
       {
-       FBSTRING* vr$4249 = fb_StrAllocTempDescZEx( (uint8*)"draw", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4249, 0 );
+       FBSTRING* vr$4253 = fb_StrAllocTempDescZEx( (uint8*)"draw", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4253, 0 );
       }
       goto label$3534;
       label$3621:;
       {
-       FBSTRING* vr$4250 = fb_StrAllocTempDescZEx( (uint8*)"duplicates", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4250, 0 );
+       FBSTRING* vr$4254 = fb_StrAllocTempDescZEx( (uint8*)"duplicates", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4254, 0 );
       }
       goto label$3534;
       label$3622:;
       {
-       FBSTRING* vr$4251 = fb_StrAllocTempDescZEx( (uint8*)"dvec2", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4251, 0 );
+       FBSTRING* vr$4255 = fb_StrAllocTempDescZEx( (uint8*)"dvec2", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4255, 0 );
       }
       goto label$3534;
       label$3623:;
       {
-       FBSTRING* vr$4252 = fb_StrAllocTempDescZEx( (uint8*)"dvec3", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4252, 0 );
+       FBSTRING* vr$4256 = fb_StrAllocTempDescZEx( (uint8*)"dvec3", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4256, 0 );
       }
       goto label$3534;
       label$3624:;
       {
-       FBSTRING* vr$4253 = fb_StrAllocTempDescZEx( (uint8*)"dvec4", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4253, 0 );
+       FBSTRING* vr$4257 = fb_StrAllocTempDescZEx( (uint8*)"dvec4", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4257, 0 );
       }
       goto label$3534;
       label$3625:;
       {
-       FBSTRING* vr$4254 = fb_StrAllocTempDescZEx( (uint8*)"dx", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4254, 0 );
+       FBSTRING* vr$4258 = fb_StrAllocTempDescZEx( (uint8*)"dx", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4258, 0 );
       }
       goto label$3534;
       label$3626:;
       {
-       FBSTRING* vr$4255 = fb_StrAllocTempDescZEx( (uint8*)"dy", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4255, 0 );
+       FBSTRING* vr$4259 = fb_StrAllocTempDescZEx( (uint8*)"dy", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4259, 0 );
       }
       goto label$3534;
       label$3627:;
       {
-       FBSTRING* vr$4256 = fb_StrAllocTempDescZEx( (uint8*)"dynamic", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4256, 0 );
+       FBSTRING* vr$4260 = fb_StrAllocTempDescZEx( (uint8*)"dynamic", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4260, 0 );
       }
       goto label$3534;
       label$3628:;
       {
-       FBSTRING* vr$4257 = fb_StrAllocTempDescZEx( (uint8*)"dz", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4257, 0 );
+       FBSTRING* vr$4261 = fb_StrAllocTempDescZEx( (uint8*)"dz", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4261, 0 );
       }
       goto label$3534;
       label$3629:;
       {
-       FBSTRING* vr$4258 = fb_StrAllocTempDescZEx( (uint8*)"e", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4258, 0 );
+       FBSTRING* vr$4262 = fb_StrAllocTempDescZEx( (uint8*)"e", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4262, 0 );
       }
       goto label$3534;
       label$3630:;
       {
-       FBSTRING* vr$4259 = fb_StrAllocTempDescZEx( (uint8*)"eccentricity", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4259, 0 );
+       FBSTRING* vr$4263 = fb_StrAllocTempDescZEx( (uint8*)"eccentricity", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4263, 0 );
       }
       goto label$3534;
       label$3631:;
       {
-       FBSTRING* vr$4260 = fb_StrAllocTempDescZEx( (uint8*)"edit", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4260, 0 );
+       FBSTRING* vr$4264 = fb_StrAllocTempDescZEx( (uint8*)"edit", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4264, 0 );
       }
       goto label$3534;
       label$3632:;
       {
-       FBSTRING* vr$4261 = fb_StrAllocTempDescZEx( (uint8*)"egcs", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4261, 0 );
+       FBSTRING* vr$4265 = fb_StrAllocTempDescZEx( (uint8*)"egcs", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4265, 0 );
       }
       goto label$3534;
       label$3633:;
       {
-       FBSTRING* vr$4262 = fb_StrAllocTempDescZEx( (uint8*)"egi", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4262, 0 );
+       FBSTRING* vr$4266 = fb_StrAllocTempDescZEx( (uint8*)"egi", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4266, 0 );
       }
       goto label$3534;
       label$3634:;
       {
-       FBSTRING* vr$4263 = fb_StrAllocTempDescZEx( (uint8*)"eject", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4263, 0 );
+       FBSTRING* vr$4267 = fb_StrAllocTempDescZEx( (uint8*)"eject", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4267, 0 );
       }
       goto label$3534;
       label$3635:;
       {
-       FBSTRING* vr$4264 = fb_StrAllocTempDescZEx( (uint8*)"elif", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4264, 0 );
+       FBSTRING* vr$4268 = fb_StrAllocTempDescZEx( (uint8*)"elif", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4268, 0 );
       }
       goto label$3534;
       label$3636:;
       {
-       FBSTRING* vr$4265 = fb_StrAllocTempDescZEx( (uint8*)"else", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4265, 0 );
+       FBSTRING* vr$4269 = fb_StrAllocTempDescZEx( (uint8*)"else", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4269, 0 );
       }
       goto label$3534;
       label$3637:;
       {
-       FBSTRING* vr$4266 = fb_StrAllocTempDescZEx( (uint8*)"elseif", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4266, 0 );
+       FBSTRING* vr$4270 = fb_StrAllocTempDescZEx( (uint8*)"elseif", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4270, 0 );
       }
       goto label$3534;
       label$3638:;
       {
-       FBSTRING* vr$4267 = fb_StrAllocTempDescZEx( (uint8*)"emi", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4267, 0 );
+       FBSTRING* vr$4271 = fb_StrAllocTempDescZEx( (uint8*)"emi", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4271, 0 );
       }
       goto label$3534;
       label$3639:;
       {
-       FBSTRING* vr$4268 = fb_StrAllocTempDescZEx( (uint8*)"emission", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4268, 0 );
+       FBSTRING* vr$4272 = fb_StrAllocTempDescZEx( (uint8*)"emission", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4272, 0 );
       }
       goto label$3534;
       label$3640:;
       {
-       FBSTRING* vr$4269 = fb_StrAllocTempDescZEx( (uint8*)"enable", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4269, 0 );
+       FBSTRING* vr$4273 = fb_StrAllocTempDescZEx( (uint8*)"enable", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4273, 0 );
       }
       goto label$3534;
       label$3641:;
       {
-       FBSTRING* vr$4270 = fb_StrAllocTempDescZEx( (uint8*)"encode", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4270, 0 );
+       FBSTRING* vr$4274 = fb_StrAllocTempDescZEx( (uint8*)"encode", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4274, 0 );
       }
       goto label$3534;
       label$3642:;
       {
-       FBSTRING* vr$4271 = fb_StrAllocTempDescZEx( (uint8*)"end", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4271, 0 );
+       FBSTRING* vr$4275 = fb_StrAllocTempDescZEx( (uint8*)"end", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4275, 0 );
       }
       goto label$3534;
       label$3643:;
       {
-       FBSTRING* vr$4272 = fb_StrAllocTempDescZEx( (uint8*)"end-add", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4272, 0 );
+       FBSTRING* vr$4276 = fb_StrAllocTempDescZEx( (uint8*)"end-add", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4276, 0 );
       }
       goto label$3534;
       label$3644:;
       {
-       FBSTRING* vr$4273 = fb_StrAllocTempDescZEx( (uint8*)"end-call", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4273, 0 );
+       FBSTRING* vr$4277 = fb_StrAllocTempDescZEx( (uint8*)"end-call", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4277, 0 );
       }
       goto label$3534;
       label$3645:;
       {
-       FBSTRING* vr$4274 = fb_StrAllocTempDescZEx( (uint8*)"end-compute", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4274, 0 );
+       FBSTRING* vr$4278 = fb_StrAllocTempDescZEx( (uint8*)"end-compute", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4278, 0 );
       }
       goto label$3534;
       label$3646:;
       {
-       FBSTRING* vr$4275 = fb_StrAllocTempDescZEx( (uint8*)"end-delete", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4275, 0 );
+       FBSTRING* vr$4279 = fb_StrAllocTempDescZEx( (uint8*)"end-delete", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4279, 0 );
       }
       goto label$3534;
       label$3647:;
       {
-       FBSTRING* vr$4276 = fb_StrAllocTempDescZEx( (uint8*)"end-divide", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4276, 0 );
+       FBSTRING* vr$4280 = fb_StrAllocTempDescZEx( (uint8*)"end-divide", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4280, 0 );
       }
       goto label$3534;
       label$3648:;
       {
-       FBSTRING* vr$4277 = fb_StrAllocTempDescZEx( (uint8*)"end-evaluate", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4277, 0 );
+       FBSTRING* vr$4281 = fb_StrAllocTempDescZEx( (uint8*)"end-evaluate", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4281, 0 );
       }
       goto label$3534;
       label$3649:;
       {
-       FBSTRING* vr$4278 = fb_StrAllocTempDescZEx( (uint8*)"end-if", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4278, 0 );
+       FBSTRING* vr$4282 = fb_StrAllocTempDescZEx( (uint8*)"end-if", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4282, 0 );
       }
       goto label$3534;
       label$3650:;
       {
-       FBSTRING* vr$4279 = fb_StrAllocTempDescZEx( (uint8*)"ending", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4279, 0 );
+       FBSTRING* vr$4283 = fb_StrAllocTempDescZEx( (uint8*)"ending", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4283, 0 );
       }
       goto label$3534;
       label$3651:;
       {
-       FBSTRING* vr$4280 = fb_StrAllocTempDescZEx( (uint8*)"end-invoke", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4280, 0 );
+       FBSTRING* vr$4284 = fb_StrAllocTempDescZEx( (uint8*)"end-invoke", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4284, 0 );
       }
       goto label$3534;
       label$3652:;
       {
-       FBSTRING* vr$4281 = fb_StrAllocTempDescZEx( (uint8*)"end-multiply", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4281, 0 );
+       FBSTRING* vr$4285 = fb_StrAllocTempDescZEx( (uint8*)"end-multiply", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4285, 0 );
       }
       goto label$3534;
       label$3653:;
       {
-       FBSTRING* vr$4282 = fb_StrAllocTempDescZEx( (uint8*)"endofdata", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4282, 0 );
+       FBSTRING* vr$4286 = fb_StrAllocTempDescZEx( (uint8*)"endofdata", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4286, 0 );
       }
       goto label$3534;
       label$3654:;
       {
-       FBSTRING* vr$4283 = fb_StrAllocTempDescZEx( (uint8*)"end-of-page", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4283, 0 );
+       FBSTRING* vr$4287 = fb_StrAllocTempDescZEx( (uint8*)"end-of-page", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4287, 0 );
       }
       goto label$3534;
       label$3655:;
       {
-       FBSTRING* vr$4284 = fb_StrAllocTempDescZEx( (uint8*)"end-perform", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4284, 0 );
+       FBSTRING* vr$4288 = fb_StrAllocTempDescZEx( (uint8*)"end-perform", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4288, 0 );
       }
       goto label$3534;
       label$3656:;
       {
-       FBSTRING* vr$4285 = fb_StrAllocTempDescZEx( (uint8*)"end-read", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4285, 0 );
+       FBSTRING* vr$4289 = fb_StrAllocTempDescZEx( (uint8*)"end-read", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4289, 0 );
       }
       goto label$3534;
       label$3657:;
       {
-       FBSTRING* vr$4286 = fb_StrAllocTempDescZEx( (uint8*)"end-receive", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4286, 0 );
+       FBSTRING* vr$4290 = fb_StrAllocTempDescZEx( (uint8*)"end-receive", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4290, 0 );
       }
       goto label$3534;
       label$3658:;
       {
-       FBSTRING* vr$4287 = fb_StrAllocTempDescZEx( (uint8*)"end-return", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4287, 0 );
+       FBSTRING* vr$4291 = fb_StrAllocTempDescZEx( (uint8*)"end-return", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4291, 0 );
       }
       goto label$3534;
       label$3659:;
       {
-       FBSTRING* vr$4288 = fb_StrAllocTempDescZEx( (uint8*)"end-rewrite", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4288, 0 );
+       FBSTRING* vr$4292 = fb_StrAllocTempDescZEx( (uint8*)"end-rewrite", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4292, 0 );
       }
       goto label$3534;
       label$3660:;
       {
-       FBSTRING* vr$4289 = fb_StrAllocTempDescZEx( (uint8*)"end-search", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4289, 0 );
+       FBSTRING* vr$4293 = fb_StrAllocTempDescZEx( (uint8*)"end-search", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4293, 0 );
       }
       goto label$3534;
       label$3661:;
       {
-       FBSTRING* vr$4290 = fb_StrAllocTempDescZEx( (uint8*)"end-start", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4290, 0 );
+       FBSTRING* vr$4294 = fb_StrAllocTempDescZEx( (uint8*)"end-start", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4294, 0 );
       }
       goto label$3534;
       label$3662:;
       {
-       FBSTRING* vr$4291 = fb_StrAllocTempDescZEx( (uint8*)"end-string", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4291, 0 );
+       FBSTRING* vr$4295 = fb_StrAllocTempDescZEx( (uint8*)"end-string", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4295, 0 );
       }
       goto label$3534;
       label$3663:;
       {
-       FBSTRING* vr$4292 = fb_StrAllocTempDescZEx( (uint8*)"end-subtract", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4292, 0 );
+       FBSTRING* vr$4296 = fb_StrAllocTempDescZEx( (uint8*)"end-subtract", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4296, 0 );
       }
       goto label$3534;
       label$3664:;
       {
-       FBSTRING* vr$4293 = fb_StrAllocTempDescZEx( (uint8*)"endswith", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4293, 0 );
+       FBSTRING* vr$4297 = fb_StrAllocTempDescZEx( (uint8*)"endswith", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4297, 0 );
       }
       goto label$3534;
       label$3665:;
       {
-       FBSTRING* vr$4294 = fb_StrAllocTempDescZEx( (uint8*)"end-unstring", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4294, 0 );
+       FBSTRING* vr$4298 = fb_StrAllocTempDescZEx( (uint8*)"end-unstring", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4298, 0 );
       }
       goto label$3534;
       label$3666:;
       {
-       FBSTRING* vr$4295 = fb_StrAllocTempDescZEx( (uint8*)"end-write", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4295, 0 );
+       FBSTRING* vr$4299 = fb_StrAllocTempDescZEx( (uint8*)"end-write", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4299, 0 );
       }
       goto label$3534;
       label$3667:;
       {
-       FBSTRING* vr$4296 = fb_StrAllocTempDescZEx( (uint8*)"enter", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4296, 0 );
+       FBSTRING* vr$4300 = fb_StrAllocTempDescZEx( (uint8*)"enter", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4300, 0 );
       }
       goto label$3534;
       label$3668:;
       {
-       FBSTRING* vr$4297 = fb_StrAllocTempDescZEx( (uint8*)"entry", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4297, 0 );
+       FBSTRING* vr$4301 = fb_StrAllocTempDescZEx( (uint8*)"entry", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4301, 0 );
       }
       goto label$3534;
       label$3669:;
       {
-       FBSTRING* vr$4298 = fb_StrAllocTempDescZEx( (uint8*)"enum", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4298, 0 );
+       FBSTRING* vr$4302 = fb_StrAllocTempDescZEx( (uint8*)"enum", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4302, 0 );
       }
       goto label$3534;
       label$3670:;
       {
-       FBSTRING* vr$4299 = fb_StrAllocTempDescZEx( (uint8*)"environ", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4299, 0 );
+       FBSTRING* vr$4303 = fb_StrAllocTempDescZEx( (uint8*)"environ", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4303, 0 );
       }
       goto label$3534;
       label$3671:;
       {
-       FBSTRING* vr$4300 = fb_StrAllocTempDescZEx( (uint8*)"environment", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4300, 0 );
+       FBSTRING* vr$4304 = fb_StrAllocTempDescZEx( (uint8*)"environment", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4304, 0 );
       }
       goto label$3534;
       label$3672:;
       {
-       FBSTRING* vr$4301 = fb_StrAllocTempDescZEx( (uint8*)"eof", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4301, 0 );
+       FBSTRING* vr$4305 = fb_StrAllocTempDescZEx( (uint8*)"eof", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4305, 0 );
       }
       goto label$3534;
       label$3673:;
       {
-       FBSTRING* vr$4302 = fb_StrAllocTempDescZEx( (uint8*)"eop", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4302, 0 );
+       FBSTRING* vr$4306 = fb_StrAllocTempDescZEx( (uint8*)"eop", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4306, 0 );
       }
       goto label$3534;
       label$3674:;
       {
-       FBSTRING* vr$4303 = fb_StrAllocTempDescZEx( (uint8*)"equal", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4303, 0 );
+       FBSTRING* vr$4307 = fb_StrAllocTempDescZEx( (uint8*)"equal", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4307, 0 );
       }
       goto label$3534;
       label$3675:;
       {
-       FBSTRING* vr$4304 = fb_StrAllocTempDescZEx( (uint8*)"equivalence", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4304, 0 );
+       FBSTRING* vr$4308 = fb_StrAllocTempDescZEx( (uint8*)"equivalence", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4308, 0 );
       }
       goto label$3534;
       label$3676:;
       {
-       FBSTRING* vr$4305 = fb_StrAllocTempDescZEx( (uint8*)"eqv", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4305, 0 );
+       FBSTRING* vr$4309 = fb_StrAllocTempDescZEx( (uint8*)"eqv", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4309, 0 );
       }
       goto label$3534;
       label$3677:;
       {
-       FBSTRING* vr$4306 = fb_StrAllocTempDescZEx( (uint8*)"erase", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4306, 0 );
+       FBSTRING* vr$4310 = fb_StrAllocTempDescZEx( (uint8*)"erase", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4310, 0 );
       }
       goto label$3534;
       label$3678:;
       {
-       FBSTRING* vr$4307 = fb_StrAllocTempDescZEx( (uint8*)"erdev", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4307, 0 );
+       FBSTRING* vr$4311 = fb_StrAllocTempDescZEx( (uint8*)"erdev", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4311, 0 );
       }
       goto label$3534;
       label$3679:;
       {
-       FBSTRING* vr$4308 = fb_StrAllocTempDescZEx( (uint8*)"erf", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4308, 0 );
+       FBSTRING* vr$4312 = fb_StrAllocTempDescZEx( (uint8*)"erf", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4312, 0 );
       }
       goto label$3534;
       label$3680:;
       {
-       FBSTRING* vr$4309 = fb_StrAllocTempDescZEx( (uint8*)"erfc", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4309, 0 );
+       FBSTRING* vr$4313 = fb_StrAllocTempDescZEx( (uint8*)"erfc", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4313, 0 );
       }
       goto label$3534;
       label$3681:;
       {
-       FBSTRING* vr$4310 = fb_StrAllocTempDescZEx( (uint8*)"erl", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4310, 0 );
+       FBSTRING* vr$4314 = fb_StrAllocTempDescZEx( (uint8*)"erl", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4314, 0 );
       }
       goto label$3534;
       label$3682:;
       {
-       FBSTRING* vr$4311 = fb_StrAllocTempDescZEx( (uint8*)"err", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4311, 0 );
+       FBSTRING* vr$4315 = fb_StrAllocTempDescZEx( (uint8*)"err", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4315, 0 );
       }
       goto label$3534;
       label$3683:;
       {
-       FBSTRING* vr$4312 = fb_StrAllocTempDescZEx( (uint8*)"error", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4312, 0 );
+       FBSTRING* vr$4316 = fb_StrAllocTempDescZEx( (uint8*)"error", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4316, 0 );
       }
       goto label$3534;
       label$3684:;
       {
-       FBSTRING* vr$4313 = fb_StrAllocTempDescZEx( (uint8*)"error_bound", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4313, 0 );
+       FBSTRING* vr$4317 = fb_StrAllocTempDescZEx( (uint8*)"error_bound", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4317, 0 );
       }
       goto label$3534;
       label$3685:;
       {
-       FBSTRING* vr$4314 = fb_StrAllocTempDescZEx( (uint8*)"escape", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4314, 0 );
+       FBSTRING* vr$4318 = fb_StrAllocTempDescZEx( (uint8*)"escape", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4318, 0 );
       }
       goto label$3534;
       label$3686:;
       {
-       FBSTRING* vr$4315 = fb_StrAllocTempDescZEx( (uint8*)"esi", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4315, 0 );
+       FBSTRING* vr$4319 = fb_StrAllocTempDescZEx( (uint8*)"esi", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4319, 0 );
       }
       goto label$3534;
       label$3687:;
       {
-       FBSTRING* vr$4316 = fb_StrAllocTempDescZEx( (uint8*)"evaluate", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4316, 0 );
+       FBSTRING* vr$4320 = fb_StrAllocTempDescZEx( (uint8*)"evaluate", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4320, 0 );
       }
       goto label$3534;
       label$3688:;
       {
-       FBSTRING* vr$4317 = fb_StrAllocTempDescZEx( (uint8*)"every", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4317, 0 );
+       FBSTRING* vr$4321 = fb_StrAllocTempDescZEx( (uint8*)"every", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4321, 0 );
       }
       goto label$3534;
       label$3689:;
       {
-       FBSTRING* vr$4318 = fb_StrAllocTempDescZEx( (uint8*)"except", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4318, 0 );
+       FBSTRING* vr$4322 = fb_StrAllocTempDescZEx( (uint8*)"except", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4322, 0 );
       }
       goto label$3534;
       label$3690:;
       {
-       FBSTRING* vr$4319 = fb_StrAllocTempDescZEx( (uint8*)"exception", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4319, 0 );
+       FBSTRING* vr$4323 = fb_StrAllocTempDescZEx( (uint8*)"exception", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4323, 0 );
       }
       goto label$3534;
       label$3691:;
       {
-       FBSTRING* vr$4320 = fb_StrAllocTempDescZEx( (uint8*)"exit", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4320, 0 );
+       FBSTRING* vr$4324 = fb_StrAllocTempDescZEx( (uint8*)"exit", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4324, 0 );
       }
       goto label$3534;
       label$3692:;
       {
-       FBSTRING* vr$4321 = fb_StrAllocTempDescZEx( (uint8*)"exp", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4321, 0 );
+       FBSTRING* vr$4325 = fb_StrAllocTempDescZEx( (uint8*)"exp", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4325, 0 );
       }
       goto label$3534;
       label$3693:;
       {
-       FBSTRING* vr$4322 = fb_StrAllocTempDescZEx( (uint8*)"exp2", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4322, 0 );
+       FBSTRING* vr$4326 = fb_StrAllocTempDescZEx( (uint8*)"exp2", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4326, 0 );
       }
       goto label$3534;
       label$3694:;
       {
-       FBSTRING* vr$4323 = fb_StrAllocTempDescZEx( (uint8*)"expand", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4323, 0 );
+       FBSTRING* vr$4327 = fb_StrAllocTempDescZEx( (uint8*)"expand", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4327, 0 );
       }
       goto label$3534;
       label$3695:;
       {
-       FBSTRING* vr$4324 = fb_StrAllocTempDescZEx( (uint8*)"expand_thresholds", 17ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4324, 0 );
+       FBSTRING* vr$4328 = fb_StrAllocTempDescZEx( (uint8*)"expand_thresholds", 17ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4328, 0 );
       }
       goto label$3534;
       label$3696:;
       {
-       FBSTRING* vr$4325 = fb_StrAllocTempDescZEx( (uint8*)"expm1", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4325, 0 );
+       FBSTRING* vr$4329 = fb_StrAllocTempDescZEx( (uint8*)"expm1", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4329, 0 );
       }
       goto label$3534;
       label$3697:;
       {
-       FBSTRING* vr$4326 = fb_StrAllocTempDescZEx( (uint8*)"exponent", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4326, 0 );
+       FBSTRING* vr$4330 = fb_StrAllocTempDescZEx( (uint8*)"exponent", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4330, 0 );
       }
       goto label$3534;
       label$3698:;
       {
-       FBSTRING* vr$4327 = fb_StrAllocTempDescZEx( (uint8*)"export", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4327, 0 );
+       FBSTRING* vr$4331 = fb_StrAllocTempDescZEx( (uint8*)"export", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4331, 0 );
       }
       goto label$3534;
       label$3699:;
       {
-       FBSTRING* vr$4328 = fb_StrAllocTempDescZEx( (uint8*)"exports", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4328, 0 );
+       FBSTRING* vr$4332 = fb_StrAllocTempDescZEx( (uint8*)"exports", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4332, 0 );
       }
       goto label$3534;
       label$3700:;
       {
-       FBSTRING* vr$4329 = fb_StrAllocTempDescZEx( (uint8*)"extend", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4329, 0 );
+       FBSTRING* vr$4333 = fb_StrAllocTempDescZEx( (uint8*)"extend", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4333, 0 );
       }
       goto label$3534;
       label$3701:;
       {
-       FBSTRING* vr$4330 = fb_StrAllocTempDescZEx( (uint8*)"exterior", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4330, 0 );
+       FBSTRING* vr$4334 = fb_StrAllocTempDescZEx( (uint8*)"exterior", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4334, 0 );
       }
       goto label$3534;
       label$3702:;
       {
-       FBSTRING* vr$4331 = fb_StrAllocTempDescZEx( (uint8*)"extern", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4331, 0 );
+       FBSTRING* vr$4335 = fb_StrAllocTempDescZEx( (uint8*)"extern", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4335, 0 );
       }
       goto label$3534;
       label$3703:;
       {
-       FBSTRING* vr$4332 = fb_StrAllocTempDescZEx( (uint8*)"external", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4332, 0 );
+       FBSTRING* vr$4336 = fb_StrAllocTempDescZEx( (uint8*)"external", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4336, 0 );
       }
       goto label$3534;
       label$3704:;
       {
-       FBSTRING* vr$4333 = fb_StrAllocTempDescZEx( (uint8*)"exterr", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4333, 0 );
+       FBSTRING* vr$4337 = fb_StrAllocTempDescZEx( (uint8*)"exterr", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4337, 0 );
       }
       goto label$3534;
       label$3705:;
       {
-       FBSTRING* vr$4334 = fb_StrAllocTempDescZEx( (uint8*)"extinction", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4334, 0 );
+       FBSTRING* vr$4338 = fb_StrAllocTempDescZEx( (uint8*)"extinction", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4338, 0 );
       }
       goto label$3534;
       label$3706:;
       {
-       FBSTRING* vr$4335 = fb_StrAllocTempDescZEx( (uint8*)"extract", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4335, 0 );
+       FBSTRING* vr$4339 = fb_StrAllocTempDescZEx( (uint8*)"extract", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4339, 0 );
       }
       goto label$3534;
       label$3707:;
       {
-       FBSTRING* vr$4336 = fb_StrAllocTempDescZEx( (uint8*)"f", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4336, 0 );
+       FBSTRING* vr$4340 = fb_StrAllocTempDescZEx( (uint8*)"f", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4340, 0 );
       }
       goto label$3534;
       label$3708:;
       {
-       FBSTRING* vr$4337 = fb_StrAllocTempDescZEx( (uint8*)"fabs", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4337, 0 );
+       FBSTRING* vr$4341 = fb_StrAllocTempDescZEx( (uint8*)"fabs", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4341, 0 );
       }
       goto label$3534;
       label$3709:;
       {
-       FBSTRING* vr$4338 = fb_StrAllocTempDescZEx( (uint8*)"faceforward", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4338, 0 );
+       FBSTRING* vr$4342 = fb_StrAllocTempDescZEx( (uint8*)"faceforward", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4342, 0 );
       }
       goto label$3534;
       label$3710:;
       {
-       FBSTRING* vr$4339 = fb_StrAllocTempDescZEx( (uint8*)"face_indices", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4339, 0 );
+       FBSTRING* vr$4343 = fb_StrAllocTempDescZEx( (uint8*)"face_indices", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4343, 0 );
       }
       goto label$3534;
       label$3711:;
       {
-       FBSTRING* vr$4340 = fb_StrAllocTempDescZEx( (uint8*)"facets", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4340, 0 );
+       FBSTRING* vr$4344 = fb_StrAllocTempDescZEx( (uint8*)"facets", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4344, 0 );
       }
       goto label$3534;
       label$3712:;
       {
-       FBSTRING* vr$4341 = fb_StrAllocTempDescZEx( (uint8*)"fade_color", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4341, 0 );
+       FBSTRING* vr$4345 = fb_StrAllocTempDescZEx( (uint8*)"fade_color", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4345, 0 );
       }
       goto label$3534;
       label$3713:;
       {
-       FBSTRING* vr$4342 = fb_StrAllocTempDescZEx( (uint8*)"fade_colour", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4342, 0 );
+       FBSTRING* vr$4346 = fb_StrAllocTempDescZEx( (uint8*)"fade_colour", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4346, 0 );
       }
       goto label$3534;
       label$3714:;
       {
-       FBSTRING* vr$4343 = fb_StrAllocTempDescZEx( (uint8*)"fade_distance", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4343, 0 );
+       FBSTRING* vr$4347 = fb_StrAllocTempDescZEx( (uint8*)"fade_distance", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4347, 0 );
       }
       goto label$3534;
       label$3715:;
       {
-       FBSTRING* vr$4344 = fb_StrAllocTempDescZEx( (uint8*)"fade_power", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4344, 0 );
+       FBSTRING* vr$4348 = fb_StrAllocTempDescZEx( (uint8*)"fade_power", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4348, 0 );
       }
       goto label$3534;
       label$3716:;
       {
-       FBSTRING* vr$4345 = fb_StrAllocTempDescZEx( (uint8*)"falloff", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4345, 0 );
+       FBSTRING* vr$4349 = fb_StrAllocTempDescZEx( (uint8*)"falloff", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4349, 0 );
       }
       goto label$3534;
       label$3717:;
       {
-       FBSTRING* vr$4346 = fb_StrAllocTempDescZEx( (uint8*)"falloff_angle", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4346, 0 );
+       FBSTRING* vr$4350 = fb_StrAllocTempDescZEx( (uint8*)"falloff_angle", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4350, 0 );
       }
       goto label$3534;
       label$3718:;
       {
-       FBSTRING* vr$4347 = fb_StrAllocTempDescZEx( (uint8*)"false", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4347, 0 );
+       FBSTRING* vr$4351 = fb_StrAllocTempDescZEx( (uint8*)"false", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4351, 0 );
       }
       goto label$3534;
       label$3719:;
       {
-       FBSTRING* vr$4348 = fb_StrAllocTempDescZEx( (uint8*)"far", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4348, 0 );
+       FBSTRING* vr$4352 = fb_StrAllocTempDescZEx( (uint8*)"far", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4352, 0 );
       }
       goto label$3534;
       label$3720:;
       {
-       FBSTRING* vr$4349 = fb_StrAllocTempDescZEx( (uint8*)"fclose", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4349, 0 );
+       FBSTRING* vr$4353 = fb_StrAllocTempDescZEx( (uint8*)"fclose", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4353, 0 );
       }
       goto label$3534;
       label$3721:;
       {
-       FBSTRING* vr$4350 = fb_StrAllocTempDescZEx( (uint8*)"fd", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4350, 0 );
+       FBSTRING* vr$4354 = fb_StrAllocTempDescZEx( (uint8*)"fd", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4354, 0 );
       }
       goto label$3534;
       label$3722:;
       {
-       FBSTRING* vr$4351 = fb_StrAllocTempDescZEx( (uint8*)"field", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4351, 0 );
+       FBSTRING* vr$4355 = fb_StrAllocTempDescZEx( (uint8*)"field", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4355, 0 );
       }
       goto label$3534;
       label$3723:;
       {
-       FBSTRING* vr$4352 = fb_StrAllocTempDescZEx( (uint8*)"file", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4352, 0 );
+       FBSTRING* vr$4356 = fb_StrAllocTempDescZEx( (uint8*)"file", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4356, 0 );
       }
       goto label$3534;
       label$3724:;
       {
-       FBSTRING* vr$4353 = fb_StrAllocTempDescZEx( (uint8*)"file-control", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4353, 0 );
+       FBSTRING* vr$4357 = fb_StrAllocTempDescZEx( (uint8*)"file-control", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4357, 0 );
       }
       goto label$3534;
       label$3725:;
       {
-       FBSTRING* vr$4354 = fb_StrAllocTempDescZEx( (uint8*)"file_exists", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4354, 0 );
+       FBSTRING* vr$4358 = fb_StrAllocTempDescZEx( (uint8*)"file_exists", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4358, 0 );
       }
       goto label$3534;
       label$3726:;
       {
-       FBSTRING* vr$4355 = fb_StrAllocTempDescZEx( (uint8*)"files", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4355, 0 );
+       FBSTRING* vr$4359 = fb_StrAllocTempDescZEx( (uint8*)"files", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4359, 0 );
       }
       goto label$3534;
       label$3727:;
       {
-       FBSTRING* vr$4356 = fb_StrAllocTempDescZEx( (uint8*)"filler", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4356, 0 );
+       FBSTRING* vr$4360 = fb_StrAllocTempDescZEx( (uint8*)"filler", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4360, 0 );
       }
       goto label$3534;
       label$3728:;
       {
-       FBSTRING* vr$4357 = fb_StrAllocTempDescZEx( (uint8*)"filter", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4357, 0 );
+       FBSTRING* vr$4361 = fb_StrAllocTempDescZEx( (uint8*)"filter", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4361, 0 );
       }
       goto label$3534;
       label$3729:;
       {
-       FBSTRING* vr$4358 = fb_StrAllocTempDescZEx( (uint8*)"filterwidth", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4358, 0 );
+       FBSTRING* vr$4362 = fb_StrAllocTempDescZEx( (uint8*)"filterwidth", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4362, 0 );
       }
       goto label$3534;
       label$3730:;
       {
-       FBSTRING* vr$4359 = fb_StrAllocTempDescZEx( (uint8*)"final", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4359, 0 );
+       FBSTRING* vr$4363 = fb_StrAllocTempDescZEx( (uint8*)"final", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4363, 0 );
       }
       goto label$3534;
       label$3731:;
       {
-       FBSTRING* vr$4360 = fb_StrAllocTempDescZEx( (uint8*)"final_clock", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4360, 0 );
+       FBSTRING* vr$4364 = fb_StrAllocTempDescZEx( (uint8*)"final_clock", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4364, 0 );
       }
       goto label$3534;
       label$3732:;
       {
-       FBSTRING* vr$4361 = fb_StrAllocTempDescZEx( (uint8*)"final_frame", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4361, 0 );
+       FBSTRING* vr$4365 = fb_StrAllocTempDescZEx( (uint8*)"final_frame", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4365, 0 );
       }
       goto label$3534;
       label$3733:;
       {
-       FBSTRING* vr$4362 = fb_StrAllocTempDescZEx( (uint8*)"finalization", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4362, 0 );
+       FBSTRING* vr$4366 = fb_StrAllocTempDescZEx( (uint8*)"finalization", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4366, 0 );
       }
       goto label$3534;
       label$3734:;
       {
-       FBSTRING* vr$4363 = fb_StrAllocTempDescZEx( (uint8*)"finally", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4363, 0 );
+       FBSTRING* vr$4367 = fb_StrAllocTempDescZEx( (uint8*)"finally", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4367, 0 );
       }
       goto label$3534;
       label$3735:;
       {
-       FBSTRING* vr$4364 = fb_StrAllocTempDescZEx( (uint8*)"finish", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4364, 0 );
+       FBSTRING* vr$4368 = fb_StrAllocTempDescZEx( (uint8*)"finish", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4368, 0 );
       }
       goto label$3534;
       label$3736:;
       {
-       FBSTRING* vr$4365 = fb_StrAllocTempDescZEx( (uint8*)"first", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4365, 0 );
+       FBSTRING* vr$4369 = fb_StrAllocTempDescZEx( (uint8*)"first", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4369, 0 );
       }
       goto label$3534;
       label$3737:;
       {
-       FBSTRING* vr$4366 = fb_StrAllocTempDescZEx( (uint8*)"fisheye", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4366, 0 );
+       FBSTRING* vr$4370 = fb_StrAllocTempDescZEx( (uint8*)"fisheye", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4370, 0 );
       }
       goto label$3534;
       label$3738:;
       {
-       FBSTRING* vr$4367 = fb_StrAllocTempDescZEx( (uint8*)"fix", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4367, 0 );
+       FBSTRING* vr$4371 = fb_StrAllocTempDescZEx( (uint8*)"fix", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4371, 0 );
       }
       goto label$3534;
       label$3739:;
       {
-       FBSTRING* vr$4368 = fb_StrAllocTempDescZEx( (uint8*)"fixed", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4368, 0 );
+       FBSTRING* vr$4372 = fb_StrAllocTempDescZEx( (uint8*)"fixed", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4372, 0 );
       }
       goto label$3534;
       label$3740:;
       {
-       FBSTRING* vr$4369 = fb_StrAllocTempDescZEx( (uint8*)"flat", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4369, 0 );
+       FBSTRING* vr$4373 = fb_StrAllocTempDescZEx( (uint8*)"flat", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4373, 0 );
       }
       goto label$3534;
       label$3741:;
       {
-       FBSTRING* vr$4370 = fb_StrAllocTempDescZEx( (uint8*)"flatness", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4370, 0 );
+       FBSTRING* vr$4374 = fb_StrAllocTempDescZEx( (uint8*)"flatness", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4374, 0 );
       }
       goto label$3534;
       label$3742:;
       {
-       FBSTRING* vr$4371 = fb_StrAllocTempDescZEx( (uint8*)"flip", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4371, 0 );
+       FBSTRING* vr$4375 = fb_StrAllocTempDescZEx( (uint8*)"flip", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4375, 0 );
       }
       goto label$3534;
       label$3743:;
       {
-       FBSTRING* vr$4372 = fb_StrAllocTempDescZEx( (uint8*)"float", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4372, 0 );
+       FBSTRING* vr$4376 = fb_StrAllocTempDescZEx( (uint8*)"float", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4376, 0 );
       }
       goto label$3534;
       label$3744:;
       {
-       FBSTRING* vr$4373 = fb_StrAllocTempDescZEx( (uint8*)"floor", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4373, 0 );
+       FBSTRING* vr$4377 = fb_StrAllocTempDescZEx( (uint8*)"floor", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4377, 0 );
       }
       goto label$3534;
       label$3745:;
       {
-       FBSTRING* vr$4374 = fb_StrAllocTempDescZEx( (uint8*)"fmod", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4374, 0 );
+       FBSTRING* vr$4378 = fb_StrAllocTempDescZEx( (uint8*)"fmod", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4378, 0 );
       }
       goto label$3534;
       label$3746:;
       {
-       FBSTRING* vr$4375 = fb_StrAllocTempDescZEx( (uint8*)"fn", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4375, 0 );
+       FBSTRING* vr$4379 = fb_StrAllocTempDescZEx( (uint8*)"fn", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4379, 0 );
       }
       goto label$3534;
       label$3747:;
       {
-       FBSTRING* vr$4376 = fb_StrAllocTempDescZEx( (uint8*)"focal_point", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4376, 0 );
+       FBSTRING* vr$4380 = fb_StrAllocTempDescZEx( (uint8*)"focal_point", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4380, 0 );
       }
       goto label$3534;
       label$3748:;
       {
-       FBSTRING* vr$4377 = fb_StrAllocTempDescZEx( (uint8*)"fog", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4377, 0 );
+       FBSTRING* vr$4381 = fb_StrAllocTempDescZEx( (uint8*)"fog", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4381, 0 );
       }
       goto label$3534;
       label$3749:;
       {
-       FBSTRING* vr$4378 = fb_StrAllocTempDescZEx( (uint8*)"fog_alt", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4378, 0 );
+       FBSTRING* vr$4382 = fb_StrAllocTempDescZEx( (uint8*)"fog_alt", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4382, 0 );
       }
       goto label$3534;
       label$3750:;
       {
-       FBSTRING* vr$4379 = fb_StrAllocTempDescZEx( (uint8*)"fog_offset", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4379, 0 );
+       FBSTRING* vr$4383 = fb_StrAllocTempDescZEx( (uint8*)"fog_offset", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4383, 0 );
       }
       goto label$3534;
       label$3751:;
       {
-       FBSTRING* vr$4380 = fb_StrAllocTempDescZEx( (uint8*)"fog_type", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4380, 0 );
+       FBSTRING* vr$4384 = fb_StrAllocTempDescZEx( (uint8*)"fog_type", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4384, 0 );
       }
       goto label$3534;
       label$3752:;
       {
-       FBSTRING* vr$4381 = fb_StrAllocTempDescZEx( (uint8*)"footing", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4381, 0 );
+       FBSTRING* vr$4385 = fb_StrAllocTempDescZEx( (uint8*)"footing", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4385, 0 );
       }
       goto label$3534;
       label$3753:;
       {
-       FBSTRING* vr$4382 = fb_StrAllocTempDescZEx( (uint8*)"fopen", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4382, 0 );
+       FBSTRING* vr$4386 = fb_StrAllocTempDescZEx( (uint8*)"fopen", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4386, 0 );
       }
       goto label$3534;
       label$3754:;
       {
-       FBSTRING* vr$4383 = fb_StrAllocTempDescZEx( (uint8*)"for", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4383, 0 );
+       FBSTRING* vr$4387 = fb_StrAllocTempDescZEx( (uint8*)"for", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4387, 0 );
       }
       goto label$3534;
       label$3755:;
       {
-       FBSTRING* vr$4384 = fb_StrAllocTempDescZEx( (uint8*)"form", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4384, 0 );
+       FBSTRING* vr$4388 = fb_StrAllocTempDescZEx( (uint8*)"form", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4388, 0 );
       }
       goto label$3534;
       label$3756:;
       {
-       FBSTRING* vr$4385 = fb_StrAllocTempDescZEx( (uint8*)"format", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4385, 0 );
+       FBSTRING* vr$4389 = fb_StrAllocTempDescZEx( (uint8*)"format", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4389, 0 );
       }
       goto label$3534;
       label$3757:;
       {
-       FBSTRING* vr$4386 = fb_StrAllocTempDescZEx( (uint8*)"forward", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4386, 0 );
+       FBSTRING* vr$4390 = fb_StrAllocTempDescZEx( (uint8*)"forward", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4390, 0 );
       }
       goto label$3534;
       label$3758:;
       {
-       FBSTRING* vr$4387 = fb_StrAllocTempDescZEx( (uint8*)"fprintf", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4387, 0 );
+       FBSTRING* vr$4391 = fb_StrAllocTempDescZEx( (uint8*)"fprintf", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4391, 0 );
       }
       goto label$3534;
       label$3759:;
       {
-       FBSTRING* vr$4388 = fb_StrAllocTempDescZEx( (uint8*)"frag_color", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4388, 0 );
+       FBSTRING* vr$4392 = fb_StrAllocTempDescZEx( (uint8*)"frag_color", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4392, 0 );
       }
       goto label$3534;
       label$3760:;
       {
-       FBSTRING* vr$4389 = fb_StrAllocTempDescZEx( (uint8*)"fragcolor", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4389, 0 );
+       FBSTRING* vr$4393 = fb_StrAllocTempDescZEx( (uint8*)"fragcolor", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4393, 0 );
       }
       goto label$3534;
       label$3761:;
       {
-       FBSTRING* vr$4390 = fb_StrAllocTempDescZEx( (uint8*)"frag_coord", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4390, 0 );
+       FBSTRING* vr$4394 = fb_StrAllocTempDescZEx( (uint8*)"frag_coord", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4394, 0 );
       }
       goto label$3534;
       label$3762:;
       {
-       FBSTRING* vr$4391 = fb_StrAllocTempDescZEx( (uint8*)"fragcoord", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4391, 0 );
+       FBSTRING* vr$4395 = fb_StrAllocTempDescZEx( (uint8*)"fragcoord", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4395, 0 );
       }
       goto label$3534;
       label$3763:;
       {
-       FBSTRING* vr$4392 = fb_StrAllocTempDescZEx( (uint8*)"frame_number", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4392, 0 );
+       FBSTRING* vr$4396 = fb_StrAllocTempDescZEx( (uint8*)"frame_number", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4396, 0 );
       }
       goto label$3534;
       label$3764:;
       {
-       FBSTRING* vr$4393 = fb_StrAllocTempDescZEx( (uint8*)"fre", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4393, 0 );
+       FBSTRING* vr$4397 = fb_StrAllocTempDescZEx( (uint8*)"fre", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4397, 0 );
       }
       goto label$3534;
       label$3765:;
       {
-       FBSTRING* vr$4394 = fb_StrAllocTempDescZEx( (uint8*)"frequency", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4394, 0 );
+       FBSTRING* vr$4398 = fb_StrAllocTempDescZEx( (uint8*)"frequency", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4398, 0 );
       }
       goto label$3534;
       label$3766:;
       {
-       FBSTRING* vr$4395 = fb_StrAllocTempDescZEx( (uint8*)"fresnel", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4395, 0 );
+       FBSTRING* vr$4399 = fb_StrAllocTempDescZEx( (uint8*)"fresnel", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4399, 0 );
       }
       goto label$3534;
       label$3767:;
       {
-       FBSTRING* vr$4396 = fb_StrAllocTempDescZEx( (uint8*)"from", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4396, 0 );
+       FBSTRING* vr$4400 = fb_StrAllocTempDescZEx( (uint8*)"from", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4400, 0 );
       }
       goto label$3534;
       label$3768:;
       {
-       FBSTRING* vr$4397 = fb_StrAllocTempDescZEx( (uint8*)"full", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4397, 0 );
+       FBSTRING* vr$4401 = fb_StrAllocTempDescZEx( (uint8*)"full", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4401, 0 );
       }
       goto label$3534;
       label$3769:;
       {
-       FBSTRING* vr$4398 = fb_StrAllocTempDescZEx( (uint8*)"function", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4398, 0 );
+       FBSTRING* vr$4402 = fb_StrAllocTempDescZEx( (uint8*)"function", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4402, 0 );
       }
       goto label$3534;
       label$3770:;
       {
-       FBSTRING* vr$4399 = fb_StrAllocTempDescZEx( (uint8*)"fvec2", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4399, 0 );
+       FBSTRING* vr$4403 = fb_StrAllocTempDescZEx( (uint8*)"fvec2", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4403, 0 );
       }
       goto label$3534;
       label$3771:;
       {
-       FBSTRING* vr$4400 = fb_StrAllocTempDescZEx( (uint8*)"fvec3", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4400, 0 );
+       FBSTRING* vr$4404 = fb_StrAllocTempDescZEx( (uint8*)"fvec3", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4404, 0 );
       }
       goto label$3534;
       label$3772:;
       {
-       FBSTRING* vr$4401 = fb_StrAllocTempDescZEx( (uint8*)"fvec4", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4401, 0 );
+       FBSTRING* vr$4405 = fb_StrAllocTempDescZEx( (uint8*)"fvec4", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4405, 0 );
       }
       goto label$3534;
       label$3773:;
       {
-       FBSTRING* vr$4402 = fb_StrAllocTempDescZEx( (uint8*)"g", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4402, 0 );
+       FBSTRING* vr$4406 = fb_StrAllocTempDescZEx( (uint8*)"g", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4406, 0 );
       }
       goto label$3534;
       label$3774:;
       {
-       FBSTRING* vr$4403 = fb_StrAllocTempDescZEx( (uint8*)"gather", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4403, 0 );
+       FBSTRING* vr$4407 = fb_StrAllocTempDescZEx( (uint8*)"gather", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4407, 0 );
       }
       goto label$3534;
       label$3775:;
       {
-       FBSTRING* vr$4404 = fb_StrAllocTempDescZEx( (uint8*)"generate", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4404, 0 );
+       FBSTRING* vr$4408 = fb_StrAllocTempDescZEx( (uint8*)"generate", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4408, 0 );
       }
       goto label$3534;
       label$3776:;
       {
-       FBSTRING* vr$4405 = fb_StrAllocTempDescZEx( (uint8*)"generic", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4405, 0 );
+       FBSTRING* vr$4409 = fb_StrAllocTempDescZEx( (uint8*)"generic", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4409, 0 );
       }
       goto label$3534;
       label$3777:;
       {
-       FBSTRING* vr$4406 = fb_StrAllocTempDescZEx( (uint8*)"get", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4406, 0 );
+       FBSTRING* vr$4410 = fb_StrAllocTempDescZEx( (uint8*)"get", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4410, 0 );
       }
       goto label$3534;
       label$3778:;
       {
-       FBSTRING* vr$4407 = fb_StrAllocTempDescZEx( (uint8*)"getattribute", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4407, 0 );
+       FBSTRING* vr$4411 = fb_StrAllocTempDescZEx( (uint8*)"getattribute", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4411, 0 );
       }
       goto label$3534;
       label$3779:;
       {
-       FBSTRING* vr$4408 = fb_StrAllocTempDescZEx( (uint8*)"getchar", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4408, 0 );
+       FBSTRING* vr$4412 = fb_StrAllocTempDescZEx( (uint8*)"getchar", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4412, 0 );
       }
       goto label$3534;
       label$3780:;
       {
-       FBSTRING* vr$4409 = fb_StrAllocTempDescZEx( (uint8*)"getmatrix", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4409, 0 );
+       FBSTRING* vr$4413 = fb_StrAllocTempDescZEx( (uint8*)"getmatrix", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4413, 0 );
       }
       goto label$3534;
       label$3781:;
       {
-       FBSTRING* vr$4410 = fb_StrAllocTempDescZEx( (uint8*)"getmessage", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4410, 0 );
+       FBSTRING* vr$4414 = fb_StrAllocTempDescZEx( (uint8*)"getmessage", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4414, 0 );
       }
       goto label$3534;
       label$3782:;
       {
-       FBSTRING* vr$4411 = fb_StrAllocTempDescZEx( (uint8*)"gettextureinfo", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4411, 0 );
+       FBSTRING* vr$4415 = fb_StrAllocTempDescZEx( (uint8*)"gettextureinfo", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4415, 0 );
       }
       goto label$3534;
       label$3783:;
       {
-       FBSTRING* vr$4412 = fb_StrAllocTempDescZEx( (uint8*)"gif", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4412, 0 );
+       FBSTRING* vr$4416 = fb_StrAllocTempDescZEx( (uint8*)"gif", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4416, 0 );
       }
       goto label$3534;
       label$3784:;
       {
-       FBSTRING* vr$4413 = fb_StrAllocTempDescZEx( (uint8*)"giving", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4413, 0 );
+       FBSTRING* vr$4417 = fb_StrAllocTempDescZEx( (uint8*)"giving", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4417, 0 );
       }
       goto label$3534;
       label$3785:;
       {
-       FBSTRING* vr$4414 = fb_StrAllocTempDescZEx( (uint8*)"gl_fragcolor", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4414, 0 );
+       FBSTRING* vr$4418 = fb_StrAllocTempDescZEx( (uint8*)"gl_fragcolor", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4418, 0 );
       }
       goto label$3534;
       label$3786:;
       {
-       FBSTRING* vr$4415 = fb_StrAllocTempDescZEx( (uint8*)"gl_fragcoord.xy", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4415, 0 );
+       FBSTRING* vr$4419 = fb_StrAllocTempDescZEx( (uint8*)"gl_fragcoord.xy", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4419, 0 );
       }
       goto label$3534;
       label$3787:;
       {
-       FBSTRING* vr$4416 = fb_StrAllocTempDescZEx( (uint8*)"global", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4416, 0 );
+       FBSTRING* vr$4420 = fb_StrAllocTempDescZEx( (uint8*)"global", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4420, 0 );
       }
       goto label$3534;
       label$3788:;
       {
-       FBSTRING* vr$4417 = fb_StrAllocTempDescZEx( (uint8*)"global_lights", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4417, 0 );
+       FBSTRING* vr$4421 = fb_StrAllocTempDescZEx( (uint8*)"global_lights", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4421, 0 );
       }
       goto label$3534;
       label$3789:;
       {
-       FBSTRING* vr$4418 = fb_StrAllocTempDescZEx( (uint8*)"global_settings", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4418, 0 );
+       FBSTRING* vr$4422 = fb_StrAllocTempDescZEx( (uint8*)"global_settings", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4422, 0 );
       }
       goto label$3534;
       label$3790:;
       {
-       FBSTRING* vr$4419 = fb_StrAllocTempDescZEx( (uint8*)"go", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4419, 0 );
+       FBSTRING* vr$4423 = fb_StrAllocTempDescZEx( (uint8*)"go", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4423, 0 );
       }
       goto label$3534;
       label$3791:;
       {
-       FBSTRING* vr$4420 = fb_StrAllocTempDescZEx( (uint8*)"goback", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4420, 0 );
+       FBSTRING* vr$4424 = fb_StrAllocTempDescZEx( (uint8*)"goback", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4424, 0 );
       }
       goto label$3534;
       label$3535:;
@@ -14563,68 +14559,68 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       goto label$3794;
       label$3795:;
       {
-       FBSTRING* vr$4424 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) );
-       fb_PrintString( 1, (FBSTRING*)vr$4424, 0 );
+       FBSTRING* vr$4428 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) );
+       fb_PrintString( 1, (FBSTRING*)vr$4428, 0 );
       }
       goto label$3793;
       label$3796:;
       {
-       FBSTRING* vr$4426 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) );
-       fb_PrintString( 1, (FBSTRING*)vr$4426, 1 );
+       FBSTRING* vr$4430 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) );
+       fb_PrintString( 1, (FBSTRING*)vr$4430, 1 );
       }
       goto label$3793;
       label$3797:;
       {
-       FBSTRING* vr$4430 = fb_DoubleToStr( -(*(double*)((uint8*)THIS$1 + 394896ll)) + 0x0p+0 );
-       fb_PrintString( 1, (FBSTRING*)vr$4430, 0 );
+       FBSTRING* vr$4434 = fb_DoubleToStr( -(*(double*)((uint8*)THIS$1 + 394896ll)) + 0x0p+0 );
+       fb_PrintString( 1, (FBSTRING*)vr$4434, 0 );
       }
       goto label$3793;
       label$3798:;
       {
-       FBSTRING* vr$4434 = fb_DoubleToStr( -(*(double*)((uint8*)THIS$1 + 394896ll)) + 0x0p+0 );
-       fb_PrintString( 1, (FBSTRING*)vr$4434, 1 );
+       FBSTRING* vr$4438 = fb_DoubleToStr( -(*(double*)((uint8*)THIS$1 + 394896ll)) + 0x0p+0 );
+       fb_PrintString( 1, (FBSTRING*)vr$4438, 1 );
       }
       goto label$3793;
       label$3799:;
       {
-       FBSTRING* vr$4435 = fb_StrAllocTempDescZEx( (uint8*)"\x0D\x0A", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4435, 1 );
+       FBSTRING* vr$4439 = fb_StrAllocTempDescZEx( (uint8*)"\x0D\x0A", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4439, 1 );
       }
       goto label$3793;
       label$3800:;
       {
-       FBSTRING* vr$4438 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) * 0x1.999999999999Ap-4 );
-       fb_PrintString( 1, (FBSTRING*)vr$4438, 0 );
+       FBSTRING* vr$4442 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) * 0x1.999999999999Ap-4 );
+       fb_PrintString( 1, (FBSTRING*)vr$4442, 0 );
       }
       goto label$3793;
       label$3801:;
       {
-       FBSTRING* vr$4441 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) * 0x1.999999999999Ap-4 );
-       fb_PrintString( 1, (FBSTRING*)vr$4441, 1 );
+       FBSTRING* vr$4445 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) * 0x1.999999999999Ap-4 );
+       fb_PrintString( 1, (FBSTRING*)vr$4445, 1 );
       }
       goto label$3793;
       label$3802:;
       {
-       FBSTRING* vr$4444 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) * 0x1.47AE147AE147Bp-7 );
-       fb_PrintString( 1, (FBSTRING*)vr$4444, 0 );
+       FBSTRING* vr$4448 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) * 0x1.47AE147AE147Bp-7 );
+       fb_PrintString( 1, (FBSTRING*)vr$4448, 0 );
       }
       goto label$3793;
       label$3803:;
       {
-       FBSTRING* vr$4447 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) * 0x1.47AE147AE147Bp-7 );
-       fb_PrintString( 1, (FBSTRING*)vr$4447, 1 );
+       FBSTRING* vr$4451 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) * 0x1.47AE147AE147Bp-7 );
+       fb_PrintString( 1, (FBSTRING*)vr$4451, 1 );
       }
       goto label$3793;
       label$3804:;
       {
-       FBSTRING* vr$4450 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) * 0x1.0624DD2F1A9FCp-10 );
-       fb_PrintString( 1, (FBSTRING*)vr$4450, 0 );
+       FBSTRING* vr$4454 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) * 0x1.0624DD2F1A9FCp-10 );
+       fb_PrintString( 1, (FBSTRING*)vr$4454, 0 );
       }
       goto label$3793;
       label$3805:;
       {
-       FBSTRING* vr$4453 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) * 0x1.0624DD2F1A9FCp-10 );
-       fb_PrintString( 1, (FBSTRING*)vr$4453, 1 );
+       FBSTRING* vr$4457 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) * 0x1.0624DD2F1A9FCp-10 );
+       fb_PrintString( 1, (FBSTRING*)vr$4457, 1 );
       }
       goto label$3793;
       label$3794:;
@@ -14649,32 +14645,32 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
     goto label$3201;
     label$3806:;
     {
-     FBSTRING* vr$4456 = fb_CHR( 1, ((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394896ll) )) );
-     FBSTRING* vr$4457 = fb_StrAssign( (void*)&MSG$, -1ll, (void*)vr$4456, -1ll, 0 );
+     FBSTRING* vr$4460 = fb_CHR( 1, ((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394896ll) )) );
+     fb_StrAssign( (void*)&MSG$, -1ll, (void*)vr$4460, -1ll, 0 );
      fb_PrintString( 1, (FBSTRING*)&MSG$, 0 );
      fb_StrAssign( (void*)&MSG$, -1ll, (void*)"", 1ll, 0 );
     }
     goto label$3201;
     label$3807:;
     {
-     FBSTRING* vr$4460 = fb_CHR( 1, ((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394896ll) )) );
-     FBSTRING* vr$4461 = fb_StrAssign( (void*)&MSG$, -1ll, (void*)vr$4460, -1ll, 0 );
+     FBSTRING* vr$4463 = fb_CHR( 1, ((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394896ll) )) );
+     fb_StrAssign( (void*)&MSG$, -1ll, (void*)vr$4463, -1ll, 0 );
      fb_PrintString( 1, (FBSTRING*)&MSG$, 1 );
      fb_StrAssign( (void*)&MSG$, -1ll, (void*)"", 1ll, 0 );
     }
     goto label$3201;
     label$3808:;
     {
-     FBSTRING* vr$4463 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) );
-     FBSTRING* vr$4464 = fb_StrAssign( (void*)&MSG$, -1ll, (void*)vr$4463, -1ll, 0 );
+     FBSTRING* vr$4465 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) );
+     fb_StrAssign( (void*)&MSG$, -1ll, (void*)vr$4465, -1ll, 0 );
      fb_PrintString( 1, (FBSTRING*)&MSG$, 0 );
      fb_StrAssign( (void*)&MSG$, -1ll, (void*)"", 1ll, 0 );
     }
     goto label$3201;
     label$3809:;
     {
-     FBSTRING* vr$4466 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) );
-     FBSTRING* vr$4467 = fb_StrAssign( (void*)&MSG$, -1ll, (void*)vr$4466, -1ll, 0 );
+     FBSTRING* vr$4467 = fb_DoubleToStr( *(double*)((uint8*)THIS$1 + 394896ll) );
+     fb_StrAssign( (void*)&MSG$, -1ll, (void*)vr$4467, -1ll, 0 );
      fb_PrintString( 1, (FBSTRING*)&MSG$, 1 );
      fb_StrAssign( (void*)&MSG$, -1ll, (void*)"", 1ll, 0 );
     }
@@ -14682,15 +14678,15 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
     label$3810:;
     {
      FBSTRING* vr$4470 = fb_HEX_l( ((uint64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394896ll) )) );
-     FBSTRING* vr$4471 = fb_StrAssign( (void*)&MSG$, -1ll, (void*)vr$4470, -1ll, 0 );
+     fb_StrAssign( (void*)&MSG$, -1ll, (void*)vr$4470, -1ll, 0 );
      fb_PrintString( 1, (FBSTRING*)&MSG$, 0 );
      fb_StrAssign( (void*)&MSG$, -1ll, (void*)"", 1ll, 0 );
     }
     goto label$3201;
     label$3811:;
     {
-     FBSTRING* vr$4474 = fb_HEX_l( ((uint64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394896ll) )) );
-     FBSTRING* vr$4475 = fb_StrAssign( (void*)&MSG$, -1ll, (void*)vr$4474, -1ll, 0 );
+     FBSTRING* vr$4473 = fb_HEX_l( ((uint64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394896ll) )) );
+     fb_StrAssign( (void*)&MSG$, -1ll, (void*)vr$4473, -1ll, 0 );
      fb_PrintString( 1, (FBSTRING*)&MSG$, 1 );
      fb_StrAssign( (void*)&MSG$, -1ll, (void*)"", 1ll, 0 );
     }
@@ -14705,299 +14701,299 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       {
        FBSTRING TMP$1428$7;
        FBSTRING TMP$1429$7;
-       FBSTRING* vr$4478 = fb_StrAllocTempDescZEx( (uint8*)"CHARS.INC", 9ll );
-       FBSTRING* vr$4479 = fb_StrLcase2( (FBSTRING*)vr$4478, 0 );
+       FBSTRING* vr$4476 = fb_StrAllocTempDescZEx( (uint8*)"CHARS.INC", 9ll );
+       FBSTRING* vr$4477 = fb_StrLcase2( (FBSTRING*)vr$4476, 0 );
        __builtin_memset( &TMP$1428$7, 0, 24ll );
-       FBSTRING* vr$4482 = fb_StrConcat( &TMP$1428$7, (void*)"#include \x0D", 11ll, (void*)vr$4479, -1ll );
+       FBSTRING* vr$4480 = fb_StrConcat( &TMP$1428$7, (void*)"#include \x0D", 11ll, (void*)vr$4477, -1ll );
        __builtin_memset( &TMP$1429$7, 0, 24ll );
-       FBSTRING* vr$4485 = fb_StrConcat( &TMP$1429$7, (void*)vr$4482, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4485, 1 );
+       FBSTRING* vr$4483 = fb_StrConcat( &TMP$1429$7, (void*)vr$4480, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4483, 1 );
       }
       goto label$3813;
       label$3816:;
       {
        FBSTRING TMP$1431$7;
        FBSTRING TMP$1432$7;
-       FBSTRING* vr$4486 = fb_StrAllocTempDescZEx( (uint8*)"COLORS.INC", 10ll );
-       FBSTRING* vr$4487 = fb_StrLcase2( (FBSTRING*)vr$4486, 0 );
+       FBSTRING* vr$4484 = fb_StrAllocTempDescZEx( (uint8*)"COLORS.INC", 10ll );
+       FBSTRING* vr$4485 = fb_StrLcase2( (FBSTRING*)vr$4484, 0 );
        __builtin_memset( &TMP$1431$7, 0, 24ll );
-       FBSTRING* vr$4490 = fb_StrConcat( &TMP$1431$7, (void*)"#include \x0D", 11ll, (void*)vr$4487, -1ll );
+       FBSTRING* vr$4488 = fb_StrConcat( &TMP$1431$7, (void*)"#include \x0D", 11ll, (void*)vr$4485, -1ll );
        __builtin_memset( &TMP$1432$7, 0, 24ll );
-       FBSTRING* vr$4493 = fb_StrConcat( &TMP$1432$7, (void*)vr$4490, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4493, 1 );
+       FBSTRING* vr$4491 = fb_StrConcat( &TMP$1432$7, (void*)vr$4488, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4491, 1 );
       }
       goto label$3813;
       label$3817:;
       {
        FBSTRING TMP$1434$7;
        FBSTRING TMP$1435$7;
-       FBSTRING* vr$4494 = fb_StrAllocTempDescZEx( (uint8*)"CONSTS.INC", 10ll );
-       FBSTRING* vr$4495 = fb_StrLcase2( (FBSTRING*)vr$4494, 0 );
+       FBSTRING* vr$4492 = fb_StrAllocTempDescZEx( (uint8*)"CONSTS.INC", 10ll );
+       FBSTRING* vr$4493 = fb_StrLcase2( (FBSTRING*)vr$4492, 0 );
        __builtin_memset( &TMP$1434$7, 0, 24ll );
-       FBSTRING* vr$4498 = fb_StrConcat( &TMP$1434$7, (void*)"#include \x0D", 11ll, (void*)vr$4495, -1ll );
+       FBSTRING* vr$4496 = fb_StrConcat( &TMP$1434$7, (void*)"#include \x0D", 11ll, (void*)vr$4493, -1ll );
        __builtin_memset( &TMP$1435$7, 0, 24ll );
-       FBSTRING* vr$4501 = fb_StrConcat( &TMP$1435$7, (void*)vr$4498, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4501, 1 );
+       FBSTRING* vr$4499 = fb_StrConcat( &TMP$1435$7, (void*)vr$4496, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4499, 1 );
       }
       goto label$3813;
       label$3818:;
       {
        FBSTRING TMP$1437$7;
        FBSTRING TMP$1438$7;
-       FBSTRING* vr$4502 = fb_StrAllocTempDescZEx( (uint8*)"DEBUG.INC", 9ll );
-       FBSTRING* vr$4503 = fb_StrLcase2( (FBSTRING*)vr$4502, 0 );
+       FBSTRING* vr$4500 = fb_StrAllocTempDescZEx( (uint8*)"DEBUG.INC", 9ll );
+       FBSTRING* vr$4501 = fb_StrLcase2( (FBSTRING*)vr$4500, 0 );
        __builtin_memset( &TMP$1437$7, 0, 24ll );
-       FBSTRING* vr$4506 = fb_StrConcat( &TMP$1437$7, (void*)"#include \x0D", 11ll, (void*)vr$4503, -1ll );
+       FBSTRING* vr$4504 = fb_StrConcat( &TMP$1437$7, (void*)"#include \x0D", 11ll, (void*)vr$4501, -1ll );
        __builtin_memset( &TMP$1438$7, 0, 24ll );
-       FBSTRING* vr$4509 = fb_StrConcat( &TMP$1438$7, (void*)vr$4506, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4509, 1 );
+       FBSTRING* vr$4507 = fb_StrConcat( &TMP$1438$7, (void*)vr$4504, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4507, 1 );
       }
       goto label$3813;
       label$3819:;
       {
        FBSTRING TMP$1440$7;
        FBSTRING TMP$1441$7;
-       FBSTRING* vr$4510 = fb_StrAllocTempDescZEx( (uint8*)"FINISH.INC", 10ll );
-       FBSTRING* vr$4511 = fb_StrLcase2( (FBSTRING*)vr$4510, 0 );
+       FBSTRING* vr$4508 = fb_StrAllocTempDescZEx( (uint8*)"FINISH.INC", 10ll );
+       FBSTRING* vr$4509 = fb_StrLcase2( (FBSTRING*)vr$4508, 0 );
        __builtin_memset( &TMP$1440$7, 0, 24ll );
-       FBSTRING* vr$4514 = fb_StrConcat( &TMP$1440$7, (void*)"#include \x0D", 11ll, (void*)vr$4511, -1ll );
+       FBSTRING* vr$4512 = fb_StrConcat( &TMP$1440$7, (void*)"#include \x0D", 11ll, (void*)vr$4509, -1ll );
        __builtin_memset( &TMP$1441$7, 0, 24ll );
-       FBSTRING* vr$4517 = fb_StrConcat( &TMP$1441$7, (void*)vr$4514, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4517, 1 );
+       FBSTRING* vr$4515 = fb_StrConcat( &TMP$1441$7, (void*)vr$4512, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4515, 1 );
       }
       goto label$3813;
       label$3820:;
       {
        FBSTRING TMP$1443$7;
        FBSTRING TMP$1444$7;
-       FBSTRING* vr$4518 = fb_StrAllocTempDescZEx( (uint8*)"GLASS.INC", 9ll );
-       FBSTRING* vr$4519 = fb_StrLcase2( (FBSTRING*)vr$4518, 0 );
+       FBSTRING* vr$4516 = fb_StrAllocTempDescZEx( (uint8*)"GLASS.INC", 9ll );
+       FBSTRING* vr$4517 = fb_StrLcase2( (FBSTRING*)vr$4516, 0 );
        __builtin_memset( &TMP$1443$7, 0, 24ll );
-       FBSTRING* vr$4522 = fb_StrConcat( &TMP$1443$7, (void*)"#include \x0D", 11ll, (void*)vr$4519, -1ll );
+       FBSTRING* vr$4520 = fb_StrConcat( &TMP$1443$7, (void*)"#include \x0D", 11ll, (void*)vr$4517, -1ll );
        __builtin_memset( &TMP$1444$7, 0, 24ll );
-       FBSTRING* vr$4525 = fb_StrConcat( &TMP$1444$7, (void*)vr$4522, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4525, 1 );
+       FBSTRING* vr$4523 = fb_StrConcat( &TMP$1444$7, (void*)vr$4520, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4523, 1 );
       }
       goto label$3813;
       label$3821:;
       {
        FBSTRING TMP$1446$7;
        FBSTRING TMP$1447$7;
-       FBSTRING* vr$4526 = fb_StrAllocTempDescZEx( (uint8*)"GOLDS.INC", 9ll );
-       FBSTRING* vr$4527 = fb_StrLcase2( (FBSTRING*)vr$4526, 0 );
+       FBSTRING* vr$4524 = fb_StrAllocTempDescZEx( (uint8*)"GOLDS.INC", 9ll );
+       FBSTRING* vr$4525 = fb_StrLcase2( (FBSTRING*)vr$4524, 0 );
        __builtin_memset( &TMP$1446$7, 0, 24ll );
-       FBSTRING* vr$4530 = fb_StrConcat( &TMP$1446$7, (void*)"#include \x0D", 11ll, (void*)vr$4527, -1ll );
+       FBSTRING* vr$4528 = fb_StrConcat( &TMP$1446$7, (void*)"#include \x0D", 11ll, (void*)vr$4525, -1ll );
        __builtin_memset( &TMP$1447$7, 0, 24ll );
-       FBSTRING* vr$4533 = fb_StrConcat( &TMP$1447$7, (void*)vr$4530, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4533, 1 );
+       FBSTRING* vr$4531 = fb_StrConcat( &TMP$1447$7, (void*)vr$4528, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4531, 1 );
       }
       goto label$3813;
       label$3822:;
       {
        FBSTRING TMP$1449$7;
        FBSTRING TMP$1450$7;
-       FBSTRING* vr$4534 = fb_StrAllocTempDescZEx( (uint8*)"METALS.INC", 10ll );
-       FBSTRING* vr$4535 = fb_StrLcase2( (FBSTRING*)vr$4534, 0 );
+       FBSTRING* vr$4532 = fb_StrAllocTempDescZEx( (uint8*)"METALS.INC", 10ll );
+       FBSTRING* vr$4533 = fb_StrLcase2( (FBSTRING*)vr$4532, 0 );
        __builtin_memset( &TMP$1449$7, 0, 24ll );
-       FBSTRING* vr$4538 = fb_StrConcat( &TMP$1449$7, (void*)"#include \x0D", 11ll, (void*)vr$4535, -1ll );
+       FBSTRING* vr$4536 = fb_StrConcat( &TMP$1449$7, (void*)"#include \x0D", 11ll, (void*)vr$4533, -1ll );
        __builtin_memset( &TMP$1450$7, 0, 24ll );
-       FBSTRING* vr$4541 = fb_StrConcat( &TMP$1450$7, (void*)vr$4538, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4541, 1 );
+       FBSTRING* vr$4539 = fb_StrConcat( &TMP$1450$7, (void*)vr$4536, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4539, 1 );
       }
       goto label$3813;
       label$3823:;
       {
        FBSTRING TMP$1452$7;
        FBSTRING TMP$1453$7;
-       FBSTRING* vr$4542 = fb_StrAllocTempDescZEx( (uint8*)"RAD_DEF.INC", 11ll );
-       FBSTRING* vr$4543 = fb_StrLcase2( (FBSTRING*)vr$4542, 0 );
+       FBSTRING* vr$4540 = fb_StrAllocTempDescZEx( (uint8*)"RAD_DEF.INC", 11ll );
+       FBSTRING* vr$4541 = fb_StrLcase2( (FBSTRING*)vr$4540, 0 );
        __builtin_memset( &TMP$1452$7, 0, 24ll );
-       FBSTRING* vr$4546 = fb_StrConcat( &TMP$1452$7, (void*)"#include \x0D", 11ll, (void*)vr$4543, -1ll );
+       FBSTRING* vr$4544 = fb_StrConcat( &TMP$1452$7, (void*)"#include \x0D", 11ll, (void*)vr$4541, -1ll );
        __builtin_memset( &TMP$1453$7, 0, 24ll );
-       FBSTRING* vr$4549 = fb_StrConcat( &TMP$1453$7, (void*)vr$4546, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4549, 1 );
+       FBSTRING* vr$4547 = fb_StrConcat( &TMP$1453$7, (void*)vr$4544, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4547, 1 );
       }
       goto label$3813;
       label$3824:;
       {
        FBSTRING TMP$1455$7;
        FBSTRING TMP$1456$7;
-       FBSTRING* vr$4550 = fb_StrAllocTempDescZEx( (uint8*)"SHAPES2.INC", 11ll );
-       FBSTRING* vr$4551 = fb_StrLcase2( (FBSTRING*)vr$4550, 0 );
+       FBSTRING* vr$4548 = fb_StrAllocTempDescZEx( (uint8*)"SHAPES2.INC", 11ll );
+       FBSTRING* vr$4549 = fb_StrLcase2( (FBSTRING*)vr$4548, 0 );
        __builtin_memset( &TMP$1455$7, 0, 24ll );
-       FBSTRING* vr$4554 = fb_StrConcat( &TMP$1455$7, (void*)"#include \x0D", 11ll, (void*)vr$4551, -1ll );
+       FBSTRING* vr$4552 = fb_StrConcat( &TMP$1455$7, (void*)"#include \x0D", 11ll, (void*)vr$4549, -1ll );
        __builtin_memset( &TMP$1456$7, 0, 24ll );
-       FBSTRING* vr$4557 = fb_StrConcat( &TMP$1456$7, (void*)vr$4554, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4557, 1 );
+       FBSTRING* vr$4555 = fb_StrConcat( &TMP$1456$7, (void*)vr$4552, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4555, 1 );
       }
       goto label$3813;
       label$3825:;
       {
        FBSTRING TMP$1458$7;
        FBSTRING TMP$1459$7;
-       FBSTRING* vr$4558 = fb_StrAllocTempDescZEx( (uint8*)"SHAPES.INC", 10ll );
-       FBSTRING* vr$4559 = fb_StrLcase2( (FBSTRING*)vr$4558, 0 );
+       FBSTRING* vr$4556 = fb_StrAllocTempDescZEx( (uint8*)"SHAPES.INC", 10ll );
+       FBSTRING* vr$4557 = fb_StrLcase2( (FBSTRING*)vr$4556, 0 );
        __builtin_memset( &TMP$1458$7, 0, 24ll );
-       FBSTRING* vr$4562 = fb_StrConcat( &TMP$1458$7, (void*)"#include \x0D", 11ll, (void*)vr$4559, -1ll );
+       FBSTRING* vr$4560 = fb_StrConcat( &TMP$1458$7, (void*)"#include \x0D", 11ll, (void*)vr$4557, -1ll );
        __builtin_memset( &TMP$1459$7, 0, 24ll );
-       FBSTRING* vr$4565 = fb_StrConcat( &TMP$1459$7, (void*)vr$4562, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4565, 1 );
+       FBSTRING* vr$4563 = fb_StrConcat( &TMP$1459$7, (void*)vr$4560, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4563, 1 );
       }
       goto label$3813;
       label$3826:;
       {
        FBSTRING TMP$1461$7;
        FBSTRING TMP$1462$7;
-       FBSTRING* vr$4566 = fb_StrAllocTempDescZEx( (uint8*)"SHAPESQ.INC", 11ll );
-       FBSTRING* vr$4567 = fb_StrLcase2( (FBSTRING*)vr$4566, 0 );
+       FBSTRING* vr$4564 = fb_StrAllocTempDescZEx( (uint8*)"SHAPESQ.INC", 11ll );
+       FBSTRING* vr$4565 = fb_StrLcase2( (FBSTRING*)vr$4564, 0 );
        __builtin_memset( &TMP$1461$7, 0, 24ll );
-       FBSTRING* vr$4570 = fb_StrConcat( &TMP$1461$7, (void*)"#include \x0D", 11ll, (void*)vr$4567, -1ll );
+       FBSTRING* vr$4568 = fb_StrConcat( &TMP$1461$7, (void*)"#include \x0D", 11ll, (void*)vr$4565, -1ll );
        __builtin_memset( &TMP$1462$7, 0, 24ll );
-       FBSTRING* vr$4573 = fb_StrConcat( &TMP$1462$7, (void*)vr$4570, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4573, 1 );
+       FBSTRING* vr$4571 = fb_StrConcat( &TMP$1462$7, (void*)vr$4568, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4571, 1 );
       }
       goto label$3813;
       label$3827:;
       {
        FBSTRING TMP$1464$7;
        FBSTRING TMP$1465$7;
-       FBSTRING* vr$4574 = fb_StrAllocTempDescZEx( (uint8*)"SKIES.INC", 9ll );
-       FBSTRING* vr$4575 = fb_StrLcase2( (FBSTRING*)vr$4574, 0 );
+       FBSTRING* vr$4572 = fb_StrAllocTempDescZEx( (uint8*)"SKIES.INC", 9ll );
+       FBSTRING* vr$4573 = fb_StrLcase2( (FBSTRING*)vr$4572, 0 );
        __builtin_memset( &TMP$1464$7, 0, 24ll );
-       FBSTRING* vr$4578 = fb_StrConcat( &TMP$1464$7, (void*)"#include \x0D", 11ll, (void*)vr$4575, -1ll );
+       FBSTRING* vr$4576 = fb_StrConcat( &TMP$1464$7, (void*)"#include \x0D", 11ll, (void*)vr$4573, -1ll );
        __builtin_memset( &TMP$1465$7, 0, 24ll );
-       FBSTRING* vr$4581 = fb_StrConcat( &TMP$1465$7, (void*)vr$4578, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4581, 1 );
+       FBSTRING* vr$4579 = fb_StrConcat( &TMP$1465$7, (void*)vr$4576, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4579, 1 );
       }
       goto label$3813;
       label$3828:;
       {
        FBSTRING TMP$1467$7;
        FBSTRING TMP$1468$7;
-       FBSTRING* vr$4582 = fb_StrAllocTempDescZEx( (uint8*)"STAGE1.INC", 10ll );
-       FBSTRING* vr$4583 = fb_StrLcase2( (FBSTRING*)vr$4582, 0 );
+       FBSTRING* vr$4580 = fb_StrAllocTempDescZEx( (uint8*)"STAGE1.INC", 10ll );
+       FBSTRING* vr$4581 = fb_StrLcase2( (FBSTRING*)vr$4580, 0 );
        __builtin_memset( &TMP$1467$7, 0, 24ll );
-       FBSTRING* vr$4586 = fb_StrConcat( &TMP$1467$7, (void*)"#include \x0D", 11ll, (void*)vr$4583, -1ll );
+       FBSTRING* vr$4584 = fb_StrConcat( &TMP$1467$7, (void*)"#include \x0D", 11ll, (void*)vr$4581, -1ll );
        __builtin_memset( &TMP$1468$7, 0, 24ll );
-       FBSTRING* vr$4589 = fb_StrConcat( &TMP$1468$7, (void*)vr$4586, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4589, 1 );
+       FBSTRING* vr$4587 = fb_StrConcat( &TMP$1468$7, (void*)vr$4584, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4587, 1 );
       }
       goto label$3813;
       label$3829:;
       {
        FBSTRING TMP$1470$7;
        FBSTRING TMP$1471$7;
-       FBSTRING* vr$4590 = fb_StrAllocTempDescZEx( (uint8*)"STARS.INC", 9ll );
-       FBSTRING* vr$4591 = fb_StrLcase2( (FBSTRING*)vr$4590, 0 );
+       FBSTRING* vr$4588 = fb_StrAllocTempDescZEx( (uint8*)"STARS.INC", 9ll );
+       FBSTRING* vr$4589 = fb_StrLcase2( (FBSTRING*)vr$4588, 0 );
        __builtin_memset( &TMP$1470$7, 0, 24ll );
-       FBSTRING* vr$4594 = fb_StrConcat( &TMP$1470$7, (void*)"#include \x0D", 11ll, (void*)vr$4591, -1ll );
+       FBSTRING* vr$4592 = fb_StrConcat( &TMP$1470$7, (void*)"#include \x0D", 11ll, (void*)vr$4589, -1ll );
        __builtin_memset( &TMP$1471$7, 0, 24ll );
-       FBSTRING* vr$4597 = fb_StrConcat( &TMP$1471$7, (void*)vr$4594, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4597, 1 );
+       FBSTRING* vr$4595 = fb_StrConcat( &TMP$1471$7, (void*)vr$4592, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4595, 1 );
       }
       goto label$3813;
       label$3830:;
       {
        FBSTRING TMP$1473$7;
        FBSTRING TMP$1474$7;
-       FBSTRING* vr$4598 = fb_StrAllocTempDescZEx( (uint8*)"STDCAM.INC", 10ll );
-       FBSTRING* vr$4599 = fb_StrLcase2( (FBSTRING*)vr$4598, 0 );
+       FBSTRING* vr$4596 = fb_StrAllocTempDescZEx( (uint8*)"STDCAM.INC", 10ll );
+       FBSTRING* vr$4597 = fb_StrLcase2( (FBSTRING*)vr$4596, 0 );
        __builtin_memset( &TMP$1473$7, 0, 24ll );
-       FBSTRING* vr$4602 = fb_StrConcat( &TMP$1473$7, (void*)"#include \x0D", 11ll, (void*)vr$4599, -1ll );
+       FBSTRING* vr$4600 = fb_StrConcat( &TMP$1473$7, (void*)"#include \x0D", 11ll, (void*)vr$4597, -1ll );
        __builtin_memset( &TMP$1474$7, 0, 24ll );
-       FBSTRING* vr$4605 = fb_StrConcat( &TMP$1474$7, (void*)vr$4602, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4605, 1 );
+       FBSTRING* vr$4603 = fb_StrConcat( &TMP$1474$7, (void*)vr$4600, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4603, 1 );
       }
       goto label$3813;
       label$3831:;
       {
        FBSTRING TMP$1476$7;
        FBSTRING TMP$1477$7;
-       FBSTRING* vr$4606 = fb_StrAllocTempDescZEx( (uint8*)"STONEOLD.INC", 12ll );
-       FBSTRING* vr$4607 = fb_StrLcase2( (FBSTRING*)vr$4606, 0 );
+       FBSTRING* vr$4604 = fb_StrAllocTempDescZEx( (uint8*)"STONEOLD.INC", 12ll );
+       FBSTRING* vr$4605 = fb_StrLcase2( (FBSTRING*)vr$4604, 0 );
        __builtin_memset( &TMP$1476$7, 0, 24ll );
-       FBSTRING* vr$4610 = fb_StrConcat( &TMP$1476$7, (void*)"#include \x0D", 11ll, (void*)vr$4607, -1ll );
+       FBSTRING* vr$4608 = fb_StrConcat( &TMP$1476$7, (void*)"#include \x0D", 11ll, (void*)vr$4605, -1ll );
        __builtin_memset( &TMP$1477$7, 0, 24ll );
-       FBSTRING* vr$4613 = fb_StrConcat( &TMP$1477$7, (void*)vr$4610, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4613, 1 );
+       FBSTRING* vr$4611 = fb_StrConcat( &TMP$1477$7, (void*)vr$4608, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4611, 1 );
       }
       goto label$3813;
       label$3832:;
       {
        FBSTRING TMP$1479$7;
        FBSTRING TMP$1480$7;
-       FBSTRING* vr$4614 = fb_StrAllocTempDescZEx( (uint8*)"STONES1.INC", 11ll );
-       FBSTRING* vr$4615 = fb_StrLcase2( (FBSTRING*)vr$4614, 0 );
+       FBSTRING* vr$4612 = fb_StrAllocTempDescZEx( (uint8*)"STONES1.INC", 11ll );
+       FBSTRING* vr$4613 = fb_StrLcase2( (FBSTRING*)vr$4612, 0 );
        __builtin_memset( &TMP$1479$7, 0, 24ll );
-       FBSTRING* vr$4618 = fb_StrConcat( &TMP$1479$7, (void*)"#include \x0D", 11ll, (void*)vr$4615, -1ll );
+       FBSTRING* vr$4616 = fb_StrConcat( &TMP$1479$7, (void*)"#include \x0D", 11ll, (void*)vr$4613, -1ll );
        __builtin_memset( &TMP$1480$7, 0, 24ll );
-       FBSTRING* vr$4621 = fb_StrConcat( &TMP$1480$7, (void*)vr$4618, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4621, 1 );
+       FBSTRING* vr$4619 = fb_StrConcat( &TMP$1480$7, (void*)vr$4616, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4619, 1 );
       }
       goto label$3813;
       label$3833:;
       {
        FBSTRING TMP$1482$7;
        FBSTRING TMP$1483$7;
-       FBSTRING* vr$4622 = fb_StrAllocTempDescZEx( (uint8*)"STONES2.INC", 11ll );
-       FBSTRING* vr$4623 = fb_StrLcase2( (FBSTRING*)vr$4622, 0 );
+       FBSTRING* vr$4620 = fb_StrAllocTempDescZEx( (uint8*)"STONES2.INC", 11ll );
+       FBSTRING* vr$4621 = fb_StrLcase2( (FBSTRING*)vr$4620, 0 );
        __builtin_memset( &TMP$1482$7, 0, 24ll );
-       FBSTRING* vr$4626 = fb_StrConcat( &TMP$1482$7, (void*)"#include \x0D", 11ll, (void*)vr$4623, -1ll );
+       FBSTRING* vr$4624 = fb_StrConcat( &TMP$1482$7, (void*)"#include \x0D", 11ll, (void*)vr$4621, -1ll );
        __builtin_memset( &TMP$1483$7, 0, 24ll );
-       FBSTRING* vr$4629 = fb_StrConcat( &TMP$1483$7, (void*)vr$4626, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4629, 1 );
+       FBSTRING* vr$4627 = fb_StrConcat( &TMP$1483$7, (void*)vr$4624, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4627, 1 );
       }
       goto label$3813;
       label$3834:;
       {
        FBSTRING TMP$1485$7;
        FBSTRING TMP$1486$7;
-       FBSTRING* vr$4630 = fb_StrAllocTempDescZEx( (uint8*)"STONES.INC", 10ll );
-       FBSTRING* vr$4631 = fb_StrLcase2( (FBSTRING*)vr$4630, 0 );
+       FBSTRING* vr$4628 = fb_StrAllocTempDescZEx( (uint8*)"STONES.INC", 10ll );
+       FBSTRING* vr$4629 = fb_StrLcase2( (FBSTRING*)vr$4628, 0 );
        __builtin_memset( &TMP$1485$7, 0, 24ll );
-       FBSTRING* vr$4634 = fb_StrConcat( &TMP$1485$7, (void*)"#include \x0D", 11ll, (void*)vr$4631, -1ll );
+       FBSTRING* vr$4632 = fb_StrConcat( &TMP$1485$7, (void*)"#include \x0D", 11ll, (void*)vr$4629, -1ll );
        __builtin_memset( &TMP$1486$7, 0, 24ll );
-       FBSTRING* vr$4637 = fb_StrConcat( &TMP$1486$7, (void*)vr$4634, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4637, 1 );
+       FBSTRING* vr$4635 = fb_StrConcat( &TMP$1486$7, (void*)vr$4632, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4635, 1 );
       }
       goto label$3813;
       label$3835:;
       {
        FBSTRING TMP$1488$7;
        FBSTRING TMP$1489$7;
-       FBSTRING* vr$4638 = fb_StrAllocTempDescZEx( (uint8*)"TEXTURES.INC", 12ll );
-       FBSTRING* vr$4639 = fb_StrLcase2( (FBSTRING*)vr$4638, 0 );
+       FBSTRING* vr$4636 = fb_StrAllocTempDescZEx( (uint8*)"TEXTURES.INC", 12ll );
+       FBSTRING* vr$4637 = fb_StrLcase2( (FBSTRING*)vr$4636, 0 );
        __builtin_memset( &TMP$1488$7, 0, 24ll );
-       FBSTRING* vr$4642 = fb_StrConcat( &TMP$1488$7, (void*)"#include \x0D", 11ll, (void*)vr$4639, -1ll );
+       FBSTRING* vr$4640 = fb_StrConcat( &TMP$1488$7, (void*)"#include \x0D", 11ll, (void*)vr$4637, -1ll );
        __builtin_memset( &TMP$1489$7, 0, 24ll );
-       FBSTRING* vr$4645 = fb_StrConcat( &TMP$1489$7, (void*)vr$4642, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4645, 1 );
+       FBSTRING* vr$4643 = fb_StrConcat( &TMP$1489$7, (void*)vr$4640, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4643, 1 );
       }
       goto label$3813;
       label$3836:;
       {
        FBSTRING TMP$1491$7;
        FBSTRING TMP$1492$7;
-       FBSTRING* vr$4646 = fb_StrAllocTempDescZEx( (uint8*)"WOODMAPS.INC", 12ll );
-       FBSTRING* vr$4647 = fb_StrLcase2( (FBSTRING*)vr$4646, 0 );
+       FBSTRING* vr$4644 = fb_StrAllocTempDescZEx( (uint8*)"WOODMAPS.INC", 12ll );
+       FBSTRING* vr$4645 = fb_StrLcase2( (FBSTRING*)vr$4644, 0 );
        __builtin_memset( &TMP$1491$7, 0, 24ll );
-       FBSTRING* vr$4650 = fb_StrConcat( &TMP$1491$7, (void*)"#include \x0D", 11ll, (void*)vr$4647, -1ll );
+       FBSTRING* vr$4648 = fb_StrConcat( &TMP$1491$7, (void*)"#include \x0D", 11ll, (void*)vr$4645, -1ll );
        __builtin_memset( &TMP$1492$7, 0, 24ll );
-       FBSTRING* vr$4653 = fb_StrConcat( &TMP$1492$7, (void*)vr$4650, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4653, 1 );
+       FBSTRING* vr$4651 = fb_StrConcat( &TMP$1492$7, (void*)vr$4648, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4651, 1 );
       }
       goto label$3813;
       label$3837:;
       {
        FBSTRING TMP$1494$7;
        FBSTRING TMP$1495$7;
-       FBSTRING* vr$4654 = fb_StrAllocTempDescZEx( (uint8*)"WOODS.INC", 9ll );
-       FBSTRING* vr$4655 = fb_StrLcase2( (FBSTRING*)vr$4654, 0 );
+       FBSTRING* vr$4652 = fb_StrAllocTempDescZEx( (uint8*)"WOODS.INC", 9ll );
+       FBSTRING* vr$4653 = fb_StrLcase2( (FBSTRING*)vr$4652, 0 );
        __builtin_memset( &TMP$1494$7, 0, 24ll );
-       FBSTRING* vr$4658 = fb_StrConcat( &TMP$1494$7, (void*)"#include \x0D", 11ll, (void*)vr$4655, -1ll );
+       FBSTRING* vr$4656 = fb_StrConcat( &TMP$1494$7, (void*)"#include \x0D", 11ll, (void*)vr$4653, -1ll );
        __builtin_memset( &TMP$1495$7, 0, 24ll );
-       FBSTRING* vr$4661 = fb_StrConcat( &TMP$1495$7, (void*)vr$4658, -1ll, (void*)"\x0D", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4661, 1 );
+       FBSTRING* vr$4659 = fb_StrConcat( &TMP$1495$7, (void*)vr$4656, -1ll, (void*)"\x0D", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4659, 1 );
       }
       goto label$3813;
       label$3814:;
@@ -15040,1112 +15036,1112 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       goto label$3840;
       label$3841:;
       {
-       FBSTRING* vr$4664 = fb_StrAllocTempDescZEx( (uint8*)"gosub", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4664, 0 );
+       FBSTRING* vr$4662 = fb_StrAllocTempDescZEx( (uint8*)"gosub", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4662, 0 );
       }
       goto label$3839;
       label$3842:;
       {
-       FBSTRING* vr$4665 = fb_StrAllocTempDescZEx( (uint8*)"goto", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4665, 0 );
+       FBSTRING* vr$4663 = fb_StrAllocTempDescZEx( (uint8*)"goto", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4663, 0 );
       }
       goto label$3839;
       label$3843:;
       {
-       FBSTRING* vr$4666 = fb_StrAllocTempDescZEx( (uint8*)"gradient", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4666, 0 );
+       FBSTRING* vr$4664 = fb_StrAllocTempDescZEx( (uint8*)"gradient", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4664, 0 );
       }
       goto label$3839;
       label$3844:;
       {
-       FBSTRING* vr$4667 = fb_StrAllocTempDescZEx( (uint8*)"granite", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4667, 0 );
+       FBSTRING* vr$4665 = fb_StrAllocTempDescZEx( (uint8*)"granite", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4665, 0 );
       }
       goto label$3839;
       label$3845:;
       {
-       FBSTRING* vr$4668 = fb_StrAllocTempDescZEx( (uint8*)"gray", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4668, 0 );
+       FBSTRING* vr$4666 = fb_StrAllocTempDescZEx( (uint8*)"gray", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4666, 0 );
       }
       goto label$3839;
       label$3846:;
       {
-       FBSTRING* vr$4669 = fb_StrAllocTempDescZEx( (uint8*)"gray_threshold", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4669, 0 );
+       FBSTRING* vr$4667 = fb_StrAllocTempDescZEx( (uint8*)"gray_threshold", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4667, 0 );
       }
       goto label$3839;
       label$3847:;
       {
-       FBSTRING* vr$4670 = fb_StrAllocTempDescZEx( (uint8*)"greateeq", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4670, 0 );
+       FBSTRING* vr$4668 = fb_StrAllocTempDescZEx( (uint8*)"greateeq", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4668, 0 );
       }
       goto label$3839;
       label$3848:;
       {
-       FBSTRING* vr$4671 = fb_StrAllocTempDescZEx( (uint8*)"greater", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4671, 0 );
+       FBSTRING* vr$4669 = fb_StrAllocTempDescZEx( (uint8*)"greater", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4669, 0 );
       }
       goto label$3839;
       label$3849:;
       {
-       FBSTRING* vr$4672 = fb_StrAllocTempDescZEx( (uint8*)"green", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4672, 0 );
+       FBSTRING* vr$4670 = fb_StrAllocTempDescZEx( (uint8*)"green", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4670, 0 );
       }
       goto label$3839;
       label$3850:;
       {
-       FBSTRING* vr$4673 = fb_StrAllocTempDescZEx( (uint8*)"group", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4673, 0 );
+       FBSTRING* vr$4671 = fb_StrAllocTempDescZEx( (uint8*)"group", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4671, 0 );
       }
       goto label$3839;
       label$3851:;
       {
-       FBSTRING* vr$4674 = fb_StrAllocTempDescZEx( (uint8*)"group_by", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4674, 0 );
+       FBSTRING* vr$4672 = fb_StrAllocTempDescZEx( (uint8*)"group_by", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4672, 0 );
       }
       goto label$3839;
       label$3852:;
       {
-       FBSTRING* vr$4675 = fb_StrAllocTempDescZEx( (uint8*)"h", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4675, 0 );
+       FBSTRING* vr$4673 = fb_StrAllocTempDescZEx( (uint8*)"h", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4673, 0 );
       }
       goto label$3839;
       label$3853:;
       {
-       FBSTRING* vr$4676 = fb_StrAllocTempDescZEx( (uint8*)"half", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4676, 0 );
+       FBSTRING* vr$4674 = fb_StrAllocTempDescZEx( (uint8*)"half", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4674, 0 );
       }
       goto label$3839;
       label$3854:;
       {
-       FBSTRING* vr$4677 = fb_StrAllocTempDescZEx( (uint8*)"hash", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4677, 0 );
+       FBSTRING* vr$4675 = fb_StrAllocTempDescZEx( (uint8*)"hash", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4675, 0 );
       }
       goto label$3839;
       label$3855:;
       {
-       FBSTRING* vr$4678 = fb_StrAllocTempDescZEx( (uint8*)"hashnoise", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4678, 0 );
+       FBSTRING* vr$4676 = fb_StrAllocTempDescZEx( (uint8*)"hashnoise", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4676, 0 );
       }
       goto label$3839;
       label$3856:;
       {
-       FBSTRING* vr$4679 = fb_StrAllocTempDescZEx( (uint8*)"having", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4679, 0 );
+       FBSTRING* vr$4677 = fb_StrAllocTempDescZEx( (uint8*)"having", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4677, 0 );
       }
       goto label$3839;
       label$3857:;
       {
-       FBSTRING* vr$4680 = fb_StrAllocTempDescZEx( (uint8*)"header", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4680, 0 );
+       FBSTRING* vr$4678 = fb_StrAllocTempDescZEx( (uint8*)"header", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4678, 0 );
       }
       goto label$3839;
       label$3858:;
       {
-       FBSTRING* vr$4681 = fb_StrAllocTempDescZEx( (uint8*)"heading", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4681, 0 );
+       FBSTRING* vr$4679 = fb_StrAllocTempDescZEx( (uint8*)"heading", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4679, 0 );
       }
       goto label$3839;
       label$3859:;
       {
-       FBSTRING* vr$4682 = fb_StrAllocTempDescZEx( (uint8*)"height_field", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4682, 0 );
+       FBSTRING* vr$4680 = fb_StrAllocTempDescZEx( (uint8*)"height_field", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4680, 0 );
       }
       goto label$3839;
       label$3860:;
       {
-       FBSTRING* vr$4683 = fb_StrAllocTempDescZEx( (uint8*)"henyey_greenstein", 17ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4683, 0 );
+       FBSTRING* vr$4681 = fb_StrAllocTempDescZEx( (uint8*)"henyey_greenstein", 17ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4681, 0 );
       }
       goto label$3839;
       label$3861:;
       {
-       FBSTRING* vr$4684 = fb_StrAllocTempDescZEx( (uint8*)"hex", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4684, 0 );
+       FBSTRING* vr$4682 = fb_StrAllocTempDescZEx( (uint8*)"hex", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4682, 0 );
       }
       goto label$3839;
       label$3862:;
       {
-       FBSTRING* vr$4685 = fb_StrAllocTempDescZEx( (uint8*)"hexagon", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4685, 0 );
+       FBSTRING* vr$4683 = fb_StrAllocTempDescZEx( (uint8*)"hexagon", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4683, 0 );
       }
       goto label$3839;
       label$3863:;
       {
-       FBSTRING* vr$4686 = fb_StrAllocTempDescZEx( (uint8*)"hf_gray_16", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4686, 0 );
+       FBSTRING* vr$4684 = fb_StrAllocTempDescZEx( (uint8*)"hf_gray_16", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4684, 0 );
       }
       goto label$3839;
       label$3864:;
       {
-       FBSTRING* vr$4687 = fb_StrAllocTempDescZEx( (uint8*)"hierarchy", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4687, 0 );
+       FBSTRING* vr$4685 = fb_StrAllocTempDescZEx( (uint8*)"hierarchy", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4685, 0 );
       }
       goto label$3839;
       label$3865:;
       {
-       FBSTRING* vr$4688 = fb_StrAllocTempDescZEx( (uint8*)"highp", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4688, 0 );
+       FBSTRING* vr$4686 = fb_StrAllocTempDescZEx( (uint8*)"highp", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4686, 0 );
       }
       goto label$3839;
       label$3866:;
       {
-       FBSTRING* vr$4689 = fb_StrAllocTempDescZEx( (uint8*)"high-value", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4689, 0 );
+       FBSTRING* vr$4687 = fb_StrAllocTempDescZEx( (uint8*)"high-value", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4687, 0 );
       }
       goto label$3839;
       label$3867:;
       {
-       FBSTRING* vr$4690 = fb_StrAllocTempDescZEx( (uint8*)"high-values", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4690, 0 );
+       FBSTRING* vr$4688 = fb_StrAllocTempDescZEx( (uint8*)"high-values", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4688, 0 );
       }
       goto label$3839;
       label$3868:;
       {
-       FBSTRING* vr$4691 = fb_StrAllocTempDescZEx( (uint8*)"hintend", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4691, 0 );
+       FBSTRING* vr$4689 = fb_StrAllocTempDescZEx( (uint8*)"hintend", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4689, 0 );
       }
       goto label$3839;
       label$3869:;
       {
-       FBSTRING* vr$4692 = fb_StrAllocTempDescZEx( (uint8*)"hint_error", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4692, 0 );
+       FBSTRING* vr$4690 = fb_StrAllocTempDescZEx( (uint8*)"hint_error", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4690, 0 );
       }
       goto label$3839;
       label$3870:;
       {
-       FBSTRING* vr$4693 = fb_StrAllocTempDescZEx( (uint8*)"hintstart", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4693, 0 );
+       FBSTRING* vr$4691 = fb_StrAllocTempDescZEx( (uint8*)"hintstart", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4691, 0 );
       }
       goto label$3839;
       label$3871:;
       {
-       FBSTRING* vr$4694 = fb_StrAllocTempDescZEx( (uint8*)"holdout", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4694, 0 );
+       FBSTRING* vr$4692 = fb_StrAllocTempDescZEx( (uint8*)"holdout", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4692, 0 );
       }
       goto label$3839;
       label$3872:;
       {
-       FBSTRING* vr$4695 = fb_StrAllocTempDescZEx( (uint8*)"hollow", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4695, 0 );
+       FBSTRING* vr$4693 = fb_StrAllocTempDescZEx( (uint8*)"hollow", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4693, 0 );
       }
       goto label$3839;
       label$3873:;
       {
-       FBSTRING* vr$4696 = fb_StrAllocTempDescZEx( (uint8*)"hour", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4696, 0 );
+       FBSTRING* vr$4694 = fb_StrAllocTempDescZEx( (uint8*)"hour", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4694, 0 );
       }
       goto label$3839;
       label$3874:;
       {
-       FBSTRING* vr$4697 = fb_StrAllocTempDescZEx( (uint8*)"hvec2", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4697, 0 );
+       FBSTRING* vr$4695 = fb_StrAllocTempDescZEx( (uint8*)"hvec2", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4695, 0 );
       }
       goto label$3839;
       label$3875:;
       {
-       FBSTRING* vr$4698 = fb_StrAllocTempDescZEx( (uint8*)"hvec3", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4698, 0 );
+       FBSTRING* vr$4696 = fb_StrAllocTempDescZEx( (uint8*)"hvec3", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4696, 0 );
       }
       goto label$3839;
       label$3876:;
       {
-       FBSTRING* vr$4699 = fb_StrAllocTempDescZEx( (uint8*)"hvec4", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4699, 0 );
+       FBSTRING* vr$4697 = fb_StrAllocTempDescZEx( (uint8*)"hvec4", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4697, 0 );
       }
       goto label$3839;
       label$3877:;
       {
-       FBSTRING* vr$4700 = fb_StrAllocTempDescZEx( (uint8*)"hypercomplex", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4700, 0 );
+       FBSTRING* vr$4698 = fb_StrAllocTempDescZEx( (uint8*)"hypercomplex", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4698, 0 );
       }
       goto label$3839;
       label$3878:;
       {
-       FBSTRING* vr$4701 = fb_StrAllocTempDescZEx( (uint8*)"hypot", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4701, 0 );
+       FBSTRING* vr$4699 = fb_StrAllocTempDescZEx( (uint8*)"hypot", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4699, 0 );
       }
       goto label$3839;
       label$3879:;
       {
-       FBSTRING* vr$4702 = fb_StrAllocTempDescZEx( (uint8*)"i", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4702, 0 );
+       FBSTRING* vr$4700 = fb_StrAllocTempDescZEx( (uint8*)"i", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4700, 0 );
       }
       goto label$3839;
       label$3880:;
       {
-       FBSTRING* vr$4703 = fb_StrAllocTempDescZEx( (uint8*)"iChannel0", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4703, 0 );
+       FBSTRING* vr$4701 = fb_StrAllocTempDescZEx( (uint8*)"iChannel0", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4701, 0 );
       }
       goto label$3839;
       label$3881:;
       {
-       FBSTRING* vr$4704 = fb_StrAllocTempDescZEx( (uint8*)"iChannel1", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4704, 0 );
+       FBSTRING* vr$4702 = fb_StrAllocTempDescZEx( (uint8*)"iChannel1", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4702, 0 );
       }
       goto label$3839;
       label$3882:;
       {
-       FBSTRING* vr$4705 = fb_StrAllocTempDescZEx( (uint8*)"iChannel2", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4705, 0 );
+       FBSTRING* vr$4703 = fb_StrAllocTempDescZEx( (uint8*)"iChannel2", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4703, 0 );
       }
       goto label$3839;
       label$3883:;
       {
-       FBSTRING* vr$4706 = fb_StrAllocTempDescZEx( (uint8*)"iChannel3", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4706, 0 );
+       FBSTRING* vr$4704 = fb_StrAllocTempDescZEx( (uint8*)"iChannel3", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4704, 0 );
       }
       goto label$3839;
       label$3884:;
       {
-       FBSTRING* vr$4707 = fb_StrAllocTempDescZEx( (uint8*)"iChannelResolution", 18ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4707, 0 );
+       FBSTRING* vr$4705 = fb_StrAllocTempDescZEx( (uint8*)"iChannelResolution", 18ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4705, 0 );
       }
       goto label$3839;
       label$3885:;
       {
-       FBSTRING* vr$4708 = fb_StrAllocTempDescZEx( (uint8*)"iChannelTime", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4708, 0 );
+       FBSTRING* vr$4706 = fb_StrAllocTempDescZEx( (uint8*)"iChannelTime", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4706, 0 );
       }
       goto label$3839;
       label$3886:;
       {
-       FBSTRING* vr$4709 = fb_StrAllocTempDescZEx( (uint8*)"iCube", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4709, 0 );
+       FBSTRING* vr$4707 = fb_StrAllocTempDescZEx( (uint8*)"iCube", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4707, 0 );
       }
       goto label$3839;
       label$3887:;
       {
-       FBSTRING* vr$4710 = fb_StrAllocTempDescZEx( (uint8*)"id", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4710, 0 );
+       FBSTRING* vr$4708 = fb_StrAllocTempDescZEx( (uint8*)"id", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4708, 0 );
       }
       goto label$3839;
       label$3888:;
       {
-       FBSTRING* vr$4711 = fb_StrAllocTempDescZEx( (uint8*)"iDate", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4711, 0 );
+       FBSTRING* vr$4709 = fb_StrAllocTempDescZEx( (uint8*)"iDate", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4709, 0 );
       }
       goto label$3839;
       label$3889:;
       {
-       FBSTRING* vr$4712 = fb_StrAllocTempDescZEx( (uint8*)"identification", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4712, 0 );
+       FBSTRING* vr$4710 = fb_StrAllocTempDescZEx( (uint8*)"identification", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4710, 0 );
       }
       goto label$3839;
       label$3890:;
       {
-       FBSTRING* vr$4713 = fb_StrAllocTempDescZEx( (uint8*)"if", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4713, 0 );
+       FBSTRING* vr$4711 = fb_StrAllocTempDescZEx( (uint8*)"if", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4711, 0 );
       }
       goto label$3839;
       label$3891:;
       {
-       FBSTRING* vr$4714 = fb_StrAllocTempDescZEx( (uint8*)"ifdef", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4714, 0 );
+       FBSTRING* vr$4712 = fb_StrAllocTempDescZEx( (uint8*)"ifdef", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4712, 0 );
       }
       goto label$3839;
       label$3892:;
       {
-       FBSTRING* vr$4715 = fb_StrAllocTempDescZEx( (uint8*)"ifelse", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4715, 0 );
+       FBSTRING* vr$4713 = fb_StrAllocTempDescZEx( (uint8*)"ifelse", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4713, 0 );
       }
       goto label$3839;
       label$3893:;
       {
-       FBSTRING* vr$4716 = fb_StrAllocTempDescZEx( (uint8*)"iff", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4716, 0 );
+       FBSTRING* vr$4714 = fb_StrAllocTempDescZEx( (uint8*)"iff", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4714, 0 );
       }
       goto label$3839;
       label$3894:;
       {
-       FBSTRING* vr$4717 = fb_StrAllocTempDescZEx( (uint8*)"ifndef", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4717, 0 );
+       FBSTRING* vr$4715 = fb_StrAllocTempDescZEx( (uint8*)"ifndef", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4715, 0 );
       }
       goto label$3839;
       label$3895:;
       {
-       FBSTRING* vr$4718 = fb_StrAllocTempDescZEx( (uint8*)"iframe", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4718, 0 );
+       FBSTRING* vr$4716 = fb_StrAllocTempDescZEx( (uint8*)"iframe", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4716, 0 );
       }
       goto label$3839;
       label$3896:;
       {
-       FBSTRING* vr$4719 = fb_StrAllocTempDescZEx( (uint8*)"iframerate", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4719, 0 );
+       FBSTRING* vr$4717 = fb_StrAllocTempDescZEx( (uint8*)"iframerate", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4717, 0 );
       }
       goto label$3839;
       label$3897:;
       {
-       FBSTRING* vr$4720 = fb_StrAllocTempDescZEx( (uint8*)"iGlobalTime", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4720, 0 );
+       FBSTRING* vr$4718 = fb_StrAllocTempDescZEx( (uint8*)"iGlobalTime", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4718, 0 );
       }
       goto label$3839;
       label$3898:;
       {
-       FBSTRING* vr$4721 = fb_StrAllocTempDescZEx( (uint8*)"iimage1D", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4721, 0 );
+       FBSTRING* vr$4719 = fb_StrAllocTempDescZEx( (uint8*)"iimage1D", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4719, 0 );
       }
       goto label$3839;
       label$3899:;
       {
-       FBSTRING* vr$4722 = fb_StrAllocTempDescZEx( (uint8*)"iimage1DArray", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4722, 0 );
+       FBSTRING* vr$4720 = fb_StrAllocTempDescZEx( (uint8*)"iimage1DArray", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4720, 0 );
       }
       goto label$3839;
       label$3900:;
       {
-       FBSTRING* vr$4723 = fb_StrAllocTempDescZEx( (uint8*)"iimage2D", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4723, 0 );
+       FBSTRING* vr$4721 = fb_StrAllocTempDescZEx( (uint8*)"iimage2D", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4721, 0 );
       }
       goto label$3839;
       label$3901:;
       {
-       FBSTRING* vr$4724 = fb_StrAllocTempDescZEx( (uint8*)"iimage2DArray", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4724, 0 );
+       FBSTRING* vr$4722 = fb_StrAllocTempDescZEx( (uint8*)"iimage2DArray", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4722, 0 );
       }
       goto label$3839;
       label$3902:;
       {
-       FBSTRING* vr$4725 = fb_StrAllocTempDescZEx( (uint8*)"iimage3D", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4725, 0 );
+       FBSTRING* vr$4723 = fb_StrAllocTempDescZEx( (uint8*)"iimage3D", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4723, 0 );
       }
       goto label$3839;
       label$3903:;
       {
-       FBSTRING* vr$4726 = fb_StrAllocTempDescZEx( (uint8*)"iimageBuffer", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4726, 0 );
+       FBSTRING* vr$4724 = fb_StrAllocTempDescZEx( (uint8*)"iimageBuffer", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4724, 0 );
       }
       goto label$3839;
       label$3904:;
       {
-       FBSTRING* vr$4727 = fb_StrAllocTempDescZEx( (uint8*)"iimageCube", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4727, 0 );
+       FBSTRING* vr$4725 = fb_StrAllocTempDescZEx( (uint8*)"iimageCube", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4725, 0 );
       }
       goto label$3839;
       label$3905:;
       {
-       FBSTRING* vr$4728 = fb_StrAllocTempDescZEx( (uint8*)"image", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4728, 0 );
+       FBSTRING* vr$4726 = fb_StrAllocTempDescZEx( (uint8*)"image", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4726, 0 );
       }
       goto label$3839;
       label$3906:;
       {
-       FBSTRING* vr$4729 = fb_StrAllocTempDescZEx( (uint8*)"image1D", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4729, 0 );
+       FBSTRING* vr$4727 = fb_StrAllocTempDescZEx( (uint8*)"image1D", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4727, 0 );
       }
       goto label$3839;
       label$3907:;
       {
-       FBSTRING* vr$4730 = fb_StrAllocTempDescZEx( (uint8*)"image1DArray", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4730, 0 );
+       FBSTRING* vr$4728 = fb_StrAllocTempDescZEx( (uint8*)"image1DArray", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4728, 0 );
       }
       goto label$3839;
       label$3908:;
       {
-       FBSTRING* vr$4731 = fb_StrAllocTempDescZEx( (uint8*)"image1DArrayShadow", 18ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4731, 0 );
+       FBSTRING* vr$4729 = fb_StrAllocTempDescZEx( (uint8*)"image1DArrayShadow", 18ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4729, 0 );
       }
       goto label$3839;
       label$3909:;
       {
-       FBSTRING* vr$4732 = fb_StrAllocTempDescZEx( (uint8*)"image1DShadow", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4732, 0 );
+       FBSTRING* vr$4730 = fb_StrAllocTempDescZEx( (uint8*)"image1DShadow", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4730, 0 );
       }
       goto label$3839;
       label$3910:;
       {
-       FBSTRING* vr$4733 = fb_StrAllocTempDescZEx( (uint8*)"image2D", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4733, 0 );
+       FBSTRING* vr$4731 = fb_StrAllocTempDescZEx( (uint8*)"image2D", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4731, 0 );
       }
       goto label$3839;
       label$3911:;
       {
-       FBSTRING* vr$4734 = fb_StrAllocTempDescZEx( (uint8*)"image2DArray", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4734, 0 );
+       FBSTRING* vr$4732 = fb_StrAllocTempDescZEx( (uint8*)"image2DArray", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4732, 0 );
       }
       goto label$3839;
       label$3912:;
       {
-       FBSTRING* vr$4735 = fb_StrAllocTempDescZEx( (uint8*)"image2DArrayShadow", 18ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4735, 0 );
+       FBSTRING* vr$4733 = fb_StrAllocTempDescZEx( (uint8*)"image2DArrayShadow", 18ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4733, 0 );
       }
       goto label$3839;
       label$3913:;
       {
-       FBSTRING* vr$4736 = fb_StrAllocTempDescZEx( (uint8*)"image2DShadow", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4736, 0 );
+       FBSTRING* vr$4734 = fb_StrAllocTempDescZEx( (uint8*)"image2DShadow", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4734, 0 );
       }
       goto label$3839;
       label$3914:;
       {
-       FBSTRING* vr$4737 = fb_StrAllocTempDescZEx( (uint8*)"image3D", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4737, 0 );
+       FBSTRING* vr$4735 = fb_StrAllocTempDescZEx( (uint8*)"image3D", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4735, 0 );
       }
       goto label$3839;
       label$3915:;
       {
-       FBSTRING* vr$4738 = fb_StrAllocTempDescZEx( (uint8*)"imageBuffer", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4738, 0 );
+       FBSTRING* vr$4736 = fb_StrAllocTempDescZEx( (uint8*)"imageBuffer", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4736, 0 );
       }
       goto label$3839;
       label$3916:;
       {
-       FBSTRING* vr$4739 = fb_StrAllocTempDescZEx( (uint8*)"imageCube", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4739, 0 );
+       FBSTRING* vr$4737 = fb_StrAllocTempDescZEx( (uint8*)"imageCube", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4737, 0 );
       }
       goto label$3839;
       label$3917:;
       {
-       FBSTRING* vr$4740 = fb_StrAllocTempDescZEx( (uint8*)"image_height", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4740, 0 );
+       FBSTRING* vr$4738 = fb_StrAllocTempDescZEx( (uint8*)"image_height", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4738, 0 );
       }
       goto label$3839;
       label$3918:;
       {
-       FBSTRING* vr$4741 = fb_StrAllocTempDescZEx( (uint8*)"image_map", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4741, 0 );
+       FBSTRING* vr$4739 = fb_StrAllocTempDescZEx( (uint8*)"image_map", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4739, 0 );
       }
       goto label$3839;
       label$3919:;
       {
-       FBSTRING* vr$4742 = fb_StrAllocTempDescZEx( (uint8*)"image_pattern", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4742, 0 );
+       FBSTRING* vr$4740 = fb_StrAllocTempDescZEx( (uint8*)"image_pattern", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4740, 0 );
       }
       goto label$3839;
       label$3920:;
       {
-       FBSTRING* vr$4743 = fb_StrAllocTempDescZEx( (uint8*)"image_width", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4743, 0 );
+       FBSTRING* vr$4741 = fb_StrAllocTempDescZEx( (uint8*)"image_width", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4741, 0 );
       }
       goto label$3839;
       label$3921:;
       {
-       FBSTRING* vr$4744 = fb_StrAllocTempDescZEx( (uint8*)"imouse", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4744, 0 );
+       FBSTRING* vr$4742 = fb_StrAllocTempDescZEx( (uint8*)"imouse", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4742, 0 );
       }
       goto label$3839;
       label$3922:;
       {
-       FBSTRING* vr$4745 = fb_StrAllocTempDescZEx( (uint8*)"imp", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4745, 0 );
+       FBSTRING* vr$4743 = fb_StrAllocTempDescZEx( (uint8*)"imp", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4743, 0 );
       }
       goto label$3839;
       label$3923:;
       {
-       FBSTRING* vr$4746 = fb_StrAllocTempDescZEx( (uint8*)"implementation", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4746, 0 );
+       FBSTRING* vr$4744 = fb_StrAllocTempDescZEx( (uint8*)"implementation", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4744, 0 );
       }
       goto label$3839;
       label$3924:;
       {
-       FBSTRING* vr$4747 = fb_StrAllocTempDescZEx( (uint8*)"import", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4747, 0 );
+       FBSTRING* vr$4745 = fb_StrAllocTempDescZEx( (uint8*)"import", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4745, 0 );
       }
       goto label$3839;
       label$3925:;
       {
-       FBSTRING* vr$4748 = fb_StrAllocTempDescZEx( (uint8*)"in", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4748, 0 );
+       FBSTRING* vr$4746 = fb_StrAllocTempDescZEx( (uint8*)"in", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4746, 0 );
       }
       goto label$3839;
       label$3926:;
       {
-       FBSTRING* vr$4749 = fb_StrAllocTempDescZEx( (uint8*)"include", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4749, 0 );
+       FBSTRING* vr$4747 = fb_StrAllocTempDescZEx( (uint8*)"include", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4747, 0 );
       }
       goto label$3839;
       label$3927:;
       {
-       FBSTRING* vr$4750 = fb_StrAllocTempDescZEx( (uint8*)"index", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4750, 0 );
+       FBSTRING* vr$4748 = fb_StrAllocTempDescZEx( (uint8*)"index", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4748, 0 );
       }
       goto label$3839;
       label$3928:;
       {
-       FBSTRING* vr$4751 = fb_StrAllocTempDescZEx( (uint8*)"indexed", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4751, 0 );
+       FBSTRING* vr$4749 = fb_StrAllocTempDescZEx( (uint8*)"indexed", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4749, 0 );
       }
       goto label$3839;
       label$3929:;
       {
-       FBSTRING* vr$4752 = fb_StrAllocTempDescZEx( (uint8*)"indicate", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4752, 0 );
+       FBSTRING* vr$4750 = fb_StrAllocTempDescZEx( (uint8*)"indicate", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4750, 0 );
       }
       goto label$3839;
       label$3930:;
       {
-       FBSTRING* vr$4753 = fb_StrAllocTempDescZEx( (uint8*)"inherited", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4753, 0 );
+       FBSTRING* vr$4751 = fb_StrAllocTempDescZEx( (uint8*)"inherited", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4751, 0 );
       }
       goto label$3839;
       label$3931:;
       {
-       FBSTRING* vr$4754 = fb_StrAllocTempDescZEx( (uint8*)"inherits", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4754, 0 );
+       FBSTRING* vr$4752 = fb_StrAllocTempDescZEx( (uint8*)"inherits", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4752, 0 );
       }
       goto label$3839;
       label$3932:;
       {
-       FBSTRING* vr$4755 = fb_StrAllocTempDescZEx( (uint8*)"initial", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4755, 0 );
+       FBSTRING* vr$4753 = fb_StrAllocTempDescZEx( (uint8*)"initial", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4753, 0 );
       }
       goto label$3839;
       label$3933:;
       {
-       FBSTRING* vr$4756 = fb_StrAllocTempDescZEx( (uint8*)"initial_clock", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4756, 0 );
+       FBSTRING* vr$4754 = fb_StrAllocTempDescZEx( (uint8*)"initial_clock", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4754, 0 );
       }
       goto label$3839;
       label$3934:;
       {
-       FBSTRING* vr$4757 = fb_StrAllocTempDescZEx( (uint8*)"initial_frame", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4757, 0 );
+       FBSTRING* vr$4755 = fb_StrAllocTempDescZEx( (uint8*)"initial_frame", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4755, 0 );
       }
       goto label$3839;
       label$3935:;
       {
-       FBSTRING* vr$4758 = fb_StrAllocTempDescZEx( (uint8*)"initialization", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4758, 0 );
+       FBSTRING* vr$4756 = fb_StrAllocTempDescZEx( (uint8*)"initialization", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4756, 0 );
       }
       goto label$3839;
       label$3936:;
       {
-       FBSTRING* vr$4759 = fb_StrAllocTempDescZEx( (uint8*)"initialize", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4759, 0 );
+       FBSTRING* vr$4757 = fb_StrAllocTempDescZEx( (uint8*)"initialize", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4757, 0 );
       }
       goto label$3839;
       label$3937:;
       {
-       FBSTRING* vr$4760 = fb_StrAllocTempDescZEx( (uint8*)"initiate", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4760, 0 );
+       FBSTRING* vr$4758 = fb_StrAllocTempDescZEx( (uint8*)"initiate", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4758, 0 );
       }
       goto label$3839;
       label$3938:;
       {
-       FBSTRING* vr$4761 = fb_StrAllocTempDescZEx( (uint8*)"inkey", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4761, 0 );
+       FBSTRING* vr$4759 = fb_StrAllocTempDescZEx( (uint8*)"inkey", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4759, 0 );
       }
       goto label$3839;
       label$3939:;
       {
-       FBSTRING* vr$4762 = fb_StrAllocTempDescZEx( (uint8*)"inline", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4762, 0 );
+       FBSTRING* vr$4760 = fb_StrAllocTempDescZEx( (uint8*)"inline", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4760, 0 );
       }
       goto label$3839;
       label$3940:;
       {
-       FBSTRING* vr$4763 = fb_StrAllocTempDescZEx( (uint8*)"inlinenoinline", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4763, 0 );
+       FBSTRING* vr$4761 = fb_StrAllocTempDescZEx( (uint8*)"inlinenoinline", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4761, 0 );
       }
       goto label$3839;
       label$3941:;
       {
-       FBSTRING* vr$4764 = fb_StrAllocTempDescZEx( (uint8*)"in_memory", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4764, 0 );
+       FBSTRING* vr$4762 = fb_StrAllocTempDescZEx( (uint8*)"in_memory", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4762, 0 );
       }
       goto label$3839;
       label$3942:;
       {
-       FBSTRING* vr$4765 = fb_StrAllocTempDescZEx( (uint8*)"inner", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4765, 0 );
+       FBSTRING* vr$4763 = fb_StrAllocTempDescZEx( (uint8*)"inner", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4763, 0 );
       }
       goto label$3839;
       label$3943:;
       {
-       FBSTRING* vr$4766 = fb_StrAllocTempDescZEx( (uint8*)"inout", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4766, 0 );
+       FBSTRING* vr$4764 = fb_StrAllocTempDescZEx( (uint8*)"inout", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4764, 0 );
       }
       goto label$3839;
       label$3944:;
       {
-       FBSTRING* vr$4767 = fb_StrAllocTempDescZEx( (uint8*)"inp", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4767, 0 );
+       FBSTRING* vr$4765 = fb_StrAllocTempDescZEx( (uint8*)"inp", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4765, 0 );
       }
       goto label$3839;
       label$3945:;
       {
-       FBSTRING* vr$4768 = fb_StrAllocTempDescZEx( (uint8*)"input", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4768, 0 );
+       FBSTRING* vr$4766 = fb_StrAllocTempDescZEx( (uint8*)"input", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4766, 0 );
       }
       goto label$3839;
       label$3946:;
       {
-       FBSTRING* vr$4769 = fb_StrAllocTempDescZEx( (uint8*)"input-output", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4769, 0 );
+       FBSTRING* vr$4767 = fb_StrAllocTempDescZEx( (uint8*)"input-output", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4767, 0 );
       }
       goto label$3839;
       label$3947:;
       {
-       FBSTRING* vr$4770 = fb_StrAllocTempDescZEx( (uint8*)"inquire", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4770, 0 );
+       FBSTRING* vr$4768 = fb_StrAllocTempDescZEx( (uint8*)"inquire", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4768, 0 );
       }
       goto label$3839;
       label$3948:;
       {
-       FBSTRING* vr$4771 = fb_StrAllocTempDescZEx( (uint8*)"insert", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4771, 0 );
+       FBSTRING* vr$4769 = fb_StrAllocTempDescZEx( (uint8*)"insert", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4769, 0 );
       }
       goto label$3839;
       label$3949:;
       {
-       FBSTRING* vr$4772 = fb_StrAllocTempDescZEx( (uint8*)"inside", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4772, 0 );
+       FBSTRING* vr$4770 = fb_StrAllocTempDescZEx( (uint8*)"inside", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4770, 0 );
       }
       goto label$3839;
       label$3950:;
       {
-       FBSTRING* vr$4773 = fb_StrAllocTempDescZEx( (uint8*)"inside_vector", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4773, 0 );
+       FBSTRING* vr$4771 = fb_StrAllocTempDescZEx( (uint8*)"inside_vector", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4771, 0 );
       }
       goto label$3839;
       label$3951:;
       {
-       FBSTRING* vr$4774 = fb_StrAllocTempDescZEx( (uint8*)"inspect", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4774, 0 );
+       FBSTRING* vr$4772 = fb_StrAllocTempDescZEx( (uint8*)"inspect", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4772, 0 );
       }
       goto label$3839;
       label$3952:;
       {
-       FBSTRING* vr$4775 = fb_StrAllocTempDescZEx( (uint8*)"installation", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4775, 0 );
+       FBSTRING* vr$4773 = fb_StrAllocTempDescZEx( (uint8*)"installation", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4773, 0 );
       }
       goto label$3839;
       label$3953:;
       {
-       FBSTRING* vr$4776 = fb_StrAllocTempDescZEx( (uint8*)"instr", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4776, 0 );
+       FBSTRING* vr$4774 = fb_StrAllocTempDescZEx( (uint8*)"instr", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4774, 0 );
       }
       goto label$3839;
       label$3954:;
       {
-       FBSTRING* vr$4777 = fb_StrAllocTempDescZEx( (uint8*)"int", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4777, 0 );
+       FBSTRING* vr$4775 = fb_StrAllocTempDescZEx( (uint8*)"int", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4775, 0 );
       }
       goto label$3839;
       label$3955:;
       {
-       FBSTRING* vr$4778 = fb_StrAllocTempDescZEx( (uint8*)"integer", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4778, 0 );
+       FBSTRING* vr$4776 = fb_StrAllocTempDescZEx( (uint8*)"integer", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4776, 0 );
       }
       goto label$3839;
       label$3956:;
       {
-       FBSTRING* vr$4779 = fb_StrAllocTempDescZEx( (uint8*)"interface", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4779, 0 );
+       FBSTRING* vr$4777 = fb_StrAllocTempDescZEx( (uint8*)"interface", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4777, 0 );
       }
       goto label$3839;
       label$3957:;
       {
-       FBSTRING* vr$4780 = fb_StrAllocTempDescZEx( (uint8*)"interior", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4780, 0 );
+       FBSTRING* vr$4778 = fb_StrAllocTempDescZEx( (uint8*)"interior", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4778, 0 );
       }
       goto label$3839;
       label$3958:;
       {
-       FBSTRING* vr$4781 = fb_StrAllocTempDescZEx( (uint8*)"interior_texture", 16ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4781, 0 );
+       FBSTRING* vr$4779 = fb_StrAllocTempDescZEx( (uint8*)"interior_texture", 16ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4779, 0 );
       }
       goto label$3839;
       label$3959:;
       {
-       FBSTRING* vr$4782 = fb_StrAllocTempDescZEx( (uint8*)"internal", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4782, 0 );
+       FBSTRING* vr$4780 = fb_StrAllocTempDescZEx( (uint8*)"internal", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4780, 0 );
       }
       goto label$3839;
       label$3960:;
       {
-       FBSTRING* vr$4783 = fb_StrAllocTempDescZEx( (uint8*)"interpolate", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4783, 0 );
+       FBSTRING* vr$4781 = fb_StrAllocTempDescZEx( (uint8*)"interpolate", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4781, 0 );
       }
       goto label$3839;
       label$3961:;
       {
-       FBSTRING* vr$4784 = fb_StrAllocTempDescZEx( (uint8*)"intersect", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4784, 0 );
+       FBSTRING* vr$4782 = fb_StrAllocTempDescZEx( (uint8*)"intersect", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4782, 0 );
       }
       goto label$3839;
       label$3962:;
       {
-       FBSTRING* vr$4785 = fb_StrAllocTempDescZEx( (uint8*)"intersection", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4785, 0 );
+       FBSTRING* vr$4783 = fb_StrAllocTempDescZEx( (uint8*)"intersection", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4783, 0 );
       }
       goto label$3839;
       label$3963:;
       {
-       FBSTRING* vr$4786 = fb_StrAllocTempDescZEx( (uint8*)"interval", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4786, 0 );
+       FBSTRING* vr$4784 = fb_StrAllocTempDescZEx( (uint8*)"interval", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4784, 0 );
       }
       goto label$3839;
       label$3964:;
       {
-       FBSTRING* vr$4787 = fb_StrAllocTempDescZEx( (uint8*)"intervals", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4787, 0 );
+       FBSTRING* vr$4785 = fb_StrAllocTempDescZEx( (uint8*)"intervals", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4785, 0 );
       }
       goto label$3839;
       label$3965:;
       {
-       FBSTRING* vr$4788 = fb_StrAllocTempDescZEx( (uint8*)"into", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4788, 0 );
+       FBSTRING* vr$4786 = fb_StrAllocTempDescZEx( (uint8*)"into", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4786, 0 );
       }
       goto label$3839;
       label$3966:;
       {
-       FBSTRING* vr$4789 = fb_StrAllocTempDescZEx( (uint8*)"intrinsic", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4789, 0 );
+       FBSTRING* vr$4787 = fb_StrAllocTempDescZEx( (uint8*)"intrinsic", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4787, 0 );
       }
       goto label$3839;
       label$3967:;
       {
-       FBSTRING* vr$4790 = fb_StrAllocTempDescZEx( (uint8*)"invalid", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4790, 0 );
+       FBSTRING* vr$4788 = fb_StrAllocTempDescZEx( (uint8*)"invalid", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4788, 0 );
       }
       goto label$3839;
       label$3968:;
       {
-       FBSTRING* vr$4791 = fb_StrAllocTempDescZEx( (uint8*)"invariant", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4791, 0 );
+       FBSTRING* vr$4789 = fb_StrAllocTempDescZEx( (uint8*)"invariant", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4789, 0 );
       }
       goto label$3839;
       label$3969:;
       {
-       FBSTRING* vr$4792 = fb_StrAllocTempDescZEx( (uint8*)"inverse", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4792, 0 );
+       FBSTRING* vr$4790 = fb_StrAllocTempDescZEx( (uint8*)"inverse", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4790, 0 );
       }
       goto label$3839;
       label$3970:;
       {
-       FBSTRING* vr$4793 = fb_StrAllocTempDescZEx( (uint8*)"inversesqr", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4793, 0 );
+       FBSTRING* vr$4791 = fb_StrAllocTempDescZEx( (uint8*)"inversesqr", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4791, 0 );
       }
       goto label$3839;
       label$3971:;
       {
-       FBSTRING* vr$4794 = fb_StrAllocTempDescZEx( (uint8*)"invoke", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4794, 0 );
+       FBSTRING* vr$4792 = fb_StrAllocTempDescZEx( (uint8*)"invoke", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4792, 0 );
       }
       goto label$3839;
       label$3972:;
       {
-       FBSTRING* vr$4795 = fb_StrAllocTempDescZEx( (uint8*)"i-o", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4795, 0 );
+       FBSTRING* vr$4793 = fb_StrAllocTempDescZEx( (uint8*)"i-o", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4793, 0 );
       }
       goto label$3839;
       label$3973:;
       {
-       FBSTRING* vr$4796 = fb_StrAllocTempDescZEx( (uint8*)"i-o-control", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4796, 0 );
+       FBSTRING* vr$4794 = fb_StrAllocTempDescZEx( (uint8*)"i-o-control", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4794, 0 );
       }
       goto label$3839;
       label$3974:;
       {
-       FBSTRING* vr$4797 = fb_StrAllocTempDescZEx( (uint8*)"ioctl", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4797, 0 );
+       FBSTRING* vr$4795 = fb_StrAllocTempDescZEx( (uint8*)"ioctl", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4795, 0 );
       }
       goto label$3839;
       label$3975:;
       {
-       FBSTRING* vr$4798 = fb_StrAllocTempDescZEx( (uint8*)"ior", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4798, 0 );
+       FBSTRING* vr$4796 = fb_StrAllocTempDescZEx( (uint8*)"ior", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4796, 0 );
       }
       goto label$3839;
       label$3976:;
       {
-       FBSTRING* vr$4799 = fb_StrAllocTempDescZEx( (uint8*)"i_resolution", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4799, 0 );
+       FBSTRING* vr$4797 = fb_StrAllocTempDescZEx( (uint8*)"i_resolution", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4797, 0 );
       }
       goto label$3839;
       label$3977:;
       {
-       FBSTRING* vr$4800 = fb_StrAllocTempDescZEx( (uint8*)"iResolution", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4800, 0 );
+       FBSTRING* vr$4798 = fb_StrAllocTempDescZEx( (uint8*)"iResolution", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4798, 0 );
       }
       goto label$3839;
       label$3978:;
       {
-       FBSTRING* vr$4801 = fb_StrAllocTempDescZEx( (uint8*)"irid", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4801, 0 );
+       FBSTRING* vr$4799 = fb_StrAllocTempDescZEx( (uint8*)"irid", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4799, 0 );
       }
       goto label$3839;
       label$3979:;
       {
-       FBSTRING* vr$4802 = fb_StrAllocTempDescZEx( (uint8*)"irid_wavelength", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4802, 0 );
+       FBSTRING* vr$4800 = fb_StrAllocTempDescZEx( (uint8*)"irid_wavelength", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4800, 0 );
       }
       goto label$3839;
       label$3980:;
       {
-       FBSTRING* vr$4803 = fb_StrAllocTempDescZEx( (uint8*)"is", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4803, 0 );
+       FBSTRING* vr$4801 = fb_StrAllocTempDescZEx( (uint8*)"is", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4801, 0 );
       }
       goto label$3839;
       label$3981:;
       {
-       FBSTRING* vr$4804 = fb_StrAllocTempDescZEx( (uint8*)"isampler1D", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4804, 0 );
+       FBSTRING* vr$4802 = fb_StrAllocTempDescZEx( (uint8*)"isampler1D", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4802, 0 );
       }
       goto label$3839;
       label$3982:;
       {
-       FBSTRING* vr$4805 = fb_StrAllocTempDescZEx( (uint8*)"isampler1DArray", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4805, 0 );
+       FBSTRING* vr$4803 = fb_StrAllocTempDescZEx( (uint8*)"isampler1DArray", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4803, 0 );
       }
       goto label$3839;
       label$3983:;
       {
-       FBSTRING* vr$4806 = fb_StrAllocTempDescZEx( (uint8*)"isampler2D", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4806, 0 );
+       FBSTRING* vr$4804 = fb_StrAllocTempDescZEx( (uint8*)"isampler2D", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4804, 0 );
       }
       goto label$3839;
       label$3984:;
       {
-       FBSTRING* vr$4807 = fb_StrAllocTempDescZEx( (uint8*)"isampler2DArray", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4807, 0 );
+       FBSTRING* vr$4805 = fb_StrAllocTempDescZEx( (uint8*)"isampler2DArray", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4805, 0 );
       }
       goto label$3839;
       label$3985:;
       {
-       FBSTRING* vr$4808 = fb_StrAllocTempDescZEx( (uint8*)"isampler2DRect", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4808, 0 );
+       FBSTRING* vr$4806 = fb_StrAllocTempDescZEx( (uint8*)"isampler2DRect", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4806, 0 );
       }
       goto label$3839;
       label$3986:;
       {
-       FBSTRING* vr$4809 = fb_StrAllocTempDescZEx( (uint8*)"isampler3D", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4809, 0 );
+       FBSTRING* vr$4807 = fb_StrAllocTempDescZEx( (uint8*)"isampler3D", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4807, 0 );
       }
       goto label$3839;
       label$3987:;
       {
-       FBSTRING* vr$4810 = fb_StrAllocTempDescZEx( (uint8*)"iSampleRate", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4810, 0 );
+       FBSTRING* vr$4808 = fb_StrAllocTempDescZEx( (uint8*)"iSampleRate", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4808, 0 );
       }
       goto label$3839;
       label$3988:;
       {
-       FBSTRING* vr$4811 = fb_StrAllocTempDescZEx( (uint8*)"glsl ", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4811, 0 );
+       FBSTRING* vr$4809 = fb_StrAllocTempDescZEx( (uint8*)"glsl ", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4809, 0 );
       }
       goto label$3839;
       label$3989:;
       {
-       FBSTRING* vr$4812 = fb_StrAllocTempDescZEx( (uint8*)"isamplerCube", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4812, 0 );
+       FBSTRING* vr$4810 = fb_StrAllocTempDescZEx( (uint8*)"isamplerCube", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4810, 0 );
       }
       goto label$3839;
       label$3990:;
       {
-       FBSTRING* vr$4813 = fb_StrAllocTempDescZEx( (uint8*)"isconnected", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4813, 0 );
+       FBSTRING* vr$4811 = fb_StrAllocTempDescZEx( (uint8*)"isconnected", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4811, 0 );
       }
       goto label$3839;
       label$3991:;
       {
-       FBSTRING* vr$4814 = fb_StrAllocTempDescZEx( (uint8*)"isconstant", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4814, 0 );
+       FBSTRING* vr$4812 = fb_StrAllocTempDescZEx( (uint8*)"isconstant", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4812, 0 );
       }
       goto label$3839;
       label$3992:;
       {
-       FBSTRING* vr$4815 = fb_StrAllocTempDescZEx( (uint8*)"isfinite", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4815, 0 );
+       FBSTRING* vr$4813 = fb_StrAllocTempDescZEx( (uint8*)"isfinite", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4813, 0 );
       }
       goto label$3839;
       label$3993:;
       {
-       FBSTRING* vr$4816 = fb_StrAllocTempDescZEx( (uint8*)"isinf", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4816, 0 );
+       FBSTRING* vr$4814 = fb_StrAllocTempDescZEx( (uint8*)"isinf", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4814, 0 );
       }
       goto label$3839;
       label$3994:;
       {
-       FBSTRING* vr$4817 = fb_StrAllocTempDescZEx( (uint8*)"isnan", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4817, 0 );
+       FBSTRING* vr$4815 = fb_StrAllocTempDescZEx( (uint8*)"isnan", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4815, 0 );
       }
       goto label$3839;
       label$3995:;
       {
-       FBSTRING* vr$4818 = fb_StrAllocTempDescZEx( (uint8*)"isosurface", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4818, 0 );
+       FBSTRING* vr$4816 = fb_StrAllocTempDescZEx( (uint8*)"isosurface", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4816, 0 );
       }
       goto label$3839;
       label$3996:;
       {
-       FBSTRING* vr$4819 = fb_StrAllocTempDescZEx( (uint8*)"isotropic", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4819, 0 );
+       FBSTRING* vr$4817 = fb_StrAllocTempDescZEx( (uint8*)"isotropic", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4817, 0 );
       }
       goto label$3839;
       label$3997:;
       {
-       FBSTRING* vr$4820 = fb_StrAllocTempDescZEx( (uint8*)"iterate", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4820, 0 );
+       FBSTRING* vr$4818 = fb_StrAllocTempDescZEx( (uint8*)"iterate", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4818, 0 );
       }
       goto label$3839;
       label$3998:;
       {
-       FBSTRING* vr$4821 = fb_StrAllocTempDescZEx( (uint8*)"i_time", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4821, 0 );
+       FBSTRING* vr$4819 = fb_StrAllocTempDescZEx( (uint8*)"i_time", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4819, 0 );
       }
       goto label$3839;
       label$3999:;
       {
-       FBSTRING* vr$4822 = fb_StrAllocTempDescZEx( (uint8*)"itime", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4822, 0 );
+       FBSTRING* vr$4820 = fb_StrAllocTempDescZEx( (uint8*)"itime", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4820, 0 );
       }
       goto label$3839;
       label$4000:;
       {
-       FBSTRING* vr$4823 = fb_StrAllocTempDescZEx( (uint8*)"itimedelta", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4823, 0 );
+       FBSTRING* vr$4821 = fb_StrAllocTempDescZEx( (uint8*)"itimedelta", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4821, 0 );
       }
       goto label$3839;
       label$4001:;
       {
-       FBSTRING* vr$4824 = fb_StrAllocTempDescZEx( (uint8*)"ivec2", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4824, 0 );
+       FBSTRING* vr$4822 = fb_StrAllocTempDescZEx( (uint8*)"ivec2", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4822, 0 );
       }
       goto label$3839;
       label$4002:;
       {
-       FBSTRING* vr$4825 = fb_StrAllocTempDescZEx( (uint8*)"ivec3", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4825, 0 );
+       FBSTRING* vr$4823 = fb_StrAllocTempDescZEx( (uint8*)"ivec3", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4823, 0 );
       }
       goto label$3839;
       label$4003:;
       {
-       FBSTRING* vr$4826 = fb_StrAllocTempDescZEx( (uint8*)"ivec4", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4826, 0 );
+       FBSTRING* vr$4824 = fb_StrAllocTempDescZEx( (uint8*)"ivec4", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4824, 0 );
       }
       goto label$3839;
       label$4004:;
       {
-       FBSTRING* vr$4827 = fb_StrAllocTempDescZEx( (uint8*)"j", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4827, 0 );
+       FBSTRING* vr$4825 = fb_StrAllocTempDescZEx( (uint8*)"j", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4825, 0 );
       }
       goto label$3839;
       label$4005:;
       {
-       FBSTRING* vr$4828 = fb_StrAllocTempDescZEx( (uint8*)"jitter", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4828, 0 );
+       FBSTRING* vr$4826 = fb_StrAllocTempDescZEx( (uint8*)"jitter", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4826, 0 );
       }
       goto label$3839;
       label$4006:;
       {
-       FBSTRING* vr$4829 = fb_StrAllocTempDescZEx( (uint8*)"join", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4829, 0 );
+       FBSTRING* vr$4827 = fb_StrAllocTempDescZEx( (uint8*)"join", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4827, 0 );
       }
       goto label$3839;
       label$4007:;
       {
-       FBSTRING* vr$4830 = fb_StrAllocTempDescZEx( (uint8*)"jpeg", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4830, 0 );
+       FBSTRING* vr$4828 = fb_StrAllocTempDescZEx( (uint8*)"jpeg", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4828, 0 );
       }
       goto label$3839;
       label$4008:;
       {
-       FBSTRING* vr$4831 = fb_StrAllocTempDescZEx( (uint8*)"julia", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4831, 0 );
+       FBSTRING* vr$4829 = fb_StrAllocTempDescZEx( (uint8*)"julia", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4829, 0 );
       }
       goto label$3839;
       label$4009:;
       {
-       FBSTRING* vr$4832 = fb_StrAllocTempDescZEx( (uint8*)"julia_fractal", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4832, 0 );
+       FBSTRING* vr$4830 = fb_StrAllocTempDescZEx( (uint8*)"julia_fractal", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4830, 0 );
       }
       goto label$3839;
       label$4010:;
       {
-       FBSTRING* vr$4833 = fb_StrAllocTempDescZEx( (uint8*)"just", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4833, 0 );
+       FBSTRING* vr$4831 = fb_StrAllocTempDescZEx( (uint8*)"just", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4831, 0 );
       }
       goto label$3839;
       label$4011:;
       {
-       FBSTRING* vr$4834 = fb_StrAllocTempDescZEx( (uint8*)"justified", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4834, 0 );
+       FBSTRING* vr$4832 = fb_StrAllocTempDescZEx( (uint8*)"justified", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4832, 0 );
       }
       goto label$3839;
       label$4012:;
       {
-       FBSTRING* vr$4835 = fb_StrAllocTempDescZEx( (uint8*)"k", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4835, 0 );
+       FBSTRING* vr$4833 = fb_StrAllocTempDescZEx( (uint8*)"k", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4833, 0 );
       }
       goto label$3839;
       label$4013:;
       {
-       FBSTRING* vr$4836 = fb_StrAllocTempDescZEx( (uint8*)"kanji", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4836, 0 );
+       FBSTRING* vr$4834 = fb_StrAllocTempDescZEx( (uint8*)"kanji", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4834, 0 );
       }
       goto label$3839;
       label$4014:;
       {
-       FBSTRING* vr$4837 = fb_StrAllocTempDescZEx( (uint8*)"key", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4837, 0 );
+       FBSTRING* vr$4835 = fb_StrAllocTempDescZEx( (uint8*)"key", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4835, 0 );
       }
       goto label$3839;
       label$4015:;
       {
-       FBSTRING* vr$4838 = fb_StrAllocTempDescZEx( (uint8*)"kill", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4838, 0 );
+       FBSTRING* vr$4836 = fb_StrAllocTempDescZEx( (uint8*)"kill", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4836, 0 );
       }
       goto label$3839;
       label$4016:;
       {
-       FBSTRING* vr$4839 = fb_StrAllocTempDescZEx( (uint8*)"l", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4839, 0 );
+       FBSTRING* vr$4837 = fb_StrAllocTempDescZEx( (uint8*)"l", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4837, 0 );
       }
       goto label$3839;
       label$4017:;
       {
-       FBSTRING* vr$4840 = fb_StrAllocTempDescZEx( (uint8*)"label", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4840, 0 );
+       FBSTRING* vr$4838 = fb_StrAllocTempDescZEx( (uint8*)"label", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4838, 0 );
       }
       goto label$3839;
       label$4018:;
       {
-       FBSTRING* vr$4841 = fb_StrAllocTempDescZEx( (uint8*)"lambda", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4841, 0 );
+       FBSTRING* vr$4839 = fb_StrAllocTempDescZEx( (uint8*)"lambda", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4839, 0 );
       }
       goto label$3839;
       label$4019:;
       {
-       FBSTRING* vr$4842 = fb_StrAllocTempDescZEx( (uint8*)"last", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4842, 0 );
+       FBSTRING* vr$4840 = fb_StrAllocTempDescZEx( (uint8*)"last", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4840, 0 );
       }
       goto label$3839;
       label$4020:;
       {
-       FBSTRING* vr$4843 = fb_StrAllocTempDescZEx( (uint8*)"lathe", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4843, 0 );
+       FBSTRING* vr$4841 = fb_StrAllocTempDescZEx( (uint8*)"lathe", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4841, 0 );
       }
       goto label$3839;
       label$4021:;
       {
-       FBSTRING* vr$4844 = fb_StrAllocTempDescZEx( (uint8*)"layout", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4844, 0 );
+       FBSTRING* vr$4842 = fb_StrAllocTempDescZEx( (uint8*)"layout", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4842, 0 );
       }
       goto label$3839;
       label$4022:;
       {
-       FBSTRING* vr$4845 = fb_StrAllocTempDescZEx( (uint8*)"lcopy", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4845, 0 );
+       FBSTRING* vr$4843 = fb_StrAllocTempDescZEx( (uint8*)"lcopy", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4843, 0 );
       }
       goto label$3839;
       label$4023:;
       {
-       FBSTRING* vr$4846 = fb_StrAllocTempDescZEx( (uint8*)"leading", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4846, 0 );
+       FBSTRING* vr$4844 = fb_StrAllocTempDescZEx( (uint8*)"leading", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4844, 0 );
       }
       goto label$3839;
       label$4024:;
       {
-       FBSTRING* vr$4847 = fb_StrAllocTempDescZEx( (uint8*)"leave", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4847, 0 );
+       FBSTRING* vr$4845 = fb_StrAllocTempDescZEx( (uint8*)"leave", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4845, 0 );
       }
       goto label$3839;
       label$4025:;
       {
-       FBSTRING* vr$4848 = fb_StrAllocTempDescZEx( (uint8*)"left", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4848, 0 );
+       FBSTRING* vr$4846 = fb_StrAllocTempDescZEx( (uint8*)"left", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4846, 0 );
       }
       goto label$3839;
       label$4026:;
@@ -16154,416 +16150,416 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       goto label$3839;
       label$4027:;
       {
-       FBSTRING* vr$4849 = fb_StrAllocTempDescZEx( (uint8*)"len", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4849, 0 );
+       FBSTRING* vr$4847 = fb_StrAllocTempDescZEx( (uint8*)"len", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4847, 0 );
       }
       goto label$3839;
       label$4028:;
       {
-       FBSTRING* vr$4850 = fb_StrAllocTempDescZEx( (uint8*)"length", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4850, 0 );
+       FBSTRING* vr$4848 = fb_StrAllocTempDescZEx( (uint8*)"length", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4848, 0 );
       }
       goto label$3839;
       label$4029:;
       {
-       FBSTRING* vr$4851 = fb_StrAllocTempDescZEx( (uint8*)"leopard", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4851, 0 );
+       FBSTRING* vr$4849 = fb_StrAllocTempDescZEx( (uint8*)"leopard", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4849, 0 );
       }
       goto label$3839;
       label$4030:;
       {
-       FBSTRING* vr$4852 = fb_StrAllocTempDescZEx( (uint8*)"less", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4852, 0 );
+       FBSTRING* vr$4850 = fb_StrAllocTempDescZEx( (uint8*)"less", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4850, 0 );
       }
       goto label$3839;
       label$4031:;
       {
-       FBSTRING* vr$4853 = fb_StrAllocTempDescZEx( (uint8*)"lesseq", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4853, 0 );
+       FBSTRING* vr$4851 = fb_StrAllocTempDescZEx( (uint8*)"lesseq", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4851, 0 );
       }
       goto label$3839;
       label$4032:;
       {
-       FBSTRING* vr$4854 = fb_StrAllocTempDescZEx( (uint8*)"let", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4854, 0 );
+       FBSTRING* vr$4852 = fb_StrAllocTempDescZEx( (uint8*)"let", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4852, 0 );
       }
       goto label$3839;
       label$4033:;
       {
-       FBSTRING* vr$4855 = fb_StrAllocTempDescZEx( (uint8*)"libraryt", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4855, 0 );
+       FBSTRING* vr$4853 = fb_StrAllocTempDescZEx( (uint8*)"libraryt", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4853, 0 );
       }
       goto label$3839;
       label$4034:;
       {
-       FBSTRING* vr$4856 = fb_StrAllocTempDescZEx( (uint8*)"light_group", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4856, 0 );
+       FBSTRING* vr$4854 = fb_StrAllocTempDescZEx( (uint8*)"light_group", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4854, 0 );
       }
       goto label$3839;
       label$4035:;
       {
-       FBSTRING* vr$4857 = fb_StrAllocTempDescZEx( (uint8*)"light_source", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4857, 0 );
+       FBSTRING* vr$4855 = fb_StrAllocTempDescZEx( (uint8*)"light_source", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4855, 0 );
       }
       goto label$3839;
       label$4036:;
       {
-       FBSTRING* vr$4858 = fb_StrAllocTempDescZEx( (uint8*)"like", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4858, 0 );
+       FBSTRING* vr$4856 = fb_StrAllocTempDescZEx( (uint8*)"like", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4856, 0 );
       }
       goto label$3839;
       label$4037:;
       {
-       FBSTRING* vr$4859 = fb_StrAllocTempDescZEx( (uint8*)"limit", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4859, 0 );
+       FBSTRING* vr$4857 = fb_StrAllocTempDescZEx( (uint8*)"limit", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4857, 0 );
       }
       goto label$3839;
       label$4038:;
       {
-       FBSTRING* vr$4860 = fb_StrAllocTempDescZEx( (uint8*)"limits", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4860, 0 );
+       FBSTRING* vr$4858 = fb_StrAllocTempDescZEx( (uint8*)"limits", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4858, 0 );
       }
       goto label$3839;
       label$4039:;
       {
-       FBSTRING* vr$4861 = fb_StrAllocTempDescZEx( (uint8*)"linage", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4861, 0 );
+       FBSTRING* vr$4859 = fb_StrAllocTempDescZEx( (uint8*)"linage", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4859, 0 );
       }
       goto label$3839;
       label$4040:;
       {
-       FBSTRING* vr$4862 = fb_StrAllocTempDescZEx( (uint8*)"linage-counter", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4862, 0 );
+       FBSTRING* vr$4860 = fb_StrAllocTempDescZEx( (uint8*)"linage-counter", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4860, 0 );
       }
       goto label$3839;
       label$4041:;
       {
-       FBSTRING* vr$4863 = fb_StrAllocTempDescZEx( (uint8*)"line", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4863, 0 );
+       FBSTRING* vr$4861 = fb_StrAllocTempDescZEx( (uint8*)"line", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4861, 0 );
       }
       goto label$3839;
       label$4042:;
       {
-       FBSTRING* vr$4864 = fb_StrAllocTempDescZEx( (uint8*)"linear_spline", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4864, 0 );
+       FBSTRING* vr$4862 = fb_StrAllocTempDescZEx( (uint8*)"linear_spline", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4862, 0 );
       }
       goto label$3839;
       label$4043:;
       {
-       FBSTRING* vr$4865 = fb_StrAllocTempDescZEx( (uint8*)"linearstep", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4865, 0 );
+       FBSTRING* vr$4863 = fb_StrAllocTempDescZEx( (uint8*)"linearstep", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4863, 0 );
       }
       goto label$3839;
       label$4044:;
       {
-       FBSTRING* vr$4866 = fb_StrAllocTempDescZEx( (uint8*)"linear_sweep", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4866, 0 );
+       FBSTRING* vr$4864 = fb_StrAllocTempDescZEx( (uint8*)"linear_sweep", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4864, 0 );
       }
       goto label$3839;
       label$4045:;
       {
-       FBSTRING* vr$4867 = fb_StrAllocTempDescZEx( (uint8*)"line-counter", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4867, 0 );
+       FBSTRING* vr$4865 = fb_StrAllocTempDescZEx( (uint8*)"line-counter", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4865, 0 );
       }
       goto label$3839;
       label$4046:;
       {
-       FBSTRING* vr$4868 = fb_StrAllocTempDescZEx( (uint8*)"lines", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4868, 0 );
+       FBSTRING* vr$4866 = fb_StrAllocTempDescZEx( (uint8*)"lines", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4866, 0 );
       }
       goto label$3839;
       label$4047:;
       {
-       FBSTRING* vr$4869 = fb_StrAllocTempDescZEx( (uint8*)"linkage", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4869, 0 );
+       FBSTRING* vr$4867 = fb_StrAllocTempDescZEx( (uint8*)"linkage", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4867, 0 );
       }
       goto label$3839;
       label$4048:;
       {
-       FBSTRING* vr$4870 = fb_StrAllocTempDescZEx( (uint8*)"list", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4870, 0 );
+       FBSTRING* vr$4868 = fb_StrAllocTempDescZEx( (uint8*)"list", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4868, 0 );
       }
       goto label$3839;
       label$4049:;
       {
-       FBSTRING* vr$4871 = fb_StrAllocTempDescZEx( (uint8*)"llist", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4871, 0 );
+       FBSTRING* vr$4869 = fb_StrAllocTempDescZEx( (uint8*)"llist", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4869, 0 );
       }
       goto label$3839;
       label$4050:;
       {
-       FBSTRING* vr$4872 = fb_StrAllocTempDescZEx( (uint8*)"ln", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4872, 0 );
+       FBSTRING* vr$4870 = fb_StrAllocTempDescZEx( (uint8*)"ln", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4870, 0 );
       }
       goto label$3839;
       label$4051:;
       {
-       FBSTRING* vr$4873 = fb_StrAllocTempDescZEx( (uint8*)"load", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4873, 0 );
+       FBSTRING* vr$4871 = fb_StrAllocTempDescZEx( (uint8*)"load", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4871, 0 );
       }
       goto label$3839;
       label$4052:;
       {
-       FBSTRING* vr$4874 = fb_StrAllocTempDescZEx( (uint8*)"load_file", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4874, 0 );
+       FBSTRING* vr$4872 = fb_StrAllocTempDescZEx( (uint8*)"load_file", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4872, 0 );
       }
       goto label$3839;
       label$4053:;
       {
-       FBSTRING* vr$4875 = fb_StrAllocTempDescZEx( (uint8*)"loc", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4875, 0 );
+       FBSTRING* vr$4873 = fb_StrAllocTempDescZEx( (uint8*)"loc", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4873, 0 );
       }
       goto label$3839;
       label$4054:;
       {
-       FBSTRING* vr$4876 = fb_StrAllocTempDescZEx( (uint8*)"local", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4876, 0 );
+       FBSTRING* vr$4874 = fb_StrAllocTempDescZEx( (uint8*)"local", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4874, 0 );
       }
       goto label$3839;
       label$4055:;
       {
-       FBSTRING* vr$4877 = fb_StrAllocTempDescZEx( (uint8*)"local-storage", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4877, 0 );
+       FBSTRING* vr$4875 = fb_StrAllocTempDescZEx( (uint8*)"local-storage", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4875, 0 );
       }
       goto label$3839;
       label$4056:;
       {
-       FBSTRING* vr$4878 = fb_StrAllocTempDescZEx( (uint8*)"locate", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4878, 0 );
+       FBSTRING* vr$4876 = fb_StrAllocTempDescZEx( (uint8*)"locate", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4876, 0 );
       }
       goto label$3839;
       label$4057:;
       {
-       FBSTRING* vr$4879 = fb_StrAllocTempDescZEx( (uint8*)"location", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4879, 0 );
+       FBSTRING* vr$4877 = fb_StrAllocTempDescZEx( (uint8*)"location", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4877, 0 );
       }
       goto label$3839;
       label$4058:;
       {
-       FBSTRING* vr$4880 = fb_StrAllocTempDescZEx( (uint8*)"lock", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4880, 0 );
+       FBSTRING* vr$4878 = fb_StrAllocTempDescZEx( (uint8*)"lock", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4878, 0 );
       }
       goto label$3839;
       label$4059:;
       {
-       FBSTRING* vr$4881 = fb_StrAllocTempDescZEx( (uint8*)"lof", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4881, 0 );
+       FBSTRING* vr$4879 = fb_StrAllocTempDescZEx( (uint8*)"lof", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4879, 0 );
       }
       goto label$3839;
       label$4060:;
       {
-       FBSTRING* vr$4882 = fb_StrAllocTempDescZEx( (uint8*)"log", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4882, 0 );
+       FBSTRING* vr$4880 = fb_StrAllocTempDescZEx( (uint8*)"log", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4880, 0 );
       }
       goto label$3839;
       label$4061:;
       {
-       FBSTRING* vr$4883 = fb_StrAllocTempDescZEx( (uint8*)"log10", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4883, 0 );
+       FBSTRING* vr$4881 = fb_StrAllocTempDescZEx( (uint8*)"log10", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4881, 0 );
       }
       goto label$3839;
       label$4062:;
       {
-       FBSTRING* vr$4884 = fb_StrAllocTempDescZEx( (uint8*)"log2", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4884, 0 );
+       FBSTRING* vr$4882 = fb_StrAllocTempDescZEx( (uint8*)"log2", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4882, 0 );
       }
       goto label$3839;
       label$4063:;
       {
-       FBSTRING* vr$4885 = fb_StrAllocTempDescZEx( (uint8*)"logb", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4885, 0 );
+       FBSTRING* vr$4883 = fb_StrAllocTempDescZEx( (uint8*)"logb", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4883, 0 );
       }
       goto label$3839;
       label$4064:;
       {
-       FBSTRING* vr$4886 = fb_StrAllocTempDescZEx( (uint8*)"logical", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4886, 0 );
+       FBSTRING* vr$4884 = fb_StrAllocTempDescZEx( (uint8*)"logical", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4884, 0 );
       }
       goto label$3839;
       label$4065:;
       {
-       FBSTRING* vr$4887 = fb_StrAllocTempDescZEx( (uint8*)"long", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4887, 0 );
+       FBSTRING* vr$4885 = fb_StrAllocTempDescZEx( (uint8*)"long", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4885, 0 );
       }
       goto label$3839;
       label$4066:;
       {
-       FBSTRING* vr$4888 = fb_StrAllocTempDescZEx( (uint8*)"look_at", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4888, 0 );
+       FBSTRING* vr$4886 = fb_StrAllocTempDescZEx( (uint8*)"look_at", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4886, 0 );
       }
       goto label$3839;
       label$4067:;
       {
-       FBSTRING* vr$4889 = fb_StrAllocTempDescZEx( (uint8*)"looks_like", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4889, 0 );
+       FBSTRING* vr$4887 = fb_StrAllocTempDescZEx( (uint8*)"looks_like", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4887, 0 );
       }
       goto label$3839;
       label$4068:;
       {
-       FBSTRING* vr$4890 = fb_StrAllocTempDescZEx( (uint8*)"loop", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4890, 0 );
+       FBSTRING* vr$4888 = fb_StrAllocTempDescZEx( (uint8*)"loop", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4888, 0 );
       }
       goto label$3839;
       label$4069:;
       {
-       FBSTRING* vr$4891 = fb_StrAllocTempDescZEx( (uint8*)"lower", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4891, 0 );
+       FBSTRING* vr$4889 = fb_StrAllocTempDescZEx( (uint8*)"lower", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4889, 0 );
       }
       goto label$3839;
       label$4070:;
       {
-       FBSTRING* vr$4892 = fb_StrAllocTempDescZEx( (uint8*)"lower_mb", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4892, 0 );
+       FBSTRING* vr$4890 = fb_StrAllocTempDescZEx( (uint8*)"lower_mb", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4890, 0 );
       }
       goto label$3839;
       label$4071:;
       {
-       FBSTRING* vr$4893 = fb_StrAllocTempDescZEx( (uint8*)"low_error_factor", 16ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4893, 0 );
+       FBSTRING* vr$4891 = fb_StrAllocTempDescZEx( (uint8*)"low_error_factor", 16ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4891, 0 );
       }
       goto label$3839;
       label$4072:;
       {
-       FBSTRING* vr$4894 = fb_StrAllocTempDescZEx( (uint8*)"lowp", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4894, 0 );
+       FBSTRING* vr$4892 = fb_StrAllocTempDescZEx( (uint8*)"lowp", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4892, 0 );
       }
       goto label$3839;
       label$4073:;
       {
-       FBSTRING* vr$4895 = fb_StrAllocTempDescZEx( (uint8*)"low-value", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4895, 0 );
+       FBSTRING* vr$4893 = fb_StrAllocTempDescZEx( (uint8*)"low-value", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4893, 0 );
       }
       goto label$3839;
       label$4074:;
       {
-       FBSTRING* vr$4896 = fb_StrAllocTempDescZEx( (uint8*)"low-values", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4896, 0 );
+       FBSTRING* vr$4894 = fb_StrAllocTempDescZEx( (uint8*)"low-values", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4894, 0 );
       }
       goto label$3839;
       label$4075:;
       {
-       FBSTRING* vr$4897 = fb_StrAllocTempDescZEx( (uint8*)"lpad", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4897, 0 );
+       FBSTRING* vr$4895 = fb_StrAllocTempDescZEx( (uint8*)"lpad", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4895, 0 );
       }
       goto label$3839;
       label$4076:;
       {
-       FBSTRING* vr$4898 = fb_StrAllocTempDescZEx( (uint8*)"lpos", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4898, 0 );
+       FBSTRING* vr$4896 = fb_StrAllocTempDescZEx( (uint8*)"lpos", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4896, 0 );
       }
       goto label$3839;
       label$4077:;
       {
-       FBSTRING* vr$4899 = fb_StrAllocTempDescZEx( (uint8*)"lprint", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4899, 0 );
+       FBSTRING* vr$4897 = fb_StrAllocTempDescZEx( (uint8*)"lprint", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4897, 0 );
       }
       goto label$3839;
       label$4078:;
       {
-       FBSTRING* vr$4900 = fb_StrAllocTempDescZEx( (uint8*)"lset", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4900, 0 );
+       FBSTRING* vr$4898 = fb_StrAllocTempDescZEx( (uint8*)"lset", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4898, 0 );
       }
       goto label$3839;
       label$4079:;
       {
-       FBSTRING* vr$4901 = fb_StrAllocTempDescZEx( (uint8*)"luminance", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4901, 0 );
+       FBSTRING* vr$4899 = fb_StrAllocTempDescZEx( (uint8*)"luminance", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4899, 0 );
       }
       goto label$3839;
       label$4080:;
       {
-       FBSTRING* vr$4902 = fb_StrAllocTempDescZEx( (uint8*)"m", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4902, 0 );
+       FBSTRING* vr$4900 = fb_StrAllocTempDescZEx( (uint8*)"m", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4900, 0 );
       }
       goto label$3839;
       label$4081:;
       {
-       FBSTRING* vr$4903 = fb_StrAllocTempDescZEx( (uint8*)"m_2_pi", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4903, 0 );
+       FBSTRING* vr$4901 = fb_StrAllocTempDescZEx( (uint8*)"m_2_pi", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4901, 0 );
       }
       goto label$3839;
       label$4082:;
       {
-       FBSTRING* vr$4904 = fb_StrAllocTempDescZEx( (uint8*)"m_2_sqrtpi", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4904, 0 );
+       FBSTRING* vr$4902 = fb_StrAllocTempDescZEx( (uint8*)"m_2_sqrtpi", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4902, 0 );
       }
       goto label$3839;
       label$4083:;
       {
-       FBSTRING* vr$4905 = fb_StrAllocTempDescZEx( (uint8*)"m_4_pi", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4905, 0 );
+       FBSTRING* vr$4903 = fb_StrAllocTempDescZEx( (uint8*)"m_4_pi", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4903, 0 );
       }
       goto label$3839;
       label$4084:;
       {
-       FBSTRING* vr$4906 = fb_StrAllocTempDescZEx( (uint8*)"macro", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4906, 0 );
+       FBSTRING* vr$4904 = fb_StrAllocTempDescZEx( (uint8*)"macro", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4904, 0 );
       }
       goto label$3839;
       label$4085:;
       {
-       FBSTRING* vr$4907 = fb_StrAllocTempDescZEx( (uint8*)"magnet", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4907, 0 );
+       FBSTRING* vr$4905 = fb_StrAllocTempDescZEx( (uint8*)"magnet", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4905, 0 );
       }
       goto label$3839;
       label$4086:;
       {
-       FBSTRING* vr$4908 = fb_StrAllocTempDescZEx( (uint8*)"main", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4908, 0 );
+       FBSTRING* vr$4906 = fb_StrAllocTempDescZEx( (uint8*)"main", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4906, 0 );
       }
       goto label$3839;
       label$4087:;
       {
-       FBSTRING* vr$4909 = fb_StrAllocTempDescZEx( (uint8*)"main_image", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4909, 0 );
+       FBSTRING* vr$4907 = fb_StrAllocTempDescZEx( (uint8*)"main_image", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4907, 0 );
       }
       goto label$3839;
       label$4088:;
       {
-       FBSTRING* vr$4910 = fb_StrAllocTempDescZEx( (uint8*)"mainImage", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4910, 0 );
+       FBSTRING* vr$4908 = fb_StrAllocTempDescZEx( (uint8*)"mainImage", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4908, 0 );
       }
       goto label$3839;
       label$4089:;
       {
-       FBSTRING* vr$4911 = fb_StrAllocTempDescZEx( (uint8*)"major_radius", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4911, 0 );
+       FBSTRING* vr$4909 = fb_StrAllocTempDescZEx( (uint8*)"major_radius", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4909, 0 );
       }
       goto label$3839;
       label$4090:;
       {
-       FBSTRING* vr$4912 = fb_StrAllocTempDescZEx( (uint8*)"mandel", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4912, 0 );
+       FBSTRING* vr$4910 = fb_StrAllocTempDescZEx( (uint8*)"mandel", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4910, 0 );
       }
       goto label$3839;
       label$4091:;
       {
-       FBSTRING* vr$4913 = fb_StrAllocTempDescZEx( (uint8*)"map", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4913, 0 );
+       FBSTRING* vr$4911 = fb_StrAllocTempDescZEx( (uint8*)"map", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4911, 0 );
       }
       goto label$3839;
       label$4092:;
       {
-       FBSTRING* vr$4914 = fb_StrAllocTempDescZEx( (uint8*)"map_type", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4914, 0 );
+       FBSTRING* vr$4912 = fb_StrAllocTempDescZEx( (uint8*)"map_type", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4912, 0 );
       }
       goto label$3839;
       label$4093:;
       {
-       FBSTRING* vr$4915 = fb_StrAllocTempDescZEx( (uint8*)"marble", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4915, 0 );
+       FBSTRING* vr$4913 = fb_StrAllocTempDescZEx( (uint8*)"marble", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4913, 0 );
       }
       goto label$3839;
       label$4094:;
       {
-       FBSTRING* vr$4916 = fb_StrAllocTempDescZEx( (uint8*)"mat2", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4916, 0 );
+       FBSTRING* vr$4914 = fb_StrAllocTempDescZEx( (uint8*)"mat2", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4914, 0 );
       }
       goto label$3839;
       label$4095:;
       {
-       FBSTRING* vr$4917 = fb_StrAllocTempDescZEx( (uint8*)"mat2x2", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4917, 0 );
+       FBSTRING* vr$4915 = fb_StrAllocTempDescZEx( (uint8*)"mat2x2", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4915, 0 );
       }
       goto label$3839;
       label$3840:;
@@ -16839,1538 +16835,1538 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       goto label$4098;
       label$4099:;
       {
-       FBSTRING* vr$4920 = fb_StrAllocTempDescZEx( (uint8*)"mat2x3", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4920, 0 );
+       FBSTRING* vr$4918 = fb_StrAllocTempDescZEx( (uint8*)"mat2x3", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4918, 0 );
       }
       goto label$4097;
       label$4100:;
       {
-       FBSTRING* vr$4921 = fb_StrAllocTempDescZEx( (uint8*)"mat2x4", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4921, 0 );
+       FBSTRING* vr$4919 = fb_StrAllocTempDescZEx( (uint8*)"mat2x4", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4919, 0 );
       }
       goto label$4097;
       label$4101:;
       {
-       FBSTRING* vr$4922 = fb_StrAllocTempDescZEx( (uint8*)"mat3", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4922, 0 );
+       FBSTRING* vr$4920 = fb_StrAllocTempDescZEx( (uint8*)"mat3", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4920, 0 );
       }
       goto label$4097;
       label$4102:;
       {
-       FBSTRING* vr$4923 = fb_StrAllocTempDescZEx( (uint8*)"mat3x2", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4923, 0 );
+       FBSTRING* vr$4921 = fb_StrAllocTempDescZEx( (uint8*)"mat3x2", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4921, 0 );
       }
       goto label$4097;
       label$4103:;
       {
-       FBSTRING* vr$4924 = fb_StrAllocTempDescZEx( (uint8*)"mat3x3", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4924, 0 );
+       FBSTRING* vr$4922 = fb_StrAllocTempDescZEx( (uint8*)"mat3x3", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4922, 0 );
       }
       goto label$4097;
       label$4104:;
       {
-       FBSTRING* vr$4925 = fb_StrAllocTempDescZEx( (uint8*)"mat3x4", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4925, 0 );
+       FBSTRING* vr$4923 = fb_StrAllocTempDescZEx( (uint8*)"mat3x4", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4923, 0 );
       }
       goto label$4097;
       label$4105:;
       {
-       FBSTRING* vr$4926 = fb_StrAllocTempDescZEx( (uint8*)"mat4", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4926, 0 );
+       FBSTRING* vr$4924 = fb_StrAllocTempDescZEx( (uint8*)"mat4", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4924, 0 );
       }
       goto label$4097;
       label$4106:;
       {
-       FBSTRING* vr$4927 = fb_StrAllocTempDescZEx( (uint8*)"mat4x2", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4927, 0 );
+       FBSTRING* vr$4925 = fb_StrAllocTempDescZEx( (uint8*)"mat4x2", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4925, 0 );
       }
       goto label$4097;
       label$4107:;
       {
-       FBSTRING* vr$4928 = fb_StrAllocTempDescZEx( (uint8*)"mat4x3", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4928, 0 );
+       FBSTRING* vr$4926 = fb_StrAllocTempDescZEx( (uint8*)"mat4x3", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4926, 0 );
       }
       goto label$4097;
       label$4108:;
       {
-       FBSTRING* vr$4929 = fb_StrAllocTempDescZEx( (uint8*)"mat4x4", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4929, 0 );
+       FBSTRING* vr$4927 = fb_StrAllocTempDescZEx( (uint8*)"mat4x4", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4927, 0 );
       }
       goto label$4097;
       label$4109:;
       {
-       FBSTRING* vr$4930 = fb_StrAllocTempDescZEx( (uint8*)"material", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4930, 0 );
+       FBSTRING* vr$4928 = fb_StrAllocTempDescZEx( (uint8*)"material", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4928, 0 );
       }
       goto label$4097;
       label$4110:;
       {
-       FBSTRING* vr$4931 = fb_StrAllocTempDescZEx( (uint8*)"material_map", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4931, 0 );
+       FBSTRING* vr$4929 = fb_StrAllocTempDescZEx( (uint8*)"material_map", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4929, 0 );
       }
       goto label$4097;
       label$4111:;
       {
-       FBSTRING* vr$4932 = fb_StrAllocTempDescZEx( (uint8*)"matrix", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4932, 0 );
+       FBSTRING* vr$4930 = fb_StrAllocTempDescZEx( (uint8*)"matrix", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4930, 0 );
       }
       goto label$4097;
       label$4112:;
       {
-       FBSTRING* vr$4933 = fb_StrAllocTempDescZEx( (uint8*)"max", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4933, 0 );
+       FBSTRING* vr$4931 = fb_StrAllocTempDescZEx( (uint8*)"max", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4931, 0 );
       }
       goto label$4097;
       label$4113:;
       {
-       FBSTRING* vr$4934 = fb_StrAllocTempDescZEx( (uint8*)"max_extent", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4934, 0 );
+       FBSTRING* vr$4932 = fb_StrAllocTempDescZEx( (uint8*)"max_extent", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4932, 0 );
       }
       goto label$4097;
       label$4114:;
       {
-       FBSTRING* vr$4935 = fb_StrAllocTempDescZEx( (uint8*)"max_gradient", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4935, 0 );
+       FBSTRING* vr$4933 = fb_StrAllocTempDescZEx( (uint8*)"max_gradient", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4933, 0 );
       }
       goto label$4097;
       label$4115:;
       {
-       FBSTRING* vr$4936 = fb_StrAllocTempDescZEx( (uint8*)"max_intersections", 17ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4936, 0 );
+       FBSTRING* vr$4934 = fb_StrAllocTempDescZEx( (uint8*)"max_intersections", 17ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4934, 0 );
       }
       goto label$4097;
       label$4116:;
       {
-       FBSTRING* vr$4937 = fb_StrAllocTempDescZEx( (uint8*)"max_iteration", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4937, 0 );
+       FBSTRING* vr$4935 = fb_StrAllocTempDescZEx( (uint8*)"max_iteration", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4935, 0 );
       }
       goto label$4097;
       label$4117:;
       {
-       FBSTRING* vr$4938 = fb_StrAllocTempDescZEx( (uint8*)"max_sample", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4938, 0 );
+       FBSTRING* vr$4936 = fb_StrAllocTempDescZEx( (uint8*)"max_sample", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4936, 0 );
       }
       goto label$4097;
       label$4118:;
       {
-       FBSTRING* vr$4939 = fb_StrAllocTempDescZEx( (uint8*)"max_trace", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4939, 0 );
+       FBSTRING* vr$4937 = fb_StrAllocTempDescZEx( (uint8*)"max_trace", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4937, 0 );
       }
       goto label$4097;
       label$4119:;
       {
-       FBSTRING* vr$4940 = fb_StrAllocTempDescZEx( (uint8*)"max_trace_level", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4940, 0 );
+       FBSTRING* vr$4938 = fb_StrAllocTempDescZEx( (uint8*)"max_trace_level", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4938, 0 );
       }
       goto label$4097;
       label$4120:;
       {
-       FBSTRING* vr$4941 = fb_StrAllocTempDescZEx( (uint8*)"m_e", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4941, 0 );
+       FBSTRING* vr$4939 = fb_StrAllocTempDescZEx( (uint8*)"m_e", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4939, 0 );
       }
       goto label$4097;
       label$4121:;
       {
-       FBSTRING* vr$4942 = fb_StrAllocTempDescZEx( (uint8*)"media", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4942, 0 );
+       FBSTRING* vr$4940 = fb_StrAllocTempDescZEx( (uint8*)"media", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4940, 0 );
       }
       goto label$4097;
       label$4122:;
       {
-       FBSTRING* vr$4943 = fb_StrAllocTempDescZEx( (uint8*)"media_attenuation", 17ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4943, 0 );
+       FBSTRING* vr$4941 = fb_StrAllocTempDescZEx( (uint8*)"media_attenuation", 17ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4941, 0 );
       }
       goto label$4097;
       label$4123:;
       {
-       FBSTRING* vr$4944 = fb_StrAllocTempDescZEx( (uint8*)"media_interaction", 17ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4944, 0 );
+       FBSTRING* vr$4942 = fb_StrAllocTempDescZEx( (uint8*)"media_interaction", 17ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4942, 0 );
       }
       goto label$4097;
       label$4124:;
       {
-       FBSTRING* vr$4945 = fb_StrAllocTempDescZEx( (uint8*)"mediump", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4945, 0 );
+       FBSTRING* vr$4943 = fb_StrAllocTempDescZEx( (uint8*)"mediump", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4943, 0 );
       }
       goto label$4097;
       label$4125:;
       {
-       FBSTRING* vr$4946 = fb_StrAllocTempDescZEx( (uint8*)"memory", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4946, 0 );
+       FBSTRING* vr$4944 = fb_StrAllocTempDescZEx( (uint8*)"memory", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4944, 0 );
       }
       goto label$4097;
       label$4126:;
       {
-       FBSTRING* vr$4947 = fb_StrAllocTempDescZEx( (uint8*)"memory_size", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4947, 0 );
+       FBSTRING* vr$4945 = fb_StrAllocTempDescZEx( (uint8*)"memory_size", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4945, 0 );
       }
       goto label$4097;
       label$4127:;
       {
-       FBSTRING* vr$4948 = fb_StrAllocTempDescZEx( (uint8*)"merge", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4948, 0 );
+       FBSTRING* vr$4946 = fb_StrAllocTempDescZEx( (uint8*)"merge", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4946, 0 );
       }
       goto label$4097;
       label$4128:;
       {
-       FBSTRING* vr$4949 = fb_StrAllocTempDescZEx( (uint8*)"mesh", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4949, 0 );
+       FBSTRING* vr$4947 = fb_StrAllocTempDescZEx( (uint8*)"mesh", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4947, 0 );
       }
       goto label$4097;
       label$4129:;
       {
-       FBSTRING* vr$4950 = fb_StrAllocTempDescZEx( (uint8*)"mesh2", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4950, 0 );
+       FBSTRING* vr$4948 = fb_StrAllocTempDescZEx( (uint8*)"mesh2", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4948, 0 );
       }
       goto label$4097;
       label$4130:;
       {
-       FBSTRING* vr$4951 = fb_StrAllocTempDescZEx( (uint8*)"message", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4951, 0 );
+       FBSTRING* vr$4949 = fb_StrAllocTempDescZEx( (uint8*)"message", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4949, 0 );
       }
       goto label$4097;
       label$4131:;
       {
-       FBSTRING* vr$4952 = fb_StrAllocTempDescZEx( (uint8*)"metaclass", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4952, 0 );
+       FBSTRING* vr$4950 = fb_StrAllocTempDescZEx( (uint8*)"metaclass", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4950, 0 );
       }
       goto label$4097;
       label$4132:;
       {
-       FBSTRING* vr$4953 = fb_StrAllocTempDescZEx( (uint8*)"meta_hint", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4953, 0 );
+       FBSTRING* vr$4951 = fb_StrAllocTempDescZEx( (uint8*)"meta_hint", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4951, 0 );
       }
       goto label$4097;
       label$4133:;
       {
-       FBSTRING* vr$4954 = fb_StrAllocTempDescZEx( (uint8*)"metallic", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4954, 0 );
+       FBSTRING* vr$4952 = fb_StrAllocTempDescZEx( (uint8*)"metallic", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4952, 0 );
       }
       goto label$4097;
       label$4134:;
       {
-       FBSTRING* vr$4955 = fb_StrAllocTempDescZEx( (uint8*)"method", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4955, 0 );
+       FBSTRING* vr$4953 = fb_StrAllocTempDescZEx( (uint8*)"method", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4953, 0 );
       }
       goto label$4097;
       label$4135:;
       {
-       FBSTRING* vr$4956 = fb_StrAllocTempDescZEx( (uint8*)"method-id", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4956, 0 );
+       FBSTRING* vr$4954 = fb_StrAllocTempDescZEx( (uint8*)"method-id", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4954, 0 );
       }
       goto label$4097;
       label$4136:;
       {
-       FBSTRING* vr$4957 = fb_StrAllocTempDescZEx( (uint8*)"metric", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4957, 0 );
+       FBSTRING* vr$4955 = fb_StrAllocTempDescZEx( (uint8*)"metric", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4955, 0 );
       }
       goto label$4097;
       label$4137:;
       {
-       FBSTRING* vr$4958 = fb_StrAllocTempDescZEx( (uint8*)"microfacet", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4958, 0 );
+       FBSTRING* vr$4956 = fb_StrAllocTempDescZEx( (uint8*)"microfacet", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4956, 0 );
       }
       goto label$4097;
       label$4138:;
       {
-       FBSTRING* vr$4959 = fb_StrAllocTempDescZEx( (uint8*)"mid", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4959, 0 );
+       FBSTRING* vr$4957 = fb_StrAllocTempDescZEx( (uint8*)"mid", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4957, 0 );
       }
       goto label$4097;
       label$4139:;
       {
-       FBSTRING* vr$4960 = fb_StrAllocTempDescZEx( (uint8*)"min", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4960, 0 );
+       FBSTRING* vr$4958 = fb_StrAllocTempDescZEx( (uint8*)"min", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4958, 0 );
       }
       goto label$4097;
       label$4140:;
       {
-       FBSTRING* vr$4961 = fb_StrAllocTempDescZEx( (uint8*)"min_extent", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4961, 0 );
+       FBSTRING* vr$4959 = fb_StrAllocTempDescZEx( (uint8*)"min_extent", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4959, 0 );
       }
       goto label$4097;
       label$4141:;
       {
-       FBSTRING* vr$4962 = fb_StrAllocTempDescZEx( (uint8*)"minimum_reuse", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4962, 0 );
+       FBSTRING* vr$4960 = fb_StrAllocTempDescZEx( (uint8*)"minimum_reuse", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4960, 0 );
       }
       goto label$4097;
       label$4142:;
       {
-       FBSTRING* vr$4963 = fb_StrAllocTempDescZEx( (uint8*)"minute", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4963, 0 );
+       FBSTRING* vr$4961 = fb_StrAllocTempDescZEx( (uint8*)"minute", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4961, 0 );
       }
       goto label$4097;
       label$4143:;
       {
-       FBSTRING* vr$4964 = fb_StrAllocTempDescZEx( (uint8*)"mkd", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4964, 0 );
+       FBSTRING* vr$4962 = fb_StrAllocTempDescZEx( (uint8*)"mkd", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4962, 0 );
       }
       goto label$4097;
       label$4144:;
       {
-       FBSTRING* vr$4965 = fb_StrAllocTempDescZEx( (uint8*)"mkdir", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4965, 0 );
+       FBSTRING* vr$4963 = fb_StrAllocTempDescZEx( (uint8*)"mkdir", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4963, 0 );
       }
       goto label$4097;
       label$4145:;
       {
-       FBSTRING* vr$4966 = fb_StrAllocTempDescZEx( (uint8*)"mki", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4966, 0 );
+       FBSTRING* vr$4964 = fb_StrAllocTempDescZEx( (uint8*)"mki", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4964, 0 );
       }
       goto label$4097;
       label$4146:;
       {
-       FBSTRING* vr$4967 = fb_StrAllocTempDescZEx( (uint8*)"mks", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4967, 0 );
+       FBSTRING* vr$4965 = fb_StrAllocTempDescZEx( (uint8*)"mks", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4965, 0 );
       }
       goto label$4097;
       label$4147:;
       {
-       FBSTRING* vr$4968 = fb_StrAllocTempDescZEx( (uint8*)"M_LN", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4968, 0 );
+       FBSTRING* vr$4966 = fb_StrAllocTempDescZEx( (uint8*)"M_LN", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4966, 0 );
       }
       goto label$4097;
       label$4148:;
       {
-       FBSTRING* vr$4969 = fb_StrAllocTempDescZEx( (uint8*)"M_LN2", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4969, 0 );
+       FBSTRING* vr$4967 = fb_StrAllocTempDescZEx( (uint8*)"M_LN2", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4967, 0 );
       }
       goto label$4097;
       label$4149:;
       {
-       FBSTRING* vr$4970 = fb_StrAllocTempDescZEx( (uint8*)"M_LOG10E", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4970, 0 );
+       FBSTRING* vr$4968 = fb_StrAllocTempDescZEx( (uint8*)"M_LOG10E", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4968, 0 );
       }
       goto label$4097;
       label$4150:;
       {
-       FBSTRING* vr$4971 = fb_StrAllocTempDescZEx( (uint8*)"M_LOG2E", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4971, 0 );
+       FBSTRING* vr$4969 = fb_StrAllocTempDescZEx( (uint8*)"M_LOG2E", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4969, 0 );
       }
       goto label$4097;
       label$4151:;
       {
-       FBSTRING* vr$4972 = fb_StrAllocTempDescZEx( (uint8*)"mod", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4972, 0 );
+       FBSTRING* vr$4970 = fb_StrAllocTempDescZEx( (uint8*)"mod", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4970, 0 );
       }
       goto label$4097;
       label$4152:;
       {
-       FBSTRING* vr$4973 = fb_StrAllocTempDescZEx( (uint8*)"mode", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4973, 0 );
+       FBSTRING* vr$4971 = fb_StrAllocTempDescZEx( (uint8*)"mode", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4971, 0 );
       }
       goto label$4097;
       label$4153:;
       {
-       FBSTRING* vr$4974 = fb_StrAllocTempDescZEx( (uint8*)"modules", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4974, 0 );
+       FBSTRING* vr$4972 = fb_StrAllocTempDescZEx( (uint8*)"modules", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4972, 0 );
       }
       goto label$4097;
       label$4154:;
       {
-       FBSTRING* vr$4975 = fb_StrAllocTempDescZEx( (uint8*)"month", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4975, 0 );
+       FBSTRING* vr$4973 = fb_StrAllocTempDescZEx( (uint8*)"month", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4973, 0 );
       }
       goto label$4097;
       label$4155:;
       {
-       FBSTRING* vr$4976 = fb_StrAllocTempDescZEx( (uint8*)"more-labels", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4976, 0 );
+       FBSTRING* vr$4974 = fb_StrAllocTempDescZEx( (uint8*)"more-labels", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4974, 0 );
       }
       goto label$4097;
       label$4156:;
       {
-       FBSTRING* vr$4977 = fb_StrAllocTempDescZEx( (uint8*)"mortar", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4977, 0 );
+       FBSTRING* vr$4975 = fb_StrAllocTempDescZEx( (uint8*)"mortar", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4975, 0 );
       }
       goto label$4097;
       label$4157:;
       {
-       FBSTRING* vr$4978 = fb_StrAllocTempDescZEx( (uint8*)"motor", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4978, 0 );
+       FBSTRING* vr$4976 = fb_StrAllocTempDescZEx( (uint8*)"motor", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4976, 0 );
       }
       goto label$4097;
       label$4158:;
       {
-       FBSTRING* vr$4979 = fb_StrAllocTempDescZEx( (uint8*)"move", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4979, 0 );
+       FBSTRING* vr$4977 = fb_StrAllocTempDescZEx( (uint8*)"move", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4977, 0 );
       }
       goto label$4097;
       label$4159:;
       {
-       FBSTRING* vr$4980 = fb_StrAllocTempDescZEx( (uint8*)"M_PI", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4980, 0 );
+       FBSTRING* vr$4978 = fb_StrAllocTempDescZEx( (uint8*)"M_PI", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4978, 0 );
       }
       goto label$4097;
       label$4160:;
       {
-       FBSTRING* vr$4981 = fb_StrAllocTempDescZEx( (uint8*)"M_PI_2", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4981, 0 );
+       FBSTRING* vr$4979 = fb_StrAllocTempDescZEx( (uint8*)"M_PI_2", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4979, 0 );
       }
       goto label$4097;
       label$4161:;
       {
-       FBSTRING* vr$4982 = fb_StrAllocTempDescZEx( (uint8*)"M_PI_4", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4982, 0 );
+       FBSTRING* vr$4980 = fb_StrAllocTempDescZEx( (uint8*)"M_PI_4", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4980, 0 );
       }
       goto label$4097;
       label$4162:;
       {
-       FBSTRING* vr$4983 = fb_StrAllocTempDescZEx( (uint8*)"M_SQRT", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4983, 0 );
+       FBSTRING* vr$4981 = fb_StrAllocTempDescZEx( (uint8*)"M_SQRT", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4981, 0 );
       }
       goto label$4097;
       label$4163:;
       {
-       FBSTRING* vr$4984 = fb_StrAllocTempDescZEx( (uint8*)"M_SQRT2", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4984, 0 );
+       FBSTRING* vr$4982 = fb_StrAllocTempDescZEx( (uint8*)"M_SQRT2", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4982, 0 );
       }
       goto label$4097;
       label$4164:;
       {
-       FBSTRING* vr$4985 = fb_StrAllocTempDescZEx( (uint8*)"multiple", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4985, 0 );
+       FBSTRING* vr$4983 = fb_StrAllocTempDescZEx( (uint8*)"multiple", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4983, 0 );
       }
       goto label$4097;
       label$4165:;
       {
-       FBSTRING* vr$4986 = fb_StrAllocTempDescZEx( (uint8*)"multiply", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4986, 0 );
+       FBSTRING* vr$4984 = fb_StrAllocTempDescZEx( (uint8*)"multiply", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4984, 0 );
       }
       goto label$4097;
       label$4166:;
       {
-       FBSTRING* vr$4987 = fb_StrAllocTempDescZEx( (uint8*)"n", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4987, 0 );
+       FBSTRING* vr$4985 = fb_StrAllocTempDescZEx( (uint8*)"n", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4985, 0 );
       }
       goto label$4097;
       label$4167:;
       {
-       FBSTRING* vr$4988 = fb_StrAllocTempDescZEx( (uint8*)"name", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4988, 0 );
+       FBSTRING* vr$4986 = fb_StrAllocTempDescZEx( (uint8*)"name", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4986, 0 );
       }
       goto label$4097;
       label$4168:;
       {
-       FBSTRING* vr$4989 = fb_StrAllocTempDescZEx( (uint8*)"namelist", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4989, 0 );
+       FBSTRING* vr$4987 = fb_StrAllocTempDescZEx( (uint8*)"namelist", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4987, 0 );
       }
       goto label$4097;
       label$4169:;
       {
-       FBSTRING* vr$4990 = fb_StrAllocTempDescZEx( (uint8*)"native", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4990, 0 );
+       FBSTRING* vr$4988 = fb_StrAllocTempDescZEx( (uint8*)"native", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4988, 0 );
       }
       goto label$4097;
       label$4170:;
       {
-       FBSTRING* vr$4991 = fb_StrAllocTempDescZEx( (uint8*)"native_binary", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4991, 0 );
+       FBSTRING* vr$4989 = fb_StrAllocTempDescZEx( (uint8*)"native_binary", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4989, 0 );
       }
       goto label$4097;
       label$4171:;
       {
-       FBSTRING* vr$4992 = fb_StrAllocTempDescZEx( (uint8*)"natural", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4992, 0 );
+       FBSTRING* vr$4990 = fb_StrAllocTempDescZEx( (uint8*)"natural", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4990, 0 );
       }
       goto label$4097;
       label$4172:;
       {
-       FBSTRING* vr$4993 = fb_StrAllocTempDescZEx( (uint8*)"natural_spline", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4993, 0 );
+       FBSTRING* vr$4991 = fb_StrAllocTempDescZEx( (uint8*)"natural_spline", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4991, 0 );
       }
       goto label$4097;
       label$4173:;
       {
-       FBSTRING* vr$4994 = fb_StrAllocTempDescZEx( (uint8*)"nchar", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4994, 0 );
+       FBSTRING* vr$4992 = fb_StrAllocTempDescZEx( (uint8*)"nchar", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4992, 0 );
       }
       goto label$4097;
       label$4174:;
       {
-       FBSTRING* vr$4995 = fb_StrAllocTempDescZEx( (uint8*)"near", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4995, 0 );
+       FBSTRING* vr$4993 = fb_StrAllocTempDescZEx( (uint8*)"near", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4993, 0 );
       }
       goto label$4097;
       label$4175:;
       {
-       FBSTRING* vr$4996 = fb_StrAllocTempDescZEx( (uint8*)"nearest_count", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4996, 0 );
+       FBSTRING* vr$4994 = fb_StrAllocTempDescZEx( (uint8*)"nearest_count", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4994, 0 );
       }
       goto label$4097;
       label$4176:;
       {
-       FBSTRING* vr$4997 = fb_StrAllocTempDescZEx( (uint8*)"negative", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4997, 0 );
+       FBSTRING* vr$4995 = fb_StrAllocTempDescZEx( (uint8*)"negative", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4995, 0 );
       }
       goto label$4097;
       label$4177:;
       {
-       FBSTRING* vr$4998 = fb_StrAllocTempDescZEx( (uint8*)"nested_loop", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4998, 0 );
+       FBSTRING* vr$4996 = fb_StrAllocTempDescZEx( (uint8*)"nested_loop", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4996, 0 );
       }
       goto label$4097;
       label$4178:;
       {
-       FBSTRING* vr$4999 = fb_StrAllocTempDescZEx( (uint8*)"new", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$4999, 0 );
+       FBSTRING* vr$4997 = fb_StrAllocTempDescZEx( (uint8*)"new", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4997, 0 );
       }
       goto label$4097;
       label$4179:;
       {
-       FBSTRING* vr$5000 = fb_StrAllocTempDescZEx( (uint8*)"next", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5000, 0 );
+       FBSTRING* vr$4998 = fb_StrAllocTempDescZEx( (uint8*)"next", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4998, 0 );
       }
       goto label$4097;
       label$4180:;
       {
-       FBSTRING* vr$5001 = fb_StrAllocTempDescZEx( (uint8*)"nil", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5001, 0 );
+       FBSTRING* vr$4999 = fb_StrAllocTempDescZEx( (uint8*)"nil", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$4999, 0 );
       }
       goto label$4097;
       label$4181:;
       {
-       FBSTRING* vr$5002 = fb_StrAllocTempDescZEx( (uint8*)"no", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5002, 0 );
+       FBSTRING* vr$5000 = fb_StrAllocTempDescZEx( (uint8*)"no", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5000, 0 );
       }
       goto label$4097;
       label$4182:;
       {
-       FBSTRING* vr$5003 = fb_StrAllocTempDescZEx( (uint8*)"no_bump_scale", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5003, 0 );
+       FBSTRING* vr$5001 = fb_StrAllocTempDescZEx( (uint8*)"no_bump_scale", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5001, 0 );
       }
       goto label$4097;
       label$4183:;
       {
-       FBSTRING* vr$5004 = fb_StrAllocTempDescZEx( (uint8*)"no_cache", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5004, 0 );
+       FBSTRING* vr$5002 = fb_StrAllocTempDescZEx( (uint8*)"no_cache", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5002, 0 );
       }
       goto label$4097;
       label$4184:;
       {
-       FBSTRING* vr$5005 = fb_StrAllocTempDescZEx( (uint8*)"no_image", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5005, 0 );
+       FBSTRING* vr$5003 = fb_StrAllocTempDescZEx( (uint8*)"no_image", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5003, 0 );
       }
       goto label$4097;
       label$4185:;
       {
-       FBSTRING* vr$5006 = fb_StrAllocTempDescZEx( (uint8*)"noise", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5006, 0 );
+       FBSTRING* vr$5004 = fb_StrAllocTempDescZEx( (uint8*)"noise", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5004, 0 );
       }
       goto label$4097;
       label$4186:;
       {
-       FBSTRING* vr$5007 = fb_StrAllocTempDescZEx( (uint8*)"noise_generator", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5007, 0 );
+       FBSTRING* vr$5005 = fb_StrAllocTempDescZEx( (uint8*)"noise_generator", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5005, 0 );
       }
       goto label$4097;
       label$4187:;
       {
-       FBSTRING* vr$5008 = fb_StrAllocTempDescZEx( (uint8*)"none", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5008, 0 );
+       FBSTRING* vr$5006 = fb_StrAllocTempDescZEx( (uint8*)"none", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5006, 0 );
       }
       goto label$4097;
       label$4188:;
       {
-       FBSTRING* vr$5009 = fb_StrAllocTempDescZEx( (uint8*)"nonlocal", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5009, 0 );
+       FBSTRING* vr$5007 = fb_StrAllocTempDescZEx( (uint8*)"nonlocal", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5007, 0 );
       }
       goto label$4097;
       label$4189:;
       {
-       FBSTRING* vr$5010 = fb_StrAllocTempDescZEx( (uint8*)"noperspective", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5010, 0 );
+       FBSTRING* vr$5008 = fb_StrAllocTempDescZEx( (uint8*)"noperspective", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5008, 0 );
       }
       goto label$4097;
       label$4190:;
       {
-       FBSTRING* vr$5011 = fb_StrAllocTempDescZEx( (uint8*)"no_reflection", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5011, 0 );
+       FBSTRING* vr$5009 = fb_StrAllocTempDescZEx( (uint8*)"no_reflection", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5009, 0 );
       }
       goto label$4097;
       label$4191:;
       {
-       FBSTRING* vr$5012 = fb_StrAllocTempDescZEx( (uint8*)"normal", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5012, 0 );
+       FBSTRING* vr$5010 = fb_StrAllocTempDescZEx( (uint8*)"normal", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5010, 0 );
       }
       goto label$4097;
       label$4192:;
       {
-       FBSTRING* vr$5013 = fb_StrAllocTempDescZEx( (uint8*)"normal_indices", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5013, 0 );
+       FBSTRING* vr$5011 = fb_StrAllocTempDescZEx( (uint8*)"normal_indices", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5011, 0 );
       }
       goto label$4097;
       label$4193:;
       {
-       FBSTRING* vr$5014 = fb_StrAllocTempDescZEx( (uint8*)"normalize", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5014, 0 );
+       FBSTRING* vr$5012 = fb_StrAllocTempDescZEx( (uint8*)"normalize", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5012, 0 );
       }
       goto label$4097;
       label$4194:;
       {
-       FBSTRING* vr$5015 = fb_StrAllocTempDescZEx( (uint8*)"normal_map", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5015, 0 );
+       FBSTRING* vr$5013 = fb_StrAllocTempDescZEx( (uint8*)"normal_map", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5013, 0 );
       }
       goto label$4097;
       label$4195:;
       {
-       FBSTRING* vr$5016 = fb_StrAllocTempDescZEx( (uint8*)"normal_vectors", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5016, 0 );
+       FBSTRING* vr$5014 = fb_StrAllocTempDescZEx( (uint8*)"normal_vectors", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5014, 0 );
       }
       goto label$4097;
       label$4196:;
       {
-       FBSTRING* vr$5017 = fb_StrAllocTempDescZEx( (uint8*)"no_shadow", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5017, 0 );
+       FBSTRING* vr$5015 = fb_StrAllocTempDescZEx( (uint8*)"no_shadow", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5015, 0 );
       }
       goto label$4097;
       label$4197:;
       {
-       FBSTRING* vr$5018 = fb_StrAllocTempDescZEx( (uint8*)"nostackframe", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5018, 0 );
+       FBSTRING* vr$5016 = fb_StrAllocTempDescZEx( (uint8*)"nostackframe", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5016, 0 );
       }
       goto label$4097;
       label$4198:;
       {
-       FBSTRING* vr$5019 = fb_StrAllocTempDescZEx( (uint8*)"not", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5019, 0 );
+       FBSTRING* vr$5017 = fb_StrAllocTempDescZEx( (uint8*)"not", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5017, 0 );
       }
       goto label$4097;
       label$4199:;
       {
-       FBSTRING* vr$5020 = fb_StrAllocTempDescZEx( (uint8*)"noteq", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5020, 0 );
+       FBSTRING* vr$5018 = fb_StrAllocTempDescZEx( (uint8*)"noteq", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5018, 0 );
       }
       goto label$4097;
       label$4200:;
       {
-       FBSTRING* vr$5021 = fb_StrAllocTempDescZEx( (uint8*)"null", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5021, 0 );
+       FBSTRING* vr$5019 = fb_StrAllocTempDescZEx( (uint8*)"null", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5019, 0 );
       }
       goto label$4097;
       label$4201:;
       {
-       FBSTRING* vr$5022 = fb_StrAllocTempDescZEx( (uint8*)"nulls", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5022, 0 );
+       FBSTRING* vr$5020 = fb_StrAllocTempDescZEx( (uint8*)"nulls", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5020, 0 );
       }
       goto label$4097;
       label$4202:;
       {
-       FBSTRING* vr$5023 = fb_StrAllocTempDescZEx( (uint8*)"number", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5023, 1 );
+       FBSTRING* vr$5021 = fb_StrAllocTempDescZEx( (uint8*)"number", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5021, 1 );
       }
       goto label$4097;
       label$4203:;
       {
-       FBSTRING* vr$5024 = fb_StrAllocTempDescZEx( (uint8*)"number_of_waves", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5024, 0 );
+       FBSTRING* vr$5022 = fb_StrAllocTempDescZEx( (uint8*)"number_of_waves", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5022, 0 );
       }
       goto label$4097;
       label$4204:;
       {
-       FBSTRING* vr$5025 = fb_StrAllocTempDescZEx( (uint8*)"numeric", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5025, 0 );
+       FBSTRING* vr$5023 = fb_StrAllocTempDescZEx( (uint8*)"numeric", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5023, 0 );
       }
       goto label$4097;
       label$4205:;
       {
-       FBSTRING* vr$5026 = fb_StrAllocTempDescZEx( (uint8*)"numeric-edited", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5026, 0 );
+       FBSTRING* vr$5024 = fb_StrAllocTempDescZEx( (uint8*)"numeric-edited", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5024, 0 );
       }
       goto label$4097;
       label$4206:;
       {
-       FBSTRING* vr$5027 = fb_StrAllocTempDescZEx( (uint8*)"o", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5027, 0 );
+       FBSTRING* vr$5025 = fb_StrAllocTempDescZEx( (uint8*)"o", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5025, 0 );
       }
       goto label$4097;
       label$4207:;
       {
-       FBSTRING* vr$5028 = fb_StrAllocTempDescZEx( (uint8*)"object", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5028, 0 );
+       FBSTRING* vr$5026 = fb_StrAllocTempDescZEx( (uint8*)"object", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5026, 0 );
       }
       goto label$4097;
       label$4208:;
       {
-       FBSTRING* vr$5029 = fb_StrAllocTempDescZEx( (uint8*)"object-computer", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5029, 0 );
+       FBSTRING* vr$5027 = fb_StrAllocTempDescZEx( (uint8*)"object-computer", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5027, 0 );
       }
       goto label$4097;
       label$4209:;
       {
-       FBSTRING* vr$5030 = fb_StrAllocTempDescZEx( (uint8*)"occurs", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5030, 0 );
+       FBSTRING* vr$5028 = fb_StrAllocTempDescZEx( (uint8*)"occurs", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5028, 0 );
       }
       goto label$4097;
       label$4210:;
       {
-       FBSTRING* vr$5031 = fb_StrAllocTempDescZEx( (uint8*)"oct", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5031, 0 );
+       FBSTRING* vr$5029 = fb_StrAllocTempDescZEx( (uint8*)"oct", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5029, 0 );
       }
       goto label$4097;
       label$4211:;
       {
-       FBSTRING* vr$5032 = fb_StrAllocTempDescZEx( (uint8*)"octaves", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5032, 0 );
+       FBSTRING* vr$5030 = fb_StrAllocTempDescZEx( (uint8*)"octaves", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5030, 0 );
       }
       goto label$4097;
       label$4212:;
       {
-       FBSTRING* vr$5033 = fb_StrAllocTempDescZEx( (uint8*)"octet_length", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5033, 0 );
+       FBSTRING* vr$5031 = fb_StrAllocTempDescZEx( (uint8*)"octet_length", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5031, 0 );
       }
       goto label$4097;
       label$4213:;
       {
-       FBSTRING* vr$5034 = fb_StrAllocTempDescZEx( (uint8*)"of", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5034, 0 );
+       FBSTRING* vr$5032 = fb_StrAllocTempDescZEx( (uint8*)"of", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5032, 0 );
       }
       goto label$4097;
       label$4214:;
       {
-       FBSTRING* vr$5035 = fb_StrAllocTempDescZEx( (uint8*)"off", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5035, 0 );
+       FBSTRING* vr$5033 = fb_StrAllocTempDescZEx( (uint8*)"off", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5033, 0 );
       }
       goto label$4097;
       label$4215:;
       {
-       FBSTRING* vr$5036 = fb_StrAllocTempDescZEx( (uint8*)"offset", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5036, 0 );
+       FBSTRING* vr$5034 = fb_StrAllocTempDescZEx( (uint8*)"offset", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5034, 0 );
       }
       goto label$4097;
       label$4216:;
       {
-       FBSTRING* vr$5037 = fb_StrAllocTempDescZEx( (uint8*)"oldfpccall", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5037, 0 );
+       FBSTRING* vr$5035 = fb_StrAllocTempDescZEx( (uint8*)"oldfpccall", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5035, 0 );
       }
       goto label$4097;
       label$4217:;
       {
-       FBSTRING* vr$5038 = fb_StrAllocTempDescZEx( (uint8*)"omega", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5038, 0 );
+       FBSTRING* vr$5036 = fb_StrAllocTempDescZEx( (uint8*)"omega", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5036, 0 );
       }
       goto label$4097;
       label$4218:;
       {
-       FBSTRING* vr$5039 = fb_StrAllocTempDescZEx( (uint8*)"omitted", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5039, 0 );
+       FBSTRING* vr$5037 = fb_StrAllocTempDescZEx( (uint8*)"omitted", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5037, 0 );
       }
       goto label$4097;
       label$4219:;
       {
-       FBSTRING* vr$5040 = fb_StrAllocTempDescZEx( (uint8*)"omnimax", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5040, 0 );
+       FBSTRING* vr$5038 = fb_StrAllocTempDescZEx( (uint8*)"omnimax", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5038, 0 );
       }
       goto label$4097;
       label$4220:;
       {
-       FBSTRING* vr$5041 = fb_StrAllocTempDescZEx( (uint8*)"on", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5041, 0 );
+       FBSTRING* vr$5039 = fb_StrAllocTempDescZEx( (uint8*)"on", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5039, 0 );
       }
       goto label$4097;
       label$4221:;
       {
-       FBSTRING* vr$5042 = fb_StrAllocTempDescZEx( (uint8*)"once", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5042, 0 );
+       FBSTRING* vr$5040 = fb_StrAllocTempDescZEx( (uint8*)"once", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5040, 0 );
       }
       goto label$4097;
       label$4222:;
       {
-       FBSTRING* vr$5043 = fb_StrAllocTempDescZEx( (uint8*)"onion", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5043, 0 );
+       FBSTRING* vr$5041 = fb_StrAllocTempDescZEx( (uint8*)"onion", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5041, 0 );
       }
       goto label$4097;
       label$4223:;
       {
-       FBSTRING* vr$5044 = fb_StrAllocTempDescZEx( (uint8*)"open", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5044, 0 );
+       FBSTRING* vr$5042 = fb_StrAllocTempDescZEx( (uint8*)"open", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5042, 0 );
       }
       goto label$4097;
       label$4224:;
       {
-       FBSTRING* vr$5045 = fb_StrAllocTempDescZEx( (uint8*)"operator", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5045, 0 );
+       FBSTRING* vr$5043 = fb_StrAllocTempDescZEx( (uint8*)"operator", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5043, 0 );
       }
       goto label$4097;
       label$4225:;
       {
-       FBSTRING* vr$5046 = fb_StrAllocTempDescZEx( (uint8*)"option", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5046, 0 );
+       FBSTRING* vr$5044 = fb_StrAllocTempDescZEx( (uint8*)"option", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5044, 0 );
       }
       goto label$4097;
       label$4226:;
       {
-       FBSTRING* vr$5047 = fb_StrAllocTempDescZEx( (uint8*)"optional", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5047, 0 );
+       FBSTRING* vr$5045 = fb_StrAllocTempDescZEx( (uint8*)"optional", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5045, 0 );
       }
       goto label$4097;
       label$4227:;
       {
-       FBSTRING* vr$5048 = fb_StrAllocTempDescZEx( (uint8*)"options", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5048, 0 );
+       FBSTRING* vr$5046 = fb_StrAllocTempDescZEx( (uint8*)"options", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5046, 0 );
       }
       goto label$4097;
       label$4228:;
       {
-       FBSTRING* vr$5049 = fb_StrAllocTempDescZEx( (uint8*)"or", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5049, 0 );
+       FBSTRING* vr$5047 = fb_StrAllocTempDescZEx( (uint8*)"or", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5047, 0 );
       }
       goto label$4097;
       label$4229:;
       {
-       FBSTRING* vr$5050 = fb_StrAllocTempDescZEx( (uint8*)"or_bits", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5050, 0 );
+       FBSTRING* vr$5048 = fb_StrAllocTempDescZEx( (uint8*)"or_bits", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5048, 0 );
       }
       goto label$4097;
       label$4230:;
       {
-       FBSTRING* vr$5051 = fb_StrAllocTempDescZEx( (uint8*)"order", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5051, 0 );
+       FBSTRING* vr$5049 = fb_StrAllocTempDescZEx( (uint8*)"order", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5049, 0 );
       }
       goto label$4097;
       label$4231:;
       {
-       FBSTRING* vr$5052 = fb_StrAllocTempDescZEx( (uint8*)"ordered", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5052, 0 );
+       FBSTRING* vr$5050 = fb_StrAllocTempDescZEx( (uint8*)"ordered", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5050, 0 );
       }
       goto label$4097;
       label$4232:;
       {
-       FBSTRING* vr$5053 = fb_StrAllocTempDescZEx( (uint8*)"oren_nayar", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5053, 0 );
+       FBSTRING* vr$5051 = fb_StrAllocTempDescZEx( (uint8*)"oren_nayar", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5051, 0 );
       }
       goto label$4097;
       label$4233:;
       {
-       FBSTRING* vr$5054 = fb_StrAllocTempDescZEx( (uint8*)"organization", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5054, 0 );
+       FBSTRING* vr$5052 = fb_StrAllocTempDescZEx( (uint8*)"organization", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5052, 0 );
       }
       goto label$4097;
       label$4234:;
       {
-       FBSTRING* vr$5055 = fb_StrAllocTempDescZEx( (uint8*)"orient", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5055, 0 );
+       FBSTRING* vr$5053 = fb_StrAllocTempDescZEx( (uint8*)"orient", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5053, 0 );
       }
       goto label$4097;
       label$4235:;
       {
-       FBSTRING* vr$5056 = fb_StrAllocTempDescZEx( (uint8*)"orientation", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5056, 0 );
+       FBSTRING* vr$5054 = fb_StrAllocTempDescZEx( (uint8*)"orientation", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5054, 0 );
       }
       goto label$4097;
       label$4236:;
       {
-       FBSTRING* vr$5057 = fb_StrAllocTempDescZEx( (uint8*)"orthographic", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5057, 0 );
+       FBSTRING* vr$5055 = fb_StrAllocTempDescZEx( (uint8*)"orthographic", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5055, 0 );
       }
       goto label$4097;
       label$4237:;
       {
-       FBSTRING* vr$5058 = fb_StrAllocTempDescZEx( (uint8*)"other", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5058, 0 );
+       FBSTRING* vr$5056 = fb_StrAllocTempDescZEx( (uint8*)"other", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5056, 0 );
       }
       goto label$4097;
       label$4238:;
       {
-       FBSTRING* vr$5059 = fb_StrAllocTempDescZEx( (uint8*)"out", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5059, 0 );
+       FBSTRING* vr$5057 = fb_StrAllocTempDescZEx( (uint8*)"out", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5057, 0 );
       }
       goto label$4097;
       label$4239:;
       {
-       FBSTRING* vr$5060 = fb_StrAllocTempDescZEx( (uint8*)"outer", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5060, 0 );
+       FBSTRING* vr$5058 = fb_StrAllocTempDescZEx( (uint8*)"outer", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5058, 0 );
       }
       goto label$4097;
       label$4240:;
       {
-       FBSTRING* vr$5061 = fb_StrAllocTempDescZEx( (uint8*)"output", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5061, 0 );
+       FBSTRING* vr$5059 = fb_StrAllocTempDescZEx( (uint8*)"output", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5059, 0 );
       }
       goto label$4097;
       label$4241:;
       {
-       FBSTRING* vr$5062 = fb_StrAllocTempDescZEx( (uint8*)"overflow", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5062, 0 );
+       FBSTRING* vr$5060 = fb_StrAllocTempDescZEx( (uint8*)"overflow", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5060, 0 );
       }
       goto label$4097;
       label$4242:;
       {
-       FBSTRING* vr$5063 = fb_StrAllocTempDescZEx( (uint8*)"overlaps", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5063, 0 );
+       FBSTRING* vr$5061 = fb_StrAllocTempDescZEx( (uint8*)"overlaps", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5061, 0 );
       }
       goto label$4097;
       label$4243:;
       {
-       FBSTRING* vr$5064 = fb_StrAllocTempDescZEx( (uint8*)"override", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5064, 0 );
+       FBSTRING* vr$5062 = fb_StrAllocTempDescZEx( (uint8*)"override", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5062, 0 );
       }
       goto label$4097;
       label$4244:;
       {
-       FBSTRING* vr$5065 = fb_StrAllocTempDescZEx( (uint8*)"p", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5065, 0 );
+       FBSTRING* vr$5063 = fb_StrAllocTempDescZEx( (uint8*)"p", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5063, 0 );
       }
       goto label$4097;
       label$4245:;
       {
-       FBSTRING* vr$5066 = fb_StrAllocTempDescZEx( (uint8*)"packed", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5066, 0 );
+       FBSTRING* vr$5064 = fb_StrAllocTempDescZEx( (uint8*)"packed", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5064, 0 );
       }
       goto label$4097;
       label$4246:;
       {
-       FBSTRING* vr$5067 = fb_StrAllocTempDescZEx( (uint8*)"packed-decimal", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5067, 0 );
+       FBSTRING* vr$5065 = fb_StrAllocTempDescZEx( (uint8*)"packed-decimal", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5065, 0 );
       }
       goto label$4097;
       label$4247:;
       {
-       FBSTRING* vr$5068 = fb_StrAllocTempDescZEx( (uint8*)"padding", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5068, 0 );
+       FBSTRING* vr$5066 = fb_StrAllocTempDescZEx( (uint8*)"padding", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5066, 0 );
       }
       goto label$4097;
       label$4248:;
       {
-       FBSTRING* vr$5069 = fb_StrAllocTempDescZEx( (uint8*)"page", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5069, 0 );
+       FBSTRING* vr$5067 = fb_StrAllocTempDescZEx( (uint8*)"page", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5067, 0 );
       }
       goto label$4097;
       label$4249:;
       {
-       FBSTRING* vr$5070 = fb_StrAllocTempDescZEx( (uint8*)"page-counter", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5070, 0 );
+       FBSTRING* vr$5068 = fb_StrAllocTempDescZEx( (uint8*)"page-counter", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5068, 0 );
       }
       goto label$4097;
       label$4250:;
       {
-       FBSTRING* vr$5071 = fb_StrAllocTempDescZEx( (uint8*)"paint", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5071, 0 );
+       FBSTRING* vr$5069 = fb_StrAllocTempDescZEx( (uint8*)"paint", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5069, 0 );
       }
       goto label$4097;
       label$4251:;
       {
-       FBSTRING* vr$5072 = fb_StrAllocTempDescZEx( (uint8*)"palette", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5072, 0 );
+       FBSTRING* vr$5070 = fb_StrAllocTempDescZEx( (uint8*)"palette", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5070, 0 );
       }
       goto label$4097;
       label$4252:;
       {
-       FBSTRING* vr$5073 = fb_StrAllocTempDescZEx( (uint8*)"panoramic", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5073, 0 );
+       FBSTRING* vr$5071 = fb_StrAllocTempDescZEx( (uint8*)"panoramic", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5071, 0 );
       }
       goto label$4097;
       label$4253:;
       {
-       FBSTRING* vr$5074 = fb_StrAllocTempDescZEx( (uint8*)"parallel", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5074, 0 );
+       FBSTRING* vr$5072 = fb_StrAllocTempDescZEx( (uint8*)"parallel", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5072, 0 );
       }
       goto label$4097;
       label$4254:;
       {
-       FBSTRING* vr$5075 = fb_StrAllocTempDescZEx( (uint8*)"parameter", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5075, 0 );
+       FBSTRING* vr$5073 = fb_StrAllocTempDescZEx( (uint8*)"parameter", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5073, 0 );
       }
       goto label$4097;
       label$4255:;
       {
-       FBSTRING* vr$5076 = fb_StrAllocTempDescZEx( (uint8*)"parametric", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5076, 0 );
+       FBSTRING* vr$5074 = fb_StrAllocTempDescZEx( (uint8*)"parametric", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5074, 0 );
       }
       goto label$4097;
       label$4256:;
       {
-       FBSTRING* vr$5077 = fb_StrAllocTempDescZEx( (uint8*)"partition", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5077, 0 );
+       FBSTRING* vr$5075 = fb_StrAllocTempDescZEx( (uint8*)"partition", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5075, 0 );
       }
       goto label$4097;
       label$4257:;
       {
-       FBSTRING* vr$5078 = fb_StrAllocTempDescZEx( (uint8*)"pascal", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5078, 0 );
+       FBSTRING* vr$5076 = fb_StrAllocTempDescZEx( (uint8*)"pascal", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5076, 0 );
       }
       goto label$4097;
       label$4258:;
       {
-       FBSTRING* vr$5079 = fb_StrAllocTempDescZEx( (uint8*)"pass", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5079, 0 );
+       FBSTRING* vr$5077 = fb_StrAllocTempDescZEx( (uint8*)"pass", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5077, 0 );
       }
       goto label$4097;
       label$4259:;
       {
-       FBSTRING* vr$5080 = fb_StrAllocTempDescZEx( (uint8*)"pass_through", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5080, 0 );
+       FBSTRING* vr$5078 = fb_StrAllocTempDescZEx( (uint8*)"pass_through", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5078, 0 );
       }
       goto label$4097;
       label$4260:;
       {
-       FBSTRING* vr$5081 = fb_StrAllocTempDescZEx( (uint8*)"password", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5081, 0 );
+       FBSTRING* vr$5079 = fb_StrAllocTempDescZEx( (uint8*)"password", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5079, 0 );
       }
       goto label$4097;
       label$4261:;
       {
-       FBSTRING* vr$5082 = fb_StrAllocTempDescZEx( (uint8*)"pattern", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5082, 0 );
+       FBSTRING* vr$5080 = fb_StrAllocTempDescZEx( (uint8*)"pattern", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5080, 0 );
       }
       goto label$4097;
       label$4262:;
       {
-       FBSTRING* vr$5083 = fb_StrAllocTempDescZEx( (uint8*)"pause", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5083, 0 );
+       FBSTRING* vr$5081 = fb_StrAllocTempDescZEx( (uint8*)"pause", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5081, 0 );
       }
       goto label$4097;
       label$4263:;
       {
-       FBSTRING* vr$5084 = fb_StrAllocTempDescZEx( (uint8*)"pcopy", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5084, 0 );
+       FBSTRING* vr$5082 = fb_StrAllocTempDescZEx( (uint8*)"pcopy", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5082, 0 );
       }
       goto label$4097;
       label$4264:;
       {
-       FBSTRING* vr$5085 = fb_StrAllocTempDescZEx( (uint8*)"peek", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5085, 0 );
+       FBSTRING* vr$5083 = fb_StrAllocTempDescZEx( (uint8*)"peek", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5083, 0 );
       }
       goto label$4097;
       label$4265:;
       {
-       FBSTRING* vr$5086 = fb_StrAllocTempDescZEx( (uint8*)"pen", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5086, 0 );
+       FBSTRING* vr$5084 = fb_StrAllocTempDescZEx( (uint8*)"pen", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5084, 0 );
       }
       goto label$4097;
       label$4266:;
       {
-       FBSTRING* vr$5087 = fb_StrAllocTempDescZEx( (uint8*)"perform", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5087, 0 );
+       FBSTRING* vr$5085 = fb_StrAllocTempDescZEx( (uint8*)"perform", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5085, 0 );
       }
       goto label$4097;
       label$4267:;
       {
-       FBSTRING* vr$5088 = fb_StrAllocTempDescZEx( (uint8*)"perspective", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5088, 0 );
+       FBSTRING* vr$5086 = fb_StrAllocTempDescZEx( (uint8*)"perspective", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5086, 0 );
       }
       goto label$4097;
       label$4268:;
       {
-       FBSTRING* vr$5089 = fb_StrAllocTempDescZEx( (uint8*)"pf", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5089, 0 );
+       FBSTRING* vr$5087 = fb_StrAllocTempDescZEx( (uint8*)"pf", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5087, 0 );
       }
       goto label$4097;
       label$4269:;
       {
-       FBSTRING* vr$5090 = fb_StrAllocTempDescZEx( (uint8*)"pgm", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5090, 0 );
+       FBSTRING* vr$5088 = fb_StrAllocTempDescZEx( (uint8*)"pgm", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5088, 0 );
       }
       goto label$4097;
       label$4270:;
       {
-       FBSTRING* vr$5091 = fb_StrAllocTempDescZEx( (uint8*)"ph", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5091, 0 );
+       FBSTRING* vr$5089 = fb_StrAllocTempDescZEx( (uint8*)"ph", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5089, 0 );
       }
       goto label$4097;
       label$4271:;
       {
-       FBSTRING* vr$5092 = fb_StrAllocTempDescZEx( (uint8*)"phase", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5092, 0 );
+       FBSTRING* vr$5090 = fb_StrAllocTempDescZEx( (uint8*)"phase", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5090, 0 );
       }
       goto label$4097;
       label$4272:;
       {
-       FBSTRING* vr$5093 = fb_StrAllocTempDescZEx( (uint8*)"phong", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5093, 0 );
+       FBSTRING* vr$5091 = fb_StrAllocTempDescZEx( (uint8*)"phong", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5091, 0 );
       }
       goto label$4097;
       label$4273:;
       {
-       FBSTRING* vr$5094 = fb_StrAllocTempDescZEx( (uint8*)"phong_size", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5094, 0 );
+       FBSTRING* vr$5092 = fb_StrAllocTempDescZEx( (uint8*)"phong_size", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5092, 0 );
       }
       goto label$4097;
       label$4274:;
       {
-       FBSTRING* vr$5095 = fb_StrAllocTempDescZEx( (uint8*)"photons", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5095, 0 );
+       FBSTRING* vr$5093 = fb_StrAllocTempDescZEx( (uint8*)"photons", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5093, 0 );
       }
       goto label$4097;
       label$4275:;
       {
-       FBSTRING* vr$5096 = fb_StrAllocTempDescZEx( (uint8*)"pi", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5096, 0 );
+       FBSTRING* vr$5094 = fb_StrAllocTempDescZEx( (uint8*)"pi", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5094, 0 );
       }
       goto label$4097;
       label$4276:;
       {
-       FBSTRING* vr$5097 = fb_StrAllocTempDescZEx( (uint8*)"pic", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5097, 0 );
+       FBSTRING* vr$5095 = fb_StrAllocTempDescZEx( (uint8*)"pic", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5095, 0 );
       }
       goto label$4097;
       label$4277:;
       {
-       FBSTRING* vr$5098 = fb_StrAllocTempDescZEx( (uint8*)"picture", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5098, 0 );
+       FBSTRING* vr$5096 = fb_StrAllocTempDescZEx( (uint8*)"picture", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5096, 0 );
       }
       goto label$4097;
       label$4278:;
       {
-       FBSTRING* vr$5099 = fb_StrAllocTempDescZEx( (uint8*)"pigment", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5099, 0 );
+       FBSTRING* vr$5097 = fb_StrAllocTempDescZEx( (uint8*)"pigment", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5097, 0 );
       }
       goto label$4097;
       label$4279:;
       {
-       FBSTRING* vr$5100 = fb_StrAllocTempDescZEx( (uint8*)"pigment_map", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5100, 0 );
+       FBSTRING* vr$5098 = fb_StrAllocTempDescZEx( (uint8*)"pigment_map", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5098, 0 );
       }
       goto label$4097;
       label$4280:;
       {
-       FBSTRING* vr$5101 = fb_StrAllocTempDescZEx( (uint8*)"pigment_pattern", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5101, 0 );
+       FBSTRING* vr$5099 = fb_StrAllocTempDescZEx( (uint8*)"pigment_pattern", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5099, 0 );
       }
       goto label$4097;
       label$4281:;
       {
-       FBSTRING* vr$5102 = fb_StrAllocTempDescZEx( (uint8*)"planar", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5102, 0 );
+       FBSTRING* vr$5100 = fb_StrAllocTempDescZEx( (uint8*)"planar", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5100, 0 );
       }
       goto label$4097;
       label$4282:;
       {
-       FBSTRING* vr$5103 = fb_StrAllocTempDescZEx( (uint8*)"plane", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5103, 0 );
+       FBSTRING* vr$5101 = fb_StrAllocTempDescZEx( (uint8*)"plane", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5101, 0 );
       }
       goto label$4097;
       label$4283:;
       {
-       FBSTRING* vr$5104 = fb_StrAllocTempDescZEx( (uint8*)"play", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5104, 0 );
+       FBSTRING* vr$5102 = fb_StrAllocTempDescZEx( (uint8*)"play", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5102, 0 );
       }
       goto label$4097;
       label$4284:;
       {
-       FBSTRING* vr$5105 = fb_StrAllocTempDescZEx( (uint8*)"plus", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5105, 0 );
+       FBSTRING* vr$5103 = fb_StrAllocTempDescZEx( (uint8*)"plus", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5103, 0 );
       }
       goto label$4097;
       label$4285:;
       {
-       FBSTRING* vr$5106 = fb_StrAllocTempDescZEx( (uint8*)"pmap", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5106, 0 );
+       FBSTRING* vr$5104 = fb_StrAllocTempDescZEx( (uint8*)"pmap", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5104, 0 );
       }
       goto label$4097;
       label$4286:;
       {
-       FBSTRING* vr$5107 = fb_StrAllocTempDescZEx( (uint8*)"png", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5107, 0 );
+       FBSTRING* vr$5105 = fb_StrAllocTempDescZEx( (uint8*)"png", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5105, 0 );
       }
       goto label$4097;
       label$4287:;
       {
-       FBSTRING* vr$5108 = fb_StrAllocTempDescZEx( (uint8*)"pnoise", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5108, 0 );
+       FBSTRING* vr$5106 = fb_StrAllocTempDescZEx( (uint8*)"pnoise", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5106, 0 );
       }
       goto label$4097;
       label$4288:;
       {
-       FBSTRING* vr$5109 = fb_StrAllocTempDescZEx( (uint8*)"point", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5109, 0 );
+       FBSTRING* vr$5107 = fb_StrAllocTempDescZEx( (uint8*)"point", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5107, 0 );
       }
       goto label$4097;
       label$4289:;
       {
-       FBSTRING* vr$5110 = fb_StrAllocTempDescZEx( (uint8*)"point_at", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5110, 0 );
+       FBSTRING* vr$5108 = fb_StrAllocTempDescZEx( (uint8*)"point_at", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5108, 0 );
       }
       goto label$4097;
       label$4290:;
       {
-       FBSTRING* vr$5111 = fb_StrAllocTempDescZEx( (uint8*)"pointcloud_get", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5111, 0 );
+       FBSTRING* vr$5109 = fb_StrAllocTempDescZEx( (uint8*)"pointcloud_get", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5109, 0 );
       }
       goto label$4097;
       label$4291:;
       {
-       FBSTRING* vr$5112 = fb_StrAllocTempDescZEx( (uint8*)"pointcloud_search", 17ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5112, 0 );
+       FBSTRING* vr$5110 = fb_StrAllocTempDescZEx( (uint8*)"pointcloud_search", 17ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5110, 0 );
       }
       goto label$4097;
       label$4292:;
       {
-       FBSTRING* vr$5113 = fb_StrAllocTempDescZEx( (uint8*)"pointcloud_write", 16ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5113, 0 );
+       FBSTRING* vr$5111 = fb_StrAllocTempDescZEx( (uint8*)"pointcloud_write", 16ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5111, 0 );
       }
       goto label$4097;
       label$4293:;
       {
-       FBSTRING* vr$5114 = fb_StrAllocTempDescZEx( (uint8*)"pointer", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5114, 0 );
+       FBSTRING* vr$5112 = fb_StrAllocTempDescZEx( (uint8*)"pointer", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5112, 0 );
       }
       goto label$4097;
       label$4294:;
       {
-       FBSTRING* vr$5115 = fb_StrAllocTempDescZEx( (uint8*)"poke", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5115, 0 );
+       FBSTRING* vr$5113 = fb_StrAllocTempDescZEx( (uint8*)"poke", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5113, 0 );
       }
       goto label$4097;
       label$4295:;
       {
-       FBSTRING* vr$5116 = fb_StrAllocTempDescZEx( (uint8*)"poly", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5116, 0 );
+       FBSTRING* vr$5114 = fb_StrAllocTempDescZEx( (uint8*)"poly", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5114, 0 );
       }
       goto label$4097;
       label$4296:;
       {
-       FBSTRING* vr$5117 = fb_StrAllocTempDescZEx( (uint8*)"polygon", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5117, 0 );
+       FBSTRING* vr$5115 = fb_StrAllocTempDescZEx( (uint8*)"polygon", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5115, 0 );
       }
       goto label$4097;
       label$4297:;
       {
-       FBSTRING* vr$5118 = fb_StrAllocTempDescZEx( (uint8*)"poly_wave", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5118, 0 );
+       FBSTRING* vr$5116 = fb_StrAllocTempDescZEx( (uint8*)"poly_wave", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5116, 0 );
       }
       goto label$4097;
       label$4298:;
       {
-       FBSTRING* vr$5119 = fb_StrAllocTempDescZEx( (uint8*)"pos", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5119, 0 );
+       FBSTRING* vr$5117 = fb_StrAllocTempDescZEx( (uint8*)"pos", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5117, 0 );
       }
       goto label$4097;
       label$4299:;
       {
-       FBSTRING* vr$5120 = fb_StrAllocTempDescZEx( (uint8*)"position", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5120, 0 );
+       FBSTRING* vr$5118 = fb_StrAllocTempDescZEx( (uint8*)"position", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5118, 0 );
       }
       goto label$4097;
       label$4300:;
       {
-       FBSTRING* vr$5121 = fb_StrAllocTempDescZEx( (uint8*)"position_b", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5121, 0 );
+       FBSTRING* vr$5119 = fb_StrAllocTempDescZEx( (uint8*)"position_b", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5119, 0 );
       }
       goto label$4097;
       label$4301:;
       {
-       FBSTRING* vr$5122 = fb_StrAllocTempDescZEx( (uint8*)"position_mb", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5122, 0 );
+       FBSTRING* vr$5120 = fb_StrAllocTempDescZEx( (uint8*)"position_mb", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5120, 0 );
       }
       goto label$4097;
       label$4302:;
       {
-       FBSTRING* vr$5123 = fb_StrAllocTempDescZEx( (uint8*)"positive", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5123, 0 );
+       FBSTRING* vr$5121 = fb_StrAllocTempDescZEx( (uint8*)"positive", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5121, 0 );
       }
       goto label$4097;
       label$4303:;
       {
-       FBSTRING* vr$5124 = fb_StrAllocTempDescZEx( (uint8*)"pot", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5124, 0 );
+       FBSTRING* vr$5122 = fb_StrAllocTempDescZEx( (uint8*)"pot", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5122, 0 );
       }
       goto label$4097;
       label$4304:;
       {
-       FBSTRING* vr$5125 = fb_StrAllocTempDescZEx( (uint8*)"pow", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5125, 0 );
+       FBSTRING* vr$5123 = fb_StrAllocTempDescZEx( (uint8*)"pow", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5123, 0 );
       }
       goto label$4097;
       label$4305:;
       {
-       FBSTRING* vr$5126 = fb_StrAllocTempDescZEx( (uint8*)"ppm", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5126, 0 );
+       FBSTRING* vr$5124 = fb_StrAllocTempDescZEx( (uint8*)"ppm", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5124, 0 );
       }
       goto label$4097;
       label$4306:;
       {
-       FBSTRING* vr$5127 = fb_StrAllocTempDescZEx( (uint8*)"precision", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5127, 0 );
+       FBSTRING* vr$5125 = fb_StrAllocTempDescZEx( (uint8*)"precision", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5125, 0 );
       }
       goto label$4097;
       label$4307:;
       {
-       FBSTRING* vr$5128 = fb_StrAllocTempDescZEx( (uint8*)"precompute", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5128, 0 );
+       FBSTRING* vr$5126 = fb_StrAllocTempDescZEx( (uint8*)"precompute", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5126, 0 );
       }
       goto label$4097;
       label$4308:;
       {
-       FBSTRING* vr$5129 = fb_StrAllocTempDescZEx( (uint8*)"preset", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5129, 0 );
+       FBSTRING* vr$5127 = fb_StrAllocTempDescZEx( (uint8*)"preset", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5127, 0 );
       }
       goto label$4097;
       label$4309:;
       {
-       FBSTRING* vr$5130 = fb_StrAllocTempDescZEx( (uint8*)"pretrace_end", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5130, 0 );
+       FBSTRING* vr$5128 = fb_StrAllocTempDescZEx( (uint8*)"pretrace_end", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5128, 0 );
       }
       goto label$4097;
       label$4310:;
       {
-       FBSTRING* vr$5131 = fb_StrAllocTempDescZEx( (uint8*)"pretrace_start", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5131, 0 );
+       FBSTRING* vr$5129 = fb_StrAllocTempDescZEx( (uint8*)"pretrace_start", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5129, 0 );
       }
       goto label$4097;
       label$4311:;
       {
-       FBSTRING* vr$5132 = fb_StrAllocTempDescZEx( (uint8*)"print", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5132, 0 );
+       FBSTRING* vr$5130 = fb_StrAllocTempDescZEx( (uint8*)"print", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5130, 0 );
       }
       goto label$4097;
       label$4312:;
       {
-       FBSTRING* vr$5133 = fb_StrAllocTempDescZEx( (uint8*)"printf", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5133, 0 );
+       FBSTRING* vr$5131 = fb_StrAllocTempDescZEx( (uint8*)"printf", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5131, 0 );
       }
       goto label$4097;
       label$4313:;
       {
-       FBSTRING* vr$5134 = fb_StrAllocTempDescZEx( (uint8*)"printing", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5134, 0 );
+       FBSTRING* vr$5132 = fb_StrAllocTempDescZEx( (uint8*)"printing", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5132, 0 );
       }
       goto label$4097;
       label$4314:;
       {
-       FBSTRING* vr$5135 = fb_StrAllocTempDescZEx( (uint8*)"prism", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5135, 0 );
+       FBSTRING* vr$5133 = fb_StrAllocTempDescZEx( (uint8*)"prism", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5133, 0 );
       }
       goto label$4097;
       label$4315:;
       {
-       FBSTRING* vr$5136 = fb_StrAllocTempDescZEx( (uint8*)"private", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5136, 0 );
+       FBSTRING* vr$5134 = fb_StrAllocTempDescZEx( (uint8*)"private", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5134, 0 );
       }
       goto label$4097;
       label$4316:;
       {
-       FBSTRING* vr$5137 = fb_StrAllocTempDescZEx( (uint8*)"procedure", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5137, 0 );
+       FBSTRING* vr$5135 = fb_StrAllocTempDescZEx( (uint8*)"procedure", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5135, 0 );
       }
       goto label$4097;
       label$4317:;
       {
-       FBSTRING* vr$5138 = fb_StrAllocTempDescZEx( (uint8*)"procedure-pointer", 17ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5138, 0 );
+       FBSTRING* vr$5136 = fb_StrAllocTempDescZEx( (uint8*)"procedure-pointer", 17ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5136, 0 );
       }
       goto label$4097;
       label$4318:;
       {
-       FBSTRING* vr$5139 = fb_StrAllocTempDescZEx( (uint8*)"procedures", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5139, 0 );
+       FBSTRING* vr$5137 = fb_StrAllocTempDescZEx( (uint8*)"procedures", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5137, 0 );
       }
       goto label$4097;
       label$4319:;
       {
-       FBSTRING* vr$5140 = fb_StrAllocTempDescZEx( (uint8*)"proceed", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5140, 0 );
+       FBSTRING* vr$5138 = fb_StrAllocTempDescZEx( (uint8*)"proceed", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5138, 0 );
       }
       goto label$4097;
       label$4320:;
       {
-       FBSTRING* vr$5141 = fb_StrAllocTempDescZEx( (uint8*)"processing", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5141, 0 );
+       FBSTRING* vr$5139 = fb_StrAllocTempDescZEx( (uint8*)"processing", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5139, 0 );
       }
       goto label$4097;
       label$4321:;
       {
-       FBSTRING* vr$5142 = fb_StrAllocTempDescZEx( (uint8*)"prod", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5142, 0 );
+       FBSTRING* vr$5140 = fb_StrAllocTempDescZEx( (uint8*)"prod", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5140, 0 );
       }
       goto label$4097;
       label$4322:;
       {
-       FBSTRING* vr$5143 = fb_StrAllocTempDescZEx( (uint8*)"program", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5143, 0 );
+       FBSTRING* vr$5141 = fb_StrAllocTempDescZEx( (uint8*)"program", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5141, 0 );
       }
       goto label$4097;
       label$4323:;
       {
-       FBSTRING* vr$5144 = fb_StrAllocTempDescZEx( (uint8*)"program-id", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5144, 0 );
+       FBSTRING* vr$5142 = fb_StrAllocTempDescZEx( (uint8*)"program-id", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5142, 0 );
       }
       goto label$4097;
       label$4324:;
       {
-       FBSTRING* vr$5145 = fb_StrAllocTempDescZEx( (uint8*)"projected_through", 17ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5145, 0 );
+       FBSTRING* vr$5143 = fb_StrAllocTempDescZEx( (uint8*)"projected_through", 17ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5143, 0 );
       }
       goto label$4097;
       label$4325:;
       {
-       FBSTRING* vr$5146 = fb_StrAllocTempDescZEx( (uint8*)"property", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5146, 0 );
+       FBSTRING* vr$5144 = fb_StrAllocTempDescZEx( (uint8*)"property", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5144, 0 );
       }
       goto label$4097;
       label$4326:;
       {
-       FBSTRING* vr$5147 = fb_StrAllocTempDescZEx( (uint8*)"protected", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5147, 0 );
+       FBSTRING* vr$5145 = fb_StrAllocTempDescZEx( (uint8*)"protected", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5145, 0 );
       }
       goto label$4097;
       label$4327:;
       {
-       FBSTRING* vr$5148 = fb_StrAllocTempDescZEx( (uint8*)"pset", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5148, 0 );
+       FBSTRING* vr$5146 = fb_StrAllocTempDescZEx( (uint8*)"pset", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5146, 0 );
       }
       goto label$4097;
       label$4328:;
       {
-       FBSTRING* vr$5149 = fb_StrAllocTempDescZEx( (uint8*)"psnoise", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5149, 0 );
+       FBSTRING* vr$5147 = fb_StrAllocTempDescZEx( (uint8*)"psnoise", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5147, 0 );
       }
       goto label$4097;
       label$4329:;
       {
-       FBSTRING* vr$5150 = fb_StrAllocTempDescZEx( (uint8*)"ptype", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5150, 0 );
+       FBSTRING* vr$5148 = fb_StrAllocTempDescZEx( (uint8*)"ptype", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5148, 0 );
       }
       goto label$4097;
       label$4330:;
       {
-       FBSTRING* vr$5151 = fb_StrAllocTempDescZEx( (uint8*)"public", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5151, 0 );
+       FBSTRING* vr$5149 = fb_StrAllocTempDescZEx( (uint8*)"public", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5149, 0 );
       }
       goto label$4097;
       label$4331:;
       {
-       FBSTRING* vr$5152 = fb_StrAllocTempDescZEx( (uint8*)"published", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5152, 0 );
+       FBSTRING* vr$5150 = fb_StrAllocTempDescZEx( (uint8*)"published", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5150, 0 );
       }
       goto label$4097;
       label$4332:;
       {
-       FBSTRING* vr$5153 = fb_StrAllocTempDescZEx( (uint8*)"purge", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5153, 0 );
+       FBSTRING* vr$5151 = fb_StrAllocTempDescZEx( (uint8*)"purge", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5151, 0 );
       }
       goto label$4097;
       label$4333:;
       {
-       FBSTRING* vr$5154 = fb_StrAllocTempDescZEx( (uint8*)"put", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5154, 0 );
+       FBSTRING* vr$5152 = fb_StrAllocTempDescZEx( (uint8*)"put", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5152, 0 );
       }
       goto label$4097;
       label$4334:;
       {
-       FBSTRING* vr$5155 = fb_StrAllocTempDescZEx( (uint8*)"pwr", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5155, 0 );
+       FBSTRING* vr$5153 = fb_StrAllocTempDescZEx( (uint8*)"pwr", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5153, 0 );
       }
       goto label$4097;
       label$4335:;
       {
-       FBSTRING* vr$5156 = fb_StrAllocTempDescZEx( (uint8*)"q", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5156, 0 );
+       FBSTRING* vr$5154 = fb_StrAllocTempDescZEx( (uint8*)"q", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5154, 0 );
       }
       goto label$4097;
       label$4336:;
       {
-       FBSTRING* vr$5157 = fb_StrAllocTempDescZEx( (uint8*)"quadratic_spline", 16ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5157, 0 );
+       FBSTRING* vr$5155 = fb_StrAllocTempDescZEx( (uint8*)"quadratic_spline", 16ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5155, 0 );
       }
       goto label$4097;
       label$4337:;
       {
-       FBSTRING* vr$5158 = fb_StrAllocTempDescZEx( (uint8*)"quadric", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5158, 0 );
+       FBSTRING* vr$5156 = fb_StrAllocTempDescZEx( (uint8*)"quadric", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5156, 0 );
       }
       goto label$4097;
       label$4338:;
       {
-       FBSTRING* vr$5159 = fb_StrAllocTempDescZEx( (uint8*)"quartic", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5159, 0 );
+       FBSTRING* vr$5157 = fb_StrAllocTempDescZEx( (uint8*)"quartic", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5157, 0 );
       }
       goto label$4097;
       label$4339:;
       {
-       FBSTRING* vr$5160 = fb_StrAllocTempDescZEx( (uint8*)"quaternion", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5160, 0 );
+       FBSTRING* vr$5158 = fb_StrAllocTempDescZEx( (uint8*)"quaternion", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5158, 0 );
       }
       goto label$4097;
       label$4340:;
       {
-       FBSTRING* vr$5161 = fb_StrAllocTempDescZEx( (uint8*)"queue", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5161, 0 );
+       FBSTRING* vr$5159 = fb_StrAllocTempDescZEx( (uint8*)"queue", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5159, 0 );
       }
       goto label$4097;
       label$4341:;
       {
-       FBSTRING* vr$5162 = fb_StrAllocTempDescZEx( (uint8*)"quick_color", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5162, 0 );
+       FBSTRING* vr$5160 = fb_StrAllocTempDescZEx( (uint8*)"quick_color", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5160, 0 );
       }
       goto label$4097;
       label$4342:;
       {
-       FBSTRING* vr$5163 = fb_StrAllocTempDescZEx( (uint8*)"quick_colour", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5163, 0 );
+       FBSTRING* vr$5161 = fb_StrAllocTempDescZEx( (uint8*)"quick_colour", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5161, 0 );
       }
       goto label$4097;
       label$4343:;
       {
-       FBSTRING* vr$5164 = fb_StrAllocTempDescZEx( (uint8*)"quilted", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5164, 0 );
+       FBSTRING* vr$5162 = fb_StrAllocTempDescZEx( (uint8*)"quilted", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5162, 0 );
       }
       goto label$4097;
       label$4344:;
       {
-       FBSTRING* vr$5165 = fb_StrAllocTempDescZEx( (uint8*)"quote", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5165, 0 );
+       FBSTRING* vr$5163 = fb_StrAllocTempDescZEx( (uint8*)"quote", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5163, 0 );
       }
       goto label$4097;
       label$4345:;
       {
-       FBSTRING* vr$5166 = fb_StrAllocTempDescZEx( (uint8*)"quotes", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5166, 0 );
+       FBSTRING* vr$5164 = fb_StrAllocTempDescZEx( (uint8*)"quotes", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5164, 0 );
       }
       goto label$4097;
       label$4346:;
       {
-       FBSTRING* vr$5167 = fb_StrAllocTempDescZEx( (uint8*)"r", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5167, 0 );
+       FBSTRING* vr$5165 = fb_StrAllocTempDescZEx( (uint8*)"r", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5165, 0 );
       }
       goto label$4097;
       label$4347:;
       {
-       FBSTRING* vr$5168 = fb_StrAllocTempDescZEx( (uint8*)"radial", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5168, 0 );
+       FBSTRING* vr$5166 = fb_StrAllocTempDescZEx( (uint8*)"radial", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5166, 0 );
       }
       goto label$4097;
       label$4348:;
       {
-       FBSTRING* vr$5169 = fb_StrAllocTempDescZEx( (uint8*)"radians", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5169, 0 );
+       FBSTRING* vr$5167 = fb_StrAllocTempDescZEx( (uint8*)"radians", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5167, 0 );
       }
       goto label$4097;
       label$4349:;
       {
-       FBSTRING* vr$5170 = fb_StrAllocTempDescZEx( (uint8*)"radiosity", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5170, 0 );
+       FBSTRING* vr$5168 = fb_StrAllocTempDescZEx( (uint8*)"radiosity", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5168, 0 );
       }
       goto label$4097;
       label$4350:;
       {
-       FBSTRING* vr$5171 = fb_StrAllocTempDescZEx( (uint8*)"radius", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5171, 0 );
+       FBSTRING* vr$5169 = fb_StrAllocTempDescZEx( (uint8*)"radius", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5169, 0 );
       }
       goto label$4097;
       label$4351:;
       {
-       FBSTRING* vr$5172 = fb_StrAllocTempDescZEx( (uint8*)"rainbow", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5172, 0 );
+       FBSTRING* vr$5170 = fb_StrAllocTempDescZEx( (uint8*)"rainbow", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5170, 0 );
       }
       goto label$4097;
       label$4352:;
       {
-       FBSTRING* vr$5173 = fb_StrAllocTempDescZEx( (uint8*)"raise", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5173, 0 );
+       FBSTRING* vr$5171 = fb_StrAllocTempDescZEx( (uint8*)"raise", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5171, 0 );
       }
       goto label$4097;
       label$4353:;
       {
-       FBSTRING* vr$5174 = fb_StrAllocTempDescZEx( (uint8*)"ramp_wave", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5174, 0 );
+       FBSTRING* vr$5172 = fb_StrAllocTempDescZEx( (uint8*)"ramp_wave", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5172, 0 );
       }
       goto label$4097;
       label$4354:;
       {
-       FBSTRING* vr$5175 = fb_StrAllocTempDescZEx( (uint8*)"rand", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5175, 0 );
+       FBSTRING* vr$5173 = fb_StrAllocTempDescZEx( (uint8*)"rand", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5173, 0 );
       }
       goto label$4097;
       label$4098:;
@@ -18646,2024 +18642,2024 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       if( TMP$1994$6 != 0ull ) goto label$4357;
       label$4358:;
       {
-       FBSTRING* vr$5178 = fb_StrAllocTempDescZEx( (uint8*)"random", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5178, 0 );
+       FBSTRING* vr$5176 = fb_StrAllocTempDescZEx( (uint8*)"random", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5176, 0 );
       }
       goto label$4356;
       label$4357:;
       if( TMP$1994$6 != 1ull ) goto label$4359;
       label$4360:;
       {
-       FBSTRING* vr$5179 = fb_StrAllocTempDescZEx( (uint8*)"randomize", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5179, 0 );
+       FBSTRING* vr$5177 = fb_StrAllocTempDescZEx( (uint8*)"randomize", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5177, 0 );
       }
       goto label$4356;
       label$4359:;
       if( TMP$1994$6 != 2ull ) goto label$4361;
       label$4362:;
       {
-       FBSTRING* vr$5180 = fb_StrAllocTempDescZEx( (uint8*)"range", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5180, 0 );
+       FBSTRING* vr$5178 = fb_StrAllocTempDescZEx( (uint8*)"range", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5178, 0 );
       }
       goto label$4356;
       label$4361:;
       if( TMP$1994$6 != 3ull ) goto label$4363;
       label$4364:;
       {
-       FBSTRING* vr$5181 = fb_StrAllocTempDescZEx( (uint8*)"ratio", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5181, 0 );
+       FBSTRING* vr$5179 = fb_StrAllocTempDescZEx( (uint8*)"ratio", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5179, 0 );
       }
       goto label$4356;
       label$4363:;
       if( TMP$1994$6 != 4ull ) goto label$4365;
       label$4366:;
       {
-       FBSTRING* vr$5182 = fb_StrAllocTempDescZEx( (uint8*)"raytype", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5182, 0 );
+       FBSTRING* vr$5180 = fb_StrAllocTempDescZEx( (uint8*)"raytype", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5180, 0 );
       }
       goto label$4356;
       label$4365:;
       if( TMP$1994$6 != 5ull ) goto label$4367;
       label$4368:;
       {
-       FBSTRING* vr$5183 = fb_StrAllocTempDescZEx( (uint8*)"rd", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5183, 0 );
+       FBSTRING* vr$5181 = fb_StrAllocTempDescZEx( (uint8*)"rd", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5181, 0 );
       }
       goto label$4356;
       label$4367:;
       if( TMP$1994$6 != 6ull ) goto label$4369;
       label$4370:;
       {
-       FBSTRING* vr$5184 = fb_StrAllocTempDescZEx( (uint8*)"read", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5184, 0 );
+       FBSTRING* vr$5182 = fb_StrAllocTempDescZEx( (uint8*)"read", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5182, 0 );
       }
       goto label$4356;
       label$4369:;
       if( TMP$1994$6 != 7ull ) goto label$4371;
       label$4372:;
       {
-       FBSTRING* vr$5185 = fb_StrAllocTempDescZEx( (uint8*)"ready", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5185, 0 );
+       FBSTRING* vr$5183 = fb_StrAllocTempDescZEx( (uint8*)"ready", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5183, 0 );
       }
       goto label$4356;
       label$4371:;
       if( TMP$1994$6 != 8ull ) goto label$4373;
       label$4374:;
       {
-       FBSTRING* vr$5186 = fb_StrAllocTempDescZEx( (uint8*)"real", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5186, 0 );
+       FBSTRING* vr$5184 = fb_StrAllocTempDescZEx( (uint8*)"real", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5184, 0 );
       }
       goto label$4356;
       label$4373:;
       if( TMP$1994$6 != 9ull ) goto label$4375;
       label$4376:;
       {
-       FBSTRING* vr$5187 = fb_StrAllocTempDescZEx( (uint8*)"receive", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5187, 0 );
+       FBSTRING* vr$5185 = fb_StrAllocTempDescZEx( (uint8*)"receive", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5185, 0 );
       }
       goto label$4356;
       label$4375:;
       if( TMP$1994$6 != 10ull ) goto label$4377;
       label$4378:;
       {
-       FBSTRING* vr$5188 = fb_StrAllocTempDescZEx( (uint8*)"reciprocal", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5188, 0 );
+       FBSTRING* vr$5186 = fb_StrAllocTempDescZEx( (uint8*)"reciprocal", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5186, 0 );
       }
       goto label$4356;
       label$4377:;
       if( TMP$1994$6 != 11ull ) goto label$4379;
       label$4380:;
       {
-       FBSTRING* vr$5189 = fb_StrAllocTempDescZEx( (uint8*)"record", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5189, 0 );
+       FBSTRING* vr$5187 = fb_StrAllocTempDescZEx( (uint8*)"record", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5187, 0 );
       }
       goto label$4356;
       label$4379:;
       if( TMP$1994$6 != 12ull ) goto label$4381;
       label$4382:;
       {
-       FBSTRING* vr$5190 = fb_StrAllocTempDescZEx( (uint8*)"recording", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5190, 0 );
+       FBSTRING* vr$5188 = fb_StrAllocTempDescZEx( (uint8*)"recording", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5188, 0 );
       }
       goto label$4356;
       label$4381:;
       if( TMP$1994$6 != 13ull ) goto label$4383;
       label$4384:;
       {
-       FBSTRING* vr$5191 = fb_StrAllocTempDescZEx( (uint8*)"records", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5191, 0 );
+       FBSTRING* vr$5189 = fb_StrAllocTempDescZEx( (uint8*)"records", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5189, 0 );
       }
       goto label$4356;
       label$4383:;
       if( TMP$1994$6 != 14ull ) goto label$4385;
       label$4386:;
       {
-       FBSTRING* vr$5192 = fb_StrAllocTempDescZEx( (uint8*)"recursion_limit", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5192, 0 );
+       FBSTRING* vr$5190 = fb_StrAllocTempDescZEx( (uint8*)"recursion_limit", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5190, 0 );
       }
       goto label$4356;
       label$4385:;
       if( TMP$1994$6 != 15ull ) goto label$4387;
       label$4388:;
       {
-       FBSTRING* vr$5193 = fb_StrAllocTempDescZEx( (uint8*)"recursive", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5193, 0 );
+       FBSTRING* vr$5191 = fb_StrAllocTempDescZEx( (uint8*)"recursive", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5191, 0 );
       }
       goto label$4356;
       label$4387:;
       if( TMP$1994$6 != 16ull ) goto label$4389;
       label$4390:;
       {
-       FBSTRING* vr$5194 = fb_StrAllocTempDescZEx( (uint8*)"red", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5194, 0 );
+       FBSTRING* vr$5192 = fb_StrAllocTempDescZEx( (uint8*)"red", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5192, 0 );
       }
       goto label$4356;
       label$4389:;
       if( TMP$1994$6 != 17ull ) goto label$4391;
       label$4392:;
       {
-       FBSTRING* vr$5195 = fb_StrAllocTempDescZEx( (uint8*)"redefines", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5195, 0 );
+       FBSTRING* vr$5193 = fb_StrAllocTempDescZEx( (uint8*)"redefines", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5193, 0 );
       }
       goto label$4356;
       label$4391:;
       if( TMP$1994$6 != 18ull ) goto label$4393;
       label$4394:;
       {
-       FBSTRING* vr$5196 = fb_StrAllocTempDescZEx( (uint8*)"reel", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5196, 0 );
+       FBSTRING* vr$5194 = fb_StrAllocTempDescZEx( (uint8*)"reel", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5194, 0 );
       }
       goto label$4356;
       label$4393:;
       if( TMP$1994$6 != 19ull ) goto label$4395;
       label$4396:;
       {
-       FBSTRING* vr$5197 = fb_StrAllocTempDescZEx( (uint8*)"reference", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5197, 0 );
+       FBSTRING* vr$5195 = fb_StrAllocTempDescZEx( (uint8*)"reference", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5195, 0 );
       }
       goto label$4356;
       label$4395:;
       if( TMP$1994$6 != 20ull ) goto label$4397;
       label$4398:;
       {
-       FBSTRING* vr$5198 = fb_StrAllocTempDescZEx( (uint8*)"references", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5198, 0 );
+       FBSTRING* vr$5196 = fb_StrAllocTempDescZEx( (uint8*)"references", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5196, 0 );
       }
       goto label$4356;
       label$4397:;
       if( TMP$1994$6 != 21ull ) goto label$4399;
       label$4400:;
       {
-       FBSTRING* vr$5199 = fb_StrAllocTempDescZEx( (uint8*)"reflect", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5199, 0 );
+       FBSTRING* vr$5197 = fb_StrAllocTempDescZEx( (uint8*)"reflect", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5197, 0 );
       }
       goto label$4356;
       label$4399:;
       if( TMP$1994$6 != 22ull ) goto label$4401;
       label$4402:;
       {
-       FBSTRING* vr$5200 = fb_StrAllocTempDescZEx( (uint8*)"reflection", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5200, 0 );
+       FBSTRING* vr$5198 = fb_StrAllocTempDescZEx( (uint8*)"reflection", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5198, 0 );
       }
       goto label$4356;
       label$4401:;
       if( TMP$1994$6 != 23ull ) goto label$4403;
       label$4404:;
       {
-       FBSTRING* vr$5201 = fb_StrAllocTempDescZEx( (uint8*)"reflection_exponent", 19ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5201, 0 );
+       FBSTRING* vr$5199 = fb_StrAllocTempDescZEx( (uint8*)"reflection_exponent", 19ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5199, 0 );
       }
       goto label$4356;
       label$4403:;
       if( TMP$1994$6 != 24ull ) goto label$4405;
       label$4406:;
       {
-       FBSTRING* vr$5202 = fb_StrAllocTempDescZEx( (uint8*)"refract", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5202, 0 );
+       FBSTRING* vr$5200 = fb_StrAllocTempDescZEx( (uint8*)"refract", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5200, 0 );
       }
       goto label$4356;
       label$4405:;
       if( TMP$1994$6 != 25ull ) goto label$4407;
       label$4408:;
       {
-       FBSTRING* vr$5203 = fb_StrAllocTempDescZEx( (uint8*)"refraction", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5203, 0 );
+       FBSTRING* vr$5201 = fb_StrAllocTempDescZEx( (uint8*)"refraction", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5201, 0 );
       }
       goto label$4356;
       label$4407:;
       if( TMP$1994$6 != 26ull ) goto label$4409;
       label$4410:;
       {
-       FBSTRING* vr$5204 = fb_StrAllocTempDescZEx( (uint8*)"regex_match", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5204, 0 );
+       FBSTRING* vr$5202 = fb_StrAllocTempDescZEx( (uint8*)"regex_match", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5202, 0 );
       }
       goto label$4356;
       label$4409:;
       if( TMP$1994$6 != 27ull ) goto label$4411;
       label$4412:;
       {
-       FBSTRING* vr$5205 = fb_StrAllocTempDescZEx( (uint8*)"regex_search", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5205, 0 );
+       FBSTRING* vr$5203 = fb_StrAllocTempDescZEx( (uint8*)"regex_search", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5203, 0 );
       }
       goto label$4356;
       label$4411:;
       if( TMP$1994$6 != 28ull ) goto label$4413;
       label$4414:;
       {
-       FBSTRING* vr$5206 = fb_StrAllocTempDescZEx( (uint8*)"register", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5206, 0 );
+       FBSTRING* vr$5204 = fb_StrAllocTempDescZEx( (uint8*)"register", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5204, 0 );
       }
       goto label$4356;
       label$4413:;
       if( TMP$1994$6 != 29ull ) goto label$4415;
       label$4416:;
       {
-       FBSTRING* vr$5207 = fb_StrAllocTempDescZEx( (uint8*)"reintroduce", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5207, 0 );
+       FBSTRING* vr$5205 = fb_StrAllocTempDescZEx( (uint8*)"reintroduce", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5205, 0 );
       }
       goto label$4356;
       label$4415:;
       if( TMP$1994$6 != 30ull ) goto label$4417;
       label$4418:;
       {
-       FBSTRING* vr$5208 = fb_StrAllocTempDescZEx( (uint8*)"relative", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5208, 0 );
+       FBSTRING* vr$5206 = fb_StrAllocTempDescZEx( (uint8*)"relative", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5206, 0 );
       }
       goto label$4356;
       label$4417:;
       if( TMP$1994$6 != 31ull ) goto label$4419;
       label$4420:;
       {
-       FBSTRING* vr$5209 = fb_StrAllocTempDescZEx( (uint8*)"release", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5209, 0 );
+       FBSTRING* vr$5207 = fb_StrAllocTempDescZEx( (uint8*)"release", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5207, 0 );
       }
       goto label$4356;
       label$4419:;
       if( TMP$1994$6 != 32ull ) goto label$4421;
       label$4422:;
       {
-       FBSTRING* vr$5210 = fb_StrAllocTempDescZEx( (uint8*)"reload", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5210, 0 );
+       FBSTRING* vr$5208 = fb_StrAllocTempDescZEx( (uint8*)"reload", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5208, 0 );
       }
       goto label$4356;
       label$4421:;
       if( TMP$1994$6 != 33ull ) goto label$4423;
       label$4424:;
       {
-       FBSTRING* vr$5211 = fb_StrAllocTempDescZEx( (uint8*)"rem", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5211, 0 );
+       FBSTRING* vr$5209 = fb_StrAllocTempDescZEx( (uint8*)"rem", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5209, 0 );
       }
       goto label$4356;
       label$4423:;
       if( TMP$1994$6 != 34ull ) goto label$4425;
       label$4426:;
       {
-       FBSTRING* vr$5212 = fb_StrAllocTempDescZEx( (uint8*)"remainder", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5212, 0 );
+       FBSTRING* vr$5210 = fb_StrAllocTempDescZEx( (uint8*)"remainder", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5210, 0 );
       }
       goto label$4356;
       label$4425:;
       if( TMP$1994$6 != 35ull ) goto label$4427;
       label$4428:;
       {
-       FBSTRING* vr$5213 = fb_StrAllocTempDescZEx( (uint8*)"removal", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5213, 0 );
+       FBSTRING* vr$5211 = fb_StrAllocTempDescZEx( (uint8*)"removal", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5211, 0 );
       }
       goto label$4356;
       label$4427:;
       if( TMP$1994$6 != 36ull ) goto label$4429;
       label$4430:;
       {
-       FBSTRING* vr$5214 = fb_StrAllocTempDescZEx( (uint8*)"renames", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5214, 0 );
+       FBSTRING* vr$5212 = fb_StrAllocTempDescZEx( (uint8*)"renames", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5212, 0 );
       }
       goto label$4356;
       label$4429:;
       if( TMP$1994$6 != 37ull ) goto label$4431;
       label$4432:;
       {
-       FBSTRING* vr$5215 = fb_StrAllocTempDescZEx( (uint8*)"render", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5215, 0 );
+       FBSTRING* vr$5213 = fb_StrAllocTempDescZEx( (uint8*)"render", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5213, 0 );
       }
       goto label$4356;
       label$4431:;
       if( TMP$1994$6 != 38ull ) goto label$4433;
       label$4434:;
       {
-       FBSTRING* vr$5216 = fb_StrAllocTempDescZEx( (uint8*)"renum", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5216, 0 );
+       FBSTRING* vr$5214 = fb_StrAllocTempDescZEx( (uint8*)"renum", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5214, 0 );
       }
       goto label$4356;
       label$4433:;
       if( TMP$1994$6 != 39ull ) goto label$4435;
       label$4436:;
       {
-       FBSTRING* vr$5217 = fb_StrAllocTempDescZEx( (uint8*)"repeat", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5217, 0 );
+       FBSTRING* vr$5215 = fb_StrAllocTempDescZEx( (uint8*)"repeat", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5215, 0 );
       }
       goto label$4356;
       label$4435:;
       if( TMP$1994$6 != 40ull ) goto label$4437;
       label$4438:;
       {
-       FBSTRING* vr$5218 = fb_StrAllocTempDescZEx( (uint8*)"replace", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5218, 0 );
+       FBSTRING* vr$5216 = fb_StrAllocTempDescZEx( (uint8*)"replace", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5216, 0 );
       }
       goto label$4356;
       label$4437:;
       if( TMP$1994$6 != 41ull ) goto label$4439;
       label$4440:;
       {
-       FBSTRING* vr$5219 = fb_StrAllocTempDescZEx( (uint8*)"replacing", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5219, 0 );
+       FBSTRING* vr$5217 = fb_StrAllocTempDescZEx( (uint8*)"replacing", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5217, 0 );
       }
       goto label$4356;
       label$4439:;
       if( TMP$1994$6 != 42ull ) goto label$4441;
       label$4442:;
       {
-       FBSTRING* vr$5220 = fb_StrAllocTempDescZEx( (uint8*)"report", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5220, 0 );
+       FBSTRING* vr$5218 = fb_StrAllocTempDescZEx( (uint8*)"report", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5218, 0 );
       }
       goto label$4356;
       label$4441:;
       if( TMP$1994$6 != 43ull ) goto label$4443;
       label$4444:;
       {
-       FBSTRING* vr$5221 = fb_StrAllocTempDescZEx( (uint8*)"reporting", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5221, 0 );
+       FBSTRING* vr$5219 = fb_StrAllocTempDescZEx( (uint8*)"reporting", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5219, 0 );
       }
       goto label$4356;
       label$4443:;
       if( TMP$1994$6 != 44ull ) goto label$4445;
       label$4446:;
       {
-       FBSTRING* vr$5222 = fb_StrAllocTempDescZEx( (uint8*)"reports", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5222, 0 );
+       FBSTRING* vr$5220 = fb_StrAllocTempDescZEx( (uint8*)"reports", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5220, 0 );
       }
       goto label$4356;
       label$4445:;
       if( TMP$1994$6 != 45ull ) goto label$4447;
       label$4448:;
       {
-       FBSTRING* vr$5223 = fb_StrAllocTempDescZEx( (uint8*)"repository", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5223, 0 );
+       FBSTRING* vr$5221 = fb_StrAllocTempDescZEx( (uint8*)"repository", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5221, 0 );
       }
       goto label$4356;
       label$4447:;
       if( TMP$1994$6 != 46ull ) goto label$4449;
       label$4450:;
       {
-       FBSTRING* vr$5224 = fb_StrAllocTempDescZEx( (uint8*)"rerun", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5224, 0 );
+       FBSTRING* vr$5222 = fb_StrAllocTempDescZEx( (uint8*)"rerun", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5222, 0 );
       }
       goto label$4356;
       label$4449:;
       if( TMP$1994$6 != 47ull ) goto label$4451;
       label$4452:;
       {
-       FBSTRING* vr$5225 = fb_StrAllocTempDescZEx( (uint8*)"reserve", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5225, 0 );
+       FBSTRING* vr$5223 = fb_StrAllocTempDescZEx( (uint8*)"reserve", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5223, 0 );
       }
       goto label$4356;
       label$4451:;
       if( TMP$1994$6 != 48ull ) goto label$4453;
       label$4454:;
       {
-       FBSTRING* vr$5226 = fb_StrAllocTempDescZEx( (uint8*)"reset", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5226, 0 );
+       FBSTRING* vr$5224 = fb_StrAllocTempDescZEx( (uint8*)"reset", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5224, 0 );
       }
       goto label$4356;
       label$4453:;
       if( TMP$1994$6 != 49ull ) goto label$4455;
       label$4456:;
       {
-       FBSTRING* vr$5227 = fb_StrAllocTempDescZEx( (uint8*)"restore", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5227, 0 );
+       FBSTRING* vr$5225 = fb_StrAllocTempDescZEx( (uint8*)"restore", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5225, 0 );
       }
       goto label$4356;
       label$4455:;
       if( TMP$1994$6 != 50ull ) goto label$4457;
       label$4458:;
       {
-       FBSTRING* vr$5228 = fb_StrAllocTempDescZEx( (uint8*)"resume", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5228, 0 );
+       FBSTRING* vr$5226 = fb_StrAllocTempDescZEx( (uint8*)"resume", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5226, 0 );
       }
       goto label$4356;
       label$4457:;
       if( TMP$1994$6 != 51ull ) goto label$4459;
       label$4460:;
       {
-       FBSTRING* vr$5229 = fb_StrAllocTempDescZEx( (uint8*)"return", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5229, 0 );
+       FBSTRING* vr$5227 = fb_StrAllocTempDescZEx( (uint8*)"return", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5227, 0 );
       }
       goto label$4356;
       label$4459:;
       if( TMP$1994$6 != 52ull ) goto label$4461;
       label$4462:;
       {
-       FBSTRING* vr$5230 = fb_StrAllocTempDescZEx( (uint8*)"return-code", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5230, 0 );
+       FBSTRING* vr$5228 = fb_StrAllocTempDescZEx( (uint8*)"return-code", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5228, 0 );
       }
       goto label$4356;
       label$4461:;
       if( TMP$1994$6 != 53ull ) goto label$4463;
       label$4464:;
       {
-       FBSTRING* vr$5231 = fb_StrAllocTempDescZEx( (uint8*)"returning", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5231, 0 );
+       FBSTRING* vr$5229 = fb_StrAllocTempDescZEx( (uint8*)"returning", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5229, 0 );
       }
       goto label$4356;
       label$4463:;
       if( TMP$1994$6 != 54ull ) goto label$4465;
       label$4466:;
       {
-       FBSTRING* vr$5232 = fb_StrAllocTempDescZEx( (uint8*)"reversed", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5232, 0 );
+       FBSTRING* vr$5230 = fb_StrAllocTempDescZEx( (uint8*)"reversed", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5230, 0 );
       }
       goto label$4356;
       label$4465:;
       if( TMP$1994$6 != 55ull ) goto label$4467;
       label$4468:;
       {
-       FBSTRING* vr$5233 = fb_StrAllocTempDescZEx( (uint8*)"rewind", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5233, 0 );
+       FBSTRING* vr$5231 = fb_StrAllocTempDescZEx( (uint8*)"rewind", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5231, 0 );
       }
       goto label$4356;
       label$4467:;
       if( TMP$1994$6 != 56ull ) goto label$4469;
       label$4470:;
       {
-       FBSTRING* vr$5234 = fb_StrAllocTempDescZEx( (uint8*)"rewrite", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5234, 0 );
+       FBSTRING* vr$5232 = fb_StrAllocTempDescZEx( (uint8*)"rewrite", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5232, 0 );
       }
       goto label$4356;
       label$4469:;
       if( TMP$1994$6 != 57ull ) goto label$4471;
       label$4472:;
       {
-       FBSTRING* vr$5235 = fb_StrAllocTempDescZEx( (uint8*)"rf", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5235, 0 );
+       FBSTRING* vr$5233 = fb_StrAllocTempDescZEx( (uint8*)"rf", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5233, 0 );
       }
       goto label$4356;
       label$4471:;
       if( TMP$1994$6 != 58ull ) goto label$4473;
       label$4474:;
       {
-       FBSTRING* vr$5236 = fb_StrAllocTempDescZEx( (uint8*)"rgb", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5236, 0 );
+       FBSTRING* vr$5234 = fb_StrAllocTempDescZEx( (uint8*)"rgb", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5234, 0 );
       }
       goto label$4356;
       label$4473:;
       if( TMP$1994$6 != 59ull ) goto label$4475;
       label$4476:;
       {
-       FBSTRING* vr$5237 = fb_StrAllocTempDescZEx( (uint8*)"rgbf", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5237, 0 );
+       FBSTRING* vr$5235 = fb_StrAllocTempDescZEx( (uint8*)"rgbf", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5235, 0 );
       }
       goto label$4356;
       label$4475:;
       if( TMP$1994$6 != 60ull ) goto label$4477;
       label$4478:;
       {
-       FBSTRING* vr$5238 = fb_StrAllocTempDescZEx( (uint8*)"rgbft", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5238, 0 );
+       FBSTRING* vr$5236 = fb_StrAllocTempDescZEx( (uint8*)"rgbft", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5236, 0 );
       }
       goto label$4356;
       label$4477:;
       if( TMP$1994$6 != 61ull ) goto label$4479;
       label$4480:;
       {
-       FBSTRING* vr$5239 = fb_StrAllocTempDescZEx( (uint8*)"rgbt", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5239, 0 );
+       FBSTRING* vr$5237 = fb_StrAllocTempDescZEx( (uint8*)"rgbt", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5237, 0 );
       }
       goto label$4356;
       label$4479:;
       if( TMP$1994$6 != 62ull ) goto label$4481;
       label$4482:;
       {
-       FBSTRING* vr$5240 = fb_StrAllocTempDescZEx( (uint8*)"rh", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5240, 0 );
+       FBSTRING* vr$5238 = fb_StrAllocTempDescZEx( (uint8*)"rh", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5238, 0 );
       }
       goto label$4356;
       label$4481:;
       if( TMP$1994$6 != 63ull ) goto label$4483;
       label$4484:;
       {
-       FBSTRING* vr$5241 = fb_StrAllocTempDescZEx( (uint8*)"right", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5241, 0 );
+       FBSTRING* vr$5239 = fb_StrAllocTempDescZEx( (uint8*)"right", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5239, 0 );
       }
       goto label$4356;
       label$4483:;
       if( TMP$1994$6 != 65ull ) goto label$4485;
       label$4486:;
       {
-       FBSTRING* vr$5242 = fb_StrAllocTempDescZEx( (uint8*)"ripples", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5242, 0 );
+       FBSTRING* vr$5240 = fb_StrAllocTempDescZEx( (uint8*)"ripples", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5240, 0 );
       }
       goto label$4356;
       label$4485:;
       if( TMP$1994$6 != 66ull ) goto label$4487;
       label$4488:;
       {
-       FBSTRING* vr$5243 = fb_StrAllocTempDescZEx( (uint8*)"rmdir", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5243, 0 );
+       FBSTRING* vr$5241 = fb_StrAllocTempDescZEx( (uint8*)"rmdir", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5241, 0 );
       }
       goto label$4356;
       label$4487:;
       if( TMP$1994$6 != 67ull ) goto label$4489;
       label$4490:;
       {
-       FBSTRING* vr$5244 = fb_StrAllocTempDescZEx( (uint8*)"rnd", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5244, 0 );
+       FBSTRING* vr$5242 = fb_StrAllocTempDescZEx( (uint8*)"rnd", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5242, 0 );
       }
       goto label$4356;
       label$4489:;
       if( TMP$1994$6 != 68ull ) goto label$4491;
       label$4492:;
       {
-       FBSTRING* vr$5245 = fb_StrAllocTempDescZEx( (uint8*)"rotate", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5245, 0 );
+       FBSTRING* vr$5243 = fb_StrAllocTempDescZEx( (uint8*)"rotate", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5243, 0 );
       }
       goto label$4356;
       label$4491:;
       if( TMP$1994$6 != 69ull ) goto label$4493;
       label$4494:;
       {
-       FBSTRING* vr$5246 = fb_StrAllocTempDescZEx( (uint8*)"roughness", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5246, 0 );
+       FBSTRING* vr$5244 = fb_StrAllocTempDescZEx( (uint8*)"roughness", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5244, 0 );
       }
       goto label$4356;
       label$4493:;
       if( TMP$1994$6 != 70ull ) goto label$4495;
       label$4496:;
       {
-       FBSTRING* vr$5247 = fb_StrAllocTempDescZEx( (uint8*)"round", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5247, 0 );
+       FBSTRING* vr$5245 = fb_StrAllocTempDescZEx( (uint8*)"round", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5245, 0 );
       }
       goto label$4356;
       label$4495:;
       if( TMP$1994$6 != 71ull ) goto label$4497;
       label$4498:;
       {
-       FBSTRING* vr$5248 = fb_StrAllocTempDescZEx( (uint8*)"rounded", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5248, 0 );
+       FBSTRING* vr$5246 = fb_StrAllocTempDescZEx( (uint8*)"rounded", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5246, 0 );
       }
       goto label$4356;
       label$4497:;
       if( TMP$1994$6 != 72ull ) goto label$4499;
       label$4500:;
       {
-       FBSTRING* vr$5249 = fb_StrAllocTempDescZEx( (uint8*)"row", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5249, 0 );
+       FBSTRING* vr$5247 = fb_StrAllocTempDescZEx( (uint8*)"row", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5247, 0 );
       }
       goto label$4356;
       label$4499:;
       if( TMP$1994$6 != 73ull ) goto label$4501;
       label$4502:;
       {
-       FBSTRING* vr$5250 = fb_StrAllocTempDescZEx( (uint8*)"row_major", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5250, 0 );
+       FBSTRING* vr$5248 = fb_StrAllocTempDescZEx( (uint8*)"row_major", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5248, 0 );
       }
       goto label$4356;
       label$4501:;
       if( TMP$1994$6 != 74ull ) goto label$4503;
       label$4504:;
       {
-       FBSTRING* vr$5251 = fb_StrAllocTempDescZEx( (uint8*)"rpad", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5251, 0 );
+       FBSTRING* vr$5249 = fb_StrAllocTempDescZEx( (uint8*)"rpad", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5249, 0 );
       }
       goto label$4356;
       label$4503:;
       if( TMP$1994$6 != 75ull ) goto label$4505;
       label$4506:;
       {
-       FBSTRING* vr$5252 = fb_StrAllocTempDescZEx( (uint8*)"rset", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5252, 0 );
+       FBSTRING* vr$5250 = fb_StrAllocTempDescZEx( (uint8*)"rset", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5250, 0 );
       }
       goto label$4356;
       label$4505:;
       if( TMP$1994$6 != 76ull ) goto label$4507;
       label$4508:;
       {
-       FBSTRING* vr$5253 = fb_StrAllocTempDescZEx( (uint8*)"run", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5253, 0 );
+       FBSTRING* vr$5251 = fb_StrAllocTempDescZEx( (uint8*)"run", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5251, 0 );
       }
       goto label$4356;
       label$4507:;
       if( TMP$1994$6 != 77ull ) goto label$4509;
       label$4510:;
       {
-       FBSTRING* vr$5254 = fb_StrAllocTempDescZEx( (uint8*)"s", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5254, 0 );
+       FBSTRING* vr$5252 = fb_StrAllocTempDescZEx( (uint8*)"s", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5252, 0 );
       }
       goto label$4356;
       label$4509:;
       if( TMP$1994$6 != 78ull ) goto label$4511;
       label$4512:;
       {
-       FBSTRING* vr$5255 = fb_StrAllocTempDescZEx( (uint8*)"safecall", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5255, 0 );
+       FBSTRING* vr$5253 = fb_StrAllocTempDescZEx( (uint8*)"safecall", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5253, 0 );
       }
       goto label$4356;
       label$4511:;
       if( TMP$1994$6 != 79ull ) goto label$4513;
       label$4514:;
       {
-       FBSTRING* vr$5256 = fb_StrAllocTempDescZEx( (uint8*)"same", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5256, 0 );
+       FBSTRING* vr$5254 = fb_StrAllocTempDescZEx( (uint8*)"same", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5254, 0 );
       }
       goto label$4356;
       label$4513:;
       if( TMP$1994$6 != 80ull ) goto label$4515;
       label$4516:;
       {
-       FBSTRING* vr$5257 = fb_StrAllocTempDescZEx( (uint8*)"same_source", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5257, 0 );
+       FBSTRING* vr$5255 = fb_StrAllocTempDescZEx( (uint8*)"same_source", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5255, 0 );
       }
       goto label$4356;
       label$4515:;
       if( TMP$1994$6 != 81ull ) goto label$4517;
       label$4518:;
       {
-       FBSTRING* vr$5258 = fb_StrAllocTempDescZEx( (uint8*)"sampler1D", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5258, 0 );
+       FBSTRING* vr$5256 = fb_StrAllocTempDescZEx( (uint8*)"sampler1D", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5256, 0 );
       }
       goto label$4356;
       label$4517:;
       if( TMP$1994$6 != 82ull ) goto label$4519;
       label$4520:;
       {
-       FBSTRING* vr$5259 = fb_StrAllocTempDescZEx( (uint8*)"sampler1DArray", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5259, 0 );
+       FBSTRING* vr$5257 = fb_StrAllocTempDescZEx( (uint8*)"sampler1DArray", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5257, 0 );
       }
       goto label$4356;
       label$4519:;
       if( TMP$1994$6 != 83ull ) goto label$4521;
       label$4522:;
       {
-       FBSTRING* vr$5260 = fb_StrAllocTempDescZEx( (uint8*)"sampler1DArrayShadow", 20ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5260, 0 );
+       FBSTRING* vr$5258 = fb_StrAllocTempDescZEx( (uint8*)"sampler1DArrayShadow", 20ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5258, 0 );
       }
       goto label$4356;
       label$4521:;
       if( TMP$1994$6 != 84ull ) goto label$4523;
       label$4524:;
       {
-       FBSTRING* vr$5261 = fb_StrAllocTempDescZEx( (uint8*)"sampler1DShadow", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5261, 0 );
+       FBSTRING* vr$5259 = fb_StrAllocTempDescZEx( (uint8*)"sampler1DShadow", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5259, 0 );
       }
       goto label$4356;
       label$4523:;
       if( TMP$1994$6 != 95ull ) goto label$4525;
       label$4526:;
       {
-       FBSTRING* vr$5262 = fb_StrAllocTempDescZEx( (uint8*)"sampler2D", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5262, 0 );
+       FBSTRING* vr$5260 = fb_StrAllocTempDescZEx( (uint8*)"sampler2D", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5260, 0 );
       }
       goto label$4356;
       label$4525:;
       if( TMP$1994$6 != 86ull ) goto label$4527;
       label$4528:;
       {
-       FBSTRING* vr$5263 = fb_StrAllocTempDescZEx( (uint8*)"sampler2DArray", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5263, 0 );
+       FBSTRING* vr$5261 = fb_StrAllocTempDescZEx( (uint8*)"sampler2DArray", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5261, 0 );
       }
       goto label$4356;
       label$4527:;
       if( TMP$1994$6 != 87ull ) goto label$4529;
       label$4530:;
       {
-       FBSTRING* vr$5264 = fb_StrAllocTempDescZEx( (uint8*)"sampler2DArrayShadow", 20ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5264, 0 );
+       FBSTRING* vr$5262 = fb_StrAllocTempDescZEx( (uint8*)"sampler2DArrayShadow", 20ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5262, 0 );
       }
       goto label$4356;
       label$4529:;
       if( TMP$1994$6 != 88ull ) goto label$4531;
       label$4532:;
       {
-       FBSTRING* vr$5265 = fb_StrAllocTempDescZEx( (uint8*)"sampler2DRect", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5265, 0 );
+       FBSTRING* vr$5263 = fb_StrAllocTempDescZEx( (uint8*)"sampler2DRect", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5263, 0 );
       }
       goto label$4356;
       label$4531:;
       if( TMP$1994$6 != 89ull ) goto label$4533;
       label$4534:;
       {
-       FBSTRING* vr$5266 = fb_StrAllocTempDescZEx( (uint8*)"sampler2DRectShadow", 19ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5266, 0 );
+       FBSTRING* vr$5264 = fb_StrAllocTempDescZEx( (uint8*)"sampler2DRectShadow", 19ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5264, 0 );
       }
       goto label$4356;
       label$4533:;
       if( TMP$1994$6 != 90ull ) goto label$4535;
       label$4536:;
       {
-       FBSTRING* vr$5267 = fb_StrAllocTempDescZEx( (uint8*)"sampler2DShadow", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5267, 0 );
+       FBSTRING* vr$5265 = fb_StrAllocTempDescZEx( (uint8*)"sampler2DShadow", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5265, 0 );
       }
       goto label$4356;
       label$4535:;
       if( TMP$1994$6 != 91ull ) goto label$4537;
       label$4538:;
       {
-       FBSTRING* vr$5268 = fb_StrAllocTempDescZEx( (uint8*)"sampler3D", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5268, 0 );
+       FBSTRING* vr$5266 = fb_StrAllocTempDescZEx( (uint8*)"sampler3D", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5266, 0 );
       }
       goto label$4356;
       label$4537:;
       if( TMP$1994$6 != 92ull ) goto label$4539;
       label$4540:;
       {
-       FBSTRING* vr$5269 = fb_StrAllocTempDescZEx( (uint8*)"sampler3DRect", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5269, 0 );
+       FBSTRING* vr$5267 = fb_StrAllocTempDescZEx( (uint8*)"sampler3DRect", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5267, 0 );
       }
       goto label$4356;
       label$4539:;
       if( TMP$1994$6 != 93ull ) goto label$4541;
       label$4542:;
       {
-       FBSTRING* vr$5270 = fb_StrAllocTempDescZEx( (uint8*)"samplerBuffer", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5270, 0 );
+       FBSTRING* vr$5268 = fb_StrAllocTempDescZEx( (uint8*)"samplerBuffer", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5268, 0 );
       }
       goto label$4356;
       label$4541:;
       if( TMP$1994$6 != 94ull ) goto label$4543;
       label$4544:;
       {
-       FBSTRING* vr$5271 = fb_StrAllocTempDescZEx( (uint8*)"samplerCube", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5271, 0 );
+       FBSTRING* vr$5269 = fb_StrAllocTempDescZEx( (uint8*)"samplerCube", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5269, 0 );
       }
       goto label$4356;
       label$4543:;
       if( TMP$1994$6 != 95ull ) goto label$4545;
       label$4546:;
       {
-       FBSTRING* vr$5272 = fb_StrAllocTempDescZEx( (uint8*)"samplerCubeShadow", 17ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5272, 0 );
+       FBSTRING* vr$5270 = fb_StrAllocTempDescZEx( (uint8*)"samplerCubeShadow", 17ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5270, 0 );
       }
       goto label$4356;
       label$4545:;
       if( TMP$1994$6 != 96ull ) goto label$4547;
       label$4548:;
       {
-       FBSTRING* vr$5273 = fb_StrAllocTempDescZEx( (uint8*)"samples", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5273, 0 );
+       FBSTRING* vr$5271 = fb_StrAllocTempDescZEx( (uint8*)"samples", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5271, 0 );
       }
       goto label$4356;
       label$4547:;
       if( TMP$1994$6 != 97ull ) goto label$4549;
       label$4550:;
       {
-       FBSTRING* vr$5274 = fb_StrAllocTempDescZEx( (uint8*)"save", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5274, 0 );
+       FBSTRING* vr$5272 = fb_StrAllocTempDescZEx( (uint8*)"save", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5272, 0 );
       }
       goto label$4356;
       label$4549:;
       if( TMP$1994$6 != 98ull ) goto label$4551;
       label$4552:;
       {
-       FBSTRING* vr$5275 = fb_StrAllocTempDescZEx( (uint8*)"save_file", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5275, 0 );
+       FBSTRING* vr$5273 = fb_StrAllocTempDescZEx( (uint8*)"save_file", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5273, 0 );
       }
       goto label$4356;
       label$4551:;
       if( TMP$1994$6 != 99ull ) goto label$4553;
       label$4554:;
       {
-       FBSTRING* vr$5276 = fb_StrAllocTempDescZEx( (uint8*)"scale", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5276, 0 );
+       FBSTRING* vr$5274 = fb_StrAllocTempDescZEx( (uint8*)"scale", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5274, 0 );
       }
       goto label$4356;
       label$4553:;
       if( TMP$1994$6 != 100ull ) goto label$4555;
       label$4556:;
       {
-       FBSTRING* vr$5277 = fb_StrAllocTempDescZEx( (uint8*)"scallop_wave", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5277, 0 );
+       FBSTRING* vr$5275 = fb_StrAllocTempDescZEx( (uint8*)"scallop_wave", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5275, 0 );
       }
       goto label$4356;
       label$4555:;
       if( TMP$1994$6 != 101ull ) goto label$4557;
       label$4558:;
       {
-       FBSTRING* vr$5278 = fb_StrAllocTempDescZEx( (uint8*)"scattering", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5278, 0 );
+       FBSTRING* vr$5276 = fb_StrAllocTempDescZEx( (uint8*)"scattering", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5276, 0 );
       }
       goto label$4356;
       label$4557:;
       if( TMP$1994$6 != 102ull ) goto label$4559;
       label$4560:;
       {
-       FBSTRING* vr$5279 = fb_StrAllocTempDescZEx( (uint8*)"screen", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5279, 0 );
+       FBSTRING* vr$5277 = fb_StrAllocTempDescZEx( (uint8*)"screen", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5277, 0 );
       }
       goto label$4356;
       label$4559:;
       if( TMP$1994$6 != 103ull ) goto label$4561;
       label$4562:;
       {
-       FBSTRING* vr$5280 = fb_StrAllocTempDescZEx( (uint8*)"sd", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5280, 0 );
+       FBSTRING* vr$5278 = fb_StrAllocTempDescZEx( (uint8*)"sd", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5278, 0 );
       }
       goto label$4356;
       label$4561:;
       if( TMP$1994$6 != 104ull ) goto label$4563;
       label$4564:;
       {
-       FBSTRING* vr$5281 = fb_StrAllocTempDescZEx( (uint8*)"search", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5281, 0 );
+       FBSTRING* vr$5279 = fb_StrAllocTempDescZEx( (uint8*)"search", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5279, 0 );
       }
       goto label$4356;
       label$4563:;
       if( TMP$1994$6 != 105ull ) goto label$4565;
       label$4566:;
       {
-       FBSTRING* vr$5282 = fb_StrAllocTempDescZEx( (uint8*)"second", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5282, 0 );
+       FBSTRING* vr$5280 = fb_StrAllocTempDescZEx( (uint8*)"second", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5280, 0 );
       }
       goto label$4356;
       label$4565:;
       if( TMP$1994$6 != 106ull ) goto label$4567;
       label$4568:;
       {
-       FBSTRING* vr$5283 = fb_StrAllocTempDescZEx( (uint8*)"section", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5283, 0 );
+       FBSTRING* vr$5281 = fb_StrAllocTempDescZEx( (uint8*)"section", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5281, 0 );
       }
       goto label$4356;
       label$4567:;
       if( TMP$1994$6 != 107ull ) goto label$4569;
       label$4570:;
       {
-       FBSTRING* vr$5284 = fb_StrAllocTempDescZEx( (uint8*)"security", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5284, 0 );
+       FBSTRING* vr$5282 = fb_StrAllocTempDescZEx( (uint8*)"security", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5282, 0 );
       }
       goto label$4356;
       label$4569:;
       if( TMP$1994$6 != 108ull ) goto label$4571;
       label$4572:;
       {
-       FBSTRING* vr$5285 = fb_StrAllocTempDescZEx( (uint8*)"seed", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5285, 0 );
+       FBSTRING* vr$5283 = fb_StrAllocTempDescZEx( (uint8*)"seed", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5283, 0 );
       }
       goto label$4356;
       label$4571:;
       if( TMP$1994$6 != 109ull ) goto label$4573;
       label$4574:;
       {
-       FBSTRING* vr$5286 = fb_StrAllocTempDescZEx( (uint8*)"segment", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5286, 0 );
+       FBSTRING* vr$5284 = fb_StrAllocTempDescZEx( (uint8*)"segment", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5284, 0 );
       }
       goto label$4356;
       label$4573:;
       if( TMP$1994$6 != 110ull ) goto label$4575;
       label$4576:;
       {
-       FBSTRING* vr$5287 = fb_StrAllocTempDescZEx( (uint8*)"segment-limit", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5287, 0 );
+       FBSTRING* vr$5285 = fb_StrAllocTempDescZEx( (uint8*)"segment-limit", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5285, 0 );
       }
       goto label$4356;
       label$4575:;
       if( TMP$1994$6 != 111ull ) goto label$4577;
       label$4578:;
       {
-       FBSTRING* vr$5288 = fb_StrAllocTempDescZEx( (uint8*)"section", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5288, 0 );
+       FBSTRING* vr$5286 = fb_StrAllocTempDescZEx( (uint8*)"section", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5286, 0 );
       }
       goto label$4356;
       label$4577:;
       if( TMP$1994$6 != 112ull ) goto label$4579;
       label$4580:;
       {
-       FBSTRING* vr$5289 = fb_StrAllocTempDescZEx( (uint8*)"select", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5289, 0 );
+       FBSTRING* vr$5287 = fb_StrAllocTempDescZEx( (uint8*)"select", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5287, 0 );
       }
       goto label$4356;
       label$4579:;
       if( TMP$1994$6 != 113ull ) goto label$4581;
       label$4582:;
       {
-       FBSTRING* vr$5290 = fb_StrAllocTempDescZEx( (uint8*)"selector", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5290, 0 );
+       FBSTRING* vr$5288 = fb_StrAllocTempDescZEx( (uint8*)"selector", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5288, 0 );
       }
       goto label$4356;
       label$4581:;
       if( TMP$1994$6 != 114ull ) goto label$4583;
       label$4584:;
       {
-       FBSTRING* vr$5291 = fb_StrAllocTempDescZEx( (uint8*)"selection", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5291, 0 );
+       FBSTRING* vr$5289 = fb_StrAllocTempDescZEx( (uint8*)"selection", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5289, 0 );
       }
       goto label$4356;
       label$4583:;
       if( TMP$1994$6 != 115ull ) goto label$4585;
       label$4586:;
       {
-       FBSTRING* vr$5292 = fb_StrAllocTempDescZEx( (uint8*)"self", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5292, 0 );
+       FBSTRING* vr$5290 = fb_StrAllocTempDescZEx( (uint8*)"self", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5290, 0 );
       }
       goto label$4356;
       label$4585:;
       if( TMP$1994$6 != 116ull ) goto label$4587;
       label$4588:;
       {
-       FBSTRING* vr$5293 = fb_StrAllocTempDescZEx( (uint8*)"send", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5293, 0 );
+       FBSTRING* vr$5291 = fb_StrAllocTempDescZEx( (uint8*)"send", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5291, 0 );
       }
       goto label$4356;
       label$4587:;
       if( TMP$1994$6 != 117ull ) goto label$4589;
       label$4590:;
       {
-       FBSTRING* vr$5294 = fb_StrAllocTempDescZEx( (uint8*)"sentence", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5294, 0 );
+       FBSTRING* vr$5292 = fb_StrAllocTempDescZEx( (uint8*)"sentence", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5292, 0 );
       }
       goto label$4356;
       label$4589:;
       if( TMP$1994$6 != 118ull ) goto label$4591;
       label$4592:;
       {
-       FBSTRING* vr$5295 = fb_StrAllocTempDescZEx( (uint8*)"separate", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5295, 0 );
+       FBSTRING* vr$5293 = fb_StrAllocTempDescZEx( (uint8*)"separate", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5293, 0 );
       }
       goto label$4356;
       label$4591:;
       if( TMP$1994$6 != 119ull ) goto label$4593;
       label$4594:;
       {
-       FBSTRING* vr$5296 = fb_StrAllocTempDescZEx( (uint8*)"sequence", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5296, 0 );
+       FBSTRING* vr$5294 = fb_StrAllocTempDescZEx( (uint8*)"sequence", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5294, 0 );
       }
       goto label$4356;
       label$4593:;
       if( TMP$1994$6 != 120ull ) goto label$4595;
       label$4596:;
       {
-       FBSTRING* vr$5297 = fb_StrAllocTempDescZEx( (uint8*)"sequential", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5297, 0 );
+       FBSTRING* vr$5295 = fb_StrAllocTempDescZEx( (uint8*)"sequential", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5295, 0 );
       }
       goto label$4356;
       label$4595:;
       if( TMP$1994$6 != 121ull ) goto label$4597;
       label$4598:;
       {
-       FBSTRING* vr$5298 = fb_StrAllocTempDescZEx( (uint8*)"sequentially", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5298, 0 );
+       FBSTRING* vr$5296 = fb_StrAllocTempDescZEx( (uint8*)"sequentially", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5296, 0 );
       }
       goto label$4356;
       label$4597:;
       if( TMP$1994$6 != 122ull ) goto label$4599;
       label$4600:;
       {
-       FBSTRING* vr$5299 = fb_StrAllocTempDescZEx( (uint8*)"service", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5299, 0 );
+       FBSTRING* vr$5297 = fb_StrAllocTempDescZEx( (uint8*)"service", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5297, 0 );
       }
       goto label$4356;
       label$4599:;
       if( TMP$1994$6 != 123ull ) goto label$4601;
       label$4602:;
       {
-       FBSTRING* vr$5300 = fb_StrAllocTempDescZEx( (uint8*)"set", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5300, 0 );
+       FBSTRING* vr$5298 = fb_StrAllocTempDescZEx( (uint8*)"set", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5298, 0 );
       }
       goto label$4356;
       label$4601:;
       if( TMP$1994$6 != 124ull ) goto label$4603;
       label$4604:;
       {
-       FBSTRING* vr$5301 = fb_StrAllocTempDescZEx( (uint8*)"sgn", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5301, 0 );
+       FBSTRING* vr$5299 = fb_StrAllocTempDescZEx( (uint8*)"sgn", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5299, 0 );
       }
       goto label$4356;
       label$4603:;
       if( TMP$1994$6 != 125ull ) goto label$4605;
       label$4606:;
       {
-       FBSTRING* vr$5302 = fb_StrAllocTempDescZEx( (uint8*)"shadowless", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5302, 0 );
+       FBSTRING* vr$5300 = fb_StrAllocTempDescZEx( (uint8*)"shadowless", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5300, 0 );
       }
       goto label$4356;
       label$4605:;
       if( TMP$1994$6 != 126ull ) goto label$4607;
       label$4608:;
       {
-       FBSTRING* vr$5303 = fb_StrAllocTempDescZEx( (uint8*)"shell", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5303, 0 );
+       FBSTRING* vr$5301 = fb_StrAllocTempDescZEx( (uint8*)"shell", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5301, 0 );
       }
       goto label$4356;
       label$4607:;
       if( TMP$1994$6 != 127ull ) goto label$4609;
       label$4610:;
       {
-       FBSTRING* vr$5304 = fb_StrAllocTempDescZEx( (uint8*)"shift-in", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5304, 0 );
+       FBSTRING* vr$5302 = fb_StrAllocTempDescZEx( (uint8*)"shift-in", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5302, 0 );
       }
       goto label$4356;
       label$4609:;
       if( TMP$1994$6 != 128ull ) goto label$4611;
       label$4612:;
       {
-       FBSTRING* vr$5305 = fb_StrAllocTempDescZEx( (uint8*)"shift-out", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5305, 0 );
+       FBSTRING* vr$5303 = fb_StrAllocTempDescZEx( (uint8*)"shift-out", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5303, 0 );
       }
       goto label$4356;
       label$4611:;
       if( TMP$1994$6 != 129ull ) goto label$4613;
       label$4614:;
       {
-       FBSTRING* vr$5306 = fb_StrAllocTempDescZEx( (uint8*)"shl", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5306, 0 );
+       FBSTRING* vr$5304 = fb_StrAllocTempDescZEx( (uint8*)"shl", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5304, 0 );
       }
       goto label$4356;
       label$4613:;
       if( TMP$1994$6 != 130ull ) goto label$4615;
       label$4616:;
       {
-       FBSTRING* vr$5307 = fb_StrAllocTempDescZEx( (uint8*)"short", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5307, 0 );
+       FBSTRING* vr$5305 = fb_StrAllocTempDescZEx( (uint8*)"short", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5305, 0 );
       }
       goto label$4356;
       label$4615:;
       if( TMP$1994$6 != 131ull ) goto label$4617;
       label$4618:;
       {
-       FBSTRING* vr$5308 = fb_StrAllocTempDescZEx( (uint8*)"shr", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5308, 0 );
+       FBSTRING* vr$5306 = fb_StrAllocTempDescZEx( (uint8*)"shr", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5306, 0 );
       }
       goto label$4356;
       label$4617:;
       if( TMP$1994$6 != 132ull ) goto label$4619;
       label$4620:;
       {
-       FBSTRING* vr$5309 = fb_StrAllocTempDescZEx( (uint8*)"sign", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5309, 0 );
+       FBSTRING* vr$5307 = fb_StrAllocTempDescZEx( (uint8*)"sign", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5307, 0 );
       }
       goto label$4356;
       label$4619:;
       if( TMP$1994$6 != 133ull ) goto label$4621;
       label$4622:;
       {
-       FBSTRING* vr$5310 = fb_StrAllocTempDescZEx( (uint8*)"simple_nested_loop", 18ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5310, 0 );
+       FBSTRING* vr$5308 = fb_StrAllocTempDescZEx( (uint8*)"simple_nested_loop", 18ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5308, 0 );
       }
       goto label$4356;
       label$4621:;
       if( TMP$1994$6 != 134ull ) goto label$4623;
       label$4624:;
       {
-       FBSTRING* vr$5311 = fb_StrAllocTempDescZEx( (uint8*)"sin", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5311, 0 );
+       FBSTRING* vr$5309 = fb_StrAllocTempDescZEx( (uint8*)"sin", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5309, 0 );
       }
       goto label$4356;
       label$4623:;
       if( TMP$1994$6 != 135ull ) goto label$4625;
       label$4626:;
       {
-       FBSTRING* vr$5312 = fb_StrAllocTempDescZEx( (uint8*)"sine_wave", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5312, 0 );
+       FBSTRING* vr$5310 = fb_StrAllocTempDescZEx( (uint8*)"sine_wave", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5310, 0 );
       }
       goto label$4356;
       label$4625:;
       if( TMP$1994$6 != 136ull ) goto label$4627;
       label$4628:;
       {
-       FBSTRING* vr$5313 = fb_StrAllocTempDescZEx( (uint8*)"sinh", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5313, 0 );
+       FBSTRING* vr$5311 = fb_StrAllocTempDescZEx( (uint8*)"sinh", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5311, 0 );
       }
       goto label$4356;
       label$4627:;
       if( TMP$1994$6 != 137ull ) goto label$4629;
       label$4630:;
       {
-       FBSTRING* vr$5314 = fb_StrAllocTempDescZEx( (uint8*)"size", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5314, 0 );
+       FBSTRING* vr$5312 = fb_StrAllocTempDescZEx( (uint8*)"size", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5312, 0 );
       }
       goto label$4356;
       label$4629:;
       if( TMP$1994$6 != 138ull ) goto label$4631;
       label$4632:;
       {
-       FBSTRING* vr$5315 = fb_StrAllocTempDescZEx( (uint8*)"sizeof", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5315, 0 );
+       FBSTRING* vr$5313 = fb_StrAllocTempDescZEx( (uint8*)"sizeof", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5313, 0 );
       }
       goto label$4356;
       label$4631:;
       if( TMP$1994$6 != 139ull ) goto label$4633;
       label$4634:;
       {
-       FBSTRING* vr$5316 = fb_StrAllocTempDescZEx( (uint8*)"skip1", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5316, 0 );
+       FBSTRING* vr$5314 = fb_StrAllocTempDescZEx( (uint8*)"skip1", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5314, 0 );
       }
       goto label$4356;
       label$4633:;
       if( TMP$1994$6 != 140ull ) goto label$4635;
       label$4636:;
       {
-       FBSTRING* vr$5317 = fb_StrAllocTempDescZEx( (uint8*)"skip2", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5317, 0 );
+       FBSTRING* vr$5315 = fb_StrAllocTempDescZEx( (uint8*)"skip2", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5315, 0 );
       }
       goto label$4356;
       label$4635:;
       if( TMP$1994$6 != 141ull ) goto label$4637;
       label$4638:;
       {
-       FBSTRING* vr$5318 = fb_StrAllocTempDescZEx( (uint8*)"skip3", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5318, 0 );
+       FBSTRING* vr$5316 = fb_StrAllocTempDescZEx( (uint8*)"skip3", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5316, 0 );
       }
       goto label$4356;
       label$4637:;
       if( TMP$1994$6 != 142ull ) goto label$4639;
       label$4640:;
       {
-       FBSTRING* vr$5319 = fb_StrAllocTempDescZEx( (uint8*)"sky", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5319, 0 );
+       FBSTRING* vr$5317 = fb_StrAllocTempDescZEx( (uint8*)"sky", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5317, 0 );
       }
       goto label$4356;
       label$4639:;
       if( TMP$1994$6 != 143ull ) goto label$4641;
       label$4642:;
       {
-       FBSTRING* vr$5320 = fb_StrAllocTempDescZEx( (uint8*)"sky_sphere", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5320, 0 );
+       FBSTRING* vr$5318 = fb_StrAllocTempDescZEx( (uint8*)"sky_sphere", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5318, 0 );
       }
       goto label$4356;
       label$4641:;
       if( TMP$1994$6 != 144ull ) goto label$4643;
       label$4644:;
       {
-       FBSTRING* vr$5321 = fb_StrAllocTempDescZEx( (uint8*)"slice", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5321, 0 );
+       FBSTRING* vr$5319 = fb_StrAllocTempDescZEx( (uint8*)"slice", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5319, 0 );
       }
       goto label$4356;
       label$4643:;
       if( TMP$1994$6 != 145ull ) goto label$4645;
       label$4646:;
       {
-       FBSTRING* vr$5322 = fb_StrAllocTempDescZEx( (uint8*)"slope", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5322, 0 );
+       FBSTRING* vr$5320 = fb_StrAllocTempDescZEx( (uint8*)"slope", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5320, 0 );
       }
       goto label$4356;
       label$4645:;
       if( TMP$1994$6 != 146ull ) goto label$4647;
       label$4648:;
       {
-       FBSTRING* vr$5323 = fb_StrAllocTempDescZEx( (uint8*)"slope_map", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5323, 0 );
+       FBSTRING* vr$5321 = fb_StrAllocTempDescZEx( (uint8*)"slope_map", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5321, 0 );
       }
       goto label$4356;
       label$4647:;
       if( TMP$1994$6 != 147ull ) goto label$4649;
       label$4650:;
       {
-       FBSTRING* vr$5324 = fb_StrAllocTempDescZEx( (uint8*)"smallint", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5324, 0 );
+       FBSTRING* vr$5322 = fb_StrAllocTempDescZEx( (uint8*)"smallint", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5322, 0 );
       }
       goto label$4356;
       label$4649:;
       if( TMP$1994$6 != 148ull ) goto label$4651;
       label$4652:;
       {
-       FBSTRING* vr$5325 = fb_StrAllocTempDescZEx( (uint8*)"smooth", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5325, 0 );
+       FBSTRING* vr$5323 = fb_StrAllocTempDescZEx( (uint8*)"smooth", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5323, 0 );
       }
       goto label$4356;
       label$4651:;
       if( TMP$1994$6 != 149ull ) goto label$4653;
       label$4654:;
       {
-       FBSTRING* vr$5326 = fb_StrAllocTempDescZEx( (uint8*)"smooth_linearstep", 17ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5326, 0 );
+       FBSTRING* vr$5324 = fb_StrAllocTempDescZEx( (uint8*)"smooth_linearstep", 17ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5324, 0 );
       }
       goto label$4356;
       label$4653:;
       if( TMP$1994$6 != 150ull ) goto label$4655;
       label$4656:;
       {
-       FBSTRING* vr$5327 = fb_StrAllocTempDescZEx( (uint8*)"smoothstep", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5327, 0 );
+       FBSTRING* vr$5325 = fb_StrAllocTempDescZEx( (uint8*)"smoothstep", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5325, 0 );
       }
       goto label$4356;
       label$4655:;
       if( TMP$1994$6 != 151ull ) goto label$4657;
       label$4658:;
       {
-       FBSTRING* vr$5328 = fb_StrAllocTempDescZEx( (uint8*)"smooth_triangle", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5328, 0 );
+       FBSTRING* vr$5326 = fb_StrAllocTempDescZEx( (uint8*)"smooth_triangle", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5326, 0 );
       }
       goto label$4356;
       label$4657:;
       if( TMP$1994$6 != 152ull ) goto label$4659;
       label$4660:;
       {
-       FBSTRING* vr$5329 = fb_StrAllocTempDescZEx( (uint8*)"snoise", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5329, 0 );
+       FBSTRING* vr$5327 = fb_StrAllocTempDescZEx( (uint8*)"snoise", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5327, 0 );
       }
       goto label$4356;
       label$4659:;
       if( TMP$1994$6 != 153ull ) goto label$4661;
       label$4662:;
       {
-       FBSTRING* vr$5330 = fb_StrAllocTempDescZEx( (uint8*)"softfloat", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5330, 0 );
+       FBSTRING* vr$5328 = fb_StrAllocTempDescZEx( (uint8*)"softfloat", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5328, 0 );
       }
       goto label$4356;
       label$4661:;
       if( TMP$1994$6 != 154ull ) goto label$4663;
       label$4664:;
       {
-       FBSTRING* vr$5331 = fb_StrAllocTempDescZEx( (uint8*)"solid", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5331, 0 );
+       FBSTRING* vr$5329 = fb_StrAllocTempDescZEx( (uint8*)"solid", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5329, 0 );
       }
       goto label$4356;
       label$4663:;
       if( TMP$1994$6 != 155ull ) goto label$4665;
       label$4666:;
       {
-       FBSTRING* vr$5332 = fb_StrAllocTempDescZEx( (uint8*)"sor", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5332, 0 );
+       FBSTRING* vr$5330 = fb_StrAllocTempDescZEx( (uint8*)"sor", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5330, 0 );
       }
       goto label$4356;
       label$4665:;
       if( TMP$1994$6 != 156ull ) goto label$4667;
       label$4668:;
       {
-       FBSTRING* vr$5333 = fb_StrAllocTempDescZEx( (uint8*)"sort", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5333, 0 );
+       FBSTRING* vr$5331 = fb_StrAllocTempDescZEx( (uint8*)"sort", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5331, 0 );
       }
       goto label$4356;
       label$4667:;
       if( TMP$1994$6 != 157ull ) goto label$4669;
       label$4670:;
       {
-       FBSTRING* vr$5334 = fb_StrAllocTempDescZEx( (uint8*)"sort-control", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5334, 0 );
+       FBSTRING* vr$5332 = fb_StrAllocTempDescZEx( (uint8*)"sort-control", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5332, 0 );
       }
       goto label$4356;
       label$4669:;
       if( TMP$1994$6 != 158ull ) goto label$4671;
       label$4672:;
       {
-       FBSTRING* vr$5335 = fb_StrAllocTempDescZEx( (uint8*)"sort-core-size", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5335, 0 );
+       FBSTRING* vr$5333 = fb_StrAllocTempDescZEx( (uint8*)"sort-core-size", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5333, 0 );
       }
       goto label$4356;
       label$4671:;
       if( TMP$1994$6 != 159ull ) goto label$4673;
       label$4674:;
       {
-       FBSTRING* vr$5336 = fb_StrAllocTempDescZEx( (uint8*)"sort-file-size", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5336, 0 );
+       FBSTRING* vr$5334 = fb_StrAllocTempDescZEx( (uint8*)"sort-file-size", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5334, 0 );
       }
       goto label$4356;
       label$4673:;
       if( TMP$1994$6 != 160ull ) goto label$4675;
       label$4676:;
       {
-       FBSTRING* vr$5337 = fb_StrAllocTempDescZEx( (uint8*)"sort-merge", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5337, 0 );
+       FBSTRING* vr$5335 = fb_StrAllocTempDescZEx( (uint8*)"sort-merge", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5335, 0 );
       }
       goto label$4356;
       label$4675:;
       if( TMP$1994$6 != 161ull ) goto label$4677;
       label$4678:;
       {
-       FBSTRING* vr$5338 = fb_StrAllocTempDescZEx( (uint8*)"sort-message", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5338, 0 );
+       FBSTRING* vr$5336 = fb_StrAllocTempDescZEx( (uint8*)"sort-message", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5336, 0 );
       }
       goto label$4356;
       label$4677:;
       if( TMP$1994$6 != 162ull ) goto label$4679;
       label$4680:;
       {
-       FBSTRING* vr$5339 = fb_StrAllocTempDescZEx( (uint8*)"sort-mode-size", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5339, 0 );
+       FBSTRING* vr$5337 = fb_StrAllocTempDescZEx( (uint8*)"sort-mode-size", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5337, 0 );
       }
       goto label$4356;
       label$4679:;
       if( TMP$1994$6 != 163ull ) goto label$4681;
       label$4682:;
       {
-       FBSTRING* vr$5340 = fb_StrAllocTempDescZEx( (uint8*)"sort-return", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5340, 0 );
+       FBSTRING* vr$5338 = fb_StrAllocTempDescZEx( (uint8*)"sort-return", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5338, 0 );
       }
       goto label$4356;
       label$4681:;
       if( TMP$1994$6 != 164ull ) goto label$4683;
       label$4684:;
       {
-       FBSTRING* vr$5341 = fb_StrAllocTempDescZEx( (uint8*)"sound", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5341, 0 );
+       FBSTRING* vr$5339 = fb_StrAllocTempDescZEx( (uint8*)"sound", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5339, 0 );
       }
       goto label$4356;
       label$4683:;
       if( TMP$1994$6 != 165ull ) goto label$4685;
       label$4686:;
       {
-       FBSTRING* vr$5342 = fb_StrAllocTempDescZEx( (uint8*)"source", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5342, 0 );
+       FBSTRING* vr$5340 = fb_StrAllocTempDescZEx( (uint8*)"source", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5340, 0 );
       }
       goto label$4356;
       label$4685:;
       if( TMP$1994$6 != 166ull ) goto label$4687;
       label$4688:;
       {
-       FBSTRING* vr$5343 = fb_StrAllocTempDescZEx( (uint8*)"source-computer", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5343, 0 );
+       FBSTRING* vr$5341 = fb_StrAllocTempDescZEx( (uint8*)"source-computer", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5341, 0 );
       }
       goto label$4356;
       label$4687:;
       if( TMP$1994$6 != 167ull ) goto label$4689;
       label$4690:;
       {
-       FBSTRING* vr$5344 = fb_StrAllocTempDescZEx( (uint8*)"space", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5344, 0 );
+       FBSTRING* vr$5342 = fb_StrAllocTempDescZEx( (uint8*)"space", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5342, 0 );
       }
       goto label$4356;
       label$4689:;
       if( TMP$1994$6 != 169ull ) goto label$4691;
       label$4692:;
       {
-       FBSTRING* vr$5345 = fb_StrAllocTempDescZEx( (uint8*)"spaces", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5345, 0 );
+       FBSTRING* vr$5343 = fb_StrAllocTempDescZEx( (uint8*)"spaces", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5343, 0 );
       }
       goto label$4356;
       label$4691:;
       if( TMP$1994$6 != 170ull ) goto label$4693;
       label$4694:;
       {
-       FBSTRING* vr$5346 = fb_StrAllocTempDescZEx( (uint8*)"spacing", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5346, 0 );
+       FBSTRING* vr$5344 = fb_StrAllocTempDescZEx( (uint8*)"spacing", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5344, 0 );
       }
       goto label$4356;
       label$4693:;
       if( TMP$1994$6 != 171ull ) goto label$4695;
       label$4696:;
       {
-       FBSTRING* vr$5347 = fb_StrAllocTempDescZEx( (uint8*)"spc", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5347, 0 );
+       FBSTRING* vr$5345 = fb_StrAllocTempDescZEx( (uint8*)"spc", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5345, 0 );
       }
       goto label$4356;
       label$4695:;
       if( TMP$1994$6 != 172ull ) goto label$4697;
       label$4698:;
       {
-       FBSTRING* vr$5348 = fb_StrAllocTempDescZEx( (uint8*)"specialize", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5348, 0 );
+       FBSTRING* vr$5346 = fb_StrAllocTempDescZEx( (uint8*)"specialize", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5346, 0 );
       }
       goto label$4356;
       label$4697:;
       if( TMP$1994$6 != 173ull ) goto label$4699;
       label$4700:;
       {
-       FBSTRING* vr$5349 = fb_StrAllocTempDescZEx( (uint8*)"special-names", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5349, 0 );
+       FBSTRING* vr$5347 = fb_StrAllocTempDescZEx( (uint8*)"special-names", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5347, 0 );
       }
       goto label$4356;
       label$4699:;
       if( TMP$1994$6 != 174ull ) goto label$4701;
       label$4702:;
       {
-       FBSTRING* vr$5350 = fb_StrAllocTempDescZEx( (uint8*)"specular", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5350, 0 );
+       FBSTRING* vr$5348 = fb_StrAllocTempDescZEx( (uint8*)"specular", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5348, 0 );
       }
       goto label$4356;
       label$4701:;
       if( TMP$1994$6 != 175ull ) goto label$4703;
       label$4704:;
       {
-       FBSTRING* vr$5351 = fb_StrAllocTempDescZEx( (uint8*)"sphere", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5351, 0 );
+       FBSTRING* vr$5349 = fb_StrAllocTempDescZEx( (uint8*)"sphere", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5349, 0 );
       }
       goto label$4356;
       label$4703:;
       if( TMP$1994$6 != 176ull ) goto label$4705;
       label$4706:;
       {
-       FBSTRING* vr$5352 = fb_StrAllocTempDescZEx( (uint8*)"sphere_sweep", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5352, 0 );
+       FBSTRING* vr$5350 = fb_StrAllocTempDescZEx( (uint8*)"sphere_sweep", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5350, 0 );
       }
       goto label$4356;
       label$4705:;
       if( TMP$1994$6 != 177ull ) goto label$4707;
       label$4708:;
       {
-       FBSTRING* vr$5353 = fb_StrAllocTempDescZEx( (uint8*)"spherical", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5353, 0 );
+       FBSTRING* vr$5351 = fb_StrAllocTempDescZEx( (uint8*)"spherical", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5351, 0 );
       }
       goto label$4356;
       label$4707:;
       if( TMP$1994$6 != 178ull ) goto label$4709;
       label$4710:;
       {
-       FBSTRING* vr$5354 = fb_StrAllocTempDescZEx( (uint8*)"spiral1", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5354, 0 );
+       FBSTRING* vr$5352 = fb_StrAllocTempDescZEx( (uint8*)"spiral1", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5352, 0 );
       }
       goto label$4356;
       label$4709:;
       if( TMP$1994$6 != 179ull ) goto label$4711;
       label$4712:;
       {
-       FBSTRING* vr$5355 = fb_StrAllocTempDescZEx( (uint8*)"spiral2", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5355, 0 );
+       FBSTRING* vr$5353 = fb_StrAllocTempDescZEx( (uint8*)"spiral2", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5353, 0 );
       }
       goto label$4356;
       label$4711:;
       if( TMP$1994$6 != 180ull ) goto label$4713;
       label$4714:;
       {
-       FBSTRING* vr$5356 = fb_StrAllocTempDescZEx( (uint8*)"spline", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5356, 0 );
+       FBSTRING* vr$5354 = fb_StrAllocTempDescZEx( (uint8*)"spline", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5354, 0 );
       }
       goto label$4356;
       label$4713:;
       if( TMP$1994$6 != 181ull ) goto label$4715;
       label$4716:;
       {
-       FBSTRING* vr$5357 = fb_StrAllocTempDescZEx( (uint8*)"splineinverse", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5357, 0 );
+       FBSTRING* vr$5355 = fb_StrAllocTempDescZEx( (uint8*)"splineinverse", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5355, 0 );
       }
       goto label$4356;
       label$4715:;
       if( TMP$1994$6 != 182ull ) goto label$4717;
       label$4718:;
       {
-       FBSTRING* vr$5358 = fb_StrAllocTempDescZEx( (uint8*)"split", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5358, 0 );
+       FBSTRING* vr$5356 = fb_StrAllocTempDescZEx( (uint8*)"split", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5356, 0 );
       }
       goto label$4356;
       label$4717:;
       if( TMP$1994$6 != 183ull ) goto label$4719;
       label$4720:;
       {
-       FBSTRING* vr$5359 = fb_StrAllocTempDescZEx( (uint8*)"split_union", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5359, 0 );
+       FBSTRING* vr$5357 = fb_StrAllocTempDescZEx( (uint8*)"split_union", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5357, 0 );
       }
       goto label$4356;
       label$4719:;
       if( TMP$1994$6 != 184ull ) goto label$4721;
       label$4722:;
       {
-       FBSTRING* vr$5360 = fb_StrAllocTempDescZEx( (uint8*)"spotlight", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5360, 0 );
+       FBSTRING* vr$5358 = fb_StrAllocTempDescZEx( (uint8*)"spotlight", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5358, 0 );
       }
       goto label$4356;
       label$4721:;
       if( TMP$1994$6 != 185ull ) goto label$4723;
       label$4724:;
       {
-       FBSTRING* vr$5361 = fb_StrAllocTempDescZEx( (uint8*)"spotted", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5361, 0 );
+       FBSTRING* vr$5359 = fb_StrAllocTempDescZEx( (uint8*)"spotted", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5359, 0 );
       }
       goto label$4356;
       label$4723:;
       if( TMP$1994$6 != 186ull ) goto label$4725;
       label$4726:;
       {
-       FBSTRING* vr$5362 = fb_StrAllocTempDescZEx( (uint8*)"sqr", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5362, 0 );
+       FBSTRING* vr$5360 = fb_StrAllocTempDescZEx( (uint8*)"sqr", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5360, 0 );
       }
       goto label$4356;
       label$4725:;
       if( TMP$1994$6 != 187ull ) goto label$4727;
       label$4728:;
       {
-       FBSTRING* vr$5363 = fb_StrAllocTempDescZEx( (uint8*)"sqrt", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5363, 0 );
+       FBSTRING* vr$5361 = fb_StrAllocTempDescZEx( (uint8*)"sqrt", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5361, 0 );
       }
       goto label$4356;
       label$4727:;
       if( TMP$1994$6 != 188ull ) goto label$4729;
       label$4730:;
       {
-       FBSTRING* vr$5364 = fb_StrAllocTempDescZEx( (uint8*)"standard", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5364, 0 );
+       FBSTRING* vr$5362 = fb_StrAllocTempDescZEx( (uint8*)"standard", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5362, 0 );
       }
       goto label$4356;
       label$4729:;
       if( TMP$1994$6 != 189ull ) goto label$4731;
       label$4732:;
       {
-       FBSTRING* vr$5365 = fb_StrAllocTempDescZEx( (uint8*)"standard-1", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5365, 0 );
+       FBSTRING* vr$5363 = fb_StrAllocTempDescZEx( (uint8*)"standard-1", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5363, 0 );
       }
       goto label$4356;
       label$4731:;
       if( TMP$1994$6 != 190ull ) goto label$4733;
       label$4734:;
       {
-       FBSTRING* vr$5366 = fb_StrAllocTempDescZEx( (uint8*)"standard-2", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5366, 0 );
+       FBSTRING* vr$5364 = fb_StrAllocTempDescZEx( (uint8*)"standard-2", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5364, 0 );
       }
       goto label$4356;
       label$4733:;
       if( TMP$1994$6 != 191ull ) goto label$4735;
       label$4736:;
       {
-       FBSTRING* vr$5367 = fb_StrAllocTempDescZEx( (uint8*)"start", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5367, 0 );
+       FBSTRING* vr$5365 = fb_StrAllocTempDescZEx( (uint8*)"start", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5365, 0 );
       }
       goto label$4356;
       label$4735:;
       if( TMP$1994$6 != 192ull ) goto label$4737;
       label$4738:;
       {
-       FBSTRING* vr$5368 = fb_StrAllocTempDescZEx( (uint8*)"startswith", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5368, 0 );
+       FBSTRING* vr$5366 = fb_StrAllocTempDescZEx( (uint8*)"startswith", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5366, 0 );
       }
       goto label$4356;
       label$4737:;
       if( TMP$1994$6 != 193ull ) goto label$4739;
       label$4740:;
       {
-       FBSTRING* vr$5369 = fb_StrAllocTempDescZEx( (uint8*)"static", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5369, 0 );
+       FBSTRING* vr$5367 = fb_StrAllocTempDescZEx( (uint8*)"static", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5367, 0 );
       }
       goto label$4356;
       label$4739:;
       if( TMP$1994$6 != 194ull ) goto label$4741;
       label$4742:;
       {
-       FBSTRING* vr$5370 = fb_StrAllocTempDescZEx( (uint8*)"statistics", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5370, 0 );
+       FBSTRING* vr$5368 = fb_StrAllocTempDescZEx( (uint8*)"statistics", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5368, 0 );
       }
       goto label$4356;
       label$4741:;
       if( TMP$1994$6 != 195ull ) goto label$4743;
       label$4744:;
       {
-       FBSTRING* vr$5371 = fb_StrAllocTempDescZEx( (uint8*)"status", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5371, 0 );
+       FBSTRING* vr$5369 = fb_StrAllocTempDescZEx( (uint8*)"status", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5369, 0 );
       }
       goto label$4356;
       label$4743:;
       if( TMP$1994$6 != 196ull ) goto label$4745;
       label$4746:;
       {
-       FBSTRING* vr$5372 = fb_StrAllocTempDescZEx( (uint8*)"stdcall", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5372, 0 );
+       FBSTRING* vr$5370 = fb_StrAllocTempDescZEx( (uint8*)"stdcall", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5370, 0 );
       }
       goto label$4356;
       label$4745:;
       if( TMP$1994$6 != 197ull ) goto label$4747;
       label$4748:;
       {
-       FBSTRING* vr$5373 = fb_StrAllocTempDescZEx( (uint8*)"stdout", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5373, 0 );
+       FBSTRING* vr$5371 = fb_StrAllocTempDescZEx( (uint8*)"stdout", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5371, 0 );
       }
       goto label$4356;
       label$4747:;
       if( TMP$1994$6 != 198ull ) goto label$4749;
       label$4750:;
       {
-       FBSTRING* vr$5374 = fb_StrAllocTempDescZEx( (uint8*)"step", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5374, 0 );
+       FBSTRING* vr$5372 = fb_StrAllocTempDescZEx( (uint8*)"step", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5372, 0 );
       }
       goto label$4356;
       label$4749:;
       if( TMP$1994$6 != 199ull ) goto label$4751;
       label$4752:;
       {
-       FBSTRING* vr$5375 = fb_StrAllocTempDescZEx( (uint8*)"stick", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5375, 0 );
+       FBSTRING* vr$5373 = fb_StrAllocTempDescZEx( (uint8*)"stick", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5373, 0 );
       }
       goto label$4356;
       label$4751:;
       if( TMP$1994$6 != 200ull ) goto label$4753;
       label$4754:;
       {
-       FBSTRING* vr$5376 = fb_StrAllocTempDescZEx( (uint8*)"stof", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5376, 0 );
+       FBSTRING* vr$5374 = fb_StrAllocTempDescZEx( (uint8*)"stof", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5374, 0 );
       }
       goto label$4356;
       label$4753:;
       if( TMP$1994$6 != 201ull ) goto label$4755;
       label$4756:;
       {
-       FBSTRING* vr$5377 = fb_StrAllocTempDescZEx( (uint8*)"stoi", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5377, 0 );
+       FBSTRING* vr$5375 = fb_StrAllocTempDescZEx( (uint8*)"stoi", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5375, 0 );
       }
       goto label$4356;
       label$4755:;
       if( TMP$1994$6 != 202ull ) goto label$4757;
       label$4758:;
       {
-       FBSTRING* vr$5378 = fb_StrAllocTempDescZEx( (uint8*)"stop", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5378, 0 );
+       FBSTRING* vr$5376 = fb_StrAllocTempDescZEx( (uint8*)"stop", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5376, 0 );
       }
       goto label$4356;
       label$4757:;
       if( TMP$1994$6 != 203ull ) goto label$4759;
       label$4760:;
       {
-       FBSTRING* vr$5379 = fb_StrAllocTempDescZEx( (uint8*)"str", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5379, 0 );
+       FBSTRING* vr$5377 = fb_StrAllocTempDescZEx( (uint8*)"str", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5377, 0 );
       }
       goto label$4356;
       label$4759:;
       if( TMP$1994$6 != 205ull ) goto label$4761;
       label$4762:;
       {
-       FBSTRING* vr$5380 = fb_StrAllocTempDescZEx( (uint8*)"strcmp", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5380, 0 );
+       FBSTRING* vr$5378 = fb_StrAllocTempDescZEx( (uint8*)"strcmp", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5378, 0 );
       }
       goto label$4356;
       label$4761:;
       if( TMP$1994$6 != 206ull ) goto label$4763;
       label$4764:;
       {
-       FBSTRING* vr$5381 = fb_StrAllocTempDescZEx( (uint8*)"strength", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5381, 0 );
+       FBSTRING* vr$5379 = fb_StrAllocTempDescZEx( (uint8*)"strength", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5379, 0 );
       }
       goto label$4356;
       label$4763:;
       if( TMP$1994$6 != 207ull ) goto label$4765;
       label$4766:;
       {
-       FBSTRING* vr$5382 = fb_StrAllocTempDescZEx( (uint8*)"strig", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5382, 0 );
+       FBSTRING* vr$5380 = fb_StrAllocTempDescZEx( (uint8*)"strig", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5380, 0 );
       }
       goto label$4356;
       label$4765:;
       if( TMP$1994$6 != 208ull ) goto label$4767;
       label$4768:;
       {
-       FBSTRING* vr$5383 = fb_StrAllocTempDescZEx( (uint8*)"string", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5383, 0 );
+       FBSTRING* vr$5381 = fb_StrAllocTempDescZEx( (uint8*)"string", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5381, 0 );
       }
       goto label$4356;
       label$4767:;
       if( TMP$1994$6 != 209ull ) goto label$4769;
       label$4770:;
       {
-       FBSTRING* vr$5384 = fb_StrAllocTempDescZEx( (uint8*)"strptr", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5384, 0 );
+       FBSTRING* vr$5382 = fb_StrAllocTempDescZEx( (uint8*)"strptr", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5382, 0 );
       }
       goto label$4356;
       label$4769:;
       if( TMP$1994$6 != 210ull ) goto label$4771;
       label$4772:;
       {
-       FBSTRING* vr$5385 = fb_StrAllocTempDescZEx( (uint8*)"strlen", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5385, 0 );
+       FBSTRING* vr$5383 = fb_StrAllocTempDescZEx( (uint8*)"strlen", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5383, 0 );
       }
       goto label$4356;
       label$4771:;
       if( TMP$1994$6 != 211ull ) goto label$4773;
       label$4774:;
       {
-       FBSTRING* vr$5386 = fb_StrAllocTempDescZEx( (uint8*)"strlwr", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5386, 0 );
+       FBSTRING* vr$5384 = fb_StrAllocTempDescZEx( (uint8*)"strlwr", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5384, 0 );
       }
       goto label$4356;
       label$4773:;
       if( TMP$1994$6 != 212ull ) goto label$4775;
       label$4776:;
       {
-       FBSTRING* vr$5387 = fb_StrAllocTempDescZEx( (uint8*)"structure", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5387, 0 );
+       FBSTRING* vr$5385 = fb_StrAllocTempDescZEx( (uint8*)"structure", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5385, 0 );
       }
       goto label$4356;
       label$4775:;
       if( TMP$1994$6 != 213ull ) goto label$4777;
       label$4778:;
       {
-       FBSTRING* vr$5388 = fb_StrAllocTempDescZEx( (uint8*)"strupr", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5388, 0 );
+       FBSTRING* vr$5386 = fb_StrAllocTempDescZEx( (uint8*)"strupr", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5386, 0 );
       }
       goto label$4356;
       label$4777:;
       if( TMP$1994$6 != 214ull ) goto label$4779;
       label$4780:;
       {
-       FBSTRING* vr$5389 = fb_StrAllocTempDescZEx( (uint8*)"sturm", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5389, 0 );
+       FBSTRING* vr$5387 = fb_StrAllocTempDescZEx( (uint8*)"sturm", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5387, 0 );
       }
       goto label$4356;
       label$4779:;
       if( TMP$1994$6 != 215ull ) goto label$4781;
       label$4782:;
       {
-       FBSTRING* vr$5390 = fb_StrAllocTempDescZEx( (uint8*)"subarray", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5390, 0 );
+       FBSTRING* vr$5388 = fb_StrAllocTempDescZEx( (uint8*)"subarray", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5388, 0 );
       }
       goto label$4356;
       label$4781:;
       if( TMP$1994$6 != 216ull ) goto label$4783;
       label$4784:;
       {
-       FBSTRING* vr$5391 = fb_StrAllocTempDescZEx( (uint8*)"sub-queue-1", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5391, 0 );
+       FBSTRING* vr$5389 = fb_StrAllocTempDescZEx( (uint8*)"sub-queue-1", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5389, 0 );
       }
       goto label$4356;
       label$4783:;
       if( TMP$1994$6 != 217ull ) goto label$4785;
       label$4786:;
       {
-       FBSTRING* vr$5392 = fb_StrAllocTempDescZEx( (uint8*)"sub-queue-2", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5392, 0 );
+       FBSTRING* vr$5390 = fb_StrAllocTempDescZEx( (uint8*)"sub-queue-2", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5390, 0 );
       }
       goto label$4356;
       label$4785:;
       if( TMP$1994$6 != 218ull ) goto label$4787;
       label$4788:;
       {
-       FBSTRING* vr$5393 = fb_StrAllocTempDescZEx( (uint8*)"sub-queue-3", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5393, 0 );
+       FBSTRING* vr$5391 = fb_StrAllocTempDescZEx( (uint8*)"sub-queue-3", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5391, 0 );
       }
       goto label$4356;
       label$4787:;
       if( TMP$1994$6 != 219ull ) goto label$4789;
       label$4790:;
       {
-       FBSTRING* vr$5394 = fb_StrAllocTempDescZEx( (uint8*)"subroutine", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5394, 0 );
+       FBSTRING* vr$5392 = fb_StrAllocTempDescZEx( (uint8*)"subroutine", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5392, 0 );
       }
       goto label$4356;
       label$4789:;
       if( TMP$1994$6 != 220ull ) goto label$4791;
       label$4792:;
       {
-       FBSTRING* vr$5395 = fb_StrAllocTempDescZEx( (uint8*)"substr", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5395, 0 );
+       FBSTRING* vr$5393 = fb_StrAllocTempDescZEx( (uint8*)"substr", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5393, 0 );
       }
       goto label$4356;
       label$4791:;
       if( TMP$1994$6 != 221ull ) goto label$4793;
       label$4794:;
       {
-       FBSTRING* vr$5396 = fb_StrAllocTempDescZEx( (uint8*)"substring", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5396, 0 );
+       FBSTRING* vr$5394 = fb_StrAllocTempDescZEx( (uint8*)"substring", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5394, 0 );
       }
       goto label$4356;
       label$4793:;
       if( TMP$1994$6 != 222ull ) goto label$4795;
       label$4796:;
       {
-       FBSTRING* vr$5397 = fb_StrAllocTempDescZEx( (uint8*)"substring_mb", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5397, 0 );
+       FBSTRING* vr$5395 = fb_StrAllocTempDescZEx( (uint8*)"substring_mb", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5395, 0 );
       }
       goto label$4356;
       label$4795:;
       if( TMP$1994$6 != 223ull ) goto label$4797;
       label$4798:;
       {
-       FBSTRING* vr$5398 = fb_StrAllocTempDescZEx( (uint8*)"subtract", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5398, 0 );
+       FBSTRING* vr$5396 = fb_StrAllocTempDescZEx( (uint8*)"subtract", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5396, 0 );
       }
       goto label$4356;
       label$4797:;
       if( TMP$1994$6 != 224ull ) goto label$4799;
       label$4800:;
       {
-       FBSTRING* vr$5399 = fb_StrAllocTempDescZEx( (uint8*)"sum", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5399, 0 );
+       FBSTRING* vr$5397 = fb_StrAllocTempDescZEx( (uint8*)"sum", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5397, 0 );
       }
       goto label$4356;
       label$4799:;
       if( TMP$1994$6 != 225ull ) goto label$4801;
       label$4802:;
       {
-       FBSTRING* vr$5400 = fb_StrAllocTempDescZEx( (uint8*)"super", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5400, 0 );
+       FBSTRING* vr$5398 = fb_StrAllocTempDescZEx( (uint8*)"super", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5398, 0 );
       }
       goto label$4356;
       label$4801:;
       if( TMP$1994$6 != 226ull ) goto label$4803;
       label$4804:;
       {
-       FBSTRING* vr$5401 = fb_StrAllocTempDescZEx( (uint8*)"superellipsoid", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5401, 0 );
+       FBSTRING* vr$5399 = fb_StrAllocTempDescZEx( (uint8*)"superellipsoid", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5399, 0 );
       }
       goto label$4356;
       label$4803:;
       if( TMP$1994$6 != 227ull ) goto label$4805;
       label$4806:;
       {
-       FBSTRING* vr$5402 = fb_StrAllocTempDescZEx( (uint8*)"superp", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5402, 0 );
+       FBSTRING* vr$5400 = fb_StrAllocTempDescZEx( (uint8*)"superp", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5400, 0 );
       }
       goto label$4356;
       label$4805:;
       if( TMP$1994$6 != 228ull ) goto label$4807;
       label$4808:;
       {
-       FBSTRING* vr$5403 = fb_StrAllocTempDescZEx( (uint8*)"suppress", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5403, 0 );
+       FBSTRING* vr$5401 = fb_StrAllocTempDescZEx( (uint8*)"suppress", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5401, 0 );
       }
       goto label$4356;
       label$4807:;
       if( TMP$1994$6 != 229ull ) goto label$4809;
       label$4810:;
       {
-       FBSTRING* vr$5404 = fb_StrAllocTempDescZEx( (uint8*)"surfacearea", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5404, 0 );
+       FBSTRING* vr$5402 = fb_StrAllocTempDescZEx( (uint8*)"surfacearea", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5402, 0 );
       }
       goto label$4356;
       label$4809:;
       if( TMP$1994$6 != 230ull ) goto label$4811;
       label$4812:;
       {
-       FBSTRING* vr$5405 = fb_StrAllocTempDescZEx( (uint8*)"swap", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5405, 0 );
+       FBSTRING* vr$5403 = fb_StrAllocTempDescZEx( (uint8*)"swap", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5403, 0 );
       }
       goto label$4356;
       label$4811:;
       if( TMP$1994$6 != 231ull ) goto label$4813;
       label$4814:;
       {
-       FBSTRING* vr$5406 = fb_StrAllocTempDescZEx( (uint8*)"switch", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5406, 0 );
+       FBSTRING* vr$5404 = fb_StrAllocTempDescZEx( (uint8*)"switch", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5404, 0 );
       }
       goto label$4356;
       label$4813:;
       if( TMP$1994$6 != 232ull ) goto label$4815;
       label$4816:;
       {
-       FBSTRING* vr$5407 = fb_StrAllocTempDescZEx( (uint8*)"symbolic", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5407, 0 );
+       FBSTRING* vr$5405 = fb_StrAllocTempDescZEx( (uint8*)"symbolic", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5405, 0 );
       }
       goto label$4356;
       label$4815:;
       if( TMP$1994$6 != 233ull ) goto label$4817;
       label$4818:;
       {
-       FBSTRING* vr$5408 = fb_StrAllocTempDescZEx( (uint8*)"sync", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5408, 0 );
+       FBSTRING* vr$5406 = fb_StrAllocTempDescZEx( (uint8*)"sync", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5406, 0 );
       }
       goto label$4356;
       label$4817:;
       if( TMP$1994$6 != 234ull ) goto label$4819;
       label$4820:;
       {
-       FBSTRING* vr$5409 = fb_StrAllocTempDescZEx( (uint8*)"synchronized", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5409, 0 );
+       FBSTRING* vr$5407 = fb_StrAllocTempDescZEx( (uint8*)"synchronized", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5407, 0 );
       }
       goto label$4356;
       label$4819:;
       if( TMP$1994$6 != 235ull ) goto label$4821;
       label$4822:;
       {
-       FBSTRING* vr$5410 = fb_StrAllocTempDescZEx( (uint8*)"sys", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5410, 0 );
+       FBSTRING* vr$5408 = fb_StrAllocTempDescZEx( (uint8*)"sys", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5408, 0 );
       }
       goto label$4356;
       label$4821:;
       if( TMP$1994$6 != 236ull ) goto label$4823;
       label$4824:;
       {
-       FBSTRING* vr$5411 = fb_StrAllocTempDescZEx( (uint8*)"system", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5411, 0 );
+       FBSTRING* vr$5409 = fb_StrAllocTempDescZEx( (uint8*)"system", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5409, 0 );
       }
       goto label$4356;
       label$4823:;
       if( TMP$1994$6 != 237ull ) goto label$4825;
       label$4826:;
       {
-       FBSTRING* vr$5412 = fb_StrAllocTempDescZEx( (uint8*)"t", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5412, 0 );
+       FBSTRING* vr$5410 = fb_StrAllocTempDescZEx( (uint8*)"t", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5410, 0 );
       }
       goto label$4356;
       label$4825:;
       if( TMP$1994$6 != 238ull ) goto label$4827;
       label$4828:;
       {
-       FBSTRING* vr$5413 = fb_StrAllocTempDescZEx( (uint8*)"tab", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5413, 0 );
+       FBSTRING* vr$5411 = fb_StrAllocTempDescZEx( (uint8*)"tab", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5411, 0 );
       }
       goto label$4356;
       label$4827:;
       if( TMP$1994$6 != 239ull ) goto label$4829;
       label$4830:;
       {
-       FBSTRING* vr$5414 = fb_StrAllocTempDescZEx( (uint8*)"table", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5414, 0 );
+       FBSTRING* vr$5412 = fb_StrAllocTempDescZEx( (uint8*)"table", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5412, 0 );
       }
       goto label$4356;
       label$4829:;
       if( TMP$1994$6 != 240ull ) goto label$4831;
       label$4832:;
       {
-       FBSTRING* vr$5415 = fb_StrAllocTempDescZEx( (uint8*)"tally", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5415, 0 );
+       FBSTRING* vr$5413 = fb_StrAllocTempDescZEx( (uint8*)"tally", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5413, 0 );
       }
       goto label$4356;
       label$4831:;
       if( TMP$1994$6 != 241ull ) goto label$4833;
       label$4834:;
       {
-       FBSTRING* vr$5416 = fb_StrAllocTempDescZEx( (uint8*)"tallying", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5416, 0 );
+       FBSTRING* vr$5414 = fb_StrAllocTempDescZEx( (uint8*)"tallying", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5414, 0 );
       }
       goto label$4356;
       label$4833:;
       if( TMP$1994$6 != 242ull ) goto label$4835;
       label$4836:;
       {
-       FBSTRING* vr$5417 = fb_StrAllocTempDescZEx( (uint8*)"tan", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5417, 0 );
+       FBSTRING* vr$5415 = fb_StrAllocTempDescZEx( (uint8*)"tan", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5415, 0 );
       }
       goto label$4356;
       label$4835:;
       if( TMP$1994$6 != 243ull ) goto label$4837;
       label$4838:;
       {
-       FBSTRING* vr$5418 = fb_StrAllocTempDescZEx( (uint8*)"tanh", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5418, 0 );
+       FBSTRING* vr$5416 = fb_StrAllocTempDescZEx( (uint8*)"tanh", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5416, 0 );
       }
       goto label$4356;
       label$4837:;
       if( TMP$1994$6 != 244ull ) goto label$4839;
       label$4840:;
       {
-       FBSTRING* vr$5419 = fb_StrAllocTempDescZEx( (uint8*)"tape", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5419, 0 );
+       FBSTRING* vr$5417 = fb_StrAllocTempDescZEx( (uint8*)"tape", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5417, 0 );
       }
       goto label$4356;
       label$4839:;
       if( TMP$1994$6 != 245ull ) goto label$4841;
       label$4842:;
       {
-       FBSTRING* vr$5420 = fb_StrAllocTempDescZEx( (uint8*)"target", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5420, 0 );
+       FBSTRING* vr$5418 = fb_StrAllocTempDescZEx( (uint8*)"target", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5418, 0 );
       }
       goto label$4356;
       label$4841:;
       if( TMP$1994$6 != 246ull ) goto label$4843;
       label$4844:;
       {
-       FBSTRING* vr$5421 = fb_StrAllocTempDescZEx( (uint8*)"template", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5421, 0 );
+       FBSTRING* vr$5419 = fb_StrAllocTempDescZEx( (uint8*)"template", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5419, 0 );
       }
       goto label$4356;
       label$4843:;
       if( TMP$1994$6 != 247ull ) goto label$4845;
       label$4846:;
       {
-       FBSTRING* vr$5422 = fb_StrAllocTempDescZEx( (uint8*)"term", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5422, 0 );
+       FBSTRING* vr$5420 = fb_StrAllocTempDescZEx( (uint8*)"term", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5420, 0 );
       }
       goto label$4356;
       label$4845:;
       if( TMP$1994$6 != 248ull ) goto label$4847;
       label$4848:;
       {
-       FBSTRING* vr$5423 = fb_StrAllocTempDescZEx( (uint8*)"terminal", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5423, 0 );
+       FBSTRING* vr$5421 = fb_StrAllocTempDescZEx( (uint8*)"terminal", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5421, 0 );
       }
       goto label$4356;
       label$4847:;
       if( TMP$1994$6 != 249ull ) goto label$4849;
       label$4850:;
       {
-       FBSTRING* vr$5424 = fb_StrAllocTempDescZEx( (uint8*)"terminate", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5424, 0 );
+       FBSTRING* vr$5422 = fb_StrAllocTempDescZEx( (uint8*)"terminate", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5422, 0 );
       }
       goto label$4356;
       label$4849:;
       if( TMP$1994$6 != 250ull ) goto label$4851;
       label$4852:;
       {
-       FBSTRING* vr$5425 = fb_StrAllocTempDescZEx( (uint8*)"test", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5425, 0 );
+       FBSTRING* vr$5423 = fb_StrAllocTempDescZEx( (uint8*)"test", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5423, 0 );
       }
       goto label$4356;
       label$4851:;
       if( TMP$1994$6 != 251ull ) goto label$4853;
       label$4854:;
       {
-       FBSTRING* vr$5426 = fb_StrAllocTempDescZEx( (uint8*)"text", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5426, 0 );
+       FBSTRING* vr$5424 = fb_StrAllocTempDescZEx( (uint8*)"text", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5424, 0 );
       }
       goto label$4356;
       label$4853:;
       if( TMP$1994$6 != 252ull ) goto label$4855;
       label$4856:;
       {
-       FBSTRING* vr$5427 = fb_StrAllocTempDescZEx( (uint8*)"texture", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5427, 0 );
+       FBSTRING* vr$5425 = fb_StrAllocTempDescZEx( (uint8*)"texture", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5425, 0 );
       }
       goto label$4356;
       label$4855:;
       if( TMP$1994$6 != 253ull ) goto label$4857;
       label$4858:;
       {
-       FBSTRING* vr$5428 = fb_StrAllocTempDescZEx( (uint8*)"texture3d", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5428, 0 );
+       FBSTRING* vr$5426 = fb_StrAllocTempDescZEx( (uint8*)"texture3d", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5426, 0 );
       }
       goto label$4356;
       label$4857:;
       if( TMP$1994$6 != 254ull ) goto label$4859;
       label$4860:;
       {
-       FBSTRING* vr$5429 = fb_StrAllocTempDescZEx( (uint8*)"texture_list", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5429, 0 );
+       FBSTRING* vr$5427 = fb_StrAllocTempDescZEx( (uint8*)"texture_list", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5427, 0 );
       }
       goto label$4356;
       label$4859:;
       if( TMP$1994$6 != 255ull ) goto label$4861;
       label$4862:;
       {
-       FBSTRING* vr$5430 = fb_StrAllocTempDescZEx( (uint8*)"texture_map", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5430, 0 );
+       FBSTRING* vr$5428 = fb_StrAllocTempDescZEx( (uint8*)"texture_map", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5428, 0 );
       }
       label$4861:;
       label$4356:;
@@ -20678,968 +20674,968 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       goto label$4865;
       label$4866:;
       {
-       FBSTRING* vr$5433 = fb_StrAllocTempDescZEx( (uint8*)"tga", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5433, 0 );
+       FBSTRING* vr$5431 = fb_StrAllocTempDescZEx( (uint8*)"tga", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5431, 0 );
       }
       goto label$4864;
       label$4867:;
       {
-       FBSTRING* vr$5434 = fb_StrAllocTempDescZEx( (uint8*)"than", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5434, 0 );
+       FBSTRING* vr$5432 = fb_StrAllocTempDescZEx( (uint8*)"than", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5432, 0 );
       }
       goto label$4864;
       label$4868:;
       {
-       FBSTRING* vr$5435 = fb_StrAllocTempDescZEx( (uint8*)"then", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5435, 0 );
+       FBSTRING* vr$5433 = fb_StrAllocTempDescZEx( (uint8*)"then", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5433, 0 );
       }
       goto label$4864;
       label$4869:;
       {
-       FBSTRING* vr$5436 = fb_StrAllocTempDescZEx( (uint8*)"thickness", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5436, 0 );
+       FBSTRING* vr$5434 = fb_StrAllocTempDescZEx( (uint8*)"thickness", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5434, 0 );
       }
       goto label$4864;
       label$4870:;
       {
-       FBSTRING* vr$5437 = fb_StrAllocTempDescZEx( (uint8*)"this", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5437, 0 );
+       FBSTRING* vr$5435 = fb_StrAllocTempDescZEx( (uint8*)"this", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5435, 0 );
       }
       goto label$4864;
       label$4871:;
       {
-       FBSTRING* vr$5438 = fb_StrAllocTempDescZEx( (uint8*)"threadvar", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5438, 0 );
+       FBSTRING* vr$5436 = fb_StrAllocTempDescZEx( (uint8*)"threadvar", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5436, 0 );
       }
       goto label$4864;
       label$4872:;
       {
-       FBSTRING* vr$5439 = fb_StrAllocTempDescZEx( (uint8*)"threshold", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5439, 0 );
+       FBSTRING* vr$5437 = fb_StrAllocTempDescZEx( (uint8*)"threshold", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5437, 0 );
       }
       goto label$4864;
       label$4873:;
       {
-       FBSTRING* vr$5440 = fb_StrAllocTempDescZEx( (uint8*)"through", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5440, 0 );
+       FBSTRING* vr$5438 = fb_StrAllocTempDescZEx( (uint8*)"through", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5438, 0 );
       }
       goto label$4864;
       label$4874:;
       {
-       FBSTRING* vr$5441 = fb_StrAllocTempDescZEx( (uint8*)"thru", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5441, 0 );
+       FBSTRING* vr$5439 = fb_StrAllocTempDescZEx( (uint8*)"thru", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5439, 0 );
       }
       goto label$4864;
       label$4875:;
       {
-       FBSTRING* vr$5442 = fb_StrAllocTempDescZEx( (uint8*)"tiff", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5442, 0 );
+       FBSTRING* vr$5440 = fb_StrAllocTempDescZEx( (uint8*)"tiff", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5440, 0 );
       }
       goto label$4864;
       label$4876:;
       {
-       FBSTRING* vr$5443 = fb_StrAllocTempDescZEx( (uint8*)"tightness", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5443, 0 );
+       FBSTRING* vr$5441 = fb_StrAllocTempDescZEx( (uint8*)"tightness", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5441, 0 );
       }
       goto label$4864;
       label$4877:;
       {
-       FBSTRING* vr$5444 = fb_StrAllocTempDescZEx( (uint8*)"tile2", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5444, 0 );
+       FBSTRING* vr$5442 = fb_StrAllocTempDescZEx( (uint8*)"tile2", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5442, 0 );
       }
       goto label$4864;
       label$4878:;
       {
-       FBSTRING* vr$5445 = fb_StrAllocTempDescZEx( (uint8*)"tiles", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5445, 0 );
+       FBSTRING* vr$5443 = fb_StrAllocTempDescZEx( (uint8*)"tiles", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5443, 0 );
       }
       goto label$4864;
       label$4879:;
       {
-       FBSTRING* vr$5446 = fb_StrAllocTempDescZEx( (uint8*)"time", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5446, 0 );
+       FBSTRING* vr$5444 = fb_StrAllocTempDescZEx( (uint8*)"time", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5444, 0 );
       }
       goto label$4864;
       label$4880:;
       {
-       FBSTRING* vr$5447 = fb_StrAllocTempDescZEx( (uint8*)"timer", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5447, 0 );
+       FBSTRING* vr$5445 = fb_StrAllocTempDescZEx( (uint8*)"timer", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5445, 0 );
       }
       goto label$4864;
       label$4881:;
       {
-       FBSTRING* vr$5448 = fb_StrAllocTempDescZEx( (uint8*)"times", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5448, 0 );
+       FBSTRING* vr$5446 = fb_StrAllocTempDescZEx( (uint8*)"times", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5446, 0 );
       }
       goto label$4864;
       label$4882:;
       {
-       FBSTRING* vr$5449 = fb_StrAllocTempDescZEx( (uint8*)"timestamp", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5449, 0 );
+       FBSTRING* vr$5447 = fb_StrAllocTempDescZEx( (uint8*)"timestamp", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5447, 0 );
       }
       goto label$4864;
       label$4883:;
       {
-       FBSTRING* vr$5450 = fb_StrAllocTempDescZEx( (uint8*)"timesten", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5450, 0 );
+       FBSTRING* vr$5448 = fb_StrAllocTempDescZEx( (uint8*)"timesten", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5448, 0 );
       }
       goto label$4864;
       label$4884:;
       {
-       FBSTRING* vr$5451 = fb_StrAllocTempDescZEx( (uint8*)"title", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5451, 0 );
+       FBSTRING* vr$5449 = fb_StrAllocTempDescZEx( (uint8*)"title", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5449, 0 );
       }
       goto label$4864;
       label$4885:;
       {
-       FBSTRING* vr$5452 = fb_StrAllocTempDescZEx( (uint8*)"to", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5452, 0 );
+       FBSTRING* vr$5450 = fb_StrAllocTempDescZEx( (uint8*)"to", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5450, 0 );
       }
       goto label$4864;
       label$4886:;
       {
-       FBSTRING* vr$5453 = fb_StrAllocTempDescZEx( (uint8*)"tolerance", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5453, 0 );
+       FBSTRING* vr$5451 = fb_StrAllocTempDescZEx( (uint8*)"tolerance", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5451, 0 );
       }
       goto label$4864;
       label$4887:;
       {
-       FBSTRING* vr$5454 = fb_StrAllocTempDescZEx( (uint8*)"top", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5454, 0 );
+       FBSTRING* vr$5452 = fb_StrAllocTempDescZEx( (uint8*)"top", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5452, 0 );
       }
       goto label$4864;
       label$4888:;
       {
-       FBSTRING* vr$5455 = fb_StrAllocTempDescZEx( (uint8*)"toroidal", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5455, 0 );
+       FBSTRING* vr$5453 = fb_StrAllocTempDescZEx( (uint8*)"toroidal", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5453, 0 );
       }
       goto label$4864;
       label$4889:;
       {
-       FBSTRING* vr$5456 = fb_StrAllocTempDescZEx( (uint8*)"torus", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5456, 0 );
+       FBSTRING* vr$5454 = fb_StrAllocTempDescZEx( (uint8*)"torus", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5454, 0 );
       }
       goto label$4864;
       label$4890:;
       {
-       FBSTRING* vr$5457 = fb_StrAllocTempDescZEx( (uint8*)"trace", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5457, 0 );
+       FBSTRING* vr$5455 = fb_StrAllocTempDescZEx( (uint8*)"trace", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5455, 0 );
       }
       goto label$4864;
       label$4891:;
       {
-       FBSTRING* vr$5458 = fb_StrAllocTempDescZEx( (uint8*)"trailing", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5458, 0 );
+       FBSTRING* vr$5456 = fb_StrAllocTempDescZEx( (uint8*)"trailing", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5456, 0 );
       }
       goto label$4864;
       label$4892:;
       {
-       FBSTRING* vr$5459 = fb_StrAllocTempDescZEx( (uint8*)"transform", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5459, 0 );
+       FBSTRING* vr$5457 = fb_StrAllocTempDescZEx( (uint8*)"transform", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5457, 0 );
       }
       goto label$4864;
       label$4893:;
       {
-       FBSTRING* vr$5460 = fb_StrAllocTempDescZEx( (uint8*)"transformc", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5460, 0 );
+       FBSTRING* vr$5458 = fb_StrAllocTempDescZEx( (uint8*)"transformc", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5458, 0 );
       }
       goto label$4864;
       label$4894:;
       {
-       FBSTRING* vr$5461 = fb_StrAllocTempDescZEx( (uint8*)"transformu", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5461, 0 );
+       FBSTRING* vr$5459 = fb_StrAllocTempDescZEx( (uint8*)"transformu", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5459, 0 );
       }
       goto label$4864;
       label$4895:;
       {
-       FBSTRING* vr$5462 = fb_StrAllocTempDescZEx( (uint8*)"translate", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5462, 0 );
+       FBSTRING* vr$5460 = fb_StrAllocTempDescZEx( (uint8*)"translate", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5460, 0 );
       }
       goto label$4864;
       label$4896:;
       {
-       FBSTRING* vr$5463 = fb_StrAllocTempDescZEx( (uint8*)"translucent", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5463, 0 );
+       FBSTRING* vr$5461 = fb_StrAllocTempDescZEx( (uint8*)"translucent", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5461, 0 );
       }
       goto label$4864;
       label$4897:;
       {
-       FBSTRING* vr$5464 = fb_StrAllocTempDescZEx( (uint8*)"transmit", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5464, 0 );
+       FBSTRING* vr$5462 = fb_StrAllocTempDescZEx( (uint8*)"transmit", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5462, 0 );
       }
       goto label$4864;
       label$4898:;
       {
-       FBSTRING* vr$5465 = fb_StrAllocTempDescZEx( (uint8*)"transparent", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5465, 0 );
+       FBSTRING* vr$5463 = fb_StrAllocTempDescZEx( (uint8*)"transparent", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5463, 0 );
       }
       goto label$4864;
       label$4899:;
       {
-       FBSTRING* vr$5466 = fb_StrAllocTempDescZEx( (uint8*)"transpose", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5466, 0 );
+       FBSTRING* vr$5464 = fb_StrAllocTempDescZEx( (uint8*)"transpose", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5464, 0 );
       }
       goto label$4864;
       label$4900:;
       {
-       FBSTRING* vr$5467 = fb_StrAllocTempDescZEx( (uint8*)"triangle", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5467, 0 );
+       FBSTRING* vr$5465 = fb_StrAllocTempDescZEx( (uint8*)"triangle", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5465, 0 );
       }
       goto label$4864;
       label$4901:;
       {
-       FBSTRING* vr$5468 = fb_StrAllocTempDescZEx( (uint8*)"triangle_wave", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5468, 0 );
+       FBSTRING* vr$5466 = fb_StrAllocTempDescZEx( (uint8*)"triangle_wave", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5466, 0 );
       }
       goto label$4864;
       label$4902:;
       {
-       FBSTRING* vr$5469 = fb_StrAllocTempDescZEx( (uint8*)"trim", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5469, 0 );
+       FBSTRING* vr$5467 = fb_StrAllocTempDescZEx( (uint8*)"trim", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5467, 0 );
       }
       goto label$4864;
       label$4903:;
       {
-       FBSTRING* vr$5470 = fb_StrAllocTempDescZEx( (uint8*)"trim_b", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5470, 0 );
+       FBSTRING* vr$5468 = fb_StrAllocTempDescZEx( (uint8*)"trim_b", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5468, 0 );
       }
       goto label$4864;
       label$4904:;
       {
-       FBSTRING* vr$5471 = fb_StrAllocTempDescZEx( (uint8*)"trim_mb", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5471, 0 );
+       FBSTRING* vr$5469 = fb_StrAllocTempDescZEx( (uint8*)"trim_mb", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5469, 0 );
       }
       goto label$4864;
       label$4905:;
       {
-       FBSTRING* vr$5472 = fb_StrAllocTempDescZEx( (uint8*)"troff", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5472, 0 );
+       FBSTRING* vr$5470 = fb_StrAllocTempDescZEx( (uint8*)"troff", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5470, 0 );
       }
       goto label$4864;
       label$4906:;
       {
-       FBSTRING* vr$5473 = fb_StrAllocTempDescZEx( (uint8*)"tron", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5473, 0 );
+       FBSTRING* vr$5471 = fb_StrAllocTempDescZEx( (uint8*)"tron", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5471, 0 );
       }
       goto label$4864;
       label$4907:;
       {
-       FBSTRING* vr$5474 = fb_StrAllocTempDescZEx( (uint8*)"true", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5474, 0 );
+       FBSTRING* vr$5472 = fb_StrAllocTempDescZEx( (uint8*)"true", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5472, 0 );
       }
       goto label$4864;
       label$4908:;
       {
-       FBSTRING* vr$5475 = fb_StrAllocTempDescZEx( (uint8*)"trunc", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5475, 0 );
+       FBSTRING* vr$5473 = fb_StrAllocTempDescZEx( (uint8*)"trunc", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5473, 0 );
       }
       goto label$4864;
       label$4909:;
       {
-       FBSTRING* vr$5476 = fb_StrAllocTempDescZEx( (uint8*)"try", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5476, 0 );
+       FBSTRING* vr$5474 = fb_StrAllocTempDescZEx( (uint8*)"try", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5474, 0 );
       }
       goto label$4864;
       label$4910:;
       {
-       FBSTRING* vr$5477 = fb_StrAllocTempDescZEx( (uint8*)"ttf", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5477, 0 );
+       FBSTRING* vr$5475 = fb_StrAllocTempDescZEx( (uint8*)"ttf", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5475, 0 );
       }
       goto label$4864;
       label$4911:;
       {
-       FBSTRING* vr$5478 = fb_StrAllocTempDescZEx( (uint8*)"turb_depth", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5478, 0 );
+       FBSTRING* vr$5476 = fb_StrAllocTempDescZEx( (uint8*)"turb_depth", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5476, 0 );
       }
       goto label$4864;
       label$4912:;
       {
-       FBSTRING* vr$5479 = fb_StrAllocTempDescZEx( (uint8*)"turbulence", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5479, 0 );
+       FBSTRING* vr$5477 = fb_StrAllocTempDescZEx( (uint8*)"turbulence", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5477, 0 );
       }
       goto label$4864;
       label$4913:;
       {
-       FBSTRING* vr$5480 = fb_StrAllocTempDescZEx( (uint8*)"type", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5480, 0 );
+       FBSTRING* vr$5478 = fb_StrAllocTempDescZEx( (uint8*)"type", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5478, 0 );
       }
       goto label$4864;
       label$4914:;
       {
-       FBSTRING* vr$5481 = fb_StrAllocTempDescZEx( (uint8*)"typedef", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5481, 0 );
+       FBSTRING* vr$5479 = fb_StrAllocTempDescZEx( (uint8*)"typedef", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5479, 0 );
       }
       goto label$4864;
       label$4915:;
       {
-       FBSTRING* vr$5482 = fb_StrAllocTempDescZEx( (uint8*)"u", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5482, 0 );
+       FBSTRING* vr$5480 = fb_StrAllocTempDescZEx( (uint8*)"u", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5480, 0 );
       }
       goto label$4864;
       label$4916:;
       {
-       FBSTRING* vr$5483 = fb_StrAllocTempDescZEx( (uint8*)"uimage1D", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5483, 0 );
+       FBSTRING* vr$5481 = fb_StrAllocTempDescZEx( (uint8*)"uimage1D", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5481, 0 );
       }
       goto label$4864;
       label$4917:;
       {
-       FBSTRING* vr$5484 = fb_StrAllocTempDescZEx( (uint8*)"uimage1DArray", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5484, 0 );
+       FBSTRING* vr$5482 = fb_StrAllocTempDescZEx( (uint8*)"uimage1DArray", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5482, 0 );
       }
       goto label$4864;
       label$4918:;
       {
-       FBSTRING* vr$5485 = fb_StrAllocTempDescZEx( (uint8*)"uimage2D", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5485, 0 );
+       FBSTRING* vr$5483 = fb_StrAllocTempDescZEx( (uint8*)"uimage2D", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5483, 0 );
       }
       goto label$4864;
       label$4919:;
       {
-       FBSTRING* vr$5486 = fb_StrAllocTempDescZEx( (uint8*)"uimage2DArray", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5486, 0 );
+       FBSTRING* vr$5484 = fb_StrAllocTempDescZEx( (uint8*)"uimage2DArray", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5484, 0 );
       }
       goto label$4864;
       label$4920:;
       {
-       FBSTRING* vr$5487 = fb_StrAllocTempDescZEx( (uint8*)"uimage3D", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5487, 0 );
+       FBSTRING* vr$5485 = fb_StrAllocTempDescZEx( (uint8*)"uimage3D", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5485, 0 );
       }
       goto label$4864;
       label$4921:;
       {
-       FBSTRING* vr$5488 = fb_StrAllocTempDescZEx( (uint8*)"uimageBuffer", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5488, 0 );
+       FBSTRING* vr$5486 = fb_StrAllocTempDescZEx( (uint8*)"uimageBuffer", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5486, 0 );
       }
       goto label$4864;
       label$4922:;
       {
-       FBSTRING* vr$5489 = fb_StrAllocTempDescZEx( (uint8*)"uimageCube", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5489, 0 );
+       FBSTRING* vr$5487 = fb_StrAllocTempDescZEx( (uint8*)"uimageCube", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5487, 0 );
       }
       goto label$4864;
       label$4923:;
       {
-       FBSTRING* vr$5490 = fb_StrAllocTempDescZEx( (uint8*)"uint", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5490, 0 );
+       FBSTRING* vr$5488 = fb_StrAllocTempDescZEx( (uint8*)"uint", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5488, 0 );
       }
       goto label$4864;
       label$4924:;
       {
-       FBSTRING* vr$5491 = fb_StrAllocTempDescZEx( (uint8*)"ultra_wide_angle", 16ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5491, 0 );
+       FBSTRING* vr$5489 = fb_StrAllocTempDescZEx( (uint8*)"ultra_wide_angle", 16ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5489, 0 );
       }
       goto label$4864;
       label$4925:;
       {
-       FBSTRING* vr$5492 = fb_StrAllocTempDescZEx( (uint8*)"undef", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5492, 0 );
+       FBSTRING* vr$5490 = fb_StrAllocTempDescZEx( (uint8*)"undef", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5490, 0 );
       }
       goto label$4864;
       label$4926:;
       {
-       FBSTRING* vr$5493 = fb_StrAllocTempDescZEx( (uint8*)"uniform", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5493, 0 );
+       FBSTRING* vr$5491 = fb_StrAllocTempDescZEx( (uint8*)"uniform", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5491, 0 );
       }
       goto label$4864;
       label$4927:;
       {
-       FBSTRING* vr$5494 = fb_StrAllocTempDescZEx( (uint8*)"union", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5494, 0 );
+       FBSTRING* vr$5492 = fb_StrAllocTempDescZEx( (uint8*)"union", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5492, 0 );
       }
       goto label$4864;
       label$4928:;
       {
-       FBSTRING* vr$5495 = fb_StrAllocTempDescZEx( (uint8*)"unit", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5495, 0 );
+       FBSTRING* vr$5493 = fb_StrAllocTempDescZEx( (uint8*)"unit", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5493, 0 );
       }
       goto label$4864;
       label$4929:;
       {
-       FBSTRING* vr$5496 = fb_StrAllocTempDescZEx( (uint8*)"unknown", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5496, 0 );
+       FBSTRING* vr$5494 = fb_StrAllocTempDescZEx( (uint8*)"unknown", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5494, 0 );
       }
       goto label$4864;
       label$4930:;
       {
-       FBSTRING* vr$5497 = fb_StrAllocTempDescZEx( (uint8*)"unlock", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5497, 0 );
+       FBSTRING* vr$5495 = fb_StrAllocTempDescZEx( (uint8*)"unlock", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5495, 0 );
       }
       goto label$4864;
       label$4931:;
       {
-       FBSTRING* vr$5498 = fb_StrAllocTempDescZEx( (uint8*)"unsigned", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5498, 0 );
+       FBSTRING* vr$5496 = fb_StrAllocTempDescZEx( (uint8*)"unsigned", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5496, 0 );
       }
       goto label$4864;
       label$4932:;
       {
-       FBSTRING* vr$5499 = fb_StrAllocTempDescZEx( (uint8*)"unstring", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5499, 0 );
+       FBSTRING* vr$5497 = fb_StrAllocTempDescZEx( (uint8*)"unstring", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5497, 0 );
       }
       goto label$4864;
       label$4933:;
       {
-       FBSTRING* vr$5500 = fb_StrAllocTempDescZEx( (uint8*)"until", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5500, 0 );
+       FBSTRING* vr$5498 = fb_StrAllocTempDescZEx( (uint8*)"until", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5498, 0 );
       }
       goto label$4864;
       label$4934:;
       {
-       FBSTRING* vr$5501 = fb_StrAllocTempDescZEx( (uint8*)"up", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5501, 0 );
+       FBSTRING* vr$5499 = fb_StrAllocTempDescZEx( (uint8*)"up", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5499, 0 );
       }
       goto label$4864;
       label$4935:;
       {
-       FBSTRING* vr$5502 = fb_StrAllocTempDescZEx( (uint8*)"update", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5502, 0 );
+       FBSTRING* vr$5500 = fb_StrAllocTempDescZEx( (uint8*)"update", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5500, 0 );
       }
       goto label$4864;
       label$4936:;
       {
-       FBSTRING* vr$5503 = fb_StrAllocTempDescZEx( (uint8*)"upon", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5503, 0 );
+       FBSTRING* vr$5501 = fb_StrAllocTempDescZEx( (uint8*)"upon", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5501, 0 );
       }
       goto label$4864;
       label$4937:;
       {
-       FBSTRING* vr$5504 = fb_StrAllocTempDescZEx( (uint8*)"upper", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5504, 0 );
+       FBSTRING* vr$5502 = fb_StrAllocTempDescZEx( (uint8*)"upper", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5502, 0 );
       }
       goto label$4864;
       label$4938:;
       {
-       FBSTRING* vr$5505 = fb_StrAllocTempDescZEx( (uint8*)"upper_mb", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5505, 0 );
+       FBSTRING* vr$5503 = fb_StrAllocTempDescZEx( (uint8*)"upper_mb", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5503, 0 );
       }
       goto label$4864;
       label$4939:;
       {
-       FBSTRING* vr$5506 = fb_StrAllocTempDescZEx( (uint8*)"usage", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5506, 0 );
+       FBSTRING* vr$5504 = fb_StrAllocTempDescZEx( (uint8*)"usage", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5504, 0 );
       }
       goto label$4864;
       label$4940:;
       {
-       FBSTRING* vr$5507 = fb_StrAllocTempDescZEx( (uint8*)"usampler1D", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5507, 0 );
+       FBSTRING* vr$5505 = fb_StrAllocTempDescZEx( (uint8*)"usampler1D", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5505, 0 );
       }
       goto label$4864;
       label$4941:;
       {
-       FBSTRING* vr$5508 = fb_StrAllocTempDescZEx( (uint8*)"usampler1DArray", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5508, 0 );
+       FBSTRING* vr$5506 = fb_StrAllocTempDescZEx( (uint8*)"usampler1DArray", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5506, 0 );
       }
       goto label$4864;
       label$4942:;
       {
-       FBSTRING* vr$5509 = fb_StrAllocTempDescZEx( (uint8*)"usampler2D", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5509, 0 );
+       FBSTRING* vr$5507 = fb_StrAllocTempDescZEx( (uint8*)"usampler2D", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5507, 0 );
       }
       goto label$4864;
       label$4943:;
       {
-       FBSTRING* vr$5510 = fb_StrAllocTempDescZEx( (uint8*)"usampler2DArray", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5510, 0 );
+       FBSTRING* vr$5508 = fb_StrAllocTempDescZEx( (uint8*)"usampler2DArray", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5508, 0 );
       }
       goto label$4864;
       label$4944:;
       {
-       FBSTRING* vr$5511 = fb_StrAllocTempDescZEx( (uint8*)"usampler2drect", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5511, 0 );
+       FBSTRING* vr$5509 = fb_StrAllocTempDescZEx( (uint8*)"usampler2drect", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5509, 0 );
       }
       goto label$4864;
       label$4945:;
       {
-       FBSTRING* vr$5512 = fb_StrAllocTempDescZEx( (uint8*)"usampler3D", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5512, 0 );
+       FBSTRING* vr$5510 = fb_StrAllocTempDescZEx( (uint8*)"usampler3D", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5510, 0 );
       }
       goto label$4864;
       label$4946:;
       {
-       FBSTRING* vr$5513 = fb_StrAllocTempDescZEx( (uint8*)"usamplerBufferStruct", 20ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5513, 0 );
+       FBSTRING* vr$5511 = fb_StrAllocTempDescZEx( (uint8*)"usamplerBufferStruct", 20ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5511, 0 );
       }
       goto label$4864;
       label$4947:;
       {
-       FBSTRING* vr$5514 = fb_StrAllocTempDescZEx( (uint8*)"usamplerCube", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5514, 0 );
+       FBSTRING* vr$5512 = fb_StrAllocTempDescZEx( (uint8*)"usamplerCube", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5512, 0 );
       }
       goto label$4864;
       label$4948:;
       {
-       FBSTRING* vr$5515 = fb_StrAllocTempDescZEx( (uint8*)"use", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5515, 0 );
+       FBSTRING* vr$5513 = fb_StrAllocTempDescZEx( (uint8*)"use", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5513, 0 );
       }
       goto label$4864;
       label$4949:;
       {
-       FBSTRING* vr$5516 = fb_StrAllocTempDescZEx( (uint8*)"use_alpha", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5516, 0 );
+       FBSTRING* vr$5514 = fb_StrAllocTempDescZEx( (uint8*)"use_alpha", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5514, 0 );
       }
       goto label$4864;
       label$4950:;
       {
-       FBSTRING* vr$5517 = fb_StrAllocTempDescZEx( (uint8*)"use_color", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5517, 0 );
+       FBSTRING* vr$5515 = fb_StrAllocTempDescZEx( (uint8*)"use_color", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5515, 0 );
       }
       goto label$4864;
       label$4951:;
       {
-       FBSTRING* vr$5518 = fb_StrAllocTempDescZEx( (uint8*)"use_colour", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5518, 0 );
+       FBSTRING* vr$5516 = fb_StrAllocTempDescZEx( (uint8*)"use_colour", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5516, 0 );
       }
       goto label$4864;
       label$4952:;
       {
-       FBSTRING* vr$5519 = fb_StrAllocTempDescZEx( (uint8*)"use_index", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5519, 0 );
+       FBSTRING* vr$5517 = fb_StrAllocTempDescZEx( (uint8*)"use_index", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5517, 0 );
       }
       goto label$4864;
       label$4953:;
       {
-       FBSTRING* vr$5520 = fb_StrAllocTempDescZEx( (uint8*)"uses", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5520, 0 );
+       FBSTRING* vr$5518 = fb_StrAllocTempDescZEx( (uint8*)"uses", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5518, 0 );
       }
       goto label$4864;
       label$4954:;
       {
-       FBSTRING* vr$5521 = fb_StrAllocTempDescZEx( (uint8*)"using", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5521, 0 );
+       FBSTRING* vr$5519 = fb_StrAllocTempDescZEx( (uint8*)"using", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5519, 0 );
       }
       goto label$4864;
       label$4955:;
       {
-       FBSTRING* vr$5522 = fb_StrAllocTempDescZEx( (uint8*)"usr", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5522, 0 );
+       FBSTRING* vr$5520 = fb_StrAllocTempDescZEx( (uint8*)"usr", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5520, 0 );
       }
       goto label$4864;
       label$4956:;
       {
-       FBSTRING* vr$5523 = fb_StrAllocTempDescZEx( (uint8*)"u_steps", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5523, 0 );
+       FBSTRING* vr$5521 = fb_StrAllocTempDescZEx( (uint8*)"u_steps", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5521, 0 );
       }
       goto label$4864;
       label$4957:;
       {
-       FBSTRING* vr$5524 = fb_StrAllocTempDescZEx( (uint8*)"utf8", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5524, 0 );
+       FBSTRING* vr$5522 = fb_StrAllocTempDescZEx( (uint8*)"utf8", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5522, 0 );
       }
       goto label$4864;
       label$4958:;
       {
-       FBSTRING* vr$5525 = fb_StrAllocTempDescZEx( (uint8*)"utf16", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5525, 0 );
+       FBSTRING* vr$5523 = fb_StrAllocTempDescZEx( (uint8*)"utf16", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5523, 0 );
       }
       goto label$4864;
       label$4959:;
       {
-       FBSTRING* vr$5526 = fb_StrAllocTempDescZEx( (uint8*)"utf32", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5526, 0 );
+       FBSTRING* vr$5524 = fb_StrAllocTempDescZEx( (uint8*)"utf32", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5524, 0 );
       }
       goto label$4864;
       label$4960:;
       {
-       FBSTRING* vr$5527 = fb_StrAllocTempDescZEx( (uint8*)"uvec2", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5527, 0 );
+       FBSTRING* vr$5525 = fb_StrAllocTempDescZEx( (uint8*)"uvec2", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5525, 0 );
       }
       goto label$4864;
       label$4961:;
       {
-       FBSTRING* vr$5528 = fb_StrAllocTempDescZEx( (uint8*)"uvec3", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5528, 0 );
+       FBSTRING* vr$5526 = fb_StrAllocTempDescZEx( (uint8*)"uvec3", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5526, 0 );
       }
       goto label$4864;
       label$4962:;
       {
-       FBSTRING* vr$5529 = fb_StrAllocTempDescZEx( (uint8*)"uvec4", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5529, 0 );
+       FBSTRING* vr$5527 = fb_StrAllocTempDescZEx( (uint8*)"uvec4", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5527, 0 );
       }
       goto label$4864;
       label$4963:;
       {
-       FBSTRING* vr$5530 = fb_StrAllocTempDescZEx( (uint8*)"uv_indices", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5530, 0 );
+       FBSTRING* vr$5528 = fb_StrAllocTempDescZEx( (uint8*)"uv_indices", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5528, 0 );
       }
       goto label$4864;
       label$4964:;
       {
-       FBSTRING* vr$5531 = fb_StrAllocTempDescZEx( (uint8*)"uv_mapping", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5531, 0 );
+       FBSTRING* vr$5529 = fb_StrAllocTempDescZEx( (uint8*)"uv_mapping", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5529, 0 );
       }
       goto label$4864;
       label$4965:;
       {
-       FBSTRING* vr$5532 = fb_StrAllocTempDescZEx( (uint8*)"uv_vectors", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5532, 0 );
+       FBSTRING* vr$5530 = fb_StrAllocTempDescZEx( (uint8*)"uv_vectors", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5530, 0 );
       }
       goto label$4864;
       label$4966:;
       {
-       FBSTRING* vr$5533 = fb_StrAllocTempDescZEx( (uint8*)"v", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5533, 0 );
+       FBSTRING* vr$5531 = fb_StrAllocTempDescZEx( (uint8*)"v", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5531, 0 );
       }
       goto label$4864;
       label$4967:;
       {
-       FBSTRING* vr$5534 = fb_StrAllocTempDescZEx( (uint8*)"val", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5534, 0 );
+       FBSTRING* vr$5532 = fb_StrAllocTempDescZEx( (uint8*)"val", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5532, 0 );
       }
       goto label$4864;
       label$4968:;
       {
-       FBSTRING* vr$5535 = fb_StrAllocTempDescZEx( (uint8*)"value", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5535, 0 );
+       FBSTRING* vr$5533 = fb_StrAllocTempDescZEx( (uint8*)"value", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5533, 0 );
       }
       goto label$4864;
       label$4969:;
       {
-       FBSTRING* vr$5536 = fb_StrAllocTempDescZEx( (uint8*)"values", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5536, 0 );
+       FBSTRING* vr$5534 = fb_StrAllocTempDescZEx( (uint8*)"values", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5534, 0 );
       }
       goto label$4864;
       label$4970:;
       {
-       FBSTRING* vr$5537 = fb_StrAllocTempDescZEx( (uint8*)"var", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5537, 0 );
+       FBSTRING* vr$5535 = fb_StrAllocTempDescZEx( (uint8*)"var", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5535, 0 );
       }
       goto label$4864;
       label$4971:;
       {
-       FBSTRING* vr$5538 = fb_StrAllocTempDescZEx( (uint8*)"varchar", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5538, 0 );
+       FBSTRING* vr$5536 = fb_StrAllocTempDescZEx( (uint8*)"varchar", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5536, 0 );
       }
       goto label$4864;
       label$4972:;
       {
-       FBSTRING* vr$5539 = fb_StrAllocTempDescZEx( (uint8*)"variance", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5539, 0 );
+       FBSTRING* vr$5537 = fb_StrAllocTempDescZEx( (uint8*)"variance", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5537, 0 );
       }
       goto label$4864;
       label$4973:;
       {
-       FBSTRING* vr$5540 = fb_StrAllocTempDescZEx( (uint8*)"varptr", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5540, 0 );
+       FBSTRING* vr$5538 = fb_StrAllocTempDescZEx( (uint8*)"varptr", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5538, 0 );
       }
       goto label$4864;
       label$4974:;
       {
-       FBSTRING* vr$5541 = fb_StrAllocTempDescZEx( (uint8*)"varying", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5541, 0 );
+       FBSTRING* vr$5539 = fb_StrAllocTempDescZEx( (uint8*)"varying", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5539, 0 );
       }
       goto label$4864;
       label$4975:;
       {
-       FBSTRING* vr$5542 = fb_StrAllocTempDescZEx( (uint8*)"vaxis_rotate", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5542, 0 );
+       FBSTRING* vr$5540 = fb_StrAllocTempDescZEx( (uint8*)"vaxis_rotate", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5540, 0 );
       }
       goto label$4864;
       label$4976:;
       {
-       FBSTRING* vr$5543 = fb_StrAllocTempDescZEx( (uint8*)"vcross", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5543, 0 );
+       FBSTRING* vr$5541 = fb_StrAllocTempDescZEx( (uint8*)"vcross", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5541, 0 );
       }
       goto label$4864;
       label$4977:;
       {
-       FBSTRING* vr$5544 = fb_StrAllocTempDescZEx( (uint8*)"vdot", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5544, 0 );
+       FBSTRING* vr$5542 = fb_StrAllocTempDescZEx( (uint8*)"vdot", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5542, 0 );
       }
       goto label$4864;
       label$4978:;
       {
-       FBSTRING* vr$5545 = fb_StrAllocTempDescZEx( (uint8*)"vec2", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5545, 0 );
+       FBSTRING* vr$5543 = fb_StrAllocTempDescZEx( (uint8*)"vec2", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5543, 0 );
       }
       goto label$4864;
       label$4979:;
       {
-       FBSTRING* vr$5546 = fb_StrAllocTempDescZEx( (uint8*)"vec3", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5546, 0 );
+       FBSTRING* vr$5544 = fb_StrAllocTempDescZEx( (uint8*)"vec3", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5544, 0 );
       }
       goto label$4864;
       label$4980:;
       {
-       FBSTRING* vr$5547 = fb_StrAllocTempDescZEx( (uint8*)"vec4", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5547, 0 );
+       FBSTRING* vr$5545 = fb_StrAllocTempDescZEx( (uint8*)"vec4", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5545, 0 );
       }
       goto label$4864;
       label$4981:;
       {
-       FBSTRING* vr$5548 = fb_StrAllocTempDescZEx( (uint8*)"vector", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5548, 0 );
+       FBSTRING* vr$5546 = fb_StrAllocTempDescZEx( (uint8*)"vector", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5546, 0 );
       }
       goto label$4864;
       label$4982:;
       {
-       FBSTRING* vr$5549 = fb_StrAllocTempDescZEx( (uint8*)"version", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5549, 0 );
+       FBSTRING* vr$5547 = fb_StrAllocTempDescZEx( (uint8*)"version", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5547, 0 );
       }
       goto label$4864;
       label$4983:;
       {
-       FBSTRING* vr$5550 = fb_StrAllocTempDescZEx( (uint8*)"vertex_vectors", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5550, 0 );
+       FBSTRING* vr$5548 = fb_StrAllocTempDescZEx( (uint8*)"vertex_vectors", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5548, 0 );
       }
       goto label$4864;
       label$4984:;
       {
-       FBSTRING* vr$5551 = fb_StrAllocTempDescZEx( (uint8*)"view", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5551, 0 );
+       FBSTRING* vr$5549 = fb_StrAllocTempDescZEx( (uint8*)"view", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5549, 0 );
       }
       goto label$4864;
       label$4985:;
       {
-       FBSTRING* vr$5552 = fb_StrAllocTempDescZEx( (uint8*)"virtual", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5552, 0 );
+       FBSTRING* vr$5550 = fb_StrAllocTempDescZEx( (uint8*)"virtual", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5550, 0 );
       }
       goto label$4864;
       label$4986:;
       {
-       FBSTRING* vr$5553 = fb_StrAllocTempDescZEx( (uint8*)"vlength", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5553, 0 );
+       FBSTRING* vr$5551 = fb_StrAllocTempDescZEx( (uint8*)"vlength", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5551, 0 );
       }
       goto label$4864;
       label$4987:;
       {
-       FBSTRING* vr$5554 = fb_StrAllocTempDescZEx( (uint8*)"vnormalize", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5554, 0 );
+       FBSTRING* vr$5552 = fb_StrAllocTempDescZEx( (uint8*)"vnormalize", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5552, 0 );
       }
       goto label$4864;
       label$4988:;
       {
-       FBSTRING* vr$5555 = fb_StrAllocTempDescZEx( (uint8*)"void", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5555, 0 );
+       FBSTRING* vr$5553 = fb_StrAllocTempDescZEx( (uint8*)"void", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5553, 0 );
       }
       goto label$4864;
       label$4989:;
       {
-       FBSTRING* vr$5556 = fb_StrAllocTempDescZEx( (uint8*)"volatile", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5556, 0 );
+       FBSTRING* vr$5554 = fb_StrAllocTempDescZEx( (uint8*)"volatile", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5554, 0 );
       }
       goto label$4864;
       label$4990:;
       {
-       FBSTRING* vr$5557 = fb_StrAllocTempDescZEx( (uint8*)"vrotate", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5557, 0 );
+       FBSTRING* vr$5555 = fb_StrAllocTempDescZEx( (uint8*)"vrotate", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5555, 0 );
       }
       goto label$4864;
       label$4991:;
       {
-       FBSTRING* vr$5558 = fb_StrAllocTempDescZEx( (uint8*)"v_steps", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5558, 0 );
+       FBSTRING* vr$5556 = fb_StrAllocTempDescZEx( (uint8*)"v_steps", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5556, 0 );
       }
       goto label$4864;
       label$4992:;
       {
-       FBSTRING* vr$5559 = fb_StrAllocTempDescZEx( (uint8*)"vstr", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5559, 0 );
+       FBSTRING* vr$5557 = fb_StrAllocTempDescZEx( (uint8*)"vstr", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5557, 0 );
       }
       goto label$4864;
       label$4993:;
       {
-       FBSTRING* vr$5560 = fb_StrAllocTempDescZEx( (uint8*)"vturbulence", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5560, 0 );
+       FBSTRING* vr$5558 = fb_StrAllocTempDescZEx( (uint8*)"vturbulence", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5558, 0 );
       }
       goto label$4864;
       label$4994:;
       {
-       FBSTRING* vr$5561 = fb_StrAllocTempDescZEx( (uint8*)"w", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5561, 0 );
+       FBSTRING* vr$5559 = fb_StrAllocTempDescZEx( (uint8*)"w", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5559, 0 );
       }
       goto label$4864;
       label$4995:;
       {
-       FBSTRING* vr$5562 = fb_StrAllocTempDescZEx( (uint8*)"wait", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5562, 0 );
+       FBSTRING* vr$5560 = fb_StrAllocTempDescZEx( (uint8*)"wait", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5560, 0 );
       }
       goto label$4864;
       label$4996:;
       {
-       FBSTRING* vr$5563 = fb_StrAllocTempDescZEx( (uint8*)"ward", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5563, 0 );
+       FBSTRING* vr$5561 = fb_StrAllocTempDescZEx( (uint8*)"ward", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5561, 0 );
       }
       goto label$4864;
       label$4997:;
       {
-       FBSTRING* vr$5564 = fb_StrAllocTempDescZEx( (uint8*)"warning", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5564, 0 );
+       FBSTRING* vr$5562 = fb_StrAllocTempDescZEx( (uint8*)"warning", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5562, 0 );
       }
       goto label$4864;
       label$4998:;
       {
-       FBSTRING* vr$5565 = fb_StrAllocTempDescZEx( (uint8*)"warp", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5565, 0 );
+       FBSTRING* vr$5563 = fb_StrAllocTempDescZEx( (uint8*)"warp", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5563, 0 );
       }
       goto label$4864;
       label$4999:;
       {
-       FBSTRING* vr$5566 = fb_StrAllocTempDescZEx( (uint8*)"water_level", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5566, 0 );
+       FBSTRING* vr$5564 = fb_StrAllocTempDescZEx( (uint8*)"water_level", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5564, 0 );
       }
       goto label$4864;
       label$5000:;
       {
-       FBSTRING* vr$5567 = fb_StrAllocTempDescZEx( (uint8*)"wavelength_color", 16ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5567, 0 );
+       FBSTRING* vr$5565 = fb_StrAllocTempDescZEx( (uint8*)"wavelength_color", 16ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5565, 0 );
       }
       goto label$4864;
       label$5001:;
       {
-       FBSTRING* vr$5568 = fb_StrAllocTempDescZEx( (uint8*)"waves", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5568, 0 );
+       FBSTRING* vr$5566 = fb_StrAllocTempDescZEx( (uint8*)"waves", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5566, 0 );
       }
       goto label$4864;
       label$5002:;
       {
-       FBSTRING* vr$5569 = fb_StrAllocTempDescZEx( (uint8*)"wend", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5569, 0 );
+       FBSTRING* vr$5567 = fb_StrAllocTempDescZEx( (uint8*)"wend", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5567, 0 );
       }
       goto label$4864;
       label$5003:;
       {
-       FBSTRING* vr$5570 = fb_StrAllocTempDescZEx( (uint8*)"when", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5570, 0 );
+       FBSTRING* vr$5568 = fb_StrAllocTempDescZEx( (uint8*)"when", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5568, 0 );
       }
       goto label$4864;
       label$5004:;
       {
-       FBSTRING* vr$5571 = fb_StrAllocTempDescZEx( (uint8*)"when-compiled", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5571, 0 );
+       FBSTRING* vr$5569 = fb_StrAllocTempDescZEx( (uint8*)"when-compiled", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5569, 0 );
       }
       goto label$4864;
       label$5005:;
       {
-       FBSTRING* vr$5572 = fb_StrAllocTempDescZEx( (uint8*)"where", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5572, 0 );
+       FBSTRING* vr$5570 = fb_StrAllocTempDescZEx( (uint8*)"where", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5570, 0 );
       }
       goto label$4864;
       label$5006:;
       {
-       FBSTRING* vr$5573 = fb_StrAllocTempDescZEx( (uint8*)"while", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5573, 0 );
+       FBSTRING* vr$5571 = fb_StrAllocTempDescZEx( (uint8*)"while", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5571, 0 );
       }
       goto label$4864;
       label$5007:;
       {
-       FBSTRING* vr$5574 = fb_StrAllocTempDescZEx( (uint8*)"width", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5574, 0 );
+       FBSTRING* vr$5572 = fb_StrAllocTempDescZEx( (uint8*)"width", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5572, 0 );
       }
       goto label$4864;
       label$5008:;
       {
-       FBSTRING* vr$5575 = fb_StrAllocTempDescZEx( (uint8*)"window", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5575, 0 );
+       FBSTRING* vr$5573 = fb_StrAllocTempDescZEx( (uint8*)"window", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5573, 0 );
       }
       goto label$4864;
       label$5009:;
       {
-       FBSTRING* vr$5576 = fb_StrAllocTempDescZEx( (uint8*)"with", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5576, 0 );
+       FBSTRING* vr$5574 = fb_StrAllocTempDescZEx( (uint8*)"with", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5574, 0 );
       }
       goto label$4864;
       label$5010:;
       {
-       FBSTRING* vr$5577 = fb_StrAllocTempDescZEx( (uint8*)"wood", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5577, 0 );
+       FBSTRING* vr$5575 = fb_StrAllocTempDescZEx( (uint8*)"wood", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5575, 0 );
       }
       goto label$4864;
       label$5011:;
       {
-       FBSTRING* vr$5578 = fb_StrAllocTempDescZEx( (uint8*)"words", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5578, 0 );
+       FBSTRING* vr$5576 = fb_StrAllocTempDescZEx( (uint8*)"words", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5576, 0 );
       }
       goto label$4864;
       label$5012:;
       {
-       FBSTRING* vr$5579 = fb_StrAllocTempDescZEx( (uint8*)"working-storage", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5579, 0 );
+       FBSTRING* vr$5577 = fb_StrAllocTempDescZEx( (uint8*)"working-storage", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5577, 0 );
       }
       goto label$4864;
       label$5013:;
       {
-       FBSTRING* vr$5580 = fb_StrAllocTempDescZEx( (uint8*)"wrinkles", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5580, 0 );
+       FBSTRING* vr$5578 = fb_StrAllocTempDescZEx( (uint8*)"wrinkles", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5578, 0 );
       }
       goto label$4864;
       label$5014:;
       {
-       FBSTRING* vr$5581 = fb_StrAllocTempDescZEx( (uint8*)"write", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5581, 0 );
+       FBSTRING* vr$5579 = fb_StrAllocTempDescZEx( (uint8*)"write", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5579, 0 );
       }
       goto label$4864;
       label$5015:;
       {
-       FBSTRING* vr$5582 = fb_StrAllocTempDescZEx( (uint8*)"write-only", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5582, 0 );
+       FBSTRING* vr$5580 = fb_StrAllocTempDescZEx( (uint8*)"write-only", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5580, 0 );
       }
       goto label$4864;
       label$5016:;
       {
-       FBSTRING* vr$5583 = fb_StrAllocTempDescZEx( (uint8*)"x", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5583, 0 );
+       FBSTRING* vr$5581 = fb_StrAllocTempDescZEx( (uint8*)"x", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5581, 0 );
       }
       goto label$4864;
       label$5017:;
       {
-       FBSTRING* vr$5584 = fb_StrAllocTempDescZEx( (uint8*)"xor", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5584, 0 );
+       FBSTRING* vr$5582 = fb_StrAllocTempDescZEx( (uint8*)"xor", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5582, 0 );
       }
       goto label$4864;
       label$5018:;
       {
-       FBSTRING* vr$5585 = fb_StrAllocTempDescZEx( (uint8*)"xor_bits", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5585, 0 );
+       FBSTRING* vr$5583 = fb_StrAllocTempDescZEx( (uint8*)"xor_bits", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5583, 0 );
       }
       goto label$4864;
       label$5019:;
       {
-       FBSTRING* vr$5586 = fb_StrAllocTempDescZEx( (uint8*)"y", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5586, 1 );
+       FBSTRING* vr$5584 = fb_StrAllocTempDescZEx( (uint8*)"y", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5584, 1 );
       }
       goto label$4864;
       label$5020:;
       {
-       FBSTRING* vr$5587 = fb_StrAllocTempDescZEx( (uint8*)"year", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5587, 0 );
+       FBSTRING* vr$5585 = fb_StrAllocTempDescZEx( (uint8*)"year", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5585, 0 );
       }
       goto label$4864;
       label$5021:;
       {
-       FBSTRING* vr$5588 = fb_StrAllocTempDescZEx( (uint8*)"yes", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5588, 0 );
+       FBSTRING* vr$5586 = fb_StrAllocTempDescZEx( (uint8*)"yes", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5586, 0 );
       }
       goto label$4864;
       label$5022:;
       {
-       FBSTRING* vr$5589 = fb_StrAllocTempDescZEx( (uint8*)"yield", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5589, 0 );
+       FBSTRING* vr$5587 = fb_StrAllocTempDescZEx( (uint8*)"yield", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5587, 0 );
       }
       goto label$4864;
       label$5023:;
       {
-       FBSTRING* vr$5590 = fb_StrAllocTempDescZEx( (uint8*)"z", 1ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5590, 0 );
+       FBSTRING* vr$5588 = fb_StrAllocTempDescZEx( (uint8*)"z", 1ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5588, 0 );
       }
       goto label$4864;
       label$5024:;
       {
-       FBSTRING* vr$5591 = fb_StrAllocTempDescZEx( (uint8*)"zero", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5591, 0 );
+       FBSTRING* vr$5589 = fb_StrAllocTempDescZEx( (uint8*)"zero", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5589, 0 );
       }
       goto label$4864;
       label$5025:;
       {
-       FBSTRING* vr$5592 = fb_StrAllocTempDescZEx( (uint8*)"zeroes", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5592, 0 );
+       FBSTRING* vr$5590 = fb_StrAllocTempDescZEx( (uint8*)"zeroes", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5590, 0 );
       }
       goto label$4864;
       label$5026:;
       {
-       FBSTRING* vr$5593 = fb_StrAllocTempDescZEx( (uint8*)"zeros", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5593, 0 );
+       FBSTRING* vr$5591 = fb_StrAllocTempDescZEx( (uint8*)"zeros", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5591, 0 );
       }
       goto label$4864;
       label$4865:;
@@ -21821,1508 +21817,1508 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       goto label$5029;
       label$5030:;
       {
-       FBSTRING* vr$5596 = fb_StrAllocTempDescZEx( (uint8*)"buffer", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5596, 0 );
+       FBSTRING* vr$5594 = fb_StrAllocTempDescZEx( (uint8*)"buffer", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5594, 0 );
       }
       goto label$5028;
       label$5031:;
       {
-       FBSTRING* vr$5597 = fb_StrAllocTempDescZEx( (uint8*)"shared", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5597, 0 );
+       FBSTRING* vr$5595 = fb_StrAllocTempDescZEx( (uint8*)"shared", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5595, 0 );
       }
       goto label$5028;
       label$5032:;
       {
-       FBSTRING* vr$5598 = fb_StrAllocTempDescZEx( (uint8*)"coherent", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5598, 0 );
+       FBSTRING* vr$5596 = fb_StrAllocTempDescZEx( (uint8*)"coherent", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5596, 0 );
       }
       goto label$5028;
       label$5033:;
       {
-       FBSTRING* vr$5599 = fb_StrAllocTempDescZEx( (uint8*)"restrict", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5599, 0 );
+       FBSTRING* vr$5597 = fb_StrAllocTempDescZEx( (uint8*)"restrict", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5597, 0 );
       }
       goto label$5028;
       label$5034:;
       {
-       FBSTRING* vr$5600 = fb_StrAllocTempDescZEx( (uint8*)"readonly", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5600, 0 );
+       FBSTRING* vr$5598 = fb_StrAllocTempDescZEx( (uint8*)"readonly", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5598, 0 );
       }
       goto label$5028;
       label$5035:;
       {
-       FBSTRING* vr$5601 = fb_StrAllocTempDescZEx( (uint8*)"writeonly", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5601, 0 );
+       FBSTRING* vr$5599 = fb_StrAllocTempDescZEx( (uint8*)"writeonly", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5599, 0 );
       }
       goto label$5028;
       label$5036:;
       {
-       FBSTRING* vr$5602 = fb_StrAllocTempDescZEx( (uint8*)"atomic_uint", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5602, 0 );
+       FBSTRING* vr$5600 = fb_StrAllocTempDescZEx( (uint8*)"atomic_uint", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5600, 0 );
       }
       goto label$5028;
       label$5037:;
       {
-       FBSTRING* vr$5603 = fb_StrAllocTempDescZEx( (uint8*)"patch", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5603, 0 );
+       FBSTRING* vr$5601 = fb_StrAllocTempDescZEx( (uint8*)"patch", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5601, 0 );
       }
       goto label$5028;
       label$5038:;
       {
-       FBSTRING* vr$5604 = fb_StrAllocTempDescZEx( (uint8*)"sample", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5604, 0 );
+       FBSTRING* vr$5602 = fb_StrAllocTempDescZEx( (uint8*)"sample", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5602, 0 );
       }
       goto label$5028;
       label$5039:;
       {
-       FBSTRING* vr$5605 = fb_StrAllocTempDescZEx( (uint8*)"precise", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5605, 0 );
+       FBSTRING* vr$5603 = fb_StrAllocTempDescZEx( (uint8*)"precise", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5603, 0 );
       }
       goto label$5028;
       label$5040:;
       {
-       FBSTRING* vr$5606 = fb_StrAllocTempDescZEx( (uint8*)"dmat2", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5606, 0 );
+       FBSTRING* vr$5604 = fb_StrAllocTempDescZEx( (uint8*)"dmat2", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5604, 0 );
       }
       goto label$5028;
       label$5041:;
       {
-       FBSTRING* vr$5607 = fb_StrAllocTempDescZEx( (uint8*)"dmat3", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5607, 0 );
+       FBSTRING* vr$5605 = fb_StrAllocTempDescZEx( (uint8*)"dmat3", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5605, 0 );
       }
       goto label$5028;
       label$5042:;
       {
-       FBSTRING* vr$5608 = fb_StrAllocTempDescZEx( (uint8*)"dmat4", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5608, 0 );
+       FBSTRING* vr$5606 = fb_StrAllocTempDescZEx( (uint8*)"dmat4", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5606, 0 );
       }
       goto label$5028;
       label$5043:;
       {
-       FBSTRING* vr$5609 = fb_StrAllocTempDescZEx( (uint8*)"dmat2x2", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5609, 0 );
+       FBSTRING* vr$5607 = fb_StrAllocTempDescZEx( (uint8*)"dmat2x2", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5607, 0 );
       }
       goto label$5028;
       label$5044:;
       {
-       FBSTRING* vr$5610 = fb_StrAllocTempDescZEx( (uint8*)"dmat2x3", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5610, 0 );
+       FBSTRING* vr$5608 = fb_StrAllocTempDescZEx( (uint8*)"dmat2x3", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5608, 0 );
       }
       goto label$5028;
       label$5045:;
       {
-       FBSTRING* vr$5611 = fb_StrAllocTempDescZEx( (uint8*)"dmat2x4", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5611, 0 );
+       FBSTRING* vr$5609 = fb_StrAllocTempDescZEx( (uint8*)"dmat2x4", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5609, 0 );
       }
       goto label$5028;
       label$5046:;
       {
-       FBSTRING* vr$5612 = fb_StrAllocTempDescZEx( (uint8*)"dmat3x2", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5612, 0 );
+       FBSTRING* vr$5610 = fb_StrAllocTempDescZEx( (uint8*)"dmat3x2", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5610, 0 );
       }
       goto label$5028;
       label$5047:;
       {
-       FBSTRING* vr$5613 = fb_StrAllocTempDescZEx( (uint8*)"dmat3x3", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5613, 0 );
+       FBSTRING* vr$5611 = fb_StrAllocTempDescZEx( (uint8*)"dmat3x3", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5611, 0 );
       }
       goto label$5028;
       label$5048:;
       {
-       FBSTRING* vr$5614 = fb_StrAllocTempDescZEx( (uint8*)"dmat3x4", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5614, 0 );
+       FBSTRING* vr$5612 = fb_StrAllocTempDescZEx( (uint8*)"dmat3x4", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5612, 0 );
       }
       goto label$5028;
       label$5049:;
       {
-       FBSTRING* vr$5615 = fb_StrAllocTempDescZEx( (uint8*)"dmat4x2", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5615, 0 );
+       FBSTRING* vr$5613 = fb_StrAllocTempDescZEx( (uint8*)"dmat4x2", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5613, 0 );
       }
       goto label$5028;
       label$5050:;
       {
-       FBSTRING* vr$5616 = fb_StrAllocTempDescZEx( (uint8*)"dmat4x3", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5616, 0 );
+       FBSTRING* vr$5614 = fb_StrAllocTempDescZEx( (uint8*)"dmat4x3", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5614, 0 );
       }
       goto label$5028;
       label$5051:;
       {
-       FBSTRING* vr$5617 = fb_StrAllocTempDescZEx( (uint8*)"dmat4x4", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5617, 0 );
+       FBSTRING* vr$5615 = fb_StrAllocTempDescZEx( (uint8*)"dmat4x4", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5615, 0 );
       }
       goto label$5028;
       label$5052:;
       {
-       FBSTRING* vr$5618 = fb_StrAllocTempDescZEx( (uint8*)"image2DMS", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5618, 0 );
+       FBSTRING* vr$5616 = fb_StrAllocTempDescZEx( (uint8*)"image2DMS", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5616, 0 );
       }
       goto label$5028;
       label$5053:;
       {
-       FBSTRING* vr$5619 = fb_StrAllocTempDescZEx( (uint8*)"iimage2DMS", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5619, 0 );
+       FBSTRING* vr$5617 = fb_StrAllocTempDescZEx( (uint8*)"iimage2DMS", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5617, 0 );
       }
       goto label$5028;
       label$5054:;
       {
-       FBSTRING* vr$5620 = fb_StrAllocTempDescZEx( (uint8*)"uimage2DMS", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5620, 0 );
+       FBSTRING* vr$5618 = fb_StrAllocTempDescZEx( (uint8*)"uimage2DMS", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5618, 0 );
       }
       goto label$5028;
       label$5055:;
       {
-       FBSTRING* vr$5621 = fb_StrAllocTempDescZEx( (uint8*)"image2DMSArray", 14ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5621, 0 );
+       FBSTRING* vr$5619 = fb_StrAllocTempDescZEx( (uint8*)"image2DMSArray", 14ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5619, 0 );
       }
       goto label$5028;
       label$5056:;
       {
-       FBSTRING* vr$5622 = fb_StrAllocTempDescZEx( (uint8*)"iimage2DMSArray", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5622, 0 );
+       FBSTRING* vr$5620 = fb_StrAllocTempDescZEx( (uint8*)"iimage2DMSArray", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5620, 0 );
       }
       goto label$5028;
       label$5057:;
       {
-       FBSTRING* vr$5623 = fb_StrAllocTempDescZEx( (uint8*)"uimage2DMSArray", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5623, 0 );
+       FBSTRING* vr$5621 = fb_StrAllocTempDescZEx( (uint8*)"uimage2DMSArray", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5621, 0 );
       }
       goto label$5028;
       label$5058:;
       {
-       FBSTRING* vr$5624 = fb_StrAllocTempDescZEx( (uint8*)"struct", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5624, 0 );
+       FBSTRING* vr$5622 = fb_StrAllocTempDescZEx( (uint8*)"struct", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5622, 0 );
       }
       goto label$5028;
       label$5059:;
       {
-       FBSTRING* vr$5625 = fb_StrAllocTempDescZEx( (uint8*)"sampler2DRect", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5625, 0 );
+       FBSTRING* vr$5623 = fb_StrAllocTempDescZEx( (uint8*)"sampler2DRect", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5623, 0 );
       }
       goto label$5028;
       label$5060:;
       {
-       FBSTRING* vr$5626 = fb_StrAllocTempDescZEx( (uint8*)"resource", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5626, 0 );
+       FBSTRING* vr$5624 = fb_StrAllocTempDescZEx( (uint8*)"resource", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5624, 0 );
       }
       goto label$5028;
       label$5061:;
       {
-       FBSTRING* vr$5627 = fb_StrAllocTempDescZEx( (uint8*)"M_PI", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5627, 0 );
+       FBSTRING* vr$5625 = fb_StrAllocTempDescZEx( (uint8*)"M_PI", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5625, 0 );
       }
       goto label$5028;
       label$5062:;
       {
-       FBSTRING* vr$5628 = fb_StrAllocTempDescZEx( (uint8*)"M_PI_2", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5628, 0 );
+       FBSTRING* vr$5626 = fb_StrAllocTempDescZEx( (uint8*)"M_PI_2", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5626, 0 );
       }
       goto label$5028;
       label$5063:;
       {
-       FBSTRING* vr$5629 = fb_StrAllocTempDescZEx( (uint8*)"M_PI_4", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5629, 0 );
+       FBSTRING* vr$5627 = fb_StrAllocTempDescZEx( (uint8*)"M_PI_4", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5627, 0 );
       }
       goto label$5028;
       label$5064:;
       {
-       FBSTRING* vr$5630 = fb_StrAllocTempDescZEx( (uint8*)"M_2PI", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5630, 0 );
+       FBSTRING* vr$5628 = fb_StrAllocTempDescZEx( (uint8*)"M_2PI", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5628, 0 );
       }
       goto label$5028;
       label$5065:;
       {
-       FBSTRING* vr$5631 = fb_StrAllocTempDescZEx( (uint8*)"M_4PI", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5631, 0 );
+       FBSTRING* vr$5629 = fb_StrAllocTempDescZEx( (uint8*)"M_4PI", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5629, 0 );
       }
       goto label$5028;
       label$5066:;
       {
-       FBSTRING* vr$5632 = fb_StrAllocTempDescZEx( (uint8*)"M_2_SQRTPI", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5632, 0 );
+       FBSTRING* vr$5630 = fb_StrAllocTempDescZEx( (uint8*)"M_2_SQRTPI", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5630, 0 );
       }
       goto label$5028;
       label$5067:;
       {
-       FBSTRING* vr$5633 = fb_StrAllocTempDescZEx( (uint8*)"M_E", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5633, 0 );
+       FBSTRING* vr$5631 = fb_StrAllocTempDescZEx( (uint8*)"M_E", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5631, 0 );
       }
       goto label$5028;
       label$5068:;
       {
-       FBSTRING* vr$5634 = fb_StrAllocTempDescZEx( (uint8*)"M_LN2", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5634, 0 );
+       FBSTRING* vr$5632 = fb_StrAllocTempDescZEx( (uint8*)"M_LN2", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5632, 0 );
       }
       goto label$5028;
       label$5069:;
       {
-       FBSTRING* vr$5635 = fb_StrAllocTempDescZEx( (uint8*)"M_LN10", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5635, 0 );
+       FBSTRING* vr$5633 = fb_StrAllocTempDescZEx( (uint8*)"M_LN10", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5633, 0 );
       }
       goto label$5028;
       label$5070:;
       {
-       FBSTRING* vr$5636 = fb_StrAllocTempDescZEx( (uint8*)"M_LOG2E", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5636, 0 );
+       FBSTRING* vr$5634 = fb_StrAllocTempDescZEx( (uint8*)"M_LOG2E", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5634, 0 );
       }
       goto label$5028;
       label$5071:;
       {
-       FBSTRING* vr$5637 = fb_StrAllocTempDescZEx( (uint8*)"M_LOG10E", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5637, 0 );
+       FBSTRING* vr$5635 = fb_StrAllocTempDescZEx( (uint8*)"M_LOG10E", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5635, 0 );
       }
       goto label$5028;
       label$5072:;
       {
-       FBSTRING* vr$5638 = fb_StrAllocTempDescZEx( (uint8*)"M_SQRT2", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5638, 0 );
+       FBSTRING* vr$5636 = fb_StrAllocTempDescZEx( (uint8*)"M_SQRT2", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5636, 0 );
       }
       goto label$5028;
       label$5073:;
       {
-       FBSTRING* vr$5639 = fb_StrAllocTempDescZEx( (uint8*)"M_SQRT1_2", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5639, 0 );
+       FBSTRING* vr$5637 = fb_StrAllocTempDescZEx( (uint8*)"M_SQRT1_2", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5637, 0 );
       }
       goto label$5028;
       label$5074:;
       {
-       FBSTRING* vr$5640 = fb_StrAllocTempDescZEx( (uint8*)"sincos", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5640, 0 );
+       FBSTRING* vr$5638 = fb_StrAllocTempDescZEx( (uint8*)"sincos", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5638, 0 );
       }
       goto label$5028;
       label$5075:;
       {
-       FBSTRING* vr$5641 = fb_StrAllocTempDescZEx( (uint8*)"inversesqrt", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5641, 0 );
+       FBSTRING* vr$5639 = fb_StrAllocTempDescZEx( (uint8*)"inversesqrt", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5639, 0 );
       }
       goto label$5028;
       label$5076:;
       {
-       FBSTRING* vr$5642 = fb_StrAllocTempDescZEx( (uint8*)"seg", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5642, 0 );
+       FBSTRING* vr$5640 = fb_StrAllocTempDescZEx( (uint8*)"seg", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5640, 0 );
       }
       goto label$5028;
       label$5077:;
       {
-       FBSTRING* vr$5643 = fb_StrAllocTempDescZEx( (uint8*)"seek", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5643, 0 );
+       FBSTRING* vr$5641 = fb_StrAllocTempDescZEx( (uint8*)"seek", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5641, 0 );
       }
       goto label$5028;
       label$5078:;
       {
-       FBSTRING* vr$5644 = fb_StrAllocTempDescZEx( (uint8*)"sleep", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5644, 0 );
+       FBSTRING* vr$5642 = fb_StrAllocTempDescZEx( (uint8*)"sleep", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5642, 0 );
       }
       goto label$5028;
       label$5079:;
       {
-       FBSTRING* vr$5645 = fb_StrAllocTempDescZEx( (uint8*)"console", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5645, 0 );
+       FBSTRING* vr$5643 = fb_StrAllocTempDescZEx( (uint8*)"console", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5643, 0 );
       }
       goto label$5028;
       label$5080:;
       {
-       FBSTRING* vr$5646 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_1", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5646, 0 );
+       FBSTRING* vr$5644 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_1", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5644, 0 );
       }
       goto label$5028;
       label$5081:;
       {
-       FBSTRING* vr$5647 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_2", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5647, 0 );
+       FBSTRING* vr$5645 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_2", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5645, 0 );
       }
       goto label$5028;
       label$5082:;
       {
-       FBSTRING* vr$5648 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_3", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5648, 0 );
+       FBSTRING* vr$5646 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_3", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5646, 0 );
       }
       goto label$5028;
       label$5083:;
       {
-       FBSTRING* vr$5649 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_4", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5649, 0 );
+       FBSTRING* vr$5647 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_4", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5647, 0 );
       }
       goto label$5028;
       label$5084:;
       {
-       FBSTRING* vr$5650 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_5", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5650, 0 );
+       FBSTRING* vr$5648 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_5", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5648, 0 );
       }
       goto label$5028;
       label$5085:;
       {
-       FBSTRING* vr$5651 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_6", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5651, 0 );
+       FBSTRING* vr$5649 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_6", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5649, 0 );
       }
       goto label$5028;
       label$5086:;
       {
-       FBSTRING* vr$5652 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_7", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5652, 0 );
+       FBSTRING* vr$5650 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_7", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5650, 0 );
       }
       goto label$5028;
       label$5087:;
       {
-       FBSTRING* vr$5653 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_8", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5653, 0 );
+       FBSTRING* vr$5651 = fb_StrAllocTempDescZEx( (uint8*)"COB_SWITCH_8", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5651, 0 );
       }
       goto label$5028;
       label$5088:;
       {
-       FBSTRING* vr$5654 = fb_StrAllocTempDescZEx( (uint8*)"abort", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5654, 0 );
+       FBSTRING* vr$5652 = fb_StrAllocTempDescZEx( (uint8*)"abort", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5652, 0 );
       }
       goto label$5028;
       label$5089:;
       {
-       FBSTRING* vr$5655 = fb_StrAllocTempDescZEx( (uint8*)"achar", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5655, 0 );
+       FBSTRING* vr$5653 = fb_StrAllocTempDescZEx( (uint8*)"achar", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5653, 0 );
       }
       goto label$5028;
       label$5090:;
       {
-       FBSTRING* vr$5656 = fb_StrAllocTempDescZEx( (uint8*)"acosd", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5656, 0 );
+       FBSTRING* vr$5654 = fb_StrAllocTempDescZEx( (uint8*)"acosd", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5654, 0 );
       }
       goto label$5028;
       label$5091:;
       {
-       FBSTRING* vr$5657 = fb_StrAllocTempDescZEx( (uint8*)"adjustl", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5657, 0 );
+       FBSTRING* vr$5655 = fb_StrAllocTempDescZEx( (uint8*)"adjustl", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5655, 0 );
       }
       goto label$5028;
       label$5092:;
       {
-       FBSTRING* vr$5658 = fb_StrAllocTempDescZEx( (uint8*)"adjustr", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5658, 0 );
+       FBSTRING* vr$5656 = fb_StrAllocTempDescZEx( (uint8*)"adjustr", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5656, 0 );
       }
       goto label$5028;
       label$5093:;
       {
-       FBSTRING* vr$5659 = fb_StrAllocTempDescZEx( (uint8*)"aimag", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5659, 0 );
+       FBSTRING* vr$5657 = fb_StrAllocTempDescZEx( (uint8*)"aimag", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5657, 0 );
       }
       goto label$5028;
       label$5094:;
       {
-       FBSTRING* vr$5660 = fb_StrAllocTempDescZEx( (uint8*)"aint", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5660, 0 );
+       FBSTRING* vr$5658 = fb_StrAllocTempDescZEx( (uint8*)"aint", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5658, 0 );
       }
       goto label$5028;
       label$5095:;
       {
-       FBSTRING* vr$5661 = fb_StrAllocTempDescZEx( (uint8*)"alarm", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5661, 0 );
+       FBSTRING* vr$5659 = fb_StrAllocTempDescZEx( (uint8*)"alarm", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5659, 0 );
       }
       goto label$5028;
       label$5096:;
       {
-       FBSTRING* vr$5662 = fb_StrAllocTempDescZEx( (uint8*)"alocated", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5662, 0 );
+       FBSTRING* vr$5660 = fb_StrAllocTempDescZEx( (uint8*)"alocated", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5660, 0 );
       }
       goto label$5028;
       label$5097:;
       {
-       FBSTRING* vr$5663 = fb_StrAllocTempDescZEx( (uint8*)"implicit", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5663, 0 );
+       FBSTRING* vr$5661 = fb_StrAllocTempDescZEx( (uint8*)"implicit", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5661, 0 );
       }
       goto label$5028;
       label$5098:;
       {
-       FBSTRING* vr$5664 = fb_StrAllocTempDescZEx( (uint8*)"find", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5664, 0 );
+       FBSTRING* vr$5662 = fb_StrAllocTempDescZEx( (uint8*)"find", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5662, 0 );
       }
       goto label$5028;
       label$5099:;
       {
-       FBSTRING* vr$5665 = fb_StrAllocTempDescZEx( (uint8*)"inquire", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5665, 0 );
+       FBSTRING* vr$5663 = fb_StrAllocTempDescZEx( (uint8*)"inquire", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5663, 0 );
       }
       goto label$5028;
       label$5100:;
       {
-       FBSTRING* vr$5666 = fb_StrAllocTempDescZEx( (uint8*)"image2DRect", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5666, 0 );
+       FBSTRING* vr$5664 = fb_StrAllocTempDescZEx( (uint8*)"image2DRect", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5664, 0 );
       }
       goto label$5028;
       label$5101:;
       {
-       FBSTRING* vr$5667 = fb_StrAllocTempDescZEx( (uint8*)"smpler2DMS", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5667, 0 );
+       FBSTRING* vr$5665 = fb_StrAllocTempDescZEx( (uint8*)"smpler2DMS", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5665, 0 );
       }
       goto label$5028;
       label$5102:;
       {
-       FBSTRING* vr$5668 = fb_StrAllocTempDescZEx( (uint8*)"shortint", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5668, 0 );
+       FBSTRING* vr$5666 = fb_StrAllocTempDescZEx( (uint8*)"shortint", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5666, 0 );
       }
       goto label$5028;
       label$5103:;
       {
-       FBSTRING* vr$5669 = fb_StrAllocTempDescZEx( (uint8*)"word", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5669, 0 );
+       FBSTRING* vr$5667 = fb_StrAllocTempDescZEx( (uint8*)"word", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5667, 0 );
       }
       goto label$5028;
       label$5104:;
       {
-       FBSTRING* vr$5670 = fb_StrAllocTempDescZEx( (uint8*)"cardinal", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5670, 0 );
+       FBSTRING* vr$5668 = fb_StrAllocTempDescZEx( (uint8*)"cardinal", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5668, 0 );
       }
       goto label$5028;
       label$5105:;
       {
-       FBSTRING* vr$5671 = fb_StrAllocTempDescZEx( (uint8*)"longint", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5671, 0 );
+       FBSTRING* vr$5669 = fb_StrAllocTempDescZEx( (uint8*)"longint", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5669, 0 );
       }
       goto label$5028;
       label$5106:;
       {
-       FBSTRING* vr$5672 = fb_StrAllocTempDescZEx( (uint8*)"longword", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5672, 0 );
+       FBSTRING* vr$5670 = fb_StrAllocTempDescZEx( (uint8*)"longword", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5670, 0 );
       }
       goto label$5028;
       label$5107:;
       {
-       FBSTRING* vr$5673 = fb_StrAllocTempDescZEx( (uint8*)"int64", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5673, 0 );
+       FBSTRING* vr$5671 = fb_StrAllocTempDescZEx( (uint8*)"int64", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5671, 0 );
       }
       goto label$5028;
       label$5108:;
       {
-       FBSTRING* vr$5674 = fb_StrAllocTempDescZEx( (uint8*)"qword", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5674, 0 );
+       FBSTRING* vr$5672 = fb_StrAllocTempDescZEx( (uint8*)"qword", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5672, 0 );
       }
       goto label$5028;
       label$5109:;
       {
-       FBSTRING* vr$5675 = fb_StrAllocTempDescZEx( (uint8*)"single", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5675, 0 );
+       FBSTRING* vr$5673 = fb_StrAllocTempDescZEx( (uint8*)"single", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5673, 0 );
       }
       goto label$5028;
       label$5110:;
       {
-       FBSTRING* vr$5676 = fb_StrAllocTempDescZEx( (uint8*)"extended", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5676, 0 );
+       FBSTRING* vr$5674 = fb_StrAllocTempDescZEx( (uint8*)"extended", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5674, 0 );
       }
       goto label$5028;
       label$5111:;
       {
-       FBSTRING* vr$5677 = fb_StrAllocTempDescZEx( (uint8*)"boolean", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5677, 0 );
+       FBSTRING* vr$5675 = fb_StrAllocTempDescZEx( (uint8*)"boolean", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5675, 0 );
       }
       goto label$5028;
       label$5112:;
       {
-       FBSTRING* vr$5678 = fb_StrAllocTempDescZEx( (uint8*)"inherited", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5678, 0 );
+       FBSTRING* vr$5676 = fb_StrAllocTempDescZEx( (uint8*)"inherited", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5676, 0 );
       }
       goto label$5028;
       label$5113:;
       {
-       FBSTRING* vr$5679 = fb_StrAllocTempDescZEx( (uint8*)"base", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5679, 0 );
+       FBSTRING* vr$5677 = fb_StrAllocTempDescZEx( (uint8*)"base", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5677, 0 );
       }
       goto label$5028;
       label$5114:;
       {
-       FBSTRING* vr$5680 = fb_StrAllocTempDescZEx( (uint8*)"sbyte", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5680, 0 );
+       FBSTRING* vr$5678 = fb_StrAllocTempDescZEx( (uint8*)"sbyte", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5678, 0 );
       }
       goto label$5028;
       label$5115:;
       {
-       FBSTRING* vr$5681 = fb_StrAllocTempDescZEx( (uint8*)"ushort", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5681, 0 );
+       FBSTRING* vr$5679 = fb_StrAllocTempDescZEx( (uint8*)"ushort", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5679, 0 );
       }
       goto label$5028;
       label$5116:;
       {
-       FBSTRING* vr$5682 = fb_StrAllocTempDescZEx( (uint8*)"ulong", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5682, 0 );
+       FBSTRING* vr$5680 = fb_StrAllocTempDescZEx( (uint8*)"ulong", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5680, 0 );
       }
       goto label$5028;
       label$5117:;
       {
-       FBSTRING* vr$5683 = fb_StrAllocTempDescZEx( (uint8*)"catch", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5683, 0 );
+       FBSTRING* vr$5681 = fb_StrAllocTempDescZEx( (uint8*)"catch", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5681, 0 );
       }
       goto label$5028;
       label$5118:;
       {
-       FBSTRING* vr$5684 = fb_StrAllocTempDescZEx( (uint8*)"checked", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5684, 0 );
+       FBSTRING* vr$5682 = fb_StrAllocTempDescZEx( (uint8*)"checked", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5682, 0 );
       }
       goto label$5028;
       label$5119:;
       {
-       FBSTRING* vr$5685 = fb_StrAllocTempDescZEx( (uint8*)"decimal", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5685, 0 );
+       FBSTRING* vr$5683 = fb_StrAllocTempDescZEx( (uint8*)"decimal", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5683, 0 );
       }
       goto label$5028;
       label$5120:;
       {
-       FBSTRING* vr$5686 = fb_StrAllocTempDescZEx( (uint8*)"delegate", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5686, 0 );
+       FBSTRING* vr$5684 = fb_StrAllocTempDescZEx( (uint8*)"delegate", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5684, 0 );
       }
       goto label$5028;
       label$5121:;
       {
-       FBSTRING* vr$5687 = fb_StrAllocTempDescZEx( (uint8*)"event", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5687, 0 );
+       FBSTRING* vr$5685 = fb_StrAllocTempDescZEx( (uint8*)"event", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5685, 0 );
       }
       goto label$5028;
       label$5122:;
       {
-       FBSTRING* vr$5688 = fb_StrAllocTempDescZEx( (uint8*)"foreach", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5688, 0 );
+       FBSTRING* vr$5686 = fb_StrAllocTempDescZEx( (uint8*)"foreach", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5686, 0 );
       }
       goto label$5028;
       label$5123:;
       {
-       FBSTRING* vr$5689 = fb_StrAllocTempDescZEx( (uint8*)"namespace", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5689, 0 );
+       FBSTRING* vr$5687 = fb_StrAllocTempDescZEx( (uint8*)"namespace", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5687, 0 );
       }
       goto label$5028;
       label$5124:;
       {
-       FBSTRING* vr$5690 = fb_StrAllocTempDescZEx( (uint8*)"params", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5690, 0 );
+       FBSTRING* vr$5688 = fb_StrAllocTempDescZEx( (uint8*)"params", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5688, 0 );
       }
       goto label$5028;
       label$5125:;
       {
-       FBSTRING* vr$5691 = fb_StrAllocTempDescZEx( (uint8*)"ref", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5691, 0 );
+       FBSTRING* vr$5689 = fb_StrAllocTempDescZEx( (uint8*)"ref", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5689, 0 );
       }
       goto label$5028;
       label$5126:;
       {
-       FBSTRING* vr$5692 = fb_StrAllocTempDescZEx( (uint8*)"sealed", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5692, 0 );
+       FBSTRING* vr$5690 = fb_StrAllocTempDescZEx( (uint8*)"sealed", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5690, 0 );
       }
       goto label$5028;
       label$5127:;
       {
-       FBSTRING* vr$5693 = fb_StrAllocTempDescZEx( (uint8*)"stackalloc", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5693, 0 );
+       FBSTRING* vr$5691 = fb_StrAllocTempDescZEx( (uint8*)"stackalloc", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5691, 0 );
       }
       goto label$5028;
       label$5128:;
       {
-       FBSTRING* vr$5694 = fb_StrAllocTempDescZEx( (uint8*)"typeof", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5694, 0 );
+       FBSTRING* vr$5692 = fb_StrAllocTempDescZEx( (uint8*)"typeof", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5692, 0 );
       }
       goto label$5028;
       label$5129:;
       {
-       FBSTRING* vr$5695 = fb_StrAllocTempDescZEx( (uint8*)"throw", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5695, 0 );
+       FBSTRING* vr$5693 = fb_StrAllocTempDescZEx( (uint8*)"throw", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5693, 0 );
       }
       goto label$5028;
       label$5130:;
       {
-       FBSTRING* vr$5696 = fb_StrAllocTempDescZEx( (uint8*)"unchecked", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5696, 0 );
+       FBSTRING* vr$5694 = fb_StrAllocTempDescZEx( (uint8*)"unchecked", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5694, 0 );
       }
       goto label$5028;
       label$5131:;
       {
-       FBSTRING* vr$5697 = fb_StrAllocTempDescZEx( (uint8*)"unsafe", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5697, 0 );
+       FBSTRING* vr$5695 = fb_StrAllocTempDescZEx( (uint8*)"unsafe", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5695, 0 );
       }
       goto label$5028;
       label$5132:;
       {
-       FBSTRING* vr$5698 = fb_StrAllocTempDescZEx( (uint8*)"equals", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5698, 0 );
+       FBSTRING* vr$5696 = fb_StrAllocTempDescZEx( (uint8*)"equals", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5696, 0 );
       }
       goto label$5028;
       label$5133:;
       {
-       FBSTRING* vr$5699 = fb_StrAllocTempDescZEx( (uint8*)"into", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5699, 0 );
+       FBSTRING* vr$5697 = fb_StrAllocTempDescZEx( (uint8*)"into", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5697, 0 );
       }
       goto label$5028;
       label$5134:;
       {
-       FBSTRING* vr$5700 = fb_StrAllocTempDescZEx( (uint8*)"nameof", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5700, 0 );
+       FBSTRING* vr$5698 = fb_StrAllocTempDescZEx( (uint8*)"nameof", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5698, 0 );
       }
       goto label$5028;
       label$5135:;
       {
-       FBSTRING* vr$5701 = fb_StrAllocTempDescZEx( (uint8*)"notnull", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5701, 0 );
+       FBSTRING* vr$5699 = fb_StrAllocTempDescZEx( (uint8*)"notnull", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5699, 0 );
       }
       goto label$5028;
       label$5136:;
       {
-       FBSTRING* vr$5702 = fb_StrAllocTempDescZEx( (uint8*)"orderby", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5702, 0 );
+       FBSTRING* vr$5700 = fb_StrAllocTempDescZEx( (uint8*)"orderby", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5700, 0 );
       }
       goto label$5028;
       label$5137:;
       {
-       FBSTRING* vr$5703 = fb_StrAllocTempDescZEx( (uint8*)"partial", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5703, 0 );
+       FBSTRING* vr$5701 = fb_StrAllocTempDescZEx( (uint8*)"partial", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5701, 0 );
       }
       goto label$5028;
       label$5138:;
       {
-       FBSTRING* vr$5704 = fb_StrAllocTempDescZEx( (uint8*)"remove", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5704, 0 );
+       FBSTRING* vr$5702 = fb_StrAllocTempDescZEx( (uint8*)"remove", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5702, 0 );
       }
       goto label$5028;
       label$5139:;
       {
-       FBSTRING* vr$5705 = fb_StrAllocTempDescZEx( (uint8*)"unmanaged", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5705, 0 );
+       FBSTRING* vr$5703 = fb_StrAllocTempDescZEx( (uint8*)"unmanaged", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5703, 0 );
       }
       goto label$5028;
       label$5140:;
       {
-       FBSTRING* vr$5706 = fb_StrAllocTempDescZEx( (uint8*)"inf", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5706, 0 );
+       FBSTRING* vr$5704 = fb_StrAllocTempDescZEx( (uint8*)"inf", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5704, 0 );
       }
       goto label$5028;
       label$5141:;
       {
-       FBSTRING* vr$5707 = fb_StrAllocTempDescZEx( (uint8*)"NaN", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5707, 0 );
+       FBSTRING* vr$5705 = fb_StrAllocTempDescZEx( (uint8*)"NaN", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5705, 0 );
       }
       goto label$5028;
       label$5142:;
       {
-       FBSTRING* vr$5708 = fb_StrAllocTempDescZEx( (uint8*)"NA", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5708, 0 );
+       FBSTRING* vr$5706 = fb_StrAllocTempDescZEx( (uint8*)"NA", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5706, 0 );
       }
       goto label$5028;
       label$5143:;
       {
-       FBSTRING* vr$5709 = fb_StrAllocTempDescZEx( (uint8*)"as?", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5709, 0 );
+       FBSTRING* vr$5707 = fb_StrAllocTempDescZEx( (uint8*)"as?", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5707, 0 );
       }
       goto label$5028;
       label$5144:;
       {
-       FBSTRING* vr$5710 = fb_StrAllocTempDescZEx( (uint8*)"fun", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5710, 0 );
+       FBSTRING* vr$5708 = fb_StrAllocTempDescZEx( (uint8*)"fun", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5708, 0 );
       }
       goto label$5028;
       label$5145:;
       {
-       FBSTRING* vr$5711 = fb_StrAllocTempDescZEx( (uint8*)"!in", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5711, 0 );
+       FBSTRING* vr$5709 = fb_StrAllocTempDescZEx( (uint8*)"!in", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5709, 0 );
       }
       goto label$5028;
       label$5146:;
       {
-       FBSTRING* vr$5712 = fb_StrAllocTempDescZEx( (uint8*)"!is", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5712, 0 );
+       FBSTRING* vr$5710 = fb_StrAllocTempDescZEx( (uint8*)"!is", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5710, 0 );
       }
       goto label$5028;
       label$5147:;
       {
-       FBSTRING* vr$5713 = fb_StrAllocTempDescZEx( (uint8*)"package", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5713, 0 );
+       FBSTRING* vr$5711 = fb_StrAllocTempDescZEx( (uint8*)"package", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5711, 0 );
       }
       goto label$5028;
       label$5148:;
       {
-       FBSTRING* vr$5714 = fb_StrAllocTempDescZEx( (uint8*)"typealias", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5714, 0 );
+       FBSTRING* vr$5712 = fb_StrAllocTempDescZEx( (uint8*)"typealias", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5712, 0 );
       }
       goto label$5028;
       label$5149:;
       {
-       FBSTRING* vr$5715 = fb_StrAllocTempDescZEx( (uint8*)"init", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5715, 0 );
+       FBSTRING* vr$5713 = fb_StrAllocTempDescZEx( (uint8*)"init", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5713, 0 );
       }
       goto label$5028;
       label$5150:;
       {
-       FBSTRING* vr$5716 = fb_StrAllocTempDescZEx( (uint8*)"param", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5716, 0 );
+       FBSTRING* vr$5714 = fb_StrAllocTempDescZEx( (uint8*)"param", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5714, 0 );
       }
       goto label$5028;
       label$5151:;
       {
-       FBSTRING* vr$5717 = fb_StrAllocTempDescZEx( (uint8*)"receiver", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5717, 0 );
+       FBSTRING* vr$5715 = fb_StrAllocTempDescZEx( (uint8*)"receiver", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5715, 0 );
       }
       goto label$5028;
       label$5152:;
       {
-       FBSTRING* vr$5718 = fb_StrAllocTempDescZEx( (uint8*)"setparam", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5718, 0 );
+       FBSTRING* vr$5716 = fb_StrAllocTempDescZEx( (uint8*)"setparam", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5716, 0 );
       }
       goto label$5028;
       label$5153:;
       {
-       FBSTRING* vr$5719 = fb_StrAllocTempDescZEx( (uint8*)"actual", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5719, 0 );
+       FBSTRING* vr$5717 = fb_StrAllocTempDescZEx( (uint8*)"actual", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5717, 0 );
       }
       goto label$5028;
       label$5154:;
       {
-       FBSTRING* vr$5720 = fb_StrAllocTempDescZEx( (uint8*)"annotation", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5720, 0 );
+       FBSTRING* vr$5718 = fb_StrAllocTempDescZEx( (uint8*)"annotation", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5718, 0 );
       }
       goto label$5028;
       label$5155:;
       {
-       FBSTRING* vr$5721 = fb_StrAllocTempDescZEx( (uint8*)"companion", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5721, 0 );
+       FBSTRING* vr$5719 = fb_StrAllocTempDescZEx( (uint8*)"companion", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5719, 0 );
       }
       goto label$5028;
       label$5156:;
       {
-       FBSTRING* vr$5722 = fb_StrAllocTempDescZEx( (uint8*)"crossinline", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5722, 0 );
+       FBSTRING* vr$5720 = fb_StrAllocTempDescZEx( (uint8*)"crossinline", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5720, 0 );
       }
       goto label$5028;
       label$5157:;
       {
-       FBSTRING* vr$5723 = fb_StrAllocTempDescZEx( (uint8*)"expect", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5723, 0 );
+       FBSTRING* vr$5721 = fb_StrAllocTempDescZEx( (uint8*)"expect", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5721, 0 );
       }
       goto label$5028;
       label$5158:;
       {
-       FBSTRING* vr$5724 = fb_StrAllocTempDescZEx( (uint8*)"infix", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5724, 0 );
+       FBSTRING* vr$5722 = fb_StrAllocTempDescZEx( (uint8*)"infix", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5722, 0 );
       }
       goto label$5028;
       label$5159:;
       {
-       FBSTRING* vr$5725 = fb_StrAllocTempDescZEx( (uint8*)"lateinit", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5725, 0 );
+       FBSTRING* vr$5723 = fb_StrAllocTempDescZEx( (uint8*)"lateinit", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5723, 0 );
       }
       goto label$5028;
       label$5160:;
       {
-       FBSTRING* vr$5726 = fb_StrAllocTempDescZEx( (uint8*)"noinline", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5726, 0 );
+       FBSTRING* vr$5724 = fb_StrAllocTempDescZEx( (uint8*)"noinline", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5724, 0 );
       }
       goto label$5028;
       label$5161:;
       {
-       FBSTRING* vr$5727 = fb_StrAllocTempDescZEx( (uint8*)"reified", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5727, 0 );
+       FBSTRING* vr$5725 = fb_StrAllocTempDescZEx( (uint8*)"reified", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5725, 0 );
       }
       goto label$5028;
       label$5162:;
       {
-       FBSTRING* vr$5728 = fb_StrAllocTempDescZEx( (uint8*)"suspend", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5728, 0 );
+       FBSTRING* vr$5726 = fb_StrAllocTempDescZEx( (uint8*)"suspend", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5726, 0 );
       }
       goto label$5028;
       label$5163:;
       {
-       FBSTRING* vr$5729 = fb_StrAllocTempDescZEx( (uint8*)"tailrec", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5729, 0 );
+       FBSTRING* vr$5727 = fb_StrAllocTempDescZEx( (uint8*)"tailrec", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5727, 0 );
       }
       goto label$5028;
       label$5164:;
       {
-       FBSTRING* vr$5730 = fb_StrAllocTempDescZEx( (uint8*)"vararg", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5730, 0 );
+       FBSTRING* vr$5728 = fb_StrAllocTempDescZEx( (uint8*)"vararg", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5728, 0 );
       }
       goto label$5028;
       label$5165:;
       {
-       FBSTRING* vr$5731 = fb_StrAllocTempDescZEx( (uint8*)"it", 2ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5731, 0 );
+       FBSTRING* vr$5729 = fb_StrAllocTempDescZEx( (uint8*)"it", 2ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5729, 0 );
       }
       goto label$5028;
       label$5166:;
       {
-       FBSTRING* vr$5732 = fb_StrAllocTempDescZEx( (uint8*)"callable", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5732, 0 );
+       FBSTRING* vr$5730 = fb_StrAllocTempDescZEx( (uint8*)"callable", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5730, 0 );
       }
       goto label$5028;
       label$5167:;
       {
-       FBSTRING* vr$5733 = fb_StrAllocTempDescZEx( (uint8*)"clone", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5733, 0 );
+       FBSTRING* vr$5731 = fb_StrAllocTempDescZEx( (uint8*)"clone", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5731, 0 );
       }
       goto label$5028;
       label$5168:;
       {
-       FBSTRING* vr$5734 = fb_StrAllocTempDescZEx( (uint8*)"echo", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5734, 0 );
+       FBSTRING* vr$5732 = fb_StrAllocTempDescZEx( (uint8*)"echo", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5732, 0 );
       }
       goto label$5028;
       label$5169:;
       {
-       FBSTRING* vr$5735 = fb_StrAllocTempDescZEx( (uint8*)"empty", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5735, 0 );
+       FBSTRING* vr$5733 = fb_StrAllocTempDescZEx( (uint8*)"empty", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5733, 0 );
       }
       goto label$5028;
       label$5170:;
       {
-       FBSTRING* vr$5736 = fb_StrAllocTempDescZEx( (uint8*)"enddeclare", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5736, 0 );
+       FBSTRING* vr$5734 = fb_StrAllocTempDescZEx( (uint8*)"enddeclare", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5734, 0 );
       }
       goto label$5028;
       label$5171:;
       {
-       FBSTRING* vr$5737 = fb_StrAllocTempDescZEx( (uint8*)"endfor", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5737, 0 );
+       FBSTRING* vr$5735 = fb_StrAllocTempDescZEx( (uint8*)"endfor", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5735, 0 );
       }
       goto label$5028;
       label$5172:;
       {
-       FBSTRING* vr$5738 = fb_StrAllocTempDescZEx( (uint8*)"endforeach", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5738, 0 );
+       FBSTRING* vr$5736 = fb_StrAllocTempDescZEx( (uint8*)"endforeach", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5736, 0 );
       }
       goto label$5028;
       label$5173:;
       {
-       FBSTRING* vr$5739 = fb_StrAllocTempDescZEx( (uint8*)"endif", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5739, 0 );
+       FBSTRING* vr$5737 = fb_StrAllocTempDescZEx( (uint8*)"endif", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5737, 0 );
       }
       goto label$5028;
       label$5174:;
       {
-       FBSTRING* vr$5740 = fb_StrAllocTempDescZEx( (uint8*)"endswitch", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5740, 0 );
+       FBSTRING* vr$5738 = fb_StrAllocTempDescZEx( (uint8*)"endswitch", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5738, 0 );
       }
       goto label$5028;
       label$5175:;
       {
-       FBSTRING* vr$5741 = fb_StrAllocTempDescZEx( (uint8*)"endwile", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5741, 0 );
+       FBSTRING* vr$5739 = fb_StrAllocTempDescZEx( (uint8*)"endwile", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5739, 0 );
       }
       goto label$5028;
       label$5176:;
       {
-       FBSTRING* vr$5742 = fb_StrAllocTempDescZEx( (uint8*)"extends", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5742, 0 );
+       FBSTRING* vr$5740 = fb_StrAllocTempDescZEx( (uint8*)"extends", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5740, 0 );
       }
       goto label$5028;
       label$5177:;
       {
-       FBSTRING* vr$5743 = fb_StrAllocTempDescZEx( (uint8*)"instanceof", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5743, 0 );
+       FBSTRING* vr$5741 = fb_StrAllocTempDescZEx( (uint8*)"instanceof", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5741, 0 );
       }
       goto label$5028;
       label$5178:;
       {
-       FBSTRING* vr$5744 = fb_StrAllocTempDescZEx( (uint8*)"isset", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5744, 0 );
+       FBSTRING* vr$5742 = fb_StrAllocTempDescZEx( (uint8*)"isset", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5742, 0 );
       }
       goto label$5028;
       label$5179:;
       {
-       FBSTRING* vr$5745 = fb_StrAllocTempDescZEx( (uint8*)"require", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5745, 0 );
+       FBSTRING* vr$5743 = fb_StrAllocTempDescZEx( (uint8*)"require", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5743, 0 );
       }
       goto label$5028;
       label$5180:;
       {
-       FBSTRING* vr$5746 = fb_StrAllocTempDescZEx( (uint8*)"trait", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5746, 0 );
+       FBSTRING* vr$5744 = fb_StrAllocTempDescZEx( (uint8*)"trait", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5744, 0 );
       }
       goto label$5028;
       label$5181:;
       {
-       FBSTRING* vr$5747 = fb_StrAllocTempDescZEx( (uint8*)"unset", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5747, 0 );
+       FBSTRING* vr$5745 = fb_StrAllocTempDescZEx( (uint8*)"unset", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5745, 0 );
       }
       goto label$5028;
       label$5182:;
       {
-       FBSTRING* vr$5748 = fb_StrAllocTempDescZEx( (uint8*)"del", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5748, 0 );
+       FBSTRING* vr$5746 = fb_StrAllocTempDescZEx( (uint8*)"del", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5746, 0 );
       }
       goto label$5028;
       label$5183:;
       {
-       FBSTRING* vr$5749 = fb_StrAllocTempDescZEx( (uint8*)"yield", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5749, 0 );
+       FBSTRING* vr$5747 = fb_StrAllocTempDescZEx( (uint8*)"yield", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5747, 0 );
       }
       goto label$5028;
       label$5184:;
       {
-       FBSTRING* vr$5750 = fb_StrAllocTempDescZEx( (uint8*)"signed", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5750, 0 );
+       FBSTRING* vr$5748 = fb_StrAllocTempDescZEx( (uint8*)"signed", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5748, 0 );
       }
       goto label$5028;
       label$5185:;
       {
-       FBSTRING* vr$5751 = fb_StrAllocTempDescZEx( (uint8*)"final", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5751, 0 );
+       FBSTRING* vr$5749 = fb_StrAllocTempDescZEx( (uint8*)"final", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5749, 0 );
       }
       goto label$5028;
       label$5186:;
       {
-       FBSTRING* vr$5752 = fb_StrAllocTempDescZEx( (uint8*)"implements", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5752, 0 );
+       FBSTRING* vr$5750 = fb_StrAllocTempDescZEx( (uint8*)"implements", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5750, 0 );
       }
       goto label$5028;
       label$5187:;
       {
-       FBSTRING* vr$5753 = fb_StrAllocTempDescZEx( (uint8*)"strictfp", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5753, 0 );
+       FBSTRING* vr$5751 = fb_StrAllocTempDescZEx( (uint8*)"strictfp", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5751, 0 );
       }
       goto label$5028;
       label$5188:;
       {
-       FBSTRING* vr$5754 = fb_StrAllocTempDescZEx( (uint8*)"throws", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5754, 0 );
+       FBSTRING* vr$5752 = fb_StrAllocTempDescZEx( (uint8*)"throws", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5752, 0 );
       }
       goto label$5028;
       label$5189:;
       {
-       FBSTRING* vr$5755 = fb_StrAllocTempDescZEx( (uint8*)"transient", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5755, 0 );
+       FBSTRING* vr$5753 = fb_StrAllocTempDescZEx( (uint8*)"transient", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5753, 0 );
       }
       goto label$5028;
       label$5190:;
       {
-       FBSTRING* vr$5756 = fb_StrAllocTempDescZEx( (uint8*)"allocate", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5756, 0 );
+       FBSTRING* vr$5754 = fb_StrAllocTempDescZEx( (uint8*)"allocate", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5754, 0 );
       }
       goto label$5028;
       label$5191:;
       {
-       FBSTRING* vr$5757 = fb_StrAllocTempDescZEx( (uint8*)"andalso", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5757, 0 );
+       FBSTRING* vr$5755 = fb_StrAllocTempDescZEx( (uint8*)"andalso", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5755, 0 );
       }
       goto label$5028;
       label$5192:;
       {
-       FBSTRING* vr$5758 = fb_StrAllocTempDescZEx( (uint8*)"assertwarn", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5758, 0 );
+       FBSTRING* vr$5756 = fb_StrAllocTempDescZEx( (uint8*)"assertwarn", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5756, 0 );
       }
       goto label$5028;
       label$5193:;
       {
-       FBSTRING* vr$5759 = fb_StrAllocTempDescZEx( (uint8*)"bin", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5759, 0 );
+       FBSTRING* vr$5757 = fb_StrAllocTempDescZEx( (uint8*)"bin", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5757, 0 );
       }
       goto label$5028;
       label$5194:;
       {
-       FBSTRING* vr$5760 = fb_StrAllocTempDescZEx( (uint8*)"bit", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5760, 0 );
+       FBSTRING* vr$5758 = fb_StrAllocTempDescZEx( (uint8*)"bit", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5758, 0 );
       }
       goto label$5028;
       label$5195:;
       {
-       FBSTRING* vr$5761 = fb_StrAllocTempDescZEx( (uint8*)"bitreset", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5761, 0 );
+       FBSTRING* vr$5759 = fb_StrAllocTempDescZEx( (uint8*)"bitreset", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5759, 0 );
       }
       goto label$5028;
       label$5196:;
       {
-       FBSTRING* vr$5762 = fb_StrAllocTempDescZEx( (uint8*)"bitset", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5762, 0 );
+       FBSTRING* vr$5760 = fb_StrAllocTempDescZEx( (uint8*)"bitset", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5760, 0 );
       }
       goto label$5028;
       label$5197:;
       {
-       FBSTRING* vr$5763 = fb_StrAllocTempDescZEx( (uint8*)"byref", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5763, 0 );
+       FBSTRING* vr$5761 = fb_StrAllocTempDescZEx( (uint8*)"byref", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5761, 0 );
       }
       goto label$5028;
       label$5198:;
       {
-       FBSTRING* vr$5764 = fb_StrAllocTempDescZEx( (uint8*)"byval", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5764, 0 );
+       FBSTRING* vr$5762 = fb_StrAllocTempDescZEx( (uint8*)"byval", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5762, 0 );
       }
       goto label$5028;
       label$5199:;
       {
-       FBSTRING* vr$5765 = fb_StrAllocTempDescZEx( (uint8*)"callocate", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5765, 0 );
+       FBSTRING* vr$5763 = fb_StrAllocTempDescZEx( (uint8*)"callocate", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5763, 0 );
       }
       goto label$5028;
       label$5200:;
       {
-       FBSTRING* vr$5766 = fb_StrAllocTempDescZEx( (uint8*)"cbool", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5766, 0 );
+       FBSTRING* vr$5764 = fb_StrAllocTempDescZEx( (uint8*)"cbool", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5764, 0 );
       }
       goto label$5028;
       label$5201:;
       {
-       FBSTRING* vr$5767 = fb_StrAllocTempDescZEx( (uint8*)"cbyte", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5767, 0 );
+       FBSTRING* vr$5765 = fb_StrAllocTempDescZEx( (uint8*)"cbyte", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5765, 0 );
       }
       goto label$5028;
       label$5202:;
       {
-       FBSTRING* vr$5768 = fb_StrAllocTempDescZEx( (uint8*)"clng", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5768, 0 );
+       FBSTRING* vr$5766 = fb_StrAllocTempDescZEx( (uint8*)"clng", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5766, 0 );
       }
       goto label$5028;
       label$5203:;
       {
-       FBSTRING* vr$5769 = fb_StrAllocTempDescZEx( (uint8*)"clongint", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5769, 0 );
+       FBSTRING* vr$5767 = fb_StrAllocTempDescZEx( (uint8*)"clongint", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5767, 0 );
       }
       goto label$5028;
       label$5204:;
       {
-       FBSTRING* vr$5770 = fb_StrAllocTempDescZEx( (uint8*)"command", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5770, 0 );
+       FBSTRING* vr$5768 = fb_StrAllocTempDescZEx( (uint8*)"command", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5768, 0 );
       }
       goto label$5028;
       label$5205:;
       {
-       FBSTRING* vr$5771 = fb_StrAllocTempDescZEx( (uint8*)"condbroadcast", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5771, 0 );
+       FBSTRING* vr$5769 = fb_StrAllocTempDescZEx( (uint8*)"condbroadcast", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5769, 0 );
       }
       goto label$5028;
       label$5206:;
       {
-       FBSTRING* vr$5772 = fb_StrAllocTempDescZEx( (uint8*)"condcreate", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5772, 0 );
+       FBSTRING* vr$5770 = fb_StrAllocTempDescZEx( (uint8*)"condcreate", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5770, 0 );
       }
       goto label$5028;
       label$5207:;
       {
-       FBSTRING* vr$5773 = fb_StrAllocTempDescZEx( (uint8*)"conddestroy", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5773, 0 );
+       FBSTRING* vr$5771 = fb_StrAllocTempDescZEx( (uint8*)"conddestroy", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5771, 0 );
       }
       goto label$5028;
       label$5208:;
       {
-       FBSTRING* vr$5774 = fb_StrAllocTempDescZEx( (uint8*)"condsignal", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5774, 0 );
+       FBSTRING* vr$5772 = fb_StrAllocTempDescZEx( (uint8*)"condsignal", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5772, 0 );
       }
       goto label$5028;
       label$5209:;
       {
-       FBSTRING* vr$5775 = fb_StrAllocTempDescZEx( (uint8*)"condwait", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5775, 0 );
+       FBSTRING* vr$5773 = fb_StrAllocTempDescZEx( (uint8*)"condwait", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5773, 0 );
       }
       goto label$5028;
       label$5210:;
       {
-       FBSTRING* vr$5776 = fb_StrAllocTempDescZEx( (uint8*)"cptr", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5776, 0 );
+       FBSTRING* vr$5774 = fb_StrAllocTempDescZEx( (uint8*)"cptr", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5774, 0 );
       }
       goto label$5028;
       label$5211:;
       {
-       FBSTRING* vr$5777 = fb_StrAllocTempDescZEx( (uint8*)"cshort", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5777, 0 );
+       FBSTRING* vr$5775 = fb_StrAllocTempDescZEx( (uint8*)"cshort", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5775, 0 );
       }
       goto label$5028;
       label$5212:;
       {
-       FBSTRING* vr$5778 = fb_StrAllocTempDescZEx( (uint8*)"csign", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5778, 0 );
+       FBSTRING* vr$5776 = fb_StrAllocTempDescZEx( (uint8*)"csign", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5776, 0 );
       }
       goto label$5028;
       label$5213:;
       {
-       FBSTRING* vr$5779 = fb_StrAllocTempDescZEx( (uint8*)"cubyte", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5779, 0 );
+       FBSTRING* vr$5777 = fb_StrAllocTempDescZEx( (uint8*)"cubyte", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5777, 0 );
       }
       goto label$5028;
       label$5214:;
       {
-       FBSTRING* vr$5780 = fb_StrAllocTempDescZEx( (uint8*)"cuint", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5780, 0 );
+       FBSTRING* vr$5778 = fb_StrAllocTempDescZEx( (uint8*)"cuint", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5778, 0 );
       }
       goto label$5028;
       label$5215:;
       {
-       FBSTRING* vr$5781 = fb_StrAllocTempDescZEx( (uint8*)"culng", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5781, 0 );
+       FBSTRING* vr$5779 = fb_StrAllocTempDescZEx( (uint8*)"culng", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5779, 0 );
       }
       goto label$5028;
       label$5216:;
       {
-       FBSTRING* vr$5782 = fb_StrAllocTempDescZEx( (uint8*)"culngint", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5782, 0 );
+       FBSTRING* vr$5780 = fb_StrAllocTempDescZEx( (uint8*)"culngint", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5780, 0 );
       }
       goto label$5028;
       label$5217:;
       {
-       FBSTRING* vr$5783 = fb_StrAllocTempDescZEx( (uint8*)"cunsg", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5783, 0 );
+       FBSTRING* vr$5781 = fb_StrAllocTempDescZEx( (uint8*)"cunsg", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5781, 0 );
       }
       goto label$5028;
       label$5218:;
       {
-       FBSTRING* vr$5784 = fb_StrAllocTempDescZEx( (uint8*)"curdir", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5784, 0 );
+       FBSTRING* vr$5782 = fb_StrAllocTempDescZEx( (uint8*)"curdir", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5782, 0 );
       }
       goto label$5028;
       label$5219:;
       {
-       FBSTRING* vr$5785 = fb_StrAllocTempDescZEx( (uint8*)"cushort", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5785, 0 );
+       FBSTRING* vr$5783 = fb_StrAllocTempDescZEx( (uint8*)"cushort", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5783, 0 );
       }
       goto label$5028;
       label$5220:;
       {
-       FBSTRING* vr$5786 = fb_StrAllocTempDescZEx( (uint8*)"custom", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5786, 0 );
+       FBSTRING* vr$5784 = fb_StrAllocTempDescZEx( (uint8*)"custom", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5784, 0 );
       }
       goto label$5028;
       label$5221:;
       {
-       FBSTRING* vr$5787 = fb_StrAllocTempDescZEx( (uint8*)"cva_arg", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5787, 0 );
+       FBSTRING* vr$5785 = fb_StrAllocTempDescZEx( (uint8*)"cva_arg", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5785, 0 );
       }
       goto label$5028;
       label$5222:;
       {
-       FBSTRING* vr$5788 = fb_StrAllocTempDescZEx( (uint8*)"cva_copy", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5788, 0 );
+       FBSTRING* vr$5786 = fb_StrAllocTempDescZEx( (uint8*)"cva_copy", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5786, 0 );
       }
       goto label$5028;
       label$5223:;
       {
-       FBSTRING* vr$5789 = fb_StrAllocTempDescZEx( (uint8*)"cva_list", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5789, 0 );
+       FBSTRING* vr$5787 = fb_StrAllocTempDescZEx( (uint8*)"cva_list", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5787, 0 );
       }
       goto label$5028;
       label$5224:;
       {
-       FBSTRING* vr$5790 = fb_StrAllocTempDescZEx( (uint8*)"cva_end", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5790, 0 );
+       FBSTRING* vr$5788 = fb_StrAllocTempDescZEx( (uint8*)"cva_end", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5788, 0 );
       }
       goto label$5028;
       label$5225:;
       {
-       FBSTRING* vr$5791 = fb_StrAllocTempDescZEx( (uint8*)"cva_start", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5791, 0 );
+       FBSTRING* vr$5789 = fb_StrAllocTempDescZEx( (uint8*)"cva_start", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5789, 0 );
       }
       goto label$5028;
       label$5226:;
       {
-       FBSTRING* vr$5792 = fb_StrAllocTempDescZEx( (uint8*)"cvl", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5792, 0 );
+       FBSTRING* vr$5790 = fb_StrAllocTempDescZEx( (uint8*)"cvl", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5790, 0 );
       }
       goto label$5028;
       label$5227:;
       {
-       FBSTRING* vr$5793 = fb_StrAllocTempDescZEx( (uint8*)"cvlongint", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5793, 0 );
+       FBSTRING* vr$5791 = fb_StrAllocTempDescZEx( (uint8*)"cvlongint", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5791, 0 );
       }
       goto label$5028;
       label$5228:;
       {
-       FBSTRING* vr$5794 = fb_StrAllocTempDescZEx( (uint8*)"cvshort", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5794, 0 );
+       FBSTRING* vr$5792 = fb_StrAllocTempDescZEx( (uint8*)"cvshort", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5792, 0 );
       }
       goto label$5028;
       label$5229:;
       {
-       FBSTRING* vr$5795 = fb_StrAllocTempDescZEx( (uint8*)"dateadd", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5795, 0 );
+       FBSTRING* vr$5793 = fb_StrAllocTempDescZEx( (uint8*)"dateadd", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5793, 0 );
       }
       goto label$5028;
       label$5230:;
       {
-       FBSTRING* vr$5796 = fb_StrAllocTempDescZEx( (uint8*)"datediff", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5796, 0 );
+       FBSTRING* vr$5794 = fb_StrAllocTempDescZEx( (uint8*)"datediff", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5794, 0 );
       }
       goto label$5028;
       label$5231:;
       {
-       FBSTRING* vr$5797 = fb_StrAllocTempDescZEx( (uint8*)"datepart", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5797, 0 );
+       FBSTRING* vr$5795 = fb_StrAllocTempDescZEx( (uint8*)"datepart", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5795, 0 );
       }
       goto label$5028;
       label$5232:;
       {
-       FBSTRING* vr$5798 = fb_StrAllocTempDescZEx( (uint8*)"dateserial", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5798, 0 );
+       FBSTRING* vr$5796 = fb_StrAllocTempDescZEx( (uint8*)"dateserial", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5796, 0 );
       }
       goto label$5028;
       label$5233:;
       {
-       FBSTRING* vr$5799 = fb_StrAllocTempDescZEx( (uint8*)"datevalue", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5799, 0 );
+       FBSTRING* vr$5797 = fb_StrAllocTempDescZEx( (uint8*)"datevalue", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5797, 0 );
       }
       goto label$5028;
       label$5234:;
       {
-       FBSTRING* vr$5800 = fb_StrAllocTempDescZEx( (uint8*)"deallocate", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5800, 0 );
+       FBSTRING* vr$5798 = fb_StrAllocTempDescZEx( (uint8*)"deallocate", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5798, 0 );
       }
       goto label$5028;
       label$5235:;
       {
-       FBSTRING* vr$5801 = fb_StrAllocTempDescZEx( (uint8*)"defbyte", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5801, 0 );
+       FBSTRING* vr$5799 = fb_StrAllocTempDescZEx( (uint8*)"defbyte", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5799, 0 );
       }
       goto label$5028;
       label$5236:;
       {
-       FBSTRING* vr$5802 = fb_StrAllocTempDescZEx( (uint8*)"deflng", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5802, 0 );
+       FBSTRING* vr$5800 = fb_StrAllocTempDescZEx( (uint8*)"deflng", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5800, 0 );
       }
       goto label$5028;
       label$5237:;
       {
-       FBSTRING* vr$5803 = fb_StrAllocTempDescZEx( (uint8*)"deflongint", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5803, 0 );
+       FBSTRING* vr$5801 = fb_StrAllocTempDescZEx( (uint8*)"deflongint", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5801, 0 );
       }
       goto label$5028;
       label$5238:;
       {
-       FBSTRING* vr$5804 = fb_StrAllocTempDescZEx( (uint8*)"defshort", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5804, 0 );
+       FBSTRING* vr$5802 = fb_StrAllocTempDescZEx( (uint8*)"defshort", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5802, 0 );
       }
       goto label$5028;
       label$5239:;
       {
-       FBSTRING* vr$5805 = fb_StrAllocTempDescZEx( (uint8*)"defubyte", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5805, 0 );
+       FBSTRING* vr$5803 = fb_StrAllocTempDescZEx( (uint8*)"defubyte", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5803, 0 );
       }
       goto label$5028;
       label$5240:;
       {
-       FBSTRING* vr$5806 = fb_StrAllocTempDescZEx( (uint8*)"defuint", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5806, 0 );
+       FBSTRING* vr$5804 = fb_StrAllocTempDescZEx( (uint8*)"defuint", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5804, 0 );
       }
       goto label$5028;
       label$5241:;
       {
-       FBSTRING* vr$5807 = fb_StrAllocTempDescZEx( (uint8*)"defulongint", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5807, 0 );
+       FBSTRING* vr$5805 = fb_StrAllocTempDescZEx( (uint8*)"defulongint", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5805, 0 );
       }
       goto label$5028;
       label$5242:;
       {
-       FBSTRING* vr$5808 = fb_StrAllocTempDescZEx( (uint8*)"defushort", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5808, 0 );
+       FBSTRING* vr$5806 = fb_StrAllocTempDescZEx( (uint8*)"defushort", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5806, 0 );
       }
       goto label$5028;
       label$5243:;
       {
-       FBSTRING* vr$5809 = fb_StrAllocTempDescZEx( (uint8*)"dir", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5809, 0 );
+       FBSTRING* vr$5807 = fb_StrAllocTempDescZEx( (uint8*)"dir", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5807, 0 );
       }
       goto label$5028;
       label$5244:;
       {
-       FBSTRING* vr$5810 = fb_StrAllocTempDescZEx( (uint8*)"dylibfree", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5810, 0 );
+       FBSTRING* vr$5808 = fb_StrAllocTempDescZEx( (uint8*)"dylibfree", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5808, 0 );
       }
       goto label$5028;
       label$5245:;
       {
-       FBSTRING* vr$5811 = fb_StrAllocTempDescZEx( (uint8*)"dylibload", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5811, 0 );
+       FBSTRING* vr$5809 = fb_StrAllocTempDescZEx( (uint8*)"dylibload", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5809, 0 );
       }
       goto label$5028;
       label$5246:;
       {
-       FBSTRING* vr$5812 = fb_StrAllocTempDescZEx( (uint8*)"dylibsymbol", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5812, 1 );
+       FBSTRING* vr$5810 = fb_StrAllocTempDescZEx( (uint8*)"dylibsymbol", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5810, 1 );
       }
       goto label$5028;
       label$5247:;
       {
-       FBSTRING* vr$5813 = fb_StrAllocTempDescZEx( (uint8*)"encoding", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5813, 0 );
+       FBSTRING* vr$5811 = fb_StrAllocTempDescZEx( (uint8*)"encoding", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5811, 0 );
       }
       goto label$5028;
       label$5248:;
       {
-       FBSTRING* vr$5814 = fb_StrAllocTempDescZEx( (uint8*)"erfn", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5814, 0 );
+       FBSTRING* vr$5812 = fb_StrAllocTempDescZEx( (uint8*)"erfn", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5812, 0 );
       }
       goto label$5028;
       label$5249:;
       {
-       FBSTRING* vr$5815 = fb_StrAllocTempDescZEx( (uint8*)"ermn", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5815, 0 );
+       FBSTRING* vr$5813 = fb_StrAllocTempDescZEx( (uint8*)"ermn", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5813, 0 );
       }
       goto label$5028;
       label$5250:;
       {
-       FBSTRING* vr$5816 = fb_StrAllocTempDescZEx( (uint8*)"exec", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5816, 0 );
+       FBSTRING* vr$5814 = fb_StrAllocTempDescZEx( (uint8*)"exec", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5814, 0 );
       }
       goto label$5028;
       label$5251:;
       {
-       FBSTRING* vr$5817 = fb_StrAllocTempDescZEx( (uint8*)"exepath", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5817, 0 );
+       FBSTRING* vr$5815 = fb_StrAllocTempDescZEx( (uint8*)"exepath", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5815, 0 );
       }
       goto label$5028;
       label$5252:;
       {
-       FBSTRING* vr$5818 = fb_StrAllocTempDescZEx( (uint8*)"compile", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5818, 0 );
+       FBSTRING* vr$5816 = fb_StrAllocTempDescZEx( (uint8*)"compile", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5816, 0 );
       }
       goto label$5028;
       label$5253:;
       {
-       FBSTRING* vr$5819 = fb_StrAllocTempDescZEx( (uint8*)"help", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5819, 0 );
+       FBSTRING* vr$5817 = fb_StrAllocTempDescZEx( (uint8*)"help", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5817, 0 );
       }
       goto label$5028;
       label$5254:;
       {
-       FBSTRING* vr$5820 = fb_StrAllocTempDescZEx( (uint8*)"identify", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5820, 0 );
+       FBSTRING* vr$5818 = fb_StrAllocTempDescZEx( (uint8*)"identify", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5818, 0 );
       }
       goto label$5028;
       label$5255:;
       {
-       FBSTRING* vr$5821 = fb_StrAllocTempDescZEx( (uint8*)"listnh", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5821, 0 );
+       FBSTRING* vr$5819 = fb_StrAllocTempDescZEx( (uint8*)"listnh", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5819, 0 );
       }
       goto label$5028;
       label$5256:;
       {
-       FBSTRING* vr$5822 = fb_StrAllocTempDescZEx( (uint8*)"old", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5822, 0 );
+       FBSTRING* vr$5820 = fb_StrAllocTempDescZEx( (uint8*)"old", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5820, 0 );
       }
       goto label$5028;
       label$5257:;
       {
-       FBSTRING* vr$5823 = fb_StrAllocTempDescZEx( (uint8*)"rename", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5823, 0 );
+       FBSTRING* vr$5821 = fb_StrAllocTempDescZEx( (uint8*)"rename", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5821, 0 );
       }
       goto label$5028;
       label$5258:;
       {
-       FBSTRING* vr$5824 = fb_StrAllocTempDescZEx( (uint8*)"resequence", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5824, 0 );
+       FBSTRING* vr$5822 = fb_StrAllocTempDescZEx( (uint8*)"resequence", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5822, 0 );
       }
       goto label$5028;
       label$5259:;
       {
-       FBSTRING* vr$5825 = fb_StrAllocTempDescZEx( (uint8*)"scratch", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5825, 0 );
+       FBSTRING* vr$5823 = fb_StrAllocTempDescZEx( (uint8*)"scratch", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5823, 0 );
       }
       goto label$5028;
       label$5260:;
       {
-       FBSTRING* vr$5826 = fb_StrAllocTempDescZEx( (uint8*)"show", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5826, 0 );
+       FBSTRING* vr$5824 = fb_StrAllocTempDescZEx( (uint8*)"show", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5824, 0 );
       }
       goto label$5028;
       label$5261:;
       {
-       FBSTRING* vr$5827 = fb_StrAllocTempDescZEx( (uint8*)"unsave", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5827, 0 );
+       FBSTRING* vr$5825 = fb_StrAllocTempDescZEx( (uint8*)"unsave", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5825, 0 );
       }
       goto label$5028;
       label$5262:;
       {
-       FBSTRING* vr$5828 = fb_StrAllocTempDescZEx( (uint8*)"bufsiz", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5828, 0 );
+       FBSTRING* vr$5826 = fb_StrAllocTempDescZEx( (uint8*)"bufsiz", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5826, 0 );
       }
       goto label$5028;
       label$5263:;
       {
-       FBSTRING* vr$5829 = fb_StrAllocTempDescZEx( (uint8*)"ccpos", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5829, 0 );
+       FBSTRING* vr$5827 = fb_StrAllocTempDescZEx( (uint8*)"ccpos", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5827, 0 );
       }
       goto label$5028;
       label$5264:;
       {
-       FBSTRING* vr$5830 = fb_StrAllocTempDescZEx( (uint8*)"change", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5830, 0 );
+       FBSTRING* vr$5828 = fb_StrAllocTempDescZEx( (uint8*)"change", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5828, 0 );
       }
       goto label$5028;
       label$5265:;
       {
-       FBSTRING* vr$5831 = fb_StrAllocTempDescZEx( (uint8*)"ctrlc", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5831, 0 );
+       FBSTRING* vr$5829 = fb_StrAllocTempDescZEx( (uint8*)"ctrlc", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5829, 0 );
       }
       goto label$5028;
       label$5266:;
       {
-       FBSTRING* vr$5832 = fb_StrAllocTempDescZEx( (uint8*)"det", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5832, 0 );
+       FBSTRING* vr$5830 = fb_StrAllocTempDescZEx( (uint8*)"det", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5830, 0 );
       }
       goto label$5028;
       label$5267:;
       {
-       FBSTRING* vr$5833 = fb_StrAllocTempDescZEx( (uint8*)"dif", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5833, 0 );
+       FBSTRING* vr$5831 = fb_StrAllocTempDescZEx( (uint8*)"dif", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5831, 0 );
       }
       goto label$5028;
       label$5268:;
       {
-       FBSTRING* vr$5834 = fb_StrAllocTempDescZEx( (uint8*)"ern", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5834, 0 );
+       FBSTRING* vr$5832 = fb_StrAllocTempDescZEx( (uint8*)"ern", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5832, 0 );
       }
       goto label$5028;
       label$5269:;
       {
-       FBSTRING* vr$5835 = fb_StrAllocTempDescZEx( (uint8*)"fileattr", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5835, 0 );
+       FBSTRING* vr$5833 = fb_StrAllocTempDescZEx( (uint8*)"fileattr", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5833, 0 );
       }
       goto label$5028;
       label$5270:;
       {
-       FBSTRING* vr$5836 = fb_StrAllocTempDescZEx( (uint8*)"filecopy", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5836, 0 );
+       FBSTRING* vr$5834 = fb_StrAllocTempDescZEx( (uint8*)"filecopy", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5834, 0 );
       }
       goto label$5028;
       label$5271:;
       {
-       FBSTRING* vr$5837 = fb_StrAllocTempDescZEx( (uint8*)"filedatetime", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5837, 0 );
+       FBSTRING* vr$5835 = fb_StrAllocTempDescZEx( (uint8*)"filedatetime", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5835, 0 );
       }
       goto label$5028;
       label$5272:;
       {
-       FBSTRING* vr$5838 = fb_StrAllocTempDescZEx( (uint8*)"fileexists", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5838, 0 );
+       FBSTRING* vr$5836 = fb_StrAllocTempDescZEx( (uint8*)"fileexists", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5836, 0 );
       }
       goto label$5028;
       label$5273:;
       {
-       FBSTRING* vr$5839 = fb_StrAllocTempDescZEx( (uint8*)"filelen", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5839, 0 );
+       FBSTRING* vr$5837 = fb_StrAllocTempDescZEx( (uint8*)"filelen", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5837, 0 );
       }
       goto label$5028;
       label$5274:;
       {
-       FBSTRING* vr$5840 = fb_StrAllocTempDescZEx( (uint8*)"freefile", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5840, 0 );
+       FBSTRING* vr$5838 = fb_StrAllocTempDescZEx( (uint8*)"freefile", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5838, 0 );
       }
       goto label$5028;
       label$5275:;
       {
-       FBSTRING* vr$5841 = fb_StrAllocTempDescZEx( (uint8*)"frac", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5841, 0 );
+       FBSTRING* vr$5839 = fb_StrAllocTempDescZEx( (uint8*)"frac", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5839, 0 );
       }
       goto label$5028;
       label$5276:;
       {
-       FBSTRING* vr$5842 = fb_StrAllocTempDescZEx( (uint8*)"getjoystick", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5842, 0 );
+       FBSTRING* vr$5840 = fb_StrAllocTempDescZEx( (uint8*)"getjoystick", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5840, 0 );
       }
       goto label$5028;
       label$5277:;
       {
-       FBSTRING* vr$5843 = fb_StrAllocTempDescZEx( (uint8*)"getkey", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5843, 0 );
+       FBSTRING* vr$5841 = fb_StrAllocTempDescZEx( (uint8*)"getkey", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5841, 0 );
       }
       goto label$5028;
       label$5278:;
       {
-       FBSTRING* vr$5844 = fb_StrAllocTempDescZEx( (uint8*)"getmouse", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5844, 0 );
+       FBSTRING* vr$5842 = fb_StrAllocTempDescZEx( (uint8*)"getmouse", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5842, 0 );
       }
       goto label$5028;
       label$5279:;
       {
-       FBSTRING* vr$5845 = fb_StrAllocTempDescZEx( (uint8*)"hibyte", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5845, 0 );
+       FBSTRING* vr$5843 = fb_StrAllocTempDescZEx( (uint8*)"hibyte", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5843, 0 );
       }
       goto label$5028;
       label$5280:;
       {
-       FBSTRING* vr$5846 = fb_StrAllocTempDescZEx( (uint8*)"hiword", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5846, 0 );
+       FBSTRING* vr$5844 = fb_StrAllocTempDescZEx( (uint8*)"hiword", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5844, 0 );
       }
       goto label$5028;
       label$5029:;
@@ -23598,902 +23594,902 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       goto label$5283;
       label$5284:;
       {
-       FBSTRING* vr$5849 = fb_StrAllocTempDescZEx( (uint8*)"imageconvertrow", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5849, 0 );
+       FBSTRING* vr$5847 = fb_StrAllocTempDescZEx( (uint8*)"imageconvertrow", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5847, 0 );
       }
       goto label$5282;
       label$5285:;
       {
-       FBSTRING* vr$5850 = fb_StrAllocTempDescZEx( (uint8*)"imagecreate", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5850, 0 );
+       FBSTRING* vr$5848 = fb_StrAllocTempDescZEx( (uint8*)"imagecreate", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5848, 0 );
       }
       goto label$5282;
       label$5286:;
       {
-       FBSTRING* vr$5851 = fb_StrAllocTempDescZEx( (uint8*)"imagedestroy", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5851, 0 );
+       FBSTRING* vr$5849 = fb_StrAllocTempDescZEx( (uint8*)"imagedestroy", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5849, 0 );
       }
       goto label$5282;
       label$5287:;
       {
-       FBSTRING* vr$5852 = fb_StrAllocTempDescZEx( (uint8*)"imageinfo", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5852, 0 );
+       FBSTRING* vr$5850 = fb_StrAllocTempDescZEx( (uint8*)"imageinfo", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5850, 0 );
       }
       goto label$5282;
       label$5288:;
       {
-       FBSTRING* vr$5853 = fb_StrAllocTempDescZEx( (uint8*)"instrrev", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5853, 0 );
+       FBSTRING* vr$5851 = fb_StrAllocTempDescZEx( (uint8*)"instrrev", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5851, 0 );
       }
       goto label$5282;
       label$5289:;
       {
-       FBSTRING* vr$5854 = fb_StrAllocTempDescZEx( (uint8*)"isdate", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5854, 0 );
+       FBSTRING* vr$5852 = fb_StrAllocTempDescZEx( (uint8*)"isdate", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5852, 0 );
       }
       goto label$5282;
       label$5290:;
       {
-       FBSTRING* vr$5855 = fb_StrAllocTempDescZEx( (uint8*)"isredirected", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5855, 0 );
+       FBSTRING* vr$5853 = fb_StrAllocTempDescZEx( (uint8*)"isredirected", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5853, 0 );
       }
       goto label$5282;
       label$5291:;
       {
-       FBSTRING* vr$5856 = fb_StrAllocTempDescZEx( (uint8*)"lbound", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5856, 0 );
+       FBSTRING* vr$5854 = fb_StrAllocTempDescZEx( (uint8*)"lbound", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5854, 0 );
       }
       goto label$5282;
       label$5292:;
       {
-       FBSTRING* vr$5857 = fb_StrAllocTempDescZEx( (uint8*)"lcase", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5857, 0 );
+       FBSTRING* vr$5855 = fb_StrAllocTempDescZEx( (uint8*)"lcase", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5855, 0 );
       }
       goto label$5282;
       label$5293:;
       {
-       FBSTRING* vr$5858 = fb_StrAllocTempDescZEx( (uint8*)"lib", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5858, 0 );
+       FBSTRING* vr$5856 = fb_StrAllocTempDescZEx( (uint8*)"lib", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5856, 0 );
       }
       goto label$5282;
       label$5294:;
       {
-       FBSTRING* vr$5859 = fb_StrAllocTempDescZEx( (uint8*)"lobyte", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5859, 0 );
+       FBSTRING* vr$5857 = fb_StrAllocTempDescZEx( (uint8*)"lobyte", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5857, 0 );
       }
       goto label$5282;
       label$5295:;
       {
-       FBSTRING* vr$5860 = fb_StrAllocTempDescZEx( (uint8*)"loword", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5860, 0 );
+       FBSTRING* vr$5858 = fb_StrAllocTempDescZEx( (uint8*)"loword", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5858, 0 );
       }
       goto label$5282;
       label$5296:;
       {
-       FBSTRING* vr$5861 = fb_StrAllocTempDescZEx( (uint8*)"ltrim", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5861, 0 );
+       FBSTRING* vr$5859 = fb_StrAllocTempDescZEx( (uint8*)"ltrim", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5859, 0 );
       }
       goto label$5282;
       label$5297:;
       {
-       FBSTRING* vr$5862 = fb_StrAllocTempDescZEx( (uint8*)"mkl", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5862, 0 );
+       FBSTRING* vr$5860 = fb_StrAllocTempDescZEx( (uint8*)"mkl", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5860, 0 );
       }
       goto label$5282;
       label$5298:;
       {
-       FBSTRING* vr$5863 = fb_StrAllocTempDescZEx( (uint8*)"mklongint", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5863, 0 );
+       FBSTRING* vr$5861 = fb_StrAllocTempDescZEx( (uint8*)"mklongint", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5861, 0 );
       }
       goto label$5282;
       label$5299:;
       {
-       FBSTRING* vr$5864 = fb_StrAllocTempDescZEx( (uint8*)"mkshort", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5864, 0 );
+       FBSTRING* vr$5862 = fb_StrAllocTempDescZEx( (uint8*)"mkshort", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5862, 0 );
       }
       goto label$5282;
       label$5300:;
       {
-       FBSTRING* vr$5865 = fb_StrAllocTempDescZEx( (uint8*)"monthname", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5865, 1 );
+       FBSTRING* vr$5863 = fb_StrAllocTempDescZEx( (uint8*)"monthname", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5863, 1 );
       }
       goto label$5282;
       label$5301:;
       {
-       FBSTRING* vr$5866 = fb_StrAllocTempDescZEx( (uint8*)"multikey", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5866, 0 );
+       FBSTRING* vr$5864 = fb_StrAllocTempDescZEx( (uint8*)"multikey", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5864, 0 );
       }
       goto label$5282;
       label$5302:;
       {
-       FBSTRING* vr$5867 = fb_StrAllocTempDescZEx( (uint8*)"mutexcreate", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5867, 0 );
+       FBSTRING* vr$5865 = fb_StrAllocTempDescZEx( (uint8*)"mutexcreate", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5865, 0 );
       }
       goto label$5282;
       label$5303:;
       {
-       FBSTRING* vr$5868 = fb_StrAllocTempDescZEx( (uint8*)"mutexdestroy", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5868, 0 );
+       FBSTRING* vr$5866 = fb_StrAllocTempDescZEx( (uint8*)"mutexdestroy", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5866, 0 );
       }
       goto label$5282;
       label$5304:;
       {
-       FBSTRING* vr$5869 = fb_StrAllocTempDescZEx( (uint8*)"mutexlock", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5869, 0 );
+       FBSTRING* vr$5867 = fb_StrAllocTempDescZEx( (uint8*)"mutexlock", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5867, 0 );
       }
       goto label$5282;
       label$5305:;
       {
-       FBSTRING* vr$5870 = fb_StrAllocTempDescZEx( (uint8*)"mutexunlock", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5870, 0 );
+       FBSTRING* vr$5868 = fb_StrAllocTempDescZEx( (uint8*)"mutexunlock", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5868, 0 );
       }
       goto label$5282;
       label$5306:;
       {
-       FBSTRING* vr$5871 = fb_StrAllocTempDescZEx( (uint8*)"naked", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5871, 0 );
+       FBSTRING* vr$5869 = fb_StrAllocTempDescZEx( (uint8*)"naked", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5869, 0 );
       }
       goto label$5282;
       label$5307:;
       {
-       FBSTRING* vr$5872 = fb_StrAllocTempDescZEx( (uint8*)"now", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5872, 1 );
+       FBSTRING* vr$5870 = fb_StrAllocTempDescZEx( (uint8*)"now", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5870, 1 );
       }
       goto label$5282;
       label$5308:;
       {
-       FBSTRING* vr$5873 = fb_StrAllocTempDescZEx( (uint8*)"offsetof", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5873, 0 );
+       FBSTRING* vr$5871 = fb_StrAllocTempDescZEx( (uint8*)"offsetof", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5871, 0 );
       }
       goto label$5282;
       label$5309:;
       {
-       FBSTRING* vr$5874 = fb_StrAllocTempDescZEx( (uint8*)"orelse", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5874, 0 );
+       FBSTRING* vr$5872 = fb_StrAllocTempDescZEx( (uint8*)"orelse", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5872, 0 );
       }
       goto label$5282;
       label$5310:;
       {
-       FBSTRING* vr$5875 = fb_StrAllocTempDescZEx( (uint8*)"overload", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5875, 0 );
+       FBSTRING* vr$5873 = fb_StrAllocTempDescZEx( (uint8*)"overload", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5873, 0 );
       }
       goto label$5282;
       label$5311:;
       {
-       FBSTRING* vr$5876 = fb_StrAllocTempDescZEx( (uint8*)"pointcoord", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5876, 0 );
+       FBSTRING* vr$5874 = fb_StrAllocTempDescZEx( (uint8*)"pointcoord", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5874, 0 );
       }
       goto label$5282;
       label$5312:;
       {
-       FBSTRING* vr$5877 = fb_StrAllocTempDescZEx( (uint8*)"ptr", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5877, 0 );
+       FBSTRING* vr$5875 = fb_StrAllocTempDescZEx( (uint8*)"ptr", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5875, 0 );
       }
       goto label$5282;
       label$5313:;
       {
-       FBSTRING* vr$5878 = fb_StrAllocTempDescZEx( (uint8*)"preserve", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5878, 0 );
+       FBSTRING* vr$5876 = fb_StrAllocTempDescZEx( (uint8*)"preserve", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5876, 0 );
       }
       goto label$5282;
       label$5314:;
       {
-       FBSTRING* vr$5879 = fb_StrAllocTempDescZEx( (uint8*)"procptr", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5879, 0 );
+       FBSTRING* vr$5877 = fb_StrAllocTempDescZEx( (uint8*)"procptr", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5877, 0 );
       }
       goto label$5282;
       label$5315:;
       {
-       FBSTRING* vr$5880 = fb_StrAllocTempDescZEx( (uint8*)"redim", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5880, 0 );
+       FBSTRING* vr$5878 = fb_StrAllocTempDescZEx( (uint8*)"redim", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5878, 0 );
       }
       goto label$5282;
       label$5316:;
       {
-       FBSTRING* vr$5881 = fb_StrAllocTempDescZEx( (uint8*)"rgba", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5881, 0 );
+       FBSTRING* vr$5879 = fb_StrAllocTempDescZEx( (uint8*)"rgba", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5879, 0 );
       }
       goto label$5282;
       label$5317:;
       {
-       FBSTRING* vr$5882 = fb_StrAllocTempDescZEx( (uint8*)"rtrim", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5882, 0 );
+       FBSTRING* vr$5880 = fb_StrAllocTempDescZEx( (uint8*)"rtrim", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5880, 0 );
       }
       goto label$5282;
       label$5318:;
       {
-       FBSTRING* vr$5883 = fb_StrAllocTempDescZEx( (uint8*)"sadd", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5883, 0 );
+       FBSTRING* vr$5881 = fb_StrAllocTempDescZEx( (uint8*)"sadd", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5881, 0 );
       }
       goto label$5282;
       label$5319:;
       {
-       FBSTRING* vr$5884 = fb_StrAllocTempDescZEx( (uint8*)"scope", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5884, 0 );
+       FBSTRING* vr$5882 = fb_StrAllocTempDescZEx( (uint8*)"scope", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5882, 0 );
       }
       goto label$5282;
       label$5320:;
       {
-       FBSTRING* vr$5885 = fb_StrAllocTempDescZEx( (uint8*)"screencopy", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5885, 0 );
+       FBSTRING* vr$5883 = fb_StrAllocTempDescZEx( (uint8*)"screencopy", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5883, 0 );
       }
       goto label$5282;
       label$5321:;
       {
-       FBSTRING* vr$5886 = fb_StrAllocTempDescZEx( (uint8*)"screencontrol", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5886, 0 );
+       FBSTRING* vr$5884 = fb_StrAllocTempDescZEx( (uint8*)"screencontrol", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5884, 0 );
       }
       goto label$5282;
       label$5322:;
       {
-       FBSTRING* vr$5887 = fb_StrAllocTempDescZEx( (uint8*)"screenevent", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5887, 0 );
+       FBSTRING* vr$5885 = fb_StrAllocTempDescZEx( (uint8*)"screenevent", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5885, 0 );
       }
       goto label$5282;
       label$5323:;
       {
-       FBSTRING* vr$5888 = fb_StrAllocTempDescZEx( (uint8*)"screenglproc", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5888, 0 );
+       FBSTRING* vr$5886 = fb_StrAllocTempDescZEx( (uint8*)"screenglproc", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5886, 0 );
       }
       goto label$5282;
       label$5324:;
       {
-       FBSTRING* vr$5889 = fb_StrAllocTempDescZEx( (uint8*)"screeninfo", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5889, 0 );
+       FBSTRING* vr$5887 = fb_StrAllocTempDescZEx( (uint8*)"screeninfo", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5887, 0 );
       }
       goto label$5282;
       label$5325:;
       {
-       FBSTRING* vr$5890 = fb_StrAllocTempDescZEx( (uint8*)"screenlist", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5890, 0 );
+       FBSTRING* vr$5888 = fb_StrAllocTempDescZEx( (uint8*)"screenlist", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5888, 0 );
       }
       goto label$5282;
       label$5326:;
       {
-       FBSTRING* vr$5891 = fb_StrAllocTempDescZEx( (uint8*)"screenlock", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5891, 0 );
+       FBSTRING* vr$5889 = fb_StrAllocTempDescZEx( (uint8*)"screenlock", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5889, 0 );
       }
       goto label$5282;
       label$5327:;
       {
-       FBSTRING* vr$5892 = fb_StrAllocTempDescZEx( (uint8*)"screenptr", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5892, 0 );
+       FBSTRING* vr$5890 = fb_StrAllocTempDescZEx( (uint8*)"screenptr", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5890, 0 );
       }
       goto label$5282;
       label$5328:;
       {
-       FBSTRING* vr$5893 = fb_StrAllocTempDescZEx( (uint8*)"screenres", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5893, 0 );
+       FBSTRING* vr$5891 = fb_StrAllocTempDescZEx( (uint8*)"screenres", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5891, 0 );
       }
       goto label$5282;
       label$5329:;
       {
-       FBSTRING* vr$5894 = fb_StrAllocTempDescZEx( (uint8*)"screenset", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5894, 0 );
+       FBSTRING* vr$5892 = fb_StrAllocTempDescZEx( (uint8*)"screenset", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5892, 0 );
       }
       goto label$5282;
       label$5330:;
       {
-       FBSTRING* vr$5895 = fb_StrAllocTempDescZEx( (uint8*)"screensync", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5895, 0 );
+       FBSTRING* vr$5893 = fb_StrAllocTempDescZEx( (uint8*)"screensync", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5893, 0 );
       }
       goto label$5282;
       label$5331:;
       {
-       FBSTRING* vr$5896 = fb_StrAllocTempDescZEx( (uint8*)"screenunlock", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5896, 0 );
+       FBSTRING* vr$5894 = fb_StrAllocTempDescZEx( (uint8*)"screenunlock", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5894, 0 );
       }
       goto label$5282;
       label$5332:;
       {
-       FBSTRING* vr$5897 = fb_StrAllocTempDescZEx( (uint8*)"setdate", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5897, 0 );
+       FBSTRING* vr$5895 = fb_StrAllocTempDescZEx( (uint8*)"setdate", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5895, 0 );
       }
       goto label$5282;
       label$5333:;
       {
-       FBSTRING* vr$5898 = fb_StrAllocTempDescZEx( (uint8*)"setenviron", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5898, 0 );
+       FBSTRING* vr$5896 = fb_StrAllocTempDescZEx( (uint8*)"setenviron", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5896, 0 );
       }
       goto label$5282;
       label$5334:;
       {
-       FBSTRING* vr$5899 = fb_StrAllocTempDescZEx( (uint8*)"setmouse", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5899, 0 );
+       FBSTRING* vr$5897 = fb_StrAllocTempDescZEx( (uint8*)"setmouse", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5897, 0 );
       }
       goto label$5282;
       label$5335:;
       {
-       FBSTRING* vr$5900 = fb_StrAllocTempDescZEx( (uint8*)"settime", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5900, 0 );
+       FBSTRING* vr$5898 = fb_StrAllocTempDescZEx( (uint8*)"settime", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5898, 0 );
       }
       goto label$5282;
       label$5336:;
       {
-       FBSTRING* vr$5901 = fb_StrAllocTempDescZEx( (uint8*)"sub", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5901, 0 );
+       FBSTRING* vr$5899 = fb_StrAllocTempDescZEx( (uint8*)"sub", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5899, 0 );
       }
       goto label$5282;
       label$5337:;
       {
-       FBSTRING* vr$5902 = fb_StrAllocTempDescZEx( (uint8*)"threadcall", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5902, 0 );
+       FBSTRING* vr$5900 = fb_StrAllocTempDescZEx( (uint8*)"threadcall", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5900, 0 );
       }
       goto label$5282;
       label$5338:;
       {
-       FBSTRING* vr$5903 = fb_StrAllocTempDescZEx( (uint8*)"threadcreate", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5903, 0 );
+       FBSTRING* vr$5901 = fb_StrAllocTempDescZEx( (uint8*)"threadcreate", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5901, 0 );
       }
       goto label$5282;
       label$5339:;
       {
-       FBSTRING* vr$5904 = fb_StrAllocTempDescZEx( (uint8*)"threaddetach", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5904, 0 );
+       FBSTRING* vr$5902 = fb_StrAllocTempDescZEx( (uint8*)"threaddetach", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5902, 0 );
       }
       goto label$5282;
       label$5340:;
       {
-       FBSTRING* vr$5905 = fb_StrAllocTempDescZEx( (uint8*)"threadwait", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5905, 0 );
+       FBSTRING* vr$5903 = fb_StrAllocTempDescZEx( (uint8*)"threadwait", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5903, 0 );
       }
       goto label$5282;
       label$5341:;
       {
-       FBSTRING* vr$5906 = fb_StrAllocTempDescZEx( (uint8*)"trans", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5906, 0 );
+       FBSTRING* vr$5904 = fb_StrAllocTempDescZEx( (uint8*)"trans", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5904, 0 );
       }
       goto label$5282;
       label$5342:;
       {
-       FBSTRING* vr$5907 = fb_StrAllocTempDescZEx( (uint8*)"ubound", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5907, 0 );
+       FBSTRING* vr$5905 = fb_StrAllocTempDescZEx( (uint8*)"ubound", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5905, 0 );
       }
       goto label$5282;
       label$5343:;
       {
-       FBSTRING* vr$5908 = fb_StrAllocTempDescZEx( (uint8*)"ubyte", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5908, 0 );
+       FBSTRING* vr$5906 = fb_StrAllocTempDescZEx( (uint8*)"ubyte", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5906, 0 );
       }
       goto label$5282;
       label$5344:;
       {
-       FBSTRING* vr$5909 = fb_StrAllocTempDescZEx( (uint8*)"ucase", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5909, 0 );
+       FBSTRING* vr$5907 = fb_StrAllocTempDescZEx( (uint8*)"ucase", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5907, 0 );
       }
       goto label$5282;
       label$5345:;
       {
-       FBSTRING* vr$5910 = fb_StrAllocTempDescZEx( (uint8*)"uinteger", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5910, 0 );
+       FBSTRING* vr$5908 = fb_StrAllocTempDescZEx( (uint8*)"uinteger", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5908, 0 );
       }
       goto label$5282;
       label$5346:;
       {
-       FBSTRING* vr$5911 = fb_StrAllocTempDescZEx( (uint8*)"ulongint", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5911, 0 );
+       FBSTRING* vr$5909 = fb_StrAllocTempDescZEx( (uint8*)"ulongint", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5909, 0 );
       }
       goto label$5282;
       label$5347:;
       {
-       FBSTRING* vr$5912 = fb_StrAllocTempDescZEx( (uint8*)"va_arg", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5912, 0 );
+       FBSTRING* vr$5910 = fb_StrAllocTempDescZEx( (uint8*)"va_arg", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5910, 0 );
       }
       goto label$5282;
       label$5348:;
       {
-       FBSTRING* vr$5913 = fb_StrAllocTempDescZEx( (uint8*)"va_first", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5913, 0 );
+       FBSTRING* vr$5911 = fb_StrAllocTempDescZEx( (uint8*)"va_first", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5911, 0 );
       }
       goto label$5282;
       label$5349:;
       {
-       FBSTRING* vr$5914 = fb_StrAllocTempDescZEx( (uint8*)"va_next", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5914, 0 );
+       FBSTRING* vr$5912 = fb_StrAllocTempDescZEx( (uint8*)"va_next", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5912, 0 );
       }
       goto label$5282;
       label$5350:;
       {
-       FBSTRING* vr$5915 = fb_StrAllocTempDescZEx( (uint8*)"vallng", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5915, 0 );
+       FBSTRING* vr$5913 = fb_StrAllocTempDescZEx( (uint8*)"vallng", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5913, 0 );
       }
       goto label$5282;
       label$5351:;
       {
-       FBSTRING* vr$5916 = fb_StrAllocTempDescZEx( (uint8*)"valint", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5916, 0 );
+       FBSTRING* vr$5914 = fb_StrAllocTempDescZEx( (uint8*)"valint", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5914, 0 );
       }
       goto label$5282;
       label$5352:;
       {
-       FBSTRING* vr$5917 = fb_StrAllocTempDescZEx( (uint8*)"view", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5917, 0 );
+       FBSTRING* vr$5915 = fb_StrAllocTempDescZEx( (uint8*)"view", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5915, 0 );
       }
       goto label$5282;
       label$5353:;
       {
-       FBSTRING* vr$5918 = fb_StrAllocTempDescZEx( (uint8*)"wbin", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5918, 0 );
+       FBSTRING* vr$5916 = fb_StrAllocTempDescZEx( (uint8*)"wbin", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5916, 0 );
       }
       goto label$5282;
       label$5354:;
       {
-       FBSTRING* vr$5919 = fb_StrAllocTempDescZEx( (uint8*)"wchr", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5919, 0 );
+       FBSTRING* vr$5917 = fb_StrAllocTempDescZEx( (uint8*)"wchr", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5917, 0 );
       }
       goto label$5282;
       label$5355:;
       {
-       FBSTRING* vr$5920 = fb_StrAllocTempDescZEx( (uint8*)"weekday", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5920, 0 );
+       FBSTRING* vr$5918 = fb_StrAllocTempDescZEx( (uint8*)"weekday", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5918, 0 );
       }
       goto label$5282;
       label$5356:;
       {
-       FBSTRING* vr$5921 = fb_StrAllocTempDescZEx( (uint8*)"weekdayname", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5921, 0 );
+       FBSTRING* vr$5919 = fb_StrAllocTempDescZEx( (uint8*)"weekdayname", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5919, 0 );
       }
       goto label$5282;
       label$5357:;
       {
-       FBSTRING* vr$5922 = fb_StrAllocTempDescZEx( (uint8*)"whex", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5922, 0 );
+       FBSTRING* vr$5920 = fb_StrAllocTempDescZEx( (uint8*)"whex", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5920, 0 );
       }
       goto label$5282;
       label$5358:;
       {
-       FBSTRING* vr$5923 = fb_StrAllocTempDescZEx( (uint8*)"windowtitle", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5923, 0 );
+       FBSTRING* vr$5921 = fb_StrAllocTempDescZEx( (uint8*)"windowtitle", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5921, 0 );
       }
       goto label$5282;
       label$5359:;
       {
-       FBSTRING* vr$5924 = fb_StrAllocTempDescZEx( (uint8*)"winput", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5924, 0 );
+       FBSTRING* vr$5922 = fb_StrAllocTempDescZEx( (uint8*)"winput", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5922, 0 );
       }
       goto label$5282;
       label$5360:;
       {
-       FBSTRING* vr$5925 = fb_StrAllocTempDescZEx( (uint8*)"woct", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5925, 0 );
+       FBSTRING* vr$5923 = fb_StrAllocTempDescZEx( (uint8*)"woct", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5923, 0 );
       }
       goto label$5282;
       label$5361:;
       {
-       FBSTRING* vr$5926 = fb_StrAllocTempDescZEx( (uint8*)"wspace", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5926, 0 );
+       FBSTRING* vr$5924 = fb_StrAllocTempDescZEx( (uint8*)"wspace", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5924, 0 );
       }
       goto label$5282;
       label$5362:;
       {
-       FBSTRING* vr$5927 = fb_StrAllocTempDescZEx( (uint8*)"wstr", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5927, 0 );
+       FBSTRING* vr$5925 = fb_StrAllocTempDescZEx( (uint8*)"wstr", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5925, 0 );
       }
       goto label$5282;
       label$5363:;
       {
-       FBSTRING* vr$5928 = fb_StrAllocTempDescZEx( (uint8*)"wstring", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5928, 0 );
+       FBSTRING* vr$5926 = fb_StrAllocTempDescZEx( (uint8*)"wstring", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5926, 0 );
       }
       goto label$5282;
       label$5364:;
       {
-       FBSTRING* vr$5929 = fb_StrAllocTempDescZEx( (uint8*)"zstring", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5929, 0 );
+       FBSTRING* vr$5927 = fb_StrAllocTempDescZEx( (uint8*)"zstring", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5927, 0 );
       }
       goto label$5282;
       label$5365:;
       {
-       FBSTRING* vr$5930 = fb_StrAllocTempDescZEx( (uint8*)"ert", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5930, 0 );
+       FBSTRING* vr$5928 = fb_StrAllocTempDescZEx( (uint8*)"ert", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5928, 0 );
       }
       goto label$5282;
       label$5366:;
       {
-       FBSTRING* vr$5931 = fb_StrAllocTempDescZEx( (uint8*)"endifle", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5931, 0 );
+       FBSTRING* vr$5929 = fb_StrAllocTempDescZEx( (uint8*)"endifle", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5929, 0 );
       }
       goto label$5282;
       label$5367:;
       {
-       FBSTRING* vr$5932 = fb_StrAllocTempDescZEx( (uint8*)"fnend", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5932, 0 );
+       FBSTRING* vr$5930 = fb_StrAllocTempDescZEx( (uint8*)"fnend", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5930, 0 );
       }
       goto label$5282;
       label$5368:;
       {
-       FBSTRING* vr$5933 = fb_StrAllocTempDescZEx( (uint8*)"fnexit", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5933, 0 );
+       FBSTRING* vr$5931 = fb_StrAllocTempDescZEx( (uint8*)"fnexit", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5931, 0 );
       }
       goto label$5282;
       label$5369:;
       {
-       FBSTRING* vr$5934 = fb_StrAllocTempDescZEx( (uint8*)"free", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5934, 0 );
+       FBSTRING* vr$5932 = fb_StrAllocTempDescZEx( (uint8*)"free", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5932, 0 );
       }
       goto label$5282;
       label$5370:;
       {
-       FBSTRING* vr$5935 = fb_StrAllocTempDescZEx( (uint8*)"fsp", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5935, 0 );
+       FBSTRING* vr$5933 = fb_StrAllocTempDescZEx( (uint8*)"fsp", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5933, 0 );
       }
       goto label$5282;
       label$5371:;
       {
-       FBSTRING* vr$5936 = fb_StrAllocTempDescZEx( (uint8*)"functionend", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5936, 0 );
+       FBSTRING* vr$5934 = fb_StrAllocTempDescZEx( (uint8*)"functionend", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5934, 0 );
       }
       goto label$5282;
       label$5372:;
       {
-       FBSTRING* vr$5937 = fb_StrAllocTempDescZEx( (uint8*)"functionexit", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5937, 0 );
+       FBSTRING* vr$5935 = fb_StrAllocTempDescZEx( (uint8*)"functionexit", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5935, 0 );
       }
       goto label$5282;
       label$5373:;
       {
-       FBSTRING* vr$5938 = fb_StrAllocTempDescZEx( (uint8*)"getrfa", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5938, 0 );
+       FBSTRING* vr$5936 = fb_StrAllocTempDescZEx( (uint8*)"getrfa", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5936, 0 );
       }
       goto label$5282;
       label$5374:;
       {
-       FBSTRING* vr$5939 = fb_StrAllocTempDescZEx( (uint8*)"handler", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5939, 0 );
+       FBSTRING* vr$5937 = fb_StrAllocTempDescZEx( (uint8*)"handler", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5937, 0 );
       }
       goto label$5282;
       label$5375:;
       {
-       FBSTRING* vr$5940 = fb_StrAllocTempDescZEx( (uint8*)"linput", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5940, 0 );
+       FBSTRING* vr$5938 = fb_StrAllocTempDescZEx( (uint8*)"linput", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5938, 0 );
       }
       goto label$5282;
       label$5376:;
       {
-       FBSTRING* vr$5941 = fb_StrAllocTempDescZEx( (uint8*)"mag", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5941, 0 );
+       FBSTRING* vr$5939 = fb_StrAllocTempDescZEx( (uint8*)"mag", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5939, 0 );
       }
       goto label$5282;
       label$5377:;
       {
-       FBSTRING* vr$5942 = fb_StrAllocTempDescZEx( (uint8*)"magtape", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5942, 0 );
+       FBSTRING* vr$5940 = fb_StrAllocTempDescZEx( (uint8*)"magtape", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5940, 0 );
       }
       goto label$5282;
       label$5378:;
       {
-       FBSTRING* vr$5943 = fb_StrAllocTempDescZEx( (uint8*)"mar", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5943, 0 );
+       FBSTRING* vr$5941 = fb_StrAllocTempDescZEx( (uint8*)"mar", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5941, 0 );
       }
       goto label$5282;
       label$5379:;
       {
-       FBSTRING* vr$5944 = fb_StrAllocTempDescZEx( (uint8*)"margin", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5944, 0 );
+       FBSTRING* vr$5942 = fb_StrAllocTempDescZEx( (uint8*)"margin", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5942, 0 );
       }
       goto label$5282;
       label$5380:;
       {
-       FBSTRING* vr$5945 = fb_StrAllocTempDescZEx( (uint8*)"mat", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5945, 0 );
+       FBSTRING* vr$5943 = fb_StrAllocTempDescZEx( (uint8*)"mat", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5943, 0 );
       }
       goto label$5282;
       label$5381:;
       {
-       FBSTRING* vr$5946 = fb_StrAllocTempDescZEx( (uint8*)"noecho", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5946, 0 );
+       FBSTRING* vr$5944 = fb_StrAllocTempDescZEx( (uint8*)"noecho", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5944, 0 );
       }
       goto label$5282;
       label$5382:;
       {
-       FBSTRING* vr$5947 = fb_StrAllocTempDescZEx( (uint8*)"nomargin", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5947, 0 );
+       FBSTRING* vr$5945 = fb_StrAllocTempDescZEx( (uint8*)"nomargin", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5945, 0 );
       }
       goto label$5282;
       label$5383:;
       {
-       FBSTRING* vr$5948 = fb_StrAllocTempDescZEx( (uint8*)"num", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5948, 0 );
+       FBSTRING* vr$5946 = fb_StrAllocTempDescZEx( (uint8*)"num", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5946, 0 );
       }
       goto label$5282;
       label$5384:;
       {
-       FBSTRING* vr$5949 = fb_StrAllocTempDescZEx( (uint8*)"num2", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5949, 0 );
+       FBSTRING* vr$5947 = fb_StrAllocTempDescZEx( (uint8*)"num2", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5947, 0 );
       }
       goto label$5282;
       label$5385:;
       {
-       FBSTRING* vr$5950 = fb_StrAllocTempDescZEx( (uint8*)"num1", 4ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5950, 0 );
+       FBSTRING* vr$5948 = fb_StrAllocTempDescZEx( (uint8*)"num1", 4ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5948, 0 );
       }
       goto label$5282;
       label$5386:;
       {
-       FBSTRING* vr$5951 = fb_StrAllocTempDescZEx( (uint8*)"place", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5951, 0 );
+       FBSTRING* vr$5949 = fb_StrAllocTempDescZEx( (uint8*)"place", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5949, 0 );
       }
       goto label$5282;
       label$5387:;
       {
-       FBSTRING* vr$5952 = fb_StrAllocTempDescZEx( (uint8*)"quo", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5952, 0 );
+       FBSTRING* vr$5950 = fb_StrAllocTempDescZEx( (uint8*)"quo", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5950, 0 );
       }
       goto label$5282;
       label$5388:;
       {
-       FBSTRING* vr$5953 = fb_StrAllocTempDescZEx( (uint8*)"rad", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5953, 0 );
+       FBSTRING* vr$5951 = fb_StrAllocTempDescZEx( (uint8*)"rad", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5951, 0 );
       }
       goto label$5282;
       label$5389:;
       {
-       FBSTRING* vr$5954 = fb_StrAllocTempDescZEx( (uint8*)"rctrlc", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5954, 0 );
+       FBSTRING* vr$5952 = fb_StrAllocTempDescZEx( (uint8*)"rctrlc", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5952, 0 );
       }
       goto label$5282;
       label$5390:;
       {
-       FBSTRING* vr$5955 = fb_StrAllocTempDescZEx( (uint8*)"rctrl0", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5955, 0 );
+       FBSTRING* vr$5953 = fb_StrAllocTempDescZEx( (uint8*)"rctrl0", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5953, 0 );
       }
       goto label$5282;
       label$5391:;
       {
-       FBSTRING* vr$5956 = fb_StrAllocTempDescZEx( (uint8*)"recount", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5956, 0 );
+       FBSTRING* vr$5954 = fb_StrAllocTempDescZEx( (uint8*)"recount", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5954, 0 );
       }
       goto label$5282;
       label$5392:;
       {
-       FBSTRING* vr$5957 = fb_StrAllocTempDescZEx( (uint8*)"remap", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5957, 0 );
+       FBSTRING* vr$5955 = fb_StrAllocTempDescZEx( (uint8*)"remap", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5955, 0 );
       }
       goto label$5282;
       label$5393:;
       {
-       FBSTRING* vr$5958 = fb_StrAllocTempDescZEx( (uint8*)"retry", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5958, 0 );
+       FBSTRING* vr$5956 = fb_StrAllocTempDescZEx( (uint8*)"retry", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5956, 0 );
       }
       goto label$5282;
       label$5394:;
       {
-       FBSTRING* vr$5959 = fb_StrAllocTempDescZEx( (uint8*)"rmsstatus", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5959, 0 );
+       FBSTRING* vr$5957 = fb_StrAllocTempDescZEx( (uint8*)"rmsstatus", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5957, 0 );
       }
       goto label$5282;
       label$5395:;
       {
-       FBSTRING* vr$5960 = fb_StrAllocTempDescZEx( (uint8*)"prompt", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5960, 0 );
+       FBSTRING* vr$5958 = fb_StrAllocTempDescZEx( (uint8*)"prompt", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5958, 0 );
       }
       goto label$5282;
       label$5396:;
       {
-       FBSTRING* vr$5961 = fb_StrAllocTempDescZEx( (uint8*)"subend", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5961, 0 );
+       FBSTRING* vr$5959 = fb_StrAllocTempDescZEx( (uint8*)"subend", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5959, 0 );
       }
       goto label$5282;
       label$5397:;
       {
-       FBSTRING* vr$5962 = fb_StrAllocTempDescZEx( (uint8*)"exitsub", 7ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5962, 0 );
+       FBSTRING* vr$5960 = fb_StrAllocTempDescZEx( (uint8*)"exitsub", 7ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5960, 0 );
       }
       goto label$5282;
       label$5398:;
       {
-       FBSTRING* vr$5963 = fb_StrAllocTempDescZEx( (uint8*)"trm", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5963, 0 );
+       FBSTRING* vr$5961 = fb_StrAllocTempDescZEx( (uint8*)"trm", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5961, 0 );
       }
       goto label$5282;
       label$5399:;
       {
-       FBSTRING* vr$5964 = fb_StrAllocTempDescZEx( (uint8*)"unless", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5964, 0 );
+       FBSTRING* vr$5962 = fb_StrAllocTempDescZEx( (uint8*)"unless", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5962, 0 );
       }
       goto label$5282;
       label$5400:;
       {
-       FBSTRING* vr$5965 = fb_StrAllocTempDescZEx( (uint8*)"vmsstatus", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5965, 0 );
+       FBSTRING* vr$5963 = fb_StrAllocTempDescZEx( (uint8*)"vmsstatus", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5963, 0 );
       }
       goto label$5282;
       label$5401:;
       {
-       FBSTRING* vr$5966 = fb_StrAllocTempDescZEx( (uint8*)"xlate", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5966, 0 );
+       FBSTRING* vr$5964 = fb_StrAllocTempDescZEx( (uint8*)"xlate", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5964, 0 );
       }
       goto label$5282;
       label$5402:;
       {
-       FBSTRING* vr$5967 = fb_StrAllocTempDescZEx( (uint8*)"allocated", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5967, 0 );
+       FBSTRING* vr$5965 = fb_StrAllocTempDescZEx( (uint8*)"allocated", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5965, 0 );
       }
       goto label$5282;
       label$5403:;
       {
-       FBSTRING* vr$5968 = fb_StrAllocTempDescZEx( (uint8*)"anint", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5968, 0 );
+       FBSTRING* vr$5966 = fb_StrAllocTempDescZEx( (uint8*)"anint", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5966, 0 );
       }
       goto label$5282;
       label$5404:;
       {
-       FBSTRING* vr$5969 = fb_StrAllocTempDescZEx( (uint8*)"asind", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5969, 0 );
+       FBSTRING* vr$5967 = fb_StrAllocTempDescZEx( (uint8*)"asind", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5967, 0 );
       }
       goto label$5282;
       label$5405:;
       {
-       FBSTRING* vr$5970 = fb_StrAllocTempDescZEx( (uint8*)"associated", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5970, 0 );
+       FBSTRING* vr$5968 = fb_StrAllocTempDescZEx( (uint8*)"associated", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5968, 0 );
       }
       goto label$5282;
       label$5406:;
       {
-       FBSTRING* vr$5971 = fb_StrAllocTempDescZEx( (uint8*)"atand", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5971, 0 );
+       FBSTRING* vr$5969 = fb_StrAllocTempDescZEx( (uint8*)"atand", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5969, 0 );
       }
       goto label$5282;
       label$5407:;
       {
-       FBSTRING* vr$5972 = fb_StrAllocTempDescZEx( (uint8*)"atan2d", 6ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5972, 0 );
+       FBSTRING* vr$5970 = fb_StrAllocTempDescZEx( (uint8*)"atan2d", 6ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5970, 0 );
       }
       goto label$5282;
       label$5408:;
       {
-       FBSTRING* vr$5973 = fb_StrAllocTempDescZEx( (uint8*)"atomic_add", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5973, 0 );
+       FBSTRING* vr$5971 = fb_StrAllocTempDescZEx( (uint8*)"atomic_add", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5971, 0 );
       }
       goto label$5282;
       label$5409:;
       {
-       FBSTRING* vr$5974 = fb_StrAllocTempDescZEx( (uint8*)"atomic_and", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5974, 0 );
+       FBSTRING* vr$5972 = fb_StrAllocTempDescZEx( (uint8*)"atomic_and", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5972, 0 );
       }
       goto label$5282;
       label$5410:;
       {
-       FBSTRING* vr$5975 = fb_StrAllocTempDescZEx( (uint8*)"atomic_cas", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5975, 0 );
+       FBSTRING* vr$5973 = fb_StrAllocTempDescZEx( (uint8*)"atomic_cas", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5973, 0 );
       }
       goto label$5282;
       label$5411:;
       {
-       FBSTRING* vr$5976 = fb_StrAllocTempDescZEx( (uint8*)"atomic_define", 13ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5976, 0 );
+       FBSTRING* vr$5974 = fb_StrAllocTempDescZEx( (uint8*)"atomic_define", 13ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5974, 0 );
       }
       goto label$5282;
       label$5412:;
       {
-       FBSTRING* vr$5977 = fb_StrAllocTempDescZEx( (uint8*)"atomic_fetch_add", 16ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5977, 0 );
+       FBSTRING* vr$5975 = fb_StrAllocTempDescZEx( (uint8*)"atomic_fetch_add", 16ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5975, 0 );
       }
       goto label$5282;
       label$5413:;
       {
-       FBSTRING* vr$5978 = fb_StrAllocTempDescZEx( (uint8*)"atomic_fetch and", 16ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5978, 0 );
+       FBSTRING* vr$5976 = fb_StrAllocTempDescZEx( (uint8*)"atomic_fetch and", 16ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5976, 0 );
       }
       goto label$5282;
       label$5414:;
       {
-       FBSTRING* vr$5979 = fb_StrAllocTempDescZEx( (uint8*)"atomic_fetch_or", 15ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5979, 0 );
+       FBSTRING* vr$5977 = fb_StrAllocTempDescZEx( (uint8*)"atomic_fetch_or", 15ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5977, 0 );
       }
       goto label$5282;
       label$5415:;
       {
-       FBSTRING* vr$5980 = fb_StrAllocTempDescZEx( (uint8*)"atomic_fetch_xor", 16ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5980, 0 );
+       FBSTRING* vr$5978 = fb_StrAllocTempDescZEx( (uint8*)"atomic_fetch_xor", 16ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5978, 0 );
       }
       goto label$5282;
       label$5416:;
       {
-       FBSTRING* vr$5981 = fb_StrAllocTempDescZEx( (uint8*)"atomic_or", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5981, 0 );
+       FBSTRING* vr$5979 = fb_StrAllocTempDescZEx( (uint8*)"atomic_or", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5979, 0 );
       }
       goto label$5282;
       label$5417:;
       {
-       FBSTRING* vr$5982 = fb_StrAllocTempDescZEx( (uint8*)"atomic_ref", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5982, 0 );
+       FBSTRING* vr$5980 = fb_StrAllocTempDescZEx( (uint8*)"atomic_ref", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5980, 0 );
       }
       goto label$5282;
       label$5418:;
       {
-       FBSTRING* vr$5983 = fb_StrAllocTempDescZEx( (uint8*)"atomic_xor", 10ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5983, 0 );
+       FBSTRING* vr$5981 = fb_StrAllocTempDescZEx( (uint8*)"atomic_xor", 10ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5981, 0 );
       }
       goto label$5282;
       label$5419:;
       {
-       FBSTRING* vr$5984 = fb_StrAllocTempDescZEx( (uint8*)"backtrace", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5984, 0 );
+       FBSTRING* vr$5982 = fb_StrAllocTempDescZEx( (uint8*)"backtrace", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5982, 0 );
       }
       goto label$5282;
       label$5420:;
       {
-       FBSTRING* vr$5985 = fb_StrAllocTempDescZEx( (uint8*)"bessel_j0", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5985, 0 );
+       FBSTRING* vr$5983 = fb_StrAllocTempDescZEx( (uint8*)"bessel_j0", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5983, 0 );
       }
       goto label$5282;
       label$5421:;
       {
-       FBSTRING* vr$5986 = fb_StrAllocTempDescZEx( (uint8*)"bessel_j1", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5986, 0 );
+       FBSTRING* vr$5984 = fb_StrAllocTempDescZEx( (uint8*)"bessel_j1", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5984, 0 );
       }
       goto label$5282;
       label$5422:;
       {
-       FBSTRING* vr$5987 = fb_StrAllocTempDescZEx( (uint8*)"bessel_jn", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5987, 0 );
+       FBSTRING* vr$5985 = fb_StrAllocTempDescZEx( (uint8*)"bessel_jn", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5985, 0 );
       }
       goto label$5282;
       label$5423:;
       {
-       FBSTRING* vr$5988 = fb_StrAllocTempDescZEx( (uint8*)"bessel_y0", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5988, 0 );
+       FBSTRING* vr$5986 = fb_StrAllocTempDescZEx( (uint8*)"bessel_y0", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5986, 0 );
       }
       goto label$5282;
       label$5424:;
       {
-       FBSTRING* vr$5989 = fb_StrAllocTempDescZEx( (uint8*)"bassel_y1", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5989, 0 );
+       FBSTRING* vr$5987 = fb_StrAllocTempDescZEx( (uint8*)"bassel_y1", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5987, 0 );
       }
       goto label$5282;
       label$5425:;
       {
-       FBSTRING* vr$5990 = fb_StrAllocTempDescZEx( (uint8*)"bessel_yn", 9ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5990, 0 );
+       FBSTRING* vr$5988 = fb_StrAllocTempDescZEx( (uint8*)"bessel_yn", 9ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5988, 0 );
       }
       goto label$5282;
       label$5426:;
       {
-       FBSTRING* vr$5991 = fb_StrAllocTempDescZEx( (uint8*)"bge", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5991, 0 );
+       FBSTRING* vr$5989 = fb_StrAllocTempDescZEx( (uint8*)"bge", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5989, 0 );
       }
       goto label$5282;
       label$5427:;
       {
-       FBSTRING* vr$5992 = fb_StrAllocTempDescZEx( (uint8*)"bgt", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5992, 0 );
+       FBSTRING* vr$5990 = fb_StrAllocTempDescZEx( (uint8*)"bgt", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5990, 0 );
       }
       goto label$5282;
       label$5428:;
       {
-       FBSTRING* vr$5993 = fb_StrAllocTempDescZEx( (uint8*)"bit_size", 8ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5993, 0 );
+       FBSTRING* vr$5991 = fb_StrAllocTempDescZEx( (uint8*)"bit_size", 8ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5991, 0 );
       }
       goto label$5282;
       label$5429:;
       {
-       FBSTRING* vr$5994 = fb_StrAllocTempDescZEx( (uint8*)"ble", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5994, 0 );
+       FBSTRING* vr$5992 = fb_StrAllocTempDescZEx( (uint8*)"ble", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5992, 0 );
       }
       goto label$5282;
       label$5430:;
       {
-       FBSTRING* vr$5995 = fb_StrAllocTempDescZEx( (uint8*)"blt", 3ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5995, 0 );
+       FBSTRING* vr$5993 = fb_StrAllocTempDescZEx( (uint8*)"blt", 3ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5993, 0 );
       }
       goto label$5282;
       label$5431:;
       {
-       FBSTRING* vr$5996 = fb_StrAllocTempDescZEx( (uint8*)"btest", 5ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5996, 0 );
+       FBSTRING* vr$5994 = fb_StrAllocTempDescZEx( (uint8*)"btest", 5ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5994, 0 );
       }
       goto label$5282;
       label$5432:;
       {
-       FBSTRING* vr$5997 = fb_StrAllocTempDescZEx( (uint8*)"c_associated", 12ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5997, 0 );
+       FBSTRING* vr$5995 = fb_StrAllocTempDescZEx( (uint8*)"c_associated", 12ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5995, 0 );
       }
       goto label$5282;
       label$5433:;
       {
-       FBSTRING* vr$5998 = fb_StrAllocTempDescZEx( (uint8*)"c_f_pointer", 11ll );
-       fb_PrintString( 1, (FBSTRING*)vr$5998, 0 );
+       FBSTRING* vr$5996 = fb_StrAllocTempDescZEx( (uint8*)"c_f_pointer", 11ll );
+       fb_PrintString( 1, (FBSTRING*)vr$5996, 0 );
       }
       goto label$5282;
       label$5283:;
@@ -24900,32 +24896,32 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      FBSTRING TMP$2832$5;
      fb_GfxLine( FGIMAGE$, 0x0p+0f, 0x0p+0f, (float)SCR_W$, (float)SCR_H$, 4278190080u, 2, 65535u, 0 );
      __builtin_memset( &TMP$2827$5, 0, 24ll );
-     FBSTRING* vr$6003 = fb_StrConcat( &TMP$2827$5, (void*)&COMPILER$, -1ll, (void*)&FILENAME$, -1ll );
-     fb_Shell( (FBSTRING*)vr$6003 );
-     FBSTRING* vr$6004 = fb_StrAllocTempDescZEx( (uint8*)"./tmp > tmp.txt", 15ll );
-     fb_Shell( (FBSTRING*)vr$6004 );
-     FBSTRING* vr$6005 = fb_StrAllocTempDescZEx( (uint8*)"tmp.txt", 7ll );
-     fb_FileOpen( (FBSTRING*)vr$6005, 2u, 0u, 0u, 1, 0 );
+     FBSTRING* vr$6001 = fb_StrConcat( &TMP$2827$5, (void*)&COMPILER$, -1ll, (void*)&FILENAME$, -1ll );
+     fb_Shell( (FBSTRING*)vr$6001 );
+     FBSTRING* vr$6002 = fb_StrAllocTempDescZEx( (uint8*)"./tmp > tmp.txt", 15ll );
+     fb_Shell( (FBSTRING*)vr$6002 );
+     FBSTRING* vr$6003 = fb_StrAllocTempDescZEx( (uint8*)"tmp.txt", 7ll );
+     fb_FileOpen( (FBSTRING*)vr$6003, 2u, 0u, 0u, 1, 0 );
      SCR_POS$ = 0ull;
      *(double*)((uint8*)THIS$1 + 394896ll) = 0x0p+0;
      *(double*)((uint8*)THIS$1 + 394904ll) = 0x0p+0;
      *(double*)((uint8*)THIS$1 + 394912ll) = 0x0p+0;
      label$5491:;
-     int32 vr$6009 = fb_FileEof( 1 );
-     if( (int64)vr$6009 != 0ll ) goto label$5492;
+     int32 vr$6007 = fb_FileEof( 1 );
+     if( (int64)vr$6007 != 0ll ) goto label$5492;
      {
       fb_FileLineInput( 1, (void*)&STRCODE$, -1ll, 0 );
       {
        INDEX$ = (uint16)1u;
        uint16 TMP$2828$7;
-       int64 vr$6011 = fb_StrLen( (void*)&STRCODE$, -1ll );
-       TMP$2828$7 = (uint16)vr$6011;
+       int64 vr$6009 = fb_StrLen( (void*)&STRCODE$, -1ll );
+       TMP$2828$7 = (uint16)vr$6009;
        goto label$5493;
        label$5496:;
        {
-        FBSTRING* vr$6014 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
-        uint32 vr$6015 = fb_ASC( (FBSTRING*)vr$6014, 1ll );
-        *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$6015;
+        FBSTRING* vr$6012 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
+        uint32 vr$6013 = fb_ASC( (FBSTRING*)vr$6012, 1ll );
+        *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$6013;
         if( ((int64)-(*(double*)((uint8*)THIS$1 + 394888ll) > 0x1.Fp+4) & (int64)-(*(double*)((uint8*)THIS$1 + 394888ll) < 0x1.p+6)) == 0ll ) goto label$5498;
         {
          *(double*)((uint8*)THIS$1 + 394888ll) = *(double*)((uint8*)THIS$1 + 394888ll) + 0x1.p+5;
@@ -24950,14 +24946,14 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      {
       INDEX$ = (uint16)1u;
       uint16 TMP$2830$6;
-      int64 vr$6042 = fb_StrLen( (void*)&STRCODE$, -1ll );
-      TMP$2830$6 = (uint16)vr$6042;
+      int64 vr$6040 = fb_StrLen( (void*)&STRCODE$, -1ll );
+      TMP$2830$6 = (uint16)vr$6040;
       goto label$5499;
       label$5502:;
       {
-       FBSTRING* vr$6045 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
-       uint32 vr$6046 = fb_ASC( (FBSTRING*)vr$6045, 1ll );
-       *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$6046;
+       FBSTRING* vr$6043 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
+       uint32 vr$6044 = fb_ASC( (FBSTRING*)vr$6043, 1ll );
+       *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$6044;
        if( ((int64)-(*(double*)((uint8*)THIS$1 + 394888ll) > 0x1.Fp+4) & (int64)-(*(double*)((uint8*)THIS$1 + 394888ll) < 0x1.p+6)) == 0ll ) goto label$5504;
        {
         *(double*)((uint8*)THIS$1 + 394888ll) = *(double*)((uint8*)THIS$1 + 394888ll) + 0x1.p+5;
@@ -24972,8 +24968,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
       label$5501:;
      }
      __builtin_memset( &TMP$2832$5, 0, 24ll );
-     FBSTRING* vr$6073 = fb_StrConcat( &TMP$2832$5, (void*)"rm ./tmp; ./", 13ll, (void*)&FILENAME$, -1ll );
-     fb_Shell( (FBSTRING*)vr$6073 );
+     FBSTRING* vr$6071 = fb_StrConcat( &TMP$2832$5, (void*)"rm ./tmp; ./", 13ll, (void*)&FILENAME$, -1ll );
+     fb_Shell( (FBSTRING*)vr$6071 );
      SCR_POS$ = 0ull;
      fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
      fb_GfxPut( (void*)0ull, 0x0p+0f, 0x0p+0f, (void*)FGIMAGE$, -65536, -65536, -65536, -65536, 0, 1, (void*)&fb_hPutPSet, -1, (void*)0ull, (void*)0ull );
@@ -24995,21 +24991,21 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      *(double*)((uint8*)THIS$1 + 394904ll) = 0x0p+0;
      *(double*)((uint8*)THIS$1 + 394912ll) = 0x0p+0;
      label$5507:;
-     int32 vr$6083 = fb_FileEof( 1 );
-     if( (int64)vr$6083 != 0ll ) goto label$5508;
+     int32 vr$6081 = fb_FileEof( 1 );
+     if( (int64)vr$6081 != 0ll ) goto label$5508;
      {
       fb_FileLineInput( 1, (void*)&STRCODE$, -1ll, 0 );
       {
        INDEX$ = (uint16)1u;
        uint16 TMP$2834$7;
-       int64 vr$6085 = fb_StrLen( (void*)&STRCODE$, -1ll );
-       TMP$2834$7 = (uint16)vr$6085;
+       int64 vr$6083 = fb_StrLen( (void*)&STRCODE$, -1ll );
+       TMP$2834$7 = (uint16)vr$6083;
        goto label$5509;
        label$5512:;
        {
-        FBSTRING* vr$6088 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
-        uint32 vr$6089 = fb_ASC( (FBSTRING*)vr$6088, 1ll );
-        *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$6089;
+        FBSTRING* vr$6086 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
+        uint32 vr$6087 = fb_ASC( (FBSTRING*)vr$6086, 1ll );
+        *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$6087;
         if( ((int64)-(*(double*)((uint8*)THIS$1 + 394888ll) > 0x1.Fp+4) & (int64)-(*(double*)((uint8*)THIS$1 + 394888ll) < 0x1.p+6)) == 0ll ) goto label$5514;
         {
          *(double*)((uint8*)THIS$1 + 394888ll) = *(double*)((uint8*)THIS$1 + 394888ll) + 0x1.p+5;
@@ -25034,14 +25030,14 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      {
       INDEX$ = (uint16)1u;
       uint16 TMP$2835$6;
-      int64 vr$6116 = fb_StrLen( (void*)&STRCODE$, -1ll );
-      TMP$2835$6 = (uint16)vr$6116;
+      int64 vr$6114 = fb_StrLen( (void*)&STRCODE$, -1ll );
+      TMP$2835$6 = (uint16)vr$6114;
       goto label$5515;
       label$5518:;
       {
-       FBSTRING* vr$6119 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
-       uint32 vr$6120 = fb_ASC( (FBSTRING*)vr$6119, 1ll );
-       *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$6120;
+       FBSTRING* vr$6117 = fb_StrMid( (FBSTRING*)&STRCODE$, (int64)INDEX$, 1ll );
+       uint32 vr$6118 = fb_ASC( (FBSTRING*)vr$6117, 1ll );
+       *(double*)((uint8*)THIS$1 + 394888ll) = (double)vr$6118;
        if( ((int64)-(*(double*)((uint8*)THIS$1 + 394888ll) > 0x1.Fp+4) & (int64)-(*(double*)((uint8*)THIS$1 + 394888ll) < 0x1.p+6)) == 0ll ) goto label$5520;
        {
         *(double*)((uint8*)THIS$1 + 394888ll) = *(double*)((uint8*)THIS$1 + 394888ll) + 0x1.p+5;
@@ -25100,8 +25096,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    __builtin_memset( &RES$3, 0, 8ll );
    TMP$2838$3 = 0ll;
    TMP$2837$3 = 0ll;
-   int32 vr$6157 = fb_GetMouse64( (int64*)&X$3, (int64*)&Y$3, &TMP$2837$3, (int64*)&BUTTONS$3, &TMP$2838$3 );
-   *(double*)((uint8*)THIS$1 + 394576ll) = (double)vr$6157;
+   int32 vr$6155 = fb_GetMouse64( (int64*)&X$3, (int64*)&Y$3, &TMP$2837$3, (int64*)&BUTTONS$3, &TMP$2838$3 );
+   *(double*)((uint8*)THIS$1 + 394576ll) = (double)vr$6155;
    *(double*)((uint8*)THIS$1 + 394840ll) = (double)X$3;
    *(double*)((uint8*)THIS$1 + 394848ll) = (double)Y$3;
    *(double*)((uint8*)THIS$1 + 394856ll) = (double)WHEEL$3;
@@ -25150,18 +25146,18 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
     if( C$4 <= 8191ll ) goto label$5540;
     label$5539:;
    }
-   FBSTRING* vr$6180 = fb_DoubleToStr( V$1 );
+   FBSTRING* vr$6178 = fb_DoubleToStr( V$1 );
    __builtin_memset( &TMP$2841$3, 0, 24ll );
-   FBSTRING* vr$6183 = fb_StrConcat( &TMP$2841$3, (void*)"./chargen/", 11ll, (void*)vr$6180, -1ll );
+   FBSTRING* vr$6181 = fb_StrConcat( &TMP$2841$3, (void*)"./chargen/", 11ll, (void*)vr$6178, -1ll );
    __builtin_memset( &TMP$2842$3, 0, 24ll );
-   FBSTRING* vr$6186 = fb_StrConcat( &TMP$2842$3, (void*)vr$6183, -1ll, (void*)".c64", 5ll );
-   fb_FileOpen( (FBSTRING*)vr$6186, 0u, 0u, 0u, 1, 0 );
+   FBSTRING* vr$6184 = fb_StrConcat( &TMP$2842$3, (void*)vr$6181, -1ll, (void*)".c64", 5ll );
+   fb_FileOpen( (FBSTRING*)vr$6184, 0u, 0u, 0u, 1, 0 );
    {
     int64 I$4;
     I$4 = 0ll;
     int64 TMP$2843$4;
-    int64 vr$6187 = fb_FileSize( 1 );
-    TMP$2843$4 = vr$6187;
+    int64 vr$6185 = fb_FileSize( 1 );
+    TMP$2843$4 = vr$6185;
     goto label$5541;
     label$5544:;
     {
@@ -25224,10 +25220,10 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    }
    if( ADR$1 != (SYS_OFFSET$ + 0x1.D8p+7) ) goto label$5559;
    {
+    double vr$6220 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.8192p+15 );
+    _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)EXTCOL$, vr$6220 );
     double vr$6222 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.8192p+15 );
-    _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)EXTCOL$, vr$6222 );
-    double vr$6224 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.8192p+15 );
-    _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)BGCOL0$, vr$6224 );
+    _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)BGCOL0$, vr$6222 );
    }
    label$5559:;
    label$5558:;
@@ -25301,8 +25297,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
    fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
    fb_Cls( -65536 );
-   FBSTRING* vr$6274 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$6274, 0, 1073741828 );
+   FBSTRING* vr$6272 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$6272, 0, 1073741828 );
    {
     OFFSET$ = 0x0p+0;
     label$5581:;
@@ -25324,13 +25320,13 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    FBSTRING TMP$2845$3;
    fb_GfxScreen( 0, 8, 0, 0, 0 );
    __builtin_memset( &TMP$2845$3, 0, 24ll );
-   FBSTRING* vr$6280 = fb_StrConcat( &TMP$2845$3, (void*)"wine ", 6ll, (void*)&STRCODE$, -1ll );
-   fb_Shell( (FBSTRING*)vr$6280 );
+   FBSTRING* vr$6278 = fb_StrConcat( &TMP$2845$3, (void*)"wine ", 6ll, (void*)&STRCODE$, -1ll );
+   fb_Shell( (FBSTRING*)vr$6278 );
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
    fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
    fb_Cls( -65536 );
-   FBSTRING* vr$6281 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$6281, 0, 1073741828 );
+   FBSTRING* vr$6279 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$6279, 0, 1073741828 );
    {
     OFFSET$ = 0x0p+0;
     label$5587:;
@@ -25353,15 +25349,15 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    FBSTRING TMP$2849$3;
    fb_GfxScreen( 0, 8, 0, 0, 0 );
    __builtin_memset( &TMP$2848$3, 0, 24ll );
-   FBSTRING* vr$6287 = fb_StrConcat( &TMP$2848$3, (void*)"dosbox ", 8ll, (void*)&STRCODE$, -1ll );
+   FBSTRING* vr$6285 = fb_StrConcat( &TMP$2848$3, (void*)"dosbox ", 8ll, (void*)&STRCODE$, -1ll );
    __builtin_memset( &TMP$2849$3, 0, 24ll );
-   FBSTRING* vr$6290 = fb_StrConcat( &TMP$2849$3, (void*)vr$6287, -1ll, (void*)" -fullscreen -exit", 19ll );
-   fb_Shell( (FBSTRING*)vr$6290 );
+   FBSTRING* vr$6288 = fb_StrConcat( &TMP$2849$3, (void*)vr$6285, -1ll, (void*)" -fullscreen -exit", 19ll );
+   fb_Shell( (FBSTRING*)vr$6288 );
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
    fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
    fb_Cls( -65536 );
-   FBSTRING* vr$6291 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$6291, 0, 1073741828 );
+   FBSTRING* vr$6289 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$6289, 0, 1073741828 );
   }
   goto label$3124;
   label$5588:;
@@ -25370,8 +25366,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
   {
    FBSTRING TMP$2851$3;
    __builtin_memset( &TMP$2851$3, 0, 24ll );
-   FBSTRING* vr$6294 = fb_StrConcat( &TMP$2851$3, (void*)&STRCODE$, -1ll, (void*)".asm", 5ll );
-   fb_FileOpen( (FBSTRING*)vr$6294, 3u, 0u, 0u, 1, 0 );
+   FBSTRING* vr$6292 = fb_StrConcat( &TMP$2851$3, (void*)&STRCODE$, -1ll, (void*)".asm", 5ll );
+   fb_FileOpen( (FBSTRING*)vr$6292, 3u, 0u, 0u, 1, 0 );
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
   }
   goto label$3124;
@@ -25400,14 +25396,14 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    FBSTRING TMP$2857$3;
    FBSTRING TMP$2858$3;
    __builtin_memset( &TMP$2855$3, 0, 24ll );
-   FBSTRING* vr$6297 = fb_StrConcat( &TMP$2855$3, (void*)"nasm ", 6ll, (void*)&STRCODE$, -1ll );
+   FBSTRING* vr$6295 = fb_StrConcat( &TMP$2855$3, (void*)"nasm ", 6ll, (void*)&STRCODE$, -1ll );
    __builtin_memset( &TMP$2856$3, 0, 24ll );
-   FBSTRING* vr$6300 = fb_StrConcat( &TMP$2856$3, (void*)vr$6297, -1ll, (void*)".asm -f bin -o", 15ll );
+   FBSTRING* vr$6298 = fb_StrConcat( &TMP$2856$3, (void*)vr$6295, -1ll, (void*)".asm -f bin -o", 15ll );
    __builtin_memset( &TMP$2857$3, 0, 24ll );
-   FBSTRING* vr$6303 = fb_StrConcat( &TMP$2857$3, (void*)vr$6300, -1ll, (void*)&STRCODE$, -1ll );
+   FBSTRING* vr$6301 = fb_StrConcat( &TMP$2857$3, (void*)vr$6298, -1ll, (void*)&STRCODE$, -1ll );
    __builtin_memset( &TMP$2858$3, 0, 24ll );
-   FBSTRING* vr$6306 = fb_StrConcat( &TMP$2858$3, (void*)vr$6303, -1ll, (void*)".bin", 5ll );
-   fb_Shell( (FBSTRING*)vr$6306 );
+   FBSTRING* vr$6304 = fb_StrConcat( &TMP$2858$3, (void*)vr$6301, -1ll, (void*)".bin", 5ll );
+   fb_Shell( (FBSTRING*)vr$6304 );
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
   }
   goto label$3124;
@@ -25421,20 +25417,20 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
    FBSTRING TMP$2865$3;
    fb_GfxScreen( 0, 8, 0, 0, 0 );
    __builtin_memset( &TMP$2861$3, 0, 24ll );
-   FBSTRING* vr$6309 = fb_StrConcat( &TMP$2861$3, (void*)"dosbox -c 'boot ", 17ll, (void*)&STRCODE$, -1ll );
+   FBSTRING* vr$6307 = fb_StrConcat( &TMP$2861$3, (void*)"dosbox -c 'boot ", 17ll, (void*)&STRCODE$, -1ll );
    __builtin_memset( &TMP$2862$3, 0, 24ll );
-   FBSTRING* vr$6312 = fb_StrConcat( &TMP$2862$3, (void*)vr$6309, -1ll, (void*)"'", 2ll );
+   FBSTRING* vr$6310 = fb_StrConcat( &TMP$2862$3, (void*)vr$6307, -1ll, (void*)"'", 2ll );
    __builtin_memset( &TMP$2863$3, 0, 24ll );
-   FBSTRING* vr$6315 = fb_StrConcat( &TMP$2863$3, (void*)vr$6312, -1ll, (void*)" -exit", 7ll );
-   fb_Shell( (FBSTRING*)vr$6315 );
+   FBSTRING* vr$6313 = fb_StrConcat( &TMP$2863$3, (void*)vr$6310, -1ll, (void*)" -exit", 7ll );
+   fb_Shell( (FBSTRING*)vr$6313 );
    __builtin_memset( &TMP$2865$3, 0, 24ll );
-   FBSTRING* vr$6318 = fb_StrConcat( &TMP$2865$3, (void*)"rm ", 4ll, (void*)&STRCODE$, -1ll );
-   fb_Shell( (FBSTRING*)vr$6318 );
+   FBSTRING* vr$6316 = fb_StrConcat( &TMP$2865$3, (void*)"rm ", 4ll, (void*)&STRCODE$, -1ll );
+   fb_Shell( (FBSTRING*)vr$6316 );
    fb_StrAssign( (void*)&STRCODE$, -1ll, (void*)"", 1ll, 0 );
    fb_GfxScreenRes( 1920, 1080, 32, 0, 65, 0 );
    fb_Cls( -65536 );
-   FBSTRING* vr$6319 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$6319, 0, 1073741828 );
+   FBSTRING* vr$6317 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+   fb_GfxPaint( (void*)0ull, 0x0p+0f, 0x0p+0f, 4278190080u, 0u, (FBSTRING*)vr$6317, 0, 1073741828 );
    {
     OFFSET$ = 0x0p+0;
     label$5603:;
@@ -25468,9 +25464,9 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
   if( ADR$1 != 0x1.81F4p+15 ) goto label$5608;
   label$5609:;
   {
-   FBSTRING* vr$6327 = fb_CHR( 1, ((int64)__builtin_nearbyint( V$1 )) );
-   FBSTRING* vr$6328 = fb_StrLcase2( (FBSTRING*)vr$6327, 0 );
-   FBSTRING* vr$6329 = fb_StrConcatAssign( (void*)&STRCODE$, -1ll, (void*)vr$6328, -1ll, 0 );
+   FBSTRING* vr$6325 = fb_CHR( 1, ((int64)__builtin_nearbyint( V$1 )) );
+   FBSTRING* vr$6326 = fb_StrLcase2( (FBSTRING*)vr$6325, 0 );
+   fb_StrConcatAssign( (void*)&STRCODE$, -1ll, (void*)vr$6326, -1ll, 0 );
   }
   goto label$3124;
   label$5608:;
@@ -25527,9 +25523,9 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
   if( ADR$1 != 0x1.81FCp+15 ) goto label$5622;
   label$5623:;
   {
-   FBSTRING* vr$6345 = fb_CHR( 1, ((int64)__builtin_nearbyint( V$1 )) );
-   FBSTRING* vr$6346 = fb_StrLcase2( (FBSTRING*)vr$6345, 0 );
-   FBSTRING* vr$6347 = fb_StrConcatAssign( (void*)&FILENAME$, -1ll, (void*)vr$6346, -1ll, 0 );
+   FBSTRING* vr$6342 = fb_CHR( 1, ((int64)__builtin_nearbyint( V$1 )) );
+   FBSTRING* vr$6343 = fb_StrLcase2( (FBSTRING*)vr$6342, 0 );
+   fb_StrConcatAssign( (void*)&FILENAME$, -1ll, (void*)vr$6343, -1ll, 0 );
   }
   goto label$3124;
   label$5622:;
@@ -25641,8 +25637,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
     goto label$5636;
     label$5644:;
     {
-     FBSTRING* vr$6587 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
-     fb_GfxPaint( FGIMAGE$, (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394936ll) + *(double*)((uint8*)THIS$1 + 394952ll) )) >> (1ll & 63ll)), (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394944ll) + *(double*)((uint8*)THIS$1 + 394960ll) )) >> (1ll & 63ll)), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 0u, (FBSTRING*)vr$6587, 0, 1073741828 );
+     FBSTRING* vr$6583 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
+     fb_GfxPaint( FGIMAGE$, (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394936ll) + *(double*)((uint8*)THIS$1 + 394952ll) )) >> (1ll & 63ll)), (float)(((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394944ll) + *(double*)((uint8*)THIS$1 + 394960ll) )) >> (1ll & 63ll)), (uint32)((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + 394824ll) )), 0u, (FBSTRING*)vr$6583, 0, 1073741828 );
     }
     goto label$5636;
     label$5637:;
@@ -26345,8 +26341,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
   if( ADR$1 != 0x1.D186p+15 ) goto label$5830;
   label$5831:;
   {
-   double vr$7300 = pow( *(double*)((uint8*)THIS$1 + 395760ll), *(double*)((uint8*)THIS$1 + 395840ll) );
-   *(double*)((uint8*)THIS$1 + 395680ll) = vr$7300;
+   double vr$7296 = pow( *(double*)((uint8*)THIS$1 + 395760ll), *(double*)((uint8*)THIS$1 + 395840ll) );
+   *(double*)((uint8*)THIS$1 + 395680ll) = vr$7296;
   }
   goto label$3124;
   label$5830:;
@@ -26587,8 +26583,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
   if( ADR$1 != 0x1.D1C2p+15 ) goto label$5904;
   label$5905:;
   {
-   double vr$7432 = _ZN8MEMORY_T5PEEKBEd( THIS$1, V$1 );
-   *(double*)((uint8*)THIS$1 + 395680ll) = vr$7432;
+   double vr$7428 = _ZN8MEMORY_T5PEEKBEd( THIS$1, V$1 );
+   *(double*)((uint8*)THIS$1 + 395680ll) = vr$7428;
   }
   goto label$3124;
   label$5904:;
@@ -26726,8 +26722,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      *(double*)((uint8*)THIS$1 + 394848ll) = (double)((YS$ + Y$) * (int64)*(uint8*)((uint8*)BYTES$ + 4ll)) + *(double*)((uint8*)THIS$1 + 395040ll);
      *(double*)((uint8*)THIS$1 + 394864ll) = (double)(((XS$ + X$) * (int64)*(uint8*)((uint8*)BYTES$ + 5ll)) + (int64)*(uint8*)((uint8*)BYTES$ + 7ll)) + *(double*)((uint8*)THIS$1 + 395032ll);
      *(double*)((uint8*)THIS$1 + 394872ll) = (double)(((YS$ + Y$) * (int64)*(uint8*)((uint8*)BYTES$ + 4ll)) + (int64)*(uint8*)((uint8*)BYTES$ + 4ll)) + *(double*)((uint8*)THIS$1 + 395040ll);
-     double vr$7783 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
-     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$7783 );
+     double vr$7779 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
+     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$7779 );
      X$ = X$ + (int64)*(uint8*)((uint8*)BYTES$ + 1ll);
      if( (double)X$ <= *(double*)((uint8*)THIS$1 + 395080ll) ) goto label$5943;
      {
@@ -26761,8 +26757,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      *(double*)((uint8*)THIS$1 + 394872ll) = (double)(((YS$ - Y$) << (2ll & 63ll)) + 2ll) + *(double*)((uint8*)THIS$1 + 395040ll);
      *(double*)((uint8*)THIS$1 + 394840ll) = (double)(((XS$ - X$) * 5ll) + -2ll) + *(double*)((uint8*)THIS$1 + 395032ll);
      *(double*)((uint8*)THIS$1 + 394848ll) = (double)(((YS$ - Y$) << (2ll & 63ll)) + -2ll) + *(double*)((uint8*)THIS$1 + 395040ll);
-     double vr$7838 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
-     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$7838 );
+     double vr$7834 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
+     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$7834 );
      X$ = X$ + -1ll;
      if( X$ >= 0ll ) goto label$5948;
      {
@@ -26795,8 +26791,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
      *(double*)((uint8*)THIS$1 + 394848ll) = ((double)((YS$ + Y$) << (2ll & 63ll)) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395040ll);
      *(double*)((uint8*)THIS$1 + 394864ll) = ((double)(((XS$ + X$) * 5ll) + 7ll) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395032ll);
      *(double*)((uint8*)THIS$1 + 394872ll) = ((double)(((YS$ + Y$) << (2ll & 63ll)) + 4ll) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395040ll);
-     double vr$7898 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
-     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$7898 );
+     double vr$7894 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
+     _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$7894 );
      X$ = X$ + 1ll;
      if( (double)X$ <= *(double*)((uint8*)THIS$1 + 395080ll) ) goto label$5953;
      {
@@ -26836,8 +26832,8 @@ void _ZN8MEMORY_T6POKE64Edd( struct $8MEMORY_T* THIS$1, double ADR$1, double V$1
         *(double*)((uint8*)THIS$1 + 394872ll) = ((((double)(YS$ - Y$) * 0x1.p+2) + 0x1.p+1) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395040ll);
         *(double*)((uint8*)THIS$1 + 394840ll) = ((((double)(XS$ - X$) * 0x1.4p+2) + -0x1.p+1) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395032ll);
         *(double*)((uint8*)THIS$1 + 394848ll) = ((((double)(YS$ - Y$) * 0x1.p+2) + -0x1.p+1) / 0x1.p+1) + *(double*)((uint8*)THIS$1 + 395040ll);
-        double vr$7953 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
-        _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$7953 );
+        double vr$7949 = _ZN8MEMORY_T6PEEK64Ed( THIS$1, 0x1.81F8p+15 );
+        _ZN8MEMORY_T6POKE64Edd( THIS$1, 0x1.81F8p+15, vr$7949 );
        }
        label$5960:;
        X$ = X$ + 1ll;
@@ -27157,10 +27153,10 @@ FBSTRING* _ZN7CPU6510cv8FBSTRINGEv( struct $7CPU6510* THIS$1 )
  FBSTRING* vr$113 = fb_StrConcat( &TMP$2926$1, (void*)vr$110, -1ll, (void*)" C:", 4ll );
  __builtin_memset( &TMP$2927$1, 0, 24ll );
  FBSTRING* vr$116 = fb_StrConcat( &TMP$2927$1, (void*)vr$113, -1ll, (void*)vr$4, -1ll );
- FBSTRING* vr$118 = fb_StrAssign( (void*)&fb$result$1, -1ll, (void*)vr$116, -1ll, 0 );
+ fb_StrAssign( (void*)&fb$result$1, -1ll, (void*)vr$116, -1ll, 0 );
  label$6015:;
- FBSTRING* vr$120 = fb_StrAllocTempResult( (FBSTRING*)&fb$result$1 );
- return vr$120;
+ FBSTRING* vr$119 = fb_StrAllocTempResult( (FBSTRING*)&fb$result$1 );
+ return vr$119;
 }
 
 double _ZN7CPU65104TICKEd( struct $7CPU6510* THIS$1, double FLG$1 )
@@ -27172,11 +27168,11 @@ double _ZN7CPU65104TICKEd( struct $7CPU6510* THIS$1, double FLG$1 )
  TICKS$1 = 0ll;
  FBSTRING MSG$1;
  FBSTRING* vr$1 = fb_CHR( 1, 0ll );
- FBSTRING* vr$3 = fb_StrInit( (void*)&MSG$1, -1ll, (void*)vr$1, -1ll, 0 );
+ fb_StrInit( (void*)&MSG$1, -1ll, (void*)vr$1, -1ll, 0 );
  struct $5MULTI V$1;
  __builtin_memset( &V$1, 0, 8ll );
- uint8 vr$10 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)THIS$1 + 8ll), (double)*(uint16*)((uint8*)THIS$1 + 4ll) );
- __builtin_memcpy( (struct $6OPCODE*)((uint8*)THIS$1 + 16ll), (struct $6OPCODE*)((uint8*)((uint8*)THIS$1 + ((int64)vr$10 * 56ll)) + 72ll), 56 );
+ uint8 vr$9 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)THIS$1 + 8ll), (double)*(uint16*)((uint8*)THIS$1 + 4ll) );
+ __builtin_memcpy( (struct $6OPCODE*)((uint8*)THIS$1 + 16ll), (struct $6OPCODE*)((uint8*)((uint8*)THIS$1 + ((int64)vr$9 * 56ll)) + 72ll), 56 );
  *(double*)((uint8*)THIS$1 + 56ll) = 0x0p+0;
  TICKS$1 = ((int64)__builtin_nearbyint( (double)TICKS$1 + 0x1.p+0 ));
  *(uint16*)((uint8*)THIS$1 + 4ll) = (uint16)((int32)__builtin_nearbyint( (double)(int64)*(uint16*)((uint8*)THIS$1 + 4ll) + 0x1.p+0 ));
@@ -27195,78 +27191,78 @@ double _ZN7CPU65104TICKEd( struct $7CPU6510* THIS$1, double FLG$1 )
   goto label$6018;
   label$6022:;
   {
-   double vr$27 = _ZN7CPU65107ADR_IMMEv( THIS$1 );
-   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$27 ));
+   double vr$26 = _ZN7CPU65107ADR_IMMEv( THIS$1 );
+   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$26 ));
    (*(tmp$717*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
   goto label$6018;
   label$6023:;
   {
-   double vr$31 = _ZN7CPU65107ADR_ABSEv( THIS$1 );
-   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$31 ));
+   double vr$30 = _ZN7CPU65107ADR_ABSEv( THIS$1 );
+   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$30 ));
    (*(tmp$717*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
   goto label$6018;
   label$6024:;
   {
-   double vr$35 = _ZN7CPU65108ADR_ZEROEv( THIS$1 );
-   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$35 ));
+   double vr$34 = _ZN7CPU65108ADR_ZEROEv( THIS$1 );
+   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$34 ));
    (*(tmp$717*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
   goto label$6018;
   label$6025:;
   {
-   double vr$39 = _ZN7CPU65109ADR_ZEROXEv( THIS$1 );
-   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$39 ));
+   double vr$38 = _ZN7CPU65109ADR_ZEROXEv( THIS$1 );
+   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$38 ));
    (*(tmp$717*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
   goto label$6018;
   label$6026:;
   {
-   double vr$43 = _ZN7CPU65109ADR_ZEROYEv( THIS$1 );
-   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$43 ));
+   double vr$42 = _ZN7CPU65109ADR_ZEROYEv( THIS$1 );
+   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$42 ));
    (*(tmp$717*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
   goto label$6018;
   label$6027:;
   {
-   double vr$47 = _ZN7CPU65108ADR_ABSXEv( THIS$1 );
-   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$47 ));
+   double vr$46 = _ZN7CPU65108ADR_ABSXEv( THIS$1 );
+   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$46 ));
    (*(tmp$717*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
   goto label$6018;
   label$6028:;
   {
-   double vr$51 = _ZN7CPU65108ADR_ABSYEv( THIS$1 );
-   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$51 ));
+   double vr$50 = _ZN7CPU65108ADR_ABSYEv( THIS$1 );
+   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$50 ));
    (*(tmp$717*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
   goto label$6018;
   label$6029:;
   {
-   double vr$55 = _ZN7CPU65107ADR_RELEv( THIS$1 );
-   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$55 ));
+   double vr$54 = _ZN7CPU65107ADR_RELEv( THIS$1 );
+   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$54 ));
    (*(tmp$717*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
   goto label$6018;
   label$6030:;
   {
-   double vr$59 = _ZN7CPU65108ADR_INDXEv( THIS$1 );
-   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$59 ));
+   double vr$58 = _ZN7CPU65108ADR_INDXEv( THIS$1 );
+   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$58 ));
    (*(tmp$717*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
   goto label$6018;
   label$6031:;
   {
-   double vr$63 = _ZN7CPU65108ADR_INDYEv( THIS$1 );
-   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$63 ));
+   double vr$62 = _ZN7CPU65108ADR_INDYEv( THIS$1 );
+   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$62 ));
    (*(tmp$717*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
   goto label$6018;
   label$6032:;
   {
-   double vr$67 = _ZN7CPU65107ADR_INDEv( THIS$1 );
-   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$67 ));
+   double vr$66 = _ZN7CPU65107ADR_INDEv( THIS$1 );
+   *(uint16*)((uint8*)THIS$1 + 56ll) = (uint16)((int32)__builtin_nearbyint( vr$66 ));
    (*(tmp$717*)((uint8*)THIS$1 + 64ll))( THIS$1 );
   }
   goto label$6018;
@@ -28837,9 +28833,9 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
  {
   FBSTRING STRKEY$2;
   FBSTRING* vr$10 = fb_Inkey( );
-  FBSTRING* vr$12 = fb_StrInit( (void*)&STRKEY$2, -1ll, (void*)vr$10, -1ll, 0 );
-  int64 vr$14 = fb_StrLen( (void*)&STRKEY$2, -1ll );
-  KEY$1 = vr$14;
+  fb_StrInit( (void*)&STRKEY$2, -1ll, (void*)vr$10, -1ll, 0 );
+  int64 vr$13 = fb_StrLen( (void*)&STRKEY$2, -1ll );
+  KEY$1 = vr$13;
   if( KEY$1 == 0ll ) goto label$6928;
   {
    KEY$1 = ((int64)*(uint8*)((uint8*)((uint8*)*(uint8**)&STRKEY$2 + KEY$1) + -1ll) + (KEY$1 << (8ll & 63ll))) + -256ll;
@@ -28856,8 +28852,8 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
     label$6933:;
     {
      KEY$1 = KEY$1 + 32ll;
-     FBSTRING* vr$21 = fb_CHR( 1, KEY$1 );
-     FBSTRING* vr$22 = fb_StrConcatAssign( (void*)&S$1, -1ll, (void*)vr$21, -1ll, 0 );
+     FBSTRING* vr$20 = fb_CHR( 1, KEY$1 );
+     fb_StrConcatAssign( (void*)&S$1, -1ll, (void*)vr$20, -1ll, 0 );
     }
     goto label$6929;
     label$6932:;
@@ -28866,8 +28862,8 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
     label$6935:;
     {
      KEY$1 = KEY$1 + -32ll;
-     FBSTRING* vr$24 = fb_CHR( 1, KEY$1 );
-     FBSTRING* vr$25 = fb_StrConcatAssign( (void*)&S$1, -1ll, (void*)vr$24, -1ll, 0 );
+     FBSTRING* vr$22 = fb_CHR( 1, KEY$1 );
+     fb_StrConcatAssign( (void*)&S$1, -1ll, (void*)vr$22, -1ll, 0 );
     }
     goto label$6929;
     label$6934:;
@@ -28875,25 +28871,25 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
     label$6937:;
     {
      fb_Locate( 1, 1, -1, 0, 0 );
-     FBSTRING* vr$26 = fb_SPACE( 48ll );
-     fb_PrintString( 0, (FBSTRING*)vr$26, 1 );
+     FBSTRING* vr$23 = fb_SPACE( 48ll );
+     fb_PrintString( 0, (FBSTRING*)vr$23, 1 );
      fb_Locate( 1, 1, -1, 0, 0 );
-     FBSTRING* vr$27 = fb_StrAllocTempDescZEx( (uint8*)"save filename:", 14ll );
-     fb_ConsoleInput( (FBSTRING*)vr$27, -1, -1 );
+     FBSTRING* vr$24 = fb_StrAllocTempDescZEx( (uint8*)"save filename:", 14ll );
+     fb_ConsoleInput( (FBSTRING*)vr$24, -1, -1 );
      fb_InputString( (void*)&STRKEY$2, -1ll, 0 );
-     int64 vr$30 = fb_StrLen( (void*)&STRKEY$2, -1ll );
-     if( vr$30 == 0ll ) goto label$6939;
+     int64 vr$27 = fb_StrLen( (void*)&STRKEY$2, -1ll );
+     if( vr$27 == 0ll ) goto label$6939;
      {
-      int32 vr$31 = fb_FileFree( );
-      KEY$1 = (int64)vr$31;
-      int32 vr$35 = fb_FileOpen( (FBSTRING*)&STRKEY$2, 0u, 2u, 0u, (int32)KEY$1, 0 );
-      if( (int64)vr$35 != 0ll ) goto label$6941;
+      int32 vr$28 = fb_FileFree( );
+      KEY$1 = (int64)vr$28;
+      int32 vr$32 = fb_FileOpen( (FBSTRING*)&STRKEY$2, 0u, 2u, 0u, (int32)KEY$1, 0 );
+      if( (int64)vr$32 != 0ll ) goto label$6941;
       {
        uint8 U8$7;
        __builtin_memset( &U8$7, 0, 1ll );
        int64 NBYTES$7;
-       uint16 vr$39 = _ZN8MEMORY_T10READUSHORTEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), 0x1.68p+5 );
-       NBYTES$7 = (int64)vr$39;
+       uint16 vr$36 = _ZN8MEMORY_T10READUSHORTEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), 0x1.68p+5 );
+       NBYTES$7 = (int64)vr$36;
        NBYTES$7 = NBYTES$7 + -2048ll;
        fb_FilePutLarge( (int32)KEY$1, 0ll, (void*)&NBYTES$7, 8ull );
        {
@@ -28904,8 +28900,8 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
         goto label$6942;
         label$6945:;
         {
-         uint8 vr$48 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)(I$8 + 2048ll) );
-         U8$7 = vr$48;
+         uint8 vr$45 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), (double)(I$8 + 2048ll) );
+         U8$7 = vr$45;
          fb_FilePutLarge( (int32)KEY$1, 0ll, (void*)&U8$7, 1ull );
         }
         label$6943:;
@@ -28921,12 +28917,12 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
       {
        FBSTRING TMP$3604$7;
        fb_Locate( 1, 1, -1, 0, 0 );
-       FBSTRING* vr$53 = fb_SPACE( 48ll );
-       fb_PrintString( 0, (FBSTRING*)vr$53, 1 );
+       FBSTRING* vr$50 = fb_SPACE( 48ll );
+       fb_PrintString( 0, (FBSTRING*)vr$50, 1 );
        fb_Locate( 1, 1, -1, 0, 0 );
        __builtin_memset( &TMP$3604$7, 0, 24ll );
-       FBSTRING* vr$57 = fb_StrConcat( &TMP$3604$7, (void*)"can't create: ", 15ll, (void*)&STRKEY$2, -1ll );
-       fb_PrintString( 0, (FBSTRING*)vr$57, 1 );
+       FBSTRING* vr$54 = fb_StrConcat( &TMP$3604$7, (void*)"can't create: ", 15ll, (void*)&STRKEY$2, -1ll );
+       fb_PrintString( 0, (FBSTRING*)vr$54, 1 );
        fb_Beep( );
        fb_Sleep( -1 );
       }
@@ -28943,19 +28939,19 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
     label$6947:;
     {
      fb_Locate( 1, 1, -1, 0, 0 );
-     FBSTRING* vr$58 = fb_SPACE( 48ll );
-     fb_PrintString( 0, (FBSTRING*)vr$58, 1 );
+     FBSTRING* vr$55 = fb_SPACE( 48ll );
+     fb_PrintString( 0, (FBSTRING*)vr$55, 1 );
      fb_Locate( 1, 1, -1, 0, 0 );
-     FBSTRING* vr$59 = fb_StrAllocTempDescZEx( (uint8*)"load filename:", 14ll );
-     fb_ConsoleInput( (FBSTRING*)vr$59, -1, -1 );
+     FBSTRING* vr$56 = fb_StrAllocTempDescZEx( (uint8*)"load filename:", 14ll );
+     fb_ConsoleInput( (FBSTRING*)vr$56, -1, -1 );
      fb_InputString( (void*)&STRKEY$2, -1ll, 0 );
-     int64 vr$62 = fb_StrLen( (void*)&STRKEY$2, -1ll );
-     if( vr$62 == 0ll ) goto label$6949;
+     int64 vr$59 = fb_StrLen( (void*)&STRKEY$2, -1ll );
+     if( vr$59 == 0ll ) goto label$6949;
      {
-      int32 vr$63 = fb_FileFree( );
-      KEY$1 = (int64)vr$63;
-      int32 vr$67 = fb_FileOpen( (FBSTRING*)&STRKEY$2, 0u, 1u, 0u, (int32)KEY$1, 0 );
-      if( (int64)vr$67 != 0ll ) goto label$6951;
+      int32 vr$60 = fb_FileFree( );
+      KEY$1 = (int64)vr$60;
+      int32 vr$64 = fb_FileOpen( (FBSTRING*)&STRKEY$2, 0u, 1u, 0u, (int32)KEY$1, 0 );
+      if( (int64)vr$64 != 0ll ) goto label$6951;
       {
        uint8 U8$7;
        __builtin_memset( &U8$7, 0, 1ll );
@@ -28989,12 +28985,12 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
       {
        FBSTRING TMP$3608$7;
        fb_Locate( 1, 1, -1, 0, 0 );
-       FBSTRING* vr$86 = fb_SPACE( 48ll );
-       fb_PrintString( 0, (FBSTRING*)vr$86, 1 );
+       FBSTRING* vr$83 = fb_SPACE( 48ll );
+       fb_PrintString( 0, (FBSTRING*)vr$83, 1 );
        fb_Locate( 1, 1, -1, 0, 0 );
        __builtin_memset( &TMP$3608$7, 0, 24ll );
-       FBSTRING* vr$90 = fb_StrConcat( &TMP$3608$7, (void*)"can't open: ", 13ll, (void*)&STRKEY$2, -1ll );
-       fb_PrintString( 0, (FBSTRING*)vr$90, 1 );
+       FBSTRING* vr$87 = fb_StrConcat( &TMP$3608$7, (void*)"can't open: ", 13ll, (void*)&STRKEY$2, -1ll );
+       fb_PrintString( 0, (FBSTRING*)vr$87, 1 );
        fb_Beep( );
        fb_Sleep( -1 );
       }
@@ -29067,10 +29063,10 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
  _ZN7CPU65104PUSHEd( CPU$1, (double)*(uint8*)((uint8*)CPU$1 + 5ll) );
  _ZN7CPU65104PUSHEd( CPU$1, (double)*(uint8*)((uint8*)CPU$1 + 4ll) );
  _ZN7CPU65104PUSHEd( CPU$1, (double)*(uint8*)CPU$1 );
- uint8 vr$106 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), 0x1.FFFCp+15 );
- *(uint8*)((uint8*)CPU$1 + 5ll) = vr$106;
- uint8 vr$109 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), 0x1.FFFEp+15 );
- *(uint8*)((uint8*)CPU$1 + 4ll) = vr$109;
+ uint8 vr$103 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), 0x1.FFFCp+15 );
+ *(uint8*)((uint8*)CPU$1 + 5ll) = vr$103;
+ uint8 vr$106 = _ZN8MEMORY_T9READUBYTEEd( *(struct $8MEMORY_T**)((uint8*)CPU$1 + 8ll), 0x1.FFFEp+15 );
+ *(uint8*)((uint8*)CPU$1 + 4ll) = vr$106;
  *(uint8*)CPU$1 = (uint8)((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551599ull);
  *(uint8*)CPU$1 = (uint8)(((uint64)(int64)*(uint8*)CPU$1 & 18446744073709551611ull) | 4ull);
  label$6970:;
@@ -29081,12 +29077,12 @@ int64 INTERRUPTSERVICE( struct $7CPU6510* CPU$1 )
  }
  goto label$6970;
  label$6971:;
+ double vr$119 = _ZN7CPU65104PULLEv( CPU$1 );
+ *(uint8*)CPU$1 = (uint8)((int32)__builtin_nearbyint( vr$119 ));
  double vr$122 = _ZN7CPU65104PULLEv( CPU$1 );
- *(uint8*)CPU$1 = (uint8)((int32)__builtin_nearbyint( vr$122 ));
+ *(uint8*)((uint8*)CPU$1 + 4ll) = (uint8)((int32)__builtin_nearbyint( vr$122 ));
  double vr$125 = _ZN7CPU65104PULLEv( CPU$1 );
- *(uint8*)((uint8*)CPU$1 + 4ll) = (uint8)((int32)__builtin_nearbyint( vr$125 ));
- double vr$128 = _ZN7CPU65104PULLEv( CPU$1 );
- *(uint8*)((uint8*)CPU$1 + 5ll) = (uint8)((int32)__builtin_nearbyint( vr$128 ));
+ *(uint8*)((uint8*)CPU$1 + 5ll) = (uint8)((int32)__builtin_nearbyint( vr$125 ));
  if( KEY$1 != 13ll ) goto label$6973;
  {
   FLAG$ = 1ll;
@@ -29166,7 +29162,7 @@ static void _ZN9SHADERTOYaSERKS_( struct $9SHADERTOY* THIS$1, struct $9SHADERTOY
  label$105:;
  *(uint32*)THIS$1 = *(uint32*)__FB_RHS__$1;
  *(uint32*)((uint8*)THIS$1 + 4ll) = *(uint32*)((uint8*)__FB_RHS__$1 + 4ll);
- FBSTRING* vr$8 = fb_StrAssign( (void*)((uint8*)THIS$1 + 8ll), -1ll, (void*)((uint8*)__FB_RHS__$1 + 8ll), -1ll, 0 );
+ fb_StrAssign( (void*)((uint8*)THIS$1 + 8ll), -1ll, (void*)((uint8*)__FB_RHS__$1 + 8ll), -1ll, 0 );
  label$106:;
 }
 
@@ -29200,7 +29196,7 @@ static void _ZN7CPU6510aSERKS_( struct $7CPU6510* THIS$1, struct $7CPU6510* __FB
  TMP$731$1 = (FBSTRING*)((uint8*)__FB_RHS__$1 + 14408ll);
  TMP$729$1 = 0ll;
  label$136:;
- FBSTRING* vr$41 = fb_StrAssign( (void*)TMP$730$1, -1ll, (void*)TMP$731$1, -1ll, 0 );
+ fb_StrAssign( (void*)TMP$730$1, -1ll, (void*)TMP$731$1, -1ll, 0 );
  TMP$730$1 = (FBSTRING*)((uint8*)TMP$730$1 + 24ll);
  TMP$731$1 = (FBSTRING*)((uint8*)TMP$731$1 + 24ll);
  TMP$729$1 = TMP$729$1 + 1ll;

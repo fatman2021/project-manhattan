@@ -14,9 +14,9 @@
 					 dim as boolean bMipmap
 					 dim as boolean bRepeat
 '                              x0
-					 mov(mem64(49355d),720d) ' Set screen width to 720
+					 mov(mem64(49355d),1920d) ' Set screen width to 720
 '                              y0					   
-					 mov(mem64(49356d),576d) ' Set screen height to 576
+					 mov(mem64(49356d),1080d) ' Set screen height to 576
 '                    Call glScreen
 					 poke64(49312d,0)
 
@@ -25,8 +25,8 @@
 					 'v3.y = scr_h     '`height (in pixels)
 					 'v3.z = v3.x/v3.y ' pixel ratio
 					 
-					 v3.x = 720       ' width  (in pixels)
-					 v3.y = 576       '`height (in pixels)
+					 v3.x = 1920       ' width  (in pixels)
+					 v3.y = 1080       '`height (in pixels)
 					 v3.z = v3.x/v3.y ' pixel ratio
 
 					 dim as ShaderToy Shader

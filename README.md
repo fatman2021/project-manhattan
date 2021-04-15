@@ -57,9 +57,34 @@ FUN FACT #2: The universities have already produced multicore 8-bit CPUs that ru
 
 FUN FACT #3: Unlike real hardware, you can get an emulator to anything you want.
 
-# c64dvd-bpc.bas
+# Predication (computer architecture)
 
-c64dvd-bpc 
+In computer science, predication is an architectural feature that provides an alternative to conditional transfer of control,
+implemented by machine instructions such as conditional branch, conditional call, conditional return, and branch tables. 
+Predication works by executing instructions from both paths of the branch and only permitting those instructions from the taken
+path to modify architectural state. The instructions from the taken path are permitted to modify architectural state because they
+have been associated (predicated) with a predicate, a Boolean value used by the instruction to control whether the instruction is
+allowed to modify the architectural state or not. 
+
+# Branch Predictor
+
+In computer architecture, a branch predictor is a digital circuit that tries to guess which way a branch (e.g., an 
+if–then–else structure) will go before this is known definitively. The purpose of the branch predictor is to improve the
+flow in the instruction pipeline. Branch predictors play a critical role in achieving high effective performance in many
+modern pipelined microprocessor architectures such as x86. 
+
+# Cache prefetching
+
+Cache prefetching is a technique used by computer processors to boost execution performance by fetching instructions or data
+from their original storage in slower memory to a faster local memory before it is actually needed (hence the term 'prefetch').
+Most modern computer processors have fast and local cache memory in which prefetched data is held until it is required. The 
+source for the prefetch operation is usually main memory. Because of their design, accessing cache memories is typically much
+faster than accessing main memory, so prefetching data and then accessing it from caches is usually many orders of magnitude 
+faster than accessing it directly from main memory. Prefetching can be done with non-blocking cache control instructions. 
+
+# c64dvd-glsl.bas
+
+c64dvd-glsl 
 
 $C000     - Play DVD track
 

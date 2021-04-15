@@ -1,5 +1,30 @@
 ' c64.bas
+/'
+# Predication (computer architecture)
 
+In computer science, predication is an architectural feature that provides an alternative to conditional transfer of control,
+implemented by machine instructions such as conditional branch, conditional call, conditional return, and branch tables. 
+Predication works by executing instructions from both paths of the branch and only permitting those instructions from the taken
+path to modify architectural state. The instructions from the taken path are permitted to modify architectural state because they
+have been associated (predicated) with a predicate, a Boolean value used by the instruction to control whether the instruction is
+allowed to modify the architectural state or not. 
+
+# Branch Predictor
+
+In computer architecture, a branch predictor is a digital circuit that tries to guess which way a branch (e.g., an 
+if–then–else structure) will go before this is known definitively. The purpose of the branch predictor is to improve the
+flow in the instruction pipeline. Branch predictors play a critical role in achieving high effective performance in many
+modern pipelined microprocessor architectures such as x86. 
+
+# Cache prefetching
+
+Cache prefetching is a technique used by computer processors to boost execution performance by fetching instructions or data
+from their original storage in slower memory to a faster local memory before it is actually needed (hence the term 'prefetch').
+Most modern computer processors have fast and local cache memory in which prefetched data is held until it is required. The 
+source for the prefetch operation is usually main memory. Because of their design, accessing cache memories is typically much
+faster than accessing main memory, so prefetching data and then accessing it from caches is usually many orders of magnitude 
+faster than accessing it directly from main memory. Prefetching can be done with non-blocking cache control instructions. 
+'/
 #include once "fbgfx.bi"
 #include once "address.bi"
 
@@ -14,6 +39,8 @@ using FB
 #if defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or defined(__FB_NETBSD__) or _
     defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or defined(__FB_UNIX__)   or _
     defined(__FB_64BIT__)   or defined(__FB_ARM__) 
+    #define I_INT &H495DC8
+    #define C_INT &H475C98
     #define N0000 &H495DA0
     #define N0001 &H495DA1
     #define N0010 &H495DA2
@@ -168,7 +195,7 @@ dim shared as string   vram  (&H0000AFFF)
 
 dim shared as string   get_key, get_data, old_data(10000)
 dim shared as short    data_pointer = 1, repeat
-dim shared as integer  prompt_flag = 1
+dim shared as integer  prompt_flag = 1, i
 dim shared as string   eol: eol = chr(13) + chr(10)
 dim shared as ubyte    nibbles(&B1111)
 dim shared as ubyte    bytes  (&B11111111)
@@ -429,13 +456,9 @@ constructor C64_T
   ' struct $8MEMORY_T* TMP$740$1;
   ' struct $7CPU6510* TMP$742$1;
   ' label$139:;
-  ' int64 I$1;
-  ' __builtin_memset( &I$1, 0, 8ll );
-  ' int64 C$1;
-  ' __builtin_memset( &C$1, 0, 8ll );
   ' __builtin_memset( (struct $8MEMORY_T**)THIS$1, 0, 8ll );
   ' __builtin_memset( (struct $7CPU6510**)((uint8*)THIS$1 + 8ll), 0, 8ll );
-  dim as integer i,c
+  ' dim as integer i,c
   ' initialize nibbles, bytes, and words.
   ' *(uint8*)4808096ll = (uint8)0u; 
   poke ubyte,N0000,&B0000
@@ -445,75 +468,81 @@ constructor C64_T
   poke ubyte,N0101,&B0101
   ' *(uint8*)4808104ll = (uint8)8u;
   poke ubyte,N1000,&B1000
-  ' I$1 = (int64)*(uint8*)4808096ll;
-  poke integer,@i,                                                                              peek(ubyte,N0000)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
+  poke integer,I_INT,                                                                           peek(ubyte,N0000)
+  ' print "@i = &H";hex(@i)
+  ' print "@c = &H";hex(@c)
+  ' for i=0 to 15
+  ' print "@nibbles(";str(peek(integer,@i));") = &H";hex(@nibbles(peek(integer,@i)))
+  ' next i
+  ' end
 L0A:
   ' label$141:;
-  ' *(uint8*)((uint8*)NIBBLES$ + I$1) = (uint8)I$1;
-  ' I$1 = I$1 + (int64)*(uint8*)4808097ll;
-  poke ubyte,@nibbles(peek(integer,@i)),peek(integer,@i): poke integer,@i,peek(integer,@i) add  peek(ubyte,N0001)
+  ' *(uint8*)((uint8*)*(int64*)4808136ll + 4808096ll) = (uint8)*(int64*)4808136ll;
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke ubyte,N0000 add     peek(integer,I_INT), peek(integer,I_INT):     poke integer,I_INT,     peek(integer,I_INT) add peek(ubyte,N0001)
   ' fb_Locate( (int32)*(uint8*)4808097ll, (int32)*(uint8*)4808097ll, -1, 0, 0 );
   ' FBSTRING* vr$12 = fb_StrAllocTempDescZEx( (uint8*)"NIBBLES: ", 9ll );
-  ' fb_PrintString( 0, (FBSTRING*)vr$12, 0 );
-  ' if( I$1 >= ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808097ll & 63ll)) ) goto label$142;
-  ' TMP$733$1 = I$1;
+  ' fb_PrintString( 0, (FBSTRING*)vr$11, 0 );
+  ' if( *(int64*)4808136ll >= ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808097ll & 63ll)) ) goto label$142;
+  ' TMP$733$1 = *(int64*)4808136ll;
   ' goto label$158;
   ' label$142:;
-  ' TMP$733$1 = I$1 - (int64)*(uint8*)4808097ll;
+  ' TMP$733$1 = *(int64*)4808136ll - (int64)*(uint8*)4808097ll;
   ' label$158:;
   ' fb_PrintLongint( 0, TMP$733$1, 1 );
-  locate peek(ubyte,N0001),  peek(ubyte,N0001): print "NIBBLES: ";    iif(peek(integer,@i)<     peek(ubyte,N1000) shl peek(ubyte,N0001),    peek(integer,@i),     peek(integer,@i) subt peek(ubyte,N0001))
-  ' if( I$1 > ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808097ll & 63ll)) ) goto label$144;
+  locate peek(ubyte,N0001),peek(ubyte,N0001): print "NIBBLES: ";     iif(peek(integer,I_INT)<    peek(ubyte,N1000)   shl peek(ubyte,N0001),    peek(integer,I_INT),     peek(integer,I_INT) subt peek(ubyte,N0001))
+  ' if( *(int64*)4808136ll > ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808097ll & 63ll)) ) goto label$144;;
   ' goto label$141;
-  cmp peek(integer,@i) ls                                                                       peek(ubyte,N1000) shl peek(ubyte,N0001) jmp L0A
+  cmp    peek(integer,I_INT) ls                                                                  peek(ubyte,N1000)   shl peek(ubyte,N0001) jmp L0A
   ' label$144:;
-  ' I$1 = (int64)*(uint8*)4808096ll;
-  poke integer,@i,peek(ubyte,N0000)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
+  poke integer,I_INT,      peek(ubyte,N0000)
 L0B:
   ' label$145:;
-  ' *(uint8*)((uint8*)BYTES$ + I$1) = (uint8)I$1;
-  ' I$1 = I$1 + (int64)*(uint8*)4808097ll;
-  poke ubyte,@bytes(peek(integer,@i)),  peek(integer,@i):  poke integer,@i,peek(integer,@i) add peek(ubyte,N0001)
+  ' *(uint8*)((uint8*)BYTES$ + *(int64*)4808136ll) = (uint8)*(int64*)4808136ll;
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke ubyte,@bytes(       peek(integer,I_INT)),peek(integer,I_INT):     poke integer,I_INT,     peek(integer,I_INT) add peek(ubyte,N0001)
   ' fb_Locate( (int32)*(uint8*)4808098ll, (int32)*(uint8*)4808097ll, -1, 0, 0 );
-  ' FBSTRING* vr$27 = fb_StrAllocTempDescZEx( (uint8*)"BYTES:   ", 9ll );
-  ' fb_PrintString( 0, (FBSTRING*)vr$27, 0 );
-  ' if( I$1 >= ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808101ll & 63ll)) ) goto label$146;
-  ' TMP$735$1 = I$1;
+  ' FBSTRING* vr$26 = fb_StrAllocTempDescZEx( (uint8*)"BYTES:   ", 9ll );
+  ' fb_PrintString( 0, (FBSTRING*)vr$26, 0 );
+  ' if( *(int64*)4808136ll >= ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808101ll & 63ll)) ) goto label$146;
+  ' TMP$735$1 = *(int64*)4808136ll;
   ' goto label$159;
   ' label$146:;
-  ' TMP$735$1 = I$1 - (int64)*(uint8*)4808097ll;
+  ' TMP$735$1 = *(int64*)4808136ll - (int64)*(uint8*)4808097ll;
   ' label$159:;
   ' fb_PrintLongint( 0, TMP$735$1, 1 );  
-  locate peek(ubyte,N0010),  peek(ubyte,N0001): print "BYTES:   ";     iif(peek(integer,@i)<    peek(ubyte,N1000) shl peek(ubyte,N0101),    peek(integer,@i),     peek(integer,@i) subt peek(ubyte,N0001))
-  ' if( I$1 > ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808101ll & 63ll)) ) goto label$148;
+  locate peek(ubyte,N0010),peek(ubyte,N0001): print "BYTES:   ";     iif(peek(integer,I_INT)<    peek(ubyte,N1000)   shl peek(ubyte,N0101),    peek(integer,I_INT),     peek(integer,I_INT) subt peek(ubyte,N0001))
+  ' if( *(int64*)4808136ll > ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808101ll & 63ll)) ) goto label$148;
   ' goto label$145;
-  cmp peek(integer,@i) ls                                                                       peek(ubyte,N1000) shl peek(ubyte,N0101) jmp L0B
+  cmp    peek(integer,I_INT) ls                                                                  peek(ubyte,N1000)   shl peek(ubyte,N0101) jmp L0B
   ' label$148:;
-  ' I$1 = (int64)*(uint8*)4808096ll;
-  poke integer,@i,peek(ubyte,N0000)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
+  poke integer,I_INT,      peek(ubyte,N0000)
 L0C:
   ' label$149:;
-  ' *(uint16*)((uint8*)XWORDS$ + (I$1 << (1ll & 63ll))) = (uint16)I$1;
-  ' I$1 = I$1 + (int64)*(uint8*)4808097ll;
-  poke ushort,@xwords(peek(integer,@i)),peek(integer,@i): poke integer,@i,peek(integer,@i) add  peek(ubyte,N0001)
+  ' *(uint16*)((uint8*)XWORDS$ + (*(int64*)4808136ll << (1ll & 63ll))) = (uint16)*(int64*)4808136ll;
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke ushort,@xwords(     peek(integer,I_INT)),peek(integer,I_INT):     poke integer,I_INT,     peek(integer,I_INT) add  peek(ubyte,N0001)
   ' fb_Locate( (int32)*(uint8*)4808099ll, (int32)*(uint8*)4808097ll, -1, 0, 0 );
-  ' FBSTRING* vr$43 = fb_StrAllocTempDescZEx( (uint8*)"WORDS:   ", 9ll );
-  ' fb_PrintString( 0, (FBSTRING*)vr$43, 0 );
-  ' if( I$1 >= (((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$150;
-  ' TMP$737$1 = I$1;
+  ' FBSTRING* vr$42 = fb_StrAllocTempDescZEx( (uint8*)"WORDS:   ", 9ll );
+  ' fb_PrintString( 0, (FBSTRING*)vr$42, 0 );
+  ' if( *(int64*)4808136ll >= (((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$150;
+  ' TMP$737$1 = *(int64*)4808136ll;
   ' goto label$160;
   ' label$150:;
-  ' TMP$737$1 = I$1 - (int64)*(uint8*)4808097ll;
+  ' TMP$737$1 = *(int64*)4808136ll - (int64)*(uint8*)4808097ll;
   ' label$160:;
   ' fb_PrintLongint( 0, TMP$737$1, 1 );
-  locate peek(ubyte,N0011),  peek(ubyte,N0001): print "WORDS:   ";    iif(peek(integer,@i)<     peek(ubyte,N1111) shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111),peek(integer,@i),                            peek(integer,@i) subt peek(ubyte,&H495DA1))
-  ' if( I$1 > (((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$152;
+  locate peek(ubyte,N0011),peek(ubyte,N0001): print "WORDS:   ";     iif(peek(integer,I_INT)<    peek(ubyte,N1111) shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111),peek(integer,I_INT),                        peek(integer,I_INT) subt peek(ubyte,N0001))
+  ' if( *(int64*)4808136ll > (((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$152;
   ' goto label$149;
-  cmp peek(integer,@i) ls                                                                       peek(ubyte,N1111) shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L0C 
+  cmp peek(integer,I_INT) ls                                                                     peek(ubyte,N1111) shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L0C 
   dprint("C64_T()")
 
 #if defined(__FB_DOS__) or defined(__FB_WIN32__)
-  ScreenRes                                                                                     peek(ubyte,N0011) shl peek(ubyte,N1000) add peek(ubyte,N0010) shl peek(ubyte,N0100),    peek(ubyte,N0010) shl peek(ubyte,N1000) add peek(ubyte,N0101) shl peek(ubyte,N0100) add peek(ubyte,N1000), peek(ubyte,N0010) shl peek(ubyte,N0100),peek(ubyte,N0000),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+  ScreenRes                                                                                      peek(ubyte,N0011) shl peek(ubyte,N1000) add peek(ubyte,N0010) shl peek(ubyte,N0100),    peek(ubyte,N0010) shl peek(ubyte,N1000) add peek(ubyte,N0101) shl peek(ubyte,N0100) add peek(ubyte,N1000), peek(ubyte,N0010)   shl peek(ubyte,N0100),peek(ubyte,N0000),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
 #endif
  
 #if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or _
@@ -528,20 +557,20 @@ L0C:
   ' label$152:;
   ' fb_GfxScreenRes( (int32)((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808103ll & 63ll)), (int32)((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808104ll), (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), (int32)*(uint8*)4808096ll, 64, 0 );
   ' fb_Cls( -65536 );
-  ScreenRes                                                                                     peek(ubyte,N1111) shl peek(ubyte,N0111),    peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0011) shl peek(ubyte,N0100) add peek(ubyte,N1000),    peek(ubyte,N0010) shl peek(ubyte,N0100), peek(ubyte,N0000),GFX_ALPHA_PRIMITIVES: Cls
+  ScreenRes                                                                                      peek(ubyte,N1111) shl peek(ubyte,N0111),    peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0011) shl peek(ubyte,N0100) add peek(ubyte,N1000),    peek(ubyte,N0010) shl peek(ubyte,N0100), peek(ubyte,N0000),GFX_ALPHA_PRIMITIVES: Cls
 #endif
   ' get curent resolution
 #if defined(__FB_DOS__) or defined(__FB_WIN32__)
   screeninfo cast(uinteger,scr_w), cast(uinteger,scr_h), cast(uinteger,imgData), cast(uinteger,pitch)
-  mov(bgimage, ImageCreate(scr_w,scr_h,                                      peek(ubyte,N0000), peek(ubyte,N0010) shl peek(ubyte,N0100)))
-  mov(fgimage, ImageCreate(scr_w,scr_h,                                      peek(ubyte,N0000), peek(ubyte,N0010) shl peek(ubyte,N0100)))
-  mov(raster,  ImageCreate(scr_w,                                            peek(ubyte,N0001), peek(ubyte,N0000),    peek(ubyte,N0010) shl peek(ubyte,N0100)))
-  mov(render,  ImageCreate(scr_w,scr_h,                                      peek(ubyte,N0000), peek(ubyte,N0010) shl peek(ubyte,N0100)))
-  poke @i,                                                                   peek(ubyte,N0000)  
+  mov(bgimage, ImageCreate(scr_w,scr_h,                                  peek(ubyte,N0000),      peek(ubyte,N0010) shl peek(ubyte,N0100)))
+  mov(fgimage, ImageCreate(scr_w,scr_h,                                  peek(ubyte,N0000),      peek(ubyte,N0010) shl peek(ubyte,N0100)))
+  mov(raster,  ImageCreate(scr_w,                                        peek(ubyte,N0001),      peek(ubyte,N0000),    peek(ubyte,N0010) shl peek(ubyte,N0100)))
+  mov(render,  ImageCreate(scr_w,scr_h,                                  peek(ubyte,N0000),      peek(ubyte,N0010) shl peek(ubyte,N0100)))
+  poke I_INT,                                                            peek(ubyte,N0000)  
 L0:
-  read c:palette  peek(integer,@i),peek(integer,@c)
-  poke integer,@i peek(integer,@i) add                                       peek(ubyte,N0001)
-  cmp peek(@i) lt peek(ubyte,N1111) jmp L0
+  read c:palette                                                         peek(integer,I_INT),    peek(integer,C_INT)
+  poke integer,I_INT                                                     peek(integer,I_INT) add peek(ubyte,N0001)
+  cmp peek(I_INT) lt                                                     peek(ubyte,N1111)   jmp L0
 #endif
 #if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__)  or defined(__FB_XBOX__) or _
@@ -553,28 +582,28 @@ L0:
   screeninfo cast(uinteger,scr_w), cast(uinteger,scr_h), cast(uinteger,imgData), cast(uinteger,pitch)
   ' void* vr$101 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
   ' BGIMAGE$ = vr$101;
-  mov(bgimage, ImageCreate(scr_w,scr_h,                                      peek(ubyte,N0000), peek(ubyte,N0010) shl peek(ubyte,N0100)))
+  mov(bgimage, ImageCreate(scr_w,scr_h,                                  peek(ubyte,N0000),      peek(ubyte,N0010) shl peek(ubyte,N0100)))
   ' void* vr$109 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
   ' FGIMAGE$ = vr$109;
-  mov(fgimage, ImageCreate(scr_w,scr_h,                                      peek(ubyte,N0000), peek(ubyte,N0010) shl peek(ubyte,N0100)))
+  mov(fgimage, ImageCreate(scr_w,scr_h,                                  peek(ubyte,N0000),      peek(ubyte,N0010) shl peek(ubyte,N0100)))
   ' void* vr$117 = fb_GfxImageCreate( (int32)SCR_W$, (int32)*(uint8*)4808097ll, (uint32)*(uint8*)4808096ll, (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
   ' RASTER$ = vr$117;
-  mov(raster,  ImageCreate(scr_w,                                            peek(ubyte,N0001), peek(ubyte,N0000),    peek(ubyte,N0010) shl peek(ubyte,N0100)))
+  mov(raster,  ImageCreate(scr_w,                                        peek(ubyte,N0001),      peek(ubyte,N0000),    peek(ubyte,N0010) shl peek(ubyte,N0100)))
   ' void* vr$125 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
   ' RENDER$ = vr$125;
-  mov(render,  ImageCreate(scr_w,scr_h,                                      peek(ubyte,N0000), peek(ubyte,N0010) shl peek(ubyte,N0100)))
-  ' I$1 = (int64)*(uint8*)4808096ll;
-  poke integer,@i,                                                           peek(ubyte,N0000)  
+  mov(render,  ImageCreate(scr_w,scr_h,                                  peek(ubyte,N0000),      peek(ubyte,N0010) shl peek(ubyte,N0100)))
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
+  poke integer,I_INT,                                                    peek(ubyte,N0000)  
 L0:
  ' label$153:;
  ' fb_DataReadLongint( (int64*)&C$1 );
- ' fb_GfxPalette( (int32)I$1, (int32)C$1, -1, -1 );
-  read c:palette                                                             peek(integer,@i),  peek(integer,@c)
- ' I$1 = I$1 + (int64)*(uint8*)4808097ll;
-  poke integer,@i,                                                           peek(integer,@i)                     add peek(ubyte,N0001)
- ' if( I$1 >= (int64)*(uint8*)4808111ll ) goto label$155;
+ ' fb_GfxPalette( (int32)*(int64*)4808136ll, (int32)*(int64*)4676760ll, -1, -1 );
+  read c:palette                                                         peek(integer,I_INT),    peek(integer,C_INT)
+ ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(integer,I_INT) add peek(ubyte,N0001)
+ ' if( *(int64*)4808136ll >= (int64)*(uint8*)4808111ll ) goto label$155;
  ' goto label$153;
-  cmp peek(integer,@i) lt                                                    peek(ubyte,N1111) jmp L0
+  cmp peek(integer,I_INT) lt                                             peek(ubyte,N1111)   jmp L0
 #endif
  ' label$155:;
  ' void* vr$133 = malloc( 134755848ull );
@@ -619,7 +648,7 @@ destructor C64_T
   ImageDestroy(render)
   ' fb_Sleep( (int32)((((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808104ll) );
   ' label$162:;
-  sleep                                                                                          peek(ubyte,N0011) shl peek(ubyte,N1000) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1000)
+  sleep                                                                  peek(ubyte,N0011)   shl peek(ubyte,N1000) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1000)
   '}
 end destructor
 
@@ -636,129 +665,130 @@ constructor MEMORY_T
   ' __builtin_memset( (double*)((uint8*)THIS$1 + 134752968ll), 0, 2880ll );
   'Set default system offset to $C000(49152)
   ' SYS_OFFSET$ = (double)((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll));
-  poke double,@sys_offset,                                                                      peek(ubyte,N1100) shl peek(ubyte,N1100)
+  poke double,@sys_offset,                                               peek(ubyte,N1100)   shl peek(ubyte,N1100)
   ' initialize zero page and the stack
   ' uint16 B$1;
   ' B$1 = *(uint16*)4808096ll;
   ' uint16 INDEX$1;
   ' INDEX$1 = *(uint16*)4808096ll;
-  var mov(b,                                                                 peek(ushort,N0000)),mov(index,           peek(ushort,N0000))
+  var mov(b,                                                             peek(ushort,N0000)),mov(index,                peek(ushort,N0000))
   'open "address.txt" for output as #1
   'print #1,"&H"+hex(@index)
   'close #1
 L1:
   ' label$167:;
-  ' fb_DataReadUShort( &B$1 );  
-  ' *(double*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) = (double)B$1;
-  read b: poke double,@mem64(                                                peek(ushort,@index)),                    peek(ushort,@b)
-  ' INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
-  poke ushort,@index,                                                        peek(ushort,@index)                  add peek(ubyte,N0001)
-  ' if( (int64)INDEX$1 > ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$169;
+  ' fb_DataReadLongint( (int64*)&C$ ); 
+  ' *(double*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) = (double)*(int64*)4676760ll;
+  read c: poke double,@mem64(                                            peek(integer,I_INT)),   peek(integer,C_INT)
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(integer,I_INT) add peek(ubyte,N0001)
+  ' if( *(int64*)4808136ll > ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$169;
   ' goto label$167;
-  cmp                                                                        peek(ushort,@index)                   ls peek(ubyte,N0001) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L1
+  cmp                                                                    peek(integer,I_INT)  ls peek(ubyte,N0001) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L1
   ' label$169:;
-  ' INDEX$1 = (uint16)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808104ll & 63ll));
-  poke ushort,@index,                                                                           peek(ubyte,N0010) shl peek(ubyte,N1000)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808104ll & 63ll);
+  poke integer,I_INT,                                                    peek(ubyte,N0010)   shl peek(ubyte,N1000)
 L2:
   ' label$170:;
-  ' *(double*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) = (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll);
-  poke double,@mem64(index),                                                                    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)
-  ' INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
-  poke ushort,@index,                                                        peek(ushort,@index)                  add peek(ubyte,N0001)
-  ' if( (int64)INDEX$1 > ((((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$172;
+  ' *(double*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) = (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll);
+  poke double,@mem64(                                                    peek(integer,I_INT)),   peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(integer,I_INT )                      add peek(ubyte,N0001)
+  ' if( *(int64*)4808136ll > ((((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$172;
   ' goto label$170;
-  cmp                                                                        peek(ushort,@index)                   ls peek(ubyte,N0011) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L2
+  cmp                                                                    peek(integer,I_INT)  ls peek(ubyte,N0011) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L2
   ' initialize sine and cosine tables
   ' label$172:;
-  ' INDEX$1 = (uint16)*(uint8*)4808096ll;
-  poke ushort,@index,                                                        peek(ubyte,N0000)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll; 
+  poke integer,I_INT,                                                    peek(ubyte,N0000)
 L3:
   ' label$173:;
-  ' *(double*)((uint8*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) + 134750088ll) = __builtin_sin( (double)((((int64)__builtin_nearbyint( ((double)(int64)INDEX$1 * 0x1.921FB54442D18p+1) / (double)(int64)*(uint8*)4808107ll )) << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) );  
-  poke double,@SINTable(                           peek(ushort,@index)),SIN( peek(ushort,@index)         mul M_PI div peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N0100))  
+  ' *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134750088ll) = __builtin_sin( (double)((((int64)__builtin_nearbyint( ((double)*(int64*)4808136ll * 0x1.921FB54442D18p+1) / (double)(int64)*(uint8*)4808107ll )) << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) );
+  poke double,@SINTable(                                                 peek(integer,I_INT)),SIN(                     peek(integer,I_INT)                     mul M_PI              div peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N0100))  
   ' *(double*)((uint8*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) + 134752968ll) = __builtin_cos( (double)((((int64)__builtin_nearbyint( ((double)(int64)INDEX$1 * 0x1.921FB54442D18p+1) / (double)(int64)*(uint8*)4808107ll )) << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) );
-  poke double,@COSTable(                           peek(ushort,@index)),COS( peek(ushort,@index)         mul M_PI div peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N0100)) 
-  ' INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
-  poke ushort,@index,                                                        peek(ushort,@index)                  add peek(ubyte,N0001)
-  ' if( (int64)INDEX$1 > ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808103ll) ) goto label$175;
+  poke double,@COSTable(                                                 peek(integer,I_INT)),COS(                     peek(integer,I_INT)                     mul M_PI              div peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N0100)) 
+  ' *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134752968ll) = __builtin_cos( (double)((((int64)__builtin_nearbyint( ((double)*(int64*)4808136ll * 0x1.921FB54442D18p+1) / (double)(int64)*(uint8*)4808107ll )) << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) );
+  poke integer,I_INT,                                                    peek(integer,I_INT) add peek(ubyte,N0001)
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  ' if( *(int64*)4808136ll > ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808103ll) ) goto label$175;
   ' goto label$173;
-  cmp                                                                        peek(ushort,@index)                   ls peek(ubyte,N0001) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0111) jmp L3
+  cmp                                                                    peek(integer,I_INT)  ls peek(ubyte,N0001) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0111) jmp L3
   ' Set text color
   ' label$175:;
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
   '      Red=($C002/49154)
-  poke64(                                                                    peek(ubyte,N1100)                    shl peek(ubyte,N1100) add peek(ubyte,N0010),    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)) 
+  poke64(                                                                peek(ubyte,N1100)   shl peek(ubyte,N1100) add peek(ubyte,N0010),    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)) 
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
   '      Green=($C003/49155)
-  poke64(                                                                    peek(ubyte,N1100)                    shl peek(ubyte,N1100) add peek(ubyte,N0011),    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)) 
+  poke64(                                                                peek(ubyte,N1100)   shl peek(ubyte,N1100) add peek(ubyte,N0011),    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)) 
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
   '      Blue=($C004/49156)
-  poke64(                                                                    peek(ubyte,N1100)                    shl peek(ubyte,N1100) add peek(ubyte,N0100),    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)) 
+  poke64(                                                                peek(ubyte,N1100)   shl peek(ubyte,N1100) add peek(ubyte,N0100),    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)) 
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
   '      Alpha=($C005/49157)
-  poke64(                                                                    peek(ubyte,N1100)                    shl peek(ubyte,N1100) add peek(ubyte,N0101),    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)) 
+  poke64(                                                                peek(ubyte,N1100)   shl peek(ubyte,N1100) add peek(ubyte,N0101),    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)) 
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
   '      Background Color(Alpha)=($C009/49161)
-  poke64(                                                                    peek(ubyte,N1100)                    shl peek(ubyte,N1100) add peek(ubyte,N1001),    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)) 
+  poke64(                                                                peek(ubyte,N1100)   shl peek(ubyte,N1100) add peek(ubyte,N1001),    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)) 
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808102ll & 63ll))) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808098ll & 63ll))), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
   '      Border Color(Alpha)=($C130/49456)
-  poke64(                                                                    peek(ubyte,N1100)                    shl peek(ubyte,N1100) add peek(ubyte,N0100) shl peek(ubyte,N0110) add peek(ubyte,N1100) shl peek(ubyte,N0010),    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)) 
+  poke64(                                                                peek(ubyte,N1100)   shl peek(ubyte,N1100) add peek(ubyte,N0100) shl peek(ubyte,N0110) add peek(ubyte,N1100) shl peek(ubyte,N0010),    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)) 
   ' Address 648 ($288) holds a "pointer" (or more precisely, half a pointer) that tells 
   ' KERNAL where in RAM the text screen is currently located: The contents of address 648 is
   ' the most significant 8 bits, or the "high-byte", of the text screen's physical start address.
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808104ll), (double)*(uint8*)4808100ll );
-  poke64(                                                                    peek(ubyte,N0010)                    shl peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1000)),   peek(ubyte,N0100)  
+  poke64(                                                                peek(ubyte,N0010)   shl peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1000)),   peek(ubyte,N0100)  
   ' Address 53272 ($D018) is a VIC-II register that generally tells the graphics chip where to "look for graphics", 
   ' in conjunction with both the text screen and with bitmap graphics. 
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808104ll), (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
-  poke64(                                                                    peek(ubyte,N1101)                    shl peek(ubyte,N1100) add peek(ubyte,N0001) shl peek(ubyte,N0100) add peek(ubyte,N1000)),   peek(ubyte,N0001) shl peek(ubyte,N0100) add peek(ubyte,N1111)
+  poke64(                                                                peek(ubyte,N1101)   shl peek(ubyte,N1100) add peek(ubyte,N0001) shl peek(ubyte,N0100) add peek(ubyte,N1000)),   peek(ubyte,N0001) shl peek(ubyte,N0100) add peek(ubyte,N1111)
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808103ll), (double)*(uint8*)4808096ll );
 '        font_f(Flip font)=($C0E7/49383) 
-  poke64(                                                                    peek(ubyte,N1100)                    shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N0111)),   peek(ubyte,N0000)
+  poke64(                                                                peek(ubyte,N1100)   shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N0111)),   peek(ubyte,N0000)
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808104ll), (double)*(uint8*)4808098ll );
 '        font_o(Font offset)=($C0E8/49384)    
-  poke64(                                                                    peek(ubyte,N1100)                    shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1000)),   peek(ubyte,N0010)
+  poke64(                                                                peek(ubyte,N1100)   shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1000)),   peek(ubyte,N0010)
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll), (double)*(uint8*)4808103ll );
 '        font_w(Font width)=($C0E9/49385)
-  poke64(                                                                    peek(ubyte,N1100)                    shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1001)),   peek(ubyte,N0111) 
+  poke64(                                                                peek(ubyte,N1100)   shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1001)),   peek(ubyte,N0111) 
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808106ll), (double)*(uint8*)4808103ll );
 '        font_h(Font height)=($C0EA/49386)
-  poke64(                                                                    peek(ubyte,N1100)                    shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1010)),   peek(ubyte,N0111)
-  ' INDEX$1 = (uint16)*(uint8*)4808096ll;
-  poke ushort,@index,                                                        peek(ubyte,N0000)
+  poke64(                                                                peek(ubyte,N1100)   shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1010)),   peek(ubyte,N0111)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
+  poke integer,I_INT,                                                    peek(ubyte,N0000)
   ' uint8 TMP$1;
   ' __builtin_memset( &TMP$1, 0, 1ll );
   dim as ubyte tmp
   ' init all ROM's
   ' FBSTRING* vr$262 = fb_StrAllocTempDescZEx( (uint8*)"64c.251913-01.bin", 17ll );
-  ' fb_FileOpen( (FBSTRING*)vr$262, 0u, 0u, 0u, 1, 0 );
-  open "64c.251913-01.bin" for binary as #1
+  ' fb_FileOpen( (FBSTRING*)vr$246, 0u, 0u, 0u, (int32)*(uint8*)4808097ll, 0 );
+  open "64c.251913-01.bin" for binary as peek(ubyte,N0001)
 L4:
   ' label$176:;
   ' fb_FileGetLarge( 1, 0ll, (void*)&TMP$1, 1ull );
-  ' *(double*)((uint8*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) + 134348800ll) = (double)TMP$1;  
-  get #1,,tmp: poke double,@basic(index),                                    peek(ubyte,@tmp)
-  ' INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
-  poke ushort,@index,                                                        peek(ushort,@index)                  add peek(ubyte,N0001)
-  ' if( (int64)INDEX$1 > (((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$178;
+  ' *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134348800ll) = (double)TMP$1;  
+  get #1,,tmp: poke double,@basic(                                       peek(integer,I_INT)),   peek(ubyte,@tmp)
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(integer,I_INT) add peek(ubyte,N0001)
+  ' if( *(int64*)4808136ll > (((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$178;
   ' goto label$176;
-  cmp                                                                        peek(ushort,@index)                   ls peek(ubyte,N0001) shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L4
+  cmp                                                                    peek(integer,I_INT)  ls peek(ubyte,N0001) shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L4
   ' label$178:;
-  ' INDEX$1 = (uint16)*(uint8*)4808096ll;
-  poke ushort,@index,                                                        peek(ubyte,N0000)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
+  poke integer,I_INT,                                                    peek(ubyte,N0000)
 L5:
   ' label$179:;
   ' fb_FileGetLarge( 1, 0ll, (void*)&TMP$1, 1ull );
-  '  *(double*)((uint8*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) + 134217728ll) = (double)TMP$1; 
-  get #1,,tmp: poke double,@kernal(index),                                   peek(ubyte,@tmp)
-  ' INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
-  poke ushort,@index,                                                        peek(ushort,@index)                  add peek(ubyte,N0001) 
-  ' if( (int64)INDEX$1 > (((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$181;
+  ' *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134217728ll) = (double)TMP$1; 
+  get #1,,tmp: poke double,@kernal(peek(integer,I_INT)),                 peek(ubyte,@tmp)
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(integer,I_INT) add peek(ubyte,N0001) 
+  ' if( *(int64*)4808136ll > (((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$181;
   ' goto label$179;
-  cmp                                                                        peek(ushort,@index)                   ls peek(ubyte,N0001) shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L5
+  cmp                                                                    peek(integer,I_INT)  ls peek(ubyte,N0001) shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L5
   ' label$181:;
-  ' fb_FileClose( 1 );
-  close #1
+  ' fb_FileClose( (int32)*(uint8*)4808097ll );
+  close                                                                  peek(ubyte,N0001)
   'for b as integer = 617 to 641
   /'
   for in range(mov(i, 0000d),8191d): mov(char(i), 00d): next i
@@ -771,39 +801,39 @@ L5:
   '/
   ' FBSTRING* vr$311 = fb_StrAllocTempDescZEx( (uint8*)"./chargen/2.c64", 15ll );
   ' fb_FileOpen( (FBSTRING*)vr$311, 0u, 0u, 0u, (int32)*(uint8*)4808097ll, 0 );
-  open "./chargen/2.c64" for binary as                                       peek(ubyte,N0001)
-  ' INDEX$1 = (uint16)*(uint8*)4808096ll;
-  poke  ushort,@index,                                                       peek(ubyte,N0000)
+  open "./chargen/2.c64" for binary as                                   peek(ubyte,N0001)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
+  poke  integer,I_INT,                                                   peek(ubyte,N0000)
 L6:  
   ' label$182:;
   ' fb_FileGetLarge( 1, 0ll, (void*)&TMP$1, 1ull );
-  ' *(double*)((uint8*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) + 134479872ll) = (double)TMP$1;
-  get #1,,tmp: poke double,@char(index),                                     peek(ubyte,@tmp)
-  ' INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
-  poke  ushort,@index,                                                       peek(ushort,@index)                  add peek(ubyte,N0001)
-  ' if( (int64)INDEX$1 > (((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$184;
+  ' *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134479872ll) = (double)TMP$1;
+  get #1,,tmp: poke double,@char(                                        peek(integer,I_INT)),   peek(ubyte,@tmp)
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke  integer,I_INT,                                                   peek(integer,I_INT) add peek(ubyte,N0001)
+  ' if( *(int64*)4808136ll > (((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$184;
   ' goto label$182;
-  cmp                                                                        peek(ushort,@index)                   ls peek(ubyte,N0001) shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L6
+  cmp                                                                    peek(integer,I_INT)  ls peek(ubyte,N0001) shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L6
   'close #1
   'open "./chargen/2.c64" for binary as #1
   ' label$184:;
   ' fb_FileSeek( (int32)*(uint8*)4808097ll, (int32)*(uint8*)4808096ll );
-  seek                                                                       peek(ubyte,N0001),                       peek(ubyte,N0000)
-  ' INDEX$1 = (uint16)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808108ll & 63ll));
-  poke  ushort, @index,                                                      peek(ubyte,N0010)                    shl peek(ubyte,N1100)
+  seek                                                                   peek(ubyte,N0001),      peek(ubyte,N0000)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808108ll & 63ll);
+  poke  integer,I_INT,                                                   peek(ubyte,N0010)   shl peek(ubyte,N1100)
 L7:  
   ' label$185:;
   ' fb_FileGetLarge( 1, 0ll, (void*)&TMP$1, 1ull );
-  ' *(double*)((uint8*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) + 134479872ll) = (double)TMP$1;
-  get #1,,tmp: poke double,@char(index),                                     peek(ubyte,@tmp)
-  ' INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
-  poke ushort,@index,                                                        peek(ushort,@index)                  add peek(ubyte,N0001)
-  ' if( (int64)INDEX$1 > (((((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$187;
+  ' *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134479872ll) = (double)TMP$1;
+  get #1,,tmp: poke double,@char(                                        peek(integer,I_INT)),   peek(ubyte,@tmp)
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(integer,I_INT) add peek(ubyte,N0001)
+  ' if( *(int64*)4808136ll > (((((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$187;
   ' goto label$185;
-  cmp                                                                        peek(ushort,@index)                   ls peek(ubyte,N0011) shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L7
+  cmp                                                                    peek(integer,I_INT)  ls peek(ubyte,N0011) shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L7
   ' label$187:;
   ' fb_FileClose( (int32)*(uint8*)4808097ll );
-  close                                                                      peek(ubyte,N0001)
+  close                                                                  peek(ubyte,N0001)
 /'
   restore CHAR_ROM
 '           r0  
@@ -828,54 +858,54 @@ L7:
   'Sets top of system memory
   '      $0000(000000)  
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)*(uint8*)4808096ll, __builtin_inf() );
-  poke64(                                                                    peek(ubyte,N0000),                       1.797693134862316e+308)
+  poke64(                                                                peek(ubyte,N0000),      1.797693134862316e+308)
   '      $0001(00001)
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)*(uint8*)4808097ll, __builtin_inf() );
-  poke64(                                                                    peek(ubyte,N0001),                       1.797693134862316e+308)
+  poke64(                                                                peek(ubyte,N0001),      1.797693134862316e+308)
   'Sets reset vector to top of system memory
   '      $FFFC(65532)
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll), __builtin_inf() );
-  poke64(                                                                    peek(ubyte,N1111)                    shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1100),    1.797693134862316e+308)
+  poke64(                                                                peek(ubyte,N1111)   shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1100),    1.797693134862316e+308)
   '      $FFFD(65533)
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808109ll), __builtin_inf() );
-  poke64(                                                                    peek(ubyte,N1111)                    shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1101),    1.797693134862316e+308)
+  poke64(                                                                peek(ubyte,N1111)   shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1101),    1.797693134862316e+308)
 #elseif defined(__FB_DOS__)
   'Sets top of system memory
   '      $0000(000000)
-  poke64(                                                                    peek(ubyte,N0000),                       peek(ubyte,N0000)
+  poke64(                                                                peek(ubyte,N0000),      peek(ubyte,N0000)
   '      $0001(00001)
-  poke64(                                                                    peek(ubyte,N0001),                       peek(ubyte,N0001)
+  poke64(                                                                peek(ubyte,N0001),      peek(ubyte,N0001)
   'Sets reset vector to top of system memory
   '      $FFFC(65532)  
-  poke64(                                                                    peek(ubyte,N1111)                    shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1100),    peek(ubyte,N0000)
+  poke64(                                                                peek(ubyte,N1111)   shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1100),    peek(ubyte,N0000)
   '      $FFFD(65533)
-  poke64(                                                                    peek(ubyte,N1111)                    shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1100),    peek(ubyte,N1001) shl peek(ubyte,N0100) 
+  poke64(                                                                peek(ubyte,N1111)   shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N1000) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1100),    peek(ubyte,N1001) shl peek(ubyte,N0100) 
 #endif  
   ' FBSTRING* vr$396 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
   ' fb_GfxPaint( (void*)0ull, (float)*(uint8*)4808096ll, (float)*(uint8*)4808096ll, (uint32)(((((uint64)*(uint8*)4808096ll << (16ll & 63ll)) | ((uint64)*(uint8*)4808096ll << (8ll & 63ll))) | (uint64)*(uint8*)4808096ll) | ((uint64)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) << (24ll & 63ll))), 0u, (FBSTRING*)vr$396, 0, 1073741828 );
-  paint(                                                                     peek(ubyte,N0000),                       peek(ubyte,N0000)),rgba(                    peek(ubyte,N0000),    peek(ubyte,N0000),    peek(ubyte,N0000),    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111))
+  paint(                                                                 peek(ubyte,N0000),      peek(ubyte,N0000)),rgba(                    peek(ubyte,N0000),    peek(ubyte,N0000),    peek(ubyte,N0000),    peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111))
   'SYS calls 7E72
   '.,7E72 LDA #$00  10101001 00000000
   '.,7E74 STA $C000 10001101 00000000 11000000
   '.,7E77 RTS       01100000
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808098ll), (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) );
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808099ll), (double)*(uint8*)4808096ll );
-  '                                                                          $7E72(32370)                                                                                                                                                                                                                                        $7E73(32371)
-  poke64(                                                                    peek(ubyte,N0111)                    shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0010),    peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N1001)): poke64(peek(ubyte,N0111) shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0011),peek(ubyte,N0000))
+  '                                                                      $7E72(32370)                                                                                                                                                                                                                       $7E73(32371)
+  poke64(                                                                peek(ubyte,N0111)   shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0010),    peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N1001)): poke64(peek(ubyte,N0111) shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0011),peek(ubyte,N0000))
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808109ll) );
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll), (double)*(uint8*)4808096ll );
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll), (double)((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) );
-  '                                                                          $7E74(32372)                                                                                                                                                                                                                                        $7E75(32373)                                                                                                                                                                     $7E76(32374)                            
-  poke64(                                                                    peek(ubyte,N0111)                    shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0100),    peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1101)): poke64(peek(ubyte,N0111) shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0101),peek(ubyte,N0000)): poke64(peek(ubyte,N0111) shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0110),peek(ubyte,N1100) shl peek(ubyte,N0100))
+  '                                                                      $7E74(32372)                                                                                                                                                                                                                       $7E75(32373)                                                                                                                                                                     $7E76(32374)                            
+  poke64(                                                                peek(ubyte,N0111)   shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0100),    peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1101)): poke64(peek(ubyte,N0111) shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0101),peek(ubyte,N0000)): poke64(peek(ubyte,N0111) shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0110),peek(ubyte,N1100) shl peek(ubyte,N0100))
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808103ll), (double)((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) );
-  '                                                                          $7E77(32375)
-  poke64(                                                                    peek(ubyte,N0111)                    shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0111),    peek(ubyte,N0110) shl peek(ubyte,N0100))                                                       
+  '                                                                      $7E77(32375)
+  poke64(                                                                peek(ubyte,N0111)   shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0111),    peek(ubyte,N0110) shl peek(ubyte,N0100))                                                       
   ' FBSTRING MEM$1;
   ' FBSTRING* vr$521 = fb_CHR( 1, (int64)*(uint8*)4808096ll );
   ' FBSTRING* vr$523 = fb_StrInit( (void*)&MEM$1, -1ll, (void*)vr$521, -1ll, 0 );      
-  var mov(mem,chr(                                                           peek(ubyte,N0000)))
-  ' INDEX$1 = (uint16)*(uint8*)4808096ll;
-  poke ushort,@index,                                                        peek(ubyte,N0000)
+  var mov(mem,chr(                                                       peek(ubyte,N0000)))
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
+  poke integer,I_INT,                                                    peek(ubyte,N0000)
   
   'mov(basic(&H0B46), &H00) '.,AB45 A9 00    LDA #$00        ;set input prompt to NULL
   'mov(basic(&H178E), &H00) '.,B78E F0 05    BEQ $B794       ;ASC() - Ignore NULL
@@ -883,210 +913,210 @@ L7:
   'Patch BASIC startup messages"
   ' fb_StrAssign( (void*)&MEM$1, -1ll, (void*)"BYTES", 6ll, 0 ); 
   mov(mem, "BYTES")
-  ' INDEX$1 = (uint16)*(uint8*)4808097ll;
-  poke ushort,@index,                                                        peek(ubyte,N0001)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(ubyte,N0001)
 L8:
   ' label$188:;
-  ' FBSTRING* vr$534 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)INDEX$1, ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll );
-  ' uint32 vr$535 = fb_ASC( (FBSTRING*)vr$534, 1ll );
-  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = (double)vr$535;
-  '                                                                          $466(1126)
-  poke double, @kernal(                                                      peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110) add peek(ushort,@index)),  asc(mid(mem,         peek(ushort,@index),  peek(ubyte,N1111) shl peek(ubyte,N0100) add      peek(ubyte,N1111)))
-  ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$190;
+  ' FBSTRING* vr$506 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll );
+  ' uint32 vr$507 = fb_ASC( (FBSTRING*)vr$506, 1ll );
+  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$507;
+  '                                                                      $466(1126)
+  poke double, @kernal(                                                  peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110) add peek(integer,I_INT)),  asc(mid(mem,         peek(integer,I_INT),  peek(ubyte,N1111) shl peek(ubyte,N0100) add      peek(ubyte,N1111)))
+  ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$190;
   ' goto label$191;
-  '                                                                                                                              $466(1126)                                                                                                                                                                                                                                                        $466(1126)
-  cmp logic_and(                                                             peek(double,@kernal(                     peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110) add                       peek(ushort,@index))) gt                    peek(ubyte,N0001) shl      peek(ubyte,N0100) add peek(ubyte,N1111),    peek(double,@kernal(  peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add                        peek(ubyte,N0110) add peek(ushort,@index)))                    lt peek(ubyte,N0100) shl peek(ubyte,N0100)) jmp L9
+  '                                                                                              $466(1126)                                                                                                                                                                                                                                                                   $466(1126)
+  cmp logic_and(                                                         peek(double,@kernal(    peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110) add                       peek(integer,I_INT))) gt                    peek(ubyte,N0001) shl      peek(ubyte,N0100) add peek(ubyte,N1111),    peek(double,@kernal(  peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add                        peek(ubyte,N0110) add peek(ushort,@index)))                    lt peek(ubyte,N0100) shl peek(ubyte,N0100)) jmp L9
   ' label$190:;
-  ' INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
-  poke ushort, @index,                                                       peek(ushort,@index)                  add peek(ubyte,N0001)
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(integer,I_INT) add peek(ubyte,N0001)
   ' int64 vr$595 = fb_StrLen( (void*)&MEM$1, -1ll );
-  ' if( (int64)INDEX$1 > vr$595 ) goto label$193;
+  ' if( *(int64*)4808136ll > vr$562 ) goto label$193
   ' goto label$188;
-  cmp                                                                        peek(ushort,@index) ls len(mem)      jmp L8
+  cmp                                                                    peek(integer,I_INT)  ls len(mem)          jmp L8
   ' label$193:;
   ' goto label$194;
   jmp L10
 L9:
   ' label$191:;
-  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
-  '                                                                          $466(1126)                                                                                                                                                                   $466(1126)
-  poke double, @kernal(                                                      peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ushort,@index)), peek(double,@kernal(                        peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl      peek(ubyte,N0100) add peek(ushort,@index))                                          add peek(ubyte,N0010) shl peek(ubyte,N0100))
+  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
+  '                                                                      $466(1126)                                                                                                                                                  $466(1126)
+  poke double, @kernal(                                                  peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(integer,I_INT)), peek(double,@kernal(                        peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl      peek(ubyte,N0100) add peek(integer,I_INT))                                          add peek(ubyte,N0010) shl peek(ubyte,N0100))
   ' goto label$188;
   jmp L8
 L10:  	   
   ' label$194:;
   ' fb_StrAssign( (void*)&MEM$1, -1ll, (void*)"FREE", 5ll, 0 );
   mov(mem, "FREE")
-  ' INDEX$1 = (uint16)*(uint8*)4808097ll;
-  poke ushort, @index,                                                       peek(ubyte,N0001)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(ubyte,N0001)
 L11:
   ' label$195:;
-  ' FBSTRING* vr$629 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)INDEX$1, (int64)*(uint8*)4808097ll );
-  ' uint32 vr$630 = fb_ASC( (FBSTRING*)vr$629, 1ll );
-  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = (double)vr$630;
-  '                                                                          $46C(1132)
-  poke double, @kernal(                                                      peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1100) add peek(ushort,@index)),  asc(mid(mem,         peek(ushort,@index),  peek(ubyte,N0001)))
-  'if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint16*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$197;
+  ' FBSTRING* vr$593 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, (int64)*(uint8*)4808097ll );
+  ' uint32 vr$594 = fb_ASC( (FBSTRING*)vr$593, 1ll );
+  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$594;
+  '                                                                      $46C(1132)
+  poke double, @kernal(                                                  peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1100) add peek(integer,I_INT)),  asc(mid(mem,         peek(integer,I_INT),  peek(ubyte,N0001)))
+  ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint16*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$197;
   ' goto label$198;
-  '                                                                                                                   $46C(1132)                                                                                                                                                                                                                                                                   $46C(1132)
-  cmp logic_and(                                                             peek(double,@kernal(                     peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1100) add                       peek(ushort,@index))) gt                peek(ubyte,N0001) shl          peek(ubyte,N0100) add peek(ushort,N1111),   peek(double,@kernal(  peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add                        peek(ubyte,N1100) add peek(ushort,@index)))                    lt peek(ubyte,N0100) shl peek(ubyte,N0100)) jmp L12 	   
+  '                                                                                              $46C(1132)                                                                                                                                                                                                                                                                   $46C(1132)
+  cmp logic_and(                                                         peek(double,@kernal(    peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1100) add                       peek(integer,I_INT))) gt                    peek(ubyte,N0001) shl      peek(ubyte,N0100) add peek(ushort,N1111),   peek(double,@kernal(  peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add                        peek(ubyte,N1100) add peek(integer,I_INT)))                    lt peek(ubyte,N0100) shl peek(ubyte,N0100)) jmp L12 	   
   ' label$197:;
-  ' INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
-  poke ushort,@index,                                                        peek(ushort,@index)                  add peek(ubyte,N0001) 
-  ' int64 vr$690 = fb_StrLen( (void*)&MEM$1, -1ll );
-  ' if( (int64)INDEX$1 > vr$690 ) goto label$200;
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(integer,I_INT) add peek(ubyte,N0001) 
+  ' int64 vr$648 = fb_StrLen( (void*)&MEM$1, -1ll );
+  ' if( *(int64*)4808136ll > vr$648 ) goto label$200;
   ' goto label$195;
-  cmp                                                                        peek(ushort,@index) ls len(mem)      jmp L11
+  cmp                                                                    peek(integer,I_INT)  ls len(mem)          jmp L11
   ' label$200:;
   ' goto label$201;
   jmp L13	 
 L12:
   ' label$198:;
-  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
-  '                                                                          $46C(1132)                                                                                                                                                                                                           $46C(1132)
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1100) add peek(ushort,@index)),                       peek(double,@kernal(                    peek(ubyte,N0100) shl          peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1100) add peek(ushort,@index))                    add peek(ubyte,N0010) shl peek(ubyte,N0100))
+  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
+  '                                                                      $46C(1132)                                                                                                                                                                                          $46C(1132)
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1100) add peek(integer,I_INT)),                       peek(double,@kernal(                    peek(ubyte,N0100) shl          peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1100) add peek(integer,I_INT))                    add peek(ubyte,N0010) shl peek(ubyte,N0100))
   ' goto label$195;
   jmp L11
 L13:
   ' label$201:;
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808109ll) << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll);
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll));
-  '                                                                          $47D(1149)                                                                                                                                                                                                                                          $47E(1150)
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1101)),   peek(ubyte,N0010) shl                       peek(ubyte,N0100) add peek(ubyte,N1010):poke double, @kernal(          peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1110)),   peek(ubyte,N0001) shl peek(ubyte,N0100)
+  '                                                                      $47D(1149)                                                                                                                                                                                                                                          $47E(1150)
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1101)),   peek(ubyte,N0010) shl                       peek(ubyte,N0100) add peek(ubyte,N1010):poke double, @kernal(          peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1110)),   peek(ubyte,N0001) shl peek(ubyte,N0100)
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));
-  '                                                                          $47F(1151)
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1111)),   peek(ubyte,N0010) shl                       peek(ubyte,N0100)
+  '                                                                      $47F(1151)
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1111)),   peek(ubyte,N0010) shl                       peek(ubyte,N0100)
   ' fb_StrAssign( (void*)&MEM$1, -1ll, (void*)"MICROSOFT", 10ll, 0 );
   mov(mem, "MICROSOFT")
-  ' INDEX$1 = (uint16)*(uint8*)4808097ll;
-  poke ushort,@index,                                                        peek(ubyte,N0001)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(ubyte,N0001)
 L14:
   ' label$202:;
-  ' FBSTRING* vr$775 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)INDEX$1, (int64)*(uint8*)4808097ll );
-  ' uint32 vr$776 = fb_ASC( (FBSTRING*)vr$775, 1ll );
-  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = (double)vr$776;
-  '                                                                          $47F(1151)  
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1111) add peek(ushort,@index)),  asc(mid(mem,         peek(ushort,@index),  peek(ubyte,N0001)))
-  ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint16*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$204;
+  ' FBSTRING* vr$730 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, (int64)*(uint8*)4808097ll );
+  ' uint32 vr$731 = fb_ASC( (FBSTRING*)vr$730, 1ll );
+  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$731;
+  '                                                                      $47F(1151)  
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1111) add peek(integer,I_INT)),  asc(mid(mem,         peek(integer,I_INT),  peek(ubyte,N0001)))
+  ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint16*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$204;
   ' goto label$205;
-  '                                                                                                                   $47F(1151)                                                                                                                                                                                                                                                                                         $47F(1151)
-  cmp logic_and(                                                             peek(double,@kernal(                     peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1111) add                       peek(ushort,@index))) gt                peek(ubyte,N0001) shl          peek(ushort,N0100)                      add peek(ubyte,N1111),    peek(double,@kernal(  peek(ubyte,N0100)                       shl peek(ubyte,N1000) add peek(ubyte,N0111) shl  peek(ubyte,N0100) add peek(ubyte,N1111)                       add peek(ushort,@index))) lt         peek(ubyte,N0100) shl peek(ubyte,N0100)) jmp L15
+  '                                                                                              $47F(1151)                                                                                                                                                                                                                                                                                         $47F(1151)
+  cmp logic_and(                                                         peek(double,@kernal(    peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1111) add                       peek(integer,I_INT))) gt                peek(ubyte,N0001) shl          peek(ushort,N0100)                      add peek(ubyte,N1111),    peek(double,@kernal(  peek(ubyte,N0100)                       shl peek(ubyte,N1000) add peek(ubyte,N0111) shl  peek(ubyte,N0100) add peek(ubyte,N1111)                       add peek(integer,I_INT))) lt         peek(ubyte,N0100) shl peek(ubyte,N0100)) jmp L15
   ' label$204:;
-  ' INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
-  poke ushort,@index,                                                        peek(ushort,@index)                  add peek(ubyte,N0001) 
-  ' int64 vr$836 = fb_StrLen( (void*)&MEM$1, -1ll );
-  ' if( (int64)INDEX$1 > vr$836 ) goto label$207;
-  cmp                                                                        peek(ushort,@index) ls len(mem)      jmp L14
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(integer,I_INT) add peek(ubyte,N0001) 
+  ' int64 vr$785 = fb_StrLen( (void*)&MEM$1, -1ll );
+  ' if( *(int64*)4808136ll > vr$785 ) goto label$207;
+  cmp                                                                    peek(integer,I_INT)  ls len(mem)          jmp L14
   ' goto label$202;
   ' label$207:;
   ' goto label$208;
   jmp L16
 L15:
   ' label$205:;
-  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
-  '                                                                          $47F(1151)                                                                                                                                                                   $47F(1151)
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1111) add peek(ushort,@index)), peek(double,@kernal(  peek(ubyte,N0100) shl peek(ubyte,N1000)                   add          peek(ubyte,N0111)                       shl peek(ubyte,N0100) add peek(ubyte,N1111)   add peek(ushort,@index))                  add peek(ubyte,N0100) shl peek(ubyte,N0100))
+  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
+  '                                                                      $47F(1151)                                                                                                                                                  $47F(1151)
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1111) add peek(ushort,@index)), peek(double,@kernal(  peek(ubyte,N0100) shl peek(ubyte,N1000)                   add          peek(ubyte,N0111)                       shl peek(ubyte,N0100) add peek(ubyte,N1111)   add peek(integer,I_INT))                  add peek(ubyte,N0100) shl peek(ubyte,N0100))
   ' goto label$202;
   jmp L14:
 L16:
   ' label$208:
-  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));  
-  '                                                                          $489(1161)  
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1001)),   peek(ubyte,N0010) shl peek(ubyte,N0100)
+  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));
+  '                                                                      $489(1161)  
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1001)),   peek(ubyte,N0010) shl peek(ubyte,N0100)
   ' fb_StrAssign( (void*)&MEM$1, -1ll, (void*)"BASIC", 6ll, 0 );
   mov(mem, "BASIC")
-  ' INDEX$1 = (uint16)*(uint8*)4808097ll;
-  poke ushort,@index,                                                        peek(ubyte,N0001)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(ubyte,N0001)
 L17:
   ' label$209:
-  ' FBSTRING* vr$889 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)INDEX$1, (int64)*(uint8*)4808097ll );
-  ' uint32 vr$890 = fb_ASC( (FBSTRING*)vr$889, 1ll );
-  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = (double)vr$890;
-  '          									                             $460(1120)  
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ushort,@index)), asc(mid(mem,          peek(ushort,@index),  peek(ubyte,N0001)))
-  ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$211;
+  ' FBSTRING* vr$836 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, (int64)*(uint8*)4808097ll );
+  ' uint32 vr$837 = fb_ASC( (FBSTRING*)vr$836, 1ll );
+  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$837;
+  '          									                         $460(1120)  
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(integer,I_INT)), asc(mid(mem,          peek(integer,I_INT),  peek(ubyte,N0001)))
+  ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$211;
   ' goto label$212;
-  '                                                                                                                   $460(1120)                                                                                                                                                                                                                                             $460(1120) 
-  cmp logic_and(                                                             peek(double,@kernal(                     peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ushort,@index))) gt                    peek(ubyte,N0001)       shl peek(ubyte,N0100)             add          peek(ubyte,N1111),    peek(double,@kernal(  peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ushort,@index))) lt                     peek(ubyte,N0100) shl peek(ubyte,N0100)) jmp L18
+  '                                                                                              $460(1120)                                                                                                                                                                                                                       $460(1120) 
+  cmp logic_and(                                                         peek(double,@kernal(    peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(integer,I_INT))) gt                    peek(ubyte,N0001)       shl peek(ubyte,N0100)             add          peek(ubyte,N1111),    peek(double,@kernal(  peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(integer,I_INT))) lt                     peek(ubyte,N0100) shl peek(ubyte,N0100)) jmp L18
   ' label$211:;
-  ' FBSTRING* vr$941 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)INDEX$1, (int64)*(uint8*)4808097ll );
-  ' uint32 vr$942 = fb_ASC( (FBSTRING*)vr$941, 1ll );
-  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = (double)vr$942;
-  '                                                                          $489(1161)
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1001) add peek(ushort,@index)), asc(mid(mem,          peek(ushort,@index),        peek(ubyte,N0001)))
-  ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) < (double)(int64)*(uint8*)((uint8*)NIBBLES$ + 4ll))) == 0ll ) goto label$214;
+  ' FBSTRING* vr$884 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, (int64)*(uint8*)4808097ll );
+  ' uint32 vr$885 = fb_ASC( (FBSTRING*)vr$884, 1ll );
+  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$885;
+  '                                                                      $489(1161)
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1001) add peek(integer,I_INT)), asc(mid(mem,          peek(integer,I_INT),        peek(ubyte,N0001)))
+  ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) > (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll)) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) < (double)(int64)*(uint8*)((uint8*)NIBBLES$ + 4ll))) == 0ll ) goto label$214;
   ' goto label$215;
-  '                                                                          $489(1161)                                                                                                                                                                                                                                                                                                            $489(1161)
-  cmp logic_and(                                                             peek(double,@kernal(                     peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1001)     add                   peek(ushort,@index)))    gt peek(ubyte,N0001)             shl          peek(ubyte,N0100) add peek(ubyte,N1111),    peek(double,@kernal(  peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add  peek(ubyte,N1001) add peek(ushort,@index))) lt                                          peek(ubyte,@nibbles(&B0100))) jmp L19
+  '                                                                      $489(1161)                                                                                                                                                                                                                                                                                           $489(1161)
+  cmp logic_and(                                                         peek(double,@kernal(    peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1001)     add                   peek(integer,I_INT)))    gt peek(ubyte,N0001)             shl          peek(ubyte,N0100) add peek(ubyte,N1111),    peek(double,@kernal(  peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add  peek(ubyte,N1001) add peek(integer,I_INT))) lt                                          peek(ubyte,@nibbles(&B0100))) jmp L19
   ' label$214:;
-  ' INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
-  poke ushort,@index,                                                        peek(ushort,@index)                  add peek(ubyte,N0001)
-  ' int64 vr$1000 = fb_StrLen( (void*)&MEM$1, -1ll );
-  ' if( (int64)INDEX$1 > vr$1000 ) goto label$217;
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(integer,I_INT) add peek(ubyte,N0001)
+  ' int64 vr$937 = fb_StrLen( (void*)&MEM$1, -1ll );
+  ' if( *(int64*)4808136ll > vr$937 ) goto label$217;
   ' goto label$209; 
-  cmp                                                                        peek(ushort,@index) ls len(mem)      jmp L17
+  cmp                                                                    peek(integer,I_INT)  ls len(mem)          jmp L17
   ' label$217:;
   ' goto label$218;
   jmp L20
 L18:
   ' label$212:;
-  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
-  '                                                                          $460(1120)                                                                                                                                                                   $460(1120)
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ushort,@index)), peek(double,@kernal(                        peek(ubyte,N0100)       shl peek(ubyte,N1000)             add          peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ushort,@index))                    add peek(ubyte,N0010) shl peek(ubyte,N0100))
+  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
+  '                                                                      $460(1120)                                                                                                                                                  $460(1120)
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(integer,I_INT)), peek(double,@kernal(                        peek(ubyte,N0100)       shl peek(ubyte,N1000)             add          peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(integer,I_INT))                    add peek(ubyte,N0010) shl peek(ubyte,N0100))
   ' goto label$209;
   jmp L17
 L19:
   ' label$215:;
-  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
-  '                                                                          $489(1161)                                                                                                                                                                                               $489(1161)
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1001) add peek(ushort,@index)),                       peek(double,@kernal(        peek(ubyte,N0100)             shl          peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1001) add peek(ushort,@index))                    add peek(ubyte,N0010) shl  peek(ubyte,N0100))
+  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
+  '                                                                      $489(1161)                                                                                                                                                                                               $489(1161)
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1001) add peek(integer,I_INT)),                       peek(double,@kernal(        peek(ubyte,N0100)             shl          peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1001) add peek(integer,I_INT))                    add peek(ubyte,N0010) shl  peek(ubyte,N0100))
   ' goto label$209;
   jmp L17
 L20: 
   ' label$218:;
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));
   ' *(double*)((uint8*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll);
-'                                                                            $48F(1167)                                                                                                                                                                                                                                          $490(1168)
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1111)),   peek(ubyte,N0010)     shl                   peek(ubyte,N0100):    poke double,@kernal(                             peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100)),   peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N0110)
+'                                                                        $48F(1167)                                                                                                                                                                                                                         $490(1168)
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1111)),   peek(ubyte,N0010)     shl                   peek(ubyte,N0100):    poke double,@kernal(                             peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100)),   peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N0110)
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808097ll) << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll);
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808098ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));
-'                                                                            $491(1169)                                                                                                                                                                                                                                                                $492(1170)
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0001)),   peek(ubyte,N0011)     shl                   peek(ubyte,N0100) add peek(ubyte,N0010):                               poke double, @kernal( peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0010)),   peek(ubyte,N0010) shl peek(ubyte,N0100)
-  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll);
-'                                                                            $493(1171)  
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0011)),   peek(ubyte,N0010)     shl                   peek(ubyte,N0100) add peek(ubyte,N1010)
+'                                                                        $491(1169)                                                                                                                                                                                                                                               $492(1170)
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0001)),   peek(ubyte,N0011)     shl                   peek(ubyte,N0100) add peek(ubyte,N0010):                               poke double, @kernal( peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0010)),   peek(ubyte,N0010) shl peek(ubyte,N0100)
+  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808098ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));
+'                                                                        $493(1171)  
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0011)),   peek(ubyte,N0010)     shl                   peek(ubyte,N0100) add peek(ubyte,N1010)
   ' fb_StrAssign( (void*)&MEM$1, -1ll, (void*)" RAM SYSTEM", 12ll, 0 );
   mov(mem, " RAM SYSTEM")
-  ' INDEX$1 = (uint16)*(uint8*)4808097ll;
-  poke ushort,@index,                                                        peek(ubyte,N0001)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(ubyte,N0001)
 L21:
   ' label$219:;
-  ' FBSTRING* vr$1145 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)INDEX$1, (int64)*(uint8*)4808097ll );
-  ' uint32 vr$1146 = fb_ASC( (FBSTRING*)vr$1145, 1ll );
-  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = (double)vr$1146;
-  '                                                                          $49E(1182)
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1110) add peek(ushort,@index)), asc(mid(mem,          peek(ushort,@index),  peek(ubyte,N0001)))
-  ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) > (double)(int64)*(uint8*)4808111ll) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$221;
+  ' FBSTRING* vr$1077 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, (int64)*(uint8*)4808097ll );
+  ' uint32 vr$1078 = fb_ASC( (FBSTRING*)vr$1077, 1ll );
+  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1078;
+  '                                                                      $49E(1182)
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1110) add peek(integer,I_INT)), asc(mid(mem,          peek(integer,I_INT),  peek(ubyte,N0001)))
+  ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) > (double)(int64)*(uint8*)4808111ll) & (int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$221;
   ' goto label$222;
-  '                                                                                                                   $495(1173)                                                                                                                                                                                                                       $495(1173)
-  cmp logic_and(                                                             peek(double,@kernal(                     peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0101) add peek(ushort,@index))) gt                     peek(ubyte,N1111),                              peek(double, @kernal( peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0101) add peek(ushort,@index)))                    lt peek(ubyte, N0100) shl peek(ubyte,N0100)) jmp L22
+  '                                                                                              $495(1173)                                                                                                                                                                                                                       $495(1173)
+  cmp logic_and(                                                         peek(double,@kernal(    peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0101) add peek(integer,I_INT))) gt                     peek(ubyte,N1111),                              peek(double, @kernal( peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0101) add peek(integer,I_INT)))                    lt peek(ubyte, N0100) shl peek(ubyte,N0100)) jmp L22
 L22:  
   ' label$221:;
   ' label$222:;
-  ' INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
-  poke ushort,@index,                                                        peek(ushort,@index)                  add peek(ubyte,N0001)  
-  ' int64 vr$1202 = fb_StrLen( (void*)&MEM$1, -1ll );
-  ' if( (int64)INDEX$1 > vr$1202 ) goto label$224;
-  cmp                                                                        peek(ushort,@index) ls len(mem)      jmp L21
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                    peek(integer,I_INT) add peek(ubyte,N0001)  
+  ' int64 vr$1128 = fb_StrLen( (void*)&MEM$1, -1ll );
+  ' if( *(int64*)4808136ll > vr$1128 ) goto label$224;
+  cmp                                                                    peek(integer,I_INT)  ls len(mem)          jmp L21
   ' goto label$219;
   ' label$224:;
   ' goto label$225;
   jmp L23a
 L23:
   ' label$226:;
-  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
-  '                                                                          $495(1173)                                                                                                                                                                                          $495(1173)
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0101) add peek(ushort,@index)), peek(double,@kernal(                         peek(ubyte,N0100)                  shl          peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0101) add peek(ushort,@index))                    add peek(ubyte,N0010)                       shl peek(ubyte,N0100))
+  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = *(double*)((uint8*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
+  '                                                                      $495(1173)                                                                                                                                                                         $495(1173)
+  poke double,@kernal(                                                   peek(ubyte,N0100)   shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0101) add peek(integer,I_INT)), peek(double,@kernal(                         peek(ubyte,N0100)                  shl          peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0101) add peek(integer,I_INT))                    add peek(ubyte,N0010)                       shl peek(ubyte,N0100))
   ' goto label$222;
   jmp L22           
 L23a:
@@ -1118,24 +1148,24 @@ L23a:
 '/
  '64-bit memory detection
  '.:E47B 2A 2A (mem) 47 42 4D 4D 4F  (cr) (cr) (mem)gb ram system
-  ' uint64 vr$1239 = fb_GetMemAvail( ((int32)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((int64)*(uint8*)4808096ll << (3ll & 63ll))) )) );
-  ' double vr$1246 = pow( (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)), (double)(int64)*(uint8*)4808099ll );
-  ' FBSTRING* vr$1249 = fb_ULongintToStr( vr$1239 / ((uint64)__builtin_nearbyint( vr$1246 )) );
-  ' FBSTRING* vr$1251 = fb_StrAssign( (void*)&MEM$1, -1ll, (void*)vr$1249, -1ll, 0 );
+  ' uint64 vr$1163 = fb_GetMemAvail( ((int32)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((int64)*(uint8*)4808096ll << (3ll & 63ll))) )) );
+  ' double vr$1170 = pow( (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)), (double)(int64)*(uint8*)4808099ll );
+  ' FBSTRING* vr$1173 = fb_ULongintToStr( vr$1163 / ((uint64)__builtin_nearbyint( vr$1170 )) );
+  ' fb_StrAssign( (void*)&MEM$1, -1ll, (void*)vr$1173, -1ll, 0 );
   mov(mem, str(int(fre(mem64(                                                peek(ubyte,N0000))))                idiv(peek(ubyte,N0100) shl peek(ubyte,N1000))expt                      peek(ubyte,N0011)))
-  ' int64 vr$1253 = fb_StrLen( (void*)&MEM$1, -1ll );
-  ' if( vr$1253 != (int64)*(uint8*)4808097ll ) goto label$228;
+  ' int64 vr$1176 = fb_StrLen( (void*)&MEM$1, -1ll );
+  ' if( vr$1176 != (int64)*(uint8*)4808097ll ) goto label$228;
   ' goto label$229; 
   cmp len(mem) eq                                                            peek(ubyte,N0001)                    jmp L24
-  ' int64 vr$1256 = fb_StrLen( (void*)&MEM$1, -1ll );
-  ' if( vr$1256 != (int64)*(uint8*)4808098ll ) goto label$231;
+  ' int64 vr$1179 = fb_StrLen( (void*)&MEM$1, -1ll );
+  ' if( vr$1179 != (int64)*(uint8*)4808098ll ) goto label$231;
   ' goto label$232;
   cmp len(mem) eq                                                            peek(ubyte,N0010)                    jmp L25
 L24:
   ' label$231:;
   ' label$229:;
-  ' uint32 vr$1259 = fb_ASC( (FBSTRING*)&MEM$1, 1ll );
-  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808107ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1259;
+  ' uint32 vr$1182 = fb_ASC( (FBSTRING*)&MEM$1, 1ll );
+  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808107ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1182;
   '                                                                          $49B(1179)
   poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1011)),   asc(mem)
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll);
@@ -1146,37 +1176,37 @@ L24:
   jmp L27
 L25:
   ' label$232:;
-  ' FBSTRING* vr$1309 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)*(uint8*)4808097ll, (int64)*(uint8*)4808097ll );
-  ' uint32 vr$1310 = fb_ASC( (FBSTRING*)vr$1309, 1ll );
-  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808107ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1310;
+  ' FBSTRING* vr$1232 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)*(uint8*)4808097ll, (int64)*(uint8*)4808097ll );
+  ' uint32 vr$1233 = fb_ASC( (FBSTRING*)vr$1232, 1ll );
+  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808107ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1233;
   '                                                                          $49B(1179)
   poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1011)),   asc(mid(mem,          peek(ubyte,N0001),    peek(ubyte,N0001)))
-  ' FBSTRING* vr$1326 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)*(uint8*)4808098ll, (int64)*(uint8*)4808097ll );
-  ' uint32 vr$1327 = fb_ASC( (FBSTRING*)vr$1326, 1ll );
-  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1327;
+  ' FBSTRING* vr$1249 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)*(uint8*)4808098ll, (int64)*(uint8*)4808097ll );
+  ' uint32 vr$1250 = fb_ASC( (FBSTRING*)vr$1249, 1ll );
+  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1250;
   '                                                                          $49C(1180)
   poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1100)),   asc(mid(mem,          peek(ubyte,N0010),    peek(ubyte,N0001)))
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808109ll) << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll);
-  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808098ll & 63ll));
+  ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll);
   '                                                                          $49D(1181)                                                                                                                                                                                                                    $49E(1182)
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1101)),   peek(ubyte,N0100) shl peek(ubyte,N0100) add peek(ubyte,N0111):     poke double,     @kernal( peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1110)),  peek(ubyte,N0100)  shl peek(ubyte,N0010)
+  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1101)),   peek(ubyte,N0100) shl peek(ubyte,N0100) add peek(ubyte,N0111):     poke double,     @kernal( peek(ubyte,N0100) shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1110)),  peek(ubyte,N0100)  shl peek(ubyte,N0100) add peek(ubyte,N0010)
   ' fb_StrAssign( (void*)&MEM$1, -1ll, (void*)" RAM SYSTEM", 12ll, 0 );
   mov(mem, " RAM SYSTEM")
-  ' INDEX$1 = (uint16)*(uint8*)4808097ll;
-  poke ushort,@index,                                                        peek(ubyte,N0001)
+  ' *(int64*)4808136ll = (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                        peek(ubyte,N0001)
 L26:
   ' label$234:;
-  ' FBSTRING* vr$1377 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)INDEX$1, (int64)*(uint8*)4808097ll );
-  ' uint32 vr$1378 = fb_ASC( (FBSTRING*)vr$1377, 1ll );
-  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) + (int64)INDEX$1) << (3ll & 63ll))) + 134217728ll) = (double)vr$1378;
+  ' FBSTRING* vr$1301 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, (int64)*(uint8*)4808097ll );
+  ' uint32 vr$1302 = fb_ASC( (FBSTRING*)vr$1301, 1ll );
+  ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1302;
   '                                                                          $49E(1182)          
-  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1110) add peek(ushort,@index)), asc(mid(mem,          peek(ushort,@index),   peek(ubyte,N0001)))  
-  ' INDEX$1 = (uint16)((int64)INDEX$1 + (int64)*(uint8*)4808097ll);
-  poke ushort,@index,                                                        peek(ushort,@index)                  add peek(ubyte,N0001)  
-  ' int64 vr$1399 = fb_StrLen( (void*)&MEM$1, -1ll );
-  ' if( (int64)INDEX$1 > vr$1399 ) goto label$236;
+  poke double,@kernal(                                                       peek(ubyte,N0100)                    shl peek(ubyte,N1000) add peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1110) add peek(integer,I_INT)), asc(mid(mem,          peek(integer,I_INT),   peek(ubyte,N0001)))  
+  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
+  poke integer,I_INT,                                                        peek(integer,I_INT)                  add peek(ubyte,N0001)  
+  ' int64 vr$1319 = fb_StrLen( (void*)&MEM$1, -1ll );
+  ' if( *(int64*)4808136ll > vr$1319 ) goto label$236;
   ' goto label$234;
-  cmp                                                                        peek(ushort,@index) ls len(mem)      jmp L26
+  cmp                                                                        peek(integer,I_INT) ls len(mem)      jmp L26
   ' label$236:;
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));
   '                                                                          $49F(1183) Replace "@" at E49F with " ".
@@ -1208,6 +1238,7 @@ L27:
   kernal(&H588) = &H50 'add one line length to the current line length
   '/
   ' fb_StrDelete( (FBSTRING*)&MEM$1 );
+  ' label$166:;
   '}
 end constructor
 
