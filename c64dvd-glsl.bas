@@ -470,12 +470,12 @@ constructor C64_T
   poke ubyte,N1000,&B1000
   ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
   poke integer,I_INT,                                                                           peek(ubyte,N0000)
-  ' print "@i = &H";hex(@i)
-  ' print "@c = &H";hex(@c)
-  ' for i=0 to 15
-  ' print "@nibbles(";str(peek(integer,@i));") = &H";hex(@nibbles(peek(integer,@i)))
-  ' next i
-  ' end
+  'print "@i = &H";hex(@i)
+  'print "@c = &H";hex(@c)
+  'for i=0 to 15
+  'print "@nibbles(";str(peek(integer,@i));") = &H";hex(@nibbles(peek(integer,@i)))
+  'next i
+  'end
 L0A:
   ' label$141:;
   ' *(uint8*)((uint8*)*(int64*)4808136ll + 4808096ll) = (uint8)*(int64*)4808136ll;
@@ -671,7 +671,8 @@ constructor MEMORY_T
   ' B$1 = *(uint16*)4808096ll;
   ' uint16 INDEX$1;
   ' INDEX$1 = *(uint16*)4808096ll;
-  var mov(b,                                                             peek(ushort,N0000)),mov(index,                peek(ushort,N0000))
+  var mov(b,                                                             peek(ushort,N0000))
+  var mov(index,                                                         peek(ushort,N0000))
   'open "address.txt" for output as #1
   'print #1,"&H"+hex(@index)
   'close #1
@@ -2377,30 +2378,85 @@ L2086:
 '  15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00   15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00   15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00   15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00
 '1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000 1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000 1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000 1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000
 '   1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1    1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1    1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1    1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1     
-	case 49154d ' Foreground Red
-'              fg_color      alpha                     red                       green                     blue                	     
-	 mov(mem64(49353d),mem64(49157d) shl 24d add mem64(49154d) shl 16d add mem64(49155d) shl 08d add mem64(49156d))
-	case 49155d ' Foreground Green
-'              fg_color      alpha                     red                       green                     blue 
-	 mov(mem64(49353d),mem64(49157d) shl 24d add mem64(49154d) shl 16d add mem64(49155d) shl 08d add mem64(49156d))
-	case 49156d ' Foreground Blue
-'              fg_color      alpha                     red                       green                     blue 	
-	 mov(mem64(49353d),mem64(49157d) shl 24d add mem64(49154d) shl 16d add mem64(49155d) shl 08d add mem64(49156d))
-	case 49157d ' Foreground Alpha
-'              fg_color      alpha                     red                       green                     blue 
-	 mov(mem64(49353d),mem64(49157d) shl 24d add mem64(49154d) shl 16d add mem64(49155d) shl 08d add mem64(49156d))
-	case 49158d ' Background Red
-'              bg_color      alpha                     red                       green                     blue 
-	 mov(mem64(49354d),mem64(49161d) shl 24d add mem64(49158d) shl 16d add mem64(49159d) shl 08d add mem64(49160d))
-	case 49159d ' Background Green
-'              bg_color      alpha                     red                       green                     blue	
-	 mov(mem64(49354d),mem64(49161d) shl 24d add mem64(49158d) shl 16d add mem64(49159d) shl 08d add mem64(49160d))
-	case 49160d ' Background Blue
-'              bg_color      alpha                     red                       green                     blue	
-	 mov(mem64(49354d),mem64(49161d) shl 24d add mem64(49158d) shl 16d add mem64(49159d) shl 08d add mem64(49160d))
-	case 49161d ' Background Alapha
-'              bg_color      alpha                     red                       green                     blue 
-	 mov(mem64(49354d),mem64(49161d) shl 24d add mem64(49158d) shl 16d add mem64(49159d) shl 08d add mem64(49160d))
+  ' label$3129:;
+  ' goto label$3124;
+  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) ) goto label$3131;
+  ' label$3132:;
+  ' {
+	case peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010) ' Foreground Red=$C002(49154)
+  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
+  '                     fg_color=$C0C9(49353)                                                                                                          alpha=$C004(49357                                                                                                                                          red=$C002(49154)                                                                                                                     green=$C003(49155)                                                                                           blue=$C003(49156)                	     
+	 poke double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1001)),peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0101))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100) add peek(ubyte,N1000)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011))) shl peek(ubyte,N1000) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100)))
+  ' }
+  ' goto label$3124;
+  ' label$3131:;
+  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) ) goto label$3133;
+  ' label$3134:;
+  ' {
+ 	case peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011) ' Foreground Green=$C003(49155)
+  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
+  '                     fg_color=$C0C9(49353)                                                                                                          alpha=$C004(49357                                                                                                                                          red=$C002(49154)                                                                                                                     green=$C003(49155)                                                                                           blue=$C003(49156) 
+	 poke double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1001)),peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0101))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100) add peek(ubyte,N1000)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011))) shl peek(ubyte,N1000) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100)))
+  ' }
+  ' goto label$3124;
+  ' label$3133:;
+  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) ) goto label$3135;
+  ' label$3136:;
+  ' {  
+	case peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100) ' Foreground Blue=$C003(49156)
+  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
+  '                     fg_color=$C0C9(49353)                                                                                                          alpha=$C004(49357                                                                                                                                          red=$C002(49154)                                                                                                                     green=$C003(49155)                                                                                           blue=$C003(49156) 	
+	 poke double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1001)),peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0101))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100) add peek(ubyte,N1000)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011))) shl peek(ubyte,N1000) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100)))
+  ' }
+  ' goto label$3124;
+  ' label$3135:;
+  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) ) goto label$3137;
+  ' label$3138:;
+  ' {
+	case peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0101) ' Foreground Alpha=$C004(49357)
+  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
+  '                     fg_color=$C0C9(49353)                                                                                                          alpha=$C004(49357                                                                                                                                          red=$C002(49154)                                                                                                                     green=$C003(49155)                                                                                           blue=$C003(49156) 
+	 poke double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1001)),peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0101))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100) add peek(ubyte,N1000)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011))) shl peek(ubyte,N1000) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100)))
+  ' }
+  ' goto label$3124;
+  ' label$3137:;
+  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) ) goto label$3139;
+  ' label$3140:;
+  ' {
+	case peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0110) ' Background Red=$C005(49358)
+  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808106ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) << (3ll & 63ll)));
+  '                     bg_color=$C0C9(49354)                                                                                                         alpha=$C008(49361)                                                                                                                                         red=$C005(49358)                                                                                                                     green=$C006(49359)                                                                                           blue=$C007(49360)
+	 poke double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1010)),peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1001))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100) add peek(ubyte,N1000)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0110))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0111))) shl peek(ubyte,N1000) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1000)))
+  ' }
+  ' goto label$3124;
+  ' label$3139:;
+  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) ) goto label$3141;
+  ' label$3142:;
+  ' {
+	case peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0111) ' Background Green=$C006(49359)
+  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808106ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) << (3ll & 63ll)));
+  '                     bg_color=$C0C9(49354)                                                                                                         alpha=$C008(49361)                                                                                                                                         red=$C005(49358)                                                                                                                     green=$C006(49359)                                                                                           blue=$C007(49360)	
+	 poke double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1010)),peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1001))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100) add peek(ubyte,N1000)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0110))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0111))) shl peek(ubyte,N1000) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1000)))
+  ' }
+  ' goto label$3124;
+  ' label$3141:;
+  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) ) goto label$3143;
+  ' label$3144:;
+	case peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1000) ' Background Blue=$C007(49360)
+  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808106ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) << (3ll & 63ll)));
+  '                     bg_color=$C0C9(49354)                                                                                                         alpha=$C008(49361)                                                                                                                                         red=$C005(49358)                                                                                                                     green=$C006(49359)                                                                                           blue=$C007(49360)	
+	 poke double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1010)),peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1001))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100) add peek(ubyte,N1000)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0110))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0111))) shl peek(ubyte,N1000) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1000)))
+  ' }
+  ' goto label$3124;
+  ' label$3143:;
+  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) ) goto label$3145;
+  ' label$3146:;
+  ' {
+	case peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1001) ' Background Alapha=$C008(49361)
+  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) << (3ll & 63ll)));
+  '                     bg_color=$C0C9(49354)                                                                                                         alpha=$C008(49361)                                                                                                                                         red=$C005(49358)                                                                                                                     green=$C006(49359)                                                                                           blue=$C007(49360) 
+	 poke double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1001)),peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1001))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100) add peek(ubyte,N1000)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0110))) shl (peek(ubyte,N0001) shl peek(ubyte,N0100)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0111))) shl peek(ubyte,N1000) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1000)))
+  ' }
 #if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__)  or defined(__FB_XBOX__) or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
