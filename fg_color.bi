@@ -384,1190 +384,1855 @@
   ' if( V$1 != (double)(((int64)*(uint8*)4808101ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) ) goto label$1076;
   ' goto label$1077; 
    cmp v eq peek(ubyte,N0101) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L770
-L1076:   
+  ' label$1076:;
+  ' if( V$1 != (double)((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) ) goto label$1079;
+  ' goto label$1080;
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) jmp L771
+  ' label$1079:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808097ll) ) goto label$1082;
+  ' goto label$1083;
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0001) jmp L772
+  ' label$1082:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll) ) goto label$1085;
+  ' goto label$1086; 
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0010) jmp L773
+  ' label$1085:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) ) goto label$1088;
+  ' goto label$1089;
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0011) jmp L774
+  ' label$1088:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) ) goto label$1091;
+  ' goto label$1092; 
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0100) jmp L775
+  ' label$1091:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808101ll) ) goto label$1094;
+  ' goto label$1095;
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0101) jmp L776
+  ' label$1094:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) ) goto label$1097;
+  ' goto label$1098;
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110) jmp L777
+  ' label$1097:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll) ) goto label$1100;
+  ' goto label$1101;
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0111) jmp L778
+  ' label$1100:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) ) goto label$1103;
+  ' goto label$1104;
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1000) jmp L779
+  ' label$1103:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) ) goto label$1106;
+  ' goto label$1107;
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1001) jmp L780
+  ' label$1106:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll) ) goto label$1109;
+  ' goto label$1110;
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1010) jmp L781
+  ' label$1109:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808107ll) ) goto label$1112;
+  ' goto label$1113;
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1011) jmp L782
+  ' label$1112:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) ) goto label$1115;
+  ' goto label$1116;
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1100) jmp L783
+  ' label$1115:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808109ll) ) goto label$1118;
+  ' goto label$1119;
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1101) jmp L784
+  ' label$1118:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808110ll) ) goto label$1121;
+  ' goto label$1122;
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1110) jmp L785
+  ' label$1121:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) ) goto label$1124;
+  ' goto label$1125;
    cmp v eq peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L786
-   cmp v eq bytes(&B01110000) jmp L787
-   cmp v eq bytes(&B01110001) jmp L788
-   cmp v eq bytes(&B01110010) jmp L789
-   cmp v eq bytes(&B01110011) jmp L790
-   cmp v eq bytes(&B01110100) jmp L791
-   cmp v eq bytes(&B01110101) jmp L792
-   cmp v eq bytes(&B01110110) jmp L793
-   cmp v eq bytes(&B01110111) jmp L794
-   cmp v eq bytes(&B01111000) jmp L795
-   cmp v eq bytes(&B01111001) jmp L796
-   cmp v eq bytes(&B01111010) jmp L797
-   cmp v eq bytes(&B01111011) jmp L798
-   cmp v eq bytes(&B01111100) jmp L799
-   cmp v eq bytes(&B01111101) jmp L800
-   cmp v eq bytes(&B01111110) jmp L801
-   cmp v eq bytes(&B01111111) jmp L802
-   cmp v eq bytes(&B10000000) jmp L803
-   cmp v eq bytes(&B10000001) jmp L804
-   cmp v eq bytes(&B10000010) jmp L805
-   cmp v eq bytes(&B10000011) jmp L806
-   cmp v eq bytes(&B10000100) jmp L807
-   cmp v eq bytes(&B10000101) jmp L808
-   cmp v eq bytes(&B10000110) jmp L809
-   cmp v eq bytes(&B10000111) jmp L810
-   cmp v eq bytes(&B10001000) jmp L811
-   cmp v eq bytes(&B10001001) jmp L812
-   cmp v eq bytes(&B10001010) jmp L813
-   cmp v eq bytes(&B10001011) jmp L814
-   cmp v eq bytes(&B10001100) jmp L815
-   cmp v eq bytes(&B10001101) jmp L816
-   cmp v eq bytes(&B10001110) jmp L817
-   cmp v eq bytes(&B10001111) jmp L818
-   cmp v eq bytes(&B10010000) jmp L819
-   cmp v eq bytes(&B10010001) jmp L820
-   cmp v eq bytes(&B10010010) jmp L821
-   cmp v eq bytes(&B10010011) jmp L822
-   cmp v eq bytes(&B10010100) jmp L823
-   cmp v eq bytes(&B10010101) jmp L824
-   cmp v eq bytes(&B10010110) jmp L825
-   cmp v eq bytes(&B10010111) jmp L826
-   cmp v eq bytes(&B10011000) jmp L827
-   cmp v eq bytes(&B10011001) jmp L828
-   cmp v eq bytes(&B10011010) jmp L829
-   cmp v eq bytes(&B10011011) jmp L830
-   cmp v eq bytes(&B10011100) jmp L831
-   cmp v eq bytes(&B10011101) jmp L832
-   cmp v eq bytes(&B10011110) jmp L833
-   cmp v eq bytes(&B10011111) jmp L834
-   cmp v eq bytes(&B10100000) jmp L835
-   cmp v eq bytes(&B10100001) jmp L836
-   cmp v eq bytes(&B10100010) jmp L837
-   cmp v eq bytes(&B10100011) jmp L838
-   cmp v eq bytes(&B10100100) jmp L839
-   cmp v eq bytes(&B10100101) jmp L840
-   cmp v eq bytes(&B10100110) jmp L841
-   cmp v eq bytes(&B10100111) jmp L842
-   cmp v eq bytes(&B10101000) jmp L843
-   cmp v eq bytes(&B10101001) jmp L844
-   cmp v eq bytes(&B10101010) jmp L845
-   cmp v eq bytes(&B10101011) jmp L846
-   cmp v eq bytes(&B10101100) jmp L847
-   cmp v eq bytes(&B10101101) jmp L848
-   cmp v eq bytes(&B10101110) jmp L849
-   cmp v eq bytes(&B10101111) jmp L850
-   cmp v eq bytes(&B10110000) jmp L851
-   cmp v eq bytes(&B10110001) jmp L852
-   cmp v eq bytes(&B10110010) jmp L853
-   cmp v eq bytes(&B10110011) jmp L854
-   cmp v eq bytes(&B10110100) jmp L855
-   cmp v eq bytes(&B10110101) jmp L856
-   cmp v eq bytes(&B10110110) jmp L857
-   cmp v eq bytes(&B10110111) jmp L858
-   cmp v eq bytes(&B10111000) jmp L859
-   cmp v eq bytes(&B10111001) jmp L860
-   cmp v eq bytes(&B10111010) jmp L861
-   cmp v eq bytes(&B10111011) jmp L862
-   cmp v eq bytes(&B10111100) jmp L863
-   cmp v eq bytes(&B10111101) jmp L864
-   cmp v eq bytes(&B10111110) jmp L865
-   cmp v eq bytes(&B10111111) jmp L866
-   cmp v eq bytes(&B11000000) jmp L867
-   cmp v eq bytes(&B11000001) jmp L868
-   cmp v eq bytes(&B11000010) jmp L869
-   cmp v eq bytes(&B11000011) jmp L870
-   cmp v eq bytes(&B11000100) jmp L871
-   cmp v eq bytes(&B11000101) jmp L872
-   cmp v eq bytes(&B11000110) jmp L873
-   cmp v eq bytes(&B11000111) jmp L874
-   cmp v eq bytes(&B11001000) jmp L875
-   cmp v eq bytes(&B11001001) jmp L876
-   cmp v eq bytes(&B11001010) jmp L877
-   cmp v eq bytes(&B11001011) jmp L878
-   cmp v eq bytes(&B11001100) jmp L879
-   cmp v eq bytes(&B11001101) jmp L880
-   cmp v eq bytes(&B11001110) jmp L881
-   cmp v eq bytes(&B11001111) jmp L882
-   cmp v eq bytes(&B11010000) jmp L883
-   cmp v eq bytes(&B11010001) jmp L884
-   cmp v eq bytes(&B11010010) jmp L885
-   cmp v eq bytes(&B11010011) jmp L886
-   cmp v eq bytes(&B11010100) jmp L887
-   cmp v eq bytes(&B11010101) jmp L888
-   cmp v eq bytes(&B11010110) jmp L889
-   cmp v eq bytes(&B11010111) jmp L890
-   cmp v eq bytes(&B11011000) jmp L891
-   cmp v eq bytes(&B11011001) jmp L892
-   cmp v eq bytes(&B11011010) jmp L893
-   cmp v eq bytes(&B11011011) jmp L894
-   cmp v eq bytes(&B11011100) jmp L895
-   cmp v eq bytes(&B11011101) jmp L896
-   cmp v eq bytes(&B11011110) jmp L897
-   cmp v eq bytes(&B11011111) jmp L898
-   cmp v eq bytes(&B11100000) jmp L899
-   cmp v eq bytes(&B11100001) jmp L900
-   cmp v eq bytes(&B11100010) jmp L901
-   cmp v eq bytes(&B11100011) jmp L902
-   cmp v eq bytes(&B11100100) jmp L903
-   cmp v eq bytes(&B11100101) jmp L904
-   cmp v eq bytes(&B11100110) jmp L905
-   cmp v eq bytes(&B11100111) jmp L906
-   cmp v eq bytes(&B11101000) jmp L907
-   cmp v eq bytes(&B11101001) jmp L908
-   cmp v eq bytes(&B11101010) jmp L909
-   cmp v eq bytes(&B11101011) jmp L910
-   cmp v eq bytes(&B11101100) jmp L911
-   cmp v eq bytes(&B11101101) jmp L912
-   cmp v eq bytes(&B11101110) jmp L913
-   cmp v eq bytes(&B11101111) jmp L914
-   cmp v eq bytes(&B11110000) jmp L915
-   cmp v eq bytes(&B11110001) jmp L916
-   cmp v eq bytes(&B11110010) jmp L917
-   cmp v eq bytes(&B11110011) jmp L918
-   cmp v eq bytes(&B11110100) jmp L919
-   cmp v eq bytes(&B11110101) jmp L920
-   cmp v eq bytes(&B11110110) jmp L921
-   cmp v eq bytes(&B11110111) jmp L922
-   cmp v eq bytes(&B11111000) jmp L923
-   cmp v eq bytes(&B11111001) jmp L924
-   cmp v eq bytes(&B11111010) jmp L925
-   cmp v eq bytes(&B11111011) jmp L926
-   cmp v eq bytes(&B11111100) jmp L927
-   cmp v eq bytes(&B11111101) jmp L928
-   cmp v eq bytes(&B11111110) jmp L929
-   cmp v eq bytes(&B11111111) jmp L930
+  ' label$1124:;
+  ' if( V$1 != (double)((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) ) goto label$1127;
+  ' goto label$1128;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) jmp L787
+  ' label$1127:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808097ll) ) goto label$1130;
+  ' goto label$1131;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0001) jmp L788
+  ' label$1130:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll) ) goto label$1133;
+  ' goto label$1134;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0010) jmp L789
+  ' label$1133:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) ) goto label$1136;
+  ' goto label$1137;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0011) jmp L790
+  ' label$1136:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) ) goto label$1139;
+  ' goto label$1140;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0100) jmp L791
+  ' label$1139:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808101ll) ) goto label$1142;
+  ' goto label$1143;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0101) jmp L792
+  ' label$1142:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) ) goto label$1145;
+  ' goto label$1146;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0110) jmp L793
+  ' label$1145:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll) ) goto label$1148;
+  ' goto label$1149;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N0111) jmp L794
+  ' label$1148:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) ) goto label$1151;
+  ' goto label$1152;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1000) jmp L795
+  ' label$1151:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) ) goto label$1154;
+  ' goto label$1155;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1001) jmp L796
+  ' label$1154:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll) ) goto label$1157;
+  ' goto label$1158;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1010) jmp L797
+  ' label$1157:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808107ll) ) goto label$1160;
+  ' goto label$1161;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1011) jmp L798
+  ' label$1160:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) ) goto label$1163;
+  ' goto label$1164;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1100) jmp L799
+  ' label$1163:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808109ll) ) goto label$1166;
+  ' goto label$1167;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1101) jmp L800
+  ' label$1166:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808110ll) ) goto label$1169;
+  ' goto label$1170;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1110) jmp L801
+  ' label$1169:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) ) goto label$1172;
+  ' goto label$1173;
+   cmp v eq peek(ubyte,N0111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L802
+  ' label$1172:;
+  ' if( V$1 != (double)((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) ) goto label$1175;
+  ' goto label$1176;
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) jmp L803
+  ' label$1175:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808097ll) ) goto label$1178;
+  ' goto label$1179;
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N0001) jmp L804
+  ' label$1178:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll) ) goto label$1181;
+  ' goto label$1182;
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N0010) jmp L805
+  ' label$1181:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) ) goto label$1184;
+  ' goto label$1185; 
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N0011) jmp L806
+  ' label$1184:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) ) goto label$1187;
+  ' goto label$1188;
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N0100) jmp L807
+  ' label$1187:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808101ll) ) goto label$1190;
+  ' goto label$1191; 
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N0101) jmp L808
+  ' label$1190:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) ) goto label$1193;
+  ' goto label$1194;
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N0110) jmp L809
+  ' label$1193:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll) ) goto label$1196;
+  ' goto label$1197;
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N0111) jmp L810
+  ' label$1196:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) ) goto label$1199;
+  ' goto label$1200;
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1000) jmp L811
+  ' label$1199:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) ) goto label$1202;
+  ' goto label$1203;
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1001) jmp L812
+  ' label$1202:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll) ) goto label$1205;
+  ' goto label$1206;
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1010) jmp L813
+  ' label$1205:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808107ll) ) goto label$1208;
+  ' goto label$1209;; 
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1011) jmp L814
+  ' label$1208:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) ) goto label$1211;
+  ' goto label$1212;
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1100) jmp L815
+  ' label$1211:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808109ll) ) goto label$1214;
+  ' goto label$1215;
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1101) jmp L816
+  ' label$1214:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808110ll) ) goto label$1217;
+  ' goto label$1218; 
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1110) jmp L817
+  ' label$1217:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) ) goto label$1220;
+  ' goto label$1221; 
+   cmp v eq peek(ubyte,N1000) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L818
+   ' label$1220:;
+  ' if( V$1 != (double)((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) ) goto label$1223;
+  ' goto label$1224;
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) jmp L819
+  ' label$1223:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808097ll) ) goto label$1226;
+  ' goto label$1227;
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0001) jmp L820
+  ' label$1226:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll) ) goto label$1229;
+  ' goto label$1230; 
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0010) jmp L821
+  ' label$1229:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) ) goto label$1232;
+  ' goto label$1233; 
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0011) jmp L822
+  ' label$1232:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) ) goto label$1235;
+  ' goto label$1236; 
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0100) jmp L823
+  ' label$1235:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808101ll) ) goto label$1238;
+  ' goto label$1239; 
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0101) jmp L824
+  ' label$1238:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) ) goto label$1241;
+  ' goto label$1242; 
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0110) jmp L825
+  ' label$1241:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll) ) goto label$1244;
+  ' goto label$1245; 
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N0111) jmp L826
+  ' label$1244:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) ) goto label$1247;
+  ' goto label$1248; 
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1000) jmp L827
+  ' label$1247:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) ) goto label$1250;
+  ' goto label$1251; 
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1001) jmp L828
+  ' label$1250:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll) ) goto label$1253;
+  ' goto label$1254; 
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1010) jmp L829
+  ' label$1253:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808107ll) ) goto label$1256;
+  ' goto label$1257; 
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1011) jmp L830
+  ' label$1256:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) ) goto label$1259;
+  ' goto label$1260; 
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1100) jmp L831
+  ' label$1259:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808109ll) ) goto label$1262;
+  ' goto label$1263; 
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1101) jmp L832
+  ' label$1262:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808110ll) ) goto label$1265;
+  ' goto label$1266; 
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1110) jmp L833
+  ' label$1265:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) ) goto label$1268;
+  ' goto label$1269; 
+   cmp v eq peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L834
+  ' label$1268:;
+  ' if( V$1 != (double)((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) ) goto label$1271;
+  ' goto label$1272; 
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) jmp L835
+  ' label$1271:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808097ll) ) goto label$1274;
+  ' goto label$1275; 
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N0001) jmp L836
+  ' label$1274:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll) ) goto label$1277;
+  ' goto label$1278; 
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N0010) jmp L837
+  ' label$1277:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) ) goto label$1280;
+  ' goto label$1281; 
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N0011) jmp L838
+  ' label$1280:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) ) goto label$1283;
+  ' goto label$1284; 
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N0100) jmp L839
+  ' label$1283:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808101ll) ) goto label$1286;
+  ' goto label$1287;
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N0101) jmp L840
+  ' label$1286:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) ) goto label$1289;
+  ' goto label$1290; 
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N0110) jmp L841
+  ' label$1289:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll) ) goto label$1292;
+  ' goto label$1293; 
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N0111) jmp L842
+  ' label$1292:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) ) goto label$1295;
+  ' goto label$1296; 
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N1000) jmp L843
+  ' label$1295:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) ) goto label$1298;
+  ' goto label$1299; 
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N1001) jmp L844
+  ' label$1298:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll) ) goto label$1301;
+  ' goto label$1302; 
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N1010) jmp L845
+  ' label$1301:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808107ll) ) goto label$1304;
+  ' goto label$1305; 
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N1011) jmp L846
+  ' label$1304:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) ) goto label$1307;
+  ' goto label$1308; 
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N1100) jmp L847
+  ' label$1307:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808109ll) ) goto label$1310;
+  ' goto label$1311; 
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N1101) jmp L848
+  ' label$1310:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808110ll) ) goto label$1313;
+  ' goto label$1314; 
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N1110) jmp L849
+  ' label$1313:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) ) goto label$1316;
+  ' goto label$1317;
+   cmp v eq peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L850
+  ' label$1316:;
+  ' if( V$1 != (double)((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) ) goto label$1319;
+  ' goto label$1320; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) jmp L851
+  ' label$1319:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808097ll) ) goto label$1322;
+  ' goto label$1323; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N0001) jmp L852
+  ' label$1322:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll) ) goto label$1325;
+  ' goto label$1326; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N0010) jmp L853
+  ' label$1325:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) ) goto label$1328;
+  ' goto label$1329; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N0011) jmp L854
+  ' label$1328:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) ) goto label$1331;
+  ' goto label$1332; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N0100) jmp L855
+  ' label$1331:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808101ll) ) goto label$1334;
+  ' goto label$1335; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N0101) jmp L856
+  ' label$1334:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) ) goto label$1337;
+  ' goto label$1338; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N0110) jmp L857
+  ' label$1337:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll) ) goto label$1340;
+  ' goto label$1341; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N0111) jmp L858
+  ' label$1340:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) ) goto label$1343;
+  ' goto label$1344; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N1000) jmp L859
+  ' label$1343:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) ) goto label$1346;
+  ' goto label$1347; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N1001) jmp L860
+  ' label$1346:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll) ) goto label$1349;
+  ' goto label$1350; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N1010) jmp L861
+  ' label$1349:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808107ll) ) goto label$1352;
+  ' goto label$1353; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N1011) jmp L862
+  ' label$1352:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) ) goto label$1355;
+  ' goto label$1356; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N1100) jmp L863
+  ' label$1355:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808109ll) ) goto label$1358;
+  ' goto label$1359; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N1101) jmp L864
+  ' label$1358:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808110ll) ) goto label$1361;
+  ' goto label$1362; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N1110) jmp L865
+  ' label$1361:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808107ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) ) goto label$1364;
+  ' goto label$1365; 
+   cmp v eq peek(ubyte,N1011) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L866
+  ' label$1364:;
+  ' if( V$1 != (double)((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) ) goto label$1367;
+  ' goto label$1368; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) jmp L867
+  ' label$1367:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808097ll) ) goto label$1370;
+  ' goto label$1371; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N0001) jmp L868
+  ' label$1370:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll) ) goto label$1373;
+  ' goto label$1374; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N0010) jmp L869
+  ' label$1373:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) ) goto label$1376;
+  ' goto label$1377; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N0011) jmp L870
+  ' label$1376:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) ) goto label$1379;
+  ' goto label$1380; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N0100) jmp L871
+  ' label$1379:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808101ll) ) goto label$1382;
+  ' goto label$1383; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N0101) jmp L872
+  ' label$1382:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) ) goto label$1385;
+  ' goto label$1386; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N0110) jmp L873
+  ' label$1385:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll) ) goto label$1388;
+  ' goto label$1389; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N0111) jmp L874
+  ' label$1388:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) ) goto label$1391;
+  ' goto label$1392; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1000) jmp L875
+  ' label$1391:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) ) goto label$1394;
+  ' goto label$1395; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1001) jmp L876
+  ' label$1394:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll) ) goto label$1397;
+  ' goto label$1398; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1010) jmp L877
+  ' label$1397:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808107ll) ) goto label$1400;
+  ' goto label$1401; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1011) jmp L878
+  ' label$1400:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) ) goto label$1403;
+  ' goto label$1404; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1100) jmp L879
+  ' label$1403:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808109ll) ) goto label$1406;
+  ' goto label$1407; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1101) jmp L880
+  ' label$1406:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808110ll) ) goto label$1409;
+  ' goto label$1410; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1110) jmp L881
+  ' label$1409:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) ) goto label$1412;
+  ' goto label$1413; 
+   cmp v eq peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L882
+  ' label$1412:;
+  ' if( V$1 != (double)((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) ) goto label$1415;
+  ' goto label$1416; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) jmp L883
+  ' label$1415:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808097ll) ) goto label$1418;
+  ' goto label$1419; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N0001) jmp L884
+  ' label$1418:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll) ) goto label$1421;
+  ' goto label$1422; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N0010) jmp L885
+  ' label$1421:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) ) goto label$1424;
+  ' goto label$1425; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N0011) jmp L886
+  ' label$1424:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) ) goto label$1427;
+  ' goto label$1428; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N0100) jmp L887
+  ' label$1427:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808101ll) ) goto label$1430;
+  ' goto label$1431; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N0101) jmp L888
+  ' label$1430:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) ) goto label$1433;
+  ' goto label$1434; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N0110) jmp L889
+  ' label$1433:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll) ) goto label$1436;
+  ' goto label$1437; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N0111) jmp L890
+  ' label$1436:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) ) goto label$1439;
+  ' goto label$1440; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N1000) jmp L891
+  ' label$1439:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) ) goto label$1442;
+  ' goto label$1443; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N1001) jmp L892
+  ' label$1442:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll) ) goto label$1445;
+  ' goto label$1446; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N1010) jmp L893
+  ' label$1445:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808107ll) ) goto label$1448;
+  ' goto label$1449; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N1011) jmp L894
+  ' label$1448:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) ) goto label$1451;
+  ' goto label$1452; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N1100) jmp L895
+  ' label$1451:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808109ll) ) goto label$1454;
+  ' goto label$1455; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N1101) jmp L896
+  ' label$1454:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808110ll) ) goto label$1457;
+  ' goto label$1458; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N1110) jmp L897
+  ' label$1457:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) ) goto label$1460;
+  ' goto label$1461; 
+   cmp v eq peek(ubyte,N1101) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L898
+  ' label$1460:;
+  ' if( V$1 != (double)((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) ) goto label$1463;
+  ' goto label$1464; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) jmp L899
+  ' label$1463:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808097ll) ) goto label$1466;
+  ' goto label$1467; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N0001) jmp L900
+  ' label$1466:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll) ) goto label$1469;
+  ' goto label$1470; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N0010) jmp L901
+  ' label$1469:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) ) goto label$1472;
+  ' goto label$1473; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N0011) jmp L902
+  ' label$1472:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) ) goto label$1475;
+  ' goto label$1476; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N0100) jmp L903
+  ' label$1475:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808101ll) ) goto label$1478;
+  ' goto label$1479; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N0101) jmp L904
+  ' label$1478:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) ) goto label$1481;
+  ' goto label$1482; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N0110) jmp L905
+  ' label$1481:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll) ) goto label$1484;
+  ' goto label$1485; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N0111) jmp L906
+  ' label$1484:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) ) goto label$1487;
+  ' goto label$1488; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1000) jmp L907
+  ' label$1487:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) ) goto label$1490;
+  ' goto label$1491; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1001) jmp L908
+  ' label$1490:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll) ) goto label$1493;
+  ' goto label$1494; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1010) jmp L909
+  ' label$1493:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808107ll) ) goto label$1496;
+  ' goto label$1497; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1011) jmp L910
+  ' label$1496:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) ) goto label$1499;
+  ' goto label$1500; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1100) jmp L911
+  ' label$1499:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808109ll) ) goto label$1502;
+  ' goto label$1503; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1101) jmp L912
+  ' label$1502:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808110ll) ) goto label$1505;
+  ' goto label$1506; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1110) jmp L913
+  ' label$1505:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) ) goto label$1508;
+  ' goto label$1509; 
+   cmp v eq peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L914
+  ' label$1508:;
+  ' if( V$1 != (double)((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) ) goto label$1511;
+  ' goto label$1512; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) jmp L915
+  ' label$1511:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808097ll) ) goto label$1514;
+  ' goto label$1515; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N0001) jmp L916
+  ' label$1514:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll) ) goto label$1517;
+  ' goto label$1518; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N0010) jmp L917
+  ' label$1517:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) ) goto label$1520;
+  ' goto label$1521; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N0011) jmp L918
+  ' label$1520:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) ) goto label$1523;
+  ' goto label$1524; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N0100) jmp L919
+  ' label$1523:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808101ll) ) goto label$1526;
+  ' goto label$1527; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N0101) jmp L920
+  ' label$1526:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) ) goto label$1529;
+  ' goto label$1530; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N0110) jmp L921
+  ' label$1529:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll) ) goto label$1532;
+  ' goto label$1533; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N0111) jmp L922
+  ' label$1532:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) ) goto label$1535;
+  ' goto label$1536; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1000) jmp L923
+  ' label$1535:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) ) goto label$1538;
+  ' goto label$1539; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1001) jmp L924
+  ' label$1538:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll) ) goto label$1541;
+  ' goto label$1542; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1010) jmp L925
+  ' label$1541:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808107ll) ) goto label$1544;
+  ' goto label$1545; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1011) jmp L926
+  ' label$1544:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) ) goto label$1547;
+  ' goto label$1548; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1100) jmp L927
+  ' label$1547:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808109ll) ) goto label$1550;
+  ' goto label$1551; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1101) jmp L928
+  ' label$1550:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808110ll) ) goto label$1553;
+  ' goto label$1554; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1110) jmp L929
+  ' label$1553:;
+  ' if( V$1 != (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) ) goto label$1556;
+  ' goto label$1557; 
+   cmp v eq peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111) jmp L930
+  ' label$1556:;
+  ' goto label$789; 
    jmp L931
+  ' label$792:; 
 L675:'000
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H00):poke64(49156d,&H00)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)*(uint8*)4808096ll );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                      Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0000))
+  ' goto label$789;
    jmp L931
+  ' label$795:;
 L676:'001
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H00):poke64(49156d,&H33)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                      Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0011) shl peek(ubyte,N0100) add peek(ubyte,N0011))
+  ' goto label$789;
    jmp L931
+  ' label$798:; 
 L677:'002
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H00):poke64(49156d,&H66)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                      Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110))
+  ' goto label$789;
    jmp L931
+  ' label$801:;
 L678:'003
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H00):poke64(49156d,&H99)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                      Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1001))
+  ' goto label$789;
    jmp L931
+  ' label$804:; 
 L679:'004
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H00):poke64(49156d,&HCC)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                      Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1100))
+  ' goto label$789;
    jmp L931
+  ' label$807:; 
 L680:'005
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H00):poke64(49156d,&HFF)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                      Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111))
+  ' goto label$789;
    jmp L931
+  ' label$810:; 
 L681:'006
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H33):poke64(49156d,&H00)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)*(uint8*)4808096ll );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0011) shl peek(ubyte,N0100) add peek(ubyte,N0011)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0000))
+  ' goto label$789;
    jmp L931
+  ' label$813:;   
 L682:'007
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H33):poke64(49156d,&H33)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0011) shl peek(ubyte,N0100) add peek(ubyte,N0011)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0011) shl peek(ubyte,N0100) add peek(ubyte,N0011))
+  ' goto label$789;
    jmp L931
+  ' label$816:;  
 L683:'008
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H33):poke64(49156d,&H66)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0011) shl peek(ubyte,N0100) add peek(ubyte,N0011)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110))
+  ' goto label$789;
    jmp L931
+  ' label$819:; 
 L684:'009
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H33):poke64(49156d,&H99)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0011) shl peek(ubyte,N0100) add peek(ubyte,N0011)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1001))
+  ' goto label$789;
    jmp L931
+  ' label$822:; 
 L685:'010
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H33):poke64(49156d,&HCC)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0011) shl peek(ubyte,N0100) add peek(ubyte,N0011)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1100))
+  ' goto label$789;
    jmp L931
+  ' label$825:; 
 L686:'011
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H33):poke64(49156d,&HFF)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0011) shl peek(ubyte,N0100) add peek(ubyte,N0011)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111))
+  ' goto label$789;
    jmp L931
+  ' label$828:;
 L687:'012
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H66):poke64(49156d,&H00)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)*(uint8*)4808096ll );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0000))
+  ' goto label$789;
    jmp L931
+  ' label$831:; 
 L688:'013
-'         Red                 Green                Blue
-   poke64(49154d,&H00):poke64(49155d,&H66):poke64(49156d,&H33)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0011) shl peek(ubyte,N0100) add peek(ubyte,N0011))
+  ' goto label$789;
    jmp L931
+  ' label$834:;   
 L689:'014
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H66):poke64(49156d,&H66)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110))
+  ' goto label$789;
    jmp L931
+  ' label$837:;
 L690:'015
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H66):poke64(49156d,&H99)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1001))
+  ' goto label$789;
    jmp L931
+  ' label$840:; 
 L691:'016
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H66):poke64(49156d,&HCC)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1100))
+  ' goto label$789;
    jmp L931
+  ' label$843:; 
 L692:'017
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H66):poke64(49156d,&HFF)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111))
+  ' goto label$789;
    jmp L931
+  ' label$846:;
 L693:'018
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H99):poke64(49156d,&H00)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)*(uint8*)4808096ll );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1001)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0000))
+  ' goto label$789;
    jmp L931
+  ' label$849:;   
 L694:'019
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H99):poke64(49156d,&H33)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1001)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0011) shl peek(ubyte,N0100) add peek(ubyte,N0011))
+  ' goto label$789;
    jmp L931
+  ' label$852:;
 L695:'020
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H99):poke64(49156d,&H66)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1001)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110))
    jmp L931
+  ' goto label$789;
+  ' label$855:; 
 L696:'021
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H99):poke64(49156d,&H99)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) ); 
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1001)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1001))
+  ' goto label$789;
    jmp L931
+  ' label$858:; 
 L697:'022
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H99):poke64(49156d,&HCC)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1001)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1100))
+  ' goto label$789;
    jmp L931
+  ' label$861:; 
 L698:'023
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H99):poke64(49156d,&HFF)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1001)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111))
+  ' goto label$789;
    jmp L931
+  ' label$864:; 
 L699:'024
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HCC):poke64(49156d,&H00)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)*(uint8*)4808096ll );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1100)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0000))
+  ' goto label$789;
    jmp L931
+  ' label$867:; 
 L700:'025
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HCC):poke64(49156d,&H33)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1100)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0011) shl peek(ubyte,N0100) add peek(ubyte,N0011))
+  ' goto label$789;
    jmp L931
+  ' label$870:; 
 L701:'026
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HCC):poke64(49156d,&H66)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1100)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0011))
+  ' goto label$789;
    jmp L931
+  ' label$873:; 
 L702:'027
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HCC):poke64(49156d,&H99)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1100)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1001))
+  ' goto label$789;
    jmp L931
+  ' label$876:;
 L703:'028
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HCC):poke64(49156d,&HCC)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1100)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1100))
+  ' goto label$789;
    jmp L931
+  ' label$879:;
 L704:'029
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HCC):poke64(49156d,&HFF)
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) );
+  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1100)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111))
+  ' goto label$789;
    jmp L931
 L705:'030
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&H00)
+' label$882:;
+'  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+'  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
+'  _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)*(uint8*)4808096ll );
+'  goto label$789;
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0000))
    jmp L931
 L706:'031
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&H33)
+' label$885:;
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808099ll) );
+' goto label$789;
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0011) shl peek(ubyte,N0100) add peek(ubyte,N0011))
    jmp L931
 L707:'032
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&H66)
+' label$888:;
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll) );
+' goto label$789;
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N0110) shl peek(ubyte,N0100) add peek(ubyte,N0110))
    jmp L931
 L708:'033
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&H99)
+' label$891:;
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) );
+' goto label$789;
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1001) shl peek(ubyte,N0100) add peek(ubyte,N1001))
    jmp L931
 L709:'034
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&HCC)
+' label$894:;
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808108ll) );
+' goto label$789;
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1100))
    jmp L931
 L710:'035
-'         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&HFF)
+' label$897:;
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll), (double)*(uint8*)4808096ll );
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
+' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
+' goto label$789;
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0010),peek(ubyte,N0000)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0011),peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)):poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0100),peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111))
    jmp L931
+'  0F     0E     0D     0C     0B     0A     09     08     07     06     05     04     03     02     01     00   0F     0E     0D     0C     0B     0A     09     08     07     06     05     04     03     02     01     00   0F     0E     0D     0C     0B     0A     09     08     07     06     05     04     03     02     01     00   0F     0E     0D     0C     0B     0A     09     08     07     06     05     04     03     02     01     00
+'  15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00   15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00   15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00   15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00
+'1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000 1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000 1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000 1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000
+'   1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1    1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1    1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1    1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1
 L711:'036
-'         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H00):poke64(49156d,&H00)
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(49154,&H33):poke64(49155,&H00):poke64(49156,&H00)
    jmp L931
 L712:'037
-'         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H00):poke64(49156d,&H33)
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(49154,&H33):poke64(49155,&H00):poke64(49156,&H33)
    jmp L931
 L713:'038
-'         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H00):poke64(49156d,&H66)
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(49154,&H33):poke64(49155,&H00):poke64(49156,&H66)
    jmp L931
 L714:'039
-'         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H00):poke64(49156d,&H99)
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(49154,&H33):poke64(49155,&H00):poke64(49156,&H99)
    jmp L931
 L715:'040
-'         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H00):poke64(49156d,&HCC)
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(49154,&H33):poke64(49155,&H00):poke64(49156,&HCC)
    jmp L931
 L716:'041
-'         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H00):poke64(49156d,&HFF)
+'         Red=$C002(49154)                                                                        Green=$C003(49155)                                                                                                                  Blue=$C003(49156)
+   poke64(49154,&H33):poke64(49155,&H00):poke64(49156,&HFF)
    jmp L931
 L717:'042
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H33):poke64(49156d,&H00)
+   poke64(49154,&H33):poke64(49155,&H33):poke64(49156,&H00)
    jmp L931
 L718:'043
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H33):poke64(49156d,&H33)
+   poke64(49154,&H33):poke64(49155,&H33):poke64(49156,&H33)
    jmp L931
 L719:'044
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H33):poke64(49156d,&H66)
+   poke64(49154,&H33):poke64(49155,&H33):poke64(49156,&H66)
    jmp L931
 L720:'045
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H33):poke64(49156d,&H99)
+   poke64(49154,&H33):poke64(49155,&H33):poke64(49156,&H99)
    jmp L931
 L721:'046
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H33):poke64(49156d,&HCC)
+   poke64(49154,&H33):poke64(49155,&H33):poke64(49156,&HCC)
    jmp L931
 L722:'047
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H33):poke64(49156d,&HFF)
+   poke64(49154,&H33):poke64(49155,&H33):poke64(49156,&HFF)
    jmp L931
 L723:'048
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H66):poke64(49156d,&H00)
+   poke64(49154,&H33):poke64(49155,&H66):poke64(49156,&H00)
    jmp L931
 L724:'049
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H66):poke64(49156d,&H33)
+   poke64(49154,&H33):poke64(49155,&H66):poke64(49156,&H33)
    jmp L931
 L725:'050
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H66):poke64(49156d,&H66)
+   poke64(49154,&H33):poke64(49155,&H66):poke64(49156,&H66)
    jmp L931
 L726:'051
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H66):poke64(49156d,&H99)
+   poke64(49154,&H33):poke64(49155,&H66):poke64(49156,&H99)
    jmp L931
 L727:'052
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H66):poke64(49156d,&HCC)
+   poke64(49154,&H33):poke64(49155,&H66):poke64(49156,&HCC)
    jmp L931
 L728:'053
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H66):poke64(49156d,&HFF)
+   poke64(49154,&H33):poke64(49155,&H66):poke64(49156,&HFF)
    jmp L931
 L729:'054
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H99):poke64(49156d,&H00)
+   poke64(49154,&H33):poke64(49155,&H99):poke64(49156,&H00)
    jmp L931
 L730:'055
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H99):poke64(49156d,&H33)
+   poke64(49154,&H33):poke64(49155,&H99):poke64(49156,&H33)
    jmp L931
 L731:'056
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H99):poke64(49156d,&H66)
+   poke64(49154,&H33):poke64(49155,&H99):poke64(49156,&H66)
    jmp L931
 L732:'057
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H99):poke64(49156d,&H99)
+   poke64(49154,&H33):poke64(49155,&H99):poke64(49156,&H99)
    jmp L931
 L733:'058
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H99):poke64(49156d,&HCC)
+   poke64(49154,&H33):poke64(49155,&H99):poke64(49156,&HCC)
    jmp L931
 L734:'059
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H99):poke64(49156d,&HFF)
+   poke64(49154,&H33):poke64(49155,&H99):poke64(49156,&HFF)
    jmp L931
 L735:'060
 '         Red                 Green               Blue   
-   poke64(49154d,&H33):poke64(49155d,&HCC):poke64(49156d,&H00)
+   poke64(49154,&H33):poke64(49155,&HCC):poke64(49156,&H00)
    jmp L931
 L736:'061
 '         Red                 Green               Blue   
-   poke64(49154d,&H33):poke64(49155d,&HCC):poke64(49156d,&H33)
+   poke64(49154,&H33):poke64(49155,&HCC):poke64(49156,&H33)
    jmp L931
 L737:'062
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&HCC):poke64(49156d,&H66)
+   poke64(49154,&H33):poke64(49155,&HCC):poke64(49156,&H66)
    jmp L931
 L738:'063
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&HCC):poke64(49156d,&H99)
+   poke64(49154,&H33):poke64(49155,&HCC):poke64(49156,&H99)
    jmp L931
 L739:'064
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&HCC):poke64(49156d,&HCC)
+   poke64(49154,&H33):poke64(49155,&HCC):poke64(49156,&HCC)
    jmp L931
 L740:'065
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&HCC):poke64(49156d,&HFF)
+   poke64(49154,&H33):poke64(49155,&HCC):poke64(49156,&HFF)
    jmp L931
 L741:'066
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&HFF):poke64(49156d,&H00)
+   poke64(49154,&H33):poke64(49155,&HFF):poke64(49156,&H00)
    jmp L931
 L742:'067
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&HFF):poke64(49156d,&H33)
+   poke64(49154,&H33):poke64(49155,&HFF):poke64(49156,&H33)
    jmp L931
 L743:'068
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&HFF):poke64(49156d,&H66)
+   poke64(49154,&H33):poke64(49155,&HFF):poke64(49156,&H66)
    jmp L931
 L744:'069
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&HFF):poke64(49156d,&H99)
+   poke64(49154,&H33):poke64(49155,&HFF):poke64(49156,&H99)
    jmp L931
 L745:'070
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&HFF):poke64(49156d,&HCC)
+   poke64(49154,&H33):poke64(49155,&HFF):poke64(49156,&HCC)
    jmp L931
 L746:'071
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&HFF):poke64(49156d,&HFF)
+   poke64(49154,&H33):poke64(49155,&HFF):poke64(49156,&HFF)
    jmp L931
 L747:'072
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H00):poke64(49156d,&H00)
+   poke64(49154,&H66):poke64(49155,&H00):poke64(49156,&H00)
    jmp L931
 L748:'073
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H00):poke64(49156d,&H33)
+   poke64(49154,&H66):poke64(49155,&H00):poke64(49156,&H33)
    jmp L931
 L749:'074
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H00):poke64(49156d,&H66)
+   poke64(49154,&H66):poke64(49155,&H00):poke64(49156,&H66)
    jmp L931
 L750:'075
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H00):poke64(49156d,&H99)
+   poke64(49154,&H66):poke64(49155,&H00):poke64(49156,&H99)
    jmp L931
 L751:'076
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H00):poke64(49156d,&HCC)
+   poke64(49154,&H66):poke64(49155,&H00):poke64(49156,&HCC)
    jmp L931
 L752:'077
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H00):poke64(49156d,&HFF)
+   poke64(49154,&H66):poke64(49155,&H00):poke64(49156,&HFF)
    jmp L931
 L753:'078
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H33):poke64(49156d,&H00)
+   poke64(49154,&H66):poke64(49155,&H33):poke64(49156,&H00)
    jmp L931
 L754:'079
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H33):poke64(49156d,&H33)
+   poke64(49154,&H66):poke64(49155,&H33):poke64(49156,&H33)
    jmp L931
 L755:'080
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H33):poke64(49156d,&H66)
+   poke64(49154,&H66):poke64(49155,&H33):poke64(49156,&H66)
    jmp L931
 L756:'081
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H33):poke64(49156d,&H99)
+   poke64(49154,&H66):poke64(49155,&H33):poke64(49156,&H99)
    jmp L931
 L757:'82
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H33):poke64(49156d,&HCC)
+   poke64(49154,&H66):poke64(49155,&H33):poke64(49156,&HCC)
    jmp L931
 L758:'083
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H33):poke64(49156d,&HFF)
+   poke64(49154,&H66):poke64(49155,&H33):poke64(49156,&HFF)
    jmp L931
 L759:'084
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H66):poke64(49156d,&H00)
+   poke64(49154,&H66):poke64(49155,&H66):poke64(49156,&H00)
    jmp L931
 L760:'085
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H66):poke64(49156d,&H33)
+   poke64(49154,&H66):poke64(49155,&H66):poke64(49156,&H33)
    jmp L931
 L761:'086
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H66):poke64(49156d,&H66)
+   poke64(49154,&H66):poke64(49155,&H66):poke64(49156,&H66)
    jmp L931
 L762:'087
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H66):poke64(49156d,&H99)
+   poke64(49154,&H66):poke64(49155,&H66):poke64(49156,&H99)
    jmp L931
 L763:'088
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H66):poke64(49156d,&HCC)
+   poke64(49154,&H66):poke64(49155,&H66):poke64(49156,&HCC)
    jmp L931
 L764:'089
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H66):poke64(49156d,&HFF)
+   poke64(49154,&H66):poke64(49155,&H66):poke64(49156,&HFF)
    jmp L931
 L765:'090
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H99):poke64(49156d,&H00)
+   poke64(49154,&H66):poke64(49155,&H99):poke64(49156,&H00)
    jmp L931
 L766:'091
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H99):poke64(49156d,&H33)
+   poke64(49154,&H66):poke64(49155,&H99):poke64(49156,&H33)
    jmp L931
 L767:'092
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H99):poke64(49156d,&H66)
+   poke64(49154,&H66):poke64(49155,&H99):poke64(49156,&H66)
    jmp L931
 L768:'093
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H99):poke64(49156d,&HCC)
+   poke64(49154,&H66):poke64(49155,&H99):poke64(49156,&HCC)
    jmp L931
 L769:'094
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H99):poke64(49156d,&HFF)
+   poke64(49154,&H66):poke64(49155,&H99):poke64(49156,&HFF)
    jmp L931
 L770:'095
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&HCC):poke64(49156d,&H00)
+   poke64(49154,&H66):poke64(49155,&HCC):poke64(49156,&H00)
    jmp L931
 L771:'096
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&HCC):poke64(49156d,&H33)
+   poke64(49154,&H66):poke64(49155,&HCC):poke64(49156,&H33)
    jmp L931
 L772:'097
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&HCC):poke64(49156d,&H66)
+   poke64(49154,&H66):poke64(49155,&HCC):poke64(49156,&H66)
    jmp L931
 L773:'098
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&HCC):poke64(49156d,&H99)
+   poke64(49154,&H66):poke64(49155,&HCC):poke64(49156,&H99)
    jmp L931
 L774:'099
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&HCC):poke64(49156d,&HCC)
+   poke64(49154,&H66):poke64(49155,&HCC):poke64(49156,&HCC)
    jmp L931
 L775:'100
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&HCC):poke64(49156d,&HFF)
+   poke64(49154,&H66):poke64(49155,&HCC):poke64(49156,&HFF)
    jmp L931
 L776:'101
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&HFF):poke64(49156d,&H00)
+   poke64(49154,&H66):poke64(49155,&HFF):poke64(49156,&H00)
    jmp L931
 L777:'102
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&HFF):poke64(49156d,&H33)
+   poke64(49154,&H66):poke64(49155,&HFF):poke64(49156,&H33)
    jmp L931
 L778:'103
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&HFF):poke64(49156d,&H66)
+   poke64(49154,&H66):poke64(49155,&HFF):poke64(49156,&H66)
    jmp L931
 L779:'104
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&HFF):poke64(49156d,&H99)
+   poke64(49154,&H66):poke64(49155,&HFF):poke64(49156,&H99)
    jmp L931
 L780:'105
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&HFF):poke64(49156d,&HCC)
+   poke64(49154,&H66):poke64(49155,&HFF):poke64(49156,&HCC)
    jmp L931
 L781:'106
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&HFF):poke64(49156d,&HFF)
+   poke64(49154,&H66):poke64(49155,&HFF):poke64(49156,&HFF)
    jmp L931
 L782:'107
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H00):poke64(49156d,&H00)
+   poke64(49154,&H99):poke64(49155,&H00):poke64(49156,&H00)
    jmp L931
 L783:'198
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H00):poke64(49156d,&H33)
+   poke64(49154,&H99):poke64(49155,&H00):poke64(49156,&H33)
    jmp L931
 L784:'109
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H00):poke64(49156d,&H66)
+   poke64(49154,&H99):poke64(49155,&H00):poke64(49156,&H66)
    jmp L931
 L785:'110
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H00):poke64(49156d,&H99)
+   poke64(49154,&H99):poke64(49155,&H00):poke64(49156,&H99)
    jmp L931
 L786:'111
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H00):poke64(49156d,&HCC)
+   poke64(49154,&H99):poke64(49155,&H00):poke64(49156,&HCC)
    jmp L931
 L787:'112
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H00):poke64(49156d,&HFF)
+   poke64(49154,&H99):poke64(49155,&H00):poke64(49156,&HFF)
    jmp L931
 L788:'113
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H33):poke64(49156d,&H00)
+   poke64(49154,&H99):poke64(49155,&H33):poke64(49156,&H00)
    jmp L931
 L789:'114
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H33):poke64(49156d,&H33)
+   poke64(49154,&H99):poke64(49155,&H33):poke64(49156,&H33)
    jmp L931
 L790:'115
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H33):poke64(49156d,&H66)
+   poke64(49154,&H99):poke64(49155,&H33):poke64(49156,&H66)
    jmp L931
 L791:'116
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H33):poke64(49156d,&H99)
+   poke64(49154,&H99):poke64(49155,&H33):poke64(49156,&H99)
    jmp L931
 L792:'117
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H33):poke64(49156d,&HCC)
+   poke64(49154,&H99):poke64(49155,&H33):poke64(49156,&HCC)
    jmp L931
 L793:'118
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H33):poke64(49156d,&HFF)
+   poke64(49154,&H99):poke64(49155,&H33):poke64(49156,&HFF)
    jmp L931
 L794:'119
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H66):poke64(49156d,&H00)
+   poke64(49154,&H99):poke64(49155,&H66):poke64(49156,&H00)
    jmp L931
 L795:'120
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H66):poke64(49156d,&H33)
+   poke64(49154,&H99):poke64(49155,&H66):poke64(49156,&H33)
    jmp L931
 L796:'121
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H66):poke64(49156d,&H66)
+   poke64(49154,&H99):poke64(49155,&H66):poke64(49156,&H66)
    jmp L931
 L797:'122
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H66):poke64(49156d,&H99)
+   poke64(49154,&H99):poke64(49155,&H66):poke64(49156,&H99)
    jmp L931
 L798:'123
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H66):poke64(49156d,&HCC)
+   poke64(49154,&H99):poke64(49155,&H66):poke64(49156,&HCC)
    jmp L931
 L799:'124
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H66):poke64(49156d,&HFF)
+   poke64(49154,&H99):poke64(49155,&H66):poke64(49156,&HFF)
    jmp L931
 L800:'125
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H99):poke64(49156d,&H00)
+   poke64(49154,&H99):poke64(49155,&H99):poke64(49156,&H00)
    jmp L931
 L801:'126
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H99):poke64(49156d,&H33)
+   poke64(49154,&H99):poke64(49155,&H99):poke64(49156,&H33)
    jmp L931
 L802:'127
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H99):poke64(49156d,&H66)
+   poke64(49154,&H99):poke64(49155,&H99):poke64(49156,&H66)
    jmp L931
 L803:'128
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H99):poke64(49156d,&H99)
+   poke64(49154,&H99):poke64(49155,&H99):poke64(49156,&H99)
    jmp L931
 L804:'129
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H99):poke64(49156d,&HCC)
+   poke64(49154,&H99):poke64(49155,&H99):poke64(49156,&HCC)
    jmp L931
 L805:'130
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H99):poke64(49156d,&HFF)
+   poke64(49154,&H99):poke64(49155,&H99):poke64(49156,&HFF)
    jmp L931
 L806:'131
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&HCC):poke64(49156d,&H00)
+   poke64(49154,&H99):poke64(49155,&HCC):poke64(49156,&H00)
    jmp L931
 L807:'132
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&HCC):poke64(49156d,&H33)
+   poke64(49154,&H99):poke64(49155,&HCC):poke64(49156,&H33)
    jmp L931
 L808:'133
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&HCC):poke64(49156d,&H66)
+   poke64(49154,&H99):poke64(49155,&HCC):poke64(49156,&H66)
    jmp L931
 L809:'134
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&HCC):poke64(49156d,&H99)
+   poke64(49154,&H99):poke64(49155,&HCC):poke64(49156,&H99)
    jmp L931
 L810:'135
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&HCC):poke64(49156d,&HCC)
+   poke64(49154,&H99):poke64(49155,&HCC):poke64(49156,&HCC)
    jmp L931
 L811:'136
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&HCC):poke64(49156d,&HFF)
+   poke64(49154,&H99):poke64(49155,&HCC):poke64(49156,&HFF)
    jmp L931
 L812:'137
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&HFF):poke64(49156d,&H00)
+   poke64(49154,&H99):poke64(49155,&HFF):poke64(49156,&H00)
    jmp L931
 L813:'138
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&HFF):poke64(49156d,&H33)
+   poke64(49154,&H99):poke64(49155,&HFF):poke64(49156,&H33)
    jmp L931
 L814:'139
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&HFF):poke64(49156d,&H66)
+   poke64(49154,&H99):poke64(49155,&HFF):poke64(49156,&H66)
    jmp L931
 L815:'140
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&HFF):poke64(49156d,&H99)
+   poke64(49154,&H99):poke64(49155,&HFF):poke64(49156,&H99)
    jmp L931
 L816:'141
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&HFF):poke64(49156d,&HCC)
+   poke64(49154,&H99):poke64(49155,&HFF):poke64(49156,&HCC)
    jmp L931
 L817:'142
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&HFF):poke64(49156d,&HFF)
+   poke64(49154,&H99):poke64(49155,&HFF):poke64(49156,&HFF)
    jmp L931
 L818:'143
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H00):poke64(49156d,&H00)
+   poke64(49154,&HCC):poke64(49155,&H00):poke64(49156,&H00)
    jmp L931
 L819:'144
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H00):poke64(49156d,&H33)
+   poke64(49154,&HCC):poke64(49155,&H00):poke64(49156,&H33)
    jmp L931
 L820:'145
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H00):poke64(49156d,&H66)
+   poke64(49154,&HCC):poke64(49155,&H00):poke64(49156,&H66)
    jmp L931
 L821:'146
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H00):poke64(49156d,&H99)
+   poke64(49154,&HCC):poke64(49155,&H00):poke64(49156,&H99)
    jmp L931
 L822:'147
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H00):poke64(49156d,&HCC)
+   poke64(49154,&HCC):poke64(49155,&H00):poke64(49156,&HCC)
    jmp L931
 L823:'148
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H00):poke64(49156d,&HFF)
+   poke64(49154,&HCC):poke64(49155,&H00):poke64(49156,&HFF)
    jmp L931
 L824:'149
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H33):poke64(49156d,&H00)
+   poke64(49154,&HCC):poke64(49155,&H33):poke64(49156,&H00)
    jmp L931
 L825:'150
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H33):poke64(49156d,&H33)
+   poke64(49154,&HCC):poke64(49155,&H33):poke64(49156,&H33)
    jmp L931
 L826:'151
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H33):poke64(49156d,&H66)
+   poke64(49154,&HCC):poke64(49155,&H33):poke64(49156,&H66)
    jmp L931
 L827:'152
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H33):poke64(49156d,&H99)
+   poke64(49154,&HCC):poke64(49155,&H33):poke64(49156,&H99)
    jmp L931
 L828:'153
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H33):poke64(49156d,&HCC)
+   poke64(49154,&HCC):poke64(49155,&H33):poke64(49156,&HCC)
    jmp L931
 L829:'154
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H33):poke64(49156d,&HFF)
+   poke64(49154,&HCC):poke64(49155,&H33):poke64(49156,&HFF)
    jmp L931
 L830:'155
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H66):poke64(49156d,&H00)
+   poke64(49154,&HCC):poke64(49155,&H66):poke64(49156,&H00)
    jmp L931
 L831:'156
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H66):poke64(49156d,&H33)
+   poke64(49154,&HCC):poke64(49155,&H66):poke64(49156,&H33)
    jmp L931
 L832:'157
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H66):poke64(49156d,&H66)
+   poke64(49154,&HCC):poke64(49155,&H66):poke64(49156,&H66)
    jmp L931
 L833:'158
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H66):poke64(49156d,&H99)
+   poke64(49154,&HCC):poke64(49155,&H66):poke64(49156,&H99)
    jmp L931
 L834:'159
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H66):poke64(49156d,&HCC)
+   poke64(49154,&HCC):poke64(49155,&H66):poke64(49156,&HCC)
    jmp L931
 L835:'160
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H66):poke64(49156d,&HFF)
+   poke64(49154,&HCC):poke64(49155,&H66):poke64(49156,&HFF)
    jmp L931
 L836:'161
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H99):poke64(49156d,&H00)
+   poke64(49154,&HCC):poke64(49155,&H99):poke64(49156,&H00)
    jmp L931
 L837:'162
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H99):poke64(49156d,&H33)
+   poke64(49154,&HCC):poke64(49155,&H99):poke64(49156,&H33)
    jmp L931
 L838:'163
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H99):poke64(49156d,&H66)
+   poke64(49154,&HCC):poke64(49155,&H99):poke64(49156,&H66)
    jmp L931
 L839:'164
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H99):poke64(49156d,&H99)
+   poke64(49154,&HCC):poke64(49155,&H99):poke64(49156,&H99)
    jmp L931
 L840:'165
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H99):poke64(49156d,&HCC)
+   poke64(49154,&HCC):poke64(49155,&H99):poke64(49156,&HCC)
    jmp L931
 L841:'166
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H99):poke64(49156d,&HFF)
+   poke64(49154,&HCC):poke64(49155,&H99):poke64(49156,&HFF)
    jmp L931
 L842:'167
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&HCC):poke64(49156d,&H00)
+   poke64(49154,&HCC):poke64(49155,&HCC):poke64(49156,&H00)
    jmp L931
 L843:'168
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&HCC):poke64(49156d,&H33)
+   poke64(49154,&HCC):poke64(49155,&HCC):poke64(49156,&H33)
    jmp L931
 L844:'169
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&HCC):poke64(49156d,&H66)
+   poke64(49154,&HCC):poke64(49155,&HCC):poke64(49156,&H66)
    jmp L931
 L845:'170
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&HCC):poke64(49156d,&H99)
+   poke64(49154,&HCC):poke64(49155,&HCC):poke64(49156,&H99)
    jmp L931
 L846:'171
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&HCC):poke64(49156d,&HCC)
+   poke64(49154,&HCC):poke64(49155,&HCC):poke64(49156,&HCC)
    jmp L931
 L847:'172
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&HCC):poke64(49156d,&HFF)
+   poke64(49154,&HCC):poke64(49155,&HCC):poke64(49156,&HFF)
    jmp L931
 L848:'173
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&HFF):poke64(49156d,&H00)
+   poke64(49154,&HCC):poke64(49155,&HFF):poke64(49156,&H00)
    jmp L931
 L849:'174
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&HFF):poke64(49156d,&H33)
+   poke64(49154,&HCC):poke64(49155,&HFF):poke64(49156,&H33)
    jmp L931
 L850:'175
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&HFF):poke64(49156d,&H66)
+   poke64(49154,&HCC):poke64(49155,&HFF):poke64(49156,&H66)
    jmp L931
 L851:'176
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&HFF):poke64(49156d,&H99)
+   poke64(49154,&HCC):poke64(49155,&HFF):poke64(49156,&H99)
    jmp L931
 L852:'177
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&HFF):poke64(49156d,&HCC)
+   poke64(49154,&HCC):poke64(49155,&HFF):poke64(49156,&HCC)
    jmp L931
 L853:'178
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&HFF):poke64(49156d,&HFF)
+   poke64(49154,&HCC):poke64(49155,&HFF):poke64(49156,&HFF)
    jmp L931
 L854:'179
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H00):poke64(49156d,&H00)
+   poke64(49154,&HFF):poke64(49155,&H00):poke64(49156,&H00)
    jmp L931
 L855:'180
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H00):poke64(49156d,&H33)
+   poke64(49154,&HFF):poke64(49155,&H00):poke64(49156,&H33)
    jmp L931
 L856:'181
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H00):poke64(49156d,&H66)
+   poke64(49154,&HFF):poke64(49155,&H00):poke64(49156,&H66)
    jmp L931
 L857:'182
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H00):poke64(49156d,&H99)
+   poke64(49154,&HFF):poke64(49155,&H00):poke64(49156,&H99)
    jmp L931
 L858:'183
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H00):poke64(49156d,&HCC)
+   poke64(49154,&HFF):poke64(49155,&H00):poke64(49156,&HCC)
    jmp L931
 L859:'184
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H00):poke64(49156d,&HFF)
+   poke64(49154,&HFF):poke64(49155,&H00):poke64(49156,&HFF)
    jmp L931
 L860:'185
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H33):poke64(49156d,&H00)
+   poke64(49154,&HFF):poke64(49155,&H33):poke64(49156,&H00)
    jmp L931
 L861:'186
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H33):poke64(49156d,&H33)
+   poke64(49154,&HFF):poke64(49155,&H33):poke64(49156,&H33)
    jmp L931
 L862:'187
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H33):poke64(49156d,&H66)
+   poke64(49154,&HFF):poke64(49155,&H33):poke64(49156,&H66)
    jmp L931
 L863:'188
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H33):poke64(49156d,&H99)
+   poke64(49154,&HFF):poke64(49155,&H33):poke64(49156,&H99)
    jmp L931
 L864:'189
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H33):poke64(49156d,&HCC)
+   poke64(49154,&HFF):poke64(49155,&H33):poke64(49156,&HCC)
    jmp L931
 L865:'190
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H33):poke64(49156d,&HFF)
+   poke64(49154,&HFF):poke64(49155,&H33):poke64(49156,&HFF)
    jmp L931
 L866:'191
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H66):poke64(49156d,&H00)
+   poke64(49154,&HFF):poke64(49155,&H66):poke64(49156,&H00)
    jmp L931
 L867:'192
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H66):poke64(49156d,&H33)
+   poke64(49154,&HFF):poke64(49155,&H66):poke64(49156,&H33)
    jmp L931
 L868:'193
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H66):poke64(49156d,&H66)
+   poke64(49154,&HFF):poke64(49155,&H66):poke64(49156,&H66)
    jmp L931
 L869:'194
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H66):poke64(49156d,&H99)
+   poke64(49154,&HFF):poke64(49155,&H66):poke64(49156,&H99)
    jmp L931
 L870:'195
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H66):poke64(49156d,&HCC)
+   poke64(49154,&HFF):poke64(49155,&H66):poke64(49156,&HCC)
    jmp L931
 L871:'196
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H66):poke64(49156d,&HFF)
+   poke64(49154,&HFF):poke64(49155,&H66):poke64(49156,&HFF)
    jmp L931
 L872:'197
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H99):poke64(49156d,&H00)
+   poke64(49154,&HFF):poke64(49155,&H99):poke64(49156,&H00)
    jmp L931
 L873:'198
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H99):poke64(49156d,&H33)
+   poke64(49154,&HFF):poke64(49155,&H99):poke64(49156,&H33)
    jmp L931
 L874:'199
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H99):poke64(49156d,&H66)
+   poke64(49154,&HFF):poke64(49155,&H99):poke64(49156,&H66)
    jmp L931
 L875:'200
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H99):poke64(49156d,&H99)
+   poke64(49154,&HFF):poke64(49155,&H99):poke64(49156,&H99)
    jmp L931
 L876:'201
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H99):poke64(49156d,&HCC)
+   poke64(49154,&HFF):poke64(49155,&H99):poke64(49156,&HCC)
    jmp L931
 L877:'202
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H99):poke64(49156d,&HFF)
+   poke64(49154,&HFF):poke64(49155,&H99):poke64(49156,&HFF)
    jmp L931
 L878:'203
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&HCC):poke64(49156d,&H00)
+   poke64(49154,&HFF):poke64(49155,&HCC):poke64(49156,&H00)
    jmp L931
 L879:'204
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&HCC):poke64(49156d,&H33)
+   poke64(49154,&HFF):poke64(49155,&HCC):poke64(49156,&H33)
    jmp L931
 L880:'205
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&HCC):poke64(49156d,&H66)
+   poke64(49154,&HFF):poke64(49155,&HCC):poke64(49156,&H66)
    jmp L931
 L881:'206
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&HCC):poke64(49156d,&H99)
+   poke64(49154,&HFF):poke64(49155,&HCC):poke64(49156,&H99)
    jmp L931
 L882:'207
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&HCC):poke64(49156d,&HCC)
+   poke64(49154,&HFF):poke64(49155,&HCC):poke64(49156,&HCC)
    jmp L931
 L883:'208
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&HCC):poke64(49156d,&HFF)
+   poke64(49154,&HFF):poke64(49155,&HCC):poke64(49156,&HFF)
    jmp L931
 L884:'209
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&HFF):poke64(49156d,&H00)
+   poke64(49154,&HFF):poke64(49155,&HFF):poke64(49156,&H00)
    jmp L931
 L885:'210
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&HFF):poke64(49156d,&H33)
+   poke64(49154,&HFF):poke64(49155,&HFF):poke64(49156,&H33)
    jmp L931
 L886:'211
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&HFF):poke64(49156d,&H66)
+   poke64(49154,&HFF):poke64(49155,&HFF):poke64(49156,&H66)
    jmp L931
 L887:'212
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&HFF):poke64(49156d,&H99)
+   poke64(49154,&HFF):poke64(49155,&HFF):poke64(49156,&H99)
    jmp L931
 L888:'213
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&HFF):poke64(49156d,&HCC)
+   poke64(49154,&HFF):poke64(49155,&HFF):poke64(49156,&HCC)
    jmp L931
 L889:'214
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&HFF):poke64(49156d,&HFF)
+   poke64(49154,&HFF):poke64(49155,&HFF):poke64(49156,&HFF)
    jmp L931
 L890:'215
 '         Red                 Green               Blue
-   poke64(49154d,&HE0):poke64(49155d,&HE0):poke64(49156d,&HE0)
+   poke64(49154,&HE0):poke64(49155,&HE0):poke64(49156,&HE0)
    jmp L931
 L891:'216
 '         Red                 Green               Blue
-   poke64(49154d,&HC1):poke64(49155d,&HC1):poke64(49156d,&HC1)
+   poke64(49154,&HC1):poke64(49155,&HC1):poke64(49156,&HC1)
    jmp L931
 L892:'217
 '         Red                 Green               Blue
-   poke64(49154d,&HA2):poke64(49155d,&HA2):poke64(49156d,&HA2)
+   poke64(49154,&HA2):poke64(49155,&HA2):poke64(49156,&HA2)
    jmp L931
 L893:'218
 '         Red                 Green               Blue
-   poke64(49154d,&H83):poke64(49155d,&H83):poke64(49156d,&H83)
+   poke64(49154,&H83):poke64(49155,&H83):poke64(49156,&H83)
    jmp L931
 L894:'219
 '         Red                 Green               Blue
-   poke64(49154d,&H64):poke64(49155d,&H64):poke64(49156d,&H64)
+   poke64(49154,&H64):poke64(49155,&H64):poke64(49156,&H64)
    jmp L931
 L895:'220
 '         Red                 Green               Blue
-   poke64(49154d,&H45):poke64(49155d,&H45):poke64(49156d,&H45)
+   poke64(49154,&H45):poke64(49155,&H45):poke64(49156,&H45)
    jmp L931
 L896:'221
 '         Red                 Green               Blue
-   poke64(49154d,&H26):poke64(49155d,&H26):poke64(49156d,&H26)
+   poke64(49154,&H26):poke64(49155,&H26):poke64(49156,&H26)
    jmp L931
 L897:'222
 '         Red                 Green               Blue
-   poke64(49154d,&H07):poke64(49155d,&H07):poke64(49156d,&H07)
+   poke64(49154,&H07):poke64(49155,&H07):poke64(49156,&H07)
    jmp L931
 L898:'223
 '         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H00):poke64(49156d,&H00)
+   poke64(49154,&H00):poke64(49155,&H00):poke64(49156,&H00)
    jmp L931
 L899:'224
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H00):poke64(49156d,&H00)
+   poke64(49154,&H33):poke64(49155,&H00):poke64(49156,&H00)
    jmp L931
 L900:'225
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H00):poke64(49156d,&H00)
+   poke64(49154,&H66):poke64(49155,&H00):poke64(49156,&H00)
    jmp L931
 L901:'226
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H00):poke64(49156d,&H00)
+   poke64(49154,&H99):poke64(49155,&H00):poke64(49156,&H00)
    jmp L931
 L902:'227
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H00):poke64(49156d,&H00)
+   poke64(49154,&HCC):poke64(49155,&H00):poke64(49156,&H00)
    jmp L931
 L903:'228
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H00):poke64(49156d,&H00)
+   poke64(49154,&HFF):poke64(49155,&H00):poke64(49156,&H00)
    jmp L931
 L904:'229
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H33):poke64(49156d,&H00)
+   poke64(49154,&HCC):poke64(49155,&H33):poke64(49156,&H00)
    jmp L931
 L905:'230
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H66):poke64(49156d,&H00)
+   poke64(49154,&H99):poke64(49155,&H66):poke64(49156,&H00)
    jmp L931
 L906:'231
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H99):poke64(49156d,&H00)
+   poke64(49154,&H66):poke64(49155,&H99):poke64(49156,&H00)
    jmp L931
 L907:'232
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&HCC):poke64(49156d,&H00)
+   poke64(49154,&H33):poke64(49155,&HCC):poke64(49156,&H00)
    jmp L931
 L908:'233
 '         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&H00)
+   poke64(49154,&H00):poke64(49155,&HFF):poke64(49156,&H00)
    jmp L931
 L909:'234
 '         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HCC):poke64(49156d,&H33)
+   poke64(49154,&H00):poke64(49155,&HCC):poke64(49156,&H33)
    jmp L931
 L910:'235
 '         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H99):poke64(49156d,&H66)
+   poke64(49154,&H00):poke64(49155,&H99):poke64(49156,&H66)
    jmp L931
 L911:'236
 '         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H66):poke64(49156d,&H99)
+   poke64(49154,&H00):poke64(49155,&H66):poke64(49156,&H99)
    jmp L931
 L912:'237
 '         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H33):poke64(49156d,&HCC)
+   poke64(49154,&H00):poke64(49155,&H33):poke64(49156,&HCC)
    jmp L931
 L913:'238
 '         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&H00):poke64(49156d,&HFF)
+   poke64(49154,&H00):poke64(49155,&H00):poke64(49156,&HFF)
    jmp L931
 L914:'239
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&H00):poke64(49156d,&HCC)
+   poke64(49154,&H33):poke64(49155,&H00):poke64(49156,&HCC)
    jmp L931
 L915:'240
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H00):poke64(49156d,&H99)
+   poke64(49154,&H66):poke64(49155,&H00):poke64(49156,&H99)
    jmp L931
 L916:'241
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H00):poke64(49156d,&H66)
+   poke64(49154,&H99):poke64(49155,&H00):poke64(49156,&H66)
    jmp L931
 L917:'242
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H00):poke64(49156d,&H33)
+   poke64(49154,&HCC):poke64(49155,&H00):poke64(49156,&H33)
    jmp L931
 L918:'243
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&H00):poke64(49156d,&H00)
+   poke64(49154,&HFF):poke64(49155,&H00):poke64(49156,&H00)
    jmp L931
 L919:'244:
 '         Red                 Green               Blue
-   poke64(49154d,&HCC):poke64(49155d,&H33):poke64(49156d,&H00)
+   poke64(49154,&HCC):poke64(49155,&H33):poke64(49156,&H00)
    jmp L931
 L920:'245
 '         Red                 Green               Blue
-   poke64(49154d,&H99):poke64(49155d,&H66):poke64(49156d,&H00)
+   poke64(49154,&H99):poke64(49155,&H66):poke64(49156,&H00)
    jmp L931
 L921:'246
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&H99):poke64(49156d,&H00)
+   poke64(49154,&H66):poke64(49155,&H99):poke64(49156,&H00)
    jmp L931
 L922:'247
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&HCC):poke64(49156d,&H00)
+   poke64(49154,&H33):poke64(49155,&HCC):poke64(49156,&H00)
    jmp L931
 'Monochrome Terminal Colors:   
 L923:'248
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&HBB):poke64(49156d,&H00)
+   poke64(49154,&HFF):poke64(49155,&HBB):poke64(49156,&H00)
    jmp L931
 L924:'249
 '         Red                 Green               Blue
-   poke64(49154d,&HFF):poke64(49155d,&HCC):poke64(49156d,&H00)
+   poke64(49154,&HFF):poke64(49155,&HCC):poke64(49156,&H00)
    jmp L931
 L925:'250
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&HFF):poke64(49156d,&H00)
+   poke64(49154,&H33):poke64(49155,&HFF):poke64(49156,&H00)
    jmp L931
 L926:'251
 '         Red                 Green               Blue
-   poke64(49154d,&H33):poke64(49155d,&HFF):poke64(49156d,&H33)
+   poke64(49154,&H33):poke64(49155,&HFF):poke64(49156,&H33)
    jmp L931
 L927:'252
 '         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&H33)
+   poke64(49154,&H00):poke64(49155,&HFF):poke64(49156,&H33)
    jmp L931
 L928:'253
 '         Red                 Green               Blue
-   poke64(49154d,&H66):poke64(49155d,&HFF):poke64(49156d,&H66)
+   poke64(49154,&H66):poke64(49155,&HFF):poke64(49156,&H66)
    jmp L931
 L929:'254
 '         Red                 Green               Blue
-   poke64(49154d,&H00):poke64(49155d,&HFF):poke64(49156d,&H66)
+   poke64(49154,&H00):poke64(49155,&HFF):poke64(49156,&H66)
    jmp L931
 L930:'255
 '         Red                 Green               Blue
-   poke64(49154d,&H28):poke64(49155d,&H28):poke64(49156d,&H28)
+   poke64(49154,&H28):poke64(49155,&H28):poke64(49156,&H28)
    jmp L931

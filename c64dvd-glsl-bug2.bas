@@ -365,46 +365,46 @@ end type
 constructor C64_T
   dim as integer i,c
   ' initialize nibbles, bytes, and words.
-  poke @nibbles(&B0000),&B0000
-  poke @nibbles(&B0001),&B0001
-  poke @nibbles(&B0101),&B0101
-  poke @nibbles(&B1000),&B1000  
-  poke @i,peek(@nibbles(&B0000))
+  poke N0000,&B0000
+  poke N0001,&B0001
+  poke N0101,&B0101
+  poke N1000,&B1000  
+  poke @i,peek(N0000)
 L0A:  
-  poke @nibbles(peek(@i)),peek(@i): mov(i add,                                         peek(@nibbles(&B0001)))
-  locate peek(@nibbles(&B0001)),peek(@nibbles(&B0001)): print "NIBBLES: ";iif(peek(@i)<peek(@nibbles(&B1000)) shl peek(@nibbles(&B0001)),peek(@i),peek(@i) subt peek(@nibbles(&B0001)))
-  cmp peek(@i) ls                                                                      peek(@nibbles(&B1000)) shl peek(@nibbles(&B0001)) jmp L0A
-  poke @i,peek(@nibbles(&B0000))
+  poke @nibbles(peek(@i)),peek(@i): mov(i add,                                         peek(N0001))
+  locate peek(N0001),peek(N0001): print "NIBBLES: ";iif(peek(@i)<peek(N1000) shl peek(N0001),peek(@i),peek(@i) subt peek(N0001))
+  cmp peek(@i) ls                                                                      peek(N1000) shl peek(N0001) jmp L0A
+  poke @i,peek(N0000)
 L0B:
-  mov(bytes(i),i): mov(i add,                                       peek(@nibbles(&B0001)))
-  locate 2,1: print "BYTES:   ";   iif(i<peek(@nibbles(&B1000)) shl peek(@nibbles(&B0101)),i,i subt peek(@nibbles(&B0001)))
-  cmp i ls                               peek(@nibbles(&B1000)) shl peek(@nibbles(&B0101)) jmp L0B
+  mov(bytes(i),i): mov(i add,                                       peek(N0001))
+  locate 2,1: print "BYTES:   ";   iif(i<peek(N1000) shl peek(N0101),i,i subt peek(N0001))
+  cmp i ls                               peek(N1000) shl peek(N0101) jmp L0B
   mov(i,      nibbles(&B0000))
 L0C:
-  mov(xwords(i),i): mov(i add,                                      peek(@nibbles(&B0001)))
-  locate 3,1: print "WORDS:   ";   iif(i<peek(@nibbles(&B1111)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B1111)) shl peek(@nibbles(&B1000)) add peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1111)),i,i subt peek(@nibbles(&B0001)))
-  cmp i ls                               peek(@nibbles(&B1111)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B1111)) shl peek(@nibbles(&B1000)) add peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1111)) jmp L0C 
+  mov(xwords(i),i): mov(i add,                                      peek(N0001))
+  locate 3,1: print "WORDS:   ";   iif(i<peek(N1111) shl peek(N1100) add peek(N1111) shl peek(N1000) add peek(N1111) shl peek(N0100) add peek(N1111),i,i subt peek(N0001))
+  cmp i ls                               peek(N1111) shl peek(N1100) add peek(N1111) shl peek(N1000) add peek(N1111) shl peek(N0100) add peek(N1111) jmp L0C 
   dprint("C64_T()")  
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
   'ScreenRes 1920d,1080d, 32d, 0d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
   'ScreenRes xwords(&B0000011110000000),xwords(&B0000010000111000),bytes(&B00100000),bytes(&B00000000),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
-  ScreenRes                                                       peek(@nibbles(&B1111)) shl peek(@nibbles(&B0111)),peek(@nibbles(&B0100)) shl peek(@nibbles(&B1000)) add peek(@nibbles(&B0011)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1000)),peek(@nibbles(&B0010)) shl peek(@nibbles(&B0100)),peek(@nibbles(&B0000)),GFX_ALPHA_PRIMITIVES: Cls
+  ScreenRes                                                       peek(N1111) shl peek(N0111),peek(N0100) shl peek(N1000) add peek(N0011) shl peek(N0100) add peek(N1000),peek(N0010) shl peek(N0100),peek(N0000),GFX_ALPHA_PRIMITIVES: Cls
 #elseif defined(__FB_DOS__)
-  ScreenRes peek(@nibbles(&B0011)) shl peek(@nibbles(&B1000)) add peek(@nibbles(&B0010)) shl peek(@nibbles(&B0100)),peek(@nibbles(&B0010)) shl peek(@nibbles(&B1000)) add peek(@nibbles(&B0101)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1000)),peek(@nibbles(&B0010)) shl peek(@nibbles(&B0100)),peek(@nibbles(&B0000)),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
+  ScreenRes peek(N0011) shl peek(N1000) add peek(N0010) shl peek(N0100),peek(N0010) shl peek(N1000) add peek(N0101) shl peek(N0100) add peek(N1000),peek(N0010) shl peek(N0100),peek(N0000),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
 #endif
   ' get curent resolution
   screeninfo cast(uinteger,scr_w), cast(uinteger,scr_h), cast(uinteger,imgData), cast(uinteger,pitch)
-  mov(bgimage, ImageCreate(scr_w,scr_h,                       peek(@nibbles(&B0000)),peek(@nibbles(&B0010)) shl peek(@nibbles(&B0100))))
-  mov(fgimage, ImageCreate(scr_w,scr_h,                       peek(@nibbles(&B0000)),peek(@nibbles(&B0010)) shl peek(@nibbles(&B0100))))
-  mov(raster,  ImageCreate(scr_w,      peek(@nibbles(&B0001)),peek(@nibbles(&B0000)),peek(@nibbles(&B0010)) shl peek(@nibbles(&B0100))))
-  mov(render,  ImageCreate(scr_w,scr_h,                       peek(@nibbles(&B0000)),peek(@nibbles(&B0010)) shl peek(@nibbles(&B0100))))
-  poke @i,                                                                                                      peek(@nibbles(&B0000))  
+  mov(bgimage, ImageCreate(scr_w,scr_h,                       peek(N0000),peek(N0010) shl peek(N0100)))
+  mov(fgimage, ImageCreate(scr_w,scr_h,                       peek(N0000),peek(N0010) shl peek(N0100)))
+  mov(raster,  ImageCreate(scr_w,      peek(N0001),peek(N0000),peek(N0010) shl peek(N0100)))
+  mov(render,  ImageCreate(scr_w,scr_h,                       peek(N0000),peek(N0010) shl peek(N0100)))
+  poke @i,                                                                                                      peek(N0000)  
 L0:
   read c:palette  peek(@i),peek(@c)
-  mov(i add,      peek(@nibbles(&B0001)))
-  cmp peek(@i) lt peek(@nibbles(&B1111)) jmp L0
+  mov(i add,      peek(N0001))
+  cmp peek(@i) lt peek(N1111) jmp L0
   mov(mem, new MEMORY_T)
   mov(cpu, new CPU6510(mem))
 end constructor
@@ -417,71 +417,71 @@ destructor C64_T
   ImageDestroy(fgimage)
   ImageDestroy(raster)
   ImageDestroy(render)  
-  sleep peek(@nibbles(&B0011)) shl peek(@nibbles(&B1000)) add peek(@nibbles(&B1110)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1000))
+  sleep peek(N0011) shl peek(N1000) add peek(N1110) shl peek(N0100) add peek(N1000)
 end destructor
 
 constructor MEMORY_T
   'Set default system offset to $C000(49152)
-  poke @sys_offset,                 peek(@nibbles(&B1100)) shl peek(@nibbles(&B1100))
+  poke @sys_offset,                 peek(N1100) shl peek(N1100)
   ' initialize zero page and the stack
-  var mov(b,                        peek(@nibbles(&B0000))),   mov(index,    &B0000)
+  var mov(b,                        peek(N0000)),   mov(index,    &B0000)
 L1:  
   read b: poke @mem64(index),      	peek(@b)
-  mov( index add,                   peek(@nibbles(&B0001)))
-  cmp  @index ls                    peek(@nibbles(&B0001)) shl peek(@nibbles(&B1000)) add peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add    peek(@nibbles(&B1111)) jmp L1
-  poke @index,                      peek(@nibbles(&B0010)) shl peek(@nibbles(&B1000))
+  mov( index add,                   peek(N0001))
+  cmp  @index ls                    peek(N0001) shl peek(N1000) add peek(N1111) shl peek(N0100) add    peek(N1111) jmp L1
+  poke @index,                      peek(N0010) shl peek(N1000)
 L2:
-  poke @mem64(index),               peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1111))
-  mov( index add,                   peek(@nibbles(&B0001)))
-  cmp  @index ls                    peek(@nibbles(&B0011)) shl peek(@nibbles(&B1000)) add peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add    peek(@nibbles(&B1111)) jmp L2
+  poke @mem64(index),               peek(N1111) shl peek(N0100) add peek(N1111)
+  mov( index add,                   peek(N0001))
+  cmp  @index ls                    peek(N0011) shl peek(N1000) add peek(N1111) shl peek(N0100) add    peek(N1111) jmp L2
   ' initialize sine and cosine tables
-  poke @index,                      peek(@nibbles(&B0000))
+  poke @index,                      peek(N0000)
 L3:  
-  poke @SINTable(peek(@index)),SIN( peek(@index) mul M_PI div  peek(@nibbles(&B1011)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B0100)))  
-  poke @COSTable(peek(@index)),COS( peek(@index) mul M_PI div  peek(@nibbles(&B1011)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B0100)))  
-  mov( index add,                                              peek(@nibbles(&B0001)))
-  cmp  @index  ls                                              peek(@nibbles(&B0001)) shl peek(@nibbles(&B1000)) add peek(@nibbles(&B0110)) shl    peek(@nibbles(&B0100)) add peek(@nibbles(&B0111)) jmp L3
+  poke @SINTable(peek(@index)),SIN( peek(@index) mul M_PI div  peek(N1011) shl peek(N0100) add peek(N0100))  
+  poke @COSTable(peek(@index)),COS( peek(@index) mul M_PI div  peek(N1011) shl peek(N0100) add peek(N0100))  
+  mov( index add,                                              peek(N0001))
+  cmp  @index  ls                                              peek(N0001) shl peek(N1000) add peek(N0110) shl    peek(N0100) add peek(N0111) jmp L3
   ' Set text color
   '      Red=($C002/49154)
-  poke64(peek(@nibbles(&B1100)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B0010)),    peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add    peek(@nibbles(&B1111))) 
+  poke64(peek(N1100) shl peek(N1100) add peek(N0010),    peek(N1111) shl peek(N0100) add    peek(N1111)) 
   '      Green=($C003/49155)
-  poke64(peek(@nibbles(&B1100)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B0011)),    peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add    peek(@nibbles(&B1111))) 
+  poke64(peek(N1100) shl peek(N1100) add peek(N0011),    peek(N1111) shl peek(N0100) add    peek(N1111)) 
   '      Blue=($C004/49156)
-  poke64(peek(@nibbles(&B1100)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B0100)),    peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add    peek(@nibbles(&B1111))) 
+  poke64(peek(N1100) shl peek(N1100) add peek(N0100),    peek(N1111) shl peek(N0100) add    peek(N1111)) 
   '      Alpha=($C005/49157)
-  poke64(peek(@nibbles(&B1100)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B0101)),    peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add    peek(@nibbles(&B1111))) 
+  poke64(peek(N1100) shl peek(N1100) add peek(N0101),    peek(N1111) shl peek(N0100) add    peek(N1111)) 
   '      Background Color(Alpha)=($C009/49161)
-  poke64(peek(@nibbles(&B1100)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B1001)),    peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add    peek(@nibbles(&B1111))) 
+  poke64(peek(N1100) shl peek(N1100) add peek(N1001),    peek(N1111) shl peek(N0100) add    peek(N1111)) 
   '      Border Color(Alpha)=($C130/49456)
-  poke64(peek(@nibbles(&B1100)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B0100)) shl peek(@nibbles(&B0110)) add peek(@nibbles(&B1100)) shl    peek(@nibbles(&B0010)),    peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1111))) 
+  poke64(peek(N1100) shl peek(N1100) add peek(N0100) shl peek(N0110) add peek(N1100) shl    peek(N0010),    peek(N1111) shl peek(N0100) add peek(N1111)) 
   ' Address 648 ($288) holds a "pointer" (or more precisely, half a pointer) that tells 
   ' KERNAL where in RAM the text screen is currently located: The contents of address 648 is
   ' the most significant 8 bits, or the "high-byte", of the text screen's physical start address.
-  poke64(peek(@nibbles(&B0010)) shl peek(@nibbles(&B1000)) add peek(@nibbles(&B1000)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1000)),       peek(@nibbles(&B0100)))  
+  poke64(peek(N0010) shl peek(N1000) add peek(N1000) shl peek(N0100) add peek(N1000),       peek(N0100))  
   ' Address 53272 ($D018) is a VIC-II register that generally tells the graphics chip where to "look for graphics", 
   ' in conjunction with both the text screen and with bitmap graphics. 
-  poke64(peek(@nibbles(&B1101)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B0001)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1000)),       peek(@nibbles(&B0001)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1111)))
+  poke64(peek(N1101) shl peek(N1100) add peek(N0001) shl peek(N0100) add peek(N1000),       peek(N0001) shl peek(N0100) add peek(N1111))
 '        font_f(Flip font)=($C0E7/49383) 
-  poke64(peek(@nibbles(&B1100)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B1110)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B0111)),       peek(@nibbles(&B0000)))
+  poke64(peek(N1100) shl peek(N1100) add peek(N1110) shl peek(N0100) add peek(N0111),       peek(N0000))
 '        font_o(Font offset)=($C0E8/49384)    
-  poke64(peek(@nibbles(&B1100)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B1110)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1000)),       peek(@nibbles(&B0010)))
+  poke64(peek(N1100) shl peek(N1100) add peek(N1110) shl peek(N0100) add peek(N1000),       peek(N0010))
 '        font_w(Font width)=($C0E9/49385)
-  poke64(peek(@nibbles(&B1100)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B1110)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1001)),       peek(@nibbles(&B0111))) 
+  poke64(peek(N1100) shl peek(N1100) add peek(N1110) shl peek(N0100) add peek(N1001),       peek(N0111)) 
 '        font_h(Font height)=($C0EA/49386)
-  poke64(peek(@nibbles(&B1100)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B1110)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1010)),       peek(@nibbles(&B0111)))
-  poke @index,                      peek(@nibbles(&B0000))
+  poke64(peek(N1100) shl peek(N1100) add peek(N1110) shl peek(N0100) add peek(N1010),       peek(N0111))
+  poke @index,                      peek(N0000)
   dim as ubyte tmp
   ' init all ROM's
   open "64c.251913-01.bin" for binary as #1
 L4:  
   get #1,,tmp: mov(basic(index), tmp)
-  mov(  index add,                  peek(@nibbles(&B0001)))
-  cmp   index ls                    peek(@nibbles(&B0001)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B1111)) shl peek(@nibbles(&B1000)) add    peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1111)) jmp L4
-  poke @index,                      peek(@nibbles(&B0000))
+  mov(  index add,                  peek(N0001))
+  cmp   index ls                    peek(N0001) shl peek(N1100) add peek(N1111) shl peek(N1000) add    peek(N1111) shl peek(N0100) add peek(N1111) jmp L4
+  poke @index,                      peek(N0000)
 L5: 
   get #1,,tmp: mov(kernal(index), tmp)
-  mov(  index add,                  peek(@nibbles(&B0001)))  
-  cmp   index ls                    peek(@nibbles(&B0001))  shl peek(@nibbles(&B1100)) add peek(@nibbles(&B1111)) shl peek(@nibbles(&B1000)) add    peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1111)) jmp L5
+  mov(  index add,                  peek(N0001))  
+  cmp   index ls                    peek(N0001)  shl peek(N1100) add peek(N1111) shl peek(N1000) add    peek(N1111) shl peek(N0100) add peek(N1111) jmp L5
   close #1
   'for b as integer = 617 to 641
   /'
@@ -494,19 +494,19 @@ L5:
   close #1
   '/
   open "./chargen/2.c64" for binary as #1
-  poke  @index,                     peek(@nibbles(&B0000))
+  poke  @index,                     peek(N0000)
 L6:  
   get #1,,tmp: mov(char(index), tmp)
-  mov(  index add,                  peek(@nibbles(&B0001)))
-  cmp   index ls                    peek(@nibbles(&B0001)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B1111)) shl peek(@nibbles(&B1000)) add     peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1111)) jmp L6
+  mov(  index add,                  peek(N0001))
+  cmp   index ls                    peek(N0001) shl peek(N1100) add peek(N1111) shl peek(N1000) add     peek(N1111) shl peek(N0100) add peek(N1111) jmp L6
   'close #1
   'open "./chargen/2.c64" for binary as #1
-  seek #1,                          peek(@nibbles(&B0000))
-  mov(  index,                      peek(@nibbles(&B0010)) shl peek(@nibbles(&B1100)))
+  seek #1,                          peek(N0000)
+  mov(  index,                      peek(N0010) shl peek(N1100))
 L7:  
   get #1,,tmp: mov(char(index), tmp)
-  mov(index add,                    peek(@nibbles(&B0001)))
-  cmp index ls                      peek(@nibbles(&B0011)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B1111)) shl peek(@nibbles(&B1000)) add     peek(@nibbles(&B1111)) shl peek(@nibbles(&B0100)) add peek(@nibbles(&B1111)) jmp L7
+  mov(index add,                    peek(N0001))
+  cmp index ls                      peek(N0011) shl peek(N1100) add peek(N1111) shl peek(N1000) add     peek(N1111) shl peek(N0100) add peek(N1111) jmp L7
   close #1
 /'
   restore CHAR_ROM
@@ -531,12 +531,12 @@ L7:
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)     
   'Sets top of system memory
   '      $0000(000000)                                         $0001(00001)  
-  poke64(peek(@nibbles(&B0000)),1.797693134862316e+308):poke64(peek(@nibbles(&B0001)),1.797693134862316e+308)
+  poke64(peek(N0000),1.797693134862316e+308):poke64(peek(N0001),1.797693134862316e+308)
   'Sets reset vector to top of system memory
   '      $FFFC(65532)
-  poke64(peek(@nibbles(&B1111)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B1111)) shl peek(@nibbles(&B1000)) add peek(@nibbles(&B1111)) shl     peek(@nibbles(&B0100)) add peek(@nibbles(&B1100)),1.797693134862316e+308)
+  poke64(peek(N1111) shl peek(N1100) add peek(N1111) shl peek(N1000) add peek(N1111) shl     peek(N0100) add peek(N1100),1.797693134862316e+308)
   '      $FFFD(65533)
-  poke64(peek(@nibbles(&B1111)) shl peek(@nibbles(&B1100)) add peek(@nibbles(&B1111)) shl peek(@nibbles(&B1000)) add peek(@nibbles(&B1111)) shl     peek(@nibbles(&B0100)) add peek(@nibbles(&B1101)),1.797693134862316e+308)
+  poke64(peek(N1111) shl peek(N1100) add peek(N1111) shl peek(N1000) add peek(N1111) shl     peek(N0100) add peek(N1101),1.797693134862316e+308)
 #elseif defined(__FB_DOS__)
   'Sets top of system memory
   '      $0000(000000)                           $0001(00001)

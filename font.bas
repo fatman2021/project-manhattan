@@ -1,38 +1,42 @@
-
+'  0F     0E     0D     0C     0B     0A     09     08     07     06     05     04     03     02     01     00   0F     0E     0D     0C     0B     0A     09     08     07     06     05     04     03     02     01     00   0F     0E     0D     0C     0B     0A     09     08     07     06     05     04     03     02     01     00   0F     0E     0D     0C     0B     0A     09     08     07     06     05     04     03     02     01     00
+'  15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00   15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00   15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00   15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00
+'1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000 1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000 1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000 1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000
+'   1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1    1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1    1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1    1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1        
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
-'                        scr_ptr
-      mov(adr subt,mem64(49451d))
-'                                                             font_o      
-      mov(c, v):mov(c shl, bytes(&B00000011)):mov(c add,mem64(49384d))
-      if mem64(RVS)<>      bytes(&B00000000) then mov(c and,        bytes(&B11111111))
-'              z0                                           z0      
-      if mem64(49357d) <   bytes(&B00000001) then mov(mem64(49357d),bytes(&B00000001))
-      poke64(49410d,       bytes(&B00000000)) 'Screen lock
-'                  font_f      
-      if mov(mem64(49383d),bytes(&B00000000)) then 
-      mov(xs,adr mod       bytes(&B00101000)):mov(xs shl,bytes(&B00000011)):mov(xs add,bytes(&B00000111) mul 3.5d)
-      mov(ys,adr idiv      bytes(&B00101000)):mov(ys shl,bytes(&B00000011)):mov(ys add,bytes(&B00000111) mul 3.5d)
-      mov(y,0d):mov(x,     bytes(&B00000000))
-'                                    font_h               font_w        
-      do until logic_and(mov(y,mem64(49386d)),mov(x,mem64(49385d)))
-'                   x0                                                    scro_x        
-          mov(mem64(49355d),(((xs add x) mul bytes(&B00000101)) add mem64(49379d)))
-'                   y0                                                    scro_y            
-          mov(mem64(49356d),(((ys add y) mul bytes(&B00000100)) add mem64(49380d)))
-'                   x1                                                                           scro_x          
-          mov(mem64(49358d),(((xs add x) mul bytes(&B00000101)) add bytes(&B00000111)) add mem64(49379d))
-'                   y1                                                                           scro_y          
-          mov(mem64(49359d),(((ys add y) mul bytes(&B00000100)) add bytes(&B00000100)) add mem64(49380d))
-          poke64(49404d,peek64(49404d)) 'Flag: Print Reverse Characters?0=No
-'                                    font_w	    
-        mov(x add,bytes(&B00000001)): if x gt mem64(49385d) then 
-                                         mov(x,    bytes(&B00000000)): mov(y add,bytes(&B00000001))
-                                         mov(c add,bytes(&B00000001))
+'                                                                scr_ptr=$C12B(49451)
+      poke double,@adr,peek(double,@adr) subt peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0001) shl peek(ubyte,N1000) add peek(ubyte,N0010) shl peek(ubyte,N0100) add peek(ubyte,N1011)))
+'                                                                          font_o(Font offset)=($C0E8/49384)      
+      mov(c, v):mov(c shl, peek(ubyte,N0011)):mov(c add,peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1000))))
+      if peek(double,@mem64(RVS)) ne peek(ubyte,N0000) then poke double,@c, peek(double,@c) and peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1111)
+'                           z0=$C0CD(49357)                                                                                                                                            z0=$C0CD(49357)      
+      if peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1101))) ls   peek(ubyte,N0001) then poke double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1101)),peek(ubyte,N0001)
+      poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0001) shl peek(ubyte,N1000) add peek(ubyte,N0010),peek(ubyte,N0000)) 'Screen lock
+'                           font_f(Flip font)=($C0E7/49383)       
+      if peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N0111))) eq peek(ubyte,N0000) then 
+      mov(xs,adr mod      (peek(ubyte,N0010) shl peek(ubyte,N0100) add peek(ubyte,N1000))):mov(xs shl,peek(ubyte,N0011)):mov(xs add,(((peek(ubyte,N0111) shl peek(ubyte,N0001)) add peek(ubyte,N0111)) add 3.5d))
+      mov(ys,adr idiv     (peek(ubyte,N0010) shl peek(ubyte,N0100) add peek(ubyte,N1000))):mov(ys shl,peek(ubyte,N0011)):mov(ys add,(((peek(ubyte,N0111) shl peek(ubyte,N0001)) add peek(ubyte,N0111)) add 3.5d))
+      mov(y,0d):mov(x,     peek(ubyte,N0000))
+'                                    font_h(Font height)=($C0EA/49386)                                                                                                                  font_w(Font width)=($C0E9/49385        
+      do until logic_and(mov(y,peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1010)))),mov(x,peek(double,@mem64(peek(ubyte,N1100)   shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1001)))))
+'                   x0=$C0CB(49355)                                                                                                                                                       scro_x=($C0E3/49379)        
+          mov(mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1011)),(((xs add x) mul peek(ubyte,N0101)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N0011)))))
+'                   y0=$C0CC(49356)                                                                                                                                                       scro_y=($C0E4/49380)
+          mov(mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1100)),(((ys add y) shl peek(ubyte,N0010)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N0100)))))
+'                   x1=$C0CE(49358)                                                                                                                                                                              scro_x=($C0E3/49379)          
+          mov(mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1110)),(((xs add x) mul peek(ubyte,N0101)) add peek(ubyte,N0111)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N0011))))
+'                   y1=$C0CF(49359(                                                                                                                                                                              scro_y=($C0E4/49380)      
+          mov(mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1100) shl peek(ubyte,N0100) add peek(ubyte,N1111)),(((ys add y) shl peek(ubyte,N0010)) add peek(ubyte,N0100)) add peek(double,@mem64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N0100))))
+          'Flag: Print Reverse Characters?0=No ($C0FC/49404)
+          poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1100),peek64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1111) shl peek(ubyte,N0100) add peek(ubyte,N1100)))
+'                                                  font_w(Font width)=($C0E9/49385	    
+        mov(x add,peek(ubyte,N0001)): if x gt peek(double,@mem64(peek(ubyte,N1100)   shl peek(ubyte,N1100) add peek(ubyte,N1110) shl peek(ubyte,N0100) add peek(ubyte,N1001))) then 
+                                         mov(x,    peek(ubyte,N0000)): mov(y add,peek(ubyte,N0001))
+                                         mov(c add,peek(ubyte,N0001))
                                       end if
       loop
-      poke64(49412d,bytes(&B00000000)) 'Screen Unlock
+      poke64(peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N0001) shl peek(ubyte,N1000) add peek(ubyte,N0100),peek(ubyte,N0000)) 'Screen Unlock
 '                      font_f      
       elseif mov(mem64(49383d), &B00000001) then
       mov(xs,adr mod            &B00101000):mov(xs shl, &B00000011):mov(xs add,&B00001000 mul &B00000100)
