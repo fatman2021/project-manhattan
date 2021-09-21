@@ -1,5 +1,5 @@
     'Compile, execute GLSL/OS, keyword database($C0A1/49313)
-	case peek(ubyte,N1100) shl peek(ubyte,N1100) add peek(ubyte,N1010) shl peek(ubyte,N0100) add peek(ubyte,N0001)
+	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001))
          select case as const cast(ulongint, v)	
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _

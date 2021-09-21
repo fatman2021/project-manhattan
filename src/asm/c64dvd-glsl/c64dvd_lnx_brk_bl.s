@@ -1,5230 +1,5230 @@
-  44e26d:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e273:	e8 d8 70 fb ff       	call   405350 <nearbyint@plt>
-  44e278:	66 49 0f 7e c4       	movq   r12,xmm0
-  44e27d:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44e282:	f2 0f 58 05 c6 5b 02 	addsd  xmm0,QWORD PTR [rip+0x25bc6]        # 473e50 <_IO_stdin_used+0x4e50>
-  44e289:	00 
-  44e28a:	e8 c1 70 fb ff       	call   405350 <nearbyint@plt>
-  44e28f:	f2 0f 10 5c 24 10    	movsd  xmm3,QWORD PTR [rsp+0x10]
-  44e295:	f2 0f 10 4c 24 08    	movsd  xmm1,QWORD PTR [rsp+0x8]
-;	pokew mem64(49425), peekw(mem64(49432)) 
-  44e29b:	48 89 ef             	mov    rdi,rbp
-;	   mem64(49432) = mem64(mem64(49418) + 6) shl 32 + mem64(mem64(49418) + 7) shl 24 + mem64(mem64(49418) + 8) shl 16 +_ 
-  44e29e:	66 49 0f 6e ed       	movq   xmm5,r13
-  44e2a3:	66 49 0f 6e f4       	movq   xmm6,r12
-  44e2a8:	66 0f 28 e0          	movapd xmm4,xmm0
-  44e2ac:	f2 48 0f 2c c3       	cvttsd2si rax,xmm3
-  44e2b1:	66 0f ef c0          	pxor   xmm0,xmm0
-  44e2b5:	f2 48 0f 2c d1       	cvttsd2si rdx,xmm1
-  44e2ba:	66 48 0f 6e cb       	movq   xmm1,rbx
-  44e2bf:	f2 0f 58 0d 81 4f 02 	addsd  xmm1,QWORD PTR [rip+0x24f81]        # 473248 <_IO_stdin_used+0x4248>
-  44e2c6:	00 
-  44e2c7:	48 c1 e0 20          	shl    rax,0x20
-  44e2cb:	48 c1 e2 18          	shl    rdx,0x18
-  44e2cf:	48 01 d0             	add    rax,rdx
-  44e2d2:	f2 48 0f 2c d5       	cvttsd2si rdx,xmm5
-  44e2d7:	48 c1 e2 10          	shl    rdx,0x10
-  44e2db:	48 01 d0             	add    rax,rdx
-  44e2de:	f2 48 0f 2c d6       	cvttsd2si rdx,xmm6
-  44e2e3:	48 c1 e2 08          	shl    rdx,0x8
-  44e2e7:	48 01 d0             	add    rax,rdx
-  44e2ea:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44e2ef:	f2 48 0f 2c c4       	cvttsd2si rax,xmm4
-  44e2f4:	f2 0f 58 44 c5 00    	addsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e2fa:	f2 0f 11 8d 50 08 06 	movsd  QWORD PTR [rbp+0x60850],xmm1
-  44e301:	00 
-  44e302:	f2 0f 11 85 c0 08 06 	movsd  QWORD PTR [rbp+0x608c0],xmm0
-  44e309:	00 
-;	pokew mem64(49425), peekw(mem64(49432)) 
-  44e30a:	e8 b1 ac fb ff       	call   408fc0 <MEMORY_T::PEEKW(double)>
-  44e30f:	f2 0f 10 54 24 18    	movsd  xmm2,QWORD PTR [rsp+0x18]
-  44e315:	48 8b 44 24 48       	mov    rax,QWORD PTR [rsp+0x48]
-  44e31a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  44e321:	00 00 
-  44e323:	66 0f 28 c8          	movapd xmm1,xmm0
-  44e327:	0f 84 c6 07 00 00    	je     44eaf3 <MEMORY_T::POKEB(double, double)+0x2773>
+  40f887:	48 c1 e0 18          	shl    rax,0x18
+  40f88b:	48 01 c2             	add    rdx,rax
+  40f88e:	f2 48 0f 2c c1       	cvttsd2si rax,xmm1
+  40f893:	48 c1 e0 10          	shl    rax,0x10
+  40f897:	48 01 c2             	add    rdx,rax
+  40f89a:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  40f89f:	66 0f ef c0          	pxor   xmm0,xmm0
+  40f8a3:	48 c1 e0 08          	shl    rax,0x8
+  40f8a7:	48 01 d0             	add    rax,rdx
+  40f8aa:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  40f8af:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40f8b4:	f2 0f 58 80 68 04 06 	addsd  xmm0,QWORD PTR [rax+0x60468]
+  40f8bb:	00 
+  40f8bc:	f2 0f 11 80 00 07 06 	movsd  QWORD PTR [rax+0x60700],xmm0
+  40f8c3:	00 
+;	case 49294d 'ld rot4
+  40f8c4:	e9 37 cb ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+  40f8c9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;	                   mem64(49298) shl 08d add mem64(49299))
+  40f8d0:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40f8d5:	f2 0f 10 80 78 04 06 	movsd  xmm0,QWORD PTR [rax+0x60478]
+  40f8dc:	00 
+  40f8dd:	e8 7e 5a ff ff       	call   405360 <nearbyint@plt>
+  40f8e2:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40f8e7:	66 49 0f 7e c4       	movq   r12,xmm0
+  40f8ec:	f2 0f 10 80 80 04 06 	movsd  xmm0,QWORD PTR [rax+0x60480]
+  40f8f3:	00 
+  40f8f4:	e8 67 5a ff ff       	call   405360 <nearbyint@plt>
+  40f8f9:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40f8fe:	66 48 0f 7e c5       	movq   rbp,xmm0
+  40f903:	f2 0f 10 80 88 04 06 	movsd  xmm0,QWORD PTR [rax+0x60488]
+  40f90a:	00 
+  40f90b:	e8 50 5a ff ff       	call   405360 <nearbyint@plt>
+  40f910:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40f915:	66 48 0f 7e c3       	movq   rbx,xmm0
+  40f91a:	f2 0f 10 80 90 04 06 	movsd  xmm0,QWORD PTR [rax+0x60490]
+  40f921:	00 
+  40f922:	e8 39 5a ff ff       	call   405360 <nearbyint@plt>
+  40f927:	66 49 0f 6e d4       	movq   xmm2,r12
+  40f92c:	66 48 0f 6e dd       	movq   xmm3,rbp
+  40f931:	66 48 0f 6e e3       	movq   xmm4,rbx
+  40f936:	f2 48 0f 2c c2       	cvttsd2si rax,xmm2
+  40f93b:	48 c1 e0 20          	shl    rax,0x20
+  40f93f:	48 89 c2             	mov    rdx,rax
+  40f942:	f2 48 0f 2c c3       	cvttsd2si rax,xmm3
+  40f947:	48 c1 e0 18          	shl    rax,0x18
+  40f94b:	48 01 c2             	add    rdx,rax
+  40f94e:	f2 48 0f 2c c4       	cvttsd2si rax,xmm4
+  40f953:	48 c1 e0 10          	shl    rax,0x10
+  40f957:	48 01 c2             	add    rdx,rax
+  40f95a:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  40f95f:	66 0f ef c0          	pxor   xmm0,xmm0
+  40f963:	48 c1 e0 08          	shl    rax,0x8
+  40f967:	48 01 d0             	add    rax,rdx
+  40f96a:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  40f96f:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40f974:	f2 0f 58 80 98 04 06 	addsd  xmm0,QWORD PTR [rax+0x60498]
+  40f97b:	00 
+  40f97c:	f2 0f 11 80 08 07 06 	movsd  QWORD PTR [rax+0x60708],xmm0
+  40f983:	00 
+;	case 49300d 'ld rot5
+  40f984:	e9 77 ca ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+  40f989:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;		case in range(peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)), peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))):poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111)),(((v subt peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))) mod (peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)))) mod (peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
+  40f990:	66 0f ef c0          	pxor   xmm0,xmm0
+  40f994:	f2 48 0f 2a 84 24 88 	cvtsi2sd xmm0,QWORD PTR [rsp+0x88]
+  40f99b:	00 00 00 
+  40f99e:	66 0f 2f 44 24 18    	comisd xmm0,QWORD PTR [rsp+0x18]
+  40f9a4:	0f 87 e0 26 00 00    	ja     41208a <MEMORY_T::POKE64(double, double)+0x87ba>
+  40f9aa:	0f b6 1d de 13 0a 00 	movzx  ebx,BYTE PTR [rip+0xa13de]        # 4b0d8f <NIBBLES$+0xf>
+  40f9b1:	66 0f ef c9          	pxor   xmm1,xmm1
+  40f9b5:	48 8b 84 24 88 00 00 	mov    rax,QWORD PTR [rsp+0x88]
+  40f9bc:	00 
+  40f9bd:	f2 0f 10 6c 24 18    	movsd  xmm5,QWORD PTR [rsp+0x18]
+  40f9c3:	48 01 d8             	add    rax,rbx
+  40f9c6:	f2 48 0f 2a c8       	cvtsi2sd xmm1,rax
+  40f9cb:	66 0f 2f e9          	comisd xmm5,xmm1
+  40f9cf:	0f 87 b5 26 00 00    	ja     41208a <MEMORY_T::POKE64(double, double)+0x87ba>
+  40f9d5:	66 0f 28 cd          	movapd xmm1,xmm5
+  40f9d9:	f2 0f 5c c8          	subsd  xmm1,xmm0
+  40f9dd:	66 0f 28 c1          	movapd xmm0,xmm1
+  40f9e1:	e8 7a 59 ff ff       	call   405360 <nearbyint@plt>
+  40f9e6:	89 e9                	mov    ecx,ebp
+  40f9e8:	48 89 d8             	mov    rax,rbx
+  40f9eb:	66 0f ef c9          	pxor   xmm1,xmm1
+  40f9ef:	f2 0f 10 9c 24 d0 00 	movsd  xmm3,QWORD PTR [rsp+0xd0]
+  40f9f6:	00 00 
+  40f9f8:	48 d3 e0             	shl    rax,cl
+  40f9fb:	48 8d 0c 18          	lea    rcx,[rax+rbx*1]
+  40f9ff:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  40fa04:	f2 0f 11 1c 24       	movsd  QWORD PTR [rsp],xmm3
+  40fa09:	66 0f 28 c3          	movapd xmm0,xmm3
+  40fa0d:	48 99                	cqo    
+  40fa0f:	48 f7 f9             	idiv   rcx
+  40fa12:	48 8b 44 24 50       	mov    rax,QWORD PTR [rsp+0x50]
+  40fa17:	4c 01 f0             	add    rax,r14
+  40fa1a:	48 0f af c2          	imul   rax,rdx
+  40fa1e:	48 99                	cqo    
+  40fa20:	48 f7 f9             	idiv   rcx
+  40fa23:	f2 48 0f 2a ca       	cvtsi2sd xmm1,rdx
+  40fa28:	f2 0f 11 4c 24 18    	movsd  QWORD PTR [rsp+0x18],xmm1
+;		case in range(peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)), peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))):poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)),(((v subt peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100))) mod (peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)))) mod (peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
+  40fa2e:	e9 d1 9e ff ff       	jmp    409904 <MEMORY_T::POKE64(double, double)+0x34>
+  40fa33:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;	                   mem64(49304) shl 08d add mem64(49305))
+  40fa38:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40fa3d:	f2 0f 10 80 a8 04 06 	movsd  xmm0,QWORD PTR [rax+0x604a8]
+  40fa44:	00 
+  40fa45:	e8 16 59 ff ff       	call   405360 <nearbyint@plt>
+  40fa4a:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40fa4f:	66 49 0f 7e c4       	movq   r12,xmm0
+  40fa54:	f2 0f 10 80 b0 04 06 	movsd  xmm0,QWORD PTR [rax+0x604b0]
+  40fa5b:	00 
+  40fa5c:	e8 ff 58 ff ff       	call   405360 <nearbyint@plt>
+  40fa61:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40fa66:	66 48 0f 7e c5       	movq   rbp,xmm0
+  40fa6b:	f2 0f 10 80 b8 04 06 	movsd  xmm0,QWORD PTR [rax+0x604b8]
+  40fa72:	00 
+  40fa73:	e8 e8 58 ff ff       	call   405360 <nearbyint@plt>
+  40fa78:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40fa7d:	66 48 0f 7e c3       	movq   rbx,xmm0
+  40fa82:	f2 0f 10 80 c0 04 06 	movsd  xmm0,QWORD PTR [rax+0x604c0]
+  40fa89:	00 
+  40fa8a:	e8 d1 58 ff ff       	call   405360 <nearbyint@plt>
+  40fa8f:	66 49 0f 6e ec       	movq   xmm5,r12
+  40fa94:	66 48 0f 6e f5       	movq   xmm6,rbp
+  40fa99:	66 48 0f 6e fb       	movq   xmm7,rbx
+  40fa9e:	f2 48 0f 2c c5       	cvttsd2si rax,xmm5
+  40faa3:	48 c1 e0 20          	shl    rax,0x20
+  40faa7:	48 89 c2             	mov    rdx,rax
+  40faaa:	f2 48 0f 2c c6       	cvttsd2si rax,xmm6
+  40faaf:	48 c1 e0 18          	shl    rax,0x18
+  40fab3:	48 01 c2             	add    rdx,rax
+  40fab6:	f2 48 0f 2c c7       	cvttsd2si rax,xmm7
+  40fabb:	48 c1 e0 10          	shl    rax,0x10
+  40fabf:	48 01 c2             	add    rdx,rax
+  40fac2:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  40fac7:	66 0f ef c0          	pxor   xmm0,xmm0
+  40facb:	48 c1 e0 08          	shl    rax,0x8
+  40facf:	48 01 d0             	add    rax,rdx
+  40fad2:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  40fad7:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40fadc:	f2 0f 58 80 c8 04 06 	addsd  xmm0,QWORD PTR [rax+0x604c8]
+  40fae3:	00 
+  40fae4:	f2 0f 11 80 10 07 06 	movsd  QWORD PTR [rax+0x60710],xmm0
+  40faeb:	00 
+;	case 49306d 'ld rot6
+  40faec:	e9 0f c9 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;	                   mem64(49310) shl 08d add mem64(49311))
+  40faf1:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40faf6:	f2 0f 10 80 d8 04 06 	movsd  xmm0,QWORD PTR [rax+0x604d8]
+  40fafd:	00 
+  40fafe:	e8 5d 58 ff ff       	call   405360 <nearbyint@plt>
+  40fb03:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40fb08:	66 49 0f 7e c4       	movq   r12,xmm0
+  40fb0d:	f2 0f 10 80 e0 04 06 	movsd  xmm0,QWORD PTR [rax+0x604e0]
+  40fb14:	00 
+  40fb15:	e8 46 58 ff ff       	call   405360 <nearbyint@plt>
+  40fb1a:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40fb1f:	66 48 0f 7e c5       	movq   rbp,xmm0
+  40fb24:	f2 0f 10 80 e8 04 06 	movsd  xmm0,QWORD PTR [rax+0x604e8]
+  40fb2b:	00 
+  40fb2c:	e8 2f 58 ff ff       	call   405360 <nearbyint@plt>
+  40fb31:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40fb36:	66 48 0f 7e c3       	movq   rbx,xmm0
+  40fb3b:	f2 0f 10 80 f0 04 06 	movsd  xmm0,QWORD PTR [rax+0x604f0]
+  40fb42:	00 
+  40fb43:	e8 18 58 ff ff       	call   405360 <nearbyint@plt>
+  40fb48:	66 49 0f 6e ec       	movq   xmm5,r12
+  40fb4d:	66 48 0f 6e f5       	movq   xmm6,rbp
+  40fb52:	66 48 0f 6e fb       	movq   xmm7,rbx
+  40fb57:	f2 48 0f 2c c5       	cvttsd2si rax,xmm5
+  40fb5c:	48 c1 e0 20          	shl    rax,0x20
+  40fb60:	48 89 c2             	mov    rdx,rax
+  40fb63:	f2 48 0f 2c c6       	cvttsd2si rax,xmm6
+  40fb68:	48 c1 e0 18          	shl    rax,0x18
+  40fb6c:	48 01 c2             	add    rdx,rax
+  40fb6f:	f2 48 0f 2c c7       	cvttsd2si rax,xmm7
+  40fb74:	48 c1 e0 10          	shl    rax,0x10
+  40fb78:	48 01 c2             	add    rdx,rax
+  40fb7b:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  40fb80:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fb84:	48 c1 e0 08          	shl    rax,0x8
+  40fb88:	48 01 d0             	add    rax,rdx
+  40fb8b:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  40fb90:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40fb95:	f2 0f 58 80 f8 04 06 	addsd  xmm0,QWORD PTR [rax+0x604f8]
+  40fb9c:	00 
+  40fb9d:	f2 0f 11 80 18 07 06 	movsd  QWORD PTR [rax+0x60718],xmm0
+  40fba4:	00 
+;  	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100))
+  40fba5:	e9 56 c8 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;	 (@glScreen)(mem64(49355),mem64(49356),,,true)
+  40fbaa:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40fbaf:	f2 0f 10 80 60 06 06 	movsd  xmm0,QWORD PTR [rax+0x60660]
+  40fbb6:	00 
+  40fbb7:	e8 a4 57 ff ff       	call   405360 <nearbyint@plt>
+  40fbbc:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  40fbc1:	66 48 0f 7e c3       	movq   rbx,xmm0
+  40fbc6:	f2 0f 10 80 58 06 06 	movsd  xmm0,QWORD PTR [rax+0x60658]
+  40fbcd:	00 
+  40fbce:	e8 8d 57 ff ff       	call   405360 <nearbyint@plt>
+  40fbd3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  40fbda:	00 
+  40fbdb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  40fbe2:	00 00 
+  40fbe4:	0f 85 3d a9 00 00    	jne    41a527 <MEMORY_T::POKE64(double, double)+0x10c57>
+  40fbea:	66 48 0f 6e d3       	movq   xmm2,rbx
+  40fbef:	f2 48 0f 2c f8       	cvttsd2si rdi,xmm0
 ;end def
-  44e32d:	e8 2e 75 fb ff       	call   405860 <__stack_chk_fail@plt>
-;    do until mov(tmp,mem64(49621))
-  44e332:	48 89 d0             	mov    rax,rdx
-  44e335:	48 89 d6             	mov    rsi,rdx
-  44e338:	66 0f ef c0          	pxor   xmm0,xmm0
-  44e33c:	48 d1 e8             	shr    rax,1
-  44e33f:	83 e6 01             	and    esi,0x1
-  44e342:	48 09 f0             	or     rax,rsi
-  44e345:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44e34a:	f2 0f 58 c0          	addsd  xmm0,xmm0
-  44e34e:	e9 17 fd ff ff       	jmp    44e06a <MEMORY_T::POKEB(double, double)+0x1cea>
-;     mov(tmp,(tmp add 1) mod mem64(49621))
-  44e353:	f2 0f 5c 05 25 51 02 	subsd  xmm0,QWORD PTR [rip+0x25125]        # 473480 <_IO_stdin_used+0x4480>
-  44e35a:	00 
-  44e35b:	f2 48 0f 2c c8       	cvttsd2si rcx,xmm0
-  44e360:	48 0f ba f9 3f       	btc    rcx,0x3f
-  44e365:	e9 e5 fc ff ff       	jmp    44e04f <MEMORY_T::POKEB(double, double)+0x1ccf>
-;	                  mem64(mem64(49418) add 5)) '                     pc	       
-  44e36a:	48 8b 9d 50 08 06 00 	mov    rbx,QWORD PTR [rbp+0x60850]
-  44e371:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44e376:	f2 0f 58 05 d2 4d 02 	addsd  xmm0,QWORD PTR [rip+0x24dd2]        # 473150 <_IO_stdin_used+0x4150>
-  44e37d:	00 
-  44e37e:	e8 cd 6f fb ff       	call   405350 <nearbyint@plt>
-  44e383:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e388:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e38e:	e8 bd 6f fb ff       	call   405350 <nearbyint@plt>
-  44e393:	f2 0f 11 44 24 10    	movsd  QWORD PTR [rsp+0x10],xmm0
-  44e399:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44e39e:	f2 0f 58 05 ba 58 02 	addsd  xmm0,QWORD PTR [rip+0x258ba]        # 473c60 <_IO_stdin_used+0x4c60>
-  44e3a5:	00 
-  44e3a6:	e8 a5 6f fb ff       	call   405350 <nearbyint@plt>
-  44e3ab:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e3b0:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e3b6:	e8 95 6f fb ff       	call   405350 <nearbyint@plt>
-  44e3bb:	f2 0f 11 44 24 08    	movsd  QWORD PTR [rsp+0x8],xmm0
-  44e3c1:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44e3c6:	f2 0f 58 05 12 59 02 	addsd  xmm0,QWORD PTR [rip+0x25912]        # 473ce0 <_IO_stdin_used+0x4ce0>
-  44e3cd:	00 
-  44e3ce:	e8 7d 6f fb ff       	call   405350 <nearbyint@plt>
-  44e3d3:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e3d8:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e3de:	e8 6d 6f fb ff       	call   405350 <nearbyint@plt>
-  44e3e3:	66 49 0f 7e c5       	movq   r13,xmm0
-  44e3e8:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44e3ed:	f2 0f 58 05 63 58 02 	addsd  xmm0,QWORD PTR [rip+0x25863]        # 473c58 <_IO_stdin_used+0x4c58>
-  44e3f4:	00 
-  44e3f5:	e8 56 6f fb ff       	call   405350 <nearbyint@plt>
-  44e3fa:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e3ff:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e405:	e8 46 6f fb ff       	call   405350 <nearbyint@plt>
-  44e40a:	66 49 0f 7e c4       	movq   r12,xmm0
-  44e40f:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44e414:	f2 0f 58 05 34 58 02 	addsd  xmm0,QWORD PTR [rip+0x25834]        # 473c50 <_IO_stdin_used+0x4c50>
-  44e41b:	00 
-  44e41c:	e8 2f 6f fb ff       	call   405350 <nearbyint@plt>
-  44e421:	f2 0f 10 54 24 10    	movsd  xmm2,QWORD PTR [rsp+0x10]
-  44e427:	f2 0f 10 4c 24 08    	movsd  xmm1,QWORD PTR [rsp+0x8]
-;	mov(mem64(49364),peekw(mem64(49425)))       
-  44e42d:	48 89 ef             	mov    rdi,rbp
-;	                  mem64(mem64(49418) add 5)) '                     pc	       
-  44e430:	66 49 0f 6e f5       	movq   xmm6,r13
-  44e435:	66 49 0f 6e fc       	movq   xmm7,r12
-  44e43a:	66 0f 28 d8          	movapd xmm3,xmm0
-  44e43e:	f2 48 0f 2c c2       	cvttsd2si rax,xmm2
-  44e443:	66 0f ef c0          	pxor   xmm0,xmm0
-  44e447:	f2 48 0f 2c d1       	cvttsd2si rdx,xmm1
-  44e44c:	48 c1 e0 20          	shl    rax,0x20
-  44e450:	48 c1 e2 18          	shl    rdx,0x18
-  44e454:	48 01 d0             	add    rax,rdx
-  44e457:	f2 48 0f 2c d6       	cvttsd2si rdx,xmm6
-  44e45c:	48 c1 e2 10          	shl    rdx,0x10
-  44e460:	48 01 d0             	add    rax,rdx
-  44e463:	f2 48 0f 2c d7       	cvttsd2si rdx,xmm7
-  44e468:	48 c1 e2 08          	shl    rdx,0x8
-  44e46c:	48 01 d0             	add    rax,rdx
-  44e46f:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44e474:	f2 48 0f 2c c3       	cvttsd2si rax,xmm3
-  44e479:	f2 0f 58 44 c5 00    	addsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e47f:	f2 0f 11 85 88 08 06 	movsd  QWORD PTR [rbp+0x60888],xmm0
-  44e486:	00 
-;	mov(mem64(49364),peekw(mem64(49425)))       
-  44e487:	e8 34 ab fb ff       	call   408fc0 <MEMORY_T::PEEKW(double)>
-  44e48c:	f2 0f 11 85 a0 06 06 	movsd  QWORD PTR [rbp+0x606a0],xmm0
-  44e493:	00 
-;   case &H000000072 ' pokew adr0, r3
-  44e494:	e9 1f e6 ff ff       	jmp    44cab8 <MEMORY_T::POKEB(double, double)+0x738>
-;   case &H000000074 ' pokew [address],[address]
-  44e499:	66 0f 2e 15 df 56 02 	ucomisd xmm2,QWORD PTR [rip+0x256df]        # 473b80 <_IO_stdin_used+0x4b80>
-  44e4a0:	00 
-  44e4a1:	7a 06                	jp     44e4a9 <MEMORY_T::POKEB(double, double)+0x2129>
-  44e4a3:	0f 84 1a fc ff ff    	je     44e0c3 <MEMORY_T::POKEB(double, double)+0x1d43>
-;   case &H000000075 ' Display number [screen memory address]
-  44e4a9:	66 0f 2e 15 d7 56 02 	ucomisd xmm2,QWORD PTR [rip+0x256d7]        # 473b88 <_IO_stdin_used+0x4b88>
-  44e4b0:	00 
-  44e4b1:	7a 06                	jp     44e4b9 <MEMORY_T::POKEB(double, double)+0x2139>
-  44e4b3:	0f 84 50 06 00 00    	je     44eb09 <MEMORY_T::POKEB(double, double)+0x2789>
-;   case &H000000076 ' Display text [string address],[length],
-  44e4b9:	66 0f 2e 15 af 51 02 	ucomisd xmm2,QWORD PTR [rip+0x251af]        # 473670 <_IO_stdin_used+0x4670>
-  44e4c0:	00 
-  44e4c1:	0f 8a 17 08 00 00    	jp     44ecde <MEMORY_T::POKEB(double, double)+0x295e>
-  44e4c7:	0f 85 11 08 00 00    	jne    44ecde <MEMORY_T::POKEB(double, double)+0x295e>
-;	string_adr = mem64(mem64(49418) + 1) shl 32 + mem64(mem64(49418) + 2) shl 24 + mem64(mem64(49418) + 3) shl 16 +_
-  44e4cd:	f2 0f 10 bd 50 08 06 	movsd  xmm7,QWORD PTR [rbp+0x60850]
-  44e4d4:	00 
-  44e4d5:	f2 0f 10 05 73 4c 02 	movsd  xmm0,QWORD PTR [rip+0x24c73]        # 473150 <_IO_stdin_used+0x4150>
-  44e4dc:	00 
-  44e4dd:	f2 0f 58 c7          	addsd  xmm0,xmm7
-  44e4e1:	f2 0f 11 7c 24 08    	movsd  QWORD PTR [rsp+0x8],xmm7
-  44e4e7:	e8 64 6e fb ff       	call   405350 <nearbyint@plt>
-  44e4ec:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e4f1:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e4f7:	e8 54 6e fb ff       	call   405350 <nearbyint@plt>
-  44e4fc:	f2 0f 11 44 24 10    	movsd  QWORD PTR [rsp+0x10],xmm0
-  44e502:	f2 0f 10 05 56 57 02 	movsd  xmm0,QWORD PTR [rip+0x25756]        # 473c60 <_IO_stdin_used+0x4c60>
-  44e509:	00 
-  44e50a:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-  44e510:	e8 3b 6e fb ff       	call   405350 <nearbyint@plt>
-  44e515:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e51a:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e520:	e8 2b 6e fb ff       	call   405350 <nearbyint@plt>
-  44e525:	66 49 0f 7e c5       	movq   r13,xmm0
-  44e52a:	f2 0f 10 05 ae 57 02 	movsd  xmm0,QWORD PTR [rip+0x257ae]        # 473ce0 <_IO_stdin_used+0x4ce0>
-  44e531:	00 
-  44e532:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-  44e538:	e8 13 6e fb ff       	call   405350 <nearbyint@plt>
-  44e53d:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e542:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e548:	e8 03 6e fb ff       	call   405350 <nearbyint@plt>
-  44e54d:	66 49 0f 7e c4       	movq   r12,xmm0
-  44e552:	f2 0f 10 05 fe 56 02 	movsd  xmm0,QWORD PTR [rip+0x256fe]        # 473c58 <_IO_stdin_used+0x4c58>
-  44e559:	00 
-  44e55a:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-  44e560:	e8 eb 6d fb ff       	call   405350 <nearbyint@plt>
-  44e565:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e56a:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e570:	e8 db 6d fb ff       	call   405350 <nearbyint@plt>
-  44e575:	66 48 0f 7e c3       	movq   rbx,xmm0
-  44e57a:	f2 0f 10 05 ce 56 02 	movsd  xmm0,QWORD PTR [rip+0x256ce]        # 473c50 <_IO_stdin_used+0x4c50>
-  44e581:	00 
-  44e582:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-  44e588:	e8 c3 6d fb ff       	call   405350 <nearbyint@plt>
-  44e58d:	f2 0f 10 4c 24 10    	movsd  xmm1,QWORD PTR [rsp+0x10]
-  44e593:	66 49 0f 6e ed       	movq   xmm5,r13
-  44e598:	66 49 0f 6e f4       	movq   xmm6,r12
-  44e59d:	f2 48 0f 2c d5       	cvttsd2si rdx,xmm5
-  44e5a2:	66 48 0f 6e eb       	movq   xmm5,rbx
-  44e5a7:	66 0f 28 d0          	movapd xmm2,xmm0
-  44e5ab:	f2 48 0f 2c c1       	cvttsd2si rax,xmm1
-  44e5b0:	66 0f ef c0          	pxor   xmm0,xmm0
-  44e5b4:	48 c1 e2 18          	shl    rdx,0x18
-  44e5b8:	48 c1 e0 20          	shl    rax,0x20
-  44e5bc:	48 01 d0             	add    rax,rdx
-  44e5bf:	f2 48 0f 2c d6       	cvttsd2si rdx,xmm6
-  44e5c4:	48 c1 e2 10          	shl    rdx,0x10
-  44e5c8:	48 01 d0             	add    rax,rdx
-  44e5cb:	f2 48 0f 2c d5       	cvttsd2si rdx,xmm5
-  44e5d0:	48 c1 e2 08          	shl    rdx,0x8
-  44e5d4:	48 01 d0             	add    rax,rdx
-  44e5d7:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44e5dc:	f2 48 0f 2c c2       	cvttsd2si rax,xmm2
-  44e5e1:	f2 0f 58 44 c5 00    	addsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e5e7:	e8 64 6d fb ff       	call   405350 <nearbyint@plt>
-  44e5ec:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-;	string_len = mem64(mem64(49418) + 6) shl 32 + mem64(mem64(49418) + 7) shl 24 + mem64(mem64(49418) + 8) shl 16 +_
-  44e5f1:	f2 0f 10 05 37 4c 02 	movsd  xmm0,QWORD PTR [rip+0x24c37]        # 473230 <_IO_stdin_used+0x4230>
-  44e5f8:	00 
-  44e5f9:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-;	string_adr = mem64(mem64(49418) + 1) shl 32 + mem64(mem64(49418) + 2) shl 24 + mem64(mem64(49418) + 3) shl 16 +_
-  44e5ff:	89 05 03 48 05 00    	mov    DWORD PTR [rip+0x54803],eax        # 4a2e08 <STRING_ADR$>
-;	string_len = mem64(mem64(49418) + 6) shl 32 + mem64(mem64(49418) + 7) shl 24 + mem64(mem64(49418) + 8) shl 16 +_
-  44e605:	e8 46 6d fb ff       	call   405350 <nearbyint@plt>
-  44e60a:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e60f:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e615:	e8 36 6d fb ff       	call   405350 <nearbyint@plt>
-  44e61a:	f2 0f 11 44 24 10    	movsd  QWORD PTR [rsp+0x10],xmm0
-  44e620:	f2 0f 10 05 10 4c 02 	movsd  xmm0,QWORD PTR [rip+0x24c10]        # 473238 <_IO_stdin_used+0x4238>
-  44e627:	00 
-  44e628:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-  44e62e:	e8 1d 6d fb ff       	call   405350 <nearbyint@plt>
-  44e633:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e638:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e63e:	e8 0d 6d fb ff       	call   405350 <nearbyint@plt>
-  44e643:	66 49 0f 7e c5       	movq   r13,xmm0
-  44e648:	f2 0f 10 05 f0 4b 02 	movsd  xmm0,QWORD PTR [rip+0x24bf0]        # 473240 <_IO_stdin_used+0x4240>
-  44e64f:	00 
-  44e650:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-  44e656:	e8 f5 6c fb ff       	call   405350 <nearbyint@plt>
-  44e65b:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e660:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e666:	e8 e5 6c fb ff       	call   405350 <nearbyint@plt>
-  44e66b:	66 49 0f 7e c4       	movq   r12,xmm0
-  44e670:	f2 0f 10 05 e8 4a 02 	movsd  xmm0,QWORD PTR [rip+0x24ae8]        # 473160 <_IO_stdin_used+0x4160>
-  44e677:	00 
-  44e678:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-  44e67e:	e8 cd 6c fb ff       	call   405350 <nearbyint@plt>
-  44e683:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e688:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e68e:	e8 bd 6c fb ff       	call   405350 <nearbyint@plt>
-  44e693:	66 48 0f 7e c3       	movq   rbx,xmm0
-  44e698:	f2 0f 10 05 b0 57 02 	movsd  xmm0,QWORD PTR [rip+0x257b0]        # 473e50 <_IO_stdin_used+0x4e50>
-  44e69f:	00 
-  44e6a0:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-  44e6a6:	e8 a5 6c fb ff       	call   405350 <nearbyint@plt>
-  44e6ab:	f2 0f 10 4c 24 10    	movsd  xmm1,QWORD PTR [rsp+0x10]
-  44e6b1:	66 49 0f 6e f5       	movq   xmm6,r13
-  44e6b6:	66 49 0f 6e ec       	movq   xmm5,r12
-  44e6bb:	f2 48 0f 2c d6       	cvttsd2si rdx,xmm6
-  44e6c0:	66 48 0f 6e f3       	movq   xmm6,rbx
-  44e6c5:	66 0f 28 d0          	movapd xmm2,xmm0
-  44e6c9:	f2 48 0f 2c c1       	cvttsd2si rax,xmm1
-  44e6ce:	66 0f ef c0          	pxor   xmm0,xmm0
-  44e6d2:	48 c1 e2 18          	shl    rdx,0x18
-  44e6d6:	48 c1 e0 20          	shl    rax,0x20
-  44e6da:	48 01 d0             	add    rax,rdx
-  44e6dd:	f2 48 0f 2c d5       	cvttsd2si rdx,xmm5
-  44e6e2:	48 c1 e2 10          	shl    rdx,0x10
-  44e6e6:	48 01 d0             	add    rax,rdx
-  44e6e9:	f2 48 0f 2c d6       	cvttsd2si rdx,xmm6
-  44e6ee:	48 c1 e2 08          	shl    rdx,0x8
-  44e6f2:	48 01 d0             	add    rax,rdx
-  44e6f5:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44e6fa:	f2 48 0f 2c c2       	cvttsd2si rax,xmm2
-  44e6ff:	f2 0f 58 44 c5 00    	addsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e705:	e8 46 6c fb ff       	call   405350 <nearbyint@plt>
-  44e70a:	f2 48 0f 2c d8       	cvttsd2si rbx,xmm0
-;	mem64(49425) = mem64(mem64(49418) + 11) shl 32 + mem64(mem64(49418) + 12) shl 24 + mem64(mem64(49418) + 13) shl 16 +_
-  44e70f:	f2 0f 10 05 31 4b 02 	movsd  xmm0,QWORD PTR [rip+0x24b31]        # 473248 <_IO_stdin_used+0x4248>
-  44e716:	00 
-  44e717:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-  44e71d:	e8 2e 6c fb ff       	call   405350 <nearbyint@plt>
-  44e722:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e727:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e72d:	e8 1e 6c fb ff       	call   405350 <nearbyint@plt>
-  44e732:	f2 0f 11 44 24 18    	movsd  QWORD PTR [rsp+0x18],xmm0
-  44e738:	f2 0f 10 05 10 4b 02 	movsd  xmm0,QWORD PTR [rip+0x24b10]        # 473250 <_IO_stdin_used+0x4250>
-  44e73f:	00 
-  44e740:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-  44e746:	e8 05 6c fb ff       	call   405350 <nearbyint@plt>
-  44e74b:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e750:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e756:	e8 f5 6b fb ff       	call   405350 <nearbyint@plt>
-  44e75b:	f2 0f 11 44 24 10    	movsd  QWORD PTR [rsp+0x10],xmm0
-  44e761:	f2 0f 10 05 ef 4a 02 	movsd  xmm0,QWORD PTR [rip+0x24aef]        # 473258 <_IO_stdin_used+0x4258>
-  44e768:	00 
-  44e769:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-  44e76f:	e8 dc 6b fb ff       	call   405350 <nearbyint@plt>
-  44e774:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e779:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e77f:	e8 cc 6b fb ff       	call   405350 <nearbyint@plt>
-  44e784:	66 49 0f 7e c5       	movq   r13,xmm0
-  44e789:	f2 0f 10 05 cf 4a 02 	movsd  xmm0,QWORD PTR [rip+0x24acf]        # 473260 <_IO_stdin_used+0x4260>
-  44e790:	00 
-  44e791:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-  44e797:	e8 b4 6b fb ff       	call   405350 <nearbyint@plt>
-  44e79c:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e7a1:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e7a7:	e8 a4 6b fb ff       	call   405350 <nearbyint@plt>
-  44e7ac:	66 49 0f 7e c4       	movq   r12,xmm0
-  44e7b1:	f2 0f 10 05 af 4a 02 	movsd  xmm0,QWORD PTR [rip+0x24aaf]        # 473268 <_IO_stdin_used+0x4268>
-  44e7b8:	00 
-  44e7b9:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-  44e7bf:	e8 8c 6b fb ff       	call   405350 <nearbyint@plt>
-  44e7c4:	f2 0f 10 54 24 18    	movsd  xmm2,QWORD PTR [rsp+0x18]
-  44e7ca:	f2 0f 10 4c 24 10    	movsd  xmm1,QWORD PTR [rsp+0x10]
-  44e7d0:	66 49 0f 6e ed       	movq   xmm5,r13
-  44e7d5:	66 49 0f 6e f4       	movq   xmm6,r12
-  44e7da:	66 0f 28 d8          	movapd xmm3,xmm0
-  44e7de:	66 0f ef c0          	pxor   xmm0,xmm0
-;	for r3 = 0 to string_len
-  44e7e2:	c7 05 2c 46 05 00 00 	mov    DWORD PTR [rip+0x5462c],0x0        # 4a2e18 <R3$>
-  44e7e9:	00 00 00 
-;	mem64(49425) = mem64(mem64(49418) + 11) shl 32 + mem64(mem64(49418) + 12) shl 24 + mem64(mem64(49418) + 13) shl 16 +_
-  44e7ec:	f2 48 0f 2c c2       	cvttsd2si rax,xmm2
-  44e7f1:	f2 48 0f 2c d1       	cvttsd2si rdx,xmm1
-  44e7f6:	48 c1 e0 20          	shl    rax,0x20
-  44e7fa:	48 c1 e2 18          	shl    rdx,0x18
-  44e7fe:	48 01 d0             	add    rax,rdx
-  44e801:	f2 48 0f 2c d5       	cvttsd2si rdx,xmm5
-  44e806:	48 c1 e2 10          	shl    rdx,0x10
-  44e80a:	48 01 d0             	add    rax,rdx
-  44e80d:	f2 48 0f 2c d6       	cvttsd2si rdx,xmm6
-  44e812:	48 c1 e2 08          	shl    rdx,0x8
-  44e816:	48 01 d0             	add    rax,rdx
-  44e819:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44e81e:	f2 48 0f 2c c3       	cvttsd2si rax,xmm3
-  44e823:	f2 0f 58 44 c5 00    	addsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-;	next r3
-  44e829:	31 c0                	xor    eax,eax
-;	mem64(49425) = mem64(mem64(49418) + 11) shl 32 + mem64(mem64(49418) + 12) shl 24 + mem64(mem64(49418) + 13) shl 16 +_
-  44e82b:	f2 0f 11 85 88 08 06 	movsd  QWORD PTR [rbp+0x60888],xmm0
-  44e832:	00 
-  44e833:	f2 0f 10 05 2d 49 02 	movsd  xmm0,QWORD PTR [rip+0x2492d]        # 473168 <_IO_stdin_used+0x4168>
-  44e83a:	00 
-  44e83b:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-  44e841:	f2 0f 11 85 50 08 06 	movsd  QWORD PTR [rbp+0x60850],xmm0
-  44e848:	00 
-;	 pokeb (char_buffer add mem64(49425)) add r3,_
-  44e849:	8b 15 b9 45 05 00    	mov    edx,DWORD PTR [rip+0x545b9]        # 4a2e08 <STRING_ADR$>
-  44e84f:	48 89 ef             	mov    rdi,rbp
-  44e852:	48 01 d0             	add    rax,rdx
-  44e855:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e85b:	e8 c0 97 fb ff       	call   408020 <MEMORY_T::SCREENCODE(double)>
-  44e860:	8b 05 4e de 02 00    	mov    eax,DWORD PTR [rip+0x2de4e]        # 47c6b4 <CHAR_BUFFER$>
-  44e866:	66 0f ef d2          	pxor   xmm2,xmm2
-  44e86a:	48 89 ef             	mov    rdi,rbp
-  44e86d:	66 0f 28 c8          	movapd xmm1,xmm0
-  44e871:	66 0f ef c0          	pxor   xmm0,xmm0
-  44e875:	f2 48 0f 2a d0       	cvtsi2sd xmm2,rax
-  44e87a:	8b 05 98 45 05 00    	mov    eax,DWORD PTR [rip+0x54598]        # 4a2e18 <R3$>
-  44e880:	f2 0f 58 95 88 08 06 	addsd  xmm2,QWORD PTR [rbp+0x60888]
-  44e887:	00 
-  44e888:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44e88d:	f2 0f 58 c2          	addsd  xmm0,xmm2
-  44e891:	e8 ea da ff ff       	call   44c380 <MEMORY_T::POKEB(double, double)>
-;	next r3
-  44e896:	8b 05 7c 45 05 00    	mov    eax,DWORD PTR [rip+0x5457c]        # 4a2e18 <R3$>
-  44e89c:	83 c0 01             	add    eax,0x1
-  44e89f:	89 05 73 45 05 00    	mov    DWORD PTR [rip+0x54573],eax        # 4a2e18 <R3$>
-  44e8a5:	39 c3                	cmp    ebx,eax
-  44e8a7:	73 a0                	jae    44e849 <MEMORY_T::POKEB(double, double)+0x24c9>
-  44e8a9:	e9 0a e2 ff ff       	jmp    44cab8 <MEMORY_T::POKEB(double, double)+0x738>
-;	                  mem64(mem64(49418) add 5)) '                     pc
-  44e8ae:	48 8b 9d 50 08 06 00 	mov    rbx,QWORD PTR [rbp+0x60850]
-  44e8b5:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44e8ba:	f2 0f 58 05 8e 48 02 	addsd  xmm0,QWORD PTR [rip+0x2488e]        # 473150 <_IO_stdin_used+0x4150>
-  44e8c1:	00 
-  44e8c2:	e8 89 6a fb ff       	call   405350 <nearbyint@plt>
-  44e8c7:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e8cc:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e8d2:	e8 79 6a fb ff       	call   405350 <nearbyint@plt>
-  44e8d7:	f2 0f 11 44 24 10    	movsd  QWORD PTR [rsp+0x10],xmm0
-  44e8dd:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44e8e2:	f2 0f 58 05 76 53 02 	addsd  xmm0,QWORD PTR [rip+0x25376]        # 473c60 <_IO_stdin_used+0x4c60>
-  44e8e9:	00 
-  44e8ea:	e8 61 6a fb ff       	call   405350 <nearbyint@plt>
-  44e8ef:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e8f4:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e8fa:	e8 51 6a fb ff       	call   405350 <nearbyint@plt>
-  44e8ff:	f2 0f 11 44 24 08    	movsd  QWORD PTR [rsp+0x8],xmm0
-  44e905:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44e90a:	f2 0f 58 05 ce 53 02 	addsd  xmm0,QWORD PTR [rip+0x253ce]        # 473ce0 <_IO_stdin_used+0x4ce0>
-  44e911:	00 
-  44e912:	e8 39 6a fb ff       	call   405350 <nearbyint@plt>
-  44e917:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e91c:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e922:	e8 29 6a fb ff       	call   405350 <nearbyint@plt>
-  44e927:	66 49 0f 7e c5       	movq   r13,xmm0
-  44e92c:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44e931:	f2 0f 58 05 1f 53 02 	addsd  xmm0,QWORD PTR [rip+0x2531f]        # 473c58 <_IO_stdin_used+0x4c58>
-  44e938:	00 
-  44e939:	e8 12 6a fb ff       	call   405350 <nearbyint@plt>
-  44e93e:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e943:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e949:	e8 02 6a fb ff       	call   405350 <nearbyint@plt>
-  44e94e:	66 49 0f 7e c4       	movq   r12,xmm0
-  44e953:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44e958:	f2 0f 58 05 f0 52 02 	addsd  xmm0,QWORD PTR [rip+0x252f0]        # 473c50 <_IO_stdin_used+0x4c50>
-  44e95f:	00 
-  44e960:	e8 eb 69 fb ff       	call   405350 <nearbyint@plt>
-  44e965:	f2 0f 10 4c 24 08    	movsd  xmm1,QWORD PTR [rsp+0x8]
-  44e96b:	f2 0f 10 54 24 10    	movsd  xmm2,QWORD PTR [rsp+0x10]
-  44e971:	66 49 0f 6e ed       	movq   xmm5,r13
-  44e976:	66 49 0f 6e f4       	movq   xmm6,r12
-  44e97b:	f2 48 0f 2c d1       	cvttsd2si rdx,xmm1
-  44e980:	f2 48 0f 2c c2       	cvttsd2si rax,xmm2
-  44e985:	66 0f ef d2          	pxor   xmm2,xmm2
-  44e989:	48 c1 e2 18          	shl    rdx,0x18
-  44e98d:	48 c1 e0 20          	shl    rax,0x20
-  44e991:	48 01 d0             	add    rax,rdx
-  44e994:	f2 48 0f 2c d5       	cvttsd2si rdx,xmm5
-  44e999:	48 c1 e2 10          	shl    rdx,0x10
-  44e99d:	48 01 d0             	add    rax,rdx
-  44e9a0:	f2 48 0f 2c d6       	cvttsd2si rdx,xmm6
-  44e9a5:	48 c1 e2 08          	shl    rdx,0x8
-  44e9a9:	48 01 d0             	add    rax,rdx
-  44e9ac:	f2 48 0f 2a d0       	cvtsi2sd xmm2,rax
-  44e9b1:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-;	                  mem64(mem64(49418) add 10)) '                    pc
-  44e9b6:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44e9bb:	f2 0f 58 05 6d 48 02 	addsd  xmm0,QWORD PTR [rip+0x2486d]        # 473230 <_IO_stdin_used+0x4230>
-  44e9c2:	00 
-;	                  mem64(mem64(49418) add 5)) '                     pc
-  44e9c3:	f2 0f 58 54 c5 00    	addsd  xmm2,QWORD PTR [rbp+rax*8+0x0]
-  44e9c9:	f2 0f 11 95 88 08 06 	movsd  QWORD PTR [rbp+0x60888],xmm2
-  44e9d0:	00 
-  44e9d1:	f2 0f 11 54 24 18    	movsd  QWORD PTR [rsp+0x18],xmm2
-;	                  mem64(mem64(49418) add 10)) '                    pc
-  44e9d7:	e8 74 69 fb ff       	call   405350 <nearbyint@plt>
-  44e9dc:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44e9e1:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44e9e7:	e8 64 69 fb ff       	call   405350 <nearbyint@plt>
-  44e9ec:	f2 0f 11 44 24 10    	movsd  QWORD PTR [rsp+0x10],xmm0
-  44e9f2:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44e9f7:	f2 0f 58 05 39 48 02 	addsd  xmm0,QWORD PTR [rip+0x24839]        # 473238 <_IO_stdin_used+0x4238>
-  44e9fe:	00 
-  44e9ff:	e8 4c 69 fb ff       	call   405350 <nearbyint@plt>
-  44ea04:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44ea09:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44ea0f:	e8 3c 69 fb ff       	call   405350 <nearbyint@plt>
-  44ea14:	f2 0f 11 44 24 08    	movsd  QWORD PTR [rsp+0x8],xmm0
-  44ea1a:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44ea1f:	f2 0f 58 05 19 48 02 	addsd  xmm0,QWORD PTR [rip+0x24819]        # 473240 <_IO_stdin_used+0x4240>
-  44ea26:	00 
-  44ea27:	e8 24 69 fb ff       	call   405350 <nearbyint@plt>
-  44ea2c:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44ea31:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44ea37:	e8 14 69 fb ff       	call   405350 <nearbyint@plt>
-  44ea3c:	66 49 0f 7e c5       	movq   r13,xmm0
-  44ea41:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44ea46:	f2 0f 58 05 12 47 02 	addsd  xmm0,QWORD PTR [rip+0x24712]        # 473160 <_IO_stdin_used+0x4160>
-  44ea4d:	00 
-  44ea4e:	e8 fd 68 fb ff       	call   405350 <nearbyint@plt>
-  44ea53:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44ea58:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44ea5e:	e8 ed 68 fb ff       	call   405350 <nearbyint@plt>
-  44ea63:	66 49 0f 7e c4       	movq   r12,xmm0
-  44ea68:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44ea6d:	f2 0f 58 05 db 53 02 	addsd  xmm0,QWORD PTR [rip+0x253db]        # 473e50 <_IO_stdin_used+0x4e50>
-  44ea74:	00 
-  44ea75:	e8 d6 68 fb ff       	call   405350 <nearbyint@plt>
-  44ea7a:	f2 0f 10 4c 24 08    	movsd  xmm1,QWORD PTR [rsp+0x8]
-  44ea80:	f2 0f 10 5c 24 10    	movsd  xmm3,QWORD PTR [rsp+0x10]
-  44ea86:	66 49 0f 6e fd       	movq   xmm7,r13
-  44ea8b:	66 49 0f 6e ec       	movq   xmm5,r12
-;	pokew mem64(49425), mem64(49364)
-  44ea90:	f2 0f 10 54 24 18    	movsd  xmm2,QWORD PTR [rsp+0x18]
-;	                  mem64(mem64(49418) add 10)) '                    pc
-  44ea96:	f2 48 0f 2c d1       	cvttsd2si rdx,xmm1
-  44ea9b:	66 0f ef c9          	pxor   xmm1,xmm1
-  44ea9f:	f2 48 0f 2c c3       	cvttsd2si rax,xmm3
-  44eaa4:	48 c1 e2 18          	shl    rdx,0x18
-  44eaa8:	48 c1 e0 20          	shl    rax,0x20
-  44eaac:	48 01 d0             	add    rax,rdx
-  44eaaf:	f2 48 0f 2c d7       	cvttsd2si rdx,xmm7
-  44eab4:	48 c1 e2 10          	shl    rdx,0x10
-  44eab8:	48 01 d0             	add    rax,rdx
-  44eabb:	f2 48 0f 2c d5       	cvttsd2si rdx,xmm5
-  44eac0:	48 c1 e2 08          	shl    rdx,0x8
-  44eac4:	48 01 d0             	add    rax,rdx
-  44eac7:	f2 48 0f 2a c8       	cvtsi2sd xmm1,rax
-  44eacc:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44ead1:	f2 0f 58 4c c5 00    	addsd  xmm1,QWORD PTR [rbp+rax*8+0x0]
-  44ead7:	f2 0f 11 8d a0 06 06 	movsd  QWORD PTR [rbp+0x606a0],xmm1
-  44eade:	00 
-;	pokew mem64(49425), mem64(49364)
-  44eadf:	48 8b 44 24 48       	mov    rax,QWORD PTR [rsp+0x48]
-  44eae4:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  44eaeb:	00 00 
-  44eaed:	0f 85 3a f8 ff ff    	jne    44e32d <MEMORY_T::POKEB(double, double)+0x1fad>
+  40fbf4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+;	 (@glScreen)(mem64(49355),mem64(49356),,,true)
+  40fbfb:	41 b8 01 00 00 00    	mov    r8d,0x1
+  40fc01:	f2 48 0f 2c f2       	cvttsd2si rsi,xmm2
 ;end def
-  44eaf3:	48 83 c4 58          	add    rsp,0x58
-;	pokew mem64(49425), peekw(mem64(49432)) 
-  44eaf7:	48 89 ef             	mov    rdi,rbp
-  44eafa:	66 0f 28 c2          	movapd xmm0,xmm2
+  40fc06:	5b                   	pop    rbx
+  40fc07:	5d                   	pop    rbp
+;	 (@glScreen)(mem64(49355),mem64(49356),,,true)
+  40fc08:	48 c7 c1 ff ff ff ff 	mov    rcx,0xffffffffffffffff
 ;end def
-  44eafe:	5b                   	pop    rbx
-  44eaff:	5d                   	pop    rbp
-  44eb00:	41 5c                	pop    r12
-  44eb02:	41 5d                	pop    r13
-;	pokew mem64(49425), peekw(mem64(49432)) 
-  44eb04:	e9 57 06 00 00       	jmp    44f160 <MEMORY_T::POKEW(double, double)>
-;	mem64(49425)= mem64(mem64(49418) + 1) shl 32 + mem64(mem64(49418) + 2) shl 24 + mem64(mem64(49418) + 3) shl 16 +_
-  44eb09:	48 8b 9d 50 08 06 00 	mov    rbx,QWORD PTR [rbp+0x60850]
-  44eb10:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44eb15:	f2 0f 58 05 33 46 02 	addsd  xmm0,QWORD PTR [rip+0x24633]        # 473150 <_IO_stdin_used+0x4150>
-  44eb1c:	00 
-  44eb1d:	e8 2e 68 fb ff       	call   405350 <nearbyint@plt>
-  44eb22:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44eb27:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44eb2d:	e8 1e 68 fb ff       	call   405350 <nearbyint@plt>
-  44eb32:	f2 0f 11 44 24 10    	movsd  QWORD PTR [rsp+0x10],xmm0
-  44eb38:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44eb3d:	f2 0f 58 05 1b 51 02 	addsd  xmm0,QWORD PTR [rip+0x2511b]        # 473c60 <_IO_stdin_used+0x4c60>
-  44eb44:	00 
-  44eb45:	e8 06 68 fb ff       	call   405350 <nearbyint@plt>
-  44eb4a:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44eb4f:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44eb55:	e8 f6 67 fb ff       	call   405350 <nearbyint@plt>
-  44eb5a:	f2 0f 11 44 24 08    	movsd  QWORD PTR [rsp+0x8],xmm0
-  44eb60:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44eb65:	f2 0f 58 05 73 51 02 	addsd  xmm0,QWORD PTR [rip+0x25173]        # 473ce0 <_IO_stdin_used+0x4ce0>
-  44eb6c:	00 
-  44eb6d:	e8 de 67 fb ff       	call   405350 <nearbyint@plt>
-  44eb72:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44eb77:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44eb7d:	e8 ce 67 fb ff       	call   405350 <nearbyint@plt>
-  44eb82:	66 49 0f 7e c5       	movq   r13,xmm0
-  44eb87:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44eb8c:	f2 0f 58 05 c4 50 02 	addsd  xmm0,QWORD PTR [rip+0x250c4]        # 473c58 <_IO_stdin_used+0x4c58>
-  44eb93:	00 
-  44eb94:	e8 b7 67 fb ff       	call   405350 <nearbyint@plt>
-  44eb99:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44eb9e:	f2 0f 10 44 c5 00    	movsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44eba4:	e8 a7 67 fb ff       	call   405350 <nearbyint@plt>
-  44eba9:	66 49 0f 7e c4       	movq   r12,xmm0
-  44ebae:	66 48 0f 6e c3       	movq   xmm0,rbx
-  44ebb3:	f2 0f 58 05 95 50 02 	addsd  xmm0,QWORD PTR [rip+0x25095]        # 473c50 <_IO_stdin_used+0x4c50>
-  44ebba:	00 
-  44ebbb:	e8 90 67 fb ff       	call   405350 <nearbyint@plt>
-  44ebc0:	f2 0f 10 54 24 10    	movsd  xmm2,QWORD PTR [rsp+0x10]
-  44ebc6:	f2 0f 10 4c 24 08    	movsd  xmm1,QWORD PTR [rsp+0x8]
-  44ebcc:	66 49 0f 6e fd       	movq   xmm7,r13
-  44ebd1:	66 49 0f 6e ec       	movq   xmm5,r12
-  44ebd6:	66 0f 28 d8          	movapd xmm3,xmm0
-  44ebda:	66 0f ef c0          	pxor   xmm0,xmm0
-  44ebde:	f2 48 0f 2c c2       	cvttsd2si rax,xmm2
-;	string_data = str(mem64(49361))             
-  44ebe3:	4c 8d 25 06 42 05 00 	lea    r12,[rip+0x54206]        # 4a2df0 <STRING_DATA$>
-;	mem64(49425)= mem64(mem64(49418) + 1) shl 32 + mem64(mem64(49418) + 2) shl 24 + mem64(mem64(49418) + 3) shl 16 +_
-  44ebea:	f2 48 0f 2c d1       	cvttsd2si rdx,xmm1
-  44ebef:	48 c1 e0 20          	shl    rax,0x20
-  44ebf3:	48 c1 e2 18          	shl    rdx,0x18
-  44ebf7:	48 01 d0             	add    rax,rdx
-  44ebfa:	f2 48 0f 2c d7       	cvttsd2si rdx,xmm7
-  44ebff:	48 c1 e2 10          	shl    rdx,0x10
-  44ec03:	48 01 d0             	add    rax,rdx
-  44ec06:	f2 48 0f 2c d5       	cvttsd2si rdx,xmm5
-  44ec0b:	48 c1 e2 08          	shl    rdx,0x8
-  44ec0f:	48 01 d0             	add    rax,rdx
-  44ec12:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44ec17:	f2 48 0f 2c c3       	cvttsd2si rax,xmm3
-  44ec1c:	f2 0f 58 44 c5 00    	addsd  xmm0,QWORD PTR [rbp+rax*8+0x0]
-  44ec22:	f2 0f 11 85 88 08 06 	movsd  QWORD PTR [rbp+0x60888],xmm0
-  44ec29:	00 
-;	string_data = str(mem64(49361))             
-  44ec2a:	f2 0f 10 85 88 06 06 	movsd  xmm0,QWORD PTR [rbp+0x60688]
-  44ec31:	00 
-  44ec32:	e8 49 ad 01 00       	call   469980 <fb_DoubleToStr>
-  44ec37:	45 31 c0             	xor    r8d,r8d
-  44ec3a:	48 83 c9 ff          	or     rcx,0xffffffffffffffff
-  44ec3e:	48 83 ce ff          	or     rsi,0xffffffffffffffff
-  44ec42:	48 89 c2             	mov    rdx,rax
-  44ec45:	4c 89 e7             	mov    rdi,r12
-  44ec48:	e8 93 a0 01 00       	call   468ce0 <fb_StrAssign>
-;	for r3 = 1 to len(string_data)             
-  44ec4d:	48 83 ce ff          	or     rsi,0xffffffffffffffff
-  44ec51:	4c 89 e7             	mov    rdi,r12
-  44ec54:	c7 05 ba 41 05 00 01 	mov    DWORD PTR [rip+0x541ba],0x1        # 4a2e18 <R3$>
-  44ec5b:	00 00 00 
-  44ec5e:	e8 4d b6 01 00       	call   46a2b0 <fb_StrLen>
-  44ec63:	89 c3                	mov    ebx,eax
-;	next r3
-  44ec65:	8b 05 ad 41 05 00    	mov    eax,DWORD PTR [rip+0x541ad]        # 4a2e18 <R3$>
-  44ec6b:	39 d8                	cmp    eax,ebx
-  44ec6d:	0f 87 45 de ff ff    	ja     44cab8 <MEMORY_T::POKEB(double, double)+0x738>
-;	  pokeb (char_buffer+adr0)+(r3-1),_
-  44ec73:	ba 01 00 00 00       	mov    edx,0x1
-  44ec78:	89 c6                	mov    esi,eax
-  44ec7a:	4c 89 e7             	mov    rdi,r12
-  44ec7d:	e8 6e b6 01 00       	call   46a2f0 <fb_StrMid>
-  44ec82:	be 01 00 00 00       	mov    esi,0x1
-  44ec87:	48 89 c7             	mov    rdi,rax
-  44ec8a:	e8 d1 9d 01 00       	call   468a60 <fb_ASC>
-  44ec8f:	66 0f ef c0          	pxor   xmm0,xmm0
-  44ec93:	48 89 ef             	mov    rdi,rbp
-  44ec96:	89 c0                	mov    eax,eax
-  44ec98:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44ec9d:	e8 7e 93 fb ff       	call   408020 <MEMORY_T::SCREENCODE(double)>
-  44eca2:	8b 15 0c da 02 00    	mov    edx,DWORD PTR [rip+0x2da0c]        # 47c6b4 <CHAR_BUFFER$>
-  44eca8:	8b 05 6a 41 05 00    	mov    eax,DWORD PTR [rip+0x5416a]        # 4a2e18 <R3$>
-  44ecae:	66 0f 28 c8          	movapd xmm1,xmm0
-  44ecb2:	48 8d 44 02 ff       	lea    rax,[rdx+rax*1-0x1]
-  44ecb7:	48 85 c0             	test   rax,rax
-  44ecba:	0f 88 d5 02 00 00    	js     44ef95 <MEMORY_T::POKEB(double, double)+0x2c15>
-  44ecc0:	66 0f ef d2          	pxor   xmm2,xmm2
-  44ecc4:	f2 48 0f 2a d0       	cvtsi2sd xmm2,rax
-  44ecc9:	66 0f 28 c2          	movapd xmm0,xmm2
-  44eccd:	48 89 ef             	mov    rdi,rbp
-  44ecd0:	e8 ab d6 ff ff       	call   44c380 <MEMORY_T::POKEB(double, double)>
-;	next r3
-  44ecd5:	83 05 3c 41 05 00 01 	add    DWORD PTR [rip+0x5413c],0x1        # 4a2e18 <R3$>
-  44ecdc:	eb 87                	jmp    44ec65 <MEMORY_T::POKEB(double, double)+0x28e5>
-;   case &H000004000 to &H000007E70 ' Screen Memory(Text 0x000004000-
-  44ecde:	f2 0f 10 35 a2 49 02 	movsd  xmm6,QWORD PTR [rip+0x249a2]        # 473688 <_IO_stdin_used+0x4688>
-  44ece5:	00 
-  44ece6:	66 0f 2f f2          	comisd xmm6,xmm2
-  44ecea:	0f 87 c3 02 00 00    	ja     44efb3 <MEMORY_T::POKEB(double, double)+0x2c33>
-  44ecf0:	66 0f 2f 15 98 49 02 	comisd xmm2,QWORD PTR [rip+0x24998]        # 473690 <_IO_stdin_used+0x4690>
-  44ecf7:	00 
-  44ecf8:	0f 87 b5 02 00 00    	ja     44efb3 <MEMORY_T::POKEB(double, double)+0x2c33>
-;    mov(c, v):mov(c shl,3):mov(c add,mem64(49384))
-  44ecfe:	66 0f 28 c1          	movapd xmm0,xmm1
-  44ed02:	f2 0f 11 54 24 08    	movsd  QWORD PTR [rsp+0x8],xmm2
-  44ed08:	e8 43 66 fb ff       	call   405350 <nearbyint@plt>
-  44ed0d:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44ed12:	66 0f ef c0          	pxor   xmm0,xmm0
-  44ed16:	48 c1 e0 03          	shl    rax,0x3
-  44ed1a:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44ed1f:	f2 0f 58 85 40 07 06 	addsd  xmm0,QWORD PTR [rbp+0x60740]
-  44ed26:	00 
-  44ed27:	e8 24 66 fb ff       	call   405350 <nearbyint@plt>
-;    mov(adr subt,&H000004000)
-  44ed2c:	f2 0f 10 54 24 08    	movsd  xmm2,QWORD PTR [rsp+0x8]
-;    mov(c, v):mov(c shl,3):mov(c add,mem64(49384))
-  44ed32:	f2 4c 0f 2c e0       	cvttsd2si r12,xmm0
-;    mov(adr subt,&H000004000)
-  44ed37:	66 0f 28 c2          	movapd xmm0,xmm2
-  44ed3b:	f2 0f 5c 05 45 49 02 	subsd  xmm0,QWORD PTR [rip+0x24945]        # 473688 <_IO_stdin_used+0x4688>
-  44ed42:	00 
-;    mov(c, v):mov(c shl,3):mov(c add,mem64(49384))
-  44ed43:	4c 89 25 4e 3f 03 00 	mov    QWORD PTR [rip+0x33f4e],r12        # 482c98 <C$>
-;    mov(xs,adr mod char_w):mov(xs shl,3):mov(xs add,7 mul 3.5)
-  44ed4a:	e8 01 66 fb ff       	call   405350 <nearbyint@plt>
-  44ed4f:	f2 48 0f 2c d8       	cvttsd2si rbx,xmm0
-  44ed54:	f3 0f 10 05 5c d9 02 	movss  xmm0,DWORD PTR [rip+0x2d95c]        # 47c6b8 <CHAR_W$>
-  44ed5b:	00 
-  44ed5c:	e8 0f 6d fb ff       	call   405a70 <nearbyintf@plt>
-  44ed61:	f3 48 0f 2c c8       	cvttss2si rcx,xmm0
-  44ed66:	66 0f ef c0          	pxor   xmm0,xmm0
-  44ed6a:	48 89 d8             	mov    rax,rbx
-  44ed6d:	48 99                	cqo    
-  44ed6f:	48 f7 f9             	idiv   rcx
-  44ed72:	48 c1 e2 03          	shl    rdx,0x3
-  44ed76:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
-  44ed7b:	f2 0f 58 05 6d 4c 02 	addsd  xmm0,QWORD PTR [rip+0x24c6d]        # 4739f0 <_IO_stdin_used+0x49f0>
-  44ed82:	00 
-  44ed83:	e8 c8 65 fb ff       	call   405350 <nearbyint@plt>
-  44ed88:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-;    mov(ys,adr idiv  char_h):mov(ys shl, 3):mov(ys add,7 mul 3.5)
-  44ed8d:	f3 0f 10 05 27 d9 02 	movss  xmm0,DWORD PTR [rip+0x2d927]        # 47c6bc <CHAR_H$>
-  44ed94:	00 
-;    mov(xs,adr mod char_w):mov(xs shl,3):mov(xs add,7 mul 3.5)
-  44ed95:	48 89 05 e4 3e 03 00 	mov    QWORD PTR [rip+0x33ee4],rax        # 482c80 <XS$>
-;    mov(ys,adr idiv  char_h):mov(ys shl, 3):mov(ys add,7 mul 3.5)
-  44ed9c:	e8 cf 6c fb ff       	call   405a70 <nearbyintf@plt>
-  44eda1:	48 89 d8             	mov    rax,rbx
-  44eda4:	f3 48 0f 2c c8       	cvttss2si rcx,xmm0
-  44eda9:	48 99                	cqo    
-  44edab:	66 0f ef c0          	pxor   xmm0,xmm0
-  44edaf:	48 f7 f9             	idiv   rcx
-  44edb2:	48 c1 e0 03          	shl    rax,0x3
-  44edb6:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44edbb:	f2 0f 58 05 2d 4c 02 	addsd  xmm0,QWORD PTR [rip+0x24c2d]        # 4739f0 <_IO_stdin_used+0x49f0>
-  44edc2:	00 
-  44edc3:	e8 88 65 fb ff       	call   405350 <nearbyint@plt>
-  44edc8:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-;    if mem64(RVS)<>0d then mov(c and,255)
-  44edcd:	66 0f ef c0          	pxor   xmm0,xmm0
-  44edd1:	66 0f 2e 85 38 06 00 	ucomisd xmm0,QWORD PTR [rbp+0x638]
-  44edd8:	00 
-;    mov(ys,adr idiv  char_h):mov(ys shl, 3):mov(ys add,7 mul 3.5)
-  44edd9:	48 89 05 98 3e 03 00 	mov    QWORD PTR [rip+0x33e98],rax        # 482c78 <YS$>
-;    if mem64(RVS)<>0d then mov(c and,255)
-  44ede0:	7a 02                	jp     44ede4 <MEMORY_T::POKEB(double, double)+0x2a64>
-  44ede2:	74 0e                	je     44edf2 <MEMORY_T::POKEB(double, double)+0x2a72>
-  44ede4:	41 81 e4 ff 00 00 00 	and    r12d,0xff
-  44edeb:	4c 89 25 a6 3e 03 00 	mov    QWORD PTR [rip+0x33ea6],r12        # 482c98 <C$>
-;    if mem64(49357) < 1 then mem64(49357)=1
-  44edf2:	f2 0f 10 85 68 06 06 	movsd  xmm0,QWORD PTR [rbp+0x60668]
-  44edf9:	00 
-  44edfa:	66 0f 2f 05 4e 43 02 	comisd xmm0,QWORD PTR [rip+0x2434e]        # 473150 <_IO_stdin_used+0x4150>
-  44ee01:	00 
-  44ee02:	73 0e                	jae    44ee12 <MEMORY_T::POKEB(double, double)+0x2a92>
-  44ee04:	48 8b 05 45 43 02 00 	mov    rax,QWORD PTR [rip+0x24345]        # 473150 <_IO_stdin_used+0x4150>
-  44ee0b:	48 89 85 68 06 06 00 	mov    QWORD PTR [rbp+0x60668],rax
-;    poke64(49410d,0) 'Screen lock
-  44ee12:	f2 0f 10 05 76 4d 02 	movsd  xmm0,QWORD PTR [rip+0x24d76]        # 473b90 <_IO_stdin_used+0x4b90>
-  44ee19:	00 
-  44ee1a:	66 0f ef c9          	pxor   xmm1,xmm1
-  44ee1e:	48 89 ef             	mov    rdi,rbp
-  44ee21:	e8 ea a9 fb ff       	call   409810 <MEMORY_T::POKE64(double, double)>
-;    mov(y,0):mov(x,0)
-  44ee26:	48 c7 05 57 3e 03 00 	mov    QWORD PTR [rip+0x33e57],0x0        # 482c88 <Y$>
-  44ee2d:	00 00 00 00 
-  44ee31:	48 c7 05 54 3e 03 00 	mov    QWORD PTR [rip+0x33e54],0x0        # 482c90 <X$>
-  44ee38:	00 00 00 00 
-;      do until logic_and(mov(y,mem64(49386)),mov(x,mem64(49385)))
-  44ee3c:	31 db                	xor    ebx,ebx
-  44ee3e:	48 8b 05 43 3e 03 00 	mov    rax,QWORD PTR [rip+0x33e43]        # 482c88 <Y$>
-  44ee45:	66 0f ef c0          	pxor   xmm0,xmm0
-  44ee49:	31 f6                	xor    esi,esi
-  44ee4b:	48 8b 15 3e 3e 03 00 	mov    rdx,QWORD PTR [rip+0x33e3e]        # 482c90 <X$>
-  44ee52:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44ee57:	66 0f 2e 85 50 07 06 	ucomisd xmm0,QWORD PTR [rbp+0x60750]
-  44ee5e:	00 
-  44ee5f:	66 0f ef c0          	pxor   xmm0,xmm0
-  44ee63:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
-  44ee68:	40 0f 9b c6          	setnp  sil
-  44ee6c:	0f 45 f3             	cmovne esi,ebx
-  44ee6f:	31 c9                	xor    ecx,ecx
-  44ee71:	f7 de                	neg    esi
-  44ee73:	66 0f 2e 85 48 07 06 	ucomisd xmm0,QWORD PTR [rbp+0x60748]
-  44ee7a:	00 
-  44ee7b:	0f 9b c1             	setnp  cl
-  44ee7e:	0f 45 cb             	cmovne ecx,ebx
-  44ee81:	f7 d9                	neg    ecx
-  44ee83:	85 ce                	test   esi,ecx
-  44ee85:	0f 85 a4 01 00 00    	jne    44f02f <MEMORY_T::POKEB(double, double)+0x2caf>
-;        mov(mem64(49355),((((xs add x) mul 5) div 2) add mem64(49379)))
-  44ee8b:	48 03 15 ee 3d 03 00 	add    rdx,QWORD PTR [rip+0x33dee]        # 482c80 <XS$>
-  44ee92:	66 0f ef c0          	pxor   xmm0,xmm0
-;        mov(mem64(49356),((((ys add y) mul 4) div 2) add mem64(49380)))
-  44ee96:	66 0f ef c9          	pxor   xmm1,xmm1
-;	    poke64(49404d,peek64(49404)) 'Flag: Print Reverse Characters?0=No
-  44ee9a:	48 89 ef             	mov    rdi,rbp
-;        mov(mem64(49356),((((ys add y) mul 4) div 2) add mem64(49380)))
-  44ee9d:	48 03 05 d4 3d 03 00 	add    rax,QWORD PTR [rip+0x33dd4]        # 482c78 <YS$>
-;        mov(mem64(49355),((((xs add x) mul 5) div 2) add mem64(49379)))
-  44eea4:	48 8d 14 92          	lea    rdx,[rdx+rdx*4]
-  44eea8:	66 0f 10 bd 18 07 06 	movupd xmm7,XMMWORD PTR [rbp+0x60718]
-  44eeaf:	00 
-;        mov(mem64(49356),((((ys add y) mul 4) div 2) add mem64(49380)))
-  44eeb0:	48 c1 e0 02          	shl    rax,0x2
-;        mov(mem64(49355),((((xs add x) mul 5) div 2) add mem64(49379)))
-  44eeb4:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
-;        mov(mem64(49358),(((((xs add x) mul 5) add 7) div 2) add mem64(49379)))
-  44eeb9:	48 83 c2 07          	add    rdx,0x7
-;        mov(mem64(49356),((((ys add y) mul 4) div 2) add mem64(49380)))
-  44eebd:	f2 48 0f 2a c8       	cvtsi2sd xmm1,rax
-;        mov(mem64(49359),(((((ys add y) mul 4) add 4) div 2) add mem64(49380))) 
-  44eec2:	48 83 c0 04          	add    rax,0x4
-;        mov(mem64(49355),((((xs add x) mul 5) div 2) add mem64(49379)))
-  44eec6:	66 0f 14 c1          	unpcklpd xmm0,xmm1
-;        mov(mem64(49359),(((((ys add y) mul 4) add 4) div 2) add mem64(49380))) 
-  44eeca:	f2 0f 10 8d 20 07 06 	movsd  xmm1,QWORD PTR [rbp+0x60720]
-  44eed1:	00 
-;        mov(mem64(49355),((((xs add x) mul 5) div 2) add mem64(49379)))
-  44eed2:	66 0f 59 05 66 4d 02 	mulpd  xmm0,XMMWORD PTR [rip+0x24d66]        # 473c40 <_IO_stdin_used+0x4c40>
-  44eed9:	00 
-  44eeda:	66 0f 58 c7          	addpd  xmm0,xmm7
-  44eede:	0f 11 85 58 06 06 00 	movups XMMWORD PTR [rbp+0x60658],xmm0
-;        mov(mem64(49358),(((((xs add x) mul 5) add 7) div 2) add mem64(49379)))
-  44eee5:	66 0f ef c0          	pxor   xmm0,xmm0
-  44eee9:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
-  44eeee:	f2 0f 59 05 4a 4d 02 	mulsd  xmm0,QWORD PTR [rip+0x24d4a]        # 473c40 <_IO_stdin_used+0x4c40>
-  44eef5:	00 
-  44eef6:	f2 0f 58 c7          	addsd  xmm0,xmm7
-  44eefa:	f2 0f 11 85 70 06 06 	movsd  QWORD PTR [rbp+0x60670],xmm0
-  44ef01:	00 
-;        mov(mem64(49359),(((((ys add y) mul 4) add 4) div 2) add mem64(49380))) 
-  44ef02:	66 0f ef c0          	pxor   xmm0,xmm0
-  44ef06:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44ef0b:	f2 0f 59 05 2d 4d 02 	mulsd  xmm0,QWORD PTR [rip+0x24d2d]        # 473c40 <_IO_stdin_used+0x4c40>
-  44ef12:	00 
-;	    poke64(49404d,peek64(49404)) 'Flag: Print Reverse Characters?0=No
-  44ef13:	48 8b 05 ce 4a 02 00 	mov    rax,QWORD PTR [rip+0x24ace]        # 4739e8 <_IO_stdin_used+0x49e8>
-;        mov(mem64(49359),(((((ys add y) mul 4) add 4) div 2) add mem64(49380))) 
-  44ef1a:	f2 0f 58 c1          	addsd  xmm0,xmm1
-  44ef1e:	f2 0f 11 85 78 06 06 	movsd  QWORD PTR [rbp+0x60678],xmm0
-  44ef25:	00 
-;	    poke64(49404d,peek64(49404)) 'Flag: Print Reverse Characters?0=No
-  44ef26:	66 48 0f 6e c0       	movq   xmm0,rax
-  44ef2b:	e8 30 a7 fb ff       	call   409660 <MEMORY_T::PEEK64(double)>
-  44ef30:	48 8b 05 b1 4a 02 00 	mov    rax,QWORD PTR [rip+0x24ab1]        # 4739e8 <_IO_stdin_used+0x49e8>
-  44ef37:	48 89 ef             	mov    rdi,rbp
-  44ef3a:	66 0f 28 c8          	movapd xmm1,xmm0
-  44ef3e:	66 48 0f 6e c0       	movq   xmm0,rax
-  44ef43:	e8 c8 a8 fb ff       	call   409810 <MEMORY_T::POKE64(double, double)>
-;        mov(x add,1): if x gt mem64(49385) then mov(x,0): mov(y add,1): mov(c add,1)
-  44ef48:	48 8b 05 41 3d 03 00 	mov    rax,QWORD PTR [rip+0x33d41]        # 482c90 <X$>
-  44ef4f:	66 0f ef c0          	pxor   xmm0,xmm0
-  44ef53:	f2 0f 10 8d 48 07 06 	movsd  xmm1,QWORD PTR [rbp+0x60748]
-  44ef5a:	00 
-  44ef5b:	48 83 c0 01          	add    rax,0x1
-  44ef5f:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44ef64:	48 89 05 25 3d 03 00 	mov    QWORD PTR [rip+0x33d25],rax        # 482c90 <X$>
-  44ef6b:	66 0f 2f c8          	comisd xmm1,xmm0
-  44ef6f:	0f 83 c9 fe ff ff    	jae    44ee3e <MEMORY_T::POKEB(double, double)+0x2abe>
-  44ef75:	48 83 05 0b 3d 03 00 	add    QWORD PTR [rip+0x33d0b],0x1        # 482c88 <Y$>
-  44ef7c:	01 
-  44ef7d:	48 83 05 13 3d 03 00 	add    QWORD PTR [rip+0x33d13],0x1        # 482c98 <C$>
-  44ef84:	01 
-  44ef85:	48 c7 05 00 3d 03 00 	mov    QWORD PTR [rip+0x33d00],0x0        # 482c90 <X$>
-  44ef8c:	00 00 00 00 
-  44ef90:	e9 a7 fe ff ff       	jmp    44ee3c <MEMORY_T::POKEB(double, double)+0x2abc>
-;	  pokeb (char_buffer+adr0)+(r3-1),_
-  44ef95:	48 89 c2             	mov    rdx,rax
-  44ef98:	83 e0 01             	and    eax,0x1
-  44ef9b:	66 0f ef d2          	pxor   xmm2,xmm2
-  44ef9f:	48 d1 ea             	shr    rdx,1
-  44efa2:	48 09 c2             	or     rdx,rax
-  44efa5:	f2 48 0f 2a d2       	cvtsi2sd xmm2,rdx
-  44efaa:	f2 0f 58 d2          	addsd  xmm2,xmm2
-  44efae:	e9 16 fd ff ff       	jmp    44ecc9 <MEMORY_T::POKEB(double, double)+0x2949>
-;   case &H0000A0000 ' Graphics Register Ports
-  44efb3:	66 0f 2e 15 dd 46 02 	ucomisd xmm2,QWORD PTR [rip+0x246dd]        # 473698 <_IO_stdin_used+0x4698>
-  44efba:	00 
-  44efbb:	7a 06                	jp     44efc3 <MEMORY_T::POKEB(double, double)+0x2c43>
-  44efbd:	0f 84 9e 00 00 00    	je     44f061 <MEMORY_T::POKEB(double, double)+0x2ce1>
-;   case &H0000A0001 
-  44efc3:	66 0f 2e 15 cd 4b 02 	ucomisd xmm2,QWORD PTR [rip+0x24bcd]        # 473b98 <_IO_stdin_used+0x4b98>
-  44efca:	00 
-  44efcb:	7a 06                	jp     44efd3 <MEMORY_T::POKEB(double, double)+0x2c53>
-  44efcd:	0f 84 e0 00 00 00    	je     44f0b3 <MEMORY_T::POKEB(double, double)+0x2d33>
-;   case &H0000A0002 
-  44efd3:	66 0f 2e 15 c5 4b 02 	ucomisd xmm2,QWORD PTR [rip+0x24bc5]        # 473ba0 <_IO_stdin_used+0x4ba0>
-  44efda:	00 
-  44efdb:	7a 06                	jp     44efe3 <MEMORY_T::POKEB(double, double)+0x2c63>
-  44efdd:	0f 84 01 01 00 00    	je     44f0e4 <MEMORY_T::POKEB(double, double)+0x2d64>
-;   case in range(&H0000C0000, &H0000C7FF0) ' Screen Memory(0x000C0000-0x000C7FF0)
-  44efe3:	f2 0f 10 05 bd 4b 02 	movsd  xmm0,QWORD PTR [rip+0x24bbd]        # 473ba8 <_IO_stdin_used+0x4ba8>
-  44efea:	00 
-  44efeb:	66 0f 2f c2          	comisd xmm0,xmm2
-  44efef:	0f 87 c3 da ff ff    	ja     44cab8 <MEMORY_T::POKEB(double, double)+0x738>
-  44eff5:	66 0f 2f 15 b3 4b 02 	comisd xmm2,QWORD PTR [rip+0x24bb3]        # 473bb0 <_IO_stdin_used+0x4bb0>
-  44effc:	00 
-  44effd:	f2 0f 11 4c 24 08    	movsd  QWORD PTR [rsp+0x8],xmm1
-  44f003:	0f 87 af da ff ff    	ja     44cab8 <MEMORY_T::POKEB(double, double)+0x738>
-;   mov(adr subt, &H00000C0000)
-  44f009:	f2 0f 5c d0          	subsd  xmm2,xmm0
-;   mov(char(adr),v)
-  44f00d:	66 0f 28 c2          	movapd xmm0,xmm2
-  44f011:	e8 3a 63 fb ff       	call   405350 <nearbyint@plt>
-  44f016:	f2 0f 10 4c 24 08    	movsd  xmm1,QWORD PTR [rsp+0x8]
-  44f01c:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  44f021:	f2 0f 11 8c c5 00 00 	movsd  QWORD PTR [rbp+rax*8+0x8040000],xmm1
-  44f028:	04 08 
+  40fc0f:	41 5c                	pop    r12
+;	 (@glScreen)(mem64(49355),mem64(49356),,,true)
+  40fc11:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
 ;end def
-  44f02a:	e9 89 da ff ff       	jmp    44cab8 <MEMORY_T::POKEB(double, double)+0x738>
-;      poke64(49412d,0) 'Screen Unlock
-  44f02f:	48 8b 44 24 48       	mov    rax,QWORD PTR [rsp+0x48]
-  44f034:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  44f03b:	00 00 
-  44f03d:	0f 85 ea f2 ff ff    	jne    44e32d <MEMORY_T::POKEB(double, double)+0x1fad>
-  44f043:	f2 0f 10 05 bd 43 02 	movsd  xmm0,QWORD PTR [rip+0x243bd]        # 473408 <_IO_stdin_used+0x4408>
-  44f04a:	00 
+  40fc18:	41 5d                	pop    r13
+  40fc1a:	41 5e                	pop    r14
+  40fc1c:	41 5f                	pop    r15
+;	 (@glScreen)(mem64(49355),mem64(49356),,,true)
+  40fc1e:	e9 7d 6c ff ff       	jmp    4068a0 <GLSCREEN>
+;         select case as const cast(ulongint, v)	
+  40fc23:	f2 0f 10 44 24 18    	movsd  xmm0,QWORD PTR [rsp+0x18]
+  40fc29:	e8 32 57 ff ff       	call   405360 <nearbyint@plt>
+  40fc2e:	f2 0f 10 0d 4a 18 07 	movsd  xmm1,QWORD PTR [rip+0x7184a]        # 481480 <_IO_stdin_used+0x4480>
+  40fc35:	00 
+  40fc36:	66 0f 2f c1          	comisd xmm0,xmm1
+  40fc3a:	f2 0f 11 0c 24       	movsd  QWORD PTR [rsp],xmm1
+  40fc3f:	0f 83 e3 24 00 00    	jae    412128 <MEMORY_T::POKE64(double, double)+0x8858>
+  40fc45:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  40fc4a:	48 83 f8 16          	cmp    rax,0x16
+  40fc4e:	0f 87 ac c7 ff ff    	ja     40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+  40fc54:	48 8d 15 05 69 07 00 	lea    rdx,[rip+0x76905]        # 486560 <tmp$2888.4>
+  40fc5b:	48 8b 04 c2          	mov    rax,QWORD PTR [rdx+rax*8]
+;						case 145: print #1, "p";
+  40fc5f:	4c 8d 3d 9a 83 07 00 	lea    r15,[rip+0x7839a]        # 488000 <tmp$2883.9>
+;						case 014: print #1, "hashnoise";
+  40fc66:	4c 8d 35 93 8b 07 00 	lea    r14,[rip+0x78b93]        # 488800 <tmp$2882.10>
+;				     select case as const cast(ulongint, mem64(49361))
+  40fc6d:	48 bb 00 00 00 00 00 	movabs rbx,0x8000000000000000
+  40fc74:	00 00 80 
+;				case 016d ' Header selector
+  40fc77:	4c 8d 2d 42 8c 07 00 	lea    r13,[rip+0x78c42]        # 4888c0 <tmp$2881.11>
+;						case 111: print #1, "inspect";
+  40fc7e:	4c 8d 25 9b 8c 07 00 	lea    r12,[rip+0x78c9b]        # 488920 <tmp$2880.12>
+;'           may be accessing.						
+  40fc85:	48 8d 2d 94 94 07 00 	lea    rbp,[rip+0x79494]        # 489120 <tmp$2879.13>
+  40fc8c:	ff e0                	jmp    rax
+;  elseif logic_or(logic_or(mov(adr, BGCOL0), mov(adr, BGCOL1)), logic_or(mov(adr, BGCOL2), mov(adr, BGCOL3))) then 
+  40fc8e:	f2 0f 10 1c 24       	movsd  xmm3,QWORD PTR [rsp]
+  40fc93:	31 d2                	xor    edx,edx
+  40fc95:	66 0f 2e 1d 73 17 07 	ucomisd xmm3,QWORD PTR [rip+0x71773]        # 481410 <_IO_stdin_used+0x4410>
+  40fc9c:	00 
+  40fc9d:	b8 00 00 00 00       	mov    eax,0x0
+  40fca2:	0f 9b c2             	setnp  dl
+  40fca5:	0f 45 d0             	cmovne edx,eax
+  40fca8:	89 d1                	mov    ecx,edx
+  40fcaa:	31 d2                	xor    edx,edx
+  40fcac:	f7 d9                	neg    ecx
+  40fcae:	66 0f 2e 1d 6a 18 07 	ucomisd xmm3,QWORD PTR [rip+0x7186a]        # 481520 <_IO_stdin_used+0x4520>
+  40fcb5:	00 
+  40fcb6:	0f 9b c2             	setnp  dl
+  40fcb9:	0f 45 d0             	cmovne edx,eax
+  40fcbc:	f7 da                	neg    edx
+  40fcbe:	09 d1                	or     ecx,edx
+  40fcc0:	31 d2                	xor    edx,edx
+  40fcc2:	66 0f 2e 1d 5e 18 07 	ucomisd xmm3,QWORD PTR [rip+0x7185e]        # 481528 <_IO_stdin_used+0x4528>
+  40fcc9:	00 
+  40fcca:	0f 9b c2             	setnp  dl
+  40fccd:	0f 45 d0             	cmovne edx,eax
+  40fcd0:	f7 da                	neg    edx
+  40fcd2:	09 d1                	or     ecx,edx
+  40fcd4:	31 d2                	xor    edx,edx
+  40fcd6:	66 0f 2e 1d 52 18 07 	ucomisd xmm3,QWORD PTR [rip+0x71852]        # 481530 <_IO_stdin_used+0x4530>
+  40fcdd:	00 
+  40fcde:	0f 9b c2             	setnp  dl
+  40fce1:	0f 44 c2             	cmove  eax,edx
+  40fce4:	f7 d8                	neg    eax
+  40fce6:	09 c8                	or     eax,ecx
+  40fce8:	0f 84 02 bd ff ff    	je     40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;   cmp v eq peek(ubyte,@nibbles(&B0000)) jmp L1830
+  40fcee:	48 8d 05 8b 10 0a 00 	lea    rax,[rip+0xa108b]        # 4b0d80 <NIBBLES$>
+  40fcf5:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fcf9:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  40fcfc:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  40fd01:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fd07:	7a 06                	jp     40fd0f <MEMORY_T::POKE64(double, double)+0x643f>
+  40fd09:	0f 84 90 28 00 00    	je     41259f <MEMORY_T::POKE64(double, double)+0x8ccf>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) jmp L1831
+  40fd0f:	0f b6 35 6b 10 0a 00 	movzx  esi,BYTE PTR [rip+0xa106b]        # 4b0d81 <NIBBLES$+0x1>
+  40fd16:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fd1a:	f2 48 0f 2a c6       	cvtsi2sd xmm0,rsi
+  40fd1f:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fd25:	7a 06                	jp     40fd2d <MEMORY_T::POKE64(double, double)+0x645d>
+  40fd27:	0f 84 b9 2a 00 00    	je     4127e6 <MEMORY_T::POKE64(double, double)+0x8f16>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) jmp L1832
+  40fd2d:	0f b6 3d 4e 10 0a 00 	movzx  edi,BYTE PTR [rip+0xa104e]        # 4b0d82 <NIBBLES$+0x2>
+  40fd34:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fd38:	f2 48 0f 2a c7       	cvtsi2sd xmm0,rdi
+  40fd3d:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fd43:	7a 06                	jp     40fd4b <MEMORY_T::POKE64(double, double)+0x647b>
+  40fd45:	0f 84 bc 2c 00 00    	je     412a07 <MEMORY_T::POKE64(double, double)+0x9137>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) jmp L1833
+  40fd4b:	44 0f b6 1d 30 10 0a 	movzx  r11d,BYTE PTR [rip+0xa1030]        # 4b0d83 <NIBBLES$+0x3>
+  40fd52:	00 
+  40fd53:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fd57:	f2 49 0f 2a c3       	cvtsi2sd xmm0,r11
+  40fd5c:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fd62:	7a 06                	jp     40fd6a <MEMORY_T::POKE64(double, double)+0x649a>
+  40fd64:	0f 84 b8 31 00 00    	je     412f22 <MEMORY_T::POKE64(double, double)+0x9652>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) jmp L1834
+  40fd6a:	44 0f b6 15 12 10 0a 	movzx  r10d,BYTE PTR [rip+0xa1012]        # 4b0d84 <NIBBLES$+0x4>
+  40fd71:	00 
+  40fd72:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fd76:	f2 49 0f 2a c2       	cvtsi2sd xmm0,r10
+  40fd7b:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fd81:	4c 89 d0             	mov    rax,r10
+  40fd84:	7a 06                	jp     40fd8c <MEMORY_T::POKE64(double, double)+0x64bc>
+  40fd86:	0f 84 f1 3b 00 00    	je     41397d <MEMORY_T::POKE64(double, double)+0xa0ad>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) jmp L1835
+  40fd8c:	44 0f b6 0d f1 0f 0a 	movzx  r9d,BYTE PTR [rip+0xa0ff1]        # 4b0d85 <NIBBLES$+0x5>
+  40fd93:	00 
+  40fd94:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fd98:	f2 49 0f 2a c1       	cvtsi2sd xmm0,r9
+  40fd9d:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fda3:	7a 06                	jp     40fdab <MEMORY_T::POKE64(double, double)+0x64db>
+  40fda5:	0f 84 37 3c 00 00    	je     4139e2 <MEMORY_T::POKE64(double, double)+0xa112>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) jmp L1836
+  40fdab:	44 0f b6 05 d3 0f 0a 	movzx  r8d,BYTE PTR [rip+0xa0fd3]        # 4b0d86 <NIBBLES$+0x6>
+  40fdb2:	00 
+  40fdb3:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fdb7:	f2 49 0f 2a c0       	cvtsi2sd xmm0,r8
+  40fdbc:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fdc2:	7a 06                	jp     40fdca <MEMORY_T::POKE64(double, double)+0x64fa>
+  40fdc4:	0f 84 fa 3e 00 00    	je     413cc4 <MEMORY_T::POKE64(double, double)+0xa3f4>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) jmp L1837
+  40fdca:	0f b6 2d b6 0f 0a 00 	movzx  ebp,BYTE PTR [rip+0xa0fb6]        # 4b0d87 <NIBBLES$+0x7>
+  40fdd1:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fdd5:	f2 48 0f 2a c5       	cvtsi2sd xmm0,rbp
+  40fdda:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fde0:	7a 06                	jp     40fde8 <MEMORY_T::POKE64(double, double)+0x6518>
+  40fde2:	0f 84 aa 5b 00 00    	je     415992 <MEMORY_T::POKE64(double, double)+0xc0c2>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) jmp L1838
+  40fde8:	44 0f b6 2d 98 0f 0a 	movzx  r13d,BYTE PTR [rip+0xa0f98]        # 4b0d88 <NIBBLES$+0x8>
+  40fdef:	00 
+  40fdf0:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fdf4:	f2 49 0f 2a c5       	cvtsi2sd xmm0,r13
+  40fdf9:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fdff:	7a 06                	jp     40fe07 <MEMORY_T::POKE64(double, double)+0x6537>
+  40fe01:	0f 84 3c 5b 00 00    	je     415943 <MEMORY_T::POKE64(double, double)+0xc073>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) jmp L1839
+  40fe07:	44 0f b6 25 7a 0f 0a 	movzx  r12d,BYTE PTR [rip+0xa0f7a]        # 4b0d89 <NIBBLES$+0x9>
+  40fe0e:	00 
+  40fe0f:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fe13:	f2 49 0f 2a c4       	cvtsi2sd xmm0,r12
+  40fe18:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fe1e:	7a 06                	jp     40fe26 <MEMORY_T::POKE64(double, double)+0x6556>
+  40fe20:	0f 84 25 5d 00 00    	je     415b4b <MEMORY_T::POKE64(double, double)+0xc27b>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) jmp L1840
+  40fe26:	0f b6 1d 5d 0f 0a 00 	movzx  ebx,BYTE PTR [rip+0xa0f5d]        # 4b0d8a <NIBBLES$+0xa>
+  40fe2d:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fe31:	f2 48 0f 2a c3       	cvtsi2sd xmm0,rbx
+  40fe36:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fe3c:	48 89 5c 24 20       	mov    QWORD PTR [rsp+0x20],rbx
+  40fe41:	7a 06                	jp     40fe49 <MEMORY_T::POKE64(double, double)+0x6579>
+  40fe43:	0f 84 51 79 00 00    	je     41779a <MEMORY_T::POKE64(double, double)+0xdeca>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) jmp L1841
+  40fe49:	0f b6 1d 3b 0f 0a 00 	movzx  ebx,BYTE PTR [rip+0xa0f3b]        # 4b0d8b <NIBBLES$+0xb>
+  40fe50:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fe54:	f2 48 0f 2a c3       	cvtsi2sd xmm0,rbx
+  40fe59:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fe5f:	48 89 5c 24 60       	mov    QWORD PTR [rsp+0x60],rbx
+  40fe64:	7a 06                	jp     40fe6c <MEMORY_T::POKE64(double, double)+0x659c>
+  40fe66:	0f 84 7d 79 00 00    	je     4177e9 <MEMORY_T::POKE64(double, double)+0xdf19>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) jmp L1842
+  40fe6c:	0f b6 1d 19 0f 0a 00 	movzx  ebx,BYTE PTR [rip+0xa0f19]        # 4b0d8c <NIBBLES$+0xc>
+  40fe73:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fe77:	f2 48 0f 2a c3       	cvtsi2sd xmm0,rbx
+  40fe7c:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fe82:	48 89 5c 24 30       	mov    QWORD PTR [rsp+0x30],rbx
+  40fe87:	7a 06                	jp     40fe8f <MEMORY_T::POKE64(double, double)+0x65bf>
+  40fe89:	0f 84 cb 77 00 00    	je     41765a <MEMORY_T::POKE64(double, double)+0xdd8a>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) jmp L1843
+  40fe8f:	44 0f b6 3d f6 0e 0a 	movzx  r15d,BYTE PTR [rip+0xa0ef6]        # 4b0d8d <NIBBLES$+0xd>
+  40fe96:	00 
+  40fe97:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fe9b:	f2 49 0f 2a c7       	cvtsi2sd xmm0,r15
+  40fea0:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fea6:	7a 06                	jp     40feae <MEMORY_T::POKE64(double, double)+0x65de>
+  40fea8:	0f 84 f7 77 00 00    	je     4176a5 <MEMORY_T::POKE64(double, double)+0xddd5>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) jmp L1844
+  40feae:	44 0f b6 35 d8 0e 0a 	movzx  r14d,BYTE PTR [rip+0xa0ed8]        # 4b0d8e <NIBBLES$+0xe>
+  40feb5:	00 
+  40feb6:	66 0f ef c0          	pxor   xmm0,xmm0
+  40feba:	f2 49 0f 2a c6       	cvtsi2sd xmm0,r14
+  40febf:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fec5:	7a 06                	jp     40fecd <MEMORY_T::POKE64(double, double)+0x65fd>
+  40fec7:	0f 84 27 78 00 00    	je     4176f4 <MEMORY_T::POKE64(double, double)+0xde24>
+;   cmp v eq peek(ubyte,@nibbles(&B1111)) jmp L1845
+  40fecd:	0f b6 1d bb 0e 0a 00 	movzx  ebx,BYTE PTR [rip+0xa0ebb]        # 4b0d8f <NIBBLES$+0xf>
+  40fed4:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fed8:	f2 48 0f 2a c3       	cvtsi2sd xmm0,rbx
+  40fedd:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fee3:	7a 06                	jp     40feeb <MEMORY_T::POKE64(double, double)+0x661b>
+  40fee5:	0f 84 60 78 00 00    	je     41774b <MEMORY_T::POKE64(double, double)+0xde7b>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) jmp L1846
+  40feeb:	83 e0 3f             	and    eax,0x3f
+  40feee:	48 89 f2             	mov    rdx,rsi
+  40fef1:	66 0f ef c0          	pxor   xmm0,xmm0
+  40fef5:	89 c1                	mov    ecx,eax
+  40fef7:	48 d3 e2             	shl    rdx,cl
+  40fefa:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  40feff:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40ff05:	7a 06                	jp     40ff0d <MEMORY_T::POKE64(double, double)+0x663d>
+  40ff07:	0f 84 d1 74 00 00    	je     4173de <MEMORY_T::POKE64(double, double)+0xdb0e>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L1847
+  40ff0d:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  40ff11:	66 0f ef c0          	pxor   xmm0,xmm0
+  40ff15:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  40ff1a:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40ff20:	7a 06                	jp     40ff28 <MEMORY_T::POKE64(double, double)+0x6658>
+  40ff22:	0f 84 05 75 00 00    	je     41742d <MEMORY_T::POKE64(double, double)+0xdb5d>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L1848
+  40ff28:	48 8d 04 17          	lea    rax,[rdi+rdx*1]
+  40ff2c:	66 0f ef c0          	pxor   xmm0,xmm0
+  40ff30:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  40ff35:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40ff3b:	7a 06                	jp     40ff43 <MEMORY_T::POKE64(double, double)+0x6673>
+  40ff3d:	0f 84 39 75 00 00    	je     41747c <MEMORY_T::POKE64(double, double)+0xdbac>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L1849
+  40ff43:	49 8d 04 13          	lea    rax,[r11+rdx*1]
+  40ff47:	66 0f ef c0          	pxor   xmm0,xmm0
+  40ff4b:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  40ff50:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40ff56:	7a 06                	jp     40ff5e <MEMORY_T::POKE64(double, double)+0x668e>
+  40ff58:	0f 84 69 75 00 00    	je     4174c7 <MEMORY_T::POKE64(double, double)+0xdbf7>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L1850
+  40ff5e:	49 8d 04 12          	lea    rax,[r10+rdx*1]
+  40ff62:	66 0f ef c0          	pxor   xmm0,xmm0
+  40ff66:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  40ff6b:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40ff71:	7a 06                	jp     40ff79 <MEMORY_T::POKE64(double, double)+0x66a9>
+  40ff73:	0f 84 9d 75 00 00    	je     417516 <MEMORY_T::POKE64(double, double)+0xdc46>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L1851
+  40ff79:	49 8d 04 11          	lea    rax,[r9+rdx*1]
+  40ff7d:	66 0f ef c0          	pxor   xmm0,xmm0
+  40ff81:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  40ff86:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40ff8c:	7a 06                	jp     40ff94 <MEMORY_T::POKE64(double, double)+0x66c4>
+  40ff8e:	0f 84 d1 75 00 00    	je     417565 <MEMORY_T::POKE64(double, double)+0xdc95>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L1852
+  40ff94:	49 8d 04 10          	lea    rax,[r8+rdx*1]
+  40ff98:	66 0f ef c0          	pxor   xmm0,xmm0
+  40ff9c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  40ffa1:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40ffa7:	7a 06                	jp     40ffaf <MEMORY_T::POKE64(double, double)+0x66df>
+  40ffa9:	0f 84 0d 76 00 00    	je     4175bc <MEMORY_T::POKE64(double, double)+0xdcec>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L1853
+  40ffaf:	48 8d 44 15 00       	lea    rax,[rbp+rdx*1+0x0]
+  40ffb4:	66 0f ef c0          	pxor   xmm0,xmm0
+  40ffb8:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  40ffbd:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40ffc3:	7a 06                	jp     40ffcb <MEMORY_T::POKE64(double, double)+0x66fb>
+  40ffc5:	0f 84 40 76 00 00    	je     41760b <MEMORY_T::POKE64(double, double)+0xdd3b>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)) jmp L1854
+  40ffcb:	49 8d 44 15 00       	lea    rax,[r13+rdx*1+0x0]
+  40ffd0:	66 0f ef c0          	pxor   xmm0,xmm0
+  40ffd4:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  40ffd9:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40ffdf:	7a 06                	jp     40ffe7 <MEMORY_T::POKE64(double, double)+0x6717>
+  40ffe1:	0f 84 fb 6e 00 00    	je     416ee2 <MEMORY_T::POKE64(double, double)+0xd612>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) jmp L1855
+  40ffe7:	49 8d 04 14          	lea    rax,[r12+rdx*1]
+  40ffeb:	66 0f ef c0          	pxor   xmm0,xmm0
+  40ffef:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  40fff4:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  40fffa:	7a 06                	jp     410002 <MEMORY_T::POKE64(double, double)+0x6732>
+  40fffc:	0f 84 2b 6f 00 00    	je     416f2d <MEMORY_T::POKE64(double, double)+0xd65d>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) jmp L1856
+  410002:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+  410007:	66 0f ef c0          	pxor   xmm0,xmm0
+  41000b:	48 01 d0             	add    rax,rdx
+  41000e:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410013:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410019:	7a 06                	jp     410021 <MEMORY_T::POKE64(double, double)+0x6751>
+  41001b:	0f 84 5b 6f 00 00    	je     416f7c <MEMORY_T::POKE64(double, double)+0xd6ac>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) jmp L1857
+  410021:	48 8b 44 24 60       	mov    rax,QWORD PTR [rsp+0x60]
+  410026:	66 0f ef c0          	pxor   xmm0,xmm0
+  41002a:	48 01 d0             	add    rax,rdx
+  41002d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410032:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410038:	7a 06                	jp     410040 <MEMORY_T::POKE64(double, double)+0x6770>
+  41003a:	0f 84 8b 6f 00 00    	je     416fcb <MEMORY_T::POKE64(double, double)+0xd6fb>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) jmp L1858
+  410040:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
+  410045:	66 0f ef c0          	pxor   xmm0,xmm0
+  410049:	48 01 d0             	add    rax,rdx
+  41004c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410051:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410057:	7a 06                	jp     41005f <MEMORY_T::POKE64(double, double)+0x678f>
+  410059:	0f 84 bb 6f 00 00    	je     41701a <MEMORY_T::POKE64(double, double)+0xd74a>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)) jmp L1859
+  41005f:	49 8d 04 17          	lea    rax,[r15+rdx*1]
+  410063:	66 0f ef c0          	pxor   xmm0,xmm0
+  410067:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41006c:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410072:	7a 06                	jp     41007a <MEMORY_T::POKE64(double, double)+0x67aa>
+  410074:	0f 84 f7 6f 00 00    	je     417071 <MEMORY_T::POKE64(double, double)+0xd7a1>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) jmp L1860
+  41007a:	49 8d 04 16          	lea    rax,[r14+rdx*1]
+  41007e:	66 0f ef c0          	pxor   xmm0,xmm0
+  410082:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410087:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41008d:	7a 06                	jp     410095 <MEMORY_T::POKE64(double, double)+0x67c5>
+  41008f:	0f 84 2b 70 00 00    	je     4170c0 <MEMORY_T::POKE64(double, double)+0xd7f0>
+;   cmp v eq peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L1861
+  410095:	48 8d 04 13          	lea    rax,[rbx+rdx*1]
+  410099:	66 0f ef c0          	pxor   xmm0,xmm0
+  41009d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4100a2:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4100a8:	7a 06                	jp     4100b0 <MEMORY_T::POKE64(double, double)+0x67e0>
+  4100aa:	0f 84 5b 70 00 00    	je     41710b <MEMORY_T::POKE64(double, double)+0xd83b>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) jmp L1862
+  4100b0:	48 89 fa             	mov    rdx,rdi
+  4100b3:	66 0f ef c0          	pxor   xmm0,xmm0
+  4100b7:	48 d3 e2             	shl    rdx,cl
+  4100ba:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  4100bf:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4100c5:	7a 06                	jp     4100cd <MEMORY_T::POKE64(double, double)+0x67fd>
+  4100c7:	0f 84 8d 70 00 00    	je     41715a <MEMORY_T::POKE64(double, double)+0xd88a>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L1863
+  4100cd:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  4100d1:	66 0f ef c0          	pxor   xmm0,xmm0
+  4100d5:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4100da:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4100e0:	7a 06                	jp     4100e8 <MEMORY_T::POKE64(double, double)+0x6818>
+  4100e2:	0f 84 c1 70 00 00    	je     4171a9 <MEMORY_T::POKE64(double, double)+0xd8d9>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L1864
+  4100e8:	48 8d 04 17          	lea    rax,[rdi+rdx*1]
+  4100ec:	66 0f ef c0          	pxor   xmm0,xmm0
+  4100f0:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4100f5:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4100fb:	7a 06                	jp     410103 <MEMORY_T::POKE64(double, double)+0x6833>
+  4100fd:	0f 84 f5 70 00 00    	je     4171f8 <MEMORY_T::POKE64(double, double)+0xd928>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L1865
+  410103:	49 8d 04 13          	lea    rax,[r11+rdx*1]
+  410107:	66 0f ef c0          	pxor   xmm0,xmm0
+  41010b:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410110:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410116:	7a 06                	jp     41011e <MEMORY_T::POKE64(double, double)+0x684e>
+  410118:	0f 84 29 71 00 00    	je     417247 <MEMORY_T::POKE64(double, double)+0xd977>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L1866
+  41011e:	49 8d 04 12          	lea    rax,[r10+rdx*1]
+  410122:	66 0f ef c0          	pxor   xmm0,xmm0
+  410126:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41012b:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410131:	7a 06                	jp     410139 <MEMORY_T::POKE64(double, double)+0x6869>
+  410133:	0f 84 65 71 00 00    	je     41729e <MEMORY_T::POKE64(double, double)+0xd9ce>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L1867
+  410139:	49 8d 04 11          	lea    rax,[r9+rdx*1]
+  41013d:	66 0f ef c0          	pxor   xmm0,xmm0
+  410141:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410146:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41014c:	7a 06                	jp     410154 <MEMORY_T::POKE64(double, double)+0x6884>
+  41014e:	0f 84 95 71 00 00    	je     4172e9 <MEMORY_T::POKE64(double, double)+0xda19>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L1868
+  410154:	49 8d 04 10          	lea    rax,[r8+rdx*1]
+  410158:	66 0f ef c0          	pxor   xmm0,xmm0
+  41015c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410161:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410167:	7a 06                	jp     41016f <MEMORY_T::POKE64(double, double)+0x689f>
+  410169:	0f 84 d1 71 00 00    	je     417340 <MEMORY_T::POKE64(double, double)+0xda70>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L1869
+  41016f:	48 8d 44 15 00       	lea    rax,[rbp+rdx*1+0x0]
+  410174:	66 0f ef c0          	pxor   xmm0,xmm0
+  410178:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41017d:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410183:	7a 06                	jp     41018b <MEMORY_T::POKE64(double, double)+0x68bb>
+  410185:	0f 84 04 72 00 00    	je     41738f <MEMORY_T::POKE64(double, double)+0xdabf>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)) jmp L1870
+  41018b:	49 8d 44 15 00       	lea    rax,[r13+rdx*1+0x0]
+  410190:	66 0f ef c0          	pxor   xmm0,xmm0
+  410194:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410199:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41019f:	7a 06                	jp     4101a7 <MEMORY_T::POKE64(double, double)+0x68d7>
+  4101a1:	0f 84 2e 8c 00 00    	je     418dd5 <MEMORY_T::POKE64(double, double)+0xf505>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) jmp L1871
+  4101a7:	49 8d 04 14          	lea    rax,[r12+rdx*1]
+  4101ab:	66 0f ef c0          	pxor   xmm0,xmm0
+  4101af:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4101b4:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4101ba:	7a 06                	jp     4101c2 <MEMORY_T::POKE64(double, double)+0x68f2>
+  4101bc:	0f 84 a4 60 03 00    	je     446266 <MEMORY_T::POKE64(double, double)+0x3c996>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) jmp L1872
+  4101c2:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+  4101c7:	66 0f ef c0          	pxor   xmm0,xmm0
+  4101cb:	48 01 d0             	add    rax,rdx
+  4101ce:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4101d3:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4101d9:	7a 06                	jp     4101e1 <MEMORY_T::POKE64(double, double)+0x6911>
+  4101db:	0f 84 cf 5f 03 00    	je     4461b0 <MEMORY_T::POKE64(double, double)+0x3c8e0>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) jmp L1873
+  4101e1:	48 8b 44 24 60       	mov    rax,QWORD PTR [rsp+0x60]
+  4101e6:	66 0f ef c0          	pxor   xmm0,xmm0
+  4101ea:	48 01 d0             	add    rax,rdx
+  4101ed:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4101f2:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4101f8:	7a 06                	jp     410200 <MEMORY_T::POKE64(double, double)+0x6930>
+  4101fa:	0f 84 07 60 03 00    	je     446207 <MEMORY_T::POKE64(double, double)+0x3c937>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) jmp L1874
+  410200:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
+  410205:	66 0f ef c0          	pxor   xmm0,xmm0
+  410209:	48 01 d0             	add    rax,rdx
+  41020c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410211:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410217:	7a 06                	jp     41021f <MEMORY_T::POKE64(double, double)+0x694f>
+  410219:	0f 84 25 5e 03 00    	je     446044 <MEMORY_T::POKE64(double, double)+0x3c774>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)) jmp L1875
+  41021f:	49 8d 04 17          	lea    rax,[r15+rdx*1]
+  410223:	66 0f ef c0          	pxor   xmm0,xmm0
+  410227:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41022c:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410232:	7a 06                	jp     41023a <MEMORY_T::POKE64(double, double)+0x696a>
+  410234:	0f 84 65 5e 03 00    	je     44609f <MEMORY_T::POKE64(double, double)+0x3c7cf>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) jmp L1876
+  41023a:	49 8d 04 16          	lea    rax,[r14+rdx*1]
+  41023e:	66 0f ef c0          	pxor   xmm0,xmm0
+  410242:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410247:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41024d:	7a 06                	jp     410255 <MEMORY_T::POKE64(double, double)+0x6985>
+  41024f:	0f 84 a5 5e 03 00    	je     4460fa <MEMORY_T::POKE64(double, double)+0x3c82a>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L1877
+  410255:	48 8d 04 13          	lea    rax,[rbx+rdx*1]
+  410259:	66 0f ef c0          	pxor   xmm0,xmm0
+  41025d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410262:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410268:	7a 06                	jp     410270 <MEMORY_T::POKE64(double, double)+0x69a0>
+  41026a:	0f 84 e5 5e 03 00    	je     446155 <MEMORY_T::POKE64(double, double)+0x3c885>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) jmp L1878
+  410270:	4c 89 da             	mov    rdx,r11
+  410273:	66 0f ef c0          	pxor   xmm0,xmm0
+  410277:	48 d3 e2             	shl    rdx,cl
+  41027a:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  41027f:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410285:	7a 06                	jp     41028d <MEMORY_T::POKE64(double, double)+0x69bd>
+  410287:	0f 84 0f 5b 03 00    	je     445d9c <MEMORY_T::POKE64(double, double)+0x3c4cc>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L1879
+  41028d:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  410291:	66 0f ef c0          	pxor   xmm0,xmm0
+  410295:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41029a:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4102a0:	7a 06                	jp     4102a8 <MEMORY_T::POKE64(double, double)+0x69d8>
+  4102a2:	0f 84 43 5b 03 00    	je     445deb <MEMORY_T::POKE64(double, double)+0x3c51b>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L1880
+  4102a8:	48 8d 04 17          	lea    rax,[rdi+rdx*1]
+  4102ac:	66 0f ef c0          	pxor   xmm0,xmm0
+  4102b0:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4102b5:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4102bb:	7a 06                	jp     4102c3 <MEMORY_T::POKE64(double, double)+0x69f3>
+  4102bd:	0f 84 83 5b 03 00    	je     445e46 <MEMORY_T::POKE64(double, double)+0x3c576>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L1881
+  4102c3:	49 8d 04 13          	lea    rax,[r11+rdx*1]
+  4102c7:	66 0f ef c0          	pxor   xmm0,xmm0
+  4102cb:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4102d0:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4102d6:	7a 06                	jp     4102de <MEMORY_T::POKE64(double, double)+0x6a0e>
+  4102d8:	0f 84 c3 5b 03 00    	je     445ea1 <MEMORY_T::POKE64(double, double)+0x3c5d1>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L1882
+  4102de:	49 8d 04 12          	lea    rax,[r10+rdx*1]
+  4102e2:	66 0f ef c0          	pxor   xmm0,xmm0
+  4102e6:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4102eb:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4102f1:	7a 06                	jp     4102f9 <MEMORY_T::POKE64(double, double)+0x6a29>
+  4102f3:	0f 84 fb 5b 03 00    	je     445ef4 <MEMORY_T::POKE64(double, double)+0x3c624>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L1883
+  4102f9:	49 8d 04 11          	lea    rax,[r9+rdx*1]
+  4102fd:	66 0f ef c0          	pxor   xmm0,xmm0
+  410301:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410306:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41030c:	7a 06                	jp     410314 <MEMORY_T::POKE64(double, double)+0x6a44>
+  41030e:	0f 84 33 5c 03 00    	je     445f47 <MEMORY_T::POKE64(double, double)+0x3c677>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L1884
+  410314:	49 8d 04 10          	lea    rax,[r8+rdx*1]
+  410318:	66 0f ef c0          	pxor   xmm0,xmm0
+  41031c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410321:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410327:	7a 06                	jp     41032f <MEMORY_T::POKE64(double, double)+0x6a5f>
+  410329:	0f 84 6b 5c 03 00    	je     445f9a <MEMORY_T::POKE64(double, double)+0x3c6ca>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L1885
+  41032f:	48 8d 44 15 00       	lea    rax,[rbp+rdx*1+0x0]
+  410334:	66 0f ef c0          	pxor   xmm0,xmm0
+  410338:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41033d:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410343:	7a 06                	jp     41034b <MEMORY_T::POKE64(double, double)+0x6a7b>
+  410345:	0f 84 9e 5c 03 00    	je     445fe9 <MEMORY_T::POKE64(double, double)+0x3c719>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)) jmp L1886
+  41034b:	49 8d 44 15 00       	lea    rax,[r13+rdx*1+0x0]
+  410350:	66 0f ef c0          	pxor   xmm0,xmm0
+  410354:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410359:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41035f:	7a 06                	jp     410367 <MEMORY_T::POKE64(double, double)+0x6a97>
+  410361:	0f 84 e5 54 03 00    	je     44584c <MEMORY_T::POKE64(double, double)+0x3bf7c>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) jmp L1887
+  410367:	49 8d 04 14          	lea    rax,[r12+rdx*1]
+  41036b:	66 0f ef c0          	pxor   xmm0,xmm0
+  41036f:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410374:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41037a:	7a 06                	jp     410382 <MEMORY_T::POKE64(double, double)+0x6ab2>
+  41037c:	0f 84 1d 55 03 00    	je     44589f <MEMORY_T::POKE64(double, double)+0x3bfcf>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) jmp L1888
+  410382:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+  410387:	66 0f ef c0          	pxor   xmm0,xmm0
+  41038b:	48 01 d0             	add    rax,rdx
+  41038e:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410393:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410399:	7a 06                	jp     4103a1 <MEMORY_T::POKE64(double, double)+0x6ad1>
+  41039b:	0f 84 59 55 03 00    	je     4458fa <MEMORY_T::POKE64(double, double)+0x3c02a>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) jmp L1889
+  4103a1:	48 8b 44 24 60       	mov    rax,QWORD PTR [rsp+0x60]
+  4103a6:	66 0f ef c0          	pxor   xmm0,xmm0
+  4103aa:	48 01 d0             	add    rax,rdx
+  4103ad:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4103b2:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4103b8:	7a 06                	jp     4103c0 <MEMORY_T::POKE64(double, double)+0x6af0>
+  4103ba:	0f 84 8d 55 03 00    	je     44594d <MEMORY_T::POKE64(double, double)+0x3c07d>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) jmp L1890
+  4103c0:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
+  4103c5:	66 0f ef c0          	pxor   xmm0,xmm0
+  4103c9:	48 01 d0             	add    rax,rdx
+  4103cc:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4103d1:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4103d7:	7a 06                	jp     4103df <MEMORY_T::POKE64(double, double)+0x6b0f>
+  4103d9:	0f 84 c1 55 03 00    	je     4459a0 <MEMORY_T::POKE64(double, double)+0x3c0d0>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)) jmp L1891
+  4103df:	49 8d 04 17          	lea    rax,[r15+rdx*1]
+  4103e3:	66 0f ef c0          	pxor   xmm0,xmm0
+  4103e7:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4103ec:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4103f2:	7a 06                	jp     4103fa <MEMORY_T::POKE64(double, double)+0x6b2a>
+  4103f4:	0f 84 f5 55 03 00    	je     4459ef <MEMORY_T::POKE64(double, double)+0x3c11f>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) jmp L1892
+  4103fa:	49 8d 04 16          	lea    rax,[r14+rdx*1]
+  4103fe:	66 0f ef c0          	pxor   xmm0,xmm0
+  410402:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410407:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41040d:	7a 06                	jp     410415 <MEMORY_T::POKE64(double, double)+0x6b45>
+  41040f:	0f 84 35 56 03 00    	je     445a4a <MEMORY_T::POKE64(double, double)+0x3c17a>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L1893
+  410415:	48 8d 04 13          	lea    rax,[rbx+rdx*1]
+  410419:	66 0f ef c0          	pxor   xmm0,xmm0
+  41041d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410422:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410428:	7a 06                	jp     410430 <MEMORY_T::POKE64(double, double)+0x6b60>
+  41042a:	0f 84 6d 56 03 00    	je     445a9d <MEMORY_T::POKE64(double, double)+0x3c1cd>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) jmp L1894
+  410430:	4c 89 d2             	mov    rdx,r10
+  410433:	66 0f ef c0          	pxor   xmm0,xmm0
+  410437:	48 d3 e2             	shl    rdx,cl
+  41043a:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  41043f:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410445:	7a 06                	jp     41044d <MEMORY_T::POKE64(double, double)+0x6b7d>
+  410447:	0f 84 a3 56 03 00    	je     445af0 <MEMORY_T::POKE64(double, double)+0x3c220>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L1895
+  41044d:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  410451:	66 0f ef c0          	pxor   xmm0,xmm0
+  410455:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41045a:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410460:	7a 06                	jp     410468 <MEMORY_T::POKE64(double, double)+0x6b98>
+  410462:	0f 84 e3 56 03 00    	je     445b4b <MEMORY_T::POKE64(double, double)+0x3c27b>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L1896
+  410468:	48 8d 04 17          	lea    rax,[rdi+rdx*1]
+  41046c:	66 0f ef c0          	pxor   xmm0,xmm0
+  410470:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410475:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41047b:	7a 06                	jp     410483 <MEMORY_T::POKE64(double, double)+0x6bb3>
+  41047d:	0f 84 1b 57 03 00    	je     445b9e <MEMORY_T::POKE64(double, double)+0x3c2ce>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L1897
+  410483:	49 8d 04 13          	lea    rax,[r11+rdx*1]
+  410487:	66 0f ef c0          	pxor   xmm0,xmm0
+  41048b:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410490:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410496:	7a 06                	jp     41049e <MEMORY_T::POKE64(double, double)+0x6bce>
+  410498:	0f 84 4f 57 03 00    	je     445bed <MEMORY_T::POKE64(double, double)+0x3c31d>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L1898
+  41049e:	49 8d 04 12          	lea    rax,[r10+rdx*1]
+  4104a2:	66 0f ef c0          	pxor   xmm0,xmm0
+  4104a6:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4104ab:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4104b1:	7a 06                	jp     4104b9 <MEMORY_T::POKE64(double, double)+0x6be9>
+  4104b3:	0f 84 8f 57 03 00    	je     445c48 <MEMORY_T::POKE64(double, double)+0x3c378>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L1899
+  4104b9:	49 8d 04 11          	lea    rax,[r9+rdx*1]
+  4104bd:	66 0f ef c0          	pxor   xmm0,xmm0
+  4104c1:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4104c6:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4104cc:	7a 06                	jp     4104d4 <MEMORY_T::POKE64(double, double)+0x6c04>
+  4104ce:	0f 84 c7 57 03 00    	je     445c9b <MEMORY_T::POKE64(double, double)+0x3c3cb>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L1900
+  4104d4:	49 8d 04 10          	lea    rax,[r8+rdx*1]
+  4104d8:	66 0f ef c0          	pxor   xmm0,xmm0
+  4104dc:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4104e1:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4104e7:	7a 06                	jp     4104ef <MEMORY_T::POKE64(double, double)+0x6c1f>
+  4104e9:	0f 84 ff 57 03 00    	je     445cee <MEMORY_T::POKE64(double, double)+0x3c41e>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L1901
+  4104ef:	48 8d 44 15 00       	lea    rax,[rbp+rdx*1+0x0]
+  4104f4:	66 0f ef c0          	pxor   xmm0,xmm0
+  4104f8:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4104fd:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410503:	7a 06                	jp     41050b <MEMORY_T::POKE64(double, double)+0x6c3b>
+  410505:	0f 84 36 58 03 00    	je     445d41 <MEMORY_T::POKE64(double, double)+0x3c471>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)) jmp L1902
+  41050b:	49 8d 44 15 00       	lea    rax,[r13+rdx*1+0x0]
+  410510:	66 0f ef c0          	pxor   xmm0,xmm0
+  410514:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410519:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41051f:	7a 06                	jp     410527 <MEMORY_T::POKE64(double, double)+0x6c57>
+  410521:	0f 84 81 48 03 00    	je     444da8 <MEMORY_T::POKE64(double, double)+0x3b4d8>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) jmp L1903
+  410527:	49 8d 04 14          	lea    rax,[r12+rdx*1]
+  41052b:	66 0f ef c0          	pxor   xmm0,xmm0
+  41052f:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410534:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41053a:	7a 06                	jp     410542 <MEMORY_T::POKE64(double, double)+0x6c72>
+  41053c:	0f 84 b1 48 03 00    	je     444df3 <MEMORY_T::POKE64(double, double)+0x3b523>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) jmp L1904
+  410542:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+  410547:	66 0f ef c0          	pxor   xmm0,xmm0
+  41054b:	48 01 d0             	add    rax,rdx
+  41054e:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410553:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410559:	7a 06                	jp     410561 <MEMORY_T::POKE64(double, double)+0x6c91>
+  41055b:	0f 84 e1 48 03 00    	je     444e42 <MEMORY_T::POKE64(double, double)+0x3b572>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) jmp L1905
+  410561:	48 8b 44 24 60       	mov    rax,QWORD PTR [rsp+0x60]
+  410566:	66 0f ef c0          	pxor   xmm0,xmm0
+  41056a:	48 01 d0             	add    rax,rdx
+  41056d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410572:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410578:	7a 06                	jp     410580 <MEMORY_T::POKE64(double, double)+0x6cb0>
+  41057a:	0f 84 19 49 03 00    	je     444e99 <MEMORY_T::POKE64(double, double)+0x3b5c9>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) jmp L1906
+  410580:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
+  410585:	66 0f ef c0          	pxor   xmm0,xmm0
+  410589:	48 01 d0             	add    rax,rdx
+  41058c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410591:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410597:	7a 06                	jp     41059f <MEMORY_T::POKE64(double, double)+0x6ccf>
+  410599:	0f 84 49 49 03 00    	je     444ee8 <MEMORY_T::POKE64(double, double)+0x3b618>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)) jmp L1907
+  41059f:	49 8d 04 17          	lea    rax,[r15+rdx*1]
+  4105a3:	66 0f ef c0          	pxor   xmm0,xmm0
+  4105a7:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4105ac:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4105b2:	7a 06                	jp     4105ba <MEMORY_T::POKE64(double, double)+0x6cea>
+  4105b4:	0f 84 7d 49 03 00    	je     444f37 <MEMORY_T::POKE64(double, double)+0x3b667>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) jmp L1908
+  4105ba:	49 8d 04 16          	lea    rax,[r14+rdx*1]
+  4105be:	66 0f ef c0          	pxor   xmm0,xmm0
+  4105c2:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4105c7:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4105cd:	7a 06                	jp     4105d5 <MEMORY_T::POKE64(double, double)+0x6d05>
+  4105cf:	0f 84 b1 49 03 00    	je     444f86 <MEMORY_T::POKE64(double, double)+0x3b6b6>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L1909
+  4105d5:	48 8d 04 13          	lea    rax,[rbx+rdx*1]
+  4105d9:	66 0f ef c0          	pxor   xmm0,xmm0
+  4105dd:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4105e2:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4105e8:	7a 06                	jp     4105f0 <MEMORY_T::POKE64(double, double)+0x6d20>
+  4105ea:	0f 84 e5 49 03 00    	je     444fd5 <MEMORY_T::POKE64(double, double)+0x3b705>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) jmp L1910
+  4105f0:	4c 89 ca             	mov    rdx,r9
+  4105f3:	66 0f ef c0          	pxor   xmm0,xmm0
+  4105f7:	48 d3 e2             	shl    rdx,cl
+  4105fa:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  4105ff:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410605:	7a 06                	jp     41060d <MEMORY_T::POKE64(double, double)+0x6d3d>
+  410607:	0f 84 23 4a 03 00    	je     445030 <MEMORY_T::POKE64(double, double)+0x3b760>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L1911
+  41060d:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  410611:	66 0f ef c0          	pxor   xmm0,xmm0
+  410615:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41061a:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410620:	7a 06                	jp     410628 <MEMORY_T::POKE64(double, double)+0x6d58>
+  410622:	0f 84 63 4a 03 00    	je     44508b <MEMORY_T::POKE64(double, double)+0x3b7bb>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L1912
+  410628:	48 8d 04 17          	lea    rax,[rdi+rdx*1]
+  41062c:	66 0f ef c0          	pxor   xmm0,xmm0
+  410630:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410635:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41063b:	7a 06                	jp     410643 <MEMORY_T::POKE64(double, double)+0x6d73>
+  41063d:	0f 84 9b 4a 03 00    	je     4450de <MEMORY_T::POKE64(double, double)+0x3b80e>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L1913
+  410643:	49 8d 04 13          	lea    rax,[r11+rdx*1]
+  410647:	66 0f ef c0          	pxor   xmm0,xmm0
+  41064b:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410650:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410656:	7a 06                	jp     41065e <MEMORY_T::POKE64(double, double)+0x6d8e>
+  410658:	0f 84 d3 4a 03 00    	je     445131 <MEMORY_T::POKE64(double, double)+0x3b861>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L1914
+  41065e:	49 8d 04 12          	lea    rax,[r10+rdx*1]
+  410662:	66 0f ef c0          	pxor   xmm0,xmm0
+  410666:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41066b:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410671:	7a 06                	jp     410679 <MEMORY_T::POKE64(double, double)+0x6da9>
+  410673:	0f 84 0b 4b 03 00    	je     445184 <MEMORY_T::POKE64(double, double)+0x3b8b4>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L1915
+  410679:	49 8d 04 11          	lea    rax,[r9+rdx*1]
+  41067d:	66 0f ef c0          	pxor   xmm0,xmm0
+  410681:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410686:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41068c:	7a 06                	jp     410694 <MEMORY_T::POKE64(double, double)+0x6dc4>
+  41068e:	0f 84 47 4b 03 00    	je     4451db <MEMORY_T::POKE64(double, double)+0x3b90b>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L1916
+  410694:	49 8d 04 10          	lea    rax,[r8+rdx*1]
+  410698:	66 0f ef c0          	pxor   xmm0,xmm0
+  41069c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4106a1:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4106a7:	7a 06                	jp     4106af <MEMORY_T::POKE64(double, double)+0x6ddf>
+  4106a9:	0f 84 87 4b 03 00    	je     445236 <MEMORY_T::POKE64(double, double)+0x3b966>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L1917
+  4106af:	48 8d 44 15 00       	lea    rax,[rbp+rdx*1+0x0]
+  4106b4:	66 0f ef c0          	pxor   xmm0,xmm0
+  4106b8:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4106bd:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4106c3:	7a 06                	jp     4106cb <MEMORY_T::POKE64(double, double)+0x6dfb>
+  4106c5:	0f 84 ca 4b 03 00    	je     445295 <MEMORY_T::POKE64(double, double)+0x3b9c5>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)) jmp L1918
+  4106cb:	49 8d 44 15 00       	lea    rax,[r13+rdx*1+0x0]
+  4106d0:	66 0f ef c0          	pxor   xmm0,xmm0
+  4106d4:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4106d9:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4106df:	7a 06                	jp     4106e7 <MEMORY_T::POKE64(double, double)+0x6e17>
+  4106e1:	0f 84 09 4c 03 00    	je     4452f0 <MEMORY_T::POKE64(double, double)+0x3ba20>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) jmp L1919
+  4106e7:	49 8d 04 14          	lea    rax,[r12+rdx*1]
+  4106eb:	66 0f ef c0          	pxor   xmm0,xmm0
+  4106ef:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4106f4:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4106fa:	7a 06                	jp     410702 <MEMORY_T::POKE64(double, double)+0x6e32>
+  4106fc:	0f 84 49 4c 03 00    	je     44534b <MEMORY_T::POKE64(double, double)+0x3ba7b>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) jmp L1920
+  410702:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+  410707:	66 0f ef c0          	pxor   xmm0,xmm0
+  41070b:	48 01 d0             	add    rax,rdx
+  41070e:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410713:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410719:	7a 06                	jp     410721 <MEMORY_T::POKE64(double, double)+0x6e51>
+  41071b:	0f 84 85 4c 03 00    	je     4453a6 <MEMORY_T::POKE64(double, double)+0x3bad6>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) jmp L1921
+  410721:	48 8b 44 24 60       	mov    rax,QWORD PTR [rsp+0x60]
+  410726:	66 0f ef c0          	pxor   xmm0,xmm0
+  41072a:	48 01 d0             	add    rax,rdx
+  41072d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410732:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410738:	7a 06                	jp     410740 <MEMORY_T::POKE64(double, double)+0x6e70>
+  41073a:	0f 84 b5 4c 03 00    	je     4453f5 <MEMORY_T::POKE64(double, double)+0x3bb25>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) jmp L1922
+  410740:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
+  410745:	66 0f ef c0          	pxor   xmm0,xmm0
+  410749:	48 01 d0             	add    rax,rdx
+  41074c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410751:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410757:	7a 06                	jp     41075f <MEMORY_T::POKE64(double, double)+0x6e8f>
+  410759:	0f 84 e9 4c 03 00    	je     445448 <MEMORY_T::POKE64(double, double)+0x3bb78>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)) jmp L1923
+  41075f:	49 8d 04 17          	lea    rax,[r15+rdx*1]
+  410763:	66 0f ef c0          	pxor   xmm0,xmm0
+  410767:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41076c:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410772:	7a 06                	jp     41077a <MEMORY_T::POKE64(double, double)+0x6eaa>
+  410774:	0f 84 29 4d 03 00    	je     4454a3 <MEMORY_T::POKE64(double, double)+0x3bbd3>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) jmp L1924
+  41077a:	49 8d 04 16          	lea    rax,[r14+rdx*1]
+  41077e:	66 0f ef c0          	pxor   xmm0,xmm0
+  410782:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410787:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41078d:	7a 06                	jp     410795 <MEMORY_T::POKE64(double, double)+0x6ec5>
+  41078f:	0f 84 69 4d 03 00    	je     4454fe <MEMORY_T::POKE64(double, double)+0x3bc2e>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L1925
+  410795:	48 8d 04 13          	lea    rax,[rbx+rdx*1]
+  410799:	66 0f ef c0          	pxor   xmm0,xmm0
+  41079d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4107a2:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4107a8:	7a 06                	jp     4107b0 <MEMORY_T::POKE64(double, double)+0x6ee0>
+  4107aa:	0f 84 a1 4d 03 00    	je     445551 <MEMORY_T::POKE64(double, double)+0x3bc81>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) jmp L1926
+  4107b0:	4c 89 c2             	mov    rdx,r8
+  4107b3:	66 0f ef c0          	pxor   xmm0,xmm0
+  4107b7:	48 d3 e2             	shl    rdx,cl
+  4107ba:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  4107bf:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4107c5:	7a 06                	jp     4107cd <MEMORY_T::POKE64(double, double)+0x6efd>
+  4107c7:	0f 84 d3 4d 03 00    	je     4455a0 <MEMORY_T::POKE64(double, double)+0x3bcd0>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L1927
+  4107cd:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  4107d1:	66 0f ef c0          	pxor   xmm0,xmm0
+  4107d5:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4107da:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4107e0:	7a 06                	jp     4107e8 <MEMORY_T::POKE64(double, double)+0x6f18>
+  4107e2:	0f 84 0b 4e 03 00    	je     4455f3 <MEMORY_T::POKE64(double, double)+0x3bd23>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L1928
+  4107e8:	48 8d 04 17          	lea    rax,[rdi+rdx*1]
+  4107ec:	66 0f ef c0          	pxor   xmm0,xmm0
+  4107f0:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4107f5:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4107fb:	7a 06                	jp     410803 <MEMORY_T::POKE64(double, double)+0x6f33>
+  4107fd:	0f 84 4b 4e 03 00    	je     44564e <MEMORY_T::POKE64(double, double)+0x3bd7e>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L1929
+  410803:	49 8d 04 13          	lea    rax,[r11+rdx*1]
+  410807:	66 0f ef c0          	pxor   xmm0,xmm0
+  41080b:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410810:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410816:	7a 06                	jp     41081e <MEMORY_T::POKE64(double, double)+0x6f4e>
+  410818:	0f 84 83 4e 03 00    	je     4456a1 <MEMORY_T::POKE64(double, double)+0x3bdd1>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L1930
+  41081e:	49 8d 04 12          	lea    rax,[r10+rdx*1]
+  410822:	66 0f ef c0          	pxor   xmm0,xmm0
+  410826:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41082b:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410831:	7a 06                	jp     410839 <MEMORY_T::POKE64(double, double)+0x6f69>
+  410833:	0f 84 c3 4e 03 00    	je     4456fc <MEMORY_T::POKE64(double, double)+0x3be2c>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L1931
+  410839:	49 8d 04 11          	lea    rax,[r9+rdx*1]
+  41083d:	66 0f ef c0          	pxor   xmm0,xmm0
+  410841:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410846:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41084c:	7a 06                	jp     410854 <MEMORY_T::POKE64(double, double)+0x6f84>
+  41084e:	0f 84 fb 4e 03 00    	je     44574f <MEMORY_T::POKE64(double, double)+0x3be7f>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L1932
+  410854:	49 8d 04 10          	lea    rax,[r8+rdx*1]
+  410858:	66 0f ef c0          	pxor   xmm0,xmm0
+  41085c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410861:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410867:	7a 06                	jp     41086f <MEMORY_T::POKE64(double, double)+0x6f9f>
+  410869:	0f 84 2f 4f 03 00    	je     44579e <MEMORY_T::POKE64(double, double)+0x3bece>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L1933
+  41086f:	48 8d 44 15 00       	lea    rax,[rbp+rdx*1+0x0]
+  410874:	66 0f ef c0          	pxor   xmm0,xmm0
+  410878:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41087d:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410883:	7a 06                	jp     41088b <MEMORY_T::POKE64(double, double)+0x6fbb>
+  410885:	0f 84 66 4f 03 00    	je     4457f1 <MEMORY_T::POKE64(double, double)+0x3bf21>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)) jmp L1934
+  41088b:	49 8d 44 15 00       	lea    rax,[r13+rdx*1+0x0]
+  410890:	66 0f ef c0          	pxor   xmm0,xmm0
+  410894:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410899:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41089f:	7a 06                	jp     4108a7 <MEMORY_T::POKE64(double, double)+0x6fd7>
+  4108a1:	0f 84 d9 2f 03 00    	je     443880 <MEMORY_T::POKE64(double, double)+0x39fb0>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) jmp L1935
+  4108a7:	49 8d 04 14          	lea    rax,[r12+rdx*1]
+  4108ab:	66 0f ef c0          	pxor   xmm0,xmm0
+  4108af:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4108b4:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4108ba:	7a 06                	jp     4108c2 <MEMORY_T::POKE64(double, double)+0x6ff2>
+  4108bc:	0f 84 11 30 03 00    	je     4438d3 <MEMORY_T::POKE64(double, double)+0x3a003>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) jmp L1936
+  4108c2:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+  4108c7:	66 0f ef c0          	pxor   xmm0,xmm0
+  4108cb:	48 01 d0             	add    rax,rdx
+  4108ce:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4108d3:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4108d9:	7a 06                	jp     4108e1 <MEMORY_T::POKE64(double, double)+0x7011>
+  4108db:	0f 84 45 30 03 00    	je     443926 <MEMORY_T::POKE64(double, double)+0x3a056>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) jmp L1937
+  4108e1:	48 8b 44 24 60       	mov    rax,QWORD PTR [rsp+0x60]
+  4108e6:	66 0f ef c0          	pxor   xmm0,xmm0
+  4108ea:	48 01 d0             	add    rax,rdx
+  4108ed:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4108f2:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4108f8:	7a 06                	jp     410900 <MEMORY_T::POKE64(double, double)+0x7030>
+  4108fa:	0f 84 81 30 03 00    	je     443981 <MEMORY_T::POKE64(double, double)+0x3a0b1>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) jmp L1938
+  410900:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
+  410905:	66 0f ef c0          	pxor   xmm0,xmm0
+  410909:	48 01 d0             	add    rax,rdx
+  41090c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410911:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410917:	7a 06                	jp     41091f <MEMORY_T::POKE64(double, double)+0x704f>
+  410919:	0f 84 ad 30 03 00    	je     4439cc <MEMORY_T::POKE64(double, double)+0x3a0fc>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)) jmp L1939
+  41091f:	49 8d 04 17          	lea    rax,[r15+rdx*1]
+  410923:	66 0f ef c0          	pxor   xmm0,xmm0
+  410927:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41092c:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410932:	7a 06                	jp     41093a <MEMORY_T::POKE64(double, double)+0x706a>
+  410934:	0f 84 e1 30 03 00    	je     443a1b <MEMORY_T::POKE64(double, double)+0x3a14b>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) jmp L1940
+  41093a:	49 8d 04 16          	lea    rax,[r14+rdx*1]
+  41093e:	66 0f ef c0          	pxor   xmm0,xmm0
+  410942:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410947:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41094d:	7a 06                	jp     410955 <MEMORY_T::POKE64(double, double)+0x7085>
+  41094f:	0f 84 15 31 03 00    	je     443a6a <MEMORY_T::POKE64(double, double)+0x3a19a>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L1941
+  410955:	48 8d 04 13          	lea    rax,[rbx+rdx*1]
+  410959:	66 0f ef c0          	pxor   xmm0,xmm0
+  41095d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410962:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410968:	7a 06                	jp     410970 <MEMORY_T::POKE64(double, double)+0x70a0>
+  41096a:	0f 84 51 31 03 00    	je     443ac1 <MEMORY_T::POKE64(double, double)+0x3a1f1>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) jmp L1942
+  410970:	48 89 ea             	mov    rdx,rbp
+  410973:	66 0f ef c0          	pxor   xmm0,xmm0
+  410977:	48 d3 e2             	shl    rdx,cl
+  41097a:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  41097f:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410985:	7a 06                	jp     41098d <MEMORY_T::POKE64(double, double)+0x70bd>
+  410987:	0f 84 83 31 03 00    	je     443b10 <MEMORY_T::POKE64(double, double)+0x3a240>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L1943
+  41098d:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  410991:	66 0f ef c0          	pxor   xmm0,xmm0
+  410995:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41099a:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4109a0:	7a 06                	jp     4109a8 <MEMORY_T::POKE64(double, double)+0x70d8>
+  4109a2:	0f 84 b7 31 03 00    	je     443b5f <MEMORY_T::POKE64(double, double)+0x3a28f>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L1944
+  4109a8:	48 8d 04 17          	lea    rax,[rdi+rdx*1]
+  4109ac:	66 0f ef c0          	pxor   xmm0,xmm0
+  4109b0:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4109b5:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4109bb:	7a 06                	jp     4109c3 <MEMORY_T::POKE64(double, double)+0x70f3>
+  4109bd:	0f 84 eb 31 03 00    	je     443bae <MEMORY_T::POKE64(double, double)+0x3a2de>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L1945
+  4109c3:	49 8d 04 13          	lea    rax,[r11+rdx*1]
+  4109c7:	66 0f ef c0          	pxor   xmm0,xmm0
+  4109cb:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4109d0:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4109d6:	7a 06                	jp     4109de <MEMORY_T::POKE64(double, double)+0x710e>
+  4109d8:	0f 84 2b 32 03 00    	je     443c09 <MEMORY_T::POKE64(double, double)+0x3a339>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L1946
+  4109de:	49 8d 04 12          	lea    rax,[r10+rdx*1]
+  4109e2:	66 0f ef c0          	pxor   xmm0,xmm0
+  4109e6:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4109eb:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4109f1:	7a 06                	jp     4109f9 <MEMORY_T::POKE64(double, double)+0x7129>
+  4109f3:	0f 84 63 32 03 00    	je     443c5c <MEMORY_T::POKE64(double, double)+0x3a38c>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L1947
+  4109f9:	49 8d 04 11          	lea    rax,[r9+rdx*1]
+  4109fd:	66 0f ef c0          	pxor   xmm0,xmm0
+  410a01:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410a06:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410a0c:	7a 06                	jp     410a14 <MEMORY_T::POKE64(double, double)+0x7144>
+  410a0e:	0f 84 a3 32 03 00    	je     443cb7 <MEMORY_T::POKE64(double, double)+0x3a3e7>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L1948
+  410a14:	49 8d 04 10          	lea    rax,[r8+rdx*1]
+  410a18:	66 0f ef c0          	pxor   xmm0,xmm0
+  410a1c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410a21:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410a27:	7a 06                	jp     410a2f <MEMORY_T::POKE64(double, double)+0x715f>
+  410a29:	0f 84 db 32 03 00    	je     443d0a <MEMORY_T::POKE64(double, double)+0x3a43a>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L1949
+  410a2f:	48 8d 44 15 00       	lea    rax,[rbp+rdx*1+0x0]
+  410a34:	66 0f ef c0          	pxor   xmm0,xmm0
+  410a38:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410a3d:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410a43:	7a 06                	jp     410a4b <MEMORY_T::POKE64(double, double)+0x717b>
+  410a45:	0f 84 12 33 03 00    	je     443d5d <MEMORY_T::POKE64(double, double)+0x3a48d>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)) jmp L1950
+  410a4b:	49 8d 44 15 00       	lea    rax,[r13+rdx*1+0x0]
+  410a50:	66 0f ef c0          	pxor   xmm0,xmm0
+  410a54:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410a59:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410a5f:	7a 06                	jp     410a67 <MEMORY_T::POKE64(double, double)+0x7197>
+  410a61:	0f 84 45 33 03 00    	je     443dac <MEMORY_T::POKE64(double, double)+0x3a4dc>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) jmp L1951
+  410a67:	49 8d 04 14          	lea    rax,[r12+rdx*1]
+  410a6b:	66 0f ef c0          	pxor   xmm0,xmm0
+  410a6f:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410a74:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410a7a:	7a 06                	jp     410a82 <MEMORY_T::POKE64(double, double)+0x71b2>
+  410a7c:	0f 84 7d 33 03 00    	je     443dff <MEMORY_T::POKE64(double, double)+0x3a52f>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) jmp L1952
+  410a82:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+  410a87:	66 0f ef c0          	pxor   xmm0,xmm0
+  410a8b:	48 01 d0             	add    rax,rdx
+  410a8e:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410a93:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410a99:	7a 06                	jp     410aa1 <MEMORY_T::POKE64(double, double)+0x71d1>
+  410a9b:	0f 84 b9 33 03 00    	je     443e5a <MEMORY_T::POKE64(double, double)+0x3a58a>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) jmp L1953
+  410aa1:	48 8b 44 24 60       	mov    rax,QWORD PTR [rsp+0x60]
+  410aa6:	66 0f ef c0          	pxor   xmm0,xmm0
+  410aaa:	48 01 d0             	add    rax,rdx
+  410aad:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410ab2:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410ab8:	7a 06                	jp     410ac0 <MEMORY_T::POKE64(double, double)+0x71f0>
+  410aba:	0f 84 f5 33 03 00    	je     443eb5 <MEMORY_T::POKE64(double, double)+0x3a5e5>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) jmp L1954
+  410ac0:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
+  410ac5:	66 0f ef c0          	pxor   xmm0,xmm0
+  410ac9:	48 01 d0             	add    rax,rdx
+  410acc:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410ad1:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410ad7:	7a 06                	jp     410adf <MEMORY_T::POKE64(double, double)+0x720f>
+  410ad9:	0f 84 29 34 03 00    	je     443f08 <MEMORY_T::POKE64(double, double)+0x3a638>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)) jmp L1955
+  410adf:	49 8d 04 17          	lea    rax,[r15+rdx*1]
+  410ae3:	66 0f ef c0          	pxor   xmm0,xmm0
+  410ae7:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410aec:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410af2:	7a 06                	jp     410afa <MEMORY_T::POKE64(double, double)+0x722a>
+  410af4:	0f 84 61 34 03 00    	je     443f5b <MEMORY_T::POKE64(double, double)+0x3a68b>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) jmp L1956
+  410afa:	49 8d 04 16          	lea    rax,[r14+rdx*1]
+  410afe:	66 0f ef c0          	pxor   xmm0,xmm0
+  410b02:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410b07:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410b0d:	7a 06                	jp     410b15 <MEMORY_T::POKE64(double, double)+0x7245>
+  410b0f:	0f 84 9d 34 03 00    	je     443fb2 <MEMORY_T::POKE64(double, double)+0x3a6e2>
+;   cmp v eq peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L1957
+  410b15:	48 8d 04 13          	lea    rax,[rbx+rdx*1]
+  410b19:	66 0f ef c0          	pxor   xmm0,xmm0
+  410b1d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410b22:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410b28:	7a 06                	jp     410b30 <MEMORY_T::POKE64(double, double)+0x7260>
+  410b2a:	0f 84 dd 34 03 00    	je     44400d <MEMORY_T::POKE64(double, double)+0x3a73d>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) jmp L1958
+  410b30:	4c 89 ea             	mov    rdx,r13
+  410b33:	66 0f ef c0          	pxor   xmm0,xmm0
+  410b37:	48 d3 e2             	shl    rdx,cl
+  410b3a:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  410b3f:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410b45:	7a 06                	jp     410b4d <MEMORY_T::POKE64(double, double)+0x727d>
+  410b47:	0f 84 1b 35 03 00    	je     444068 <MEMORY_T::POKE64(double, double)+0x3a798>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L1959
+  410b4d:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  410b51:	66 0f ef c0          	pxor   xmm0,xmm0
+  410b55:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410b5a:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410b60:	7a 06                	jp     410b68 <MEMORY_T::POKE64(double, double)+0x7298>
+  410b62:	0f 84 5f 35 03 00    	je     4440c7 <MEMORY_T::POKE64(double, double)+0x3a7f7>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L1960
+  410b68:	48 8d 04 17          	lea    rax,[rdi+rdx*1]
+  410b6c:	66 0f ef c0          	pxor   xmm0,xmm0
+  410b70:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410b75:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410b7b:	7a 06                	jp     410b83 <MEMORY_T::POKE64(double, double)+0x72b3>
+  410b7d:	0f 84 9f 35 03 00    	je     444122 <MEMORY_T::POKE64(double, double)+0x3a852>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L1961
+  410b83:	49 8d 04 13          	lea    rax,[r11+rdx*1]
+  410b87:	66 0f ef c0          	pxor   xmm0,xmm0
+  410b8b:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410b90:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410b96:	7a 06                	jp     410b9e <MEMORY_T::POKE64(double, double)+0x72ce>
+  410b98:	0f 84 df 35 03 00    	je     44417d <MEMORY_T::POKE64(double, double)+0x3a8ad>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L1962
+  410b9e:	49 8d 04 12          	lea    rax,[r10+rdx*1]
+  410ba2:	66 0f ef c0          	pxor   xmm0,xmm0
+  410ba6:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410bab:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410bb1:	7a 06                	jp     410bb9 <MEMORY_T::POKE64(double, double)+0x72e9>
+  410bb3:	0f 84 13 36 03 00    	je     4441cc <MEMORY_T::POKE64(double, double)+0x3a8fc>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L1963
+  410bb9:	49 8d 04 11          	lea    rax,[r9+rdx*1]
+  410bbd:	66 0f ef c0          	pxor   xmm0,xmm0
+  410bc1:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410bc6:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410bcc:	7a 06                	jp     410bd4 <MEMORY_T::POKE64(double, double)+0x7304>
+  410bce:	0f 84 4b 36 03 00    	je     44421f <MEMORY_T::POKE64(double, double)+0x3a94f>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L1964
+  410bd4:	49 8d 04 10          	lea    rax,[r8+rdx*1]
+  410bd8:	66 0f ef c0          	pxor   xmm0,xmm0
+  410bdc:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410be1:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410be7:	7a 06                	jp     410bef <MEMORY_T::POKE64(double, double)+0x731f>
+  410be9:	0f 84 83 36 03 00    	je     444272 <MEMORY_T::POKE64(double, double)+0x3a9a2>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L1965
+  410bef:	48 8d 44 15 00       	lea    rax,[rbp+rdx*1+0x0]
+  410bf4:	66 0f ef c0          	pxor   xmm0,xmm0
+  410bf8:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410bfd:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410c03:	7a 06                	jp     410c0b <MEMORY_T::POKE64(double, double)+0x733b>
+  410c05:	0f 84 c2 36 03 00    	je     4442cd <MEMORY_T::POKE64(double, double)+0x3a9fd>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)) jmp L1966
+  410c0b:	49 8d 44 15 00       	lea    rax,[r13+rdx*1+0x0]
+  410c10:	66 0f ef c0          	pxor   xmm0,xmm0
+  410c14:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410c19:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410c1f:	7a 06                	jp     410c27 <MEMORY_T::POKE64(double, double)+0x7357>
+  410c21:	0f 84 01 37 03 00    	je     444328 <MEMORY_T::POKE64(double, double)+0x3aa58>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) jmp L1967
+  410c27:	49 8d 04 14          	lea    rax,[r12+rdx*1]
+  410c2b:	66 0f ef c0          	pxor   xmm0,xmm0
+  410c2f:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410c34:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410c3a:	7a 06                	jp     410c42 <MEMORY_T::POKE64(double, double)+0x7372>
+  410c3c:	0f 84 39 37 03 00    	je     44437b <MEMORY_T::POKE64(double, double)+0x3aaab>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) jmp L1968
+  410c42:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+  410c47:	66 0f ef c0          	pxor   xmm0,xmm0
+  410c4b:	48 01 d0             	add    rax,rdx
+  410c4e:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410c53:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410c59:	7a 06                	jp     410c61 <MEMORY_T::POKE64(double, double)+0x7391>
+  410c5b:	0f 84 69 37 03 00    	je     4443ca <MEMORY_T::POKE64(double, double)+0x3aafa>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) jmp L1969
+  410c61:	48 8b 44 24 60       	mov    rax,QWORD PTR [rsp+0x60]
+  410c66:	66 0f ef c0          	pxor   xmm0,xmm0
+  410c6a:	48 01 d0             	add    rax,rdx
+  410c6d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410c72:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410c78:	7a 06                	jp     410c80 <MEMORY_T::POKE64(double, double)+0x73b0>
+  410c7a:	0f 84 9d 37 03 00    	je     44441d <MEMORY_T::POKE64(double, double)+0x3ab4d>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) jmp L1970
+  410c80:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
+  410c85:	66 0f ef c0          	pxor   xmm0,xmm0
+  410c89:	48 01 d0             	add    rax,rdx
+  410c8c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410c91:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410c97:	7a 06                	jp     410c9f <MEMORY_T::POKE64(double, double)+0x73cf>
+  410c99:	0f 84 d1 37 03 00    	je     444470 <MEMORY_T::POKE64(double, double)+0x3aba0>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)) jmp L1971
+  410c9f:	49 8d 04 17          	lea    rax,[r15+rdx*1]
+  410ca3:	66 0f ef c0          	pxor   xmm0,xmm0
+  410ca7:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410cac:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410cb2:	7a 06                	jp     410cba <MEMORY_T::POKE64(double, double)+0x73ea>
+  410cb4:	0f 84 11 38 03 00    	je     4444cb <MEMORY_T::POKE64(double, double)+0x3abfb>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) jmp L1972
+  410cba:	49 8d 04 16          	lea    rax,[r14+rdx*1]
+  410cbe:	66 0f ef c0          	pxor   xmm0,xmm0
+  410cc2:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410cc7:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410ccd:	7a 06                	jp     410cd5 <MEMORY_T::POKE64(double, double)+0x7405>
+  410ccf:	0f 84 49 38 03 00    	je     44451e <MEMORY_T::POKE64(double, double)+0x3ac4e>
+;   cmp v eq peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L1973
+  410cd5:	48 8d 04 13          	lea    rax,[rbx+rdx*1]
+  410cd9:	66 0f ef c0          	pxor   xmm0,xmm0
+  410cdd:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410ce2:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410ce8:	7a 06                	jp     410cf0 <MEMORY_T::POKE64(double, double)+0x7420>
+  410cea:	0f 84 89 38 03 00    	je     444579 <MEMORY_T::POKE64(double, double)+0x3aca9>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) jmp L1974
+  410cf0:	4c 89 e2             	mov    rdx,r12
+  410cf3:	66 0f ef c0          	pxor   xmm0,xmm0
+  410cf7:	48 d3 e2             	shl    rdx,cl
+  410cfa:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  410cff:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410d05:	7a 06                	jp     410d0d <MEMORY_T::POKE64(double, double)+0x743d>
+  410d07:	0f 84 b7 38 03 00    	je     4445c4 <MEMORY_T::POKE64(double, double)+0x3acf4>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L1975
+  410d0d:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  410d11:	66 0f ef c0          	pxor   xmm0,xmm0
+  410d15:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410d1a:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410d20:	7a 06                	jp     410d28 <MEMORY_T::POKE64(double, double)+0x7458>
+  410d22:	0f 84 eb 38 03 00    	je     444613 <MEMORY_T::POKE64(double, double)+0x3ad43>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L1976
+  410d28:	48 8d 04 17          	lea    rax,[rdi+rdx*1]
+  410d2c:	66 0f ef c0          	pxor   xmm0,xmm0
+  410d30:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410d35:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410d3b:	7a 06                	jp     410d43 <MEMORY_T::POKE64(double, double)+0x7473>
+  410d3d:	0f 84 1f 39 03 00    	je     444662 <MEMORY_T::POKE64(double, double)+0x3ad92>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L1977
+  410d43:	49 8d 04 13          	lea    rax,[r11+rdx*1]
+  410d47:	66 0f ef c0          	pxor   xmm0,xmm0
+  410d4b:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410d50:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410d56:	7a 06                	jp     410d5e <MEMORY_T::POKE64(double, double)+0x748e>
+  410d58:	0f 84 53 39 03 00    	je     4446b1 <MEMORY_T::POKE64(double, double)+0x3ade1>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L1978
+  410d5e:	49 8d 04 12          	lea    rax,[r10+rdx*1]
+  410d62:	66 0f ef c0          	pxor   xmm0,xmm0
+  410d66:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410d6b:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410d71:	7a 06                	jp     410d79 <MEMORY_T::POKE64(double, double)+0x74a9>
+  410d73:	0f 84 8f 39 03 00    	je     444708 <MEMORY_T::POKE64(double, double)+0x3ae38>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L1979
+  410d79:	49 8d 04 11          	lea    rax,[r9+rdx*1]
+  410d7d:	66 0f ef c0          	pxor   xmm0,xmm0
+  410d81:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410d86:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410d8c:	7a 06                	jp     410d94 <MEMORY_T::POKE64(double, double)+0x74c4>
+  410d8e:	0f 84 c3 39 03 00    	je     444757 <MEMORY_T::POKE64(double, double)+0x3ae87>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L1980
+  410d94:	49 8d 04 10          	lea    rax,[r8+rdx*1]
+  410d98:	66 0f ef c0          	pxor   xmm0,xmm0
+  410d9c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410da1:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410da7:	7a 06                	jp     410daf <MEMORY_T::POKE64(double, double)+0x74df>
+  410da9:	0f 84 f7 39 03 00    	je     4447a6 <MEMORY_T::POKE64(double, double)+0x3aed6>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L1981
+  410daf:	48 8d 44 15 00       	lea    rax,[rbp+rdx*1+0x0]
+  410db4:	66 0f ef c0          	pxor   xmm0,xmm0
+  410db8:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410dbd:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410dc3:	7a 06                	jp     410dcb <MEMORY_T::POKE64(double, double)+0x74fb>
+  410dc5:	0f 84 36 3a 03 00    	je     444801 <MEMORY_T::POKE64(double, double)+0x3af31>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)) jmp L1982
+  410dcb:	49 8d 44 15 00       	lea    rax,[r13+rdx*1+0x0]
+  410dd0:	66 0f ef c0          	pxor   xmm0,xmm0
+  410dd4:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410dd9:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410ddf:	7a 06                	jp     410de7 <MEMORY_T::POKE64(double, double)+0x7517>
+  410de1:	0f 84 6d 3a 03 00    	je     444854 <MEMORY_T::POKE64(double, double)+0x3af84>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) jmp L1983
+  410de7:	49 8d 04 14          	lea    rax,[r12+rdx*1]
+  410deb:	66 0f ef c0          	pxor   xmm0,xmm0
+  410def:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410df4:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410dfa:	7a 06                	jp     410e02 <MEMORY_T::POKE64(double, double)+0x7532>
+  410dfc:	0f 84 a5 3a 03 00    	je     4448a7 <MEMORY_T::POKE64(double, double)+0x3afd7>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) jmp L1984
+  410e02:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+  410e07:	66 0f ef c0          	pxor   xmm0,xmm0
+  410e0b:	48 01 d0             	add    rax,rdx
+  410e0e:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410e13:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410e19:	7a 06                	jp     410e21 <MEMORY_T::POKE64(double, double)+0x7551>
+  410e1b:	0f 84 e1 3a 03 00    	je     444902 <MEMORY_T::POKE64(double, double)+0x3b032>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) jmp L1985
+  410e21:	48 8b 44 24 60       	mov    rax,QWORD PTR [rsp+0x60]
+  410e26:	66 0f ef c0          	pxor   xmm0,xmm0
+  410e2a:	48 01 d0             	add    rax,rdx
+  410e2d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410e32:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410e38:	7a 06                	jp     410e40 <MEMORY_T::POKE64(double, double)+0x7570>
+  410e3a:	0f 84 15 3b 03 00    	je     444955 <MEMORY_T::POKE64(double, double)+0x3b085>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) jmp L1986
+  410e40:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
+  410e45:	66 0f ef c0          	pxor   xmm0,xmm0
+  410e49:	48 01 d0             	add    rax,rdx
+  410e4c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410e51:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410e57:	7a 06                	jp     410e5f <MEMORY_T::POKE64(double, double)+0x758f>
+  410e59:	0f 84 45 3b 03 00    	je     4449a4 <MEMORY_T::POKE64(double, double)+0x3b0d4>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)) jmp L1987
+  410e5f:	49 8d 04 17          	lea    rax,[r15+rdx*1]
+  410e63:	66 0f ef c0          	pxor   xmm0,xmm0
+  410e67:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410e6c:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410e72:	7a 06                	jp     410e7a <MEMORY_T::POKE64(double, double)+0x75aa>
+  410e74:	0f 84 7d 3b 03 00    	je     4449f7 <MEMORY_T::POKE64(double, double)+0x3b127>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) jmp L1988
+  410e7a:	49 8d 04 16          	lea    rax,[r14+rdx*1]
+  410e7e:	66 0f ef c0          	pxor   xmm0,xmm0
+  410e82:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410e87:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410e8d:	7a 06                	jp     410e95 <MEMORY_T::POKE64(double, double)+0x75c5>
+  410e8f:	0f 84 bd 3b 03 00    	je     444a52 <MEMORY_T::POKE64(double, double)+0x3b182>
+;   cmp v eq peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L1989
+  410e95:	48 8d 04 13          	lea    rax,[rbx+rdx*1]
+  410e99:	66 0f ef c0          	pxor   xmm0,xmm0
+  410e9d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410ea2:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410ea8:	7a 06                	jp     410eb0 <MEMORY_T::POKE64(double, double)+0x75e0>
+  410eaa:	0f 84 f5 3b 03 00    	je     444aa5 <MEMORY_T::POKE64(double, double)+0x3b1d5>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) jmp L1990
+  410eb0:	48 8b 54 24 20       	mov    rdx,QWORD PTR [rsp+0x20]
+  410eb5:	66 0f ef c0          	pxor   xmm0,xmm0
+  410eb9:	48 d3 e2             	shl    rdx,cl
+  410ebc:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  410ec1:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410ec7:	7a 06                	jp     410ecf <MEMORY_T::POKE64(double, double)+0x75ff>
+  410ec9:	0f 84 31 3c 03 00    	je     444b00 <MEMORY_T::POKE64(double, double)+0x3b230>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L1991
+  410ecf:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  410ed3:	66 0f ef c0          	pxor   xmm0,xmm0
+  410ed7:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410edc:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410ee2:	7a 06                	jp     410eea <MEMORY_T::POKE64(double, double)+0x761a>
+  410ee4:	0f 84 69 3c 03 00    	je     444b53 <MEMORY_T::POKE64(double, double)+0x3b283>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L1992
+  410eea:	48 8d 04 17          	lea    rax,[rdi+rdx*1]
+  410eee:	66 0f ef c0          	pxor   xmm0,xmm0
+  410ef2:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410ef7:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410efd:	7a 06                	jp     410f05 <MEMORY_T::POKE64(double, double)+0x7635>
+  410eff:	0f 84 9d 3c 03 00    	je     444ba2 <MEMORY_T::POKE64(double, double)+0x3b2d2>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L1993
+  410f05:	49 8d 04 13          	lea    rax,[r11+rdx*1]
+  410f09:	66 0f ef c0          	pxor   xmm0,xmm0
+  410f0d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410f12:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410f18:	7a 06                	jp     410f20 <MEMORY_T::POKE64(double, double)+0x7650>
+  410f1a:	0f 84 d5 3c 03 00    	je     444bf5 <MEMORY_T::POKE64(double, double)+0x3b325>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L1994
+  410f20:	49 8d 04 12          	lea    rax,[r10+rdx*1]
+  410f24:	66 0f ef c0          	pxor   xmm0,xmm0
+  410f28:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410f2d:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410f33:	7a 06                	jp     410f3b <MEMORY_T::POKE64(double, double)+0x766b>
+  410f35:	0f 84 0d 3d 03 00    	je     444c48 <MEMORY_T::POKE64(double, double)+0x3b378>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L1995
+  410f3b:	49 8d 04 11          	lea    rax,[r9+rdx*1]
+  410f3f:	66 0f ef c0          	pxor   xmm0,xmm0
+  410f43:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410f48:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410f4e:	7a 06                	jp     410f56 <MEMORY_T::POKE64(double, double)+0x7686>
+  410f50:	0f 84 4d 3d 03 00    	je     444ca3 <MEMORY_T::POKE64(double, double)+0x3b3d3>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L1996
+  410f56:	49 8d 04 10          	lea    rax,[r8+rdx*1]
+  410f5a:	66 0f ef c0          	pxor   xmm0,xmm0
+  410f5e:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410f63:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410f69:	7a 06                	jp     410f71 <MEMORY_T::POKE64(double, double)+0x76a1>
+  410f6b:	0f 84 8d 3d 03 00    	je     444cfe <MEMORY_T::POKE64(double, double)+0x3b42e>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L1997
+  410f71:	48 8d 44 15 00       	lea    rax,[rbp+rdx*1+0x0]
+  410f76:	66 0f ef c0          	pxor   xmm0,xmm0
+  410f7a:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410f7f:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410f85:	7a 06                	jp     410f8d <MEMORY_T::POKE64(double, double)+0x76bd>
+  410f87:	0f 84 c4 3d 03 00    	je     444d51 <MEMORY_T::POKE64(double, double)+0x3b481>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)) jmp L1998
+  410f8d:	49 8d 44 15 00       	lea    rax,[r13+rdx*1+0x0]
+  410f92:	66 0f ef c0          	pxor   xmm0,xmm0
+  410f96:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410f9b:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410fa1:	7a 06                	jp     410fa9 <MEMORY_T::POKE64(double, double)+0x76d9>
+  410fa3:	0f 84 d0 88 00 00    	je     419879 <MEMORY_T::POKE64(double, double)+0xffa9>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) jmp L1999
+  410fa9:	49 8d 04 14          	lea    rax,[r12+rdx*1]
+  410fad:	66 0f ef c0          	pxor   xmm0,xmm0
+  410fb1:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410fb6:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410fbc:	7a 06                	jp     410fc4 <MEMORY_T::POKE64(double, double)+0x76f4>
+  410fbe:	0f 84 10 89 00 00    	je     4198d4 <MEMORY_T::POKE64(double, double)+0x10004>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) jmp L2000
+  410fc4:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+  410fc9:	66 0f ef c0          	pxor   xmm0,xmm0
+  410fcd:	48 01 d0             	add    rax,rdx
+  410fd0:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410fd5:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410fdb:	7a 06                	jp     410fe3 <MEMORY_T::POKE64(double, double)+0x7713>
+  410fdd:	0f 84 4c 89 00 00    	je     41992f <MEMORY_T::POKE64(double, double)+0x1005f>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) jmp L2001
+  410fe3:	48 8b 44 24 60       	mov    rax,QWORD PTR [rsp+0x60]
+  410fe8:	66 0f ef c0          	pxor   xmm0,xmm0
+  410fec:	48 01 d0             	add    rax,rdx
+  410fef:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  410ff4:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  410ffa:	7a 06                	jp     411002 <MEMORY_T::POKE64(double, double)+0x7732>
+  410ffc:	0f 84 88 89 00 00    	je     41998a <MEMORY_T::POKE64(double, double)+0x100ba>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) jmp L2002
+  411002:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
+  411007:	66 0f ef c0          	pxor   xmm0,xmm0
+  41100b:	48 01 d0             	add    rax,rdx
+  41100e:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411013:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411019:	7a 06                	jp     411021 <MEMORY_T::POKE64(double, double)+0x7751>
+  41101b:	0f 84 c8 89 00 00    	je     4199e9 <MEMORY_T::POKE64(double, double)+0x10119>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)) jmp L2003
+  411021:	49 8d 04 17          	lea    rax,[r15+rdx*1]
+  411025:	66 0f ef c0          	pxor   xmm0,xmm0
+  411029:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41102e:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411034:	7a 06                	jp     41103c <MEMORY_T::POKE64(double, double)+0x776c>
+  411036:	0f 84 08 8a 00 00    	je     419a44 <MEMORY_T::POKE64(double, double)+0x10174>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) jmp L2004
+  41103c:	49 8d 04 16          	lea    rax,[r14+rdx*1]
+  411040:	66 0f ef c0          	pxor   xmm0,xmm0
+  411044:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411049:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41104f:	7a 06                	jp     411057 <MEMORY_T::POKE64(double, double)+0x7787>
+  411051:	0f 84 3c 8a 00 00    	je     419a93 <MEMORY_T::POKE64(double, double)+0x101c3>
+;   cmp v eq peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L2005
+  411057:	48 8d 04 13          	lea    rax,[rbx+rdx*1]
+  41105b:	66 0f ef c0          	pxor   xmm0,xmm0
+  41105f:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411064:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41106a:	7a 06                	jp     411072 <MEMORY_T::POKE64(double, double)+0x77a2>
+  41106c:	0f 84 74 8a 00 00    	je     419ae6 <MEMORY_T::POKE64(double, double)+0x10216>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) jmp L2006
+  411072:	48 8b 54 24 60       	mov    rdx,QWORD PTR [rsp+0x60]
+  411077:	66 0f ef c0          	pxor   xmm0,xmm0
+  41107b:	48 d3 e2             	shl    rdx,cl
+  41107e:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  411083:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411089:	7a 06                	jp     411091 <MEMORY_T::POKE64(double, double)+0x77c1>
+  41108b:	0f 84 a8 8a 00 00    	je     419b39 <MEMORY_T::POKE64(double, double)+0x10269>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L2007
+  411091:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  411095:	66 0f ef c0          	pxor   xmm0,xmm0
+  411099:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41109e:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4110a4:	7a 06                	jp     4110ac <MEMORY_T::POKE64(double, double)+0x77dc>
+  4110a6:	0f 84 e0 8a 00 00    	je     419b8c <MEMORY_T::POKE64(double, double)+0x102bc>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L2008
+  4110ac:	48 8d 04 17          	lea    rax,[rdi+rdx*1]
+  4110b0:	66 0f ef c0          	pxor   xmm0,xmm0
+  4110b4:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4110b9:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4110bf:	7a 06                	jp     4110c7 <MEMORY_T::POKE64(double, double)+0x77f7>
+  4110c1:	0f 84 20 8b 00 00    	je     419be7 <MEMORY_T::POKE64(double, double)+0x10317>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L2009
+  4110c7:	49 8d 04 13          	lea    rax,[r11+rdx*1]
+  4110cb:	66 0f ef c0          	pxor   xmm0,xmm0
+  4110cf:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4110d4:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4110da:	7a 06                	jp     4110e2 <MEMORY_T::POKE64(double, double)+0x7812>
+  4110dc:	0f 84 60 8b 00 00    	je     419c42 <MEMORY_T::POKE64(double, double)+0x10372>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L2010
+  4110e2:	49 8d 04 12          	lea    rax,[r10+rdx*1]
+  4110e6:	66 0f ef c0          	pxor   xmm0,xmm0
+  4110ea:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4110ef:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4110f5:	7a 06                	jp     4110fd <MEMORY_T::POKE64(double, double)+0x782d>
+  4110f7:	0f 84 90 8b 00 00    	je     419c8d <MEMORY_T::POKE64(double, double)+0x103bd>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L2011
+  4110fd:	49 8d 04 11          	lea    rax,[r9+rdx*1]
+  411101:	66 0f ef c0          	pxor   xmm0,xmm0
+  411105:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41110a:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411110:	7a 06                	jp     411118 <MEMORY_T::POKE64(double, double)+0x7848>
+  411112:	0f 84 c4 8b 00 00    	je     419cdc <MEMORY_T::POKE64(double, double)+0x1040c>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L2012
+  411118:	49 8d 04 10          	lea    rax,[r8+rdx*1]
+  41111c:	66 0f ef c0          	pxor   xmm0,xmm0
+  411120:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411125:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41112b:	7a 06                	jp     411133 <MEMORY_T::POKE64(double, double)+0x7863>
+  41112d:	0f 84 f8 8b 00 00    	je     419d2b <MEMORY_T::POKE64(double, double)+0x1045b>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L2013
+  411133:	48 8d 44 15 00       	lea    rax,[rbp+rdx*1+0x0]
+  411138:	66 0f ef c0          	pxor   xmm0,xmm0
+  41113c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411141:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411147:	7a 06                	jp     41114f <MEMORY_T::POKE64(double, double)+0x787f>
+  411149:	0f 84 2b 8c 00 00    	je     419d7a <MEMORY_T::POKE64(double, double)+0x104aa>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)) jmp L2014
+  41114f:	49 8d 44 15 00       	lea    rax,[r13+rdx*1+0x0]
+  411154:	66 0f ef c0          	pxor   xmm0,xmm0
+  411158:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41115d:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411163:	7a 06                	jp     41116b <MEMORY_T::POKE64(double, double)+0x789b>
+  411165:	0f 84 5e 8c 00 00    	je     419dc9 <MEMORY_T::POKE64(double, double)+0x104f9>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) jmp L2015
+  41116b:	49 8d 04 14          	lea    rax,[r12+rdx*1]
+  41116f:	66 0f ef c0          	pxor   xmm0,xmm0
+  411173:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411178:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41117e:	7a 06                	jp     411186 <MEMORY_T::POKE64(double, double)+0x78b6>
+  411180:	0f 84 9a 8c 00 00    	je     419e20 <MEMORY_T::POKE64(double, double)+0x10550>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) jmp L2016
+  411186:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+  41118b:	66 0f ef c0          	pxor   xmm0,xmm0
+  41118f:	48 01 d0             	add    rax,rdx
+  411192:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411197:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41119d:	7a 06                	jp     4111a5 <MEMORY_T::POKE64(double, double)+0x78d5>
+  41119f:	0f 84 ca 8c 00 00    	je     419e6f <MEMORY_T::POKE64(double, double)+0x1059f>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) jmp L2017
+  4111a5:	48 8b 44 24 60       	mov    rax,QWORD PTR [rsp+0x60]
+  4111aa:	66 0f ef c0          	pxor   xmm0,xmm0
+  4111ae:	48 01 d0             	add    rax,rdx
+  4111b1:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4111b6:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4111bc:	7a 06                	jp     4111c4 <MEMORY_T::POKE64(double, double)+0x78f4>
+  4111be:	0f 84 06 8d 00 00    	je     419eca <MEMORY_T::POKE64(double, double)+0x105fa>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) jmp L2018
+  4111c4:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
+  4111c9:	66 0f ef c0          	pxor   xmm0,xmm0
+  4111cd:	48 01 d0             	add    rax,rdx
+  4111d0:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4111d5:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4111db:	7a 06                	jp     4111e3 <MEMORY_T::POKE64(double, double)+0x7913>
+  4111dd:	0f 84 3a 8d 00 00    	je     419f1d <MEMORY_T::POKE64(double, double)+0x1064d>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)) jmp L2019
+  4111e3:	49 8d 04 17          	lea    rax,[r15+rdx*1]
+  4111e7:	66 0f ef c0          	pxor   xmm0,xmm0
+  4111eb:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4111f0:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4111f6:	7a 06                	jp     4111fe <MEMORY_T::POKE64(double, double)+0x792e>
+  4111f8:	0f 84 72 8d 00 00    	je     419f70 <MEMORY_T::POKE64(double, double)+0x106a0>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) jmp L2020
+  4111fe:	49 8d 04 16          	lea    rax,[r14+rdx*1]
+  411202:	66 0f ef c0          	pxor   xmm0,xmm0
+  411206:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41120b:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411211:	7a 06                	jp     411219 <MEMORY_T::POKE64(double, double)+0x7949>
+  411213:	0f 84 aa 8d 00 00    	je     419fc3 <MEMORY_T::POKE64(double, double)+0x106f3>
+;   cmp v eq peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L2021
+  411219:	48 8d 04 13          	lea    rax,[rbx+rdx*1]
+  41121d:	66 0f ef c0          	pxor   xmm0,xmm0
+  411221:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411226:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41122c:	7a 06                	jp     411234 <MEMORY_T::POKE64(double, double)+0x7964>
+  41122e:	0f 84 ea 8d 00 00    	je     41a01e <MEMORY_T::POKE64(double, double)+0x1074e>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) jmp L2022
+  411234:	48 8b 54 24 30       	mov    rdx,QWORD PTR [rsp+0x30]
+  411239:	66 0f ef c0          	pxor   xmm0,xmm0
+  41123d:	48 d3 e2             	shl    rdx,cl
+  411240:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  411245:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41124b:	7a 06                	jp     411253 <MEMORY_T::POKE64(double, double)+0x7983>
+  41124d:	0f 84 1a 8e 00 00    	je     41a06d <MEMORY_T::POKE64(double, double)+0x1079d>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L2023
+  411253:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  411257:	66 0f ef c0          	pxor   xmm0,xmm0
+  41125b:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411260:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411266:	7a 06                	jp     41126e <MEMORY_T::POKE64(double, double)+0x799e>
+  411268:	0f 84 52 8e 00 00    	je     41a0c0 <MEMORY_T::POKE64(double, double)+0x107f0>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L2024
+  41126e:	48 8d 04 17          	lea    rax,[rdi+rdx*1]
+  411272:	66 0f ef c0          	pxor   xmm0,xmm0
+  411276:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41127b:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411281:	7a 06                	jp     411289 <MEMORY_T::POKE64(double, double)+0x79b9>
+  411283:	0f 84 92 8e 00 00    	je     41a11b <MEMORY_T::POKE64(double, double)+0x1084b>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L2025
+  411289:	49 8d 04 13          	lea    rax,[r11+rdx*1]
+  41128d:	66 0f ef c0          	pxor   xmm0,xmm0
+  411291:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411296:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41129c:	7a 06                	jp     4112a4 <MEMORY_T::POKE64(double, double)+0x79d4>
+  41129e:	0f 84 ca 8e 00 00    	je     41a16e <MEMORY_T::POKE64(double, double)+0x1089e>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L2026
+  4112a4:	49 8d 04 12          	lea    rax,[r10+rdx*1]
+  4112a8:	66 0f ef c0          	pxor   xmm0,xmm0
+  4112ac:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4112b1:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4112b7:	7a 06                	jp     4112bf <MEMORY_T::POKE64(double, double)+0x79ef>
+  4112b9:	0f 84 02 8f 00 00    	je     41a1c1 <MEMORY_T::POKE64(double, double)+0x108f1>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L2027
+  4112bf:	49 8d 04 11          	lea    rax,[r9+rdx*1]
+  4112c3:	66 0f ef c0          	pxor   xmm0,xmm0
+  4112c7:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4112cc:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4112d2:	7a 06                	jp     4112da <MEMORY_T::POKE64(double, double)+0x7a0a>
+  4112d4:	0f 84 42 8f 00 00    	je     41a21c <MEMORY_T::POKE64(double, double)+0x1094c>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L2028
+  4112da:	49 8d 04 10          	lea    rax,[r8+rdx*1]
+  4112de:	66 0f ef c0          	pxor   xmm0,xmm0
+  4112e2:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4112e7:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4112ed:	7a 06                	jp     4112f5 <MEMORY_T::POKE64(double, double)+0x7a25>
+  4112ef:	0f 84 76 8f 00 00    	je     41a26b <MEMORY_T::POKE64(double, double)+0x1099b>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L2029
+  4112f5:	48 8d 44 15 00       	lea    rax,[rbp+rdx*1+0x0]
+  4112fa:	66 0f ef c0          	pxor   xmm0,xmm0
+  4112fe:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411303:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411309:	7a 06                	jp     411311 <MEMORY_T::POKE64(double, double)+0x7a41>
+  41130b:	0f 84 ad 8f 00 00    	je     41a2be <MEMORY_T::POKE64(double, double)+0x109ee>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)) jmp L2030
+  411311:	49 8d 44 15 00       	lea    rax,[r13+rdx*1+0x0]
+  411316:	66 0f ef c0          	pxor   xmm0,xmm0
+  41131a:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41131f:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411325:	7a 06                	jp     41132d <MEMORY_T::POKE64(double, double)+0x7a5d>
+  411327:	0f 84 c4 7f 00 00    	je     4192f1 <MEMORY_T::POKE64(double, double)+0xfa21>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) jmp L2031
+  41132d:	49 8d 04 14          	lea    rax,[r12+rdx*1]
+  411331:	66 0f ef c0          	pxor   xmm0,xmm0
+  411335:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41133a:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411340:	7a 06                	jp     411348 <MEMORY_T::POKE64(double, double)+0x7a78>
+  411342:	0f 84 04 80 00 00    	je     41934c <MEMORY_T::POKE64(double, double)+0xfa7c>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) jmp L2032
+  411348:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+  41134d:	66 0f ef c0          	pxor   xmm0,xmm0
+  411351:	48 01 d0             	add    rax,rdx
+  411354:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411359:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41135f:	7a 06                	jp     411367 <MEMORY_T::POKE64(double, double)+0x7a97>
+  411361:	0f 84 38 80 00 00    	je     41939f <MEMORY_T::POKE64(double, double)+0xfacf>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) jmp L2033
+  411367:	48 8b 44 24 60       	mov    rax,QWORD PTR [rsp+0x60]
+  41136c:	66 0f ef c0          	pxor   xmm0,xmm0
+  411370:	48 01 d0             	add    rax,rdx
+  411373:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411378:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41137e:	7a 06                	jp     411386 <MEMORY_T::POKE64(double, double)+0x7ab6>
+  411380:	0f 84 74 80 00 00    	je     4193fa <MEMORY_T::POKE64(double, double)+0xfb2a>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) jmp L2034
+  411386:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
+  41138b:	66 0f ef c0          	pxor   xmm0,xmm0
+  41138f:	48 01 d0             	add    rax,rdx
+  411392:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411397:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41139d:	7a 06                	jp     4113a5 <MEMORY_T::POKE64(double, double)+0x7ad5>
+  41139f:	0f 84 a4 80 00 00    	je     419449 <MEMORY_T::POKE64(double, double)+0xfb79>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)) jmp L2035
+  4113a5:	49 8d 04 17          	lea    rax,[r15+rdx*1]
+  4113a9:	66 0f ef c0          	pxor   xmm0,xmm0
+  4113ad:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4113b2:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4113b8:	7a 06                	jp     4113c0 <MEMORY_T::POKE64(double, double)+0x7af0>
+  4113ba:	0f 84 dc 80 00 00    	je     41949c <MEMORY_T::POKE64(double, double)+0xfbcc>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) jmp L2036
+  4113c0:	49 8d 04 16          	lea    rax,[r14+rdx*1]
+  4113c4:	66 0f ef c0          	pxor   xmm0,xmm0
+  4113c8:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4113cd:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4113d3:	7a 06                	jp     4113db <MEMORY_T::POKE64(double, double)+0x7b0b>
+  4113d5:	0f 84 14 81 00 00    	je     4194ef <MEMORY_T::POKE64(double, double)+0xfc1f>
+;   cmp v eq peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L2037
+  4113db:	48 8d 04 13          	lea    rax,[rbx+rdx*1]
+  4113df:	66 0f ef c0          	pxor   xmm0,xmm0
+  4113e3:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4113e8:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4113ee:	7a 06                	jp     4113f6 <MEMORY_T::POKE64(double, double)+0x7b26>
+  4113f0:	0f 84 4c 81 00 00    	je     419542 <MEMORY_T::POKE64(double, double)+0xfc72>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) jmp L2038
+  4113f6:	4c 89 fa             	mov    rdx,r15
+  4113f9:	66 0f ef c0          	pxor   xmm0,xmm0
+  4113fd:	48 d3 e2             	shl    rdx,cl
+  411400:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  411405:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41140b:	7a 06                	jp     411413 <MEMORY_T::POKE64(double, double)+0x7b43>
+  41140d:	0f 84 8a 81 00 00    	je     41959d <MEMORY_T::POKE64(double, double)+0xfccd>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L2039
+  411413:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  411417:	66 0f ef c0          	pxor   xmm0,xmm0
+  41141b:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411420:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411426:	7a 06                	jp     41142e <MEMORY_T::POKE64(double, double)+0x7b5e>
+  411428:	0f 84 ca 81 00 00    	je     4195f8 <MEMORY_T::POKE64(double, double)+0xfd28>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L2040
+  41142e:	48 8d 04 17          	lea    rax,[rdi+rdx*1]
+  411432:	66 0f ef c0          	pxor   xmm0,xmm0
+  411436:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41143b:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411441:	7a 06                	jp     411449 <MEMORY_T::POKE64(double, double)+0x7b79>
+  411443:	0f 84 06 82 00 00    	je     41964f <MEMORY_T::POKE64(double, double)+0xfd7f>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L2041
+  411449:	49 8d 04 13          	lea    rax,[r11+rdx*1]
+  41144d:	66 0f ef c0          	pxor   xmm0,xmm0
+  411451:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411456:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41145c:	7a 06                	jp     411464 <MEMORY_T::POKE64(double, double)+0x7b94>
+  41145e:	0f 84 46 82 00 00    	je     4196aa <MEMORY_T::POKE64(double, double)+0xfdda>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L2042
+  411464:	49 8d 04 12          	lea    rax,[r10+rdx*1]
+  411468:	66 0f ef c0          	pxor   xmm0,xmm0
+  41146c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411471:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411477:	7a 06                	jp     41147f <MEMORY_T::POKE64(double, double)+0x7baf>
+  411479:	0f 84 86 82 00 00    	je     419705 <MEMORY_T::POKE64(double, double)+0xfe35>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L2043
+  41147f:	49 8d 04 11          	lea    rax,[r9+rdx*1]
+  411483:	66 0f ef c0          	pxor   xmm0,xmm0
+  411487:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41148c:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411492:	7a 06                	jp     41149a <MEMORY_T::POKE64(double, double)+0x7bca>
+  411494:	0f 84 c6 82 00 00    	je     419760 <MEMORY_T::POKE64(double, double)+0xfe90>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L2044
+  41149a:	49 8d 04 10          	lea    rax,[r8+rdx*1]
+  41149e:	66 0f ef c0          	pxor   xmm0,xmm0
+  4114a2:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4114a7:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4114ad:	7a 06                	jp     4114b5 <MEMORY_T::POKE64(double, double)+0x7be5>
+  4114af:	0f 84 06 83 00 00    	je     4197bb <MEMORY_T::POKE64(double, double)+0xfeeb>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L2045
+  4114b5:	48 8d 44 15 00       	lea    rax,[rbp+rdx*1+0x0]
+  4114ba:	66 0f ef c0          	pxor   xmm0,xmm0
+  4114be:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4114c3:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4114c9:	7a 06                	jp     4114d1 <MEMORY_T::POKE64(double, double)+0x7c01>
+  4114cb:	0f 84 49 83 00 00    	je     41981a <MEMORY_T::POKE64(double, double)+0xff4a>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)) jmp L2046
+  4114d1:	49 8d 44 15 00       	lea    rax,[r13+rdx*1+0x0]
+  4114d6:	66 0f ef c0          	pxor   xmm0,xmm0
+  4114da:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4114df:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4114e5:	7a 06                	jp     4114ed <MEMORY_T::POKE64(double, double)+0x7c1d>
+  4114e7:	0f 84 c9 4c 00 00    	je     4161b6 <MEMORY_T::POKE64(double, double)+0xc8e6>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) jmp L2047
+  4114ed:	49 8d 04 14          	lea    rax,[r12+rdx*1]
+  4114f1:	66 0f ef c0          	pxor   xmm0,xmm0
+  4114f5:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4114fa:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411500:	7a 06                	jp     411508 <MEMORY_T::POKE64(double, double)+0x7c38>
+  411502:	0f 84 37 4f 00 00    	je     41643f <MEMORY_T::POKE64(double, double)+0xcb6f>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) jmp L2048
+  411508:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+  41150d:	66 0f ef c0          	pxor   xmm0,xmm0
+  411511:	48 01 d0             	add    rax,rdx
+  411514:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411519:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41151f:	7a 06                	jp     411527 <MEMORY_T::POKE64(double, double)+0x7c57>
+  411521:	0f 84 5a 4e 00 00    	je     416381 <MEMORY_T::POKE64(double, double)+0xcab1>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) jmp L2049
+  411527:	48 8b 44 24 60       	mov    rax,QWORD PTR [rsp+0x60]
+  41152c:	66 0f ef c0          	pxor   xmm0,xmm0
+  411530:	48 01 d0             	add    rax,rdx
+  411533:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411538:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41153e:	7a 06                	jp     411546 <MEMORY_T::POKE64(double, double)+0x7c76>
+  411540:	0f 84 9a 4e 00 00    	je     4163e0 <MEMORY_T::POKE64(double, double)+0xcb10>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) jmp L2050
+  411546:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
+  41154b:	66 0f ef c0          	pxor   xmm0,xmm0
+  41154f:	48 01 d0             	add    rax,rdx
+  411552:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411557:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41155d:	7a 06                	jp     411565 <MEMORY_T::POKE64(double, double)+0x7c95>
+  41155f:	0f 84 b0 4c 00 00    	je     416215 <MEMORY_T::POKE64(double, double)+0xc945>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)) jmp L2051
+  411565:	49 8d 04 17          	lea    rax,[r15+rdx*1]
+  411569:	66 0f ef c0          	pxor   xmm0,xmm0
+  41156d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411572:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411578:	7a 06                	jp     411580 <MEMORY_T::POKE64(double, double)+0x7cb0>
+  41157a:	0f 84 f4 4c 00 00    	je     416274 <MEMORY_T::POKE64(double, double)+0xc9a4>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) jmp L2052
+  411580:	49 8d 04 16          	lea    rax,[r14+rdx*1]
+  411584:	66 0f ef c0          	pxor   xmm0,xmm0
+  411588:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41158d:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411593:	7a 06                	jp     41159b <MEMORY_T::POKE64(double, double)+0x7ccb>
+  411595:	0f 84 38 4d 00 00    	je     4162d3 <MEMORY_T::POKE64(double, double)+0xca03>
+;   cmp v eq peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L2053
+  41159b:	48 8d 04 13          	lea    rax,[rbx+rdx*1]
+  41159f:	66 0f ef c0          	pxor   xmm0,xmm0
+  4115a3:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4115a8:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4115ae:	7a 06                	jp     4115b6 <MEMORY_T::POKE64(double, double)+0x7ce6>
+  4115b0:	0f 84 e9 0f 00 00    	je     41259f <MEMORY_T::POKE64(double, double)+0x8ccf>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) jmp L2054
+  4115b6:	4c 89 f2             	mov    rdx,r14
+  4115b9:	66 0f ef c0          	pxor   xmm0,xmm0
+  4115bd:	48 d3 e2             	shl    rdx,cl
+  4115c0:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  4115c5:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4115cb:	7a 06                	jp     4115d3 <MEMORY_T::POKE64(double, double)+0x7d03>
+  4115cd:	0f 84 cb 5c 00 00    	je     41729e <MEMORY_T::POKE64(double, double)+0xd9ce>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L2055
+  4115d3:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  4115d7:	66 0f ef c0          	pxor   xmm0,xmm0
+  4115db:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4115e0:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4115e6:	7a 06                	jp     4115ee <MEMORY_T::POKE64(double, double)+0x7d1e>
+  4115e8:	0f 84 ba 37 03 00    	je     444da8 <MEMORY_T::POKE64(double, double)+0x3b4d8>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L2056
+  4115ee:	48 8d 04 17          	lea    rax,[rdi+rdx*1]
+  4115f2:	66 0f ef c0          	pxor   xmm0,xmm0
+  4115f6:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4115fb:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411601:	7a 06                	jp     411609 <MEMORY_T::POKE64(double, double)+0x7d39>
+  411603:	0f 84 78 23 03 00    	je     443981 <MEMORY_T::POKE64(double, double)+0x3a0b1>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L2057
+  411609:	49 8d 04 13          	lea    rax,[r11+rdx*1]
+  41160d:	66 0f ef c0          	pxor   xmm0,xmm0
+  411611:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411616:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41161c:	7a 06                	jp     411624 <MEMORY_T::POKE64(double, double)+0x7d54>
+  41161e:	0f 84 55 2f 03 00    	je     444579 <MEMORY_T::POKE64(double, double)+0x3aca9>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L2058
+  411624:	49 8d 04 12          	lea    rax,[r10+rdx*1]
+  411628:	66 0f ef c0          	pxor   xmm0,xmm0
+  41162c:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411631:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411637:	7a 06                	jp     41163f <MEMORY_T::POKE64(double, double)+0x7d6f>
+  411639:	0f 84 03 86 00 00    	je     419c42 <MEMORY_T::POKE64(double, double)+0x10372>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L2059
+  41163f:	49 8d 04 11          	lea    rax,[r9+rdx*1]
+  411643:	66 0f ef c0          	pxor   xmm0,xmm0
+  411647:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41164c:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411652:	7a 06                	jp     41165a <MEMORY_T::POKE64(double, double)+0x7d8a>
+  411654:	0f 84 fd 30 03 00    	je     444757 <MEMORY_T::POKE64(double, double)+0x3ae87>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L2060
+  41165a:	49 8d 04 10          	lea    rax,[r8+rdx*1]
+  41165e:	66 0f ef c0          	pxor   xmm0,xmm0
+  411662:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411667:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41166d:	7a 06                	jp     411675 <MEMORY_T::POKE64(double, double)+0x7da5>
+  41166f:	0f 84 e8 26 03 00    	je     443d5d <MEMORY_T::POKE64(double, double)+0x3a48d>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L2061
+  411675:	48 8d 44 15 00       	lea    rax,[rbp+rdx*1+0x0]
+  41167a:	66 0f ef c0          	pxor   xmm0,xmm0
+  41167e:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411683:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411689:	7a 06                	jp     411691 <MEMORY_T::POKE64(double, double)+0x7dc1>
+  41168b:	0f 84 15 3d 03 00    	je     4453a6 <MEMORY_T::POKE64(double, double)+0x3bad6>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)) jmp L2062
+  411691:	49 8d 44 15 00       	lea    rax,[r13+rdx*1+0x0]
+  411696:	66 0f ef c0          	pxor   xmm0,xmm0
+  41169a:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41169f:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4116a5:	7a 06                	jp     4116ad <MEMORY_T::POKE64(double, double)+0x7ddd>
+  4116a7:	0f 84 f3 42 03 00    	je     4459a0 <MEMORY_T::POKE64(double, double)+0x3c0d0>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) jmp L2063
+  4116ad:	49 8d 04 14          	lea    rax,[r12+rdx*1]
+  4116b1:	66 0f ef c0          	pxor   xmm0,xmm0
+  4116b5:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4116ba:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4116c0:	7a 06                	jp     4116c8 <MEMORY_T::POKE64(double, double)+0x7df8>
+  4116c2:	0f 84 f8 59 00 00    	je     4170c0 <MEMORY_T::POKE64(double, double)+0xd7f0>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) jmp L2064
+  4116c8:	48 8b 44 24 20       	mov    rax,QWORD PTR [rsp+0x20]
+  4116cd:	66 0f ef c0          	pxor   xmm0,xmm0
+  4116d1:	48 01 d0             	add    rax,rdx
+  4116d4:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4116d9:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4116df:	7a 06                	jp     4116e7 <MEMORY_T::POKE64(double, double)+0x7e17>
+  4116e1:	0f 84 46 58 00 00    	je     416f2d <MEMORY_T::POKE64(double, double)+0xd65d>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) jmp L2065
+  4116e7:	48 8b 44 24 60       	mov    rax,QWORD PTR [rsp+0x60]
+  4116ec:	66 0f ef c0          	pxor   xmm0,xmm0
+  4116f0:	48 01 d0             	add    rax,rdx
+  4116f3:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4116f8:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4116fe:	7a 06                	jp     411706 <MEMORY_T::POKE64(double, double)+0x7e36>
+  411700:	0f 84 10 5e 00 00    	je     417516 <MEMORY_T::POKE64(double, double)+0xdc46>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) jmp L2066
+  411706:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
+  41170b:	66 0f ef c0          	pxor   xmm0,xmm0
+  41170f:	48 01 d0             	add    rax,rdx
+  411712:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411717:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41171d:	7a 06                	jp     411725 <MEMORY_T::POKE64(double, double)+0x7e55>
+  41171f:	0f 84 26 60 00 00    	je     41774b <MEMORY_T::POKE64(double, double)+0xde7b>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)) jmp L2067
+  411725:	49 8d 04 17          	lea    rax,[r15+rdx*1]
+  411729:	66 0f ef c0          	pxor   xmm0,xmm0
+  41172d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411732:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411738:	7a 06                	jp     411740 <MEMORY_T::POKE64(double, double)+0x7e70>
+  41173a:	0f 84 5a 60 00 00    	je     41779a <MEMORY_T::POKE64(double, double)+0xdeca>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) jmp L2068
+  411740:	49 8d 04 16          	lea    rax,[r14+rdx*1]
+  411744:	66 0f ef c0          	pxor   xmm0,xmm0
+  411748:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41174d:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411753:	7a 06                	jp     41175b <MEMORY_T::POKE64(double, double)+0x7e8b>
+  411755:	0f 84 87 22 00 00    	je     4139e2 <MEMORY_T::POKE64(double, double)+0xa112>
+;   cmp v eq peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L2069
+  41175b:	48 8d 04 13          	lea    rax,[rbx+rdx*1]
+  41175f:	66 0f ef c0          	pxor   xmm0,xmm0
+  411763:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411768:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41176e:	7a 06                	jp     411776 <MEMORY_T::POKE64(double, double)+0x7ea6>
+  411770:	0f 84 5f 76 00 00    	je     418dd5 <MEMORY_T::POKE64(double, double)+0xf505>
+;   cmp v eq peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) jmp L2070
+  411776:	48 89 d8             	mov    rax,rbx
+  411779:	66 0f ef c0          	pxor   xmm0,xmm0
+  41177d:	48 d3 e0             	shl    rax,cl
+  411780:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411785:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41178b:	7a 06                	jp     411793 <MEMORY_T::POKE64(double, double)+0x7ec3>
+  41178d:	0f 84 06 37 03 00    	je     444e99 <MEMORY_T::POKE64(double, double)+0x3b5c9>
+;   cmp v eq peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)) jmp L2071
+  411793:	48 8d 14 06          	lea    rdx,[rsi+rax*1]
+  411797:	66 0f ef c0          	pxor   xmm0,xmm0
+  41179b:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  4117a0:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4117a6:	7a 06                	jp     4117ae <MEMORY_T::POKE64(double, double)+0x7ede>
+  4117a8:	0f 84 6d 22 03 00    	je     443a1b <MEMORY_T::POKE64(double, double)+0x3a14b>
+;   cmp v eq peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010)) jmp L2072
+  4117ae:	48 8d 14 07          	lea    rdx,[rdi+rax*1]
+  4117b2:	66 0f ef c0          	pxor   xmm0,xmm0
+  4117b6:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  4117bb:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4117c1:	7a 06                	jp     4117c9 <MEMORY_T::POKE64(double, double)+0x7ef9>
+  4117c3:	0f 84 fb 2d 03 00    	je     4445c4 <MEMORY_T::POKE64(double, double)+0x3acf4>
+;   cmp v eq peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)) jmp L2073
+  4117c9:	49 8d 14 03          	lea    rdx,[r11+rax*1]
+  4117cd:	66 0f ef c0          	pxor   xmm0,xmm0
+  4117d1:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  4117d6:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4117dc:	7a 06                	jp     4117e4 <MEMORY_T::POKE64(double, double)+0x7f14>
+  4117de:	0f 84 5e 84 00 00    	je     419c42 <MEMORY_T::POKE64(double, double)+0x10372>
+;   cmp v eq peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)) jmp L2074
+  4117e4:	49 8d 14 02          	lea    rdx,[r10+rax*1]
+  4117e8:	66 0f ef c0          	pxor   xmm0,xmm0
+  4117ec:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  4117f1:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4117f7:	7a 06                	jp     4117ff <MEMORY_T::POKE64(double, double)+0x7f2f>
+  4117f9:	0f 84 58 2f 03 00    	je     444757 <MEMORY_T::POKE64(double, double)+0x3ae87>
+;   cmp v eq peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) jmp L2075
+  4117ff:	49 8d 14 01          	lea    rdx,[r9+rax*1]
+  411803:	66 0f ef c0          	pxor   xmm0,xmm0
+  411807:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
+  41180c:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411812:	7a 06                	jp     41181a <MEMORY_T::POKE64(double, double)+0x7f4a>
+  411814:	0f 84 43 25 03 00    	je     443d5d <MEMORY_T::POKE64(double, double)+0x3a48d>
+;   cmp v eq peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) jmp L2076
+  41181a:	4c 01 c0             	add    rax,r8
+  41181d:	66 0f ef c0          	pxor   xmm0,xmm0
+  411821:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411826:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41182c:	7a 06                	jp     411834 <MEMORY_T::POKE64(double, double)+0x7f64>
+  41182e:	0f 84 72 3b 03 00    	je     4453a6 <MEMORY_T::POKE64(double, double)+0x3bad6>
+;   cmp v eq bytes(&B11110111) jmp L2077
+  411834:	0f b6 05 3c f5 09 00 	movzx  eax,BYTE PTR [rip+0x9f53c]        # 4b0d77 <BYTES$+0xf7>
+  41183b:	66 0f ef c0          	pxor   xmm0,xmm0
+  41183f:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411844:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41184a:	7a 06                	jp     411852 <MEMORY_T::POKE64(double, double)+0x7f82>
+  41184c:	0f 84 4e 41 03 00    	je     4459a0 <MEMORY_T::POKE64(double, double)+0x3c0d0>
+;   cmp v eq bytes(&B11111000) jmp L2078
+  411852:	0f b6 05 1f f5 09 00 	movzx  eax,BYTE PTR [rip+0x9f51f]        # 4b0d78 <BYTES$+0xf8>
+  411859:	66 0f ef c0          	pxor   xmm0,xmm0
+  41185d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411862:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411868:	7a 06                	jp     411870 <MEMORY_T::POKE64(double, double)+0x7fa0>
+  41186a:	0f 84 c2 4a 00 00    	je     416332 <MEMORY_T::POKE64(double, double)+0xca62>
+;   cmp v eq bytes(&B11111001) jmp L2079
+  411870:	0f b6 05 02 f5 09 00 	movzx  eax,BYTE PTR [rip+0x9f502]        # 4b0d79 <BYTES$+0xf9>
+  411877:	66 0f ef c0          	pxor   xmm0,xmm0
+  41187b:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411880:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411886:	7a 06                	jp     41188e <MEMORY_T::POKE64(double, double)+0x7fbe>
+  411888:	0f 84 7a 51 00 00    	je     416a08 <MEMORY_T::POKE64(double, double)+0xd138>
+;   cmp v eq bytes(&B11111010) jmp L2080
+  41188e:	0f b6 05 e5 f4 09 00 	movzx  eax,BYTE PTR [rip+0x9f4e5]        # 4b0d7a <BYTES$+0xfa>
+  411895:	66 0f ef c0          	pxor   xmm0,xmm0
+  411899:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41189e:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4118a4:	7a 06                	jp     4118ac <MEMORY_T::POKE64(double, double)+0x7fdc>
+  4118a6:	0f 84 f2 42 03 00    	je     445b9e <MEMORY_T::POKE64(double, double)+0x3c2ce>
+;   cmp v eq bytes(&B11111011) jmp L2081
+  4118ac:	0f b6 05 c8 f4 09 00 	movzx  eax,BYTE PTR [rip+0x9f4c8]        # 4b0d7b <BYTES$+0xfb>
+  4118b3:	66 0f ef c0          	pxor   xmm0,xmm0
+  4118b7:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4118bc:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4118c2:	7a 06                	jp     4118ca <MEMORY_T::POKE64(double, double)+0x7ffa>
+  4118c4:	0f 84 23 43 03 00    	je     445bed <MEMORY_T::POKE64(double, double)+0x3c31d>
+;   cmp v eq bytes(&B11111100) jmp L2082
+  4118ca:	0f b6 05 ab f4 09 00 	movzx  eax,BYTE PTR [rip+0x9f4ab]        # 4b0d7c <BYTES$+0xfc>
+  4118d1:	66 0f ef c0          	pxor   xmm0,xmm0
+  4118d5:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4118da:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4118e0:	7a 06                	jp     4118e8 <MEMORY_T::POKE64(double, double)+0x8018>
+  4118e2:	0f 84 23 58 00 00    	je     41710b <MEMORY_T::POKE64(double, double)+0xd83b>
+;   cmp v eq bytes(&B11111101) jmp L2083
+  4118e8:	0f b6 05 8e f4 09 00 	movzx  eax,BYTE PTR [rip+0x9f48e]        # 4b0d7d <BYTES$+0xfd>
+  4118ef:	66 0f ef c0          	pxor   xmm0,xmm0
+  4118f3:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4118f8:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4118fe:	7a 06                	jp     411906 <MEMORY_T::POKE64(double, double)+0x8036>
+  411900:	0f 84 eb 3e 03 00    	je     4457f1 <MEMORY_T::POKE64(double, double)+0x3bf21>
+;   cmp v eq bytes(&B11111110) jmp L2084
+  411906:	0f b6 05 71 f4 09 00 	movzx  eax,BYTE PTR [rip+0x9f471]        # 4b0d7e <BYTES$+0xfe>
+  41190d:	66 0f ef c0          	pxor   xmm0,xmm0
+  411911:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411916:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41191c:	7a 06                	jp     411924 <MEMORY_T::POKE64(double, double)+0x8054>
+  41191e:	0f 84 36 58 00 00    	je     41715a <MEMORY_T::POKE64(double, double)+0xd88a>
+;   cmp v eq bytes(&B11111111) jmp L2085
+  411924:	0f b6 05 54 f4 09 00 	movzx  eax,BYTE PTR [rip+0x9f454]        # 4b0d7f <BYTES$+0xff>
+  41192b:	66 0f ef c0          	pxor   xmm0,xmm0
+  41192f:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411934:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41193a:	0f 8a b0 a0 ff ff    	jp     40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+  411940:	0f 85 aa a0 ff ff    	jne    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;   jmp L2086
+;L2084:'254
+;   poke64(49158,&H00):poke64(49159,&HFF):poke64(49160,&H66)
+;   jmp L2086
+;L2085:'255
+;   poke64(49158,&H28):poke64(49159,&H28):poke64(49160,&H28)
+  411946:	48 8b 05 5b 03 07 00 	mov    rax,QWORD PTR [rip+0x7035b]        # 481ca8 <_IO_stdin_used+0x4ca8>
+  41194d:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  411952:	f2 0f 10 05 de fb 06 	movsd  xmm0,QWORD PTR [rip+0x6fbde]        # 481538 <_IO_stdin_used+0x4538>
+  411959:	00 
+  41195a:	66 48 0f 6e c8       	movq   xmm1,rax
+  41195f:	e8 6c 7f ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  411964:	48 8b 05 3d 03 07 00 	mov    rax,QWORD PTR [rip+0x7033d]        # 481ca8 <_IO_stdin_used+0x4ca8>
+  41196b:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  411970:	f2 0f 10 05 c8 fb 06 	movsd  xmm0,QWORD PTR [rip+0x6fbc8]        # 481540 <_IO_stdin_used+0x4540>
+  411977:	00 
+  411978:	66 48 0f 6e c8       	movq   xmm1,rax
+  41197d:	e8 4e 7f ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  411982:	48 8b 05 1f 03 07 00 	mov    rax,QWORD PTR [rip+0x7031f]        # 481ca8 <_IO_stdin_used+0x4ca8>
+  411989:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  41198e:	f2 0f 10 05 b2 fb 06 	movsd  xmm0,QWORD PTR [rip+0x6fbb2]        # 481548 <_IO_stdin_used+0x4548>
+  411995:	00 
+  411996:	66 48 0f 6e c8       	movq   xmm1,rax
+  41199b:	e8 30 7f ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L2086
+  4119a0:	e9 4b a0 ff ff       	jmp    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+  4119a5:	0f 1f 00             	nop    DWORD PTR [rax]
+;   mov(mem64(49457),mem64(49456) shl 24 add &H000000)
+  4119a8:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4119ad:	f2 0f 10 80 80 09 06 	movsd  xmm0,QWORD PTR [rax+0x60980]
+  4119b4:	00 
+  4119b5:	e8 a6 39 ff ff       	call   405360 <nearbyint@plt>
+  4119ba:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  4119bf:	66 0f ef c0          	pxor   xmm0,xmm0
+  4119c3:	48 c1 e0 18          	shl    rax,0x18
+  4119c7:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+;   jmp L1826
+  4119cc:	e9 b6 9e ff ff       	jmp    40b887 <MEMORY_T::POKE64(double, double)+0x1fb7>
+;	   case 000
+  4119d1:	f2 0f 10 5c 24 18    	movsd  xmm3,QWORD PTR [rsp+0x18]
+  4119d7:	66 0f 2e 1d 31 02 07 	ucomisd xmm3,QWORD PTR [rip+0x70231]        # 481c10 <_IO_stdin_used+0x4c10>
+  4119de:	00 
+  4119df:	7a 06                	jp     4119e7 <MEMORY_T::POKE64(double, double)+0x8117>
+  4119e1:	0f 84 f5 09 00 00    	je     4123dc <MEMORY_T::POKE64(double, double)+0x8b0c>
+;	   case 001
+  4119e7:	f2 0f 10 5c 24 18    	movsd  xmm3,QWORD PTR [rsp+0x18]
+  4119ed:	66 0f 2e 1d 5b f7 06 	ucomisd xmm3,QWORD PTR [rip+0x6f75b]        # 481150 <_IO_stdin_used+0x4150>
+  4119f4:	00 
+  4119f5:	7a 06                	jp     4119fd <MEMORY_T::POKE64(double, double)+0x812d>
+  4119f7:	0f 84 36 0b 00 00    	je     412533 <MEMORY_T::POKE64(double, double)+0x8c63>
+;	   case 003 ' Unused
+  4119fd:	f2 0f 10 7c 24 18    	movsd  xmm7,QWORD PTR [rsp+0x18]
+  411a03:	66 0f 2e 3d d5 02 07 	ucomisd xmm7,QWORD PTR [rip+0x702d5]        # 481ce0 <_IO_stdin_used+0x4ce0>
+  411a0a:	00 
+  411a0b:	b8 01 00 00 00       	mov    eax,0x1
+  411a10:	0f 9a c2             	setp   dl
+  411a13:	89 d1                	mov    ecx,edx
+  411a15:	0f 45 c8             	cmovne ecx,eax
+;	   case 002 ' Unused
+  411a18:	66 0f 2e 3d 40 02 07 	ucomisd xmm7,QWORD PTR [rip+0x70240]        # 481c60 <_IO_stdin_used+0x4c60>
+  411a1f:	00 
+  411a20:	0f 9a c2             	setp   dl
+  411a23:	0f 45 d0             	cmovne edx,eax
+;	   case 004 ' Unused
+  411a26:	84 d1                	test   cl,dl
+  411a28:	0f 84 d2 a9 ff ff    	je     40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+  411a2e:	66 0f 2e 3d 22 02 07 	ucomisd xmm7,QWORD PTR [rip+0x70222]        # 481c58 <_IO_stdin_used+0x4c58>
+  411a35:	00 
+  411a36:	0f 9a c2             	setp   dl
+  411a39:	0f 44 c2             	cmove  eax,edx
+  411a3c:	84 c0                	test   al,al
+  411a3e:	0f 84 bc a9 ff ff    	je     40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;	   case 005 ' Unused	    
+  411a44:	66 0f 2e 3d 04 02 07 	ucomisd xmm7,QWORD PTR [rip+0x70204]        # 481c50 <_IO_stdin_used+0x4c50>
+  411a4b:	00 
+  411a4c:	7a 06                	jp     411a54 <MEMORY_T::POKE64(double, double)+0x8184>
+  411a4e:	0f 84 6f 23 00 00    	je     413dc3 <MEMORY_T::POKE64(double, double)+0xa4f3>
+;	   case 006 
+  411a54:	f2 0f 10 74 24 18    	movsd  xmm6,QWORD PTR [rsp+0x18]
+  411a5a:	66 0f 2e 35 ce f7 06 	ucomisd xmm6,QWORD PTR [rip+0x6f7ce]        # 481230 <_IO_stdin_used+0x4230>
+  411a61:	00 
+  411a62:	7a 06                	jp     411a6a <MEMORY_T::POKE64(double, double)+0x819a>
+  411a64:	0f 84 73 3e 00 00    	je     4158dd <MEMORY_T::POKE64(double, double)+0xc00d>
+;	   case 007
+  411a6a:	f2 0f 10 7c 24 18    	movsd  xmm7,QWORD PTR [rsp+0x18]
+  411a70:	66 0f 2e 3d c0 f7 06 	ucomisd xmm7,QWORD PTR [rip+0x6f7c0]        # 481238 <_IO_stdin_used+0x4238>
+  411a77:	00 
+  411a78:	7a 06                	jp     411a80 <MEMORY_T::POKE64(double, double)+0x81b0>
+  411a7a:	0f 84 52 40 00 00    	je     415ad2 <MEMORY_T::POKE64(double, double)+0xc202>
+;	   case 008
+  411a80:	f2 0f 10 64 24 18    	movsd  xmm4,QWORD PTR [rsp+0x18]
+  411a86:	66 0f 2e 25 b2 f7 06 	ucomisd xmm4,QWORD PTR [rip+0x6f7b2]        # 481240 <_IO_stdin_used+0x4240>
+  411a8d:	00 
+  411a8e:	7a 06                	jp     411a96 <MEMORY_T::POKE64(double, double)+0x81c6>
+  411a90:	0f 84 e1 3d 00 00    	je     415877 <MEMORY_T::POKE64(double, double)+0xbfa7>
+;	   case 009
+  411a96:	f2 0f 10 6c 24 18    	movsd  xmm5,QWORD PTR [rsp+0x18]
+  411a9c:	66 0f 2e 2d bc f6 06 	ucomisd xmm5,QWORD PTR [rip+0x6f6bc]        # 481160 <_IO_stdin_used+0x4160>
+  411aa3:	00 
+  411aa4:	7a 06                	jp     411aac <MEMORY_T::POKE64(double, double)+0x81dc>
+  411aa6:	0f 84 c0 73 00 00    	je     418e6c <MEMORY_T::POKE64(double, double)+0xf59c>
+;	   case 010
+  411aac:	f2 0f 10 74 24 18    	movsd  xmm6,QWORD PTR [rsp+0x18]
+  411ab2:	66 0f 2e 35 96 03 07 	ucomisd xmm6,QWORD PTR [rip+0x70396]        # 481e50 <_IO_stdin_used+0x4e50>
+  411ab9:	00 
+  411aba:	7a 06                	jp     411ac2 <MEMORY_T::POKE64(double, double)+0x81f2>
+  411abc:	0f 84 10 74 00 00    	je     418ed2 <MEMORY_T::POKE64(double, double)+0xf602>
+;	   case 011
+  411ac2:	f2 0f 10 7c 24 18    	movsd  xmm7,QWORD PTR [rsp+0x18]
+  411ac8:	66 0f 2e 3d 78 f7 06 	ucomisd xmm7,QWORD PTR [rip+0x6f778]        # 481248 <_IO_stdin_used+0x4248>
+  411acf:	00 
+  411ad0:	7a 06                	jp     411ad8 <MEMORY_T::POKE64(double, double)+0x8208>
+  411ad2:	0f 84 60 74 00 00    	je     418f38 <MEMORY_T::POKE64(double, double)+0xf668>
+;	   case 012
+  411ad8:	f2 0f 10 5c 24 18    	movsd  xmm3,QWORD PTR [rsp+0x18]
+  411ade:	66 0f 2e 1d 6a f7 06 	ucomisd xmm3,QWORD PTR [rip+0x6f76a]        # 481250 <_IO_stdin_used+0x4250>
+  411ae5:	00 
+  411ae6:	7a 06                	jp     411aee <MEMORY_T::POKE64(double, double)+0x821e>
+  411ae8:	0f 84 bb 74 00 00    	je     418fa9 <MEMORY_T::POKE64(double, double)+0xf6d9>
+;	   case 013
+  411aee:	f2 0f 10 64 24 18    	movsd  xmm4,QWORD PTR [rsp+0x18]
+  411af4:	66 0f 2e 25 5c f7 06 	ucomisd xmm4,QWORD PTR [rip+0x6f75c]        # 481258 <_IO_stdin_used+0x4258>
+  411afb:	00 
+  411afc:	7a 06                	jp     411b04 <MEMORY_T::POKE64(double, double)+0x8234>
+  411afe:	0f 84 0b 75 00 00    	je     41900f <MEMORY_T::POKE64(double, double)+0xf73f>
+;	   case 014
+  411b04:	f2 0f 10 6c 24 18    	movsd  xmm5,QWORD PTR [rsp+0x18]
+  411b0a:	66 0f 2e 2d 4e f7 06 	ucomisd xmm5,QWORD PTR [rip+0x6f74e]        # 481260 <_IO_stdin_used+0x4260>
+  411b11:	00 
+  411b12:	7a 06                	jp     411b1a <MEMORY_T::POKE64(double, double)+0x824a>
+  411b14:	0f 84 61 75 00 00    	je     41907b <MEMORY_T::POKE64(double, double)+0xf7ab>
+;	   case 015
+  411b1a:	f2 0f 10 74 24 18    	movsd  xmm6,QWORD PTR [rsp+0x18]
+  411b20:	66 0f 2e 35 40 f7 06 	ucomisd xmm6,QWORD PTR [rip+0x6f740]        # 481268 <_IO_stdin_used+0x4268>
+  411b27:	00 
+  411b28:	7a 06                	jp     411b30 <MEMORY_T::POKE64(double, double)+0x8260>
+  411b2a:	0f 84 b1 75 00 00    	je     4190e1 <MEMORY_T::POKE64(double, double)+0xf811>
+;	   case 016
+  411b30:	f2 0f 10 7c 24 18    	movsd  xmm7,QWORD PTR [rsp+0x18]
+  411b36:	66 0f 2e 3d 2a f6 06 	ucomisd xmm7,QWORD PTR [rip+0x6f62a]        # 481168 <_IO_stdin_used+0x4168>
+  411b3d:	00 
+  411b3e:	7a 06                	jp     411b46 <MEMORY_T::POKE64(double, double)+0x8276>
+  411b40:	0f 84 07 76 00 00    	je     41914d <MEMORY_T::POKE64(double, double)+0xf87d>
+;	   case 018
+  411b46:	f2 0f 10 5c 24 18    	movsd  xmm3,QWORD PTR [rsp+0x18]
+  411b4c:	66 0f 2e 1d 24 f7 06 	ucomisd xmm3,QWORD PTR [rip+0x6f724]        # 481278 <_IO_stdin_used+0x4278>
+  411b53:	00 
+  411b54:	7a 06                	jp     411b5c <MEMORY_T::POKE64(double, double)+0x828c>
+  411b56:	0f 84 57 76 00 00    	je     4191b3 <MEMORY_T::POKE64(double, double)+0xf8e3>
+;	   case 019
+  411b5c:	f2 0f 10 64 24 18    	movsd  xmm4,QWORD PTR [rsp+0x18]
+  411b62:	66 0f 2e 25 16 f7 06 	ucomisd xmm4,QWORD PTR [rip+0x6f716]        # 481280 <_IO_stdin_used+0x4280>
+  411b69:	00 
+  411b6a:	7a 06                	jp     411b72 <MEMORY_T::POKE64(double, double)+0x82a2>
+  411b6c:	0f 84 ad 76 00 00    	je     41921f <MEMORY_T::POKE64(double, double)+0xf94f>
+;	   case 020
+  411b72:	f2 0f 10 6c 24 18    	movsd  xmm5,QWORD PTR [rsp+0x18]
+  411b78:	66 0f 2e 2d 08 f7 06 	ucomisd xmm5,QWORD PTR [rip+0x6f708]        # 481288 <_IO_stdin_used+0x4288>
+  411b7f:	00 
+  411b80:	7a 06                	jp     411b88 <MEMORY_T::POKE64(double, double)+0x82b8>
+  411b82:	0f 84 fd 76 00 00    	je     419285 <MEMORY_T::POKE64(double, double)+0xf9b5>
+;	   case 021
+  411b88:	f2 0f 10 74 24 18    	movsd  xmm6,QWORD PTR [rsp+0x18]
+  411b8e:	66 0f 2e 35 fa f6 06 	ucomisd xmm6,QWORD PTR [rip+0x6f6fa]        # 481290 <_IO_stdin_used+0x4290>
+  411b95:	00 
+  411b96:	7a 06                	jp     411b9e <MEMORY_T::POKE64(double, double)+0x82ce>
+  411b98:	0f 84 d1 d7 00 00    	je     41f36f <MEMORY_T::POKE64(double, double)+0x15a9f>
+;	   case 022
+  411b9e:	f2 0f 10 7c 24 18    	movsd  xmm7,QWORD PTR [rsp+0x18]
+  411ba4:	66 0f 2e 3d ec f6 06 	ucomisd xmm7,QWORD PTR [rip+0x6f6ec]        # 481298 <_IO_stdin_used+0x4298>
+  411bab:	00 
+  411bac:	7a 06                	jp     411bb4 <MEMORY_T::POKE64(double, double)+0x82e4>
+  411bae:	0f 84 21 d8 00 00    	je     41f3d5 <MEMORY_T::POKE64(double, double)+0x15b05>
+;	   case 023
+  411bb4:	f2 0f 10 5c 24 18    	movsd  xmm3,QWORD PTR [rsp+0x18]
+  411bba:	66 0f 2e 1d de f6 06 	ucomisd xmm3,QWORD PTR [rip+0x6f6de]        # 4812a0 <_IO_stdin_used+0x42a0>
+  411bc1:	00 
+  411bc2:	7a 06                	jp     411bca <MEMORY_T::POKE64(double, double)+0x82fa>
+  411bc4:	0f 84 77 d8 00 00    	je     41f441 <MEMORY_T::POKE64(double, double)+0x15b71>
+;	   case 024 ' Open file
+  411bca:	f2 0f 10 64 24 18    	movsd  xmm4,QWORD PTR [rsp+0x18]
+  411bd0:	66 0f 2e 25 d0 f6 06 	ucomisd xmm4,QWORD PTR [rip+0x6f6d0]        # 4812a8 <_IO_stdin_used+0x42a8>
+  411bd7:	00 
+  411bd8:	7a 06                	jp     411be0 <MEMORY_T::POKE64(double, double)+0x8310>
+  411bda:	0f 84 c3 d8 00 00    	je     41f4a3 <MEMORY_T::POKE64(double, double)+0x15bd3>
+;	   case 025 ' Close File
+  411be0:	f2 0f 10 6c 24 18    	movsd  xmm5,QWORD PTR [rsp+0x18]
+  411be6:	66 0f 2e 2d c2 f6 06 	ucomisd xmm5,QWORD PTR [rip+0x6f6c2]        # 4812b0 <_IO_stdin_used+0x42b0>
+  411bed:	00 
+  411bee:	7a 06                	jp     411bf6 <MEMORY_T::POKE64(double, double)+0x8326>
+  411bf0:	0f 84 33 21 00 00    	je     413d29 <MEMORY_T::POKE64(double, double)+0xa459>
+;	   case 026 ' Compile and execute program 
+  411bf6:	f2 0f 10 74 24 18    	movsd  xmm6,QWORD PTR [rsp+0x18]
+  411bfc:	66 0f 2e 35 b4 f6 06 	ucomisd xmm6,QWORD PTR [rip+0x6f6b4]        # 4812b8 <_IO_stdin_used+0x42b8>
+  411c03:	00 
+  411c04:	7a 06                	jp     411c0c <MEMORY_T::POKE64(double, double)+0x833c>
+  411c06:	0f 84 58 8d 00 00    	je     41a964 <MEMORY_T::POKE64(double, double)+0x11094>
+;	   case 027
+  411c0c:	f2 0f 10 7c 24 18    	movsd  xmm7,QWORD PTR [rsp+0x18]
+  411c12:	66 0f 2e 3d a6 f6 06 	ucomisd xmm7,QWORD PTR [rip+0x6f6a6]        # 4812c0 <_IO_stdin_used+0x42c0>
+  411c19:	00 
+  411c1a:	7a 06                	jp     411c22 <MEMORY_T::POKE64(double, double)+0x8352>
+  411c1c:	0f 84 7e 8f 00 00    	je     41aba0 <MEMORY_T::POKE64(double, double)+0x112d0>
+;	   case 28: mov(filename,"")    	          	      	         	      	     
+  411c22:	f2 0f 10 5c 24 18    	movsd  xmm3,QWORD PTR [rsp+0x18]
+  411c28:	66 0f 2e 1d e8 00 07 	ucomisd xmm3,QWORD PTR [rip+0x700e8]        # 481d18 <_IO_stdin_used+0x4d18>
+  411c2f:	00 
+  411c30:	0f 8a ca a7 ff ff    	jp     40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+  411c36:	0f 85 c4 a7 ff ff    	jne    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+  411c3c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  411c43:	00 
+  411c44:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  411c4b:	00 00 
+  411c4d:	0f 85 00 49 00 00    	jne    416553 <MEMORY_T::POKE64(double, double)+0xcc83>
 ;end def
-  44f04b:	48 83 c4 58          	add    rsp,0x58
-;      poke64(49412d,0) 'Screen Unlock
-  44f04f:	48 89 ef             	mov    rdi,rbp
-  44f052:	66 0f ef c9          	pxor   xmm1,xmm1
+  411c53:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+;	   case 28: mov(filename,"")    	          	      	         	      	     
+  411c5a:	45 31 c0             	xor    r8d,r8d
+  411c5d:	b9 01 00 00 00       	mov    ecx,0x1
+  411c62:	48 83 ce ff          	or     rsi,0xffffffffffffffff
 ;end def
-  44f056:	5b                   	pop    rbx
-  44f057:	5d                   	pop    rbp
-  44f058:	41 5c                	pop    r12
-  44f05a:	41 5d                	pop    r13
-;      poke64(49412d,0) 'Screen Unlock
-  44f05c:	e9 af a7 fb ff       	jmp    409810 <MEMORY_T::POKE64(double, double)>
-;    line(x_axis0, y_axis0)-(x_axis0+pixel_size,y_axis0+pixel_size),_
-  44f061:	8b 05 a5 3d 05 00    	mov    eax,DWORD PTR [rip+0x53da5]        # 4a2e0c <PIXEL_SIZE$>
-  44f067:	66 0f ef d2          	pxor   xmm2,xmm2
-  44f06b:	66 0f ef c0          	pxor   xmm0,xmm0
-  44f06f:	f3 48 0f 2a d0       	cvtsi2ss xmm2,rax
-  44f074:	f3 0f 58 d0          	addss  xmm2,xmm0
-  44f078:	48 8b 44 24 48       	mov    rax,QWORD PTR [rsp+0x48]
-  44f07d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  44f084:	00 00 
-  44f086:	0f 85 a1 f2 ff ff    	jne    44e32d <MEMORY_T::POKEB(double, double)+0x1fad>
-  44f08c:	45 31 c0             	xor    r8d,r8d
-  44f08f:	b9 ff ff 00 00       	mov    ecx,0xffff
-  44f094:	ba 02 00 00 00       	mov    edx,0x2
-  44f099:	83 ce ff             	or     esi,0xffffffff
-  44f09c:	0f 28 da             	movaps xmm3,xmm2
-  44f09f:	0f 28 c8             	movaps xmm1,xmm0
+  411c66:	5b                   	pop    rbx
+;	   case 28: mov(filename,"")    	          	      	         	      	     
+  411c67:	48 8d 15 79 b7 06 00 	lea    rdx,[rip+0x6b779]        # 47d3e7 <_IO_stdin_used+0x3e7>
+  411c6e:	48 8d 3d 6b ef 07 00 	lea    rdi,[rip+0x7ef6b]        # 490be0 <FILENAME$>
 ;end def
-  44f0a2:	48 83 c4 58          	add    rsp,0x58
-;    line(x_axis0, y_axis0)-(x_axis1, y_axis1), rgba(red2,green2,blue2,_
-  44f0a6:	31 ff                	xor    edi,edi
+  411c75:	5d                   	pop    rbp
+  411c76:	41 5c                	pop    r12
+  411c78:	41 5d                	pop    r13
+  411c7a:	41 5e                	pop    r14
+  411c7c:	41 5f                	pop    r15
+;	   case 28: mov(filename,"")    	          	      	         	      	     
+  411c7e:	e9 9d 33 06 00       	jmp    475020 <fb_StrAssign>
+  411c83:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  411c88:	f2 0f 5c c1          	subsd  xmm0,xmm1
+  411c8c:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  411c91:	48 0f ba f8 3f       	btc    rax,0x3f
+  411c96:	e9 91 be ff ff       	jmp    40db2c <MEMORY_T::POKE64(double, double)+0x425c>
+;		   case peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
+  411c9b:	44 0f b6 1d e3 f0 09 	movzx  r11d,BYTE PTR [rip+0x9f0e3]        # 4b0d86 <NIBBLES$+0x6>
+  411ca2:	00 
+  411ca3:	89 d1                	mov    ecx,edx
+  411ca5:	66 0f ef c0          	pxor   xmm0,xmm0
+  411ca9:	49 d3 e3             	shl    r11,cl
+  411cac:	4c 89 d9             	mov    rcx,r11
+  411caf:	48 01 c1             	add    rcx,rax
+  411cb2:	f2 48 0f 2a c1       	cvtsi2sd xmm0,rcx
+  411cb7:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  411cbd:	0f 8a 8d 05 00 00    	jp     412250 <MEMORY_T::POKE64(double, double)+0x8980>
+  411cc3:	0f 85 87 05 00 00    	jne    412250 <MEMORY_T::POKE64(double, double)+0x8980>
+;		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B1000))
+  411cc9:	0f b6 3d bc f0 09 00 	movzx  edi,BYTE PTR [rip+0x9f0bc]        # 4b0d8c <NIBBLES$+0xc>
+  411cd0:	44 0f b6 0d b0 f0 09 	movzx  r9d,BYTE PTR [rip+0x9f0b0]        # 4b0d88 <NIBBLES$+0x8>
+  411cd7:	00 
+  411cd8:	48 89 f3             	mov    rbx,rsi
+  411cdb:	66 0f ef c0          	pxor   xmm0,xmm0
+  411cdf:	89 fa                	mov    edx,edi
+  411ce1:	44 89 c8             	mov    eax,r9d
+  411ce4:	83 e2 3f             	and    edx,0x3f
+  411ce7:	83 e0 3f             	and    eax,0x3f
+  411cea:	89 d1                	mov    ecx,edx
+  411cec:	48 d3 e7             	shl    rdi,cl
+  411cef:	0f b6 0d 95 f0 09 00 	movzx  ecx,BYTE PTR [rip+0x9f095]        # 4b0d8b <NIBBLES$+0xb>
+  411cf6:	4a 8d 3c 07          	lea    rdi,[rdi+r8*1]
+  411cfa:	48 01 cf             	add    rdi,rcx
+  411cfd:	89 c1                	mov    ecx,eax
+  411cff:	48 d3 e3             	shl    rbx,cl
+  411d02:	89 d1                	mov    ecx,edx
+  411d04:	41 0f b6 d1          	movzx  edx,r9b
+  411d08:	48 d3 e6             	shl    rsi,cl
+  411d0b:	89 c1                	mov    ecx,eax
+  411d0d:	48 01 df             	add    rdi,rbx
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  411d10:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+;		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B1000))
+  411d15:	48 d3 e2             	shl    rdx,cl
+  411d18:	48 89 d0             	mov    rax,rdx
+  411d1b:	48 01 f0             	add    rax,rsi
+  411d1e:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411d23:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  411d28:	f2 0f 11 04 f8       	movsd  QWORD PTR [rax+rdi*8],xmm0
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  411d2d:	0f b6 0d 54 f0 09 00 	movzx  ecx,BYTE PTR [rip+0x9f054]        # 4b0d88 <NIBBLES$+0x8>
+  411d34:	0f b6 05 46 f0 09 00 	movzx  eax,BYTE PTR [rip+0x9f046]        # 4b0d81 <NIBBLES$+0x1>
+  411d3b:	0f b6 35 4a f0 09 00 	movzx  esi,BYTE PTR [rip+0x9f04a]        # 4b0d8c <NIBBLES$+0xc>
+  411d42:	48 d3 e0             	shl    rax,cl
+  411d45:	48 89 c2             	mov    rdx,rax
+  411d48:	89 f1                	mov    ecx,esi
+  411d4a:	40 0f b6 c6          	movzx  eax,sil
+  411d4e:	48 d3 e0             	shl    rax,cl
+  411d51:	0f b6 0d 2c f0 09 00 	movzx  ecx,BYTE PTR [rip+0x9f02c]        # 4b0d84 <NIBBLES$+0x4>
+  411d58:	48 01 c2             	add    rdx,rax
+  411d5b:	0f b6 05 29 f0 09 00 	movzx  eax,BYTE PTR [rip+0x9f029]        # 4b0d8b <NIBBLES$+0xb>
+  411d62:	48 01 c2             	add    rdx,rax
+  411d65:	0f b6 05 16 f0 09 00 	movzx  eax,BYTE PTR [rip+0x9f016]        # 4b0d82 <NIBBLES$+0x2>
+  411d6c:	48 d3 e0             	shl    rax,cl
+  411d6f:	48 01 d0             	add    rax,rdx
+  411d72:	f2 0f 10 04 c3       	movsd  xmm0,QWORD PTR [rbx+rax*8]
+  411d77:	e8 e4 35 ff ff       	call   405360 <nearbyint@plt>
+  411d7c:	f2 0f 10 0d fc f6 06 	movsd  xmm1,QWORD PTR [rip+0x6f6fc]        # 481480 <_IO_stdin_used+0x4480>
+  411d83:	00 
+  411d84:	66 0f 2f c1          	comisd xmm0,xmm1
+  411d88:	0f 83 58 08 00 00    	jae    4125e6 <MEMORY_T::POKE64(double, double)+0x8d16>
+  411d8e:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  411d93:	0f b6 c4             	movzx  eax,ah
+  411d96:	66 0f ef c0          	pxor   xmm0,xmm0
+  411d9a:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  411d9f:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  411da4:	f2 0f 11 80 40 14 00 	movsd  QWORD PTR [rax+0x1440],xmm0
+  411dab:	00 
+;		   case peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
+  411dac:	e9 3f 9c ff ff       	jmp    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;   poke64(49154d,&H00):poke64(49155d,&H33):poke64(49156d,&H66)
+  411db1:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  411db6:	f2 0f 10 05 62 f6 06 	movsd  xmm0,QWORD PTR [rip+0x6f662]        # 481420 <_IO_stdin_used+0x4420>
+  411dbd:	00 
+  411dbe:	66 0f ef c9          	pxor   xmm1,xmm1
+  411dc2:	e8 09 7b ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  411dc7:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  411dcc:	f2 0f 10 0d f4 f3 06 	movsd  xmm1,QWORD PTR [rip+0x6f3f4]        # 4811c8 <_IO_stdin_used+0x41c8>
+  411dd3:	00 
+  411dd4:	f2 0f 10 05 4c f6 06 	movsd  xmm0,QWORD PTR [rip+0x6f64c]        # 481428 <_IO_stdin_used+0x4428>
+  411ddb:	00 
+  411ddc:	e8 ef 7a ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  411de1:	f2 0f 10 0d 4f f6 06 	movsd  xmm1,QWORD PTR [rip+0x6f64f]        # 481438 <_IO_stdin_used+0x4438>
+  411de8:	00 
+  411de9:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  411dee:	f2 0f 10 05 3a f6 06 	movsd  xmm0,QWORD PTR [rip+0x6f63a]        # 481430 <_IO_stdin_used+0x4430>
+  411df5:	00 
+  411df6:	e8 d5 7a ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L931
+  411dfb:	e9 88 98 ff ff       	jmp    40b688 <MEMORY_T::POKE64(double, double)+0x1db8>
+;      mov(mem64(49322),GetMouse(x, y, ,buttons))
+  411e00:	48 8d 8c 24 90 01 00 	lea    rcx,[rsp+0x190]
+  411e07:	00 
+  411e08:	48 8d 94 24 10 01 00 	lea    rdx,[rsp+0x110]
+  411e0f:	00 
+  411e10:	48 c7 84 24 50 01 00 	mov    QWORD PTR [rsp+0x150],0x0
+  411e17:	00 00 00 00 00 
+  411e1c:	48 8d b4 24 70 01 00 	lea    rsi,[rsp+0x170]
+  411e23:	00 
+  411e24:	48 8d bc 24 50 01 00 	lea    rdi,[rsp+0x150]
+  411e2b:	00 
+  411e2c:	48 c7 84 24 70 01 00 	mov    QWORD PTR [rsp+0x170],0x0
+  411e33:	00 00 00 00 00 
+  411e38:	4c 8d 84 24 30 01 00 	lea    r8,[rsp+0x130]
+  411e3f:	00 
+  411e40:	48 c7 84 24 90 01 00 	mov    QWORD PTR [rsp+0x190],0x0
+  411e47:	00 00 00 00 00 
+  411e4c:	48 c7 84 24 30 01 00 	mov    QWORD PTR [rsp+0x130],0x0
+  411e53:	00 00 00 00 00 
+  411e58:	48 c7 84 24 10 01 00 	mov    QWORD PTR [rsp+0x110],0x0
+  411e5f:	00 00 00 00 00 
+  411e64:	e8 67 fd 05 00       	call   471bd0 <fb_GetMouse64>
+  411e69:	66 0f ef c0          	pxor   xmm0,xmm0
+;      mov(mem64(49355),x):mov(mem64(49356),y):mov(mem64(49357),wheel)
+  411e6d:	66 0f ef c9          	pxor   xmm1,xmm1
+;      mov(mem64(49322),GetMouse(x, y, ,buttons))
+  411e71:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
+  411e75:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+;      mov(mem64(49355),x):mov(mem64(49356),y):mov(mem64(49357),wheel)
+  411e7a:	f2 48 0f 2a 8c 24 70 	cvtsi2sd xmm1,QWORD PTR [rsp+0x170]
+  411e81:	01 00 00 
+  411e84:	48 c7 80 68 06 06 00 	mov    QWORD PTR [rax+0x60668],0x0
+  411e8b:	00 00 00 00 
+;      mov(mem64(49322),GetMouse(x, y, ,buttons))
+  411e8f:	f2 0f 11 80 50 05 06 	movsd  QWORD PTR [rax+0x60550],xmm0
+  411e96:	00 
+;      mov(mem64(49355),x):mov(mem64(49356),y):mov(mem64(49357),wheel)
+  411e97:	66 0f ef c0          	pxor   xmm0,xmm0
+  411e9b:	f2 48 0f 2a 84 24 50 	cvtsi2sd xmm0,QWORD PTR [rsp+0x150]
+  411ea2:	01 00 00 
+  411ea5:	66 0f 14 c1          	unpcklpd xmm0,xmm1
+  411ea9:	0f 11 80 58 06 06 00 	movups XMMWORD PTR [rax+0x60658],xmm0
+;      if logic_and(buttons,1) then mov(mem64(49358),1) 'L
+  411eb0:	48 8b 84 24 90 01 00 	mov    rax,QWORD PTR [rsp+0x190]
+  411eb7:	00 
+  411eb8:	a8 01                	test   al,0x1
+  411eba:	74 13                	je     411ecf <MEMORY_T::POKE64(double, double)+0x85ff>
+  411ebc:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+  411ec1:	48 8b 3d 88 f2 06 00 	mov    rdi,QWORD PTR [rip+0x6f288]        # 481150 <_IO_stdin_used+0x4150>
+  411ec8:	48 89 bb 70 06 06 00 	mov    QWORD PTR [rbx+0x60670],rdi
+;      if logic_and(buttons,2) then mov(mem64(49358),2) 'R
+  411ecf:	a8 02                	test   al,0x2
+  411ed1:	74 13                	je     411ee6 <MEMORY_T::POKE64(double, double)+0x8616>
+  411ed3:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+  411ed8:	48 8b 3d 81 fd 06 00 	mov    rdi,QWORD PTR [rip+0x6fd81]        # 481c60 <_IO_stdin_used+0x4c60>
+  411edf:	48 89 bb 70 06 06 00 	mov    QWORD PTR [rbx+0x60670],rdi
+;      if logic_and(buttons,4) then mov(mem64(49358),4) 'M
+  411ee6:	a8 04                	test   al,0x4
+  411ee8:	0f 84 12 a5 ff ff    	je     40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+  411eee:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  411ef3:	48 8b 1d 5e fd 06 00 	mov    rbx,QWORD PTR [rip+0x6fd5e]        # 481c58 <_IO_stdin_used+0x4c58>
+  411efa:	48 89 98 70 06 06 00 	mov    QWORD PTR [rax+0x60670],rbx
+;    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) 
+  411f01:	e9 fa a4 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;      pcopy mem64(49355), mem64(49356)
+  411f06:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  411f0b:	f2 0f 10 80 60 06 06 	movsd  xmm0,QWORD PTR [rax+0x60660]
+  411f12:	00 
+  411f13:	e8 48 34 ff ff       	call   405360 <nearbyint@plt>
+  411f18:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  411f1d:	66 48 0f 7e c3       	movq   rbx,xmm0
+  411f22:	f2 0f 10 80 58 06 06 	movsd  xmm0,QWORD PTR [rax+0x60658]
+  411f29:	00 
+  411f2a:	e8 31 34 ff ff       	call   405360 <nearbyint@plt>
+  411f2f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  411f36:	00 
+  411f37:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  411f3e:	00 00 
+  411f40:	0f 85 19 8a 00 00    	jne    41a95f <MEMORY_T::POKE64(double, double)+0x1108f>
+  411f46:	66 48 0f 6e e3       	movq   xmm4,rbx
+  411f4b:	f2 0f 2c f8          	cvttsd2si edi,xmm0
 ;end def
-  44f0a8:	5b                   	pop    rbx
-  44f0a9:	5d                   	pop    rbp
-  44f0aa:	41 5c                	pop    r12
-  44f0ac:	41 5d                	pop    r13
-;    line(x_axis0, y_axis0)-(x_axis1, y_axis1), rgba(red2,green2,blue2,_
-  44f0ae:	e9 fd 7b 00 00       	jmp    456cb0 <fb_GfxLine>
-  44f0b3:	48 8b 44 24 48       	mov    rax,QWORD PTR [rsp+0x48]
-  44f0b8:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  44f0bf:	00 00 
-  44f0c1:	0f 85 66 f2 ff ff    	jne    44e32d <MEMORY_T::POKEB(double, double)+0x1fad>
-  44f0c7:	66 0f ef db          	pxor   xmm3,xmm3
-  44f0cb:	8b 0d df d5 02 00    	mov    ecx,DWORD PTR [rip+0x2d5df]        # 47c6b0 <BITMASK$>
-  44f0d1:	45 31 c0             	xor    r8d,r8d
-  44f0d4:	31 d2                	xor    edx,edx
-  44f0d6:	0f 28 d3             	movaps xmm2,xmm3
-  44f0d9:	0f 28 cb             	movaps xmm1,xmm3
-  44f0dc:	0f 28 c3             	movaps xmm0,xmm3
-  44f0df:	83 ce ff             	or     esi,0xffffffff
-  44f0e2:	eb be                	jmp    44f0a2 <MEMORY_T::POKEB(double, double)+0x2d22>
-;    circle(x_axis0, y_axis1), radius, rgba(red2,green2,blue2,xalpha2)
-  44f0e4:	48 8b 44 24 48       	mov    rax,QWORD PTR [rsp+0x48]
-  44f0e9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  44f0f0:	00 00 
-  44f0f2:	0f 85 35 f2 ff ff    	jne    44e32d <MEMORY_T::POKEB(double, double)+0x1fad>
-  44f0f8:	48 8b 05 11 3d 05 00 	mov    rax,QWORD PTR [rip+0x53d11]        # 4a2e10 <RADIUS$>
-  44f0ff:	48 85 c0             	test   rax,rax
-  44f102:	78 39                	js     44f13d <MEMORY_T::POKEB(double, double)+0x2dbd>
-  44f104:	66 0f ef d2          	pxor   xmm2,xmm2
-  44f108:	f3 48 0f 2a d0       	cvtsi2ss xmm2,rax
-  44f10d:	66 0f ef e4          	pxor   xmm4,xmm4
-  44f111:	f3 0f 10 2d cf 4a 02 	movss  xmm5,DWORD PTR [rip+0x24acf]        # 473be8 <_IO_stdin_used+0x4be8>
-  44f118:	00 
-  44f119:	31 d2                	xor    edx,edx
-  44f11b:	31 ff                	xor    edi,edi
+  411f4f:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+;      pcopy mem64(49355), mem64(49356)
+  411f56:	f2 0f 2c f4          	cvttsd2si esi,xmm4
 ;end def
-  44f11d:	48 83 c4 58          	add    rsp,0x58
-;    circle(x_axis0, y_axis1), radius, rgba(red2,green2,blue2,xalpha2)
-  44f121:	b9 04 00 00 00       	mov    ecx,0x4
-  44f126:	0f 28 dc             	movaps xmm3,xmm4
-  44f129:	83 ce ff             	or     esi,0xffffffff
+  411f5a:	5b                   	pop    rbx
+  411f5b:	5d                   	pop    rbp
+  411f5c:	41 5c                	pop    r12
+  411f5e:	41 5d                	pop    r13
+  411f60:	41 5e                	pop    r14
+  411f62:	41 5f                	pop    r15
+;      pcopy mem64(49355), mem64(49356)
+  411f64:	e9 47 ff 05 00       	jmp    471eb0 <fb_PageCopy>
+;       for in range(mov(c as integer, &H0000), &H1FFF): mov(char(c), &H00): next c ' Clears Character RAM
+  411f69:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  411f6e:	ba 00 00 01 00       	mov    edx,0x10000
+  411f73:	31 f6                	xor    esi,esi
+  411f75:	c6 84 24 50 01 00 00 	mov    BYTE PTR [rsp+0x150],0x0
+  411f7c:	00 
+  411f7d:	48 8d b8 00 00 04 08 	lea    rdi,[rax+0x8040000]
+  411f84:	e8 37 31 ff ff       	call   4050c0 <memset@plt>
+;       open "./chargen/"+str(v)+".c64" for binary as #1
+  411f89:	f2 0f 10 44 24 18    	movsd  xmm0,QWORD PTR [rsp+0x18]
+  411f8f:	e8 8c 43 06 00       	call   476320 <fb_DoubleToStr>
+  411f94:	66 0f ef d2          	pxor   xmm2,xmm2
+  411f98:	ba 0b 00 00 00       	mov    edx,0xb
+  411f9d:	48 8d bc 24 70 01 00 	lea    rdi,[rsp+0x170]
+  411fa4:	00 
+  411fa5:	48 89 c1             	mov    rcx,rax
+  411fa8:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
+  411faf:	48 8d 35 0c ea 06 00 	lea    rsi,[rip+0x6ea0c]        # 4809c2 <_IO_stdin_used+0x39c2>
+  411fb6:	0f 29 94 24 70 01 00 	movaps XMMWORD PTR [rsp+0x170],xmm2
+  411fbd:	00 
+  411fbe:	48 c7 84 24 80 01 00 	mov    QWORD PTR [rsp+0x180],0x0
+  411fc5:	00 00 00 00 00 
+  411fca:	e8 a1 36 06 00       	call   475670 <fb_StrConcat>
+  411fcf:	66 0f ef d2          	pxor   xmm2,xmm2
+  411fd3:	48 8d bc 24 90 01 00 	lea    rdi,[rsp+0x190]
+  411fda:	00 
+  411fdb:	41 b8 05 00 00 00    	mov    r8d,0x5
+  411fe1:	48 89 c6             	mov    rsi,rax
+  411fe4:	48 8d 0d 58 ea 06 00 	lea    rcx,[rip+0x6ea58]        # 480a43 <_IO_stdin_used+0x3a43>
+  411feb:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
+  411ff2:	0f 29 94 24 90 01 00 	movaps XMMWORD PTR [rsp+0x190],xmm2
+  411ff9:	00 
+  411ffa:	48 c7 84 24 a0 01 00 	mov    QWORD PTR [rsp+0x1a0],0x0
+  412001:	00 00 00 00 00 
+  412006:	e8 65 36 06 00       	call   475670 <fb_StrConcat>
+  41200b:	45 31 c9             	xor    r9d,r9d
+  41200e:	41 b8 01 00 00 00    	mov    r8d,0x1
+  412014:	31 c9                	xor    ecx,ecx
+  412016:	48 89 c7             	mov    rdi,rax
+  412019:	31 d2                	xor    edx,edx
+  41201b:	31 f6                	xor    esi,esi
+  41201d:	e8 ae e8 05 00       	call   4708d0 <fb_FileOpen>
+;        for in range(mov(i as integer, 0), lof(1))
+  412022:	bf 01 00 00 00       	mov    edi,0x1
+  412027:	e8 34 f9 05 00       	call   471960 <fb_FileSize>
+  41202c:	49 89 c4             	mov    r12,rax
+;        next i
+  41202f:	48 85 c0             	test   rax,rax
+  412032:	78 47                	js     41207b <MEMORY_T::POKE64(double, double)+0x87ab>
+;        for in range(mov(i as integer, 0), lof(1))
+  412034:	31 db                	xor    ebx,ebx
+  412036:	48 8d ac 24 50 01 00 	lea    rbp,[rsp+0x150]
+  41203d:	00 
+  41203e:	66 90                	xchg   ax,ax
+;         get #1,,tmp: mov(char(i), tmp) ' Loads Chargen into Character RAM. 
+  412040:	b9 01 00 00 00       	mov    ecx,0x1
+  412045:	48 89 ea             	mov    rdx,rbp
+  412048:	31 f6                	xor    esi,esi
+  41204a:	bf 01 00 00 00       	mov    edi,0x1
+  41204f:	e8 6c cd 05 00       	call   46edc0 <fb_FileGetLarge>
+  412054:	0f b6 84 24 50 01 00 	movzx  eax,BYTE PTR [rsp+0x150]
+  41205b:	00 
+  41205c:	66 0f ef c0          	pxor   xmm0,xmm0
+  412060:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
+  412064:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  412069:	f2 0f 11 84 d8 00 00 	movsd  QWORD PTR [rax+rbx*8+0x8040000],xmm0
+  412070:	04 08 
+;        next i
+  412072:	48 83 c3 01          	add    rbx,0x1
+  412076:	49 39 dc             	cmp    r12,rbx
+  412079:	7d c5                	jge    412040 <MEMORY_T::POKE64(double, double)+0x8770>
+;       close #1
+  41207b:	bf 01 00 00 00       	mov    edi,0x1
+  412080:	e8 3b ba 05 00       	call   46dac0 <fb_FileClose>
+; case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)),_
+  412085:	e9 76 a3 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;		case in range(peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)), peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))):poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)),(((v subt peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100))) mod (peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)))) mod (peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
+  41208a:	4c 89 d0             	mov    rax,r10
+  41208d:	89 e9                	mov    ecx,ebp
+  41208f:	66 0f ef c0          	pxor   xmm0,xmm0
+  412093:	48 d3 e0             	shl    rax,cl
+  412096:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41209b:	66 0f 2f 44 24 18    	comisd xmm0,QWORD PTR [rsp+0x18]
+  4120a1:	0f 87 ba 02 00 00    	ja     412361 <MEMORY_T::POKE64(double, double)+0x8a91>
+  4120a7:	0f b6 1d e1 ec 09 00 	movzx  ebx,BYTE PTR [rip+0x9ece1]        # 4b0d8f <NIBBLES$+0xf>
+  4120ae:	66 0f ef c9          	pxor   xmm1,xmm1
+  4120b2:	f2 0f 10 5c 24 18    	movsd  xmm3,QWORD PTR [rsp+0x18]
+  4120b8:	48 01 d8             	add    rax,rbx
+  4120bb:	f2 48 0f 2a c8       	cvtsi2sd xmm1,rax
+  4120c0:	66 0f 2f d9          	comisd xmm3,xmm1
+  4120c4:	0f 87 97 02 00 00    	ja     412361 <MEMORY_T::POKE64(double, double)+0x8a91>
+  4120ca:	66 0f 28 cb          	movapd xmm1,xmm3
+  4120ce:	f2 0f 5c c8          	subsd  xmm1,xmm0
+  4120d2:	66 0f 28 c1          	movapd xmm0,xmm1
+  4120d6:	e8 85 32 ff ff       	call   405360 <nearbyint@plt>
+  4120db:	89 e9                	mov    ecx,ebp
+  4120dd:	48 89 d8             	mov    rax,rbx
+  4120e0:	66 0f ef e4          	pxor   xmm4,xmm4
+  4120e4:	f2 0f 10 ac 24 d8 00 	movsd  xmm5,QWORD PTR [rsp+0xd8]
+  4120eb:	00 00 
+  4120ed:	48 d3 e0             	shl    rax,cl
+  4120f0:	48 8d 0c 18          	lea    rcx,[rax+rbx*1]
+  4120f4:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  4120f9:	f2 0f 11 2c 24       	movsd  QWORD PTR [rsp],xmm5
+  4120fe:	66 0f 28 c5          	movapd xmm0,xmm5
+  412102:	48 99                	cqo    
+  412104:	48 f7 f9             	idiv   rcx
+  412107:	48 8b 44 24 50       	mov    rax,QWORD PTR [rsp+0x50]
+  41210c:	4c 01 f0             	add    rax,r14
+  41210f:	48 0f af c2          	imul   rax,rdx
+  412113:	48 99                	cqo    
+  412115:	48 f7 f9             	idiv   rcx
+  412118:	f2 48 0f 2a e2       	cvtsi2sd xmm4,rdx
+  41211d:	f2 0f 11 64 24 18    	movsd  QWORD PTR [rsp+0x18],xmm4
+;     	case else: poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)),(((v subt peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100))) mod (peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)))) mod (peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))					  
+  412123:	e9 dc 77 ff ff       	jmp    409904 <MEMORY_T::POKE64(double, double)+0x34>
+;         select case as const cast(ulongint, v)	
+  412128:	f2 0f 5c 04 24       	subsd  xmm0,QWORD PTR [rsp]
+  41212d:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  412132:	48 0f ba f8 3f       	btc    rax,0x3f
+  412137:	e9 0e db ff ff       	jmp    40fc4a <MEMORY_T::POKE64(double, double)+0x637a>
+;   cmp v eq peek(ubyte,@nibbles(&B0010)) jmp L1572
+  41213c:	0f b6 3d 3f ec 09 00 	movzx  edi,BYTE PTR [rip+0x9ec3f]        # 4b0d82 <NIBBLES$+0x2>
+  412143:	66 0f ef c0          	pxor   xmm0,xmm0
+  412147:	f2 48 0f 2a c7       	cvtsi2sd xmm0,rdi
+  41214c:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  412152:	0f 8a 89 03 00 00    	jp     4124e1 <MEMORY_T::POKE64(double, double)+0x8c11>
+  412158:	0f 85 83 03 00 00    	jne    4124e1 <MEMORY_T::POKE64(double, double)+0x8c11>
+;   mov(mem64(49457),mem64(49456) shl 24 add &H000066)
+  41215e:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  412163:	f2 0f 10 80 80 09 06 	movsd  xmm0,QWORD PTR [rax+0x60980]
+  41216a:	00 
+  41216b:	e8 f0 31 ff ff       	call   405360 <nearbyint@plt>
+  412170:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  412175:	66 0f ef c0          	pxor   xmm0,xmm0
+  412179:	48 c1 e0 18          	shl    rax,0x18
+  41217d:	48 83 c0 66          	add    rax,0x66
+  412181:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+;   jmp L1826
+  412186:	e9 fc 96 ff ff       	jmp    40b887 <MEMORY_T::POKE64(double, double)+0x1fb7>
+;   poke64(49154d,&H00):poke64(49155d,&H33):poke64(49156d,&H99)
+  41218b:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412190:	f2 0f 10 05 88 f2 06 	movsd  xmm0,QWORD PTR [rip+0x6f288]        # 481420 <_IO_stdin_used+0x4420>
+  412197:	00 
+  412198:	66 0f ef c9          	pxor   xmm1,xmm1
+  41219c:	e8 2f 77 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  4121a1:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4121a6:	f2 0f 10 0d 1a f0 06 	movsd  xmm1,QWORD PTR [rip+0x6f01a]        # 4811c8 <_IO_stdin_used+0x41c8>
+  4121ad:	00 
+  4121ae:	f2 0f 10 05 72 f2 06 	movsd  xmm0,QWORD PTR [rip+0x6f272]        # 481428 <_IO_stdin_used+0x4428>
+  4121b5:	00 
+  4121b6:	e8 15 77 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  4121bb:	f2 0f 10 0d d5 f1 06 	movsd  xmm1,QWORD PTR [rip+0x6f1d5]        # 481398 <_IO_stdin_used+0x4398>
+  4121c2:	00 
+  4121c3:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4121c8:	f2 0f 10 05 60 f2 06 	movsd  xmm0,QWORD PTR [rip+0x6f260]        # 481430 <_IO_stdin_used+0x4430>
+  4121cf:	00 
+  4121d0:	e8 fb 76 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L931
+  4121d5:	e9 ae 94 ff ff       	jmp    40b688 <MEMORY_T::POKE64(double, double)+0x1db8>
+;        if peek(double,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)),peek(ubyte,@nibbles(&B0000))) else poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0000)))         
+  4121da:	f2 0f 10 64 24 68    	movsd  xmm4,QWORD PTR [rsp+0x68]
+  4121e0:	66 0f 2e 64 24 18    	ucomisd xmm4,QWORD PTR [rsp+0x18]
+  4121e6:	7a 06                	jp     4121ee <MEMORY_T::POKE64(double, double)+0x891e>
+  4121e8:	0f 84 59 05 00 00    	je     412747 <MEMORY_T::POKE64(double, double)+0x8e77>
+  4121ee:	0f b6 54 24 78       	movzx  edx,BYTE PTR [rsp+0x78]
+  4121f3:	0f b6 35 92 eb 09 00 	movzx  esi,BYTE PTR [rip+0x9eb92]        # 4b0d8c <NIBBLES$+0xc>
+  4121fa:	66 0f ef f6          	pxor   xmm6,xmm6
+  4121fe:	66 0f ef ff          	pxor   xmm7,xmm7
+  412202:	f2 0f 2a f2          	cvtsi2sd xmm6,edx
+  412206:	0f b6 15 81 eb 09 00 	movzx  edx,BYTE PTR [rip+0x9eb81]        # 4b0d8e <NIBBLES$+0xe>
+  41220d:	48 89 f1             	mov    rcx,rsi
+  412210:	48 d3 e6             	shl    rsi,cl
+  412213:	89 c1                	mov    ecx,eax
+  412215:	48 89 d3             	mov    rbx,rdx
+  412218:	48 d3 e3             	shl    rbx,cl
+  41221b:	48 89 d8             	mov    rax,rbx
+  41221e:	f2 0f 11 74 24 18    	movsd  QWORD PTR [rsp+0x18],xmm6
+  412224:	48 01 f0             	add    rax,rsi
+  412227:	48 01 d0             	add    rax,rdx
+  41222a:	f2 48 0f 2a f8       	cvtsi2sd xmm7,rax
+  41222f:	f2 0f 11 3c 24       	movsd  QWORD PTR [rsp],xmm7
+  412234:	66 0f 28 c7          	movapd xmm0,xmm7
+  412238:	e9 c7 76 ff ff       	jmp    409904 <MEMORY_T::POKE64(double, double)+0x34>
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  41223d:	f2 0f 5c c1          	subsd  xmm0,xmm1
+  412241:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  412246:	48 0f ba f8 3f       	btc    rax,0x3f
+  41224b:	e9 82 ba ff ff       	jmp    40dcd2 <MEMORY_T::POKE64(double, double)+0x4402>
+;		   case peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
+  412250:	44 0f b6 1d 2f eb 09 	movzx  r11d,BYTE PTR [rip+0x9eb2f]        # 4b0d87 <NIBBLES$+0x7>
+  412257:	00 
+  412258:	89 d1                	mov    ecx,edx
+  41225a:	66 0f ef c0          	pxor   xmm0,xmm0
+  41225e:	49 d3 e3             	shl    r11,cl
+  412261:	4c 89 d9             	mov    rcx,r11
+  412264:	48 01 c1             	add    rcx,rax
+  412267:	f2 48 0f 2a c1       	cvtsi2sd xmm0,rcx
+  41226c:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  412272:	0f 8a d0 03 00 00    	jp     412648 <MEMORY_T::POKE64(double, double)+0x8d78>
+  412278:	0f 85 ca 03 00 00    	jne    412648 <MEMORY_T::POKE64(double, double)+0x8d78>
+;		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1000))
+  41227e:	0f b6 3d 07 eb 09 00 	movzx  edi,BYTE PTR [rip+0x9eb07]        # 4b0d8c <NIBBLES$+0xc>
+  412285:	0f b6 05 fc ea 09 00 	movzx  eax,BYTE PTR [rip+0x9eafc]        # 4b0d88 <NIBBLES$+0x8>
+  41228c:	66 0f ef c0          	pxor   xmm0,xmm0
+  412290:	89 fa                	mov    edx,edi
+  412292:	48 89 fb             	mov    rbx,rdi
+  412295:	83 e0 3f             	and    eax,0x3f
+  412298:	83 e2 3f             	and    edx,0x3f
+  41229b:	89 d1                	mov    ecx,edx
+  41229d:	48 d3 e3             	shl    rbx,cl
+  4122a0:	0f b6 0d e4 ea 09 00 	movzx  ecx,BYTE PTR [rip+0x9eae4]        # 4b0d8b <NIBBLES$+0xb>
+  4122a7:	49 01 d8             	add    r8,rbx
+  4122aa:	48 89 f3             	mov    rbx,rsi
+  4122ad:	49 01 c8             	add    r8,rcx
+  4122b0:	89 c1                	mov    ecx,eax
+  4122b2:	48 d3 e3             	shl    rbx,cl
+  4122b5:	89 d1                	mov    ecx,edx
+  4122b7:	48 d3 e6             	shl    rsi,cl
+  4122ba:	89 c1                	mov    ecx,eax
+  4122bc:	49 01 d8             	add    r8,rbx
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  4122bf:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+;		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1000))
+  4122c4:	48 d3 e7             	shl    rdi,cl
+  4122c7:	48 89 f8             	mov    rax,rdi
+  4122ca:	48 01 f0             	add    rax,rsi
+  4122cd:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4122d2:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4122d7:	f2 42 0f 11 04 c0    	movsd  QWORD PTR [rax+r8*8],xmm0
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  4122dd:	0f b6 0d a4 ea 09 00 	movzx  ecx,BYTE PTR [rip+0x9eaa4]        # 4b0d88 <NIBBLES$+0x8>
+  4122e4:	0f b6 05 96 ea 09 00 	movzx  eax,BYTE PTR [rip+0x9ea96]        # 4b0d81 <NIBBLES$+0x1>
+  4122eb:	0f b6 35 9a ea 09 00 	movzx  esi,BYTE PTR [rip+0x9ea9a]        # 4b0d8c <NIBBLES$+0xc>
+  4122f2:	48 d3 e0             	shl    rax,cl
+  4122f5:	48 89 c2             	mov    rdx,rax
+  4122f8:	89 f1                	mov    ecx,esi
+  4122fa:	40 0f b6 c6          	movzx  eax,sil
+  4122fe:	48 d3 e0             	shl    rax,cl
+  412301:	0f b6 0d 7c ea 09 00 	movzx  ecx,BYTE PTR [rip+0x9ea7c]        # 4b0d84 <NIBBLES$+0x4>
+  412308:	48 01 c2             	add    rdx,rax
+  41230b:	0f b6 05 79 ea 09 00 	movzx  eax,BYTE PTR [rip+0x9ea79]        # 4b0d8b <NIBBLES$+0xb>
+  412312:	48 01 c2             	add    rdx,rax
+  412315:	0f b6 05 66 ea 09 00 	movzx  eax,BYTE PTR [rip+0x9ea66]        # 4b0d82 <NIBBLES$+0x2>
+  41231c:	48 d3 e0             	shl    rax,cl
+  41231f:	48 01 d0             	add    rax,rdx
+  412322:	f2 0f 10 04 c3       	movsd  xmm0,QWORD PTR [rbx+rax*8]
+  412327:	e8 34 30 ff ff       	call   405360 <nearbyint@plt>
+  41232c:	f2 0f 10 0d 4c f1 06 	movsd  xmm1,QWORD PTR [rip+0x6f14c]        # 481480 <_IO_stdin_used+0x4480>
+  412333:	00 
+  412334:	66 0f 2f c1          	comisd xmm0,xmm1
+  412338:	0f 83 ab 05 00 00    	jae    4128e9 <MEMORY_T::POKE64(double, double)+0x9019>
+  41233e:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  412343:	0f b6 c4             	movzx  eax,ah
+  412346:	66 0f ef c0          	pxor   xmm0,xmm0
+  41234a:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41234f:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  412354:	f2 0f 11 80 40 14 00 	movsd  QWORD PTR [rax+0x1440],xmm0
+  41235b:	00 
+;		   case peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
+  41235c:	e9 8f 96 ff ff       	jmp    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;     	case else: poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)),(((v subt peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100))) mod (peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001)))) mod (peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))					  
+  412361:	48 8b 44 24 70       	mov    rax,QWORD PTR [rsp+0x70]
+  412366:	89 e9                	mov    ecx,ebp
+  412368:	66 0f ef c9          	pxor   xmm1,xmm1
+  41236c:	f2 0f 10 44 24 18    	movsd  xmm0,QWORD PTR [rsp+0x18]
+  412372:	48 d3 e0             	shl    rax,cl
+  412375:	f2 48 0f 2a c8       	cvtsi2sd xmm1,rax
+  41237a:	f2 0f 5c c1          	subsd  xmm0,xmm1
+  41237e:	e8 dd 2f ff ff       	call   405360 <nearbyint@plt>
+  412383:	0f b6 05 05 ea 09 00 	movzx  eax,BYTE PTR [rip+0x9ea05]        # 4b0d8f <NIBBLES$+0xf>
+  41238a:	89 e9                	mov    ecx,ebp
+  41238c:	66 0f ef e4          	pxor   xmm4,xmm4
+  412390:	f2 0f 10 ac 24 e0 00 	movsd  xmm5,QWORD PTR [rsp+0xe0]
+  412397:	00 00 
+  412399:	48 89 c2             	mov    rdx,rax
+  41239c:	48 d3 e2             	shl    rdx,cl
+  41239f:	f2 0f 11 2c 24       	movsd  QWORD PTR [rsp],xmm5
+  4123a4:	48 8d 0c 02          	lea    rcx,[rdx+rax*1]
+  4123a8:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  4123ad:	66 0f 28 c5          	movapd xmm0,xmm5
+  4123b1:	48 99                	cqo    
+  4123b3:	48 f7 f9             	idiv   rcx
+  4123b6:	48 8b 44 24 50       	mov    rax,QWORD PTR [rsp+0x50]
+  4123bb:	4c 01 f0             	add    rax,r14
+  4123be:	48 0f af c2          	imul   rax,rdx
+  4123c2:	48 99                	cqo    
+  4123c4:	48 f7 f9             	idiv   rcx
+  4123c7:	f2 48 0f 2a e2       	cvtsi2sd xmm4,rdx
+  4123cc:	f2 0f 11 64 24 18    	movsd  QWORD PTR [rsp+0x18],xmm4
+  4123d2:	e9 2d 75 ff ff       	jmp    409904 <MEMORY_T::POKE64(double, double)+0x34>
+;	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010))
+  4123d7:	e9 24 a0 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;	    mov(filename,"tmp.bas"):   mov(compiler,"fbc ")                      ' FreeBASIC
+  4123dc:	45 31 c0             	xor    r8d,r8d
+  4123df:	b9 08 00 00 00       	mov    ecx,0x8
+  4123e4:	48 8d 15 81 e4 06 00 	lea    rdx,[rip+0x6e481]        # 48086c <_IO_stdin_used+0x386c>
+  4123eb:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
+  4123f2:	48 8d 3d e7 e7 07 00 	lea    rdi,[rip+0x7e7e7]        # 490be0 <FILENAME$>
+  4123f9:	e8 22 2c 06 00       	call   475020 <fb_StrAssign>
+  4123fe:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  412405:	00 
+  412406:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  41240d:	00 00 
+  41240f:	0f 85 a9 e9 02 00    	jne    440dbe <MEMORY_T::POKE64(double, double)+0x374ee>
 ;end def
-  44f12c:	5b                   	pop    rbx
-;    circle(x_axis0, y_axis1), radius, rgba(red2,green2,blue2,xalpha2)
-  44f12d:	0f 28 cc             	movaps xmm1,xmm4
-  44f130:	0f 28 c4             	movaps xmm0,xmm4
+  412415:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+;	    mov(filename,"tmp.bas"):   mov(compiler,"fbc ")                      ' FreeBASIC
+  41241c:	45 31 c0             	xor    r8d,r8d
+  41241f:	b9 05 00 00 00       	mov    ecx,0x5
+  412424:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
 ;end def
-  44f133:	5d                   	pop    rbp
-  44f134:	41 5c                	pop    r12
-  44f136:	41 5d                	pop    r13
-;    circle(x_axis0, y_axis1), radius, rgba(red2,green2,blue2,xalpha2)
-  44f138:	e9 53 4b 00 00       	jmp    453c90 <fb_GfxEllipse>
-  44f13d:	48 89 c2             	mov    rdx,rax
-  44f140:	83 e0 01             	and    eax,0x1
-  44f143:	66 0f ef d2          	pxor   xmm2,xmm2
-  44f147:	48 d1 ea             	shr    rdx,1
-  44f14a:	48 09 c2             	or     rdx,rax
-  44f14d:	f3 48 0f 2a d2       	cvtsi2ss xmm2,rdx
-  44f152:	f3 0f 58 d2          	addss  xmm2,xmm2
-  44f156:	eb b5                	jmp    44f10d <MEMORY_T::POKEB(double, double)+0x2d8d>
-  44f158:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  44f15f:	00 
-
-000000000044f160 <MEMORY_T::POKEW(double, double)>:
-;def MEMORY_T.pokew(byval adr  as double, byval v as double)
-  44f160:	41 56                	push   r14
-  44f162:	66 49 0f 7e c6       	movq   r14,xmm0
-  44f167:	66 0f 28 c1          	movapd xmm0,xmm1
-  44f16b:	55                   	push   rbp
-  44f16c:	48 89 fd             	mov    rbp,rdi
-  44f16f:	53                   	push   rbx
-;	Pokeb adr, lobyte(v)
-  44f170:	e8 db 61 fb ff       	call   405350 <nearbyint@plt>
-  44f175:	f2 0f 10 0d 03 43 02 	movsd  xmm1,QWORD PTR [rip+0x24303]        # 473480 <_IO_stdin_used+0x4480>
-  44f17c:	00 
-  44f17d:	66 0f 2f c1          	comisd xmm0,xmm1
-  44f181:	73 4d                	jae    44f1d0 <MEMORY_T::POKEW(double, double)+0x70>
-  44f183:	f2 48 0f 2c d8       	cvttsd2si rbx,xmm0
-  44f188:	0f b6 c3             	movzx  eax,bl
-  44f18b:	66 0f ef c9          	pxor   xmm1,xmm1
-  44f18f:	66 49 0f 6e c6       	movq   xmm0,r14
-  44f194:	48 89 ef             	mov    rdi,rbp
-  44f197:	f2 48 0f 2a c8       	cvtsi2sd xmm1,rax
-;	Pokeb adr add 1, hibyte(v)
-  44f19c:	0f b6 df             	movzx  ebx,bh
-;	Pokeb adr, lobyte(v)
-  44f19f:	e8 dc d1 ff ff       	call   44c380 <MEMORY_T::POKEB(double, double)>
-;	Pokeb adr add 1, hibyte(v)
-  44f1a4:	66 0f ef c9          	pxor   xmm1,xmm1
-  44f1a8:	66 49 0f 6e c6       	movq   xmm0,r14
-  44f1ad:	48 89 ef             	mov    rdi,rbp
-  44f1b0:	f2 48 0f 2a cb       	cvtsi2sd xmm1,rbx
-  44f1b5:	f2 0f 58 05 93 3f 02 	addsd  xmm0,QWORD PTR [rip+0x23f93]        # 473150 <_IO_stdin_used+0x4150>
-  44f1bc:	00 
+  41242b:	5b                   	pop    rbx
+;	    mov(filename,"tmp.bas"):   mov(compiler,"fbc ")                      ' FreeBASIC
+  41242c:	48 8d 15 41 e4 06 00 	lea    rdx,[rip+0x6e441]        # 480874 <_IO_stdin_used+0x3874>
+  412433:	48 8d 3d 46 74 0b 00 	lea    rdi,[rip+0xb7446]        # 4c9880 <COMPILER$>
 ;end def
-  44f1bd:	5b                   	pop    rbx
-  44f1be:	5d                   	pop    rbp
-  44f1bf:	41 5e                	pop    r14
-;	Pokeb adr add 1, hibyte(v)
-  44f1c1:	e9 ba d1 ff ff       	jmp    44c380 <MEMORY_T::POKEB(double, double)>
-  44f1c6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  44f1cd:	00 00 00 
-;	Pokeb adr, lobyte(v)
-  44f1d0:	f2 0f 5c c1          	subsd  xmm0,xmm1
-  44f1d4:	f2 48 0f 2c d8       	cvttsd2si rbx,xmm0
-  44f1d9:	48 0f ba fb 3f       	btc    rbx,0x3f
-  44f1de:	eb a8                	jmp    44f188 <MEMORY_T::POKEW(double, double)+0x28>
-
-000000000044f1e0 <INS_W32>:
-;  Cpu->mem->poke64(Cpu->code.op.u32,Cpu->A)
-  44f1e0:	0f b6 47 01          	movzx  eax,BYTE PTR [rdi+0x1]
-  44f1e4:	8b 57 38             	mov    edx,DWORD PTR [rdi+0x38]
-  44f1e7:	66 0f ef c0          	pxor   xmm0,xmm0
-  44f1eb:	66 0f ef c9          	pxor   xmm1,xmm1
-  44f1ef:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f1f3:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
-  44f1f8:	f2 0f 2a c8          	cvtsi2sd xmm1,eax
-  44f1fc:	e9 0f a6 fb ff       	jmp    409810 <MEMORY_T::POKE64(double, double)>
-  44f201:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44f208:	00 00 00 00 
-  44f20c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-000000000044f210 <INS_W64>:
-;  Cpu->mem->poke64(Cpu->code.op.u64,Cpu->A)
-  44f210:	0f b6 47 01          	movzx  eax,BYTE PTR [rdi+0x1]
-  44f214:	66 0f ef c9          	pxor   xmm1,xmm1
-  44f218:	f2 0f 2a c8          	cvtsi2sd xmm1,eax
-  44f21c:	48 8b 47 38          	mov    rax,QWORD PTR [rdi+0x38]
-  44f220:	48 85 c0             	test   rax,rax
-  44f223:	78 1b                	js     44f240 <INS_W64+0x30>
-  44f225:	66 0f ef c0          	pxor   xmm0,xmm0
-  44f229:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f22d:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44f232:	e9 d9 a5 fb ff       	jmp    409810 <MEMORY_T::POKE64(double, double)>
-  44f237:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  44f23e:	00 00 
-  44f240:	48 89 c2             	mov    rdx,rax
-  44f243:	83 e0 01             	and    eax,0x1
-  44f246:	66 0f ef c0          	pxor   xmm0,xmm0
-  44f24a:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f24e:	48 d1 ea             	shr    rdx,1
-  44f251:	48 09 c2             	or     rdx,rax
-  44f254:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
-  44f259:	f2 0f 58 c0          	addsd  xmm0,xmm0
-  44f25d:	e9 ae a5 fb ff       	jmp    409810 <MEMORY_T::POKE64(double, double)>
-  44f262:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44f269:	00 00 00 00 
-  44f26d:	0f 1f 00             	nop    DWORD PTR [rax]
-
-000000000044f270 <MEMORY_T::READUBYTE(double)>:
-;proc MEMORY_T.ReadUByte(byval adr as double) as ubyte
-  44f270:	48 83 ec 08          	sub    rsp,0x8
-;  return Peek64(adr)
-  44f274:	e8 e7 a3 fb ff       	call   409660 <MEMORY_T::PEEK64(double)>
-  44f279:	e8 d2 60 fb ff       	call   405350 <nearbyint@plt>
-;end proc
-  44f27e:	48 83 c4 08          	add    rsp,0x8
-;  return Peek64(adr)
-  44f282:	f2 0f 2c c0          	cvttsd2si eax,xmm0
-;end proc
-  44f286:	c3                   	ret    
-  44f287:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  44f28e:	00 00 
-
-000000000044f290 <INS_ADC>:
-;def INS_ADC(byval Cpu as CPU6510_T)
-  44f290:	53                   	push   rbx
-;  ub=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f291:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44f295:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_ADC(byval Cpu as CPU6510_T)
-  44f299:	48 89 fb             	mov    rbx,rdi
-;  ub=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f29c:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f2a0:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44f2a4:	e8 c7 ff ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  v.u16=Cpu->A + ub
-  44f2a9:	0f b6 53 01          	movzx  edx,BYTE PTR [rbx+0x1]
-;  if Cpu->F.c=peek(ubyte,@nibbles(&B0001)) then v.u16+=peek(ubyte,@nibbles(&B0001))
-  44f2ad:	0f b6 0b             	movzx  ecx,BYTE PTR [rbx]
-;  v.u16=Cpu->A + ub
-  44f2b0:	0f b6 c0             	movzx  eax,al
-  44f2b3:	01 c2                	add    edx,eax
-;  if Cpu->F.c=peek(ubyte,@nibbles(&B0001)) then v.u16+=peek(ubyte,@nibbles(&B0001))
-  44f2b5:	89 ce                	mov    esi,ecx
-  44f2b7:	0f b6 05 e3 3a 05 00 	movzx  eax,BYTE PTR [rip+0x53ae3]        # 4a2da1 <NIBBLES$+0x1>
-  44f2be:	83 e6 01             	and    esi,0x1
-;  v.u16=Cpu->A + ub
-  44f2c1:	66 89 15 a8 39 03 00 	mov    WORD PTR [rip+0x339a8],dx        # 482c70 <V$>
-;  if Cpu->F.c=peek(ubyte,@nibbles(&B0001)) then v.u16+=peek(ubyte,@nibbles(&B0001))
-  44f2c8:	40 38 f0             	cmp    al,sil
-  44f2cb:	75 0c                	jne    44f2d9 <INS_ADC+0x49>
-  44f2cd:	0f b6 f0             	movzx  esi,al
-  44f2d0:	01 f2                	add    edx,esi
-  44f2d2:	66 89 15 97 39 03 00 	mov    WORD PTR [rip+0x33997],dx        # 482c70 <V$>
-;  Cpu->F.v=iif(((not (Cpu->A xor    ub) and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100))) and _
-  44f2d9:	c1 e0 06             	shl    eax,0x6
-  44f2dc:	48 0f be 35 8c 39 03 	movsx  rsi,BYTE PTR [rip+0x3398c]        # 482c70 <V$>
-  44f2e3:	00 
-  44f2e4:	83 e1 bf             	and    ecx,0xffffffbf
-;  Cpu->F.c=iif(v.u16>(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f2e7:	0f b7 d2             	movzx  edx,dx
-;  Cpu->F.v=iif(((not (Cpu->A xor    ub) and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100))) and _
-  44f2ea:	83 e0 40             	and    eax,0x40
-  44f2ed:	09 c8                	or     eax,ecx
-;  Cpu->A=v.ulo
-  44f2ef:	40 88 73 01          	mov    BYTE PTR [rbx+0x1],sil
-;  Cpu->F.v=iif(((not (Cpu->A xor    ub) and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100))) and _
-  44f2f3:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.c=iif(v.u16>(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f2f5:	0f b6 3d b3 3a 05 00 	movzx  edi,BYTE PTR [rip+0x53ab3]        # 4a2daf <NIBBLES$+0xf>
-  44f2fc:	0f b6 0d a1 3a 05 00 	movzx  ecx,BYTE PTR [rip+0x53aa1]        # 4a2da4 <NIBBLES$+0x4>
-  44f303:	49 89 f8             	mov    r8,rdi
-  44f306:	49 d3 e0             	shl    r8,cl
-  44f309:	4c 89 c1             	mov    rcx,r8
-  44f30c:	48 01 f9             	add    rcx,rdi
-  44f30f:	48 39 ca             	cmp    rdx,rcx
-  44f312:	0f b6 0d 88 3a 05 00 	movzx  ecx,BYTE PTR [rip+0x53a88]        # 4a2da1 <NIBBLES$+0x1>
-  44f319:	0f b6 15 80 3a 05 00 	movzx  edx,BYTE PTR [rip+0x53a80]        # 4a2da0 <NIBBLES$>
-  44f320:	0f 4f d1             	cmovg  edx,ecx
-  44f323:	83 e0 fe             	and    eax,0xfffffffe
-  44f326:	83 e2 01             	and    edx,0x1
-  44f329:	09 d0                	or     eax,edx
-  44f32b:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.z=iif(v.ulo=peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f32d:	0f b6 15 6c 3a 05 00 	movzx  edx,BYTE PTR [rip+0x53a6c]        # 4a2da0 <NIBBLES$>
-  44f334:	0f b6 0d 66 3a 05 00 	movzx  ecx,BYTE PTR [rip+0x53a66]        # 4a2da1 <NIBBLES$+0x1>
-  44f33b:	40 38 d6             	cmp    sil,dl
-  44f33e:	0f 44 d1             	cmove  edx,ecx
-  44f341:	83 e0 fd             	and    eax,0xfffffffd
-  44f344:	01 d2                	add    edx,edx
-  44f346:	83 e2 02             	and    edx,0x2
-  44f349:	09 c2                	or     edx,eax
-  44f34b:	88 13                	mov    BYTE PTR [rbx],dl
-;  Cpu->F.n=iif(v.slo<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f34d:	0f b6 0d 4c 3a 05 00 	movzx  ecx,BYTE PTR [rip+0x53a4c]        # 4a2da0 <NIBBLES$>
-  44f354:	48 39 ce             	cmp    rsi,rcx
-  44f357:	48 89 c8             	mov    rax,rcx
-  44f35a:	0f b6 0d 40 3a 05 00 	movzx  ecx,BYTE PTR [rip+0x53a40]        # 4a2da1 <NIBBLES$+0x1>
-  44f361:	0f 4c c1             	cmovl  eax,ecx
-  44f364:	83 e2 7f             	and    edx,0x7f
-  44f367:	c1 e0 07             	shl    eax,0x7
-  44f36a:	09 c2                	or     edx,eax
-  44f36c:	88 13                	mov    BYTE PTR [rbx],dl
+  41243a:	5d                   	pop    rbp
+  41243b:	41 5c                	pop    r12
+  41243d:	41 5d                	pop    r13
+  41243f:	41 5e                	pop    r14
+  412441:	41 5f                	pop    r15
+;	    mov(filename,"tmp.bas"):   mov(compiler,"fbc ")                      ' FreeBASIC
+  412443:	e9 d8 2b 06 00       	jmp    475020 <fb_StrAssign>
+;   poke64(49154d,&H00):poke64(49155d,&H33):poke64(49156d,&HCC)
+  412448:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  41244d:	f2 0f 10 05 cb ef 06 	movsd  xmm0,QWORD PTR [rip+0x6efcb]        # 481420 <_IO_stdin_used+0x4420>
+  412454:	00 
+  412455:	66 0f ef c9          	pxor   xmm1,xmm1
+  412459:	e8 72 74 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  41245e:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412463:	f2 0f 10 0d 5d ed 06 	movsd  xmm1,QWORD PTR [rip+0x6ed5d]        # 4811c8 <_IO_stdin_used+0x41c8>
+  41246a:	00 
+  41246b:	f2 0f 10 05 b5 ef 06 	movsd  xmm0,QWORD PTR [rip+0x6efb5]        # 481428 <_IO_stdin_used+0x4428>
+  412472:	00 
+  412473:	e8 58 74 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  412478:	f2 0f 10 0d c0 ef 06 	movsd  xmm1,QWORD PTR [rip+0x6efc0]        # 481440 <_IO_stdin_used+0x4440>
+  41247f:	00 
+  412480:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412485:	f2 0f 10 05 a3 ef 06 	movsd  xmm0,QWORD PTR [rip+0x6efa3]        # 481430 <_IO_stdin_used+0x4430>
+  41248c:	00 
+  41248d:	e8 3e 74 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L931
+  412492:	e9 f1 91 ff ff       	jmp    40b688 <MEMORY_T::POKE64(double, double)+0x1db8>
+;        if peek(double,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0000))) else poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)),peek(ubyte,@nibbles(&B0000)))         
+  412497:	0f b6 35 ee e8 09 00 	movzx  esi,BYTE PTR [rip+0x9e8ee]        # 4b0d8c <NIBBLES$+0xc>
+  41249e:	66 0f ef e4          	pxor   xmm4,xmm4
+  4124a2:	66 0f ef ed          	pxor   xmm5,xmm5
+  4124a6:	f2 0f 2a e2          	cvtsi2sd xmm4,edx
+  4124aa:	0f b6 15 dd e8 09 00 	movzx  edx,BYTE PTR [rip+0x9e8dd]        # 4b0d8e <NIBBLES$+0xe>
+  4124b1:	48 89 f1             	mov    rcx,rsi
+  4124b4:	48 d3 e6             	shl    rsi,cl
+  4124b7:	48 89 d3             	mov    rbx,rdx
+  4124ba:	89 c1                	mov    ecx,eax
+  4124bc:	48 d3 e3             	shl    rbx,cl
+  4124bf:	48 89 d8             	mov    rax,rbx
+  4124c2:	f2 0f 11 64 24 18    	movsd  QWORD PTR [rsp+0x18],xmm4
+  4124c8:	48 01 f0             	add    rax,rsi
+  4124cb:	48 01 d0             	add    rax,rdx
+  4124ce:	f2 48 0f 2a e8       	cvtsi2sd xmm5,rax
+  4124d3:	f2 0f 11 2c 24       	movsd  QWORD PTR [rsp],xmm5
+  4124d8:	66 0f 28 c5          	movapd xmm0,xmm5
+  4124dc:	e9 23 74 ff ff       	jmp    409904 <MEMORY_T::POKE64(double, double)+0x34>
+;   cmp v eq peek(ubyte,@nibbles(&B0011)) jmp L1573
+  4124e1:	44 0f b6 05 9a e8 09 	movzx  r8d,BYTE PTR [rip+0x9e89a]        # 4b0d83 <NIBBLES$+0x3>
+  4124e8:	00 
+  4124e9:	66 0f ef c0          	pxor   xmm0,xmm0
+  4124ed:	f2 49 0f 2a c0       	cvtsi2sd xmm0,r8
+  4124f2:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4124f8:	0f 8a 33 03 00 00    	jp     412831 <MEMORY_T::POKE64(double, double)+0x8f61>
+  4124fe:	0f 85 2d 03 00 00    	jne    412831 <MEMORY_T::POKE64(double, double)+0x8f61>
+;   mov(mem64(49457),mem64(49456) shl 24 add &H000099)
+  412504:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  412509:	f2 0f 10 80 80 09 06 	movsd  xmm0,QWORD PTR [rax+0x60980]
+  412510:	00 
+  412511:	e8 4a 2e ff ff       	call   405360 <nearbyint@plt>
+  412516:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  41251b:	66 0f ef c0          	pxor   xmm0,xmm0
+  41251f:	48 c1 e0 18          	shl    rax,0x18
+  412523:	48 05 99 00 00 00    	add    rax,0x99
+  412529:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+;   jmp L1826
+  41252e:	e9 54 93 ff ff       	jmp    40b887 <MEMORY_T::POKE64(double, double)+0x1fb7>
+;	    mov(filename,"tmp.bas"):   mov(compiler,"fbc -lang qb ")             ' QBASIC 1.1	    
+  412533:	45 31 c0             	xor    r8d,r8d
+  412536:	b9 08 00 00 00       	mov    ecx,0x8
+  41253b:	48 8d 15 2a e3 06 00 	lea    rdx,[rip+0x6e32a]        # 48086c <_IO_stdin_used+0x386c>
+  412542:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
+  412549:	48 8d 3d 90 e6 07 00 	lea    rdi,[rip+0x7e690]        # 490be0 <FILENAME$>
+  412550:	e8 cb 2a 06 00       	call   475020 <fb_StrAssign>
+  412555:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  41255c:	00 
+  41255d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  412564:	00 00 
+  412566:	0f 85 c2 68 00 00    	jne    418e2e <MEMORY_T::POKE64(double, double)+0xf55e>
 ;end def
-  44f36e:	5b                   	pop    rbx
-  44f36f:	c3                   	ret    
-
-000000000044f370 <INS_AND>:
-;def INS_AND(byval Cpu as CPU6510_T)
-  44f370:	53                   	push   rbx
-;  Cpu->A=Cpu->A and Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f371:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44f375:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_AND(byval Cpu as CPU6510_T)
-  44f379:	48 89 fb             	mov    rbx,rdi
-;  Cpu->A=Cpu->A and Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f37c:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f380:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44f384:	e8 e7 fe ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  Cpu->F.z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f389:	0f b6 0d 10 3a 05 00 	movzx  ecx,BYTE PTR [rip+0x53a10]        # 4a2da0 <NIBBLES$>
-;  Cpu->A=Cpu->A and Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f390:	22 43 01             	and    al,BYTE PTR [rbx+0x1]
-  44f393:	88 43 01             	mov    BYTE PTR [rbx+0x1],al
-;  Cpu->F.z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f396:	0f b6 15 04 3a 05 00 	movzx  edx,BYTE PTR [rip+0x53a04]        # 4a2da1 <NIBBLES$+0x1>
-  44f39d:	38 c8                	cmp    al,cl
-;  Cpu->F.n=iif(Cpu->sA<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f39f:	48 0f be c0          	movsx  rax,al
-;  Cpu->F.z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f3a3:	0f 44 ca             	cmove  ecx,edx
-  44f3a6:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-  44f3a9:	01 c9                	add    ecx,ecx
-  44f3ab:	83 e2 fd             	and    edx,0xfffffffd
-  44f3ae:	83 e1 02             	and    ecx,0x2
-  44f3b1:	09 ca                	or     edx,ecx
-  44f3b3:	88 13                	mov    BYTE PTR [rbx],dl
-;  Cpu->F.n=iif(Cpu->sA<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f3b5:	0f b6 35 e4 39 05 00 	movzx  esi,BYTE PTR [rip+0x539e4]        # 4a2da0 <NIBBLES$>
-  44f3bc:	48 39 f0             	cmp    rax,rsi
-  44f3bf:	0f b6 05 db 39 05 00 	movzx  eax,BYTE PTR [rip+0x539db]        # 4a2da1 <NIBBLES$+0x1>
-  44f3c6:	48 89 f1             	mov    rcx,rsi
-  44f3c9:	0f 4c c8             	cmovl  ecx,eax
-  44f3cc:	83 e2 7f             	and    edx,0x7f
-  44f3cf:	c1 e1 07             	shl    ecx,0x7
-  44f3d2:	09 ca                	or     edx,ecx
-  44f3d4:	88 13                	mov    BYTE PTR [rbx],dl
+  41256c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+;	    mov(filename,"tmp.bas"):   mov(compiler,"fbc -lang qb ")             ' QBASIC 1.1	    
+  412573:	45 31 c0             	xor    r8d,r8d
+  412576:	b9 0e 00 00 00       	mov    ecx,0xe
+  41257b:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
 ;end def
-  44f3d6:	5b                   	pop    rbx
-  44f3d7:	c3                   	ret    
-  44f3d8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  44f3df:	00 
-
-000000000044f3e0 <INS_CMP>:
-;def INS_CMP(byval Cpu as CPU6510_T)
-  44f3e0:	53                   	push   rbx
-;  v.u16 = Cpu->A-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f3e1:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44f3e5:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_CMP(byval Cpu as CPU6510_T)
-  44f3e9:	48 89 fb             	mov    rbx,rdi
-;  v.u16 = Cpu->A-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f3ec:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f3f0:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44f3f4:	e8 77 fe ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f3f9:	0f b6 15 af 39 05 00 	movzx  edx,BYTE PTR [rip+0x539af]        # 4a2daf <NIBBLES$+0xf>
-;  v.u16 = Cpu->A-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f400:	0f b6 73 01          	movzx  esi,BYTE PTR [rbx+0x1]
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f404:	0f b6 0d 99 39 05 00 	movzx  ecx,BYTE PTR [rip+0x53999]        # 4a2da4 <NIBBLES$+0x4>
-;  v.u16 = Cpu->A-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f40b:	41 89 c0             	mov    r8d,eax
-  44f40e:	0f b6 c0             	movzx  eax,al
-  44f411:	89 f7                	mov    edi,esi
-  44f413:	29 c6                	sub    esi,eax
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f415:	48 89 d0             	mov    rax,rdx
-  44f418:	48 d3 e0             	shl    rax,cl
-  44f41b:	44 0f b7 ce          	movzx  r9d,si
-;  v.u16 = Cpu->A-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f41f:	66 89 35 4a 38 03 00 	mov    WORD PTR [rip+0x3384a],si        # 482c70 <V$>
-;  Cpu->F.n=iif(v.slo <peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f426:	48 0f be f6          	movsx  rsi,sil
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f42a:	48 01 d0             	add    rax,rdx
-  44f42d:	0f b6 15 6d 39 05 00 	movzx  edx,BYTE PTR [rip+0x5396d]        # 4a2da1 <NIBBLES$+0x1>
-  44f434:	49 39 c1             	cmp    r9,rax
-  44f437:	0f b6 05 62 39 05 00 	movzx  eax,BYTE PTR [rip+0x53962]        # 4a2da0 <NIBBLES$>
-  44f43e:	0f 4e c2             	cmovle eax,edx
-  44f441:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-;  Cpu->F.z=iif(v.ulo =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f444:	44 29 c7             	sub    edi,r8d
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f447:	83 e0 01             	and    eax,0x1
-  44f44a:	83 e2 fe             	and    edx,0xfffffffe
-  44f44d:	09 c2                	or     edx,eax
-  44f44f:	88 13                	mov    BYTE PTR [rbx],dl
-;  Cpu->F.z=iif(v.ulo =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f451:	0f b6 05 48 39 05 00 	movzx  eax,BYTE PTR [rip+0x53948]        # 4a2da0 <NIBBLES$>
-  44f458:	0f b6 0d 42 39 05 00 	movzx  ecx,BYTE PTR [rip+0x53942]        # 4a2da1 <NIBBLES$+0x1>
-  44f45f:	40 38 f8             	cmp    al,dil
-  44f462:	0f 44 c1             	cmove  eax,ecx
-  44f465:	83 e2 fd             	and    edx,0xfffffffd
-  44f468:	01 c0                	add    eax,eax
-  44f46a:	83 e0 02             	and    eax,0x2
-  44f46d:	09 d0                	or     eax,edx
-  44f46f:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.n=iif(v.slo <peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f471:	0f b6 0d 28 39 05 00 	movzx  ecx,BYTE PTR [rip+0x53928]        # 4a2da0 <NIBBLES$>
-  44f478:	48 39 ce             	cmp    rsi,rcx
-  44f47b:	48 89 ca             	mov    rdx,rcx
-  44f47e:	0f b6 0d 1c 39 05 00 	movzx  ecx,BYTE PTR [rip+0x5391c]        # 4a2da1 <NIBBLES$+0x1>
-  44f485:	0f 4c d1             	cmovl  edx,ecx
-  44f488:	83 e0 7f             	and    eax,0x7f
-  44f48b:	c1 e2 07             	shl    edx,0x7
-  44f48e:	09 d0                	or     eax,edx
-  44f490:	88 03                	mov    BYTE PTR [rbx],al
+  412582:	5b                   	pop    rbx
+;	    mov(filename,"tmp.bas"):   mov(compiler,"fbc -lang qb ")             ' QBASIC 1.1	    
+  412583:	48 8d 15 ef e2 06 00 	lea    rdx,[rip+0x6e2ef]        # 480879 <_IO_stdin_used+0x3879>
+  41258a:	48 8d 3d ef 72 0b 00 	lea    rdi,[rip+0xb72ef]        # 4c9880 <COMPILER$>
 ;end def
-  44f492:	5b                   	pop    rbx
-  44f493:	c3                   	ret    
-  44f494:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44f49b:	00 00 00 00 
-  44f49f:	90                   	nop
-
-000000000044f4a0 <INS_CPX>:
-;def INS_CPX(byval Cpu as CPU6510_T)
-  44f4a0:	53                   	push   rbx
-;  v.u16 = Cpu->X-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f4a1:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44f4a5:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_CPX(byval Cpu as CPU6510_T)
-  44f4a9:	48 89 fb             	mov    rbx,rdi
-;  v.u16 = Cpu->X-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f4ac:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f4b0:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44f4b4:	e8 b7 fd ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f4b9:	0f b6 15 ef 38 05 00 	movzx  edx,BYTE PTR [rip+0x538ef]        # 4a2daf <NIBBLES$+0xf>
-;  v.u16 = Cpu->X-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f4c0:	0f b6 73 02          	movzx  esi,BYTE PTR [rbx+0x2]
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f4c4:	0f b6 0d d9 38 05 00 	movzx  ecx,BYTE PTR [rip+0x538d9]        # 4a2da4 <NIBBLES$+0x4>
-;  v.u16 = Cpu->X-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f4cb:	41 89 c0             	mov    r8d,eax
-  44f4ce:	0f b6 c0             	movzx  eax,al
-  44f4d1:	89 f7                	mov    edi,esi
-  44f4d3:	29 c6                	sub    esi,eax
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f4d5:	48 89 d0             	mov    rax,rdx
-  44f4d8:	48 d3 e0             	shl    rax,cl
-  44f4db:	44 0f b7 ce          	movzx  r9d,si
-;  v.u16 = Cpu->X-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f4df:	66 89 35 8a 37 03 00 	mov    WORD PTR [rip+0x3378a],si        # 482c70 <V$>
-;  Cpu->F.n=iif(v.slo <peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f4e6:	48 0f be f6          	movsx  rsi,sil
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f4ea:	48 01 d0             	add    rax,rdx
-  44f4ed:	0f b6 15 ad 38 05 00 	movzx  edx,BYTE PTR [rip+0x538ad]        # 4a2da1 <NIBBLES$+0x1>
-  44f4f4:	49 39 c1             	cmp    r9,rax
-  44f4f7:	0f b6 05 a2 38 05 00 	movzx  eax,BYTE PTR [rip+0x538a2]        # 4a2da0 <NIBBLES$>
-  44f4fe:	0f 4e c2             	cmovle eax,edx
-  44f501:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-;  Cpu->F.z=iif(v.ulo =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f504:	44 29 c7             	sub    edi,r8d
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f507:	83 e0 01             	and    eax,0x1
-  44f50a:	83 e2 fe             	and    edx,0xfffffffe
-  44f50d:	09 c2                	or     edx,eax
-  44f50f:	88 13                	mov    BYTE PTR [rbx],dl
-;  Cpu->F.z=iif(v.ulo =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f511:	0f b6 05 88 38 05 00 	movzx  eax,BYTE PTR [rip+0x53888]        # 4a2da0 <NIBBLES$>
-  44f518:	0f b6 0d 82 38 05 00 	movzx  ecx,BYTE PTR [rip+0x53882]        # 4a2da1 <NIBBLES$+0x1>
-  44f51f:	40 38 f8             	cmp    al,dil
-  44f522:	0f 44 c1             	cmove  eax,ecx
-  44f525:	83 e2 fd             	and    edx,0xfffffffd
-  44f528:	01 c0                	add    eax,eax
-  44f52a:	83 e0 02             	and    eax,0x2
-  44f52d:	09 d0                	or     eax,edx
-  44f52f:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.n=iif(v.slo <peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f531:	0f b6 0d 68 38 05 00 	movzx  ecx,BYTE PTR [rip+0x53868]        # 4a2da0 <NIBBLES$>
-  44f538:	48 39 ce             	cmp    rsi,rcx
-  44f53b:	48 89 ca             	mov    rdx,rcx
-  44f53e:	0f b6 0d 5c 38 05 00 	movzx  ecx,BYTE PTR [rip+0x5385c]        # 4a2da1 <NIBBLES$+0x1>
-  44f545:	0f 4c d1             	cmovl  edx,ecx
-  44f548:	83 e0 7f             	and    eax,0x7f
-  44f54b:	c1 e2 07             	shl    edx,0x7
-  44f54e:	09 d0                	or     eax,edx
-  44f550:	88 03                	mov    BYTE PTR [rbx],al
+  412591:	5d                   	pop    rbp
+  412592:	41 5c                	pop    r12
+  412594:	41 5d                	pop    r13
+  412596:	41 5e                	pop    r14
+  412598:	41 5f                	pop    r15
+;	    mov(filename,"tmp.bas"):   mov(compiler,"fbc -lang qb ")             ' QBASIC 1.1	    
+  41259a:	e9 81 2a 06 00       	jmp    475020 <fb_StrAssign>
+;   poke64(49158,&H00):poke64(49159,&H00):poke64(49160,&H00)
+  41259f:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4125a4:	f2 0f 10 05 8c ef 06 	movsd  xmm0,QWORD PTR [rip+0x6ef8c]        # 481538 <_IO_stdin_used+0x4538>
+  4125ab:	00 
+  4125ac:	66 0f ef c9          	pxor   xmm1,xmm1
+  4125b0:	e8 1b 73 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  4125b5:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4125ba:	66 0f ef c9          	pxor   xmm1,xmm1
+  4125be:	f2 0f 10 05 7a ef 06 	movsd  xmm0,QWORD PTR [rip+0x6ef7a]        # 481540 <_IO_stdin_used+0x4540>
+  4125c5:	00 
+  4125c6:	e8 05 73 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  4125cb:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4125d0:	66 0f ef c9          	pxor   xmm1,xmm1
+  4125d4:	f2 0f 10 05 6c ef 06 	movsd  xmm0,QWORD PTR [rip+0x6ef6c]        # 481548 <_IO_stdin_used+0x4548>
+  4125db:	00 
+  4125dc:	e8 ef 72 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L2086
+  4125e1:	e9 0a 94 ff ff       	jmp    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  4125e6:	f2 0f 5c c1          	subsd  xmm0,xmm1
+  4125ea:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  4125ef:	48 0f ba f8 3f       	btc    rax,0x3f
+  4125f4:	e9 9a f7 ff ff       	jmp    411d93 <MEMORY_T::POKE64(double, double)+0x84c3>
+;   poke64(49154d,&H00):poke64(49155d,&H33):poke64(49156d,&HFF)
+  4125f9:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4125fe:	f2 0f 10 05 1a ee 06 	movsd  xmm0,QWORD PTR [rip+0x6ee1a]        # 481420 <_IO_stdin_used+0x4420>
+  412605:	00 
+  412606:	66 0f ef c9          	pxor   xmm1,xmm1
+  41260a:	e8 c1 72 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  41260f:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412614:	f2 0f 10 0d ac eb 06 	movsd  xmm1,QWORD PTR [rip+0x6ebac]        # 4811c8 <_IO_stdin_used+0x41c8>
+  41261b:	00 
+  41261c:	f2 0f 10 05 04 ee 06 	movsd  xmm0,QWORD PTR [rip+0x6ee04]        # 481428 <_IO_stdin_used+0x4428>
+  412623:	00 
+  412624:	e8 a7 72 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  412629:	f2 0f 10 0d 87 ed 06 	movsd  xmm1,QWORD PTR [rip+0x6ed87]        # 4813b8 <_IO_stdin_used+0x43b8>
+  412630:	00 
+  412631:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412636:	f2 0f 10 05 f2 ed 06 	movsd  xmm0,QWORD PTR [rip+0x6edf2]        # 481430 <_IO_stdin_used+0x4430>
+  41263d:	00 
+  41263e:	e8 8d 72 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L931
+  412643:	e9 40 90 ff ff       	jmp    40b688 <MEMORY_T::POKE64(double, double)+0x1db8>
+;		   case peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
+  412648:	0f b6 2d 39 e7 09 00 	movzx  ebp,BYTE PTR [rip+0x9e739]        # 4b0d88 <NIBBLES$+0x8>
+  41264f:	89 d1                	mov    ecx,edx
+  412651:	66 0f ef c0          	pxor   xmm0,xmm0
+  412655:	48 89 eb             	mov    rbx,rbp
+  412658:	49 89 eb             	mov    r11,rbp
+  41265b:	48 d3 e3             	shl    rbx,cl
+  41265e:	48 89 d9             	mov    rcx,rbx
+  412661:	48 01 c1             	add    rcx,rax
+  412664:	f2 48 0f 2a c1       	cvtsi2sd xmm0,rcx
+  412669:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41266f:	0f 8a 87 02 00 00    	jp     4128fc <MEMORY_T::POKE64(double, double)+0x902c>
+  412675:	0f 85 81 02 00 00    	jne    4128fc <MEMORY_T::POKE64(double, double)+0x902c>
+;		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B1100))
+  41267b:	0f b6 15 0a e7 09 00 	movzx  edx,BYTE PTR [rip+0x9e70a]        # 4b0d8c <NIBBLES$+0xc>
+  412682:	66 0f ef c0          	pxor   xmm0,xmm0
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  412686:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+;		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B1100))
+  41268b:	89 d0                	mov    eax,edx
+  41268d:	83 e0 3f             	and    eax,0x3f
+  412690:	89 c1                	mov    ecx,eax
+  412692:	48 d3 e2             	shl    rdx,cl
+  412695:	4a 8d 0c 02          	lea    rcx,[rdx+r8*1]
+  412699:	0f b6 15 eb e6 09 00 	movzx  edx,BYTE PTR [rip+0x9e6eb]        # 4b0d8b <NIBBLES$+0xb>
+  4126a0:	48 8d 3c 11          	lea    rdi,[rcx+rdx*1]
+  4126a4:	89 e9                	mov    ecx,ebp
+  4126a6:	48 d3 e6             	shl    rsi,cl
+  4126a9:	89 c1                	mov    ecx,eax
+  4126ab:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4126b0:	49 d3 e1             	shl    r9,cl
+  4126b3:	48 89 f2             	mov    rdx,rsi
+  4126b6:	f2 49 0f 2a c1       	cvtsi2sd xmm0,r9
+  4126bb:	48 01 fa             	add    rdx,rdi
+  4126be:	f2 0f 11 04 d0       	movsd  QWORD PTR [rax+rdx*8],xmm0
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  4126c3:	0f b6 0d be e6 09 00 	movzx  ecx,BYTE PTR [rip+0x9e6be]        # 4b0d88 <NIBBLES$+0x8>
+  4126ca:	0f b6 05 b0 e6 09 00 	movzx  eax,BYTE PTR [rip+0x9e6b0]        # 4b0d81 <NIBBLES$+0x1>
+  4126d1:	0f b6 35 b4 e6 09 00 	movzx  esi,BYTE PTR [rip+0x9e6b4]        # 4b0d8c <NIBBLES$+0xc>
+  4126d8:	48 d3 e0             	shl    rax,cl
+  4126db:	48 89 c2             	mov    rdx,rax
+  4126de:	89 f1                	mov    ecx,esi
+  4126e0:	40 0f b6 c6          	movzx  eax,sil
+  4126e4:	48 d3 e0             	shl    rax,cl
+  4126e7:	0f b6 0d 96 e6 09 00 	movzx  ecx,BYTE PTR [rip+0x9e696]        # 4b0d84 <NIBBLES$+0x4>
+  4126ee:	48 01 c2             	add    rdx,rax
+  4126f1:	0f b6 05 93 e6 09 00 	movzx  eax,BYTE PTR [rip+0x9e693]        # 4b0d8b <NIBBLES$+0xb>
+  4126f8:	48 01 c2             	add    rdx,rax
+  4126fb:	0f b6 05 80 e6 09 00 	movzx  eax,BYTE PTR [rip+0x9e680]        # 4b0d82 <NIBBLES$+0x2>
+  412702:	48 d3 e0             	shl    rax,cl
+  412705:	48 01 d0             	add    rax,rdx
+  412708:	f2 0f 10 04 c3       	movsd  xmm0,QWORD PTR [rbx+rax*8]
+  41270d:	e8 4e 2c ff ff       	call   405360 <nearbyint@plt>
+  412712:	f2 0f 10 0d 66 ed 06 	movsd  xmm1,QWORD PTR [rip+0x6ed66]        # 481480 <_IO_stdin_used+0x4480>
+  412719:	00 
+  41271a:	66 0f 2f c1          	comisd xmm0,xmm1
+  41271e:	0f 83 f7 11 00 00    	jae    41391b <MEMORY_T::POKE64(double, double)+0xa04b>
+  412724:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  412729:	0f b6 c4             	movzx  eax,ah
+  41272c:	66 0f ef c0          	pxor   xmm0,xmm0
+  412730:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  412735:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  41273a:	f2 0f 11 80 40 14 00 	movsd  QWORD PTR [rax+0x1440],xmm0
+  412741:	00 
+;		   case peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
+  412742:	e9 a9 92 ff ff       	jmp    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;        if peek(double,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)),peek(ubyte,@nibbles(&B0000))) else poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0000)))         
+  412747:	0f b6 54 24 78       	movzx  edx,BYTE PTR [rsp+0x78]
+  41274c:	66 0f ef ed          	pxor   xmm5,xmm5
+  412750:	66 0f ef f6          	pxor   xmm6,xmm6
+  412754:	f2 0f 2a ea          	cvtsi2sd xmm5,edx
+  412758:	0f b6 15 2d e6 09 00 	movzx  edx,BYTE PTR [rip+0x9e62d]        # 4b0d8c <NIBBLES$+0xc>
+  41275f:	48 89 d1             	mov    rcx,rdx
+  412762:	48 89 d6             	mov    rsi,rdx
+  412765:	0f b6 15 22 e6 09 00 	movzx  edx,BYTE PTR [rip+0x9e622]        # 4b0d8e <NIBBLES$+0xe>
+  41276c:	48 d3 e6             	shl    rsi,cl
+  41276f:	89 c1                	mov    ecx,eax
+  412771:	0f b6 05 17 e6 09 00 	movzx  eax,BYTE PTR [rip+0x9e617]        # 4b0d8f <NIBBLES$+0xf>
+  412778:	48 d3 e2             	shl    rdx,cl
+  41277b:	f2 0f 11 6c 24 18    	movsd  QWORD PTR [rsp+0x18],xmm5
+  412781:	48 8d 14 16          	lea    rdx,[rsi+rdx*1]
+  412785:	48 01 d0             	add    rax,rdx
+  412788:	f2 48 0f 2a f0       	cvtsi2sd xmm6,rax
+  41278d:	f2 0f 11 34 24       	movsd  QWORD PTR [rsp],xmm6
+  412792:	66 0f 28 c6          	movapd xmm0,xmm6
+  412796:	e9 69 71 ff ff       	jmp    409904 <MEMORY_T::POKE64(double, double)+0x34>
+;   poke64(49154d,&H00):poke64(49155d,&H66):poke64(49156d,&H00)
+  41279b:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4127a0:	f2 0f 10 05 78 ec 06 	movsd  xmm0,QWORD PTR [rip+0x6ec78]        # 481420 <_IO_stdin_used+0x4420>
+  4127a7:	00 
+  4127a8:	66 0f ef c9          	pxor   xmm1,xmm1
+  4127ac:	e8 1f 71 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  4127b1:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4127b6:	f2 0f 10 0d 7a ec 06 	movsd  xmm1,QWORD PTR [rip+0x6ec7a]        # 481438 <_IO_stdin_used+0x4438>
+  4127bd:	00 
+  4127be:	f2 0f 10 05 62 ec 06 	movsd  xmm0,QWORD PTR [rip+0x6ec62]        # 481428 <_IO_stdin_used+0x4428>
+  4127c5:	00 
+  4127c6:	e8 05 71 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  4127cb:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4127d0:	66 0f ef c9          	pxor   xmm1,xmm1
+  4127d4:	f2 0f 10 05 54 ec 06 	movsd  xmm0,QWORD PTR [rip+0x6ec54]        # 481430 <_IO_stdin_used+0x4430>
+  4127db:	00 
+  4127dc:	e8 ef 70 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L931
+  4127e1:	e9 a2 8e ff ff       	jmp    40b688 <MEMORY_T::POKE64(double, double)+0x1db8>
+;   poke64(49158,&H00):poke64(49159,&H00):poke64(49160,&H33)
+  4127e6:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4127eb:	f2 0f 10 05 45 ed 06 	movsd  xmm0,QWORD PTR [rip+0x6ed45]        # 481538 <_IO_stdin_used+0x4538>
+  4127f2:	00 
+  4127f3:	66 0f ef c9          	pxor   xmm1,xmm1
+  4127f7:	e8 d4 70 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  4127fc:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412801:	66 0f ef c9          	pxor   xmm1,xmm1
+  412805:	f2 0f 10 05 33 ed 06 	movsd  xmm0,QWORD PTR [rip+0x6ed33]        # 481540 <_IO_stdin_used+0x4540>
+  41280c:	00 
+  41280d:	e8 be 70 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  412812:	f2 0f 10 0d ae e9 06 	movsd  xmm1,QWORD PTR [rip+0x6e9ae]        # 4811c8 <_IO_stdin_used+0x41c8>
+  412819:	00 
+  41281a:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  41281f:	f2 0f 10 05 21 ed 06 	movsd  xmm0,QWORD PTR [rip+0x6ed21]        # 481548 <_IO_stdin_used+0x4548>
+  412826:	00 
+  412827:	e8 a4 70 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L2086
+  41282c:	e9 bf 91 ff ff       	jmp    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;   cmp v eq peek(ubyte,@nibbles(&B0100)) jmp L1574
+  412831:	0f b6 1d 4c e5 09 00 	movzx  ebx,BYTE PTR [rip+0x9e54c]        # 4b0d84 <NIBBLES$+0x4>
+  412838:	66 0f ef c0          	pxor   xmm0,xmm0
+  41283c:	f2 48 0f 2a c3       	cvtsi2sd xmm0,rbx
+  412841:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  412847:	48 89 5c 24 20       	mov    QWORD PTR [rsp+0x20],rbx
+  41284c:	48 89 d8             	mov    rax,rbx
+  41284f:	0f 8a af 0b 00 00    	jp     413404 <MEMORY_T::POKE64(double, double)+0x9b34>
+  412855:	0f 85 a9 0b 00 00    	jne    413404 <MEMORY_T::POKE64(double, double)+0x9b34>
+;   mov(mem64(49457),mem64(49456) shl 24 add &H0000CC)
+  41285b:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  412860:	f2 0f 10 80 80 09 06 	movsd  xmm0,QWORD PTR [rax+0x60980]
+  412867:	00 
+  412868:	e8 f3 2a ff ff       	call   405360 <nearbyint@plt>
+  41286d:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  412872:	66 0f ef c0          	pxor   xmm0,xmm0
+  412876:	48 c1 e0 18          	shl    rax,0x18
+  41287a:	48 05 cc 00 00 00    	add    rax,0xcc
+  412880:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+;   jmp L1826
+  412885:	e9 fd 8f ff ff       	jmp    40b887 <MEMORY_T::POKE64(double, double)+0x1fb7>
+;     print #1, strCode: mov(strCode,"")
+  41288a:	48 8d 2d 6f e3 07 00 	lea    rbp,[rip+0x7e36f]        # 490c00 <STRCODE$>
+  412891:	ba 01 00 00 00       	mov    edx,0x1
+  412896:	bf 01 00 00 00       	mov    edi,0x1
+  41289b:	48 89 ee             	mov    rsi,rbp
+  41289e:	e8 1d 11 06 00       	call   4739c0 <fb_PrintString>
+  4128a3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4128aa:	00 
+  4128ab:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4128b2:	00 00 
+  4128b4:	0f 85 09 e5 02 00    	jne    440dc3 <MEMORY_T::POKE64(double, double)+0x374f3>
 ;end def
-  44f552:	5b                   	pop    rbx
-  44f553:	c3                   	ret    
-  44f554:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44f55b:	00 00 00 00 
-  44f55f:	90                   	nop
-
-000000000044f560 <INS_CPY>:
-;def INS_CPY(byval Cpu as CPU6510_T)
-  44f560:	53                   	push   rbx
-;  v.u16 = Cpu->Y-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f561:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44f565:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_CPY(byval Cpu as CPU6510_T)
-  44f569:	48 89 fb             	mov    rbx,rdi
-;  v.u16 = Cpu->Y-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f56c:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f570:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44f574:	e8 f7 fc ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f579:	0f b6 15 2f 38 05 00 	movzx  edx,BYTE PTR [rip+0x5382f]        # 4a2daf <NIBBLES$+0xf>
-;  v.u16 = Cpu->Y-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f580:	0f b6 73 03          	movzx  esi,BYTE PTR [rbx+0x3]
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f584:	0f b6 0d 19 38 05 00 	movzx  ecx,BYTE PTR [rip+0x53819]        # 4a2da4 <NIBBLES$+0x4>
-;  v.u16 = Cpu->Y-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f58b:	41 89 c0             	mov    r8d,eax
-  44f58e:	0f b6 c0             	movzx  eax,al
-  44f591:	89 f7                	mov    edi,esi
-  44f593:	29 c6                	sub    esi,eax
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f595:	48 89 d0             	mov    rax,rdx
-  44f598:	48 d3 e0             	shl    rax,cl
-  44f59b:	44 0f b7 ce          	movzx  r9d,si
-;  v.u16 = Cpu->Y-Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  44f59f:	66 89 35 ca 36 03 00 	mov    WORD PTR [rip+0x336ca],si        # 482c70 <V$>
-;  Cpu->F.n=iif(v.slo <peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f5a6:	48 0f be f6          	movsx  rsi,sil
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f5aa:	48 01 d0             	add    rax,rdx
-  44f5ad:	0f b6 15 ed 37 05 00 	movzx  edx,BYTE PTR [rip+0x537ed]        # 4a2da1 <NIBBLES$+0x1>
-  44f5b4:	49 39 c1             	cmp    r9,rax
-  44f5b7:	0f b6 05 e2 37 05 00 	movzx  eax,BYTE PTR [rip+0x537e2]        # 4a2da0 <NIBBLES$>
-  44f5be:	0f 4e c2             	cmovle eax,edx
-  44f5c1:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-;  Cpu->F.z=iif(v.ulo =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f5c4:	44 29 c7             	sub    edi,r8d
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f5c7:	83 e0 01             	and    eax,0x1
-  44f5ca:	83 e2 fe             	and    edx,0xfffffffe
-  44f5cd:	09 c2                	or     edx,eax
-  44f5cf:	88 13                	mov    BYTE PTR [rbx],dl
-;  Cpu->F.z=iif(v.ulo =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f5d1:	0f b6 05 c8 37 05 00 	movzx  eax,BYTE PTR [rip+0x537c8]        # 4a2da0 <NIBBLES$>
-  44f5d8:	0f b6 0d c2 37 05 00 	movzx  ecx,BYTE PTR [rip+0x537c2]        # 4a2da1 <NIBBLES$+0x1>
-  44f5df:	40 38 f8             	cmp    al,dil
-  44f5e2:	0f 44 c1             	cmove  eax,ecx
-  44f5e5:	83 e2 fd             	and    edx,0xfffffffd
-  44f5e8:	01 c0                	add    eax,eax
-  44f5ea:	83 e0 02             	and    eax,0x2
-  44f5ed:	09 d0                	or     eax,edx
-  44f5ef:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.n=iif(v.slo <peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f5f1:	0f b6 0d a8 37 05 00 	movzx  ecx,BYTE PTR [rip+0x537a8]        # 4a2da0 <NIBBLES$>
-  44f5f8:	48 39 ce             	cmp    rsi,rcx
-  44f5fb:	48 89 ca             	mov    rdx,rcx
-  44f5fe:	0f b6 0d 9c 37 05 00 	movzx  ecx,BYTE PTR [rip+0x5379c]        # 4a2da1 <NIBBLES$+0x1>
-  44f605:	0f 4c d1             	cmovl  edx,ecx
-  44f608:	83 e0 7f             	and    eax,0x7f
-  44f60b:	c1 e2 07             	shl    edx,0x7
-  44f60e:	09 d0                	or     eax,edx
-  44f610:	88 03                	mov    BYTE PTR [rbx],al
+  4128ba:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+;     print #1, strCode: mov(strCode,"")
+  4128c1:	48 89 ef             	mov    rdi,rbp
+  4128c4:	45 31 c0             	xor    r8d,r8d
+  4128c7:	b9 01 00 00 00       	mov    ecx,0x1
 ;end def
-  44f612:	5b                   	pop    rbx
-  44f613:	c3                   	ret    
-  44f614:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44f61b:	00 00 00 00 
-  44f61f:	90                   	nop
-
-000000000044f620 <INS_EOR>:
-;def INS_EOR(byval Cpu as CPU6510_T)
-  44f620:	53                   	push   rbx
-;  Cpu->A=Cpu->A xor Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f621:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44f625:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_EOR(byval Cpu as CPU6510_T)
-  44f629:	48 89 fb             	mov    rbx,rdi
-;  Cpu->A=Cpu->A xor Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f62c:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f630:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44f634:	e8 37 fc ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  Cpu->F.z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f639:	0f b6 0d 60 37 05 00 	movzx  ecx,BYTE PTR [rip+0x53760]        # 4a2da0 <NIBBLES$>
-;  Cpu->A=Cpu->A xor Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f640:	32 43 01             	xor    al,BYTE PTR [rbx+0x1]
-  44f643:	88 43 01             	mov    BYTE PTR [rbx+0x1],al
-;  Cpu->F.z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f646:	0f b6 15 54 37 05 00 	movzx  edx,BYTE PTR [rip+0x53754]        # 4a2da1 <NIBBLES$+0x1>
-  44f64d:	38 c8                	cmp    al,cl
-;  Cpu->F.n=iif(Cpu->sA<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f64f:	48 0f be c0          	movsx  rax,al
-;  Cpu->F.z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f653:	0f 44 ca             	cmove  ecx,edx
-  44f656:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-  44f659:	01 c9                	add    ecx,ecx
-  44f65b:	83 e2 fd             	and    edx,0xfffffffd
-  44f65e:	83 e1 02             	and    ecx,0x2
-  44f661:	09 ca                	or     edx,ecx
-  44f663:	88 13                	mov    BYTE PTR [rbx],dl
-;  Cpu->F.n=iif(Cpu->sA<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f665:	0f b6 35 34 37 05 00 	movzx  esi,BYTE PTR [rip+0x53734]        # 4a2da0 <NIBBLES$>
-  44f66c:	48 39 f0             	cmp    rax,rsi
-  44f66f:	0f b6 05 2b 37 05 00 	movzx  eax,BYTE PTR [rip+0x5372b]        # 4a2da1 <NIBBLES$+0x1>
-  44f676:	48 89 f1             	mov    rcx,rsi
-  44f679:	0f 4c c8             	cmovl  ecx,eax
-  44f67c:	83 e2 7f             	and    edx,0x7f
-  44f67f:	c1 e1 07             	shl    ecx,0x7
-  44f682:	09 ca                	or     edx,ecx
-  44f684:	88 13                	mov    BYTE PTR [rbx],dl
+  4128cc:	5b                   	pop    rbx
+;     print #1, strCode: mov(strCode,"")
+  4128cd:	48 8d 15 13 ab 06 00 	lea    rdx,[rip+0x6ab13]        # 47d3e7 <_IO_stdin_used+0x3e7>
 ;end def
-  44f686:	5b                   	pop    rbx
-  44f687:	c3                   	ret    
-  44f688:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  44f68f:	00 
-
-000000000044f690 <INS_LDA>:
-;def INS_LDA(byval Cpu as CPU6510_T)
-  44f690:	53                   	push   rbx
-;  Cpu->A  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f691:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44f695:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_LDA(byval Cpu as CPU6510_T)
-  44f699:	48 89 fb             	mov    rbx,rdi
-;  Cpu->A  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f69c:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f6a0:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44f6a4:	e8 c7 fb ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  Cpu->F.Z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f6a9:	0f b6 0d f0 36 05 00 	movzx  ecx,BYTE PTR [rip+0x536f0]        # 4a2da0 <NIBBLES$>
-;  Cpu->A  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f6b0:	88 43 01             	mov    BYTE PTR [rbx+0x1],al
-;  Cpu->F.Z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f6b3:	0f b6 15 e7 36 05 00 	movzx  edx,BYTE PTR [rip+0x536e7]        # 4a2da1 <NIBBLES$+0x1>
-  44f6ba:	38 c1                	cmp    cl,al
-;  Cpu->F.N=iif(Cpu->sA<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f6bc:	48 0f be c0          	movsx  rax,al
-;  Cpu->F.Z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f6c0:	0f 44 ca             	cmove  ecx,edx
-  44f6c3:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-  44f6c6:	01 c9                	add    ecx,ecx
-  44f6c8:	83 e2 fd             	and    edx,0xfffffffd
-  44f6cb:	83 e1 02             	and    ecx,0x2
-  44f6ce:	09 ca                	or     edx,ecx
-  44f6d0:	88 13                	mov    BYTE PTR [rbx],dl
-;  Cpu->F.N=iif(Cpu->sA<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f6d2:	0f b6 35 c7 36 05 00 	movzx  esi,BYTE PTR [rip+0x536c7]        # 4a2da0 <NIBBLES$>
-  44f6d9:	48 39 f0             	cmp    rax,rsi
-  44f6dc:	0f b6 05 be 36 05 00 	movzx  eax,BYTE PTR [rip+0x536be]        # 4a2da1 <NIBBLES$+0x1>
-  44f6e3:	48 89 f1             	mov    rcx,rsi
-  44f6e6:	0f 4c c8             	cmovl  ecx,eax
-  44f6e9:	83 e2 7f             	and    edx,0x7f
-  44f6ec:	c1 e1 07             	shl    ecx,0x7
-  44f6ef:	09 ca                	or     edx,ecx
-  44f6f1:	88 13                	mov    BYTE PTR [rbx],dl
+  4128d4:	5d                   	pop    rbp
+;     print #1, strCode: mov(strCode,"")
+  4128d5:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
 ;end def
-  44f6f3:	5b                   	pop    rbx
-  44f6f4:	c3                   	ret    
-  44f6f5:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44f6fc:	00 00 00 00 
-
-000000000044f700 <INS_LDX>:
-;def INS_LDX(byval Cpu as CPU6510_T)
-  44f700:	53                   	push   rbx
-;  Cpu->X  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f701:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44f705:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_LDX(byval Cpu as CPU6510_T)
-  44f709:	48 89 fb             	mov    rbx,rdi
-;  Cpu->X  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f70c:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f710:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44f714:	e8 57 fb ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  Cpu->F.Z=iif(Cpu->X =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f719:	0f b6 0d 80 36 05 00 	movzx  ecx,BYTE PTR [rip+0x53680]        # 4a2da0 <NIBBLES$>
-;  Cpu->X  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f720:	88 43 02             	mov    BYTE PTR [rbx+0x2],al
-;  Cpu->F.Z=iif(Cpu->X =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f723:	0f b6 15 77 36 05 00 	movzx  edx,BYTE PTR [rip+0x53677]        # 4a2da1 <NIBBLES$+0x1>
-  44f72a:	38 c1                	cmp    cl,al
-;  Cpu->F.N=iif(Cpu->sX<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f72c:	48 0f be c0          	movsx  rax,al
-;  Cpu->F.Z=iif(Cpu->X =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f730:	0f 44 ca             	cmove  ecx,edx
-  44f733:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-  44f736:	01 c9                	add    ecx,ecx
-  44f738:	83 e2 fd             	and    edx,0xfffffffd
-  44f73b:	83 e1 02             	and    ecx,0x2
-  44f73e:	09 ca                	or     edx,ecx
-  44f740:	88 13                	mov    BYTE PTR [rbx],dl
-;  Cpu->F.N=iif(Cpu->sX<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f742:	0f b6 35 57 36 05 00 	movzx  esi,BYTE PTR [rip+0x53657]        # 4a2da0 <NIBBLES$>
-  44f749:	48 39 f0             	cmp    rax,rsi
-  44f74c:	0f b6 05 4e 36 05 00 	movzx  eax,BYTE PTR [rip+0x5364e]        # 4a2da1 <NIBBLES$+0x1>
-  44f753:	48 89 f1             	mov    rcx,rsi
-  44f756:	0f 4c c8             	cmovl  ecx,eax
-  44f759:	83 e2 7f             	and    edx,0x7f
-  44f75c:	c1 e1 07             	shl    ecx,0x7
-  44f75f:	09 ca                	or     edx,ecx
-  44f761:	88 13                	mov    BYTE PTR [rbx],dl
+  4128dc:	41 5c                	pop    r12
+  4128de:	41 5d                	pop    r13
+  4128e0:	41 5e                	pop    r14
+  4128e2:	41 5f                	pop    r15
+;     print #1, strCode: mov(strCode,"")
+  4128e4:	e9 37 27 06 00       	jmp    475020 <fb_StrAssign>
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  4128e9:	f2 0f 5c c1          	subsd  xmm0,xmm1
+  4128ed:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  4128f2:	48 0f ba f8 3f       	btc    rax,0x3f
+  4128f7:	e9 47 fa ff ff       	jmp    412343 <MEMORY_T::POKE64(double, double)+0x8a73>
+;		   case peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
+  4128fc:	0f b6 1d 86 e4 09 00 	movzx  ebx,BYTE PTR [rip+0x9e486]        # 4b0d89 <NIBBLES$+0x9>
+  412903:	89 d1                	mov    ecx,edx
+  412905:	66 0f ef c0          	pxor   xmm0,xmm0
+  412909:	48 d3 e3             	shl    rbx,cl
+  41290c:	48 89 d9             	mov    rcx,rbx
+  41290f:	48 01 c1             	add    rcx,rax
+  412912:	f2 48 0f 2a c1       	cvtsi2sd xmm0,rcx
+  412917:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41291d:	0f 8a d1 0e 00 00    	jp     4137f4 <MEMORY_T::POKE64(double, double)+0x9f24>
+  412923:	0f 85 cb 0e 00 00    	jne    4137f4 <MEMORY_T::POKE64(double, double)+0x9f24>
+;		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000))
+  412929:	44 0f b6 0d 5b e4 09 	movzx  r9d,BYTE PTR [rip+0x9e45b]        # 4b0d8c <NIBBLES$+0xc>
+  412930:	00 
+  412931:	44 89 d8             	mov    eax,r11d
+  412934:	48 89 f3             	mov    rbx,rsi
+  412937:	66 0f ef c0          	pxor   xmm0,xmm0
+  41293b:	83 e0 3f             	and    eax,0x3f
+  41293e:	44 89 ca             	mov    edx,r9d
+  412941:	83 e2 3f             	and    edx,0x3f
+  412944:	89 d1                	mov    ecx,edx
+  412946:	49 d3 e1             	shl    r9,cl
+  412949:	0f b6 0d 3b e4 09 00 	movzx  ecx,BYTE PTR [rip+0x9e43b]        # 4b0d8b <NIBBLES$+0xb>
+  412950:	4d 01 c8             	add    r8,r9
+  412953:	49 01 c8             	add    r8,rcx
+  412956:	89 c1                	mov    ecx,eax
+  412958:	48 d3 e3             	shl    rbx,cl
+  41295b:	89 d1                	mov    ecx,edx
+  41295d:	48 d3 e6             	shl    rsi,cl
+  412960:	89 c1                	mov    ecx,eax
+  412962:	49 01 d8             	add    r8,rbx
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  412965:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+;		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000))
+  41296a:	48 d3 e7             	shl    rdi,cl
+  41296d:	48 89 f8             	mov    rax,rdi
+  412970:	48 01 f0             	add    rax,rsi
+  412973:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  412978:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  41297d:	f2 42 0f 11 04 c0    	movsd  QWORD PTR [rax+r8*8],xmm0
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  412983:	0f b6 0d fe e3 09 00 	movzx  ecx,BYTE PTR [rip+0x9e3fe]        # 4b0d88 <NIBBLES$+0x8>
+  41298a:	0f b6 05 f0 e3 09 00 	movzx  eax,BYTE PTR [rip+0x9e3f0]        # 4b0d81 <NIBBLES$+0x1>
+  412991:	0f b6 35 f4 e3 09 00 	movzx  esi,BYTE PTR [rip+0x9e3f4]        # 4b0d8c <NIBBLES$+0xc>
+  412998:	48 d3 e0             	shl    rax,cl
+  41299b:	48 89 c2             	mov    rdx,rax
+  41299e:	89 f1                	mov    ecx,esi
+  4129a0:	40 0f b6 c6          	movzx  eax,sil
+  4129a4:	48 d3 e0             	shl    rax,cl
+  4129a7:	0f b6 0d d6 e3 09 00 	movzx  ecx,BYTE PTR [rip+0x9e3d6]        # 4b0d84 <NIBBLES$+0x4>
+  4129ae:	48 01 c2             	add    rdx,rax
+  4129b1:	0f b6 05 d3 e3 09 00 	movzx  eax,BYTE PTR [rip+0x9e3d3]        # 4b0d8b <NIBBLES$+0xb>
+  4129b8:	48 01 c2             	add    rdx,rax
+  4129bb:	0f b6 05 c0 e3 09 00 	movzx  eax,BYTE PTR [rip+0x9e3c0]        # 4b0d82 <NIBBLES$+0x2>
+  4129c2:	48 d3 e0             	shl    rax,cl
+  4129c5:	48 01 d0             	add    rax,rdx
+  4129c8:	f2 0f 10 04 c3       	movsd  xmm0,QWORD PTR [rbx+rax*8]
+  4129cd:	e8 8e 29 ff ff       	call   405360 <nearbyint@plt>
+  4129d2:	f2 0f 10 0d a6 ea 06 	movsd  xmm1,QWORD PTR [rip+0x6eaa6]        # 481480 <_IO_stdin_used+0x4480>
+  4129d9:	00 
+  4129da:	66 0f 2f c1          	comisd xmm0,xmm1
+  4129de:	0f 83 cd 12 00 00    	jae    413cb1 <MEMORY_T::POKE64(double, double)+0xa3e1>
+  4129e4:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  4129e9:	0f b6 c4             	movzx  eax,ah
+  4129ec:	66 0f ef c0          	pxor   xmm0,xmm0
+  4129f0:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4129f5:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4129fa:	f2 0f 11 80 40 14 00 	movsd  QWORD PTR [rax+0x1440],xmm0
+  412a01:	00 
+;		   case peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)): 
+  412a02:	e9 e9 8f ff ff       	jmp    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;   poke64(49158,&H00):poke64(49159,&H00):poke64(49160,&H66)
+  412a07:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412a0c:	f2 0f 10 05 24 eb 06 	movsd  xmm0,QWORD PTR [rip+0x6eb24]        # 481538 <_IO_stdin_used+0x4538>
+  412a13:	00 
+  412a14:	66 0f ef c9          	pxor   xmm1,xmm1
+  412a18:	e8 b3 6e ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  412a1d:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412a22:	66 0f ef c9          	pxor   xmm1,xmm1
+  412a26:	f2 0f 10 05 12 eb 06 	movsd  xmm0,QWORD PTR [rip+0x6eb12]        # 481540 <_IO_stdin_used+0x4540>
+  412a2d:	00 
+  412a2e:	e8 9d 6e ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  412a33:	f2 0f 10 0d fd e9 06 	movsd  xmm1,QWORD PTR [rip+0x6e9fd]        # 481438 <_IO_stdin_used+0x4438>
+  412a3a:	00 
+  412a3b:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412a40:	f2 0f 10 05 00 eb 06 	movsd  xmm0,QWORD PTR [rip+0x6eb00]        # 481548 <_IO_stdin_used+0x4548>
+  412a47:	00 
+  412a48:	e8 83 6e ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L2086
+  412a4d:	e9 9e 8f ff ff       	jmp    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;   poke64(49154d,&H00):poke64(49155d,&H66):poke64(49156d,&H33)
+  412a52:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412a57:	f2 0f 10 05 c1 e9 06 	movsd  xmm0,QWORD PTR [rip+0x6e9c1]        # 481420 <_IO_stdin_used+0x4420>
+  412a5e:	00 
+  412a5f:	66 0f ef c9          	pxor   xmm1,xmm1
+  412a63:	e8 68 6e ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  412a68:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412a6d:	f2 0f 10 0d c3 e9 06 	movsd  xmm1,QWORD PTR [rip+0x6e9c3]        # 481438 <_IO_stdin_used+0x4438>
+  412a74:	00 
+  412a75:	f2 0f 10 05 ab e9 06 	movsd  xmm0,QWORD PTR [rip+0x6e9ab]        # 481428 <_IO_stdin_used+0x4428>
+  412a7c:	00 
+  412a7d:	e8 4e 6e ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  412a82:	f2 0f 10 0d 3e e7 06 	movsd  xmm1,QWORD PTR [rip+0x6e73e]        # 4811c8 <_IO_stdin_used+0x41c8>
+  412a89:	00 
+  412a8a:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412a8f:	f2 0f 10 05 99 e9 06 	movsd  xmm0,QWORD PTR [rip+0x6e999]        # 481430 <_IO_stdin_used+0x4430>
+  412a96:	00 
+  412a97:	e8 34 6e ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L931
+  412a9c:	e9 e7 8b ff ff       	jmp    40b688 <MEMORY_T::POKE64(double, double)+0x1db8>
+;   poke64(49154d,&H00):poke64(49155d,&H66):poke64(49156d,&H66)
+  412aa1:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412aa6:	f2 0f 10 05 72 e9 06 	movsd  xmm0,QWORD PTR [rip+0x6e972]        # 481420 <_IO_stdin_used+0x4420>
+  412aad:	00 
+  412aae:	66 0f ef c9          	pxor   xmm1,xmm1
+  412ab2:	e8 19 6e ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  412ab7:	48 8b 05 7a e9 06 00 	mov    rax,QWORD PTR [rip+0x6e97a]        # 481438 <_IO_stdin_used+0x4438>
+  412abe:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412ac3:	f2 0f 10 05 5d e9 06 	movsd  xmm0,QWORD PTR [rip+0x6e95d]        # 481428 <_IO_stdin_used+0x4428>
+  412aca:	00 
+  412acb:	66 48 0f 6e c8       	movq   xmm1,rax
+  412ad0:	e8 fb 6d ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  412ad5:	48 8b 05 5c e9 06 00 	mov    rax,QWORD PTR [rip+0x6e95c]        # 481438 <_IO_stdin_used+0x4438>
+  412adc:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412ae1:	f2 0f 10 05 47 e9 06 	movsd  xmm0,QWORD PTR [rip+0x6e947]        # 481430 <_IO_stdin_used+0x4430>
+  412ae8:	00 
+  412ae9:	66 48 0f 6e c8       	movq   xmm1,rax
+  412aee:	e8 dd 6d ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L931
+  412af3:	e9 90 8b ff ff       	jmp    40b688 <MEMORY_T::POKE64(double, double)+0x1db8>
+;      mov(xs,adr mod      (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)))):mov(xs shl,peek(ubyte,@nibbles(&B0011))):mov(xs add,(((peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0001))) add peek(ubyte,@nibbles(&B0111))) add 3.5d))
+  412af8:	66 49 0f 6e c5       	movq   xmm0,r13
+  412afd:	e8 5e 28 ff ff       	call   405360 <nearbyint@plt>
+  412b02:	0f b6 05 79 e2 09 00 	movzx  eax,BYTE PTR [rip+0x9e279]        # 4b0d82 <NIBBLES$+0x2>
+  412b09:	44 89 e1             	mov    ecx,r12d
+  412b0c:	66 0f ef d2          	pxor   xmm2,xmm2
+  412b10:	f2 48 0f 2c f0       	cvttsd2si rsi,xmm0
+  412b15:	44 0f b6 25 66 e2 09 	movzx  r12d,BYTE PTR [rip+0x9e266]        # 4b0d83 <NIBBLES$+0x3>
+  412b1c:	00 
+  412b1d:	66 0f ef c0          	pxor   xmm0,xmm0
+  412b21:	48 d3 e0             	shl    rax,cl
+  412b24:	0f b6 0d 56 e2 09 00 	movzx  ecx,BYTE PTR [rip+0x9e256]        # 4b0d81 <NIBBLES$+0x1>
+  412b2b:	48 89 c2             	mov    rdx,rax
+  412b2e:	0f b6 05 53 e2 09 00 	movzx  eax,BYTE PTR [rip+0x9e253]        # 4b0d88 <NIBBLES$+0x8>
+  412b35:	41 83 e4 3f          	and    r12d,0x3f
+  412b39:	48 01 d0             	add    rax,rdx
+  412b3c:	48 89 04 24          	mov    QWORD PTR [rsp],rax
+  412b40:	48 89 f0             	mov    rax,rsi
+  412b43:	48 99                	cqo    
+  412b45:	48 f7 3c 24          	idiv   QWORD PTR [rsp]
+  412b49:	49 89 c5             	mov    r13,rax
+  412b4c:	48 89 e8             	mov    rax,rbp
+  412b4f:	48 d3 e0             	shl    rax,cl
+  412b52:	44 89 e1             	mov    ecx,r12d
+  412b55:	48 01 e8             	add    rax,rbp
+;      do until logic_and(mov(y,peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))))),mov(x,peek(double,@mem64(peek(ubyte,@nibbles(&B1100))   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))))))
+  412b58:	31 ed                	xor    ebp,ebp
+;      mov(xs,adr mod      (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)))):mov(xs shl,peek(ubyte,@nibbles(&B0011))):mov(xs add,(((peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0001))) add peek(ubyte,@nibbles(&B0111))) add 3.5d))
+  412b5a:	f2 48 0f 2a d0       	cvtsi2sd xmm2,rax
+  412b5f:	48 89 d0             	mov    rax,rdx
+  412b62:	48 d3 e0             	shl    rax,cl
+  412b65:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  412b6a:	f2 0f 11 14 24       	movsd  QWORD PTR [rsp],xmm2
+  412b6f:	f2 0f 58 c2          	addsd  xmm0,xmm2
+  412b73:	f2 0f 58 05 65 ee 06 	addsd  xmm0,QWORD PTR [rip+0x6ee65]        # 4819e0 <_IO_stdin_used+0x49e0>
+  412b7a:	00 
+  412b7b:	e8 e0 27 ff ff       	call   405360 <nearbyint@plt>
+;      mov(ys,adr idiv     (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)))):mov(ys shl,peek(ubyte,@nibbles(&B0011))):mov(ys add,(((peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0001))) add peek(ubyte,@nibbles(&B0111))) add 3.5d))
+  412b80:	44 89 e1             	mov    ecx,r12d
+;      mov(xs,adr mod      (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)))):mov(xs shl,peek(ubyte,@nibbles(&B0011))):mov(xs add,(((peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0001))) add peek(ubyte,@nibbles(&B0111))) add 3.5d))
+  412b83:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+;      mov(ys,adr idiv     (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)))):mov(ys shl,peek(ubyte,@nibbles(&B0011))):mov(ys add,(((peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0001))) add peek(ubyte,@nibbles(&B0111))) add 3.5d))
+  412b88:	66 0f ef c0          	pxor   xmm0,xmm0
+;      mov(xs,adr mod      (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)))):mov(xs shl,peek(ubyte,@nibbles(&B0011))):mov(xs add,(((peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0001))) add peek(ubyte,@nibbles(&B0111))) add 3.5d))
+  412b8c:	48 89 05 cd e0 07 00 	mov    QWORD PTR [rip+0x7e0cd],rax        # 490c60 <XS$>
+;      mov(ys,adr idiv     (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)))):mov(ys shl,peek(ubyte,@nibbles(&B0011))):mov(ys add,(((peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0001))) add peek(ubyte,@nibbles(&B0111))) add 3.5d))
+  412b93:	4c 89 e8             	mov    rax,r13
+  412b96:	48 d3 e0             	shl    rax,cl
+  412b99:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  412b9e:	f2 0f 58 04 24       	addsd  xmm0,QWORD PTR [rsp]
+  412ba3:	f2 0f 58 05 35 ee 06 	addsd  xmm0,QWORD PTR [rip+0x6ee35]        # 4819e0 <_IO_stdin_used+0x49e0>
+  412baa:	00 
+  412bab:	e8 b0 27 ff ff       	call   405360 <nearbyint@plt>
+;      mov(y,0d):mov(x,     peek(ubyte,@nibbles(&B0000)))
+  412bb0:	4c 89 35 b9 e0 07 00 	mov    QWORD PTR [rip+0x7e0b9],r14        # 490c70 <X$>
+  412bb7:	44 0f b6 05 ca e1 09 	movzx  r8d,BYTE PTR [rip+0x9e1ca]        # 4b0d89 <NIBBLES$+0x9>
+  412bbe:	00 
+  412bbf:	48 c7 05 9e e0 07 00 	mov    QWORD PTR [rip+0x7e09e],0x0        # 490c68 <Y$>
+  412bc6:	00 00 00 00 
+;      mov(ys,adr idiv     (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)))):mov(ys shl,peek(ubyte,@nibbles(&B0011))):mov(ys add,(((peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0001))) add peek(ubyte,@nibbles(&B0111))) add 3.5d))
+  412bca:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  412bcf:	48 89 05 82 e0 07 00 	mov    QWORD PTR [rip+0x7e082],rax        # 490c58 <YS$>
+;      do until logic_and(mov(y,peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))))),mov(x,peek(double,@mem64(peek(ubyte,@nibbles(&B1100))   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))))))
+  412bd6:	44 0f b6 54 24 60    	movzx  r10d,BYTE PTR [rsp+0x60]
+  412bdc:	44 0f b6 4c 24 40    	movzx  r9d,BYTE PTR [rsp+0x40]
+  412be2:	48 89 d8             	mov    rax,rbx
+  412be5:	66 0f ef c0          	pxor   xmm0,xmm0
+  412be9:	0f b6 4c 24 60       	movzx  ecx,BYTE PTR [rsp+0x60]
+  412bee:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+  412bf3:	41 83 e1 3f          	and    r9d,0x3f
+  412bf7:	4c 89 d7             	mov    rdi,r10
+  412bfa:	4c 8b 1d 67 e0 07 00 	mov    r11,QWORD PTR [rip+0x7e067]        # 490c68 <Y$>
+  412c01:	48 d3 e7             	shl    rdi,cl
+  412c04:	44 89 c9             	mov    ecx,r9d
+  412c07:	48 d3 e0             	shl    rax,cl
+  412c0a:	f2 49 0f 2a c3       	cvtsi2sd xmm0,r11
+  412c0f:	48 8b 0d 5a e0 07 00 	mov    rcx,QWORD PTR [rip+0x7e05a]        # 490c70 <X$>
+  412c16:	48 8d 34 38          	lea    rsi,[rax+rdi*1]
+  412c1a:	48 8d 05 69 e1 09 00 	lea    rax,[rip+0x9e169]        # 4b0d8a <NIBBLES$+0xa>
+  412c21:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  412c24:	48 01 f0             	add    rax,rsi
+  412c27:	66 0f 2e 04 c3       	ucomisd xmm0,QWORD PTR [rbx+rax*8]
+  412c2c:	66 0f ef c0          	pxor   xmm0,xmm0
+  412c30:	f2 48 0f 2a c1       	cvtsi2sd xmm0,rcx
+  412c35:	0f 9b c0             	setnp  al
+  412c38:	0f b6 c0             	movzx  eax,al
+  412c3b:	0f 45 c5             	cmovne eax,ebp
+  412c3e:	f7 d8                	neg    eax
+  412c40:	89 c2                	mov    edx,eax
+  412c42:	49 8d 04 30          	lea    rax,[r8+rsi*1]
+  412c46:	66 0f 2e 04 c3       	ucomisd xmm0,QWORD PTR [rbx+rax*8]
+  412c4b:	0f 9b c0             	setnp  al
+  412c4e:	0f b6 c0             	movzx  eax,al
+  412c51:	0f 45 c5             	cmovne eax,ebp
+  412c54:	f7 d8                	neg    eax
+  412c56:	85 c2                	test   edx,eax
+  412c58:	0f 85 e9 06 00 00    	jne    413347 <MEMORY_T::POKE64(double, double)+0x9a77>
+;          mov(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))),(((xs add x) mul peek(ubyte,@nibbles(&B0101))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011))))))
+  412c5e:	48 8b 1d fb df 07 00 	mov    rbx,QWORD PTR [rip+0x7dffb]        # 490c60 <XS$>
+  412c65:	4c 89 d0             	mov    rax,r10
+  412c68:	66 0f ef c0          	pxor   xmm0,xmm0
+;          mov(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))),(((ys add y) shl peek(ubyte,@nibbles(&B0010))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100))))))
+  412c6c:	4c 03 1d e5 df 07 00 	add    r11,QWORD PTR [rip+0x7dfe5]        # 490c58 <YS$>
+;          poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)),peek64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))))
+  412c73:	66 0f ef c9          	pxor   xmm1,xmm1
+;          mov(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))),(((xs add x) mul peek(ubyte,@nibbles(&B0101))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011))))))
+  412c77:	48 01 cb             	add    rbx,rcx
+  412c7a:	44 89 c9             	mov    ecx,r9d
+  412c7d:	48 d3 e0             	shl    rax,cl
+  412c80:	48 8d 14 38          	lea    rdx,[rax+rdi*1]
+  412c84:	48 8d 05 00 e1 09 00 	lea    rax,[rip+0x9e100]        # 4b0d8b <NIBBLES$+0xb>
+  412c8b:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  412c8e:	48 8d 0c 02          	lea    rcx,[rdx+rax*1]
+  412c92:	48 8d 05 ea e0 09 00 	lea    rax,[rip+0x9e0ea]        # 4b0d83 <NIBBLES$+0x3>
+  412c99:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  412c9c:	48 8d 14 30          	lea    rdx,[rax+rsi*1]
+  412ca0:	48 8d 05 de e0 09 00 	lea    rax,[rip+0x9e0de]        # 4b0d85 <NIBBLES$+0x5>
+  412ca7:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  412caa:	48 0f af c3          	imul   rax,rbx
+  412cae:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  412cb3:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  412cb8:	f2 0f 58 04 d0       	addsd  xmm0,QWORD PTR [rax+rdx*8]
+  412cbd:	f2 0f 11 04 c8       	movsd  QWORD PTR [rax+rcx*8],xmm0
+;          mov(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))),(((ys add y) shl peek(ubyte,@nibbles(&B0010))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100))))))
+  412cc2:	48 8d 05 c3 e0 09 00 	lea    rax,[rip+0x9e0c3]        # 4b0d8c <NIBBLES$+0xc>
+  412cc9:	66 0f ef c0          	pxor   xmm0,xmm0
+  412ccd:	0f b6 10             	movzx  edx,BYTE PTR [rax]
+  412cd0:	44 0f b6 40 f8       	movzx  r8d,BYTE PTR [rax-0x8]
+  412cd5:	48 89 d1             	mov    rcx,rdx
+  412cd8:	48 89 d6             	mov    rsi,rdx
+  412cdb:	48 89 d0             	mov    rax,rdx
+  412cde:	48 d3 e6             	shl    rsi,cl
+  412ce1:	44 89 c1             	mov    ecx,r8d
+  412ce4:	83 e1 3f             	and    ecx,0x3f
+  412ce7:	48 d3 e0             	shl    rax,cl
+  412cea:	48 01 f0             	add    rax,rsi
+  412ced:	48 8d 3c 10          	lea    rdi,[rax+rdx*1]
+  412cf1:	48 8d 05 96 e0 09 00 	lea    rax,[rip+0x9e096]        # 4b0d8e <NIBBLES$+0xe>
+  412cf8:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  412cfb:	48 d3 e0             	shl    rax,cl
+  412cfe:	48 8d 14 30          	lea    rdx,[rax+rsi*1]
+  412d02:	41 0f b6 c0          	movzx  eax,r8b
+  412d06:	48 01 c2             	add    rdx,rax
+  412d09:	48 8d 05 72 e0 09 00 	lea    rax,[rip+0x9e072]        # 4b0d82 <NIBBLES$+0x2>
+  412d10:	0f b6 08             	movzx  ecx,BYTE PTR [rax]
+  412d13:	4c 89 d8             	mov    rax,r11
+  412d16:	48 d3 e0             	shl    rax,cl
+  412d19:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  412d1e:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  412d23:	f2 0f 58 04 d0       	addsd  xmm0,QWORD PTR [rax+rdx*8]
+  412d28:	f2 0f 11 04 f8       	movsd  QWORD PTR [rax+rdi*8],xmm0
+;          mov(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110))),(((xs add x) mul peek(ubyte,@nibbles(&B0101))) add peek(ubyte,@nibbles(&B0111))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)))))
+  412d2d:	48 8d 3d 5a e0 09 00 	lea    rdi,[rip+0x9e05a]        # 4b0d8e <NIBBLES$+0xe>
+  412d34:	48 8d 05 51 e0 09 00 	lea    rax,[rip+0x9e051]        # 4b0d8c <NIBBLES$+0xc>
+  412d3b:	66 0f ef c0          	pxor   xmm0,xmm0
+  412d3f:	0f b6 17             	movzx  edx,BYTE PTR [rdi]
+  412d42:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  412d45:	48 83 ef 0a          	sub    rdi,0xa
+  412d49:	0f b6 3f             	movzx  edi,BYTE PTR [rdi]
+  412d4c:	48 89 c1             	mov    rcx,rax
+  412d4f:	48 89 c6             	mov    rsi,rax
+  412d52:	48 d3 e6             	shl    rsi,cl
+  412d55:	89 f9                	mov    ecx,edi
+  412d57:	40 88 3c 24          	mov    BYTE PTR [rsp],dil
+  412d5b:	83 e1 3f             	and    ecx,0x3f
+  412d5e:	48 d3 e0             	shl    rax,cl
+  412d61:	48 01 f0             	add    rax,rsi
+  412d64:	48 8d 3c 10          	lea    rdi,[rax+rdx*1]
+  412d68:	48 89 d0             	mov    rax,rdx
+  412d6b:	48 d3 e0             	shl    rax,cl
+  412d6e:	48 8d 14 30          	lea    rdx,[rax+rsi*1]
+  412d72:	48 8d 05 0a e0 09 00 	lea    rax,[rip+0x9e00a]        # 4b0d83 <NIBBLES$+0x3>
+  412d79:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  412d7c:	48 8d 0c 02          	lea    rcx,[rdx+rax*1]
+  412d80:	48 8d 05 fe df 09 00 	lea    rax,[rip+0x9dffe]        # 4b0d85 <NIBBLES$+0x5>
+  412d87:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  412d8a:	48 0f af c3          	imul   rax,rbx
+;          poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)),peek64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))))
+  412d8e:	48 8d 1d ef df 09 00 	lea    rbx,[rip+0x9dfef]        # 4b0d84 <NIBBLES$+0x4>
+;          mov(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110))),(((xs add x) mul peek(ubyte,@nibbles(&B0101))) add peek(ubyte,@nibbles(&B0111))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)))))
+  412d95:	48 89 c2             	mov    rdx,rax
+  412d98:	48 8d 05 e8 df 09 00 	lea    rax,[rip+0x9dfe8]        # 4b0d87 <NIBBLES$+0x7>
+  412d9f:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  412da2:	48 01 d0             	add    rax,rdx
+  412da5:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  412daa:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  412daf:	f2 0f 58 04 c8       	addsd  xmm0,QWORD PTR [rax+rcx*8]
+  412db4:	f2 0f 11 04 f8       	movsd  QWORD PTR [rax+rdi*8],xmm0
+;          mov(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))),(((ys add y) shl peek(ubyte,@nibbles(&B0010))) add peek(ubyte,@nibbles(&B0100))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)))))
+  412db9:	48 8d 05 c4 df 09 00 	lea    rax,[rip+0x9dfc4]        # 4b0d84 <NIBBLES$+0x4>
+  412dc0:	66 0f ef c0          	pxor   xmm0,xmm0
+  412dc4:	0f b6 48 08          	movzx  ecx,BYTE PTR [rax+0x8]
+  412dc8:	0f b6 38             	movzx  edi,BYTE PTR [rax]
+  412dcb:	0f b6 c1             	movzx  eax,cl
+  412dce:	48 89 c6             	mov    rsi,rax
+  412dd1:	48 d3 e6             	shl    rsi,cl
+  412dd4:	89 f9                	mov    ecx,edi
+  412dd6:	83 e1 3f             	and    ecx,0x3f
+  412dd9:	48 d3 e0             	shl    rax,cl
+  412ddc:	48 8d 14 30          	lea    rdx,[rax+rsi*1]
+  412de0:	48 8d 05 a8 df 09 00 	lea    rax,[rip+0x9dfa8]        # 4b0d8f <NIBBLES$+0xf>
+  412de7:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  412dea:	4c 8d 04 02          	lea    r8,[rdx+rax*1]
+  412dee:	48 8d 05 99 df 09 00 	lea    rax,[rip+0x9df99]        # 4b0d8e <NIBBLES$+0xe>
+  412df5:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  412df8:	48 d3 e0             	shl    rax,cl
+  412dfb:	48 01 f0             	add    rax,rsi
+  412dfe:	48 8d 14 38          	lea    rdx,[rax+rdi*1]
+  412e02:	48 8d 05 79 df 09 00 	lea    rax,[rip+0x9df79]        # 4b0d82 <NIBBLES$+0x2>
+  412e09:	0f b6 08             	movzx  ecx,BYTE PTR [rax]
+  412e0c:	4c 89 d8             	mov    rax,r11
+  412e0f:	48 d3 e0             	shl    rax,cl
+  412e12:	48 01 f8             	add    rax,rdi
+  412e15:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  412e1a:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  412e1f:	f2 0f 58 04 d0       	addsd  xmm0,QWORD PTR [rax+rdx*8]
+  412e24:	f2 42 0f 11 04 c0    	movsd  QWORD PTR [rax+r8*8],xmm0
+;          poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)),peek64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))))
+  412e2a:	48 8d 05 5b df 09 00 	lea    rax,[rip+0x9df5b]        # 4b0d8c <NIBBLES$+0xc>
+  412e31:	0f b6 0b             	movzx  ecx,BYTE PTR [rbx]
+  412e34:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412e39:	0f b6 30             	movzx  esi,BYTE PTR [rax]
+  412e3c:	48 83 c0 03          	add    rax,0x3
+  412e40:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  412e43:	48 d3 e0             	shl    rax,cl
+  412e46:	89 f1                	mov    ecx,esi
+  412e48:	48 89 c2             	mov    rdx,rax
+  412e4b:	48 89 f0             	mov    rax,rsi
+  412e4e:	48 d3 e0             	shl    rax,cl
+  412e51:	48 01 d0             	add    rax,rdx
+  412e54:	48 01 f0             	add    rax,rsi
+  412e57:	f2 48 0f 2a c8       	cvtsi2sd xmm1,rax
+  412e5c:	66 0f 28 c1          	movapd xmm0,xmm1
+  412e60:	66 48 0f 7e cb       	movq   rbx,xmm1
+  412e65:	e8 b6 68 ff ff       	call   409720 <MEMORY_T::PEEK64(double)>
+  412e6a:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412e6f:	66 0f 28 c8          	movapd xmm1,xmm0
+  412e73:	66 48 0f 6e c3       	movq   xmm0,rbx
+;        mov(x add,peek(ubyte,@nibbles(&B0001))): if x gt peek(double,@mem64(peek(ubyte,@nibbles(&B1100))   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)))) then 
+  412e78:	48 8d 1d 0d df 09 00 	lea    rbx,[rip+0x9df0d]        # 4b0d8c <NIBBLES$+0xc>
+;          poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)),peek64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))))
+  412e7f:	e8 4c 6a ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;        mov(x add,peek(ubyte,@nibbles(&B0001))): if x gt peek(double,@mem64(peek(ubyte,@nibbles(&B1100))   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)))) then 
+  412e84:	48 8d 05 f6 de 09 00 	lea    rax,[rip+0x9def6]        # 4b0d81 <NIBBLES$+0x1>
+  412e8b:	0f b6 1b             	movzx  ebx,BYTE PTR [rbx]
+  412e8e:	66 0f ef c0          	pxor   xmm0,xmm0
+  412e92:	0f b6 30             	movzx  esi,BYTE PTR [rax]
+  412e95:	48 8b 05 d4 dd 07 00 	mov    rax,QWORD PTR [rip+0x7ddd4]        # 490c70 <X$>
+  412e9c:	48 8d 3d e6 de 09 00 	lea    rdi,[rip+0x9dee6]        # 4b0d89 <NIBBLES$+0x9>
+  412ea3:	88 5c 24 60          	mov    BYTE PTR [rsp+0x60],bl
+  412ea7:	44 0f b6 07          	movzx  r8d,BYTE PTR [rdi]
+  412eab:	48 01 f0             	add    rax,rsi
+  412eae:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412eb3:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  412eb8:	48 89 05 b1 dd 07 00 	mov    QWORD PTR [rip+0x7ddb1],rax        # 490c70 <X$>
+  412ebf:	48 8d 05 c8 de 09 00 	lea    rax,[rip+0x9dec8]        # 4b0d8e <NIBBLES$+0xe>
+  412ec6:	0f b6 18             	movzx  ebx,BYTE PTR [rax]
+  412ec9:	48 83 e8 0a          	sub    rax,0xa
+  412ecd:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  412ed0:	48 89 da             	mov    rdx,rbx
+  412ed3:	89 c1                	mov    ecx,eax
+  412ed5:	88 44 24 40          	mov    BYTE PTR [rsp+0x40],al
+  412ed9:	0f b6 44 24 60       	movzx  eax,BYTE PTR [rsp+0x60]
+  412ede:	48 d3 e2             	shl    rdx,cl
+  412ee1:	0f b6 4c 24 60       	movzx  ecx,BYTE PTR [rsp+0x60]
+  412ee6:	48 d3 e0             	shl    rax,cl
+  412ee9:	48 01 d0             	add    rax,rdx
+  412eec:	4c 01 c0             	add    rax,r8
+  412eef:	f2 0f 10 0c c7       	movsd  xmm1,QWORD PTR [rdi+rax*8]
+  412ef4:	66 0f 2f c8          	comisd xmm1,xmm0
+  412ef8:	0f 83 d8 fc ff ff    	jae    412bd6 <MEMORY_T::POKE64(double, double)+0x9306>
+;                                         mov(x,    peek(ubyte,@nibbles(&B0000))): mov(y add,peek(ubyte,@nibbles(&B0001)))
+  412efe:	48 8d 05 7b de 09 00 	lea    rax,[rip+0x9de7b]        # 4b0d80 <NIBBLES$>
+  412f05:	48 01 35 5c dd 07 00 	add    QWORD PTR [rip+0x7dd5c],rsi        # 490c68 <Y$>
+  412f0c:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+;                                         mov(c add,peek(ubyte,@nibbles(&B0001)))
+  412f0f:	48 01 35 62 dd 07 00 	add    QWORD PTR [rip+0x7dd62],rsi        # 490c78 <C$>
+;                                         mov(x,    peek(ubyte,@nibbles(&B0000))): mov(y add,peek(ubyte,@nibbles(&B0001)))
+  412f16:	48 89 05 53 dd 07 00 	mov    QWORD PTR [rip+0x7dd53],rax        # 490c70 <X$>
+;                                         mov(c add,peek(ubyte,@nibbles(&B0001)))
+  412f1d:	e9 b4 fc ff ff       	jmp    412bd6 <MEMORY_T::POKE64(double, double)+0x9306>
+;   poke64(49158,&H00):poke64(49159,&H00):poke64(49160,&H99)
+  412f22:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412f27:	f2 0f 10 05 09 e6 06 	movsd  xmm0,QWORD PTR [rip+0x6e609]        # 481538 <_IO_stdin_used+0x4538>
+  412f2e:	00 
+  412f2f:	66 0f ef c9          	pxor   xmm1,xmm1
+  412f33:	e8 98 69 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  412f38:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412f3d:	66 0f ef c9          	pxor   xmm1,xmm1
+  412f41:	f2 0f 10 05 f7 e5 06 	movsd  xmm0,QWORD PTR [rip+0x6e5f7]        # 481540 <_IO_stdin_used+0x4540>
+  412f48:	00 
+  412f49:	e8 82 69 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  412f4e:	f2 0f 10 0d 42 e4 06 	movsd  xmm1,QWORD PTR [rip+0x6e442]        # 481398 <_IO_stdin_used+0x4398>
+  412f55:	00 
+  412f56:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  412f5b:	f2 0f 10 05 e5 e5 06 	movsd  xmm0,QWORD PTR [rip+0x6e5e5]        # 481548 <_IO_stdin_used+0x4548>
+  412f62:	00 
+  412f63:	e8 68 69 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L2086
+  412f68:	e9 83 8a ff ff       	jmp    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;     screen 0: shell "wine " + strCode: strCode = ""
+  412f6d:	45 31 c0             	xor    r8d,r8d
+  412f70:	31 c9                	xor    ecx,ecx
+  412f72:	31 d2                	xor    edx,edx
+  412f74:	be 08 00 00 00       	mov    esi,0x8
+  412f79:	31 ff                	xor    edi,edi
+  412f7b:	4c 8d 25 7e dc 07 00 	lea    r12,[rip+0x7dc7e]        # 490c00 <STRCODE$>
+  412f82:	48 8d 2d 5e a4 06 00 	lea    rbp,[rip+0x6a45e]        # 47d3e7 <_IO_stdin_used+0x3e7>
+  412f89:	e8 82 dc 04 00       	call   460c10 <fb_GfxScreen>
+  412f8e:	66 0f ef c0          	pxor   xmm0,xmm0
+  412f92:	4c 89 e1             	mov    rcx,r12
+  412f95:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
+  412f9c:	ba 06 00 00 00       	mov    edx,0x6
+  412fa1:	48 8d 35 25 da 06 00 	lea    rsi,[rip+0x6da25]        # 4809cd <_IO_stdin_used+0x39cd>
+  412fa8:	48 8d bc 24 90 01 00 	lea    rdi,[rsp+0x190]
+  412faf:	00 
+  412fb0:	0f 29 84 24 90 01 00 	movaps XMMWORD PTR [rsp+0x190],xmm0
+  412fb7:	00 
+  412fb8:	48 c7 84 24 a0 01 00 	mov    QWORD PTR [rsp+0x1a0],0x0
+  412fbf:	00 00 00 00 00 
+  412fc4:	e8 a7 26 06 00       	call   475670 <fb_StrConcat>
+  412fc9:	48 89 c7             	mov    rdi,rax
+  412fcc:	e8 ff 56 06 00       	call   4786d0 <fb_Shell>
+  412fd1:	48 89 ea             	mov    rdx,rbp
+  412fd4:	45 31 c0             	xor    r8d,r8d
+  412fd7:	b9 01 00 00 00       	mov    ecx,0x1
+  412fdc:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
+  412fe3:	4c 89 e7             	mov    rdi,r12
+  412fe6:	e8 35 20 06 00       	call   475020 <fb_StrAssign>
+;     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+  412feb:	45 31 c9             	xor    r9d,r9d
+  412fee:	41 b8 41 00 00 00    	mov    r8d,0x41
+  412ff4:	31 c9                	xor    ecx,ecx
+  412ff6:	ba 20 00 00 00       	mov    edx,0x20
+  412ffb:	be 38 04 00 00       	mov    esi,0x438
+  413000:	bf 80 07 00 00       	mov    edi,0x780
+  413005:	e8 b6 dd 04 00       	call   460dc0 <fb_GfxScreenRes>
+  41300a:	bf 00 00 ff ff       	mov    edi,0xffff0000
+  41300f:	e8 7c eb 05 00       	call   471b90 <fb_Cls>
+;     paint(0,0), rgba(0, 0, 0, 255)
+  413014:	48 89 ef             	mov    rdi,rbp
+  413017:	31 f6                	xor    esi,esi
+  413019:	e8 72 45 06 00       	call   477590 <fb_StrAllocTempDescZEx>
+  41301e:	66 0f ef c9          	pxor   xmm1,xmm1
+  413022:	45 31 c0             	xor    r8d,r8d
+  413025:	31 d2                	xor    edx,edx
+  413027:	48 89 c1             	mov    rcx,rax
+  41302a:	41 b9 04 00 00 40    	mov    r9d,0x40000004
+  413030:	be 00 00 00 ff       	mov    esi,0xff000000
+  413035:	31 ff                	xor    edi,edi
+  413037:	0f 28 c1             	movaps xmm0,xmm1
+  41303a:	e8 c1 b6 04 00       	call   45e700 <fb_GfxPaint>
+;     for offset = &H000 to &H400: poke64(mem64(49451) add offset, 32): next offset 
+  41303f:	f2 0f 10 2d 09 e1 06 	movsd  xmm5,QWORD PTR [rip+0x6e109]        # 481150 <_IO_stdin_used+0x4150>
+  413046:	00 
+  413047:	48 c7 05 ce db 07 00 	mov    QWORD PTR [rip+0x7dbce],0x0        # 490c20 <OFFSET$>
+  41304e:	00 00 00 00 
+  413052:	48 8b 1d 47 ec 06 00 	mov    rbx,QWORD PTR [rip+0x6ec47]        # 481ca0 <_IO_stdin_used+0x4ca0>
+  413059:	48 8b 2d a8 e5 06 00 	mov    rbp,QWORD PTR [rip+0x6e5a8]        # 481608 <_IO_stdin_used+0x4608>
+  413060:	f2 0f 11 6c 24 18    	movsd  QWORD PTR [rsp+0x18],xmm5
+  413066:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  41306b:	66 48 0f 6e cb       	movq   xmm1,rbx
+  413070:	f2 0f 10 80 58 09 06 	movsd  xmm0,QWORD PTR [rax+0x60958]
+  413077:	00 
+  413078:	f2 0f 58 05 a0 db 07 	addsd  xmm0,QWORD PTR [rip+0x7dba0]        # 490c20 <OFFSET$>
+  41307f:	00 
+  413080:	48 89 c7             	mov    rdi,rax
+  413083:	e8 48 68 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  413088:	f2 0f 10 44 24 18    	movsd  xmm0,QWORD PTR [rsp+0x18]
+  41308e:	66 48 0f 6e fd       	movq   xmm7,rbp
+  413093:	f2 0f 58 05 85 db 07 	addsd  xmm0,QWORD PTR [rip+0x7db85]        # 490c20 <OFFSET$>
+  41309a:	00 
+  41309b:	66 0f 2f f8          	comisd xmm7,xmm0
+  41309f:	f2 0f 11 05 79 db 07 	movsd  QWORD PTR [rip+0x7db79],xmm0        # 490c20 <OFFSET$>
+  4130a6:	00 
+  4130a7:	73 bd                	jae    413066 <MEMORY_T::POKE64(double, double)+0x9796>
+  4130a9:	e9 52 93 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;     screen 0: chain strCode: strCode = ""
+  4130ae:	45 31 c0             	xor    r8d,r8d
+  4130b1:	31 c9                	xor    ecx,ecx
+  4130b3:	31 d2                	xor    edx,edx
+  4130b5:	be 08 00 00 00       	mov    esi,0x8
+  4130ba:	31 ff                	xor    edi,edi
+  4130bc:	4c 8d 25 3d db 07 00 	lea    r12,[rip+0x7db3d]        # 490c00 <STRCODE$>
+  4130c3:	48 8d 2d 1d a3 06 00 	lea    rbp,[rip+0x6a31d]        # 47d3e7 <_IO_stdin_used+0x3e7>
+  4130ca:	e8 41 db 04 00       	call   460c10 <fb_GfxScreen>
+  4130cf:	4c 89 e7             	mov    rdi,r12
+  4130d2:	e8 f9 50 06 00       	call   4781d0 <fb_Chain>
+  4130d7:	48 89 ea             	mov    rdx,rbp
+  4130da:	45 31 c0             	xor    r8d,r8d
+  4130dd:	b9 01 00 00 00       	mov    ecx,0x1
+  4130e2:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
+  4130e9:	4c 89 e7             	mov    rdi,r12
+  4130ec:	e8 2f 1f 06 00       	call   475020 <fb_StrAssign>
+;     ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+  4130f1:	45 31 c9             	xor    r9d,r9d
+  4130f4:	41 b8 41 00 00 00    	mov    r8d,0x41
+  4130fa:	31 c9                	xor    ecx,ecx
+  4130fc:	ba 20 00 00 00       	mov    edx,0x20
+  413101:	be 38 04 00 00       	mov    esi,0x438
+  413106:	bf 80 07 00 00       	mov    edi,0x780
+  41310b:	e8 b0 dc 04 00       	call   460dc0 <fb_GfxScreenRes>
+  413110:	bf 00 00 ff ff       	mov    edi,0xffff0000
+  413115:	e8 76 ea 05 00       	call   471b90 <fb_Cls>
+;     paint(0,0), rgba(0, 0, 0, 255)
+  41311a:	48 89 ef             	mov    rdi,rbp
+  41311d:	31 f6                	xor    esi,esi
+  41311f:	e8 6c 44 06 00       	call   477590 <fb_StrAllocTempDescZEx>
+  413124:	66 0f ef c9          	pxor   xmm1,xmm1
+  413128:	45 31 c0             	xor    r8d,r8d
+  41312b:	31 d2                	xor    edx,edx
+  41312d:	48 89 c1             	mov    rcx,rax
+  413130:	41 b9 04 00 00 40    	mov    r9d,0x40000004
+  413136:	be 00 00 00 ff       	mov    esi,0xff000000
+  41313b:	31 ff                	xor    edi,edi
+  41313d:	0f 28 c1             	movaps xmm0,xmm1
+  413140:	e8 bb b5 04 00       	call   45e700 <fb_GfxPaint>
+;     for offset = &H000 to &H400: poke64(mem64(49451) add offset, 32): next offset
+  413145:	f2 0f 10 25 03 e0 06 	movsd  xmm4,QWORD PTR [rip+0x6e003]        # 481150 <_IO_stdin_used+0x4150>
+  41314c:	00 
+  41314d:	48 c7 05 c8 da 07 00 	mov    QWORD PTR [rip+0x7dac8],0x0        # 490c20 <OFFSET$>
+  413154:	00 00 00 00 
+  413158:	48 8b 1d 41 eb 06 00 	mov    rbx,QWORD PTR [rip+0x6eb41]        # 481ca0 <_IO_stdin_used+0x4ca0>
+  41315f:	48 8b 2d a2 e4 06 00 	mov    rbp,QWORD PTR [rip+0x6e4a2]        # 481608 <_IO_stdin_used+0x4608>
+  413166:	f2 0f 11 64 24 18    	movsd  QWORD PTR [rsp+0x18],xmm4
+  41316c:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  413171:	66 48 0f 6e cb       	movq   xmm1,rbx
+  413176:	f2 0f 10 80 58 09 06 	movsd  xmm0,QWORD PTR [rax+0x60958]
+  41317d:	00 
+  41317e:	f2 0f 58 05 9a da 07 	addsd  xmm0,QWORD PTR [rip+0x7da9a]        # 490c20 <OFFSET$>
+  413185:	00 
+  413186:	48 89 c7             	mov    rdi,rax
+  413189:	e8 42 67 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  41318e:	f2 0f 10 44 24 18    	movsd  xmm0,QWORD PTR [rsp+0x18]
+  413194:	66 48 0f 6e f5       	movq   xmm6,rbp
+  413199:	f2 0f 58 05 7f da 07 	addsd  xmm0,QWORD PTR [rip+0x7da7f]        # 490c20 <OFFSET$>
+  4131a0:	00 
+  4131a1:	66 0f 2f f0          	comisd xmm6,xmm0
+  4131a5:	f2 0f 11 05 73 da 07 	movsd  QWORD PTR [rip+0x7da73],xmm0        # 490c20 <OFFSET$>
+  4131ac:	00 
+  4131ad:	73 bd                	jae    41316c <MEMORY_T::POKE64(double, double)+0x989c>
+  4131af:	e9 4c 92 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;          line fgimage,(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))),mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))))-(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110))),mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)))), BF              
+  4131b4:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4131b9:	49 8d 04 34          	lea    rax,[r12+rsi*1]
+  4131bd:	f2 0f 10 04 c7       	movsd  xmm0,QWORD PTR [rdi+rax*8]
+  4131c2:	e8 99 21 ff ff       	call   405360 <nearbyint@plt>
+  4131c7:	66 0f 28 c8          	movapd xmm1,xmm0
+  4131cb:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4131d2:	00 
+  4131d3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4131da:	00 00 
+  4131dc:	0f 85 bc 35 00 00    	jne    41679e <MEMORY_T::POKE64(double, double)+0xcece>
+  4131e2:	49 8d 04 1c          	lea    rax,[r12+rbx*1]
+  4131e6:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+  4131eb:	4b 8d 3c 34          	lea    rdi,[r12+r14*1]
+  4131ef:	45 31 c0             	xor    r8d,r8d
+  4131f2:	66 0f ef c0          	pxor   xmm0,xmm0
+  4131f6:	66 0f ef db          	pxor   xmm3,xmm3
+  4131fa:	66 0f ef d2          	pxor   xmm2,xmm2
+  4131fe:	b9 ff ff 00 00       	mov    ecx,0xffff
+  413203:	f2 42 0f 5a 04 fb    	cvtsd2ss xmm0,QWORD PTR [rbx+r15*8]
+  413209:	f2 0f 5a 1c fb       	cvtsd2ss xmm3,QWORD PTR [rbx+rdi*8]
+  41320e:	f2 0f 5a 14 c3       	cvtsd2ss xmm2,QWORD PTR [rbx+rax*8]
+  413213:	f2 48 0f 2c f1       	cvttsd2si rsi,xmm1
+  413218:	48 89 d8             	mov    rax,rbx
+  41321b:	66 0f ef c9          	pxor   xmm1,xmm1
+  41321f:	ba 02 00 00 00       	mov    edx,0x2
+  413224:	48 8b 9c 24 a0 00 00 	mov    rbx,QWORD PTR [rsp+0xa0]
+  41322b:	00 
+  41322c:	48 8b 3d 8d 66 0b 00 	mov    rdi,QWORD PTR [rip+0xb668d]        # 4c98c0 <FGIMAGE$>
+  413233:	f2 0f 5a 0c d8       	cvtsd2ss xmm1,QWORD PTR [rax+rbx*8]
 ;end def
-  44f763:	5b                   	pop    rbx
-  44f764:	c3                   	ret    
-  44f765:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44f76c:	00 00 00 00 
-
-000000000044f770 <INS_LDY>:
-;def INS_LDY(byval Cpu as CPU6510_T)
-  44f770:	53                   	push   rbx
-;  Cpu->Y  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f771:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44f775:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_LDY(byval Cpu as CPU6510_T)
-  44f779:	48 89 fb             	mov    rbx,rdi
-;  Cpu->Y  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f77c:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f780:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44f784:	e8 e7 fa ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  Cpu->F.Z=iif(Cpu->Y =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f789:	0f b6 0d 10 36 05 00 	movzx  ecx,BYTE PTR [rip+0x53610]        # 4a2da0 <NIBBLES$>
-;  Cpu->Y  =Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f790:	88 43 03             	mov    BYTE PTR [rbx+0x3],al
-;  Cpu->F.Z=iif(Cpu->Y =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f793:	0f b6 15 07 36 05 00 	movzx  edx,BYTE PTR [rip+0x53607]        # 4a2da1 <NIBBLES$+0x1>
-  44f79a:	38 c1                	cmp    cl,al
-;  Cpu->F.N=iif(Cpu->sY<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f79c:	48 0f be c0          	movsx  rax,al
-;  Cpu->F.Z=iif(Cpu->Y =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f7a0:	0f 44 ca             	cmove  ecx,edx
-  44f7a3:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-  44f7a6:	01 c9                	add    ecx,ecx
-  44f7a8:	83 e2 fd             	and    edx,0xfffffffd
-  44f7ab:	83 e1 02             	and    ecx,0x2
-  44f7ae:	09 ca                	or     edx,ecx
-  44f7b0:	88 13                	mov    BYTE PTR [rbx],dl
-;  Cpu->F.N=iif(Cpu->sY<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f7b2:	0f b6 35 e7 35 05 00 	movzx  esi,BYTE PTR [rip+0x535e7]        # 4a2da0 <NIBBLES$>
-  44f7b9:	48 39 f0             	cmp    rax,rsi
-  44f7bc:	0f b6 05 de 35 05 00 	movzx  eax,BYTE PTR [rip+0x535de]        # 4a2da1 <NIBBLES$+0x1>
-  44f7c3:	48 89 f1             	mov    rcx,rsi
-  44f7c6:	0f 4c c8             	cmovl  ecx,eax
-  44f7c9:	83 e2 7f             	and    edx,0x7f
-  44f7cc:	c1 e1 07             	shl    ecx,0x7
-  44f7cf:	09 ca                	or     edx,ecx
-  44f7d1:	88 13                	mov    BYTE PTR [rbx],dl
+  413238:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  41323f:	5b                   	pop    rbx
+  413240:	5d                   	pop    rbp
+  413241:	41 5c                	pop    r12
+  413243:	41 5d                	pop    r13
+  413245:	41 5e                	pop    r14
+  413247:	41 5f                	pop    r15
+;          line fgimage,(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))),mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))))-(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110))),mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)))), BF              
+  413249:	e9 e2 9f 04 00       	jmp    45d230 <fb_GfxLine>
+;          line fgimage,(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))),mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))))-(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110))),mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)))), BF
+  41324e:	48 8b 84 24 90 00 00 	mov    rax,QWORD PTR [rsp+0x90]
+  413255:	00 
+  413256:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  41325b:	4c 01 e0             	add    rax,r12
+  41325e:	f2 0f 10 04 c7       	movsd  xmm0,QWORD PTR [rdi+rax*8]
+  413263:	e8 f8 20 ff ff       	call   405360 <nearbyint@plt>
+  413268:	66 0f 28 c8          	movapd xmm1,xmm0
+  41326c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  413273:	00 
+  413274:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  41327b:	00 00 
+  41327d:	0f 85 01 2c 00 00    	jne    415e84 <MEMORY_T::POKE64(double, double)+0xc5b4>
+  413283:	66 0f ef c0          	pxor   xmm0,xmm0
+  413287:	66 0f ef db          	pxor   xmm3,xmm3
+  41328b:	66 0f ef d2          	pxor   xmm2,xmm2
+  41328f:	45 31 c0             	xor    r8d,r8d
+  413292:	f2 48 0f 2c f1       	cvttsd2si rsi,xmm1
+  413297:	0f b6 05 f1 da 09 00 	movzx  eax,BYTE PTR [rip+0x9daf1]        # 4b0d8f <NIBBLES$+0xf>
+  41329e:	66 0f ef c9          	pxor   xmm1,xmm1
+  4132a2:	b9 ff ff 00 00       	mov    ecx,0xffff
+  4132a7:	ba 02 00 00 00       	mov    edx,0x2
+  4132ac:	4a 8d 3c 20          	lea    rdi,[rax+r12*1]
+  4132b0:	49 8d 04 1c          	lea    rax,[r12+rbx*1]
+  4132b4:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+  4132b9:	f2 42 0f 5a 04 fb    	cvtsd2ss xmm0,QWORD PTR [rbx+r15*8]
+  4132bf:	f2 0f 5a 1c fb       	cvtsd2ss xmm3,QWORD PTR [rbx+rdi*8]
+  4132c4:	f2 0f 5a 14 c3       	cvtsd2ss xmm2,QWORD PTR [rbx+rax*8]
+  4132c9:	48 89 d8             	mov    rax,rbx
+  4132cc:	48 8b 9c 24 a0 00 00 	mov    rbx,QWORD PTR [rsp+0xa0]
+  4132d3:	00 
+  4132d4:	48 8b 3d e5 65 0b 00 	mov    rdi,QWORD PTR [rip+0xb65e5]        # 4c98c0 <FGIMAGE$>
+  4132db:	f2 0f 5a 0c d8       	cvtsd2ss xmm1,QWORD PTR [rax+rbx*8]
 ;end def
-  44f7d3:	5b                   	pop    rbx
-  44f7d4:	c3                   	ret    
-  44f7d5:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44f7dc:	00 00 00 00 
-
-000000000044f7e0 <INS_ORA>:
-;def INS_ORA(byval Cpu as CPU6510_T)
-  44f7e0:	53                   	push   rbx
-;  Cpu->A=Cpu->A or Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f7e1:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44f7e5:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_ORA(byval Cpu as CPU6510_T)
-  44f7e9:	48 89 fb             	mov    rbx,rdi
-;  Cpu->A=Cpu->A or Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f7ec:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f7f0:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44f7f4:	e8 77 fa ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  Cpu->F.z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f7f9:	0f b6 0d a0 35 05 00 	movzx  ecx,BYTE PTR [rip+0x535a0]        # 4a2da0 <NIBBLES$>
-;  Cpu->A=Cpu->A or Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f800:	0a 43 01             	or     al,BYTE PTR [rbx+0x1]
-  44f803:	88 43 01             	mov    BYTE PTR [rbx+0x1],al
-;  Cpu->F.z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f806:	0f b6 15 94 35 05 00 	movzx  edx,BYTE PTR [rip+0x53594]        # 4a2da1 <NIBBLES$+0x1>
-  44f80d:	38 c8                	cmp    al,cl
-;  Cpu->F.n=iif(Cpu->sA<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f80f:	48 0f be c0          	movsx  rax,al
-;  Cpu->F.z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f813:	0f 44 ca             	cmove  ecx,edx
-  44f816:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-  44f819:	01 c9                	add    ecx,ecx
-  44f81b:	83 e2 fd             	and    edx,0xfffffffd
-  44f81e:	83 e1 02             	and    ecx,0x2
-  44f821:	09 ca                	or     edx,ecx
-  44f823:	88 13                	mov    BYTE PTR [rbx],dl
-;  Cpu->F.n=iif(Cpu->sA<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f825:	0f b6 35 74 35 05 00 	movzx  esi,BYTE PTR [rip+0x53574]        # 4a2da0 <NIBBLES$>
-  44f82c:	48 39 f0             	cmp    rax,rsi
-  44f82f:	0f b6 05 6b 35 05 00 	movzx  eax,BYTE PTR [rip+0x5356b]        # 4a2da1 <NIBBLES$+0x1>
-  44f836:	48 89 f1             	mov    rcx,rsi
-  44f839:	0f 4c c8             	cmovl  ecx,eax
-  44f83c:	83 e2 7f             	and    edx,0x7f
-  44f83f:	c1 e1 07             	shl    ecx,0x7
-  44f842:	09 ca                	or     edx,ecx
-  44f844:	88 13                	mov    BYTE PTR [rbx],dl
+  4132e0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4132e7:	5b                   	pop    rbx
+  4132e8:	5d                   	pop    rbp
+  4132e9:	41 5c                	pop    r12
+  4132eb:	41 5d                	pop    r13
+  4132ed:	41 5e                	pop    r14
+  4132ef:	41 5f                	pop    r15
+;          line fgimage,(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))),mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))))-(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110))),mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)))), BF
+  4132f1:	e9 3a 9f 04 00       	jmp    45d230 <fb_GfxLine>
+;     close #1: mov(strCode,"")
+  4132f6:	bf 01 00 00 00       	mov    edi,0x1
+  4132fb:	e8 c0 a7 05 00       	call   46dac0 <fb_FileClose>
+  413300:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  413307:	00 
+  413308:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  41330f:	00 00 
+  413311:	0f 85 43 76 00 00    	jne    41a95a <MEMORY_T::POKE64(double, double)+0x1108a>
 ;end def
-  44f846:	5b                   	pop    rbx
-  44f847:	c3                   	ret    
-  44f848:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  44f84f:	00 
-
-000000000044f850 <INS_SBC>:
-;def INS_SBC(byval Cpu as CPU6510_T)
-  44f850:	53                   	push   rbx
-;  b.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f851:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44f855:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_SBC(byval Cpu as CPU6510_T)
-  44f859:	48 89 fb             	mov    rbx,rdi
-;  b.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f85c:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f860:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44f864:	e8 07 fa ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  v.u16=Cpu->A - b.ulo
-  44f869:	0f b6 4b 01          	movzx  ecx,BYTE PTR [rbx+0x1]
-;  if Cpu->F.c=peek(ubyte,@nibbles(&B0000)) then v.s16-=peek(ubyte,@nibbles(&B0001))
-  44f86d:	44 0f b6 03          	movzx  r8d,BYTE PTR [rbx]
-;  b.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44f871:	41 89 c1             	mov    r9d,eax
-;  v.u16=Cpu->A - b.ulo
-  44f874:	0f b6 c0             	movzx  eax,al
-  44f877:	89 ca                	mov    edx,ecx
-;  if Cpu->F.c=peek(ubyte,@nibbles(&B0000)) then v.s16-=peek(ubyte,@nibbles(&B0001))
-  44f879:	44 89 c6             	mov    esi,r8d
-;  v.u16=Cpu->A - b.ulo
-  44f87c:	29 c1                	sub    ecx,eax
-;  if Cpu->F.c=peek(ubyte,@nibbles(&B0000)) then v.s16-=peek(ubyte,@nibbles(&B0001))
-  44f87e:	0f b6 05 1b 35 05 00 	movzx  eax,BYTE PTR [rip+0x5351b]        # 4a2da0 <NIBBLES$>
-  44f885:	83 e6 01             	and    esi,0x1
-;  v.u16=Cpu->A - b.ulo
-  44f888:	66 89 0d e1 33 03 00 	mov    WORD PTR [rip+0x333e1],cx        # 482c70 <V$>
-;  if Cpu->F.c=peek(ubyte,@nibbles(&B0000)) then v.s16-=peek(ubyte,@nibbles(&B0001))
-  44f88f:	40 38 c6             	cmp    sil,al
-  44f892:	75 10                	jne    44f8a4 <INS_SBC+0x54>
-  44f894:	0f b6 35 06 35 05 00 	movzx  esi,BYTE PTR [rip+0x53506]        # 4a2da1 <NIBBLES$+0x1>
-  44f89b:	29 f1                	sub    ecx,esi
-  44f89d:	66 89 0d cc 33 03 00 	mov    WORD PTR [rip+0x333cc],cx        # 482c70 <V$>
-;  Cpu->F.v=iif((((Cpu->A xor b.ulo) and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100))) and _
-  44f8a4:	0f b6 0d f9 34 05 00 	movzx  ecx,BYTE PTR [rip+0x534f9]        # 4a2da4 <NIBBLES$+0x4>
-  44f8ab:	0f b6 3d f6 34 05 00 	movzx  edi,BYTE PTR [rip+0x534f6]        # 4a2da8 <NIBBLES$+0x8>
-  44f8b2:	48 0f be 35 b6 33 03 	movsx  rsi,BYTE PTR [rip+0x333b6]        # 482c70 <V$>
-  44f8b9:	00 
-  44f8ba:	48 d3 e7             	shl    rdi,cl
-  44f8bd:	89 d1                	mov    ecx,edx
-  44f8bf:	44 31 ca             	xor    edx,r9d
-  44f8c2:	31 f1                	xor    ecx,esi
-  44f8c4:	0f b6 c9             	movzx  ecx,cl
-  44f8c7:	48 21 cf             	and    rdi,rcx
-  44f8ca:	48 85 d7             	test   rdi,rdx
-  44f8cd:	0f b6 15 cd 34 05 00 	movzx  edx,BYTE PTR [rip+0x534cd]        # 4a2da1 <NIBBLES$+0x1>
-;  Cpu->A=v.ulo
-  44f8d4:	40 88 73 01          	mov    BYTE PTR [rbx+0x1],sil
-;  Cpu->F.v=iif((((Cpu->A xor b.ulo) and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100))) and _
-  44f8d8:	0f 45 c2             	cmovne eax,edx
-  44f8db:	41 83 e0 bf          	and    r8d,0xffffffbf
-  44f8df:	c1 e0 06             	shl    eax,0x6
-  44f8e2:	83 e0 40             	and    eax,0x40
-  44f8e5:	44 09 c0             	or     eax,r8d
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f8e8:	44 0f b7 05 80 33 03 	movzx  r8d,WORD PTR [rip+0x33380]        # 482c70 <V$>
-  44f8ef:	00 
-;  Cpu->F.v=iif((((Cpu->A xor b.ulo) and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100))) and _
-  44f8f0:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.c=iif(v.u16<=peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f8f2:	0f b6 3d b6 34 05 00 	movzx  edi,BYTE PTR [rip+0x534b6]        # 4a2daf <NIBBLES$+0xf>
-  44f8f9:	0f b6 0d a4 34 05 00 	movzx  ecx,BYTE PTR [rip+0x534a4]        # 4a2da4 <NIBBLES$+0x4>
-  44f900:	48 89 fa             	mov    rdx,rdi
-  44f903:	48 d3 e2             	shl    rdx,cl
-  44f906:	0f b6 0d 94 34 05 00 	movzx  ecx,BYTE PTR [rip+0x53494]        # 4a2da1 <NIBBLES$+0x1>
-  44f90d:	48 01 fa             	add    rdx,rdi
-  44f910:	49 39 d0             	cmp    r8,rdx
-  44f913:	0f b6 15 86 34 05 00 	movzx  edx,BYTE PTR [rip+0x53486]        # 4a2da0 <NIBBLES$>
-  44f91a:	0f 4e d1             	cmovle edx,ecx
-  44f91d:	83 e0 fe             	and    eax,0xfffffffe
-  44f920:	83 e2 01             	and    edx,0x1
-  44f923:	09 d0                	or     eax,edx
-  44f925:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.z=iif(v.ulo =  peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f927:	0f b6 15 72 34 05 00 	movzx  edx,BYTE PTR [rip+0x53472]        # 4a2da0 <NIBBLES$>
-  44f92e:	0f b6 0d 6c 34 05 00 	movzx  ecx,BYTE PTR [rip+0x5346c]        # 4a2da1 <NIBBLES$+0x1>
-  44f935:	40 38 d6             	cmp    sil,dl
-  44f938:	0f 44 d1             	cmove  edx,ecx
-  44f93b:	83 e0 fd             	and    eax,0xfffffffd
-  44f93e:	01 d2                	add    edx,edx
-  44f940:	83 e2 02             	and    edx,0x2
-  44f943:	09 c2                	or     edx,eax
-  44f945:	88 13                	mov    BYTE PTR [rbx],dl
-;  Cpu->F.n=iif(v.slo <  peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44f947:	0f b6 0d 52 34 05 00 	movzx  ecx,BYTE PTR [rip+0x53452]        # 4a2da0 <NIBBLES$>
-  44f94e:	48 39 ce             	cmp    rsi,rcx
-  44f951:	48 89 c8             	mov    rax,rcx
-  44f954:	0f b6 0d 46 34 05 00 	movzx  ecx,BYTE PTR [rip+0x53446]        # 4a2da1 <NIBBLES$+0x1>
-  44f95b:	0f 4c c1             	cmovl  eax,ecx
-  44f95e:	83 e2 7f             	and    edx,0x7f
-  44f961:	c1 e0 07             	shl    eax,0x7
-  44f964:	09 c2                	or     edx,eax
-  44f966:	88 13                	mov    BYTE PTR [rbx],dl
+  413317:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+;     close #1: mov(strCode,"")
+  41331e:	45 31 c0             	xor    r8d,r8d
+  413321:	b9 01 00 00 00       	mov    ecx,0x1
+  413326:	48 83 ce ff          	or     rsi,0xffffffffffffffff
 ;end def
-  44f968:	5b                   	pop    rbx
-  44f969:	c3                   	ret    
-  44f96a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-
-000000000044f970 <MEMORY_T::READBYTE(double)>:
-;proc MEMORY_T.ReadByte(byval adr as double) as byte
-  44f970:	48 83 ec 08          	sub    rsp,0x8
-;  return Peek64(adr)
-  44f974:	e8 e7 9c fb ff       	call   409660 <MEMORY_T::PEEK64(double)>
-  44f979:	e8 d2 59 fb ff       	call   405350 <nearbyint@plt>
-;end proc
-  44f97e:	48 83 c4 08          	add    rsp,0x8
-;  return Peek64(adr)
-  44f982:	f2 0f 2c c0          	cvttsd2si eax,xmm0
-;end proc
-  44f986:	c3                   	ret    
-  44f987:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  44f98e:	00 00 
-
-000000000044f990 <INS_BCC>:
-;  if Cpu->F.c=peek(ubyte,@nibbles(&B0000)) then
-  44f990:	0f b6 07             	movzx  eax,BYTE PTR [rdi]
-  44f993:	83 e0 01             	and    eax,0x1
-  44f996:	38 05 04 34 05 00    	cmp    BYTE PTR [rip+0x53404],al        # 4a2da0 <NIBBLES$>
-  44f99c:	74 02                	je     44f9a0 <INS_BCC+0x10>
-  44f99e:	c3                   	ret    
-  44f99f:	90                   	nop
-;def INS_BCC(byval Cpu as CPU6510_T)
-  44f9a0:	53                   	push   rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44f9a1:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44f9a5:	66 0f ef c0          	pxor   xmm0,xmm0
-  44f9a9:	48 89 fb             	mov    rbx,rdi
-  44f9ac:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f9b0:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44f9b4:	e8 b7 ff ff ff       	call   44f970 <MEMORY_T::READBYTE(double)>
-  44f9b9:	66 98                	cbw    
-  44f9bb:	66 03 43 04          	add    ax,WORD PTR [rbx+0x4]
-;    Cpu->pc=v.u16
-  44f9bf:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
+  41332a:	5b                   	pop    rbx
+;     close #1: mov(strCode,"")
+  41332b:	48 8d 15 b5 a0 06 00 	lea    rdx,[rip+0x6a0b5]        # 47d3e7 <_IO_stdin_used+0x3e7>
+  413332:	48 8d 3d c7 d8 07 00 	lea    rdi,[rip+0x7d8c7]        # 490c00 <STRCODE$>
 ;end def
-  44f9c3:	5b                   	pop    rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44f9c4:	66 89 05 a5 32 03 00 	mov    WORD PTR [rip+0x332a5],ax        # 482c70 <V$>
+  413339:	5d                   	pop    rbp
+  41333a:	41 5c                	pop    r12
+  41333c:	41 5d                	pop    r13
+  41333e:	41 5e                	pop    r14
+  413340:	41 5f                	pop    r15
+;     close #1: mov(strCode,"")
+  413342:	e9 d9 1c 06 00       	jmp    475020 <fb_StrAssign>
+;      poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0000))) 'Screen Unlock
+  413347:	48 8d 05 32 da 09 00 	lea    rax,[rip+0x9da32]        # 4b0d80 <NIBBLES$>
+  41334e:	66 0f ef db          	pxor   xmm3,xmm3
+  413352:	0f b6 0d 2f da 09 00 	movzx  ecx,BYTE PTR [rip+0x9da2f]        # 4b0d88 <NIBBLES$+0x8>
+  413359:	66 0f ef e4          	pxor   xmm4,xmm4
+  41335d:	0f b6 00             	movzx  eax,BYTE PTR [rax]
+  413360:	f2 0f 2a d8          	cvtsi2sd xmm3,eax
+  413364:	0f b6 05 16 da 09 00 	movzx  eax,BYTE PTR [rip+0x9da16]        # 4b0d81 <NIBBLES$+0x1>
+  41336b:	48 d3 e0             	shl    rax,cl
+  41336e:	48 8d 14 38          	lea    rdx,[rax+rdi*1]
+  413372:	0f b6 44 24 40       	movzx  eax,BYTE PTR [rsp+0x40]
+  413377:	f2 0f 11 5c 24 18    	movsd  QWORD PTR [rsp+0x18],xmm3
+  41337d:	48 01 d0             	add    rax,rdx
+  413380:	f2 48 0f 2a e0       	cvtsi2sd xmm4,rax
+  413385:	f2 0f 11 24 24       	movsd  QWORD PTR [rsp],xmm4
+  41338a:	66 0f 28 c4          	movapd xmm0,xmm4
+;      elseif peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)))) eq peek(ubyte,@nibbles(&B0001)) then 
+  41338e:	e9 71 65 ff ff       	jmp    409904 <MEMORY_T::POKE64(double, double)+0x34>
+;     open strCode add ".asm" for output as #1
+  413393:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  41339a:	00 
+  41339b:	31 c0                	xor    eax,eax
+  41339d:	b9 06 00 00 00       	mov    ecx,0x6
+  4133a2:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  4133a6:	4c 89 cf             	mov    rdi,r9
+  4133a9:	48 8d 2d 50 d8 07 00 	lea    rbp,[rip+0x7d850]        # 490c00 <STRCODE$>
+  4133b0:	41 b8 05 00 00 00    	mov    r8d,0x5
+  4133b6:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4133b8:	48 89 ee             	mov    rsi,rbp
+  4133bb:	4c 89 cf             	mov    rdi,r9
+  4133be:	48 8d 0d 2b d6 06 00 	lea    rcx,[rip+0x6d62b]        # 4809f0 <_IO_stdin_used+0x39f0>
+  4133c5:	e8 a6 22 06 00       	call   475670 <fb_StrConcat>
+  4133ca:	31 c9                	xor    ecx,ecx
+  4133cc:	31 d2                	xor    edx,edx
+  4133ce:	45 31 c9             	xor    r9d,r9d
+  4133d1:	48 89 c7             	mov    rdi,rax
+  4133d4:	41 b8 01 00 00 00    	mov    r8d,0x1
+  4133da:	be 03 00 00 00       	mov    esi,0x3
+  4133df:	e8 ec d4 05 00       	call   4708d0 <fb_FileOpen>
+;     strCode=""
+  4133e4:	45 31 c0             	xor    r8d,r8d
+  4133e7:	b9 01 00 00 00       	mov    ecx,0x1
+  4133ec:	48 89 ef             	mov    rdi,rbp
+  4133ef:	48 8d 15 f1 9f 06 00 	lea    rdx,[rip+0x69ff1]        # 47d3e7 <_IO_stdin_used+0x3e7>
+  4133f6:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  4133fa:	e8 21 1c 06 00       	call   475020 <fb_StrAssign>
+;    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100))
+  4133ff:	e9 fc 8f ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;   cmp v eq peek(ubyte,@nibbles(&B0101)) jmp L1575
+  413404:	0f b6 1d 7a d9 09 00 	movzx  ebx,BYTE PTR [rip+0x9d97a]        # 4b0d85 <NIBBLES$+0x5>
+  41340b:	66 0f ef c0          	pxor   xmm0,xmm0
+  41340f:	f2 48 0f 2a c3       	cvtsi2sd xmm0,rbx
+  413414:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  41341a:	48 89 5c 24 60       	mov    QWORD PTR [rsp+0x60],rbx
+  41341f:	0f 8a a5 06 00 00    	jp     413aca <MEMORY_T::POKE64(double, double)+0xa1fa>
+  413425:	0f 85 9f 06 00 00    	jne    413aca <MEMORY_T::POKE64(double, double)+0xa1fa>
+;   mov(mem64(49457),mem64(49456) shl 24 add &H0000FF)
+  41342b:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  413430:	f2 0f 10 80 80 09 06 	movsd  xmm0,QWORD PTR [rax+0x60980]
+  413437:	00 
+  413438:	e8 23 1f ff ff       	call   405360 <nearbyint@plt>
+  41343d:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  413442:	66 0f ef c0          	pxor   xmm0,xmm0
+  413446:	48 c1 e0 18          	shl    rax,0x18
+  41344a:	48 05 ff 00 00 00    	add    rax,0xff
+  413450:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+;   jmp L1826
+  413455:	e9 2d 84 ff ff       	jmp    40b887 <MEMORY_T::POKE64(double, double)+0x1fb7>
+;     shell "nasm " add strCode+".asm -f bin -o" add strCode+".bin": mov(strCode,"")
+  41345a:	31 db                	xor    ebx,ebx
+  41345c:	b9 06 00 00 00       	mov    ecx,0x6
+  413461:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  413465:	ba 06 00 00 00       	mov    edx,0x6
+  41346a:	89 d8                	mov    eax,ebx
+  41346c:	4c 8d 8c 24 30 01 00 	lea    r9,[rsp+0x130]
+  413473:	00 
+  413474:	48 8d 2d 85 d7 07 00 	lea    rbp,[rip+0x7d785]        # 490c00 <STRCODE$>
+  41347b:	4c 89 cf             	mov    rdi,r9
+  41347e:	48 8d 35 70 d5 06 00 	lea    rsi,[rip+0x6d570]        # 4809f5 <_IO_stdin_used+0x39f5>
+  413485:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  413487:	48 89 e9             	mov    rcx,rbp
+  41348a:	4c 89 cf             	mov    rdi,r9
+  41348d:	e8 de 21 06 00       	call   475670 <fb_StrConcat>
+  413492:	b9 06 00 00 00       	mov    ecx,0x6
+  413497:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  41349b:	4c 8d 8c 24 50 01 00 	lea    r9,[rsp+0x150]
+  4134a2:	00 
+  4134a3:	48 89 c6             	mov    rsi,rax
+  4134a6:	4c 89 cf             	mov    rdi,r9
+  4134a9:	89 d8                	mov    eax,ebx
+  4134ab:	41 b8 0f 00 00 00    	mov    r8d,0xf
+  4134b1:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4134b3:	4c 89 cf             	mov    rdi,r9
+  4134b6:	48 8d 0d 3e d5 06 00 	lea    rcx,[rip+0x6d53e]        # 4809fb <_IO_stdin_used+0x39fb>
+  4134bd:	e8 ae 21 06 00       	call   475670 <fb_StrConcat>
+  4134c2:	b9 06 00 00 00       	mov    ecx,0x6
+  4134c7:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  4134cb:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  4134d2:	00 
+  4134d3:	48 89 c6             	mov    rsi,rax
+  4134d6:	4c 89 cf             	mov    rdi,r9
+  4134d9:	89 d8                	mov    eax,ebx
+  4134db:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  4134df:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4134e1:	48 89 e9             	mov    rcx,rbp
+  4134e4:	4c 89 cf             	mov    rdi,r9
+  4134e7:	e8 84 21 06 00       	call   475670 <fb_StrConcat>
+  4134ec:	b9 06 00 00 00       	mov    ecx,0x6
+  4134f1:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  4134f5:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  4134fc:	00 
+  4134fd:	48 89 c6             	mov    rsi,rax
+  413500:	4c 89 cf             	mov    rdi,r9
+  413503:	89 d8                	mov    eax,ebx
+  413505:	41 b8 05 00 00 00    	mov    r8d,0x5
+  41350b:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  41350d:	4c 89 cf             	mov    rdi,r9
+  413510:	48 8d 0d 1c d5 06 00 	lea    rcx,[rip+0x6d51c]        # 480a33 <_IO_stdin_used+0x3a33>
+  413517:	e8 54 21 06 00       	call   475670 <fb_StrConcat>
+  41351c:	48 89 c7             	mov    rdi,rax
+  41351f:	e8 ac 51 06 00       	call   4786d0 <fb_Shell>
+  413524:	45 31 c0             	xor    r8d,r8d
+  413527:	b9 01 00 00 00       	mov    ecx,0x1
+  41352c:	48 89 ef             	mov    rdi,rbp
+  41352f:	48 8d 15 b1 9e 06 00 	lea    rdx,[rip+0x69eb1]        # 47d3e7 <_IO_stdin_used+0x3e7>
+  413536:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  41353a:	e8 e1 1a 06 00       	call   475020 <fb_StrAssign>
+;    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111))
+  41353f:	e9 bc 8e ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;     screen 0: shell "dosbox-x -c 'boot " add strCode add "'" add " -exit"
+  413544:	45 31 c0             	xor    r8d,r8d
+  413547:	31 c9                	xor    ecx,ecx
+  413549:	31 d2                	xor    edx,edx
+  41354b:	be 08 00 00 00       	mov    esi,0x8
+  413550:	31 ff                	xor    edi,edi
+  413552:	31 db                	xor    ebx,ebx
+  413554:	48 8d 2d a5 d6 07 00 	lea    rbp,[rip+0x7d6a5]        # 490c00 <STRCODE$>
+  41355b:	e8 b0 d6 04 00       	call   460c10 <fb_GfxScreen>
+  413560:	89 d8                	mov    eax,ebx
+  413562:	b9 06 00 00 00       	mov    ecx,0x6
+  413567:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  41356b:	4c 8d 8c 24 30 01 00 	lea    r9,[rsp+0x130]
+  413572:	00 
+  413573:	ba 13 00 00 00       	mov    edx,0x13
+  413578:	48 8d 35 8b d4 06 00 	lea    rsi,[rip+0x6d48b]        # 480a0a <_IO_stdin_used+0x3a0a>
+  41357f:	4c 89 cf             	mov    rdi,r9
+;     shell "rm " add strCode: mov(strCode,"")
+  413582:	4c 8d 25 5e 9e 06 00 	lea    r12,[rip+0x69e5e]        # 47d3e7 <_IO_stdin_used+0x3e7>
+;     screen 0: shell "dosbox-x -c 'boot " add strCode add "'" add " -exit"
+  413589:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  41358b:	48 89 e9             	mov    rcx,rbp
+  41358e:	4c 89 cf             	mov    rdi,r9
+  413591:	e8 da 20 06 00       	call   475670 <fb_StrConcat>
+  413596:	b9 06 00 00 00       	mov    ecx,0x6
+  41359b:	41 b8 02 00 00 00    	mov    r8d,0x2
+  4135a1:	4c 8d 8c 24 50 01 00 	lea    r9,[rsp+0x150]
+  4135a8:	00 
+  4135a9:	48 89 c6             	mov    rsi,rax
+  4135ac:	4c 89 cf             	mov    rdi,r9
+  4135af:	89 d8                	mov    eax,ebx
+  4135b1:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  4135b5:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4135b7:	4c 89 cf             	mov    rdi,r9
+  4135ba:	48 8d 0d ca 9d 06 00 	lea    rcx,[rip+0x69dca]        # 47d38b <_IO_stdin_used+0x38b>
+  4135c1:	e8 aa 20 06 00       	call   475670 <fb_StrConcat>
+  4135c6:	b9 06 00 00 00       	mov    ecx,0x6
+  4135cb:	41 b8 07 00 00 00    	mov    r8d,0x7
+  4135d1:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  4135d8:	00 
+  4135d9:	48 89 c6             	mov    rsi,rax
+  4135dc:	4c 89 cf             	mov    rdi,r9
+  4135df:	89 d8                	mov    eax,ebx
+  4135e1:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  4135e5:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4135e7:	4c 89 cf             	mov    rdi,r9
+  4135ea:	48 8d 0d f8 d3 06 00 	lea    rcx,[rip+0x6d3f8]        # 4809e9 <_IO_stdin_used+0x39e9>
+  4135f1:	e8 7a 20 06 00       	call   475670 <fb_StrConcat>
+  4135f6:	48 89 c7             	mov    rdi,rax
+  4135f9:	e8 d2 50 06 00       	call   4786d0 <fb_Shell>
+;     shell "rm " add strCode: mov(strCode,"")
+  4135fe:	89 d8                	mov    eax,ebx
+  413600:	b9 06 00 00 00       	mov    ecx,0x6
+  413605:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  413609:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  413610:	00 
+  413611:	ba 04 00 00 00       	mov    edx,0x4
+  413616:	48 8d 35 00 d4 06 00 	lea    rsi,[rip+0x6d400]        # 480a1d <_IO_stdin_used+0x3a1d>
+  41361d:	4c 89 cf             	mov    rdi,r9
+  413620:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  413622:	4c 89 cf             	mov    rdi,r9
+  413625:	48 89 e9             	mov    rcx,rbp
+  413628:	e8 43 20 06 00       	call   475670 <fb_StrConcat>
+  41362d:	48 89 c7             	mov    rdi,rax
+  413630:	e8 9b 50 06 00       	call   4786d0 <fb_Shell>
+  413635:	4c 89 e2             	mov    rdx,r12
+  413638:	48 89 ef             	mov    rdi,rbp
+  41363b:	45 31 c0             	xor    r8d,r8d
+  41363e:	b9 01 00 00 00       	mov    ecx,0x1
+  413643:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  413647:	e8 d4 19 06 00       	call   475020 <fb_StrAssign>
+;     ScreenRes 1920,1080, 32, 0, logic_or(GFX_FULLSCREEN,GFX_ALPHA_PRIMITIVES): Cls        
+  41364c:	45 31 c9             	xor    r9d,r9d
+  41364f:	41 b8 41 00 00 00    	mov    r8d,0x41
+  413655:	31 c9                	xor    ecx,ecx
+  413657:	ba 20 00 00 00       	mov    edx,0x20
+  41365c:	be 38 04 00 00       	mov    esi,0x438
+  413661:	bf 80 07 00 00       	mov    edi,0x780
+  413666:	e8 55 d7 04 00       	call   460dc0 <fb_GfxScreenRes>
+  41366b:	bf 00 00 ff ff       	mov    edi,0xffff0000
+  413670:	e8 1b e5 05 00       	call   471b90 <fb_Cls>
+;     paint(0,0), rgba(0, 0, 0, 255)
+  413675:	4c 89 e7             	mov    rdi,r12
+  413678:	31 f6                	xor    esi,esi
+  41367a:	e8 11 3f 06 00       	call   477590 <fb_StrAllocTempDescZEx>
+  41367f:	66 0f ef c9          	pxor   xmm1,xmm1
+  413683:	45 31 c0             	xor    r8d,r8d
+  413686:	31 d2                	xor    edx,edx
+  413688:	48 89 c1             	mov    rcx,rax
+  41368b:	41 b9 04 00 00 40    	mov    r9d,0x40000004
+  413691:	be 00 00 00 ff       	mov    esi,0xff000000
+  413696:	31 ff                	xor    edi,edi
+  413698:	0f 28 c1             	movaps xmm0,xmm1
+  41369b:	e8 60 b0 04 00       	call   45e700 <fb_GfxPaint>
+;     for in range(mov(offset,&H000),&H400): poke64(mem64(sys_offset+&H12B) add offset, 32): next offset
+  4136a0:	f2 0f 10 1d a8 da 06 	movsd  xmm3,QWORD PTR [rip+0x6daa8]        # 481150 <_IO_stdin_used+0x4150>
+  4136a7:	00 
+  4136a8:	48 c7 05 6d d5 07 00 	mov    QWORD PTR [rip+0x7d56d],0x0        # 490c20 <OFFSET$>
+  4136af:	00 00 00 00 
+  4136b3:	4c 8b 25 46 df 06 00 	mov    r12,QWORD PTR [rip+0x6df46]        # 481600 <_IO_stdin_used+0x4600>
+  4136ba:	48 8b 1d df e5 06 00 	mov    rbx,QWORD PTR [rip+0x6e5df]        # 481ca0 <_IO_stdin_used+0x4ca0>
+  4136c1:	48 8b 2d 40 df 06 00 	mov    rbp,QWORD PTR [rip+0x6df40]        # 481608 <_IO_stdin_used+0x4608>
+  4136c8:	f2 0f 11 5c 24 18    	movsd  QWORD PTR [rsp+0x18],xmm3
+  4136ce:	66 49 0f 6e c4       	movq   xmm0,r12
+  4136d3:	f2 0f 58 05 0d 62 0b 	addsd  xmm0,QWORD PTR [rip+0xb620d]        # 4c98e8 <SYS_OFFSET$>
+  4136da:	00 
+  4136db:	e8 80 1c ff ff       	call   405360 <nearbyint@plt>
+  4136e0:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4136e5:	66 48 0f 6e cb       	movq   xmm1,rbx
+  4136ea:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  4136ef:	f2 0f 10 04 c7       	movsd  xmm0,QWORD PTR [rdi+rax*8]
+  4136f4:	f2 0f 58 05 24 d5 07 	addsd  xmm0,QWORD PTR [rip+0x7d524]        # 490c20 <OFFSET$>
+  4136fb:	00 
+  4136fc:	e8 cf 61 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  413701:	f2 0f 10 44 24 18    	movsd  xmm0,QWORD PTR [rsp+0x18]
+  413707:	66 48 0f 6e d5       	movq   xmm2,rbp
+  41370c:	f2 0f 58 05 0c d5 07 	addsd  xmm0,QWORD PTR [rip+0x7d50c]        # 490c20 <OFFSET$>
+  413713:	00 
+  413714:	66 0f 2f d0          	comisd xmm2,xmm0
+  413718:	f2 0f 11 05 00 d5 07 	movsd  QWORD PTR [rip+0x7d500],xmm0        # 490c20 <OFFSET$>
+  41371f:	00 
+  413720:	73 ac                	jae    4136ce <MEMORY_T::POKE64(double, double)+0x9dfe>
+  413722:	e9 d9 8c ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;     shell strCode: mov(strCode,"")
+  413727:	48 8d 2d d2 d4 07 00 	lea    rbp,[rip+0x7d4d2]        # 490c00 <STRCODE$>
+  41372e:	48 89 ef             	mov    rdi,rbp
+  413731:	e8 9a 4f 06 00       	call   4786d0 <fb_Shell>
+  413736:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  41373d:	00 
+  41373e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  413745:	00 00 
+  413747:	0f 85 01 2e 00 00    	jne    41654e <MEMORY_T::POKE64(double, double)+0xcc7e>
+  41374d:	48 89 ef             	mov    rdi,rbp
+  413750:	45 31 c0             	xor    r8d,r8d
+  413753:	b9 01 00 00 00       	mov    ecx,0x1
+  413758:	48 83 ce ff          	or     rsi,0xffffffffffffffff
 ;end def
-  44f9cb:	c3                   	ret    
-  44f9cc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-000000000044f9d0 <INS_BCS>:
-;  if Cpu->F.c then
-  44f9d0:	f6 07 01             	test   BYTE PTR [rdi],0x1
-  44f9d3:	75 0b                	jne    44f9e0 <INS_BCS+0x10>
-  44f9d5:	c3                   	ret    
-  44f9d6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  44f9dd:	00 00 00 
-;def INS_BCS(byval Cpu as CPU6510_T)
-  44f9e0:	53                   	push   rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44f9e1:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44f9e5:	66 0f ef c0          	pxor   xmm0,xmm0
-  44f9e9:	48 89 fb             	mov    rbx,rdi
-  44f9ec:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44f9f0:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44f9f4:	e8 77 ff ff ff       	call   44f970 <MEMORY_T::READBYTE(double)>
-  44f9f9:	66 98                	cbw    
-  44f9fb:	66 03 43 04          	add    ax,WORD PTR [rbx+0x4]
-;    Cpu->pc=v.u16
-  44f9ff:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
+  41375c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+;     shell strCode: mov(strCode,"")
+  413763:	48 8d 15 7d 9c 06 00 	lea    rdx,[rip+0x69c7d]        # 47d3e7 <_IO_stdin_used+0x3e7>
 ;end def
-  44fa03:	5b                   	pop    rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44fa04:	66 89 05 65 32 03 00 	mov    WORD PTR [rip+0x33265],ax        # 482c70 <V$>
+  41376a:	5b                   	pop    rbx
+  41376b:	5d                   	pop    rbp
+  41376c:	41 5c                	pop    r12
+  41376e:	41 5d                	pop    r13
+  413770:	41 5e                	pop    r14
+  413772:	41 5f                	pop    r15
+;     shell strCode: mov(strCode,"")
+  413774:	e9 a7 18 06 00       	jmp    475020 <fb_StrAssign>
+;     mov(swch,v)
+  413779:	f2 0f 10 64 24 18    	movsd  xmm4,QWORD PTR [rsp+0x18]
+  41377f:	f2 0f 11 25 a1 d4 07 	movsd  QWORD PTR [rip+0x7d4a1],xmm4        # 490c28 <SWCH$>
+  413786:	00 
+;    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))
+  413787:	e9 74 8c ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;     strCode=strCode+lcase(chr(v))
+  41378c:	f2 0f 10 44 24 18    	movsd  xmm0,QWORD PTR [rsp+0x18]
+  413792:	e8 c9 1b ff ff       	call   405360 <nearbyint@plt>
+  413797:	bf 01 00 00 00       	mov    edi,0x1
+  41379c:	31 c0                	xor    eax,eax
+  41379e:	f2 48 0f 2c f0       	cvttsd2si rsi,xmm0
+  4137a3:	e8 28 1c 06 00       	call   4753d0 <fb_CHR>
+  4137a8:	31 f6                	xor    esi,esi
+  4137aa:	48 89 c7             	mov    rdi,rax
+  4137ad:	e8 ce 36 06 00       	call   476e80 <fb_StrLcase2>
+  4137b2:	48 89 c2             	mov    rdx,rax
+  4137b5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4137bc:	00 
+  4137bd:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4137c4:	00 00 
+  4137c6:	0f 85 ae 91 00 00    	jne    41c97a <MEMORY_T::POKE64(double, double)+0x130aa>
 ;end def
-  44fa0b:	c3                   	ret    
-  44fa0c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-000000000044fa10 <INS_BEQ>:
-;  if Cpu->F.z=peek(ubyte,@nibbles(&B0001)) then
-  44fa10:	0f b6 07             	movzx  eax,BYTE PTR [rdi]
-  44fa13:	d0 e8                	shr    al,1
-  44fa15:	83 e0 01             	and    eax,0x1
-  44fa18:	38 05 83 33 05 00    	cmp    BYTE PTR [rip+0x53383],al        # 4a2da1 <NIBBLES$+0x1>
-  44fa1e:	74 08                	je     44fa28 <INS_BEQ+0x18>
-  44fa20:	c3                   	ret    
-  44fa21:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-;def INS_BEQ(byval Cpu as CPU6510_T)
-  44fa28:	53                   	push   rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44fa29:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44fa2d:	66 0f ef c0          	pxor   xmm0,xmm0
-  44fa31:	48 89 fb             	mov    rbx,rdi
-  44fa34:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44fa38:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44fa3c:	e8 2f ff ff ff       	call   44f970 <MEMORY_T::READBYTE(double)>
-  44fa41:	66 98                	cbw    
-  44fa43:	66 03 43 04          	add    ax,WORD PTR [rbx+0x4]
-;    Cpu->pc=v.u16
-  44fa47:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
+  4137cc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+;     strCode=strCode+lcase(chr(v))
+  4137d3:	45 31 c0             	xor    r8d,r8d
+  4137d6:	48 83 c9 ff          	or     rcx,0xffffffffffffffff
+  4137da:	48 83 ce ff          	or     rsi,0xffffffffffffffff
 ;end def
-  44fa4b:	5b                   	pop    rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44fa4c:	66 89 05 1d 32 03 00 	mov    WORD PTR [rip+0x3321d],ax        # 482c70 <V$>
+  4137de:	5b                   	pop    rbx
+;     strCode=strCode+lcase(chr(v))
+  4137df:	48 8d 3d 1a d4 07 00 	lea    rdi,[rip+0x7d41a]        # 490c00 <STRCODE$>
 ;end def
-  44fa53:	c3                   	ret    
-  44fa54:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44fa5b:	00 00 00 00 
-  44fa5f:	90                   	nop
-
-000000000044fa60 <INS_BIT>:
-;def INS_BIT(byval Cpu as CPU6510_T)
-  44fa60:	53                   	push   rbx
-;  b=Cpu->mem->Readbyte(Cpu->Code.op.u16)
-  44fa61:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44fa65:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_BIT(byval Cpu as CPU6510_T)
-  44fa69:	48 89 fb             	mov    rbx,rdi
-;  b=Cpu->mem->Readbyte(Cpu->Code.op.u16)
-  44fa6c:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44fa70:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44fa74:	e8 f7 fe ff ff       	call   44f970 <MEMORY_T::READBYTE(double)>
-;  Cpu->F.n=iif(b and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44fa79:	0f b6 0d 24 33 05 00 	movzx  ecx,BYTE PTR [rip+0x53324]        # 4a2da4 <NIBBLES$+0x4>
-  44fa80:	0f b6 15 1a 33 05 00 	movzx  edx,BYTE PTR [rip+0x5331a]        # 4a2da1 <NIBBLES$+0x1>
-;  b=Cpu->mem->Readbyte(Cpu->Code.op.u16)
-  44fa87:	48 0f be f8          	movsx  rdi,al
-;  Cpu->F.n=iif(b and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44fa8b:	0f b6 05 16 33 05 00 	movzx  eax,BYTE PTR [rip+0x53316]        # 4a2da8 <NIBBLES$+0x8>
-;  b=Cpu->mem->Readbyte(Cpu->Code.op.u16)
-  44fa92:	48 89 fe             	mov    rsi,rdi
-;  Cpu->F.n=iif(b and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44fa95:	48 d3 e0             	shl    rax,cl
-  44fa98:	48 85 f8             	test   rax,rdi
-  44fa9b:	0f b6 05 fe 32 05 00 	movzx  eax,BYTE PTR [rip+0x532fe]        # 4a2da0 <NIBBLES$>
-  44faa2:	0f 45 c2             	cmovne eax,edx
-  44faa5:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-  44faa8:	c1 e0 07             	shl    eax,0x7
-  44faab:	83 e2 7f             	and    edx,0x7f
-  44faae:	09 c2                	or     edx,eax
-  44fab0:	88 13                	mov    BYTE PTR [rbx],dl
-;  Cpu->F.v=iif(b and peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44fab2:	0f b6 05 eb 32 05 00 	movzx  eax,BYTE PTR [rip+0x532eb]        # 4a2da4 <NIBBLES$+0x4>
-  44fab9:	48 89 c1             	mov    rcx,rax
-  44fabc:	48 d3 e0             	shl    rax,cl
-  44fabf:	0f b6 0d db 32 05 00 	movzx  ecx,BYTE PTR [rip+0x532db]        # 4a2da1 <NIBBLES$+0x1>
-  44fac6:	48 85 f8             	test   rax,rdi
-  44fac9:	0f b6 05 d0 32 05 00 	movzx  eax,BYTE PTR [rip+0x532d0]        # 4a2da0 <NIBBLES$>
-  44fad0:	0f 45 c1             	cmovne eax,ecx
-  44fad3:	83 e2 bf             	and    edx,0xffffffbf
-;  Cpu->F.z=iif(peek(ubyte,@nibbles(&B0000))=(b and Cpu->sX),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44fad6:	40 22 73 02          	and    sil,BYTE PTR [rbx+0x2]
-  44fada:	48 0f be f6          	movsx  rsi,sil
-;  Cpu->F.v=iif(b and peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44fade:	c1 e0 06             	shl    eax,0x6
-  44fae1:	83 e0 40             	and    eax,0x40
-  44fae4:	09 d0                	or     eax,edx
-  44fae6:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.z=iif(peek(ubyte,@nibbles(&B0000))=(b and Cpu->sX),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44fae8:	0f b6 0d b1 32 05 00 	movzx  ecx,BYTE PTR [rip+0x532b1]        # 4a2da0 <NIBBLES$>
-  44faef:	48 39 f1             	cmp    rcx,rsi
-  44faf2:	48 89 ca             	mov    rdx,rcx
-  44faf5:	0f b6 0d a5 32 05 00 	movzx  ecx,BYTE PTR [rip+0x532a5]        # 4a2da1 <NIBBLES$+0x1>
-  44fafc:	0f 44 d1             	cmove  edx,ecx
-  44faff:	83 e0 fd             	and    eax,0xfffffffd
-  44fb02:	01 d2                	add    edx,edx
-  44fb04:	83 e2 02             	and    edx,0x2
-  44fb07:	09 c2                	or     edx,eax
-  44fb09:	88 13                	mov    BYTE PTR [rbx],dl
+  4137e6:	5d                   	pop    rbp
+  4137e7:	41 5c                	pop    r12
+  4137e9:	41 5d                	pop    r13
+  4137eb:	41 5e                	pop    r14
+  4137ed:	41 5f                	pop    r15
+;     strCode=strCode+lcase(chr(v))
+  4137ef:	e9 fc 1f 06 00       	jmp    4757f0 <fb_StrConcatAssign>
+;		   case peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)): 
+  4137f4:	0f b6 1d 8f d5 09 00 	movzx  ebx,BYTE PTR [rip+0x9d58f]        # 4b0d8a <NIBBLES$+0xa>
+  4137fb:	89 d1                	mov    ecx,edx
+  4137fd:	66 0f ef c0          	pxor   xmm0,xmm0
+  413801:	48 d3 e3             	shl    rbx,cl
+  413804:	48 89 d9             	mov    rcx,rbx
+  413807:	48 01 c1             	add    rcx,rax
+  41380a:	f2 48 0f 2a c1       	cvtsi2sd xmm0,rcx
+  41380f:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  413815:	0f 8a 8d 03 00 00    	jp     413ba8 <MEMORY_T::POKE64(double, double)+0xa2d8>
+  41381b:	0f 85 87 03 00 00    	jne    413ba8 <MEMORY_T::POKE64(double, double)+0xa2d8>
+;		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B1000))
+  413821:	0f b6 3d 64 d5 09 00 	movzx  edi,BYTE PTR [rip+0x9d564]        # 4b0d8c <NIBBLES$+0xc>
+  413828:	44 89 d8             	mov    eax,r11d
+  41382b:	66 0f ef c0          	pxor   xmm0,xmm0
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  41382f:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+;		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B1000))
+  413834:	83 e0 3f             	and    eax,0x3f
+  413837:	89 fa                	mov    edx,edi
+  413839:	83 e2 3f             	and    edx,0x3f
+  41383c:	89 d1                	mov    ecx,edx
+  41383e:	48 d3 e7             	shl    rdi,cl
+  413841:	0f b6 0d 43 d5 09 00 	movzx  ecx,BYTE PTR [rip+0x9d543]        # 4b0d8b <NIBBLES$+0xb>
+  413848:	4a 8d 3c 07          	lea    rdi,[rdi+r8*1]
+  41384c:	48 01 cf             	add    rdi,rcx
+  41384f:	89 c1                	mov    ecx,eax
+  413851:	48 d3 e6             	shl    rsi,cl
+  413854:	89 d1                	mov    ecx,edx
+  413856:	49 d3 e1             	shl    r9,cl
+  413859:	89 c1                	mov    ecx,eax
+  41385b:	48 8d 34 37          	lea    rsi,[rdi+rsi*1]
+  41385f:	48 d3 e5             	shl    rbp,cl
+  413862:	48 89 e8             	mov    rax,rbp
+  413865:	4c 01 c8             	add    rax,r9
+  413868:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  41386d:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  413872:	f2 0f 11 04 f0       	movsd  QWORD PTR [rax+rsi*8],xmm0
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  413877:	0f b6 0d 0a d5 09 00 	movzx  ecx,BYTE PTR [rip+0x9d50a]        # 4b0d88 <NIBBLES$+0x8>
+  41387e:	0f b6 05 fc d4 09 00 	movzx  eax,BYTE PTR [rip+0x9d4fc]        # 4b0d81 <NIBBLES$+0x1>
+  413885:	0f b6 35 00 d5 09 00 	movzx  esi,BYTE PTR [rip+0x9d500]        # 4b0d8c <NIBBLES$+0xc>
+  41388c:	48 d3 e0             	shl    rax,cl
+  41388f:	48 89 c2             	mov    rdx,rax
+  413892:	89 f1                	mov    ecx,esi
+  413894:	40 0f b6 c6          	movzx  eax,sil
+  413898:	48 d3 e0             	shl    rax,cl
+  41389b:	0f b6 0d e2 d4 09 00 	movzx  ecx,BYTE PTR [rip+0x9d4e2]        # 4b0d84 <NIBBLES$+0x4>
+  4138a2:	48 01 c2             	add    rdx,rax
+  4138a5:	0f b6 05 df d4 09 00 	movzx  eax,BYTE PTR [rip+0x9d4df]        # 4b0d8b <NIBBLES$+0xb>
+  4138ac:	48 01 c2             	add    rdx,rax
+  4138af:	0f b6 05 cc d4 09 00 	movzx  eax,BYTE PTR [rip+0x9d4cc]        # 4b0d82 <NIBBLES$+0x2>
+  4138b6:	48 d3 e0             	shl    rax,cl
+  4138b9:	48 01 d0             	add    rax,rdx
+  4138bc:	f2 0f 10 04 c3       	movsd  xmm0,QWORD PTR [rbx+rax*8]
+  4138c1:	e8 9a 1a ff ff       	call   405360 <nearbyint@plt>
+  4138c6:	f2 0f 10 0d b2 db 06 	movsd  xmm1,QWORD PTR [rip+0x6dbb2]        # 481480 <_IO_stdin_used+0x4480>
+  4138cd:	00 
+  4138ce:	66 0f 2f c1          	comisd xmm0,xmm1
+  4138d2:	0f 83 60 22 00 00    	jae    415b38 <MEMORY_T::POKE64(double, double)+0xc268>
+  4138d8:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  4138dd:	0f b6 c4             	movzx  eax,ah
+  4138e0:	66 0f ef c0          	pxor   xmm0,xmm0
+  4138e4:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  4138e9:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4138ee:	f2 0f 11 80 40 14 00 	movsd  QWORD PTR [rax+0x1440],xmm0
+  4138f5:	00 
+;		   case peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
+  4138f6:	e9 f5 80 ff ff       	jmp    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;      loop
+;      poke64(49412d,&B00000000) 'Screen Unlock     
+  4138fb:	f2 0f 10 35 05 db 06 	movsd  xmm6,QWORD PTR [rip+0x6db05]        # 481408 <_IO_stdin_used+0x4408>
+  413902:	00 
+  413903:	66 0f ef ed          	pxor   xmm5,xmm5
+  413907:	f2 0f 11 6c 24 18    	movsd  QWORD PTR [rsp+0x18],xmm5
+  41390d:	f2 0f 11 34 24       	movsd  QWORD PTR [rsp],xmm6
+  413912:	66 0f 28 c6          	movapd xmm0,xmm6
+  413916:	e9 e9 5f ff ff       	jmp    409904 <MEMORY_T::POKE64(double, double)+0x34>
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  41391b:	f2 0f 5c c1          	subsd  xmm0,xmm1
+  41391f:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  413924:	48 0f ba f8 3f       	btc    rax,0x3f
+  413929:	e9 fb ed ff ff       	jmp    412729 <MEMORY_T::POKE64(double, double)+0x8e59>
+;   poke64(49154d,&H00):poke64(49155d,&H66):poke64(49156d,&H99)
+  41392e:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  413933:	f2 0f 10 05 e5 da 06 	movsd  xmm0,QWORD PTR [rip+0x6dae5]        # 481420 <_IO_stdin_used+0x4420>
+  41393a:	00 
+  41393b:	66 0f ef c9          	pxor   xmm1,xmm1
+  41393f:	e8 8c 5f ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  413944:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  413949:	f2 0f 10 0d e7 da 06 	movsd  xmm1,QWORD PTR [rip+0x6dae7]        # 481438 <_IO_stdin_used+0x4438>
+  413950:	00 
+  413951:	f2 0f 10 05 cf da 06 	movsd  xmm0,QWORD PTR [rip+0x6dacf]        # 481428 <_IO_stdin_used+0x4428>
+  413958:	00 
+  413959:	e8 72 5f ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  41395e:	f2 0f 10 0d 32 da 06 	movsd  xmm1,QWORD PTR [rip+0x6da32]        # 481398 <_IO_stdin_used+0x4398>
+  413965:	00 
+  413966:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  41396b:	f2 0f 10 05 bd da 06 	movsd  xmm0,QWORD PTR [rip+0x6dabd]        # 481430 <_IO_stdin_used+0x4430>
+  413972:	00 
+  413973:	e8 58 5f ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L931
+  413978:	e9 0b 7d ff ff       	jmp    40b688 <MEMORY_T::POKE64(double, double)+0x1db8>
+;   poke64(49158,&H00):poke64(49159,&H00):poke64(49160,&HCC)
+  41397d:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  413982:	f2 0f 10 05 ae db 06 	movsd  xmm0,QWORD PTR [rip+0x6dbae]        # 481538 <_IO_stdin_used+0x4538>
+  413989:	00 
+  41398a:	66 0f ef c9          	pxor   xmm1,xmm1
+  41398e:	e8 3d 5f ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  413993:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  413998:	66 0f ef c9          	pxor   xmm1,xmm1
+  41399c:	f2 0f 10 05 9c db 06 	movsd  xmm0,QWORD PTR [rip+0x6db9c]        # 481540 <_IO_stdin_used+0x4540>
+  4139a3:	00 
+  4139a4:	e8 27 5f ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  4139a9:	f2 0f 10 0d 8f da 06 	movsd  xmm1,QWORD PTR [rip+0x6da8f]        # 481440 <_IO_stdin_used+0x4440>
+  4139b0:	00 
+  4139b1:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4139b6:	f2 0f 10 05 8a db 06 	movsd  xmm0,QWORD PTR [rip+0x6db8a]        # 481548 <_IO_stdin_used+0x4548>
+  4139bd:	00 
+  4139be:	e8 0d 5f ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L2086
+  4139c3:	e9 28 80 ff ff       	jmp    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;    case 49530: mov(mem64(49154),mem64(49460)) ' move mem64(49154), mem64(49460)
+  4139c8:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4139cd:	f2 0f 10 80 a0 09 06 	movsd  xmm0,QWORD PTR [rax+0x609a0]
+  4139d4:	00 
+  4139d5:	f2 0f 11 80 10 00 06 	movsd  QWORD PTR [rax+0x60010],xmm0
+  4139dc:	00 
+;    case 49531: mov(mem64(49154),mem64(49460)) ' move mem64(49154), mem64(49460)
+  4139dd:	e9 1e 8a ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;   poke64(49158,&H00):poke64(49159,&H00):poke64(49160,&HFF)
+  4139e2:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4139e7:	f2 0f 10 05 49 db 06 	movsd  xmm0,QWORD PTR [rip+0x6db49]        # 481538 <_IO_stdin_used+0x4538>
+  4139ee:	00 
+  4139ef:	66 0f ef c9          	pxor   xmm1,xmm1
+  4139f3:	e8 d8 5e ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  4139f8:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4139fd:	66 0f ef c9          	pxor   xmm1,xmm1
+  413a01:	f2 0f 10 05 37 db 06 	movsd  xmm0,QWORD PTR [rip+0x6db37]        # 481540 <_IO_stdin_used+0x4540>
+  413a08:	00 
+  413a09:	e8 c2 5e ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  413a0e:	f2 0f 10 0d a2 d9 06 	movsd  xmm1,QWORD PTR [rip+0x6d9a2]        # 4813b8 <_IO_stdin_used+0x43b8>
+  413a15:	00 
+  413a16:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  413a1b:	f2 0f 10 05 25 db 06 	movsd  xmm0,QWORD PTR [rip+0x6db25]        # 481548 <_IO_stdin_used+0x4548>
+  413a22:	00 
+  413a23:	e8 a8 5e ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L2086
+  413a28:	e9 c3 7f ff ff       	jmp    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;    case 49533: mov(mem64(49155),mem64(49460)) ' move mem64(49155), mem64(49460)
+  413a2d:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  413a32:	f2 0f 10 80 a0 09 06 	movsd  xmm0,QWORD PTR [rax+0x609a0]
+  413a39:	00 
+  413a3a:	f2 0f 11 80 18 00 06 	movsd  QWORD PTR [rax+0x60018],xmm0
+  413a41:	00 
+;    case 49534: mov(mem64(49155),mem64(49460)) ' move mem64(49155), mem64(49460)
+  413a42:	e9 b9 89 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;    case 49536: mov(mem64(49156),mem64(49460)) ' move mem64(49156), mem64(49460)
+  413a47:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  413a4c:	f2 0f 10 80 a0 09 06 	movsd  xmm0,QWORD PTR [rax+0x609a0]
+  413a53:	00 
+  413a54:	f2 0f 11 80 20 00 06 	movsd  QWORD PTR [rax+0x60020],xmm0
+  413a5b:	00 
+;    case 59537: mov(mem64(49156),mem64(49460)) ' move mem64(49156), mem64(49460)
+  413a5c:	e9 9f 89 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;    case 59539: mov(mem64(49157),mem64(49460)) ' move mem64(49157), mem64(49460)
+  413a61:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  413a66:	f2 0f 10 80 a0 09 06 	movsd  xmm0,QWORD PTR [rax+0x609a0]
+  413a6d:	00 
+  413a6e:	f2 0f 11 80 28 00 06 	movsd  QWORD PTR [rax+0x60028],xmm0
+  413a75:	00 
+;    case 59560: mov(mem64(49157),mem64(49460)) ' move mem64(49157), mem64(49460)
+  413a76:	e9 85 89 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;   poke64(49154d,&H00):poke64(49155d,&H66):poke64(49156d,&HCC)
+  413a7b:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  413a80:	f2 0f 10 05 98 d9 06 	movsd  xmm0,QWORD PTR [rip+0x6d998]        # 481420 <_IO_stdin_used+0x4420>
+  413a87:	00 
+  413a88:	66 0f ef c9          	pxor   xmm1,xmm1
+  413a8c:	e8 3f 5e ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  413a91:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  413a96:	f2 0f 10 0d 9a d9 06 	movsd  xmm1,QWORD PTR [rip+0x6d99a]        # 481438 <_IO_stdin_used+0x4438>
+  413a9d:	00 
+  413a9e:	f2 0f 10 05 82 d9 06 	movsd  xmm0,QWORD PTR [rip+0x6d982]        # 481428 <_IO_stdin_used+0x4428>
+  413aa5:	00 
+  413aa6:	e8 25 5e ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  413aab:	f2 0f 10 0d 8d d9 06 	movsd  xmm1,QWORD PTR [rip+0x6d98d]        # 481440 <_IO_stdin_used+0x4440>
+  413ab2:	00 
+  413ab3:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  413ab8:	f2 0f 10 05 70 d9 06 	movsd  xmm0,QWORD PTR [rip+0x6d970]        # 481430 <_IO_stdin_used+0x4430>
+  413abf:	00 
+  413ac0:	e8 0b 5e ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L931
+  413ac5:	e9 be 7b ff ff       	jmp    40b688 <MEMORY_T::POKE64(double, double)+0x1db8>
+;   cmp v eq peek(ubyte,@nibbles(&B0110)) jmp L1576
+  413aca:	0f b6 1d b5 d2 09 00 	movzx  ebx,BYTE PTR [rip+0x9d2b5]        # 4b0d86 <NIBBLES$+0x6>
+  413ad1:	66 0f ef c0          	pxor   xmm0,xmm0
+  413ad5:	f2 48 0f 2a c3       	cvtsi2sd xmm0,rbx
+  413ada:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  413ae0:	48 89 5c 24 30       	mov    QWORD PTR [rsp+0x30],rbx
+  413ae5:	0f 8a d2 21 00 00    	jp     415cbd <MEMORY_T::POKE64(double, double)+0xc3ed>
+  413aeb:	0f 85 cc 21 00 00    	jne    415cbd <MEMORY_T::POKE64(double, double)+0xc3ed>
+;   mov(mem64(49457),mem64(49456) shl 24 add &H003300)
+  413af1:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  413af6:	f2 0f 10 80 80 09 06 	movsd  xmm0,QWORD PTR [rax+0x60980]
+  413afd:	00 
+  413afe:	e8 5d 18 ff ff       	call   405360 <nearbyint@plt>
+  413b03:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  413b08:	66 0f ef c0          	pxor   xmm0,xmm0
+  413b0c:	48 c1 e0 18          	shl    rax,0x18
+  413b10:	48 05 00 33 00 00    	add    rax,0x3300
+  413b16:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+;   jmp L1826
+  413b1b:	e9 67 7d ff ff       	jmp    40b887 <MEMORY_T::POKE64(double, double)+0x1fb7>
+;    case 59562: mov(mem64(49355),mem64(49460)) ' move mem64(49355), mem64(49460)
+  413b20:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  413b25:	f2 0f 10 80 a0 09 06 	movsd  xmm0,QWORD PTR [rax+0x609a0]
+  413b2c:	00 
+  413b2d:	f2 0f 11 80 58 06 06 	movsd  QWORD PTR [rax+0x60658],xmm0
+  413b34:	00 
+;    case 59563: mov(mem64(49358),mem64(49460)) ' move mem64(49358), mem64(49460)
+  413b35:	e9 c6 88 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;    case 59564: mov(mem64(49356),mem64(49460)) ' move mem64(49356), mem64(49460)
+  413b3a:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  413b3f:	f2 0f 10 80 a0 09 06 	movsd  xmm0,QWORD PTR [rax+0x609a0]
+  413b46:	00 
+  413b47:	f2 0f 11 80 60 06 06 	movsd  QWORD PTR [rax+0x60660],xmm0
+  413b4e:	00 
+;    case 59565: mov(mem64(49359),mem64(49460)) ' move mem64(49359), mem64(49460)
+  413b4f:	e9 ac 88 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;   poke64(49154d,&H00):poke64(49155d,&H66):poke64(49156d,&HFF)
+  413b54:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  413b59:	f2 0f 10 05 bf d8 06 	movsd  xmm0,QWORD PTR [rip+0x6d8bf]        # 481420 <_IO_stdin_used+0x4420>
+  413b60:	00 
+  413b61:	66 0f ef c9          	pxor   xmm1,xmm1
+  413b65:	e8 66 5d ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  413b6a:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  413b6f:	f2 0f 10 0d c1 d8 06 	movsd  xmm1,QWORD PTR [rip+0x6d8c1]        # 481438 <_IO_stdin_used+0x4438>
+  413b76:	00 
+  413b77:	f2 0f 10 05 a9 d8 06 	movsd  xmm0,QWORD PTR [rip+0x6d8a9]        # 481428 <_IO_stdin_used+0x4428>
+  413b7e:	00 
+  413b7f:	e8 4c 5d ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  413b84:	f2 0f 10 0d 2c d8 06 	movsd  xmm1,QWORD PTR [rip+0x6d82c]        # 4813b8 <_IO_stdin_used+0x43b8>
+  413b8b:	00 
+  413b8c:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  413b91:	f2 0f 10 05 97 d8 06 	movsd  xmm0,QWORD PTR [rip+0x6d897]        # 481430 <_IO_stdin_used+0x4430>
+  413b98:	00 
+  413b99:	e8 32 5d ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L931
+  413b9e:	e9 e5 7a ff ff       	jmp    40b688 <MEMORY_T::POKE64(double, double)+0x1db8>
 ;end def
-  44fb0b:	5b                   	pop    rbx
-  44fb0c:	c3                   	ret    
-  44fb0d:	0f 1f 00             	nop    DWORD PTR [rax]
-
-000000000044fb10 <INS_BMI>:
-;  if Cpu->F.n then
-  44fb10:	80 3f 00             	cmp    BYTE PTR [rdi],0x0
-  44fb13:	78 0b                	js     44fb20 <INS_BMI+0x10>
-  44fb15:	c3                   	ret    
-  44fb16:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  44fb1d:	00 00 00 
-;def INS_BMI(byval Cpu as CPU6510_T)
-  44fb20:	53                   	push   rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44fb21:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44fb25:	66 0f ef c0          	pxor   xmm0,xmm0
-  44fb29:	48 89 fb             	mov    rbx,rdi
-  44fb2c:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44fb30:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44fb34:	e8 37 fe ff ff       	call   44f970 <MEMORY_T::READBYTE(double)>
-  44fb39:	66 98                	cbw    
-  44fb3b:	66 03 43 04          	add    ax,WORD PTR [rbx+0x4]
-;    Cpu->pc=v.u16
-  44fb3f:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
+  413ba3:	e8 d8 1c ff ff       	call   405880 <__stack_chk_fail@plt>
+;		   case peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
+  413ba8:	0f b6 1d dc d1 09 00 	movzx  ebx,BYTE PTR [rip+0x9d1dc]        # 4b0d8b <NIBBLES$+0xb>
+  413baf:	89 d1                	mov    ecx,edx
+  413bb1:	66 0f ef c0          	pxor   xmm0,xmm0
+  413bb5:	49 89 df             	mov    r15,rbx
+  413bb8:	49 d3 e7             	shl    r15,cl
+  413bbb:	4c 89 f9             	mov    rcx,r15
+  413bbe:	48 01 c1             	add    rcx,rax
+  413bc1:	f2 48 0f 2a c1       	cvtsi2sd xmm0,rcx
+  413bc6:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  413bcc:	0f 8a db 1f 00 00    	jp     415bad <MEMORY_T::POKE64(double, double)+0xc2dd>
+  413bd2:	0f 85 d5 1f 00 00    	jne    415bad <MEMORY_T::POKE64(double, double)+0xc2dd>
+;		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1000))
+  413bd8:	0f b6 3d ad d1 09 00 	movzx  edi,BYTE PTR [rip+0x9d1ad]        # 4b0d8c <NIBBLES$+0xc>
+  413bdf:	44 89 d8             	mov    eax,r11d
+  413be2:	66 0f ef c0          	pxor   xmm0,xmm0
+  413be6:	83 e0 3f             	and    eax,0x3f
+  413be9:	89 fa                	mov    edx,edi
+  413beb:	49 89 ff             	mov    r15,rdi
+  413bee:	83 e2 3f             	and    edx,0x3f
+  413bf1:	89 d1                	mov    ecx,edx
+  413bf3:	49 d3 e7             	shl    r15,cl
+  413bf6:	4c 89 f9             	mov    rcx,r15
+  413bf9:	4c 01 c1             	add    rcx,r8
+  413bfc:	4c 8d 04 19          	lea    r8,[rcx+rbx*1]
+  413c00:	89 c1                	mov    ecx,eax
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  413c02:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+;		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1000))
+  413c07:	48 d3 e6             	shl    rsi,cl
+  413c0a:	89 d1                	mov    ecx,edx
+  413c0c:	49 d3 e1             	shl    r9,cl
+  413c0f:	89 c1                	mov    ecx,eax
+  413c11:	49 8d 34 30          	lea    rsi,[r8+rsi*1]
+  413c15:	48 d3 e7             	shl    rdi,cl
+  413c18:	48 89 f8             	mov    rax,rdi
+  413c1b:	4c 01 c8             	add    rax,r9
+  413c1e:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  413c23:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  413c28:	f2 0f 11 04 f0       	movsd  QWORD PTR [rax+rsi*8],xmm0
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  413c2d:	0f b6 0d 54 d1 09 00 	movzx  ecx,BYTE PTR [rip+0x9d154]        # 4b0d88 <NIBBLES$+0x8>
+  413c34:	0f b6 05 46 d1 09 00 	movzx  eax,BYTE PTR [rip+0x9d146]        # 4b0d81 <NIBBLES$+0x1>
+  413c3b:	0f b6 35 4a d1 09 00 	movzx  esi,BYTE PTR [rip+0x9d14a]        # 4b0d8c <NIBBLES$+0xc>
+  413c42:	48 d3 e0             	shl    rax,cl
+  413c45:	48 89 c2             	mov    rdx,rax
+  413c48:	89 f1                	mov    ecx,esi
+  413c4a:	40 0f b6 c6          	movzx  eax,sil
+  413c4e:	48 d3 e0             	shl    rax,cl
+  413c51:	0f b6 0d 2c d1 09 00 	movzx  ecx,BYTE PTR [rip+0x9d12c]        # 4b0d84 <NIBBLES$+0x4>
+  413c58:	48 01 c2             	add    rdx,rax
+  413c5b:	0f b6 05 29 d1 09 00 	movzx  eax,BYTE PTR [rip+0x9d129]        # 4b0d8b <NIBBLES$+0xb>
+  413c62:	48 01 c2             	add    rdx,rax
+  413c65:	0f b6 05 16 d1 09 00 	movzx  eax,BYTE PTR [rip+0x9d116]        # 4b0d82 <NIBBLES$+0x2>
+  413c6c:	48 d3 e0             	shl    rax,cl
+  413c6f:	48 01 d0             	add    rax,rdx
+  413c72:	f2 0f 10 04 c3       	movsd  xmm0,QWORD PTR [rbx+rax*8]
+  413c77:	e8 e4 16 ff ff       	call   405360 <nearbyint@plt>
+  413c7c:	f2 0f 10 0d fc d7 06 	movsd  xmm1,QWORD PTR [rip+0x6d7fc]        # 481480 <_IO_stdin_used+0x4480>
+  413c83:	00 
+  413c84:	66 0f 2f c1          	comisd xmm0,xmm1
+  413c88:	0f 83 0c 1f 00 00    	jae    415b9a <MEMORY_T::POKE64(double, double)+0xc2ca>
+  413c8e:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  413c93:	0f b6 c4             	movzx  eax,ah
+  413c96:	66 0f ef c0          	pxor   xmm0,xmm0
+  413c9a:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  413c9f:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  413ca4:	f2 0f 11 80 40 14 00 	movsd  QWORD PTR [rax+0x1440],xmm0
+  413cab:	00 
+;		   case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)): 
+  413cac:	e9 3f 7d ff ff       	jmp    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+  413cb1:	f2 0f 5c c1          	subsd  xmm0,xmm1
+  413cb5:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  413cba:	48 0f ba f8 3f       	btc    rax,0x3f
+  413cbf:	e9 25 ed ff ff       	jmp    4129e9 <MEMORY_T::POKE64(double, double)+0x9119>
+;   poke64(49158,&H00):poke64(49159,&H33):poke64(49160,&H00)
+  413cc4:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  413cc9:	f2 0f 10 05 67 d8 06 	movsd  xmm0,QWORD PTR [rip+0x6d867]        # 481538 <_IO_stdin_used+0x4538>
+  413cd0:	00 
+  413cd1:	66 0f ef c9          	pxor   xmm1,xmm1
+  413cd5:	e8 f6 5b ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  413cda:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  413cdf:	f2 0f 10 0d e1 d4 06 	movsd  xmm1,QWORD PTR [rip+0x6d4e1]        # 4811c8 <_IO_stdin_used+0x41c8>
+  413ce6:	00 
+  413ce7:	f2 0f 10 05 51 d8 06 	movsd  xmm0,QWORD PTR [rip+0x6d851]        # 481540 <_IO_stdin_used+0x4540>
+  413cee:	00 
+  413cef:	e8 dc 5b ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  413cf4:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  413cf9:	66 0f ef c9          	pxor   xmm1,xmm1
+  413cfd:	f2 0f 10 05 43 d8 06 	movsd  xmm0,QWORD PTR [rip+0x6d843]        # 481548 <_IO_stdin_used+0x4548>
+  413d04:	00 
+  413d05:	e8 c6 5b ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+;   jmp L2086
+  413d0a:	e9 e1 7c ff ff       	jmp    40b9f0 <MEMORY_T::POKE64(double, double)+0x2120>
+;    case 59577: mov(mem64(49460),mem64(49360)) ' move mem64(49460), mem64(49360)
+  413d0f:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  413d14:	f2 0f 10 80 80 06 06 	movsd  xmm0,QWORD PTR [rax+0x60680]
+  413d1b:	00 
+  413d1c:	f2 0f 11 80 a0 09 06 	movsd  QWORD PTR [rax+0x609a0],xmm0
+  413d23:	00 
+;    case 59578: mov(mem64(49360),mem64(49460)) ' move mem64(49460), mem64(49460)
+  413d24:	e9 d7 86 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;	    close #1
+  413d29:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  413d30:	00 
+  413d31:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  413d38:	00 00 
+  413d3a:	0f 85 18 6a 00 00    	jne    41a758 <MEMORY_T::POKE64(double, double)+0x10e88>
 ;end def
-  44fb43:	5b                   	pop    rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44fb44:	66 89 05 25 31 03 00 	mov    WORD PTR [rip+0x33125],ax        # 482c70 <V$>
+  413d40:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+;	    close #1
+  413d47:	bf 01 00 00 00       	mov    edi,0x1
 ;end def
-  44fb4b:	c3                   	ret    
-  44fb4c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-000000000044fb50 <INS_BNE>:
-;  if Cpu->F.z=peek(ubyte,@nibbles(&B0000)) then
-  44fb50:	0f b6 07             	movzx  eax,BYTE PTR [rdi]
-  44fb53:	d0 e8                	shr    al,1
-  44fb55:	83 e0 01             	and    eax,0x1
-  44fb58:	38 05 42 32 05 00    	cmp    BYTE PTR [rip+0x53242],al        # 4a2da0 <NIBBLES$>
-  44fb5e:	74 08                	je     44fb68 <INS_BNE+0x18>
-  44fb60:	c3                   	ret    
-  44fb61:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-;def INS_BNE(byval Cpu as CPU6510_T)
-  44fb68:	53                   	push   rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44fb69:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44fb6d:	66 0f ef c0          	pxor   xmm0,xmm0
-  44fb71:	48 89 fb             	mov    rbx,rdi
-  44fb74:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44fb78:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44fb7c:	e8 ef fd ff ff       	call   44f970 <MEMORY_T::READBYTE(double)>
-  44fb81:	66 98                	cbw    
-  44fb83:	66 03 43 04          	add    ax,WORD PTR [rbx+0x4]
-;    Cpu->pc=v.u16
-  44fb87:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
+  413d4c:	5b                   	pop    rbx
+  413d4d:	5d                   	pop    rbp
+  413d4e:	41 5c                	pop    r12
+  413d50:	41 5d                	pop    r13
+  413d52:	41 5e                	pop    r14
+  413d54:	41 5f                	pop    r15
+;	    close #1
+  413d56:	e9 65 9d 05 00       	jmp    46dac0 <fb_FileClose>
+;	 filename=filename+lcase(chr(v))
+  413d5b:	f2 0f 10 44 24 18    	movsd  xmm0,QWORD PTR [rsp+0x18]
+  413d61:	e8 fa 15 ff ff       	call   405360 <nearbyint@plt>
+  413d66:	bf 01 00 00 00       	mov    edi,0x1
+  413d6b:	31 c0                	xor    eax,eax
+  413d6d:	f2 48 0f 2c f0       	cvttsd2si rsi,xmm0
+  413d72:	e8 59 16 06 00       	call   4753d0 <fb_CHR>
+  413d77:	31 f6                	xor    esi,esi
+  413d79:	48 89 c7             	mov    rdi,rax
+  413d7c:	e8 ff 30 06 00       	call   476e80 <fb_StrLcase2>
+  413d81:	48 89 c2             	mov    rdx,rax
+  413d84:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  413d8b:	00 
+  413d8c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  413d93:	00 00 
+  413d95:	0f 85 98 50 00 00    	jne    418e33 <MEMORY_T::POKE64(double, double)+0xf563>
 ;end def
-  44fb8b:	5b                   	pop    rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44fb8c:	66 89 05 dd 30 03 00 	mov    WORD PTR [rip+0x330dd],ax        # 482c70 <V$>
+  413d9b:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+;	 filename=filename+lcase(chr(v))
+  413da2:	45 31 c0             	xor    r8d,r8d
+  413da5:	48 83 c9 ff          	or     rcx,0xffffffffffffffff
+  413da9:	48 83 ce ff          	or     rsi,0xffffffffffffffff
 ;end def
-  44fb93:	c3                   	ret    
-  44fb94:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44fb9b:	00 00 00 00 
-  44fb9f:	90                   	nop
-
-000000000044fba0 <INS_BPL>:
-;  if Cpu->F.n=0 then
-  44fba0:	80 3f 00             	cmp    BYTE PTR [rdi],0x0
-  44fba3:	79 0b                	jns    44fbb0 <INS_BPL+0x10>
-  44fba5:	c3                   	ret    
-  44fba6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  44fbad:	00 00 00 
-;def INS_BPL(byval Cpu as CPU6510_T)
-  44fbb0:	53                   	push   rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44fbb1:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44fbb5:	66 0f ef c0          	pxor   xmm0,xmm0
-  44fbb9:	48 89 fb             	mov    rbx,rdi
-  44fbbc:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44fbc0:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44fbc4:	e8 a7 fd ff ff       	call   44f970 <MEMORY_T::READBYTE(double)>
-  44fbc9:	66 98                	cbw    
-  44fbcb:	66 03 43 04          	add    ax,WORD PTR [rbx+0x4]
-;    Cpu->pc=v.u16
-  44fbcf:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
+  413dad:	5b                   	pop    rbx
+;	 filename=filename+lcase(chr(v))
+  413dae:	48 8d 3d 2b ce 07 00 	lea    rdi,[rip+0x7ce2b]        # 490be0 <FILENAME$>
 ;end def
-  44fbd3:	5b                   	pop    rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44fbd4:	66 89 05 95 30 03 00 	mov    WORD PTR [rip+0x33095],ax        # 482c70 <V$>
+  413db5:	5d                   	pop    rbp
+  413db6:	41 5c                	pop    r12
+  413db8:	41 5d                	pop    r13
+  413dba:	41 5e                	pop    r14
+  413dbc:	41 5f                	pop    r15
+;	 filename=filename+lcase(chr(v))
+  413dbe:	e9 2d 1a 06 00       	jmp    4757f0 <fb_StrConcatAssign>
+;	    mov(filename,"tmp.glsl"):  mov(compiler,"")                          ' OpenGL Shading Language
+  413dc3:	45 31 c0             	xor    r8d,r8d
+  413dc6:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  413dca:	b9 09 00 00 00       	mov    ecx,0x9
+  413dcf:	48 8d 15 b1 ca 06 00 	lea    rdx,[rip+0x6cab1]        # 480887 <_IO_stdin_used+0x3887>
+  413dd6:	48 8d 3d 03 ce 07 00 	lea    rdi,[rip+0x7ce03]        # 490be0 <FILENAME$>
+  413ddd:	e8 3e 12 06 00       	call   475020 <fb_StrAssign>
+  413de2:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  413de9:	00 
+  413dea:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  413df1:	00 00 
+  413df3:	0f 85 65 84 00 00    	jne    41c25e <MEMORY_T::POKE64(double, double)+0x1298e>
 ;end def
-  44fbdb:	c3                   	ret    
-  44fbdc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-000000000044fbe0 <INS_BVC>:
-;  if Cpu->F.v=peek(ubyte,@nibbles(&B0000)) then
-  44fbe0:	0f b6 07             	movzx  eax,BYTE PTR [rdi]
-  44fbe3:	c0 e8 06             	shr    al,0x6
-  44fbe6:	83 e0 01             	and    eax,0x1
-  44fbe9:	38 05 b1 31 05 00    	cmp    BYTE PTR [rip+0x531b1],al        # 4a2da0 <NIBBLES$>
-  44fbef:	74 07                	je     44fbf8 <INS_BVC+0x18>
-  44fbf1:	c3                   	ret    
-  44fbf2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-;def INS_BVC(byval Cpu as CPU6510_T)
-  44fbf8:	53                   	push   rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44fbf9:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44fbfd:	66 0f ef c0          	pxor   xmm0,xmm0
-  44fc01:	48 89 fb             	mov    rbx,rdi
-  44fc04:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44fc08:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44fc0c:	e8 5f fd ff ff       	call   44f970 <MEMORY_T::READBYTE(double)>
-  44fc11:	66 98                	cbw    
-  44fc13:	66 03 43 04          	add    ax,WORD PTR [rbx+0x4]
-;    Cpu->pc=v.u16
-  44fc17:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
+  413df9:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+;	    mov(filename,"tmp.glsl"):  mov(compiler,"")                          ' OpenGL Shading Language
+  413e00:	45 31 c0             	xor    r8d,r8d
+  413e03:	b9 01 00 00 00       	mov    ecx,0x1
+  413e08:	48 83 ce ff          	or     rsi,0xffffffffffffffff
 ;end def
-  44fc1b:	5b                   	pop    rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44fc1c:	66 89 05 4d 30 03 00 	mov    WORD PTR [rip+0x3304d],ax        # 482c70 <V$>
+  413e0c:	5b                   	pop    rbx
+;	    mov(filename,"tmp.glsl"):  mov(compiler,"")                          ' OpenGL Shading Language
+  413e0d:	48 8d 15 d3 95 06 00 	lea    rdx,[rip+0x695d3]        # 47d3e7 <_IO_stdin_used+0x3e7>
+  413e14:	48 8d 3d 65 5a 0b 00 	lea    rdi,[rip+0xb5a65]        # 4c9880 <COMPILER$>
 ;end def
-  44fc23:	c3                   	ret    
-  44fc24:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44fc2b:	00 00 00 00 
-  44fc2f:	90                   	nop
-
-000000000044fc30 <INS_BVS>:
-;  if Cpu->F.v then
-  44fc30:	f6 07 40             	test   BYTE PTR [rdi],0x40
-  44fc33:	75 0b                	jne    44fc40 <INS_BVS+0x10>
-  44fc35:	c3                   	ret    
-  44fc36:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  44fc3d:	00 00 00 
-;def INS_BVS(byval Cpu as CPU6510_T)
-  44fc40:	53                   	push   rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44fc41:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44fc45:	66 0f ef c0          	pxor   xmm0,xmm0
-  44fc49:	48 89 fb             	mov    rbx,rdi
-  44fc4c:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44fc50:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44fc54:	e8 17 fd ff ff       	call   44f970 <MEMORY_T::READBYTE(double)>
-  44fc59:	66 98                	cbw    
-  44fc5b:	66 03 43 04          	add    ax,WORD PTR [rbx+0x4]
-;    Cpu->pc=v.u16
-  44fc5f:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
+  413e1b:	5d                   	pop    rbp
+  413e1c:	41 5c                	pop    r12
+  413e1e:	41 5d                	pop    r13
+  413e20:	41 5e                	pop    r14
+  413e22:	41 5f                	pop    r15
+;	    mov(filename,"tmp.glsl"):  mov(compiler,"")                          ' OpenGL Shading Language
+  413e24:	e9 f7 11 06 00       	jmp    475020 <fb_StrAssign>
+;       select case mem64(mem64(49418))
+  413e29:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  413e2e:	f2 0f 10 90 50 08 06 	movsd  xmm2,QWORD PTR [rax+0x60850]
+  413e35:	00 
+  413e36:	66 0f 28 c2          	movapd xmm0,xmm2
+  413e3a:	f2 0f 11 14 24       	movsd  QWORD PTR [rsp],xmm2
+  413e3f:	e8 1c 15 ff ff       	call   405360 <nearbyint@plt>
+  413e44:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+;	          case in range(&H000000001, &H000000076)
+  413e49:	f2 0f 10 1d ff d2 06 	movsd  xmm3,QWORD PTR [rip+0x6d2ff]        # 481150 <_IO_stdin_used+0x4150>
+  413e50:	00 
+;       select case mem64(mem64(49418))
+  413e51:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+;	          case in range(&H000000001, &H000000076)
+  413e56:	f2 0f 11 5c 24 18    	movsd  QWORD PTR [rsp+0x18],xmm3
+;       select case mem64(mem64(49418))
+  413e5c:	48 8d 1c c3          	lea    rbx,[rbx+rax*8]
+  413e60:	f2 0f 10 03          	movsd  xmm0,QWORD PTR [rbx]
+;	          case in range(&H000000001, &H000000076)
+  413e64:	66 0f 2f d8          	comisd xmm3,xmm0
+  413e68:	77 0e                	ja     413e78 <MEMORY_T::POKE64(double, double)+0xa5a8>
+  413e6a:	66 0f 2f 05 fe d7 06 	comisd xmm0,QWORD PTR [rip+0x6d7fe]        # 481670 <_IO_stdin_used+0x4670>
+  413e71:	00 
+  413e72:	0f 86 99 64 00 00    	jbe    41a311 <MEMORY_T::POKE64(double, double)+0x10a41>
+;              case in range(&H000000077, &H00000007F)
+  413e78:	f2 0f 10 0d f8 d7 06 	movsd  xmm1,QWORD PTR [rip+0x6d7f8]        # 481678 <_IO_stdin_used+0x4678>
+  413e7f:	00 
+  413e80:	66 0f 2f c8          	comisd xmm1,xmm0
+  413e84:	77 0e                	ja     413e94 <MEMORY_T::POKE64(double, double)+0xa5c4>
+  413e86:	66 0f 2f 05 f2 d7 06 	comisd xmm0,QWORD PTR [rip+0x6d7f2]        # 481680 <_IO_stdin_used+0x4680>
+  413e8d:	00 
+  413e8e:	0f 86 f3 65 00 00    	jbe    41a487 <MEMORY_T::POKE64(double, double)+0x10bb7>
+;              case in range (&H000000080, &H000000086)
+  413e94:	f2 0f 10 0d 3c d4 06 	movsd  xmm1,QWORD PTR [rip+0x6d43c]        # 4812d8 <_IO_stdin_used+0x42d8>
+  413e9b:	00 
+  413e9c:	66 0f 2f c8          	comisd xmm1,xmm0
+  413ea0:	77 0e                	ja     413eb0 <MEMORY_T::POKE64(double, double)+0xa5e0>
+  413ea2:	66 0f 2f 05 5e d4 06 	comisd xmm0,QWORD PTR [rip+0x6d45e]        # 481308 <_IO_stdin_used+0x4308>
+  413ea9:	00 
+  413eaa:	0f 86 08 6a 00 00    	jbe    41a8b8 <MEMORY_T::POKE64(double, double)+0x10fe8>
+;              case in range(&H000000087, &H0000000A2)
+  413eb0:	f2 0f 10 0d 58 d4 06 	movsd  xmm1,QWORD PTR [rip+0x6d458]        # 481310 <_IO_stdin_used+0x4310>
+  413eb7:	00 
+  413eb8:	66 0f 2f c8          	comisd xmm1,xmm0
+  413ebc:	0f 87 b9 69 00 00    	ja     41a87b <MEMORY_T::POKE64(double, double)+0x10fab>
+  413ec2:	66 0f 2f 05 8e d5 06 	comisd xmm0,QWORD PTR [rip+0x6d58e]        # 481458 <_IO_stdin_used+0x4458>
+  413ec9:	00 
+  413eca:	0f 86 42 69 00 00    	jbe    41a812 <MEMORY_T::POKE64(double, double)+0x10f42>
+  413ed0:	f2 0f 10 15 08 de 06 	movsd  xmm2,QWORD PTR [rip+0x6de08]        # 481ce0 <_IO_stdin_used+0x4ce0>
+  413ed7:	00 
+  413ed8:	f2 0f 10 1d 80 dd 06 	movsd  xmm3,QWORD PTR [rip+0x6dd80]        # 481c60 <_IO_stdin_used+0x4c60>
+  413edf:	00 
+  413ee0:	f2 0f 10 25 70 dd 06 	movsd  xmm4,QWORD PTR [rip+0x6dd70]        # 481c58 <_IO_stdin_used+0x4c58>
+  413ee7:	00 
+  413ee8:	f2 0f 10 0d 60 dd 06 	movsd  xmm1,QWORD PTR [rip+0x6dd60]        # 481c50 <_IO_stdin_used+0x4c50>
+  413eef:	00 
+  413ef0:	f2 0f 11 54 24 30    	movsd  QWORD PTR [rsp+0x30],xmm2
+  413ef6:	f2 0f 11 5c 24 60    	movsd  QWORD PTR [rsp+0x60],xmm3
+  413efc:	f2 0f 11 64 24 20    	movsd  QWORD PTR [rsp+0x20],xmm4
+  413f02:	f2 0f 11 4c 24 40    	movsd  QWORD PTR [rsp+0x40],xmm1
+;       mem64(mem64(49418) add 3) shl  16 add mem64(mem64(49418) add 4) shl 08 add mem64(mem64(49418) add 5))
+  413f08:	f2 0f 10 44 24 18    	movsd  xmm0,QWORD PTR [rsp+0x18]
+  413f0e:	f2 0f 58 04 24       	addsd  xmm0,QWORD PTR [rsp]
+  413f13:	e8 48 14 ff ff       	call   405360 <nearbyint@plt>
+  413f18:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+  413f1d:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  413f22:	f2 0f 10 04 c3       	movsd  xmm0,QWORD PTR [rbx+rax*8]
+  413f27:	e8 34 14 ff ff       	call   405360 <nearbyint@plt>
+  413f2c:	66 49 0f 7e c5       	movq   r13,xmm0
+  413f31:	f2 0f 10 44 24 60    	movsd  xmm0,QWORD PTR [rsp+0x60]
+  413f37:	f2 0f 58 04 24       	addsd  xmm0,QWORD PTR [rsp]
+  413f3c:	e8 1f 14 ff ff       	call   405360 <nearbyint@plt>
+  413f41:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  413f46:	f2 0f 10 04 c3       	movsd  xmm0,QWORD PTR [rbx+rax*8]
+  413f4b:	e8 10 14 ff ff       	call   405360 <nearbyint@plt>
+  413f50:	66 49 0f 7e c4       	movq   r12,xmm0
+  413f55:	f2 0f 10 04 24       	movsd  xmm0,QWORD PTR [rsp]
+  413f5a:	f2 0f 58 44 24 30    	addsd  xmm0,QWORD PTR [rsp+0x30]
+  413f60:	e8 fb 13 ff ff       	call   405360 <nearbyint@plt>
+  413f65:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  413f6a:	f2 0f 10 04 c3       	movsd  xmm0,QWORD PTR [rbx+rax*8]
+  413f6f:	e8 ec 13 ff ff       	call   405360 <nearbyint@plt>
+  413f74:	66 48 0f 7e c5       	movq   rbp,xmm0
+  413f79:	f2 0f 10 04 24       	movsd  xmm0,QWORD PTR [rsp]
+  413f7e:	f2 0f 58 44 24 20    	addsd  xmm0,QWORD PTR [rsp+0x20]
+  413f84:	e8 d7 13 ff ff       	call   405360 <nearbyint@plt>
+  413f89:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  413f8e:	f2 0f 10 04 c3       	movsd  xmm0,QWORD PTR [rbx+rax*8]
+  413f93:	e8 c8 13 ff ff       	call   405360 <nearbyint@plt>
+  413f98:	66 48 0f 7e c3       	movq   rbx,xmm0
+  413f9d:	f2 0f 10 04 24       	movsd  xmm0,QWORD PTR [rsp]
+  413fa2:	f2 0f 58 44 24 40    	addsd  xmm0,QWORD PTR [rsp+0x40]
+  413fa8:	e8 b3 13 ff ff       	call   405360 <nearbyint@plt>
+  413fad:	66 49 0f 6e e5       	movq   xmm4,r13
+  413fb2:	66 49 0f 6e cc       	movq   xmm1,r12
+  413fb7:	66 48 0f 6e ed       	movq   xmm5,rbp
+  413fbc:	f2 48 0f 2c c4       	cvttsd2si rax,xmm4
+  413fc1:	66 48 0f 6e f3       	movq   xmm6,rbx
+  413fc6:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+  413fcb:	48 c1 e0 20          	shl    rax,0x20
+  413fcf:	48 89 c2             	mov    rdx,rax
+  413fd2:	f2 48 0f 2c c1       	cvttsd2si rax,xmm1
+  413fd7:	66 0f ef c9          	pxor   xmm1,xmm1
+  413fdb:	48 c1 e0 18          	shl    rax,0x18
+  413fdf:	48 01 c2             	add    rdx,rax
+  413fe2:	f2 48 0f 2c c5       	cvttsd2si rax,xmm5
+  413fe7:	48 c1 e0 10          	shl    rax,0x10
+  413feb:	48 01 c2             	add    rdx,rax
+  413fee:	f2 48 0f 2c c6       	cvttsd2si rax,xmm6
+  413ff3:	48 c1 e0 08          	shl    rax,0x8
+  413ff7:	48 01 d0             	add    rax,rdx
+  413ffa:	f2 48 0f 2a c8       	cvtsi2sd xmm1,rax
+  413fff:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  414004:	f2 0f 58 0c c3       	addsd  xmm1,QWORD PTR [rbx+rax*8]
+  414009:	66 0f 28 c1          	movapd xmm0,xmm1
+  41400d:	f2 0f 11 8b 88 08 06 	movsd  QWORD PTR [rbx+0x60888],xmm1
+  414014:	00 
+;              case in range(&H000004000, &H000007E70) ' text memory
+  414015:	f2 0f 10 0d 6b d6 06 	movsd  xmm1,QWORD PTR [rip+0x6d66b]        # 481688 <_IO_stdin_used+0x4688>
+  41401c:	00 
+  41401d:	66 0f 2f c8          	comisd xmm1,xmm0
+  414021:	77 0e                	ja     414031 <MEMORY_T::POKE64(double, double)+0xa761>
+  414023:	66 0f 2f 05 65 d6 06 	comisd xmm0,QWORD PTR [rip+0x6d665]        # 481690 <_IO_stdin_used+0x4690>
+  41402a:	00 
+  41402b:	0f 86 f0 68 00 00    	jbe    41a921 <MEMORY_T::POKE64(double, double)+0x11051>
+;              case in range(&H0000A0000, &H0000AFFFF) ' graphics port addresses
+  414031:	f2 0f 10 0d 5f d6 06 	movsd  xmm1,QWORD PTR [rip+0x6d65f]        # 481698 <_IO_stdin_used+0x4698>
+  414038:	00 
+  414039:	66 0f 2f c8          	comisd xmm1,xmm0
+  41403d:	0f 87 bd 83 ff ff    	ja     40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+  414043:	66 0f 2f 05 55 d6 06 	comisd xmm0,QWORD PTR [rip+0x6d655]        # 4816a0 <_IO_stdin_used+0x46a0>
+  41404a:	00 
+  41404b:	0f 87 af 83 ff ff    	ja     40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;	               pokeb mem64(49425), 0: mov(mem64(49418),mem64(49418) add 4)		    	
+  414051:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  414056:	66 0f ef c9          	pxor   xmm1,xmm1
+  41405a:	e8 e1 83 03 00       	call   44c440 <MEMORY_T::POKEB(double, double)>
+  41405f:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  414064:	f2 0f 10 44 24 20    	movsd  xmm0,QWORD PTR [rsp+0x20]
+  41406a:	f2 0f 58 80 50 08 06 	addsd  xmm0,QWORD PTR [rax+0x60850]
+  414071:	00 
+  414072:	f2 0f 11 80 50 08 06 	movsd  QWORD PTR [rax+0x60850],xmm0
+  414079:	00 
+  41407a:	e9 81 83 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;	        case peek(ubyte,@nibbles(&B0000))
+  41407f:	f2 0f 10 7c 24 68    	movsd  xmm7,QWORD PTR [rsp+0x68]
+  414085:	66 0f 2e 7c 24 18    	ucomisd xmm7,QWORD PTR [rsp+0x18]
+  41408b:	7a 06                	jp     414093 <MEMORY_T::POKE64(double, double)+0xa7c3>
+  41408d:	0f 84 d1 15 00 00    	je     415664 <MEMORY_T::POKE64(double, double)+0xbd94>
+;	        case peek(ubyte,@nibbles(&B0001))
+  414093:	66 0f ef c0          	pxor   xmm0,xmm0
+  414097:	f2 48 0f 2a 44 24 50 	cvtsi2sd xmm0,QWORD PTR [rsp+0x50]
+  41409e:	66 0f 2e 44 24 18    	ucomisd xmm0,QWORD PTR [rsp+0x18]
+  4140a4:	0f 8a e3 15 00 00    	jp     41568d <MEMORY_T::POKE64(double, double)+0xbdbd>
+  4140aa:	0f 85 dd 15 00 00    	jne    41568d <MEMORY_T::POKE64(double, double)+0xbdbd>
+;	         mov(mem64(49379),802)
+  4140b0:	f3 0f 7e 05 48 db 06 	movq   xmm0,QWORD PTR [rip+0x6db48]        # 481c00 <_IO_stdin_used+0x4c00>
+  4140b7:	00 
+  4140b8:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4140bd:	0f 11 80 18 07 06 00 	movups XMMWORD PTR [rax+0x60718],xmm0
+;	        case peek(ubyte,@nibbles(&B0010))
+  4140c4:	e9 37 83 ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;         screenlock
+  4140c9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4140d0:	00 
+  4140d1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4140d8:	00 00 
+  4140da:	0f 85 44 4d 00 00    	jne    418e24 <MEMORY_T::POKE64(double, double)+0xf554>
 ;end def
-  44fc63:	5b                   	pop    rbx
-;    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-  44fc64:	66 89 05 05 30 03 00 	mov    WORD PTR [rip+0x33005],ax        # 482c70 <V$>
+  4140e0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4140e7:	5b                   	pop    rbx
+  4140e8:	5d                   	pop    rbp
+  4140e9:	41 5c                	pop    r12
+  4140eb:	41 5d                	pop    r13
+  4140ed:	41 5e                	pop    r14
+  4140ef:	41 5f                	pop    r15
+;         screenlock
+  4140f1:	e9 8a e1 03 00       	jmp    452280 <fb_GfxLock>
+;         mov(mem64(49360), mem64(49357) mul COSTable(mem64(49374)) subt mem64(49355) mul SINTable(mem64(49374)))
+  4140f6:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4140fb:	66 0f 10 98 58 06 06 	movupd xmm3,XMMWORD PTR [rax+0x60658]
+  414102:	00 
+;         mov(mem64(49359), mem64(49356) mul COSTable(mem64(49373)) subt mem64(49357) mul SINTable(mem64(49373)))
+  414103:	f2 0f 10 a0 60 06 06 	movsd  xmm4,QWORD PTR [rax+0x60660]
+  41410a:	00 
+  41410b:	f2 0f 10 80 e8 06 06 	movsd  xmm0,QWORD PTR [rax+0x606e8]
+  414112:	00 
+;         mov(mem64(49360), mem64(49357) mul COSTable(mem64(49374)) subt mem64(49355) mul SINTable(mem64(49374)))
+  414113:	0f 29 5c 24 40       	movaps XMMWORD PTR [rsp+0x40],xmm3
+;         mov(mem64(49359), mem64(49356) mul COSTable(mem64(49373)) subt mem64(49357) mul SINTable(mem64(49373)))
+  414118:	f2 0f 11 24 24       	movsd  QWORD PTR [rsp],xmm4
+  41411d:	e8 3e 12 ff ff       	call   405360 <nearbyint@plt>
+  414122:	48 8b 5c 24 10       	mov    rbx,QWORD PTR [rsp+0x10]
+  414127:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  41412c:	f2 0f 10 04 24       	movsd  xmm0,QWORD PTR [rsp]
+  414131:	f2 0f 10 8b 68 06 06 	movsd  xmm1,QWORD PTR [rbx+0x60668]
+  414138:	00 
+  414139:	48 c1 e0 03          	shl    rax,0x3
+  41413d:	48 8d 94 03 c8 2a 08 	lea    rdx,[rbx+rax*1+0x8082ac8]
+  414144:	08 
+  414145:	48 8d 84 03 88 1f 08 	lea    rax,[rbx+rax*1+0x8081f88]
+  41414c:	08 
+  41414d:	f2 0f 10 2a          	movsd  xmm5,QWORD PTR [rdx]
+  414151:	f2 0f 10 20          	movsd  xmm4,QWORD PTR [rax]
+  414155:	f2 0f 59 c5          	mulsd  xmm0,xmm5
+  414159:	f2 0f 11 6c 24 60    	movsd  QWORD PTR [rsp+0x60],xmm5
+  41415f:	f2 0f 59 e1          	mulsd  xmm4,xmm1
+  414163:	f2 0f 5c c4          	subsd  xmm0,xmm4
+  414167:	f2 0f 11 64 24 30    	movsd  QWORD PTR [rsp+0x30],xmm4
+  41416d:	f2 0f 11 83 78 06 06 	movsd  QWORD PTR [rbx+0x60678],xmm0
+  414174:	00 
+;         mov(mem64(49360), mem64(49357) mul COSTable(mem64(49373)) add  mem64(49356) mul SINTable(mem64(49373)))
+  414175:	f2 0f 59 0a          	mulsd  xmm1,QWORD PTR [rdx]
+;         mov(mem64(49359), mem64(49356) mul COSTable(mem64(49373)) subt mem64(49357) mul SINTable(mem64(49373)))
+  414179:	66 0f 28 f0          	movapd xmm6,xmm0
+  41417d:	f2 0f 11 44 24 20    	movsd  QWORD PTR [rsp+0x20],xmm0
+;         mov(mem64(49360), mem64(49357) mul COSTable(mem64(49373)) add  mem64(49356) mul SINTable(mem64(49373)))
+  414183:	f2 0f 10 04 24       	movsd  xmm0,QWORD PTR [rsp]
+  414188:	f2 0f 59 00          	mulsd  xmm0,QWORD PTR [rax]
+;         mov(mem64(49356), mem64(49359))
+  41418c:	f2 0f 11 b3 60 06 06 	movsd  QWORD PTR [rbx+0x60660],xmm6
+  414193:	00 
+;         mov(mem64(49360), mem64(49357) mul COSTable(mem64(49373)) add  mem64(49356) mul SINTable(mem64(49373)))
+  414194:	f2 0f 58 c8          	addsd  xmm1,xmm0
+;         mov(mem64(49360), mem64(49357) mul COSTable(mem64(49374)) subt mem64(49355) mul SINTable(mem64(49374)))
+  414198:	f2 0f 10 83 f0 06 06 	movsd  xmm0,QWORD PTR [rbx+0x606f0]
+  41419f:	00 
+;         mov(mem64(49360), mem64(49357) mul COSTable(mem64(49373)) add  mem64(49356) mul SINTable(mem64(49373)))
+  4141a0:	f2 0f 11 8b 80 06 06 	movsd  QWORD PTR [rbx+0x60680],xmm1
+  4141a7:	00 
+;         mov(mem64(49357), mem64(49360))
+  4141a8:	f2 0f 11 8b 68 06 06 	movsd  QWORD PTR [rbx+0x60668],xmm1
+  4141af:	00 
+;         mov(mem64(49360), mem64(49357) mul COSTable(mem64(49373)) add  mem64(49356) mul SINTable(mem64(49373)))
+  4141b0:	f2 0f 11 0c 24       	movsd  QWORD PTR [rsp],xmm1
+;         mov(mem64(49360), mem64(49357) mul COSTable(mem64(49374)) subt mem64(49355) mul SINTable(mem64(49374)))
+  4141b5:	e8 a6 11 ff ff       	call   405360 <nearbyint@plt>
+  4141ba:	f2 0f 10 4c 24 40    	movsd  xmm1,QWORD PTR [rsp+0x40]
+  4141c0:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4141c5:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  4141ca:	f2 0f 10 04 24       	movsd  xmm0,QWORD PTR [rsp]
+;         mov(mem64(49359), mem64(49356) mul COSTable(mem64(49373)) subt mem64(49357) mul SINTable(mem64(49373)))
+  4141cf:	66 0f 28 54 24 40    	movapd xmm2,XMMWORD PTR [rsp+0x40]
+;         mov(mem64(49360), mem64(49357) mul COSTable(mem64(49374)) subt mem64(49355) mul SINTable(mem64(49374)))
+  4141d5:	48 c1 e0 03          	shl    rax,0x3
+  4141d9:	48 8d 94 03 c8 2a 08 	lea    rdx,[rbx+rax*1+0x8082ac8]
+  4141e0:	08 
+  4141e1:	48 8d 84 03 88 1f 08 	lea    rax,[rbx+rax*1+0x8081f88]
+  4141e8:	08 
+  4141e9:	f2 0f 59 08          	mulsd  xmm1,QWORD PTR [rax]
+  4141ed:	f2 0f 59 02          	mulsd  xmm0,QWORD PTR [rdx]
+  4141f1:	f2 0f 5c c1          	subsd  xmm0,xmm1
+  4141f5:	f2 0f 11 87 80 06 06 	movsd  QWORD PTR [rdi+0x60680],xmm0
+  4141fc:	00 
+  4141fd:	66 48 0f 7e c3       	movq   rbx,xmm0
+;         mov(mem64(49358), mem64(49355) mul COSTable(mem64(49374)) add  mem64(49357) mul SINTable(mem64(49374)))
+  414202:	f2 0f 10 02          	movsd  xmm0,QWORD PTR [rdx]
+;         mov(mem64(49359), mem64(49356) mul COSTable(mem64(49373)) subt mem64(49357) mul SINTable(mem64(49373)))
+  414206:	66 0f 28 c8          	movapd xmm1,xmm0
+;         mov(mem64(49358), mem64(49355) mul COSTable(mem64(49374)) add  mem64(49357) mul SINTable(mem64(49374)))
+  41420a:	f2 0f 59 87 58 06 06 	mulsd  xmm0,QWORD PTR [rdi+0x60658]
+  414211:	00 
+;         mov(mem64(49359), mem64(49356) mul COSTable(mem64(49373)) subt mem64(49357) mul SINTable(mem64(49373)))
+  414212:	66 0f 16 4c 24 60    	movhpd xmm1,QWORD PTR [rsp+0x60]
+  414218:	66 0f 59 d1          	mulpd  xmm2,xmm1
+;         mov(mem64(49358), mem64(49355) mul COSTable(mem64(49374)) add  mem64(49357) mul SINTable(mem64(49374)))
+  41421c:	f2 0f 10 0c 24       	movsd  xmm1,QWORD PTR [rsp]
+  414221:	f2 0f 59 08          	mulsd  xmm1,QWORD PTR [rax]
+  414225:	66 0f 28 d9          	movapd xmm3,xmm1
+  414229:	f2 0f 58 c1          	addsd  xmm0,xmm1
+  41422d:	66 0f 16 5c 24 30    	movhpd xmm3,QWORD PTR [rsp+0x30]
+  414233:	66 0f 28 eb          	movapd xmm5,xmm3
+  414237:	66 0f 58 ea          	addpd  xmm5,xmm2
+;         mov(mem64(49359), mem64(49356) mul COSTable(mem64(49373)) subt mem64(49357) mul SINTable(mem64(49373)))
+  41423b:	66 0f 5c d3          	subpd  xmm2,xmm3
+;         mov(mem64(49358), mem64(49355) mul COSTable(mem64(49374)) add  mem64(49357) mul SINTable(mem64(49374)))
+  41423f:	f2 0f 11 44 24 60    	movsd  QWORD PTR [rsp+0x60],xmm0
+  414245:	66 0f 28 f2          	movapd xmm6,xmm2
+  414249:	0f 29 6c 24 30       	movaps XMMWORD PTR [rsp+0x30],xmm5
+  41424e:	f2 0f 10 f5          	movsd  xmm6,xmm5
+;         mov(mem64(49359), mem64(49356) mul COSTable(mem64(49373)) subt mem64(49357) mul SINTable(mem64(49373)))
+  414252:	0f 29 54 24 40       	movaps XMMWORD PTR [rsp+0x40],xmm2
+  414257:	0f 29 74 24 50       	movaps XMMWORD PTR [rsp+0x50],xmm6
+;         mov(mem64(49358), mem64(49355) mul COSTable(mem64(49374)) add  mem64(49357) mul SINTable(mem64(49374)))
+  41425c:	f2 0f 11 87 70 06 06 	movsd  QWORD PTR [rdi+0x60670],xmm0
+  414263:	00 
+;         mov(mem64(49378), mem64(49360))
+  414264:	48 89 9f 10 07 06 00 	mov    QWORD PTR [rdi+0x60710],rbx
+;         mov(mem64(49355), mem64(49358))
+  41426b:	f2 0f 11 87 58 06 06 	movsd  QWORD PTR [rdi+0x60658],xmm0
+  414272:	00 
+;         mov(mem64(49358), mem64(49355) mul COSTable(mem64(49375)) subt mem64(49356) mul SINTable(mem64(49375)))
+  414273:	f2 0f 10 87 f8 06 06 	movsd  xmm0,QWORD PTR [rdi+0x606f8]
+  41427a:	00 
+  41427b:	e8 e0 10 ff ff       	call   405360 <nearbyint@plt>
+  414280:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  414285:	f2 0f 10 54 24 20    	movsd  xmm2,QWORD PTR [rsp+0x20]
+  41428b:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  414290:	f2 0f 10 4c 24 60    	movsd  xmm1,QWORD PTR [rsp+0x60]
+  414296:	66 0f 28 64 24 40    	movapd xmm4,XMMWORD PTR [rsp+0x40]
+  41429c:	66 0f c6 64 24 30 01 	shufpd xmm4,XMMWORD PTR [rsp+0x30],0x1
+;         mov(mem64(49367),(mem64(49361) mul mem64(49376) div (mem64(49378) add mem64(49364)) add mem64(49362)))
+  4142a3:	66 0f 10 bf 88 06 06 	movupd xmm7,XMMWORD PTR [rdi+0x60688]
+  4142aa:	00 
+;         mov(mem64(49358), mem64(49355) mul COSTable(mem64(49375)) subt mem64(49356) mul SINTable(mem64(49375)))
+  4142ab:	48 c1 e0 03          	shl    rax,0x3
+  4142af:	48 8d 94 07 c8 2a 08 	lea    rdx,[rdi+rax*1+0x8082ac8]
+  4142b6:	08 
+  4142b7:	48 8d 84 07 88 1f 08 	lea    rax,[rdi+rax*1+0x8081f88]
+  4142be:	08 
+  4142bf:	f2 0f 10 02          	movsd  xmm0,QWORD PTR [rdx]
+  4142c3:	f2 0f 10 18          	movsd  xmm3,QWORD PTR [rax]
+  4142c7:	f2 0f 59 c8          	mulsd  xmm1,xmm0
+  4142cb:	f2 0f 59 d3          	mulsd  xmm2,xmm3
+  4142cf:	f2 0f 5c ca          	subsd  xmm1,xmm2
+  4142d3:	f2 0f 11 8f 70 06 06 	movsd  QWORD PTR [rdi+0x60670],xmm1
+  4142da:	00 
+;         mov(mem64(49359), mem64(49356) mul COSTable(mem64(49375)) add  mem64(49355) mul SINTable(mem64(49375)))
+  4142db:	f2 0f 10 12          	movsd  xmm2,QWORD PTR [rdx]
+  4142df:	f2 0f 10 08          	movsd  xmm1,QWORD PTR [rax]
+;         mov(mem64(49358), mem64(49355) mul COSTable(mem64(49375)) subt mem64(49356) mul SINTable(mem64(49375)))
+  4142e3:	66 0f 14 c2          	unpcklpd xmm0,xmm2
+  4142e7:	66 0f 14 d9          	unpcklpd xmm3,xmm1
+;         mov(mem64(49359), mem64(49356) mul COSTable(mem64(49375)) add  mem64(49355) mul SINTable(mem64(49375)))
+  4142eb:	f2 0f 59 54 24 20    	mulsd  xmm2,QWORD PTR [rsp+0x20]
+;         mov(mem64(49358), mem64(49355) mul COSTable(mem64(49375)) subt mem64(49356) mul SINTable(mem64(49375)))
+  4142f1:	66 0f 59 44 24 50    	mulpd  xmm0,XMMWORD PTR [rsp+0x50]
+;         mov(mem64(49359), mem64(49356) mul COSTable(mem64(49375)) add  mem64(49355) mul SINTable(mem64(49375)))
+  4142f7:	f2 0f 59 4c 24 60    	mulsd  xmm1,QWORD PTR [rsp+0x60]
+;         mov(mem64(49358), mem64(49355) mul COSTable(mem64(49375)) subt mem64(49356) mul SINTable(mem64(49375)))
+  4142fd:	66 0f 59 dc          	mulpd  xmm3,xmm4
+  414301:	66 0f 28 e0          	movapd xmm4,xmm0
+;         mov(mem64(49359), mem64(49356) mul COSTable(mem64(49375)) add  mem64(49355) mul SINTable(mem64(49375)))
+  414305:	f2 0f 58 ca          	addsd  xmm1,xmm2
+;         mov(mem64(49367),(mem64(49361) mul mem64(49376) div (mem64(49378) add mem64(49364)) add mem64(49362)))
+  414309:	66 48 0f 6e d3       	movq   xmm2,rbx
+;         mov(mem64(49358), mem64(49355) mul COSTable(mem64(49375)) subt mem64(49356) mul SINTable(mem64(49375)))
+  41430e:	66 0f 5c e3          	subpd  xmm4,xmm3
+;         mov(mem64(49359), mem64(49356) mul COSTable(mem64(49375)) add  mem64(49355) mul SINTable(mem64(49375)))
+  414312:	66 0f 58 c3          	addpd  xmm0,xmm3
+;         mov(mem64(49367),(mem64(49361) mul mem64(49376) div (mem64(49378) add mem64(49364)) add mem64(49362)))
+  414316:	f2 0f 10 9f a0 06 06 	movsd  xmm3,QWORD PTR [rdi+0x606a0]
+  41431d:	00 
+;         mov(mem64(49359), mem64(49356) mul COSTable(mem64(49375)) add  mem64(49355) mul SINTable(mem64(49375)))
+  41431e:	f2 0f 11 8f 78 06 06 	movsd  QWORD PTR [rdi+0x60678],xmm1
+  414325:	00 
+;         mov(mem64(49360), mem64(49357) mul COSTable(mem64(49374)) subt mem64(49355) mul SINTable(mem64(49374)))
+  414326:	66 0f 28 cf          	movapd xmm1,xmm7
+;         mov(mem64(49367),(mem64(49361) mul mem64(49376) div (mem64(49378) add mem64(49364)) add mem64(49362)))
+  41432a:	f2 0f 58 d3          	addsd  xmm2,xmm3
+;         mov(mem64(49360), mem64(49357) mul COSTable(mem64(49374)) subt mem64(49355) mul SINTable(mem64(49374)))
+  41432e:	66 0f 14 cf          	unpcklpd xmm1,xmm7
+  414332:	f2 0f 10 c4          	movsd  xmm0,xmm4
+;         mov(mem64(49367),(mem64(49361) mul mem64(49376) div (mem64(49378) add mem64(49364)) add mem64(49362)))
+  414336:	66 0f 10 a7 90 06 06 	movupd xmm4,XMMWORD PTR [rdi+0x60690]
+  41433d:	00 
+;         mov(mem64(49376), mem64(49358))
+  41433e:	0f 11 87 00 07 06 00 	movups XMMWORD PTR [rdi+0x60700],xmm0
+;         mov(mem64(49367),(mem64(49361) mul mem64(49376) div (mem64(49378) add mem64(49364)) add mem64(49362)))
+  414345:	66 0f 59 c1          	mulpd  xmm0,xmm1
+  414349:	66 0f 14 d2          	unpcklpd xmm2,xmm2
+  41434d:	0f 29 64 24 20       	movaps XMMWORD PTR [rsp+0x20],xmm4
+  414352:	66 0f 5e c2          	divpd  xmm0,xmm2
+;         mov(mem64(49369),(mem64(49361) mul mem64(49355) div (mem64(49357) add mem64(49364))  add mem64(49362)))
+  414356:	f2 0f 10 14 24       	movsd  xmm2,QWORD PTR [rsp]
+  41435b:	f2 0f 58 d3          	addsd  xmm2,xmm3
+;         mov(mem64(49367),(mem64(49361) mul mem64(49376) div (mem64(49378) add mem64(49364)) add mem64(49362)))
+  41435f:	66 0f 58 c4          	addpd  xmm0,xmm4
+  414363:	0f 11 87 b8 06 06 00 	movups XMMWORD PTR [rdi+0x606b8],xmm0
+;         mov(mem64(49369),(mem64(49361) mul mem64(49355) div (mem64(49357) add mem64(49364))  add mem64(49362)))
+  41436a:	66 0f 28 44 24 50    	movapd xmm0,XMMWORD PTR [rsp+0x50]
+  414370:	66 0f 59 c1          	mulpd  xmm0,xmm1
+  414374:	66 0f 28 ca          	movapd xmm1,xmm2
+  414378:	66 0f 14 c9          	unpcklpd xmm1,xmm1
+  41437c:	66 0f 5e c1          	divpd  xmm0,xmm1
+  414380:	66 0f 58 c4          	addpd  xmm0,xmm4
+  414384:	0f 11 87 c8 06 06 00 	movups XMMWORD PTR [rdi+0x606c8],xmm0
+;   select case as const cast(ulongint, v)
+  41438b:	f2 0f 10 44 24 18    	movsd  xmm0,QWORD PTR [rsp+0x18]
+  414391:	e8 ca 0f ff ff       	call   405360 <nearbyint@plt>
+  414396:	f2 0f 10 1d e2 d0 06 	movsd  xmm3,QWORD PTR [rip+0x6d0e2]        # 481480 <_IO_stdin_used+0x4480>
+  41439d:	00 
+  41439e:	66 0f 2f c3          	comisd xmm0,xmm3
+  4143a2:	f2 0f 11 1c 24       	movsd  QWORD PTR [rsp],xmm3
+  4143a7:	0f 83 16 13 00 00    	jae    4156c3 <MEMORY_T::POKE64(double, double)+0xbdf3>
+  4143ad:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+;         screenunlock ys,ys add peek(ubyte,@nibbles(&B1000))       
+  4143b2:	48 83 f8 06          	cmp    rax,0x6
+  4143b6:	0f 87 44 80 ff ff    	ja     40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;    case 49413d 'Write to to raster     
+  4143bc:	48 8d 15 5d 21 07 00 	lea    rdx,[rip+0x7215d]        # 486520 <tmp$2889.3>
+  4143c3:	48 8b 04 c2          	mov    rax,QWORD PTR [rdx+rax*8]
+  4143c7:	e9 93 b8 ff ff       	jmp    40fc5f <MEMORY_T::POKE64(double, double)+0x638f>
+;         screenunlock  peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)))) add peek(ubyte,@nibbles(&B1000))
+  4143cc:	66 0f ef c0          	pxor   xmm0,xmm0
+  4143d0:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4143d5:	48 8b 9c 24 a0 00 00 	mov    rbx,QWORD PTR [rsp+0xa0]
+  4143dc:	00 
+  4143dd:	f2 49 0f 2a c0       	cvtsi2sd xmm0,r8
+  4143e2:	f2 0f 10 14 d8       	movsd  xmm2,QWORD PTR [rax+rbx*8]
+  4143e7:	f2 0f 11 14 24       	movsd  QWORD PTR [rsp],xmm2
+  4143ec:	f2 0f 58 c2          	addsd  xmm0,xmm2
+  4143f0:	e8 6b 0f ff ff       	call   405360 <nearbyint@plt>
+  4143f5:	66 48 0f 7e c3       	movq   rbx,xmm0
+  4143fa:	f2 0f 10 04 24       	movsd  xmm0,QWORD PTR [rsp]
+  4143ff:	e8 5c 0f ff ff       	call   405360 <nearbyint@plt>
+  414404:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  41440b:	00 
+  41440c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  414413:	00 00 
+  414415:	0f 85 ed 63 00 00    	jne    41a808 <MEMORY_T::POKE64(double, double)+0x10f38>
+  41441b:	66 48 0f 6e db       	movq   xmm3,rbx
+  414420:	f2 0f 2c f8          	cvttsd2si edi,xmm0
 ;end def
-  44fc6b:	c3                   	ret    
-  44fc6c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-000000000044fc70 <MEMORY_T::READUSHORT(double)>:
-;proc MEMORY_T.ReadUShort(byval adr as double) as ushort
-  44fc70:	55                   	push   rbp
-  44fc71:	48 89 fd             	mov    rbp,rdi
-  44fc74:	48 83 ec 10          	sub    rsp,0x10
-;  return Peek64(adr) or Peek64(adr add peek(ubyte,@nibbles(&B0001))) shl peek(ubyte,@nibbles(&B1000))
-  44fc78:	f2 0f 11 04 24       	movsd  QWORD PTR [rsp],xmm0
-  44fc7d:	e8 de 99 fb ff       	call   409660 <MEMORY_T::PEEK64(double)>
-  44fc82:	0f b6 05 18 31 05 00 	movzx  eax,BYTE PTR [rip+0x53118]        # 4a2da1 <NIBBLES$+0x1>
-  44fc89:	f2 0f 10 0c 24       	movsd  xmm1,QWORD PTR [rsp]
-  44fc8e:	48 89 ef             	mov    rdi,rbp
-  44fc91:	f2 0f 11 44 24 08    	movsd  QWORD PTR [rsp+0x8],xmm0
-  44fc97:	66 0f ef c0          	pxor   xmm0,xmm0
-  44fc9b:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  44fca0:	f2 0f 58 c1          	addsd  xmm0,xmm1
-  44fca4:	e8 b7 99 fb ff       	call   409660 <MEMORY_T::PEEK64(double)>
-  44fca9:	f2 0f 10 54 24 08    	movsd  xmm2,QWORD PTR [rsp+0x8]
-  44fcaf:	f2 0f 11 04 24       	movsd  QWORD PTR [rsp],xmm0
-  44fcb4:	66 0f 28 c2          	movapd xmm0,xmm2
-  44fcb8:	e8 93 56 fb ff       	call   405350 <nearbyint@plt>
-  44fcbd:	f2 0f 10 0c 24       	movsd  xmm1,QWORD PTR [rsp]
-  44fcc2:	66 48 0f 7e c5       	movq   rbp,xmm0
-  44fcc7:	66 0f 28 c1          	movapd xmm0,xmm1
-  44fccb:	e8 80 56 fb ff       	call   405350 <nearbyint@plt>
-  44fcd0:	66 48 0f 6e dd       	movq   xmm3,rbp
-  44fcd5:	0f b6 0d cc 30 05 00 	movzx  ecx,BYTE PTR [rip+0x530cc]        # 4a2da8 <NIBBLES$+0x8>
-;end proc
-  44fcdc:	48 83 c4 10          	add    rsp,0x10
-;  return Peek64(adr) or Peek64(adr add peek(ubyte,@nibbles(&B0001))) shl peek(ubyte,@nibbles(&B1000))
-  44fce0:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-;end proc
-  44fce5:	5d                   	pop    rbp
-;  return Peek64(adr) or Peek64(adr add peek(ubyte,@nibbles(&B0001))) shl peek(ubyte,@nibbles(&B1000))
-  44fce6:	f2 48 0f 2c d3       	cvttsd2si rdx,xmm3
-  44fceb:	48 d3 e0             	shl    rax,cl
-  44fcee:	09 d0                	or     eax,edx
-;end proc
-  44fcf0:	c3                   	ret    
-  44fcf1:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44fcf8:	00 00 00 00 
-  44fcfc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-000000000044fd00 <MEMORY_T::WRITEBYTE(double, double)>:
-;  poke64(adr,b8)
-  44fd00:	e9 0b 9b fb ff       	jmp    409810 <MEMORY_T::POKE64(double, double)>
-  44fd05:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44fd0c:	00 00 00 00 
-
-000000000044fd10 <INS_INC>:
-;def INS_INC(byval Cpu as CPU6510_T)
-  44fd10:	55                   	push   rbp
-;  v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44fd11:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_INC(byval Cpu as CPU6510_T)
-  44fd15:	53                   	push   rbx
-  44fd16:	48 89 fb             	mov    rbx,rdi
-  44fd19:	48 83 ec 18          	sub    rsp,0x18
-;  v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44fd1d:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44fd21:	48 8b 6f 08          	mov    rbp,QWORD PTR [rdi+0x8]
-  44fd25:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44fd29:	48 89 ef             	mov    rdi,rbp
-  44fd2c:	f2 0f 11 44 24 08    	movsd  QWORD PTR [rsp+0x8],xmm0
-  44fd32:	e8 39 f5 ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  Cpu->mem->WriteByte(Cpu->Code.op.u16,v.ulo)
-  44fd37:	66 0f ef c9          	pxor   xmm1,xmm1
-  44fd3b:	f2 0f 10 44 24 08    	movsd  xmm0,QWORD PTR [rsp+0x8]
-  44fd41:	48 89 ef             	mov    rdi,rbp
-;  v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44fd44:	88 05 26 2f 03 00    	mov    BYTE PTR [rip+0x32f26],al        # 482c70 <V$>
-;  v.s16+=peek(ubyte,@nibbles(&B0001))
-  44fd4a:	0f b6 05 50 30 05 00 	movzx  eax,BYTE PTR [rip+0x53050]        # 4a2da1 <NIBBLES$+0x1>
-  44fd51:	66 03 05 18 2f 03 00 	add    ax,WORD PTR [rip+0x32f18]        # 482c70 <V$>
-  44fd58:	66 89 05 11 2f 03 00 	mov    WORD PTR [rip+0x32f11],ax        # 482c70 <V$>
-;  Cpu->mem->WriteByte(Cpu->Code.op.u16,v.ulo)
-  44fd5f:	0f b6 c0             	movzx  eax,al
-  44fd62:	f2 0f 2a c8          	cvtsi2sd xmm1,eax
-  44fd66:	e8 95 ff ff ff       	call   44fd00 <MEMORY_T::WRITEBYTE(double, double)>
-;  Cpu->F.z=iif(v.ulo=peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44fd6b:	0f b6 15 2e 30 05 00 	movzx  edx,BYTE PTR [rip+0x5302e]        # 4a2da0 <NIBBLES$>
-  44fd72:	48 0f be 0d f6 2e 03 	movsx  rcx,BYTE PTR [rip+0x32ef6]        # 482c70 <V$>
-  44fd79:	00 
-  44fd7a:	0f b6 05 20 30 05 00 	movzx  eax,BYTE PTR [rip+0x53020]        # 4a2da1 <NIBBLES$+0x1>
-  44fd81:	38 d1                	cmp    cl,dl
-  44fd83:	0f 44 d0             	cmove  edx,eax
-  44fd86:	0f b6 03             	movzx  eax,BYTE PTR [rbx]
-  44fd89:	01 d2                	add    edx,edx
-  44fd8b:	83 e0 fd             	and    eax,0xfffffffd
-  44fd8e:	83 e2 02             	and    edx,0x2
-  44fd91:	09 d0                	or     eax,edx
-  44fd93:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.n=iif(v.slo<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44fd95:	0f b6 35 04 30 05 00 	movzx  esi,BYTE PTR [rip+0x53004]        # 4a2da0 <NIBBLES$>
-  44fd9c:	48 39 f1             	cmp    rcx,rsi
-  44fd9f:	0f b6 0d fb 2f 05 00 	movzx  ecx,BYTE PTR [rip+0x52ffb]        # 4a2da1 <NIBBLES$+0x1>
-  44fda6:	48 89 f2             	mov    rdx,rsi
-  44fda9:	0f 4c d1             	cmovl  edx,ecx
-  44fdac:	83 e0 7f             	and    eax,0x7f
-  44fdaf:	c1 e2 07             	shl    edx,0x7
-  44fdb2:	09 d0                	or     eax,edx
-  44fdb4:	88 03                	mov    BYTE PTR [rbx],al
+  414424:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+;         screenunlock  peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)))) add peek(ubyte,@nibbles(&B1000))
+  41442b:	f2 0f 2c f3          	cvttsd2si esi,xmm3
 ;end def
-  44fdb6:	48 83 c4 18          	add    rsp,0x18
-  44fdba:	5b                   	pop    rbx
-  44fdbb:	5d                   	pop    rbp
-  44fdbc:	c3                   	ret    
-  44fdbd:	0f 1f 00             	nop    DWORD PTR [rax]
-
-000000000044fdc0 <INS_STY>:
-;  Cpu->mem->WriteUByte(Cpu->code.op.u16,Cpu->Y)
-  44fdc0:	0f b6 47 03          	movzx  eax,BYTE PTR [rdi+0x3]
-  44fdc4:	0f b7 57 38          	movzx  edx,WORD PTR [rdi+0x38]
-  44fdc8:	66 0f ef c0          	pxor   xmm0,xmm0
-  44fdcc:	66 0f ef c9          	pxor   xmm1,xmm1
-  44fdd0:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44fdd4:	f2 0f 2a c2          	cvtsi2sd xmm0,edx
-  44fdd8:	f2 0f 2a c8          	cvtsi2sd xmm1,eax
-  44fddc:	e9 1f ff ff ff       	jmp    44fd00 <MEMORY_T::WRITEBYTE(double, double)>
-  44fde1:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44fde8:	00 00 00 00 
-  44fdec:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-000000000044fdf0 <INS_STX>:
-;  Cpu->mem->WriteUByte(Cpu->code.op.u16,Cpu->X)
-  44fdf0:	0f b6 47 02          	movzx  eax,BYTE PTR [rdi+0x2]
-  44fdf4:	0f b7 57 38          	movzx  edx,WORD PTR [rdi+0x38]
-  44fdf8:	66 0f ef c0          	pxor   xmm0,xmm0
-  44fdfc:	66 0f ef c9          	pxor   xmm1,xmm1
-  44fe00:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44fe04:	f2 0f 2a c2          	cvtsi2sd xmm0,edx
-  44fe08:	f2 0f 2a c8          	cvtsi2sd xmm1,eax
-  44fe0c:	e9 ef fe ff ff       	jmp    44fd00 <MEMORY_T::WRITEBYTE(double, double)>
-  44fe11:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44fe18:	00 00 00 00 
-  44fe1c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-000000000044fe20 <INS_STA>:
-;  Cpu->mem->WriteUByte(Cpu->code.op.u16,Cpu->A)
-  44fe20:	0f b6 47 01          	movzx  eax,BYTE PTR [rdi+0x1]
-  44fe24:	0f b7 57 38          	movzx  edx,WORD PTR [rdi+0x38]
-  44fe28:	66 0f ef c0          	pxor   xmm0,xmm0
-  44fe2c:	66 0f ef c9          	pxor   xmm1,xmm1
-  44fe30:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  44fe34:	f2 0f 2a c2          	cvtsi2sd xmm0,edx
-  44fe38:	f2 0f 2a c8          	cvtsi2sd xmm1,eax
-  44fe3c:	e9 bf fe ff ff       	jmp    44fd00 <MEMORY_T::WRITEBYTE(double, double)>
-  44fe41:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  44fe48:	00 00 00 00 
-  44fe4c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-000000000044fe50 <INS_ROR>:
-;def INS_ROR(byval Cpu as CPU6510_T)
-  44fe50:	41 57                	push   r15
-;  v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44fe52:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_ROR(byval Cpu as CPU6510_T)
-  44fe56:	41 56                	push   r14
-  44fe58:	41 55                	push   r13
-  44fe5a:	41 54                	push   r12
-  44fe5c:	55                   	push   rbp
-  44fe5d:	53                   	push   rbx
-  44fe5e:	48 89 fb             	mov    rbx,rdi
-  44fe61:	48 83 ec 18          	sub    rsp,0x18
-;  v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44fe65:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-;  cary=iif(Cpu->F.c=peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44fe69:	44 0f b6 27          	movzx  r12d,BYTE PTR [rdi]
-  44fe6d:	0f b6 2d 2d 2f 05 00 	movzx  ebp,BYTE PTR [rip+0x52f2d]        # 4a2da1 <NIBBLES$+0x1>
-;  v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44fe74:	4c 8b 6f 08          	mov    r13,QWORD PTR [rdi+0x8]
-  44fe78:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44fe7c:	45 89 e6             	mov    r14d,r12d
-;  cary=iif(Cpu->F.c=peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44fe7f:	44 0f b6 3d 19 2f 05 	movzx  r15d,BYTE PTR [rip+0x52f19]        # 4a2da0 <NIBBLES$>
-  44fe86:	00 
-  44fe87:	41 83 e6 01          	and    r14d,0x1
-;  v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44fe8b:	4c 89 ef             	mov    rdi,r13
-;  cary=iif(Cpu->F.c=peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44fe8e:	44 38 f5             	cmp    bpl,r14b
-  44fe91:	45 0f 45 f7          	cmovne r14d,r15d
-;  v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44fe95:	f2 0f 11 44 24 08    	movsd  QWORD PTR [rsp+0x8],xmm0
-  44fe9b:	e8 d0 f3 ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  if cary then v.ulo or = peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100))
-  44fea0:	f2 0f 10 44 24 08    	movsd  xmm0,QWORD PTR [rsp+0x8]
-;  Cpu->F.c=iif(v.ulo and peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44fea6:	40 84 c5             	test   bpl,al
-;  v.ulo shr=peek(ubyte,@nibbles(&B0001))
-  44fea9:	0f b6 c0             	movzx  eax,al
-;  Cpu->F.c=iif(v.ulo and peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44feac:	41 0f 44 ef          	cmove  ebp,r15d
-  44feb0:	41 83 e4 fe          	and    r12d,0xfffffffe
-  44feb4:	83 e5 01             	and    ebp,0x1
-  44feb7:	41 09 ec             	or     r12d,ebp
-  44feba:	44 88 23             	mov    BYTE PTR [rbx],r12b
-;  v.ulo shr=peek(ubyte,@nibbles(&B0001))
-  44febd:	0f b6 0d dd 2e 05 00 	movzx  ecx,BYTE PTR [rip+0x52edd]        # 4a2da1 <NIBBLES$+0x1>
-  44fec4:	48 d3 f8             	sar    rax,cl
-;  if cary then v.ulo or = peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100))
-  44fec7:	45 84 f6             	test   r14b,r14b
-;  v.ulo shr=peek(ubyte,@nibbles(&B0001))
-  44feca:	88 05 a0 2d 03 00    	mov    BYTE PTR [rip+0x32da0],al        # 482c70 <V$>
-;  if cary then v.ulo or = peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100))
-  44fed0:	89 c2                	mov    edx,eax
-  44fed2:	74 19                	je     44feed <INS_ROR+0x9d>
-  44fed4:	0f b6 15 cd 2e 05 00 	movzx  edx,BYTE PTR [rip+0x52ecd]        # 4a2da8 <NIBBLES$+0x8>
-  44fedb:	0f b6 0d c2 2e 05 00 	movzx  ecx,BYTE PTR [rip+0x52ec2]        # 4a2da4 <NIBBLES$+0x4>
-  44fee2:	48 d3 e2             	shl    rdx,cl
-  44fee5:	09 c2                	or     edx,eax
-  44fee7:	88 15 83 2d 03 00    	mov    BYTE PTR [rip+0x32d83],dl        # 482c70 <V$>
-;  Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
-  44feed:	0f b6 d2             	movzx  edx,dl
-  44fef0:	66 0f ef c9          	pxor   xmm1,xmm1
-  44fef4:	4c 89 ef             	mov    rdi,r13
-  44fef7:	f2 0f 2a ca          	cvtsi2sd xmm1,edx
-  44fefb:	e8 00 fe ff ff       	call   44fd00 <MEMORY_T::WRITEBYTE(double, double)>
-;  Cpu->F.z=iif(v.ulo=peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44ff00:	0f b6 15 99 2e 05 00 	movzx  edx,BYTE PTR [rip+0x52e99]        # 4a2da0 <NIBBLES$>
-  44ff07:	48 0f be 0d 61 2d 03 	movsx  rcx,BYTE PTR [rip+0x32d61]        # 482c70 <V$>
-  44ff0e:	00 
-  44ff0f:	0f b6 05 8b 2e 05 00 	movzx  eax,BYTE PTR [rip+0x52e8b]        # 4a2da1 <NIBBLES$+0x1>
-  44ff16:	38 d1                	cmp    cl,dl
-  44ff18:	0f 44 d0             	cmove  edx,eax
-  44ff1b:	0f b6 03             	movzx  eax,BYTE PTR [rbx]
-  44ff1e:	01 d2                	add    edx,edx
-  44ff20:	83 e0 fd             	and    eax,0xfffffffd
-  44ff23:	83 e2 02             	and    edx,0x2
-  44ff26:	09 d0                	or     eax,edx
-  44ff28:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.n=iif(v.slo<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44ff2a:	0f b6 35 6f 2e 05 00 	movzx  esi,BYTE PTR [rip+0x52e6f]        # 4a2da0 <NIBBLES$>
-  44ff31:	48 39 f1             	cmp    rcx,rsi
-  44ff34:	0f b6 0d 66 2e 05 00 	movzx  ecx,BYTE PTR [rip+0x52e66]        # 4a2da1 <NIBBLES$+0x1>
-  44ff3b:	48 89 f2             	mov    rdx,rsi
-  44ff3e:	0f 4c d1             	cmovl  edx,ecx
-  44ff41:	83 e0 7f             	and    eax,0x7f
-  44ff44:	c1 e2 07             	shl    edx,0x7
-  44ff47:	09 d0                	or     eax,edx
-  44ff49:	88 03                	mov    BYTE PTR [rbx],al
+  41442f:	5b                   	pop    rbx
+  414430:	5d                   	pop    rbp
+  414431:	41 5c                	pop    r12
+  414433:	41 5d                	pop    r13
+  414435:	41 5e                	pop    r14
+  414437:	41 5f                	pop    r15
+;         screenunlock  peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)))) add peek(ubyte,@nibbles(&B1000))
+  414439:	e9 a2 de 03 00       	jmp    4522e0 <fb_GfxUnlock>
+;         screenunlock ys,ys add peek(ubyte,@nibbles(&B1000))       
+  41443e:	48 8b 05 13 c8 07 00 	mov    rax,QWORD PTR [rip+0x7c813]        # 490c58 <YS$>
+  414445:	89 c7                	mov    edi,eax
+  414447:	48 8b 94 24 c8 01 00 	mov    rdx,QWORD PTR [rsp+0x1c8]
+  41444e:	00 
+  41444f:	64 48 2b 14 25 28 00 	sub    rdx,QWORD PTR fs:0x28
+  414456:	00 00 
+  414458:	0f 85 f6 7d 00 00    	jne    41c254 <MEMORY_T::POKE64(double, double)+0x12984>
+  41445e:	0f b6 54 24 7c       	movzx  edx,BYTE PTR [rsp+0x7c]
 ;end def
-  44ff4b:	48 83 c4 18          	add    rsp,0x18
-  44ff4f:	5b                   	pop    rbx
-  44ff50:	5d                   	pop    rbp
-  44ff51:	41 5c                	pop    r12
-  44ff53:	41 5d                	pop    r13
-  44ff55:	41 5e                	pop    r14
-  44ff57:	41 5f                	pop    r15
-  44ff59:	c3                   	ret    
-  44ff5a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-
-000000000044ff60 <INS_ROL>:
-;def INS_ROL(byval Cpu as CPU6510_T)
-  44ff60:	55                   	push   rbp
-;  v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44ff61:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_ROL(byval Cpu as CPU6510_T)
-  44ff65:	53                   	push   rbx
-  44ff66:	48 89 fb             	mov    rbx,rdi
-  44ff69:	48 83 ec 18          	sub    rsp,0x18
-;  v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  44ff6d:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  44ff71:	48 8b 6f 08          	mov    rbp,QWORD PTR [rdi+0x8]
-  44ff75:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  44ff79:	48 89 ef             	mov    rdi,rbp
-  44ff7c:	f2 0f 11 44 24 08    	movsd  QWORD PTR [rsp+0x8],xmm0
-  44ff82:	e8 e9 f2 ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  cary=iif(Cpu->F.c=peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44ff87:	0f b6 33             	movzx  esi,BYTE PTR [rbx]
-  44ff8a:	0f b6 15 10 2e 05 00 	movzx  edx,BYTE PTR [rip+0x52e10]        # 4a2da1 <NIBBLES$+0x1>
-;  Cpu->F.c=iif(v.ulo and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44ff91:	0f b6 3d 10 2e 05 00 	movzx  edi,BYTE PTR [rip+0x52e10]        # 4a2da8 <NIBBLES$+0x8>
-  44ff98:	0f b6 c0             	movzx  eax,al
-;  cary=iif(Cpu->F.c=peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44ff9b:	44 0f b6 0d fd 2d 05 	movzx  r9d,BYTE PTR [rip+0x52dfd]        # 4a2da0 <NIBBLES$>
-  44ffa2:	00 
-  44ffa3:	89 f1                	mov    ecx,esi
-  44ffa5:	41 89 d0             	mov    r8d,edx
-;  if cary then v.ulo or =peek(ubyte,@nibbles(&B0001))
-  44ffa8:	f2 0f 10 44 24 08    	movsd  xmm0,QWORD PTR [rsp+0x8]
-;  cary=iif(Cpu->F.c=peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44ffae:	83 e1 01             	and    ecx,0x1
-  44ffb1:	38 d1                	cmp    cl,dl
-;  Cpu->F.c=iif(v.ulo and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44ffb3:	0f b6 0d ea 2d 05 00 	movzx  ecx,BYTE PTR [rip+0x52dea]        # 4a2da4 <NIBBLES$+0x4>
-;  cary=iif(Cpu->F.c=peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44ffba:	45 0f 45 c1          	cmovne r8d,r9d
-;  Cpu->F.c=iif(v.ulo and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44ffbe:	48 d3 e7             	shl    rdi,cl
-  44ffc1:	48 85 c7             	test   rdi,rax
-  44ffc4:	41 0f 44 d1          	cmove  edx,r9d
-  44ffc8:	83 e6 fe             	and    esi,0xfffffffe
-  44ffcb:	83 e2 01             	and    edx,0x1
-  44ffce:	09 d6                	or     esi,edx
-  44ffd0:	40 88 33             	mov    BYTE PTR [rbx],sil
-;  v.ulo shl=peek(ubyte,@nibbles(&B0001))
-  44ffd3:	0f b6 0d c7 2d 05 00 	movzx  ecx,BYTE PTR [rip+0x52dc7]        # 4a2da1 <NIBBLES$+0x1>
-  44ffda:	48 d3 e0             	shl    rax,cl
-;  if cary then v.ulo or =peek(ubyte,@nibbles(&B0001))
-  44ffdd:	45 84 c0             	test   r8b,r8b
-  44ffe0:	74 6e                	je     450050 <INS_ROL+0xf0>
-  44ffe2:	09 c1                	or     ecx,eax
-  44ffe4:	0f b6 d1             	movzx  edx,cl
-  44ffe7:	88 15 83 2c 03 00    	mov    BYTE PTR [rip+0x32c83],dl        # 482c70 <V$>
-;  Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
-  44ffed:	66 0f ef c9          	pxor   xmm1,xmm1
-  44fff1:	48 89 ef             	mov    rdi,rbp
-  44fff4:	f2 0f 2a ca          	cvtsi2sd xmm1,edx
-  44fff8:	e8 03 fd ff ff       	call   44fd00 <MEMORY_T::WRITEBYTE(double, double)>
-;  Cpu->F.z=iif(v.ulo=peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  44fffd:	0f b6 15 9c 2d 05 00 	movzx  edx,BYTE PTR [rip+0x52d9c]        # 4a2da0 <NIBBLES$>
-  450004:	48 0f be 0d 64 2c 03 	movsx  rcx,BYTE PTR [rip+0x32c64]        # 482c70 <V$>
-  45000b:	00 
-  45000c:	0f b6 05 8e 2d 05 00 	movzx  eax,BYTE PTR [rip+0x52d8e]        # 4a2da1 <NIBBLES$+0x1>
-  450013:	38 d1                	cmp    cl,dl
-  450015:	0f 44 d0             	cmove  edx,eax
-  450018:	0f b6 03             	movzx  eax,BYTE PTR [rbx]
-  45001b:	01 d2                	add    edx,edx
-  45001d:	83 e0 fd             	and    eax,0xfffffffd
-  450020:	83 e2 02             	and    edx,0x2
-  450023:	09 d0                	or     eax,edx
-  450025:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.n=iif(v.slo<peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  450027:	0f b6 35 73 2d 05 00 	movzx  esi,BYTE PTR [rip+0x52d73]        # 4a2da1 <NIBBLES$+0x1>
-  45002e:	48 39 f1             	cmp    rcx,rsi
-  450031:	0f b6 0d 68 2d 05 00 	movzx  ecx,BYTE PTR [rip+0x52d68]        # 4a2da0 <NIBBLES$>
-  450038:	48 89 f2             	mov    rdx,rsi
-  45003b:	0f 4d d1             	cmovge edx,ecx
-  45003e:	83 e0 7f             	and    eax,0x7f
-  450041:	c1 e2 07             	shl    edx,0x7
-  450044:	09 d0                	or     eax,edx
-  450046:	88 03                	mov    BYTE PTR [rbx],al
+  414463:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  41446a:	5b                   	pop    rbx
+  41446b:	5d                   	pop    rbp
+;         screenunlock ys,ys add peek(ubyte,@nibbles(&B1000))       
+  41446c:	8d 34 02             	lea    esi,[rdx+rax*1]
 ;end def
-  450048:	48 83 c4 18          	add    rsp,0x18
-  45004c:	5b                   	pop    rbx
-  45004d:	5d                   	pop    rbp
-  45004e:	c3                   	ret    
-  45004f:	90                   	nop
-;  v.ulo shl=peek(ubyte,@nibbles(&B0001))
-  450050:	88 05 1a 2c 03 00    	mov    BYTE PTR [rip+0x32c1a],al        # 482c70 <V$>
-  450056:	0f b6 d0             	movzx  edx,al
-  450059:	eb 92                	jmp    44ffed <INS_ROL+0x8d>
-  45005b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-
-0000000000450060 <INS_LSR>:
-;def INS_LSR(byval Cpu as CPU6510_T)
-  450060:	55                   	push   rbp
-;  v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  450061:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_LSR(byval Cpu as CPU6510_T)
-  450065:	53                   	push   rbx
-  450066:	48 89 fb             	mov    rbx,rdi
-  450069:	48 83 ec 18          	sub    rsp,0x18
-;  v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  45006d:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  450071:	48 8b 6f 08          	mov    rbp,QWORD PTR [rdi+0x8]
-  450075:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  450079:	48 89 ef             	mov    rdi,rbp
-  45007c:	f2 0f 11 44 24 08    	movsd  QWORD PTR [rsp+0x8],xmm0
-  450082:	e8 e9 f1 ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  Cpu->F.c=iif(v.ulo and peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  450087:	0f b6 15 13 2d 05 00 	movzx  edx,BYTE PTR [rip+0x52d13]        # 4a2da1 <NIBBLES$+0x1>
-;  Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
-  45008e:	66 0f ef c9          	pxor   xmm1,xmm1
-;  Cpu->F.c=iif(v.ulo and peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  450092:	0f b6 0d 07 2d 05 00 	movzx  ecx,BYTE PTR [rip+0x52d07]        # 4a2da0 <NIBBLES$>
-;  Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
-  450099:	f2 0f 10 44 24 08    	movsd  xmm0,QWORD PTR [rsp+0x8]
-  45009f:	48 89 ef             	mov    rdi,rbp
-;  Cpu->F.c=iif(v.ulo and peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  4500a2:	84 c2                	test   dl,al
-;  v.ulo shr = peek(ubyte,@nibbles(&B0001))
-  4500a4:	0f b6 c0             	movzx  eax,al
-;  Cpu->F.c=iif(v.ulo and peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  4500a7:	0f 44 d1             	cmove  edx,ecx
-  4500aa:	0f b6 0b             	movzx  ecx,BYTE PTR [rbx]
-  4500ad:	83 e2 01             	and    edx,0x1
-  4500b0:	83 e1 fe             	and    ecx,0xfffffffe
-  4500b3:	09 ca                	or     edx,ecx
-  4500b5:	88 13                	mov    BYTE PTR [rbx],dl
-;  v.ulo shr = peek(ubyte,@nibbles(&B0001))
-  4500b7:	0f b6 0d e3 2c 05 00 	movzx  ecx,BYTE PTR [rip+0x52ce3]        # 4a2da1 <NIBBLES$+0x1>
-  4500be:	48 d3 f8             	sar    rax,cl
-  4500c1:	88 05 a9 2b 03 00    	mov    BYTE PTR [rip+0x32ba9],al        # 482c70 <V$>
-;  Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
-  4500c7:	0f b6 c0             	movzx  eax,al
-  4500ca:	f2 0f 2a c8          	cvtsi2sd xmm1,eax
-  4500ce:	e8 2d fc ff ff       	call   44fd00 <MEMORY_T::WRITEBYTE(double, double)>
-;  Cpu->F.z=iif(v.ulo=peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  4500d3:	0f b6 15 c6 2c 05 00 	movzx  edx,BYTE PTR [rip+0x52cc6]        # 4a2da0 <NIBBLES$>
-  4500da:	48 0f be 0d 8e 2b 03 	movsx  rcx,BYTE PTR [rip+0x32b8e]        # 482c70 <V$>
-  4500e1:	00 
-  4500e2:	0f b6 05 b8 2c 05 00 	movzx  eax,BYTE PTR [rip+0x52cb8]        # 4a2da1 <NIBBLES$+0x1>
-  4500e9:	38 d1                	cmp    cl,dl
-  4500eb:	0f 44 d0             	cmove  edx,eax
-  4500ee:	0f b6 03             	movzx  eax,BYTE PTR [rbx]
-  4500f1:	01 d2                	add    edx,edx
-  4500f3:	83 e0 fd             	and    eax,0xfffffffd
-  4500f6:	83 e2 02             	and    edx,0x2
-  4500f9:	09 d0                	or     eax,edx
-  4500fb:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.n=iif(v.slo<peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  4500fd:	0f b6 35 9d 2c 05 00 	movzx  esi,BYTE PTR [rip+0x52c9d]        # 4a2da1 <NIBBLES$+0x1>
-  450104:	48 39 f1             	cmp    rcx,rsi
-  450107:	0f b6 0d 92 2c 05 00 	movzx  ecx,BYTE PTR [rip+0x52c92]        # 4a2da0 <NIBBLES$>
-  45010e:	48 89 f2             	mov    rdx,rsi
-  450111:	0f 4d d1             	cmovge edx,ecx
-  450114:	83 e0 7f             	and    eax,0x7f
-  450117:	c1 e2 07             	shl    edx,0x7
-  45011a:	09 d0                	or     eax,edx
-  45011c:	88 03                	mov    BYTE PTR [rbx],al
+  41446f:	41 5c                	pop    r12
+  414471:	41 5d                	pop    r13
+  414473:	41 5e                	pop    r14
+  414475:	41 5f                	pop    r15
+;         screenunlock ys,ys add peek(ubyte,@nibbles(&B1000))       
+  414477:	e9 64 de 03 00       	jmp    4522e0 <fb_GfxUnlock>
+;                                    mem64(49477) shl 08d add mem64(49478)) '             adr1_512d2
+  41447c:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  414481:	f2 0f 10 80 f8 09 06 	movsd  xmm0,QWORD PTR [rax+0x609f8]
+  414488:	00 
+  414489:	e8 d2 0e ff ff       	call   405360 <nearbyint@plt>
+  41448e:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  414493:	66 49 0f 7e c7       	movq   r15,xmm0
+  414498:	f2 0f 10 80 00 0a 06 	movsd  xmm0,QWORD PTR [rax+0x60a00]
+  41449f:	00 
+  4144a0:	e8 bb 0e ff ff       	call   405360 <nearbyint@plt>
+  4144a5:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4144aa:	66 49 0f 7e c6       	movq   r14,xmm0
+  4144af:	f2 0f 10 80 08 0a 06 	movsd  xmm0,QWORD PTR [rax+0x60a08]
+  4144b6:	00 
+  4144b7:	e8 a4 0e ff ff       	call   405360 <nearbyint@plt>
+  4144bc:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4144c1:	66 49 0f 7e c5       	movq   r13,xmm0
+  4144c6:	f2 0f 10 80 10 0a 06 	movsd  xmm0,QWORD PTR [rax+0x60a10]
+  4144cd:	00 
+  4144ce:	e8 8d 0e ff ff       	call   405360 <nearbyint@plt>
+  4144d3:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4144d8:	66 49 0f 7e c4       	movq   r12,xmm0
+  4144dd:	f2 0f 10 80 18 0a 06 	movsd  xmm0,QWORD PTR [rax+0x60a18]
+  4144e4:	00 
+  4144e5:	e8 76 0e ff ff       	call   405360 <nearbyint@plt>
+  4144ea:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4144ef:	66 48 0f 7e c5       	movq   rbp,xmm0
+  4144f4:	f2 0f 10 80 20 0a 06 	movsd  xmm0,QWORD PTR [rax+0x60a20]
+  4144fb:	00 
+  4144fc:	e8 5f 0e ff ff       	call   405360 <nearbyint@plt>
+  414501:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  414506:	66 48 0f 7e c3       	movq   rbx,xmm0
+  41450b:	f2 0f 10 80 28 0a 06 	movsd  xmm0,QWORD PTR [rax+0x60a28]
+  414512:	00 
+  414513:	e8 48 0e ff ff       	call   405360 <nearbyint@plt>
+  414518:	66 49 0f 6e e7       	movq   xmm4,r15
+  41451d:	66 49 0f 6e ce       	movq   xmm1,r14
+  414522:	66 49 0f 6e ed       	movq   xmm5,r13
+  414527:	f2 48 0f 2c c4       	cvttsd2si rax,xmm4
+  41452c:	66 49 0f 6e f4       	movq   xmm6,r12
+  414531:	66 48 0f 6e fd       	movq   xmm7,rbp
+  414536:	66 48 0f 6e d3       	movq   xmm2,rbx
+  41453b:	48 c1 e0 38          	shl    rax,0x38
+  41453f:	48 89 c2             	mov    rdx,rax
+  414542:	f2 48 0f 2c c1       	cvttsd2si rax,xmm1
+  414547:	48 c1 e0 30          	shl    rax,0x30
+  41454b:	48 01 c2             	add    rdx,rax
+  41454e:	f2 48 0f 2c c5       	cvttsd2si rax,xmm5
+  414553:	48 c1 e0 28          	shl    rax,0x28
+  414557:	48 01 c2             	add    rdx,rax
+  41455a:	f2 48 0f 2c c6       	cvttsd2si rax,xmm6
+  41455f:	48 c1 e0 20          	shl    rax,0x20
+  414563:	48 01 c2             	add    rdx,rax
+  414566:	f2 48 0f 2c c7       	cvttsd2si rax,xmm7
+  41456b:	48 c1 e0 18          	shl    rax,0x18
+  41456f:	48 01 c2             	add    rdx,rax
+  414572:	f2 48 0f 2c c2       	cvttsd2si rax,xmm2
+  414577:	48 c1 e0 10          	shl    rax,0x10
+  41457b:	48 01 c2             	add    rdx,rax
+  41457e:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  414583:	66 0f ef c0          	pxor   xmm0,xmm0
+  414587:	48 c1 e0 08          	shl    rax,0x8
+  41458b:	48 01 d0             	add    rax,rdx
+  41458e:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
+  414593:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  414598:	f2 0f 58 80 30 0a 06 	addsd  xmm0,QWORD PTR [rax+0x60a30]
+  41459f:	00 
+  4145a0:	f2 0f 11 80 f0 09 06 	movsd  QWORD PTR [rax+0x609f0],xmm0
+  4145a7:	00 
+;    case 49479d ' ld adr2_512
+  4145a8:	e9 53 7e ff ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;	 poke64(49313d,0): filename=""
+  4145ad:	f2 0f 10 05 4b ce 06 	movsd  xmm0,QWORD PTR [rip+0x6ce4b]        # 481400 <_IO_stdin_used+0x4400>
+  4145b4:	00 
+  4145b5:	48 8b 7c 24 10       	mov    rdi,QWORD PTR [rsp+0x10]
+  4145ba:	66 0f ef c9          	pxor   xmm1,xmm1
+  4145be:	e8 0d 53 ff ff       	call   4098d0 <MEMORY_T::POKE64(double, double)>
+  4145c3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4145ca:	00 
+  4145cb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4145d2:	00 00 
+  4145d4:	0f 85 83 61 00 00    	jne    41a75d <MEMORY_T::POKE64(double, double)+0x10e8d>
 ;end def
-  45011e:	48 83 c4 18          	add    rsp,0x18
-  450122:	5b                   	pop    rbx
-  450123:	5d                   	pop    rbp
-  450124:	c3                   	ret    
-  450125:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  45012c:	00 00 00 00 
-
-0000000000450130 <INS_DEC>:
-;def INS_DEC(byval Cpu as CPU6510_T)
-  450130:	55                   	push   rbp
-;  v.ulo=Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  450131:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_DEC(byval Cpu as CPU6510_T)
-  450135:	53                   	push   rbx
-  450136:	48 89 fb             	mov    rbx,rdi
-  450139:	48 83 ec 18          	sub    rsp,0x18
-;  v.ulo=Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  45013d:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  450141:	48 8b 6f 08          	mov    rbp,QWORD PTR [rdi+0x8]
-  450145:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  450149:	48 89 ef             	mov    rdi,rbp
-  45014c:	f2 0f 11 44 24 08    	movsd  QWORD PTR [rsp+0x8],xmm0
-  450152:	e8 19 f1 ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  Cpu->F.z=iif(v.slo=peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  450157:	0f b6 3d 42 2c 05 00 	movzx  edi,BYTE PTR [rip+0x52c42]        # 4a2da0 <NIBBLES$>
-;  Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
-  45015e:	66 0f ef c9          	pxor   xmm1,xmm1
-  450162:	f2 0f 10 44 24 08    	movsd  xmm0,QWORD PTR [rsp+0x8]
-;  v.ulo=Cpu->mem->ReadUByte(Cpu->Code.op.u16)
-  450168:	89 c1                	mov    ecx,eax
-;  v.slo-=peek(ubyte,@nibbles(&B0001))
-  45016a:	0f b6 05 30 2c 05 00 	movzx  eax,BYTE PTR [rip+0x52c30]        # 4a2da1 <NIBBLES$+0x1>
-;  Cpu->F.z=iif(v.slo=peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  450171:	48 89 fa             	mov    rdx,rdi
-;  v.slo-=peek(ubyte,@nibbles(&B0001))
-  450174:	29 c1                	sub    ecx,eax
-;  Cpu->F.z=iif(v.slo=peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  450176:	48 0f be f1          	movsx  rsi,cl
-;  v.slo-=peek(ubyte,@nibbles(&B0001))
-  45017a:	88 0d f0 2a 03 00    	mov    BYTE PTR [rip+0x32af0],cl        # 482c70 <V$>
-;  Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
-  450180:	0f b6 c9             	movzx  ecx,cl
-;  Cpu->F.z=iif(v.slo=peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  450183:	48 39 fe             	cmp    rsi,rdi
-;  Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
-  450186:	f2 0f 2a c9          	cvtsi2sd xmm1,ecx
-;  Cpu->F.z=iif(v.slo=peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  45018a:	0f 44 d0             	cmove  edx,eax
-  45018d:	0f b6 03             	movzx  eax,BYTE PTR [rbx]
-  450190:	01 d2                	add    edx,edx
-  450192:	83 e0 fd             	and    eax,0xfffffffd
-  450195:	83 e2 02             	and    edx,0x2
-  450198:	09 d0                	or     eax,edx
-  45019a:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.n=iif(v.slo<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  45019c:	0f b6 3d fd 2b 05 00 	movzx  edi,BYTE PTR [rip+0x52bfd]        # 4a2da0 <NIBBLES$>
-  4501a3:	48 39 fe             	cmp    rsi,rdi
-  4501a6:	0f b6 35 f4 2b 05 00 	movzx  esi,BYTE PTR [rip+0x52bf4]        # 4a2da1 <NIBBLES$+0x1>
-  4501ad:	48 89 fa             	mov    rdx,rdi
-;  Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
-  4501b0:	48 89 ef             	mov    rdi,rbp
-;  Cpu->F.n=iif(v.slo<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  4501b3:	0f 4c d6             	cmovl  edx,esi
-  4501b6:	83 e0 7f             	and    eax,0x7f
-  4501b9:	c1 e2 07             	shl    edx,0x7
-  4501bc:	09 d0                	or     eax,edx
-  4501be:	88 03                	mov    BYTE PTR [rbx],al
+  4145da:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+;	 poke64(49313d,0): filename=""
+  4145e1:	45 31 c0             	xor    r8d,r8d
+  4145e4:	b9 01 00 00 00       	mov    ecx,0x1
+  4145e9:	48 83 ce ff          	or     rsi,0xffffffffffffffff
 ;end def
-  4501c0:	48 83 c4 18          	add    rsp,0x18
-  4501c4:	5b                   	pop    rbx
-  4501c5:	5d                   	pop    rbp
-;  Cpu->mem->WriteUByte(Cpu->Code.op.u16,v.ulo)
-  4501c6:	e9 35 fb ff ff       	jmp    44fd00 <MEMORY_T::WRITEBYTE(double, double)>
-  4501cb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-
-00000000004501d0 <INS_ASL>:
-;def INS_ASL(byval Cpu as CPU6510_T)
-  4501d0:	55                   	push   rbp
-;  v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  4501d1:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_ASL(byval Cpu as CPU6510_T)
-  4501d5:	53                   	push   rbx
-  4501d6:	48 89 fb             	mov    rbx,rdi
-  4501d9:	48 83 ec 18          	sub    rsp,0x18
-;  v.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
-  4501dd:	0f b7 47 38          	movzx  eax,WORD PTR [rdi+0x38]
-  4501e1:	48 8b 6f 08          	mov    rbp,QWORD PTR [rdi+0x8]
-  4501e5:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  4501e9:	48 89 ef             	mov    rdi,rbp
-  4501ec:	f2 0f 11 44 24 08    	movsd  QWORD PTR [rsp+0x8],xmm0
-  4501f2:	e8 79 f0 ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  Cpu->F.c = iif(v.ulo and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  4501f7:	0f b6 0d a6 2b 05 00 	movzx  ecx,BYTE PTR [rip+0x52ba6]        # 4a2da4 <NIBBLES$+0x4>
-;  Cpu->mem->WriteUbyte(Cpu->Code.op.u16,v.ulo)
-  4501fe:	66 0f ef c9          	pxor   xmm1,xmm1
-;  Cpu->F.c = iif(v.ulo and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  450202:	0f b6 15 9f 2b 05 00 	movzx  edx,BYTE PTR [rip+0x52b9f]        # 4a2da8 <NIBBLES$+0x8>
-  450209:	0f b6 c0             	movzx  eax,al
-;  Cpu->mem->WriteUbyte(Cpu->Code.op.u16,v.ulo)
-  45020c:	f2 0f 10 44 24 08    	movsd  xmm0,QWORD PTR [rsp+0x8]
-  450212:	48 89 ef             	mov    rdi,rbp
-;  Cpu->F.c = iif(v.ulo and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  450215:	48 d3 e2             	shl    rdx,cl
-  450218:	0f b6 0d 81 2b 05 00 	movzx  ecx,BYTE PTR [rip+0x52b81]        # 4a2da0 <NIBBLES$>
-  45021f:	48 85 c2             	test   rdx,rax
-  450222:	0f b6 15 78 2b 05 00 	movzx  edx,BYTE PTR [rip+0x52b78]        # 4a2da1 <NIBBLES$+0x1>
-  450229:	0f 45 ca             	cmovne ecx,edx
-  45022c:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-  45022f:	83 e1 01             	and    ecx,0x1
-  450232:	83 e2 fe             	and    edx,0xfffffffe
-  450235:	09 ca                	or     edx,ecx
-  450237:	88 13                	mov    BYTE PTR [rbx],dl
-;  v.ulo shl = peek(ubyte,@nibbles(&B0001))
-  450239:	0f b6 0d 61 2b 05 00 	movzx  ecx,BYTE PTR [rip+0x52b61]        # 4a2da1 <NIBBLES$+0x1>
-  450240:	48 d3 e0             	shl    rax,cl
-  450243:	88 05 27 2a 03 00    	mov    BYTE PTR [rip+0x32a27],al        # 482c70 <V$>
-;  Cpu->mem->WriteUbyte(Cpu->Code.op.u16,v.ulo)
-  450249:	0f b6 c0             	movzx  eax,al
-  45024c:	f2 0f 2a c8          	cvtsi2sd xmm1,eax
-  450250:	e8 ab fa ff ff       	call   44fd00 <MEMORY_T::WRITEBYTE(double, double)>
-;  Cpu->F.z=iif(v.ulo=peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  450255:	0f b6 15 44 2b 05 00 	movzx  edx,BYTE PTR [rip+0x52b44]        # 4a2da0 <NIBBLES$>
-  45025c:	48 0f be 0d 0c 2a 03 	movsx  rcx,BYTE PTR [rip+0x32a0c]        # 482c70 <V$>
-  450263:	00 
-  450264:	0f b6 05 36 2b 05 00 	movzx  eax,BYTE PTR [rip+0x52b36]        # 4a2da1 <NIBBLES$+0x1>
-  45026b:	38 d1                	cmp    cl,dl
-  45026d:	0f 44 d0             	cmove  edx,eax
-  450270:	0f b6 03             	movzx  eax,BYTE PTR [rbx]
-  450273:	01 d2                	add    edx,edx
-  450275:	83 e0 fd             	and    eax,0xfffffffd
-  450278:	83 e2 02             	and    edx,0x2
-  45027b:	09 d0                	or     eax,edx
-  45027d:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.n=iif(v.slo<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  45027f:	0f b6 35 1a 2b 05 00 	movzx  esi,BYTE PTR [rip+0x52b1a]        # 4a2da0 <NIBBLES$>
-  450286:	48 39 f1             	cmp    rcx,rsi
-  450289:	0f b6 0d 11 2b 05 00 	movzx  ecx,BYTE PTR [rip+0x52b11]        # 4a2da1 <NIBBLES$+0x1>
-  450290:	48 89 f2             	mov    rdx,rsi
-  450293:	0f 4c d1             	cmovl  edx,ecx
-  450296:	83 e0 7f             	and    eax,0x7f
-  450299:	c1 e2 07             	shl    edx,0x7
-  45029c:	09 d0                	or     eax,edx
-  45029e:	88 03                	mov    BYTE PTR [rbx],al
+  4145ed:	5b                   	pop    rbx
+;	 poke64(49313d,0): filename=""
+  4145ee:	48 8d 15 f2 8d 06 00 	lea    rdx,[rip+0x68df2]        # 47d3e7 <_IO_stdin_used+0x3e7>
+  4145f5:	48 8d 3d e4 c5 07 00 	lea    rdi,[rip+0x7c5e4]        # 490be0 <FILENAME$>
 ;end def
-  4502a0:	48 83 c4 18          	add    rsp,0x18
-  4502a4:	5b                   	pop    rbx
-  4502a5:	5d                   	pop    rbp
-  4502a6:	c3                   	ret    
-  4502a7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  4502ae:	00 00 
-
-00000000004502b0 <MEMORY_T::WRITEUBYTE(double, double)>:
-  4502b0:	e9 4b fa ff ff       	jmp    44fd00 <MEMORY_T::WRITEBYTE(double, double)>
-  4502b5:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  4502bc:	00 00 00 00 
-
-00000000004502c0 <MEMORY_T::WRITEUSHORT(double, double)>:
-;def MEMORY_T.WriteUShort(byval adr as double,byval w16 as double)
-  4502c0:	55                   	push   rbp
-  4502c1:	48 89 fd             	mov    rbp,rdi
-  4502c4:	53                   	push   rbx
-  4502c5:	48 83 ec 18          	sub    rsp,0x18
-  4502c9:	f2 0f 11 44 24 08    	movsd  QWORD PTR [rsp+0x8],xmm0
-  4502cf:	66 0f 28 c1          	movapd xmm0,xmm1
-;  poke64(adr,LOBYTE(w16)):poke64(adr add peek(ubyte,@nibbles(&B0001)),HIBYTE(w16))
-  4502d3:	e8 78 50 fb ff       	call   405350 <nearbyint@plt>
-  4502d8:	f2 0f 10 0d a0 31 02 	movsd  xmm1,QWORD PTR [rip+0x231a0]        # 473480 <_IO_stdin_used+0x4480>
-  4502df:	00 
-  4502e0:	66 0f 2f c1          	comisd xmm0,xmm1
-  4502e4:	73 52                	jae    450338 <MEMORY_T::WRITEUSHORT(double, double)+0x78>
-  4502e6:	f2 48 0f 2c d8       	cvttsd2si rbx,xmm0
-  4502eb:	0f b6 c3             	movzx  eax,bl
-  4502ee:	66 0f ef c9          	pxor   xmm1,xmm1
-  4502f2:	f2 0f 10 44 24 08    	movsd  xmm0,QWORD PTR [rsp+0x8]
-  4502f8:	48 89 ef             	mov    rdi,rbp
-  4502fb:	f2 48 0f 2a c8       	cvtsi2sd xmm1,rax
-  450300:	0f b6 df             	movzx  ebx,bh
-  450303:	e8 08 95 fb ff       	call   409810 <MEMORY_T::POKE64(double, double)>
-  450308:	66 0f ef c9          	pxor   xmm1,xmm1
-  45030c:	66 0f ef c0          	pxor   xmm0,xmm0
-  450310:	48 89 ef             	mov    rdi,rbp
-  450313:	0f b6 05 87 2a 05 00 	movzx  eax,BYTE PTR [rip+0x52a87]        # 4a2da1 <NIBBLES$+0x1>
-  45031a:	f2 48 0f 2a cb       	cvtsi2sd xmm1,rbx
-  45031f:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  450324:	f2 0f 58 44 24 08    	addsd  xmm0,QWORD PTR [rsp+0x8]
-;end def
-  45032a:	48 83 c4 18          	add    rsp,0x18
-  45032e:	5b                   	pop    rbx
-  45032f:	5d                   	pop    rbp
-;  poke64(adr,LOBYTE(w16)):poke64(adr add peek(ubyte,@nibbles(&B0001)),HIBYTE(w16))
-  450330:	e9 db 94 fb ff       	jmp    409810 <MEMORY_T::POKE64(double, double)>
-  450335:	0f 1f 00             	nop    DWORD PTR [rax]
-  450338:	f2 0f 5c c1          	subsd  xmm0,xmm1
-  45033c:	f2 48 0f 2c d8       	cvttsd2si rbx,xmm0
-  450341:	48 0f ba fb 3f       	btc    rbx,0x3f
-  450346:	eb a3                	jmp    4502eb <MEMORY_T::WRITEUSHORT(double, double)+0x2b>
-  450348:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  45034f:	00 
-
-0000000000450350 <CPU6510::CPU6510(MEMORY_T*)>:
-;constructor CPU6510(byval lpMem as MEMORY_T ptr)
-  450350:	41 55                	push   r13
-;  mov(mem,lpMem): mov(var i,0)
-  450352:	31 c9                	xor    ecx,ecx
-  450354:	31 d2                	xor    edx,edx
-  450356:	66 0f ef c0          	pxor   xmm0,xmm0
-;constructor CPU6510(byval lpMem as MEMORY_T ptr)
-  45035a:	41 54                	push   r12
-  45035c:	49 89 f5             	mov    r13,rsi
-;  mov(mem,lpMem): mov(var i,0)
-  45035f:	31 f6                	xor    esi,esi
-;constructor CPU6510(byval lpMem as MEMORY_T ptr)
-  450361:	55                   	push   rbp
-  450362:	48 89 fd             	mov    rbp,rdi
-  450365:	53                   	push   rbx
-;  mov(mem,lpMem): mov(var i,0)
-  450366:	48 8d 5f 48          	lea    rbx,[rdi+0x48]
-  45036a:	4c 8d a5 48 38 00 00 	lea    r12,[rbp+0x3848]
-;constructor CPU6510(byval lpMem as MEMORY_T ptr)
-  450371:	48 83 ec 08          	sub    rsp,0x8
-;  mov(mem,lpMem): mov(var i,0)
-  450375:	66 89 57 04          	mov    WORD PTR [rdi+0x4],dx
-  450379:	ba 00 38 00 00       	mov    edx,0x3800
-  45037e:	66 89 4f 06          	mov    WORD PTR [rdi+0x6],cx
-  450382:	c6 07 00             	mov    BYTE PTR [rdi],0x0
-  450385:	c6 47 01 00          	mov    BYTE PTR [rdi+0x1],0x0
-  450389:	c6 47 02 00          	mov    BYTE PTR [rdi+0x2],0x0
-  45038d:	c6 47 03 00          	mov    BYTE PTR [rdi+0x3],0x0
-  450391:	48 c7 47 40 00 00 00 	mov    QWORD PTR [rdi+0x40],0x0
-  450398:	00 
-  450399:	0f 11 47 10          	movups XMMWORD PTR [rdi+0x10],xmm0
-  45039d:	0f 11 47 20          	movups XMMWORD PTR [rdi+0x20],xmm0
-  4503a1:	0f 11 47 30          	movups XMMWORD PTR [rdi+0x30],xmm0
-  4503a5:	48 89 df             	mov    rdi,rbx
-  4503a8:	e8 13 4d fb ff       	call   4050c0 <memset@plt>
-  4503ad:	48 8d bd 50 38 00 00 	lea    rdi,[rbp+0x3850]
-  4503b4:	4c 89 e1             	mov    rcx,r12
-  4503b7:	31 c0                	xor    eax,eax
-  4503b9:	48 c7 85 48 38 00 00 	mov    QWORD PTR [rbp+0x3848],0x0
-  4503c0:	00 00 00 00 
-  4503c4:	48 83 e7 f8          	and    rdi,0xfffffffffffffff8
-  4503c8:	48 c7 85 78 39 00 00 	mov    QWORD PTR [rbp+0x3978],0x0
-  4503cf:	00 00 00 00 
-  4503d3:	48 29 f9             	sub    rcx,rdi
-  4503d6:	81 c1 38 01 00 00    	add    ecx,0x138
-  4503dc:	c1 e9 03             	shr    ecx,0x3
-  4503df:	f3 48 ab             	rep stos QWORD PTR es:[rdi],rax
-  4503e2:	4c 89 6d 08          	mov    QWORD PTR [rbp+0x8],r13
-;  restore INSTRUCTION_SET
-  4503e6:	48 8d 3d f3 c2 02 00 	lea    rdi,[rip+0x2c2f3]        # 47c6e0 <label$6049>
-  4503ed:	e8 ae 42 01 00       	call   4646a0 <fb_DataRestore>
-;  for in range(mov(i,0),255)
-  4503f2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-;      read .code,.nam,.adrmode,.bytes,.ticks,cast(integer,.decode)
-  4503f8:	48 89 df             	mov    rdi,rbx
-  4503fb:	e8 10 44 01 00       	call   464810 <fb_DataReadULongint>
-  450400:	31 d2                	xor    edx,edx
-  450402:	be 04 00 00 00       	mov    esi,0x4
-  450407:	48 8d 7b 08          	lea    rdi,[rbx+0x8]
-  45040b:	e8 90 43 01 00       	call   4647a0 <fb_DataReadStr>
-  450410:	48 8d 7b 10          	lea    rdi,[rbx+0x10]
-  450414:	e8 f7 43 01 00       	call   464810 <fb_DataReadULongint>
-  450419:	48 8d 7b 18          	lea    rdi,[rbx+0x18]
-  45041d:	e8 ee 43 01 00       	call   464810 <fb_DataReadULongint>
-  450422:	48 8d 7b 20          	lea    rdi,[rbx+0x20]
-  450426:	e8 e5 43 01 00       	call   464810 <fb_DataReadULongint>
-  45042b:	48 8d 7b 30          	lea    rdi,[rbx+0x30]
-;  next
-  45042f:	48 83 c3 38          	add    rbx,0x38
-;      read .code,.nam,.adrmode,.bytes,.ticks,cast(integer,.decode)
-  450433:	e8 f8 42 01 00       	call   464730 <fb_DataReadLongint>
-;  next
-  450438:	4c 39 e3             	cmp    rbx,r12
-  45043b:	75 bb                	jne    4503f8 <CPU6510::CPU6510(MEMORY_T*)+0xa8>
-;  restore ADDRESS_MODES
-  45043d:	48 8d 3d 8c 22 03 00 	lea    rdi,[rip+0x3228c]        # 4826d0 <label$6055>
-  450444:	4c 8d a5 80 39 00 00 	lea    r12,[rbp+0x3980]
-  45044b:	e8 50 42 01 00       	call   4646a0 <fb_DataRestore>
-;    read StrAdrModes(i)
-  450450:	48 89 df             	mov    rdi,rbx
-  450453:	31 d2                	xor    edx,edx
-  450455:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
-;  next
-  45045c:	48 83 c3 18          	add    rbx,0x18
-;    read StrAdrModes(i)
-  450460:	e8 3b 43 01 00       	call   4647a0 <fb_DataReadStr>
-;  next
-  450465:	49 39 dc             	cmp    r12,rbx
-  450468:	75 e6                	jne    450450 <CPU6510::CPU6510(MEMORY_T*)+0x100>
-;  mov(PC,&HFCE2)
-  45046a:	b8 e2 fc ff ff       	mov    eax,0xfffffce2
-;  mov(MSB,1) ':S=&HFF
-  45046f:	c6 45 07 01          	mov    BYTE PTR [rbp+0x7],0x1
-;  mov(PC,&HFCE2)
-  450473:	66 89 45 04          	mov    WORD PTR [rbp+0x4],ax
-;end constructor
-  450477:	48 83 c4 08          	add    rsp,0x8
-  45047b:	5b                   	pop    rbx
-  45047c:	5d                   	pop    rbp
-  45047d:	41 5c                	pop    r12
-  45047f:	41 5d                	pop    r13
-  450481:	c3                   	ret    
-  450482:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  450489:	00 00 00 00 
-  45048d:	0f 1f 00             	nop    DWORD PTR [rax]
-
-0000000000450490 <C64_T::C64_T()>:
-;constructor C64_T
-  450490:	41 57                	push   r15
-;  poke ubyte,@nibbles(&B0000),&B0000
-  450492:	b9 00 01 00 00       	mov    ecx,0x100
-;constructor C64_T
-  450497:	41 56                	push   r14
-  450499:	41 55                	push   r13
-  45049b:	41 54                	push   r12
-  45049d:	4c 8d 25 f6 25 02 00 	lea    r12,[rip+0x225f6]        # 472a9a <_IO_stdin_used+0x3a9a>
-  4504a4:	55                   	push   rbp
-  4504a5:	53                   	push   rbx
-;  poke ubyte,@nibbles(&B0001),&B0001
-  4504a6:	48 8d 1d f4 28 05 00 	lea    rbx,[rip+0x528f4]        # 4a2da1 <NIBBLES$+0x1>
-;  poke ubyte,@nibbles(&B1000),&B1000
-  4504ad:	48 8d 6b 07          	lea    rbp,[rbx+0x7]
-  4504b1:	4c 8d 6b ff          	lea    r13,[rbx-0x1]
-;constructor C64_T
-  4504b5:	48 83 ec 38          	sub    rsp,0x38
-  4504b9:	48 89 3c 24          	mov    QWORD PTR [rsp],rdi
-;  poke ubyte,@nibbles(&B0000),&B0000
-  4504bd:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
-  4504c4:	00 00 
-  4504c6:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
-  4504cb:	48 89 f8             	mov    rax,rdi
-  4504ce:	48 c7 00 00 00 00 00 	mov    QWORD PTR [rax],0x0
-  4504d5:	48 c7 40 08 00 00 00 	mov    QWORD PTR [rax+0x8],0x0
-  4504dc:	00 
-;  poke ubyte,@nibbles(&B0000) add     peek(integer,@i), peek(integer,@i):     poke integer,@i, peek(integer,@i) add peek(ubyte,@nibbles(&B0001))
-  4504dd:	48 8b 05 e4 28 05 00 	mov    rax,QWORD PTR [rip+0x528e4]        # 4a2dc8 <I$>
-;  poke ubyte,@nibbles(&B0000),&B0000
-  4504e4:	66 89 0d b5 28 05 00 	mov    WORD PTR [rip+0x528b5],cx        # 4a2da0 <NIBBLES$>
-;  poke ubyte,@nibbles(&H0101),&B0101
-  4504eb:	c6 05 af 29 05 00 05 	mov    BYTE PTR [rip+0x529af],0x5        # 4a2ea1 <GLCOMPILESHADER$+0x1>
-;  poke ubyte,@nibbles(&B1000),&B1000
-  4504f2:	c6 05 af 28 05 00 08 	mov    BYTE PTR [rip+0x528af],0x8        # 4a2da8 <NIBBLES$+0x8>
-  4504f9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-;  poke ubyte,@nibbles(&B0000) add     peek(integer,@i), peek(integer,@i):     poke integer,@i, peek(integer,@i) add peek(ubyte,@nibbles(&B0001))
-  450500:	41 88 44 05 00       	mov    BYTE PTR [r13+rax*1+0x0],al
-  450505:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-;  locate peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)): print "NIBBLES: ";     iif(peek(integer,@i)<    peek(ubyte,@nibbles(&B1000))   shl peek(ubyte,@nibbles(&B0001)),    peek(integer,@i),     peek(integer,@i) subt peek(ubyte,@nibbles(&B0001)))
-  450508:	31 c9                	xor    ecx,ecx
-  45050a:	45 31 c0             	xor    r8d,r8d
-;  poke ubyte,@nibbles(&B0000) add     peek(integer,@i), peek(integer,@i):     poke integer,@i, peek(integer,@i) add peek(ubyte,@nibbles(&B0001))
-  45050d:	48 89 d7             	mov    rdi,rdx
-  450510:	48 01 d0             	add    rax,rdx
-;  locate peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)): print "NIBBLES: ";     iif(peek(integer,@i)<    peek(ubyte,@nibbles(&B1000))   shl peek(ubyte,@nibbles(&B0001)),    peek(integer,@i),     peek(integer,@i) subt peek(ubyte,@nibbles(&B0001)))
-  450513:	ba ff ff ff ff       	mov    edx,0xffffffff
-  450518:	89 fe                	mov    esi,edi
-;  poke ubyte,@nibbles(&B0000) add     peek(integer,@i), peek(integer,@i):     poke integer,@i, peek(integer,@i) add peek(ubyte,@nibbles(&B0001))
-  45051a:	48 89 05 a7 28 05 00 	mov    QWORD PTR [rip+0x528a7],rax        # 4a2dc8 <I$>
-;  locate peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)): print "NIBBLES: ";     iif(peek(integer,@i)<    peek(ubyte,@nibbles(&B1000))   shl peek(ubyte,@nibbles(&B0001)),    peek(integer,@i),     peek(integer,@i) subt peek(ubyte,@nibbles(&B0001)))
-  450521:	e8 7a 35 01 00       	call   463aa0 <fb_Locate>
-  450526:	be 09 00 00 00       	mov    esi,0x9
-  45052b:	4c 89 e7             	mov    rdi,r12
-  45052e:	e8 3d 9f 01 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  450533:	31 d2                	xor    edx,edx
-  450535:	31 ff                	xor    edi,edi
-  450537:	48 89 c6             	mov    rsi,rax
-  45053a:	e8 81 77 01 00       	call   467cc0 <fb_PrintString>
-  45053f:	0f b6 0b             	movzx  ecx,BYTE PTR [rbx]
-  450542:	0f b6 45 00          	movzx  eax,BYTE PTR [rbp+0x0]
-  450546:	48 8b 35 7b 28 05 00 	mov    rsi,QWORD PTR [rip+0x5287b]        # 4a2dc8 <I$>
-  45054d:	48 d3 e0             	shl    rax,cl
-  450550:	48 39 f0             	cmp    rax,rsi
-  450553:	7f 03                	jg     450558 <C64_T::C64_T()+0xc8>
-  450555:	48 29 ce             	sub    rsi,rcx
-  450558:	ba 01 00 00 00       	mov    edx,0x1
-  45055d:	31 ff                	xor    edi,edi
-  45055f:	e8 2c 78 01 00       	call   467d90 <fb_PrintLongint>
-;  cmp    peek(integer,@i) ls                                                                                        peek(ubyte,@nibbles(&B1000))   shl peek(ubyte,@nibbles(&B0001)) jmp L0A
-  450564:	0f b6 55 00          	movzx  edx,BYTE PTR [rbp+0x0]
-  450568:	0f b6 0b             	movzx  ecx,BYTE PTR [rbx]
-  45056b:	48 8b 05 56 28 05 00 	mov    rax,QWORD PTR [rip+0x52856]        # 4a2dc8 <I$>
-  450572:	48 d3 e2             	shl    rdx,cl
-  450575:	48 39 c2             	cmp    rdx,rax
-  450578:	7d 86                	jge    450500 <C64_T::C64_T()+0x70>
-;  locate peek(ubyte,@nibbles(&B0010)),peek(ubyte,@nibbles(&B0001)): print "BYTES:   ";     iif(peek(integer,@i)<    peek(ubyte,@nibbles(&B1000))   shl peek(ubyte,@nibbles(&B0101)),    peek(integer,@i),     peek(integer,@i) subt peek(ubyte,@nibbles(&B0001)))
-  45057a:	4c 8d 2d 21 28 05 00 	lea    r13,[rip+0x52821]        # 4a2da2 <NIBBLES$+0x2>
-;  poke integer,@i,                                                                             peek(ubyte,@nibbles(&B0000))
-  450581:	0f b6 05 18 28 05 00 	movzx  eax,BYTE PTR [rip+0x52818]        # 4a2da0 <NIBBLES$>
-;  poke ubyte,@bytes(       peek(integer,@i)),peek(integer,@i):     poke integer,@i,            peek(integer,@i) add peek(ubyte,@nibbles(&B0001))
-  450588:	4c 8d 35 11 27 05 00 	lea    r14,[rip+0x52711]        # 4a2ca0 <BYTES$>
-;  locate peek(ubyte,@nibbles(&B0010)),peek(ubyte,@nibbles(&B0001)): print "BYTES:   ";     iif(peek(integer,@i)<    peek(ubyte,@nibbles(&B1000))   shl peek(ubyte,@nibbles(&B0101)),    peek(integer,@i),     peek(integer,@i) subt peek(ubyte,@nibbles(&B0001)))
-  45058f:	4d 8d 7d 03          	lea    r15,[r13+0x3]
-  450593:	4c 8d 25 0a 25 02 00 	lea    r12,[rip+0x2250a]        # 472aa4 <_IO_stdin_used+0x3aa4>
-  45059a:	eb 34                	jmp    4505d0 <C64_T::C64_T()+0x140>
-  45059c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  4505a0:	0f b6 03             	movzx  eax,BYTE PTR [rbx]
-  4505a3:	ba 01 00 00 00       	mov    edx,0x1
-  4505a8:	31 ff                	xor    edi,edi
-  4505aa:	48 29 c6             	sub    rsi,rax
-  4505ad:	e8 de 77 01 00       	call   467d90 <fb_PrintLongint>
-;  cmp    peek(integer,@i) ls                                                                                        peek(ubyte,@nibbles(&B1000))   shl peek(ubyte,@nibbles(&B0101)) jmp L0B
-  4505b2:	0f b6 55 00          	movzx  edx,BYTE PTR [rbp+0x0]
-  4505b6:	41 0f b6 0f          	movzx  ecx,BYTE PTR [r15]
-  4505ba:	48 8b 05 07 28 05 00 	mov    rax,QWORD PTR [rip+0x52807]        # 4a2dc8 <I$>
-  4505c1:	48 d3 e2             	shl    rdx,cl
-  4505c4:	48 39 d0             	cmp    rax,rdx
-  4505c7:	0f 8f 86 00 00 00    	jg     450653 <C64_T::C64_T()+0x1c3>
-  4505cd:	0f b6 0b             	movzx  ecx,BYTE PTR [rbx]
-;  poke ubyte,@bytes(       peek(integer,@i)),peek(integer,@i):     poke integer,@i,            peek(integer,@i) add peek(ubyte,@nibbles(&B0001))
-  4505d0:	42 88 04 30          	mov    BYTE PTR [rax+r14*1],al
-  4505d4:	0f b6 d1             	movzx  edx,cl
-;  locate peek(ubyte,@nibbles(&B0010)),peek(ubyte,@nibbles(&B0001)): print "BYTES:   ";     iif(peek(integer,@i)<    peek(ubyte,@nibbles(&B1000))   shl peek(ubyte,@nibbles(&B0101)),    peek(integer,@i),     peek(integer,@i) subt peek(ubyte,@nibbles(&B0001)))
-  4505d7:	41 0f b6 7d 00       	movzx  edi,BYTE PTR [r13+0x0]
-  4505dc:	0f b6 f1             	movzx  esi,cl
-;  poke ubyte,@bytes(       peek(integer,@i)),peek(integer,@i):     poke integer,@i,            peek(integer,@i) add peek(ubyte,@nibbles(&B0001))
-  4505df:	48 01 d0             	add    rax,rdx
-;  locate peek(ubyte,@nibbles(&B0010)),peek(ubyte,@nibbles(&B0001)): print "BYTES:   ";     iif(peek(integer,@i)<    peek(ubyte,@nibbles(&B1000))   shl peek(ubyte,@nibbles(&B0101)),    peek(integer,@i),     peek(integer,@i) subt peek(ubyte,@nibbles(&B0001)))
-  4505e2:	31 c9                	xor    ecx,ecx
-  4505e4:	45 31 c0             	xor    r8d,r8d
-  4505e7:	ba ff ff ff ff       	mov    edx,0xffffffff
-;  poke ubyte,@bytes(       peek(integer,@i)),peek(integer,@i):     poke integer,@i,            peek(integer,@i) add peek(ubyte,@nibbles(&B0001))
-  4505ec:	48 89 05 d5 27 05 00 	mov    QWORD PTR [rip+0x527d5],rax        # 4a2dc8 <I$>
-;  locate peek(ubyte,@nibbles(&B0010)),peek(ubyte,@nibbles(&B0001)): print "BYTES:   ";     iif(peek(integer,@i)<    peek(ubyte,@nibbles(&B1000))   shl peek(ubyte,@nibbles(&B0101)),    peek(integer,@i),     peek(integer,@i) subt peek(ubyte,@nibbles(&B0001)))
-  4505f3:	e8 a8 34 01 00       	call   463aa0 <fb_Locate>
-  4505f8:	be 09 00 00 00       	mov    esi,0x9
-  4505fd:	4c 89 e7             	mov    rdi,r12
-  450600:	e8 6b 9e 01 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  450605:	31 d2                	xor    edx,edx
-  450607:	31 ff                	xor    edi,edi
-  450609:	48 89 c6             	mov    rsi,rax
-  45060c:	e8 af 76 01 00       	call   467cc0 <fb_PrintString>
-  450611:	0f b6 45 00          	movzx  eax,BYTE PTR [rbp+0x0]
-  450615:	41 0f b6 0f          	movzx  ecx,BYTE PTR [r15]
-  450619:	48 8b 35 a8 27 05 00 	mov    rsi,QWORD PTR [rip+0x527a8]        # 4a2dc8 <I$>
-  450620:	48 d3 e0             	shl    rax,cl
-  450623:	48 39 f0             	cmp    rax,rsi
-  450626:	0f 8e 74 ff ff ff    	jle    4505a0 <C64_T::C64_T()+0x110>
-  45062c:	ba 01 00 00 00       	mov    edx,0x1
-  450631:	31 ff                	xor    edi,edi
-  450633:	e8 58 77 01 00       	call   467d90 <fb_PrintLongint>
-;  cmp    peek(integer,@i) ls                                                                                        peek(ubyte,@nibbles(&B1000))   shl peek(ubyte,@nibbles(&B0101)) jmp L0B
-  450638:	0f b6 55 00          	movzx  edx,BYTE PTR [rbp+0x0]
-  45063c:	41 0f b6 0f          	movzx  ecx,BYTE PTR [r15]
-  450640:	48 8b 05 81 27 05 00 	mov    rax,QWORD PTR [rip+0x52781]        # 4a2dc8 <I$>
-  450647:	48 d3 e2             	shl    rdx,cl
-  45064a:	48 39 c2             	cmp    rdx,rax
-  45064d:	0f 8d 7a ff ff ff    	jge    4505cd <C64_T::C64_T()+0x13d>
-;  locate peek(ubyte,@nibbles(&B0011)),peek(ubyte,@nibbles(&B0001)): print "WORDS:   ";     iif(peek(integer,@i)<    peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(integer,@i),                    peek(integer,@i) subt peek(ubyte,@nibbles(&H0001)))
-  450653:	4c 8d 25 55 27 05 00 	lea    r12,[rip+0x52755]        # 4a2daf <NIBBLES$+0xf>
-;  poke integer,@i,                                                                             peek(ubyte,@nibbles(&B0000))
-  45065a:	0f b6 05 3f 27 05 00 	movzx  eax,BYTE PTR [rip+0x5273f]        # 4a2da0 <NIBBLES$>
-  450661:	4c 8d 35 46 24 02 00 	lea    r14,[rip+0x22446]        # 472aae <_IO_stdin_used+0x3aae>
-;  locate peek(ubyte,@nibbles(&B0011)),peek(ubyte,@nibbles(&B0001)): print "WORDS:   ";     iif(peek(integer,@i)<    peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(integer,@i),                    peek(integer,@i) subt peek(ubyte,@nibbles(&H0001)))
-  450668:	4d 8d 7c 24 fd       	lea    r15,[r12-0x3]
-  45066d:	4d 8d 6c 24 f5       	lea    r13,[r12-0xb]
-  450672:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-;  poke ushort,@xwords(     peek(integer,@i)),peek(integer,@i):     poke integer,@i,            peek(integer,@i) add peek(ubyte,@nibbles(&B0001))
-  450678:	48 8d 3d 21 26 03 00 	lea    rdi,[rip+0x32621]        # 482ca0 <XWORDS$>
-;  locate peek(ubyte,@nibbles(&B0011)),peek(ubyte,@nibbles(&B0001)): print "WORDS:   ";     iif(peek(integer,@i)<    peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(integer,@i),                    peek(integer,@i) subt peek(ubyte,@nibbles(&H0001)))
-  45067f:	31 c9                	xor    ecx,ecx
-  450681:	45 31 c0             	xor    r8d,r8d
-;  poke ushort,@xwords(     peek(integer,@i)),peek(integer,@i):     poke integer,@i,            peek(integer,@i) add peek(ubyte,@nibbles(&B0001))
-  450684:	66 89 04 47          	mov    WORD PTR [rdi+rax*2],ax
-  450688:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-  45068b:	48 01 d0             	add    rax,rdx
-  45068e:	48 89 d6             	mov    rsi,rdx
-;  locate peek(ubyte,@nibbles(&B0011)),peek(ubyte,@nibbles(&B0001)): print "WORDS:   ";     iif(peek(integer,@i)<    peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(integer,@i),                    peek(integer,@i) subt peek(ubyte,@nibbles(&H0001)))
-  450691:	ba ff ff ff ff       	mov    edx,0xffffffff
-;  poke ushort,@xwords(     peek(integer,@i)),peek(integer,@i):     poke integer,@i,            peek(integer,@i) add peek(ubyte,@nibbles(&B0001))
-  450696:	48 89 05 2b 27 05 00 	mov    QWORD PTR [rip+0x5272b],rax        # 4a2dc8 <I$>
-;  locate peek(ubyte,@nibbles(&B0011)),peek(ubyte,@nibbles(&B0001)): print "WORDS:   ";     iif(peek(integer,@i)<    peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(integer,@i),                    peek(integer,@i) subt peek(ubyte,@nibbles(&H0001)))
-  45069d:	48 8d 05 ff 26 05 00 	lea    rax,[rip+0x526ff]        # 4a2da3 <NIBBLES$+0x3>
-  4506a4:	0f b6 38             	movzx  edi,BYTE PTR [rax]
-  4506a7:	e8 f4 33 01 00       	call   463aa0 <fb_Locate>
-  4506ac:	be 09 00 00 00       	mov    esi,0x9
-  4506b1:	4c 89 f7             	mov    rdi,r14
-  4506b4:	e8 b7 9d 01 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4506b9:	31 d2                	xor    edx,edx
-  4506bb:	31 ff                	xor    edi,edi
-  4506bd:	48 89 c6             	mov    rsi,rax
-  4506c0:	e8 fb 75 01 00       	call   467cc0 <fb_PrintString>
-  4506c5:	41 0f b6 14 24       	movzx  edx,BYTE PTR [r12]
-  4506ca:	41 0f b6 0f          	movzx  ecx,BYTE PTR [r15]
-  4506ce:	48 8b 35 f3 26 05 00 	mov    rsi,QWORD PTR [rip+0x526f3]        # 4a2dc8 <I$>
-  4506d5:	48 89 d0             	mov    rax,rdx
-  4506d8:	48 89 d7             	mov    rdi,rdx
-  4506db:	48 d3 e0             	shl    rax,cl
-  4506de:	0f b6 4d 00          	movzx  ecx,BYTE PTR [rbp+0x0]
-  4506e2:	48 d3 e7             	shl    rdi,cl
-  4506e5:	41 0f b6 4d 00       	movzx  ecx,BYTE PTR [r13+0x0]
-  4506ea:	48 01 f8             	add    rax,rdi
-  4506ed:	48 01 d0             	add    rax,rdx
-  4506f0:	48 d3 e2             	shl    rdx,cl
-  4506f3:	48 01 d0             	add    rax,rdx
-  4506f6:	48 39 f0             	cmp    rax,rsi
-  4506f9:	7f 06                	jg     450701 <C64_T::C64_T()+0x271>
-  4506fb:	0f b6 03             	movzx  eax,BYTE PTR [rbx]
-  4506fe:	48 29 c6             	sub    rsi,rax
-  450701:	ba 01 00 00 00       	mov    edx,0x1
-  450706:	31 ff                	xor    edi,edi
-  450708:	e8 83 76 01 00       	call   467d90 <fb_PrintLongint>
-;  cmp peek(integer,@i) ls                                                                                           peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L0C 
-  45070d:	41 0f b6 3c 24       	movzx  edi,BYTE PTR [r12]
-  450712:	44 0f b6 5d 00       	movzx  r11d,BYTE PTR [rbp+0x0]
-  450717:	41 0f b6 0f          	movzx  ecx,BYTE PTR [r15]
-  45071b:	45 0f b6 45 00       	movzx  r8d,BYTE PTR [r13+0x0]
-  450720:	48 89 fa             	mov    rdx,rdi
-  450723:	49 89 f9             	mov    r9,rdi
-  450726:	48 8b 05 9b 26 05 00 	mov    rax,QWORD PTR [rip+0x5269b]        # 4a2dc8 <I$>
-  45072d:	44 89 de             	mov    esi,r11d
-  450730:	48 d3 e2             	shl    rdx,cl
-  450733:	44 89 d9             	mov    ecx,r11d
-  450736:	45 89 c2             	mov    r10d,r8d
-  450739:	83 e6 3f             	and    esi,0x3f
-  45073c:	49 d3 e1             	shl    r9,cl
-  45073f:	44 89 c1             	mov    ecx,r8d
-  450742:	41 83 e2 3f          	and    r10d,0x3f
-  450746:	4c 01 ca             	add    rdx,r9
-  450749:	49 89 f9             	mov    r9,rdi
-  45074c:	48 01 fa             	add    rdx,rdi
-  45074f:	49 d3 e1             	shl    r9,cl
-  450752:	4c 01 ca             	add    rdx,r9
-  450755:	48 39 c2             	cmp    rdx,rax
-  450758:	0f 8d 1a ff ff ff    	jge    450678 <C64_T::C64_T()+0x1e8>
-;  ScreenRes                                                                                                         peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0111)),    peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)),    peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)),    peek(ubyte,@nibbles(&B0000)),GFX_ALPHA_PRIMITIVES: Cls
-  45075e:	0f b6 05 3e 26 05 00 	movzx  eax,BYTE PTR [rip+0x5263e]        # 4a2da3 <NIBBLES$+0x3>
-  450765:	44 89 d1             	mov    ecx,r10d
-  450768:	45 31 c9             	xor    r9d,r9d
-  45076b:	44 0f b6 2d 2d 26 05 	movzx  r13d,BYTE PTR [rip+0x5262d]        # 4a2da0 <NIBBLES$>
-  450772:	00 
-  450773:	0f b6 15 28 26 05 00 	movzx  edx,BYTE PTR [rip+0x52628]        # 4a2da2 <NIBBLES$+0x2>
-  45077a:	48 8d 2d 17 25 03 00 	lea    rbp,[rip+0x32517]        # 482c98 <C$>
-  450781:	48 d3 e0             	shl    rax,cl
-  450784:	89 f1                	mov    ecx,esi
-  450786:	49 d3 e0             	shl    r8,cl
-  450789:	44 89 e9             	mov    ecx,r13d
-  45078c:	48 89 4c 24 08       	mov    QWORD PTR [rsp+0x8],rcx
-  450791:	44 89 d1             	mov    ecx,r10d
-  450794:	42 8d 34 00          	lea    esi,[rax+r8*1]
-  450798:	41 b8 40 00 00 00    	mov    r8d,0x40
-  45079e:	48 d3 e2             	shl    rdx,cl
-  4507a1:	0f b6 0d ff 25 05 00 	movzx  ecx,BYTE PTR [rip+0x525ff]        # 4a2da7 <NIBBLES$+0x7>
-  4507a8:	44 01 de             	add    esi,r11d
-  4507ab:	48 d3 e7             	shl    rdi,cl
-  4507ae:	48 8b 4c 24 08       	mov    rcx,QWORD PTR [rsp+0x8]
-  4507b3:	e8 c8 96 00 00       	call   459e80 <fb_GfxScreenRes>
-  4507b8:	bf 00 00 ff ff       	mov    edi,0xffff0000
-  4507bd:	e8 1e 5c 01 00       	call   4663e0 <fb_Cls>
-;  screeninfo cast(uinteger,scr_w), cast(uinteger,scr_h), cast(uinteger,imgData), cast(uinteger,pitch)
-  4507c2:	31 f6                	xor    esi,esi
-  4507c4:	48 8d 3d 1c ec 01 00 	lea    rdi,[rip+0x1ec1c]        # 46f3e7 <_IO_stdin_used+0x3e7>
-  4507cb:	e8 a0 9c 01 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4507d0:	48 83 ec 08          	sub    rsp,0x8
-  4507d4:	48 c7 44 24 28 00 00 	mov    QWORD PTR [rsp+0x28],0x0
-  4507db:	00 00 
-  4507dd:	48 8d 0d 8c a5 05 00 	lea    rcx,[rip+0x5a58c]        # 4aad70 <PITCH$>
-  4507e4:	48 c7 44 24 20 00 00 	mov    QWORD PTR [rsp+0x20],0x0
-  4507eb:	00 00 
-  4507ed:	48 8d 15 2c a5 05 00 	lea    rdx,[rip+0x5a52c]        # 4aad20 <IMGDATA$>
-  4507f4:	48 8d 35 15 a5 05 00 	lea    rsi,[rip+0x5a515]        # 4aad10 <SCR_H$>
-  4507fb:	50                   	push   rax
-  4507fc:	48 8d 3d ad a5 05 00 	lea    rdi,[rip+0x5a5ad]        # 4aadb0 <SCR_W$>
-  450803:	4c 8d 4c 24 30       	lea    r9,[rsp+0x30]
-  450808:	4c 8d 44 24 28       	lea    r8,[rsp+0x28]
-  45080d:	e8 1e 99 00 00       	call   45a130 <fb_GfxScreenInfo64>
-;  mov(bgimage, ImageCreate(scr_w,scr_h,                                  peek(ubyte,@nibbles(&B0000)),      peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
-  450812:	0f b6 0d 8b 25 05 00 	movzx  ecx,BYTE PTR [rip+0x5258b]        # 4a2da4 <NIBBLES$+0x4>
-  450819:	45 31 c0             	xor    r8d,r8d
-  45081c:	0f b6 05 7f 25 05 00 	movzx  eax,BYTE PTR [rip+0x5257f]        # 4a2da2 <NIBBLES$+0x2>
-  450823:	0f b6 15 76 25 05 00 	movzx  edx,BYTE PTR [rip+0x52576]        # 4a2da0 <NIBBLES$>
-  45082a:	8b 35 e0 a4 05 00    	mov    esi,DWORD PTR [rip+0x5a4e0]        # 4aad10 <SCR_H$>
-  450830:	8b 3d 7a a5 05 00    	mov    edi,DWORD PTR [rip+0x5a57a]        # 4aadb0 <SCR_W$>
-  450836:	48 d3 e0             	shl    rax,cl
-  450839:	48 89 c1             	mov    rcx,rax
-  45083c:	e8 4f 57 00 00       	call   455f90 <fb_GfxImageCreate>
-;  mov(fgimage, ImageCreate(scr_w,scr_h,                                  peek(ubyte,@nibbles(&B0000)),      peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
-  450841:	0f b6 0d 5c 25 05 00 	movzx  ecx,BYTE PTR [rip+0x5255c]        # 4a2da4 <NIBBLES$+0x4>
-  450848:	45 31 c0             	xor    r8d,r8d
-  45084b:	0f b6 15 4e 25 05 00 	movzx  edx,BYTE PTR [rip+0x5254e]        # 4a2da0 <NIBBLES$>
-;  mov(bgimage, ImageCreate(scr_w,scr_h,                                  peek(ubyte,@nibbles(&B0000)),      peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
-  450852:	48 89 05 ff a4 05 00 	mov    QWORD PTR [rip+0x5a4ff],rax        # 4aad58 <BGIMAGE$>
-;  mov(fgimage, ImageCreate(scr_w,scr_h,                                  peek(ubyte,@nibbles(&B0000)),      peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
-  450859:	0f b6 05 42 25 05 00 	movzx  eax,BYTE PTR [rip+0x52542]        # 4a2da2 <NIBBLES$+0x2>
-  450860:	8b 35 aa a4 05 00    	mov    esi,DWORD PTR [rip+0x5a4aa]        # 4aad10 <SCR_H$>
-  450866:	8b 3d 44 a5 05 00    	mov    edi,DWORD PTR [rip+0x5a544]        # 4aadb0 <SCR_W$>
-  45086c:	48 d3 e0             	shl    rax,cl
-  45086f:	48 89 c1             	mov    rcx,rax
-  450872:	e8 19 57 00 00       	call   455f90 <fb_GfxImageCreate>
-;  mov(raster,  ImageCreate(scr_w,                                        peek(ubyte,@nibbles(&B0001)),      peek(ubyte,@nibbles(&B0000)),    peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
-  450877:	0f b6 0d 26 25 05 00 	movzx  ecx,BYTE PTR [rip+0x52526]        # 4a2da4 <NIBBLES$+0x4>
-  45087e:	45 31 c0             	xor    r8d,r8d
-  450881:	0f b6 15 18 25 05 00 	movzx  edx,BYTE PTR [rip+0x52518]        # 4a2da0 <NIBBLES$>
-;  mov(fgimage, ImageCreate(scr_w,scr_h,                                  peek(ubyte,@nibbles(&B0000)),      peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
-  450888:	48 89 05 f1 a4 05 00 	mov    QWORD PTR [rip+0x5a4f1],rax        # 4aad80 <FGIMAGE$>
-;  mov(raster,  ImageCreate(scr_w,                                        peek(ubyte,@nibbles(&B0001)),      peek(ubyte,@nibbles(&B0000)),    peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
-  45088f:	0f b6 05 0c 25 05 00 	movzx  eax,BYTE PTR [rip+0x5250c]        # 4a2da2 <NIBBLES$+0x2>
-  450896:	0f b6 35 04 25 05 00 	movzx  esi,BYTE PTR [rip+0x52504]        # 4a2da1 <NIBBLES$+0x1>
-  45089d:	8b 3d 0d a5 05 00    	mov    edi,DWORD PTR [rip+0x5a50d]        # 4aadb0 <SCR_W$>
-  4508a3:	48 d3 e0             	shl    rax,cl
-  4508a6:	48 89 c1             	mov    rcx,rax
-  4508a9:	e8 e2 56 00 00       	call   455f90 <fb_GfxImageCreate>
-;  mov(render,  ImageCreate(scr_w,scr_h,                                  peek(ubyte,@nibbles(&B0000)),      peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
-  4508ae:	0f b6 0d ef 24 05 00 	movzx  ecx,BYTE PTR [rip+0x524ef]        # 4a2da4 <NIBBLES$+0x4>
-  4508b5:	45 31 c0             	xor    r8d,r8d
-  4508b8:	0f b6 15 e1 24 05 00 	movzx  edx,BYTE PTR [rip+0x524e1]        # 4a2da0 <NIBBLES$>
-;  mov(raster,  ImageCreate(scr_w,                                        peek(ubyte,@nibbles(&B0001)),      peek(ubyte,@nibbles(&B0000)),    peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
-  4508bf:	48 89 05 6a a4 05 00 	mov    QWORD PTR [rip+0x5a46a],rax        # 4aad30 <RASTER$>
-;  mov(render,  ImageCreate(scr_w,scr_h,                                  peek(ubyte,@nibbles(&B0000)),      peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
-  4508c6:	0f b6 05 d5 24 05 00 	movzx  eax,BYTE PTR [rip+0x524d5]        # 4a2da2 <NIBBLES$+0x2>
-  4508cd:	8b 35 3d a4 05 00    	mov    esi,DWORD PTR [rip+0x5a43d]        # 4aad10 <SCR_H$>
-  4508d3:	8b 3d d7 a4 05 00    	mov    edi,DWORD PTR [rip+0x5a4d7]        # 4aadb0 <SCR_W$>
-  4508d9:	48 d3 e0             	shl    rax,cl
-  4508dc:	48 89 c1             	mov    rcx,rax
-  4508df:	e8 ac 56 00 00       	call   455f90 <fb_GfxImageCreate>
-  4508e4:	48 89 05 2d a4 05 00 	mov    QWORD PTR [rip+0x5a42d],rax        # 4aad18 <RENDER$>
-;  poke integer,@i,                                                    peek(ubyte,@nibbles(&B0000))  
-  4508eb:	0f b6 05 ae 24 05 00 	movzx  eax,BYTE PTR [rip+0x524ae]        # 4a2da0 <NIBBLES$>
-  4508f2:	48 89 05 cf 24 05 00 	mov    QWORD PTR [rip+0x524cf],rax        # 4a2dc8 <I$>
-  4508f9:	58                   	pop    rax
-  4508fa:	5a                   	pop    rdx
-  4508fb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-;  read c
-  450900:	48 89 ef             	mov    rdi,rbp
-  450903:	e8 28 3e 01 00       	call   464730 <fb_DataReadLongint>
-;  (@fb_GfxPalette)(peek(integer,@i),peek(integer,@c),-peek(ubyte,@nibbles(&B0001)),-peek(ubyte,@nibbles(&B0001)))
-  450908:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-  45090b:	8b 35 87 23 03 00    	mov    esi,DWORD PTR [rip+0x32387]        # 482c98 <C$>
-  450911:	8b 3d b1 24 05 00    	mov    edi,DWORD PTR [rip+0x524b1]        # 4a2dc8 <I$>
-  450917:	f7 da                	neg    edx
-  450919:	89 d1                	mov    ecx,edx
-  45091b:	e8 80 7d 00 00       	call   4586a0 <fb_GfxPalette>
-;  cmp peek(integer,@i) lt                                             peek(ubyte,@nibbles(&B1111))   jmp L0
-  450920:	41 0f b6 14 24       	movzx  edx,BYTE PTR [r12]
-;  poke integer,@i,                                                    peek(integer,@i) add peek(ubyte,@nibbles(&B0001))
-  450925:	0f b6 03             	movzx  eax,BYTE PTR [rbx]
-  450928:	48 03 05 99 24 05 00 	add    rax,QWORD PTR [rip+0x52499]        # 4a2dc8 <I$>
-  45092f:	48 89 05 92 24 05 00 	mov    QWORD PTR [rip+0x52492],rax        # 4a2dc8 <I$>
-;  cmp peek(integer,@i) lt                                             peek(ubyte,@nibbles(&B1111))   jmp L0
-  450936:	48 39 d0             	cmp    rax,rdx
-  450939:	7c c5                	jl     450900 <C64_T::C64_T()+0x470>
-;  mov(mem, new MEMORY_T)
-  45093b:	bf 08 36 08 08       	mov    edi,0x8083608
-  450940:	e8 6b 49 fb ff       	call   4052b0 <malloc@plt>
-  450945:	48 89 c5             	mov    rbp,rax
-  450948:	48 85 c0             	test   rax,rax
-  45094b:	74 08                	je     450955 <C64_T::C64_T()+0x4c5>
-  45094d:	48 89 c7             	mov    rdi,rax
-  450950:	e8 6b 9a ff ff       	call   44a3c0 <MEMORY_T::MEMORY_T()>
-  450955:	48 8b 04 24          	mov    rax,QWORD PTR [rsp]
-;  mov(cpu, new CPU6510(mem))
-  450959:	bf 80 39 00 00       	mov    edi,0x3980
-;  mov(mem, new MEMORY_T)
-  45095e:	48 89 28             	mov    QWORD PTR [rax],rbp
-;  mov(cpu, new CPU6510(mem))
-  450961:	e8 4a 49 fb ff       	call   4052b0 <malloc@plt>
-  450966:	48 89 c3             	mov    rbx,rax
-  450969:	48 85 c0             	test   rax,rax
-  45096c:	74 0b                	je     450979 <C64_T::C64_T()+0x4e9>
-  45096e:	48 89 ee             	mov    rsi,rbp
-  450971:	48 89 c7             	mov    rdi,rax
-  450974:	e8 d7 f9 ff ff       	call   450350 <CPU6510::CPU6510(MEMORY_T*)>
-  450979:	48 8b 04 24          	mov    rax,QWORD PTR [rsp]
-  45097d:	48 89 58 08          	mov    QWORD PTR [rax+0x8],rbx
-;end constructor
-  450981:	48 8b 44 24 28       	mov    rax,QWORD PTR [rsp+0x28]
-  450986:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  45098d:	00 00 
-  45098f:	75 0f                	jne    4509a0 <C64_T::C64_T()+0x510>
-  450991:	48 83 c4 38          	add    rsp,0x38
-  450995:	5b                   	pop    rbx
-  450996:	5d                   	pop    rbp
-  450997:	41 5c                	pop    r12
-  450999:	41 5d                	pop    r13
-  45099b:	41 5e                	pop    r14
-  45099d:	41 5f                	pop    r15
-  45099f:	c3                   	ret    
-  4509a0:	e8 bb 4e fb ff       	call   405860 <__stack_chk_fail@plt>
-  4509a5:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  4509ac:	00 00 00 00 
-
-00000000004509b0 <CPU6510::~CPU6510()>:
-;destructor CPU6510
-  4509b0:	48 83 ec 58          	sub    rsp,0x58
-  4509b4:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
-  4509bb:	00 00 
-  4509bd:	48 89 44 24 48       	mov    QWORD PTR [rsp+0x48],rax
-  4509c2:	31 c0                	xor    eax,eax
-;end destructor
-  4509c4:	48 8d 87 48 38 00 00 	lea    rax,[rdi+0x3848]
-  4509cb:	48 89 e7             	mov    rdi,rsp
-  4509ce:	48 c7 44 24 40 0c 00 	mov    QWORD PTR [rsp+0x40],0xc
-  4509d5:	00 00 
-  4509d7:	66 48 0f 6e c0       	movq   xmm0,rax
-  4509dc:	66 0f 6c c0          	punpcklqdq xmm0,xmm0
-  4509e0:	0f 29 04 24          	movaps XMMWORD PTR [rsp],xmm0
-  4509e4:	66 0f 6f 05 c4 34 02 	movdqa xmm0,XMMWORD PTR [rip+0x234c4]        # 473eb0 <_IO_stdin_used+0x4eb0>
-  4509eb:	00 
-  4509ec:	0f 29 44 24 10       	movaps XMMWORD PTR [rsp+0x10],xmm0
-  4509f1:	66 0f 6f 05 c7 34 02 	movdqa xmm0,XMMWORD PTR [rip+0x234c7]        # 473ec0 <_IO_stdin_used+0x4ec0>
-  4509f8:	00 
-  4509f9:	0f 29 44 24 20       	movaps XMMWORD PTR [rsp+0x20],xmm0
-  4509fe:	66 0f 6f 05 ca 34 02 	movdqa xmm0,XMMWORD PTR [rip+0x234ca]        # 473ed0 <_IO_stdin_used+0x4ed0>
-  450a05:	00 
-  450a06:	0f 29 44 24 30       	movaps XMMWORD PTR [rsp+0x30],xmm0
-  450a0b:	e8 e0 2f 01 00       	call   4639f0 <fb_ArrayDestructStr>
-  450a10:	48 8b 44 24 48       	mov    rax,QWORD PTR [rsp+0x48]
-  450a15:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  450a1c:	00 00 
-  450a1e:	75 05                	jne    450a25 <CPU6510::~CPU6510()+0x75>
-  450a20:	48 83 c4 58          	add    rsp,0x58
-  450a24:	c3                   	ret    
-  450a25:	e8 36 4e fb ff       	call   405860 <__stack_chk_fail@plt>
-  450a2a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-
-0000000000450a30 <C64_T::~C64_T()>:
-;destructor C64_T
-  450a30:	53                   	push   rbx
-  450a31:	48 89 fb             	mov    rbx,rdi
-;  delete CPU
-  450a34:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  450a38:	48 85 ff             	test   rdi,rdi
-  450a3b:	74 0e                	je     450a4b <C64_T::~C64_T()+0x1b>
-  450a3d:	e8 6e ff ff ff       	call   4509b0 <CPU6510::~CPU6510()>
-  450a42:	48 8b 7b 08          	mov    rdi,QWORD PTR [rbx+0x8]
-  450a46:	e8 f5 49 fb ff       	call   405440 <free@plt>
-;  delete MEM
-  450a4b:	48 8b 3b             	mov    rdi,QWORD PTR [rbx]
-  450a4e:	48 85 ff             	test   rdi,rdi
-  450a51:	74 05                	je     450a58 <C64_T::~C64_T()+0x28>
-  450a53:	e8 e8 49 fb ff       	call   405440 <free@plt>
-;  ImageDestroy(bgimage)
-  450a58:	48 8b 3d f9 a2 05 00 	mov    rdi,QWORD PTR [rip+0x5a2f9]        # 4aad58 <BGIMAGE$>
-  450a5f:	e8 4c 55 00 00       	call   455fb0 <fb_GfxImageDestroy>
-;  ImageDestroy(fgimage)
-  450a64:	48 8b 3d 15 a3 05 00 	mov    rdi,QWORD PTR [rip+0x5a315]        # 4aad80 <FGIMAGE$>
-  450a6b:	e8 40 55 00 00       	call   455fb0 <fb_GfxImageDestroy>
-;  ImageDestroy(raster)
-  450a70:	48 8b 3d b9 a2 05 00 	mov    rdi,QWORD PTR [rip+0x5a2b9]        # 4aad30 <RASTER$>
-  450a77:	e8 34 55 00 00       	call   455fb0 <fb_GfxImageDestroy>
-;  ImageDestroy(render)
-  450a7c:	48 8b 3d 95 a2 05 00 	mov    rdi,QWORD PTR [rip+0x5a295]        # 4aad18 <RENDER$>
-  450a83:	e8 28 55 00 00       	call   455fb0 <fb_GfxImageDestroy>
-;  sleep                                                                  peek(ubyte,@nibbles(&B0011))   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))
-  450a88:	0f b6 05 19 23 05 00 	movzx  eax,BYTE PTR [rip+0x52319]        # 4a2da8 <NIBBLES$+0x8>
-;end destructor
-  450a8f:	5b                   	pop    rbx
-;  sleep                                                                  peek(ubyte,@nibbles(&B0011))   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))
-  450a90:	0f b6 0d 0d 23 05 00 	movzx  ecx,BYTE PTR [rip+0x5230d]        # 4a2da4 <NIBBLES$+0x4>
-  450a97:	0f b6 3d 10 23 05 00 	movzx  edi,BYTE PTR [rip+0x52310]        # 4a2dae <NIBBLES$+0xe>
-  450a9e:	0f b6 15 fe 22 05 00 	movzx  edx,BYTE PTR [rip+0x522fe]        # 4a2da3 <NIBBLES$+0x3>
-  450aa5:	48 d3 e7             	shl    rdi,cl
-  450aa8:	89 c1                	mov    ecx,eax
-  450aaa:	48 d3 e2             	shl    rdx,cl
-  450aad:	01 d7                	add    edi,edx
-  450aaf:	01 c7                	add    edi,eax
-  450ab1:	e9 da 5c 01 00       	jmp    466790 <fb_Sleep>
-  450ab6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  450abd:	00 00 00 
-
-0000000000450ac0 <CPU6510::operator FBSTRING()>:
-;opr CPU6510.CAST as string
-  450ac0:	41 57                	push   r15
-  450ac2:	66 0f ef c0          	pxor   xmm0,xmm0
-  450ac6:	41 56                	push   r14
-  450ac8:	41 55                	push   r13
-  450aca:	41 54                	push   r12
-  450acc:	55                   	push   rbp
-  450acd:	53                   	push   rbx
-  450ace:	48 89 fb             	mov    rbx,rdi
-  450ad1:	48 81 ec 68 03 00 00 	sub    rsp,0x368
-;            " C:" & F.C)
-  450ad8:	0f b6 3f             	movzx  edi,BYTE PTR [rdi]
-;opr CPU6510.CAST as string
-  450adb:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
-  450ae2:	00 00 
-  450ae4:	48 89 84 24 58 03 00 	mov    QWORD PTR [rsp+0x358],rax
-  450aeb:	00 
-  450aec:	31 c0                	xor    eax,eax
-  450aee:	0f 29 84 24 40 03 00 	movaps XMMWORD PTR [rsp+0x340],xmm0
-  450af5:	00 
-  450af6:	48 8d ac 24 40 03 00 	lea    rbp,[rsp+0x340]
-  450afd:	00 
-  450afe:	48 c7 84 24 50 03 00 	mov    QWORD PTR [rsp+0x350],0x0
-  450b05:	00 00 00 00 00 
-;            " C:" & F.C)
-  450b0a:	83 e7 01             	and    edi,0x1
-  450b0d:	e8 7e 8f 01 00       	call   469a90 <fb_ULongintToStr>
-  450b12:	0f b6 3b             	movzx  edi,BYTE PTR [rbx]
-  450b15:	48 89 44 24 38       	mov    QWORD PTR [rsp+0x38],rax
-  450b1a:	40 d0 ef             	shr    dil,1
-  450b1d:	83 e7 01             	and    edi,0x1
-  450b20:	e8 6b 8f 01 00       	call   469a90 <fb_ULongintToStr>
-  450b25:	0f b6 3b             	movzx  edi,BYTE PTR [rbx]
-  450b28:	48 89 44 24 08       	mov    QWORD PTR [rsp+0x8],rax
-  450b2d:	40 c0 ef 02          	shr    dil,0x2
-  450b31:	83 e7 01             	and    edi,0x1
-  450b34:	e8 57 8f 01 00       	call   469a90 <fb_ULongintToStr>
-  450b39:	0f b6 3b             	movzx  edi,BYTE PTR [rbx]
-  450b3c:	48 89 44 24 10       	mov    QWORD PTR [rsp+0x10],rax
-  450b41:	40 c0 ef 03          	shr    dil,0x3
-  450b45:	83 e7 01             	and    edi,0x1
-  450b48:	e8 43 8f 01 00       	call   469a90 <fb_ULongintToStr>
-  450b4d:	0f b6 3b             	movzx  edi,BYTE PTR [rbx]
-  450b50:	48 89 44 24 18       	mov    QWORD PTR [rsp+0x18],rax
-  450b55:	40 c0 ef 04          	shr    dil,0x4
-  450b59:	83 e7 01             	and    edi,0x1
-  450b5c:	e8 2f 8f 01 00       	call   469a90 <fb_ULongintToStr>
-  450b61:	0f b6 3b             	movzx  edi,BYTE PTR [rbx]
-  450b64:	49 89 c4             	mov    r12,rax
-  450b67:	40 c0 ef 06          	shr    dil,0x6
-  450b6b:	83 e7 01             	and    edi,0x1
-  450b6e:	e8 1d 8f 01 00       	call   469a90 <fb_ULongintToStr>
-  450b73:	0f b6 3b             	movzx  edi,BYTE PTR [rbx]
-  450b76:	49 89 c5             	mov    r13,rax
-  450b79:	40 c0 ef 07          	shr    dil,0x7
-  450b7d:	40 0f b6 ff          	movzx  edi,dil
-  450b81:	e8 0a 8f 01 00       	call   469a90 <fb_ULongintToStr>
-  450b86:	0f b6 35 15 22 05 00 	movzx  esi,BYTE PTR [rip+0x52215]        # 4a2da2 <NIBBLES$+0x2>
-  450b8d:	0f b6 7b 06          	movzx  edi,BYTE PTR [rbx+0x6]
-  450b91:	49 89 c6             	mov    r14,rax
-  450b94:	e8 27 94 01 00       	call   469fc0 <fb_HEXEx_b>
-  450b99:	0f b6 35 02 22 05 00 	movzx  esi,BYTE PTR [rip+0x52202]        # 4a2da2 <NIBBLES$+0x2>
-  450ba0:	0f b6 7b 03          	movzx  edi,BYTE PTR [rbx+0x3]
-  450ba4:	49 89 c7             	mov    r15,rax
-  450ba7:	e8 14 94 01 00       	call   469fc0 <fb_HEXEx_b>
-  450bac:	0f b6 35 ef 21 05 00 	movzx  esi,BYTE PTR [rip+0x521ef]        # 4a2da2 <NIBBLES$+0x2>
-  450bb3:	0f b6 7b 02          	movzx  edi,BYTE PTR [rbx+0x2]
-  450bb7:	48 89 44 24 20       	mov    QWORD PTR [rsp+0x20],rax
-  450bbc:	e8 ff 93 01 00       	call   469fc0 <fb_HEXEx_b>
-  450bc1:	0f b6 35 da 21 05 00 	movzx  esi,BYTE PTR [rip+0x521da]        # 4a2da2 <NIBBLES$+0x2>
-  450bc8:	0f b6 7b 01          	movzx  edi,BYTE PTR [rbx+0x1]
-  450bcc:	48 89 44 24 30       	mov    QWORD PTR [rsp+0x30],rax
-  450bd1:	e8 ea 93 01 00       	call   469fc0 <fb_HEXEx_b>
-  450bd6:	0f b6 35 c7 21 05 00 	movzx  esi,BYTE PTR [rip+0x521c7]        # 4a2da4 <NIBBLES$+0x4>
-  450bdd:	0f b7 7b 04          	movzx  edi,WORD PTR [rbx+0x4]
-  450be1:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
-  450be6:	e8 e5 93 01 00       	call   469fd0 <fb_HEXEx_s>
-  450beb:	66 0f ef c0          	pxor   xmm0,xmm0
-  450bef:	48 8d 7c 24 40       	lea    rdi,[rsp+0x40]
-  450bf4:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
-  450bfb:	48 89 c1             	mov    rcx,rax
-  450bfe:	ba 04 00 00 00       	mov    edx,0x4
-  450c03:	0f 29 44 24 40       	movaps XMMWORD PTR [rsp+0x40],xmm0
-  450c08:	48 8d 35 a9 1e 02 00 	lea    rsi,[rip+0x21ea9]        # 472ab8 <_IO_stdin_used+0x3ab8>
-  450c0f:	48 c7 44 24 50 00 00 	mov    QWORD PTR [rsp+0x50],0x0
-  450c16:	00 00 
-  450c18:	e8 73 83 01 00       	call   468f90 <fb_StrConcat>
-  450c1d:	66 0f ef c0          	pxor   xmm0,xmm0
-  450c21:	48 8d 7c 24 60       	lea    rdi,[rsp+0x60]
-  450c26:	41 b8 04 00 00 00    	mov    r8d,0x4
-  450c2c:	48 89 c6             	mov    rsi,rax
-  450c2f:	48 8d 0d 86 1e 02 00 	lea    rcx,[rip+0x21e86]        # 472abc <_IO_stdin_used+0x3abc>
-  450c36:	0f 29 44 24 60       	movaps XMMWORD PTR [rsp+0x60],xmm0
-  450c3b:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450c42:	48 c7 44 24 70 00 00 	mov    QWORD PTR [rsp+0x70],0x0
-  450c49:	00 00 
-  450c4b:	e8 40 83 01 00       	call   468f90 <fb_StrConcat>
-  450c50:	48 8b 4c 24 28       	mov    rcx,QWORD PTR [rsp+0x28]
-  450c55:	66 0f ef c0          	pxor   xmm0,xmm0
-  450c59:	48 8d bc 24 80 00 00 	lea    rdi,[rsp+0x80]
-  450c60:	00 
-  450c61:	48 89 c6             	mov    rsi,rax
-  450c64:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
-  450c6b:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450c72:	0f 29 84 24 80 00 00 	movaps XMMWORD PTR [rsp+0x80],xmm0
-  450c79:	00 
-  450c7a:	48 c7 84 24 90 00 00 	mov    QWORD PTR [rsp+0x90],0x0
-  450c81:	00 00 00 00 00 
-  450c86:	e8 05 83 01 00       	call   468f90 <fb_StrConcat>
-  450c8b:	66 0f ef c0          	pxor   xmm0,xmm0
-  450c8f:	48 8d bc 24 a0 00 00 	lea    rdi,[rsp+0xa0]
-  450c96:	00 
-  450c97:	41 b8 04 00 00 00    	mov    r8d,0x4
-  450c9d:	48 89 c6             	mov    rsi,rax
-  450ca0:	48 8d 0d 19 1e 02 00 	lea    rcx,[rip+0x21e19]        # 472ac0 <_IO_stdin_used+0x3ac0>
-  450ca7:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450cae:	0f 29 84 24 a0 00 00 	movaps XMMWORD PTR [rsp+0xa0],xmm0
-  450cb5:	00 
-  450cb6:	48 c7 84 24 b0 00 00 	mov    QWORD PTR [rsp+0xb0],0x0
-  450cbd:	00 00 00 00 00 
-  450cc2:	e8 c9 82 01 00       	call   468f90 <fb_StrConcat>
-  450cc7:	48 8b 4c 24 30       	mov    rcx,QWORD PTR [rsp+0x30]
-  450ccc:	66 0f ef c0          	pxor   xmm0,xmm0
-  450cd0:	48 8d bc 24 c0 00 00 	lea    rdi,[rsp+0xc0]
-  450cd7:	00 
-  450cd8:	48 89 c6             	mov    rsi,rax
-  450cdb:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
-  450ce2:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450ce9:	0f 29 84 24 c0 00 00 	movaps XMMWORD PTR [rsp+0xc0],xmm0
-  450cf0:	00 
-  450cf1:	48 c7 84 24 d0 00 00 	mov    QWORD PTR [rsp+0xd0],0x0
-  450cf8:	00 00 00 00 00 
-  450cfd:	e8 8e 82 01 00       	call   468f90 <fb_StrConcat>
-  450d02:	66 0f ef c0          	pxor   xmm0,xmm0
-  450d06:	48 8d bc 24 e0 00 00 	lea    rdi,[rsp+0xe0]
-  450d0d:	00 
-  450d0e:	41 b8 04 00 00 00    	mov    r8d,0x4
-  450d14:	48 89 c6             	mov    rsi,rax
-  450d17:	48 8d 0d a6 1d 02 00 	lea    rcx,[rip+0x21da6]        # 472ac4 <_IO_stdin_used+0x3ac4>
-  450d1e:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450d25:	0f 29 84 24 e0 00 00 	movaps XMMWORD PTR [rsp+0xe0],xmm0
-  450d2c:	00 
-  450d2d:	48 c7 84 24 f0 00 00 	mov    QWORD PTR [rsp+0xf0],0x0
-  450d34:	00 00 00 00 00 
-  450d39:	e8 52 82 01 00       	call   468f90 <fb_StrConcat>
-  450d3e:	48 8b 4c 24 20       	mov    rcx,QWORD PTR [rsp+0x20]
-  450d43:	66 0f ef c0          	pxor   xmm0,xmm0
-  450d47:	48 8d bc 24 00 01 00 	lea    rdi,[rsp+0x100]
-  450d4e:	00 
-  450d4f:	48 89 c6             	mov    rsi,rax
-  450d52:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
-  450d59:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450d60:	0f 29 84 24 00 01 00 	movaps XMMWORD PTR [rsp+0x100],xmm0
-  450d67:	00 
-  450d68:	48 c7 84 24 10 01 00 	mov    QWORD PTR [rsp+0x110],0x0
-  450d6f:	00 00 00 00 00 
-  450d74:	e8 17 82 01 00       	call   468f90 <fb_StrConcat>
-  450d79:	66 0f ef c0          	pxor   xmm0,xmm0
-  450d7d:	48 8d bc 24 20 01 00 	lea    rdi,[rsp+0x120]
-  450d84:	00 
-  450d85:	41 b8 04 00 00 00    	mov    r8d,0x4
-  450d8b:	48 89 c6             	mov    rsi,rax
-  450d8e:	48 8d 0d 33 1d 02 00 	lea    rcx,[rip+0x21d33]        # 472ac8 <_IO_stdin_used+0x3ac8>
-  450d95:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450d9c:	0f 29 84 24 20 01 00 	movaps XMMWORD PTR [rsp+0x120],xmm0
-  450da3:	00 
-  450da4:	48 c7 84 24 30 01 00 	mov    QWORD PTR [rsp+0x130],0x0
-  450dab:	00 00 00 00 00 
-  450db0:	e8 db 81 01 00       	call   468f90 <fb_StrConcat>
-  450db5:	66 0f ef c0          	pxor   xmm0,xmm0
-  450db9:	48 8d bc 24 40 01 00 	lea    rdi,[rsp+0x140]
-  450dc0:	00 
-  450dc1:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
-  450dc8:	48 89 c6             	mov    rsi,rax
-  450dcb:	4c 89 f9             	mov    rcx,r15
-  450dce:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450dd5:	0f 29 84 24 40 01 00 	movaps XMMWORD PTR [rsp+0x140],xmm0
-  450ddc:	00 
-  450ddd:	48 c7 84 24 50 01 00 	mov    QWORD PTR [rsp+0x150],0x0
-  450de4:	00 00 00 00 00 
-  450de9:	e8 a2 81 01 00       	call   468f90 <fb_StrConcat>
-  450dee:	66 0f ef c0          	pxor   xmm0,xmm0
-  450df2:	48 8d bc 24 60 01 00 	lea    rdi,[rsp+0x160]
-  450df9:	00 
-  450dfa:	41 b8 04 00 00 00    	mov    r8d,0x4
-  450e00:	48 89 c6             	mov    rsi,rax
-  450e03:	48 8d 0d c2 1c 02 00 	lea    rcx,[rip+0x21cc2]        # 472acc <_IO_stdin_used+0x3acc>
-  450e0a:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450e11:	0f 29 84 24 60 01 00 	movaps XMMWORD PTR [rsp+0x160],xmm0
-  450e18:	00 
-  450e19:	48 c7 84 24 70 01 00 	mov    QWORD PTR [rsp+0x170],0x0
-  450e20:	00 00 00 00 00 
-  450e25:	e8 66 81 01 00       	call   468f90 <fb_StrConcat>
-  450e2a:	66 0f ef c0          	pxor   xmm0,xmm0
-  450e2e:	48 8d bc 24 80 01 00 	lea    rdi,[rsp+0x180]
-  450e35:	00 
-  450e36:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
-  450e3d:	48 89 c6             	mov    rsi,rax
-  450e40:	4c 89 f1             	mov    rcx,r14
-  450e43:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450e4a:	0f 29 84 24 80 01 00 	movaps XMMWORD PTR [rsp+0x180],xmm0
-  450e51:	00 
-  450e52:	48 c7 84 24 90 01 00 	mov    QWORD PTR [rsp+0x190],0x0
-  450e59:	00 00 00 00 00 
-  450e5e:	e8 2d 81 01 00       	call   468f90 <fb_StrConcat>
-  450e63:	66 0f ef c0          	pxor   xmm0,xmm0
-  450e67:	48 8d bc 24 a0 01 00 	lea    rdi,[rsp+0x1a0]
-  450e6e:	00 
-  450e6f:	41 b8 04 00 00 00    	mov    r8d,0x4
-  450e75:	48 89 c6             	mov    rsi,rax
-  450e78:	48 8d 0d 51 1c 02 00 	lea    rcx,[rip+0x21c51]        # 472ad0 <_IO_stdin_used+0x3ad0>
-  450e7f:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450e86:	0f 29 84 24 a0 01 00 	movaps XMMWORD PTR [rsp+0x1a0],xmm0
-  450e8d:	00 
-  450e8e:	48 c7 84 24 b0 01 00 	mov    QWORD PTR [rsp+0x1b0],0x0
-  450e95:	00 00 00 00 00 
-  450e9a:	e8 f1 80 01 00       	call   468f90 <fb_StrConcat>
-  450e9f:	66 0f ef c0          	pxor   xmm0,xmm0
-  450ea3:	48 8d bc 24 c0 01 00 	lea    rdi,[rsp+0x1c0]
-  450eaa:	00 
-  450eab:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
-  450eb2:	48 89 c6             	mov    rsi,rax
-  450eb5:	4c 89 e9             	mov    rcx,r13
-  450eb8:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450ebf:	0f 29 84 24 c0 01 00 	movaps XMMWORD PTR [rsp+0x1c0],xmm0
-  450ec6:	00 
-  450ec7:	48 c7 84 24 d0 01 00 	mov    QWORD PTR [rsp+0x1d0],0x0
-  450ece:	00 00 00 00 00 
-  450ed3:	e8 b8 80 01 00       	call   468f90 <fb_StrConcat>
-  450ed8:	66 0f ef c0          	pxor   xmm0,xmm0
-  450edc:	48 8d bc 24 e0 01 00 	lea    rdi,[rsp+0x1e0]
-  450ee3:	00 
-  450ee4:	41 b8 03 00 00 00    	mov    r8d,0x3
-  450eea:	48 89 c6             	mov    rsi,rax
-  450eed:	48 8d 0d e0 1b 02 00 	lea    rcx,[rip+0x21be0]        # 472ad4 <_IO_stdin_used+0x3ad4>
-  450ef4:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450efb:	0f 29 84 24 e0 01 00 	movaps XMMWORD PTR [rsp+0x1e0],xmm0
-  450f02:	00 
-  450f03:	48 c7 84 24 f0 01 00 	mov    QWORD PTR [rsp+0x1f0],0x0
-  450f0a:	00 00 00 00 00 
-  450f0f:	e8 7c 80 01 00       	call   468f90 <fb_StrConcat>
-  450f14:	66 0f ef c0          	pxor   xmm0,xmm0
-  450f18:	48 8d bc 24 00 02 00 	lea    rdi,[rsp+0x200]
-  450f1f:	00 
-  450f20:	41 b8 04 00 00 00    	mov    r8d,0x4
-  450f26:	48 89 c6             	mov    rsi,rax
-  450f29:	48 8d 0d a7 1b 02 00 	lea    rcx,[rip+0x21ba7]        # 472ad7 <_IO_stdin_used+0x3ad7>
-  450f30:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450f37:	0f 29 84 24 00 02 00 	movaps XMMWORD PTR [rsp+0x200],xmm0
-  450f3e:	00 
-  450f3f:	48 c7 84 24 10 02 00 	mov    QWORD PTR [rsp+0x210],0x0
-  450f46:	00 00 00 00 00 
-  450f4b:	e8 40 80 01 00       	call   468f90 <fb_StrConcat>
-  450f50:	66 0f ef c0          	pxor   xmm0,xmm0
-  450f54:	48 8d bc 24 20 02 00 	lea    rdi,[rsp+0x220]
-  450f5b:	00 
-  450f5c:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
-  450f63:	48 89 c6             	mov    rsi,rax
-  450f66:	4c 89 e1             	mov    rcx,r12
-  450f69:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450f70:	0f 29 84 24 20 02 00 	movaps XMMWORD PTR [rsp+0x220],xmm0
-  450f77:	00 
-  450f78:	48 c7 84 24 30 02 00 	mov    QWORD PTR [rsp+0x230],0x0
-  450f7f:	00 00 00 00 00 
-  450f84:	e8 07 80 01 00       	call   468f90 <fb_StrConcat>
-  450f89:	66 0f ef c0          	pxor   xmm0,xmm0
-  450f8d:	48 8d bc 24 40 02 00 	lea    rdi,[rsp+0x240]
-  450f94:	00 
-  450f95:	41 b8 04 00 00 00    	mov    r8d,0x4
-  450f9b:	48 89 c6             	mov    rsi,rax
-  450f9e:	48 8d 0d 36 1b 02 00 	lea    rcx,[rip+0x21b36]        # 472adb <_IO_stdin_used+0x3adb>
-  450fa5:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450fac:	0f 29 84 24 40 02 00 	movaps XMMWORD PTR [rsp+0x240],xmm0
-  450fb3:	00 
-  450fb4:	48 c7 84 24 50 02 00 	mov    QWORD PTR [rsp+0x250],0x0
-  450fbb:	00 00 00 00 00 
-  450fc0:	e8 cb 7f 01 00       	call   468f90 <fb_StrConcat>
-  450fc5:	48 8b 4c 24 18       	mov    rcx,QWORD PTR [rsp+0x18]
-  450fca:	66 0f ef c0          	pxor   xmm0,xmm0
-  450fce:	48 8d bc 24 60 02 00 	lea    rdi,[rsp+0x260]
-  450fd5:	00 
-  450fd6:	48 89 c6             	mov    rsi,rax
-  450fd9:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
-  450fe0:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  450fe7:	0f 29 84 24 60 02 00 	movaps XMMWORD PTR [rsp+0x260],xmm0
-  450fee:	00 
-  450fef:	48 c7 84 24 70 02 00 	mov    QWORD PTR [rsp+0x270],0x0
-  450ff6:	00 00 00 00 00 
-  450ffb:	e8 90 7f 01 00       	call   468f90 <fb_StrConcat>
-  451000:	66 0f ef c0          	pxor   xmm0,xmm0
-  451004:	48 8d bc 24 80 02 00 	lea    rdi,[rsp+0x280]
-  45100b:	00 
-  45100c:	41 b8 04 00 00 00    	mov    r8d,0x4
-  451012:	48 89 c6             	mov    rsi,rax
-  451015:	48 8d 0d c3 1a 02 00 	lea    rcx,[rip+0x21ac3]        # 472adf <_IO_stdin_used+0x3adf>
-  45101c:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  451023:	0f 29 84 24 80 02 00 	movaps XMMWORD PTR [rsp+0x280],xmm0
-  45102a:	00 
-  45102b:	48 c7 84 24 90 02 00 	mov    QWORD PTR [rsp+0x290],0x0
-  451032:	00 00 00 00 00 
-  451037:	e8 54 7f 01 00       	call   468f90 <fb_StrConcat>
-  45103c:	48 8b 4c 24 10       	mov    rcx,QWORD PTR [rsp+0x10]
-  451041:	66 0f ef c0          	pxor   xmm0,xmm0
-  451045:	48 8d bc 24 a0 02 00 	lea    rdi,[rsp+0x2a0]
-  45104c:	00 
-  45104d:	48 89 c6             	mov    rsi,rax
-  451050:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
-  451057:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  45105e:	0f 29 84 24 a0 02 00 	movaps XMMWORD PTR [rsp+0x2a0],xmm0
-  451065:	00 
-  451066:	48 c7 84 24 b0 02 00 	mov    QWORD PTR [rsp+0x2b0],0x0
-  45106d:	00 00 00 00 00 
-  451072:	e8 19 7f 01 00       	call   468f90 <fb_StrConcat>
-  451077:	66 0f ef c0          	pxor   xmm0,xmm0
-  45107b:	48 8d bc 24 c0 02 00 	lea    rdi,[rsp+0x2c0]
-  451082:	00 
-  451083:	41 b8 04 00 00 00    	mov    r8d,0x4
-  451089:	48 89 c6             	mov    rsi,rax
-  45108c:	48 8d 0d 50 1a 02 00 	lea    rcx,[rip+0x21a50]        # 472ae3 <_IO_stdin_used+0x3ae3>
-  451093:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  45109a:	0f 29 84 24 c0 02 00 	movaps XMMWORD PTR [rsp+0x2c0],xmm0
-  4510a1:	00 
-  4510a2:	48 c7 84 24 d0 02 00 	mov    QWORD PTR [rsp+0x2d0],0x0
-  4510a9:	00 00 00 00 00 
-  4510ae:	e8 dd 7e 01 00       	call   468f90 <fb_StrConcat>
-  4510b3:	48 8b 4c 24 08       	mov    rcx,QWORD PTR [rsp+0x8]
-  4510b8:	66 0f ef c0          	pxor   xmm0,xmm0
-  4510bc:	48 8d bc 24 e0 02 00 	lea    rdi,[rsp+0x2e0]
-  4510c3:	00 
-  4510c4:	48 89 c6             	mov    rsi,rax
-  4510c7:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
-  4510ce:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  4510d5:	0f 29 84 24 e0 02 00 	movaps XMMWORD PTR [rsp+0x2e0],xmm0
-  4510dc:	00 
-  4510dd:	48 c7 84 24 f0 02 00 	mov    QWORD PTR [rsp+0x2f0],0x0
-  4510e4:	00 00 00 00 00 
-  4510e9:	e8 a2 7e 01 00       	call   468f90 <fb_StrConcat>
-  4510ee:	66 0f ef c0          	pxor   xmm0,xmm0
-  4510f2:	48 8d bc 24 00 03 00 	lea    rdi,[rsp+0x300]
-  4510f9:	00 
-  4510fa:	41 b8 04 00 00 00    	mov    r8d,0x4
-  451100:	48 89 c6             	mov    rsi,rax
-  451103:	48 8d 0d dd 19 02 00 	lea    rcx,[rip+0x219dd]        # 472ae7 <_IO_stdin_used+0x3ae7>
-  45110a:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  451111:	0f 29 84 24 00 03 00 	movaps XMMWORD PTR [rsp+0x300],xmm0
-  451118:	00 
-  451119:	48 c7 84 24 10 03 00 	mov    QWORD PTR [rsp+0x310],0x0
-  451120:	00 00 00 00 00 
-  451125:	e8 66 7e 01 00       	call   468f90 <fb_StrConcat>
-  45112a:	48 8b 4c 24 38       	mov    rcx,QWORD PTR [rsp+0x38]
-  45112f:	66 0f ef c0          	pxor   xmm0,xmm0
-  451133:	48 8d bc 24 20 03 00 	lea    rdi,[rsp+0x320]
-  45113a:	00 
-  45113b:	48 89 c6             	mov    rsi,rax
-  45113e:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
-  451145:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  45114c:	0f 29 84 24 20 03 00 	movaps XMMWORD PTR [rsp+0x320],xmm0
-  451153:	00 
-  451154:	48 c7 84 24 30 03 00 	mov    QWORD PTR [rsp+0x330],0x0
-  45115b:	00 00 00 00 00 
-  451160:	e8 2b 7e 01 00       	call   468f90 <fb_StrConcat>
-  451165:	45 31 c0             	xor    r8d,r8d
-  451168:	48 89 ef             	mov    rdi,rbp
-  45116b:	48 c7 c1 ff ff ff ff 	mov    rcx,0xffffffffffffffff
-  451172:	48 89 c2             	mov    rdx,rax
-  451175:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
-  45117c:	e8 5f 7b 01 00       	call   468ce0 <fb_StrAssign>
-;end opr
-  451181:	48 89 ef             	mov    rdi,rbp
-  451184:	e8 77 93 01 00       	call   46a500 <fb_StrAllocTempResult>
-  451189:	48 8b 94 24 58 03 00 	mov    rdx,QWORD PTR [rsp+0x358]
-  451190:	00 
-  451191:	64 48 2b 14 25 28 00 	sub    rdx,QWORD PTR fs:0x28
-  451198:	00 00 
-  45119a:	75 12                	jne    4511ae <CPU6510::operator FBSTRING()+0x6ee>
-  45119c:	48 81 c4 68 03 00 00 	add    rsp,0x368
-  4511a3:	5b                   	pop    rbx
-  4511a4:	5d                   	pop    rbp
-  4511a5:	41 5c                	pop    r12
-  4511a7:	41 5d                	pop    r13
-  4511a9:	41 5e                	pop    r14
-  4511ab:	41 5f                	pop    r15
-  4511ad:	c3                   	ret    
-  4511ae:	e8 ad 46 fb ff       	call   405860 <__stack_chk_fail@plt>
-  4511b3:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  4511ba:	00 00 00 00 
-  4511be:	66 90                	xchg   ax,ax
-
-00000000004511c0 <CPU6510::ADR_UNK()>:
-;proc CPU6510.ADR_UNK as double
-  4511c0:	48 83 ec 08          	sub    rsp,0x8
-;  sleep:return peek(ubyte,@nibbles(&B0000))
-  4511c4:	bf ff ff ff ff       	mov    edi,0xffffffff
-  4511c9:	e8 c2 55 01 00       	call   466790 <fb_Sleep>
-  4511ce:	0f b6 05 cb 1b 05 00 	movzx  eax,BYTE PTR [rip+0x51bcb]        # 4a2da0 <NIBBLES$>
-  4511d5:	66 0f ef c0          	pxor   xmm0,xmm0
-;end proc
-  4511d9:	48 83 c4 08          	add    rsp,0x8
-;  sleep:return peek(ubyte,@nibbles(&B0000))
-  4511dd:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-;end proc
-  4511e1:	c3                   	ret    
-  4511e2:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  4511e9:	00 00 00 00 
-  4511ed:	0f 1f 00             	nop    DWORD PTR [rax]
-
-00000000004511f0 <CPU6510::ADR_IMM()>:
-;  mov(proc, PC)
-  4511f0:	0f b7 47 04          	movzx  eax,WORD PTR [rdi+0x4]
-;  mov(PC add, peek(ubyte,@nibbles(&B0001)))
-  4511f4:	0f b6 15 a6 1b 05 00 	movzx  edx,BYTE PTR [rip+0x51ba6]        # 4a2da1 <NIBBLES$+0x1>
-;  mov(proc, PC)
-  4511fb:	66 0f ef c0          	pxor   xmm0,xmm0
-;  mov(PC add, peek(ubyte,@nibbles(&B0001)))
-  4511ff:	01 c2                	add    edx,eax
-;  mov(proc, PC)
-  451201:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-;  mov(PC add, peek(ubyte,@nibbles(&B0001)))
-  451205:	66 89 57 04          	mov    WORD PTR [rdi+0x4],dx
-;end proc
-  451209:	c3                   	ret    
-  45120a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-
-0000000000451210 <CPU6510::ADR_REL()>:
-  451210:	eb de                	jmp    4511f0 <CPU6510::ADR_IMM()>
-  451212:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  451219:	00 00 00 00 
-  45121d:	0f 1f 00             	nop    DWORD PTR [rax]
-
-0000000000451220 <CPU6510::ADR_ABS()>:
-;proc CPU6510.ADR_ABS as double  ' 2 byte $xx:xx
-  451220:	55                   	push   rbp
-;  mov(proc,mem->ReadUShort(pc))
-  451221:	66 0f ef c0          	pxor   xmm0,xmm0
-;proc CPU6510.ADR_ABS as double  ' 2 byte $xx:xx
-  451225:	53                   	push   rbx
-  451226:	48 89 fb             	mov    rbx,rdi
-  451229:	48 83 ec 08          	sub    rsp,0x8
-;  mov(proc,mem->ReadUShort(pc))
-  45122d:	0f b7 47 04          	movzx  eax,WORD PTR [rdi+0x4]
-  451231:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  451235:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  451239:	89 c5                	mov    ebp,eax
-  45123b:	e8 30 ea ff ff       	call   44fc70 <MEMORY_T::READUSHORT(double)>
-;  mov(pc add,peek(ubyte,@nibbles(&B0010)))
-  451240:	0f b6 15 5b 1b 05 00 	movzx  edx,BYTE PTR [rip+0x51b5b]        # 4a2da2 <NIBBLES$+0x2>
-;  mov(proc,mem->ReadUShort(pc))
-  451247:	66 0f ef c0          	pxor   xmm0,xmm0
-  45124b:	0f b7 c0             	movzx  eax,ax
-;  mov(pc add,peek(ubyte,@nibbles(&B0010)))
-  45124e:	01 ea                	add    edx,ebp
-;  mov(proc,mem->ReadUShort(pc))
-  451250:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-;  mov(pc add,peek(ubyte,@nibbles(&B0010)))
-  451254:	66 89 53 04          	mov    WORD PTR [rbx+0x4],dx
-;end proc
-  451258:	48 83 c4 08          	add    rsp,0x8
-  45125c:	5b                   	pop    rbx
-  45125d:	5d                   	pop    rbp
-  45125e:	c3                   	ret    
-  45125f:	90                   	nop
-
-0000000000451260 <CPU6510::ADR_ZERO()>:
-;proc CPU6510.ADR_ZERO as double ' 1 byte $00:xx
-  451260:	55                   	push   rbp
-;  mov(proc,logic_and(mem->ReadUByte(pc),peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  451261:	66 0f ef c0          	pxor   xmm0,xmm0
-;proc CPU6510.ADR_ZERO as double ' 1 byte $00:xx
-  451265:	53                   	push   rbx
-  451266:	48 89 fb             	mov    rbx,rdi
-  451269:	48 83 ec 08          	sub    rsp,0x8
-;  mov(proc,logic_and(mem->ReadUByte(pc),peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  45126d:	0f b7 47 04          	movzx  eax,WORD PTR [rdi+0x4]
-  451271:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  451275:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  451279:	89 c5                	mov    ebp,eax
-  45127b:	e8 f0 df ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-  451280:	0f b6 35 28 1b 05 00 	movzx  esi,BYTE PTR [rip+0x51b28]        # 4a2daf <NIBBLES$+0xf>
-  451287:	0f b6 0d 16 1b 05 00 	movzx  ecx,BYTE PTR [rip+0x51b16]        # 4a2da4 <NIBBLES$+0x4>
-  45128e:	66 0f ef c0          	pxor   xmm0,xmm0
-  451292:	0f b6 c0             	movzx  eax,al
-  451295:	48 89 f2             	mov    rdx,rsi
-  451298:	48 d3 e2             	shl    rdx,cl
-  45129b:	48 01 f2             	add    rdx,rsi
-  45129e:	48 21 c2             	and    rdx,rax
-;  mov(pc add,peek(ubyte,@nibbles(&B0001)))
-  4512a1:	0f b6 05 f9 1a 05 00 	movzx  eax,BYTE PTR [rip+0x51af9]        # 4a2da1 <NIBBLES$+0x1>
-;  mov(proc,logic_and(mem->ReadUByte(pc),peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  4512a8:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
-;  mov(pc add,peek(ubyte,@nibbles(&B0001)))
-  4512ad:	01 e8                	add    eax,ebp
-  4512af:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
-;end proc
-  4512b3:	48 83 c4 08          	add    rsp,0x8
-  4512b7:	5b                   	pop    rbx
-  4512b8:	5d                   	pop    rbp
-  4512b9:	c3                   	ret    
-  4512ba:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-
-00000000004512c0 <CPU6510::ADR_ZEROX()>:
-;proc CPU6510.ADR_ZEROX as double' 1 byte 00:xx,x
-  4512c0:	55                   	push   rbp
-;  mov(proc,logic_and((mem->ReadUByte(pc) add x),peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  4512c1:	66 0f ef c0          	pxor   xmm0,xmm0
-;proc CPU6510.ADR_ZEROX as double' 1 byte 00:xx,x
-  4512c5:	53                   	push   rbx
-  4512c6:	48 89 fb             	mov    rbx,rdi
-  4512c9:	48 83 ec 08          	sub    rsp,0x8
-;  mov(proc,logic_and((mem->ReadUByte(pc) add x),peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  4512cd:	0f b7 47 04          	movzx  eax,WORD PTR [rdi+0x4]
-  4512d1:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  4512d5:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  4512d9:	89 c5                	mov    ebp,eax
-  4512db:	e8 90 df ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-  4512e0:	0f b6 35 c8 1a 05 00 	movzx  esi,BYTE PTR [rip+0x51ac8]        # 4a2daf <NIBBLES$+0xf>
-  4512e7:	0f b6 0d b6 1a 05 00 	movzx  ecx,BYTE PTR [rip+0x51ab6]        # 4a2da4 <NIBBLES$+0x4>
-  4512ee:	66 0f ef c0          	pxor   xmm0,xmm0
-  4512f2:	0f b6 c0             	movzx  eax,al
-  4512f5:	48 89 f2             	mov    rdx,rsi
-  4512f8:	48 d3 e2             	shl    rdx,cl
-  4512fb:	0f b6 4b 02          	movzx  ecx,BYTE PTR [rbx+0x2]
-  4512ff:	48 01 f2             	add    rdx,rsi
-  451302:	48 01 c1             	add    rcx,rax
-;  mov(pc add,peek(ubyte,@nibbles(&B0001)))
-  451305:	0f b6 05 95 1a 05 00 	movzx  eax,BYTE PTR [rip+0x51a95]        # 4a2da1 <NIBBLES$+0x1>
-;  mov(proc,logic_and((mem->ReadUByte(pc) add x),peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  45130c:	48 21 ca             	and    rdx,rcx
-;  mov(pc add,peek(ubyte,@nibbles(&B0001)))
-  45130f:	01 e8                	add    eax,ebp
-;  mov(proc,logic_and((mem->ReadUByte(pc) add x),peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  451311:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
-;  mov(pc add,peek(ubyte,@nibbles(&B0001)))
-  451316:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
-;end proc
-  45131a:	48 83 c4 08          	add    rsp,0x8
-  45131e:	5b                   	pop    rbx
-  45131f:	5d                   	pop    rbp
-  451320:	c3                   	ret    
-  451321:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  451328:	00 00 00 00 
-  45132c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-0000000000451330 <CPU6510::ADR_ZEROY()>:
-;proc CPU6510.ADR_ZEROY as double' 1 byte 00:xx,y
-  451330:	55                   	push   rbp
-;  mov(proc,logic_and((mem->ReadUByte(pc) add y), peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  451331:	66 0f ef c0          	pxor   xmm0,xmm0
-;proc CPU6510.ADR_ZEROY as double' 1 byte 00:xx,y
-  451335:	53                   	push   rbx
-  451336:	48 89 fb             	mov    rbx,rdi
-  451339:	48 83 ec 08          	sub    rsp,0x8
-;  mov(proc,logic_and((mem->ReadUByte(pc) add y), peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  45133d:	0f b7 47 04          	movzx  eax,WORD PTR [rdi+0x4]
-  451341:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  451345:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  451349:	89 c5                	mov    ebp,eax
-  45134b:	e8 20 df ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-  451350:	0f b6 35 58 1a 05 00 	movzx  esi,BYTE PTR [rip+0x51a58]        # 4a2daf <NIBBLES$+0xf>
-  451357:	0f b6 0d 46 1a 05 00 	movzx  ecx,BYTE PTR [rip+0x51a46]        # 4a2da4 <NIBBLES$+0x4>
-  45135e:	66 0f ef c0          	pxor   xmm0,xmm0
-  451362:	0f b6 c0             	movzx  eax,al
-  451365:	48 89 f2             	mov    rdx,rsi
-  451368:	48 d3 e2             	shl    rdx,cl
-  45136b:	0f b6 4b 03          	movzx  ecx,BYTE PTR [rbx+0x3]
-  45136f:	48 01 f2             	add    rdx,rsi
-  451372:	48 01 c1             	add    rcx,rax
-;  mov(pc add,peek(ubyte,@nibbles(&B0001)))
-  451375:	0f b6 05 25 1a 05 00 	movzx  eax,BYTE PTR [rip+0x51a25]        # 4a2da1 <NIBBLES$+0x1>
-;  mov(proc,logic_and((mem->ReadUByte(pc) add y), peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  45137c:	48 21 ca             	and    rdx,rcx
-;  mov(pc add,peek(ubyte,@nibbles(&B0001)))
-  45137f:	01 e8                	add    eax,ebp
-;  mov(proc,logic_and((mem->ReadUByte(pc) add y), peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  451381:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
-;  mov(pc add,peek(ubyte,@nibbles(&B0001)))
-  451386:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
-;end proc
-  45138a:	48 83 c4 08          	add    rsp,0x8
-  45138e:	5b                   	pop    rbx
-  45138f:	5d                   	pop    rbp
-  451390:	c3                   	ret    
-  451391:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  451398:	00 00 00 00 
-  45139c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-00000000004513a0 <CPU6510::ADR_ABSX()>:
-;proc CPU6510.ADR_ABSX as double ' 2 byte $xx:xx,x
-  4513a0:	55                   	push   rbp
-;  mov(proc,mem->ReadUShort(PC) add X)
-  4513a1:	66 0f ef c0          	pxor   xmm0,xmm0
-;proc CPU6510.ADR_ABSX as double ' 2 byte $xx:xx,x
-  4513a5:	53                   	push   rbx
-  4513a6:	48 89 fb             	mov    rbx,rdi
-  4513a9:	48 83 ec 08          	sub    rsp,0x8
-;  mov(proc,mem->ReadUShort(PC) add X)
-  4513ad:	0f b7 47 04          	movzx  eax,WORD PTR [rdi+0x4]
-  4513b1:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  4513b5:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  4513b9:	89 c5                	mov    ebp,eax
-  4513bb:	e8 b0 e8 ff ff       	call   44fc70 <MEMORY_T::READUSHORT(double)>
-  4513c0:	0f b6 53 02          	movzx  edx,BYTE PTR [rbx+0x2]
-  4513c4:	66 0f ef c0          	pxor   xmm0,xmm0
-  4513c8:	0f b7 c0             	movzx  eax,ax
-  4513cb:	48 01 c2             	add    rdx,rax
-;  mov(PC add,peek(ubyte,@nibbles(&B0010)))
-  4513ce:	0f b6 05 cd 19 05 00 	movzx  eax,BYTE PTR [rip+0x519cd]        # 4a2da2 <NIBBLES$+0x2>
-;  mov(proc,mem->ReadUShort(PC) add X)
-  4513d5:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
-;  mov(PC add,peek(ubyte,@nibbles(&B0010)))
-  4513da:	01 e8                	add    eax,ebp
-  4513dc:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
-;end proc
-  4513e0:	48 83 c4 08          	add    rsp,0x8
-  4513e4:	5b                   	pop    rbx
-  4513e5:	5d                   	pop    rbp
-  4513e6:	c3                   	ret    
-  4513e7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  4513ee:	00 00 
-
-00000000004513f0 <CPU6510::ADR_ABSY()>:
-;proc CPU6510.ADR_ABSY as double ' 2 byte $xx:xx,y
-  4513f0:	55                   	push   rbp
-;  mov(proc,mem->ReadUShort(PC) add Y)
-  4513f1:	66 0f ef c0          	pxor   xmm0,xmm0
-;proc CPU6510.ADR_ABSY as double ' 2 byte $xx:xx,y
-  4513f5:	53                   	push   rbx
-  4513f6:	48 89 fb             	mov    rbx,rdi
-  4513f9:	48 83 ec 08          	sub    rsp,0x8
-;  mov(proc,mem->ReadUShort(PC) add Y)
-  4513fd:	0f b7 47 04          	movzx  eax,WORD PTR [rdi+0x4]
-  451401:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  451405:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  451409:	89 c5                	mov    ebp,eax
-  45140b:	e8 60 e8 ff ff       	call   44fc70 <MEMORY_T::READUSHORT(double)>
-  451410:	0f b6 53 03          	movzx  edx,BYTE PTR [rbx+0x3]
-  451414:	66 0f ef c0          	pxor   xmm0,xmm0
-  451418:	0f b7 c0             	movzx  eax,ax
-  45141b:	48 01 c2             	add    rdx,rax
-;  mov(PC add,peek(ubyte,@nibbles(&B0010)))
-  45141e:	0f b6 05 7d 19 05 00 	movzx  eax,BYTE PTR [rip+0x5197d]        # 4a2da2 <NIBBLES$+0x2>
-;  mov(proc,mem->ReadUShort(PC) add Y)
-  451425:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
-;  mov(PC add,peek(ubyte,@nibbles(&B0010)))
-  45142a:	01 e8                	add    eax,ebp
-  45142c:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
-;end proc
-  451430:	48 83 c4 08          	add    rsp,0x8
-  451434:	5b                   	pop    rbx
-  451435:	5d                   	pop    rbp
-  451436:	c3                   	ret    
-  451437:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  45143e:	00 00 
-
-0000000000451440 <CPU6510::ADR_INDX()>:
-;proc CPU6510.ADR_INDX as double ' 1 byte ($XX,x)
-  451440:	41 54                	push   r12
-;  mov(v.u16,logic_and((mem->ReadUByte(pc) add x), peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  451442:	66 0f ef c0          	pxor   xmm0,xmm0
-;proc CPU6510.ADR_INDX as double ' 1 byte ($XX,x)
-  451446:	55                   	push   rbp
-  451447:	53                   	push   rbx
-;  mov(v.u16,logic_and((mem->ReadUByte(pc) add x), peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  451448:	0f b7 47 04          	movzx  eax,WORD PTR [rdi+0x4]
-;proc CPU6510.ADR_INDX as double ' 1 byte ($XX,x)
-  45144c:	48 89 fb             	mov    rbx,rdi
-;  mov(v.u16,logic_and((mem->ReadUByte(pc) add x), peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  45144f:	4c 8b 67 08          	mov    r12,QWORD PTR [rdi+0x8]
-  451453:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  451457:	89 c5                	mov    ebp,eax
-  451459:	4c 89 e7             	mov    rdi,r12
-  45145c:	e8 0f de ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-  451461:	0f b6 15 47 19 05 00 	movzx  edx,BYTE PTR [rip+0x51947]        # 4a2daf <NIBBLES$+0xf>
-;  mov(v.u16,mem->ReadUShort(v.u16))
-  451468:	66 0f ef c0          	pxor   xmm0,xmm0
-  45146c:	4c 89 e7             	mov    rdi,r12
-;  mov(v.u16,logic_and((mem->ReadUByte(pc) add x), peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
-  45146f:	0f b6 0d 2e 19 05 00 	movzx  ecx,BYTE PTR [rip+0x5192e]        # 4a2da4 <NIBBLES$+0x4>
-  451476:	44 0f b6 c0          	movzx  r8d,al
-  45147a:	48 89 d0             	mov    rax,rdx
-  45147d:	48 d3 e2             	shl    rdx,cl
-  451480:	01 d0                	add    eax,edx
-  451482:	0f b6 53 02          	movzx  edx,BYTE PTR [rbx+0x2]
-  451486:	44 01 c2             	add    edx,r8d
-  451489:	21 d0                	and    eax,edx
-;  mov(v.u16,mem->ReadUShort(v.u16))
-  45148b:	0f b7 c0             	movzx  eax,ax
-  45148e:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  451492:	e8 d9 e7 ff ff       	call   44fc70 <MEMORY_T::READUSHORT(double)>
-;  mov(pc add,peek(ubyte,@nibbles(&B0001)))
-  451497:	0f b6 15 03 19 05 00 	movzx  edx,BYTE PTR [rip+0x51903]        # 4a2da1 <NIBBLES$+0x1>
-;  mov(proc,v.u16)
-  45149e:	66 0f ef c0          	pxor   xmm0,xmm0
-  4514a2:	0f b7 c0             	movzx  eax,ax
-;  mov(pc add,peek(ubyte,@nibbles(&B0001)))
-  4514a5:	01 ea                	add    edx,ebp
-;  mov(proc,v.u16)
-  4514a7:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-;  mov(pc add,peek(ubyte,@nibbles(&B0001)))
-  4514ab:	66 89 53 04          	mov    WORD PTR [rbx+0x4],dx
-;end proc
-  4514af:	5b                   	pop    rbx
-  4514b0:	5d                   	pop    rbp
-  4514b1:	41 5c                	pop    r12
-  4514b3:	c3                   	ret    
-  4514b4:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  4514bb:	00 00 00 00 
-  4514bf:	90                   	nop
-
-00000000004514c0 <CPU6510::ADR_INDY()>:
-;proc CPU6510.ADR_INDY as double ' 1 byte ($XX),y
-  4514c0:	41 54                	push   r12
-;  mov(v.u16,mem->ReadUshort(mem->ReadUByte(PC)))
-  4514c2:	66 0f ef c0          	pxor   xmm0,xmm0
-;proc CPU6510.ADR_INDY as double ' 1 byte ($XX),y
-  4514c6:	55                   	push   rbp
-  4514c7:	53                   	push   rbx
-;  mov(v.u16,mem->ReadUshort(mem->ReadUByte(PC)))
-  4514c8:	0f b7 47 04          	movzx  eax,WORD PTR [rdi+0x4]
-;proc CPU6510.ADR_INDY as double ' 1 byte ($XX),y
-  4514cc:	48 89 fb             	mov    rbx,rdi
-;  mov(v.u16,mem->ReadUshort(mem->ReadUByte(PC)))
-  4514cf:	4c 8b 67 08          	mov    r12,QWORD PTR [rdi+0x8]
-  4514d3:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  4514d7:	89 c5                	mov    ebp,eax
-  4514d9:	4c 89 e7             	mov    rdi,r12
-  4514dc:	e8 8f dd ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-  4514e1:	66 0f ef c0          	pxor   xmm0,xmm0
-  4514e5:	4c 89 e7             	mov    rdi,r12
-  4514e8:	0f b6 c0             	movzx  eax,al
-  4514eb:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  4514ef:	e8 7c e7 ff ff       	call   44fc70 <MEMORY_T::READUSHORT(double)>
-;  mov(pc add,peek(ubyte,@nibbles(&B0001)))
-  4514f4:	0f b6 15 a6 18 05 00 	movzx  edx,BYTE PTR [rip+0x518a6]        # 4a2da1 <NIBBLES$+0x1>
-;  mov(proc,v.u16)
-  4514fb:	66 0f ef c0          	pxor   xmm0,xmm0
-;  mov(v.u16,mem->ReadUshort(mem->ReadUByte(PC)))
-  4514ff:	41 89 c0             	mov    r8d,eax
-;  mov(v.u16 add,y)
-  451502:	0f b6 43 03          	movzx  eax,BYTE PTR [rbx+0x3]
-;  mov(pc add,peek(ubyte,@nibbles(&B0001)))
-  451506:	01 ea                	add    edx,ebp
-;  mov(v.u16 add,y)
-  451508:	44 01 c0             	add    eax,r8d
-;  mov(pc add,peek(ubyte,@nibbles(&B0001)))
-  45150b:	66 89 53 04          	mov    WORD PTR [rbx+0x4],dx
-;end proc
-  45150f:	5b                   	pop    rbx
-;  mov(v.u16 add,y)
-  451510:	66 89 05 59 17 03 00 	mov    WORD PTR [rip+0x31759],ax        # 482c70 <V$>
-;  mov(proc,v.u16)
-  451517:	0f b7 c0             	movzx  eax,ax
-;end proc
-  45151a:	5d                   	pop    rbp
-;  mov(proc,v.u16)
-  45151b:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-;end proc
-  45151f:	41 5c                	pop    r12
-  451521:	c3                   	ret    
-  451522:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  451529:	00 00 00 00 
-  45152d:	0f 1f 00             	nop    DWORD PTR [rax]
-
-0000000000451530 <CPU6510::ADR_IND()>:
-;proc CPU6510.ADR_IND as double ' 2 byte ($xx:xx)
-  451530:	41 54                	push   r12
-;  mov(v.u16,mem->ReadUShort(pc))
-  451532:	66 0f ef c0          	pxor   xmm0,xmm0
-;proc CPU6510.ADR_IND as double ' 2 byte ($xx:xx)
-  451536:	55                   	push   rbp
-  451537:	53                   	push   rbx
-;  mov(v.u16,mem->ReadUShort(pc))
-  451538:	0f b7 47 04          	movzx  eax,WORD PTR [rdi+0x4]
-;proc CPU6510.ADR_IND as double ' 2 byte ($xx:xx)
-  45153c:	48 89 fb             	mov    rbx,rdi
-;  mov(v.u16,mem->ReadUShort(pc))
-  45153f:	4c 8b 67 08          	mov    r12,QWORD PTR [rdi+0x8]
-  451543:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  451547:	89 c5                	mov    ebp,eax
-  451549:	4c 89 e7             	mov    rdi,r12
-  45154c:	e8 1f e7 ff ff       	call   44fc70 <MEMORY_T::READUSHORT(double)>
-;  mov(v.u16,mem->ReadUShort(v.u16))
-  451551:	66 0f ef c0          	pxor   xmm0,xmm0
-  451555:	4c 89 e7             	mov    rdi,r12
-  451558:	0f b7 c0             	movzx  eax,ax
-  45155b:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  45155f:	e8 0c e7 ff ff       	call   44fc70 <MEMORY_T::READUSHORT(double)>
-;  mov(pc add,peek(ubyte,@nibbles(&B0010)))
-  451564:	0f b6 15 37 18 05 00 	movzx  edx,BYTE PTR [rip+0x51837]        # 4a2da2 <NIBBLES$+0x2>
-;  mov(proc,v.u16)
-  45156b:	66 0f ef c0          	pxor   xmm0,xmm0
-;  mov(v.u16,mem->ReadUShort(v.u16))
-  45156f:	66 89 05 fa 16 03 00 	mov    WORD PTR [rip+0x316fa],ax        # 482c70 <V$>
-;  mov(proc,v.u16)
-  451576:	0f b7 c0             	movzx  eax,ax
-;  mov(pc add,peek(ubyte,@nibbles(&B0010)))
-  451579:	01 ea                	add    edx,ebp
-;  mov(proc,v.u16)
-  45157b:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-;  mov(pc add,peek(ubyte,@nibbles(&B0010)))
-  45157f:	66 89 53 04          	mov    WORD PTR [rbx+0x4],dx
-;end proc
-  451583:	5b                   	pop    rbx
-  451584:	5d                   	pop    rbp
-  451585:	41 5c                	pop    r12
-  451587:	c3                   	ret    
-  451588:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  45158f:	00 
-
-0000000000451590 <CPU6510::TICK(double)>:
-;proc CPU6510.Tick(byval flg as double) as double
-  451590:	41 54                	push   r12
-  451592:	55                   	push   rbp
-  451593:	53                   	push   rbx
-  451594:	48 89 fb             	mov    rbx,rdi
-;  var mov(Ticks,peek(ubyte,@nibbles(&B0000))),mov(msg,chr(peek(ubyte,@nibbles(&B0000))))
-  451597:	bf 01 00 00 00       	mov    edi,0x1
-;proc CPU6510.Tick(byval flg as double) as double
-  45159c:	48 83 ec 40          	sub    rsp,0x40
-;  var mov(Ticks,peek(ubyte,@nibbles(&B0000))),mov(msg,chr(peek(ubyte,@nibbles(&B0000))))
-  4515a0:	0f b6 35 f9 17 05 00 	movzx  esi,BYTE PTR [rip+0x517f9]        # 4a2da0 <NIBBLES$>
-;proc CPU6510.Tick(byval flg as double) as double
-  4515a7:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
-  4515ae:	00 00 
-  4515b0:	48 89 44 24 38       	mov    QWORD PTR [rsp+0x38],rax
-  4515b5:	31 c0                	xor    eax,eax
-;  var mov(Ticks,peek(ubyte,@nibbles(&B0000))),mov(msg,chr(peek(ubyte,@nibbles(&B0000))))
-  4515b7:	48 8d 6c 24 20       	lea    rbp,[rsp+0x20]
-;proc CPU6510.Tick(byval flg as double) as double
-  4515bc:	48 c7 44 24 10 00 00 	mov    QWORD PTR [rsp+0x10],0x0
-  4515c3:	00 00 
-;  var mov(Ticks,peek(ubyte,@nibbles(&B0000))),mov(msg,chr(peek(ubyte,@nibbles(&B0000))))
-  4515c5:	e8 36 77 01 00       	call   468d00 <fb_CHR>
-  4515ca:	48 c7 c1 ff ff ff ff 	mov    rcx,0xffffffffffffffff
-  4515d1:	45 31 c0             	xor    r8d,r8d
-  4515d4:	48 89 ef             	mov    rdi,rbp
-  4515d7:	48 89 c2             	mov    rdx,rax
-  4515da:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
-  4515e1:	e8 0a 77 01 00       	call   468cf0 <fb_StrInit>
-;  mov(code,opcodes(mem->readubyte(PC)))
-  4515e6:	0f b7 43 04          	movzx  eax,WORD PTR [rbx+0x4]
-  4515ea:	66 0f ef c0          	pxor   xmm0,xmm0
-  4515ee:	48 8b 7b 08          	mov    rdi,QWORD PTR [rbx+0x8]
-;  dim as MULTI v
-  4515f2:	48 c7 44 24 18 00 00 	mov    QWORD PTR [rsp+0x18],0x0
-  4515f9:	00 00 
-;  mov(code,opcodes(mem->readubyte(PC)))
-  4515fb:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  4515ff:	41 89 c4             	mov    r12d,eax
-  451602:	e8 69 dc ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  mov(code.op.ufpu64,peek(ubyte,@nibbles(&B0000)))
-  451607:	66 0f ef c0          	pxor   xmm0,xmm0
-;  mov(code,opcodes(mem->readubyte(PC)))
-  45160b:	0f b6 c0             	movzx  eax,al
-  45160e:	48 8d 0c c5 00 00 00 	lea    rcx,[rax*8+0x0]
-  451615:	00 
-  451616:	48 29 c1             	sub    rcx,rax
-  451619:	48 8d 44 cb 48       	lea    rax,[rbx+rcx*8+0x48]
-  45161e:	f3 0f 6f 08          	movdqu xmm1,XMMWORD PTR [rax]
-  451622:	0f 11 4b 10          	movups XMMWORD PTR [rbx+0x10],xmm1
-  451626:	f3 0f 6f 50 10       	movdqu xmm2,XMMWORD PTR [rax+0x10]
-  45162b:	0f 11 53 20          	movups XMMWORD PTR [rbx+0x20],xmm2
-  45162f:	f3 0f 6f 58 20       	movdqu xmm3,XMMWORD PTR [rax+0x20]
-  451634:	0f 11 5b 30          	movups XMMWORD PTR [rbx+0x30],xmm3
-  451638:	48 8b 40 30          	mov    rax,QWORD PTR [rax+0x30]
-  45163c:	48 89 43 40          	mov    QWORD PTR [rbx+0x40],rax
-;  mov(code.op.ufpu64,peek(ubyte,@nibbles(&B0000)))
-  451640:	0f b6 05 59 17 05 00 	movzx  eax,BYTE PTR [rip+0x51759]        # 4a2da0 <NIBBLES$>
-  451647:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  45164b:	f2 0f 11 43 38       	movsd  QWORD PTR [rbx+0x38],xmm0
-;  mov(PC add, peek(ubyte,@nibbles(&B0001))) ' increment the programm counter
-  451650:	0f b6 05 4a 17 05 00 	movzx  eax,BYTE PTR [rip+0x5174a]        # 4a2da1 <NIBBLES$+0x1>
-  451657:	44 01 e0             	add    eax,r12d
-  45165a:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
-;  select case as const code.adrmode
-  45165e:	48 8b 43 20          	mov    rax,QWORD PTR [rbx+0x20]
-;  mov(proc, PC)
-  451662:	48 83 f8 0c          	cmp    rax,0xc
-  451666:	77 3a                	ja     4516a2 <CPU6510::TICK(double)+0x112>
-;  mov(PC add, peek(ubyte,@nibbles(&B0001)))
-  451668:	48 8d 15 b1 6e 02 00 	lea    rdx,[rip+0x26eb1]        # 478520 <tmp$2933.1>
-  45166f:	ff 24 c2             	jmp    QWORD PTR [rdx+rax*8]
-  451672:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-;      code.op.u16=ADR_IMM()
-  451678:	48 89 df             	mov    rdi,rbx
-  45167b:	e8 70 fb ff ff       	call   4511f0 <CPU6510::ADR_IMM()>
-  451680:	e8 cb 3c fb ff       	call   405350 <nearbyint@plt>
-  451685:	f2 0f 2c c0          	cvttsd2si eax,xmm0
-  451689:	66 89 43 38          	mov    WORD PTR [rbx+0x38],ax
-;      code.decode(@this)
-  45168d:	48 89 df             	mov    rdi,rbx
-  451690:	ff 53 40             	call   QWORD PTR [rbx+0x40]
-;  mov(proc,peek(ubyte,@nibbles(&B0000)))
-  451693:	0f b6 05 06 17 05 00 	movzx  eax,BYTE PTR [rip+0x51706]        # 4a2da0 <NIBBLES$>
-  45169a:	66 0f ef c0          	pxor   xmm0,xmm0
-  45169e:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-;end proc
-  4516a2:	48 89 ef             	mov    rdi,rbp
-  4516a5:	f2 0f 11 44 24 08    	movsd  QWORD PTR [rsp+0x8],xmm0
-  4516ab:	e8 e0 87 01 00       	call   469e90 <fb_StrDelete>
-  4516b0:	f2 0f 10 44 24 08    	movsd  xmm0,QWORD PTR [rsp+0x8]
-  4516b6:	48 8b 44 24 38       	mov    rax,QWORD PTR [rsp+0x38]
-  4516bb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4516c2:	00 00 
-  4516c4:	0f 85 ab 00 00 00    	jne    451775 <CPU6510::TICK(double)+0x1e5>
-  4516ca:	48 83 c4 40          	add    rsp,0x40
-  4516ce:	5b                   	pop    rbx
-  4516cf:	5d                   	pop    rbp
-  4516d0:	41 5c                	pop    r12
-  4516d2:	c3                   	ret    
-  4516d3:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-;      code.op.u16=ADR_ABS()
-  4516d8:	48 89 df             	mov    rdi,rbx
-  4516db:	e8 40 fb ff ff       	call   451220 <CPU6510::ADR_ABS()>
-  4516e0:	eb 9e                	jmp    451680 <CPU6510::TICK(double)+0xf0>
-  4516e2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-;      code.op.u16=ADR_ZERO()
-  4516e8:	48 89 df             	mov    rdi,rbx
-  4516eb:	e8 70 fb ff ff       	call   451260 <CPU6510::ADR_ZERO()>
-  4516f0:	eb 8e                	jmp    451680 <CPU6510::TICK(double)+0xf0>
-  4516f2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-;      code.op.u16=ADR_ZEROX()
-  4516f8:	48 89 df             	mov    rdi,rbx
-  4516fb:	e8 c0 fb ff ff       	call   4512c0 <CPU6510::ADR_ZEROX()>
-  451700:	e9 7b ff ff ff       	jmp    451680 <CPU6510::TICK(double)+0xf0>
-  451705:	0f 1f 00             	nop    DWORD PTR [rax]
-;      code.op.u16=ADR_ZEROY()
-  451708:	48 89 df             	mov    rdi,rbx
-  45170b:	e8 20 fc ff ff       	call   451330 <CPU6510::ADR_ZEROY()>
-  451710:	e9 6b ff ff ff       	jmp    451680 <CPU6510::TICK(double)+0xf0>
-  451715:	0f 1f 00             	nop    DWORD PTR [rax]
-;      code.op.u16=ADR_ABSX()
-  451718:	48 89 df             	mov    rdi,rbx
-  45171b:	e8 80 fc ff ff       	call   4513a0 <CPU6510::ADR_ABSX()>
-  451720:	e9 5b ff ff ff       	jmp    451680 <CPU6510::TICK(double)+0xf0>
-  451725:	0f 1f 00             	nop    DWORD PTR [rax]
-;      code.op.u16=ADR_ABSY()
-  451728:	48 89 df             	mov    rdi,rbx
-  45172b:	e8 c0 fc ff ff       	call   4513f0 <CPU6510::ADR_ABSY()>
-  451730:	e9 4b ff ff ff       	jmp    451680 <CPU6510::TICK(double)+0xf0>
-  451735:	0f 1f 00             	nop    DWORD PTR [rax]
-;      mov(code.op.u16,ADR_INDX())
-  451738:	48 89 df             	mov    rdi,rbx
-  45173b:	e8 00 fd ff ff       	call   451440 <CPU6510::ADR_INDX()>
-  451740:	e9 3b ff ff ff       	jmp    451680 <CPU6510::TICK(double)+0xf0>
-  451745:	0f 1f 00             	nop    DWORD PTR [rax]
-;      mov(code.op.u16,ADR_INDY())
-  451748:	48 89 df             	mov    rdi,rbx
-  45174b:	e8 70 fd ff ff       	call   4514c0 <CPU6510::ADR_INDY()>
-  451750:	e9 2b ff ff ff       	jmp    451680 <CPU6510::TICK(double)+0xf0>
-  451755:	0f 1f 00             	nop    DWORD PTR [rax]
-;      mov(code.op.u16,ADR_IND())
-  451758:	48 89 df             	mov    rdi,rbx
-  45175b:	e8 d0 fd ff ff       	call   451530 <CPU6510::ADR_IND()>
-  451760:	e9 1b ff ff ff       	jmp    451680 <CPU6510::TICK(double)+0xf0>
-  451765:	0f 1f 00             	nop    DWORD PTR [rax]
-;    case _IMP
-  451768:	e9 35 ff ff ff       	jmp    4516a2 <CPU6510::TICK(double)+0x112>
-  45176d:	0f 1f 00             	nop    DWORD PTR [rax]
-;      code.decode(@this)
-  451770:	e9 18 ff ff ff       	jmp    45168d <CPU6510::TICK(double)+0xfd>
-;end proc
-  451775:	e8 e6 40 fb ff       	call   405860 <__stack_chk_fail@plt>
-  45177a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-
-0000000000451780 <CPU6510::PUSH(double)>:
-;def CPU6510.Push(byval b as double)
-  451780:	53                   	push   rbx
-;  mem->WriteUByte(sp,b)
-  451781:	0f b7 47 06          	movzx  eax,WORD PTR [rdi+0x6]
-;def CPU6510.Push(byval b as double)
-  451785:	66 0f 28 c8          	movapd xmm1,xmm0
-;  mem->WriteUByte(sp,b)
-  451789:	66 0f ef c0          	pxor   xmm0,xmm0
-;def CPU6510.Push(byval b as double)
-  45178d:	48 89 fb             	mov    rbx,rdi
-;  mem->WriteUByte(sp,b)
-  451790:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  451794:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  451798:	e8 63 e5 ff ff       	call   44fd00 <MEMORY_T::WRITEBYTE(double, double)>
-;  mov(s subt,peek(ubyte,@nibbles(&B0001)))
-  45179d:	0f b6 05 fd 15 05 00 	movzx  eax,BYTE PTR [rip+0x515fd]        # 4a2da1 <NIBBLES$+0x1>
-  4517a4:	28 43 06             	sub    BYTE PTR [rbx+0x6],al
-;end def
-  4517a7:	5b                   	pop    rbx
-  4517a8:	c3                   	ret    
-  4517a9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-
-00000000004517b0 <INS_BRK>:
-;def INS_BRK(byval Cpu as CPU6510_T)
-  4517b0:	53                   	push   rbx
-;  Cpu->pc+=peek(ubyte,@nibbles(&B0001))
-  4517b1:	0f b6 05 e9 15 05 00 	movzx  eax,BYTE PTR [rip+0x515e9]        # 4a2da1 <NIBBLES$+0x1>
-;  Cpu->push(Cpu->ph)
-  4517b8:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_BRK(byval Cpu as CPU6510_T)
-  4517bc:	48 89 fb             	mov    rbx,rdi
-;  Cpu->pc+=peek(ubyte,@nibbles(&B0001))
-  4517bf:	66 03 47 04          	add    ax,WORD PTR [rdi+0x4]
-  4517c3:	66 89 47 04          	mov    WORD PTR [rdi+0x4],ax
-;  Cpu->push(Cpu->ph)
-  4517c7:	0f b6 c4             	movzx  eax,ah
-  4517ca:	0f b6 c0             	movzx  eax,al
-  4517cd:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  4517d1:	e8 aa ff ff ff       	call   451780 <CPU6510::PUSH(double)>
-;  Cpu->push(Cpu->pl)
-  4517d6:	0f b6 43 04          	movzx  eax,BYTE PTR [rbx+0x4]
-  4517da:	66 0f ef c0          	pxor   xmm0,xmm0
-  4517de:	48 89 df             	mov    rdi,rbx
-  4517e1:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  4517e5:	e8 96 ff ff ff       	call   451780 <CPU6510::PUSH(double)>
-;  Cpu->push(Cpu->p )
-  4517ea:	0f b6 03             	movzx  eax,BYTE PTR [rbx]
-  4517ed:	66 0f ef c0          	pxor   xmm0,xmm0
-  4517f1:	48 89 df             	mov    rdi,rbx
-  4517f4:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  4517f8:	e8 83 ff ff ff       	call   451780 <CPU6510::PUSH(double)>
-;  Cpu->F.b=peek(ubyte,@nibbles(&B0001))
-  4517fd:	0f b6 05 9d 15 05 00 	movzx  eax,BYTE PTR [rip+0x5159d]        # 4a2da1 <NIBBLES$+0x1>
-  451804:	0f b6 13             	movzx  edx,BYTE PTR [rbx]
-;  Cpu->pc = Cpu->mem->ReadUShort(&HFFFE)
-  451807:	48 8b 7b 08          	mov    rdi,QWORD PTR [rbx+0x8]
-  45180b:	f2 0f 10 05 a5 23 02 	movsd  xmm0,QWORD PTR [rip+0x223a5]        # 473bb8 <_IO_stdin_used+0x4bb8>
-  451812:	00 
-;  Cpu->F.b=peek(ubyte,@nibbles(&B0001))
-  451813:	c1 e0 04             	shl    eax,0x4
-  451816:	83 e2 ef             	and    edx,0xffffffef
-  451819:	83 e0 10             	and    eax,0x10
-  45181c:	09 d0                	or     eax,edx
-  45181e:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.i=peek(ubyte,@nibbles(&B0001))
-  451820:	0f b6 0d 7a 15 05 00 	movzx  ecx,BYTE PTR [rip+0x5157a]        # 4a2da1 <NIBBLES$+0x1>
-  451827:	83 e0 fb             	and    eax,0xfffffffb
-  45182a:	8d 14 8d 00 00 00 00 	lea    edx,[rcx*4+0x0]
-  451831:	83 e2 04             	and    edx,0x4
-  451834:	09 d0                	or     eax,edx
-  451836:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->pc = Cpu->mem->ReadUShort(&HFFFE)
-  451838:	e8 33 e4 ff ff       	call   44fc70 <MEMORY_T::READUSHORT(double)>
-  45183d:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
-;end def
-  451841:	5b                   	pop    rbx
-  451842:	c3                   	ret    
-  451843:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  45184a:	00 00 00 00 
-  45184e:	66 90                	xchg   ax,ax
-
-0000000000451850 <INS_JSR>:
-;def INS_JSR(byval Cpu as CPU6510_T)
-  451850:	53                   	push   rbx
-;  Cpu->PC-=peek(ubyte,@nibbles(&B0001))
-  451851:	0f b6 15 49 15 05 00 	movzx  edx,BYTE PTR [rip+0x51549]        # 4a2da1 <NIBBLES$+0x1>
-;  Cpu->Push(Cpu->PH)
-  451858:	66 0f ef c0          	pxor   xmm0,xmm0
-;def INS_JSR(byval Cpu as CPU6510_T)
-  45185c:	48 89 fb             	mov    rbx,rdi
-;  Cpu->PC-=peek(ubyte,@nibbles(&B0001))
-  45185f:	0f b7 47 04          	movzx  eax,WORD PTR [rdi+0x4]
-  451863:	29 d0                	sub    eax,edx
-  451865:	66 89 47 04          	mov    WORD PTR [rdi+0x4],ax
-;  Cpu->Push(Cpu->PH)
-  451869:	0f b6 c4             	movzx  eax,ah
-  45186c:	0f b6 c0             	movzx  eax,al
-  45186f:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  451873:	e8 08 ff ff ff       	call   451780 <CPU6510::PUSH(double)>
-;  Cpu->Push(Cpu->PL)
-  451878:	0f b6 43 04          	movzx  eax,BYTE PTR [rbx+0x4]
-  45187c:	66 0f ef c0          	pxor   xmm0,xmm0
-  451880:	48 89 df             	mov    rdi,rbx
-  451883:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  451887:	e8 f4 fe ff ff       	call   451780 <CPU6510::PUSH(double)>
-;  Cpu->PC=Cpu->Code.op.u16
-  45188c:	0f b7 43 38          	movzx  eax,WORD PTR [rbx+0x38]
-  451890:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
-;end def
-  451894:	5b                   	pop    rbx
-  451895:	c3                   	ret    
-  451896:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  45189d:	00 00 00 
-
-00000000004518a0 <INS_PHA>:
-;  Cpu->Push(Cpu->A)
-  4518a0:	0f b6 47 01          	movzx  eax,BYTE PTR [rdi+0x1]
-  4518a4:	66 0f ef c0          	pxor   xmm0,xmm0
-  4518a8:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  4518ac:	e9 cf fe ff ff       	jmp    451780 <CPU6510::PUSH(double)>
-  4518b1:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  4518b8:	00 00 00 00 
-  4518bc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-00000000004518c0 <INS_PHP>:
-;  Cpu->Push(Cpu->P)
-  4518c0:	0f b6 07             	movzx  eax,BYTE PTR [rdi]
-  4518c3:	66 0f ef c0          	pxor   xmm0,xmm0
-  4518c7:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  4518cb:	e9 b0 fe ff ff       	jmp    451780 <CPU6510::PUSH(double)>
-
-00000000004518d0 <CPU6510::PULL()>:
-;proc CPU6510.PULL as double
-  4518d0:	48 83 ec 08          	sub    rsp,0x8
-;  mov(s add,peek(ubyte,@nibbles(&B0001)))
-  4518d4:	0f b6 05 c6 14 05 00 	movzx  eax,BYTE PTR [rip+0x514c6]        # 4a2da1 <NIBBLES$+0x1>
-  4518db:	00 47 06             	add    BYTE PTR [rdi+0x6],al
-;  mov(proc,mem->ReadUbyte(sp))
-  4518de:	66 0f ef c0          	pxor   xmm0,xmm0
-  4518e2:	0f b7 47 06          	movzx  eax,WORD PTR [rdi+0x6]
-  4518e6:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  4518ea:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  4518ee:	e8 7d d9 ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-  4518f3:	66 0f ef c0          	pxor   xmm0,xmm0
-;end proc
-  4518f7:	48 83 c4 08          	add    rsp,0x8
-;  mov(proc,mem->ReadUbyte(sp))
-  4518fb:	0f b6 c0             	movzx  eax,al
-  4518fe:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-;end proc
-  451902:	c3                   	ret    
-  451903:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
-  45190a:	00 00 00 00 
-  45190e:	66 90                	xchg   ax,ax
-
-0000000000451910 <INS_PLA>:
-;def INS_PLA(byval Cpu as CPU6510_T)
-  451910:	53                   	push   rbx
-  451911:	48 89 fb             	mov    rbx,rdi
-;  Cpu->A=Cpu->Pull()
-  451914:	e8 b7 ff ff ff       	call   4518d0 <CPU6510::PULL()>
-  451919:	e8 32 3a fb ff       	call   405350 <nearbyint@plt>
-;  Cpu->F.z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  45191e:	0f b6 15 7b 14 05 00 	movzx  edx,BYTE PTR [rip+0x5147b]        # 4a2da0 <NIBBLES$>
-;  Cpu->A=Cpu->Pull()
-  451925:	f2 0f 2c c8          	cvttsd2si ecx,xmm0
-  451929:	88 4b 01             	mov    BYTE PTR [rbx+0x1],cl
-;  Cpu->F.z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  45192c:	0f b6 05 6e 14 05 00 	movzx  eax,BYTE PTR [rip+0x5146e]        # 4a2da1 <NIBBLES$+0x1>
-  451933:	38 ca                	cmp    dl,cl
-;  Cpu->F.n=iif(Cpu->sA<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  451935:	48 0f be c9          	movsx  rcx,cl
-;  Cpu->F.z=iif(Cpu->A =peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  451939:	0f 44 d0             	cmove  edx,eax
-  45193c:	0f b6 03             	movzx  eax,BYTE PTR [rbx]
-  45193f:	01 d2                	add    edx,edx
-  451941:	83 e0 fd             	and    eax,0xfffffffd
-  451944:	83 e2 02             	and    edx,0x2
-  451947:	09 d0                	or     eax,edx
-  451949:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->F.n=iif(Cpu->sA<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
-  45194b:	0f b6 35 4e 14 05 00 	movzx  esi,BYTE PTR [rip+0x5144e]        # 4a2da0 <NIBBLES$>
-  451952:	48 39 f1             	cmp    rcx,rsi
-  451955:	0f b6 0d 45 14 05 00 	movzx  ecx,BYTE PTR [rip+0x51445]        # 4a2da1 <NIBBLES$+0x1>
-  45195c:	48 89 f2             	mov    rdx,rsi
-  45195f:	0f 4c d1             	cmovl  edx,ecx
-  451962:	83 e0 7f             	and    eax,0x7f
-  451965:	c1 e2 07             	shl    edx,0x7
-  451968:	09 d0                	or     eax,edx
-  45196a:	88 03                	mov    BYTE PTR [rbx],al
-;end def
-  45196c:	5b                   	pop    rbx
-  45196d:	c3                   	ret    
-  45196e:	66 90                	xchg   ax,ax
-
-0000000000451970 <INS_PLP>:
-;def INS_PLP(byval Cpu as CPU6510_T)
-  451970:	53                   	push   rbx
-  451971:	48 89 fb             	mov    rbx,rdi
-;  Cpu->P=Cpu->Pull()
-  451974:	e8 57 ff ff ff       	call   4518d0 <CPU6510::PULL()>
-  451979:	e8 d2 39 fb ff       	call   405350 <nearbyint@plt>
-  45197e:	f2 0f 2c c0          	cvttsd2si eax,xmm0
-  451982:	88 03                	mov    BYTE PTR [rbx],al
-;end def
-  451984:	5b                   	pop    rbx
-  451985:	c3                   	ret    
-  451986:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  45198d:	00 00 00 
-
-0000000000451990 <INS_RTI>:
-;def INS_RTI(byval Cpu as CPU6510_T)
-  451990:	53                   	push   rbx
-  451991:	48 89 fb             	mov    rbx,rdi
-;  Cpu->P =Cpu->pull()
-  451994:	e8 37 ff ff ff       	call   4518d0 <CPU6510::PULL()>
-  451999:	e8 b2 39 fb ff       	call   405350 <nearbyint@plt>
-;  Cpu->PL=Cpu->pull()
-  45199e:	48 89 df             	mov    rdi,rbx
-;  Cpu->P =Cpu->pull()
-  4519a1:	f2 0f 2c c0          	cvttsd2si eax,xmm0
-  4519a5:	88 03                	mov    BYTE PTR [rbx],al
-;  Cpu->PL=Cpu->pull()
-  4519a7:	e8 24 ff ff ff       	call   4518d0 <CPU6510::PULL()>
-  4519ac:	e8 9f 39 fb ff       	call   405350 <nearbyint@plt>
-;  Cpu->PH=Cpu->pull()
-  4519b1:	48 89 df             	mov    rdi,rbx
-;  Cpu->PL=Cpu->pull()
-  4519b4:	f2 0f 2c c0          	cvttsd2si eax,xmm0
-  4519b8:	88 43 04             	mov    BYTE PTR [rbx+0x4],al
-;  Cpu->PH=Cpu->pull()
-  4519bb:	e8 10 ff ff ff       	call   4518d0 <CPU6510::PULL()>
-  4519c0:	e8 8b 39 fb ff       	call   405350 <nearbyint@plt>
-  4519c5:	f2 0f 2c c0          	cvttsd2si eax,xmm0
-;  Cpu->PC+=1d
-  4519c9:	66 0f ef c0          	pxor   xmm0,xmm0
-;  Cpu->PH=Cpu->pull()
-  4519cd:	88 43 05             	mov    BYTE PTR [rbx+0x5],al
-;  Cpu->PC+=1d
-  4519d0:	0f b7 43 04          	movzx  eax,WORD PTR [rbx+0x4]
-  4519d4:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  4519d9:	f2 0f 58 05 6f 17 02 	addsd  xmm0,QWORD PTR [rip+0x2176f]        # 473150 <_IO_stdin_used+0x4150>
-  4519e0:	00 
-  4519e1:	f2 0f 2c c0          	cvttsd2si eax,xmm0
-  4519e5:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
-;end def
-  4519e9:	5b                   	pop    rbx
-  4519ea:	c3                   	ret    
-  4519eb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-
-00000000004519f0 <INS_RTS>:
-;def INS_RTS(byval Cpu as CPU6510_T)
-  4519f0:	53                   	push   rbx
-  4519f1:	48 89 fb             	mov    rbx,rdi
-;  Cpu->PL=Cpu->pull()
-  4519f4:	e8 d7 fe ff ff       	call   4518d0 <CPU6510::PULL()>
-  4519f9:	e8 52 39 fb ff       	call   405350 <nearbyint@plt>
-;  Cpu->PH=Cpu->pull()
-  4519fe:	48 89 df             	mov    rdi,rbx
-;  Cpu->PL=Cpu->pull()
-  451a01:	f2 0f 2c c0          	cvttsd2si eax,xmm0
-  451a05:	88 43 04             	mov    BYTE PTR [rbx+0x4],al
-;  Cpu->PH=Cpu->pull()
-  451a08:	e8 c3 fe ff ff       	call   4518d0 <CPU6510::PULL()>
-  451a0d:	e8 3e 39 fb ff       	call   405350 <nearbyint@plt>
-  451a12:	f2 0f 2c c0          	cvttsd2si eax,xmm0
-;  Cpu->PC+=1d
-  451a16:	66 0f ef c0          	pxor   xmm0,xmm0
-;  Cpu->PH=Cpu->pull()
-  451a1a:	88 43 05             	mov    BYTE PTR [rbx+0x5],al
-;  Cpu->PC+=1d
-  451a1d:	0f b7 43 04          	movzx  eax,WORD PTR [rbx+0x4]
-  451a21:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  451a26:	f2 0f 58 05 22 17 02 	addsd  xmm0,QWORD PTR [rip+0x21722]        # 473150 <_IO_stdin_used+0x4150>
-  451a2d:	00 
-  451a2e:	f2 0f 2c c0          	cvttsd2si eax,xmm0
-  451a32:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
-;end def
-  451a36:	5b                   	pop    rbx
-  451a37:	c3                   	ret    
-  451a38:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  451a3f:	00 
-
-0000000000451a40 <INTERRUPTSERVICE>:
-;proc InterruptService(byval cpu as CPU6510 ptr) as integer
-  451a40:	41 57                	push   r15
-  451a42:	41 56                	push   r14
-  451a44:	41 55                	push   r13
-  451a46:	41 54                	push   r12
-  451a48:	55                   	push   rbp
-  451a49:	53                   	push   rbx
-  451a4a:	48 83 ec 58          	sub    rsp,0x58
-  451a4e:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
-  451a55:	00 00 
-  451a57:	48 89 44 24 48       	mov    QWORD PTR [rsp+0x48],rax
-  451a5c:	31 c0                	xor    eax,eax
-;  if cpu->F.i=peek(ubyte,@nibbles(&B0001)) then return peek(ubyte,@nibbles(&B0000))
-  451a5e:	0f b6 07             	movzx  eax,BYTE PTR [rdi]
-  451a61:	c0 e8 02             	shr    al,0x2
-  451a64:	83 e0 01             	and    eax,0x1
-  451a67:	38 05 34 13 05 00    	cmp    BYTE PTR [rip+0x51334],al        # 4a2da1 <NIBBLES$+0x1>
-  451a6d:	75 31                	jne    451aa0 <INTERRUPTSERVICE+0x60>
-  451a6f:	44 0f b6 25 29 13 05 	movzx  r12d,BYTE PTR [rip+0x51329]        # 4a2da0 <NIBBLES$>
-  451a76:	00 
-;end proc
-  451a77:	48 8b 44 24 48       	mov    rax,QWORD PTR [rsp+0x48]
-  451a7c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  451a83:	00 00 
-  451a85:	0f 85 2b 07 00 00    	jne    4521b6 <INTERRUPTSERVICE+0x776>
-  451a8b:	48 83 c4 58          	add    rsp,0x58
-  451a8f:	4c 89 e0             	mov    rax,r12
-  451a92:	5b                   	pop    rbx
-  451a93:	5d                   	pop    rbp
-  451a94:	41 5c                	pop    r12
-  451a96:	41 5d                	pop    r13
-  451a98:	41 5e                	pop    r14
-  451a9a:	41 5f                	pop    r15
-  451a9c:	c3                   	ret    
-  451a9d:	0f 1f 00             	nop    DWORD PTR [rax]
-;  dim as integer nChars=cpu->mem->ReadUbyte(&H00C6)
-  451aa0:	48 8b 05 19 21 02 00 	mov    rax,QWORD PTR [rip+0x22119]        # 473bc0 <_IO_stdin_used+0x4bc0>
-  451aa7:	48 89 fb             	mov    rbx,rdi
-  451aaa:	48 8b 7f 08          	mov    rdi,QWORD PTR [rdi+0x8]
-  451aae:	31 ed                	xor    ebp,ebp
-  451ab0:	66 48 0f 6e c0       	movq   xmm0,rax
-  451ab5:	e8 b6 d7 ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-  451aba:	44 0f b6 e0          	movzx  r12d,al
-;  if nChars<peek(ubyte,@nibbles(&B1010)) then
-  451abe:	44 38 25 e5 12 05 00 	cmp    BYTE PTR [rip+0x512e5],r12b        # 4a2daa <NIBBLES$+0xa>
-  451ac5:	0f 86 59 01 00 00    	jbe    451c24 <INTERRUPTSERVICE+0x1e4>
-;    dim as string strkey=Inkey()
-  451acb:	e8 40 4a 01 00       	call   466510 <fb_Inkey>
-  451ad0:	4c 8d 6c 24 10       	lea    r13,[rsp+0x10]
-  451ad5:	45 31 c0             	xor    r8d,r8d
-  451ad8:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
-  451adf:	4c 89 ef             	mov    rdi,r13
-  451ae2:	48 89 c2             	mov    rdx,rax
-  451ae5:	48 c7 c1 ff ff ff ff 	mov    rcx,0xffffffffffffffff
-  451aec:	e8 ff 71 01 00       	call   468cf0 <fb_StrInit>
-;    key = len(strkey)
-  451af1:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
-  451af8:	4c 89 ef             	mov    rdi,r13
-  451afb:	e8 b0 87 01 00       	call   46a2b0 <fb_StrLen>
-;    if key then
-  451b00:	48 85 c0             	test   rax,rax
-  451b03:	0f 84 67 03 00 00    	je     451e70 <INTERRUPTSERVICE+0x430>
-;      key=strkey[key-peek(ubyte,@nibbles(&B0001))]+(key-peek(ubyte,@nibbles(&B0001)))*(peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)))
-  451b09:	0f b6 15 91 12 05 00 	movzx  edx,BYTE PTR [rip+0x51291]        # 4a2da1 <NIBBLES$+0x1>
-  451b10:	0f b6 0d 91 12 05 00 	movzx  ecx,BYTE PTR [rip+0x51291]        # 4a2da8 <NIBBLES$+0x8>
-  451b17:	48 89 d5             	mov    rbp,rdx
-  451b1a:	48 29 d0             	sub    rax,rdx
-  451b1d:	48 d3 e5             	shl    rbp,cl
-  451b20:	48 8b 4c 24 10       	mov    rcx,QWORD PTR [rsp+0x10]
-  451b25:	48 0f af e8          	imul   rbp,rax
-  451b29:	0f b6 04 01          	movzx  eax,BYTE PTR [rcx+rax*1]
-;      case peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) : end
-  451b2d:	0f b6 0d 70 12 05 00 	movzx  ecx,BYTE PTR [rip+0x51270]        # 4a2da4 <NIBBLES$+0x4>
-;      key=strkey[key-peek(ubyte,@nibbles(&B0001))]+(key-peek(ubyte,@nibbles(&B0001)))*(peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)))
-  451b34:	48 01 c5             	add    rbp,rax
-;      case peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) : end
-  451b37:	0f b6 05 6d 12 05 00 	movzx  eax,BYTE PTR [rip+0x5126d]        # 4a2dab <NIBBLES$+0xb>
-  451b3e:	48 d3 e2             	shl    rdx,cl
-  451b41:	48 01 c2             	add    rdx,rax
-  451b44:	48 39 d5             	cmp    rbp,rdx
-  451b47:	0f 84 32 03 00 00    	je     451e7f <INTERRUPTSERVICE+0x43f>
-;      case 65 to  90:key+=32:s=s & chr(key):dprint(s)
-  451b4d:	48 8d 45 bf          	lea    rax,[rbp-0x41]
-  451b51:	48 83 f8 19          	cmp    rax,0x19
-  451b55:	0f 86 43 03 00 00    	jbe    451e9e <INTERRUPTSERVICE+0x45e>
-;      case 97 to 122:key-=32:s=s & chr(key):dprint(s)
-  451b5b:	48 8d 45 9f          	lea    rax,[rbp-0x61]
-  451b5f:	48 83 f8 19          	cmp    rax,0x19
-  451b63:	0f 86 6a 03 00 00    	jbe    451ed3 <INTERRUPTSERVICE+0x493>
-;      case fb_f2 ' save
-  451b69:	48 81 fd 3c 01 00 00 	cmp    rbp,0x13c
-  451b70:	0f 84 75 03 00 00    	je     451eeb <INTERRUPTSERVICE+0x4ab>
-;      case fb_f3 ' load
-  451b76:	48 81 fd 3d 01 00 00 	cmp    rbp,0x13d
-  451b7d:	0f 84 8c 01 00 00    	je     451d0f <INTERRUPTSERVICE+0x2cf>
-;      case fb_pos1  :key=c64_pos1
-  451b83:	48 81 fd 47 01 00 00 	cmp    rbp,0x147
-  451b8a:	0f 84 49 03 00 00    	je     451ed9 <INTERRUPTSERVICE+0x499>
-;      case fb_bspace:key=c64_bspace
-  451b90:	48 83 fd 08          	cmp    rbp,0x8
-  451b94:	0f 84 8c 04 00 00    	je     452026 <INTERRUPTSERVICE+0x5e6>
-;      case fb_left  :key=c64_left
-  451b9a:	48 81 fd 4b 01 00 00 	cmp    rbp,0x14b
-  451ba1:	0f 84 91 04 00 00    	je     452038 <INTERRUPTSERVICE+0x5f8>
-;      case fb_up    :key=c64_up
-  451ba7:	48 81 fd 48 01 00 00 	cmp    rbp,0x148
-  451bae:	0f 84 96 04 00 00    	je     45204a <INTERRUPTSERVICE+0x60a>
-;      case fb_right :key=c64_right
-  451bb4:	48 81 fd 4d 01 00 00 	cmp    rbp,0x14d
-  451bbb:	0f 84 2c 05 00 00    	je     4520ed <INTERRUPTSERVICE+0x6ad>
-;      case fb_down  :key=c64_down
-  451bc1:	48 81 fd 50 01 00 00 	cmp    rbp,0x150
-  451bc8:	0f 85 b8 02 00 00    	jne    451e86 <INTERRUPTSERVICE+0x446>
-  451bce:	f2 0f 10 0d 9a 16 02 	movsd  xmm1,QWORD PTR [rip+0x2169a]        # 473270 <_IO_stdin_used+0x4270>
-  451bd5:	00 
-  451bd6:	bd 11 00 00 00       	mov    ebp,0x11
-  451bdb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-;        cpu->mem->WriteUbyte(&H0277+nChars,key)
-  451be0:	49 8d 84 24 77 02 00 	lea    rax,[r12+0x277]
-  451be7:	00 
-  451be8:	66 0f ef c0          	pxor   xmm0,xmm0
-  451bec:	48 8b 7b 08          	mov    rdi,QWORD PTR [rbx+0x8]
-;        cpu->mem->WriteUbyte(&H00C6,nChars+1)
-  451bf0:	49 83 c4 01          	add    r12,0x1
-;        cpu->mem->WriteUbyte(&H0277+nChars,key)
-  451bf4:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  451bf9:	e8 02 e1 ff ff       	call   44fd00 <MEMORY_T::WRITEBYTE(double, double)>
-;        cpu->mem->WriteUbyte(&H00C6,nChars+1)
-  451bfe:	66 0f ef c9          	pxor   xmm1,xmm1
-  451c02:	48 8b 05 b7 1f 02 00 	mov    rax,QWORD PTR [rip+0x21fb7]        # 473bc0 <_IO_stdin_used+0x4bc0>
-  451c09:	48 8b 7b 08          	mov    rdi,QWORD PTR [rbx+0x8]
-  451c0d:	f2 49 0f 2a cc       	cvtsi2sd xmm1,r12
-  451c12:	66 48 0f 6e c0       	movq   xmm0,rax
-  451c17:	e8 e4 e0 ff ff       	call   44fd00 <MEMORY_T::WRITEBYTE(double, double)>
-;  end if
-  451c1c:	4c 89 ef             	mov    rdi,r13
-  451c1f:	e8 6c 82 01 00       	call   469e90 <fb_StrDelete>
-;  cpu->push(cpu->ph) ' push PC hi byte
-  451c24:	0f b6 43 05          	movzx  eax,BYTE PTR [rbx+0x5]
-  451c28:	66 0f ef c0          	pxor   xmm0,xmm0
-  451c2c:	48 89 df             	mov    rdi,rbx
-  451c2f:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  451c33:	e8 48 fb ff ff       	call   451780 <CPU6510::PUSH(double)>
-;  cpu->push(cpu->pl) ' push PC lo byte
-  451c38:	0f b6 43 04          	movzx  eax,BYTE PTR [rbx+0x4]
-  451c3c:	66 0f ef c0          	pxor   xmm0,xmm0
-  451c40:	48 89 df             	mov    rdi,rbx
-  451c43:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  451c47:	e8 34 fb ff ff       	call   451780 <CPU6510::PUSH(double)>
-;  cpu->push(cpu->p ) ' push flag
-  451c4c:	0f b6 03             	movzx  eax,BYTE PTR [rbx]
-  451c4f:	66 0f ef c0          	pxor   xmm0,xmm0
-  451c53:	48 89 df             	mov    rdi,rbx
-  451c56:	f2 0f 2a c0          	cvtsi2sd xmm0,eax
-  451c5a:	e8 21 fb ff ff       	call   451780 <CPU6510::PUSH(double)>
-;  cpu->ph=cpu->mem->ReadUbyte(&HFFFE)
-  451c5f:	4c 8b 63 08          	mov    r12,QWORD PTR [rbx+0x8]
-  451c63:	f2 0f 10 05 4d 1f 02 	movsd  xmm0,QWORD PTR [rip+0x21f4d]        # 473bb8 <_IO_stdin_used+0x4bb8>
-  451c6a:	00 
-  451c6b:	4c 89 e7             	mov    rdi,r12
-  451c6e:	e8 fd d5 ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;  cpu->pl=cpu->mem->ReadUbyte(&HFFFF)
-  451c73:	f2 0f 10 05 4d 17 02 	movsd  xmm0,QWORD PTR [rip+0x2174d]        # 4733c8 <_IO_stdin_used+0x43c8>
-  451c7a:	00 
-  451c7b:	4c 89 e7             	mov    rdi,r12
-;  while cpu->code.code<>&H40 ' RTI
-  451c7e:	45 31 e4             	xor    r12d,r12d
-;  cpu->ph=cpu->mem->ReadUbyte(&HFFFE)
-  451c81:	88 43 05             	mov    BYTE PTR [rbx+0x5],al
-;  cpu->pl=cpu->mem->ReadUbyte(&HFFFF)
-  451c84:	e8 e7 d5 ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-  451c89:	88 43 04             	mov    BYTE PTR [rbx+0x4],al
-;  cpu->F.b=0:cpu->F.i=1
-  451c8c:	0f b6 03             	movzx  eax,BYTE PTR [rbx]
-  451c8f:	83 e0 ef             	and    eax,0xffffffef
-  451c92:	83 c8 04             	or     eax,0x4
-;  while cpu->code.code<>&H40 ' RTI
-  451c95:	48 83 7b 10 40       	cmp    QWORD PTR [rbx+0x10],0x40
-;  cpu->F.b=0:cpu->F.i=1
-  451c9a:	88 03                	mov    BYTE PTR [rbx],al
-;  while cpu->code.code<>&H40 ' RTI
-  451c9c:	74 21                	je     451cbf <INTERRUPTSERVICE+0x27f>
-  451c9e:	66 90                	xchg   ax,ax
-;    cpu->Tick:IRQTicks+=1
-  451ca0:	48 8b 05 99 1d 02 00 	mov    rax,QWORD PTR [rip+0x21d99]        # 473a40 <_IO_stdin_used+0x4a40>
-  451ca7:	48 89 df             	mov    rdi,rbx
-  451caa:	49 83 c4 01          	add    r12,0x1
-  451cae:	66 48 0f 6e c0       	movq   xmm0,rax
-  451cb3:	e8 d8 f8 ff ff       	call   451590 <CPU6510::TICK(double)>
-;  while cpu->code.code<>&H40 ' RTI
-  451cb8:	48 83 7b 10 40       	cmp    QWORD PTR [rbx+0x10],0x40
-  451cbd:	75 e1                	jne    451ca0 <INTERRUPTSERVICE+0x260>
-;  cpu->P =cpu->pull() ' restore flag
-  451cbf:	48 89 df             	mov    rdi,rbx
-  451cc2:	e8 09 fc ff ff       	call   4518d0 <CPU6510::PULL()>
-  451cc7:	e8 84 36 fb ff       	call   405350 <nearbyint@plt>
-;  cpu->pl=cpu->pull() ' restore PC lo byte
-  451ccc:	48 89 df             	mov    rdi,rbx
-;  cpu->P =cpu->pull() ' restore flag
-  451ccf:	f2 0f 2c c0          	cvttsd2si eax,xmm0
-  451cd3:	88 03                	mov    BYTE PTR [rbx],al
-;  cpu->pl=cpu->pull() ' restore PC lo byte
-  451cd5:	e8 f6 fb ff ff       	call   4518d0 <CPU6510::PULL()>
-  451cda:	e8 71 36 fb ff       	call   405350 <nearbyint@plt>
-;  cpu->ph=cpu->pull() ' restore PC hi byte
-  451cdf:	48 89 df             	mov    rdi,rbx
-;  cpu->pl=cpu->pull() ' restore PC lo byte
-  451ce2:	f2 0f 2c c0          	cvttsd2si eax,xmm0
-  451ce6:	88 43 04             	mov    BYTE PTR [rbx+0x4],al
-;  cpu->ph=cpu->pull() ' restore PC hi byte
-  451ce9:	e8 e2 fb ff ff       	call   4518d0 <CPU6510::PULL()>
-  451cee:	e8 5d 36 fb ff       	call   405350 <nearbyint@plt>
-  451cf3:	f2 0f 2c c0          	cvttsd2si eax,xmm0
-  451cf7:	88 43 05             	mov    BYTE PTR [rbx+0x5],al
-;    flag=1
-  451cfa:	31 c0                	xor    eax,eax
-  451cfc:	48 83 fd 0d          	cmp    rbp,0xd
-  451d00:	0f 94 c0             	sete   al
-  451d03:	48 89 05 5e 0f 03 00 	mov    QWORD PTR [rip+0x30f5e],rax        # 482c68 <FLAG$>
-  451d0a:	e9 68 fd ff ff       	jmp    451a77 <INTERRUPTSERVICE+0x37>
-;      locate 1,1: print space(48)
-  451d0f:	45 31 c0             	xor    r8d,r8d
-  451d12:	31 c9                	xor    ecx,ecx
-  451d14:	ba ff ff ff ff       	mov    edx,0xffffffff
-  451d19:	be 01 00 00 00       	mov    esi,0x1
-  451d1e:	bf 01 00 00 00       	mov    edi,0x1
-  451d23:	e8 78 1d 01 00       	call   463aa0 <fb_Locate>
-  451d28:	bf 30 00 00 00       	mov    edi,0x30
-  451d2d:	e8 6e 86 01 00       	call   46a3a0 <fb_SPACE>
-  451d32:	31 ff                	xor    edi,edi
-  451d34:	ba 01 00 00 00       	mov    edx,0x1
-  451d39:	48 89 c6             	mov    rsi,rax
-  451d3c:	e8 7f 5f 01 00       	call   467cc0 <fb_PrintString>
-;      locate 1,1: input "load filename:";strKey
-  451d41:	45 31 c0             	xor    r8d,r8d
-  451d44:	31 c9                	xor    ecx,ecx
-  451d46:	ba ff ff ff ff       	mov    edx,0xffffffff
-  451d4b:	be 01 00 00 00       	mov    esi,0x1
-  451d50:	bf 01 00 00 00       	mov    edi,0x1
-  451d55:	e8 46 1d 01 00       	call   463aa0 <fb_Locate>
-  451d5a:	be 0e 00 00 00       	mov    esi,0xe
-  451d5f:	48 8d 3d a3 0d 02 00 	lea    rdi,[rip+0x20da3]        # 472b09 <_IO_stdin_used+0x3b09>
-  451d66:	e8 05 87 01 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  451d6b:	ba ff ff ff ff       	mov    edx,0xffffffff
-  451d70:	be ff ff ff ff       	mov    esi,0xffffffff
-  451d75:	48 89 c7             	mov    rdi,rax
-  451d78:	e8 83 1c 01 00       	call   463a00 <fb_ConsoleInput>
-  451d7d:	31 d2                	xor    edx,edx
-  451d7f:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
-  451d86:	4c 89 ef             	mov    rdi,r13
-  451d89:	e8 72 36 01 00       	call   465400 <fb_InputString>
-;      if len(strKey) then
-  451d8e:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
-  451d95:	4c 89 ef             	mov    rdi,r13
-  451d98:	e8 13 85 01 00       	call   46a2b0 <fb_StrLen>
-  451d9d:	48 85 c0             	test   rax,rax
-  451da0:	0f 84 ca 00 00 00    	je     451e70 <INTERRUPTSERVICE+0x430>
-;        key=freefile
-  451da6:	e8 d5 2f 01 00       	call   464d80 <fb_FileFree>
-;        if open(strKey for binary access read as #key)=0 then
-  451dab:	45 31 c9             	xor    r9d,r9d
-  451dae:	31 c9                	xor    ecx,ecx
-  451db0:	31 f6                	xor    esi,esi
-  451db2:	41 89 c0             	mov    r8d,eax
-  451db5:	ba 01 00 00 00       	mov    edx,0x1
-  451dba:	4c 89 ef             	mov    rdi,r13
-;        key=freefile
-  451dbd:	41 89 c6             	mov    r14d,eax
-;        if open(strKey for binary access read as #key)=0 then
-  451dc0:	e8 ab 3d 01 00       	call   465b70 <fb_FileOpen>
-  451dc5:	85 c0                	test   eax,eax
-  451dc7:	0f 84 32 03 00 00    	je     4520ff <INTERRUPTSERVICE+0x6bf>
-;          locate 1,1: print space(48)
-  451dcd:	45 31 c0             	xor    r8d,r8d
-  451dd0:	31 c9                	xor    ecx,ecx
-  451dd2:	ba ff ff ff ff       	mov    edx,0xffffffff
-  451dd7:	be 01 00 00 00       	mov    esi,0x1
-  451ddc:	bf 01 00 00 00       	mov    edi,0x1
-  451de1:	e8 ba 1c 01 00       	call   463aa0 <fb_Locate>
-  451de6:	bf 30 00 00 00       	mov    edi,0x30
-  451deb:	e8 b0 85 01 00       	call   46a3a0 <fb_SPACE>
-  451df0:	ba 01 00 00 00       	mov    edx,0x1
-  451df5:	31 ff                	xor    edi,edi
-  451df7:	48 89 c6             	mov    rsi,rax
-  451dfa:	e8 c1 5e 01 00       	call   467cc0 <fb_PrintString>
-;          locate 1,1: print "can't open: " & strKey
-  451dff:	45 31 c0             	xor    r8d,r8d
-  451e02:	31 c9                	xor    ecx,ecx
-  451e04:	ba ff ff ff ff       	mov    edx,0xffffffff
-  451e09:	be 01 00 00 00       	mov    esi,0x1
-  451e0e:	bf 01 00 00 00       	mov    edi,0x1
-  451e13:	e8 88 1c 01 00       	call   463aa0 <fb_Locate>
-  451e18:	66 0f ef c0          	pxor   xmm0,xmm0
-  451e1c:	48 8d 7c 24 30       	lea    rdi,[rsp+0x30]
-  451e21:	4c 89 e9             	mov    rcx,r13
-  451e24:	48 c7 44 24 40 00 00 	mov    QWORD PTR [rsp+0x40],0x0
-  451e2b:	00 00 
-  451e2d:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
-  451e34:	ba 0d 00 00 00       	mov    edx,0xd
-  451e39:	48 8d 35 d8 0c 02 00 	lea    rsi,[rip+0x20cd8]        # 472b18 <_IO_stdin_used+0x3b18>
-  451e40:	0f 29 44 24 30       	movaps XMMWORD PTR [rsp+0x30],xmm0
-  451e45:	e8 46 71 01 00       	call   468f90 <fb_StrConcat>
-  451e4a:	31 ff                	xor    edi,edi
-  451e4c:	ba 01 00 00 00       	mov    edx,0x1
-  451e51:	48 89 c6             	mov    rsi,rax
-  451e54:	e8 67 5e 01 00       	call   467cc0 <fb_PrintString>
-;          beep:sleep
-  451e59:	e8 32 8e 01 00       	call   46ac90 <fb_Beep>
-  451e5e:	bf ff ff ff ff       	mov    edi,0xffffffff
-  451e63:	e8 28 49 01 00       	call   466790 <fb_Sleep>
-  451e68:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  451e6f:	00 
-  451e70:	31 ed                	xor    ebp,ebp
-;  end if
-  451e72:	4c 89 ef             	mov    rdi,r13
-  451e75:	e8 16 80 01 00       	call   469e90 <fb_StrDelete>
-  451e7a:	e9 a5 fd ff ff       	jmp    451c24 <INTERRUPTSERVICE+0x1e4>
-;      case peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) : end
-  451e7f:	31 ff                	xor    edi,edi
-  451e81:	e8 6a 4a 01 00       	call   4668f0 <fb_End>
-;      if key then
-  451e86:	48 85 ed             	test   rbp,rbp
-  451e89:	74 e5                	je     451e70 <INTERRUPTSERVICE+0x430>
-  451e8b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-;        cpu->mem->WriteUbyte(&H0277+nChars,key)
-  451e90:	66 0f ef c9          	pxor   xmm1,xmm1
-  451e94:	f2 48 0f 2a cd       	cvtsi2sd xmm1,rbp
-;      case fb_f2 ' save
-  451e99:	e9 42 fd ff ff       	jmp    451be0 <INTERRUPTSERVICE+0x1a0>
-;      case 65 to  90:key+=32:s=s & chr(key):dprint(s)
-  451e9e:	48 83 c5 20          	add    rbp,0x20
-;      case 97 to 122:key-=32:s=s & chr(key):dprint(s)
-  451ea2:	48 89 ee             	mov    rsi,rbp
-  451ea5:	bf 01 00 00 00       	mov    edi,0x1
-  451eaa:	31 c0                	xor    eax,eax
-  451eac:	e8 4f 6e 01 00       	call   468d00 <fb_CHR>
-  451eb1:	45 31 c0             	xor    r8d,r8d
-  451eb4:	48 c7 c1 ff ff ff ff 	mov    rcx,0xffffffffffffffff
-  451ebb:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
-  451ec2:	48 89 c2             	mov    rdx,rax
-  451ec5:	48 8d 3d 84 0d 03 00 	lea    rdi,[rip+0x30d84]        # 482c50 <S$1.0>
-  451ecc:	e8 3f 72 01 00       	call   469110 <fb_StrConcatAssign>
-  451ed1:	eb bd                	jmp    451e90 <INTERRUPTSERVICE+0x450>
-  451ed3:	48 83 ed 20          	sub    rbp,0x20
-  451ed7:	eb c9                	jmp    451ea2 <INTERRUPTSERVICE+0x462>
-;      case fb_pos1  :key=c64_pos1
-  451ed9:	f2 0f 10 0d 9f 13 02 	movsd  xmm1,QWORD PTR [rip+0x2139f]        # 473280 <_IO_stdin_used+0x4280>
-  451ee0:	00 
-  451ee1:	bd 13 00 00 00       	mov    ebp,0x13
-  451ee6:	e9 f5 fc ff ff       	jmp    451be0 <INTERRUPTSERVICE+0x1a0>
-;      locate 1,1: print space(48)
-  451eeb:	45 31 c0             	xor    r8d,r8d
-  451eee:	31 c9                	xor    ecx,ecx
-  451ef0:	ba ff ff ff ff       	mov    edx,0xffffffff
-  451ef5:	be 01 00 00 00       	mov    esi,0x1
-  451efa:	bf 01 00 00 00       	mov    edi,0x1
-  451eff:	e8 9c 1b 01 00       	call   463aa0 <fb_Locate>
-  451f04:	bf 30 00 00 00       	mov    edi,0x30
-  451f09:	e8 92 84 01 00       	call   46a3a0 <fb_SPACE>
-  451f0e:	31 ff                	xor    edi,edi
-  451f10:	ba 01 00 00 00       	mov    edx,0x1
-  451f15:	48 89 c6             	mov    rsi,rax
-  451f18:	e8 a3 5d 01 00       	call   467cc0 <fb_PrintString>
-;      locate 1,1: input "save filename:";strKey
-  451f1d:	45 31 c0             	xor    r8d,r8d
-  451f20:	31 c9                	xor    ecx,ecx
-  451f22:	ba ff ff ff ff       	mov    edx,0xffffffff
-  451f27:	be 01 00 00 00       	mov    esi,0x1
-  451f2c:	bf 01 00 00 00       	mov    edi,0x1
-  451f31:	e8 6a 1b 01 00       	call   463aa0 <fb_Locate>
-  451f36:	be 0e 00 00 00       	mov    esi,0xe
-  451f3b:	48 8d 3d a9 0b 02 00 	lea    rdi,[rip+0x20ba9]        # 472aeb <_IO_stdin_used+0x3aeb>
-  451f42:	e8 29 85 01 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  451f47:	ba ff ff ff ff       	mov    edx,0xffffffff
-  451f4c:	be ff ff ff ff       	mov    esi,0xffffffff
-  451f51:	48 89 c7             	mov    rdi,rax
-  451f54:	e8 a7 1a 01 00       	call   463a00 <fb_ConsoleInput>
-  451f59:	31 d2                	xor    edx,edx
-  451f5b:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
-  451f62:	4c 89 ef             	mov    rdi,r13
-  451f65:	e8 96 34 01 00       	call   465400 <fb_InputString>
-;      if len(strKey) then
-  451f6a:	48 c7 c6 ff ff ff ff 	mov    rsi,0xffffffffffffffff
-  451f71:	4c 89 ef             	mov    rdi,r13
-  451f74:	e8 37 83 01 00       	call   46a2b0 <fb_StrLen>
-  451f79:	48 85 c0             	test   rax,rax
-  451f7c:	0f 84 ee fe ff ff    	je     451e70 <INTERRUPTSERVICE+0x430>
-;        key=freefile
-  451f82:	e8 f9 2d 01 00       	call   464d80 <fb_FileFree>
-;        if open(strKey for binary access write as #key)=0 then
-  451f87:	45 31 c9             	xor    r9d,r9d
-  451f8a:	31 c9                	xor    ecx,ecx
-  451f8c:	31 f6                	xor    esi,esi
-  451f8e:	41 89 c0             	mov    r8d,eax
-  451f91:	ba 02 00 00 00       	mov    edx,0x2
-  451f96:	4c 89 ef             	mov    rdi,r13
-;        key=freefile
-  451f99:	41 89 c6             	mov    r14d,eax
-;        if open(strKey for binary access write as #key)=0 then
-  451f9c:	e8 cf 3b 01 00       	call   465b70 <fb_FileOpen>
-  451fa1:	85 c0                	test   eax,eax
-  451fa3:	0f 84 b3 00 00 00    	je     45205c <INTERRUPTSERVICE+0x61c>
-;          locate 1,1: print space(48)
-  451fa9:	45 31 c0             	xor    r8d,r8d
-  451fac:	31 c9                	xor    ecx,ecx
-  451fae:	ba ff ff ff ff       	mov    edx,0xffffffff
-  451fb3:	be 01 00 00 00       	mov    esi,0x1
-  451fb8:	bf 01 00 00 00       	mov    edi,0x1
-  451fbd:	e8 de 1a 01 00       	call   463aa0 <fb_Locate>
-  451fc2:	bf 30 00 00 00       	mov    edi,0x30
-  451fc7:	e8 d4 83 01 00       	call   46a3a0 <fb_SPACE>
-  451fcc:	ba 01 00 00 00       	mov    edx,0x1
-  451fd1:	31 ff                	xor    edi,edi
-  451fd3:	48 89 c6             	mov    rsi,rax
-  451fd6:	e8 e5 5c 01 00       	call   467cc0 <fb_PrintString>
-;          locate 1,1: print "can't create: " & strKey
-  451fdb:	45 31 c0             	xor    r8d,r8d
-  451fde:	31 c9                	xor    ecx,ecx
-  451fe0:	ba ff ff ff ff       	mov    edx,0xffffffff
-  451fe5:	be 01 00 00 00       	mov    esi,0x1
-  451fea:	bf 01 00 00 00       	mov    edi,0x1
-  451fef:	e8 ac 1a 01 00       	call   463aa0 <fb_Locate>
-  451ff4:	66 0f ef c0          	pxor   xmm0,xmm0
-  451ff8:	48 8d 7c 24 30       	lea    rdi,[rsp+0x30]
-  451ffd:	4c 89 e9             	mov    rcx,r13
-  452000:	48 c7 44 24 40 00 00 	mov    QWORD PTR [rsp+0x40],0x0
-  452007:	00 00 
-  452009:	49 c7 c0 ff ff ff ff 	mov    r8,0xffffffffffffffff
-  452010:	ba 0f 00 00 00       	mov    edx,0xf
-  452015:	48 8d 35 de 0a 02 00 	lea    rsi,[rip+0x20ade]        # 472afa <_IO_stdin_used+0x3afa>
-  45201c:	0f 29 44 24 30       	movaps XMMWORD PTR [rsp+0x30],xmm0
-  452021:	e9 1f fe ff ff       	jmp    451e45 <INTERRUPTSERVICE+0x405>
-;      case fb_bspace:key=c64_bspace
-  452026:	f2 0f 10 0d 5a 12 02 	movsd  xmm1,QWORD PTR [rip+0x2125a]        # 473288 <_IO_stdin_used+0x4288>
-  45202d:	00 
-  45202e:	bd 14 00 00 00       	mov    ebp,0x14
-  452033:	e9 a8 fb ff ff       	jmp    451be0 <INTERRUPTSERVICE+0x1a0>
-;      case fb_left  :key=c64_left
-  452038:	f2 0f 10 0d 70 13 02 	movsd  xmm1,QWORD PTR [rip+0x21370]        # 4733b0 <_IO_stdin_used+0x43b0>
-  45203f:	00 
-  452040:	bd 9d 00 00 00       	mov    ebp,0x9d
-  452045:	e9 96 fb ff ff       	jmp    451be0 <INTERRUPTSERVICE+0x1a0>
-;      case fb_up    :key=c64_up
-  45204a:	f2 0f 10 0d 06 13 02 	movsd  xmm1,QWORD PTR [rip+0x21306]        # 473358 <_IO_stdin_used+0x4358>
-  452051:	00 
-  452052:	bd 91 00 00 00       	mov    ebp,0x91
-  452057:	e9 84 fb ff ff       	jmp    451be0 <INTERRUPTSERVICE+0x1a0>
-;          dim as integer nBytes=cpu->mem->ReadUShort(&H02D)
-  45205c:	48 8b 7b 08          	mov    rdi,QWORD PTR [rbx+0x8]
-  452060:	c6 44 24 0f 00       	mov    BYTE PTR [rsp+0xf],0x0
-;          for i as integer=0 to nBytes-1
-  452065:	31 ed                	xor    ebp,ebp
-  452067:	4c 8d 64 24 0f       	lea    r12,[rsp+0xf]
-;          dim as integer nBytes=cpu->mem->ReadUShort(&H02D)
-  45206c:	f2 0f 10 05 24 11 02 	movsd  xmm0,QWORD PTR [rip+0x21124]        # 473198 <_IO_stdin_used+0x4198>
-  452073:	00 
-  452074:	e8 f7 db ff ff       	call   44fc70 <MEMORY_T::READUSHORT(double)>
-;          put #key,,nBytes
-  452079:	48 8d 54 24 30       	lea    rdx,[rsp+0x30]
-  45207e:	31 f6                	xor    esi,esi
-  452080:	44 89 f7             	mov    edi,r14d
-;          dim as integer nBytes=cpu->mem->ReadUShort(&H02D)
-  452083:	0f b7 c0             	movzx  eax,ax
-;          put #key,,nBytes
-  452086:	b9 08 00 00 00       	mov    ecx,0x8
-;          nBytes-=2048
-  45208b:	48 2d 00 08 00 00    	sub    rax,0x800
-  452091:	48 89 44 24 30       	mov    QWORD PTR [rsp+0x30],rax
-;          put #key,,nBytes
-  452096:	e8 75 3e 01 00       	call   465f10 <fb_FilePutLarge>
-;          next
-  45209b:	4c 8b 7c 24 30       	mov    r15,QWORD PTR [rsp+0x30]
-  4520a0:	49 83 ef 01          	sub    r15,0x1
-  4520a4:	78 38                	js     4520de <INTERRUPTSERVICE+0x69e>
-;            u8=cpu->mem->ReadUByte(2048+i)
-  4520a6:	48 8d 85 00 08 00 00 	lea    rax,[rbp+0x800]
-  4520ad:	66 0f ef c0          	pxor   xmm0,xmm0
-  4520b1:	48 8b 7b 08          	mov    rdi,QWORD PTR [rbx+0x8]
-;          next
-  4520b5:	48 83 c5 01          	add    rbp,0x1
-;            u8=cpu->mem->ReadUByte(2048+i)
-  4520b9:	f2 48 0f 2a c0       	cvtsi2sd xmm0,rax
-  4520be:	e8 ad d1 ff ff       	call   44f270 <MEMORY_T::READUBYTE(double)>
-;            put #key,,u8
-  4520c3:	b9 01 00 00 00       	mov    ecx,0x1
-  4520c8:	4c 89 e2             	mov    rdx,r12
-  4520cb:	31 f6                	xor    esi,esi
-  4520cd:	44 89 f7             	mov    edi,r14d
-;            u8=cpu->mem->ReadUByte(2048+i)
-  4520d0:	88 44 24 0f          	mov    BYTE PTR [rsp+0xf],al
-;            put #key,,u8
-  4520d4:	e8 37 3e 01 00       	call   465f10 <fb_FilePutLarge>
-;          next
-  4520d9:	49 39 ef             	cmp    r15,rbp
-  4520dc:	7d c8                	jge    4520a6 <INTERRUPTSERVICE+0x666>
-;          close #key
-  4520de:	44 89 f7             	mov    edi,r14d
-;        else
-  4520e1:	31 ed                	xor    ebp,ebp
-;          close #key
-  4520e3:	e8 78 2b 01 00       	call   464c60 <fb_FileClose>
-;        else
-  4520e8:	e9 85 fd ff ff       	jmp    451e72 <INTERRUPTSERVICE+0x432>
-;      case fb_right :key=c64_right
-  4520ed:	f2 0f 10 0d d3 11 02 	movsd  xmm1,QWORD PTR [rip+0x211d3]        # 4732c8 <_IO_stdin_used+0x42c8>
-  4520f4:	00 
-  4520f5:	bd 1d 00 00 00       	mov    ebp,0x1d
-  4520fa:	e9 e1 fa ff ff       	jmp    451be0 <INTERRUPTSERVICE+0x1a0>
-;          get #key,,nBytes
-  4520ff:	48 8d 54 24 30       	lea    rdx,[rsp+0x30]
-  452104:	b9 08 00 00 00       	mov    ecx,0x8
-  452109:	31 f6                	xor    esi,esi
-  45210b:	44 89 f7             	mov    edi,r14d
-  45210e:	c6 44 24 0f 00       	mov    BYTE PTR [rsp+0xf],0x0
-;          for i as integer=0 to nBytes-1
-  452113:	31 ed                	xor    ebp,ebp
-  452115:	4c 8d 64 24 0f       	lea    r12,[rsp+0xf]
-  45211a:	48 c7 44 24 30 00 00 	mov    QWORD PTR [rsp+0x30],0x0
-  452121:	00 00 
-;          get #key,,nBytes
-  452123:	e8 c8 30 01 00       	call   4651f0 <fb_FileGetLarge>
-;          next
-  452128:	4c 8b 7c 24 30       	mov    r15,QWORD PTR [rsp+0x30]
-  45212d:	49 83 ef 01          	sub    r15,0x1
-  452131:	78 41                	js     452174 <INTERRUPTSERVICE+0x734>
-;            get #key,,u8
-  452133:	b9 01 00 00 00       	mov    ecx,0x1
-  452138:	4c 89 e2             	mov    rdx,r12
-  45213b:	31 f6                	xor    esi,esi
-  45213d:	44 89 f7             	mov    edi,r14d
-  452140:	e8 ab 30 01 00       	call   4651f0 <fb_FileGetLarge>
-;            cpu->mem->WriteUByte(2048+i,u8)
-  452145:	0f b6 44 24 0f       	movzx  eax,BYTE PTR [rsp+0xf]
-  45214a:	48 8d 95 00 08 00 00 	lea    rdx,[rbp+0x800]
-  452151:	66 0f ef c0          	pxor   xmm0,xmm0
-  452155:	66 0f ef c9          	pxor   xmm1,xmm1
-  452159:	f2 48 0f 2a c2       	cvtsi2sd xmm0,rdx
-  45215e:	48 8b 7b 08          	mov    rdi,QWORD PTR [rbx+0x8]
-;          next
-  452162:	48 83 c5 01          	add    rbp,0x1
-;            cpu->mem->WriteUByte(2048+i,u8)
-  452166:	f2 0f 2a c8          	cvtsi2sd xmm1,eax
-  45216a:	e8 91 db ff ff       	call   44fd00 <MEMORY_T::WRITEBYTE(double, double)>
-;          next
-  45216f:	49 39 ef             	cmp    r15,rbp
-  452172:	7d bf                	jge    452133 <INTERRUPTSERVICE+0x6f3>
-;          close #key
-  452174:	44 89 f7             	mov    edi,r14d
-;        else
-  452177:	31 ed                	xor    ebp,ebp
-;          close #key
-  452179:	e8 e2 2a 01 00       	call   464c60 <fb_FileClose>
-;          nBytes+=2048
-  45217e:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
-;          cpu->mem->WriteUShort(&H02D,nBytes)
-  452183:	66 0f ef c9          	pxor   xmm1,xmm1
-  452187:	48 8b 7b 08          	mov    rdi,QWORD PTR [rbx+0x8]
-  45218b:	f2 0f 10 05 05 10 02 	movsd  xmm0,QWORD PTR [rip+0x21005]        # 473198 <_IO_stdin_used+0x4198>
-  452192:	00 
-;          nBytes+=2048
-  452193:	48 05 00 08 00 00    	add    rax,0x800
-;          cpu->mem->WriteUShort(&H02D,nBytes)
-  452199:	f2 48 0f 2a c8       	cvtsi2sd xmm1,rax
-;          nBytes+=2048
-  45219e:	48 89 44 24 30       	mov    QWORD PTR [rsp+0x30],rax
-;          cpu->mem->WriteUShort(&H02D,nBytes)
-  4521a3:	e8 18 e1 ff ff       	call   4502c0 <MEMORY_T::WRITEUSHORT(double, double)>
-;          cpu->PC=&HA52A
-  4521a8:	b8 2a a5 ff ff       	mov    eax,0xffffa52a
-  4521ad:	66 89 43 04          	mov    WORD PTR [rbx+0x4],ax
-;        else
-  4521b1:	e9 bc fc ff ff       	jmp    451e72 <INTERRUPTSERVICE+0x432>
-;end proc
-  4521b6:	e8 a5 36 fb ff       	call   405860 <__stack_chk_fail@plt>
-  4521bb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-
-00000000004521c0 <fb_GfxLock>:
-  4521c0:	48 8b 05 51 1a 05 00 	mov    rax,QWORD PTR [rip+0x51a51]        # 4a3c18 <__fb_gfx>
-  4521c7:	48 85 c0             	test   rax,rax
-  4521ca:	74 34                	je     452200 <fb_GfxLock+0x40>
-  4521cc:	8b 90 cc 00 00 00    	mov    edx,DWORD PTR [rax+0xcc]
-  4521d2:	85 d2                	test   edx,edx
-  4521d4:	75 32                	jne    452208 <fb_GfxLock+0x48>
-  4521d6:	48 83 ec 08          	sub    rsp,0x8
-  4521da:	48 8b 40 58          	mov    rax,QWORD PTR [rax+0x58]
-  4521de:	ff 50 18             	call   QWORD PTR [rax+0x18]
-  4521e1:	48 8b 05 30 1a 05 00 	mov    rax,QWORD PTR [rip+0x51a30]        # 4a3c18 <__fb_gfx>
-  4521e8:	8b 90 cc 00 00 00    	mov    edx,DWORD PTR [rax+0xcc]
-  4521ee:	83 c2 01             	add    edx,0x1
-  4521f1:	89 90 cc 00 00 00    	mov    DWORD PTR [rax+0xcc],edx
-  4521f7:	48 83 c4 08          	add    rsp,0x8
-  4521fb:	c3                   	ret    
-  4521fc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  452200:	f3 c3                	repz ret 
-  452202:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  452208:	83 c2 01             	add    edx,0x1
-  45220b:	89 90 cc 00 00 00    	mov    DWORD PTR [rax+0xcc],edx
-  452211:	c3                   	ret    
-  452212:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  452216:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  45221d:	00 00 00 
-
-0000000000452220 <fb_GfxUnlock>:
-  452220:	55                   	push   rbp
-  452221:	53                   	push   rbx
-  452222:	89 f5                	mov    ebp,esi
-  452224:	48 63 df             	movsxd rbx,edi
-  452227:	48 83 ec 08          	sub    rsp,0x8
-  45222b:	e8 b0 32 00 00       	call   4554e0 <fb_hGetContext>
-  452230:	48 8b 0d e1 19 05 00 	mov    rcx,QWORD PTR [rip+0x519e1]        # 4a3c18 <__fb_gfx>
-  452237:	48 85 c9             	test   rcx,rcx
-  45223a:	74 44                	je     452280 <fb_GfxUnlock+0x60>
-  45223c:	85 db                	test   ebx,ebx
-  45223e:	bf 00 00 00 00       	mov    edi,0x0
-  452243:	48 0f 48 df          	cmovs  rbx,rdi
-  452247:	85 ed                	test   ebp,ebp
-  452249:	78 45                	js     452290 <fb_GfxUnlock+0x70>
-  45224b:	8b 40 04             	mov    eax,DWORD PTR [rax+0x4]
-  45224e:	39 41 14             	cmp    DWORD PTR [rcx+0x14],eax
-  452251:	75 04                	jne    452257 <fb_GfxUnlock+0x37>
-  452253:	39 dd                	cmp    ebp,ebx
-  452255:	7d 49                	jge    4522a0 <fb_GfxUnlock+0x80>
-  452257:	8b 81 cc 00 00 00    	mov    eax,DWORD PTR [rcx+0xcc]
-  45225d:	85 c0                	test   eax,eax
-  45225f:	74 1f                	je     452280 <fb_GfxUnlock+0x60>
-  452261:	83 e8 01             	sub    eax,0x1
-  452264:	85 c0                	test   eax,eax
-  452266:	89 81 cc 00 00 00    	mov    DWORD PTR [rcx+0xcc],eax
-  45226c:	75 12                	jne    452280 <fb_GfxUnlock+0x60>
-  45226e:	48 8b 41 58          	mov    rax,QWORD PTR [rcx+0x58]
-  452272:	48 8b 40 20          	mov    rax,QWORD PTR [rax+0x20]
-  452276:	48 83 c4 08          	add    rsp,0x8
-  45227a:	5b                   	pop    rbx
-  45227b:	5d                   	pop    rbp
-  45227c:	ff e0                	jmp    rax
-  45227e:	66 90                	xchg   ax,ax
-  452280:	48 83 c4 08          	add    rsp,0x8
-  452284:	5b                   	pop    rbx
-  452285:	5d                   	pop    rbp
-  452286:	c3                   	ret    
-  452287:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  45228e:	00 00 
-  452290:	8b 40 04             	mov    eax,DWORD PTR [rax+0x4]
-  452293:	39 41 14             	cmp    DWORD PTR [rcx+0x14],eax
-  452296:	8b 51 24             	mov    edx,DWORD PTR [rcx+0x24]
-  452299:	8d 6a ff             	lea    ebp,[rdx-0x1]
-  45229c:	74 b5                	je     452253 <fb_GfxUnlock+0x33>
-  45229e:	eb b7                	jmp    452257 <fb_GfxUnlock+0x37>
-  4522a0:	39 69 24             	cmp    DWORD PTR [rcx+0x24],ebp
-  4522a3:	7e b2                	jle    452257 <fb_GfxUnlock+0x37>
-  4522a5:	48 8b 79 50          	mov    rdi,QWORD PTR [rcx+0x50]
-  4522a9:	29 dd                	sub    ebp,ebx
-  4522ab:	be 01 00 00 00       	mov    esi,0x1
-  4522b0:	8d 55 01             	lea    edx,[rbp+0x1]
-  4522b3:	48 01 df             	add    rdi,rbx
-  4522b6:	48 63 d2             	movsxd rdx,edx
-  4522b9:	ff 15 a1 06 03 00    	call   QWORD PTR [rip+0x306a1]        # 482960 <memset@GLIBC_2.2.5>
-  4522bf:	48 8b 0d 52 19 05 00 	mov    rcx,QWORD PTR [rip+0x51952]        # 4a3c18 <__fb_gfx>
-  4522c6:	8b 81 cc 00 00 00    	mov    eax,DWORD PTR [rcx+0xcc]
-  4522cc:	85 c0                	test   eax,eax
-  4522ce:	75 91                	jne    452261 <fb_GfxUnlock+0x41>
-  4522d0:	eb ae                	jmp    452280 <fb_GfxUnlock+0x60>
-  4522d2:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  4522d6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  4522dd:	00 00 00 
-
-00000000004522e0 <fb_GfxScreenPtr>:
-  4522e0:	48 83 3d 30 19 05 00 	cmp    QWORD PTR [rip+0x51930],0x0        # 4a3c18 <__fb_gfx>
-  4522e7:	00 
-  4522e8:	74 2e                	je     452318 <fb_GfxScreenPtr+0x38>
-  4522ea:	53                   	push   rbx
-  4522eb:	e8 f0 31 00 00       	call   4554e0 <fb_hGetContext>
-  4522f0:	31 f6                	xor    esi,esi
-  4522f2:	48 89 c3             	mov    rbx,rax
-  4522f5:	48 89 c7             	mov    rdi,rax
-  4522f8:	e8 13 30 00 00       	call   455310 <fb_hPrepareTarget>
-  4522fd:	48 89 df             	mov    rdi,rbx
-  452300:	be 00 00 00 ff       	mov    esi,0xff000000
-  452305:	e8 96 2c 00 00       	call   454fa0 <fb_hSetPixelTransfer>
-  45230a:	48 8b 43 08          	mov    rax,QWORD PTR [rbx+0x8]
-  45230e:	5b                   	pop    rbx
-  45230f:	48 8b 00             	mov    rax,QWORD PTR [rax]
-  452312:	c3                   	ret    
-  452313:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  452318:	31 c0                	xor    eax,eax
-  45231a:	c3                   	ret    
-  45231b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-
-0000000000452320 <convert_bf_16to16>:
-  452320:	85 d2                	test   edx,edx
-  452322:	0f 84 60 01 00 00    	je     452488 <convert_bf_16to16+0x168>
-  452328:	41 57                	push   r15
-  45232a:	41 56                	push   r14
-  45232c:	41 55                	push   r13
-  45232e:	41 54                	push   r12
-  452330:	55                   	push   rbp
-  452331:	53                   	push   rbx
-  452332:	41 8b 40 04          	mov    eax,DWORD PTR [r8+0x4]
-  452336:	41 8b 19             	mov    ebx,DWORD PTR [r9]
-  452339:	45 8b 59 04          	mov    r11d,DWORD PTR [r9+0x4]
-  45233d:	44 8b 31             	mov    r14d,DWORD PTR [rcx]
-  452340:	44 8b 69 04          	mov    r13d,DWORD PTR [rcx+0x4]
-  452344:	44 8b 61 08          	mov    r12d,DWORD PTR [rcx+0x8]
-  452348:	89 44 24 d4          	mov    DWORD PTR [rsp-0x2c],eax
-  45234c:	41 8b 40 08          	mov    eax,DWORD PTR [r8+0x8]
-  452350:	41 89 da             	mov    r10d,ebx
-  452353:	45 8b 38             	mov    r15d,DWORD PTR [r8]
-  452356:	89 44 24 d8          	mov    DWORD PTR [rsp-0x28],eax
-  45235a:	8d 43 fb             	lea    eax,[rbx-0x5]
-  45235d:	89 44 24 dc          	mov    DWORD PTR [rsp-0x24],eax
-  452361:	b8 05 00 00 00       	mov    eax,0x5
-  452366:	89 c1                	mov    ecx,eax
-  452368:	29 d9                	sub    ecx,ebx
-  45236a:	41 29 ca             	sub    r10d,ecx
-  45236d:	89 4c 24 f4          	mov    DWORD PTR [rsp-0xc],ecx
-  452371:	41 8d 4b fa          	lea    ecx,[r11-0x6]
-  452375:	44 89 54 24 e8       	mov    DWORD PTR [rsp-0x18],r10d
-  45237a:	45 89 da             	mov    r10d,r11d
-  45237d:	89 4c 24 e0          	mov    DWORD PTR [rsp-0x20],ecx
-  452381:	b9 06 00 00 00       	mov    ecx,0x6
-  452386:	44 29 d9             	sub    ecx,r11d
-  452389:	41 29 ca             	sub    r10d,ecx
-  45238c:	89 4c 24 f8          	mov    DWORD PTR [rsp-0x8],ecx
-  452390:	44 89 54 24 ec       	mov    DWORD PTR [rsp-0x14],r10d
-  452395:	45 8b 51 08          	mov    r10d,DWORD PTR [r9+0x8]
-  452399:	41 8d 4a fb          	lea    ecx,[r10-0x5]
-  45239d:	44 29 d0             	sub    eax,r10d
-  4523a0:	89 44 24 fc          	mov    DWORD PTR [rsp-0x4],eax
-  4523a4:	89 4c 24 e4          	mov    DWORD PTR [rsp-0x1c],ecx
-  4523a8:	44 89 d1             	mov    ecx,r10d
-  4523ab:	29 c1                	sub    ecx,eax
-  4523ad:	8d 42 ff             	lea    eax,[rdx-0x1]
-  4523b0:	89 4c 24 f0          	mov    DWORD PTR [rsp-0x10],ecx
-  4523b4:	48 8d 6c 46 02       	lea    rbp,[rsi+rax*2+0x2]
-  4523b9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  4523c0:	0f b7 07             	movzx  eax,WORD PTR [rdi]
-  4523c3:	44 89 f9             	mov    ecx,r15d
-  4523c6:	41 89 c1             	mov    r9d,eax
-  4523c9:	41 89 c0             	mov    r8d,eax
-  4523cc:	41 d3 f9             	sar    r9d,cl
-  4523cf:	0f b6 4c 24 d4       	movzx  ecx,BYTE PTR [rsp-0x2c]
-  4523d4:	45 21 f1             	and    r9d,r14d
-  4523d7:	44 89 ca             	mov    edx,r9d
-  4523da:	41 d3 f8             	sar    r8d,cl
-  4523dd:	0f b6 4c 24 d8       	movzx  ecx,BYTE PTR [rsp-0x28]
-  4523e2:	45 21 e8             	and    r8d,r13d
-  4523e5:	d3 f8                	sar    eax,cl
-  4523e7:	0f b6 4c 24 dc       	movzx  ecx,BYTE PTR [rsp-0x24]
-  4523ec:	44 21 e0             	and    eax,r12d
-  4523ef:	d3 ea                	shr    edx,cl
-  4523f1:	83 fb 05             	cmp    ebx,0x5
-  4523f4:	7f 15                	jg     45240b <convert_bf_16to16+0xeb>
-  4523f6:	0f b6 4c 24 f4       	movzx  ecx,BYTE PTR [rsp-0xc]
-  4523fb:	44 89 ca             	mov    edx,r9d
-  4523fe:	d3 e2                	shl    edx,cl
-  452400:	0f b6 4c 24 e8       	movzx  ecx,BYTE PTR [rsp-0x18]
-  452405:	41 d3 e9             	shr    r9d,cl
-  452408:	44 09 ca             	or     edx,r9d
-  45240b:	0f b6 4c 24 e0       	movzx  ecx,BYTE PTR [rsp-0x20]
-  452410:	45 89 c1             	mov    r9d,r8d
-  452413:	41 d3 e9             	shr    r9d,cl
-  452416:	41 83 fb 06          	cmp    r11d,0x6
+  4145fc:	5d                   	pop    rbp
+  4145fd:	41 5c                	pop    r12
+  4145ff:	41 5d                	pop    r13
+  414601:	41 5e                	pop    r14
+  414603:	41 5f                	pop    r15
+;	 poke64(49313d,0): filename=""
+  414605:	e9 16 0a 06 00       	jmp    475020 <fb_StrAssign>
+;       case 0 'Draw pixel to to foreground
+  41460a:	f2 0f 10 7c 24 18    	movsd  xmm7,QWORD PTR [rsp+0x18]
+  414610:	66 0f 2e 3d f8 d5 06 	ucomisd xmm7,QWORD PTR [rip+0x6d5f8]        # 481c10 <_IO_stdin_used+0x4c10>
+  414617:	00 
+  414618:	7a 06                	jp     414620 <MEMORY_T::POKE64(double, double)+0xad50>
+  41461a:	0f 84 d1 0f 00 00    	je     4155f1 <MEMORY_T::POKE64(double, double)+0xbd21>
+;       case 1 'Draw pixel to to background
+  414620:	f2 0f 10 54 24 18    	movsd  xmm2,QWORD PTR [rsp+0x18]
+  414626:	66 0f 2e 15 22 cb 06 	ucomisd xmm2,QWORD PTR [rip+0x6cb22]        # 481150 <_IO_stdin_used+0x4150>
+  41462d:	00 
+  41462e:	7a 06                	jp     414636 <MEMORY_T::POKE64(double, double)+0xad66>
+  414630:	0f 84 f6 5e 00 00    	je     41a52c <MEMORY_T::POKE64(double, double)+0x10c5c>
+;       case 2 'Draw line to foreground
+  414636:	f2 0f 10 5c 24 18    	movsd  xmm3,QWORD PTR [rsp+0x18]
+  41463c:	66 0f 2e 1d 1c d6 06 	ucomisd xmm3,QWORD PTR [rip+0x6d61c]        # 481c60 <_IO_stdin_used+0x4c60>
+  414643:	00 
+  414644:	7a 06                	jp     41464c <MEMORY_T::POKE64(double, double)+0xad7c>
+  414646:	0f 84 53 5f 00 00    	je     41a59f <MEMORY_T::POKE64(double, double)+0x10ccf>
+;       case 3 'Draw line to background
+  41464c:	f2 0f 10 64 24 18    	movsd  xmm4,QWORD PTR [rsp+0x18]
+  414652:	66 0f 2e 25 86 d6 06 	ucomisd xmm4,QWORD PTR [rip+0x6d686]        # 481ce0 <_IO_stdin_used+0x4ce0>
+  414659:	00 
+  41465a:	7a 06                	jp     414662 <MEMORY_T::POKE64(double, double)+0xad92>
+  41465c:	0f 84 d1 5f 00 00    	je     41a633 <MEMORY_T::POKE64(double, double)+0x10d63>
+;       case 4 'Draw box to foreground

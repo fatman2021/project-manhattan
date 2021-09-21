@@ -1,5230 +1,5230 @@
-   1ecd8:	00 01                	add    BYTE PTR [rcx],al
-   1ecda:	01 54 01 3d          	add    DWORD PTR [rcx+rax*1+0x3d],edx
-   1ecde:	00 07                	add    BYTE PTR [rdi],al
-   1ece0:	02 f7                	add    dh,bh
-   1ece2:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1ece5:	00 00                	add    BYTE PTR [rax],al
-   1ece7:	00 f1                	add    cl,dh
-   1ece9:	35 00 00 fb ec       	xor    eax,0xecfb0000
-   1ecee:	01 00                	add    DWORD PTR [rax],eax
-   1ecf0:	01 01                	add    DWORD PTR [rcx],eax
-   1ecf2:	55                   	push   rbp
-   1ecf3:	01 31                	add    DWORD PTR [rcx],esi
-   1ecf5:	01 01                	add    DWORD PTR [rcx],eax
-   1ecf7:	51                   	push   rcx
-   1ecf8:	01 30                	add    DWORD PTR [rax],esi
-   1ecfa:	00 04 4b             	add    BYTE PTR [rbx+rcx*2],al
-   1ecfd:	f7 43 00 00 00 00 00 	test   DWORD PTR [rbx+0x0],0x0
-   1ed04:	75 2d                	jne    1ed33 <__abi_tag-0x3e15ed>
-   1ed06:	07                   	(bad)  
-   1ed07:	00 00                	add    BYTE PTR [rax],al
-   1ed09:	06                   	(bad)  
-   1ed0a:	39 e8                	cmp    eax,ebp
-   1ed0c:	00 00                	add    BYTE PTR [rax],al
-   1ed0e:	75 ed                	jne    1ecfd <__abi_tag-0x3e1623>
-   1ed10:	01 00                	add    DWORD PTR [rax],eax
-   1ed12:	05 d7 3d 01 00       	add    eax,0x13dd7
-   1ed17:	05 69 01 12 b5       	add    eax,0xb5120169
-   1ed1c:	2c 00                	sub    al,0x0
-   1ed1e:	00 32                	add    BYTE PTR [rdx],dh
-   1ed20:	4d 00 00             	rex.WRB add BYTE PTR [r8],r8b
-   1ed23:	2c 4d                	sub    al,0x4d
-   1ed25:	00 00                	add    BYTE PTR [rax],al
-   1ed27:	03 81 f6 43 00 00    	add    eax,DWORD PTR [rcx+0x43f6]
-   1ed2d:	00 00                	add    BYTE PTR [rax],al
-   1ed2f:	00 c4                	add    ah,al
-   1ed31:	35 00 00 4b ed       	xor    eax,0xed4b0000
-   1ed36:	01 00                	add    DWORD PTR [rax],eax
-   1ed38:	01 01                	add    DWORD PTR [rcx],eax
-   1ed3a:	55                   	push   rbp
-   1ed3b:	09 03                	or     DWORD PTR [rbx],eax
-   1ed3d:	86 f6                	xchg   dh,dh
-   1ed3f:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1ed42:	00 00                	add    BYTE PTR [rax],al
-   1ed44:	00 01                	add    BYTE PTR [rcx],al
-   1ed46:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   1ed4a:	00 07                	add    BYTE PTR [rdi],al
-   1ed4c:	b4 f6                	mov    ah,0xf6
-   1ed4e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1ed51:	00 00                	add    BYTE PTR [rax],al
-   1ed53:	00 f1                	add    cl,dh
-   1ed55:	35 00 00 67 ed       	xor    eax,0xed670000
-   1ed5a:	01 00                	add    DWORD PTR [rax],eax
-   1ed5c:	01 01                	add    DWORD PTR [rcx],eax
-   1ed5e:	55                   	push   rbp
-   1ed5f:	01 31                	add    DWORD PTR [rcx],esi
-   1ed61:	01 01                	add    DWORD PTR [rcx],eax
-   1ed63:	51                   	push   rcx
-   1ed64:	01 30                	add    DWORD PTR [rax],esi
-   1ed66:	00 04 be             	add    BYTE PTR [rsi+rdi*4],al
-   1ed69:	f6 43 00 00          	test   BYTE PTR [rbx+0x0],0x0
-   1ed6d:	00 00                	add    BYTE PTR [rax],al
-   1ed6f:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1ed72:	07                   	(bad)  
-   1ed73:	00 00                	add    BYTE PTR [rax],al
-   1ed75:	06                   	(bad)  
-   1ed76:	21 e8                	and    eax,ebp
-   1ed78:	00 00                	add    BYTE PTR [rax],al
-   1ed7a:	e1 ed                	loope  1ed69 <__abi_tag-0x3e15b7>
-   1ed7c:	01 00                	add    DWORD PTR [rax],eax
-   1ed7e:	05 02 7b 00 00       	add    eax,0x7b02
-   1ed83:	05 6a 01 12 b5       	add    eax,0xb512016a
-   1ed88:	2c 00                	sub    al,0x0
-   1ed8a:	00 51 4d             	add    BYTE PTR [rcx+0x4d],dl
-   1ed8d:	00 00                	add    BYTE PTR [rax],al
-   1ed8f:	4b                   	rex.WXB
-   1ed90:	4d 00 00             	rex.WRB add BYTE PTR [r8],r8b
-   1ed93:	03 3d f6 43 00 00    	add    edi,DWORD PTR [rip+0x43f6]        # 2318f <__abi_tag-0x3dd191>
-   1ed99:	00 00                	add    BYTE PTR [rax],al
-   1ed9b:	00 c4                	add    ah,al
-   1ed9d:	35 00 00 b7 ed       	xor    eax,0xedb70000
-   1eda2:	01 00                	add    DWORD PTR [rax],eax
-   1eda4:	01 01                	add    DWORD PTR [rcx],eax
-   1eda6:	55                   	push   rbp
-   1eda7:	09 03                	or     DWORD PTR [rbx],eax
-   1eda9:	e7 0a                	out    0xa,eax
-   1edab:	47 00 00             	rex.RXB add BYTE PTR [r8],r8b
-   1edae:	00 00                	add    BYTE PTR [rax],al
-   1edb0:	00 01                	add    BYTE PTR [rcx],al
-   1edb2:	01 54 01 32          	add    DWORD PTR [rcx+rax*1+0x32],edx
-   1edb6:	00 07                	add    BYTE PTR [rdi],al
-   1edb8:	70 f6                	jo     1edb0 <__abi_tag-0x3e1570>
-   1edba:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1edbd:	00 00                	add    BYTE PTR [rax],al
-   1edbf:	00 f1                	add    cl,dh
-   1edc1:	35 00 00 d3 ed       	xor    eax,0xedd30000
-   1edc6:	01 00                	add    DWORD PTR [rax],eax
-   1edc8:	01 01                	add    DWORD PTR [rcx],eax
-   1edca:	55                   	push   rbp
-   1edcb:	01 31                	add    DWORD PTR [rcx],esi
-   1edcd:	01 01                	add    DWORD PTR [rcx],eax
-   1edcf:	51                   	push   rcx
-   1edd0:	01 30                	add    DWORD PTR [rax],esi
-   1edd2:	00 04 b9             	add    BYTE PTR [rcx+rdi*4],al
-   1edd5:	f6 43 00 00          	test   BYTE PTR [rbx+0x0],0x0
-   1edd9:	00 00                	add    BYTE PTR [rax],al
-   1eddb:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1edde:	07                   	(bad)  
-   1eddf:	00 00                	add    BYTE PTR [rax],al
-   1ede1:	06                   	(bad)  
-   1ede2:	0b e8                	or     ebp,eax
-   1ede4:	00 00                	add    BYTE PTR [rax],al
-   1ede6:	4d ee                	rex.WRB out dx,al
-   1ede8:	01 00                	add    DWORD PTR [rax],eax
-   1edea:	05 0a 7b 00 00       	add    eax,0x7b0a
-   1edef:	05 6c 01 12 b5       	add    eax,0xb512016c
-   1edf4:	2c 00                	sub    al,0x0
-   1edf6:	00 70 4d             	add    BYTE PTR [rax+0x4d],dh
-   1edf9:	00 00                	add    BYTE PTR [rax],al
-   1edfb:	6a 4d                	push   0x4d
-   1edfd:	00 00                	add    BYTE PTR [rax],al
-   1edff:	03 ef                	add    ebp,edi
-   1ee01:	f5                   	cmc    
-   1ee02:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1ee05:	00 00                	add    BYTE PTR [rax],al
-   1ee07:	00 c4                	add    ah,al
-   1ee09:	35 00 00 23 ee       	xor    eax,0xee230000
-   1ee0e:	01 00                	add    DWORD PTR [rax],eax
-   1ee10:	01 01                	add    DWORD PTR [rcx],eax
-   1ee12:	55                   	push   rbp
-   1ee13:	09 03                	or     DWORD PTR [rbx],eax
-   1ee15:	8c f6                	mov    esi,?
-   1ee17:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1ee1a:	00 00                	add    BYTE PTR [rax],al
-   1ee1c:	00 01                	add    BYTE PTR [rcx],al
-   1ee1e:	01 54 01 34          	add    DWORD PTR [rcx+rax*1+0x34],edx
-   1ee22:	00 07                	add    BYTE PTR [rdi],al
-   1ee24:	22 f6                	and    dh,dh
-   1ee26:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1ee29:	00 00                	add    BYTE PTR [rax],al
-   1ee2b:	00 f1                	add    cl,dh
-   1ee2d:	35 00 00 3f ee       	xor    eax,0xee3f0000
-   1ee32:	01 00                	add    DWORD PTR [rax],eax
-   1ee34:	01 01                	add    DWORD PTR [rcx],eax
-   1ee36:	55                   	push   rbp
-   1ee37:	01 31                	add    DWORD PTR [rcx],esi
-   1ee39:	01 01                	add    DWORD PTR [rcx],eax
-   1ee3b:	51                   	push   rcx
-   1ee3c:	01 30                	add    DWORD PTR [rax],esi
-   1ee3e:	00 04 2c             	add    BYTE PTR [rsp+rbp*1],al
-   1ee41:	f6 43 00 00          	test   BYTE PTR [rbx+0x0],0x0
-   1ee45:	00 00                	add    BYTE PTR [rax],al
-   1ee47:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1ee4a:	07                   	(bad)  
-   1ee4b:	00 00                	add    BYTE PTR [rax],al
-   1ee4d:	06                   	(bad)  
-   1ee4e:	f3 e7 00             	repz out 0x0,eax
-   1ee51:	00 b9 ee 01 00 05    	add    BYTE PTR [rcx+0x50001ee],bh
-   1ee57:	12 7b 00             	adc    bh,BYTE PTR [rbx+0x0]
-   1ee5a:	00 05 73 01 12 b5    	add    BYTE PTR [rip+0xffffffffb5120173],al        # ffffffffb513efd3 <_end+0xffffffffb4c836bb>
-   1ee60:	2c 00                	sub    al,0x0
-   1ee62:	00 8f 4d 00 00 89    	add    BYTE PTR [rdi-0x76ffffb3],cl
-   1ee68:	4d 00 00             	rex.WRB add BYTE PTR [r8],r8b
-   1ee6b:	03 ab f5 43 00 00    	add    ebp,DWORD PTR [rbx+0x43f5]
-   1ee71:	00 00                	add    BYTE PTR [rax],al
-   1ee73:	00 c4                	add    ah,al
-   1ee75:	35 00 00 8f ee       	xor    eax,0xee8f0000
-   1ee7a:	01 00                	add    DWORD PTR [rax],eax
-   1ee7c:	01 01                	add    DWORD PTR [rcx],eax
-   1ee7e:	55                   	push   rbp
-   1ee7f:	09 03                	or     DWORD PTR [rbx],eax
-   1ee81:	91                   	xchg   ecx,eax
-   1ee82:	f6 46 00 00          	test   BYTE PTR [rsi+0x0],0x0
-   1ee86:	00 00                	add    BYTE PTR [rax],al
-   1ee88:	00 01                	add    BYTE PTR [rcx],al
-   1ee8a:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   1ee8e:	00 07                	add    BYTE PTR [rdi],al
-   1ee90:	de f5                	fdivrp st(5),st
-   1ee92:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1ee95:	00 00                	add    BYTE PTR [rax],al
-   1ee97:	00 f1                	add    cl,dh
-   1ee99:	35 00 00 ab ee       	xor    eax,0xeeab0000
-   1ee9e:	01 00                	add    DWORD PTR [rax],eax
-   1eea0:	01 01                	add    DWORD PTR [rcx],eax
-   1eea2:	55                   	push   rbp
-   1eea3:	01 31                	add    DWORD PTR [rcx],esi
-   1eea5:	01 01                	add    DWORD PTR [rcx],eax
-   1eea7:	51                   	push   rcx
-   1eea8:	01 30                	add    DWORD PTR [rax],esi
-   1eeaa:	00 04 27             	add    BYTE PTR [rdi+riz*1],al
-   1eead:	f6 43 00 00          	test   BYTE PTR [rbx+0x0],0x0
-   1eeb1:	00 00                	add    BYTE PTR [rax],al
-   1eeb3:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1eeb6:	07                   	(bad)  
-   1eeb7:	00 00                	add    BYTE PTR [rax],al
-   1eeb9:	06                   	(bad)  
-   1eeba:	dd e7                	fucom  st(7)
-   1eebc:	00 00                	add    BYTE PTR [rax],al
-   1eebe:	25 ef 01 00 05       	and    eax,0x50001ef
-   1eec3:	1a 7b 00             	sbb    bh,BYTE PTR [rbx+0x0]
-   1eec6:	00 05 76 01 12 b5    	add    BYTE PTR [rip+0xffffffffb5120176],al        # ffffffffb513f042 <_end+0xffffffffb4c8372a>
-   1eecc:	2c 00                	sub    al,0x0
-   1eece:	00 ae 4d 00 00 a8    	add    BYTE PTR [rsi-0x57ffffb3],ch
-   1eed4:	4d 00 00             	rex.WRB add BYTE PTR [r8],r8b
-   1eed7:	03 5d f5             	add    ebx,DWORD PTR [rbp-0xb]
-   1eeda:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1eedd:	00 00                	add    BYTE PTR [rax],al
-   1eedf:	00 c4                	add    ah,al
-   1eee1:	35 00 00 fb ee       	xor    eax,0xeefb0000
-   1eee6:	01 00                	add    DWORD PTR [rax],eax
-   1eee8:	01 01                	add    DWORD PTR [rcx],eax
-   1eeea:	55                   	push   rbp
-   1eeeb:	09 03                	or     DWORD PTR [rbx],eax
-   1eeed:	97                   	xchg   edi,eax
-   1eeee:	f6 46 00 00          	test   BYTE PTR [rsi+0x0],0x0
-   1eef2:	00 00                	add    BYTE PTR [rax],al
-   1eef4:	00 01                	add    BYTE PTR [rcx],al
-   1eef6:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   1eefa:	00 07                	add    BYTE PTR [rdi],al
-   1eefc:	90                   	nop
-   1eefd:	f5                   	cmc    
-   1eefe:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1ef01:	00 00                	add    BYTE PTR [rax],al
-   1ef03:	00 f1                	add    cl,dh
-   1ef05:	35 00 00 17 ef       	xor    eax,0xef170000
-   1ef0a:	01 00                	add    DWORD PTR [rax],eax
-   1ef0c:	01 01                	add    DWORD PTR [rcx],eax
-   1ef0e:	55                   	push   rbp
-   1ef0f:	01 31                	add    DWORD PTR [rcx],esi
-   1ef11:	01 01                	add    DWORD PTR [rcx],eax
-   1ef13:	51                   	push   rcx
-   1ef14:	01 30                	add    DWORD PTR [rax],esi
-   1ef16:	00 04 9a             	add    BYTE PTR [rdx+rbx*4],al
-   1ef19:	f5                   	cmc    
-   1ef1a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1ef1d:	00 00                	add    BYTE PTR [rax],al
-   1ef1f:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1ef22:	07                   	(bad)  
-   1ef23:	00 00                	add    BYTE PTR [rax],al
-   1ef25:	06                   	(bad)  
-   1ef26:	c5 e7 00             	(bad)
-   1ef29:	00 91 ef 01 00 05    	add    BYTE PTR [rcx+0x50001ef],dl
-   1ef2f:	22 7b 00             	and    bh,BYTE PTR [rbx+0x0]
-   1ef32:	00 05 78 01 12 b5    	add    BYTE PTR [rip+0xffffffffb5120178],al        # ffffffffb513f0b0 <_end+0xffffffffb4c83798>
-   1ef38:	2c 00                	sub    al,0x0
-   1ef3a:	00 cd                	add    ch,cl
-   1ef3c:	4d 00 00             	rex.WRB add BYTE PTR [r8],r8b
-   1ef3f:	c7                   	(bad)  
-   1ef40:	4d 00 00             	rex.WRB add BYTE PTR [r8],r8b
-   1ef43:	03 19                	add    ebx,DWORD PTR [rcx]
-   1ef45:	f5                   	cmc    
-   1ef46:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1ef49:	00 00                	add    BYTE PTR [rax],al
-   1ef4b:	00 c4                	add    ah,al
-   1ef4d:	35 00 00 67 ef       	xor    eax,0xef670000
-   1ef52:	01 00                	add    DWORD PTR [rax],eax
-   1ef54:	01 01                	add    DWORD PTR [rcx],eax
-   1ef56:	55                   	push   rbp
-   1ef57:	09 03                	or     DWORD PTR [rbx],eax
-   1ef59:	9d                   	popf   
-   1ef5a:	f6 46 00 00          	test   BYTE PTR [rsi+0x0],0x0
-   1ef5e:	00 00                	add    BYTE PTR [rax],al
-   1ef60:	00 01                	add    BYTE PTR [rcx],al
-   1ef62:	01 54 01 33          	add    DWORD PTR [rcx+rax*1+0x33],edx
-   1ef66:	00 07                	add    BYTE PTR [rdi],al
-   1ef68:	4c f5                	rex.WR cmc 
-   1ef6a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1ef6d:	00 00                	add    BYTE PTR [rax],al
-   1ef6f:	00 f1                	add    cl,dh
-   1ef71:	35 00 00 83 ef       	xor    eax,0xef830000
-   1ef76:	01 00                	add    DWORD PTR [rax],eax
-   1ef78:	01 01                	add    DWORD PTR [rcx],eax
-   1ef7a:	55                   	push   rbp
-   1ef7b:	01 31                	add    DWORD PTR [rcx],esi
-   1ef7d:	01 01                	add    DWORD PTR [rcx],eax
-   1ef7f:	51                   	push   rcx
-   1ef80:	01 30                	add    DWORD PTR [rax],esi
-   1ef82:	00 04 95 f5 43 00 00 	add    BYTE PTR [rdx*4+0x43f5],al
-   1ef89:	00 00                	add    BYTE PTR [rax],al
-   1ef8b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1ef8e:	07                   	(bad)  
-   1ef8f:	00 00                	add    BYTE PTR [rax],al
-   1ef91:	06                   	(bad)  
-   1ef92:	af                   	scas   eax,DWORD PTR es:[rdi]
-   1ef93:	e7 00                	out    0x0,eax
-   1ef95:	00 fd                	add    ch,bh
-   1ef97:	ef                   	out    dx,eax
-   1ef98:	01 00                	add    DWORD PTR [rax],eax
-   1ef9a:	05 2a 7b 00 00       	add    eax,0x7b2a
-   1ef9f:	05 79 01 12 b5       	add    eax,0xb5120179
-   1efa4:	2c 00                	sub    al,0x0
-   1efa6:	00 ec                	add    ah,ch
-   1efa8:	4d 00 00             	rex.WRB add BYTE PTR [r8],r8b
-   1efab:	e6 4d                	out    0x4d,al
-   1efad:	00 00                	add    BYTE PTR [rax],al
-   1efaf:	03 cb                	add    ecx,ebx
-   1efb1:	f4                   	hlt    
-   1efb2:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1efb5:	00 00                	add    BYTE PTR [rax],al
-   1efb7:	00 c4                	add    ah,al
-   1efb9:	35 00 00 d3 ef       	xor    eax,0xefd30000
-   1efbe:	01 00                	add    DWORD PTR [rax],eax
-   1efc0:	01 01                	add    DWORD PTR [rcx],eax
-   1efc2:	55                   	push   rbp
-   1efc3:	09 03                	or     DWORD PTR [rbx],eax
-   1efc5:	f1                   	icebp  
-   1efc6:	02 47 00             	add    al,BYTE PTR [rdi+0x0]
-   1efc9:	00 00                	add    BYTE PTR [rax],al
-   1efcb:	00 00                	add    BYTE PTR [rax],al
-   1efcd:	01 01                	add    DWORD PTR [rcx],eax
-   1efcf:	54                   	push   rsp
-   1efd0:	01 39                	add    DWORD PTR [rcx],edi
-   1efd2:	00 07                	add    BYTE PTR [rdi],al
-   1efd4:	fe                   	(bad)  
-   1efd5:	f4                   	hlt    
-   1efd6:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1efd9:	00 00                	add    BYTE PTR [rax],al
-   1efdb:	00 f1                	add    cl,dh
-   1efdd:	35 00 00 ef ef       	xor    eax,0xefef0000
-   1efe2:	01 00                	add    DWORD PTR [rax],eax
-   1efe4:	01 01                	add    DWORD PTR [rcx],eax
-   1efe6:	55                   	push   rbp
-   1efe7:	01 31                	add    DWORD PTR [rcx],esi
-   1efe9:	01 01                	add    DWORD PTR [rcx],eax
-   1efeb:	51                   	push   rcx
-   1efec:	01 30                	add    DWORD PTR [rax],esi
-   1efee:	00 04 08             	add    BYTE PTR [rax+rcx*1],al
-   1eff1:	f5                   	cmc    
-   1eff2:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1eff5:	00 00                	add    BYTE PTR [rax],al
-   1eff7:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1effa:	07                   	(bad)  
-   1effb:	00 00                	add    BYTE PTR [rax],al
-   1effd:	06                   	(bad)  
-   1effe:	97                   	xchg   edi,eax
-   1efff:	e7 00                	out    0x0,eax
-   1f001:	00 69 f0             	add    BYTE PTR [rcx-0x10],ch
-   1f004:	01 00                	add    DWORD PTR [rax],eax
-   1f006:	05 32 7b 00 00       	add    eax,0x7b32
-   1f00b:	05 7a 01 12 b5       	add    eax,0xb512017a
-   1f010:	2c 00                	sub    al,0x0
-   1f012:	00 0b                	add    BYTE PTR [rbx],cl
-   1f014:	4e 00 00             	rex.WRX add BYTE PTR [rax],r8b
-   1f017:	05 4e 00 00 03       	add    eax,0x300004e
-   1f01c:	87 f4                	xchg   esp,esi
-   1f01e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f021:	00 00                	add    BYTE PTR [rax],al
-   1f023:	00 c4                	add    ah,al
-   1f025:	35 00 00 3f f0       	xor    eax,0xf03f0000
-   1f02a:	01 00                	add    DWORD PTR [rax],eax
-   1f02c:	01 01                	add    DWORD PTR [rcx],eax
-   1f02e:	55                   	push   rbp
-   1f02f:	09 03                	or     DWORD PTR [rbx],eax
-   1f031:	a1 f6 46 00 00 00 00 	movabs eax,ds:0x1000000000046f6
-   1f038:	00 01 
-   1f03a:	01 54 01 36          	add    DWORD PTR [rcx+rax*1+0x36],edx
-   1f03e:	00 07                	add    BYTE PTR [rdi],al
-   1f040:	ba f4 43 00 00       	mov    edx,0x43f4
-   1f045:	00 00                	add    BYTE PTR [rax],al
-   1f047:	00 f1                	add    cl,dh
-   1f049:	35 00 00 5b f0       	xor    eax,0xf05b0000
-   1f04e:	01 00                	add    DWORD PTR [rax],eax
-   1f050:	01 01                	add    DWORD PTR [rcx],eax
-   1f052:	55                   	push   rbp
-   1f053:	01 31                	add    DWORD PTR [rcx],esi
-   1f055:	01 01                	add    DWORD PTR [rcx],eax
-   1f057:	51                   	push   rcx
-   1f058:	01 30                	add    DWORD PTR [rax],esi
-   1f05a:	00 04 03             	add    BYTE PTR [rbx+rax*1],al
-   1f05d:	f5                   	cmc    
-   1f05e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f061:	00 00                	add    BYTE PTR [rax],al
-   1f063:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f066:	07                   	(bad)  
-   1f067:	00 00                	add    BYTE PTR [rax],al
-   1f069:	06                   	(bad)  
-   1f06a:	81 e7 00 00 d5 f0    	and    edi,0xf0d50000
-   1f070:	01 00                	add    DWORD PTR [rax],eax
-   1f072:	05 3a 7b 00 00       	add    eax,0x7b3a
-   1f077:	05 7e 01 12 b5       	add    eax,0xb512017e
-   1f07c:	2c 00                	sub    al,0x0
-   1f07e:	00 2a                	add    BYTE PTR [rdx],ch
-   1f080:	4e 00 00             	rex.WRX add BYTE PTR [rax],r8b
-   1f083:	24 4e                	and    al,0x4e
-   1f085:	00 00                	add    BYTE PTR [rax],al
-   1f087:	03 39                	add    edi,DWORD PTR [rcx]
-   1f089:	f4                   	hlt    
-   1f08a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f08d:	00 00                	add    BYTE PTR [rax],al
-   1f08f:	00 c4                	add    ah,al
-   1f091:	35 00 00 ab f0       	xor    eax,0xf0ab0000
-   1f096:	01 00                	add    DWORD PTR [rax],eax
-   1f098:	01 01                	add    DWORD PTR [rcx],eax
-   1f09a:	55                   	push   rbp
-   1f09b:	09 03                	or     DWORD PTR [rbx],eax
-   1f09d:	a8 f6                	test   al,0xf6
-   1f09f:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1f0a2:	00 00                	add    BYTE PTR [rax],al
-   1f0a4:	00 01                	add    BYTE PTR [rcx],al
-   1f0a6:	01 54 01 34          	add    DWORD PTR [rcx+rax*1+0x34],edx
-   1f0aa:	00 07                	add    BYTE PTR [rdi],al
-   1f0ac:	6c                   	ins    BYTE PTR es:[rdi],dx
-   1f0ad:	f4                   	hlt    
-   1f0ae:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f0b1:	00 00                	add    BYTE PTR [rax],al
-   1f0b3:	00 f1                	add    cl,dh
-   1f0b5:	35 00 00 c7 f0       	xor    eax,0xf0c70000
-   1f0ba:	01 00                	add    DWORD PTR [rax],eax
-   1f0bc:	01 01                	add    DWORD PTR [rcx],eax
-   1f0be:	55                   	push   rbp
-   1f0bf:	01 31                	add    DWORD PTR [rcx],esi
-   1f0c1:	01 01                	add    DWORD PTR [rcx],eax
-   1f0c3:	51                   	push   rcx
-   1f0c4:	01 30                	add    DWORD PTR [rax],esi
-   1f0c6:	00 04 76             	add    BYTE PTR [rsi+rsi*2],al
-   1f0c9:	f4                   	hlt    
-   1f0ca:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f0cd:	00 00                	add    BYTE PTR [rax],al
-   1f0cf:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f0d2:	07                   	(bad)  
-   1f0d3:	00 00                	add    BYTE PTR [rax],al
-   1f0d5:	06                   	(bad)  
-   1f0d6:	69 e7 00 00 41 f1    	imul   esp,edi,0xf1410000
-   1f0dc:	01 00                	add    DWORD PTR [rax],eax
-   1f0de:	05 42 7b 00 00       	add    eax,0x7b42
-   1f0e3:	05 81 01 12 b5       	add    eax,0xb5120181
-   1f0e8:	2c 00                	sub    al,0x0
-   1f0ea:	00 49 4e             	add    BYTE PTR [rcx+0x4e],cl
-   1f0ed:	00 00                	add    BYTE PTR [rax],al
-   1f0ef:	43                   	rex.XB
-   1f0f0:	4e 00 00             	rex.WRX add BYTE PTR [rax],r8b
-   1f0f3:	03 f5                	add    esi,ebp
-   1f0f5:	f3 43 00 00          	repz rex.XB add BYTE PTR [r8],al
-   1f0f9:	00 00                	add    BYTE PTR [rax],al
-   1f0fb:	00 c4                	add    ah,al
-   1f0fd:	35 00 00 17 f1       	xor    eax,0xf1170000
-   1f102:	01 00                	add    DWORD PTR [rax],eax
-   1f104:	01 01                	add    DWORD PTR [rcx],eax
-   1f106:	55                   	push   rbp
-   1f107:	09 03                	or     DWORD PTR [rbx],eax
-   1f109:	ad                   	lods   eax,DWORD PTR ds:[rsi]
-   1f10a:	f6 46 00 00          	test   BYTE PTR [rsi+0x0],0x0
-   1f10e:	00 00                	add    BYTE PTR [rax],al
-   1f110:	00 01                	add    BYTE PTR [rcx],al
-   1f112:	01 54 01 39          	add    DWORD PTR [rcx+rax*1+0x39],edx
-   1f116:	00 07                	add    BYTE PTR [rdi],al
-   1f118:	28 f4                	sub    ah,dh
-   1f11a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f11d:	00 00                	add    BYTE PTR [rax],al
-   1f11f:	00 f1                	add    cl,dh
-   1f121:	35 00 00 33 f1       	xor    eax,0xf1330000
-   1f126:	01 00                	add    DWORD PTR [rax],eax
-   1f128:	01 01                	add    DWORD PTR [rcx],eax
-   1f12a:	55                   	push   rbp
-   1f12b:	01 31                	add    DWORD PTR [rcx],esi
-   1f12d:	01 01                	add    DWORD PTR [rcx],eax
-   1f12f:	51                   	push   rcx
-   1f130:	01 30                	add    DWORD PTR [rax],esi
-   1f132:	00 04 71             	add    BYTE PTR [rcx+rsi*2],al
-   1f135:	f4                   	hlt    
-   1f136:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f139:	00 00                	add    BYTE PTR [rax],al
-   1f13b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f13e:	07                   	(bad)  
-   1f13f:	00 00                	add    BYTE PTR [rax],al
-   1f141:	06                   	(bad)  
-   1f142:	53                   	push   rbx
-   1f143:	e7 00                	out    0x0,eax
-   1f145:	00 ad f1 01 00 05    	add    BYTE PTR [rbp+0x50001f1],ch
-   1f14b:	4a 7b 00             	rex.WX jnp 1f14e <__abi_tag-0x3e11d2>
-   1f14e:	00 05 82 01 12 b5    	add    BYTE PTR [rip+0xffffffffb5120182],al        # ffffffffb513f2d6 <_end+0xffffffffb4c839be>
-   1f154:	2c 00                	sub    al,0x0
-   1f156:	00 68 4e             	add    BYTE PTR [rax+0x4e],ch
-   1f159:	00 00                	add    BYTE PTR [rax],al
-   1f15b:	62                   	(bad)  
-   1f15c:	4e 00 00             	rex.WRX add BYTE PTR [rax],r8b
-   1f15f:	03 a7 f3 43 00 00    	add    esp,DWORD PTR [rdi+0x43f3]
-   1f165:	00 00                	add    BYTE PTR [rax],al
-   1f167:	00 c4                	add    ah,al
-   1f169:	35 00 00 83 f1       	xor    eax,0xf1830000
-   1f16e:	01 00                	add    DWORD PTR [rax],eax
-   1f170:	01 01                	add    DWORD PTR [rcx],eax
-   1f172:	55                   	push   rbp
-   1f173:	09 03                	or     DWORD PTR [rbx],eax
-   1f175:	b7 f6                	mov    bh,0xf6
-   1f177:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1f17a:	00 00                	add    BYTE PTR [rax],al
-   1f17c:	00 01                	add    BYTE PTR [rcx],al
-   1f17e:	01 54 01 38          	add    DWORD PTR [rcx+rax*1+0x38],edx
-   1f182:	00 07                	add    BYTE PTR [rdi],al
-   1f184:	da f3                	(bad)  
-   1f186:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f189:	00 00                	add    BYTE PTR [rax],al
-   1f18b:	00 f1                	add    cl,dh
-   1f18d:	35 00 00 9f f1       	xor    eax,0xf19f0000
-   1f192:	01 00                	add    DWORD PTR [rax],eax
-   1f194:	01 01                	add    DWORD PTR [rcx],eax
-   1f196:	55                   	push   rbp
-   1f197:	01 31                	add    DWORD PTR [rcx],esi
-   1f199:	01 01                	add    DWORD PTR [rcx],eax
-   1f19b:	51                   	push   rcx
-   1f19c:	01 30                	add    DWORD PTR [rax],esi
-   1f19e:	00 04 e4             	add    BYTE PTR [rsp+riz*8],al
-   1f1a1:	f3 43 00 00          	repz rex.XB add BYTE PTR [r8],al
-   1f1a5:	00 00                	add    BYTE PTR [rax],al
-   1f1a7:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f1aa:	07                   	(bad)  
-   1f1ab:	00 00                	add    BYTE PTR [rax],al
-   1f1ad:	06                   	(bad)  
-   1f1ae:	3b e7                	cmp    esp,edi
-   1f1b0:	00 00                	add    BYTE PTR [rax],al
-   1f1b2:	19 f2                	sbb    edx,esi
-   1f1b4:	01 00                	add    DWORD PTR [rax],eax
-   1f1b6:	05 99 7c 00 00       	add    eax,0x7c99
-   1f1bb:	05 83 01 12 b5       	add    eax,0xb5120183
-   1f1c0:	2c 00                	sub    al,0x0
-   1f1c2:	00 87 4e 00 00 81    	add    BYTE PTR [rdi-0x7effffb2],al
-   1f1c8:	4e 00 00             	rex.WRX add BYTE PTR [rax],r8b
-   1f1cb:	03 63 f3             	add    esp,DWORD PTR [rbx-0xd]
-   1f1ce:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f1d1:	00 00                	add    BYTE PTR [rax],al
-   1f1d3:	00 c4                	add    ah,al
-   1f1d5:	35 00 00 ef f1       	xor    eax,0xf1ef0000
-   1f1da:	01 00                	add    DWORD PTR [rax],eax
-   1f1dc:	01 01                	add    DWORD PTR [rcx],eax
-   1f1de:	55                   	push   rbp
-   1f1df:	09 03                	or     DWORD PTR [rbx],eax
-   1f1e1:	c0 f6 46             	shl    dh,0x46
-   1f1e4:	00 00                	add    BYTE PTR [rax],al
-   1f1e6:	00 00                	add    BYTE PTR [rax],al
-   1f1e8:	00 01                	add    BYTE PTR [rcx],al
-   1f1ea:	01 54 01 37          	add    DWORD PTR [rcx+rax*1+0x37],edx
-   1f1ee:	00 07                	add    BYTE PTR [rdi],al
-   1f1f0:	96                   	xchg   esi,eax
-   1f1f1:	f3 43 00 00          	repz rex.XB add BYTE PTR [r8],al
-   1f1f5:	00 00                	add    BYTE PTR [rax],al
-   1f1f7:	00 f1                	add    cl,dh
-   1f1f9:	35 00 00 0b f2       	xor    eax,0xf20b0000
-   1f1fe:	01 00                	add    DWORD PTR [rax],eax
-   1f200:	01 01                	add    DWORD PTR [rcx],eax
-   1f202:	55                   	push   rbp
-   1f203:	01 31                	add    DWORD PTR [rcx],esi
-   1f205:	01 01                	add    DWORD PTR [rcx],eax
-   1f207:	51                   	push   rcx
-   1f208:	01 30                	add    DWORD PTR [rax],esi
-   1f20a:	00 04 df             	add    BYTE PTR [rdi+rbx*8],al
-   1f20d:	f3 43 00 00          	repz rex.XB add BYTE PTR [r8],al
-   1f211:	00 00                	add    BYTE PTR [rax],al
-   1f213:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f216:	07                   	(bad)  
-   1f217:	00 00                	add    BYTE PTR [rax],al
-   1f219:	06                   	(bad)  
-   1f21a:	25 e7 00 00 85       	and    eax,0x850000e7
-   1f21f:	f2 01 00             	repnz add DWORD PTR [rax],eax
-   1f222:	05 a1 7c 00 00       	add    eax,0x7ca1
-   1f227:	05 84 01 12 b5       	add    eax,0xb5120184
-   1f22c:	2c 00                	sub    al,0x0
-   1f22e:	00 a6 4e 00 00 a0    	add    BYTE PTR [rsi-0x5fffffb2],ah
-   1f234:	4e 00 00             	rex.WRX add BYTE PTR [rax],r8b
-   1f237:	03 15 f3 43 00 00    	add    edx,DWORD PTR [rip+0x43f3]        # 23630 <__abi_tag-0x3dccf0>
-   1f23d:	00 00                	add    BYTE PTR [rax],al
-   1f23f:	00 c4                	add    ah,al
-   1f241:	35 00 00 5b f2       	xor    eax,0xf25b0000
-   1f246:	01 00                	add    DWORD PTR [rax],eax
-   1f248:	01 01                	add    DWORD PTR [rcx],eax
-   1f24a:	55                   	push   rbp
-   1f24b:	09 03                	or     DWORD PTR [rbx],eax
-   1f24d:	c8 f6 46 00          	enter  0x46f6,0x0
-   1f251:	00 00                	add    BYTE PTR [rax],al
-   1f253:	00 00                	add    BYTE PTR [rax],al
-   1f255:	01 01                	add    DWORD PTR [rcx],eax
-   1f257:	54                   	push   rsp
-   1f258:	01 33                	add    DWORD PTR [rbx],esi
-   1f25a:	00 07                	add    BYTE PTR [rdi],al
-   1f25c:	48                   	rex.W
-   1f25d:	f3 43 00 00          	repz rex.XB add BYTE PTR [r8],al
-   1f261:	00 00                	add    BYTE PTR [rax],al
-   1f263:	00 f1                	add    cl,dh
-   1f265:	35 00 00 77 f2       	xor    eax,0xf2770000
-   1f26a:	01 00                	add    DWORD PTR [rax],eax
-   1f26c:	01 01                	add    DWORD PTR [rcx],eax
-   1f26e:	55                   	push   rbp
-   1f26f:	01 31                	add    DWORD PTR [rcx],esi
-   1f271:	01 01                	add    DWORD PTR [rcx],eax
-   1f273:	51                   	push   rcx
-   1f274:	01 30                	add    DWORD PTR [rax],esi
-   1f276:	00 04 52             	add    BYTE PTR [rdx+rdx*2],al
-   1f279:	f3 43 00 00          	repz rex.XB add BYTE PTR [r8],al
-   1f27d:	00 00                	add    BYTE PTR [rax],al
-   1f27f:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f282:	07                   	(bad)  
-   1f283:	00 00                	add    BYTE PTR [rax],al
-   1f285:	06                   	(bad)  
-   1f286:	0d e7 00 00 f1       	or     eax,0xf10000e7
-   1f28b:	f2 01 00             	repnz add DWORD PTR [rax],eax
-   1f28e:	05 a9 7c 00 00       	add    eax,0x7ca9
-   1f293:	05 87 01 12 b5       	add    eax,0xb5120187
-   1f298:	2c 00                	sub    al,0x0
-   1f29a:	00 c5                	add    ch,al
-   1f29c:	4e 00 00             	rex.WRX add BYTE PTR [rax],r8b
-   1f29f:	bf 4e 00 00 03       	mov    edi,0x300004e
-   1f2a4:	d1 f2                	shl    edx,1
-   1f2a6:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f2a9:	00 00                	add    BYTE PTR [rax],al
-   1f2ab:	00 c4                	add    ah,al
-   1f2ad:	35 00 00 c7 f2       	xor    eax,0xf2c70000
-   1f2b2:	01 00                	add    DWORD PTR [rax],eax
-   1f2b4:	01 01                	add    DWORD PTR [rcx],eax
-   1f2b6:	55                   	push   rbp
-   1f2b7:	09 03                	or     DWORD PTR [rbx],eax
-   1f2b9:	cc                   	int3   
-   1f2ba:	f6 46 00 00          	test   BYTE PTR [rsi+0x0],0x0
-   1f2be:	00 00                	add    BYTE PTR [rax],al
-   1f2c0:	00 01                	add    BYTE PTR [rcx],al
-   1f2c2:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   1f2c6:	00 07                	add    BYTE PTR [rdi],al
-   1f2c8:	04 f3                	add    al,0xf3
-   1f2ca:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f2cd:	00 00                	add    BYTE PTR [rax],al
-   1f2cf:	00 f1                	add    cl,dh
-   1f2d1:	35 00 00 e3 f2       	xor    eax,0xf2e30000
-   1f2d6:	01 00                	add    DWORD PTR [rax],eax
-   1f2d8:	01 01                	add    DWORD PTR [rcx],eax
-   1f2da:	55                   	push   rbp
-   1f2db:	01 31                	add    DWORD PTR [rcx],esi
-   1f2dd:	01 01                	add    DWORD PTR [rcx],eax
-   1f2df:	51                   	push   rcx
-   1f2e0:	01 30                	add    DWORD PTR [rax],esi
-   1f2e2:	00 04 4d f3 43 00 00 	add    BYTE PTR [rcx*2+0x43f3],al
-   1f2e9:	00 00                	add    BYTE PTR [rax],al
-   1f2eb:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f2ee:	07                   	(bad)  
-   1f2ef:	00 00                	add    BYTE PTR [rax],al
-   1f2f1:	06                   	(bad)  
-   1f2f2:	f7 e6                	mul    esi
-   1f2f4:	00 00                	add    BYTE PTR [rax],al
-   1f2f6:	5d                   	pop    rbp
-   1f2f7:	f3 01 00             	repz add DWORD PTR [rax],eax
-   1f2fa:	05 b1 7c 00 00       	add    eax,0x7cb1
-   1f2ff:	05 88 01 12 b5       	add    eax,0xb5120188
-   1f304:	2c 00                	sub    al,0x0
-   1f306:	00 e4                	add    ah,ah
-   1f308:	4e 00 00             	rex.WRX add BYTE PTR [rax],r8b
-   1f30b:	de 4e 00             	fimul  WORD PTR [rsi+0x0]
-   1f30e:	00 03                	add    BYTE PTR [rbx],al
-   1f310:	83 f2 43             	xor    edx,0x43
-   1f313:	00 00                	add    BYTE PTR [rax],al
-   1f315:	00 00                	add    BYTE PTR [rax],al
-   1f317:	00 c4                	add    ah,al
-   1f319:	35 00 00 33 f3       	xor    eax,0xf3330000
-   1f31e:	01 00                	add    DWORD PTR [rax],eax
-   1f320:	01 01                	add    DWORD PTR [rcx],eax
-   1f322:	55                   	push   rbp
-   1f323:	09 03                	or     DWORD PTR [rbx],eax
-   1f325:	85 67 47             	test   DWORD PTR [rdi+0x47],esp
-   1f328:	00 00                	add    BYTE PTR [rax],al
-   1f32a:	00 00                	add    BYTE PTR [rax],al
-   1f32c:	00 01                	add    BYTE PTR [rcx],al
-   1f32e:	01 54 01 31          	add    DWORD PTR [rcx+rax*1+0x31],edx
-   1f332:	00 07                	add    BYTE PTR [rdi],al
-   1f334:	b6 f2                	mov    dh,0xf2
-   1f336:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f339:	00 00                	add    BYTE PTR [rax],al
-   1f33b:	00 f1                	add    cl,dh
-   1f33d:	35 00 00 4f f3       	xor    eax,0xf34f0000
-   1f342:	01 00                	add    DWORD PTR [rax],eax
-   1f344:	01 01                	add    DWORD PTR [rcx],eax
-   1f346:	55                   	push   rbp
-   1f347:	01 31                	add    DWORD PTR [rcx],esi
-   1f349:	01 01                	add    DWORD PTR [rcx],eax
-   1f34b:	51                   	push   rcx
-   1f34c:	01 30                	add    DWORD PTR [rax],esi
-   1f34e:	00 04 c0             	add    BYTE PTR [rax+rax*8],al
-   1f351:	f2 43 00 00          	repnz rex.XB add BYTE PTR [r8],al
-   1f355:	00 00                	add    BYTE PTR [rax],al
-   1f357:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f35a:	07                   	(bad)  
-   1f35b:	00 00                	add    BYTE PTR [rax],al
-   1f35d:	06                   	(bad)  
-   1f35e:	df e6                	(bad)  
-   1f360:	00 00                	add    BYTE PTR [rax],al
-   1f362:	c9                   	leave  
-   1f363:	f3 01 00             	repz add DWORD PTR [rax],eax
-   1f366:	05 b9 7c 00 00       	add    eax,0x7cb9
-   1f36b:	05 89 01 12 b5       	add    eax,0xb5120189
-   1f370:	2c 00                	sub    al,0x0
-   1f372:	00 03                	add    BYTE PTR [rbx],al
-   1f374:	4f 00 00             	rex.WRXB add BYTE PTR [r8],r8b
-   1f377:	fd                   	std    
-   1f378:	4e 00 00             	rex.WRX add BYTE PTR [rax],r8b
-   1f37b:	03 3f                	add    edi,DWORD PTR [rdi]
-   1f37d:	f2 43 00 00          	repnz rex.XB add BYTE PTR [r8],al
-   1f381:	00 00                	add    BYTE PTR [rax],al
-   1f383:	00 c4                	add    ah,al
-   1f385:	35 00 00 9f f3       	xor    eax,0xf39f0000
-   1f38a:	01 00                	add    DWORD PTR [rax],eax
-   1f38c:	01 01                	add    DWORD PTR [rcx],eax
-   1f38e:	55                   	push   rbp
-   1f38f:	09 03                	or     DWORD PTR [rbx],eax
-   1f391:	d2 f6                	shl    dh,cl
-   1f393:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1f396:	00 00                	add    BYTE PTR [rax],al
-   1f398:	00 01                	add    BYTE PTR [rcx],al
-   1f39a:	01 54 01 3a          	add    DWORD PTR [rcx+rax*1+0x3a],edx
-   1f39e:	00 07                	add    BYTE PTR [rdi],al
-   1f3a0:	72 f2                	jb     1f394 <__abi_tag-0x3e0f8c>
-   1f3a2:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f3a5:	00 00                	add    BYTE PTR [rax],al
-   1f3a7:	00 f1                	add    cl,dh
-   1f3a9:	35 00 00 bb f3       	xor    eax,0xf3bb0000
-   1f3ae:	01 00                	add    DWORD PTR [rax],eax
-   1f3b0:	01 01                	add    DWORD PTR [rcx],eax
-   1f3b2:	55                   	push   rbp
-   1f3b3:	01 31                	add    DWORD PTR [rcx],esi
-   1f3b5:	01 01                	add    DWORD PTR [rcx],eax
-   1f3b7:	51                   	push   rcx
-   1f3b8:	01 30                	add    DWORD PTR [rax],esi
-   1f3ba:	00 04 bb             	add    BYTE PTR [rbx+rdi*4],al
-   1f3bd:	f2 43 00 00          	repnz rex.XB add BYTE PTR [r8],al
-   1f3c1:	00 00                	add    BYTE PTR [rax],al
-   1f3c3:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f3c6:	07                   	(bad)  
-   1f3c7:	00 00                	add    BYTE PTR [rax],al
-   1f3c9:	06                   	(bad)  
-   1f3ca:	c9                   	leave  
-   1f3cb:	e6 00                	out    0x0,al
-   1f3cd:	00 35 f4 01 00 05    	add    BYTE PTR [rip+0x50001f4],dh        # 501f5c7 <_end+0x4b63caf>
-   1f3d3:	c1 7c 00 00 05       	sar    DWORD PTR [rax+rax*1+0x0],0x5
-   1f3d8:	8a 01                	mov    al,BYTE PTR [rcx]
-   1f3da:	12 b5 2c 00 00 22    	adc    dh,BYTE PTR [rbp+0x2200002c]
-   1f3e0:	4f 00 00             	rex.WRXB add BYTE PTR [r8],r8b
-   1f3e3:	1c 4f                	sbb    al,0x4f
-   1f3e5:	00 00                	add    BYTE PTR [rax],al
-   1f3e7:	03 f1                	add    esi,ecx
-   1f3e9:	f1                   	icebp  
-   1f3ea:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f3ed:	00 00                	add    BYTE PTR [rax],al
-   1f3ef:	00 c4                	add    ah,al
-   1f3f1:	35 00 00 0b f4       	xor    eax,0xf40b0000
-   1f3f6:	01 00                	add    DWORD PTR [rax],eax
-   1f3f8:	01 01                	add    DWORD PTR [rcx],eax
-   1f3fa:	55                   	push   rbp
-   1f3fb:	09 03                	or     DWORD PTR [rbx],eax
-   1f3fd:	dd f6                	(bad)  
-   1f3ff:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1f402:	00 00                	add    BYTE PTR [rax],al
-   1f404:	00 01                	add    BYTE PTR [rcx],al
-   1f406:	01 54 01 3a          	add    DWORD PTR [rcx+rax*1+0x3a],edx
-   1f40a:	00 07                	add    BYTE PTR [rdi],al
-   1f40c:	24 f2                	and    al,0xf2
-   1f40e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f411:	00 00                	add    BYTE PTR [rax],al
-   1f413:	00 f1                	add    cl,dh
-   1f415:	35 00 00 27 f4       	xor    eax,0xf4270000
-   1f41a:	01 00                	add    DWORD PTR [rax],eax
-   1f41c:	01 01                	add    DWORD PTR [rcx],eax
-   1f41e:	55                   	push   rbp
-   1f41f:	01 31                	add    DWORD PTR [rcx],esi
-   1f421:	01 01                	add    DWORD PTR [rcx],eax
-   1f423:	51                   	push   rcx
-   1f424:	01 30                	add    DWORD PTR [rax],esi
-   1f426:	00 04 2e             	add    BYTE PTR [rsi+rbp*1],al
-   1f429:	f2 43 00 00          	repnz rex.XB add BYTE PTR [r8],al
-   1f42d:	00 00                	add    BYTE PTR [rax],al
-   1f42f:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f432:	07                   	(bad)  
-   1f433:	00 00                	add    BYTE PTR [rax],al
-   1f435:	06                   	(bad)  
-   1f436:	b1 e6                	mov    cl,0xe6
-   1f438:	00 00                	add    BYTE PTR [rax],al
-   1f43a:	a1 f4 01 00 05 c9 7c 	movabs eax,ds:0x7cc9050001f4
-   1f441:	00 00 
-   1f443:	05 8d 01 12 b5       	add    eax,0xb512018d
-   1f448:	2c 00                	sub    al,0x0
-   1f44a:	00 41 4f             	add    BYTE PTR [rcx+0x4f],al
-   1f44d:	00 00                	add    BYTE PTR [rax],al
-   1f44f:	3b 4f 00             	cmp    ecx,DWORD PTR [rdi+0x0]
-   1f452:	00 03                	add    BYTE PTR [rbx],al
-   1f454:	ad                   	lods   eax,DWORD PTR ds:[rsi]
-   1f455:	f1                   	icebp  
-   1f456:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f459:	00 00                	add    BYTE PTR [rax],al
-   1f45b:	00 c4                	add    ah,al
-   1f45d:	35 00 00 77 f4       	xor    eax,0xf4770000
-   1f462:	01 00                	add    DWORD PTR [rax],eax
-   1f464:	01 01                	add    DWORD PTR [rcx],eax
-   1f466:	55                   	push   rbp
-   1f467:	09 03                	or     DWORD PTR [rbx],eax
-   1f469:	e8 f6 46 00 00       	call   23b64 <__abi_tag-0x3dc7bc>
-   1f46e:	00 00                	add    BYTE PTR [rax],al
-   1f470:	00 01                	add    BYTE PTR [rcx],al
-   1f472:	01 54 01 39          	add    DWORD PTR [rcx+rax*1+0x39],edx
-   1f476:	00 07                	add    BYTE PTR [rdi],al
-   1f478:	e0 f1                	loopne 1f46b <__abi_tag-0x3e0eb5>
-   1f47a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f47d:	00 00                	add    BYTE PTR [rax],al
-   1f47f:	00 f1                	add    cl,dh
-   1f481:	35 00 00 93 f4       	xor    eax,0xf4930000
-   1f486:	01 00                	add    DWORD PTR [rax],eax
-   1f488:	01 01                	add    DWORD PTR [rcx],eax
-   1f48a:	55                   	push   rbp
-   1f48b:	01 31                	add    DWORD PTR [rcx],esi
-   1f48d:	01 01                	add    DWORD PTR [rcx],eax
-   1f48f:	51                   	push   rcx
-   1f490:	01 30                	add    DWORD PTR [rax],esi
-   1f492:	00 04 29             	add    BYTE PTR [rcx+rbp*1],al
-   1f495:	f2 43 00 00          	repnz rex.XB add BYTE PTR [r8],al
-   1f499:	00 00                	add    BYTE PTR [rax],al
-   1f49b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f49e:	07                   	(bad)  
-   1f49f:	00 00                	add    BYTE PTR [rax],al
-   1f4a1:	06                   	(bad)  
-   1f4a2:	9b                   	fwait
-   1f4a3:	e6 00                	out    0x0,al
-   1f4a5:	00 0d f5 01 00 05    	add    BYTE PTR [rip+0x50001f5],cl        # 501f6a0 <_end+0x4b63d88>
-   1f4ab:	d1 7c 00 00          	sar    DWORD PTR [rax+rax*1+0x0],1
-   1f4af:	05 8e 01 12 b5       	add    eax,0xb512018e
-   1f4b4:	2c 00                	sub    al,0x0
-   1f4b6:	00 60 4f             	add    BYTE PTR [rax+0x4f],ah
-   1f4b9:	00 00                	add    BYTE PTR [rax],al
-   1f4bb:	5a                   	pop    rdx
-   1f4bc:	4f 00 00             	rex.WRXB add BYTE PTR [r8],r8b
-   1f4bf:	03 5f f1             	add    ebx,DWORD PTR [rdi-0xf]
-   1f4c2:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f4c5:	00 00                	add    BYTE PTR [rax],al
-   1f4c7:	00 c4                	add    ah,al
-   1f4c9:	35 00 00 e3 f4       	xor    eax,0xf4e30000
-   1f4ce:	01 00                	add    DWORD PTR [rax],eax
-   1f4d0:	01 01                	add    DWORD PTR [rcx],eax
-   1f4d2:	55                   	push   rbp
-   1f4d3:	09 03                	or     DWORD PTR [rbx],eax
-   1f4d5:	f2 f6 46 00 00       	repnz test BYTE PTR [rsi+0x0],0x0
-   1f4da:	00 00                	add    BYTE PTR [rax],al
-   1f4dc:	00 01                	add    BYTE PTR [rcx],al
-   1f4de:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   1f4e2:	00 07                	add    BYTE PTR [rdi],al
-   1f4e4:	92                   	xchg   edx,eax
-   1f4e5:	f1                   	icebp  
-   1f4e6:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f4e9:	00 00                	add    BYTE PTR [rax],al
-   1f4eb:	00 f1                	add    cl,dh
-   1f4ed:	35 00 00 ff f4       	xor    eax,0xf4ff0000
-   1f4f2:	01 00                	add    DWORD PTR [rax],eax
-   1f4f4:	01 01                	add    DWORD PTR [rcx],eax
-   1f4f6:	55                   	push   rbp
-   1f4f7:	01 31                	add    DWORD PTR [rcx],esi
-   1f4f9:	01 01                	add    DWORD PTR [rcx],eax
-   1f4fb:	51                   	push   rcx
-   1f4fc:	01 30                	add    DWORD PTR [rax],esi
-   1f4fe:	00 04 9c             	add    BYTE PTR [rsp+rbx*4],al
-   1f501:	f1                   	icebp  
-   1f502:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f505:	00 00                	add    BYTE PTR [rax],al
-   1f507:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f50a:	07                   	(bad)  
-   1f50b:	00 00                	add    BYTE PTR [rax],al
-   1f50d:	06                   	(bad)  
-   1f50e:	83 e6 00             	and    esi,0x0
-   1f511:	00 79 f5             	add    BYTE PTR [rcx-0xb],bh
-   1f514:	01 00                	add    DWORD PTR [rax],eax
-   1f516:	05 d9 7c 00 00       	add    eax,0x7cd9
-   1f51b:	05 90 01 12 b5       	add    eax,0xb5120190
-   1f520:	2c 00                	sub    al,0x0
-   1f522:	00 7f 4f             	add    BYTE PTR [rdi+0x4f],bh
-   1f525:	00 00                	add    BYTE PTR [rax],al
-   1f527:	79 4f                	jns    1f578 <__abi_tag-0x3e0da8>
-   1f529:	00 00                	add    BYTE PTR [rax],al
-   1f52b:	03 1b                	add    ebx,DWORD PTR [rbx]
-   1f52d:	f1                   	icebp  
-   1f52e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f531:	00 00                	add    BYTE PTR [rax],al
-   1f533:	00 c4                	add    ah,al
-   1f535:	35 00 00 4f f5       	xor    eax,0xf54f0000
-   1f53a:	01 00                	add    DWORD PTR [rax],eax
-   1f53c:	01 01                	add    DWORD PTR [rcx],eax
-   1f53e:	55                   	push   rbp
-   1f53f:	09 03                	or     DWORD PTR [rbx],eax
-   1f541:	f8                   	clc    
-   1f542:	f6 46 00 00          	test   BYTE PTR [rsi+0x0],0x0
-   1f546:	00 00                	add    BYTE PTR [rax],al
-   1f548:	00 01                	add    BYTE PTR [rcx],al
-   1f54a:	01 54 01 34          	add    DWORD PTR [rcx+rax*1+0x34],edx
-   1f54e:	00 07                	add    BYTE PTR [rdi],al
-   1f550:	4e f1                	rex.WRX icebp 
-   1f552:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f555:	00 00                	add    BYTE PTR [rax],al
-   1f557:	00 f1                	add    cl,dh
-   1f559:	35 00 00 6b f5       	xor    eax,0xf56b0000
-   1f55e:	01 00                	add    DWORD PTR [rax],eax
-   1f560:	01 01                	add    DWORD PTR [rcx],eax
-   1f562:	55                   	push   rbp
-   1f563:	01 31                	add    DWORD PTR [rcx],esi
-   1f565:	01 01                	add    DWORD PTR [rcx],eax
-   1f567:	51                   	push   rcx
-   1f568:	01 30                	add    DWORD PTR [rax],esi
-   1f56a:	00 04 97             	add    BYTE PTR [rdi+rdx*4],al
-   1f56d:	f1                   	icebp  
-   1f56e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f571:	00 00                	add    BYTE PTR [rax],al
-   1f573:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f576:	07                   	(bad)  
-   1f577:	00 00                	add    BYTE PTR [rax],al
-   1f579:	06                   	(bad)  
-   1f57a:	6d                   	ins    DWORD PTR es:[rdi],dx
-   1f57b:	e6 00                	out    0x0,al
-   1f57d:	00 e5                	add    ch,ah
-   1f57f:	f5                   	cmc    
-   1f580:	01 00                	add    DWORD PTR [rax],eax
-   1f582:	05 e1 7c 00 00       	add    eax,0x7ce1
-   1f587:	05 91 01 12 b5       	add    eax,0xb5120191
-   1f58c:	2c 00                	sub    al,0x0
-   1f58e:	00 9e 4f 00 00 98    	add    BYTE PTR [rsi-0x67ffffb1],bl
-   1f594:	4f 00 00             	rex.WRXB add BYTE PTR [r8],r8b
-   1f597:	03 cd                	add    ecx,ebp
-   1f599:	f0 43 00 00          	lock rex.XB add BYTE PTR [r8],al
-   1f59d:	00 00                	add    BYTE PTR [rax],al
-   1f59f:	00 c4                	add    ah,al
-   1f5a1:	35 00 00 bb f5       	xor    eax,0xf5bb0000
-   1f5a6:	01 00                	add    DWORD PTR [rax],eax
-   1f5a8:	01 01                	add    DWORD PTR [rcx],eax
-   1f5aa:	55                   	push   rbp
-   1f5ab:	09 03                	or     DWORD PTR [rbx],eax
-   1f5ad:	fd                   	std    
-   1f5ae:	f6 46 00 00          	test   BYTE PTR [rsi+0x0],0x0
-   1f5b2:	00 00                	add    BYTE PTR [rax],al
-   1f5b4:	00 01                	add    BYTE PTR [rcx],al
-   1f5b6:	01 54 01 36          	add    DWORD PTR [rcx+rax*1+0x36],edx
-   1f5ba:	00 07                	add    BYTE PTR [rdi],al
-   1f5bc:	00 f1                	add    cl,dh
-   1f5be:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f5c1:	00 00                	add    BYTE PTR [rax],al
-   1f5c3:	00 f1                	add    cl,dh
-   1f5c5:	35 00 00 d7 f5       	xor    eax,0xf5d70000
-   1f5ca:	01 00                	add    DWORD PTR [rax],eax
-   1f5cc:	01 01                	add    DWORD PTR [rcx],eax
-   1f5ce:	55                   	push   rbp
-   1f5cf:	01 31                	add    DWORD PTR [rcx],esi
-   1f5d1:	01 01                	add    DWORD PTR [rcx],eax
-   1f5d3:	51                   	push   rcx
-   1f5d4:	01 30                	add    DWORD PTR [rax],esi
-   1f5d6:	00 04 0a             	add    BYTE PTR [rdx+rcx*1],al
-   1f5d9:	f1                   	icebp  
-   1f5da:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f5dd:	00 00                	add    BYTE PTR [rax],al
-   1f5df:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f5e2:	07                   	(bad)  
-   1f5e3:	00 00                	add    BYTE PTR [rax],al
-   1f5e5:	06                   	(bad)  
-   1f5e6:	55                   	push   rbp
-   1f5e7:	e6 00                	out    0x0,al
-   1f5e9:	00 51 f6             	add    BYTE PTR [rcx-0xa],dl
-   1f5ec:	01 00                	add    DWORD PTR [rax],eax
-   1f5ee:	05 9a 44 01 00       	add    eax,0x1449a
-   1f5f3:	05 93 01 12 b5       	add    eax,0xb5120193
-   1f5f8:	2c 00                	sub    al,0x0
-   1f5fa:	00 bd 4f 00 00 b7    	add    BYTE PTR [rbp-0x48ffffb1],bh
-   1f600:	4f 00 00             	rex.WRXB add BYTE PTR [r8],r8b
-   1f603:	03 89 f0 43 00 00    	add    ecx,DWORD PTR [rcx+0x43f0]
-   1f609:	00 00                	add    BYTE PTR [rax],al
-   1f60b:	00 c4                	add    ah,al
-   1f60d:	35 00 00 27 f6       	xor    eax,0xf6270000
-   1f612:	01 00                	add    DWORD PTR [rax],eax
-   1f614:	01 01                	add    DWORD PTR [rcx],eax
-   1f616:	55                   	push   rbp
-   1f617:	09 03                	or     DWORD PTR [rbx],eax
-   1f619:	04 f7                	add    al,0xf7
-   1f61b:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1f61e:	00 00                	add    BYTE PTR [rax],al
-   1f620:	00 01                	add    BYTE PTR [rcx],al
-   1f622:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   1f626:	00 07                	add    BYTE PTR [rdi],al
-   1f628:	bc f0 43 00 00       	mov    esp,0x43f0
-   1f62d:	00 00                	add    BYTE PTR [rax],al
-   1f62f:	00 f1                	add    cl,dh
-   1f631:	35 00 00 43 f6       	xor    eax,0xf6430000
-   1f636:	01 00                	add    DWORD PTR [rax],eax
-   1f638:	01 01                	add    DWORD PTR [rcx],eax
-   1f63a:	55                   	push   rbp
-   1f63b:	01 31                	add    DWORD PTR [rcx],esi
-   1f63d:	01 01                	add    DWORD PTR [rcx],eax
-   1f63f:	51                   	push   rcx
-   1f640:	01 30                	add    DWORD PTR [rax],esi
-   1f642:	00 04 05 f1 43 00 00 	add    BYTE PTR [rax*1+0x43f1],al
-   1f649:	00 00                	add    BYTE PTR [rax],al
-   1f64b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f64e:	07                   	(bad)  
-   1f64f:	00 00                	add    BYTE PTR [rax],al
-   1f651:	06                   	(bad)  
-   1f652:	3f                   	(bad)  
-   1f653:	e6 00                	out    0x0,al
-   1f655:	00 bd f6 01 00 05    	add    BYTE PTR [rbp+0x50001f6],bh
-   1f65b:	1e                   	(bad)  
-   1f65c:	7e 00                	jle    1f65e <__abi_tag-0x3e0cc2>
-   1f65e:	00 05 94 01 12 b5    	add    BYTE PTR [rip+0xffffffffb5120194],al        # ffffffffb513f7f8 <_end+0xffffffffb4c83ee0>
-   1f664:	2c 00                	sub    al,0x0
-   1f666:	00 dc                	add    ah,bl
-   1f668:	4f 00 00             	rex.WRXB add BYTE PTR [r8],r8b
-   1f66b:	d6                   	(bad)  
-   1f66c:	4f 00 00             	rex.WRXB add BYTE PTR [r8],r8b
-   1f66f:	03 3b                	add    edi,DWORD PTR [rbx]
-   1f671:	f0 43 00 00          	lock rex.XB add BYTE PTR [r8],al
-   1f675:	00 00                	add    BYTE PTR [rax],al
-   1f677:	00 c4                	add    ah,al
-   1f679:	35 00 00 93 f6       	xor    eax,0xf6930000
-   1f67e:	01 00                	add    DWORD PTR [rax],eax
-   1f680:	01 01                	add    DWORD PTR [rcx],eax
-   1f682:	55                   	push   rbp
-   1f683:	09 03                	or     DWORD PTR [rbx],eax
-   1f685:	0a f7                	or     dh,bh
-   1f687:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1f68a:	00 00                	add    BYTE PTR [rax],al
-   1f68c:	00 01                	add    BYTE PTR [rcx],al
-   1f68e:	01 54 01 39          	add    DWORD PTR [rcx+rax*1+0x39],edx
-   1f692:	00 07                	add    BYTE PTR [rdi],al
-   1f694:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-   1f695:	f0 43 00 00          	lock rex.XB add BYTE PTR [r8],al
-   1f699:	00 00                	add    BYTE PTR [rax],al
-   1f69b:	00 f1                	add    cl,dh
-   1f69d:	35 00 00 af f6       	xor    eax,0xf6af0000
-   1f6a2:	01 00                	add    DWORD PTR [rax],eax
-   1f6a4:	01 01                	add    DWORD PTR [rcx],eax
-   1f6a6:	55                   	push   rbp
-   1f6a7:	01 31                	add    DWORD PTR [rcx],esi
-   1f6a9:	01 01                	add    DWORD PTR [rcx],eax
-   1f6ab:	51                   	push   rcx
-   1f6ac:	01 30                	add    DWORD PTR [rax],esi
-   1f6ae:	00 04 78             	add    BYTE PTR [rax+rdi*2],al
-   1f6b1:	f0 43 00 00          	lock rex.XB add BYTE PTR [r8],al
-   1f6b5:	00 00                	add    BYTE PTR [rax],al
-   1f6b7:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f6ba:	07                   	(bad)  
-   1f6bb:	00 00                	add    BYTE PTR [rax],al
-   1f6bd:	06                   	(bad)  
-   1f6be:	27                   	(bad)  
-   1f6bf:	e6 00                	out    0x0,al
-   1f6c1:	00 29                	add    BYTE PTR [rcx],ch
-   1f6c3:	f7 01 00 05 26 7e    	test   DWORD PTR [rcx],0x7e260500
-   1f6c9:	00 00                	add    BYTE PTR [rax],al
-   1f6cb:	05 95 01 12 b5       	add    eax,0xb5120195
-   1f6d0:	2c 00                	sub    al,0x0
-   1f6d2:	00 fb                	add    bl,bh
-   1f6d4:	4f 00 00             	rex.WRXB add BYTE PTR [r8],r8b
-   1f6d7:	f5                   	cmc    
-   1f6d8:	4f 00 00             	rex.WRXB add BYTE PTR [r8],r8b
-   1f6db:	03 f7                	add    esi,edi
-   1f6dd:	ef                   	out    dx,eax
-   1f6de:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f6e1:	00 00                	add    BYTE PTR [rax],al
-   1f6e3:	00 c4                	add    ah,al
-   1f6e5:	35 00 00 ff f6       	xor    eax,0xf6ff0000
-   1f6ea:	01 00                	add    DWORD PTR [rax],eax
-   1f6ec:	01 01                	add    DWORD PTR [rcx],eax
-   1f6ee:	55                   	push   rbp
-   1f6ef:	09 03                	or     DWORD PTR [rbx],eax
-   1f6f1:	14 f7                	adc    al,0xf7
-   1f6f3:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1f6f6:	00 00                	add    BYTE PTR [rax],al
-   1f6f8:	00 01                	add    BYTE PTR [rcx],al
-   1f6fa:	01 54 01 37          	add    DWORD PTR [rcx+rax*1+0x37],edx
-   1f6fe:	00 07                	add    BYTE PTR [rdi],al
-   1f700:	2a f0                	sub    dh,al
-   1f702:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f705:	00 00                	add    BYTE PTR [rax],al
-   1f707:	00 f1                	add    cl,dh
-   1f709:	35 00 00 1b f7       	xor    eax,0xf71b0000
-   1f70e:	01 00                	add    DWORD PTR [rax],eax
-   1f710:	01 01                	add    DWORD PTR [rcx],eax
-   1f712:	55                   	push   rbp
-   1f713:	01 31                	add    DWORD PTR [rcx],esi
-   1f715:	01 01                	add    DWORD PTR [rcx],eax
-   1f717:	51                   	push   rcx
-   1f718:	01 30                	add    DWORD PTR [rax],esi
-   1f71a:	00 04 73             	add    BYTE PTR [rbx+rsi*2],al
-   1f71d:	f0 43 00 00          	lock rex.XB add BYTE PTR [r8],al
-   1f721:	00 00                	add    BYTE PTR [rax],al
-   1f723:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f726:	07                   	(bad)  
-   1f727:	00 00                	add    BYTE PTR [rax],al
-   1f729:	06                   	(bad)  
-   1f72a:	11 e6                	adc    esi,esp
-   1f72c:	00 00                	add    BYTE PTR [rax],al
-   1f72e:	95                   	xchg   ebp,eax
-   1f72f:	f7 01 00 05 2e 7e    	test   DWORD PTR [rcx],0x7e2e0500
-   1f735:	00 00                	add    BYTE PTR [rax],al
-   1f737:	05 96 01 12 b5       	add    eax,0xb5120196
-   1f73c:	2c 00                	sub    al,0x0
-   1f73e:	00 1a                	add    BYTE PTR [rdx],bl
-   1f740:	50                   	push   rax
-   1f741:	00 00                	add    BYTE PTR [rax],al
-   1f743:	14 50                	adc    al,0x50
-   1f745:	00 00                	add    BYTE PTR [rax],al
-   1f747:	03 a9 ef 43 00 00    	add    ebp,DWORD PTR [rcx+0x43ef]
-   1f74d:	00 00                	add    BYTE PTR [rax],al
-   1f74f:	00 c4                	add    ah,al
-   1f751:	35 00 00 6b f7       	xor    eax,0xf76b0000
-   1f756:	01 00                	add    DWORD PTR [rax],eax
-   1f758:	01 01                	add    DWORD PTR [rcx],eax
-   1f75a:	55                   	push   rbp
-   1f75b:	09 03                	or     DWORD PTR [rbx],eax
-   1f75d:	1c f7                	sbb    al,0xf7
-   1f75f:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1f762:	00 00                	add    BYTE PTR [rax],al
-   1f764:	00 01                	add    BYTE PTR [rcx],al
-   1f766:	01 54 01 3d          	add    DWORD PTR [rcx+rax*1+0x3d],edx
-   1f76a:	00 07                	add    BYTE PTR [rdi],al
-   1f76c:	dc ef                	fsub   st(7),st
-   1f76e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f771:	00 00                	add    BYTE PTR [rax],al
-   1f773:	00 f1                	add    cl,dh
-   1f775:	35 00 00 87 f7       	xor    eax,0xf7870000
-   1f77a:	01 00                	add    DWORD PTR [rax],eax
-   1f77c:	01 01                	add    DWORD PTR [rcx],eax
-   1f77e:	55                   	push   rbp
-   1f77f:	01 31                	add    DWORD PTR [rcx],esi
-   1f781:	01 01                	add    DWORD PTR [rcx],eax
-   1f783:	51                   	push   rcx
-   1f784:	01 30                	add    DWORD PTR [rax],esi
-   1f786:	00 04 e6             	add    BYTE PTR [rsi+riz*8],al
-   1f789:	ef                   	out    dx,eax
-   1f78a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f78d:	00 00                	add    BYTE PTR [rax],al
-   1f78f:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f792:	07                   	(bad)  
-   1f793:	00 00                	add    BYTE PTR [rax],al
-   1f795:	06                   	(bad)  
-   1f796:	f9                   	stc    
-   1f797:	e5 00                	in     eax,0x0
-   1f799:	00 01                	add    BYTE PTR [rcx],al
-   1f79b:	f8                   	clc    
-   1f79c:	01 00                	add    DWORD PTR [rax],eax
-   1f79e:	05 36 7e 00 00       	add    eax,0x7e36
-   1f7a3:	05 97 01 12 b5       	add    eax,0xb5120197
-   1f7a8:	2c 00                	sub    al,0x0
-   1f7aa:	00 39                	add    BYTE PTR [rcx],bh
-   1f7ac:	50                   	push   rax
-   1f7ad:	00 00                	add    BYTE PTR [rax],al
-   1f7af:	33 50 00             	xor    edx,DWORD PTR [rax+0x0]
-   1f7b2:	00 03                	add    BYTE PTR [rbx],al
-   1f7b4:	65 ef                	gs out dx,eax
-   1f7b6:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f7b9:	00 00                	add    BYTE PTR [rax],al
-   1f7bb:	00 c4                	add    ah,al
-   1f7bd:	35 00 00 d7 f7       	xor    eax,0xf7d70000
-   1f7c2:	01 00                	add    DWORD PTR [rax],eax
-   1f7c4:	01 01                	add    DWORD PTR [rcx],eax
-   1f7c6:	55                   	push   rbp
-   1f7c7:	09 03                	or     DWORD PTR [rbx],eax
-   1f7c9:	2a f7                	sub    dh,bh
-   1f7cb:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1f7ce:	00 00                	add    BYTE PTR [rax],al
-   1f7d0:	00 01                	add    BYTE PTR [rcx],al
-   1f7d2:	01 54 01 3d          	add    DWORD PTR [rcx+rax*1+0x3d],edx
-   1f7d6:	00 07                	add    BYTE PTR [rdi],al
-   1f7d8:	98                   	cwde   
-   1f7d9:	ef                   	out    dx,eax
-   1f7da:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f7dd:	00 00                	add    BYTE PTR [rax],al
-   1f7df:	00 f1                	add    cl,dh
-   1f7e1:	35 00 00 f3 f7       	xor    eax,0xf7f30000
-   1f7e6:	01 00                	add    DWORD PTR [rax],eax
-   1f7e8:	01 01                	add    DWORD PTR [rcx],eax
-   1f7ea:	55                   	push   rbp
-   1f7eb:	01 31                	add    DWORD PTR [rcx],esi
-   1f7ed:	01 01                	add    DWORD PTR [rcx],eax
-   1f7ef:	51                   	push   rcx
-   1f7f0:	01 30                	add    DWORD PTR [rax],esi
-   1f7f2:	00 04 e1             	add    BYTE PTR [rcx+riz*8],al
-   1f7f5:	ef                   	out    dx,eax
-   1f7f6:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f7f9:	00 00                	add    BYTE PTR [rax],al
-   1f7fb:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f7fe:	07                   	(bad)  
-   1f7ff:	00 00                	add    BYTE PTR [rax],al
-   1f801:	06                   	(bad)  
-   1f802:	e3 e5                	jrcxz  1f7e9 <__abi_tag-0x3e0b37>
-   1f804:	00 00                	add    BYTE PTR [rax],al
-   1f806:	6d                   	ins    DWORD PTR es:[rdi],dx
-   1f807:	f8                   	clc    
-   1f808:	01 00                	add    DWORD PTR [rax],eax
-   1f80a:	05 3e 7e 00 00       	add    eax,0x7e3e
-   1f80f:	05 99 01 12 b5       	add    eax,0xb5120199
-   1f814:	2c 00                	sub    al,0x0
-   1f816:	00 58 50             	add    BYTE PTR [rax+0x50],bl
-   1f819:	00 00                	add    BYTE PTR [rax],al
-   1f81b:	52                   	push   rdx
-   1f81c:	50                   	push   rax
-   1f81d:	00 00                	add    BYTE PTR [rax],al
-   1f81f:	03 17                	add    edx,DWORD PTR [rdi]
-   1f821:	ef                   	out    dx,eax
-   1f822:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f825:	00 00                	add    BYTE PTR [rax],al
-   1f827:	00 c4                	add    ah,al
-   1f829:	35 00 00 43 f8       	xor    eax,0xf8430000
-   1f82e:	01 00                	add    DWORD PTR [rax],eax
-   1f830:	01 01                	add    DWORD PTR [rcx],eax
-   1f832:	55                   	push   rbp
-   1f833:	09 03                	or     DWORD PTR [rbx],eax
-   1f835:	60                   	(bad)  
-   1f836:	0d 47 00 00 00       	or     eax,0x47
-   1f83b:	00 00                	add    BYTE PTR [rax],al
-   1f83d:	01 01                	add    DWORD PTR [rcx],eax
-   1f83f:	54                   	push   rsp
-   1f840:	01 36                	add    DWORD PTR [rsi],esi
-   1f842:	00 07                	add    BYTE PTR [rdi],al
-   1f844:	4a ef                	rex.WX out dx,eax
-   1f846:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f849:	00 00                	add    BYTE PTR [rax],al
-   1f84b:	00 f1                	add    cl,dh
-   1f84d:	35 00 00 5f f8       	xor    eax,0xf85f0000
-   1f852:	01 00                	add    DWORD PTR [rax],eax
-   1f854:	01 01                	add    DWORD PTR [rcx],eax
-   1f856:	55                   	push   rbp
-   1f857:	01 31                	add    DWORD PTR [rcx],esi
-   1f859:	01 01                	add    DWORD PTR [rcx],eax
-   1f85b:	51                   	push   rcx
-   1f85c:	01 30                	add    DWORD PTR [rax],esi
-   1f85e:	00 04 54             	add    BYTE PTR [rsp+rdx*2],al
-   1f861:	ef                   	out    dx,eax
-   1f862:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f865:	00 00                	add    BYTE PTR [rax],al
-   1f867:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f86a:	07                   	(bad)  
-   1f86b:	00 00                	add    BYTE PTR [rax],al
-   1f86d:	06                   	(bad)  
-   1f86e:	cb                   	retf   
-   1f86f:	e5 00                	in     eax,0x0
-   1f871:	00 d9                	add    cl,bl
-   1f873:	f8                   	clc    
-   1f874:	01 00                	add    DWORD PTR [rax],eax
-   1f876:	05 46 7e 00 00       	add    eax,0x7e46
-   1f87b:	05 9a 01 12 b5       	add    eax,0xb512019a
-   1f880:	2c 00                	sub    al,0x0
-   1f882:	00 77 50             	add    BYTE PTR [rdi+0x50],dh
-   1f885:	00 00                	add    BYTE PTR [rax],al
-   1f887:	71 50                	jno    1f8d9 <__abi_tag-0x3e0a47>
-   1f889:	00 00                	add    BYTE PTR [rax],al
-   1f88b:	03 d3                	add    edx,ebx
-   1f88d:	ee                   	out    dx,al
-   1f88e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f891:	00 00                	add    BYTE PTR [rax],al
-   1f893:	00 c4                	add    ah,al
-   1f895:	35 00 00 af f8       	xor    eax,0xf8af0000
-   1f89a:	01 00                	add    DWORD PTR [rax],eax
-   1f89c:	01 01                	add    DWORD PTR [rcx],eax
-   1f89e:	55                   	push   rbp
-   1f89f:	09 03                	or     DWORD PTR [rbx],eax
-   1f8a1:	38 f7                	cmp    bh,dh
-   1f8a3:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1f8a6:	00 00                	add    BYTE PTR [rax],al
-   1f8a8:	00 01                	add    BYTE PTR [rcx],al
-   1f8aa:	01 54 01 34          	add    DWORD PTR [rcx+rax*1+0x34],edx
-   1f8ae:	00 07                	add    BYTE PTR [rdi],al
-   1f8b0:	06                   	(bad)  
-   1f8b1:	ef                   	out    dx,eax
-   1f8b2:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f8b5:	00 00                	add    BYTE PTR [rax],al
-   1f8b7:	00 f1                	add    cl,dh
-   1f8b9:	35 00 00 cb f8       	xor    eax,0xf8cb0000
-   1f8be:	01 00                	add    DWORD PTR [rax],eax
-   1f8c0:	01 01                	add    DWORD PTR [rcx],eax
-   1f8c2:	55                   	push   rbp
-   1f8c3:	01 31                	add    DWORD PTR [rcx],esi
-   1f8c5:	01 01                	add    DWORD PTR [rcx],eax
-   1f8c7:	51                   	push   rcx
-   1f8c8:	01 30                	add    DWORD PTR [rax],esi
-   1f8ca:	00 04 4f             	add    BYTE PTR [rdi+rcx*2],al
-   1f8cd:	ef                   	out    dx,eax
-   1f8ce:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f8d1:	00 00                	add    BYTE PTR [rax],al
-   1f8d3:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f8d6:	07                   	(bad)  
-   1f8d7:	00 00                	add    BYTE PTR [rax],al
-   1f8d9:	06                   	(bad)  
-   1f8da:	b5 e5                	mov    ch,0xe5
-   1f8dc:	00 00                	add    BYTE PTR [rax],al
-   1f8de:	45 f9                	rex.RB stc 
-   1f8e0:	01 00                	add    DWORD PTR [rax],eax
-   1f8e2:	05 4e 7e 00 00       	add    eax,0x7e4e
-   1f8e7:	05 9b 01 12 b5       	add    eax,0xb512019b
-   1f8ec:	2c 00                	sub    al,0x0
-   1f8ee:	00 96 50 00 00 90    	add    BYTE PTR [rsi-0x6fffffb0],dl
-   1f8f4:	50                   	push   rax
-   1f8f5:	00 00                	add    BYTE PTR [rax],al
-   1f8f7:	03 85 ee 43 00 00    	add    eax,DWORD PTR [rbp+0x43ee]
-   1f8fd:	00 00                	add    BYTE PTR [rax],al
-   1f8ff:	00 c4                	add    ah,al
-   1f901:	35 00 00 1b f9       	xor    eax,0xf91b0000
-   1f906:	01 00                	add    DWORD PTR [rax],eax
-   1f908:	01 01                	add    DWORD PTR [rcx],eax
-   1f90a:	55                   	push   rbp
-   1f90b:	09 03                	or     DWORD PTR [rbx],eax
-   1f90d:	3d f7 46 00 00       	cmp    eax,0x46f7
-   1f912:	00 00                	add    BYTE PTR [rax],al
-   1f914:	00 01                	add    BYTE PTR [rcx],al
-   1f916:	01 54 01 39          	add    DWORD PTR [rcx+rax*1+0x39],edx
-   1f91a:	00 07                	add    BYTE PTR [rdi],al
-   1f91c:	b8 ee 43 00 00       	mov    eax,0x43ee
-   1f921:	00 00                	add    BYTE PTR [rax],al
-   1f923:	00 f1                	add    cl,dh
-   1f925:	35 00 00 37 f9       	xor    eax,0xf9370000
-   1f92a:	01 00                	add    DWORD PTR [rax],eax
-   1f92c:	01 01                	add    DWORD PTR [rcx],eax
-   1f92e:	55                   	push   rbp
-   1f92f:	01 31                	add    DWORD PTR [rcx],esi
-   1f931:	01 01                	add    DWORD PTR [rcx],eax
-   1f933:	51                   	push   rcx
-   1f934:	01 30                	add    DWORD PTR [rax],esi
-   1f936:	00 04 c2             	add    BYTE PTR [rdx+rax*8],al
-   1f939:	ee                   	out    dx,al
-   1f93a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f93d:	00 00                	add    BYTE PTR [rax],al
-   1f93f:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f942:	07                   	(bad)  
-   1f943:	00 00                	add    BYTE PTR [rax],al
-   1f945:	06                   	(bad)  
-   1f946:	9d                   	popf   
-   1f947:	e5 00                	in     eax,0x0
-   1f949:	00 b1 f9 01 00 05    	add    BYTE PTR [rcx+0x50001f9],dh
-   1f94f:	ce                   	(bad)  
-   1f950:	44 01 00             	add    DWORD PTR [rax],r8d
-   1f953:	05 9c 01 12 b5       	add    eax,0xb512019c
-   1f958:	2c 00                	sub    al,0x0
-   1f95a:	00 b5 50 00 00 af    	add    BYTE PTR [rbp-0x50ffffb0],dh
-   1f960:	50                   	push   rax
-   1f961:	00 00                	add    BYTE PTR [rax],al
-   1f963:	03 41 ee             	add    eax,DWORD PTR [rcx-0x12]
-   1f966:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f969:	00 00                	add    BYTE PTR [rax],al
-   1f96b:	00 c4                	add    ah,al
-   1f96d:	35 00 00 87 f9       	xor    eax,0xf9870000
-   1f972:	01 00                	add    DWORD PTR [rax],eax
-   1f974:	01 01                	add    DWORD PTR [rcx],eax
-   1f976:	55                   	push   rbp
-   1f977:	09 03                	or     DWORD PTR [rbx],eax
-   1f979:	47 f7 46 00 00 00 00 	rex.RXB test DWORD PTR [r14+0x0],0x0
-   1f980:	00 
-   1f981:	01 01                	add    DWORD PTR [rcx],eax
-   1f983:	54                   	push   rsp
-   1f984:	01 3a                	add    DWORD PTR [rdx],edi
-   1f986:	00 07                	add    BYTE PTR [rdi],al
-   1f988:	74 ee                	je     1f978 <__abi_tag-0x3e09a8>
-   1f98a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f98d:	00 00                	add    BYTE PTR [rax],al
-   1f98f:	00 f1                	add    cl,dh
-   1f991:	35 00 00 a3 f9       	xor    eax,0xf9a30000
-   1f996:	01 00                	add    DWORD PTR [rax],eax
-   1f998:	01 01                	add    DWORD PTR [rcx],eax
-   1f99a:	55                   	push   rbp
-   1f99b:	01 31                	add    DWORD PTR [rcx],esi
-   1f99d:	01 01                	add    DWORD PTR [rcx],eax
-   1f99f:	51                   	push   rcx
-   1f9a0:	01 30                	add    DWORD PTR [rax],esi
-   1f9a2:	00 04 bd ee 43 00 00 	add    BYTE PTR [rdi*4+0x43ee],al
-   1f9a9:	00 00                	add    BYTE PTR [rax],al
-   1f9ab:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1f9ae:	07                   	(bad)  
-   1f9af:	00 00                	add    BYTE PTR [rax],al
-   1f9b1:	06                   	(bad)  
-   1f9b2:	87 e5                	xchg   ebp,esp
-   1f9b4:	00 00                	add    BYTE PTR [rax],al
-   1f9b6:	1d fa 01 00 05       	sbb    eax,0x50001fa
-   1f9bb:	5b                   	pop    rbx
-   1f9bc:	7e 00                	jle    1f9be <__abi_tag-0x3e0962>
-   1f9be:	00 05 9d 01 12 b5    	add    BYTE PTR [rip+0xffffffffb512019d],al        # ffffffffb513fb61 <_end+0xffffffffb4c84249>
-   1f9c4:	2c 00                	sub    al,0x0
-   1f9c6:	00 d4                	add    ah,dl
-   1f9c8:	50                   	push   rax
-   1f9c9:	00 00                	add    BYTE PTR [rax],al
-   1f9cb:	ce                   	(bad)  
-   1f9cc:	50                   	push   rax
-   1f9cd:	00 00                	add    BYTE PTR [rax],al
-   1f9cf:	03 f3                	add    esi,ebx
-   1f9d1:	ed                   	in     eax,dx
-   1f9d2:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f9d5:	00 00                	add    BYTE PTR [rax],al
-   1f9d7:	00 c4                	add    ah,al
-   1f9d9:	35 00 00 f3 f9       	xor    eax,0xf9f30000
-   1f9de:	01 00                	add    DWORD PTR [rax],eax
-   1f9e0:	01 01                	add    DWORD PTR [rcx],eax
-   1f9e2:	55                   	push   rbp
-   1f9e3:	09 03                	or     DWORD PTR [rbx],eax
-   1f9e5:	52                   	push   rdx
-   1f9e6:	f7 46 00 00 00 00 00 	test   DWORD PTR [rsi+0x0],0x0
-   1f9ed:	01 01                	add    DWORD PTR [rcx],eax
-   1f9ef:	54                   	push   rsp
-   1f9f0:	01 35 00 07 26 ee    	add    DWORD PTR [rip+0xffffffffee260700],esi        # ffffffffee2800f6 <_end+0xffffffffeddc47de>
-   1f9f6:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1f9f9:	00 00                	add    BYTE PTR [rax],al
-   1f9fb:	00 f1                	add    cl,dh
-   1f9fd:	35 00 00 0f fa       	xor    eax,0xfa0f0000
-   1fa02:	01 00                	add    DWORD PTR [rax],eax
-   1fa04:	01 01                	add    DWORD PTR [rcx],eax
-   1fa06:	55                   	push   rbp
-   1fa07:	01 31                	add    DWORD PTR [rcx],esi
-   1fa09:	01 01                	add    DWORD PTR [rcx],eax
-   1fa0b:	51                   	push   rcx
-   1fa0c:	01 30                	add    DWORD PTR [rax],esi
-   1fa0e:	00 04 30             	add    BYTE PTR [rax+rsi*1],al
-   1fa11:	ee                   	out    dx,al
-   1fa12:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fa15:	00 00                	add    BYTE PTR [rax],al
-   1fa17:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1fa1a:	07                   	(bad)  
-   1fa1b:	00 00                	add    BYTE PTR [rax],al
-   1fa1d:	06                   	(bad)  
-   1fa1e:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-   1fa1f:	e5 00                	in     eax,0x0
-   1fa21:	00 89 fa 01 00 05    	add    BYTE PTR [rcx+0x50001fa],cl
-   1fa27:	93                   	xchg   ebx,eax
-   1fa28:	7f 00                	jg     1fa2a <__abi_tag-0x3e08f6>
-   1fa2a:	00 05 a0 01 12 b5    	add    BYTE PTR [rip+0xffffffffb51201a0],al        # ffffffffb513fbd0 <_end+0xffffffffb4c842b8>
-   1fa30:	2c 00                	sub    al,0x0
-   1fa32:	00 f3                	add    bl,dh
-   1fa34:	50                   	push   rax
-   1fa35:	00 00                	add    BYTE PTR [rax],al
-   1fa37:	ed                   	in     eax,dx
-   1fa38:	50                   	push   rax
-   1fa39:	00 00                	add    BYTE PTR [rax],al
-   1fa3b:	03 af ed 43 00 00    	add    ebp,DWORD PTR [rdi+0x43ed]
-   1fa41:	00 00                	add    BYTE PTR [rax],al
-   1fa43:	00 c4                	add    ah,al
-   1fa45:	35 00 00 5f fa       	xor    eax,0xfa5f0000
-   1fa4a:	01 00                	add    DWORD PTR [rax],eax
-   1fa4c:	01 01                	add    DWORD PTR [rcx],eax
-   1fa4e:	55                   	push   rbp
-   1fa4f:	09 03                	or     DWORD PTR [rbx],eax
-   1fa51:	dc 22                	fsub   QWORD PTR [rdx]
-   1fa53:	47 00 00             	rex.RXB add BYTE PTR [r8],r8b
-   1fa56:	00 00                	add    BYTE PTR [rax],al
-   1fa58:	00 01                	add    BYTE PTR [rcx],al
-   1fa5a:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   1fa5e:	00 07                	add    BYTE PTR [rdi],al
-   1fa60:	e2 ed                	loop   1fa4f <__abi_tag-0x3e08d1>
-   1fa62:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fa65:	00 00                	add    BYTE PTR [rax],al
-   1fa67:	00 f1                	add    cl,dh
-   1fa69:	35 00 00 7b fa       	xor    eax,0xfa7b0000
-   1fa6e:	01 00                	add    DWORD PTR [rax],eax
-   1fa70:	01 01                	add    DWORD PTR [rcx],eax
-   1fa72:	55                   	push   rbp
-   1fa73:	01 31                	add    DWORD PTR [rcx],esi
-   1fa75:	01 01                	add    DWORD PTR [rcx],eax
-   1fa77:	51                   	push   rcx
-   1fa78:	01 30                	add    DWORD PTR [rax],esi
-   1fa7a:	00 04 2b             	add    BYTE PTR [rbx+rbp*1],al
-   1fa7d:	ee                   	out    dx,al
-   1fa7e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fa81:	00 00                	add    BYTE PTR [rax],al
-   1fa83:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1fa86:	07                   	(bad)  
-   1fa87:	00 00                	add    BYTE PTR [rax],al
-   1fa89:	06                   	(bad)  
-   1fa8a:	59                   	pop    rcx
-   1fa8b:	e5 00                	in     eax,0x0
-   1fa8d:	00 f5                	add    ch,dh
-   1fa8f:	fa                   	cli    
-   1fa90:	01 00                	add    DWORD PTR [rax],eax
-   1fa92:	05 9b 7f 00 00       	add    eax,0x7f9b
-   1fa97:	05 a1 01 12 b5       	add    eax,0xb51201a1
-   1fa9c:	2c 00                	sub    al,0x0
-   1fa9e:	00 12                	add    BYTE PTR [rdx],dl
-   1faa0:	51                   	push   rcx
-   1faa1:	00 00                	add    BYTE PTR [rax],al
-   1faa3:	0c 51                	or     al,0x51
-   1faa5:	00 00                	add    BYTE PTR [rax],al
-   1faa7:	03 61 ed             	add    esp,DWORD PTR [rcx-0x13]
-   1faaa:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1faad:	00 00                	add    BYTE PTR [rax],al
-   1faaf:	00 c4                	add    ah,al
-   1fab1:	35 00 00 cb fa       	xor    eax,0xfacb0000
-   1fab6:	01 00                	add    DWORD PTR [rax],eax
-   1fab8:	01 01                	add    DWORD PTR [rcx],eax
-   1faba:	55                   	push   rbp
-   1fabb:	09 03                	or     DWORD PTR [rbx],eax
-   1fabd:	58                   	pop    rax
-   1fabe:	f7 46 00 00 00 00 00 	test   DWORD PTR [rsi+0x0],0x0
-   1fac5:	01 01                	add    DWORD PTR [rcx],eax
-   1fac7:	54                   	push   rsp
-   1fac8:	01 34 00             	add    DWORD PTR [rax+rax*1],esi
-   1facb:	07                   	(bad)  
-   1facc:	94                   	xchg   esp,eax
-   1facd:	ed                   	in     eax,dx
-   1face:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fad1:	00 00                	add    BYTE PTR [rax],al
-   1fad3:	00 f1                	add    cl,dh
-   1fad5:	35 00 00 e7 fa       	xor    eax,0xfae70000
-   1fada:	01 00                	add    DWORD PTR [rax],eax
-   1fadc:	01 01                	add    DWORD PTR [rcx],eax
-   1fade:	55                   	push   rbp
-   1fadf:	01 31                	add    DWORD PTR [rcx],esi
-   1fae1:	01 01                	add    DWORD PTR [rcx],eax
-   1fae3:	51                   	push   rcx
-   1fae4:	01 30                	add    DWORD PTR [rax],esi
-   1fae6:	00 04 9e             	add    BYTE PTR [rsi+rbx*4],al
-   1fae9:	ed                   	in     eax,dx
-   1faea:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1faed:	00 00                	add    BYTE PTR [rax],al
-   1faef:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1faf2:	07                   	(bad)  
-   1faf3:	00 00                	add    BYTE PTR [rax],al
-   1faf5:	06                   	(bad)  
-   1faf6:	41 e5 00             	rex.B in eax,0x0
-   1faf9:	00 61 fb             	add    BYTE PTR [rcx-0x5],ah
-   1fafc:	01 00                	add    DWORD PTR [rax],eax
-   1fafe:	05 a3 7f 00 00       	add    eax,0x7fa3
-   1fb03:	05 a4 01 12 b5       	add    eax,0xb51201a4
-   1fb08:	2c 00                	sub    al,0x0
-   1fb0a:	00 31                	add    BYTE PTR [rcx],dh
-   1fb0c:	51                   	push   rcx
-   1fb0d:	00 00                	add    BYTE PTR [rax],al
-   1fb0f:	2b 51 00             	sub    edx,DWORD PTR [rcx+0x0]
-   1fb12:	00 03                	add    BYTE PTR [rbx],al
-   1fb14:	1d ed 43 00 00       	sbb    eax,0x43ed
-   1fb19:	00 00                	add    BYTE PTR [rax],al
-   1fb1b:	00 c4                	add    ah,al
-   1fb1d:	35 00 00 37 fb       	xor    eax,0xfb370000
-   1fb22:	01 00                	add    DWORD PTR [rax],eax
-   1fb24:	01 01                	add    DWORD PTR [rcx],eax
-   1fb26:	55                   	push   rbp
-   1fb27:	09 03                	or     DWORD PTR [rbx],eax
-   1fb29:	5d                   	pop    rbp
-   1fb2a:	f7 46 00 00 00 00 00 	test   DWORD PTR [rsi+0x0],0x0
-   1fb31:	01 01                	add    DWORD PTR [rcx],eax
-   1fb33:	54                   	push   rsp
-   1fb34:	01 35 00 07 50 ed    	add    DWORD PTR [rip+0xffffffffed500700],esi        # ffffffffed52023a <_end+0xffffffffed064922>
-   1fb3a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fb3d:	00 00                	add    BYTE PTR [rax],al
-   1fb3f:	00 f1                	add    cl,dh
-   1fb41:	35 00 00 53 fb       	xor    eax,0xfb530000
-   1fb46:	01 00                	add    DWORD PTR [rax],eax
-   1fb48:	01 01                	add    DWORD PTR [rcx],eax
-   1fb4a:	55                   	push   rbp
-   1fb4b:	01 31                	add    DWORD PTR [rcx],esi
-   1fb4d:	01 01                	add    DWORD PTR [rcx],eax
-   1fb4f:	51                   	push   rcx
-   1fb50:	01 30                	add    DWORD PTR [rax],esi
-   1fb52:	00 04 99             	add    BYTE PTR [rcx+rbx*4],al
-   1fb55:	ed                   	in     eax,dx
-   1fb56:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fb59:	00 00                	add    BYTE PTR [rax],al
-   1fb5b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1fb5e:	07                   	(bad)  
-   1fb5f:	00 00                	add    BYTE PTR [rax],al
-   1fb61:	06                   	(bad)  
-   1fb62:	2b e5                	sub    esp,ebp
-   1fb64:	00 00                	add    BYTE PTR [rax],al
-   1fb66:	cd fb                	int    0xfb
-   1fb68:	01 00                	add    DWORD PTR [rax],eax
-   1fb6a:	05 ab 7f 00 00       	add    eax,0x7fab
-   1fb6f:	05 a5 01 12 b5       	add    eax,0xb51201a5
-   1fb74:	2c 00                	sub    al,0x0
-   1fb76:	00 50 51             	add    BYTE PTR [rax+0x51],dl
-   1fb79:	00 00                	add    BYTE PTR [rax],al
-   1fb7b:	4a 51                	rex.WX push rcx
-   1fb7d:	00 00                	add    BYTE PTR [rax],al
-   1fb7f:	03 cf                	add    ecx,edi
-   1fb81:	ec                   	in     al,dx
-   1fb82:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fb85:	00 00                	add    BYTE PTR [rax],al
-   1fb87:	00 c4                	add    ah,al
-   1fb89:	35 00 00 a3 fb       	xor    eax,0xfba30000
-   1fb8e:	01 00                	add    DWORD PTR [rax],eax
-   1fb90:	01 01                	add    DWORD PTR [rcx],eax
-   1fb92:	55                   	push   rbp
-   1fb93:	09 03                	or     DWORD PTR [rbx],eax
-   1fb95:	63 f7                	movsxd esi,edi
-   1fb97:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1fb9a:	00 00                	add    BYTE PTR [rax],al
-   1fb9c:	00 01                	add    BYTE PTR [rcx],al
-   1fb9e:	01 54 01 34          	add    DWORD PTR [rcx+rax*1+0x34],edx
-   1fba2:	00 07                	add    BYTE PTR [rdi],al
-   1fba4:	02 ed                	add    ch,ch
-   1fba6:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fba9:	00 00                	add    BYTE PTR [rax],al
-   1fbab:	00 f1                	add    cl,dh
-   1fbad:	35 00 00 bf fb       	xor    eax,0xfbbf0000
-   1fbb2:	01 00                	add    DWORD PTR [rax],eax
-   1fbb4:	01 01                	add    DWORD PTR [rcx],eax
-   1fbb6:	55                   	push   rbp
-   1fbb7:	01 31                	add    DWORD PTR [rcx],esi
-   1fbb9:	01 01                	add    DWORD PTR [rcx],eax
-   1fbbb:	51                   	push   rcx
-   1fbbc:	01 30                	add    DWORD PTR [rax],esi
-   1fbbe:	00 04 0c             	add    BYTE PTR [rsp+rcx*1],al
-   1fbc1:	ed                   	in     eax,dx
-   1fbc2:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fbc5:	00 00                	add    BYTE PTR [rax],al
-   1fbc7:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1fbca:	07                   	(bad)  
-   1fbcb:	00 00                	add    BYTE PTR [rax],al
-   1fbcd:	06                   	(bad)  
-   1fbce:	13 e5                	adc    esp,ebp
-   1fbd0:	00 00                	add    BYTE PTR [rax],al
-   1fbd2:	39 fc                	cmp    esp,edi
-   1fbd4:	01 00                	add    DWORD PTR [rax],eax
-   1fbd6:	05 b3 7f 00 00       	add    eax,0x7fb3
-   1fbdb:	05 a6 01 12 b5       	add    eax,0xb51201a6
-   1fbe0:	2c 00                	sub    al,0x0
-   1fbe2:	00 6f 51             	add    BYTE PTR [rdi+0x51],ch
-   1fbe5:	00 00                	add    BYTE PTR [rax],al
-   1fbe7:	69 51 00 00 03 8b ec 	imul   edx,DWORD PTR [rcx+0x0],0xec8b0300
-   1fbee:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fbf1:	00 00                	add    BYTE PTR [rax],al
-   1fbf3:	00 c4                	add    ah,al
-   1fbf5:	35 00 00 0f fc       	xor    eax,0xfc0f0000
-   1fbfa:	01 00                	add    DWORD PTR [rax],eax
-   1fbfc:	01 01                	add    DWORD PTR [rcx],eax
-   1fbfe:	55                   	push   rbp
-   1fbff:	09 03                	or     DWORD PTR [rbx],eax
-   1fc01:	68 f7 46 00 00       	push   0x46f7
-   1fc06:	00 00                	add    BYTE PTR [rax],al
-   1fc08:	00 01                	add    BYTE PTR [rcx],al
-   1fc0a:	01 54 01 3c          	add    DWORD PTR [rcx+rax*1+0x3c],edx
-   1fc0e:	00 07                	add    BYTE PTR [rdi],al
-   1fc10:	be ec 43 00 00       	mov    esi,0x43ec
-   1fc15:	00 00                	add    BYTE PTR [rax],al
-   1fc17:	00 f1                	add    cl,dh
-   1fc19:	35 00 00 2b fc       	xor    eax,0xfc2b0000
-   1fc1e:	01 00                	add    DWORD PTR [rax],eax
-   1fc20:	01 01                	add    DWORD PTR [rcx],eax
-   1fc22:	55                   	push   rbp
-   1fc23:	01 31                	add    DWORD PTR [rcx],esi
-   1fc25:	01 01                	add    DWORD PTR [rcx],eax
-   1fc27:	51                   	push   rcx
-   1fc28:	01 30                	add    DWORD PTR [rax],esi
-   1fc2a:	00 04 07             	add    BYTE PTR [rdi+rax*1],al
-   1fc2d:	ed                   	in     eax,dx
-   1fc2e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fc31:	00 00                	add    BYTE PTR [rax],al
-   1fc33:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1fc36:	07                   	(bad)  
-   1fc37:	00 00                	add    BYTE PTR [rax],al
-   1fc39:	06                   	(bad)  
-   1fc3a:	fd                   	std    
-   1fc3b:	e4 00                	in     al,0x0
-   1fc3d:	00 a5 fc 01 00 05    	add    BYTE PTR [rbp+0x50001fc],ah
-   1fc43:	bb 7f 00 00 05       	mov    ebx,0x500007f
-   1fc48:	aa                   	stos   BYTE PTR es:[rdi],al
-   1fc49:	01 12                	add    DWORD PTR [rdx],edx
-   1fc4b:	b5 2c                	mov    ch,0x2c
-   1fc4d:	00 00                	add    BYTE PTR [rax],al
-   1fc4f:	8e 51 00             	mov    ss,WORD PTR [rcx+0x0]
-   1fc52:	00 88 51 00 00 03    	add    BYTE PTR [rax+0x3000051],cl
-   1fc58:	3d ec 43 00 00       	cmp    eax,0x43ec
-   1fc5d:	00 00                	add    BYTE PTR [rax],al
-   1fc5f:	00 c4                	add    ah,al
-   1fc61:	35 00 00 7b fc       	xor    eax,0xfc7b0000
-   1fc66:	01 00                	add    DWORD PTR [rax],eax
-   1fc68:	01 01                	add    DWORD PTR [rcx],eax
-   1fc6a:	55                   	push   rbp
-   1fc6b:	09 03                	or     DWORD PTR [rbx],eax
-   1fc6d:	69 21 47 00 00 00    	imul   esp,DWORD PTR [rcx],0x47
-   1fc73:	00 00                	add    BYTE PTR [rax],al
-   1fc75:	01 01                	add    DWORD PTR [rcx],eax
-   1fc77:	54                   	push   rsp
-   1fc78:	01 34 00             	add    DWORD PTR [rax+rax*1],esi
-   1fc7b:	07                   	(bad)  
-   1fc7c:	70 ec                	jo     1fc6a <__abi_tag-0x3e06b6>
-   1fc7e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fc81:	00 00                	add    BYTE PTR [rax],al
-   1fc83:	00 f1                	add    cl,dh
-   1fc85:	35 00 00 97 fc       	xor    eax,0xfc970000
-   1fc8a:	01 00                	add    DWORD PTR [rax],eax
-   1fc8c:	01 01                	add    DWORD PTR [rcx],eax
-   1fc8e:	55                   	push   rbp
-   1fc8f:	01 31                	add    DWORD PTR [rcx],esi
-   1fc91:	01 01                	add    DWORD PTR [rcx],eax
-   1fc93:	51                   	push   rcx
-   1fc94:	01 30                	add    DWORD PTR [rax],esi
-   1fc96:	00 04 7a             	add    BYTE PTR [rdx+rdi*2],al
-   1fc99:	ec                   	in     al,dx
-   1fc9a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fc9d:	00 00                	add    BYTE PTR [rax],al
-   1fc9f:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1fca2:	07                   	(bad)  
-   1fca3:	00 00                	add    BYTE PTR [rax],al
-   1fca5:	06                   	(bad)  
-   1fca6:	e5 e4                	in     eax,0xe4
-   1fca8:	00 00                	add    BYTE PTR [rax],al
-   1fcaa:	11 fd                	adc    ebp,edi
-   1fcac:	01 00                	add    DWORD PTR [rax],eax
-   1fcae:	05 c3 7f 00 00       	add    eax,0x7fc3
-   1fcb3:	05 ab 01 12 b5       	add    eax,0xb51201ab
-   1fcb8:	2c 00                	sub    al,0x0
-   1fcba:	00 ad 51 00 00 a7    	add    BYTE PTR [rbp-0x58ffffaf],ch
-   1fcc0:	51                   	push   rcx
-   1fcc1:	00 00                	add    BYTE PTR [rax],al
-   1fcc3:	03 f9                	add    edi,ecx
-   1fcc5:	eb 43                	jmp    1fd0a <__abi_tag-0x3e0616>
-   1fcc7:	00 00                	add    BYTE PTR [rax],al
-   1fcc9:	00 00                	add    BYTE PTR [rax],al
-   1fccb:	00 c4                	add    ah,al
-   1fccd:	35 00 00 e7 fc       	xor    eax,0xfce70000
-   1fcd2:	01 00                	add    DWORD PTR [rax],eax
-   1fcd4:	01 01                	add    DWORD PTR [rcx],eax
-   1fcd6:	55                   	push   rbp
-   1fcd7:	09 03                	or     DWORD PTR [rbx],eax
-   1fcd9:	75 f7                	jne    1fcd2 <__abi_tag-0x3e064e>
-   1fcdb:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1fcde:	00 00                	add    BYTE PTR [rax],al
-   1fce0:	00 01                	add    BYTE PTR [rcx],al
-   1fce2:	01 54 01 34          	add    DWORD PTR [rcx+rax*1+0x34],edx
-   1fce6:	00 07                	add    BYTE PTR [rdi],al
-   1fce8:	2c ec                	sub    al,0xec
-   1fcea:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fced:	00 00                	add    BYTE PTR [rax],al
-   1fcef:	00 f1                	add    cl,dh
-   1fcf1:	35 00 00 03 fd       	xor    eax,0xfd030000
-   1fcf6:	01 00                	add    DWORD PTR [rax],eax
-   1fcf8:	01 01                	add    DWORD PTR [rcx],eax
-   1fcfa:	55                   	push   rbp
-   1fcfb:	01 31                	add    DWORD PTR [rcx],esi
-   1fcfd:	01 01                	add    DWORD PTR [rcx],eax
-   1fcff:	51                   	push   rcx
-   1fd00:	01 30                	add    DWORD PTR [rax],esi
-   1fd02:	00 04 75 ec 43 00 00 	add    BYTE PTR [rsi*2+0x43ec],al
-   1fd09:	00 00                	add    BYTE PTR [rax],al
-   1fd0b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1fd0e:	07                   	(bad)  
-   1fd0f:	00 00                	add    BYTE PTR [rax],al
-   1fd11:	06                   	(bad)  
-   1fd12:	cf                   	iret   
-   1fd13:	e4 00                	in     al,0x0
-   1fd15:	00 7d fd             	add    BYTE PTR [rbp-0x3],bh
-   1fd18:	01 00                	add    DWORD PTR [rax],eax
-   1fd1a:	05 cb 7f 00 00       	add    eax,0x7fcb
-   1fd1f:	05 ac 01 12 b5       	add    eax,0xb51201ac
-   1fd24:	2c 00                	sub    al,0x0
-   1fd26:	00 cc                	add    ah,cl
-   1fd28:	51                   	push   rcx
-   1fd29:	00 00                	add    BYTE PTR [rax],al
-   1fd2b:	c6                   	(bad)  
-   1fd2c:	51                   	push   rcx
-   1fd2d:	00 00                	add    BYTE PTR [rax],al
-   1fd2f:	03 ab eb 43 00 00    	add    ebp,DWORD PTR [rbx+0x43eb]
-   1fd35:	00 00                	add    BYTE PTR [rax],al
-   1fd37:	00 c4                	add    ah,al
-   1fd39:	35 00 00 53 fd       	xor    eax,0xfd530000
-   1fd3e:	01 00                	add    DWORD PTR [rax],eax
-   1fd40:	01 01                	add    DWORD PTR [rcx],eax
-   1fd42:	55                   	push   rbp
-   1fd43:	09 03                	or     DWORD PTR [rbx],eax
-   1fd45:	7a f7                	jp     1fd3e <__abi_tag-0x3e05e2>
-   1fd47:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1fd4a:	00 00                	add    BYTE PTR [rax],al
-   1fd4c:	00 01                	add    BYTE PTR [rcx],al
-   1fd4e:	01 54 01 36          	add    DWORD PTR [rcx+rax*1+0x36],edx
-   1fd52:	00 07                	add    BYTE PTR [rdi],al
-   1fd54:	de eb                	fsubp  st(3),st
-   1fd56:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fd59:	00 00                	add    BYTE PTR [rax],al
-   1fd5b:	00 f1                	add    cl,dh
-   1fd5d:	35 00 00 6f fd       	xor    eax,0xfd6f0000
-   1fd62:	01 00                	add    DWORD PTR [rax],eax
-   1fd64:	01 01                	add    DWORD PTR [rcx],eax
-   1fd66:	55                   	push   rbp
-   1fd67:	01 31                	add    DWORD PTR [rcx],esi
-   1fd69:	01 01                	add    DWORD PTR [rcx],eax
-   1fd6b:	51                   	push   rcx
-   1fd6c:	01 30                	add    DWORD PTR [rax],esi
-   1fd6e:	00 04 e8             	add    BYTE PTR [rax+rbp*8],al
-   1fd71:	eb 43                	jmp    1fdb6 <__abi_tag-0x3e056a>
-   1fd73:	00 00                	add    BYTE PTR [rax],al
-   1fd75:	00 00                	add    BYTE PTR [rax],al
-   1fd77:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1fd7a:	07                   	(bad)  
-   1fd7b:	00 00                	add    BYTE PTR [rax],al
-   1fd7d:	06                   	(bad)  
-   1fd7e:	b7 e4                	mov    bh,0xe4
-   1fd80:	00 00                	add    BYTE PTR [rax],al
-   1fd82:	e9 fd 01 00 05       	jmp    501ff84 <_end+0x4b6466c>
-   1fd87:	d3 7f 00             	sar    DWORD PTR [rdi+0x0],cl
-   1fd8a:	00 05 ad 01 12 b5    	add    BYTE PTR [rip+0xffffffffb51201ad],al        # ffffffffb513ff3d <_end+0xffffffffb4c84625>
-   1fd90:	2c 00                	sub    al,0x0
-   1fd92:	00 eb                	add    bl,ch
-   1fd94:	51                   	push   rcx
-   1fd95:	00 00                	add    BYTE PTR [rax],al
-   1fd97:	e5 51                	in     eax,0x51
-   1fd99:	00 00                	add    BYTE PTR [rax],al
-   1fd9b:	03 67 eb             	add    esp,DWORD PTR [rdi-0x15]
-   1fd9e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fda1:	00 00                	add    BYTE PTR [rax],al
-   1fda3:	00 c4                	add    ah,al
-   1fda5:	35 00 00 bf fd       	xor    eax,0xfdbf0000
-   1fdaa:	01 00                	add    DWORD PTR [rax],eax
-   1fdac:	01 01                	add    DWORD PTR [rcx],eax
-   1fdae:	55                   	push   rbp
-   1fdaf:	09 03                	or     DWORD PTR [rbx],eax
-   1fdb1:	81 f7 46 00 00 00    	xor    edi,0x46
-   1fdb7:	00 00                	add    BYTE PTR [rax],al
-   1fdb9:	01 01                	add    DWORD PTR [rcx],eax
-   1fdbb:	54                   	push   rsp
-   1fdbc:	01 3a                	add    DWORD PTR [rdx],edi
-   1fdbe:	00 07                	add    BYTE PTR [rdi],al
-   1fdc0:	9a                   	(bad)  
-   1fdc1:	eb 43                	jmp    1fe06 <__abi_tag-0x3e051a>
-   1fdc3:	00 00                	add    BYTE PTR [rax],al
-   1fdc5:	00 00                	add    BYTE PTR [rax],al
-   1fdc7:	00 f1                	add    cl,dh
-   1fdc9:	35 00 00 db fd       	xor    eax,0xfddb0000
-   1fdce:	01 00                	add    DWORD PTR [rax],eax
-   1fdd0:	01 01                	add    DWORD PTR [rcx],eax
-   1fdd2:	55                   	push   rbp
-   1fdd3:	01 31                	add    DWORD PTR [rcx],esi
-   1fdd5:	01 01                	add    DWORD PTR [rcx],eax
-   1fdd7:	51                   	push   rcx
-   1fdd8:	01 30                	add    DWORD PTR [rax],esi
-   1fdda:	00 04 e3             	add    BYTE PTR [rbx+riz*8],al
-   1fddd:	eb 43                	jmp    1fe22 <__abi_tag-0x3e04fe>
-   1fddf:	00 00                	add    BYTE PTR [rax],al
-   1fde1:	00 00                	add    BYTE PTR [rax],al
-   1fde3:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1fde6:	07                   	(bad)  
-   1fde7:	00 00                	add    BYTE PTR [rax],al
-   1fde9:	06                   	(bad)  
-   1fdea:	a1 e4 00 00 55 fe 01 	movabs eax,ds:0x50001fe550000e4
-   1fdf1:	00 05 
-   1fdf3:	db 7f 00             	fstp   TBYTE PTR [rdi+0x0]
-   1fdf6:	00 05 ae 01 12 b5    	add    BYTE PTR [rip+0xffffffffb51201ae],al        # ffffffffb513ffaa <_end+0xffffffffb4c84692>
-   1fdfc:	2c 00                	sub    al,0x0
-   1fdfe:	00 0a                	add    BYTE PTR [rdx],cl
-   1fe00:	52                   	push   rdx
-   1fe01:	00 00                	add    BYTE PTR [rax],al
-   1fe03:	04 52                	add    al,0x52
-   1fe05:	00 00                	add    BYTE PTR [rax],al
-   1fe07:	03 19                	add    ebx,DWORD PTR [rcx]
-   1fe09:	eb 43                	jmp    1fe4e <__abi_tag-0x3e04d2>
-   1fe0b:	00 00                	add    BYTE PTR [rax],al
-   1fe0d:	00 00                	add    BYTE PTR [rax],al
-   1fe0f:	00 c4                	add    ah,al
-   1fe11:	35 00 00 2b fe       	xor    eax,0xfe2b0000
-   1fe16:	01 00                	add    DWORD PTR [rax],eax
-   1fe18:	01 01                	add    DWORD PTR [rcx],eax
-   1fe1a:	55                   	push   rbp
-   1fe1b:	09 03                	or     DWORD PTR [rbx],eax
-   1fe1d:	8c f7                	mov    edi,?
-   1fe1f:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   1fe22:	00 00                	add    BYTE PTR [rax],al
-   1fe24:	00 01                	add    BYTE PTR [rcx],al
-   1fe26:	01 54 01 33          	add    DWORD PTR [rcx+rax*1+0x33],edx
-   1fe2a:	00 07                	add    BYTE PTR [rdi],al
-   1fe2c:	4c eb 43             	rex.WR jmp 1fe72 <__abi_tag-0x3e04ae>
-   1fe2f:	00 00                	add    BYTE PTR [rax],al
-   1fe31:	00 00                	add    BYTE PTR [rax],al
-   1fe33:	00 f1                	add    cl,dh
-   1fe35:	35 00 00 47 fe       	xor    eax,0xfe470000
-   1fe3a:	01 00                	add    DWORD PTR [rax],eax
-   1fe3c:	01 01                	add    DWORD PTR [rcx],eax
-   1fe3e:	55                   	push   rbp
-   1fe3f:	01 31                	add    DWORD PTR [rcx],esi
-   1fe41:	01 01                	add    DWORD PTR [rcx],eax
-   1fe43:	51                   	push   rcx
-   1fe44:	01 30                	add    DWORD PTR [rax],esi
-   1fe46:	00 04 56             	add    BYTE PTR [rsi+rdx*2],al
-   1fe49:	eb 43                	jmp    1fe8e <__abi_tag-0x3e0492>
-   1fe4b:	00 00                	add    BYTE PTR [rax],al
-   1fe4d:	00 00                	add    BYTE PTR [rax],al
-   1fe4f:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1fe52:	07                   	(bad)  
-   1fe53:	00 00                	add    BYTE PTR [rax],al
-   1fe55:	06                   	(bad)  
-   1fe56:	89 e4                	mov    esp,esp
-   1fe58:	00 00                	add    BYTE PTR [rax],al
-   1fe5a:	c1 fe 01             	sar    esi,0x1
-   1fe5d:	00 05 c3 80 00 00    	add    BYTE PTR [rip+0x80c3],al        # 27f26 <__abi_tag-0x3d83fa>
-   1fe63:	05 af 01 12 b5       	add    eax,0xb51201af
-   1fe68:	2c 00                	sub    al,0x0
-   1fe6a:	00 29                	add    BYTE PTR [rcx],ch
-   1fe6c:	52                   	push   rdx
-   1fe6d:	00 00                	add    BYTE PTR [rax],al
-   1fe6f:	23 52 00             	and    edx,DWORD PTR [rdx+0x0]
-   1fe72:	00 03                	add    BYTE PTR [rbx],al
-   1fe74:	d5                   	(bad)  
-   1fe75:	ea                   	(bad)  
-   1fe76:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fe79:	00 00                	add    BYTE PTR [rax],al
-   1fe7b:	00 c4                	add    ah,al
-   1fe7d:	35 00 00 97 fe       	xor    eax,0xfe970000
-   1fe82:	01 00                	add    DWORD PTR [rax],eax
-   1fe84:	01 01                	add    DWORD PTR [rcx],eax
-   1fe86:	55                   	push   rbp
-   1fe87:	09 03                	or     DWORD PTR [rbx],eax
-   1fe89:	90                   	nop
-   1fe8a:	f7 46 00 00 00 00 00 	test   DWORD PTR [rsi+0x0],0x0
-   1fe91:	01 01                	add    DWORD PTR [rcx],eax
-   1fe93:	54                   	push   rsp
-   1fe94:	01 35 00 07 08 eb    	add    DWORD PTR [rip+0xffffffffeb080700],esi        # ffffffffeb0a059a <_end+0xffffffffeabe4c82>
-   1fe9a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fe9d:	00 00                	add    BYTE PTR [rax],al
-   1fe9f:	00 f1                	add    cl,dh
-   1fea1:	35 00 00 b3 fe       	xor    eax,0xfeb30000
-   1fea6:	01 00                	add    DWORD PTR [rax],eax
-   1fea8:	01 01                	add    DWORD PTR [rcx],eax
-   1feaa:	55                   	push   rbp
-   1feab:	01 31                	add    DWORD PTR [rcx],esi
-   1fead:	01 01                	add    DWORD PTR [rcx],eax
-   1feaf:	51                   	push   rcx
-   1feb0:	01 30                	add    DWORD PTR [rax],esi
-   1feb2:	00 04 51             	add    BYTE PTR [rcx+rdx*2],al
-   1feb5:	eb 43                	jmp    1fefa <__abi_tag-0x3e0426>
-   1feb7:	00 00                	add    BYTE PTR [rax],al
-   1feb9:	00 00                	add    BYTE PTR [rax],al
-   1febb:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1febe:	07                   	(bad)  
-   1febf:	00 00                	add    BYTE PTR [rax],al
-   1fec1:	06                   	(bad)  
-   1fec2:	73 e4                	jae    1fea8 <__abi_tag-0x3e0478>
-   1fec4:	00 00                	add    BYTE PTR [rax],al
-   1fec6:	2d ff 01 00 05       	sub    eax,0x50001ff
-   1fecb:	cb                   	retf   
-   1fecc:	80 00 00             	add    BYTE PTR [rax],0x0
-   1fecf:	05 b0 01 12 b5       	add    eax,0xb51201b0
-   1fed4:	2c 00                	sub    al,0x0
-   1fed6:	00 48 52             	add    BYTE PTR [rax+0x52],cl
-   1fed9:	00 00                	add    BYTE PTR [rax],al
-   1fedb:	42 52                	rex.X push rdx
-   1fedd:	00 00                	add    BYTE PTR [rax],al
-   1fedf:	03 87 ea 43 00 00    	add    eax,DWORD PTR [rdi+0x43ea]
-   1fee5:	00 00                	add    BYTE PTR [rax],al
-   1fee7:	00 c4                	add    ah,al
-   1fee9:	35 00 00 03 ff       	xor    eax,0xff030000
-   1feee:	01 00                	add    DWORD PTR [rax],eax
-   1fef0:	01 01                	add    DWORD PTR [rcx],eax
-   1fef2:	55                   	push   rbp
-   1fef3:	09 03                	or     DWORD PTR [rbx],eax
-   1fef5:	96                   	xchg   esi,eax
-   1fef6:	f7 46 00 00 00 00 00 	test   DWORD PTR [rsi+0x0],0x0
-   1fefd:	01 01                	add    DWORD PTR [rcx],eax
-   1feff:	54                   	push   rsp
-   1ff00:	01 34 00             	add    DWORD PTR [rax+rax*1],esi
-   1ff03:	07                   	(bad)  
-   1ff04:	ba ea 43 00 00       	mov    edx,0x43ea
-   1ff09:	00 00                	add    BYTE PTR [rax],al
-   1ff0b:	00 f1                	add    cl,dh
-   1ff0d:	35 00 00 1f ff       	xor    eax,0xff1f0000
-   1ff12:	01 00                	add    DWORD PTR [rax],eax
-   1ff14:	01 01                	add    DWORD PTR [rcx],eax
-   1ff16:	55                   	push   rbp
-   1ff17:	01 31                	add    DWORD PTR [rcx],esi
-   1ff19:	01 01                	add    DWORD PTR [rcx],eax
-   1ff1b:	51                   	push   rcx
-   1ff1c:	01 30                	add    DWORD PTR [rax],esi
-   1ff1e:	00 04 c4             	add    BYTE PTR [rsp+rax*8],al
-   1ff21:	ea                   	(bad)  
-   1ff22:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1ff25:	00 00                	add    BYTE PTR [rax],al
-   1ff27:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1ff2a:	07                   	(bad)  
-   1ff2b:	00 00                	add    BYTE PTR [rax],al
-   1ff2d:	06                   	(bad)  
-   1ff2e:	5b                   	pop    rbx
-   1ff2f:	e4 00                	in     al,0x0
-   1ff31:	00 99 ff 01 00 05    	add    BYTE PTR [rcx+0x50001ff],bl
-   1ff37:	d3 80 00 00 05 ba    	rol    DWORD PTR [rax-0x45fb0000],cl
-   1ff3d:	01 12                	add    DWORD PTR [rdx],edx
-   1ff3f:	b5 2c                	mov    ch,0x2c
-   1ff41:	00 00                	add    BYTE PTR [rax],al
-   1ff43:	67 52                	addr32 push rdx
-   1ff45:	00 00                	add    BYTE PTR [rax],al
-   1ff47:	61                   	(bad)  
-   1ff48:	52                   	push   rdx
-   1ff49:	00 00                	add    BYTE PTR [rax],al
-   1ff4b:	03 43 ea             	add    eax,DWORD PTR [rbx-0x16]
-   1ff4e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1ff51:	00 00                	add    BYTE PTR [rax],al
-   1ff53:	00 c4                	add    ah,al
-   1ff55:	35 00 00 6f ff       	xor    eax,0xff6f0000
-   1ff5a:	01 00                	add    DWORD PTR [rax],eax
-   1ff5c:	01 01                	add    DWORD PTR [rcx],eax
-   1ff5e:	55                   	push   rbp
-   1ff5f:	09 03                	or     DWORD PTR [rbx],eax
-   1ff61:	9b                   	fwait
-   1ff62:	f7 46 00 00 00 00 00 	test   DWORD PTR [rsi+0x0],0x0
-   1ff69:	01 01                	add    DWORD PTR [rcx],eax
-   1ff6b:	54                   	push   rsp
-   1ff6c:	01 35 00 07 76 ea    	add    DWORD PTR [rip+0xffffffffea760700],esi        # ffffffffea780672 <_end+0xffffffffea2c4d5a>
-   1ff72:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1ff75:	00 00                	add    BYTE PTR [rax],al
-   1ff77:	00 f1                	add    cl,dh
-   1ff79:	35 00 00 8b ff       	xor    eax,0xff8b0000
-   1ff7e:	01 00                	add    DWORD PTR [rax],eax
-   1ff80:	01 01                	add    DWORD PTR [rcx],eax
-   1ff82:	55                   	push   rbp
-   1ff83:	01 31                	add    DWORD PTR [rcx],esi
-   1ff85:	01 01                	add    DWORD PTR [rcx],eax
-   1ff87:	51                   	push   rcx
-   1ff88:	01 30                	add    DWORD PTR [rax],esi
-   1ff8a:	00 04 bf             	add    BYTE PTR [rdi+rdi*4],al
-   1ff8d:	ea                   	(bad)  
-   1ff8e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1ff91:	00 00                	add    BYTE PTR [rax],al
-   1ff93:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   1ff96:	07                   	(bad)  
-   1ff97:	00 00                	add    BYTE PTR [rax],al
-   1ff99:	06                   	(bad)  
-   1ff9a:	45 e4 00             	rex.RB in al,0x0
-   1ff9d:	00 05 00 02 00 05    	add    BYTE PTR [rip+0x5000200],al        # 50201a3 <_end+0x4b6488b>
-   1ffa3:	db 80 00 00 05 bb    	fild   DWORD PTR [rax-0x44fb0000]
-   1ffa9:	01 12                	add    DWORD PTR [rdx],edx
-   1ffab:	b5 2c                	mov    ch,0x2c
-   1ffad:	00 00                	add    BYTE PTR [rax],al
-   1ffaf:	86 52 00             	xchg   BYTE PTR [rdx+0x0],dl
-   1ffb2:	00 80 52 00 00 03    	add    BYTE PTR [rax+0x3000052],al
-   1ffb8:	f5                   	cmc    
-   1ffb9:	e9 43 00 00 00       	jmp    20001 <__abi_tag-0x3e031f>
-   1ffbe:	00 00                	add    BYTE PTR [rax],al
-   1ffc0:	c4                   	(bad)  
-   1ffc1:	35 00 00 db ff       	xor    eax,0xffdb0000
-   1ffc6:	01 00                	add    DWORD PTR [rax],eax
-   1ffc8:	01 01                	add    DWORD PTR [rcx],eax
-   1ffca:	55                   	push   rbp
-   1ffcb:	09 03                	or     DWORD PTR [rbx],eax
-   1ffcd:	a1 f7 46 00 00 00 00 	movabs eax,ds:0x1000000000046f7
-   1ffd4:	00 01 
-   1ffd6:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   1ffda:	00 07                	add    BYTE PTR [rdi],al
-   1ffdc:	28 ea                	sub    dl,ch
-   1ffde:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1ffe1:	00 00                	add    BYTE PTR [rax],al
-   1ffe3:	00 f1                	add    cl,dh
-   1ffe5:	35 00 00 f7 ff       	xor    eax,0xfff70000
-   1ffea:	01 00                	add    DWORD PTR [rax],eax
-   1ffec:	01 01                	add    DWORD PTR [rcx],eax
-   1ffee:	55                   	push   rbp
-   1ffef:	01 31                	add    DWORD PTR [rcx],esi
-   1fff1:	01 01                	add    DWORD PTR [rcx],eax
-   1fff3:	51                   	push   rcx
-   1fff4:	01 30                	add    DWORD PTR [rax],esi
-   1fff6:	00 04 32             	add    BYTE PTR [rdx+rsi*1],al
-   1fff9:	ea                   	(bad)  
-   1fffa:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   1fffd:	00 00                	add    BYTE PTR [rax],al
-   1ffff:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20002:	07                   	(bad)  
-   20003:	00 00                	add    BYTE PTR [rax],al
-   20005:	06                   	(bad)  
-   20006:	2d e4 00 00 71       	sub    eax,0x710000e4
-   2000b:	00 02                	add    BYTE PTR [rdx],al
-   2000d:	00 05 e3 80 00 00    	add    BYTE PTR [rip+0x80e3],al        # 280f6 <__abi_tag-0x3d822a>
-   20013:	05 bc 01 12 b5       	add    eax,0xb51201bc
-   20018:	2c 00                	sub    al,0x0
-   2001a:	00 a5 52 00 00 9f    	add    BYTE PTR [rbp-0x60ffffae],ah
-   20020:	52                   	push   rdx
-   20021:	00 00                	add    BYTE PTR [rax],al
-   20023:	03 b1 e9 43 00 00    	add    esi,DWORD PTR [rcx+0x43e9]
-   20029:	00 00                	add    BYTE PTR [rax],al
-   2002b:	00 c4                	add    ah,al
-   2002d:	35 00 00 47 00       	xor    eax,0x470000
-   20032:	02 00                	add    al,BYTE PTR [rax]
-   20034:	01 01                	add    DWORD PTR [rcx],eax
-   20036:	55                   	push   rbp
-   20037:	09 03                	or     DWORD PTR [rbx],eax
-   20039:	a7                   	cmps   DWORD PTR ds:[rsi],DWORD PTR es:[rdi]
-   2003a:	f7 46 00 00 00 00 00 	test   DWORD PTR [rsi+0x0],0x0
-   20041:	01 01                	add    DWORD PTR [rcx],eax
-   20043:	54                   	push   rsp
-   20044:	01 3a                	add    DWORD PTR [rdx],edi
-   20046:	00 07                	add    BYTE PTR [rdi],al
-   20048:	e4 e9                	in     al,0xe9
-   2004a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   2004d:	00 00                	add    BYTE PTR [rax],al
-   2004f:	00 f1                	add    cl,dh
-   20051:	35 00 00 63 00       	xor    eax,0x630000
-   20056:	02 00                	add    al,BYTE PTR [rax]
-   20058:	01 01                	add    DWORD PTR [rcx],eax
-   2005a:	55                   	push   rbp
-   2005b:	01 31                	add    DWORD PTR [rcx],esi
-   2005d:	01 01                	add    DWORD PTR [rcx],eax
-   2005f:	51                   	push   rcx
-   20060:	01 30                	add    DWORD PTR [rax],esi
-   20062:	00 04 2d ea 43 00 00 	add    BYTE PTR [rbp*1+0x43ea],al
-   20069:	00 00                	add    BYTE PTR [rax],al
-   2006b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   2006e:	07                   	(bad)  
-   2006f:	00 00                	add    BYTE PTR [rax],al
-   20071:	06                   	(bad)  
-   20072:	17                   	(bad)  
-   20073:	e4 00                	in     al,0x0
-   20075:	00 dd                	add    ch,bl
-   20077:	00 02                	add    BYTE PTR [rdx],al
-   20079:	00 05 eb 80 00 00    	add    BYTE PTR [rip+0x80eb],al        # 2816a <__abi_tag-0x3d81b6>
-   2007f:	05 bd 01 12 b5       	add    eax,0xb51201bd
-   20084:	2c 00                	sub    al,0x0
-   20086:	00 c4                	add    ah,al
-   20088:	52                   	push   rdx
-   20089:	00 00                	add    BYTE PTR [rax],al
-   2008b:	be 52 00 00 03       	mov    esi,0x3000052
-   20090:	63 e9                	movsxd ebp,ecx
-   20092:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20095:	00 00                	add    BYTE PTR [rax],al
-   20097:	00 c4                	add    ah,al
-   20099:	35 00 00 b3 00       	xor    eax,0xb30000
-   2009e:	02 00                	add    al,BYTE PTR [rax]
-   200a0:	01 01                	add    DWORD PTR [rcx],eax
-   200a2:	55                   	push   rbp
-   200a3:	09 03                	or     DWORD PTR [rbx],eax
-   200a5:	b2 f7                	mov    dl,0xf7
-   200a7:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   200aa:	00 00                	add    BYTE PTR [rax],al
-   200ac:	00 01                	add    BYTE PTR [rcx],al
-   200ae:	01 54 01 3a          	add    DWORD PTR [rcx+rax*1+0x3a],edx
-   200b2:	00 07                	add    BYTE PTR [rdi],al
-   200b4:	96                   	xchg   esi,eax
-   200b5:	e9 43 00 00 00       	jmp    200fd <__abi_tag-0x3e0223>
-   200ba:	00 00                	add    BYTE PTR [rax],al
-   200bc:	f1                   	icebp  
-   200bd:	35 00 00 cf 00       	xor    eax,0xcf0000
-   200c2:	02 00                	add    al,BYTE PTR [rax]
-   200c4:	01 01                	add    DWORD PTR [rcx],eax
-   200c6:	55                   	push   rbp
-   200c7:	01 31                	add    DWORD PTR [rcx],esi
-   200c9:	01 01                	add    DWORD PTR [rcx],eax
-   200cb:	51                   	push   rcx
-   200cc:	01 30                	add    DWORD PTR [rax],esi
-   200ce:	00 04 a0             	add    BYTE PTR [rax+riz*4],al
-   200d1:	e9 43 00 00 00       	jmp    20119 <__abi_tag-0x3e0207>
-   200d6:	00 00                	add    BYTE PTR [rax],al
-   200d8:	75 2d                	jne    20107 <__abi_tag-0x3e0219>
-   200da:	07                   	(bad)  
-   200db:	00 00                	add    BYTE PTR [rax],al
-   200dd:	06                   	(bad)  
-   200de:	ff e3                	jmp    rbx
-   200e0:	00 00                	add    BYTE PTR [rax],al
-   200e2:	49 01 02             	add    QWORD PTR [r10],rax
-   200e5:	00 05 f3 80 00 00    	add    BYTE PTR [rip+0x80f3],al        # 281de <__abi_tag-0x3d8142>
-   200eb:	05 be 01 12 b5       	add    eax,0xb51201be
-   200f0:	2c 00                	sub    al,0x0
-   200f2:	00 e3                	add    bl,ah
-   200f4:	52                   	push   rdx
-   200f5:	00 00                	add    BYTE PTR [rax],al
-   200f7:	dd 52 00             	fst    QWORD PTR [rdx+0x0]
-   200fa:	00 03                	add    BYTE PTR [rbx],al
-   200fc:	1f                   	(bad)  
-   200fd:	e9 43 00 00 00       	jmp    20145 <__abi_tag-0x3e01db>
-   20102:	00 00                	add    BYTE PTR [rax],al
-   20104:	c4                   	(bad)  
-   20105:	35 00 00 1f 01       	xor    eax,0x11f0000
-   2010a:	02 00                	add    al,BYTE PTR [rax]
-   2010c:	01 01                	add    DWORD PTR [rcx],eax
-   2010e:	55                   	push   rbp
-   2010f:	09 03                	or     DWORD PTR [rbx],eax
-   20111:	bd f7 46 00 00       	mov    ebp,0x46f7
-   20116:	00 00                	add    BYTE PTR [rax],al
-   20118:	00 01                	add    BYTE PTR [rcx],al
-   2011a:	01 54 01 3a          	add    DWORD PTR [rcx+rax*1+0x3a],edx
-   2011e:	00 07                	add    BYTE PTR [rdi],al
-   20120:	52                   	push   rdx
-   20121:	e9 43 00 00 00       	jmp    20169 <__abi_tag-0x3e01b7>
-   20126:	00 00                	add    BYTE PTR [rax],al
-   20128:	f1                   	icebp  
-   20129:	35 00 00 3b 01       	xor    eax,0x13b0000
-   2012e:	02 00                	add    al,BYTE PTR [rax]
-   20130:	01 01                	add    DWORD PTR [rcx],eax
-   20132:	55                   	push   rbp
-   20133:	01 31                	add    DWORD PTR [rcx],esi
-   20135:	01 01                	add    DWORD PTR [rcx],eax
-   20137:	51                   	push   rcx
-   20138:	01 30                	add    DWORD PTR [rax],esi
-   2013a:	00 04 9b             	add    BYTE PTR [rbx+rbx*4],al
-   2013d:	e9 43 00 00 00       	jmp    20185 <__abi_tag-0x3e019b>
-   20142:	00 00                	add    BYTE PTR [rax],al
-   20144:	75 2d                	jne    20173 <__abi_tag-0x3e01ad>
-   20146:	07                   	(bad)  
-   20147:	00 00                	add    BYTE PTR [rax],al
-   20149:	06                   	(bad)  
-   2014a:	e9 e3 00 00 b5       	jmp    ffffffffb5020232 <_end+0xffffffffb4b6491a>
-   2014f:	01 02                	add    DWORD PTR [rdx],eax
-   20151:	00 05 fb 80 00 00    	add    BYTE PTR [rip+0x80fb],al        # 28252 <__abi_tag-0x3d80ce>
-   20157:	05 c0 01 12 b5       	add    eax,0xb51201c0
-   2015c:	2c 00                	sub    al,0x0
-   2015e:	00 02                	add    BYTE PTR [rdx],al
-   20160:	53                   	push   rbx
-   20161:	00 00                	add    BYTE PTR [rax],al
-   20163:	fc                   	cld    
-   20164:	52                   	push   rdx
-   20165:	00 00                	add    BYTE PTR [rax],al
-   20167:	03 d1                	add    edx,ecx
-   20169:	e8 43 00 00 00       	call   201b1 <__abi_tag-0x3e016f>
-   2016e:	00 00                	add    BYTE PTR [rax],al
-   20170:	c4                   	(bad)  
-   20171:	35 00 00 8b 01       	xor    eax,0x18b0000
-   20176:	02 00                	add    al,BYTE PTR [rax]
-   20178:	01 01                	add    DWORD PTR [rcx],eax
-   2017a:	55                   	push   rbp
-   2017b:	09 03                	or     DWORD PTR [rbx],eax
-   2017d:	c8 f7 46 00          	enter  0x46f7,0x0
-   20181:	00 00                	add    BYTE PTR [rax],al
-   20183:	00 00                	add    BYTE PTR [rax],al
-   20185:	01 01                	add    DWORD PTR [rcx],eax
-   20187:	54                   	push   rsp
-   20188:	01 35 00 07 04 e9    	add    DWORD PTR [rip+0xffffffffe9040700],esi        # ffffffffe906088e <_end+0xffffffffe8ba4f76>
-   2018e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20191:	00 00                	add    BYTE PTR [rax],al
-   20193:	00 f1                	add    cl,dh
-   20195:	35 00 00 a7 01       	xor    eax,0x1a70000
-   2019a:	02 00                	add    al,BYTE PTR [rax]
-   2019c:	01 01                	add    DWORD PTR [rcx],eax
-   2019e:	55                   	push   rbp
-   2019f:	01 31                	add    DWORD PTR [rcx],esi
-   201a1:	01 01                	add    DWORD PTR [rcx],eax
-   201a3:	51                   	push   rcx
-   201a4:	01 30                	add    DWORD PTR [rax],esi
-   201a6:	00 04 0e             	add    BYTE PTR [rsi+rcx*1],al
-   201a9:	e9 43 00 00 00       	jmp    201f1 <__abi_tag-0x3e012f>
-   201ae:	00 00                	add    BYTE PTR [rax],al
-   201b0:	75 2d                	jne    201df <__abi_tag-0x3e0141>
-   201b2:	07                   	(bad)  
-   201b3:	00 00                	add    BYTE PTR [rax],al
-   201b5:	06                   	(bad)  
-   201b6:	d1 e3                	shl    ebx,1
-   201b8:	00 00                	add    BYTE PTR [rax],al
-   201ba:	21 02                	and    DWORD PTR [rdx],eax
-   201bc:	02 00                	add    al,BYTE PTR [rax]
-   201be:	05 03 81 00 00       	add    eax,0x8103
-   201c3:	05 c1 01 12 b5       	add    eax,0xb51201c1
-   201c8:	2c 00                	sub    al,0x0
-   201ca:	00 21                	add    BYTE PTR [rcx],ah
-   201cc:	53                   	push   rbx
-   201cd:	00 00                	add    BYTE PTR [rax],al
-   201cf:	1b 53 00             	sbb    edx,DWORD PTR [rbx+0x0]
-   201d2:	00 03                	add    BYTE PTR [rbx],al
-   201d4:	8d                   	(bad)  
-   201d5:	e8 43 00 00 00       	call   2021d <__abi_tag-0x3e0103>
-   201da:	00 00                	add    BYTE PTR [rax],al
-   201dc:	c4                   	(bad)  
-   201dd:	35 00 00 f7 01       	xor    eax,0x1f70000
-   201e2:	02 00                	add    al,BYTE PTR [rax]
-   201e4:	01 01                	add    DWORD PTR [rcx],eax
-   201e6:	55                   	push   rbp
-   201e7:	09 03                	or     DWORD PTR [rbx],eax
-   201e9:	ce                   	(bad)  
-   201ea:	f7 46 00 00 00 00 00 	test   DWORD PTR [rsi+0x0],0x0
-   201f1:	01 01                	add    DWORD PTR [rcx],eax
-   201f3:	54                   	push   rsp
-   201f4:	01 38                	add    DWORD PTR [rax],edi
-   201f6:	00 07                	add    BYTE PTR [rdi],al
-   201f8:	c0 e8 43             	shr    al,0x43
-   201fb:	00 00                	add    BYTE PTR [rax],al
-   201fd:	00 00                	add    BYTE PTR [rax],al
-   201ff:	00 f1                	add    cl,dh
-   20201:	35 00 00 13 02       	xor    eax,0x2130000
-   20206:	02 00                	add    al,BYTE PTR [rax]
-   20208:	01 01                	add    DWORD PTR [rcx],eax
-   2020a:	55                   	push   rbp
-   2020b:	01 31                	add    DWORD PTR [rcx],esi
-   2020d:	01 01                	add    DWORD PTR [rcx],eax
-   2020f:	51                   	push   rcx
-   20210:	01 30                	add    DWORD PTR [rax],esi
-   20212:	00 04 09             	add    BYTE PTR [rcx+rcx*1],al
-   20215:	e9 43 00 00 00       	jmp    2025d <__abi_tag-0x3e00c3>
-   2021a:	00 00                	add    BYTE PTR [rax],al
-   2021c:	75 2d                	jne    2024b <__abi_tag-0x3e00d5>
-   2021e:	07                   	(bad)  
-   2021f:	00 00                	add    BYTE PTR [rax],al
-   20221:	06                   	(bad)  
-   20222:	bb e3 00 00 8d       	mov    ebx,0x8d0000e3
-   20227:	02 02                	add    al,BYTE PTR [rdx]
-   20229:	00 05 33 49 01 00    	add    BYTE PTR [rip+0x14933],al        # 34b62 <__abi_tag-0x3cb7be>
-   2022f:	05 c2 01 12 b5       	add    eax,0xb51201c2
-   20234:	2c 00                	sub    al,0x0
-   20236:	00 40 53             	add    BYTE PTR [rax+0x53],al
-   20239:	00 00                	add    BYTE PTR [rax],al
-   2023b:	3a 53 00             	cmp    dl,BYTE PTR [rbx+0x0]
-   2023e:	00 03                	add    BYTE PTR [rbx],al
-   20240:	3f                   	(bad)  
-   20241:	e8 43 00 00 00       	call   20289 <__abi_tag-0x3e0097>
-   20246:	00 00                	add    BYTE PTR [rax],al
-   20248:	c4                   	(bad)  
-   20249:	35 00 00 63 02       	xor    eax,0x2630000
-   2024e:	02 00                	add    al,BYTE PTR [rax]
-   20250:	01 01                	add    DWORD PTR [rcx],eax
-   20252:	55                   	push   rbp
-   20253:	09 03                	or     DWORD PTR [rbx],eax
-   20255:	d7                   	xlat   BYTE PTR ds:[rbx]
-   20256:	f7 46 00 00 00 00 00 	test   DWORD PTR [rsi+0x0],0x0
-   2025d:	01 01                	add    DWORD PTR [rcx],eax
-   2025f:	54                   	push   rsp
-   20260:	01 34 00             	add    DWORD PTR [rax+rax*1],esi
-   20263:	07                   	(bad)  
-   20264:	72 e8                	jb     2024e <__abi_tag-0x3e00d2>
-   20266:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20269:	00 00                	add    BYTE PTR [rax],al
-   2026b:	00 f1                	add    cl,dh
-   2026d:	35 00 00 7f 02       	xor    eax,0x27f0000
-   20272:	02 00                	add    al,BYTE PTR [rax]
-   20274:	01 01                	add    DWORD PTR [rcx],eax
-   20276:	55                   	push   rbp
-   20277:	01 31                	add    DWORD PTR [rcx],esi
-   20279:	01 01                	add    DWORD PTR [rcx],eax
-   2027b:	51                   	push   rcx
-   2027c:	01 30                	add    DWORD PTR [rax],esi
-   2027e:	00 04 7c             	add    BYTE PTR [rsp+rdi*2],al
-   20281:	e8 43 00 00 00       	call   202c9 <__abi_tag-0x3e0057>
-   20286:	00 00                	add    BYTE PTR [rax],al
-   20288:	75 2d                	jne    202b7 <__abi_tag-0x3e0069>
-   2028a:	07                   	(bad)  
-   2028b:	00 00                	add    BYTE PTR [rax],al
-   2028d:	06                   	(bad)  
-   2028e:	a3 e3 00 00 f9 02 02 	movabs ds:0x5000202f90000e3,eax
-   20295:	00 05 
-   20297:	ca 81 00             	retf   0x81
-   2029a:	00 05 c3 01 12 b5    	add    BYTE PTR [rip+0xffffffffb51201c3],al        # ffffffffb5140463 <_end+0xffffffffb4c84b4b>
-   202a0:	2c 00                	sub    al,0x0
-   202a2:	00 5f 53             	add    BYTE PTR [rdi+0x53],bl
-   202a5:	00 00                	add    BYTE PTR [rax],al
-   202a7:	59                   	pop    rcx
-   202a8:	53                   	push   rbx
-   202a9:	00 00                	add    BYTE PTR [rax],al
-   202ab:	03 fb                	add    edi,ebx
-   202ad:	e7 43                	out    0x43,eax
-   202af:	00 00                	add    BYTE PTR [rax],al
-   202b1:	00 00                	add    BYTE PTR [rax],al
-   202b3:	00 c4                	add    ah,al
-   202b5:	35 00 00 cf 02       	xor    eax,0x2cf0000
-   202ba:	02 00                	add    al,BYTE PTR [rax]
-   202bc:	01 01                	add    DWORD PTR [rcx],eax
-   202be:	55                   	push   rbp
-   202bf:	09 03                	or     DWORD PTR [rbx],eax
-   202c1:	dc f7                	fdivr  st(7),st
-   202c3:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   202c6:	00 00                	add    BYTE PTR [rax],al
-   202c8:	00 01                	add    BYTE PTR [rcx],al
-   202ca:	01 54 01 38          	add    DWORD PTR [rcx+rax*1+0x38],edx
-   202ce:	00 07                	add    BYTE PTR [rdi],al
-   202d0:	2e e8 43 00 00 00    	cs call 20319 <__abi_tag-0x3e0007>
-   202d6:	00 00                	add    BYTE PTR [rax],al
-   202d8:	f1                   	icebp  
-   202d9:	35 00 00 eb 02       	xor    eax,0x2eb0000
-   202de:	02 00                	add    al,BYTE PTR [rax]
-   202e0:	01 01                	add    DWORD PTR [rcx],eax
-   202e2:	55                   	push   rbp
-   202e3:	01 31                	add    DWORD PTR [rcx],esi
-   202e5:	01 01                	add    DWORD PTR [rcx],eax
-   202e7:	51                   	push   rcx
-   202e8:	01 30                	add    DWORD PTR [rax],esi
-   202ea:	00 04 77             	add    BYTE PTR [rdi+rsi*2],al
-   202ed:	e8 43 00 00 00       	call   20335 <__abi_tag-0x3dffeb>
-   202f2:	00 00                	add    BYTE PTR [rax],al
-   202f4:	75 2d                	jne    20323 <__abi_tag-0x3dfffd>
-   202f6:	07                   	(bad)  
-   202f7:	00 00                	add    BYTE PTR [rax],al
-   202f9:	06                   	(bad)  
-   202fa:	8d                   	(bad)  
-   202fb:	e3 00                	jrcxz  202fd <__abi_tag-0x3e0023>
-   202fd:	00 65 03             	add    BYTE PTR [rbp+0x3],ah
-   20300:	02 00                	add    al,BYTE PTR [rax]
-   20302:	05 d2 81 00 00       	add    eax,0x81d2
-   20307:	05 c4 01 12 b5       	add    eax,0xb51201c4
-   2030c:	2c 00                	sub    al,0x0
-   2030e:	00 7e 53             	add    BYTE PTR [rsi+0x53],bh
-   20311:	00 00                	add    BYTE PTR [rax],al
-   20313:	78 53                	js     20368 <__abi_tag-0x3dffb8>
-   20315:	00 00                	add    BYTE PTR [rax],al
-   20317:	03 ad e7 43 00 00    	add    ebp,DWORD PTR [rbp+0x43e7]
-   2031d:	00 00                	add    BYTE PTR [rax],al
-   2031f:	00 c4                	add    ah,al
-   20321:	35 00 00 3b 03       	xor    eax,0x33b0000
-   20326:	02 00                	add    al,BYTE PTR [rax]
-   20328:	01 01                	add    DWORD PTR [rcx],eax
-   2032a:	55                   	push   rbp
-   2032b:	09 03                	or     DWORD PTR [rbx],eax
-   2032d:	e5 f7                	in     eax,0xf7
-   2032f:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   20332:	00 00                	add    BYTE PTR [rax],al
-   20334:	00 01                	add    BYTE PTR [rcx],al
-   20336:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   2033a:	00 07                	add    BYTE PTR [rdi],al
-   2033c:	e0 e7                	loopne 20325 <__abi_tag-0x3dfffb>
-   2033e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20341:	00 00                	add    BYTE PTR [rax],al
-   20343:	00 f1                	add    cl,dh
-   20345:	35 00 00 57 03       	xor    eax,0x3570000
-   2034a:	02 00                	add    al,BYTE PTR [rax]
-   2034c:	01 01                	add    DWORD PTR [rcx],eax
-   2034e:	55                   	push   rbp
-   2034f:	01 31                	add    DWORD PTR [rcx],esi
-   20351:	01 01                	add    DWORD PTR [rcx],eax
-   20353:	51                   	push   rcx
-   20354:	01 30                	add    DWORD PTR [rax],esi
-   20356:	00 04 ea             	add    BYTE PTR [rdx+rbp*8],al
-   20359:	e7 43                	out    0x43,eax
-   2035b:	00 00                	add    BYTE PTR [rax],al
-   2035d:	00 00                	add    BYTE PTR [rax],al
-   2035f:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20362:	07                   	(bad)  
-   20363:	00 00                	add    BYTE PTR [rax],al
-   20365:	06                   	(bad)  
-   20366:	75 e3                	jne    2034b <__abi_tag-0x3dffd5>
-   20368:	00 00                	add    BYTE PTR [rax],al
-   2036a:	d1 03                	rol    DWORD PTR [rbx],1
-   2036c:	02 00                	add    al,BYTE PTR [rax]
-   2036e:	05 da 81 00 00       	add    eax,0x81da
-   20373:	05 c5 01 12 b5       	add    eax,0xb51201c5
-   20378:	2c 00                	sub    al,0x0
-   2037a:	00 9d 53 00 00 97    	add    BYTE PTR [rbp-0x68ffffad],bl
-   20380:	53                   	push   rbx
-   20381:	00 00                	add    BYTE PTR [rax],al
-   20383:	03 69 e7             	add    ebp,DWORD PTR [rcx-0x19]
-   20386:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20389:	00 00                	add    BYTE PTR [rax],al
-   2038b:	00 c4                	add    ah,al
-   2038d:	35 00 00 a7 03       	xor    eax,0x3a70000
-   20392:	02 00                	add    al,BYTE PTR [rax]
-   20394:	01 01                	add    DWORD PTR [rcx],eax
-   20396:	55                   	push   rbp
-   20397:	09 03                	or     DWORD PTR [rbx],eax
-   20399:	eb f7                	jmp    20392 <__abi_tag-0x3dff8e>
-   2039b:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   2039e:	00 00                	add    BYTE PTR [rax],al
-   203a0:	00 01                	add    BYTE PTR [rcx],al
-   203a2:	01 54 01 39          	add    DWORD PTR [rcx+rax*1+0x39],edx
-   203a6:	00 07                	add    BYTE PTR [rdi],al
-   203a8:	9c                   	pushf  
-   203a9:	e7 43                	out    0x43,eax
-   203ab:	00 00                	add    BYTE PTR [rax],al
-   203ad:	00 00                	add    BYTE PTR [rax],al
-   203af:	00 f1                	add    cl,dh
-   203b1:	35 00 00 c3 03       	xor    eax,0x3c30000
-   203b6:	02 00                	add    al,BYTE PTR [rax]
-   203b8:	01 01                	add    DWORD PTR [rcx],eax
-   203ba:	55                   	push   rbp
-   203bb:	01 31                	add    DWORD PTR [rcx],esi
-   203bd:	01 01                	add    DWORD PTR [rcx],eax
-   203bf:	51                   	push   rcx
-   203c0:	01 30                	add    DWORD PTR [rax],esi
-   203c2:	00 04 e5 e7 43 00 00 	add    BYTE PTR [riz*8+0x43e7],al
-   203c9:	00 00                	add    BYTE PTR [rax],al
-   203cb:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   203ce:	07                   	(bad)  
-   203cf:	00 00                	add    BYTE PTR [rax],al
-   203d1:	06                   	(bad)  
-   203d2:	5f                   	pop    rdi
-   203d3:	e3 00                	jrcxz  203d5 <__abi_tag-0x3dff4b>
-   203d5:	00 3d 04 02 00 05    	add    BYTE PTR [rip+0x5000204],bh        # 50205df <_end+0x4b64cc7>
-   203db:	e2 81                	loop   2035e <__abi_tag-0x3dffc2>
-   203dd:	00 00                	add    BYTE PTR [rax],al
-   203df:	05 c6 01 12 b5       	add    eax,0xb51201c6
-   203e4:	2c 00                	sub    al,0x0
-   203e6:	00 bc 53 00 00 b6 53 	add    BYTE PTR [rbx+rdx*2+0x53b60000],bh
-   203ed:	00 00                	add    BYTE PTR [rax],al
-   203ef:	03 1b                	add    ebx,DWORD PTR [rbx]
-   203f1:	e7 43                	out    0x43,eax
-   203f3:	00 00                	add    BYTE PTR [rax],al
-   203f5:	00 00                	add    BYTE PTR [rax],al
-   203f7:	00 c4                	add    ah,al
-   203f9:	35 00 00 13 04       	xor    eax,0x4130000
-   203fe:	02 00                	add    al,BYTE PTR [rax]
-   20400:	01 01                	add    DWORD PTR [rcx],eax
-   20402:	55                   	push   rbp
-   20403:	09 03                	or     DWORD PTR [rbx],eax
-   20405:	f5                   	cmc    
-   20406:	f7 46 00 00 00 00 00 	test   DWORD PTR [rsi+0x0],0x0
-   2040d:	01 01                	add    DWORD PTR [rcx],eax
-   2040f:	54                   	push   rsp
-   20410:	01 35 00 07 4e e7    	add    DWORD PTR [rip+0xffffffffe74e0700],esi        # ffffffffe7500b16 <_end+0xffffffffe70451fe>
-   20416:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20419:	00 00                	add    BYTE PTR [rax],al
-   2041b:	00 f1                	add    cl,dh
-   2041d:	35 00 00 2f 04       	xor    eax,0x42f0000
-   20422:	02 00                	add    al,BYTE PTR [rax]
-   20424:	01 01                	add    DWORD PTR [rcx],eax
-   20426:	55                   	push   rbp
-   20427:	01 31                	add    DWORD PTR [rcx],esi
-   20429:	01 01                	add    DWORD PTR [rcx],eax
-   2042b:	51                   	push   rcx
-   2042c:	01 30                	add    DWORD PTR [rax],esi
-   2042e:	00 04 58             	add    BYTE PTR [rax+rbx*2],al
-   20431:	e7 43                	out    0x43,eax
-   20433:	00 00                	add    BYTE PTR [rax],al
-   20435:	00 00                	add    BYTE PTR [rax],al
-   20437:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   2043a:	07                   	(bad)  
-   2043b:	00 00                	add    BYTE PTR [rax],al
-   2043d:	06                   	(bad)  
-   2043e:	47 e3 00             	rex.RXB jrcxz 20441 <__abi_tag-0x3dfedf>
-   20441:	00 a9 04 02 00 05    	add    BYTE PTR [rcx+0x5000204],ch
-   20447:	ea                   	(bad)  
-   20448:	81 00 00 05 c7 01    	add    DWORD PTR [rax],0x1c70500
-   2044e:	12 b5 2c 00 00 db    	adc    dh,BYTE PTR [rbp-0x24ffffd4]
-   20454:	53                   	push   rbx
-   20455:	00 00                	add    BYTE PTR [rax],al
-   20457:	d5                   	(bad)  
-   20458:	53                   	push   rbx
-   20459:	00 00                	add    BYTE PTR [rax],al
-   2045b:	03 d7                	add    edx,edi
-   2045d:	e6 43                	out    0x43,al
-   2045f:	00 00                	add    BYTE PTR [rax],al
-   20461:	00 00                	add    BYTE PTR [rax],al
-   20463:	00 c4                	add    ah,al
-   20465:	35 00 00 7f 04       	xor    eax,0x47f0000
-   2046a:	02 00                	add    al,BYTE PTR [rax]
-   2046c:	01 01                	add    DWORD PTR [rcx],eax
-   2046e:	55                   	push   rbp
-   2046f:	09 03                	or     DWORD PTR [rbx],eax
-   20471:	fb                   	sti    
-   20472:	f7 46 00 00 00 00 00 	test   DWORD PTR [rsi+0x0],0x0
-   20479:	01 01                	add    DWORD PTR [rcx],eax
-   2047b:	54                   	push   rsp
-   2047c:	01 35 00 07 0a e7    	add    DWORD PTR [rip+0xffffffffe70a0700],esi        # ffffffffe70c0b82 <_end+0xffffffffe6c0526a>
-   20482:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20485:	00 00                	add    BYTE PTR [rax],al
-   20487:	00 f1                	add    cl,dh
-   20489:	35 00 00 9b 04       	xor    eax,0x49b0000
-   2048e:	02 00                	add    al,BYTE PTR [rax]
-   20490:	01 01                	add    DWORD PTR [rcx],eax
-   20492:	55                   	push   rbp
-   20493:	01 31                	add    DWORD PTR [rcx],esi
-   20495:	01 01                	add    DWORD PTR [rcx],eax
-   20497:	51                   	push   rcx
-   20498:	01 30                	add    DWORD PTR [rax],esi
-   2049a:	00 04 53             	add    BYTE PTR [rbx+rdx*2],al
-   2049d:	e7 43                	out    0x43,eax
-   2049f:	00 00                	add    BYTE PTR [rax],al
-   204a1:	00 00                	add    BYTE PTR [rax],al
-   204a3:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   204a6:	07                   	(bad)  
-   204a7:	00 00                	add    BYTE PTR [rax],al
-   204a9:	06                   	(bad)  
-   204aa:	31 e3                	xor    ebx,esp
-   204ac:	00 00                	add    BYTE PTR [rax],al
-   204ae:	15 05 02 00 05       	adc    eax,0x5000205
-   204b3:	f2 81 00 00 05 c8 01 	repnz add DWORD PTR [rax],0x1c80500
-   204ba:	12 b5 2c 00 00 fa    	adc    dh,BYTE PTR [rbp-0x5ffffd4]
-   204c0:	53                   	push   rbx
-   204c1:	00 00                	add    BYTE PTR [rax],al
-   204c3:	f4                   	hlt    
-   204c4:	53                   	push   rbx
-   204c5:	00 00                	add    BYTE PTR [rax],al
-   204c7:	03 89 e6 43 00 00    	add    ecx,DWORD PTR [rcx+0x43e6]
-   204cd:	00 00                	add    BYTE PTR [rax],al
-   204cf:	00 c4                	add    ah,al
-   204d1:	35 00 00 eb 04       	xor    eax,0x4eb0000
-   204d6:	02 00                	add    al,BYTE PTR [rax]
-   204d8:	01 01                	add    DWORD PTR [rcx],eax
-   204da:	55                   	push   rbp
-   204db:	09 03                	or     DWORD PTR [rbx],eax
-   204dd:	01 f8                	add    eax,edi
-   204df:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   204e2:	00 00                	add    BYTE PTR [rax],al
-   204e4:	00 01                	add    BYTE PTR [rcx],al
-   204e6:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   204ea:	00 07                	add    BYTE PTR [rdi],al
-   204ec:	bc e6 43 00 00       	mov    esp,0x43e6
-   204f1:	00 00                	add    BYTE PTR [rax],al
-   204f3:	00 f1                	add    cl,dh
-   204f5:	35 00 00 07 05       	xor    eax,0x5070000
-   204fa:	02 00                	add    al,BYTE PTR [rax]
-   204fc:	01 01                	add    DWORD PTR [rcx],eax
-   204fe:	55                   	push   rbp
-   204ff:	01 31                	add    DWORD PTR [rcx],esi
-   20501:	01 01                	add    DWORD PTR [rcx],eax
-   20503:	51                   	push   rcx
-   20504:	01 30                	add    DWORD PTR [rax],esi
-   20506:	00 04 c6             	add    BYTE PTR [rsi+rax*8],al
-   20509:	e6 43                	out    0x43,al
-   2050b:	00 00                	add    BYTE PTR [rax],al
-   2050d:	00 00                	add    BYTE PTR [rax],al
-   2050f:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20512:	07                   	(bad)  
-   20513:	00 00                	add    BYTE PTR [rax],al
-   20515:	06                   	(bad)  
-   20516:	19 e3                	sbb    ebx,esp
-   20518:	00 00                	add    BYTE PTR [rax],al
-   2051a:	81 05 02 00 05 fa 81 	add    DWORD PTR [rip+0xfffffffffa050002],0x5000081        # fffffffffa070526 <_end+0xfffffffff9bb4c0e>
-   20521:	00 00 05 
-   20524:	cd 01                	int    0x1
-   20526:	12 b5 2c 00 00 19    	adc    dh,BYTE PTR [rbp+0x1900002c]
-   2052c:	54                   	push   rsp
-   2052d:	00 00                	add    BYTE PTR [rax],al
-   2052f:	13 54 00 00          	adc    edx,DWORD PTR [rax+rax*1+0x0]
-   20533:	03 45 e6             	add    eax,DWORD PTR [rbp-0x1a]
-   20536:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20539:	00 00                	add    BYTE PTR [rax],al
-   2053b:	00 c4                	add    ah,al
-   2053d:	35 00 00 57 05       	xor    eax,0x5570000
-   20542:	02 00                	add    al,BYTE PTR [rax]
-   20544:	01 01                	add    DWORD PTR [rcx],eax
-   20546:	55                   	push   rbp
-   20547:	09 03                	or     DWORD PTR [rbx],eax
-   20549:	89 f7                	mov    edi,esi
-   2054b:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   2054e:	00 00                	add    BYTE PTR [rax],al
-   20550:	00 01                	add    BYTE PTR [rcx],al
-   20552:	01 54 01 32          	add    DWORD PTR [rcx+rax*1+0x32],edx
-   20556:	00 07                	add    BYTE PTR [rdi],al
-   20558:	78 e6                	js     20540 <__abi_tag-0x3dfde0>
-   2055a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   2055d:	00 00                	add    BYTE PTR [rax],al
-   2055f:	00 f1                	add    cl,dh
-   20561:	35 00 00 73 05       	xor    eax,0x5730000
-   20566:	02 00                	add    al,BYTE PTR [rax]
-   20568:	01 01                	add    DWORD PTR [rcx],eax
-   2056a:	55                   	push   rbp
-   2056b:	01 31                	add    DWORD PTR [rcx],esi
-   2056d:	01 01                	add    DWORD PTR [rcx],eax
-   2056f:	51                   	push   rcx
-   20570:	01 30                	add    DWORD PTR [rax],esi
-   20572:	00 04 c1             	add    BYTE PTR [rcx+rax*8],al
-   20575:	e6 43                	out    0x43,al
-   20577:	00 00                	add    BYTE PTR [rax],al
-   20579:	00 00                	add    BYTE PTR [rax],al
-   2057b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   2057e:	07                   	(bad)  
-   2057f:	00 00                	add    BYTE PTR [rax],al
-   20581:	06                   	(bad)  
-   20582:	03 e3                	add    esp,ebx
-   20584:	00 00                	add    BYTE PTR [rax],al
-   20586:	ed                   	in     eax,dx
-   20587:	05 02 00 05 02       	add    eax,0x2050002
-   2058c:	82                   	(bad)  
-   2058d:	00 00                	add    BYTE PTR [rax],al
-   2058f:	05 d2 01 12 b5       	add    eax,0xb51201d2
-   20594:	2c 00                	sub    al,0x0
-   20596:	00 38                	add    BYTE PTR [rax],bh
-   20598:	54                   	push   rsp
-   20599:	00 00                	add    BYTE PTR [rax],al
-   2059b:	32 54 00 00          	xor    dl,BYTE PTR [rax+rax*1+0x0]
-   2059f:	03 f7                	add    esi,edi
-   205a1:	e5 43                	in     eax,0x43
-   205a3:	00 00                	add    BYTE PTR [rax],al
-   205a5:	00 00                	add    BYTE PTR [rax],al
-   205a7:	00 c4                	add    ah,al
-   205a9:	35 00 00 c3 05       	xor    eax,0x5c30000
-   205ae:	02 00                	add    al,BYTE PTR [rax]
-   205b0:	01 01                	add    DWORD PTR [rcx],eax
-   205b2:	55                   	push   rbp
-   205b3:	09 03                	or     DWORD PTR [rbx],eax
-   205b5:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-   205b6:	21 47 00             	and    DWORD PTR [rdi+0x0],eax
-   205b9:	00 00                	add    BYTE PTR [rax],al
-   205bb:	00 00                	add    BYTE PTR [rax],al
-   205bd:	01 01                	add    DWORD PTR [rcx],eax
-   205bf:	54                   	push   rsp
-   205c0:	01 34 00             	add    DWORD PTR [rax+rax*1],esi
-   205c3:	07                   	(bad)  
-   205c4:	2a e6                	sub    ah,dh
-   205c6:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   205c9:	00 00                	add    BYTE PTR [rax],al
-   205cb:	00 f1                	add    cl,dh
-   205cd:	35 00 00 df 05       	xor    eax,0x5df0000
-   205d2:	02 00                	add    al,BYTE PTR [rax]
-   205d4:	01 01                	add    DWORD PTR [rcx],eax
-   205d6:	55                   	push   rbp
-   205d7:	01 31                	add    DWORD PTR [rcx],esi
-   205d9:	01 01                	add    DWORD PTR [rcx],eax
-   205db:	51                   	push   rcx
-   205dc:	01 30                	add    DWORD PTR [rax],esi
-   205de:	00 04 34             	add    BYTE PTR [rsp+rsi*1],al
-   205e1:	e6 43                	out    0x43,al
-   205e3:	00 00                	add    BYTE PTR [rax],al
-   205e5:	00 00                	add    BYTE PTR [rax],al
-   205e7:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   205ea:	07                   	(bad)  
-   205eb:	00 00                	add    BYTE PTR [rax],al
-   205ed:	06                   	(bad)  
-   205ee:	eb e2                	jmp    205d2 <__abi_tag-0x3dfd4e>
-   205f0:	00 00                	add    BYTE PTR [rax],al
-   205f2:	59                   	pop    rcx
-   205f3:	06                   	(bad)  
-   205f4:	02 00                	add    al,BYTE PTR [rax]
-   205f6:	05 0a 82 00 00       	add    eax,0x820a
-   205fb:	05 d3 01 12 b5       	add    eax,0xb51201d3
-   20600:	2c 00                	sub    al,0x0
-   20602:	00 57 54             	add    BYTE PTR [rdi+0x54],dl
-   20605:	00 00                	add    BYTE PTR [rax],al
-   20607:	51                   	push   rcx
-   20608:	54                   	push   rsp
-   20609:	00 00                	add    BYTE PTR [rax],al
-   2060b:	03 b3 e5 43 00 00    	add    esi,DWORD PTR [rbx+0x43e5]
-   20611:	00 00                	add    BYTE PTR [rax],al
-   20613:	00 c4                	add    ah,al
-   20615:	35 00 00 2f 06       	xor    eax,0x62f0000
-   2061a:	02 00                	add    al,BYTE PTR [rax]
-   2061c:	01 01                	add    DWORD PTR [rcx],eax
-   2061e:	55                   	push   rbp
-   2061f:	09 03                	or     DWORD PTR [rbx],eax
-   20621:	e4 28                	in     al,0x28
-   20623:	47 00 00             	rex.RXB add BYTE PTR [r8],r8b
-   20626:	00 00                	add    BYTE PTR [rax],al
-   20628:	00 01                	add    BYTE PTR [rcx],al
-   2062a:	01 54 01 31          	add    DWORD PTR [rcx+rax*1+0x31],edx
-   2062e:	00 07                	add    BYTE PTR [rdi],al
-   20630:	e6 e5                	out    0xe5,al
-   20632:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20635:	00 00                	add    BYTE PTR [rax],al
-   20637:	00 f1                	add    cl,dh
-   20639:	35 00 00 4b 06       	xor    eax,0x64b0000
-   2063e:	02 00                	add    al,BYTE PTR [rax]
-   20640:	01 01                	add    DWORD PTR [rcx],eax
-   20642:	55                   	push   rbp
-   20643:	01 31                	add    DWORD PTR [rcx],esi
-   20645:	01 01                	add    DWORD PTR [rcx],eax
-   20647:	51                   	push   rcx
-   20648:	01 30                	add    DWORD PTR [rax],esi
-   2064a:	00 04 2f             	add    BYTE PTR [rdi+rbp*1],al
-   2064d:	e6 43                	out    0x43,al
-   2064f:	00 00                	add    BYTE PTR [rax],al
-   20651:	00 00                	add    BYTE PTR [rax],al
-   20653:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20656:	07                   	(bad)  
-   20657:	00 00                	add    BYTE PTR [rax],al
-   20659:	06                   	(bad)  
-   2065a:	d5                   	(bad)  
-   2065b:	e2 00                	loop   2065d <__abi_tag-0x3dfcc3>
-   2065d:	00 c5                	add    ch,al
-   2065f:	06                   	(bad)  
-   20660:	02 00                	add    al,BYTE PTR [rax]
-   20662:	05 12 82 00 00       	add    eax,0x8212
-   20667:	05 d4 01 12 b5       	add    eax,0xb51201d4
-   2066c:	2c 00                	sub    al,0x0
-   2066e:	00 76 54             	add    BYTE PTR [rsi+0x54],dh
-   20671:	00 00                	add    BYTE PTR [rax],al
-   20673:	70 54                	jo     206c9 <__abi_tag-0x3dfc57>
-   20675:	00 00                	add    BYTE PTR [rax],al
-   20677:	03 65 e5             	add    esp,DWORD PTR [rbp-0x1b]
-   2067a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   2067d:	00 00                	add    BYTE PTR [rax],al
-   2067f:	00 c4                	add    ah,al
-   20681:	35 00 00 9b 06       	xor    eax,0x69b0000
-   20686:	02 00                	add    al,BYTE PTR [rax]
-   20688:	01 01                	add    DWORD PTR [rcx],eax
-   2068a:	55                   	push   rbp
-   2068b:	09 03                	or     DWORD PTR [rbx],eax
-   2068d:	bc 0d 47 00 00       	mov    esp,0x470d
-   20692:	00 00                	add    BYTE PTR [rax],al
-   20694:	00 01                	add    BYTE PTR [rcx],al
-   20696:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   2069a:	00 07                	add    BYTE PTR [rdi],al
-   2069c:	98                   	cwde   
-   2069d:	e5 43                	in     eax,0x43
-   2069f:	00 00                	add    BYTE PTR [rax],al
-   206a1:	00 00                	add    BYTE PTR [rax],al
-   206a3:	00 f1                	add    cl,dh
-   206a5:	35 00 00 b7 06       	xor    eax,0x6b70000
-   206aa:	02 00                	add    al,BYTE PTR [rax]
-   206ac:	01 01                	add    DWORD PTR [rcx],eax
-   206ae:	55                   	push   rbp
-   206af:	01 31                	add    DWORD PTR [rcx],esi
-   206b1:	01 01                	add    DWORD PTR [rcx],eax
-   206b3:	51                   	push   rcx
-   206b4:	01 30                	add    DWORD PTR [rax],esi
-   206b6:	00 04 a2             	add    BYTE PTR [rdx+riz*4],al
-   206b9:	e5 43                	in     eax,0x43
-   206bb:	00 00                	add    BYTE PTR [rax],al
-   206bd:	00 00                	add    BYTE PTR [rax],al
-   206bf:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   206c2:	07                   	(bad)  
-   206c3:	00 00                	add    BYTE PTR [rax],al
-   206c5:	06                   	(bad)  
-   206c6:	bd e2 00 00 31       	mov    ebp,0x310000e2
-   206cb:	07                   	(bad)  
-   206cc:	02 00                	add    al,BYTE PTR [rax]
-   206ce:	05 7f 92 00 00       	add    eax,0x927f
-   206d3:	05 d5 01 12 b5       	add    eax,0xb51201d5
-   206d8:	2c 00                	sub    al,0x0
-   206da:	00 95 54 00 00 8f    	add    BYTE PTR [rbp-0x70ffffac],dl
-   206e0:	54                   	push   rsp
-   206e1:	00 00                	add    BYTE PTR [rax],al
-   206e3:	03 21                	add    esp,DWORD PTR [rcx]
-   206e5:	e5 43                	in     eax,0x43
-   206e7:	00 00                	add    BYTE PTR [rax],al
-   206e9:	00 00                	add    BYTE PTR [rax],al
-   206eb:	00 c4                	add    ah,al
-   206ed:	35 00 00 07 07       	xor    eax,0x7070000
-   206f2:	02 00                	add    al,BYTE PTR [rax]
-   206f4:	01 01                	add    DWORD PTR [rcx],eax
-   206f6:	55                   	push   rbp
-   206f7:	09 03                	or     DWORD PTR [rbx],eax
-   206f9:	07                   	(bad)  
-   206fa:	f8                   	clc    
-   206fb:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   206fe:	00 00                	add    BYTE PTR [rax],al
-   20700:	00 01                	add    BYTE PTR [rcx],al
-   20702:	01 54 01 3f          	add    DWORD PTR [rcx+rax*1+0x3f],edx
-   20706:	00 07                	add    BYTE PTR [rdi],al
-   20708:	54                   	push   rsp
-   20709:	e5 43                	in     eax,0x43
-   2070b:	00 00                	add    BYTE PTR [rax],al
-   2070d:	00 00                	add    BYTE PTR [rax],al
-   2070f:	00 f1                	add    cl,dh
-   20711:	35 00 00 23 07       	xor    eax,0x7230000
-   20716:	02 00                	add    al,BYTE PTR [rax]
-   20718:	01 01                	add    DWORD PTR [rcx],eax
-   2071a:	55                   	push   rbp
-   2071b:	01 31                	add    DWORD PTR [rcx],esi
-   2071d:	01 01                	add    DWORD PTR [rcx],eax
-   2071f:	51                   	push   rcx
-   20720:	01 30                	add    DWORD PTR [rax],esi
-   20722:	00 04 9d e5 43 00 00 	add    BYTE PTR [rbx*4+0x43e5],al
-   20729:	00 00                	add    BYTE PTR [rax],al
-   2072b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   2072e:	07                   	(bad)  
-   2072f:	00 00                	add    BYTE PTR [rax],al
-   20731:	06                   	(bad)  
-   20732:	a7                   	cmps   DWORD PTR ds:[rsi],DWORD PTR es:[rdi]
-   20733:	e2 00                	loop   20735 <__abi_tag-0x3dfbeb>
-   20735:	00 9d 07 02 00 05    	add    BYTE PTR [rbp+0x5000207],bl
-   2073b:	b2 af                	mov    dl,0xaf
-   2073d:	00 00                	add    BYTE PTR [rax],al
-   2073f:	05 d9 01 12 b5       	add    eax,0xb51201d9
-   20744:	2c 00                	sub    al,0x0
-   20746:	00 b4 54 00 00 ae 54 	add    BYTE PTR [rsp+rdx*2+0x54ae0000],dh
-   2074d:	00 00                	add    BYTE PTR [rax],al
-   2074f:	03 d3                	add    edx,ebx
-   20751:	e4 43                	in     al,0x43
-   20753:	00 00                	add    BYTE PTR [rax],al
-   20755:	00 00                	add    BYTE PTR [rax],al
-   20757:	00 c4                	add    ah,al
-   20759:	35 00 00 73 07       	xor    eax,0x7730000
-   2075e:	02 00                	add    al,BYTE PTR [rax]
-   20760:	01 01                	add    DWORD PTR [rcx],eax
-   20762:	55                   	push   rbp
-   20763:	09 03                	or     DWORD PTR [rbx],eax
-   20765:	36 ff 46 00          	ss inc DWORD PTR [rsi+0x0]
-   20769:	00 00                	add    BYTE PTR [rax],al
-   2076b:	00 00                	add    BYTE PTR [rax],al
-   2076d:	01 01                	add    DWORD PTR [rcx],eax
-   2076f:	54                   	push   rsp
-   20770:	01 34 00             	add    DWORD PTR [rax+rax*1],esi
-   20773:	07                   	(bad)  
-   20774:	06                   	(bad)  
-   20775:	e5 43                	in     eax,0x43
-   20777:	00 00                	add    BYTE PTR [rax],al
-   20779:	00 00                	add    BYTE PTR [rax],al
-   2077b:	00 f1                	add    cl,dh
-   2077d:	35 00 00 8f 07       	xor    eax,0x78f0000
-   20782:	02 00                	add    al,BYTE PTR [rax]
-   20784:	01 01                	add    DWORD PTR [rcx],eax
-   20786:	55                   	push   rbp
-   20787:	01 31                	add    DWORD PTR [rcx],esi
-   20789:	01 01                	add    DWORD PTR [rcx],eax
-   2078b:	51                   	push   rcx
-   2078c:	01 30                	add    DWORD PTR [rax],esi
-   2078e:	00 04 10             	add    BYTE PTR [rax+rdx*1],al
-   20791:	e5 43                	in     eax,0x43
-   20793:	00 00                	add    BYTE PTR [rax],al
-   20795:	00 00                	add    BYTE PTR [rax],al
-   20797:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   2079a:	07                   	(bad)  
-   2079b:	00 00                	add    BYTE PTR [rax],al
-   2079d:	06                   	(bad)  
-   2079e:	8f                   	(bad)  
-   2079f:	e2 00                	loop   207a1 <__abi_tag-0x3dfb7f>
-   207a1:	00 09                	add    BYTE PTR [rcx],cl
-   207a3:	08 02                	or     BYTE PTR [rdx],al
-   207a5:	00 05 a7 92 00 00    	add    BYTE PTR [rip+0x92a7],al        # 29a52 <__abi_tag-0x3d68ce>
-   207ab:	05 da 01 12 b5       	add    eax,0xb51201da
-   207b0:	2c 00                	sub    al,0x0
-   207b2:	00 d3                	add    bl,dl
-   207b4:	54                   	push   rsp
-   207b5:	00 00                	add    BYTE PTR [rax],al
-   207b7:	cd 54                	int    0x54
-   207b9:	00 00                	add    BYTE PTR [rax],al
-   207bb:	03 8f e4 43 00 00    	add    ecx,DWORD PTR [rdi+0x43e4]
-   207c1:	00 00                	add    BYTE PTR [rax],al
-   207c3:	00 c4                	add    ah,al
-   207c5:	35 00 00 df 07       	xor    eax,0x7df0000
-   207ca:	02 00                	add    al,BYTE PTR [rax]
-   207cc:	01 01                	add    DWORD PTR [rcx],eax
-   207ce:	55                   	push   rbp
-   207cf:	09 03                	or     DWORD PTR [rbx],eax
-   207d1:	17                   	(bad)  
-   207d2:	f8                   	clc    
-   207d3:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   207d6:	00 00                	add    BYTE PTR [rax],al
-   207d8:	00 01                	add    BYTE PTR [rcx],al
-   207da:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   207de:	00 07                	add    BYTE PTR [rdi],al
-   207e0:	c2 e4 43             	ret    0x43e4
-   207e3:	00 00                	add    BYTE PTR [rax],al
-   207e5:	00 00                	add    BYTE PTR [rax],al
-   207e7:	00 f1                	add    cl,dh
-   207e9:	35 00 00 fb 07       	xor    eax,0x7fb0000
-   207ee:	02 00                	add    al,BYTE PTR [rax]
-   207f0:	01 01                	add    DWORD PTR [rcx],eax
-   207f2:	55                   	push   rbp
-   207f3:	01 31                	add    DWORD PTR [rcx],esi
-   207f5:	01 01                	add    DWORD PTR [rcx],eax
-   207f7:	51                   	push   rcx
-   207f8:	01 30                	add    DWORD PTR [rax],esi
-   207fa:	00 04 0b             	add    BYTE PTR [rbx+rcx*1],al
-   207fd:	e5 43                	in     eax,0x43
-   207ff:	00 00                	add    BYTE PTR [rax],al
-   20801:	00 00                	add    BYTE PTR [rax],al
-   20803:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20806:	07                   	(bad)  
-   20807:	00 00                	add    BYTE PTR [rax],al
-   20809:	06                   	(bad)  
-   2080a:	79 e2                	jns    207ee <__abi_tag-0x3dfb32>
-   2080c:	00 00                	add    BYTE PTR [rax],al
-   2080e:	75 08                	jne    20818 <__abi_tag-0x3dfb08>
-   20810:	02 00                	add    al,BYTE PTR [rax]
-   20812:	05 b9 92 00 00       	add    eax,0x92b9
-   20817:	05 db 01 12 b5       	add    eax,0xb51201db
-   2081c:	2c 00                	sub    al,0x0
-   2081e:	00 f2                	add    dl,dh
-   20820:	54                   	push   rsp
-   20821:	00 00                	add    BYTE PTR [rax],al
-   20823:	ec                   	in     al,dx
-   20824:	54                   	push   rsp
-   20825:	00 00                	add    BYTE PTR [rax],al
-   20827:	03 41 e4             	add    eax,DWORD PTR [rcx-0x1c]
-   2082a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   2082d:	00 00                	add    BYTE PTR [rax],al
-   2082f:	00 c4                	add    ah,al
-   20831:	35 00 00 4b 08       	xor    eax,0x84b0000
-   20836:	02 00                	add    al,BYTE PTR [rax]
-   20838:	01 01                	add    DWORD PTR [rcx],eax
-   2083a:	55                   	push   rbp
-   2083b:	09 03                	or     DWORD PTR [rbx],eax
-   2083d:	1d f8 46 00 00       	sbb    eax,0x46f8
-   20842:	00 00                	add    BYTE PTR [rax],al
-   20844:	00 01                	add    BYTE PTR [rcx],al
-   20846:	01 54 01 36          	add    DWORD PTR [rcx+rax*1+0x36],edx
-   2084a:	00 07                	add    BYTE PTR [rdi],al
-   2084c:	74 e4                	je     20832 <__abi_tag-0x3dfaee>
-   2084e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20851:	00 00                	add    BYTE PTR [rax],al
-   20853:	00 f1                	add    cl,dh
-   20855:	35 00 00 67 08       	xor    eax,0x8670000
-   2085a:	02 00                	add    al,BYTE PTR [rax]
-   2085c:	01 01                	add    DWORD PTR [rcx],eax
-   2085e:	55                   	push   rbp
-   2085f:	01 31                	add    DWORD PTR [rcx],esi
-   20861:	01 01                	add    DWORD PTR [rcx],eax
-   20863:	51                   	push   rcx
-   20864:	01 30                	add    DWORD PTR [rax],esi
-   20866:	00 04 7e             	add    BYTE PTR [rsi+rdi*2],al
-   20869:	e4 43                	in     al,0x43
-   2086b:	00 00                	add    BYTE PTR [rax],al
-   2086d:	00 00                	add    BYTE PTR [rax],al
-   2086f:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20872:	07                   	(bad)  
-   20873:	00 00                	add    BYTE PTR [rax],al
-   20875:	06                   	(bad)  
-   20876:	61                   	(bad)  
-   20877:	e2 00                	loop   20879 <__abi_tag-0x3dfaa7>
-   20879:	00 e1                	add    cl,ah
-   2087b:	08 02                	or     BYTE PTR [rdx],al
-   2087d:	00 05 69 d8 00 00    	add    BYTE PTR [rip+0xd869],al        # 2e0ec <__abi_tag-0x3d2234>
-   20883:	05 dc 01 12 b5       	add    eax,0xb51201dc
-   20888:	2c 00                	sub    al,0x0
-   2088a:	00 11                	add    BYTE PTR [rcx],dl
-   2088c:	55                   	push   rbp
-   2088d:	00 00                	add    BYTE PTR [rax],al
-   2088f:	0b 55 00             	or     edx,DWORD PTR [rbp+0x0]
-   20892:	00 03                	add    BYTE PTR [rbx],al
-   20894:	fd                   	std    
-   20895:	e3 43                	jrcxz  208da <__abi_tag-0x3dfa46>
-   20897:	00 00                	add    BYTE PTR [rax],al
-   20899:	00 00                	add    BYTE PTR [rax],al
-   2089b:	00 c4                	add    ah,al
-   2089d:	35 00 00 b7 08       	xor    eax,0x8b70000
-   208a2:	02 00                	add    al,BYTE PTR [rax]
-   208a4:	01 01                	add    DWORD PTR [rcx],eax
-   208a6:	55                   	push   rbp
-   208a7:	09 03                	or     DWORD PTR [rbx],eax
-   208a9:	24 f8                	and    al,0xf8
-   208ab:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   208ae:	00 00                	add    BYTE PTR [rax],al
-   208b0:	00 01                	add    BYTE PTR [rcx],al
-   208b2:	01 54 01 36          	add    DWORD PTR [rcx+rax*1+0x36],edx
-   208b6:	00 07                	add    BYTE PTR [rdi],al
-   208b8:	30 e4                	xor    ah,ah
-   208ba:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   208bd:	00 00                	add    BYTE PTR [rax],al
-   208bf:	00 f1                	add    cl,dh
-   208c1:	35 00 00 d3 08       	xor    eax,0x8d30000
-   208c6:	02 00                	add    al,BYTE PTR [rax]
-   208c8:	01 01                	add    DWORD PTR [rcx],eax
-   208ca:	55                   	push   rbp
-   208cb:	01 31                	add    DWORD PTR [rcx],esi
-   208cd:	01 01                	add    DWORD PTR [rcx],eax
-   208cf:	51                   	push   rcx
-   208d0:	01 30                	add    DWORD PTR [rax],esi
-   208d2:	00 04 79             	add    BYTE PTR [rcx+rdi*2],al
-   208d5:	e4 43                	in     al,0x43
-   208d7:	00 00                	add    BYTE PTR [rax],al
-   208d9:	00 00                	add    BYTE PTR [rax],al
-   208db:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   208de:	07                   	(bad)  
-   208df:	00 00                	add    BYTE PTR [rax],al
-   208e1:	06                   	(bad)  
-   208e2:	4b e2 00             	rex.WXB loop 208e5 <__abi_tag-0x3dfa3b>
-   208e5:	00 4d 09             	add    BYTE PTR [rbp+0x9],cl
-   208e8:	02 00                	add    al,BYTE PTR [rax]
-   208ea:	05 cb 92 00 00       	add    eax,0x92cb
-   208ef:	05 dd 01 12 b5       	add    eax,0xb51201dd
-   208f4:	2c 00                	sub    al,0x0
-   208f6:	00 30                	add    BYTE PTR [rax],dh
-   208f8:	55                   	push   rbp
-   208f9:	00 00                	add    BYTE PTR [rax],al
-   208fb:	2a 55 00             	sub    dl,BYTE PTR [rbp+0x0]
-   208fe:	00 03                	add    BYTE PTR [rbx],al
-   20900:	af                   	scas   eax,DWORD PTR es:[rdi]
-   20901:	e3 43                	jrcxz  20946 <__abi_tag-0x3df9da>
-   20903:	00 00                	add    BYTE PTR [rax],al
-   20905:	00 00                	add    BYTE PTR [rax],al
-   20907:	00 c4                	add    ah,al
-   20909:	35 00 00 23 09       	xor    eax,0x9230000
-   2090e:	02 00                	add    al,BYTE PTR [rax]
-   20910:	01 01                	add    DWORD PTR [rcx],eax
-   20912:	55                   	push   rbp
-   20913:	09 03                	or     DWORD PTR [rbx],eax
-   20915:	2b f8                	sub    edi,eax
-   20917:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   2091a:	00 00                	add    BYTE PTR [rax],al
-   2091c:	00 01                	add    BYTE PTR [rcx],al
-   2091e:	01 54 01 3b          	add    DWORD PTR [rcx+rax*1+0x3b],edx
-   20922:	00 07                	add    BYTE PTR [rdi],al
-   20924:	e2 e3                	loop   20909 <__abi_tag-0x3dfa17>
-   20926:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20929:	00 00                	add    BYTE PTR [rax],al
-   2092b:	00 f1                	add    cl,dh
-   2092d:	35 00 00 3f 09       	xor    eax,0x93f0000
-   20932:	02 00                	add    al,BYTE PTR [rax]
-   20934:	01 01                	add    DWORD PTR [rcx],eax
-   20936:	55                   	push   rbp
-   20937:	01 31                	add    DWORD PTR [rcx],esi
-   20939:	01 01                	add    DWORD PTR [rcx],eax
-   2093b:	51                   	push   rcx
-   2093c:	01 30                	add    DWORD PTR [rax],esi
-   2093e:	00 04 ec             	add    BYTE PTR [rsp+rbp*8],al
-   20941:	e3 43                	jrcxz  20986 <__abi_tag-0x3df99a>
-   20943:	00 00                	add    BYTE PTR [rax],al
-   20945:	00 00                	add    BYTE PTR [rax],al
-   20947:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   2094a:	07                   	(bad)  
-   2094b:	00 00                	add    BYTE PTR [rax],al
-   2094d:	06                   	(bad)  
-   2094e:	33 e2                	xor    esp,edx
-   20950:	00 00                	add    BYTE PTR [rax],al
-   20952:	b9 09 02 00 05       	mov    ecx,0x5000209
-   20957:	dd 92 00 00 05 e4    	fst    QWORD PTR [rdx-0x1bfb0000]
-   2095d:	01 12                	add    DWORD PTR [rdx],edx
-   2095f:	b5 2c                	mov    ch,0x2c
-   20961:	00 00                	add    BYTE PTR [rax],al
-   20963:	4f 55                	rex.WRXB push r13
-   20965:	00 00                	add    BYTE PTR [rax],al
-   20967:	49 55                	rex.WB push r13
-   20969:	00 00                	add    BYTE PTR [rax],al
-   2096b:	03 6b e3             	add    ebp,DWORD PTR [rbx-0x1d]
-   2096e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20971:	00 00                	add    BYTE PTR [rax],al
-   20973:	00 c4                	add    ah,al
-   20975:	35 00 00 8f 09       	xor    eax,0x98f0000
-   2097a:	02 00                	add    al,BYTE PTR [rax]
-   2097c:	01 01                	add    DWORD PTR [rcx],eax
-   2097e:	55                   	push   rbp
-   2097f:	09 03                	or     DWORD PTR [rbx],eax
-   20981:	2b 24 47             	sub    esp,DWORD PTR [rdi+rax*2]
-   20984:	00 00                	add    BYTE PTR [rax],al
-   20986:	00 00                	add    BYTE PTR [rax],al
-   20988:	00 01                	add    BYTE PTR [rcx],al
-   2098a:	01 54 01 34          	add    DWORD PTR [rcx+rax*1+0x34],edx
-   2098e:	00 07                	add    BYTE PTR [rdi],al
-   20990:	9e                   	sahf   
-   20991:	e3 43                	jrcxz  209d6 <__abi_tag-0x3df94a>
-   20993:	00 00                	add    BYTE PTR [rax],al
-   20995:	00 00                	add    BYTE PTR [rax],al
-   20997:	00 f1                	add    cl,dh
-   20999:	35 00 00 ab 09       	xor    eax,0x9ab0000
-   2099e:	02 00                	add    al,BYTE PTR [rax]
-   209a0:	01 01                	add    DWORD PTR [rcx],eax
-   209a2:	55                   	push   rbp
-   209a3:	01 31                	add    DWORD PTR [rcx],esi
-   209a5:	01 01                	add    DWORD PTR [rcx],eax
-   209a7:	51                   	push   rcx
-   209a8:	01 30                	add    DWORD PTR [rax],esi
-   209aa:	00 04 e7             	add    BYTE PTR [rdi+riz*8],al
-   209ad:	e3 43                	jrcxz  209f2 <__abi_tag-0x3df92e>
-   209af:	00 00                	add    BYTE PTR [rax],al
-   209b1:	00 00                	add    BYTE PTR [rax],al
-   209b3:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   209b6:	07                   	(bad)  
-   209b7:	00 00                	add    BYTE PTR [rax],al
-   209b9:	06                   	(bad)  
-   209ba:	1d e2 00 00 25       	sbb    eax,0x250000e2
-   209bf:	0a 02                	or     al,BYTE PTR [rdx]
-   209c1:	00 05 ed 92 00 00    	add    BYTE PTR [rip+0x92ed],al        # 29cb4 <__abi_tag-0x3d666c>
-   209c7:	05 e6 01 12 b5       	add    eax,0xb51201e6
-   209cc:	2c 00                	sub    al,0x0
-   209ce:	00 6e 55             	add    BYTE PTR [rsi+0x55],ch
-   209d1:	00 00                	add    BYTE PTR [rax],al
-   209d3:	68 55 00 00 03       	push   0x3000055
-   209d8:	1d e3 43 00 00       	sbb    eax,0x43e3
-   209dd:	00 00                	add    BYTE PTR [rax],al
-   209df:	00 c4                	add    ah,al
-   209e1:	35 00 00 fb 09       	xor    eax,0x9fb0000
-   209e6:	02 00                	add    al,BYTE PTR [rax]
-   209e8:	01 01                	add    DWORD PTR [rcx],eax
-   209ea:	55                   	push   rbp
-   209eb:	09 03                	or     DWORD PTR [rbx],eax
-   209ed:	93                   	xchg   ebx,eax
-   209ee:	21 47 00             	and    DWORD PTR [rdi+0x0],eax
-   209f1:	00 00                	add    BYTE PTR [rax],al
-   209f3:	00 00                	add    BYTE PTR [rax],al
-   209f5:	01 01                	add    DWORD PTR [rcx],eax
-   209f7:	54                   	push   rsp
-   209f8:	01 34 00             	add    DWORD PTR [rax+rax*1],esi
-   209fb:	07                   	(bad)  
-   209fc:	50                   	push   rax
-   209fd:	e3 43                	jrcxz  20a42 <__abi_tag-0x3df8de>
-   209ff:	00 00                	add    BYTE PTR [rax],al
-   20a01:	00 00                	add    BYTE PTR [rax],al
-   20a03:	00 f1                	add    cl,dh
-   20a05:	35 00 00 17 0a       	xor    eax,0xa170000
-   20a0a:	02 00                	add    al,BYTE PTR [rax]
-   20a0c:	01 01                	add    DWORD PTR [rcx],eax
-   20a0e:	55                   	push   rbp
-   20a0f:	01 31                	add    DWORD PTR [rcx],esi
-   20a11:	01 01                	add    DWORD PTR [rcx],eax
-   20a13:	51                   	push   rcx
-   20a14:	01 30                	add    DWORD PTR [rax],esi
-   20a16:	00 04 5a             	add    BYTE PTR [rdx+rbx*2],al
-   20a19:	e3 43                	jrcxz  20a5e <__abi_tag-0x3df8c2>
-   20a1b:	00 00                	add    BYTE PTR [rax],al
-   20a1d:	00 00                	add    BYTE PTR [rax],al
-   20a1f:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20a22:	07                   	(bad)  
-   20a23:	00 00                	add    BYTE PTR [rax],al
-   20a25:	06                   	(bad)  
-   20a26:	05 e2 00 00 91       	add    eax,0x910000e2
-   20a2b:	0a 02                	or     al,BYTE PTR [rdx]
-   20a2d:	00 05 fd 92 00 00    	add    BYTE PTR [rip+0x92fd],al        # 29d30 <__abi_tag-0x3d65f0>
-   20a33:	05 e7 01 12 b5       	add    eax,0xb51201e7
-   20a38:	2c 00                	sub    al,0x0
-   20a3a:	00 8d 55 00 00 87    	add    BYTE PTR [rbp-0x78ffffab],cl
-   20a40:	55                   	push   rbp
-   20a41:	00 00                	add    BYTE PTR [rax],al
-   20a43:	03 d9                	add    ebx,ecx
-   20a45:	e2 43                	loop   20a8a <__abi_tag-0x3df896>
-   20a47:	00 00                	add    BYTE PTR [rax],al
-   20a49:	00 00                	add    BYTE PTR [rax],al
-   20a4b:	00 c4                	add    ah,al
-   20a4d:	35 00 00 67 0a       	xor    eax,0xa670000
-   20a52:	02 00                	add    al,BYTE PTR [rax]
-   20a54:	01 01                	add    DWORD PTR [rcx],eax
-   20a56:	55                   	push   rbp
-   20a57:	09 03                	or     DWORD PTR [rbx],eax
-   20a59:	37                   	(bad)  
-   20a5a:	f8                   	clc    
-   20a5b:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   20a5e:	00 00                	add    BYTE PTR [rax],al
-   20a60:	00 01                	add    BYTE PTR [rcx],al
-   20a62:	01 54 01 3d          	add    DWORD PTR [rcx+rax*1+0x3d],edx
-   20a66:	00 07                	add    BYTE PTR [rdi],al
-   20a68:	0c e3                	or     al,0xe3
-   20a6a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20a6d:	00 00                	add    BYTE PTR [rax],al
-   20a6f:	00 f1                	add    cl,dh
-   20a71:	35 00 00 83 0a       	xor    eax,0xa830000
-   20a76:	02 00                	add    al,BYTE PTR [rax]
-   20a78:	01 01                	add    DWORD PTR [rcx],eax
-   20a7a:	55                   	push   rbp
-   20a7b:	01 31                	add    DWORD PTR [rcx],esi
-   20a7d:	01 01                	add    DWORD PTR [rcx],eax
-   20a7f:	51                   	push   rcx
-   20a80:	01 30                	add    DWORD PTR [rax],esi
-   20a82:	00 04 55 e3 43 00 00 	add    BYTE PTR [rdx*2+0x43e3],al
-   20a89:	00 00                	add    BYTE PTR [rax],al
-   20a8b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20a8e:	07                   	(bad)  
-   20a8f:	00 00                	add    BYTE PTR [rax],al
-   20a91:	06                   	(bad)  
-   20a92:	ef                   	out    dx,eax
-   20a93:	e1 00                	loope  20a95 <__abi_tag-0x3df88b>
-   20a95:	00 fd                	add    ch,bh
-   20a97:	0a 02                	or     al,BYTE PTR [rdx]
-   20a99:	00 05 2e cf 00 00    	add    BYTE PTR [rip+0xcf2e],al        # 2d9cd <__abi_tag-0x3d2953>
-   20a9f:	05 e8 01 12 b5       	add    eax,0xb51201e8
-   20aa4:	2c 00                	sub    al,0x0
-   20aa6:	00 ac 55 00 00 a6 55 	add    BYTE PTR [rbp+rdx*2+0x55a60000],ch
-   20aad:	00 00                	add    BYTE PTR [rax],al
-   20aaf:	03 8b e2 43 00 00    	add    ecx,DWORD PTR [rbx+0x43e2]
-   20ab5:	00 00                	add    BYTE PTR [rax],al
-   20ab7:	00 c4                	add    ah,al
-   20ab9:	35 00 00 d3 0a       	xor    eax,0xad30000
-   20abe:	02 00                	add    al,BYTE PTR [rax]
-   20ac0:	01 01                	add    DWORD PTR [rcx],eax
-   20ac2:	55                   	push   rbp
-   20ac3:	09 03                	or     DWORD PTR [rbx],eax
-   20ac5:	45 f8                	rex.RB clc 
-   20ac7:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   20aca:	00 00                	add    BYTE PTR [rax],al
-   20acc:	00 01                	add    BYTE PTR [rcx],al
-   20ace:	01 54 01 38          	add    DWORD PTR [rcx+rax*1+0x38],edx
-   20ad2:	00 07                	add    BYTE PTR [rdi],al
-   20ad4:	be e2 43 00 00       	mov    esi,0x43e2
-   20ad9:	00 00                	add    BYTE PTR [rax],al
-   20adb:	00 f1                	add    cl,dh
-   20add:	35 00 00 ef 0a       	xor    eax,0xaef0000
-   20ae2:	02 00                	add    al,BYTE PTR [rax]
-   20ae4:	01 01                	add    DWORD PTR [rcx],eax
-   20ae6:	55                   	push   rbp
-   20ae7:	01 31                	add    DWORD PTR [rcx],esi
-   20ae9:	01 01                	add    DWORD PTR [rcx],eax
-   20aeb:	51                   	push   rcx
-   20aec:	01 30                	add    DWORD PTR [rax],esi
-   20aee:	00 04 c8             	add    BYTE PTR [rax+rcx*8],al
-   20af1:	e2 43                	loop   20b36 <__abi_tag-0x3df7ea>
-   20af3:	00 00                	add    BYTE PTR [rax],al
-   20af5:	00 00                	add    BYTE PTR [rax],al
-   20af7:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20afa:	07                   	(bad)  
-   20afb:	00 00                	add    BYTE PTR [rax],al
-   20afd:	06                   	(bad)  
-   20afe:	d7                   	xlat   BYTE PTR ds:[rbx]
-   20aff:	e1 00                	loope  20b01 <__abi_tag-0x3df81f>
-   20b01:	00 69 0b             	add    BYTE PTR [rcx+0xb],ch
-   20b04:	02 00                	add    al,BYTE PTR [rax]
-   20b06:	05 1d da 00 00       	add    eax,0xda1d
-   20b0b:	05 e9 01 12 b5       	add    eax,0xb51201e9
-   20b10:	2c 00                	sub    al,0x0
-   20b12:	00 cb                	add    bl,cl
-   20b14:	55                   	push   rbp
-   20b15:	00 00                	add    BYTE PTR [rax],al
-   20b17:	c5 55 00             	(bad)
-   20b1a:	00 03                	add    BYTE PTR [rbx],al
-   20b1c:	47 e2 43             	rex.RXB loop 20b62 <__abi_tag-0x3df7be>
-   20b1f:	00 00                	add    BYTE PTR [rax],al
-   20b21:	00 00                	add    BYTE PTR [rax],al
-   20b23:	00 c4                	add    ah,al
-   20b25:	35 00 00 3f 0b       	xor    eax,0xb3f0000
-   20b2a:	02 00                	add    al,BYTE PTR [rax]
-   20b2c:	01 01                	add    DWORD PTR [rcx],eax
-   20b2e:	55                   	push   rbp
-   20b2f:	09 03                	or     DWORD PTR [rbx],eax
-   20b31:	4e f8                	rex.WRX clc 
-   20b33:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   20b36:	00 00                	add    BYTE PTR [rax],al
-   20b38:	00 01                	add    BYTE PTR [rcx],al
-   20b3a:	01 54 01 33          	add    DWORD PTR [rcx+rax*1+0x33],edx
-   20b3e:	00 07                	add    BYTE PTR [rdi],al
-   20b40:	7a e2                	jp     20b24 <__abi_tag-0x3df7fc>
-   20b42:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20b45:	00 00                	add    BYTE PTR [rax],al
-   20b47:	00 f1                	add    cl,dh
-   20b49:	35 00 00 5b 0b       	xor    eax,0xb5b0000
-   20b4e:	02 00                	add    al,BYTE PTR [rax]
-   20b50:	01 01                	add    DWORD PTR [rcx],eax
-   20b52:	55                   	push   rbp
-   20b53:	01 31                	add    DWORD PTR [rcx],esi
-   20b55:	01 01                	add    DWORD PTR [rcx],eax
-   20b57:	51                   	push   rcx
-   20b58:	01 30                	add    DWORD PTR [rax],esi
-   20b5a:	00 04 c3             	add    BYTE PTR [rbx+rax*8],al
-   20b5d:	e2 43                	loop   20ba2 <__abi_tag-0x3df77e>
-   20b5f:	00 00                	add    BYTE PTR [rax],al
-   20b61:	00 00                	add    BYTE PTR [rax],al
-   20b63:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20b66:	07                   	(bad)  
-   20b67:	00 00                	add    BYTE PTR [rax],al
-   20b69:	06                   	(bad)  
-   20b6a:	c1 e1 00             	shl    ecx,0x0
-   20b6d:	00 d5                	add    ch,dl
-   20b6f:	0b 02                	or     eax,DWORD PTR [rdx]
-   20b71:	00 05 74 fd 00 00    	add    BYTE PTR [rip+0xfd74],al        # 308eb <__abi_tag-0x3cfa35>
-   20b77:	05 ea 01 12 b5       	add    eax,0xb51201ea
-   20b7c:	2c 00                	sub    al,0x0
-   20b7e:	00 ea                	add    dl,ch
-   20b80:	55                   	push   rbp
-   20b81:	00 00                	add    BYTE PTR [rax],al
-   20b83:	e4 55                	in     al,0x55
-   20b85:	00 00                	add    BYTE PTR [rax],al
-   20b87:	03 f9                	add    edi,ecx
-   20b89:	e1 43                	loope  20bce <__abi_tag-0x3df752>
-   20b8b:	00 00                	add    BYTE PTR [rax],al
-   20b8d:	00 00                	add    BYTE PTR [rax],al
-   20b8f:	00 c4                	add    ah,al
-   20b91:	35 00 00 ab 0b       	xor    eax,0xbab0000
-   20b96:	02 00                	add    al,BYTE PTR [rax]
-   20b98:	01 01                	add    DWORD PTR [rcx],eax
-   20b9a:	55                   	push   rbp
-   20b9b:	09 03                	or     DWORD PTR [rbx],eax
-   20b9d:	52                   	push   rdx
-   20b9e:	f8                   	clc    
-   20b9f:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   20ba2:	00 00                	add    BYTE PTR [rax],al
-   20ba4:	00 01                	add    BYTE PTR [rcx],al
-   20ba6:	01 54 01 34          	add    DWORD PTR [rcx+rax*1+0x34],edx
-   20baa:	00 07                	add    BYTE PTR [rdi],al
-   20bac:	2c e2                	sub    al,0xe2
-   20bae:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20bb1:	00 00                	add    BYTE PTR [rax],al
-   20bb3:	00 f1                	add    cl,dh
-   20bb5:	35 00 00 c7 0b       	xor    eax,0xbc70000
-   20bba:	02 00                	add    al,BYTE PTR [rax]
-   20bbc:	01 01                	add    DWORD PTR [rcx],eax
-   20bbe:	55                   	push   rbp
-   20bbf:	01 31                	add    DWORD PTR [rcx],esi
-   20bc1:	01 01                	add    DWORD PTR [rcx],eax
-   20bc3:	51                   	push   rcx
-   20bc4:	01 30                	add    DWORD PTR [rax],esi
-   20bc6:	00 04 36             	add    BYTE PTR [rsi+rsi*1],al
-   20bc9:	e2 43                	loop   20c0e <__abi_tag-0x3df712>
-   20bcb:	00 00                	add    BYTE PTR [rax],al
-   20bcd:	00 00                	add    BYTE PTR [rax],al
-   20bcf:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20bd2:	07                   	(bad)  
-   20bd3:	00 00                	add    BYTE PTR [rax],al
-   20bd5:	06                   	(bad)  
-   20bd6:	a9 e1 00 00 41       	test   eax,0x410000e1
-   20bdb:	0c 02                	or     al,0x2
-   20bdd:	00 05 c8 1a 00 00    	add    BYTE PTR [rip+0x1ac8],al        # 226ab <__abi_tag-0x3ddc75>
-   20be3:	05 eb 01 12 b5       	add    eax,0xb51201eb
-   20be8:	2c 00                	sub    al,0x0
-   20bea:	00 09                	add    BYTE PTR [rcx],cl
-   20bec:	56                   	push   rsi
-   20bed:	00 00                	add    BYTE PTR [rax],al
-   20bef:	03 56 00             	add    edx,DWORD PTR [rsi+0x0]
-   20bf2:	00 03                	add    BYTE PTR [rbx],al
-   20bf4:	b5 e1                	mov    ch,0xe1
-   20bf6:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20bf9:	00 00                	add    BYTE PTR [rax],al
-   20bfb:	00 c4                	add    ah,al
-   20bfd:	35 00 00 17 0c       	xor    eax,0xc170000
-   20c02:	02 00                	add    al,BYTE PTR [rax]
-   20c04:	01 01                	add    DWORD PTR [rcx],eax
-   20c06:	55                   	push   rbp
-   20c07:	09 03                	or     DWORD PTR [rbx],eax
-   20c09:	57                   	push   rdi
-   20c0a:	f8                   	clc    
-   20c0b:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   20c0e:	00 00                	add    BYTE PTR [rax],al
-   20c10:	00 01                	add    BYTE PTR [rcx],al
-   20c12:	01 54 01 32          	add    DWORD PTR [rcx+rax*1+0x32],edx
-   20c16:	00 07                	add    BYTE PTR [rdi],al
-   20c18:	e8 e1 43 00 00       	call   24ffe <__abi_tag-0x3db322>
-   20c1d:	00 00                	add    BYTE PTR [rax],al
-   20c1f:	00 f1                	add    cl,dh
-   20c21:	35 00 00 33 0c       	xor    eax,0xc330000
-   20c26:	02 00                	add    al,BYTE PTR [rax]
-   20c28:	01 01                	add    DWORD PTR [rcx],eax
-   20c2a:	55                   	push   rbp
-   20c2b:	01 31                	add    DWORD PTR [rcx],esi
-   20c2d:	01 01                	add    DWORD PTR [rcx],eax
-   20c2f:	51                   	push   rcx
-   20c30:	01 30                	add    DWORD PTR [rax],esi
-   20c32:	00 04 31             	add    BYTE PTR [rcx+rsi*1],al
-   20c35:	e2 43                	loop   20c7a <__abi_tag-0x3df6a6>
-   20c37:	00 00                	add    BYTE PTR [rax],al
-   20c39:	00 00                	add    BYTE PTR [rax],al
-   20c3b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20c3e:	07                   	(bad)  
-   20c3f:	00 00                	add    BYTE PTR [rax],al
-   20c41:	06                   	(bad)  
-   20c42:	93                   	xchg   ebx,eax
-   20c43:	e1 00                	loope  20c45 <__abi_tag-0x3df6db>
-   20c45:	00 ad 0c 02 00 05    	add    BYTE PTR [rbp+0x500020c],ch
-   20c4b:	3b da                	cmp    ebx,edx
-   20c4d:	00 00                	add    BYTE PTR [rax],al
-   20c4f:	05 ed 01 12 b5       	add    eax,0xb51201ed
-   20c54:	2c 00                	sub    al,0x0
-   20c56:	00 28                	add    BYTE PTR [rax],ch
-   20c58:	56                   	push   rsi
-   20c59:	00 00                	add    BYTE PTR [rax],al
-   20c5b:	22 56 00             	and    dl,BYTE PTR [rsi+0x0]
-   20c5e:	00 03                	add    BYTE PTR [rbx],al
-   20c60:	67 e1 43             	addr32 loope 20ca6 <__abi_tag-0x3df67a>
-   20c63:	00 00                	add    BYTE PTR [rax],al
-   20c65:	00 00                	add    BYTE PTR [rax],al
-   20c67:	00 c4                	add    ah,al
-   20c69:	35 00 00 83 0c       	xor    eax,0xc830000
-   20c6e:	02 00                	add    al,BYTE PTR [rax]
-   20c70:	01 01                	add    DWORD PTR [rcx],eax
-   20c72:	55                   	push   rbp
-   20c73:	09 03                	or     DWORD PTR [rbx],eax
-   20c75:	5a                   	pop    rdx
-   20c76:	f8                   	clc    
-   20c77:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   20c7a:	00 00                	add    BYTE PTR [rax],al
-   20c7c:	00 01                	add    BYTE PTR [rcx],al
-   20c7e:	01 54 01 34          	add    DWORD PTR [rcx+rax*1+0x34],edx
-   20c82:	00 07                	add    BYTE PTR [rdi],al
-   20c84:	9a                   	(bad)  
-   20c85:	e1 43                	loope  20cca <__abi_tag-0x3df656>
-   20c87:	00 00                	add    BYTE PTR [rax],al
-   20c89:	00 00                	add    BYTE PTR [rax],al
-   20c8b:	00 f1                	add    cl,dh
-   20c8d:	35 00 00 9f 0c       	xor    eax,0xc9f0000
-   20c92:	02 00                	add    al,BYTE PTR [rax]
-   20c94:	01 01                	add    DWORD PTR [rcx],eax
-   20c96:	55                   	push   rbp
-   20c97:	01 31                	add    DWORD PTR [rcx],esi
-   20c99:	01 01                	add    DWORD PTR [rcx],eax
-   20c9b:	51                   	push   rcx
-   20c9c:	01 30                	add    DWORD PTR [rax],esi
-   20c9e:	00 04 a4             	add    BYTE PTR [rsp+riz*4],al
-   20ca1:	e1 43                	loope  20ce6 <__abi_tag-0x3df63a>
-   20ca3:	00 00                	add    BYTE PTR [rax],al
-   20ca5:	00 00                	add    BYTE PTR [rax],al
-   20ca7:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20caa:	07                   	(bad)  
-   20cab:	00 00                	add    BYTE PTR [rax],al
-   20cad:	06                   	(bad)  
-   20cae:	7b e1                	jnp    20c91 <__abi_tag-0x3df68f>
-   20cb0:	00 00                	add    BYTE PTR [rax],al
-   20cb2:	19 0d 02 00 05 58    	sbb    DWORD PTR [rip+0x58050002],ecx        # 58070cba <_end+0x57bb53a2>
-   20cb8:	97                   	xchg   edi,eax
-   20cb9:	00 00                	add    BYTE PTR [rax],al
-   20cbb:	05 f0 01 12 b5       	add    eax,0xb51201f0
-   20cc0:	2c 00                	sub    al,0x0
-   20cc2:	00 47 56             	add    BYTE PTR [rdi+0x56],al
-   20cc5:	00 00                	add    BYTE PTR [rax],al
-   20cc7:	41 56                	push   r14
-   20cc9:	00 00                	add    BYTE PTR [rax],al
-   20ccb:	03 23                	add    esp,DWORD PTR [rbx]
-   20ccd:	e1 43                	loope  20d12 <__abi_tag-0x3df60e>
-   20ccf:	00 00                	add    BYTE PTR [rax],al
-   20cd1:	00 00                	add    BYTE PTR [rax],al
-   20cd3:	00 c4                	add    ah,al
-   20cd5:	35 00 00 ef 0c       	xor    eax,0xcef0000
-   20cda:	02 00                	add    al,BYTE PTR [rax]
-   20cdc:	01 01                	add    DWORD PTR [rcx],eax
-   20cde:	55                   	push   rbp
-   20cdf:	09 03                	or     DWORD PTR [rbx],eax
-   20ce1:	5f                   	pop    rdi
-   20ce2:	f8                   	clc    
-   20ce3:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   20ce6:	00 00                	add    BYTE PTR [rax],al
-   20ce8:	00 01                	add    BYTE PTR [rcx],al
-   20cea:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   20cee:	00 07                	add    BYTE PTR [rdi],al
-   20cf0:	56                   	push   rsi
-   20cf1:	e1 43                	loope  20d36 <__abi_tag-0x3df5ea>
-   20cf3:	00 00                	add    BYTE PTR [rax],al
-   20cf5:	00 00                	add    BYTE PTR [rax],al
-   20cf7:	00 f1                	add    cl,dh
-   20cf9:	35 00 00 0b 0d       	xor    eax,0xd0b0000
-   20cfe:	02 00                	add    al,BYTE PTR [rax]
-   20d00:	01 01                	add    DWORD PTR [rcx],eax
-   20d02:	55                   	push   rbp
-   20d03:	01 31                	add    DWORD PTR [rcx],esi
-   20d05:	01 01                	add    DWORD PTR [rcx],eax
-   20d07:	51                   	push   rcx
-   20d08:	01 30                	add    DWORD PTR [rax],esi
-   20d0a:	00 04 9f             	add    BYTE PTR [rdi+rbx*4],al
-   20d0d:	e1 43                	loope  20d52 <__abi_tag-0x3df5ce>
-   20d0f:	00 00                	add    BYTE PTR [rax],al
-   20d11:	00 00                	add    BYTE PTR [rax],al
-   20d13:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20d16:	07                   	(bad)  
-   20d17:	00 00                	add    BYTE PTR [rax],al
-   20d19:	06                   	(bad)  
-   20d1a:	65 e1 00             	gs loope 20d1d <__abi_tag-0x3df603>
-   20d1d:	00 85 0d 02 00 05    	add    BYTE PTR [rbp+0x500020d],al
-   20d23:	6a 97                	push   0xffffffffffffff97
-   20d25:	00 00                	add    BYTE PTR [rax],al
-   20d27:	05 f2 01 12 b5       	add    eax,0xb51201f2
-   20d2c:	2c 00                	sub    al,0x0
-   20d2e:	00 66 56             	add    BYTE PTR [rsi+0x56],ah
-   20d31:	00 00                	add    BYTE PTR [rax],al
-   20d33:	60                   	(bad)  
-   20d34:	56                   	push   rsi
-   20d35:	00 00                	add    BYTE PTR [rax],al
-   20d37:	03 d5                	add    edx,ebp
-   20d39:	e0 43                	loopne 20d7e <__abi_tag-0x3df5a2>
-   20d3b:	00 00                	add    BYTE PTR [rax],al
-   20d3d:	00 00                	add    BYTE PTR [rax],al
-   20d3f:	00 c4                	add    ah,al
-   20d41:	35 00 00 5b 0d       	xor    eax,0xd5b0000
-   20d46:	02 00                	add    al,BYTE PTR [rax]
-   20d48:	01 01                	add    DWORD PTR [rcx],eax
-   20d4a:	55                   	push   rbp
-   20d4b:	09 03                	or     DWORD PTR [rbx],eax
-   20d4d:	65 f8                	gs clc 
-   20d4f:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   20d52:	00 00                	add    BYTE PTR [rax],al
-   20d54:	00 01                	add    BYTE PTR [rcx],al
-   20d56:	01 54 01 34          	add    DWORD PTR [rcx+rax*1+0x34],edx
-   20d5a:	00 07                	add    BYTE PTR [rdi],al
-   20d5c:	08 e1                	or     cl,ah
-   20d5e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20d61:	00 00                	add    BYTE PTR [rax],al
-   20d63:	00 f1                	add    cl,dh
-   20d65:	35 00 00 77 0d       	xor    eax,0xd770000
-   20d6a:	02 00                	add    al,BYTE PTR [rax]
-   20d6c:	01 01                	add    DWORD PTR [rcx],eax
-   20d6e:	55                   	push   rbp
-   20d6f:	01 31                	add    DWORD PTR [rcx],esi
-   20d71:	01 01                	add    DWORD PTR [rcx],eax
-   20d73:	51                   	push   rcx
-   20d74:	01 30                	add    DWORD PTR [rax],esi
-   20d76:	00 04 12             	add    BYTE PTR [rdx+rdx*1],al
-   20d79:	e1 43                	loope  20dbe <__abi_tag-0x3df562>
-   20d7b:	00 00                	add    BYTE PTR [rax],al
-   20d7d:	00 00                	add    BYTE PTR [rax],al
-   20d7f:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20d82:	07                   	(bad)  
-   20d83:	00 00                	add    BYTE PTR [rax],al
-   20d85:	06                   	(bad)  
-   20d86:	4d e1 00             	rex.WRB loope 20d89 <__abi_tag-0x3df597>
-   20d89:	00 f1                	add    cl,dh
-   20d8b:	0d 02 00 05 59       	or     eax,0x59050002
-   20d90:	da 00                	fiadd  DWORD PTR [rax]
-   20d92:	00 05 f3 01 12 b5    	add    BYTE PTR [rip+0xffffffffb51201f3],al        # ffffffffb5140f8b <_end+0xffffffffb4c85673>
-   20d98:	2c 00                	sub    al,0x0
-   20d9a:	00 85 56 00 00 7f    	add    BYTE PTR [rbp+0x7f000056],al
-   20da0:	56                   	push   rsi
-   20da1:	00 00                	add    BYTE PTR [rax],al
-   20da3:	03 91 e0 43 00 00    	add    edx,DWORD PTR [rcx+0x43e0]
-   20da9:	00 00                	add    BYTE PTR [rax],al
-   20dab:	00 c4                	add    ah,al
-   20dad:	35 00 00 c7 0d       	xor    eax,0xdc70000
-   20db2:	02 00                	add    al,BYTE PTR [rax]
-   20db4:	01 01                	add    DWORD PTR [rcx],eax
-   20db6:	55                   	push   rbp
-   20db7:	09 03                	or     DWORD PTR [rbx],eax
-   20db9:	6a f8                	push   0xfffffffffffffff8
-   20dbb:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   20dbe:	00 00                	add    BYTE PTR [rax],al
-   20dc0:	00 01                	add    BYTE PTR [rcx],al
-   20dc2:	01 54 01 39          	add    DWORD PTR [rcx+rax*1+0x39],edx
-   20dc6:	00 07                	add    BYTE PTR [rdi],al
-   20dc8:	c4                   	(bad)  
-   20dc9:	e0 43                	loopne 20e0e <__abi_tag-0x3df512>
-   20dcb:	00 00                	add    BYTE PTR [rax],al
-   20dcd:	00 00                	add    BYTE PTR [rax],al
-   20dcf:	00 f1                	add    cl,dh
-   20dd1:	35 00 00 e3 0d       	xor    eax,0xde30000
-   20dd6:	02 00                	add    al,BYTE PTR [rax]
-   20dd8:	01 01                	add    DWORD PTR [rcx],eax
-   20dda:	55                   	push   rbp
-   20ddb:	01 31                	add    DWORD PTR [rcx],esi
-   20ddd:	01 01                	add    DWORD PTR [rcx],eax
-   20ddf:	51                   	push   rcx
-   20de0:	01 30                	add    DWORD PTR [rax],esi
-   20de2:	00 04 0d e1 43 00 00 	add    BYTE PTR [rcx*1+0x43e1],al
-   20de9:	00 00                	add    BYTE PTR [rax],al
-   20deb:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20dee:	07                   	(bad)  
-   20def:	00 00                	add    BYTE PTR [rax],al
-   20df1:	06                   	(bad)  
-   20df2:	37                   	(bad)  
-   20df3:	e1 00                	loope  20df5 <__abi_tag-0x3df52b>
-   20df5:	00 5d 0e             	add    BYTE PTR [rbp+0xe],bl
-   20df8:	02 00                	add    al,BYTE PTR [rax]
-   20dfa:	05 65 5a 00 00       	add    eax,0x5a65
-   20dff:	05 f4 01 12 b5       	add    eax,0xb51201f4
-   20e04:	2c 00                	sub    al,0x0
-   20e06:	00 a4 56 00 00 9e 56 	add    BYTE PTR [rsi+rdx*2+0x569e0000],ah
-   20e0d:	00 00                	add    BYTE PTR [rax],al
-   20e0f:	03 43 e0             	add    eax,DWORD PTR [rbx-0x20]
-   20e12:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20e15:	00 00                	add    BYTE PTR [rax],al
-   20e17:	00 c4                	add    ah,al
-   20e19:	35 00 00 33 0e       	xor    eax,0xe330000
-   20e1e:	02 00                	add    al,BYTE PTR [rax]
-   20e20:	01 01                	add    DWORD PTR [rcx],eax
-   20e22:	55                   	push   rbp
-   20e23:	09 03                	or     DWORD PTR [rbx],eax
-   20e25:	74 f8                	je     20e1f <__abi_tag-0x3df501>
-   20e27:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   20e2a:	00 00                	add    BYTE PTR [rax],al
-   20e2c:	00 01                	add    BYTE PTR [rcx],al
-   20e2e:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   20e32:	00 07                	add    BYTE PTR [rdi],al
-   20e34:	76 e0                	jbe    20e16 <__abi_tag-0x3df50a>
-   20e36:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20e39:	00 00                	add    BYTE PTR [rax],al
-   20e3b:	00 f1                	add    cl,dh
-   20e3d:	35 00 00 4f 0e       	xor    eax,0xe4f0000
-   20e42:	02 00                	add    al,BYTE PTR [rax]
-   20e44:	01 01                	add    DWORD PTR [rcx],eax
-   20e46:	55                   	push   rbp
-   20e47:	01 31                	add    DWORD PTR [rcx],esi
-   20e49:	01 01                	add    DWORD PTR [rcx],eax
-   20e4b:	51                   	push   rcx
-   20e4c:	01 30                	add    DWORD PTR [rax],esi
-   20e4e:	00 04 80             	add    BYTE PTR [rax+rax*4],al
-   20e51:	e0 43                	loopne 20e96 <__abi_tag-0x3df48a>
-   20e53:	00 00                	add    BYTE PTR [rax],al
-   20e55:	00 00                	add    BYTE PTR [rax],al
-   20e57:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20e5a:	07                   	(bad)  
-   20e5b:	00 00                	add    BYTE PTR [rax],al
-   20e5d:	06                   	(bad)  
-   20e5e:	1f                   	(bad)  
-   20e5f:	e1 00                	loope  20e61 <__abi_tag-0x3df4bf>
-   20e61:	00 c9                	add    cl,cl
-   20e63:	0e                   	(bad)  
-   20e64:	02 00                	add    al,BYTE PTR [rax]
-   20e66:	05 82 97 00 00       	add    eax,0x9782
-   20e6b:	05 f5 01 12 b5       	add    eax,0xb51201f5
-   20e70:	2c 00                	sub    al,0x0
-   20e72:	00 c3                	add    bl,al
-   20e74:	56                   	push   rsi
-   20e75:	00 00                	add    BYTE PTR [rax],al
-   20e77:	bd 56 00 00 03       	mov    ebp,0x3000056
-   20e7c:	ff                   	(bad)  
-   20e7d:	df 43 00             	fild   WORD PTR [rbx+0x0]
-   20e80:	00 00                	add    BYTE PTR [rax],al
-   20e82:	00 00                	add    BYTE PTR [rax],al
-   20e84:	c4                   	(bad)  
-   20e85:	35 00 00 9f 0e       	xor    eax,0xe9f0000
-   20e8a:	02 00                	add    al,BYTE PTR [rax]
-   20e8c:	01 01                	add    DWORD PTR [rcx],eax
-   20e8e:	55                   	push   rbp
-   20e8f:	09 03                	or     DWORD PTR [rbx],eax
-   20e91:	7a f8                	jp     20e8b <__abi_tag-0x3df495>
-   20e93:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   20e96:	00 00                	add    BYTE PTR [rax],al
-   20e98:	00 01                	add    BYTE PTR [rcx],al
-   20e9a:	01 54 01 38          	add    DWORD PTR [rcx+rax*1+0x38],edx
-   20e9e:	00 07                	add    BYTE PTR [rdi],al
-   20ea0:	32 e0                	xor    ah,al
-   20ea2:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20ea5:	00 00                	add    BYTE PTR [rax],al
-   20ea7:	00 f1                	add    cl,dh
-   20ea9:	35 00 00 bb 0e       	xor    eax,0xebb0000
-   20eae:	02 00                	add    al,BYTE PTR [rax]
-   20eb0:	01 01                	add    DWORD PTR [rcx],eax
-   20eb2:	55                   	push   rbp
-   20eb3:	01 31                	add    DWORD PTR [rcx],esi
-   20eb5:	01 01                	add    DWORD PTR [rcx],eax
-   20eb7:	51                   	push   rcx
-   20eb8:	01 30                	add    DWORD PTR [rax],esi
-   20eba:	00 04 7b             	add    BYTE PTR [rbx+rdi*2],al
-   20ebd:	e0 43                	loopne 20f02 <__abi_tag-0x3df41e>
-   20ebf:	00 00                	add    BYTE PTR [rax],al
-   20ec1:	00 00                	add    BYTE PTR [rax],al
-   20ec3:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   20ec6:	07                   	(bad)  
-   20ec7:	00 00                	add    BYTE PTR [rax],al
-   20ec9:	06                   	(bad)  
-   20eca:	09 e1                	or     ecx,esp
-   20ecc:	00 00                	add    BYTE PTR [rax],al
-   20ece:	35 0f 02 00 05       	xor    eax,0x500020f
-   20ed3:	92                   	xchg   edx,eax
-   20ed4:	97                   	xchg   edi,eax
-   20ed5:	00 00                	add    BYTE PTR [rax],al
-   20ed7:	05 f6 01 12 b5       	add    eax,0xb51201f6
-   20edc:	2c 00                	sub    al,0x0
-   20ede:	00 e2                	add    dl,ah
-   20ee0:	56                   	push   rsi
-   20ee1:	00 00                	add    BYTE PTR [rax],al
-   20ee3:	dc 56 00             	fcom   QWORD PTR [rsi+0x0]
-   20ee6:	00 03                	add    BYTE PTR [rbx],al
-   20ee8:	b1 df                	mov    cl,0xdf
-   20eea:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20eed:	00 00                	add    BYTE PTR [rax],al
-   20eef:	00 c4                	add    ah,al
-   20ef1:	35 00 00 0b 0f       	xor    eax,0xf0b0000
-   20ef6:	02 00                	add    al,BYTE PTR [rax]
-   20ef8:	01 01                	add    DWORD PTR [rcx],eax
-   20efa:	55                   	push   rbp
-   20efb:	09 03                	or     DWORD PTR [rbx],eax
-   20efd:	83 f8 46             	cmp    eax,0x46
-   20f00:	00 00                	add    BYTE PTR [rax],al
-   20f02:	00 00                	add    BYTE PTR [rax],al
-   20f04:	00 01                	add    BYTE PTR [rcx],al
-   20f06:	01 54 01 32          	add    DWORD PTR [rcx+rax*1+0x32],edx
-   20f0a:	00 07                	add    BYTE PTR [rdi],al
-   20f0c:	e4 df                	in     al,0xdf
-   20f0e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20f11:	00 00                	add    BYTE PTR [rax],al
-   20f13:	00 f1                	add    cl,dh
-   20f15:	35 00 00 27 0f       	xor    eax,0xf270000
-   20f1a:	02 00                	add    al,BYTE PTR [rax]
-   20f1c:	01 01                	add    DWORD PTR [rcx],eax
-   20f1e:	55                   	push   rbp
-   20f1f:	01 31                	add    DWORD PTR [rcx],esi
-   20f21:	01 01                	add    DWORD PTR [rcx],eax
-   20f23:	51                   	push   rcx
-   20f24:	01 30                	add    DWORD PTR [rax],esi
-   20f26:	00 04 ee             	add    BYTE PTR [rsi+rbp*8],al
-   20f29:	df 43 00             	fild   WORD PTR [rbx+0x0]
-   20f2c:	00 00                	add    BYTE PTR [rax],al
-   20f2e:	00 00                	add    BYTE PTR [rax],al
-   20f30:	75 2d                	jne    20f5f <__abi_tag-0x3df3c1>
-   20f32:	07                   	(bad)  
-   20f33:	00 00                	add    BYTE PTR [rax],al
-   20f35:	06                   	(bad)  
-   20f36:	f1                   	icebp  
-   20f37:	e0 00                	loopne 20f39 <__abi_tag-0x3df3e7>
-   20f39:	00 a1 0f 02 00 05    	add    BYTE PTR [rcx+0x500020f],ah
-   20f3f:	f6 5e 00             	neg    BYTE PTR [rsi+0x0]
-   20f42:	00 05 f7 01 12 b5    	add    BYTE PTR [rip+0xffffffffb51201f7],al        # ffffffffb514113f <_end+0xffffffffb4c85827>
-   20f48:	2c 00                	sub    al,0x0
-   20f4a:	00 01                	add    BYTE PTR [rcx],al
-   20f4c:	57                   	push   rdi
-   20f4d:	00 00                	add    BYTE PTR [rax],al
-   20f4f:	fb                   	sti    
-   20f50:	56                   	push   rsi
-   20f51:	00 00                	add    BYTE PTR [rax],al
-   20f53:	03 6d df             	add    ebp,DWORD PTR [rbp-0x21]
-   20f56:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   20f59:	00 00                	add    BYTE PTR [rax],al
-   20f5b:	00 c4                	add    ah,al
-   20f5d:	35 00 00 77 0f       	xor    eax,0xf770000
-   20f62:	02 00                	add    al,BYTE PTR [rax]
-   20f64:	01 01                	add    DWORD PTR [rcx],eax
-   20f66:	55                   	push   rbp
-   20f67:	09 03                	or     DWORD PTR [rbx],eax
-   20f69:	be 20 47 00 00       	mov    esi,0x4720
-   20f6e:	00 00                	add    BYTE PTR [rax],al
-   20f70:	00 01                	add    BYTE PTR [rcx],al
-   20f72:	01 54 01 32          	add    DWORD PTR [rcx+rax*1+0x32],edx
-   20f76:	00 07                	add    BYTE PTR [rdi],al
-   20f78:	a0 df 43 00 00 00 00 	movabs al,ds:0xf1000000000043df
-   20f7f:	00 f1 
-   20f81:	35 00 00 93 0f       	xor    eax,0xf930000
-   20f86:	02 00                	add    al,BYTE PTR [rax]
-   20f88:	01 01                	add    DWORD PTR [rcx],eax
-   20f8a:	55                   	push   rbp
-   20f8b:	01 31                	add    DWORD PTR [rcx],esi
-   20f8d:	01 01                	add    DWORD PTR [rcx],eax
-   20f8f:	51                   	push   rcx
-   20f90:	01 30                	add    DWORD PTR [rax],esi
-   20f92:	00 04 e9             	add    BYTE PTR [rcx+rbp*8],al
-   20f95:	df 43 00             	fild   WORD PTR [rbx+0x0]
-   20f98:	00 00                	add    BYTE PTR [rax],al
-   20f9a:	00 00                	add    BYTE PTR [rax],al
-   20f9c:	75 2d                	jne    20fcb <__abi_tag-0x3df355>
-   20f9e:	07                   	(bad)  
-   20f9f:	00 00                	add    BYTE PTR [rax],al
-   20fa1:	06                   	(bad)  
-   20fa2:	db e0                	fneni(8087 only) 
-   20fa4:	00 00                	add    BYTE PTR [rax],al
-   20fa6:	0d 10 02 00 05       	or     eax,0x5000210
-   20fab:	63 9b 00 00 05 fa    	movsxd ebx,DWORD PTR [rbx-0x5fb0000]
-   20fb1:	01 12                	add    DWORD PTR [rdx],edx
-   20fb3:	b5 2c                	mov    ch,0x2c
-   20fb5:	00 00                	add    BYTE PTR [rax],al
-   20fb7:	20 57 00             	and    BYTE PTR [rdi+0x0],dl
-   20fba:	00 1a                	add    BYTE PTR [rdx],bl
-   20fbc:	57                   	push   rdi
-   20fbd:	00 00                	add    BYTE PTR [rax],al
-   20fbf:	03 1f                	add    ebx,DWORD PTR [rdi]
-   20fc1:	df 43 00             	fild   WORD PTR [rbx+0x0]
-   20fc4:	00 00                	add    BYTE PTR [rax],al
-   20fc6:	00 00                	add    BYTE PTR [rax],al
-   20fc8:	c4                   	(bad)  
-   20fc9:	35 00 00 e3 0f       	xor    eax,0xfe30000
-   20fce:	02 00                	add    al,BYTE PTR [rax]
-   20fd0:	01 01                	add    DWORD PTR [rcx],eax
-   20fd2:	55                   	push   rbp
-   20fd3:	09 03                	or     DWORD PTR [rbx],eax
-   20fd5:	86 f8                	xchg   al,bh
-   20fd7:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   20fda:	00 00                	add    BYTE PTR [rax],al
-   20fdc:	00 01                	add    BYTE PTR [rcx],al
-   20fde:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   20fe2:	00 07                	add    BYTE PTR [rdi],al
-   20fe4:	52                   	push   rdx
-   20fe5:	df 43 00             	fild   WORD PTR [rbx+0x0]
-   20fe8:	00 00                	add    BYTE PTR [rax],al
-   20fea:	00 00                	add    BYTE PTR [rax],al
-   20fec:	f1                   	icebp  
-   20fed:	35 00 00 ff 0f       	xor    eax,0xfff0000
-   20ff2:	02 00                	add    al,BYTE PTR [rax]
-   20ff4:	01 01                	add    DWORD PTR [rcx],eax
-   20ff6:	55                   	push   rbp
-   20ff7:	01 31                	add    DWORD PTR [rcx],esi
-   20ff9:	01 01                	add    DWORD PTR [rcx],eax
-   20ffb:	51                   	push   rcx
-   20ffc:	01 30                	add    DWORD PTR [rax],esi
-   20ffe:	00 04 5c             	add    BYTE PTR [rsp+rbx*2],al
-   21001:	df 43 00             	fild   WORD PTR [rbx+0x0]
-   21004:	00 00                	add    BYTE PTR [rax],al
-   21006:	00 00                	add    BYTE PTR [rax],al
-   21008:	75 2d                	jne    21037 <__abi_tag-0x3df2e9>
-   2100a:	07                   	(bad)  
-   2100b:	00 00                	add    BYTE PTR [rax],al
-   2100d:	06                   	(bad)  
-   2100e:	c3                   	ret    
-   2100f:	e0 00                	loopne 21011 <__abi_tag-0x3df30f>
-   21011:	00 79 10             	add    BYTE PTR [rcx+0x10],bh
-   21014:	02 00                	add    al,BYTE PTR [rax]
-   21016:	05 f5 db 00 00       	add    eax,0xdbf5
-   2101b:	05 fe 01 12 b5       	add    eax,0xb51201fe
-   21020:	2c 00                	sub    al,0x0
-   21022:	00 3f                	add    BYTE PTR [rdi],bh
-   21024:	57                   	push   rdi
-   21025:	00 00                	add    BYTE PTR [rax],al
-   21027:	39 57 00             	cmp    DWORD PTR [rdi+0x0],edx
-   2102a:	00 03                	add    BYTE PTR [rbx],al
-   2102c:	db de                	fcmovnu st,st(6)
-   2102e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21031:	00 00                	add    BYTE PTR [rax],al
-   21033:	00 c4                	add    ah,al
-   21035:	35 00 00 4f 10       	xor    eax,0x104f0000
-   2103a:	02 00                	add    al,BYTE PTR [rax]
-   2103c:	01 01                	add    DWORD PTR [rcx],eax
-   2103e:	55                   	push   rbp
-   2103f:	09 03                	or     DWORD PTR [rbx],eax
-   21041:	da 1e                	ficomp DWORD PTR [rsi]
-   21043:	47 00 00             	rex.RXB add BYTE PTR [r8],r8b
-   21046:	00 00                	add    BYTE PTR [rax],al
-   21048:	00 01                	add    BYTE PTR [rcx],al
-   2104a:	01 54 01 34          	add    DWORD PTR [rcx+rax*1+0x34],edx
-   2104e:	00 07                	add    BYTE PTR [rdi],al
-   21050:	0e                   	(bad)  
-   21051:	df 43 00             	fild   WORD PTR [rbx+0x0]
-   21054:	00 00                	add    BYTE PTR [rax],al
-   21056:	00 00                	add    BYTE PTR [rax],al
-   21058:	f1                   	icebp  
-   21059:	35 00 00 6b 10       	xor    eax,0x106b0000
-   2105e:	02 00                	add    al,BYTE PTR [rax]
-   21060:	01 01                	add    DWORD PTR [rcx],eax
-   21062:	55                   	push   rbp
-   21063:	01 31                	add    DWORD PTR [rcx],esi
-   21065:	01 01                	add    DWORD PTR [rcx],eax
-   21067:	51                   	push   rcx
-   21068:	01 30                	add    DWORD PTR [rax],esi
-   2106a:	00 04 57             	add    BYTE PTR [rdi+rdx*2],al
-   2106d:	df 43 00             	fild   WORD PTR [rbx+0x0]
-   21070:	00 00                	add    BYTE PTR [rax],al
-   21072:	00 00                	add    BYTE PTR [rax],al
-   21074:	75 2d                	jne    210a3 <__abi_tag-0x3df27d>
-   21076:	07                   	(bad)  
-   21077:	00 00                	add    BYTE PTR [rax],al
-   21079:	06                   	(bad)  
-   2107a:	ad                   	lods   eax,DWORD PTR ds:[rsi]
-   2107b:	e0 00                	loopne 2107d <__abi_tag-0x3df2a3>
-   2107d:	00 e5                	add    ch,ah
-   2107f:	10 02                	adc    BYTE PTR [rdx],al
-   21081:	00 05 88 9b 00 00    	add    BYTE PTR [rip+0x9b88],al        # 2ac0f <__abi_tag-0x3d5711>
-   21087:	05 00 02 12 b5       	add    eax,0xb5120200
-   2108c:	2c 00                	sub    al,0x0
-   2108e:	00 5e 57             	add    BYTE PTR [rsi+0x57],bl
-   21091:	00 00                	add    BYTE PTR [rax],al
-   21093:	58                   	pop    rax
-   21094:	57                   	push   rdi
-   21095:	00 00                	add    BYTE PTR [rax],al
-   21097:	03 8d de 43 00 00    	add    ecx,DWORD PTR [rbp+0x43de]
-   2109d:	00 00                	add    BYTE PTR [rax],al
-   2109f:	00 c4                	add    ah,al
-   210a1:	35 00 00 bb 10       	xor    eax,0x10bb0000
-   210a6:	02 00                	add    al,BYTE PTR [rax]
-   210a8:	01 01                	add    DWORD PTR [rcx],eax
-   210aa:	55                   	push   rbp
-   210ab:	09 03                	or     DWORD PTR [rbx],eax
-   210ad:	8c f8                	mov    eax,?
-   210af:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   210b2:	00 00                	add    BYTE PTR [rax],al
-   210b4:	00 01                	add    BYTE PTR [rcx],al
-   210b6:	01 54 01 39          	add    DWORD PTR [rcx+rax*1+0x39],edx
-   210ba:	00 07                	add    BYTE PTR [rdi],al
-   210bc:	c0 de 43             	rcr    dh,0x43
-   210bf:	00 00                	add    BYTE PTR [rax],al
-   210c1:	00 00                	add    BYTE PTR [rax],al
-   210c3:	00 f1                	add    cl,dh
-   210c5:	35 00 00 d7 10       	xor    eax,0x10d70000
-   210ca:	02 00                	add    al,BYTE PTR [rax]
-   210cc:	01 01                	add    DWORD PTR [rcx],eax
-   210ce:	55                   	push   rbp
-   210cf:	01 31                	add    DWORD PTR [rcx],esi
-   210d1:	01 01                	add    DWORD PTR [rcx],eax
-   210d3:	51                   	push   rcx
-   210d4:	01 30                	add    DWORD PTR [rax],esi
-   210d6:	00 04 ca             	add    BYTE PTR [rdx+rcx*8],al
-   210d9:	de 43 00             	fiadd  WORD PTR [rbx+0x0]
-   210dc:	00 00                	add    BYTE PTR [rax],al
-   210de:	00 00                	add    BYTE PTR [rax],al
-   210e0:	75 2d                	jne    2110f <__abi_tag-0x3df211>
-   210e2:	07                   	(bad)  
-   210e3:	00 00                	add    BYTE PTR [rax],al
-   210e5:	06                   	(bad)  
-   210e6:	95                   	xchg   ebp,eax
-   210e7:	e0 00                	loopne 210e9 <__abi_tag-0x3df237>
-   210e9:	00 51 11             	add    BYTE PTR [rcx+0x11],dl
-   210ec:	02 00                	add    al,BYTE PTR [rax]
-   210ee:	05 90 9b 00 00       	add    eax,0x9b90
-   210f3:	05 01 02 12 b5       	add    eax,0xb5120201
-   210f8:	2c 00                	sub    al,0x0
-   210fa:	00 7d 57             	add    BYTE PTR [rbp+0x57],bh
-   210fd:	00 00                	add    BYTE PTR [rax],al
-   210ff:	77 57                	ja     21158 <__abi_tag-0x3df1c8>
-   21101:	00 00                	add    BYTE PTR [rax],al
-   21103:	03 49 de             	add    ecx,DWORD PTR [rcx-0x22]
-   21106:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21109:	00 00                	add    BYTE PTR [rax],al
-   2110b:	00 c4                	add    ah,al
-   2110d:	35 00 00 27 11       	xor    eax,0x11270000
-   21112:	02 00                	add    al,BYTE PTR [rax]
-   21114:	01 01                	add    DWORD PTR [rcx],eax
-   21116:	55                   	push   rbp
-   21117:	09 03                	or     DWORD PTR [rbx],eax
-   21119:	96                   	xchg   esi,eax
-   2111a:	f8                   	clc    
-   2111b:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   2111e:	00 00                	add    BYTE PTR [rax],al
-   21120:	00 01                	add    BYTE PTR [rcx],al
-   21122:	01 54 01 40          	add    DWORD PTR [rcx+rax*1+0x40],edx
-   21126:	00 07                	add    BYTE PTR [rdi],al
-   21128:	7c de                	jl     21108 <__abi_tag-0x3df218>
-   2112a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   2112d:	00 00                	add    BYTE PTR [rax],al
-   2112f:	00 f1                	add    cl,dh
-   21131:	35 00 00 43 11       	xor    eax,0x11430000
-   21136:	02 00                	add    al,BYTE PTR [rax]
-   21138:	01 01                	add    DWORD PTR [rcx],eax
-   2113a:	55                   	push   rbp
-   2113b:	01 31                	add    DWORD PTR [rcx],esi
-   2113d:	01 01                	add    DWORD PTR [rcx],eax
-   2113f:	51                   	push   rcx
-   21140:	01 30                	add    DWORD PTR [rax],esi
-   21142:	00 04 c5 de 43 00 00 	add    BYTE PTR [rax*8+0x43de],al
-   21149:	00 00                	add    BYTE PTR [rax],al
-   2114b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   2114e:	07                   	(bad)  
-   2114f:	00 00                	add    BYTE PTR [rax],al
-   21151:	06                   	(bad)  
-   21152:	7f e0                	jg     21134 <__abi_tag-0x3df1ec>
-   21154:	00 00                	add    BYTE PTR [rax],al
-   21156:	bd 11 02 00 05       	mov    ebp,0x5000211
-   2115b:	13 dc                	adc    ebx,esp
-   2115d:	00 00                	add    BYTE PTR [rax],al
-   2115f:	05 02 02 12 b5       	add    eax,0xb5120202
-   21164:	2c 00                	sub    al,0x0
-   21166:	00 9c 57 00 00 96 57 	add    BYTE PTR [rdi+rdx*2+0x57960000],bl
-   2116d:	00 00                	add    BYTE PTR [rax],al
-   2116f:	03 fb                	add    edi,ebx
-   21171:	dd 43 00             	fld    QWORD PTR [rbx+0x0]
-   21174:	00 00                	add    BYTE PTR [rax],al
-   21176:	00 00                	add    BYTE PTR [rax],al
-   21178:	c4                   	(bad)  
-   21179:	35 00 00 93 11       	xor    eax,0x11930000
-   2117e:	02 00                	add    al,BYTE PTR [rax]
-   21180:	01 01                	add    DWORD PTR [rcx],eax
-   21182:	55                   	push   rbp
-   21183:	09 03                	or     DWORD PTR [rbx],eax
-   21185:	a7                   	cmps   DWORD PTR ds:[rsi],DWORD PTR es:[rdi]
-   21186:	f8                   	clc    
-   21187:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   2118a:	00 00                	add    BYTE PTR [rax],al
-   2118c:	00 01                	add    BYTE PTR [rcx],al
-   2118e:	01 54 01 42          	add    DWORD PTR [rcx+rax*1+0x42],edx
-   21192:	00 07                	add    BYTE PTR [rdi],al
-   21194:	2e de 43 00          	cs fiadd WORD PTR [rbx+0x0]
-   21198:	00 00                	add    BYTE PTR [rax],al
-   2119a:	00 00                	add    BYTE PTR [rax],al
-   2119c:	f1                   	icebp  
-   2119d:	35 00 00 af 11       	xor    eax,0x11af0000
-   211a2:	02 00                	add    al,BYTE PTR [rax]
-   211a4:	01 01                	add    DWORD PTR [rcx],eax
-   211a6:	55                   	push   rbp
-   211a7:	01 31                	add    DWORD PTR [rcx],esi
-   211a9:	01 01                	add    DWORD PTR [rcx],eax
-   211ab:	51                   	push   rcx
-   211ac:	01 30                	add    DWORD PTR [rax],esi
-   211ae:	00 04 38             	add    BYTE PTR [rax+rdi*1],al
-   211b1:	de 43 00             	fiadd  WORD PTR [rbx+0x0]
-   211b4:	00 00                	add    BYTE PTR [rax],al
-   211b6:	00 00                	add    BYTE PTR [rax],al
-   211b8:	75 2d                	jne    211e7 <__abi_tag-0x3df139>
-   211ba:	07                   	(bad)  
-   211bb:	00 00                	add    BYTE PTR [rax],al
-   211bd:	06                   	(bad)  
-   211be:	67 e0 00             	addr32 loopne 211c1 <__abi_tag-0x3df15f>
-   211c1:	00 29                	add    BYTE PTR [rcx],ch
-   211c3:	12 02                	adc    al,BYTE PTR [rdx]
-   211c5:	00 05 98 9b 00 00    	add    BYTE PTR [rip+0x9b98],al        # 2ad63 <__abi_tag-0x3d55bd>
-   211cb:	05 03 02 12 b5       	add    eax,0xb5120203
-   211d0:	2c 00                	sub    al,0x0
-   211d2:	00 bb 57 00 00 b5    	add    BYTE PTR [rbx-0x4affffa9],bh
-   211d8:	57                   	push   rdi
-   211d9:	00 00                	add    BYTE PTR [rax],al
-   211db:	03 b7 dd 43 00 00    	add    esi,DWORD PTR [rdi+0x43dd]
-   211e1:	00 00                	add    BYTE PTR [rax],al
-   211e3:	00 c4                	add    ah,al
-   211e5:	35 00 00 ff 11       	xor    eax,0x11ff0000
-   211ea:	02 00                	add    al,BYTE PTR [rax]
-   211ec:	01 01                	add    DWORD PTR [rcx],eax
-   211ee:	55                   	push   rbp
-   211ef:	09 03                	or     DWORD PTR [rbx],eax
-   211f1:	ba f8 46 00 00       	mov    edx,0x46f8
-   211f6:	00 00                	add    BYTE PTR [rax],al
-   211f8:	00 01                	add    BYTE PTR [rcx],al
-   211fa:	01 54 01 43          	add    DWORD PTR [rcx+rax*1+0x43],edx
-   211fe:	00 07                	add    BYTE PTR [rdi],al
-   21200:	ea                   	(bad)  
-   21201:	dd 43 00             	fld    QWORD PTR [rbx+0x0]
-   21204:	00 00                	add    BYTE PTR [rax],al
-   21206:	00 00                	add    BYTE PTR [rax],al
-   21208:	f1                   	icebp  
-   21209:	35 00 00 1b 12       	xor    eax,0x121b0000
-   2120e:	02 00                	add    al,BYTE PTR [rax]
-   21210:	01 01                	add    DWORD PTR [rcx],eax
-   21212:	55                   	push   rbp
-   21213:	01 31                	add    DWORD PTR [rcx],esi
-   21215:	01 01                	add    DWORD PTR [rcx],eax
-   21217:	51                   	push   rcx
-   21218:	01 30                	add    DWORD PTR [rax],esi
-   2121a:	00 04 33             	add    BYTE PTR [rbx+rsi*1],al
-   2121d:	de 43 00             	fiadd  WORD PTR [rbx+0x0]
-   21220:	00 00                	add    BYTE PTR [rax],al
-   21222:	00 00                	add    BYTE PTR [rax],al
-   21224:	75 2d                	jne    21253 <__abi_tag-0x3df0cd>
-   21226:	07                   	(bad)  
-   21227:	00 00                	add    BYTE PTR [rax],al
-   21229:	06                   	(bad)  
-   2122a:	51                   	push   rcx
-   2122b:	e0 00                	loopne 2122d <__abi_tag-0x3df0f3>
-   2122d:	00 95 12 02 00 05    	add    BYTE PTR [rbp+0x5000212],dl
-   21233:	a8 9b                	test   al,0x9b
-   21235:	00 00                	add    BYTE PTR [rax],al
-   21237:	05 04 02 12 b5       	add    eax,0xb5120204
-   2123c:	2c 00                	sub    al,0x0
-   2123e:	00 da                	add    dl,bl
-   21240:	57                   	push   rdi
-   21241:	00 00                	add    BYTE PTR [rax],al
-   21243:	d4                   	(bad)  
-   21244:	57                   	push   rdi
-   21245:	00 00                	add    BYTE PTR [rax],al
-   21247:	03 69 dd             	add    ebp,DWORD PTR [rcx-0x23]
-   2124a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   2124d:	00 00                	add    BYTE PTR [rax],al
-   2124f:	00 c4                	add    ah,al
-   21251:	35 00 00 6b 12       	xor    eax,0x126b0000
-   21256:	02 00                	add    al,BYTE PTR [rax]
-   21258:	01 01                	add    DWORD PTR [rcx],eax
-   2125a:	55                   	push   rbp
-   2125b:	09 03                	or     DWORD PTR [rbx],eax
-   2125d:	ce                   	(bad)  
-   2125e:	f8                   	clc    
-   2125f:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   21262:	00 00                	add    BYTE PTR [rax],al
-   21264:	00 01                	add    BYTE PTR [rcx],al
-   21266:	01 54 01 3a          	add    DWORD PTR [rcx+rax*1+0x3a],edx
-   2126a:	00 07                	add    BYTE PTR [rdi],al
-   2126c:	9c                   	pushf  
-   2126d:	dd 43 00             	fld    QWORD PTR [rbx+0x0]
-   21270:	00 00                	add    BYTE PTR [rax],al
-   21272:	00 00                	add    BYTE PTR [rax],al
-   21274:	f1                   	icebp  
-   21275:	35 00 00 87 12       	xor    eax,0x12870000
-   2127a:	02 00                	add    al,BYTE PTR [rax]
-   2127c:	01 01                	add    DWORD PTR [rcx],eax
-   2127e:	55                   	push   rbp
-   2127f:	01 31                	add    DWORD PTR [rcx],esi
-   21281:	01 01                	add    DWORD PTR [rcx],eax
-   21283:	51                   	push   rcx
-   21284:	01 30                	add    DWORD PTR [rax],esi
-   21286:	00 04 a6             	add    BYTE PTR [rsi+riz*4],al
-   21289:	dd 43 00             	fld    QWORD PTR [rbx+0x0]
-   2128c:	00 00                	add    BYTE PTR [rax],al
-   2128e:	00 00                	add    BYTE PTR [rax],al
-   21290:	75 2d                	jne    212bf <__abi_tag-0x3df061>
-   21292:	07                   	(bad)  
-   21293:	00 00                	add    BYTE PTR [rax],al
-   21295:	06                   	(bad)  
-   21296:	39 e0                	cmp    eax,esp
-   21298:	00 00                	add    BYTE PTR [rax],al
-   2129a:	01 13                	add    DWORD PTR [rbx],edx
-   2129c:	02 00                	add    al,BYTE PTR [rax]
-   2129e:	05 b8 9b 00 00       	add    eax,0x9bb8
-   212a3:	05 05 02 12 b5       	add    eax,0xb5120205
-   212a8:	2c 00                	sub    al,0x0
-   212aa:	00 f9                	add    cl,bh
-   212ac:	57                   	push   rdi
-   212ad:	00 00                	add    BYTE PTR [rax],al
-   212af:	f3 57                	repz push rdi
-   212b1:	00 00                	add    BYTE PTR [rax],al
-   212b3:	03 25 dd 43 00 00    	add    esp,DWORD PTR [rip+0x43dd]        # 25696 <__abi_tag-0x3dac8a>
-   212b9:	00 00                	add    BYTE PTR [rax],al
-   212bb:	00 c4                	add    ah,al
-   212bd:	35 00 00 d7 12       	xor    eax,0x12d70000
-   212c2:	02 00                	add    al,BYTE PTR [rax]
-   212c4:	01 01                	add    DWORD PTR [rcx],eax
-   212c6:	55                   	push   rbp
-   212c7:	09 03                	or     DWORD PTR [rbx],eax
-   212c9:	d9 f8                	fprem  
-   212cb:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   212ce:	00 00                	add    BYTE PTR [rax],al
-   212d0:	00 01                	add    BYTE PTR [rcx],al
-   212d2:	01 54 01 3b          	add    DWORD PTR [rcx+rax*1+0x3b],edx
-   212d6:	00 07                	add    BYTE PTR [rdi],al
-   212d8:	58                   	pop    rax
-   212d9:	dd 43 00             	fld    QWORD PTR [rbx+0x0]
-   212dc:	00 00                	add    BYTE PTR [rax],al
-   212de:	00 00                	add    BYTE PTR [rax],al
-   212e0:	f1                   	icebp  
-   212e1:	35 00 00 f3 12       	xor    eax,0x12f30000
-   212e6:	02 00                	add    al,BYTE PTR [rax]
-   212e8:	01 01                	add    DWORD PTR [rcx],eax
-   212ea:	55                   	push   rbp
-   212eb:	01 31                	add    DWORD PTR [rcx],esi
-   212ed:	01 01                	add    DWORD PTR [rcx],eax
-   212ef:	51                   	push   rcx
-   212f0:	01 30                	add    DWORD PTR [rax],esi
-   212f2:	00 04 a1             	add    BYTE PTR [rcx+riz*4],al
-   212f5:	dd 43 00             	fld    QWORD PTR [rbx+0x0]
-   212f8:	00 00                	add    BYTE PTR [rax],al
-   212fa:	00 00                	add    BYTE PTR [rax],al
-   212fc:	75 2d                	jne    2132b <__abi_tag-0x3deff5>
-   212fe:	07                   	(bad)  
-   212ff:	00 00                	add    BYTE PTR [rax],al
-   21301:	06                   	(bad)  
-   21302:	23 e0                	and    esp,eax
-   21304:	00 00                	add    BYTE PTR [rax],al
-   21306:	6d                   	ins    DWORD PTR es:[rdi],dx
-   21307:	13 02                	adc    eax,DWORD PTR [rdx]
-   21309:	00 05 c8 9b 00 00    	add    BYTE PTR [rip+0x9bc8],al        # 2aed7 <__abi_tag-0x3d5449>
-   2130f:	05 06 02 12 b5       	add    eax,0xb5120206
-   21314:	2c 00                	sub    al,0x0
-   21316:	00 18                	add    BYTE PTR [rax],bl
-   21318:	58                   	pop    rax
-   21319:	00 00                	add    BYTE PTR [rax],al
-   2131b:	12 58 00             	adc    bl,BYTE PTR [rax+0x0]
-   2131e:	00 03                	add    BYTE PTR [rbx],al
-   21320:	d7                   	xlat   BYTE PTR ds:[rbx]
-   21321:	dc 43 00             	fadd   QWORD PTR [rbx+0x0]
-   21324:	00 00                	add    BYTE PTR [rax],al
-   21326:	00 00                	add    BYTE PTR [rax],al
-   21328:	c4                   	(bad)  
-   21329:	35 00 00 43 13       	xor    eax,0x13430000
-   2132e:	02 00                	add    al,BYTE PTR [rax]
-   21330:	01 01                	add    DWORD PTR [rcx],eax
-   21332:	55                   	push   rbp
-   21333:	09 03                	or     DWORD PTR [rbx],eax
-   21335:	e5 f8                	in     eax,0xf8
-   21337:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   2133a:	00 00                	add    BYTE PTR [rax],al
-   2133c:	00 01                	add    BYTE PTR [rcx],al
-   2133e:	01 54 01 3d          	add    DWORD PTR [rcx+rax*1+0x3d],edx
-   21342:	00 07                	add    BYTE PTR [rdi],al
-   21344:	0a dd                	or     bl,ch
-   21346:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21349:	00 00                	add    BYTE PTR [rax],al
-   2134b:	00 f1                	add    cl,dh
-   2134d:	35 00 00 5f 13       	xor    eax,0x135f0000
-   21352:	02 00                	add    al,BYTE PTR [rax]
-   21354:	01 01                	add    DWORD PTR [rcx],eax
-   21356:	55                   	push   rbp
-   21357:	01 31                	add    DWORD PTR [rcx],esi
-   21359:	01 01                	add    DWORD PTR [rcx],eax
-   2135b:	51                   	push   rcx
-   2135c:	01 30                	add    DWORD PTR [rax],esi
-   2135e:	00 04 14             	add    BYTE PTR [rsp+rdx*1],al
-   21361:	dd 43 00             	fld    QWORD PTR [rbx+0x0]
-   21364:	00 00                	add    BYTE PTR [rax],al
-   21366:	00 00                	add    BYTE PTR [rax],al
-   21368:	75 2d                	jne    21397 <__abi_tag-0x3def89>
-   2136a:	07                   	(bad)  
-   2136b:	00 00                	add    BYTE PTR [rax],al
-   2136d:	06                   	(bad)  
-   2136e:	0b e0                	or     esp,eax
-   21370:	00 00                	add    BYTE PTR [rax],al
-   21372:	d9 13                	fst    DWORD PTR [rbx]
-   21374:	02 00                	add    al,BYTE PTR [rax]
-   21376:	05 63 dd 00 00       	add    eax,0xdd63
-   2137b:	05 07 02 12 b5       	add    eax,0xb5120207
-   21380:	2c 00                	sub    al,0x0
-   21382:	00 37                	add    BYTE PTR [rdi],dh
-   21384:	58                   	pop    rax
-   21385:	00 00                	add    BYTE PTR [rax],al
-   21387:	31 58 00             	xor    DWORD PTR [rax+0x0],ebx
-   2138a:	00 03                	add    BYTE PTR [rbx],al
-   2138c:	93                   	xchg   ebx,eax
-   2138d:	dc 43 00             	fadd   QWORD PTR [rbx+0x0]
-   21390:	00 00                	add    BYTE PTR [rax],al
-   21392:	00 00                	add    BYTE PTR [rax],al
-   21394:	c4                   	(bad)  
-   21395:	35 00 00 af 13       	xor    eax,0x13af0000
-   2139a:	02 00                	add    al,BYTE PTR [rax]
-   2139c:	01 01                	add    DWORD PTR [rcx],eax
-   2139e:	55                   	push   rbp
-   2139f:	09 03                	or     DWORD PTR [rbx],eax
-   213a1:	f3 f8                	repz clc 
-   213a3:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   213a6:	00 00                	add    BYTE PTR [rax],al
-   213a8:	00 01                	add    BYTE PTR [rcx],al
-   213aa:	01 54 01 3e          	add    DWORD PTR [rcx+rax*1+0x3e],edx
-   213ae:	00 07                	add    BYTE PTR [rdi],al
-   213b0:	c6                   	(bad)  
-   213b1:	dc 43 00             	fadd   QWORD PTR [rbx+0x0]
-   213b4:	00 00                	add    BYTE PTR [rax],al
-   213b6:	00 00                	add    BYTE PTR [rax],al
-   213b8:	f1                   	icebp  
-   213b9:	35 00 00 cb 13       	xor    eax,0x13cb0000
-   213be:	02 00                	add    al,BYTE PTR [rax]
-   213c0:	01 01                	add    DWORD PTR [rcx],eax
-   213c2:	55                   	push   rbp
-   213c3:	01 31                	add    DWORD PTR [rcx],esi
-   213c5:	01 01                	add    DWORD PTR [rcx],eax
-   213c7:	51                   	push   rcx
-   213c8:	01 30                	add    DWORD PTR [rax],esi
-   213ca:	00 04 0f             	add    BYTE PTR [rdi+rcx*1],al
-   213cd:	dd 43 00             	fld    QWORD PTR [rbx+0x0]
-   213d0:	00 00                	add    BYTE PTR [rax],al
-   213d2:	00 00                	add    BYTE PTR [rax],al
-   213d4:	75 2d                	jne    21403 <__abi_tag-0x3def1d>
-   213d6:	07                   	(bad)  
-   213d7:	00 00                	add    BYTE PTR [rax],al
-   213d9:	06                   	(bad)  
-   213da:	f5                   	cmc    
-   213db:	df 00                	fild   WORD PTR [rax]
-   213dd:	00 45 14             	add    BYTE PTR [rbp+0x14],al
-   213e0:	02 00                	add    al,BYTE PTR [rax]
-   213e2:	05 6b dd 00 00       	add    eax,0xdd6b
-   213e7:	05 08 02 12 b5       	add    eax,0xb5120208
-   213ec:	2c 00                	sub    al,0x0
-   213ee:	00 56 58             	add    BYTE PTR [rsi+0x58],dl
-   213f1:	00 00                	add    BYTE PTR [rax],al
-   213f3:	50                   	push   rax
-   213f4:	58                   	pop    rax
-   213f5:	00 00                	add    BYTE PTR [rax],al
-   213f7:	03 45 dc             	add    eax,DWORD PTR [rbp-0x24]
-   213fa:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   213fd:	00 00                	add    BYTE PTR [rax],al
-   213ff:	00 c4                	add    ah,al
-   21401:	35 00 00 1b 14       	xor    eax,0x141b0000
-   21406:	02 00                	add    al,BYTE PTR [rax]
-   21408:	01 01                	add    DWORD PTR [rcx],eax
-   2140a:	55                   	push   rbp
-   2140b:	09 03                	or     DWORD PTR [rbx],eax
-   2140d:	02 f9                	add    bh,cl
-   2140f:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   21412:	00 00                	add    BYTE PTR [rax],al
-   21414:	00 01                	add    BYTE PTR [rcx],al
-   21416:	01 54 01 37          	add    DWORD PTR [rcx+rax*1+0x37],edx
-   2141a:	00 07                	add    BYTE PTR [rdi],al
-   2141c:	78 dc                	js     213fa <__abi_tag-0x3def26>
-   2141e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21421:	00 00                	add    BYTE PTR [rax],al
-   21423:	00 f1                	add    cl,dh
-   21425:	35 00 00 37 14       	xor    eax,0x14370000
-   2142a:	02 00                	add    al,BYTE PTR [rax]
-   2142c:	01 01                	add    DWORD PTR [rcx],eax
-   2142e:	55                   	push   rbp
-   2142f:	01 31                	add    DWORD PTR [rcx],esi
-   21431:	01 01                	add    DWORD PTR [rcx],eax
-   21433:	51                   	push   rcx
-   21434:	01 30                	add    DWORD PTR [rax],esi
-   21436:	00 04 82             	add    BYTE PTR [rdx+rax*4],al
-   21439:	dc 43 00             	fadd   QWORD PTR [rbx+0x0]
-   2143c:	00 00                	add    BYTE PTR [rax],al
-   2143e:	00 00                	add    BYTE PTR [rax],al
-   21440:	75 2d                	jne    2146f <__abi_tag-0x3deeb1>
-   21442:	07                   	(bad)  
-   21443:	00 00                	add    BYTE PTR [rax],al
-   21445:	06                   	(bad)  
-   21446:	dd df                	fstp   st(7)
-   21448:	00 00                	add    BYTE PTR [rax],al
-   2144a:	b1 14                	mov    cl,0x14
-   2144c:	02 00                	add    al,BYTE PTR [rax]
-   2144e:	05 73 dd 00 00       	add    eax,0xdd73
-   21453:	05 0a 02 12 b5       	add    eax,0xb512020a
-   21458:	2c 00                	sub    al,0x0
-   2145a:	00 75 58             	add    BYTE PTR [rbp+0x58],dh
-   2145d:	00 00                	add    BYTE PTR [rax],al
-   2145f:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-   21460:	58                   	pop    rax
-   21461:	00 00                	add    BYTE PTR [rax],al
-   21463:	03 01                	add    eax,DWORD PTR [rcx]
-   21465:	dc 43 00             	fadd   QWORD PTR [rbx+0x0]
-   21468:	00 00                	add    BYTE PTR [rax],al
-   2146a:	00 00                	add    BYTE PTR [rax],al
-   2146c:	c4                   	(bad)  
-   2146d:	35 00 00 87 14       	xor    eax,0x14870000
-   21472:	02 00                	add    al,BYTE PTR [rax]
-   21474:	01 01                	add    DWORD PTR [rcx],eax
-   21476:	55                   	push   rbp
-   21477:	09 03                	or     DWORD PTR [rbx],eax
-   21479:	0a f9                	or     bh,cl
-   2147b:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   2147e:	00 00                	add    BYTE PTR [rax],al
-   21480:	00 01                	add    BYTE PTR [rcx],al
-   21482:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   21486:	00 07                	add    BYTE PTR [rdi],al
-   21488:	34 dc                	xor    al,0xdc
-   2148a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   2148d:	00 00                	add    BYTE PTR [rax],al
-   2148f:	00 f1                	add    cl,dh
-   21491:	35 00 00 a3 14       	xor    eax,0x14a30000
-   21496:	02 00                	add    al,BYTE PTR [rax]
-   21498:	01 01                	add    DWORD PTR [rcx],eax
-   2149a:	55                   	push   rbp
-   2149b:	01 31                	add    DWORD PTR [rcx],esi
-   2149d:	01 01                	add    DWORD PTR [rcx],eax
-   2149f:	51                   	push   rcx
-   214a0:	01 30                	add    DWORD PTR [rax],esi
-   214a2:	00 04 7d dc 43 00 00 	add    BYTE PTR [rdi*2+0x43dc],al
-   214a9:	00 00                	add    BYTE PTR [rax],al
-   214ab:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   214ae:	07                   	(bad)  
-   214af:	00 00                	add    BYTE PTR [rax],al
-   214b1:	06                   	(bad)  
-   214b2:	c7                   	(bad)  
-   214b3:	df 00                	fild   WORD PTR [rax]
-   214b5:	00 1d 15 02 00 05    	add    BYTE PTR [rip+0x5000215],bl        # 50216d0 <_end+0x4b65db8>
-   214bb:	7b dd                	jnp    2149a <__abi_tag-0x3dee86>
-   214bd:	00 00                	add    BYTE PTR [rax],al
-   214bf:	05 0b 02 12 b5       	add    eax,0xb512020b
-   214c4:	2c 00                	sub    al,0x0
-   214c6:	00 94 58 00 00 8e 58 	add    BYTE PTR [rax+rbx*2+0x588e0000],dl
-   214cd:	00 00                	add    BYTE PTR [rax],al
-   214cf:	03 b3 db 43 00 00    	add    esi,DWORD PTR [rbx+0x43db]
-   214d5:	00 00                	add    BYTE PTR [rax],al
-   214d7:	00 c4                	add    ah,al
-   214d9:	35 00 00 f3 14       	xor    eax,0x14f30000
-   214de:	02 00                	add    al,BYTE PTR [rax]
-   214e0:	01 01                	add    DWORD PTR [rcx],eax
-   214e2:	55                   	push   rbp
-   214e3:	09 03                	or     DWORD PTR [rbx],eax
-   214e5:	10 f9                	adc    cl,bh
-   214e7:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   214ea:	00 00                	add    BYTE PTR [rax],al
-   214ec:	00 01                	add    BYTE PTR [rcx],al
-   214ee:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   214f2:	00 07                	add    BYTE PTR [rdi],al
-   214f4:	e6 db                	out    0xdb,al
-   214f6:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   214f9:	00 00                	add    BYTE PTR [rax],al
-   214fb:	00 f1                	add    cl,dh
-   214fd:	35 00 00 0f 15       	xor    eax,0x150f0000
-   21502:	02 00                	add    al,BYTE PTR [rax]
-   21504:	01 01                	add    DWORD PTR [rcx],eax
-   21506:	55                   	push   rbp
-   21507:	01 31                	add    DWORD PTR [rcx],esi
-   21509:	01 01                	add    DWORD PTR [rcx],eax
-   2150b:	51                   	push   rcx
-   2150c:	01 30                	add    DWORD PTR [rax],esi
-   2150e:	00 04 f0             	add    BYTE PTR [rax+rsi*8],al
-   21511:	db 43 00             	fild   DWORD PTR [rbx+0x0]
-   21514:	00 00                	add    BYTE PTR [rax],al
-   21516:	00 00                	add    BYTE PTR [rax],al
-   21518:	75 2d                	jne    21547 <__abi_tag-0x3dedd9>
-   2151a:	07                   	(bad)  
-   2151b:	00 00                	add    BYTE PTR [rax],al
-   2151d:	06                   	(bad)  
-   2151e:	af                   	scas   eax,DWORD PTR es:[rdi]
-   2151f:	df 00                	fild   WORD PTR [rax]
-   21521:	00 89 15 02 00 05    	add    BYTE PTR [rcx+0x5000215],cl
-   21527:	83 dd 00             	sbb    ebp,0x0
-   2152a:	00 05 0c 02 12 b5    	add    BYTE PTR [rip+0xffffffffb512020c],al        # ffffffffb514173c <_end+0xffffffffb4c85e24>
-   21530:	2c 00                	sub    al,0x0
-   21532:	00 b3 58 00 00 ad    	add    BYTE PTR [rbx-0x52ffffa8],dh
-   21538:	58                   	pop    rax
-   21539:	00 00                	add    BYTE PTR [rax],al
-   2153b:	03 6f db             	add    ebp,DWORD PTR [rdi-0x25]
-   2153e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21541:	00 00                	add    BYTE PTR [rax],al
-   21543:	00 c4                	add    ah,al
-   21545:	35 00 00 5f 15       	xor    eax,0x155f0000
-   2154a:	02 00                	add    al,BYTE PTR [rax]
-   2154c:	01 01                	add    DWORD PTR [rcx],eax
-   2154e:	55                   	push   rbp
-   2154f:	09 03                	or     DWORD PTR [rbx],eax
-   21551:	16                   	(bad)  
-   21552:	f9                   	stc    
-   21553:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   21556:	00 00                	add    BYTE PTR [rax],al
-   21558:	00 01                	add    BYTE PTR [rcx],al
-   2155a:	01 54 01 37          	add    DWORD PTR [rcx+rax*1+0x37],edx
-   2155e:	00 07                	add    BYTE PTR [rdi],al
-   21560:	a2 db 43 00 00 00 00 	movabs ds:0xf1000000000043db,al
-   21567:	00 f1 
-   21569:	35 00 00 7b 15       	xor    eax,0x157b0000
-   2156e:	02 00                	add    al,BYTE PTR [rax]
-   21570:	01 01                	add    DWORD PTR [rcx],eax
-   21572:	55                   	push   rbp
-   21573:	01 31                	add    DWORD PTR [rcx],esi
-   21575:	01 01                	add    DWORD PTR [rcx],eax
-   21577:	51                   	push   rcx
-   21578:	01 30                	add    DWORD PTR [rax],esi
-   2157a:	00 04 eb             	add    BYTE PTR [rbx+rbp*8],al
-   2157d:	db 43 00             	fild   DWORD PTR [rbx+0x0]
-   21580:	00 00                	add    BYTE PTR [rax],al
-   21582:	00 00                	add    BYTE PTR [rax],al
-   21584:	75 2d                	jne    215b3 <__abi_tag-0x3ded6d>
-   21586:	07                   	(bad)  
-   21587:	00 00                	add    BYTE PTR [rax],al
-   21589:	06                   	(bad)  
-   2158a:	99                   	cdq    
-   2158b:	df 00                	fild   WORD PTR [rax]
-   2158d:	00 f5                	add    ch,dh
-   2158f:	15 02 00 05 0e       	adc    eax,0xe050002
-   21594:	9f                   	lahf   
-   21595:	00 00                	add    BYTE PTR [rax],al
-   21597:	05 0e 02 12 b5       	add    eax,0xb512020e
-   2159c:	2c 00                	sub    al,0x0
-   2159e:	00 d2                	add    dl,dl
-   215a0:	58                   	pop    rax
-   215a1:	00 00                	add    BYTE PTR [rax],al
-   215a3:	cc                   	int3   
-   215a4:	58                   	pop    rax
-   215a5:	00 00                	add    BYTE PTR [rax],al
-   215a7:	03 21                	add    esp,DWORD PTR [rcx]
-   215a9:	db 43 00             	fild   DWORD PTR [rbx+0x0]
-   215ac:	00 00                	add    BYTE PTR [rax],al
-   215ae:	00 00                	add    BYTE PTR [rax],al
-   215b0:	c4                   	(bad)  
-   215b1:	35 00 00 cb 15       	xor    eax,0x15cb0000
-   215b6:	02 00                	add    al,BYTE PTR [rax]
-   215b8:	01 01                	add    DWORD PTR [rcx],eax
-   215ba:	55                   	push   rbp
-   215bb:	09 03                	or     DWORD PTR [rbx],eax
-   215bd:	19 26                	sbb    DWORD PTR [rsi],esp
-   215bf:	47 00 00             	rex.RXB add BYTE PTR [r8],r8b
-   215c2:	00 00                	add    BYTE PTR [rax],al
-   215c4:	00 01                	add    BYTE PTR [rcx],al
-   215c6:	01 54 01 33          	add    DWORD PTR [rcx+rax*1+0x33],edx
-   215ca:	00 07                	add    BYTE PTR [rdi],al
-   215cc:	54                   	push   rsp
-   215cd:	db 43 00             	fild   DWORD PTR [rbx+0x0]
-   215d0:	00 00                	add    BYTE PTR [rax],al
-   215d2:	00 00                	add    BYTE PTR [rax],al
-   215d4:	f1                   	icebp  
-   215d5:	35 00 00 e7 15       	xor    eax,0x15e70000
-   215da:	02 00                	add    al,BYTE PTR [rax]
-   215dc:	01 01                	add    DWORD PTR [rcx],eax
-   215de:	55                   	push   rbp
-   215df:	01 31                	add    DWORD PTR [rcx],esi
-   215e1:	01 01                	add    DWORD PTR [rcx],eax
-   215e3:	51                   	push   rcx
-   215e4:	01 30                	add    DWORD PTR [rax],esi
-   215e6:	00 04 5e             	add    BYTE PTR [rsi+rbx*2],al
-   215e9:	db 43 00             	fild   DWORD PTR [rbx+0x0]
-   215ec:	00 00                	add    BYTE PTR [rax],al
-   215ee:	00 00                	add    BYTE PTR [rax],al
-   215f0:	75 2d                	jne    2161f <__abi_tag-0x3ded01>
-   215f2:	07                   	(bad)  
-   215f3:	00 00                	add    BYTE PTR [rax],al
-   215f5:	06                   	(bad)  
-   215f6:	81 df 00 00 61 16    	sbb    edi,0x16610000
-   215fc:	02 00                	add    al,BYTE PTR [rax]
-   215fe:	05 20 9f 00 00       	add    eax,0x9f20
-   21603:	05 11 02 12 b5       	add    eax,0xb5120211
-   21608:	2c 00                	sub    al,0x0
-   2160a:	00 f1                	add    cl,dh
-   2160c:	58                   	pop    rax
-   2160d:	00 00                	add    BYTE PTR [rax],al
-   2160f:	eb 58                	jmp    21669 <__abi_tag-0x3decb7>
-   21611:	00 00                	add    BYTE PTR [rax],al
-   21613:	03 dd                	add    ebx,ebp
-   21615:	da 43 00             	fiadd  DWORD PTR [rbx+0x0]
-   21618:	00 00                	add    BYTE PTR [rax],al
-   2161a:	00 00                	add    BYTE PTR [rax],al
-   2161c:	c4                   	(bad)  
-   2161d:	35 00 00 37 16       	xor    eax,0x16370000
-   21622:	02 00                	add    al,BYTE PTR [rax]
-   21624:	01 01                	add    DWORD PTR [rcx],eax
-   21626:	55                   	push   rbp
-   21627:	09 03                	or     DWORD PTR [rbx],eax
-   21629:	1e                   	(bad)  
-   2162a:	f9                   	stc    
-   2162b:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   2162e:	00 00                	add    BYTE PTR [rax],al
-   21630:	00 01                	add    BYTE PTR [rcx],al
-   21632:	01 54 01 34          	add    DWORD PTR [rcx+rax*1+0x34],edx
-   21636:	00 07                	add    BYTE PTR [rdi],al
-   21638:	10 db                	adc    bl,bl
-   2163a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   2163d:	00 00                	add    BYTE PTR [rax],al
-   2163f:	00 f1                	add    cl,dh
-   21641:	35 00 00 53 16       	xor    eax,0x16530000
-   21646:	02 00                	add    al,BYTE PTR [rax]
-   21648:	01 01                	add    DWORD PTR [rcx],eax
-   2164a:	55                   	push   rbp
-   2164b:	01 31                	add    DWORD PTR [rcx],esi
-   2164d:	01 01                	add    DWORD PTR [rcx],eax
-   2164f:	51                   	push   rcx
-   21650:	01 30                	add    DWORD PTR [rax],esi
-   21652:	00 04 59             	add    BYTE PTR [rcx+rbx*2],al
-   21655:	db 43 00             	fild   DWORD PTR [rbx+0x0]
-   21658:	00 00                	add    BYTE PTR [rax],al
-   2165a:	00 00                	add    BYTE PTR [rax],al
-   2165c:	75 2d                	jne    2168b <__abi_tag-0x3dec95>
-   2165e:	07                   	(bad)  
-   2165f:	00 00                	add    BYTE PTR [rax],al
-   21661:	06                   	(bad)  
-   21662:	6b df 00             	imul   ebx,edi,0x0
-   21665:	00 cd                	add    ch,cl
-   21667:	16                   	(bad)  
-   21668:	02 00                	add    al,BYTE PTR [rax]
-   2166a:	05 9e dd 00 00       	add    eax,0xdd9e
-   2166f:	05 13 02 12 b5       	add    eax,0xb5120213
-   21674:	2c 00                	sub    al,0x0
-   21676:	00 10                	add    BYTE PTR [rax],dl
-   21678:	59                   	pop    rcx
-   21679:	00 00                	add    BYTE PTR [rax],al
-   2167b:	0a 59 00             	or     bl,BYTE PTR [rcx+0x0]
-   2167e:	00 03                	add    BYTE PTR [rbx],al
-   21680:	8f                   	(bad)  
-   21681:	da 43 00             	fiadd  DWORD PTR [rbx+0x0]
-   21684:	00 00                	add    BYTE PTR [rax],al
-   21686:	00 00                	add    BYTE PTR [rax],al
-   21688:	c4                   	(bad)  
-   21689:	35 00 00 a3 16       	xor    eax,0x16a30000
-   2168e:	02 00                	add    al,BYTE PTR [rax]
-   21690:	01 01                	add    DWORD PTR [rcx],eax
-   21692:	55                   	push   rbp
-   21693:	09 03                	or     DWORD PTR [rbx],eax
-   21695:	23 f9                	and    edi,ecx
-   21697:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   2169a:	00 00                	add    BYTE PTR [rax],al
-   2169c:	00 01                	add    BYTE PTR [rcx],al
-   2169e:	01 54 01 36          	add    DWORD PTR [rcx+rax*1+0x36],edx
-   216a2:	00 07                	add    BYTE PTR [rdi],al
-   216a4:	c2 da 43             	ret    0x43da
-   216a7:	00 00                	add    BYTE PTR [rax],al
-   216a9:	00 00                	add    BYTE PTR [rax],al
-   216ab:	00 f1                	add    cl,dh
-   216ad:	35 00 00 bf 16       	xor    eax,0x16bf0000
-   216b2:	02 00                	add    al,BYTE PTR [rax]
-   216b4:	01 01                	add    DWORD PTR [rcx],eax
-   216b6:	55                   	push   rbp
-   216b7:	01 31                	add    DWORD PTR [rcx],esi
-   216b9:	01 01                	add    DWORD PTR [rcx],eax
-   216bb:	51                   	push   rcx
-   216bc:	01 30                	add    DWORD PTR [rax],esi
-   216be:	00 04 cc             	add    BYTE PTR [rsp+rcx*8],al
-   216c1:	da 43 00             	fiadd  DWORD PTR [rbx+0x0]
-   216c4:	00 00                	add    BYTE PTR [rax],al
-   216c6:	00 00                	add    BYTE PTR [rax],al
-   216c8:	75 2d                	jne    216f7 <__abi_tag-0x3dec29>
-   216ca:	07                   	(bad)  
-   216cb:	00 00                	add    BYTE PTR [rax],al
-   216cd:	06                   	(bad)  
-   216ce:	53                   	push   rbx
-   216cf:	df 00                	fild   WORD PTR [rax]
-   216d1:	00 39                	add    BYTE PTR [rcx],bh
-   216d3:	17                   	(bad)  
-   216d4:	02 00                	add    al,BYTE PTR [rax]
-   216d6:	05 40 9f 00 00       	add    eax,0x9f40
-   216db:	05 14 02 12 b5       	add    eax,0xb5120214
-   216e0:	2c 00                	sub    al,0x0
-   216e2:	00 2f                	add    BYTE PTR [rdi],ch
-   216e4:	59                   	pop    rcx
-   216e5:	00 00                	add    BYTE PTR [rax],al
-   216e7:	29 59 00             	sub    DWORD PTR [rcx+0x0],ebx
-   216ea:	00 03                	add    BYTE PTR [rbx],al
-   216ec:	4b da 43 00          	rex.WXB fiadd DWORD PTR [r11+0x0]
-   216f0:	00 00                	add    BYTE PTR [rax],al
-   216f2:	00 00                	add    BYTE PTR [rax],al
-   216f4:	c4                   	(bad)  
-   216f5:	35 00 00 0f 17       	xor    eax,0x170f0000
-   216fa:	02 00                	add    al,BYTE PTR [rax]
-   216fc:	01 01                	add    DWORD PTR [rcx],eax
-   216fe:	55                   	push   rbp
-   216ff:	09 03                	or     DWORD PTR [rbx],eax
-   21701:	2a f9                	sub    bh,cl
-   21703:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   21706:	00 00                	add    BYTE PTR [rax],al
-   21708:	00 01                	add    BYTE PTR [rcx],al
-   2170a:	01 54 01 38          	add    DWORD PTR [rcx+rax*1+0x38],edx
-   2170e:	00 07                	add    BYTE PTR [rdi],al
-   21710:	7e da                	jle    216ec <__abi_tag-0x3dec34>
-   21712:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21715:	00 00                	add    BYTE PTR [rax],al
-   21717:	00 f1                	add    cl,dh
-   21719:	35 00 00 2b 17       	xor    eax,0x172b0000
-   2171e:	02 00                	add    al,BYTE PTR [rax]
-   21720:	01 01                	add    DWORD PTR [rcx],eax
-   21722:	55                   	push   rbp
-   21723:	01 31                	add    DWORD PTR [rcx],esi
-   21725:	01 01                	add    DWORD PTR [rcx],eax
-   21727:	51                   	push   rcx
-   21728:	01 30                	add    DWORD PTR [rax],esi
-   2172a:	00 04 c7             	add    BYTE PTR [rdi+rax*8],al
-   2172d:	da 43 00             	fiadd  DWORD PTR [rbx+0x0]
-   21730:	00 00                	add    BYTE PTR [rax],al
-   21732:	00 00                	add    BYTE PTR [rax],al
-   21734:	75 2d                	jne    21763 <__abi_tag-0x3debbd>
-   21736:	07                   	(bad)  
-   21737:	00 00                	add    BYTE PTR [rax],al
-   21739:	06                   	(bad)  
-   2173a:	3d df 00 00 a5       	cmp    eax,0xa50000df
-   2173f:	17                   	(bad)  
-   21740:	02 00                	add    al,BYTE PTR [rax]
-   21742:	05 e3 25 00 00       	add    eax,0x25e3
-   21747:	05 15 02 12 b5       	add    eax,0xb5120215
-   2174c:	2c 00                	sub    al,0x0
-   2174e:	00 4e 59             	add    BYTE PTR [rsi+0x59],cl
-   21751:	00 00                	add    BYTE PTR [rax],al
-   21753:	48 59                	rex.W pop rcx
-   21755:	00 00                	add    BYTE PTR [rax],al
-   21757:	03 fd                	add    edi,ebp
-   21759:	d9 43 00             	fld    DWORD PTR [rbx+0x0]
-   2175c:	00 00                	add    BYTE PTR [rax],al
-   2175e:	00 00                	add    BYTE PTR [rax],al
-   21760:	c4                   	(bad)  
-   21761:	35 00 00 7b 17       	xor    eax,0x177b0000
-   21766:	02 00                	add    al,BYTE PTR [rax]
-   21768:	01 01                	add    DWORD PTR [rcx],eax
-   2176a:	55                   	push   rbp
-   2176b:	09 03                	or     DWORD PTR [rbx],eax
-   2176d:	33 f9                	xor    edi,ecx
-   2176f:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   21772:	00 00                	add    BYTE PTR [rax],al
-   21774:	00 01                	add    BYTE PTR [rcx],al
-   21776:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   2177a:	00 07                	add    BYTE PTR [rdi],al
-   2177c:	30 da                	xor    dl,bl
-   2177e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21781:	00 00                	add    BYTE PTR [rax],al
-   21783:	00 f1                	add    cl,dh
-   21785:	35 00 00 97 17       	xor    eax,0x17970000
-   2178a:	02 00                	add    al,BYTE PTR [rax]
-   2178c:	01 01                	add    DWORD PTR [rcx],eax
-   2178e:	55                   	push   rbp
-   2178f:	01 31                	add    DWORD PTR [rcx],esi
-   21791:	01 01                	add    DWORD PTR [rcx],eax
-   21793:	51                   	push   rcx
-   21794:	01 30                	add    DWORD PTR [rax],esi
-   21796:	00 04 3a             	add    BYTE PTR [rdx+rdi*1],al
-   21799:	da 43 00             	fiadd  DWORD PTR [rbx+0x0]
-   2179c:	00 00                	add    BYTE PTR [rax],al
-   2179e:	00 00                	add    BYTE PTR [rax],al
-   217a0:	75 2d                	jne    217cf <__abi_tag-0x3deb51>
-   217a2:	07                   	(bad)  
-   217a3:	00 00                	add    BYTE PTR [rax],al
-   217a5:	06                   	(bad)  
-   217a6:	25 df 00 00 11       	and    eax,0x110000df
-   217ab:	18 02                	sbb    BYTE PTR [rdx],al
-   217ad:	00 05 b3 65 00 00    	add    BYTE PTR [rip+0x65b3],al        # 27d66 <__abi_tag-0x3d85ba>
-   217b3:	05 20 02 12 b5       	add    eax,0xb5120220
-   217b8:	2c 00                	sub    al,0x0
-   217ba:	00 6d 59             	add    BYTE PTR [rbp+0x59],ch
-   217bd:	00 00                	add    BYTE PTR [rax],al
-   217bf:	67 59                	addr32 pop rcx
-   217c1:	00 00                	add    BYTE PTR [rax],al
-   217c3:	03 b9 d9 43 00 00    	add    edi,DWORD PTR [rcx+0x43d9]
-   217c9:	00 00                	add    BYTE PTR [rax],al
-   217cb:	00 c4                	add    ah,al
-   217cd:	35 00 00 e7 17       	xor    eax,0x17e70000
-   217d2:	02 00                	add    al,BYTE PTR [rax]
-   217d4:	01 01                	add    DWORD PTR [rcx],eax
-   217d6:	55                   	push   rbp
-   217d7:	09 03                	or     DWORD PTR [rbx],eax
-   217d9:	67 0c 47             	addr32 or al,0x47
-   217dc:	00 00                	add    BYTE PTR [rax],al
-   217de:	00 00                	add    BYTE PTR [rax],al
-   217e0:	00 01                	add    BYTE PTR [rcx],al
-   217e2:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   217e6:	00 07                	add    BYTE PTR [rdi],al
-   217e8:	ec                   	in     al,dx
-   217e9:	d9 43 00             	fld    DWORD PTR [rbx+0x0]
-   217ec:	00 00                	add    BYTE PTR [rax],al
-   217ee:	00 00                	add    BYTE PTR [rax],al
-   217f0:	f1                   	icebp  
-   217f1:	35 00 00 03 18       	xor    eax,0x18030000
-   217f6:	02 00                	add    al,BYTE PTR [rax]
-   217f8:	01 01                	add    DWORD PTR [rcx],eax
-   217fa:	55                   	push   rbp
-   217fb:	01 31                	add    DWORD PTR [rcx],esi
-   217fd:	01 01                	add    DWORD PTR [rcx],eax
-   217ff:	51                   	push   rcx
-   21800:	01 30                	add    DWORD PTR [rax],esi
-   21802:	00 04 35 da 43 00 00 	add    BYTE PTR [rsi*1+0x43da],al
-   21809:	00 00                	add    BYTE PTR [rax],al
-   2180b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   2180e:	07                   	(bad)  
-   2180f:	00 00                	add    BYTE PTR [rax],al
-   21811:	06                   	(bad)  
-   21812:	0f df 00             	pandn  mm0,QWORD PTR [rax]
-   21815:	00 7d 18             	add    BYTE PTR [rbp+0x18],bh
-   21818:	02 00                	add    al,BYTE PTR [rax]
-   2181a:	05 d0 de 00 00       	add    eax,0xded0
-   2181f:	05 21 02 12 b5       	add    eax,0xb5120221
-   21824:	2c 00                	sub    al,0x0
-   21826:	00 8c 59 00 00 86 59 	add    BYTE PTR [rcx+rbx*2+0x59860000],cl
-   2182d:	00 00                	add    BYTE PTR [rax],al
-   2182f:	03 6b d9             	add    ebp,DWORD PTR [rbx-0x27]
-   21832:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21835:	00 00                	add    BYTE PTR [rax],al
-   21837:	00 c4                	add    ah,al
-   21839:	35 00 00 53 18       	xor    eax,0x18530000
-   2183e:	02 00                	add    al,BYTE PTR [rax]
-   21840:	01 01                	add    DWORD PTR [rcx],eax
-   21842:	55                   	push   rbp
-   21843:	09 03                	or     DWORD PTR [rbx],eax
-   21845:	39 f9                	cmp    ecx,edi
-   21847:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   2184a:	00 00                	add    BYTE PTR [rax],al
-   2184c:	00 01                	add    BYTE PTR [rcx],al
-   2184e:	01 54 01 38          	add    DWORD PTR [rcx+rax*1+0x38],edx
-   21852:	00 07                	add    BYTE PTR [rdi],al
-   21854:	9e                   	sahf   
-   21855:	d9 43 00             	fld    DWORD PTR [rbx+0x0]
-   21858:	00 00                	add    BYTE PTR [rax],al
-   2185a:	00 00                	add    BYTE PTR [rax],al
-   2185c:	f1                   	icebp  
-   2185d:	35 00 00 6f 18       	xor    eax,0x186f0000
-   21862:	02 00                	add    al,BYTE PTR [rax]
-   21864:	01 01                	add    DWORD PTR [rcx],eax
-   21866:	55                   	push   rbp
-   21867:	01 31                	add    DWORD PTR [rcx],esi
-   21869:	01 01                	add    DWORD PTR [rcx],eax
-   2186b:	51                   	push   rcx
-   2186c:	01 30                	add    DWORD PTR [rax],esi
-   2186e:	00 04 a8             	add    BYTE PTR [rax+rbp*4],al
-   21871:	d9 43 00             	fld    DWORD PTR [rbx+0x0]
-   21874:	00 00                	add    BYTE PTR [rax],al
-   21876:	00 00                	add    BYTE PTR [rax],al
-   21878:	75 2d                	jne    218a7 <__abi_tag-0x3dea79>
-   2187a:	07                   	(bad)  
-   2187b:	00 00                	add    BYTE PTR [rax],al
-   2187d:	06                   	(bad)  
-   2187e:	f7 de                	neg    esi
-   21880:	00 00                	add    BYTE PTR [rax],al
-   21882:	e9 18 02 00 05       	jmp    5021a9f <_end+0x4b66187>
-   21887:	d8 de                	fcomp  st(6)
-   21889:	00 00                	add    BYTE PTR [rax],al
-   2188b:	05 23 02 12 b5       	add    eax,0xb5120223
-   21890:	2c 00                	sub    al,0x0
-   21892:	00 ab 59 00 00 a5    	add    BYTE PTR [rbx-0x5affffa7],ch
-   21898:	59                   	pop    rcx
-   21899:	00 00                	add    BYTE PTR [rax],al
-   2189b:	03 27                	add    esp,DWORD PTR [rdi]
-   2189d:	d9 43 00             	fld    DWORD PTR [rbx+0x0]
-   218a0:	00 00                	add    BYTE PTR [rax],al
-   218a2:	00 00                	add    BYTE PTR [rax],al
-   218a4:	c4                   	(bad)  
-   218a5:	35 00 00 bf 18       	xor    eax,0x18bf0000
-   218aa:	02 00                	add    al,BYTE PTR [rax]
-   218ac:	01 01                	add    DWORD PTR [rcx],eax
-   218ae:	55                   	push   rbp
-   218af:	09 03                	or     DWORD PTR [rbx],eax
-   218b1:	42 f9                	rex.X stc 
-   218b3:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   218b6:	00 00                	add    BYTE PTR [rax],al
-   218b8:	00 01                	add    BYTE PTR [rcx],al
-   218ba:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   218be:	00 07                	add    BYTE PTR [rdi],al
-   218c0:	5a                   	pop    rdx
-   218c1:	d9 43 00             	fld    DWORD PTR [rbx+0x0]
-   218c4:	00 00                	add    BYTE PTR [rax],al
-   218c6:	00 00                	add    BYTE PTR [rax],al
-   218c8:	f1                   	icebp  
-   218c9:	35 00 00 db 18       	xor    eax,0x18db0000
-   218ce:	02 00                	add    al,BYTE PTR [rax]
-   218d0:	01 01                	add    DWORD PTR [rcx],eax
-   218d2:	55                   	push   rbp
-   218d3:	01 31                	add    DWORD PTR [rcx],esi
-   218d5:	01 01                	add    DWORD PTR [rcx],eax
-   218d7:	51                   	push   rcx
-   218d8:	01 30                	add    DWORD PTR [rax],esi
-   218da:	00 04 a3             	add    BYTE PTR [rbx+riz*4],al
-   218dd:	d9 43 00             	fld    DWORD PTR [rbx+0x0]
-   218e0:	00 00                	add    BYTE PTR [rax],al
-   218e2:	00 00                	add    BYTE PTR [rax],al
-   218e4:	75 2d                	jne    21913 <__abi_tag-0x3dea0d>
-   218e6:	07                   	(bad)  
-   218e7:	00 00                	add    BYTE PTR [rax],al
-   218e9:	06                   	(bad)  
-   218ea:	e1 de                	loope  218ca <__abi_tag-0x3dea56>
-   218ec:	00 00                	add    BYTE PTR [rax],al
-   218ee:	55                   	push   rbp
-   218ef:	19 02                	sbb    DWORD PTR [rdx],eax
-   218f1:	00 05 e0 de 00 00    	add    BYTE PTR [rip+0xdee0],al        # 2f7d7 <__abi_tag-0x3d0b49>
-   218f7:	05 24 02 12 b5       	add    eax,0xb5120224
-   218fc:	2c 00                	sub    al,0x0
-   218fe:	00 ca                	add    dl,cl
-   21900:	59                   	pop    rcx
-   21901:	00 00                	add    BYTE PTR [rax],al
-   21903:	c4                   	(bad)  
-   21904:	59                   	pop    rcx
-   21905:	00 00                	add    BYTE PTR [rax],al
-   21907:	03 d9                	add    ebx,ecx
-   21909:	d8 43 00             	fadd   DWORD PTR [rbx+0x0]
-   2190c:	00 00                	add    BYTE PTR [rax],al
-   2190e:	00 00                	add    BYTE PTR [rax],al
-   21910:	c4                   	(bad)  
-   21911:	35 00 00 2b 19       	xor    eax,0x192b0000
-   21916:	02 00                	add    al,BYTE PTR [rax]
-   21918:	01 01                	add    DWORD PTR [rcx],eax
-   2191a:	55                   	push   rbp
-   2191b:	09 03                	or     DWORD PTR [rbx],eax
-   2191d:	48 f9                	rex.W stc 
-   2191f:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   21922:	00 00                	add    BYTE PTR [rax],al
-   21924:	00 01                	add    BYTE PTR [rcx],al
-   21926:	01 54 01 3a          	add    DWORD PTR [rcx+rax*1+0x3a],edx
-   2192a:	00 07                	add    BYTE PTR [rdi],al
-   2192c:	0c d9                	or     al,0xd9
-   2192e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21931:	00 00                	add    BYTE PTR [rax],al
-   21933:	00 f1                	add    cl,dh
-   21935:	35 00 00 47 19       	xor    eax,0x19470000
-   2193a:	02 00                	add    al,BYTE PTR [rax]
-   2193c:	01 01                	add    DWORD PTR [rcx],eax
-   2193e:	55                   	push   rbp
-   2193f:	01 31                	add    DWORD PTR [rcx],esi
-   21941:	01 01                	add    DWORD PTR [rcx],eax
-   21943:	51                   	push   rcx
-   21944:	01 30                	add    DWORD PTR [rax],esi
-   21946:	00 04 16             	add    BYTE PTR [rsi+rdx*1],al
-   21949:	d9 43 00             	fld    DWORD PTR [rbx+0x0]
-   2194c:	00 00                	add    BYTE PTR [rax],al
-   2194e:	00 00                	add    BYTE PTR [rax],al
-   21950:	75 2d                	jne    2197f <__abi_tag-0x3de9a1>
-   21952:	07                   	(bad)  
-   21953:	00 00                	add    BYTE PTR [rax],al
-   21955:	06                   	(bad)  
-   21956:	c9                   	leave  
-   21957:	de 00                	fiadd  WORD PTR [rax]
-   21959:	00 c1                	add    cl,al
-   2195b:	19 02                	sbb    DWORD PTR [rdx],eax
-   2195d:	00 05 e8 de 00 00    	add    BYTE PTR [rip+0xdee8],al        # 2f84b <__abi_tag-0x3d0ad5>
-   21963:	05 26 02 12 b5       	add    eax,0xb5120226
-   21968:	2c 00                	sub    al,0x0
-   2196a:	00 e9                	add    cl,ch
-   2196c:	59                   	pop    rcx
-   2196d:	00 00                	add    BYTE PTR [rax],al
-   2196f:	e3 59                	jrcxz  219ca <__abi_tag-0x3de956>
-   21971:	00 00                	add    BYTE PTR [rax],al
-   21973:	03 95 d8 43 00 00    	add    edx,DWORD PTR [rbp+0x43d8]
-   21979:	00 00                	add    BYTE PTR [rax],al
-   2197b:	00 c4                	add    ah,al
-   2197d:	35 00 00 97 19       	xor    eax,0x19970000
-   21982:	02 00                	add    al,BYTE PTR [rax]
-   21984:	01 01                	add    DWORD PTR [rcx],eax
-   21986:	55                   	push   rbp
-   21987:	09 03                	or     DWORD PTR [rbx],eax
-   21989:	48 07                	rex.W (bad) 
-   2198b:	47 00 00             	rex.RXB add BYTE PTR [r8],r8b
-   2198e:	00 00                	add    BYTE PTR [rax],al
-   21990:	00 01                	add    BYTE PTR [rcx],al
-   21992:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   21996:	00 07                	add    BYTE PTR [rdi],al
-   21998:	c8 d8 43 00          	enter  0x43d8,0x0
-   2199c:	00 00                	add    BYTE PTR [rax],al
-   2199e:	00 00                	add    BYTE PTR [rax],al
-   219a0:	f1                   	icebp  
-   219a1:	35 00 00 b3 19       	xor    eax,0x19b30000
-   219a6:	02 00                	add    al,BYTE PTR [rax]
-   219a8:	01 01                	add    DWORD PTR [rcx],eax
-   219aa:	55                   	push   rbp
-   219ab:	01 31                	add    DWORD PTR [rcx],esi
-   219ad:	01 01                	add    DWORD PTR [rcx],eax
-   219af:	51                   	push   rcx
-   219b0:	01 30                	add    DWORD PTR [rax],esi
-   219b2:	00 04 11             	add    BYTE PTR [rcx+rdx*1],al
-   219b5:	d9 43 00             	fld    DWORD PTR [rbx+0x0]
-   219b8:	00 00                	add    BYTE PTR [rax],al
-   219ba:	00 00                	add    BYTE PTR [rax],al
-   219bc:	75 2d                	jne    219eb <__abi_tag-0x3de935>
-   219be:	07                   	(bad)  
-   219bf:	00 00                	add    BYTE PTR [rax],al
-   219c1:	06                   	(bad)  
-   219c2:	b3 de                	mov    bl,0xde
-   219c4:	00 00                	add    BYTE PTR [rax],al
-   219c6:	2d 1a 02 00 05       	sub    eax,0x500021a
-   219cb:	f0 de 00             	lock fiadd WORD PTR [rax]
-   219ce:	00 05 29 02 12 b5    	add    BYTE PTR [rip+0xffffffffb5120229],al        # ffffffffb5141bfd <_end+0xffffffffb4c862e5>
-   219d4:	2c 00                	sub    al,0x0
-   219d6:	00 08                	add    BYTE PTR [rax],cl
-   219d8:	5a                   	pop    rdx
-   219d9:	00 00                	add    BYTE PTR [rax],al
-   219db:	02 5a 00             	add    bl,BYTE PTR [rdx+0x0]
-   219de:	00 03                	add    BYTE PTR [rbx],al
-   219e0:	47 d8 43 00          	rex.RXB fadd DWORD PTR [r11+0x0]
-   219e4:	00 00                	add    BYTE PTR [rax],al
-   219e6:	00 00                	add    BYTE PTR [rax],al
-   219e8:	c4                   	(bad)  
-   219e9:	35 00 00 03 1a       	xor    eax,0x1a030000
-   219ee:	02 00                	add    al,BYTE PTR [rax]
-   219f0:	01 01                	add    DWORD PTR [rcx],eax
-   219f2:	55                   	push   rbp
-   219f3:	09 03                	or     DWORD PTR [rbx],eax
-   219f5:	53                   	push   rbx
-   219f6:	f9                   	stc    
-   219f7:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   219fa:	00 00                	add    BYTE PTR [rax],al
-   219fc:	00 01                	add    BYTE PTR [rcx],al
-   219fe:	01 54 01 3b          	add    DWORD PTR [rcx+rax*1+0x3b],edx
-   21a02:	00 07                	add    BYTE PTR [rdi],al
-   21a04:	7a d8                	jp     219de <__abi_tag-0x3de942>
-   21a06:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21a09:	00 00                	add    BYTE PTR [rax],al
-   21a0b:	00 f1                	add    cl,dh
-   21a0d:	35 00 00 1f 1a       	xor    eax,0x1a1f0000
-   21a12:	02 00                	add    al,BYTE PTR [rax]
-   21a14:	01 01                	add    DWORD PTR [rcx],eax
-   21a16:	55                   	push   rbp
-   21a17:	01 31                	add    DWORD PTR [rcx],esi
-   21a19:	01 01                	add    DWORD PTR [rcx],eax
-   21a1b:	51                   	push   rcx
-   21a1c:	01 30                	add    DWORD PTR [rax],esi
-   21a1e:	00 04 84             	add    BYTE PTR [rsp+rax*4],al
-   21a21:	d8 43 00             	fadd   DWORD PTR [rbx+0x0]
-   21a24:	00 00                	add    BYTE PTR [rax],al
-   21a26:	00 00                	add    BYTE PTR [rax],al
-   21a28:	75 2d                	jne    21a57 <__abi_tag-0x3de8c9>
-   21a2a:	07                   	(bad)  
-   21a2b:	00 00                	add    BYTE PTR [rax],al
-   21a2d:	06                   	(bad)  
-   21a2e:	9b de 00             	fiadd  WORD PTR [rax]
-   21a31:	00 99 1a 02 00 05    	add    BYTE PTR [rcx+0x500021a],bl
-   21a37:	f8                   	clc    
-   21a38:	de 00                	fiadd  WORD PTR [rax]
-   21a3a:	00 05 2c 02 12 b5    	add    BYTE PTR [rip+0xffffffffb512022c],al        # ffffffffb5141c6c <_end+0xffffffffb4c86354>
-   21a40:	2c 00                	sub    al,0x0
-   21a42:	00 27                	add    BYTE PTR [rdi],ah
-   21a44:	5a                   	pop    rdx
-   21a45:	00 00                	add    BYTE PTR [rax],al
-   21a47:	21 5a 00             	and    DWORD PTR [rdx+0x0],ebx
-   21a4a:	00 03                	add    BYTE PTR [rbx],al
-   21a4c:	03 d8                	add    ebx,eax
-   21a4e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21a51:	00 00                	add    BYTE PTR [rax],al
-   21a53:	00 c4                	add    ah,al
-   21a55:	35 00 00 6f 1a       	xor    eax,0x1a6f0000
-   21a5a:	02 00                	add    al,BYTE PTR [rax]
-   21a5c:	01 01                	add    DWORD PTR [rcx],eax
-   21a5e:	55                   	push   rbp
-   21a5f:	09 03                	or     DWORD PTR [rbx],eax
-   21a61:	5f                   	pop    rdi
-   21a62:	f9                   	stc    
-   21a63:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   21a66:	00 00                	add    BYTE PTR [rax],al
-   21a68:	00 01                	add    BYTE PTR [rcx],al
-   21a6a:	01 54 01 38          	add    DWORD PTR [rcx+rax*1+0x38],edx
-   21a6e:	00 07                	add    BYTE PTR [rdi],al
-   21a70:	36 d8 43 00          	ss fadd DWORD PTR [rbx+0x0]
-   21a74:	00 00                	add    BYTE PTR [rax],al
-   21a76:	00 00                	add    BYTE PTR [rax],al
-   21a78:	f1                   	icebp  
-   21a79:	35 00 00 8b 1a       	xor    eax,0x1a8b0000
-   21a7e:	02 00                	add    al,BYTE PTR [rax]
-   21a80:	01 01                	add    DWORD PTR [rcx],eax
-   21a82:	55                   	push   rbp
-   21a83:	01 31                	add    DWORD PTR [rcx],esi
-   21a85:	01 01                	add    DWORD PTR [rcx],eax
-   21a87:	51                   	push   rcx
-   21a88:	01 30                	add    DWORD PTR [rax],esi
-   21a8a:	00 04 7f             	add    BYTE PTR [rdi+rdi*2],al
-   21a8d:	d8 43 00             	fadd   DWORD PTR [rbx+0x0]
-   21a90:	00 00                	add    BYTE PTR [rax],al
-   21a92:	00 00                	add    BYTE PTR [rax],al
-   21a94:	75 2d                	jne    21ac3 <__abi_tag-0x3de85d>
-   21a96:	07                   	(bad)  
-   21a97:	00 00                	add    BYTE PTR [rax],al
-   21a99:	06                   	(bad)  
-   21a9a:	85 de                	test   esi,ebx
-   21a9c:	00 00                	add    BYTE PTR [rax],al
-   21a9e:	05 1b 02 00 05       	add    eax,0x500021b
-   21aa3:	ee                   	out    dx,al
-   21aa4:	a1 00 00 05 2d 02 12 	movabs eax,ds:0x2cb512022d050000
-   21aab:	b5 2c 
-   21aad:	00 00                	add    BYTE PTR [rax],al
-   21aaf:	46 5a                	rex.RX pop rdx
-   21ab1:	00 00                	add    BYTE PTR [rax],al
-   21ab3:	40 5a                	rex pop rdx
-   21ab5:	00 00                	add    BYTE PTR [rax],al
-   21ab7:	03 b5 d7 43 00 00    	add    esi,DWORD PTR [rbp+0x43d7]
-   21abd:	00 00                	add    BYTE PTR [rax],al
-   21abf:	00 c4                	add    ah,al
-   21ac1:	35 00 00 db 1a       	xor    eax,0x1adb0000
-   21ac6:	02 00                	add    al,BYTE PTR [rax]
-   21ac8:	01 01                	add    DWORD PTR [rcx],eax
-   21aca:	55                   	push   rbp
-   21acb:	09 03                	or     DWORD PTR [rbx],eax
-   21acd:	68 f9 46 00 00       	push   0x46f9
-   21ad2:	00 00                	add    BYTE PTR [rax],al
-   21ad4:	00 01                	add    BYTE PTR [rcx],al
-   21ad6:	01 54 01 3b          	add    DWORD PTR [rcx+rax*1+0x3b],edx
-   21ada:	00 07                	add    BYTE PTR [rdi],al
-   21adc:	e8 d7 43 00 00       	call   25eb8 <__abi_tag-0x3da468>
-   21ae1:	00 00                	add    BYTE PTR [rax],al
-   21ae3:	00 f1                	add    cl,dh
-   21ae5:	35 00 00 f7 1a       	xor    eax,0x1af70000
-   21aea:	02 00                	add    al,BYTE PTR [rax]
-   21aec:	01 01                	add    DWORD PTR [rcx],eax
-   21aee:	55                   	push   rbp
-   21aef:	01 31                	add    DWORD PTR [rcx],esi
-   21af1:	01 01                	add    DWORD PTR [rcx],eax
-   21af3:	51                   	push   rcx
-   21af4:	01 30                	add    DWORD PTR [rax],esi
-   21af6:	00 04 f2             	add    BYTE PTR [rdx+rsi*8],al
-   21af9:	d7                   	xlat   BYTE PTR ds:[rbx]
-   21afa:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21afd:	00 00                	add    BYTE PTR [rax],al
-   21aff:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   21b02:	07                   	(bad)  
-   21b03:	00 00                	add    BYTE PTR [rax],al
-   21b05:	06                   	(bad)  
-   21b06:	6d                   	ins    DWORD PTR es:[rdi],dx
-   21b07:	de 00                	fiadd  WORD PTR [rax]
-   21b09:	00 71 1b             	add    BYTE PTR [rcx+0x1b],dh
-   21b0c:	02 00                	add    al,BYTE PTR [rax]
-   21b0e:	05 0b df 00 00       	add    eax,0xdf0b
-   21b13:	05 30 02 12 b5       	add    eax,0xb5120230
-   21b18:	2c 00                	sub    al,0x0
-   21b1a:	00 65 5a             	add    BYTE PTR [rbp+0x5a],ah
-   21b1d:	00 00                	add    BYTE PTR [rax],al
-   21b1f:	5f                   	pop    rdi
-   21b20:	5a                   	pop    rdx
-   21b21:	00 00                	add    BYTE PTR [rax],al
-   21b23:	03 71 d7             	add    esi,DWORD PTR [rcx-0x29]
-   21b26:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21b29:	00 00                	add    BYTE PTR [rax],al
-   21b2b:	00 c4                	add    ah,al
-   21b2d:	35 00 00 47 1b       	xor    eax,0x1b470000
-   21b32:	02 00                	add    al,BYTE PTR [rax]
-   21b34:	01 01                	add    DWORD PTR [rcx],eax
-   21b36:	55                   	push   rbp
-   21b37:	09 03                	or     DWORD PTR [rbx],eax
-   21b39:	80 01 47             	add    BYTE PTR [rcx],0x47
-   21b3c:	00 00                	add    BYTE PTR [rax],al
-   21b3e:	00 00                	add    BYTE PTR [rax],al
-   21b40:	00 01                	add    BYTE PTR [rcx],al
-   21b42:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   21b46:	00 07                	add    BYTE PTR [rdi],al
-   21b48:	a4                   	movs   BYTE PTR es:[rdi],BYTE PTR ds:[rsi]
-   21b49:	d7                   	xlat   BYTE PTR ds:[rbx]
-   21b4a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21b4d:	00 00                	add    BYTE PTR [rax],al
-   21b4f:	00 f1                	add    cl,dh
-   21b51:	35 00 00 63 1b       	xor    eax,0x1b630000
-   21b56:	02 00                	add    al,BYTE PTR [rax]
-   21b58:	01 01                	add    DWORD PTR [rcx],eax
-   21b5a:	55                   	push   rbp
-   21b5b:	01 31                	add    DWORD PTR [rcx],esi
-   21b5d:	01 01                	add    DWORD PTR [rcx],eax
-   21b5f:	51                   	push   rcx
-   21b60:	01 30                	add    DWORD PTR [rax],esi
-   21b62:	00 04 ed d7 43 00 00 	add    BYTE PTR [rbp*8+0x43d7],al
-   21b69:	00 00                	add    BYTE PTR [rax],al
-   21b6b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   21b6e:	07                   	(bad)  
-   21b6f:	00 00                	add    BYTE PTR [rax],al
-   21b71:	06                   	(bad)  
-   21b72:	57                   	push   rdi
-   21b73:	de 00                	fiadd  WORD PTR [rax]
-   21b75:	00 dd                	add    ch,bl
-   21b77:	1b 02                	sbb    eax,DWORD PTR [rdx]
-   21b79:	00 05 13 df 00 00    	add    BYTE PTR [rip+0xdf13],al        # 2fa92 <__abi_tag-0x3d088e>
-   21b7f:	05 31 02 12 b5       	add    eax,0xb5120231
-   21b84:	2c 00                	sub    al,0x0
-   21b86:	00 84 5a 00 00 7e 5a 	add    BYTE PTR [rdx+rbx*2+0x5a7e0000],al
-   21b8d:	00 00                	add    BYTE PTR [rax],al
-   21b8f:	03 23                	add    esp,DWORD PTR [rbx]
-   21b91:	d7                   	xlat   BYTE PTR ds:[rbx]
-   21b92:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21b95:	00 00                	add    BYTE PTR [rax],al
-   21b97:	00 c4                	add    ah,al
-   21b99:	35 00 00 b3 1b       	xor    eax,0x1bb30000
-   21b9e:	02 00                	add    al,BYTE PTR [rax]
-   21ba0:	01 01                	add    DWORD PTR [rcx],eax
-   21ba2:	55                   	push   rbp
-   21ba3:	09 03                	or     DWORD PTR [rbx],eax
-   21ba5:	74 f9                	je     21ba0 <__abi_tag-0x3de780>
-   21ba7:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   21baa:	00 00                	add    BYTE PTR [rax],al
-   21bac:	00 01                	add    BYTE PTR [rcx],al
-   21bae:	01 54 01 37          	add    DWORD PTR [rcx+rax*1+0x37],edx
-   21bb2:	00 07                	add    BYTE PTR [rdi],al
-   21bb4:	56                   	push   rsi
-   21bb5:	d7                   	xlat   BYTE PTR ds:[rbx]
-   21bb6:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21bb9:	00 00                	add    BYTE PTR [rax],al
-   21bbb:	00 f1                	add    cl,dh
-   21bbd:	35 00 00 cf 1b       	xor    eax,0x1bcf0000
-   21bc2:	02 00                	add    al,BYTE PTR [rax]
-   21bc4:	01 01                	add    DWORD PTR [rcx],eax
-   21bc6:	55                   	push   rbp
-   21bc7:	01 31                	add    DWORD PTR [rcx],esi
-   21bc9:	01 01                	add    DWORD PTR [rcx],eax
-   21bcb:	51                   	push   rcx
-   21bcc:	01 30                	add    DWORD PTR [rax],esi
-   21bce:	00 04 60             	add    BYTE PTR [rax+riz*2],al
-   21bd1:	d7                   	xlat   BYTE PTR ds:[rbx]
-   21bd2:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21bd5:	00 00                	add    BYTE PTR [rax],al
-   21bd7:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   21bda:	07                   	(bad)  
-   21bdb:	00 00                	add    BYTE PTR [rax],al
-   21bdd:	06                   	(bad)  
-   21bde:	3f                   	(bad)  
-   21bdf:	de 00                	fiadd  WORD PTR [rax]
-   21be1:	00 49 1c             	add    BYTE PTR [rcx+0x1c],cl
-   21be4:	02 00                	add    al,BYTE PTR [rax]
-   21be6:	05 2c e0 00 00       	add    eax,0xe02c
-   21beb:	05 33 02 12 b5       	add    eax,0xb5120233
-   21bf0:	2c 00                	sub    al,0x0
-   21bf2:	00 a3 5a 00 00 9d    	add    BYTE PTR [rbx-0x62ffffa6],ah
-   21bf8:	5a                   	pop    rdx
-   21bf9:	00 00                	add    BYTE PTR [rax],al
-   21bfb:	03 df                	add    ebx,edi
-   21bfd:	d6                   	(bad)  
-   21bfe:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21c01:	00 00                	add    BYTE PTR [rax],al
-   21c03:	00 c4                	add    ah,al
-   21c05:	35 00 00 1f 1c       	xor    eax,0x1c1f0000
-   21c0a:	02 00                	add    al,BYTE PTR [rax]
-   21c0c:	01 01                	add    DWORD PTR [rcx],eax
-   21c0e:	55                   	push   rbp
-   21c0f:	09 03                	or     DWORD PTR [rbx],eax
-   21c11:	7c f9                	jl     21c0c <__abi_tag-0x3de714>
-   21c13:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   21c16:	00 00                	add    BYTE PTR [rax],al
-   21c18:	00 01                	add    BYTE PTR [rcx],al
-   21c1a:	01 54 01 33          	add    DWORD PTR [rcx+rax*1+0x33],edx
-   21c1e:	00 07                	add    BYTE PTR [rdi],al
-   21c20:	12 d7                	adc    dl,bh
-   21c22:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21c25:	00 00                	add    BYTE PTR [rax],al
-   21c27:	00 f1                	add    cl,dh
-   21c29:	35 00 00 3b 1c       	xor    eax,0x1c3b0000
-   21c2e:	02 00                	add    al,BYTE PTR [rax]
-   21c30:	01 01                	add    DWORD PTR [rcx],eax
-   21c32:	55                   	push   rbp
-   21c33:	01 31                	add    DWORD PTR [rcx],esi
-   21c35:	01 01                	add    DWORD PTR [rcx],eax
-   21c37:	51                   	push   rcx
-   21c38:	01 30                	add    DWORD PTR [rax],esi
-   21c3a:	00 04 5b             	add    BYTE PTR [rbx+rbx*2],al
-   21c3d:	d7                   	xlat   BYTE PTR ds:[rbx]
-   21c3e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21c41:	00 00                	add    BYTE PTR [rax],al
-   21c43:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   21c46:	07                   	(bad)  
-   21c47:	00 00                	add    BYTE PTR [rax],al
-   21c49:	06                   	(bad)  
-   21c4a:	29 de                	sub    esi,ebx
-   21c4c:	00 00                	add    BYTE PTR [rax],al
-   21c4e:	b5 1c                	mov    ch,0x1c
-   21c50:	02 00                	add    al,BYTE PTR [rax]
-   21c52:	05 34 e0 00 00       	add    eax,0xe034
-   21c57:	05 34 02 12 b5       	add    eax,0xb5120234
-   21c5c:	2c 00                	sub    al,0x0
-   21c5e:	00 c2                	add    dl,al
-   21c60:	5a                   	pop    rdx
-   21c61:	00 00                	add    BYTE PTR [rax],al
-   21c63:	bc 5a 00 00 03       	mov    esp,0x300005a
-   21c68:	91                   	xchg   ecx,eax
-   21c69:	d6                   	(bad)  
-   21c6a:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21c6d:	00 00                	add    BYTE PTR [rax],al
-   21c6f:	00 c4                	add    ah,al
-   21c71:	35 00 00 8b 1c       	xor    eax,0x1c8b0000
-   21c76:	02 00                	add    al,BYTE PTR [rax]
-   21c78:	01 01                	add    DWORD PTR [rcx],eax
-   21c7a:	55                   	push   rbp
-   21c7b:	09 03                	or     DWORD PTR [rbx],eax
-   21c7d:	80 f9 46             	cmp    cl,0x46
-   21c80:	00 00                	add    BYTE PTR [rax],al
-   21c82:	00 00                	add    BYTE PTR [rax],al
-   21c84:	00 01                	add    BYTE PTR [rcx],al
-   21c86:	01 54 01 35          	add    DWORD PTR [rcx+rax*1+0x35],edx
-   21c8a:	00 07                	add    BYTE PTR [rdi],al
-   21c8c:	c4                   	(bad)  
-   21c8d:	d6                   	(bad)  
-   21c8e:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21c91:	00 00                	add    BYTE PTR [rax],al
-   21c93:	00 f1                	add    cl,dh
-   21c95:	35 00 00 a7 1c       	xor    eax,0x1ca70000
-   21c9a:	02 00                	add    al,BYTE PTR [rax]
-   21c9c:	01 01                	add    DWORD PTR [rcx],eax
-   21c9e:	55                   	push   rbp
-   21c9f:	01 31                	add    DWORD PTR [rcx],esi
-   21ca1:	01 01                	add    DWORD PTR [rcx],eax
-   21ca3:	51                   	push   rcx
-   21ca4:	01 30                	add    DWORD PTR [rax],esi
-   21ca6:	00 04 ce             	add    BYTE PTR [rsi+rcx*8],al
-   21ca9:	d6                   	(bad)  
-   21caa:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21cad:	00 00                	add    BYTE PTR [rax],al
-   21caf:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   21cb2:	07                   	(bad)  
-   21cb3:	00 00                	add    BYTE PTR [rax],al
-   21cb5:	06                   	(bad)  
-   21cb6:	11 de                	adc    esi,ebx
-   21cb8:	00 00                	add    BYTE PTR [rax],al
-   21cba:	21 1d 02 00 05 3c    	and    DWORD PTR [rip+0x3c050002],ebx        # 3c071cc2 <_end+0x3bbb63aa>
-   21cc0:	e0 00                	loopne 21cc2 <__abi_tag-0x3de65e>
-   21cc2:	00 05 35 02 12 b5    	add    BYTE PTR [rip+0xffffffffb5120235],al        # ffffffffb5141efd <_end+0xffffffffb4c865e5>
-   21cc8:	2c 00                	sub    al,0x0
-   21cca:	00 e1                	add    cl,ah
-   21ccc:	5a                   	pop    rdx
-   21ccd:	00 00                	add    BYTE PTR [rax],al
-   21ccf:	db 5a 00             	fistp  DWORD PTR [rdx+0x0]
-   21cd2:	00 03                	add    BYTE PTR [rbx],al
-   21cd4:	4d d6                	rex.WRB (bad) 
-   21cd6:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21cd9:	00 00                	add    BYTE PTR [rax],al
-   21cdb:	00 c4                	add    ah,al
-   21cdd:	35 00 00 f7 1c       	xor    eax,0x1cf70000
-   21ce2:	02 00                	add    al,BYTE PTR [rax]
-   21ce4:	01 01                	add    DWORD PTR [rcx],eax
-   21ce6:	55                   	push   rbp
-   21ce7:	09 03                	or     DWORD PTR [rbx],eax
-   21ce9:	fb                   	sti    
-   21cea:	13 47 00             	adc    eax,DWORD PTR [rdi+0x0]
-   21ced:	00 00                	add    BYTE PTR [rax],al
-   21cef:	00 00                	add    BYTE PTR [rax],al
-   21cf1:	01 01                	add    DWORD PTR [rcx],eax
-   21cf3:	54                   	push   rsp
-   21cf4:	01 34 00             	add    DWORD PTR [rax+rax*1],esi
-   21cf7:	07                   	(bad)  
-   21cf8:	80 d6 43             	adc    dh,0x43
-   21cfb:	00 00                	add    BYTE PTR [rax],al
-   21cfd:	00 00                	add    BYTE PTR [rax],al
-   21cff:	00 f1                	add    cl,dh
-   21d01:	35 00 00 13 1d       	xor    eax,0x1d130000
-   21d06:	02 00                	add    al,BYTE PTR [rax]
-   21d08:	01 01                	add    DWORD PTR [rcx],eax
-   21d0a:	55                   	push   rbp
-   21d0b:	01 31                	add    DWORD PTR [rcx],esi
-   21d0d:	01 01                	add    DWORD PTR [rcx],eax
-   21d0f:	51                   	push   rcx
-   21d10:	01 30                	add    DWORD PTR [rax],esi
-   21d12:	00 04 c9             	add    BYTE PTR [rcx+rcx*8],al
-   21d15:	d6                   	(bad)  
-   21d16:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21d19:	00 00                	add    BYTE PTR [rax],al
-   21d1b:	00 75 2d             	add    BYTE PTR [rbp+0x2d],dh
-   21d1e:	07                   	(bad)  
-   21d1f:	00 00                	add    BYTE PTR [rax],al
-   21d21:	06                   	(bad)  
-   21d22:	fb                   	sti    
-   21d23:	dd 00                	fld    QWORD PTR [rax]
-   21d25:	00 8d 1d 02 00 05    	add    BYTE PTR [rbp+0x500021d],cl
-   21d2b:	44 e0 00             	rex.R loopne 21d2e <__abi_tag-0x3de5f2>
-   21d2e:	00 05 36 02 12 b5    	add    BYTE PTR [rip+0xffffffffb5120236],al        # ffffffffb5141f6a <_end+0xffffffffb4c86652>
-   21d34:	2c 00                	sub    al,0x0
-   21d36:	00 00                	add    BYTE PTR [rax],al
-   21d38:	5b                   	pop    rbx
-   21d39:	00 00                	add    BYTE PTR [rax],al
-   21d3b:	fa                   	cli    
-   21d3c:	5a                   	pop    rdx
-   21d3d:	00 00                	add    BYTE PTR [rax],al
-   21d3f:	03 ff                	add    edi,edi
-   21d41:	d5                   	(bad)  
-   21d42:	43 00 00             	rex.XB add BYTE PTR [r8],al
-   21d45:	00 00                	add    BYTE PTR [rax],al
-   21d47:	00 c4                	add    ah,al
-   21d49:	35 00 00 63 1d       	xor    eax,0x1d630000
-   21d4e:	02 00                	add    al,BYTE PTR [rax]
-   21d50:	01 01                	add    DWORD PTR [rcx],eax
-   21d52:	55                   	push   rbp
-   21d53:	09 03                	or     DWORD PTR [rbx],eax
-   21d55:	86 f9                	xchg   cl,bh
-   21d57:	46 00 00             	rex.RX add BYTE PTR [rax],r8b
-   21d5a:	00 00                	add    BYTE PTR [rax],al
+;{
+  469900:	41 57                	push   r15
+  469902:	41 56                	push   r14
+  469904:	41 55                	push   r13
+  469906:	41 54                	push   r12
+  469908:	55                   	push   rbp
+  469909:	53                   	push   rbx
+  46990a:	48 83 ec 08          	sub    rsp,0x8
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46990e:	48 8b 05 e3 c3 04 00 	mov    rax,QWORD PTR [rip+0x4c3e3]        # 4b5cf8 <__fb_gfx>
+;	char *dirty = __fb_gfx->dirty;
+;	int y, z = 0;
+;
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469915:	8b 50 70             	mov    edx,DWORD PTR [rax+0x70]
+  469918:	8b 68 24             	mov    ebp,DWORD PTR [rax+0x24]
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46991b:	4c 8b 70 18          	mov    r14,QWORD PTR [rax+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  46991f:	4c 8b 68 50          	mov    r13,QWORD PTR [rax+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469923:	0f af ea             	imul   ebp,edx
+  469926:	85 ed                	test   ebp,ebp
+  469928:	74 4b                	je     469975 <fb_hBlitCopy+0x75>
+  46992a:	49 89 fc             	mov    r12,rdi
+  46992d:	4c 63 fe             	movsxd r15,esi
+  469930:	31 db                	xor    ebx,ebx
+  469932:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+;		if (*dirty)
+  469938:	41 80 7d 00 00       	cmp    BYTE PTR [r13+0x0],0x0
+  46993d:	74 1a                	je     469959 <fb_hBlitCopy+0x59>
+;			fb_hMemCpy(dest, src, __fb_gfx->pitch);
+  46993f:	48 63 50 30          	movsxd rdx,DWORD PTR [rax+0x30]
+  469943:	4c 89 f6             	mov    rsi,r14
+  469946:	4c 89 e7             	mov    rdi,r12
+  469949:	ff 15 f9 6f 02 00    	call   QWORD PTR [rip+0x26ff9]        # 490948 <memcpy@GLIBC_2.14>
+;		z++;
+;		if (z >= __fb_gfx->scanline_size) {
+  46994f:	48 8b 05 a2 c3 04 00 	mov    rax,QWORD PTR [rip+0x4c3a2]        # 4b5cf8 <__fb_gfx>
+  469956:	8b 50 70             	mov    edx,DWORD PTR [rax+0x70]
+;		z++;
+  469959:	83 c3 01             	add    ebx,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46995c:	39 d3                	cmp    ebx,edx
+  46995e:	7c 0d                	jl     46996d <fb_hBlitCopy+0x6d>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  469960:	48 63 48 30          	movsxd rcx,DWORD PTR [rax+0x30]
+;			dirty++;
+  469964:	49 83 c5 01          	add    r13,0x1
+;			z = 0;
+  469968:	31 db                	xor    ebx,ebx
+;			src += __fb_gfx->pitch;
+  46996a:	49 01 ce             	add    r14,rcx
+;		}
+;		dest += pitch;
+  46996d:	4d 01 fc             	add    r12,r15
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469970:	83 ed 01             	sub    ebp,0x1
+  469973:	75 c3                	jne    469938 <fb_hBlitCopy+0x38>
+;	}
+;}
+  469975:	48 83 c4 08          	add    rsp,0x8
+  469979:	5b                   	pop    rbx
+  46997a:	5d                   	pop    rbp
+  46997b:	41 5c                	pop    r12
+  46997d:	41 5d                	pop    r13
+  46997f:	41 5e                	pop    r14
+  469981:	41 5f                	pop    r15
+  469983:	c3                   	ret    
+  469984:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
+  46998b:	00 00 00 00 
+  46998f:	90                   	nop
+
+0000000000469990 <fb_hBlit8to15RGB>:
+;
+;
+;/*:::::*/
+;static void fb_hBlit8to15RGB(unsigned char *dest, int pitch)
+;{
+  469990:	41 56                	push   r14
+  469992:	41 55                	push   r13
+  469994:	41 54                	push   r12
+  469996:	55                   	push   rbp
+  469997:	48 63 ee             	movsxd rbp,esi
+  46999a:	53                   	push   rbx
+;	unsigned int *pal = __fb_gfx->device_palette;
+  46999b:	48 8b 1d 56 c3 04 00 	mov    rbx,QWORD PTR [rip+0x4c356]        # 4b5cf8 <__fb_gfx>
+;	unsigned char *s, *src = __fb_gfx->framebuffer;
+;	unsigned int c1, c2, *d;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  4699a2:	8b 43 70             	mov    eax,DWORD PTR [rbx+0x70]
+  4699a5:	44 8b 53 24          	mov    r10d,DWORD PTR [rbx+0x24]
+;	unsigned int *pal = __fb_gfx->device_palette;
+  4699a9:	48 8b 73 40          	mov    rsi,QWORD PTR [rbx+0x40]
+;	unsigned char *s, *src = __fb_gfx->framebuffer;
+  4699ad:	48 8b 4b 18          	mov    rcx,QWORD PTR [rbx+0x18]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  4699b1:	44 0f af d0          	imul   r10d,eax
+;	char *dirty = __fb_gfx->dirty;
+  4699b5:	4c 8b 5b 50          	mov    r11,QWORD PTR [rbx+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  4699b9:	45 85 d2             	test   r10d,r10d
+  4699bc:	0f 84 ee 00 00 00    	je     469ab0 <fb_hBlit8to15RGB+0x120>
+  4699c2:	45 31 c0             	xor    r8d,r8d
+  4699c5:	eb 2d                	jmp    4699f4 <fb_hBlit8to15RGB+0x64>
+  4699c7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+  4699ce:	00 00 
+;			if (__fb_gfx->w & 0x1) {
+;				c1 = pal[*s];
+;				*(unsigned short *)d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 6) & 0x7C00);
+;			}
+;		}
+;		z++;
+  4699d0:	41 83 c0 01          	add    r8d,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  4699d4:	41 39 c0             	cmp    r8d,eax
+  4699d7:	7c 0e                	jl     4699e7 <fb_hBlit8to15RGB+0x57>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  4699d9:	48 63 53 30          	movsxd rdx,DWORD PTR [rbx+0x30]
+;			dirty++;
+  4699dd:	49 83 c3 01          	add    r11,0x1
+;			z = 0;
+  4699e1:	45 31 c0             	xor    r8d,r8d
+;			src += __fb_gfx->pitch;
+  4699e4:	48 01 d1             	add    rcx,rdx
+;		}
+;		dest += pitch;
+  4699e7:	48 01 ef             	add    rdi,rbp
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  4699ea:	41 83 ea 01          	sub    r10d,0x1
+  4699ee:	0f 84 bc 00 00 00    	je     469ab0 <fb_hBlit8to15RGB+0x120>
+;		if (*dirty) {
+  4699f4:	41 80 3b 00          	cmp    BYTE PTR [r11],0x0
+  4699f8:	74 d6                	je     4699d0 <fb_hBlit8to15RGB+0x40>
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  4699fa:	8b 53 20             	mov    edx,DWORD PTR [rbx+0x20]
+  4699fd:	41 89 d1             	mov    r9d,edx
+  469a00:	41 d1 f9             	sar    r9d,1
+  469a03:	0f 84 b7 00 00 00    	je     469ac0 <fb_hBlit8to15RGB+0x130>
+  469a09:	45 89 c9             	mov    r9d,r9d
+  469a0c:	31 d2                	xor    edx,edx
+  469a0e:	66 90                	xchg   ax,ax
+;				c1 = pal[*s];
+  469a10:	0f b6 04 51          	movzx  eax,BYTE PTR [rcx+rdx*2]
+  469a14:	44 8b 34 86          	mov    r14d,DWORD PTR [rsi+rax*4]
+;				c2 = pal[*(s + 1)];
+  469a18:	0f b6 44 51 01       	movzx  eax,BYTE PTR [rcx+rdx*2+0x1]
+  469a1d:	44 8b 2c 86          	mov    r13d,DWORD PTR [rsi+rax*4]
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 6) & 0x7C00) |
+  469a21:	44 89 f0             	mov    eax,r14d
+  469a24:	41 c1 ee 03          	shr    r14d,0x3
+  469a28:	c1 e8 06             	shr    eax,0x6
+  469a2b:	41 83 e6 1f          	and    r14d,0x1f
+;				     (((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 6) & 0x7C00) << 16);
+  469a2f:	45 89 ec             	mov    r12d,r13d
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 6) & 0x7C00) |
+  469a32:	25 e0 7f 00 00       	and    eax,0x7fe0
+;				     (((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 6) & 0x7C00) << 16);
+  469a37:	41 c1 ed 03          	shr    r13d,0x3
+  469a3b:	41 c1 ec 06          	shr    r12d,0x6
+  469a3f:	41 83 e5 1f          	and    r13d,0x1f
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 6) & 0x7C00) |
+  469a43:	44 09 f0             	or     eax,r14d
+  469a46:	44 09 e8             	or     eax,r13d
+;				     (((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 6) & 0x7C00) << 16);
+  469a49:	45 89 e5             	mov    r13d,r12d
+  469a4c:	41 c1 e4 10          	shl    r12d,0x10
+  469a50:	41 81 e5 e0 03 00 00 	and    r13d,0x3e0
+  469a57:	41 81 e4 00 00 00 7c 	and    r12d,0x7c000000
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 6) & 0x7C00) |
+  469a5e:	44 09 e8             	or     eax,r13d
+  469a61:	44 09 e0             	or     eax,r12d
+  469a64:	89 04 97             	mov    DWORD PTR [rdi+rdx*4],eax
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  469a67:	48 83 c2 01          	add    rdx,0x1
+  469a6b:	49 39 d1             	cmp    r9,rdx
+  469a6e:	75 a0                	jne    469a10 <fb_hBlit8to15RGB+0x80>
+;			if (__fb_gfx->w & 0x1) {
+  469a70:	8b 53 20             	mov    edx,DWORD PTR [rbx+0x20]
+  469a73:	8b 43 70             	mov    eax,DWORD PTR [rbx+0x70]
+;				s += 2;
+  469a76:	4e 8d 24 49          	lea    r12,[rcx+r9*2]
+;				d++;
+  469a7a:	4e 8d 0c 8f          	lea    r9,[rdi+r9*4]
+;			if (__fb_gfx->w & 0x1) {
+  469a7e:	83 e2 01             	and    edx,0x1
+  469a81:	0f 84 49 ff ff ff    	je     4699d0 <fb_hBlit8to15RGB+0x40>
+;				c1 = pal[*s];
+  469a87:	41 0f b6 14 24       	movzx  edx,BYTE PTR [r12]
+  469a8c:	8b 14 96             	mov    edx,DWORD PTR [rsi+rdx*4]
+;				*(unsigned short *)d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 6) & 0x7C00);
+  469a8f:	41 89 d4             	mov    r12d,edx
+  469a92:	c1 ea 03             	shr    edx,0x3
+  469a95:	41 c1 ec 06          	shr    r12d,0x6
+  469a99:	83 e2 1f             	and    edx,0x1f
+  469a9c:	66 41 81 e4 e0 7f    	and    r12w,0x7fe0
+  469aa2:	44 09 e2             	or     edx,r12d
+  469aa5:	66 41 89 11          	mov    WORD PTR [r9],dx
+  469aa9:	e9 22 ff ff ff       	jmp    4699d0 <fb_hBlit8to15RGB+0x40>
+  469aae:	66 90                	xchg   ax,ax
+;	}
+;}
+  469ab0:	5b                   	pop    rbx
+  469ab1:	5d                   	pop    rbp
+  469ab2:	41 5c                	pop    r12
+  469ab4:	41 5d                	pop    r13
+  469ab6:	41 5e                	pop    r14
+  469ab8:	c3                   	ret    
+  469ab9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  469ac0:	49 89 f9             	mov    r9,rdi
+  469ac3:	49 89 cc             	mov    r12,rcx
+  469ac6:	eb b6                	jmp    469a7e <fb_hBlit8to15RGB+0xee>
+  469ac8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+  469acf:	00 
+
+0000000000469ad0 <fb_hBlit8to15BGR>:
+;
+;
+;/*:::::*/
+;static void fb_hBlit8to15BGR(unsigned char *dest, int pitch)
+;{
+  469ad0:	41 56                	push   r14
+  469ad2:	41 55                	push   r13
+  469ad4:	41 54                	push   r12
+  469ad6:	4c 63 e6             	movsxd r12,esi
+  469ad9:	55                   	push   rbp
+;	unsigned int *pal = __fb_gfx->device_palette;
+  469ada:	48 8b 2d 17 c2 04 00 	mov    rbp,QWORD PTR [rip+0x4c217]        # 4b5cf8 <__fb_gfx>
+;{
+  469ae1:	53                   	push   rbx
+;	unsigned char *s, *src = __fb_gfx->framebuffer;
+;	unsigned int c1, c2, *d;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469ae2:	8b 45 70             	mov    eax,DWORD PTR [rbp+0x70]
+  469ae5:	44 8b 5d 24          	mov    r11d,DWORD PTR [rbp+0x24]
+;	unsigned int *pal = __fb_gfx->device_palette;
+  469ae9:	4c 8b 45 40          	mov    r8,QWORD PTR [rbp+0x40]
+;	unsigned char *s, *src = __fb_gfx->framebuffer;
+  469aed:	48 8b 75 18          	mov    rsi,QWORD PTR [rbp+0x18]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469af1:	44 0f af d8          	imul   r11d,eax
+;	char *dirty = __fb_gfx->dirty;
+  469af5:	48 8b 5d 50          	mov    rbx,QWORD PTR [rbp+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469af9:	45 85 db             	test   r11d,r11d
+  469afc:	0f 84 0e 01 00 00    	je     469c10 <fb_hBlit8to15BGR+0x140>
+  469b02:	45 31 c9             	xor    r9d,r9d
+  469b05:	eb 2d                	jmp    469b34 <fb_hBlit8to15BGR+0x64>
+  469b07:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+  469b0e:	00 00 
+;			if (__fb_gfx->w & 0x1) {
+;				c1 = pal[*s];
+;				*(unsigned short *)d = ((c1 << 7) & 0x7C00) | ((c1 >> 6) & 0x03E0) | ((c1 >> 19) & 0x001F);
+;			}
+;		}
+;		z++;
+  469b10:	41 83 c1 01          	add    r9d,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  469b14:	41 39 c1             	cmp    r9d,eax
+  469b17:	7c 0e                	jl     469b27 <fb_hBlit8to15BGR+0x57>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  469b19:	48 63 55 30          	movsxd rdx,DWORD PTR [rbp+0x30]
+;			dirty++;
+  469b1d:	48 83 c3 01          	add    rbx,0x1
+;			z = 0;
+  469b21:	45 31 c9             	xor    r9d,r9d
+;			src += __fb_gfx->pitch;
+  469b24:	48 01 d6             	add    rsi,rdx
+;		}
+;		dest += pitch;
+  469b27:	4c 01 e7             	add    rdi,r12
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469b2a:	41 83 eb 01          	sub    r11d,0x1
+  469b2e:	0f 84 dc 00 00 00    	je     469c10 <fb_hBlit8to15BGR+0x140>
+;		if (*dirty) {
+  469b34:	80 3b 00             	cmp    BYTE PTR [rbx],0x0
+  469b37:	74 d7                	je     469b10 <fb_hBlit8to15BGR+0x40>
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  469b39:	8b 55 20             	mov    edx,DWORD PTR [rbp+0x20]
+  469b3c:	41 89 d2             	mov    r10d,edx
+  469b3f:	41 d1 fa             	sar    r10d,1
+  469b42:	0f 84 d8 00 00 00    	je     469c20 <fb_hBlit8to15BGR+0x150>
+  469b48:	45 89 d2             	mov    r10d,r10d
+  469b4b:	31 c9                	xor    ecx,ecx
+  469b4d:	0f 1f 00             	nop    DWORD PTR [rax]
+;				c1 = pal[*s];
+  469b50:	0f b6 04 4e          	movzx  eax,BYTE PTR [rsi+rcx*2]
+  469b54:	45 8b 2c 80          	mov    r13d,DWORD PTR [r8+rax*4]
+;				c2 = pal[*(s + 1)];
+  469b58:	0f b6 44 4e 01       	movzx  eax,BYTE PTR [rsi+rcx*2+0x1]
+  469b5d:	41 8b 14 80          	mov    edx,DWORD PTR [r8+rax*4]
+;				     ((((c2 << 7) & 0x7C00) | ((c2 >> 6) & 0x03E0) | ((c2 >> 19) & 0x001F)) << 16);
+  469b61:	89 d0                	mov    eax,edx
+  469b63:	41 89 d6             	mov    r14d,edx
+  469b66:	c1 ea 13             	shr    edx,0x13
+  469b69:	c1 e0 07             	shl    eax,0x7
+  469b6c:	41 c1 ee 06          	shr    r14d,0x6
+  469b70:	83 e2 1f             	and    edx,0x1f
+  469b73:	41 81 e6 e0 03 00 00 	and    r14d,0x3e0
+  469b7a:	25 00 7c 00 00       	and    eax,0x7c00
+  469b7f:	44 09 f0             	or     eax,r14d
+;				*d = ((c1 << 7) & 0x7C00) | ((c1 >> 6) & 0x03E0) | ((c1 >> 19) & 0x001F) |
+  469b82:	45 89 ee             	mov    r14d,r13d
+;				     ((((c2 << 7) & 0x7C00) | ((c2 >> 6) & 0x03E0) | ((c2 >> 19) & 0x001F)) << 16);
+  469b85:	09 d0                	or     eax,edx
+;				*d = ((c1 << 7) & 0x7C00) | ((c1 >> 6) & 0x03E0) | ((c1 >> 19) & 0x001F) |
+  469b87:	44 89 ea             	mov    edx,r13d
+  469b8a:	41 c1 ee 06          	shr    r14d,0x6
+  469b8e:	c1 e2 07             	shl    edx,0x7
+  469b91:	41 81 e6 e0 03 00 00 	and    r14d,0x3e0
+  469b98:	41 c1 ed 13          	shr    r13d,0x13
+  469b9c:	81 e2 00 7c 00 00    	and    edx,0x7c00
+  469ba2:	41 83 e5 1f          	and    r13d,0x1f
+;				     ((((c2 << 7) & 0x7C00) | ((c2 >> 6) & 0x03E0) | ((c2 >> 19) & 0x001F)) << 16);
+  469ba6:	c1 e0 10             	shl    eax,0x10
+;				*d = ((c1 << 7) & 0x7C00) | ((c1 >> 6) & 0x03E0) | ((c1 >> 19) & 0x001F) |
+  469ba9:	44 09 f2             	or     edx,r14d
+  469bac:	44 09 ea             	or     edx,r13d
+  469baf:	09 d0                	or     eax,edx
+  469bb1:	89 04 8f             	mov    DWORD PTR [rdi+rcx*4],eax
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  469bb4:	48 83 c1 01          	add    rcx,0x1
+  469bb8:	49 39 ca             	cmp    r10,rcx
+  469bbb:	75 93                	jne    469b50 <fb_hBlit8to15BGR+0x80>
+;			if (__fb_gfx->w & 0x1) {
+  469bbd:	8b 55 20             	mov    edx,DWORD PTR [rbp+0x20]
+  469bc0:	8b 45 70             	mov    eax,DWORD PTR [rbp+0x70]
+;				s += 2;
+  469bc3:	4e 8d 2c 56          	lea    r13,[rsi+r10*2]
+;				d++;
+  469bc7:	4a 8d 0c 97          	lea    rcx,[rdi+r10*4]
+;			if (__fb_gfx->w & 0x1) {
+  469bcb:	83 e2 01             	and    edx,0x1
+  469bce:	0f 84 3c ff ff ff    	je     469b10 <fb_hBlit8to15BGR+0x40>
+;				c1 = pal[*s];
+  469bd4:	41 0f b6 55 00       	movzx  edx,BYTE PTR [r13+0x0]
+  469bd9:	45 8b 14 90          	mov    r10d,DWORD PTR [r8+rdx*4]
+;				*(unsigned short *)d = ((c1 << 7) & 0x7C00) | ((c1 >> 6) & 0x03E0) | ((c1 >> 19) & 0x001F);
+  469bdd:	44 89 d2             	mov    edx,r10d
+  469be0:	45 89 d5             	mov    r13d,r10d
+  469be3:	41 c1 ea 13          	shr    r10d,0x13
+  469be7:	c1 e2 07             	shl    edx,0x7
+  469bea:	41 c1 ed 06          	shr    r13d,0x6
+  469bee:	41 83 e2 1f          	and    r10d,0x1f
+  469bf2:	66 81 e2 00 7c       	and    dx,0x7c00
+  469bf7:	66 41 81 e5 e0 03    	and    r13w,0x3e0
+  469bfd:	44 09 ea             	or     edx,r13d
+  469c00:	44 09 d2             	or     edx,r10d
+  469c03:	66 89 11             	mov    WORD PTR [rcx],dx
+  469c06:	e9 05 ff ff ff       	jmp    469b10 <fb_hBlit8to15BGR+0x40>
+  469c0b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;	}
+;}
+  469c10:	5b                   	pop    rbx
+  469c11:	5d                   	pop    rbp
+  469c12:	41 5c                	pop    r12
+  469c14:	41 5d                	pop    r13
+  469c16:	41 5e                	pop    r14
+  469c18:	c3                   	ret    
+  469c19:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  469c20:	48 89 f9             	mov    rcx,rdi
+  469c23:	49 89 f5             	mov    r13,rsi
+  469c26:	eb a3                	jmp    469bcb <fb_hBlit8to15BGR+0xfb>
+  469c28:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+  469c2f:	00 
+
+0000000000469c30 <fb_hBlit8to16RGB>:
+;
+;
+;/*:::::*/
+;static void fb_hBlit8to16RGB(unsigned char *dest, int pitch)
+;{
+  469c30:	41 56                	push   r14
+  469c32:	41 55                	push   r13
+  469c34:	41 54                	push   r12
+  469c36:	55                   	push   rbp
+  469c37:	48 63 ee             	movsxd rbp,esi
+  469c3a:	53                   	push   rbx
+;	unsigned int *pal = __fb_gfx->device_palette;
+  469c3b:	48 8b 1d b6 c0 04 00 	mov    rbx,QWORD PTR [rip+0x4c0b6]        # 4b5cf8 <__fb_gfx>
+;	unsigned char *s, *src = __fb_gfx->framebuffer;
+;	unsigned int c1, c2, *d;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469c42:	8b 43 70             	mov    eax,DWORD PTR [rbx+0x70]
+  469c45:	44 8b 53 24          	mov    r10d,DWORD PTR [rbx+0x24]
+;	unsigned int *pal = __fb_gfx->device_palette;
+  469c49:	48 8b 73 40          	mov    rsi,QWORD PTR [rbx+0x40]
+;	unsigned char *s, *src = __fb_gfx->framebuffer;
+  469c4d:	48 8b 4b 18          	mov    rcx,QWORD PTR [rbx+0x18]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469c51:	44 0f af d0          	imul   r10d,eax
+;	char *dirty = __fb_gfx->dirty;
+  469c55:	4c 8b 5b 50          	mov    r11,QWORD PTR [rbx+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469c59:	45 85 d2             	test   r10d,r10d
+  469c5c:	0f 84 ee 00 00 00    	je     469d50 <fb_hBlit8to16RGB+0x120>
+  469c62:	45 31 c0             	xor    r8d,r8d
+  469c65:	eb 2d                	jmp    469c94 <fb_hBlit8to16RGB+0x64>
+  469c67:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+  469c6e:	00 00 
+;			if (__fb_gfx->w & 0x1) {
+;				c1 = pal[*s];
+;				*(unsigned short *)d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 5) & 0xF800);
+;			}
+;		}
+;		z++;
+  469c70:	41 83 c0 01          	add    r8d,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  469c74:	41 39 c0             	cmp    r8d,eax
+  469c77:	7c 0e                	jl     469c87 <fb_hBlit8to16RGB+0x57>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  469c79:	48 63 53 30          	movsxd rdx,DWORD PTR [rbx+0x30]
+;			dirty++;
+  469c7d:	49 83 c3 01          	add    r11,0x1
+;			z = 0;
+  469c81:	45 31 c0             	xor    r8d,r8d
+;			src += __fb_gfx->pitch;
+  469c84:	48 01 d1             	add    rcx,rdx
+;		}
+;		dest += pitch;
+  469c87:	48 01 ef             	add    rdi,rbp
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469c8a:	41 83 ea 01          	sub    r10d,0x1
+  469c8e:	0f 84 bc 00 00 00    	je     469d50 <fb_hBlit8to16RGB+0x120>
+;		if (*dirty) {
+  469c94:	41 80 3b 00          	cmp    BYTE PTR [r11],0x0
+  469c98:	74 d6                	je     469c70 <fb_hBlit8to16RGB+0x40>
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  469c9a:	8b 53 20             	mov    edx,DWORD PTR [rbx+0x20]
+  469c9d:	41 89 d1             	mov    r9d,edx
+  469ca0:	41 d1 f9             	sar    r9d,1
+  469ca3:	0f 84 b7 00 00 00    	je     469d60 <fb_hBlit8to16RGB+0x130>
+  469ca9:	45 89 c9             	mov    r9d,r9d
+  469cac:	31 d2                	xor    edx,edx
+  469cae:	66 90                	xchg   ax,ax
+;				c1 = pal[*s];
+  469cb0:	0f b6 04 51          	movzx  eax,BYTE PTR [rcx+rdx*2]
+  469cb4:	44 8b 34 86          	mov    r14d,DWORD PTR [rsi+rax*4]
+;				c2 = pal[*(s + 1)];
+  469cb8:	0f b6 44 51 01       	movzx  eax,BYTE PTR [rcx+rdx*2+0x1]
+  469cbd:	44 8b 2c 86          	mov    r13d,DWORD PTR [rsi+rax*4]
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 5) & 0xF800) |
+  469cc1:	44 89 f0             	mov    eax,r14d
+  469cc4:	41 c1 ee 03          	shr    r14d,0x3
+  469cc8:	c1 e8 05             	shr    eax,0x5
+  469ccb:	41 83 e6 1f          	and    r14d,0x1f
+;				     (((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 5) & 0xF800) << 16);
+  469ccf:	45 89 ec             	mov    r12d,r13d
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 5) & 0xF800) |
+  469cd2:	25 e0 ff 00 00       	and    eax,0xffe0
+;				     (((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 5) & 0xF800) << 16);
+  469cd7:	41 c1 ed 03          	shr    r13d,0x3
+  469cdb:	41 c1 ec 05          	shr    r12d,0x5
+  469cdf:	41 83 e5 1f          	and    r13d,0x1f
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 5) & 0xF800) |
+  469ce3:	44 09 f0             	or     eax,r14d
+  469ce6:	44 09 e8             	or     eax,r13d
+;				     (((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 5) & 0xF800) << 16);
+  469ce9:	45 89 e5             	mov    r13d,r12d
+  469cec:	41 c1 e4 10          	shl    r12d,0x10
+  469cf0:	41 81 e5 e0 07 00 00 	and    r13d,0x7e0
+  469cf7:	41 81 e4 00 00 00 f8 	and    r12d,0xf8000000
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 5) & 0xF800) |
+  469cfe:	44 09 e8             	or     eax,r13d
+  469d01:	44 09 e0             	or     eax,r12d
+  469d04:	89 04 97             	mov    DWORD PTR [rdi+rdx*4],eax
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  469d07:	48 83 c2 01          	add    rdx,0x1
+  469d0b:	49 39 d1             	cmp    r9,rdx
+  469d0e:	75 a0                	jne    469cb0 <fb_hBlit8to16RGB+0x80>
+;			if (__fb_gfx->w & 0x1) {
+  469d10:	8b 53 20             	mov    edx,DWORD PTR [rbx+0x20]
+  469d13:	8b 43 70             	mov    eax,DWORD PTR [rbx+0x70]
+;				s += 2;
+  469d16:	4e 8d 24 49          	lea    r12,[rcx+r9*2]
+;				d++;
+  469d1a:	4e 8d 0c 8f          	lea    r9,[rdi+r9*4]
+;			if (__fb_gfx->w & 0x1) {
+  469d1e:	83 e2 01             	and    edx,0x1
+  469d21:	0f 84 49 ff ff ff    	je     469c70 <fb_hBlit8to16RGB+0x40>
+;				c1 = pal[*s];
+  469d27:	41 0f b6 14 24       	movzx  edx,BYTE PTR [r12]
+  469d2c:	8b 14 96             	mov    edx,DWORD PTR [rsi+rdx*4]
+;				*(unsigned short *)d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 5) & 0xF800);
+  469d2f:	41 89 d4             	mov    r12d,edx
+  469d32:	c1 ea 03             	shr    edx,0x3
+  469d35:	41 c1 ec 05          	shr    r12d,0x5
+  469d39:	83 e2 1f             	and    edx,0x1f
+  469d3c:	41 83 e4 e0          	and    r12d,0xffffffe0
+  469d40:	44 09 e2             	or     edx,r12d
+  469d43:	66 41 89 11          	mov    WORD PTR [r9],dx
+  469d47:	e9 24 ff ff ff       	jmp    469c70 <fb_hBlit8to16RGB+0x40>
+  469d4c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+;	}
+;}
+  469d50:	5b                   	pop    rbx
+  469d51:	5d                   	pop    rbp
+  469d52:	41 5c                	pop    r12
+  469d54:	41 5d                	pop    r13
+  469d56:	41 5e                	pop    r14
+  469d58:	c3                   	ret    
+  469d59:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  469d60:	49 89 f9             	mov    r9,rdi
+  469d63:	49 89 cc             	mov    r12,rcx
+  469d66:	eb b6                	jmp    469d1e <fb_hBlit8to16RGB+0xee>
+  469d68:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+  469d6f:	00 
+
+0000000000469d70 <fb_hBlit8to16BGR>:
+;
+;
+;/*:::::*/
+;static void fb_hBlit8to16BGR(unsigned char *dest, int pitch)
+;{
+  469d70:	41 56                	push   r14
+  469d72:	41 55                	push   r13
+  469d74:	41 54                	push   r12
+  469d76:	4c 63 e6             	movsxd r12,esi
+  469d79:	55                   	push   rbp
+;	unsigned int *pal = __fb_gfx->device_palette;
+  469d7a:	48 8b 2d 77 bf 04 00 	mov    rbp,QWORD PTR [rip+0x4bf77]        # 4b5cf8 <__fb_gfx>
+;{
+  469d81:	53                   	push   rbx
+;	unsigned char *s, *src = __fb_gfx->framebuffer;
+;	unsigned int c1, c2, *d;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469d82:	8b 45 70             	mov    eax,DWORD PTR [rbp+0x70]
+  469d85:	44 8b 5d 24          	mov    r11d,DWORD PTR [rbp+0x24]
+;	unsigned int *pal = __fb_gfx->device_palette;
+  469d89:	4c 8b 45 40          	mov    r8,QWORD PTR [rbp+0x40]
+;	unsigned char *s, *src = __fb_gfx->framebuffer;
+  469d8d:	48 8b 75 18          	mov    rsi,QWORD PTR [rbp+0x18]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469d91:	44 0f af d8          	imul   r11d,eax
+;	char *dirty = __fb_gfx->dirty;
+  469d95:	48 8b 5d 50          	mov    rbx,QWORD PTR [rbp+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469d99:	45 85 db             	test   r11d,r11d
+  469d9c:	0f 84 0e 01 00 00    	je     469eb0 <fb_hBlit8to16BGR+0x140>
+  469da2:	45 31 c9             	xor    r9d,r9d
+  469da5:	eb 2d                	jmp    469dd4 <fb_hBlit8to16BGR+0x64>
+  469da7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+  469dae:	00 00 
+;			if (__fb_gfx->w & 0x1) {
+;				c1 = pal[*s];
+;				*(unsigned short *)d = ((c1 << 8) & 0xF800) | ((c1 >> 5) & 0x07E0) | ((c1 >> 19) & 0x001F);
+;			}
+;		}
+;		z++;
+  469db0:	41 83 c1 01          	add    r9d,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  469db4:	41 39 c1             	cmp    r9d,eax
+  469db7:	7c 0e                	jl     469dc7 <fb_hBlit8to16BGR+0x57>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  469db9:	48 63 55 30          	movsxd rdx,DWORD PTR [rbp+0x30]
+;			dirty++;
+  469dbd:	48 83 c3 01          	add    rbx,0x1
+;			z = 0;
+  469dc1:	45 31 c9             	xor    r9d,r9d
+;			src += __fb_gfx->pitch;
+  469dc4:	48 01 d6             	add    rsi,rdx
+;		}
+;		dest += pitch;
+  469dc7:	4c 01 e7             	add    rdi,r12
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469dca:	41 83 eb 01          	sub    r11d,0x1
+  469dce:	0f 84 dc 00 00 00    	je     469eb0 <fb_hBlit8to16BGR+0x140>
+;		if (*dirty) {
+  469dd4:	80 3b 00             	cmp    BYTE PTR [rbx],0x0
+  469dd7:	74 d7                	je     469db0 <fb_hBlit8to16BGR+0x40>
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  469dd9:	8b 55 20             	mov    edx,DWORD PTR [rbp+0x20]
+  469ddc:	41 89 d2             	mov    r10d,edx
+  469ddf:	41 d1 fa             	sar    r10d,1
+  469de2:	0f 84 d8 00 00 00    	je     469ec0 <fb_hBlit8to16BGR+0x150>
+  469de8:	45 89 d2             	mov    r10d,r10d
+  469deb:	31 c9                	xor    ecx,ecx
+  469ded:	0f 1f 00             	nop    DWORD PTR [rax]
+;				c1 = pal[*s];
+  469df0:	0f b6 04 4e          	movzx  eax,BYTE PTR [rsi+rcx*2]
+  469df4:	45 8b 2c 80          	mov    r13d,DWORD PTR [r8+rax*4]
+;				c2 = pal[*(s + 1)];
+  469df8:	0f b6 44 4e 01       	movzx  eax,BYTE PTR [rsi+rcx*2+0x1]
+  469dfd:	41 8b 14 80          	mov    edx,DWORD PTR [r8+rax*4]
+;				     ((((c2 << 8) & 0xF800) | ((c2 >> 5) & 0x07E0) | ((c2 >> 19) & 0x001F)) << 16);
+  469e01:	89 d0                	mov    eax,edx
+  469e03:	41 89 d6             	mov    r14d,edx
+  469e06:	c1 ea 13             	shr    edx,0x13
+  469e09:	c1 e0 08             	shl    eax,0x8
+  469e0c:	41 c1 ee 05          	shr    r14d,0x5
+  469e10:	83 e2 1f             	and    edx,0x1f
+  469e13:	41 81 e6 e0 07 00 00 	and    r14d,0x7e0
+  469e1a:	25 00 f8 00 00       	and    eax,0xf800
+  469e1f:	44 09 f0             	or     eax,r14d
+;				*d = ((c1 << 8) & 0xF800) | ((c1 >> 5) & 0x07E0) | ((c1 >> 19) & 0x001F) |
+  469e22:	45 89 ee             	mov    r14d,r13d
+;				     ((((c2 << 8) & 0xF800) | ((c2 >> 5) & 0x07E0) | ((c2 >> 19) & 0x001F)) << 16);
+  469e25:	09 d0                	or     eax,edx
+;				*d = ((c1 << 8) & 0xF800) | ((c1 >> 5) & 0x07E0) | ((c1 >> 19) & 0x001F) |
+  469e27:	44 89 ea             	mov    edx,r13d
+  469e2a:	41 c1 ee 05          	shr    r14d,0x5
+  469e2e:	c1 e2 08             	shl    edx,0x8
+  469e31:	41 81 e6 e0 07 00 00 	and    r14d,0x7e0
+  469e38:	41 c1 ed 13          	shr    r13d,0x13
+  469e3c:	81 e2 00 f8 00 00    	and    edx,0xf800
+  469e42:	41 83 e5 1f          	and    r13d,0x1f
+;				     ((((c2 << 8) & 0xF800) | ((c2 >> 5) & 0x07E0) | ((c2 >> 19) & 0x001F)) << 16);
+  469e46:	c1 e0 10             	shl    eax,0x10
+;				*d = ((c1 << 8) & 0xF800) | ((c1 >> 5) & 0x07E0) | ((c1 >> 19) & 0x001F) |
+  469e49:	44 09 f2             	or     edx,r14d
+  469e4c:	44 09 ea             	or     edx,r13d
+  469e4f:	09 d0                	or     eax,edx
+  469e51:	89 04 8f             	mov    DWORD PTR [rdi+rcx*4],eax
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  469e54:	48 83 c1 01          	add    rcx,0x1
+  469e58:	49 39 ca             	cmp    r10,rcx
+  469e5b:	75 93                	jne    469df0 <fb_hBlit8to16BGR+0x80>
+;			if (__fb_gfx->w & 0x1) {
+  469e5d:	8b 55 20             	mov    edx,DWORD PTR [rbp+0x20]
+  469e60:	8b 45 70             	mov    eax,DWORD PTR [rbp+0x70]
+;				s += 2;
+  469e63:	4e 8d 2c 56          	lea    r13,[rsi+r10*2]
+;				d++;
+  469e67:	4a 8d 0c 97          	lea    rcx,[rdi+r10*4]
+;			if (__fb_gfx->w & 0x1) {
+  469e6b:	83 e2 01             	and    edx,0x1
+  469e6e:	0f 84 3c ff ff ff    	je     469db0 <fb_hBlit8to16BGR+0x40>
+;				c1 = pal[*s];
+  469e74:	41 0f b6 55 00       	movzx  edx,BYTE PTR [r13+0x0]
+  469e79:	45 8b 14 90          	mov    r10d,DWORD PTR [r8+rdx*4]
+;				*(unsigned short *)d = ((c1 << 8) & 0xF800) | ((c1 >> 5) & 0x07E0) | ((c1 >> 19) & 0x001F);
+  469e7d:	44 89 d2             	mov    edx,r10d
+  469e80:	45 89 d5             	mov    r13d,r10d
+  469e83:	41 c1 ea 13          	shr    r10d,0x13
+  469e87:	c1 e2 08             	shl    edx,0x8
+  469e8a:	41 c1 ed 05          	shr    r13d,0x5
+  469e8e:	41 83 e2 1f          	and    r10d,0x1f
+  469e92:	66 81 e2 00 f8       	and    dx,0xf800
+  469e97:	66 41 81 e5 e0 07    	and    r13w,0x7e0
+  469e9d:	44 09 ea             	or     edx,r13d
+  469ea0:	44 09 d2             	or     edx,r10d
+  469ea3:	66 89 11             	mov    WORD PTR [rcx],dx
+  469ea6:	e9 05 ff ff ff       	jmp    469db0 <fb_hBlit8to16BGR+0x40>
+  469eab:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;	}
+;}
+  469eb0:	5b                   	pop    rbx
+  469eb1:	5d                   	pop    rbp
+  469eb2:	41 5c                	pop    r12
+  469eb4:	41 5d                	pop    r13
+  469eb6:	41 5e                	pop    r14
+  469eb8:	c3                   	ret    
+  469eb9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  469ec0:	48 89 f9             	mov    rcx,rdi
+  469ec3:	49 89 f5             	mov    r13,rsi
+  469ec6:	eb a3                	jmp    469e6b <fb_hBlit8to16BGR+0xfb>
+  469ec8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+  469ecf:	00 
+
+0000000000469ed0 <fb_hBlit8to24RGB>:
+;
+;
+;/*:::::*/
+;static void fb_hBlit8to24RGB(unsigned char *dest, int pitch)
+;{
+;	unsigned int *pal = __fb_gfx->device_palette;
+  469ed0:	48 8b 05 21 be 04 00 	mov    rax,QWORD PTR [rip+0x4be21]        # 4b5cf8 <__fb_gfx>
+;{
+  469ed7:	41 56                	push   r14
+  469ed9:	41 54                	push   r12
+  469edb:	55                   	push   rbp
+  469edc:	53                   	push   rbx
+;	unsigned int c;
+;	unsigned char *d;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469edd:	8b 50 70             	mov    edx,DWORD PTR [rax+0x70]
+  469ee0:	44 8b 48 24          	mov    r9d,DWORD PTR [rax+0x24]
+;	unsigned int *pal = __fb_gfx->device_palette;
+  469ee4:	4c 8b 58 40          	mov    r11,QWORD PTR [rax+0x40]
+;	unsigned char *s, *src = __fb_gfx->framebuffer;
+  469ee8:	48 8b 68 18          	mov    rbp,QWORD PTR [rax+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  469eec:	4c 8b 70 50          	mov    r14,QWORD PTR [rax+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469ef0:	44 0f af ca          	imul   r9d,edx
+  469ef4:	45 85 c9             	test   r9d,r9d
+  469ef7:	74 77                	je     469f70 <fb_hBlit8to24RGB+0xa0>
+  469ef9:	49 89 fa             	mov    r10,rdi
+  469efc:	4c 63 e6             	movsxd r12,esi
+  469eff:	45 31 c0             	xor    r8d,r8d
+  469f02:	eb 24                	jmp    469f28 <fb_hBlit8to24RGB+0x58>
+  469f04:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+;				d[2] = c & 0xFF;
+;				s++;
+;				d += 3;
+;			}
+;		}
+;		z++;
+  469f08:	41 83 c0 01          	add    r8d,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  469f0c:	41 39 d0             	cmp    r8d,edx
+  469f0f:	7c 0e                	jl     469f1f <fb_hBlit8to24RGB+0x4f>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  469f11:	48 63 48 30          	movsxd rcx,DWORD PTR [rax+0x30]
+;			dirty++;
+  469f15:	49 83 c6 01          	add    r14,0x1
+;			z = 0;
+  469f19:	45 31 c0             	xor    r8d,r8d
+;			src += __fb_gfx->pitch;
+  469f1c:	48 01 cd             	add    rbp,rcx
+;		}
+;		dest += pitch;
+  469f1f:	4d 01 e2             	add    r10,r12
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469f22:	41 83 e9 01          	sub    r9d,0x1
+  469f26:	74 48                	je     469f70 <fb_hBlit8to24RGB+0xa0>
+;		if (*dirty) {
+  469f28:	41 80 3e 00          	cmp    BYTE PTR [r14],0x0
+  469f2c:	74 da                	je     469f08 <fb_hBlit8to24RGB+0x38>
+;			for (x = __fb_gfx->w; x; x--) {
+  469f2e:	8b 78 20             	mov    edi,DWORD PTR [rax+0x20]
+  469f31:	85 ff                	test   edi,edi
+  469f33:	74 d3                	je     469f08 <fb_hBlit8to24RGB+0x38>
+  469f35:	48 01 ef             	add    rdi,rbp
+  469f38:	4c 89 d0             	mov    rax,r10
+  469f3b:	48 89 ea             	mov    rdx,rbp
+  469f3e:	66 90                	xchg   ax,ax
+;				c = pal[*s];
+  469f40:	0f b6 0a             	movzx  ecx,BYTE PTR [rdx]
+;				s++;
+  469f43:	48 83 c2 01          	add    rdx,0x1
+;				d += 3;
+  469f47:	48 83 c0 03          	add    rax,0x3
+;				c = pal[*s];
+  469f4b:	41 8b 0c 8b          	mov    ecx,DWORD PTR [r11+rcx*4]
+;				d[0] = (c >> 16) & 0xFF;
+  469f4f:	89 ce                	mov    esi,ecx
+;				d[1] = (c >> 8) & 0xFF;
+  469f51:	88 68 fe             	mov    BYTE PTR [rax-0x2],ch
+;				d[0] = (c >> 16) & 0xFF;
+  469f54:	c1 ee 10             	shr    esi,0x10
+;				d[2] = c & 0xFF;
+  469f57:	88 48 ff             	mov    BYTE PTR [rax-0x1],cl
+;				d[0] = (c >> 16) & 0xFF;
+  469f5a:	40 88 70 fd          	mov    BYTE PTR [rax-0x3],sil
+;			for (x = __fb_gfx->w; x; x--) {
+  469f5e:	48 39 fa             	cmp    rdx,rdi
+  469f61:	75 dd                	jne    469f40 <fb_hBlit8to24RGB+0x70>
+;		if (z >= __fb_gfx->scanline_size) {
+  469f63:	48 8b 05 8e bd 04 00 	mov    rax,QWORD PTR [rip+0x4bd8e]        # 4b5cf8 <__fb_gfx>
+  469f6a:	8b 50 70             	mov    edx,DWORD PTR [rax+0x70]
+  469f6d:	eb 99                	jmp    469f08 <fb_hBlit8to24RGB+0x38>
+  469f6f:	90                   	nop
+;	}
+;}
+  469f70:	5b                   	pop    rbx
+  469f71:	5d                   	pop    rbp
+  469f72:	41 5c                	pop    r12
+  469f74:	41 5e                	pop    r14
+  469f76:	c3                   	ret    
+  469f77:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+  469f7e:	00 00 
+
+0000000000469f80 <fb_hBlit8to24BGR>:
+;
+;
+;/*:::::*/
+;static void fb_hBlit8to24BGR(unsigned char *dest, int pitch)
+;{
+;	unsigned int *pal = __fb_gfx->device_palette;
+  469f80:	48 8b 05 71 bd 04 00 	mov    rax,QWORD PTR [rip+0x4bd71]        # 4b5cf8 <__fb_gfx>
+;{
+  469f87:	41 56                	push   r14
+  469f89:	55                   	push   rbp
+  469f8a:	53                   	push   rbx
+;	unsigned int c;
+;	unsigned char *d;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469f8b:	8b 50 70             	mov    edx,DWORD PTR [rax+0x70]
+  469f8e:	44 8b 40 24          	mov    r8d,DWORD PTR [rax+0x24]
+;	unsigned int *pal = __fb_gfx->device_palette;
+  469f92:	4c 8b 50 40          	mov    r10,QWORD PTR [rax+0x40]
+;	unsigned char *s, *src = __fb_gfx->framebuffer;
+  469f96:	4c 8b 70 18          	mov    r14,QWORD PTR [rax+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  469f9a:	4c 8b 58 50          	mov    r11,QWORD PTR [rax+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469f9e:	44 0f af c2          	imul   r8d,edx
+  469fa2:	45 85 c0             	test   r8d,r8d
+  469fa5:	74 79                	je     46a020 <fb_hBlit8to24BGR+0xa0>
+  469fa7:	49 89 f9             	mov    r9,rdi
+  469faa:	48 63 ee             	movsxd rbp,esi
+  469fad:	31 ff                	xor    edi,edi
+  469faf:	eb 24                	jmp    469fd5 <fb_hBlit8to24BGR+0x55>
+  469fb1:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;				d[2] = (c >> 16) & 0xFF;
+;				s++;
+;				d += 3;
+;			}
+;		}
+;		z++;
+  469fb8:	83 c7 01             	add    edi,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  469fbb:	39 d7                	cmp    edi,edx
+  469fbd:	7c 0d                	jl     469fcc <fb_hBlit8to24BGR+0x4c>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  469fbf:	48 63 48 30          	movsxd rcx,DWORD PTR [rax+0x30]
+;			dirty++;
+  469fc3:	49 83 c3 01          	add    r11,0x1
+;			z = 0;
+  469fc7:	31 ff                	xor    edi,edi
+;			src += __fb_gfx->pitch;
+  469fc9:	49 01 ce             	add    r14,rcx
+;		}
+;		dest += pitch;
+  469fcc:	49 01 e9             	add    r9,rbp
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  469fcf:	41 83 e8 01          	sub    r8d,0x1
+  469fd3:	74 4b                	je     46a020 <fb_hBlit8to24BGR+0xa0>
+;		if (*dirty) {
+  469fd5:	41 80 3b 00          	cmp    BYTE PTR [r11],0x0
+  469fd9:	74 dd                	je     469fb8 <fb_hBlit8to24BGR+0x38>
+;			for (x = __fb_gfx->w; x; x--) {
+  469fdb:	8b 70 20             	mov    esi,DWORD PTR [rax+0x20]
+  469fde:	85 f6                	test   esi,esi
+  469fe0:	74 d6                	je     469fb8 <fb_hBlit8to24BGR+0x38>
+  469fe2:	4c 01 f6             	add    rsi,r14
+  469fe5:	4c 89 ca             	mov    rdx,r9
+  469fe8:	4c 89 f1             	mov    rcx,r14
+  469feb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;				c = pal[*s];
+  469ff0:	0f b6 01             	movzx  eax,BYTE PTR [rcx]
+;				s++;
+  469ff3:	48 83 c1 01          	add    rcx,0x1
+;				d += 3;
+  469ff7:	48 83 c2 03          	add    rdx,0x3
+;				c = pal[*s];
+  469ffb:	41 8b 04 82          	mov    eax,DWORD PTR [r10+rax*4]
+;				d[0] = c & 0xFF;
+  469fff:	88 42 fd             	mov    BYTE PTR [rdx-0x3],al
+;				d[1] = (c >> 8) & 0xFF;
+  46a002:	88 62 fe             	mov    BYTE PTR [rdx-0x2],ah
+;				d[2] = (c >> 16) & 0xFF;
+  46a005:	c1 e8 10             	shr    eax,0x10
+  46a008:	88 42 ff             	mov    BYTE PTR [rdx-0x1],al
+;			for (x = __fb_gfx->w; x; x--) {
+  46a00b:	48 39 f1             	cmp    rcx,rsi
+  46a00e:	75 e0                	jne    469ff0 <fb_hBlit8to24BGR+0x70>
+;		if (z >= __fb_gfx->scanline_size) {
+  46a010:	48 8b 05 e1 bc 04 00 	mov    rax,QWORD PTR [rip+0x4bce1]        # 4b5cf8 <__fb_gfx>
+  46a017:	8b 50 70             	mov    edx,DWORD PTR [rax+0x70]
+  46a01a:	eb 9c                	jmp    469fb8 <fb_hBlit8to24BGR+0x38>
+  46a01c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+;	}
+;}
+  46a020:	5b                   	pop    rbx
+  46a021:	5d                   	pop    rbp
+  46a022:	41 5e                	pop    r14
+  46a024:	c3                   	ret    
+  46a025:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
+  46a02c:	00 00 00 00 
+
+000000000046a030 <fb_hBlit8to32RGB>:
+;
+;
+;/*:::::*/
+;static void fb_hBlit8to32RGB(unsigned char *dest, int pitch)
+;{
+  46a030:	55                   	push   rbp
+  46a031:	48 63 ee             	movsxd rbp,esi
+  46a034:	53                   	push   rbx
+;	unsigned int *pal = __fb_gfx->device_palette;
+  46a035:	48 8b 1d bc bc 04 00 	mov    rbx,QWORD PTR [rip+0x4bcbc]        # 4b5cf8 <__fb_gfx>
+;	unsigned int *d;
+;	unsigned char *s, *src = __fb_gfx->framebuffer;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46a03c:	8b 43 70             	mov    eax,DWORD PTR [rbx+0x70]
+  46a03f:	44 8b 4b 24          	mov    r9d,DWORD PTR [rbx+0x24]
+;	unsigned int *pal = __fb_gfx->device_palette;
+  46a043:	4c 8b 5b 40          	mov    r11,QWORD PTR [rbx+0x40]
+;	unsigned char *s, *src = __fb_gfx->framebuffer;
+  46a047:	4c 8b 43 18          	mov    r8,QWORD PTR [rbx+0x18]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46a04b:	44 0f af c8          	imul   r9d,eax
+;	char *dirty = __fb_gfx->dirty;
+  46a04f:	48 8b 73 50          	mov    rsi,QWORD PTR [rbx+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46a053:	45 85 c9             	test   r9d,r9d
+  46a056:	74 58                	je     46a0b0 <fb_hBlit8to32RGB+0x80>
+  46a058:	48 89 fa             	mov    rdx,rdi
+  46a05b:	31 ff                	xor    edi,edi
+  46a05d:	eb 1e                	jmp    46a07d <fb_hBlit8to32RGB+0x4d>
+  46a05f:	90                   	nop
+;				*d = pal[*s];
+;				s++;
+;				d++;
+;			}
+;		}
+;		z++;
+  46a060:	83 c7 01             	add    edi,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46a063:	39 c7                	cmp    edi,eax
+  46a065:	7c 0d                	jl     46a074 <fb_hBlit8to32RGB+0x44>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  46a067:	48 63 4b 30          	movsxd rcx,DWORD PTR [rbx+0x30]
+;			dirty++;
+  46a06b:	48 83 c6 01          	add    rsi,0x1
+;			z = 0;
+  46a06f:	31 ff                	xor    edi,edi
+;			src += __fb_gfx->pitch;
+  46a071:	49 01 c8             	add    r8,rcx
+;		}
+;		dest += pitch;
+  46a074:	48 01 ea             	add    rdx,rbp
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46a077:	41 83 e9 01          	sub    r9d,0x1
+  46a07b:	74 33                	je     46a0b0 <fb_hBlit8to32RGB+0x80>
+;		if (*dirty) {
+  46a07d:	80 3e 00             	cmp    BYTE PTR [rsi],0x0
+  46a080:	74 de                	je     46a060 <fb_hBlit8to32RGB+0x30>
+;			for (x = __fb_gfx->w; x; x--) {
+  46a082:	44 8b 53 20          	mov    r10d,DWORD PTR [rbx+0x20]
+  46a086:	45 85 d2             	test   r10d,r10d
+  46a089:	74 d5                	je     46a060 <fb_hBlit8to32RGB+0x30>
+  46a08b:	31 c0                	xor    eax,eax
+  46a08d:	0f 1f 00             	nop    DWORD PTR [rax]
+;				*d = pal[*s];
+  46a090:	41 0f b6 0c 00       	movzx  ecx,BYTE PTR [r8+rax*1]
+  46a095:	41 8b 0c 8b          	mov    ecx,DWORD PTR [r11+rcx*4]
+  46a099:	89 0c 82             	mov    DWORD PTR [rdx+rax*4],ecx
+;			for (x = __fb_gfx->w; x; x--) {
+  46a09c:	48 83 c0 01          	add    rax,0x1
+  46a0a0:	49 39 c2             	cmp    r10,rax
+  46a0a3:	75 eb                	jne    46a090 <fb_hBlit8to32RGB+0x60>
+;		if (z >= __fb_gfx->scanline_size) {
+  46a0a5:	8b 43 70             	mov    eax,DWORD PTR [rbx+0x70]
+  46a0a8:	eb b6                	jmp    46a060 <fb_hBlit8to32RGB+0x30>
+  46a0aa:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+;	}
+;}
+  46a0b0:	5b                   	pop    rbx
+  46a0b1:	5d                   	pop    rbp
+  46a0b2:	c3                   	ret    
+  46a0b3:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
+  46a0ba:	00 00 00 00 
+  46a0be:	66 90                	xchg   ax,ax
+
+000000000046a0c0 <fb_hBlit8to32BGR>:
+;
+;
+;/*:::::*/
+;static void fb_hBlit8to32BGR(unsigned char *dest, int pitch)
+;{
+  46a0c0:	41 55                	push   r13
+  46a0c2:	41 54                	push   r12
+  46a0c4:	55                   	push   rbp
+;	unsigned int *pal = __fb_gfx->device_palette;
+  46a0c5:	48 8b 2d 2c bc 04 00 	mov    rbp,QWORD PTR [rip+0x4bc2c]        # 4b5cf8 <__fb_gfx>
+;{
+  46a0cc:	53                   	push   rbx
+;	unsigned char *s, *src = __fb_gfx->framebuffer;
+;	unsigned int c;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46a0cd:	8b 45 70             	mov    eax,DWORD PTR [rbp+0x70]
+  46a0d0:	44 8b 4d 24          	mov    r9d,DWORD PTR [rbp+0x24]
+;	unsigned int *pal = __fb_gfx->device_palette;
+  46a0d4:	4c 8b 5d 40          	mov    r11,QWORD PTR [rbp+0x40]
+;	unsigned char *s, *src = __fb_gfx->framebuffer;
+  46a0d8:	4c 8b 45 18          	mov    r8,QWORD PTR [rbp+0x18]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46a0dc:	44 0f af c8          	imul   r9d,eax
+;	char *dirty = __fb_gfx->dirty;
+  46a0e0:	48 8b 5d 50          	mov    rbx,QWORD PTR [rbp+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46a0e4:	45 85 c9             	test   r9d,r9d
+  46a0e7:	74 77                	je     46a160 <fb_hBlit8to32BGR+0xa0>
+  46a0e9:	4c 63 e6             	movsxd r12,esi
+  46a0ec:	31 f6                	xor    esi,esi
+  46a0ee:	eb 1d                	jmp    46a10d <fb_hBlit8to32BGR+0x4d>
+;				*d = ((c << 16) & 0xFF0000) | (c & 0xFF00) | (c >> 16);
+;				s++;
+;				d++;
+;			}
+;		}
+;		z++;
+  46a0f0:	83 c6 01             	add    esi,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46a0f3:	39 c6                	cmp    esi,eax
+  46a0f5:	7c 0d                	jl     46a104 <fb_hBlit8to32BGR+0x44>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  46a0f7:	48 63 55 30          	movsxd rdx,DWORD PTR [rbp+0x30]
+;			dirty++;
+  46a0fb:	48 83 c3 01          	add    rbx,0x1
+;			z = 0;
+  46a0ff:	31 f6                	xor    esi,esi
+;			src += __fb_gfx->pitch;
+  46a101:	49 01 d0             	add    r8,rdx
+;		}
+;		dest += pitch;
+  46a104:	4c 01 e7             	add    rdi,r12
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46a107:	41 83 e9 01          	sub    r9d,0x1
+  46a10b:	74 53                	je     46a160 <fb_hBlit8to32BGR+0xa0>
+;		if (*dirty) {
+  46a10d:	80 3b 00             	cmp    BYTE PTR [rbx],0x0
+  46a110:	74 de                	je     46a0f0 <fb_hBlit8to32BGR+0x30>
+;			for (x = __fb_gfx->w; x; x--) {
+  46a112:	44 8b 55 20          	mov    r10d,DWORD PTR [rbp+0x20]
+  46a116:	45 85 d2             	test   r10d,r10d
+  46a119:	74 d5                	je     46a0f0 <fb_hBlit8to32BGR+0x30>
+  46a11b:	31 c9                	xor    ecx,ecx
+  46a11d:	0f 1f 00             	nop    DWORD PTR [rax]
+;				c = pal[*s];
+  46a120:	41 0f b6 04 08       	movzx  eax,BYTE PTR [r8+rcx*1]
+  46a125:	41 8b 04 83          	mov    eax,DWORD PTR [r11+rax*4]
+;				*d = ((c << 16) & 0xFF0000) | (c & 0xFF00) | (c >> 16);
+  46a129:	89 c2                	mov    edx,eax
+  46a12b:	41 89 c5             	mov    r13d,eax
+  46a12e:	c1 e0 10             	shl    eax,0x10
+  46a131:	81 e2 00 ff 00 00    	and    edx,0xff00
+  46a137:	41 c1 ed 10          	shr    r13d,0x10
+  46a13b:	25 00 00 ff 00       	and    eax,0xff0000
+  46a140:	44 09 ea             	or     edx,r13d
+  46a143:	09 d0                	or     eax,edx
+  46a145:	89 04 8f             	mov    DWORD PTR [rdi+rcx*4],eax
+;			for (x = __fb_gfx->w; x; x--) {
+  46a148:	48 83 c1 01          	add    rcx,0x1
+  46a14c:	49 39 ca             	cmp    r10,rcx
+  46a14f:	75 cf                	jne    46a120 <fb_hBlit8to32BGR+0x60>
+;		if (z >= __fb_gfx->scanline_size) {
+  46a151:	8b 45 70             	mov    eax,DWORD PTR [rbp+0x70]
+  46a154:	eb 9a                	jmp    46a0f0 <fb_hBlit8to32BGR+0x30>
+  46a156:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
+  46a15d:	00 00 00 
+;	}
+;}
+  46a160:	5b                   	pop    rbx
+  46a161:	5d                   	pop    rbp
+  46a162:	41 5c                	pop    r12
+  46a164:	41 5d                	pop    r13
+  46a166:	c3                   	ret    
+  46a167:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+  46a16e:	00 00 
+
+000000000046a170 <fb_hBlit16to15RGB>:
+;/*:::::*/
+;static void fb_hBlit16to15RGB(unsigned char *dest, int pitch)
+;{
+;	unsigned int *d;
+;	unsigned short *s;
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46a170:	4c 8b 1d 81 bb 04 00 	mov    r11,QWORD PTR [rip+0x4bb81]        # 4b5cf8 <__fb_gfx>
+;{
+  46a177:	48 89 f8             	mov    rax,rdi
+;	unsigned int c1, c2;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;	
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46a17a:	45 8b 4b 70          	mov    r9d,DWORD PTR [r11+0x70]
+  46a17e:	41 8b 7b 24          	mov    edi,DWORD PTR [r11+0x24]
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46a182:	49 8b 53 18          	mov    rdx,QWORD PTR [r11+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  46a186:	4d 8b 53 50          	mov    r10,QWORD PTR [r11+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46a18a:	41 0f af f9          	imul   edi,r9d
+  46a18e:	85 ff                	test   edi,edi
+  46a190:	0f 84 f5 04 00 00    	je     46a68b <fb_hBlit16to15RGB+0x51b>
+;{
+  46a196:	41 57                	push   r15
+  46a198:	66 0f 6f 25 a0 9c 01 	movdqa xmm4,XMMWORD PTR [rip+0x19ca0]        # 483e40 <cursor_data+0xc0>
+  46a19f:	00 
+  46a1a0:	31 c9                	xor    ecx,ecx
+;		if (*dirty) {
+;			s = (unsigned short *)src;
+;			d = (unsigned int *)dest;
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+;				c1 = *s;
+  46a1a2:	66 0f ef d2          	pxor   xmm2,xmm2
+;{
+  46a1a6:	41 56                	push   r14
+  46a1a8:	66 0f 6f 1d a0 9c 01 	movdqa xmm3,XMMWORD PTR [rip+0x19ca0]        # 483e50 <cursor_data+0xd0>
+  46a1af:	00 
+  46a1b0:	4c 63 f6             	movsxd r14,esi
+  46a1b3:	41 55                	push   r13
+  46a1b5:	41 54                	push   r12
+  46a1b7:	55                   	push   rbp
+  46a1b8:	53                   	push   rbx
+  46a1b9:	eb 26                	jmp    46a1e1 <fb_hBlit16to15RGB+0x71>
+  46a1bb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;			if (__fb_gfx->w & 0x1) {
+;				c1 = *s;
+;				*(unsigned short *)d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11);
+;			}
+;		}
+;		z++;
+  46a1c0:	83 c1 01             	add    ecx,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46a1c3:	44 39 c9             	cmp    ecx,r9d
+  46a1c6:	7c 0d                	jl     46a1d5 <fb_hBlit16to15RGB+0x65>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  46a1c8:	49 63 4b 30          	movsxd rcx,DWORD PTR [r11+0x30]
+;			dirty++;
+  46a1cc:	49 83 c2 01          	add    r10,0x1
+;			src += __fb_gfx->pitch;
+  46a1d0:	48 01 ca             	add    rdx,rcx
+;			z = 0;
+  46a1d3:	31 c9                	xor    ecx,ecx
+;		}
+;		dest += pitch;
+  46a1d5:	4c 01 f0             	add    rax,r14
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46a1d8:	83 ef 01             	sub    edi,0x1
+  46a1db:	0f 84 87 04 00 00    	je     46a668 <fb_hBlit16to15RGB+0x4f8>
+;		if (*dirty) {
+  46a1e1:	41 80 3a 00          	cmp    BYTE PTR [r10],0x0
+  46a1e5:	74 d9                	je     46a1c0 <fb_hBlit16to15RGB+0x50>
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a1e7:	41 8b 73 20          	mov    esi,DWORD PTR [r11+0x20]
+  46a1eb:	41 89 f0             	mov    r8d,esi
+  46a1ee:	41 d1 f8             	sar    r8d,1
+  46a1f1:	0f 84 81 04 00 00    	je     46a678 <fb_hBlit16to15RGB+0x508>
+  46a1f7:	45 8d 78 ff          	lea    r15d,[r8-0x1]
+  46a1fb:	44 89 c5             	mov    ebp,r8d
+  46a1fe:	45 89 fd             	mov    r13d,r15d
+  46a201:	41 83 fd 06          	cmp    r13d,0x6
+  46a205:	0f 86 75 04 00 00    	jbe    46a680 <fb_hBlit16to15RGB+0x510>
+  46a20b:	45 89 c1             	mov    r9d,r8d
+  46a20e:	31 f6                	xor    esi,esi
+  46a210:	41 c1 e9 03          	shr    r9d,0x3
+  46a214:	49 c1 e1 05          	shl    r9,0x5
+  46a218:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+  46a21f:	00 
+;				c1 = *s;
+  46a220:	f3 0f 6f 0c 32       	movdqu xmm1,XMMWORD PTR [rdx+rsi*1]
+  46a225:	f3 0f 6f 74 32 10    	movdqu xmm6,XMMWORD PTR [rdx+rsi*1+0x10]
+  46a22b:	66 0f 6f c1          	movdqa xmm0,xmm1
+  46a22f:	66 0f 6f e9          	movdqa xmm5,xmm1
+  46a233:	66 0f 61 ce          	punpcklwd xmm1,xmm6
+  46a237:	66 0f 61 c6          	punpcklwd xmm0,xmm6
+  46a23b:	66 0f 69 ee          	punpckhwd xmm5,xmm6
+  46a23f:	66 0f 6f f8          	movdqa xmm7,xmm0
+  46a243:	66 0f 61 cd          	punpcklwd xmm1,xmm5
+  46a247:	66 0f 61 c5          	punpcklwd xmm0,xmm5
+  46a24b:	66 0f 69 fd          	punpckhwd xmm7,xmm5
+  46a24f:	66 0f 69 cf          	punpckhwd xmm1,xmm7
+  46a253:	66 0f 61 c7          	punpcklwd xmm0,xmm7
+;				c2 = *(s + 1);
+  46a257:	66 0f 6f f9          	movdqa xmm7,xmm1
+  46a25b:	66 0f 6f e9          	movdqa xmm5,xmm1
+;				c1 = *s;
+  46a25f:	66 0f 6f f0          	movdqa xmm6,xmm0
+;				c2 = *(s + 1);
+  46a263:	66 0f 61 fa          	punpcklwd xmm7,xmm2
+;				c1 = *s;
+  46a267:	66 0f 61 f2          	punpcklwd xmm6,xmm2
+;				c2 = *(s + 1);
+  46a26b:	66 0f 69 ea          	punpckhwd xmm5,xmm2
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a26f:	66 0f 6f cf          	movdqa xmm1,xmm7
+  46a273:	66 44 0f 6f c7       	movdqa xmm8,xmm7
+;				c1 = *s;
+  46a278:	66 0f 69 c2          	punpckhwd xmm0,xmm2
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a27c:	66 0f 72 d1 01       	psrld  xmm1,0x1
+  46a281:	66 41 0f 72 f0 0a    	pslld  xmm8,0xa
+  46a287:	66 0f db cc          	pand   xmm1,xmm4
+  46a28b:	66 0f 72 d7 0b       	psrld  xmm7,0xb
+  46a290:	66 44 0f db c3       	pand   xmm8,xmm3
+  46a295:	66 41 0f eb c8       	por    xmm1,xmm8
+  46a29a:	66 0f eb cf          	por    xmm1,xmm7
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a29e:	66 0f 6f fe          	movdqa xmm7,xmm6
+  46a2a2:	66 0f 72 d7 0b       	psrld  xmm7,0xb
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a2a7:	66 0f 72 f1 10       	pslld  xmm1,0x10
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a2ac:	66 0f eb cf          	por    xmm1,xmm7
+  46a2b0:	66 0f 6f fe          	movdqa xmm7,xmm6
+  46a2b4:	66 0f 72 d7 01       	psrld  xmm7,0x1
+  46a2b9:	66 0f 72 f6 0a       	pslld  xmm6,0xa
+  46a2be:	66 0f db fc          	pand   xmm7,xmm4
+  46a2c2:	66 0f db f3          	pand   xmm6,xmm3
+  46a2c6:	66 0f eb f7          	por    xmm6,xmm7
+  46a2ca:	66 0f eb ce          	por    xmm1,xmm6
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a2ce:	66 0f 6f f5          	movdqa xmm6,xmm5
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a2d2:	0f 11 0c 30          	movups XMMWORD PTR [rax+rsi*1],xmm1
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a2d6:	66 0f 6f cd          	movdqa xmm1,xmm5
+  46a2da:	66 0f 72 f6 0a       	pslld  xmm6,0xa
+  46a2df:	66 0f 72 d1 01       	psrld  xmm1,0x1
+  46a2e4:	66 0f 72 d5 0b       	psrld  xmm5,0xb
+  46a2e9:	66 0f db f3          	pand   xmm6,xmm3
+  46a2ed:	66 0f db cc          	pand   xmm1,xmm4
+  46a2f1:	66 0f eb ce          	por    xmm1,xmm6
+  46a2f5:	66 0f eb cd          	por    xmm1,xmm5
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a2f9:	66 0f 6f e8          	movdqa xmm5,xmm0
+  46a2fd:	66 0f 72 d5 0b       	psrld  xmm5,0xb
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a302:	66 0f 72 f1 10       	pslld  xmm1,0x10
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a307:	66 0f eb cd          	por    xmm1,xmm5
+  46a30b:	66 0f 6f e8          	movdqa xmm5,xmm0
+  46a30f:	66 0f 72 d5 01       	psrld  xmm5,0x1
+  46a314:	66 0f 72 f0 0a       	pslld  xmm0,0xa
+  46a319:	66 0f db ec          	pand   xmm5,xmm4
+  46a31d:	66 0f db c3          	pand   xmm0,xmm3
+  46a321:	66 0f eb c5          	por    xmm0,xmm5
+  46a325:	66 0f eb c1          	por    xmm0,xmm1
+  46a329:	0f 11 44 30 10       	movups XMMWORD PTR [rax+rsi*1+0x10],xmm0
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a32e:	48 83 c6 20          	add    rsi,0x20
+  46a332:	4c 39 ce             	cmp    rsi,r9
+  46a335:	0f 85 e5 fe ff ff    	jne    46a220 <fb_hBlit16to15RGB+0xb0>
+  46a33b:	45 89 c1             	mov    r9d,r8d
+  46a33e:	41 83 e1 f8          	and    r9d,0xfffffff8
+  46a342:	44 89 ce             	mov    esi,r9d
+  46a345:	45 29 c8             	sub    r8d,r9d
+  46a348:	48 c1 e6 02          	shl    rsi,0x2
+  46a34c:	48 8d 1c 30          	lea    rbx,[rax+rsi*1]
+  46a350:	48 01 d6             	add    rsi,rdx
+  46a353:	41 39 e9             	cmp    r9d,ebp
+  46a356:	0f 84 c1 02 00 00    	je     46a61d <fb_hBlit16to15RGB+0x4ad>
+  46a35c:	45 8d 78 ff          	lea    r15d,[r8-0x1]
+;				c2 = *(s + 1);
+  46a360:	44 0f b7 66 02       	movzx  r12d,WORD PTR [rsi+0x2]
+;				c1 = *s;
+  46a365:	0f b7 2e             	movzx  ebp,WORD PTR [rsi]
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a368:	45 89 e1             	mov    r9d,r12d
+  46a36b:	41 c1 e1 0a          	shl    r9d,0xa
+  46a36f:	41 81 e1 00 7c 00 00 	and    r9d,0x7c00
+  46a376:	44 89 4c 24 f4       	mov    DWORD PTR [rsp-0xc],r9d
+  46a37b:	45 89 e1             	mov    r9d,r12d
+  46a37e:	41 c1 ec 0b          	shr    r12d,0xb
+  46a382:	41 d1 e9             	shr    r9d,1
+  46a385:	41 81 e1 e0 03 00 00 	and    r9d,0x3e0
+  46a38c:	44 0b 4c 24 f4       	or     r9d,DWORD PTR [rsp-0xc]
+  46a391:	45 09 e1             	or     r9d,r12d
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a394:	41 89 ec             	mov    r12d,ebp
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a397:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a39b:	41 c1 e4 0a          	shl    r12d,0xa
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a39f:	44 89 4c 24 f4       	mov    DWORD PTR [rsp-0xc],r9d
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a3a4:	41 89 e9             	mov    r9d,ebp
+  46a3a7:	41 81 e4 00 7c 00 00 	and    r12d,0x7c00
+  46a3ae:	c1 ed 0b             	shr    ebp,0xb
+  46a3b1:	41 d1 e9             	shr    r9d,1
+  46a3b4:	41 81 e1 e0 03 00 00 	and    r9d,0x3e0
+  46a3bb:	45 09 e1             	or     r9d,r12d
+  46a3be:	41 09 e9             	or     r9d,ebp
+  46a3c1:	44 0b 4c 24 f4       	or     r9d,DWORD PTR [rsp-0xc]
+  46a3c6:	44 89 0b             	mov    DWORD PTR [rbx],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a3c9:	45 85 ff             	test   r15d,r15d
+  46a3cc:	0f 84 4b 02 00 00    	je     46a61d <fb_hBlit16to15RGB+0x4ad>
+;				c2 = *(s + 1);
+  46a3d2:	0f b7 6e 06          	movzx  ebp,WORD PTR [rsi+0x6]
+;				c1 = *s;
+  46a3d6:	44 0f b7 66 04       	movzx  r12d,WORD PTR [rsi+0x4]
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a3db:	41 89 e9             	mov    r9d,ebp
+  46a3de:	41 89 ef             	mov    r15d,ebp
+  46a3e1:	c1 ed 0b             	shr    ebp,0xb
+  46a3e4:	41 c1 e1 0a          	shl    r9d,0xa
+  46a3e8:	41 d1 ef             	shr    r15d,1
+  46a3eb:	41 81 e7 e0 03 00 00 	and    r15d,0x3e0
+  46a3f2:	41 81 e1 00 7c 00 00 	and    r9d,0x7c00
+  46a3f9:	45 09 f9             	or     r9d,r15d
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a3fc:	45 89 e7             	mov    r15d,r12d
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a3ff:	41 09 e9             	or     r9d,ebp
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a402:	44 89 e5             	mov    ebp,r12d
+  46a405:	41 d1 ef             	shr    r15d,1
+  46a408:	c1 e5 0a             	shl    ebp,0xa
+  46a40b:	41 81 e7 e0 03 00 00 	and    r15d,0x3e0
+  46a412:	41 c1 ec 0b          	shr    r12d,0xb
+  46a416:	81 e5 00 7c 00 00    	and    ebp,0x7c00
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a41c:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a420:	44 09 fd             	or     ebp,r15d
+  46a423:	44 09 e5             	or     ebp,r12d
+  46a426:	41 09 e9             	or     r9d,ebp
+  46a429:	44 89 4b 04          	mov    DWORD PTR [rbx+0x4],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a42d:	41 83 f8 02          	cmp    r8d,0x2
+  46a431:	0f 84 e6 01 00 00    	je     46a61d <fb_hBlit16to15RGB+0x4ad>
+;				c2 = *(s + 1);
+  46a437:	0f b7 6e 0a          	movzx  ebp,WORD PTR [rsi+0xa]
+;				c1 = *s;
+  46a43b:	44 0f b7 66 08       	movzx  r12d,WORD PTR [rsi+0x8]
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a440:	41 89 e9             	mov    r9d,ebp
+  46a443:	41 89 ef             	mov    r15d,ebp
+  46a446:	c1 ed 0b             	shr    ebp,0xb
+  46a449:	41 c1 e1 0a          	shl    r9d,0xa
+  46a44d:	41 d1 ef             	shr    r15d,1
+  46a450:	41 81 e7 e0 03 00 00 	and    r15d,0x3e0
+  46a457:	41 81 e1 00 7c 00 00 	and    r9d,0x7c00
+  46a45e:	45 09 f9             	or     r9d,r15d
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a461:	45 89 e7             	mov    r15d,r12d
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a464:	41 09 e9             	or     r9d,ebp
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a467:	44 89 e5             	mov    ebp,r12d
+  46a46a:	41 d1 ef             	shr    r15d,1
+  46a46d:	c1 e5 0a             	shl    ebp,0xa
+  46a470:	41 81 e7 e0 03 00 00 	and    r15d,0x3e0
+  46a477:	41 c1 ec 0b          	shr    r12d,0xb
+  46a47b:	81 e5 00 7c 00 00    	and    ebp,0x7c00
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a481:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a485:	44 09 fd             	or     ebp,r15d
+  46a488:	44 09 e5             	or     ebp,r12d
+  46a48b:	41 09 e9             	or     r9d,ebp
+  46a48e:	44 89 4b 08          	mov    DWORD PTR [rbx+0x8],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a492:	41 83 f8 03          	cmp    r8d,0x3
+  46a496:	0f 84 81 01 00 00    	je     46a61d <fb_hBlit16to15RGB+0x4ad>
+;				c2 = *(s + 1);
+  46a49c:	0f b7 6e 0e          	movzx  ebp,WORD PTR [rsi+0xe]
+;				c1 = *s;
+  46a4a0:	44 0f b7 66 0c       	movzx  r12d,WORD PTR [rsi+0xc]
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a4a5:	41 89 e9             	mov    r9d,ebp
+  46a4a8:	41 89 ef             	mov    r15d,ebp
+  46a4ab:	c1 ed 0b             	shr    ebp,0xb
+  46a4ae:	41 c1 e1 0a          	shl    r9d,0xa
+  46a4b2:	41 d1 ef             	shr    r15d,1
+  46a4b5:	41 81 e7 e0 03 00 00 	and    r15d,0x3e0
+  46a4bc:	41 81 e1 00 7c 00 00 	and    r9d,0x7c00
+  46a4c3:	45 09 f9             	or     r9d,r15d
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a4c6:	45 89 e7             	mov    r15d,r12d
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a4c9:	41 09 e9             	or     r9d,ebp
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a4cc:	44 89 e5             	mov    ebp,r12d
+  46a4cf:	41 d1 ef             	shr    r15d,1
+  46a4d2:	c1 e5 0a             	shl    ebp,0xa
+  46a4d5:	41 81 e7 e0 03 00 00 	and    r15d,0x3e0
+  46a4dc:	41 c1 ec 0b          	shr    r12d,0xb
+  46a4e0:	81 e5 00 7c 00 00    	and    ebp,0x7c00
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a4e6:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a4ea:	44 09 fd             	or     ebp,r15d
+  46a4ed:	44 09 e5             	or     ebp,r12d
+  46a4f0:	41 09 e9             	or     r9d,ebp
+  46a4f3:	44 89 4b 0c          	mov    DWORD PTR [rbx+0xc],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a4f7:	41 83 f8 04          	cmp    r8d,0x4
+  46a4fb:	0f 84 1c 01 00 00    	je     46a61d <fb_hBlit16to15RGB+0x4ad>
+;				c2 = *(s + 1);
+  46a501:	0f b7 6e 12          	movzx  ebp,WORD PTR [rsi+0x12]
+;				c1 = *s;
+  46a505:	44 0f b7 66 10       	movzx  r12d,WORD PTR [rsi+0x10]
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a50a:	41 89 e9             	mov    r9d,ebp
+  46a50d:	41 89 ef             	mov    r15d,ebp
+  46a510:	c1 ed 0b             	shr    ebp,0xb
+  46a513:	41 c1 e1 0a          	shl    r9d,0xa
+  46a517:	41 d1 ef             	shr    r15d,1
+  46a51a:	41 81 e7 e0 03 00 00 	and    r15d,0x3e0
+  46a521:	41 81 e1 00 7c 00 00 	and    r9d,0x7c00
+  46a528:	45 09 f9             	or     r9d,r15d
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a52b:	45 89 e7             	mov    r15d,r12d
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a52e:	41 09 e9             	or     r9d,ebp
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a531:	44 89 e5             	mov    ebp,r12d
+  46a534:	41 d1 ef             	shr    r15d,1
+  46a537:	c1 e5 0a             	shl    ebp,0xa
+  46a53a:	41 81 e7 e0 03 00 00 	and    r15d,0x3e0
+  46a541:	41 c1 ec 0b          	shr    r12d,0xb
+  46a545:	81 e5 00 7c 00 00    	and    ebp,0x7c00
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a54b:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a54f:	44 09 fd             	or     ebp,r15d
+  46a552:	44 09 e5             	or     ebp,r12d
+  46a555:	41 09 e9             	or     r9d,ebp
+  46a558:	44 89 4b 10          	mov    DWORD PTR [rbx+0x10],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a55c:	41 83 f8 05          	cmp    r8d,0x5
+  46a560:	0f 84 b7 00 00 00    	je     46a61d <fb_hBlit16to15RGB+0x4ad>
+;				c2 = *(s + 1);
+  46a566:	0f b7 6e 16          	movzx  ebp,WORD PTR [rsi+0x16]
+;				c1 = *s;
+  46a56a:	44 0f b7 66 14       	movzx  r12d,WORD PTR [rsi+0x14]
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a56f:	41 89 e9             	mov    r9d,ebp
+  46a572:	41 89 ef             	mov    r15d,ebp
+  46a575:	c1 ed 0b             	shr    ebp,0xb
+  46a578:	41 c1 e1 0a          	shl    r9d,0xa
+  46a57c:	41 d1 ef             	shr    r15d,1
+  46a57f:	41 81 e7 e0 03 00 00 	and    r15d,0x3e0
+  46a586:	41 81 e1 00 7c 00 00 	and    r9d,0x7c00
+  46a58d:	45 09 f9             	or     r9d,r15d
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a590:	45 89 e7             	mov    r15d,r12d
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a593:	41 09 e9             	or     r9d,ebp
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a596:	44 89 e5             	mov    ebp,r12d
+  46a599:	41 d1 ef             	shr    r15d,1
+  46a59c:	c1 e5 0a             	shl    ebp,0xa
+  46a59f:	41 81 e7 e0 03 00 00 	and    r15d,0x3e0
+  46a5a6:	41 c1 ec 0b          	shr    r12d,0xb
+  46a5aa:	81 e5 00 7c 00 00    	and    ebp,0x7c00
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a5b0:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a5b4:	44 09 fd             	or     ebp,r15d
+  46a5b7:	44 09 e5             	or     ebp,r12d
+  46a5ba:	41 09 e9             	or     r9d,ebp
+  46a5bd:	44 89 4b 14          	mov    DWORD PTR [rbx+0x14],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a5c1:	41 83 f8 06          	cmp    r8d,0x6
+  46a5c5:	74 56                	je     46a61d <fb_hBlit16to15RGB+0x4ad>
+;				c2 = *(s + 1);
+  46a5c7:	44 0f b7 46 1a       	movzx  r8d,WORD PTR [rsi+0x1a]
+;				c1 = *s;
+  46a5cc:	44 0f b7 4e 18       	movzx  r9d,WORD PTR [rsi+0x18]
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a5d1:	44 89 c5             	mov    ebp,r8d
+  46a5d4:	44 89 c6             	mov    esi,r8d
+  46a5d7:	41 c1 e8 0b          	shr    r8d,0xb
+  46a5db:	d1 ee                	shr    esi,1
+  46a5dd:	c1 e5 0a             	shl    ebp,0xa
+  46a5e0:	81 e5 00 7c 00 00    	and    ebp,0x7c00
+  46a5e6:	81 e6 e0 03 00 00    	and    esi,0x3e0
+  46a5ec:	09 ee                	or     esi,ebp
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a5ee:	44 89 cd             	mov    ebp,r9d
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a5f1:	44 09 c6             	or     esi,r8d
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a5f4:	45 89 c8             	mov    r8d,r9d
+  46a5f7:	c1 e5 0a             	shl    ebp,0xa
+  46a5fa:	41 d1 e8             	shr    r8d,1
+  46a5fd:	81 e5 00 7c 00 00    	and    ebp,0x7c00
+  46a603:	41 c1 e9 0b          	shr    r9d,0xb
+  46a607:	41 81 e0 e0 03 00 00 	and    r8d,0x3e0
+;				     ((((c2 << 10) & 0x7C00) | ((c2 >> 1) & 0x03E0) | (c2 >> 11)) << 16);
+  46a60e:	c1 e6 10             	shl    esi,0x10
+;				*d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11) |
+  46a611:	41 09 e8             	or     r8d,ebp
+  46a614:	45 09 c8             	or     r8d,r9d
+  46a617:	44 09 c6             	or     esi,r8d
+  46a61a:	89 73 18             	mov    DWORD PTR [rbx+0x18],esi
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a61d:	4e 8d 04 ad 04 00 00 	lea    r8,[r13*4+0x4]
+  46a624:	00 
+;			if (__fb_gfx->w & 0x1) {
+  46a625:	41 8b 73 20          	mov    esi,DWORD PTR [r11+0x20]
+  46a629:	45 8b 4b 70          	mov    r9d,DWORD PTR [r11+0x70]
+;				s += 2;
+  46a62d:	4a 8d 1c 02          	lea    rbx,[rdx+r8*1]
+;				d++;
+  46a631:	49 01 c0             	add    r8,rax
+;			if (__fb_gfx->w & 0x1) {
+  46a634:	83 e6 01             	and    esi,0x1
+  46a637:	0f 84 83 fb ff ff    	je     46a1c0 <fb_hBlit16to15RGB+0x50>
+;				c1 = *s;
+  46a63d:	0f b7 1b             	movzx  ebx,WORD PTR [rbx]
+  46a640:	89 de                	mov    esi,ebx
+;				*(unsigned short *)d = ((c1 << 10) & 0x7C00) | ((c1 >> 1) & 0x03E0) | (c1 >> 11);
+  46a642:	89 dd                	mov    ebp,ebx
+  46a644:	d1 eb                	shr    ebx,1
+  46a646:	c1 e6 0a             	shl    esi,0xa
+  46a649:	c1 ed 0b             	shr    ebp,0xb
+  46a64c:	66 81 e3 e0 03       	and    bx,0x3e0
+  46a651:	66 81 e6 00 7c       	and    si,0x7c00
+  46a656:	09 ee                	or     esi,ebp
+  46a658:	09 de                	or     esi,ebx
+  46a65a:	66 41 89 30          	mov    WORD PTR [r8],si
+  46a65e:	e9 5d fb ff ff       	jmp    46a1c0 <fb_hBlit16to15RGB+0x50>
+  46a663:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;	}
+;}
+  46a668:	5b                   	pop    rbx
+  46a669:	5d                   	pop    rbp
+  46a66a:	41 5c                	pop    r12
+  46a66c:	41 5d                	pop    r13
+  46a66e:	41 5e                	pop    r14
+  46a670:	41 5f                	pop    r15
+  46a672:	c3                   	ret    
+  46a673:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a678:	48 89 d3             	mov    rbx,rdx
+  46a67b:	49 89 c0             	mov    r8,rax
+  46a67e:	eb b4                	jmp    46a634 <fb_hBlit16to15RGB+0x4c4>
+  46a680:	48 89 d6             	mov    rsi,rdx
+  46a683:	48 89 c3             	mov    rbx,rax
+  46a686:	e9 d5 fc ff ff       	jmp    46a360 <fb_hBlit16to15RGB+0x1f0>
+  46a68b:	c3                   	ret    
+  46a68c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+
+000000000046a690 <fb_hBlit16to15BGR>:
+;/*:::::*/
+;static void fb_hBlit16to15BGR(unsigned char *dest, int pitch)
+;{
+;	unsigned int *d;
+;	unsigned short *s;
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46a690:	4c 8b 1d 61 b6 04 00 	mov    r11,QWORD PTR [rip+0x4b661]        # 4b5cf8 <__fb_gfx>
+;{
+  46a697:	48 89 fa             	mov    rdx,rdi
+;	unsigned int c1, c2;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;	
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46a69a:	41 8b 43 70          	mov    eax,DWORD PTR [r11+0x70]
+  46a69e:	41 8b 7b 24          	mov    edi,DWORD PTR [r11+0x24]
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46a6a2:	49 8b 4b 18          	mov    rcx,QWORD PTR [r11+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  46a6a6:	4d 8b 53 50          	mov    r10,QWORD PTR [r11+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46a6aa:	0f af f8             	imul   edi,eax
+  46a6ad:	85 ff                	test   edi,edi
+  46a6af:	0f 84 ce 03 00 00    	je     46aa83 <fb_hBlit16to15BGR+0x3f3>
+;{
+  46a6b5:	41 57                	push   r15
+  46a6b7:	66 0f 6f 2d 21 7c 01 	movdqa xmm5,XMMWORD PTR [rip+0x17c21]        # 4822e0 <_IO_stdin_used+0x52e0>
+  46a6be:	00 
+;		if (*dirty) {
+;			s = (unsigned short *)src;
+;			d = (unsigned int *)dest;
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+;				c1 = *s;
+;				c2 = *(s + 1);
+  46a6bf:	66 0f ef db          	pxor   xmm3,xmm3
+;{
+  46a6c3:	41 56                	push   r14
+  46a6c5:	66 0f 6f 25 93 97 01 	movdqa xmm4,XMMWORD PTR [rip+0x19793]        # 483e60 <cursor_data+0xe0>
+  46a6cc:	00 
+  46a6cd:	41 55                	push   r13
+  46a6cf:	41 54                	push   r12
+  46a6d1:	55                   	push   rbp
+  46a6d2:	53                   	push   rbx
+  46a6d3:	48 63 de             	movsxd rbx,esi
+  46a6d6:	31 f6                	xor    esi,esi
+  46a6d8:	eb 26                	jmp    46a700 <fb_hBlit16to15BGR+0x70>
+  46a6da:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+;			if (__fb_gfx->w & 0x1) {
+;				c1 = *s;
+;				*(unsigned short *)d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0);
+;			}
+;		}
+;		z++;
+  46a6e0:	83 c6 01             	add    esi,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46a6e3:	39 c6                	cmp    esi,eax
+  46a6e5:	7c 0d                	jl     46a6f4 <fb_hBlit16to15BGR+0x64>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  46a6e7:	49 63 73 30          	movsxd rsi,DWORD PTR [r11+0x30]
+;			dirty++;
+  46a6eb:	49 83 c2 01          	add    r10,0x1
+;			src += __fb_gfx->pitch;
+  46a6ef:	48 01 f1             	add    rcx,rsi
+;			z = 0;
+  46a6f2:	31 f6                	xor    esi,esi
+;		}
+;		dest += pitch;
+  46a6f4:	48 01 da             	add    rdx,rbx
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46a6f7:	83 ef 01             	sub    edi,0x1
+  46a6fa:	0f 84 60 03 00 00    	je     46aa60 <fb_hBlit16to15BGR+0x3d0>
+;		if (*dirty) {
+  46a700:	41 80 3a 00          	cmp    BYTE PTR [r10],0x0
+  46a704:	74 da                	je     46a6e0 <fb_hBlit16to15BGR+0x50>
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a706:	45 8b 4b 20          	mov    r9d,DWORD PTR [r11+0x20]
+  46a70a:	45 89 c8             	mov    r8d,r9d
+  46a70d:	41 d1 f8             	sar    r8d,1
+  46a710:	0f 84 5a 03 00 00    	je     46aa70 <fb_hBlit16to15BGR+0x3e0>
+  46a716:	45 8d 70 ff          	lea    r14d,[r8-0x1]
+  46a71a:	45 89 c4             	mov    r12d,r8d
+  46a71d:	44 89 f5             	mov    ebp,r14d
+  46a720:	83 fd 06             	cmp    ebp,0x6
+  46a723:	0f 86 4f 03 00 00    	jbe    46aa78 <fb_hBlit16to15BGR+0x3e8>
+  46a729:	45 89 c1             	mov    r9d,r8d
+  46a72c:	31 c0                	xor    eax,eax
+  46a72e:	41 c1 e9 03          	shr    r9d,0x3
+  46a732:	49 c1 e1 05          	shl    r9,0x5
+  46a736:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
+  46a73d:	00 00 00 
+;				c1 = *s;
+  46a740:	f3 0f 6f 04 01       	movdqu xmm0,XMMWORD PTR [rcx+rax*1]
+  46a745:	f3 0f 6f 74 01 10    	movdqu xmm6,XMMWORD PTR [rcx+rax*1+0x10]
+  46a74b:	66 0f 6f c8          	movdqa xmm1,xmm0
+  46a74f:	66 0f 6f d0          	movdqa xmm2,xmm0
+  46a753:	66 0f 61 c6          	punpcklwd xmm0,xmm6
+  46a757:	66 0f 61 ce          	punpcklwd xmm1,xmm6
+  46a75b:	66 0f 69 d6          	punpckhwd xmm2,xmm6
+  46a75f:	66 0f 6f f9          	movdqa xmm7,xmm1
+  46a763:	66 0f 61 c2          	punpcklwd xmm0,xmm2
+  46a767:	66 0f 61 ca          	punpcklwd xmm1,xmm2
+  46a76b:	66 0f 69 fa          	punpckhwd xmm7,xmm2
+  46a76f:	66 0f 69 c7          	punpckhwd xmm0,xmm7
+  46a773:	66 0f 61 cf          	punpcklwd xmm1,xmm7
+;				c2 = *(s + 1);
+  46a777:	66 0f 6f d0          	movdqa xmm2,xmm0
+  46a77b:	66 0f 6f f8          	movdqa xmm7,xmm0
+  46a77f:	66 0f 6f f1          	movdqa xmm6,xmm1
+  46a783:	66 0f db fd          	pand   xmm7,xmm5
+  46a787:	66 0f 61 d3          	punpcklwd xmm2,xmm3
+  46a78b:	66 0f 69 c3          	punpckhwd xmm0,xmm3
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a78f:	66 44 0f 6f c7       	movdqa xmm8,xmm7
+  46a794:	66 0f 72 d2 01       	psrld  xmm2,0x1
+  46a799:	66 0f db f5          	pand   xmm6,xmm5
+  46a79d:	66 44 0f 61 c3       	punpcklwd xmm8,xmm3
+  46a7a2:	66 0f db d4          	pand   xmm2,xmm4
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a7a6:	66 44 0f 6f ce       	movdqa xmm9,xmm6
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a7ab:	66 41 0f eb d0       	por    xmm2,xmm8
+;				c1 = *s;
+  46a7b0:	66 44 0f 6f c1       	movdqa xmm8,xmm1
+  46a7b5:	66 0f 69 cb          	punpckhwd xmm1,xmm3
+  46a7b9:	66 44 0f 61 c3       	punpcklwd xmm8,xmm3
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a7be:	66 0f 72 d0 01       	psrld  xmm0,0x1
+  46a7c3:	66 0f 69 fb          	punpckhwd xmm7,xmm3
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a7c7:	66 41 0f 72 d0 01    	psrld  xmm8,0x1
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a7cd:	66 0f db c4          	pand   xmm0,xmm4
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a7d1:	66 44 0f 61 cb       	punpcklwd xmm9,xmm3
+  46a7d6:	66 0f 72 d1 01       	psrld  xmm1,0x1
+  46a7db:	66 44 0f db c4       	pand   xmm8,xmm4
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a7e0:	66 0f eb c7          	por    xmm0,xmm7
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a7e4:	66 0f db cc          	pand   xmm1,xmm4
+  46a7e8:	66 0f 69 f3          	punpckhwd xmm6,xmm3
+  46a7ec:	66 45 0f eb c1       	por    xmm8,xmm9
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a7f1:	66 0f 72 f2 10       	pslld  xmm2,0x10
+  46a7f6:	66 0f 72 f0 10       	pslld  xmm0,0x10
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a7fb:	66 0f eb ce          	por    xmm1,xmm6
+  46a7ff:	66 41 0f eb d0       	por    xmm2,xmm8
+  46a804:	66 0f eb c1          	por    xmm0,xmm1
+  46a808:	0f 11 14 02          	movups XMMWORD PTR [rdx+rax*1],xmm2
+  46a80c:	0f 11 44 02 10       	movups XMMWORD PTR [rdx+rax*1+0x10],xmm0
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a811:	48 83 c0 20          	add    rax,0x20
+  46a815:	4c 39 c8             	cmp    rax,r9
+  46a818:	0f 85 22 ff ff ff    	jne    46a740 <fb_hBlit16to15BGR+0xb0>
+  46a81e:	45 89 c1             	mov    r9d,r8d
+  46a821:	41 83 e1 f8          	and    r9d,0xfffffff8
+  46a825:	44 89 c8             	mov    eax,r9d
+  46a828:	45 29 c8             	sub    r8d,r9d
+  46a82b:	48 c1 e0 02          	shl    rax,0x2
+  46a82f:	4c 8d 2c 02          	lea    r13,[rdx+rax*1]
+  46a833:	48 01 c8             	add    rax,rcx
+  46a836:	45 39 e1             	cmp    r9d,r12d
+  46a839:	0f 84 dd 01 00 00    	je     46aa1c <fb_hBlit16to15BGR+0x38c>
+  46a83f:	45 8d 70 ff          	lea    r14d,[r8-0x1]
+;				c2 = *(s + 1);
+  46a843:	44 0f b7 60 02       	movzx  r12d,WORD PTR [rax+0x2]
+;				c1 = *s;
+  46a848:	44 0f b7 38          	movzx  r15d,WORD PTR [rax]
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a84c:	45 89 e1             	mov    r9d,r12d
+  46a84f:	41 83 e4 1f          	and    r12d,0x1f
+  46a853:	41 d1 e9             	shr    r9d,1
+  46a856:	41 81 e1 e0 7f 00 00 	and    r9d,0x7fe0
+  46a85d:	45 09 e1             	or     r9d,r12d
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a860:	45 89 fc             	mov    r12d,r15d
+  46a863:	41 83 e7 1f          	and    r15d,0x1f
+  46a867:	41 d1 ec             	shr    r12d,1
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a86a:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a86e:	41 81 e4 e0 7f 00 00 	and    r12d,0x7fe0
+  46a875:	45 09 fc             	or     r12d,r15d
+  46a878:	45 09 e1             	or     r9d,r12d
+  46a87b:	45 89 4d 00          	mov    DWORD PTR [r13+0x0],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a87f:	45 85 f6             	test   r14d,r14d
+  46a882:	0f 84 94 01 00 00    	je     46aa1c <fb_hBlit16to15BGR+0x38c>
+;				c2 = *(s + 1);
+  46a888:	44 0f b7 60 06       	movzx  r12d,WORD PTR [rax+0x6]
+;				c1 = *s;
+  46a88d:	44 0f b7 70 04       	movzx  r14d,WORD PTR [rax+0x4]
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a892:	45 89 e1             	mov    r9d,r12d
+  46a895:	41 83 e4 1f          	and    r12d,0x1f
+  46a899:	41 d1 e9             	shr    r9d,1
+  46a89c:	41 81 e1 e0 7f 00 00 	and    r9d,0x7fe0
+  46a8a3:	45 09 e1             	or     r9d,r12d
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a8a6:	45 89 f4             	mov    r12d,r14d
+  46a8a9:	41 83 e6 1f          	and    r14d,0x1f
+  46a8ad:	41 d1 ec             	shr    r12d,1
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a8b0:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a8b4:	41 81 e4 e0 7f 00 00 	and    r12d,0x7fe0
+  46a8bb:	45 09 f4             	or     r12d,r14d
+  46a8be:	45 09 e1             	or     r9d,r12d
+  46a8c1:	45 89 4d 04          	mov    DWORD PTR [r13+0x4],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a8c5:	41 83 f8 02          	cmp    r8d,0x2
+  46a8c9:	0f 84 4d 01 00 00    	je     46aa1c <fb_hBlit16to15BGR+0x38c>
+;				c2 = *(s + 1);
+  46a8cf:	44 0f b7 60 0a       	movzx  r12d,WORD PTR [rax+0xa]
+;				c1 = *s;
+  46a8d4:	44 0f b7 70 08       	movzx  r14d,WORD PTR [rax+0x8]
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a8d9:	45 89 e1             	mov    r9d,r12d
+  46a8dc:	41 83 e4 1f          	and    r12d,0x1f
+  46a8e0:	41 d1 e9             	shr    r9d,1
+  46a8e3:	41 81 e1 e0 7f 00 00 	and    r9d,0x7fe0
+  46a8ea:	45 09 e1             	or     r9d,r12d
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a8ed:	45 89 f4             	mov    r12d,r14d
+  46a8f0:	41 83 e6 1f          	and    r14d,0x1f
+  46a8f4:	41 d1 ec             	shr    r12d,1
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a8f7:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a8fb:	41 81 e4 e0 7f 00 00 	and    r12d,0x7fe0
+  46a902:	45 09 f4             	or     r12d,r14d
+  46a905:	45 09 e1             	or     r9d,r12d
+  46a908:	45 89 4d 08          	mov    DWORD PTR [r13+0x8],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a90c:	41 83 f8 03          	cmp    r8d,0x3
+  46a910:	0f 84 06 01 00 00    	je     46aa1c <fb_hBlit16to15BGR+0x38c>
+;				c2 = *(s + 1);
+  46a916:	44 0f b7 60 0e       	movzx  r12d,WORD PTR [rax+0xe]
+;				c1 = *s;
+  46a91b:	44 0f b7 70 0c       	movzx  r14d,WORD PTR [rax+0xc]
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a920:	45 89 e1             	mov    r9d,r12d
+  46a923:	41 83 e4 1f          	and    r12d,0x1f
+  46a927:	41 d1 e9             	shr    r9d,1
+  46a92a:	41 81 e1 e0 7f 00 00 	and    r9d,0x7fe0
+  46a931:	45 09 e1             	or     r9d,r12d
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a934:	45 89 f4             	mov    r12d,r14d
+  46a937:	41 83 e6 1f          	and    r14d,0x1f
+  46a93b:	41 d1 ec             	shr    r12d,1
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a93e:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a942:	41 81 e4 e0 7f 00 00 	and    r12d,0x7fe0
+  46a949:	45 09 f4             	or     r12d,r14d
+  46a94c:	45 09 e1             	or     r9d,r12d
+  46a94f:	45 89 4d 0c          	mov    DWORD PTR [r13+0xc],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a953:	41 83 f8 04          	cmp    r8d,0x4
+  46a957:	0f 84 bf 00 00 00    	je     46aa1c <fb_hBlit16to15BGR+0x38c>
+;				c2 = *(s + 1);
+  46a95d:	44 0f b7 60 12       	movzx  r12d,WORD PTR [rax+0x12]
+;				c1 = *s;
+  46a962:	44 0f b7 70 10       	movzx  r14d,WORD PTR [rax+0x10]
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a967:	45 89 e1             	mov    r9d,r12d
+  46a96a:	41 83 e4 1f          	and    r12d,0x1f
+  46a96e:	41 d1 e9             	shr    r9d,1
+  46a971:	41 81 e1 e0 7f 00 00 	and    r9d,0x7fe0
+  46a978:	45 09 e1             	or     r9d,r12d
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a97b:	45 89 f4             	mov    r12d,r14d
+  46a97e:	41 83 e6 1f          	and    r14d,0x1f
+  46a982:	41 d1 ec             	shr    r12d,1
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a985:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a989:	41 81 e4 e0 7f 00 00 	and    r12d,0x7fe0
+  46a990:	45 09 f4             	or     r12d,r14d
+  46a993:	45 09 e1             	or     r9d,r12d
+  46a996:	45 89 4d 10          	mov    DWORD PTR [r13+0x10],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a99a:	41 83 f8 05          	cmp    r8d,0x5
+  46a99e:	74 7c                	je     46aa1c <fb_hBlit16to15BGR+0x38c>
+;				c2 = *(s + 1);
+  46a9a0:	44 0f b7 60 16       	movzx  r12d,WORD PTR [rax+0x16]
+;				c1 = *s;
+  46a9a5:	44 0f b7 70 14       	movzx  r14d,WORD PTR [rax+0x14]
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a9aa:	45 89 e1             	mov    r9d,r12d
+  46a9ad:	41 83 e4 1f          	and    r12d,0x1f
+  46a9b1:	41 d1 e9             	shr    r9d,1
+  46a9b4:	41 81 e1 e0 7f 00 00 	and    r9d,0x7fe0
+  46a9bb:	45 09 e1             	or     r9d,r12d
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a9be:	45 89 f4             	mov    r12d,r14d
+  46a9c1:	41 83 e6 1f          	and    r14d,0x1f
+  46a9c5:	41 d1 ec             	shr    r12d,1
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a9c8:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a9cc:	41 81 e4 e0 7f 00 00 	and    r12d,0x7fe0
+  46a9d3:	45 09 f4             	or     r12d,r14d
+  46a9d6:	45 09 e1             	or     r9d,r12d
+  46a9d9:	45 89 4d 14          	mov    DWORD PTR [r13+0x14],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46a9dd:	41 83 f8 06          	cmp    r8d,0x6
+  46a9e1:	74 39                	je     46aa1c <fb_hBlit16to15BGR+0x38c>
+;				c2 = *(s + 1);
+  46a9e3:	44 0f b7 40 1a       	movzx  r8d,WORD PTR [rax+0x1a]
+;				c1 = *s;
+  46a9e8:	44 0f b7 48 18       	movzx  r9d,WORD PTR [rax+0x18]
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46a9ed:	44 89 c0             	mov    eax,r8d
+  46a9f0:	41 83 e0 1f          	and    r8d,0x1f
+  46a9f4:	d1 e8                	shr    eax,1
+  46a9f6:	25 e0 7f 00 00       	and    eax,0x7fe0
+  46a9fb:	44 09 c0             	or     eax,r8d
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46a9fe:	45 89 c8             	mov    r8d,r9d
+  46aa01:	41 83 e1 1f          	and    r9d,0x1f
+  46aa05:	41 d1 e8             	shr    r8d,1
+;				     (((c2 & 0x001F) | ((c2 >> 1) & 0x7FE0)) << 16);
+  46aa08:	c1 e0 10             	shl    eax,0x10
+;				*d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0) |
+  46aa0b:	41 81 e0 e0 7f 00 00 	and    r8d,0x7fe0
+  46aa12:	45 09 c8             	or     r8d,r9d
+  46aa15:	44 09 c0             	or     eax,r8d
+  46aa18:	41 89 45 18          	mov    DWORD PTR [r13+0x18],eax
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46aa1c:	48 8d 04 ad 04 00 00 	lea    rax,[rbp*4+0x4]
+  46aa23:	00 
+;			if (__fb_gfx->w & 0x1) {
+  46aa24:	45 8b 4b 20          	mov    r9d,DWORD PTR [r11+0x20]
+;				s += 2;
+  46aa28:	4c 8d 04 01          	lea    r8,[rcx+rax*1]
+;				d++;
+  46aa2c:	48 8d 2c 02          	lea    rbp,[rdx+rax*1]
+  46aa30:	41 8b 43 70          	mov    eax,DWORD PTR [r11+0x70]
+;			if (__fb_gfx->w & 0x1) {
+  46aa34:	41 83 e1 01          	and    r9d,0x1
+  46aa38:	0f 84 a2 fc ff ff    	je     46a6e0 <fb_hBlit16to15BGR+0x50>
+;				c1 = *s;
+  46aa3e:	45 0f b7 08          	movzx  r9d,WORD PTR [r8]
+;				*(unsigned short *)d = (c1 & 0x001F) | ((c1 >> 1) & 0x7FE0);
+  46aa42:	45 89 c8             	mov    r8d,r9d
+  46aa45:	41 83 e1 1f          	and    r9d,0x1f
+  46aa49:	66 41 d1 e8          	shr    r8w,1
+  46aa4d:	66 41 81 e0 e0 7f    	and    r8w,0x7fe0
+  46aa53:	45 09 c8             	or     r8d,r9d
+  46aa56:	66 44 89 45 00       	mov    WORD PTR [rbp+0x0],r8w
+  46aa5b:	e9 80 fc ff ff       	jmp    46a6e0 <fb_hBlit16to15BGR+0x50>
+;	}
+;}
+  46aa60:	5b                   	pop    rbx
+  46aa61:	5d                   	pop    rbp
+  46aa62:	41 5c                	pop    r12
+  46aa64:	41 5d                	pop    r13
+  46aa66:	41 5e                	pop    r14
+  46aa68:	41 5f                	pop    r15
+  46aa6a:	c3                   	ret    
+  46aa6b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46aa70:	49 89 c8             	mov    r8,rcx
+  46aa73:	48 89 d5             	mov    rbp,rdx
+  46aa76:	eb bc                	jmp    46aa34 <fb_hBlit16to15BGR+0x3a4>
+  46aa78:	48 89 c8             	mov    rax,rcx
+  46aa7b:	49 89 d5             	mov    r13,rdx
+  46aa7e:	e9 c0 fd ff ff       	jmp    46a843 <fb_hBlit16to15BGR+0x1b3>
+  46aa83:	c3                   	ret    
+  46aa84:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
+  46aa8b:	00 00 00 00 
+  46aa8f:	90                   	nop
+
+000000000046aa90 <fb_hBlit16to16RGB>:
+;
+;
+;/*:::::*/
+;static void fb_hBlit16to16RGB(unsigned char *dest, int pitch)
+;{
+  46aa90:	41 57                	push   r15
+;	unsigned int *d;
+;	unsigned short *s;
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46aa92:	4c 8b 3d 5f b2 04 00 	mov    r15,QWORD PTR [rip+0x4b25f]        # 4b5cf8 <__fb_gfx>
+;{
+  46aa99:	48 89 f8             	mov    rax,rdi
+  46aa9c:	41 56                	push   r14
+  46aa9e:	4c 63 f6             	movsxd r14,esi
+  46aaa1:	41 55                	push   r13
+  46aaa3:	41 54                	push   r12
+  46aaa5:	55                   	push   rbp
+  46aaa6:	53                   	push   rbx
+;	unsigned int c1, c2;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;	
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46aaa7:	41 8b 77 70          	mov    esi,DWORD PTR [r15+0x70]
+  46aaab:	41 8b 7f 24          	mov    edi,DWORD PTR [r15+0x24]
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46aaaf:	49 8b 57 18          	mov    rdx,QWORD PTR [r15+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  46aab3:	4d 8b 57 50          	mov    r10,QWORD PTR [r15+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46aab7:	0f af fe             	imul   edi,esi
+  46aaba:	85 ff                	test   edi,edi
+  46aabc:	0f 84 6e 04 00 00    	je     46af30 <fb_hBlit16to16RGB+0x4a0>
+  46aac2:	66 0f 6f 25 e6 77 01 	movdqa xmm4,XMMWORD PTR [rip+0x177e6]        # 4822b0 <_IO_stdin_used+0x52b0>
+  46aac9:	00 
+  46aaca:	66 0f 6f 1d 9e 93 01 	movdqa xmm3,XMMWORD PTR [rip+0x1939e]        # 483e70 <cursor_data+0xf0>
+  46aad1:	00 
+  46aad2:	31 c9                	xor    ecx,ecx
+;		if (*dirty) {
+;			s = (unsigned short *)src;
+;			d = (unsigned int *)dest;
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+;				c1 = *s;
+  46aad4:	66 0f ef d2          	pxor   xmm2,xmm2
+  46aad8:	eb 26                	jmp    46ab00 <fb_hBlit16to16RGB+0x70>
+  46aada:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+;			if (__fb_gfx->w & 0x1) {
+;				c1 = *s;
+;				*(unsigned short *)d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11);
+;			}
+;		}
+;		z++;
+  46aae0:	83 c1 01             	add    ecx,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46aae3:	39 f1                	cmp    ecx,esi
+  46aae5:	7c 0d                	jl     46aaf4 <fb_hBlit16to16RGB+0x64>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  46aae7:	49 63 4f 30          	movsxd rcx,DWORD PTR [r15+0x30]
+;			dirty++;
+  46aaeb:	49 83 c2 01          	add    r10,0x1
+;			src += __fb_gfx->pitch;
+  46aaef:	48 01 ca             	add    rdx,rcx
+;			z = 0;
+  46aaf2:	31 c9                	xor    ecx,ecx
+;		}
+;		dest += pitch;
+  46aaf4:	4c 01 f0             	add    rax,r14
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46aaf7:	83 ef 01             	sub    edi,0x1
+  46aafa:	0f 84 30 04 00 00    	je     46af30 <fb_hBlit16to16RGB+0x4a0>
+;		if (*dirty) {
+  46ab00:	41 80 3a 00          	cmp    BYTE PTR [r10],0x0
+  46ab04:	74 da                	je     46aae0 <fb_hBlit16to16RGB+0x50>
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46ab06:	45 8b 4f 20          	mov    r9d,DWORD PTR [r15+0x20]
+  46ab0a:	45 89 c8             	mov    r8d,r9d
+  46ab0d:	41 d1 f8             	sar    r8d,1
+  46ab10:	0f 84 2a 04 00 00    	je     46af40 <fb_hBlit16to16RGB+0x4b0>
+  46ab16:	45 8d 68 ff          	lea    r13d,[r8-0x1]
+  46ab1a:	45 89 c3             	mov    r11d,r8d
+  46ab1d:	44 89 6c 24 f0       	mov    DWORD PTR [rsp-0x10],r13d
+  46ab22:	41 83 fd 06          	cmp    r13d,0x6
+  46ab26:	0f 86 1c 04 00 00    	jbe    46af48 <fb_hBlit16to16RGB+0x4b8>
+  46ab2c:	45 89 c1             	mov    r9d,r8d
+  46ab2f:	31 f6                	xor    esi,esi
+  46ab31:	41 c1 e9 03          	shr    r9d,0x3
+  46ab35:	49 c1 e1 05          	shl    r9,0x5
+  46ab39:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;				c1 = *s;
+  46ab40:	f3 0f 6f 0c 32       	movdqu xmm1,XMMWORD PTR [rdx+rsi*1]
+  46ab45:	f3 0f 6f 74 32 10    	movdqu xmm6,XMMWORD PTR [rdx+rsi*1+0x10]
+  46ab4b:	66 0f 6f c1          	movdqa xmm0,xmm1
+  46ab4f:	66 0f 6f e9          	movdqa xmm5,xmm1
+  46ab53:	66 0f 61 ce          	punpcklwd xmm1,xmm6
+  46ab57:	66 0f 61 c6          	punpcklwd xmm0,xmm6
+  46ab5b:	66 0f 69 ee          	punpckhwd xmm5,xmm6
+  46ab5f:	66 0f 6f f8          	movdqa xmm7,xmm0
+  46ab63:	66 0f 61 cd          	punpcklwd xmm1,xmm5
+  46ab67:	66 0f 61 c5          	punpcklwd xmm0,xmm5
+  46ab6b:	66 0f 69 fd          	punpckhwd xmm7,xmm5
+  46ab6f:	66 0f 69 cf          	punpckhwd xmm1,xmm7
+  46ab73:	66 0f 61 c7          	punpcklwd xmm0,xmm7
+;				c2 = *(s + 1);
+  46ab77:	66 44 0f 6f c9       	movdqa xmm9,xmm1
+  46ab7c:	66 0f 6f f1          	movdqa xmm6,xmm1
+  46ab80:	66 0f 6f f9          	movdqa xmm7,xmm1
+  46ab84:	66 44 0f 61 ca       	punpcklwd xmm9,xmm2
+  46ab89:	66 0f db f4          	pand   xmm6,xmm4
+;				c1 = *s;
+  46ab8d:	66 44 0f 6f c0       	movdqa xmm8,xmm0
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ab92:	66 41 0f 6f c9       	movdqa xmm1,xmm9
+  46ab97:	66 44 0f 6f d6       	movdqa xmm10,xmm6
+;				c1 = *s;
+  46ab9c:	66 44 0f 61 c2       	punpcklwd xmm8,xmm2
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46aba1:	66 0f 72 d1 0b       	psrld  xmm1,0xb
+  46aba6:	66 44 0f 61 d2       	punpcklwd xmm10,xmm2
+;				c1 = *s;
+  46abab:	66 0f 6f e8          	movdqa xmm5,xmm0
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46abaf:	66 41 0f 72 f1 0b    	pslld  xmm9,0xb
+  46abb5:	66 41 0f eb ca       	por    xmm1,xmm10
+  46abba:	66 0f db c4          	pand   xmm0,xmm4
+  46abbe:	66 44 0f db cb       	pand   xmm9,xmm3
+;				c2 = *(s + 1);
+  46abc3:	66 0f 69 fa          	punpckhwd xmm7,xmm2
+;				c1 = *s;
+  46abc7:	66 0f 69 ea          	punpckhwd xmm5,xmm2
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46abcb:	66 41 0f eb c9       	por    xmm1,xmm9
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46abd0:	66 45 0f 6f c8       	movdqa xmm9,xmm8
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46abd5:	66 0f 69 f2          	punpckhwd xmm6,xmm2
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46abd9:	66 41 0f 72 f1 0b    	pslld  xmm9,0xb
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46abdf:	66 0f 72 f1 10       	pslld  xmm1,0x10
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46abe4:	66 44 0f db cb       	pand   xmm9,xmm3
+  46abe9:	66 41 0f 72 d0 0b    	psrld  xmm8,0xb
+  46abef:	66 41 0f eb c9       	por    xmm1,xmm9
+  46abf4:	66 44 0f 6f c8       	movdqa xmm9,xmm0
+  46abf9:	66 0f 69 c2          	punpckhwd xmm0,xmm2
+  46abfd:	66 44 0f 61 ca       	punpcklwd xmm9,xmm2
+  46ac02:	66 45 0f eb c1       	por    xmm8,xmm9
+  46ac07:	66 41 0f eb c8       	por    xmm1,xmm8
+  46ac0c:	0f 11 0c 30          	movups XMMWORD PTR [rax+rsi*1],xmm1
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ac10:	66 0f 6f cf          	movdqa xmm1,xmm7
+  46ac14:	66 0f 72 f7 0b       	pslld  xmm7,0xb
+  46ac19:	66 0f 72 d1 0b       	psrld  xmm1,0xb
+  46ac1e:	66 0f db fb          	pand   xmm7,xmm3
+  46ac22:	66 0f eb ce          	por    xmm1,xmm6
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ac26:	66 0f 6f f5          	movdqa xmm6,xmm5
+  46ac2a:	66 0f 72 f6 0b       	pslld  xmm6,0xb
+  46ac2f:	66 0f 72 d5 0b       	psrld  xmm5,0xb
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ac34:	66 0f eb cf          	por    xmm1,xmm7
+  46ac38:	66 0f 72 f1 10       	pslld  xmm1,0x10
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ac3d:	66 0f db f3          	pand   xmm6,xmm3
+  46ac41:	66 0f eb e8          	por    xmm5,xmm0
+  46ac45:	66 0f eb ce          	por    xmm1,xmm6
+  46ac49:	66 0f 6f c1          	movdqa xmm0,xmm1
+  46ac4d:	66 0f eb c5          	por    xmm0,xmm5
+  46ac51:	0f 11 44 30 10       	movups XMMWORD PTR [rax+rsi*1+0x10],xmm0
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46ac56:	48 83 c6 20          	add    rsi,0x20
+  46ac5a:	4c 39 ce             	cmp    rsi,r9
+  46ac5d:	0f 85 dd fe ff ff    	jne    46ab40 <fb_hBlit16to16RGB+0xb0>
+  46ac63:	45 89 c1             	mov    r9d,r8d
+  46ac66:	41 83 e1 f8          	and    r9d,0xfffffff8
+  46ac6a:	44 89 ce             	mov    esi,r9d
+  46ac6d:	45 29 c8             	sub    r8d,r9d
+  46ac70:	48 c1 e6 02          	shl    rsi,0x2
+  46ac74:	48 8d 1c 30          	lea    rbx,[rax+rsi*1]
+  46ac78:	48 01 d6             	add    rsi,rdx
+  46ac7b:	45 39 d9             	cmp    r9d,r11d
+  46ac7e:	0f 84 56 02 00 00    	je     46aeda <fb_hBlit16to16RGB+0x44a>
+  46ac84:	45 8d 68 ff          	lea    r13d,[r8-0x1]
+;				c2 = *(s + 1);
+  46ac88:	44 0f b7 4e 02       	movzx  r9d,WORD PTR [rsi+0x2]
+;				c1 = *s;
+  46ac8d:	44 0f b7 1e          	movzx  r11d,WORD PTR [rsi]
+;				c2 = *(s + 1);
+  46ac91:	45 89 cc             	mov    r12d,r9d
+;				c1 = *s;
+  46ac94:	44 89 dd             	mov    ebp,r11d
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ac97:	41 81 e4 e0 07 00 00 	and    r12d,0x7e0
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ac9e:	81 e5 e0 07 00 00    	and    ebp,0x7e0
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46aca4:	44 89 64 24 f4       	mov    DWORD PTR [rsp-0xc],r12d
+  46aca9:	45 89 cc             	mov    r12d,r9d
+  46acac:	41 c1 e1 0b          	shl    r9d,0xb
+  46acb0:	41 c1 ec 0b          	shr    r12d,0xb
+  46acb4:	44 0b 64 24 f4       	or     r12d,DWORD PTR [rsp-0xc]
+  46acb9:	45 09 e1             	or     r9d,r12d
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46acbc:	45 89 dc             	mov    r12d,r11d
+  46acbf:	41 c1 e3 0b          	shl    r11d,0xb
+  46acc3:	41 c1 ec 0b          	shr    r12d,0xb
+  46acc7:	45 0f b7 db          	movzx  r11d,r11w
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46accb:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46accf:	41 09 ec             	or     r12d,ebp
+  46acd2:	45 09 dc             	or     r12d,r11d
+  46acd5:	45 09 e1             	or     r9d,r12d
+  46acd8:	44 89 0b             	mov    DWORD PTR [rbx],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46acdb:	45 85 ed             	test   r13d,r13d
+  46acde:	0f 84 f6 01 00 00    	je     46aeda <fb_hBlit16to16RGB+0x44a>
+;				c2 = *(s + 1);
+  46ace4:	44 0f b7 4e 06       	movzx  r9d,WORD PTR [rsi+0x6]
+;				c1 = *s;
+  46ace9:	0f b7 6e 04          	movzx  ebp,WORD PTR [rsi+0x4]
+;				c2 = *(s + 1);
+  46aced:	45 89 cc             	mov    r12d,r9d
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46acf0:	45 89 cd             	mov    r13d,r9d
+;				c1 = *s;
+  46acf3:	41 89 eb             	mov    r11d,ebp
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46acf6:	41 c1 e1 0b          	shl    r9d,0xb
+  46acfa:	41 81 e4 e0 07 00 00 	and    r12d,0x7e0
+  46ad01:	41 c1 ed 0b          	shr    r13d,0xb
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ad05:	41 81 e3 e0 07 00 00 	and    r11d,0x7e0
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ad0c:	45 09 e5             	or     r13d,r12d
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ad0f:	41 89 ec             	mov    r12d,ebp
+  46ad12:	c1 e5 0b             	shl    ebp,0xb
+  46ad15:	41 c1 ec 0b          	shr    r12d,0xb
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ad19:	45 09 e9             	or     r9d,r13d
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ad1c:	0f b7 ed             	movzx  ebp,bp
+  46ad1f:	45 09 e3             	or     r11d,r12d
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ad22:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ad26:	41 09 eb             	or     r11d,ebp
+  46ad29:	45 09 d9             	or     r9d,r11d
+  46ad2c:	44 89 4b 04          	mov    DWORD PTR [rbx+0x4],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46ad30:	41 83 f8 02          	cmp    r8d,0x2
+  46ad34:	0f 84 a0 01 00 00    	je     46aeda <fb_hBlit16to16RGB+0x44a>
+;				c2 = *(s + 1);
+  46ad3a:	44 0f b7 4e 0a       	movzx  r9d,WORD PTR [rsi+0xa]
+;				c1 = *s;
+  46ad3f:	0f b7 6e 08          	movzx  ebp,WORD PTR [rsi+0x8]
+;				c2 = *(s + 1);
+  46ad43:	45 89 cc             	mov    r12d,r9d
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ad46:	45 89 cd             	mov    r13d,r9d
+;				c1 = *s;
+  46ad49:	41 89 eb             	mov    r11d,ebp
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ad4c:	41 c1 e1 0b          	shl    r9d,0xb
+  46ad50:	41 81 e4 e0 07 00 00 	and    r12d,0x7e0
+  46ad57:	41 c1 ed 0b          	shr    r13d,0xb
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ad5b:	41 81 e3 e0 07 00 00 	and    r11d,0x7e0
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ad62:	45 09 e5             	or     r13d,r12d
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ad65:	41 89 ec             	mov    r12d,ebp
+  46ad68:	c1 e5 0b             	shl    ebp,0xb
+  46ad6b:	41 c1 ec 0b          	shr    r12d,0xb
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ad6f:	45 09 e9             	or     r9d,r13d
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ad72:	0f b7 ed             	movzx  ebp,bp
+  46ad75:	45 09 e3             	or     r11d,r12d
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ad78:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ad7c:	41 09 eb             	or     r11d,ebp
+  46ad7f:	45 09 d9             	or     r9d,r11d
+  46ad82:	44 89 4b 08          	mov    DWORD PTR [rbx+0x8],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46ad86:	41 83 f8 03          	cmp    r8d,0x3
+  46ad8a:	0f 84 4a 01 00 00    	je     46aeda <fb_hBlit16to16RGB+0x44a>
+;				c2 = *(s + 1);
+  46ad90:	44 0f b7 4e 0e       	movzx  r9d,WORD PTR [rsi+0xe]
+;				c1 = *s;
+  46ad95:	0f b7 6e 0c          	movzx  ebp,WORD PTR [rsi+0xc]
+;				c2 = *(s + 1);
+  46ad99:	45 89 cc             	mov    r12d,r9d
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ad9c:	45 89 cd             	mov    r13d,r9d
+;				c1 = *s;
+  46ad9f:	41 89 eb             	mov    r11d,ebp
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ada2:	41 c1 e1 0b          	shl    r9d,0xb
+  46ada6:	41 81 e4 e0 07 00 00 	and    r12d,0x7e0
+  46adad:	41 c1 ed 0b          	shr    r13d,0xb
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46adb1:	41 81 e3 e0 07 00 00 	and    r11d,0x7e0
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46adb8:	45 09 e5             	or     r13d,r12d
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46adbb:	41 89 ec             	mov    r12d,ebp
+  46adbe:	c1 e5 0b             	shl    ebp,0xb
+  46adc1:	41 c1 ec 0b          	shr    r12d,0xb
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46adc5:	45 09 e9             	or     r9d,r13d
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46adc8:	0f b7 ed             	movzx  ebp,bp
+  46adcb:	45 09 e3             	or     r11d,r12d
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46adce:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46add2:	41 09 eb             	or     r11d,ebp
+  46add5:	45 09 d9             	or     r9d,r11d
+  46add8:	44 89 4b 0c          	mov    DWORD PTR [rbx+0xc],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46addc:	41 83 f8 04          	cmp    r8d,0x4
+  46ade0:	0f 84 f4 00 00 00    	je     46aeda <fb_hBlit16to16RGB+0x44a>
+;				c2 = *(s + 1);
+  46ade6:	44 0f b7 4e 12       	movzx  r9d,WORD PTR [rsi+0x12]
+;				c1 = *s;
+  46adeb:	0f b7 6e 10          	movzx  ebp,WORD PTR [rsi+0x10]
+;				c2 = *(s + 1);
+  46adef:	45 89 cc             	mov    r12d,r9d
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46adf2:	45 89 cd             	mov    r13d,r9d
+;				c1 = *s;
+  46adf5:	41 89 eb             	mov    r11d,ebp
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46adf8:	41 c1 e1 0b          	shl    r9d,0xb
+  46adfc:	41 81 e4 e0 07 00 00 	and    r12d,0x7e0
+  46ae03:	41 c1 ed 0b          	shr    r13d,0xb
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ae07:	41 81 e3 e0 07 00 00 	and    r11d,0x7e0
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ae0e:	45 09 e5             	or     r13d,r12d
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ae11:	41 89 ec             	mov    r12d,ebp
+  46ae14:	c1 e5 0b             	shl    ebp,0xb
+  46ae17:	41 c1 ec 0b          	shr    r12d,0xb
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ae1b:	45 09 e9             	or     r9d,r13d
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ae1e:	0f b7 ed             	movzx  ebp,bp
+  46ae21:	45 09 e3             	or     r11d,r12d
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ae24:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ae28:	41 09 eb             	or     r11d,ebp
+  46ae2b:	45 09 d9             	or     r9d,r11d
+  46ae2e:	44 89 4b 10          	mov    DWORD PTR [rbx+0x10],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46ae32:	41 83 f8 05          	cmp    r8d,0x5
+  46ae36:	0f 84 9e 00 00 00    	je     46aeda <fb_hBlit16to16RGB+0x44a>
+;				c2 = *(s + 1);
+  46ae3c:	44 0f b7 4e 16       	movzx  r9d,WORD PTR [rsi+0x16]
+;				c1 = *s;
+  46ae41:	0f b7 6e 14          	movzx  ebp,WORD PTR [rsi+0x14]
+;				c2 = *(s + 1);
+  46ae45:	45 89 cc             	mov    r12d,r9d
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ae48:	45 89 cd             	mov    r13d,r9d
+;				c1 = *s;
+  46ae4b:	41 89 eb             	mov    r11d,ebp
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ae4e:	41 c1 e1 0b          	shl    r9d,0xb
+  46ae52:	41 81 e4 e0 07 00 00 	and    r12d,0x7e0
+  46ae59:	41 c1 ed 0b          	shr    r13d,0xb
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ae5d:	41 81 e3 e0 07 00 00 	and    r11d,0x7e0
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ae64:	45 09 e5             	or     r13d,r12d
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ae67:	41 89 ec             	mov    r12d,ebp
+  46ae6a:	c1 e5 0b             	shl    ebp,0xb
+  46ae6d:	41 c1 ec 0b          	shr    r12d,0xb
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ae71:	45 09 e9             	or     r9d,r13d
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ae74:	0f b7 ed             	movzx  ebp,bp
+  46ae77:	45 09 e3             	or     r11d,r12d
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ae7a:	41 c1 e1 10          	shl    r9d,0x10
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46ae7e:	41 09 eb             	or     r11d,ebp
+  46ae81:	45 09 d9             	or     r9d,r11d
+  46ae84:	44 89 4b 14          	mov    DWORD PTR [rbx+0x14],r9d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46ae88:	41 83 f8 06          	cmp    r8d,0x6
+  46ae8c:	74 4c                	je     46aeda <fb_hBlit16to16RGB+0x44a>
+;				c2 = *(s + 1);
+  46ae8e:	44 0f b7 46 1a       	movzx  r8d,WORD PTR [rsi+0x1a]
+;				c1 = *s;
+  46ae93:	44 0f b7 4e 18       	movzx  r9d,WORD PTR [rsi+0x18]
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ae98:	44 89 c5             	mov    ebp,r8d
+;				c2 = *(s + 1);
+  46ae9b:	44 89 c6             	mov    esi,r8d
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46ae9e:	41 c1 e0 0b          	shl    r8d,0xb
+;				c1 = *s;
+  46aea2:	45 89 cb             	mov    r11d,r9d
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46aea5:	c1 ed 0b             	shr    ebp,0xb
+  46aea8:	81 e6 e0 07 00 00    	and    esi,0x7e0
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46aeae:	41 81 e3 e0 07 00 00 	and    r11d,0x7e0
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46aeb5:	09 ee                	or     esi,ebp
+  46aeb7:	41 09 f0             	or     r8d,esi
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46aeba:	44 89 ce             	mov    esi,r9d
+  46aebd:	c1 ee 0b             	shr    esi,0xb
+;				     ((((c2 << 11) & 0xF800) | (c2 & 0x07E0) | (c2 >> 11)) << 16);
+  46aec0:	41 c1 e0 10          	shl    r8d,0x10
+;				*d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11) |
+  46aec4:	41 09 f3             	or     r11d,esi
+  46aec7:	44 89 ce             	mov    esi,r9d
+  46aeca:	c1 e6 0b             	shl    esi,0xb
+  46aecd:	0f b7 f6             	movzx  esi,si
+  46aed0:	41 09 f3             	or     r11d,esi
+  46aed3:	45 09 d8             	or     r8d,r11d
+  46aed6:	44 89 43 18          	mov    DWORD PTR [rbx+0x18],r8d
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46aeda:	8b 74 24 f0          	mov    esi,DWORD PTR [rsp-0x10]
+;			if (__fb_gfx->w & 0x1) {
+  46aede:	45 8b 4f 20          	mov    r9d,DWORD PTR [r15+0x20]
+  46aee2:	48 8d 34 b5 04 00 00 	lea    rsi,[rsi*4+0x4]
+  46aee9:	00 
+;				s += 2;
+  46aeea:	4c 8d 04 32          	lea    r8,[rdx+rsi*1]
+;				d++;
+  46aeee:	4c 8d 1c 30          	lea    r11,[rax+rsi*1]
+  46aef2:	41 8b 77 70          	mov    esi,DWORD PTR [r15+0x70]
+;			if (__fb_gfx->w & 0x1) {
+  46aef6:	41 83 e1 01          	and    r9d,0x1
+  46aefa:	0f 84 e0 fb ff ff    	je     46aae0 <fb_hBlit16to16RGB+0x50>
+;				c1 = *s;
+  46af00:	45 0f b7 00          	movzx  r8d,WORD PTR [r8]
+;				*(unsigned short *)d = ((c1 << 11) & 0xF800) | (c1 & 0x07E0) | (c1 >> 11);
+  46af04:	45 89 c1             	mov    r9d,r8d
+  46af07:	44 89 c3             	mov    ebx,r8d
+  46af0a:	66 41 c1 e8 0b       	shr    r8w,0xb
+  46af0f:	41 c1 e1 0b          	shl    r9d,0xb
+  46af13:	66 81 e3 e0 07       	and    bx,0x7e0
+  46af18:	41 09 d9             	or     r9d,ebx
+  46af1b:	45 09 c8             	or     r8d,r9d
+  46af1e:	66 45 89 03          	mov    WORD PTR [r11],r8w
+  46af22:	e9 b9 fb ff ff       	jmp    46aae0 <fb_hBlit16to16RGB+0x50>
+  46af27:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+  46af2e:	00 00 
+;	}
+;}
+  46af30:	5b                   	pop    rbx
+  46af31:	5d                   	pop    rbp
+  46af32:	41 5c                	pop    r12
+  46af34:	41 5d                	pop    r13
+  46af36:	41 5e                	pop    r14
+  46af38:	41 5f                	pop    r15
+  46af3a:	c3                   	ret    
+  46af3b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46af40:	49 89 d0             	mov    r8,rdx
+  46af43:	49 89 c3             	mov    r11,rax
+  46af46:	eb ae                	jmp    46aef6 <fb_hBlit16to16RGB+0x466>
+  46af48:	48 89 d6             	mov    rsi,rdx
+  46af4b:	48 89 c3             	mov    rbx,rax
+  46af4e:	e9 35 fd ff ff       	jmp    46ac88 <fb_hBlit16to16RGB+0x1f8>
+  46af53:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
+  46af5a:	00 00 00 00 
+  46af5e:	66 90                	xchg   ax,ax
+
+000000000046af60 <fb_hBlit16to24>:
+;
+;
+;/*:::::*/
+;static void fb_hBlit16to24(unsigned char *dest, int pitch)
+;{
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46af60:	4c 8b 1d 91 ad 04 00 	mov    r11,QWORD PTR [rip+0x4ad91]        # 4b5cf8 <__fb_gfx>
+;{
+  46af67:	41 57                	push   r15
+  46af69:	41 56                	push   r14
+  46af6b:	41 55                	push   r13
+  46af6d:	41 54                	push   r12
+  46af6f:	55                   	push   rbp
+  46af70:	53                   	push   rbx
+;	unsigned int *s, *d, c1, c2, c3, temp;
+;	unsigned short *ss;
+;	unsigned char *dc;
+;	char *dirty = __fb_gfx->dirty;
+  46af71:	49 8b 43 50          	mov    rax,QWORD PTR [r11+0x50]
+;	int x, y, z = 0;
+;	
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46af75:	45 8b 43 24          	mov    r8d,DWORD PTR [r11+0x24]
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46af79:	49 8b 6b 18          	mov    rbp,QWORD PTR [r11+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  46af7d:	48 89 44 24 f8       	mov    QWORD PTR [rsp-0x8],rax
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46af82:	41 8b 43 70          	mov    eax,DWORD PTR [r11+0x70]
+  46af86:	44 0f af c0          	imul   r8d,eax
+  46af8a:	45 85 c0             	test   r8d,r8d
+  46af8d:	0f 84 ed 01 00 00    	je     46b180 <fb_hBlit16to24+0x220>
+  46af93:	49 89 f9             	mov    r9,rdi
+  46af96:	4c 63 ee             	movsxd r13,esi
+  46af99:	31 ff                	xor    edi,edi
+  46af9b:	eb 26                	jmp    46afc3 <fb_hBlit16to24+0x63>
+  46af9d:	0f 1f 00             	nop    DWORD PTR [rax]
+;				dc[0] = (c1 >> 16) & 0xFF;
+;				dc[1] = (c1 >> 8) & 0xFF;
+;				dc[2] = c1 & 0xFF;
+;			}
+;		}
+;		z++;
+  46afa0:	83 c7 01             	add    edi,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46afa3:	39 c7                	cmp    edi,eax
+  46afa5:	7c 0f                	jl     46afb6 <fb_hBlit16to24+0x56>
+;			z = 0;
+;			dirty++;
+  46afa7:	48 83 44 24 f8 01    	add    QWORD PTR [rsp-0x8],0x1
+;			src += __fb_gfx->pitch;
+  46afad:	49 63 53 30          	movsxd rdx,DWORD PTR [r11+0x30]
+;			z = 0;
+  46afb1:	31 ff                	xor    edi,edi
+;			src += __fb_gfx->pitch;
+  46afb3:	48 01 d5             	add    rbp,rdx
+;		}
+;		dest += pitch;
+  46afb6:	4d 01 e9             	add    r9,r13
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46afb9:	41 83 e8 01          	sub    r8d,0x1
+  46afbd:	0f 84 bd 01 00 00    	je     46b180 <fb_hBlit16to24+0x220>
+;		if (*dirty) {
+  46afc3:	48 8b 4c 24 f8       	mov    rcx,QWORD PTR [rsp-0x8]
+  46afc8:	80 39 00             	cmp    BYTE PTR [rcx],0x0
+  46afcb:	74 d3                	je     46afa0 <fb_hBlit16to24+0x40>
+;			for (x = __fb_gfx->w >> 2; x; x--) {
+  46afcd:	41 8b 43 20          	mov    eax,DWORD PTR [r11+0x20]
+  46afd1:	41 89 c4             	mov    r12d,eax
+  46afd4:	41 c1 fc 02          	sar    r12d,0x2
+  46afd8:	0f 84 b2 01 00 00    	je     46b190 <fb_hBlit16to24+0x230>
+  46afde:	45 89 e4             	mov    r12d,r12d
+;				c1 = __fb_color_conv_16to32[*s & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 8) & 0xFF)];
+  46afe1:	48 8b 15 f8 ac 04 00 	mov    rdx,QWORD PTR [rip+0x4acf8]        # 4b5ce0 <__fb_color_conv_16to32>
+  46afe8:	4c 89 ce             	mov    rsi,r9
+  46afeb:	48 89 e9             	mov    rcx,rbp
+  46afee:	4e 8d 54 e5 00       	lea    r10,[rbp+r12*8+0x0]
+  46aff3:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+  46aff8:	44 8b 31             	mov    r14d,DWORD PTR [rcx]
+;				temp = __fb_color_conv_16to32[(*s >> 16) & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 24) & 0xFF)];
+  46affb:	48 83 c6 0c          	add    rsi,0xc
+  46afff:	48 83 c1 08          	add    rcx,0x8
+  46b003:	44 89 f0             	mov    eax,r14d
+  46b006:	45 89 f7             	mov    r15d,r14d
+;				c1 = __fb_color_conv_16to32[*s & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 8) & 0xFF)];
+  46b009:	44 89 f3             	mov    ebx,r14d
+  46b00c:	45 0f b6 f6          	movzx  r14d,r14b
+;				temp = __fb_color_conv_16to32[(*s >> 16) & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 24) & 0xFF)];
+  46b010:	c1 e8 10             	shr    eax,0x10
+  46b013:	41 c1 ef 18          	shr    r15d,0x18
+;				c1 = __fb_color_conv_16to32[*s & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 8) & 0xFF)];
+  46b017:	0f b6 df             	movzx  ebx,bh
+;				temp = __fb_color_conv_16to32[(*s >> 16) & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 24) & 0xFF)];
+  46b01a:	41 81 c7 00 01 00 00 	add    r15d,0x100
+  46b021:	0f b6 c0             	movzx  eax,al
+  46b024:	8b 04 82             	mov    eax,DWORD PTR [rdx+rax*4]
+  46b027:	42 0b 04 ba          	or     eax,DWORD PTR [rdx+r15*4]
+;				c1 = __fb_color_conv_16to32[*s & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 8) & 0xFF)];
+  46b02b:	41 89 df             	mov    r15d,ebx
+  46b02e:	41 81 c7 00 01 00 00 	add    r15d,0x100
+  46b035:	46 8b 3c ba          	mov    r15d,DWORD PTR [rdx+r15*4]
+  46b039:	46 0b 3c b2          	or     r15d,DWORD PTR [rdx+r14*4]
+  46b03d:	45 89 fe             	mov    r14d,r15d
+;				*d++ = c1 | (temp << 24);
+  46b040:	41 89 c7             	mov    r15d,eax
+;				c2 = temp >> 8;
+  46b043:	c1 e8 08             	shr    eax,0x8
+;				*d++ = c1 | (temp << 24);
+  46b046:	41 c1 e7 18          	shl    r15d,0x18
+  46b04a:	45 09 fe             	or     r14d,r15d
+  46b04d:	44 89 76 f4          	mov    DWORD PTR [rsi-0xc],r14d
+;				temp = __fb_color_conv_16to32[*s & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 8) & 0xFF)];
+  46b051:	44 8b 79 fc          	mov    r15d,DWORD PTR [rcx-0x4]
+  46b055:	44 89 fb             	mov    ebx,r15d
+  46b058:	45 0f b6 ff          	movzx  r15d,r15b
+  46b05c:	0f b6 df             	movzx  ebx,bh
+  46b05f:	41 89 de             	mov    r14d,ebx
+  46b062:	41 81 c6 00 01 00 00 	add    r14d,0x100
+  46b069:	46 8b 34 b2          	mov    r14d,DWORD PTR [rdx+r14*4]
+  46b06d:	46 0b 34 ba          	or     r14d,DWORD PTR [rdx+r15*4]
+;				*d++ = c2 | (temp << 16);
+  46b071:	45 89 f7             	mov    r15d,r14d
+;				c3 = temp >> 16;
+  46b074:	41 c1 ee 10          	shr    r14d,0x10
+;				*d++ = c2 | (temp << 16);
+  46b078:	41 c1 e7 10          	shl    r15d,0x10
+  46b07c:	41 09 c7             	or     r15d,eax
+  46b07f:	44 89 7e f8          	mov    DWORD PTR [rsi-0x8],r15d
+;				*d++ = c3 | ((__fb_color_conv_16to32[(*s >> 16) & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 24) & 0xFF)]) << 8);
+  46b083:	8b 41 fc             	mov    eax,DWORD PTR [rcx-0x4]
+  46b086:	41 89 c7             	mov    r15d,eax
+  46b089:	c1 e8 18             	shr    eax,0x18
+  46b08c:	41 c1 ef 10          	shr    r15d,0x10
+  46b090:	05 00 01 00 00       	add    eax,0x100
+  46b095:	45 0f b6 ff          	movzx  r15d,r15b
+  46b099:	46 8b 3c ba          	mov    r15d,DWORD PTR [rdx+r15*4]
+  46b09d:	44 0b 3c 82          	or     r15d,DWORD PTR [rdx+rax*4]
+  46b0a1:	44 89 f8             	mov    eax,r15d
+  46b0a4:	c1 e0 08             	shl    eax,0x8
+  46b0a7:	44 09 f0             	or     eax,r14d
+  46b0aa:	89 46 fc             	mov    DWORD PTR [rsi-0x4],eax
+;			for (x = __fb_gfx->w >> 2; x; x--) {
+  46b0ad:	49 39 ca             	cmp    r10,rcx
+  46b0b0:	0f 85 42 ff ff ff    	jne    46aff8 <fb_hBlit16to24+0x98>
+;				*d++ = c3 | ((__fb_color_conv_16to32[(*s >> 16) & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 24) & 0xFF)]) << 8);
+  46b0b6:	4b 8d 04 64          	lea    rax,[r12+r12*2]
+  46b0ba:	49 8d 14 81          	lea    rdx,[r9+rax*4]
+;			if (__fb_gfx->w & 0x2) {
+  46b0be:	41 8b 43 20          	mov    eax,DWORD PTR [r11+0x20]
+  46b0c2:	a8 02                	test   al,0x2
+  46b0c4:	74 71                	je     46b137 <fb_hBlit16to24+0x1d7>
+;				c1 = __fb_color_conv_16to32[*s & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 8) & 0xFF)];
+  46b0c6:	8b 01                	mov    eax,DWORD PTR [rcx]
+  46b0c8:	4c 8b 1d 11 ac 04 00 	mov    r11,QWORD PTR [rip+0x4ac11]        # 4b5ce0 <__fb_color_conv_16to32>
+;				dc += 6;
+  46b0cf:	48 83 c2 06          	add    rdx,0x6
+;				s++;
+  46b0d3:	48 83 c1 04          	add    rcx,0x4
+;				c1 = __fb_color_conv_16to32[*s & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 8) & 0xFF)];
+  46b0d7:	0f b6 f4             	movzx  esi,ah
+  46b0da:	44 0f b6 e0          	movzx  r12d,al
+  46b0de:	81 c6 00 01 00 00    	add    esi,0x100
+  46b0e4:	45 8b 14 b3          	mov    r10d,DWORD PTR [r11+rsi*4]
+;				c2 = __fb_color_conv_16to32[(*s >> 16) & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 24) & 0xFF)];
+  46b0e8:	89 c6                	mov    esi,eax
+  46b0ea:	c1 e8 18             	shr    eax,0x18
+;				c1 = __fb_color_conv_16to32[*s & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 8) & 0xFF)];
+  46b0ed:	47 0b 14 a3          	or     r10d,DWORD PTR [r11+r12*4]
+;				c2 = __fb_color_conv_16to32[(*s >> 16) & 0xFF] | __fb_color_conv_16to32[256 + ((*s >> 24) & 0xFF)];
+  46b0f1:	c1 ee 10             	shr    esi,0x10
+  46b0f4:	05 00 01 00 00       	add    eax,0x100
+  46b0f9:	40 0f b6 f6          	movzx  esi,sil
+  46b0fd:	41 8b 34 b3          	mov    esi,DWORD PTR [r11+rsi*4]
+  46b101:	41 0b 34 83          	or     esi,DWORD PTR [r11+rax*4]
+  46b105:	89 f0                	mov    eax,esi
+;				dc[0] = (c1 >> 16) & 0xFF;
+  46b107:	44 89 d6             	mov    esi,r10d
+;				dc[1] = (c1 >> 8) & 0xFF;
+  46b10a:	66 41 c1 c2 08       	rol    r10w,0x8
+;				dc[0] = (c1 >> 16) & 0xFF;
+  46b10f:	c1 ee 10             	shr    esi,0x10
+;				dc[1] = (c1 >> 8) & 0xFF;
+  46b112:	66 44 89 52 fb       	mov    WORD PTR [rdx-0x5],r10w
+;				dc[0] = (c1 >> 16) & 0xFF;
+  46b117:	40 88 72 fa          	mov    BYTE PTR [rdx-0x6],sil
+;				dc[3] = (c2 >> 16) & 0xFF;
+  46b11b:	89 c6                	mov    esi,eax
+;				dc[4] = (c2 >> 8) & 0xFF;
+  46b11d:	66 c1 c0 08          	rol    ax,0x8
+;				dc[3] = (c2 >> 16) & 0xFF;
+  46b121:	c1 ee 10             	shr    esi,0x10
+;				dc[4] = (c2 >> 8) & 0xFF;
+  46b124:	66 89 42 fe          	mov    WORD PTR [rdx-0x2],ax
+;				dc[3] = (c2 >> 16) & 0xFF;
+  46b128:	40 88 72 fd          	mov    BYTE PTR [rdx-0x3],sil
+;			if (__fb_gfx->w & 0x1) {
+  46b12c:	4c 8b 1d c5 ab 04 00 	mov    r11,QWORD PTR [rip+0x4abc5]        # 4b5cf8 <__fb_gfx>
+  46b133:	41 8b 43 20          	mov    eax,DWORD PTR [r11+0x20]
+  46b137:	a8 01                	test   al,0x1
+  46b139:	74 36                	je     46b171 <fb_hBlit16to24+0x211>
+;				c1 = __fb_color_conv_16to32[*ss & 0xFF] | __fb_color_conv_16to32[256 + ((*ss >> 8) & 0xFF)];
+  46b13b:	0f b7 09             	movzx  ecx,WORD PTR [rcx]
+  46b13e:	48 8b 35 9b ab 04 00 	mov    rsi,QWORD PTR [rip+0x4ab9b]        # 4b5ce0 <__fb_color_conv_16to32>
+  46b145:	89 c8                	mov    eax,ecx
+  46b147:	0f b6 c9             	movzx  ecx,cl
+  46b14a:	66 c1 e8 08          	shr    ax,0x8
+  46b14e:	66 05 00 01          	add    ax,0x100
+  46b152:	0f b7 c0             	movzx  eax,ax
+  46b155:	8b 04 86             	mov    eax,DWORD PTR [rsi+rax*4]
+  46b158:	0b 04 8e             	or     eax,DWORD PTR [rsi+rcx*4]
+;				dc[0] = (c1 >> 16) & 0xFF;
+  46b15b:	89 c1                	mov    ecx,eax
+;				dc[1] = (c1 >> 8) & 0xFF;
+  46b15d:	66 c1 c0 08          	rol    ax,0x8
+;				dc[0] = (c1 >> 16) & 0xFF;
+  46b161:	c1 e9 10             	shr    ecx,0x10
+;				dc[1] = (c1 >> 8) & 0xFF;
+  46b164:	66 89 42 01          	mov    WORD PTR [rdx+0x1],ax
+;				dc[0] = (c1 >> 16) & 0xFF;
+  46b168:	88 0a                	mov    BYTE PTR [rdx],cl
+;		if (z >= __fb_gfx->scanline_size) {
+  46b16a:	4c 8b 1d 87 ab 04 00 	mov    r11,QWORD PTR [rip+0x4ab87]        # 4b5cf8 <__fb_gfx>
+  46b171:	41 8b 43 70          	mov    eax,DWORD PTR [r11+0x70]
+  46b175:	e9 26 fe ff ff       	jmp    46afa0 <fb_hBlit16to24+0x40>
+  46b17a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+;	}
+;}
+  46b180:	5b                   	pop    rbx
+  46b181:	5d                   	pop    rbp
+  46b182:	41 5c                	pop    r12
+  46b184:	41 5d                	pop    r13
+  46b186:	41 5e                	pop    r14
+  46b188:	41 5f                	pop    r15
+  46b18a:	c3                   	ret    
+  46b18b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;			for (x = __fb_gfx->w >> 2; x; x--) {
+  46b190:	4c 89 ca             	mov    rdx,r9
+  46b193:	48 89 e9             	mov    rcx,rbp
+  46b196:	e9 27 ff ff ff       	jmp    46b0c2 <fb_hBlit16to24+0x162>
+  46b19b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+
+000000000046b1a0 <fb_hBlit16to32>:
+;
+;
+;/*:::::*/
+;static void fb_hBlit16to32(unsigned char *dest, int pitch)
+;{
+  46b1a0:	41 55                	push   r13
+  46b1a2:	41 54                	push   r12
+  46b1a4:	55                   	push   rbp
+;	unsigned int *d, *s;
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46b1a5:	48 8b 2d 4c ab 04 00 	mov    rbp,QWORD PTR [rip+0x4ab4c]        # 4b5cf8 <__fb_gfx>
+;{
+  46b1ac:	53                   	push   rbx
+;	unsigned int c;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;	
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46b1ad:	8b 45 70             	mov    eax,DWORD PTR [rbp+0x70]
+  46b1b0:	44 8b 55 24          	mov    r10d,DWORD PTR [rbp+0x24]
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46b1b4:	4c 8b 4d 18          	mov    r9,QWORD PTR [rbp+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  46b1b8:	48 8b 5d 50          	mov    rbx,QWORD PTR [rbp+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46b1bc:	44 0f af d0          	imul   r10d,eax
+  46b1c0:	45 85 d2             	test   r10d,r10d
+  46b1c3:	0f 84 c7 00 00 00    	je     46b290 <fb_hBlit16to32+0xf0>
+  46b1c9:	49 89 f8             	mov    r8,rdi
+;		if (z >= __fb_gfx->scanline_size) {
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+;		}
+;		dest += pitch;
+  46b1cc:	4c 63 e6             	movsxd r12,esi
+;				*d++ = __fb_color_conv_16to32[c & 0xFF] | __fb_color_conv_16to32[256 + ((c >> 8) & 0xFF)];
+  46b1cf:	48 8b 3d 0a ab 04 00 	mov    rdi,QWORD PTR [rip+0x4ab0a]        # 4b5ce0 <__fb_color_conv_16to32>
+;	int x, y, z = 0;
+  46b1d6:	31 f6                	xor    esi,esi
+  46b1d8:	eb 27                	jmp    46b201 <fb_hBlit16to32+0x61>
+  46b1da:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+;		z++;
+  46b1e0:	83 c6 01             	add    esi,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46b1e3:	39 c6                	cmp    esi,eax
+  46b1e5:	7c 0d                	jl     46b1f4 <fb_hBlit16to32+0x54>
+;			src += __fb_gfx->pitch;
+  46b1e7:	48 63 55 30          	movsxd rdx,DWORD PTR [rbp+0x30]
+;			dirty++;
+  46b1eb:	48 83 c3 01          	add    rbx,0x1
+;			z = 0;
+  46b1ef:	31 f6                	xor    esi,esi
+;			src += __fb_gfx->pitch;
+  46b1f1:	49 01 d1             	add    r9,rdx
+;		dest += pitch;
+  46b1f4:	4d 01 e0             	add    r8,r12
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46b1f7:	41 83 ea 01          	sub    r10d,0x1
+  46b1fb:	0f 84 8f 00 00 00    	je     46b290 <fb_hBlit16to32+0xf0>
+;		if (*dirty) {
+  46b201:	80 3b 00             	cmp    BYTE PTR [rbx],0x0
+  46b204:	74 da                	je     46b1e0 <fb_hBlit16to32+0x40>
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b206:	8b 45 20             	mov    eax,DWORD PTR [rbp+0x20]
+  46b209:	41 89 c3             	mov    r11d,eax
+  46b20c:	41 d1 fb             	sar    r11d,1
+  46b20f:	0f 84 8b 00 00 00    	je     46b2a0 <fb_hBlit16to32+0x100>
+  46b215:	45 89 db             	mov    r11d,r11d
+  46b218:	31 d2                	xor    edx,edx
+  46b21a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+;				c = *s++;
+  46b220:	41 8b 04 91          	mov    eax,DWORD PTR [r9+rdx*4]
+;				*d++ = __fb_color_conv_16to32[c & 0xFF] | __fb_color_conv_16to32[256 + ((c >> 8) & 0xFF)];
+  46b224:	0f b6 cc             	movzx  ecx,ah
+  46b227:	44 0f b6 e8          	movzx  r13d,al
+  46b22b:	81 c1 00 01 00 00    	add    ecx,0x100
+  46b231:	8b 0c 8f             	mov    ecx,DWORD PTR [rdi+rcx*4]
+  46b234:	42 0b 0c af          	or     ecx,DWORD PTR [rdi+r13*4]
+  46b238:	41 89 0c d0          	mov    DWORD PTR [r8+rdx*8],ecx
+;				*d++ = __fb_color_conv_16to32[(c >> 16) & 0xFF] | __fb_color_conv_16to32[256 + ((c >> 24) & 0xFF)];
+  46b23c:	89 c1                	mov    ecx,eax
+  46b23e:	c1 e8 18             	shr    eax,0x18
+  46b241:	c1 e9 10             	shr    ecx,0x10
+  46b244:	05 00 01 00 00       	add    eax,0x100
+  46b249:	0f b6 c9             	movzx  ecx,cl
+  46b24c:	8b 0c 8f             	mov    ecx,DWORD PTR [rdi+rcx*4]
+  46b24f:	0b 0c 87             	or     ecx,DWORD PTR [rdi+rax*4]
+  46b252:	41 89 4c d0 04       	mov    DWORD PTR [r8+rdx*8+0x4],ecx
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b257:	48 83 c2 01          	add    rdx,0x1
+  46b25b:	4c 39 da             	cmp    rdx,r11
+  46b25e:	75 c0                	jne    46b220 <fb_hBlit16to32+0x80>
+;			if (__fb_gfx->w & 0x1) {
+  46b260:	8b 45 20             	mov    eax,DWORD PTR [rbp+0x20]
+;				c = *s++;
+  46b263:	4d 8d 1c 91          	lea    r11,[r9+rdx*4]
+;				*d++ = __fb_color_conv_16to32[(c >> 16) & 0xFF] | __fb_color_conv_16to32[256 + ((c >> 24) & 0xFF)];
+  46b267:	49 8d 0c d0          	lea    rcx,[r8+rdx*8]
+;			if (__fb_gfx->w & 0x1) {
+  46b26b:	a8 01                	test   al,0x1
+  46b26d:	74 19                	je     46b288 <fb_hBlit16to32+0xe8>
+;				c = *(unsigned short *)s;
+  46b26f:	41 0f b7 03          	movzx  eax,WORD PTR [r11]
+  46b273:	89 c2                	mov    edx,eax
+;				*d = __fb_color_conv_16to32[c & 0xFF] | __fb_color_conv_16to32[256 + ((c >> 8) & 0xFF)];
+  46b275:	c1 e8 08             	shr    eax,0x8
+  46b278:	05 00 01 00 00       	add    eax,0x100
+  46b27d:	0f b6 d2             	movzx  edx,dl
+  46b280:	8b 04 87             	mov    eax,DWORD PTR [rdi+rax*4]
+  46b283:	0b 04 97             	or     eax,DWORD PTR [rdi+rdx*4]
+  46b286:	89 01                	mov    DWORD PTR [rcx],eax
+;		if (z >= __fb_gfx->scanline_size) {
+  46b288:	8b 45 70             	mov    eax,DWORD PTR [rbp+0x70]
+  46b28b:	e9 50 ff ff ff       	jmp    46b1e0 <fb_hBlit16to32+0x40>
+;	}
+;}
+  46b290:	5b                   	pop    rbx
+  46b291:	5d                   	pop    rbp
+  46b292:	41 5c                	pop    r12
+  46b294:	41 5d                	pop    r13
+  46b296:	c3                   	ret    
+  46b297:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+  46b29e:	00 00 
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b2a0:	4d 89 cb             	mov    r11,r9
+  46b2a3:	4c 89 c1             	mov    rcx,r8
+  46b2a6:	eb c3                	jmp    46b26b <fb_hBlit16to32+0xcb>
+  46b2a8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+  46b2af:	00 
+
+000000000046b2b0 <fb_hBlit32to15RGB>:
+;
+;
+;/*:::::*/
+;static void fb_hBlit32to15RGB(unsigned char *dest, int pitch)
+;{
+  46b2b0:	41 56                	push   r14
+  46b2b2:	41 55                	push   r13
+  46b2b4:	41 54                	push   r12
+  46b2b6:	55                   	push   rbp
+  46b2b7:	53                   	push   rbx
+;	unsigned int *d, *s;
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46b2b8:	48 8b 1d 39 aa 04 00 	mov    rbx,QWORD PTR [rip+0x4aa39]        # 4b5cf8 <__fb_gfx>
+;	unsigned int c1, c2;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;	
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46b2bf:	8b 43 70             	mov    eax,DWORD PTR [rbx+0x70]
+  46b2c2:	44 8b 43 24          	mov    r8d,DWORD PTR [rbx+0x24]
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46b2c6:	48 8b 53 18          	mov    rdx,QWORD PTR [rbx+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  46b2ca:	4c 8b 5b 50          	mov    r11,QWORD PTR [rbx+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46b2ce:	44 0f af c0          	imul   r8d,eax
+  46b2d2:	45 85 c0             	test   r8d,r8d
+  46b2d5:	0f 84 7d 02 00 00    	je     46b558 <fb_hBlit32to15RGB+0x2a8>
+  46b2db:	4c 63 e6             	movsxd r12,esi
+  46b2de:	66 0f 6f 25 5a 8b 01 	movdqa xmm4,XMMWORD PTR [rip+0x18b5a]        # 483e40 <cursor_data+0xc0>
+  46b2e5:	00 
+  46b2e6:	31 f6                	xor    esi,esi
+;			d = (unsigned int *)dest;
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+;				c1 = *s;
+;				c2 = *(s + 1);
+;				*d = (c1 >> 19) | ((c1 >> 6) & 0x03E0) | ((c1 << 7) & 0x7C00) |
+;				     (((c2 >> 19) | ((c2 >> 6) & 0x03E0) | ((c2 << 7) & 0x7C00)) << 16);
+  46b2e8:	f3 0f 7e 35 50 8b 01 	movq   xmm6,QWORD PTR [rip+0x18b50]        # 483e40 <cursor_data+0xc0>
+  46b2ef:	00 
+  46b2f0:	f3 0f 7e 2d 58 8b 01 	movq   xmm5,QWORD PTR [rip+0x18b58]        # 483e50 <cursor_data+0xd0>
+  46b2f7:	00 
+  46b2f8:	66 0f 6f 1d 50 8b 01 	movdqa xmm3,XMMWORD PTR [rip+0x18b50]        # 483e50 <cursor_data+0xd0>
+  46b2ff:	00 
+  46b300:	eb 27                	jmp    46b329 <fb_hBlit32to15RGB+0x79>
+  46b302:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+;			if (__fb_gfx->w & 0x1) {
+;				c1 = *s;
+;				*(unsigned short *)d = (c1 >> 19) | ((c1 >> 6) & 0x03E0) | ((c1 << 7) & 0x7C00);
+;			}
+;		}
+;		z++;
+  46b308:	83 c6 01             	add    esi,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46b30b:	39 c6                	cmp    esi,eax
+  46b30d:	7c 0d                	jl     46b31c <fb_hBlit32to15RGB+0x6c>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  46b30f:	48 63 4b 30          	movsxd rcx,DWORD PTR [rbx+0x30]
+;			dirty++;
+  46b313:	49 83 c3 01          	add    r11,0x1
+;			z = 0;
+  46b317:	31 f6                	xor    esi,esi
+;			src += __fb_gfx->pitch;
+  46b319:	48 01 ca             	add    rdx,rcx
+;		}
+;		dest += pitch;
+  46b31c:	4c 01 e7             	add    rdi,r12
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46b31f:	41 83 e8 01          	sub    r8d,0x1
+  46b323:	0f 84 2f 02 00 00    	je     46b558 <fb_hBlit32to15RGB+0x2a8>
+;		if (*dirty) {
+  46b329:	41 80 3b 00          	cmp    BYTE PTR [r11],0x0
+  46b32d:	74 d9                	je     46b308 <fb_hBlit32to15RGB+0x58>
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b32f:	8b 4b 20             	mov    ecx,DWORD PTR [rbx+0x20]
+  46b332:	41 89 cd             	mov    r13d,ecx
+  46b335:	41 d1 fd             	sar    r13d,1
+  46b338:	0f 84 9a 02 00 00    	je     46b5d8 <fb_hBlit32to15RGB+0x328>
+  46b33e:	45 89 e9             	mov    r9d,r13d
+  46b341:	44 89 ed             	mov    ebp,r13d
+  46b344:	4a 8d 04 8f          	lea    rax,[rdi+r9*4]
+  46b348:	4a 8d 0c ca          	lea    rcx,[rdx+r9*8]
+  46b34c:	48 39 c2             	cmp    rdx,rax
+  46b34f:	0f 93 c0             	setae  al
+  46b352:	48 39 cf             	cmp    rdi,rcx
+  46b355:	0f 93 c1             	setae  cl
+  46b358:	08 c8                	or     al,cl
+  46b35a:	0f 84 08 02 00 00    	je     46b568 <fb_hBlit32to15RGB+0x2b8>
+  46b360:	41 83 fd 01          	cmp    r13d,0x1
+  46b364:	0f 84 fe 01 00 00    	je     46b568 <fb_hBlit32to15RGB+0x2b8>
+  46b36a:	45 8d 4d ff          	lea    r9d,[r13-0x1]
+  46b36e:	41 83 f9 02          	cmp    r9d,0x2
+  46b372:	0f 86 6b 02 00 00    	jbe    46b5e3 <fb_hBlit32to15RGB+0x333>
+  46b378:	44 89 e9             	mov    ecx,r13d
+  46b37b:	31 c0                	xor    eax,eax
+  46b37d:	c1 e9 02             	shr    ecx,0x2
+  46b380:	48 c1 e1 04          	shl    rcx,0x4
+  46b384:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+;				c1 = *s;
+  46b388:	f3 0f 6f 0c 42       	movdqu xmm1,XMMWORD PTR [rdx+rax*2]
+  46b38d:	f3 0f 6f 7c 42 10    	movdqu xmm7,XMMWORD PTR [rdx+rax*2+0x10]
+  46b393:	66 0f 6f d1          	movdqa xmm2,xmm1
+  46b397:	0f c6 cf dd          	shufps xmm1,xmm7,0xdd
+;				     (((c2 >> 19) | ((c2 >> 6) & 0x03E0) | ((c2 << 7) & 0x7C00)) << 16);
+  46b39b:	66 0f 6f c1          	movdqa xmm0,xmm1
+;				c1 = *s;
+  46b39f:	0f c6 d7 88          	shufps xmm2,xmm7,0x88
+;				     (((c2 >> 19) | ((c2 >> 6) & 0x03E0) | ((c2 << 7) & 0x7C00)) << 16);
+  46b3a3:	66 0f 6f f9          	movdqa xmm7,xmm1
+  46b3a7:	66 0f 72 d0 06       	psrld  xmm0,0x6
+  46b3ac:	66 0f 72 f7 07       	pslld  xmm7,0x7
+  46b3b1:	66 0f 72 d1 13       	psrld  xmm1,0x13
+  46b3b6:	66 0f db c4          	pand   xmm0,xmm4
+  46b3ba:	66 0f db fb          	pand   xmm7,xmm3
+  46b3be:	66 0f eb c7          	por    xmm0,xmm7
+  46b3c2:	66 0f eb c1          	por    xmm0,xmm1
+;				*d = (c1 >> 19) | ((c1 >> 6) & 0x03E0) | ((c1 << 7) & 0x7C00) |
+  46b3c6:	66 0f 6f ca          	movdqa xmm1,xmm2
+  46b3ca:	66 0f 72 d1 13       	psrld  xmm1,0x13
+;				     (((c2 >> 19) | ((c2 >> 6) & 0x03E0) | ((c2 << 7) & 0x7C00)) << 16);
+  46b3cf:	66 0f 72 f0 10       	pslld  xmm0,0x10
+;				*d = (c1 >> 19) | ((c1 >> 6) & 0x03E0) | ((c1 << 7) & 0x7C00) |
+  46b3d4:	66 0f eb c1          	por    xmm0,xmm1
+  46b3d8:	66 0f 6f ca          	movdqa xmm1,xmm2
+  46b3dc:	66 0f 72 d1 06       	psrld  xmm1,0x6
+  46b3e1:	66 0f 72 f2 07       	pslld  xmm2,0x7
+  46b3e6:	66 0f db cc          	pand   xmm1,xmm4
+  46b3ea:	66 0f db d3          	pand   xmm2,xmm3
+  46b3ee:	66 0f eb ca          	por    xmm1,xmm2
+  46b3f2:	66 0f eb c1          	por    xmm0,xmm1
+  46b3f6:	0f 11 04 07          	movups XMMWORD PTR [rdi+rax*1],xmm0
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b3fa:	48 83 c0 10          	add    rax,0x10
+  46b3fe:	48 39 c8             	cmp    rax,rcx
+  46b401:	75 85                	jne    46b388 <fb_hBlit32to15RGB+0xd8>
+  46b403:	45 89 ee             	mov    r14d,r13d
+  46b406:	41 83 e6 fc          	and    r14d,0xfffffffc
+  46b40a:	44 89 f1             	mov    ecx,r14d
+  46b40d:	4c 8d 14 8f          	lea    r10,[rdi+rcx*4]
+  46b411:	48 8d 04 ca          	lea    rax,[rdx+rcx*8]
+  46b415:	45 39 ee             	cmp    r14d,r13d
+  46b418:	0f 84 ee 00 00 00    	je     46b50c <fb_hBlit32to15RGB+0x25c>
+  46b41e:	44 89 ed             	mov    ebp,r13d
+  46b421:	44 29 f5             	sub    ebp,r14d
+  46b424:	83 fd 01             	cmp    ebp,0x1
+  46b427:	0f 84 91 00 00 00    	je     46b4be <fb_hBlit32to15RGB+0x20e>
+  46b42d:	4c 8d 2c ca          	lea    r13,[rdx+rcx*8]
+;				c1 = *s;
+  46b431:	f3 41 0f 7e 45 08    	movq   xmm0,QWORD PTR [r13+0x8]
+  46b437:	f3 41 0f 7e 4d 00    	movq   xmm1,QWORD PTR [r13+0x0]
+  46b43d:	66 0f 6f d1          	movdqa xmm2,xmm1
+  46b441:	66 0f 62 c8          	punpckldq xmm1,xmm0
+  46b445:	66 0f 70 c9 0e       	pshufd xmm1,xmm1,0xe
+  46b44a:	66 0f 62 d0          	punpckldq xmm2,xmm0
+;				     (((c2 >> 19) | ((c2 >> 6) & 0x03E0) | ((c2 << 7) & 0x7C00)) << 16);
+  46b44e:	66 0f 6f f9          	movdqa xmm7,xmm1
+  46b452:	66 0f 6f c1          	movdqa xmm0,xmm1
+  46b456:	66 0f 72 d0 06       	psrld  xmm0,0x6
+  46b45b:	66 0f 72 f7 07       	pslld  xmm7,0x7
+  46b460:	66 0f db c6          	pand   xmm0,xmm6
+  46b464:	66 0f 72 d1 13       	psrld  xmm1,0x13
+  46b469:	66 0f db fd          	pand   xmm7,xmm5
+  46b46d:	66 0f eb c7          	por    xmm0,xmm7
+  46b471:	66 0f eb c1          	por    xmm0,xmm1
+;				*d = (c1 >> 19) | ((c1 >> 6) & 0x03E0) | ((c1 << 7) & 0x7C00) |
+  46b475:	66 0f 6f ca          	movdqa xmm1,xmm2
+  46b479:	66 0f 72 d1 13       	psrld  xmm1,0x13
+;				     (((c2 >> 19) | ((c2 >> 6) & 0x03E0) | ((c2 << 7) & 0x7C00)) << 16);
+  46b47e:	66 0f 72 f0 10       	pslld  xmm0,0x10
+;				*d = (c1 >> 19) | ((c1 >> 6) & 0x03E0) | ((c1 << 7) & 0x7C00) |
+  46b483:	66 0f eb c1          	por    xmm0,xmm1
+  46b487:	66 0f 6f ca          	movdqa xmm1,xmm2
+  46b48b:	66 0f 72 d1 06       	psrld  xmm1,0x6
+  46b490:	66 0f 72 f2 07       	pslld  xmm2,0x7
+  46b495:	66 0f db ce          	pand   xmm1,xmm6
+  46b499:	66 0f db d5          	pand   xmm2,xmm5
+  46b49d:	66 0f eb ca          	por    xmm1,xmm2
+  46b4a1:	66 0f eb c1          	por    xmm0,xmm1
+  46b4a5:	66 0f d6 04 8f       	movq   QWORD PTR [rdi+rcx*4],xmm0
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b4aa:	89 e9                	mov    ecx,ebp
+  46b4ac:	83 e1 fe             	and    ecx,0xfffffffe
+  46b4af:	41 89 cd             	mov    r13d,ecx
+  46b4b2:	4f 8d 14 aa          	lea    r10,[r10+r13*4]
+  46b4b6:	4a 8d 04 e8          	lea    rax,[rax+r13*8]
+  46b4ba:	39 cd                	cmp    ebp,ecx
+  46b4bc:	74 4e                	je     46b50c <fb_hBlit32to15RGB+0x25c>
+;				c2 = *(s + 1);
+  46b4be:	8b 48 04             	mov    ecx,DWORD PTR [rax+0x4]
+;				c1 = *s;
+  46b4c1:	8b 28                	mov    ebp,DWORD PTR [rax]
+;				     (((c2 >> 19) | ((c2 >> 6) & 0x03E0) | ((c2 << 7) & 0x7C00)) << 16);
+  46b4c3:	41 89 cd             	mov    r13d,ecx
+  46b4c6:	89 c8                	mov    eax,ecx
+  46b4c8:	c1 e9 13             	shr    ecx,0x13
+  46b4cb:	c1 e8 06             	shr    eax,0x6
+  46b4ce:	41 c1 e5 07          	shl    r13d,0x7
+  46b4d2:	41 81 e5 00 7c 00 00 	and    r13d,0x7c00
+  46b4d9:	25 e0 03 00 00       	and    eax,0x3e0
+  46b4de:	44 09 e8             	or     eax,r13d
+;				*d = (c1 >> 19) | ((c1 >> 6) & 0x03E0) | ((c1 << 7) & 0x7C00) |
+  46b4e1:	41 89 ed             	mov    r13d,ebp
+;				     (((c2 >> 19) | ((c2 >> 6) & 0x03E0) | ((c2 << 7) & 0x7C00)) << 16);
+  46b4e4:	09 c8                	or     eax,ecx
+;				*d = (c1 >> 19) | ((c1 >> 6) & 0x03E0) | ((c1 << 7) & 0x7C00) |
+  46b4e6:	89 e9                	mov    ecx,ebp
+  46b4e8:	41 c1 e5 07          	shl    r13d,0x7
+  46b4ec:	c1 e9 06             	shr    ecx,0x6
+  46b4ef:	41 81 e5 00 7c 00 00 	and    r13d,0x7c00
+  46b4f6:	c1 ed 13             	shr    ebp,0x13
+  46b4f9:	81 e1 e0 03 00 00    	and    ecx,0x3e0
+;				     (((c2 >> 19) | ((c2 >> 6) & 0x03E0) | ((c2 << 7) & 0x7C00)) << 16);
+  46b4ff:	c1 e0 10             	shl    eax,0x10
+;				*d = (c1 >> 19) | ((c1 >> 6) & 0x03E0) | ((c1 << 7) & 0x7C00) |
+  46b502:	44 09 e9             	or     ecx,r13d
+  46b505:	09 e9                	or     ecx,ebp
+  46b507:	09 c8                	or     eax,ecx
+  46b509:	41 89 02             	mov    DWORD PTR [r10],eax
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b50c:	49 83 c1 01          	add    r9,0x1
+;			if (__fb_gfx->w & 0x1) {
+  46b510:	8b 4b 20             	mov    ecx,DWORD PTR [rbx+0x20]
+  46b513:	8b 43 70             	mov    eax,DWORD PTR [rbx+0x70]
+;				s += 2;
+  46b516:	4a 8d 2c ca          	lea    rbp,[rdx+r9*8]
+;				d++;
+  46b51a:	4e 8d 14 8f          	lea    r10,[rdi+r9*4]
+;			if (__fb_gfx->w & 0x1) {
+  46b51e:	83 e1 01             	and    ecx,0x1
+  46b521:	0f 84 e1 fd ff ff    	je     46b308 <fb_hBlit32to15RGB+0x58>
+;				c1 = *s;
+  46b527:	44 8b 4d 00          	mov    r9d,DWORD PTR [rbp+0x0]
+;				*(unsigned short *)d = (c1 >> 19) | ((c1 >> 6) & 0x03E0) | ((c1 << 7) & 0x7C00);
+  46b52b:	44 89 c9             	mov    ecx,r9d
+  46b52e:	44 89 cd             	mov    ebp,r9d
+  46b531:	41 c1 e9 13          	shr    r9d,0x13
+  46b535:	c1 e9 06             	shr    ecx,0x6
+  46b538:	c1 e5 07             	shl    ebp,0x7
+  46b53b:	66 81 e1 e0 03       	and    cx,0x3e0
+  46b540:	66 81 e5 00 7c       	and    bp,0x7c00
+  46b545:	09 e9                	or     ecx,ebp
+  46b547:	44 09 c9             	or     ecx,r9d
+  46b54a:	66 41 89 0a          	mov    WORD PTR [r10],cx
+  46b54e:	e9 b5 fd ff ff       	jmp    46b308 <fb_hBlit32to15RGB+0x58>
+  46b553:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;	}
+;}
+  46b558:	5b                   	pop    rbx
+  46b559:	5d                   	pop    rbp
+  46b55a:	41 5c                	pop    r12
+  46b55c:	41 5d                	pop    r13
+  46b55e:	41 5e                	pop    r14
+  46b560:	c3                   	ret    
+  46b561:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b568:	45 31 d2             	xor    r10d,r10d
+  46b56b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;				c2 = *(s + 1);
+  46b570:	42 8b 4c d2 04       	mov    ecx,DWORD PTR [rdx+r10*8+0x4]
+;				c1 = *s;
+  46b575:	42 8b 2c d2          	mov    ebp,DWORD PTR [rdx+r10*8]
+;				     (((c2 >> 19) | ((c2 >> 6) & 0x03E0) | ((c2 << 7) & 0x7C00)) << 16);
+  46b579:	89 c8                	mov    eax,ecx
+  46b57b:	41 89 ce             	mov    r14d,ecx
+  46b57e:	c1 e9 13             	shr    ecx,0x13
+  46b581:	c1 e0 07             	shl    eax,0x7
+  46b584:	41 c1 ee 06          	shr    r14d,0x6
+  46b588:	41 81 e6 e0 03 00 00 	and    r14d,0x3e0
+  46b58f:	25 00 7c 00 00       	and    eax,0x7c00
+  46b594:	44 09 f0             	or     eax,r14d
+;				*d = (c1 >> 19) | ((c1 >> 6) & 0x03E0) | ((c1 << 7) & 0x7C00) |
+  46b597:	41 89 ee             	mov    r14d,ebp
+;				     (((c2 >> 19) | ((c2 >> 6) & 0x03E0) | ((c2 << 7) & 0x7C00)) << 16);
+  46b59a:	09 c8                	or     eax,ecx
+;				*d = (c1 >> 19) | ((c1 >> 6) & 0x03E0) | ((c1 << 7) & 0x7C00) |
+  46b59c:	89 e9                	mov    ecx,ebp
+  46b59e:	41 c1 ee 06          	shr    r14d,0x6
+  46b5a2:	c1 e1 07             	shl    ecx,0x7
+  46b5a5:	41 81 e6 e0 03 00 00 	and    r14d,0x3e0
+  46b5ac:	c1 ed 13             	shr    ebp,0x13
+  46b5af:	81 e1 00 7c 00 00    	and    ecx,0x7c00
+;				     (((c2 >> 19) | ((c2 >> 6) & 0x03E0) | ((c2 << 7) & 0x7C00)) << 16);
+  46b5b5:	c1 e0 10             	shl    eax,0x10
+;				*d = (c1 >> 19) | ((c1 >> 6) & 0x03E0) | ((c1 << 7) & 0x7C00) |
+  46b5b8:	44 09 f1             	or     ecx,r14d
+  46b5bb:	09 e9                	or     ecx,ebp
+  46b5bd:	09 c8                	or     eax,ecx
+  46b5bf:	42 89 04 97          	mov    DWORD PTR [rdi+r10*4],eax
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b5c3:	49 83 c2 01          	add    r10,0x1
+  46b5c7:	4d 39 ca             	cmp    r10,r9
+  46b5ca:	75 a4                	jne    46b570 <fb_hBlit32to15RGB+0x2c0>
+  46b5cc:	45 8d 4d ff          	lea    r9d,[r13-0x1]
+  46b5d0:	e9 37 ff ff ff       	jmp    46b50c <fb_hBlit32to15RGB+0x25c>
+  46b5d5:	0f 1f 00             	nop    DWORD PTR [rax]
+  46b5d8:	48 89 d5             	mov    rbp,rdx
+  46b5db:	49 89 fa             	mov    r10,rdi
+  46b5de:	e9 3b ff ff ff       	jmp    46b51e <fb_hBlit32to15RGB+0x26e>
+  46b5e3:	49 89 fa             	mov    r10,rdi
+  46b5e6:	48 89 d0             	mov    rax,rdx
+  46b5e9:	31 c9                	xor    ecx,ecx
+  46b5eb:	e9 3d fe ff ff       	jmp    46b42d <fb_hBlit32to15RGB+0x17d>
+
+000000000046b5f0 <fb_hBlit32to15BGR>:
+;
+;/*:::::*/
+;static void fb_hBlit32to15BGR(unsigned char *dest, int pitch)
+;{
+;	unsigned int *d, *s;
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46b5f0:	4c 8b 1d 01 a7 04 00 	mov    r11,QWORD PTR [rip+0x4a701]        # 4b5cf8 <__fb_gfx>
+;{
+  46b5f7:	41 56                	push   r14
+  46b5f9:	41 55                	push   r13
+  46b5fb:	41 54                	push   r12
+  46b5fd:	4c 63 e6             	movsxd r12,esi
+  46b600:	55                   	push   rbp
+  46b601:	53                   	push   rbx
+;	unsigned int c1, c2;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;	
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46b602:	41 8b 43 70          	mov    eax,DWORD PTR [r11+0x70]
+  46b606:	45 8b 4b 24          	mov    r9d,DWORD PTR [r11+0x24]
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46b60a:	49 8b 73 18          	mov    rsi,QWORD PTR [r11+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  46b60e:	4d 8b 53 50          	mov    r10,QWORD PTR [r11+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46b612:	44 0f af c8          	imul   r9d,eax
+  46b616:	45 85 c9             	test   r9d,r9d
+  46b619:	0f 84 c1 02 00 00    	je     46b8e0 <fb_hBlit32to15BGR+0x2f0>
+;			d = (unsigned int *)dest;
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+;				c1 = *s;
+;				c2 = *(s + 1);
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 9) & 0x7C00) |
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 9) & 0x7C00)) << 16);
+  46b61f:	f3 0f 7e 3d 59 88 01 	movq   xmm7,QWORD PTR [rip+0x18859]        # 483e80 <cursor_data+0x100>
+  46b626:	00 
+  46b627:	66 0f 6f 25 51 88 01 	movdqa xmm4,XMMWORD PTR [rip+0x18851]        # 483e80 <cursor_data+0x100>
+  46b62e:	00 
+  46b62f:	45 31 c0             	xor    r8d,r8d
+  46b632:	66 0f 6f 1d 06 88 01 	movdqa xmm3,XMMWORD PTR [rip+0x18806]        # 483e40 <cursor_data+0xc0>
+  46b639:	00 
+  46b63a:	66 0f 6f 15 0e 88 01 	movdqa xmm2,XMMWORD PTR [rip+0x1880e]        # 483e50 <cursor_data+0xd0>
+  46b641:	00 
+  46b642:	f3 0f 7e 35 f6 87 01 	movq   xmm6,QWORD PTR [rip+0x187f6]        # 483e40 <cursor_data+0xc0>
+  46b649:	00 
+  46b64a:	f3 0f 7e 2d fe 87 01 	movq   xmm5,QWORD PTR [rip+0x187fe]        # 483e50 <cursor_data+0xd0>
+  46b651:	00 
+  46b652:	eb 28                	jmp    46b67c <fb_hBlit32to15BGR+0x8c>
+  46b654:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+;			if (__fb_gfx->w & 0x1) {
+;				c1 = *s;
+;				*(unsigned short *)d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 9) & 0x7C00);
+;			}
+;		}
+;		z++;
+  46b658:	41 83 c0 01          	add    r8d,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46b65c:	41 39 c0             	cmp    r8d,eax
+  46b65f:	7c 0e                	jl     46b66f <fb_hBlit32to15BGR+0x7f>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  46b661:	49 63 53 30          	movsxd rdx,DWORD PTR [r11+0x30]
+;			dirty++;
+  46b665:	49 83 c2 01          	add    r10,0x1
+;			z = 0;
+  46b669:	45 31 c0             	xor    r8d,r8d
+;			src += __fb_gfx->pitch;
+  46b66c:	48 01 d6             	add    rsi,rdx
+;		}
+;		dest += pitch;
+  46b66f:	4c 01 e7             	add    rdi,r12
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46b672:	41 83 e9 01          	sub    r9d,0x1
+  46b676:	0f 84 64 02 00 00    	je     46b8e0 <fb_hBlit32to15BGR+0x2f0>
+;		if (*dirty) {
+  46b67c:	41 80 3a 00          	cmp    BYTE PTR [r10],0x0
+  46b680:	74 d6                	je     46b658 <fb_hBlit32to15BGR+0x68>
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b682:	41 8b 53 20          	mov    edx,DWORD PTR [r11+0x20]
+  46b686:	41 89 d5             	mov    r13d,edx
+  46b689:	41 d1 fd             	sar    r13d,1
+  46b68c:	0f 84 ce 02 00 00    	je     46b960 <fb_hBlit32to15BGR+0x370>
+  46b692:	44 89 eb             	mov    ebx,r13d
+  46b695:	44 89 e9             	mov    ecx,r13d
+  46b698:	48 8d 04 9f          	lea    rax,[rdi+rbx*4]
+  46b69c:	48 8d 14 de          	lea    rdx,[rsi+rbx*8]
+  46b6a0:	48 39 c6             	cmp    rsi,rax
+  46b6a3:	0f 93 c0             	setae  al
+  46b6a6:	48 39 d7             	cmp    rdi,rdx
+  46b6a9:	0f 93 c2             	setae  dl
+  46b6ac:	08 d0                	or     al,dl
+  46b6ae:	0f 84 3c 02 00 00    	je     46b8f0 <fb_hBlit32to15BGR+0x300>
+  46b6b4:	41 83 fd 01          	cmp    r13d,0x1
+  46b6b8:	0f 84 32 02 00 00    	je     46b8f0 <fb_hBlit32to15BGR+0x300>
+  46b6be:	41 8d 5d ff          	lea    ebx,[r13-0x1]
+  46b6c2:	83 fb 02             	cmp    ebx,0x2
+  46b6c5:	0f 86 a0 02 00 00    	jbe    46b96b <fb_hBlit32to15BGR+0x37b>
+  46b6cb:	44 89 ea             	mov    edx,r13d
+  46b6ce:	31 c0                	xor    eax,eax
+  46b6d0:	c1 ea 02             	shr    edx,0x2
+  46b6d3:	48 c1 e2 04          	shl    rdx,0x4
+  46b6d7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+  46b6de:	00 00 
+;				c1 = *s;
+  46b6e0:	f3 0f 6f 0c 46       	movdqu xmm1,XMMWORD PTR [rsi+rax*2]
+  46b6e5:	f3 0f 6f 44 46 10    	movdqu xmm0,XMMWORD PTR [rsi+rax*2+0x10]
+  46b6eb:	66 44 0f 6f c1       	movdqa xmm8,xmm1
+  46b6f0:	0f c6 c8 dd          	shufps xmm1,xmm0,0xdd
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 9) & 0x7C00)) << 16);
+  46b6f4:	66 44 0f 6f c9       	movdqa xmm9,xmm1
+;				c1 = *s;
+  46b6f9:	44 0f c6 c0 88       	shufps xmm8,xmm0,0x88
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 9) & 0x7C00)) << 16);
+  46b6fe:	66 0f 6f c1          	movdqa xmm0,xmm1
+  46b702:	66 41 0f 72 d1 06    	psrld  xmm9,0x6
+  46b708:	66 0f 72 d0 03       	psrld  xmm0,0x3
+  46b70d:	66 0f 72 d1 09       	psrld  xmm1,0x9
+  46b712:	66 44 0f db cb       	pand   xmm9,xmm3
+  46b717:	66 0f db c4          	pand   xmm0,xmm4
+  46b71b:	66 0f db ca          	pand   xmm1,xmm2
+  46b71f:	66 41 0f eb c1       	por    xmm0,xmm9
+  46b724:	66 0f eb c1          	por    xmm0,xmm1
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 9) & 0x7C00) |
+  46b728:	66 41 0f 6f c8       	movdqa xmm1,xmm8
+  46b72d:	66 0f 72 d1 09       	psrld  xmm1,0x9
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 9) & 0x7C00)) << 16);
+  46b732:	66 0f 72 f0 10       	pslld  xmm0,0x10
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 9) & 0x7C00) |
+  46b737:	66 0f db ca          	pand   xmm1,xmm2
+  46b73b:	66 0f eb c1          	por    xmm0,xmm1
+  46b73f:	66 41 0f 6f c8       	movdqa xmm1,xmm8
+  46b744:	66 0f 72 d1 03       	psrld  xmm1,0x3
+  46b749:	66 41 0f 72 d0 06    	psrld  xmm8,0x6
+  46b74f:	66 0f db cc          	pand   xmm1,xmm4
+  46b753:	66 44 0f db c3       	pand   xmm8,xmm3
+  46b758:	66 41 0f eb c8       	por    xmm1,xmm8
+  46b75d:	66 0f eb c1          	por    xmm0,xmm1
+  46b761:	0f 11 04 07          	movups XMMWORD PTR [rdi+rax*1],xmm0
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b765:	48 83 c0 10          	add    rax,0x10
+  46b769:	48 39 c2             	cmp    rdx,rax
+  46b76c:	0f 85 6e ff ff ff    	jne    46b6e0 <fb_hBlit32to15BGR+0xf0>
+  46b772:	45 89 ee             	mov    r14d,r13d
+  46b775:	41 83 e6 fc          	and    r14d,0xfffffffc
+  46b779:	44 89 f2             	mov    edx,r14d
+  46b77c:	48 8d 2c 97          	lea    rbp,[rdi+rdx*4]
+  46b780:	48 8d 04 d6          	lea    rax,[rsi+rdx*8]
+  46b784:	45 39 ee             	cmp    r14d,r13d
+  46b787:	0f 84 09 01 00 00    	je     46b896 <fb_hBlit32to15BGR+0x2a6>
+  46b78d:	44 89 e9             	mov    ecx,r13d
+  46b790:	44 29 f1             	sub    ecx,r14d
+  46b793:	83 f9 01             	cmp    ecx,0x1
+  46b796:	0f 84 a5 00 00 00    	je     46b841 <fb_hBlit32to15BGR+0x251>
+  46b79c:	4c 8d 2c d6          	lea    r13,[rsi+rdx*8]
+;				c1 = *s;
+  46b7a0:	f3 41 0f 7e 45 08    	movq   xmm0,QWORD PTR [r13+0x8]
+  46b7a6:	f3 41 0f 7e 4d 00    	movq   xmm1,QWORD PTR [r13+0x0]
+  46b7ac:	66 44 0f 6f c1       	movdqa xmm8,xmm1
+  46b7b1:	66 0f 62 c8          	punpckldq xmm1,xmm0
+  46b7b5:	66 0f 70 c9 0e       	pshufd xmm1,xmm1,0xe
+  46b7ba:	66 44 0f 62 c0       	punpckldq xmm8,xmm0
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 9) & 0x7C00)) << 16);
+  46b7bf:	66 44 0f 6f c9       	movdqa xmm9,xmm1
+  46b7c4:	66 0f 6f c1          	movdqa xmm0,xmm1
+  46b7c8:	66 0f 72 d0 03       	psrld  xmm0,0x3
+  46b7cd:	66 41 0f 72 d1 06    	psrld  xmm9,0x6
+  46b7d3:	66 0f db c7          	pand   xmm0,xmm7
+  46b7d7:	66 0f 72 d1 09       	psrld  xmm1,0x9
+  46b7dc:	66 44 0f db ce       	pand   xmm9,xmm6
+  46b7e1:	66 0f db cd          	pand   xmm1,xmm5
+  46b7e5:	66 41 0f eb c1       	por    xmm0,xmm9
+  46b7ea:	66 0f eb c1          	por    xmm0,xmm1
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 9) & 0x7C00) |
+  46b7ee:	66 41 0f 6f c8       	movdqa xmm1,xmm8
+  46b7f3:	66 0f 72 d1 09       	psrld  xmm1,0x9
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 9) & 0x7C00)) << 16);
+  46b7f8:	66 0f 72 f0 10       	pslld  xmm0,0x10
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 9) & 0x7C00) |
+  46b7fd:	66 0f db cd          	pand   xmm1,xmm5
+  46b801:	66 0f eb c1          	por    xmm0,xmm1
+  46b805:	66 41 0f 6f c8       	movdqa xmm1,xmm8
+  46b80a:	66 0f 72 d1 03       	psrld  xmm1,0x3
+  46b80f:	66 41 0f 72 d0 06    	psrld  xmm8,0x6
+  46b815:	66 0f db cf          	pand   xmm1,xmm7
+  46b819:	66 44 0f db c6       	pand   xmm8,xmm6
+  46b81e:	66 41 0f eb c8       	por    xmm1,xmm8
+  46b823:	66 0f eb c1          	por    xmm0,xmm1
+  46b827:	66 0f d6 04 97       	movq   QWORD PTR [rdi+rdx*4],xmm0
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b82c:	89 ca                	mov    edx,ecx
+  46b82e:	83 e2 fe             	and    edx,0xfffffffe
+  46b831:	41 89 d5             	mov    r13d,edx
+  46b834:	4a 8d 6c ad 00       	lea    rbp,[rbp+r13*4+0x0]
+  46b839:	4a 8d 04 e8          	lea    rax,[rax+r13*8]
+  46b83d:	39 d1                	cmp    ecx,edx
+  46b83f:	74 55                	je     46b896 <fb_hBlit32to15BGR+0x2a6>
+;				c2 = *(s + 1);
+  46b841:	8b 50 04             	mov    edx,DWORD PTR [rax+0x4]
+;				c1 = *s;
+  46b844:	8b 08                	mov    ecx,DWORD PTR [rax]
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 9) & 0x7C00)) << 16);
+  46b846:	41 89 d5             	mov    r13d,edx
+  46b849:	89 d0                	mov    eax,edx
+  46b84b:	c1 ea 09             	shr    edx,0x9
+  46b84e:	c1 e8 03             	shr    eax,0x3
+  46b851:	41 c1 ed 06          	shr    r13d,0x6
+  46b855:	81 e2 00 7c 00 00    	and    edx,0x7c00
+  46b85b:	41 81 e5 e0 03 00 00 	and    r13d,0x3e0
+  46b862:	83 e0 1f             	and    eax,0x1f
+  46b865:	44 09 e8             	or     eax,r13d
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 9) & 0x7C00) |
+  46b868:	41 89 cd             	mov    r13d,ecx
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 9) & 0x7C00)) << 16);
+  46b86b:	09 d0                	or     eax,edx
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 9) & 0x7C00) |
+  46b86d:	89 ca                	mov    edx,ecx
+  46b86f:	41 c1 ed 06          	shr    r13d,0x6
+  46b873:	c1 ea 03             	shr    edx,0x3
+  46b876:	41 81 e5 e0 03 00 00 	and    r13d,0x3e0
+  46b87d:	c1 e9 09             	shr    ecx,0x9
+  46b880:	83 e2 1f             	and    edx,0x1f
+  46b883:	81 e1 00 7c 00 00    	and    ecx,0x7c00
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 9) & 0x7C00)) << 16);
+  46b889:	c1 e0 10             	shl    eax,0x10
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 9) & 0x7C00) |
+  46b88c:	44 09 ea             	or     edx,r13d
+  46b88f:	09 ca                	or     edx,ecx
+  46b891:	09 d0                	or     eax,edx
+  46b893:	89 45 00             	mov    DWORD PTR [rbp+0x0],eax
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b896:	48 83 c3 01          	add    rbx,0x1
+;			if (__fb_gfx->w & 0x1) {
+  46b89a:	41 8b 53 20          	mov    edx,DWORD PTR [r11+0x20]
+  46b89e:	41 8b 43 70          	mov    eax,DWORD PTR [r11+0x70]
+;				s += 2;
+  46b8a2:	48 8d 0c de          	lea    rcx,[rsi+rbx*8]
+;				d++;
+  46b8a6:	48 8d 1c 9f          	lea    rbx,[rdi+rbx*4]
+;			if (__fb_gfx->w & 0x1) {
+  46b8aa:	83 e2 01             	and    edx,0x1
+  46b8ad:	0f 84 a5 fd ff ff    	je     46b658 <fb_hBlit32to15BGR+0x68>
+;				c1 = *s;
+  46b8b3:	8b 09                	mov    ecx,DWORD PTR [rcx]
+;				*(unsigned short *)d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 9) & 0x7C00);
+  46b8b5:	89 ca                	mov    edx,ecx
+  46b8b7:	89 cd                	mov    ebp,ecx
+  46b8b9:	c1 e9 09             	shr    ecx,0x9
+  46b8bc:	c1 ea 03             	shr    edx,0x3
+  46b8bf:	c1 ed 06             	shr    ebp,0x6
+  46b8c2:	66 81 e1 00 7c       	and    cx,0x7c00
+  46b8c7:	83 e2 1f             	and    edx,0x1f
+  46b8ca:	66 81 e5 e0 03       	and    bp,0x3e0
+  46b8cf:	09 ea                	or     edx,ebp
+  46b8d1:	09 ca                	or     edx,ecx
+  46b8d3:	66 89 13             	mov    WORD PTR [rbx],dx
+  46b8d6:	e9 7d fd ff ff       	jmp    46b658 <fb_hBlit32to15BGR+0x68>
+  46b8db:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;	}
+;}
+  46b8e0:	5b                   	pop    rbx
+  46b8e1:	5d                   	pop    rbp
+  46b8e2:	41 5c                	pop    r12
+  46b8e4:	41 5d                	pop    r13
+  46b8e6:	41 5e                	pop    r14
+  46b8e8:	c3                   	ret    
+  46b8e9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b8f0:	31 c9                	xor    ecx,ecx
+  46b8f2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+;				c2 = *(s + 1);
+  46b8f8:	8b 54 ce 04          	mov    edx,DWORD PTR [rsi+rcx*8+0x4]
+;				c1 = *s;
+  46b8fc:	8b 2c ce             	mov    ebp,DWORD PTR [rsi+rcx*8]
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 9) & 0x7C00)) << 16);
+  46b8ff:	89 d0                	mov    eax,edx
+  46b901:	41 89 d6             	mov    r14d,edx
+  46b904:	c1 ea 09             	shr    edx,0x9
+  46b907:	c1 e8 06             	shr    eax,0x6
+  46b90a:	41 c1 ee 03          	shr    r14d,0x3
+  46b90e:	81 e2 00 7c 00 00    	and    edx,0x7c00
+  46b914:	41 83 e6 1f          	and    r14d,0x1f
+  46b918:	25 e0 03 00 00       	and    eax,0x3e0
+  46b91d:	44 09 f0             	or     eax,r14d
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 9) & 0x7C00) |
+  46b920:	41 89 ee             	mov    r14d,ebp
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 9) & 0x7C00)) << 16);
+  46b923:	09 d0                	or     eax,edx
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 9) & 0x7C00) |
+  46b925:	89 ea                	mov    edx,ebp
+  46b927:	41 c1 ee 03          	shr    r14d,0x3
+  46b92b:	c1 ea 06             	shr    edx,0x6
+  46b92e:	41 83 e6 1f          	and    r14d,0x1f
+  46b932:	c1 ed 09             	shr    ebp,0x9
+  46b935:	81 e2 e0 03 00 00    	and    edx,0x3e0
+  46b93b:	81 e5 00 7c 00 00    	and    ebp,0x7c00
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 6) & 0x03E0) | ((c2 >> 9) & 0x7C00)) << 16);
+  46b941:	c1 e0 10             	shl    eax,0x10
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 6) & 0x03E0) | ((c1 >> 9) & 0x7C00) |
+  46b944:	44 09 f2             	or     edx,r14d
+  46b947:	09 ea                	or     edx,ebp
+  46b949:	09 d0                	or     eax,edx
+  46b94b:	89 04 8f             	mov    DWORD PTR [rdi+rcx*4],eax
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b94e:	48 83 c1 01          	add    rcx,0x1
+  46b952:	48 39 cb             	cmp    rbx,rcx
+  46b955:	75 a1                	jne    46b8f8 <fb_hBlit32to15BGR+0x308>
+  46b957:	41 8d 5d ff          	lea    ebx,[r13-0x1]
+  46b95b:	e9 36 ff ff ff       	jmp    46b896 <fb_hBlit32to15BGR+0x2a6>
+  46b960:	48 89 f1             	mov    rcx,rsi
+  46b963:	48 89 fb             	mov    rbx,rdi
+  46b966:	e9 3f ff ff ff       	jmp    46b8aa <fb_hBlit32to15BGR+0x2ba>
+  46b96b:	48 89 fd             	mov    rbp,rdi
+  46b96e:	48 89 f0             	mov    rax,rsi
+  46b971:	31 d2                	xor    edx,edx
+  46b973:	e9 24 fe ff ff       	jmp    46b79c <fb_hBlit32to15BGR+0x1ac>
+  46b978:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+  46b97f:	00 
+
+000000000046b980 <fb_hBlit32to16RGB>:
+;
+;
+;/*:::::*/
+;static void fb_hBlit32to16RGB(unsigned char *dest, int pitch)
+;{
+  46b980:	41 56                	push   r14
+  46b982:	41 55                	push   r13
+  46b984:	41 54                	push   r12
+  46b986:	55                   	push   rbp
+  46b987:	53                   	push   rbx
+;	unsigned int *d, *s;
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46b988:	48 8b 1d 69 a3 04 00 	mov    rbx,QWORD PTR [rip+0x4a369]        # 4b5cf8 <__fb_gfx>
+;	unsigned int c1, c2;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;	
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46b98f:	8b 43 70             	mov    eax,DWORD PTR [rbx+0x70]
+  46b992:	44 8b 43 24          	mov    r8d,DWORD PTR [rbx+0x24]
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46b996:	48 8b 53 18          	mov    rdx,QWORD PTR [rbx+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  46b99a:	4c 8b 5b 50          	mov    r11,QWORD PTR [rbx+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46b99e:	44 0f af c0          	imul   r8d,eax
+  46b9a2:	45 85 c0             	test   r8d,r8d
+  46b9a5:	0f 84 7d 02 00 00    	je     46bc28 <fb_hBlit32to16RGB+0x2a8>
+  46b9ab:	4c 63 e6             	movsxd r12,esi
+  46b9ae:	66 0f 6f 25 da 84 01 	movdqa xmm4,XMMWORD PTR [rip+0x184da]        # 483e90 <cursor_data+0x110>
+  46b9b5:	00 
+  46b9b6:	31 f6                	xor    esi,esi
+;			d = (unsigned int *)dest;
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+;				c1 = *s;
+;				c2 = *(s + 1);
+;				*d = (c1 >> 19) | ((c1 >> 5) & 0x07E0) | ((c1 << 8) & 0xF800) |
+;				     (((c2 >> 19) | ((c2 >> 5) & 0x07E0) | ((c2 << 8) & 0xF800)) << 16);
+  46b9b8:	f3 0f 7e 35 d0 84 01 	movq   xmm6,QWORD PTR [rip+0x184d0]        # 483e90 <cursor_data+0x110>
+  46b9bf:	00 
+  46b9c0:	f3 0f 7e 2d d8 84 01 	movq   xmm5,QWORD PTR [rip+0x184d8]        # 483ea0 <cursor_data+0x120>
+  46b9c7:	00 
+  46b9c8:	66 0f 6f 1d d0 84 01 	movdqa xmm3,XMMWORD PTR [rip+0x184d0]        # 483ea0 <cursor_data+0x120>
+  46b9cf:	00 
+  46b9d0:	eb 27                	jmp    46b9f9 <fb_hBlit32to16RGB+0x79>
+  46b9d2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+;			if (__fb_gfx->w & 0x1) {
+;				c1 = *s;
+;				*(unsigned short *)d = (c1 >> 19) | ((c1 >> 5) & 0x07E0) | ((c1 << 8) & 0xF800);
+;			}
+;		}
+;		z++;
+  46b9d8:	83 c6 01             	add    esi,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46b9db:	39 c6                	cmp    esi,eax
+  46b9dd:	7c 0d                	jl     46b9ec <fb_hBlit32to16RGB+0x6c>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  46b9df:	48 63 4b 30          	movsxd rcx,DWORD PTR [rbx+0x30]
+;			dirty++;
+  46b9e3:	49 83 c3 01          	add    r11,0x1
+;			z = 0;
+  46b9e7:	31 f6                	xor    esi,esi
+;			src += __fb_gfx->pitch;
+  46b9e9:	48 01 ca             	add    rdx,rcx
+;		}
+;		dest += pitch;
+  46b9ec:	4c 01 e7             	add    rdi,r12
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46b9ef:	41 83 e8 01          	sub    r8d,0x1
+  46b9f3:	0f 84 2f 02 00 00    	je     46bc28 <fb_hBlit32to16RGB+0x2a8>
+;		if (*dirty) {
+  46b9f9:	41 80 3b 00          	cmp    BYTE PTR [r11],0x0
+  46b9fd:	74 d9                	je     46b9d8 <fb_hBlit32to16RGB+0x58>
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46b9ff:	8b 4b 20             	mov    ecx,DWORD PTR [rbx+0x20]
+  46ba02:	41 89 cd             	mov    r13d,ecx
+  46ba05:	41 d1 fd             	sar    r13d,1
+  46ba08:	0f 84 9a 02 00 00    	je     46bca8 <fb_hBlit32to16RGB+0x328>
+  46ba0e:	45 89 e9             	mov    r9d,r13d
+  46ba11:	44 89 ed             	mov    ebp,r13d
+  46ba14:	4a 8d 04 8f          	lea    rax,[rdi+r9*4]
+  46ba18:	4a 8d 0c ca          	lea    rcx,[rdx+r9*8]
+  46ba1c:	48 39 c2             	cmp    rdx,rax
+  46ba1f:	0f 93 c0             	setae  al
+  46ba22:	48 39 cf             	cmp    rdi,rcx
+  46ba25:	0f 93 c1             	setae  cl
+  46ba28:	08 c8                	or     al,cl
+  46ba2a:	0f 84 08 02 00 00    	je     46bc38 <fb_hBlit32to16RGB+0x2b8>
+  46ba30:	41 83 fd 01          	cmp    r13d,0x1
+  46ba34:	0f 84 fe 01 00 00    	je     46bc38 <fb_hBlit32to16RGB+0x2b8>
+  46ba3a:	45 8d 4d ff          	lea    r9d,[r13-0x1]
+  46ba3e:	41 83 f9 02          	cmp    r9d,0x2
+  46ba42:	0f 86 6b 02 00 00    	jbe    46bcb3 <fb_hBlit32to16RGB+0x333>
+  46ba48:	44 89 e9             	mov    ecx,r13d
+  46ba4b:	31 c0                	xor    eax,eax
+  46ba4d:	c1 e9 02             	shr    ecx,0x2
+  46ba50:	48 c1 e1 04          	shl    rcx,0x4
+  46ba54:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+;				c1 = *s;
+  46ba58:	f3 0f 6f 0c 42       	movdqu xmm1,XMMWORD PTR [rdx+rax*2]
+  46ba5d:	f3 0f 6f 7c 42 10    	movdqu xmm7,XMMWORD PTR [rdx+rax*2+0x10]
+  46ba63:	66 0f 6f d1          	movdqa xmm2,xmm1
+  46ba67:	0f c6 cf dd          	shufps xmm1,xmm7,0xdd
+;				     (((c2 >> 19) | ((c2 >> 5) & 0x07E0) | ((c2 << 8) & 0xF800)) << 16);
+  46ba6b:	66 0f 6f c1          	movdqa xmm0,xmm1
+;				c1 = *s;
+  46ba6f:	0f c6 d7 88          	shufps xmm2,xmm7,0x88
+;				     (((c2 >> 19) | ((c2 >> 5) & 0x07E0) | ((c2 << 8) & 0xF800)) << 16);
+  46ba73:	66 0f 6f f9          	movdqa xmm7,xmm1
+  46ba77:	66 0f 72 d0 05       	psrld  xmm0,0x5
+  46ba7c:	66 0f 72 f7 08       	pslld  xmm7,0x8
+  46ba81:	66 0f 72 d1 13       	psrld  xmm1,0x13
+  46ba86:	66 0f db c4          	pand   xmm0,xmm4
+  46ba8a:	66 0f db fb          	pand   xmm7,xmm3
+  46ba8e:	66 0f eb c7          	por    xmm0,xmm7
+  46ba92:	66 0f eb c1          	por    xmm0,xmm1
+;				*d = (c1 >> 19) | ((c1 >> 5) & 0x07E0) | ((c1 << 8) & 0xF800) |
+  46ba96:	66 0f 6f ca          	movdqa xmm1,xmm2
+  46ba9a:	66 0f 72 d1 13       	psrld  xmm1,0x13
+;				     (((c2 >> 19) | ((c2 >> 5) & 0x07E0) | ((c2 << 8) & 0xF800)) << 16);
+  46ba9f:	66 0f 72 f0 10       	pslld  xmm0,0x10
+;				*d = (c1 >> 19) | ((c1 >> 5) & 0x07E0) | ((c1 << 8) & 0xF800) |
+  46baa4:	66 0f eb c1          	por    xmm0,xmm1
+  46baa8:	66 0f 6f ca          	movdqa xmm1,xmm2
+  46baac:	66 0f 72 d1 05       	psrld  xmm1,0x5
+  46bab1:	66 0f 72 f2 08       	pslld  xmm2,0x8
+  46bab6:	66 0f db cc          	pand   xmm1,xmm4
+  46baba:	66 0f db d3          	pand   xmm2,xmm3
+  46babe:	66 0f eb ca          	por    xmm1,xmm2
+  46bac2:	66 0f eb c1          	por    xmm0,xmm1
+  46bac6:	0f 11 04 07          	movups XMMWORD PTR [rdi+rax*1],xmm0
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46baca:	48 83 c0 10          	add    rax,0x10
+  46bace:	48 39 c8             	cmp    rax,rcx
+  46bad1:	75 85                	jne    46ba58 <fb_hBlit32to16RGB+0xd8>
+  46bad3:	45 89 ee             	mov    r14d,r13d
+  46bad6:	41 83 e6 fc          	and    r14d,0xfffffffc
+  46bada:	44 89 f1             	mov    ecx,r14d
+  46badd:	4c 8d 14 8f          	lea    r10,[rdi+rcx*4]
+  46bae1:	48 8d 04 ca          	lea    rax,[rdx+rcx*8]
+  46bae5:	45 39 ee             	cmp    r14d,r13d
+  46bae8:	0f 84 ee 00 00 00    	je     46bbdc <fb_hBlit32to16RGB+0x25c>
+  46baee:	44 89 ed             	mov    ebp,r13d
+  46baf1:	44 29 f5             	sub    ebp,r14d
+  46baf4:	83 fd 01             	cmp    ebp,0x1
+  46baf7:	0f 84 91 00 00 00    	je     46bb8e <fb_hBlit32to16RGB+0x20e>
+  46bafd:	4c 8d 2c ca          	lea    r13,[rdx+rcx*8]
+;				c1 = *s;
+  46bb01:	f3 41 0f 7e 45 08    	movq   xmm0,QWORD PTR [r13+0x8]
+  46bb07:	f3 41 0f 7e 4d 00    	movq   xmm1,QWORD PTR [r13+0x0]
+  46bb0d:	66 0f 6f d1          	movdqa xmm2,xmm1
+  46bb11:	66 0f 62 c8          	punpckldq xmm1,xmm0
+  46bb15:	66 0f 70 c9 0e       	pshufd xmm1,xmm1,0xe
+  46bb1a:	66 0f 62 d0          	punpckldq xmm2,xmm0
+;				     (((c2 >> 19) | ((c2 >> 5) & 0x07E0) | ((c2 << 8) & 0xF800)) << 16);
+  46bb1e:	66 0f 6f f9          	movdqa xmm7,xmm1
+  46bb22:	66 0f 6f c1          	movdqa xmm0,xmm1
+  46bb26:	66 0f 72 d0 05       	psrld  xmm0,0x5
+  46bb2b:	66 0f 72 f7 08       	pslld  xmm7,0x8
+  46bb30:	66 0f db c6          	pand   xmm0,xmm6
+  46bb34:	66 0f 72 d1 13       	psrld  xmm1,0x13
+  46bb39:	66 0f db fd          	pand   xmm7,xmm5
+  46bb3d:	66 0f eb c7          	por    xmm0,xmm7
+  46bb41:	66 0f eb c1          	por    xmm0,xmm1
+;				*d = (c1 >> 19) | ((c1 >> 5) & 0x07E0) | ((c1 << 8) & 0xF800) |
+  46bb45:	66 0f 6f ca          	movdqa xmm1,xmm2
+  46bb49:	66 0f 72 d1 13       	psrld  xmm1,0x13
+;				     (((c2 >> 19) | ((c2 >> 5) & 0x07E0) | ((c2 << 8) & 0xF800)) << 16);
+  46bb4e:	66 0f 72 f0 10       	pslld  xmm0,0x10
+;				*d = (c1 >> 19) | ((c1 >> 5) & 0x07E0) | ((c1 << 8) & 0xF800) |
+  46bb53:	66 0f eb c1          	por    xmm0,xmm1
+  46bb57:	66 0f 6f ca          	movdqa xmm1,xmm2
+  46bb5b:	66 0f 72 d1 05       	psrld  xmm1,0x5
+  46bb60:	66 0f 72 f2 08       	pslld  xmm2,0x8
+  46bb65:	66 0f db ce          	pand   xmm1,xmm6
+  46bb69:	66 0f db d5          	pand   xmm2,xmm5
+  46bb6d:	66 0f eb ca          	por    xmm1,xmm2
+  46bb71:	66 0f eb c1          	por    xmm0,xmm1
+  46bb75:	66 0f d6 04 8f       	movq   QWORD PTR [rdi+rcx*4],xmm0
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46bb7a:	89 e9                	mov    ecx,ebp
+  46bb7c:	83 e1 fe             	and    ecx,0xfffffffe
+  46bb7f:	41 89 cd             	mov    r13d,ecx
+  46bb82:	4f 8d 14 aa          	lea    r10,[r10+r13*4]
+  46bb86:	4a 8d 04 e8          	lea    rax,[rax+r13*8]
+  46bb8a:	39 cd                	cmp    ebp,ecx
+  46bb8c:	74 4e                	je     46bbdc <fb_hBlit32to16RGB+0x25c>
+;				c2 = *(s + 1);
+  46bb8e:	8b 48 04             	mov    ecx,DWORD PTR [rax+0x4]
+;				c1 = *s;
+  46bb91:	8b 28                	mov    ebp,DWORD PTR [rax]
+;				     (((c2 >> 19) | ((c2 >> 5) & 0x07E0) | ((c2 << 8) & 0xF800)) << 16);
+  46bb93:	41 89 cd             	mov    r13d,ecx
+  46bb96:	89 c8                	mov    eax,ecx
+  46bb98:	c1 e9 13             	shr    ecx,0x13
+  46bb9b:	c1 e8 05             	shr    eax,0x5
+  46bb9e:	41 c1 e5 08          	shl    r13d,0x8
+  46bba2:	41 81 e5 00 f8 00 00 	and    r13d,0xf800
+  46bba9:	25 e0 07 00 00       	and    eax,0x7e0
+  46bbae:	44 09 e8             	or     eax,r13d
+;				*d = (c1 >> 19) | ((c1 >> 5) & 0x07E0) | ((c1 << 8) & 0xF800) |
+  46bbb1:	41 89 ed             	mov    r13d,ebp
+;				     (((c2 >> 19) | ((c2 >> 5) & 0x07E0) | ((c2 << 8) & 0xF800)) << 16);
+  46bbb4:	09 c8                	or     eax,ecx
+;				*d = (c1 >> 19) | ((c1 >> 5) & 0x07E0) | ((c1 << 8) & 0xF800) |
+  46bbb6:	89 e9                	mov    ecx,ebp
+  46bbb8:	41 c1 e5 08          	shl    r13d,0x8
+  46bbbc:	c1 e9 05             	shr    ecx,0x5
+  46bbbf:	41 81 e5 00 f8 00 00 	and    r13d,0xf800
+  46bbc6:	c1 ed 13             	shr    ebp,0x13
+  46bbc9:	81 e1 e0 07 00 00    	and    ecx,0x7e0
+;				     (((c2 >> 19) | ((c2 >> 5) & 0x07E0) | ((c2 << 8) & 0xF800)) << 16);
+  46bbcf:	c1 e0 10             	shl    eax,0x10
+;				*d = (c1 >> 19) | ((c1 >> 5) & 0x07E0) | ((c1 << 8) & 0xF800) |
+  46bbd2:	44 09 e9             	or     ecx,r13d
+  46bbd5:	09 e9                	or     ecx,ebp
+  46bbd7:	09 c8                	or     eax,ecx
+  46bbd9:	41 89 02             	mov    DWORD PTR [r10],eax
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46bbdc:	49 83 c1 01          	add    r9,0x1
+;			if (__fb_gfx->w & 0x1) {
+  46bbe0:	8b 4b 20             	mov    ecx,DWORD PTR [rbx+0x20]
+  46bbe3:	8b 43 70             	mov    eax,DWORD PTR [rbx+0x70]
+;				s += 2;
+  46bbe6:	4a 8d 2c ca          	lea    rbp,[rdx+r9*8]
+;				d++;
+  46bbea:	4e 8d 14 8f          	lea    r10,[rdi+r9*4]
+;			if (__fb_gfx->w & 0x1) {
+  46bbee:	83 e1 01             	and    ecx,0x1
+  46bbf1:	0f 84 e1 fd ff ff    	je     46b9d8 <fb_hBlit32to16RGB+0x58>
+;				c1 = *s;
+  46bbf7:	44 8b 4d 00          	mov    r9d,DWORD PTR [rbp+0x0]
+;				*(unsigned short *)d = (c1 >> 19) | ((c1 >> 5) & 0x07E0) | ((c1 << 8) & 0xF800);
+  46bbfb:	44 89 c9             	mov    ecx,r9d
+  46bbfe:	44 89 cd             	mov    ebp,r9d
+  46bc01:	41 c1 e9 13          	shr    r9d,0x13
+  46bc05:	c1 e9 05             	shr    ecx,0x5
+  46bc08:	c1 e5 08             	shl    ebp,0x8
+  46bc0b:	66 81 e1 e0 07       	and    cx,0x7e0
+  46bc10:	66 81 e5 00 f8       	and    bp,0xf800
+  46bc15:	09 e9                	or     ecx,ebp
+  46bc17:	44 09 c9             	or     ecx,r9d
+  46bc1a:	66 41 89 0a          	mov    WORD PTR [r10],cx
+  46bc1e:	e9 b5 fd ff ff       	jmp    46b9d8 <fb_hBlit32to16RGB+0x58>
+  46bc23:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;	}
+;}
+  46bc28:	5b                   	pop    rbx
+  46bc29:	5d                   	pop    rbp
+  46bc2a:	41 5c                	pop    r12
+  46bc2c:	41 5d                	pop    r13
+  46bc2e:	41 5e                	pop    r14
+  46bc30:	c3                   	ret    
+  46bc31:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46bc38:	45 31 d2             	xor    r10d,r10d
+  46bc3b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;				c2 = *(s + 1);
+  46bc40:	42 8b 4c d2 04       	mov    ecx,DWORD PTR [rdx+r10*8+0x4]
+;				c1 = *s;
+  46bc45:	42 8b 2c d2          	mov    ebp,DWORD PTR [rdx+r10*8]
+;				     (((c2 >> 19) | ((c2 >> 5) & 0x07E0) | ((c2 << 8) & 0xF800)) << 16);
+  46bc49:	89 c8                	mov    eax,ecx
+  46bc4b:	41 89 ce             	mov    r14d,ecx
+  46bc4e:	c1 e9 13             	shr    ecx,0x13
+  46bc51:	c1 e0 08             	shl    eax,0x8
+  46bc54:	41 c1 ee 05          	shr    r14d,0x5
+  46bc58:	41 81 e6 e0 07 00 00 	and    r14d,0x7e0
+  46bc5f:	25 00 f8 00 00       	and    eax,0xf800
+  46bc64:	44 09 f0             	or     eax,r14d
+;				*d = (c1 >> 19) | ((c1 >> 5) & 0x07E0) | ((c1 << 8) & 0xF800) |
+  46bc67:	41 89 ee             	mov    r14d,ebp
+;				     (((c2 >> 19) | ((c2 >> 5) & 0x07E0) | ((c2 << 8) & 0xF800)) << 16);
+  46bc6a:	09 c8                	or     eax,ecx
+;				*d = (c1 >> 19) | ((c1 >> 5) & 0x07E0) | ((c1 << 8) & 0xF800) |
+  46bc6c:	89 e9                	mov    ecx,ebp
+  46bc6e:	41 c1 ee 05          	shr    r14d,0x5
+  46bc72:	c1 e1 08             	shl    ecx,0x8
+  46bc75:	41 81 e6 e0 07 00 00 	and    r14d,0x7e0
+  46bc7c:	c1 ed 13             	shr    ebp,0x13
+  46bc7f:	81 e1 00 f8 00 00    	and    ecx,0xf800
+;				     (((c2 >> 19) | ((c2 >> 5) & 0x07E0) | ((c2 << 8) & 0xF800)) << 16);
+  46bc85:	c1 e0 10             	shl    eax,0x10
+;				*d = (c1 >> 19) | ((c1 >> 5) & 0x07E0) | ((c1 << 8) & 0xF800) |
+  46bc88:	44 09 f1             	or     ecx,r14d
+  46bc8b:	09 e9                	or     ecx,ebp
+  46bc8d:	09 c8                	or     eax,ecx
+  46bc8f:	42 89 04 97          	mov    DWORD PTR [rdi+r10*4],eax
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46bc93:	49 83 c2 01          	add    r10,0x1
+  46bc97:	4d 39 ca             	cmp    r10,r9
+  46bc9a:	75 a4                	jne    46bc40 <fb_hBlit32to16RGB+0x2c0>
+  46bc9c:	45 8d 4d ff          	lea    r9d,[r13-0x1]
+  46bca0:	e9 37 ff ff ff       	jmp    46bbdc <fb_hBlit32to16RGB+0x25c>
+  46bca5:	0f 1f 00             	nop    DWORD PTR [rax]
+  46bca8:	48 89 d5             	mov    rbp,rdx
+  46bcab:	49 89 fa             	mov    r10,rdi
+  46bcae:	e9 3b ff ff ff       	jmp    46bbee <fb_hBlit32to16RGB+0x26e>
+  46bcb3:	49 89 fa             	mov    r10,rdi
+  46bcb6:	48 89 d0             	mov    rax,rdx
+  46bcb9:	31 c9                	xor    ecx,ecx
+  46bcbb:	e9 3d fe ff ff       	jmp    46bafd <fb_hBlit32to16RGB+0x17d>
+
+000000000046bcc0 <fb_hBlit32to16BGR>:
+;
+;/*:::::*/
+;static void fb_hBlit32to16BGR(unsigned char *dest, int pitch)
+;{
+;	unsigned int *d, *s;
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46bcc0:	4c 8b 1d 31 a0 04 00 	mov    r11,QWORD PTR [rip+0x4a031]        # 4b5cf8 <__fb_gfx>
+;{
+  46bcc7:	41 56                	push   r14
+  46bcc9:	41 55                	push   r13
+  46bccb:	41 54                	push   r12
+  46bccd:	4c 63 e6             	movsxd r12,esi
+  46bcd0:	55                   	push   rbp
+  46bcd1:	53                   	push   rbx
+;	unsigned int c1, c2;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;	
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46bcd2:	41 8b 43 70          	mov    eax,DWORD PTR [r11+0x70]
+  46bcd6:	45 8b 4b 24          	mov    r9d,DWORD PTR [r11+0x24]
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46bcda:	49 8b 73 18          	mov    rsi,QWORD PTR [r11+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  46bcde:	4d 8b 53 50          	mov    r10,QWORD PTR [r11+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46bce2:	44 0f af c8          	imul   r9d,eax
+  46bce6:	45 85 c9             	test   r9d,r9d
+  46bce9:	0f 84 c1 02 00 00    	je     46bfb0 <fb_hBlit32to16BGR+0x2f0>
+;			d = (unsigned int *)dest;
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+;				c1 = *s;
+;				c2 = *(s + 1);
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 8) & 0xF800) |
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 8) & 0xF800)) << 16);
+  46bcef:	f3 0f 7e 3d 89 81 01 	movq   xmm7,QWORD PTR [rip+0x18189]        # 483e80 <cursor_data+0x100>
+  46bcf6:	00 
+  46bcf7:	66 0f 6f 25 81 81 01 	movdqa xmm4,XMMWORD PTR [rip+0x18181]        # 483e80 <cursor_data+0x100>
+  46bcfe:	00 
+  46bcff:	45 31 c0             	xor    r8d,r8d
+  46bd02:	66 0f 6f 1d 86 81 01 	movdqa xmm3,XMMWORD PTR [rip+0x18186]        # 483e90 <cursor_data+0x110>
+  46bd09:	00 
+  46bd0a:	66 0f 6f 15 8e 81 01 	movdqa xmm2,XMMWORD PTR [rip+0x1818e]        # 483ea0 <cursor_data+0x120>
+  46bd11:	00 
+  46bd12:	f3 0f 7e 35 76 81 01 	movq   xmm6,QWORD PTR [rip+0x18176]        # 483e90 <cursor_data+0x110>
+  46bd19:	00 
+  46bd1a:	f3 0f 7e 2d 7e 81 01 	movq   xmm5,QWORD PTR [rip+0x1817e]        # 483ea0 <cursor_data+0x120>
+  46bd21:	00 
+  46bd22:	eb 28                	jmp    46bd4c <fb_hBlit32to16BGR+0x8c>
+  46bd24:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+;			if (__fb_gfx->w & 0x1) {
+;				c1 = *s;
+;				*(unsigned short *)d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 8) & 0xF800);
+;			}
+;		}
+;		z++;
+  46bd28:	41 83 c0 01          	add    r8d,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46bd2c:	41 39 c0             	cmp    r8d,eax
+  46bd2f:	7c 0e                	jl     46bd3f <fb_hBlit32to16BGR+0x7f>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  46bd31:	49 63 53 30          	movsxd rdx,DWORD PTR [r11+0x30]
+;			dirty++;
+  46bd35:	49 83 c2 01          	add    r10,0x1
+;			z = 0;
+  46bd39:	45 31 c0             	xor    r8d,r8d
+;			src += __fb_gfx->pitch;
+  46bd3c:	48 01 d6             	add    rsi,rdx
+;		}
+;		dest += pitch;
+  46bd3f:	4c 01 e7             	add    rdi,r12
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46bd42:	41 83 e9 01          	sub    r9d,0x1
+  46bd46:	0f 84 64 02 00 00    	je     46bfb0 <fb_hBlit32to16BGR+0x2f0>
+;		if (*dirty) {
+  46bd4c:	41 80 3a 00          	cmp    BYTE PTR [r10],0x0
+  46bd50:	74 d6                	je     46bd28 <fb_hBlit32to16BGR+0x68>
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46bd52:	41 8b 53 20          	mov    edx,DWORD PTR [r11+0x20]
+  46bd56:	41 89 d5             	mov    r13d,edx
+  46bd59:	41 d1 fd             	sar    r13d,1
+  46bd5c:	0f 84 ce 02 00 00    	je     46c030 <fb_hBlit32to16BGR+0x370>
+  46bd62:	44 89 eb             	mov    ebx,r13d
+  46bd65:	44 89 e9             	mov    ecx,r13d
+  46bd68:	48 8d 04 9f          	lea    rax,[rdi+rbx*4]
+  46bd6c:	48 8d 14 de          	lea    rdx,[rsi+rbx*8]
+  46bd70:	48 39 c6             	cmp    rsi,rax
+  46bd73:	0f 93 c0             	setae  al
+  46bd76:	48 39 d7             	cmp    rdi,rdx
+  46bd79:	0f 93 c2             	setae  dl
+  46bd7c:	08 d0                	or     al,dl
+  46bd7e:	0f 84 3c 02 00 00    	je     46bfc0 <fb_hBlit32to16BGR+0x300>
+  46bd84:	41 83 fd 01          	cmp    r13d,0x1
+  46bd88:	0f 84 32 02 00 00    	je     46bfc0 <fb_hBlit32to16BGR+0x300>
+  46bd8e:	41 8d 5d ff          	lea    ebx,[r13-0x1]
+  46bd92:	83 fb 02             	cmp    ebx,0x2
+  46bd95:	0f 86 a0 02 00 00    	jbe    46c03b <fb_hBlit32to16BGR+0x37b>
+  46bd9b:	44 89 ea             	mov    edx,r13d
+  46bd9e:	31 c0                	xor    eax,eax
+  46bda0:	c1 ea 02             	shr    edx,0x2
+  46bda3:	48 c1 e2 04          	shl    rdx,0x4
+  46bda7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+  46bdae:	00 00 
+;				c1 = *s;
+  46bdb0:	f3 0f 6f 0c 46       	movdqu xmm1,XMMWORD PTR [rsi+rax*2]
+  46bdb5:	f3 0f 6f 44 46 10    	movdqu xmm0,XMMWORD PTR [rsi+rax*2+0x10]
+  46bdbb:	66 44 0f 6f c1       	movdqa xmm8,xmm1
+  46bdc0:	0f c6 c8 dd          	shufps xmm1,xmm0,0xdd
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 8) & 0xF800)) << 16);
+  46bdc4:	66 44 0f 6f c9       	movdqa xmm9,xmm1
+;				c1 = *s;
+  46bdc9:	44 0f c6 c0 88       	shufps xmm8,xmm0,0x88
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 8) & 0xF800)) << 16);
+  46bdce:	66 0f 6f c1          	movdqa xmm0,xmm1
+  46bdd2:	66 41 0f 72 d1 05    	psrld  xmm9,0x5
+  46bdd8:	66 0f 72 d0 03       	psrld  xmm0,0x3
+  46bddd:	66 0f 72 d1 08       	psrld  xmm1,0x8
+  46bde2:	66 44 0f db cb       	pand   xmm9,xmm3
+  46bde7:	66 0f db c4          	pand   xmm0,xmm4
+  46bdeb:	66 0f db ca          	pand   xmm1,xmm2
+  46bdef:	66 41 0f eb c1       	por    xmm0,xmm9
+  46bdf4:	66 0f eb c1          	por    xmm0,xmm1
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 8) & 0xF800) |
+  46bdf8:	66 41 0f 6f c8       	movdqa xmm1,xmm8
+  46bdfd:	66 0f 72 d1 08       	psrld  xmm1,0x8
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 8) & 0xF800)) << 16);
+  46be02:	66 0f 72 f0 10       	pslld  xmm0,0x10
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 8) & 0xF800) |
+  46be07:	66 0f db ca          	pand   xmm1,xmm2
+  46be0b:	66 0f eb c1          	por    xmm0,xmm1
+  46be0f:	66 41 0f 6f c8       	movdqa xmm1,xmm8
+  46be14:	66 0f 72 d1 03       	psrld  xmm1,0x3
+  46be19:	66 41 0f 72 d0 05    	psrld  xmm8,0x5
+  46be1f:	66 0f db cc          	pand   xmm1,xmm4
+  46be23:	66 44 0f db c3       	pand   xmm8,xmm3
+  46be28:	66 41 0f eb c8       	por    xmm1,xmm8
+  46be2d:	66 0f eb c1          	por    xmm0,xmm1
+  46be31:	0f 11 04 07          	movups XMMWORD PTR [rdi+rax*1],xmm0
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46be35:	48 83 c0 10          	add    rax,0x10
+  46be39:	48 39 c2             	cmp    rdx,rax
+  46be3c:	0f 85 6e ff ff ff    	jne    46bdb0 <fb_hBlit32to16BGR+0xf0>
+  46be42:	45 89 ee             	mov    r14d,r13d
+  46be45:	41 83 e6 fc          	and    r14d,0xfffffffc
+  46be49:	44 89 f2             	mov    edx,r14d
+  46be4c:	48 8d 2c 97          	lea    rbp,[rdi+rdx*4]
+  46be50:	48 8d 04 d6          	lea    rax,[rsi+rdx*8]
+  46be54:	45 39 ee             	cmp    r14d,r13d
+  46be57:	0f 84 09 01 00 00    	je     46bf66 <fb_hBlit32to16BGR+0x2a6>
+  46be5d:	44 89 e9             	mov    ecx,r13d
+  46be60:	44 29 f1             	sub    ecx,r14d
+  46be63:	83 f9 01             	cmp    ecx,0x1
+  46be66:	0f 84 a5 00 00 00    	je     46bf11 <fb_hBlit32to16BGR+0x251>
+  46be6c:	4c 8d 2c d6          	lea    r13,[rsi+rdx*8]
+;				c1 = *s;
+  46be70:	f3 41 0f 7e 45 08    	movq   xmm0,QWORD PTR [r13+0x8]
+  46be76:	f3 41 0f 7e 4d 00    	movq   xmm1,QWORD PTR [r13+0x0]
+  46be7c:	66 44 0f 6f c1       	movdqa xmm8,xmm1
+  46be81:	66 0f 62 c8          	punpckldq xmm1,xmm0
+  46be85:	66 0f 70 c9 0e       	pshufd xmm1,xmm1,0xe
+  46be8a:	66 44 0f 62 c0       	punpckldq xmm8,xmm0
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 8) & 0xF800)) << 16);
+  46be8f:	66 44 0f 6f c9       	movdqa xmm9,xmm1
+  46be94:	66 0f 6f c1          	movdqa xmm0,xmm1
+  46be98:	66 0f 72 d0 03       	psrld  xmm0,0x3
+  46be9d:	66 41 0f 72 d1 05    	psrld  xmm9,0x5
+  46bea3:	66 0f db c7          	pand   xmm0,xmm7
+  46bea7:	66 0f 72 d1 08       	psrld  xmm1,0x8
+  46beac:	66 44 0f db ce       	pand   xmm9,xmm6
+  46beb1:	66 0f db cd          	pand   xmm1,xmm5
+  46beb5:	66 41 0f eb c1       	por    xmm0,xmm9
+  46beba:	66 0f eb c1          	por    xmm0,xmm1
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 8) & 0xF800) |
+  46bebe:	66 41 0f 6f c8       	movdqa xmm1,xmm8
+  46bec3:	66 0f 72 d1 08       	psrld  xmm1,0x8
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 8) & 0xF800)) << 16);
+  46bec8:	66 0f 72 f0 10       	pslld  xmm0,0x10
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 8) & 0xF800) |
+  46becd:	66 0f db cd          	pand   xmm1,xmm5
+  46bed1:	66 0f eb c1          	por    xmm0,xmm1
+  46bed5:	66 41 0f 6f c8       	movdqa xmm1,xmm8
+  46beda:	66 0f 72 d1 03       	psrld  xmm1,0x3
+  46bedf:	66 41 0f 72 d0 05    	psrld  xmm8,0x5
+  46bee5:	66 0f db cf          	pand   xmm1,xmm7
+  46bee9:	66 44 0f db c6       	pand   xmm8,xmm6
+  46beee:	66 41 0f eb c8       	por    xmm1,xmm8
+  46bef3:	66 0f eb c1          	por    xmm0,xmm1
+  46bef7:	66 0f d6 04 97       	movq   QWORD PTR [rdi+rdx*4],xmm0
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46befc:	89 ca                	mov    edx,ecx
+  46befe:	83 e2 fe             	and    edx,0xfffffffe
+  46bf01:	41 89 d5             	mov    r13d,edx
+  46bf04:	4a 8d 6c ad 00       	lea    rbp,[rbp+r13*4+0x0]
+  46bf09:	4a 8d 04 e8          	lea    rax,[rax+r13*8]
+  46bf0d:	39 d1                	cmp    ecx,edx
+  46bf0f:	74 55                	je     46bf66 <fb_hBlit32to16BGR+0x2a6>
+;				c2 = *(s + 1);
+  46bf11:	8b 50 04             	mov    edx,DWORD PTR [rax+0x4]
+;				c1 = *s;
+  46bf14:	8b 08                	mov    ecx,DWORD PTR [rax]
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 8) & 0xF800)) << 16);
+  46bf16:	41 89 d5             	mov    r13d,edx
+  46bf19:	89 d0                	mov    eax,edx
+  46bf1b:	c1 ea 08             	shr    edx,0x8
+  46bf1e:	c1 e8 03             	shr    eax,0x3
+  46bf21:	41 c1 ed 05          	shr    r13d,0x5
+  46bf25:	81 e2 00 f8 00 00    	and    edx,0xf800
+  46bf2b:	41 81 e5 e0 07 00 00 	and    r13d,0x7e0
+  46bf32:	83 e0 1f             	and    eax,0x1f
+  46bf35:	44 09 e8             	or     eax,r13d
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 8) & 0xF800) |
+  46bf38:	41 89 cd             	mov    r13d,ecx
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 8) & 0xF800)) << 16);
+  46bf3b:	09 d0                	or     eax,edx
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 8) & 0xF800) |
+  46bf3d:	89 ca                	mov    edx,ecx
+  46bf3f:	41 c1 ed 05          	shr    r13d,0x5
+  46bf43:	c1 ea 03             	shr    edx,0x3
+  46bf46:	41 81 e5 e0 07 00 00 	and    r13d,0x7e0
+  46bf4d:	c1 e9 08             	shr    ecx,0x8
+  46bf50:	83 e2 1f             	and    edx,0x1f
+  46bf53:	81 e1 00 f8 00 00    	and    ecx,0xf800
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 8) & 0xF800)) << 16);
+  46bf59:	c1 e0 10             	shl    eax,0x10
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 8) & 0xF800) |
+  46bf5c:	44 09 ea             	or     edx,r13d
+  46bf5f:	09 ca                	or     edx,ecx
+  46bf61:	09 d0                	or     eax,edx
+  46bf63:	89 45 00             	mov    DWORD PTR [rbp+0x0],eax
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46bf66:	48 83 c3 01          	add    rbx,0x1
+;			if (__fb_gfx->w & 0x1) {
+  46bf6a:	41 8b 53 20          	mov    edx,DWORD PTR [r11+0x20]
+  46bf6e:	41 8b 43 70          	mov    eax,DWORD PTR [r11+0x70]
+;				s += 2;
+  46bf72:	48 8d 0c de          	lea    rcx,[rsi+rbx*8]
+;				d++;
+  46bf76:	48 8d 1c 9f          	lea    rbx,[rdi+rbx*4]
+;			if (__fb_gfx->w & 0x1) {
+  46bf7a:	83 e2 01             	and    edx,0x1
+  46bf7d:	0f 84 a5 fd ff ff    	je     46bd28 <fb_hBlit32to16BGR+0x68>
+;				c1 = *s;
+  46bf83:	8b 09                	mov    ecx,DWORD PTR [rcx]
+;				*(unsigned short *)d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 8) & 0xF800);
+  46bf85:	89 ca                	mov    edx,ecx
+  46bf87:	89 cd                	mov    ebp,ecx
+  46bf89:	c1 e9 08             	shr    ecx,0x8
+  46bf8c:	c1 ea 03             	shr    edx,0x3
+  46bf8f:	c1 ed 05             	shr    ebp,0x5
+  46bf92:	66 81 e1 00 f8       	and    cx,0xf800
+  46bf97:	83 e2 1f             	and    edx,0x1f
+  46bf9a:	66 81 e5 e0 07       	and    bp,0x7e0
+  46bf9f:	09 ea                	or     edx,ebp
+  46bfa1:	09 ca                	or     edx,ecx
+  46bfa3:	66 89 13             	mov    WORD PTR [rbx],dx
+  46bfa6:	e9 7d fd ff ff       	jmp    46bd28 <fb_hBlit32to16BGR+0x68>
+  46bfab:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;	}
+;}
+  46bfb0:	5b                   	pop    rbx
+  46bfb1:	5d                   	pop    rbp
+  46bfb2:	41 5c                	pop    r12
+  46bfb4:	41 5d                	pop    r13
+  46bfb6:	41 5e                	pop    r14
+  46bfb8:	c3                   	ret    
+  46bfb9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46bfc0:	31 c9                	xor    ecx,ecx
+  46bfc2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+;				c2 = *(s + 1);
+  46bfc8:	8b 54 ce 04          	mov    edx,DWORD PTR [rsi+rcx*8+0x4]
+;				c1 = *s;
+  46bfcc:	8b 2c ce             	mov    ebp,DWORD PTR [rsi+rcx*8]
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 8) & 0xF800)) << 16);
+  46bfcf:	89 d0                	mov    eax,edx
+  46bfd1:	41 89 d6             	mov    r14d,edx
+  46bfd4:	c1 ea 08             	shr    edx,0x8
+  46bfd7:	c1 e8 05             	shr    eax,0x5
+  46bfda:	41 c1 ee 03          	shr    r14d,0x3
+  46bfde:	81 e2 00 f8 00 00    	and    edx,0xf800
+  46bfe4:	41 83 e6 1f          	and    r14d,0x1f
+  46bfe8:	25 e0 07 00 00       	and    eax,0x7e0
+  46bfed:	44 09 f0             	or     eax,r14d
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 8) & 0xF800) |
+  46bff0:	41 89 ee             	mov    r14d,ebp
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 8) & 0xF800)) << 16);
+  46bff3:	09 d0                	or     eax,edx
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 8) & 0xF800) |
+  46bff5:	89 ea                	mov    edx,ebp
+  46bff7:	41 c1 ee 03          	shr    r14d,0x3
+  46bffb:	c1 ea 05             	shr    edx,0x5
+  46bffe:	41 83 e6 1f          	and    r14d,0x1f
+  46c002:	c1 ed 08             	shr    ebp,0x8
+  46c005:	81 e2 e0 07 00 00    	and    edx,0x7e0
+  46c00b:	81 e5 00 f8 00 00    	and    ebp,0xf800
+;				     ((((c2 >> 3) & 0x001F) | ((c2 >> 5) & 0x07E0) | ((c2 >> 8) & 0xF800)) << 16);
+  46c011:	c1 e0 10             	shl    eax,0x10
+;				*d = ((c1 >> 3) & 0x001F) | ((c1 >> 5) & 0x07E0) | ((c1 >> 8) & 0xF800) |
+  46c014:	44 09 f2             	or     edx,r14d
+  46c017:	09 ea                	or     edx,ebp
+  46c019:	09 d0                	or     eax,edx
+  46c01b:	89 04 8f             	mov    DWORD PTR [rdi+rcx*4],eax
+;			for (x = __fb_gfx->w >> 1; x; x--) {
+  46c01e:	48 83 c1 01          	add    rcx,0x1
+  46c022:	48 39 cb             	cmp    rbx,rcx
+  46c025:	75 a1                	jne    46bfc8 <fb_hBlit32to16BGR+0x308>
+  46c027:	41 8d 5d ff          	lea    ebx,[r13-0x1]
+  46c02b:	e9 36 ff ff ff       	jmp    46bf66 <fb_hBlit32to16BGR+0x2a6>
+  46c030:	48 89 f1             	mov    rcx,rsi
+  46c033:	48 89 fb             	mov    rbx,rdi
+  46c036:	e9 3f ff ff ff       	jmp    46bf7a <fb_hBlit32to16BGR+0x2ba>
+  46c03b:	48 89 fd             	mov    rbp,rdi
+  46c03e:	48 89 f0             	mov    rax,rsi
+  46c041:	31 d2                	xor    edx,edx
+  46c043:	e9 24 fe ff ff       	jmp    46be6c <fb_hBlit32to16BGR+0x1ac>
+  46c048:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+  46c04f:	00 
+
+000000000046c050 <fb_hBlit32to24RGB>:
+;
+;/*:::::*/
+;static void fb_hBlit32to24RGB(unsigned char *dest, int pitch)
+;{
+;	unsigned int *s;
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46c050:	48 8b 05 a1 9c 04 00 	mov    rax,QWORD PTR [rip+0x49ca1]        # 4b5cf8 <__fb_gfx>
+;{
+  46c057:	41 56                	push   r14
+  46c059:	55                   	push   rbp
+  46c05a:	53                   	push   rbx
+;	unsigned int c;
+;	unsigned char *d;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;	
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46c05b:	8b 50 70             	mov    edx,DWORD PTR [rax+0x70]
+  46c05e:	44 8b 40 24          	mov    r8d,DWORD PTR [rax+0x24]
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46c062:	4c 8b 70 18          	mov    r14,QWORD PTR [rax+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  46c066:	4c 8b 58 50          	mov    r11,QWORD PTR [rax+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46c06a:	44 0f af c2          	imul   r8d,edx
+  46c06e:	45 85 c0             	test   r8d,r8d
+  46c071:	74 75                	je     46c0e8 <fb_hBlit32to24RGB+0x98>
+  46c073:	49 89 f9             	mov    r9,rdi
+  46c076:	48 63 ee             	movsxd rbp,esi
+  46c079:	31 ff                	xor    edi,edi
+  46c07b:	eb 20                	jmp    46c09d <fb_hBlit32to24RGB+0x4d>
+  46c07d:	0f 1f 00             	nop    DWORD PTR [rax]
+;				d[2] = c & 0xFF;
+;				s++;
+;				d += 3;
+;			}
+;		}
+;		z++;
+  46c080:	83 c7 01             	add    edi,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46c083:	39 d7                	cmp    edi,edx
+  46c085:	7c 0d                	jl     46c094 <fb_hBlit32to24RGB+0x44>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  46c087:	48 63 48 30          	movsxd rcx,DWORD PTR [rax+0x30]
+;			dirty++;
+  46c08b:	49 83 c3 01          	add    r11,0x1
+;			z = 0;
+  46c08f:	31 ff                	xor    edi,edi
+;			src += __fb_gfx->pitch;
+  46c091:	49 01 ce             	add    r14,rcx
+;		}
+;		dest += pitch;
+  46c094:	49 01 e9             	add    r9,rbp
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46c097:	41 83 e8 01          	sub    r8d,0x1
+  46c09b:	74 4b                	je     46c0e8 <fb_hBlit32to24RGB+0x98>
+;		if (*dirty) {
+  46c09d:	41 80 3b 00          	cmp    BYTE PTR [r11],0x0
+  46c0a1:	74 dd                	je     46c080 <fb_hBlit32to24RGB+0x30>
+;			for (x = __fb_gfx->w; x; x--) {
+  46c0a3:	8b 48 20             	mov    ecx,DWORD PTR [rax+0x20]
+  46c0a6:	85 c9                	test   ecx,ecx
+  46c0a8:	74 d6                	je     46c080 <fb_hBlit32to24RGB+0x30>
+  46c0aa:	4d 8d 14 8e          	lea    r10,[r14+rcx*4]
+  46c0ae:	4c 89 c8             	mov    rax,r9
+  46c0b1:	4c 89 f2             	mov    rdx,r14
+  46c0b4:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+;				c = *s;
+  46c0b8:	8b 0a                	mov    ecx,DWORD PTR [rdx]
+;				s++;
+  46c0ba:	48 83 c2 04          	add    rdx,0x4
+;				d += 3;
+  46c0be:	48 83 c0 03          	add    rax,0x3
+;				d[0] = (c >> 16) & 0xFF;
+  46c0c2:	89 ce                	mov    esi,ecx
+;				d[1] = (c >> 8) & 0xFF;
+  46c0c4:	88 68 fe             	mov    BYTE PTR [rax-0x2],ch
+;				d[0] = (c >> 16) & 0xFF;
+  46c0c7:	c1 ee 10             	shr    esi,0x10
+;				d[2] = c & 0xFF;
+  46c0ca:	88 48 ff             	mov    BYTE PTR [rax-0x1],cl
+;				d[0] = (c >> 16) & 0xFF;
+  46c0cd:	40 88 70 fd          	mov    BYTE PTR [rax-0x3],sil
+;			for (x = __fb_gfx->w; x; x--) {
+  46c0d1:	4c 39 d2             	cmp    rdx,r10
+  46c0d4:	75 e2                	jne    46c0b8 <fb_hBlit32to24RGB+0x68>
+;		if (z >= __fb_gfx->scanline_size) {
+  46c0d6:	48 8b 05 1b 9c 04 00 	mov    rax,QWORD PTR [rip+0x49c1b]        # 4b5cf8 <__fb_gfx>
+  46c0dd:	8b 50 70             	mov    edx,DWORD PTR [rax+0x70]
+  46c0e0:	eb 9e                	jmp    46c080 <fb_hBlit32to24RGB+0x30>
+  46c0e2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
+;	}
+;}
+  46c0e8:	5b                   	pop    rbx
+  46c0e9:	5d                   	pop    rbp
+  46c0ea:	41 5e                	pop    r14
+  46c0ec:	c3                   	ret    
+  46c0ed:	0f 1f 00             	nop    DWORD PTR [rax]
+
+000000000046c0f0 <fb_hBlit32to24BGR>:
+;
+;/*:::::*/
+;static void fb_hBlit32to24BGR(unsigned char *dest, int pitch)
+;{
+;	unsigned int *s;
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46c0f0:	48 8b 05 01 9c 04 00 	mov    rax,QWORD PTR [rip+0x49c01]        # 4b5cf8 <__fb_gfx>
+;{
+  46c0f7:	49 89 f8             	mov    r8,rdi
+;	unsigned int c;
+;	unsigned char *d;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;	
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46c0fa:	8b 50 70             	mov    edx,DWORD PTR [rax+0x70]
+  46c0fd:	8b 78 24             	mov    edi,DWORD PTR [rax+0x24]
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46c100:	4c 8b 58 18          	mov    r11,QWORD PTR [rax+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  46c104:	4c 8b 50 50          	mov    r10,QWORD PTR [rax+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46c108:	0f af fa             	imul   edi,edx
+  46c10b:	85 ff                	test   edi,edi
+  46c10d:	74 75                	je     46c184 <fb_hBlit32to24BGR+0x94>
+;{
+  46c10f:	41 56                	push   r14
+  46c111:	4c 63 f6             	movsxd r14,esi
+  46c114:	31 f6                	xor    esi,esi
+  46c116:	53                   	push   rbx
+  46c117:	eb 23                	jmp    46c13c <fb_hBlit32to24BGR+0x4c>
+  46c119:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;				d[2] = (c >> 16) & 0xFF;
+;				s++;
+;				d += 3;
+;			}
+;		}
+;		z++;
+  46c120:	83 c6 01             	add    esi,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46c123:	39 d6                	cmp    esi,edx
+  46c125:	7c 0d                	jl     46c134 <fb_hBlit32to24BGR+0x44>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  46c127:	48 63 48 30          	movsxd rcx,DWORD PTR [rax+0x30]
+;			dirty++;
+  46c12b:	49 83 c2 01          	add    r10,0x1
+;			z = 0;
+  46c12f:	31 f6                	xor    esi,esi
+;			src += __fb_gfx->pitch;
+  46c131:	49 01 cb             	add    r11,rcx
+;		}
+;		dest += pitch;
+  46c134:	4d 01 f0             	add    r8,r14
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46c137:	83 ef 01             	sub    edi,0x1
+  46c13a:	74 44                	je     46c180 <fb_hBlit32to24BGR+0x90>
+;		if (*dirty) {
+  46c13c:	41 80 3a 00          	cmp    BYTE PTR [r10],0x0
+  46c140:	74 de                	je     46c120 <fb_hBlit32to24BGR+0x30>
+;			for (x = __fb_gfx->w; x; x--) {
+  46c142:	8b 48 20             	mov    ecx,DWORD PTR [rax+0x20]
+  46c145:	85 c9                	test   ecx,ecx
+  46c147:	74 d7                	je     46c120 <fb_hBlit32to24BGR+0x30>
+  46c149:	4d 8d 0c 8b          	lea    r9,[r11+rcx*4]
+  46c14d:	4c 89 c2             	mov    rdx,r8
+  46c150:	4c 89 d9             	mov    rcx,r11
+  46c153:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;				c = *s;
+  46c158:	8b 01                	mov    eax,DWORD PTR [rcx]
+;				s++;
+  46c15a:	48 83 c1 04          	add    rcx,0x4
+;				d += 3;
+  46c15e:	48 83 c2 03          	add    rdx,0x3
+;				d[0] = c & 0xFF;
+  46c162:	88 42 fd             	mov    BYTE PTR [rdx-0x3],al
+;				d[1] = (c >> 8) & 0xFF;
+  46c165:	88 62 fe             	mov    BYTE PTR [rdx-0x2],ah
+;				d[2] = (c >> 16) & 0xFF;
+  46c168:	c1 e8 10             	shr    eax,0x10
+  46c16b:	88 42 ff             	mov    BYTE PTR [rdx-0x1],al
+;			for (x = __fb_gfx->w; x; x--) {
+  46c16e:	4c 39 c9             	cmp    rcx,r9
+  46c171:	75 e5                	jne    46c158 <fb_hBlit32to24BGR+0x68>
+;		if (z >= __fb_gfx->scanline_size) {
+  46c173:	48 8b 05 7e 9b 04 00 	mov    rax,QWORD PTR [rip+0x49b7e]        # 4b5cf8 <__fb_gfx>
+  46c17a:	8b 50 70             	mov    edx,DWORD PTR [rax+0x70]
+  46c17d:	eb a1                	jmp    46c120 <fb_hBlit32to24BGR+0x30>
+  46c17f:	90                   	nop
+;	}
+;}
+  46c180:	5b                   	pop    rbx
+  46c181:	41 5e                	pop    r14
+  46c183:	c3                   	ret    
+  46c184:	c3                   	ret    
+  46c185:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
+  46c18c:	00 00 00 00 
+
+000000000046c190 <fb_hBlit32to32RGB>:
+;
+;/*:::::*/
+;static void fb_hBlit32to32RGB(unsigned char *dest, int pitch)
+;{
+;	unsigned int *d, *s;
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46c190:	4c 8b 1d 61 9b 04 00 	mov    r11,QWORD PTR [rip+0x49b61]        # 4b5cf8 <__fb_gfx>
+;{
+  46c197:	41 54                	push   r12
+  46c199:	48 89 fa             	mov    rdx,rdi
+  46c19c:	55                   	push   rbp
+  46c19d:	53                   	push   rbx
+  46c19e:	48 63 de             	movsxd rbx,esi
+;	unsigned int c;
+;	char *dirty = __fb_gfx->dirty;
+;	int x, y, z = 0;
+;	
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46c1a1:	41 8b 43 70          	mov    eax,DWORD PTR [r11+0x70]
+  46c1a5:	41 8b 73 24          	mov    esi,DWORD PTR [r11+0x24]
+;	unsigned char *src = __fb_gfx->framebuffer;
+  46c1a9:	49 8b 7b 18          	mov    rdi,QWORD PTR [r11+0x18]
+;	char *dirty = __fb_gfx->dirty;
+  46c1ad:	4d 8b 53 50          	mov    r10,QWORD PTR [r11+0x50]
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46c1b1:	0f af f0             	imul   esi,eax
+  46c1b4:	85 f6                	test   esi,esi
+  46c1b6:	0f 84 3c 01 00 00    	je     46c2f8 <fb_hBlit32to32RGB+0x168>
+  46c1bc:	66 0f 6f 1d dc 60 01 	movdqa xmm3,XMMWORD PTR [rip+0x160dc]        # 4822a0 <_IO_stdin_used+0x52a0>
+  46c1c3:	00 
+  46c1c4:	66 0f 6f 15 a4 60 01 	movdqa xmm2,XMMWORD PTR [rip+0x160a4]        # 482270 <_IO_stdin_used+0x5270>
+  46c1cb:	00 
+  46c1cc:	31 c9                	xor    ecx,ecx
+  46c1ce:	eb 20                	jmp    46c1f0 <fb_hBlit32to32RGB+0x60>
+;			for (x = __fb_gfx->w; x; x--) {
+;				c = (*s++) & 0xFFFFFF;
+;				*d++ = (c >> 16) | (c & 0xFF00) | (c << 16);
+;			}
+;		}
+;		z++;
+  46c1d0:	83 c1 01             	add    ecx,0x1
+;		if (z >= __fb_gfx->scanline_size) {
+  46c1d3:	39 c1                	cmp    ecx,eax
+  46c1d5:	7c 0d                	jl     46c1e4 <fb_hBlit32to32RGB+0x54>
+;			z = 0;
+;			dirty++;
+;			src += __fb_gfx->pitch;
+  46c1d7:	49 63 4b 30          	movsxd rcx,DWORD PTR [r11+0x30]
+;			dirty++;
+  46c1db:	49 83 c2 01          	add    r10,0x1
+;			src += __fb_gfx->pitch;
+  46c1df:	48 01 cf             	add    rdi,rcx
+;			z = 0;
+  46c1e2:	31 c9                	xor    ecx,ecx
+;		}
+;		dest += pitch;
+  46c1e4:	48 01 da             	add    rdx,rbx
+;	for (y = __fb_gfx->h * __fb_gfx->scanline_size; y; y--) {
+  46c1e7:	83 ee 01             	sub    esi,0x1
+  46c1ea:	0f 84 08 01 00 00    	je     46c2f8 <fb_hBlit32to32RGB+0x168>
+;		if (*dirty) {
+  46c1f0:	41 80 3a 00          	cmp    BYTE PTR [r10],0x0
+  46c1f4:	74 da                	je     46c1d0 <fb_hBlit32to32RGB+0x40>
+;			for (x = __fb_gfx->w; x; x--) {
+  46c1f6:	45 8b 4b 20          	mov    r9d,DWORD PTR [r11+0x20]
+  46c1fa:	45 85 c9             	test   r9d,r9d
+  46c1fd:	74 d1                	je     46c1d0 <fb_hBlit32to32RGB+0x40>
+  46c1ff:	4c 8d 47 04          	lea    r8,[rdi+0x4]
+  46c203:	48 89 d0             	mov    rax,rdx
+  46c206:	4c 29 c0             	sub    rax,r8
+  46c209:	48 83 f8 08          	cmp    rax,0x8
+  46c20d:	0f 86 ed 00 00 00    	jbe    46c300 <fb_hBlit32to32RGB+0x170>
+  46c213:	41 8d 41 ff          	lea    eax,[r9-0x1]
+  46c217:	83 f8 02             	cmp    eax,0x2
+  46c21a:	0f 86 e0 00 00 00    	jbe    46c300 <fb_hBlit32to32RGB+0x170>
+  46c220:	45 89 c8             	mov    r8d,r9d
+  46c223:	31 c0                	xor    eax,eax
+  46c225:	41 c1 e8 02          	shr    r8d,0x2
+  46c229:	49 c1 e0 04          	shl    r8,0x4
+  46c22d:	0f 1f 00             	nop    DWORD PTR [rax]
+;				c = (*s++) & 0xFFFFFF;
+  46c230:	f3 0f 6f 0c 07       	movdqu xmm1,XMMWORD PTR [rdi+rax*1]
+  46c235:	66 0f db cb          	pand   xmm1,xmm3
+;				*d++ = (c >> 16) | (c & 0xFF00) | (c << 16);
+  46c239:	66 0f 6f c1          	movdqa xmm0,xmm1
+  46c23d:	66 0f 72 f1 10       	pslld  xmm1,0x10
+  46c242:	66 0f 72 d0 10       	psrld  xmm0,0x10
+  46c247:	66 0f eb c1          	por    xmm0,xmm1
+  46c24b:	f3 0f 6f 0c 07       	movdqu xmm1,XMMWORD PTR [rdi+rax*1]
+  46c250:	66 0f db ca          	pand   xmm1,xmm2
+  46c254:	66 0f eb c1          	por    xmm0,xmm1
+  46c258:	0f 11 04 02          	movups XMMWORD PTR [rdx+rax*1],xmm0
+;			for (x = __fb_gfx->w; x; x--) {
+  46c25c:	48 83 c0 10          	add    rax,0x10
+  46c260:	4c 39 c0             	cmp    rax,r8
+  46c263:	75 cb                	jne    46c230 <fb_hBlit32to32RGB+0xa0>
+  46c265:	45 89 c8             	mov    r8d,r9d
+  46c268:	45 89 cc             	mov    r12d,r9d
+  46c26b:	41 83 e0 fc          	and    r8d,0xfffffffc
+  46c26f:	44 89 c0             	mov    eax,r8d
+  46c272:	45 29 c4             	sub    r12d,r8d
+  46c275:	48 c1 e0 02          	shl    rax,0x2
+  46c279:	48 8d 2c 02          	lea    rbp,[rdx+rax*1]
+  46c27d:	48 01 f8             	add    rax,rdi
+  46c280:	45 39 c1             	cmp    r9d,r8d
+  46c283:	74 67                	je     46c2ec <fb_hBlit32to32RGB+0x15c>
+;				c = (*s++) & 0xFFFFFF;
+  46c285:	44 8b 08             	mov    r9d,DWORD PTR [rax]
+  46c288:	45 89 c8             	mov    r8d,r9d
+;				*d++ = (c >> 16) | (c & 0xFF00) | (c << 16);
+  46c28b:	41 81 e1 00 ff 00 00 	and    r9d,0xff00
+;				c = (*s++) & 0xFFFFFF;
+  46c292:	41 81 e0 ff ff ff 00 	and    r8d,0xffffff
+;				*d++ = (c >> 16) | (c & 0xFF00) | (c << 16);
+  46c299:	41 c1 c0 10          	rol    r8d,0x10
+  46c29d:	45 09 c8             	or     r8d,r9d
+  46c2a0:	44 89 45 00          	mov    DWORD PTR [rbp+0x0],r8d
+;			for (x = __fb_gfx->w; x; x--) {
+  46c2a4:	41 83 fc 01          	cmp    r12d,0x1
+  46c2a8:	74 42                	je     46c2ec <fb_hBlit32to32RGB+0x15c>
+;				c = (*s++) & 0xFFFFFF;
+  46c2aa:	44 8b 48 04          	mov    r9d,DWORD PTR [rax+0x4]
+  46c2ae:	45 89 c8             	mov    r8d,r9d
+;				*d++ = (c >> 16) | (c & 0xFF00) | (c << 16);
+  46c2b1:	41 81 e1 00 ff 00 00 	and    r9d,0xff00
+;				c = (*s++) & 0xFFFFFF;
+  46c2b8:	41 81 e0 ff ff ff 00 	and    r8d,0xffffff
+;				*d++ = (c >> 16) | (c & 0xFF00) | (c << 16);
+  46c2bf:	41 c1 c0 10          	rol    r8d,0x10
+  46c2c3:	45 09 c8             	or     r8d,r9d
+  46c2c6:	44 89 45 04          	mov    DWORD PTR [rbp+0x4],r8d
+;			for (x = __fb_gfx->w; x; x--) {
+  46c2ca:	41 83 fc 02          	cmp    r12d,0x2
+  46c2ce:	74 1c                	je     46c2ec <fb_hBlit32to32RGB+0x15c>
+;				c = (*s++) & 0xFFFFFF;
+  46c2d0:	44 8b 40 08          	mov    r8d,DWORD PTR [rax+0x8]
+  46c2d4:	44 89 c0             	mov    eax,r8d
+;				*d++ = (c >> 16) | (c & 0xFF00) | (c << 16);
+  46c2d7:	41 81 e0 00 ff 00 00 	and    r8d,0xff00
+;				c = (*s++) & 0xFFFFFF;
+  46c2de:	25 ff ff ff 00       	and    eax,0xffffff
+;				*d++ = (c >> 16) | (c & 0xFF00) | (c << 16);
+  46c2e3:	c1 c0 10             	rol    eax,0x10
+  46c2e6:	44 09 c0             	or     eax,r8d
+  46c2e9:	89 45 08             	mov    DWORD PTR [rbp+0x8],eax
+;		if (z >= __fb_gfx->scanline_size) {
+  46c2ec:	41 8b 43 70          	mov    eax,DWORD PTR [r11+0x70]
+  46c2f0:	e9 db fe ff ff       	jmp    46c1d0 <fb_hBlit32to32RGB+0x40>
+  46c2f5:	0f 1f 00             	nop    DWORD PTR [rax]
+;	}
+;}
+  46c2f8:	5b                   	pop    rbx
+  46c2f9:	5d                   	pop    rbp
+  46c2fa:	41 5c                	pop    r12
+  46c2fc:	c3                   	ret    
+  46c2fd:	0f 1f 00             	nop    DWORD PTR [rax]
+  46c300:	44 89 cd             	mov    ebp,r9d
+;			for (x = __fb_gfx->w; x; x--) {
+  46c303:	45 31 c0             	xor    r8d,r8d
+  46c306:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
+  46c30d:	00 00 00 
+;				c = (*s++) & 0xFFFFFF;
+  46c310:	46 8b 0c 87          	mov    r9d,DWORD PTR [rdi+r8*4]
+  46c314:	44 89 c8             	mov    eax,r9d
+;				*d++ = (c >> 16) | (c & 0xFF00) | (c << 16);
+  46c317:	41 81 e1 00 ff 00 00 	and    r9d,0xff00
+;				c = (*s++) & 0xFFFFFF;
+  46c31e:	25 ff ff ff 00       	and    eax,0xffffff
+;				*d++ = (c >> 16) | (c & 0xFF00) | (c << 16);
+  46c323:	c1 c0 10             	rol    eax,0x10
+  46c326:	44 09 c8             	or     eax,r9d
+  46c329:	42 89 04 82          	mov    DWORD PTR [rdx+r8*4],eax
+;			for (x = __fb_gfx->w; x; x--) {
+  46c32d:	49 83 c0 01          	add    r8,0x1
+  46c331:	4c 39 c5             	cmp    rbp,r8
+  46c334:	75 da                	jne    46c310 <fb_hBlit32to32RGB+0x180>
+  46c336:	eb b4                	jmp    46c2ec <fb_hBlit32to32RGB+0x15c>
+  46c338:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+  46c33f:	00 
+
+000000000046c340 <fb_hBlit_code_start>:
+;void fb_hBlit_code_start(void) { }
+  46c340:	c3                   	ret    
+  46c341:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
+  46c348:	00 00 00 00 
+  46c34c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+
+000000000046c350 <fb_hGetBlitter>:
+;		if (is_rgb) {
+;			__fb_color_conv_16to32[i] = ((i & 0x1F) << 19) | ((i & 0xE0) << 5);
+;			__fb_color_conv_16to32[256+i] = ((i & 0x07) << 13) | (i & 0xF8);
+;		}
+;		else {
+;			__fb_color_conv_16to32[i] = ((i & 0x1F) << 3) | ((i & 0xE0) << 5);
+  46c350:	48 8b 05 89 99 04 00 	mov    rax,QWORD PTR [rip+0x49989]        # 4b5ce0 <__fb_color_conv_16to32>
+;{
+  46c357:	41 55                	push   r13
+;			__fb_color_conv_16to32[i] = ((i & 0x1F) << 3) | ((i & 0xE0) << 5);
+  46c359:	66 0f 6f 3d 1f 5f 01 	movdqa xmm7,XMMWORD PTR [rip+0x15f1f]        # 482280 <_IO_stdin_used+0x5280>
+  46c360:	00 
+  46c361:	66 0f 6f 2d 27 5f 01 	movdqa xmm5,XMMWORD PTR [rip+0x15f27]        # 482290 <_IO_stdin_used+0x5290>
+  46c368:	00 
+;{
+  46c369:	41 54                	push   r12
+  46c36b:	66 0f 6f 25 3d 7b 01 	movdqa xmm4,XMMWORD PTR [rip+0x17b3d]        # 483eb0 <cursor_data+0x130>
+  46c372:	00 
+  46c373:	55                   	push   rbp
+  46c374:	48 8d 90 00 04 00 00 	lea    rdx,[rax+0x400]
+  46c37b:	53                   	push   rbx
+  46c37c:	85 f6                	test   esi,esi
+  46c37e:	0f 85 0c 01 00 00    	jne    46c490 <fb_hGetBlitter+0x140>
+  46c384:	66 0f 6f 1d e4 7a 01 	movdqa xmm3,XMMWORD PTR [rip+0x17ae4]        # 483e70 <cursor_data+0xf0>
+  46c38b:	00 
+  46c38c:	66 0f 6f 15 3c 7b 01 	movdqa xmm2,XMMWORD PTR [rip+0x17b3c]        # 483ed0 <cursor_data+0x150>
+  46c393:	00 
+  46c394:	66 44 0f 6f 05 23 7b 	movdqa xmm8,XMMWORD PTR [rip+0x17b23]        # 483ec0 <cursor_data+0x140>
+  46c39b:	01 00 
+  46c39d:	0f 1f 00             	nop    DWORD PTR [rax]
+  46c3a0:	66 0f 6f c7          	movdqa xmm0,xmm7
+  46c3a4:	48 83 c0 10          	add    rax,0x10
+  46c3a8:	66 0f fe fd          	paddd  xmm7,xmm5
+;			__fb_color_conv_16to32[i] = ((i & 0x1F) << 19) | ((i & 0xE0) << 5);
+  46c3ac:	66 0f 6f c8          	movdqa xmm1,xmm0
+;			__fb_color_conv_16to32[i] = ((i & 0x1F) << 3) | ((i & 0xE0) << 5);
+  46c3b0:	66 0f 6f f0          	movdqa xmm6,xmm0
+;			__fb_color_conv_16to32[i] = ((i & 0x1F) << 19) | ((i & 0xE0) << 5);
+  46c3b4:	66 0f 72 f1 05       	pslld  xmm1,0x5
+;			__fb_color_conv_16to32[i] = ((i & 0x1F) << 3) | ((i & 0xE0) << 5);
+  46c3b9:	66 0f 72 f6 03       	pslld  xmm6,0x3
+;			__fb_color_conv_16to32[i] = ((i & 0x1F) << 19) | ((i & 0xE0) << 5);
+  46c3be:	66 0f db cc          	pand   xmm1,xmm4
+;			__fb_color_conv_16to32[i] = ((i & 0x1F) << 3) | ((i & 0xE0) << 5);
+  46c3c2:	66 41 0f db f0       	pand   xmm6,xmm8
+  46c3c7:	66 0f eb ce          	por    xmm1,xmm6
+;			__fb_color_conv_16to32[i] = ((i & 0x1F) << 19) | ((i & 0xE0) << 5);
+  46c3cb:	0f 11 48 f0          	movups XMMWORD PTR [rax-0x10],xmm1
+;			__fb_color_conv_16to32[256+i] = ((i & 0x07) << 13) | (i & 0xF8);
+  46c3cf:	66 0f 6f c8          	movdqa xmm1,xmm0
+;			__fb_color_conv_16to32[256+i] = ((i & 0x07) << 13) | ((i & 0xF8) << 16);
+  46c3d3:	66 0f 72 f0 10       	pslld  xmm0,0x10
+;			__fb_color_conv_16to32[256+i] = ((i & 0x07) << 13) | (i & 0xF8);
+  46c3d8:	66 0f 72 f1 0d       	pslld  xmm1,0xd
+;			__fb_color_conv_16to32[256+i] = ((i & 0x07) << 13) | ((i & 0xF8) << 16);
+  46c3dd:	66 0f db c2          	pand   xmm0,xmm2
+;			__fb_color_conv_16to32[256+i] = ((i & 0x07) << 13) | (i & 0xF8);
+  46c3e1:	66 0f db cb          	pand   xmm1,xmm3
+;			__fb_color_conv_16to32[256+i] = ((i & 0x07) << 13) | ((i & 0xF8) << 16);
+  46c3e5:	66 0f eb c1          	por    xmm0,xmm1
+;			__fb_color_conv_16to32[256+i] = ((i & 0x07) << 13) | (i & 0xF8);
+  46c3e9:	0f 11 80 f0 03 00 00 	movups XMMWORD PTR [rax+0x3f0],xmm0
+;	for (i = 0; i < 256; i++) {
+  46c3f0:	48 39 c2             	cmp    rdx,rax
+  46c3f3:	75 ab                	jne    46c3a0 <fb_hGetBlitter+0x50>
+;			__fb_color_conv_16to32[256+i] = ((i & 0x07) << 13) | (i & 0xF8);
+  46c3f5:	4c 8d 05 04 d5 ff ff 	lea    r8,[rip+0xffffffffffffd504]        # 469900 <fb_hBlitCopy>
+  46c3fc:	4c 8d 2d cd d6 ff ff 	lea    r13,[rip+0xffffffffffffd6cd]        # 469ad0 <fb_hBlit8to15BGR>
+  46c403:	4c 8d 25 66 d9 ff ff 	lea    r12,[rip+0xffffffffffffd966]        # 469d70 <fb_hBlit8to16BGR>
+  46c40a:	48 8d 2d 6f db ff ff 	lea    rbp,[rip+0xffffffffffffdb6f]        # 469f80 <fb_hBlit8to24BGR>
+  46c411:	4c 89 c6             	mov    rsi,r8
+  46c414:	48 8d 15 a5 dc ff ff 	lea    rdx,[rip+0xffffffffffffdca5]        # 46a0c0 <fb_hBlit8to32BGR>
+  46c41b:	48 8d 1d 6e e2 ff ff 	lea    rbx,[rip+0xffffffffffffe26e]        # 46a690 <fb_hBlit16to15BGR>
+  46c422:	4c 8d 15 c7 f1 ff ff 	lea    r10,[rip+0xfffffffffffff1c7]        # 46b5f0 <fb_hBlit32to15BGR>
+  46c429:	4c 8d 0d 90 f8 ff ff 	lea    r9,[rip+0xfffffffffffff890]        # 46bcc0 <fb_hBlit32to16BGR>
+  46c430:	4c 8d 1d b9 fc ff ff 	lea    r11,[rip+0xfffffffffffffcb9]        # 46c0f0 <fb_hBlit32to24BGR>
+;#endif
+;
+;	if (!is_rgb)
+;		blitter = &blitter[12];
+;	
+;	switch (__fb_gfx->depth) {
+  46c437:	48 8b 05 ba 98 04 00 	mov    rax,QWORD PTR [rip+0x498ba]        # 4b5cf8 <__fb_gfx>
+  46c43e:	8b 48 28             	mov    ecx,DWORD PTR [rax+0x28]
+  46c441:	83 f9 20             	cmp    ecx,0x20
+  46c444:	77 35                	ja     46c47b <fb_hGetBlitter+0x12b>
+  46c446:	b8 01 00 00 00       	mov    eax,0x1
+  46c44b:	48 d3 e0             	shl    rax,cl
+  46c44e:	48 89 c1             	mov    rcx,rax
+  46c451:	81 e1 16 01 00 00    	and    ecx,0x116
+  46c457:	0f 85 ee 00 00 00    	jne    46c54b <fb_hGetBlitter+0x1fb>
+  46c45d:	48 ba 00 00 00 01 01 	movabs rdx,0x101000000
+  46c464:	00 00 00 
+  46c467:	48 21 c2             	and    rdx,rax
+  46c46a:	0f 85 2c 01 00 00    	jne    46c59c <fb_hGetBlitter+0x24c>
+  46c470:	a9 00 80 01 00       	test   eax,0x18000
+  46c475:	0f 85 ec 00 00 00    	jne    46c567 <fb_hGetBlitter+0x217>
+  46c47b:	45 31 c0             	xor    r8d,r8d
+;				case 32:	return blitter[11];
+;			}
+;			break;
+;	}
+;	return NULL;
+;}
+  46c47e:	5b                   	pop    rbx
+  46c47f:	4c 89 c0             	mov    rax,r8
+  46c482:	5d                   	pop    rbp
+  46c483:	41 5c                	pop    r12
+  46c485:	41 5d                	pop    r13
+  46c487:	c3                   	ret    
+  46c488:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+  46c48f:	00 
+  46c490:	66 0f 6f 1d d8 79 01 	movdqa xmm3,XMMWORD PTR [rip+0x179d8]        # 483e70 <cursor_data+0xf0>
+  46c497:	00 
+  46c498:	66 0f 6f 15 30 7a 01 	movdqa xmm2,XMMWORD PTR [rip+0x17a30]        # 483ed0 <cursor_data+0x150>
+  46c49f:	00 
+  46c4a0:	66 44 0f 6f 05 37 7a 	movdqa xmm8,XMMWORD PTR [rip+0x17a37]        # 483ee0 <cursor_data+0x160>
+  46c4a7:	01 00 
+  46c4a9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+  46c4b0:	66 0f 6f c7          	movdqa xmm0,xmm7
+  46c4b4:	48 83 c0 10          	add    rax,0x10
+  46c4b8:	66 0f fe fd          	paddd  xmm7,xmm5
+;			__fb_color_conv_16to32[i] = ((i & 0x1F) << 19) | ((i & 0xE0) << 5);
+  46c4bc:	66 0f 6f c8          	movdqa xmm1,xmm0
+  46c4c0:	66 0f 6f f0          	movdqa xmm6,xmm0
+  46c4c4:	66 0f 72 f1 05       	pslld  xmm1,0x5
+  46c4c9:	66 0f 72 f6 13       	pslld  xmm6,0x13
+  46c4ce:	66 0f db cc          	pand   xmm1,xmm4
+  46c4d2:	66 0f db f2          	pand   xmm6,xmm2
+  46c4d6:	66 0f eb ce          	por    xmm1,xmm6
+  46c4da:	0f 11 48 f0          	movups XMMWORD PTR [rax-0x10],xmm1
+;			__fb_color_conv_16to32[256+i] = ((i & 0x07) << 13) | (i & 0xF8);
+  46c4de:	66 0f 6f c8          	movdqa xmm1,xmm0
+  46c4e2:	66 41 0f db c0       	pand   xmm0,xmm8
+  46c4e7:	66 0f 72 f1 0d       	pslld  xmm1,0xd
+  46c4ec:	66 0f db cb          	pand   xmm1,xmm3
+  46c4f0:	66 0f eb c1          	por    xmm0,xmm1
+  46c4f4:	0f 11 80 f0 03 00 00 	movups XMMWORD PTR [rax+0x3f0],xmm0
+;	for (i = 0; i < 256; i++) {
+  46c4fb:	48 39 c2             	cmp    rdx,rax
+  46c4fe:	75 b0                	jne    46c4b0 <fb_hGetBlitter+0x160>
+  46c500:	4c 8d 2d 89 d4 ff ff 	lea    r13,[rip+0xffffffffffffd489]        # 469990 <fb_hBlit8to15RGB>
+  46c507:	4c 8d 25 22 d7 ff ff 	lea    r12,[rip+0xffffffffffffd722]        # 469c30 <fb_hBlit8to16RGB>
+  46c50e:	48 8d 2d bb d9 ff ff 	lea    rbp,[rip+0xffffffffffffd9bb]        # 469ed0 <fb_hBlit8to24RGB>
+  46c515:	48 8d 15 14 db ff ff 	lea    rdx,[rip+0xffffffffffffdb14]        # 46a030 <fb_hBlit8to32RGB>
+  46c51c:	48 8d 1d 4d dc ff ff 	lea    rbx,[rip+0xffffffffffffdc4d]        # 46a170 <fb_hBlit16to15RGB>
+  46c523:	4c 8d 05 66 e5 ff ff 	lea    r8,[rip+0xffffffffffffe566]        # 46aa90 <fb_hBlit16to16RGB>
+  46c52a:	4c 8d 15 7f ed ff ff 	lea    r10,[rip+0xffffffffffffed7f]        # 46b2b0 <fb_hBlit32to15RGB>
+  46c531:	4c 8d 0d 48 f4 ff ff 	lea    r9,[rip+0xfffffffffffff448]        # 46b980 <fb_hBlit32to16RGB>
+  46c538:	4c 8d 1d 11 fb ff ff 	lea    r11,[rip+0xfffffffffffffb11]        # 46c050 <fb_hBlit32to24RGB>
+  46c53f:	48 8d 35 4a fc ff ff 	lea    rsi,[rip+0xfffffffffffffc4a]        # 46c190 <fb_hBlit32to32RGB>
+  46c546:	e9 ec fe ff ff       	jmp    46c437 <fb_hGetBlitter+0xe7>
+;			switch (device_depth) {
+  46c54b:	83 ef 08             	sub    edi,0x8
+  46c54e:	83 ff 18             	cmp    edi,0x18
+  46c551:	0f 87 24 ff ff ff    	ja     46c47b <fb_hGetBlitter+0x12b>
+  46c557:	48 8d 0d 7a 78 01 00 	lea    rcx,[rip+0x1787a]        # 483dd8 <cursor_data+0x58>
+  46c55e:	48 63 04 b9          	movsxd rax,DWORD PTR [rcx+rdi*4]
+  46c562:	48 01 c8             	add    rax,rcx
+  46c565:	ff e0                	jmp    rax
+;			switch (device_depth) {
+  46c567:	83 ff 18             	cmp    edi,0x18
+  46c56a:	74 7b                	je     46c5e7 <fb_hGetBlitter+0x297>
+  46c56c:	7f 16                	jg     46c584 <fb_hGetBlitter+0x234>
+  46c56e:	83 ff 0f             	cmp    edi,0xf
+  46c571:	74 64                	je     46c5d7 <fb_hGetBlitter+0x287>
+;	return NULL;
+  46c573:	83 ff 10             	cmp    edi,0x10
+;}
+  46c576:	5b                   	pop    rbx
+  46c577:	5d                   	pop    rbp
+;	return NULL;
+  46c578:	4c 0f 45 c2          	cmovne r8,rdx
+;}
+  46c57c:	41 5c                	pop    r12
+  46c57e:	41 5d                	pop    r13
+  46c580:	4c 89 c0             	mov    rax,r8
+  46c583:	c3                   	ret    
+;				case 32:	return blitter[7];
+  46c584:	83 ff 20             	cmp    edi,0x20
+  46c587:	4c 8d 05 12 ec ff ff 	lea    r8,[rip+0xffffffffffffec12]        # 46b1a0 <fb_hBlit16to32>
+;}
+  46c58e:	5b                   	pop    rbx
+  46c58f:	5d                   	pop    rbp
+;				case 32:	return blitter[7];
+  46c590:	4c 0f 45 c2          	cmovne r8,rdx
+;}
+  46c594:	41 5c                	pop    r12
+  46c596:	41 5d                	pop    r13
+  46c598:	4c 89 c0             	mov    rax,r8
+  46c59b:	c3                   	ret    
+;			switch (device_depth) {
+  46c59c:	83 ff 18             	cmp    edi,0x18
+  46c59f:	74 3e                	je     46c5df <fb_hGetBlitter+0x28f>
+  46c5a1:	7f 20                	jg     46c5c3 <fb_hGetBlitter+0x273>
+  46c5a3:	4d 89 d0             	mov    r8,r10
+  46c5a6:	83 ff 0f             	cmp    edi,0xf
+  46c5a9:	0f 84 cf fe ff ff    	je     46c47e <fb_hGetBlitter+0x12e>
+;				case 16:	return blitter[9];
+  46c5af:	83 ff 10             	cmp    edi,0x10
+;}
+  46c5b2:	5b                   	pop    rbx
+  46c5b3:	5d                   	pop    rbp
+;				case 16:	return blitter[9];
+  46c5b4:	49 0f 44 c9          	cmove  rcx,r9
+;}
+  46c5b8:	41 5c                	pop    r12
+  46c5ba:	41 5d                	pop    r13
+;				case 16:	return blitter[9];
+  46c5bc:	49 89 c8             	mov    r8,rcx
+;}
+  46c5bf:	4c 89 c0             	mov    rax,r8
+  46c5c2:	c3                   	ret    
+;				case 32:	return blitter[11];
+  46c5c3:	83 ff 20             	cmp    edi,0x20
+;}
+  46c5c6:	5b                   	pop    rbx
+  46c5c7:	5d                   	pop    rbp
+;				case 32:	return blitter[11];
+  46c5c8:	48 0f 44 ce          	cmove  rcx,rsi
+;}
+  46c5cc:	41 5c                	pop    r12
+  46c5ce:	41 5d                	pop    r13
+;				case 32:	return blitter[11];
+  46c5d0:	49 89 c8             	mov    r8,rcx
+;}
+  46c5d3:	4c 89 c0             	mov    rax,r8
+  46c5d6:	c3                   	ret    
+  46c5d7:	49 89 d8             	mov    r8,rbx
+  46c5da:	e9 9f fe ff ff       	jmp    46c47e <fb_hGetBlitter+0x12e>
+;				case 24:	return blitter[10];
+  46c5df:	4d 89 d8             	mov    r8,r11
+  46c5e2:	e9 97 fe ff ff       	jmp    46c47e <fb_hGetBlitter+0x12e>
+;				case 24:	return blitter[6];
+  46c5e7:	4c 8d 05 72 e9 ff ff 	lea    r8,[rip+0xffffffffffffe972]        # 46af60 <fb_hBlit16to24>
+  46c5ee:	e9 8b fe ff ff       	jmp    46c47e <fb_hGetBlitter+0x12e>
+;				case 32:	return blitter[3];
+  46c5f3:	49 89 d0             	mov    r8,rdx
+  46c5f6:	e9 83 fe ff ff       	jmp    46c47e <fb_hGetBlitter+0x12e>
+;				case 24:	return blitter[2];
+  46c5fb:	49 89 e8             	mov    r8,rbp
+  46c5fe:	e9 7b fe ff ff       	jmp    46c47e <fb_hGetBlitter+0x12e>
+;				case 16:	return blitter[1];
+  46c603:	4d 89 e0             	mov    r8,r12
+  46c606:	e9 73 fe ff ff       	jmp    46c47e <fb_hGetBlitter+0x12e>
+;				case 8:		return fb_hBlitCopy;
+  46c60b:	4c 8d 05 ee d2 ff ff 	lea    r8,[rip+0xffffffffffffd2ee]        # 469900 <fb_hBlitCopy>
+  46c612:	e9 67 fe ff ff       	jmp    46c47e <fb_hGetBlitter+0x12e>
+  46c617:	4d 89 e8             	mov    r8,r13
+  46c61a:	e9 5f fe ff ff       	jmp    46c47e <fb_hGetBlitter+0x12e>
+  46c61f:	90                   	nop
+
+000000000046c620 <fb_hBlit_code_end>:
+  46c620:	c3                   	ret    
+  46c621:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
+  46c628:	00 00 00 
+  46c62b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+
+000000000046c630 <fb_hArrayDtorStr>:
+;    size_t i;
+;	ssize_t elements;
+;	FBARRAYDIM *dim;
+;	FBSTRING *this_;
+;
+;	if( array->ptr == NULL )
+  46c630:	4c 8b 47 08          	mov    r8,QWORD PTR [rdi+0x8]
+  46c634:	4d 85 c0             	test   r8,r8
+  46c637:	74 77                	je     46c6b0 <fb_hArrayDtorStr+0x80>
+;{
+  46c639:	55                   	push   rbp
+;		return;
+;
+;    dim = &array->dimTB[0];
+;    elements = dim->elements - base_idx;
+;    ++dim;
+  46c63a:	48 8d 47 48          	lea    rax,[rdi+0x48]
+;{
+  46c63e:	53                   	push   rbx
+  46c63f:	48 83 ec 08          	sub    rsp,0x8
+;    elements = dim->elements - base_idx;
+  46c643:	48 8b 4f 30          	mov    rcx,QWORD PTR [rdi+0x30]
+;
+;    for( i = 1; i < array->dimensions; i++, dim++ )
+  46c647:	48 8b 77 20          	mov    rsi,QWORD PTR [rdi+0x20]
+;    elements = dim->elements - base_idx;
+  46c64b:	48 89 cb             	mov    rbx,rcx
+  46c64e:	48 29 d3             	sub    rbx,rdx
+;    for( i = 1; i < array->dimensions; i++, dim++ )
+  46c651:	48 83 fe 01          	cmp    rsi,0x1
+  46c655:	76 1e                	jbe    46c675 <fb_hArrayDtorStr+0x45>
+  46c657:	b9 01 00 00 00       	mov    ecx,0x1
+  46c65c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+  46c660:	48 83 c1 01          	add    rcx,0x1
+;        elements *= dim->elements;
+  46c664:	48 0f af 18          	imul   rbx,QWORD PTR [rax]
+;    for( i = 1; i < array->dimensions; i++, dim++ )
+  46c668:	48 83 c0 18          	add    rax,0x18
+  46c66c:	48 39 f1             	cmp    rcx,rsi
+  46c66f:	75 ef                	jne    46c660 <fb_hArrayDtorStr+0x30>
+;
+;    /* call dtors in the inverse order */
+;    this_ = (FBSTRING *)array->ptr + (base_idx + (elements-1));
+  46c671:	48 8d 0c 13          	lea    rcx,[rbx+rdx*1]
+  46c675:	48 8d 04 49          	lea    rax,[rcx+rcx*2]
+  46c679:	49 8d 6c c0 e8       	lea    rbp,[r8+rax*8-0x18]
+;
+;	while( elements > 0 ) {
+  46c67e:	48 85 db             	test   rbx,rbx
+  46c681:	7e 1e                	jle    46c6a1 <fb_hArrayDtorStr+0x71>
+  46c683:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;		if( this_->data != NULL )
+  46c688:	48 83 7d 00 00       	cmp    QWORD PTR [rbp+0x0],0x0
+  46c68d:	74 08                	je     46c697 <fb_hArrayDtorStr+0x67>
+;			fb_StrDelete( this_ );
+  46c68f:	48 89 ef             	mov    rdi,rbp
+  46c692:	e8 59 a4 00 00       	call   476af0 <fb_StrDelete>
+;		--this_;
+  46c697:	48 83 ed 18          	sub    rbp,0x18
+;	while( elements > 0 ) {
+  46c69b:	48 83 eb 01          	sub    rbx,0x1
+  46c69f:	75 e7                	jne    46c688 <fb_hArrayDtorStr+0x58>
+;		--elements;
+;	}
+;}
+  46c6a1:	48 83 c4 08          	add    rsp,0x8
+  46c6a5:	5b                   	pop    rbx
+  46c6a6:	5d                   	pop    rbp
+  46c6a7:	c3                   	ret    
+  46c6a8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+  46c6af:	00 
+  46c6b0:	c3                   	ret    
+  46c6b1:	66 66 2e 0f 1f 84 00 	data16 cs nop WORD PTR [rax+rax*1+0x0]
+  46c6b8:	00 00 00 00 
+  46c6bc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+
+000000000046c6c0 <fb_ArrayDestructStr>:
+;	if( array->ptr == NULL )
+  46c6c0:	4c 8b 47 08          	mov    r8,QWORD PTR [rdi+0x8]
+  46c6c4:	4d 85 c0             	test   r8,r8
+  46c6c7:	74 77                	je     46c740 <fb_ArrayDestructStr+0x80>
+;
+;FBCALL void fb_ArrayDestructStr( FBARRAY *array )
+;{
+  46c6c9:	55                   	push   rbp
+;    ++dim;
+  46c6ca:	48 8d 47 48          	lea    rax,[rdi+0x48]
+;{
+  46c6ce:	53                   	push   rbx
+  46c6cf:	48 83 ec 08          	sub    rsp,0x8
+;    elements = dim->elements - base_idx;
+  46c6d3:	48 8b 5f 30          	mov    rbx,QWORD PTR [rdi+0x30]
+;    for( i = 1; i < array->dimensions; i++, dim++ )
+  46c6d7:	48 8b 77 20          	mov    rsi,QWORD PTR [rdi+0x20]
+;    elements = dim->elements - base_idx;
+  46c6db:	48 89 d9             	mov    rcx,rbx
+;    for( i = 1; i < array->dimensions; i++, dim++ )
+  46c6de:	48 83 fe 01          	cmp    rsi,0x1
+  46c6e2:	76 23                	jbe    46c707 <fb_ArrayDestructStr+0x47>
+  46c6e4:	ba 01 00 00 00       	mov    edx,0x1
+  46c6e9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;        elements *= dim->elements;
+  46c6f0:	48 8b 08             	mov    rcx,QWORD PTR [rax]
+;    for( i = 1; i < array->dimensions; i++, dim++ )
+  46c6f3:	48 83 c2 01          	add    rdx,0x1
+  46c6f7:	48 83 c0 18          	add    rax,0x18
+;        elements *= dim->elements;
+  46c6fb:	48 0f af cb          	imul   rcx,rbx
+  46c6ff:	48 89 cb             	mov    rbx,rcx
+;    for( i = 1; i < array->dimensions; i++, dim++ )
+  46c702:	48 39 f2             	cmp    rdx,rsi
+  46c705:	75 e9                	jne    46c6f0 <fb_ArrayDestructStr+0x30>
+;    this_ = (FBSTRING *)array->ptr + (base_idx + (elements-1));
+  46c707:	48 8d 04 49          	lea    rax,[rcx+rcx*2]
+  46c70b:	49 8d 6c c0 e8       	lea    rbp,[r8+rax*8-0x18]
+;	while( elements > 0 ) {
+  46c710:	48 85 db             	test   rbx,rbx
+  46c713:	7e 1c                	jle    46c731 <fb_ArrayDestructStr+0x71>
+  46c715:	0f 1f 00             	nop    DWORD PTR [rax]
+;		if( this_->data != NULL )
+  46c718:	48 83 7d 00 00       	cmp    QWORD PTR [rbp+0x0],0x0
+  46c71d:	74 08                	je     46c727 <fb_ArrayDestructStr+0x67>
+;			fb_StrDelete( this_ );
+  46c71f:	48 89 ef             	mov    rdi,rbp
+  46c722:	e8 c9 a3 00 00       	call   476af0 <fb_StrDelete>
+;		--this_;
+  46c727:	48 83 ed 18          	sub    rbp,0x18
+;	while( elements > 0 ) {
+  46c72b:	48 83 eb 01          	sub    rbx,0x1
+  46c72f:	75 e7                	jne    46c718 <fb_ArrayDestructStr+0x58>
+;	fb_hArrayDtorStr( array, NULL, 0 );
+;}
+  46c731:	48 83 c4 08          	add    rsp,0x8
+  46c735:	5b                   	pop    rbx
+  46c736:	5d                   	pop    rbp
+  46c737:	c3                   	ret    
+  46c738:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
+  46c73f:	00 
+  46c740:	c3                   	ret    
+  46c741:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
+  46c748:	00 00 00 
+  46c74b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+
+000000000046c750 <fb_ConsoleInput>:
+;/* input function */
+;
+;#include "fb.h"
+;
+;FBCALL int fb_ConsoleInput( FBSTRING *text, int addquestion, int addnewline )
+;{
+  46c750:	41 56                	push   r14
+  46c752:	41 55                	push   r13
+  46c754:	41 89 d5             	mov    r13d,edx
+  46c757:	41 54                	push   r12
+  46c759:	41 89 f4             	mov    r12d,esi
+  46c75c:	55                   	push   rbp
+  46c75d:	48 89 fd             	mov    rbp,rdi
+  46c760:	53                   	push   rbx
+;	FB_INPUTCTX *ctx;
+;	int res;
+;
+;	fb_DevScrnInit_Read( );
+  46c761:	e8 ca 11 00 00       	call   46d930 <fb_DevScrnInit_Read>
+;
+;	if( fb_IsRedirected( TRUE ) )
+  46c766:	bf 01 00 00 00       	mov    edi,0x1
+  46c76b:	e8 c0 55 00 00       	call   471d30 <fb_IsRedirected>
+  46c770:	85 c0                	test   eax,eax
+  46c772:	75 5c                	jne    46c7d0 <fb_ConsoleInput+0x80>
+;		fb_hStrDelTemp( text );
+;
+;		return fb_FileInput( 0 );
+;	}
+;
+;    ctx = FB_TLSGETCTX( INPUT );
+  46c774:	48 c7 c2 c0 fc 46 00 	mov    rdx,0x46fcc0
+  46c77b:	be 30 00 00 00       	mov    esi,0x30
+  46c780:	bf 02 00 00 00       	mov    edi,0x2
+  46c785:	e8 86 bf 00 00       	call   478710 <fb_TlsGetCtx>
+;
+;	fb_StrDelete( &ctx->str );
+  46c78a:	4c 8d 70 10          	lea    r14,[rax+0x10]
+;    ctx = FB_TLSGETCTX( INPUT );
+  46c78e:	48 89 c3             	mov    rbx,rax
+;	fb_StrDelete( &ctx->str );
+  46c791:	4c 89 f7             	mov    rdi,r14
+  46c794:	e8 57 a3 00 00       	call   476af0 <fb_StrDelete>
+;	ctx->handle = 0;
+;	ctx->status = 0;
+;	ctx->index = 0;
+;
+;	res = fb_LineInput( text, &ctx->str, -1, 0, addquestion, addnewline );
+  46c799:	45 89 e9             	mov    r9d,r13d
+  46c79c:	45 89 e0             	mov    r8d,r12d
+  46c79f:	4c 89 f6             	mov    rsi,r14
+;	ctx->handle = 0;
+  46c7a2:	48 c7 03 00 00 00 00 	mov    QWORD PTR [rbx],0x0
+;	res = fb_LineInput( text, &ctx->str, -1, 0, addquestion, addnewline );
+  46c7a9:	48 89 ef             	mov    rdi,rbp
+  46c7ac:	31 c9                	xor    ecx,ecx
+  46c7ae:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
+;	ctx->status = 0;
+  46c7b5:	c7 43 08 00 00 00 00 	mov    DWORD PTR [rbx+0x8],0x0
+;	ctx->index = 0;
+  46c7bc:	c7 43 28 00 00 00 00 	mov    DWORD PTR [rbx+0x28],0x0
+;
+;	return res;
+;}
+  46c7c3:	5b                   	pop    rbx
+  46c7c4:	5d                   	pop    rbp
+  46c7c5:	41 5c                	pop    r12
+  46c7c7:	41 5d                	pop    r13
+  46c7c9:	41 5e                	pop    r14
+;	res = fb_LineInput( text, &ctx->str, -1, 0, addquestion, addnewline );
+  46c7cb:	e9 80 55 00 00       	jmp    471d50 <fb_LineInput>
+;		fb_hStrDelTemp( text );
+  46c7d0:	48 89 ef             	mov    rdi,rbp
+  46c7d3:	e8 68 a2 00 00       	call   476a40 <fb_hStrDelTemp>
+;}
+  46c7d8:	5b                   	pop    rbx
+;		return fb_FileInput( 0 );
+  46c7d9:	31 ff                	xor    edi,edi
+;}
+  46c7db:	5d                   	pop    rbp
+  46c7dc:	41 5c                	pop    r12
+  46c7de:	41 5d                	pop    r13
+  46c7e0:	41 5e                	pop    r14
+;		return fb_FileInput( 0 );
+  46c7e2:	e9 e9 34 00 00       	jmp    46fcd0 <fb_FileInput>
+  46c7e7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
+  46c7ee:	00 00 
+
+000000000046c7f0 <fb_Locate>:
+;
+;#include "fb.h"
+;
+;/*:::::*/
+;FBCALL int fb_Locate( int row, int col, int cursor, int start, int stop )
+;{
+  46c7f0:	41 55                	push   r13
+  46c7f2:	41 54                	push   r12
+  46c7f4:	41 89 d4             	mov    r12d,edx
+  46c7f7:	48 83 ec 18          	sub    rsp,0x18
+  46c7fb:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  46c802:	00 00 
+  46c804:	48 89 44 24 08       	mov    QWORD PTR [rsp+0x8],rax
+  46c809:	31 c0                	xor    eax,eax
+;    int new_pos;
+;    int res = fb_LocateEx( row, col, cursor, &new_pos );
+  46c80b:	4c 8d 6c 24 04       	lea    r13,[rsp+0x4]
+  46c810:	4c 89 e9             	mov    rcx,r13
+  46c813:	e8 58 55 00 00       	call   471d70 <fb_LocateEx>
+;    if( res!=FB_RTERROR_OK )
+  46c818:	85 c0                	test   eax,eax
+  46c81a:	75 24                	jne    46c840 <fb_Locate+0x50>
+;        fb_LocateEx( 0, 0, cursor, &new_pos );
+;    return new_pos;
+  46c81c:	8b 44 24 04          	mov    eax,DWORD PTR [rsp+0x4]
+;}
+  46c820:	48 8b 54 24 08       	mov    rdx,QWORD PTR [rsp+0x8]
+  46c825:	64 48 2b 14 25 28 00 	sub    rdx,QWORD PTR fs:0x28
+  46c82c:	00 00 
+  46c82e:	75 21                	jne    46c851 <fb_Locate+0x61>
+  46c830:	48 83 c4 18          	add    rsp,0x18
+  46c834:	41 5c                	pop    r12
+  46c836:	41 5d                	pop    r13
+  46c838:	c3                   	ret    
+  46c839:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;        fb_LocateEx( 0, 0, cursor, &new_pos );
+  46c840:	4c 89 e9             	mov    rcx,r13
+  46c843:	44 89 e2             	mov    edx,r12d
+  46c846:	31 f6                	xor    esi,esi
+  46c848:	31 ff                	xor    edi,edi
+  46c84a:	e8 21 55 00 00       	call   471d70 <fb_LocateEx>
+  46c84f:	eb cb                	jmp    46c81c <fb_Locate+0x2c>
+;}
+  46c851:	e8 2a 90 f9 ff       	call   405880 <__stack_chk_fail@plt>
+  46c856:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
+  46c85d:	00 00 00 
+
+000000000046c860 <fb_ConPrintTTY>:
+;		fb_ConHooks *handle,
+;        const FB_TCHAR *pachText,
+;        size_t TextLength,
+;        int is_text_mode
+;	)
+;{
+  46c860:	41 57                	push   r15
+  46c862:	41 56                	push   r14
+  46c864:	41 55                	push   r13
+  46c866:	41 54                	push   r12
+  46c868:	55                   	push   rbp
+  46c869:	53                   	push   rbx
+  46c86a:	48 81 ec 48 04 00 00 	sub    rsp,0x448
+  46c871:	89 4c 24 28          	mov    DWORD PTR [rsp+0x28],ecx
+;    fb_Coord *pCoord = &handle->Coord;
+;
+;    fb_Coord dwCurrentCoord;
+;    size_t IndexText;
+;    int fGotNewCoordinate = FALSE;
+;    int BorderWidth = pBorder->Right - pBorder->Left + 1;
+  46c875:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  46c87c:	00 00 
+  46c87e:	48 89 84 24 38 04 00 	mov    QWORD PTR [rsp+0x438],rax
+  46c885:	00 
+  46c886:	8b 47 20             	mov    eax,DWORD PTR [rdi+0x20]
+  46c889:	2b 47 18             	sub    eax,DWORD PTR [rdi+0x18]
+;
+;    /* Do nothing (and prevent division by zero below) if width == 0.
+;       (can happen with tiny gfxlib2 screens at least) */
+;    if( BorderWidth == 0 ) {
+  46c88c:	83 c0 01             	add    eax,0x1
+  46c88f:	89 44 24 2c          	mov    DWORD PTR [rsp+0x2c],eax
+  46c893:	0f 84 bc 00 00 00    	je     46c955 <fb_ConPrintTTY+0xf5>
+;        return;
+;    }
+;
+;    memcpy( &dwCurrentCoord, pCoord, sizeof( fb_Coord ) );
+  46c899:	48 8b 5f 28          	mov    rbx,QWORD PTR [rdi+0x28]
+  46c89d:	49 89 fc             	mov    r12,rdi
+;
+;    fb_Coord dwMoveCoord = { 0, 0 };
+;    for( IndexText=0; IndexText!=TextLength; ++IndexText )
+  46c8a0:	48 85 d2             	test   rdx,rdx
+  46c8a3:	0f 84 ac 00 00 00    	je     46c955 <fb_ConPrintTTY+0xf5>
+  46c8a9:	48 8d 04 16          	lea    rax,[rsi+rdx*1]
+  46c8ad:	48 89 f5             	mov    rbp,rsi
+;    size_t OutputBufferLength = 0, OutputBufferChars = 0;
+  46c8b0:	45 31 ff             	xor    r15d,r15d
+  46c8b3:	45 31 ed             	xor    r13d,r13d
+  46c8b6:	48 89 04 24          	mov    QWORD PTR [rsp],rax
+;        }
+;
+;        if( fDoFlush ) {
+;            fDoFlush = FALSE;
+;            if( OutputBufferLength!=0 ) {
+;                FB_CONPRINTRAW( handle,
+  46c8ba:	48 8d 44 24 30       	lea    rax,[rsp+0x30]
+;        switch ( ch )
+  46c8bf:	4c 8d 35 2a 76 01 00 	lea    r14,[rip+0x1762a]        # 483ef0 <cursor_data+0x170>
+;    int fGotNewCoordinate = FALSE;
+  46c8c6:	c7 44 24 08 00 00 00 	mov    DWORD PTR [rsp+0x8],0x0
+  46c8cd:	00 
+;                FB_CONPRINTRAW( handle,
+  46c8ce:	48 89 44 24 10       	mov    QWORD PTR [rsp+0x10],rax
+  46c8d3:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;        switch ( ch )
+  46c8d8:	0f b6 45 00          	movzx  eax,BYTE PTR [rbp+0x0]
+  46c8dc:	83 e8 07             	sub    eax,0x7
+  46c8df:	3c 06                	cmp    al,0x6
+  46c8e1:	0f 87 d9 01 00 00    	ja     46cac0 <fb_ConPrintTTY+0x260>
+  46c8e7:	0f b6 c0             	movzx  eax,al
+  46c8ea:	49 63 04 86          	movsxd rax,DWORD PTR [r14+rax*4]
+  46c8ee:	4c 01 f0             	add    rax,r14
+  46c8f1:	ff e0                	jmp    rax
+  46c8f3:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
+;            dwMoveCoord.X = pBorder->Left - dwCurrentCoord.X;
+  46c8f8:	41 8b 44 24 18       	mov    eax,DWORD PTR [r12+0x18]
+;            dwMoveCoord.Y = 0;
+  46c8fd:	66 0f ef c9          	pxor   xmm1,xmm1
+;            dwMoveCoord.X = pBorder->Left - dwCurrentCoord.X;
+  46c901:	29 d8                	sub    eax,ebx
+  46c903:	66 0f 6e c0          	movd   xmm0,eax
+;        if( OutputDataLength + OutputBufferLength > OUTPUT_BUFFER_SIZE ) {
+  46c907:	66 0f 62 c1          	punpckldq xmm0,xmm1
+;            if( OutputBufferLength!=0 ) {
+  46c90b:	4d 85 ed             	test   r13,r13
+  46c90e:	0f 85 9c 00 00 00    	jne    46c9b0 <fb_ConPrintTTY+0x150>
+;            }
+;        }
+;
+;        if( fSetNewCoord ) {
+;            fSetNewCoord = FALSE;
+;            pCoord->X += dwMoveCoord.X;
+  46c914:	f3 41 0f 7e 4c 24 28 	movq   xmm1,QWORD PTR [r12+0x28]
+;            pCoord->Y += dwMoveCoord.Y;
+;            memcpy( &dwCurrentCoord, pCoord, sizeof( fb_Coord ) );
+;            fGotNewCoordinate = TRUE;
+  46c91b:	c7 44 24 08 01 00 00 	mov    DWORD PTR [rsp+0x8],0x1
+  46c922:	00 
+;            memcpy( &dwCurrentCoord, pCoord, sizeof( fb_Coord ) );
+  46c923:	45 31 ed             	xor    r13d,r13d
+;            pCoord->X += dwMoveCoord.X;
+  46c926:	66 0f fe c8          	paddd  xmm1,xmm0
+  46c92a:	66 41 0f d6 4c 24 28 	movq   QWORD PTR [r12+0x28],xmm1
+;            memcpy( &dwCurrentCoord, pCoord, sizeof( fb_Coord ) );
+  46c931:	66 48 0f 7e cb       	movq   rbx,xmm1
+;                OutputBuffer[OutputBufferLength++] = *pachOutputData++;
+;            }
+;            OutputBufferChars += OutputDataChars;
+;        }
+;
+;        FB_TCHAR_ADVANCE( pachText, 1 );
+  46c936:	48 83 c5 01          	add    rbp,0x1
+;    for( IndexText=0; IndexText!=TextLength; ++IndexText )
+  46c93a:	48 3b 2c 24          	cmp    rbp,QWORD PTR [rsp]
+  46c93e:	75 98                	jne    46c8d8 <fb_ConPrintTTY+0x78>
+;    }
+;
+;    if( OutputBufferLength!=0 )
+  46c940:	4d 85 ed             	test   r13,r13
+  46c943:	0f 85 0f 02 00 00    	jne    46cb58 <fb_ConPrintTTY+0x2f8>
+;    {
+;        FB_CONPRINTRAW( handle, OutputBuffer, OutputBufferChars );
+;    }
+;    else if( fGotNewCoordinate )
+  46c949:	8b 44 24 08          	mov    eax,DWORD PTR [rsp+0x8]
+  46c94d:	85 c0                	test   eax,eax
+  46c94f:	0f 85 1b 02 00 00    	jne    46cb70 <fb_ConPrintTTY+0x310>
+;    {
+;        fb_hConCheckScroll( handle );
+;    }
+;}
+  46c955:	48 8b 84 24 38 04 00 	mov    rax,QWORD PTR [rsp+0x438]
+  46c95c:	00 
+  46c95d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  46c964:	00 00 
+  46c966:	0f 85 40 02 00 00    	jne    46cbac <fb_ConPrintTTY+0x34c>
+  46c96c:	48 81 c4 48 04 00 00 	add    rsp,0x448
+  46c973:	5b                   	pop    rbx
+  46c974:	5d                   	pop    rbp
+  46c975:	41 5c                	pop    r12
+  46c977:	41 5d                	pop    r13
+  46c979:	41 5e                	pop    r14
+  46c97b:	41 5f                	pop    r15
+  46c97d:	c3                   	ret    
+  46c97e:	66 90                	xchg   ax,ax
+;            if( is_text_mode ) {
+  46c980:	8b 54 24 28          	mov    edx,DWORD PTR [rsp+0x28]
+  46c984:	85 d2                	test   edx,edx
+  46c986:	0f 84 b4 01 00 00    	je     46cb40 <fb_ConPrintTTY+0x2e0>
+;                dwMoveCoord.X = pBorder->Left - dwCurrentCoord.X;
+  46c98c:	41 8b 44 24 18       	mov    eax,DWORD PTR [r12+0x18]
+  46c991:	29 d8                	sub    eax,ebx
+  46c993:	66 0f 6e c0          	movd   xmm0,eax
+;                dwMoveCoord.Y = 1;
+  46c997:	b8 01 00 00 00       	mov    eax,0x1
+  46c99c:	66 0f 6e c8          	movd   xmm1,eax
+  46c9a0:	66 0f 62 c1          	punpckldq xmm0,xmm1
+;            if( OutputBufferLength!=0 ) {
+  46c9a4:	4d 85 ed             	test   r13,r13
+  46c9a7:	0f 84 67 ff ff ff    	je     46c914 <fb_ConPrintTTY+0xb4>
+  46c9ad:	0f 1f 00             	nop    DWORD PTR [rax]
+;                FB_CONPRINTRAW( handle,
+  46c9b0:	48 8b 74 24 10       	mov    rsi,QWORD PTR [rsp+0x10]
+  46c9b5:	4c 89 fa             	mov    rdx,r15
+  46c9b8:	4c 89 e7             	mov    rdi,r12
+  46c9bb:	66 0f d6 44 24 08    	movq   QWORD PTR [rsp+0x8],xmm0
+;                OutputBufferLength = OutputBufferChars = 0;
+  46c9c1:	45 31 ff             	xor    r15d,r15d
+;                FB_CONPRINTRAW( handle,
+  46c9c4:	e8 97 c4 00 00       	call   478e60 <fb_ConPrintRaw>
+;        if( fSetNewCoord ) {
+  46c9c9:	f3 0f 7e 44 24 08    	movq   xmm0,QWORD PTR [rsp+0x8]
+  46c9cf:	e9 40 ff ff ff       	jmp    46c914 <fb_ConPrintTTY+0xb4>
+  46c9d4:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+;                	((dwCurrentCoord.X - pBorder->Left + 8) & ~7) -
+  46c9d8:	89 d8                	mov    eax,ebx
+  46c9da:	41 2b 44 24 18       	sub    eax,DWORD PTR [r12+0x18]
+  46c9df:	8d 48 08             	lea    ecx,[rax+0x8]
+  46c9e2:	83 e1 f8             	and    ecx,0xfffffff8
+  46c9e5:	29 c1                	sub    ecx,eax
+;                OutputDataChars =
+  46c9e7:	48 63 c9             	movsxd rcx,ecx
+;        if( OutputDataLength + OutputBufferLength > OUTPUT_BUFFER_SIZE ) {
+  46c9ea:	49 8d 44 0d 00       	lea    rax,[r13+rcx*1+0x0]
+  46c9ef:	48 3d 00 04 00 00    	cmp    rax,0x400
+  46c9f5:	0f 87 15 01 00 00    	ja     46cb10 <fb_ConPrintTTY+0x2b0>
+;            pachOutputData = achTabSpaces;
+  46c9fb:	4c 8d 1d 0e 75 01 00 	lea    r11,[rip+0x1750e]        # 483f10 <achTabSpaces.0>
+;        if( OutputDataLength!=0 ) {
+  46ca02:	48 85 c9             	test   rcx,rcx
+  46ca05:	0f 84 2b ff ff ff    	je     46c936 <fb_ConPrintTTY+0xd6>
+;            dwCurrentCoord.X += OutputDataChars;
+  46ca0b:	89 c8                	mov    eax,ecx
+;            while( OutputDataLength-- ) {
+  46ca0d:	4c 8d 51 ff          	lea    r10,[rcx-0x1]
+;            dwCurrentCoord.X += OutputDataChars;
+  46ca11:	48 bf 00 00 00 00 ff 	movabs rdi,0xffffffff00000000
+  46ca18:	ff ff ff 
+  46ca1b:	8d 14 18             	lea    edx,[rax+rbx*1]
+  46ca1e:	48 21 fb             	and    rbx,rdi
+  46ca21:	48 89 d0             	mov    rax,rdx
+  46ca24:	48 09 d3             	or     rbx,rdx
+;            if( dwCurrentCoord.X > pBorder->Right ) {
+  46ca27:	41 3b 54 24 20       	cmp    edx,DWORD PTR [r12+0x20]
+  46ca2c:	7e 15                	jle    46ca43 <fb_ConPrintTTY+0x1e3>
+;                int NormalX = dwCurrentCoord.X - pBorder->Left;
+  46ca2e:	41 8b 74 24 18       	mov    esi,DWORD PTR [r12+0x18]
+;                dwCurrentCoord.X = (NormalX % BorderWidth) + pBorder->Left;
+  46ca33:	48 21 fb             	and    rbx,rdi
+;                int NormalX = dwCurrentCoord.X - pBorder->Left;
+  46ca36:	29 f0                	sub    eax,esi
+;                dwCurrentCoord.X = (NormalX % BorderWidth) + pBorder->Left;
+  46ca38:	99                   	cdq    
+  46ca39:	f7 7c 24 2c          	idiv   DWORD PTR [rsp+0x2c]
+  46ca3d:	8d 04 32             	lea    eax,[rdx+rsi*1]
+  46ca40:	48 09 c3             	or     rbx,rax
+;                OutputBuffer[OutputBufferLength++] = *pachOutputData++;
+  46ca43:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  46ca48:	49 8d 52 01          	lea    rdx,[r10+0x1]
+  46ca4c:	4c 89 de             	mov    rsi,r11
+  46ca4f:	48 89 4c 24 20       	mov    QWORD PTR [rsp+0x20],rcx
+  46ca54:	4c 89 54 24 18       	mov    QWORD PTR [rsp+0x18],r10
+  46ca59:	4a 8d 3c 28          	lea    rdi,[rax+r13*1]
+  46ca5d:	e8 ee 91 f9 ff       	call   405c50 <memcpy@plt>
+  46ca62:	4c 8b 54 24 18       	mov    r10,QWORD PTR [rsp+0x18]
+;            OutputBufferChars += OutputDataChars;
+  46ca67:	48 8b 4c 24 20       	mov    rcx,QWORD PTR [rsp+0x20]
+;                OutputBuffer[OutputBufferLength++] = *pachOutputData++;
+  46ca6c:	4f 8d 6c 15 01       	lea    r13,[r13+r10*1+0x1]
+;            OutputBufferChars += OutputDataChars;
+  46ca71:	49 01 cf             	add    r15,rcx
+  46ca74:	e9 bd fe ff ff       	jmp    46c936 <fb_ConPrintTTY+0xd6>
+  46ca79:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;            if( dwCurrentCoord.X > pBorder->Left ) {
+  46ca80:	31 c0                	xor    eax,eax
+  46ca82:	41 39 5c 24 18       	cmp    DWORD PTR [r12+0x18],ebx
+;            dwMoveCoord.Y = 0;
+  46ca87:	66 0f ef c9          	pxor   xmm1,xmm1
+;            if( dwCurrentCoord.X > pBorder->Left ) {
+  46ca8b:	0f 9c c0             	setl   al
+  46ca8e:	f7 d8                	neg    eax
+  46ca90:	66 0f 6e c0          	movd   xmm0,eax
+  46ca94:	e9 6e fe ff ff       	jmp    46c907 <fb_ConPrintTTY+0xa7>
+  46ca99:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
+;            fb_Beep();
+  46caa0:	e8 1b b7 00 00       	call   4781c0 <fb_Beep>
+;        if( OutputDataLength + OutputBufferLength > OUTPUT_BUFFER_SIZE ) {
+  46caa5:	49 81 fd 00 04 00 00 	cmp    r13,0x400
+  46caac:	0f 86 84 fe ff ff    	jbe    46c936 <fb_ConPrintTTY+0xd6>

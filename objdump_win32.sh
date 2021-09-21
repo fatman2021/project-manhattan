@@ -1,0 +1,1 @@
+objdump --archive-headers --file-headers --private-headers --all-headers --disassemble --disassemble-all --source --source-comment=";" --full-contents --debugging --debugging-tags --stabs --syms --reloc -M intel c64dvd-glsl.exe > c64dvd-glsl_win32.s   

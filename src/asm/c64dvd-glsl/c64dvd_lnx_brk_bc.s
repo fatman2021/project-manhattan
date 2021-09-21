@@ -1,5230 +1,5230 @@
-  425e0f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  425e16:	00 
-  425e17:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  425e1e:	00 00 
-  425e20:	75 22                	jne    425e44 <MEMORY_T::POKE64(double, double)+0x1c634>
-  425e22:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  425e29:	31 d2                	xor    edx,edx
-  425e2b:	bf 01 00 00 00       	mov    edi,0x1
-  425e30:	5b                   	pop    rbx
-  425e31:	5d                   	pop    rbp
-  425e32:	41 5c                	pop    r12
-  425e34:	41 5d                	pop    r13
-  425e36:	41 5e                	pop    r14
-  425e38:	41 5f                	pop    r15
-  425e3a:	e9 81 1e 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 109: print #1, "varying";
-  425e3f:	e8 1c fa fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 108: print #1, "varptr";
-  425e44:	e8 17 fa fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 107: print #1, "variance";
-  425e49:	be 08 00 00 00       	mov    esi,0x8
-  425e4e:	48 8d 3d 94 bd 04 00 	lea    rdi,[rip+0x4bd94]        # 471be9 <_IO_stdin_used+0x2be9>
-  425e55:	e8 16 46 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  425e5a:	48 89 c6             	mov    rsi,rax
-  425e5d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  425e64:	00 
-  425e65:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  425e6c:	00 00 
-  425e6e:	75 61                	jne    425ed1 <MEMORY_T::POKE64(double, double)+0x1c6c1>
-  425e70:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  425e77:	31 d2                	xor    edx,edx
-  425e79:	bf 01 00 00 00       	mov    edi,0x1
-  425e7e:	5b                   	pop    rbx
-  425e7f:	5d                   	pop    rbp
-  425e80:	41 5c                	pop    r12
-  425e82:	41 5d                	pop    r13
-  425e84:	41 5e                	pop    r14
-  425e86:	41 5f                	pop    r15
-  425e88:	e9 33 1e 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 106: print #1, "varchar";
-  425e8d:	be 07 00 00 00       	mov    esi,0x7
-  425e92:	48 8d 3d 48 bd 04 00 	lea    rdi,[rip+0x4bd48]        # 471be1 <_IO_stdin_used+0x2be1>
-  425e99:	e8 d2 45 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  425e9e:	48 89 c6             	mov    rsi,rax
-  425ea1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  425ea8:	00 
-  425ea9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  425eb0:	00 00 
-  425eb2:	75 22                	jne    425ed6 <MEMORY_T::POKE64(double, double)+0x1c6c6>
-  425eb4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  425ebb:	31 d2                	xor    edx,edx
-  425ebd:	bf 01 00 00 00       	mov    edi,0x1
-  425ec2:	5b                   	pop    rbx
-  425ec3:	5d                   	pop    rbp
-  425ec4:	41 5c                	pop    r12
-  425ec6:	41 5d                	pop    r13
-  425ec8:	41 5e                	pop    r14
-  425eca:	41 5f                	pop    r15
-  425ecc:	e9 ef 1d 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 107: print #1, "variance";
-  425ed1:	e8 8a f9 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 106: print #1, "varchar";
-  425ed6:	e8 85 f9 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 105: print #1, "var";
-  425edb:	be 03 00 00 00       	mov    esi,0x3
-  425ee0:	48 8d 3d 65 ba 04 00 	lea    rdi,[rip+0x4ba65]        # 47194c <_IO_stdin_used+0x294c>
-  425ee7:	e8 84 45 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  425eec:	48 89 c6             	mov    rsi,rax
-  425eef:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  425ef6:	00 
-  425ef7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  425efe:	00 00 
-  425f00:	75 61                	jne    425f63 <MEMORY_T::POKE64(double, double)+0x1c753>
-  425f02:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  425f09:	31 d2                	xor    edx,edx
-  425f0b:	bf 01 00 00 00       	mov    edi,0x1
-  425f10:	5b                   	pop    rbx
-  425f11:	5d                   	pop    rbp
-  425f12:	41 5c                	pop    r12
-  425f14:	41 5d                	pop    r13
-  425f16:	41 5e                	pop    r14
-  425f18:	41 5f                	pop    r15
-  425f1a:	e9 a1 1d 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 104: print #1, "values";
-  425f1f:	be 06 00 00 00       	mov    esi,0x6
-  425f24:	48 8d 3d 22 a6 04 00 	lea    rdi,[rip+0x4a622]        # 47054d <_IO_stdin_used+0x154d>
-  425f2b:	e8 40 45 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  425f30:	48 89 c6             	mov    rsi,rax
-  425f33:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  425f3a:	00 
-  425f3b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  425f42:	00 00 
-  425f44:	75 22                	jne    425f68 <MEMORY_T::POKE64(double, double)+0x1c758>
-  425f46:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  425f4d:	31 d2                	xor    edx,edx
-  425f4f:	bf 01 00 00 00       	mov    edi,0x1
-  425f54:	5b                   	pop    rbx
-  425f55:	5d                   	pop    rbp
-  425f56:	41 5c                	pop    r12
-  425f58:	41 5d                	pop    r13
-  425f5a:	41 5e                	pop    r14
-  425f5c:	41 5f                	pop    r15
-  425f5e:	e9 5d 1d 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 105: print #1, "var";
-  425f63:	e8 f8 f8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 104: print #1, "values";
-  425f68:	e8 f3 f8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 103: print #1, "value";
-  425f6d:	be 05 00 00 00       	mov    esi,0x5
-  425f72:	48 8d 3d c9 a5 04 00 	lea    rdi,[rip+0x4a5c9]        # 470542 <_IO_stdin_used+0x1542>
-  425f79:	e8 f2 44 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  425f7e:	48 89 c6             	mov    rsi,rax
-  425f81:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  425f88:	00 
-  425f89:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  425f90:	00 00 
-  425f92:	75 61                	jne    425ff5 <MEMORY_T::POKE64(double, double)+0x1c7e5>
-  425f94:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  425f9b:	31 d2                	xor    edx,edx
-  425f9d:	bf 01 00 00 00       	mov    edi,0x1
-  425fa2:	5b                   	pop    rbx
-  425fa3:	5d                   	pop    rbp
-  425fa4:	41 5c                	pop    r12
-  425fa6:	41 5d                	pop    r13
-  425fa8:	41 5e                	pop    r14
-  425faa:	41 5f                	pop    r15
-  425fac:	e9 0f 1d 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 102: print #1, "val";
-  425fb1:	be 03 00 00 00       	mov    esi,0x3
-  425fb6:	48 8d 3d cc b3 04 00 	lea    rdi,[rip+0x4b3cc]        # 471389 <_IO_stdin_used+0x2389>
-  425fbd:	e8 ae 44 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  425fc2:	48 89 c6             	mov    rsi,rax
-  425fc5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  425fcc:	00 
-  425fcd:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  425fd4:	00 00 
-  425fd6:	75 22                	jne    425ffa <MEMORY_T::POKE64(double, double)+0x1c7ea>
-  425fd8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  425fdf:	31 d2                	xor    edx,edx
-  425fe1:	bf 01 00 00 00       	mov    edi,0x1
-  425fe6:	5b                   	pop    rbx
-  425fe7:	5d                   	pop    rbp
-  425fe8:	41 5c                	pop    r12
-  425fea:	41 5d                	pop    r13
-  425fec:	41 5e                	pop    r14
-  425fee:	41 5f                	pop    r15
-  425ff0:	e9 cb 1c 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 103: print #1, "value";
-  425ff5:	e8 66 f8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 102: print #1, "val";
-  425ffa:	e8 61 f8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 101: print #1, "v";
-  425fff:	be 01 00 00 00       	mov    esi,0x1
-  426004:	48 8d 3d 93 fa 04 00 	lea    rdi,[rip+0x4fa93]        # 475a9e <compressed_data+0x13be>
-  42600b:	e8 60 44 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426010:	48 89 c6             	mov    rsi,rax
-  426013:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42601a:	00 
-  42601b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426022:	00 00 
-  426024:	75 61                	jne    426087 <MEMORY_T::POKE64(double, double)+0x1c877>
-  426026:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42602d:	31 d2                	xor    edx,edx
-  42602f:	bf 01 00 00 00       	mov    edi,0x1
-  426034:	5b                   	pop    rbx
-  426035:	5d                   	pop    rbp
-  426036:	41 5c                	pop    r12
-  426038:	41 5d                	pop    r13
-  42603a:	41 5e                	pop    r14
-  42603c:	41 5f                	pop    r15
-  42603e:	e9 7d 1c 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 100: print #1, "uv_vectors";
-  426043:	be 0a 00 00 00       	mov    esi,0xa
-  426048:	48 8d 3d 87 bb 04 00 	lea    rdi,[rip+0x4bb87]        # 471bd6 <_IO_stdin_used+0x2bd6>
-  42604f:	e8 1c 44 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426054:	48 89 c6             	mov    rsi,rax
-  426057:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42605e:	00 
-  42605f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426066:	00 00 
-  426068:	75 22                	jne    42608c <MEMORY_T::POKE64(double, double)+0x1c87c>
-  42606a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426071:	31 d2                	xor    edx,edx
-  426073:	bf 01 00 00 00       	mov    edi,0x1
-  426078:	5b                   	pop    rbx
-  426079:	5d                   	pop    rbp
-  42607a:	41 5c                	pop    r12
-  42607c:	41 5d                	pop    r13
-  42607e:	41 5e                	pop    r14
-  426080:	41 5f                	pop    r15
-  426082:	e9 39 1c 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 101: print #1, "v";
-  426087:	e8 d4 f7 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 100: print #1, "uv_vectors";
-  42608c:	e8 cf f7 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 099: print #1, "uv_mapping";
-  426091:	be 0a 00 00 00       	mov    esi,0xa
-  426096:	48 8d 3d 2e bb 04 00 	lea    rdi,[rip+0x4bb2e]        # 471bcb <_IO_stdin_used+0x2bcb>
-  42609d:	e8 ce 43 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4260a2:	48 89 c6             	mov    rsi,rax
-  4260a5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4260ac:	00 
-  4260ad:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4260b4:	00 00 
-  4260b6:	75 61                	jne    426119 <MEMORY_T::POKE64(double, double)+0x1c909>
-  4260b8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4260bf:	31 d2                	xor    edx,edx
-  4260c1:	bf 01 00 00 00       	mov    edi,0x1
-  4260c6:	5b                   	pop    rbx
-  4260c7:	5d                   	pop    rbp
-  4260c8:	41 5c                	pop    r12
-  4260ca:	41 5d                	pop    r13
-  4260cc:	41 5e                	pop    r14
-  4260ce:	41 5f                	pop    r15
-  4260d0:	e9 eb 1b 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 098: print #1, "uv_indices";
-  4260d5:	be 0a 00 00 00       	mov    esi,0xa
-  4260da:	48 8d 3d df ba 04 00 	lea    rdi,[rip+0x4badf]        # 471bc0 <_IO_stdin_used+0x2bc0>
-  4260e1:	e8 8a 43 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4260e6:	48 89 c6             	mov    rsi,rax
-  4260e9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4260f0:	00 
-  4260f1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4260f8:	00 00 
-  4260fa:	75 22                	jne    42611e <MEMORY_T::POKE64(double, double)+0x1c90e>
-  4260fc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426103:	31 d2                	xor    edx,edx
-  426105:	bf 01 00 00 00       	mov    edi,0x1
-  42610a:	5b                   	pop    rbx
-  42610b:	5d                   	pop    rbp
-  42610c:	41 5c                	pop    r12
-  42610e:	41 5d                	pop    r13
-  426110:	41 5e                	pop    r14
-  426112:	41 5f                	pop    r15
-  426114:	e9 a7 1b 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 099: print #1, "uv_mapping";
-  426119:	e8 42 f7 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 098: print #1, "uv_indices";
-  42611e:	e8 3d f7 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 097: print #1, "uvec4";
-  426123:	be 05 00 00 00       	mov    esi,0x5
-  426128:	48 8d 3d 8b ba 04 00 	lea    rdi,[rip+0x4ba8b]        # 471bba <_IO_stdin_used+0x2bba>
-  42612f:	e8 3c 43 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426134:	48 89 c6             	mov    rsi,rax
-  426137:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42613e:	00 
-  42613f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426146:	00 00 
-  426148:	75 61                	jne    4261ab <MEMORY_T::POKE64(double, double)+0x1c99b>
-  42614a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426151:	31 d2                	xor    edx,edx
-  426153:	bf 01 00 00 00       	mov    edi,0x1
-  426158:	5b                   	pop    rbx
-  426159:	5d                   	pop    rbp
-  42615a:	41 5c                	pop    r12
-  42615c:	41 5d                	pop    r13
-  42615e:	41 5e                	pop    r14
-  426160:	41 5f                	pop    r15
-  426162:	e9 59 1b 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 096: print #1, "uvec3";
-  426167:	be 05 00 00 00       	mov    esi,0x5
-  42616c:	48 8d 3d 41 ba 04 00 	lea    rdi,[rip+0x4ba41]        # 471bb4 <_IO_stdin_used+0x2bb4>
-  426173:	e8 f8 42 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426178:	48 89 c6             	mov    rsi,rax
-  42617b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426182:	00 
-  426183:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42618a:	00 00 
-  42618c:	75 22                	jne    4261b0 <MEMORY_T::POKE64(double, double)+0x1c9a0>
-  42618e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426195:	31 d2                	xor    edx,edx
-  426197:	bf 01 00 00 00       	mov    edi,0x1
-  42619c:	5b                   	pop    rbx
-  42619d:	5d                   	pop    rbp
-  42619e:	41 5c                	pop    r12
-  4261a0:	41 5d                	pop    r13
-  4261a2:	41 5e                	pop    r14
-  4261a4:	41 5f                	pop    r15
-  4261a6:	e9 15 1b 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 097: print #1, "uvec4";
-  4261ab:	e8 b0 f6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 096: print #1, "uvec3";
-  4261b0:	e8 ab f6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 095: print #1, "uvec2";
-  4261b5:	be 05 00 00 00       	mov    esi,0x5
-  4261ba:	48 8d 3d ed b9 04 00 	lea    rdi,[rip+0x4b9ed]        # 471bae <_IO_stdin_used+0x2bae>
-  4261c1:	e8 aa 42 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4261c6:	48 89 c6             	mov    rsi,rax
-  4261c9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4261d0:	00 
-  4261d1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4261d8:	00 00 
-  4261da:	75 61                	jne    42623d <MEMORY_T::POKE64(double, double)+0x1ca2d>
-  4261dc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4261e3:	31 d2                	xor    edx,edx
-  4261e5:	bf 01 00 00 00       	mov    edi,0x1
-  4261ea:	5b                   	pop    rbx
-  4261eb:	5d                   	pop    rbp
-  4261ec:	41 5c                	pop    r12
-  4261ee:	41 5d                	pop    r13
-  4261f0:	41 5e                	pop    r14
-  4261f2:	41 5f                	pop    r15
-  4261f4:	e9 c7 1a 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 094: print #1, "utf32";
-  4261f9:	be 05 00 00 00       	mov    esi,0x5
-  4261fe:	48 8d 3d a3 b9 04 00 	lea    rdi,[rip+0x4b9a3]        # 471ba8 <_IO_stdin_used+0x2ba8>
-  426205:	e8 66 42 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42620a:	48 89 c6             	mov    rsi,rax
-  42620d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426214:	00 
-  426215:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42621c:	00 00 
-  42621e:	75 22                	jne    426242 <MEMORY_T::POKE64(double, double)+0x1ca32>
-  426220:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426227:	31 d2                	xor    edx,edx
-  426229:	bf 01 00 00 00       	mov    edi,0x1
-  42622e:	5b                   	pop    rbx
-  42622f:	5d                   	pop    rbp
-  426230:	41 5c                	pop    r12
-  426232:	41 5d                	pop    r13
-  426234:	41 5e                	pop    r14
-  426236:	41 5f                	pop    r15
-  426238:	e9 83 1a 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 095: print #1, "uvec2";
-  42623d:	e8 1e f6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 094: print #1, "utf32";
-  426242:	e8 19 f6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 093: print #1, "utf16";
-  426247:	be 05 00 00 00       	mov    esi,0x5
-  42624c:	48 8d 3d 4f b9 04 00 	lea    rdi,[rip+0x4b94f]        # 471ba2 <_IO_stdin_used+0x2ba2>
-  426253:	e8 18 42 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426258:	48 89 c6             	mov    rsi,rax
-  42625b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426262:	00 
-  426263:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42626a:	00 00 
-  42626c:	75 61                	jne    4262cf <MEMORY_T::POKE64(double, double)+0x1cabf>
-  42626e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426275:	31 d2                	xor    edx,edx
-  426277:	bf 01 00 00 00       	mov    edi,0x1
-  42627c:	5b                   	pop    rbx
-  42627d:	5d                   	pop    rbp
-  42627e:	41 5c                	pop    r12
-  426280:	41 5d                	pop    r13
-  426282:	41 5e                	pop    r14
-  426284:	41 5f                	pop    r15
-  426286:	e9 35 1a 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 092: print #1, "utf8";
-  42628b:	be 04 00 00 00       	mov    esi,0x4
-  426290:	48 8d 3d 06 b9 04 00 	lea    rdi,[rip+0x4b906]        # 471b9d <_IO_stdin_used+0x2b9d>
-  426297:	e8 d4 41 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42629c:	48 89 c6             	mov    rsi,rax
-  42629f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4262a6:	00 
-  4262a7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4262ae:	00 00 
-  4262b0:	75 22                	jne    4262d4 <MEMORY_T::POKE64(double, double)+0x1cac4>
-  4262b2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4262b9:	31 d2                	xor    edx,edx
-  4262bb:	bf 01 00 00 00       	mov    edi,0x1
-  4262c0:	5b                   	pop    rbx
-  4262c1:	5d                   	pop    rbp
-  4262c2:	41 5c                	pop    r12
-  4262c4:	41 5d                	pop    r13
-  4262c6:	41 5e                	pop    r14
-  4262c8:	41 5f                	pop    r15
-  4262ca:	e9 f1 19 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 093: print #1, "utf16";
-  4262cf:	e8 8c f5 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 092: print #1, "utf8";
-  4262d4:	e8 87 f5 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 091: print #1, "u_steps";
-  4262d9:	be 07 00 00 00       	mov    esi,0x7
-  4262de:	48 8d 3d b0 b8 04 00 	lea    rdi,[rip+0x4b8b0]        # 471b95 <_IO_stdin_used+0x2b95>
-  4262e5:	e8 86 41 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4262ea:	48 89 c6             	mov    rsi,rax
-  4262ed:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4262f4:	00 
-  4262f5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4262fc:	00 00 
-  4262fe:	75 61                	jne    426361 <MEMORY_T::POKE64(double, double)+0x1cb51>
-  426300:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426307:	31 d2                	xor    edx,edx
-  426309:	bf 01 00 00 00       	mov    edi,0x1
-  42630e:	5b                   	pop    rbx
-  42630f:	5d                   	pop    rbp
-  426310:	41 5c                	pop    r12
-  426312:	41 5d                	pop    r13
-  426314:	41 5e                	pop    r14
-  426316:	41 5f                	pop    r15
-  426318:	e9 a3 19 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 090: print #1, "usr";
-  42631d:	be 03 00 00 00       	mov    esi,0x3
-  426322:	48 8d 3d 68 b8 04 00 	lea    rdi,[rip+0x4b868]        # 471b91 <_IO_stdin_used+0x2b91>
-  426329:	e8 42 41 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42632e:	48 89 c6             	mov    rsi,rax
-  426331:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426338:	00 
-  426339:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426340:	00 00 
-  426342:	75 22                	jne    426366 <MEMORY_T::POKE64(double, double)+0x1cb56>
-  426344:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42634b:	31 d2                	xor    edx,edx
-  42634d:	bf 01 00 00 00       	mov    edi,0x1
-  426352:	5b                   	pop    rbx
-  426353:	5d                   	pop    rbp
-  426354:	41 5c                	pop    r12
-  426356:	41 5d                	pop    r13
-  426358:	41 5e                	pop    r14
-  42635a:	41 5f                	pop    r15
-  42635c:	e9 5f 19 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 091: print #1, "u_steps";
-  426361:	e8 fa f4 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 090: print #1, "usr";
-  426366:	e8 f5 f4 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 089: print #1, "using";
-  42636b:	be 05 00 00 00       	mov    esi,0x5
-  426370:	48 8d 3d 14 b8 04 00 	lea    rdi,[rip+0x4b814]        # 471b8b <_IO_stdin_used+0x2b8b>
-  426377:	e8 f4 40 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42637c:	48 89 c6             	mov    rsi,rax
-  42637f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426386:	00 
-  426387:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42638e:	00 00 
-  426390:	75 61                	jne    4263f3 <MEMORY_T::POKE64(double, double)+0x1cbe3>
-  426392:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426399:	31 d2                	xor    edx,edx
-  42639b:	bf 01 00 00 00       	mov    edi,0x1
-  4263a0:	5b                   	pop    rbx
-  4263a1:	5d                   	pop    rbp
-  4263a2:	41 5c                	pop    r12
-  4263a4:	41 5d                	pop    r13
-  4263a6:	41 5e                	pop    r14
-  4263a8:	41 5f                	pop    r15
-  4263aa:	e9 11 19 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 088: print #1, "uses";
-  4263af:	be 04 00 00 00       	mov    esi,0x4
-  4263b4:	48 8d 3d cb b7 04 00 	lea    rdi,[rip+0x4b7cb]        # 471b86 <_IO_stdin_used+0x2b86>
-  4263bb:	e8 b0 40 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4263c0:	48 89 c6             	mov    rsi,rax
-  4263c3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4263ca:	00 
-  4263cb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4263d2:	00 00 
-  4263d4:	75 22                	jne    4263f8 <MEMORY_T::POKE64(double, double)+0x1cbe8>
-  4263d6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4263dd:	31 d2                	xor    edx,edx
-  4263df:	bf 01 00 00 00       	mov    edi,0x1
-  4263e4:	5b                   	pop    rbx
-  4263e5:	5d                   	pop    rbp
-  4263e6:	41 5c                	pop    r12
-  4263e8:	41 5d                	pop    r13
-  4263ea:	41 5e                	pop    r14
-  4263ec:	41 5f                	pop    r15
-  4263ee:	e9 cd 18 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 089: print #1, "using";
-  4263f3:	e8 68 f4 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 088: print #1, "uses";
-  4263f8:	e8 63 f4 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 087: print #1, "use_index";
-  4263fd:	be 09 00 00 00       	mov    esi,0x9
-  426402:	48 8d 3d 73 b7 04 00 	lea    rdi,[rip+0x4b773]        # 471b7c <_IO_stdin_used+0x2b7c>
-  426409:	e8 62 40 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42640e:	48 89 c6             	mov    rsi,rax
-  426411:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426418:	00 
-  426419:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426420:	00 00 
-  426422:	75 61                	jne    426485 <MEMORY_T::POKE64(double, double)+0x1cc75>
-  426424:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42642b:	31 d2                	xor    edx,edx
-  42642d:	bf 01 00 00 00       	mov    edi,0x1
-  426432:	5b                   	pop    rbx
-  426433:	5d                   	pop    rbp
-  426434:	41 5c                	pop    r12
-  426436:	41 5d                	pop    r13
-  426438:	41 5e                	pop    r14
-  42643a:	41 5f                	pop    r15
-  42643c:	e9 7f 18 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 086: print #1, "use_colour";
-  426441:	be 0a 00 00 00       	mov    esi,0xa
-  426446:	48 8d 3d 24 b7 04 00 	lea    rdi,[rip+0x4b724]        # 471b71 <_IO_stdin_used+0x2b71>
-  42644d:	e8 1e 40 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426452:	48 89 c6             	mov    rsi,rax
-  426455:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42645c:	00 
-  42645d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426464:	00 00 
-  426466:	75 22                	jne    42648a <MEMORY_T::POKE64(double, double)+0x1cc7a>
-  426468:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42646f:	31 d2                	xor    edx,edx
-  426471:	bf 01 00 00 00       	mov    edi,0x1
-  426476:	5b                   	pop    rbx
-  426477:	5d                   	pop    rbp
-  426478:	41 5c                	pop    r12
-  42647a:	41 5d                	pop    r13
-  42647c:	41 5e                	pop    r14
-  42647e:	41 5f                	pop    r15
-  426480:	e9 3b 18 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 087: print #1, "use_index";
-  426485:	e8 d6 f3 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 086: print #1, "use_colour";
-  42648a:	e8 d1 f3 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 085: print #1, "use_color";
-  42648f:	be 09 00 00 00       	mov    esi,0x9
-  426494:	48 8d 3d cc b6 04 00 	lea    rdi,[rip+0x4b6cc]        # 471b67 <_IO_stdin_used+0x2b67>
-  42649b:	e8 d0 3f 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4264a0:	48 89 c6             	mov    rsi,rax
-  4264a3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4264aa:	00 
-  4264ab:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4264b2:	00 00 
-  4264b4:	75 61                	jne    426517 <MEMORY_T::POKE64(double, double)+0x1cd07>
-  4264b6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4264bd:	31 d2                	xor    edx,edx
-  4264bf:	bf 01 00 00 00       	mov    edi,0x1
-  4264c4:	5b                   	pop    rbx
-  4264c5:	5d                   	pop    rbp
-  4264c6:	41 5c                	pop    r12
-  4264c8:	41 5d                	pop    r13
-  4264ca:	41 5e                	pop    r14
-  4264cc:	41 5f                	pop    r15
-  4264ce:	e9 ed 17 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 084: print #1, "use_alpha";
-  4264d3:	be 09 00 00 00       	mov    esi,0x9
-  4264d8:	48 8d 3d 7e b6 04 00 	lea    rdi,[rip+0x4b67e]        # 471b5d <_IO_stdin_used+0x2b5d>
-  4264df:	e8 8c 3f 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4264e4:	48 89 c6             	mov    rsi,rax
-  4264e7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4264ee:	00 
-  4264ef:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4264f6:	00 00 
-  4264f8:	75 22                	jne    42651c <MEMORY_T::POKE64(double, double)+0x1cd0c>
-  4264fa:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426501:	31 d2                	xor    edx,edx
-  426503:	bf 01 00 00 00       	mov    edi,0x1
-  426508:	5b                   	pop    rbx
-  426509:	5d                   	pop    rbp
-  42650a:	41 5c                	pop    r12
-  42650c:	41 5d                	pop    r13
-  42650e:	41 5e                	pop    r14
-  426510:	41 5f                	pop    r15
-  426512:	e9 a9 17 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 085: print #1, "use_color";
-  426517:	e8 44 f3 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 084: print #1, "use_alpha";
-  42651c:	e8 3f f3 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 083: print #1, "use";
-  426521:	be 03 00 00 00       	mov    esi,0x3
-  426526:	48 8d 3d b4 aa 04 00 	lea    rdi,[rip+0x4aab4]        # 470fe1 <_IO_stdin_used+0x1fe1>
-  42652d:	e8 3e 3f 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426532:	48 89 c6             	mov    rsi,rax
-  426535:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42653c:	00 
-  42653d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426544:	00 00 
-  426546:	75 61                	jne    4265a9 <MEMORY_T::POKE64(double, double)+0x1cd99>
-  426548:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42654f:	31 d2                	xor    edx,edx
-  426551:	bf 01 00 00 00       	mov    edi,0x1
-  426556:	5b                   	pop    rbx
-  426557:	5d                   	pop    rbp
-  426558:	41 5c                	pop    r12
-  42655a:	41 5d                	pop    r13
-  42655c:	41 5e                	pop    r14
-  42655e:	41 5f                	pop    r15
-  426560:	e9 5b 17 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 082: print #1, "usamplerCube";
-  426565:	be 0c 00 00 00       	mov    esi,0xc
-  42656a:	48 8d 3d df b5 04 00 	lea    rdi,[rip+0x4b5df]        # 471b50 <_IO_stdin_used+0x2b50>
-  426571:	e8 fa 3e 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426576:	48 89 c6             	mov    rsi,rax
-  426579:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426580:	00 
-  426581:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426588:	00 00 
-  42658a:	75 22                	jne    4265ae <MEMORY_T::POKE64(double, double)+0x1cd9e>
-  42658c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426593:	31 d2                	xor    edx,edx
-  426595:	bf 01 00 00 00       	mov    edi,0x1
-  42659a:	5b                   	pop    rbx
-  42659b:	5d                   	pop    rbp
-  42659c:	41 5c                	pop    r12
-  42659e:	41 5d                	pop    r13
-  4265a0:	41 5e                	pop    r14
-  4265a2:	41 5f                	pop    r15
-  4265a4:	e9 17 17 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 083: print #1, "use";
-  4265a9:	e8 b2 f2 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 082: print #1, "usamplerCube";
-  4265ae:	e8 ad f2 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 081: print #1, "usamplerBufferStruct";
-  4265b3:	be 14 00 00 00       	mov    esi,0x14
-  4265b8:	48 8d 3d 7c b5 04 00 	lea    rdi,[rip+0x4b57c]        # 471b3b <_IO_stdin_used+0x2b3b>
-  4265bf:	e8 ac 3e 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4265c4:	48 89 c6             	mov    rsi,rax
-  4265c7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4265ce:	00 
-  4265cf:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4265d6:	00 00 
-  4265d8:	75 61                	jne    42663b <MEMORY_T::POKE64(double, double)+0x1ce2b>
-  4265da:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4265e1:	31 d2                	xor    edx,edx
-  4265e3:	bf 01 00 00 00       	mov    edi,0x1
-  4265e8:	5b                   	pop    rbx
-  4265e9:	5d                   	pop    rbp
-  4265ea:	41 5c                	pop    r12
-  4265ec:	41 5d                	pop    r13
-  4265ee:	41 5e                	pop    r14
-  4265f0:	41 5f                	pop    r15
-  4265f2:	e9 c9 16 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 080: print #1, "usampler3D";
-  4265f7:	be 0a 00 00 00       	mov    esi,0xa
-  4265fc:	48 8d 3d 2d b5 04 00 	lea    rdi,[rip+0x4b52d]        # 471b30 <_IO_stdin_used+0x2b30>
-  426603:	e8 68 3e 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426608:	48 89 c6             	mov    rsi,rax
-  42660b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426612:	00 
-  426613:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42661a:	00 00 
-  42661c:	75 22                	jne    426640 <MEMORY_T::POKE64(double, double)+0x1ce30>
-  42661e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426625:	31 d2                	xor    edx,edx
-  426627:	bf 01 00 00 00       	mov    edi,0x1
-  42662c:	5b                   	pop    rbx
-  42662d:	5d                   	pop    rbp
-  42662e:	41 5c                	pop    r12
-  426630:	41 5d                	pop    r13
-  426632:	41 5e                	pop    r14
-  426634:	41 5f                	pop    r15
-  426636:	e9 85 16 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 081: print #1, "usamplerBufferStruct";
-  42663b:	e8 20 f2 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 080: print #1, "usampler3D";
-  426640:	e8 1b f2 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 079: print #1, "usampler2drect";
-  426645:	be 0e 00 00 00       	mov    esi,0xe
-  42664a:	48 8d 3d d0 b4 04 00 	lea    rdi,[rip+0x4b4d0]        # 471b21 <_IO_stdin_used+0x2b21>
-  426651:	e8 1a 3e 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426656:	48 89 c6             	mov    rsi,rax
-  426659:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426660:	00 
-  426661:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426668:	00 00 
-  42666a:	75 61                	jne    4266cd <MEMORY_T::POKE64(double, double)+0x1cebd>
-  42666c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426673:	31 d2                	xor    edx,edx
-  426675:	bf 01 00 00 00       	mov    edi,0x1
-  42667a:	5b                   	pop    rbx
-  42667b:	5d                   	pop    rbp
-  42667c:	41 5c                	pop    r12
-  42667e:	41 5d                	pop    r13
-  426680:	41 5e                	pop    r14
-  426682:	41 5f                	pop    r15
-  426684:	e9 37 16 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 078: print #1, "usampler2DArray";
-  426689:	be 0f 00 00 00       	mov    esi,0xf
-  42668e:	48 8d 3d 7c b4 04 00 	lea    rdi,[rip+0x4b47c]        # 471b11 <_IO_stdin_used+0x2b11>
-  426695:	e8 d6 3d 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42669a:	48 89 c6             	mov    rsi,rax
-  42669d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4266a4:	00 
-  4266a5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4266ac:	00 00 
-  4266ae:	75 22                	jne    4266d2 <MEMORY_T::POKE64(double, double)+0x1cec2>
-  4266b0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4266b7:	31 d2                	xor    edx,edx
-  4266b9:	bf 01 00 00 00       	mov    edi,0x1
-  4266be:	5b                   	pop    rbx
-  4266bf:	5d                   	pop    rbp
-  4266c0:	41 5c                	pop    r12
-  4266c2:	41 5d                	pop    r13
-  4266c4:	41 5e                	pop    r14
-  4266c6:	41 5f                	pop    r15
-  4266c8:	e9 f3 15 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 079: print #1, "usampler2drect";
-  4266cd:	e8 8e f1 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 078: print #1, "usampler2DArray";
-  4266d2:	e8 89 f1 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 077: print #1, "usampler2D";
-  4266d7:	be 0a 00 00 00       	mov    esi,0xa
-  4266dc:	48 8d 3d 23 b4 04 00 	lea    rdi,[rip+0x4b423]        # 471b06 <_IO_stdin_used+0x2b06>
-  4266e3:	e8 88 3d 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4266e8:	48 89 c6             	mov    rsi,rax
-  4266eb:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4266f2:	00 
-  4266f3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4266fa:	00 00 
-  4266fc:	75 61                	jne    42675f <MEMORY_T::POKE64(double, double)+0x1cf4f>
-  4266fe:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426705:	31 d2                	xor    edx,edx
-  426707:	bf 01 00 00 00       	mov    edi,0x1
-  42670c:	5b                   	pop    rbx
-  42670d:	5d                   	pop    rbp
-  42670e:	41 5c                	pop    r12
-  426710:	41 5d                	pop    r13
-  426712:	41 5e                	pop    r14
-  426714:	41 5f                	pop    r15
-  426716:	e9 a5 15 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 076: print #1, "usampler1DArray";
-  42671b:	be 0f 00 00 00       	mov    esi,0xf
-  426720:	48 8d 3d cf b3 04 00 	lea    rdi,[rip+0x4b3cf]        # 471af6 <_IO_stdin_used+0x2af6>
-  426727:	e8 44 3d 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42672c:	48 89 c6             	mov    rsi,rax
-  42672f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426736:	00 
-  426737:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42673e:	00 00 
-  426740:	75 22                	jne    426764 <MEMORY_T::POKE64(double, double)+0x1cf54>
-  426742:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426749:	31 d2                	xor    edx,edx
-  42674b:	bf 01 00 00 00       	mov    edi,0x1
-  426750:	5b                   	pop    rbx
-  426751:	5d                   	pop    rbp
-  426752:	41 5c                	pop    r12
-  426754:	41 5d                	pop    r13
-  426756:	41 5e                	pop    r14
-  426758:	41 5f                	pop    r15
-  42675a:	e9 61 15 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 077: print #1, "usampler2D";
-  42675f:	e8 fc f0 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 076: print #1, "usampler1DArray";
-  426764:	e8 f7 f0 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 075: print #1, "usampler1D";
-  426769:	be 0a 00 00 00       	mov    esi,0xa
-  42676e:	48 8d 3d 76 b3 04 00 	lea    rdi,[rip+0x4b376]        # 471aeb <_IO_stdin_used+0x2aeb>
-  426775:	e8 f6 3c 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42677a:	48 89 c6             	mov    rsi,rax
-  42677d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426784:	00 
-  426785:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42678c:	00 00 
-  42678e:	75 61                	jne    4267f1 <MEMORY_T::POKE64(double, double)+0x1cfe1>
-  426790:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426797:	31 d2                	xor    edx,edx
-  426799:	bf 01 00 00 00       	mov    edi,0x1
-  42679e:	5b                   	pop    rbx
-  42679f:	5d                   	pop    rbp
-  4267a0:	41 5c                	pop    r12
-  4267a2:	41 5d                	pop    r13
-  4267a4:	41 5e                	pop    r14
-  4267a6:	41 5f                	pop    r15
-  4267a8:	e9 13 15 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 074: print #1, "usage";
-  4267ad:	be 05 00 00 00       	mov    esi,0x5
-  4267b2:	48 8d 3d 2c b3 04 00 	lea    rdi,[rip+0x4b32c]        # 471ae5 <_IO_stdin_used+0x2ae5>
-  4267b9:	e8 b2 3c 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4267be:	48 89 c6             	mov    rsi,rax
-  4267c1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4267c8:	00 
-  4267c9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4267d0:	00 00 
-  4267d2:	75 22                	jne    4267f6 <MEMORY_T::POKE64(double, double)+0x1cfe6>
-  4267d4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4267db:	31 d2                	xor    edx,edx
-  4267dd:	bf 01 00 00 00       	mov    edi,0x1
-  4267e2:	5b                   	pop    rbx
-  4267e3:	5d                   	pop    rbp
-  4267e4:	41 5c                	pop    r12
-  4267e6:	41 5d                	pop    r13
-  4267e8:	41 5e                	pop    r14
-  4267ea:	41 5f                	pop    r15
-  4267ec:	e9 cf 14 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 075: print #1, "usampler1D";
-  4267f1:	e8 6a f0 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 074: print #1, "usage";
-  4267f6:	e8 65 f0 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 073: print #1, "upper_mb";
-  4267fb:	be 08 00 00 00       	mov    esi,0x8
-  426800:	48 8d 3d d5 b2 04 00 	lea    rdi,[rip+0x4b2d5]        # 471adc <_IO_stdin_used+0x2adc>
-  426807:	e8 64 3c 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42680c:	48 89 c6             	mov    rsi,rax
-  42680f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426816:	00 
-  426817:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42681e:	00 00 
-  426820:	75 61                	jne    426883 <MEMORY_T::POKE64(double, double)+0x1d073>
-  426822:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426829:	31 d2                	xor    edx,edx
-  42682b:	bf 01 00 00 00       	mov    edi,0x1
-  426830:	5b                   	pop    rbx
-  426831:	5d                   	pop    rbp
-  426832:	41 5c                	pop    r12
-  426834:	41 5d                	pop    r13
-  426836:	41 5e                	pop    r14
-  426838:	41 5f                	pop    r15
-  42683a:	e9 81 14 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 072: print #1, "upper";
-  42683f:	be 05 00 00 00       	mov    esi,0x5
-  426844:	48 8d 3d 48 8d 04 00 	lea    rdi,[rip+0x48d48]        # 46f593 <_IO_stdin_used+0x593>
-  42684b:	e8 20 3c 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426850:	48 89 c6             	mov    rsi,rax
-  426853:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42685a:	00 
-  42685b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426862:	00 00 
-  426864:	75 22                	jne    426888 <MEMORY_T::POKE64(double, double)+0x1d078>
-  426866:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42686d:	31 d2                	xor    edx,edx
-  42686f:	bf 01 00 00 00       	mov    edi,0x1
-  426874:	5b                   	pop    rbx
-  426875:	5d                   	pop    rbp
-  426876:	41 5c                	pop    r12
-  426878:	41 5d                	pop    r13
-  42687a:	41 5e                	pop    r14
-  42687c:	41 5f                	pop    r15
-  42687e:	e9 3d 14 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 073: print #1, "upper_mb";
-  426883:	e8 d8 ef fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 072: print #1, "upper";
-  426888:	e8 d3 ef fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 071: print #1, "upon";
-  42688d:	be 04 00 00 00       	mov    esi,0x4
-  426892:	48 8d 3d 3e b2 04 00 	lea    rdi,[rip+0x4b23e]        # 471ad7 <_IO_stdin_used+0x2ad7>
-  426899:	e8 d2 3b 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42689e:	48 89 c6             	mov    rsi,rax
-  4268a1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4268a8:	00 
-  4268a9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4268b0:	00 00 
-  4268b2:	75 61                	jne    426915 <MEMORY_T::POKE64(double, double)+0x1d105>
-  4268b4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4268bb:	31 d2                	xor    edx,edx
-  4268bd:	bf 01 00 00 00       	mov    edi,0x1
-  4268c2:	5b                   	pop    rbx
-  4268c3:	5d                   	pop    rbp
-  4268c4:	41 5c                	pop    r12
-  4268c6:	41 5d                	pop    r13
-  4268c8:	41 5e                	pop    r14
-  4268ca:	41 5f                	pop    r15
-  4268cc:	e9 ef 13 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 070: print #1, "update";
-  4268d1:	be 06 00 00 00       	mov    esi,0x6
-  4268d6:	48 8d 3d f3 b1 04 00 	lea    rdi,[rip+0x4b1f3]        # 471ad0 <_IO_stdin_used+0x2ad0>
-  4268dd:	e8 8e 3b 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4268e2:	48 89 c6             	mov    rsi,rax
-  4268e5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4268ec:	00 
-  4268ed:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4268f4:	00 00 
-  4268f6:	75 22                	jne    42691a <MEMORY_T::POKE64(double, double)+0x1d10a>
-  4268f8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4268ff:	31 d2                	xor    edx,edx
-  426901:	bf 01 00 00 00       	mov    edi,0x1
-  426906:	5b                   	pop    rbx
-  426907:	5d                   	pop    rbp
-  426908:	41 5c                	pop    r12
-  42690a:	41 5d                	pop    r13
-  42690c:	41 5e                	pop    r14
-  42690e:	41 5f                	pop    r15
-  426910:	e9 ab 13 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 071: print #1, "upon";
-  426915:	e8 46 ef fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 070: print #1, "update";
-  42691a:	e8 41 ef fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 069: print #1, "up";
-  42691f:	be 02 00 00 00       	mov    esi,0x2
-  426924:	48 8d 3d 0a a1 04 00 	lea    rdi,[rip+0x4a10a]        # 470a35 <_IO_stdin_used+0x1a35>
-  42692b:	e8 40 3b 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426930:	48 89 c6             	mov    rsi,rax
-  426933:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42693a:	00 
-  42693b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426942:	00 00 
-  426944:	75 61                	jne    4269a7 <MEMORY_T::POKE64(double, double)+0x1d197>
-  426946:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42694d:	31 d2                	xor    edx,edx
-  42694f:	bf 01 00 00 00       	mov    edi,0x1
-  426954:	5b                   	pop    rbx
-  426955:	5d                   	pop    rbp
-  426956:	41 5c                	pop    r12
-  426958:	41 5d                	pop    r13
-  42695a:	41 5e                	pop    r14
-  42695c:	41 5f                	pop    r15
-  42695e:	e9 5d 13 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 068: print #1, "until";
-  426963:	be 05 00 00 00       	mov    esi,0x5
-  426968:	48 8d 3d 5b b1 04 00 	lea    rdi,[rip+0x4b15b]        # 471aca <_IO_stdin_used+0x2aca>
-  42696f:	e8 fc 3a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426974:	48 89 c6             	mov    rsi,rax
-  426977:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42697e:	00 
-  42697f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426986:	00 00 
-  426988:	75 22                	jne    4269ac <MEMORY_T::POKE64(double, double)+0x1d19c>
-  42698a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426991:	31 d2                	xor    edx,edx
-  426993:	bf 01 00 00 00       	mov    edi,0x1
-  426998:	5b                   	pop    rbx
-  426999:	5d                   	pop    rbp
-  42699a:	41 5c                	pop    r12
-  42699c:	41 5d                	pop    r13
-  42699e:	41 5e                	pop    r14
-  4269a0:	41 5f                	pop    r15
-  4269a2:	e9 19 13 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 069: print #1, "up";
-  4269a7:	e8 b4 ee fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 068: print #1, "until";
-  4269ac:	e8 af ee fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 067: print #1, "unstring";
-  4269b1:	be 08 00 00 00       	mov    esi,0x8
-  4269b6:	48 8d 3d 54 96 04 00 	lea    rdi,[rip+0x49654]        # 470011 <_IO_stdin_used+0x1011>
-  4269bd:	e8 ae 3a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4269c2:	48 89 c6             	mov    rsi,rax
-  4269c5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4269cc:	00 
-  4269cd:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4269d4:	00 00 
-  4269d6:	75 61                	jne    426a39 <MEMORY_T::POKE64(double, double)+0x1d229>
-  4269d8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4269df:	31 d2                	xor    edx,edx
-  4269e1:	bf 01 00 00 00       	mov    edi,0x1
-  4269e6:	5b                   	pop    rbx
-  4269e7:	5d                   	pop    rbp
-  4269e8:	41 5c                	pop    r12
-  4269ea:	41 5d                	pop    r13
-  4269ec:	41 5e                	pop    r14
-  4269ee:	41 5f                	pop    r15
-  4269f0:	e9 cb 12 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 066: print #1, "unsigned";
-  4269f5:	be 08 00 00 00       	mov    esi,0x8
-  4269fa:	48 8d 3d c0 b0 04 00 	lea    rdi,[rip+0x4b0c0]        # 471ac1 <_IO_stdin_used+0x2ac1>
-  426a01:	e8 6a 3a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426a06:	48 89 c6             	mov    rsi,rax
-  426a09:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426a10:	00 
-  426a11:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426a18:	00 00 
-  426a1a:	75 22                	jne    426a3e <MEMORY_T::POKE64(double, double)+0x1d22e>
-  426a1c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426a23:	31 d2                	xor    edx,edx
-  426a25:	bf 01 00 00 00       	mov    edi,0x1
-  426a2a:	5b                   	pop    rbx
-  426a2b:	5d                   	pop    rbp
-  426a2c:	41 5c                	pop    r12
-  426a2e:	41 5d                	pop    r13
-  426a30:	41 5e                	pop    r14
-  426a32:	41 5f                	pop    r15
-  426a34:	e9 87 12 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 067: print #1, "unstring";
-  426a39:	e8 22 ee fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 066: print #1, "unsigned";
-  426a3e:	e8 1d ee fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 065: print #1, "unlock";
-  426a43:	be 06 00 00 00       	mov    esi,0x6
-  426a48:	48 8d 3d 2e bb 04 00 	lea    rdi,[rip+0x4bb2e]        # 47257d <_IO_stdin_used+0x357d>
-  426a4f:	e8 1c 3a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426a54:	48 89 c6             	mov    rsi,rax
-  426a57:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426a5e:	00 
-  426a5f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426a66:	00 00 
-  426a68:	75 61                	jne    426acb <MEMORY_T::POKE64(double, double)+0x1d2bb>
-  426a6a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426a71:	31 d2                	xor    edx,edx
-  426a73:	bf 01 00 00 00       	mov    edi,0x1
-  426a78:	5b                   	pop    rbx
-  426a79:	5d                   	pop    rbp
-  426a7a:	41 5c                	pop    r12
-  426a7c:	41 5d                	pop    r13
-  426a7e:	41 5e                	pop    r14
-  426a80:	41 5f                	pop    r15
-  426a82:	e9 39 12 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 064: print #1, "unknown";
-  426a87:	be 07 00 00 00       	mov    esi,0x7
-  426a8c:	48 8d 3d 26 b0 04 00 	lea    rdi,[rip+0x4b026]        # 471ab9 <_IO_stdin_used+0x2ab9>
-  426a93:	e8 d8 39 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426a98:	48 89 c6             	mov    rsi,rax
-  426a9b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426aa2:	00 
-  426aa3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426aaa:	00 00 
-  426aac:	75 22                	jne    426ad0 <MEMORY_T::POKE64(double, double)+0x1d2c0>
-  426aae:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426ab5:	31 d2                	xor    edx,edx
-  426ab7:	bf 01 00 00 00       	mov    edi,0x1
-  426abc:	5b                   	pop    rbx
-  426abd:	5d                   	pop    rbp
-  426abe:	41 5c                	pop    r12
-  426ac0:	41 5d                	pop    r13
-  426ac2:	41 5e                	pop    r14
-  426ac4:	41 5f                	pop    r15
-  426ac6:	e9 f5 11 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 065: print #1, "unlock";
-  426acb:	e8 90 ed fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 064: print #1, "unknown";
-  426ad0:	e8 8b ed fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 063: print #1, "unit";
-  426ad5:	be 04 00 00 00       	mov    esi,0x4
-  426ada:	48 8d 3d d3 af 04 00 	lea    rdi,[rip+0x4afd3]        # 471ab4 <_IO_stdin_used+0x2ab4>
-  426ae1:	e8 8a 39 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426ae6:	48 89 c6             	mov    rsi,rax
-  426ae9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426af0:	00 
-  426af1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426af8:	00 00 
-  426afa:	75 61                	jne    426b5d <MEMORY_T::POKE64(double, double)+0x1d34d>
-  426afc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426b03:	31 d2                	xor    edx,edx
-  426b05:	bf 01 00 00 00       	mov    edi,0x1
-  426b0a:	5b                   	pop    rbx
-  426b0b:	5d                   	pop    rbp
-  426b0c:	41 5c                	pop    r12
-  426b0e:	41 5d                	pop    r13
-  426b10:	41 5e                	pop    r14
-  426b12:	41 5f                	pop    r15
-  426b14:	e9 a7 11 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 062: print #1, "union";
-  426b19:	be 05 00 00 00       	mov    esi,0x5
-  426b1e:	48 8d 3d 4a ac 04 00 	lea    rdi,[rip+0x4ac4a]        # 47176f <_IO_stdin_used+0x276f>
-  426b25:	e8 46 39 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426b2a:	48 89 c6             	mov    rsi,rax
-  426b2d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426b34:	00 
-  426b35:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426b3c:	00 00 
-  426b3e:	75 22                	jne    426b62 <MEMORY_T::POKE64(double, double)+0x1d352>
-  426b40:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426b47:	31 d2                	xor    edx,edx
-  426b49:	bf 01 00 00 00       	mov    edi,0x1
-  426b4e:	5b                   	pop    rbx
-  426b4f:	5d                   	pop    rbp
-  426b50:	41 5c                	pop    r12
-  426b52:	41 5d                	pop    r13
-  426b54:	41 5e                	pop    r14
-  426b56:	41 5f                	pop    r15
-  426b58:	e9 63 11 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 063: print #1, "unit";
-  426b5d:	e8 fe ec fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 062: print #1, "union";
-  426b62:	e8 f9 ec fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 061: print #1, "uniform";
-  426b67:	be 07 00 00 00       	mov    esi,0x7
-  426b6c:	48 8d 3d 39 af 04 00 	lea    rdi,[rip+0x4af39]        # 471aac <_IO_stdin_used+0x2aac>
-  426b73:	e8 f8 38 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426b78:	48 89 c6             	mov    rsi,rax
-  426b7b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426b82:	00 
-  426b83:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426b8a:	00 00 
-  426b8c:	75 61                	jne    426bef <MEMORY_T::POKE64(double, double)+0x1d3df>
-  426b8e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426b95:	31 d2                	xor    edx,edx
-  426b97:	bf 01 00 00 00       	mov    edi,0x1
-  426b9c:	5b                   	pop    rbx
-  426b9d:	5d                   	pop    rbp
-  426b9e:	41 5c                	pop    r12
-  426ba0:	41 5d                	pop    r13
-  426ba2:	41 5e                	pop    r14
-  426ba4:	41 5f                	pop    r15
-  426ba6:	e9 15 11 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 060: print #1, "undef";
-  426bab:	be 05 00 00 00       	mov    esi,0x5
-  426bb0:	48 8d 3d ef ae 04 00 	lea    rdi,[rip+0x4aeef]        # 471aa6 <_IO_stdin_used+0x2aa6>
-  426bb7:	e8 b4 38 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426bbc:	48 89 c6             	mov    rsi,rax
-  426bbf:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426bc6:	00 
-  426bc7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426bce:	00 00 
-  426bd0:	75 22                	jne    426bf4 <MEMORY_T::POKE64(double, double)+0x1d3e4>
-  426bd2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426bd9:	31 d2                	xor    edx,edx
-  426bdb:	bf 01 00 00 00       	mov    edi,0x1
-  426be0:	5b                   	pop    rbx
-  426be1:	5d                   	pop    rbp
-  426be2:	41 5c                	pop    r12
-  426be4:	41 5d                	pop    r13
-  426be6:	41 5e                	pop    r14
-  426be8:	41 5f                	pop    r15
-  426bea:	e9 d1 10 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 061: print #1, "uniform";
-  426bef:	e8 6c ec fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 060: print #1, "undef";
-  426bf4:	e8 67 ec fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 059: print #1, "ultra_wide_angle";
-  426bf9:	be 10 00 00 00       	mov    esi,0x10
-  426bfe:	48 8d 3d 90 ae 04 00 	lea    rdi,[rip+0x4ae90]        # 471a95 <_IO_stdin_used+0x2a95>
-  426c05:	e8 66 38 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426c0a:	48 89 c6             	mov    rsi,rax
-  426c0d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426c14:	00 
-  426c15:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426c1c:	00 00 
-  426c1e:	75 61                	jne    426c81 <MEMORY_T::POKE64(double, double)+0x1d471>
-  426c20:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426c27:	31 d2                	xor    edx,edx
-  426c29:	bf 01 00 00 00       	mov    edi,0x1
-  426c2e:	5b                   	pop    rbx
-  426c2f:	5d                   	pop    rbp
-  426c30:	41 5c                	pop    r12
-  426c32:	41 5d                	pop    r13
-  426c34:	41 5e                	pop    r14
-  426c36:	41 5f                	pop    r15
-  426c38:	e9 83 10 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 058: print #1, "uint";
-  426c3d:	be 04 00 00 00       	mov    esi,0x4
-  426c42:	48 8d 3d 1f b1 04 00 	lea    rdi,[rip+0x4b11f]        # 471d68 <_IO_stdin_used+0x2d68>
-  426c49:	e8 22 38 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426c4e:	48 89 c6             	mov    rsi,rax
-  426c51:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426c58:	00 
-  426c59:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426c60:	00 00 
-  426c62:	75 22                	jne    426c86 <MEMORY_T::POKE64(double, double)+0x1d476>
-  426c64:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426c6b:	31 d2                	xor    edx,edx
-  426c6d:	bf 01 00 00 00       	mov    edi,0x1
-  426c72:	5b                   	pop    rbx
-  426c73:	5d                   	pop    rbp
-  426c74:	41 5c                	pop    r12
-  426c76:	41 5d                	pop    r13
-  426c78:	41 5e                	pop    r14
-  426c7a:	41 5f                	pop    r15
-  426c7c:	e9 3f 10 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 059: print #1, "ultra_wide_angle";
-  426c81:	e8 da eb fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 058: print #1, "uint";
-  426c86:	e8 d5 eb fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 057: print #1, "uimageCube";
-  426c8b:	be 0a 00 00 00       	mov    esi,0xa
-  426c90:	48 8d 3d f3 ad 04 00 	lea    rdi,[rip+0x4adf3]        # 471a8a <_IO_stdin_used+0x2a8a>
-  426c97:	e8 d4 37 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426c9c:	48 89 c6             	mov    rsi,rax
-  426c9f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426ca6:	00 
-  426ca7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426cae:	00 00 
-  426cb0:	75 61                	jne    426d13 <MEMORY_T::POKE64(double, double)+0x1d503>
-  426cb2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426cb9:	31 d2                	xor    edx,edx
-  426cbb:	bf 01 00 00 00       	mov    edi,0x1
-  426cc0:	5b                   	pop    rbx
-  426cc1:	5d                   	pop    rbp
-  426cc2:	41 5c                	pop    r12
-  426cc4:	41 5d                	pop    r13
-  426cc6:	41 5e                	pop    r14
-  426cc8:	41 5f                	pop    r15
-  426cca:	e9 f1 0f 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 056: print #1, "uimageBuffer";
-  426ccf:	be 0c 00 00 00       	mov    esi,0xc
-  426cd4:	48 8d 3d a2 ad 04 00 	lea    rdi,[rip+0x4ada2]        # 471a7d <_IO_stdin_used+0x2a7d>
-  426cdb:	e8 90 37 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426ce0:	48 89 c6             	mov    rsi,rax
-  426ce3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426cea:	00 
-  426ceb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426cf2:	00 00 
-  426cf4:	75 22                	jne    426d18 <MEMORY_T::POKE64(double, double)+0x1d508>
-  426cf6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426cfd:	31 d2                	xor    edx,edx
-  426cff:	bf 01 00 00 00       	mov    edi,0x1
-  426d04:	5b                   	pop    rbx
-  426d05:	5d                   	pop    rbp
-  426d06:	41 5c                	pop    r12
-  426d08:	41 5d                	pop    r13
-  426d0a:	41 5e                	pop    r14
-  426d0c:	41 5f                	pop    r15
-  426d0e:	e9 ad 0f 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 057: print #1, "uimageCube";
-  426d13:	e8 48 eb fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 056: print #1, "uimageBuffer";
-  426d18:	e8 43 eb fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 055: print #1, "uimage3D";
-  426d1d:	be 08 00 00 00       	mov    esi,0x8
-  426d22:	48 8d 3d 4b ad 04 00 	lea    rdi,[rip+0x4ad4b]        # 471a74 <_IO_stdin_used+0x2a74>
-  426d29:	e8 42 37 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426d2e:	48 89 c6             	mov    rsi,rax
-  426d31:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426d38:	00 
-  426d39:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426d40:	00 00 
-  426d42:	75 61                	jne    426da5 <MEMORY_T::POKE64(double, double)+0x1d595>
-  426d44:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426d4b:	31 d2                	xor    edx,edx
-  426d4d:	bf 01 00 00 00       	mov    edi,0x1
-  426d52:	5b                   	pop    rbx
-  426d53:	5d                   	pop    rbp
-  426d54:	41 5c                	pop    r12
-  426d56:	41 5d                	pop    r13
-  426d58:	41 5e                	pop    r14
-  426d5a:	41 5f                	pop    r15
-  426d5c:	e9 5f 0f 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 054: print #1, "uimage2DArray";
-  426d61:	be 0d 00 00 00       	mov    esi,0xd
-  426d66:	48 8d 3d f9 ac 04 00 	lea    rdi,[rip+0x4acf9]        # 471a66 <_IO_stdin_used+0x2a66>
-  426d6d:	e8 fe 36 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426d72:	48 89 c6             	mov    rsi,rax
-  426d75:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426d7c:	00 
-  426d7d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426d84:	00 00 
-  426d86:	75 22                	jne    426daa <MEMORY_T::POKE64(double, double)+0x1d59a>
-  426d88:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426d8f:	31 d2                	xor    edx,edx
-  426d91:	bf 01 00 00 00       	mov    edi,0x1
-  426d96:	5b                   	pop    rbx
-  426d97:	5d                   	pop    rbp
-  426d98:	41 5c                	pop    r12
-  426d9a:	41 5d                	pop    r13
-  426d9c:	41 5e                	pop    r14
-  426d9e:	41 5f                	pop    r15
-  426da0:	e9 1b 0f 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 055: print #1, "uimage3D";
-  426da5:	e8 b6 ea fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 054: print #1, "uimage2DArray";
-  426daa:	e8 b1 ea fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 053: print #1, "uimage2D";
-  426daf:	be 08 00 00 00       	mov    esi,0x8
-  426db4:	48 8d 3d a2 ac 04 00 	lea    rdi,[rip+0x4aca2]        # 471a5d <_IO_stdin_used+0x2a5d>
-  426dbb:	e8 b0 36 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426dc0:	48 89 c6             	mov    rsi,rax
-  426dc3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426dca:	00 
-  426dcb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426dd2:	00 00 
-  426dd4:	75 61                	jne    426e37 <MEMORY_T::POKE64(double, double)+0x1d627>
-  426dd6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426ddd:	31 d2                	xor    edx,edx
-  426ddf:	bf 01 00 00 00       	mov    edi,0x1
-  426de4:	5b                   	pop    rbx
-  426de5:	5d                   	pop    rbp
-  426de6:	41 5c                	pop    r12
-  426de8:	41 5d                	pop    r13
-  426dea:	41 5e                	pop    r14
-  426dec:	41 5f                	pop    r15
-  426dee:	e9 cd 0e 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 052: print #1, "uimage1DArray";
-  426df3:	be 0d 00 00 00       	mov    esi,0xd
-  426df8:	48 8d 3d 50 ac 04 00 	lea    rdi,[rip+0x4ac50]        # 471a4f <_IO_stdin_used+0x2a4f>
-  426dff:	e8 6c 36 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426e04:	48 89 c6             	mov    rsi,rax
-  426e07:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426e0e:	00 
-  426e0f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426e16:	00 00 
-  426e18:	75 22                	jne    426e3c <MEMORY_T::POKE64(double, double)+0x1d62c>
-  426e1a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426e21:	31 d2                	xor    edx,edx
-  426e23:	bf 01 00 00 00       	mov    edi,0x1
-  426e28:	5b                   	pop    rbx
-  426e29:	5d                   	pop    rbp
-  426e2a:	41 5c                	pop    r12
-  426e2c:	41 5d                	pop    r13
-  426e2e:	41 5e                	pop    r14
-  426e30:	41 5f                	pop    r15
-  426e32:	e9 89 0e 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 053: print #1, "uimage2D";
-  426e37:	e8 24 ea fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 052: print #1, "uimage1DArray";
-  426e3c:	e8 1f ea fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 051: print #1, "uimage1D";
-  426e41:	be 08 00 00 00       	mov    esi,0x8
-  426e46:	48 8d 3d f9 ab 04 00 	lea    rdi,[rip+0x4abf9]        # 471a46 <_IO_stdin_used+0x2a46>
-  426e4d:	e8 1e 36 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426e52:	48 89 c6             	mov    rsi,rax
-  426e55:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426e5c:	00 
-  426e5d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426e64:	00 00 
-  426e66:	75 61                	jne    426ec9 <MEMORY_T::POKE64(double, double)+0x1d6b9>
-  426e68:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426e6f:	31 d2                	xor    edx,edx
-  426e71:	bf 01 00 00 00       	mov    edi,0x1
-  426e76:	5b                   	pop    rbx
-  426e77:	5d                   	pop    rbp
-  426e78:	41 5c                	pop    r12
-  426e7a:	41 5d                	pop    r13
-  426e7c:	41 5e                	pop    r14
-  426e7e:	41 5f                	pop    r15
-  426e80:	e9 3b 0e 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 050: print #1, "u";
-  426e85:	be 01 00 00 00       	mov    esi,0x1
-  426e8a:	48 8d 3d a3 f8 04 00 	lea    rdi,[rip+0x4f8a3]        # 476734 <keysym_to_scancode+0x694>
-  426e91:	e8 da 35 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426e96:	48 89 c6             	mov    rsi,rax
-  426e99:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426ea0:	00 
-  426ea1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426ea8:	00 00 
-  426eaa:	75 22                	jne    426ece <MEMORY_T::POKE64(double, double)+0x1d6be>
-  426eac:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426eb3:	31 d2                	xor    edx,edx
-  426eb5:	bf 01 00 00 00       	mov    edi,0x1
-  426eba:	5b                   	pop    rbx
-  426ebb:	5d                   	pop    rbp
-  426ebc:	41 5c                	pop    r12
-  426ebe:	41 5d                	pop    r13
-  426ec0:	41 5e                	pop    r14
-  426ec2:	41 5f                	pop    r15
-  426ec4:	e9 f7 0d 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 051: print #1, "uimage1D";
-  426ec9:	e8 92 e9 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 050: print #1, "u";
-  426ece:	e8 8d e9 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 049: print #1, "typedef";
-  426ed3:	be 07 00 00 00       	mov    esi,0x7
-  426ed8:	48 8d 3d 5f ab 04 00 	lea    rdi,[rip+0x4ab5f]        # 471a3e <_IO_stdin_used+0x2a3e>
-  426edf:	e8 8c 35 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426ee4:	48 89 c6             	mov    rsi,rax
-  426ee7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426eee:	00 
-  426eef:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426ef6:	00 00 
-  426ef8:	75 61                	jne    426f5b <MEMORY_T::POKE64(double, double)+0x1d74b>
-  426efa:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426f01:	31 d2                	xor    edx,edx
-  426f03:	bf 01 00 00 00       	mov    edi,0x1
-  426f08:	5b                   	pop    rbx
-  426f09:	5d                   	pop    rbp
-  426f0a:	41 5c                	pop    r12
-  426f0c:	41 5d                	pop    r13
-  426f0e:	41 5e                	pop    r14
-  426f10:	41 5f                	pop    r15
-  426f12:	e9 a9 0d 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 048: print #1, "type";
-  426f17:	be 04 00 00 00       	mov    esi,0x4
-  426f1c:	48 8d 3d 29 93 04 00 	lea    rdi,[rip+0x49329]        # 47024c <_IO_stdin_used+0x124c>
-  426f23:	e8 48 35 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426f28:	48 89 c6             	mov    rsi,rax
-  426f2b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426f32:	00 
-  426f33:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426f3a:	00 00 
-  426f3c:	75 22                	jne    426f60 <MEMORY_T::POKE64(double, double)+0x1d750>
-  426f3e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426f45:	31 d2                	xor    edx,edx
-  426f47:	bf 01 00 00 00       	mov    edi,0x1
-  426f4c:	5b                   	pop    rbx
-  426f4d:	5d                   	pop    rbp
-  426f4e:	41 5c                	pop    r12
-  426f50:	41 5d                	pop    r13
-  426f52:	41 5e                	pop    r14
-  426f54:	41 5f                	pop    r15
-  426f56:	e9 65 0d 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 049: print #1, "typedef";
-  426f5b:	e8 00 e9 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 048: print #1, "type";
-  426f60:	e8 fb e8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 047: print #1, "turbulence";
-  426f65:	be 0a 00 00 00       	mov    esi,0xa
-  426f6a:	48 8d 3d 04 ad 04 00 	lea    rdi,[rip+0x4ad04]        # 471c75 <_IO_stdin_used+0x2c75>
-  426f71:	e8 fa 34 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426f76:	48 89 c6             	mov    rsi,rax
-  426f79:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426f80:	00 
-  426f81:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426f88:	00 00 
-  426f8a:	75 61                	jne    426fed <MEMORY_T::POKE64(double, double)+0x1d7dd>
-  426f8c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426f93:	31 d2                	xor    edx,edx
-  426f95:	bf 01 00 00 00       	mov    edi,0x1
-  426f9a:	5b                   	pop    rbx
-  426f9b:	5d                   	pop    rbp
-  426f9c:	41 5c                	pop    r12
-  426f9e:	41 5d                	pop    r13
-  426fa0:	41 5e                	pop    r14
-  426fa2:	41 5f                	pop    r15
-  426fa4:	e9 17 0d 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 046: print #1, "turb_depth";
-  426fa9:	be 0a 00 00 00       	mov    esi,0xa
-  426fae:	48 8d 3d 7e aa 04 00 	lea    rdi,[rip+0x4aa7e]        # 471a33 <_IO_stdin_used+0x2a33>
-  426fb5:	e8 b6 34 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  426fba:	48 89 c6             	mov    rsi,rax
-  426fbd:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  426fc4:	00 
-  426fc5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  426fcc:	00 00 
-  426fce:	75 22                	jne    426ff2 <MEMORY_T::POKE64(double, double)+0x1d7e2>
-  426fd0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  426fd7:	31 d2                	xor    edx,edx
-  426fd9:	bf 01 00 00 00       	mov    edi,0x1
-  426fde:	5b                   	pop    rbx
-  426fdf:	5d                   	pop    rbp
-  426fe0:	41 5c                	pop    r12
-  426fe2:	41 5d                	pop    r13
-  426fe4:	41 5e                	pop    r14
-  426fe6:	41 5f                	pop    r15
-  426fe8:	e9 d3 0c 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 047: print #1, "turbulence";
-  426fed:	e8 6e e8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 046: print #1, "turb_depth";
-  426ff2:	e8 69 e8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 045: print #1, "ttf";
-  426ff7:	be 03 00 00 00       	mov    esi,0x3
-  426ffc:	48 8d 3d 2c aa 04 00 	lea    rdi,[rip+0x4aa2c]        # 471a2f <_IO_stdin_used+0x2a2f>
-  427003:	e8 68 34 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427008:	48 89 c6             	mov    rsi,rax
-  42700b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427012:	00 
-  427013:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42701a:	00 00 
-  42701c:	75 61                	jne    42707f <MEMORY_T::POKE64(double, double)+0x1d86f>
-  42701e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427025:	31 d2                	xor    edx,edx
-  427027:	bf 01 00 00 00       	mov    edi,0x1
-  42702c:	5b                   	pop    rbx
-  42702d:	5d                   	pop    rbp
-  42702e:	41 5c                	pop    r12
-  427030:	41 5d                	pop    r13
-  427032:	41 5e                	pop    r14
-  427034:	41 5f                	pop    r15
-  427036:	e9 85 0c 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 044: print #1, "try";
-  42703b:	be 03 00 00 00       	mov    esi,0x3
-  427040:	48 8d 3d b7 b6 04 00 	lea    rdi,[rip+0x4b6b7]        # 4726fe <_IO_stdin_used+0x36fe>
-  427047:	e8 24 34 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42704c:	48 89 c6             	mov    rsi,rax
-  42704f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427056:	00 
-  427057:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42705e:	00 00 
-  427060:	75 22                	jne    427084 <MEMORY_T::POKE64(double, double)+0x1d874>
-  427062:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427069:	31 d2                	xor    edx,edx
-  42706b:	bf 01 00 00 00       	mov    edi,0x1
-  427070:	5b                   	pop    rbx
-  427071:	5d                   	pop    rbp
-  427072:	41 5c                	pop    r12
-  427074:	41 5d                	pop    r13
-  427076:	41 5e                	pop    r14
-  427078:	41 5f                	pop    r15
-  42707a:	e9 41 0c 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 045: print #1, "ttf";
-  42707f:	e8 dc e7 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 044: print #1, "try";
-  427084:	e8 d7 e7 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 043: print #1, "trunc";
-  427089:	be 05 00 00 00       	mov    esi,0x5
-  42708e:	48 8d 3d 94 a9 04 00 	lea    rdi,[rip+0x4a994]        # 471a29 <_IO_stdin_used+0x2a29>
-  427095:	e8 d6 33 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42709a:	48 89 c6             	mov    rsi,rax
-  42709d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4270a4:	00 
-  4270a5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4270ac:	00 00 
-  4270ae:	75 61                	jne    427111 <MEMORY_T::POKE64(double, double)+0x1d901>
-  4270b0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4270b7:	31 d2                	xor    edx,edx
-  4270b9:	bf 01 00 00 00       	mov    edi,0x1
-  4270be:	5b                   	pop    rbx
-  4270bf:	5d                   	pop    rbp
-  4270c0:	41 5c                	pop    r12
-  4270c2:	41 5d                	pop    r13
-  4270c4:	41 5e                	pop    r14
-  4270c6:	41 5f                	pop    r15
-  4270c8:	e9 f3 0b 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 042: print #1, "true";
-  4270cd:	be 04 00 00 00       	mov    esi,0x4
-  4270d2:	48 8d 3d 4b a9 04 00 	lea    rdi,[rip+0x4a94b]        # 471a24 <_IO_stdin_used+0x2a24>
-  4270d9:	e8 92 33 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4270de:	48 89 c6             	mov    rsi,rax
-  4270e1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4270e8:	00 
-  4270e9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4270f0:	00 00 
-  4270f2:	75 22                	jne    427116 <MEMORY_T::POKE64(double, double)+0x1d906>
-  4270f4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4270fb:	31 d2                	xor    edx,edx
-  4270fd:	bf 01 00 00 00       	mov    edi,0x1
-  427102:	5b                   	pop    rbx
-  427103:	5d                   	pop    rbp
-  427104:	41 5c                	pop    r12
-  427106:	41 5d                	pop    r13
-  427108:	41 5e                	pop    r14
-  42710a:	41 5f                	pop    r15
-  42710c:	e9 af 0b 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 043: print #1, "trunc";
-  427111:	e8 4a e7 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 042: print #1, "true";
-  427116:	e8 45 e7 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 041: print #1, "tron";
-  42711b:	be 04 00 00 00       	mov    esi,0x4
-  427120:	48 8d 3d f8 a8 04 00 	lea    rdi,[rip+0x4a8f8]        # 471a1f <_IO_stdin_used+0x2a1f>
-  427127:	e8 44 33 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42712c:	48 89 c6             	mov    rsi,rax
-  42712f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427136:	00 
-  427137:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42713e:	00 00 
-  427140:	75 61                	jne    4271a3 <MEMORY_T::POKE64(double, double)+0x1d993>
-  427142:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427149:	31 d2                	xor    edx,edx
-  42714b:	bf 01 00 00 00       	mov    edi,0x1
-  427150:	5b                   	pop    rbx
-  427151:	5d                   	pop    rbp
-  427152:	41 5c                	pop    r12
-  427154:	41 5d                	pop    r13
-  427156:	41 5e                	pop    r14
-  427158:	41 5f                	pop    r15
-  42715a:	e9 61 0b 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 040: print #1, "troff";
-  42715f:	be 05 00 00 00       	mov    esi,0x5
-  427164:	48 8d 3d ae a8 04 00 	lea    rdi,[rip+0x4a8ae]        # 471a19 <_IO_stdin_used+0x2a19>
-  42716b:	e8 00 33 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427170:	48 89 c6             	mov    rsi,rax
-  427173:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42717a:	00 
-  42717b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427182:	00 00 
-  427184:	75 22                	jne    4271a8 <MEMORY_T::POKE64(double, double)+0x1d998>
-  427186:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42718d:	31 d2                	xor    edx,edx
-  42718f:	bf 01 00 00 00       	mov    edi,0x1
-  427194:	5b                   	pop    rbx
-  427195:	5d                   	pop    rbp
-  427196:	41 5c                	pop    r12
-  427198:	41 5d                	pop    r13
-  42719a:	41 5e                	pop    r14
-  42719c:	41 5f                	pop    r15
-  42719e:	e9 1d 0b 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 041: print #1, "tron";
-  4271a3:	e8 b8 e6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 040: print #1, "troff";
-  4271a8:	e8 b3 e6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 039: print #1, "trim_mb";
-  4271ad:	be 07 00 00 00       	mov    esi,0x7
-  4271b2:	48 8d 3d 58 a8 04 00 	lea    rdi,[rip+0x4a858]        # 471a11 <_IO_stdin_used+0x2a11>
-  4271b9:	e8 b2 32 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4271be:	48 89 c6             	mov    rsi,rax
-  4271c1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4271c8:	00 
-  4271c9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4271d0:	00 00 
-  4271d2:	75 61                	jne    427235 <MEMORY_T::POKE64(double, double)+0x1da25>
-  4271d4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4271db:	31 d2                	xor    edx,edx
-  4271dd:	bf 01 00 00 00       	mov    edi,0x1
-  4271e2:	5b                   	pop    rbx
-  4271e3:	5d                   	pop    rbp
-  4271e4:	41 5c                	pop    r12
-  4271e6:	41 5d                	pop    r13
-  4271e8:	41 5e                	pop    r14
-  4271ea:	41 5f                	pop    r15
-  4271ec:	e9 cf 0a 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 038: print #1, "trim_b";
-  4271f1:	be 06 00 00 00       	mov    esi,0x6
-  4271f6:	48 8d 3d 0d a8 04 00 	lea    rdi,[rip+0x4a80d]        # 471a0a <_IO_stdin_used+0x2a0a>
-  4271fd:	e8 6e 32 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427202:	48 89 c6             	mov    rsi,rax
-  427205:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42720c:	00 
-  42720d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427214:	00 00 
-  427216:	75 22                	jne    42723a <MEMORY_T::POKE64(double, double)+0x1da2a>
-  427218:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42721f:	31 d2                	xor    edx,edx
-  427221:	bf 01 00 00 00       	mov    edi,0x1
-  427226:	5b                   	pop    rbx
-  427227:	5d                   	pop    rbp
-  427228:	41 5c                	pop    r12
-  42722a:	41 5d                	pop    r13
-  42722c:	41 5e                	pop    r14
-  42722e:	41 5f                	pop    r15
-  427230:	e9 8b 0a 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 039: print #1, "trim_mb";
-  427235:	e8 26 e6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 038: print #1, "trim_b";
-  42723a:	e8 21 e6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 037: print #1, "trim";
-  42723f:	be 04 00 00 00       	mov    esi,0x4
-  427244:	48 8d 3d f8 b1 04 00 	lea    rdi,[rip+0x4b1f8]        # 472443 <_IO_stdin_used+0x3443>
-  42724b:	e8 20 32 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427250:	48 89 c6             	mov    rsi,rax
-  427253:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42725a:	00 
-  42725b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427262:	00 00 
-  427264:	75 61                	jne    4272c7 <MEMORY_T::POKE64(double, double)+0x1dab7>
-  427266:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42726d:	31 d2                	xor    edx,edx
-  42726f:	bf 01 00 00 00       	mov    edi,0x1
-  427274:	5b                   	pop    rbx
-  427275:	5d                   	pop    rbp
-  427276:	41 5c                	pop    r12
-  427278:	41 5d                	pop    r13
-  42727a:	41 5e                	pop    r14
-  42727c:	41 5f                	pop    r15
-  42727e:	e9 3d 0a 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 036: print #1, "triangle_wave";
-  427283:	be 0d 00 00 00       	mov    esi,0xd
-  427288:	48 8d 3d 6d a7 04 00 	lea    rdi,[rip+0x4a76d]        # 4719fc <_IO_stdin_used+0x29fc>
-  42728f:	e8 dc 31 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427294:	48 89 c6             	mov    rsi,rax
-  427297:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42729e:	00 
-  42729f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4272a6:	00 00 
-  4272a8:	75 22                	jne    4272cc <MEMORY_T::POKE64(double, double)+0x1dabc>
-  4272aa:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4272b1:	31 d2                	xor    edx,edx
-  4272b3:	bf 01 00 00 00       	mov    edi,0x1
-  4272b8:	5b                   	pop    rbx
-  4272b9:	5d                   	pop    rbp
-  4272ba:	41 5c                	pop    r12
-  4272bc:	41 5d                	pop    r13
-  4272be:	41 5e                	pop    r14
-  4272c0:	41 5f                	pop    r15
-  4272c2:	e9 f9 09 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 037: print #1, "trim";
-  4272c7:	e8 94 e5 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 036: print #1, "triangle_wave";
-  4272cc:	e8 8f e5 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 035: print #1, "triangle";
-  4272d1:	be 08 00 00 00       	mov    esi,0x8
-  4272d6:	48 8d 3d 8a a3 04 00 	lea    rdi,[rip+0x4a38a]        # 471667 <_IO_stdin_used+0x2667>
-  4272dd:	e8 8e 31 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4272e2:	48 89 c6             	mov    rsi,rax
-  4272e5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4272ec:	00 
-  4272ed:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4272f4:	00 00 
-  4272f6:	75 61                	jne    427359 <MEMORY_T::POKE64(double, double)+0x1db49>
-  4272f8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4272ff:	31 d2                	xor    edx,edx
-  427301:	bf 01 00 00 00       	mov    edi,0x1
-  427306:	5b                   	pop    rbx
-  427307:	5d                   	pop    rbp
-  427308:	41 5c                	pop    r12
-  42730a:	41 5d                	pop    r13
-  42730c:	41 5e                	pop    r14
-  42730e:	41 5f                	pop    r15
-  427310:	e9 ab 09 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 034: print #1, "transpose";
-  427315:	be 09 00 00 00       	mov    esi,0x9
-  42731a:	48 8d 3d d1 a6 04 00 	lea    rdi,[rip+0x4a6d1]        # 4719f2 <_IO_stdin_used+0x29f2>
-  427321:	e8 4a 31 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427326:	48 89 c6             	mov    rsi,rax
-  427329:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427330:	00 
-  427331:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427338:	00 00 
-  42733a:	75 22                	jne    42735e <MEMORY_T::POKE64(double, double)+0x1db4e>
-  42733c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427343:	31 d2                	xor    edx,edx
-  427345:	bf 01 00 00 00       	mov    edi,0x1
-  42734a:	5b                   	pop    rbx
-  42734b:	5d                   	pop    rbp
-  42734c:	41 5c                	pop    r12
-  42734e:	41 5d                	pop    r13
-  427350:	41 5e                	pop    r14
-  427352:	41 5f                	pop    r15
-  427354:	e9 67 09 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 035: print #1, "triangle";
-  427359:	e8 02 e5 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 034: print #1, "transpose";
-  42735e:	e8 fd e4 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 033: print #1, "transparent";
-  427363:	be 0b 00 00 00       	mov    esi,0xb
-  427368:	48 8d 3d 77 a6 04 00 	lea    rdi,[rip+0x4a677]        # 4719e6 <_IO_stdin_used+0x29e6>
-  42736f:	e8 fc 30 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427374:	48 89 c6             	mov    rsi,rax
-  427377:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42737e:	00 
-  42737f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427386:	00 00 
-  427388:	75 61                	jne    4273eb <MEMORY_T::POKE64(double, double)+0x1dbdb>
-  42738a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427391:	31 d2                	xor    edx,edx
-  427393:	bf 01 00 00 00       	mov    edi,0x1
-  427398:	5b                   	pop    rbx
-  427399:	5d                   	pop    rbp
-  42739a:	41 5c                	pop    r12
-  42739c:	41 5d                	pop    r13
-  42739e:	41 5e                	pop    r14
-  4273a0:	41 5f                	pop    r15
-  4273a2:	e9 19 09 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 032: print #1, "transmit";
-  4273a7:	be 08 00 00 00       	mov    esi,0x8
-  4273ac:	48 8d 3d 2a a6 04 00 	lea    rdi,[rip+0x4a62a]        # 4719dd <_IO_stdin_used+0x29dd>
-  4273b3:	e8 b8 30 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4273b8:	48 89 c6             	mov    rsi,rax
-  4273bb:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4273c2:	00 
-  4273c3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4273ca:	00 00 
-  4273cc:	75 22                	jne    4273f0 <MEMORY_T::POKE64(double, double)+0x1dbe0>
-  4273ce:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4273d5:	31 d2                	xor    edx,edx
-  4273d7:	bf 01 00 00 00       	mov    edi,0x1
-  4273dc:	5b                   	pop    rbx
-  4273dd:	5d                   	pop    rbp
-  4273de:	41 5c                	pop    r12
-  4273e0:	41 5d                	pop    r13
-  4273e2:	41 5e                	pop    r14
-  4273e4:	41 5f                	pop    r15
-  4273e6:	e9 d5 08 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 033: print #1, "transparent";
-  4273eb:	e8 70 e4 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 032: print #1, "transmit";
-  4273f0:	e8 6b e4 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 031: print #1, "translucent";
-  4273f5:	be 0b 00 00 00       	mov    esi,0xb
-  4273fa:	48 8d 3d d0 a5 04 00 	lea    rdi,[rip+0x4a5d0]        # 4719d1 <_IO_stdin_used+0x29d1>
-  427401:	e8 6a 30 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427406:	48 89 c6             	mov    rsi,rax
-  427409:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427410:	00 
-  427411:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427418:	00 00 
-  42741a:	75 61                	jne    42747d <MEMORY_T::POKE64(double, double)+0x1dc6d>
-  42741c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427423:	31 d2                	xor    edx,edx
-  427425:	bf 01 00 00 00       	mov    edi,0x1
-  42742a:	5b                   	pop    rbx
-  42742b:	5d                   	pop    rbp
-  42742c:	41 5c                	pop    r12
-  42742e:	41 5d                	pop    r13
-  427430:	41 5e                	pop    r14
-  427432:	41 5f                	pop    r15
-  427434:	e9 87 08 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 030: print #1, "translate";
-  427439:	be 09 00 00 00       	mov    esi,0x9
-  42743e:	48 8d 3d 82 a5 04 00 	lea    rdi,[rip+0x4a582]        # 4719c7 <_IO_stdin_used+0x29c7>
-  427445:	e8 26 30 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42744a:	48 89 c6             	mov    rsi,rax
-  42744d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427454:	00 
-  427455:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42745c:	00 00 
-  42745e:	75 22                	jne    427482 <MEMORY_T::POKE64(double, double)+0x1dc72>
-  427460:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427467:	31 d2                	xor    edx,edx
-  427469:	bf 01 00 00 00       	mov    edi,0x1
-  42746e:	5b                   	pop    rbx
-  42746f:	5d                   	pop    rbp
-  427470:	41 5c                	pop    r12
-  427472:	41 5d                	pop    r13
-  427474:	41 5e                	pop    r14
-  427476:	41 5f                	pop    r15
-  427478:	e9 43 08 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 031: print #1, "translucent";
-  42747d:	e8 de e3 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 030: print #1, "translate";
-  427482:	e8 d9 e3 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 029: print #1, "transformu";
-  427487:	be 0a 00 00 00       	mov    esi,0xa
-  42748c:	48 8d 3d 29 a5 04 00 	lea    rdi,[rip+0x4a529]        # 4719bc <_IO_stdin_used+0x29bc>
-  427493:	e8 d8 2f 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427498:	48 89 c6             	mov    rsi,rax
-  42749b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4274a2:	00 
-  4274a3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4274aa:	00 00 
-  4274ac:	75 61                	jne    42750f <MEMORY_T::POKE64(double, double)+0x1dcff>
-  4274ae:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4274b5:	31 d2                	xor    edx,edx
-  4274b7:	bf 01 00 00 00       	mov    edi,0x1
-  4274bc:	5b                   	pop    rbx
-  4274bd:	5d                   	pop    rbp
-  4274be:	41 5c                	pop    r12
-  4274c0:	41 5d                	pop    r13
-  4274c2:	41 5e                	pop    r14
-  4274c4:	41 5f                	pop    r15
-  4274c6:	e9 f5 07 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 028: print #1, "transformc";
-  4274cb:	be 0a 00 00 00       	mov    esi,0xa
-  4274d0:	48 8d 3d da a4 04 00 	lea    rdi,[rip+0x4a4da]        # 4719b1 <_IO_stdin_used+0x29b1>
-  4274d7:	e8 94 2f 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4274dc:	48 89 c6             	mov    rsi,rax
-  4274df:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4274e6:	00 
-  4274e7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4274ee:	00 00 
-  4274f0:	75 22                	jne    427514 <MEMORY_T::POKE64(double, double)+0x1dd04>
-  4274f2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4274f9:	31 d2                	xor    edx,edx
-  4274fb:	bf 01 00 00 00       	mov    edi,0x1
-  427500:	5b                   	pop    rbx
-  427501:	5d                   	pop    rbp
-  427502:	41 5c                	pop    r12
-  427504:	41 5d                	pop    r13
-  427506:	41 5e                	pop    r14
-  427508:	41 5f                	pop    r15
-  42750a:	e9 b1 07 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 029: print #1, "transformu";
-  42750f:	e8 4c e3 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 028: print #1, "transformc";
-  427514:	e8 47 e3 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 027: print #1, "transform";
-  427519:	be 09 00 00 00       	mov    esi,0x9
-  42751e:	48 8d 3d 82 a4 04 00 	lea    rdi,[rip+0x4a482]        # 4719a7 <_IO_stdin_used+0x29a7>
-  427525:	e8 46 2f 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42752a:	48 89 c6             	mov    rsi,rax
-  42752d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427534:	00 
-  427535:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42753c:	00 00 
-  42753e:	75 61                	jne    4275a1 <MEMORY_T::POKE64(double, double)+0x1dd91>
-  427540:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427547:	31 d2                	xor    edx,edx
-  427549:	bf 01 00 00 00       	mov    edi,0x1
-  42754e:	5b                   	pop    rbx
-  42754f:	5d                   	pop    rbp
-  427550:	41 5c                	pop    r12
-  427552:	41 5d                	pop    r13
-  427554:	41 5e                	pop    r14
-  427556:	41 5f                	pop    r15
-  427558:	e9 63 07 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 026: print #1, "trailing";
-  42755d:	be 08 00 00 00       	mov    esi,0x8
-  427562:	48 8d 3d 35 a4 04 00 	lea    rdi,[rip+0x4a435]        # 47199e <_IO_stdin_used+0x299e>
-  427569:	e8 02 2f 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42756e:	48 89 c6             	mov    rsi,rax
-  427571:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427578:	00 
-  427579:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427580:	00 00 
-  427582:	75 22                	jne    4275a6 <MEMORY_T::POKE64(double, double)+0x1dd96>
-  427584:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42758b:	31 d2                	xor    edx,edx
-  42758d:	bf 01 00 00 00       	mov    edi,0x1
-  427592:	5b                   	pop    rbx
-  427593:	5d                   	pop    rbp
-  427594:	41 5c                	pop    r12
-  427596:	41 5d                	pop    r13
-  427598:	41 5e                	pop    r14
-  42759a:	41 5f                	pop    r15
-  42759c:	e9 1f 07 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 027: print #1, "transform";
-  4275a1:	e8 ba e2 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 026: print #1, "trailing";
-  4275a6:	e8 b5 e2 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 025: print #1, "trace";
-  4275ab:	be 05 00 00 00       	mov    esi,0x5
-  4275b0:	48 8d 3d 49 96 04 00 	lea    rdi,[rip+0x49649]        # 470c00 <_IO_stdin_used+0x1c00>
-  4275b7:	e8 b4 2e 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4275bc:	48 89 c6             	mov    rsi,rax
-  4275bf:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4275c6:	00 
-  4275c7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4275ce:	00 00 
-  4275d0:	75 61                	jne    427633 <MEMORY_T::POKE64(double, double)+0x1de23>
-  4275d2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4275d9:	31 d2                	xor    edx,edx
-  4275db:	bf 01 00 00 00       	mov    edi,0x1
-  4275e0:	5b                   	pop    rbx
-  4275e1:	5d                   	pop    rbp
-  4275e2:	41 5c                	pop    r12
-  4275e4:	41 5d                	pop    r13
-  4275e6:	41 5e                	pop    r14
-  4275e8:	41 5f                	pop    r15
-  4275ea:	e9 d1 06 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 024: print #1, "torus";
-  4275ef:	be 05 00 00 00       	mov    esi,0x5
-  4275f4:	48 8d 3d 9d a3 04 00 	lea    rdi,[rip+0x4a39d]        # 471998 <_IO_stdin_used+0x2998>
-  4275fb:	e8 70 2e 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427600:	48 89 c6             	mov    rsi,rax
-  427603:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42760a:	00 
-  42760b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427612:	00 00 
-  427614:	75 22                	jne    427638 <MEMORY_T::POKE64(double, double)+0x1de28>
-  427616:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42761d:	31 d2                	xor    edx,edx
-  42761f:	bf 01 00 00 00       	mov    edi,0x1
-  427624:	5b                   	pop    rbx
-  427625:	5d                   	pop    rbp
-  427626:	41 5c                	pop    r12
-  427628:	41 5d                	pop    r13
-  42762a:	41 5e                	pop    r14
-  42762c:	41 5f                	pop    r15
-  42762e:	e9 8d 06 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 025: print #1, "trace";
-  427633:	e8 28 e2 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 024: print #1, "torus";
-  427638:	e8 23 e2 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 023: print #1, "toroidal";
-  42763d:	be 08 00 00 00       	mov    esi,0x8
-  427642:	48 8d 3d 46 a3 04 00 	lea    rdi,[rip+0x4a346]        # 47198f <_IO_stdin_used+0x298f>
-  427649:	e8 22 2e 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42764e:	48 89 c6             	mov    rsi,rax
-  427651:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427658:	00 
-  427659:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427660:	00 00 
-  427662:	75 61                	jne    4276c5 <MEMORY_T::POKE64(double, double)+0x1deb5>
-  427664:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42766b:	31 d2                	xor    edx,edx
-  42766d:	bf 01 00 00 00       	mov    edi,0x1
-  427672:	5b                   	pop    rbx
-  427673:	5d                   	pop    rbp
-  427674:	41 5c                	pop    r12
-  427676:	41 5d                	pop    r13
-  427678:	41 5e                	pop    r14
-  42767a:	41 5f                	pop    r15
-  42767c:	e9 3f 06 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 022: print #1, "top";
-  427681:	be 03 00 00 00       	mov    esi,0x3
-  427686:	48 8d 3d 2f 80 04 00 	lea    rdi,[rip+0x4802f]        # 46f6bc <_IO_stdin_used+0x6bc>
-  42768d:	e8 de 2d 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427692:	48 89 c6             	mov    rsi,rax
-  427695:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42769c:	00 
-  42769d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4276a4:	00 00 
-  4276a6:	75 22                	jne    4276ca <MEMORY_T::POKE64(double, double)+0x1deba>
-  4276a8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4276af:	31 d2                	xor    edx,edx
-  4276b1:	bf 01 00 00 00       	mov    edi,0x1
-  4276b6:	5b                   	pop    rbx
-  4276b7:	5d                   	pop    rbp
-  4276b8:	41 5c                	pop    r12
-  4276ba:	41 5d                	pop    r13
-  4276bc:	41 5e                	pop    r14
-  4276be:	41 5f                	pop    r15
-  4276c0:	e9 fb 05 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 023: print #1, "toroidal";
-  4276c5:	e8 96 e1 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 022: print #1, "top";
-  4276ca:	e8 91 e1 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 021: print #1, "tolerance";
-  4276cf:	be 09 00 00 00       	mov    esi,0x9
-  4276d4:	48 8d 3d aa a2 04 00 	lea    rdi,[rip+0x4a2aa]        # 471985 <_IO_stdin_used+0x2985>
-  4276db:	e8 90 2d 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4276e0:	48 89 c6             	mov    rsi,rax
-  4276e3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4276ea:	00 
-  4276eb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4276f2:	00 00 
-  4276f4:	75 61                	jne    427757 <MEMORY_T::POKE64(double, double)+0x1df47>
-  4276f6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4276fd:	31 d2                	xor    edx,edx
-  4276ff:	bf 01 00 00 00       	mov    edi,0x1
-  427704:	5b                   	pop    rbx
-  427705:	5d                   	pop    rbp
-  427706:	41 5c                	pop    r12
-  427708:	41 5d                	pop    r13
-  42770a:	41 5e                	pop    r14
-  42770c:	41 5f                	pop    r15
-  42770e:	e9 ad 05 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 020: print #1, "to";			
-  427713:	be 02 00 00 00       	mov    esi,0x2
-  427718:	48 8d 3d 36 91 04 00 	lea    rdi,[rip+0x49136]        # 470855 <_IO_stdin_used+0x1855>
-  42771f:	e8 4c 2d 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427724:	48 89 c6             	mov    rsi,rax
-  427727:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42772e:	00 
-  42772f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427736:	00 00 
-  427738:	75 22                	jne    42775c <MEMORY_T::POKE64(double, double)+0x1df4c>
-  42773a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427741:	31 d2                	xor    edx,edx
-  427743:	bf 01 00 00 00       	mov    edi,0x1
-  427748:	5b                   	pop    rbx
-  427749:	5d                   	pop    rbp
-  42774a:	41 5c                	pop    r12
-  42774c:	41 5d                	pop    r13
-  42774e:	41 5e                	pop    r14
-  427750:	41 5f                	pop    r15
-  427752:	e9 69 05 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 021: print #1, "tolerance";
-  427757:	e8 04 e1 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 020: print #1, "to";			
-  42775c:	e8 ff e0 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 019: print #1, "title";
-  427761:	be 05 00 00 00       	mov    esi,0x5
-  427766:	48 8d 3d cf ae 04 00 	lea    rdi,[rip+0x4aecf]        # 47263c <_IO_stdin_used+0x363c>
-  42776d:	e8 fe 2c 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427772:	48 89 c6             	mov    rsi,rax
-  427775:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42777c:	00 
-  42777d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427784:	00 00 
-  427786:	75 61                	jne    4277e9 <MEMORY_T::POKE64(double, double)+0x1dfd9>
-  427788:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42778f:	31 d2                	xor    edx,edx
-  427791:	bf 01 00 00 00       	mov    edi,0x1
-  427796:	5b                   	pop    rbx
-  427797:	5d                   	pop    rbp
-  427798:	41 5c                	pop    r12
-  42779a:	41 5d                	pop    r13
-  42779c:	41 5e                	pop    r14
-  42779e:	41 5f                	pop    r15
-  4277a0:	e9 1b 05 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 018: print #1, "timesten";
-  4277a5:	be 08 00 00 00       	mov    esi,0x8
-  4277aa:	48 8d 3d cb a1 04 00 	lea    rdi,[rip+0x4a1cb]        # 47197c <_IO_stdin_used+0x297c>
-  4277b1:	e8 ba 2c 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4277b6:	48 89 c6             	mov    rsi,rax
-  4277b9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4277c0:	00 
-  4277c1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4277c8:	00 00 
-  4277ca:	75 22                	jne    4277ee <MEMORY_T::POKE64(double, double)+0x1dfde>
-  4277cc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4277d3:	31 d2                	xor    edx,edx
-  4277d5:	bf 01 00 00 00       	mov    edi,0x1
-  4277da:	5b                   	pop    rbx
-  4277db:	5d                   	pop    rbp
-  4277dc:	41 5c                	pop    r12
-  4277de:	41 5d                	pop    r13
-  4277e0:	41 5e                	pop    r14
-  4277e2:	41 5f                	pop    r15
-  4277e4:	e9 d7 04 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 019: print #1, "title";
-  4277e9:	e8 72 e0 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 018: print #1, "timesten";
-  4277ee:	e8 6d e0 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 017: print #1, "timestamp";
-  4277f3:	be 09 00 00 00       	mov    esi,0x9
-  4277f8:	48 8d 3d d6 83 04 00 	lea    rdi,[rip+0x483d6]        # 46fbd5 <_IO_stdin_used+0xbd5>
-  4277ff:	e8 6c 2c 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427804:	48 89 c6             	mov    rsi,rax
-  427807:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42780e:	00 
-  42780f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427816:	00 00 
-  427818:	75 61                	jne    42787b <MEMORY_T::POKE64(double, double)+0x1e06b>
-  42781a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427821:	31 d2                	xor    edx,edx
-  427823:	bf 01 00 00 00       	mov    edi,0x1
-  427828:	5b                   	pop    rbx
-  427829:	5d                   	pop    rbp
-  42782a:	41 5c                	pop    r12
-  42782c:	41 5d                	pop    r13
-  42782e:	41 5e                	pop    r14
-  427830:	41 5f                	pop    r15
-  427832:	e9 89 04 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 016: print #1, "times";
-  427837:	be 05 00 00 00       	mov    esi,0x5
-  42783c:	48 8d 3d 33 a1 04 00 	lea    rdi,[rip+0x4a133]        # 471976 <_IO_stdin_used+0x2976>
-  427843:	e8 28 2c 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427848:	48 89 c6             	mov    rsi,rax
-  42784b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427852:	00 
-  427853:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42785a:	00 00 
-  42785c:	75 22                	jne    427880 <MEMORY_T::POKE64(double, double)+0x1e070>
-  42785e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427865:	31 d2                	xor    edx,edx
-  427867:	bf 01 00 00 00       	mov    edi,0x1
-  42786c:	5b                   	pop    rbx
-  42786d:	5d                   	pop    rbp
-  42786e:	41 5c                	pop    r12
-  427870:	41 5d                	pop    r13
-  427872:	41 5e                	pop    r14
-  427874:	41 5f                	pop    r15
-  427876:	e9 45 04 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 017: print #1, "timestamp";
-  42787b:	e8 e0 df fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 016: print #1, "times";
-  427880:	e8 db df fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 015: print #1, "timer";
-  427885:	be 05 00 00 00       	mov    esi,0x5
-  42788a:	48 8d 3d df a0 04 00 	lea    rdi,[rip+0x4a0df]        # 471970 <_IO_stdin_used+0x2970>
-  427891:	e8 da 2b 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427896:	48 89 c6             	mov    rsi,rax
-  427899:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4278a0:	00 
-  4278a1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4278a8:	00 00 
-  4278aa:	75 61                	jne    42790d <MEMORY_T::POKE64(double, double)+0x1e0fd>
-  4278ac:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4278b3:	31 d2                	xor    edx,edx
-  4278b5:	bf 01 00 00 00       	mov    edi,0x1
-  4278ba:	5b                   	pop    rbx
-  4278bb:	5d                   	pop    rbp
-  4278bc:	41 5c                	pop    r12
-  4278be:	41 5d                	pop    r13
-  4278c0:	41 5e                	pop    r14
-  4278c2:	41 5f                	pop    r15
-  4278c4:	e9 f7 03 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 013: print #1, "time";
-  4278c9:	be 04 00 00 00       	mov    esi,0x4
-  4278ce:	48 8d 3d 9c 90 04 00 	lea    rdi,[rip+0x4909c]        # 470971 <_IO_stdin_used+0x1971>
-  4278d5:	e8 96 2b 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4278da:	48 89 c6             	mov    rsi,rax
-  4278dd:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4278e4:	00 
-  4278e5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4278ec:	00 00 
-  4278ee:	75 22                	jne    427912 <MEMORY_T::POKE64(double, double)+0x1e102>
-  4278f0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4278f7:	31 d2                	xor    edx,edx
-  4278f9:	bf 01 00 00 00       	mov    edi,0x1
-  4278fe:	5b                   	pop    rbx
-  4278ff:	5d                   	pop    rbp
-  427900:	41 5c                	pop    r12
-  427902:	41 5d                	pop    r13
-  427904:	41 5e                	pop    r14
-  427906:	41 5f                	pop    r15
-  427908:	e9 b3 03 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 015: print #1, "timer";
-  42790d:	e8 4e df fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 013: print #1, "time";
-  427912:	e8 49 df fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 012: print #1, "tiles";
-  427917:	be 05 00 00 00       	mov    esi,0x5
-  42791c:	48 8d 3d 47 a0 04 00 	lea    rdi,[rip+0x4a047]        # 47196a <_IO_stdin_used+0x296a>
-  427923:	e8 48 2b 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427928:	48 89 c6             	mov    rsi,rax
-  42792b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427932:	00 
-  427933:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42793a:	00 00 
-  42793c:	75 61                	jne    42799f <MEMORY_T::POKE64(double, double)+0x1e18f>
-  42793e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427945:	31 d2                	xor    edx,edx
-  427947:	bf 01 00 00 00       	mov    edi,0x1
-  42794c:	5b                   	pop    rbx
-  42794d:	5d                   	pop    rbp
-  42794e:	41 5c                	pop    r12
-  427950:	41 5d                	pop    r13
-  427952:	41 5e                	pop    r14
-  427954:	41 5f                	pop    r15
-  427956:	e9 65 03 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 011: print #1, "tile2";
-  42795b:	be 05 00 00 00       	mov    esi,0x5
-  427960:	48 8d 3d fd 9f 04 00 	lea    rdi,[rip+0x49ffd]        # 471964 <_IO_stdin_used+0x2964>
-  427967:	e8 04 2b 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42796c:	48 89 c6             	mov    rsi,rax
-  42796f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427976:	00 
-  427977:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42797e:	00 00 
-  427980:	75 22                	jne    4279a4 <MEMORY_T::POKE64(double, double)+0x1e194>
-  427982:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427989:	31 d2                	xor    edx,edx
-  42798b:	bf 01 00 00 00       	mov    edi,0x1
-  427990:	5b                   	pop    rbx
-  427991:	5d                   	pop    rbp
-  427992:	41 5c                	pop    r12
-  427994:	41 5d                	pop    r13
-  427996:	41 5e                	pop    r14
-  427998:	41 5f                	pop    r15
-  42799a:	e9 21 03 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 012: print #1, "tiles";
-  42799f:	e8 bc de fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 011: print #1, "tile2";
-  4279a4:	e8 b7 de fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 010: print #1, "tightness";
-  4279a9:	be 09 00 00 00       	mov    esi,0x9
-  4279ae:	48 8d 3d a5 9f 04 00 	lea    rdi,[rip+0x49fa5]        # 47195a <_IO_stdin_used+0x295a>
-  4279b5:	e8 b6 2a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4279ba:	48 89 c6             	mov    rsi,rax
-  4279bd:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4279c4:	00 
-  4279c5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4279cc:	00 00 
-  4279ce:	75 61                	jne    427a31 <MEMORY_T::POKE64(double, double)+0x1e221>
-  4279d0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4279d7:	31 d2                	xor    edx,edx
-  4279d9:	bf 01 00 00 00       	mov    edi,0x1
-  4279de:	5b                   	pop    rbx
-  4279df:	5d                   	pop    rbp
-  4279e0:	41 5c                	pop    r12
-  4279e2:	41 5d                	pop    r13
-  4279e4:	41 5e                	pop    r14
-  4279e6:	41 5f                	pop    r15
-  4279e8:	e9 d3 02 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 009: print #1, "tiff";
-  4279ed:	be 04 00 00 00       	mov    esi,0x4
-  4279f2:	48 8d 3d 5c 9f 04 00 	lea    rdi,[rip+0x49f5c]        # 471955 <_IO_stdin_used+0x2955>
-  4279f9:	e8 72 2a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4279fe:	48 89 c6             	mov    rsi,rax
-  427a01:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427a08:	00 
-  427a09:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427a10:	00 00 
-  427a12:	75 22                	jne    427a36 <MEMORY_T::POKE64(double, double)+0x1e226>
-  427a14:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427a1b:	31 d2                	xor    edx,edx
-  427a1d:	bf 01 00 00 00       	mov    edi,0x1
-  427a22:	5b                   	pop    rbx
-  427a23:	5d                   	pop    rbp
-  427a24:	41 5c                	pop    r12
-  427a26:	41 5d                	pop    r13
-  427a28:	41 5e                	pop    r14
-  427a2a:	41 5f                	pop    r15
-  427a2c:	e9 8f 02 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 010: print #1, "tightness";
-  427a31:	e8 2a de fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 009: print #1, "tiff";
-  427a36:	e8 25 de fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 008: print #1, "thru";
-  427a3b:	be 04 00 00 00       	mov    esi,0x4
-  427a40:	48 8d 3d 09 9f 04 00 	lea    rdi,[rip+0x49f09]        # 471950 <_IO_stdin_used+0x2950>
-  427a47:	e8 24 2a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427a4c:	48 89 c6             	mov    rsi,rax
-  427a4f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427a56:	00 
-  427a57:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427a5e:	00 00 
-  427a60:	75 61                	jne    427ac3 <MEMORY_T::POKE64(double, double)+0x1e2b3>
-  427a62:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427a69:	31 d2                	xor    edx,edx
-  427a6b:	bf 01 00 00 00       	mov    edi,0x1
-  427a70:	5b                   	pop    rbx
-  427a71:	5d                   	pop    rbp
-  427a72:	41 5c                	pop    r12
-  427a74:	41 5d                	pop    r13
-  427a76:	41 5e                	pop    r14
-  427a78:	41 5f                	pop    r15
-  427a7a:	e9 41 02 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 007: print #1, "through";
-  427a7f:	be 07 00 00 00       	mov    esi,0x7
-  427a84:	48 8d 3d 0b 97 04 00 	lea    rdi,[rip+0x4970b]        # 471196 <_IO_stdin_used+0x2196>
-  427a8b:	e8 e0 29 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427a90:	48 89 c6             	mov    rsi,rax
-  427a93:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427a9a:	00 
-  427a9b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427aa2:	00 00 
-  427aa4:	75 22                	jne    427ac8 <MEMORY_T::POKE64(double, double)+0x1e2b8>
-  427aa6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427aad:	31 d2                	xor    edx,edx
-  427aaf:	bf 01 00 00 00       	mov    edi,0x1
-  427ab4:	5b                   	pop    rbx
-  427ab5:	5d                   	pop    rbp
-  427ab6:	41 5c                	pop    r12
-  427ab8:	41 5d                	pop    r13
-  427aba:	41 5e                	pop    r14
-  427abc:	41 5f                	pop    r15
-  427abe:	e9 fd 01 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 008: print #1, "thru";
-  427ac3:	e8 98 dd fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 007: print #1, "through";
-  427ac8:	e8 93 dd fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 006: print #1, "threshold";
-  427acd:	be 09 00 00 00       	mov    esi,0x9
-  427ad2:	48 8d 3d ea 79 04 00 	lea    rdi,[rip+0x479ea]        # 46f4c3 <_IO_stdin_used+0x4c3>
-  427ad9:	e8 92 29 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427ade:	48 89 c6             	mov    rsi,rax
-  427ae1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427ae8:	00 
-  427ae9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427af0:	00 00 
-  427af2:	75 61                	jne    427b55 <MEMORY_T::POKE64(double, double)+0x1e345>
-  427af4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427afb:	31 d2                	xor    edx,edx
-  427afd:	bf 01 00 00 00       	mov    edi,0x1
-  427b02:	5b                   	pop    rbx
-  427b03:	5d                   	pop    rbp
-  427b04:	41 5c                	pop    r12
-  427b06:	41 5d                	pop    r13
-  427b08:	41 5e                	pop    r14
-  427b0a:	41 5f                	pop    r15
-  427b0c:	e9 af 01 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 005: print #1, "threadvar";
-  427b11:	be 09 00 00 00       	mov    esi,0x9
-  427b16:	48 8d 3d 29 9e 04 00 	lea    rdi,[rip+0x49e29]        # 471946 <_IO_stdin_used+0x2946>
-  427b1d:	e8 4e 29 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427b22:	48 89 c6             	mov    rsi,rax
-  427b25:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427b2c:	00 
-  427b2d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427b34:	00 00 
-  427b36:	75 22                	jne    427b5a <MEMORY_T::POKE64(double, double)+0x1e34a>
-  427b38:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427b3f:	31 d2                	xor    edx,edx
-  427b41:	bf 01 00 00 00       	mov    edi,0x1
-  427b46:	5b                   	pop    rbx
-  427b47:	5d                   	pop    rbp
-  427b48:	41 5c                	pop    r12
-  427b4a:	41 5d                	pop    r13
-  427b4c:	41 5e                	pop    r14
-  427b4e:	41 5f                	pop    r15
-  427b50:	e9 6b 01 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 006: print #1, "threshold";
-  427b55:	e8 06 dd fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 005: print #1, "threadvar";
-  427b5a:	e8 01 dd fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 004: print #1, "this";
-  427b5f:	be 04 00 00 00       	mov    esi,0x4
-  427b64:	48 8d 3d d6 9d 04 00 	lea    rdi,[rip+0x49dd6]        # 471941 <_IO_stdin_used+0x2941>
-  427b6b:	e8 00 29 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427b70:	48 89 c6             	mov    rsi,rax
-  427b73:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427b7a:	00 
-  427b7b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427b82:	00 00 
-  427b84:	75 61                	jne    427be7 <MEMORY_T::POKE64(double, double)+0x1e3d7>
-  427b86:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427b8d:	31 d2                	xor    edx,edx
-  427b8f:	bf 01 00 00 00       	mov    edi,0x1
-  427b94:	5b                   	pop    rbx
-  427b95:	5d                   	pop    rbp
-  427b96:	41 5c                	pop    r12
-  427b98:	41 5d                	pop    r13
-  427b9a:	41 5e                	pop    r14
-  427b9c:	41 5f                	pop    r15
-  427b9e:	e9 1d 01 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 003: print #1, "thickness";
-  427ba3:	be 09 00 00 00       	mov    esi,0x9
-  427ba8:	48 8d 3d 88 9d 04 00 	lea    rdi,[rip+0x49d88]        # 471937 <_IO_stdin_used+0x2937>
-  427baf:	e8 bc 28 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427bb4:	48 89 c6             	mov    rsi,rax
-  427bb7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427bbe:	00 
-  427bbf:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427bc6:	00 00 
-  427bc8:	75 22                	jne    427bec <MEMORY_T::POKE64(double, double)+0x1e3dc>
-  427bca:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427bd1:	31 d2                	xor    edx,edx
-  427bd3:	bf 01 00 00 00       	mov    edi,0x1
-  427bd8:	5b                   	pop    rbx
-  427bd9:	5d                   	pop    rbp
-  427bda:	41 5c                	pop    r12
-  427bdc:	41 5d                	pop    r13
-  427bde:	41 5e                	pop    r14
-  427be0:	41 5f                	pop    r15
-  427be2:	e9 d9 00 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 004: print #1, "this";
-  427be7:	e8 74 dc fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 003: print #1, "thickness";
-  427bec:	e8 6f dc fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 002: print #1, "then";
-  427bf1:	be 04 00 00 00       	mov    esi,0x4
-  427bf6:	48 8d 3d 35 9d 04 00 	lea    rdi,[rip+0x49d35]        # 471932 <_IO_stdin_used+0x2932>
-  427bfd:	e8 6e 28 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427c02:	48 89 c6             	mov    rsi,rax
-  427c05:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427c0c:	00 
-  427c0d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427c14:	00 00 
-  427c16:	75 61                	jne    427c79 <MEMORY_T::POKE64(double, double)+0x1e469>
-  427c18:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427c1f:	31 d2                	xor    edx,edx
-  427c21:	bf 01 00 00 00       	mov    edi,0x1
-  427c26:	5b                   	pop    rbx
-  427c27:	5d                   	pop    rbp
-  427c28:	41 5c                	pop    r12
-  427c2a:	41 5d                	pop    r13
-  427c2c:	41 5e                	pop    r14
-  427c2e:	41 5f                	pop    r15
-  427c30:	e9 8b 00 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 001: print #1, "than";
-  427c35:	be 04 00 00 00       	mov    esi,0x4
-  427c3a:	48 8d 3d 4e 82 04 00 	lea    rdi,[rip+0x4824e]        # 46fe8f <_IO_stdin_used+0xe8f>
-  427c41:	e8 2a 28 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427c46:	48 89 c6             	mov    rsi,rax
-  427c49:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427c50:	00 
-  427c51:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427c58:	00 00 
-  427c5a:	75 22                	jne    427c7e <MEMORY_T::POKE64(double, double)+0x1e46e>
-  427c5c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427c63:	31 d2                	xor    edx,edx
-  427c65:	bf 01 00 00 00       	mov    edi,0x1
-  427c6a:	5b                   	pop    rbx
-  427c6b:	5d                   	pop    rbp
-  427c6c:	41 5c                	pop    r12
-  427c6e:	41 5d                	pop    r13
-  427c70:	41 5e                	pop    r14
-  427c72:	41 5f                	pop    r15
-  427c74:	e9 47 00 04 00       	jmp    467cc0 <fb_PrintString>
-;						case 002: print #1, "then";
-  427c79:	e8 e2 db fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 001: print #1, "than";
-  427c7e:	e8 dd db fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 000: print #1, "tga";
-  427c83:	be 03 00 00 00       	mov    esi,0x3
-  427c88:	48 8d 3d 9f 9c 04 00 	lea    rdi,[rip+0x49c9f]        # 47192e <_IO_stdin_used+0x292e>
-  427c8f:	e8 dc 27 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  427c94:	48 89 c6             	mov    rsi,rax
-  427c97:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  427c9e:	00 
-  427c9f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  427ca6:	00 00 
-  427ca8:	75 51                	jne    427cfb <MEMORY_T::POKE64(double, double)+0x1e4eb>
-  427caa:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  427cb1:	31 d2                	xor    edx,edx
-  427cb3:	bf 01 00 00 00       	mov    edi,0x1
-  427cb8:	5b                   	pop    rbx
-  427cb9:	5d                   	pop    rbp
-  427cba:	41 5c                	pop    r12
-  427cbc:	41 5d                	pop    r13
-  427cbe:	41 5e                	pop    r14
-  427cc0:	41 5f                	pop    r15
-  427cc2:	e9 f9 ff 03 00       	jmp    467cc0 <fb_PrintString>
-;				     select case as const cast(ulongint, mem64(49361))                       
-  427cc7:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
-  427ccc:	f2 0f 10 80 88 06 06 	movsd  xmm0,QWORD PTR [rax+0x60688]
-  427cd3:	00 
-  427cd4:	e8 77 d6 fd ff       	call   405350 <nearbyint@plt>
-  427cd9:	66 0f 2f 04 24       	comisd xmm0,QWORD PTR [rsp]
-  427cde:	73 20                	jae    427d00 <MEMORY_T::POKE64(double, double)+0x1e4f0>
-  427ce0:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-;                       case 086: print #1, "sbyte";
-  427ce5:	48 3d a1 00 00 00    	cmp    rax,0xa1
-  427ceb:	0f 87 4f 46 fe ff    	ja     40c340 <MEMORY_T::POKE64(double, double)+0x2b30>
-;'Microsoft BASIC USHORT is a standard DATA TYPE: 16-bit UNSIGNED.
-  427cf1:	48 8d 3d a8 16 05 00 	lea    rdi,[rip+0x516a8]        # 4793a0 <tmp$2885.7>
-  427cf8:	ff 24 c7             	jmp    QWORD PTR [rdi+rax*8]
-;						case 000: print #1, "tga";
-  427cfb:	e8 60 db fd ff       	call   405860 <__stack_chk_fail@plt>
-;				     select case as const cast(ulongint, mem64(49361))                       
-  427d00:	f2 0f 5c 04 24       	subsd  xmm0,QWORD PTR [rsp]
-  427d05:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-  427d0a:	48 31 d8             	xor    rax,rbx
-  427d0d:	eb d6                	jmp    427ce5 <MEMORY_T::POKE64(double, double)+0x1e4d5>
-;				     select case cast(ulongint, mem64(49361))
-  427d0f:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
-  427d14:	f2 0f 10 80 88 06 06 	movsd  xmm0,QWORD PTR [rax+0x60688]
-  427d1b:	00 
-  427d1c:	e8 2f d6 fd ff       	call   405350 <nearbyint@plt>
-  427d21:	66 0f 2f 04 24       	comisd xmm0,QWORD PTR [rsp]
-  427d26:	0f 83 b3 52 00 00    	jae    42cfdf <MEMORY_T::POKE64(double, double)+0x237cf>
-  427d2c:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
-;						case 000: print #1, "random";
-  427d31:	48 85 c0             	test   rax,rax
-  427d34:	0f 84 61 52 00 00    	je     42cf9b <MEMORY_T::POKE64(double, double)+0x2378b>
-;						case 001: print #1, "randomize";
-  427d3a:	48 83 f8 01          	cmp    rax,0x1
-  427d3e:	0f 84 09 52 00 00    	je     42cf4d <MEMORY_T::POKE64(double, double)+0x2373d>
-;						case 002: print #1, "range";
-  427d44:	48 83 f8 02          	cmp    rax,0x2
-  427d48:	0f 84 bb 51 00 00    	je     42cf09 <MEMORY_T::POKE64(double, double)+0x236f9>
-;						case 003: print #1, "ratio";
-  427d4e:	48 83 f8 03          	cmp    rax,0x3
-  427d52:	0f 84 63 51 00 00    	je     42cebb <MEMORY_T::POKE64(double, double)+0x236ab>
-;						case 004: print #1, "raytype";
-  427d58:	48 83 f8 04          	cmp    rax,0x4
-  427d5c:	0f 84 15 51 00 00    	je     42ce77 <MEMORY_T::POKE64(double, double)+0x23667>
-;						case 005: print #1, "rd";
-  427d62:	48 83 f8 05          	cmp    rax,0x5
-  427d66:	0f 84 bd 50 00 00    	je     42ce29 <MEMORY_T::POKE64(double, double)+0x23619>
-;						case 006: print #1, "read";
-  427d6c:	48 83 f8 06          	cmp    rax,0x6
-  427d70:	0f 84 6f 50 00 00    	je     42cde5 <MEMORY_T::POKE64(double, double)+0x235d5>
-;						case 007: print #1, "ready";
-  427d76:	48 83 f8 07          	cmp    rax,0x7
-  427d7a:	0f 84 17 50 00 00    	je     42cd97 <MEMORY_T::POKE64(double, double)+0x23587>
-;						case 008: print #1, "real";
-  427d80:	48 83 f8 08          	cmp    rax,0x8
-  427d84:	0f 84 c9 4f 00 00    	je     42cd53 <MEMORY_T::POKE64(double, double)+0x23543>
-;						case 009: print #1, "receive";
-  427d8a:	48 83 f8 09          	cmp    rax,0x9
-  427d8e:	0f 84 71 4f 00 00    	je     42cd05 <MEMORY_T::POKE64(double, double)+0x234f5>
-;						case 010: print #1, "reciprocal";
-  427d94:	48 83 f8 0a          	cmp    rax,0xa
-  427d98:	0f 84 23 4f 00 00    	je     42ccc1 <MEMORY_T::POKE64(double, double)+0x234b1>
-;						case 011: print #1, "record";
-  427d9e:	48 83 f8 0b          	cmp    rax,0xb
-  427da2:	0f 84 cb 4e 00 00    	je     42cc73 <MEMORY_T::POKE64(double, double)+0x23463>
-;						case 012: print #1, "recording";
-  427da8:	48 83 f8 0c          	cmp    rax,0xc
-  427dac:	0f 84 7d 4e 00 00    	je     42cc2f <MEMORY_T::POKE64(double, double)+0x2341f>
-;						case 013: print #1, "records";
-  427db2:	48 83 f8 0d          	cmp    rax,0xd
-  427db6:	0f 84 25 4e 00 00    	je     42cbe1 <MEMORY_T::POKE64(double, double)+0x233d1>
-;						case 014: print #1, "recursion_limit";
-  427dbc:	48 83 f8 0e          	cmp    rax,0xe
-  427dc0:	0f 84 d7 4d 00 00    	je     42cb9d <MEMORY_T::POKE64(double, double)+0x2338d>
-;						case 015: print #1, "recursive";
-  427dc6:	48 83 f8 0f          	cmp    rax,0xf
-  427dca:	0f 84 7f 4d 00 00    	je     42cb4f <MEMORY_T::POKE64(double, double)+0x2333f>
-;						case 016: print #1, "red";
-  427dd0:	48 83 f8 10          	cmp    rax,0x10
-  427dd4:	0f 84 31 4d 00 00    	je     42cb0b <MEMORY_T::POKE64(double, double)+0x232fb>
-;						case 017: print #1, "redefines";
-  427dda:	48 83 f8 11          	cmp    rax,0x11
-  427dde:	0f 84 d9 4c 00 00    	je     42cabd <MEMORY_T::POKE64(double, double)+0x232ad>
-;						case 018: print #1, "reel";
-  427de4:	48 83 f8 12          	cmp    rax,0x12
-  427de8:	0f 84 8b 4c 00 00    	je     42ca79 <MEMORY_T::POKE64(double, double)+0x23269>
-;						case 019: print #1, "reference";
-  427dee:	48 83 f8 13          	cmp    rax,0x13
-  427df2:	0f 84 33 4c 00 00    	je     42ca2b <MEMORY_T::POKE64(double, double)+0x2321b>
-;						case 020: print #1, "references";
-  427df8:	48 83 f8 14          	cmp    rax,0x14
-  427dfc:	0f 84 e5 4b 00 00    	je     42c9e7 <MEMORY_T::POKE64(double, double)+0x231d7>
-;						case 021: print #1, "reflect";
-  427e02:	48 83 f8 15          	cmp    rax,0x15
-  427e06:	0f 84 8d 4b 00 00    	je     42c999 <MEMORY_T::POKE64(double, double)+0x23189>
-;						case 022: print #1, "reflection";
-  427e0c:	48 83 f8 16          	cmp    rax,0x16
-  427e10:	0f 84 3f 4b 00 00    	je     42c955 <MEMORY_T::POKE64(double, double)+0x23145>
-;						case 023: print #1, "reflection_exponent";
-  427e16:	48 83 f8 17          	cmp    rax,0x17
-  427e1a:	0f 84 e7 4a 00 00    	je     42c907 <MEMORY_T::POKE64(double, double)+0x230f7>
-;						case 024: print #1, "refract";
-  427e20:	48 83 f8 18          	cmp    rax,0x18
-  427e24:	0f 84 99 4a 00 00    	je     42c8c3 <MEMORY_T::POKE64(double, double)+0x230b3>
-;						case 025: print #1, "refraction";
-  427e2a:	48 83 f8 19          	cmp    rax,0x19
-  427e2e:	0f 84 41 4a 00 00    	je     42c875 <MEMORY_T::POKE64(double, double)+0x23065>
-;						case 026: print #1, "regex_match";
-  427e34:	48 83 f8 1a          	cmp    rax,0x1a
-  427e38:	0f 84 f3 49 00 00    	je     42c831 <MEMORY_T::POKE64(double, double)+0x23021>
-;						case 027: print #1, "regex_search";
-  427e3e:	48 83 f8 1b          	cmp    rax,0x1b
-  427e42:	0f 84 9b 49 00 00    	je     42c7e3 <MEMORY_T::POKE64(double, double)+0x22fd3>
-;						case 028: print #1, "register";
-  427e48:	48 83 f8 1c          	cmp    rax,0x1c
-  427e4c:	0f 84 4d 49 00 00    	je     42c79f <MEMORY_T::POKE64(double, double)+0x22f8f>
-;						case 029: print #1, "reintroduce";
-  427e52:	48 83 f8 1d          	cmp    rax,0x1d
-  427e56:	0f 84 f5 48 00 00    	je     42c751 <MEMORY_T::POKE64(double, double)+0x22f41>
-;						case 030: print #1, "relative";
-  427e5c:	48 83 f8 1e          	cmp    rax,0x1e
-  427e60:	0f 84 a7 48 00 00    	je     42c70d <MEMORY_T::POKE64(double, double)+0x22efd>
-;						case 031: print #1, "release";
-  427e66:	48 83 f8 1f          	cmp    rax,0x1f
-  427e6a:	0f 84 4f 48 00 00    	je     42c6bf <MEMORY_T::POKE64(double, double)+0x22eaf>
-;						case 032: print #1, "reload";
-  427e70:	48 83 f8 20          	cmp    rax,0x20
-  427e74:	0f 84 01 48 00 00    	je     42c67b <MEMORY_T::POKE64(double, double)+0x22e6b>
-;						case 033: print #1, "rem";
-  427e7a:	48 83 f8 21          	cmp    rax,0x21
-  427e7e:	0f 84 a9 47 00 00    	je     42c62d <MEMORY_T::POKE64(double, double)+0x22e1d>
-;						case 034: print #1, "remainder";
-  427e84:	48 83 f8 22          	cmp    rax,0x22
-  427e88:	0f 84 5b 47 00 00    	je     42c5e9 <MEMORY_T::POKE64(double, double)+0x22dd9>
-;						case 035: print #1, "removal";
-  427e8e:	48 83 f8 23          	cmp    rax,0x23
-  427e92:	0f 84 03 47 00 00    	je     42c59b <MEMORY_T::POKE64(double, double)+0x22d8b>
-;						case 036: print #1, "renames";
-  427e98:	48 83 f8 24          	cmp    rax,0x24
-  427e9c:	0f 84 b5 46 00 00    	je     42c557 <MEMORY_T::POKE64(double, double)+0x22d47>
-;						case 037: print #1, "render";
-  427ea2:	48 83 f8 25          	cmp    rax,0x25
-  427ea6:	0f 84 5d 46 00 00    	je     42c509 <MEMORY_T::POKE64(double, double)+0x22cf9>
-;						case 038: print #1, "renum";
-  427eac:	48 83 f8 26          	cmp    rax,0x26
-  427eb0:	0f 84 0f 46 00 00    	je     42c4c5 <MEMORY_T::POKE64(double, double)+0x22cb5>
-;						case 039: print #1, "repeat";
-  427eb6:	48 83 f8 27          	cmp    rax,0x27
-  427eba:	0f 84 b7 45 00 00    	je     42c477 <MEMORY_T::POKE64(double, double)+0x22c67>
-;						case 040: print #1, "replace";
-  427ec0:	48 83 f8 28          	cmp    rax,0x28
-  427ec4:	0f 84 69 45 00 00    	je     42c433 <MEMORY_T::POKE64(double, double)+0x22c23>
-;						case 041: print #1, "replacing";
-  427eca:	48 83 f8 29          	cmp    rax,0x29
-  427ece:	0f 84 11 45 00 00    	je     42c3e5 <MEMORY_T::POKE64(double, double)+0x22bd5>
-;						case 042: print #1, "report";
-  427ed4:	48 83 f8 2a          	cmp    rax,0x2a
-  427ed8:	0f 84 c3 44 00 00    	je     42c3a1 <MEMORY_T::POKE64(double, double)+0x22b91>
-;						case 043: print #1, "reporting";
-  427ede:	48 83 f8 2b          	cmp    rax,0x2b
-  427ee2:	0f 84 6b 44 00 00    	je     42c353 <MEMORY_T::POKE64(double, double)+0x22b43>
-;						case 044: print #1, "reports";
-  427ee8:	48 83 f8 2c          	cmp    rax,0x2c
-  427eec:	0f 84 1d 44 00 00    	je     42c30f <MEMORY_T::POKE64(double, double)+0x22aff>
-;						case 045: print #1, "repository";
-  427ef2:	48 83 f8 2d          	cmp    rax,0x2d
-  427ef6:	0f 84 c5 43 00 00    	je     42c2c1 <MEMORY_T::POKE64(double, double)+0x22ab1>
-;						case 046: print #1, "rerun";
-  427efc:	48 83 f8 2e          	cmp    rax,0x2e
-  427f00:	0f 84 77 43 00 00    	je     42c27d <MEMORY_T::POKE64(double, double)+0x22a6d>
-;						case 047: print #1, "reserve";
-  427f06:	48 83 f8 2f          	cmp    rax,0x2f
-  427f0a:	0f 84 1f 43 00 00    	je     42c22f <MEMORY_T::POKE64(double, double)+0x22a1f>
-;						case 048: print #1, "reset";
-  427f10:	48 83 f8 30          	cmp    rax,0x30
-  427f14:	0f 84 d1 42 00 00    	je     42c1eb <MEMORY_T::POKE64(double, double)+0x229db>
-;						case 049: print #1, "restore";
-  427f1a:	48 83 f8 31          	cmp    rax,0x31
-  427f1e:	0f 84 79 42 00 00    	je     42c19d <MEMORY_T::POKE64(double, double)+0x2298d>
-;						case 050: print #1, "resume";
-  427f24:	48 83 f8 32          	cmp    rax,0x32
-  427f28:	0f 84 2b 42 00 00    	je     42c159 <MEMORY_T::POKE64(double, double)+0x22949>
-;						case 051: print #1, "return";
-  427f2e:	48 83 f8 33          	cmp    rax,0x33
-  427f32:	0f 84 d3 41 00 00    	je     42c10b <MEMORY_T::POKE64(double, double)+0x228fb>
-;						case 052: print #1, "return-code";
-  427f38:	48 83 f8 34          	cmp    rax,0x34
-  427f3c:	0f 84 85 41 00 00    	je     42c0c7 <MEMORY_T::POKE64(double, double)+0x228b7>
-;						case 053: print #1, "returning";
-  427f42:	48 83 f8 35          	cmp    rax,0x35
-  427f46:	0f 84 2d 41 00 00    	je     42c079 <MEMORY_T::POKE64(double, double)+0x22869>
-;						case 054: print #1, "reversed";
-  427f4c:	48 83 f8 36          	cmp    rax,0x36
-  427f50:	0f 84 df 40 00 00    	je     42c035 <MEMORY_T::POKE64(double, double)+0x22825>
-;						case 055: print #1, "rewind";
-  427f56:	48 83 f8 37          	cmp    rax,0x37
-  427f5a:	0f 84 87 40 00 00    	je     42bfe7 <MEMORY_T::POKE64(double, double)+0x227d7>
-;						case 056: print #1, "rewrite";
-  427f60:	48 83 f8 38          	cmp    rax,0x38
-  427f64:	0f 84 39 40 00 00    	je     42bfa3 <MEMORY_T::POKE64(double, double)+0x22793>
-;						case 057: print #1, "rf";
-  427f6a:	48 83 f8 39          	cmp    rax,0x39
-  427f6e:	0f 84 e1 3f 00 00    	je     42bf55 <MEMORY_T::POKE64(double, double)+0x22745>
-;						case 058: print #1, "rgb";
-  427f74:	48 83 f8 3a          	cmp    rax,0x3a
-  427f78:	0f 84 93 3f 00 00    	je     42bf11 <MEMORY_T::POKE64(double, double)+0x22701>
-;						case 059: print #1, "rgbf";
-  427f7e:	48 83 f8 3b          	cmp    rax,0x3b
-  427f82:	0f 84 3b 3f 00 00    	je     42bec3 <MEMORY_T::POKE64(double, double)+0x226b3>
-;						case 060: print #1, "rgbft";
-  427f88:	48 83 f8 3c          	cmp    rax,0x3c
-  427f8c:	0f 84 ed 3e 00 00    	je     42be7f <MEMORY_T::POKE64(double, double)+0x2266f>
-;						case 061: print #1, "rgbt";
-  427f92:	48 83 f8 3d          	cmp    rax,0x3d
-  427f96:	0f 84 95 3e 00 00    	je     42be31 <MEMORY_T::POKE64(double, double)+0x22621>
-;						case 062: print #1, "rh";
-  427f9c:	48 83 f8 3e          	cmp    rax,0x3e
-  427fa0:	0f 84 47 3e 00 00    	je     42bded <MEMORY_T::POKE64(double, double)+0x225dd>
-;						case 063: print #1, "right";
-  427fa6:	48 83 f8 3f          	cmp    rax,0x3f
-  427faa:	0f 84 ef 3d 00 00    	je     42bd9f <MEMORY_T::POKE64(double, double)+0x2258f>
-;						case 065: print #1, "ripples";
-  427fb0:	48 83 f8 41          	cmp    rax,0x41
-  427fb4:	0f 84 a1 3d 00 00    	je     42bd5b <MEMORY_T::POKE64(double, double)+0x2254b>
-;						case 066: print #1, "rmdir";
-  427fba:	48 83 f8 42          	cmp    rax,0x42
-  427fbe:	0f 84 49 3d 00 00    	je     42bd0d <MEMORY_T::POKE64(double, double)+0x224fd>
-;						case 067: print #1, "rnd";
-  427fc4:	48 83 f8 43          	cmp    rax,0x43
-  427fc8:	0f 84 fb 3c 00 00    	je     42bcc9 <MEMORY_T::POKE64(double, double)+0x224b9>
-;						case 068: print #1, "rotate";
-  427fce:	48 83 f8 44          	cmp    rax,0x44
-  427fd2:	0f 84 a3 3c 00 00    	je     42bc7b <MEMORY_T::POKE64(double, double)+0x2246b>
-;						case 069: print #1, "roughness";
-  427fd8:	48 83 f8 45          	cmp    rax,0x45
-  427fdc:	0f 84 55 3c 00 00    	je     42bc37 <MEMORY_T::POKE64(double, double)+0x22427>
-;						case 070: print #1, "round";
-  427fe2:	48 83 f8 46          	cmp    rax,0x46
-  427fe6:	0f 84 fd 3b 00 00    	je     42bbe9 <MEMORY_T::POKE64(double, double)+0x223d9>
-;						case 071: print #1, "rounded";
-  427fec:	48 83 f8 47          	cmp    rax,0x47
-  427ff0:	0f 84 af 3b 00 00    	je     42bba5 <MEMORY_T::POKE64(double, double)+0x22395>
-;						case 072: print #1, "row";
-  427ff6:	48 83 f8 48          	cmp    rax,0x48
-  427ffa:	0f 84 57 3b 00 00    	je     42bb57 <MEMORY_T::POKE64(double, double)+0x22347>
-;						case 073: print #1, "row_major";
-  428000:	48 83 f8 49          	cmp    rax,0x49
-  428004:	0f 84 09 3b 00 00    	je     42bb13 <MEMORY_T::POKE64(double, double)+0x22303>
-;						case 074: print #1, "rpad";
-  42800a:	48 83 f8 4a          	cmp    rax,0x4a
-  42800e:	0f 84 b1 3a 00 00    	je     42bac5 <MEMORY_T::POKE64(double, double)+0x222b5>
-;						case 075: print #1, "rset";
-  428014:	48 83 f8 4b          	cmp    rax,0x4b
-  428018:	0f 84 63 3a 00 00    	je     42ba81 <MEMORY_T::POKE64(double, double)+0x22271>
-;						case 076: print #1, "run";
-  42801e:	48 83 f8 4c          	cmp    rax,0x4c
-  428022:	0f 84 0b 3a 00 00    	je     42ba33 <MEMORY_T::POKE64(double, double)+0x22223>
-;						case 077: print #1, "s";
-  428028:	48 83 f8 4d          	cmp    rax,0x4d
-  42802c:	0f 84 bd 39 00 00    	je     42b9ef <MEMORY_T::POKE64(double, double)+0x221df>
-;						case 078: print #1, "safecall";
-  428032:	48 83 f8 4e          	cmp    rax,0x4e
-  428036:	0f 84 65 39 00 00    	je     42b9a1 <MEMORY_T::POKE64(double, double)+0x22191>
-;						case 079: print #1, "same";
-  42803c:	48 83 f8 4f          	cmp    rax,0x4f
-  428040:	0f 84 17 39 00 00    	je     42b95d <MEMORY_T::POKE64(double, double)+0x2214d>
-;						case 080: print #1, "same_source";
-  428046:	48 83 f8 50          	cmp    rax,0x50
-  42804a:	0f 84 bf 38 00 00    	je     42b90f <MEMORY_T::POKE64(double, double)+0x220ff>
-;						case 081: print #1, "sampler1D";
-  428050:	48 83 f8 51          	cmp    rax,0x51
-  428054:	0f 84 71 38 00 00    	je     42b8cb <MEMORY_T::POKE64(double, double)+0x220bb>
-;						case 082: print #1, "sampler1DArray";
-  42805a:	48 83 f8 52          	cmp    rax,0x52
-  42805e:	0f 84 19 38 00 00    	je     42b87d <MEMORY_T::POKE64(double, double)+0x2206d>
-;						case 083: print #1, "sampler1DArrayShadow";
-  428064:	48 83 f8 53          	cmp    rax,0x53
-  428068:	0f 84 cb 37 00 00    	je     42b839 <MEMORY_T::POKE64(double, double)+0x22029>
-;						case 084: print #1, "sampler1DShadow";
-  42806e:	48 83 f8 54          	cmp    rax,0x54
-  428072:	0f 84 73 37 00 00    	je     42b7eb <MEMORY_T::POKE64(double, double)+0x21fdb>
-;						case 095: print #1, "sampler2D";
-  428078:	48 83 f8 5f          	cmp    rax,0x5f
-  42807c:	0f 84 25 37 00 00    	je     42b7a7 <MEMORY_T::POKE64(double, double)+0x21f97>
-;						case 086: print #1, "sampler2DArray";
-  428082:	48 83 f8 56          	cmp    rax,0x56
-  428086:	0f 84 cd 36 00 00    	je     42b759 <MEMORY_T::POKE64(double, double)+0x21f49>
-;						case 087: print #1, "sampler2DArrayShadow";
-  42808c:	48 83 f8 57          	cmp    rax,0x57
-  428090:	0f 84 7f 36 00 00    	je     42b715 <MEMORY_T::POKE64(double, double)+0x21f05>
-;						case 088: print #1, "sampler2DRect";
-  428096:	48 83 f8 58          	cmp    rax,0x58
-  42809a:	0f 84 27 36 00 00    	je     42b6c7 <MEMORY_T::POKE64(double, double)+0x21eb7>
-;						case 089: print #1, "sampler2DRectShadow";
-  4280a0:	48 83 f8 59          	cmp    rax,0x59
-  4280a4:	0f 84 d9 35 00 00    	je     42b683 <MEMORY_T::POKE64(double, double)+0x21e73>
-;						case 090: print #1, "sampler2DShadow";
-  4280aa:	48 83 f8 5a          	cmp    rax,0x5a
-  4280ae:	0f 84 81 35 00 00    	je     42b635 <MEMORY_T::POKE64(double, double)+0x21e25>
-;						case 091: print #1, "sampler3D";					
-  4280b4:	48 83 f8 5b          	cmp    rax,0x5b
-  4280b8:	0f 84 33 35 00 00    	je     42b5f1 <MEMORY_T::POKE64(double, double)+0x21de1>
-;						case 092: print #1, "sampler3DRect";
-  4280be:	48 83 f8 5c          	cmp    rax,0x5c
-  4280c2:	0f 84 db 34 00 00    	je     42b5a3 <MEMORY_T::POKE64(double, double)+0x21d93>
-;						case 093: print #1, "samplerBuffer";
-  4280c8:	48 83 f8 5d          	cmp    rax,0x5d
-  4280cc:	0f 84 8d 34 00 00    	je     42b55f <MEMORY_T::POKE64(double, double)+0x21d4f>
-;						case 094: print #1, "samplerCube";
-  4280d2:	48 83 f8 5e          	cmp    rax,0x5e
-  4280d6:	0f 84 35 34 00 00    	je     42b511 <MEMORY_T::POKE64(double, double)+0x21d01>
-;						case 096: print #1, "samples";
-  4280dc:	48 83 f8 60          	cmp    rax,0x60
-  4280e0:	0f 84 e7 33 00 00    	je     42b4cd <MEMORY_T::POKE64(double, double)+0x21cbd>
-;						case 097: print #1, "save";
-  4280e6:	48 83 f8 61          	cmp    rax,0x61
-  4280ea:	0f 84 8f 33 00 00    	je     42b47f <MEMORY_T::POKE64(double, double)+0x21c6f>
-;						case 098: print #1, "save_file";
-  4280f0:	48 83 f8 62          	cmp    rax,0x62
-  4280f4:	0f 84 41 33 00 00    	je     42b43b <MEMORY_T::POKE64(double, double)+0x21c2b>
-;						case 099: print #1, "scale";
-  4280fa:	48 83 f8 63          	cmp    rax,0x63
-  4280fe:	0f 84 e9 32 00 00    	je     42b3ed <MEMORY_T::POKE64(double, double)+0x21bdd>
-;						case 100: print #1, "scallop_wave";
-  428104:	48 83 f8 64          	cmp    rax,0x64
-  428108:	0f 84 9b 32 00 00    	je     42b3a9 <MEMORY_T::POKE64(double, double)+0x21b99>
-;						case 101: print #1, "scattering";
-  42810e:	48 83 f8 65          	cmp    rax,0x65
-  428112:	0f 84 43 32 00 00    	je     42b35b <MEMORY_T::POKE64(double, double)+0x21b4b>
-;						case 102: print #1, "screen";
-  428118:	48 83 f8 66          	cmp    rax,0x66
-  42811c:	0f 84 f5 31 00 00    	je     42b317 <MEMORY_T::POKE64(double, double)+0x21b07>
-;						case 103: print #1, "sd";
-  428122:	48 83 f8 67          	cmp    rax,0x67
-  428126:	0f 84 9d 31 00 00    	je     42b2c9 <MEMORY_T::POKE64(double, double)+0x21ab9>
-;						case 104: print #1, "search";
-  42812c:	48 83 f8 68          	cmp    rax,0x68
-  428130:	0f 84 4f 31 00 00    	je     42b285 <MEMORY_T::POKE64(double, double)+0x21a75>
-;						case 105: print #1, "second";
-  428136:	48 83 f8 69          	cmp    rax,0x69
-  42813a:	0f 84 f7 30 00 00    	je     42b237 <MEMORY_T::POKE64(double, double)+0x21a27>
-;						case 106: print #1, "section";
-  428140:	48 83 f8 6a          	cmp    rax,0x6a
-  428144:	0f 84 a9 30 00 00    	je     42b1f3 <MEMORY_T::POKE64(double, double)+0x219e3>
-;						case 107: print #1, "security";
-  42814a:	48 83 f8 6b          	cmp    rax,0x6b
-  42814e:	0f 84 51 30 00 00    	je     42b1a5 <MEMORY_T::POKE64(double, double)+0x21995>
-;						case 108: print #1, "seed";
-  428154:	48 83 f8 6c          	cmp    rax,0x6c
-  428158:	0f 84 03 30 00 00    	je     42b161 <MEMORY_T::POKE64(double, double)+0x21951>
-;						case 109: print #1, "segment";
-  42815e:	48 83 f8 6d          	cmp    rax,0x6d
-  428162:	0f 84 ab 2f 00 00    	je     42b113 <MEMORY_T::POKE64(double, double)+0x21903>
-;						case 110: print #1, "segment-limit";
-  428168:	48 83 f8 6e          	cmp    rax,0x6e
-  42816c:	0f 84 5d 2f 00 00    	je     42b0cf <MEMORY_T::POKE64(double, double)+0x218bf>
-;                        case 111: print #1, "section";
-  428172:	48 83 f8 6f          	cmp    rax,0x6f
-  428176:	0f 84 77 30 00 00    	je     42b1f3 <MEMORY_T::POKE64(double, double)+0x219e3>
-;						case 112: print #1, "select";
-  42817c:	48 83 f8 70          	cmp    rax,0x70
-  428180:	0f 84 fb 2e 00 00    	je     42b081 <MEMORY_T::POKE64(double, double)+0x21871>
-;						case 113: print #1, "selector";
-  428186:	48 83 f8 71          	cmp    rax,0x71
-  42818a:	0f 84 ad 2e 00 00    	je     42b03d <MEMORY_T::POKE64(double, double)+0x2182d>
-;                        case 114: print #1, "selection";
-  428190:	48 83 f8 72          	cmp    rax,0x72
-  428194:	0f 84 55 2e 00 00    	je     42afef <MEMORY_T::POKE64(double, double)+0x217df>
-;						case 115: print #1, "self";
-  42819a:	48 83 f8 73          	cmp    rax,0x73
-  42819e:	0f 84 07 2e 00 00    	je     42afab <MEMORY_T::POKE64(double, double)+0x2179b>
-;						case 116: print #1, "send";
-  4281a4:	48 83 f8 74          	cmp    rax,0x74
-  4281a8:	0f 84 af 2d 00 00    	je     42af5d <MEMORY_T::POKE64(double, double)+0x2174d>
-;						case 117: print #1, "sentence";
-  4281ae:	48 83 f8 75          	cmp    rax,0x75
-  4281b2:	0f 84 61 2d 00 00    	je     42af19 <MEMORY_T::POKE64(double, double)+0x21709>
-;						case 118: print #1, "separate";
-  4281b8:	48 83 f8 76          	cmp    rax,0x76
-  4281bc:	0f 84 09 2d 00 00    	je     42aecb <MEMORY_T::POKE64(double, double)+0x216bb>
-;						case 119: print #1, "sequence";
-  4281c2:	48 83 f8 77          	cmp    rax,0x77
-  4281c6:	0f 84 bb 2c 00 00    	je     42ae87 <MEMORY_T::POKE64(double, double)+0x21677>
-;						case 120: print #1, "sequential";
-  4281cc:	48 83 f8 78          	cmp    rax,0x78
-  4281d0:	0f 84 63 2c 00 00    	je     42ae39 <MEMORY_T::POKE64(double, double)+0x21629>
-;						case 121: print #1, "sequentially";
-  4281d6:	48 83 f8 79          	cmp    rax,0x79
-  4281da:	0f 84 15 2c 00 00    	je     42adf5 <MEMORY_T::POKE64(double, double)+0x215e5>
-;						case 122: print #1, "service";
-  4281e0:	48 83 f8 7a          	cmp    rax,0x7a
-  4281e4:	0f 84 bd 2b 00 00    	je     42ada7 <MEMORY_T::POKE64(double, double)+0x21597>
-;						case 123: print #1, "set";
-  4281ea:	48 83 f8 7b          	cmp    rax,0x7b
-  4281ee:	0f 84 6f 2b 00 00    	je     42ad63 <MEMORY_T::POKE64(double, double)+0x21553>
-;						case 124: print #1, "sgn";
-  4281f4:	48 83 f8 7c          	cmp    rax,0x7c
-  4281f8:	0f 84 17 2b 00 00    	je     42ad15 <MEMORY_T::POKE64(double, double)+0x21505>
-;						case 125: print #1, "shadowless";
-  4281fe:	48 83 f8 7d          	cmp    rax,0x7d
-  428202:	0f 84 c9 2a 00 00    	je     42acd1 <MEMORY_T::POKE64(double, double)+0x214c1>
-;						case 126: print #1, "shell";
-  428208:	48 83 f8 7e          	cmp    rax,0x7e
-  42820c:	0f 84 71 2a 00 00    	je     42ac83 <MEMORY_T::POKE64(double, double)+0x21473>
-;						case 127: print #1, "shift-in";
-  428212:	48 83 f8 7f          	cmp    rax,0x7f
-  428216:	0f 84 23 2a 00 00    	je     42ac3f <MEMORY_T::POKE64(double, double)+0x2142f>
-;						case 128: print #1, "shift-out";
-  42821c:	48 3d 80 00 00 00    	cmp    rax,0x80
-  428222:	0f 84 c9 29 00 00    	je     42abf1 <MEMORY_T::POKE64(double, double)+0x213e1>
-;						case 129: print #1, "shl";
-  428228:	48 3d 81 00 00 00    	cmp    rax,0x81
-  42822e:	0f 84 79 29 00 00    	je     42abad <MEMORY_T::POKE64(double, double)+0x2139d>
-;						case 130: print #1, "short";
-  428234:	48 3d 82 00 00 00    	cmp    rax,0x82
-  42823a:	0f 84 1f 29 00 00    	je     42ab5f <MEMORY_T::POKE64(double, double)+0x2134f>
-;						case 131: print #1, "shr";
-  428240:	48 3d 83 00 00 00    	cmp    rax,0x83
-  428246:	0f 84 cf 28 00 00    	je     42ab1b <MEMORY_T::POKE64(double, double)+0x2130b>
-;						case 132: print #1, "sign";
-  42824c:	48 3d 84 00 00 00    	cmp    rax,0x84
-  428252:	0f 84 75 28 00 00    	je     42aacd <MEMORY_T::POKE64(double, double)+0x212bd>
-;						case 133: print #1, "simple_nested_loop";
-  428258:	48 3d 85 00 00 00    	cmp    rax,0x85
-  42825e:	0f 84 25 28 00 00    	je     42aa89 <MEMORY_T::POKE64(double, double)+0x21279>
-;						case 134: print #1, "sin";
-  428264:	48 3d 86 00 00 00    	cmp    rax,0x86
-  42826a:	0f 84 cb 27 00 00    	je     42aa3b <MEMORY_T::POKE64(double, double)+0x2122b>
-;						case 135: print #1, "sine_wave";
-  428270:	48 3d 87 00 00 00    	cmp    rax,0x87
-  428276:	0f 84 7b 27 00 00    	je     42a9f7 <MEMORY_T::POKE64(double, double)+0x211e7>
-;						case 136: print #1, "sinh";
-  42827c:	48 3d 88 00 00 00    	cmp    rax,0x88
-  428282:	0f 84 21 27 00 00    	je     42a9a9 <MEMORY_T::POKE64(double, double)+0x21199>
-;						case 137: print #1, "size";
-  428288:	48 3d 89 00 00 00    	cmp    rax,0x89
-  42828e:	0f 84 d1 26 00 00    	je     42a965 <MEMORY_T::POKE64(double, double)+0x21155>
-;						case 138: print #1, "sizeof";
-  428294:	48 3d 8a 00 00 00    	cmp    rax,0x8a
-  42829a:	0f 84 77 26 00 00    	je     42a917 <MEMORY_T::POKE64(double, double)+0x21107>
-;						case 139: print #1, "skip1";
-  4282a0:	48 3d 8b 00 00 00    	cmp    rax,0x8b
-  4282a6:	0f 84 27 26 00 00    	je     42a8d3 <MEMORY_T::POKE64(double, double)+0x210c3>
-;						case 140: print #1, "skip2";
-  4282ac:	48 3d 8c 00 00 00    	cmp    rax,0x8c
-  4282b2:	0f 84 cd 25 00 00    	je     42a885 <MEMORY_T::POKE64(double, double)+0x21075>
-;						case 141: print #1, "skip3";
-  4282b8:	48 3d 8d 00 00 00    	cmp    rax,0x8d
-  4282be:	0f 84 7d 25 00 00    	je     42a841 <MEMORY_T::POKE64(double, double)+0x21031>
-;						case 142: print #1, "sky";
-  4282c4:	48 3d 8e 00 00 00    	cmp    rax,0x8e
-  4282ca:	0f 84 23 25 00 00    	je     42a7f3 <MEMORY_T::POKE64(double, double)+0x20fe3>
-;						case 143: print #1, "sky_sphere";
-  4282d0:	48 3d 8f 00 00 00    	cmp    rax,0x8f
-  4282d6:	0f 84 d3 24 00 00    	je     42a7af <MEMORY_T::POKE64(double, double)+0x20f9f>
-;						case 144: print #1, "slice";
-  4282dc:	48 3d 90 00 00 00    	cmp    rax,0x90
-  4282e2:	0f 84 79 24 00 00    	je     42a761 <MEMORY_T::POKE64(double, double)+0x20f51>
-;						case 145: print #1, "slope";
-  4282e8:	48 3d 91 00 00 00    	cmp    rax,0x91
-  4282ee:	0f 84 29 24 00 00    	je     42a71d <MEMORY_T::POKE64(double, double)+0x20f0d>
-;						case 146: print #1, "slope_map";
-  4282f4:	48 3d 92 00 00 00    	cmp    rax,0x92
-  4282fa:	0f 84 cf 23 00 00    	je     42a6cf <MEMORY_T::POKE64(double, double)+0x20ebf>
-;						case 147: print #1, "smallint";
-  428300:	48 3d 93 00 00 00    	cmp    rax,0x93
-  428306:	0f 84 7f 23 00 00    	je     42a68b <MEMORY_T::POKE64(double, double)+0x20e7b>
-;						case 148: print #1, "smooth";
-  42830c:	48 3d 94 00 00 00    	cmp    rax,0x94
-  428312:	0f 84 25 23 00 00    	je     42a63d <MEMORY_T::POKE64(double, double)+0x20e2d>
-;						case 149: print #1, "smooth_linearstep";
-  428318:	48 3d 95 00 00 00    	cmp    rax,0x95
-  42831e:	0f 84 d5 22 00 00    	je     42a5f9 <MEMORY_T::POKE64(double, double)+0x20de9>
-;						case 150: print #1, "smoothstep";
-  428324:	48 3d 96 00 00 00    	cmp    rax,0x96
-  42832a:	0f 84 7b 22 00 00    	je     42a5ab <MEMORY_T::POKE64(double, double)+0x20d9b>
-;						case 151: print #1, "smooth_triangle";
-  428330:	48 3d 97 00 00 00    	cmp    rax,0x97
-  428336:	0f 84 2b 22 00 00    	je     42a567 <MEMORY_T::POKE64(double, double)+0x20d57>
-;						case 152: print #1, "snoise";
-  42833c:	48 3d 98 00 00 00    	cmp    rax,0x98
-  428342:	0f 84 d1 21 00 00    	je     42a519 <MEMORY_T::POKE64(double, double)+0x20d09>
-;						case 153: print #1, "softfloat";
-  428348:	48 3d 99 00 00 00    	cmp    rax,0x99
-  42834e:	0f 84 81 21 00 00    	je     42a4d5 <MEMORY_T::POKE64(double, double)+0x20cc5>
-;						case 154: print #1, "solid";
-  428354:	48 3d 9a 00 00 00    	cmp    rax,0x9a
-  42835a:	0f 84 27 21 00 00    	je     42a487 <MEMORY_T::POKE64(double, double)+0x20c77>
-;						case 155: print #1, "sor";
-  428360:	48 3d 9b 00 00 00    	cmp    rax,0x9b
-  428366:	0f 84 d7 20 00 00    	je     42a443 <MEMORY_T::POKE64(double, double)+0x20c33>
-;						case 156: print #1, "sort";
-  42836c:	48 3d 9c 00 00 00    	cmp    rax,0x9c
-  428372:	0f 84 7d 20 00 00    	je     42a3f5 <MEMORY_T::POKE64(double, double)+0x20be5>
-;						case 157: print #1, "sort-control";
-  428378:	48 3d 9d 00 00 00    	cmp    rax,0x9d
-  42837e:	0f 84 2d 20 00 00    	je     42a3b1 <MEMORY_T::POKE64(double, double)+0x20ba1>
-;						case 158: print #1, "sort-core-size";
-  428384:	48 3d 9e 00 00 00    	cmp    rax,0x9e
-  42838a:	0f 84 d3 1f 00 00    	je     42a363 <MEMORY_T::POKE64(double, double)+0x20b53>
-;						case 159: print #1, "sort-file-size";
-  428390:	48 3d 9f 00 00 00    	cmp    rax,0x9f
-  428396:	0f 84 83 1f 00 00    	je     42a31f <MEMORY_T::POKE64(double, double)+0x20b0f>
-;						case 160: print #1, "sort-merge";
-  42839c:	48 3d a0 00 00 00    	cmp    rax,0xa0
-  4283a2:	0f 84 29 1f 00 00    	je     42a2d1 <MEMORY_T::POKE64(double, double)+0x20ac1>
-;						case 161: print #1, "sort-message";
-  4283a8:	48 3d a1 00 00 00    	cmp    rax,0xa1
-  4283ae:	0f 84 d9 1e 00 00    	je     42a28d <MEMORY_T::POKE64(double, double)+0x20a7d>
-;						case 162: print #1, "sort-mode-size";
-  4283b4:	48 3d a2 00 00 00    	cmp    rax,0xa2
-  4283ba:	0f 84 7f 1e 00 00    	je     42a23f <MEMORY_T::POKE64(double, double)+0x20a2f>
-;						case 163: print #1, "sort-return";
-  4283c0:	48 3d a3 00 00 00    	cmp    rax,0xa3
-  4283c6:	0f 84 2f 1e 00 00    	je     42a1fb <MEMORY_T::POKE64(double, double)+0x209eb>
-;						case 164: print #1, "sound";
-  4283cc:	48 3d a4 00 00 00    	cmp    rax,0xa4
-  4283d2:	0f 84 d5 1d 00 00    	je     42a1ad <MEMORY_T::POKE64(double, double)+0x2099d>
-;						case 165: print #1, "source";
-  4283d8:	48 3d a5 00 00 00    	cmp    rax,0xa5
-  4283de:	0f 84 85 1d 00 00    	je     42a169 <MEMORY_T::POKE64(double, double)+0x20959>
-;						case 166: print #1, "source-computer";
-  4283e4:	48 3d a6 00 00 00    	cmp    rax,0xa6
-  4283ea:	0f 84 2b 1d 00 00    	je     42a11b <MEMORY_T::POKE64(double, double)+0x2090b>
-;						case 167: print #1, "space";
-  4283f0:	48 3d a7 00 00 00    	cmp    rax,0xa7
-  4283f6:	0f 84 db 1c 00 00    	je     42a0d7 <MEMORY_T::POKE64(double, double)+0x208c7>
-;						case 169: print #1, "spaces";
-  4283fc:	48 3d a9 00 00 00    	cmp    rax,0xa9
-  428402:	0f 84 81 1c 00 00    	je     42a089 <MEMORY_T::POKE64(double, double)+0x20879>
-;						case 170: print #1, "spacing";
-  428408:	48 3d aa 00 00 00    	cmp    rax,0xaa
-  42840e:	0f 84 31 1c 00 00    	je     42a045 <MEMORY_T::POKE64(double, double)+0x20835>
-;						case 171: print #1, "spc";
-  428414:	48 3d ab 00 00 00    	cmp    rax,0xab
-  42841a:	0f 84 d7 1b 00 00    	je     429ff7 <MEMORY_T::POKE64(double, double)+0x207e7>
-;						case 172: print #1, "specialize";						
-  428420:	48 3d ac 00 00 00    	cmp    rax,0xac
-  428426:	0f 84 87 1b 00 00    	je     429fb3 <MEMORY_T::POKE64(double, double)+0x207a3>
-;						case 173: print #1, "special-names";
-  42842c:	48 3d ad 00 00 00    	cmp    rax,0xad
-  428432:	0f 84 2d 1b 00 00    	je     429f65 <MEMORY_T::POKE64(double, double)+0x20755>
-;						case 174: print #1, "specular";
-  428438:	48 3d ae 00 00 00    	cmp    rax,0xae
-  42843e:	0f 84 dd 1a 00 00    	je     429f21 <MEMORY_T::POKE64(double, double)+0x20711>
-;						case 175: print #1, "sphere";
-  428444:	48 3d af 00 00 00    	cmp    rax,0xaf
-  42844a:	0f 84 83 1a 00 00    	je     429ed3 <MEMORY_T::POKE64(double, double)+0x206c3>
-;						case 176: print #1, "sphere_sweep";
-  428450:	48 3d b0 00 00 00    	cmp    rax,0xb0
-  428456:	0f 84 33 1a 00 00    	je     429e8f <MEMORY_T::POKE64(double, double)+0x2067f>
-;						case 177: print #1, "spherical";
-  42845c:	48 3d b1 00 00 00    	cmp    rax,0xb1
-  428462:	0f 84 d9 19 00 00    	je     429e41 <MEMORY_T::POKE64(double, double)+0x20631>
-;						case 178: print #1, "spiral1";
-  428468:	48 3d b2 00 00 00    	cmp    rax,0xb2
-  42846e:	0f 84 89 19 00 00    	je     429dfd <MEMORY_T::POKE64(double, double)+0x205ed>
-;						case 179: print #1, "spiral2";
-  428474:	48 3d b3 00 00 00    	cmp    rax,0xb3
-  42847a:	0f 84 2f 19 00 00    	je     429daf <MEMORY_T::POKE64(double, double)+0x2059f>
-;						case 180: print #1, "spline";
-  428480:	48 3d b4 00 00 00    	cmp    rax,0xb4
-  428486:	0f 84 df 18 00 00    	je     429d6b <MEMORY_T::POKE64(double, double)+0x2055b>
-;						case 181: print #1, "splineinverse";
-  42848c:	48 3d b5 00 00 00    	cmp    rax,0xb5
-  428492:	0f 84 85 18 00 00    	je     429d1d <MEMORY_T::POKE64(double, double)+0x2050d>
-;						case 182: print #1, "split";
-  428498:	48 3d b6 00 00 00    	cmp    rax,0xb6
-  42849e:	0f 84 35 18 00 00    	je     429cd9 <MEMORY_T::POKE64(double, double)+0x204c9>
-;						case 183: print #1, "split_union";
-  4284a4:	48 3d b7 00 00 00    	cmp    rax,0xb7
-  4284aa:	0f 84 db 17 00 00    	je     429c8b <MEMORY_T::POKE64(double, double)+0x2047b>
-;						case 184: print #1, "spotlight";
-  4284b0:	48 3d b8 00 00 00    	cmp    rax,0xb8
-  4284b6:	0f 84 8b 17 00 00    	je     429c47 <MEMORY_T::POKE64(double, double)+0x20437>
-;						case 185: print #1, "spotted";
-  4284bc:	48 3d b9 00 00 00    	cmp    rax,0xb9
-  4284c2:	0f 84 31 17 00 00    	je     429bf9 <MEMORY_T::POKE64(double, double)+0x203e9>
-;						case 186: print #1, "sqr";
-  4284c8:	48 3d ba 00 00 00    	cmp    rax,0xba
-  4284ce:	0f 84 e1 16 00 00    	je     429bb5 <MEMORY_T::POKE64(double, double)+0x203a5>
-;						case 187: print #1, "sqrt";
-  4284d4:	48 3d bb 00 00 00    	cmp    rax,0xbb
-  4284da:	0f 84 87 16 00 00    	je     429b67 <MEMORY_T::POKE64(double, double)+0x20357>
-;						case 188: print #1, "standard";
-  4284e0:	48 3d bc 00 00 00    	cmp    rax,0xbc
-  4284e6:	0f 84 37 16 00 00    	je     429b23 <MEMORY_T::POKE64(double, double)+0x20313>
-;						case 189: print #1, "standard-1";
-  4284ec:	48 3d bd 00 00 00    	cmp    rax,0xbd
-  4284f2:	0f 84 dd 15 00 00    	je     429ad5 <MEMORY_T::POKE64(double, double)+0x202c5>
-;						case 190: print #1, "standard-2";
-  4284f8:	48 3d be 00 00 00    	cmp    rax,0xbe
-  4284fe:	0f 84 8d 15 00 00    	je     429a91 <MEMORY_T::POKE64(double, double)+0x20281>
-;						case 191: print #1, "start";
-  428504:	48 3d bf 00 00 00    	cmp    rax,0xbf
-  42850a:	0f 84 33 15 00 00    	je     429a43 <MEMORY_T::POKE64(double, double)+0x20233>
-;						case 192: print #1, "startswith";
-  428510:	48 3d c0 00 00 00    	cmp    rax,0xc0
-  428516:	0f 84 e3 14 00 00    	je     4299ff <MEMORY_T::POKE64(double, double)+0x201ef>
-;						case 193: print #1, "static";
-  42851c:	48 3d c1 00 00 00    	cmp    rax,0xc1
-  428522:	0f 84 89 14 00 00    	je     4299b1 <MEMORY_T::POKE64(double, double)+0x201a1>
-;						case 194: print #1, "statistics";
-  428528:	48 3d c2 00 00 00    	cmp    rax,0xc2
-  42852e:	0f 84 39 14 00 00    	je     42996d <MEMORY_T::POKE64(double, double)+0x2015d>
-;						case 195: print #1, "status";
-  428534:	48 3d c3 00 00 00    	cmp    rax,0xc3
-  42853a:	0f 84 df 13 00 00    	je     42991f <MEMORY_T::POKE64(double, double)+0x2010f>
-;						case 196: print #1, "stdcall";
-  428540:	48 3d c4 00 00 00    	cmp    rax,0xc4
-  428546:	0f 84 8f 13 00 00    	je     4298db <MEMORY_T::POKE64(double, double)+0x200cb>
-;						case 197: print #1, "stdout";
-  42854c:	48 3d c5 00 00 00    	cmp    rax,0xc5
-  428552:	0f 84 35 13 00 00    	je     42988d <MEMORY_T::POKE64(double, double)+0x2007d>
-;						case 198: print #1, "step";
-  428558:	48 3d c6 00 00 00    	cmp    rax,0xc6
-  42855e:	0f 84 e5 12 00 00    	je     429849 <MEMORY_T::POKE64(double, double)+0x20039>
-;						case 199: print #1, "stick";
-  428564:	48 3d c7 00 00 00    	cmp    rax,0xc7
-  42856a:	0f 84 8b 12 00 00    	je     4297fb <MEMORY_T::POKE64(double, double)+0x1ffeb>
-;						case 200: print #1, "stof";
-  428570:	48 3d c8 00 00 00    	cmp    rax,0xc8
-  428576:	0f 84 3b 12 00 00    	je     4297b7 <MEMORY_T::POKE64(double, double)+0x1ffa7>
-;						case 201: print #1, "stoi";
-  42857c:	48 3d c9 00 00 00    	cmp    rax,0xc9
-  428582:	0f 84 e1 11 00 00    	je     429769 <MEMORY_T::POKE64(double, double)+0x1ff59>
-;						case 202: print #1, "stop";
-  428588:	48 3d ca 00 00 00    	cmp    rax,0xca
-  42858e:	0f 84 91 11 00 00    	je     429725 <MEMORY_T::POKE64(double, double)+0x1ff15>
-;						case 203: print #1, "str";
-  428594:	48 3d cb 00 00 00    	cmp    rax,0xcb
-  42859a:	0f 84 37 11 00 00    	je     4296d7 <MEMORY_T::POKE64(double, double)+0x1fec7>
-;						case 205: print #1, "strcmp";
-  4285a0:	48 3d cd 00 00 00    	cmp    rax,0xcd
-  4285a6:	0f 84 e7 10 00 00    	je     429693 <MEMORY_T::POKE64(double, double)+0x1fe83>
-;						case 206: print #1, "strength";
-  4285ac:	48 3d ce 00 00 00    	cmp    rax,0xce
-  4285b2:	0f 84 8d 10 00 00    	je     429645 <MEMORY_T::POKE64(double, double)+0x1fe35>
-;						case 207: print #1, "strig";
-  4285b8:	48 3d cf 00 00 00    	cmp    rax,0xcf
-  4285be:	0f 84 3d 10 00 00    	je     429601 <MEMORY_T::POKE64(double, double)+0x1fdf1>
-;						case 208: print #1, "string";
-  4285c4:	48 3d d0 00 00 00    	cmp    rax,0xd0
-  4285ca:	0f 84 e3 0f 00 00    	je     4295b3 <MEMORY_T::POKE64(double, double)+0x1fda3>
-;						case 209: print #1, "strptr";
-  4285d0:	48 3d d1 00 00 00    	cmp    rax,0xd1
-  4285d6:	0f 84 93 0f 00 00    	je     42956f <MEMORY_T::POKE64(double, double)+0x1fd5f>
-;						case 210: print #1, "strlen";
-  4285dc:	48 3d d2 00 00 00    	cmp    rax,0xd2
-  4285e2:	0f 84 39 0f 00 00    	je     429521 <MEMORY_T::POKE64(double, double)+0x1fd11>
-;						case 211: print #1, "strlwr";
-  4285e8:	48 3d d3 00 00 00    	cmp    rax,0xd3
-  4285ee:	0f 84 e9 0e 00 00    	je     4294dd <MEMORY_T::POKE64(double, double)+0x1fccd>
-;						case 212: print #1, "structure";
-  4285f4:	48 3d d4 00 00 00    	cmp    rax,0xd4
-  4285fa:	0f 84 8f 0e 00 00    	je     42948f <MEMORY_T::POKE64(double, double)+0x1fc7f>
-;						case 213: print #1, "strupr";
-  428600:	48 3d d5 00 00 00    	cmp    rax,0xd5
-  428606:	0f 84 3f 0e 00 00    	je     42944b <MEMORY_T::POKE64(double, double)+0x1fc3b>
-;						case 214: print #1, "sturm";
-  42860c:	48 3d d6 00 00 00    	cmp    rax,0xd6
-  428612:	0f 84 e5 0d 00 00    	je     4293fd <MEMORY_T::POKE64(double, double)+0x1fbed>
-;						case 215: print #1, "subarray";
-  428618:	48 3d d7 00 00 00    	cmp    rax,0xd7
-  42861e:	0f 84 95 0d 00 00    	je     4293b9 <MEMORY_T::POKE64(double, double)+0x1fba9>
-;						case 216: print #1, "sub-queue-1";
-  428624:	48 3d d8 00 00 00    	cmp    rax,0xd8
-  42862a:	0f 84 3b 0d 00 00    	je     42936b <MEMORY_T::POKE64(double, double)+0x1fb5b>
-;						case 217: print #1, "sub-queue-2";
-  428630:	48 3d d9 00 00 00    	cmp    rax,0xd9
-  428636:	0f 84 eb 0c 00 00    	je     429327 <MEMORY_T::POKE64(double, double)+0x1fb17>
-;						case 218: print #1, "sub-queue-3";
-  42863c:	48 3d da 00 00 00    	cmp    rax,0xda
-  428642:	0f 84 91 0c 00 00    	je     4292d9 <MEMORY_T::POKE64(double, double)+0x1fac9>
-;						case 219: print #1, "subroutine";
-  428648:	48 3d db 00 00 00    	cmp    rax,0xdb
-  42864e:	0f 84 41 0c 00 00    	je     429295 <MEMORY_T::POKE64(double, double)+0x1fa85>
-;						case 220: print #1, "substr";
-  428654:	48 3d dc 00 00 00    	cmp    rax,0xdc
-  42865a:	0f 84 e7 0b 00 00    	je     429247 <MEMORY_T::POKE64(double, double)+0x1fa37>
-;						case 221: print #1, "substring";
-  428660:	48 3d dd 00 00 00    	cmp    rax,0xdd
-  428666:	0f 84 97 0b 00 00    	je     429203 <MEMORY_T::POKE64(double, double)+0x1f9f3>
-;						case 222: print #1, "substring_mb";
-  42866c:	48 3d de 00 00 00    	cmp    rax,0xde
-  428672:	0f 84 3d 0b 00 00    	je     4291b5 <MEMORY_T::POKE64(double, double)+0x1f9a5>
-;						case 223: print #1, "subtract";
-  428678:	48 3d df 00 00 00    	cmp    rax,0xdf
-  42867e:	0f 84 ed 0a 00 00    	je     429171 <MEMORY_T::POKE64(double, double)+0x1f961>
-;						case 224: print #1, "sum";
-  428684:	48 3d e0 00 00 00    	cmp    rax,0xe0
-  42868a:	0f 84 93 0a 00 00    	je     429123 <MEMORY_T::POKE64(double, double)+0x1f913>
-;						case 225: print #1, "super";
-  428690:	48 3d e1 00 00 00    	cmp    rax,0xe1
-  428696:	0f 84 43 0a 00 00    	je     4290df <MEMORY_T::POKE64(double, double)+0x1f8cf>
-;						case 226: print #1, "superellipsoid";
-  42869c:	48 3d e2 00 00 00    	cmp    rax,0xe2
-  4286a2:	0f 84 e9 09 00 00    	je     429091 <MEMORY_T::POKE64(double, double)+0x1f881>
-;						case 227: print #1, "superp";
-  4286a8:	48 3d e3 00 00 00    	cmp    rax,0xe3
-  4286ae:	0f 84 99 09 00 00    	je     42904d <MEMORY_T::POKE64(double, double)+0x1f83d>
-;						case 228: print #1, "suppress";
-  4286b4:	48 3d e4 00 00 00    	cmp    rax,0xe4
-  4286ba:	0f 84 3f 09 00 00    	je     428fff <MEMORY_T::POKE64(double, double)+0x1f7ef>
-;						case 229: print #1, "surfacearea";
-  4286c0:	48 3d e5 00 00 00    	cmp    rax,0xe5
-  4286c6:	0f 84 ef 08 00 00    	je     428fbb <MEMORY_T::POKE64(double, double)+0x1f7ab>
-;						case 230: print #1, "swap";
-  4286cc:	48 3d e6 00 00 00    	cmp    rax,0xe6
-  4286d2:	0f 84 95 08 00 00    	je     428f6d <MEMORY_T::POKE64(double, double)+0x1f75d>
-;						case 231: print #1, "switch";
-  4286d8:	48 3d e7 00 00 00    	cmp    rax,0xe7
-  4286de:	0f 84 45 08 00 00    	je     428f29 <MEMORY_T::POKE64(double, double)+0x1f719>
-;						case 232: print #1, "symbolic";
-  4286e4:	48 3d e8 00 00 00    	cmp    rax,0xe8
-  4286ea:	0f 84 eb 07 00 00    	je     428edb <MEMORY_T::POKE64(double, double)+0x1f6cb>
-;						case 233: print #1, "sync";
-  4286f0:	48 3d e9 00 00 00    	cmp    rax,0xe9
-  4286f6:	0f 84 9b 07 00 00    	je     428e97 <MEMORY_T::POKE64(double, double)+0x1f687>
-;						case 234: print #1, "synchronized";
-  4286fc:	48 3d ea 00 00 00    	cmp    rax,0xea
-  428702:	0f 84 41 07 00 00    	je     428e49 <MEMORY_T::POKE64(double, double)+0x1f639>
-;						case 235: print #1, "sys";
-  428708:	48 3d eb 00 00 00    	cmp    rax,0xeb
-  42870e:	0f 84 f1 06 00 00    	je     428e05 <MEMORY_T::POKE64(double, double)+0x1f5f5>
-;						case 236: print #1, "system";
-  428714:	48 3d ec 00 00 00    	cmp    rax,0xec
-  42871a:	0f 84 97 06 00 00    	je     428db7 <MEMORY_T::POKE64(double, double)+0x1f5a7>
-;						case 237: print #1, "t";
-  428720:	48 3d ed 00 00 00    	cmp    rax,0xed
-  428726:	0f 84 47 06 00 00    	je     428d73 <MEMORY_T::POKE64(double, double)+0x1f563>
-;						case 238: print #1, "tab";
-  42872c:	48 3d ee 00 00 00    	cmp    rax,0xee
-  428732:	0f 84 ed 05 00 00    	je     428d25 <MEMORY_T::POKE64(double, double)+0x1f515>
-;						case 239: print #1, "table";
-  428738:	48 3d ef 00 00 00    	cmp    rax,0xef
-  42873e:	0f 84 9d 05 00 00    	je     428ce1 <MEMORY_T::POKE64(double, double)+0x1f4d1>
-;						case 240: print #1, "tally";
-  428744:	48 3d f0 00 00 00    	cmp    rax,0xf0
-  42874a:	0f 84 3f 03 00 00    	je     428a8f <MEMORY_T::POKE64(double, double)+0x1f27f>
-;						case 241: print #1, "tallying";
-  428750:	48 3d f1 00 00 00    	cmp    rax,0xf1
-  428756:	0f 84 ef 02 00 00    	je     428a4b <MEMORY_T::POKE64(double, double)+0x1f23b>
-;						case 242: print #1, "tan";
-  42875c:	48 3d f2 00 00 00    	cmp    rax,0xf2
-  428762:	0f 84 95 02 00 00    	je     4289fd <MEMORY_T::POKE64(double, double)+0x1f1ed>
-;						case 243: print #1, "tanh";
-  428768:	48 3d f3 00 00 00    	cmp    rax,0xf3
-  42876e:	0f 84 45 02 00 00    	je     4289b9 <MEMORY_T::POKE64(double, double)+0x1f1a9>
-;						case 244: print #1, "tape";
-  428774:	48 3d f4 00 00 00    	cmp    rax,0xf4
-  42877a:	0f 84 eb 01 00 00    	je     42896b <MEMORY_T::POKE64(double, double)+0x1f15b>
-;						case 245: print #1, "target";
-  428780:	48 3d f5 00 00 00    	cmp    rax,0xf5
-  428786:	0f 84 9b 01 00 00    	je     428927 <MEMORY_T::POKE64(double, double)+0x1f117>
-;						case 246: print #1, "template";
-  42878c:	48 3d f6 00 00 00    	cmp    rax,0xf6
-  428792:	0f 84 41 01 00 00    	je     4288d9 <MEMORY_T::POKE64(double, double)+0x1f0c9>
-;						case 247: print #1, "term";
-  428798:	48 3d f7 00 00 00    	cmp    rax,0xf7
-  42879e:	0f 84 f1 00 00 00    	je     428895 <MEMORY_T::POKE64(double, double)+0x1f085>
-;						case 248: print #1, "terminal";
-  4287a4:	48 3d f8 00 00 00    	cmp    rax,0xf8
-  4287aa:	0f 84 03 04 00 00    	je     428bb3 <MEMORY_T::POKE64(double, double)+0x1f3a3>
-;						case 249: print #1, "terminate";
-  4287b0:	48 3d f9 00 00 00    	cmp    rax,0xf9
-  4287b6:	0f 84 b3 03 00 00    	je     428b6f <MEMORY_T::POKE64(double, double)+0x1f35f>
-;						case 250: print #1, "test";
-  4287bc:	48 3d fa 00 00 00    	cmp    rax,0xfa
-  4287c2:	0f 84 59 03 00 00    	je     428b21 <MEMORY_T::POKE64(double, double)+0x1f311>
-;						case 251: print #1, "text";
-  4287c8:	48 3d fb 00 00 00    	cmp    rax,0xfb
-  4287ce:	0f 84 09 03 00 00    	je     428add <MEMORY_T::POKE64(double, double)+0x1f2cd>
-;						case 252: print #1, "texture";
-  4287d4:	48 3d fc 00 00 00    	cmp    rax,0xfc
-  4287da:	0f 84 65 04 00 00    	je     428c45 <MEMORY_T::POKE64(double, double)+0x1f435>
-;						case 253: print #1, "texture3d";
-  4287e0:	48 3d fd 00 00 00    	cmp    rax,0xfd
-  4287e6:	0f 84 15 04 00 00    	je     428c01 <MEMORY_T::POKE64(double, double)+0x1f3f1>
-;						case 254: print #1, "texture_list";
-  4287ec:	48 3d fe 00 00 00    	cmp    rax,0xfe
-  4287f2:	0f 84 9b 04 00 00    	je     428c93 <MEMORY_T::POKE64(double, double)+0x1f483>
-;						case 255: print #1, "texture_map";
-  4287f8:	48 3d ff 00 00 00    	cmp    rax,0xff
-  4287fe:	0f 85 3c 3b fe ff    	jne    40c340 <MEMORY_T::POKE64(double, double)+0x2b30>
-  428804:	be 0b 00 00 00       	mov    esi,0xb
-  428809:	48 8d 3d 12 91 04 00 	lea    rdi,[rip+0x49112]        # 471922 <_IO_stdin_used+0x2922>
-  428810:	e8 5b 1c 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428815:	48 89 c6             	mov    rsi,rax
-  428818:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42881f:	00 
-  428820:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428827:	00 00 
-  428829:	75 65                	jne    428890 <MEMORY_T::POKE64(double, double)+0x1f080>
-  42882b:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428832:	31 d2                	xor    edx,edx
-  428834:	bf 01 00 00 00       	mov    edi,0x1
-  428839:	5b                   	pop    rbx
-  42883a:	5d                   	pop    rbp
-  42883b:	41 5c                	pop    r12
-  42883d:	41 5d                	pop    r13
-  42883f:	41 5e                	pop    r14
-  428841:	41 5f                	pop    r15
-  428843:	e9 78 f4 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 255: print #1, "rand";				     
-  428848:	be 04 00 00 00       	mov    esi,0x4
-  42884d:	48 8d 3d 22 73 04 00 	lea    rdi,[rip+0x47322]        # 46fb76 <_IO_stdin_used+0xb76>
-  428854:	e8 17 1c 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428859:	48 89 c6             	mov    rsi,rax
-  42885c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428863:	00 
-  428864:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42886b:	00 00 
-  42886d:	0f 85 64 04 00 00    	jne    428cd7 <MEMORY_T::POKE64(double, double)+0x1f4c7>
-  428873:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42887a:	31 d2                	xor    edx,edx
-  42887c:	bf 01 00 00 00       	mov    edi,0x1
-  428881:	5b                   	pop    rbx
-  428882:	5d                   	pop    rbp
-  428883:	41 5c                	pop    r12
-  428885:	41 5d                	pop    r13
-  428887:	41 5e                	pop    r14
-  428889:	41 5f                	pop    r15
-  42888b:	e9 30 f4 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 255: print #1, "texture_map";
-  428890:	e8 cb cf fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 247: print #1, "term";
-  428895:	be 04 00 00 00       	mov    esi,0x4
-  42889a:	48 8d 3d 71 df 04 00 	lea    rdi,[rip+0x4df71]        # 476812 <hex_table+0xc2>
-  4288a1:	e8 ca 1b 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4288a6:	48 89 c6             	mov    rsi,rax
-  4288a9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4288b0:	00 
-  4288b1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4288b8:	00 00 
-  4288ba:	75 61                	jne    42891d <MEMORY_T::POKE64(double, double)+0x1f10d>
-  4288bc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4288c3:	31 d2                	xor    edx,edx
-  4288c5:	bf 01 00 00 00       	mov    edi,0x1
-  4288ca:	5b                   	pop    rbx
-  4288cb:	5d                   	pop    rbp
-  4288cc:	41 5c                	pop    r12
-  4288ce:	41 5d                	pop    r13
-  4288d0:	41 5e                	pop    r14
-  4288d2:	41 5f                	pop    r15
-  4288d4:	e9 e7 f3 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 246: print #1, "template";
-  4288d9:	be 08 00 00 00       	mov    esi,0x8
-  4288de:	48 8d 3d 0a 90 04 00 	lea    rdi,[rip+0x4900a]        # 4718ef <_IO_stdin_used+0x28ef>
-  4288e5:	e8 86 1b 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4288ea:	48 89 c6             	mov    rsi,rax
-  4288ed:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4288f4:	00 
-  4288f5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4288fc:	00 00 
-  4288fe:	75 22                	jne    428922 <MEMORY_T::POKE64(double, double)+0x1f112>
-  428900:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428907:	31 d2                	xor    edx,edx
-  428909:	bf 01 00 00 00       	mov    edi,0x1
-  42890e:	5b                   	pop    rbx
-  42890f:	5d                   	pop    rbp
-  428910:	41 5c                	pop    r12
-  428912:	41 5d                	pop    r13
-  428914:	41 5e                	pop    r14
-  428916:	41 5f                	pop    r15
-  428918:	e9 a3 f3 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 247: print #1, "term";
-  42891d:	e8 3e cf fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 246: print #1, "template";
-  428922:	e8 39 cf fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 245: print #1, "target";
-  428927:	be 06 00 00 00       	mov    esi,0x6
-  42892c:	48 8d 3d b5 8f 04 00 	lea    rdi,[rip+0x48fb5]        # 4718e8 <_IO_stdin_used+0x28e8>
-  428933:	e8 38 1b 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428938:	48 89 c6             	mov    rsi,rax
-  42893b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428942:	00 
-  428943:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42894a:	00 00 
-  42894c:	75 61                	jne    4289af <MEMORY_T::POKE64(double, double)+0x1f19f>
-  42894e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428955:	31 d2                	xor    edx,edx
-  428957:	bf 01 00 00 00       	mov    edi,0x1
-  42895c:	5b                   	pop    rbx
-  42895d:	5d                   	pop    rbp
-  42895e:	41 5c                	pop    r12
-  428960:	41 5d                	pop    r13
-  428962:	41 5e                	pop    r14
-  428964:	41 5f                	pop    r15
-  428966:	e9 55 f3 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 244: print #1, "tape";
-  42896b:	be 04 00 00 00       	mov    esi,0x4
-  428970:	48 8d 3d 3e 9d 04 00 	lea    rdi,[rip+0x49d3e]        # 4726b5 <_IO_stdin_used+0x36b5>
-  428977:	e8 f4 1a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42897c:	48 89 c6             	mov    rsi,rax
-  42897f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428986:	00 
-  428987:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42898e:	00 00 
-  428990:	75 22                	jne    4289b4 <MEMORY_T::POKE64(double, double)+0x1f1a4>
-  428992:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428999:	31 d2                	xor    edx,edx
-  42899b:	bf 01 00 00 00       	mov    edi,0x1
-  4289a0:	5b                   	pop    rbx
-  4289a1:	5d                   	pop    rbp
-  4289a2:	41 5c                	pop    r12
-  4289a4:	41 5d                	pop    r13
-  4289a6:	41 5e                	pop    r14
-  4289a8:	41 5f                	pop    r15
-  4289aa:	e9 11 f3 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 245: print #1, "target";
-  4289af:	e8 ac ce fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 244: print #1, "tape";
-  4289b4:	e8 a7 ce fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 243: print #1, "tanh";
-  4289b9:	be 04 00 00 00       	mov    esi,0x4
-  4289be:	48 8d 3d d3 6c 04 00 	lea    rdi,[rip+0x46cd3]        # 46f698 <_IO_stdin_used+0x698>
-  4289c5:	e8 a6 1a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4289ca:	48 89 c6             	mov    rsi,rax
-  4289cd:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4289d4:	00 
-  4289d5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4289dc:	00 00 
-  4289de:	75 61                	jne    428a41 <MEMORY_T::POKE64(double, double)+0x1f231>
-  4289e0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4289e7:	31 d2                	xor    edx,edx
-  4289e9:	bf 01 00 00 00       	mov    edi,0x1
-  4289ee:	5b                   	pop    rbx
-  4289ef:	5d                   	pop    rbp
-  4289f0:	41 5c                	pop    r12
-  4289f2:	41 5d                	pop    r13
-  4289f4:	41 5e                	pop    r14
-  4289f6:	41 5f                	pop    r15
-  4289f8:	e9 c3 f2 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 242: print #1, "tan";
-  4289fd:	be 03 00 00 00       	mov    esi,0x3
-  428a02:	48 8d 3d 84 6c 04 00 	lea    rdi,[rip+0x46c84]        # 46f68d <_IO_stdin_used+0x68d>
-  428a09:	e8 62 1a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428a0e:	48 89 c6             	mov    rsi,rax
-  428a11:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428a18:	00 
-  428a19:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428a20:	00 00 
-  428a22:	75 22                	jne    428a46 <MEMORY_T::POKE64(double, double)+0x1f236>
-  428a24:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428a2b:	31 d2                	xor    edx,edx
-  428a2d:	bf 01 00 00 00       	mov    edi,0x1
-  428a32:	5b                   	pop    rbx
-  428a33:	5d                   	pop    rbp
-  428a34:	41 5c                	pop    r12
-  428a36:	41 5d                	pop    r13
-  428a38:	41 5e                	pop    r14
-  428a3a:	41 5f                	pop    r15
-  428a3c:	e9 7f f2 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 243: print #1, "tanh";
-  428a41:	e8 1a ce fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 242: print #1, "tan";
-  428a46:	e8 15 ce fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 241: print #1, "tallying";
-  428a4b:	be 08 00 00 00       	mov    esi,0x8
-  428a50:	48 8d 3d 88 8e 04 00 	lea    rdi,[rip+0x48e88]        # 4718df <_IO_stdin_used+0x28df>
-  428a57:	e8 14 1a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428a5c:	48 89 c6             	mov    rsi,rax
-  428a5f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428a66:	00 
-  428a67:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428a6e:	00 00 
-  428a70:	75 61                	jne    428ad3 <MEMORY_T::POKE64(double, double)+0x1f2c3>
-  428a72:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428a79:	31 d2                	xor    edx,edx
-  428a7b:	bf 01 00 00 00       	mov    edi,0x1
-  428a80:	5b                   	pop    rbx
-  428a81:	5d                   	pop    rbp
-  428a82:	41 5c                	pop    r12
-  428a84:	41 5d                	pop    r13
-  428a86:	41 5e                	pop    r14
-  428a88:	41 5f                	pop    r15
-  428a8a:	e9 31 f2 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 240: print #1, "tally";
-  428a8f:	be 05 00 00 00       	mov    esi,0x5
-  428a94:	48 8d 3d 3e 8e 04 00 	lea    rdi,[rip+0x48e3e]        # 4718d9 <_IO_stdin_used+0x28d9>
-  428a9b:	e8 d0 19 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428aa0:	48 89 c6             	mov    rsi,rax
-  428aa3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428aaa:	00 
-  428aab:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428ab2:	00 00 
-  428ab4:	75 22                	jne    428ad8 <MEMORY_T::POKE64(double, double)+0x1f2c8>
-  428ab6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428abd:	31 d2                	xor    edx,edx
-  428abf:	bf 01 00 00 00       	mov    edi,0x1
-  428ac4:	5b                   	pop    rbx
-  428ac5:	5d                   	pop    rbp
-  428ac6:	41 5c                	pop    r12
-  428ac8:	41 5d                	pop    r13
-  428aca:	41 5e                	pop    r14
-  428acc:	41 5f                	pop    r15
-  428ace:	e9 ed f1 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 241: print #1, "tallying";
-  428ad3:	e8 88 cd fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 240: print #1, "tally";
-  428ad8:	e8 83 cd fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 251: print #1, "text";
-  428add:	be 04 00 00 00       	mov    esi,0x4
-  428ae2:	48 8d 3d 38 d0 04 00 	lea    rdi,[rip+0x4d038]        # 475b21 <standard_mode+0x81>
-  428ae9:	e8 82 19 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428aee:	48 89 c6             	mov    rsi,rax
-  428af1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428af8:	00 
-  428af9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428b00:	00 00 
-  428b02:	75 61                	jne    428b65 <MEMORY_T::POKE64(double, double)+0x1f355>
-  428b04:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428b0b:	31 d2                	xor    edx,edx
-  428b0d:	bf 01 00 00 00       	mov    edi,0x1
-  428b12:	5b                   	pop    rbx
-  428b13:	5d                   	pop    rbp
-  428b14:	41 5c                	pop    r12
-  428b16:	41 5d                	pop    r13
-  428b18:	41 5e                	pop    r14
-  428b1a:	41 5f                	pop    r15
-  428b1c:	e9 9f f1 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 250: print #1, "test";
-  428b21:	be 04 00 00 00       	mov    esi,0x4
-  428b26:	48 8d 3d 21 9d 04 00 	lea    rdi,[rip+0x49d21]        # 47284e <_IO_stdin_used+0x384e>
-  428b2d:	e8 3e 19 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428b32:	48 89 c6             	mov    rsi,rax
-  428b35:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428b3c:	00 
-  428b3d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428b44:	00 00 
-  428b46:	75 22                	jne    428b6a <MEMORY_T::POKE64(double, double)+0x1f35a>
-  428b48:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428b4f:	31 d2                	xor    edx,edx
-  428b51:	bf 01 00 00 00       	mov    edi,0x1
-  428b56:	5b                   	pop    rbx
-  428b57:	5d                   	pop    rbp
-  428b58:	41 5c                	pop    r12
-  428b5a:	41 5d                	pop    r13
-  428b5c:	41 5e                	pop    r14
-  428b5e:	41 5f                	pop    r15
-  428b60:	e9 5b f1 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 251: print #1, "text";
-  428b65:	e8 f6 cc fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 250: print #1, "test";
-  428b6a:	e8 f1 cc fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 249: print #1, "terminate";
-  428b6f:	be 09 00 00 00       	mov    esi,0x9
-  428b74:	48 8d 3d 86 8d 04 00 	lea    rdi,[rip+0x48d86]        # 471901 <_IO_stdin_used+0x2901>
-  428b7b:	e8 f0 18 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428b80:	48 89 c6             	mov    rsi,rax
-  428b83:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428b8a:	00 
-  428b8b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428b92:	00 00 
-  428b94:	75 61                	jne    428bf7 <MEMORY_T::POKE64(double, double)+0x1f3e7>
-  428b96:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428b9d:	31 d2                	xor    edx,edx
-  428b9f:	bf 01 00 00 00       	mov    edi,0x1
-  428ba4:	5b                   	pop    rbx
-  428ba5:	5d                   	pop    rbp
-  428ba6:	41 5c                	pop    r12
-  428ba8:	41 5d                	pop    r13
-  428baa:	41 5e                	pop    r14
-  428bac:	41 5f                	pop    r15
-  428bae:	e9 0d f1 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 248: print #1, "terminal";
-  428bb3:	be 08 00 00 00       	mov    esi,0x8
-  428bb8:	48 8d 3d 39 8d 04 00 	lea    rdi,[rip+0x48d39]        # 4718f8 <_IO_stdin_used+0x28f8>
-  428bbf:	e8 ac 18 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428bc4:	48 89 c6             	mov    rsi,rax
-  428bc7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428bce:	00 
-  428bcf:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428bd6:	00 00 
-  428bd8:	75 22                	jne    428bfc <MEMORY_T::POKE64(double, double)+0x1f3ec>
-  428bda:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428be1:	31 d2                	xor    edx,edx
-  428be3:	bf 01 00 00 00       	mov    edi,0x1
-  428be8:	5b                   	pop    rbx
-  428be9:	5d                   	pop    rbp
-  428bea:	41 5c                	pop    r12
-  428bec:	41 5d                	pop    r13
-  428bee:	41 5e                	pop    r14
-  428bf0:	41 5f                	pop    r15
-  428bf2:	e9 c9 f0 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 249: print #1, "terminate";
-  428bf7:	e8 64 cc fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 248: print #1, "terminal";
-  428bfc:	e8 5f cc fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 253: print #1, "texture3d";
-  428c01:	be 09 00 00 00       	mov    esi,0x9
-  428c06:	48 8d 3d fe 8c 04 00 	lea    rdi,[rip+0x48cfe]        # 47190b <_IO_stdin_used+0x290b>
-  428c0d:	e8 5e 18 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428c12:	48 89 c6             	mov    rsi,rax
-  428c15:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428c1c:	00 
-  428c1d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428c24:	00 00 
-  428c26:	75 61                	jne    428c89 <MEMORY_T::POKE64(double, double)+0x1f479>
-  428c28:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428c2f:	31 d2                	xor    edx,edx
-  428c31:	bf 01 00 00 00       	mov    edi,0x1
-  428c36:	5b                   	pop    rbx
-  428c37:	5d                   	pop    rbp
-  428c38:	41 5c                	pop    r12
-  428c3a:	41 5d                	pop    r13
-  428c3c:	41 5e                	pop    r14
-  428c3e:	41 5f                	pop    r15
-  428c40:	e9 7b f0 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 252: print #1, "texture";
-  428c45:	be 07 00 00 00       	mov    esi,0x7
-  428c4a:	48 8d 3d bb 7b 04 00 	lea    rdi,[rip+0x47bbb]        # 47080c <_IO_stdin_used+0x180c>
-  428c51:	e8 1a 18 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428c56:	48 89 c6             	mov    rsi,rax
-  428c59:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428c60:	00 
-  428c61:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428c68:	00 00 
-  428c6a:	75 22                	jne    428c8e <MEMORY_T::POKE64(double, double)+0x1f47e>
-  428c6c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428c73:	31 d2                	xor    edx,edx
-  428c75:	bf 01 00 00 00       	mov    edi,0x1
-  428c7a:	5b                   	pop    rbx
-  428c7b:	5d                   	pop    rbp
-  428c7c:	41 5c                	pop    r12
-  428c7e:	41 5d                	pop    r13
-  428c80:	41 5e                	pop    r14
-  428c82:	41 5f                	pop    r15
-  428c84:	e9 37 f0 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 253: print #1, "texture3d";
-  428c89:	e8 d2 cb fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 252: print #1, "texture";
-  428c8e:	e8 cd cb fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 254: print #1, "texture_list";
-  428c93:	be 0c 00 00 00       	mov    esi,0xc
-  428c98:	48 8d 3d 76 8c 04 00 	lea    rdi,[rip+0x48c76]        # 471915 <_IO_stdin_used+0x2915>
-  428c9f:	e8 cc 17 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428ca4:	48 89 c6             	mov    rsi,rax
-  428ca7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428cae:	00 
-  428caf:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428cb6:	00 00 
-  428cb8:	75 22                	jne    428cdc <MEMORY_T::POKE64(double, double)+0x1f4cc>
-  428cba:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428cc1:	31 d2                	xor    edx,edx
-  428cc3:	bf 01 00 00 00       	mov    edi,0x1
-  428cc8:	5b                   	pop    rbx
-  428cc9:	5d                   	pop    rbp
-  428cca:	41 5c                	pop    r12
-  428ccc:	41 5d                	pop    r13
-  428cce:	41 5e                	pop    r14
-  428cd0:	41 5f                	pop    r15
-  428cd2:	e9 e9 ef 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 255: print #1, "rand";				     
-  428cd7:	e8 84 cb fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 254: print #1, "texture_list";
-  428cdc:	e8 7f cb fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 239: print #1, "table";
-  428ce1:	be 05 00 00 00       	mov    esi,0x5
-  428ce6:	48 8d 3d e6 8b 04 00 	lea    rdi,[rip+0x48be6]        # 4718d3 <_IO_stdin_used+0x28d3>
-  428ced:	e8 7e 17 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428cf2:	48 89 c6             	mov    rsi,rax
-  428cf5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428cfc:	00 
-  428cfd:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428d04:	00 00 
-  428d06:	75 61                	jne    428d69 <MEMORY_T::POKE64(double, double)+0x1f559>
-  428d08:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428d0f:	31 d2                	xor    edx,edx
-  428d11:	bf 01 00 00 00       	mov    edi,0x1
-  428d16:	5b                   	pop    rbx
-  428d17:	5d                   	pop    rbp
-  428d18:	41 5c                	pop    r12
-  428d1a:	41 5d                	pop    r13
-  428d1c:	41 5e                	pop    r14
-  428d1e:	41 5f                	pop    r15
-  428d20:	e9 9b ef 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 238: print #1, "tab";
-  428d25:	be 03 00 00 00       	mov    esi,0x3
-  428d2a:	48 8d 3d 9e 8b 04 00 	lea    rdi,[rip+0x48b9e]        # 4718cf <_IO_stdin_used+0x28cf>
-  428d31:	e8 3a 17 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428d36:	48 89 c6             	mov    rsi,rax
-  428d39:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428d40:	00 
-  428d41:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428d48:	00 00 
-  428d4a:	75 22                	jne    428d6e <MEMORY_T::POKE64(double, double)+0x1f55e>
-  428d4c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428d53:	31 d2                	xor    edx,edx
-  428d55:	bf 01 00 00 00       	mov    edi,0x1
-  428d5a:	5b                   	pop    rbx
-  428d5b:	5d                   	pop    rbp
-  428d5c:	41 5c                	pop    r12
-  428d5e:	41 5d                	pop    r13
-  428d60:	41 5e                	pop    r14
-  428d62:	41 5f                	pop    r15
-  428d64:	e9 57 ef 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 239: print #1, "table";
-  428d69:	e8 f2 ca fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 238: print #1, "tab";
-  428d6e:	e8 ed ca fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 237: print #1, "t";
-  428d73:	be 01 00 00 00       	mov    esi,0x1
-  428d78:	48 8d 3d 36 da 04 00 	lea    rdi,[rip+0x4da36]        # 4767b5 <hex_table+0x65>
-  428d7f:	e8 ec 16 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428d84:	48 89 c6             	mov    rsi,rax
-  428d87:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428d8e:	00 
-  428d8f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428d96:	00 00 
-  428d98:	75 61                	jne    428dfb <MEMORY_T::POKE64(double, double)+0x1f5eb>
-  428d9a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428da1:	31 d2                	xor    edx,edx
-  428da3:	bf 01 00 00 00       	mov    edi,0x1
-  428da8:	5b                   	pop    rbx
-  428da9:	5d                   	pop    rbp
-  428daa:	41 5c                	pop    r12
-  428dac:	41 5d                	pop    r13
-  428dae:	41 5e                	pop    r14
-  428db0:	41 5f                	pop    r15
-  428db2:	e9 09 ef 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 236: print #1, "system";
-  428db7:	be 06 00 00 00       	mov    esi,0x6
-  428dbc:	48 8d 3d 05 8b 04 00 	lea    rdi,[rip+0x48b05]        # 4718c8 <_IO_stdin_used+0x28c8>
-  428dc3:	e8 a8 16 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428dc8:	48 89 c6             	mov    rsi,rax
-  428dcb:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428dd2:	00 
-  428dd3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428dda:	00 00 
-  428ddc:	75 22                	jne    428e00 <MEMORY_T::POKE64(double, double)+0x1f5f0>
-  428dde:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428de5:	31 d2                	xor    edx,edx
-  428de7:	bf 01 00 00 00       	mov    edi,0x1
-  428dec:	5b                   	pop    rbx
-  428ded:	5d                   	pop    rbp
-  428dee:	41 5c                	pop    r12
-  428df0:	41 5d                	pop    r13
-  428df2:	41 5e                	pop    r14
-  428df4:	41 5f                	pop    r15
-  428df6:	e9 c5 ee 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 237: print #1, "t";
-  428dfb:	e8 60 ca fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 236: print #1, "system";
-  428e00:	e8 5b ca fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 235: print #1, "sys";
-  428e05:	be 03 00 00 00       	mov    esi,0x3
-  428e0a:	48 8d 3d b3 8a 04 00 	lea    rdi,[rip+0x48ab3]        # 4718c4 <_IO_stdin_used+0x28c4>
-  428e11:	e8 5a 16 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428e16:	48 89 c6             	mov    rsi,rax
-  428e19:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428e20:	00 
-  428e21:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428e28:	00 00 
-  428e2a:	75 61                	jne    428e8d <MEMORY_T::POKE64(double, double)+0x1f67d>
-  428e2c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428e33:	31 d2                	xor    edx,edx
-  428e35:	bf 01 00 00 00       	mov    edi,0x1
-  428e3a:	5b                   	pop    rbx
-  428e3b:	5d                   	pop    rbp
-  428e3c:	41 5c                	pop    r12
-  428e3e:	41 5d                	pop    r13
-  428e40:	41 5e                	pop    r14
-  428e42:	41 5f                	pop    r15
-  428e44:	e9 77 ee 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 234: print #1, "synchronized";
-  428e49:	be 0c 00 00 00       	mov    esi,0xc
-  428e4e:	48 8d 3d 62 8a 04 00 	lea    rdi,[rip+0x48a62]        # 4718b7 <_IO_stdin_used+0x28b7>
-  428e55:	e8 16 16 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428e5a:	48 89 c6             	mov    rsi,rax
-  428e5d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428e64:	00 
-  428e65:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428e6c:	00 00 
-  428e6e:	75 22                	jne    428e92 <MEMORY_T::POKE64(double, double)+0x1f682>
-  428e70:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428e77:	31 d2                	xor    edx,edx
-  428e79:	bf 01 00 00 00       	mov    edi,0x1
-  428e7e:	5b                   	pop    rbx
-  428e7f:	5d                   	pop    rbp
-  428e80:	41 5c                	pop    r12
-  428e82:	41 5d                	pop    r13
-  428e84:	41 5e                	pop    r14
-  428e86:	41 5f                	pop    r15
-  428e88:	e9 33 ee 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 235: print #1, "sys";
-  428e8d:	e8 ce c9 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 234: print #1, "synchronized";
-  428e92:	e8 c9 c9 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 233: print #1, "sync";
-  428e97:	be 04 00 00 00       	mov    esi,0x4
-  428e9c:	48 8d 3d e4 67 04 00 	lea    rdi,[rip+0x467e4]        # 46f687 <_IO_stdin_used+0x687>
-  428ea3:	e8 c8 15 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428ea8:	48 89 c6             	mov    rsi,rax
-  428eab:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428eb2:	00 
-  428eb3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428eba:	00 00 
-  428ebc:	75 61                	jne    428f1f <MEMORY_T::POKE64(double, double)+0x1f70f>
-  428ebe:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428ec5:	31 d2                	xor    edx,edx
-  428ec7:	bf 01 00 00 00       	mov    edi,0x1
-  428ecc:	5b                   	pop    rbx
-  428ecd:	5d                   	pop    rbp
-  428ece:	41 5c                	pop    r12
-  428ed0:	41 5d                	pop    r13
-  428ed2:	41 5e                	pop    r14
-  428ed4:	41 5f                	pop    r15
-  428ed6:	e9 e5 ed 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 232: print #1, "symbolic";
-  428edb:	be 08 00 00 00       	mov    esi,0x8
-  428ee0:	48 8d 3d c7 89 04 00 	lea    rdi,[rip+0x489c7]        # 4718ae <_IO_stdin_used+0x28ae>
-  428ee7:	e8 84 15 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428eec:	48 89 c6             	mov    rsi,rax
-  428eef:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428ef6:	00 
-  428ef7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428efe:	00 00 
-  428f00:	75 22                	jne    428f24 <MEMORY_T::POKE64(double, double)+0x1f714>
-  428f02:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428f09:	31 d2                	xor    edx,edx
-  428f0b:	bf 01 00 00 00       	mov    edi,0x1
-  428f10:	5b                   	pop    rbx
-  428f11:	5d                   	pop    rbp
-  428f12:	41 5c                	pop    r12
-  428f14:	41 5d                	pop    r13
-  428f16:	41 5e                	pop    r14
-  428f18:	41 5f                	pop    r15
-  428f1a:	e9 a1 ed 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 233: print #1, "sync";
-  428f1f:	e8 3c c9 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 232: print #1, "symbolic";
-  428f24:	e8 37 c9 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 231: print #1, "switch";
-  428f29:	be 06 00 00 00       	mov    esi,0x6
-  428f2e:	48 8d 3d 95 91 04 00 	lea    rdi,[rip+0x49195]        # 4720ca <_IO_stdin_used+0x30ca>
-  428f35:	e8 36 15 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428f3a:	48 89 c6             	mov    rsi,rax
-  428f3d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428f44:	00 
-  428f45:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428f4c:	00 00 
-  428f4e:	75 61                	jne    428fb1 <MEMORY_T::POKE64(double, double)+0x1f7a1>
-  428f50:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428f57:	31 d2                	xor    edx,edx
-  428f59:	bf 01 00 00 00       	mov    edi,0x1
-  428f5e:	5b                   	pop    rbx
-  428f5f:	5d                   	pop    rbp
-  428f60:	41 5c                	pop    r12
-  428f62:	41 5d                	pop    r13
-  428f64:	41 5e                	pop    r14
-  428f66:	41 5f                	pop    r15
-  428f68:	e9 53 ed 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 230: print #1, "swap";
-  428f6d:	be 04 00 00 00       	mov    esi,0x4
-  428f72:	48 8d 3d 30 89 04 00 	lea    rdi,[rip+0x48930]        # 4718a9 <_IO_stdin_used+0x28a9>
-  428f79:	e8 f2 14 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428f7e:	48 89 c6             	mov    rsi,rax
-  428f81:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428f88:	00 
-  428f89:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428f90:	00 00 
-  428f92:	75 22                	jne    428fb6 <MEMORY_T::POKE64(double, double)+0x1f7a6>
-  428f94:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428f9b:	31 d2                	xor    edx,edx
-  428f9d:	bf 01 00 00 00       	mov    edi,0x1
-  428fa2:	5b                   	pop    rbx
-  428fa3:	5d                   	pop    rbp
-  428fa4:	41 5c                	pop    r12
-  428fa6:	41 5d                	pop    r13
-  428fa8:	41 5e                	pop    r14
-  428faa:	41 5f                	pop    r15
-  428fac:	e9 0f ed 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 231: print #1, "switch";
-  428fb1:	e8 aa c8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 230: print #1, "swap";
-  428fb6:	e8 a5 c8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 229: print #1, "surfacearea";
-  428fbb:	be 0b 00 00 00       	mov    esi,0xb
-  428fc0:	48 8d 3d d6 88 04 00 	lea    rdi,[rip+0x488d6]        # 47189d <_IO_stdin_used+0x289d>
-  428fc7:	e8 a4 14 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  428fcc:	48 89 c6             	mov    rsi,rax
-  428fcf:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  428fd6:	00 
-  428fd7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  428fde:	00 00 
-  428fe0:	75 61                	jne    429043 <MEMORY_T::POKE64(double, double)+0x1f833>
-  428fe2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  428fe9:	31 d2                	xor    edx,edx
-  428feb:	bf 01 00 00 00       	mov    edi,0x1
-  428ff0:	5b                   	pop    rbx
-  428ff1:	5d                   	pop    rbp
-  428ff2:	41 5c                	pop    r12
-  428ff4:	41 5d                	pop    r13
-  428ff6:	41 5e                	pop    r14
-  428ff8:	41 5f                	pop    r15
-  428ffa:	e9 c1 ec 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 228: print #1, "suppress";
-  428fff:	be 08 00 00 00       	mov    esi,0x8
-  429004:	48 8d 3d 89 88 04 00 	lea    rdi,[rip+0x48889]        # 471894 <_IO_stdin_used+0x2894>
-  42900b:	e8 60 14 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429010:	48 89 c6             	mov    rsi,rax
-  429013:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42901a:	00 
-  42901b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429022:	00 00 
-  429024:	75 22                	jne    429048 <MEMORY_T::POKE64(double, double)+0x1f838>
-  429026:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42902d:	31 d2                	xor    edx,edx
-  42902f:	bf 01 00 00 00       	mov    edi,0x1
-  429034:	5b                   	pop    rbx
-  429035:	5d                   	pop    rbp
-  429036:	41 5c                	pop    r12
-  429038:	41 5d                	pop    r13
-  42903a:	41 5e                	pop    r14
-  42903c:	41 5f                	pop    r15
-  42903e:	e9 7d ec 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 229: print #1, "surfacearea";
-  429043:	e8 18 c8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 228: print #1, "suppress";
-  429048:	e8 13 c8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 227: print #1, "superp";
-  42904d:	be 06 00 00 00       	mov    esi,0x6
-  429052:	48 8d 3d 34 88 04 00 	lea    rdi,[rip+0x48834]        # 47188d <_IO_stdin_used+0x288d>
-  429059:	e8 12 14 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42905e:	48 89 c6             	mov    rsi,rax
-  429061:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429068:	00 
-  429069:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429070:	00 00 
-  429072:	75 61                	jne    4290d5 <MEMORY_T::POKE64(double, double)+0x1f8c5>
-  429074:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42907b:	31 d2                	xor    edx,edx
-  42907d:	bf 01 00 00 00       	mov    edi,0x1
-  429082:	5b                   	pop    rbx
-  429083:	5d                   	pop    rbp
-  429084:	41 5c                	pop    r12
-  429086:	41 5d                	pop    r13
-  429088:	41 5e                	pop    r14
-  42908a:	41 5f                	pop    r15
-  42908c:	e9 2f ec 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 226: print #1, "superellipsoid";
-  429091:	be 0e 00 00 00       	mov    esi,0xe
-  429096:	48 8d 3d e1 87 04 00 	lea    rdi,[rip+0x487e1]        # 47187e <_IO_stdin_used+0x287e>
-  42909d:	e8 ce 13 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4290a2:	48 89 c6             	mov    rsi,rax
-  4290a5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4290ac:	00 
-  4290ad:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4290b4:	00 00 
-  4290b6:	75 22                	jne    4290da <MEMORY_T::POKE64(double, double)+0x1f8ca>
-  4290b8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4290bf:	31 d2                	xor    edx,edx
-  4290c1:	bf 01 00 00 00       	mov    edi,0x1
-  4290c6:	5b                   	pop    rbx
-  4290c7:	5d                   	pop    rbp
-  4290c8:	41 5c                	pop    r12
-  4290ca:	41 5d                	pop    r13
-  4290cc:	41 5e                	pop    r14
-  4290ce:	41 5f                	pop    r15
-  4290d0:	e9 eb eb 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 227: print #1, "superp";
-  4290d5:	e8 86 c7 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 226: print #1, "superellipsoid";
-  4290da:	e8 81 c7 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 225: print #1, "super";
-  4290df:	be 05 00 00 00       	mov    esi,0x5
-  4290e4:	48 8d 3d 8d 87 04 00 	lea    rdi,[rip+0x4878d]        # 471878 <_IO_stdin_used+0x2878>
-  4290eb:	e8 80 13 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4290f0:	48 89 c6             	mov    rsi,rax
-  4290f3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4290fa:	00 
-  4290fb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429102:	00 00 
-  429104:	75 61                	jne    429167 <MEMORY_T::POKE64(double, double)+0x1f957>
-  429106:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42910d:	31 d2                	xor    edx,edx
-  42910f:	bf 01 00 00 00       	mov    edi,0x1
-  429114:	5b                   	pop    rbx
-  429115:	5d                   	pop    rbp
-  429116:	41 5c                	pop    r12
-  429118:	41 5d                	pop    r13
-  42911a:	41 5e                	pop    r14
-  42911c:	41 5f                	pop    r15
-  42911e:	e9 9d eb 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 224: print #1, "sum";
-  429123:	be 03 00 00 00       	mov    esi,0x3
-  429128:	48 8d 3d 45 87 04 00 	lea    rdi,[rip+0x48745]        # 471874 <_IO_stdin_used+0x2874>
-  42912f:	e8 3c 13 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429134:	48 89 c6             	mov    rsi,rax
-  429137:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42913e:	00 
-  42913f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429146:	00 00 
-  429148:	75 22                	jne    42916c <MEMORY_T::POKE64(double, double)+0x1f95c>
-  42914a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429151:	31 d2                	xor    edx,edx
-  429153:	bf 01 00 00 00       	mov    edi,0x1
-  429158:	5b                   	pop    rbx
-  429159:	5d                   	pop    rbp
-  42915a:	41 5c                	pop    r12
-  42915c:	41 5d                	pop    r13
-  42915e:	41 5e                	pop    r14
-  429160:	41 5f                	pop    r15
-  429162:	e9 59 eb 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 225: print #1, "super";
-  429167:	e8 f4 c6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 224: print #1, "sum";
-  42916c:	e8 ef c6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 223: print #1, "subtract";
-  429171:	be 08 00 00 00       	mov    esi,0x8
-  429176:	48 8d 3d 7e 6e 04 00 	lea    rdi,[rip+0x46e7e]        # 46fffb <_IO_stdin_used+0xffb>
-  42917d:	e8 ee 12 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429182:	48 89 c6             	mov    rsi,rax
-  429185:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42918c:	00 
-  42918d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429194:	00 00 
-  429196:	75 61                	jne    4291f9 <MEMORY_T::POKE64(double, double)+0x1f9e9>
-  429198:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42919f:	31 d2                	xor    edx,edx
-  4291a1:	bf 01 00 00 00       	mov    edi,0x1
-  4291a6:	5b                   	pop    rbx
-  4291a7:	5d                   	pop    rbp
-  4291a8:	41 5c                	pop    r12
-  4291aa:	41 5d                	pop    r13
-  4291ac:	41 5e                	pop    r14
-  4291ae:	41 5f                	pop    r15
-  4291b0:	e9 0b eb 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 222: print #1, "substring_mb";
-  4291b5:	be 0c 00 00 00       	mov    esi,0xc
-  4291ba:	48 8d 3d a6 86 04 00 	lea    rdi,[rip+0x486a6]        # 471867 <_IO_stdin_used+0x2867>
-  4291c1:	e8 aa 12 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4291c6:	48 89 c6             	mov    rsi,rax
-  4291c9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4291d0:	00 
-  4291d1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4291d8:	00 00 
-  4291da:	75 22                	jne    4291fe <MEMORY_T::POKE64(double, double)+0x1f9ee>
-  4291dc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4291e3:	31 d2                	xor    edx,edx
-  4291e5:	bf 01 00 00 00       	mov    edi,0x1
-  4291ea:	5b                   	pop    rbx
-  4291eb:	5d                   	pop    rbp
-  4291ec:	41 5c                	pop    r12
-  4291ee:	41 5d                	pop    r13
-  4291f0:	41 5e                	pop    r14
-  4291f2:	41 5f                	pop    r15
-  4291f4:	e9 c7 ea 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 223: print #1, "subtract";
-  4291f9:	e8 62 c6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 222: print #1, "substring_mb";
-  4291fe:	e8 5d c6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 221: print #1, "substring";
-  429203:	be 09 00 00 00       	mov    esi,0x9
-  429208:	48 8d 3d 4e 86 04 00 	lea    rdi,[rip+0x4864e]        # 47185d <_IO_stdin_used+0x285d>
-  42920f:	e8 5c 12 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429214:	48 89 c6             	mov    rsi,rax
-  429217:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42921e:	00 
-  42921f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429226:	00 00 
-  429228:	75 61                	jne    42928b <MEMORY_T::POKE64(double, double)+0x1fa7b>
-  42922a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429231:	31 d2                	xor    edx,edx
-  429233:	bf 01 00 00 00       	mov    edi,0x1
-  429238:	5b                   	pop    rbx
-  429239:	5d                   	pop    rbp
-  42923a:	41 5c                	pop    r12
-  42923c:	41 5d                	pop    r13
-  42923e:	41 5e                	pop    r14
-  429240:	41 5f                	pop    r15
-  429242:	e9 79 ea 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 220: print #1, "substr";
-  429247:	be 06 00 00 00       	mov    esi,0x6
-  42924c:	48 8d 3d 03 86 04 00 	lea    rdi,[rip+0x48603]        # 471856 <_IO_stdin_used+0x2856>
-  429253:	e8 18 12 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429258:	48 89 c6             	mov    rsi,rax
-  42925b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429262:	00 
-  429263:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42926a:	00 00 
-  42926c:	75 22                	jne    429290 <MEMORY_T::POKE64(double, double)+0x1fa80>
-  42926e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429275:	31 d2                	xor    edx,edx
-  429277:	bf 01 00 00 00       	mov    edi,0x1
-  42927c:	5b                   	pop    rbx
-  42927d:	5d                   	pop    rbp
-  42927e:	41 5c                	pop    r12
-  429280:	41 5d                	pop    r13
-  429282:	41 5e                	pop    r14
-  429284:	41 5f                	pop    r15
-  429286:	e9 35 ea 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 221: print #1, "substring";
-  42928b:	e8 d0 c5 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 220: print #1, "substr";
-  429290:	e8 cb c5 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 219: print #1, "subroutine";
-  429295:	be 0a 00 00 00       	mov    esi,0xa
-  42929a:	48 8d 3d aa 85 04 00 	lea    rdi,[rip+0x485aa]        # 47184b <_IO_stdin_used+0x284b>
-  4292a1:	e8 ca 11 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4292a6:	48 89 c6             	mov    rsi,rax
-  4292a9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4292b0:	00 
-  4292b1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4292b8:	00 00 
-  4292ba:	75 61                	jne    42931d <MEMORY_T::POKE64(double, double)+0x1fb0d>
-  4292bc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4292c3:	31 d2                	xor    edx,edx
-  4292c5:	bf 01 00 00 00       	mov    edi,0x1
-  4292ca:	5b                   	pop    rbx
-  4292cb:	5d                   	pop    rbp
-  4292cc:	41 5c                	pop    r12
-  4292ce:	41 5d                	pop    r13
-  4292d0:	41 5e                	pop    r14
-  4292d2:	41 5f                	pop    r15
-  4292d4:	e9 e7 e9 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 218: print #1, "sub-queue-3";
-  4292d9:	be 0b 00 00 00       	mov    esi,0xb
-  4292de:	48 8d 3d 5a 85 04 00 	lea    rdi,[rip+0x4855a]        # 47183f <_IO_stdin_used+0x283f>
-  4292e5:	e8 86 11 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4292ea:	48 89 c6             	mov    rsi,rax
-  4292ed:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4292f4:	00 
-  4292f5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4292fc:	00 00 
-  4292fe:	75 22                	jne    429322 <MEMORY_T::POKE64(double, double)+0x1fb12>
-  429300:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429307:	31 d2                	xor    edx,edx
-  429309:	bf 01 00 00 00       	mov    edi,0x1
-  42930e:	5b                   	pop    rbx
-  42930f:	5d                   	pop    rbp
-  429310:	41 5c                	pop    r12
-  429312:	41 5d                	pop    r13
-  429314:	41 5e                	pop    r14
-  429316:	41 5f                	pop    r15
-  429318:	e9 a3 e9 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 219: print #1, "subroutine";
-  42931d:	e8 3e c5 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 218: print #1, "sub-queue-3";
-  429322:	e8 39 c5 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 217: print #1, "sub-queue-2";
-  429327:	be 0b 00 00 00       	mov    esi,0xb
-  42932c:	48 8d 3d 00 85 04 00 	lea    rdi,[rip+0x48500]        # 471833 <_IO_stdin_used+0x2833>
-  429333:	e8 38 11 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429338:	48 89 c6             	mov    rsi,rax
-  42933b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429342:	00 
-  429343:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42934a:	00 00 
-  42934c:	75 61                	jne    4293af <MEMORY_T::POKE64(double, double)+0x1fb9f>
-  42934e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429355:	31 d2                	xor    edx,edx
-  429357:	bf 01 00 00 00       	mov    edi,0x1
-  42935c:	5b                   	pop    rbx
-  42935d:	5d                   	pop    rbp
-  42935e:	41 5c                	pop    r12
-  429360:	41 5d                	pop    r13
-  429362:	41 5e                	pop    r14
-  429364:	41 5f                	pop    r15
-  429366:	e9 55 e9 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 216: print #1, "sub-queue-1";
-  42936b:	be 0b 00 00 00       	mov    esi,0xb
-  429370:	48 8d 3d b0 84 04 00 	lea    rdi,[rip+0x484b0]        # 471827 <_IO_stdin_used+0x2827>
-  429377:	e8 f4 10 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42937c:	48 89 c6             	mov    rsi,rax
-  42937f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429386:	00 
-  429387:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42938e:	00 00 
-  429390:	75 22                	jne    4293b4 <MEMORY_T::POKE64(double, double)+0x1fba4>
-  429392:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429399:	31 d2                	xor    edx,edx
-  42939b:	bf 01 00 00 00       	mov    edi,0x1
-  4293a0:	5b                   	pop    rbx
-  4293a1:	5d                   	pop    rbp
-  4293a2:	41 5c                	pop    r12
-  4293a4:	41 5d                	pop    r13
-  4293a6:	41 5e                	pop    r14
-  4293a8:	41 5f                	pop    r15
-  4293aa:	e9 11 e9 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 217: print #1, "sub-queue-2";
-  4293af:	e8 ac c4 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 216: print #1, "sub-queue-1";
-  4293b4:	e8 a7 c4 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 215: print #1, "subarray";
-  4293b9:	be 08 00 00 00       	mov    esi,0x8
-  4293be:	48 8d 3d 59 84 04 00 	lea    rdi,[rip+0x48459]        # 47181e <_IO_stdin_used+0x281e>
-  4293c5:	e8 a6 10 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4293ca:	48 89 c6             	mov    rsi,rax
-  4293cd:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4293d4:	00 
-  4293d5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4293dc:	00 00 
-  4293de:	75 61                	jne    429441 <MEMORY_T::POKE64(double, double)+0x1fc31>
-  4293e0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4293e7:	31 d2                	xor    edx,edx
-  4293e9:	bf 01 00 00 00       	mov    edi,0x1
-  4293ee:	5b                   	pop    rbx
-  4293ef:	5d                   	pop    rbp
-  4293f0:	41 5c                	pop    r12
-  4293f2:	41 5d                	pop    r13
-  4293f4:	41 5e                	pop    r14
-  4293f6:	41 5f                	pop    r15
-  4293f8:	e9 c3 e8 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 214: print #1, "sturm";
-  4293fd:	be 05 00 00 00       	mov    esi,0x5
-  429402:	48 8d 3d 0f 84 04 00 	lea    rdi,[rip+0x4840f]        # 471818 <_IO_stdin_used+0x2818>
-  429409:	e8 62 10 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42940e:	48 89 c6             	mov    rsi,rax
-  429411:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429418:	00 
-  429419:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429420:	00 00 
-  429422:	75 22                	jne    429446 <MEMORY_T::POKE64(double, double)+0x1fc36>
-  429424:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42942b:	31 d2                	xor    edx,edx
-  42942d:	bf 01 00 00 00       	mov    edi,0x1
-  429432:	5b                   	pop    rbx
-  429433:	5d                   	pop    rbp
-  429434:	41 5c                	pop    r12
-  429436:	41 5d                	pop    r13
-  429438:	41 5e                	pop    r14
-  42943a:	41 5f                	pop    r15
-  42943c:	e9 7f e8 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 215: print #1, "subarray";
-  429441:	e8 1a c4 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 214: print #1, "sturm";
-  429446:	e8 15 c4 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 213: print #1, "strupr";
-  42944b:	be 06 00 00 00       	mov    esi,0x6
-  429450:	48 8d 3d ba 83 04 00 	lea    rdi,[rip+0x483ba]        # 471811 <_IO_stdin_used+0x2811>
-  429457:	e8 14 10 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42945c:	48 89 c6             	mov    rsi,rax
-  42945f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429466:	00 
-  429467:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42946e:	00 00 
-  429470:	75 61                	jne    4294d3 <MEMORY_T::POKE64(double, double)+0x1fcc3>
-  429472:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429479:	31 d2                	xor    edx,edx
-  42947b:	bf 01 00 00 00       	mov    edi,0x1
-  429480:	5b                   	pop    rbx
-  429481:	5d                   	pop    rbp
-  429482:	41 5c                	pop    r12
-  429484:	41 5d                	pop    r13
-  429486:	41 5e                	pop    r14
-  429488:	41 5f                	pop    r15
-  42948a:	e9 31 e8 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 212: print #1, "structure";
-  42948f:	be 09 00 00 00       	mov    esi,0x9
-  429494:	48 8d 3d 6c 83 04 00 	lea    rdi,[rip+0x4836c]        # 471807 <_IO_stdin_used+0x2807>
-  42949b:	e8 d0 0f 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4294a0:	48 89 c6             	mov    rsi,rax
-  4294a3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4294aa:	00 
-  4294ab:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4294b2:	00 00 
-  4294b4:	75 22                	jne    4294d8 <MEMORY_T::POKE64(double, double)+0x1fcc8>
-  4294b6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4294bd:	31 d2                	xor    edx,edx
-  4294bf:	bf 01 00 00 00       	mov    edi,0x1
-  4294c4:	5b                   	pop    rbx
-  4294c5:	5d                   	pop    rbp
-  4294c6:	41 5c                	pop    r12
-  4294c8:	41 5d                	pop    r13
-  4294ca:	41 5e                	pop    r14
-  4294cc:	41 5f                	pop    r15
-  4294ce:	e9 ed e7 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 213: print #1, "strupr";
-  4294d3:	e8 88 c3 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 212: print #1, "structure";
-  4294d8:	e8 83 c3 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 211: print #1, "strlwr";
-  4294dd:	be 06 00 00 00       	mov    esi,0x6
-  4294e2:	48 8d 3d 17 83 04 00 	lea    rdi,[rip+0x48317]        # 471800 <_IO_stdin_used+0x2800>
-  4294e9:	e8 82 0f 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4294ee:	48 89 c6             	mov    rsi,rax
-  4294f1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4294f8:	00 
-  4294f9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429500:	00 00 
-  429502:	75 61                	jne    429565 <MEMORY_T::POKE64(double, double)+0x1fd55>
-  429504:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42950b:	31 d2                	xor    edx,edx
-  42950d:	bf 01 00 00 00       	mov    edi,0x1
-  429512:	5b                   	pop    rbx
-  429513:	5d                   	pop    rbp
-  429514:	41 5c                	pop    r12
-  429516:	41 5d                	pop    r13
-  429518:	41 5e                	pop    r14
-  42951a:	41 5f                	pop    r15
-  42951c:	e9 9f e7 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 210: print #1, "strlen";
-  429521:	be 06 00 00 00       	mov    esi,0x6
-  429526:	48 8d 3d cc 82 04 00 	lea    rdi,[rip+0x482cc]        # 4717f9 <_IO_stdin_used+0x27f9>
-  42952d:	e8 3e 0f 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429532:	48 89 c6             	mov    rsi,rax
-  429535:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42953c:	00 
-  42953d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429544:	00 00 
-  429546:	75 22                	jne    42956a <MEMORY_T::POKE64(double, double)+0x1fd5a>
-  429548:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42954f:	31 d2                	xor    edx,edx
-  429551:	bf 01 00 00 00       	mov    edi,0x1
-  429556:	5b                   	pop    rbx
-  429557:	5d                   	pop    rbp
-  429558:	41 5c                	pop    r12
-  42955a:	41 5d                	pop    r13
-  42955c:	41 5e                	pop    r14
-  42955e:	41 5f                	pop    r15
-  429560:	e9 5b e7 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 211: print #1, "strlwr";
-  429565:	e8 f6 c2 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 210: print #1, "strlen";
-  42956a:	e8 f1 c2 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 209: print #1, "strptr";
-  42956f:	be 06 00 00 00       	mov    esi,0x6
-  429574:	48 8d 3d 77 82 04 00 	lea    rdi,[rip+0x48277]        # 4717f2 <_IO_stdin_used+0x27f2>
-  42957b:	e8 f0 0e 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429580:	48 89 c6             	mov    rsi,rax
-  429583:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42958a:	00 
-  42958b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429592:	00 00 
-  429594:	75 61                	jne    4295f7 <MEMORY_T::POKE64(double, double)+0x1fde7>
-  429596:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42959d:	31 d2                	xor    edx,edx
-  42959f:	bf 01 00 00 00       	mov    edi,0x1
-  4295a4:	5b                   	pop    rbx
-  4295a5:	5d                   	pop    rbp
-  4295a6:	41 5c                	pop    r12
-  4295a8:	41 5d                	pop    r13
-  4295aa:	41 5e                	pop    r14
-  4295ac:	41 5f                	pop    r15
-  4295ae:	e9 0d e7 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 208: print #1, "string";
-  4295b3:	be 06 00 00 00       	mov    esi,0x6
-  4295b8:	48 8d 3d 31 6a 04 00 	lea    rdi,[rip+0x46a31]        # 46fff0 <_IO_stdin_used+0xff0>
-  4295bf:	e8 ac 0e 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4295c4:	48 89 c6             	mov    rsi,rax
-  4295c7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4295ce:	00 
-  4295cf:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4295d6:	00 00 
-  4295d8:	75 22                	jne    4295fc <MEMORY_T::POKE64(double, double)+0x1fdec>
-  4295da:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4295e1:	31 d2                	xor    edx,edx
-  4295e3:	bf 01 00 00 00       	mov    edi,0x1
-  4295e8:	5b                   	pop    rbx
-  4295e9:	5d                   	pop    rbp
-  4295ea:	41 5c                	pop    r12
-  4295ec:	41 5d                	pop    r13
-  4295ee:	41 5e                	pop    r14
-  4295f0:	41 5f                	pop    r15
-  4295f2:	e9 c9 e6 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 209: print #1, "strptr";
-  4295f7:	e8 64 c2 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 208: print #1, "string";
-  4295fc:	e8 5f c2 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 207: print #1, "strig";
-  429601:	be 05 00 00 00       	mov    esi,0x5
-  429606:	48 8d 3d df 81 04 00 	lea    rdi,[rip+0x481df]        # 4717ec <_IO_stdin_used+0x27ec>
-  42960d:	e8 5e 0e 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429612:	48 89 c6             	mov    rsi,rax
-  429615:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42961c:	00 
-  42961d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429624:	00 00 
-  429626:	75 61                	jne    429689 <MEMORY_T::POKE64(double, double)+0x1fe79>
-  429628:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42962f:	31 d2                	xor    edx,edx
-  429631:	bf 01 00 00 00       	mov    edi,0x1
-  429636:	5b                   	pop    rbx
-  429637:	5d                   	pop    rbp
-  429638:	41 5c                	pop    r12
-  42963a:	41 5d                	pop    r13
-  42963c:	41 5e                	pop    r14
-  42963e:	41 5f                	pop    r15
-  429640:	e9 7b e6 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 206: print #1, "strength";
-  429645:	be 08 00 00 00       	mov    esi,0x8
-  42964a:	48 8d 3d 92 81 04 00 	lea    rdi,[rip+0x48192]        # 4717e3 <_IO_stdin_used+0x27e3>
-  429651:	e8 1a 0e 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429656:	48 89 c6             	mov    rsi,rax
-  429659:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429660:	00 
-  429661:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429668:	00 00 
-  42966a:	75 22                	jne    42968e <MEMORY_T::POKE64(double, double)+0x1fe7e>
-  42966c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429673:	31 d2                	xor    edx,edx
-  429675:	bf 01 00 00 00       	mov    edi,0x1
-  42967a:	5b                   	pop    rbx
-  42967b:	5d                   	pop    rbp
-  42967c:	41 5c                	pop    r12
-  42967e:	41 5d                	pop    r13
-  429680:	41 5e                	pop    r14
-  429682:	41 5f                	pop    r15
-  429684:	e9 37 e6 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 207: print #1, "strig";
-  429689:	e8 d2 c1 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 206: print #1, "strength";
-  42968e:	e8 cd c1 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 205: print #1, "strcmp";
-  429693:	be 06 00 00 00       	mov    esi,0x6
-  429698:	48 8d 3d 3d 81 04 00 	lea    rdi,[rip+0x4813d]        # 4717dc <_IO_stdin_used+0x27dc>
-  42969f:	e8 cc 0d 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4296a4:	48 89 c6             	mov    rsi,rax
-  4296a7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4296ae:	00 
-  4296af:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4296b6:	00 00 
-  4296b8:	75 61                	jne    42971b <MEMORY_T::POKE64(double, double)+0x1ff0b>
-  4296ba:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4296c1:	31 d2                	xor    edx,edx
-  4296c3:	bf 01 00 00 00       	mov    edi,0x1
-  4296c8:	5b                   	pop    rbx
-  4296c9:	5d                   	pop    rbp
-  4296ca:	41 5c                	pop    r12
-  4296cc:	41 5d                	pop    r13
-  4296ce:	41 5e                	pop    r14
-  4296d0:	41 5f                	pop    r15
-  4296d2:	e9 e9 e5 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 203: print #1, "str";
-  4296d7:	be 03 00 00 00       	mov    esi,0x3
-  4296dc:	48 8d 3d 76 81 04 00 	lea    rdi,[rip+0x48176]        # 471859 <_IO_stdin_used+0x2859>
-  4296e3:	e8 88 0d 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4296e8:	48 89 c6             	mov    rsi,rax
-  4296eb:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4296f2:	00 
-  4296f3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4296fa:	00 00 
-  4296fc:	75 22                	jne    429720 <MEMORY_T::POKE64(double, double)+0x1ff10>
-  4296fe:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429705:	31 d2                	xor    edx,edx
-  429707:	bf 01 00 00 00       	mov    edi,0x1
-  42970c:	5b                   	pop    rbx
-  42970d:	5d                   	pop    rbp
-  42970e:	41 5c                	pop    r12
-  429710:	41 5d                	pop    r13
-  429712:	41 5e                	pop    r14
-  429714:	41 5f                	pop    r15
-  429716:	e9 a5 e5 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 205: print #1, "strcmp";
-  42971b:	e8 40 c1 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 203: print #1, "str";
-  429720:	e8 3b c1 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 202: print #1, "stop";
-  429725:	be 04 00 00 00       	mov    esi,0x4
-  42972a:	48 8d 3d 8a 5f 04 00 	lea    rdi,[rip+0x45f8a]        # 46f6bb <_IO_stdin_used+0x6bb>
-  429731:	e8 3a 0d 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429736:	48 89 c6             	mov    rsi,rax
-  429739:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429740:	00 
-  429741:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429748:	00 00 
-  42974a:	75 61                	jne    4297ad <MEMORY_T::POKE64(double, double)+0x1ff9d>
-  42974c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429753:	31 d2                	xor    edx,edx
-  429755:	bf 01 00 00 00       	mov    edi,0x1
-  42975a:	5b                   	pop    rbx
-  42975b:	5d                   	pop    rbp
-  42975c:	41 5c                	pop    r12
-  42975e:	41 5d                	pop    r13
-  429760:	41 5e                	pop    r14
-  429762:	41 5f                	pop    r15
-  429764:	e9 57 e5 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 201: print #1, "stoi";
-  429769:	be 04 00 00 00       	mov    esi,0x4
-  42976e:	48 8d 3d 62 80 04 00 	lea    rdi,[rip+0x48062]        # 4717d7 <_IO_stdin_used+0x27d7>
-  429775:	e8 f6 0c 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42977a:	48 89 c6             	mov    rsi,rax
-  42977d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429784:	00 
-  429785:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42978c:	00 00 
-  42978e:	75 22                	jne    4297b2 <MEMORY_T::POKE64(double, double)+0x1ffa2>
-  429790:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429797:	31 d2                	xor    edx,edx
-  429799:	bf 01 00 00 00       	mov    edi,0x1
-  42979e:	5b                   	pop    rbx
-  42979f:	5d                   	pop    rbp
-  4297a0:	41 5c                	pop    r12
-  4297a2:	41 5d                	pop    r13
-  4297a4:	41 5e                	pop    r14
-  4297a6:	41 5f                	pop    r15
-  4297a8:	e9 13 e5 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 202: print #1, "stop";
-  4297ad:	e8 ae c0 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 201: print #1, "stoi";
-  4297b2:	e8 a9 c0 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 200: print #1, "stof";
-  4297b7:	be 04 00 00 00       	mov    esi,0x4
-  4297bc:	48 8d 3d 0f 80 04 00 	lea    rdi,[rip+0x4800f]        # 4717d2 <_IO_stdin_used+0x27d2>
-  4297c3:	e8 a8 0c 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4297c8:	48 89 c6             	mov    rsi,rax
-  4297cb:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4297d2:	00 
-  4297d3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4297da:	00 00 
-  4297dc:	75 61                	jne    42983f <MEMORY_T::POKE64(double, double)+0x2002f>
-  4297de:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4297e5:	31 d2                	xor    edx,edx
-  4297e7:	bf 01 00 00 00       	mov    edi,0x1
-  4297ec:	5b                   	pop    rbx
-  4297ed:	5d                   	pop    rbp
-  4297ee:	41 5c                	pop    r12
-  4297f0:	41 5d                	pop    r13
-  4297f2:	41 5e                	pop    r14
-  4297f4:	41 5f                	pop    r15
-  4297f6:	e9 c5 e4 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 199: print #1, "stick";
-  4297fb:	be 05 00 00 00       	mov    esi,0x5
-  429800:	48 8d 3d a8 8b 04 00 	lea    rdi,[rip+0x48ba8]        # 4723af <_IO_stdin_used+0x33af>
-  429807:	e8 64 0c 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42980c:	48 89 c6             	mov    rsi,rax
-  42980f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429816:	00 
-  429817:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42981e:	00 00 
-  429820:	75 22                	jne    429844 <MEMORY_T::POKE64(double, double)+0x20034>
-  429822:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429829:	31 d2                	xor    edx,edx
-  42982b:	bf 01 00 00 00       	mov    edi,0x1
-  429830:	5b                   	pop    rbx
-  429831:	5d                   	pop    rbp
-  429832:	41 5c                	pop    r12
-  429834:	41 5d                	pop    r13
-  429836:	41 5e                	pop    r14
-  429838:	41 5f                	pop    r15
-  42983a:	e9 81 e4 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 200: print #1, "stof";
-  42983f:	e8 1c c0 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 199: print #1, "stick";
-  429844:	e8 17 c0 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 198: print #1, "step";
-  429849:	be 04 00 00 00       	mov    esi,0x4
-  42984e:	48 8d 3d 66 5c 04 00 	lea    rdi,[rip+0x45c66]        # 46f4bb <_IO_stdin_used+0x4bb>
-  429855:	e8 16 0c 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42985a:	48 89 c6             	mov    rsi,rax
-  42985d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429864:	00 
-  429865:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42986c:	00 00 
-  42986e:	75 61                	jne    4298d1 <MEMORY_T::POKE64(double, double)+0x200c1>
-  429870:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429877:	31 d2                	xor    edx,edx
-  429879:	bf 01 00 00 00       	mov    edi,0x1
-  42987e:	5b                   	pop    rbx
-  42987f:	5d                   	pop    rbp
-  429880:	41 5c                	pop    r12
-  429882:	41 5d                	pop    r13
-  429884:	41 5e                	pop    r14
-  429886:	41 5f                	pop    r15
-  429888:	e9 33 e4 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 197: print #1, "stdout";
-  42988d:	be 06 00 00 00       	mov    esi,0x6
-  429892:	48 8d 3d 32 7f 04 00 	lea    rdi,[rip+0x47f32]        # 4717cb <_IO_stdin_used+0x27cb>
-  429899:	e8 d2 0b 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42989e:	48 89 c6             	mov    rsi,rax
-  4298a1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4298a8:	00 
-  4298a9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4298b0:	00 00 
-  4298b2:	75 22                	jne    4298d6 <MEMORY_T::POKE64(double, double)+0x200c6>
-  4298b4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4298bb:	31 d2                	xor    edx,edx
-  4298bd:	bf 01 00 00 00       	mov    edi,0x1
-  4298c2:	5b                   	pop    rbx
-  4298c3:	5d                   	pop    rbp
-  4298c4:	41 5c                	pop    r12
-  4298c6:	41 5d                	pop    r13
-  4298c8:	41 5e                	pop    r14
-  4298ca:	41 5f                	pop    r15
-  4298cc:	e9 ef e3 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 198: print #1, "step";
-  4298d1:	e8 8a bf fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 197: print #1, "stdout";
-  4298d6:	e8 85 bf fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 196: print #1, "stdcall";
-  4298db:	be 07 00 00 00       	mov    esi,0x7
-  4298e0:	48 8d 3d dc 7e 04 00 	lea    rdi,[rip+0x47edc]        # 4717c3 <_IO_stdin_used+0x27c3>
-  4298e7:	e8 84 0b 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4298ec:	48 89 c6             	mov    rsi,rax
-  4298ef:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4298f6:	00 
-  4298f7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4298fe:	00 00 
-  429900:	75 61                	jne    429963 <MEMORY_T::POKE64(double, double)+0x20153>
-  429902:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429909:	31 d2                	xor    edx,edx
-  42990b:	bf 01 00 00 00       	mov    edi,0x1
-  429910:	5b                   	pop    rbx
-  429911:	5d                   	pop    rbp
-  429912:	41 5c                	pop    r12
-  429914:	41 5d                	pop    r13
-  429916:	41 5e                	pop    r14
-  429918:	41 5f                	pop    r15
-  42991a:	e9 a1 e3 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 195: print #1, "status";
-  42991f:	be 06 00 00 00       	mov    esi,0x6
-  429924:	48 8d 3d da 8d 04 00 	lea    rdi,[rip+0x48dda]        # 472705 <_IO_stdin_used+0x3705>
-  42992b:	e8 40 0b 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429930:	48 89 c6             	mov    rsi,rax
-  429933:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42993a:	00 
-  42993b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429942:	00 00 
-  429944:	75 22                	jne    429968 <MEMORY_T::POKE64(double, double)+0x20158>
-  429946:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42994d:	31 d2                	xor    edx,edx
-  42994f:	bf 01 00 00 00       	mov    edi,0x1
-  429954:	5b                   	pop    rbx
-  429955:	5d                   	pop    rbp
-  429956:	41 5c                	pop    r12
-  429958:	41 5d                	pop    r13
-  42995a:	41 5e                	pop    r14
-  42995c:	41 5f                	pop    r15
-  42995e:	e9 5d e3 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 196: print #1, "stdcall";
-  429963:	e8 f8 be fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 195: print #1, "status";
-  429968:	e8 f3 be fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 194: print #1, "statistics";
-  42996d:	be 0a 00 00 00       	mov    esi,0xa
-  429972:	48 8d 3d 3f 7e 04 00 	lea    rdi,[rip+0x47e3f]        # 4717b8 <_IO_stdin_used+0x27b8>
-  429979:	e8 f2 0a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42997e:	48 89 c6             	mov    rsi,rax
-  429981:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429988:	00 
-  429989:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429990:	00 00 
-  429992:	75 61                	jne    4299f5 <MEMORY_T::POKE64(double, double)+0x201e5>
-  429994:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42999b:	31 d2                	xor    edx,edx
-  42999d:	bf 01 00 00 00       	mov    edi,0x1
-  4299a2:	5b                   	pop    rbx
-  4299a3:	5d                   	pop    rbp
-  4299a4:	41 5c                	pop    r12
-  4299a6:	41 5d                	pop    r13
-  4299a8:	41 5e                	pop    r14
-  4299aa:	41 5f                	pop    r15
-  4299ac:	e9 0f e3 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 193: print #1, "static";
-  4299b1:	be 06 00 00 00       	mov    esi,0x6
-  4299b6:	48 8d 3d f4 7d 04 00 	lea    rdi,[rip+0x47df4]        # 4717b1 <_IO_stdin_used+0x27b1>
-  4299bd:	e8 ae 0a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  4299c2:	48 89 c6             	mov    rsi,rax
-  4299c5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  4299cc:	00 
-  4299cd:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  4299d4:	00 00 
-  4299d6:	75 22                	jne    4299fa <MEMORY_T::POKE64(double, double)+0x201ea>
-  4299d8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  4299df:	31 d2                	xor    edx,edx
-  4299e1:	bf 01 00 00 00       	mov    edi,0x1
-  4299e6:	5b                   	pop    rbx
-  4299e7:	5d                   	pop    rbp
-  4299e8:	41 5c                	pop    r12
-  4299ea:	41 5d                	pop    r13
-  4299ec:	41 5e                	pop    r14
-  4299ee:	41 5f                	pop    r15
-  4299f0:	e9 cb e2 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 194: print #1, "statistics";
-  4299f5:	e8 66 be fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 193: print #1, "static";
-  4299fa:	e8 61 be fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 192: print #1, "startswith";
-  4299ff:	be 0a 00 00 00       	mov    esi,0xa
-  429a04:	48 8d 3d 9b 7d 04 00 	lea    rdi,[rip+0x47d9b]        # 4717a6 <_IO_stdin_used+0x27a6>
-  429a0b:	e8 60 0a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429a10:	48 89 c6             	mov    rsi,rax
-  429a13:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429a1a:	00 
-  429a1b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429a22:	00 00 
-  429a24:	75 61                	jne    429a87 <MEMORY_T::POKE64(double, double)+0x20277>
-  429a26:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429a2d:	31 d2                	xor    edx,edx
-  429a2f:	bf 01 00 00 00       	mov    edi,0x1
-  429a34:	5b                   	pop    rbx
-  429a35:	5d                   	pop    rbp
-  429a36:	41 5c                	pop    r12
-  429a38:	41 5d                	pop    r13
-  429a3a:	41 5e                	pop    r14
-  429a3c:	41 5f                	pop    r15
-  429a3e:	e9 7d e2 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 191: print #1, "start";
-  429a43:	be 05 00 00 00       	mov    esi,0x5
-  429a48:	48 8d 3d 97 65 04 00 	lea    rdi,[rip+0x46597]        # 46ffe6 <_IO_stdin_used+0xfe6>
-  429a4f:	e8 1c 0a 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429a54:	48 89 c6             	mov    rsi,rax
-  429a57:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429a5e:	00 
-  429a5f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429a66:	00 00 
-  429a68:	75 22                	jne    429a8c <MEMORY_T::POKE64(double, double)+0x2027c>
-  429a6a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429a71:	31 d2                	xor    edx,edx
-  429a73:	bf 01 00 00 00       	mov    edi,0x1
-  429a78:	5b                   	pop    rbx
-  429a79:	5d                   	pop    rbp
-  429a7a:	41 5c                	pop    r12
-  429a7c:	41 5d                	pop    r13
-  429a7e:	41 5e                	pop    r14
-  429a80:	41 5f                	pop    r15
-  429a82:	e9 39 e2 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 192: print #1, "startswith";
-  429a87:	e8 d4 bd fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 191: print #1, "start";
-  429a8c:	e8 cf bd fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 190: print #1, "standard-2";
-  429a91:	be 0a 00 00 00       	mov    esi,0xa
-  429a96:	48 8d 3d fe 7c 04 00 	lea    rdi,[rip+0x47cfe]        # 47179b <_IO_stdin_used+0x279b>
-  429a9d:	e8 ce 09 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429aa2:	48 89 c6             	mov    rsi,rax
-  429aa5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429aac:	00 
-  429aad:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429ab4:	00 00 
-  429ab6:	75 61                	jne    429b19 <MEMORY_T::POKE64(double, double)+0x20309>
-  429ab8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429abf:	31 d2                	xor    edx,edx
-  429ac1:	bf 01 00 00 00       	mov    edi,0x1
-  429ac6:	5b                   	pop    rbx
-  429ac7:	5d                   	pop    rbp
-  429ac8:	41 5c                	pop    r12
-  429aca:	41 5d                	pop    r13
-  429acc:	41 5e                	pop    r14
-  429ace:	41 5f                	pop    r15
-  429ad0:	e9 eb e1 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 189: print #1, "standard-1";
-  429ad5:	be 0a 00 00 00       	mov    esi,0xa
-  429ada:	48 8d 3d af 7c 04 00 	lea    rdi,[rip+0x47caf]        # 471790 <_IO_stdin_used+0x2790>
-  429ae1:	e8 8a 09 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429ae6:	48 89 c6             	mov    rsi,rax
-  429ae9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429af0:	00 
-  429af1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429af8:	00 00 
-  429afa:	75 22                	jne    429b1e <MEMORY_T::POKE64(double, double)+0x2030e>
-  429afc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429b03:	31 d2                	xor    edx,edx
-  429b05:	bf 01 00 00 00       	mov    edi,0x1
-  429b0a:	5b                   	pop    rbx
-  429b0b:	5d                   	pop    rbp
-  429b0c:	41 5c                	pop    r12
-  429b0e:	41 5d                	pop    r13
-  429b10:	41 5e                	pop    r14
-  429b12:	41 5f                	pop    r15
-  429b14:	e9 a7 e1 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 190: print #1, "standard-2";
-  429b19:	e8 42 bd fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 189: print #1, "standard-1";
-  429b1e:	e8 3d bd fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 188: print #1, "standard";
-  429b23:	be 08 00 00 00       	mov    esi,0x8
-  429b28:	48 8d 3d 58 7c 04 00 	lea    rdi,[rip+0x47c58]        # 471787 <_IO_stdin_used+0x2787>
-  429b2f:	e8 3c 09 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429b34:	48 89 c6             	mov    rsi,rax
-  429b37:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429b3e:	00 
-  429b3f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429b46:	00 00 
-  429b48:	75 61                	jne    429bab <MEMORY_T::POKE64(double, double)+0x2039b>
-  429b4a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429b51:	31 d2                	xor    edx,edx
-  429b53:	bf 01 00 00 00       	mov    edi,0x1
-  429b58:	5b                   	pop    rbx
-  429b59:	5d                   	pop    rbp
-  429b5a:	41 5c                	pop    r12
-  429b5c:	41 5d                	pop    r13
-  429b5e:	41 5e                	pop    r14
-  429b60:	41 5f                	pop    r15
-  429b62:	e9 59 e1 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 187: print #1, "sqrt";
-  429b67:	be 04 00 00 00       	mov    esi,0x4
-  429b6c:	48 8d 3d dc 82 04 00 	lea    rdi,[rip+0x482dc]        # 471e4f <_IO_stdin_used+0x2e4f>
-  429b73:	e8 f8 08 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429b78:	48 89 c6             	mov    rsi,rax
-  429b7b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429b82:	00 
-  429b83:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429b8a:	00 00 
-  429b8c:	75 22                	jne    429bb0 <MEMORY_T::POKE64(double, double)+0x203a0>
-  429b8e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429b95:	31 d2                	xor    edx,edx
-  429b97:	bf 01 00 00 00       	mov    edi,0x1
-  429b9c:	5b                   	pop    rbx
-  429b9d:	5d                   	pop    rbp
-  429b9e:	41 5c                	pop    r12
-  429ba0:	41 5d                	pop    r13
-  429ba2:	41 5e                	pop    r14
-  429ba4:	41 5f                	pop    r15
-  429ba6:	e9 15 e1 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 188: print #1, "standard";
-  429bab:	e8 b0 bc fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 187: print #1, "sqrt";
-  429bb0:	e8 ab bc fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 186: print #1, "sqr";
-  429bb5:	be 03 00 00 00       	mov    esi,0x3
-  429bba:	48 8d 3d ba 6c 04 00 	lea    rdi,[rip+0x46cba]        # 47087b <_IO_stdin_used+0x187b>
-  429bc1:	e8 aa 08 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429bc6:	48 89 c6             	mov    rsi,rax
-  429bc9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429bd0:	00 
-  429bd1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429bd8:	00 00 
-  429bda:	75 61                	jne    429c3d <MEMORY_T::POKE64(double, double)+0x2042d>
-  429bdc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429be3:	31 d2                	xor    edx,edx
-  429be5:	bf 01 00 00 00       	mov    edi,0x1
-  429bea:	5b                   	pop    rbx
-  429beb:	5d                   	pop    rbp
-  429bec:	41 5c                	pop    r12
-  429bee:	41 5d                	pop    r13
-  429bf0:	41 5e                	pop    r14
-  429bf2:	41 5f                	pop    r15
-  429bf4:	e9 c7 e0 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 185: print #1, "spotted";
-  429bf9:	be 07 00 00 00       	mov    esi,0x7
-  429bfe:	48 8d 3d 7a 7b 04 00 	lea    rdi,[rip+0x47b7a]        # 47177f <_IO_stdin_used+0x277f>
-  429c05:	e8 66 08 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429c0a:	48 89 c6             	mov    rsi,rax
-  429c0d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429c14:	00 
-  429c15:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429c1c:	00 00 
-  429c1e:	75 22                	jne    429c42 <MEMORY_T::POKE64(double, double)+0x20432>
-  429c20:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429c27:	31 d2                	xor    edx,edx
-  429c29:	bf 01 00 00 00       	mov    edi,0x1
-  429c2e:	5b                   	pop    rbx
-  429c2f:	5d                   	pop    rbp
-  429c30:	41 5c                	pop    r12
-  429c32:	41 5d                	pop    r13
-  429c34:	41 5e                	pop    r14
-  429c36:	41 5f                	pop    r15
-  429c38:	e9 83 e0 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 186: print #1, "sqr";
-  429c3d:	e8 1e bc fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 185: print #1, "spotted";
-  429c42:	e8 19 bc fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 184: print #1, "spotlight";
-  429c47:	be 09 00 00 00       	mov    esi,0x9
-  429c4c:	48 8d 3d 22 7b 04 00 	lea    rdi,[rip+0x47b22]        # 471775 <_IO_stdin_used+0x2775>
-  429c53:	e8 18 08 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429c58:	48 89 c6             	mov    rsi,rax
-  429c5b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429c62:	00 
-  429c63:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429c6a:	00 00 
-  429c6c:	75 61                	jne    429ccf <MEMORY_T::POKE64(double, double)+0x204bf>
-  429c6e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429c75:	31 d2                	xor    edx,edx
-  429c77:	bf 01 00 00 00       	mov    edi,0x1
-  429c7c:	5b                   	pop    rbx
-  429c7d:	5d                   	pop    rbp
-  429c7e:	41 5c                	pop    r12
-  429c80:	41 5d                	pop    r13
-  429c82:	41 5e                	pop    r14
-  429c84:	41 5f                	pop    r15
-  429c86:	e9 35 e0 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 183: print #1, "split_union";
-  429c8b:	be 0b 00 00 00       	mov    esi,0xb
-  429c90:	48 8d 3d d2 7a 04 00 	lea    rdi,[rip+0x47ad2]        # 471769 <_IO_stdin_used+0x2769>
-  429c97:	e8 d4 07 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429c9c:	48 89 c6             	mov    rsi,rax
-  429c9f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429ca6:	00 
-  429ca7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429cae:	00 00 
-  429cb0:	75 22                	jne    429cd4 <MEMORY_T::POKE64(double, double)+0x204c4>
-  429cb2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429cb9:	31 d2                	xor    edx,edx
-  429cbb:	bf 01 00 00 00       	mov    edi,0x1
-  429cc0:	5b                   	pop    rbx
-  429cc1:	5d                   	pop    rbp
-  429cc2:	41 5c                	pop    r12
-  429cc4:	41 5d                	pop    r13
-  429cc6:	41 5e                	pop    r14
-  429cc8:	41 5f                	pop    r15
-  429cca:	e9 f1 df 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 184: print #1, "spotlight";
-  429ccf:	e8 8c bb fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 183: print #1, "split_union";
-  429cd4:	e8 87 bb fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 182: print #1, "split";
-  429cd9:	be 05 00 00 00       	mov    esi,0x5
-  429cde:	48 8d 3d 7e 7a 04 00 	lea    rdi,[rip+0x47a7e]        # 471763 <_IO_stdin_used+0x2763>
-  429ce5:	e8 86 07 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429cea:	48 89 c6             	mov    rsi,rax
-  429ced:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429cf4:	00 
-  429cf5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429cfc:	00 00 
-  429cfe:	75 61                	jne    429d61 <MEMORY_T::POKE64(double, double)+0x20551>
-  429d00:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429d07:	31 d2                	xor    edx,edx
-  429d09:	bf 01 00 00 00       	mov    edi,0x1
-  429d0e:	5b                   	pop    rbx
-  429d0f:	5d                   	pop    rbp
-  429d10:	41 5c                	pop    r12
-  429d12:	41 5d                	pop    r13
-  429d14:	41 5e                	pop    r14
-  429d16:	41 5f                	pop    r15
-  429d18:	e9 a3 df 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 181: print #1, "splineinverse";
-  429d1d:	be 0d 00 00 00       	mov    esi,0xd
-  429d22:	48 8d 3d 2c 7a 04 00 	lea    rdi,[rip+0x47a2c]        # 471755 <_IO_stdin_used+0x2755>
-  429d29:	e8 42 07 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429d2e:	48 89 c6             	mov    rsi,rax
-  429d31:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429d38:	00 
-  429d39:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429d40:	00 00 
-  429d42:	75 22                	jne    429d66 <MEMORY_T::POKE64(double, double)+0x20556>
-  429d44:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429d4b:	31 d2                	xor    edx,edx
-  429d4d:	bf 01 00 00 00       	mov    edi,0x1
-  429d52:	5b                   	pop    rbx
-  429d53:	5d                   	pop    rbp
-  429d54:	41 5c                	pop    r12
-  429d56:	41 5d                	pop    r13
-  429d58:	41 5e                	pop    r14
-  429d5a:	41 5f                	pop    r15
-  429d5c:	e9 5f df 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 182: print #1, "split";
-  429d61:	e8 fa ba fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 181: print #1, "splineinverse";
-  429d66:	e8 f5 ba fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 180: print #1, "spline";
-  429d6b:	be 06 00 00 00       	mov    esi,0x6
-  429d70:	48 8d 3d 59 5a 04 00 	lea    rdi,[rip+0x45a59]        # 46f7d0 <_IO_stdin_used+0x7d0>
-  429d77:	e8 f4 06 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429d7c:	48 89 c6             	mov    rsi,rax
-  429d7f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429d86:	00 
-  429d87:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429d8e:	00 00 
-  429d90:	75 61                	jne    429df3 <MEMORY_T::POKE64(double, double)+0x205e3>
-  429d92:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429d99:	31 d2                	xor    edx,edx
-  429d9b:	bf 01 00 00 00       	mov    edi,0x1
-  429da0:	5b                   	pop    rbx
-  429da1:	5d                   	pop    rbp
-  429da2:	41 5c                	pop    r12
-  429da4:	41 5d                	pop    r13
-  429da6:	41 5e                	pop    r14
-  429da8:	41 5f                	pop    r15
-  429daa:	e9 11 df 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 179: print #1, "spiral2";
-  429daf:	be 07 00 00 00       	mov    esi,0x7
-  429db4:	48 8d 3d 92 79 04 00 	lea    rdi,[rip+0x47992]        # 47174d <_IO_stdin_used+0x274d>
-  429dbb:	e8 b0 06 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429dc0:	48 89 c6             	mov    rsi,rax
-  429dc3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429dca:	00 
-  429dcb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429dd2:	00 00 
-  429dd4:	75 22                	jne    429df8 <MEMORY_T::POKE64(double, double)+0x205e8>
-  429dd6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429ddd:	31 d2                	xor    edx,edx
-  429ddf:	bf 01 00 00 00       	mov    edi,0x1
-  429de4:	5b                   	pop    rbx
-  429de5:	5d                   	pop    rbp
-  429de6:	41 5c                	pop    r12
-  429de8:	41 5d                	pop    r13
-  429dea:	41 5e                	pop    r14
-  429dec:	41 5f                	pop    r15
-  429dee:	e9 cd de 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 180: print #1, "spline";
-  429df3:	e8 68 ba fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 179: print #1, "spiral2";
-  429df8:	e8 63 ba fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 178: print #1, "spiral1";
-  429dfd:	be 07 00 00 00       	mov    esi,0x7
-  429e02:	48 8d 3d 3c 79 04 00 	lea    rdi,[rip+0x4793c]        # 471745 <_IO_stdin_used+0x2745>
-  429e09:	e8 62 06 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429e0e:	48 89 c6             	mov    rsi,rax
-  429e11:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429e18:	00 
-  429e19:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429e20:	00 00 
-  429e22:	75 61                	jne    429e85 <MEMORY_T::POKE64(double, double)+0x20675>
-  429e24:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429e2b:	31 d2                	xor    edx,edx
-  429e2d:	bf 01 00 00 00       	mov    edi,0x1
-  429e32:	5b                   	pop    rbx
-  429e33:	5d                   	pop    rbp
-  429e34:	41 5c                	pop    r12
-  429e36:	41 5d                	pop    r13
-  429e38:	41 5e                	pop    r14
-  429e3a:	41 5f                	pop    r15
-  429e3c:	e9 7f de 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 177: print #1, "spherical";
-  429e41:	be 09 00 00 00       	mov    esi,0x9
-  429e46:	48 8d 3d ee 78 04 00 	lea    rdi,[rip+0x478ee]        # 47173b <_IO_stdin_used+0x273b>
-  429e4d:	e8 1e 06 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429e52:	48 89 c6             	mov    rsi,rax
-  429e55:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429e5c:	00 
-  429e5d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429e64:	00 00 
-  429e66:	75 22                	jne    429e8a <MEMORY_T::POKE64(double, double)+0x2067a>
-  429e68:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429e6f:	31 d2                	xor    edx,edx
-  429e71:	bf 01 00 00 00       	mov    edi,0x1
-  429e76:	5b                   	pop    rbx
-  429e77:	5d                   	pop    rbp
-  429e78:	41 5c                	pop    r12
-  429e7a:	41 5d                	pop    r13
-  429e7c:	41 5e                	pop    r14
-  429e7e:	41 5f                	pop    r15
-  429e80:	e9 3b de 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 178: print #1, "spiral1";
-  429e85:	e8 d6 b9 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 177: print #1, "spherical";
-  429e8a:	e8 d1 b9 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 176: print #1, "sphere_sweep";
-  429e8f:	be 0c 00 00 00       	mov    esi,0xc
-  429e94:	48 8d 3d 93 78 04 00 	lea    rdi,[rip+0x47893]        # 47172e <_IO_stdin_used+0x272e>
-  429e9b:	e8 d0 05 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429ea0:	48 89 c6             	mov    rsi,rax
-  429ea3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429eaa:	00 
-  429eab:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429eb2:	00 00 
-  429eb4:	75 61                	jne    429f17 <MEMORY_T::POKE64(double, double)+0x20707>
-  429eb6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429ebd:	31 d2                	xor    edx,edx
-  429ebf:	bf 01 00 00 00       	mov    edi,0x1
-  429ec4:	5b                   	pop    rbx
-  429ec5:	5d                   	pop    rbp
-  429ec6:	41 5c                	pop    r12
-  429ec8:	41 5d                	pop    r13
-  429eca:	41 5e                	pop    r14
-  429ecc:	41 5f                	pop    r15
-  429ece:	e9 ed dd 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 175: print #1, "sphere";
-  429ed3:	be 06 00 00 00       	mov    esi,0x6
-  429ed8:	48 8d 3d 37 77 04 00 	lea    rdi,[rip+0x47737]        # 471616 <_IO_stdin_used+0x2616>
-  429edf:	e8 8c 05 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429ee4:	48 89 c6             	mov    rsi,rax
-  429ee7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429eee:	00 
-  429eef:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429ef6:	00 00 
-  429ef8:	75 22                	jne    429f1c <MEMORY_T::POKE64(double, double)+0x2070c>
-  429efa:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429f01:	31 d2                	xor    edx,edx
-  429f03:	bf 01 00 00 00       	mov    edi,0x1
-  429f08:	5b                   	pop    rbx
-  429f09:	5d                   	pop    rbp
-  429f0a:	41 5c                	pop    r12
-  429f0c:	41 5d                	pop    r13
-  429f0e:	41 5e                	pop    r14
-  429f10:	41 5f                	pop    r15
-  429f12:	e9 a9 dd 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 176: print #1, "sphere_sweep";
-  429f17:	e8 44 b9 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 175: print #1, "sphere";
-  429f1c:	e8 3f b9 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 174: print #1, "specular";
-  429f21:	be 08 00 00 00       	mov    esi,0x8
-  429f26:	48 8d 3d f8 77 04 00 	lea    rdi,[rip+0x477f8]        # 471725 <_IO_stdin_used+0x2725>
-  429f2d:	e8 3e 05 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429f32:	48 89 c6             	mov    rsi,rax
-  429f35:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429f3c:	00 
-  429f3d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429f44:	00 00 
-  429f46:	75 61                	jne    429fa9 <MEMORY_T::POKE64(double, double)+0x20799>
-  429f48:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429f4f:	31 d2                	xor    edx,edx
-  429f51:	bf 01 00 00 00       	mov    edi,0x1
-  429f56:	5b                   	pop    rbx
-  429f57:	5d                   	pop    rbp
-  429f58:	41 5c                	pop    r12
-  429f5a:	41 5d                	pop    r13
-  429f5c:	41 5e                	pop    r14
-  429f5e:	41 5f                	pop    r15
-  429f60:	e9 5b dd 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 173: print #1, "special-names";
-  429f65:	be 0d 00 00 00       	mov    esi,0xd
-  429f6a:	48 8d 3d a6 77 04 00 	lea    rdi,[rip+0x477a6]        # 471717 <_IO_stdin_used+0x2717>
-  429f71:	e8 fa 04 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429f76:	48 89 c6             	mov    rsi,rax
-  429f79:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429f80:	00 
-  429f81:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429f88:	00 00 
-  429f8a:	75 22                	jne    429fae <MEMORY_T::POKE64(double, double)+0x2079e>
-  429f8c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429f93:	31 d2                	xor    edx,edx
-  429f95:	bf 01 00 00 00       	mov    edi,0x1
-  429f9a:	5b                   	pop    rbx
-  429f9b:	5d                   	pop    rbp
-  429f9c:	41 5c                	pop    r12
-  429f9e:	41 5d                	pop    r13
-  429fa0:	41 5e                	pop    r14
-  429fa2:	41 5f                	pop    r15
-  429fa4:	e9 17 dd 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 174: print #1, "specular";
-  429fa9:	e8 b2 b8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 173: print #1, "special-names";
-  429fae:	e8 ad b8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 172: print #1, "specialize";						
-  429fb3:	be 0a 00 00 00       	mov    esi,0xa
-  429fb8:	48 8d 3d 4d 77 04 00 	lea    rdi,[rip+0x4774d]        # 47170c <_IO_stdin_used+0x270c>
-  429fbf:	e8 ac 04 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  429fc4:	48 89 c6             	mov    rsi,rax
-  429fc7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  429fce:	00 
-  429fcf:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  429fd6:	00 00 
-  429fd8:	75 61                	jne    42a03b <MEMORY_T::POKE64(double, double)+0x2082b>
-  429fda:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  429fe1:	31 d2                	xor    edx,edx
-  429fe3:	bf 01 00 00 00       	mov    edi,0x1
-  429fe8:	5b                   	pop    rbx
-  429fe9:	5d                   	pop    rbp
-  429fea:	41 5c                	pop    r12
-  429fec:	41 5d                	pop    r13
-  429fee:	41 5e                	pop    r14
-  429ff0:	41 5f                	pop    r15
-  429ff2:	e9 c9 dc 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 171: print #1, "spc";
-  429ff7:	be 03 00 00 00       	mov    esi,0x3
-  429ffc:	48 8d 3d 05 77 04 00 	lea    rdi,[rip+0x47705]        # 471708 <_IO_stdin_used+0x2708>
-  42a003:	e8 68 04 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42a008:	48 89 c6             	mov    rsi,rax
-  42a00b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42a012:	00 
-  42a013:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42a01a:	00 00 
-  42a01c:	75 22                	jne    42a040 <MEMORY_T::POKE64(double, double)+0x20830>
-  42a01e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42a025:	31 d2                	xor    edx,edx
-  42a027:	bf 01 00 00 00       	mov    edi,0x1
-  42a02c:	5b                   	pop    rbx
-  42a02d:	5d                   	pop    rbp
-  42a02e:	41 5c                	pop    r12
-  42a030:	41 5d                	pop    r13
-  42a032:	41 5e                	pop    r14
-  42a034:	41 5f                	pop    r15
-  42a036:	e9 85 dc 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 172: print #1, "specialize";						
-  42a03b:	e8 20 b8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 171: print #1, "spc";
-  42a040:	e8 1b b8 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 170: print #1, "spacing";
-  42a045:	be 07 00 00 00       	mov    esi,0x7
-  42a04a:	48 8d 3d af 76 04 00 	lea    rdi,[rip+0x476af]        # 471700 <_IO_stdin_used+0x2700>
-  42a051:	e8 1a 04 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42a056:	48 89 c6             	mov    rsi,rax
-  42a059:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42a060:	00 
-  42a061:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42a068:	00 00 
-  42a06a:	75 61                	jne    42a0cd <MEMORY_T::POKE64(double, double)+0x208bd>
-  42a06c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42a073:	31 d2                	xor    edx,edx
-  42a075:	bf 01 00 00 00       	mov    edi,0x1
-  42a07a:	5b                   	pop    rbx
-  42a07b:	5d                   	pop    rbp
-  42a07c:	41 5c                	pop    r12
-  42a07e:	41 5d                	pop    r13
-  42a080:	41 5e                	pop    r14
-  42a082:	41 5f                	pop    r15
-  42a084:	e9 37 dc 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 169: print #1, "spaces";
-  42a089:	be 06 00 00 00       	mov    esi,0x6
-  42a08e:	48 8d 3d 64 76 04 00 	lea    rdi,[rip+0x47664]        # 4716f9 <_IO_stdin_used+0x26f9>
-  42a095:	e8 d6 03 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42a09a:	48 89 c6             	mov    rsi,rax
-  42a09d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42a0a4:	00 
-  42a0a5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42a0ac:	00 00 
-  42a0ae:	75 22                	jne    42a0d2 <MEMORY_T::POKE64(double, double)+0x208c2>
-  42a0b0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42a0b7:	31 d2                	xor    edx,edx
-  42a0b9:	bf 01 00 00 00       	mov    edi,0x1
-  42a0be:	5b                   	pop    rbx
-  42a0bf:	5d                   	pop    rbp
-  42a0c0:	41 5c                	pop    r12
-  42a0c2:	41 5d                	pop    r13
-  42a0c4:	41 5e                	pop    r14
-  42a0c6:	41 5f                	pop    r15
-  42a0c8:	e9 f3 db 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 170: print #1, "spacing";
-  42a0cd:	e8 8e b7 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 169: print #1, "spaces";
-  42a0d2:	e8 89 b7 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 167: print #1, "space";
-  42a0d7:	be 05 00 00 00       	mov    esi,0x5
-  42a0dc:	48 8d 3d 5c 57 04 00 	lea    rdi,[rip+0x4575c]        # 46f83f <_IO_stdin_used+0x83f>
-  42a0e3:	e8 88 03 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42a0e8:	48 89 c6             	mov    rsi,rax
-  42a0eb:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42a0f2:	00 
-  42a0f3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42a0fa:	00 00 
-  42a0fc:	75 61                	jne    42a15f <MEMORY_T::POKE64(double, double)+0x2094f>
-  42a0fe:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42a105:	31 d2                	xor    edx,edx
-  42a107:	bf 01 00 00 00       	mov    edi,0x1
-  42a10c:	5b                   	pop    rbx
-  42a10d:	5d                   	pop    rbp
-  42a10e:	41 5c                	pop    r12
-  42a110:	41 5d                	pop    r13
-  42a112:	41 5e                	pop    r14
-  42a114:	41 5f                	pop    r15
-  42a116:	e9 a5 db 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 166: print #1, "source-computer";
-  42a11b:	be 0f 00 00 00       	mov    esi,0xf
-  42a120:	48 8d 3d c2 75 04 00 	lea    rdi,[rip+0x475c2]        # 4716e9 <_IO_stdin_used+0x26e9>
-  42a127:	e8 44 03 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42a12c:	48 89 c6             	mov    rsi,rax
-  42a12f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42a136:	00 
-  42a137:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42a13e:	00 00 
-  42a140:	75 22                	jne    42a164 <MEMORY_T::POKE64(double, double)+0x20954>
-  42a142:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42a149:	31 d2                	xor    edx,edx
-  42a14b:	bf 01 00 00 00       	mov    edi,0x1
-  42a150:	5b                   	pop    rbx
-  42a151:	5d                   	pop    rbp
-  42a152:	41 5c                	pop    r12
-  42a154:	41 5d                	pop    r13
-  42a156:	41 5e                	pop    r14
-  42a158:	41 5f                	pop    r15
-  42a15a:	e9 61 db 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 167: print #1, "space";
-  42a15f:	e8 fc b6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 166: print #1, "source-computer";
-  42a164:	e8 f7 b6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 165: print #1, "source";
-  42a169:	be 06 00 00 00       	mov    esi,0x6
-  42a16e:	48 8d 3d 08 73 04 00 	lea    rdi,[rip+0x47308]        # 47147d <_IO_stdin_used+0x247d>
-  42a175:	e8 f6 02 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42a17a:	48 89 c6             	mov    rsi,rax
-  42a17d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42a184:	00 
-  42a185:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42a18c:	00 00 
-  42a18e:	75 61                	jne    42a1f1 <MEMORY_T::POKE64(double, double)+0x209e1>
-  42a190:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42a197:	31 d2                	xor    edx,edx
-  42a199:	bf 01 00 00 00       	mov    edi,0x1
-  42a19e:	5b                   	pop    rbx
-  42a19f:	5d                   	pop    rbp
-  42a1a0:	41 5c                	pop    r12
-  42a1a2:	41 5d                	pop    r13
-  42a1a4:	41 5e                	pop    r14
-  42a1a6:	41 5f                	pop    r15
-  42a1a8:	e9 13 db 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 164: print #1, "sound";
-  42a1ad:	be 05 00 00 00       	mov    esi,0x5
-  42a1b2:	48 8d 3d 2a 75 04 00 	lea    rdi,[rip+0x4752a]        # 4716e3 <_IO_stdin_used+0x26e3>
-  42a1b9:	e8 b2 02 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42a1be:	48 89 c6             	mov    rsi,rax
-  42a1c1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42a1c8:	00 
-  42a1c9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42a1d0:	00 00 
-  42a1d2:	75 22                	jne    42a1f6 <MEMORY_T::POKE64(double, double)+0x209e6>
-  42a1d4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42a1db:	31 d2                	xor    edx,edx
-  42a1dd:	bf 01 00 00 00       	mov    edi,0x1
-  42a1e2:	5b                   	pop    rbx
-  42a1e3:	5d                   	pop    rbp
-  42a1e4:	41 5c                	pop    r12
-  42a1e6:	41 5d                	pop    r13
-  42a1e8:	41 5e                	pop    r14
-  42a1ea:	41 5f                	pop    r15
-  42a1ec:	e9 cf da 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 165: print #1, "source";
-  42a1f1:	e8 6a b6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 164: print #1, "sound";
-  42a1f6:	e8 65 b6 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 163: print #1, "sort-return";
-  42a1fb:	be 0b 00 00 00       	mov    esi,0xb
-  42a200:	48 8d 3d d0 74 04 00 	lea    rdi,[rip+0x474d0]        # 4716d7 <_IO_stdin_used+0x26d7>
-  42a207:	e8 64 02 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42a20c:	48 89 c6             	mov    rsi,rax
-  42a20f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42a216:	00 
-  42a217:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42a21e:	00 00 
-  42a220:	75 61                	jne    42a283 <MEMORY_T::POKE64(double, double)+0x20a73>
-  42a222:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42a229:	31 d2                	xor    edx,edx
-  42a22b:	bf 01 00 00 00       	mov    edi,0x1
-  42a230:	5b                   	pop    rbx
-  42a231:	5d                   	pop    rbp
-  42a232:	41 5c                	pop    r12
-  42a234:	41 5d                	pop    r13
-  42a236:	41 5e                	pop    r14
-  42a238:	41 5f                	pop    r15
-  42a23a:	e9 81 da 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 162: print #1, "sort-mode-size";
-  42a23f:	be 0e 00 00 00       	mov    esi,0xe
-  42a244:	48 8d 3d 7d 74 04 00 	lea    rdi,[rip+0x4747d]        # 4716c8 <_IO_stdin_used+0x26c8>
-  42a24b:	e8 20 02 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42a250:	48 89 c6             	mov    rsi,rax
-  42a253:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42a25a:	00 
-  42a25b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42a262:	00 00 
-  42a264:	75 22                	jne    42a288 <MEMORY_T::POKE64(double, double)+0x20a78>
-  42a266:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42a26d:	31 d2                	xor    edx,edx
-  42a26f:	bf 01 00 00 00       	mov    edi,0x1
-  42a274:	5b                   	pop    rbx
-  42a275:	5d                   	pop    rbp
-  42a276:	41 5c                	pop    r12
-  42a278:	41 5d                	pop    r13
-  42a27a:	41 5e                	pop    r14
-  42a27c:	41 5f                	pop    r15
-  42a27e:	e9 3d da 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 163: print #1, "sort-return";
-  42a283:	e8 d8 b5 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 162: print #1, "sort-mode-size";
-  42a288:	e8 d3 b5 fd ff       	call   405860 <__stack_chk_fail@plt>
-;						case 161: print #1, "sort-message";
-  42a28d:	be 0c 00 00 00       	mov    esi,0xc
-  42a292:	48 8d 3d 22 74 04 00 	lea    rdi,[rip+0x47422]        # 4716bb <_IO_stdin_used+0x26bb>
-  42a299:	e8 d2 01 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42a29e:	48 89 c6             	mov    rsi,rax
-  42a2a1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42a2a8:	00 
-  42a2a9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42a2b0:	00 00 
-  42a2b2:	75 61                	jne    42a315 <MEMORY_T::POKE64(double, double)+0x20b05>
-  42a2b4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
-  42a2bb:	31 d2                	xor    edx,edx
-  42a2bd:	bf 01 00 00 00       	mov    edi,0x1
-  42a2c2:	5b                   	pop    rbx
-  42a2c3:	5d                   	pop    rbp
-  42a2c4:	41 5c                	pop    r12
-  42a2c6:	41 5d                	pop    r13
-  42a2c8:	41 5e                	pop    r14
-  42a2ca:	41 5f                	pop    r15
-  42a2cc:	e9 ef d9 03 00       	jmp    467cc0 <fb_PrintString>
-;						case 160: print #1, "sort-merge";
-  42a2d1:	be 0a 00 00 00       	mov    esi,0xa
-  42a2d6:	48 8d 3d d3 73 04 00 	lea    rdi,[rip+0x473d3]        # 4716b0 <_IO_stdin_used+0x26b0>
-  42a2dd:	e8 8e 01 04 00       	call   46a470 <fb_StrAllocTempDescZEx>
-  42a2e2:	48 89 c6             	mov    rsi,rax
-  42a2e5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
-  42a2ec:	00 
-  42a2ed:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
-  42a2f4:	00 00 
+ 08cf0 6162656c 24343931 35006c61 62656c24  abel$4915.label$
+ 08d00 31323131 006c6162 656c2431 32313200  1211.label$1212.
+ 08d10 6c616265 6c243439 3138006c 6162656c  label$4918.label
+ 08d20 24313231 34006c61 62656c24 31323135  $1214.label$1215
+ 08d30 006c6162 656c2431 32313700 6c616265  .label$1217.labe
+ 08d40 6c243132 3138006c 6162656c 24323830  l$1218.label$280
+ 08d50 31002436 4f50434f 4445006c 6162656c  1.$6OPCODE.label
+ 08d60 24323830 34006c61 62656c24 32383035  $2804.label$2805
+ 08d70 006c6162 656c2432 38303700 6c616265  .label$2807.labe
+ 08d80 6c243238 30380076 72243932 37340054  l$2808.vr$9274.T
+ 08d90 4d502431 34383624 37006c61 62656c24  MP$1486$7.label$
+ 08da0 34383000 6c616265 6c243136 3937006c  480.label$1697.l
+ 08db0 6162656c 24343831 00676c54 65785061  abel$481.glTexPa
+ 08dc0 72616d65 74657269 006c6162 656c2435  rameteri.label$5
+ 08dd0 34343000 6c616265 6c243534 3431006c  440.label$5441.l
+ 08de0 6162656c 24353434 32006c61 62656c24  abel$5442.label$
+ 08df0 35343433 006c6162 656c2435 34343400  5443.label$5444.
+ 08e00 6c616265 6c243534 3435006c 6162656c  label$5445.label
+ 08e10 24353434 36006c61 62656c24 35343437  $5446.label$5447
+ 08e20 006c6162 656c2435 34343800 494e535f  .label$5448.INS_
+ 08e30 53454300 494e535f 53454400 76722439  SEC.INS_SED.vr$9
+ 08e40 36393300 6c616265 6c243438 3600494e  693.label$486.IN
+ 08e50 535f5345 49006c61 62656c24 33333331  S_SEI.label$3331
+ 08e60 006c6162 656c2433 33333200 6c616265  .label$3332.labe
+ 08e70 6c243333 3333006c 6162656c 24333333  l$3333.label$333
+ 08e80 34006c61 62656c24 33333335 006c6162  4.label$3335.lab
+ 08e90 656c2433 33333600 6c616265 6c243333  el$3336.label$33
+ 08ea0 3337006c 6162656c 24333333 38006c61  37.label$3338.la
+ 08eb0 62656c24 33333339 006c6162 656c2434  bel$3339.label$4
+ 08ec0 39323000 6c616265 6c243439 3231006c  920.label$4921.l
+ 08ed0 6162656c 24343932 32006c61 62656c24  abel$4922.label$
+ 08ee0 34393233 006c6162 656c2434 39323400  4923.label$4924.
+ 08ef0 6c616265 6c243132 3230006c 6162656c  label$1220.label
+ 08f00 24313232 31006c61 62656c24 34393237  $1221.label$4927
+ 08f10 006c6162 656c2431 32323300 6c616265  .label$1223.labe
+ 08f20 6c243132 3234006c 6162656c 24313232  l$1224.label$122
+ 08f30 36006c61 62656c24 31323237 006c6162  6.label$1227.lab
+ 08f40 656c2431 32323900 6c616265 6c243238  el$1229.label$28
+ 08f50 3130006c 6162656c 24323831 31006c61  10.label$2811.la
+ 08f60 62656c24 32383133 006c6162 656c2432  bel$2813.label$2
+ 08f70 38313400 6c616265 6c243238 3136006c  814.label$2816.l
+ 08f80 6162656c 24323831 37006c61 62656c24  abel$2817.label$
+ 08f90 32383139 006c6162 656c2433 3832006c  2819.label$382.l
+ 08fa0 6162656c 24333833 006c6162 656c2433  abel$383.label$3
+ 08fb0 3835006c 6162656c 24333836 006c6162  85.label$386.lab
+ 08fc0 656c2433 3839006c 6162656c 24353435  el$389.label$545
+ 08fd0 30006c61 62656c24 32333030 006c6162  0.label$2300.lab
+ 08fe0 656c2435 34353200 6c616265 6c243534  el$5452.label$54
+ 08ff0 3533006c 6162656c 24353435 34006c61  53.label$5454.la
+ 09000 62656c24 35343535 006c6162 656c2435  bel$5455.label$5
+ 09010 34353600 6c616265 6c243534 3537006c  456.label$5457.l
+ 09020 6162656c 24353435 38006c61 62656c24  abel$5458.label$
+ 09030 35343539 006c6162 656c2433 33343000  5459.label$3340.
+ 09040 6c616265 6c243333 3431006c 6162656c  label$3341.label
+ 09050 24333334 32006c61 62656c24 33333433  $3342.label$3343
+ 09060 006c6162 656c2433 33343400 6c616265  .label$3344.labe
+ 09070 6c243333 3435006c 6162656c 24333334  l$3345.label$334
+ 09080 36006c61 62656c24 33333437 006c6162  6.label$3347.lab
+ 09090 656c2433 33343800 6c616265 6c243333  el$3348.label$33
+ 090a0 3439006c 6162656c 24343933 30006c61  49.label$4930.la
+ 090b0 62656c24 34393331 006c6162 656c2434  bel$4931.label$4
+ 090c0 39333200 6c616265 6c243439 3333006c  932.label$4933.l
+ 090d0 6162656c 24343933 34006c61 62656c24  abel$4934.label$
+ 090e0 31323330 006c6162 656c2434 39333600  1230.label$4936.
+ 090f0 6c616265 6c243132 3332006c 6162656c  label$1232.label
+ 09100 24313233 33006c61 62656c24 34393339  $1233.label$4939
+ 09110 00243134 5f5f4642 5f444154 41444553  .$14__FB_DATADES
+ 09120 4324006c 6162656c 24313233 36005449  C$.label$1236.TI
+ 09130 434b5300 6c616265 6c243132 3339006c  CKS.label$1239.l
+ 09140 6162656c 24323832 30006c61 62656c24  abel$2820.label$
+ 09150 32383232 006c6162 656c2432 38323300  2822.label$2823.
+ 09160 6c616265 6c243238 3235006c 6162656c  label$2825.label
+ 09170 24323832 36006662 5f434852 006c6162  $2826.fb_CHR.lab
+ 09180 656c2432 38323800 6c616265 6c243238  el$2828.label$28
+ 09190 32390047 4c534352 45454e00 6c616265  29.GLSCREEN.labe
+ 091a0 6c243531 31390076 72243930 30300076  l$5119.vr$9000.v
+ 091b0 72243930 30310076 72243930 30320076  r$9001.vr$9002.v
+ 091c0 72243930 30330076 72243930 30340076  r$9003.vr$9004.v
+ 091d0 72243930 30350076 72243930 30360076  r$9005.vr$9006.v
+ 091e0 72243930 3037006c 6162656c 24353436  r$9007.label$546
+ 091f0 30006c61 62656c24 35343631 006c6162  0.label$5461.lab
+ 09200 656c2435 34363200 6c616265 6c243534  el$5462.label$54
+ 09210 3633006c 6162656c 24353436 34006c61  63.label$5464.la
+ 09220 62656c24 35343635 006c6162 656c2435  bel$5465.label$5
+ 09230 34363600 6c616265 6c243534 3637006c  466.label$5467.l
+ 09240 6162656c 24353436 38006c61 62656c24  abel$5468.label$
+ 09250 35343639 006c6162 656c2433 33353000  5469.label$3350.
+ 09260 6c616265 6c243333 3531006c 6162656c  label$3351.label
+ 09270 24333335 32006c61 62656c24 33333533  $3352.label$3353
+ 09280 006c6162 656c2433 33353400 6c616265  .label$3354.labe
+ 09290 6c243333 3535006c 6162656c 24333335  l$3355.label$335
+ 092a0 36006c61 62656c24 33333537 006c6162  6.label$3357.lab
+ 092b0 656c2433 33353800 6c616265 6c243333  el$3358.label$33
+ 092c0 3539006c 6162656c 24343934 30006c61  59.label$4940.la
+ 092d0 62656c24 34393431 006c6162 656c2434  bel$4941.label$4
+ 092e0 39343200 6c616265 6c243439 3433006c  942.label$4943.l
+ 092f0 6162656c 24343934 34006c61 62656c24  abel$4944.label$
+ 09300 34393435 006c6162 656c2431 32343100  4945.label$1241.
+ 09310 6c616265 6c243132 3432006c 6162656c  label$1242.label
+ 09320 24343934 38006c61 62656c24 31323434  $4948.label$1244
+ 09330 006c6162 656c2431 32343500 6c616265  .label$1245.labe
+ 09340 6c243132 3437006c 6162656c 24313234  l$1247.label$124
+ 09350 38006c61 62656c24 32383331 006c6162  8.label$2831.lab
+ 09360 656c2432 38333200 6c616265 6c243238  el$2832.label$28
+ 09370 3334006c 6162656c 24323833 35007672  34.label$2835.vr
+ 09380 24383230 30006c61 62656c24 32383337  $8200.label$2837
+ 09390 006c6162 656c2432 38333800 6c616265  .label$2838.labe
+ 093a0 6c243339 31007672 24383230 32006c61  l$391.vr$8202.la
+ 093b0 62656c24 33393200 76722438 32303300  bel$392.vr$8203.
+ 093c0 6c616265 6c243339 34007672 24383230  label$394.vr$820
+ 093d0 35006c61 62656c24 33393500 76722438  5.label$395.vr$8
+ 093e0 32303600 76722439 30313000 76722438  206.vr$9010.vr$8
+ 093f0 32303700 76722439 30313200 76722438  207.vr$9012.vr$8
+ 09400 32303800 76722439 30313400 5652414d  208.vr$9014.VRAM
+ 09410 24007672 24393031 36007672 24393031  $.vr$9016.vr$901
+ 09420 37006c61 62656c24 35343730 006c6162  7.label$5470.lab
+ 09430 656c2435 34373100 6c616265 6c243534  el$5471.label$54
+ 09440 3732005f 5a4e384d 454d4f52 595f5438  72._ZN8MEMORY_T8
+ 09450 52454144 42595445 4564006c 6162656c  READBYTEEd.label
+ 09460 24353437 34006c61 62656c24 35343735  $5474.label$5475
+ 09470 006c6162 656c2435 34373600 6c616265  .label$5476.labe
+ 09480 6c243534 3737006c 6162656c 24353437  l$5477.label$547
+ 09490 38006c61 62656c24 35343739 00746d70  8.label$5479.tmp
+ 094a0 24323838 3000746d 70243238 38310074  $2880.tmp$2881.t
+ 094b0 6d702432 38383200 6c616265 6c243333  mp$2882.label$33
+ 094c0 3630006c 6162656c 24333336 31006c61  60.label$3361.la
+ 094d0 62656c24 33333632 006c6162 656c2433  bel$3362.label$3
+ 094e0 33363300 6c616265 6c243333 3634006c  363.label$3364.l
+ 094f0 6162656c 24333336 35006c61 62656c24  abel$3365.label$
+ 09500 33333636 006c6162 656c2433 33363700  3366.label$3367.
+ 09510 6c616265 6c243333 3638006c 6162656c  label$3368.label
+ 09520 24393038 006c6162 656c2434 39353000  $908.label$4950.
+ 09530 6c616265 6c243439 3531006c 6162656c  label$4951.label
+ 09540 24343935 32006c61 62656c24 34393533  $4952.label$4953
+ 09550 006c6162 656c2434 39353400 6c616265  .label$4954.labe
+ 09560 6c243132 3530006c 6162656c 24313235  l$1250.label$125
+ 09570 31006c61 62656c24 34393537 006c6162  1.label$4957.lab
+ 09580 656c2431 32353300 6c616265 6c243132  el$1253.label$12
+ 09590 3534006c 6162656c 24313235 36006c61  54.label$1256.la
+ 095a0 62656c24 31323537 006c6162 656c2431  bel$1257.label$1
+ 095b0 32353900 6c616265 6c243238 3430006c  259.label$2840.l
+ 095c0 6162656c 24323834 31006c61 62656c24  abel$2841.label$
+ 095d0 32383433 006c6162 656c2432 38343400  2843.label$2844.
+ 095e0 6c616265 6c243238 3436006c 6162656c  label$2846.label
+ 095f0 24323834 37006c61 62656c24 35393200  $2847.label$592.
+ 09600 6c616265 6c243238 3439006c 6162656c  label$2849.label
+ 09610 24323139 00767224 39303230 00767224  $219.vr$9020.vr$
+ 09620 39303231 00767224 39303232 00767224  9021.vr$9022.vr$
+ 09630 39303233 00767224 39303234 00767224  9023.vr$9024.vr$
+ 09640 39303235 00767224 39303236 00767224  9025.vr$9026.vr$
+ 09650 39303237 006c6162 656c2435 34383000  9027.label$5480.
+ 09660 6c616265 6c243534 3831006c 6162656c  label$5481.label
+ 09670 24353438 32006c61 62656c24 35343833  $5482.label$5483
+ 09680 006c6162 656c2435 34383400 6c616265  .label$5484.labe
+ 09690 6c243534 3835006c 6162656c 24353438  l$5485.label$548
+ 096a0 36006c61 62656c24 35343837 006c6162  6.label$5487.lab
+ 096b0 656c2435 34383800 6c616265 6c243534  el$5488.label$54
+ 096c0 38390076 72243831 31310074 6d702432  89.vr$8111.tmp$2
+ 096d0 38393000 76722431 30313736 006c6162  890.vr$10176.lab
+ 096e0 656c2433 33373000 6c616265 6c243333  el$3370.label$33
+ 096f0 3731006c 6162656c 24333337 32006c61  71.label$3372.la
+ 09700 62656c24 33333733 0052454e 44455224  bel$3373.RENDER$
+ 09710 006c6162 656c2433 33373500 6c616265  .label$3375.labe
+ 09720 6c243333 3736006c 6162656c 24333337  l$3376.label$337
+ 09730 37006c61 62656c24 33333738 006c6162  7.label$3378.lab
+ 09740 656c2433 33373900 6c616265 6c243439  el$3379.label$49
+ 09750 3630006c 6162656c 24343936 31006c61  60.label$4961.la
+ 09760 62656c24 34393632 006c6162 656c2434  bel$4962.label$4
+ 09770 39363300 6c616265 6c243439 3634006c  963.label$4964.l
+ 09780 6162656c 24313236 30006c61 62656c24  abel$1260.label$
+ 09790 34393636 006c6162 656c2431 32363200  4966.label$1262.
+ 097a0 6c616265 6c243132 3633006c 6162656c  label$1263.label
+ 097b0 24343936 39006c61 62656c24 31323635  $4969.label$1265
+ 097c0 006c6162 656c2431 32363600 54484953  .label$1266.THIS
+ 097d0 2431006c 6162656c 24313236 39006c61  $1.label$1269.la
+ 097e0 62656c24 32383530 006c6162 656c2435  bel$2850.label$5
+ 097f0 31323500 6c616265 6c243238 3532006c  125.label$2852.l
+ 09800 6162656c 24323835 33006c61 62656c24  abel$2853.label$
+ 09810 32383535 006c6162 656c2432 38353600  2855.label$2856.
+ 09820 544d5024 31343339 2437006c 6162656c  TMP$1439$7.label
+ 09830 24323835 38006c61 62656c24 32383539  $2858.label$2859
+ 09840 006c6162 656c2435 31323800 6c616265  .label$5128.labe
+ 09850 6c243531 32390076 72243832 31340054  l$5129.vr$8214.T
+ 09860 4d502436 32332432 00767224 38323135  MP$623$2.vr$8215
+ 09870 00767224 39303330 00767224 39303332  .vr$9030.vr$9032
+ 09880 00767224 38323138 00767224 39303334  .vr$8218.vr$9034
+ 09890 00767224 38323139 00767224 39303336  .vr$8219.vr$9036
+ 098a0 00767224 39303337 006c6162 656c2435  .vr$9037.label$5
+ 098b0 34393000 6c616265 6c243534 3931006c  490.label$5491.l
+ 098c0 6162656c 24353439 32006c61 62656c24  abel$5492.label$
+ 098d0 32333231 006c6162 656c2435 34393400  2321.label$5494.
+ 098e0 6c616265 6c243534 3935006c 6162656c  label$5495.label
+ 098f0 24353439 36006c61 62656c24 35343937  $5496.label$5497
+ 09900 006c6162 656c2435 34393800 6c616265  .label$5498.labe
+ 09910 6c243534 39390054 4d502436 39342432  l$5499.TMP$694$2
+ 09920 006c6162 656c2433 33383000 6c616265  .label$3380.labe
+ 09930 6c243333 3831006c 6162656c 24333338  l$3381.label$338
+ 09940 32006c61 62656c24 33333833 006c6162  2.label$3383.lab
+ 09950 656c2433 33383400 6c616265 6c243333  el$3384.label$33
+ 09960 3835006c 6162656c 24333338 36006c61  85.label$3386.la
+ 09970 62656c24 33333837 006c6162 656c2433  bel$3387.label$3
+ 09980 33383800 6c616265 6c243333 3839006c  388.label$3389.l
+ 09990 6162656c 24343937 3000494e 535f5733  abel$4970.INS_W3
+ 099a0 32006c61 62656c24 34393732 006c6162  2.label$4972.lab
+ 099b0 656c2434 39373300 6c616265 6c243439  el$4973.label$49
+ 099c0 3734006c 6162656c 24343937 35004952  74.label$4975.IR
+ 099d0 51544943 4b532431 006c6162 656c2431  QTICKS$1.label$1
+ 099e0 32373200 6c616265 6c243439 3738006c  272.label$4978.l
+ 099f0 6162656c 24313237 34006c61 62656c24  abel$1274.label$
+ 09a00 31323735 006c6162 656c2431 32373700  1275.label$1277.
+ 09a10 6c616265 6c243132 37380076 72243938  label$1278.vr$98
+ 09a20 3030006c 6162656c 24323836 31006c61  00.label$2861.la
+ 09a30 62656c24 32383632 00767224 39383032  bel$2862.vr$9802
+ 09a40 006c6162 656c2432 38363400 6c616265  .label$2864.labe
+ 09a50 6c243238 3635006c 6162656c 24313300  l$2865.label$13.
+ 09a60 6c616265 6c243238 3637006c 6162656c  label$2867.label
+ 09a70 24323836 38007672 24393830 35006c61  $2868.vr$9805.la
+ 09a80 62656c24 31370076 72243937 3030006c  bel$17.vr$9700.l
+ 09a90 6162656c 24313900 76722439 38303700  abel$19.vr$9807.
+ 09aa0 76722439 37303100 76722439 38303800  vr$9701.vr$9808.
+ 09ab0 76722439 37303200 76722439 30343000  vr$9702.vr$9040.
+ 09ac0 76722439 30343100 76722439 30343200  vr$9041.vr$9042.
+ 09ad0 76722439 30343300 76722439 30343400  vr$9043.vr$9044.
+ 09ae0 76722439 30343500 76722439 30343600  vr$9045.vr$9046.
+ 09af0 76722439 30343700 76722439 30343800  vr$9047.vr$9048.
+ 09b00 76722439 30343900 76722438 39313200  vr$9049.vr$8912.
+ 09b10 544d5024 36303224 33006c61 62656c24  TMP$602$3.label$
+ 09b20 33333930 006c6162 656c2433 33393100  3390.label$3391.
+ 09b30 6c616265 6c243333 3932006c 6162656c  label$3392.label
+ 09b40 24333339 33006c61 62656c24 33333934  $3393.label$3394
+ 09b50 006c6162 656c2433 33393500 6c616265  .label$3395.labe
+ 09b60 6c243333 3936006c 6162656c 24333339  l$3396.label$339
+ 09b70 37006c61 62656c24 33333938 006c6162  7.label$3398.lab
+ 09b80 656c2433 33393900 6c616265 6c243439  el$3399.label$49
+ 09b90 3830006c 6162656c 24343938 31006c61  80.label$4981.la
+ 09ba0 62656c24 34393832 006c6162 656c2434  bel$4982.label$4
+ 09bb0 39383300 6c616265 6c243439 3834006c  983.label$4984.l
+ 09bc0 6162656c 24313238 30006c61 62656c24  abel$1280.label$
+ 09bd0 31323831 006c6162 656c2434 39383700  1281.label$4987.
+ 09be0 6c616265 6c243132 3833006c 6162656c  label$1283.label
+ 09bf0 24313238 34006c61 62656c24 31323836  $1284.label$1286
+ 09c00 006c6162 656c2431 32383700 6c616265  .label$1287.labe
+ 09c10 6c243132 3839006c 6162656c 24323837  l$1289.label$287
+ 09c20 30006c61 62656c24 32383731 006c6162  0.label$2871.lab
+ 09c30 656c2432 38373300 6c616265 6c243238  el$2873.label$28
+ 09c40 3734006c 6162656c 24323200 6c616265  74.label$22.labe
+ 09c50 6c243238 3736006c 6162656c 24323837  l$2876.label$287
+ 09c60 37007672 24383232 31006c61 62656c24  7.vr$8221.label$
+ 09c70 32383739 006c6162 656c2432 37006c61  2879.label$27.la
+ 09c80 62656c24 32380076 72243832 32330076  bel$28.vr$8223.v
+ 09c90 72243832 32340076 72243832 32360076  r$8224.vr$8226.v
+ 09ca0 72243930 35300076 72243832 32370076  r$9050.vr$8227.v
+ 09cb0 72243930 35320076 72243832 32380076  r$9052.vr$8228.v
+ 09cc0 72243930 35340076 72243832 32390076  r$9054.vr$8229.v
+ 09cd0 72243930 35360076 72243930 35370076  r$9056.vr$9057.v
+ 09ce0 72243930 35380076 72243930 35390076  r$9058.vr$9059.v
+ 09cf0 72243831 32310054 4d502431 34323924  r$8121.TMP$1429$
+ 09d00 37007672 24393132 38007672 24383533  7.vr$9128.vr$853
+ 09d10 30007672 24383533 31007672 24383533  0.vr$8531.vr$853
+ 09d20 32007672 24383533 33007672 24383533  2.vr$8533.vr$853
+ 09d30 34007672 24383533 35007672 24383533  4.vr$8535.vr$853
+ 09d40 36007672 24383533 37006c61 62656c24  6.vr$8537.label$
+ 09d50 34393930 006c6162 656c2434 39393100  4990.label$4991.
+ 09d60 6c616265 6c243439 3932006c 6162656c  label$4992.label
+ 09d70 24343939 33006c61 62656c24 34393934  $4993.label$4994
+ 09d80 006c6162 656c2431 32393000 6c616265  .label$1290.labe
+ 09d90 6c243439 3936006c 6162656c 24313239  l$4996.label$129
+ 09da0 32006c61 62656c24 31323933 006c6162  2.label$1293.lab
+ 09db0 656c2434 39393900 6c616265 6c243132  el$4999.label$12
+ 09dc0 3935006c 6162656c 24313239 36007672  95.label$1296.vr
+ 09dd0 24393431 31006c61 62656c24 31323938  $9411.label$1298
+ 09de0 006c6162 656c2431 32393900 6c616265  .label$1299.labe
+ 09df0 6c243238 3830006c 6162656c 24353133  l$2880.label$513
+ 09e00 35006c61 62656c24 32383832 006c6162  5.label$2882.lab
+ 09e10 656c2432 38383300 6c616265 6c243331  el$2883.label$31
+ 09e20 006c6162 656c2432 38383500 6c616265  .label$2885.labe
+ 09e30 6c243238 3836006c 6162656c 24353133  l$2886.label$513
+ 09e40 37006c61 62656c24 32383838 006c6162  7.label$2888.lab
+ 09e50 656c2432 38383900 6c616265 6c243531  el$2889.label$51
+ 09e60 3338006c 6162656c 24343434 33006c61  38.label$4443.la
+ 09e70 62656c24 33390066 625f4766 78456c6c  bel$39.fb_GfxEll
+ 09e80 69707365 00767224 39383138 00767224  ipse.vr$9818.vr$
+ 09e90 39303630 00767224 39303631 00767224  9060.vr$9061.vr$
+ 09ea0 39303632 00767224 39303633 00767224  9062.vr$9063.vr$
+ 09eb0 39303634 00767224 39303635 00767224  9064.vr$9065.vr$
+ 09ec0 39303636 00767224 39303637 00767224  9066.vr$9067.vr$
+ 09ed0 39303638 00767224 39303639 00767224  9068.vr$9069.vr$
+ 09ee0 38313600 76722439 34313800 76722439  816.vr$9418.vr$9
+ 09ef0 34313900 55534552 434f4445 2431006c  419.USERCODE$1.l
+ 09f00 6162656c 24353031 00767224 38353430  abel$501.vr$8540
+ 09f10 00767224 38353431 00767224 38353432  .vr$8541.vr$8542
+ 09f20 00767224 38353433 00767224 38353434  .vr$8543.vr$8544
+ 09f30 00767224 38353435 00767224 38353436  .vr$8545.vr$8546
+ 09f40 005f5a4e 384d454d 4f52595f 5436504f  ._ZN8MEMORY_T6PO
+ 09f50 4b453634 45646400 76722438 35343800  KE64Edd.vr$8548.
+ 09f60 76722438 35343900 544d5024 32393935  vr$8549.TMP$2995
+ 09f70 24310049 4e535f57 3634006c 6162656c  $1.INS_W64.label
+ 09f80 24353038 006c6162 656c2435 3039006c  $508.label$509.l
+ 09f90 6162656c 24323839 31006c61 62656c24  abel$2891.label$
+ 09fa0 32383932 006c6162 656c2434 30006c61  2892.label$40.la
+ 09fb0 62656c24 32383934 006c6162 656c2432  bel$2894.label$2
+ 09fc0 38393500 6c616265 6c243433 006c6162  895.label$43.lab
+ 09fd0 656c2432 38393700 6c616265 6c243238  el$2897.label$28
+ 09fe0 3938006c 6162656c 24343600 6c616265  98.label$46.labe
+ 09ff0 6c243437 00554650 55333200 6c616265  l$47.UFPU32.labe
+ 0a000 6c243439 00767224 39373131 00767224  l$49.vr$9711.vr$
+ 0a010 38323335 00544d50 24363331 24320076  8235.TMP$631$2.v
+ 0a020 72243832 33360076 72243930 37300076  r$8236.vr$9070.v
+ 0a030 72243930 37310076 72243930 37320076  r$9071.vr$9072.v
+ 0a040 72243832 33380076 72243930 3734006c  r$8238.vr$9074.l
+ 0a050 6162656c 24323531 30006c61 62656c24  abel$2510.label$
+ 0a060 31353830 00767224 39303737 00767224  1580.vr$9077.vr$
+ 0a070 39303738 00767224 39303739 00767224  9078.vr$9079.vr$
+ 0a080 39373136 006c6162 656c2432 33343100  9716.label$2341.
+ 0a090 6c616265 6c243233 3432006c 6162656c  label$2342.label
+ 0a0a0 24323334 37007672 24383535 30006c61  $2347.vr$8550.la
+ 0a0b0 62656c24 35373935 00767224 38353532  bel$5795.vr$8552
+ 0a0c0 00767224 38353533 00767224 38353534  .vr$8553.vr$8554
+ 0a0d0 00767224 38353535 00767224 38353536  .vr$8555.vr$8556
+ 0a0e0 006c6162 656c2435 37393700 76722438  .label$5797.vr$8
+ 0a0f0 35353800 76722438 35353900 6c616265  558.vr$8559.labe
+ 0a100 6c243537 3938006c 6162656c 24353232  l$5798.label$522
+ 0a110 31007672 24393832 30007672 24393832  1.vr$9820.vr$982
+ 0a120 3100544d 50243239 37342431 00767224  1.TMP$2974$1.vr$
+ 0a130 39383232 006c6162 656c2435 31007672  9822.label$51.vr
+ 0a140 24393832 33006c61 62656c24 35330076  $9823.label$53.v
+ 0a150 72243938 3234006c 6162656c 24353500  r$9824.label$55.
+ 0a160 76722439 38323500 76722439 38323600  vr$9825.vr$9826.
+ 0a170 76722439 38323700 24345645 4333006c  vr$9827.$4VEC3.l
+ 0a180 6162656c 24343435 37007672 24393038  abel$4457.vr$908
+ 0a190 32007672 24393038 33007672 24393038  2.vr$9083.vr$908
+ 0a1a0 34007672 24393038 35007672 24393038  4.vr$9085.vr$908
+ 0a1b0 36007672 24393038 37007672 24393038  6.vr$9087.vr$908
+ 0a1c0 38007672 24393038 39006662 5f537472  8.vr$9089.fb_Str
+ 0a1d0 416c6c6f 6354656d 70526573 756c7400  AllocTempResult.
+ 0a1e0 76722438 31333100 6c616265 6c243531  vr$8131.label$51
+ 0a1f0 38360076 72243831 3332006c 6162656c  86.vr$8132.label
+ 0a200 24353131 00767224 38353630 00767224  $511.vr$8560.vr$
+ 0a210 38353631 00767224 38353632 00767224  8561.vr$8562.vr$
+ 0a220 38353633 00767224 38353634 00767224  8563.vr$8564.vr$
+ 0a230 38353635 00767224 38353636 00767224  8565.vr$8566.vr$
+ 0a240 38353637 00767224 38353638 00767224  8567.vr$8568.vr$
+ 0a250 38353639 006c6162 656c2435 3137006c  8569.label$517.l
+ 0a260 6162656c 24353134 31006c61 62656c24  abel$5141.label$
+ 0a270 35313800 6c616265 6c243531 39006c61  518.label$519.la
+ 0a280 62656c24 35313433 006c6162 656c2435  bel$5143.label$5
+ 0a290 31343400 53503358 24006c61 62656c24  144.SP3X$.label$
+ 0a2a0 3630006c 6162656c 24363200 66625f46  60.label$62.fb_F
+ 0a2b0 696c6550 75744c61 72676500 6c616265  ilePutLarge.labe
+ 0a2c0 6c243634 006c6162 656c2436 36006c61  l$64.label$66.la
+ 0a2d0 62656c24 36380054 4d502432 39353324  bel$68.TMP$2953$
+ 0a2e0 3100544d 50243134 36352437 00767224  1.TMP$1465$7.vr$
+ 0a2f0 38323437 00767224 39303932 00767224  8247.vr$9092.vr$
+ 0a300 39303933 00767224 39303934 00767224  9093.vr$9094.vr$
+ 0a310 39303935 00767224 39303936 00767224  9095.vr$9096.vr$
+ 0a320 39303937 00767224 39303938 00767224  9097.vr$9098.vr$
+ 0a330 39303939 00544d50 24393132 24360076  9099.TMP$912$6.v
+ 0a340 72243835 37300076 72243835 37310076  r$8570.vr$8571.v
+ 0a350 72243835 37320076 72243835 37330076  r$8572.vr$8573.v
+ 0a360 72243835 37340076 72243835 37350076  r$8574.vr$8575.v
+ 0a370 72243835 37360076 72243835 37370076  r$8576.vr$8577.v
+ 0a380 72243835 37380076 72243835 37390054  r$8578.vr$8579.T
+ 0a390 4d502435 39312431 00767224 39393933  MP$591$1.vr$9993
+ 0a3a0 00445249 5645525f 4e414d45 24006c61  .DRIVER_NAME$.la
+ 0a3b0 62656c24 31313900 76722439 38333000  bel$119.vr$9830.
+ 0a3c0 53503359 24006c61 62656c24 3730006c  SP3Y$.label$70.l
+ 0a3d0 6162656c 24373200 43484152 5f425546  abel$72.CHAR_BUF
+ 0a3e0 46455224 006c6162 656c2437 36006c61  FER$.label$76.la
+ 0a3f0 62656c24 34343633 00554650 55363400  bel$4463.UFPU64.
+ 0a400 76722439 37323300 76722438 37393300  vr$9723.vr$8793.
+ 0a410 424c494e 45415224 3500544d 50243239  BLINEAR$5.TMP$29
+ 0a420 36392431 006c6162 656c2433 39343400  69$1.label$3944.
+ 0a430 76722438 37393600 76722438 35380076  vr$8796.vr$858.v
+ 0a440 72243835 3900544d 50243239 33322432  r$859.TMP$2932$2
+ 0a450 00544d50 24313434 34243700 76722438  .TMP$1444$7.vr$8
+ 0a460 35383000 76722438 35383100 76722438  580.vr$8581.vr$8
+ 0a470 35383200 76722438 35383300 76722438  582.vr$8583.vr$8
+ 0a480 35383400 76722438 35383500 76722438  584.vr$8585.vr$8
+ 0a490 35383600 76722438 35383700 76722438  586.vr$8587.vr$8
+ 0a4a0 35383800 5452554e 54494d45 2435006c  588.TRUNTIME$5.l
+ 0a4b0 6162656c 24353237 006c6162 656c2435  abel$527.label$5
+ 0a4c0 32380054 4d502436 30352433 006c6162  28.TMP$605$3.lab
+ 0a4d0 656c2435 32390053 43525f50 4f532400  el$529.SCR_POS$.
+ 0a4e0 544d5024 38393324 38006c61 62656c24  TMP$893$8.label$
+ 0a4f0 3830006c 6162656c 24383200 6c616265  80.label$82.labe
+ 0a500 6c243834 006c6162 656c2438 36006c61  l$84.label$86.la
+ 0a510 62656c24 38380076 72243832 35380054  bel$88.vr$8258.T
+ 0a520 4d502433 30303324 31007672 24383633  MP$3003$1.vr$863
+ 0a530 00767224 38363500 6c616265 6c243233  .vr$865.label$23
+ 0a540 36330049 4d4f5553 45243500 544d5024  63.IMOUSE$5.TMP$
+ 0a550 32393438 24310076 72243835 39320054  2948$1.vr$8592.T
+ 0a560 4d502432 39313124 31007672 24383539  MP$2911$1.vr$859
+ 0a570 34007672 24383539 38006c61 62656c24  4.vr$8598.label$
+ 0a580 35313532 006c6162 656c2431 38343900  5152.label$1849.
+ 0a590 76722439 38343000 6c616265 6c243531  vr$9840.label$51
+ 0a5a0 3535005f 5f627569 6c74696e 5f6e6561  55.__builtin_nea
+ 0a5b0 72627969 6e74006c 6162656c 24393000  rbyint.label$90.
+ 0a5c0 6c616265 6c243932 006c6162 656c2434  label$92.label$4
+ 0a5d0 34373100 6c616265 6c243434 37320076  471.label$4472.v
+ 0a5e0 72243938 3436006c 6162656c 24393900  r$9846.label$99.
+ 0a5f0 76722433 36380066 625f5374 72496e69  vr$368.fb_StrIni
+ 0a600 74005f5a 4e374350 55363531 30384144  t._ZN7CPU65108AD
+ 0a610 525f494e 44584576 006c6162 656c2435  R_INDXEv.label$5
+ 0a620 3335006c 6162656c 24353336 006c6162  35.label$536.lab
+ 0a630 656c2435 33370054 4d502432 39323724  el$537.TMP$2927$
+ 0a640 31006c61 62656c24 35333900 53503543  1.label$539.SP5C
+ 0a650 4f4c2400 66625f46 696c6547 65744c61  OL$.fb_FileGetLa
+ 0a660 72676500 76722438 32363200 544d5024  rge.vr$8262.TMP$
+ 0a670 32383932 24340076 72243937 33310076  2892$4.vr$9731.v
+ 0a680 72243832 36370076 72243937 33370049  r$8267.vr$9737.I
+ 0a690 4e535f53 54410054 4d502433 36303724  NS_STA.TMP$3607$
+ 0a6a0 38004b45 59243100 494e535f 53545800  8.KEY$1.INS_STX.
+ 0a6b0 494e535f 53545900 6c616265 6c243132  INS_STY.label$12
+ 0a6c0 3900494e 535f4144 43007672 24393835  9.INS_ADC.vr$985
+ 0a6d0 31007672 24393835 33007672 24393835  1.vr$9853.vr$985
+ 0a6e0 38006c61 62656c24 34343837 00544d50  8.label$4487.TMP
+ 0a6f0 24323837 31243500 76722431 30303430  $2871$5.vr$10040
+ 0a700 00544d50 24383637 2433006c 6162656c  .TMP$867$3.label
+ 0a710 24353431 00767224 31303034 33006c61  $541.vr$10043.la
+ 0a720 62656c24 35343500 6c616265 6c243534  bel$545.label$54
+ 0a730 37006c61 62656c24 35313631 006c6162  7.label$5161.lab
+ 0a740 656c2435 3438006c 6162656c 24353136  el$548.label$516
+ 0a750 32007672 24313239 38300054 4d502432  2.vr$12980.TMP$2
+ 0a760 38373424 34006c61 62656c24 35313634  874$4.label$5164
+ 0a770 006c6162 656c2435 31363500 76722438  .label$5165.vr$8
+ 0a780 32373000 76722438 32373800 6c616265  270.vr$8278.labe
+ 0a790 6c243430 30006c61 62656c24 34303100  l$400.label$401.
+ 0a7a0 6c616265 6c243430 32006c61 62656c24  label$402.label$
+ 0a7b0 34303300 6c616265 6c243430 34006c61  403.label$404.la
+ 0a7c0 62656c24 34303500 6c616265 6c243430  bel$405.label$40
+ 0a7d0 36006c61 62656c24 34303700 6c616265  6.label$407.labe
+ 0a7e0 6c243430 38006c61 62656c24 36333030  l$408.label$6300
+ 0a7f0 006c6162 656c2436 33303100 6c616265  .label$6301.labe
+ 0a800 6c243633 3032006c 6162656c 24363330  l$6302.label$630
+ 0a810 33006c61 62656c24 36333034 006c6162  3.label$6304.lab
+ 0a820 656c2436 33303500 6c616265 6c243633  el$6305.label$63
+ 0a830 3036006c 6162656c 24363330 37006c61  06.label$6307.la
+ 0a840 62656c24 36333038 006c6162 656c2436  bel$6308.label$6
+ 0a850 33303900 76722438 39313100 6c616265  309.vr$8911.labe
+ 0a860 6c243138 36370067 6c416374 69766554  l$1867.glActiveT
+ 0a870 65787475 72650076 72243938 3632006c  exture.vr$9862.l
+ 0a880 6162656c 24343439 31007672 24393836  abel$4491.vr$986
+ 0a890 39006c61 62656c24 33393730 006c6162  9.label$3970.lab
+ 0a8a0 656c2434 3130006c 6162656c 24343131  el$410.label$411
+ 0a8b0 006c6162 656c2434 3132006c 6162656c  .label$412.label
+ 0a8c0 24343133 006c6162 656c2434 31340076  $413.label$414.v
+ 0a8d0 72243937 3437006c 6162656c 24343136  r$9747.label$416
+ 0a8e0 006c6162 656c2434 3137006c 6162656c  .label$417.label
+ 0a8f0 24343138 006c6162 656c2436 33313000  $418.label$6310.
+ 0a900 6c616265 6c243633 3131006c 6162656c  label$6311.label
+ 0a910 24363331 32006c61 62656c24 36333133  $6312.label$6313
+ 0a920 006c6162 656c2436 33313400 6c616265  .label$6314.labe
+ 0a930 6c243633 3135006c 6162656c 24363331  l$6315.label$631
+ 0a940 36006c61 62656c24 36333137 006c6162  6.label$6317.lab
+ 0a950 656c2436 33313800 6c616265 6c243633  el$6318.label$63
+ 0a960 31390043 4841525f 50545224 006c6162  19.CHAR_PTR$.lab
+ 0a970 656c2435 35330067 6c47656e 54657874  el$553.glGenText
+ 0a980 75726573 00544d50 24323836 36243300  ures.TMP$2866$3.
+ 0a990 6c616265 6c243432 3030006c 6162656c  label$4200.label
+ 0a9a0 24343230 31006c61 62656c24 34323032  $4201.label$4202
+ 0a9b0 006c6162 656c2434 32303300 6c616265  .label$4203.labe
+ 0a9c0 6c243432 3034006c 6162656c 24343230  l$4204.label$420
+ 0a9d0 35006c61 62656c24 34323036 006c6162  5.label$4206.lab
+ 0a9e0 656c2434 32303700 6c616265 6c243432  el$4207.label$42
+ 0a9f0 3038006c 6162656c 24343230 39005f5a  08.label$4209._Z
+ 0aa00 4e384d45 4d4f5259 5f543650 45454b36  N8MEMORY_T6PEEK6
+ 0aa10 34456400 4246554c 4c534352 45454e24  4Ed.BFULLSCREEN$
+ 0aa20 35007672 24383238 37006c61 62656c24  5.vr$8287.label$
+ 0aa30 34323000 6c616265 6c243432 31006c61  420.label$421.la
+ 0aa40 62656c24 34323200 6c616265 6c243432  bel$422.label$42
+ 0aa50 33006c61 62656c24 34323400 6c616265  3.label$424.labe
+ 0aa60 6c243432 3500494e 535f4c44 41006c61  l$425.INS_LDA.la
+ 0aa70 62656c24 34323700 76722431 30303530  bel$427.vr$10050
+ 0aa80 006c6162 656c2436 33323000 6c616265  .label$6320.labe
+ 0aa90 6c243633 3231006c 6162656c 24363332  l$6321.label$632
+ 0aaa0 32006c61 62656c24 36333234 006c6162  2.label$6324.lab
+ 0aab0 656c2436 33323500 6c616265 6c243633  el$6325.label$63
+ 0aac0 3236006c 6162656c 24363332 37006c61  26.label$6327.la
+ 0aad0 62656c24 36333238 006c6162 656c2436  bel$6328.label$6
+ 0aae0 33323900 6c616265 6c243432 3130006c  329.label$4210.l
+ 0aaf0 6162656c 24343231 31006c61 62656c24  abel$4211.label$
+ 0ab00 34323132 006c6162 656c2434 32313300  4212.label$4213.
+ 0ab10 6c616265 6c243432 31340049 4e535f4c  label$4214.INS_L
+ 0ab20 44580049 4e535f4c 4459006c 6162656c  DX.INS_LDY.label
+ 0ab30 24343231 37006c61 62656c24 34323138  $4217.label$4218
+ 0ab40 006c6162 656c2434 32313900 6c616265  .label$4219.labe
+ 0ab50 6c243538 3030006c 6162656c 24353830  l$5800.label$580
+ 0ab60 31006c61 62656c24 35383032 006c6162  1.label$5802.lab
+ 0ab70 656c2435 38303300 6c616265 6c243538  el$5803.label$58
+ 0ab80 3034006c 6162656c 24353830 35006c61  04.label$5805.la
+ 0ab90 62656c24 32313032 006c6162 656c2435  bel$2102.label$5
+ 0aba0 38303800 6c616265 6c243231 3034006c  808.label$2104.l
+ 0abb0 6162656c 24323130 35007672 24393837  abel$2105.vr$987
+ 0abc0 33006c61 62656c24 32313037 006c6162  3.label$2107.lab
+ 0abd0 656c2432 31303800 6c616265 6c243531  el$2108.label$51
+ 0abe0 3739006c 6162656c 24333039 00455854  79.label$309.EXT
+ 0abf0 434f4c24 006c6162 656c2434 3330006c  COL$.label$430.l
+ 0ac00 6162656c 24343331 006c6162 656c2434  abel$431.label$4
+ 0ac10 3332006c 6162656c 24343333 006c6162  32.label$433.lab
+ 0ac20 656c2434 3334006c 6162656c 24343335  el$434.label$435
+ 0ac30 006c6162 656c2434 3336006c 6162656c  .label$436.label
+ 0ac40 24343337 006c6162 656c2434 3338006c  $437.label$438.l
+ 0ac50 6162656c 24363333 30006c61 62656c24  abel$6330.label$
+ 0ac60 36333331 006c6162 656c2436 33333200  6331.label$6332.
+ 0ac70 6c616265 6c243633 3333006c 6162656c  label$6333.label
+ 0ac80 24363333 34006c61 62656c24 35363000  $6334.label$560.
+ 0ac90 6c616265 6c243633 3336006c 6162656c  label$6336.label
+ 0aca0 24363333 37006c61 62656c24 36333338  $6337.label$6338
+ 0acb0 006c6162 656c2436 33333900 6c616265  .label$6339.labe
+ 0acc0 6c243730 31006c61 62656c24 35363400  l$701.label$564.
+ 0acd0 6c616265 6c243432 3230006c 6162656c  label$4220.label
+ 0ace0 24333030 33006c61 62656c24 34323232  $3003.label$4222
+ 0acf0 006c6162 656c2434 32323300 6c616265  .label$4223.labe
+ 0ad00 6c243432 3234006c 6162656c 24343232  l$4224.label$422
+ 0ad10 35006c61 62656c24 34323236 006c6162  5.label$4226.lab
+ 0ad20 656c2434 32323700 5f5a4e37 43505536  el$4227._ZN7CPU6
+ 0ad30 35313039 4144525f 5a45524f 59457600  5109ADR_ZEROYEv.
+ 0ad40 6c616265 6c243432 3239006c 6162656c  label$4229.label
+ 0ad50 24353831 30006c61 62656c24 35383131  $5810.label$5811
+ 0ad60 006c6162 656c2435 38313200 6c616265  .label$5812.labe
+ 0ad70 6c243538 3133006c 6162656c 24353831  l$5813.label$581
+ 0ad80 34006c61 62656c24 32313130 006c6162  4.label$2110.lab
+ 0ad90 656c2432 31313100 6c616265 6c243538  el$2111.label$58
+ 0ada0 3137006c 6162656c 24323131 33006c61  17.label$2113.la
+ 0adb0 62656c24 32313134 006c6162 656c2432  bel$2114.label$2
+ 0adc0 31313600 6c616265 6c243231 3137006c  116.label$2117.l
+ 0add0 6162656c 24323131 39006c61 62656c24  abel$2119.label$
+ 0ade0 33373030 006c6162 656c2433 37303100  3700.label$3701.
+ 0adf0 6c616265 6c243337 3032006c 6162656c  label$3702.label
+ 0ae00 24333730 33006c61 62656c24 33373034  $3703.label$3704
+ 0ae10 006c6162 656c2433 37303500 6c616265  .label$3705.labe
+ 0ae20 6c243337 3036006c 6162656c 24333730  l$3706.label$370
+ 0ae30 37006c61 62656c24 33373038 006c6162  7.label$3708.lab
+ 0ae40 656c2433 37303900 66625f53 6c656570  el$3709.fb_Sleep
+ 0ae50 4578006c 6162656c 24353131 31006c61  Ex.label$5111.la
+ 0ae60 62656c24 34343000 544d5024 31343935  bel$440.TMP$1495
+ 0ae70 2437006c 6162656c 24353131 33006c61  $7.label$5113.la
+ 0ae80 62656c24 34343300 6c616265 6c243531  bel$443.label$51
+ 0ae90 3134006c 6162656c 24343435 006c6162  14.label$445.lab
+ 0aea0 656c2434 3436006c 6162656c 24343437  el$446.label$447
+ 0aeb0 006c6162 656c2435 31313600 6c616265  .label$5116.labe
+ 0aec0 6c243633 3430006c 6162656c 24363334  l$6340.label$634
+ 0aed0 31006c61 62656c24 36333432 006c6162  1.label$6342.lab
+ 0aee0 656c2436 33343300 6c616265 6c243633  el$6343.label$63
+ 0aef0 3434006c 6162656c 24363334 35006c61  44.label$6345.la
+ 0af00 62656c24 36333436 006c6162 656c2436  bel$6346.label$6
+ 0af10 33343800 6c616265 6c243633 34390057  348.label$6349.W
+ 0af20 31362431 006c6162 656c2434 32333000  16$1.label$4230.
+ 0af30 6c616265 6c243432 3331006c 6162656c  label$4231.label
+ 0af40 24343233 32006c61 62656c24 34323333  $4232.label$4233
+ 0af50 006c6162 656c2434 32333400 6c616265  .label$4234.labe
+ 0af60 6c243138 3836006c 6162656c 24343233  l$1886.label$423
+ 0af70 36006c61 62656c24 34323337 006c6162  6.label$4237.lab
+ 0af80 656c2434 32333800 6c616265 6c243432  el$4238.label$42
+ 0af90 3339006c 6162656c 24353832 30006c61  39.label$5820.la
+ 0afa0 62656c24 35383231 006c6162 656c2435  bel$5821.label$5
+ 0afb0 38323200 6c616265 6c243538 3233006c  822.label$5823.l
+ 0afc0 6162656c 24353832 34006c61 62656c24  abel$5824.label$
+ 0afd0 32313230 006c6162 656c2435 38323600  2120.label$5826.
+ 0afe0 6c616265 6c243231 3232006c 6162656c  label$2122.label
+ 0aff0 24323132 33006c61 62656c24 35383239  $2123.label$5829
+ 0b000 006c6162 656c2432 31323500 6c616265  .label$2125.labe
+ 0b010 6c243231 3236006c 6162656c 24323132  l$2126.label$212
+ 0b020 38006c61 62656c24 32313239 006c6162  8.label$2129.lab
+ 0b030 656c2433 37313000 6c616265 6c243337  el$3710.label$37
+ 0b040 3131006c 6162656c 24333731 32006c61  11.label$3712.la
+ 0b050 62656c24 33373133 006c6162 656c2433  bel$3713.label$3
+ 0b060 37313400 6c616265 6c243337 3135006c  714.label$3715.l
+ 0b070 6162656c 24333731 36006c61 62656c24  abel$3716.label$
+ 0b080 33373137 006c6162 656c2433 37313800  3717.label$3718.
+ 0b090 6c616265 6c243337 3139006c 6162656c  label$3719.label
+ 0b0a0 24313630 30006c61 62656c24 31363031  $1600.label$1601
+ 0b0b0 00767224 38323031 006c6162 656c2431  .vr$8201.label$1
+ 0b0c0 36303300 6c616265 6c243136 3034006c  603.label$1604.l
+ 0b0d0 6162656c 24343532 006c6162 656c2431  abel$452.label$1
+ 0b0e0 36303600 6c616265 6c243136 3037006c  606.label$1607.l
+ 0b0f0 6162656c 24343535 006c6162 656c2431  abel$455.label$1
+ 0b100 36303900 6c616265 6c243435 37006c61  609.label$457.la
+ 0b110 62656c24 34353800 6c616265 6c243633  bel$458.label$63
+ 0b120 3530006c 6162656c 24363335 31006c61  50.label$6351.la
+ 0b130 62656c24 36333532 006c6162 656c2436  bel$6352.label$6
+ 0b140 33353300 6c616265 6c243633 3534006c  353.label$6354.l
+ 0b150 6162656c 24363335 35006c61 62656c24  abel$6355.label$
+ 0b160 36333536 006c6162 656c2436 33353700  6356.label$6357.
+ 0b170 6c616265 6c243633 3538005f 5f627569  label$6358.__bui
+ 0b180 6c74696e 5f6e6561 72627969 6e746600  ltin_nearbyintf.
+ 0b190 6c616265 6c243537 33006c61 62656c24  label$573.label$
+ 0b1a0 33303131 00535452 4b455924 32006c61  3011.STRKEY$2.la
+ 0b1b0 62656c24 34323430 006c6162 656c2434  bel$4240.label$4
+ 0b1c0 32343100 6c616265 6c243432 3432006c  241.label$4242.l
+ 0b1d0 6162656c 24343234 33006c61 62656c24  abel$4243.label$
+ 0b1e0 34323434 006c6162 656c2434 32343500  4244.label$4245.
+ 0b1f0 6c616265 6c243432 3436006c 6162656c  label$4246.label
+ 0b200 24343234 37006c61 62656c24 34323438  $4247.label$4248
+ 0b210 006c6162 656c2434 32343900 6c616265  .label$4249.labe
+ 0b220 6c243538 3330006c 6162656c 24353833  l$5830.label$583
+ 0b230 31006c61 62656c24 35383332 006c6162  1.label$5832.lab
+ 0b240 656c2435 38333300 6c616265 6c243538  el$5833.label$58
+ 0b250 3334006c 6162656c 24353833 35006c61  34.label$5835.la
+ 0b260 62656c24 32313331 006c6162 656c2432  bel$2131.label$2
+ 0b270 31333200 6c616265 6c243436 3633006c  132.label$4663.l
+ 0b280 6162656c 24323133 34006c61 62656c24  abel$2134.label$
+ 0b290 32313335 00767224 39323036 006c6162  2135.vr$9206.lab
+ 0b2a0 656c2432 31333700 6c616265 6c243231  el$2137.label$21
+ 0b2b0 3338006c 6162656c 24333732 30006c61  38.label$3720.la
+ 0b2c0 62656c24 33373231 006c6162 656c2433  bel$3721.label$3
+ 0b2d0 37323200 6c616265 6c243337 3233006c  722.label$3723.l
+ 0b2e0 6162656c 24333732 34006c61 62656c24  abel$3724.label$
+ 0b2f0 33373235 006c6162 656c2433 37323600  3725.label$3726.
+ 0b300 6c616265 6c243337 3237006c 6162656c  label$3727.label
+ 0b310 24333732 38006c61 62656c24 33373239  $3728.label$3729
+ 0b320 006c6162 656c2431 36313000 6c616265  .label$1610.labe
+ 0b330 6c243136 3132006c 6162656c 24313631  l$1612.label$161
+ 0b340 33006c61 62656c24 34363100 6c616265  3.label$461.labe
+ 0b350 6c243136 3135006c 6162656c 24313631  l$1615.label$161
+ 0b360 36006c61 62656c24 34363400 6c616265  6.label$464.labe
+ 0b370 6c243136 3138006c 6162656c 24313631  l$1618.label$161
+ 0b380 39006c61 62656c24 34363700 6c616265  9.label$467.labe
+ 0b390 6c243531 3236006c 6162656c 24363336  l$5126.label$636
+ 0b3a0 30006c61 62656c24 36333631 006c6162  0.label$6361.lab
+ 0b3b0 656c2436 33363200 6c616265 6c243633  el$6362.label$63
+ 0b3c0 3633006c 6162656c 24363336 34006c61  63.label$6364.la
+ 0b3d0 62656c24 36333635 006c6162 656c2436  bel$6365.label$6
+ 0b3e0 33363600 6c616265 6c243633 3637006c  366.label$6367.l
+ 0b3f0 6162656c 24363336 38006c61 62656c24  abel$6368.label$
+ 0b400 36333639 006c6162 656c2434 32353000  6369.label$4250.
+ 0b410 6c616265 6c243432 3531006c 6162656c  label$4251.label
+ 0b420 24343235 32006c61 62656c24 34323533  $4252.label$4253
+ 0b430 006c6162 656c2434 32353400 6c616265  .label$4254.labe
+ 0b440 6c243432 3535006c 6162656c 24343235  l$4255.label$425
+ 0b450 36006c61 62656c24 34323537 006c6162  6.label$4257.lab
+ 0b460 656c2434 32353800 6c616265 6c243432  el$4258.label$42
+ 0b470 3539006c 6162656c 24353834 30006c61  59.label$5840.la
+ 0b480 62656c24 35383431 006c6162 656c2435  bel$5841.label$5
+ 0b490 38343200 6c616265 6c243538 3433006c  842.label$5843.l
+ 0b4a0 6162656c 24353834 34006c61 62656c24  abel$5844.label$
+ 0b4b0 32313430 006c6162 656c2432 31343100  2140.label$2141.
+ 0b4c0 6c616265 6c243538 3437006c 6162656c  label$5847.label
+ 0b4d0 24323134 33006c61 62656c24 32313434  $2143.label$2144
+ 0b4e0 00544d50 24373433 2431006c 6162656c  .TMP$743$1.label
+ 0b4f0 24323134 36006c61 62656c24 32313437  $2146.label$2147
+ 0b500 006c6162 656c2432 31343900 6c616265  .label$2149.labe
+ 0b510 6c243337 3330006c 6162656c 24333733  l$3730.label$373
+ 0b520 31006c61 62656c24 33373332 006c6162  1.label$3732.lab
+ 0b530 656c2433 37333300 6c616265 6c243337  el$3733.label$37
+ 0b540 3334006c 6162656c 24333733 35006c61  34.label$3735.la
+ 0b550 62656c24 33373336 006c6162 656c2433  bel$3736.label$3
+ 0b560 37333700 6c616265 6c243337 3338006c  737.label$3738.l
+ 0b570 6162656c 24333733 39006c61 62656c24  abel$3739.label$
+ 0b580 31363231 006c6162 656c2431 36323200  1621.label$1622.
+ 0b590 6c616265 6c243437 30006c61 62656c24  label$470.label$
+ 0b5a0 31363234 006c6162 656c2431 36323500  1624.label$1625.
+ 0b5b0 6c616265 6c243437 33006c61 62656c24  label$473.label$
+ 0b5c0 31363237 006c6162 656c2431 36323800  1627.label$1628.
+ 0b5d0 6c616265 6c243437 36006c61 62656c24  label$476.label$
+ 0b5e0 34373700 6c616265 6c243437 38006c61  477.label$478.la
+ 0b5f0 62656c24 36333730 006c6162 656c2436  bel$6370.label$6
+ 0b600 33373100 6c616265 6c243633 3732006c  371.label$6372.l
+ 0b610 6162656c 24363337 34006c61 62656c24  abel$6374.label$
+ 0b620 36333735 006c6162 656c2436 33373600  6375.label$6376.
+ 0b630 6c616265 6c243633 3737006c 6162656c  label$6377.label
+ 0b640 24363337 38006c61 62656c24 36333739  $6378.label$6379
+ 0b650 006c6162 656c2435 3833006c 6162656c  .label$583.label
+ 0b660 24333032 31006c61 62656c24 34323630  $3021.label$4260
+ 0b670 006c6162 656c2433 30323300 6c616265  .label$3023.labe
+ 0b680 6c243432 3632006c 6162656c 24343236  l$4262.label$426
+ 0b690 33006c61 62656c24 34323634 006c6162  3.label$4264.lab
+ 0b6a0 656c2434 32363500 6c616265 6c243432  el$4265.label$42
+ 0b6b0 3636006c 6162656c 24343236 37006c61  66.label$4267.la
+ 0b6c0 62656c24 34323638 006c6162 656c2434  bel$4268.label$4
+ 0b6d0 32363900 6c616265 6c243538 3530006c  269.label$5850.l
+ 0b6e0 6162656c 24353835 31006c61 62656c24  abel$5851.label$
+ 0b6f0 35383532 006c6162 656c2435 38353300  5852.label$5853.
+ 0b700 6c616265 6c243538 3534006c 6162656c  label$5854.label
+ 0b710 24323135 30006c61 62656c24 35383536  $2150.label$5856
+ 0b720 006c6162 656c2432 31353200 6c616265  .label$2152.labe
+ 0b730 6c243231 3533006c 6162656c 24353835  l$2153.label$585
+ 0b740 39006c61 62656c24 32313535 006c6162  9.label$2155.lab
+ 0b750 656c2432 31353600 544d5024 31343332  el$2156.TMP$1432
+ 0b760 2437006c 6162656c 24323135 38006c61  $7.label$2158.la
+ 0b770 62656c24 32313539 006c6162 656c2433  bel$2159.label$3
+ 0b780 37343000 434f5354 41424c45 006c6162  740.COSTABLE.lab
+ 0b790 656c2433 37343200 6c616265 6c243337  el$3742.label$37
+ 0b7a0 3433006c 6162656c 24333734 34006c61  43.label$3744.la
+ 0b7b0 62656c24 33373435 006c6162 656c2433  bel$3745.label$3
+ 0b7c0 37343600 6c616265 6c243337 3438006c  746.label$3748.l
+ 0b7d0 6162656c 24333734 39006c61 62656c24  abel$3749.label$
+ 0b7e0 31363330 006c6162 656c2431 36333100  1630.label$1631.
+ 0b7f0 6c616265 6c243136 3333006c 6162656c  label$1633.label
+ 0b800 24313633 34006c61 62656c24 34383200  $1634.label$482.
+ 0b810 6c616265 6c243136 3336006c 6162656c  label$1636.label
+ 0b820 24313633 37006c61 62656c24 34383500  $1637.label$485.
+ 0b830 6c616265 6c243136 3339006c 6162656c  label$1639.label
+ 0b840 24343837 00767224 38333039 006c6162  $487.vr$8309.lab
+ 0b850 656c2436 33383000 6c616265 6c243633  el$6380.label$63
+ 0b860 3831006c 6162656c 24363338 32006c61  81.label$6382.la
+ 0b870 62656c24 36333833 006c6162 656c2436  bel$6383.label$6
+ 0b880 33383400 6c616265 6c243633 3835006c  384.label$6385.l
+ 0b890 6162656c 24363338 36006c61 62656c24  abel$6386.label$
+ 0b8a0 36333837 006c6162 656c2436 33383800  6387.label$6388.
+ 0b8b0 6c616265 6c243633 38390076 72243130  label$6389.vr$10
+ 0b8c0 30373400 76722431 30303735 006c6162  074.vr$10075.lab
+ 0b8d0 656c2434 32373000 6c616265 6c243432  el$4270.label$42
+ 0b8e0 3731006c 6162656c 24343237 32006c61  71.label$4272.la
+ 0b8f0 62656c24 34323733 006c6162 656c2434  bel$4273.label$4
+ 0b900 32373400 6c616265 6c243432 3735006c  274.label$4275.l
+ 0b910 6162656c 24343237 36006c61 62656c24  abel$4276.label$
+ 0b920 34323737 006c6162 656c2434 32373800  4277.label$4278.
+ 0b930 6c616265 6c243432 3739006c 6162656c  label$4279.label
+ 0b940 24353836 30006c61 62656c24 35383631  $5860.label$5861
+ 0b950 006c6162 656c2435 38363200 6c616265  .label$5862.labe
+ 0b960 6c243538 3633006c 6162656c 24353836  l$5863.label$586
+ 0b970 34006c61 62656c24 35383635 006c6162  4.label$5865.lab
+ 0b980 656c2432 31363100 494e535f 414e4400  el$2161.INS_AND.
+ 0b990 6c616265 6c243538 3638006c 6162656c  label$5868.label
+ 0b9a0 24323136 34006c61 62656c24 32313635  $2164.label$2165
+ 0b9b0 006c6162 656c2432 31363700 6c616265  .label$2167.labe
+ 0b9c0 6c243231 3638006c 6162656c 24333735  l$2168.label$375
+ 0b9d0 30006c61 62656c24 33373531 006c6162  0.label$3751.lab
+ 0b9e0 656c2433 37353200 6c616265 6c243337  el$3752.label$37
+ 0b9f0 3533006c 6162656c 24333735 34006c61  53.label$3754.la
+ 0ba00 62656c24 33373535 006c6162 656c2433  bel$3755.label$3
+ 0ba10 37353600 6c616265 6c243337 3537006c  756.label$3757.l
+ 0ba20 6162656c 24333735 38006c61 62656c24  abel$3758.label$
+ 0ba30 33373539 00564d43 53422400 6c616265  3759.VMCSB$.labe
+ 0ba40 6c243136 3432006c 6162656c 24313634  l$1642.label$164
+ 0ba50 33006c61 62656c24 34393100 6c616265  3.label$491.labe
+ 0ba60 6c243136 3435006c 6162656c 24313634  l$1645.label$164
+ 0ba70 36006c61 62656c24 34393400 6c616265  6.label$494.labe
+ 0ba80 6c243637 3238006c 6162656c 24313634  l$6728.label$164
+ 0ba90 39006c61 62656c24 34393700 6c616265  9.label$497.labe
+ 0baa0 6c243439 38006c61 62656c24 36333930  l$498.label$6390
+ 0bab0 006c6162 656c2436 33393100 6c616265  .label$6391.labe
+ 0bac0 6c243633 3932006c 6162656c 24363339  l$6392.label$639
+ 0bad0 33006c61 62656c24 36333934 006c6162  3.label$6394.lab
+ 0bae0 656c2436 33393500 6c616265 6c243633  el$6395.label$63
+ 0baf0 3936006c 6162656c 24363339 37006c61  96.label$6397.la
+ 0bb00 62656c24 36333938 006c6162 656c2436  bel$6398.label$6
+ 0bb10 33393900 76722438 34303200 6c616265  399.vr$8402.labe
+ 0bb20 6c243539 33007672 24383430 33006c61  l$593.vr$8403.la
+ 0bb30 62656c24 35393400 76722438 34303400  bel$594.vr$8404.
+ 0bb40 6c616265 6c243432 3830006c 6162656c  label$4280.label
+ 0bb50 24333033 33006c61 62656c24 34323832  $3033.label$4282
+ 0bb60 006c6162 656c2434 32383300 6c616265  .label$4283.labe
+ 0bb70 6c243432 3834006c 6162656c 24343238  l$4284.label$428
+ 0bb80 35006c61 62656c24 34323836 006c6162  5.label$4286.lab
+ 0bb90 656c2434 32383700 6c616265 6c243432  el$4287.label$42
+ 0bba0 3838006c 6162656c 24343238 39006c61  88.label$4289.la
+ 0bbb0 62656c24 35383730 0066625f 47667849  bel$5870.fb_GfxI
+ 0bbc0 6d616765 43726561 7465006c 6162656c  mageCreate.label
+ 0bbd0 24353837 32006c61 62656c24 35383733  $5872.label$5873
+ 0bbe0 006c6162 656c2435 38373400 6c616265  .label$5874.labe
+ 0bbf0 6c243231 3730006c 6162656c 24323137  l$2170.label$217
+ 0bc00 31006c61 62656c24 35383737 006c6162  1.label$5877.lab
+ 0bc10 656c2432 31373300 6c616265 6c243231  el$2173.label$21
+ 0bc20 37340076 72243130 31373700 6c616265  74.vr$10177.labe
+ 0bc30 6c243231 3736006c 6162656c 24323137  l$2176.label$217
+ 0bc40 37006c61 62656c24 32313739 006c6162  7.label$2179.lab
+ 0bc50 656c2433 37363000 6c616265 6c243337  el$3760.label$37
+ 0bc60 3631006c 6162656c 24333736 32006c61  61.label$3762.la
+ 0bc70 62656c24 33373633 006c6162 656c2433  bel$3763.label$3
+ 0bc80 37363400 6c616265 6c243337 36350074  764.label$3765.t
+ 0bc90 6d702437 3137006c 6162656c 24333736  mp$717.label$376
+ 0bca0 37006c61 62656c24 33373638 006c6162  7.label$3768.lab
+ 0bcb0 656c2433 37363900 76722431 30300076  el$3769.vr$100.v
+ 0bcc0 72243130 31007672 24313033 006c6162  r$101.vr$103.lab
+ 0bcd0 656c2431 36353200 76722431 3036006c  el$1652.vr$106.l
+ 0bce0 6162656c 24313635 35007672 24313038  abel$1655.vr$108
+ 0bcf0 00767224 31303900 6c616265 6c243136  .vr$109.label$16
+ 0bd00 3538006c 6162656c 24353134 35006c61  58.label$5145.la
+ 0bd10 62656c24 35313436 006c6162 656c2435  bel$5146.label$5
+ 0bd20 31343700 6c616265 6c243531 3439006c  147.label$5149.l
+ 0bd30 6162656c 24343632 33006c61 62656c24  abel$4623.label$
+ 0bd40 34323930 006c6162 656c2434 32393200  4290.label$4292.
+ 0bd50 6c616265 6c243432 3933006c 6162656c  label$4293.label
+ 0bd60 24343239 34006c61 62656c24 34323935  $4294.label$4295
+ 0bd70 006c6162 656c2434 32393600 6c616265  .label$4296.labe
+ 0bd80 6c243432 3937006c 6162656c 24343239  l$4297.label$429
+ 0bd90 38006c61 62656c24 34323939 006c6162  8.label$4299.lab
+ 0bda0 656c2435 38383000 6c616265 6c243538  el$5880.label$58
+ 0bdb0 3831006c 6162656c 24353838 32006c61  81.label$5882.la
+ 0bdc0 62656c24 35383833 006c6162 656c2435  bel$5883.label$5
+ 0bdd0 38383400 6c616265 6c243231 3830006c  884.label$2180.l
+ 0bde0 6162656c 24353838 36006c61 62656c24  abel$5886.label$
+ 0bdf0 32313832 006c6162 656c2432 31383300  2182.label$2183.
+ 0be00 6c616265 6c243538 3839006c 6162656c  label$5889.label
+ 0be10 24323138 35006c61 62656c24 32313836  $2185.label$2186
+ 0be20 006c6162 656c2432 31383800 6c616265  .label$2188.labe
+ 0be30 6c243231 3839006c 6162656c 24333737  l$2189.label$377
+ 0be40 30006c61 62656c24 33373731 00434841  0.label$3771.CHA
+ 0be50 525f4824 006c6162 656c2433 37373300  R_H$.label$3773.
+ 0be60 6c616265 6c243337 3734006c 6162656c  label$3774.label
+ 0be70 24333737 35006c61 62656c24 33373736  $3775.label$3776
+ 0be80 006c6162 656c2433 37373700 6c616265  .label$3777.labe
+ 0be90 6c243337 3738005f 5a4e3743 50553635  l$3778._ZN7CPU65
+ 0bea0 31303741 44525f52 454c4576 00767224  107ADR_RELEv.vr$
+ 0beb0 38393038 006c6162 656c2436 37333200  8908.label$6732.
+ 0bec0 76722431 31300076 72243131 31007672  vr$110.vr$111.vr
+ 0bed0 24313132 006c6162 656c2431 36363100  $112.label$1661.
+ 0bee0 76722431 3135006c 6162656c 24313636  vr$115.label$166
+ 0bef0 34007672 24313137 00767224 31313800  4.vr$117.vr$118.
+ 0bf00 474c554e 49464f52 4d314624 006c6162  GLUNIFORM1F$.lab
+ 0bf10 656c2436 37333800 6c616265 6c243136  el$6738.label$16
+ 0bf20 36390076 72243934 35390076 72243834  69.vr$9459.vr$84
+ 0bf30 31300076 72243834 31310076 72243834  10.vr$8411.vr$84
+ 0bf40 31320076 72243836 3032006c 6162656c  12.vr$8602.label
+ 0bf50 24333034 31007672 24383431 34007672  $3041.vr$8414.vr
+ 0bf60 24383431 35007672 24393433 30007672  $8415.vr$9430.vr
+ 0bf70 24383431 36007672 24393433 32007672  $8416.vr$9432.vr
+ 0bf80 24383431 37007672 24393433 34007672  $8417.vr$9434.vr
+ 0bf90 24383431 38007672 24383630 36007672  $8418.vr$8606.vr
+ 0bfa0 24383431 39006c61 62656c24 35383930  $8419.label$5890
+ 0bfb0 006c6162 656c2432 35323000 6c616265  .label$2520.labe
+ 0bfc0 6c243538 3932006c 6162656c 24353839  l$5892.label$589
+ 0bfd0 33006c61 62656c24 35383934 006c6162  3.label$5894.lab
+ 0bfe0 656c2435 38393500 6c616265 6c243231  el$5895.label$21
+ 0bff0 3931006c 6162656c 24323139 32006c61  91.label$2192.la
+ 0c000 62656c24 35383938 006c6162 656c2432  bel$5898.label$2
+ 0c010 31393400 6c616265 6c243231 3935006c  194.label$2195.l
+ 0c020 6162656c 24323139 37006c61 62656c24  abel$2197.label$
+ 0c030 32313938 006c6162 656c2433 37383000  2198.label$3780.
+ 0c040 6c616265 6c243337 3831006c 6162656c  label$3781.label
+ 0c050 24333738 32006c61 62656c24 33373833  $3782.label$3783
+ 0c060 006c6162 656c2433 37383400 6c616265  .label$3784.labe
+ 0c070 6c243337 3835006c 6162656c 24333738  l$3785.label$378
+ 0c080 36006c61 62656c24 33373837 006c6162  6.label$3787.lab
+ 0c090 656c2433 37383800 6c616265 6c243337  el$3788.label$37
+ 0c0a0 38390076 72243839 31380076 72243839  89.vr$8918.vr$89
+ 0c0b0 31390076 72243132 30007672 24313231  19.vr$120.vr$121
+ 0c0c0 006c6162 656c2431 36373000 76722431  .label$1670.vr$1
+ 0c0d0 32330076 72243132 34006c61 62656c24  23.vr$124.label$
+ 0c0e0 31363733 006c6162 656c2431 36373500  1673.label$1675.
+ 0c0f0 6c616265 6c243136 3736006c 6162656c  label$1676.label
+ 0c100 24313637 38006c61 62656c24 31363739  $1678.label$1679
+ 0c110 006c6162 656c2435 31353600 6c616265  .label$5156.labe
+ 0c120 6c243531 3538006c 6162656c 24353135  l$5158.label$515
+ 0c130 39005f5a 4e384d45 4d4f5259 5f543550  9._ZN8MEMORY_T5P
+ 0c140 4f4b4542 45646400 5f5a4e39 53484144  OKEBEdd._ZN9SHAD
+ 0c150 4552544f 59443145 76007672 24393434  ERTOYD1Ev.vr$944
+ 0c160 30007672 24393434 31007672 24393434  0.vr$9441.vr$944
+ 0c170 32007672 24393434 33007672 24393434  2.vr$9443.vr$944
+ 0c180 34007672 24393434 35007672 24393434  4.vr$9445.vr$944
+ 0c190 36007672 24393434 37007672 24393434  6.vr$9447.vr$944
+ 0c1a0 38007672 24393434 39006c61 62656c24  8.vr$9449.label$
+ 0c1b0 33373930 006c6162 656c2433 37393100  3790.label$3791.
+ 0c1c0 6c616265 6c243337 3932006c 6162656c  label$3792.label
+ 0c1d0 24333739 33006c61 62656c24 33373934  $3793.label$3794
+ 0c1e0 006c6162 656c2433 37393500 6c616265  .label$3795.labe
+ 0c1f0 6c243337 3936006c 6162656c 24333739  l$3796.label$379
+ 0c200 37006c61 62656c24 33373938 006c6162  7.label$3798.lab
+ 0c210 656c2433 37393900 76722438 39323800  el$3799.vr$8928.
+ 0c220 76722438 39323900 76722431 33310076  vr$8929.vr$131.v
+ 0c230 72243133 33006c61 62656c24 31363832  r$133.label$1682
+ 0c240 00767224 39373035 00767224 31333600  .vr$9705.vr$136.
+ 0c250 6c616265 6c243136 38350076 72243133  label$1685.vr$13
+ 0c260 38007672 24313339 006c6162 656c2431  8.vr$139.label$1
+ 0c270 36383800 544d5024 31343732 2437006c  688.TMP$1472$7.l
+ 0c280 6162656c 2430006c 6162656c 24310076  abel$0.label$1.v
+ 0c290 72243834 3231006c 6162656c 24330076  r$8421.label$3.v
+ 0c2a0 72243834 3232006c 6162656c 2435006c  r$8422.label$5.l
+ 0c2b0 6162656c 24333035 31006c61 62656c24  abel$3051.label$
+ 0c2c0 35313000 76722438 34323400 6c616265  510.vr$8424.labe
+ 0c2d0 6c243900 6c616265 6c243330 35330076  l$9.label$3053.v
+ 0c2e0 72243934 35300076 72243834 32360076  r$9450.vr$8426.v
+ 0c2f0 72243934 35320076 72243834 32370076  r$9452.vr$8427.v
+ 0c300 72243934 35340076 72243834 32380076  r$9454.vr$8428.v
+ 0c310 72243934 35360076 72243834 32390076  r$9456.vr$8429.v
+ 0c320 72243934 35380076 72243739 30320076  r$9458.vr$7902.v
+ 0c330 72243932 32340076 72243739 30350049  r$9224.vr$7905.I
+ 0c340 4e535f41 534c0054 4d502432 39383324  NS_ASL.TMP$2983$
+ 0c350 31007672 24383933 31007672 24383933  1.vr$8931.vr$893
+ 0c360 32007672 24383933 33007672 24383933  2.vr$8933.vr$893
+ 0c370 34007672 24383933 35007672 24383933  4.vr$8935.vr$893
+ 0c380 36007672 24383933 37007672 24383933  6.vr$8937.vr$893
+ 0c390 38007672 24383933 39007672 24313430  8.vr$8939.vr$140
+ 0c3a0 006c6162 656c2431 36393000 6c616265  .label$1690.labe
+ 0c3b0 6c243136 3931006c 6162656c 24313639  l$1691.label$169
+ 0c3c0 33006c61 62656c24 31363934 006c6162  3.label$1694.lab
+ 0c3d0 656c2431 36393600 474c554e 49464f52  el$1696.GLUNIFOR
+ 0c3e0 4d314924 006c6162 656c2431 36393900  M1I$.label$1699.
+ 0c3f0 544d5024 32383536 2433006c 6162656c  TMP$2856$3.label
+ 0c400 24353136 37006c61 62656c24 35313638  $5167.label$5168
+ 0c410 0066625f 47667853 63726565 6e4c6973  .fb_GfxScreenLis
+ 0c420 74006c61 62656c24 34363433 00767224  t.label$4643.vr$
+ 0c430 38363132 00767224 39343630 00767224  8612.vr$9460.vr$
+ 0c440 39343631 00767224 39343632 00767224  9461.vr$9462.vr$
+ 0c450 38363135 00767224 39343634 00767224  8615.vr$9464.vr$
+ 0c460 39343635 00767224 39343636 00544d50  9465.vr$9466.TMP
+ 0c470 24313435 31243700 746d7024 32383934  $1451$7.tmp$2894
+ 0c480 24310076 72243934 3639005f 5f737461  $1.vr$9469.__sta
+ 0c490 636b5f63 686b5f66 61696c00 4552524f  ck_chk_fail.ERRO
+ 0c4a0 52574944 54482436 006c6162 656c2437  RWIDTH$6.label$7
+ 0c4b0 30300076 72243839 34300076 72243839  00.vr$8940.vr$89
+ 0c4c0 34310076 72243839 34320076 72243839  41.vr$8942.vr$89
+ 0c4d0 34330076 72243839 34340076 72243839  43.vr$8944.vr$89
+ 0c4e0 34350076 72243839 34360076 72243839  45.vr$8946.vr$89
+ 0c4f0 34370076 72243839 34380076 72243839  47.vr$8948.vr$89
+ 0c500 34390054 4d502432 39393924 31006c61  49.TMP$2999$1.la
+ 0c510 62656c24 37303600 6c616265 6c243536  bel$706.label$56
+ 0c520 32390076 72243135 32007672 24313533  29.vr$152.vr$153
+ 0c530 00544d50 24323936 32243100 76722431  .TMP$2962$1.vr$1
+ 0c540 35350076 72243135 38007672 24383433  55.vr$158.vr$843
+ 0c550 30004954 494d4524 3500544d 50243633  0.ITIME$5.TMP$63
+ 0c560 35243200 6c616265 6c243330 36330076  5$2.label$3063.v
+ 0c570 72243934 37300076 72243834 33360076  r$9470.vr$8436.v
+ 0c580 72243934 37320076 72243934 37330076  r$9472.vr$9473.v
+ 0c590 72243934 37340076 72243834 33380076  r$9474.vr$8438.v
+ 0c5a0 72243934 37360076 72243739 31310076  r$9476.vr$7911.v
+ 0c5b0 72243934 37380076 72243934 37390054  r$9478.vr$9479.T
+ 0c5c0 4d502432 38333524 37007672 24373931  MP$2835$7.vr$791
+ 0c5d0 37007672 24383935 30007672 24383935  7.vr$8950.vr$895
+ 0c5e0 31007672 24383935 32007672 24383935  1.vr$8952.vr$895
+ 0c5f0 33007672 24383935 34007672 24383935  3.vr$8954.vr$895
+ 0c600 35007672 24383935 36007672 24383935  5.vr$8956.vr$895
+ 0c610 37007672 24383935 38007672 24383935  7.vr$8958.vr$895
+ 0c620 39006c61 62656c24 34383030 00767224  9.label$4800.vr$
+ 0c630 31363100 76722431 33313337 006c6162  161.vr$13137.lab
+ 0c640 656c2435 31373100 76722431 36340076  el$5171.vr$164.v
+ 0c650 72243136 35006c61 62656c24 35313733  r$165.label$5173
+ 0c660 00767224 31363800 6c616265 6c243531  .vr$168.label$51
+ 0c670 37340076 72243937 3937006c 6162656c  74.vr$9797.label
+ 0c680 24353137 35006c61 62656c24 35313736  $5175.label$5176
+ 0c690 00544d50 24323937 38243100 6c616265  .TMP$2978$1.labe
+ 0c6a0 6c243531 37370054 4d502432 39343124  l$5177.TMP$2941$
+ 0c6b0 31004643 4f4c4f52 24006662 5f476678  1.FCOLOR$.fb_Gfx
+ 0c6c0 47657447 4c50726f 63416464 72657373  GetGLProcAddress
+ 0c6d0 00767224 39343831 00767224 39343832  .vr$9481.vr$9482
+ 0c6e0 00767224 39343833 00767224 39343834  .vr$9483.vr$9484
+ 0c6f0 00767224 39343835 00767224 39343836  .vr$9485.vr$9486
+ 0c700 00767224 39343837 00767224 39343838  .vr$9487.vr$9488
+ 0c710 00767224 39343839 005f5a4e 39534841  .vr$9489._ZN9SHA
+ 0c720 44455254 4f593131 434f4d50 494c4543  DERTOY11COMPILEC
+ 0c730 4f444545 52384642 53545249 4e47006c  ODEER8FBSTRING.l
+ 0c740 6162656c 24373130 00767224 38393630  abel$710.vr$8960
+ 0c750 00767224 38393631 00767224 38393632  .vr$8961.vr$8962
+ 0c760 00767224 38393633 00767224 38393634  .vr$8963.vr$8964
+ 0c770 00767224 38393635 00767224 38393636  .vr$8965.vr$8966
+ 0c780 00767224 38393637 00767224 38393638  .vr$8967.vr$8968
+ 0c790 00767224 38393639 006c6162 656c2437  .vr$8969.label$7
+ 0c7a0 3136006c 6162656c 24373137 00767224  16.label$717.vr$
+ 0c7b0 31373300 6c616265 6c243731 38006c61  173.label$718.la
+ 0c7c0 62656c24 37313900 76722431 37380076  bel$719.vr$178.v
+ 0c7d0 72243137 3900544d 50243330 31322431  r$179.TMP$3012$1
+ 0c7e0 00535037 5824006c 6162656c 24313800  .SP7X$.label$18.
+ 0c7f0 76722438 36323100 4d4f5553 455f4224  vr$8621.MOUSE_B$
+ 0c800 00767224 39313434 006c6162 656c2433  .vr$9144.label$3
+ 0c810 30373100 494e535f 4c535200 544d5024  071.INS_LSR.TMP$
+ 0c820 32393537 24310076 72243836 32340076  2957$1.vr$8624.v
+ 0c830 72243837 31320076 72243934 39320054  r$8712.vr$9492.T
+ 0c840 4d502432 39323024 31007672 24393439  MP$2920$1.vr$949
+ 0c850 34007672 24393439 35007672 24393439  4.vr$9495.vr$949
+ 0c860 36007672 24393439 37007672 24393439  6.vr$9497.vr$949
+ 0c870 38007672 24393439 39007672 24373932  8.vr$9499.vr$792
+ 0c880 33007672 24393332 30007672 24383937  3.vr$9320.vr$897
+ 0c890 30007672 24383937 31007672 24383937  0.vr$8971.vr$897
+ 0c8a0 32007672 24383937 33007672 24383937  2.vr$8973.vr$897
+ 0c8b0 34007672 24383937 35007672 24383937  4.vr$8975.vr$897
+ 0c8c0 36007672 24383937 37007672 24383937  6.vr$8977.vr$897
+ 0c8d0 38007672 24383937 39007672 24313832  8.vr$8979.vr$182
+ 0c8e0 00767224 31383300 544d5024 35393524  .vr$183.TMP$595$
+ 0c8f0 31006c61 62656c24 35313832 0046494c  1.label$5182.FIL
+ 0c900 454e414d 4524006c 6162656c 24353138  ENAME$.label$518
+ 0c910 33007672 24313838 006c6162 656c2435  3.vr$188.label$5
+ 0c920 31383500 53503759 24007672 24393731  185.SP7Y$.vr$971
+ 0c930 37004f42 2435006c 6162656c 24353138  7.OB$5.label$518
+ 0c940 38006c61 62656c24 35313839 004d4f55  8.label$5189.MOU
+ 0c950 53455f43 24006c61 62656c24 34363638  SE_C$.label$4668
+ 0c960 00767224 31303138 36005449 434b5324  .vr$10186.TICKS$
+ 0c970 3000544d 50243239 33362431 006c6162  0.TMP$2936$1.lab
+ 0c980 656c2437 32300076 72243839 38300076  el$720.vr$8980.v
+ 0c990 72243839 38310076 72243839 38320076  r$8981.vr$8982.v
+ 0c9a0 72243839 38330076 72243839 38350076  r$8983.vr$8985.v
+ 0c9b0 72243839 38360076 72243839 38370076  r$8986.vr$8987.v
+ 0c9c0 72243839 38380076 72243839 3839006c  r$8988.vr$8989.l
+ 0c9d0 6162656c 24373236 00767224 31393100  abel$726.vr$191.
+ 0c9e0 6c616265 6c243732 37007672 24313236  label$727.vr$126
+ 0c9f0 3235006c 6162656c 24373238 006c6162  25.label$728.lab
+ 0ca00 656c2437 32390076 72243139 37007672  el$729.vr$197.vr
+ 0ca10 24313938 005f5a4e 384d454d 4f52595f  $198._ZN8MEMORY_
+ 0ca20 5437746d 70243836 39456c6c 6c6c6200  T7tmp$869Ellllb.
+ 0ca30 544d5024 38393724 37007672 24393638  TMP$897$7.vr$968
+ 0ca40 36006c61 62656c24 33303831 006c6162  6.label$3081.lab
+ 0ca50 656c2433 30383300 76722437 39333000  el$3083.vr$7930.
+ 0ca60 544d5024 33303037 24310046 5241474d  TMP$3007$1.FRAGM
+ 0ca70 454e5445 50494c4f 47243100 76722438  ENTEPILOG$1.vr$8
+ 0ca80 39393000 76722438 39393100 76722438  990.vr$8991.vr$8
+ 0ca90 39393200 544d5024 32393135 24310076  992.TMP$2915$1.v
+ 0caa0 72243839 39340076 72243839 39350053  r$8994.vr$8995.S
+ 0cab0 5452494e 475f4441 54412400 76722438  TRING_DATA$.vr$8
+ 0cac0 39393700 76722438 39393800 76722438  997.vr$8998.vr$8
+ 0cad0 39393900 5f5a4e37 43505536 35313038  999._ZN7CPU65108
+ 0cae0 4144525f 41425358 4576006c 6162656c  ADR_ABSXEv.label
+ 0caf0 24353139 31006c61 62656c24 35313932  $5191.label$5192
+ 0cb00 006c6162 656c2435 31393400 6c616265  .label$5194.labe
+ 0cb10 6c243531 3935006c 6162656c 24353139  l$5195.label$519
+ 0cb20 37006c61 62656c24 35313938 004d454d  7.label$5198.MEM
+ 0cb30 36340054 4d502438 37362436 00504954  64.TMP$876$6.PIT
+ 0cb40 43482400 6c616265 6c243438 31380076  CH$.label$4818.v
+ 0cb50 72243130 37390076 72243931 35390066  r$1079.vr$9159.f
+ 0cb60 625f4766 78506169 6e74006c 6162656c  b_GfxPaint.label
+ 0cb70 24373331 006c6162 656c2437 3332006c  $731.label$732.l
+ 0cb80 6162656c 24373333 006c6162 656c2437  abel$733.label$7
+ 0cb90 3334006c 6162656c 24373335 006c6162  34.label$735.lab
+ 0cba0 656c2437 3336006c 6162656c 24373337  el$736.label$737
+ 0cbb0 006c6162 656c2437 3338006c 6162656c  .label$738.label
+ 0cbc0 24373339 0066625f 436c7300 6c616265  $739.fb_Cls.labe
+ 0cbd0 6c243733 30007672 24383436 31006c61  l$730.vr$8461.la
+ 0cbe0 62656c24 33303933 005f5a4e 384d454d  bel$3093._ZN8MEM
+ 0cbf0 4f52595f 54313157 52495445 5553484f  ORY_T11WRITEUSHO
+ 0cc00 52544564 64007672 24383436 3700544d  RTEdd.vr$8467.TM
+ 0cc10 50243835 35243300 76722438 37323400  P$855$3.vr$8724.
+ 0cc20 76722431 32363332 006c6162 656c2434  vr$12632.label$4
+ 0cc30 36383300 544d5024 32383735 2433006c  683.TMP$2875$3.l
+ 0cc40 6162656c 24353130 30006c61 62656c24  abel$5100.label$
+ 0cc50 35313031 006c6162 656c2435 31303200  5101.label$5102.
+ 0cc60 6c616265 6c243531 3033006c 6162656c  label$5103.label
+ 0cc70 24353130 34006c61 62656c24 35313035  $5104.label$5105
+ 0cc80 006c6162 656c2435 31303600 6c616265  .label$5106.labe
+ 0cc90 6c243531 3037006c 6162656c 24353130  l$5107.label$510
+ 0cca0 38006c61 62656c24 35313039 006c6162  8.label$5109.lab
+ 0ccb0 656c2437 3430006c 6162656c 24373431  el$740.label$741
+ 0ccc0 006c6162 656c2437 3432006c 6162656c  .label$742.label
+ 0ccd0 24373433 006c6162 656c2437 3434006c  $743.label$744.l
+ 0cce0 6162656c 24373435 006c6162 656c2437  abel$745.label$7
+ 0ccf0 3436006c 6162656c 24373437 006c6162  46.label$747.lab
+ 0cd00 656c2437 3438006c 6162656c 24373439  el$748.label$749
+ 0cd10 00767224 38343730 00544d50 24323834  .vr$8470.TMP$284
+ 0cd20 32243300 6c616265 6c243531 3130006c  2$3.label$5110.l
+ 0cd30 6162656c 24383030 006c6162 656c2435  abel$800.label$5
+ 0cd40 31313200 6c616265 6c243830 32006c61  112.label$802.la
+ 0cd50 62656c24 38303300 6c616265 6c243531  bel$803.label$51
+ 0cd60 3135006c 6162656c 24383035 006c6162  15.label$805.lab
+ 0cd70 656c2438 3036006c 6162656c 24353131  el$806.label$511
+ 0cd80 38006c61 62656c24 38303800 6c616265  8.label$808.labe
+ 0cd90 6c243637 3030006c 6162656c 24363730  l$6700.label$670
+ 0cda0 32006c61 62656c24 36373034 006c6162  2.label$6704.lab
+ 0cdb0 656c2433 30303000 6c616265 6c243637  el$3000.label$67
+ 0cdc0 3036006c 6162656c 24333030 32006c61  06.label$3002.la
+ 0cdd0 62656c24 36373038 006c6162 656c2433  bel$6708.label$3
+ 0cde0 30303500 6c616265 6c243330 3036006c  005.label$3006.l
+ 0cdf0 6162656c 24333030 38006c61 62656c24  abel$3008.label$
+ 0ce00 33303039 006c6162 656c2435 3338006c  3009.label$538.l
+ 0ce10 6162656c 24323000 6c616265 6c243436  abel$20.label$46
+ 0ce20 3935006c 6162656c 24343639 38006c61  95.label$4698.la
+ 0ce30 62656c24 35313230 006c6162 656c2435  bel$5120.label$5
+ 0ce40 31323100 6c616265 6c243831 31006c61  121.label$811.la
+ 0ce50 62656c24 38313200 6c616265 6c243531  bel$812.label$51
+ 0ce60 3234006c 6162656c 24383134 006c6162  24.label$814.lab
+ 0ce70 656c2438 3135006c 6162656c 24353132  el$815.label$512
+ 0ce80 37006c61 62656c24 38313700 6c616265  7.label$817.labe
+ 0ce90 6c243831 38006c61 62656c24 36373130  l$818.label$6710
+ 0cea0 006c6162 656c2436 37313200 6c616265  .label$6712.labe
+ 0ceb0 6c243637 3134006c 6162656c 24363731  l$6714.label$671
+ 0cec0 36006c61 62656c24 33303132 006c6162  6.label$3012.lab
+ 0ced0 656c2436 37313800 6c616265 6c243330  el$6718.label$30
+ 0cee0 3134006c 6162656c 24333031 35007672  14.label$3015.vr
+ 0cef0 24313031 3031006c 6162656c 24333031  $10101.label$301
+ 0cf00 37006c61 62656c24 33303138 006c6162  7.label$3018.lab
+ 0cf10 656c2434 36303000 6c616265 6c243436  el$4600.label$46
+ 0cf20 3031006c 6162656c 24343630 32006c61  01.label$4602.la
+ 0cf30 62656c24 34363033 006c6162 656c2434  bel$4603.label$4
+ 0cf40 36303400 6c616265 6c243436 3035006c  604.label$4605.l
+ 0cf50 6162656c 24343630 36006c61 62656c24  abel$4606.label$
+ 0cf60 34363037 006c6162 656c2434 36303800  4607.label$4608.
+ 0cf70 6c616265 6c243436 3039006c 6162656c  label$4609.label
+ 0cf80 24373539 0066625f 47667853 63726565  $759.fb_GfxScree
+ 0cf90 6e496e66 6f363400 4f582435 006c6162  nInfo64.OX$5.lab
+ 0cfa0 656c2435 31333000 6c616265 6c243832  el$5130.label$82
+ 0cfb0 30006c61 62656c24 38323100 6c616265  0.label$821.labe
+ 0cfc0 6c243531 3333006c 6162656c 24383233  l$5133.label$823
+ 0cfd0 006c6162 656c2438 3234006c 6162656c  .label$824.label
+ 0cfe0 24353133 36006c61 62656c24 38323600  $5136.label$826.
+ 0cff0 6c616265 6c243832 37006c61 62656c24  label$827.label$
+ 0d000 35313339 006c6162 656c2436 37323000  5139.label$6720.
+ 0d010 6c616265 6c243637 32320076 72243832  label$6722.vr$82
+ 0d020 3039006c 6162656c 24363732 34006c61  09.label$6724.la
+ 0d030 62656c24 33303230 006c6162 656c2436  bel$3020.label$6
+ 0d040 37323600 6c616265 6c243233 34004348  726.label$234.CH
+ 0d050 41525f57 24006c61 62656c24 33303234  AR_W$.label$3024
+ 0d060 00455252 4f525749 44544824 33006c61  .ERRORWIDTH$3.la
+ 0d070 62656c24 33303236 006c6162 656c2433  bel$3026.label$3
+ 0d080 30323700 6c616265 6c243330 3239006c  027.label$3029.l
+ 0d090 6162656c 24343631 30006c61 62656c24  abel$4610.label$
+ 0d0a0 34363131 006c6162 656c2434 36313200  4611.label$4612.
+ 0d0b0 6c616265 6c243436 3133006c 6162656c  label$4613.label
+ 0d0c0 24343631 34006c61 62656c24 34363135  $4614.label$4615
+ 0d0d0 006c6162 656c2434 36313600 6c616265  .label$4616.labe
+ 0d0e0 6c243436 3137006c 6162656c 24343631  l$4617.label$461
+ 0d0f0 38006c61 62656c24 34363139 006c6162  8.label$4619.lab
+ 0d100 656c2432 33390054 4d502432 38343924  el$239.TMP$2849$
+ 0d110 33006c61 62656c24 32353031 006c6162  3.label$2501.lab
+ 0d120 656c2432 35303200 6c616265 6c243235  el$2502.label$25
+ 0d130 3034006c 6162656c 24323530 35006c61  04.label$2505.la
+ 0d140 62656c24 32353037 006c6162 656c2432  bel$2507.label$2
+ 0d150 35303800 544d5024 38363024 32006c61  508.TMP$860$2.la
+ 0d160 62656c24 31393500 544d5024 31343833  bel$195.TMP$1483
+ 0d170 2437006c 6162656c 24333830 0066625f  $7.label$380.fb_
+ 0d180 5072696e 74566f69 64006c61 62656c24  PrintVoid.label$
+ 0d190 35313430 006c6162 656c2438 3330006c  5140.label$830.l
+ 0d1a0 6162656c 24353134 32006c61 62656c24  abel$5142.label$
+ 0d1b0 38333200 6c616265 6c243833 33006c61  832.label$833.la
+ 0d1c0 62656c24 38333500 6c616265 6c243833  bel$835.label$83
+ 0d1d0 36006c61 62656c24 35313438 006c6162  6.label$5148.lab
+ 0d1e0 656c2438 3338006c 6162656c 24363733  el$838.label$673
+ 0d1f0 30005542 4f554e44 006c6162 656c2436  0.UBOUND.label$6
+ 0d200 37333400 6c616265 6c243330 3330006c  734.label$3030.l
+ 0d210 6162656c 24363733 36006c61 62656c24  abel$6736.label$
+ 0d220 33303332 00767224 31303131 30006c61  3032.vr$10110.la
+ 0d230 62656c24 33303335 006c6162 656c2433  bel$3035.label$3
+ 0d240 30333600 6c616265 6c243330 3338006c  036.label$3038.l
+ 0d250 6162656c 24333033 39006c61 62656c24  abel$3039.label$
+ 0d260 34363230 006c6162 656c2434 36323100  4620.label$4621.
+ 0d270 6c616265 6c243436 3232006c 6162656c  label$4622.label
+ 0d280 24333230 33006c61 62656c24 34363234  $3203.label$4624
+ 0d290 006c6162 656c2434 36323500 6c616265  .label$4625.labe
+ 0d2a0 6c243436 3236006c 6162656c 24343632  l$4626.label$462
+ 0d2b0 37006c61 62656c24 34363238 006c6162  7.label$4628.lab
+ 0d2c0 656c2434 36323900 6c616265 6c243736  el$4629.label$76
+ 0d2d0 39006662 5f54696d 6572006c 6162656c  9.fb_Timer.label
+ 0d2e0 24323531 31006c61 62656c24 32353133  $2511.label$2513
+ 0d2f0 006c6162 656c2432 35313400 6c616265  .label$2514.labe
+ 0d300 6c243235 3136006c 6162656c 24323531  l$2516.label$251
+ 0d310 37006c61 62656c24 32353139 00767224  7.label$2519.vr$
+ 0d320 38343933 00544d50 24323832 38243500  8493.TMP$2828$5.
+ 0d330 5f5a4e35 4336345f 54443145 76007672  _ZN5C64_TD1Ev.vr
+ 0d340 24383439 38006c61 62656c24 35313530  $8498.label$5150
+ 0d350 006c6162 656c2435 31353100 6c616265  .label$5151.labe
+ 0d360 6c243834 31006c61 62656c24 38343200  l$841.label$842.
+ 0d370 6c616265 6c243531 3534006c 6162656c  label$5154.label
+ 0d380 24383435 006c6162 656c2435 31353700  $845.label$5157.
+ 0d390 6c616265 6c243834 37006c61 62656c24  label$847.label$
+ 0d3a0 38343800 6c616265 6c243637 3430006c  848.label$6740.l
+ 0d3b0 6162656c 24313500 6c616265 6c243637  abel$15.label$67
+ 0d3c0 3432006c 6162656c 24313600 6c616265  42.label$16.labe
+ 0d3d0 6c243637 3434006c 6162656c 24363734  l$6744.label$674
+ 0d3e0 36006c61 62656c24 33303432 006c6162  6.label$3042.lab
+ 0d3f0 656c2436 37343800 6c616265 6c243330  el$6748.label$30
+ 0d400 3434006c 6162656c 24333034 3500544d  44.label$3045.TM
+ 0d410 50243735 32243200 6c616265 6c243330  P$752$2.label$30
+ 0d420 3437006c 6162656c 24333034 38006c61  47.label$3048.la
+ 0d430 62656c24 34363330 006c6162 656c2434  bel$4630.label$4
+ 0d440 36333100 6c616265 6c243436 3332006c  631.label$4632.l
+ 0d450 6162656c 24343633 33006c61 62656c24  abel$4633.label$
+ 0d460 34363334 006c6162 656c2434 36333500  4634.label$4635.
+ 0d470 6c616265 6c243436 3336006c 6162656c  label$4636.label
+ 0d480 24343633 37006c61 62656c24 34363338  $4637.label$4638
+ 0d490 006c6162 656c2434 36333900 494e5445  .label$4639.INTE
+ 0d4a0 52525550 54534552 56494345 006c6162  RRUPTSERVICE.lab
+ 0d4b0 656c2432 35323200 6c616265 6c243235  el$2522.label$25
+ 0d4c0 32330066 625f5641 4c006c61 62656c24  23.fb_VAL.label$
+ 0d4d0 32353235 006c6162 656c2432 35323600  2525.label$2526.
+ 0d4e0 6c616265 6c243235 3238006c 6162656c  label$2528.label
+ 0d4f0 24323532 39006c61 62656c24 35313630  $2529.label$5160
+ 0d500 006c6162 656c2438 3530006c 6162656c  .label$850.label
+ 0d510 24383531 006c6162 656c2435 31363300  $851.label$5163.
+ 0d520 5f5a4e37 43505536 35313034 5449434b  _ZN7CPU65104TICK
+ 0d530 4564006c 6162656c 24353136 36006c61  Ed.label$5166.la
+ 0d540 62656c24 38353600 6c616265 6c243835  bel$856.label$85
+ 0d550 37006c61 62656c24 35313639 006c6162  7.label$5169.lab
+ 0d560 656c2436 37353000 6c616265 6c243637  el$6750.label$67
+ 0d570 3532006c 6162656c 24363735 34006c61  52.label$6754.la
+ 0d580 62656c24 33303530 006c6162 656c2436  bel$3050.label$6
+ 0d590 37353600 544d5024 31343738 2437006c  756.TMP$1478$7.l
+ 0d5a0 6162656c 24363735 38006c61 62656c24  abel$6758.label$
+ 0d5b0 33303534 006c6162 656c2433 30353600  3054.label$3056.
+ 0d5c0 6c616265 6c243330 35370076 72243130  label$3057.vr$10
+ 0d5d0 31323200 6c616265 6c243330 3539006c  122.label$3059.l
+ 0d5e0 6162656c 24343634 30006c61 62656c24  abel$4640.label$
+ 0d5f0 34363431 006c6162 656c2434 36343200  4641.label$4642.
+ 0d600 6c616265 6c243332 3133006c 6162656c  label$3213.label
+ 0d610 24343634 34006c61 62656c24 34363435  $4644.label$4645
+ 0d620 006c6162 656c2434 36343600 6c616265  .label$4646.labe
+ 0d630 6c243436 3437006c 6162656c 24343634  l$4647.label$464
+ 0d640 38006c61 62656c24 34363439 006c6162  8.label$4649.lab
+ 0d650 656c2437 3739006c 6162656c 24333231  el$779.label$321
+ 0d660 38006c61 62656c24 32353331 006c6162  8.label$2531.lab
+ 0d670 656c2432 35333200 6c616265 6c243235  el$2532.label$25
+ 0d680 3334006c 6162656c 24323533 35006c61  34.label$2535.la
+ 0d690 62656c24 32353337 006c6162 656c2432  bel$2537.label$2
+ 0d6a0 35333800 76722439 33303700 544d5024  538.vr$9307.TMP$
+ 0d6b0 36353324 32007672 24393330 38007672  653$2.vr$9308.vr
+ 0d6c0 24393330 39006c61 62656c24 35313730  $9309.label$5170
+ 0d6d0 006c6162 656c2438 3630006c 6162656c  .label$860.label
+ 0d6e0 24353137 32006c61 62656c24 38363200  $5172.label$862.
+ 0d6f0 6c616265 6c243836 33006c61 62656c24  label$863.label$
+ 0d700 38363500 494e535f 50484100 6c616265  865.INS_PHA.labe
+ 0d710 6c243531 3738006c 6162656c 24383638  l$5178.label$868
+ 0d720 006c6162 656c2436 37363000 6c616265  .label$6760.labe
+ 0d730 6c243235 006c6162 656c2436 37363200  l$25.label$6762.
+ 0d740 6c616265 6c243236 006c6162 656c2436  label$26.label$6
+ 0d750 37363400 6c616265 6c243330 3630006c  764.label$3060.l
+ 0d760 6162656c 24363736 36006c61 62656c24  abel$6766.label$
+ 0d770 33303632 006c6162 656c2436 37363800  3062.label$6768.
+ 0d780 6c616265 6c243239 006c6162 656c2433  label$29.label$3
+ 0d790 30363500 6c616265 6c243330 36360049  065.label$3066.I
+ 0d7a0 4e535f50 4850006c 6162656c 24333036  NS_PHP.label$306
+ 0d7b0 38006c61 62656c24 33303639 006c6162  8.label$3069.lab
+ 0d7c0 656c2434 36353000 6c616265 6c243436  el$4650.label$46
+ 0d7d0 3531006c 6162656c 24343635 32006c61  51.label$4652.la
+ 0d7e0 62656c24 34363533 006c6162 656c2434  bel$4653.label$4
+ 0d7f0 36353400 6c616265 6c243436 3535006c  654.label$4655.l
+ 0d800 6162656c 24343635 36006c61 62656c24  abel$4656.label$
+ 0d810 34363537 006c6162 656c2434 36353800  4657.label$4658.
+ 0d820 6c616265 6c243436 3539006c 6162656c  label$4659.label
+ 0d830 24323534 30006c61 62656c24 32353431  $2540.label$2541
+ 0d840 006c6162 656c2432 35343300 6c616265  .label$2543.labe
+ 0d850 6c243235 3434006c 6162656c 24323534  l$2544.label$254
+ 0d860 36006c61 62656c24 32353437 006c6162  6.label$2547.lab
+ 0d870 656c2432 35343900 76722439 34303700  el$2549.vr$9407.
+ 0d880 6c616265 6c243531 3830006c 6162656c  label$5180.label
+ 0d890 24353138 31006c61 62656c24 38373100  $5181.label$871.
+ 0d8a0 6c616265 6c243837 32006c61 62656c24  label$872.label$
+ 0d8b0 35313834 006c6162 656c2438 3735006c  5184.label$875.l
+ 0d8c0 6162656c 24353138 37006c61 62656c24  abel$5187.label$
+ 0d8d0 38373700 6c616265 6c243837 38006c61  877.label$878.la
+ 0d8e0 62656c24 36373730 006c6162 656c2436  bel$6770.label$6
+ 0d8f0 37373200 52454724 33006c61 62656c24  772.REG$3.label$
+ 0d900 36373734 006c6162 656c2436 37373600  6774.label$6776.
+ 0d910 6c616265 6c243330 3732006c 6162656c  label$3072.label
+ 0d920 24363737 38006c61 62656c24 33303734  $6778.label$3074
+ 0d930 006c6162 656c2433 30373500 76722438  .label$3075.vr$8
+ 0d940 32303400 6c616265 6c243330 3737006c  204.label$3077.l
+ 0d950 6162656c 24333037 38006c61 62656c24  abel$3078.label$
+ 0d960 33323231 006c6162 656c2434 36363000  3221.label$4660.
+ 0d970 6c616265 6c243436 3631006c 6162656c  label$4661.label
+ 0d980 24343636 32006c61 62656c24 33323233  $4662.label$3223
+ 0d990 006c6162 656c2434 36363400 6c616265  .label$4664.labe
+ 0d9a0 6c243436 3635006c 6162656c 24343636  l$4665.label$466
+ 0d9b0 36006c61 62656c24 34363637 006c6162  6.label$4667.lab
+ 0d9c0 656c2434 35303000 6c616265 6c243436  el$4500.label$46
+ 0d9d0 3639006c 6162656c 24373839 00767224  69.label$789.vr$
+ 0d9e0 31303133 39006c61 62656c24 32353530  10139.label$2550
+ 0d9f0 006c6162 656c2432 35353200 6c616265  .label$2552.labe
+ 0da00 6c243235 3533006c 6162656c 24323535  l$2553.label$255
+ 0da10 35006c61 62656c24 32353536 00544d50  5.label$2556.TMP
+ 0da20 24313433 36243700 6c616265 6c243235  $1436$7.label$25
+ 0da30 3538006c 6162656c 24323535 39006c61  58.label$2559.la
+ 0da40 62656c24 32373038 006c6162 656c2435  bel$2708.label$5
+ 0da50 31393000 6c616265 6c243838 30006c61  190.label$880.la
+ 0da60 62656c24 38383100 6c616265 6c243531  bel$881.label$51
+ 0da70 3933006c 6162656c 24383833 006c6162  93.label$883.lab
+ 0da80 656c2435 31393600 6c616265 6c243838  el$5196.label$88
+ 0da90 36006c61 62656c24 38383700 6c616265  6.label$887.labe
+ 0daa0 6c243531 3939006c 6162656c 24363738  l$5199.label$678
+ 0dab0 30006c61 62656c24 3335006c 6162656c  0.label$35.label
+ 0dac0 24363738 32006c61 62656c24 3336006c  $6782.label$36.l
+ 0dad0 6162656c 24363738 34006c61 62656c24  abel$6784.label$
+ 0dae0 33303830 006c6162 656c2436 37383600  3080.label$6786.
+ 0daf0 76722438 32313000 6c616265 6c243637  vr$8210.label$67
+ 0db00 3838006c 6162656c 24333038 34007672  88.label$3084.vr
+ 0db10 24383231 33006c61 62656c24 33303836  $8213.label$3086
+ 0db20 006c6162 656c2433 30383700 76722438  .label$3087.vr$8
+ 0db30 32313600 6c616265 6c243330 3839006c  216.label$3089.l
+ 0db40 6162656c 24343637 30006c61 62656c24  abel$4670.label$
+ 0db50 34363731 006c6162 656c2434 36373200  4671.label$4672.
+ 0db60 6c616265 6c243436 3733006c 6162656c  label$4673.label
+ 0db70 24343637 34006c61 62656c24 34363735  $4674.label$4675
+ 0db80 006c6162 656c2434 36373600 6c616265  .label$4676.labe
+ 0db90 6c243436 3737006c 6162656c 24343637  l$4677.label$467
+ 0dba0 38006c61 62656c24 34363739 00767224  8.label$4679.vr$
+ 0dbb0 38343035 00767224 39383039 006c6162  8405.vr$9809.lab
+ 0dbc0 656c2432 35363100 6c616265 6c243235  el$2561.label$25
+ 0dbd0 3632006c 6162656c 24323536 34006c61  62.label$2564.la
+ 0dbe0 62656c24 32353635 006c6162 656c2432  bel$2565.label$2
+ 0dbf0 35363700 6c616265 6c243235 36380076  567.label$2568.v
+ 0dc00 72243936 3030006c 6162656c 24313132  r$9600.label$112
+ 0dc10 35007672 24393630 32007672 24393139  5.vr$9602.vr$919
+ 0dc20 36007672 24393630 33007672 24393630  6.vr$9603.vr$960
+ 0dc30 35006c61 62656c24 38393000 76722439  5.label$890.vr$9
+ 0dc40 36303600 6c616265 6c243839 32006c61  606.label$892.la
+ 0dc50 62656c24 38393300 6c616265 6c243839  bel$893.label$89
+ 0dc60 3500474c 47455453 48414445 52495624  5.GLGETSHADERIV$
+ 0dc70 006c6162 656c2438 3938006c 6162656c  .label$898.label
+ 0dc80 24363739 30006c61 62656c24 36373932  $6790.label$6792
+ 0dc90 006c6162 656c2436 37393400 6c616265  .label$6794.labe
+ 0dca0 6c243330 3930006c 6162656c 24363739  l$3090.label$679
+ 0dcb0 36006c61 62656c24 33303932 006c6162  6.label$3092.lab
+ 0dcc0 656c2436 37393800 76722438 32323200  el$6798.vr$8222.
+ 0dcd0 6c616265 6c243330 3935006c 6162656c  label$3095.label
+ 0dce0 24333039 36007672 24383232 35006c61  $3096.vr$8225.la
+ 0dcf0 62656c24 33303938 006c6162 656c2433  bel$3098.label$3
+ 0dd00 30393900 6c616265 6c243436 3830006c  099.label$4680.l
+ 0dd10 6162656c 24343638 31006c61 62656c24  abel$4681.label$
+ 0dd20 34363832 006c6162 656c2433 32333300  4682.label$3233.
+ 0dd30 6c616265 6c243436 3834006c 6162656c  label$4684.label
+ 0dd40 24343638 35006c61 62656c24 34363836  $4685.label$4686
+ 0dd50 006c6162 656c2434 36383700 6c616265  .label$4687.labe
+ 0dd60 6c243436 3838006c 6162656c 24343638  l$4688.label$468
+ 0dd70 39006662 5f554c6f 6e67696e 74546f53  9.fb_ULongintToS
+ 0dd80 74720076 72243938 3139006c 6162656c  tr.vr$9819.label
+ 0dd90 24323537 30006c61 62656c24 32353731  $2570.label$2571
+ 0dda0 00767224 39333135 006c6162 656c2432  .vr$9315.label$2
+ 0ddb0 35373300 6c616265 6c243235 3734006c  573.label$2574.l
+ 0ddc0 6162656c 24323537 36006c61 62656c24  abel$2576.label$
+ 0ddd0 32353737 006c6162 656c2432 35373900  2577.label$2579.
+ 0dde0 76722439 33313700 76722439 32313400  vr$9317.vr$9214.
+ 0ddf0 76722439 33313800 494e535f 454f5200  vr$9318.INS_EOR.
+ 0de00 76722439 33313900 6c616265 6c243235  vr$9319.label$25
+ 0de10 30006c61 62656c24 34310049 4e535f50  0.label$41.INS_P
+ 0de20 4c41006c 6162656c 24343400 6c616265  LA.label$44.labe
+ 0de30 6c243235 33007672 24383233 30007672  l$253.vr$8230.vr
+ 0de40 24383233 31007672 24383233 32007672  $8231.vr$8232.vr
+ 0de50 24383233 33007672 24383233 3400494e  $8233.vr$8234.IN
+ 0de60 535f504c 50006c61 62656c24 34383234  S_PLP.label$4824
+ 0de70 00767224 38323337 006c6162 656c2434  .vr$8237.label$4
+ 0de80 36393000 6c616265 6c243436 3931006c  690.label$4691.l
+ 0de90 6162656c 24343639 32006c61 62656c24  abel$4692.label$
+ 0dea0 34363933 006c6162 656c2434 36393400  4693.label$4694.
+ 0deb0 544d5024 32393634 2431006c 6162656c  TMP$2964$1.label
+ 0dec0 24343639 36006c61 62656c24 34363937  $4696.label$4697
+ 0ded0 006c6162 656c2434 35313000 6c616265  .label$4510.labe
+ 0dee0 6c243436 39390076 72243938 32380076  l$4699.vr$9828.v
+ 0def0 72243938 3239006c 6162656c 24323538  r$9829.label$258
+ 0df00 30006c61 62656c24 32353832 006c6162  0.label$2582.lab
+ 0df10 656c2432 35383300 6c616265 6c243235  el$2583.label$25
+ 0df20 3835006c 6162656c 24323538 36006c61  85.label$2586.la
+ 0df30 62656c24 32353838 006c6162 656c2432  bel$2588.label$2
+ 0df40 35383900 4745545f 4b455924 00767224  589.GET_KEY$.vr$
+ 0df50 39313330 00767224 39313331 00767224  9130.vr$9131.vr$
+ 0df60 39313333 006c6162 656c2436 39333800  9133.label$6938.
+ 0df70 76722439 31333500 76722439 31333600  vr$9135.vr$9136.
+ 0df80 53503643 4f4c2400 76722439 31333800  SP6COL$.vr$9138.
+ 0df90 5f5a4e37 43505536 35313034 50555348  _ZN7CPU65104PUSH
+ 0dfa0 45640076 72243832 34310076 72243832  Ed.vr$8241.vr$82
+ 0dfb0 34320076 72243832 34330076 72243832  42.vr$8243.vr$82
+ 0dfc0 34340076 72243832 34350076 72243832  44.vr$8245.vr$82
+ 0dfd0 3436006c 6162656c 24333234 31007672  46.label$3241.vr
+ 0dfe0 24383234 38007672 24383234 3900544d  $8248.vr$8249.TM
+ 0dff0 50243239 39322431 006c6162 656c2433  P$2992$1.label$3
+ 0e000 32343300 76722439 38333200 76722439  243.vr$9832.vr$9
+ 0e010 38333300 76722439 38333400 76722439  833.vr$9834.vr$9
+ 0e020 38333500 76722439 38333600 76722439  835.vr$9836.vr$9
+ 0e030 38333700 76722439 38333800 76722439  837.vr$9838.vr$9
+ 0e040 38333900 66625f43 6f6e736f 6c65496e  839.fb_ConsoleIn
+ 0e050 70757400 6c616265 6c243235 3931006c  put.label$2591.l
+ 0e060 6162656c 24323539 32006c61 62656c24  abel$2592.label$
+ 0e070 32353934 006c6162 656c2432 35393500  2594.label$2595.
+ 0e080 6c616265 6c243235 3937006c 6162656c  label$2597.label
+ 0e090 24323539 38007672 24383638 31007672  $2598.vr$8681.vr
+ 0e0a0 24393631 31007672 24393631 32007672  $9611.vr$9612.vr
+ 0e0b0 24393631 33007672 24393631 34007672  $9613.vr$9614.vr
+ 0e0c0 24393631 35006c61 62656c24 3530006c  $9615.label$50.l
+ 0e0d0 6162656c 24353335 32006c61 62656c24  abel$5352.label$
+ 0e0e0 35320076 72243839 3834006c 6162656c  52.vr$8984.label
+ 0e0f0 24353400 6c616265 6c243533 35370076  $54.label$5357.v
+ 0e100 72243832 35300076 72243832 35310076  r$8250.vr$8251.v
+ 0e110 72243832 35320076 72243832 35330076  r$8252.vr$8253.v
+ 0e120 72243832 35340076 72243832 35350076  r$8254.vr$8255.v
+ 0e130 72243832 35360076 72243832 3537006c  r$8256.vr$8257.l
+ 0e140 6162656c 24343833 35007672 24383235  abel$4835.vr$825
+ 0e150 39006c61 62656c24 34383336 006c6162  9.label$4836.lab
+ 0e160 656c2434 38353000 76722439 38343200  el$4850.vr$9842.
+ 0e170 76722439 38343300 6c616265 6c243438  vr$9843.label$48
+ 0e180 33380076 72243938 3435006c 6162656c  38.vr$9845.label
+ 0e190 24343833 39007672 24393834 37007672  $4839.vr$9847.vr
+ 0e1a0 24393834 38007672 24393834 3900544d  $9848.vr$9849.TM
+ 0e1b0 50243239 37312431 00767224 31303132  P$2971$1.vr$1012
+ 0e1c0 35007672 24313031 32360076 72243931  5.vr$10126.vr$91
+ 0e1d0 34330076 72243830 33300054 4d502431  43.vr$8030.TMP$1
+ 0e1e0 34373424 37007672 24383236 30007672  474$7.vr$8260.vr
+ 0e1f0 24383236 31005824 31310076 72243832  $8261.X$11.vr$82
+ 0e200 36330076 72243832 36340076 72243832  63.vr$8264.vr$82
+ 0e210 36350076 72243832 36360050 435f5354  65.vr$8266.PC_ST
+ 0e220 41545553 24007672 24383236 38007672  ATUS$.vr$8268.vr
+ 0e230 24383236 39007672 24393835 30006c61  $8269.vr$9850.la
+ 0e240 62656c24 33323533 00767224 39383532  bel$3253.vr$9852
+ 0e250 00767224 38363237 00767224 39383534  .vr$8627.vr$9854
+ 0e260 00767224 39383535 00767224 39383536  .vr$9855.vr$9856
+ 0e270 00767224 39383537 00767224 38303339  .vr$9857.vr$8039
+ 0e280 00767224 39383539 00535030 58240076  .vr$9859.SP0X$.v
+ 0e290 72243838 3037004d 4f555345 5f562400  r$8807.MOUSE_V$.
+ 0e2a0 544d5024 32393530 2431006c 6162656c  TMP$2950$1.label
+ 0e2b0 24333035 00465241 4d452436 004d5347  $305.FRAME$6.MSG
+ 0e2c0 24006c61 62656c24 34383430 00767224  $.label$4840.vr$
+ 0e2d0 38323731 00767224 38323732 00767224  8271.vr$8272.vr$
+ 0e2e0 38323733 00767224 38323734 00767224  8273.vr$8274.vr$
+ 0e2f0 38323735 00767224 38323736 00767224  8275.vr$8276.vr$
+ 0e300 38323737 006c6162 656c2434 38343500  8277.label$4845.
+ 0e310 76722438 32373900 76722439 38363000  vr$8279.vr$9860.
+ 0e320 76722439 38363100 6c616265 6c243438  vr$9861.label$48
+ 0e330 34370076 72243938 3633006c 6162656c  47.vr$9863.label
+ 0e340 24343834 38007672 24393836 35007672  $4848.vr$9865.vr
+ 0e350 24393836 36007672 24393836 37007672  $9866.vr$9867.vr
+ 0e360 24393836 3800544d 50243134 35332437  $9868.TMP$1453$7
+ 0e370 00535030 5924004d 4f555345 5f572400  .SP0Y$.MOUSE_W$.
+ 0e380 6c616265 6c243536 31006c61 62656c24  label$561.label$
+ 0e390 35363200 544d5024 32393636 24310076  562.TMP$2966$1.v
+ 0e3a0 72243832 38300076 72243832 38310076  r$8280.vr$8281.v
+ 0e3b0 72243832 38320076 72243832 38330076  r$8282.vr$8283.v
+ 0e3c0 72243832 38340076 72243832 38350076  r$8284.vr$8285.v
+ 0e3d0 72243832 3836006c 6162656c 24333236  r$8286.label$326
+ 0e3e0 31007672 24383238 38007672 24383238  1.vr$8288.vr$828
+ 0e3f0 39007672 24393837 30006c61 62656c24  9.vr$9870.label$
+ 0e400 33323633 00767224 39383732 006c6162  3263.vr$9872.lab
+ 0e410 656c2433 32363400 76722439 38373400  el$3264.vr$9874.
+ 0e420 76722439 38373500 76722439 38373600  vr$9875.vr$9876.
+ 0e430 76722439 38373700 76722439 38373800  vr$9877.vr$9878.
+ 0e440 76722439 38373900 76722431 30303038  vr$9879.vr$10008
+ 0e450 004d4f55 53455f58 2400544d 50243330  .MOUSE_X$.TMP$30
+ 0e460 30302431 006c6162 656c2437 3400544d  00$1.label$74.TM
+ 0e470 50243239 34352431 00767224 38303433  P$2945$1.vr$8043
+ 0e480 00767224 38323931 00767224 38323932  .vr$8291.vr$8292
+ 0e490 00767224 38323933 00767224 38323934  .vr$8293.vr$8294
+ 0e4a0 00767224 38323935 00767224 38323936  .vr$8295.vr$8296
+ 0e4b0 00767224 38323937 00767224 38323938  .vr$8297.vr$8298
+ 0e4c0 00767224 38323939 006c6162 656c2434  .vr$8299.label$4
+ 0e4d0 38353600 76722439 38383100 6c616265  856.vr$9881.labe
+ 0e4e0 6c243438 35370076 72243938 38330048  l$4857.vr$9883.H
+ 0e4f0 49424153 45240076 72243938 3835006c  IBASE$.vr$9885.l
+ 0e500 6162656c 24343835 39007672 24393838  abel$4859.vr$988
+ 0e510 37007672 24393838 38007672 24393838  7.vr$9888.vr$988
+ 0e520 39007672 24313030 31380076 72243130  9.vr$10018.vr$10
+ 0e530 30313900 4d4f5553 455f5924 00495245  019.MOUSE_Y$.IRE
+ 0e540 534f4c55 54494f4e 24350076 72243537  SOLUTION$5.vr$57
+ 0e550 31007672 24393136 30007672 24353735  1.vr$9160.vr$575
+ 0e560 006c6162 656c2439 31390076 72243931  .label$919.vr$91
+ 0e570 36330054 4d502433 30313624 31007672  63.TMP$3016$1.vr
+ 0e580 24393136 35007672 24393136 36007672  $9165.vr$9166.vr
+ 0e590 24393136 38007672 24313031 3831006c  $9168.vr$10181.l
+ 0e5a0 6162656c 24333237 30006c61 62656c24  abel$3270.label$
+ 0e5b0 33323731 00767224 31303138 33006c61  3271.vr$10183.la
+ 0e5c0 62656c24 33323732 00767224 39383930  bel$3272.vr$9890
+ 0e5d0 006c6162 656c2433 32373300 544d5024  .label$3273.TMP$
+ 0e5e0 31343639 24370054 4d502432 39323424  1469$7.TMP$2924$
+ 0e5f0 31007672 24393839 34007672 24393839  1.vr$9894.vr$989
+ 0e600 35007672 24393839 36007672 24393839  5.vr$9896.vr$989
+ 0e610 37007672 24393839 38007672 24393839  7.vr$9898.vr$989
+ 0e620 39007672 24313030 32380076 72243130  9.vr$10028.vr$10
+ 0e630 30323900 76722439 36333000 6d616c6c  029.vr$9630.mall
+ 0e640 6f630076 72243936 33330076 72243538  oc.vr$9633.vr$58
+ 0e650 36007672 24353837 0066625f 68507574  6.vr$587.fb_hPut
+ 0e660 50536574 006c6162 656c2433 3139006c  PSet.label$319.l
+ 0e670 6162656c 24343836 30007672 24393239  abel$4860.vr$929
+ 0e680 37006c61 62656c24 34383635 006c6162  7.label$4865.lab
+ 0e690 656c2434 38363600 76722431 30303330  el$4866.vr$10030
+ 0e6a0 00767224 31303033 31006c61 62656c24  .vr$10031.label$
+ 0e6b0 34383638 00767224 31303033 33006c61  4868.vr$10033.la
+ 0e6c0 62656c24 34383639 00767224 31303033  bel$4869.vr$1003
+ 0e6d0 35007672 24313030 33360076 72243130  5.vr$10036.vr$10
+ 0e6e0 30333700 76722431 30303338 00767224  037.vr$10038.vr$
+ 0e6f0 31303033 39004f59 24350054 4d502431  10039.OY$5.TMP$1
+ 0e700 34343824 3700474c 4c494e4b 50524f47  448$7.GLLINKPROG
+ 0e710 52414d24 006c6162 656c2439 32390053  RAM$.label$929.S
+ 0e720 54415254 24310076 72243836 3532006c  TART$1.vr$8652.l
+ 0e730 6162656c 24333238 30006c61 62656c24  abel$3280.label$
+ 0e740 33323831 006c6162 656c2433 32383200  3281.label$3282.
+ 0e750 6c616265 6c243332 3833006c 6162656c  label$3283.label
+ 0e760 24353036 31006c61 62656c24 33323834  $5061.label$3284
+ 0e770 00767224 31303034 32006c61 62656c24  .vr$10042.label$
+ 0e780 35303632 00767224 31303034 34007672  5062.vr$10044.vr
+ 0e790 24313030 34350076 72243130 30343600  $10045.vr$10046.
+ 0e7a0 76722431 30303437 00767224 31303034  vr$10047.vr$1004
+ 0e7b0 38006c61 62656c24 35303634 006c6162  8.label$5064.lab
+ 0e7c0 656c2435 30363500 544d5024 32393139  el$5065.TMP$2919
+ 0e7d0 2431006c 6162656c 24353339 30006c61  $1.label$5390.la
+ 0e7e0 62656c24 31303000 6c616265 6c243130  bel$100.label$10
+ 0e7f0 31006c61 62656c24 31303200 6c616265  1.label$102.labe
+ 0e800 6c243130 33006c61 62656c24 31303400  l$103.label$104.
+ 0e810 6c616265 6c243130 39006c61 62656c24  label$109.label$
+ 0e820 36303031 006c6162 656c2436 30303200  6001.label$6002.
+ 0e830 6c616265 6c243630 3033006c 6162656c  label$6003.label
+ 0e840 24363030 34006c61 62656c24 36303035  $6004.label$6005
+ 0e850 006c6162 656c2436 30303600 6c616265  .label$6006.labe
+ 0e860 6c243630 3037006c 6162656c 24363030  l$6007.label$600
+ 0e870 38006c61 62656c24 36303039 006c6162  8.label$6009.lab
+ 0e880 656c2434 38373500 66625f46 696c6545  el$4875.fb_FileE
+ 0e890 6f66006c 6162656c 24343837 37007672  of.label$4877.vr
+ 0e8a0 24313030 3531006c 6162656c 24343837  $10051.label$487
+ 0e8b0 38007672 24313030 35330076 72243130  8.vr$10053.vr$10
+ 0e8c0 30353400 76722431 30303535 00767224  054.vr$10055.vr$
+ 0e8d0 31303032 34007672 24313030 35370076  10024.vr$10057.v
+ 0e8e0 72243130 30353800 76722431 30303539  r$10058.vr$10059
+ 0e8f0 00767224 31303032 35007672 24313030  .vr$10025.vr$100
+ 0e900 3236006c 6162656c 24343438 00767224  26.label$448.vr$
+ 0e910 39363430 00767224 31303032 37006c61  9640.vr$10027.la
+ 0e920 62656c24 31313835 00544d50 24323835  bel$1185.TMP$285
+ 0e930 32243300 6c616265 6c243131 30006c61  2$3.label$110.la
+ 0e940 62656c24 31313100 6c616265 6c243131  bel$111.label$11
+ 0e950 32006c61 62656c24 31313300 6c616265  2.label$113.labe
+ 0e960 6c243131 34006c61 62656c24 31313500  l$114.label$115.
+ 0e970 6c616265 6c243131 36006c61 62656c24  label$116.label$
+ 0e980 31313700 6c616265 6c243131 38006c61  117.label$118.la
+ 0e990 62656c24 36303130 006c6162 656c2436  bel$6010.label$6
+ 0e9a0 30313100 6c616265 6c243630 3132006c  011.label$6012.l
+ 0e9b0 6162656c 24363031 33006c61 62656c24  abel$6013.label$
+ 0e9c0 36303134 006c6162 656c2436 30313500  6014.label$6015.
+ 0e9d0 6c616265 6c243630 3136006c 6162656c  label$6016.label
+ 0e9e0 24363031 37006c61 62656c24 36303138  $6017.label$6018
+ 0e9f0 006c6162 656c2436 30313900 6c616265  .label$6019.labe
+ 0ea00 6c243332 39300054 4d502432 38363324  l$3290.TMP$2863$
+ 0ea10 33006c61 62656c24 33323931 006c6162  3.label$3291.lab
+ 0ea20 656c2433 32393200 6c616265 6c243332  el$3292.label$32
+ 0ea30 39330076 72243130 30363000 6c616265  93.vr$10060.labe
+ 0ea40 6c243332 39340076 72243130 30363200  l$3294.vr$10062.
+ 0ea50 76722431 30303633 00767224 31303036  vr$10063.vr$1006
+ 0ea60 34007672 24313030 36350076 72243130  4.vr$10065.vr$10
+ 0ea70 30363600 76722431 30303637 00767224  066.vr$10067.vr$
+ 0ea80 31303036 38007672 24313030 3639006c  10068.vr$10069.l
+ 0ea90 6162656c 24313230 006c6162 656c2431  abel$120.label$1
+ 0eaa0 3231006c 6162656c 24313232 006c6162  21.label$122.lab
+ 0eab0 656c2431 3233006c 6162656c 24313234  el$123.label$124
+ 0eac0 006c6162 656c2431 3235006c 6162656c  .label$125.label
+ 0ead0 24313236 006c6162 656c2431 3237006c  $126.label$127.l
+ 0eae0 6162656c 24313238 006c6162 656c2436  abel$128.label$6
+ 0eaf0 30323000 6c616265 6c243630 3231006c  020.label$6021.l
+ 0eb00 6162656c 24363032 32006c61 62656c24  abel$6022.label$
+ 0eb10 36303233 006c6162 656c2436 30323400  6023.label$6024.
+ 0eb20 6c616265 6c243630 3235006c 6162656c  label$6025.label
+ 0eb30 24363032 36006c61 62656c24 36303237  $6026.label$6027
+ 0eb40 006c6162 656c2436 30323800 6c616265  .label$6028.labe
+ 0eb50 6c243630 32390076 72243130 31343000  l$6029.vr$10140.
+ 0eb60 6c616265 6c243438 3834006c 6162656c  label$4884.label
+ 0eb70 24343838 36006c61 62656c24 34383837  $4886.label$4887
+ 0eb80 00767224 31303037 31007672 24313030  .vr$10071.vr$100
+ 0eb90 37320076 72243130 30373300 6c616265  72.vr$10073.labe
+ 0eba0 6c243438 3839006c 6162656c 24353530  l$4889.label$550
+ 0ebb0 30006c61 62656c24 35353031 006c6162  0.label$5501.lab
+ 0ebc0 656c2435 35303200 6c616265 6c243535  el$5502.label$55
+ 0ebd0 3033006c 6162656c 24353530 34006c61  03.label$5504.la
+ 0ebe0 62656c24 35353035 006c6162 656c2435  bel$5505.label$5
+ 0ebf0 35303600 6c616265 6c243535 3037006c  506.label$5507.l
+ 0ec00 6162656c 24353530 38006c61 62656c24  abel$5508.label$
+ 0ec10 35323333 006c6162 656c2432 30390049  5233.label$209.I
+ 0ec20 4e535f54 41580049 4e535f54 41590076  NS_TAX.INS_TAY.v
+ 0ec30 72243931 3930006c 6162656c 24313331  r$9190.label$131
+ 0ec40 006c6162 656c2439 3439006c 6162656c  .label$949.label
+ 0ec50 24363033 30006c61 62656c24 36303331  $6030.label$6031
+ 0ec60 006c6162 656c2436 30333200 6c616265  .label$6032.labe
+ 0ec70 6c243630 3333006c 6162656c 24363033  l$6033.label$603
+ 0ec80 34006c61 62656c24 36303335 006c6162  4.label$6035.lab
+ 0ec90 656c2436 30333600 6c616265 6c243630  el$6036.label$60
+ 0eca0 3337006c 6162656c 24363033 38006c61  37.label$6038.la
+ 0ecb0 62656c24 36303339 00767224 38363732  bel$6039.vr$8672
+ 0ecc0 00767224 31303038 30007672 24313030  .vr$10080.vr$100
+ 0ecd0 38310076 72243130 30383200 76722431  81.vr$10082.vr$1
+ 0ece0 30303833 00767224 31303038 34006c61  0083.vr$10084.la
+ 0ecf0 62656c24 35353130 006c6162 656c2435  bel$5510.label$5
+ 0ed00 35313100 6c616265 6c243535 3132006c  511.label$5512.l
+ 0ed10 6162656c 24353531 33006c61 62656c24  abel$5513.label$
+ 0ed20 35353134 006c6162 656c2435 35313600  5514.label$5516.
+ 0ed30 6c616265 6c243535 3137006c 6162656c  label$5517.label
+ 0ed40 24353531 38006c61 62656c24 35353139  $5518.label$5519
+ 0ed50 00544d50 24323835 38243300 6c616265  .TMP$2858$3.labe
+ 0ed60 6c243334 3030006c 6162656c 24333430  l$3400.label$340
+ 0ed70 31006c61 62656c24 33343032 006c6162  1.label$3402.lab
+ 0ed80 656c2432 37383700 6c616265 6c243334  el$2787.label$34
+ 0ed90 3034006c 6162656c 24333430 35006c61  04.label$3405.la
+ 0eda0 62656c24 33343036 006c6162 656c2433  bel$3406.label$3
+ 0edb0 34303700 494e535f 4c535241 006c6162  407.INS_LSRA.lab
+ 0edc0 656c2433 34303900 76722439 36353300  el$3409.vr$9653.
+ 0edd0 41445224 31006c61 62656c24 31343000  ADR$1.label$140.
+ 0ede0 544d5024 31343932 2437006c 6162656c  TMP$1492$7.label
+ 0edf0 24313432 006c6162 656c2431 34340045  $142.label$144.E
+ 0ee00 4f4c2400 746d7024 32383739 006c6162  OL$.tmp$2879.lab
+ 0ee10 656c2431 3438006c 6162656c 24363034  el$148.label$604
+ 0ee20 30006c61 62656c24 36303431 006c6162  0.label$6041.lab
+ 0ee30 656c2436 30343200 6c616265 6c243630  el$6042.label$60
+ 0ee40 3433006c 6162656c 24363034 34006c61  43.label$6044.la
+ 0ee50 62656c24 36303435 006c6162 656c2436  bel$6045.label$6
+ 0ee60 30343600 6c616265 6c243630 3437006c  046.label$6047.l
+ 0ee70 6162656c 24363034 38006c61 62656c24  abel$6048.label$
+ 0ee80 36303439 006c6162 656c2434 38393500  6049.label$4895.
+ 0ee90 6c616265 6c243438 39360076 72243130  label$4896.vr$10
+ 0eea0 30393000 76722431 30303931 006c6162  090.vr$10091.lab
+ 0eeb0 656c2434 38393800 76722431 30303933  el$4898.vr$10093
+ 0eec0 006c6162 656c2434 38393900 6c616265  .label$4899.labe
+ 0eed0 6c243535 32300076 72243130 30393600  l$5520.vr$10096.
+ 0eee0 6c616265 6c243535 3232006c 6162656c  label$5522.label
+ 0eef0 24353532 33006c61 62656c24 35353234  $5523.label$5524
+ 0ef00 006c6162 656c2435 35323500 6c616265  .label$5525.labe
+ 0ef10 6c243535 3236006c 6162656c 24353532  l$5526.label$552
+ 0ef20 37006c61 62656c24 35353238 006c6162  7.label$5528.lab
+ 0ef30 656c2435 35323900 746d7024 32393333  el$5529.tmp$2933
+ 0ef40 006c6162 656c2433 34313100 6c616265  .label$3411.labe
+ 0ef50 6c243334 3132006c 6162656c 24333431  l$3412.label$341
+ 0ef60 33006c61 62656c24 33343134 006c6162  3.label$3414.lab
+ 0ef70 656c2433 34313500 6c616265 6c243334  el$3415.label$34
+ 0ef80 3136006c 6162656c 24333431 37006c61  16.label$3417.la
+ 0ef90 62656c24 33343138 006c6162 656c2433  bel$3418.label$3
+ 0efa0 34313900 6c616265 6c243133 3031006c  419.label$1301.l
+ 0efb0 6162656c 24313330 32006c61 62656c24  abel$1302.label$
+ 0efc0 39353800 6c616265 6c243133 3034006c  958.label$1304.l
+ 0efd0 6162656c 24393539 006c6162 656c2431  abel$959.label$1
+ 0efe0 3533006c 6162656c 24313330 37006c61  53.label$1307.la
+ 0eff0 62656c24 31333038 006c6162 656c2431  bel$1308.label$1
+ 0f000 3536006c 6162656c 24313537 006c6162  56.label$157.lab
+ 0f010 656c2431 3538006c 6162656c 24363035  el$158.label$605
+ 0f020 30006c61 62656c24 36303531 006c6162  0.label$6051.lab
+ 0f030 656c2436 30353200 6c616265 6c243630  el$6052.label$60
+ 0f040 3533006c 6162656c 24363035 34006c61  53.label$6054.la
+ 0f050 62656c24 36303535 006c6162 656c2436  bel$6055.label$6
+ 0f060 30353600 6c616265 6c243630 3537006c  056.label$6057.l
+ 0f070 6162656c 24363035 38006c61 62656c24  abel$6058.label$
+ 0f080 36303539 006c6162 656c2435 3836006c  6059.label$586.l
+ 0f090 6162656c 24353038 30007672 24393030  abel$5080.vr$900
+ 0f0a0 38006c61 62656c24 35353330 006c6162  8.label$5530.lab
+ 0f0b0 656c2435 30383300 6c616265 6c243535  el$5083.label$55
+ 0f0c0 3332006c 6162656c 24353533 33006c61  32.label$5533.la
+ 0f0d0 62656c24 35353334 006c6162 656c2435  bel$5534.label$5
+ 0f0e0 35333500 6c616265 6c243535 33360076  535.label$5536.v
+ 0f0f0 72243932 3032006c 6162656c 24353533  r$9202.label$553
+ 0f100 38006c61 62656c24 35353339 006c6162  8.label$5539.lab
+ 0f110 656c2435 30383600 49434841 4e4e454c  el$5086.ICHANNEL
+ 0f120 30243500 6c616265 6c243334 3230006c  0$5.label$3420.l
+ 0f130 6162656c 24333432 31006c61 62656c24  abel$3421.label$
+ 0f140 33343232 006c6162 656c2433 34323300  3422.label$3423.
+ 0f150 6c616265 6c243334 3234006c 6162656c  label$3424.label
+ 0f160 24333432 35006c61 62656c24 33343236  $3425.label$3426
+ 0f170 006c6162 656c2433 34323700 6c616265  .label$3427.labe
+ 0f180 6c243334 3238006c 6162656c 24333432  l$3428.label$342
+ 0f190 3900746d 70243238 38330074 6d702432  9.tmp$2883.tmp$2
+ 0f1a0 38383400 6c616265 6c243133 3130006c  884.label$1310.l
+ 0f1b0 6162656c 24313331 31007672 24393230  abel$1311.vr$920
+ 0f1c0 37006c61 62656c24 31333133 006c6162  7.label$1313.lab
+ 0f1d0 656c2431 33313400 746d7024 32383837  el$1314.tmp$2887
+ 0f1e0 006c6162 656c2431 33313600 6c616265  .label$1316.labe
+ 0f1f0 6c243133 3137006c 6162656c 24313635  l$1317.label$165
+ 0f200 006c6162 656c2431 33313900 6c616265  .label$1319.labe
+ 0f210 6c243239 3030006c 6162656c 24323930  l$2900.label$290
+ 0f220 31006c61 62656c24 36303630 006c6162  1.label$6060.lab
+ 0f230 656c2436 30363100 6c616265 6c243630  el$6061.label$60
+ 0f240 3632006c 6162656c 24363036 33006c61  62.label$6063.la
+ 0f250 62656c24 36303634 006c6162 656c2436  bel$6064.label$6
+ 0f260 30363500 6c616265 6c243630 3636006c  065.label$6066.l
+ 0f270 6162656c 24363036 37006c61 62656c24  abel$6067.label$
+ 0f280 36303638 006c6162 656c2436 30363900  6068.label$6069.
+ 0f290 494e535f 41534c41 00544d50 24313438  INS_ASLA.TMP$148
+ 0f2a0 37243700 544d5024 31343530 24370066  7$7.TMP$1450$7.f
+ 0f2b0 625f526e 64006c61 62656c24 35353431  b_Rnd.label$5541
+ 0f2c0 006c6162 656c2435 35343200 6c616265  .label$5542.labe
+ 0f2d0 6c243535 3433006c 6162656c 24353534  l$5543.label$554
+ 0f2e0 34005f5a 4e374350 55363531 30443145  4._ZN7CPU6510D1E
+ 0f2f0 76006c61 62656c24 35353436 006c6162  v.label$5546.lab
+ 0f300 656c2435 35343800 6c616265 6c243334  el$5548.label$34
+ 0f310 3330006c 6162656c 24333433 31006662  30.label$3431.fb
+ 0f320 5f537472 4d696400 6c616265 6c243334  _StrMid.label$34
+ 0f330 3333006c 6162656c 24393631 006c6162  33.label$961.lab
+ 0f340 656c2433 34333500 6c616265 6c243334  el$3435.label$34
+ 0f350 3336006c 6162656c 24333433 37006c61  36.label$3437.la
+ 0f360 62656c24 33343338 006c6162 656c2433  bel$3438.label$3
+ 0f370 34333900 6c616265 6c243133 3230006c  439.label$1320.l
+ 0f380 6162656c 24313332 32006c61 62656c24  abel$1322.label$
+ 0f390 31333233 006c6162 656c2431 33323500  1323.label$1325.
+ 0f3a0 6c616265 6c243133 3236006c 6162656c  label$1326.label
+ 0f3b0 24313332 38006c61 62656c24 31333239  $1328.label$1329
+ 0f3c0 006c6162 656c2432 39313000 6c616265  .label$2910.labe
+ 0f3d0 6c243137 38005359 535f4f46 46534554  l$178.SYS_OFFSET
+ 0f3e0 24006c61 62656c24 36303731 006c6162  $.label$6071.lab
+ 0f3f0 656c2436 30373200 6c616265 6c243630  el$6072.label$60
+ 0f400 3733006c 6162656c 24363037 34006c61  73.label$6074.la
+ 0f410 62656c24 36303735 006c6162 656c2436  bel$6075.label$6
+ 0f420 30373600 6c616265 6c243630 3737006c  076.label$6077.l
+ 0f430 6162656c 24363037 38006c61 62656c24  abel$6078.label$
+ 0f440 36303739 006c6162 656c2434 3933006c  6079.label$493.l
+ 0f450 6162656c 24353535 30006c61 62656c24  abel$5550.label$
+ 0f460 35353531 006c6162 656c2435 35353200  5551.label$5552.
+ 0f470 6c616265 6c243535 3533006c 6162656c  label$5553.label
+ 0f480 24353535 34006c61 62656c24 35353535  $5554.label$5555
+ 0f490 006c6162 656c2435 35353600 6c616265  .label$5556.labe
+ 0f4a0 6c243535 3537006c 6162656c 24353535  l$5557.label$555
+ 0f4b0 38006c61 62656c24 35353539 006c6162  8.label$5559.lab
+ 0f4c0 656c2433 34343000 6c616265 6c243334  el$3440.label$34
+ 0f4d0 3431006c 6162656c 24333434 32006c61  41.label$3442.la
+ 0f4e0 62656c24 33343433 006c6162 656c2433  bel$3443.label$3
+ 0f4f0 34343400 6c616265 6c243334 3435006c  444.label$3445.l
+ 0f500 6162656c 24333434 36006c61 62656c24  abel$3446.label$
+ 0f510 33343437 006c6162 656c2433 34343800  3447.label$3448.
+ 0f520 6c616265 6c243334 3439006c 6162656c  label$3449.label
+ 0f530 24313333 31006c61 62656c24 31333332  $1331.label$1332
+ 0f540 006c6162 656c2431 33333400 6c616265  .label$1334.labe
+ 0f550 6c243133 3335006c 6162656c 24313833  l$1335.label$183
+ 0f560 006c6162 656c2431 33333700 6c616265  .label$1337.labe
+ 0f570 6c243133 3338006c 6162656c 24313836  l$1338.label$186
+ 0f580 006c6162 656c2431 3837006c 6162656c  .label$187.label
+ 0f590 24323932 31006c61 62656c24 36303830  $2921.label$6080
+ 0f5a0 006c6162 656c2436 30383100 6c616265  .label$6081.labe
+ 0f5b0 6c243630 3832006c 6162656c 24363038  l$6082.label$608
+ 0f5c0 33006c61 62656c24 36303834 006c6162  3.label$6084.lab
+ 0f5d0 656c2436 30383500 6c616265 6c243630  el$6085.label$60
+ 0f5e0 3836006c 6162656c 24363038 37006c61  86.label$6087.la
+ 0f5f0 62656c24 36303838 006c6162 656c2436  bel$6088.label$6
+ 0f600 30383900 76722439 30313500 6c616265  089.vr$9015.labe
+ 0f610 6c243133 30350076 72243931 30300076  l$1305.vr$9100.v
+ 0f620 72243931 30310076 72243931 3032006c  r$9101.vr$9102.l
+ 0f630 6162656c 24353039 31007672 24393130  abel$5091.vr$910
+ 0f640 34007672 24393031 38007672 24393130  4.vr$9018.vr$910
+ 0f650 36007672 24393130 37006c61 62656c24  6.vr$9107.label$
+ 0f660 35353630 006c6162 656c2435 30393300  5560.label$5093.
+ 0f670 6c616265 6c243535 3632006c 6162656c  label$5562.label
+ 0f680 24353536 33006c61 62656c24 35353634  $5563.label$5564
+ 0f690 006c6162 656c2435 35363500 6c616265  .label$5565.labe
+ 0f6a0 6c243535 3636006c 6162656c 24353536  l$5566.label$556
+ 0f6b0 37006c61 62656c24 35353638 006c6162  7.label$5568.lab
+ 0f6c0 656c2435 35363900 76722439 33303400  el$5569.vr$9304.
+ 0f6d0 76722439 33303500 76722439 33303600  vr$9305.vr$9306.
+ 0f6e0 6c616265 6c243334 3530006c 6162656c  label$3450.label
+ 0f6f0 24333435 31006c61 62656c24 33343532  $3451.label$3452
+ 0f700 006c6162 656c2433 34353300 6c616265  .label$3453.labe
+ 0f710 6c243334 3534006c 6162656c 24333435  l$3454.label$345
+ 0f720 35006c61 62656c24 33343536 006c6162  5.label$3456.lab
+ 0f730 656c2433 34353700 6c616265 6c243334  el$3457.label$34
+ 0f740 3538006c 6162656c 24333431 30007672  58.label$3410.vr
+ 0f750 24393430 31006c61 62656c24 35353039  $9401.label$5509
+ 0f760 006c6162 656c2431 33343000 6c616265  .label$1340.labe
+ 0f770 6c243133 3431006c 6162656c 24313334  l$1341.label$134
+ 0f780 3300494e 535f4a53 52006c61 62656c24  3.INS_JSR.label$
+ 0f790 39373900 6c616265 6c243133 3436006c  979.label$1346.l
+ 0f7a0 6162656c 24313334 37007672 24393430  abel$1347.vr$940
+ 0f7b0 34006c61 62656c24 31333439 006c6162  4.label$1349.lab
+ 0f7c0 656c2432 39333000 6c616265 6c243239  el$2930.label$29
+ 0f7d0 3331006c 6162656c 24363039 30006c61  31.label$6090.la
+ 0f7e0 62656c24 36303931 006c6162 656c2436  bel$6091.label$6
+ 0f7f0 30393200 6c616265 6c243630 3933006c  092.label$6093.l
+ 0f800 6162656c 24363039 34006c61 62656c24  abel$6094.label$
+ 0f810 36303935 006c6162 656c2436 30393600  6095.label$6096.
+ 0f820 6c616265 6c243630 3937006c 6162656c  label$6097.label
+ 0f830 24363039 38006c61 62656c24 36303939  $6098.label$6099
+ 0f840 00767224 39343038 00767224 39343039  .vr$9408.vr$9409
+ 0f850 00767224 39313130 00767224 39313131  .vr$9110.vr$9111
+ 0f860 00767224 39313132 00767224 39313133  .vr$9112.vr$9113
+ 0f870 00767224 39313134 00767224 39313135  .vr$9114.vr$9115
+ 0f880 00767224 39313136 00767224 39313137  .vr$9116.vr$9117
+ 0f890 006c6162 656c2435 35373000 6c616265  .label$5570.labe
+ 0f8a0 6c243535 3731006c 6162656c 24353537  l$5571.label$557
+ 0f8b0 32006c61 62656c24 35353733 006c6162  2.label$5573.lab
+ 0f8c0 656c2435 35373400 6c616265 6c243535  el$5574.label$55
+ 0f8d0 37350053 494e5441 424c4500 6c616265  75.SINTABLE.labe
+ 0f8e0 6c243535 3737006c 6162656c 24353537  l$5577.label$557
+ 0f8f0 38006c61 62656c24 35353739 006c6162  8.label$5579.lab
+ 0f900 656c2433 34363000 6c616265 6c243334  el$3460.label$34
+ 0f910 3631006c 6162656c 24333436 32006c61  61.label$3462.la
+ 0f920 62656c24 33343633 006c6162 656c2433  bel$3463.label$3
+ 0f930 34363400 6c616265 6c243334 3635006c  464.label$3465.l
+ 0f940 6162656c 24333436 36006c61 62656c24  abel$3466.label$
+ 0f950 33343637 006c6162 656c2433 34363800  3467.label$3468.
+ 0f960 6c616265 6c243334 3639006c 6162656c  label$3469.label
+ 0f970 24313335 30006c61 62656c24 31333532  $1350.label$1352
+ 0f980 006c6162 656c2431 33353300 76722431  .label$1353.vr$1
+ 0f990 32353900 6c616265 6c243133 3535006c  259.label$1355.l
+ 0f9a0 6162656c 24313335 36006c61 62656c24  abel$1356.label$
+ 0f9b0 31333538 006c6162 656c2431 33353900  1358.label$1359.
+ 0f9c0 6c616265 6c243239 3430006c 6162656c  label$2940.label
+ 0f9d0 24323934 32006c61 62656c24 32393433  $2942.label$2943
+ 0f9e0 006c6162 656c2432 39343500 6c616265  .label$2945.labe
+ 0f9f0 6c243239 34360066 625f4669 6c654f70  l$2946.fb_FileOp
+ 0fa00 656e006c 6162656c 24323934 38006c61  en.label$2948.la
+ 0fa10 62656c24 32393439 00544d50 24363431  bel$2949.TMP$641
+ 0fa20 2432006c 6162656c 24333430 38007672  $2.label$3408.vr
+ 0fa30 24393132 30007672 24393132 31007672  $9120.vr$9121.vr
+ 0fa40 24393132 32007672 24393132 33007672  $9122.vr$9123.vr
+ 0fa50 24393132 34007672 24393132 35007672  $9124.vr$9125.vr
+ 0fa60 24393132 36007672 24393132 37006c61  $9126.vr$9127.la
+ 0fa70 62656c24 35353830 00243546 4c414753  bel$5580.$5FLAGS
+ 0fa80 006c6162 656c2435 35383200 6c616265  .label$5582.labe
+ 0fa90 6c243535 3833006c 6162656c 24353538  l$5583.label$558
+ 0faa0 34006c61 62656c24 35353835 006c6162  4.label$5585.lab
+ 0fab0 656c2435 35383600 6c616265 6c243535  el$5586.label$55
+ 0fac0 3837006c 6162656c 24353538 38006c61  87.label$5588.la
+ 0fad0 62656c24 35353839 00767224 39333134  bel$5589.vr$9314
+ 0fae0 00767224 39323133 00767224 39333136  .vr$9213.vr$9316
+ 0faf0 006c6162 656c2433 34373000 6c616265  .label$3470.labe
+ 0fb00 6c243334 3731006c 6162656c 24333437  l$3471.label$347
+ 0fb10 32006c61 62656c24 33343733 006c6162  2.label$3473.lab
+ 0fb20 656c2433 34373400 6c616265 6c243334  el$3474.label$34
+ 0fb30 3735006c 6162656c 24333437 36006c61  75.label$3476.la
+ 0fb40 62656c24 33343737 006c6162 656c2433  bel$3477.label$3
+ 0fb50 34373800 6c616265 6c243334 37390076  478.label$3479.v
+ 0fb60 72243836 30390076 72243932 3136006c  r$8609.vr$9216.l
+ 0fb70 6162656c 24393836 006c6162 656c2431  abel$986.label$1
+ 0fb80 33363100 6c616265 6c243133 3632006c  361.label$1362.l
+ 0fb90 6162656c 24313336 34006c61 62656c24  abel$1364.label$
+ 0fba0 39383900 6c616265 6c243133 3637006c  989.label$1367.l
+ 0fbb0 6162656c 24313336 38006c61 62656c24  abel$1368.label$
+ 0fbc0 32393531 006c6162 656c2432 39353200  2951.label$2952.
+ 0fbd0 6c616265 6c243239 3534006c 6162656c  label$2954.label
+ 0fbe0 24323935 35006c61 62656c24 32393033  $2955.label$2903
+ 0fbf0 006c6162 656c2432 39353700 6c616265  .label$2957.labe
+ 0fc00 6c243239 30340076 72243835 3031006c  l$2904.vr$8501.l
+ 0fc10 6162656c 24323930 36006c61 62656c24  abel$2906.label$
+ 0fc20 32393037 006c6162 656c2432 39303900  2907.label$2909.
+ 0fc30 76722438 35303400 76722438 34303700  vr$8504.vr$8407.
+ 0fc40 76722439 31333200 76722438 35303500  vr$9132.vr$8505.
+ 0fc50 76722439 31333400 76722439 30323800  vr$9134.vr$9028.
+ 0fc60 76722438 35303600 76722439 31333700  vr$8506.vr$9137.
+ 0fc70 6c616265 6c243535 3930006c 6162656c  label$5590.label
+ 0fc80 24353539 31006c61 62656c24 35353932  $5591.label$5592
+ 0fc90 006c6162 656c2435 35393300 6c616265  .label$5593.labe
+ 0fca0 6c243535 3934006c 6162656c 24353539  l$5594.label$559
+ 0fcb0 35006c61 62656c24 35353936 006c6162  5.label$5596.lab
+ 0fcc0 656c2435 35393700 6c616265 6c243535  el$5597.label$55
+ 0fcd0 3938006c 6162656c 24353539 39006c61  98.label$5599.la
+ 0fce0 62656c24 32333800 6c616265 6c243334  bel$238.label$34
+ 0fcf0 3830004a 4f595354 49434b5f 49442400  80.JOYSTICK_ID$.
+ 0fd00 6c616265 6c243334 3832006c 6162656c  label$3482.label
+ 0fd10 24333438 33006c61 62656c24 33343834  $3483.label$3484
+ 0fd20 006c6162 656c2433 34383500 6c616265  .label$3485.labe
+ 0fd30 6c243334 3836006c 6162656c 24333438  l$3486.label$348
+ 0fd40 37006c61 62656c24 33343838 006c6162  7.label$3488.lab
+ 0fd50 656c2433 34383900 76722438 36313800  el$3489.vr$8618.
+ 0fd60 6c616265 6c243133 3730006c 6162656c  label$1370.label
+ 0fd70 24313337 31006c61 62656c24 31333733  $1371.label$1373
+ 0fd80 006c6162 656c2431 33373400 6c616265  .label$1374.labe
+ 0fd90 6c243133 3736006c 6162656c 24313337  l$1376.label$137
+ 0fda0 37006c61 62656c24 31333739 006c6162  7.label$1379.lab
+ 0fdb0 656c2432 39363000 494e535f 494e4300  el$2960.INS_INC.
+ 0fdc0 6c616265 6c243239 3633006c 6162656c  label$2963.label
+ 0fdd0 24323936 34006c61 62656c24 32393636  $2964.label$2966
+ 0fde0 006c6162 656c2432 39363700 6c616265  .label$2967.labe
+ 0fdf0 6c243239 36390076 72243931 34300076  l$2969.vr$9140.v
+ 0fe00 72243931 34310076 72243931 34320049  r$9141.vr$9142.I
+ 0fe10 4e535f49 4e580049 4e535f49 4e590076  NS_INX.INS_INY.v
+ 0fe20 72243931 34350076 72243931 34360076  r$9145.vr$9146.v
+ 0fe30 72243931 34370076 72243931 34380076  r$9147.vr$9148.v
+ 0fe40 72243931 34390076 72243832 31310076  r$9149.vr$8211.v
+ 0fe50 72243933 32310076 72243933 32320053  r$9321.vr$9322.S
+ 0fe60 5030434f 4c240076 72243933 32330054  P0COL$.vr$9323.T
+ 0fe70 4d502432 39383724 31007672 24393332  MP$2987$1.vr$932
+ 0fe80 34007672 24393332 35007672 24393332  4.vr$9325.vr$932
+ 0fe90 36006c61 62656c24 33343930 006c6162  6.label$3490.lab
+ 0fea0 656c2433 34393100 6c616265 6c243334  el$3491.label$34
+ 0feb0 3932006c 6162656c 24333439 33006c61  92.label$3493.la
+ 0fec0 62656c24 33343934 006c6162 656c2433  bel$3494.label$3
+ 0fed0 34393500 6c616265 6c243334 3936006c  495.label$3496.l
+ 0fee0 6162656c 24333439 37006c61 62656c24  abel$3497.label$
+ 0fef0 33343938 006c6162 656c2433 34393900  3498.label$3499.
+ 0ff00 76722438 36323900 6c616265 6c243334  vr$8629.label$34
+ 0ff10 3332006c 6162656c 24313338 30006c61  32.label$1380.la
+ 0ff20 62656c24 31333832 006c6162 656c2431  bel$1382.label$1
+ 0ff30 33383300 76722439 34313300 6c616265  383.vr$9413.labe
+ 0ff40 6c243133 3835006c 6162656c 24313338  l$1385.label$138
+ 0ff50 36006c61 62656c24 31333838 006c6162  6.label$1388.lab
+ 0ff60 656c2431 33383900 6c616265 6c243239  el$1389.label$29
+ 0ff70 3730006c 6162656c 24323937 32006c61  70.label$2972.la
+ 0ff80 62656c24 32393733 006c6162 656c2432  bel$2973.label$2
+ 0ff90 39313200 6c616265 6c243239 3735006c  912.label$2975.l
+ 0ffa0 6162656c 24323931 33006c61 62656c24  abel$2913.label$
+ 0ffb0 32393738 006c6162 656c2432 39373900  2978.label$2979.
+ 0ffc0 6c616265 6c243239 3135006c 6162656c  label$2915.label
+ 0ffd0 24323931 3600434e 5424006c 6162656c  $2916.CNT$.label
+ 0ffe0 24333430 33006c61 62656c24 32393138  $3403.label$2918
+ 0fff0 0066625f 446f7562 6c65546f 53747200  .fb_DoubleToStr.
+ 10000 76722439 31353000 76722439 31353100  vr$9150.vr$9151.
+ 10010 76722439 31353200 76722439 31353300  vr$9152.vr$9153.
+ 10020 76722439 31353400 76722439 31353500  vr$9154.vr$9155.
+ 10030 76722439 31353600 76722439 31353700  vr$9156.vr$9157.
+ 10040 76722439 31353800 6c616265 6c243535  vr$9158.label$55
+ 10050 34300054 4d502432 39383024 31007672  40.TMP$2980$1.vr
+ 10060 24383633 31007672 24383633 34007672  $8631.vr$8634.vr
+ 10070 24383633 37006c61 62656c24 31333931  $8637.label$1391
+ 10080 006c6162 656c2431 33393200 6c616265  .label$1392.labe
+ 10090 6c243133 3934006c 6162656c 24313339  l$1394.label$139
+ 100a0 35006c61 62656c24 31333937 006c6162  5.label$1397.lab
+ 100b0 656c2431 33393800 6c616265 6c243239  el$1398.label$29
+ 100c0 3831006c 6162656c 24323938 32007672  81.label$2982.vr
+ 100d0 24393033 3100494e 535f524f 4c41006c  $9031.INS_ROLA.l
+ 100e0 6162656c 24323938 35006c61 62656c24  abel$2985.label$
+ 100f0 32393837 006c6162 656c2432 39383800  2987.label$2988.
+ 10100 76722439 30333300 76722438 35313200  vr$9033.vr$8512.
+ 10110 76722438 35313300 76722438 35313400  vr$8513.vr$8514.
+ 10120 76722439 31363100 76722439 31363200  vr$9161.vr$9162.
+ 10130 55422431 00767224 39313634 00767224  UB$1.vr$9164.vr$
+ 10140 39303338 00767224 38353136 00767224  9038.vr$8516.vr$
+ 10150 39313637 00767224 39303339 00767224  9167.vr$9039.vr$
+ 10160 39313639 00767224 39313600 76722439  9169.vr$916.vr$9
+ 10170 31370076 72243835 31380076 72243933  17.vr$8518.vr$93
+ 10180 33320076 72243933 33350076 72243836  32.vr$9335.vr$86
+ 10190 34300076 72243836 34310054 4d502432  40.vr$8641.TMP$2
+ 101a0 38343424 34007672 24383634 34007672  844$4.vr$8644.vr
+ 101b0 24383831 32007672 24383634 37007672  $8812.vr$8647.vr
+ 101c0 24383634 38007672 24383634 3900544d  $8648.vr$8649.TM
+ 101d0 50243239 39362431 00767224 38383135  P$2996$1.vr$8815
+ 101e0 00767224 38383136 00767224 38383137  .vr$8816.vr$8817
+ 101f0 006c6162 656c2432 39393000 6c616265  .label$2990.labe
+ 10200 6c243239 3931006c 6162656c 24323939  l$2991.label$299
+ 10210 33006c61 62656c24 32393232 006c6162  3.label$2922.lab
+ 10220 656c2432 39393600 6c616265 6c243239  el$2996.label$29
+ 10230 3937006c 6162656c 24323932 34006c61  97.label$2924.la
+ 10240 62656c24 32393939 006c6162 656c2432  bel$2999.label$2
+ 10250 39323500 6c616265 6c243630 37300076  925.label$6070.v
+ 10260 72243837 3030006c 6162656c 24323932  r$8700.label$292
+ 10270 37006c61 62656c24 32393238 00465241  7.label$2928.FRA
+ 10280 474d454e 54434f44 45243100 76722439  GMENTCODE$1.vr$9
+ 10290 31373000 76722439 31373100 76722439  170.vr$9171.vr$9
+ 102a0 31373200 76722439 31373300 76722439  172.vr$9173.vr$9
+ 102b0 31373400 76722439 31373500 76722439  174.vr$9175.vr$9
+ 102c0 31373600 76722439 31373700 76722439  176.vr$9177.vr$9
+ 102d0 31373800 76722439 31373900 544d5024  178.vr$9179.TMP$
+ 102e0 37333524 31007672 24393639 30004144  735$1.vr$9690.AD
+ 102f0 52302400 76722439 36393100 76722438  R0$.vr$9691.vr$8
+ 10300 36353500 76722438 36353600 76722438  655.vr$8656.vr$8
+ 10310 36353700 76722439 36393500 66622472  657.vr$9695.fb$r
+ 10320 6573756c 74243000 66622472 6573756c  esult$0.fb$resul
+ 10330 74243100 544d5024 32393735 2431006c  t$1.TMP$2975$1.l
+ 10340 6162656c 24313334 34007672 24393138  abel$1344.vr$918
+ 10350 30007672 24393138 31007672 24393138  0.vr$9181.vr$918
+ 10360 32007672 24393138 33007672 24393138  2.vr$9183.vr$918
+ 10370 34007672 24393138 35007672 24393138  4.vr$9185.vr$918
+ 10380 36007672 24393138 37007672 24393138  6.vr$9187.vr$918
+ 10390 38007672 24393138 39007672 24393334  8.vr$9189.vr$934
+ 103a0 3100544d 50243631 31243200 544e4f57  1.TMP$611$2.TNOW
+ 103b0 24350076 72243836 36300076 72243838  $5.vr$8660.vr$88
+ 103c0 32300041 44523124 00767224 38363633  20.ADR1$.vr$8663
+ 103d0 00767224 38363634 00767224 38363635  .vr$8664.vr$8665
+ 103e0 00767224 38383233 00767224 38363638  .vr$8823.vr$8668
+ 103f0 00767224 38393032 00767224 38383236  .vr$8902.vr$8826
+ 10400 00767224 38383237 00767224 38393034  .vr$8827.vr$8904
+ 10410 00535034 5824006c 6162656c 24333435  .SP4X$.label$345
+ 10420 39006c61 62656c24 32393333 006c6162  9.label$2933.lab
+ 10430 656c2432 39333400 76722438 35323100  el$2934.vr$8521.
+ 10440 6c616265 6c243239 33370076 72243835  label$2937.vr$85
+ 10450 32330054 4d502432 39353424 31006c61  23.TMP$2954$1.la
+ 10460 62656c24 32393339 00767224 39313931  bel$2939.vr$9191
+ 10470 00767224 39313932 00767224 39313933  .vr$9192.vr$9193
+ 10480 00767224 39313934 00767224 39313935  .vr$9194.vr$9195
+ 10490 00767224 38353236 00767224 39313937  .vr$8526.vr$9197
+ 104a0 00767224 39313938 00767224 39313939  .vr$9198.vr$9199
+ 104b0 006c6162 656c2435 35363100 6c616265  .label$5561.labe
+ 104c0 6c243235 36006c61 62656c24 34303900  l$256.label$409.
+ 104d0 76722431 30313735 00544d50 24363237  vr$10175.TMP$627
+ 104e0 24320076 72243836 37310041 44523224  $2.vr$8671.ADR2$
+ 104f0 00767224 38363733 00767224 38363736  .vr$8673.vr$8676
+ 10500 00767224 38363739 00544d50 24353932  .vr$8679.TMP$592
+ 10510 24310053 50345924 006c6162 656c2433  $1.SP4Y$.label$3
+ 10520 36390076 72243130 30353600 76722438  69.vr$10056.vr$8
+ 10530 36383000 49465241 4d452435 00414452  680.IFRAME$5.ADR
+ 10540 33240076 72243836 38340076 72243836  3$.vr$8684.vr$86
+ 10550 38370076 72243836 38380076 72243836  87.vr$8688.vr$86
+ 10560 38390054 4d502438 39342438 006c6162  89.TMP$894$8.lab
+ 10570 656c2433 34333400 544d5024 33303034  el$3434.TMP$3004
+ 10580 24310042 4e454152 4553544c 494e4541  $1.BNEARESTLINEA
+ 10590 52243500 6c616265 6c243239 31390076  R$5.label$2919.v
+ 105a0 72243130 39333500 6c616265 6c243535  r$10935.label$55
+ 105b0 37360054 4d502432 39343924 31007672  76.TMP$2949$1.vr
+ 105c0 24383639 3200544d 50243239 31322431  $8692.TMP$2912$1
+ 105d0 00767224 38363935 00767224 38363936  .vr$8695.vr$8696
+ 105e0 00767224 38363937 00767224 39303531  .vr$8697.vr$9051
+ 105f0 00494e53 5f524f52 41006c61 62656c24  .INS_RORA.label$
+ 10600 34393637 006c6162 656c2431 33363500  4967.label$1365.
+ 10610 76722438 37313100 76722438 35333800  vr$8711.vr$8538.
+ 10620 76722439 33363200 66625f4c 6f636174  vr$9362.fb_Locat
+ 10630 65007672 24383931 30005f5a 4e374350  e.vr$8910._ZN7CP
+ 10640 55363531 30384144 525f494e 44594576  U65108ADR_INDYEv
+ 10650 00767224 38383433 00545354 41525424  .vr$8843.TSTART$
+ 10660 3500494e 535f5453 5800494e 535f4243  5.INS_TSX.INS_BC
+ 10670 43007672 24383931 37007672 24393433  C.vr$8917.vr$943
+ 10680 3700494e 535f4243 53007672 24393433  7.INS_BCS.vr$943
+ 10690 39006c61 62656c24 34313500 544d5024  9.label$415.TMP$
+ 106a0 38353224 34006c61 62656c24 35353831  852$4.label$5581
+ 106b0 00767224 39333935 0049474c 4f42414c  .vr$9395.IGLOBAL
+ 106c0 54494d45 24350076 72243133 30373700  TIME$5.vr$13077.
+ 106d0 544d5024 32383732 24330076 72243933  TMP$2872$3.vr$93
+ 106e0 37330076 72243933 37350076 72243933  73.vr$9375.vr$93
+ 106f0 37380076 72243130 31383700 76722431  78.vr$10187.vr$1
+ 10700 30333932 006c6162 656c2433 34383100  0392.label$3481.
+ 10710 6c616265 6c243131 00767224 31303339  label$11.vr$1039
+ 10720 35007672 24383835 37007672 24313033  5.vr$8857.vr$103
+ 10730 39380076 72243130 33393900 6c616265  98.vr$10399.labe
+ 10740 6c243239 36310043 4f4c4f52 42495453  l$2961.COLORBITS
+ 10750 24310049 4e535f42 4551006c 6162656c  $1.INS_BEQ.label
+ 10760 24323731 006c6162 656c2435 30300076  $271.label$500.v
+ 10770 72243835 3437006c 6162656c 24353032  r$8547.label$502
+ 10780 006c6162 656c2435 3033006c 6162656c  .label$503.label
+ 10790 24353034 00767224 3130006c 6162656c  $504.vr$10.label
+ 107a0 24353036 00767224 31320076 72243133  $506.vr$12.vr$13
+ 107b0 006c6162 656c2436 34303000 6c616265  .label$6400.labe
+ 107c0 6c243634 30310076 72243136 006c6162  l$6401.vr$16.lab
+ 107d0 656c2436 34303300 6c616265 6c243634  el$6403.label$64
+ 107e0 3034006c 6162656c 24363430 35006c61  04.label$6405.la
+ 107f0 62656c24 36343036 006c6162 656c2436  bel$6406.label$6
+ 10800 34303700 6c616265 6c243634 3038006c  407.label$6408.l
+ 10810 6162656c 24363430 3900544d 50243834  abel$6409.TMP$84
+ 10820 37243500 424e4f49 53452435 00585f41  7$5.BNOISE$5.X_A
+ 10830 58495330 24007672 24393634 00767224  XIS0$.vr$964.vr$
+ 10840 39363500 5354525f 4c454e24 00767224  965.STR_LEN$.vr$
+ 10850 31313030 38007672 24300076 72243100  11008.vr$0.vr$1.
+ 10860 76722432 00767224 33007672 24340076  vr$2.vr$3.vr$4.v
+ 10870 72243500 76722436 00767224 37007672  r$5.vr$6.vr$7.vr
+ 10880 24380076 72243900 6c616265 6c243531  $8.vr$9.label$51
+ 10890 32006c61 62656c24 35313300 6c616265  2.label$513.labe
+ 108a0 6c243531 34007672 24323000 454c454d  l$514.vr$20.ELEM
+ 108b0 454e545f 4c454e00 76722432 32007672  ENT_LEN.vr$22.vr
+ 108c0 24323300 6c616265 6c243634 3130006c  $23.label$6410.l
+ 108d0 6162656c 24363431 31006c61 62656c24  abel$6411.label$
+ 108e0 36343132 006c6162 656c2436 34313300  6412.label$6413.
+ 108f0 6c616265 6c243634 3134006c 6162656c  label$6414.label
+ 10900 24363431 35006c61 62656c24 36343136  $6415.label$6416
+ 10910 006c6162 656c2436 34313700 6c616265  .label$6417.labe
+ 10920 6c243634 3138006c 6162656c 24363431  l$6418.label$641
+ 10930 39006c61 62656c24 34383900 6c616265  9.label$489.labe
+ 10940 6c243433 3030006c 6162656c 24343330  l$4300.label$430
+ 10950 31006c61 62656c24 34333032 006c6162  1.label$4302.lab
+ 10960 656c2434 33303300 6c616265 6c243433  el$4303.label$43
+ 10970 3034006c 6162656c 24343330 35004449  04.label$4305.DI
+ 10980 4d544200 585f4158 49533124 006c6162  MTB.X_AXIS1$.lab
+ 10990 656c2434 33303800 6c616265 6c243433  el$4308.label$43
+ 109a0 3039006c 6162656c 24323937 36006c61  09.label$2976.la
+ 109b0 62656c24 32393336 006c6162 656c2434  bel$2936.label$4
+ 109c0 3236006c 6162656c 24353230 006c6162  26.label$520.lab
+ 109d0 656c2435 3231006c 6162656c 24353232  el$521.label$522
+ 109e0 006c6162 656c2435 3233006c 6162656c  .label$523.label
+ 109f0 24353234 006c6162 656c2435 3235006c  $524.label$525.l
+ 10a00 6162656c 24353236 00494e53 5f545841  abel$526.INS_TXA
+ 10a10 00767224 33330076 72243334 006c6162  .vr$33.vr$34.lab
+ 10a20 656c2436 34323100 76722433 36005350  el$6421.vr$36.SP
+ 10a30 454e4124 00767224 3338006c 6162656c  ENA$.vr$38.label
+ 10a40 24363432 35006c61 62656c24 36343236  $6425.label$6426
+ 10a50 006c6162 656c2436 34323700 6c616265  .label$6427.labe
+ 10a60 6c243634 3238006c 6162656c 24363432  l$6428.label$642
+ 10a70 39006c61 62656c24 34333130 00494e53  9.label$4310.INS
+ 10a80 5f545853 006c6162 656c2434 33313200  _TXS.label$4312.
+ 10a90 6c616265 6c243433 3133006c 6162656c  label$4313.label
+ 10aa0 24343331 34006c61 62656c24 34333135  $4314.label$4315
+ 10ab0 006c6162 656c2434 33313600 6c616265  .label$4316.labe
+ 10ac0 6c243433 3137006c 6162656c 24343331  l$4317.label$431
+ 10ad0 38006c61 62656c24 34333139 006c6162  8.label$4319.lab
+ 10ae0 656c2435 39303000 76722431 31006c61  el$5900.vr$11.la
+ 10af0 62656c24 35393032 006c6162 656c2435  bel$5902.label$5
+ 10b00 39303300 6c616265 6c243539 3034006c  903.label$5904.l
+ 10b10 6162656c 24323230 30006c61 62656c24  abel$2200.label$
+ 10b20 32323031 006c6162 656c2435 39303700  2201.label$5907.
+ 10b30 6c616265 6c243232 3033006c 6162656c  label$2203.label
+ 10b40 24323230 34006c61 62656c24 32323036  $2204.label$2206
+ 10b50 006c6162 656c2432 32303700 6c616265  .label$2207.labe
+ 10b60 6c243232 3039006c 6162656c 24323830  l$2209.label$280
+ 10b70 00544d50 24313438 30243700 76722436  .TMP$1480$7.vr$6
+ 10b80 37363900 6c616265 6c243238 33006c61  769.label$283.la
+ 10b90 62656c24 35333000 6c616265 6c243533  bel$530.label$53
+ 10ba0 31006c61 62656c24 35333200 6c616265  1.label$532.labe
+ 10bb0 6c243533 33006c61 62656c24 35333400  l$533.label$534.
+ 10bc0 76722434 30007672 24343100 76722434  vr$40.vr$41.vr$4
+ 10bd0 32007672 24343300 6c616265 6c243634  2.vr$43.label$64
+ 10be0 3330006c 6162656c 24363433 31007672  30.label$6431.vr
+ 10bf0 24343600 6c616265 6c243634 3333006c  $46.label$6433.l
+ 10c00 6162656c 24363433 34007672 24343900  abel$6434.vr$49.
+ 10c10 6c616265 6c243634 3336006c 6162656c  label$6436.label
+ 10c20 24363433 38007672 24383837 32005f5a  $6438.vr$8872._Z
+ 10c30 4e384d45 4d4f5259 5f543952 45414455  N8MEMORY_T9READU
+ 10c40 42595445 4564006c 6162656c 24343332  BYTEEd.label$432
+ 10c50 30006c61 62656c24 34333231 006c6162  0.label$4321.lab
+ 10c60 656c2434 33323200 6c616265 6c243433  el$4322.label$43
+ 10c70 3233006c 6162656c 24343332 34006c61  23.label$4324.la
+ 10c80 62656c24 34333235 006c6162 656c2434  bel$4325.label$4
+ 10c90 33323600 6c616265 6c243433 3237006c  326.label$4327.l
+ 10ca0 6162656c 24343332 38006c61 62656c24  abel$4328.label$
+ 10cb0 34333239 006c6162 656c2435 39313000  4329.label$5910.
+ 10cc0 6c616265 6c243539 3131006c 6162656c  label$5911.label
+ 10cd0 24353931 32006c61 62656c24 35393134  $5912.label$5914
+ 10ce0 006c6162 656c2432 32313000 6c616265  .label$2210.labe
+ 10cf0 6c243539 3136006c 6162656c 24323231  l$5916.label$221
+ 10d00 32006c61 62656c24 32323133 006c6162  2.label$2213.lab
+ 10d10 656c2435 39313900 6c616265 6c243232  el$5919.label$22
+ 10d20 3135006c 6162656c 24323231 36006c61  15.label$2216.la
+ 10d30 62656c24 32323138 006c6162 656c2433  bel$2218.label$3
+ 10d40 38303000 6c616265 6c243338 3031006c  800.label$3801.l
+ 10d50 6162656c 24333830 32006c61 62656c24  abel$3802.label$
+ 10d60 33383033 006c6162 656c2433 38303400  3803.label$3804.
+ 10d70 6c616265 6c243338 3035006c 6162656c  label$3805.label
+ 10d80 24333830 36006c61 62656c24 33383037  $3806.label$3807
+ 10d90 00494e53 5f424954 006c6162 656c2433  .INS_BIT.label$3
+ 10da0 38303900 6c616265 6c243534 3000544d  809.label$540.TM
+ 10db0 50243134 39362437 006c6162 656c2435  P$1496$7.label$5
+ 10dc0 3432006c 6162656c 24353433 006c6162  42.label$543.lab
+ 10dd0 656c2435 34340076 72243530 006c6162  el$544.vr$50.lab
+ 10de0 656c2435 34360076 72243532 00767224  el$546.vr$52.vr$
+ 10df0 3533006c 6162656c 24363434 30007672  53.label$6440.vr
+ 10e00 24353500 6c616265 6c243634 34320076  $55.label$6442.v
+ 10e10 72243537 006c6162 656c2436 34343400  r$57.label$6444.
+ 10e20 76722435 39006c61 62656c24 36343436  vr$59.label$6446
+ 10e30 006c6162 656c2436 34343800 6c616265  .label$6448.labe
+ 10e40 6c243433 3330006c 6162656c 24343333  l$4330.label$433
+ 10e50 31006c61 62656c24 34333332 006c6162  1.label$4332.lab
+ 10e60 656c2434 33333300 6c616265 6c243433  el$4333.label$43
+ 10e70 3334006c 6162656c 24343333 35006c61  34.label$4335.la
+ 10e80 62656c24 34333336 006c6162 656c2434  bel$4336.label$4
+ 10e90 33333700 6c616265 6c243433 3338006c  337.label$4338.l
+ 10ea0 6162656c 24343333 39006c61 62656c24  abel$4339.label$
+ 10eb0 35393230 006c6162 656c2435 39323200  5920.label$5922.
+ 10ec0 6c616265 6c243539 3233006c 6162656c  label$5923.label
+ 10ed0 24353932 34006c61 62656c24 35393235  $5924.label$5925
+ 10ee0 006c6162 656c2432 32323200 6c616265  .label$2222.labe
+ 10ef0 6c243539 3238006c 6162656c 24323232  l$5928.label$222
+ 10f00 34006c61 62656c24 32323235 006c6162  4.label$2225.lab
+ 10f10 656c2432 32323700 6c616265 6c243232  el$2227.label$22
+ 10f20 3238006c 6162656c 24333831 30006c61  28.label$3810.la
+ 10f30 62656c24 33383131 006c6162 656c2433  bel$3811.label$3
+ 10f40 38313200 6c616265 6c243338 3133006c  812.label$3813.l
+ 10f50 6162656c 24333831 34006c61 62656c24  abel$3814.label$
+ 10f60 33383135 006c6162 656c2433 38313600  3815.label$3816.
+ 10f70 6c616265 6c243338 3137006c 6162656c  label$3817.label
+ 10f80 24333831 38005350 37434f4c 24006c61  $3818.SP7COL$.la
+ 10f90 62656c24 31373030 006c6162 656c2431  bel$1700.label$1
+ 10fa0 37303200 6c616265 6c243137 3033006c  702.label$1703.l
+ 10fb0 6162656c 24353531 006c6162 656c2431  abel$551.label$1
+ 10fc0 37303500 6c616265 6c243137 3036006c  705.label$1706.l
+ 10fd0 6162656c 24353534 006c6162 656c2431  abel$554.label$1
+ 10fe0 37303800 76722436 31006c61 62656c24  708.vr$61.label$
+ 10ff0 35353700 6c616265 6c243535 38006c61  557.label$558.la
+ 11000 62656c24 36343530 00767224 3635006c  bel$6450.vr$65.l
+ 11010 6162656c 24363435 32007672 24363700  abel$6452.vr$67.
+ 11020 6c616265 6c243634 35340076 72243639  label$6454.vr$69
+ 11030 006c6162 656c2436 34353600 544d5024  .label$6456.TMP$
+ 11040 31343735 2437006c 6162656c 24363435  1475$7.label$645
+ 11050 38006c61 62656c24 34333430 006c6162  8.label$4340.lab
+ 11060 656c2434 33343100 6c616265 6c243433  el$4341.label$43
+ 11070 3432005f 5a4e3743 50553635 31303741  42._ZN7CPU65107A
+ 11080 44525f41 42534576 006c6162 656c2434  DR_ABSEv.label$4
+ 11090 33343400 6c616265 6c243433 3435006c  344.label$4345.l
+ 110a0 6162656c 24343334 36006c61 62656c24  abel$4346.label$
+ 110b0 34333437 006c6162 656c2434 33343800  4347.label$4348.
+ 110c0 6c616265 6c243433 3439006c 6162656c  label$4349.label
+ 110d0 24353933 30006c61 62656c24 35393331  $5930.label$5931
+ 110e0 006c6162 656c2435 39333200 6c616265  .label$5932.labe
+ 110f0 6c243539 3333006c 6162656c 24353933  l$5933.label$593
+ 11100 34006c61 62656c24 32323330 006c6162  4.label$2230.lab
+ 11110 656c2432 32333100 6c616265 6c243539  el$2231.label$59
+ 11120 3337006c 6162656c 24323233 33006c61  37.label$2233.la
+ 11130 62656c24 32323334 006c6162 656c2432  bel$2234.label$2
+ 11140 32333600 6c616265 6c243232 33370047  236.label$2237.G
+ 11150 4c474554 50524f47 52414d49 4e464f4c  LGETPROGRAMINFOL
+ 11160 4f472400 6c616265 6c243338 3230006c  OG$.label$3820.l
+ 11170 6162656c 24333832 31006c61 62656c24  abel$3821.label$
+ 11180 33383232 006c6162 656c2433 38323300  3822.label$3823.
+ 11190 6c616265 6c243338 3234006c 6162656c  label$3824.label
+ 111a0 24333832 35006c61 62656c24 33383236  $3825.label$3826
+ 111b0 006c6162 656c2433 38323700 6c616265  .label$3827.labe
+ 111c0 6c243338 3238006c 6162656c 24333832  l$3828.label$382
+ 111d0 39006c61 62656c24 32393200 6c616265  9.label$292.labe
+ 111e0 6c243137 3131006c 6162656c 24313731  l$1711.label$171
+ 111f0 32006662 5f476678 53637265 656e5074  2.fb_GfxScreenPt
+ 11200 72006c61 62656c24 31373134 006c6162  r.label$1714.lab
+ 11210 656c2431 37313500 6c616265 6c243536  el$1715.label$56
+ 11220 33006c61 62656c24 31373137 00767224  3.label$1717.vr$
+ 11230 3730006c 6162656c 24353636 00767224  70.label$566.vr$
+ 11240 37320076 72243733 006c6162 656c2436  72.vr$73.label$6
+ 11250 34363000 6c616265 6c243433 39006c61  460.label$439.la
+ 11260 62656c24 36343632 00767224 3737006c  bel$6462.vr$77.l
+ 11270 6162656c 24363436 34007672 24373900  abel$6464.vr$79.
+ 11280 6c616265 6c243634 3636006c 6162656c  label$6466.label
+ 11290 24363436 38006c61 62656c24 37303800  $6468.label$708.
+ 112a0 6c616265 6c243433 3530006c 6162656c  label$4350.label
+ 112b0 24343335 31002438 4d454d4f 52595f54  $4351.$8MEMORY_T
+ 112c0 006c6162 656c2434 33353300 6c616265  .label$4353.labe
+ 112d0 6c243433 3534006c 6162656c 24343335  l$4354.label$435
+ 112e0 35006c61 62656c24 34333536 006c6162  5.label$4356.lab
+ 112f0 656c2434 33353700 6c616265 6c243433  el$4357.label$43
+ 11300 3538006c 6162656c 24343335 39006c61  58.label$4359.la
+ 11310 62656c24 35393430 006c6162 656c2435  bel$5940.label$5
+ 11320 39343100 6c616265 6c243539 3432006c  941.label$5942.l
+ 11330 6162656c 24353934 33006c61 62656c24  abel$5943.label$
+ 11340 35393434 006c6162 656c2432 32343000  5944.label$2240.
+ 11350 6c616265 6c243539 3436006c 6162656c  label$5946.label
+ 11360 24323234 32006c61 62656c24 32323433  $2242.label$2243
+ 11370 006c6162 656c2435 39343900 6c616265  .label$5949.labe
+ 11380 6c243232 3435006c 6162656c 24323234  l$2245.label$224
+ 11390 36006c61 62656c24 32323438 006c6162  6.label$2248.lab
+ 113a0 656c2432 32343900 6c616265 6c243338  el$2249.label$38
+ 113b0 3330006c 6162656c 24333833 31006c61  30.label$3831.la
+ 113c0 62656c24 33383332 006c6162 656c2433  bel$3832.label$3
+ 113d0 38333300 6c616265 6c243338 3334006c  833.label$3834.l
+ 113e0 6162656c 24333833 35006c61 62656c24  abel$3835.label$
+ 113f0 33383336 00243136 5f5f4642 5f415252  3836.$16__FB_ARR
+ 11400 41594449 4d544224 006c6162 656c2433  AYDIMTB$.label$3
+ 11410 38333800 6c616265 6c243338 3339006c  838.label$3839.l
+ 11420 6162656c 24313732 30006c61 62656c24  abel$1720.label$
+ 11430 31373231 006c6162 656c2431 37323300  1721.label$1723.
+ 11440 6c616265 6c243137 3234006c 6162656c  label$1724.label
+ 11450 24353732 006c6162 656c2431 37323600  $572.label$1726.
+ 11460 6c616265 6c243137 3237006c 6162656c  label$1727.label
+ 11470 24353735 006c6162 656c2431 37323900  $575.label$1729.
+ 11480 76722438 32007672 24383300 6c616265  vr$82.vr$83.labe
+ 11490 6c243634 37300076 72243835 006c6162  l$6470.vr$85.lab
+ 114a0 656c2436 34373200 76722438 37006c61  el$6472.vr$87.la
+ 114b0 62656c24 36343734 00767224 3839006c  bel$6474.vr$89.l
+ 114c0 6162656c 24363437 36006c61 62656c24  abel$6476.label$
+ 114d0 36343738 00767224 31303037 37006c61  6478.vr$10077.la
+ 114e0 62656c24 34333630 006c6162 656c2434  bel$4360.label$4
+ 114f0 33363100 6c616265 6c243433 3632006c  361.label$4362.l
+ 11500 6162656c 24343336 33006c61 62656c24  abel$4363.label$
+ 11510 34333634 006c6162 656c2436 32333500  4364.label$6235.
+ 11520 6c616265 6c243433 3636006c 6162656c  label$4366.label
+ 11530 24343336 37006c61 62656c24 34333638  $4367.label$4368
+ 11540 006c6162 656c2434 33363900 6c616265  .label$4369.labe
+ 11550 6c243539 3530006c 6162656c 24353935  l$5950.label$595
+ 11560 31006c61 62656c24 35393532 006c6162  1.label$5952.lab
+ 11570 656c2435 39353300 6c616265 6c243539  el$5953.label$59
+ 11580 3534006c 6162656c 24353935 35006c61  54.label$5955.la
+ 11590 62656c24 32323531 006c6162 656c2432  bel$2251.label$2
+ 115a0 32353200 6c616265 6c243539 3538006c  252.label$5958.l
+ 115b0 6162656c 24323235 34006c61 62656c24  abel$2254.label$
+ 115c0 32323535 00494e53 5f424d49 006c6162  2255.INS_BMI.lab
+ 115d0 656c2432 32353800 544d5024 32383530  el$2258.TMP$2850
+ 115e0 2433006c 6162656c 24333834 30006c61  $3.label$3840.la
+ 115f0 62656c24 33383431 00474554 5f444154  bel$3841.GET_DAT
+ 11600 4124006c 6162656c 24333834 33006c61  A$.label$3843.la
+ 11610 62656c24 33383434 006c6162 656c2433  bel$3844.label$3
+ 11620 38343500 6c616265 6c243338 3436006c  845.label$3846.l
+ 11630 6162656c 24333834 37006c61 62656c24  abel$3847.label$
+ 11640 33383438 006c6162 656c2433 38343900  3848.label$3849.
+ 11650 46554c4c 53435245 454e2431 006c6162  FULLSCREEN$1.lab
+ 11660 656c2431 37333000 76722439 31313900  el$1730.vr$9119.
+ 11670 6c616265 6c243137 3332006c 6162656c  label$1732.label
+ 11680 24313733 33006c61 62656c24 35383100  $1733.label$581.
+ 11690 6c616265 6c243137 3335006c 6162656c  label$1735.label
+ 116a0 24313733 36006c61 62656c24 35383400  $1736.label$584.
+ 116b0 6c616265 6c243137 33380076 72243931  label$1738.vr$91
+ 116c0 006c6162 656c2435 3837006c 6162656c  .label$587.label
+ 116d0 24353838 006c6162 656c2436 34383000  $588.label$6480.
+ 116e0 76722439 35006c61 62656c24 36343832  vr$95.label$6482
+ 116f0 00767224 3937006c 6162656c 24363438  .vr$97.label$648
+ 11700 34007672 24393900 6c616265 6c243634  4.vr$99.label$64
+ 11710 3836006c 6162656c 24363438 38006c61  86.label$6488.la
+ 11720 62656c24 34333730 006c6162 656c2434  bel$4370.label$4
+ 11730 33373100 6c616265 6c243433 3732006c  371.label$4372.l
+ 11740 6162656c 24343337 33006c61 62656c24  abel$4373.label$
+ 11750 34333734 006c6162 656c2434 33373500  4374.label$4375.
+ 11760 6c616265 6c243433 3736006c 6162656c  label$4376.label
+ 11770 24343337 37006c61 62656c24 34333738  $4377.label$4378
+ 11780 006c6162 656c2434 33373900 6c616265  .label$4379.labe
+ 11790 6c243539 3630006c 6162656c 24353936  l$5960.label$596
+ 117a0 31006c61 62656c24 35393632 006c6162  1.label$5962.lab
+ 117b0 656c2435 39363300 6c616265 6c243539  el$5963.label$59
+ 117c0 3634006c 6162656c 24323236 30006c61  64.label$2260.la
+ 117d0 62656c24 32323631 006c6162 656c2435  bel$2261.label$5
+ 117e0 39363700 494e535f 424e4500 6c616265  967.INS_BNE.labe
+ 117f0 6c243232 36340076 72243935 3033006c  l$2264.vr$9503.l
+ 11800 6162656c 24323236 36006c61 62656c24  abel$2266.label$
+ 11810 32323637 006c6162 656c2432 32363900  2267.label$2269.
+ 11820 6c616265 6c243338 3530006c 6162656c  label$3850.label
+ 11830 24333835 31006c61 62656c24 33383532  $3851.label$3852
+ 11840 006c6162 656c2433 38353300 6c616265  .label$3853.labe
+ 11850 6c243338 3534006c 6162656c 24333835  l$3854.label$385
+ 11860 35006c61 62656c24 33383536 006c6162  5.label$3856.lab
+ 11870 656c2433 38353700 6c616265 6c243338  el$3857.label$38
+ 11880 3538006c 6162656c 24333835 39007672  58.label$3859.vr
+ 11890 24393530 30006c61 62656c24 31373431  $9500.label$1741
+ 118a0 006c6162 656c2431 37343200 6c616265  .label$1742.labe
+ 118b0 6c243539 30006c61 62656c24 31373434  l$590.label$1744
+ 118c0 006c6162 656c2431 37343500 76722439  .label$1745.vr$9
+ 118d0 35303200 6c616265 6c243137 3437006c  502.label$1747.l
+ 118e0 6162656c 24313734 38006c61 62656c24  abel$1748.label$
+ 118f0 35393600 76722439 35303800 6c616265  596.vr$9508.labe
+ 11900 6c243539 38006c61 62656c24 36343930  l$598.label$6490
+ 11910 00767224 39353039 006c6162 656c2436  .vr$9509.label$6
+ 11920 34393200 76722439 35303100 6c616265  492.vr$9501.labe
+ 11930 6c243634 3934006c 6162656c 24373135  l$6494.label$715
+ 11940 006c6162 656c2436 34393600 6c616265  .label$6496.labe
+ 11950 6c243634 3938006c 6162656c 24363234  l$6498.label$624
+ 11960 30007672 24393530 37006c61 62656c24  0.vr$9507.label$
+ 11970 34333830 006c6162 656c2434 33383100  4380.label$4381.
+ 11980 6c616265 6c243433 3832006c 6162656c  label$4382.label
+ 11990 24343338 33006c61 62656c24 34333834  $4383.label$4384
+ 119a0 006c6162 656c2434 33383500 6c616265  .label$4385.labe
+ 119b0 6c243433 3836006c 6162656c 24343338  l$4386.label$438
+ 119c0 37006c61 62656c24 34333838 006c6162  7.label$4388.lab
+ 119d0 656c2434 33383900 6c616265 6c243539  el$4389.label$59
+ 119e0 3730006c 6162656c 24353937 31006c61  70.label$5971.la
+ 119f0 62656c24 35393732 006c6162 656c2435  bel$5972.label$5
+ 11a00 39373300 6c616265 6c243539 3734006c  973.label$5974.l
+ 11a10 6162656c 24323237 30006c61 62656c24  abel$2270.label$
+ 11a20 35393736 006c6162 656c2432 32373200  5976.label$2272.
+ 11a30 6c616265 6c243232 3733006c 6162656c  label$2273.label
+ 11a40 24353937 39006c61 62656c24 32323735  $5979.label$2275
+ 11a50 006c6162 656c2432 32373600 6c616265  .label$2276.labe
+ 11a60 6c243232 3738006c 6162656c 24323237  l$2278.label$227
+ 11a70 39006c61 62656c24 33383630 006c6162  9.label$3860.lab
+ 11a80 656c2433 38363100 6c616265 6c243338  el$3861.label$38
+ 11a90 3632006c 6162656c 24333836 33006c61  62.label$3863.la
+ 11aa0 62656c24 33383634 006c6162 656c2433  bel$3864.label$3
+ 11ab0 38363500 6c616265 6c243338 3636006c  865.label$3866.l
+ 11ac0 6162656c 24333836 37006c61 62656c24  abel$3867.label$
+ 11ad0 33383638 006c6162 656c2433 38363900  3868.label$3869.
+ 11ae0 76722439 35303400 76722432 3030006c  vr$9504.vr$200.l
+ 11af0 6162656c 24313735 30006c61 62656c24  abel$1750.label$
+ 11b00 31373531 00767224 39353035 006c6162  1751.vr$9505.lab
+ 11b10 656c2431 37353300 6c616265 6c243137  el$1753.label$17
+ 11b20 3534006c 6162656c 24313735 36006c61  54.label$1756.la
+ 11b30 62656c24 31373537 006c6162 656c2431  bel$1757.label$1
+ 11b40 37353900 6c616265 6c243434 39006c61  759.label$449.la
+ 11b50 62656c24 34333930 006c6162 656c2434  bel$4390.label$4
+ 11b60 33393100 6c616265 6c243433 3932006c  391.label$4392.l
+ 11b70 6162656c 24343339 33006c61 62656c24  abel$4393.label$
+ 11b80 34333934 006c6162 656c2434 33393500  4394.label$4395.
+ 11b90 6c616265 6c243433 3936006c 6162656c  label$4396.label
+ 11ba0 24343339 37006c61 62656c24 34333938  $4397.label$4398
+ 11bb0 006c6162 656c2435 39383000 6c616265  .label$5980.labe
+ 11bc0 6c243539 3831006c 6162656c 24353938  l$5981.label$598
+ 11bd0 33007672 24393531 30006c61 62656c24  3.vr$9510.label$
+ 11be0 35393835 006c6162 656c2432 32383100  5985.label$2281.
+ 11bf0 6c616265 6c243232 3832006c 6162656c  label$2282.label
+ 11c00 24353938 38006c61 62656c24 32323834  $5988.label$2284
+ 11c10 006c6162 656c2432 32383500 6c616265  .label$2285.labe
+ 11c20 6c243232 3837006c 6162656c 24323238  l$2287.label$228
+ 11c30 38007672 24393531 3500494e 535f4250  8.vr$9515.INS_BP
+ 11c40 4c006c61 62656c24 33383731 006c6162  L.label$3871.lab
+ 11c50 656c2433 38373200 6c616265 6c243338  el$3872.label$38
+ 11c60 3733006c 6162656c 24333837 34006c61  73.label$3874.la
+ 11c70 62656c24 33383735 006c6162 656c2433  bel$3875.label$3
+ 11c80 38373600 6c616265 6c243338 3737006c  876.label$3877.l
+ 11c90 6162656c 24333837 38006c61 62656c24  abel$3878.label$
+ 11ca0 33383739 00767224 39353036 006c6162  3879.vr$9506.lab
+ 11cb0 656c2431 37363000 76722432 3133006c  el$1760.vr$213.l
+ 11cc0 6162656c 24313736 32006c61 62656c24  abel$1762.label$
+ 11cd0 31373633 006c6162 656c2431 37363500  1763.label$1765.
+ 11ce0 6c616265 6c243137 36360047 4c554e49  label$1766.GLUNI
+ 11cf0 464f524d 32462400 6c616265 6c243137  FORM2F$.label$17
+ 11d00 3638006c 6162656c 24313736 39006c61  68.label$1769.la
+ 11d10 62656c24 32303300 76722439 35333000  bel$203.vr$9530.
+ 11d20 76722439 35333100 76722439 35333200  vr$9531.vr$9532.
+ 11d30 76722439 35333300 76722439 35333400  vr$9533.vr$9534.
+ 11d40 6c616265 6c243632 35360076 72243935  label$6256.vr$95
+ 11d50 33360076 72243935 3337006c 6162656c  36.vr$9537.label
+ 11d60 24353939 30006c61 62656c24 35393931  $5990.label$5991
+ 11d70 006c6162 656c2435 39393200 6c616265  .label$5992.labe
+ 11d80 6c243539 3933006c 6162656c 24353939  l$5993.label$599
+ 11d90 34006c61 62656c24 32323930 006c6162  4.label$2290.lab
+ 11da0 656c2432 32393100 6c616265 6c243539  el$2291.label$59
+ 11db0 3937006c 6162656c 24323239 33006c61  97.label$2293.la
+ 11dc0 62656c24 32323934 006c6162 656c2432  bel$2294.label$2
+ 11dd0 32393600 6c616265 6c243232 3937006c  296.label$2297.l
+ 11de0 6162656c 24323239 39006c61 62656c24  abel$2299.label$
+ 11df0 33383830 00464c41 4724006c 6162656c  3880.FLAG$.label
+ 11e00 24333838 32006c61 62656c24 33383833  $3882.label$3883
+ 11e10 006c6162 656c2433 38383400 6c616265  .label$3884.labe
+ 11e20 6c243338 3835006c 6162656c 24333838  l$3885.label$388
+ 11e30 36006c61 62656c24 33383837 006c6162  6.label$3887.lab
+ 11e40 656c2433 38383800 6c616265 6c243338  el$3888.label$38
+ 11e50 38390076 72243935 31330076 72243935  89.vr$9513.vr$95
+ 11e60 31340076 72243232 31006c61 62656c24  14.vr$221.label$
+ 11e70 31373731 006c6162 656c2431 37373200  1771.label$1772.
+ 11e80 6c616265 6c243137 3734006c 6162656c  label$1774.label
+ 11e90 24313737 35006c61 62656c24 31373737  $1775.label$1777
+ 11ea0 006c6162 656c2431 37373800 76722439  .label$1778.vr$9
+ 11eb0 35313800 6c616265 6c243732 33007672  518.label$723.vr
+ 11ec0 24393531 39006c61 62656c24 37323400  $9519.label$724.
+ 11ed0 244e3743 50553635 31303846 42415252  $N7CPU65108FBARR
+ 11ee0 41593149 38464253 5452494e 47454500  AY1I8FBSTRINGEE.
+ 11ef0 6c616265 6c243732 3500676c 52656374  label$725.glRect
+ 11f00 66007672 24393534 30007672 24393534  f.vr$9540.vr$954
+ 11f10 31007672 24393534 32004e49 42424c45  1.vr$9542.NIBBLE
+ 11f20 53240076 72243935 3435006c 6162656c  S$.vr$9545.label
+ 11f30 24313532 39007672 24393534 37007672  $1529.vr$9547.vr
+ 11f40 24393534 38007672 24393534 39007672  $9548.vr$9549.vr
+ 11f50 24393532 30007672 24393532 31007672  $9520.vr$9521.vr
+ 11f60 24393532 32007672 24393532 33007672  $9522.vr$9523.vr
+ 11f70 24393532 3400494e 535f4252 4b006c61  $9524.INS_BRK.la
+ 11f80 62656c24 33383930 006c6162 656c2433  bel$3890.label$3
+ 11f90 38393100 6c616265 6c243338 3932006c  891.label$3892.l
+ 11fa0 6162656c 24333839 33006c61 62656c24  abel$3893.label$
+ 11fb0 33383934 006c6162 656c2433 38393500  3894.label$3895.
+ 11fc0 6c616265 6c243338 3936006c 6162656c  label$3896.label
+ 11fd0 24333839 37006c61 62656c24 33383938  $3897.label$3898
+ 11fe0 006c6162 656c2433 38393900 76722432  .label$3899.vr$2
+ 11ff0 3330006c 6162656c 24313738 30006c61  30.label$1780.la
+ 12000 62656c24 31373831 00767224 39353131  bel$1781.vr$9511
+ 12010 006c6162 656c2431 37383300 6c616265  .label$1783.labe
+ 12020 6c243137 3834006c 6162656c 24313738  l$1784.label$178
+ 12030 36006c61 62656c24 31373837 00535452  6.label$1787.STR
+ 12040 494e475f 41445224 006c6162 656c2431  ING_ADR$.label$1
+ 12050 37383900 76722439 35313600 76722439  789.vr$9516.vr$9
+ 12060 35313700 76722439 34373100 76722439  517.vr$9471.vr$9
+ 12070 35353100 76722439 35353200 76722439  551.vr$9552.vr$9
+ 12080 35353300 76722439 35353400 76722439  553.vr$9554.vr$9
+ 12090 35353500 76722439 35353600 76722439  555.vr$9556.vr$9
+ 120a0 35353700 76722439 35353800 76722439  557.vr$9558.vr$9
+ 120b0 35353900 6c616265 6c243434 3232006c  559.label$4422.l
+ 120c0 6162656c 24343530 006c6162 656c2434  abel$450.label$4
+ 120d0 3531006c 6162656c 24353734 36006c61  51.label$5746.la
+ 120e0 62656c24 35373437 006c6162 656c2435  bel$5747.label$5
+ 120f0 37343900 544d5024 31343632 2437006c  749.TMP$1462$7.l
+ 12100 6162656c 24393600 6c616265 6c243137  abel$96.label$17
+ 12110 3930006c 6162656c 24313739 32006c61  90.label$1792.la
+ 12120 62656c24 31373933 00767224 32343600  bel$1793.vr$246.
+ 12130 6c616265 6c243137 3935006c 6162656c  label$1795.label
+ 12140 24313739 36006c61 62656c24 31373938  $1796.label$1798
+ 12150 006c6162 656c2431 37393900 76722439  .label$1799.vr$9
+ 12160 35313200 76722439 35363000 76722439  512.vr$9560.vr$9
+ 12170 35363100 76722439 35363200 76722439  561.vr$9562.vr$9
+ 12180 35363300 76722439 35363400 76722439  563.vr$9564.vr$9
+ 12190 35363500 76722439 35363600 76722439  565.vr$9566.vr$9
+ 121a0 35363700 76722439 35363800 76722439  567.vr$9568.vr$9
+ 121b0 35363900 76722435 34005f5a 4e384d45  569.vr$54._ZN8ME
+ 121c0 4d4f5259 5f543130 52454144 5553484f  MORY_T10READUSHO
+ 121d0 52544564 00767224 39353335 00767224  RTEd.vr$9535.vr$
+ 121e0 39353338 00767224 39353339 00767224  9538.vr$9539.vr$
+ 121f0 32353100 76722439 35323500 544d5024  251.vr$9525.TMP$
+ 12200 32393633 24310076 72243935 32360076  2963$1.vr$9526.v
+ 12210 72243235 3700474c 44454c45 54455052  r$257.GLDELETEPR
+ 12220 4f475241 4d240076 72243935 32370076  OGRAM$.vr$9527.v
+ 12230 72243935 32380076 72243935 32390054  r$9528.vr$9529.T
+ 12240 4d502431 34343124 3700544d 50243236  MP$1441$7.TMP$26
+ 12250 34302436 006c6162 656c2432 3233006c  40$6.label$223.l
+ 12260 6162656c 24323237 00767224 39353730  abel$227.vr$9570
+ 12270 00767224 39353731 00767224 39353732  .vr$9571.vr$9572
+ 12280 00767224 39353733 00767224 39353734  .vr$9573.vr$9574
+ 12290 00767224 39353735 00767224 39353736  .vr$9575.vr$9576
+ 122a0 00767224 39353737 00767224 39353738  .vr$9577.vr$9578
+ 122b0 00767224 39353739 006c6162 656c2435  .vr$9579.label$5
+ 122c0 37353500 66625f47 66784c6f 636b006c  755.fb_GfxLock.l
+ 122d0 6162656c 24353735 36006c61 62656c24  abel$5756.label$
+ 122e0 35373538 006c6162 656c2435 37353900  5758.label$5759.
+ 122f0 76722432 36300076 72243236 33007672  vr$260.vr$263.vr
+ 12300 24323636 00767224 32363900 544d5024  $266.vr$269.TMP$
+ 12310 32393739 24310054 4d502432 39343224  2979$1.TMP$2942$
+ 12320 31004247 434f4c30 24007672 24393538  1.BGCOL0$.vr$958
+ 12330 30007672 24393538 31007672 24393538  0.vr$9581.vr$958
+ 12340 32007672 24393538 33007672 24393538  2.vr$9583.vr$958
+ 12350 34007672 24393538 35007672 24393538  4.vr$9585.vr$958
+ 12360 36007672 24393538 37007672 24393538  6.vr$9587.vr$958
+ 12370 38007672 24393538 3900544d 50243631  8.vr$9589.TMP$61
+ 12380 35243200 494e535f 42564300 76722431  5$2.INS_BVC.vr$1
+ 12390 30303033 00767224 39353433 00767224  0003.vr$9543.vr$
+ 123a0 39353434 00767224 31303030 34007672  9544.vr$10004.vr
+ 123b0 24393534 36007672 24313030 3035006c  $9546.vr$10005.l
+ 123c0 6162656c 24323938 34007672 24313030  abel$2984.vr$100
+ 123d0 30360049 4e535f42 56530076 72243130  06.INS_BVS.vr$10
+ 123e0 30303700 6c616265 6c243336 35310076  007.label$3651.v
+ 123f0 72243237 32007672 24323735 00767224  r$272.vr$275.vr$
+ 12400 32373800 544d5024 33303133 24310042  278.TMP$3013$1.B
+ 12410 47434f4c 31240054 4d502432 39353824  GCOL1$.TMP$2958$
+ 12420 31007672 24393539 30007672 24393539  1.vr$9590.vr$959
+ 12430 31007672 24393539 3200544d 50243239  1.vr$9592.TMP$29
+ 12440 32312431 00767224 39353935 00767224  21$1.vr$9595.vr$
+ 12450 39353936 00767224 39353937 00767224  9596.vr$9597.vr$
+ 12460 39353938 00767224 39353939 006c6162  9598.vr$9599.lab
+ 12470 656c2435 30370076 72243632 006c6162  el$507.vr$62.lab
+ 12480 656c2435 37363200 6c616265 6c243537  el$5762.label$57
+ 12490 36350054 4d502439 31372436 0066625f  65.TMP$917$6.fb_
+ 124a0 4c6f6e67 696e7454 6f537472 006c6162  LongintToStr.lab
+ 124b0 656c2435 37363800 50495845 4c5f5349  el$5768.PIXEL_SI
+ 124c0 5a452400 6c616265 6c243436 35007672  ZE$.label$465.vr
+ 124d0 24323831 00767224 32383400 76722432  $281.vr$284.vr$2
+ 124e0 3837006c 6162656c 24323935 38004247  87.label$2958.BG
+ 124f0 434f4c32 24007672 24313135 37007672  COL2$.vr$1157.vr
+ 12500 24313135 38007672 24393535 3000544d  $1158.vr$9550.TM
+ 12510 50243239 33372431 0066625f 47667855  P$2937$1.fb_GfxU
+ 12520 6e6c6f63 6b005f5a 4e374350 55363531  nlock._ZN7CPU651
+ 12530 30384144 525f5a45 524f4576 00767224  08ADR_ZEROEv.vr$
+ 12540 32393700 544d5024 38363124 31006c61  297.TMP$861$1.la
+ 12550 62656c24 32343000 6c616265 6c243234  bel$240.label$24
+ 12560 31004247 434f4c33 24006c61 62656c24  1.BGCOL3$.label$
+ 12570 36323933 004d4224 35006c61 62656c24  6293.MB$5.label$
+ 12580 36323934 006c6162 656c2432 34390054  6294.label$249.T
+ 12590 4d502433 30303824 31005354 41545553  MP$3008$1.STATUS
+ 125a0 2431006c 6162656c 24353737 33006c61  $1.label$5773.la
+ 125b0 62656c24 35373736 006c6162 656c2435  bel$5776.label$5
+ 125c0 37373700 6c616265 6c243239 3934006c  777.label$2994.l
+ 125d0 6162656c 24353737 3900544d 50243239  abel$5779.TMP$29
+ 125e0 31362431 005f5a4e 37435055 36353130  16$1._ZN7CPU6510
+ 125f0 38414452 5f414253 59457600 6c616265  8ADR_ABSYEv.labe
+ 12600 6c243135 36330054 4d502438 37372436  l$1563.TMP$877$6
+ 12610 006c6162 656c2433 33390076 72243130  .label$339.vr$10
+ 12620 30313300 76722431 30303134 00767224  013.vr$10014.vr$
+ 12630 31303031 35007672 24313030 31360076  10015.vr$10016.v
+ 12640 72243130 30313700 52454432 24006c61  r$10017.RED2$.la
+ 12650 62656c24 37353000 6c616265 6c243735  bel$750.label$75
+ 12660 31006c61 62656c24 37353200 6c616265  1.label$752.labe
+ 12670 6c243735 33005459 5045006c 6162656c  l$753.TYPE.label
+ 12680 24323531 006c6162 656c2437 3535006c  $251.label$755.l
+ 12690 6162656c 24373536 006c6162 656c2432  abel$756.label$2
+ 126a0 3534006c 6162656c 24373537 00767224  54.label$757.vr$
+ 126b0 39343930 006c6162 656c2437 35380050  9490.label$758.P
+ 126c0 4958454c 48454947 48542431 006c6162  IXELHEIGHT$1.lab
+ 126d0 656c2435 3135006c 6162656c 24323539  el$515.label$259
+ 126e0 00544d50 24383536 24310076 72243934  .TMP$856$1.vr$94
+ 126f0 3933006c 6162656c 24353738 35006c61  93.label$5785.la
+ 12700 62656c24 35373836 006c6162 656c2434  bel$5786.label$4
+ 12710 3732006c 6162656c 24353738 38006c61  72.label$5788.la
+ 12720 62656c24 35373839 006c6162 656c2434  bel$5789.label$4
+ 12730 3734006c 6162656c 24343735 006c6162  74.label$475.lab
+ 12740 656c2434 3739006c 6162656c 24313537  el$479.label$157
+ 12750 30005f5a 4e384d45 4d4f5259 5f543849  0._ZN8MEMORY_T8I
+ 12760 5353594d 424f4c45 38464253 5452494e  SSYMBOLE8FBSTRIN
+ 12770 4764006c 6162656c 24313537 3600544d  Gd.label$1576.TM
+ 12780 50243238 37362433 006c6162 656c2435  P$2876$3.label$5
+ 12790 32303000 6c616265 6c243532 3031004e  200.label$5201.N
+ 127a0 42595445 53243700 6c616265 6c243532  BYTES$7.label$52
+ 127b0 3033006c 6162656c 24353230 34006c61  03.label$5204.la
+ 127c0 62656c24 35323035 006c6162 656c2435  bel$5205.label$5
+ 127d0 32303600 6c616265 6c243532 3037006c  206.label$5207.l
+ 127e0 6162656c 24353230 38006c61 62656c24  abel$5208.label$
+ 127f0 35323039 0066625f 5374724c 63617365  5209.fb_StrLcase
+ 12800 32006c61 62656c24 31393000 76722431  2.label$190.vr$1
+ 12810 30353932 00424749 4d414745 24007672  0592.BGIMAGE$.vr
+ 12820 24313035 3933006c 6162656c 24333638  $10593.label$368
+ 12830 38006c61 62656c24 32363000 6c616265  8.label$260.labe
+ 12840 6c243236 32006c61 62656c24 32363300  l$262.label$263.
+ 12850 6c616265 6c243236 34006c61 62656c24  label$264.label$
+ 12860 32363500 6c616265 6c243236 36006c61  265.label$266.la
+ 12870 62656c24 32363900 24354336 345f5400  bel$269.$5C64_T.
+ 12880 6c616265 6c243532 3130006c 6162656c  label$5210.label
+ 12890 24353231 31006c61 62656c24 39303100  $5211.label$901.
+ 128a0 6c616265 6c243930 32006c61 62656c24  label$902.label$
+ 128b0 35323134 006c6162 656c2439 3034006c  5214.label$904.l
+ 128c0 6162656c 24393035 006c6162 656c2435  abel$905.label$5
+ 128d0 32313700 6c616265 6c243930 37002439  217.label$907.$9
+ 128e0 53484144 4552544f 59006c61 62656c24  SHADERTOY.label$
+ 128f0 36383030 00767224 3834006c 6162656c  6800.vr$84.label
+ 12900 24363830 32006c61 62656c24 36383034  $6802.label$6804
+ 12910 006c6162 656c2436 38303600 6c616265  .label$6806.labe
+ 12920 6c243331 3032006c 6162656c 24363830  l$3102.label$680
+ 12930 38006c61 62656c24 33313034 006c6162  8.label$3104.lab
+ 12940 656c2433 31303500 6c616265 6c243331  el$3105.label$31
+ 12950 3037006c 6162656c 24333130 38006c61  07.label$3108.la
+ 12960 62656c24 37363000 544d5024 32323436  bel$760.TMP$2246
+ 12970 24360054 4d502436 38382431 006c6162  $6.TMP$688$1.lab
+ 12980 656c2437 3632006c 6162656c 24373633  el$762.label$763
+ 12990 006c6162 656c2437 3634005a 5f415849  .label$764.Z_AXI
+ 129a0 53302400 6c616265 6c243736 36006c61  S0$.label$766.la
+ 129b0 62656c24 31353833 006c6162 656c2431  bel$1583.label$1
+ 129c0 35383400 6c616265 6c243736 38006662  584.label$768.fb
+ 129d0 5f537472 44656c65 7465006c 6162656c  _StrDelete.label
+ 129e0 24353232 30006c61 62656c24 39313000  $5220.label$910.
+ 129f0 6c616265 6c243931 31006c61 62656c24  label$911.label$
+ 12a00 35323233 006c6162 656c2439 3133006c  5223.label$913.l
+ 12a10 6162656c 24393134 006c6162 656c2435  abel$914.label$5
+ 12a20 32323600 6c616265 6c243931 36006c61  226.label$916.la
+ 12a30 62656c24 39313700 6c616265 6c243532  bel$917.label$52
+ 12a40 3239006c 6162656c 24363831 30006c61  29.label$6810.la
+ 12a50 62656c24 36383132 006c6162 656c2436  bel$6812.label$6
+ 12a60 38313400 6c616265 6c243331 3130006c  814.label$3110.l
+ 12a70 6162656c 24363831 36006c61 62656c24  abel$6816.label$
+ 12a80 36383138 006c6162 656c2433 31313400  6818.label$3114.
+ 12a90 6c616265 6c243331 3136006c 6162656c  label$3116.label
+ 12aa0 24333131 37006c61 62656c24 33313139  $3117.label$3119
+ 12ab0 0066625f 47667849 6d616765 44657374  .fb_GfxImageDest
+ 12ac0 726f7900 6c616265 6c243634 3032006c  roy.label$6402.l
+ 12ad0 6162656c 24343730 32006c61 62656c24  abel$4702.label$
+ 12ae0 34373033 006c6162 656c2434 37303400  4703.label$4704.
+ 12af0 6c616265 6c243130 3030006c 6162656c  label$1000.label
+ 12b00 24313030 31006c61 62656c24 34373037  $1001.label$4707
+ 12b10 006c6162 656c2431 30303300 6c616265  .label$1003.labe
+ 12b20 6c243130 3034006c 6162656c 24313030  l$1004.label$100
+ 12b30 36006c61 62656c24 31303037 006c6162  6.label$1007.lab
+ 12b40 656c2431 30303900 6c616265 6c243538  el$1009.label$58
+ 12b50 0066625f 41727261 79446573 74727563  .fb_ArrayDestruc
+ 12b60 74537472 005a5f41 58495331 24006c61  tStr.Z_AXIS1$.la
+ 12b70 62656c24 32373200 6c616265 6c243237  bel$272.label$27
+ 12b80 34006c61 62656c24 32373500 66625f47  4.label$275.fb_G
+ 12b90 6678466c 6970006c 6162656c 24353233  fxFlip.label$523
+ 12ba0 30006c61 62656c24 39323000 6c616265  0.label$920.labe
+ 12bb0 6c243532 3332006c 6162656c 24393232  l$5232.label$922
+ 12bc0 006c6162 656c2439 3233006c 6162656c  .label$923.label
+ 12bd0 24353233 35006c61 62656c24 39323500  $5235.label$925.
+ 12be0 6c616265 6c243932 36006c61 62656c24  label$926.label$
+ 12bf0 35323338 006c6162 656c2439 3238006c  5238.label$928.l
+ 12c00 6162656c 24363832 30006c61 62656c24  abel$6820.label$
+ 12c10 36383232 006c6162 656c2436 38323400  6822.label$6824.
+ 12c20 6c616265 6c243331 3230006c 6162656c  label$3120.label
+ 12c30 24363832 36006c61 62656c24 33313232  $6826.label$3122
+ 12c40 006c6162 656c2436 38323800 6c616265  .label$6828.labe
+ 12c50 6c243331 3235006c 6162656c 24333132  l$3125.label$312
+ 12c60 36006c61 62656c24 33313238 006c6162  6.label$3128.lab
+ 12c70 656c2433 31323900 6c616265 6c243437  el$3129.label$47
+ 12c80 3130006c 6162656c 24343731 31006c61  10.label$4711.la
+ 12c90 62656c24 34373132 006c6162 656c2434  bel$4712.label$4
+ 12ca0 37313300 6c616265 6c243437 3134006c  713.label$4714.l
+ 12cb0 6162656c 24313031 30006c61 62656c24  abel$1010.label$
+ 12cc0 34373136 006c6162 656c2431 30313200  4716.label$1012.
+ 12cd0 6c616265 6c243130 3133006c 6162656c  label$1013.label
+ 12ce0 24343731 39006c61 62656c24 31303135  $4719.label$1015
+ 12cf0 006c6162 656c2431 30313600 76722439  .label$1016.vr$9
+ 12d00 32303500 6c616265 6c243130 3138006c  205.label$1018.l
+ 12d10 6162656c 24313031 39006c61 62656c24  abel$1019.label$
+ 12d20 32363030 006c6162 656c2432 36303100  2600.label$2601.
+ 12d30 6c616265 6c243236 3033006c 6162656c  label$2603.label
+ 12d40 24323630 34006c61 62656c24 32363036  $2604.label$2606
+ 12d50 006c6162 656c2432 36303700 6c616265  .label$2607.labe
+ 12d60 6c243135 3930006c 6162656c 24323630  l$1590.label$260
+ 12d70 39006c61 62656c24 31353931 006c6162  9.label$1591.lab
+ 12d80 656c2431 35393200 53503143 4f4c2400  el$1592.SP1COL$.
+ 12d90 6c616265 6c243135 3933006c 6162656c  label$1593.label
+ 12da0 24343330 36006c61 62656c24 34333037  $4306.label$4307
+ 12db0 006c6162 656c2431 35393600 4d582435  .label$1596.MX$5
+ 12dc0 00767224 3930006c 6162656c 24353234  .vr$90.label$524
+ 12dd0 30006c61 62656c24 35323431 006c6162  0.label$5241.lab
+ 12de0 656c2439 3331006c 6162656c 24393332  el$931.label$932
+ 12df0 006c6162 656c2435 32343400 6c616265  .label$5244.labe
+ 12e00 6c243933 34006c61 62656c24 39333500  l$934.label$935.
+ 12e10 6c616265 6c243532 3437006c 6162656c  label$5247.label
+ 12e20 24393337 006c6162 656c2439 3338006c  $937.label$938.l
+ 12e30 6162656c 24363833 30006c61 62656c24  abel$6830.label$
+ 12e40 36383332 006c6162 656c2436 38333400  6832.label$6834.
+ 12e50 6c616265 6c243638 3336006c 6162656c  label$6836.label
+ 12e60 24333133 32006c61 62656c24 36383338  $3132.label$6838
+ 12e70 006c6162 656c2433 31333400 6c616265  .label$3134.labe
+ 12e80 6c243331 3335006c 6162656c 24333133  l$3135.label$313
+ 12e90 37006c61 62656c24 33313338 006c6162  7.label$3138.lab
+ 12ea0 656c2434 37323000 6c616265 6c243437  el$4720.label$47
+ 12eb0 3231006c 6162656c 24343732 32006c61  21.label$4722.la
+ 12ec0 62656c24 34373233 006c6162 656c2434  bel$4723.label$4
+ 12ed0 37323400 6c616265 6c243437 3235006c  724.label$4725.l
+ 12ee0 6162656c 24313032 31006c61 62656c24  abel$1021.label$
+ 12ef0 31303232 006c6162 656c2434 37323800  1022.label$4728.
+ 12f00 6c616265 6c243130 3234006c 6162656c  label$1024.label
+ 12f10 24313032 35006c61 62656c24 37373100  $1025.label$771.
+ 12f20 6c616265 6c243130 3237006c 6162656c  label$1027.label
+ 12f30 24313032 38006c61 62656c24 37373200  $1028.label$772.
+ 12f40 6c616265 6c243236 3130006c 6162656c  label$2610.label
+ 12f50 24323631 32006c61 62656c24 32363133  $2612.label$2613
+ 12f60 006c6162 656c2432 36313600 6c616265  .label$2616.labe
+ 12f70 6c243238 31006c61 62656c24 32363138  l$281.label$2618
+ 12f80 006c6162 656c2432 36313900 544c4153  .label$2619.TLAS
+ 12f90 54243500 6c616265 6c243238 34006c61  T$5.label$284.la
+ 12fa0 62656c24 37373700 6c616265 6c243238  bel$777.label$28
+ 12fb0 3600544d 50243238 32392437 006c6162  6.TMP$2829$7.lab
+ 12fc0 656c2432 3839006c 6162656c 24353235  el$289.label$525
+ 12fd0 30006c61 62656c24 39343000 6c616265  0.label$940.labe
+ 12fe0 6c243934 31006c61 62656c24 35323533  l$941.label$5253
+ 12ff0 006c6162 656c2439 3433006c 6162656c  .label$943.label
+ 13000 24393434 006c6162 656c2435 32353600  $944.label$5256.
+ 13010 6c616265 6c243934 36006c61 62656c24  label$946.label$
+ 13020 39343700 6c616265 6c243532 3539006c  947.label$5259.l
+ 13030 6162656c 24363834 30006c61 62656c24  abel$6840.label$
+ 13040 36383432 006c6162 656c2436 38343400  6842.label$6844.
+ 13050 6c616265 6c243331 3430006c 6162656c  label$3140.label
+ 13060 24363834 36006c61 62656c24 33313432  $6846.label$3142
+ 13070 006c6162 656c2436 38343800 6c616265  .label$6848.labe
+ 13080 6c243331 3434006c 6162656c 24333134  l$3144.label$314
+ 13090 35006c61 62656c24 33313436 006c6162  5.label$3146.lab
+ 130a0 656c2433 31343800 494e4445 5824006c  el$3148.INDEX$.l
+ 130b0 6162656c 24343733 30006c61 62656c24  abel$4730.label$
+ 130c0 34373331 006c6162 656c2434 37333200  4731.label$4732.
+ 130d0 6c616265 6c243437 3333006c 6162656c  label$4733.label
+ 130e0 24343733 34006c61 62656c24 31303330  $4734.label$1030
+ 130f0 006c6162 656c2431 30333100 6c616265  .label$1031.labe
+ 13100 6c243437 3337006c 6162656c 24313033  l$4737.label$103
+ 13110 33006c61 62656c24 31303334 006c6162  3.label$1034.lab
+ 13120 656c2431 30333600 6c616265 6c243130  el$1036.label$10
+ 13130 3337006c 6162656c 24313033 39006c61  37.label$1039.la
+ 13140 62656c24 32363231 006c6162 656c2432  bel$2621.label$2
+ 13150 36323200 6c616265 6c243236 3234006c  622.label$2624.l
+ 13160 6162656c 24323632 35006c61 62656c24  abel$2625.label$
+ 13170 32363237 006c6162 656c2432 36323800  2627.label$2628.
+ 13180 76722432 30330076 72243230 36006c61  vr$203.vr$206.la
+ 13190 62656c24 35323630 006c6162 656c2439  bel$5260.label$9
+ 131a0 3530006c 6162656c 24353236 32006c61  50.label$5262.la
+ 131b0 62656c24 39353200 6c616265 6c243935  bel$952.label$95
+ 131c0 33006c61 62656c24 35323635 006c6162  3.label$5265.lab
+ 131d0 656c2439 3535006c 6162656c 24393536  el$955.label$956
+ 131e0 006c6162 656c2435 32363800 6c616265  .label$5268.labe
+ 131f0 6c243638 3530006c 6162656c 24363835  l$6850.label$685
+ 13200 32006c61 62656c24 33313530 006c6162  2.label$3150.lab
+ 13210 656c2436 38353600 6c616265 6c243331  el$6856.label$31
+ 13220 3532006c 6162656c 24333135 34006c61  52.label$3154.la
+ 13230 62656c24 33313535 006c6162 656c2433  bel$3155.label$3
+ 13240 31353600 6c616265 6c243634 3230006c  156.label$6420.l
+ 13250 6162656c 24333135 38006c61 62656c24  abel$3158.label$
+ 13260 33313539 006c6162 656c2434 37343000  3159.label$4740.
+ 13270 6c616265 6c243634 3232006c 6162656c  label$6422.label
+ 13280 24343734 32006c61 62656c24 36343233  $4742.label$6423
+ 13290 006c6162 656c2434 37343400 6c616265  .label$4744.labe
+ 132a0 6c243634 3234006c 6162656c 24343734  l$6424.label$474
+ 132b0 36006c61 62656c24 31303432 006c6162  6.label$1042.lab
+ 132c0 656c2431 30343300 6c616265 6c243437  el$1043.label$47
+ 132d0 3439006c 6162656c 24313034 35006c61  49.label$1045.la
+ 132e0 62656c24 31303436 006c6162 656c2431  bel$1046.label$1
+ 132f0 30343800 6c616265 6c243130 3439006c  048.label$1049.l
+ 13300 6162656c 24323633 30006c61 62656c24  abel$2630.label$
+ 13310 32363331 006c6162 656c2432 36333300  2631.label$2633.
+ 13320 6c616265 6c243236 3334006c 6162656c  label$2634.label
+ 13330 24323930 006c6162 656c2432 36333600  $290.label$2636.
+ 13340 6c616265 6c243236 33370076 72243831  label$2637.vr$81
+ 13350 3031006c 6162656c 24323633 39006c61  01.label$2639.la
+ 13360 62656c24 35393036 006c6162 656c2432  bel$5906.label$2
+ 13370 3933006c 6162656c 24353930 38006c61  93.label$5908.la
+ 13380 62656c24 32393500 6c616265 6c243239  bel$295.label$29
+ 13390 36007672 24383130 38006c61 62656c24  6.vr$8108.label$
+ 133a0 32393900 76722438 31303900 76722438  299.vr$8109.vr$8
+ 133b0 39393300 6c616265 6c243532 3730006c  993.label$5270.l
+ 133c0 6162656c 24353237 31004445 434f4445  abel$5271.DECODE
+ 133d0 006c6162 656c2439 3632006c 6162656c  .label$962.label
+ 133e0 24353237 34006c61 62656c24 39363400  $5274.label$964.
+ 133f0 6c616265 6c243936 35006c61 62656c24  label$965.label$
+ 13400 35323737 006c6162 656c2439 3637006c  5277.label$967.l
+ 13410 6162656c 24393638 006c6162 656c2436  abel$968.label$6
+ 13420 38363000 6c616265 6c243638 3632006c  860.label$6862.l
+ 13430 6162656c 24363836 34006c61 62656c24  abel$6864.label$
+ 13440 33313630 006c6162 656c2436 38363600  3160.label$6866.
+ 13450 6c616265 6c243331 3632006c 6162656c  label$3162.label
+ 13460 24363836 38006c61 62656c24 32323139  $6868.label$2219
+ 13470 006c6162 656c2433 31363500 6c616265  .label$3165.labe
+ 13480 6c243331 3636006c 6162656c 24333136  l$3166.label$316
+ 13490 37006c61 62656c24 33313638 006c6162  7.label$3168.lab
+ 134a0 656c2433 31363900 6c616265 6c243437  el$3169.label$47
+ 134b0 3530006c 6162656c 24343735 31006c61  50.label$4751.la
+ 134c0 62656c24 34373532 006c6162 656c2434  bel$4752.label$4
+ 134d0 37353300 6c616265 6c243437 3534006c  753.label$4754.l
+ 134e0 6162656c 24343735 35006c61 62656c24  abel$4755.label$
+ 134f0 31303531 006c6162 656c2431 30353200  1051.label$1052.
+ 13500 6c616265 6c243437 3538006c 6162656c  label$4758.label
+ 13510 24313035 34006c61 62656c24 31303535  $1054.label$1055
+ 13520 006c6162 656c2431 30353700 6c616265  .label$1057.labe
+ 13530 6c243130 3538006c 6162656c 24323634  l$1058.label$264
+ 13540 30006c61 62656c24 32363432 006c6162  0.label$2642.lab
+ 13550 656c2432 36343300 6c616265 6c243439  el$2643.label$49
+ 13560 39006c61 62656c24 32363435 006c6162  9.label$2645.lab
+ 13570 656c2432 36343600 6c616265 6c243236  el$2646.label$26
+ 13580 3438006c 6162656c 24323634 39007672  48.label$2649.vr
+ 13590 24323132 00767224 32313500 54494d45  $212.vr$215.TIME
+ 135a0 53243300 6c616265 6c243532 3830006c  S$3.label$5280.l
+ 135b0 6162656c 24393730 006c6162 656c2439  abel$970.label$9
+ 135c0 3731006c 6162656c 24353238 33006c61  71.label$5283.la
+ 135d0 62656c24 39373300 6c616265 6c243937  bel$973.label$97
+ 135e0 34006c61 62656c24 35323836 006c6162  4.label$5286.lab
+ 135f0 656c2439 3736006c 6162656c 24393737  el$976.label$977
+ 13600 006c6162 656c2435 32383900 6c616265  .label$5289.labe
+ 13610 6c243638 3730006c 6162656c 24363837  l$6870.label$687
+ 13620 32006c61 62656c24 36383734 006c6162  2.label$6874.lab
+ 13630 656c2433 31373000 6c616265 6c243638  el$3170.label$68
+ 13640 3736006c 6162656c 24333137 32006c61  76.label$3172.la
+ 13650 62656c24 36383738 006c6162 656c2433  bel$6878.label$3
+ 13660 31373400 6c616265 6c243331 3735006c  174.label$3175.l
+ 13670 6162656c 24333137 36006c61 62656c24  abel$3176.label$
+ 13680 33313737 006c6162 656c2433 31373800  3177.label$3178.
+ 13690 6c616265 6c243331 3739006c 6162656c  label$3179.label
+ 136a0 24343736 30006c61 62656c24 36343332  $4760.label$6432
+ 136b0 006c6162 656c2434 37363200 6c616265  .label$4762.labe
+ 136c0 6c243437 3633006c 6162656c 24343736  l$4763.label$476
+ 136d0 34006c61 62656c24 31303630 006c6162  4.label$1060.lab
+ 136e0 656c2431 30363100 6c616265 6c243437  el$1061.label$47
+ 136f0 3637006c 6162656c 24313036 33006c61  67.label$1063.la
+ 13700 62656c24 31303634 006c6162 656c2431  bel$1064.label$1
+ 13710 30363600 6c616265 6c243130 3637006c  066.label$1067.l
+ 13720 6162656c 24313036 39006c61 62656c24  abel$1069.label$
+ 13730 32363531 006c6162 656c2432 36353200  2651.label$2652.
+ 13740 6c616265 6c243236 3534006c 6162656c  label$2654.label
+ 13750 24323635 35006c61 62656c24 32363537  $2655.label$2657
+ 13760 006c6162 656c2432 36353800 76722438  .label$2658.vr$8
+ 13770 34303100 66625f44 61746152 65616455  401.fb_DataReadU
+ 13780 4c6f6e67 696e7400 6c616265 6c243539  Longint.label$59
+ 13790 37006c61 62656c24 35393138 00767224  7.label$5918.vr$
+ 137a0 38313138 00767224 38313139 00767224  8118.vr$8119.vr$
+ 137b0 38343036 006c6162 656c2435 32393000  8406.label$5290.
+ 137c0 6c616265 6c243938 30006c61 62656c24  label$980.label$
+ 137d0 35323932 006c6162 656c2439 3832006c  5292.label$982.l
+ 137e0 6162656c 24393833 006c6162 656c2435  abel$983.label$5
+ 137f0 32393500 6c616265 6c243938 35006c61  295.label$985.la
+ 13800 62656c24 35323938 006c6162 656c2439  bel$5298.label$9
+ 13810 3838006c 6162656c 24363838 30006c61  88.label$6880.la
+ 13820 62656c24 36383832 006c6162 656c2436  bel$6882.label$6
+ 13830 38383400 6c616265 6c243331 3830006c  884.label$3180.l
+ 13840 6162656c 24363838 36006c61 62656c24  abel$6886.label$
+ 13850 33313832 006c6162 656c2436 38383800  3182.label$6888.
+ 13860 6c616265 6c243331 3834006c 6162656c  label$3184.label
+ 13870 24333138 35006c61 62656c24 33313836  $3185.label$3186
+ 13880 006c6162 656c2433 31383800 6c616265  .label$3188.labe
+ 13890 6c243331 3839006c 6162656c 24343737  l$3189.label$477
+ 138a0 30006c61 62656c24 34373731 006c6162  0.label$4771.lab
+ 138b0 656c2434 37373200 6c616265 6c243437  el$4772.label$47
+ 138c0 3733006c 6162656c 24343737 34006c61  73.label$4774.la
+ 138d0 62656c24 31303732 006c6162 656c2431  bel$1072.label$1
+ 138e0 30373300 6c616265 6c243437 3739006c  073.label$4779.l
+ 138f0 6162656c 24313037 35006c61 62656c24  abel$1075.label$
+ 13900 31303736 00767224 39323135 006c6162  1076.vr$9215.lab
+ 13910 656c2431 30373800 6c616265 6c243130  el$1078.label$10
+ 13920 3739006c 6162656c 24323636 30005f5a  79.label$2660._Z
+ 13930 4e395348 41444552 544f5943 31457600  N9SHADERTOYC1Ev.
+ 13940 6c616265 6c243236 3633006c 6162656c  label$2663.label
+ 13950 24323636 34007672 24393730 33006c61  $2664.vr$9703.la
+ 13960 62656c24 32363636 006c6162 656c2432  bel$2666.label$2
+ 13970 36363700 6c616265 6c243236 36390076  667.label$2669.v
+ 13980 72243937 30360076 72243937 30370076  r$9706.vr$9707.v
+ 13990 72243937 3039006c 6162656c 24363037  r$9709.label$607
+ 139a0 00767224 32323400 76722432 32370056  .vr$224.vr$227.V
+ 139b0 33243500 6c616265 6c243939 31006c61  3$5.label$991.la
+ 139c0 62656c24 39393200 6c616265 6c243939  bel$992.label$99
+ 139d0 34006c61 62656c24 39393500 6c616265  4.label$995.labe
+ 139e0 6c243939 37006c61 62656c24 39393800  l$997.label$998.
+ 139f0 6c616265 6c243638 3930006c 6162656c  label$6890.label
+ 13a00 24363839 3200544d 50243630 31243300  $6892.TMP$601$3.
+ 13a10 6c616265 6c243638 3934006c 6162656c  label$6894.label
+ 13a20 24333139 30006c61 62656c24 36383936  $3190.label$6896
+ 13a30 006c6162 656c2433 31393200 6c616265  .label$3192.labe
+ 13a40 6c243638 3938006c 6162656c 24333139  l$6898.label$319
+ 13a50 34004e4f 4445006c 6162656c 24333139  4.NODE.label$319
+ 13a60 36006c61 62656c24 33313937 006c6162  6.label$3197.lab
+ 13a70 656c2433 31393800 6c616265 6c243331  el$3198.label$31
+ 13a80 3939006c 6162656c 24343738 30006c61  99.label$4780.la
+ 13a90 62656c24 34373831 006c6162 656c2434  bel$4781.label$4
+ 13aa0 37383200 6c616265 6c243437 3833006c  782.label$4783.l
+ 13ab0 6162656c 24343738 34006c61 62656c24  abel$4784.label$
+ 13ac0 31303830 006c6162 656c2434 37383600  1080.label$4786.
+ 13ad0 6c616265 6c243130 3832006c 6162656c  label$1082.label
+ 13ae0 24313038 33006c61 62656c24 34373839  $1083.label$4789
+ 13af0 006c6162 656c2431 30383500 6c616265  .label$1085.labe
+ 13b00 6c243130 38360041 4c494e45 2432006c  l$1086.ALINE$2.l
+ 13b10 6162656c 24313038 38006c61 62656c24  abel$1088.label$
+ 13b20 32363730 006c6162 656c2432 36373200  2670.label$2672.
+ 13b30 6c616265 6c243236 3733006c 6162656c  label$2673.label
+ 13b40 24323637 35006c61 62656c24 32363736  $2675.label$2676
+ 13b50 006c6162 656c2432 36373800 6c616265  .label$2678.labe
+ 13b60 6c243236 3739006c 6162656c 24353932  l$2679.label$592
+ 13b70 36007672 24383131 006c6162 656c2435  6.vr$811.label$5
+ 13b80 39323700 76722438 31323400 6c616265  927.vr$8124.labe
+ 13b90 6c243539 3239006c 6162656c 24373939  l$5929.label$799
+ 13ba0 00767224 38313238 00767224 38313239  .vr$8128.vr$8129
+ 13bb0 0066625f 47667844 72617753 7472696e  .fb_GfxDrawStrin
+ 13bc0 67004d53 47243100 76722438 33333000  g.MSG$1.vr$8330.
+ 13bd0 6c616265 6c243232 33390076 72243833  label$2239.vr$83
+ 13be0 33330076 72243833 33340076 72243833  33.vr$8334.vr$83
+ 13bf0 33350076 72243833 33360076 72243833  35.vr$8336.vr$83
+ 13c00 3337006c 6162656c 24343739 30006c61  37.label$4790.la
+ 13c10 62656c24 34373931 006c6162 656c2434  bel$4791.label$4
+ 13c20 37393200 6c616265 6c243437 3933006c  792.label$4793.l
+ 13c30 6162656c 24343739 34006c61 62656c24  abel$4794.label$
+ 13c40 34373935 006c6162 656c2431 30393100  4795.label$1091.
+ 13c50 6c616265 6c243130 3932006c 6162656c  label$1092.label
+ 13c60 24313731 38006c61 62656c24 31303934  $1718.label$1094
+ 13c70 006c6162 656c2431 30393500 76722439  .label$1095.vr$9
+ 13c80 39323900 6c616265 6c243130 3937006c  929.label$1097.l
+ 13c90 6162656c 24313039 38007672 24393731  abel$1098.vr$971
+ 13ca0 30006c61 62656c24 32363831 006c6162  0.label$2681.lab
+ 13cb0 656c2432 36383200 76722439 37313200  el$2682.vr$9712.
+ 13cc0 6c616265 6c243236 3834006c 6162656c  label$2684.label
+ 13cd0 24323638 37006c61 62656c24 32363838  $2687.label$2688
+ 13ce0 00767224 39373135 006c6162 656c2434  .vr$9715.label$4
+ 13cf0 33343300 424c494e 4541524e 45415245  343.BLINEARNEARE
+ 13d00 53542435 00767224 38343133 00767224  ST$5.vr$8413.vr$
+ 13d10 32333300 76722432 3336006c 6162656c  233.vr$236.label
+ 13d20 24353432 31007672 24323339 005f5a4e  $5421.vr$239._ZN
+ 13d30 384d454d 4f52595f 54443145 76007672  8MEMORY_TD1Ev.vr
+ 13d40 24383334 30007672 24383334 31007672  $8340.vr$8341.vr
+ 13d50 24383334 32006c61 62656c24 34393035  $8342.label$4905
+ 13d60 00767224 38333434 00767224 38333435  .vr$8344.vr$8345
+ 13d70 00767224 38333436 00767224 38333437  .vr$8346.vr$8347
+ 13d80 00767224 38333438 006c6162 656c2434  .vr$8348.label$4
+ 13d90 39303700 544d5024 32393933 24310076  907.TMP$2993$1.v
+ 13da0 72243939 3331006c 6162656c 24343930  r$9931.label$490
+ 13db0 38007672 24393933 33007672 24393933  8.vr$9933.vr$993
+ 13dc0 34007672 24393933 35007672 24393933  4.vr$9935.vr$993
+ 13dd0 36007672 24393933 37007672 24393933  6.vr$9937.vr$993
+ 13de0 38007672 24393933 39007672 24393331  8.vr$9939.vr$931
+ 13df0 30006c61 62656c24 32363930 006c6162  0.label$2690.lab
+ 13e00 656c2432 36393100 76722434 3334006c  el$2691.vr$434.l
+ 13e10 6162656c 24323639 33006c61 62656c24  abel$2693.label$
+ 13e20 32363934 006c6162 656c2432 36393600  2694.label$2696.
+ 13e30 6c616265 6c243236 3937006c 6162656c  label$2697.label
+ 13e40 24353933 35006c61 62656c24 32363939  $5935.label$2699
+ 13e50 006c6162 656c2435 39333600 76722434  .label$5936.vr$4
+ 13e60 3336006c 6162656c 24353933 38007672  36.label$5938.vr
+ 13e70 24393331 32006c61 62656c24 35393339  $9312.label$5939
+ 13e80 00767224 38313338 00767224 38313339  .vr$8138.vr$8139
+ 13e90 00767224 38333530 00767224 38333531  .vr$8350.vr$8351
+ 13ea0 00767224 38333532 00767224 38333533  .vr$8352.vr$8353
+ 13eb0 00767224 38333534 00767224 38333535  .vr$8354.vr$8355
+ 13ec0 00767224 38333536 00767224 38333537  .vr$8356.vr$8357
+ 13ed0 00767224 38333538 00767224 38333539  .vr$8358.vr$8359
+ 13ee0 00767224 39393430 00767224 39393431  .vr$9940.vr$9941
+ 13ef0 00767224 39393432 00767224 39393433  .vr$9942.vr$9943
+ 13f00 00767224 39393434 00767224 39393435  .vr$9944.vr$9945
+ 13f10 00767224 39393436 00767224 39393437  .vr$9946.vr$9947
+ 13f20 00767224 39393438 00767224 39393439  .vr$9948.vr$9949
+ 13f30 00767224 39373230 00767224 39373231  .vr$9720.vr$9721
+ 13f40 00544d50 24323937 32243100 76722439  .TMP$2972$1.vr$9
+ 13f50 37323200 76722439 37323400 6c616265  722.vr$9724.labe
+ 13f60 6c243433 35320076 72243937 32360076  l$4352.vr$9726.v
+ 13f70 72243937 32370076 72243234 32007672  r$9727.vr$242.vr
+ 13f80 24323435 00544d50 24363435 24320076  $245.TMP$645$2.v
+ 13f90 72243234 38007672 24393830 36006c61  r$248.vr$9806.la
+ 13fa0 62656c24 33383337 00767224 38333630  bel$3837.vr$8360
+ 13fb0 005f5a4e 37435055 36353130 43314550  ._ZN7CPU6510C1EP
+ 13fc0 384d454d 4f52595f 54007672 24383336  8MEMORY_T.vr$836
+ 13fd0 32007672 24383336 33007672 24383336  2.vr$8363.vr$836
+ 13fe0 34007672 24383336 35007672 24383336  4.vr$8365.vr$836
+ 13ff0 36006662 5f507269 6e744c6f 6e67696e  6.fb_PrintLongin
+ 14000 74007672 24383336 38007672 24383336  t.vr$8368.vr$836
+ 14010 39007672 24393935 30007672 24393935  9.vr$9950.vr$995
+ 14020 31007672 24393935 32007672 24393935  1.vr$9952.vr$995
+ 14030 33007672 24393935 34007672 24393935  3.vr$9954.vr$995
+ 14040 35007672 24393935 36007672 24393431  5.vr$9956.vr$941
+ 14050 37007672 24393935 38007672 24393935  7.vr$9958.vr$995
+ 14060 39005350 31582400 6c616265 6c243535  9.SP1X$.label$55
+ 14070 30007672 24383432 30006c61 62656c24  0.vr$8420.label$
+ 14080 35393435 00544d50 24323938 38243100  5945.TMP$2988$1.
+ 14090 6c616265 6c243539 34380076 72243834  label$5948.vr$84
+ 140a0 32330054 4d502432 39353124 31007672  23.TMP$2951$1.vr
+ 140b0 24383432 35007672 24363432 006c6162  $8425.vr$642.lab
+ 140c0 656c2431 35350054 4d502439 31302435  el$155.TMP$910$5
+ 140d0 006c6162 656c2432 32353700 76722438  .label$2257.vr$8
+ 140e0 33373000 76722438 33373100 76722438  370.vr$8371.vr$8
+ 140f0 33373200 76722438 33373300 76722438  372.vr$8373.vr$8
+ 14100 33373400 76722438 33373500 6c616265  374.vr$8375.labe
+ 14110 6c243439 31360076 72243833 37370076  l$4916.vr$8377.v
+ 14120 72243833 3738006c 6162656c 24343931  r$8378.label$491
+ 14130 37007672 24393936 30007672 24393936  7.vr$9960.vr$996
+ 14140 31007672 24393936 32007672 24393936  1.vr$9962.vr$996
+ 14150 33007672 24393936 34006c61 62656c24  3.vr$9964.label$
+ 14160 34393139 00767224 39393636 00767224  4919.vr$9966.vr$
+ 14170 39393637 006c6162 656c2431 37333900  9967.label$1739.
+ 14180 76722439 39363900 76722439 32323500  vr$9969.vr$9225.
+ 14190 76722439 37333000 53503159 24007672  vr$9730.SP1Y$.vr
+ 141a0 24393733 33007672 24393733 34006c61  $9733.vr$9734.la
+ 141b0 62656c24 31300076 72243937 3336004c  bel$10.vr$9736.L
+ 141c0 424f554e 44006c61 62656c24 34333635  BOUND.label$4365
+ 141d0 00767224 39373339 006c6162 656c2431  .vr$9739.label$1
+ 141e0 32007672 24323534 0066625f 47667850  2.vr$254.fb_GfxP
+ 141f0 616c6574 74650075 696e7438 006c6162  alette.uint8.lab
+ 14200 656c2433 38343200 6c616265 6c243134  el$3842.label$14
+ 14210 00544d50 24323936 37243100 544d5024  .TMP$2967$1.TMP$
+ 14220 32393330 24310054 4d502432 34303224  2930$1.TMP$2402$
+ 14230 36007672 24313232 31310076 72243833  6.vr$12211.vr$83
+ 14240 38300076 72243833 38310076 72243833  80.vr$8381.vr$83
+ 14250 38320076 72243833 38330076 72243833  82.vr$8383.vr$83
+ 14260 38340076 72243833 38350076 72243833  84.vr$8385.vr$83
+ 14270 38360076 72243833 38370076 72243833  86.vr$8387.vr$83
+ 14280 38380076 72243833 38390076 72243939  88.vr$8389.vr$99
+ 14290 37300076 72243939 3731006c 6162656c  70.vr$9971.label
+ 142a0 24333333 30007672 24393937 33007672  $3330.vr$9973.vr
+ 142b0 24393937 34006662 5f415343 00767224  $9974.fb_ASC.vr$
+ 142c0 39393736 00767224 39393737 00767224  9976.vr$9977.vr$
+ 142d0 39393738 00767224 39393739 00767224  9978.vr$9979.vr$
+ 142e0 31303130 38007672 24313031 30390054  10108.vr$10109.T
+ 142f0 4d502438 39312437 0066625f 5368656c  MP$891$7.fb_Shel
+ 14300 6c006c61 62656c24 35373133 006c6162  l.label$5713.lab
+ 14310 656c2435 39353700 544d5024 32383436  el$5957.TMP$2846
+ 14320 2433006c 6162656c 24353935 39005748  $3.label$5959.WH
+ 14330 45454c24 3300544d 50243330 30312431  EEL$3.TMP$3001$1
+ 14340 00767224 31333132 00767224 31333133  .vr$1312.vr$1313
+ 14350 006c6162 656c2432 32363300 544d5024  .label$2263.TMP$
+ 14360 32393436 24310076 72243833 39300054  2946$1.vr$8390.T
+ 14370 4d502438 38312431 32007672 24383339  MP$881$12.vr$839
+ 14380 32007672 24383339 33007672 24383339  2.vr$8393.vr$839
+ 14390 34007672 24383339 35007672 24383339  4.vr$8395.vr$839
+ 143a0 36007672 24383339 37007672 24383339  6.vr$8397.vr$839
+ 143b0 38007672 24383339 39007672 24393938  8.vr$8399.vr$998
+ 143c0 30007672 24393938 31007672 24393938  0.vr$9981.vr$998
+ 143d0 32007672 24393938 33007672 24393938  2.vr$9983.vr$998
+ 143e0 34007672 24393938 35007672 24393938  4.vr$9985.vr$998
+ 143f0 36007672 24393938 37007672 24393938  6.vr$9987.vr$998
+ 14400 3800544d 50243930 35243500 76722431  8.TMP$905$5.vr$1
+ 14410 30313138 00767224 31303131 39007672  0118.vr$10119.vr
+ 14420 24313031 30320066 625f4669 6c65496e  $10102.fb_FileIn
+ 14430 70757400 76722431 30313033 00767224  put.vr$10103.vr$
+ 14440 39373434 00544d50 24323932 38243100  9744.TMP$2928$1.
+ 14450 76722431 30313035 00544d50 24383730  vr$10105.TMP$870
+ 14460 24340076 72243937 34380076 72243130  $4.vr$9748.vr$10
+ 14470 31303600 76722431 30313037 00544d50  106.vr$10107.TMP
+ 14480 24363433 24320076 72243637 33007672  $643$2.vr$673.vr
+ 14490 24363734 00767224 31303036 31007672  $674.vr$10061.vr
+ 144a0 24383433 3900544d 50243330 31372431  $8439.TMP$3017$1
+ 144b0 006c6162 656c2431 3637006c 6162656c  .label$167.label
+ 144c0 24313639 006c6162 656c2434 39323500  $169.label$4925.
+ 144d0 6c616265 6c243439 32360076 72243939  label$4926.vr$99
+ 144e0 39300076 72243939 3931006c 6162656c  90.vr$9991.label
+ 144f0 24343932 3800544d 50243239 32352431  $4928.TMP$2925$1
+ 14500 00767224 39393934 006c6162 656c2434  .vr$9994.label$4
+ 14510 39323900 76722439 39393600 76722439  929.vr$9996.vr$9
+ 14520 39393700 76722439 39393800 76722439  997.vr$9998.vr$9
+ 14530 39393900 76722431 30313238 00767224  999.vr$10128.vr$
+ 14540 31303132 39007672 24383136 30006c61  10129.vr$8160.la
+ 14550 62656c24 35393635 006c6162 656c2435  bel$5965.label$5
+ 14560 39363600 6c616265 6c243539 3638006c  966.label$5968.l
+ 14570 6162656c 24353936 39007672 24383136  abel$5969.vr$816
+ 14580 38007672 24313031 30340054 4d502431  8.vr$10104.TMP$1
+ 14590 34353924 3700544d 50243336 30352437  459$7.TMP$3605$7
+ 145a0 00767224 31333239 006c6162 656c2435  .vr$1329.label$5
+ 145b0 31360076 72243130 31333000 76722431  16.vr$10130.vr$1
+ 145c0 30313331 00767224 31303133 32007672  0131.vr$10132.vr
+ 145d0 24313031 33330076 72243130 31333400  $10133.vr$10134.
+ 145e0 76722431 30313335 00767224 31303133  vr$10135.vr$1013
+ 145f0 36007672 24313031 33370076 72243130  6.vr$10137.vr$10
+ 14600 31333800 76722431 30313030 00767224  138.vr$10100.vr$
+ 14610 37383932 00767224 37383934 006c6162  7892.vr$7894.lab
+ 14620 656c2436 3235005f 5f246662 5f737472  el$625.__$fb_str
+ 14630 75637473 697a6563 6865636b 00767224  uctsizecheck.vr$
+ 14640 37383939 006c6162 656c2432 31006c61  7899.label$21.la
+ 14650 62656c24 3233006c 6162656c 24323400  bel$23.label$24.
+ 14660 6c616265 6c243434 31006c61 62656c24  label$441.label$
+ 14670 34343200 6c616265 6c243434 3400544d  442.label$444.TM
+ 14680 50243134 33382437 00767224 31303134  P$1438$7.vr$1014
+ 14690 31007672 24313031 34320076 72243130  1.vr$10142.vr$10
+ 146a0 31343300 76722431 30313434 00767224  143.vr$10144.vr$
+ 146b0 31303134 35007672 24313031 34360076  10145.vr$10146.v
+ 146c0 72243130 31343700 76722431 30313438  r$10147.vr$10148
+ 146d0 00767224 31303134 39006c61 62656c24  .vr$10149.label$
+ 146e0 35393735 006c6162 656c2435 39373700  5975.label$5977.
+ 146f0 6c616265 6c243539 37380076 72243133  label$5978.vr$13
+ 14700 3330006c 6162656c 24323030 006c6162  30.label$200.lab
+ 14710 656c2432 3032006c 6162656c 24353732  el$202.label$572
+ 14720 38006c61 62656c24 32303400 6c616265  8.label$204.labe
+ 14730 6c243230 36006c61 62656c24 32303700  l$206.label$207.
+ 14740 6c616265 6c243631 3030006c 6162656c  label$6100.label
+ 14750 24363130 31006c61 62656c24 36313032  $6101.label$6102
+ 14760 006c6162 656c2436 31303300 6c616265  .label$6103.labe
+ 14770 6c243631 3034006c 6162656c 24363130  l$6104.label$610
+ 14780 35006c61 62656c24 36313036 006c6162  5.label$6106.lab
+ 14790 656c2436 31303700 6c616265 6c243631  el$6107.label$61
+ 147a0 3038006c 6162656c 24363130 39004e43  08.label$6109.NC
+ 147b0 48415253 24310076 72243130 31353000  HARS$1.vr$10150.
+ 147c0 76722431 30313531 00767224 31303135  vr$10151.vr$1015
+ 147d0 32007672 24313031 35330076 72243130  2.vr$10153.vr$10
+ 147e0 31353400 76722431 30313535 00767224  154.vr$10155.vr$
+ 147f0 31303135 36007672 24313031 31310076  10156.vr$10111.v
+ 14800 72243130 31353800 76722431 30313539  r$10158.vr$10159
+ 14810 00767224 39373631 00767224 31303131  .vr$9761.vr$1011
+ 14820 33007672 24313031 31340076 72243937  3.vr$10114.vr$97
+ 14830 36360076 72243130 31313500 76722431  66.vr$10115.vr$1
+ 14840 30313136 00767224 39373639 00767224  0116.vr$9769.vr$
+ 14850 31303131 37006c61 62656c24 33383730  10117.label$3870
+ 14860 006c6162 656c2434 33393900 76722431  .label$4399.vr$1
+ 14870 30303730 006c6162 656c2432 3130006c  0070.label$210.l
+ 14880 6162656c 24323131 006c6162 656c2432  abel$211.label$2
+ 14890 3133006c 6162656c 24323134 006c6162  13.label$214.lab
+ 148a0 656c2432 3136006c 6162656c 24323137  el$216.label$217
+ 148b0 006c6162 656c2436 31313000 6c616265  .label$6110.labe
+ 148c0 6c243631 3131006c 6162656c 24363131  l$6111.label$611
+ 148d0 32006c61 62656c24 36313134 006c6162  2.label$6114.lab
+ 148e0 656c2436 31313500 6c616265 6c243631  el$6115.label$61
+ 148f0 3136006c 6162656c 24363131 37006c61  16.label$6117.la
+ 14900 62656c24 36313138 006c6162 656c2436  bel$6118.label$6
+ 14910 31313900 6c616265 6c243435 33007672  119.label$453.vr
+ 14920 24313030 37360054 4d502432 38363424  $10076.TMP$2864$
+ 14930 33006c61 62656c24 34303030 006c6162  3.label$4000.lab
+ 14940 656c2434 30303100 6c616265 6c243430  el$4001.label$40
+ 14950 3032006c 6162656c 24343030 33006c61  02.label$4003.la
+ 14960 62656c24 34303034 006c6162 656c2434  bel$4004.label$4
+ 14970 30303500 6c616265 6c243430 3036006c  005.label$4006.l
+ 14980 6162656c 24343030 37006c61 62656c24  abel$4007.label$
+ 14990 34303038 006c6162 656c2434 30303900  4008.label$4009.
+ 149a0 6c616265 6c243537 30006c61 62656c24  label$570.label$
+ 149b0 35373100 6c616265 6c243539 3836006c  571.label$5986.l
+ 149c0 6162656c 24353938 37006c61 62656c24  abel$5987.label$
+ 149d0 35393839 006c6162 656c2435 37340076  5989.label$574.v
+ 149e0 72243831 3839006c 6162656c 24353736  r$8189.label$576
+ 149f0 006c6162 656c2432 3230006c 6162656c  .label$220.label
+ 14a00 24323231 006c6162 656c2435 3737006c  $221.label$577.l
+ 14a10 6162656c 24323234 006c6162 656c2432  abel$224.label$2
+ 14a20 3236006c 6162656c 24353738 006c6162  26.label$578.lab
+ 14a30 656c2432 3238006c 6162656c 24363132  el$228.label$612
+ 14a40 30006c61 62656c24 36313231 006c6162  0.label$6121.lab
+ 14a50 656c2436 31323200 6c616265 6c243631  el$6122.label$61
+ 14a60 3233006c 6162656c 24363132 34006c61  23.label$6124.la
+ 14a70 62656c24 36313235 006c6162 656c2436  bel$6125.label$6
+ 14a80 31323600 6c616265 6c243631 3237006c  126.label$6127.l
+ 14a90 6162656c 24363132 38006c61 62656c24  abel$6128.label$
+ 14aa0 36313239 00746d70 24323838 38006c61  6129.tmp$2888.la
+ 14ab0 62656c24 34303130 006c6162 656c2434  bel$4010.label$4
+ 14ac0 30313100 6c616265 6c243430 3132006c  011.label$4012.l
+ 14ad0 6162656c 24343031 33006c61 62656c24  abel$4013.label$
+ 14ae0 34303134 006c6162 656c2434 30313500  4014.label$4015.
+ 14af0 6c616265 6c243430 3136006c 6162656c  label$4016.label
+ 14b00 24343031 37006c61 62656c24 34303138  $4017.label$4018
+ 14b10 006c6162 656c2434 30313900 6c616265  .label$4019.labe
+ 14b20 6c243536 3030006c 6162656c 24353630  l$5600.label$560
+ 14b30 31006c61 62656c24 35363032 006c6162  1.label$5602.lab
+ 14b40 656c2435 36303300 6c616265 6c243536  el$5603.label$56
+ 14b50 3034006c 6162656c 24353630 35006c61  04.label$5605.la
+ 14b60 62656c24 35363036 006c6162 656c2435  bel$5606.label$5
+ 14b70 36303700 6c616265 6c243536 3038006c  607.label$5608.l
+ 14b80 6162656c 24353630 39006c61 62656c24  abel$5609.label$
+ 14b90 33300076 72243937 3736006c 6162656c  30.vr$9776.label
+ 14ba0 24333200 6c616265 6c243138 31006c61  $32.label$181.la
+ 14bb0 62656c24 3333006c 6162656c 24333838  bel$33.label$388
+ 14bc0 31006c61 62656c24 3334006c 6162656c  1.label$34.label
+ 14bd0 24323330 006c6162 656c2432 3331006c  $230.label$231.l
+ 14be0 6162656c 24323333 00767224 38343538  abel$233.vr$8458
+ 14bf0 006c6162 656c2432 3335006c 6162656c  .label$235.label
+ 14c00 24323336 00767224 31303334 3900544d  $236.vr$10349.TM
+ 14c10 50243238 37372434 006c6162 656c2436  P$2877$4.label$6
+ 14c20 31333000 6c616265 6c243631 3331006c  130.label$6131.l
+ 14c30 6162656c 24363133 32006c61 62656c24  abel$6132.label$
+ 14c40 36313333 006c6162 656c2436 31333400  6133.label$6134.
+ 14c50 6c616265 6c243631 3335006c 6162656c  label$6135.label
+ 14c60 24363133 36006c61 62656c24 36313337  $6136.label$6137
+ 14c70 006c6162 656c2436 31333800 6c616265  .label$6138.labe
+ 14c80 6c243631 3339006c 6162656c 24343633  l$6139.label$463
+ 14c90 006c6162 656c2434 30323000 6c616265  .label$4020.labe
+ 14ca0 6c243430 3231006c 6162656c 24343032  l$4021.label$402
+ 14cb0 32006c61 62656c24 34303233 006c6162  2.label$4023.lab
+ 14cc0 656c2434 30323400 6c616265 6c243430  el$4024.label$40
+ 14cd0 3235006c 6162656c 24343032 36006c61  25.label$4026.la
+ 14ce0 62656c24 34303237 006c6162 656c2434  bel$4027.label$4
+ 14cf0 30323800 6c616265 6c243430 3239006c  028.label$4029.l
+ 14d00 6162656c 24353631 30006c61 62656c24  abel$5610.label$
+ 14d10 35363131 006c6162 656c2435 36313200  5611.label$5612.
+ 14d20 6c616265 6c243536 3133006c 6162656c  label$5613.label
+ 14d30 24353631 34006c61 62656c24 35363135  $5614.label$5615
+ 14d40 006c6162 656c2435 36313600 6c616265  .label$5616.labe
+ 14d50 6c243536 3137006c 6162656c 24353631  l$5617.label$561
+ 14d60 38006c61 62656c24 35363139 00544d50  8.label$5619.TMP
+ 14d70 24323835 39243300 6c616265 6c243335  $2859$3.label$35
+ 14d80 3030006c 6162656c 24333530 31006c61  00.label$3501.la
+ 14d90 62656c24 33353032 006c6162 656c2433  bel$3502.label$3
+ 14da0 35303300 6c616265 6c243335 3034006c  503.label$3504.l
+ 14db0 6162656c 24333530 35006c61 62656c24  abel$3505.label$
+ 14dc0 33353036 006c6162 656c2433 35303700  3506.label$3507.
+ 14dd0 6c616265 6c243335 3038006c 6162656c  label$3508.label
+ 14de0 24333530 3900544d 50243137 34332436  $3509.TMP$1743$6
+ 14df0 00544d50 24313439 33243700 6c616265  .TMP$1493$7.labe
+ 14e00 6c243234 32006c61 62656c24 32343300  l$242.label$243.
+ 14e10 6c616265 6c243234 34006c61 62656c24  label$244.label$
+ 14e20 32343500 6c616265 6c243234 36006c61  245.label$246.la
+ 14e30 62656c24 32343700 6c616265 6c243234  bel$247.label$24
+ 14e40 38006c61 62656c24 36313430 006c6162  8.label$6140.lab
+ 14e50 656c2436 31343100 6c616265 6c243631  el$6141.label$61
+ 14e60 3432006c 6162656c 24363134 33006c61  42.label$6143.la
+ 14e70 62656c24 36313434 006c6162 656c2436  bel$6144.label$6
+ 14e80 31343500 6c616265 6c243631 3436006c  145.label$6146.l
+ 14e90 6162656c 24363134 37006c61 62656c24  abel$6147.label$
+ 14ea0 36313438 006c6162 656c2434 30333000  6148.label$4030.
+ 14eb0 6c616265 6c243430 3331006c 6162656c  label$4031.label
+ 14ec0 24343033 32006c61 62656c24 34303333  $4032.label$4033
+ 14ed0 006c6162 656c2434 30333400 6c616265  .label$4034.labe
+ 14ee0 6c243430 3335006c 6162656c 24343033  l$4035.label$403
+ 14ef0 36006c61 62656c24 34303337 006c6162  6.label$4037.lab
+ 14f00 656c2434 30333800 6c616265 6c243430  el$4038.label$40
+ 14f10 3339006c 6162656c 24353632 30006c61  39.label$5620.la
+ 14f20 62656c24 35363231 006c6162 656c2435  bel$5621.label$5
+ 14f30 36323200 6c616265 6c243536 3233006c  622.label$5623.l
+ 14f40 6162656c 24353632 34006c61 62656c24  abel$5624.label$
+ 14f50 35363235 006c6162 656c2435 36323600  5625.label$5626.
+ 14f60 6c616265 6c243536 3237006c 6162656c  label$5627.label
+ 14f70 24353632 38005f5a 4e374350 55363531  $5628._ZN7CPU651
+ 14f80 30374144 525f554e 4b457600 76722431  07ADR_UNKEv.vr$1
+ 14f90 30313233 00767224 39373834 00767224  0123.vr$9784.vr$
+ 14fa0 31303132 34006c61 62656c24 33353130  10124.label$3510
+ 14fb0 006c6162 656c2433 35313100 6c616265  .label$3511.labe
+ 14fc0 6c243335 3132006c 6162656c 24333531  l$3512.label$351
+ 14fd0 33006c61 62656c24 33353134 006c6162  3.label$3514.lab
+ 14fe0 656c2433 35313500 6c616265 6c243335  el$3515.label$35
+ 14ff0 3136006c 6162656c 24333531 37006c61  16.label$3517.la
+ 15000 62656c24 33353138 006c6162 656c2433  bel$3518.label$3
+ 15010 35313900 544d5024 32383338 2433006c  519.TMP$2838$3.l
+ 15020 6162656c 24313430 30006c61 62656c24  abel$1400.label$
+ 15030 31343031 006c6162 656c2431 34303300  1401.label$1403.
+ 15040 6c616265 6c243134 3034006c 6162656c  label$1404.label
+ 15050 24323532 006c6162 656c2431 34303600  $252.label$1406.
+ 15060 6c616265 6c243134 3037006c 6162656c  label$1407.label
+ 15070 24323535 006c6162 656c2431 34303900  $255.label$1409.
+ 15080 6c616265 6c243235 37006c61 62656c24  label$257.label$
+ 15090 32353800 6c616265 6c243631 3530006c  258.label$6150.l
+ 150a0 6162656c 24363135 31006c61 62656c24  abel$6151.label$
+ 150b0 36313532 006c6162 656c2436 31353300  6152.label$6153.
+ 150c0 6c616265 6c243631 3534006c 6162656c  label$6154.label
+ 150d0 24363135 35006c61 62656c24 36313536  $6155.label$6156
+ 150e0 006c6162 656c2436 31353700 6c616265  .label$6157.labe
+ 150f0 6c243631 3538006c 6162656c 24363135  l$6158.label$615
+ 15100 39007672 24313030 3836006c 6162656c  9.vr$10086.label
+ 15110 24343034 30006c61 62656c24 34303431  $4040.label$4041
+ 15120 006c6162 656c2434 30343200 6c616265  .label$4042.labe
+ 15130 6c243430 3433006c 6162656c 24343034  l$4043.label$404
+ 15140 34006c61 62656c24 34303435 006c6162  4.label$4045.lab
+ 15150 656c2434 30343600 6c616265 6c243430  el$4046.label$40
+ 15160 3437006c 6162656c 24343034 38006c61  47.label$4048.la
+ 15170 62656c24 34303439 006c6162 656c2435  bel$4049.label$5
+ 15180 36333000 6c616265 6c243536 3331006c  630.label$5631.l
+ 15190 6162656c 24353633 32006c61 62656c24  abel$5632.label$
+ 151a0 35363333 006c6162 656c2435 36333400  5633.label$5634.
+ 151b0 6c616265 6c243536 3335006c 6162656c  label$5635.label
+ 151c0 24353633 36006c61 62656c24 35363337  $5636.label$5637
+ 151d0 006c6162 656c2435 36333800 6c616265  .label$5638.labe
+ 151e0 6c243536 3339006c 6162656c 24333532  l$5639.label$352
+ 151f0 30006c61 62656c24 33353231 006c6162  0.label$3521.lab
+ 15200 656c2433 35323200 6c616265 6c243335  el$3522.label$35
+ 15210 3233006c 6162656c 24333532 34006c61  23.label$3524.la
+ 15220 62656c24 33353235 006c6162 656c2433  bel$3525.label$3
+ 15230 35323600 6c616265 6c243335 3237006c  526.label$3527.l
+ 15240 6162656c 24333532 38006c61 62656c24  abel$3528.label$
+ 15250 33353239 006c6162 656c2435 3835006c  3529.label$585.l
+ 15260 6162656c 24313431 30007672 24393330  abel$1410.vr$930
+ 15270 32006c61 62656c24 31343132 006c6162  2.label$1412.lab
+ 15280 656c2431 34313300 6c616265 6c243236  el$1413.label$26
+ 15290 31006c61 62656c24 31343135 006c6162  1.label$1415.lab
+ 152a0 656c2431 34313600 6c616265 6c243630  el$1416.label$60
+ 152b0 33006c61 62656c24 31343138 006c6162  3.label$1418.lab
+ 152c0 656c2431 34313900 6c616265 6c243236  el$1419.label$26
+ 152d0 37006c61 62656c24 32363800 6c616265  7.label$268.labe
+ 152e0 6c243631 3630006c 6162656c 24363136  l$6160.label$616
+ 152f0 31006c61 62656c24 36313632 006c6162  1.label$6162.lab
+ 15300 656c2436 31363300 6c616265 6c243631  el$6163.label$61
+ 15310 3634006c 6162656c 24363136 35006c61  64.label$6165.la
+ 15320 62656c24 36313636 006c6162 656c2436  bel$6166.label$6
+ 15330 31363700 6c616265 6c243631 3638006c  167.label$6168.l
+ 15340 6162656c 24363136 39006c61 62656c24  abel$6169.label$
+ 15350 36303900 6c616265 6c243430 3530006c  609.label$4050.l
+ 15360 6162656c 24343035 31006c61 62656c24  abel$4051.label$
+ 15370 34303532 006c6162 656c2434 30353300  4052.label$4053.
+ 15380 6c616265 6c243430 3534006c 6162656c  label$4054.label
+ 15390 24343035 35006c61 62656c24 34303536  $4055.label$4056
+ 153a0 006c6162 656c2434 30353700 6c616265  .label$4057.labe
+ 153b0 6c243430 3538006c 6162656c 24343035  l$4058.label$405
+ 153c0 39006c61 62656c24 35363430 006c6162  9.label$5640.lab
+ 153d0 656c2435 36343100 6c616265 6c243536  el$5641.label$56
+ 153e0 3432006c 6162656c 24353634 33006c61  42.label$5643.la
+ 153f0 62656c24 35363434 006c6162 656c2435  bel$5644.label$5
+ 15400 36343500 6c616265 6c243536 3436006c  645.label$5646.l
+ 15410 6162656c 24353634 37006c61 62656c24  abel$5647.label$
+ 15420 35363438 006c6162 656c2435 36343900  5648.label$5649.
+ 15430 544d5024 37343124 31007672 24393739  TMP$741$1.vr$979
+ 15440 33007672 24393739 34006c61 62656c24  3.vr$9794.label$
+ 15450 33353330 006c6162 656c2433 35333100  3530.label$3531.
+ 15460 6c616265 6c243335 3332006c 6162656c  label$3532.label
+ 15470 24333533 33006c61 62656c24 33353334  $3533.label$3534
+ 15480 006c6162 656c2433 35333500 6c616265  .label$3535.labe
+ 15490 6c243335 3336006c 6162656c 24333533  l$3536.label$353
+ 154a0 37006c61 62656c24 33353338 006c6162  7.label$3538.lab
+ 154b0 656c2433 35333900 6c616265 6c243134  el$3539.label$14
+ 154c0 3231006c 6162656c 24313432 32006c61  21.label$1422.la
+ 154d0 62656c24 32373000 6c616265 6c243134  bel$270.label$14
+ 154e0 3234006c 6162656c 24313432 35006c61  24.label$1425.la
+ 154f0 62656c24 32373300 6c616265 6c243134  bel$273.label$14
+ 15500 3237006c 6162656c 24313432 38006c61  27.label$1428.la
+ 15510 62656c24 32373600 6c616265 6c243237  bel$276.label$27
+ 15520 37006c61 62656c24 32373800 6c616265  7.label$278.labe
+ 15530 6c243631 3730006c 6162656c 24363137  l$6170.label$617
+ 15540 31006c61 62656c24 36313732 006c6162  1.label$6172.lab
+ 15550 656c2436 31373300 6c616265 6c243631  el$6173.label$61
+ 15560 3734006c 6162656c 24363137 36006c61  74.label$6176.la
+ 15570 62656c24 36313737 006c6162 656c2436  bel$6177.label$6
+ 15580 31373800 6c616265 6c243631 3739006c  178.label$6179.l
+ 15590 6162656c 24343833 006c6162 656c2434  abel$483.label$4
+ 155a0 3834006c 6162656c 24343036 30006c61  84.label$4060.la
+ 155b0 62656c24 34303631 006c6162 656c2434  bel$4061.label$4
+ 155c0 30363200 6c616265 6c243430 3633006c  062.label$4063.l
+ 155d0 6162656c 24343036 34006c61 62656c24  abel$4064.label$
+ 155e0 34303635 006c6162 656c2434 30363600  4065.label$4066.
+ 155f0 6c616265 6c243430 3637006c 6162656c  label$4067.label
+ 15600 24343036 38006c61 62656c24 34303639  $4068.label$4069
+ 15610 006c6162 656c2435 36353000 6c616265  .label$5650.labe
+ 15620 6c243536 3531006c 6162656c 24353635  l$5651.label$565
+ 15630 32006c61 62656c24 35363533 006c6162  2.label$5653.lab
+ 15640 656c2435 36353400 6c616265 6c243536  el$5654.label$56
+ 15650 3535006c 6162656c 24353635 36006c61  55.label$5656.la
+ 15660 62656c24 33333734 006c6162 656c2435  bel$3374.label$5
+ 15670 36353800 6c616265 6c243536 35390054  658.label$5659.T
+ 15680 4d502431 34333024 37006c61 62656c24  MP$1430$7.label$
+ 15690 33353430 006c6162 656c2433 35343100  3540.label$3541.
+ 156a0 6c616265 6c243335 3432006c 6162656c  label$3542.label
+ 156b0 24333534 33006c61 62656c24 33353434  $3543.label$3544
+ 156c0 006c6162 656c2433 35343500 6c616265  .label$3545.labe
+ 156d0 6c243335 3436006c 6162656c 24333534  l$3546.label$354
+ 156e0 37006c61 62656c24 33353438 006c6162  7.label$3548.lab
+ 156f0 656c2433 35343900 66625f47 6678496d  el$3549.fb_GfxIm
+ 15700 61676549 6e666f36 34006c61 62656c24  ageInfo64.label$
+ 15710 31343330 006c6162 656c2431 34333100  1430.label$1431.
+ 15720 6c616265 6c243134 3333006c 6162656c  label$1433.label
+ 15730 24313433 34006c61 62656c24 32383200  $1434.label$282.
+ 15740 6c616265 6c243134 3336006c 6162656c  label$1436.label
+ 15750 24313433 37006c61 62656c24 32383500  $1437.label$285.
+ 15760 6c616265 6c243134 3339006c 6162656c  label$1439.label
+ 15770 24323837 006c6162 656c2432 3838006c  $287.label$288.l
+ 15780 6162656c 24363138 30006c61 62656c24  abel$6180.label$
+ 15790 36313831 006c6162 656c2436 31383200  6181.label$6182.
+ 157a0 6c616265 6c243631 3833006c 6162656c  label$6183.label
+ 157b0 24363138 34006c61 62656c24 36313835  $6184.label$6185
+ 157c0 006c6162 656c2436 31383600 6c616265  .label$6186.labe
+ 157d0 6c243631 3837006c 6162656c 24363138  l$6187.label$618
+ 157e0 38006c61 62656c24 36313839 006c6162  8.label$6189.lab
+ 157f0 656c2434 30373000 6c616265 6c243430  el$4070.label$40
+ 15800 3731006c 6162656c 24343037 32006c61  71.label$4072.la
+ 15810 62656c24 34303733 006c6162 656c2434  bel$4073.label$4
+ 15820 30373400 6c616265 6c243430 3735006c  074.label$4075.l
+ 15830 6162656c 24343037 36006c61 62656c24  abel$4076.label$
+ 15840 34303737 006c6162 656c2434 30373800  4077.label$4078.
+ 15850 6c616265 6c243430 3739006c 6162656c  label$4079.label
+ 15860 24353636 30006c61 62656c24 35363631  $5660.label$5661
+ 15870 006c6162 656c2435 36363200 6c616265  .label$5662.labe
+ 15880 6c243536 3633006c 6162656c 24353636  l$5663.label$566
+ 15890 34006c61 62656c24 35363635 006c6162  4.label$5665.lab
+ 158a0 656c2435 36363600 6c616265 6c243536  el$5666.label$56
+ 158b0 3637006c 6162656c 24353636 38006c61  67.label$5668.la
+ 158c0 62656c24 35363639 00767224 39343030  bel$5669.vr$9400
+ 158d0 006c6162 656c2433 35353000 6c616265  .label$3550.labe
+ 158e0 6c243335 3531006c 6162656c 24333535  l$3551.label$355
+ 158f0 32006c61 62656c24 33353533 006c6162  2.label$3553.lab
+ 15900 656c2433 35353400 6c616265 6c243335  el$3554.label$35
+ 15910 3535006c 6162656c 24333535 36006c61  55.label$3556.la
+ 15920 62656c24 33353537 006c6162 656c2433  bel$3557.label$3
+ 15930 35353800 6c616265 6c243335 3539006c  558.label$3559.l
+ 15940 6162656c 24313434 30006c61 62656c24  abel$1440.label$
+ 15950 31343432 006c6162 656c2431 34343300  1442.label$1443.
+ 15960 6c616265 6c243239 31006c61 62656c24  label$291.label$
+ 15970 31343435 006c6162 656c2431 34343600  1445.label$1446.
+ 15980 6c616265 6c243239 34006c61 62656c24  label$294.label$
+ 15990 31343438 006c6162 656c2431 34343900  1448.label$1449.
+ 159a0 6c616265 6c243239 37006c61 62656c24  label$297.label$
+ 159b0 32393800 6c616265 6c243631 3930006c  298.label$6190.l
+ 159c0 6162656c 24363139 31006c61 62656c24  abel$6191.label$
+ 159d0 36313932 006c6162 656c2436 31393300  6192.label$6193.
+ 159e0 6c616265 6c243631 3934006c 6162656c  label$6194.label
+ 159f0 24363139 35006c61 62656c24 36313936  $6195.label$6196
+ 15a00 006c6162 656c2436 31393700 6c616265  .label$6197.labe
+ 15a10 6c243631 3938006c 6162656c 24363139  l$6198.label$619
+ 15a20 39007672 24383330 32006c61 62656c24  9.vr$8302.label$
+ 15a30 34393635 00767224 38333033 006c6162  4965.vr$8303.lab
+ 15a40 656c2436 31390076 72243833 3034006c  el$619.vr$8304.l
+ 15a50 6162656c 24343038 30006c61 62656c24  abel$4080.label$
+ 15a60 34303831 006c6162 656c2434 30383200  4081.label$4082.
+ 15a70 6c616265 6c243430 3833006c 6162656c  label$4083.label
+ 15a80 24343038 34006c61 62656c24 34303835  $4084.label$4085
+ 15a90 006c6162 656c2434 30383600 6c616265  .label$4086.labe
+ 15aa0 6c243430 3837006c 6162656c 24343038  l$4087.label$408
+ 15ab0 38006c61 62656c24 34303839 006c6162  8.label$4089.lab
+ 15ac0 656c2435 36373000 6c616265 6c243536  el$5670.label$56
+ 15ad0 3731006c 6162656c 24353637 32006c61  71.label$5672.la
+ 15ae0 62656c24 35363733 006c6162 656c2435  bel$5673.label$5
+ 15af0 36373400 6c616265 6c243536 3735006c  674.label$5675.l
+ 15b00 6162656c 24353637 36006c61 62656c24  abel$5676.label$
+ 15b10 35363737 006c6162 656c2435 36373800  5677.label$5678.
+ 15b20 6c616265 6c243536 3739006c 6162656c  label$5679.label
+ 15b30 24353931 006c6162 656c2433 35363000  $591.label$3560.
+ 15b40 6c616265 6c243335 3631006c 6162656c  label$3561.label
+ 15b50 24333536 32006c61 62656c24 33353633  $3562.label$3563
+ 15b60 006c6162 656c2433 35363400 6c616265  .label$3564.labe
+ 15b70 6c243335 36350047 4c554e49 464f524d  l$3565.GLUNIFORM
+ 15b80 33465624 006c6162 656c2433 35363700  3FV$.label$3567.
+ 15b90 6c616265 6c243335 3638006c 6162656c  label$3568.label
+ 15ba0 24333536 39006c61 62656c24 32006c61  $3569.label$2.la
+ 15bb0 62656c24 35393500 6c616265 6c243134  bel$595.label$14
+ 15bc0 3531006c 6162656c 24313435 32006c61  51.label$1452.la
+ 15bd0 62656c24 31343534 006c6162 656c2431  bel$1454.label$1
+ 15be0 34353500 544d5024 31343235 2436006c  455.TMP$1425$6.l
+ 15bf0 6162656c 24313435 37006c61 62656c24  abel$1457.label$
+ 15c00 31343538 006c6162 656c2436 006c6162  1458.label$6.lab
+ 15c10 656c2435 30343700 6c616265 6c243539  el$5047.label$59
+ 15c20 39006c61 62656c24 37006c61 62656c24  9.label$7.label$
+ 15c30 34303930 006c6162 656c2434 30393100  4090.label$4091.
+ 15c40 6c616265 6c243430 3932006c 6162656c  label$4092.label
+ 15c50 24343039 33006c61 62656c24 34303934  $4093.label$4094
+ 15c60 006c6162 656c2434 30393500 6c616265  .label$4095.labe
+ 15c70 6c243430 3936006c 6162656c 24343039  l$4096.label$409
+ 15c80 37006c61 62656c24 34303938 006c6162  7.label$4098.lab
+ 15c90 656c2434 30393900 6c616265 6c243536  el$4099.label$56
+ 15ca0 3830006c 6162656c 24343331 31006c61  80.label$4311.la
+ 15cb0 62656c24 35363832 006c6162 656c2435  bel$5682.label$5
+ 15cc0 36383300 6c616265 6c243536 3834006c  683.label$5684.l
+ 15cd0 6162656c 24353638 35006c61 62656c24  abel$5685.label$
+ 15ce0 35363836 006c6162 656c2435 36383700  5686.label$5687.
+ 15cf0 6c616265 6c243536 3838006c 6162656c  label$5688.label
+ 15d00 24353638 39006c61 62656c24 33353730  $5689.label$3570
+ 15d10 006c6162 656c2433 35373100 6c616265  .label$3571.labe
+ 15d20 6c243335 3732006c 6162656c 24333537  l$3572.label$357
+ 15d30 33006c61 62656c24 33353734 006c6162  3.label$3574.lab
+ 15d40 656c2433 35373500 6c616265 6c243335  el$3575.label$35
+ 15d50 3736006c 6162656c 24333537 37006c61  76.label$3577.la
+ 15d60 62656c24 33353738 006c6162 656c2433  bel$3578.label$3
+ 15d70 35373900 76722438 37303800 76722438  579.vr$8708.vr$8
+ 15d80 34303900 6c616265 6c243134 3630006c  409.label$1460.l
+ 15d90 6162656c 24313436 31005538 2437006c  abel$1461.U8$7.l
+ 15da0 6162656c 24313436 34006c61 62656c24  abel$1464.label$
+ 15db0 31343636 006c6162 656c2431 34363700  1466.label$1467.
+ 15dc0 6c616265 6c243134 3639006c 6162656c  label$1469.label
+ 15dd0 24353600 76722438 33313000 76722438  $56.vr$8310.vr$8
+ 15de0 33313100 76722438 33313200 494e535f  311.vr$8312.INS_
+ 15df0 4a4d5000 76722438 33313400 76722438  JMP.vr$8314.vr$8
+ 15e00 33313500 76722439 32333000 76722438  315.vr$9230.vr$8
+ 15e10 33313600 76722439 32333200 76722438  316.vr$9232.vr$8
+ 15e20 33313700 76722439 32333400 76722438  317.vr$9234.vr$8
+ 15e30 33313800 76722439 32333600 76722438  318.vr$9236.vr$8
+ 15e40 33313900 6c616265 6c243536 3930006c  319.label$5690.l
+ 15e50 6162656c 24353639 31006c61 62656c24  abel$5691.label$
+ 15e60 35363932 006c6162 656c2435 36393300  5692.label$5693.
+ 15e70 6c616265 6c243536 3934006c 6162656c  label$5694.label
+ 15e80 24353639 35006c61 62656c24 35363936  $5695.label$5696
+ 15e90 006c6162 656c2435 36393700 6c616265  .label$5697.labe
+ 15ea0 6c243536 3938006c 6162656c 24353639  l$5698.label$569
+ 15eb0 39007672 24383530 30007672 24393431  9.vr$8500.vr$941
+ 15ec0 30006c61 62656c24 33353830 006c6162  0.label$3580.lab
+ 15ed0 656c2433 35383100 6c616265 6c243335  el$3581.label$35
+ 15ee0 3832006c 6162656c 24333538 33006c61  82.label$3583.la
+ 15ef0 62656c24 33353834 006c6162 656c2433  bel$3584.label$3
+ 15f00 35383500 6c616265 6c243335 3836006c  585.label$3586.l
+ 15f10 6162656c 24333538 37006c61 62656c24  abel$3587.label$
+ 15f20 33353838 006c6162 656c2433 35383900  3588.label$3589.
+ 15f30 76722438 37313900 76722439 34313500  vr$8719.vr$9415.
+ 15f40 6c616265 6c243134 3730006c 6162656c  label$1470.label
+ 15f50 24353035 31006c61 62656c24 31343732  $5051.label$1472
+ 15f60 006c6162 656c2431 34373300 6c616265  .label$1473.labe
+ 15f70 6c243134 3735006c 6162656c 24313437  l$1475.label$147
+ 15f80 36006c61 62656c24 31343738 006c6162  6.label$1478.lab
+ 15f90 656c2431 34373900 6c616265 6c243439  el$1479.label$49
+ 15fa0 37310076 72243939 30310076 72243939  71.vr$9901.vr$99
+ 15fb0 30320076 72243939 30330076 72243939  02.vr$9903.vr$99
+ 15fc0 30340076 72243939 30350076 72243939  04.vr$9905.vr$99
+ 15fd0 30360076 72243939 30370076 72243939  06.vr$9907.vr$99
+ 15fe0 30380076 72243932 34300076 72243932  08.vr$9240.vr$92
+ 15ff0 34310076 72243932 34320076 72243932  41.vr$9242.vr$92
+ 16000 34330076 72243932 34340076 72243932  43.vr$9244.vr$92
+ 16010 34350076 72243932 34360076 72243930  45.vr$9246.vr$90
+ 16020 32390076 72243932 34380076 72243932  29.vr$9248.vr$92
+ 16030 34390076 72243937 3034006c 6162656c  49.vr$9704.label
+ 16040 24333539 30006c61 62656c24 33353931  $3590.label$3591
+ 16050 006c6162 656c2433 35393200 6c616265  .label$3592.labe
+ 16060 6c243335 3933006c 6162656c 24333539  l$3593.label$359
+ 16070 34006c61 62656c24 33353935 006c6162  4.label$3595.lab
+ 16080 656c2433 35393600 6c616265 6c243335  el$3596.label$35
+ 16090 3937006c 6162656c 24333539 38006c61  97.label$3598.la
+ 160a0 62656c24 33353939 00767224 38373238  bel$3599.vr$8728
+ 160b0 00767224 38373239 006c6162 656c2431  .vr$8729.label$1
+ 160c0 34383100 6c616265 6c243134 3832006c  481.label$1482.l
+ 160d0 6162656c 24313438 34006c61 62656c24  abel$1484.label$
+ 160e0 31343835 006c6162 656c2434 32313600  1485.label$4216.
+ 160f0 6c616265 6c243134 3837006c 6162656c  label$1487.label
+ 16100 24313438 3800544d 50243238 33312436  $1488.TMP$2831$6
+ 16110 006c6162 656c2436 34300054 4d502431  .label$640.TMP$1
+ 16120 34373124 37002437 43505536 35313000  471$7.$7CPU6510.
+ 16130 76722438 33323000 76722438 33323100  vr$8320.vr$8321.
+ 16140 76722438 33323200 42595445 53240076  vr$8322.BYTES$.v
+ 16150 72243833 32330076 72243833 32340076  r$8323.vr$8324.v
+ 16160 72243833 32350076 72243932 35300076  r$8325.vr$9250.v
+ 16170 72243833 32360076 72243932 35320076  r$8326.vr$9252.v
+ 16180 72243833 32370076 72243932 35340076  r$8327.vr$9254.v
+ 16190 72243833 32380076 72243932 35360076  r$8328.vr$9256.v
+ 161a0 72243833 32390076 72243932 35380076  r$8329.vr$9258.v
+ 161b0 72243932 35390054 4d502432 39383124  r$9259.TMP$2981$
+ 161c0 31007672 24383733 32007672 24383733  1.vr$8732.vr$873
+ 161d0 35007672 24383733 36007672 24383733  5.vr$8736.vr$873
+ 161e0 37006c61 62656c24 33383038 006c6162  7.label$3808.lab
+ 161f0 656c2431 34393000 6c616265 6c243134  el$1490.label$14
+ 16200 39310047 4c434f4d 50494c45 53484144  91.GLCOMPILESHAD
+ 16210 45522400 6c616265 6c243134 3934006c  ER$.label$1494.l
+ 16220 6162656c 24313439 36006c61 62656c24  abel$1496.label$
+ 16230 31343937 006c6162 656c2431 34393900  1497.label$1499.
+ 16240 76722439 39313000 544d5024 36353424  vr$9910.TMP$654$
+ 16250 32006c61 62656c24 35303637 00767224  2.label$5067.vr$
+ 16260 39393132 00767224 39393133 00767224  9912.vr$9913.vr$
+ 16270 39393134 00767224 39393135 0066625f  9914.vr$9915.fb_
+ 16280 47667842 6c6f6164 00767224 39393136  GfxBload.vr$9916
+ 16290 00767224 39393137 00767224 39393138  .vr$9917.vr$9918
+ 162a0 00767224 34333300 76722439 32363000  .vr$433.vr$9260.
+ 162b0 76722439 32363100 76722439 32363200  vr$9261.vr$9262.
+ 162c0 76722439 32363300 76722439 32363400  vr$9263.vr$9264.
+ 162d0 76722439 32363500 76722439 32363600  vr$9265.vr$9266.
+ 162e0 76722439 32363700 76722439 32363800  vr$9267.vr$9268.
+ 162f0 76722439 32363900 76722431 30303200  vr$9269.vr$1002.
+ 16300 76722438 37343000 76722438 39303000  vr$8740.vr$8900.
+ 16310 76722438 37343300 76722438 37343400  vr$8743.vr$8744.
+ 16320 76722438 37343500 76722438 37343800  vr$8745.vr$8748.
+ 16330 6c616265 6c243630 3600544d 50243239  label$606.TMP$29
+ 16340 39372431 00767224 38393033 00544d50  97$1.vr$8903.TMP
+ 16350 24323936 30243100 76722439 34323700  $2960$1.vr$9427.
+ 16360 66625f53 74724173 7369676e 00767224  fb_StrAssign.vr$
+ 16370 39343238 00767224 38393036 00767224  9428.vr$8906.vr$
+ 16380 39343239 00767224 38393037 00767224  9429.vr$8907.vr$
+ 16390 38393039 006c6162 656c2434 39383500  8909.label$4985.
+ 163a0 6c616265 6c243439 38360054 4d502436  label$4986.TMP$6
+ 163b0 33332432 00767224 39323730 00767224  33$2.vr$9270.vr$
+ 163c0 39323731 00767224 39323732 006c6162  9271.vr$9272.lab
+ 163d0 656c2434 39383800 6c616265 6c243137  el$4988.label$17
+ 163e0 30390076 72243833 3338006c 6162656c  09.vr$8338.label
+ 163f0 24343938 39007672 24383333 39007672  $4989.vr$8339.vr
+ 16400 24393237 38007672 24393237 3900544d  $9278.vr$9279.TM
+ 16410 50243631 39243200 494e535f 554e4b00  P$619$2.INS_UNK.
+ 16420 76722438 37353100 76722438 37353200  vr$8751.vr$8752.
+ 16430 76722438 37353300 76722438 37353600  vr$8753.vr$8756.
+ 16440 76722438 37353900 6c616265 6c243530  vr$8759.label$50
+ 16450 3730006c 6162656c 24353037 31006c61  70.label$5071.la
+ 16460 62656c24 35373637 006c6162 656c2435  bel$5767.label$5
+ 16470 30373300 6c616265 6c243530 3734006c  073.label$5074.l
+ 16480 6162656c 24353037 3600544d 50243239  abel$5076.TMP$29
+ 16490 37362431 006c6162 656c2435 30373700  76$1.label$5077.
+ 164a0 76722439 39323200 76722439 39323300  vr$9922.vr$9923.
+ 164b0 76722439 39323400 76722439 39323500  vr$9924.vr$9925.
+ 164c0 76722439 39323600 76722439 39323700  vr$9926.vr$9927.
+ 164d0 76722439 39323800 76722439 32383000  vr$9928.vr$9280.
+ 164e0 76722439 32383100 76722439 32383200  vr$9281.vr$9282.
+ 164f0 76722439 32383300 76722439 32383400  vr$9283.vr$9284.
+ 16500 76722439 32383500 76722439 32383600  vr$9285.vr$9286.
+ 16510 76722439 32383700 76722439 32383800  vr$9287.vr$9288.
+ 16520 76722439 32383900 76722431 31303032  vr$9289.vr$11002
+ 16530 00767224 39373133 00767224 31313030  .vr$9713.vr$1100
+ 16540 35006672 616d6562 75666665 72006576  5.framebuffer.ev
+ 16550 656e745f 6d757465 78006f6c 645f7669  ent_mutex.old_vi
+ 16560 65775f68 0077696e 5f77006f 6c645f76  ew_h.win_w.old_v
+ 16570 6965775f 78006f6c 645f7669 65775f79  iew_x.old_view_y
+ 16580 00726566 72657368 5f726174 65004642  .refresh_rate.FB
+ 16590 5f474658 43545800 74657874 5f680074  _GFXCTX.text_h.t
+ 165a0 6578745f 77006662 5f685365 74506978  ext_w.fb_hSetPix
+ 165b0 656c5472 616e7366 65720070 6f6c6c5f  elTransfer.poll_
+ 165c0 6576656e 74730077 696e5f79 00424c45  events.win_y.BLE
+ 165d0 4e444552 0050414c 45545445 0066675f  NDER.PALETTE.fg_
+ 165e0 636f6c6f 72006d61 785f6800 6f6c645f  color.max_h.old_
+ 165f0 76696577 5f770065 76656e74 5f717565  view_w.event_que
+ 16600 75650065 76656e74 5f746169 6c007461  ue.event_tail.ta
+ 16610 72676574 5f706974 63680076 69736962  rget_pitch.visib
+ 16620 6c655f70 61676500 636f6c6f 725f6173  le_page.color_as
+ 16630 736f6369 6174696f 6e007763 6861725f  sociation.wchar_
+ 16640 7400636f 6c6f725f 6d61736b 006c6f63  t.color_mask.loc
+ 16650 6b5f636f 756e7400 5f46424d 55544558  k_count._FBMUTEX
+ 16660 00637572 736f725f 79007075 745f7069  .cursor_y.put_pi
+ 16670 78656c00 6d6f6465 5f6e756d 005f4556  xel.mode_num._EV
+ 16680 454e5400 6c617374 5f78006c 6173745f  ENT.last_x.last_
+ 16690 79005055 54544552 00646972 7479006e  y.PUTTER.dirty.n
+ 166a0 756d5f70 61676573 00707574 74657200  um_pages.putter.
+ 166b0 74617267 65745f62 7070005f 5f66625f  target_bpp.__fb_
+ 166c0 67667800 66625f68 4d656d53 65740073  gfx.fb_hMemSet.s
+ 166d0 65745f77 696e646f 775f7469 746c6500  et_window_title.
+ 166e0 46424746 5800776f 726b5f70 61676500  FBGFX.work_page.
+ 166f0 63757273 6f725f78 00676574 5f706978  cursor_x.get_pix
+ 16700 656c0064 65766963 655f7061 6c657474  el.device_palett
+ 16710 65005f47 46585f43 4841525f 43454c4c  e._GFX_CHAR_CELL
+ 16720 00706978 656c5f73 65740077 696e5f68  .pixel_set.win_h
+ 16730 00736361 6e6c696e 655f7369 7a650063  .scanline_size.c
+ 16740 6f6e7465 78740073 74617274 5f6c696e  ontext.start_lin
+ 16750 65007769 6e5f7800 66625f68 47657443  e.win_x.fb_hGetC
+ 16760 6f6e7465 78740065 76656e74 5f686561  ontext.event_hea
+ 16770 64006662 5f685072 65706172 65546172  d.fb_hPrepareTar
+ 16780 67657400 464f4e54 00647269 76657200  get.FONT.driver.
+ 16790 6f6c645f 76696577 00656e64 5f6c696e  old_view.end_lin
+ 167a0 65006c61 73745f74 61726765 7400636f  e.last_target.co
+ 167b0 6e5f7061 67657300 47465844 52495645  n_pages.GFXDRIVE
+ 167c0 52006465 6661756c 745f7061 6c657474  R.default_palett
+ 167d0 65007365 745f7769 6e646f77 5f706f73  e.set_window_pos
+ 167e0 00666765 74630066 625f6843 6f6e7665  .fgetc.fb_hConve
+ 167f0 72745061 7468005f 5f737369 7a655f74  rtPath.__ssize_t
+ 16800 005f494f 5f636f64 65637674 00636f6e  ._IO_codecvt.con
+ 16810 76657274 005f494f 5f736176 655f656e  vert._IO_save_en
+ 16820 6400636f 6e766572 745f6266 5f333274  d.convert_bf_32t
+ 16830 6f333200 66625f68 53747244 656c5465  o32.fb_hStrDelTe
+ 16840 6d700046 425f5254 4552524f 525f4f4b  mp.FB_RTERROR_OK
+ 16850 0070616c 65747465 5f656e74 72696573  .palette_entries
+ 16860 005f494f 5f777269 74655f62 61736500  ._IO_write_base.
+ 16870 46425f52 54455252 4f525f53 49475445  FB_RTERROR_SIGTE
+ 16880 524d0062 66526573 65727665 64310062  RM.bfReserved1.b
+ 16890 66526573 65727665 64320046 425f5254  fReserved2.FB_RT
+ 168a0 4552524f 525f4f55 544f4642 4f554e44  ERROR_OUTOFBOUND
+ 168b0 53005f49 4f5f7361 76655f62 61736500  S._IO_save_base.
+ 168c0 666f7065 6e363400 46425f52 54455252  fopen64.FB_RTERR
+ 168d0 4f525f4e 4f505249 56494c45 47455300  OR_NOPRIVILEGES.
+ 168e0 636f6e76 6572745f 62665f32 34746f31  convert_bf_24to1
+ 168f0 36004642 5f525445 52524f52 5f4d4158  6.FB_RTERROR_MAX
+ 16900 005f6368 61696e00 5f637572 5f636f6c  ._chain._cur_col
+ 16910 756d6e00 636f6e76 6572745f 62665f32  umn.convert_bf_2
+ 16920 34746f33 3200636f 6e766572 745f6266  4to32.convert_bf
+ 16930 5f313674 6f313600 62694865 69676874  _16to16.biHeight
+ 16940 00626357 69647468 005f494f 5f6d6172  .bcWidth._IO_mar
+ 16950 6b657200 636f6e76 6572745f 62665f31  ker.convert_bf_1
+ 16960 36746f33 32005f49 4f5f4649 4c45005f  6to32._IO_FILE._
+ 16970 494f5f77 6964655f 64617461 0046425f  IO_wide_data.FB_
+ 16980 52544552 524f525f 53494753 45475600  RTERROR_SIGSEGV.
+ 16990 46425f52 54455252 4f525f4f 55544f46  FB_RTERROR_OUTOF
+ 169a0 4d454d00 5f667265 65726573 5f6c6973  MEM._freeres_lis
+ 169b0 74006663 6c6f7365 00657869 745f6572  t.fclose.exit_er
+ 169c0 726f7200 66726561 645f3332 5f6c6500  ror.fread_32_le.
+ 169d0 66625f69 6d616765 5f636f6e 76657274  fb_image_convert
+ 169e0 5f38746f 31360062 66547970 65004642  _8to16.bfType.FB
+ 169f0 5f525445 52524f52 5f454e44 4f464649  _RTERROR_ENDOFFI
+ 16a00 4c45005f 494f5f6c 6f636b5f 74005f5f  LE._IO_lock_t.__
+ 16a10 75696e74 31365f74 005f494f 5f726561  uint16_t._IO_rea
+ 16a20 645f7074 72006662 5f696d61 67655f63  d_ptr.fb_image_c
+ 16a30 6f6e7665 72745f38 746f3332 005f6d61  onvert_8to32._ma
+ 16a40 726b6572 73007061 6c5f656e 7472795f  rkers.pal_entry_
+ 16a50 73697a65 00626653 697a6500 65787061  size.bfSize.expa
+ 16a60 6e640062 664f6666 42697473 0046425f  nd.bfOffBits.FB_
+ 16a70 52544552 524f525f 53494749 4c4c0046  RTERROR_SIGILL.F
+ 16a80 425f5254 4552524f 525f4649 4c45494f  B_RTERROR_FILEIO
+ 16a90 0066625f 696d6167 655f636f 6e766572  .fb_image_conver
+ 16aa0 745f3874 6f38005f 666c6167 7332005f  t_8to8._flags2._
+ 16ab0 494f5f72 6561645f 62617365 005f756e  IO_read_base._un
+ 16ac0 75736564 32004642 5f525445 52524f52  used2.FB_RTERROR
+ 16ad0 5f494c4c 4547414c 52455355 4d45005f  _ILLEGALRESUME._
+ 16ae0 6f6c645f 6f666673 65740073 68696674  old_offset.shift
+ 16af0 73005f46 425f5254 4552524f 5200736e  s._FB_RTERROR.sn
+ 16b00 7072696e 74660046 425f5254 4552524f  printf.FB_RTERRO
+ 16b10 525f5349 47494e54 005f5f75 696e7433  R_SIGINT.__uint3
+ 16b20 325f7400 62695769 64746800 46425f52  2_t.biWidth.FB_R
+ 16b30 54455252 4f525f53 49475155 4954005f  TERROR_SIGQUIT._
+ 16b40 494f5f77 72697465 5f656e64 00666c69  IO_write_end.fli
+ 16b50 70706564 005f494f 5f627566 5f626173  pped._IO_buf_bas
+ 16b60 65006673 65656b00 5f5f7061 64350066  e.fseek.__pad5.f
+ 16b70 72656164 5f31365f 6c650046 425f5254  read_16_le.FB_RT
+ 16b80 4552524f 525f5245 5455524e 57495448  ERROR_RETURNWITH
+ 16b90 4f555447 4f535542 0046425f 52544552  OUTGOSUB.FB_RTER
+ 16ba0 524f525f 46494c45 4e4f5446 4f554e44  ROR_FILENOTFOUND
+ 16bb0 0066625f 684d656d 43707900 6269436f  .fb_hMemCpy.biCo
+ 16bc0 6d707265 7373696f 6e005f46 42535452  mpression._FBSTR
+ 16bd0 494e4700 66656f66 00626950 6c616e65  ING.feof.biPlane
+ 16be0 73006766 785f626c 6f616400 66625f68  s.gfx_bload.fb_h
+ 16bf0 52657374 6f726550 616c6574 74650062  RestorePalette.b
+ 16c00 69426974 436f756e 74006c6f 61645f62  iBitCount.load_b
+ 16c10 6d70005f 5f6f6666 5f740066 625f4572  mp.__off_t.fb_Er
+ 16c20 726f7253 65744e75 6d005f66 72656572  rorSetNum._freer
+ 16c30 65735f62 75660066 625f4766 78426c6f  es_buf.fb_GfxBlo
+ 16c40 61645142 00707574 5f686561 64657200  adQB.put_header.
+ 16c50 5f494f5f 6261636b 75705f62 61736500  _IO_backup_base.
+ 16c60 5f73686f 72746275 66006465 73740074  _shortbuf.dest.t
+ 16c70 61726765 745f7061 6c005f5f 6f666636  arget_pal.__off6
+ 16c80 345f7400 5f505554 5f484541 44455200  4_t._PUT_HEADER.
+ 16c90 666f7065 6e007573 656e6577 68656164  fopen.usenewhead
+ 16ca0 65720072 6577696e 64006269 53697a65  er.rewind.biSize
+ 16cb0 496d6167 65005f49 4f5f6275 665f656e  Image._IO_buf_en
+ 16cc0 64004642 4746585f 424c4f41 445f494d  d.FBGFX_BLOAD_IM
+ 16cd0 4147455f 434f4e56 45525400 5f767461  AGE_CONVERT._vta
+ 16ce0 626c655f 6f666673 65740062 63486569  ble_offset.bcHei
+ 16cf0 67687400 46425f52 54455252 4f525f53  ght.FB_RTERROR_S
+ 16d00 49474142 5254005f 494f5f72 6561645f  IGABRT._IO_read_
+ 16d10 656e6400 70616464 696e6700 5f66696c  end.padding._fil
+ 16d20 656e6f00 62695369 7a650046 425f5254  eno.biSize.FB_RT
+ 16d30 4552524f 525f5349 47465045 00667265  ERROR_SIGFPE.fre
+ 16d40 6164005f 494f5f77 72697465 5f707472  ad._IO_write_ptr
+ 16d50 005f5f69 6e743332 5f740046 425f5254  .__int32_t.FB_RT
+ 16d60 4552524f 525f4e55 4c4c5054 52004642  ERROR_NULLPTR.FB
+ 16d70 5f525445 52524f52 5f494c4c 4547414c  _RTERROR_ILLEGAL
+ 16d80 46554e43 54494f4e 43414c4c 00636f6e  FUNCTIONCALL.con
+ 16d90 76657274 5f62665f 3332746f 31360072  vert_bf_32to16.r
+ 16da0 67626100 66625f68 46697843 6f6c6f72  gba.fb_hFixColor
+ 16db0 005f5f62 75696c74 696e5f73 696e636f  .__builtin_sinco
+ 16dc0 73006472 61775f65 6c6c6970 73650067  s.draw_ellipse.g
+ 16dd0 65745f61 72635f70 6f696e74 00616e67  et_arc_point.ang
+ 16de0 6c650066 625f6854 72616e73 6c617465  le.fb_hTranslate
+ 16df0 436f6f72 6400696e 6372656d 656e7400  Coord.increment.
+ 16e00 66696c6c 65640064 7261775f 7363616e  filled.draw_scan
+ 16e10 6c696e65 006f7269 675f7800 6f726967  line.orig_x.orig
+ 16e20 5f790072 61646975 73006662 5f684669  _y.radius.fb_hFi
+ 16e30 7852656c 61746976 65006f72 69675f63  xRelative.orig_c
+ 16e40 6f6c6f72 00737172 74006c6f 63617465  olor.sqrt.locate
+ 16e50 70726f63 00707574 6261636b 5f73697a  proc.putback_siz
+ 16e60 65004642 5f484f4f 4b535442 00466e46  e.FB_HOOKSTB.FnF
+ 16e70 696c6555 6e6c6f63 6b007075 74626163  ileUnlock.putbac
+ 16e80 6b5f6275 66666572 0070666e 5365656b  k_buffer.pfnSeek
+ 16e90 00474c54 4558494d 41474532 4400466e  .GLTEXIMAGE2D.Fn
+ 16ea0 46696c65 456f6600 46425f57 49445448  FileEof.FB_WIDTH
+ 16eb0 50524f43 00646570 74685f62 69747300  PROC.depth_bits.
+ 16ec0 72656164 73747270 726f6300 70666e52  readstrproc.pfnR
+ 16ed0 6561644c 696e6557 73747200 474c696e  eadLineWstr.GLin
+ 16ee0 7400696e 70726f63 00466e46 696c6543  t.inproc.FnFileC
+ 16ef0 6c6f7365 0046425f 474c0047 4c646f75  lose.FB_GL.GLdou
+ 16f00 626c6500 46425f46 494c455f 454e434f  ble.FB_FILE_ENCO
+ 16f10 445f5554 46333200 5f5f6662 5f676678  D_UTF32.__fb_gfx
+ 16f20 5f647269 7665725f 6e616d65 0070666e  _driver_name.pfn
+ 16f30 54656c6c 0046425f 52544c49 425f4354  Tell.FB_RTLIB_CT
+ 16f40 58007072 696e7462 75666670 726f6300  X.printbuffproc.
+ 16f50 46425f50 4f535445 56454e54 50524f43  FB_POSTEVENTPROC
+ 16f60 00466e46 696c654c 6f636b00 706f7374  .FnFileLock.post
+ 16f70 6576656e 7470726f 6300474c 50495845  eventproc.GLPIXE
+ 16f80 4c53544f 52454900 46425f47 45545850  LSTOREI.FB_GETXP
+ 16f90 524f4300 69737265 64697270 726f6300  ROC.isredirproc.
+ 16fa0 72656672 65736800 46425f52 45414453  refresh.FB_READS
+ 16fb0 54525052 4f430054 65785375 62496d61  TRPROC.TexSubIma
+ 16fc0 67653244 00474c76 6f696400 636f6c6f  ge2D.GLvoid.colo
+ 16fd0 725f6772 65656e5f 62697473 00466e46  r_green_bits.FnF
+ 16fe0 696c6552 65616400 474c454e 41424c45  ileRead.GLENABLE
+ 16ff0 434c4945 4e545354 41544500 4f727468  CLIENTSTATE.Orth
+ 17000 6f004642 5f505249 4e544255 46465750  o.FB_PRINTBUFFWP
+ 17010 524f4300 5f5f6662 5f77696e 646f775f  ROC.__fb_window_
+ 17020 7469746c 65004642 5f495352 45444952  title.FB_ISREDIR
+ 17030 50524f43 0070666e 52656164 00466e46  PROC.pfnRead.FnF
+ 17040 696c6552 6561644c 696e6500 5f5f6662  ileReadLine.__fb
+ 17050 5f676c00 5f5f6662 5f676c5f 70617261  _gl.__fb_gl_para
+ 17060 6d730073 74726c65 6e004465 7074684d  ms.strlen.DepthM
+ 17070 61736b00 70666e43 6c6f7365 006f7061  ask.pfnClose.opa
+ 17080 71756500 61636375 6d5f616c 7068615f  que.accum_alpha_
+ 17090 62697473 00616363 756d5f72 65645f62  bits.accum_red_b
+ 170a0 69747300 636c7370 726f6300 77696474  its.clsproc.widt
+ 170b0 6870726f 6300466e 46696c65 57726974  hproc.FnFileWrit
+ 170c0 65005f46 425f4649 4c450044 69736162  e._FB_FILE.Disab
+ 170d0 6c65436c 69656e74 53746174 6500474c  leClientState.GL
+ 170e0 54455853 5542494d 41474532 44006578  TEXSUBIMAGE2D.ex
+ 170f0 69745f67 66786c69 62320069 6e6b6579  it_gfxlib2.inkey
+ 17100 70726f63 00466e46 696c6553 65656b00  proc.FnFileSeek.
+ 17110 466e4669 6c65466c 75736800 47657453  FnFileFlush.GetS
+ 17120 7472696e 6700474c 44455054 484d4153  tring.GLDEPTHMAS
+ 17130 4b007374 72647570 005f5f66 625f6374  K.strdup.__fb_ct
+ 17140 7800466e 46696c65 52656164 4c696e65  x.FnFileReadLine
+ 17150 57737472 0066625f 68476574 44697370  Wstr.fb_hGetDisp
+ 17160 6c617948 616e646c 6500466e 46696c65  layHandle.FnFile
+ 17170 54656c6c 0074656d 70320074 656d7033  Tell.temp2.temp3
+ 17180 00474c47 45545354 52494e47 00474c56  .GLGETSTRING.GLV
+ 17190 49455750 4f525400 474c434c 45415200  IEWPORT.GLCLEAR.
+ 171a0 474c4f52 54484f00 474c434c 45415243  GLORTHO.GLCLEARC
+ 171b0 4f4c4f52 0046425f 46494c45 5f454e43  OLOR.FB_FILE_ENC
+ 171c0 4f445f55 54463800 6e756d5f 73616d70  OD_UTF8.num_samp
+ 171d0 6c657300 70666e57 72697465 57737472  les.pfnWriteWstr
+ 171e0 0070666e 57726974 65004642 5f434f4c  .pfnWrite.FB_COL
+ 171f0 4f525052 4f430047 4c666c6f 61740046  ORPROC.GLfloat.F
+ 17200 425f4745 54585950 524f4300 61726776  B_GETXYPROC.argv
+ 17210 00676574 7970726f 63006765 7473697a  .getyproc.getsiz
+ 17220 6570726f 63006662 5f476678 436f6e74  eproc.fb_GfxCont
+ 17230 726f6c5f 69004465 6c657465 54657874  rol_i.DeleteText
+ 17240 75726573 0066625f 47667843 6f6e7472  ures.fb_GfxContr
+ 17250 6f6c5f73 00474c54 45585041 52414d45  ol_s.GLTEXPARAME
+ 17260 54455249 00474c50 4958454c 4d415046  TERI.GLPIXELMAPF
+ 17270 5600474c 44495341 424c4543 4c49454e  V.GLDISABLECLIEN
+ 17280 54535441 54450046 425f4745 544b4559  TSTATE.FB_GETKEY
+ 17290 50524f43 00707269 6e746275 66667770  PROC.printbuffwp
+ 172a0 726f6300 636f6c6f 725f7265 645f6269  roc.color_red_bi
+ 172b0 74730047 4c505553 484d4154 52495800  ts.GLPUSHMATRIX.
+ 172c0 72656164 78797072 6f630047 4c504f50  readxyproc.GLPOP
+ 172d0 434c4945 4e544154 54524942 0070666e  CLIENTATTRIB.pfn
+ 172e0 53657457 69647468 00507573 684d6174  SetWidth.PushMat
+ 172f0 72697800 46425f4c 494e4549 4e505554  rix.FB_LINEINPUT
+ 17300 5750524f 43007669 65777570 64617465  WPROC.viewupdate
+ 17310 70726f63 006c696e 655f6c65 6e677468  proc.line_length
+ 17320 006f7574 70726f63 0046425f 52544c49  .outproc.FB_RTLI
+ 17330 425f4354 585f0066 625f6853 63726565  B_CTX_.fb_hScree
+ 17340 6e496e66 6f00474c 75696e74 00474c56  nInfo.GLuint.GLV
+ 17350 45525445 58504f49 4e544552 00546578  ERTEXPOINTER.Tex
+ 17360 436f6f72 64506f69 6e746572 00474c62  CoordPointer.GLb
+ 17370 69746669 656c6400 6572726d 73670050  itfield.errmsg.P
+ 17380 6978656c 5472616e 73666572 69007066  ixelTransferi.pf
+ 17390 6e466c75 73680072 65646972 65637469  nFlush.redirecti
+ 173a0 6f6e5f74 6f00474c 636c616d 70660046  on_to.GLclampf.F
+ 173b0 425f5052 494e5442 55464650 524f4300  B_PRINTBUFFPROC.
+ 173c0 66625f47 6678436f 6e74726f 6c5f6933  fb_GfxControl_i3
+ 173d0 3200474c 44524157 41525241 59530046  2.GLDRAWARRAYS.F
+ 173e0 425f4745 5453495a 4550524f 43007061  B_GETSIZEPROC.pa
+ 173f0 72616d00 474c5055 53484154 54524942  ram.GLPUSHATTRIB
+ 17400 0063616c 6c626163 6b006662 5f6f6666  .callback.fb_off
+ 17410 5f740047 4c756279 74650044 72617741  _t.GLubyte.DrawA
+ 17420 72726179 73005368 6164654d 6f64656c  rrays.ShadeModel
+ 17430 00474c50 55534843 4c49454e 54415454  .GLPUSHCLIENTATT
+ 17440 52494200 474c5049 58454c54 52414e53  RIB.GLPIXELTRANS
+ 17450 46455249 00507573 68417474 72696200  FERI.PushAttrib.
+ 17460 46425f4f 55545052 4f430066 696c6554  FB_OUTPROC.fileT
+ 17470 42006163 63657373 00617267 63006163  B.access.argc.ac
+ 17480 63756d5f 67726565 6e5f6269 7473006c  cum_green_bits.l
+ 17490 696e6569 6e707574 70726f63 0070666e  ineinputproc.pfn
+ 174a0 556e6c6f 636b0046 425f534c 45455050  Unlock.FB_SLEEPP
+ 174b0 524f4300 646f5f66 696c655f 72657365  ROC.do_file_rese
+ 174c0 74006163 63756d5f 626c7565 5f626974  t.accum_blue_bit
+ 174d0 7300436c 65617243 6f6c6f72 0070666e  s.ClearColor.pfn
+ 174e0 52656164 57737472 0046425f 494e4b45  ReadWstr.FB_INKE
+ 174f0 5950524f 43007374 656e6369 6c5f6269  YPROC.stencil_bi
+ 17500 74730061 6363756d 5f626974 73004c6f  ts.accum_bits.Lo
+ 17510 61644964 656e7469 7479006c 616e6700  adIdentity.lang.
+ 17520 636f6c6f 7270726f 6300506f 704d6174  colorproc.PopMat
+ 17530 72697800 696e6974 5f736361 6c650069  rix.init_scale.i
+ 17540 6e69745f 6d6f6465 5f326400 474c4c4f  nit_mode_2d.GLLO
+ 17550 41444944 454e5449 54590044 69736162  ADIDENTITY.Disab
+ 17560 6c650067 65746b65 7970726f 6300474c  le.getkeyproc.GL
+ 17570 504f504d 41545249 58007061 6765636f  POPMATRIX.pageco
+ 17580 70797072 6f630045 6e61626c 65436c69  pyproc.EnableCli
+ 17590 656e7453 74617465 00466e46 696c6553  entState.FnFileS
+ 175a0 65745769 64746800 474c7369 7a656900  etWidth.GLsizei.
+ 175b0 46425f56 49455755 50444154 4550524f  FB_VIEWUPDATEPRO
+ 175c0 43006765 74787072 6f630066 625f5374  C.getxproc.fb_St
+ 175d0 72416c6c 6f635465 6d704465 73634600  rAllocTempDescF.
+ 175e0 46425f43 4c535052 4f430047 4c44454c  FB_CLSPROC.GLDEL
+ 175f0 45544554 45585455 52455300 46425f4c  ETETEXTURES.FB_L
+ 17600 4f434154 4550524f 43007061 67657365  OCATEPROC.pagese
+ 17610 7470726f 6300636f 6c6f725f 616c7068  tproc.color_alph
+ 17620 615f6269 74730047 4c42494e 44544558  a_bits.GLBINDTEX
+ 17630 54555245 0046425f 50414745 434f5059  TURE.FB_PAGECOPY
+ 17640 50524f43 0046425f 52454144 58595052  PROC.FB_READXYPR
+ 17650 4f43006c 696e6569 6e707574 7770726f  OC.lineinputwpro
+ 17660 63006765 746d6f75 73657072 6f630050  c.getmouseproc.P
+ 17670 6f704174 74726962 0046425f 46494c45  opAttrib.FB_FILE
+ 17680 5f454e43 4f445f41 53434949 0046425f  _ENCOD_ASCII.FB_
+ 17690 46494c45 5f454e43 4f445f55 54463136  FILE_ENCOD_UTF16
+ 176a0 00507573 68436c69 656e7441 74747269  .PushClientAttri
+ 176b0 6200474c 47454e54 45585455 52455300  b.GLGENTEXTURES.
+ 176c0 474c656e 756d0070 666e4c6f 636b0047  GLenum.pfnLock.G
+ 176d0 4c504f50 41545452 49420046 425f5041  LPOPATTRIB.FB_PA
+ 176e0 47455345 5450524f 4300636f 6c6f725f  GESETPROC.color_
+ 176f0 626c7565 5f626974 73004d61 74726978  blue_bits.Matrix
+ 17700 4d6f6465 0046425f 47455459 50524f43  Mode.FB_GETYPROC
+ 17710 00776861 74005069 78656c4d 61706676  .what.PixelMapfv
+ 17720 006b6579 68697470 726f6300 46425f49  .keyhitproc.FB_I
+ 17730 4e50524f 43004642 5f474c5f 50415241  NPROC.FB_GL_PARA
+ 17740 4d530074 656d7031 0066625f 68476574  MS.temp1.fb_hGet
+ 17750 57696e64 6f774861 6e646c65 0074656d  WindowHandle.tem
+ 17760 70340072 65733100 72657332 00726573  p4.res1.res2.res
+ 17770 33007265 73340046 6e46696c 65526561  3.res4.FnFileRea
+ 17780 64577374 72004642 5f534554 4d4f5553  dWstr.FB_SETMOUS
+ 17790 4550524f 4300474c 4d415452 49584d4f  EPROC.GLMATRIXMO
+ 177a0 44450068 6f6f6b73 00474c44 49534142  DE.hooks.GLDISAB
+ 177b0 4c450045 6e61626c 65005f46 425f4649  LE.Enable._FB_FI
+ 177c0 4c455f48 4f4f4b53 00676574 78797072  LE_HOOKS.getxypr
+ 177d0 6f630047 4c534841 44454d4f 44454c00  oc.GLSHADEMODEL.
+ 177e0 70666e52 6561644c 696e6500 736c6565  pfnReadLine.slee
+ 177f0 7070726f 63004642 5f474554 4d4f5553  pproc.FB_GETMOUS
+ 17800 4550524f 43005f46 425f4649 4c455f45  EPROC._FB_FILE_E
+ 17810 4e434f44 0046425f 4d554c54 494b4559  NCOD.FB_MULTIKEY
+ 17820 50524f43 00506f70 436c6965 6e744174  PROC.PopClientAt
+ 17830 74726962 00656e63 6f640073 65746d6f  trib.encod.setmo
+ 17840 75736570 726f6300 70617261 6d310070  useproc.param1.p
+ 17850 6172616d 32007061 72616d33 00706172  aram2.param3.par
+ 17860 616d3400 474c626f 6f6c6561 6e00474c  am4.GLboolean.GL
+ 17870 54455843 4f4f5244 504f494e 54455200  TEXCOORDPOINTER.
+ 17880 6e756c6c 5f646573 63007066 6e456f66  null_desc.pfnEof
+ 17890 00566572 74657850 6f696e74 65720050  .VertexPointer.P
+ 178a0 6978656c 53746f72 65690046 425f4c49  ixelStorei.FB_LI
+ 178b0 4e45494e 50555450 524f4300 46425f4b  NEINPUTPROC.FB_K
+ 178c0 45594849 5450524f 4300466e 46696c65  EYHITPROC.FnFile
+ 178d0 57726974 65577374 72005669 6577706f  WriteWstr.Viewpo
+ 178e0 7274006d 756c7469 6b657970 726f6300  rt.multikeyproc.
+ 178f0 474c454e 41424c45 0066625f 68506f73  GLENABLE.fb_hPos
+ 17900 74457665 6e745f63 6f64655f 73746172  tEvent_code_star
+ 17910 74006662 5f68506f 73744576 656e745f  t.fb_hPostEvent_
+ 17920 636f6465 5f656e64 0066625f 68506978  code_end.fb_hPix
+ 17930 656c5365 74416c70 68613400 46425f54  elSetAlpha4.FB_T
+ 17940 4c534b45 595f4642 54485245 41440066  LSKEY_FBTHREAD.f
+ 17950 625f4746 58435458 5f446573 74727563  b_GFXCTX_Destruc
+ 17960 746f7200 46425f46 4f4e545f 38006662  tor.FB_FONT_8.fb
+ 17970 5f685075 74506978 656c3100 66625f68  _hPutPixel1.fb_h
+ 17980 47657450 6978656c 0066625f 68506978  GetPixel.fb_hPix
+ 17990 656c5365 74004642 5f50414c 45545445  elSet.FB_PALETTE
+ 179a0 5f434f55 4e540046 425f5041 4c455454  _COUNT.FB_PALETT
+ 179b0 455f3634 0046425f 544c534b 45595300  E_64.FB_TLSKEYS.
+ 179c0 7265616c 6c6f6300 46425f50 414c4554  realloc.FB_PALET
+ 179d0 54455f32 35360066 625f6850 6978656c  TE_256.fb_hPixel
+ 179e0 43707932 0066625f 68507574 50697865  Cpy2.fb_hPutPixe
+ 179f0 6c416c70 68613400 66625f4d 75746578  lAlpha4.fb_Mutex
+ 17a00 556e6c6f 636b0073 6c6f7400 46425f54  Unlock.slot.FB_T
+ 17a10 4c534b45 595f5052 494e5455 53470066  LSKEY_PRINTUSG.f
+ 17a20 625f4d75 7465784c 6f636b00 46425f46  b_MutexLock.FB_F
+ 17a30 4f4e545f 434f554e 54004642 5f544c53  ONT_COUNT.FB_TLS
+ 17a40 4b45595f 494e5055 54006662 5f68506f  KEY_INPUT.fb_hPo
+ 17a50 73744576 656e7400 46425f46 4f4e545f  stEvent.FB_FONT_
+ 17a60 31340066 625f6850 75745069 78656c53  14.fb_hPutPixelS
+ 17a70 6f6c6964 0046425f 464f4e54 5f313600  olid.FB_FONT_16.
+ 17a80 66625f68 50697865 6c437079 0046425f  fb_hPixelCpy.FB_
+ 17a90 544c534b 45595f44 49520046 425f5041  TLSKEY_DIR.FB_PA
+ 17aa0 4c455454 455f3136 0066625f 546c7347  LETTE_16.fb_TlsG
+ 17ab0 65744374 78004642 5f50414c 45545445  etCtx.FB_PALETTE
+ 17ac0 5f320046 425f544c 534b4559 5f455252  _2.FB_TLSKEY_ERR
+ 17ad0 4f520066 625f6850 6978656c 53657453  OR.fb_hPixelSetS
+ 17ae0 6f6c6964 0046425f 544c534b 45595f47  olid.FB_TLSKEY_G
+ 17af0 46580066 625f6850 6978656c 43707934  FX.fb_hPixelCpy4
+ 17b00 0066625f 68507574 50697865 6c416c70  .fb_hPutPixelAlp
+ 17b10 68610066 625f6853 65747570 46756e63  ha.fb_hSetupFunc
+ 17b20 73006662 5f684765 74506978 656c3100  s.fb_hGetPixel1.
+ 17b30 66625f68 47657450 6978656c 3200636f  fb_hGetPixel2.co
+ 17b40 6f72645f 74797065 0066625f 68476574  ord_type.fb_hGet
+ 17b50 50697865 6c340066 625f6850 6978656c  Pixel4.fb_hPixel
+ 17b60 53657441 6c706861 0046425f 544c535f  SetAlpha.FB_TLS_
+ 17b70 44455354 52554354 4f520066 625f6850  DESTRUCTOR.fb_hP
+ 17b80 75745069 78656c32 0066625f 68507574  utPixel2.fb_hPut
+ 17b90 50697865 6c340066 625f6846 6978436f  Pixel4.fb_hFixCo
+ 17ba0 6f726473 4f726465 72006662 5f685069  ordsOrder.fb_hPi
+ 17bb0 78656c53 65743200 66625f68 50697865  xelSet2.fb_hPixe
+ 17bc0 6c536574 3400626c 656e6465 72006c61  lSet4.blender.la
+ 17bd0 73740046 42474658 5f434841 52006279  st.FBGFX_CHAR.by
+ 17be0 7465735f 636f756e 74006578 69745f65  tes_count.exit_e
+ 17bf0 72726f72 5f756e6c 6f636b65 64006669  rror_unlocked.fi
+ 17c00 72737400 63686172 5f646174 6100666f  rst.char_data.fo
+ 17c10 6e745f68 65696768 74006662 5f476678  nt_height.fb_Gfx
+ 17c20 496d6167 65437265 61746551 42006865  ImageCreateQB.he
+ 17c30 61646572 5f73697a 65006766 785f696d  ader_size.gfx_im
+ 17c40 61676563 72656174 65007372 635f6270  agecreate.src_bp
+ 17c50 70006662 5f476678 496d6167 65436f6e  p.fb_GfxImageCon
+ 17c60 76657274 526f7700 6473745f 62707000  vertRow.dst_bpp.
+ 17c70 66625f69 6d616765 5f636f6e 76657274  fb_image_convert
+ 17c80 5f333274 6f313600 69737267 62006662  _32to16.isrgb.fb
+ 17c90 5f696d61 67655f63 6f6e7665 72745f33  _image_convert_3
+ 17ca0 32626772 746f3136 00464247 46585f49  2bgrto16.FBGFX_I
+ 17cb0 4d414745 5f434f4e 56455254 0066625f  MAGE_CONVERT.fb_
+ 17cc0 696d6167 655f636f 6e766572 745f3234  image_convert_24
+ 17cd0 62677274 6f313600 66625f69 6d616765  bgrto16.fb_image
+ 17ce0 5f636f6e 76657274 5f323474 6f313600  _convert_24to16.
+ 17cf0 66625f69 6d616765 5f636f6e 76657274  fb_image_convert
+ 17d00 5f323462 6772746f 33320066 625f696d  _24bgrto32.fb_im
+ 17d10 6167655f 636f6e76 6572745f 33326267  age_convert_32bg
+ 17d20 72746f33 32006662 5f696d61 67655f63  rto32.fb_image_c
+ 17d30 6f6e7665 72745f33 32746f33 32006662  onvert_32to32.fb
+ 17d40 5f696d61 67655f63 6f6e7665 72745f32  _image_convert_2
+ 17d50 34746f33 32006662 5f476678 496d6167  4to32.fb_GfxImag
+ 17d60 65496e66 6f333200 68656967 68745f00  eInfo32.height_.
+ 17d70 68656164 65725369 7a655f00 70697463  headerSize_.pitc
+ 17d80 685f0062 70705f00 696d6764 61746100  h_.bpp_.imgdata.
+ 17d90 66625f47 6678496d 61676549 6e666f00  fb_GfxImageInfo.
+ 17da0 77696474 685f0064 6f6e6500 66625f68  width_.done.fb_h
+ 17db0 47667842 6f780072 65766572 73655f6d  GfxBox.reverse_m
+ 17dc0 61736b00 796d6178 00796d69 6e00736b  ask.ymax.ymin.sk
+ 17dd0 69700078 6d617800 786d696e 0066625f  ip.xmax.xmin.fb_
+ 17de0 47667844 7261774c 696e6500 74657863  GfxDrawLine.texc
+ 17df0 6f6f7264 73006361 6c6c6f63 00726174  oords.calloc.rat
+ 17e00 696f5f68 00726174 696f5f77 00737472  io_h.ratio_w.str
+ 17e10 6e637079 00737472 6e636174 0066625f  ncpy.strncat.fb_
+ 17e20 68474c5f 53657453 74617465 0066625f  hGL_SetState.fb_
+ 17e30 68474c5f 45787465 6e73696f 6e537570  hGL_ExtensionSup
+ 17e40 706f7274 65640066 625f6847 4c5f5365  ported.fb_hGL_Se
+ 17e50 74757050 726f6a65 6374696f 6e00676c  tupProjection.gl
+ 17e60 5f6f7074 696f6e73 0066625f 68474c5f  _options.fb_hGL_
+ 17e70 53637265 656e4372 65617465 006f735f  ScreenCreate.os_
+ 17e80 65787465 6e73696f 6e730065 7874656e  extensions.exten
+ 17e90 73696f6e 0066625f 68474c5f 47657450  sion.fb_hGL_GetP
+ 17ea0 726f6341 64647265 73730066 625f6844  rocAddress.fb_hD
+ 17eb0 796e4c6f 6164416c 736f0066 625f6847  ynLoadAlso.fb_hG
+ 17ec0 4c5f496d 61676544 65737472 6f790066  L_ImageDestroy.f
+ 17ed0 625f6847 4c5f496e 6974006d 61705f62  b_hGL_Init.map_b
+ 17ee0 006d6170 5f67006d 61705f72 0066625f  .map_g.map_r.fb_
+ 17ef0 68474c5f 496d6167 65437265 61746500  hGL_ImageCreate.
+ 17f00 66625f68 474c5f4e 6f726d61 6c697a65  fb_hGL_Normalize
+ 17f10 50617261 6d657465 72730073 74727374  Parameters.strst
+ 17f20 7200676c 5f66756e 63730046 425f4459  r.gl_funcs.FB_DY
+ 17f30 4c494200 53637265 656e5465 78006e65  LIB.ScreenTex.ne
+ 17f40 78745f70 6f773200 64656661 756c745f  xt_pow2.default_
+ 17f50 636f6c6f 725f6269 74730064 65666175  color_bits.defau
+ 17f60 6c745f61 6c706861 5f626974 73006469  lt_alpha_bits.di
+ 17f70 66667300 66756e63 735f7074 72006662  ffs.funcs_ptr.fb
+ 17f80 5f68474c 5f536574 50616c65 74746500  _hGL_SetPalette.
+ 17f90 7372635f 70616765 0066726f 6d5f7061  src_page.from_pa
+ 17fa0 67650074 6f5f7061 67650064 6573745f  ge.to_page.dest_
+ 17fb0 70616765 0066625f 47667850 61676553  page.fb_GfxPageS
+ 17fc0 65740074 6578745f 73697a65 0066625f  et.text_size.fb_
+ 17fd0 47667850 61676543 6f707900 626f7264  GfxPageCopy.bord
+ 17fe0 65725f63 6f6c6f72 00706174 7465726e  er_color.pattern
+ 17ff0 00535041 4e00726f 775f6e65 78740061  .SPAN.row_next.a
+ 18000 64645f73 70616e00 66625f68 4d616b65  dd_span.fb_hMake
+ 18010 436f6c6f 72006662 5f685365 7450616c  Color.fb_hSetPal
+ 18020 65747465 436f6c6f 72526762 00636761  etteColorRgb.cga
+ 18030 5f617373 6f636961 74696f6e 00656761  _association.ega
+ 18040 5f617373 6f636961 74696f6e 0066625f  _association.fb_
+ 18050 68536574 50616c65 74746543 6f6c6f72  hSetPaletteColor
+ 18060 00677265 656e0062 6c756500 5f5f6662  .green.blue.__fb
+ 18070 5f70616c 65747465 006d6f64 655f6173  _palette.mode_as
+ 18080 736f6369 6174696f 6e006973 70726573  sociation.ispres
+ 18090 65740064 6573745f 70697463 68006662  et.dest_pitch.fb
+ 180a0 5f685075 74416c70 68614d61 736b0073  _hPutAlphaMask.s
+ 180b0 72635f70 69746368 00707574 5f6d6f64  rc_pitch.put_mod
+ 180c0 6500616c 6c5f7075 74746572 73006662  e.all_putters.fb
+ 180d0 5f685075 74505365 74430066 625f6850  _hPutPSetC.fb_hP
+ 180e0 7574416c 70686134 43006662 5f436f6e  utAlpha4C.fb_Con
+ 180f0 736f6c65 56696577 4578006d 6f64655f  soleViewEx.mode_
+ 18100 696e666f 004d4f44 45494e46 4f006662  info.MODEINFO.fb
+ 18110 5f476678 5072696e 74427566 66657257  _GfxPrintBufferW
+ 18120 73747245 78006662 5f476678 436f6c6f  strEx.fb_GfxColo
+ 18130 72005f5f 66625f63 6f6c6f72 5f636f6e  r.__fb_color_con
+ 18140 765f3136 746f3332 0066625f 47667853  v_16to32.fb_GfxS
+ 18150 65744d6f 75736500 73747263 61736563  etMouse.strcasec
+ 18160 6d700066 625f4766 78476574 59006662  mp.fb_GfxGetY.fb
+ 18170 5f476678 496e6b65 79006662 5f436f6e  _GfxInkey.fb_Con
+ 18180 736f6c65 53657454 6f70426f 74526f77  soleSetTopBotRow
+ 18190 73006365 6c6c5f6c 696e6500 5f5f6662  s.cell_line.__fb
+ 181a0 5f676678 44726976 65724e75 6c6c0066  _gfxDriverNull.f
+ 181b0 625f4d75 74657844 65737472 6f790066  b_MutexDestroy.f
+ 181c0 625f4766 78526561 64585900 66625f47  b_GfxReadXY.fb_G
+ 181d0 66784765 74580072 656c6561 73655f67  fxGetX.release_g
+ 181e0 66785f6d 656d0066 625f4766 784f7574  fx_mem.fb_GfxOut
+ 181f0 0066625f 47667849 6e006669 6c6c5f63  .fb_GfxIn.fill_c
+ 18200 656c6c00 5f5f6662 5f676678 5f647269  ell.__fb_gfx_dri
+ 18210 76657273 5f6c6973 74006662 5f446576  vers_list.fb_Dev
+ 18220 5363726e 4d617962 65557064 61746557  ScrnMaybeUpdateW
+ 18230 69647468 0066625f 47667852 65616453  idth.fb_GfxReadS
+ 18240 74720066 625f4766 78536c65 65700066  tr.fb_GfxSleep.f
+ 18250 625f6843 6c656172 43686172 43656c6c  b_hClearCharCell
+ 18260 73006765 74656e76 0066625f 4d757465  s.getenv.fb_Mute
+ 18270 78437265 61746500 7365745f 6d6f6465  xCreate.set_mode
+ 18280 0066625f 47667847 65744d6f 75736500  .fb_GfxGetMouse.
+ 18290 73747272 63687200 66625f47 66785769  strrchr.fb_GfxWi
+ 182a0 64746800 66625f47 66784c69 6e65496e  dth.fb_GfxLineIn
+ 182b0 70757400 66625f47 66784765 7453697a  put.fb_GfxGetSiz
+ 182c0 65007472 795f636f 756e7400 66625f47  e.try_count.fb_G
+ 182d0 66784765 74585900 66625f68 53657475  fxGetXY.fb_hSetu
+ 182e0 70446174 61006662 5f476678 436c6561  pData.fb_GfxClea
+ 182f0 72006662 5f476678 53637265 656e5142  r.fb_GfxScreenQB
+ 18300 0066625f 4766784c 6f636174 65006662  .fb_GfxLocate.fb
+ 18310 5f476678 49735265 64697200 65786974  _GfxIsRedir.exit
+ 18320 5f70726f 635f7365 7400636c 6561725f  _proc_set.clear_
+ 18330 77007363 7265656e 5f696400 66625f68  w.screen_id.fb_h
+ 18340 52657365 74436861 7243656c 6c73006d  ResetCharCells.m
+ 18350 6f76655f 77006662 5f576964 74680066  ove_w.fb_Width.f
+ 18360 625f6847 65744578 654e616d 65006662  b_hGetExeName.fb
+ 18370 5f476678 56696577 55706461 74650066  _GfxViewUpdate.f
+ 18380 625f4766 784d756c 74696b65 7900646f  b_GfxMultikey.do
+ 18390 5f616c6c 6f630066 625f5061 67655365  _alloc.fb_PageSe
+ 183a0 74006662 5f476678 4c696e65 496e7075  t.fb_GfxLineInpu
+ 183b0 74577374 72006662 5f476678 4b657948  tWstr.fb_GfxKeyH
+ 183c0 69740066 625f4766 78476574 6b657900  it.fb_GfxGetkey.
+ 183d0 5f5f6662 5f666f6e 74006662 5f476678  __fb_font.fb_Gfx
+ 183e0 5072696e 74427566 66657245 78007769  PrintBufferEx.wi
+ 183f0 6e646f77 5f746974 6c655f62 75666600  ndow_title_buff.
+ 18400 65786974 5f70726f 63006662 5f476678  exit_proc.fb_Gfx
+ 18410 53637265 656e496e 666f3332 0066625f  ScreenInfo32.fb_
+ 18420 47667853 63726565 6e496e66 6f006662  GfxScreenInfo.fb
+ 18430 5f685374 72526561 6c6c6f63 00737472  _hStrRealloc.str
+ 18440 63707900 71736f72 74007465 6d70006c  cpy.qsort.temp.l
+ 18450 6973745f 73697a65 00637572 72656e74  ist_size.current
+ 18460 006d6f64 655f736f 72746572 005f5f63  .mode_sorter.__c
+ 18470 6f6d7061 725f666e 5f740061 64645f6d  ompar_fn_t.add_m
+ 18480 6f646500 66625f68 47667849 6e707574  ode.fb_hGfxInput
+ 18490 42756666 65724368 616e6765 64006662  BufferChanged.fb
+ 184a0 5f44656c 6179006d 73656373 0066625f  _Delay.msecs.fb_
+ 184b0 67667844 72697665 72464244 65760066  gfxDriverFBDev.f
+ 184c0 625f6846 42446576 496e666f 0066625f  b_hFBDevInfo.fb_
+ 184d0 68583131 53637265 656e496e 666f0066  hX11ScreenInfo.f
+ 184e0 625f6766 78447269 76657258 3131006c  b_gfxDriverX11.l
+ 184f0 6f6e6720 646f7562 6c650066 625f6766  ong double.fb_gf
+ 18500 78447269 7665724f 70656e47 4c007368  xDriverOpenGL.sh
+ 18510 69667400 66625f47 66785669 65770066  ift.fb_GfxView.f
+ 18520 625f436f 6e736f6c 65566965 7700666f  b_ConsoleView.fo
+ 18530 6e745f77 00666f6e 745f6800 5f5f616c  nt_w.font_h.__al
+ 18540 69676e00 66625f68 58313145 6e746572  ign.fb_hX11Enter
+ 18550 46756c6c 73637265 656e0058 50726f70  Fullscreen.XProp
+ 18560 65727479 4576656e 74007074 68726561  ertyEvent.pthrea
+ 18570 645f636f 6e645f69 6e697400 73756277  d_cond_init.subw
+ 18580 696e646f 77006269 745f6772 61766974  indow.bit_gravit
+ 18590 79006465 7461696c 005f5f70 74687265  y.detail.__pthre
+ 185a0 61645f6d 75746578 5f730058 556e6d61  ad_mutex_s.XUnma
+ 185b0 70457665 6e740063 616c635f 636f6d70  pEvent.calc_comp
+ 185c0 5f686569 67687400 6172635f 6d6f6465  _height.arc_mode
+ 185d0 00677265 656e5f6d 61736b00 70746872  .green_mask.pthr
+ 185e0 6561645f 636f6e64 61747472 5f740066  ead_condattr_t.f
+ 185f0 726f6d5f 636f6e66 69677572 6500584d  rom_configure.XM
+ 18600 61705261 69736564 00584d6f 76655769  apRaised.XMoveWi
+ 18610 6e646f77 00786369 7263756c 61746572  ndow.xcirculater
+ 18620 65717565 73740058 574d4869 6e747300  equest.XWMHints.
+ 18630 58536574 57696e64 6f77436f 6c6f726d  XSetWindowColorm
+ 18640 6170006f 7269675f 72617465 00786e6f  ap.orig_rate.xno
+ 18650 6578706f 73650058 436c6561 7257696e  expose.XClearWin
+ 18660 646f7700 6572726f 725f636f 64650073  dow.error_code.s
+ 18670 686f7700 67726565 6e5f636c 6f73656e  how.green_closen
+ 18680 65737300 58536574 57696e64 6f774174  ess.XSetWindowAt
+ 18690 74726962 75746573 00584465 7374726f  tributes.XDestro
+ 186a0 7957696e 646f7745 76656e74 00584c69  yWindowEvent.XLi
+ 186b0 73745069 786d6170 466f726d 61747300  stPixmapFormats.
+ 186c0 58467265 65005369 7a654944 0078666f  XFree.SizeID.xfo
+ 186d0 63757300 5853697a 6548696e 74730069  cus.XSizeHints.i
+ 186e0 6e697469 616c5f73 74617465 00626974  nitial_state.bit
+ 186f0 735f7065 725f7069 78656c00 5853746f  s_per_pixel.XSto
+ 18700 7265436f 6c6f7273 0073796d 626f6c69  reColors.symboli
+ 18710 6300584d 61707069 6e674576 656e7400  c.XMappingEvent.
+ 18720 58446973 706c6179 4b657963 6f646573  XDisplayKeycodes
+ 18730 00584472 6177506f 696e7400 70726976  .XDrawPoint.priv
+ 18740 6174655f 64617461 00584d61 736b4576  ate_data.XMaskEv
+ 18750 656e7400 77696e64 6f775f74 68726561  ent.window_threa
+ 18760 64006174 6f6d0058 556e6c6f 636b4469  d.atom.XUnlockDi
+ 18770 73706c61 7900726f 6f745f69 6e707574  splay.root_input
+ 18780 5f6d6173 6b007074 68726561 645f7400  _mask.pthread_t.
+ 18790 6861735f 666f6375 73006662 5f685831  has_focus.fb_hX1
+ 187a0 314c6f63 6b005847 656e6572 69634576  1Lock.XGenericEv
+ 187b0 656e7443 6f6f6b69 65007074 68726561  entCookie.pthrea
+ 187c0 645f6372 65617465 00636f6c 6f727379  d_create.colorsy
+ 187d0 6d626f6c 73005847 45544b45 59424f41  mbols.XGETKEYBOA
+ 187e0 52444d41 5050494e 47006f72 69675f72  RDMAPPING.orig_r
+ 187f0 6f746174 696f6e00 70697865 6c735f63  otation.pixels_c
+ 18800 6d740078 6d6f7469 6f6e0058 4d6f7665  mt.xmotion.XMove
+ 18810 52657369 7a655769 6e646f77 005f5872  ResizeWindow._Xr
+ 18820 6d486173 68427563 6b657452 6563006d  mHashBucketRec.m
+ 18830 696e5f61 73706563 74006d61 705f656e  in_aspect.map_en
+ 18840 74726965 73007876 69736962 696c6974  tries.xvisibilit
+ 18850 7900616c 6c6f635f 636f6c6f 72005f5f  y.alloc_color.__
+ 18860 6f776e65 7200584b 65796d61 70457665  owner.XKeymapEve
+ 18870 6e740052 6f746174 696f6e00 5f58436f  nt.Rotation._XCo
+ 18880 6d706f73 65537461 74757300 58566973  mposeStatus.XVis
+ 18890 6962696c 69747945 76656e74 00786b65  ibilityEvent.xke
+ 188a0 796d6170 00584765 744b6579 626f6172  ymap.XGetKeyboar
+ 188b0 644d6170 70696e67 00637572 72656e74  dMapping.current
+ 188c0 5f73697a 6500626c 61636b5f 70697865  _size.black_pixe
+ 188d0 6c00726f 6f745f79 006e636f 6c6f7273  l.root_y.ncolors
+ 188e0 005f5f6c 6f636b00 58437265 61746550  .__lock.XCreateP
+ 188f0 69786d61 70007375 6277696e 646f775f  ixmap.subwindow_
+ 18900 6d6f6465 005f5f70 74687265 61645f6c  mode.__pthread_l
+ 18910 6973745f 74005870 6d467265 65436f6c  ist_t.XpmFreeCol
+ 18920 6f727346 756e6300 78636972 63756c61  orsFunc.xcircula
+ 18930 74650062 61636b67 726f756e 645f7069  te.background_pi
+ 18940 786d6170 0067635f 6d61736b 006d696e  xmap.gc_mask.min
+ 18950 5f776964 74680069 6e746572 6e5f6174  _width.intern_at
+ 18960 6f6d7300 6261636b 696e675f 70697865  oms.backing_pixe
+ 18970 6c007864 65666175 6c747300 58525253  l.xdefaults.XRRS
+ 18980 63726565 6e53697a 65006576 74797065  creenSize.evtype
+ 18990 004b6579 53796d00 584d6170 52657175  .KeySym.XMapRequ
+ 189a0 65737445 76656e74 0066625f 68583131  estEvent.fb_hX11
+ 189b0 5365744d 6f757365 00585761 7270506f  SetMouse.XWarpPo
+ 189c0 696e7465 7200636c 69705f6d 61736b00  inter.clip_mask.
+ 189d0 61626f76 65005846 6f637573 4368616e  above.XFocusChan
+ 189e0 67654576 656e7400 63686172 735f6d61  geEvent.chars_ma
+ 189f0 74636865 64005843 6c6f7365 44697370  tched.XCloseDisp
+ 18a00 6c617900 5853656c 65637469 6f6e4576  lay.XSelectionEv
+ 18a10 656e7400 66696c6c 5f737479 6c650058  ent.fill_style.X
+ 18a20 51756572 79547265 65005852 65706172  QueryTree.XRepar
+ 18a30 656e7445 76656e74 0058496e 7465726e  entEvent.XIntern
+ 18a40 41746f6d 00626974 6d61705f 6269745f  Atom.bitmap_bit_
+ 18a50 6f726465 72005f5f 64617461 0075736c  order.__data.usl
+ 18a60 65657000 70746872 6561645f 6d757465  eep.pthread_mute
+ 18a70 785f6465 7374726f 79006d69 6e5f6d61  x_destroy.min_ma
+ 18a80 70730058 47726162 506f696e 74657200  ps.XGrabPointer.
+ 18a90 70746872 6561645f 6d757465 785f7400  pthread_mutex_t.
+ 18aa0 66625f68 5831314c 65617665 46756c6c  fb_hX11LeaveFull
+ 18ab0 73637265 656e0063 6c617373 00707468  screen.class.pth
+ 18ac0 72656164 5f6d7574 65785f6c 6f636b00  read_mutex_lock.
+ 18ad0 726f6f74 5f766973 75616c00 58444953  root_visual.XDIS
+ 18ae0 504c4159 4b455943 4f444553 00776964  PLAYKEYCODES.wid
+ 18af0 74685f69 6e630058 46524545 006e6465  th_inc.XFREE.nde
+ 18b00 70746873 006d6170 5f696e73 74616c6c  pths.map_install
+ 18b10 6564006d 61785f6d 61707300 69636f6e  ed.max_maps.icon
+ 18b20 5f77696e 646f7700 58506978 6d617046  _window.XPixmapF
+ 18b30 6f726d61 7456616c 75657300 706c616e  ormatValues.plan
+ 18b40 655f6d61 736b0073 63616e6c 696e655f  e_mask.scanline_
+ 18b50 70616400 5f5f6b69 6e64005f 5f67315f  pad.__kind.__g1_
+ 18b60 73746172 74006e75 6d626572 00584465  start.number.XDe
+ 18b70 6661756c 74446570 7468005f 58525253  faultDepth._XRRS
+ 18b80 63726565 6e436f6e 66696775 72617469  creenConfigurati
+ 18b90 6f6e0058 706d416c 6c6f6343 6f6c6f72  on.XpmAllocColor
+ 18ba0 46756e63 00584372 65617465 5069786d  Func.XCreatePixm
+ 18bb0 61704375 72736f72 00584572 726f7245  apCursor.XErrorE
+ 18bc0 76656e74 005f5f67 315f6f72 69675f73  vent.__g1_orig_s
+ 18bd0 697a6500 76697375 616c6964 00566973  ize.visualid.Vis
+ 18be0 75616c49 44007873 656c6563 74696f6e  ualID.xselection
+ 18bf0 00667377 696e646f 7700584d 6f74696f  .fswindow.XMotio
+ 18c00 6e457665 6e74006c 6173745f 636c6963  nEvent.last_clic
+ 18c10 6b5f7469 6d65006e 616c6c6f 635f7069  k_time.nalloc_pi
+ 18c20 78656c73 00627974 655f6f72 64657200  xels.byte_order.
+ 18c30 66625f68 58313153 65745061 6c657474  fb_hX11SetPalett
+ 18c40 65005845 78706f73 65457665 6e74006e  e.XExposeEvent.n
+ 18c50 756d5f73 697a6573 006e756d 5f636869  um_sizes.num_chi
+ 18c60 6c647265 6e007863 6c69656e 74007272  ldren.xclient.rr
+ 18c70 5f73697a 65730078 67726170 68696373  _sizes.xgraphics
+ 18c80 6578706f 73650077 696e5f67 72617669  expose.win_gravi
+ 18c90 74790065 78745f64 61746100 5f5f7369  ty.ext_data.__si
+ 18ca0 7a650062 6c75655f 636c6f73 656e6573  ze.blue_closenes
+ 18cb0 73007768 6974655f 70697865 6c005843  s.white_pixel.XC
+ 18cc0 6f6e6669 67757265 52657175 65737445  onfigureRequestE
+ 18cd0 76656e74 00737570 65727369 7a65645f  vent.supersized_
+ 18ce0 68006b65 795f7665 63746f72 005f5f67  h.key_vector.__g
+ 18cf0 5f726566 73006b65 795f7265 70656174  _refs.key_repeat
+ 18d00 6564005f 5f636f75 6e74006d 61785f61  ed.__count.max_a
+ 18d10 73706563 74005870 6d436f6c 6f725379  spect.XpmColorSy
+ 18d20 6d626f6c 00677261 70686963 735f6578  mbol.graphics_ex
+ 18d30 706f7375 72657300 66726565 5f636f6c  posures.free_col
+ 18d40 6f727300 58556e64 6566696e 65437572  ors.XUndefineCur
+ 18d50 736f7200 67345f63 6f6c6f72 00584372  sor.g4_color.XCr
+ 18d60 65617465 436f6c6f 726d6170 0074735f  eateColormap.ts_
+ 18d70 795f6f72 6967696e 00726564 5f6d6173  y_origin.red_mas
+ 18d80 6b005f58 44697370 6c617900 5f5f7772  k._XDisplay.__wr
+ 18d90 65667300 5853656c 65637469 6f6e436c  efs.XSelectionCl
+ 18da0 65617245 76656e74 00585065 656b4576  earEvent.XPeekEv
+ 18db0 656e7400 76697375 616c5f64 65707468  ent.visual_depth
+ 18dc0 00726f6f 745f7800 66625f68 58313153  .root_x.fb_hX11S
+ 18dd0 65745769 6e646f77 5469746c 65007072  etWindowTitle.pr
+ 18de0 6f746f5f 6d696e6f 725f7665 7273696f  oto_minor_versio
+ 18df0 6e00584c 6f636b44 6973706c 61790064  n.XLockDisplay.d
+ 18e00 6973706c 61795f6f 66667365 74007863  isplay_offset.xc
+ 18e10 726f7373 696e6700 74617267 65745f72  rossing.target_r
+ 18e20 61746500 6d616a6f 725f636f 64650077  ate.major_code.w
+ 18e30 6d5f696e 7465726e 5f68696e 74730058  m_intern_hints.X
+ 18e40 52616973 6557696e 646f7700 58436972  RaiseWindow.XCir
+ 18e50 63756c61 74655265 71756573 74457665  culateRequestEve
+ 18e60 6e740058 706d4578 74656e73 696f6e00  nt.XpmExtension.
+ 18e70 6261636b 696e675f 706c616e 65730064  backing_planes.d
+ 18e80 6973706c 61795f6e 616d6500 7069786d  isplay_name.pixm
+ 18e90 61705f66 6f726d61 74005f5f 70746872  ap_format.__pthr
+ 18ea0 6561645f 696e7465 726e616c 5f6c6973  ead_internal_lis
+ 18eb0 74006c69 6e655f73 74796c65 00726573  t.line_style.res
+ 18ec0 6f757263 65696400 726f6f74 5f77696e  ourceid.root_win
+ 18ed0 646f7700 5f5f7072 65760066 625f6858  dow.__prev.fb_hX
+ 18ee0 31314665 7463684d 6f646573 00786465  11FetchModes.xde
+ 18ef0 7374726f 7977696e 646f7700 58467265  stroywindow.XFre
+ 18f00 65436f6c 6f726d61 70007072 6f746f5f  eColormap.proto_
+ 18f10 6d616a6f 725f7665 7273696f 6e006662  major_version.fb
+ 18f20 5f685831 31496e69 7457696e 646f7700  _hX11InitWindow.
+ 18f30 58556e67 72616250 6f696e74 65720058  XUngrabPointer.X
+ 18f40 4e657874 4576656e 7400796f 75725f65  NextEvent.your_e
+ 18f50 76656e74 5f6d6173 6b007065 656b5f65  vent_mask.peek_e
+ 18f60 76656e74 00636f6c 6f72735f 636d7400  vent.colors_cmt.
+ 18f70 78706d5f 61747472 69627300 76616c75  xpm_attribs.valu
+ 18f80 656d6173 6b00584f 70656e44 6973706c  emask.XOpenDispl
+ 18f90 61790058 43686563 6b57696e 646f7745  ay.XCheckWindowE
+ 18fa0 76656e74 00584465 6c657465 50726f70  vent.XDeleteProp
+ 18fb0 65727479 00786578 706f7365 00636f6c  erty.xexpose.col
+ 18fc0 6f725f63 6c6f7375 72650069 735f6869  or_closure.is_hi
+ 18fd0 6e740061 6c6c6f63 5f636c6f 73655f63  nt.alloc_close_c
+ 18fe0 6f6c6f72 7300626f 72646572 5f776964  olors.border_wid
+ 18ff0 74680058 4c6f6f6b 75705374 72696e67  th.XLookupString
+ 19000 00707468 72656164 5f636f6e 645f7400  .pthread_cond_t.
+ 19010 58525243 6f6e6669 67437572 72656e74  XRRConfigCurrent
+ 19020 52617465 00647261 7761626c 65007862  Rate.drawable.xb
+ 19030 7574746f 6e005843 72656174 6557696e  utton.XCreateWin
+ 19040 646f7700 58437265 61746547 43006d6f  dow.XCreateGC.mo
+ 19050 7573655f 6f6e0072 6f6f745f 64657074  use_on.root_dept
+ 19060 68007361 76655f75 6e646572 73006662  h.save_unders.fb
+ 19070 5f685831 31536574 57696e64 6f77506f  _hX11SetWindowPo
+ 19080 73007661 6c75655f 6d61736b 00726564  s.value_mask.red
+ 19090 5f636c6f 73656e65 7373006d 6f757365  _closeness.mouse
+ 190a0 5f79005f 5f6e6578 74007072 69766174  _y.__next.privat
+ 190b0 65320065 78616374 436f6c6f 72730078  e2.exactColors.x
+ 190c0 636f6f6b 69650058 52524765 74536372  cookie.XRRGetScr
+ 190d0 65656e49 6e666f00 70746872 6561645f  eenInfo.pthread_
+ 190e0 6d757465 78617474 725f7400 584b6579  mutexattr_t.XKey
+ 190f0 4576656e 74006d6f 7573655f 78005363  Event.mouse_x.Sc
+ 19100 7265656e 466f726d 61740070 6c616365  reenFormat.place
+ 19110 0069636f 6e5f7069 786d6170 00584d61  .icon_pixmap.XMa
+ 19120 70457665 6e74005f 5f656c69 73696f6e  pEvent.__elision
+ 19130 005f5f67 315f7374 61727433 32005844  .__g1_start32.XD
+ 19140 6973706c 61795769 64746800 58525251  isplayWidth.XRRQ
+ 19150 75657279 56657273 696f6e00 58526573  ueryVersion.XRes
+ 19160 697a6557 696e646f 7700636c 69705f78  izeWindow.clip_x
+ 19170 5f6f7269 67696e00 5f5f675f 73697a65  _origin.__g_size
+ 19180 00646566 61756c74 5f736372 65656e00  .default_screen.
+ 19190 6f766572 72696465 5f726564 69726563  override_redirec
+ 191a0 74006269 746d6170 5f666f72 6d617400  t.bitmap_format.
+ 191b0 6d6f7469 6f6e5f62 75666665 72006662  motion_buffer.fb
+ 191c0 5f68496e 69745831 314b6579 636f6465  _hInitX11Keycode
+ 191d0 546f5363 616e636f 64655462 006e756d  ToScancodeTb.num
+ 191e0 5f726174 65730058 51756572 79506f69  _rates.XQueryPoi
+ 191f0 6e746572 006d696e 5f6b6579 636f6465  nter.min_keycode
+ 19200 00786572 726f7200 636c6970 5f795f6f  .xerror.clip_y_o
+ 19210 72696769 6e005843 6f6c6f72 6d617045  rigin.XColormapE
+ 19220 76656e74 005f5850 72697661 74650063  vent._XPrivate.c
+ 19230 6f6e6400 6e706978 656c7300 6d696e5f  ond.npixels.min_
+ 19240 68656967 68740074 72616e73 6c617465  height.translate
+ 19250 5f6b6579 005f5845 76656e74 0058426c  _key._XEvent.XBl
+ 19260 61636b50 6978656c 00584465 7374726f  ackPixel.XDestro
+ 19270 7957696e 646f7700 466f6e74 0078636f  yWindow.Font.xco
+ 19280 6e666967 75726500 636f6c6f 72546162  nfigure.colorTab
+ 19290 6c650066 625f6858 31315761 69745653  le.fb_hX11WaitVS
+ 192a0 796e6300 74696c65 00786372 65617465  ync.tile.xcreate
+ 192b0 77696e64 6f770066 756e6374 696f6e00  window.function.
+ 192c0 58525246 72656553 63726565 6e436f6e  XRRFreeScreenCon
+ 192d0 66696749 6e666f00 58436f6e 66696775  figInfo.XConfigu
+ 192e0 72654576 656e7400 6d6f7573 655f6275  reEvent.mouse_bu
+ 192f0 74746f6e 73007361 6d655f73 63726565  ttons.same_scree
+ 19300 6e00786b 65790062 6c75655f 6d61736b  n.xkey.blue_mask
+ 19310 0066625f 68586c69 62496e69 74005f5f  .fb_hXlibInit.__
+ 19320 77736571 33320058 50656e64 696e6700  wseq32.XPending.
+ 19330 72657175 6573745f 636f6465 00787365  request_code.xse
+ 19340 6c656374 696f6e63 6c656172 00626974  lectionclear.bit
+ 19350 6d61705f 70616400 786d6170 72657175  map_pad.xmaprequ
+ 19360 65737400 6d6f7573 655f6877 6865656c  est.mouse_hwheel
+ 19370 006d6f75 73655f77 6865656c 0068696e  .mouse_wheel.hin
+ 19380 74735f63 6d740078 636f6e66 69677572  ts_cmt.xconfigur
+ 19390 65726571 75657374 00626173 655f7769  erequest.base_wi
+ 193a0 64746800 6e666f72 6d617473 0066696c  dth.nformats.fil
+ 193b0 6c5f7275 6c65005f 58507269 76446973  l_rule._XPrivDis
+ 193c0 706c6179 00584772 61706869 63734578  play.XGraphicsEx
+ 193d0 706f7365 4576656e 74006d61 785f7265  poseEvent.max_re
+ 193e0 71756573 745f7369 7a650066 625f7831  quest_size.fb_x1
+ 193f0 31006763 5f76616c 75657300 62757474  1.gc_values.butt
+ 19400 6f6e735f 6d61736b 006d6178 5f686569  ons_mask.max_hei
+ 19410 67687400 58446566 61756c74 53637265  ght.XDefaultScre
+ 19420 656e006d 6f757365 5f636c69 70005855  en.mouse_clip.XU
+ 19430 6e677261 624b6579 626f6172 64007872  ngrabKeyboard.xr
+ 19440 6573697a 65726571 75657374 00737469  esizerequest.sti
+ 19450 70706c65 00585365 6e644576 656e7400  pple.XSendEvent.
+ 19460 58437265 61746557 696e646f 77457665  XCreateWindowEve
+ 19470 6e740058 46726565 5069786d 61700073  nt.XFreePixmap.s
+ 19480 65726961 6c00626c 616e6b5f 63757273  erial.blank_curs
+ 19490 6f720066 625f6858 3131496e 69740058  or.fb_hX11Init.X
+ 194a0 53746f72 654e616d 65005852 52536574  StoreName.XRRSet
+ 194b0 53637265 656e436f 6e666967 416e6452  ScreenConfigAndR
+ 194c0 61746500 69735f72 756e6e69 6e670062  ate.is_running.b
+ 194d0 61636b67 726f756e 645f7069 78656c00  ackground_pixel.
+ 194e0 616c6c5f 6576656e 745f6d61 736b7300  all_event_masks.
+ 194f0 5f5f7573 65636f6e 64735f74 00584772  __useconds_t.XGr
+ 19500 61624b65 79626f61 7264005f 5f737069  abKeyboard.__spi
+ 19510 6e730078 67656e65 72696300 78677261  ns.xgeneric.xgra
+ 19520 76697479 006e7363 7265656e 73005f5f  vity.nscreens.__
+ 19530 6e757365 7273006c 6173745f 72657175  nusers.last_requ
+ 19540 6573745f 72656164 006d6178 5f776964  est_read.max_wid
+ 19550 7468006e 6c696e65 73005852 52436f6e  th.nlines.XRRCon
+ 19560 66696743 75727265 6e74436f 6e666967  figCurrentConfig
+ 19570 75726174 696f6e00 73656e64 5f657665  uration.send_eve
+ 19580 6e740058 4368616e 67655072 6f706572  nt.XChangeProper
+ 19590 74790072 65717565 73746f72 006d6f75  ty.requestor.mou
+ 195a0 73655f79 5f726f6f 74006269 746d6170  se_y_root.bitmap
+ 195b0 5f756e69 74005844 65666175 6c74526f  _unit.XDefaultRo
+ 195c0 6f745769 6e646f77 00585365 6c656374  otWindow.XSelect
+ 195d0 696f6e52 65717565 73744576 656e7400  ionRequestEvent.
+ 195e0 5f5f6869 6768006d 6f757365 5f785f72  __high.mouse_x_r
+ 195f0 6f6f7400 58525243 6f6e6669 6753697a  oot.XRRConfigSiz
+ 19600 6573006e 76697375 616c7300 5f5f6c6f  es.nvisuals.__lo
+ 19610 7700786d 61707069 6e670072 65616c5f  w.xmapping.real_
+ 19620 68005844 6973706c 61794865 69676874  h.XDisplayHeight
+ 19630 00584369 7263756c 61746545 76656e74  .XCirculateEvent
+ 19640 00636f6d 706f7365 5f707472 0054696d  .compose_ptr.Tim
+ 19650 65006e65 7874656e 73696f6e 73005843  e.nextensions.XC
+ 19660 6f6c6f72 00626163 6b67726f 756e6400  olor.background.
+ 19670 636f6e66 6967006d 61705f73 74617465  config.map_state
+ 19680 00785f68 6f747370 6f740079 5f686f74  .x_hotspot.y_hot
+ 19690 73706f74 00746172 6765745f 73697a65  spot.target_size
+ 196a0 00707468 72656164 5f636f6e 645f7369  .pthread_cond_si
+ 196b0 676e616c 00584465 66696e65 43757273  gnal.XDefineCurs
+ 196c0 6f720058 53657457 4d48696e 7473005f  or.XSetWMHints._
+ 196d0 58474300 72656c65 61736500 66625f68  XGC.release.fb_h
+ 196e0 506f7374 4b657900 6261636b 696e675f  PostKey.backing_
+ 196f0 73746f72 65006e75 6d5f666f 726d6174  store.num_format
+ 19700 73005846 72656543 7572736f 72005841  s.XFreeCursor.XA
+ 19710 6e794576 656e7400 5f5f675f 7369676e  nyEvent.__g_sign
+ 19720 616c7300 6172726f 775f6375 72736f72  als.arrow_cursor
+ 19730 00585365 74574d50 726f746f 636f6c73  .XSetWMProtocols
+ 19740 0078616e 7900646f 5f6e6f74 5f70726f  .xany.do_not_pro
+ 19750 70616761 74655f6d 61736b00 58476574  pagate_mask.XGet
+ 19760 57696e64 6f774174 74726962 75746573  WindowAttributes
+ 19770 006d6865 69676874 00583131 44524956  .mheight.X11DRIV
+ 19780 4552006e 756d7379 6d626f6c 73006d61  ER.numsymbols.ma
+ 19790 785f6b65 79636f64 65007863 6f6c6f72  x_keycode.xcolor
+ 197a0 6d617000 70746872 6561645f 6d757465  map.pthread_mute
+ 197b0 785f696e 69740058 44656661 756c7456  x_init.XDefaultV
+ 197c0 69737561 6c005843 6c69656e 744d6573  isual.XClientMes
+ 197d0 73616765 4576656e 74005857 696e646f  sageEvent.XWindo
+ 197e0 77417474 72696275 74657300 66625f68  wAttributes.fb_h
+ 197f0 58313155 6e6c6f63 6b005852 65706172  X11Unlock.XRepar
+ 19800 656e7457 696e646f 7700776d 77696e64  entWindow.wmwind
+ 19810 6f770066 625f7831 316b6579 636f6465  ow.fb_x11keycode
+ 19820 5f746f5f 7363616e 636f6465 00786c69  _to_scancode.xli
+ 19830 625f696e 69746564 00726762 5f666e61  b_inited.rgb_fna
+ 19840 6d65006d 65737361 67655f74 79706500  me.message_type.
+ 19850 66697273 745f6b65 79636f64 65005f5f  first_keycode.__
+ 19860 6c697374 00787072 6f706572 74790063  list.xproperty.c
+ 19870 7572736f 725f7368 6f776e00 68656967  ursor_shown.heig
+ 19880 68745f69 6e630058 4e6f4578 706f7365  ht_inc.XNoExpose
+ 19890 4576656e 74006662 5f70726f 6772616d  Event.fb_program
+ 198a0 5f69636f 6e006261 73655f68 65696768  _icon.base_heigh
+ 198b0 74007873 656c6563 74696f6e 72657175  t.xselectionrequ
+ 198c0 65737400 73617665 5f756e64 65720063  est.save_under.c
+ 198d0 6f6c6f72 5f6b6579 0076656e 646f7200  olor_key.vendor.
+ 198e0 5843726f 7373696e 67457665 6e740069  XCrossingEvent.i
+ 198f0 636f6e5f 78006963 6f6e5f79 0058416c  con_x.icon_y.XAl
+ 19900 6c6f6353 697a6548 696e7473 00707468  locSizeHints.pth
+ 19910 72656164 5f617474 725f7400 6a6f696e  read_attr_t.join
+ 19920 5f737479 6c650071 6c656e00 70746872  _style.qlen.pthr
+ 19930 6561645f 6d757465 785f756e 6c6f636b  ead_mutex_unlock
+ 19940 0077696e 646f775f 67726f75 70006269  .window_group.bi
+ 19950 74735f70 65725f72 67620064 65666175  ts_per_rgb.defau
+ 19960 6c745f67 63006963 6f6e5f6d 61736b00  lt_gc.icon_mask.
+ 19970 78726570 6172656e 74006461 73686573  xreparent.dashes
+ 19980 005f5f77 73657100 5847656e 65726963  .__wseq.XGeneric
+ 19990 4576656e 74007072 69766174 65313000  Event.private10.
+ 199a0 70726976 61746531 31007072 69766174  private11.privat
+ 199b0 65313200 70726976 61746531 33007072  e12.private13.pr
+ 199c0 69766174 65313400 70726976 61746531  ivate14.private1
+ 199d0 35007072 69766174 65313600 70726976  5.private16.priv
+ 199e0 61746531 37007072 69766174 65313800  ate17.private18.
+ 199f0 70726976 61746531 39005842 7574746f  private19.XButto
+ 19a00 6e457665 6e740058 53657457 4d4e6f72  nEvent.XSetWMNor
+ 19a10 6d616c48 696e7473 00585252 51756572  malHints.XRRQuer
+ 19a20 79457874 656e7369 6f6e005f 58457874  yExtension._XExt
+ 19a30 44617461 0066625f 68536361 6e636f64  Data.fb_hScancod
+ 19a40 65546f45 7874656e 6465644b 65790058  eToExtendedKey.X
+ 19a50 706d4174 74726962 75746573 0074735f  pmAttributes.ts_
+ 19a60 785f6f72 6967696e 005f5f70 74687265  x_origin.__pthre
+ 19a70 61645f63 6f6e645f 7300776d 5f64656c  ad_cond_s.wm_del
+ 19a80 6574655f 77696e64 6f770063 61705f73  ete_window.cap_s
+ 19a90 74796c65 00584743 56616c75 65730070  tyle.XGCValues.p
+ 19aa0 74687265 61645f6a 6f696e00 6d5f636f  thread_join.m_co
+ 19ab0 6c6f7200 66625f68 58313145 78697400  lor.fb_hX11Exit.
+ 19ac0 70726976 61746531 00707269 76617465  private1.private
+ 19ad0 33007072 69766174 65340070 72697661  3.private4.priva
+ 19ae0 74653500 70726976 61746536 00707269  te5.private6.pri
+ 19af0 76617465 38007072 69766174 65390072  vate8.private9.r
+ 19b00 65736f75 7263655f 616c6c6f 63004b65  esource_alloc.Ke
+ 19b10 79436f64 65007875 6e6d6170 00626f72  yCode.xunmap.bor
+ 19b20 6465725f 7069786d 61700058 52657369  der_pixmap.XResi
+ 19b30 7a655265 71756573 74457665 6e740066  zeRequestEvent.f
+ 19b40 7265655f 70726976 61746500 58706d43  ree_private.XpmC
+ 19b50 6f6c6f72 0058496e 69745468 72656164  olor.XInitThread
+ 19b60 73005761 69744d61 70706564 0058706d  s.WaitMapped.Xpm
+ 19b70 43726561 74655069 786d6170 46726f6d  CreatePixmapFrom
+ 19b80 44617461 006d6173 6b5f7069 78656c00  Data.mask_pixel.
+ 19b90 684f6e41 6c74456e 74657200 6d696e6f  hOnAltEnter.mino
+ 19ba0 725f636f 64650058 506f696e 74657200  r_code.XPointer.
+ 19bb0 66625f68 58313147 65744d6f 75736500  fb_hX11GetMouse.
+ 19bc0 626f7264 65725f70 6978656c 00584672  border_pixel.XFr
+ 19bd0 65654743 00584772 61766974 79457665  eeGC.XGravityEve
+ 19be0 6e740058 5252436f 6e666967 52617465  nt.XRRConfigRate
+ 19bf0 73006368 696c6400 58525253 65745363  s.child.XRRSetSc
+ 19c00 7265656e 436f6e66 69670058 43726561  reenConfig.XCrea
+ 19c10 7465466f 6e744375 72736f72 00585379  teFontCursor.XSy
+ 19c20 6e630063 6f6c6f72 5f6d6170 00707468  nc.color_map.pth
+ 19c30 72656164 5f636f6e 645f6465 7374726f  read_cond_destro
+ 19c40 79006d77 69647468 00707468 72656164  y.mwidth.pthread
+ 19c50 5f636f6e 645f7761 69740066 6f726567  _cond_wait.foreg
+ 19c60 726f756e 64006469 73706c61 79006461  round.display.da
+ 19c70 73685f6f 66667365 74006675 6c6c0063  sh_offset.full.c
+ 19c80 6c697070 65645f78 3100636c 69707065  lipped_x1.clippe
+ 19c90 645f7832 00636c69 70706564 5f793100  d_x2.clipped_y1.
+ 19ca0 636c6970 7065645f 79320072 65736574  clipped_y2.reset
+ 19cb0 5f636f6e 736f6c65 5f656e64 0066625f  _console_end.fb_
+ 19cc0 436f6e73 6f6c6547 6574426f 74526f77  ConsoleGetBotRow
+ 19cd0 00636f6e 5f795f65 6e640076 6965775f  .con_y_end.view_
+ 19ce0 68656967 68740066 625f436f 6e736f6c  height.fb_Consol
+ 19cf0 65476574 546f7052 6f770064 69727479  eGetTopRow.dirty
+ 19d00 5f6c656e 006e6577 5f78006e 65775f79  _len.new_x.new_y
+ 19d10 00726573 65745f63 6f6e736f 6c655f73  .reset_console_s
+ 19d20 74617274 00726573 65745f67 66785f70  tart.reset_gfx_p
+ 19d30 6f730063 6f6e5f79 5f737461 72740063  os.con_y_start.c
+ 19d40 6f6d7072 65737365 645f6461 74610066  ompressed_data.f
+ 19d50 625f6844 65636f64 6500696e 7465726e  b_hDecode.intern
+ 19d60 616c5f64 61746100 76746f74 616c0046  al_data.vtotal.F
+ 19d70 42444556 44524956 45520066 625f7662  BDEVDRIVER.fb_vb
+ 19d80 6c616e6b 0069735f 61637469 76650066  lank.is_active.f
+ 19d90 625f6847 6574426c 69747465 72005f5f  b_hGetBlitter.__
+ 19da0 75313600 69735f70 616c6574 74655f63  u16.is_palette_c
+ 19db0 68616e67 65640066 625f6843 6f6c6f72  hanged.fb_hColor
+ 19dc0 44697374 616e6365 00747261 6e737000  Distance.transp.
+ 19dd0 67726179 7363616c 65005f5f 75333200  grayscale.__u32.
+ 19de0 6c656674 5f6d6172 67696e00 6e6f6e73  left_margin.nons
+ 19df0 74640064 72697665 725f7265 73746f72  td.driver_restor
+ 19e00 655f7363 7265656e 00637572 5f747600  e_screen.cur_tv.
+ 19e10 6d656d6d 6f766500 6c6f7765 725f6d61  memmove.lower_ma
+ 19e20 7267696e 00687379 6e635f6c 656e0064  rgin.hsync_len.d
+ 19e30 65766963 655f6e61 6d65005f 5f617272  evice_name.__arr
+ 19e40 005f5f66 64735f62 69747300 64657669  .__fds_bits.devi
+ 19e50 63655f69 6e666f00 7970616e 73746570  ce_info.ypanstep
+ 19e60 006d6d61 70363400 736d656d 5f737461  .mmap64.smem_sta
+ 19e70 72740042 4c495454 45520047 46584d4f  rt.BLITTER.GFXMO
+ 19e80 4445006d 6f757365 5f73686f 776e006f  DE.mouse_shown.o
+ 19e90 7269675f 6d6f6465 0066625f 68536f66  rig_mode.fb_hSof
+ 19ea0 74437572 736f7255 6e707574 0074696d  tCursorUnput.tim
+ 19eb0 6576616c 00647269 7665725f 6c6f636b  eval.driver_lock
+ 19ec0 00736f75 72636500 7673796e 635f666c  .source.vsync_fl
+ 19ed0 61677300 726f7461 7465006d 6d696f5f  ags.rotate.mmio_
+ 19ee0 73746172 74006d6d 61700068 746f7461  start.mmap.htota
+ 19ef0 6c007872 65730062 6573745f 64697374  l.xres.best_dist
+ 19f00 00647269 7665725f 66657463 685f6d6f  .driver_fetch_mo
+ 19f10 64657300 5f5f6664 5f6d6173 6b006863  des.__fd_mask.hc
+ 19f20 6f756e74 00737461 6e646172 645f6d6f  ount.standard_mo
+ 19f30 64650074 765f7573 65630076 6d6f6465  de.tv_usec.vmode
+ 19f40 00747970 655f6175 78007069 78636c6f  .type_aux.pixclo
+ 19f50 636b0064 72697665 725f7365 745f6d6f  ck.driver_set_mo
+ 19f60 75736500 66625f68 536f6674 43757273  use.fb_hSoftCurs
+ 19f70 6f724578 6974006d 756e6d61 70006662  orExit.munmap.fb
+ 19f80 5f68536f 66744375 72736f72 496e6974  _hSoftCursorInit
+ 19f90 00707265 73736564 006d6f75 73655f66  .pressed.mouse_f
+ 19fa0 6400696d 5f696e69 74007872 65735f76  d.im_init.xres_v
+ 19fb0 69727475 616c0066 625f6843 6f6e736f  irtual.fb_hConso
+ 19fc0 6c654766 784d6f64 6500736d 656d5f6c  leGfxMode.smem_l
+ 19fd0 656e0070 616c6574 74655f6c 656e0061  en.palette_len.a
+ 19fe0 6363656c 5f666c61 6773006d 6f757365  ccel_flags.mouse
+ 19ff0 5f646576 69636500 79777261 70737465  _device.ywrapste
+ 1a000 70006472 69766572 5f746872 65616400  p.driver_thread.
+ 1a010 696f6374 6c006d6f 7573655f 7061636b  ioctl.mouse_pack
+ 1a020 65745f73 697a6500 5f5f7375 7365636f  et_size.__suseco
+ 1a030 6e64735f 74006472 69766572 5f6b6579  nds_t.driver_key
+ 1a040 5f68616e 646c6572 00627974 65735f6c  _handler.bytes_l
+ 1a050 65667400 7870616e 73746570 0066625f  eft.xpanstep.fb_
+ 1a060 68536f66 74437572 736f7250 7574006d  hSoftCursorPut.m
+ 1a070 6f757365 5f7a0064 65766963 655f6664  ouse_z.device_fd
+ 1a080 0066625f 62697466 69656c64 00636f6c  .fb_bitfield.col
+ 1a090 6f725f63 6f6e7600 66625f63 6d617000  or_conv.fb_cmap.
+ 1a0a0 62797465 735f7265 61640073 656c6563  bytes_read.selec
+ 1a0b0 74006662 5f666264 65760063 61706162  t.fb_fbdev.capab
+ 1a0c0 696c6974 69657300 66625f76 61725f73  ilities.fb_var_s
+ 1a0d0 63726565 6e696e66 6f006765 7474696d  creeninfo.gettim
+ 1a0e0 656f6664 61790072 65735f69 6e646578  eofday.res_index
+ 1a0f0 006f7269 675f636d 6170005f 5f74696d  .orig_cmap.__tim
+ 1a100 655f7400 64726976 65725f67 65745f6d  e_t.driver_get_m
+ 1a110 6f757365 00726967 68745f6d 61726769  ouse.right_margi
+ 1a120 6e006472 69766572 5f756e6c 6f636b00  n.driver_unlock.
+ 1a130 64726976 65725f65 78697400 64726976  driver_exit.driv
+ 1a140 65725f77 6169745f 7673796e 63006472  er_wait_vsync.dr
+ 1a150 69766572 5f696e69 74006d73 625f7269  iver_init.msb_ri
+ 1a160 67687400 62657374 5f696e64 65780063  ght.best_index.c
+ 1a170 75725f74 696d6500 7673796e 635f6c65  ur_time.vsync_le
+ 1a180 6e00796f 66667365 74007972 6573006d  n.yoffset.yres.m
+ 1a190 6d696f5f 6c656e00 66645f73 65740061  mio_len.fd_set.a
+ 1a1a0 6363656c 0076636f 756e7400 64726976  ccel.vcount.driv
+ 1a1b0 65725f73 6176655f 73637265 656e0066  er_save_screen.f
+ 1a1c0 625f6853 6f667443 7572736f 7250616c  b_hSoftCursorPal
+ 1a1d0 65747465 4368616e 67656400 64726976  etteChanged.driv
+ 1a1e0 65725f73 65745f70 616c6574 74650066  er_set_palette.f
+ 1a1f0 625f6669 785f7363 7265656e 696e666f  b_fix_screeninfo
+ 1a200 00636f6c 6f727370 61636500 79726573  .colorspace.yres
+ 1a210 5f766972 7475616c 00766761 31365f62  _virtual.vga16_b
+ 1a220 6c697474 65720078 6f666673 65740075  litter.xoffset.u
+ 1a230 70706572 5f6d6172 67696e00 706c616e  pper_margin.plan
+ 1a240 65006672 616d6562 75666665 725f6f66  e.framebuffer_of
+ 1a250 66736574 00616374 69766174 65007476  fset.activate.tv
+ 1a260 5f736563 00676f74 5f6d6f64 65006472  _sec.got_mode.dr
+ 1a270 69766572 5f64756d 6d790047 4c58436f  iver_dummy.GLXCo
+ 1a280 6e746578 74006662 5f684479 6e556e6c  ntext.fb_hDynUnl
+ 1a290 6f616400 66625f68 58313157 61697455  oad.fb_hX11WaitU
+ 1a2a0 6e6d6170 70656400 7374726e 636d7000  nmapped.strncmp.
+ 1a2b0 62696e64 00437265 61746543 6f6e7465  bind.CreateConte
+ 1a2c0 78740047 4c584655 4e435300 44657374  xt.GLXFUNCS.Dest
+ 1a2d0 726f7943 6f6e7465 7874005f 5f66625f  royContext.__fb_
+ 1a2e0 676c5800 474c584d 414b4543 55525245  glX.GLXMAKECURRE
+ 1a2f0 4e540067 6c785f66 756e6373 00474c58  NT.glx_funcs.GLX
+ 1a300 44726177 61626c65 006f7065 6e676c5f  Drawable.opengl_
+ 1a310 77696e64 6f775f65 78697400 474c5843  window_exit.GLXC
+ 1a320 484f4f53 45564953 55414c00 64726976  HOOSEVISUAL.driv
+ 1a330 65725f66 6c697000 4d616b65 43757272  er_flip.MakeCurr
+ 1a340 656e7400 6f70656e 676c5f77 696e646f  ent.opengl_windo
+ 1a350 775f7570 64617465 0066625f 6844796e  w_update.fb_hDyn
+ 1a360 4c6f6164 00474c58 53574150 42554646  Load.GLXSWAPBUFF
+ 1a370 45525300 43686f6f 73655669 7375616c  ERS.ChooseVisual
+ 1a380 005f5f47 4c58636f 6e746578 74526563  .__GLXcontextRec
+ 1a390 00537761 70427566 66657273 006f7065  .SwapBuffers.ope
+ 1a3a0 6e676c5f 77696e64 6f775f69 6e697400  ngl_window_init.
+ 1a3b0 58566973 75616c49 6e666f00 58446973  XVisualInfo.XDis
+ 1a3c0 706c6179 4e616d65 00676c5f 6c696200  playName.gl_lib.
+ 1a3d0 474c5844 45535452 4f59434f 4e544558  GLXDESTROYCONTEX
+ 1a3e0 54007361 6d706c65 735f6174 74726962  T.samples_attrib
+ 1a3f0 00474c58 43524541 5445434f 4e544558  .GLXCREATECONTEX
+ 1a400 5400636f 6c6f726d 61705f73 697a6500  T.colormap_size.
+ 1a410 58556e6d 61705769 6e646f77 006f7065  XUnmapWindow.ope
+ 1a420 6e676c5f 77696e64 6f775f69 646c6500  ngl_window_idle.
+ 1a430 5f5f7365 71007570 64617465 5f6d6173  __seq.update_mas
+ 1a440 6b5f3136 0053686d 53656700 5853686d  k_16.ShmSeg.XShm
+ 1a450 5365676d 656e7449 6e666f00 75706461  SegmentInfo.upda
+ 1a460 74655f6d 61736b00 63756964 0073686d  te_mask.cuid.shm
+ 1a470 5f696e66 6f007368 6d736567 0073686d  _info.shmseg.shm
+ 1a480 5f647469 6d650073 686d5f6e 61747463  _dtime.shm_nattc
+ 1a490 68005853 686d4372 65617465 496d6167  h.XShmCreateImag
+ 1a4a0 65006970 635f7065 726d0058 50757449  e.ipc_perm.XPutI
+ 1a4b0 6d616765 00736861 70655f67 63007368  mage.shape_gc.sh
+ 1a4c0 6d696400 73686d61 64647200 5f5f6b65  mid.shmaddr.__ke
+ 1a4d0 795f7400 6164645f 70697865 6c006279  y_t.add_pixel.by
+ 1a4e0 7465735f 7065725f 6c696e65 00584372  tes_per_line.XCr
+ 1a4f0 65617465 496d6167 65006973 5f73686d  eateImage.is_shm
+ 1a500 005f5f6d 6f64655f 74007368 6d5f7065  .__mode_t.shm_pe
+ 1a510 726d0064 65707468 5f617267 005f5f73  rm.depth_arg.__s
+ 1a520 79736361 6c6c5f75 6c6f6e67 5f740073  yscall_ulong_t.s
+ 1a530 686d6765 74005853 68617065 436f6d62  hmget.XShapeComb
+ 1a540 696e654d 61736b00 6f626461 74610075  ineMask.obdata.u
+ 1a550 70646174 655f6d61 736b5f38 00585368  pdate_mask_8.XSh
+ 1a560 6d417474 61636800 73686170 655f7069  mAttach.shape_pi
+ 1a570 786d6170 00646573 74726f79 5f696d61  xmap.destroy_ima
+ 1a580 67650073 686d5f63 74696d65 00585368  ge.shm_ctime.XSh
+ 1a590 6d446574 61636800 63726561 74655f69  mDetach.create_i
+ 1a5a0 6d616765 0073686d 6174005f 5f676c69  mage.shmat.__gli
+ 1a5b0 62635f72 65736572 76656431 005f5f67  bc_reserved1.__g
+ 1a5c0 6c696263 5f726573 65727665 6432005f  libc_reserved2._
+ 1a5d0 5f676c69 62635f72 65736572 76656435  _glibc_reserved5
+ 1a5e0 005f5f67 6c696263 5f726573 65727665  .__glibc_reserve
+ 1a5f0 6436005f 5f706964 5f740073 686d5f61  d6.__pid_t.shm_a
+ 1a600 74696d65 00783131 5f696e69 74006367  time.x11_init.cg
+ 1a610 69640073 68617065 5f696d61 67650073  id.shape_image.s
+ 1a620 686d6964 5f647300 5f5f7061 64320073  hmid_ds.__pad2.s
+ 1a630 686d6174 745f7400 75706461 74655f6d  hmatt_t.update_m
+ 1a640 61736b5f 3332005f 5f676964 5f740072  ask_32.__gid_t.r
+ 1a650 6561644f 6e6c7900 58437265 61746542  eadOnly.XCreateB
+ 1a660 69746d61 7046726f 6d446174 61007368  itmapFromData.sh
+ 1a670 6d647400 73686d5f 63706964 0073686d  mdt.shm_cpid.shm
+ 1a680 63746c00 5853686d 51756572 79457874  ctl.XShmQueryExt
+ 1a690 656e7369 6f6e0073 686d5f73 6567737a  ension.shm_segsz
+ 1a6a0 005f5f75 69645f74 0073686d 5f6c7069  .__uid_t.shm_lpi
+ 1a6b0 64007831 315f6578 6974005f 5f6b6579  d.x11_exit.__key
+ 1a6c0 0069735f 72676200 5f58496d 61676500  .is_rgb._XImage.
+ 1a6d0 7831315f 75706461 74650058 53686d50  x11_update.XShmP
+ 1a6e0 7574496d 61676500 7375625f 696d6167  utImage.sub_imag
+ 1a6f0 65007465 6d705f63 6c697000 74656d70  e.temp_clip.temp
+ 1a700 5f7a0074 656d705f 62757474 6f6e7300  _z.temp_buttons.
+ 1a710 6661696c 75726500 6b65795f 62756666  failure.key_buff
+ 1a720 65725f63 68616e67 65640069 735f696e  er_changed.is_in
+ 1a730 70757400 6b65795f 62756666 65720067  put.key_buffer.g
+ 1a740 65745f6b 6579006b 65795f68 65616400  et_key.key_head.
+ 1a750 66625f68 4d616b65 496e6b65 79537472  fb_hMakeInkeyStr
+ 1a760 006b6579 5f746169 6c007073 7a446566  .key_tail.pszDef
+ 1a770 61756c74 51756573 74696f6e 00647374  aultQuestion.dst
+ 1a780 5f6c656e 0066625f 436f6e52 6561644c  _len.fb_ConReadL
+ 1a790 696e6500 6164646e 65776c69 6e650066  ine.addnewline.f
+ 1a7a0 625f5072 696e7442 75666665 72457800  b_PrintBufferEx.
+ 1a7b0 66696c6c 72656d00 66625f50 72696e74  fillrem.fb_Print
+ 1a7c0 46697853 7472696e 67006164 64717565  FixString.addque
+ 1a7d0 7374696f 6e00746d 705f7265 73756c74  stion.tmp_result
+ 1a7e0 006d6178 5f636861 72730066 625f5072  .max_chars.fb_Pr
+ 1a7f0 696e7457 73747200 66625f57 73747241  intWstr.fb_WstrA
+ 1a800 73736967 6e46726f 6d410064 65636f64  ssignFromA.decod
+ 1a810 655f7374 61636b00 6465636f 64655f73  e_stack.decode_s
+ 1a820 7472696e 6700696e 5f73697a 65007072  tring.in_size.pr
+ 1a830 65666978 006e6577 5f636f64 65006f75  efix.new_code.ou
+ 1a840 745f7369 7a65006e 6578745f 636f6465  t_size.next_code
+ 1a850 006f7574 5f627566 66657200 66625f6c  .out_buffer.fb_l
+ 1a860 7a775f65 6e747279 004c5a57 5f454e54  zw_entry.LZW_ENT
+ 1a870 52590069 6e5f6275 66666572 006f6c64  RY.in_buffer.old
+ 1a880 5f636f64 65005f66 625f436f 6f726400  _code._fb_Coord.
+ 1a890 63656c6c 5f6c696e 655f7769 64746800  cell_line_width.
+ 1a8a0 64697274 795f656e 64006662 5f476678  dirty_end.fb_Gfx
+ 1a8b0 4c6f6361 74655261 7700795f 73726300  LocateRaw.y_src.
+ 1a8c0 77696e5f 726f7773 0066625f 53657450  win_rows.fb_SetP
+ 1a8d0 6f730079 5f647374 00526967 68740066  os.y_dst.Right.f
+ 1a8e0 625f4765 7453697a 65004c65 66740074  b_GetSize.Left.t
+ 1a8f0 6573745f 73746172 7400636c 6561725f  est_start.clear_
+ 1a900 656e6400 64697274 795f7374 61727400  end.dirty_start.
+ 1a910 74657874 5f780074 6578745f 79006662  text_x.text_y.fb
+ 1a920 5f666e48 6f6f6b43 6f6e5363 726f6c6c  _fnHookConScroll
+ 1a930 00636861 725f726f 775f6279 74655f63  .char_row_byte_c
+ 1a940 6f756e74 006e526f 7773005f 5f627569  ount.nRows.__bui
+ 1a950 6c74696e 5f6d656d 63707900 77696e5f  ltin_memcpy.win_
+ 1a960 746f7000 77696e5f 636f6c73 0066625f  top.win_cols.fb_
+ 1a970 68436f6e 43686563 6b536372 6f6c6c00  hConCheckScroll.
+ 1a980 5f66625f 52656374 00636861 725f726f  _fb_Rect.char_ro
+ 1a990 775f6279 74650063 6c656172 5f737461  w_byte.clear_sta
+ 1a9a0 72740074 6573745f 656e6400 74617267  rt.test_end.targ
+ 1a9b0 65745f78 00706163 68546578 7400426f  et_x.pachText.Bo
+ 1a9c0 74746f6d 0066625f 68536574 44697274  ttom.fb_hSetDirt
+ 1a9d0 79006662 5f68486f 6f6b436f 6e536372  y.fb_hHookConScr
+ 1a9e0 6f6c6c47 66780076 6965775f 746f7000  ollGfx.view_top.
+ 1a9f0 636f6e5f 77696474 68007049 6e666f00  con_width.pInfo.
+ 1aa00 66625f68 486f6f6b 436f6e53 63726f6c  fb_hHookConScrol
+ 1aa10 6c006368 61725f78 00636861 725f7900  l.char_x.char_y.
+ 1aa20 63686172 5f626974 5f6d6173 6b004f70  char_bit_mask.Op
+ 1aa30 61717565 0066625f 47667850 72696e74  aque.fb_GfxPrint
+ 1aa40 42756666 65720077 696e5f6c 65667400  Buffer.win_left.
+ 1aa50 5f66625f 436f6e48 6f6f6b73 00766965  _fb_ConHooks.vie
+ 1aa60 775f626f 74746f6d 00636861 725f696e  w_bottom.char_in
+ 1aa70 64657800 66625f68 486f6f6b 436f6e57  dex.fb_hHookConW
+ 1aa80 72697465 0070436f 6f726400 5f66625f  rite.pCoord._fb_
+ 1aa90 5072696e 74496e66 6f006368 61725f73  PrintInfo.char_s
+ 1aaa0 697a6500 66625f68 486f6f6b 436f6e57  ize.fb_hHookConW
+ 1aab0 72697465 47667800 70426f72 64657200  riteGfx.pBorder.
+ 1aac0 636c6561 725f726f 77006662 5f436f6e  clear_row.fb_Con
+ 1aad0 736f6c65 47657456 69657700 74617267  soleGetView.targ
+ 1aae0 65745f79 0066625f 436f6e50 72696e74  et_y.fb_ConPrint
+ 1aaf0 54545900 66625f66 6e486f6f 6b436f6e  TTY.fb_fnHookCon
+ 1ab00 57726974 65007763 736c656e 0066625f  Write.wcslen.fb_
+ 1ab10 77737472 5f436f6e 76546f41 0066625f  wstr_ConvToA.fb_
+ 1ab20 77737472 5f4c656e 0066625f 47667850  wstr_Len.fb_GfxP
+ 1ab30 72696e74 42756666 65725773 74720063  rintBufferWstr.c
+ 1ab40 7572736f 725f6261 636b7370 61636500  ursor_backspace.
+ 1ab50 63757273 6f725f6e 6f726d61 6c006368  cursor_normal.ch
+ 1ab60 61726163 74657200 66625f47 65746b65  aracter.fb_Getke
+ 1ab70 79006d61 786c656e 006d6f76 655f6261  y.maxlen.move_ba
+ 1ab80 636b0063 6f6c6f72 666c6167 0066625f  ck.colorflag.fb_
+ 1ab90 68536f66 74437572 736f725f 64617461  hSoftCursor_data
+ 1aba0 5f737461 72740063 6f70795f 63757273  _start.copy_curs
+ 1abb0 6f725f61 72656100 66625f68 536f6674  or_area.fb_hSoft
+ 1abc0 43757273 6f725f63 6f64655f 73746172  Cursor_code_star
+ 1abd0 74006375 72736f72 5f646174 61006662  t.cursor_data.fb
+ 1abe0 5f68536f 66744375 72736f72 5f636f64  _hSoftCursor_cod
+ 1abf0 655f656e 64006662 5f68536f 66744375  e_end.fb_hSoftCu
+ 1ac00 72736f72 5f646174 615f656e 64006672  rsor_data_end.fr
+ 1ac10 6f6d5f61 72656100 6d696e5f 62646973  om_area.min_bdis
+ 1ac20 7400645f 70697463 6800626c 61636b00  t.d_pitch.black.
+ 1ac30 735f7069 74636800 6d696e5f 77646973  s_pitch.min_wdis
+ 1ac40 74007768 69746500 66696c6c 5f636f6c  t.white.fill_col
+ 1ac50 6f72006f 6c645f62 675f636f 6c6f7200  or.old_bg_color.
+ 1ac60 66625f68 426c6974 3136746f 32340066  fb_hBlit16to24.f
+ 1ac70 625f6842 6c697433 32746f33 32524742  b_hBlit32to32RGB
+ 1ac80 0066625f 68426c69 7438746f 31354247  .fb_hBlit8to15BG
+ 1ac90 5200616c 6c5f626c 69747465 72730066  R.all_blitters.f
+ 1aca0 625f6842 6c697433 32746f32 34424752  b_hBlit32to24BGR
+ 1acb0 0066625f 68426c69 74313674 6f333200  .fb_hBlit16to32.
+ 1acc0 66625f68 426c6974 38746f31 36424752  fb_hBlit8to16BGR
+ 1acd0 00646576 6963655f 64657074 68006662  .device_depth.fb
+ 1ace0 5f68426c 69743332 746f3234 52474200  _hBlit32to24RGB.
+ 1acf0 66625f68 426c6974 38746f33 32424752  fb_hBlit8to32BGR
+ 1ad00 0066625f 68426c69 74333274 6f313642  .fb_hBlit32to16B
+ 1ad10 47520066 625f6842 6c697438 746f3332  GR.fb_hBlit8to32
+ 1ad20 52474200 66625f68 426c6974 3332746f  RGB.fb_hBlit32to
+ 1ad30 31365247 42006662 5f68426c 69743874  16RGB.fb_hBlit8t
+ 1ad40 6f323442 47520066 625f6842 6c697433  o24BGR.fb_hBlit3
+ 1ad50 32746f31 35424752 0066625f 68426c69  2to15BGR.fb_hBli
+ 1ad60 7438746f 32345247 42006662 5f68426c  t8to24RGB.fb_hBl
+ 1ad70 69743332 746f3135 52474200 66625f68  it32to15RGB.fb_h
+ 1ad80 426c6974 3136746f 31355247 42006662  Blit16to15RGB.fb
+ 1ad90 5f68426c 69743874 6f313652 47420066  _hBlit8to16RGB.f
+ 1ada0 625f6842 6c697443 6f707900 66625f68  b_hBlitCopy.fb_h
+ 1adb0 426c6974 38746f31 35524742 0066625f  Blit8to15RGB.fb_
+ 1adc0 68426c69 745f636f 64655f65 6e640066  hBlit_code_end.f
+ 1add0 625f6842 6c69745f 636f6465 5f737461  b_hBlit_code_sta
+ 1ade0 72740066 625f6842 6c697431 36746f31  rt.fb_hBlit16to1
+ 1adf0 36524742 0066625f 68426c69 74313674  6RGB.fb_hBlit16t
+ 1ae00 6f313542 47520046 425f4445 4643544f  o15BGR.FB_DEFCTO
+ 1ae10 52006c62 6f756e64 0064696d 656e7369  R.lbound.dimensi
+ 1ae20 6f6e7300 656c656d 656e7473 0064696d  ons.elements.dim
+ 1ae30 54420066 625f6841 72726179 44746f72  TB.fb_hArrayDtor
+ 1ae40 53747200 5f464241 52524159 44494d00  Str._FBARRAYDIM.
+ 1ae50 5f464241 52524159 00617272 61790065  _FBARRAY.array.e
+ 1ae60 6c656d65 6e745f6c 656e0064 746f7200  lement_len.dtor.
+ 1ae70 62617365 5f696478 0075626f 756e6400  base_idx.ubound.
+ 1ae80 74686973 5f004642 5f494e50 55544354  this_.FB_INPUTCT
+ 1ae90 58006662 5f494e50 55544354 585f4465  X.fb_INPUTCTX_De
+ 1aea0 73747275 63746f72 00737461 74757300  structor.status.
+ 1aeb0 66625f4c 696e6549 6e707574 0066625f  fb_LineInput.fb_
+ 1aec0 49735265 64697265 63746564 0066625f  IsRedirected.fb_
+ 1aed0 44657653 63726e49 6e69745f 52656164  DevScrnInit_Read
+ 1aee0 006e6577 5f706f73 0066625f 4c6f6361  .new_pos.fb_Loca
+ 1aef0 74654578 0073746f 70006653 65744e65  teEx.stop.fSetNe
+ 1af00 77436f6f 72640061 63685461 62537061  wCoord.achTabSpa
+ 1af10 63657300 4e6f726d 616c5800 496e6465  ces.NormalX.Inde
+ 1af20 78546578 74006477 43757272 656e7443  xText.dwCurrentC
+ 1af30 6f6f7264 00546578 744c656e 67746800  oord.TextLength.
+ 1af40 4f757470 75744275 66666572 43686172  OutputBufferChar
+ 1af50 73004f75 74707574 44617461 4c656e67  s.OutputDataLeng
+ 1af60 7468004f 75747075 74446174 61436861  th.OutputDataCha
+ 1af70 7273004f 75747075 74427566 66657200  rs.OutputBuffer.
+ 1af80 70616368 4f757470 75744461 74610064  pachOutputData.d
+ 1af90 774d6f76 65436f6f 72640069 735f7465  wMoveCoord.is_te
+ 1afa0 78745f6d 6f646500 66625f43 6f6e5072  xt_mode.fb_ConPr
+ 1afb0 696e7452 61770042 6f726465 72576964  intRaw.BorderWid
+ 1afc0 74680066 476f744e 6577436f 6f726469  th.fGotNewCoordi
+ 1afd0 6e617465 004f7574 70757442 75666665  nate.OutputBuffe
+ 1afe0 724c656e 67746800 66446f46 6c757368  rLength.fDoFlush
+ 1aff0 00737472 5f616464 00737472 5f66696c  .str_add.str_fil
+ 1b000 6c006f6c 645f7800 6f6c645f 79006662  l.old_x.old_y.fb
+ 1b010 5f537472 46696c6c 3100736f 66745f63  _StrFill1.soft_c
+ 1b020 7572736f 72006164 645f6368 61720074  ursor.add_char.t
+ 1b030 6d705f79 5f320073 74725f6c 65667400  mp_y_2.str_left.
+ 1b040 746d705f 62756666 65720074 6d705f62  tmp_buffer.tmp_b
+ 1b050 75666665 725f6c65 6e006375 72736f72  uffer_len.cursor
+ 1b060 5f766973 69626c65 0066625f 47657458  _visible.fb_GetX
+ 1b070 5900446f 4d6f7665 00637572 72656e74  Y.DoMove.current
+ 1b080 5f790073 74725f72 69676874 0066625f  _y.str_right.fb_
+ 1b090 4b657948 69740063 75727265 6e745f78  KeyHit.current_x
+ 1b0a0 00746d70 5f785f32 00446f41 646a7573  .tmp_x_2.DoAdjus
+ 1b0b0 74006465 6c657465 5f636861 725f636f  t.delete_char_co
+ 1b0c0 756e7400 7a737472 00777374 72005f5f  unt.zstr.wstr.__
+ 1b0d0 66625f64 6174615f 70747200 68536b69  fb_data_ptr.hSki
+ 1b0e0 704c696e 6b006662 5f446174 614e6578  pLink.fb_DataNex
+ 1b0f0 74006c61 62656c61 64647200 5f46425f  t.labeladdr._FB_
+ 1b100 44415441 44455343 0066625f 57737472  DATADESC.fb_Wstr
+ 1b110 546f4c6f 6e67696e 74006662 5f685374  ToLongint.fb_hSt
+ 1b120 72324c6f 6e67696e 74006662 5f577374  r2Longint.fb_Wst
+ 1b130 72417373 69676e54 6f410064 73745f73  rAssignToA.dst_s
+ 1b140 697a6500 66625f57 73747254 6f554c6f  ize.fb_WstrToULo
+ 1b150 6e67696e 74006662 5f685374 7232554c  ngint.fb_hStr2UL
+ 1b160 6f6e6769 6e740066 625f4465 76536372  ongint.fb_DevScr
+ 1b170 6e496e69 745f4e6f 4f70656e 00686f6f  nInit_NoOpen.hoo
+ 1b180 6b735f64 65765f73 63726e5f 6e756c6c  ks_dev_scrn_null
+ 1b190 0066625f 47657458 0066625f 44657653  .fb_GetX.fb_DevS
+ 1b1a0 63726e49 6e69745f 53637265 656e0066  crnInit_Screen.f
+ 1b1b0 625f4465 76536372 6e456e64 0066625f  b_DevScrnEnd.fb_
+ 1b1c0 44657653 63726e55 70646174 65576964  DevScrnUpdateWid
+ 1b1d0 74680066 625f4465 7646696c 65526561  th.fb_DevFileRea
+ 1b1e0 64006852 65616446 726f6d53 7464696e  d.hReadFromStdin
+ 1b1f0 00704c65 6e677468 0066625f 44657653  .pLength.fb_DevS
+ 1b200 63726e52 65616400 636f7079 5f6c656e  crnRead.copy_len
+ 1b210 67746800 70616368 42756666 65720044  gth.pachBuffer.D
+ 1b220 45565f53 43524e5f 494e464f 0066625f  EV_SCRN_INFO.fb_
+ 1b230 44657653 63726e46 696c6c49 6e707574  DevScrnFillInput
+ 1b240 0046425f 48414e44 4c455f44 45524546  .FB_HANDLE_DEREF
+ 1b250 00657272 5f6e756d 0066625f 4572726f  .err_num.fb_Erro
+ 1b260 72536574 46756e63 4e616d65 006f6c64  rSetFuncName.old
+ 1b270 5f6e616d 65006662 5f457272 6f724765  _name.fb_ErrorGe
+ 1b280 7446756e 634e616d 65007265 735f6c62  tFuncName.res_lb
+ 1b290 6c006662 5f457272 6f725365 744d6f64  l.fb_ErrorSetMod
+ 1b2a0 4e616d65 005f4642 5f455252 4f524354  Name._FB_ERRORCT
+ 1b2b0 58006662 5f457272 6f724765 744d6f64  X.fb_ErrorGetMod
+ 1b2c0 4e616d65 0046425f 45525248 414e444c  Name.FB_ERRHANDL
+ 1b2d0 45520066 625f4572 726f7247 65744c69  ER.fb_ErrorGetLi
+ 1b2e0 6e654e75 6d006662 5f457272 6f724765  neNum.fb_ErrorGe
+ 1b2f0 744e756d 006c696e 655f6e75 6d007265  tNum.line_num.re
+ 1b300 736e7874 5f6c626c 006d6f64 5f6e616d  snxt_lbl.mod_nam
+ 1b310 65006675 6e5f6e61 6d650066 625f4669  e.fun_name.fb_Fi
+ 1b320 6c65436c 6f736545 78006662 5f46696c  leCloseEx.fb_Fil
+ 1b330 65436c6f 7365416c 6c006662 5f46696c  eCloseAll.fb_Fil
+ 1b340 65526573 65740066 6e756d00 66625f46  eReset.fnum.fb_F
+ 1b350 696c6545 6f664578 0061646a 7573745f  ileEofEx.adjust_
+ 1b360 7265635f 706f7300 70616368 44617461  rec_pos.pachData
+ 1b370 0066625f 46696c65 47657400 736b6970  .fb_FileGet.skip
+ 1b380 5f73697a 65006662 5f46696c 65476574  _size.fb_FileGet
+ 1b390 4c617267 65494f42 0069735f 756e6963  LargeIOB.is_unic
+ 1b3a0 6f646500 72656164 5f636861 72730062  ode.read_chars.b
+ 1b3b0 79746573 72656164 0066625f 46696c65  ytesread.fb_File
+ 1b3c0 5365656b 45780066 625f4669 6c654765  SeekEx.fb_FileGe
+ 1b3d0 74446174 61457800 66625f46 696c6547  tDataEx.fb_FileG
+ 1b3e0 6574494f 42006662 5f46696c 65476574  etIOB.fb_FileGet
+ 1b3f0 44617461 00706174 68006662 5f46696c  Data.path.fb_Fil
+ 1b400 65496e70 75744e65 7874546f 6b656e00  eInputNextToken.
+ 1b410 69736670 00686173 616d7000 68536b69  isfp.hasamp.hSki
+ 1b420 70576869 74655370 63006853 6b697044  pWhiteSpc.hSkipD
+ 1b430 656c696d 69746572 00736b69 7064656c  elimiter.skipdel
+ 1b440 696d0073 61766563 68617200 68526561  im.savechar.hRea
+ 1b450 64436861 72006855 6e726561 64436861  dChar.hUnreadCha
+ 1b460 72006973 71756f74 65006973 5f737472  r.isquote.is_str
+ 1b470 696e6700 66625f46 696c6550 75744261  ing.fb_FilePutBa
+ 1b480 636b4578 005f6549 6e707574 4d6f6465  ckEx._eInputMode
+ 1b490 0065494d 5f496e76 616c6964 00726561  .eIM_Invalid.rea
+ 1b4a0 646c656e 00737472 5f726573 756c7400  dlen.str_result.
+ 1b4b0 66625f68 46696c65 4c696e65 496e7075  fb_hFileLineInpu
+ 1b4c0 74457800 646f5f61 64640072 6561645f  tEx.do_add.read_
+ 1b4d0 6c656e00 65494d5f 52656164 4c696e65  len.eIM_ReadLine
+ 1b4e0 0065494d 5f526561 6400646f 5f627265  .eIM_Read.do_bre
+ 1b4f0 616b0046 6e46696c 654f7065 6e006662  ak.FnFileOpen.fb
+ 1b500 5f46696c 654f7065 6e457800 66625f46  _FileOpenEx.fb_F
+ 1b510 696c654f 70656e56 66734578 0066625f  ileOpenVfsEx.fb_
+ 1b520 44657646 696c654f 70656e00 66625f46  DevFileOpen.fb_F
+ 1b530 696c6550 75744461 74614578 0066625f  ilePutDataEx.fb_
+ 1b540 46696c65 50757444 61746100 66625f46  FilePutData.fb_F
+ 1b550 696c6550 75740063 6865636b 6e65776c  ilePut.checknewl
+ 1b560 696e6500 76616c75 656c656e 0066625f  ine.valuelen.fb_
+ 1b570 46696c65 50757442 61636b00 70617463  FilePutBack.patc
+ 1b580 68006e65 77706f73 0066625f 46696c65  h.newpos.fb_File
+ 1b590 5365656b 4c617267 65006662 5f46696c  SeekLarge.fb_Fil
+ 1b5a0 6553697a 65457800 6f6c645f 706f7300  eSizeEx.old_pos.
+ 1b5b0 646c636c 6f736500 66756e63 6e616d65  dlclose.funcname
+ 1b5c0 00646c6f 70656e00 6c69626e 616d6500  .dlopen.libname.
+ 1b5d0 66756e63 70747200 646c7379 6d006662  funcptr.dlsym.fb
+ 1b5e0 5f436f6e 736f6c65 436c6561 72006962  _ConsoleClear.ib
+ 1b5f0 7574746f 6e730066 625f4765 744d6f75  uttons.fb_GetMou
+ 1b600 73650069 636c6970 0066625f 436f6e73  se.iclip.fb_Cons
+ 1b610 6f6c6547 65745369 7a650066 625f436f  oleGetSize.fb_Co
+ 1b620 6e736f6c 65476574 58006662 5f436f6e  nsoleGetX.fb_Con
+ 1b630 736f6c65 47657458 59006662 5f436f6e  soleGetXY.fb_Con
+ 1b640 736f6c65 496e6b65 79006662 5f436f6e  soleInkey.fb_Con
+ 1b650 736f6c65 4b657948 69740066 625f436f  soleKeyHit.fb_Co
+ 1b660 6e736f6c 65476574 6b657900 66625f43  nsoleGetkey.fb_C
+ 1b670 6f6e736f 6c654973 52656469 72656374  onsoleIsRedirect
+ 1b680 65640066 625f436f 6e736f6c 654c696e  ed.fb_ConsoleLin
+ 1b690 65496e70 75740066 625f436f 6e736f6c  eInput.fb_Consol
+ 1b6a0 654c6f63 61746500 73746172 745f7900  eLocate.start_y.
+ 1b6b0 656e645f 7900746d 705f6375 7272656e  end_y.tmp_curren
+ 1b6c0 745f706f 73006662 5f436f6e 736f6c65  t_pos.fb_Console
+ 1b6d0 50616765 53657400 66625f43 6f6e736f  PageSet.fb_Conso
+ 1b6e0 6c655061 6765436f 70790066 625f5072  lePageCopy.fb_Pr
+ 1b6f0 696e7442 75666665 72006662 5f436f6e  intBuffer.fb_Con
+ 1b700 736f6c65 5072696e 74427566 66657245  solePrintBufferE
+ 1b710 78006662 5f436f6e 736f6c65 536c6565  x.fb_ConsoleSlee
+ 1b720 70006662 5f436f6e 736f6c65 57696474  p.fb_ConsoleWidt
+ 1b730 68006662 5f546c73 46726565 43747854  h.fb_TlsFreeCtxT
+ 1b740 62006662 5f68496e 69740066 625f6845  b.fb_hInit.fb_hE
+ 1b750 6e640065 72726c65 76656c00 7365746c  nd.errlevel.setl
+ 1b760 6f63616c 65006670 75747300 66625f41  ocale.fputs.fb_A
+ 1b770 6c6c6f63 6174654d 61696e46 42546872  llocateMainFBThr
+ 1b780 65616400 73746465 7272005f 5f66625f  ead.stderr.__fb_
+ 1b790 69735f69 6e69636e 7400635f 6f737065  is_inicnt.c_ospe
+ 1b7a0 6564006d 6f757365 5f657869 74006662  ed.mouse_exit.fb
+ 1b7b0 5f426755 6e6c6f63 6b00635f 6c696e65  _BgUnlock.c_line
+ 1b7c0 00685f69 6e006b65 79626f61 72645f68  .h_in.keyboard_h
+ 1b7d0 616e646c 65720063 5f636300 66625f43  andler.c_cc.fb_C
+ 1b7e0 6f6e736f 6c654765 744d6178 526f7700  onsoleGetMaxRow.
+ 1b7f0 635f6973 70656564 005f5f66 625f636f  c_ispeed.__fb_co
+ 1b800 6e007465 726d5f74 79706500 66625f68  n.term_type.fb_h
+ 1b810 5465726d 4f757400 6f6c645f 7465726d  TermOut.old_term
+ 1b820 5f6f7574 006f6c64 5f746572 6d5f696e  _out.old_term_in
+ 1b830 00464243 4f4e534f 4c450074 65726d69  .FBCONSOLE.termi
+ 1b840 6f73006b 6579626f 6172645f 65786974  os.keyboard_exit
+ 1b850 00736372 6f6c6c5f 72656769 6f6e5f63  .scroll_region_c
+ 1b860 68616e67 65640074 63666c61 675f7400  hanged.tcflag_t.
+ 1b870 635f6366 6c616700 73706565 645f7400  c_cflag.speed_t.
+ 1b880 665f696e 0066625f 68526563 6865636b  f_in.fb_hRecheck
+ 1b890 436f6e73 6f6c6553 697a6500 6b657962  ConsoleSize.keyb
+ 1b8a0 6f617264 5f696e69 74006d6f 7573655f  oard_init.mouse_
+ 1b8b0 68616e64 6c657200 635f6966 6c616700  handler.c_iflag.
+ 1b8c0 6861735f 7065726d 006d6f75 73655f75  has_perm.mouse_u
+ 1b8d0 70646174 65006363 5f740067 66785f65  pdate.cc_t.gfx_e
+ 1b8e0 78697400 6375725f 78006375 725f7900  xit.cur_x.cur_y.
+ 1b8f0 635f6f66 6c616700 6b657962 6f617264  c_oflag.keyboard
+ 1b900 5f676574 6368006d 6f757365 5f696e69  _getch.mouse_ini
+ 1b910 74006f6c 645f696e 5f666c61 67730061  t.old_in_flags.a
+ 1b920 7474725f 62756666 65720066 625f4267  ttr_buffer.fb_Bg
+ 1b930 4c6f636b 00635f6c 666c6167 0066625f  Lock.c_lflag.fb_
+ 1b940 68526563 6865636b 43757273 6f72506f  hRecheckCursorPo
+ 1b950 7300726f 6f745f6e 6f646500 66625f68  s.root_node.fb_h
+ 1b960 47657443 68007265 6d6f7665 006b6579  GetCh.remove.key
+ 1b970 5f646174 61007374 64696e00 696e6974  _data.stdin.init
+ 1b980 5f6b6579 73006662 5f684164 64436800  _keys.fb_hAddCh.
+ 1b990 4b45595f 44415441 00746765 74737472  KEY_DATA.tgetstr
+ 1b9a0 00616464 5f6b6579 00676574 5f696e70  .add_key.get_inp
+ 1b9b0 75740069 73617474 79007374 646f7574  ut.isatty.stdout
+ 1b9c0 00585155 4552594b 45594d41 50006b65  .XQUERYKEYMAP.ke
+ 1b9d0 795f6c65 64730067 65747069 64007465  y_leds.getpid.te
+ 1b9e0 726d0078 6c696200 6b625f74 61626c65  rm.xlib.kb_table
+ 1b9f0 0066625f 68537461 72744267 54687265  .fb_hStartBgThre
+ 1ba00 61640051 75657279 4b65796d 6170006b  ad.QueryKeymap.k
+ 1ba10 696c6c00 6b657962 6f617264 5f636f6e  ill.keyboard_con
+ 1ba20 736f6c65 5f676574 63680058 5f46554e  sole_getch.X_FUN
+ 1ba30 43530066 625f6858 5465726d 45786974  CS.fb_hXTermExit
+ 1ba40 466f6375 73007674 5f737461 74006b65  Focus.vt_stat.ke
+ 1ba50 795f6664 00676678 5f726573 746f7265  y_fd.gfx_restore
+ 1ba60 006b6265 6e747279 00584f50 454e4449  .kbentry.XOPENDI
+ 1ba70 53504c41 59006f6c 645f6765 74636800  SPLAY.old_getch.
+ 1ba80 6b65795f 73746174 65006b65 726e656c  key_state.kernel
+ 1ba90 5f746f5f 7363616e 636f6465 0076745f  _to_scancode.vt_
+ 1baa0 73746174 65007061 645f6173 63696900  state.pad_ascii.
+ 1bab0 66625f68 58546572 6d486173 466f6375  fb_hXTermHasFocu
+ 1bac0 73006d61 696e5f70 6964006b 65795f6f  s.main_pid.key_o
+ 1bad0 6c645f6d 6f646500 58434c4f 53454449  ld_mode.XCLOSEDI
+ 1bae0 53504c41 59006f72 69675f76 74006b62  SPLAY.orig_vt.kb
+ 1baf0 5f696e64 65780066 625f6858 5465726d  _index.fb_hXTerm
+ 1bb00 496e6974 466f6375 73006e75 6d5f6279  InitFocus.num_by
+ 1bb10 74657300 765f7369 676e616c 00746373  tes.v_signal.tcs
+ 1bb20 65746174 74720076 5f737461 7465006b  etattr.v_state.k
+ 1bb30 6579626f 6172645f 636f6e73 6f6c655f  eyboard_console_
+ 1bb40 68616e64 6c657200 6b657962 6f617264  handler.keyboard
+ 1bb50 5f783131 5f68616e 646c6572 00765f61  _x11_handler.v_a
+ 1bb60 63746976 65007061 645f6e75 6d6c6f63  ctive.pad_numloc
+ 1bb70 6b5f6173 63696900 6766785f 73617665  k_ascii.gfx_save
+ 1bb80 0066625f 436f6e73 6f6c654d 756c7469  .fb_ConsoleMulti
+ 1bb90 6b657900 6b625f76 616c7565 00657874  key.kb_value.ext
+ 1bba0 656e6465 64006766 785f6b65 795f6861  ended.gfx_key_ha
+ 1bbb0 6e646c65 72006662 5f507269 6e74566f  ndler.fb_PrintVo
+ 1bbc0 69644578 0066625f 68507269 6e745374  idEx.fb_hPrintSt
+ 1bbd0 72457800 66625f50 72696e74 53747269  rEx.fb_PrintStri
+ 1bbe0 6e674578 0066625f 6846696c 65507269  ngEx.fb_hFilePri
+ 1bbf0 6e744275 66666572 45780066 625f5072  ntBufferEx.fb_Pr
+ 1bc00 696e7446 69785374 72696e67 45780066  intFixStringEx.f
+ 1bc10 625f5072 696e7455 4c6f6e67 696e7400  b_PrintULongint.
+ 1bc20 73707269 6e746600 66625f50 72696e74  sprintf.fb_Print
+ 1bc30 50616445 78006662 5f684669 6c655072  PadEx.fb_hFilePr
+ 1bc40 696e7442 75666665 72577374 72457800  intBufferWstrEx.
+ 1bc50 66625f50 72696e74 566f6964 57737472  fb_PrintVoidWstr
+ 1bc60 45780066 625f6850 72696e74 57737472  Ex.fb_hPrintWstr
+ 1bc70 45780066 625f5072 696e7457 73747245  Ex.fb_PrintWstrE
+ 1bc80 78005f5f 6275696c 74696e5f 66777269  x.__builtin_fwri
+ 1bc90 74650063 62756666 65720066 70757463  te.cbuffer.fputc
+ 1bca0 0066666c 75736800 61766169 6c006176  .fflush.avail.av
+ 1bcb0 61696c5f 6c656e00 66625f43 6f6e736f  ail_len.fb_Conso
+ 1bcc0 6c655072 696e7442 75666665 72006662  lePrintBuffer.fb
+ 1bcd0 5f685072 696e7450 61644578 00746162  _hPrintPadEx.tab
+ 1bce0 5f636861 725f6275 66666572 0066625f  _char_buffer.fb_
+ 1bcf0 5072696e 74506164 00746d70 5f68616e  PrintPad.tmp_han
+ 1bd00 646c6500 66625f44 65765363 726e496e  dle.fb_DevScrnIn
+ 1bd10 69745f57 72697465 0066625f 5072696e  it_Write.fb_Prin
+ 1bd20 74506164 57737472 45780066 625f5072  tPadWstrEx.fb_Pr
+ 1bd30 696e7456 6f696457 73747200 646f5f75  intVoidWstr.do_u
+ 1bd40 70646174 65007365 745f6375 72736f72  pdate.set_cursor
+ 1bd50 006d6178 726f7700 66625f56 69657755  .maxrow.fb_ViewU
+ 1bd60 70646174 65006d69 6e726f77 00766965  pdate.minrow.vie
+ 1bd70 775f746f 70726f77 00766965 775f626f  w_toprow.view_bo
+ 1bd80 74726f77 00726566 5f636f75 6e740066  trow.ref_count.f
+ 1bd90 6f637573 5f77696e 646f7700 78746572  ocus_window.xter
+ 1bda0 6d5f7769 6e646f77 00584745 54494e50  m_window.XGETINP
+ 1bdb0 5554464f 43555300 47657449 6e707574  UTFOCUS.GetInput
+ 1bdc0 466f6375 73006b65 79636f64 655f6d61  Focus.keycode_ma
+ 1bdd0 78006b65 79636f64 655f6d69 6e006b65  x.keycode_min.ke
+ 1bde0 7973796d 006b6579 73796d73 004b6579  ysym.keysyms.Key
+ 1bdf0 73796d54 6f536361 6e636f64 65006b65  symToScancode.ke
+ 1be00 7973796d 5f746f5f 7363616e 636f6465  ysym_to_scancode
+ 1be10 006b6579 73796d73 5f706572 5f6b6579  .keysyms_per_key
+ 1be20 636f6465 5f726574 75726e00 7372635f  code_return.src_
+ 1be30 6c656e00 7372635f 73697a65 0066625f  len.src_size.fb_
+ 1be40 68537472 416c6c6f 63007372 635f7074  hStrAlloc.src_pt
+ 1be50 72006973 5f696e69 74006473 74720066  r.is_init.dstr.f
+ 1be60 625f6853 74724465 6c54656d 705f4e6f  b_hStrDelTemp_No
+ 1be70 4c6f636b 0066625f 53747241 73736967  Lock.fb_StrAssig
+ 1be80 6e457800 66696c6c 5f72656d 0066625f  nEx.fill_rem.fb_
+ 1be90 68537472 436f7079 0066625f 68537472  hStrCopy.fb_hStr
+ 1bea0 44656c54 656d7044 65736300 66625f68  DelTempDesc.fb_h
+ 1beb0 53747241 6c6c6f63 54656d70 0067705f  StrAllocTemp.gp_
+ 1bec0 6f666673 6574005f 5f627569 6c74696e  offset.__builtin
+ 1bed0 5f76615f 6c697374 006f7665 72666c6f  _va_list.overflo
+ 1bee0 775f6172 675f6172 6561005f 5f676e75  w_arg_area.__gnu
+ 1bef0 635f7661 5f6c6973 74007265 675f7361  c_va_list.reg_sa
+ 1bf00 76655f61 72656100 66705f6f 66667365  ve_area.fp_offse
+ 1bf10 74006172 6773005f 5f76615f 6c697374  t.args.__va_list
+ 1bf20 5f746167 00737472 325f6c65 6e007374  _tag.str2_len.st
+ 1bf30 72315f70 74720073 7472315f 73697a65  r1_ptr.str1_size
+ 1bf40 00737472 325f7369 7a650073 7472325f  .str2_size.str2_
+ 1bf50 70747200 6d656d63 6d700073 74723100  ptr.memcmp.str1.
+ 1bf60 73747232 00737472 315f6c65 6e004642  str2.str1_len.FB
+ 1bf70 5f4d454d 43505958 006c656e 32006662  _MEMCPYX.len2.fb
+ 1bf80 5f685374 72436f6e 63617400 6c656e31  _hStrConcat.len1
+ 1bf90 0066625f 68537472 536b6970 43686172  .fb_hStrSkipChar
+ 1bfa0 00726164 69780066 625f6853 74725261  .radix.fb_hStrRa
+ 1bfb0 64697832 4c6f6e67 696e7400 73747274  dix2Longint.strt
+ 1bfc0 6f640066 625f6853 74723244 6f75626c  od.fb_hStr2Doubl
+ 1bfd0 65007374 72746f75 6c6c0066 625f5641  e.strtoull.fb_VA
+ 1bfe0 4c4c4e47 0066625f 56414c55 4c4e4700  LLNG.fb_VALULNG.
+ 1bff0 66625f68 53747253 65744c65 6e677468  fb_hStrSetLength
+ 1c000 0066625f 496e7454 6f537472 0066625f  .fb_IntToStr.fb_
+ 1c010 466c6f61 74546f53 74720074 6d705f6c  FloatToStr.tmp_l
+ 1c020 656e0066 625f6853 7472416c 6c6f6354  en.fb_hStrAllocT
+ 1c030 656d705f 4e6f4c6f 636b0070 72657365  emp_NoLock.prese
+ 1c040 72766500 5f46425f 4c495354 454c454d  rve._FB_LISTELEM
+ 1c050 0066625f 746d7064 73544200 66625f68  .fb_tmpdsTB.fb_h
+ 1c060 53747241 6c6c6f63 546d7044 65736300  StrAllocTmpDesc.
+ 1c070 6974656d 006e6577 73697a65 0066625f  item.newsize.fb_
+ 1c080 684c6973 74496e69 74006662 5f684c69  hListInit.fb_hLi
+ 1c090 73744672 6565456c 656d0070 737a4f6c  stFreeElem.pszOl
+ 1c0a0 64005f46 425f5354 525f544d 50444553  d._FB_STR_TMPDES
+ 1c0b0 43006662 5f684c69 7374416c 6c6f6345  C.fb_hListAllocE
+ 1c0c0 6c656d00 66686561 6400656c 656d0066  lem.fhead.elem.f
+ 1c0d0 625f6853 74724672 6565546d 70446573  b_hStrFreeTmpDes
+ 1c0e0 6300746d 7064734c 69737400 5f46425f  c.tmpdsList._FB_
+ 1c0f0 4c495354 00747279 5f616c6c 6f630066  LIST.try_alloc.f
+ 1c100 63686172 0066625f 53747246 696c6c32  char.fb_StrFill2
+ 1c110 0066625f 48455845 785f6c00 66625f48  .fb_HEXEx_l.fb_H
+ 1c120 45585f62 0066625f 4845585f 73006662  EX_b.fb_HEX_s.fb
+ 1c130 5f484558 45785f69 00646967 69747300  _HEXEx_i.digits.
+ 1c140 66625f48 45585f69 00686578 5f746162  fb_HEX_i.hex_tab
+ 1c150 6c65006e 756d3200 66625f68 53747253  le.num2.fb_hStrS
+ 1c160 6b697043 68617252 6576005f 49536772  kipCharRev._ISgr
+ 1c170 61706800 5f495373 70616365 005f4953  aph._ISspace._IS
+ 1c180 6c6f7765 72005f49 53616c70 6861005f  lower._ISalpha._
+ 1c190 49536469 67697400 5f495363 6e74726c  ISdigit._IScntrl
+ 1c1a0 005f4953 616c6e75 6d005f49 53626c61  ._ISalnum._ISbla
+ 1c1b0 6e6b005f 49537075 6e637400 746f6c6f  nk._ISpunct.tolo
+ 1c1c0 77657200 5f5f6374 7970655f 746f6c6f  wer.__ctype_tolo
+ 1c1d0 7765725f 6c6f6300 5f5f7265 73005f49  wer_loc.__res._I
+ 1c1e0 53786469 67697400 5f495370 72696e74  Sxdigit._ISprint
+ 1c1f0 005f4953 75707065 72005f5f 63747970  ._ISupper.__ctyp
+ 1c200 655f625f 6c6f6300 7374725f 73697a65  e_b_loc.str_size
+ 1c210 0066625f 53747241 6c6c6f63 54656d70  .fb_StrAllocTemp
+ 1c220 44657363 5a006662 5f577374 72417373  DescZ.fb_WstrAss
+ 1c230 69676e54 6f414578 00647374 5f636861  ignToAEx.dst_cha
+ 1c240 72730073 72635f63 68617273 0066625f  rs.src_chars.fb_
+ 1c250 57737472 41737369 676e546f 415f496e  WstrAssignToA_In
+ 1c260 69740077 72697474 656e6368 61727300  it.writtenchars.
+ 1c270 66625f77 7374725f 436f6e76 46726f6d  fb_wstr_ConvFrom
+ 1c280 41007763 73746f75 6c6c0066 625f5773  A.wcstoull.fb_Ws
+ 1c290 74725661 6c4c6e67 0066625f 77737472  trValLng.fb_wstr
+ 1c2a0 5f536b69 70436861 72006662 5f777374  _SkipChar.fb_wst
+ 1c2b0 725f4361 6c634469 6666006f 72696764  r_CalcDiff.origd
+ 1c2c0 73740066 625f7773 74725f41 6c6c6f63  st.fb_wstr_Alloc
+ 1c2d0 54656d70 006d6273 746f7763 73006473  Temp.mbstowcs.ds
+ 1c2e0 746c696d 69740066 625f5374 72546f57  tlimit.fb_StrToW
+ 1c2f0 73747200 66625f57 73747256 616c554c  str.fb_WstrValUL
+ 1c300 6e670077 6373746f 6d627300 5554465f  ng.wcstombs.UTF_
+ 1c310 33320066 625f5773 7472546f 53747200  32.fb_WstrToStr.
+ 1c320 66625f45 78656345 78007072 6f677261  fb_ExecEx.progra
+ 1c330 6d006c65 6e5f6172 67756d65 6e747300  m.len_arguments.
+ 1c340 65786563 76700066 625f6845 78697443  execvp.fb_hExitC
+ 1c350 6f6e736f 6c650066 625f6849 6e697443  onsole.fb_hInitC
+ 1c360 6f6e736f 6c650064 6f5f666f 726b0077  onsole.do_fork.w
+ 1c370 61697470 6964005f 45786974 0066625f  aitpid._Exit.fb_
+ 1c380 68506172 73654172 6773005f 53435f54  hParseArgs._SC_T
+ 1c390 48524541 445f4445 53545255 43544f52  HREAD_DESTRUCTOR
+ 1c3a0 5f495445 52415449 4f4e5300 5f53435f  _ITERATIONS._SC_
+ 1c3b0 54485245 41445f53 5441434b 5f4d494e  THREAD_STACK_MIN
+ 1c3c0 005f5343 5f584f50 454e5f58 43555f56  ._SC_XOPEN_XCU_V
+ 1c3d0 45525349 4f4e005f 53435f43 4c4f434b  ERSION._SC_CLOCK
+ 1c3e0 5f53454c 45435449 4f4e005f 53435f32  _SELECTION._SC_2
+ 1c3f0 5f435f44 4556005f 53435f44 45564943  _C_DEV._SC_DEVIC
+ 1c400 455f5350 45434946 49435f52 005f5343  E_SPECIFIC_R._SC
+ 1c410 5f325f50 42535f43 4845434b 504f494e  _2_PBS_CHECKPOIN
+ 1c420 54005f53 435f4950 5636005f 53435f55  T._SC_IPV6._SC_U
+ 1c430 53485254 5f4d4158 005f5343 5f534156  SHRT_MAX._SC_SAV
+ 1c440 45445f49 4453005f 53435f54 48524541  ED_IDS._SC_THREA
+ 1c450 445f5052 494f5249 54595f53 43484544  D_PRIORITY_SCHED
+ 1c460 554c494e 47005f53 435f4e4c 5f4d5347  ULING._SC_NL_MSG
+ 1c470 4d415800 5f53435f 4e4c5f4c 414e474d  MAX._SC_NL_LANGM
+ 1c480 4158005f 53435f42 41525249 45525300  AX._SC_BARRIERS.
+ 1c490 5f53435f 494f565f 4d415800 5f53435f  _SC_IOV_MAX._SC_
+ 1c4a0 4c4f4749 4e5f4e41 4d455f4d 4158005f  LOGIN_NAME_MAX._
+ 1c4b0 53435f50 41474553 495a4500 5f53435f  SC_PAGESIZE._SC_
+ 1c4c0 54485245 41445f53 4146455f 46554e43  THREAD_SAFE_FUNC
+ 1c4d0 54494f4e 53005f53 435f4c45 56454c31  TIONS._SC_LEVEL1
+ 1c4e0 5f494341 4348455f 4153534f 43005f53  _ICACHE_ASSOC._S
+ 1c4f0 435f5452 4143455f 55534552 5f455645  C_TRACE_USER_EVE
+ 1c500 4e545f4d 4158005f 53435f32 5f435f56  NT_MAX._SC_2_C_V
+ 1c510 45525349 4f4e0067 65745f61 76706879  ERSION.get_avphy
+ 1c520 735f7061 67657300 5f53435f 58425335  s_pages._SC_XBS5
+ 1c530 5f4c5036 345f4f46 46363400 5f53435f  _LP64_OFF64._SC_
+ 1c540 5049495f 4f53495f 434c5453 005f5343  PII_OSI_CLTS._SC
+ 1c550 5f505249 4f524954 495a4544 5f494f00  _PRIORITIZED_IO.
+ 1c560 5f53435f 434f4c4c 5f574549 47485453  _SC_COLL_WEIGHTS
+ 1c570 5f4d4158 005f5343 5f584f50 454e5f45  _MAX._SC_XOPEN_E
+ 1c580 4e485f49 31384e00 5f53435f 54485245  NH_I18N._SC_THRE
+ 1c590 41445f50 524f4345 53535f53 48415245  AD_PROCESS_SHARE
+ 1c5a0 44005f53 435f5449 4d454f55 5453005f  D._SC_TIMEOUTS._
+ 1c5b0 53435f32 5f53575f 44455600 5f53435f  SC_2_SW_DEV._SC_
+ 1c5c0 54494d45 525f4d41 58005f53 435f4a4f  TIMER_MAX._SC_JO
+ 1c5d0 425f434f 4e54524f 4c005f53 435f5448  B_CONTROL._SC_TH
+ 1c5e0 52454144 5f435055 54494d45 005f5343  READ_CPUTIME._SC
+ 1c5f0 5f325f50 42535f54 5241434b 005f5343  _2_PBS_TRACK._SC
+ 1c600 5f424153 45005f53 435f4348 41525f4d  _BASE._SC_CHAR_M
+ 1c610 4158005f 53435f45 51554956 5f434c41  AX._SC_EQUIV_CLA
+ 1c620 53535f4d 4158005f 53435f4d 454d4c4f  SS_MAX._SC_MEMLO
+ 1c630 434b5f52 414e4745 005f5343 5f53454c  CK_RANGE._SC_SEL
+ 1c640 45435400 5f53435f 42435f44 494d5f4d  ECT._SC_BC_DIM_M
+ 1c650 4158005f 53435f4d 45535341 47455f50  AX._SC_MESSAGE_P
+ 1c660 41535349 4e47005f 53435f50 4f4c4c00  ASSING._SC_POLL.
+ 1c670 5f53435f 5049495f 4f534900 5f53435f  _SC_PII_OSI._SC_
+ 1c680 43484152 5f424954 005f5343 5f434849  CHAR_BIT._SC_CHI
+ 1c690 4c445f4d 4158005f 53435f4c 4556454c  LD_MAX._SC_LEVEL
+ 1c6a0 345f4341 4348455f 4c494e45 53495a45  4_CACHE_LINESIZE
+ 1c6b0 005f5343 5f42435f 42415345 5f4d4158  ._SC_BC_BASE_MAX
+ 1c6c0 005f5343 5f4c4556 454c325f 43414348  ._SC_LEVEL2_CACH
+ 1c6d0 455f5349 5a45005f 53435f54 52414345  E_SIZE._SC_TRACE
+ 1c6e0 5f455645 4e545f46 494c5445 52005f53  _EVENT_FILTER._S
+ 1c6f0 435f5349 474e414c 53005f53 435f5354  C_SIGNALS._SC_ST
+ 1c700 5245414d 5f4d4158 005f5343 5f545241  REAM_MAX._SC_TRA
+ 1c710 43455f53 59535f4d 4158005f 53435f54  CE_SYS_MAX._SC_T
+ 1c720 48524541 445f4154 54525f53 5441434b  HREAD_ATTR_STACK
+ 1c730 53495a45 005f5343 5f4d515f 5052494f  SIZE._SC_MQ_PRIO
+ 1c740 5f4d4158 005f5343 5f4c4f4e 475f4249  _MAX._SC_LONG_BI
+ 1c750 54005f53 435f5348 454c4c00 5f53435f  T._SC_SHELL._SC_
+ 1c760 54485245 41445f41 5454525f 53544143  THREAD_ATTR_STAC
+ 1c770 4b414444 52005f53 435f5041 53535f4d  KADDR._SC_PASS_M
+ 1c780 4158005f 53435f32 5f435f42 494e4400  AX._SC_2_C_BIND.
+ 1c790 5f53435f 54485245 41445f52 4f425553  _SC_THREAD_ROBUS
+ 1c7a0 545f5052 494f5f49 4e484552 4954005f  T_PRIO_INHERIT._
+ 1c7b0 53435f57 4f52445f 42495400 5f53435f  SC_WORD_BIT._SC_
+ 1c7c0 54485245 41445f52 4f425553 545f5052  THREAD_ROBUST_PR
+ 1c7d0 494f5f50 524f5445 4354005f 53435f56  IO_PROTECT._SC_V
+ 1c7e0 365f494c 5033325f 4f464642 4947005f  6_ILP32_OFFBIG._
+ 1c7f0 53435f58 4253355f 4c504249 475f4f46  SC_XBS5_LPBIG_OF
+ 1c800 46424947 005f5343 5f564552 53494f4e  FBIG._SC_VERSION
+ 1c810 005f5343 5f56365f 494c5033 325f4f46  ._SC_V6_ILP32_OF
+ 1c820 46333200 5f53435f 41494f5f 4d415800  F32._SC_AIO_MAX.
+ 1c830 73797363 6f6e6600 5f53435f 4d454d4c  sysconf._SC_MEML
+ 1c840 4f434b00 5f53435f 54485245 41445f4b  OCK._SC_THREAD_K
+ 1c850 4559535f 4d415800 5f53435f 325f464f  EYS_MAX._SC_2_FO
+ 1c860 52545f52 554e005f 53435f42 435f5343  RT_RUN._SC_BC_SC
+ 1c870 414c455f 4d415800 5f53435f 54485245  ALE_MAX._SC_THRE
+ 1c880 41445f54 48524541 44535f4d 4158005f  AD_THREADS_MAX._
+ 1c890 53435f52 41575f53 4f434b45 5453005f  SC_RAW_SOCKETS._
+ 1c8a0 53435f53 494e474c 455f5052 4f434553  SC_SINGLE_PROCES
+ 1c8b0 53005f53 435f5245 47455850 005f5343  S._SC_REGEXP._SC
+ 1c8c0 5f584f50 454e5f56 45525349 4f4e005f  _XOPEN_VERSION._
+ 1c8d0 53435f4d 4f4e4f54 4f4e4943 5f434c4f  SC_MONOTONIC_CLO
+ 1c8e0 434b005f 53435f53 49475155 4555455f  CK._SC_SIGQUEUE_
+ 1c8f0 4d415800 5f53435f 584f5045 4e5f5850  MAX._SC_XOPEN_XP
+ 1c900 4732005f 53435f58 4f50454e 5f585047  G2._SC_XOPEN_XPG
+ 1c910 33005f53 435f584f 50454e5f 58504734  3._SC_XOPEN_XPG4
+ 1c920 005f5343 5f434c4b 5f54434b 005f5343  ._SC_CLK_TCK._SC
+ 1c930 5f584f50 454e5f52 45414c54 494d455f  _XOPEN_REALTIME_
+ 1c940 54485245 41445300 5f53435f 584f5045  THREADS._SC_XOPE
+ 1c950 4e5f554e 4958005f 53435f41 494f5f50  N_UNIX._SC_AIO_P
+ 1c960 52494f5f 44454c54 415f4d41 58005f53  RIO_DELTA_MAX._S
+ 1c970 435f584f 50454e5f 53545245 414d5300  C_XOPEN_STREAMS.
+ 1c980 5f53435f 5353495a 455f4d41 58005f53  _SC_SSIZE_MAX._S
+ 1c990 435f5049 495f534f 434b4554 005f5343  C_PII_SOCKET._SC
+ 1c9a0 5f415359 4e434852 4f4e4f55 535f494f  _ASYNCHRONOUS_IO
+ 1c9b0 005f5343 5f545241 43455f49 4e484552  ._SC_TRACE_INHER
+ 1c9c0 4954005f 53435f55 43484152 5f4d4158  IT._SC_UCHAR_MAX
+ 1c9d0 005f5343 5f504949 005f5343 5f584253  ._SC_PII._SC_XBS
+ 1c9e0 355f494c 5033325f 4f464633 32005f53  5_ILP32_OFF32._S
+ 1c9f0 435f4243 5f535452 494e475f 4d415800  C_BC_STRING_MAX.
+ 1ca00 5f53435f 4d415050 45445f46 494c4553  _SC_MAPPED_FILES
+ 1ca10 005f5343 5f435055 54494d45 005f5343  ._SC_CPUTIME._SC
+ 1ca20 5f4e4c5f 4152474d 4158005f 53435f4c  _NL_ARGMAX._SC_L
+ 1ca30 4556454c 345f4341 4348455f 4153534f  EVEL4_CACHE_ASSO
+ 1ca40 43005f53 435f325f 5042535f 4c4f4341  C._SC_2_PBS_LOCA
+ 1ca50 5445005f 53435f58 4253355f 494c5033  TE._SC_XBS5_ILP3
+ 1ca60 325f4f46 46424947 005f5343 5f544852  2_OFFBIG._SC_THR
+ 1ca70 45414453 005f5343 5f52455f 4455505f  EADS._SC_RE_DUP_
+ 1ca80 4d415800 5f53435f 484f5354 5f4e414d  MAX._SC_HOST_NAM
+ 1ca90 455f4d41 58005f53 435f5348 41524544  E_MAX._SC_SHARED
+ 1caa0 5f4d454d 4f52595f 4f424a45 43545300  _MEMORY_OBJECTS.
+ 1cab0 5f53435f 41445649 534f5259 5f494e46  _SC_ADVISORY_INF
+ 1cac0 4f005f53 435f4c45 56454c33 5f434143  O._SC_LEVEL3_CAC
+ 1cad0 48455f53 495a4500 5f53435f 554c4f4e  HE_SIZE._SC_ULON
+ 1cae0 475f4d41 58005f53 435f4653 594e4300  G_MAX._SC_FSYNC.
+ 1caf0 5f53435f 54524143 455f4c4f 47005f53  _SC_TRACE_LOG._S
+ 1cb00 435f5354 5245414d 53005f53 435f5353  C_STREAMS._SC_SS
+ 1cb10 5f524550 4c5f4d41 58005f53 435f4f50  _REPL_MAX._SC_OP
+ 1cb20 454e5f4d 4158005f 53435f43 4841525f  EN_MAX._SC_CHAR_
+ 1cb30 4d494e00 5f53435f 53485254 5f4d4158  MIN._SC_SHRT_MAX
+ 1cb40 005f5343 5f535041 574e005f 53435f4e  ._SC_SPAWN._SC_N
+ 1cb50 50524f43 4553534f 52535f4f 4e4c4e00  PROCESSORS_ONLN.
+ 1cb60 5f53435f 5052494f 52495459 5f534348  _SC_PRIORITY_SCH
+ 1cb70 4544554c 494e4700 5f53435f 4c455645  EDULING._SC_LEVE
+ 1cb80 4c315f44 43414348 455f4153 534f4300  L1_DCACHE_ASSOC.
+ 1cb90 5f53435f 41544558 49545f4d 4158005f  _SC_ATEXIT_MAX._
+ 1cba0 53435f55 5345525f 47524f55 5053005f  SC_USER_GROUPS._
+ 1cbb0 53435f46 49464f00 5f53435f 584f5045  SC_FIFO._SC_XOPE
+ 1cbc0 4e5f5245 414c5449 4d45005f 53435f46  N_REALTIME._SC_F
+ 1cbd0 494c455f 41545452 49425554 4553005f  ILE_ATTRIBUTES._
+ 1cbe0 53435f53 50494e5f 4c4f434b 53005f53  SC_SPIN_LOCKS._S
+ 1cbf0 435f4445 56494345 5f494f00 5f53435f  C_DEVICE_IO._SC_
+ 1cc00 325f5550 45005f53 435f5049 495f494e  2_UPE._SC_PII_IN
+ 1cc10 5445524e 45545f44 4752414d 005f5343  TERNET_DGRAM._SC
+ 1cc20 5f56365f 4c503634 5f4f4646 3634005f  _V6_LP64_OFF64._
+ 1cc30 53435f53 594e4348 524f4e49 5a45445f  SC_SYNCHRONIZED_
+ 1cc40 494f005f 53435f53 59535445 4d5f4441  IO._SC_SYSTEM_DA
+ 1cc50 54414241 53455f52 005f5343 5f46494c  TABASE_R._SC_FIL
+ 1cc60 455f4c4f 434b494e 47005f53 435f4649  E_LOCKING._SC_FI
+ 1cc70 4c455f53 59535445 4d005f53 435f435f  LE_SYSTEM._SC_C_
+ 1cc80 4c414e47 5f535550 504f5254 005f5343  LANG_SUPPORT._SC
+ 1cc90 5f44454c 41595449 4d45525f 4d415800  _DELAYTIMER_MAX.
+ 1cca0 5f53435f 45585052 5f4e4553 545f4d41  _SC_EXPR_NEST_MA
+ 1ccb0 58005f53 435f4e45 54574f52 4b494e47  X._SC_NETWORKING
+ 1ccc0 005f5343 5f41494f 5f4c4953 54494f5f  ._SC_AIO_LISTIO_
+ 1ccd0 4d415800 5f53435f 53454d5f 56414c55  MAX._SC_SEM_VALU
+ 1cce0 455f4d41 58005f53 435f5245 414c5449  E_MAX._SC_REALTI
+ 1ccf0 4d455f53 49474e41 4c53005f 53435f4c  ME_SIGNALS._SC_L
+ 1cd00 4556454c 315f4443 41434845 5f4c494e  EVEL1_DCACHE_LIN
+ 1cd10 4553495a 45005f53 435f5636 5f4c5042  ESIZE._SC_V6_LPB
+ 1cd20 49475f4f 46464249 47005f53 435f325f  IG_OFFBIG._SC_2_
+ 1cd30 5042535f 4143434f 554e5449 4e47005f  PBS_ACCOUNTING._
+ 1cd40 53435f52 45414445 525f5752 49544552  SC_READER_WRITER
+ 1cd50 5f4c4f43 4b53005f 53435f54 494d4552  _LOCKS._SC_TIMER
+ 1cd60 53005f53 435f4644 5f4d474d 54005f53  S._SC_FD_MGMT._S
+ 1cd70 435f545f 494f565f 4d415800 5f53435f  C_T_IOV_MAX._SC_
+ 1cd80 4c455645 4c325f43 41434845 5f415353  LEVEL2_CACHE_ASS
+ 1cd90 4f43005f 53435f32 5f4c4f43 414c4544  OC._SC_2_LOCALED
+ 1cda0 4546005f 53435f54 59504544 5f4d454d  EF._SC_TYPED_MEM
+ 1cdb0 4f52595f 4f424a45 43545300 5f53435f  ORY_OBJECTS._SC_
+ 1cdc0 54524143 455f4e41 4d455f4d 4158005f  TRACE_NAME_MAX._
+ 1cdd0 53435f32 5f504253 005f5343 5f494e54  SC_2_PBS._SC_INT
+ 1cde0 5f4d4158 005f5343 5f504949 5f494e54  _MAX._SC_PII_INT
+ 1cdf0 45524e45 545f5354 5245414d 005f5343  ERNET_STREAM._SC
+ 1ce00 5f4c494e 455f4d41 58005f53 435f4c45  _LINE_MAX._SC_LE
+ 1ce10 56454c31 5f494341 4348455f 53495a45  VEL1_ICACHE_SIZE
+ 1ce20 005f5343 5f4d425f 4c454e5f 4d415800  ._SC_MB_LEN_MAX.
+ 1ce30 5f53435f 4e4c5f53 45544d41 58005f53  _SC_NL_SETMAX._S
+ 1ce40 435f494e 545f4d49 4e005f53 435f4c45  C_INT_MIN._SC_LE
+ 1ce50 56454c33 5f434143 48455f4c 494e4553  VEL3_CACHE_LINES
+ 1ce60 495a4500 5f53435f 4c455645 4c315f49  IZE._SC_LEVEL1_I
+ 1ce70 43414348 455f4c49 4e455349 5a45005f  CACHE_LINESIZE._
+ 1ce80 53435f50 49495f4f 53495f43 4f545300  SC_PII_OSI_COTS.
+ 1ce90 5f53435f 56375f49 4c503332 5f4f4646  _SC_V7_ILP32_OFF
+ 1cea0 42494700 5f53435f 325f5042 535f4d45  BIG._SC_2_PBS_ME
+ 1ceb0 53534147 45005f53 435f4d55 4c54495f  SSAGE._SC_MULTI_
+ 1cec0 50524f43 45535300 5f53435f 325f464f  PROCESS._SC_2_FO
+ 1ced0 52545f44 4556005f 53435f58 4f50454e  RT_DEV._SC_XOPEN
+ 1cee0 5f53484d 005f5343 5f584f50 454e5f4c  _SHM._SC_XOPEN_L
+ 1cef0 45474143 59005f53 435f5049 5045005f  EGACY._SC_PIPE._
+ 1cf00 53435f52 54534947 5f4d4158 005f5343  SC_RTSIG_MAX._SC
+ 1cf10 5f53504f 52414449 435f5345 52564552  _SPORADIC_SERVER
+ 1cf20 005f5343 5f504859 535f5041 47455300  ._SC_PHYS_PAGES.
+ 1cf30 5f53435f 53485254 5f4d494e 005f5343  _SC_SHRT_MIN._SC
+ 1cf40 5f4d454d 4f52595f 50524f54 45435449  _MEMORY_PROTECTI
+ 1cf50 4f4e005f 53435f4d 515f4f50 454e5f4d  ON._SC_MQ_OPEN_M
+ 1cf60 4158005f 53435f4e 4c5f4e4d 4158005f  AX._SC_NL_NMAX._
+ 1cf70 53435f32 5f564552 53494f4e 005f5343  SC_2_VERSION._SC
+ 1cf80 5f474554 50575f52 5f53495a 455f4d41  _GETPW_R_SIZE_MA
+ 1cf90 58005f53 435f5637 5f4c5042 49475f4f  X._SC_V7_LPBIG_O
+ 1cfa0 46464249 47005f53 435f545a 4e414d45  FFBIG._SC_TZNAME
+ 1cfb0 5f4d4158 005f5343 5f4e4c5f 54455854  _MAX._SC_NL_TEXT
+ 1cfc0 4d415800 5f53435f 53434841 525f4d41  MAX._SC_SCHAR_MA
+ 1cfd0 58005f53 435f4e47 524f5550 535f4d41  X._SC_NGROUPS_MA
+ 1cfe0 58005f53 435f5448 52454144 5f53504f  X._SC_THREAD_SPO
+ 1cff0 52414449 435f5345 52564552 005f5343  RADIC_SERVER._SC
+ 1d000 5f55494f 5f4d4158 494f5600 5f53435f  _UIO_MAXIOV._SC_
+ 1d010 5049495f 4f53495f 4d005f53 435f4745  PII_OSI_M._SC_GE
+ 1d020 5447525f 525f5349 5a455f4d 4158005f  TGR_R_SIZE_MAX._
+ 1d030 53435f4c 4556454c 345f4341 4348455f  SC_LEVEL4_CACHE_
+ 1d040 53495a45 005f5343 5f435f4c 414e475f  SIZE._SC_C_LANG_
+ 1d050 53555050 4f52545f 52005f53 435f4c45  SUPPORT_R._SC_LE
+ 1d060 56454c31 5f444341 4348455f 53495a45  VEL1_DCACHE_SIZE
+ 1d070 005f5343 5f534348 41525f4d 494e005f  ._SC_SCHAR_MIN._
+ 1d080 53435f53 59535445 4d5f4441 54414241  SC_SYSTEM_DATABA
+ 1d090 5345005f 53435f55 494e545f 4d415800  SE._SC_UINT_MAX.
+ 1d0a0 5f53435f 4152475f 4d415800 5f53435f  _SC_ARG_MAX._SC_
+ 1d0b0 43484152 434c4153 535f4e41 4d455f4d  CHARCLASS_NAME_M
+ 1d0c0 4158005f 53435f54 52414345 5f455645  AX._SC_TRACE_EVE
+ 1d0d0 4e545f4e 414d455f 4d415800 5f53435f  NT_NAME_MAX._SC_
+ 1d0e0 53594d4c 4f4f505f 4d415800 5f53435f  SYMLOOP_MAX._SC_
+ 1d0f0 53454d41 50484f52 4553005f 53435f56  SEMAPHORES._SC_V
+ 1d100 375f494c 5033325f 4f464633 32005f53  7_ILP32_OFF32._S
+ 1d110 435f4c45 56454c33 5f434143 48455f41  C_LEVEL3_CACHE_A
+ 1d120 53534f43 005f5343 5f4e5a45 524f005f  SSOC._SC_NZERO._
+ 1d130 53435f53 454d5f4e 53454d53 5f4d4158  SC_SEM_NSEMS_MAX
+ 1d140 005f5343 5f4e5052 4f434553 534f5253  ._SC_NPROCESSORS
+ 1d150 5f434f4e 46005f53 435f4445 56494345  _CONF._SC_DEVICE
+ 1d160 5f535045 43494649 43005f53 435f5049  _SPECIFIC._SC_PI
+ 1d170 495f5854 49005f53 435f4c45 56454c32  I_XTI._SC_LEVEL2
+ 1d180 5f434143 48455f4c 494e4553 495a4500  _CACHE_LINESIZE.
+ 1d190 5f53435f 41565048 59535f50 41474553  _SC_AVPHYS_PAGES
+ 1d1a0 005f5343 5f545241 4345005f 53435f52  ._SC_TRACE._SC_R
+ 1d1b0 45474558 5f564552 53494f4e 005f5343  EGEX_VERSION._SC
+ 1d1c0 5f504949 5f494e54 45524e45 54005f53  _PII_INTERNET._S
+ 1d1d0 435f5637 5f4c5036 345f4f46 46363400  C_V7_LP64_OFF64.
+ 1d1e0 5f53435f 584f5045 4e5f4352 59505400  _SC_XOPEN_CRYPT.
+ 1d1f0 5f53435f 55534552 5f47524f 5550535f  _SC_USER_GROUPS_
+ 1d200 52005f53 435f5448 52454144 5f505249  R._SC_THREAD_PRI
+ 1d210 4f5f494e 48455249 54005f53 435f5448  O_INHERIT._SC_TH
+ 1d220 52454144 5f505249 4f5f5052 4f544543  READ_PRIO_PROTEC
+ 1d230 54005f53 435f325f 43484152 5f544552  T._SC_2_CHAR_TER
+ 1d240 4d005f53 435f5454 595f4e41 4d455f4d  M._SC_TTY_NAME_M
+ 1d250 4158005f 5f676c69 62635f72 65736572  AX.__glibc_reser
+ 1d260 76656400 73745f6e 6c696e6b 00726561  ved.st_nlink.rea
+ 1d270 646c696e 6b007476 5f6e7365 63007374  dlink.tv_nsec.st
+ 1d280 5f696e6f 0073745f 626c6b73 697a6500  _ino.st_blksize.
+ 1d290 73745f72 64657600 5f5f6465 765f7400  st_rdev.__dev_t.
+ 1d2a0 73745f62 6c6f636b 73007374 5f6d6f64  st_blocks.st_mod
+ 1d2b0 65007374 61743634 005f5f69 6e6f5f74  e.stat64.__ino_t
+ 1d2c0 0073745f 6174696d 006c696e 6b6e616d  .st_atim.linknam
+ 1d2d0 65005f5f 626c6b63 6e745f74 0073745f  e.__blkcnt_t.st_
+ 1d2e0 6374696d 0073745f 75696400 5f5f626c  ctim.st_uid.__bl
+ 1d2f0 6b73697a 655f7400 74696d65 73706563  ksize_t.timespec
+ 1d300 0073745f 6d74696d 0073745f 64657600  .st_mtim.st_dev.
+ 1d310 73745f67 6964005f 5f706164 30006669  st_gid.__pad0.fi
+ 1d320 6e666f00 5f5f6e6c 696e6b5f 74005f5f  nfo.__nlink_t.__
+ 1d330 73797363 616c6c5f 736c6f6e 675f7400  syscall_slong_t.
+ 1d340 696e5f71 756f7465 0062735f 636f756e  in_quote.bs_coun
+ 1d350 74006572 72636f64 65006662 5f685368  t.errcode.fb_hSh
+ 1d360 656c6c00 5f46425f 544c535f 4354585f  ell._FB_TLS_CTX_
+ 1d370 48454144 4552005f 5f66625f 746c735f  HEADER.__fb_tls_
+ 1d380 63747874 62007569 6e747074 725f7400  ctxtb.uintptr_t.
+ 1d390 64657374 72756374 6f720064 65737472  destructor.destr
+ 1d3a0 7563746f 72466e00 63747848 65616465  uctorFn.ctxHeade
+ 1d3b0 72006662 5f546c73 44656c43 74780046  r.fb_TlsDelCtx.F
+ 1d3c0 42544852 4541445f 4d41494e 0073656c  BTHREAD_MAIN.sel

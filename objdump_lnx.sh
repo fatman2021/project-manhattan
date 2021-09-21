@@ -1,0 +1,1 @@
+objdump --archive-headers --file-headers --private-headers --all-headers --disassemble --disassemble-all --source --source-comment=";" --full-contents --debugging --debugging-tags --stabs --syms --dynamic-syms --reloc --dynamic-reloc -M intel c64dvd-glsl > c64dvd-glsl_lnx.s

@@ -1,5230 +1,5230 @@
-  471d55:	79 00                	jns    471d57 <_IO_stdin_used+0x2d57>
-  471d57:	77 72                	ja     471dcb <_IO_stdin_used+0x2dcb>
-  471d59:	69 74 65 6f 6e 6c 79 	imul   esi,DWORD PTR [rbp+riz*2+0x6f],0x796c6e
-  471d60:	00 
-  471d61:	61                   	(bad)  
-  471d62:	74 6f                	je     471dd3 <_IO_stdin_used+0x2dd3>
-  471d64:	6d                   	ins    DWORD PTR es:[rdi],dx
-  471d65:	69 63 5f 75 69 6e 74 	imul   esp,DWORD PTR [rbx+0x5f],0x746e6975
-  471d6c:	00 70 72             	add    BYTE PTR [rax+0x72],dh
-  471d6f:	65 63 69 73          	movsxd ebp,DWORD PTR gs:[rcx+0x73]
-  471d73:	65 00 64 6d 61       	add    BYTE PTR gs:[rbp+rbp*2+0x61],ah
-  471d78:	74 32                	je     471dac <_IO_stdin_used+0x2dac>
-  471d7a:	00 64 6d 61          	add    BYTE PTR [rbp+rbp*2+0x61],ah
-  471d7e:	74 33                	je     471db3 <_IO_stdin_used+0x2db3>
-  471d80:	00 64 6d 61          	add    BYTE PTR [rbp+rbp*2+0x61],ah
-  471d84:	74 34                	je     471dba <_IO_stdin_used+0x2dba>
-  471d86:	00 64 6d 61          	add    BYTE PTR [rbp+rbp*2+0x61],ah
-  471d8a:	74 32                	je     471dbe <_IO_stdin_used+0x2dbe>
-  471d8c:	78 32                	js     471dc0 <_IO_stdin_used+0x2dc0>
-  471d8e:	00 64 6d 61          	add    BYTE PTR [rbp+rbp*2+0x61],ah
-  471d92:	74 32                	je     471dc6 <_IO_stdin_used+0x2dc6>
-  471d94:	78 33                	js     471dc9 <_IO_stdin_used+0x2dc9>
-  471d96:	00 64 6d 61          	add    BYTE PTR [rbp+rbp*2+0x61],ah
-  471d9a:	74 32                	je     471dce <_IO_stdin_used+0x2dce>
-  471d9c:	78 34                	js     471dd2 <_IO_stdin_used+0x2dd2>
-  471d9e:	00 64 6d 61          	add    BYTE PTR [rbp+rbp*2+0x61],ah
-  471da2:	74 33                	je     471dd7 <_IO_stdin_used+0x2dd7>
-  471da4:	78 32                	js     471dd8 <_IO_stdin_used+0x2dd8>
-  471da6:	00 64 6d 61          	add    BYTE PTR [rbp+rbp*2+0x61],ah
-  471daa:	74 33                	je     471ddf <_IO_stdin_used+0x2ddf>
-  471dac:	78 33                	js     471de1 <_IO_stdin_used+0x2de1>
-  471dae:	00 64 6d 61          	add    BYTE PTR [rbp+rbp*2+0x61],ah
-  471db2:	74 33                	je     471de7 <_IO_stdin_used+0x2de7>
-  471db4:	78 34                	js     471dea <_IO_stdin_used+0x2dea>
-  471db6:	00 64 6d 61          	add    BYTE PTR [rbp+rbp*2+0x61],ah
-  471dba:	74 34                	je     471df0 <_IO_stdin_used+0x2df0>
-  471dbc:	78 32                	js     471df0 <_IO_stdin_used+0x2df0>
-  471dbe:	00 64 6d 61          	add    BYTE PTR [rbp+rbp*2+0x61],ah
-  471dc2:	74 34                	je     471df8 <_IO_stdin_used+0x2df8>
-  471dc4:	78 33                	js     471df9 <_IO_stdin_used+0x2df9>
-  471dc6:	00 64 6d 61          	add    BYTE PTR [rbp+rbp*2+0x61],ah
-  471dca:	74 34                	je     471e00 <_IO_stdin_used+0x2e00>
-  471dcc:	78 34                	js     471e02 <_IO_stdin_used+0x2e02>
-  471dce:	00 69 69             	add    BYTE PTR [rcx+0x69],ch
-  471dd1:	6d                   	ins    DWORD PTR es:[rdi],dx
-  471dd2:	61                   	(bad)  
-  471dd3:	67 65 32 44 4d 53    	xor    al,BYTE PTR gs:[ebp+ecx*2+0x53]
-  471dd9:	00 75 69             	add    BYTE PTR [rbp+0x69],dh
-  471ddc:	6d                   	ins    DWORD PTR es:[rdi],dx
-  471ddd:	61                   	(bad)  
-  471dde:	67 65 32 44 4d 53    	xor    al,BYTE PTR gs:[ebp+ecx*2+0x53]
-  471de4:	00 69 69             	add    BYTE PTR [rcx+0x69],ch
-  471de7:	6d                   	ins    DWORD PTR es:[rdi],dx
-  471de8:	61                   	(bad)  
-  471de9:	67 65 32 44 4d 53    	xor    al,BYTE PTR gs:[ebp+ecx*2+0x53]
-  471def:	41 72 72             	rex.B jb 471e64 <_IO_stdin_used+0x2e64>
-  471df2:	61                   	(bad)  
-  471df3:	79 00                	jns    471df5 <_IO_stdin_used+0x2df5>
-  471df5:	75 69                	jne    471e60 <_IO_stdin_used+0x2e60>
-  471df7:	6d                   	ins    DWORD PTR es:[rdi],dx
-  471df8:	61                   	(bad)  
-  471df9:	67 65 32 44 4d 53    	xor    al,BYTE PTR gs:[ebp+ecx*2+0x53]
-  471dff:	41 72 72             	rex.B jb 471e74 <_IO_stdin_used+0x2e74>
-  471e02:	61                   	(bad)  
-  471e03:	79 00                	jns    471e05 <_IO_stdin_used+0x2e05>
-  471e05:	73 74                	jae    471e7b <_IO_stdin_used+0x2e7b>
-  471e07:	72 75                	jb     471e7e <_IO_stdin_used+0x2e7e>
-  471e09:	63 74 00 72          	movsxd esi,DWORD PTR [rax+rax*1+0x72]
-  471e0d:	65 73 6f             	gs jae 471e7f <_IO_stdin_used+0x2e7f>
-  471e10:	75 72                	jne    471e84 <_IO_stdin_used+0x2e84>
-  471e12:	63 65 00             	movsxd esp,DWORD PTR [rbp+0x0]
-  471e15:	4d 5f                	rex.WRB pop r15
-  471e17:	32 50 49             	xor    dl,BYTE PTR [rax+0x49]
-  471e1a:	00 4d 5f             	add    BYTE PTR [rbp+0x5f],cl
-  471e1d:	34 50                	xor    al,0x50
-  471e1f:	49 00 4d 5f          	rex.WB add BYTE PTR [r13+0x5f],cl
-  471e23:	32 5f 53             	xor    bl,BYTE PTR [rdi+0x53]
-  471e26:	51                   	push   rcx
-  471e27:	52                   	push   rdx
-  471e28:	54                   	push   rsp
-  471e29:	50                   	push   rax
-  471e2a:	49 00 4d 5f          	rex.WB add BYTE PTR [r13+0x5f],cl
-  471e2e:	45 00 4d 5f          	add    BYTE PTR [r13+0x5f],r9b
-  471e32:	4c                   	rex.WR
-  471e33:	4e 31 30             	rex.WRX xor QWORD PTR [rax],r14
-  471e36:	00 4d 5f             	add    BYTE PTR [rbp+0x5f],cl
-  471e39:	53                   	push   rbx
-  471e3a:	51                   	push   rcx
-  471e3b:	52                   	push   rdx
-  471e3c:	54                   	push   rsp
-  471e3d:	31 5f 32             	xor    DWORD PTR [rdi+0x32],ebx
-  471e40:	00 73 69             	add    BYTE PTR [rbx+0x69],dh
-  471e43:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  471e44:	63 6f 73             	movsxd ebp,DWORD PTR [rdi+0x73]
-  471e47:	00 69 6e             	add    BYTE PTR [rcx+0x6e],ch
-  471e4a:	76 65                	jbe    471eb1 <_IO_stdin_used+0x2eb1>
-  471e4c:	72 73                	jb     471ec1 <_IO_stdin_used+0x2ec1>
-  471e4e:	65 73 71             	gs jae 471ec2 <_IO_stdin_used+0x2ec2>
-  471e51:	72 74                	jb     471ec7 <_IO_stdin_used+0x2ec7>
-  471e53:	00 73 65             	add    BYTE PTR [rbx+0x65],dh
-  471e56:	67 00 73 65          	add    BYTE PTR [ebx+0x65],dh
-  471e5a:	65 6b 00 73          	imul   eax,DWORD PTR gs:[rax],0x73
-  471e5e:	6c                   	ins    BYTE PTR es:[rdi],dx
-  471e5f:	65 65 70 00          	gs gs jo 471e63 <_IO_stdin_used+0x2e63>
-  471e63:	63 6f 6e             	movsxd ebp,DWORD PTR [rdi+0x6e]
-  471e66:	73 6f                	jae    471ed7 <_IO_stdin_used+0x2ed7>
-  471e68:	6c                   	ins    BYTE PTR es:[rdi],dx
-  471e69:	65 00 43 4f          	add    BYTE PTR gs:[rbx+0x4f],al
-  471e6d:	42 5f                	rex.X pop rdi
-  471e6f:	53                   	push   rbx
-  471e70:	57                   	push   rdi
-  471e71:	49 54                	rex.WB push r12
-  471e73:	43                   	rex.XB
-  471e74:	48 5f                	rex.W pop rdi
-  471e76:	31 00                	xor    DWORD PTR [rax],eax
-  471e78:	43                   	rex.XB
-  471e79:	4f                   	rex.WRXB
-  471e7a:	42 5f                	rex.X pop rdi
-  471e7c:	53                   	push   rbx
-  471e7d:	57                   	push   rdi
-  471e7e:	49 54                	rex.WB push r12
-  471e80:	43                   	rex.XB
-  471e81:	48 5f                	rex.W pop rdi
-  471e83:	32 00                	xor    al,BYTE PTR [rax]
-  471e85:	43                   	rex.XB
-  471e86:	4f                   	rex.WRXB
-  471e87:	42 5f                	rex.X pop rdi
-  471e89:	53                   	push   rbx
-  471e8a:	57                   	push   rdi
-  471e8b:	49 54                	rex.WB push r12
-  471e8d:	43                   	rex.XB
-  471e8e:	48 5f                	rex.W pop rdi
-  471e90:	33 00                	xor    eax,DWORD PTR [rax]
-  471e92:	43                   	rex.XB
-  471e93:	4f                   	rex.WRXB
-  471e94:	42 5f                	rex.X pop rdi
-  471e96:	53                   	push   rbx
-  471e97:	57                   	push   rdi
-  471e98:	49 54                	rex.WB push r12
-  471e9a:	43                   	rex.XB
-  471e9b:	48 5f                	rex.W pop rdi
-  471e9d:	34 00                	xor    al,0x0
-  471e9f:	43                   	rex.XB
-  471ea0:	4f                   	rex.WRXB
-  471ea1:	42 5f                	rex.X pop rdi
-  471ea3:	53                   	push   rbx
-  471ea4:	57                   	push   rdi
-  471ea5:	49 54                	rex.WB push r12
-  471ea7:	43                   	rex.XB
-  471ea8:	48 5f                	rex.W pop rdi
-  471eaa:	35 00 43 4f 42       	xor    eax,0x424f4300
-  471eaf:	5f                   	pop    rdi
-  471eb0:	53                   	push   rbx
-  471eb1:	57                   	push   rdi
-  471eb2:	49 54                	rex.WB push r12
-  471eb4:	43                   	rex.XB
-  471eb5:	48 5f                	rex.W pop rdi
-  471eb7:	36 00 43 4f          	ss add BYTE PTR [rbx+0x4f],al
-  471ebb:	42 5f                	rex.X pop rdi
-  471ebd:	53                   	push   rbx
-  471ebe:	57                   	push   rdi
-  471ebf:	49 54                	rex.WB push r12
-  471ec1:	43                   	rex.XB
-  471ec2:	48 5f                	rex.W pop rdi
-  471ec4:	37                   	(bad)  
-  471ec5:	00 43 4f             	add    BYTE PTR [rbx+0x4f],al
-  471ec8:	42 5f                	rex.X pop rdi
-  471eca:	53                   	push   rbx
-  471ecb:	57                   	push   rdi
-  471ecc:	49 54                	rex.WB push r12
-  471ece:	43                   	rex.XB
-  471ecf:	48 5f                	rex.W pop rdi
-  471ed1:	38 00                	cmp    BYTE PTR [rax],al
-  471ed3:	61                   	(bad)  
-  471ed4:	62                   	(bad)  
-  471ed5:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  471ed6:	72 74                	jb     471f4c <_IO_stdin_used+0x2f4c>
-  471ed8:	00 61 63             	add    BYTE PTR [rcx+0x63],ah
-  471edb:	68 61 72 00 61       	push   0x61007261
-  471ee0:	63 6f 73             	movsxd ebp,DWORD PTR [rdi+0x73]
-  471ee3:	64 00 61 64          	add    BYTE PTR fs:[rcx+0x64],ah
-  471ee7:	6a 75                	push   0x75
-  471ee9:	73 74                	jae    471f5f <_IO_stdin_used+0x2f5f>
-  471eeb:	6c                   	ins    BYTE PTR es:[rdi],dx
-  471eec:	00 61 64             	add    BYTE PTR [rcx+0x64],ah
-  471eef:	6a 75                	push   0x75
-  471ef1:	73 74                	jae    471f67 <_IO_stdin_used+0x2f67>
-  471ef3:	72 00                	jb     471ef5 <_IO_stdin_used+0x2ef5>
-  471ef5:	61                   	(bad)  
-  471ef6:	69 6d 61 67 00 61 6c 	imul   ebp,DWORD PTR [rbp+0x61],0x6c610067
-  471efd:	61                   	(bad)  
-  471efe:	72 6d                	jb     471f6d <_IO_stdin_used+0x2f6d>
-  471f00:	00 61 6c             	add    BYTE PTR [rcx+0x6c],ah
-  471f03:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  471f04:	63 61 74             	movsxd esp,DWORD PTR [rcx+0x74]
-  471f07:	65 64 00 69 6d       	gs add BYTE PTR fs:[rcx+0x6d],ch
-  471f0c:	70 6c                	jo     471f7a <_IO_stdin_used+0x2f7a>
-  471f0e:	69 63 69 74 00 69 6d 	imul   esp,DWORD PTR [rbx+0x69],0x6d690074
-  471f15:	61                   	(bad)  
-  471f16:	67 65 32 44 52 65    	xor    al,BYTE PTR gs:[edx+edx*2+0x65]
-  471f1c:	63 74 00 73          	movsxd esi,DWORD PTR [rax+rax*1+0x73]
-  471f20:	6d                   	ins    DWORD PTR es:[rdi],dx
-  471f21:	70 6c                	jo     471f8f <_IO_stdin_used+0x2f8f>
-  471f23:	65 72 32             	gs jb  471f58 <_IO_stdin_used+0x2f58>
-  471f26:	44                   	rex.R
-  471f27:	4d 53                	rex.WRB push r11
-  471f29:	00 73 68             	add    BYTE PTR [rbx+0x68],dh
-  471f2c:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  471f2d:	72 74                	jb     471fa3 <_IO_stdin_used+0x2fa3>
-  471f2f:	69 6e 74 00 63 61 72 	imul   ebp,DWORD PTR [rsi+0x74],0x72616300
-  471f36:	64 69 6e 61 6c 00 6c 	imul   ebp,DWORD PTR fs:[rsi+0x61],0x6f6c006c
-  471f3d:	6f 
-  471f3e:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  471f3f:	67 77 6f             	addr32 ja 471fb1 <_IO_stdin_used+0x2fb1>
-  471f42:	72 64                	jb     471fa8 <_IO_stdin_used+0x2fa8>
-  471f44:	00 69 6e             	add    BYTE PTR [rcx+0x6e],ch
-  471f47:	74 36                	je     471f7f <_IO_stdin_used+0x2f7f>
-  471f49:	34 00                	xor    al,0x0
-  471f4b:	71 77                	jno    471fc4 <_IO_stdin_used+0x2fc4>
-  471f4d:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  471f4e:	72 64                	jb     471fb4 <_IO_stdin_used+0x2fb4>
-  471f50:	00 73 69             	add    BYTE PTR [rbx+0x69],dh
-  471f53:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  471f54:	67 6c                	ins    BYTE PTR es:[edi],dx
-  471f56:	65 00 65 78          	add    BYTE PTR gs:[rbp+0x78],ah
-  471f5a:	74 65                	je     471fc1 <_IO_stdin_used+0x2fc1>
-  471f5c:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  471f5d:	64 65 64 00 62 6f    	fs gs add BYTE PTR fs:[rdx+0x6f],ah
-  471f63:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  471f64:	6c                   	ins    BYTE PTR es:[rdi],dx
-  471f65:	65 61                	gs (bad) 
-  471f67:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  471f68:	00 62 61             	add    BYTE PTR [rdx+0x61],ah
-  471f6b:	73 65                	jae    471fd2 <_IO_stdin_used+0x2fd2>
-  471f6d:	00 73 62             	add    BYTE PTR [rbx+0x62],dh
-  471f70:	79 74                	jns    471fe6 <_IO_stdin_used+0x2fe6>
-  471f72:	65 00 75 6c          	add    BYTE PTR gs:[rbp+0x6c],dh
-  471f76:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  471f77:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  471f78:	67 00 63 61          	add    BYTE PTR [ebx+0x61],ah
-  471f7c:	74 63                	je     471fe1 <_IO_stdin_used+0x2fe1>
-  471f7e:	68 00 64 65 6c       	push   0x6c656400
-  471f83:	65 67 61             	gs addr32 (bad) 
-  471f86:	74 65                	je     471fed <_IO_stdin_used+0x2fed>
-  471f88:	00 70 61             	add    BYTE PTR [rax+0x61],dh
-  471f8b:	72 61                	jb     471fee <_IO_stdin_used+0x2fee>
-  471f8d:	6d                   	ins    DWORD PTR es:[rdi],dx
-  471f8e:	73 00                	jae    471f90 <_IO_stdin_used+0x2f90>
-  471f90:	73 65                	jae    471ff7 <_IO_stdin_used+0x2ff7>
-  471f92:	61                   	(bad)  
-  471f93:	6c                   	ins    BYTE PTR es:[rdi],dx
-  471f94:	65 64 00 73 74       	gs add BYTE PTR fs:[rbx+0x74],dh
-  471f99:	61                   	(bad)  
-  471f9a:	63 6b 61             	movsxd ebp,DWORD PTR [rbx+0x61]
-  471f9d:	6c                   	ins    BYTE PTR es:[rdi],dx
-  471f9e:	6c                   	ins    BYTE PTR es:[rdi],dx
-  471f9f:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  471fa0:	63 00                	movsxd eax,DWORD PTR [rax]
-  471fa2:	74 79                	je     47201d <_IO_stdin_used+0x301d>
-  471fa4:	70 65                	jo     47200b <_IO_stdin_used+0x300b>
-  471fa6:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  471fa7:	66 00 74 68 72       	data16 add BYTE PTR [rax+rbp*2+0x72],dh
-  471fac:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  471fad:	77 00                	ja     471faf <_IO_stdin_used+0x2faf>
-  471faf:	75 6e                	jne    47201f <_IO_stdin_used+0x301f>
-  471fb1:	63 68 65             	movsxd ebp,DWORD PTR [rax+0x65]
-  471fb4:	63 6b 65             	movsxd ebp,DWORD PTR [rbx+0x65]
-  471fb7:	64 00 75 6e          	add    BYTE PTR fs:[rbp+0x6e],dh
-  471fbb:	73 61                	jae    47201e <_IO_stdin_used+0x301e>
-  471fbd:	66 65 00 65 71       	data16 add BYTE PTR gs:[rbp+0x71],ah
-  471fc2:	75 61                	jne    472025 <_IO_stdin_used+0x3025>
-  471fc4:	6c                   	ins    BYTE PTR es:[rdi],dx
-  471fc5:	73 00                	jae    471fc7 <_IO_stdin_used+0x2fc7>
-  471fc7:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  471fc8:	61                   	(bad)  
-  471fc9:	6d                   	ins    DWORD PTR es:[rdi],dx
-  471fca:	65 6f                	outs   dx,DWORD PTR gs:[rsi]
-  471fcc:	66 00 6e 6f          	data16 add BYTE PTR [rsi+0x6f],ch
-  471fd0:	74 6e                	je     472040 <_IO_stdin_used+0x3040>
-  471fd2:	75 6c                	jne    472040 <_IO_stdin_used+0x3040>
-  471fd4:	6c                   	ins    BYTE PTR es:[rdi],dx
-  471fd5:	00 6f 72             	add    BYTE PTR [rdi+0x72],ch
-  471fd8:	64 65 72 62          	fs gs jb 47203e <_IO_stdin_used+0x303e>
-  471fdc:	79 00                	jns    471fde <_IO_stdin_used+0x2fde>
-  471fde:	70 61                	jo     472041 <_IO_stdin_used+0x3041>
-  471fe0:	72 74                	jb     472056 <_IO_stdin_used+0x3056>
-  471fe2:	69 61 6c 00 72 65 6d 	imul   esp,DWORD PTR [rcx+0x6c],0x6d657200
-  471fe9:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  471fea:	76 65                	jbe    472051 <_IO_stdin_used+0x3051>
-  471fec:	00 75 6e             	add    BYTE PTR [rbp+0x6e],dh
-  471fef:	6d                   	ins    DWORD PTR es:[rdi],dx
-  471ff0:	61                   	(bad)  
-  471ff1:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  471ff2:	61                   	(bad)  
-  471ff3:	67 65 64 00 4e 61    	gs add BYTE PTR fs:[esi+0x61],cl
-  471ff9:	4e 00 4e 41          	rex.WRX add BYTE PTR [rsi+0x41],r9b
-  471ffd:	00 61 73             	add    BYTE PTR [rcx+0x73],ah
-  472000:	3f                   	(bad)  
-  472001:	00 66 75             	add    BYTE PTR [rsi+0x75],ah
-  472004:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472005:	00 21                	add    BYTE PTR [rcx],ah
-  472007:	69 6e 00 21 69 73 00 	imul   ebp,DWORD PTR [rsi+0x0],0x736921
-  47200e:	70 61                	jo     472071 <_IO_stdin_used+0x3071>
-  472010:	63 6b 61             	movsxd ebp,DWORD PTR [rbx+0x61]
-  472013:	67 65 00 74 79 70    	add    BYTE PTR gs:[ecx+edi*2+0x70],dh
-  472019:	65 61                	gs (bad) 
-  47201b:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47201c:	69 61 73 00 72 65 63 	imul   esp,DWORD PTR [rcx+0x73],0x63657200
-  472023:	65 69 76 65 72 00 73 	imul   esi,DWORD PTR gs:[rsi+0x65],0x65730072
-  47202a:	65 
-  47202b:	74 70                	je     47209d <_IO_stdin_used+0x309d>
-  47202d:	61                   	(bad)  
-  47202e:	72 61                	jb     472091 <_IO_stdin_used+0x3091>
-  472030:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472031:	00 61 63             	add    BYTE PTR [rcx+0x63],ah
-  472034:	74 75                	je     4720ab <_IO_stdin_used+0x30ab>
-  472036:	61                   	(bad)  
-  472037:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472038:	00 61 6e             	add    BYTE PTR [rcx+0x6e],ah
-  47203b:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47203c:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47203d:	74 61                	je     4720a0 <_IO_stdin_used+0x30a0>
-  47203f:	74 69                	je     4720aa <_IO_stdin_used+0x30aa>
-  472041:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472042:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472043:	00 63 6f             	add    BYTE PTR [rbx+0x6f],ah
-  472046:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472047:	70 61                	jo     4720aa <_IO_stdin_used+0x30aa>
-  472049:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47204a:	69 6f 6e 00 63 72 6f 	imul   ebp,DWORD PTR [rdi+0x6e],0x6f726300
-  472051:	73 73                	jae    4720c6 <_IO_stdin_used+0x30c6>
-  472053:	69 6e 6c 69 6e 65 00 	imul   ebp,DWORD PTR [rsi+0x6c],0x656e69
-  47205a:	65 78 70             	gs js  4720cd <_IO_stdin_used+0x30cd>
-  47205d:	65 63 74 00 69       	movsxd esi,DWORD PTR gs:[rax+rax*1+0x69]
-  472062:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472063:	66 69 78 00 6c 61    	imul   di,WORD PTR [rax+0x0],0x616c
-  472069:	74 65                	je     4720d0 <_IO_stdin_used+0x30d0>
-  47206b:	69 6e 69 74 00 72 65 	imul   ebp,DWORD PTR [rsi+0x69],0x65720074
-  472072:	69 66 69 65 64 00 73 	imul   esp,DWORD PTR [rsi+0x69],0x73006465
-  472079:	75 73                	jne    4720ee <_IO_stdin_used+0x30ee>
-  47207b:	70 65                	jo     4720e2 <_IO_stdin_used+0x30e2>
-  47207d:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47207e:	64 00 74 61 69       	add    BYTE PTR fs:[rcx+riz*2+0x69],dh
-  472083:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472084:	72 65                	jb     4720eb <_IO_stdin_used+0x30eb>
-  472086:	63 00                	movsxd eax,DWORD PTR [rax]
-  472088:	76 61                	jbe    4720eb <_IO_stdin_used+0x30eb>
-  47208a:	72 61                	jb     4720ed <_IO_stdin_used+0x30ed>
-  47208c:	72 67                	jb     4720f5 <_IO_stdin_used+0x30f5>
-  47208e:	00 63 61             	add    BYTE PTR [rbx+0x61],ah
-  472091:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472092:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472093:	61                   	(bad)  
-  472094:	62                   	(bad)  
-  472095:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472096:	65 00 63 6c          	add    BYTE PTR gs:[rbx+0x6c],ah
-  47209a:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47209b:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47209c:	65 00 65 6d          	add    BYTE PTR gs:[rbp+0x6d],ah
-  4720a0:	70 74                	jo     472116 <_IO_stdin_used+0x3116>
-  4720a2:	79 00                	jns    4720a4 <_IO_stdin_used+0x30a4>
-  4720a4:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  4720a6:	64 64 65 63 6c 61 72 	fs fs movsxd ebp,DWORD PTR gs:[rcx+riz*2+0x72]
-  4720ad:	65 00 65 6e          	add    BYTE PTR gs:[rbp+0x6e],ah
-  4720b1:	64 66 6f             	outs   dx,WORD PTR fs:[rsi]
-  4720b4:	72 00                	jb     4720b6 <_IO_stdin_used+0x30b6>
-  4720b6:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  4720b8:	64 66 6f             	outs   dx,WORD PTR fs:[rsi]
-  4720bb:	72 65                	jb     472122 <_IO_stdin_used+0x3122>
-  4720bd:	61                   	(bad)  
-  4720be:	63 68 00             	movsxd ebp,DWORD PTR [rax+0x0]
-  4720c1:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  4720c3:	64 69 66 00 65 6e 64 	imul   esp,DWORD PTR fs:[rsi+0x0],0x73646e65
-  4720ca:	73 
-  4720cb:	77 69                	ja     472136 <_IO_stdin_used+0x3136>
-  4720cd:	74 63                	je     472132 <_IO_stdin_used+0x3132>
-  4720cf:	68 00 65 6e 64       	push   0x646e6500
-  4720d4:	77 69                	ja     47213f <_IO_stdin_used+0x313f>
-  4720d6:	6c                   	ins    BYTE PTR es:[rdi],dx
-  4720d7:	65 00 65 78          	add    BYTE PTR gs:[rbp+0x78],ah
-  4720db:	74 65                	je     472142 <_IO_stdin_used+0x3142>
-  4720dd:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4720de:	64 73 00             	fs jae 4720e1 <_IO_stdin_used+0x30e1>
-  4720e1:	69 6e 73 74 61 6e 63 	imul   ebp,DWORD PTR [rsi+0x73],0x636e6174
-  4720e8:	65 6f                	outs   dx,DWORD PTR gs:[rsi]
-  4720ea:	66 00 69 73          	data16 add BYTE PTR [rcx+0x73],ch
-  4720ee:	73 65                	jae    472155 <_IO_stdin_used+0x3155>
-  4720f0:	74 00                	je     4720f2 <_IO_stdin_used+0x30f2>
-  4720f2:	72 65                	jb     472159 <_IO_stdin_used+0x3159>
-  4720f4:	71 75                	jno    47216b <_IO_stdin_used+0x316b>
-  4720f6:	69 72 65 00 74 72 61 	imul   esi,DWORD PTR [rdx+0x65],0x61727400
-  4720fd:	69 74 00 75 6e 73 65 	imul   esi,DWORD PTR [rax+rax*1+0x75],0x7465736e
-  472104:	74 
-  472105:	00 69 6d             	add    BYTE PTR [rcx+0x6d],ch
-  472108:	70 6c                	jo     472176 <_IO_stdin_used+0x3176>
-  47210a:	65 6d                	gs ins DWORD PTR es:[rdi],dx
-  47210c:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  47210e:	74 73                	je     472183 <_IO_stdin_used+0x3183>
-  472110:	00 73 74             	add    BYTE PTR [rbx+0x74],dh
-  472113:	72 69                	jb     47217e <_IO_stdin_used+0x317e>
-  472115:	63 74 66 70          	movsxd esi,DWORD PTR [rsi+riz*2+0x70]
-  472119:	00 74 68 72          	add    BYTE PTR [rax+rbp*2+0x72],dh
-  47211d:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47211e:	77 73                	ja     472193 <_IO_stdin_used+0x3193>
-  472120:	00 74 72 61          	add    BYTE PTR [rdx+rsi*2+0x61],dh
-  472124:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472125:	73 69                	jae    472190 <_IO_stdin_used+0x3190>
-  472127:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  472129:	74 00                	je     47212b <_IO_stdin_used+0x312b>
-  47212b:	61                   	(bad)  
-  47212c:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47212d:	64 61                	fs (bad) 
-  47212f:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472130:	73 6f                	jae    4721a1 <_IO_stdin_used+0x31a1>
-  472132:	00 61 73             	add    BYTE PTR [rcx+0x73],ah
-  472135:	73 65                	jae    47219c <_IO_stdin_used+0x319c>
-  472137:	72 74                	jb     4721ad <_IO_stdin_used+0x31ad>
-  472139:	77 61                	ja     47219c <_IO_stdin_used+0x319c>
-  47213b:	72 6e                	jb     4721ab <_IO_stdin_used+0x31ab>
-  47213d:	00 62 69             	add    BYTE PTR [rdx+0x69],ah
-  472140:	74 00                	je     472142 <_IO_stdin_used+0x3142>
-  472142:	62                   	(bad)  
-  472143:	69 74 72 65 73 65 74 	imul   esi,DWORD PTR [rdx+rsi*2+0x65],0x746573
-  47214a:	00 
-  47214b:	62                   	(bad)  
-  47214c:	69 74 73 65 74 00 62 	imul   esi,DWORD PTR [rbx+rsi*2+0x65],0x79620074
-  472153:	79 
-  472154:	72 65                	jb     4721bb <_IO_stdin_used+0x31bb>
-  472156:	66 00 62 79          	data16 add BYTE PTR [rdx+0x79],ah
-  47215a:	76 61                	jbe    4721bd <_IO_stdin_used+0x31bd>
-  47215c:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47215d:	00 63 61             	add    BYTE PTR [rbx+0x61],ah
-  472160:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472161:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472162:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472163:	63 61 74             	movsxd esp,DWORD PTR [rcx+0x74]
-  472166:	65 00 63 62          	add    BYTE PTR gs:[rbx+0x62],ah
-  47216a:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47216b:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47216c:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47216d:	00 63 62             	add    BYTE PTR [rbx+0x62],ah
-  472170:	79 74                	jns    4721e6 <_IO_stdin_used+0x31e6>
-  472172:	65 00 63 6c          	add    BYTE PTR gs:[rbx+0x6c],ah
-  472176:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472177:	67 00 63 6c          	add    BYTE PTR [ebx+0x6c],ah
-  47217b:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47217c:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47217d:	67 69 6e 74 00 63 6f 	imul   ebp,DWORD PTR [esi+0x74],0x6d6f6300
-  472184:	6d 
-  472185:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472186:	61                   	(bad)  
-  472187:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472188:	64 00 63 6f          	add    BYTE PTR fs:[rbx+0x6f],ah
-  47218c:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47218d:	64 62 72 6f 61 64    	(bad)
-  472193:	63 61 73             	movsxd esp,DWORD PTR [rcx+0x73]
-  472196:	74 00                	je     472198 <_IO_stdin_used+0x3198>
-  472198:	63 6f 6e             	movsxd ebp,DWORD PTR [rdi+0x6e]
-  47219b:	64 63 72 65          	movsxd esi,DWORD PTR fs:[rdx+0x65]
-  47219f:	61                   	(bad)  
-  4721a0:	74 65                	je     472207 <_IO_stdin_used+0x3207>
-  4721a2:	00 63 6f             	add    BYTE PTR [rbx+0x6f],ah
-  4721a5:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4721a6:	64 64 65 73 74       	fs fs gs jae 47221f <_IO_stdin_used+0x321f>
-  4721ab:	72 6f                	jb     47221c <_IO_stdin_used+0x321c>
-  4721ad:	79 00                	jns    4721af <_IO_stdin_used+0x31af>
-  4721af:	63 6f 6e             	movsxd ebp,DWORD PTR [rdi+0x6e]
-  4721b2:	64 73 69             	fs jae 47221e <_IO_stdin_used+0x321e>
-  4721b5:	67 6e                	outs   dx,BYTE PTR ds:[esi]
-  4721b7:	61                   	(bad)  
-  4721b8:	6c                   	ins    BYTE PTR es:[rdi],dx
-  4721b9:	00 63 6f             	add    BYTE PTR [rbx+0x6f],ah
-  4721bc:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4721bd:	64 77 61             	fs ja  472221 <_IO_stdin_used+0x3221>
-  4721c0:	69 74 00 63 73 68 6f 	imul   esi,DWORD PTR [rax+rax*1+0x63],0x726f6873
-  4721c7:	72 
-  4721c8:	74 00                	je     4721ca <_IO_stdin_used+0x31ca>
-  4721ca:	63 73 69             	movsxd esi,DWORD PTR [rbx+0x69]
-  4721cd:	67 6e                	outs   dx,BYTE PTR ds:[esi]
-  4721cf:	00 63 75             	add    BYTE PTR [rbx+0x75],ah
-  4721d2:	62                   	(bad)  
-  4721d3:	79 74                	jns    472249 <_IO_stdin_used+0x3249>
-  4721d5:	65 00 63 75          	add    BYTE PTR gs:[rbx+0x75],ah
-  4721d9:	69 6e 74 00 63 75 6c 	imul   ebp,DWORD PTR [rsi+0x74],0x6c756300
-  4721e0:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4721e1:	67 00 63 75          	add    BYTE PTR [ebx+0x75],ah
-  4721e5:	6c                   	ins    BYTE PTR es:[rdi],dx
-  4721e6:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4721e7:	67 69 6e 74 00 63 75 	imul   ebp,DWORD PTR [esi+0x74],0x6e756300
-  4721ee:	6e 
-  4721ef:	73 67                	jae    472258 <_IO_stdin_used+0x3258>
-  4721f1:	00 63 75             	add    BYTE PTR [rbx+0x75],ah
-  4721f4:	72 64                	jb     47225a <_IO_stdin_used+0x325a>
-  4721f6:	69 72 00 63 75 73 68 	imul   esi,DWORD PTR [rdx+0x0],0x68737563
-  4721fd:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4721fe:	72 74                	jb     472274 <_IO_stdin_used+0x3274>
-  472200:	00 63 75             	add    BYTE PTR [rbx+0x75],ah
-  472203:	73 74                	jae    472279 <_IO_stdin_used+0x3279>
-  472205:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472206:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472207:	00 63 76             	add    BYTE PTR [rbx+0x76],ah
-  47220a:	61                   	(bad)  
-  47220b:	5f                   	pop    rdi
-  47220c:	61                   	(bad)  
-  47220d:	72 67                	jb     472276 <_IO_stdin_used+0x3276>
-  47220f:	00 63 76             	add    BYTE PTR [rbx+0x76],ah
-  472212:	61                   	(bad)  
-  472213:	5f                   	pop    rdi
-  472214:	63 6f 70             	movsxd ebp,DWORD PTR [rdi+0x70]
-  472217:	79 00                	jns    472219 <_IO_stdin_used+0x3219>
-  472219:	63 76 61             	movsxd esi,DWORD PTR [rsi+0x61]
-  47221c:	5f                   	pop    rdi
-  47221d:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47221e:	69 73 74 00 63 76 61 	imul   esi,DWORD PTR [rbx+0x74],0x61766300
-  472225:	5f                   	pop    rdi
-  472226:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  472228:	64 00 63 76          	add    BYTE PTR fs:[rbx+0x76],ah
-  47222c:	61                   	(bad)  
-  47222d:	5f                   	pop    rdi
-  47222e:	73 74                	jae    4722a4 <_IO_stdin_used+0x32a4>
-  472230:	61                   	(bad)  
-  472231:	72 74                	jb     4722a7 <_IO_stdin_used+0x32a7>
-  472233:	00 63 76             	add    BYTE PTR [rbx+0x76],ah
-  472236:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472237:	00 63 76             	add    BYTE PTR [rbx+0x76],ah
-  47223a:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47223b:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47223c:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47223d:	67 69 6e 74 00 63 76 	imul   ebp,DWORD PTR [esi+0x74],0x73766300
-  472244:	73 
-  472245:	68 6f 72 74 00       	push   0x74726f
-  47224a:	64 61                	fs (bad) 
-  47224c:	74 65                	je     4722b3 <_IO_stdin_used+0x32b3>
-  47224e:	61                   	(bad)  
-  47224f:	64 64 00 64 61 74    	fs add BYTE PTR fs:[rcx+riz*2+0x74],ah
-  472255:	65 64 69 66 66 00 64 	gs imul esp,DWORD PTR fs:[rsi+0x66],0x74616400
-  47225c:	61 74 
-  47225e:	65 70 61             	gs jo  4722c2 <_IO_stdin_used+0x32c2>
-  472261:	72 74                	jb     4722d7 <_IO_stdin_used+0x32d7>
-  472263:	00 64 61 74          	add    BYTE PTR [rcx+riz*2+0x74],ah
-  472267:	65 73 65             	gs jae 4722cf <_IO_stdin_used+0x32cf>
-  47226a:	72 69                	jb     4722d5 <_IO_stdin_used+0x32d5>
-  47226c:	61                   	(bad)  
-  47226d:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47226e:	00 64 61 74          	add    BYTE PTR [rcx+riz*2+0x74],ah
-  472272:	65 76 61             	gs jbe 4722d6 <_IO_stdin_used+0x32d6>
-  472275:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472276:	75 65                	jne    4722dd <_IO_stdin_used+0x32dd>
-  472278:	00 64 65 61          	add    BYTE PTR [rbp+riz*2+0x61],ah
-  47227c:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47227d:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47227e:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47227f:	63 61 74             	movsxd esp,DWORD PTR [rcx+0x74]
-  472282:	65 00 64 65 66       	add    BYTE PTR gs:[rbp+riz*2+0x66],ah
-  472287:	62                   	(bad)  
-  472288:	79 74                	jns    4722fe <_IO_stdin_used+0x32fe>
-  47228a:	65 00 64 65 66       	add    BYTE PTR gs:[rbp+riz*2+0x66],ah
-  47228f:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472290:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472291:	67 00 64 65 66       	add    BYTE PTR [ebp+eiz*2+0x66],ah
-  472296:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472297:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472298:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472299:	67 69 6e 74 00 64 65 	imul   ebp,DWORD PTR [esi+0x74],0x66656400
-  4722a0:	66 
-  4722a1:	73 68                	jae    47230b <_IO_stdin_used+0x330b>
-  4722a3:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4722a4:	72 74                	jb     47231a <_IO_stdin_used+0x331a>
-  4722a6:	00 64 65 66          	add    BYTE PTR [rbp+riz*2+0x66],ah
-  4722aa:	75 62                	jne    47230e <_IO_stdin_used+0x330e>
-  4722ac:	79 74                	jns    472322 <_IO_stdin_used+0x3322>
-  4722ae:	65 00 64 65 66       	add    BYTE PTR gs:[rbp+riz*2+0x66],ah
-  4722b3:	75 69                	jne    47231e <_IO_stdin_used+0x331e>
-  4722b5:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4722b6:	74 00                	je     4722b8 <_IO_stdin_used+0x32b8>
-  4722b8:	64 65 66 75 6c       	fs gs data16 jne 472329 <_IO_stdin_used+0x3329>
-  4722bd:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4722be:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4722bf:	67 69 6e 74 00 64 65 	imul   ebp,DWORD PTR [esi+0x74],0x66656400
-  4722c6:	66 
-  4722c7:	75 73                	jne    47233c <_IO_stdin_used+0x333c>
-  4722c9:	68 6f 72 74 00       	push   0x74726f
-  4722ce:	64 79 6c             	fs jns 47233d <_IO_stdin_used+0x333d>
-  4722d1:	69 62 66 72 65 65 00 	imul   esp,DWORD PTR [rdx+0x66],0x656572
-  4722d8:	64 79 6c             	fs jns 472347 <_IO_stdin_used+0x3347>
-  4722db:	69 62 6c 6f 61 64 00 	imul   esp,DWORD PTR [rdx+0x6c],0x64616f
-  4722e2:	64 79 6c             	fs jns 472351 <_IO_stdin_used+0x3351>
-  4722e5:	69 62 73 79 6d 62 6f 	imul   esp,DWORD PTR [rdx+0x73],0x6f626d79
-  4722ec:	6c                   	ins    BYTE PTR es:[rdi],dx
-  4722ed:	00 65 6e             	add    BYTE PTR [rbp+0x6e],ah
-  4722f0:	63 6f 64             	movsxd ebp,DWORD PTR [rdi+0x64]
-  4722f3:	69 6e 67 00 65 72 66 	imul   ebp,DWORD PTR [rsi+0x67],0x66726500
-  4722fa:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4722fb:	00 65 72             	add    BYTE PTR [rbp+0x72],ah
-  4722fe:	6d                   	ins    DWORD PTR es:[rdi],dx
-  4722ff:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472300:	00 65 78             	add    BYTE PTR [rbp+0x78],ah
-  472303:	65 63 00             	movsxd eax,DWORD PTR gs:[rax]
-  472306:	65 78 65             	gs js  47236e <_IO_stdin_used+0x336e>
-  472309:	70 61                	jo     47236c <_IO_stdin_used+0x336c>
-  47230b:	74 68                	je     472375 <_IO_stdin_used+0x3375>
-  47230d:	00 63 6f             	add    BYTE PTR [rbx+0x6f],ah
-  472310:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472311:	70 69                	jo     47237c <_IO_stdin_used+0x337c>
-  472313:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472314:	65 00 68 65          	add    BYTE PTR gs:[rax+0x65],ch
-  472318:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472319:	70 00                	jo     47231b <_IO_stdin_used+0x331b>
-  47231b:	69 64 65 6e 74 69 66 	imul   esp,DWORD PTR [rbp+riz*2+0x6e],0x79666974
-  472322:	79 
-  472323:	00 6c 69 73          	add    BYTE PTR [rcx+rbp*2+0x73],ch
-  472327:	74 6e                	je     472397 <_IO_stdin_used+0x3397>
-  472329:	68 00 72 65 6e       	push   0x6e657200
-  47232e:	61                   	(bad)  
-  47232f:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472330:	65 00 72 65          	add    BYTE PTR gs:[rdx+0x65],dh
-  472334:	73 65                	jae    47239b <_IO_stdin_used+0x339b>
-  472336:	71 75                	jno    4723ad <_IO_stdin_used+0x33ad>
-  472338:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  47233a:	63 65 00             	movsxd esp,DWORD PTR [rbp+0x0]
-  47233d:	73 63                	jae    4723a2 <_IO_stdin_used+0x33a2>
-  47233f:	72 61                	jb     4723a2 <_IO_stdin_used+0x33a2>
-  472341:	74 63                	je     4723a6 <_IO_stdin_used+0x33a6>
-  472343:	68 00 73 68 6f       	push   0x6f687300
-  472348:	77 00                	ja     47234a <_IO_stdin_used+0x334a>
-  47234a:	75 6e                	jne    4723ba <_IO_stdin_used+0x33ba>
-  47234c:	73 61                	jae    4723af <_IO_stdin_used+0x33af>
-  47234e:	76 65                	jbe    4723b5 <_IO_stdin_used+0x33b5>
-  472350:	00 62 75             	add    BYTE PTR [rdx+0x75],ah
-  472353:	66 73 69             	data16 jae 4723bf <_IO_stdin_used+0x33bf>
-  472356:	7a 00                	jp     472358 <_IO_stdin_used+0x3358>
-  472358:	63 63 70             	movsxd esp,DWORD PTR [rbx+0x70]
-  47235b:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47235c:	73 00                	jae    47235e <_IO_stdin_used+0x335e>
-  47235e:	63 68 61             	movsxd ebp,DWORD PTR [rax+0x61]
-  472361:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472362:	67 65 00 64 65 74    	add    BYTE PTR gs:[ebp+eiz*2+0x74],ah
-  472368:	00 66 69             	add    BYTE PTR [rsi+0x69],ah
-  47236b:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47236c:	65 61                	gs (bad) 
-  47236e:	74 74                	je     4723e4 <_IO_stdin_used+0x33e4>
-  472370:	72 00                	jb     472372 <_IO_stdin_used+0x3372>
-  472372:	66 69 6c 65 63 6f 70 	imul   bp,WORD PTR [rbp+riz*2+0x63],0x706f
-  472379:	79 00                	jns    47237b <_IO_stdin_used+0x337b>
-  47237b:	66 69 6c 65 64 61 74 	imul   bp,WORD PTR [rbp+riz*2+0x64],0x7461
-  472382:	65 74 69             	gs je  4723ee <_IO_stdin_used+0x33ee>
-  472385:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472386:	65 00 66 69          	add    BYTE PTR gs:[rsi+0x69],ah
-  47238a:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47238b:	65 65 78 69          	gs gs js 4723f8 <_IO_stdin_used+0x33f8>
-  47238f:	73 74                	jae    472405 <_IO_stdin_used+0x3405>
-  472391:	73 00                	jae    472393 <_IO_stdin_used+0x3393>
-  472393:	66 69 6c 65 6c 65 6e 	imul   bp,WORD PTR [rbp+riz*2+0x6c],0x6e65
-  47239a:	00 66 72             	add    BYTE PTR [rsi+0x72],ah
-  47239d:	65 65 66 69 6c 65 00 	gs imul bp,WORD PTR gs:[rbp+riz*2+0x0],0x7266
-  4723a4:	66 72 
-  4723a6:	61                   	(bad)  
-  4723a7:	63 00                	movsxd eax,DWORD PTR [rax]
-  4723a9:	67 65 74 6a          	addr32 gs je 472417 <_IO_stdin_used+0x3417>
-  4723ad:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4723ae:	79 73                	jns    472423 <_IO_stdin_used+0x3423>
-  4723b0:	74 69                	je     47241b <_IO_stdin_used+0x341b>
-  4723b2:	63 6b 00             	movsxd ebp,DWORD PTR [rbx+0x0]
-  4723b5:	67 65 74 6b          	addr32 gs je 472424 <_IO_stdin_used+0x3424>
-  4723b9:	65 79 00             	gs jns 4723bc <_IO_stdin_used+0x33bc>
-  4723bc:	67 65 74 6d          	addr32 gs je 47242d <_IO_stdin_used+0x342d>
-  4723c0:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4723c1:	75 73                	jne    472436 <_IO_stdin_used+0x3436>
-  4723c3:	65 00 68 69          	add    BYTE PTR gs:[rax+0x69],ch
-  4723c7:	62                   	(bad)  
-  4723c8:	79 74                	jns    47243e <_IO_stdin_used+0x343e>
-  4723ca:	65 00 68 69          	add    BYTE PTR gs:[rax+0x69],ch
-  4723ce:	77 6f                	ja     47243f <_IO_stdin_used+0x343f>
-  4723d0:	72 64                	jb     472436 <_IO_stdin_used+0x3436>
-  4723d2:	00 69 6d             	add    BYTE PTR [rcx+0x6d],ch
-  4723d5:	61                   	(bad)  
-  4723d6:	67 65 63 6f 6e       	movsxd ebp,DWORD PTR gs:[edi+0x6e]
-  4723db:	76 65                	jbe    472442 <_IO_stdin_used+0x3442>
-  4723dd:	72 74                	jb     472453 <_IO_stdin_used+0x3453>
-  4723df:	72 6f                	jb     472450 <_IO_stdin_used+0x3450>
-  4723e1:	77 00                	ja     4723e3 <_IO_stdin_used+0x33e3>
-  4723e3:	69 6d 61 67 65 63 72 	imul   ebp,DWORD PTR [rbp+0x61],0x72636567
-  4723ea:	65 61                	gs (bad) 
-  4723ec:	74 65                	je     472453 <_IO_stdin_used+0x3453>
-  4723ee:	00 69 6d             	add    BYTE PTR [rcx+0x6d],ch
-  4723f1:	61                   	(bad)  
-  4723f2:	67 65 64 65 73 74    	addr32 gs fs gs jae 47246c <_IO_stdin_used+0x346c>
-  4723f8:	72 6f                	jb     472469 <_IO_stdin_used+0x3469>
-  4723fa:	79 00                	jns    4723fc <_IO_stdin_used+0x33fc>
-  4723fc:	69 6d 61 67 65 69 6e 	imul   ebp,DWORD PTR [rbp+0x61],0x6e696567
-  472403:	66 6f                	outs   dx,WORD PTR ds:[rsi]
-  472405:	00 69 6e             	add    BYTE PTR [rcx+0x6e],ch
-  472408:	73 74                	jae    47247e <_IO_stdin_used+0x347e>
-  47240a:	72 72                	jb     47247e <_IO_stdin_used+0x347e>
-  47240c:	65 76 00             	gs jbe 47240f <_IO_stdin_used+0x340f>
-  47240f:	69 73 64 61 74 65 00 	imul   esi,DWORD PTR [rbx+0x64],0x657461
-  472416:	69 73 72 65 64 69 72 	imul   esi,DWORD PTR [rbx+0x72],0x72696465
-  47241d:	65 63 74 65 64       	movsxd esi,DWORD PTR gs:[rbp+riz*2+0x64]
-  472422:	00 6c 62 6f          	add    BYTE PTR [rdx+riz*2+0x6f],ch
-  472426:	75 6e                	jne    472496 <_IO_stdin_used+0x3496>
-  472428:	64 00 6c 63 61       	add    BYTE PTR fs:[rbx+riz*2+0x61],ch
-  47242d:	73 65                	jae    472494 <_IO_stdin_used+0x3494>
-  47242f:	00 6c 69 62          	add    BYTE PTR [rcx+rbp*2+0x62],ch
-  472433:	00 6c 6f 62          	add    BYTE PTR [rdi+rbp*2+0x62],ch
-  472437:	79 74                	jns    4724ad <_IO_stdin_used+0x34ad>
-  472439:	65 00 6c 6f 77       	add    BYTE PTR gs:[rdi+rbp*2+0x77],ch
-  47243e:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47243f:	72 64                	jb     4724a5 <_IO_stdin_used+0x34a5>
-  472441:	00 6c 74 72          	add    BYTE PTR [rsp+rsi*2+0x72],ch
-  472445:	69 6d 00 6d 6b 6c 00 	imul   ebp,DWORD PTR [rbp+0x0],0x6c6b6d
-  47244c:	6d                   	ins    DWORD PTR es:[rdi],dx
-  47244d:	6b 6c 6f 6e 67       	imul   ebp,DWORD PTR [rdi+rbp*2+0x6e],0x67
-  472452:	69 6e 74 00 6d 6b 73 	imul   ebp,DWORD PTR [rsi+0x74],0x736b6d00
-  472459:	68 6f 72 74 00       	push   0x74726f
-  47245e:	6d                   	ins    DWORD PTR es:[rdi],dx
-  47245f:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472460:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472461:	74 68                	je     4724cb <_IO_stdin_used+0x34cb>
-  472463:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472464:	61                   	(bad)  
-  472465:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472466:	65 00 6d 75          	add    BYTE PTR gs:[rbp+0x75],ch
-  47246a:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47246b:	74 69                	je     4724d6 <_IO_stdin_used+0x34d6>
-  47246d:	6b 65 79 00          	imul   esp,DWORD PTR [rbp+0x79],0x0
-  472471:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472472:	75 74                	jne    4724e8 <_IO_stdin_used+0x34e8>
-  472474:	65 78 63             	gs js  4724da <_IO_stdin_used+0x34da>
-  472477:	72 65                	jb     4724de <_IO_stdin_used+0x34de>
-  472479:	61                   	(bad)  
-  47247a:	74 65                	je     4724e1 <_IO_stdin_used+0x34e1>
-  47247c:	00 6d 75             	add    BYTE PTR [rbp+0x75],ch
-  47247f:	74 65                	je     4724e6 <_IO_stdin_used+0x34e6>
-  472481:	78 64                	js     4724e7 <_IO_stdin_used+0x34e7>
-  472483:	65 73 74             	gs jae 4724fa <_IO_stdin_used+0x34fa>
-  472486:	72 6f                	jb     4724f7 <_IO_stdin_used+0x34f7>
-  472488:	79 00                	jns    47248a <_IO_stdin_used+0x348a>
-  47248a:	6d                   	ins    DWORD PTR es:[rdi],dx
-  47248b:	75 74                	jne    472501 <_IO_stdin_used+0x3501>
-  47248d:	65 78 6c             	gs js  4724fc <_IO_stdin_used+0x34fc>
-  472490:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472491:	63 6b 00             	movsxd ebp,DWORD PTR [rbx+0x0]
-  472494:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472495:	75 74                	jne    47250b <_IO_stdin_used+0x350b>
-  472497:	65 78 75             	gs js  47250f <_IO_stdin_used+0x350f>
-  47249a:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47249b:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47249c:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47249d:	63 6b 00             	movsxd ebp,DWORD PTR [rbx+0x0]
-  4724a0:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4724a1:	61                   	(bad)  
-  4724a2:	6b 65 64 00          	imul   esp,DWORD PTR [rbp+0x64],0x0
-  4724a6:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4724a7:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4724a8:	77 00                	ja     4724aa <_IO_stdin_used+0x34aa>
-  4724aa:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4724ab:	66 66 73 65          	data16 data16 jae 472514 <_IO_stdin_used+0x3514>
-  4724af:	74 6f                	je     472520 <_IO_stdin_used+0x3520>
-  4724b1:	66 00 6f 72          	data16 add BYTE PTR [rdi+0x72],ch
-  4724b5:	65 6c                	gs ins BYTE PTR es:[rdi],dx
-  4724b7:	73 65                	jae    47251e <_IO_stdin_used+0x351e>
-  4724b9:	00 6f 76             	add    BYTE PTR [rdi+0x76],ch
-  4724bc:	65 72 6c             	gs jb  47252b <_IO_stdin_used+0x352b>
-  4724bf:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4724c0:	61                   	(bad)  
-  4724c1:	64 00 70 6f          	add    BYTE PTR fs:[rax+0x6f],dh
-  4724c5:	69 6e 74 63 6f 6f 72 	imul   ebp,DWORD PTR [rsi+0x74],0x726f6f63
-  4724cc:	64 00 70 72          	add    BYTE PTR fs:[rax+0x72],dh
-  4724d0:	65 73 65             	gs jae 472538 <_IO_stdin_used+0x3538>
-  4724d3:	72 76                	jb     47254b <_IO_stdin_used+0x354b>
-  4724d5:	65 00 70 72          	add    BYTE PTR gs:[rax+0x72],dh
-  4724d9:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4724da:	63 70 74             	movsxd esi,DWORD PTR [rax+0x74]
-  4724dd:	72 00                	jb     4724df <_IO_stdin_used+0x34df>
-  4724df:	72 65                	jb     472546 <_IO_stdin_used+0x3546>
-  4724e1:	64 69 6d 00 72 67 62 	imul   ebp,DWORD PTR fs:[rbp+0x0],0x61626772
-  4724e8:	61 
-  4724e9:	00 72 74             	add    BYTE PTR [rdx+0x74],dh
-  4724ec:	72 69                	jb     472557 <_IO_stdin_used+0x3557>
-  4724ee:	6d                   	ins    DWORD PTR es:[rdi],dx
-  4724ef:	00 73 61             	add    BYTE PTR [rbx+0x61],dh
-  4724f2:	64 64 00 73 63       	fs add BYTE PTR fs:[rbx+0x63],dh
-  4724f7:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4724f8:	70 65                	jo     47255f <_IO_stdin_used+0x355f>
-  4724fa:	00 73 63             	add    BYTE PTR [rbx+0x63],dh
-  4724fd:	72 65                	jb     472564 <_IO_stdin_used+0x3564>
-  4724ff:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  472501:	63 6f 70             	movsxd ebp,DWORD PTR [rdi+0x70]
-  472504:	79 00                	jns    472506 <_IO_stdin_used+0x3506>
-  472506:	73 63                	jae    47256b <_IO_stdin_used+0x356b>
-  472508:	72 65                	jb     47256f <_IO_stdin_used+0x356f>
-  47250a:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  47250c:	63 6f 6e             	movsxd ebp,DWORD PTR [rdi+0x6e]
-  47250f:	74 72                	je     472583 <_IO_stdin_used+0x3583>
-  472511:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472512:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472513:	00 73 63             	add    BYTE PTR [rbx+0x63],dh
-  472516:	72 65                	jb     47257d <_IO_stdin_used+0x357d>
-  472518:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  47251a:	65 76 65             	gs jbe 472582 <_IO_stdin_used+0x3582>
-  47251d:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47251e:	74 00                	je     472520 <_IO_stdin_used+0x3520>
-  472520:	73 63                	jae    472585 <_IO_stdin_used+0x3585>
-  472522:	72 65                	jb     472589 <_IO_stdin_used+0x3589>
-  472524:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  472526:	67 6c                	ins    BYTE PTR es:[edi],dx
-  472528:	70 72                	jo     47259c <_IO_stdin_used+0x359c>
-  47252a:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47252b:	63 00                	movsxd eax,DWORD PTR [rax]
-  47252d:	73 63                	jae    472592 <_IO_stdin_used+0x3592>
-  47252f:	72 65                	jb     472596 <_IO_stdin_used+0x3596>
-  472531:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  472533:	69 6e 66 6f 00 73 63 	imul   ebp,DWORD PTR [rsi+0x66],0x6373006f
-  47253a:	72 65                	jb     4725a1 <_IO_stdin_used+0x35a1>
-  47253c:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  47253e:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47253f:	69 73 74 00 73 63 72 	imul   esi,DWORD PTR [rbx+0x74],0x72637300
-  472546:	65 65 6e             	gs outs dx,BYTE PTR gs:[rsi]
-  472549:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47254a:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47254b:	63 6b 00             	movsxd ebp,DWORD PTR [rbx+0x0]
-  47254e:	73 63                	jae    4725b3 <_IO_stdin_used+0x35b3>
-  472550:	72 65                	jb     4725b7 <_IO_stdin_used+0x35b7>
-  472552:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  472554:	70 74                	jo     4725ca <_IO_stdin_used+0x35ca>
-  472556:	72 00                	jb     472558 <_IO_stdin_used+0x3558>
-  472558:	73 63                	jae    4725bd <_IO_stdin_used+0x35bd>
-  47255a:	72 65                	jb     4725c1 <_IO_stdin_used+0x35c1>
-  47255c:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  47255e:	72 65                	jb     4725c5 <_IO_stdin_used+0x35c5>
-  472560:	73 00                	jae    472562 <_IO_stdin_used+0x3562>
-  472562:	73 63                	jae    4725c7 <_IO_stdin_used+0x35c7>
-  472564:	72 65                	jb     4725cb <_IO_stdin_used+0x35cb>
-  472566:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  472568:	73 65                	jae    4725cf <_IO_stdin_used+0x35cf>
-  47256a:	74 00                	je     47256c <_IO_stdin_used+0x356c>
-  47256c:	73 63                	jae    4725d1 <_IO_stdin_used+0x35d1>
-  47256e:	72 65                	jb     4725d5 <_IO_stdin_used+0x35d5>
-  472570:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  472572:	73 79                	jae    4725ed <_IO_stdin_used+0x35ed>
-  472574:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472575:	63 00                	movsxd eax,DWORD PTR [rax]
-  472577:	73 63                	jae    4725dc <_IO_stdin_used+0x35dc>
-  472579:	72 65                	jb     4725e0 <_IO_stdin_used+0x35e0>
-  47257b:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  47257d:	75 6e                	jne    4725ed <_IO_stdin_used+0x35ed>
-  47257f:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472580:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472581:	63 6b 00             	movsxd ebp,DWORD PTR [rbx+0x0]
-  472584:	73 65                	jae    4725eb <_IO_stdin_used+0x35eb>
-  472586:	74 64                	je     4725ec <_IO_stdin_used+0x35ec>
-  472588:	61                   	(bad)  
-  472589:	74 65                	je     4725f0 <_IO_stdin_used+0x35f0>
-  47258b:	00 73 65             	add    BYTE PTR [rbx+0x65],dh
-  47258e:	74 65                	je     4725f5 <_IO_stdin_used+0x35f5>
-  472590:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472591:	76 69                	jbe    4725fc <_IO_stdin_used+0x35fc>
-  472593:	72 6f                	jb     472604 <_IO_stdin_used+0x3604>
-  472595:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472596:	00 73 65             	add    BYTE PTR [rbx+0x65],dh
-  472599:	74 6d                	je     472608 <_IO_stdin_used+0x3608>
-  47259b:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47259c:	75 73                	jne    472611 <_IO_stdin_used+0x3611>
-  47259e:	65 00 73 65          	add    BYTE PTR gs:[rbx+0x65],dh
-  4725a2:	74 74                	je     472618 <_IO_stdin_used+0x3618>
-  4725a4:	69 6d 65 00 74 68 72 	imul   ebp,DWORD PTR [rbp+0x65],0x72687400
-  4725ab:	65 61                	gs (bad) 
-  4725ad:	64 63 61 6c          	movsxd esp,DWORD PTR fs:[rcx+0x6c]
-  4725b1:	6c                   	ins    BYTE PTR es:[rdi],dx
-  4725b2:	00 74 68 72          	add    BYTE PTR [rax+rbp*2+0x72],dh
-  4725b6:	65 61                	gs (bad) 
-  4725b8:	64 63 72 65          	movsxd esi,DWORD PTR fs:[rdx+0x65]
-  4725bc:	61                   	(bad)  
-  4725bd:	74 65                	je     472624 <_IO_stdin_used+0x3624>
-  4725bf:	00 74 68 72          	add    BYTE PTR [rax+rbp*2+0x72],dh
-  4725c3:	65 61                	gs (bad) 
-  4725c5:	64 64 65 74 61       	fs fs gs je 47262b <_IO_stdin_used+0x362b>
-  4725ca:	63 68 00             	movsxd ebp,DWORD PTR [rax+0x0]
-  4725cd:	74 68                	je     472637 <_IO_stdin_used+0x3637>
-  4725cf:	72 65                	jb     472636 <_IO_stdin_used+0x3636>
-  4725d1:	61                   	(bad)  
-  4725d2:	64 77 61             	fs ja  472636 <_IO_stdin_used+0x3636>
-  4725d5:	69 74 00 74 72 61 6e 	imul   esi,DWORD PTR [rax+rax*1+0x74],0x736e6172
-  4725dc:	73 
-  4725dd:	00 75 62             	add    BYTE PTR [rbp+0x62],dh
-  4725e0:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4725e1:	75 6e                	jne    472651 <_IO_stdin_used+0x3651>
-  4725e3:	64 00 75 63          	add    BYTE PTR fs:[rbp+0x63],dh
-  4725e7:	61                   	(bad)  
-  4725e8:	73 65                	jae    47264f <_IO_stdin_used+0x364f>
-  4725ea:	00 75 69             	add    BYTE PTR [rbp+0x69],dh
-  4725ed:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4725ee:	74 65                	je     472655 <_IO_stdin_used+0x3655>
-  4725f0:	67 65 72 00          	addr32 gs jb 4725f4 <_IO_stdin_used+0x35f4>
-  4725f4:	76 61                	jbe    472657 <_IO_stdin_used+0x3657>
-  4725f6:	5f                   	pop    rdi
-  4725f7:	66 69 72 73 74 00    	imul   si,WORD PTR [rdx+0x73],0x74
-  4725fd:	76 61                	jbe    472660 <_IO_stdin_used+0x3660>
-  4725ff:	5f                   	pop    rdi
-  472600:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472601:	65 78 74             	gs js  472678 <_IO_stdin_used+0x3678>
-  472604:	00 76 61             	add    BYTE PTR [rsi+0x61],dh
-  472607:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472608:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472609:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47260a:	67 00 76 61          	add    BYTE PTR [esi+0x61],dh
-  47260e:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47260f:	69 6e 74 00 77 62 69 	imul   ebp,DWORD PTR [rsi+0x74],0x69627700
-  472616:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472617:	00 77 63             	add    BYTE PTR [rdi+0x63],dh
-  47261a:	68 72 00 77 65       	push   0x65770072
-  47261f:	65 6b 64 61 79 00    	imul   esp,DWORD PTR gs:[rcx+riz*2+0x79],0x0
-  472625:	77 65                	ja     47268c <_IO_stdin_used+0x368c>
-  472627:	65 6b 64 61 79 6e    	imul   esp,DWORD PTR gs:[rcx+riz*2+0x79],0x6e
-  47262d:	61                   	(bad)  
-  47262e:	6d                   	ins    DWORD PTR es:[rdi],dx
-  47262f:	65 00 77 68          	add    BYTE PTR gs:[rdi+0x68],dh
-  472633:	65 78 00             	gs js  472636 <_IO_stdin_used+0x3636>
-  472636:	77 69                	ja     4726a1 <_IO_stdin_used+0x36a1>
-  472638:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472639:	64 6f                	outs   dx,DWORD PTR fs:[rsi]
-  47263b:	77 74                	ja     4726b1 <_IO_stdin_used+0x36b1>
-  47263d:	69 74 6c 65 00 77 69 	imul   esi,DWORD PTR [rsp+rbp*2+0x65],0x6e697700
-  472644:	6e 
-  472645:	70 75                	jo     4726bc <_IO_stdin_used+0x36bc>
-  472647:	74 00                	je     472649 <_IO_stdin_used+0x3649>
-  472649:	77 6f                	ja     4726ba <_IO_stdin_used+0x36ba>
-  47264b:	63 74 00 77          	movsxd esi,DWORD PTR [rax+rax*1+0x77]
-  47264f:	73 70                	jae    4726c1 <_IO_stdin_used+0x36c1>
-  472651:	61                   	(bad)  
-  472652:	63 65 00             	movsxd esp,DWORD PTR [rbp+0x0]
-  472655:	77 73                	ja     4726ca <_IO_stdin_used+0x36ca>
-  472657:	74 72                	je     4726cb <_IO_stdin_used+0x36cb>
-  472659:	00 77 73             	add    BYTE PTR [rdi+0x73],dh
-  47265c:	74 72                	je     4726d0 <_IO_stdin_used+0x36d0>
-  47265e:	69 6e 67 00 7a 73 74 	imul   ebp,DWORD PTR [rsi+0x67],0x74737a00
-  472665:	72 69                	jb     4726d0 <_IO_stdin_used+0x36d0>
-  472667:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472668:	67 00 65 6e          	add    BYTE PTR [ebp+0x6e],ah
-  47266c:	64 69 66 6c 65 00 66 	imul   esp,DWORD PTR fs:[rsi+0x6c],0x6e660065
-  472673:	6e 
-  472674:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  472676:	64 00 66 6e          	add    BYTE PTR fs:[rsi+0x6e],ah
-  47267a:	65 78 69             	gs js  4726e6 <_IO_stdin_used+0x36e6>
-  47267d:	74 00                	je     47267f <_IO_stdin_used+0x367f>
-  47267f:	66 73 70             	data16 jae 4726f2 <_IO_stdin_used+0x36f2>
-  472682:	00 66 75             	add    BYTE PTR [rsi+0x75],ah
-  472685:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472686:	63 74 69 6f          	movsxd esi,DWORD PTR [rcx+rbp*2+0x6f]
-  47268a:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47268b:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  47268d:	64 00 66 75          	add    BYTE PTR fs:[rsi+0x75],ah
-  472691:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472692:	63 74 69 6f          	movsxd esi,DWORD PTR [rcx+rbp*2+0x6f]
-  472696:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472697:	65 78 69             	gs js  472703 <_IO_stdin_used+0x3703>
-  47269a:	74 00                	je     47269c <_IO_stdin_used+0x369c>
-  47269c:	67 65 74 72          	addr32 gs je 472712 <_IO_stdin_used+0x3712>
-  4726a0:	66 61                	data16 (bad) 
-  4726a2:	00 68 61             	add    BYTE PTR [rax+0x61],ch
-  4726a5:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4726a6:	64 6c                	fs ins BYTE PTR es:[rdi],dx
-  4726a8:	65 72 00             	gs jb  4726ab <_IO_stdin_used+0x36ab>
-  4726ab:	6c                   	ins    BYTE PTR es:[rdi],dx
-  4726ac:	69 6e 70 75 74 00 6d 	imul   ebp,DWORD PTR [rsi+0x70],0x6d007475
-  4726b3:	61                   	(bad)  
-  4726b4:	67 74 61             	addr32 je 472718 <_IO_stdin_used+0x3718>
-  4726b7:	70 65                	jo     47271e <_IO_stdin_used+0x371e>
-  4726b9:	00 6d 61             	add    BYTE PTR [rbp+0x61],ch
-  4726bc:	72 00                	jb     4726be <_IO_stdin_used+0x36be>
-  4726be:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4726bf:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4726c0:	65 63 68 6f          	movsxd ebp,DWORD PTR gs:[rax+0x6f]
-  4726c4:	00 6e 6f             	add    BYTE PTR [rsi+0x6f],ch
-  4726c7:	6d                   	ins    DWORD PTR es:[rdi],dx
-  4726c8:	61                   	(bad)  
-  4726c9:	72 67                	jb     472732 <_IO_stdin_used+0x3732>
-  4726cb:	69 6e 00 6e 75 6d 32 	imul   ebp,DWORD PTR [rsi+0x0],0x326d756e
-  4726d2:	00 6e 75             	add    BYTE PTR [rsi+0x75],ch
-  4726d5:	6d                   	ins    DWORD PTR es:[rdi],dx
-  4726d6:	31 00                	xor    DWORD PTR [rax],eax
-  4726d8:	71 75                	jno    47274f <_IO_stdin_used+0x374f>
-  4726da:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4726db:	00 72 61             	add    BYTE PTR [rdx+0x61],dh
-  4726de:	64 00 72 63          	add    BYTE PTR fs:[rdx+0x63],dh
-  4726e2:	74 72                	je     472756 <_IO_stdin_used+0x3756>
-  4726e4:	6c                   	ins    BYTE PTR es:[rdi],dx
-  4726e5:	63 00                	movsxd eax,DWORD PTR [rax]
-  4726e7:	72 63                	jb     47274c <_IO_stdin_used+0x374c>
-  4726e9:	74 72                	je     47275d <_IO_stdin_used+0x375d>
-  4726eb:	6c                   	ins    BYTE PTR es:[rdi],dx
-  4726ec:	30 00                	xor    BYTE PTR [rax],al
-  4726ee:	72 65                	jb     472755 <_IO_stdin_used+0x3755>
-  4726f0:	63 6f 75             	movsxd ebp,DWORD PTR [rdi+0x75]
-  4726f3:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4726f4:	74 00                	je     4726f6 <_IO_stdin_used+0x36f6>
-  4726f6:	72 65                	jb     47275d <_IO_stdin_used+0x375d>
-  4726f8:	6d                   	ins    DWORD PTR es:[rdi],dx
-  4726f9:	61                   	(bad)  
-  4726fa:	70 00                	jo     4726fc <_IO_stdin_used+0x36fc>
-  4726fc:	72 65                	jb     472763 <_IO_stdin_used+0x3763>
-  4726fe:	74 72                	je     472772 <_IO_stdin_used+0x3772>
-  472700:	79 00                	jns    472702 <_IO_stdin_used+0x3702>
-  472702:	72 6d                	jb     472771 <_IO_stdin_used+0x3771>
-  472704:	73 73                	jae    472779 <_IO_stdin_used+0x3779>
-  472706:	74 61                	je     472769 <_IO_stdin_used+0x3769>
-  472708:	74 75                	je     47277f <_IO_stdin_used+0x377f>
-  47270a:	73 00                	jae    47270c <_IO_stdin_used+0x370c>
-  47270c:	70 72                	jo     472780 <_IO_stdin_used+0x3780>
-  47270e:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47270f:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472710:	70 74                	jo     472786 <_IO_stdin_used+0x3786>
-  472712:	00 73 75             	add    BYTE PTR [rbx+0x75],dh
-  472715:	62                   	(bad)  
-  472716:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  472718:	64 00 65 78          	add    BYTE PTR fs:[rbp+0x78],ah
-  47271c:	69 74 73 75 62 00 74 	imul   esi,DWORD PTR [rbx+rsi*2+0x75],0x72740062
-  472723:	72 
-  472724:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472725:	00 75 6e             	add    BYTE PTR [rbp+0x6e],dh
-  472728:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472729:	65 73 73             	gs jae 47279f <_IO_stdin_used+0x379f>
-  47272c:	00 76 6d             	add    BYTE PTR [rsi+0x6d],dh
-  47272f:	73 73                	jae    4727a4 <_IO_stdin_used+0x37a4>
-  472731:	74 61                	je     472794 <_IO_stdin_used+0x3794>
-  472733:	74 75                	je     4727aa <_IO_stdin_used+0x37aa>
-  472735:	73 00                	jae    472737 <_IO_stdin_used+0x3737>
-  472737:	78 6c                	js     4727a5 <_IO_stdin_used+0x37a5>
-  472739:	61                   	(bad)  
-  47273a:	74 65                	je     4727a1 <_IO_stdin_used+0x37a1>
-  47273c:	00 61 6c             	add    BYTE PTR [rcx+0x6c],ah
-  47273f:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472740:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472741:	63 61 74             	movsxd esp,DWORD PTR [rcx+0x74]
-  472744:	65 64 00 61 6e       	gs add BYTE PTR fs:[rcx+0x6e],ah
-  472749:	69 6e 74 00 61 73 69 	imul   ebp,DWORD PTR [rsi+0x74],0x69736100
-  472750:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472751:	64 00 61 74          	add    BYTE PTR fs:[rcx+0x74],ah
-  472755:	61                   	(bad)  
-  472756:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472757:	64 00 61 74          	add    BYTE PTR fs:[rcx+0x74],ah
-  47275b:	61                   	(bad)  
-  47275c:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47275d:	32 64 00 61          	xor    ah,BYTE PTR [rax+rax*1+0x61]
-  472761:	74 6f                	je     4727d2 <_IO_stdin_used+0x37d2>
-  472763:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472764:	69 63 5f 61 64 64 00 	imul   esp,DWORD PTR [rbx+0x5f],0x646461
-  47276b:	61                   	(bad)  
-  47276c:	74 6f                	je     4727dd <_IO_stdin_used+0x37dd>
-  47276e:	6d                   	ins    DWORD PTR es:[rdi],dx
-  47276f:	69 63 5f 61 6e 64 00 	imul   esp,DWORD PTR [rbx+0x5f],0x646e61
-  472776:	61                   	(bad)  
-  472777:	74 6f                	je     4727e8 <_IO_stdin_used+0x37e8>
-  472779:	6d                   	ins    DWORD PTR es:[rdi],dx
-  47277a:	69 63 5f 63 61 73 00 	imul   esp,DWORD PTR [rbx+0x5f],0x736163
-  472781:	61                   	(bad)  
-  472782:	74 6f                	je     4727f3 <_IO_stdin_used+0x37f3>
-  472784:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472785:	69 63 5f 64 65 66 69 	imul   esp,DWORD PTR [rbx+0x5f],0x69666564
-  47278c:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47278d:	65 00 61 74          	add    BYTE PTR gs:[rcx+0x74],ah
-  472791:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472792:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472793:	69 63 5f 66 65 74 63 	imul   esp,DWORD PTR [rbx+0x5f],0x63746566
-  47279a:	68 5f 61 64 64       	push   0x6464615f
-  47279f:	00 61 74             	add    BYTE PTR [rcx+0x74],ah
-  4727a2:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4727a3:	6d                   	ins    DWORD PTR es:[rdi],dx
-  4727a4:	69 63 5f 66 65 74 63 	imul   esp,DWORD PTR [rbx+0x5f],0x63746566
-  4727ab:	68 20 61 6e 64       	push   0x646e6120
-  4727b0:	00 61 74             	add    BYTE PTR [rcx+0x74],ah
-  4727b3:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4727b4:	6d                   	ins    DWORD PTR es:[rdi],dx
-  4727b5:	69 63 5f 66 65 74 63 	imul   esp,DWORD PTR [rbx+0x5f],0x63746566
-  4727bc:	68 5f 6f 72 00       	push   0x726f5f
-  4727c1:	61                   	(bad)  
-  4727c2:	74 6f                	je     472833 <_IO_stdin_used+0x3833>
-  4727c4:	6d                   	ins    DWORD PTR es:[rdi],dx
-  4727c5:	69 63 5f 66 65 74 63 	imul   esp,DWORD PTR [rbx+0x5f],0x63746566
-  4727cc:	68 5f 78 6f 72       	push   0x726f785f
-  4727d1:	00 61 74             	add    BYTE PTR [rcx+0x74],ah
-  4727d4:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4727d5:	6d                   	ins    DWORD PTR es:[rdi],dx
-  4727d6:	69 63 5f 6f 72 00 61 	imul   esp,DWORD PTR [rbx+0x5f],0x6100726f
-  4727dd:	74 6f                	je     47284e <_IO_stdin_used+0x384e>
-  4727df:	6d                   	ins    DWORD PTR es:[rdi],dx
-  4727e0:	69 63 5f 72 65 66 00 	imul   esp,DWORD PTR [rbx+0x5f],0x666572
-  4727e7:	61                   	(bad)  
-  4727e8:	74 6f                	je     472859 <_IO_stdin_used+0x3859>
-  4727ea:	6d                   	ins    DWORD PTR es:[rdi],dx
-  4727eb:	69 63 5f 78 6f 72 00 	imul   esp,DWORD PTR [rbx+0x5f],0x726f78
-  4727f2:	62 61                	(bad)  
-  4727f4:	63 6b 74             	movsxd ebp,DWORD PTR [rbx+0x74]
-  4727f7:	72 61                	jb     47285a <_IO_stdin_used+0x385a>
-  4727f9:	63 65 00             	movsxd esp,DWORD PTR [rbp+0x0]
-  4727fc:	62                   	(bad)  
-  4727fd:	65 73 73             	gs jae 472873 <_IO_stdin_used+0x3873>
-  472800:	65 6c                	gs ins BYTE PTR es:[rdi],dx
-  472802:	5f                   	pop    rdi
-  472803:	6a 30                	push   0x30
-  472805:	00 62 65             	add    BYTE PTR [rdx+0x65],ah
-  472808:	73 73                	jae    47287d <_IO_stdin_used+0x387d>
-  47280a:	65 6c                	gs ins BYTE PTR es:[rdi],dx
-  47280c:	5f                   	pop    rdi
-  47280d:	6a 31                	push   0x31
-  47280f:	00 62 65             	add    BYTE PTR [rdx+0x65],ah
-  472812:	73 73                	jae    472887 <_IO_stdin_used+0x3887>
-  472814:	65 6c                	gs ins BYTE PTR es:[rdi],dx
-  472816:	5f                   	pop    rdi
-  472817:	6a 6e                	push   0x6e
-  472819:	00 62 65             	add    BYTE PTR [rdx+0x65],ah
-  47281c:	73 73                	jae    472891 <_IO_stdin_used+0x3891>
-  47281e:	65 6c                	gs ins BYTE PTR es:[rdi],dx
-  472820:	5f                   	pop    rdi
-  472821:	79 30                	jns    472853 <_IO_stdin_used+0x3853>
-  472823:	00 62 61             	add    BYTE PTR [rdx+0x61],ah
-  472826:	73 73                	jae    47289b <_IO_stdin_used+0x389b>
-  472828:	65 6c                	gs ins BYTE PTR es:[rdi],dx
-  47282a:	5f                   	pop    rdi
-  47282b:	79 31                	jns    47285e <_IO_stdin_used+0x385e>
-  47282d:	00 62 65             	add    BYTE PTR [rdx+0x65],ah
-  472830:	73 73                	jae    4728a5 <_IO_stdin_used+0x38a5>
-  472832:	65 6c                	gs ins BYTE PTR es:[rdi],dx
-  472834:	5f                   	pop    rdi
-  472835:	79 6e                	jns    4728a5 <_IO_stdin_used+0x38a5>
-  472837:	00 62 67             	add    BYTE PTR [rdx+0x67],ah
-  47283a:	65 00 62 67          	add    BYTE PTR gs:[rdx+0x67],ah
-  47283e:	74 00                	je     472840 <_IO_stdin_used+0x3840>
-  472840:	62                   	(bad)  
-  472841:	69 74 5f 73 69 7a 65 	imul   esi,DWORD PTR [rdi+rbx*2+0x73],0x657a69
-  472848:	00 
-  472849:	62                   	(bad)  
-  47284a:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47284b:	74 00                	je     47284d <_IO_stdin_used+0x384d>
-  47284d:	62                   	(bad)  
-  47284e:	74 65                	je     4728b5 <_IO_stdin_used+0x38b5>
-  472850:	73 74                	jae    4728c6 <_IO_stdin_used+0x38c6>
-  472852:	00 63 5f             	add    BYTE PTR [rbx+0x5f],ah
-  472855:	61                   	(bad)  
-  472856:	73 73                	jae    4728cb <_IO_stdin_used+0x38cb>
-  472858:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472859:	63 69 61             	movsxd ebp,DWORD PTR [rcx+0x61]
-  47285c:	74 65                	je     4728c3 <_IO_stdin_used+0x38c3>
-  47285e:	64 00 63 5f          	add    BYTE PTR fs:[rbx+0x5f],ah
-  472862:	66 5f                	pop    di
-  472864:	70 6f                	jo     4728d5 <_IO_stdin_used+0x38d5>
-  472866:	69 6e 74 65 72 00 74 	imul   ebp,DWORD PTR [rsi+0x74],0x74007265
-  47286d:	6d                   	ins    DWORD PTR es:[rdi],dx
-  47286e:	70 2e                	jo     47289e <_IO_stdin_used+0x389e>
-  472870:	62 61                	(bad)  
-  472872:	73 00                	jae    472874 <_IO_stdin_used+0x3874>
-  472874:	66 62 63             	data16 (bad) 
-  472877:	20 00                	and    BYTE PTR [rax],al
-  472879:	66 62 63             	data16 (bad) 
-  47287c:	20 2d 6c 61 6e 67    	and    BYTE PTR [rip+0x676e616c],ch        # 67b589ee <_end+0x6769d0d6>
-  472882:	20 71 62             	and    BYTE PTR [rcx+0x62],dh
-  472885:	20 00                	and    BYTE PTR [rax],al
-  472887:	74 6d                	je     4728f6 <_IO_stdin_used+0x38f6>
-  472889:	70 2e                	jo     4728b9 <_IO_stdin_used+0x38b9>
-  47288b:	67 6c                	ins    BYTE PTR es:[edi],dx
-  47288d:	73 6c                	jae    4728fb <_IO_stdin_used+0x38fb>
-  47288f:	00 63 6f             	add    BYTE PTR [rbx+0x6f],ah
-  472892:	62 63                	(bad)  
-  472894:	20 00                	and    BYTE PTR [rax],al
-  472896:	74 6d                	je     472905 <_IO_stdin_used+0x3905>
-  472898:	70 2e                	jo     4728c8 <_IO_stdin_used+0x38c8>
-  47289a:	66 37                	data16 (bad) 
-  47289c:	37                   	(bad)  
-  47289d:	00 67 66             	add    BYTE PTR [rdi+0x66],ah
-  4728a0:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4728a1:	72 74                	jb     472917 <_IO_stdin_used+0x3917>
-  4728a3:	72 61                	jb     472906 <_IO_stdin_used+0x3906>
-  4728a5:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4728a6:	20 2d 73 74 64 3d    	and    BYTE PTR [rip+0x3d647473],ch        # 3dab9d1f <_end+0x3d5fe407>
-  4728ac:	6c                   	ins    BYTE PTR es:[rdi],dx
-  4728ad:	65 67 61             	gs addr32 (bad) 
-  4728b0:	63 79 20             	movsxd edi,DWORD PTR [rcx+0x20]
-  4728b3:	00 74 6d 70          	add    BYTE PTR [rbp+rbp*2+0x70],dh
-  4728b7:	2e 70 61             	cs jo  47291b <_IO_stdin_used+0x391b>
-  4728ba:	73 00                	jae    4728bc <_IO_stdin_used+0x38bc>
-  4728bc:	66 70 63             	data16 jo 472922 <_IO_stdin_used+0x3922>
-  4728bf:	20 00                	and    BYTE PTR [rax],al
-  4728c1:	74 6d                	je     472930 <_IO_stdin_used+0x3930>
-  4728c3:	70 2e                	jo     4728f3 <_IO_stdin_used+0x38f3>
-  4728c5:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4728c6:	73 6c                	jae    472934 <_IO_stdin_used+0x3934>
-  4728c8:	00 70 6f             	add    BYTE PTR [rax+0x6f],dh
-  4728cb:	76 72                	jbe    47293f <_IO_stdin_used+0x393f>
-  4728cd:	61                   	(bad)  
-  4728ce:	79 20                	jns    4728f0 <_IO_stdin_used+0x38f0>
-  4728d0:	00 74 6d 70          	add    BYTE PTR [rbp+rbp*2+0x70],dh
-  4728d4:	2e 6a 61             	cs push 0x61
-  4728d7:	76 61                	jbe    47293a <_IO_stdin_used+0x393a>
-  4728d9:	00 6a 61             	add    BYTE PTR [rdx+0x61],ch
-  4728dc:	76 61                	jbe    47293f <_IO_stdin_used+0x393f>
-  4728de:	20 00                	and    BYTE PTR [rax],al
-  4728e0:	74 6d                	je     47294f <_IO_stdin_used+0x394f>
-  4728e2:	70 2e                	jo     472912 <_IO_stdin_used+0x3912>
-  4728e4:	63 00                	movsxd eax,DWORD PTR [rax]
-  4728e6:	67 63 63 20          	movsxd esp,DWORD PTR [ebx+0x20]
-  4728ea:	00 74 6d 70          	add    BYTE PTR [rbp+rbp*2+0x70],dh
-  4728ee:	2e 63 70 70          	cs movsxd esi,DWORD PTR [rax+0x70]
-  4728f2:	00 67 2b             	add    BYTE PTR [rdi+0x2b],ah
-  4728f5:	2b 20                	sub    esp,DWORD PTR [rax]
-  4728f7:	00 74 6d 70          	add    BYTE PTR [rbp+rbp*2+0x70],dh
-  4728fb:	2e 63 73 00          	cs movsxd esi,DWORD PTR [rbx+0x0]
-  4728ff:	63 73 63             	movsxd esi,DWORD PTR [rbx+0x63]
-  472902:	20 00                	and    BYTE PTR [rax],al
-  472904:	74 6d                	je     472973 <_IO_stdin_used+0x3973>
-  472906:	70 2e                	jo     472936 <_IO_stdin_used+0x3936>
-  472908:	6a 73                	push   0x73
-  47290a:	00 6e 6f             	add    BYTE PTR [rsi+0x6f],ch
-  47290d:	64 65 20 00          	fs and BYTE PTR gs:[rax],al
-  472911:	74 6d                	je     472980 <_IO_stdin_used+0x3980>
-  472913:	70 2e                	jo     472943 <_IO_stdin_used+0x3943>
-  472915:	70 68                	jo     47297f <_IO_stdin_used+0x397f>
-  472917:	70 00                	jo     472919 <_IO_stdin_used+0x3919>
-  472919:	70 68                	jo     472983 <_IO_stdin_used+0x3983>
-  47291b:	70 20                	jo     47293d <_IO_stdin_used+0x393d>
-  47291d:	2d 66 20 00 74       	sub    eax,0x74002066
-  472922:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472923:	70 2e                	jo     472953 <_IO_stdin_used+0x3953>
-  472925:	73 77                	jae    47299e <_IO_stdin_used+0x399e>
-  472927:	69 66 74 00 73 77 69 	imul   esp,DWORD PTR [rsi+0x74],0x69777300
-  47292e:	66 74 20             	data16 je 472951 <_IO_stdin_used+0x3951>
-  472931:	00 74 6d 70          	add    BYTE PTR [rbp+rbp*2+0x70],dh
-  472935:	2e 6d                	cs ins DWORD PTR es:[rdi],dx
-  472937:	00 6f 63             	add    BYTE PTR [rdi+0x63],ch
-  47293a:	74 61                	je     47299d <_IO_stdin_used+0x399d>
-  47293c:	76 65                	jbe    4729a3 <_IO_stdin_used+0x39a3>
-  47293e:	20 2d 2d 70 65 72    	and    BYTE PTR [rip+0x7265702d],ch        # 72ac9971 <_end+0x7260e059>
-  472944:	73 69                	jae    4729af <_IO_stdin_used+0x39af>
-  472946:	73 74                	jae    4729bc <_IO_stdin_used+0x39bc>
-  472948:	20 00                	and    BYTE PTR [rax],al
-  47294a:	74 6d                	je     4729b9 <_IO_stdin_used+0x39b9>
-  47294c:	70 2e                	jo     47297c <_IO_stdin_used+0x397c>
-  47294e:	6b 74 00 6b 6f       	imul   esi,DWORD PTR [rax+rax*1+0x6b],0x6f
-  472953:	74 6c                	je     4729c1 <_IO_stdin_used+0x39c1>
-  472955:	69 6e 63 20 00 74 6d 	imul   ebp,DWORD PTR [rsi+0x63],0x6d740020
-  47295c:	70 2e                	jo     47298c <_IO_stdin_used+0x398c>
-  47295e:	72 00                	jb     472960 <_IO_stdin_used+0x3960>
-  472960:	72 73                	jb     4729d5 <_IO_stdin_used+0x39d5>
-  472962:	63 72 69             	movsxd esi,DWORD PTR [rdx+0x69]
-  472965:	70 74                	jo     4729db <_IO_stdin_used+0x39db>
-  472967:	20 00                	and    BYTE PTR [rax],al
-  472969:	74 6d                	je     4729d8 <_IO_stdin_used+0x39d8>
-  47296b:	70 2e                	jo     47299b <_IO_stdin_used+0x399b>
-  47296d:	64 61                	fs (bad) 
-  47296f:	72 74                	jb     4729e5 <_IO_stdin_used+0x39e5>
-  472971:	00 64 61 72          	add    BYTE PTR [rcx+riz*2+0x72],ah
-  472975:	74 20                	je     472997 <_IO_stdin_used+0x3997>
-  472977:	00 74 6d 70          	add    BYTE PTR [rbp+rbp*2+0x70],dh
-  47297b:	2e 73 63             	cs jae 4729e1 <_IO_stdin_used+0x39e1>
-  47297e:	61                   	(bad)  
-  47297f:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472980:	61                   	(bad)  
-  472981:	00 73 63             	add    BYTE PTR [rbx+0x63],dh
-  472984:	61                   	(bad)  
-  472985:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472986:	61                   	(bad)  
-  472987:	63 20                	movsxd esp,DWORD PTR [rax]
-  472989:	00 2e                	add    BYTE PTR [rsi],ch
-  47298b:	2f                   	(bad)  
-  47298c:	74 6d                	je     4729fb <_IO_stdin_used+0x39fb>
-  47298e:	70 20                	jo     4729b0 <_IO_stdin_used+0x39b0>
-  472990:	3e 20 74 6d 70       	ds and BYTE PTR [rbp+rbp*2+0x70],dh
-  472995:	2e 74 78             	cs je  472a10 <_IO_stdin_used+0x3a10>
-  472998:	74 00                	je     47299a <_IO_stdin_used+0x399a>
-  47299a:	70 72                	jo     472a0e <_IO_stdin_used+0x3a0e>
-  47299c:	65 73 73             	gs jae 472a12 <_IO_stdin_used+0x3a12>
-  47299f:	20 61 6e             	and    BYTE PTR [rcx+0x6e],ah
-  4729a2:	79 20                	jns    4729c4 <_IO_stdin_used+0x39c4>
-  4729a4:	6b 65 79 20          	imul   esp,DWORD PTR [rbp+0x79],0x20
-  4729a8:	74 6f                	je     472a19 <_IO_stdin_used+0x3a19>
-  4729aa:	20 63 6f             	and    BYTE PTR [rbx+0x6f],ah
-  4729ad:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4729ae:	74 69                	je     472a19 <_IO_stdin_used+0x3a19>
-  4729b0:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4729b1:	75 65                	jne    472a18 <_IO_stdin_used+0x3a18>
-  4729b3:	2e 00 72 6d          	cs add BYTE PTR [rdx+0x6d],dh
-  4729b7:	20 2e                	and    BYTE PTR [rsi],ch
-  4729b9:	2f                   	(bad)  
-  4729ba:	74 6d                	je     472a29 <_IO_stdin_used+0x3a29>
-  4729bc:	70 3b                	jo     4729f9 <_IO_stdin_used+0x39f9>
-  4729be:	20 2e                	and    BYTE PTR [rsi],ch
-  4729c0:	2f                   	(bad)  
-  4729c1:	00 2e                	add    BYTE PTR [rsi],ch
-  4729c3:	2f                   	(bad)  
-  4729c4:	63 68 61             	movsxd ebp,DWORD PTR [rax+0x61]
-  4729c7:	72 67                	jb     472a30 <_IO_stdin_used+0x3a30>
-  4729c9:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  4729cb:	2f                   	(bad)  
-  4729cc:	00 77 69             	add    BYTE PTR [rdi+0x69],dh
-  4729cf:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4729d0:	65 20 00             	and    BYTE PTR gs:[rax],al
-  4729d3:	64 6f                	outs   dx,DWORD PTR fs:[rsi]
-  4729d5:	73 62                	jae    472a39 <_IO_stdin_used+0x3a39>
-  4729d7:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4729d8:	78 2d                	js     472a07 <_IO_stdin_used+0x3a07>
-  4729da:	78 20                	js     4729fc <_IO_stdin_used+0x39fc>
-  4729dc:	00 20                	add    BYTE PTR [rax],ah
-  4729de:	2d 66 75 6c 6c       	sub    eax,0x6c6c7566
-  4729e3:	73 63                	jae    472a48 <_IO_stdin_used+0x3a48>
-  4729e5:	72 65                	jb     472a4c <_IO_stdin_used+0x3a4c>
-  4729e7:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  4729e9:	20 2d 65 78 69 74    	and    BYTE PTR [rip+0x74697865],ch        # 74b0a254 <_end+0x7464e93c>
-  4729ef:	00 2e                	add    BYTE PTR [rsi],ch
-  4729f1:	61                   	(bad)  
-  4729f2:	73 6d                	jae    472a61 <_IO_stdin_used+0x3a61>
-  4729f4:	00 6e 61             	add    BYTE PTR [rsi+0x61],ch
-  4729f7:	73 6d                	jae    472a66 <_IO_stdin_used+0x3a66>
-  4729f9:	20 00                	and    BYTE PTR [rax],al
-  4729fb:	2e 61                	cs (bad) 
-  4729fd:	73 6d                	jae    472a6c <_IO_stdin_used+0x3a6c>
-  4729ff:	20 2d 66 20 62 69    	and    BYTE PTR [rip+0x69622066],ch        # 69a94a6b <_end+0x695d9153>
-  472a05:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472a06:	20 2d 6f 00 64 6f    	and    BYTE PTR [rip+0x6f64006f],ch        # 6fab2a7b <_end+0x6f5f7163>
-  472a0c:	73 62                	jae    472a70 <_IO_stdin_used+0x3a70>
-  472a0e:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472a0f:	78 2d                	js     472a3e <_IO_stdin_used+0x3a3e>
-  472a11:	78 20                	js     472a33 <_IO_stdin_used+0x3a33>
-  472a13:	2d 63 20 27 62       	sub    eax,0x62272063
-  472a18:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472a19:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472a1a:	74 20                	je     472a3c <_IO_stdin_used+0x3a3c>
-  472a1c:	00 72 6d             	add    BYTE PTR [rdx+0x6d],dh
-  472a1f:	20 00                	and    BYTE PTR [rax],al
-  472a21:	63 6f 6d             	movsxd ebp,DWORD PTR [rdi+0x6d]
-  472a24:	70 6c                	jo     472a92 <_IO_stdin_used+0x3a92>
-  472a26:	65 74 65             	gs je  472a8e <_IO_stdin_used+0x3a8e>
-  472a29:	2e 33 31             	cs xor esi,DWORD PTR [rcx]
-  472a2c:	38 30                	cmp    BYTE PTR [rax],dh
-  472a2e:	32 33                	xor    dh,BYTE PTR [rbx]
-  472a30:	2d 30 32 2e 62       	sub    eax,0x622e3230
-  472a35:	69 6e 00 2e 2f 63 68 	imul   ebp,DWORD PTR [rsi+0x0],0x68632f2e
-  472a3c:	61                   	(bad)  
-  472a3d:	72 67                	jb     472aa6 <_IO_stdin_used+0x3aa6>
-  472a3f:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  472a41:	2f                   	(bad)  
-  472a42:	32 2e                	xor    ch,BYTE PTR [rsi]
-  472a44:	63 36                	movsxd esi,DWORD PTR [rsi]
-  472a46:	34 00                	xor    al,0x0
-  472a48:	42 59                	rex.X pop rcx
-  472a4a:	54                   	push   rsp
-  472a4b:	45 53                	rex.RB push r11
-  472a4d:	00 46 52             	add    BYTE PTR [rsi+0x52],al
-  472a50:	45                   	rex.RB
-  472a51:	45 00 4d 49          	add    BYTE PTR [r13+0x49],r9b
-  472a55:	43 52                	rex.XB push r10
-  472a57:	4f 53                	rex.WRXB push r11
-  472a59:	4f                   	rex.WRXB
-  472a5a:	46 54                	rex.RX push rsp
-  472a5c:	00 20                	add    BYTE PTR [rax],ah
-  472a5e:	52                   	push   rdx
-  472a5f:	41                   	rex.B
-  472a60:	4d 20 53 59          	rex.WRB and BYTE PTR [r11+0x59],r10b
-  472a64:	53                   	push   rbx
-  472a65:	54                   	push   rsp
-  472a66:	45                   	rex.RB
-  472a67:	4d 00 63 6f          	rex.WRB add BYTE PTR [r11+0x6f],r12b
-  472a6b:	62 63                	(bad)  
-  472a6d:	20 2d 78 20 2d 66    	and    BYTE PTR [rip+0x662d2078],ch        # 66744aeb <_end+0x662891d3>
-  472a73:	72 65                	jb     472ada <_IO_stdin_used+0x3ada>
-  472a75:	65 20 74 6d 70       	and    BYTE PTR gs:[rbp+rbp*2+0x70],dh
-  472a7a:	2e 63 6f 62          	cs movsxd ebp,DWORD PTR [rdi+0x62]
-  472a7e:	00 70 72             	add    BYTE PTR [rax+0x72],dh
-  472a81:	65 73 73             	gs jae 472af7 <_IO_stdin_used+0x3af7>
-  472a84:	20 61 6e             	and    BYTE PTR [rcx+0x6e],ah
-  472a87:	79 20                	jns    472aa9 <_IO_stdin_used+0x3aa9>
-  472a89:	6b 65 79 20          	imul   esp,DWORD PTR [rbp+0x79],0x20
-  472a8d:	74 6f                	je     472afe <_IO_stdin_used+0x3afe>
-  472a8f:	20 63 6f             	and    BYTE PTR [rbx+0x6f],ah
-  472a92:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472a93:	74 69                	je     472afe <_IO_stdin_used+0x3afe>
-  472a95:	75 6e                	jne    472b05 <_IO_stdin_used+0x3b05>
-  472a97:	65 2e 00 4e 49       	gs add BYTE PTR gs:[rsi+0x49],cl
-  472a9c:	42                   	rex.X
-  472a9d:	42                   	rex.X
-  472a9e:	4c                   	rex.WR
-  472a9f:	45 53                	rex.RB push r11
-  472aa1:	3a 20                	cmp    ah,BYTE PTR [rax]
-  472aa3:	00 42 59             	add    BYTE PTR [rdx+0x59],al
-  472aa6:	54                   	push   rsp
-  472aa7:	45 53                	rex.RB push r11
-  472aa9:	3a 20                	cmp    ah,BYTE PTR [rax]
-  472aab:	20 20                	and    BYTE PTR [rax],ah
-  472aad:	00 57 4f             	add    BYTE PTR [rdi+0x4f],dl
-  472ab0:	52                   	push   rdx
-  472ab1:	44 53                	rex.R push rbx
-  472ab3:	3a 20                	cmp    ah,BYTE PTR [rax]
-  472ab5:	20 20                	and    BYTE PTR [rax],ah
-  472ab7:	00 50 43             	add    BYTE PTR [rax+0x43],dl
-  472aba:	3a 00                	cmp    al,BYTE PTR [rax]
-  472abc:	20 41 3a             	and    BYTE PTR [rcx+0x3a],al
-  472abf:	00 20                	add    BYTE PTR [rax],ah
-  472ac1:	58                   	pop    rax
-  472ac2:	3a 00                	cmp    al,BYTE PTR [rax]
-  472ac4:	20 59 3a             	and    BYTE PTR [rcx+0x3a],bl
-  472ac7:	00 20                	add    BYTE PTR [rax],ah
-  472ac9:	53                   	push   rbx
-  472aca:	3a 00                	cmp    al,BYTE PTR [rax]
-  472acc:	20 4e 3a             	and    BYTE PTR [rsi+0x3a],cl
-  472acf:	00 20                	add    BYTE PTR [rax],ah
-  472ad1:	56                   	push   rsi
-  472ad2:	3a 00                	cmp    al,BYTE PTR [rax]
-  472ad4:	20 2d 00 20 42 3a    	and    BYTE PTR [rip+0x3a422000],ch        # 3a894ada <_end+0x3a3d91c2>
-  472ada:	00 20                	add    BYTE PTR [rax],ah
-  472adc:	44 3a 00             	cmp    r8b,BYTE PTR [rax]
-  472adf:	20 49 3a             	and    BYTE PTR [rcx+0x3a],cl
-  472ae2:	00 20                	add    BYTE PTR [rax],ah
-  472ae4:	5a                   	pop    rdx
-  472ae5:	3a 00                	cmp    al,BYTE PTR [rax]
-  472ae7:	20 43 3a             	and    BYTE PTR [rbx+0x3a],al
-  472aea:	00 73 61             	add    BYTE PTR [rbx+0x61],dh
-  472aed:	76 65                	jbe    472b54 <_IO_stdin_used+0x3b54>
-  472aef:	20 66 69             	and    BYTE PTR [rsi+0x69],ah
-  472af2:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472af3:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  472af5:	61                   	(bad)  
-  472af6:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472af7:	65 3a 00             	cmp    al,BYTE PTR gs:[rax]
-  472afa:	63 61 6e             	movsxd esp,DWORD PTR [rcx+0x6e]
-  472afd:	27                   	(bad)  
-  472afe:	74 20                	je     472b20 <_IO_stdin_used+0x3b20>
-  472b00:	63 72 65             	movsxd esi,DWORD PTR [rdx+0x65]
-  472b03:	61                   	(bad)  
-  472b04:	74 65                	je     472b6b <_IO_stdin_used+0x3b6b>
-  472b06:	3a 20                	cmp    ah,BYTE PTR [rax]
-  472b08:	00 6c 6f 61          	add    BYTE PTR [rdi+rbp*2+0x61],ch
-  472b0c:	64 20 66 69          	and    BYTE PTR fs:[rsi+0x69],ah
-  472b10:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472b11:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  472b13:	61                   	(bad)  
-  472b14:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472b15:	65 3a 00             	cmp    al,BYTE PTR gs:[rax]
-  472b18:	63 61 6e             	movsxd esp,DWORD PTR [rcx+0x6e]
-  472b1b:	27                   	(bad)  
-  472b1c:	74 20                	je     472b3e <_IO_stdin_used+0x3b3e>
-  472b1e:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472b1f:	70 65                	jo     472b86 <_IO_stdin_used+0x3b86>
-  472b21:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472b22:	3a 20                	cmp    ah,BYTE PTR [rax]
-  472b24:	00 42 52             	add    BYTE PTR [rdx+0x52],al
-  472b27:	4b 00 4f 52          	rex.WXB add BYTE PTR [r15+0x52],cl
-  472b2b:	41 00 52 33          	add    BYTE PTR [r10+0x33],dl
-  472b2f:	32 00                	xor    al,BYTE PTR [rax]
-  472b31:	57                   	push   rdi
-  472b32:	33 32                	xor    esi,DWORD PTR [rdx]
-  472b34:	00 52 36             	add    BYTE PTR [rdx+0x36],dl
-  472b37:	34 00                	xor    al,0x0
-  472b39:	41 53                	push   r11
-  472b3b:	4c 00 57 36          	rex.WR add BYTE PTR [rdi+0x36],r10b
-  472b3f:	34 00                	xor    al,0x0
-  472b41:	50                   	push   rax
-  472b42:	48 50                	rex.W push rax
-  472b44:	00 2a                	add    BYTE PTR [rdx],ch
-  472b46:	2a 2a                	sub    ch,BYTE PTR [rdx]
-  472b48:	00 42 50             	add    BYTE PTR [rdx+0x50],al
-  472b4b:	4c 00 43 4c          	rex.WR add BYTE PTR [rbx+0x4c],r8b
-  472b4f:	43 00 4a 53          	rex.XB add BYTE PTR [r10+0x53],cl
-  472b53:	52                   	push   rdx
-  472b54:	00 41 4e             	add    BYTE PTR [rcx+0x4e],al
-  472b57:	44 00 42 49          	add    BYTE PTR [rdx+0x49],r8b
-  472b5b:	54                   	push   rsp
-  472b5c:	00 52 4f             	add    BYTE PTR [rdx+0x4f],dl
-  472b5f:	4c 00 50 4c          	rex.WR add BYTE PTR [rax+0x4c],r10b
-  472b63:	50                   	push   rax
-  472b64:	00 42 4d             	add    BYTE PTR [rdx+0x4d],al
-  472b67:	49 00 53 45          	rex.WB add BYTE PTR [r11+0x45],dl
-  472b6b:	43 00 52 54          	rex.XB add BYTE PTR [r10+0x54],dl
-  472b6f:	49 00 45 4f          	rex.WB add BYTE PTR [r13+0x4f],al
-  472b73:	52                   	push   rdx
-  472b74:	00 4c 53 52          	add    BYTE PTR [rbx+rdx*2+0x52],cl
-  472b78:	00 50 48             	add    BYTE PTR [rax+0x48],dl
-  472b7b:	41 00 4a 4d          	add    BYTE PTR [r10+0x4d],cl
-  472b7f:	50                   	push   rax
-  472b80:	00 42 56             	add    BYTE PTR [rdx+0x56],al
-  472b83:	43 00 43 4c          	rex.XB add BYTE PTR [r11+0x4c],al
-  472b87:	49 00 52 54          	rex.WB add BYTE PTR [r10+0x54],dl
-  472b8b:	53                   	push   rbx
-  472b8c:	00 41 44             	add    BYTE PTR [rcx+0x44],al
-  472b8f:	43 00 31             	rex.XB add BYTE PTR [r9],sil
-  472b92:	30 30                	xor    BYTE PTR [rax],dh
-  472b94:	00 31                	add    BYTE PTR [rcx],dh
-  472b96:	30 31                	xor    BYTE PTR [rcx],dh
-  472b98:	00 31                	add    BYTE PTR [rcx],dh
-  472b9a:	30 32                	xor    BYTE PTR [rdx],dh
-  472b9c:	00 52 4f             	add    BYTE PTR [rdx+0x4f],dl
-  472b9f:	52                   	push   rdx
-  472ba0:	00 31                	add    BYTE PTR [rcx],dh
-  472ba2:	30 33                	xor    BYTE PTR [rbx],dh
-  472ba4:	00 31                	add    BYTE PTR [rcx],dh
-  472ba6:	30 34 00             	xor    BYTE PTR [rax+rax*1],dh
-  472ba9:	50                   	push   rax
-  472baa:	4c                   	rex.WR
-  472bab:	41 00 31             	add    BYTE PTR [r9],sil
-  472bae:	30 35 00 31 30 36    	xor    BYTE PTR [rip+0x36303100],dh        # 36775cb4 <_end+0x362ba39c>
-  472bb4:	00 31                	add    BYTE PTR [rcx],dh
-  472bb6:	30 37                	xor    BYTE PTR [rdi],dh
-  472bb8:	00 31                	add    BYTE PTR [rcx],dh
-  472bba:	30 38                	xor    BYTE PTR [rax],bh
-  472bbc:	00 31                	add    BYTE PTR [rcx],dh
-  472bbe:	30 39                	xor    BYTE PTR [rcx],bh
-  472bc0:	00 31                	add    BYTE PTR [rcx],dh
-  472bc2:	31 30                	xor    DWORD PTR [rax],esi
-  472bc4:	00 31                	add    BYTE PTR [rcx],dh
-  472bc6:	31 31                	xor    DWORD PTR [rcx],esi
-  472bc8:	00 31                	add    BYTE PTR [rcx],dh
-  472bca:	31 32                	xor    DWORD PTR [rdx],esi
-  472bcc:	00 42 56             	add    BYTE PTR [rdx+0x56],al
-  472bcf:	53                   	push   rbx
-  472bd0:	00 31                	add    BYTE PTR [rcx],dh
-  472bd2:	31 33                	xor    DWORD PTR [rbx],esi
-  472bd4:	00 31                	add    BYTE PTR [rcx],dh
-  472bd6:	31 34 00             	xor    DWORD PTR [rax+rax*1],esi
-  472bd9:	31 31                	xor    DWORD PTR [rcx],esi
-  472bdb:	35 00 31 31 36       	xor    eax,0x36313100
-  472be0:	00 31                	add    BYTE PTR [rcx],dh
-  472be2:	31 37                	xor    DWORD PTR [rdi],esi
-  472be4:	00 31                	add    BYTE PTR [rcx],dh
-  472be6:	31 38                	xor    DWORD PTR [rax],edi
-  472be8:	00 31                	add    BYTE PTR [rcx],dh
-  472bea:	31 39                	xor    DWORD PTR [rcx],edi
-  472bec:	00 31                	add    BYTE PTR [rcx],dh
-  472bee:	32 30                	xor    dh,BYTE PTR [rax]
-  472bf0:	00 53 45             	add    BYTE PTR [rbx+0x45],dl
-  472bf3:	49 00 31             	rex.WB add BYTE PTR [r9],sil
-  472bf6:	32 31                	xor    dh,BYTE PTR [rcx]
-  472bf8:	00 31                	add    BYTE PTR [rcx],dh
-  472bfa:	32 32                	xor    dh,BYTE PTR [rdx]
-  472bfc:	00 31                	add    BYTE PTR [rcx],dh
-  472bfe:	32 33                	xor    dh,BYTE PTR [rbx]
-  472c00:	00 31                	add    BYTE PTR [rcx],dh
-  472c02:	32 34 00             	xor    dh,BYTE PTR [rax+rax*1]
-  472c05:	31 32                	xor    DWORD PTR [rdx],esi
-  472c07:	35 00 31 32 36       	xor    eax,0x36323100
-  472c0c:	00 31                	add    BYTE PTR [rcx],dh
-  472c0e:	32 37                	xor    dh,BYTE PTR [rdi]
-  472c10:	00 31                	add    BYTE PTR [rcx],dh
-  472c12:	32 38                	xor    bh,BYTE PTR [rax]
-  472c14:	00 31                	add    BYTE PTR [rcx],dh
-  472c16:	32 39                	xor    bh,BYTE PTR [rcx]
-  472c18:	00 53 54             	add    BYTE PTR [rbx+0x54],dl
-  472c1b:	41 00 31             	add    BYTE PTR [r9],sil
-  472c1e:	33 30                	xor    esi,DWORD PTR [rax]
-  472c20:	00 31                	add    BYTE PTR [rcx],dh
-  472c22:	33 31                	xor    esi,DWORD PTR [rcx]
-  472c24:	00 31                	add    BYTE PTR [rcx],dh
-  472c26:	33 32                	xor    esi,DWORD PTR [rdx]
-  472c28:	00 53 54             	add    BYTE PTR [rbx+0x54],dl
-  472c2b:	59                   	pop    rcx
-  472c2c:	00 31                	add    BYTE PTR [rcx],dh
-  472c2e:	33 33                	xor    esi,DWORD PTR [rbx]
-  472c30:	00 31                	add    BYTE PTR [rcx],dh
-  472c32:	33 34 00             	xor    esi,DWORD PTR [rax+rax*1]
-  472c35:	53                   	push   rbx
-  472c36:	54                   	push   rsp
-  472c37:	58                   	pop    rax
-  472c38:	00 31                	add    BYTE PTR [rcx],dh
-  472c3a:	33 35 00 31 33 36    	xor    esi,DWORD PTR [rip+0x36333100]        # 367a5d40 <_end+0x362ea428>
-  472c40:	00 44 45 59          	add    BYTE PTR [rbp+rax*2+0x59],al
-  472c44:	00 31                	add    BYTE PTR [rcx],dh
-  472c46:	33 37                	xor    esi,DWORD PTR [rdi]
-  472c48:	00 31                	add    BYTE PTR [rcx],dh
-  472c4a:	33 38                	xor    edi,DWORD PTR [rax]
-  472c4c:	00 54 58 41          	add    BYTE PTR [rax+rbx*2+0x41],dl
-  472c50:	00 31                	add    BYTE PTR [rcx],dh
-  472c52:	33 39                	xor    edi,DWORD PTR [rcx]
-  472c54:	00 31                	add    BYTE PTR [rcx],dh
-  472c56:	34 30                	xor    al,0x30
-  472c58:	00 31                	add    BYTE PTR [rcx],dh
-  472c5a:	34 31                	xor    al,0x31
-  472c5c:	00 31                	add    BYTE PTR [rcx],dh
-  472c5e:	34 32                	xor    al,0x32
-  472c60:	00 31                	add    BYTE PTR [rcx],dh
-  472c62:	34 33                	xor    al,0x33
-  472c64:	00 31                	add    BYTE PTR [rcx],dh
-  472c66:	34 34                	xor    al,0x34
-  472c68:	00 42 43             	add    BYTE PTR [rdx+0x43],al
-  472c6b:	43 00 31             	rex.XB add BYTE PTR [r9],sil
-  472c6e:	34 35                	xor    al,0x35
-  472c70:	00 31                	add    BYTE PTR [rcx],dh
-  472c72:	34 36                	xor    al,0x36
-  472c74:	00 31                	add    BYTE PTR [rcx],dh
-  472c76:	34 37                	xor    al,0x37
-  472c78:	00 31                	add    BYTE PTR [rcx],dh
-  472c7a:	34 38                	xor    al,0x38
-  472c7c:	00 31                	add    BYTE PTR [rcx],dh
-  472c7e:	34 39                	xor    al,0x39
-  472c80:	00 31                	add    BYTE PTR [rcx],dh
-  472c82:	35 30 00 31 35       	xor    eax,0x35310030
-  472c87:	31 00                	xor    DWORD PTR [rax],eax
-  472c89:	31 35 32 00 54 59    	xor    DWORD PTR [rip+0x59540032],esi        # 599b2cc1 <_end+0x594f73a9>
-  472c8f:	41 00 31             	add    BYTE PTR [r9],sil
-  472c92:	35 33 00 31 35       	xor    eax,0x35310033
-  472c97:	34 00                	xor    al,0x0
-  472c99:	54                   	push   rsp
-  472c9a:	58                   	pop    rax
-  472c9b:	53                   	push   rbx
-  472c9c:	00 31                	add    BYTE PTR [rcx],dh
-  472c9e:	35 35 00 31 35       	xor    eax,0x35310035
-  472ca3:	36 00 31             	ss add BYTE PTR [rcx],dh
-  472ca6:	35 37 00 31 35       	xor    eax,0x35310037
-  472cab:	38 00                	cmp    BYTE PTR [rax],al
-  472cad:	31 35 39 00 31 36    	xor    DWORD PTR [rip+0x36310039],esi        # 36782cec <_end+0x362c73d4>
-  472cb3:	30 00                	xor    BYTE PTR [rax],al
-  472cb5:	4c                   	rex.WR
-  472cb6:	44 59                	rex.R pop rcx
-  472cb8:	00 31                	add    BYTE PTR [rcx],dh
-  472cba:	36 31 00             	ss xor DWORD PTR [rax],eax
-  472cbd:	4c                   	rex.WR
-  472cbe:	44                   	rex.R
-  472cbf:	41 00 31             	add    BYTE PTR [r9],sil
-  472cc2:	36 32 00             	ss xor al,BYTE PTR [rax]
-  472cc5:	4c                   	rex.WR
-  472cc6:	44 58                	rex.R pop rax
-  472cc8:	00 31                	add    BYTE PTR [rcx],dh
-  472cca:	36 33 00             	ss xor eax,DWORD PTR [rax]
-  472ccd:	31 36                	xor    DWORD PTR [rsi],esi
-  472ccf:	34 00                	xor    al,0x0
-  472cd1:	31 36                	xor    DWORD PTR [rsi],esi
-  472cd3:	35 00 31 36 36       	xor    eax,0x36363100
-  472cd8:	00 31                	add    BYTE PTR [rcx],dh
-  472cda:	36 37                	ss (bad) 
-  472cdc:	00 31                	add    BYTE PTR [rcx],dh
-  472cde:	36 38 00             	ss cmp BYTE PTR [rax],al
-  472ce1:	54                   	push   rsp
-  472ce2:	41 59                	pop    r9
-  472ce4:	00 31                	add    BYTE PTR [rcx],dh
-  472ce6:	36 39 00             	ss cmp DWORD PTR [rax],eax
-  472ce9:	31 37                	xor    DWORD PTR [rdi],esi
-  472ceb:	30 00                	xor    BYTE PTR [rax],al
-  472ced:	54                   	push   rsp
-  472cee:	41 58                	pop    r8
-  472cf0:	00 31                	add    BYTE PTR [rcx],dh
-  472cf2:	37                   	(bad)  
-  472cf3:	31 00                	xor    DWORD PTR [rax],eax
-  472cf5:	31 37                	xor    DWORD PTR [rdi],esi
-  472cf7:	32 00                	xor    al,BYTE PTR [rax]
-  472cf9:	31 37                	xor    DWORD PTR [rdi],esi
-  472cfb:	33 00                	xor    eax,DWORD PTR [rax]
-  472cfd:	31 37                	xor    DWORD PTR [rdi],esi
-  472cff:	34 00                	xor    al,0x0
-  472d01:	31 37                	xor    DWORD PTR [rdi],esi
-  472d03:	35 00 31 37 36       	xor    eax,0x36373100
-  472d08:	00 42 43             	add    BYTE PTR [rdx+0x43],al
-  472d0b:	53                   	push   rbx
-  472d0c:	00 31                	add    BYTE PTR [rcx],dh
-  472d0e:	37                   	(bad)  
-  472d0f:	37                   	(bad)  
-  472d10:	00 31                	add    BYTE PTR [rcx],dh
-  472d12:	37                   	(bad)  
-  472d13:	38 00                	cmp    BYTE PTR [rax],al
-  472d15:	31 37                	xor    DWORD PTR [rdi],esi
-  472d17:	39 00                	cmp    DWORD PTR [rax],eax
-  472d19:	31 38                	xor    DWORD PTR [rax],edi
-  472d1b:	30 00                	xor    BYTE PTR [rax],al
-  472d1d:	31 38                	xor    DWORD PTR [rax],edi
-  472d1f:	31 00                	xor    DWORD PTR [rax],eax
-  472d21:	31 38                	xor    DWORD PTR [rax],edi
-  472d23:	32 00                	xor    al,BYTE PTR [rax]
-  472d25:	31 38                	xor    DWORD PTR [rax],edi
-  472d27:	33 00                	xor    eax,DWORD PTR [rax]
-  472d29:	31 38                	xor    DWORD PTR [rax],edi
-  472d2b:	34 00                	xor    al,0x0
-  472d2d:	43                   	rex.XB
-  472d2e:	4c 56                	rex.WR push rsi
-  472d30:	00 31                	add    BYTE PTR [rcx],dh
-  472d32:	38 35 00 31 38 36    	cmp    BYTE PTR [rip+0x36383100],dh        # 367f5e38 <_end+0x3633a520>
-  472d38:	00 54 53 58          	add    BYTE PTR [rbx+rdx*2+0x58],dl
-  472d3c:	00 31                	add    BYTE PTR [rcx],dh
-  472d3e:	38 37                	cmp    BYTE PTR [rdi],dh
-  472d40:	00 31                	add    BYTE PTR [rcx],dh
-  472d42:	38 38                	cmp    BYTE PTR [rax],bh
-  472d44:	00 31                	add    BYTE PTR [rcx],dh
-  472d46:	38 39                	cmp    BYTE PTR [rcx],bh
-  472d48:	00 31                	add    BYTE PTR [rcx],dh
-  472d4a:	39 30                	cmp    DWORD PTR [rax],esi
-  472d4c:	00 31                	add    BYTE PTR [rcx],dh
-  472d4e:	39 31                	cmp    DWORD PTR [rcx],esi
-  472d50:	00 31                	add    BYTE PTR [rcx],dh
-  472d52:	39 32                	cmp    DWORD PTR [rdx],esi
-  472d54:	00 43 50             	add    BYTE PTR [rbx+0x50],al
-  472d57:	59                   	pop    rcx
-  472d58:	00 31                	add    BYTE PTR [rcx],dh
-  472d5a:	39 33                	cmp    DWORD PTR [rbx],esi
-  472d5c:	00 43 4d             	add    BYTE PTR [rbx+0x4d],al
-  472d5f:	50                   	push   rax
-  472d60:	00 31                	add    BYTE PTR [rcx],dh
-  472d62:	39 34 00             	cmp    DWORD PTR [rax+rax*1],esi
-  472d65:	31 39                	xor    DWORD PTR [rcx],edi
-  472d67:	35 00 31 39 36       	xor    eax,0x36393100
-  472d6c:	00 31                	add    BYTE PTR [rcx],dh
-  472d6e:	39 37                	cmp    DWORD PTR [rdi],esi
-  472d70:	00 31                	add    BYTE PTR [rcx],dh
-  472d72:	39 38                	cmp    DWORD PTR [rax],edi
-  472d74:	00 44 45 43          	add    BYTE PTR [rbp+rax*2+0x43],al
-  472d78:	00 31                	add    BYTE PTR [rcx],dh
-  472d7a:	39 39                	cmp    DWORD PTR [rcx],edi
-  472d7c:	00 32                	add    BYTE PTR [rdx],dh
-  472d7e:	30 30                	xor    BYTE PTR [rax],dh
-  472d80:	00 49 4e             	add    BYTE PTR [rcx+0x4e],cl
-  472d83:	59                   	pop    rcx
-  472d84:	00 32                	add    BYTE PTR [rdx],dh
-  472d86:	30 31                	xor    BYTE PTR [rcx],dh
-  472d88:	00 32                	add    BYTE PTR [rdx],dh
-  472d8a:	30 32                	xor    BYTE PTR [rdx],dh
-  472d8c:	00 44 45 58          	add    BYTE PTR [rbp+rax*2+0x58],al
-  472d90:	00 32                	add    BYTE PTR [rdx],dh
-  472d92:	30 33                	xor    BYTE PTR [rbx],dh
-  472d94:	00 32                	add    BYTE PTR [rdx],dh
-  472d96:	30 34 00             	xor    BYTE PTR [rax+rax*1],dh
-  472d99:	32 30                	xor    dh,BYTE PTR [rax]
-  472d9b:	35 00 32 30 36       	xor    eax,0x36303200
-  472da0:	00 32                	add    BYTE PTR [rdx],dh
-  472da2:	30 37                	xor    BYTE PTR [rdi],dh
-  472da4:	00 32                	add    BYTE PTR [rdx],dh
-  472da6:	30 38                	xor    BYTE PTR [rax],bh
-  472da8:	00 42 4e             	add    BYTE PTR [rdx+0x4e],al
-  472dab:	45 00 32             	add    BYTE PTR [r10],r14b
-  472dae:	30 39                	xor    BYTE PTR [rcx],bh
-  472db0:	00 32                	add    BYTE PTR [rdx],dh
-  472db2:	31 30                	xor    DWORD PTR [rax],esi
-  472db4:	00 32                	add    BYTE PTR [rdx],dh
-  472db6:	31 31                	xor    DWORD PTR [rcx],esi
-  472db8:	00 32                	add    BYTE PTR [rdx],dh
-  472dba:	31 32                	xor    DWORD PTR [rdx],esi
-  472dbc:	00 32                	add    BYTE PTR [rdx],dh
-  472dbe:	31 33                	xor    DWORD PTR [rbx],esi
-  472dc0:	00 32                	add    BYTE PTR [rdx],dh
-  472dc2:	31 34 00             	xor    DWORD PTR [rax+rax*1],esi
-  472dc5:	32 31                	xor    dh,BYTE PTR [rcx]
-  472dc7:	35 00 32 31 36       	xor    eax,0x36313200
-  472dcc:	00 43 4c             	add    BYTE PTR [rbx+0x4c],al
-  472dcf:	44 00 32             	add    BYTE PTR [rdx],r14b
-  472dd2:	31 37                	xor    DWORD PTR [rdi],esi
-  472dd4:	00 32                	add    BYTE PTR [rdx],dh
-  472dd6:	31 38                	xor    DWORD PTR [rax],edi
-  472dd8:	00 32                	add    BYTE PTR [rdx],dh
-  472dda:	31 39                	xor    DWORD PTR [rcx],edi
-  472ddc:	00 32                	add    BYTE PTR [rdx],dh
-  472dde:	32 30                	xor    dh,BYTE PTR [rax]
-  472de0:	00 32                	add    BYTE PTR [rdx],dh
-  472de2:	32 31                	xor    dh,BYTE PTR [rcx]
-  472de4:	00 32                	add    BYTE PTR [rdx],dh
-  472de6:	32 32                	xor    dh,BYTE PTR [rdx]
-  472de8:	00 32                	add    BYTE PTR [rdx],dh
-  472dea:	32 33                	xor    dh,BYTE PTR [rbx]
-  472dec:	00 32                	add    BYTE PTR [rdx],dh
-  472dee:	32 34 00             	xor    dh,BYTE PTR [rax+rax*1]
-  472df1:	43 50                	rex.XB push r8
-  472df3:	58                   	pop    rax
-  472df4:	00 32                	add    BYTE PTR [rdx],dh
-  472df6:	32 35 00 53 42 43    	xor    dh,BYTE PTR [rip+0x43425300]        # 438980fc <_end+0x433dc7e4>
-  472dfc:	00 32                	add    BYTE PTR [rdx],dh
-  472dfe:	32 36                	xor    dh,BYTE PTR [rsi]
-  472e00:	00 32                	add    BYTE PTR [rdx],dh
-  472e02:	32 37                	xor    dh,BYTE PTR [rdi]
-  472e04:	00 32                	add    BYTE PTR [rdx],dh
-  472e06:	32 38                	xor    bh,BYTE PTR [rax]
-  472e08:	00 32                	add    BYTE PTR [rdx],dh
-  472e0a:	32 39                	xor    bh,BYTE PTR [rcx]
-  472e0c:	00 32                	add    BYTE PTR [rdx],dh
-  472e0e:	33 30                	xor    esi,DWORD PTR [rax]
-  472e10:	00 32                	add    BYTE PTR [rdx],dh
-  472e12:	33 31                	xor    esi,DWORD PTR [rcx]
-  472e14:	00 32                	add    BYTE PTR [rdx],dh
-  472e16:	33 32                	xor    esi,DWORD PTR [rdx]
-  472e18:	00 49 4e             	add    BYTE PTR [rcx+0x4e],cl
-  472e1b:	58                   	pop    rax
-  472e1c:	00 32                	add    BYTE PTR [rdx],dh
-  472e1e:	33 33                	xor    esi,DWORD PTR [rbx]
-  472e20:	00 32                	add    BYTE PTR [rdx],dh
-  472e22:	33 34 00             	xor    esi,DWORD PTR [rax+rax*1]
-  472e25:	4e                   	rex.WRX
-  472e26:	4f 50                	rex.WRXB push r8
-  472e28:	00 32                	add    BYTE PTR [rdx],dh
-  472e2a:	33 35 00 32 33 36    	xor    esi,DWORD PTR [rip+0x36333200]        # 367a6030 <_end+0x362ea718>
-  472e30:	00 32                	add    BYTE PTR [rdx],dh
-  472e32:	33 37                	xor    esi,DWORD PTR [rdi]
-  472e34:	00 32                	add    BYTE PTR [rdx],dh
-  472e36:	33 38                	xor    edi,DWORD PTR [rax]
-  472e38:	00 32                	add    BYTE PTR [rdx],dh
-  472e3a:	33 39                	xor    edi,DWORD PTR [rcx]
-  472e3c:	00 32                	add    BYTE PTR [rdx],dh
-  472e3e:	34 30                	xor    al,0x30
-  472e40:	00 42 45             	add    BYTE PTR [rdx+0x45],al
-  472e43:	51                   	push   rcx
-  472e44:	00 32                	add    BYTE PTR [rdx],dh
-  472e46:	34 31                	xor    al,0x31
-  472e48:	00 32                	add    BYTE PTR [rdx],dh
-  472e4a:	34 32                	xor    al,0x32
-  472e4c:	00 32                	add    BYTE PTR [rdx],dh
-  472e4e:	34 33                	xor    al,0x33
-  472e50:	00 32                	add    BYTE PTR [rdx],dh
-  472e52:	34 34                	xor    al,0x34
-  472e54:	00 32                	add    BYTE PTR [rdx],dh
-  472e56:	34 35                	xor    al,0x35
-  472e58:	00 32                	add    BYTE PTR [rdx],dh
-  472e5a:	34 36                	xor    al,0x36
-  472e5c:	00 32                	add    BYTE PTR [rdx],dh
-  472e5e:	34 37                	xor    al,0x37
-  472e60:	00 32                	add    BYTE PTR [rdx],dh
-  472e62:	34 38                	xor    al,0x38
-  472e64:	00 53 45             	add    BYTE PTR [rbx+0x45],dl
-  472e67:	44 00 32             	add    BYTE PTR [rdx],r14b
-  472e6a:	34 39                	xor    al,0x39
-  472e6c:	00 32                	add    BYTE PTR [rdx],dh
-  472e6e:	35 30 00 32 35       	xor    eax,0x35320030
-  472e73:	31 00                	xor    DWORD PTR [rax],eax
-  472e75:	32 35 32 00 32 35    	xor    dh,BYTE PTR [rip+0x35320032]        # 35792ead <_end+0x352d7595>
-  472e7b:	33 00                	xor    eax,DWORD PTR [rax]
-  472e7d:	32 35 34 00 32 35    	xor    dh,BYTE PTR [rip+0x35320034]        # 35792eb7 <_end+0x352d759f>
-  472e83:	35 00 55 4e 4b       	xor    eax,0x4b4e5500
-  472e88:	00 49 4d             	add    BYTE PTR [rcx+0x4d],cl
-  472e8b:	50                   	push   rax
-  472e8c:	00 49 4d             	add    BYTE PTR [rcx+0x4d],cl
-  472e8f:	4d 00 41 42          	rex.WRB add BYTE PTR [r9+0x42],r8b
-  472e93:	53                   	push   rbx
-  472e94:	00 5a 45             	add    BYTE PTR [rdx+0x45],bl
-  472e97:	52                   	push   rdx
-  472e98:	4f 00 5a 45          	rex.WRXB add BYTE PTR [r10+0x45],r11b
-  472e9c:	52                   	push   rdx
-  472e9d:	4f 58                	rex.WRXB pop r8
-  472e9f:	00 5a 45             	add    BYTE PTR [rdx+0x45],bl
-  472ea2:	52                   	push   rdx
-  472ea3:	4f 59                	rex.WRXB pop r9
-  472ea5:	00 41 42             	add    BYTE PTR [rcx+0x42],al
-  472ea8:	53                   	push   rbx
-  472ea9:	58                   	pop    rax
-  472eaa:	00 41 42             	add    BYTE PTR [rcx+0x42],al
-  472ead:	53                   	push   rbx
-  472eae:	59                   	pop    rcx
-  472eaf:	00 52 45             	add    BYTE PTR [rdx+0x45],dl
-  472eb2:	4c 00 49 4e          	rex.WR add BYTE PTR [rcx+0x4e],r9b
-  472eb6:	44 58                	rex.R pop rax
-  472eb8:	00 49 4e             	add    BYTE PTR [rcx+0x4e],cl
-  472ebb:	44 59                	rex.R pop rcx
-  472ebd:	00 49 4e             	add    BYTE PTR [rcx+0x4e],cl
-  472ec0:	44 00 00             	add    BYTE PTR [rax],r8b
-  472ec3:	00 00                	add    BYTE PTR [rax],al
-  472ec5:	00 00                	add    BYTE PTR [rax],al
-  472ec7:	00 6c 6f 61          	add    BYTE PTR [rdi+rbp*2+0x61],ch
-  472ecb:	64 20 61 6e          	and    BYTE PTR fs:[rcx+0x6e],ah
-  472ecf:	64 20 63 6f          	and    BYTE PTR fs:[rbx+0x6f],ah
-  472ed3:	6d                   	ins    DWORD PTR es:[rdi],dx
-  472ed4:	70 69                	jo     472f3f <_IO_stdin_used+0x3f3f>
-  472ed6:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472ed7:	65 20 73 68          	and    BYTE PTR gs:[rbx+0x68],dh
-  472edb:	61                   	(bad)  
-  472edc:	64 65 72 20          	fs gs jb 472f00 <_IO_stdin_used+0x3f00>
-  472ee0:	70 65                	jo     472f47 <_IO_stdin_used+0x3f47>
-  472ee2:	73 65                	jae    472f49 <_IO_stdin_used+0x3f49>
-  472ee4:	20 77 61             	and    BYTE PTR [rdi+0x61],dh
-  472ee7:	69 74 20 2e 2e 2e 00 	imul   esi,DWORD PTR [rax+riz*1+0x2e],0x2e2e
-  472eee:	00 
-  472eef:	00 75 6e             	add    BYTE PTR [rbp+0x6e],dh
-  472ef2:	69 66 6f 72 6d 20 66 	imul   esp,DWORD PTR [rsi+0x6f],0x66206d72
-  472ef9:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472efa:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472efb:	61                   	(bad)  
-  472efc:	74 20                	je     472f1e <_IO_stdin_used+0x3f1e>
-  472efe:	20 20                	and    BYTE PTR [rax],ah
-  472f00:	20 20                	and    BYTE PTR [rax],ah
-  472f02:	69 47 6c 6f 62 61 6c 	imul   eax,DWORD PTR [rdi+0x6c],0x6c61626f
-  472f09:	54                   	push   rsp
-  472f0a:	69 6d 65 3b 0a 00 75 	imul   ebp,DWORD PTR [rbp+0x65],0x75000a3b
-  472f11:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472f12:	69 66 6f 72 6d 20 76 	imul   esp,DWORD PTR [rsi+0x6f],0x76206d72
-  472f19:	65 63 33             	movsxd esi,DWORD PTR gs:[rbx]
-  472f1c:	20 20                	and    BYTE PTR [rax],ah
-  472f1e:	20 20                	and    BYTE PTR [rax],ah
-  472f20:	20 20                	and    BYTE PTR [rax],ah
-  472f22:	69 52 65 73 6f 6c 75 	imul   edx,DWORD PTR [rdx+0x65],0x756c6f73
-  472f29:	74 69                	je     472f94 <_IO_stdin_used+0x3f94>
-  472f2b:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472f2c:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  472f2d:	3b 0a                	cmp    ecx,DWORD PTR [rdx]
-  472f2f:	00 75 6e             	add    BYTE PTR [rbp+0x6e],dh
-  472f32:	69 66 6f 72 6d 20 66 	imul   esp,DWORD PTR [rsi+0x6f],0x66206d72
-  472f39:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472f3a:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472f3b:	61                   	(bad)  
-  472f3c:	74 20                	je     472f5e <_IO_stdin_used+0x3f5e>
-  472f3e:	20 20                	and    BYTE PTR [rax],ah
-  472f40:	20 20                	and    BYTE PTR [rax],ah
-  472f42:	69 54 69 6d 65 44 65 	imul   edx,DWORD PTR [rcx+rbp*2+0x6d],0x6c654465
-  472f49:	6c 
-  472f4a:	74 61                	je     472fad <_IO_stdin_used+0x3fad>
-  472f4c:	3b 0a                	cmp    ecx,DWORD PTR [rdx]
-  472f4e:	00 00                	add    BYTE PTR [rax],al
-  472f50:	75 6e                	jne    472fc0 <_IO_stdin_used+0x3fc0>
-  472f52:	69 66 6f 72 6d 20 66 	imul   esp,DWORD PTR [rsi+0x6f],0x66206d72
-  472f59:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472f5a:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472f5b:	61                   	(bad)  
-  472f5c:	74 20                	je     472f7e <_IO_stdin_used+0x3f7e>
-  472f5e:	20 20                	and    BYTE PTR [rax],ah
-  472f60:	20 20                	and    BYTE PTR [rax],ah
-  472f62:	69 46 72 61 6d 65 52 	imul   eax,DWORD PTR [rsi+0x72],0x52656d61
-  472f69:	61                   	(bad)  
-  472f6a:	74 65                	je     472fd1 <_IO_stdin_used+0x3fd1>
-  472f6c:	3b 0a                	cmp    ecx,DWORD PTR [rdx]
-  472f6e:	00 00                	add    BYTE PTR [rax],al
-  472f70:	75 6e                	jne    472fe0 <_IO_stdin_used+0x3fe0>
-  472f72:	69 66 6f 72 6d 20 66 	imul   esp,DWORD PTR [rsi+0x6f],0x66206d72
-  472f79:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472f7a:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472f7b:	61                   	(bad)  
-  472f7c:	74 20                	je     472f9e <_IO_stdin_used+0x3f9e>
-  472f7e:	20 20                	and    BYTE PTR [rax],ah
-  472f80:	20 20                	and    BYTE PTR [rax],ah
-  472f82:	69 43 68 61 6e 6e 65 	imul   eax,DWORD PTR [rbx+0x68],0x656e6e61
-  472f89:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472f8a:	54                   	push   rsp
-  472f8b:	69 6d 65 5b 34 5d 3b 	imul   ebp,DWORD PTR [rbp+0x65],0x3b5d345b
-  472f92:	0a 00                	or     al,BYTE PTR [rax]
-  472f94:	00 00                	add    BYTE PTR [rax],al
-  472f96:	00 00                	add    BYTE PTR [rax],al
-  472f98:	75 6e                	jne    473008 <_IO_stdin_used+0x4008>
-  472f9a:	69 66 6f 72 6d 20 76 	imul   esp,DWORD PTR [rsi+0x6f],0x76206d72
-  472fa1:	65 63 33             	movsxd esi,DWORD PTR gs:[rbx]
-  472fa4:	20 20                	and    BYTE PTR [rax],ah
-  472fa6:	20 20                	and    BYTE PTR [rax],ah
-  472fa8:	20 20                	and    BYTE PTR [rax],ah
-  472faa:	69 43 68 61 6e 6e 65 	imul   eax,DWORD PTR [rbx+0x68],0x656e6e61
-  472fb1:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472fb2:	52                   	push   rdx
-  472fb3:	65 73 6f             	gs jae 473025 <_IO_stdin_used+0x4025>
-  472fb6:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472fb7:	75 74                	jne    47302d <_IO_stdin_used+0x402d>
-  472fb9:	69 6f 6e 5b 34 5d 3b 	imul   ebp,DWORD PTR [rdi+0x6e],0x3b5d345b
-  472fc0:	0a 00                	or     al,BYTE PTR [rax]
-  472fc2:	00 00                	add    BYTE PTR [rax],al
-  472fc4:	00 00                	add    BYTE PTR [rax],al
-  472fc6:	00 00                	add    BYTE PTR [rax],al
-  472fc8:	75 6e                	jne    473038 <_IO_stdin_used+0x4038>
-  472fca:	69 66 6f 72 6d 20 66 	imul   esp,DWORD PTR [rsi+0x6f],0x66206d72
-  472fd1:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472fd2:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  472fd3:	61                   	(bad)  
-  472fd4:	74 20                	je     472ff6 <_IO_stdin_used+0x3ff6>
-  472fd6:	20 20                	and    BYTE PTR [rax],ah
-  472fd8:	20 20                	and    BYTE PTR [rax],ah
-  472fda:	69 53 61 6d 70 6c 65 	imul   edx,DWORD PTR [rbx+0x61],0x656c706d
-  472fe1:	52                   	push   rdx
-  472fe2:	61                   	(bad)  
-  472fe3:	74 65                	je     47304a <_IO_stdin_used+0x404a>
-  472fe5:	3b 0a                	cmp    ecx,DWORD PTR [rdx]
-  472fe7:	00 23                	add    BYTE PTR [rbx],ah
-  472fe9:	64 65 66 69 6e 65 20 	fs imul bp,WORD PTR gs:[rsi+0x65],0x6920
-  472ff0:	69 
-  472ff1:	5f                   	pop    rdi
-  472ff2:	72 65                	jb     473059 <_IO_stdin_used+0x4059>
-  472ff4:	73 6f                	jae    473065 <_IO_stdin_used+0x4065>
-  472ff6:	6c                   	ins    BYTE PTR es:[rdi],dx
-  472ff7:	75 74                	jne    47306d <_IO_stdin_used+0x406d>
-  472ff9:	69 6f 6e 20 69 52 65 	imul   ebp,DWORD PTR [rdi+0x6e],0x65526920
-  473000:	73 6f                	jae    473071 <_IO_stdin_used+0x4071>
-  473002:	6c                   	ins    BYTE PTR es:[rdi],dx
-  473003:	75 74                	jne    473079 <_IO_stdin_used+0x4079>
-  473005:	69 6f 6e 00 00 00 00 	imul   ebp,DWORD PTR [rdi+0x6e],0x0
-  47300c:	00 00                	add    BYTE PTR [rax],al
-  47300e:	00 00                	add    BYTE PTR [rax],al
-  473010:	20 20                	and    BYTE PTR [rax],ah
-  473012:	6d                   	ins    DWORD PTR es:[rdi],dx
-  473013:	61                   	(bad)  
-  473014:	69 6e 5f 69 6d 61 67 	imul   ebp,DWORD PTR [rsi+0x5f],0x67616d69
-  47301b:	65 28 63 6f          	sub    BYTE PTR gs:[rbx+0x6f],ah
-  47301f:	6c                   	ins    BYTE PTR es:[rdi],dx
-  473020:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  473021:	72 2c                	jb     47304f <_IO_stdin_used+0x404f>
-  473023:	20 67 6c             	and    BYTE PTR [rdi+0x6c],ah
-  473026:	5f                   	pop    rdi
-  473027:	46 72 61             	rex.RX jb 47308b <_IO_stdin_used+0x408b>
-  47302a:	67 43 6f             	rex.XB outs dx,DWORD PTR ds:[esi]
-  47302d:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47302e:	72 64                	jb     473094 <_IO_stdin_used+0x4094>
-  473030:	2e 78 79             	cs js  4730ac <_IO_stdin_used+0x40ac>
-  473033:	29 3b                	sub    DWORD PTR [rbx],edi
-  473035:	0a 00                	or     al,BYTE PTR [rax]
-  473037:	00 20                	add    BYTE PTR [rax],ah
-  473039:	20 6d 61             	and    BYTE PTR [rbp+0x61],ch
-  47303c:	69 6e 49 6d 61 67 65 	imul   ebp,DWORD PTR [rsi+0x49],0x6567616d
-  473043:	28 63 6f             	sub    BYTE PTR [rbx+0x6f],ah
-  473046:	6c                   	ins    BYTE PTR es:[rdi],dx
-  473047:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  473048:	72 2c                	jb     473076 <_IO_stdin_used+0x4076>
-  47304a:	20 67 6c             	and    BYTE PTR [rdi+0x6c],ah
-  47304d:	5f                   	pop    rdi
-  47304e:	46 72 61             	rex.RX jb 4730b2 <_IO_stdin_used+0x40b2>
-  473051:	67 43 6f             	rex.XB outs dx,DWORD PTR ds:[esi]
-  473054:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  473055:	72 64                	jb     4730bb <_IO_stdin_used+0x40bb>
-  473057:	2e 78 79             	cs js  4730d3 <_IO_stdin_used+0x40d3>
-  47305a:	29 3b                	sub    DWORD PTR [rbx],edi
-  47305c:	0a 00                	or     al,BYTE PTR [rax]
-  47305e:	00 00                	add    BYTE PTR [rax],al
-  473060:	67 6c                	ins    BYTE PTR es:[edi],dx
-  473062:	43 72 65             	rex.XB jb 4730ca <_IO_stdin_used+0x40ca>
-  473065:	61                   	(bad)  
-  473066:	74 65                	je     4730cd <_IO_stdin_used+0x40cd>
-  473068:	53                   	push   rbx
-  473069:	68 61 64 65 72       	push   0x72656461
-  47306e:	28 47 4c             	sub    BYTE PTR [rdi+0x4c],al
-  473071:	5f                   	pop    rdi
-  473072:	46 52                	rex.RX push rdx
-  473074:	41                   	rex.B
-  473075:	47                   	rex.RXB
-  473076:	4d                   	rex.WRB
-  473077:	45                   	rex.RB
-  473078:	4e 54                	rex.WRX push rsp
-  47307a:	5f                   	pop    rdi
-  47307b:	53                   	push   rbx
-  47307c:	48                   	rex.W
-  47307d:	41                   	rex.B
-  47307e:	44                   	rex.R
-  47307f:	45 52                	rex.RB push r10
-  473081:	29 20                	sub    DWORD PTR [rax],esp
-  473083:	66 61                	data16 (bad) 
-  473085:	69 6c 65 64 20 21 00 	imul   ebp,DWORD PTR [rbp+riz*2+0x64],0x2120
-  47308c:	00 
-  47308d:	00 00                	add    BYTE PTR [rax],al
-  47308f:	00 67 6c             	add    BYTE PTR [rdi+0x6c],ah
-  473092:	43 6f                	rex.XB outs dx,DWORD PTR ds:[rsi]
-  473094:	6d                   	ins    DWORD PTR es:[rdi],dx
-  473095:	70 69                	jo     473100 <_IO_stdin_used+0x4100>
-  473097:	6c                   	ins    BYTE PTR es:[rdi],dx
-  473098:	65 53                	gs push rbx
-  47309a:	68 61 64 65 72       	push   0x72656461
-  47309f:	28 46 72             	sub    BYTE PTR [rsi+0x72],al
-  4730a2:	61                   	(bad)  
-  4730a3:	67 6d                	ins    DWORD PTR es:[edi],dx
-  4730a5:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  4730a7:	74 53                	je     4730fc <_IO_stdin_used+0x40fc>
-  4730a9:	68 61 64 65 72       	push   0x72656461
-  4730ae:	29 20                	sub    DWORD PTR [rax],esp
-  4730b0:	66 61                	data16 (bad) 
-  4730b2:	69 6c 65 64 20 21 0a 	imul   ebp,DWORD PTR [rbp+riz*2+0x64],0xa2120
-  4730b9:	00 
-  4730ba:	00 00                	add    BYTE PTR [rax],al
-  4730bc:	00 00                	add    BYTE PTR [rax],al
-  4730be:	00 00                	add    BYTE PTR [rax],al
-  4730c0:	6d                   	ins    DWORD PTR es:[rdi],dx
-  4730c1:	70 6c                	jo     47312f <_IO_stdin_used+0x412f>
-  4730c3:	61                   	(bad)  
-  4730c4:	79 65                	jns    47312b <_IO_stdin_used+0x412b>
-  4730c6:	72 20                	jb     4730e8 <_IO_stdin_used+0x40e8>
-  4730c8:	2d 76 6f 20 78       	sub    eax,0x78206f76
-  4730cd:	76 20                	jbe    4730ef <_IO_stdin_used+0x40ef>
-  4730cf:	2d 66 73 20 2d       	sub    eax,0x2d207366
-  4730d4:	61                   	(bad)  
-  4730d5:	6c                   	ins    BYTE PTR es:[rdi],dx
-  4730d6:	61                   	(bad)  
-  4730d7:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4730d8:	67 20 65 6e          	and    BYTE PTR [ebp+0x6e],ah
-  4730dc:	20 64 76 3a          	and    BYTE PTR [rsi+rsi*2+0x3a],ah
-  4730e0:	2f                   	(bad)  
-  4730e1:	2f                   	(bad)  
-  4730e2:	00 00                	add    BYTE PTR [rax],al
-  4730e4:	00 00                	add    BYTE PTR [rax],al
-  4730e6:	00 00                	add    BYTE PTR [rax],al
-  4730e8:	6d                   	ins    DWORD PTR es:[rdi],dx
-  4730e9:	70 6c                	jo     473157 <_IO_stdin_used+0x4157>
-  4730eb:	61                   	(bad)  
-  4730ec:	79 65                	jns    473153 <_IO_stdin_used+0x4153>
-  4730ee:	72 20                	jb     473110 <_IO_stdin_used+0x4110>
-  4730f0:	2d 76 6f 20 78       	sub    eax,0x78206f76
-  4730f5:	76 20                	jbe    473117 <_IO_stdin_used+0x4117>
-  4730f7:	2d 66 73 20 64       	sub    eax,0x64207366
-  4730fc:	76 64                	jbe    473162 <_IO_stdin_used+0x4162>
-  4730fe:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4730ff:	61                   	(bad)  
-  473100:	76 3a                	jbe    47313c <_IO_stdin_used+0x413c>
-  473102:	2f                   	(bad)  
-  473103:	2f                   	(bad)  
-  473104:	20 2d 6d 6f 75 73    	and    BYTE PTR [rip+0x73756f6d],ch        # 73bca077 <_end+0x7370e75f>
-  47310a:	65 2d 6d 6f 76 65    	gs sub eax,0x65766f6d
-  473110:	6d                   	ins    DWORD PTR es:[rdi],dx
-  473111:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  473113:	74 73                	je     473188 <_IO_stdin_used+0x4188>
-  473115:	20 2d 64 76 64 2d    	and    BYTE PTR [rip+0x2d647664],ch        # 2daba77f <_end+0x2d5fee67>
-  47311b:	64 65 76 69          	fs gs jbe 473188 <_IO_stdin_used+0x4188>
-  47311f:	63 65 20             	movsxd esp,DWORD PTR [rbp+0x20]
-  473122:	2f                   	(bad)  
-  473123:	64 65 76 2f          	fs gs jbe 473156 <_IO_stdin_used+0x4156>
-  473127:	73 72                	jae    47319b <_IO_stdin_used+0x419b>
-  473129:	30 00                	xor    BYTE PTR [rax],al
-  47312b:	00 00                	add    BYTE PTR [rax],al
-  47312d:	00 00                	add    BYTE PTR [rax],al
-  47312f:	00 63 6f             	add    BYTE PTR [rbx+0x6f],ah
-  473132:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  473133:	76 65                	jbe    47319a <_IO_stdin_used+0x419a>
-  473135:	72 74                	jb     4731ab <_IO_stdin_used+0x41ab>
-  473137:	20 74 6d 70          	and    BYTE PTR [rbp+rbp*2+0x70],dh
-  47313b:	2e 70 6e             	cs jo  4731ac <_IO_stdin_used+0x41ac>
-  47313e:	67 20 2d 77 20 2d 2d 	and    BYTE PTR [eip+0x2d2d2077],ch        # 2d7451bc <_end+0x2d2898a4>
-  473145:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  473146:	20 74 6d 70          	and    BYTE PTR [rbp+rbp*2+0x70],dh
-  47314a:	2e 62                	cs (bad) 
-  47314c:	6d                   	ins    DWORD PTR es:[rdi],dx
-  47314d:	70 00                	jo     47314f <_IO_stdin_used+0x414f>
-  47314f:	00 00                	add    BYTE PTR [rax],al
-  473151:	00 00                	add    BYTE PTR [rax],al
-  473153:	00 00                	add    BYTE PTR [rax],al
-  473155:	00 f0                	add    al,dh
-  473157:	3f                   	(bad)  
-  473158:	00 00                	add    BYTE PTR [rax],al
-  47315a:	00 00                	add    BYTE PTR [rax],al
-  47315c:	00 00                	add    BYTE PTR [rax],al
-  47315e:	b0 3f                	mov    al,0x3f
-  473160:	00 00                	add    BYTE PTR [rax],al
-  473162:	00 00                	add    BYTE PTR [rax],al
-  473164:	00 00                	add    BYTE PTR [rax],al
-  473166:	22 40 00             	and    al,BYTE PTR [rax+0x0]
-  473169:	00 00                	add    BYTE PTR [rax],al
-  47316b:	00 00                	add    BYTE PTR [rax],al
-  47316d:	00 30                	add    BYTE PTR [rax],dh
-  47316f:	40 00 00             	rex add BYTE PTR [rax],al
-  473172:	00 00                	add    BYTE PTR [rax],al
-  473174:	00 80 40 40 00 00    	add    BYTE PTR [rax+0x4040],al
-  47317a:	00 00                	add    BYTE PTR [rax],al
-  47317c:	00 80 42 40 00 00    	add    BYTE PTR [rax+0x4042],al
-  473182:	00 00                	add    BYTE PTR [rax],al
-  473184:	00 80 43 40 00 00    	add    BYTE PTR [rax+0x4043],al
-  47318a:	00 00                	add    BYTE PTR [rax],al
-  47318c:	00 80 44 40 00 00    	add    BYTE PTR [rax+0x4044],al
-  473192:	00 00                	add    BYTE PTR [rax],al
-  473194:	00 80 45 40 00 00    	add    BYTE PTR [rax+0x4045],al
-  47319a:	00 00                	add    BYTE PTR [rax],al
-  47319c:	00 80 46 40 00 00    	add    BYTE PTR [rax+0x4046],al
-  4731a2:	00 00                	add    BYTE PTR [rax],al
-  4731a4:	00 00                	add    BYTE PTR [rax],al
-  4731a6:	47                   	rex.RXB
-  4731a7:	40 00 00             	rex add BYTE PTR [rax],al
-  4731aa:	00 00                	add    BYTE PTR [rax],al
-  4731ac:	00 80 47 40 00 00    	add    BYTE PTR [rax+0x4047],al
-  4731b2:	00 00                	add    BYTE PTR [rax],al
-  4731b4:	00 00                	add    BYTE PTR [rax],al
-  4731b6:	48                   	rex.W
-  4731b7:	40 00 00             	rex add BYTE PTR [rax],al
-  4731ba:	00 00                	add    BYTE PTR [rax],al
-  4731bc:	00 80 48 40 00 00    	add    BYTE PTR [rax+0x4048],al
-  4731c2:	00 00                	add    BYTE PTR [rax],al
-  4731c4:	00 00                	add    BYTE PTR [rax],al
-  4731c6:	49                   	rex.WB
-  4731c7:	40 00 00             	rex add BYTE PTR [rax],al
-  4731ca:	00 00                	add    BYTE PTR [rax],al
-  4731cc:	00 80 49 40 00 00    	add    BYTE PTR [rax+0x4049],al
-  4731d2:	00 00                	add    BYTE PTR [rax],al
-  4731d4:	00 00                	add    BYTE PTR [rax],al
-  4731d6:	4a                   	rex.WX
-  4731d7:	40 00 00             	rex add BYTE PTR [rax],al
-  4731da:	00 00                	add    BYTE PTR [rax],al
-  4731dc:	00 80 4a 40 00 00    	add    BYTE PTR [rax+0x404a],al
-  4731e2:	00 00                	add    BYTE PTR [rax],al
-  4731e4:	00 00                	add    BYTE PTR [rax],al
-  4731e6:	4b                   	rex.WXB
-  4731e7:	40 00 00             	rex add BYTE PTR [rax],al
-  4731ea:	00 00                	add    BYTE PTR [rax],al
-  4731ec:	00 80 4b 40 00 00    	add    BYTE PTR [rax+0x404b],al
-  4731f2:	00 00                	add    BYTE PTR [rax],al
-  4731f4:	00 00                	add    BYTE PTR [rax],al
-  4731f6:	4c                   	rex.WR
-  4731f7:	40 00 00             	rex add BYTE PTR [rax],al
-  4731fa:	00 00                	add    BYTE PTR [rax],al
-  4731fc:	00 80 4c 40 00 00    	add    BYTE PTR [rax+0x404c],al
-  473202:	00 00                	add    BYTE PTR [rax],al
-  473204:	00 00                	add    BYTE PTR [rax],al
-  473206:	4d                   	rex.WRB
-  473207:	40 00 00             	rex add BYTE PTR [rax],al
-  47320a:	00 00                	add    BYTE PTR [rax],al
-  47320c:	00 80 4d 40 00 00    	add    BYTE PTR [rax+0x404d],al
-  473212:	00 00                	add    BYTE PTR [rax],al
-  473214:	00 00                	add    BYTE PTR [rax],al
-  473216:	4e                   	rex.WRX
-  473217:	40 00 00             	rex add BYTE PTR [rax],al
-  47321a:	00 00                	add    BYTE PTR [rax],al
-  47321c:	00 80 4e 40 00 00    	add    BYTE PTR [rax+0x404e],al
-  473222:	00 00                	add    BYTE PTR [rax],al
-  473224:	00 00                	add    BYTE PTR [rax],al
-  473226:	4f                   	rex.WRXB
-  473227:	40 00 00             	rex add BYTE PTR [rax],al
-  47322a:	00 00                	add    BYTE PTR [rax],al
-  47322c:	00 80 4f 40 00 00    	add    BYTE PTR [rax+0x404f],al
-  473232:	00 00                	add    BYTE PTR [rax],al
-  473234:	00 00                	add    BYTE PTR [rax],al
-  473236:	18 40 00             	sbb    BYTE PTR [rax+0x0],al
-  473239:	00 00                	add    BYTE PTR [rax],al
-  47323b:	00 00                	add    BYTE PTR [rax],al
-  47323d:	00 1c 40             	add    BYTE PTR [rax+rax*2],bl
-  473240:	00 00                	add    BYTE PTR [rax],al
-  473242:	00 00                	add    BYTE PTR [rax],al
-  473244:	00 00                	add    BYTE PTR [rax],al
-  473246:	20 40 00             	and    BYTE PTR [rax+0x0],al
-  473249:	00 00                	add    BYTE PTR [rax],al
-  47324b:	00 00                	add    BYTE PTR [rax],al
-  47324d:	00 26                	add    BYTE PTR [rsi],ah
-  47324f:	40 00 00             	rex add BYTE PTR [rax],al
-  473252:	00 00                	add    BYTE PTR [rax],al
-  473254:	00 00                	add    BYTE PTR [rax],al
-  473256:	28 40 00             	sub    BYTE PTR [rax+0x0],al
-  473259:	00 00                	add    BYTE PTR [rax],al
-  47325b:	00 00                	add    BYTE PTR [rax],al
-  47325d:	00 2a                	add    BYTE PTR [rdx],ch
-  47325f:	40 00 00             	rex add BYTE PTR [rax],al
-  473262:	00 00                	add    BYTE PTR [rax],al
-  473264:	00 00                	add    BYTE PTR [rax],al
-  473266:	2c 40                	sub    al,0x40
-  473268:	00 00                	add    BYTE PTR [rax],al
-  47326a:	00 00                	add    BYTE PTR [rax],al
-  47326c:	00 00                	add    BYTE PTR [rax],al
-  47326e:	2e 40 00 00          	cs rex add BYTE PTR [rax],al
-  473272:	00 00                	add    BYTE PTR [rax],al
-  473274:	00 00                	add    BYTE PTR [rax],al
-  473276:	31 40 00             	xor    DWORD PTR [rax+0x0],eax
-  473279:	00 00                	add    BYTE PTR [rax],al
-  47327b:	00 00                	add    BYTE PTR [rax],al
-  47327d:	00 32                	add    BYTE PTR [rdx],dh
-  47327f:	40 00 00             	rex add BYTE PTR [rax],al
-  473282:	00 00                	add    BYTE PTR [rax],al
-  473284:	00 00                	add    BYTE PTR [rax],al
-  473286:	33 40 00             	xor    eax,DWORD PTR [rax+0x0]
-  473289:	00 00                	add    BYTE PTR [rax],al
-  47328b:	00 00                	add    BYTE PTR [rax],al
-  47328d:	00 34 40             	add    BYTE PTR [rax+rax*2],dh
-  473290:	00 00                	add    BYTE PTR [rax],al
-  473292:	00 00                	add    BYTE PTR [rax],al
-  473294:	00 00                	add    BYTE PTR [rax],al
-  473296:	35 40 00 00 00       	xor    eax,0x40
-  47329b:	00 00                	add    BYTE PTR [rax],al
-  47329d:	00 36                	add    BYTE PTR [rsi],dh
-  47329f:	40 00 00             	rex add BYTE PTR [rax],al
-  4732a2:	00 00                	add    BYTE PTR [rax],al
-  4732a4:	00 00                	add    BYTE PTR [rax],al
-  4732a6:	37                   	(bad)  
-  4732a7:	40 00 00             	rex add BYTE PTR [rax],al
-  4732aa:	00 00                	add    BYTE PTR [rax],al
-  4732ac:	00 00                	add    BYTE PTR [rax],al
-  4732ae:	38 40 00             	cmp    BYTE PTR [rax+0x0],al
-  4732b1:	00 00                	add    BYTE PTR [rax],al
-  4732b3:	00 00                	add    BYTE PTR [rax],al
-  4732b5:	00 39                	add    BYTE PTR [rcx],bh
-  4732b7:	40 00 00             	rex add BYTE PTR [rax],al
-  4732ba:	00 00                	add    BYTE PTR [rax],al
-  4732bc:	00 00                	add    BYTE PTR [rax],al
-  4732be:	3a 40 00             	cmp    al,BYTE PTR [rax+0x0]
-  4732c1:	00 00                	add    BYTE PTR [rax],al
-  4732c3:	00 00                	add    BYTE PTR [rax],al
-  4732c5:	00 3b                	add    BYTE PTR [rbx],bh
-  4732c7:	40 00 00             	rex add BYTE PTR [rax],al
-  4732ca:	00 00                	add    BYTE PTR [rax],al
-  4732cc:	00 00                	add    BYTE PTR [rax],al
-  4732ce:	3d 40 00 00 00       	cmp    eax,0x40
-  4732d3:	00 00                	add    BYTE PTR [rax],al
-  4732d5:	00 3f                	add    BYTE PTR [rdi],bh
-  4732d7:	40 00 00             	rex add BYTE PTR [rax],al
-  4732da:	00 00                	add    BYTE PTR [rax],al
-  4732dc:	00 00                	add    BYTE PTR [rax],al
-  4732de:	60                   	(bad)  
-  4732df:	40 00 00             	rex add BYTE PTR [rax],al
-  4732e2:	00 00                	add    BYTE PTR [rax],al
-  4732e4:	00 20                	add    BYTE PTR [rax],ah
-  4732e6:	60                   	(bad)  
-  4732e7:	40 00 00             	rex add BYTE PTR [rax],al
-  4732ea:	00 00                	add    BYTE PTR [rax],al
-  4732ec:	00 40 60             	add    BYTE PTR [rax+0x60],al
-  4732ef:	40 00 00             	rex add BYTE PTR [rax],al
-  4732f2:	00 00                	add    BYTE PTR [rax],al
-  4732f4:	00 60 60             	add    BYTE PTR [rax+0x60],ah
-  4732f7:	40 00 00             	rex add BYTE PTR [rax],al
-  4732fa:	00 00                	add    BYTE PTR [rax],al
-  4732fc:	00 80 60 40 00 00    	add    BYTE PTR [rax+0x4060],al
-  473302:	00 00                	add    BYTE PTR [rax],al
-  473304:	00 a0 60 40 00 00    	add    BYTE PTR [rax+0x4060],ah
-  47330a:	00 00                	add    BYTE PTR [rax],al
-  47330c:	00 c0                	add    al,al
-  47330e:	60                   	(bad)  
-  47330f:	40 00 00             	rex add BYTE PTR [rax],al
-  473312:	00 00                	add    BYTE PTR [rax],al
-  473314:	00 e0                	add    al,ah
-  473316:	60                   	(bad)  
-  473317:	40 00 00             	rex add BYTE PTR [rax],al
-  47331a:	00 00                	add    BYTE PTR [rax],al
-  47331c:	00 00                	add    BYTE PTR [rax],al
-  47331e:	61                   	(bad)  
-  47331f:	40 00 00             	rex add BYTE PTR [rax],al
-  473322:	00 00                	add    BYTE PTR [rax],al
-  473324:	00 20                	add    BYTE PTR [rax],ah
-  473326:	61                   	(bad)  
-  473327:	40 00 00             	rex add BYTE PTR [rax],al
-  47332a:	00 00                	add    BYTE PTR [rax],al
-  47332c:	00 40 61             	add    BYTE PTR [rax+0x61],al
-  47332f:	40 00 00             	rex add BYTE PTR [rax],al
-  473332:	00 00                	add    BYTE PTR [rax],al
-  473334:	00 60 61             	add    BYTE PTR [rax+0x61],ah
-  473337:	40 00 00             	rex add BYTE PTR [rax],al
-  47333a:	00 00                	add    BYTE PTR [rax],al
-  47333c:	00 80 61 40 00 00    	add    BYTE PTR [rax+0x4061],al
-  473342:	00 00                	add    BYTE PTR [rax],al
-  473344:	00 a0 61 40 00 00    	add    BYTE PTR [rax+0x4061],ah
-  47334a:	00 00                	add    BYTE PTR [rax],al
-  47334c:	00 c0                	add    al,al
-  47334e:	61                   	(bad)  
-  47334f:	40 00 00             	rex add BYTE PTR [rax],al
-  473352:	00 00                	add    BYTE PTR [rax],al
-  473354:	00 e0                	add    al,ah
-  473356:	61                   	(bad)  
-  473357:	40 00 00             	rex add BYTE PTR [rax],al
-  47335a:	00 00                	add    BYTE PTR [rax],al
-  47335c:	00 20                	add    BYTE PTR [rax],ah
-  47335e:	62                   	(bad)  
-  47335f:	40 00 00             	rex add BYTE PTR [rax],al
-  473362:	00 00                	add    BYTE PTR [rax],al
-  473364:	00 40 62             	add    BYTE PTR [rax+0x62],al
-  473367:	40 00 00             	rex add BYTE PTR [rax],al
-  47336a:	00 00                	add    BYTE PTR [rax],al
-  47336c:	00 60 62             	add    BYTE PTR [rax+0x62],ah
-  47336f:	40 00 00             	rex add BYTE PTR [rax],al
-  473372:	00 00                	add    BYTE PTR [rax],al
-  473374:	00 80 62 40 00 00    	add    BYTE PTR [rax+0x4062],al
-  47337a:	00 00                	add    BYTE PTR [rax],al
-  47337c:	00 a0 62 40 00 00    	add    BYTE PTR [rax+0x4062],ah
-  473382:	00 00                	add    BYTE PTR [rax],al
-  473384:	00 c0                	add    al,al
-  473386:	62                   	(bad)  
-  473387:	40 00 00             	rex add BYTE PTR [rax],al
-  47338a:	00 00                	add    BYTE PTR [rax],al
-  47338c:	00 e0                	add    al,ah
-  47338e:	62                   	(bad)  
-  47338f:	40 00 00             	rex add BYTE PTR [rax],al
-  473392:	00 00                	add    BYTE PTR [rax],al
-  473394:	00 00                	add    BYTE PTR [rax],al
-  473396:	63 40 00             	movsxd eax,DWORD PTR [rax+0x0]
-  473399:	00 00                	add    BYTE PTR [rax],al
-  47339b:	00 00                	add    BYTE PTR [rax],al
-  47339d:	20 63 40             	and    BYTE PTR [rbx+0x40],ah
-  4733a0:	00 00                	add    BYTE PTR [rax],al
-  4733a2:	00 00                	add    BYTE PTR [rax],al
-  4733a4:	00 40 63             	add    BYTE PTR [rax+0x63],al
-  4733a7:	40 00 00             	rex add BYTE PTR [rax],al
-  4733aa:	00 00                	add    BYTE PTR [rax],al
-  4733ac:	00 80 63 40 00 00    	add    BYTE PTR [rax+0x4063],al
-  4733b2:	00 00                	add    BYTE PTR [rax],al
-  4733b4:	00 a0 63 40 00 00    	add    BYTE PTR [rax+0x4063],ah
-  4733ba:	00 00                	add    BYTE PTR [rax],al
-  4733bc:	00 e0                	add    al,ah
-  4733be:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4733bf:	40 00 00             	rex add BYTE PTR [rax],al
-  4733c2:	00 00                	add    BYTE PTR [rax],al
-  4733c4:	00 00                	add    BYTE PTR [rax],al
-  4733c6:	ec                   	in     al,dx
-  4733c7:	40 00 00             	rex add BYTE PTR [rax],al
-  4733ca:	00 00                	add    BYTE PTR [rax],al
-  4733cc:	e0 ff                	loopne 4733cd <_IO_stdin_used+0x43cd>
-  4733ce:	ef                   	out    dx,eax
-  4733cf:	40 00 00             	rex add BYTE PTR [rax],al
-  4733d2:	00 00                	add    BYTE PTR [rax],al
-  4733d4:	00 00                	add    BYTE PTR [rax],al
-  4733d6:	e4 40                	in     al,0x40
-  4733d8:	00 00                	add    BYTE PTR [rax],al
-  4733da:	00 00                	add    BYTE PTR [rax],al
-  4733dc:	e0 ff                	loopne 4733dd <_IO_stdin_used+0x43dd>
-  4733de:	e7 40                	out    0x40,eax
-  4733e0:	00 00                	add    BYTE PTR [rax],al
-  4733e2:	00 00                	add    BYTE PTR [rax],al
-  4733e4:	00 00                	add    BYTE PTR [rax],al
-  4733e6:	eb 40                	jmp    473428 <_IO_stdin_used+0x4428>
-  4733e8:	00 00                	add    BYTE PTR [rax],al
-  4733ea:	00 00                	add    BYTE PTR [rax],al
-  4733ec:	e0 7f                	loopne 47346d <_IO_stdin_used+0x446d>
-  4733ee:	eb 40                	jmp    473430 <_IO_stdin_used+0x4430>
-  4733f0:	00 00                	add    BYTE PTR [rax],al
-  4733f2:	00 00                	add    BYTE PTR [rax],al
-  4733f4:	00 00                	add    BYTE PTR [rax],al
-  4733f6:	ea                   	(bad)  
-  4733f7:	40 00 00             	rex add BYTE PTR [rax],al
-  4733fa:	00 00                	add    BYTE PTR [rax],al
-  4733fc:	e0 7f                	loopne 47347d <_IO_stdin_used+0x447d>
-  4733fe:	ea                   	(bad)  
-  4733ff:	40 00 00             	rex add BYTE PTR [rax],al
-  473402:	00 00                	add    BYTE PTR [rax],al
-  473404:	20 14 e8             	and    BYTE PTR [rax+rbp*8],dl
-  473407:	40 00 00             	rex add BYTE PTR [rax],al
-  47340a:	00 00                	add    BYTE PTR [rax],al
-  47340c:	80 20 e8             	and    BYTE PTR [rax],0xe8
-  47340f:	40 00 00             	rex add BYTE PTR [rax],al
-  473412:	00 00                	add    BYTE PTR [rax],al
-  473414:	20 04 ea             	and    BYTE PTR [rdx+rbp*8],al
-  473417:	40 00 00             	rex add BYTE PTR [rax],al
-  47341a:	00 00                	add    BYTE PTR [rax],al
-  47341c:	00 30                	add    BYTE PTR [rax],dh
-  47341e:	84 40 00             	test   BYTE PTR [rax+0x0],al
-  473421:	00 00                	add    BYTE PTR [rax],al
-  473423:	00 40 00             	add    BYTE PTR [rax+0x0],al
-  473426:	e8 40 00 00 00       	call   47346b <_IO_stdin_used+0x446b>
-  47342b:	00 60 00             	add    BYTE PTR [rax+0x0],ah
-  47342e:	e8 40 00 00 00       	call   473473 <_IO_stdin_used+0x4473>
-  473433:	00 80 00 e8 40 00    	add    BYTE PTR [rax+0x40e800],al
-  473439:	00 00                	add    BYTE PTR [rax],al
-  47343b:	00 00                	add    BYTE PTR [rax],al
-  47343d:	80 59 40 00          	sbb    BYTE PTR [rcx+0x40],0x0
-  473441:	00 00                	add    BYTE PTR [rax],al
-  473443:	00 00                	add    BYTE PTR [rax],al
-  473445:	80 69 40 00          	sub    BYTE PTR [rcx+0x40],0x0
-  473449:	00 00                	add    BYTE PTR [rax],al
-  47344b:	00 00                	add    BYTE PTR [rax],al
-  47344d:	00 6c 40 00          	add    BYTE PTR [rax+rax*2+0x0],ch
-  473451:	00 00                	add    BYTE PTR [rax],al
-  473453:	00 00                	add    BYTE PTR [rax],al
-  473455:	20 68 40             	and    BYTE PTR [rax+0x40],ch
-  473458:	00 00                	add    BYTE PTR [rax],al
-  47345a:	00 00                	add    BYTE PTR [rax],al
-  47345c:	00 40 64             	add    BYTE PTR [rax+0x64],al
-  47345f:	40 00 00             	rex add BYTE PTR [rax],al
-  473462:	00 00                	add    BYTE PTR [rax],al
-  473464:	00 00                	add    BYTE PTR [rax],al
-  473466:	59                   	pop    rcx
-  473467:	40 00 00             	rex add BYTE PTR [rax],al
-  47346a:	00 00                	add    BYTE PTR [rax],al
-  47346c:	00 40 51             	add    BYTE PTR [rax+0x51],al
-  47346f:	40 00 00             	rex add BYTE PTR [rax],al
-  473472:	00 00                	add    BYTE PTR [rax],al
-  473474:	00 60 67             	add    BYTE PTR [rax+0x67],ah
-  473477:	40 00 00             	rex add BYTE PTR [rax],al
-  47347a:	00 00                	add    BYTE PTR [rax],al
-  47347c:	00 03                	add    BYTE PTR [rbx],al
-  47347e:	ea                   	(bad)  
-  47347f:	40 00 00             	rex add BYTE PTR [rax],al
-  473482:	00 00                	add    BYTE PTR [rax],al
-  473484:	00 00                	add    BYTE PTR [rax],al
-  473486:	e0 43                	loopne 4734cb <_IO_stdin_used+0x44cb>
-  473488:	00 00                	add    BYTE PTR [rax],al
-  47348a:	00 00                	add    BYTE PTR [rax],al
-  47348c:	20 00                	and    BYTE PTR [rax],al
-  47348e:	ea                   	(bad)  
-  47348f:	40 00 00             	rex add BYTE PTR [rax],al
-  473492:	00 00                	add    BYTE PTR [rax],al
-  473494:	60                   	(bad)  
-  473495:	00 ea                	add    dl,ch
-  473497:	40 00 00             	rex add BYTE PTR [rax],al
-  47349a:	00 00                	add    BYTE PTR [rax],al
-  47349c:	a0 00 ea 40 00 00 00 	movabs al,ds:0xe00000000040ea00
-  4734a3:	00 e0 
-  4734a5:	00 ea                	add    dl,ch
-  4734a7:	40 00 00             	rex add BYTE PTR [rax],al
-  4734aa:	00 00                	add    BYTE PTR [rax],al
-  4734ac:	20 01                	and    BYTE PTR [rcx],al
-  4734ae:	ea                   	(bad)  
-  4734af:	40 00 00             	rex add BYTE PTR [rax],al
-  4734b2:	00 00                	add    BYTE PTR [rax],al
-  4734b4:	60                   	(bad)  
-  4734b5:	01 ea                	add    edx,ebp
-  4734b7:	40 00 00             	rex add BYTE PTR [rax],al
-  4734ba:	00 00                	add    BYTE PTR [rax],al
-  4734bc:	a0 01 ea 40 00 00 00 	movabs al,ds:0xe00000000040ea01
-  4734c3:	00 e0 
-  4734c5:	01 ea                	add    edx,ebp
-  4734c7:	40 00 00             	rex add BYTE PTR [rax],al
-  4734ca:	00 00                	add    BYTE PTR [rax],al
-  4734cc:	e0 04                	loopne 4734d2 <_IO_stdin_used+0x44d2>
-  4734ce:	ea                   	(bad)  
-  4734cf:	40 00 00             	rex add BYTE PTR [rax],al
-  4734d2:	00 00                	add    BYTE PTR [rax],al
-  4734d4:	00 05 ea 40 00 00    	add    BYTE PTR [rip+0x40ea],al        # 4775c4 <__FRAME_END__+0xb40>
-  4734da:	00 00                	add    BYTE PTR [rax],al
-  4734dc:	20 05 ea 40 00 00    	and    BYTE PTR [rip+0x40ea],al        # 4775cc <__FRAME_END__+0xb48>
-  4734e2:	00 00                	add    BYTE PTR [rax],al
-  4734e4:	40 05 ea 40 00 00    	rex add eax,0x40ea
-  4734ea:	00 00                	add    BYTE PTR [rax],al
-  4734ec:	60                   	(bad)  
-  4734ed:	05 ea 40 00 00       	add    eax,0x40ea
-  4734f2:	00 00                	add    BYTE PTR [rax],al
-  4734f4:	a0 07 ea 40 00 00 00 	movabs al,ds:0xc00000000040ea07
-  4734fb:	00 c0 
-  4734fd:	07                   	(bad)  
-  4734fe:	ea                   	(bad)  
-  4734ff:	40 00 00             	rex add BYTE PTR [rax],al
-  473502:	00 00                	add    BYTE PTR [rax],al
-  473504:	e0 07                	loopne 47350d <_IO_stdin_used+0x450d>
-  473506:	ea                   	(bad)  
-  473507:	40 00 00             	rex add BYTE PTR [rax],al
-  47350a:	00 00                	add    BYTE PTR [rax],al
-  47350c:	a0 02 ea 40 00 00 00 	movabs al,ds:0x400000000040ea02
-  473513:	00 40 
-  473515:	02 ea                	add    ch,dl
-  473517:	40 00 00             	rex add BYTE PTR [rax],al
-  47351a:	00 00                	add    BYTE PTR [rax],al
-  47351c:	00 04 ea             	add    BYTE PTR [rdx+rbp*8],al
-  47351f:	40 00 00             	rex add BYTE PTR [rax],al
-  473522:	00 00                	add    BYTE PTR [rax],al
-  473524:	40 04 ea             	rex add al,0xea
-  473527:	40 00 00             	rex add BYTE PTR [rax],al
-  47352a:	00 00                	add    BYTE PTR [rax],al
-  47352c:	60                   	(bad)  
-  47352d:	04 ea                	add    al,0xea
-  47352f:	40 00 00             	rex add BYTE PTR [rax],al
-  473532:	00 00                	add    BYTE PTR [rax],al
-  473534:	80 04 ea 40          	add    BYTE PTR [rdx+rbp*8],0x40
-  473538:	00 00                	add    BYTE PTR [rax],al
-  47353a:	00 00                	add    BYTE PTR [rax],al
-  47353c:	c0 00 e8             	rol    BYTE PTR [rax],0xe8
-  47353f:	40 00 00             	rex add BYTE PTR [rax],al
-  473542:	00 00                	add    BYTE PTR [rax],al
-  473544:	e0 00                	loopne 473546 <_IO_stdin_used+0x4546>
-  473546:	e8 40 00 00 00       	call   47358b <_IO_stdin_used+0x458b>
-  47354b:	00 00                	add    BYTE PTR [rax],al
-  47354d:	01 e8                	add    eax,ebp
-  47354f:	40 00 00             	rex add BYTE PTR [rax],al
-  473552:	00 00                	add    BYTE PTR [rax],al
-  473554:	00 00                	add    BYTE PTR [rax],al
-  473556:	66 40 00 00          	data16 rex add BYTE PTR [rax],al
-  47355a:	00 00                	add    BYTE PTR [rax],al
-  47355c:	00 00                	add    BYTE PTR [rax],al
-  47355e:	68 40 00 00 00       	push   0x40
-  473563:	00 c0                	add    al,al
-  473565:	05 e8 40 00 00       	add    eax,0x40e8
-  47356a:	00 00                	add    BYTE PTR [rax],al
-  47356c:	80 06 e8             	add    BYTE PTR [rsi],0xe8
-  47356f:	40 00 00             	rex add BYTE PTR [rax],al
-  473572:	00 00                	add    BYTE PTR [rax],al
-  473574:	40 07                	rex (bad) 
-  473576:	e8 40 00 00 00       	call   4735bb <_IO_stdin_used+0x45bb>
-  47357b:	00 00                	add    BYTE PTR [rax],al
-  47357d:	08 e8                	or     al,ch
-  47357f:	40 00 00             	rex add BYTE PTR [rax],al
-  473582:	00 00                	add    BYTE PTR [rax],al
-  473584:	e0 08                	loopne 47358e <_IO_stdin_used+0x458e>
-  473586:	e8 40 00 00 00       	call   4735cb <_IO_stdin_used+0x45cb>
-  47358b:	00 60 09             	add    BYTE PTR [rax+0x9],ah
-  47358e:	e8 40 00 00 00       	call   4735d3 <_IO_stdin_used+0x45d3>
-  473593:	00 40 0a             	add    BYTE PTR [rax+0xa],al
-  473596:	e8 40 00 00 00       	call   4735db <_IO_stdin_used+0x45db>
-  47359b:	00 00                	add    BYTE PTR [rax],al
-  47359d:	0b e8                	or     ebp,eax
-  47359f:	40 00 00             	rex add BYTE PTR [rax],al
-  4735a2:	00 00                	add    BYTE PTR [rax],al
-  4735a4:	c0 0b e8             	ror    BYTE PTR [rbx],0xe8
-  4735a7:	40 00 00             	rex add BYTE PTR [rax],al
-  4735aa:	00 00                	add    BYTE PTR [rax],al
-  4735ac:	80 0c e8 40          	or     BYTE PTR [rax+rbp*8],0x40
-  4735b0:	00 00                	add    BYTE PTR [rax],al
-  4735b2:	00 00                	add    BYTE PTR [rax],al
-  4735b4:	40 0d e8 40 00 00    	rex or eax,0x40e8
-  4735ba:	00 00                	add    BYTE PTR [rax],al
-  4735bc:	00 0e                	add    BYTE PTR [rsi],cl
-  4735be:	e8 40 00 00 00       	call   473603 <_IO_stdin_used+0x4603>
-  4735c3:	00 c0                	add    al,al
-  4735c5:	0e                   	(bad)  
-  4735c6:	e8 40 00 00 00       	call   47360b <_IO_stdin_used+0x460b>
-  4735cb:	00 80 0f e8 40 00    	add    BYTE PTR [rax+0x40e80f],al
-  4735d1:	00 00                	add    BYTE PTR [rax],al
-  4735d3:	00 40 10             	add    BYTE PTR [rax+0x10],al
-  4735d6:	e8 40 00 00 00       	call   47361b <_IO_stdin_used+0x461b>
-  4735db:	00 00                	add    BYTE PTR [rax],al
-  4735dd:	11 e8                	adc    eax,ebp
-  4735df:	40 00 00             	rex add BYTE PTR [rax],al
-  4735e2:	00 00                	add    BYTE PTR [rax],al
-  4735e4:	c0 11 e8             	rcl    BYTE PTR [rcx],0xe8
-  4735e7:	40 00 00             	rex add BYTE PTR [rax],al
-  4735ea:	00 00                	add    BYTE PTR [rax],al
-  4735ec:	80 12 e8             	adc    BYTE PTR [rdx],0xe8
-  4735ef:	40 00 00             	rex add BYTE PTR [rax],al
-  4735f2:	00 00                	add    BYTE PTR [rax],al
-  4735f4:	40 13 e8             	rex adc ebp,eax
-  4735f7:	40 00 00             	rex add BYTE PTR [rax],al
-  4735fa:	00 00                	add    BYTE PTR [rax],al
-  4735fc:	00 14 e8             	add    BYTE PTR [rax+rbp*8],dl
-  4735ff:	40 00 00             	rex add BYTE PTR [rax],al
-  473602:	00 00                	add    BYTE PTR [rax],al
-  473604:	00 b0 72 40 00 00    	add    BYTE PTR [rax+0x4072],dh
-  47360a:	00 00                	add    BYTE PTR [rax],al
-  47360c:	00 00                	add    BYTE PTR [rax],al
-  47360e:	90                   	nop
-  47360f:	40 00 00             	rex add BYTE PTR [rax],al
-  473612:	00 00                	add    BYTE PTR [rax],al
-  473614:	00 20                	add    BYTE PTR [rax],ah
-  473616:	6a 40                	push   0x40
-  473618:	9a                   	(bad)  
-  473619:	99                   	cdq    
-  47361a:	99                   	cdq    
-  47361b:	99                   	cdq    
-  47361c:	99                   	cdq    
-  47361d:	99                   	cdq    
-  47361e:	b9 3f 7b 14 ae       	mov    ecx,0xae147b3f
-  473623:	47 e1 7a             	rex.RXB loope 4736a0 <_IO_stdin_used+0x46a0>
-  473626:	84 3f                	test   BYTE PTR [rdi],bh
-  473628:	fc                   	cld    
-  473629:	a9 f1 d2 4d 62       	test   eax,0x624dd2f1
-  47362e:	50                   	push   rax
-  47362f:	3f                   	(bad)  
-  473630:	00 00                	add    BYTE PTR [rax],al
-  473632:	00 00                	add    BYTE PTR [rax],al
-  473634:	80 1d e8 40 00 00 00 	sbb    BYTE PTR [rip+0x40e8],0x0        # 477723 <__FRAME_END__+0xc9f>
-  47363b:	00 20                	add    BYTE PTR [rax],ah
-  47363d:	19 e8                	sbb    eax,ebp
-  47363f:	40 00 00             	rex add BYTE PTR [rax],al
-  473642:	00 00                	add    BYTE PTR [rax],al
-  473644:	20 20                	and    BYTE PTR [rax],ah
-  473646:	e8 40 00 00 00       	call   47368b <_IO_stdin_used+0x468b>
-  47364b:	00 a0 20 e8 40 00    	add    BYTE PTR [rax+0x40e820],ah
-  473651:	00 00                	add    BYTE PTR [rax],al
-  473653:	00 c0                	add    al,al
-  473655:	20 e8                	and    al,ch
-  473657:	40 00 00             	rex add BYTE PTR [rax],al
-  47365a:	00 00                	add    BYTE PTR [rax],al
-  47365c:	e0 20                	loopne 47367e <_IO_stdin_used+0x467e>
-  47365e:	e8 40 00 00 00       	call   4736a3 <_IO_stdin_used+0x46a3>
-  473663:	00 00                	add    BYTE PTR [rax],al
-  473665:	21 e8                	and    eax,ebp
-  473667:	40 00 00             	rex add BYTE PTR [rax],al
-  47366a:	00 00                	add    BYTE PTR [rax],al
-  47366c:	20 21                	and    BYTE PTR [rcx],ah
-  47366e:	e8 40 00 00 00       	call   4736b3 <_IO_stdin_used+0x46b3>
-  473673:	00 00                	add    BYTE PTR [rax],al
-  473675:	80 5d 40 00          	sbb    BYTE PTR [rbp+0x40],0x0
-  473679:	00 00                	add    BYTE PTR [rax],al
-  47367b:	00 00                	add    BYTE PTR [rax],al
-  47367d:	c0 5d 40 00          	rcr    BYTE PTR [rbp+0x40],0x0
-  473681:	00 00                	add    BYTE PTR [rax],al
-  473683:	00 00                	add    BYTE PTR [rax],al
-  473685:	c0 5f 40 00          	rcr    BYTE PTR [rdi+0x40],0x0
-  473689:	00 00                	add    BYTE PTR [rax],al
-  47368b:	00 00                	add    BYTE PTR [rax],al
-  47368d:	00 d0                	add    al,dl
-  47368f:	40 00 00             	rex add BYTE PTR [rax],al
-  473692:	00 00                	add    BYTE PTR [rax],al
-  473694:	00 9c df 40 00 00 00 	add    BYTE PTR [rdi+rbx*8+0x40],bl
-  47369b:	00 00                	add    BYTE PTR [rax],al
-  47369d:	00 24 41             	add    BYTE PTR [rcx+rax*2],ah
-  4736a0:	00 00                	add    BYTE PTR [rax],al
-  4736a2:	00 00                	add    BYTE PTR [rax],al
-  4736a4:	fe                   	(bad)  
-  4736a5:	ff 25 41 00 00 00    	jmp    QWORD PTR [rip+0x41]        # 4736ec <_IO_stdin_used+0x46ec>
-  4736ab:	00 00                	add    BYTE PTR [rax],al
-  4736ad:	22 e8                	and    ch,al
-  4736af:	40 00 00             	rex add BYTE PTR [rax],al
-  4736b2:	00 00                	add    BYTE PTR [rax],al
-  4736b4:	e0 22                	loopne 4736d8 <_IO_stdin_used+0x46d8>
-  4736b6:	e8 40 00 00 00       	call   4736fb <_IO_stdin_used+0x46fb>
-  4736bb:	00 c0                	add    al,al
-  4736bd:	23 e8                	and    ebp,eax
-  4736bf:	40 00 00             	rex add BYTE PTR [rax],al
-  4736c2:	00 00                	add    BYTE PTR [rax],al
-  4736c4:	a0 24 e8 40 00 00 00 	movabs al,ds:0x800000000040e824
-  4736cb:	00 80 
-  4736cd:	25 e8 40 00 00       	and    eax,0x40e8
-  4736d2:	00 00                	add    BYTE PTR [rax],al
-  4736d4:	60                   	(bad)  
-  4736d5:	26 e8 40 00 00 00    	es call 47371b <_IO_stdin_used+0x471b>
-  4736db:	00 a0 27 e8 40 00    	add    BYTE PTR [rax+0x40e827],ah
-  4736e1:	00 00                	add    BYTE PTR [rax],al
-  4736e3:	00 e0                	add    al,ah
-  4736e5:	28 e8                	sub    al,ch
-  4736e7:	40 00 00             	rex add BYTE PTR [rax],al
-  4736ea:	00 00                	add    BYTE PTR [rax],al
-  4736ec:	20 2a                	and    BYTE PTR [rdx],ch
-  4736ee:	e8 40 00 00 00       	call   473733 <_IO_stdin_used+0x4733>
-  4736f3:	00 60 2b             	add    BYTE PTR [rax+0x2b],ah
-  4736f6:	e8 40 00 00 00       	call   47373b <_IO_stdin_used+0x473b>
-  4736fb:	00 a0 2c e8 40 00    	add    BYTE PTR [rax+0x40e82c],ah
-  473701:	00 00                	add    BYTE PTR [rax],al
-  473703:	00 e0                	add    al,ah
-  473705:	2d e8 40 00 00       	sub    eax,0x40e8
-  47370a:	00 00                	add    BYTE PTR [rax],al
-  47370c:	00 2e                	add    BYTE PTR [rsi],ch
-  47370e:	e8 40 00 00 00       	call   473753 <_IO_stdin_used+0x4753>
-  473713:	00 20                	add    BYTE PTR [rax],ah
-  473715:	2e e8 40 00 00 00    	cs call 47375b <_IO_stdin_used+0x475b>
-  47371b:	00 40 2e             	add    BYTE PTR [rax+0x2e],al
-  47371e:	e8 40 00 00 00       	call   473763 <_IO_stdin_used+0x4763>
-  473723:	00 60 2e             	add    BYTE PTR [rax+0x2e],ah
-  473726:	e8 40 00 00 00       	call   47376b <_IO_stdin_used+0x476b>
-  47372b:	00 80 2e e8 40 00    	add    BYTE PTR [rax+0x40e82e],al
-  473731:	00 00                	add    BYTE PTR [rax],al
-  473733:	00 a0 2e e8 40 00    	add    BYTE PTR [rax+0x40e82e],ah
-  473739:	00 00                	add    BYTE PTR [rax],al
-  47373b:	00 c0                	add    al,al
-  47373d:	2e e8 40 00 00 00    	cs call 473783 <_IO_stdin_used+0x4783>
-  473743:	00 e0                	add    al,ah
-  473745:	2e e8 40 00 00 00    	cs call 47378b <_IO_stdin_used+0x478b>
-  47374b:	00 00                	add    BYTE PTR [rax],al
-  47374d:	2f                   	(bad)  
-  47374e:	e8 40 00 00 00       	call   473793 <_IO_stdin_used+0x4793>
-  473753:	00 20                	add    BYTE PTR [rax],ah
-  473755:	2f                   	(bad)  
-  473756:	e8 40 00 00 00       	call   47379b <_IO_stdin_used+0x479b>
-  47375b:	00 40 2f             	add    BYTE PTR [rax+0x2f],al
-  47375e:	e8 40 00 00 00       	call   4737a3 <_IO_stdin_used+0x47a3>
-  473763:	00 60 2f             	add    BYTE PTR [rax+0x2f],ah
-  473766:	e8 40 00 00 00       	call   4737ab <_IO_stdin_used+0x47ab>
-  47376b:	00 80 2f e8 40 00    	add    BYTE PTR [rax+0x40e82f],al
-  473771:	00 00                	add    BYTE PTR [rax],al
-  473773:	00 a0 2f e8 40 00    	add    BYTE PTR [rax+0x40e82f],ah
-  473779:	00 00                	add    BYTE PTR [rax],al
-  47377b:	00 c0                	add    al,al
-  47377d:	2f                   	(bad)  
-  47377e:	e8 40 00 00 00       	call   4737c3 <_IO_stdin_used+0x47c3>
-  473783:	00 e0                	add    al,ah
-  473785:	2f                   	(bad)  
-  473786:	e8 40 00 00 00       	call   4737cb <_IO_stdin_used+0x47cb>
-  47378b:	00 00                	add    BYTE PTR [rax],al
-  47378d:	30 e8                	xor    al,ch
-  47378f:	40 00 00             	rex add BYTE PTR [rax],al
-  473792:	00 00                	add    BYTE PTR [rax],al
-  473794:	20 12                	and    BYTE PTR [rdx],dl
-  473796:	ed                   	in     eax,dx
-  473797:	40 00 00             	rex add BYTE PTR [rax],al
-  47379a:	00 00                	add    BYTE PTR [rax],al
-  47379c:	40 12 ed             	adc    bpl,bpl
-  47379f:	40 00 00             	rex add BYTE PTR [rax],al
-  4737a2:	00 00                	add    BYTE PTR [rax],al
-  4737a4:	60                   	(bad)  
-  4737a5:	12 ed                	adc    ch,ch
-  4737a7:	40 00 00             	rex add BYTE PTR [rax],al
-  4737aa:	00 00                	add    BYTE PTR [rax],al
-  4737ac:	00 15 ed 40 00 00    	add    BYTE PTR [rip+0x40ed],dl        # 47789f <__FRAME_END__+0xe1b>
-  4737b2:	00 00                	add    BYTE PTR [rax],al
-  4737b4:	20 15 ed 40 00 00    	and    BYTE PTR [rip+0x40ed],dl        # 4778a7 <__FRAME_END__+0xe23>
-  4737ba:	00 00                	add    BYTE PTR [rax],al
-  4737bc:	40 15 ed 40 00 00    	rex adc eax,0x40ed
-  4737c2:	00 00                	add    BYTE PTR [rax],al
-  4737c4:	60                   	(bad)  
-  4737c5:	15 ed 40 00 00       	adc    eax,0x40ed
-  4737ca:	00 00                	add    BYTE PTR [rax],al
-  4737cc:	80 15 ed 40 00 00 00 	adc    BYTE PTR [rip+0x40ed],0x0        # 4778c0 <__FRAME_END__+0xe3c>
-  4737d3:	00 a0 15 ed 40 00    	add    BYTE PTR [rax+0x40ed15],ah
-  4737d9:	00 00                	add    BYTE PTR [rax],al
-  4737db:	00 c0                	add    al,al
-  4737dd:	15 ed 40 00 00       	adc    eax,0x40ed
-  4737e2:	00 00                	add    BYTE PTR [rax],al
-  4737e4:	e0 15                	loopne 4737fb <_IO_stdin_used+0x47fb>
-  4737e6:	ed                   	in     eax,dx
-  4737e7:	40 00 00             	rex add BYTE PTR [rax],al
-  4737ea:	00 00                	add    BYTE PTR [rax],al
-  4737ec:	00 16                	add    BYTE PTR [rsi],dl
-  4737ee:	ed                   	in     eax,dx
-  4737ef:	40 00 00             	rex add BYTE PTR [rax],al
-  4737f2:	00 00                	add    BYTE PTR [rax],al
-  4737f4:	20 16                	and    BYTE PTR [rsi],dl
-  4737f6:	ed                   	in     eax,dx
-  4737f7:	40 00 00             	rex add BYTE PTR [rax],al
-  4737fa:	00 00                	add    BYTE PTR [rax],al
-  4737fc:	40 16                	rex (bad) 
-  4737fe:	ed                   	in     eax,dx
-  4737ff:	40 00 00             	rex add BYTE PTR [rax],al
-  473802:	00 00                	add    BYTE PTR [rax],al
-  473804:	60                   	(bad)  
-  473805:	16                   	(bad)  
-  473806:	ed                   	in     eax,dx
-  473807:	40 00 00             	rex add BYTE PTR [rax],al
-  47380a:	00 00                	add    BYTE PTR [rax],al
-  47380c:	80 16 ed             	adc    BYTE PTR [rsi],0xed
-  47380f:	40 00 00             	rex add BYTE PTR [rax],al
-  473812:	00 00                	add    BYTE PTR [rax],al
-  473814:	a0 16 ed 40 00 00 00 	movabs al,ds:0xc00000000040ed16
-  47381b:	00 c0 
-  47381d:	16                   	(bad)  
-  47381e:	ed                   	in     eax,dx
-  47381f:	40 00 00             	rex add BYTE PTR [rax],al
-  473822:	00 00                	add    BYTE PTR [rax],al
-  473824:	e0 16                	loopne 47383c <_IO_stdin_used+0x483c>
-  473826:	ed                   	in     eax,dx
-  473827:	40 00 00             	rex add BYTE PTR [rax],al
-  47382a:	00 00                	add    BYTE PTR [rax],al
-  47382c:	00 17                	add    BYTE PTR [rdi],dl
-  47382e:	ed                   	in     eax,dx
-  47382f:	40 00 00             	rex add BYTE PTR [rax],al
-  473832:	00 00                	add    BYTE PTR [rax],al
-  473834:	20 17                	and    BYTE PTR [rdi],dl
-  473836:	ed                   	in     eax,dx
-  473837:	40 00 00             	rex add BYTE PTR [rax],al
-  47383a:	00 00                	add    BYTE PTR [rax],al
-  47383c:	40 17                	rex (bad) 
-  47383e:	ed                   	in     eax,dx
-  47383f:	40 00 00             	rex add BYTE PTR [rax],al
-  473842:	00 00                	add    BYTE PTR [rax],al
-  473844:	60                   	(bad)  
-  473845:	17                   	(bad)  
-  473846:	ed                   	in     eax,dx
-  473847:	40 00 00             	rex add BYTE PTR [rax],al
-  47384a:	00 00                	add    BYTE PTR [rax],al
-  47384c:	80 17 ed             	adc    BYTE PTR [rdi],0xed
-  47384f:	40 00 00             	rex add BYTE PTR [rax],al
-  473852:	00 00                	add    BYTE PTR [rax],al
-  473854:	a0 17 ed 40 00 00 00 	movabs al,ds:0xc00000000040ed17
-  47385b:	00 c0 
-  47385d:	17                   	(bad)  
-  47385e:	ed                   	in     eax,dx
-  47385f:	40 00 00             	rex add BYTE PTR [rax],al
-  473862:	00 00                	add    BYTE PTR [rax],al
-  473864:	e0 17                	loopne 47387d <_IO_stdin_used+0x487d>
-  473866:	ed                   	in     eax,dx
-  473867:	40 00 00             	rex add BYTE PTR [rax],al
-  47386a:	00 00                	add    BYTE PTR [rax],al
-  47386c:	00 18                	add    BYTE PTR [rax],bl
-  47386e:	ed                   	in     eax,dx
-  47386f:	40 00 00             	rex add BYTE PTR [rax],al
-  473872:	00 00                	add    BYTE PTR [rax],al
-  473874:	20 18                	and    BYTE PTR [rax],bl
-  473876:	ed                   	in     eax,dx
-  473877:	40 00 00             	rex add BYTE PTR [rax],al
-  47387a:	00 00                	add    BYTE PTR [rax],al
-  47387c:	40 18 ed             	sbb    bpl,bpl
-  47387f:	40 00 00             	rex add BYTE PTR [rax],al
-  473882:	00 00                	add    BYTE PTR [rax],al
-  473884:	60                   	(bad)  
-  473885:	18 ed                	sbb    ch,ch
-  473887:	40 00 00             	rex add BYTE PTR [rax],al
-  47388a:	00 00                	add    BYTE PTR [rax],al
-  47388c:	80 18 ed             	sbb    BYTE PTR [rax],0xed
-  47388f:	40 00 00             	rex add BYTE PTR [rax],al
-  473892:	00 00                	add    BYTE PTR [rax],al
-  473894:	a0 18 ed 40 00 00 00 	movabs al,ds:0xc00000000040ed18
-  47389b:	00 c0 
-  47389d:	18 ed                	sbb    ch,ch
-  47389f:	40 00 00             	rex add BYTE PTR [rax],al
-  4738a2:	00 00                	add    BYTE PTR [rax],al
-  4738a4:	e0 18                	loopne 4738be <_IO_stdin_used+0x48be>
-  4738a6:	ed                   	in     eax,dx
-  4738a7:	40 00 00             	rex add BYTE PTR [rax],al
-  4738aa:	00 00                	add    BYTE PTR [rax],al
-  4738ac:	00 19                	add    BYTE PTR [rcx],bl
-  4738ae:	ed                   	in     eax,dx
-  4738af:	40 00 00             	rex add BYTE PTR [rax],al
-  4738b2:	00 00                	add    BYTE PTR [rax],al
-  4738b4:	20 19                	and    BYTE PTR [rcx],bl
-  4738b6:	ed                   	in     eax,dx
-  4738b7:	40 00 00             	rex add BYTE PTR [rax],al
-  4738ba:	00 00                	add    BYTE PTR [rax],al
-  4738bc:	40 19 ed             	rex sbb ebp,ebp
-  4738bf:	40 00 00             	rex add BYTE PTR [rax],al
-  4738c2:	00 00                	add    BYTE PTR [rax],al
-  4738c4:	60                   	(bad)  
-  4738c5:	19 ed                	sbb    ebp,ebp
-  4738c7:	40 00 00             	rex add BYTE PTR [rax],al
-  4738ca:	00 00                	add    BYTE PTR [rax],al
-  4738cc:	80 19 ed             	sbb    BYTE PTR [rcx],0xed
-  4738cf:	40 00 00             	rex add BYTE PTR [rax],al
-  4738d2:	00 00                	add    BYTE PTR [rax],al
-  4738d4:	a0 19 ed 40 00 00 00 	movabs al,ds:0xc00000000040ed19
-  4738db:	00 c0 
-  4738dd:	19 ed                	sbb    ebp,ebp
-  4738df:	40 00 00             	rex add BYTE PTR [rax],al
-  4738e2:	00 00                	add    BYTE PTR [rax],al
-  4738e4:	e0 19                	loopne 4738ff <_IO_stdin_used+0x48ff>
-  4738e6:	ed                   	in     eax,dx
-  4738e7:	40 00 00             	rex add BYTE PTR [rax],al
-  4738ea:	00 00                	add    BYTE PTR [rax],al
-  4738ec:	00 1a                	add    BYTE PTR [rdx],bl
-  4738ee:	ed                   	in     eax,dx
-  4738ef:	40 00 00             	rex add BYTE PTR [rax],al
-  4738f2:	00 00                	add    BYTE PTR [rax],al
-  4738f4:	20 1a                	and    BYTE PTR [rdx],bl
-  4738f6:	ed                   	in     eax,dx
-  4738f7:	40 00 00             	rex add BYTE PTR [rax],al
-  4738fa:	00 00                	add    BYTE PTR [rax],al
-  4738fc:	40 1a ed             	sbb    bpl,bpl
-  4738ff:	40 00 00             	rex add BYTE PTR [rax],al
-  473902:	00 00                	add    BYTE PTR [rax],al
-  473904:	60                   	(bad)  
-  473905:	1a ed                	sbb    ch,ch
-  473907:	40 00 00             	rex add BYTE PTR [rax],al
-  47390a:	00 00                	add    BYTE PTR [rax],al
-  47390c:	80 1a ed             	sbb    BYTE PTR [rdx],0xed
-  47390f:	40 00 00             	rex add BYTE PTR [rax],al
-  473912:	00 00                	add    BYTE PTR [rax],al
-  473914:	a0 1a ed 40 00 00 00 	movabs al,ds:0xc00000000040ed1a
-  47391b:	00 c0 
-  47391d:	1a ed                	sbb    ch,ch
-  47391f:	40 00 00             	rex add BYTE PTR [rax],al
-  473922:	00 00                	add    BYTE PTR [rax],al
-  473924:	e0 1a                	loopne 473940 <_IO_stdin_used+0x4940>
-  473926:	ed                   	in     eax,dx
-  473927:	40 00 00             	rex add BYTE PTR [rax],al
-  47392a:	00 00                	add    BYTE PTR [rax],al
-  47392c:	00 1b                	add    BYTE PTR [rbx],bl
-  47392e:	ed                   	in     eax,dx
-  47392f:	40 00 00             	rex add BYTE PTR [rax],al
-  473932:	00 00                	add    BYTE PTR [rax],al
-  473934:	20 1b                	and    BYTE PTR [rbx],bl
-  473936:	ed                   	in     eax,dx
-  473937:	40 00 00             	rex add BYTE PTR [rax],al
-  47393a:	00 00                	add    BYTE PTR [rax],al
-  47393c:	40 1b ed             	rex sbb ebp,ebp
-  47393f:	40 00 00             	rex add BYTE PTR [rax],al
-  473942:	00 00                	add    BYTE PTR [rax],al
-  473944:	60                   	(bad)  
-  473945:	1b ed                	sbb    ebp,ebp
-  473947:	40 00 00             	rex add BYTE PTR [rax],al
-  47394a:	00 00                	add    BYTE PTR [rax],al
-  47394c:	80 1b ed             	sbb    BYTE PTR [rbx],0xed
-  47394f:	40 00 00             	rex add BYTE PTR [rax],al
-  473952:	00 00                	add    BYTE PTR [rax],al
-  473954:	a0 1b ed 40 00 00 00 	movabs al,ds:0xc00000000040ed1b
-  47395b:	00 c0 
-  47395d:	1b ed                	sbb    ebp,ebp
-  47395f:	40 00 00             	rex add BYTE PTR [rax],al
-  473962:	00 00                	add    BYTE PTR [rax],al
-  473964:	e0 1b                	loopne 473981 <_IO_stdin_used+0x4981>
-  473966:	ed                   	in     eax,dx
-  473967:	40 00 00             	rex add BYTE PTR [rax],al
-  47396a:	00 00                	add    BYTE PTR [rax],al
-  47396c:	00 1c ed 40 00 00 00 	add    BYTE PTR [rbp*8+0x40],bl
-  473973:	00 20                	add    BYTE PTR [rax],ah
-  473975:	1c ed                	sbb    al,0xed
-  473977:	40 00 00             	rex add BYTE PTR [rax],al
-  47397a:	00 00                	add    BYTE PTR [rax],al
-  47397c:	40 1c ed             	rex sbb al,0xed
-  47397f:	40 00 00             	rex add BYTE PTR [rax],al
-  473982:	00 00                	add    BYTE PTR [rax],al
-  473984:	60                   	(bad)  
-  473985:	1c ed                	sbb    al,0xed
-  473987:	40 00 00             	rex add BYTE PTR [rax],al
-  47398a:	00 00                	add    BYTE PTR [rax],al
-  47398c:	80 3a e8             	cmp    BYTE PTR [rdx],0xe8
-  47398f:	40 00 00             	rex add BYTE PTR [rax],al
-  473992:	00 00                	add    BYTE PTR [rax],al
-  473994:	a0 3b e8 40 00 00 00 	movabs al,ds:0xa00000000040e83b
-  47399b:	00 a0 
-  47399d:	25 e8 40 00 00       	and    eax,0x40e8
-  4739a2:	00 00                	add    BYTE PTR [rax],al
-  4739a4:	c0 25 e8 40 00 00 00 	shl    BYTE PTR [rip+0x40e8],0x0        # 477a93 <__FRAME_END__+0x100f>
-  4739ab:	00 e0                	add    al,ah
-  4739ad:	25 e8 40 00 00       	and    eax,0x40e8
-  4739b2:	00 00                	add    BYTE PTR [rax],al
-  4739b4:	00 26                	add    BYTE PTR [rsi],ah
-  4739b6:	e8 40 00 00 00       	call   4739fb <_IO_stdin_used+0x49fb>
-  4739bb:	00 20                	add    BYTE PTR [rax],ah
-  4739bd:	26 e8 40 00 00 00    	es call 473a03 <_IO_stdin_used+0x4a03>
-  4739c3:	00 e0                	add    al,ah
-  4739c5:	3c e8                	cmp    al,0xe8
-  4739c7:	40 00 00             	rex add BYTE PTR [rax],al
-  4739ca:	00 00                	add    BYTE PTR [rax],al
-  4739cc:	00 3d e8 40 00 00    	add    BYTE PTR [rip+0x40e8],bh        # 477aba <__FRAME_END__+0x1036>
-  4739d2:	00 00                	add    BYTE PTR [rax],al
-  4739d4:	20 3d e8 40 00 00    	and    BYTE PTR [rip+0x40e8],bh        # 477ac2 <__FRAME_END__+0x103e>
-  4739da:	00 00                	add    BYTE PTR [rax],al
-  4739dc:	00 e0                	add    al,ah
-  4739de:	7f 40                	jg     473a20 <_IO_stdin_used+0x4a20>
-  4739e0:	00 00                	add    BYTE PTR [rax],al
-  4739e2:	00 00                	add    BYTE PTR [rax],al
-  4739e4:	00 00                	add    BYTE PTR [rax],al
-  4739e6:	0c 40                	or     al,0x40
-  4739e8:	00 00                	add    BYTE PTR [rax],al
-  4739ea:	00 00                	add    BYTE PTR [rax],al
-  4739ec:	80 1f e8             	sbb    BYTE PTR [rdi],0xe8
-  4739ef:	40 00 00             	rex add BYTE PTR [rax],al
-  4739f2:	00 00                	add    BYTE PTR [rax],al
-  4739f4:	00 80 38 40 00 00    	add    BYTE PTR [rax+0x4038],al
-  4739fa:	00 00                	add    BYTE PTR [rax],al
-  4739fc:	00 1c 90             	add    BYTE PTR [rax+rdx*4],bl
-  4739ff:	40 00 00             	rex add BYTE PTR [rax],al
-  473a02:	00 00                	add    BYTE PTR [rax],al
-  473a04:	40 00 ea             	add    dl,bpl
-  473a07:	40 00 00             	rex add BYTE PTR [rax],al
-  473a0a:	00 00                	add    BYTE PTR [rax],al
-  473a0c:	80 00 ea             	add    BYTE PTR [rax],0xea
-  473a0f:	40 00 00             	rex add BYTE PTR [rax],al
-  473a12:	00 00                	add    BYTE PTR [rax],al
-  473a14:	c0 00 ea             	rol    BYTE PTR [rax],0xea
-  473a17:	40 00 00             	rex add BYTE PTR [rax],al
-  473a1a:	00 00                	add    BYTE PTR [rax],al
-  473a1c:	00 01                	add    BYTE PTR [rcx],al
-  473a1e:	ea                   	(bad)  
-  473a1f:	40 00 00             	rex add BYTE PTR [rax],al
-  473a22:	00 00                	add    BYTE PTR [rax],al
-  473a24:	40 01 ea             	rex add edx,ebp
-  473a27:	40 00 00             	rex add BYTE PTR [rax],al
-  473a2a:	00 00                	add    BYTE PTR [rax],al
-  473a2c:	80 01 ea             	add    BYTE PTR [rcx],0xea
-  473a2f:	40 00 00             	rex add BYTE PTR [rax],al
-  473a32:	00 00                	add    BYTE PTR [rax],al
-  473a34:	c0 01 ea             	rol    BYTE PTR [rcx],0xea
-  473a37:	40 18 2d 44 54 fb 21 	sbb    BYTE PTR [rip+0x21fb5444],bpl        # 22428e82 <_end+0x21f6d56a>
-  473a3e:	09 40 00             	or     DWORD PTR [rax+0x0],eax
-  473a41:	00 00                	add    BYTE PTR [rax],al
-  473a43:	00 00                	add    BYTE PTR [rax],al
-  473a45:	00 f0                	add    al,dh
-  473a47:	7f 00                	jg     473a49 <_IO_stdin_used+0x4a49>
-  473a49:	00 00                	add    BYTE PTR [rax],al
-  473a4b:	00 00                	add    BYTE PTR [rax],al
-  473a4d:	00 50 40             	add    BYTE PTR [rax+0x40],dl
-  473a50:	00 00                	add    BYTE PTR [rax],al
-  473a52:	00 00                	add    BYTE PTR [rax],al
-  473a54:	00 40 50             	add    BYTE PTR [rax+0x50],al
-  473a57:	40 00 00             	rex add BYTE PTR [rax],al
-  473a5a:	00 00                	add    BYTE PTR [rax],al
-  473a5c:	00 00                	add    BYTE PTR [rax],al
-  473a5e:	51                   	push   rcx
-  473a5f:	40 00 00             	rex add BYTE PTR [rax],al
-  473a62:	00 00                	add    BYTE PTR [rax],al
-  473a64:	00 80 51 40 00 00    	add    BYTE PTR [rax+0x4051],al
-  473a6a:	00 00                	add    BYTE PTR [rax],al
-  473a6c:	00 c0                	add    al,al
-  473a6e:	51                   	push   rcx
-  473a6f:	40 00 00             	rex add BYTE PTR [rax],al
-  473a72:	00 00                	add    BYTE PTR [rax],al
-  473a74:	00 40 52             	add    BYTE PTR [rax+0x52],al
-  473a77:	40 00 00             	rex add BYTE PTR [rax],al
-  473a7a:	00 00                	add    BYTE PTR [rax],al
-  473a7c:	00 80 52 40 00 00    	add    BYTE PTR [rax+0x4052],al
-  473a82:	00 00                	add    BYTE PTR [rax],al
-  473a84:	00 c0                	add    al,al
-  473a86:	52                   	push   rdx
-  473a87:	40 00 00             	rex add BYTE PTR [rax],al
-  473a8a:	00 00                	add    BYTE PTR [rax],al
-  473a8c:	00 40 53             	add    BYTE PTR [rax+0x53],al
-  473a8f:	40 00 00             	rex add BYTE PTR [rax],al
-  473a92:	00 00                	add    BYTE PTR [rax],al
-  473a94:	00 80 53 40 00 00    	add    BYTE PTR [rax+0x4053],al
-  473a9a:	00 00                	add    BYTE PTR [rax],al
-  473a9c:	00 c0                	add    al,al
-  473a9e:	53                   	push   rbx
-  473a9f:	40 00 00             	rex add BYTE PTR [rax],al
-  473aa2:	00 00                	add    BYTE PTR [rax],al
-  473aa4:	00 40 54             	add    BYTE PTR [rax+0x54],al
-  473aa7:	40 00 00             	rex add BYTE PTR [rax],al
-  473aaa:	00 00                	add    BYTE PTR [rax],al
-  473aac:	00 c0                	add    al,al
-  473aae:	54                   	push   rsp
-  473aaf:	40 00 00             	rex add BYTE PTR [rax],al
-  473ab2:	00 00                	add    BYTE PTR [rax],al
-  473ab4:	00 00                	add    BYTE PTR [rax],al
-  473ab6:	55                   	push   rbp
-  473ab7:	40 00 00             	rex add BYTE PTR [rax],al
-  473aba:	00 00                	add    BYTE PTR [rax],al
-  473abc:	00 40 55             	add    BYTE PTR [rax+0x55],al
-  473abf:	40 00 00             	rex add BYTE PTR [rax],al
-  473ac2:	00 00                	add    BYTE PTR [rax],al
-  473ac4:	00 80 55 40 00 00    	add    BYTE PTR [rax+0x4055],al
-  473aca:	00 00                	add    BYTE PTR [rax],al
-  473acc:	00 c0                	add    al,al
-  473ace:	55                   	push   rbp
-  473acf:	40 00 00             	rex add BYTE PTR [rax],al
-  473ad2:	00 00                	add    BYTE PTR [rax],al
-  473ad4:	00 00                	add    BYTE PTR [rax],al
-  473ad6:	56                   	push   rsi
-  473ad7:	40 00 00             	rex add BYTE PTR [rax],al
-  473ada:	00 00                	add    BYTE PTR [rax],al
-  473adc:	00 80 56 40 00 00    	add    BYTE PTR [rax+0x4056],al
-  473ae2:	00 00                	add    BYTE PTR [rax],al
-  473ae4:	00 c0                	add    al,al
-  473ae6:	56                   	push   rsi
-  473ae7:	40 00 00             	rex add BYTE PTR [rax],al
-  473aea:	00 00                	add    BYTE PTR [rax],al
-  473aec:	00 00                	add    BYTE PTR [rax],al
-  473aee:	57                   	push   rdi
-  473aef:	40 00 00             	rex add BYTE PTR [rax],al
-  473af2:	00 00                	add    BYTE PTR [rax],al
-  473af4:	00 40 57             	add    BYTE PTR [rax+0x57],al
-  473af7:	40 00 00             	rex add BYTE PTR [rax],al
-  473afa:	00 00                	add    BYTE PTR [rax],al
-  473afc:	00 80 57 40 00 00    	add    BYTE PTR [rax+0x4057],al
-  473b02:	00 00                	add    BYTE PTR [rax],al
-  473b04:	00 c0                	add    al,al
-  473b06:	57                   	push   rdi
-  473b07:	40 00 00             	rex add BYTE PTR [rax],al
-  473b0a:	00 00                	add    BYTE PTR [rax],al
-  473b0c:	00 00                	add    BYTE PTR [rax],al
-  473b0e:	58                   	pop    rax
-  473b0f:	40 00 00             	rex add BYTE PTR [rax],al
-  473b12:	00 00                	add    BYTE PTR [rax],al
-  473b14:	00 40 58             	add    BYTE PTR [rax+0x58],al
-  473b17:	40 00 00             	rex add BYTE PTR [rax],al
-  473b1a:	00 00                	add    BYTE PTR [rax],al
-  473b1c:	00 80 58 40 00 00    	add    BYTE PTR [rax+0x4058],al
-  473b22:	00 00                	add    BYTE PTR [rax],al
-  473b24:	00 c0                	add    al,al
-  473b26:	58                   	pop    rax
-  473b27:	40 00 00             	rex add BYTE PTR [rax],al
-  473b2a:	00 00                	add    BYTE PTR [rax],al
-  473b2c:	00 40 59             	add    BYTE PTR [rax+0x59],al
-  473b2f:	40 00 00             	rex add BYTE PTR [rax],al
-  473b32:	00 00                	add    BYTE PTR [rax],al
-  473b34:	00 c0                	add    al,al
-  473b36:	59                   	pop    rcx
-  473b37:	40 00 00             	rex add BYTE PTR [rax],al
-  473b3a:	00 00                	add    BYTE PTR [rax],al
-  473b3c:	00 00                	add    BYTE PTR [rax],al
-  473b3e:	5a                   	pop    rdx
-  473b3f:	40 00 00             	rex add BYTE PTR [rax],al
-  473b42:	00 00                	add    BYTE PTR [rax],al
-  473b44:	00 80 5a 40 00 00    	add    BYTE PTR [rax+0x405a],al
-  473b4a:	00 00                	add    BYTE PTR [rax],al
-  473b4c:	00 c0                	add    al,al
-  473b4e:	5a                   	pop    rdx
-  473b4f:	40 00 00             	rex add BYTE PTR [rax],al
-  473b52:	00 00                	add    BYTE PTR [rax],al
-  473b54:	00 40 5b             	add    BYTE PTR [rax+0x5b],al
-  473b57:	40 00 00             	rex add BYTE PTR [rax],al
-  473b5a:	00 00                	add    BYTE PTR [rax],al
-  473b5c:	00 80 5b 40 00 00    	add    BYTE PTR [rax+0x405b],al
-  473b62:	00 00                	add    BYTE PTR [rax],al
-  473b64:	00 c0                	add    al,al
-  473b66:	5b                   	pop    rbx
-  473b67:	40 00 00             	rex add BYTE PTR [rax],al
-  473b6a:	00 00                	add    BYTE PTR [rax],al
-  473b6c:	00 40 5c             	add    BYTE PTR [rax+0x5c],al
-  473b6f:	40 00 00             	rex add BYTE PTR [rax],al
-  473b72:	00 00                	add    BYTE PTR [rax],al
-  473b74:	00 80 5c 40 00 00    	add    BYTE PTR [rax+0x405c],al
-  473b7a:	00 00                	add    BYTE PTR [rax],al
-  473b7c:	00 c0                	add    al,al
-  473b7e:	5c                   	pop    rsp
-  473b7f:	40 00 00             	rex add BYTE PTR [rax],al
-  473b82:	00 00                	add    BYTE PTR [rax],al
-  473b84:	00 00                	add    BYTE PTR [rax],al
-  473b86:	5d                   	pop    rbp
-  473b87:	40 00 00             	rex add BYTE PTR [rax],al
-  473b8a:	00 00                	add    BYTE PTR [rax],al
-  473b8c:	00 40 5d             	add    BYTE PTR [rax+0x5d],al
-  473b8f:	40 00 00             	rex add BYTE PTR [rax],al
-  473b92:	00 00                	add    BYTE PTR [rax],al
-  473b94:	40 20 e8             	and    al,bpl
-  473b97:	40 00 00             	rex add BYTE PTR [rax],al
-  473b9a:	00 00                	add    BYTE PTR [rax],al
-  473b9c:	02 00                	add    al,BYTE PTR [rax]
-  473b9e:	24 41                	and    al,0x41
-  473ba0:	00 00                	add    BYTE PTR [rax],al
-  473ba2:	00 00                	add    BYTE PTR [rax],al
-  473ba4:	04 00                	add    al,0x0
-  473ba6:	24 41                	and    al,0x41
-  473ba8:	00 00                	add    BYTE PTR [rax],al
-  473baa:	00 00                	add    BYTE PTR [rax],al
-  473bac:	00 00                	add    BYTE PTR [rax],al
-  473bae:	28 41 00             	sub    BYTE PTR [rcx+0x0],al
-  473bb1:	00 00                	add    BYTE PTR [rax],al
-  473bb3:	00 e0                	add    al,ah
-  473bb5:	ff 28                	jmp    FWORD PTR [rax]
-  473bb7:	41 00 00             	add    BYTE PTR [r8],al
-  473bba:	00 00                	add    BYTE PTR [rax],al
-  473bbc:	c0 ff ef             	sar    bh,0xef
-  473bbf:	40 00 00             	rex add BYTE PTR [rax],al
-  473bc2:	00 00                	add    BYTE PTR [rax],al
-  473bc4:	00 c0                	add    al,al
-  473bc6:	68 40 00 e0 86       	push   0xffffffff86e00040
-  473bcb:	44 00 e0             	add    al,r12b
-  473bce:	ef                   	out    dx,eax
-  473bcf:	44 00 00             	add    BYTE PTR [rax],r8b
-  473bd2:	f8                   	clc    
-  473bd3:	41 00 00             	add    BYTE PTR [r8],al
-  473bd6:	c0 41 00 00          	rol    BYTE PTR [rcx+0x0],0x0
-  473bda:	f0 44 00 00          	lock add BYTE PTR [rax],r8b
-  473bde:	87 44 00 00          	xchg   DWORD PTR [rax+rax*1+0x0],eax
-  473be2:	80 3f 00             	cmp    BYTE PTR [rdi],0x0
-  473be5:	00 80 bf dc 0f c9    	add    BYTE PTR [rax-0x36f02341],al
-  473beb:	40 00 00             	rex add BYTE PTR [rax],al
-	...
-  473bf6:	9e                   	sahf   
-  473bf7:	40 00 00             	rex add BYTE PTR [rax],al
-  473bfa:	00 00                	add    BYTE PTR [rax],al
-  473bfc:	00 e0                	add    al,ah
-  473bfe:	90                   	nop
-  473bff:	40 00 00             	rex add BYTE PTR [rax],al
-  473c02:	00 00                	add    BYTE PTR [rax],al
-  473c04:	00 10                	add    BYTE PTR [rax],dl
-  473c06:	89 40 00             	mov    DWORD PTR [rax+0x0],eax
-	...
-  473c1d:	60                   	(bad)  
-  473c1e:	78 40                	js     473c60 <_IO_stdin_used+0x4c60>
-  473c20:	00 00                	add    BYTE PTR [rax],al
-  473c22:	00 00                	add    BYTE PTR [rax],al
-  473c24:	00 10                	add    BYTE PTR [rax],dl
-  473c26:	89 40 00             	mov    DWORD PTR [rax+0x0],eax
-  473c29:	00 00                	add    BYTE PTR [rax],al
-  473c2b:	00 00                	add    BYTE PTR [rax],al
-  473c2d:	60                   	(bad)  
-  473c2e:	78 40                	js     473c70 <_IO_stdin_used+0x4c70>
-  473c30:	00 00                	add    BYTE PTR [rax],al
-  473c32:	00 00                	add    BYTE PTR [rax],al
-  473c34:	00 00                	add    BYTE PTR [rax],al
-  473c36:	00 80 00 00 00 00    	add    BYTE PTR [rax+0x0],al
-	...
-  473c44:	00 00                	add    BYTE PTR [rax],al
-  473c46:	e0 3f                	loopne 473c87 <_IO_stdin_used+0x4c87>
-  473c48:	00 00                	add    BYTE PTR [rax],al
-  473c4a:	00 00                	add    BYTE PTR [rax],al
-  473c4c:	00 00                	add    BYTE PTR [rax],al
-  473c4e:	e0 3f                	loopne 473c8f <_IO_stdin_used+0x4c8f>
-  473c50:	00 00                	add    BYTE PTR [rax],al
-  473c52:	00 00                	add    BYTE PTR [rax],al
-  473c54:	00 00                	add    BYTE PTR [rax],al
-  473c56:	14 40                	adc    al,0x40
-  473c58:	00 00                	add    BYTE PTR [rax],al
-  473c5a:	00 00                	add    BYTE PTR [rax],al
-  473c5c:	00 00                	add    BYTE PTR [rax],al
-  473c5e:	10 40 00             	adc    BYTE PTR [rax+0x0],al
-  473c61:	00 00                	add    BYTE PTR [rax],al
-  473c63:	00 00                	add    BYTE PTR [rax],al
-  473c65:	00 00                	add    BYTE PTR [rax],al
-  473c67:	40 00 00             	rex add BYTE PTR [rax],al
-  473c6a:	00 00                	add    BYTE PTR [rax],al
-  473c6c:	00 00                	add    BYTE PTR [rax],al
-  473c6e:	00 40 00             	add    BYTE PTR [rax+0x0],al
-  473c71:	00 00                	add    BYTE PTR [rax],al
-  473c73:	00 00                	add    BYTE PTR [rax],al
-  473c75:	00 00                	add    BYTE PTR [rax],al
-  473c77:	c0 00 00             	rol    BYTE PTR [rax],0x0
-  473c7a:	00 00                	add    BYTE PTR [rax],al
-  473c7c:	00 00                	add    BYTE PTR [rax],al
-  473c7e:	00 c0                	add    al,al
-  473c80:	00 00                	add    BYTE PTR [rax],al
-  473c82:	00 00                	add    BYTE PTR [rax],al
-  473c84:	00 20                	add    BYTE PTR [rax],ah
-  473c86:	65 40 00 00          	rex add BYTE PTR gs:[rax],al
-  473c8a:	00 00                	add    BYTE PTR [rax],al
-  473c8c:	00 e0                	add    al,ah
-  473c8e:	67 40 00 00          	rex add BYTE PTR [eax],al
-  473c92:	00 00                	add    BYTE PTR [rax],al
-  473c94:	00 00                	add    BYTE PTR [rax],al
-  473c96:	64 40 00 00          	rex add BYTE PTR fs:[rax],al
-  473c9a:	00 00                	add    BYTE PTR [rax],al
-  473c9c:	00 e0                	add    al,ah
-  473c9e:	67 40 00 00          	rex add BYTE PTR [eax],al
-  473ca2:	00 00                	add    BYTE PTR [rax],al
-  473ca4:	00 00                	add    BYTE PTR [rax],al
-  473ca6:	40                   	rex
-  473ca7:	40 00 00             	rex add BYTE PTR [rax],al
-  473caa:	00 00                	add    BYTE PTR [rax],al
-  473cac:	00 00                	add    BYTE PTR [rax],al
-  473cae:	44                   	rex.R
-  473caf:	40 00 00             	rex add BYTE PTR [rax],al
-  473cb2:	00 00                	add    BYTE PTR [rax],al
-  473cb4:	00 40 67             	add    BYTE PTR [rax+0x67],al
-  473cb7:	40 00 00             	rex add BYTE PTR [rax],al
-  473cba:	00 00                	add    BYTE PTR [rax],al
-  473cbc:	00 a0 64 40 00 00    	add    BYTE PTR [rax+0x4064],ah
-  473cc2:	00 00                	add    BYTE PTR [rax],al
-  473cc4:	00 00                	add    BYTE PTR [rax],al
-  473cc6:	5c                   	pop    rsp
-  473cc7:	40 00 00             	rex add BYTE PTR [rax],al
-  473cca:	00 00                	add    BYTE PTR [rax],al
-  473ccc:	00 40 5a             	add    BYTE PTR [rax+0x5a],al
-  473ccf:	40 00 00             	rex add BYTE PTR [rax],al
-  473cd2:	00 00                	add    BYTE PTR [rax],al
-  473cd4:	00 00                	add    BYTE PTR [rax],al
-  473cd6:	54                   	push   rsp
-  473cd7:	40 00 00             	rex add BYTE PTR [rax],al
-  473cda:	00 00                	add    BYTE PTR [rax],al
-  473cdc:	00 00                	add    BYTE PTR [rax],al
-  473cde:	62                   	(bad)  
-  473cdf:	40 00 00             	rex add BYTE PTR [rax],al
-  473ce2:	00 00                	add    BYTE PTR [rax],al
-  473ce4:	00 00                	add    BYTE PTR [rax],al
-  473ce6:	08 40 00             	or     BYTE PTR [rax+0x0],al
-  473ce9:	00 00                	add    BYTE PTR [rax],al
-  473ceb:	00 00                	add    BYTE PTR [rax],al
-  473ced:	00 40 40             	add    BYTE PTR [rax+0x40],al
-  473cf0:	00 00                	add    BYTE PTR [rax],al
-  473cf2:	00 00                	add    BYTE PTR [rax],al
-  473cf4:	00 80 41 40 00 00    	add    BYTE PTR [rax+0x4041],al
-  473cfa:	00 00                	add    BYTE PTR [rax],al
-  473cfc:	00 80 67 40 00 00    	add    BYTE PTR [rax+0x4067],al
-  473d02:	00 00                	add    BYTE PTR [rax],al
-  473d04:	00 00                	add    BYTE PTR [rax],al
-  473d06:	53                   	push   rbx
-  473d07:	40 00 00             	rex add BYTE PTR [rax],al
-	...
-  473d16:	5b                   	pop    rbx
-  473d17:	40 00 00             	rex add BYTE PTR [rax],al
-  473d1a:	00 00                	add    BYTE PTR [rax],al
-  473d1c:	00 00                	add    BYTE PTR [rax],al
-  473d1e:	3c 40                	cmp    al,0x40
-  473d20:	00 00                	add    BYTE PTR [rax],al
-  473d22:	00 00                	add    BYTE PTR [rax],al
-  473d24:	00 00                	add    BYTE PTR [rax],al
-  473d26:	08 40 00             	or     BYTE PTR [rax+0x0],al
-  473d29:	00 00                	add    BYTE PTR [rax],al
-  473d2b:	00 00                	add    BYTE PTR [rax],al
-  473d2d:	00 5b 40             	add    BYTE PTR [rbx+0x40],bl
-  473d30:	00 00                	add    BYTE PTR [rax],al
-  473d32:	00 00                	add    BYTE PTR [rax],al
-  473d34:	00 00                	add    BYTE PTR [rax],al
-  473d36:	3e 40 00 00          	ds rex add BYTE PTR [rax],al
-  473d3a:	00 00                	add    BYTE PTR [rax],al
-  473d3c:	00 00                	add    BYTE PTR [rax],al
-  473d3e:	08 40 00             	or     BYTE PTR [rax+0x0],al
-  473d41:	00 00                	add    BYTE PTR [rax],al
-  473d43:	00 00                	add    BYTE PTR [rax],al
-  473d45:	00 5b 40             	add    BYTE PTR [rbx+0x40],bl
-  473d48:	00 00                	add    BYTE PTR [rax],al
-  473d4a:	00 00                	add    BYTE PTR [rax],al
-  473d4c:	00 00                	add    BYTE PTR [rax],al
-  473d4e:	40                   	rex
-  473d4f:	40 00 00             	rex add BYTE PTR [rax],al
-  473d52:	00 00                	add    BYTE PTR [rax],al
-  473d54:	00 00                	add    BYTE PTR [rax],al
-  473d56:	41                   	rex.B
-  473d57:	40 00 00             	rex add BYTE PTR [rax],al
-  473d5a:	00 00                	add    BYTE PTR [rax],al
-  473d5c:	00 00                	add    BYTE PTR [rax],al
-  473d5e:	08 40 00             	or     BYTE PTR [rax+0x0],al
-  473d61:	00 00                	add    BYTE PTR [rax],al
-  473d63:	00 00                	add    BYTE PTR [rax],al
-  473d65:	00 5b 40             	add    BYTE PTR [rbx+0x40],bl
-  473d68:	00 00                	add    BYTE PTR [rax],al
-  473d6a:	00 00                	add    BYTE PTR [rax],al
-  473d6c:	00 00                	add    BYTE PTR [rax],al
-  473d6e:	42                   	rex.X
-  473d6f:	40 00 00             	rex add BYTE PTR [rax],al
-  473d72:	00 00                	add    BYTE PTR [rax],al
-  473d74:	00 00                	add    BYTE PTR [rax],al
-  473d76:	43                   	rex.XB
-  473d77:	40 00 00             	rex add BYTE PTR [rax],al
-  473d7a:	00 00                	add    BYTE PTR [rax],al
-  473d7c:	00 00                	add    BYTE PTR [rax],al
-  473d7e:	08 40 00             	or     BYTE PTR [rax+0x0],al
-  473d81:	00 00                	add    BYTE PTR [rax],al
-  473d83:	00 00                	add    BYTE PTR [rax],al
-  473d85:	00 53 40             	add    BYTE PTR [rbx+0x40],dl
-  473d88:	00 00                	add    BYTE PTR [rax],al
-  473d8a:	00 00                	add    BYTE PTR [rax],al
-  473d8c:	00 c0                	add    al,al
-  473d8e:	63 40 00             	movsxd eax,DWORD PTR [rax+0x0]
-  473d91:	00 00                	add    BYTE PTR [rax],al
-  473d93:	00 00                	add    BYTE PTR [rax],al
-  473d95:	80 6e 40 00          	sub    BYTE PTR [rsi+0x40],0x0
-  473d99:	00 00                	add    BYTE PTR [rax],al
-  473d9b:	00 00                	add    BYTE PTR [rax],al
-  473d9d:	00 53 40             	add    BYTE PTR [rbx+0x40],dl
-  473da0:	00 00                	add    BYTE PTR [rax],al
-  473da2:	00 00                	add    BYTE PTR [rax],al
-  473da4:	00 a0 6b 40 00 00    	add    BYTE PTR [rax+0x406b],ah
-  473daa:	00 00                	add    BYTE PTR [rax],al
-  473dac:	00 a0 6e 40 00 00    	add    BYTE PTR [rax+0x406e],ah
-  473db2:	00 00                	add    BYTE PTR [rax],al
-  473db4:	00 00                	add    BYTE PTR [rax],al
-  473db6:	53                   	push   rbx
-  473db7:	40 00 00             	rex add BYTE PTR [rax],al
-  473dba:	00 00                	add    BYTE PTR [rax],al
-  473dbc:	00 80 6c 40 00 00    	add    BYTE PTR [rax+0x406c],al
-  473dc2:	00 00                	add    BYTE PTR [rax],al
-  473dc4:	00 c0                	add    al,al
-  473dc6:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  473dc7:	40 00 00             	rex add BYTE PTR [rax],al
-  473dca:	00 00                	add    BYTE PTR [rax],al
-  473dcc:	00 80 65 40 00 00    	add    BYTE PTR [rax+0x4065],al
-  473dd2:	00 00                	add    BYTE PTR [rax],al
-  473dd4:	00 a0 6b 40 00 00    	add    BYTE PTR [rax+0x406b],ah
-  473dda:	00 00                	add    BYTE PTR [rax],al
-  473ddc:	00 c0                	add    al,al
-  473dde:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  473ddf:	40 00 00             	rex add BYTE PTR [rax],al
-  473de2:	00 00                	add    BYTE PTR [rax],al
-  473de4:	00 00                	add    BYTE PTR [rax],al
-  473de6:	5b                   	pop    rbx
-  473de7:	40 00 00             	rex add BYTE PTR [rax],al
-  473dea:	00 00                	add    BYTE PTR [rax],al
-  473dec:	00 00                	add    BYTE PTR [rax],al
-  473dee:	44                   	rex.R
-  473def:	40 00 00             	rex add BYTE PTR [rax],al
-  473df2:	00 00                	add    BYTE PTR [rax],al
-  473df4:	00 00                	add    BYTE PTR [rax],al
-  473df6:	45                   	rex.RB
-  473df7:	40 00 00             	rex add BYTE PTR [rax],al
-  473dfa:	00 00                	add    BYTE PTR [rax],al
-  473dfc:	00 00                	add    BYTE PTR [rax],al
-  473dfe:	08 40 00             	or     BYTE PTR [rax+0x0],al
-  473e01:	00 00                	add    BYTE PTR [rax],al
-  473e03:	00 00                	add    BYTE PTR [rax],al
-  473e05:	00 5b 40             	add    BYTE PTR [rbx+0x40],bl
-  473e08:	00 00                	add    BYTE PTR [rax],al
-  473e0a:	00 00                	add    BYTE PTR [rax],al
-  473e0c:	00 00                	add    BYTE PTR [rax],al
-  473e0e:	46                   	rex.RX
-  473e0f:	40 00 00             	rex add BYTE PTR [rax],al
-  473e12:	00 00                	add    BYTE PTR [rax],al
-  473e14:	00 00                	add    BYTE PTR [rax],al
-  473e16:	08 40 00             	or     BYTE PTR [rax+0x0],al
-  473e19:	00 00                	add    BYTE PTR [rax],al
-  473e1b:	00 00                	add    BYTE PTR [rax],al
-  473e1d:	00 53 40             	add    BYTE PTR [rbx+0x40],dl
-  473e20:	00 00                	add    BYTE PTR [rax],al
-  473e22:	00 00                	add    BYTE PTR [rax],al
-  473e24:	00 60 63             	add    BYTE PTR [rax+0x63],ah
-  473e27:	40 00 00             	rex add BYTE PTR [rax],al
-  473e2a:	00 00                	add    BYTE PTR [rax],al
-  473e2c:	00 c0                	add    al,al
-  473e2e:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  473e2f:	40 00 00             	rex add BYTE PTR [rax],al
-  473e32:	00 00                	add    BYTE PTR [rax],al
-  473e34:	00 00                	add    BYTE PTR [rax],al
-  473e36:	53                   	push   rbx
-  473e37:	40 00 00             	rex add BYTE PTR [rax],al
-  473e3a:	00 00                	add    BYTE PTR [rax],al
-  473e3c:	00 00                	add    BYTE PTR [rax],al
-  473e3e:	14 40                	adc    al,0x40
-  473e40:	00 00                	add    BYTE PTR [rax],al
-  473e42:	00 00                	add    BYTE PTR [rax],al
-  473e44:	00 a0 6c 40 00 00    	add    BYTE PTR [rax+0x406c],ah
-  473e4a:	00 00                	add    BYTE PTR [rax],al
-  473e4c:	00 00                	add    BYTE PTR [rax],al
-  473e4e:	53                   	push   rbx
-  473e4f:	40 00 00             	rex add BYTE PTR [rax],al
-  473e52:	00 00                	add    BYTE PTR [rax],al
-  473e54:	00 00                	add    BYTE PTR [rax],al
-  473e56:	24 40                	and    al,0x40
-  473e58:	00 00                	add    BYTE PTR [rax],al
-  473e5a:	00 00                	add    BYTE PTR [rax],al
-  473e5c:	00 a0 6c 40 00 00    	add    BYTE PTR [rax+0x406c],ah
-  473e62:	00 00                	add    BYTE PTR [rax],al
-  473e64:	00 a0 6c 40 00 00    	add    BYTE PTR [rax+0x406c],ah
-  473e6a:	00 00                	add    BYTE PTR [rax],al
-  473e6c:	00 80 54 40 00 00    	add    BYTE PTR [rax+0x4054],al
-  473e72:	00 00                	add    BYTE PTR [rax],al
-  473e74:	00 80 54 40 00 00    	add    BYTE PTR [rax+0x4054],al
-  473e7a:	00 00                	add    BYTE PTR [rax],al
-  473e7c:	00 80 50 40 00 00    	add    BYTE PTR [rax+0x4050],al
-  473e82:	00 00                	add    BYTE PTR [rax],al
-  473e84:	00 40 56             	add    BYTE PTR [rax+0x56],al
-  473e87:	40 00 00             	rex add BYTE PTR [rax],al
-  473e8a:	00 00                	add    BYTE PTR [rax],al
-  473e8c:	00 c0                	add    al,al
-  473e8e:	50                   	push   rax
-  473e8f:	40 00 00             	rex add BYTE PTR [rax],al
-  473e92:	00 00                	add    BYTE PTR [rax],al
-  473e94:	00 c0                	add    al,al
-  473e96:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  473e97:	40 00 00             	rex add BYTE PTR [rax],al
-  473e9a:	00 00                	add    BYTE PTR [rax],al
-  473e9c:	00 40 6c             	add    BYTE PTR [rax+0x6c],al
-  473e9f:	40 00 00             	rex add BYTE PTR [rax],al
-  473ea2:	00 00                	add    BYTE PTR [rax],al
-  473ea4:	00 80 6f 40 00 00    	add    BYTE PTR [rax+0x406f],al
-  473eaa:	00 00                	add    BYTE PTR [rax],al
-  473eac:	00 00                	add    BYTE PTR [rax],al
-  473eae:	52                   	push   rdx
-  473eaf:	40 38 01             	rex cmp BYTE PTR [rcx],al
-  473eb2:	00 00                	add    BYTE PTR [rax],al
-  473eb4:	00 00                	add    BYTE PTR [rax],al
-  473eb6:	00 00                	add    BYTE PTR [rax],al
-  473eb8:	18 00                	sbb    BYTE PTR [rax],al
-  473eba:	00 00                	add    BYTE PTR [rax],al
-  473ebc:	00 00                	add    BYTE PTR [rax],al
-  473ebe:	00 00                	add    BYTE PTR [rax],al
-  473ec0:	01 00                	add    DWORD PTR [rax],eax
-  473ec2:	00 00                	add    BYTE PTR [rax],al
-  473ec4:	00 00                	add    BYTE PTR [rax],al
-  473ec6:	00 00                	add    BYTE PTR [rax],al
-  473ec8:	31 00                	xor    DWORD PTR [rax],eax
-  473eca:	00 00                	add    BYTE PTR [rax],al
-  473ecc:	00 00                	add    BYTE PTR [rax],al
-  473ece:	00 00                	add    BYTE PTR [rax],al
-  473ed0:	0d 00 00 00 00       	or     eax,0x0
-	...
-  473edd:	00 00                	add    BYTE PTR [rax],al
-  473edf:	00 25 73 00 00 00    	add    BYTE PTR [rip+0x73],ah        # 473f58 <_IO_stdin_used+0x4f58>
-	...
-  473eed:	00 e0                	add    al,ah
-  473eef:	3f                   	(bad)  
-  473ef0:	18 2d 44 54 fb 21    	sbb    BYTE PTR [rip+0x21fb5444],ch        # 2242933a <_end+0x21f6da22>
-  473ef6:	19 40 00             	sbb    DWORD PTR [rax+0x0],eax
-  473ef9:	00 00                	add    BYTE PTR [rax],al
-  473efb:	00 00                	add    BYTE PTR [rax],al
-  473efd:	00 f8                	add    al,bh
-  473eff:	3f                   	(bad)  
-  473f00:	00 00                	add    BYTE PTR [rax],al
-  473f02:	00 3f                	add    BYTE PTR [rdi],bh
-	...
-  473f10:	00 00                	add    BYTE PTR [rax],al
-  473f12:	00 80 00 00 00 00    	add    BYTE PTR [rax+0x0],al
-	...
-  473f20:	90                   	nop
-  473f21:	0a fe                	or     bh,dh
-  473f23:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f26:	fe                   	(bad)  
-  473f27:	ff 60 0a             	jmp    QWORD PTR [rax+0xa]
-  473f2a:	fe                   	(bad)  
-  473f2b:	ff 08                	dec    DWORD PTR [rax]
-  473f2d:	0a fe                	or     bh,dh
-  473f2f:	ff e0                	jmp    rax
-  473f31:	09 fe                	or     esi,edi
-  473f33:	ff 10                	call   QWORD PTR [rax]
-  473f35:	0b fe                	or     edi,esi
-  473f37:	ff d0                	call   rax
-  473f39:	0a fe                	or     bh,dh
-  473f3b:	ff f0                	push   rax
-  473f3d:	0a fe                	or     bh,dh
-  473f3f:	ff                   	(bad)  
-  473f40:	b8 09 fe ff 50       	mov    eax,0x50fffe09
-  473f45:	0c fe                	or     al,0xfe
-  473f47:	ff 88 09 fe ff 50    	dec    DWORD PTR [rax+0x50fffe09]
-  473f4d:	09 fe                	or     esi,edi
-  473f4f:	ff 28                	jmp    FWORD PTR [rax]
-  473f51:	09 fe                	or     esi,edi
-  473f53:	ff 08                	dec    DWORD PTR [rax]
-  473f55:	09 fe                	or     esi,edi
-  473f57:	ff                   	(bad)  
-  473f58:	e8 08 fe ff 50       	call   51473d65 <_end+0x50fb844d>
-  473f5d:	0c fe                	or     al,0xfe
-  473f5f:	ff a0 08 fe ff 50    	jmp    QWORD PTR [rax+0x50fffe08]
-  473f65:	0c fe                	or     al,0xfe
-  473f67:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f6a:	fe                   	(bad)  
-  473f6b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f6e:	fe                   	(bad)  
-  473f6f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f72:	fe                   	(bad)  
-  473f73:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f76:	fe                   	(bad)  
-  473f77:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f7a:	fe                   	(bad)  
-  473f7b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f7e:	fe                   	(bad)  
-  473f7f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f82:	fe                   	(bad)  
-  473f83:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f86:	fe                   	(bad)  
-  473f87:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f8a:	fe                   	(bad)  
-  473f8b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f8e:	fe                   	(bad)  
-  473f8f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f92:	fe                   	(bad)  
-  473f93:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f96:	fe                   	(bad)  
-  473f97:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f9a:	fe                   	(bad)  
-  473f9b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473f9e:	fe                   	(bad)  
-  473f9f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fa2:	fe                   	(bad)  
-  473fa3:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fa6:	fe                   	(bad)  
-  473fa7:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473faa:	fe                   	(bad)  
-  473fab:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fae:	fe                   	(bad)  
-  473faf:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fb2:	fe                   	(bad)  
-  473fb3:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fb6:	fe                   	(bad)  
-  473fb7:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fba:	fe                   	(bad)  
-  473fbb:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fbe:	fe                   	(bad)  
-  473fbf:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fc2:	fe                   	(bad)  
-  473fc3:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fc6:	fe                   	(bad)  
-  473fc7:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fca:	fe                   	(bad)  
-  473fcb:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fce:	fe                   	(bad)  
-  473fcf:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fd2:	fe                   	(bad)  
-  473fd3:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fd6:	fe                   	(bad)  
-  473fd7:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fda:	fe                   	(bad)  
-  473fdb:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fde:	fe                   	(bad)  
-  473fdf:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fe2:	fe                   	(bad)  
-  473fe3:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fe6:	fe                   	(bad)  
-  473fe7:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fea:	fe                   	(bad)  
-  473feb:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473fee:	fe                   	(bad)  
-  473fef:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473ff2:	fe                   	(bad)  
-  473ff3:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473ff6:	fe                   	(bad)  
-  473ff7:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473ffa:	fe                   	(bad)  
-  473ffb:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  473ffe:	fe                   	(bad)  
-  473fff:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474002:	fe                   	(bad)  
-  474003:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474006:	fe                   	(bad)  
-  474007:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47400a:	fe                   	(bad)  
-  47400b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47400e:	fe                   	(bad)  
-  47400f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474012:	fe                   	(bad)  
-  474013:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474016:	fe                   	(bad)  
-  474017:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47401a:	fe                   	(bad)  
-  47401b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47401e:	fe                   	(bad)  
-  47401f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474022:	fe                   	(bad)  
-  474023:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474026:	fe                   	(bad)  
-  474027:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47402a:	fe                   	(bad)  
-  47402b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47402e:	fe                   	(bad)  
-  47402f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474032:	fe                   	(bad)  
-  474033:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474036:	fe                   	(bad)  
-  474037:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47403a:	fe                   	(bad)  
-  47403b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47403e:	fe                   	(bad)  
-  47403f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474042:	fe                   	(bad)  
-  474043:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474046:	fe                   	(bad)  
-  474047:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47404a:	fe                   	(bad)  
-  47404b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47404e:	fe                   	(bad)  
-  47404f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474052:	fe                   	(bad)  
-  474053:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474056:	fe                   	(bad)  
-  474057:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47405a:	fe                   	(bad)  
-  47405b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47405e:	fe                   	(bad)  
-  47405f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474062:	fe                   	(bad)  
-  474063:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474066:	fe                   	(bad)  
-  474067:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47406a:	fe                   	(bad)  
-  47406b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47406e:	fe                   	(bad)  
-  47406f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474072:	fe                   	(bad)  
-  474073:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474076:	fe                   	(bad)  
-  474077:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47407a:	fe                   	(bad)  
-  47407b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47407e:	fe                   	(bad)  
-  47407f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474082:	fe                   	(bad)  
-  474083:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474086:	fe                   	(bad)  
-  474087:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47408a:	fe                   	(bad)  
-  47408b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47408e:	fe                   	(bad)  
-  47408f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474092:	fe                   	(bad)  
-  474093:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474096:	fe                   	(bad)  
-  474097:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47409a:	fe                   	(bad)  
-  47409b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47409e:	fe                   	(bad)  
-  47409f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4740a2:	fe                   	(bad)  
-  4740a3:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4740a6:	fe                   	(bad)  
-  4740a7:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4740aa:	fe                   	(bad)  
-  4740ab:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4740ae:	fe                   	(bad)  
-  4740af:	ff 70 08             	push   QWORD PTR [rax+0x8]
-  4740b2:	fe                   	(bad)  
-  4740b3:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4740b6:	fe                   	(bad)  
-  4740b7:	ff 28                	jmp    FWORD PTR [rax]
-  4740b9:	08 fe                	or     dh,bh
-  4740bb:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4740be:	fe                   	(bad)  
-  4740bf:	ff a0 0b fe ff 90    	jmp    QWORD PTR [rax-0x6f0001f5]
-  4740c5:	0b fe                	or     edi,esi
-  4740c7:	ff 80 0b fe ff 70    	inc    DWORD PTR [rax+0x70fffe0b]
-  4740cd:	0b fe                	or     edi,esi
-  4740cf:	ff 60 0b             	jmp    QWORD PTR [rax+0xb]
-  4740d2:	fe                   	(bad)  
-  4740d3:	ff 50 0b             	call   QWORD PTR [rax+0xb]
-  4740d6:	fe                   	(bad)  
-  4740d7:	ff 40 0b             	inc    DWORD PTR [rax+0xb]
-  4740da:	fe                   	(bad)  
-  4740db:	ff 30                	push   QWORD PTR [rax]
-  4740dd:	0b fe                	or     edi,esi
-  4740df:	ff 30                	push   QWORD PTR [rax]
-  4740e1:	0c fe                	or     al,0xfe
-  4740e3:	ff 20                	jmp    QWORD PTR [rax]
-  4740e5:	0c fe                	or     al,0xfe
-  4740e7:	ff 40 0c             	inc    DWORD PTR [rax+0xc]
-  4740ea:	fe                   	(bad)  
-  4740eb:	ff e0                	jmp    rax
-  4740ed:	0b fe                	or     edi,esi
-  4740ef:	ff 00                	inc    DWORD PTR [rax]
-  4740f1:	0c fe                	or     al,0xfe
-  4740f3:	ff f0                	push   rax
-  4740f5:	0b fe                	or     edi,esi
-  4740f7:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4740fa:	fe                   	(bad)  
-  4740fb:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4740fe:	fe                   	(bad)  
-  4740ff:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474102:	fe                   	(bad)  
-  474103:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474106:	fe                   	(bad)  
-  474107:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47410a:	fe                   	(bad)  
-  47410b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47410e:	fe                   	(bad)  
-  47410f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474112:	fe                   	(bad)  
-  474113:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474116:	fe                   	(bad)  
-  474117:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47411a:	fe                   	(bad)  
-  47411b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47411e:	fe                   	(bad)  
-  47411f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474122:	fe                   	(bad)  
-  474123:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474126:	fe                   	(bad)  
-  474127:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47412a:	fe                   	(bad)  
-  47412b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47412e:	fe                   	(bad)  
-  47412f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474132:	fe                   	(bad)  
-  474133:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474136:	fe                   	(bad)  
-  474137:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47413a:	fe                   	(bad)  
-  47413b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47413e:	fe                   	(bad)  
-  47413f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474142:	fe                   	(bad)  
-  474143:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474146:	fe                   	(bad)  
-  474147:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47414a:	fe                   	(bad)  
-  47414b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47414e:	fe                   	(bad)  
-  47414f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474152:	fe                   	(bad)  
-  474153:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474156:	fe                   	(bad)  
-  474157:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47415a:	fe                   	(bad)  
-  47415b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47415e:	fe                   	(bad)  
-  47415f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474162:	fe                   	(bad)  
-  474163:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474166:	fe                   	(bad)  
-  474167:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47416a:	fe                   	(bad)  
-  47416b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47416e:	fe                   	(bad)  
-  47416f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474172:	fe                   	(bad)  
-  474173:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474176:	fe                   	(bad)  
-  474177:	ff 10                	call   QWORD PTR [rax]
-  474179:	0c fe                	or     al,0xfe
-  47417b:	ff 18                	call   FWORD PTR [rax]
-  47417d:	08 fe                	or     dh,bh
-  47417f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474182:	fe                   	(bad)  
-  474183:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474186:	fe                   	(bad)  
-  474187:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47418a:	fe                   	(bad)  
-  47418b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47418e:	fe                   	(bad)  
-  47418f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474192:	fe                   	(bad)  
-  474193:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474196:	fe                   	(bad)  
-  474197:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47419a:	fe                   	(bad)  
-  47419b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47419e:	fe                   	(bad)  
-  47419f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741a2:	fe                   	(bad)  
-  4741a3:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741a6:	fe                   	(bad)  
-  4741a7:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741aa:	fe                   	(bad)  
-  4741ab:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741ae:	fe                   	(bad)  
-  4741af:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741b2:	fe                   	(bad)  
-  4741b3:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741b6:	fe                   	(bad)  
-  4741b7:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741ba:	fe                   	(bad)  
-  4741bb:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741be:	fe                   	(bad)  
-  4741bf:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741c2:	fe                   	(bad)  
-  4741c3:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741c6:	fe                   	(bad)  
-  4741c7:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741ca:	fe                   	(bad)  
-  4741cb:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741ce:	fe                   	(bad)  
-  4741cf:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741d2:	fe                   	(bad)  
-  4741d3:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741d6:	fe                   	(bad)  
-  4741d7:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741da:	fe                   	(bad)  
-  4741db:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741de:	fe                   	(bad)  
-  4741df:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741e2:	fe                   	(bad)  
-  4741e3:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741e6:	fe                   	(bad)  
-  4741e7:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741ea:	fe                   	(bad)  
-  4741eb:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741ee:	fe                   	(bad)  
-  4741ef:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741f2:	fe                   	(bad)  
-  4741f3:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741f6:	fe                   	(bad)  
-  4741f7:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741fa:	fe                   	(bad)  
-  4741fb:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  4741fe:	fe                   	(bad)  
-  4741ff:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474202:	fe                   	(bad)  
-  474203:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474206:	fe                   	(bad)  
-  474207:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47420a:	fe                   	(bad)  
-  47420b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47420e:	fe                   	(bad)  
-  47420f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474212:	fe                   	(bad)  
-  474213:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474216:	fe                   	(bad)  
-  474217:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47421a:	fe                   	(bad)  
-  47421b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47421e:	fe                   	(bad)  
-  47421f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474222:	fe                   	(bad)  
-  474223:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474226:	fe                   	(bad)  
-  474227:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47422a:	fe                   	(bad)  
-  47422b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47422e:	fe                   	(bad)  
-  47422f:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474232:	fe                   	(bad)  
-  474233:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  474236:	fe                   	(bad)  
-  474237:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47423a:	fe                   	(bad)  
-  47423b:	ff 50 0c             	call   QWORD PTR [rax+0xc]
-  47423e:	fe                   	(bad)  
-  47423f:	ff d0                	call   rax
-  474241:	07                   	(bad)  
-  474242:	fe                   	(bad)  
-  474243:	ff 67 6c             	jmp    QWORD PTR [rdi+0x6c]
-  474246:	45 6e                	rex.RB outs dx,BYTE PTR ds:[rsi]
-  474248:	61                   	(bad)  
-  474249:	62                   	(bad)  
-  47424a:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47424b:	65 00 67 6c          	add    BYTE PTR gs:[rdi+0x6c],ah
-  47424f:	44 69 73 61 62 6c 65 	imul   r14d,DWORD PTR [rbx+0x61],0x656c62
-  474256:	00 
-  474257:	67 6c                	ins    BYTE PTR es:[edi],dx
-  474259:	45 6e                	rex.RB outs dx,BYTE PTR ds:[rsi]
-  47425b:	61                   	(bad)  
-  47425c:	62                   	(bad)  
-  47425d:	6c                   	ins    BYTE PTR es:[rdi],dx
-  47425e:	65 43 6c             	gs rex.XB ins BYTE PTR es:[rdi],dx
-  474261:	69 65 6e 74 53 74 61 	imul   esp,DWORD PTR [rbp+0x6e],0x61745374
-  474268:	74 65                	je     4742cf <_IO_stdin_used+0x52cf>
-  47426a:	00 67 6c             	add    BYTE PTR [rdi+0x6c],ah
-  47426d:	44 69 73 61 62 6c 65 	imul   r14d,DWORD PTR [rbx+0x61],0x43656c62
-  474274:	43 
-  474275:	6c                   	ins    BYTE PTR es:[rdi],dx
-  474276:	69 65 6e 74 53 74 61 	imul   esp,DWORD PTR [rbp+0x6e],0x61745374
-  47427d:	74 65                	je     4742e4 <_IO_stdin_used+0x52e4>
-  47427f:	00 67 6c             	add    BYTE PTR [rdi+0x6c],ah
-  474282:	47                   	rex.RXB
-  474283:	65 74 53             	gs je  4742d9 <_IO_stdin_used+0x52d9>
-  474286:	74 72                	je     4742fa <_IO_stdin_used+0x52fa>
-  474288:	69 6e 67 00 67 6c 56 	imul   ebp,DWORD PTR [rsi+0x67],0x566c6700
-  47428f:	69 65 77 70 6f 72 74 	imul   esp,DWORD PTR [rbp+0x77],0x74726f70
-  474296:	00 67 6c             	add    BYTE PTR [rdi+0x6c],ah
-  474299:	4d 61                	rex.WRB (bad) 
-  47429b:	74 72                	je     47430f <_IO_stdin_used+0x530f>
-  47429d:	69 78 4d 6f 64 65 00 	imul   edi,DWORD PTR [rax+0x4d],0x65646f
-  4742a4:	67 6c                	ins    BYTE PTR es:[edi],dx
-  4742a6:	4c 6f                	rex.WR outs dx,DWORD PTR ds:[rsi]
-  4742a8:	61                   	(bad)  
-  4742a9:	64 49                	fs rex.WB
-  4742ab:	64 65 6e             	fs outs dx,BYTE PTR gs:[rsi]
-  4742ae:	74 69                	je     474319 <_IO_stdin_used+0x5319>
-  4742b0:	74 79                	je     47432b <_IO_stdin_used+0x532b>
-  4742b2:	00 67 6c             	add    BYTE PTR [rdi+0x6c],ah
-  4742b5:	4f 72 74             	rex.WRXB jb 47432c <_IO_stdin_used+0x532c>
-  4742b8:	68 6f 00 67 6c       	push   0x6c67006f
-  4742bd:	53                   	push   rbx
-  4742be:	68 61 64 65 4d       	push   0x4d656461
-  4742c3:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4742c4:	64 65 6c             	fs gs ins BYTE PTR es:[rdi],dx
-  4742c7:	00 67 6c             	add    BYTE PTR [rdi+0x6c],ah
-  4742ca:	44                   	rex.R
-  4742cb:	65 70 74             	gs jo  474342 <_IO_stdin_used+0x5342>
-  4742ce:	68 4d 61 73 6b       	push   0x6b73614d
-  4742d3:	00 67 6c             	add    BYTE PTR [rdi+0x6c],ah
-  4742d6:	43 6c                	rex.XB ins BYTE PTR es:[rdi],dx
-  4742d8:	65 61                	gs (bad) 
-  4742da:	72 43                	jb     47431f <_IO_stdin_used+0x531f>
-  4742dc:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4742dd:	6c                   	ins    BYTE PTR es:[rdi],dx
-  4742de:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4742df:	72 00                	jb     4742e1 <_IO_stdin_used+0x52e1>
-  4742e1:	67 6c                	ins    BYTE PTR es:[edi],dx
-  4742e3:	43 6c                	rex.XB ins BYTE PTR es:[rdi],dx
-  4742e5:	65 61                	gs (bad) 
-  4742e7:	72 00                	jb     4742e9 <_IO_stdin_used+0x52e9>
-  4742e9:	67 6c                	ins    BYTE PTR es:[edi],dx
-  4742eb:	47                   	rex.RXB
-  4742ec:	65 6e                	outs   dx,BYTE PTR gs:[rsi]
-  4742ee:	54                   	push   rsp
-  4742ef:	65 78 74             	gs js  474366 <_IO_stdin_used+0x5366>
-  4742f2:	75 72                	jne    474366 <_IO_stdin_used+0x5366>
-  4742f4:	65 73 00             	gs jae 4742f7 <_IO_stdin_used+0x52f7>
-  4742f7:	67 6c                	ins    BYTE PTR es:[edi],dx
-  4742f9:	44                   	rex.R
-  4742fa:	65 6c                	gs ins BYTE PTR es:[rdi],dx
-  4742fc:	65 74 65             	gs je  474364 <_IO_stdin_used+0x5364>
-  4742ff:	54                   	push   rsp
-  474300:	65 78 74             	gs js  474377 <_IO_stdin_used+0x5377>
-  474303:	75 72                	jne    474377 <_IO_stdin_used+0x5377>
-  474305:	65 73 00             	gs jae 474308 <_IO_stdin_used+0x5308>
-  474308:	67 6c                	ins    BYTE PTR es:[edi],dx
-  47430a:	42 69 6e 64 54 65 78 	rex.X imul ebp,DWORD PTR [rsi+0x64],0x74786554
-  474311:	74 
-  474312:	75 72                	jne    474386 <_IO_stdin_used+0x5386>
-  474314:	65 00 67 6c          	add    BYTE PTR gs:[rdi+0x6c],ah
-  474318:	54                   	push   rsp
-  474319:	65 78 50             	gs js  47436c <_IO_stdin_used+0x536c>
-  47431c:	61                   	(bad)  
-  47431d:	72 61                	jb     474380 <_IO_stdin_used+0x5380>
-  47431f:	6d                   	ins    DWORD PTR es:[rdi],dx
-  474320:	65 74 65             	gs je  474388 <_IO_stdin_used+0x5388>
-  474323:	72 69                	jb     47438e <_IO_stdin_used+0x538e>
-  474325:	00 67 6c             	add    BYTE PTR [rdi+0x6c],ah
-  474328:	54                   	push   rsp
-  474329:	65 78 49             	gs js  474375 <_IO_stdin_used+0x5375>
-  47432c:	6d                   	ins    DWORD PTR es:[rdi],dx
-  47432d:	61                   	(bad)  
-  47432e:	67 65 32 44 00 67    	xor    al,BYTE PTR gs:[eax+eax*1+0x67]
-  474334:	6c                   	ins    BYTE PTR es:[rdi],dx
-  474335:	54                   	push   rsp
-  474336:	65 78 53             	gs js  47438c <_IO_stdin_used+0x538c>
-  474339:	75 62                	jne    47439d <_IO_stdin_used+0x539d>
-  47433b:	49 6d                	rex.WB ins DWORD PTR es:[rdi],dx
-  47433d:	61                   	(bad)  
-  47433e:	67 65 32 44 00 67    	xor    al,BYTE PTR gs:[eax+eax*1+0x67]
-  474344:	6c                   	ins    BYTE PTR es:[rdi],dx
-  474345:	56                   	push   rsi
-  474346:	65 72 74             	gs jb  4743bd <_IO_stdin_used+0x53bd>
-  474349:	65 78 50             	gs js  47439c <_IO_stdin_used+0x539c>
-  47434c:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47434d:	69 6e 74 65 72 00 67 	imul   ebp,DWORD PTR [rsi+0x74],0x67007265
-  474354:	6c                   	ins    BYTE PTR es:[rdi],dx
-  474355:	54                   	push   rsp
-  474356:	65 78 43             	gs js  47439c <_IO_stdin_used+0x539c>
-  474359:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47435a:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47435b:	72 64                	jb     4743c1 <_IO_stdin_used+0x53c1>
-  47435d:	50                   	push   rax
-  47435e:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47435f:	69 6e 74 65 72 00 67 	imul   ebp,DWORD PTR [rsi+0x74],0x67007265
-  474366:	6c                   	ins    BYTE PTR es:[rdi],dx
-  474367:	44 72 61             	rex.R jb 4743cb <_IO_stdin_used+0x53cb>
-  47436a:	77 41                	ja     4743ad <_IO_stdin_used+0x53ad>
-  47436c:	72 72                	jb     4743e0 <_IO_stdin_used+0x53e0>
-  47436e:	61                   	(bad)  
-  47436f:	79 73                	jns    4743e4 <_IO_stdin_used+0x53e4>
-  474371:	00 67 6c             	add    BYTE PTR [rdi+0x6c],ah
-  474374:	50                   	push   rax
-  474375:	75 73                	jne    4743ea <_IO_stdin_used+0x53ea>
-  474377:	68 4d 61 74 72       	push   0x7274614d
-  47437c:	69 78 00 67 6c 50 6f 	imul   edi,DWORD PTR [rax+0x0],0x6f506c67
-  474383:	70 4d                	jo     4743d2 <_IO_stdin_used+0x53d2>
-  474385:	61                   	(bad)  
-  474386:	74 72                	je     4743fa <_IO_stdin_used+0x53fa>
-  474388:	69 78 00 67 6c 50 75 	imul   edi,DWORD PTR [rax+0x0],0x75506c67
-  47438f:	73 68                	jae    4743f9 <_IO_stdin_used+0x53f9>
-  474391:	41 74 74             	rex.B je 474408 <_IO_stdin_used+0x5408>
-  474394:	72 69                	jb     4743ff <_IO_stdin_used+0x53ff>
-  474396:	62                   	(bad)  
-  474397:	00 67 6c             	add    BYTE PTR [rdi+0x6c],ah
-  47439a:	50                   	push   rax
-  47439b:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  47439c:	70 41                	jo     4743df <_IO_stdin_used+0x53df>
-  47439e:	74 74                	je     474414 <_IO_stdin_used+0x5414>
-  4743a0:	72 69                	jb     47440b <_IO_stdin_used+0x540b>
-  4743a2:	62                   	(bad)  
-  4743a3:	00 67 6c             	add    BYTE PTR [rdi+0x6c],ah
-  4743a6:	50                   	push   rax
-  4743a7:	75 73                	jne    47441c <_IO_stdin_used+0x541c>
-  4743a9:	68 43 6c 69 65       	push   0x65696c43
-  4743ae:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4743af:	74 41                	je     4743f2 <_IO_stdin_used+0x53f2>
-  4743b1:	74 74                	je     474427 <_IO_stdin_used+0x5427>
-  4743b3:	72 69                	jb     47441e <_IO_stdin_used+0x541e>
-  4743b5:	62                   	(bad)  
-  4743b6:	00 67 6c             	add    BYTE PTR [rdi+0x6c],ah
-  4743b9:	50                   	push   rax
-  4743ba:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  4743bb:	70 43                	jo     474400 <_IO_stdin_used+0x5400>
-  4743bd:	6c                   	ins    BYTE PTR es:[rdi],dx
-  4743be:	69 65 6e 74 41 74 74 	imul   esp,DWORD PTR [rbp+0x6e],0x74744174
-  4743c5:	72 69                	jb     474430 <_IO_stdin_used+0x5430>
-  4743c7:	62                   	(bad)  
-  4743c8:	00 67 6c             	add    BYTE PTR [rdi+0x6c],ah
-  4743cb:	50                   	push   rax
-  4743cc:	69 78 65 6c 53 74 6f 	imul   edi,DWORD PTR [rax+0x65],0x6f74536c
-  4743d3:	72 65                	jb     47443a <_IO_stdin_used+0x543a>
-  4743d5:	69 00 67 6c 50 69    	imul   eax,DWORD PTR [rax],0x69506c67
-  4743db:	78 65                	js     474442 <_IO_stdin_used+0x5442>
-  4743dd:	6c                   	ins    BYTE PTR es:[rdi],dx
-  4743de:	54                   	push   rsp
-  4743df:	72 61                	jb     474442 <_IO_stdin_used+0x5442>
-  4743e1:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  4743e2:	73 66                	jae    47444a <_IO_stdin_used+0x544a>
-  4743e4:	65 72 69             	gs jb  474450 <_IO_stdin_used+0x5450>
-  4743e7:	00 67 6c             	add    BYTE PTR [rdi+0x6c],ah
-  4743ea:	50                   	push   rax
-  4743eb:	69 78 65 6c 4d 61 70 	imul   edi,DWORD PTR [rax+0x65],0x70614d6c
-  4743f2:	66 76 00             	data16 jbe 4743f5 <_IO_stdin_used+0x53f5>
-  4743f5:	47                   	rex.RXB
-  4743f6:	4c 5f                	rex.WR pop rdi
-  4743f8:	45 58                	rex.RB pop r8
-  4743fa:	54                   	push   rsp
-  4743fb:	5f                   	pop    rdi
-  4743fc:	62                   	(bad)  
-  4743fd:	67 72 61             	addr32 jb 474461 <ega_association+0x1>
-  474400:	00 00                	add    BYTE PTR [rax],al
-  474402:	00 00                	add    BYTE PTR [rax],al
-  474404:	00 00                	add    BYTE PTR [rax],al
-  474406:	80 3b 00             	cmp    BYTE PTR [rbx],0x0
-  474409:	00 00                	add    BYTE PTR [rax],al
-  47440b:	00 00                	add    BYTE PTR [rax],al
-  47440d:	00 f0                	add    al,dh
-  47440f:	bf 00 00 00 00       	mov    edi,0x0
-	...
-  474420:	78 44                	js     474466 <ega_association+0x6>
-  474422:	fe                   	(bad)  
-  474423:	ff 40 44             	inc    DWORD PTR [rax+0x44]
-  474426:	fe                   	(bad)  
-  474427:	ff 30                	push   QWORD PTR [rax]
-  474429:	44 fe                	rex.R (bad) 
-  47442b:	ff                   	(bad)  
-  47442c:	78 44                	js     474472 <ega_association+0x12>
-  47442e:	fe                   	(bad)  
-  47442f:	ff                   	(bad)  
-  474430:	78 44                	js     474476 <ega_association+0x16>
-  474432:	fe                   	(bad)  
-  474433:	ff                   	(bad)  
-  474434:	78 44                	js     47447a <ega_association+0x1a>
-  474436:	fe                   	(bad)  
-  474437:	ff                   	(bad)  
-  474438:	78 44                	js     47447e <ega_association+0x1e>
-  47443a:	fe                   	(bad)  
-  47443b:	ff 48 43             	dec    DWORD PTR [rax+0x43]
-  47443e:	fe                   	(bad)  
-  47443f:	ff 48 43             	dec    DWORD PTR [rax+0x43]
-  474442:	fe                   	(bad)  
-  474443:	ff 68 44             	jmp    FWORD PTR [rax+0x44]
-  474446:	fe                   	(bad)  
-  474447:	ff 00                	inc    DWORD PTR [rax]
-	...
-
-0000000000474460 <ega_association>:
-  474460:	00 01                	add    BYTE PTR [rcx],al
-  474462:	02 03                	add    al,BYTE PTR [rbx]
-  474464:	04 05                	add    al,0x5
-  474466:	06                   	(bad)  
-  474467:	07                   	(bad)  
-  474468:	08 09                	or     BYTE PTR [rcx],cl
-  47446a:	0a 0b                	or     cl,BYTE PTR [rbx]
-  47446c:	0c 0d                	or     al,0xd
-  47446e:	0e                   	(bad)  
-  47446f:	0f 00 01             	sldt   WORD PTR [rcx]
-  474472:	02 03                	add    al,BYTE PTR [rbx]
-  474474:	04 05                	add    al,0x5
-  474476:	14 07                	adc    al,0x7
-  474478:	38 39                	cmp    BYTE PTR [rcx],bh
-  47447a:	3a 3b                	cmp    bh,BYTE PTR [rbx]
-  47447c:	3c 3d                	cmp    al,0x3d
-  47447e:	3e 3f                	ds (bad) 
-
-0000000000474480 <cga_association>:
-  474480:	00 0b                	add    BYTE PTR [rbx],cl
-  474482:	0d 0f 00 0a 0c       	or     eax,0xc0a000f
-  474487:	0e                   	(bad)  
-  474488:	00 03                	add    BYTE PTR [rbx],al
-  47448a:	05 07 00 02 04       	add    eax,0x4020007
-  47448f:	06                   	(bad)  
-  474490:	00 0f                	add    BYTE PTR [rdi],cl
-  474492:	00 00                	add    BYTE PTR [rax],al
-  474494:	46                   	rex.RX
-  474495:	42                   	rex.X
-  474496:	47                   	rex.RXB
-  474497:	46 58                	rex.RX pop rax
-  474499:	00 00                	add    BYTE PTR [rax],al
-  47449b:	00 00                	add    BYTE PTR [rax],al
-  47449d:	00 00                	add    BYTE PTR [rax],al
-	...
-
-00000000004744a0 <mode_info>:
-  4744a0:	00 00                	add    BYTE PTR [rax],al
-  4744a2:	00 00                	add    BYTE PTR [rax],al
-  4744a4:	00 00                	add    BYTE PTR [rax],al
-  4744a6:	01 ff                	add    edi,edi
-  4744a8:	ff 00                	inc    DWORD PTR [rax]
-  4744aa:	00 00                	add    BYTE PTR [rax],al
-  4744ac:	40 01 c8             	rex add eax,ecx
-  4744af:	00 02                	add    BYTE PTR [rdx],al
-  4744b1:	01 08                	add    DWORD PTR [rax],ecx
-  4744b3:	01 00                	add    DWORD PTR [rax],eax
-  4744b5:	28 19                	sub    BYTE PTR [rcx],bl
-  4744b7:	00 80 02 c8 00 01    	add    BYTE PTR [rax+0x100c802],al
-  4744bd:	02 01                	add    al,BYTE PTR [rcx]
-  4744bf:	01 00                	add    DWORD PTR [rax],eax
-  4744c1:	50                   	push   rax
-  4744c2:	19 00                	sbb    DWORD PTR [rax],eax
-  4744c4:	00 00                	add    BYTE PTR [rax],al
-  4744c6:	00 00                	add    BYTE PTR [rax],al
-  4744c8:	00 00                	add    BYTE PTR [rax],al
-  4744ca:	01 ff                	add    edi,edi
-  4744cc:	ff 00                	inc    DWORD PTR [rax]
-	...
-  4744d6:	01 ff                	add    edi,edi
-  4744d8:	ff 00                	inc    DWORD PTR [rax]
-	...
-  4744e2:	01 ff                	add    edi,edi
-  4744e4:	ff 00                	inc    DWORD PTR [rax]
-	...
-  4744ee:	01 ff                	add    edi,edi
-  4744f0:	ff 00                	inc    DWORD PTR [rax]
-  4744f2:	00 00                	add    BYTE PTR [rax],al
-  4744f4:	40 01 c8             	rex add eax,ecx
-  4744f7:	00 04 01             	add    BYTE PTR [rcx+rax*1],al
-  4744fa:	08 01                	or     BYTE PTR [rcx],al
-  4744fc:	00 28                	add    BYTE PTR [rax],ch
-  4744fe:	19 00                	sbb    DWORD PTR [rax],eax
-  474500:	80 02 c8             	add    BYTE PTR [rdx],0xc8
-  474503:	00 04 02             	add    BYTE PTR [rdx+rax*1],al
-  474506:	04 01                	add    al,0x1
-  474508:	00 50 19             	add    BYTE PTR [rax+0x19],dl
-  47450b:	00 80 02 5e 01 04    	add    BYTE PTR [rax+0x4015e02],al
-  474511:	01 02                	add    DWORD PTR [rdx],eax
-  474513:	02 01                	add    al,BYTE PTR [rcx]
-  474515:	50                   	push   rax
-  474516:	19 00                	sbb    DWORD PTR [rax],eax
-  474518:	80 02 5e             	add    BYTE PTR [rdx],0x5e
-  47451b:	01 01                	add    DWORD PTR [rcx],eax
-  47451d:	01 02                	add    DWORD PTR [rdx],eax
-  47451f:	00 01                	add    BYTE PTR [rcx],al
-  474521:	50                   	push   rax
-  474522:	19 00                	sbb    DWORD PTR [rax],eax
-  474524:	80 02 e0             	add    BYTE PTR [rdx],0xe0
-  474527:	01 01                	add    DWORD PTR [rcx],eax
-  474529:	01 01                	add    DWORD PTR [rcx],eax
-  47452b:	00 02                	add    BYTE PTR [rdx],al
-  47452d:	50                   	push   rax
-  47452e:	1e                   	(bad)  
-  47452f:	00 80 02 e0 01 04    	add    BYTE PTR [rax+0x401e002],al
-  474535:	01 01                	add    DWORD PTR [rcx],eax
-  474537:	03 02                	add    eax,DWORD PTR [rdx]
-  474539:	50                   	push   rax
-  47453a:	1e                   	(bad)  
-  47453b:	00 40 01             	add    BYTE PTR [rax+0x1],al
-  47453e:	c8 00 08 01          	enter  0x800,0x1
-  474542:	01 03                	add    DWORD PTR [rbx],eax
-  474544:	00 28                	add    BYTE PTR [rax],ch
-  474546:	19 00                	sbb    DWORD PTR [rax],eax
-  474548:	40 01 f0             	rex add eax,esi
-  47454b:	00 08                	add    BYTE PTR [rax],cl
-  47454d:	01 01                	add    DWORD PTR [rcx],eax
-  47454f:	03 00                	add    eax,DWORD PTR [rax]
-  474551:	28 1e                	sub    BYTE PTR [rsi],bl
-  474553:	00 90 01 2c 01 08    	add    BYTE PTR [rax+0x8012c01],dl
-  474559:	01 01                	add    DWORD PTR [rcx],eax
-  47455b:	03 00                	add    eax,DWORD PTR [rax]
-  47455d:	32 25 00 00 02 80    	xor    ah,BYTE PTR [rip+0xffffffff80020000]        # ffffffff80494563 <_end+0xffffffff7ffd8c4b>
-  474563:	01 08                	add    DWORD PTR [rax],ecx
-  474565:	01 01                	add    DWORD PTR [rcx],eax
-  474567:	03 02                	add    eax,DWORD PTR [rdx]
-  474569:	40 18 00             	rex sbb BYTE PTR [rax],al
-  47456c:	80 02 90             	add    BYTE PTR [rdx],0x90
-  47456f:	01 08                	add    DWORD PTR [rax],ecx
-  474571:	01 01                	add    DWORD PTR [rcx],eax
-  474573:	03 02                	add    eax,DWORD PTR [rdx]
-  474575:	50                   	push   rax
-  474576:	19 00                	sbb    DWORD PTR [rax],eax
-  474578:	80 02 e0             	add    BYTE PTR [rdx],0xe0
-  47457b:	01 08                	add    DWORD PTR [rax],ecx
-  47457d:	01 01                	add    DWORD PTR [rcx],eax
-  47457f:	03 02                	add    eax,DWORD PTR [rdx]
-  474581:	50                   	push   rax
-  474582:	1e                   	(bad)  
-  474583:	00 20                	add    BYTE PTR [rax],ah
-  474585:	03 58 02             	add    ebx,DWORD PTR [rax+0x2]
-  474588:	08 01                	or     BYTE PTR [rcx],al
-  47458a:	01 03                	add    DWORD PTR [rbx],eax
-  47458c:	02 64 25 00          	add    ah,BYTE PTR [rbp+riz*1+0x0]
-  474590:	00 04 00             	add    BYTE PTR [rax+rax*1],al
-  474593:	03 08                	add    ecx,DWORD PTR [rax]
-  474595:	01 01                	add    DWORD PTR [rcx],eax
-  474597:	03 02                	add    eax,DWORD PTR [rdx]
-  474599:	80 30 00             	xor    BYTE PTR [rax],0x0
-  47459c:	00 05 00 04 08 01    	add    BYTE PTR [rip+0x1080400],al        # 14f49a2 <_end+0x103908a>
-  4745a2:	01 03                	add    DWORD PTR [rbx],eax
-  4745a4:	02 a0 40 00 00 00    	add    ah,BYTE PTR [rax+0x40]
-  4745aa:	00 00                	add    BYTE PTR [rax],al
-  4745ac:	00 00                	add    BYTE PTR [rax],al
-  4745ae:	00 00                	add    BYTE PTR [rax],al
-  4745b0:	55                   	push   rbp
-  4745b1:	55                   	push   rbp
-  4745b2:	55                   	push   rbp
-  4745b3:	55                   	push   rbp
-  4745b4:	55                   	push   rbp
-  4745b5:	55                   	push   rbp
-  4745b6:	f5                   	cmc    
-  4745b7:	3f                   	(bad)  
-  4745b8:	60                   	(bad)  
-  4745b9:	68 fe ff 60 68       	push   0x6860fffe
-  4745be:	fe                   	(bad)  
-  4745bf:	ff c0                	inc    eax
-  4745c1:	67 fe                	addr32 (bad) 
-  4745c3:	ff 70 68             	push   QWORD PTR [rax+0x68]
-  4745c6:	fe                   	(bad)  
-  4745c7:	ff 98 67 fe ff 58    	call   FWORD PTR [rax+0x58fffe67]
-  4745cd:	67 fe                	addr32 (bad) 
-  4745cf:	ff                   	(bad)  
-  4745d0:	b8 66 fe ff 90       	mov    eax,0x90fffe66
-  4745d5:	66 fe                	data16 (bad) 
-  4745d7:	ff 68 66             	jmp    FWORD PTR [rax+0x66]
-  4745da:	fe                   	(bad)  
-  4745db:	ff 58 65             	call   FWORD PTR [rax+0x65]
-  4745de:	fe                   	(bad)  
-  4745df:	ff 18                	call   FWORD PTR [rax]
-  4745e1:	66 fe                	data16 (bad) 
-  4745e3:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  4745e6:	fe                   	(bad)  
-  4745e7:	ff 76 65             	push   QWORD PTR [rsi+0x65]
-  4745ea:	fe                   	(bad)  
-  4745eb:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  4745ee:	fe                   	(bad)  
-  4745ef:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  4745f2:	fe                   	(bad)  
-  4745f3:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  4745f6:	fe                   	(bad)  
-  4745f7:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  4745fa:	fe                   	(bad)  
-  4745fb:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  4745fe:	fe                   	(bad)  
-  4745ff:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  474602:	fe                   	(bad)  
-  474603:	ff 58 65             	call   FWORD PTR [rax+0x65]
-  474606:	fe                   	(bad)  
-  474607:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  47460a:	fe                   	(bad)  
-  47460b:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  47460e:	fe                   	(bad)  
-  47460f:	ff e0                	jmp    rax
-  474611:	68 fe ff 60 68       	push   0x6860fffe
-  474616:	fe                   	(bad)  
-  474617:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  47461a:	fe                   	(bad)  
-  47461b:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  47461e:	fe                   	(bad)  
-  47461f:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  474622:	fe                   	(bad)  
-  474623:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  474626:	fe                   	(bad)  
-  474627:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  47462a:	fe                   	(bad)  
-  47462b:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  47462e:	fe                   	(bad)  
-  47462f:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  474632:	fe                   	(bad)  
-  474633:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  474636:	fe                   	(bad)  
-  474637:	ff 60 68             	jmp    QWORD PTR [rax+0x68]
-  47463a:	fe                   	(bad)  
-  47463b:	ff 48 68             	dec    DWORD PTR [rax+0x68]
-  47463e:	fe                   	(bad)  
-  47463f:	ff                   	(bad)  
-  474640:	dc 68 fe             	fsubr  QWORD PTR [rax-0x2]
-  474643:	ff 25 69 fe ff 14    	jmp    QWORD PTR [rip+0x14fffe69]        # 154744b2 <_end+0x14fb8b9a>
-  474649:	69 fe ff cd 68 fe    	imul   edi,esi,0xfe68cdff
-  47464f:	ff 56 69             	call   QWORD PTR [rsi+0x69]
-  474652:	fe                   	(bad)  
-  474653:	ff 36                	push   QWORD PTR [rsi]
-  474655:	69 fe ff 6b 69 fe    	imul   edi,esi,0xfe696bff
-  47465b:	ff ad 68 fe ff 5f    	jmp    FWORD PTR [rbp+0x5ffffe68]
-  474661:	4e                   	rex.WRX
-  474662:	45 54                	rex.RB push r12
-  474664:	5f                   	pop    rdi
-  474665:	57                   	push   rdi
-  474666:	4d 5f                	rex.WRB pop r15
-  474668:	53                   	push   rbx
-  474669:	54                   	push   rsp
-  47466a:	41 54                	push   r12
-  47466c:	45 00 5f 4e          	add    BYTE PTR [r15+0x4e],r11b
-  474670:	45 54                	rex.RB push r12
-  474672:	5f                   	pop    rdi
-  474673:	57                   	push   rdi
-  474674:	4d 5f                	rex.WRB pop r15
-  474676:	53                   	push   rbx
-  474677:	54                   	push   rsp
-  474678:	41 54                	push   r12
-  47467a:	45 5f                	rex.RB pop r15
-  47467c:	41                   	rex.B
-  47467d:	42                   	rex.X
-  47467e:	4f 56                	rex.WRXB push r14
-  474680:	45 00 5f 4d          	add    BYTE PTR [r15+0x4d],r11b
-  474684:	4f 54                	rex.WRXB push r12
-  474686:	49                   	rex.WB
-  474687:	46 5f                	rex.RX pop rdi
-  474689:	57                   	push   rdi
-  47468a:	4d 5f                	rex.WRB pop r15
-  47468c:	48                   	rex.W
-  47468d:	49                   	rex.WB
-  47468e:	4e 54                	rex.WRX push rsp
-  474690:	53                   	push   rbx
-  474691:	00 4b 57             	add    BYTE PTR [rbx+0x57],cl
-  474694:	4d 5f                	rex.WRB pop r15
-  474696:	57                   	push   rdi
-  474697:	49                   	rex.WB
-  474698:	4e 5f                	rex.WRX pop rdi
-  47469a:	44                   	rex.R
-  47469b:	45                   	rex.RB
-  47469c:	43                   	rex.XB
-  47469d:	4f 52                	rex.WRXB push r10
-  47469f:	41 54                	push   r12
-  4746a1:	49                   	rex.WB
-  4746a2:	4f                   	rex.WRXB
-  4746a3:	4e 00 5f 57          	rex.WRX add BYTE PTR [rdi+0x57],r11b
-  4746a7:	49                   	rex.WB
-  4746a8:	4e 5f                	rex.WRX pop rdi
-  4746aa:	48                   	rex.W
-  4746ab:	49                   	rex.WB
-  4746ac:	4e 54                	rex.WRX push rsp
-  4746ae:	53                   	push   rbx
-  4746af:	00 57 4d             	add    BYTE PTR [rdi+0x4d],dl
-  4746b2:	5f                   	pop    rdi
-  4746b3:	44                   	rex.R
-  4746b4:	45                   	rex.RB
-  4746b5:	4c                   	rex.WR
-  4746b6:	45 54                	rex.RB push r12
-  4746b8:	45 5f                	rex.RB pop r15
-  4746ba:	57                   	push   rdi
-  4746bb:	49                   	rex.WB
-  4746bc:	4e                   	rex.WRX
-  4746bd:	44                   	rex.R
-  4746be:	4f 57                	rex.WRXB push r15
-	...
-
-00000000004746e0 <compressed_data>:
-  4746e0:	00 00                	add    BYTE PTR [rax],al
-  4746e2:	10 01                	adc    BYTE PTR [rcx],al
-  4746e4:	01 10                	add    DWORD PTR [rax],edx
-  4746e6:	7e 10                	jle    4746f8 <compressed_data+0x18>
-  4746e8:	08 a5 10 08 bd 90    	or     BYTE PTR [rbp-0x6f42f7f0],ah
-  4746ee:	09 81 e0 07 7e f0    	or     DWORD PTR [rcx-0xf81f820],eax
-  4746f4:	0f db f0             	pand   mm6,mm0
-  4746f7:	0f c3 70 0e          	movnti DWORD PTR [rax+0xe],esi
-  4746fb:	ff e0                	jmp    rax
-  4746fd:	07                   	(bad)  
-  4746fe:	36 f0 07             	ss lock (bad) 
-  474701:	15 e1 03 1c 80       	adc    eax,0x801c03e1
-  474706:	00 00                	add    BYTE PTR [rax],al
-  474708:	80 00 1c             	add    BYTE PTR [rax],0x1c
-  47470b:	e0 03                	loopne 474710 <compressed_data+0x30>
-  47470d:	7f 70                	jg     47477f <compressed_data+0x9f>
-  47470f:	11 19                	adc    DWORD PTR [rcx],ebx
-  474711:	c1 11 1c             	rcl    DWORD PTR [rcx],0x1c
-  474714:	60                   	(bad)  
-  474715:	11 1c 81             	adc    DWORD PTR [rcx+rax*4],ebx
-  474718:	00 1b                	add    BYTE PTR [rbx],bl
-  47471a:	d1 11                	rcl    DWORD PTR [rcx],1
-  47471c:	17                   	(bad)  
-  47471d:	e1 03                	loope  474722 <compressed_data+0x42>
-  47471f:	00 81 01 3c c0 03    	add    BYTE PTR [rcx+0x3c03c01],al
-  474725:	18 00                	sbb    BYTE PTR [rax],al
-  474727:	10 ff                	adc    bh,bh
-  474729:	f0 0f e7 30          	lock movntq QWORD PTR [rax],mm6
-  47472d:	0c 10                	or     al,0x10
-  47472f:	01 13                	add    DWORD PTR [rbx],edx
-  474731:	00 c0                	add    al,al
-  474733:	03 66 20             	add    esp,DWORD PTR [rsi+0x20]
-  474736:	04 42                	add    al,0x42
-  474738:	60                   	(bad)  
-  474739:	06                   	(bad)  
-  47473a:	3c 00                	cmp    al,0x0
-  47473c:	00 0f                	add    BYTE PTR [rdi],cl
-  47473e:	91                   	xchg   ecx,eax
-  47473f:	09 bd 80 10 c3 f0    	or     DWORD PTR [rbp-0xf3cef80],edi
-  474745:	0f f0                	(bad)  
-  474747:	00 0e                	add    BYTE PTR [rsi],cl
-  474749:	f0 e0 0b             	lock loopne 474757 <compressed_data+0x77>
-  47474c:	33 80 14 1e 70 13    	xor    eax,DWORD PTR [rax+0x13701e14]
-  474752:	66 b0 13             	data16 mov al,0x13
-  474755:	18 e0                	sbb    al,ah
-  474757:	07                   	(bad)  
-  474758:	18 c0                	sbb    al,al
-  47475a:	0f cc                	bswap  esp
-  47475c:	c0 0f 0c             	ror    BYTE PTR [rdi],0xc
-  47475f:	c0 00 0e             	rol    BYTE PTR [rax],0xe
-  474762:	f0 00 07             	lock add BYTE PTR [rdi],al
-  474765:	e0 0f                	loopne 474776 <compressed_data+0x96>
-  474767:	c6                   	(bad)  
-  474768:	90                   	nop
-  474769:	15 c6 60 0e 67       	adc    eax,0x670e60c6
-  47476e:	30 00                	xor    BYTE PTR [rax],al
-  474770:	99                   	cdq    
-  474771:	a0 05 3c 70 0e e7 c0 	movabs al,ds:0x5a03c0e70e703c05
-  474778:	03 5a 
-  47477a:	90                   	nop
-  47477b:	09 01                	or     DWORD PTR [rcx],eax
-  47477d:	70 00                	jo     47477f <compressed_data+0x9f>
-  47477f:	1f                   	(bad)  
-  474780:	f0 07                	lock (bad) 
-  474782:	1f                   	(bad)  
-  474783:	70 00                	jo     474785 <compressed_data+0xa5>
-  474785:	01 00                	add    DWORD PTR [rax],eax
-  474787:	00 40 00             	add    BYTE PTR [rax+0x0],al
-  47478a:	07                   	(bad)  
-  47478b:	7c f0                	jl     47477d <compressed_data+0x9d>
-  47478d:	07                   	(bad)  
-  47478e:	7c 00                	jl     474790 <compressed_data+0xb0>
-  474790:	07                   	(bad)  
-  474791:	40 00 00             	rex add BYTE PTR [rax],al
-  474794:	2b f1                	sub    esi,ecx
-  474796:	14 4e                	adc    al,0x4e
-  474798:	d1 12                	rcl    DWORD PTR [rdx],1
-  47479a:	4c c1 17 00          	rex.WR rcl QWORD PTR [rdi],0x0
-  47479e:	60                   	(bad)  
-  47479f:	06                   	(bad)  
-  4747a0:	00 e0                	add    al,ah
-  4747a2:	0f db b0 0d de 80 0d 	pand   mm6,QWORD PTR [rax+0xd80de0d]
-  4747a9:	85 01                	test   DWORD PTR [rcx],eax
-  4747ab:	00 7c 60 0c          	add    BYTE PTR [rax+riz*2+0xc],bh
-  4747af:	1c 60                	sbb    al,0x60
-  4747b1:	03 36                	add    esi,DWORD PTR [rsi]
-  4747b3:	c0 01 33             	rol    BYTE PTR [rcx],0x33
-  4747b6:	e0 01                	loopne 4747b9 <compressed_data+0xd9>
-  4747b8:	02 b1 10 7e 70 17    	add    dh,BYTE PTR [rcx+0x17707e10]
-  4747be:	3c f0                	cmp    al,0xf0
-  4747c0:	14 7e                	adc    al,0x7e
-  4747c2:	d0 12                	rcl    BYTE PTR [rdx],1
-  4747c4:	ff 80 17 18 a0 19    	inc    DWORD PTR [rax+0x19a01817]
-  4747ca:	2e b1 19             	cs mov cl,0x19
-  4747cd:	7a e1                	jp     4747b0 <compressed_data+0xd0>
-  4747cf:	12 77 01             	adc    dh,BYTE PTR [rdi+0x1]
-  4747d2:	03 7f 00             	add    edi,DWORD PTR [rdi+0x0]
-  4747d5:	03 9f 01 00 0c 60    	add    ebx,DWORD PTR [rdi+0x600c0001]
-  4747db:	00 7f 60             	add    BYTE PTR [rdi+0x60],bh
-  4747de:	00 0c 20             	add    BYTE PTR [rax+riz*1],cl
-  4747e1:	10 03                	adc    BYTE PTR [rbx],al
-  4747e3:	c0 1a 7f             	rcr    BYTE PTR [rdx],0x7f
-  4747e6:	10 10                	adc    BYTE PTR [rax],dl
-  4747e8:	24 60                	and    al,0x60
-  4747ea:	06                   	(bad)  
-  4747eb:	ff 60 06             	jmp    QWORD PTR [rax+0x6]
-  4747ee:	24 10                	and    al,0x10
-  4747f0:	10 78 51             	adc    BYTE PTR [rax+0x51],bh
-  4747f3:	13 2f                	adc    ebp,DWORD PTR [rdi]
-  4747f5:	21 11                	and    DWORD PTR [rcx],edx
-  4747f7:	2d 21 10 bb 51       	sub    eax,0x51bb1021
-  4747fc:	1a 1e                	sbb    bl,BYTE PTR [rsi]
-  4747fe:	e0 1b                	loopne 47481b <compressed_data+0x13b>
-  474800:	aa                   	stos   BYTE PTR es:[rdi],al
-  474801:	a1 1a 8b 61 03 bb b1 	movabs eax,ds:0x7f18b1bb03618b1a
-  474808:	18 7f 
-  47480a:	40 11 8b 51 1a 3e 30 	rex adc DWORD PTR [rbx+0x303e1a51],ecx
-  474811:	00 1e                	add    BYTE PTR [rsi],bl
-  474813:	00 03                	add    BYTE PTR [rbx],al
-  474815:	1f                   	(bad)  
-  474816:	a0 1a 00 30 06 33 80 	movabs al,ds:0xc0180330630001a
-  47481d:	01 0c 
-  47481f:	60                   	(bad)  
-  474820:	06                   	(bad)  
-  474821:	63 00                	movsxd eax,DWORD PTR [rax]
-  474823:	00 8a c1 01 6e b0    	add    BYTE PTR [rdx-0x4f91fe3f],cl
-  474829:	03 33                	add    esi,DWORD PTR [rbx]
-  47482b:	e0 06                	loopne 474833 <compressed_data+0x153>
-  47482d:	00 60 00             	add    BYTE PTR [rax+0x0],ah
-  474830:	06                   	(bad)  
-  474831:	30 00                	xor    BYTE PTR [rax],al
-  474833:	bb 31 1d df 91       	mov    ebx,0x91df1d31
-  474838:	1a 2e                	sbb    ch,BYTE PTR [rsi]
-  47483a:	51                   	push   rcx
-  47483b:	1e                   	(bad)  
-  47483c:	9a                   	(bad)  
-  47483d:	61                   	(bad)  
-  47483e:	1a 00                	sbb    al,BYTE PTR [rax]
-  474840:	b1 13                	mov    cl,0x13
-  474842:	ff 70 13             	push   QWORD PTR [rax+0x13]
-  474845:	01 41 15             	add    DWORD PTR [rcx+0x15],eax
-  474848:	3f                   	(bad)  
-  474849:	40 15 bc 51 1a e9    	rex adc eax,0xe91a51bc
-  47484f:	01 10                	add    DWORD PTR [rax],edx
-  474851:	3f                   	(bad)  
-  474852:	20 1f                	and    BYTE PTR [rdi],bl
-  474854:	00 11                	add    BYTE PTR [rcx],dl
-  474856:	1f                   	(bad)  
-  474857:	60                   	(bad)  
-  474858:	30 1a                	xor    BYTE PTR [rdx],bl
-  47485a:	a6                   	cmps   BYTE PTR ds:[rsi],BYTE PTR es:[rdi]
-  47485b:	31 00                	xor    DWORD PTR [rax],eax
-  47485d:	6e                   	outs   dx,BYTE PTR ds:[rsi]
-  47485e:	e1 03                	loope  474863 <compressed_data+0x183>
-  474860:	63 30                	movsxd esi,DWORD PTR [rax]
-  474862:	07                   	(bad)  
-  474863:	7b f0                	jnp    474855 <compressed_data+0x175>
-  474865:	06                   	(bad)  
-  474866:	67 90                	addr32 nop
-  474868:	12 55 41             	adc    dl,BYTE PTR [rbp+0x41]
-  47486b:	15 ef 01 00 1e       	adc    eax,0x1e0001ef
-  474870:	30 03                	xor    BYTE PTR [rbx],al
-  474872:	30 c0                	xor    al,al
-  474874:	01 06                	add    DWORD PTR [rsi],eax
-  474876:	30 03                	xor    BYTE PTR [rbx],al
-  474878:	f6 a1 20 0c 02 03    	mul    BYTE PTR [rcx+0x3020c20]
-  47487e:	8e 01                	mov    es,WORD PTR [rcx]
-  474880:	00 38                	add    BYTE PTR [rax],bh
-  474882:	c0 03 36             	rol    BYTE PTR [rbx],0x36
-  474885:	30 03                	xor    BYTE PTR [rbx],al
-  474887:	a2 81 07 00 f0 03 03 	movabs ds:0x1f00303f0000781,al
-  47488e:	f0 01 
-  474890:	30 30                	xor    BYTE PTR [rax],dh
-  474892:	21 8f d1 20 1e 92    	and    DWORD PTR [rdi-0x6de1df2f],ecx
-  474898:	14 1c                	adc    al,0x1c
-  47489a:	b2 20                	mov    dl,0x20
-  47489c:	d3 11                	rcl    DWORD PTR [rcx],cl
-  47489e:	1f                   	(bad)  
-  47489f:	0a e2                	or     ah,dl
-  4748a1:	18 25 a2 22 3e 30    	sbb    BYTE PTR [rip+0x303e22a2],ah        # 30856b49 <_end+0x3039b231>
-  4748a7:	1a 0e                	sbb    cl,BYTE PTR [rsi]
-  4748a9:	80 1f cf             	sbb    BYTE PTR [rdi],0xcf
-  4748ac:	11 1f                	adc    DWORD PTR [rdi],ebx
-  4748ae:	f3 11 23             	repz adc DWORD PTR [rbx],esp
-  4748b1:	06                   	(bad)  
-  4748b2:	30 1e                	xor    BYTE PTR [rsi],bl
-  4748b4:	03 50 1e             	add    edx,DWORD PTR [rax+0x1e]
-  4748b7:	01 61 1f             	add    DWORD PTR [rcx+0x1f],esp
-  4748ba:	1c 02                	sbb    al,0x2
-  4748bc:	10 e5                	adc    ch,ah
-  4748be:	b1 1f                	mov    cl,0x1f
-  4748c0:	06                   	(bad)  
-  4748c1:	90                   	nop
-  4748c2:	20 27                	and    BYTE PTR [rdi],ah
-  4748c4:	02 1c 00             	add    bl,BYTE PTR [rax+rax*1]
-  4748c7:	f0 1f                	lock (bad) 
-  4748c9:	7b 60                	jnp    47492b <compressed_data+0x24b>
-  4748cb:	24 cb                	and    al,0xcb
-  4748cd:	d1 1b                	rcr    DWORD PTR [rbx],1
-  4748cf:	48 f1                	rex.W icebp 
-  4748d1:	03 48 c1             	add    ecx,DWORD PTR [rax-0x3f]
-  4748d4:	21 4c e1 03          	and    DWORD PTR [rcx+riz*8+0x3],ecx
-  4748d8:	4c 61                	rex.WR (bad) 
-  4748da:	1f                   	(bad)  
-  4748db:	37                   	(bad)  
-  4748dc:	c1 1a 03             	rcr    DWORD PTR [rdx],0x3
-  4748df:	b0 13                	mov    al,0x13
-  4748e1:	00 f0                	add    al,dh
-  4748e3:	01 36                	add    DWORD PTR [rsi],esi
-  4748e5:	c0 17 36             	rcl    BYTE PTR [rdi],0x36
-  4748e8:	f0 01 00             	lock add DWORD PTR [rax],eax
-  4748eb:	e0 07                	loopne 4748f4 <compressed_data+0x214>
-  4748ed:	df e1                	(bad)  
-  4748ef:	01 df                	add    edi,ebx
-  4748f1:	21 19                	and    DWORD PTR [rcx],ebx
-  4748f3:	5d                   	pop    rbp
-  4748f4:	62                   	(bad)  
-  4748f5:	00 5f f2             	add    BYTE PTR [rdi-0xe],bl
-  4748f8:	1d 36 61 06 ac       	sbb    eax,0xac066136
-  4748fd:	31 07                	xor    DWORD PTR [rdi],eax
-  4748ff:	66 c0 07 00          	data16 rol BYTE PTR [rdi],0x0
-  474903:	80 14 0f d2          	adc    BYTE PTR [rdi+rcx*1],0xd2
-  474907:	26 09 72 20          	es or  DWORD PTR [rdx+0x20],esi
-  47490b:	54                   	push   rsp
-  47490c:	f1                   	icebp  
-  47490d:	18 78 00             	sbb    BYTE PTR [rax+0x0],bh
-  474910:	22 13                	and    dl,BYTE PTR [rbx]
-  474912:	42 21 67 60          	rex.X and DWORD PTR [rdi+0x60],esp
-  474916:	06                   	(bad)  
-  474917:	36 e0 01             	ss loopne 47491b <compressed_data+0x23b>
-  47491a:	58                   	pop    rax
-  47491b:	72 06                	jb     474923 <compressed_data+0x243>
-  47491d:	de 41 1e             	fiadd  WORD PTR [rcx+0x1e]
-  474920:	60                   	(bad)  
-  474921:	02 1d 77 50 11 6b    	add    bl,BYTE PTR [rip+0x6b115077]        # 6b58999e <_end+0x6b0ce086>
-  474927:	30 06                	xor    BYTE PTR [rsi],al
-  474929:	d6                   	(bad)  
-  47492a:	31 06                	xor    DWORD PTR [rsi],eax
-  47492c:	67 f0 06             	addr32 lock (bad) 
-  47492f:	7b 30                	jnp    474961 <compressed_data+0x281>
-  474931:	07                   	(bad)  
-  474932:	85 72 1d             	test   DWORD PTR [rdx+0x1d],esi
-  474935:	36 50                	ss push rax
-  474937:	28 63 c0             	sub    BYTE PTR [rbx-0x40],ah
-  47493a:	18 4d 62             	sbb    BYTE PTR [rbp+0x62],cl
-  47493d:	06                   	(bad)  
-  47493e:	3e f0 1d 0f 10 24 48 	ds lock sbb eax,0x4824100f
-  474945:	b1 03                	mov    cl,0x3
-  474947:	1e                   	(bad)  
-  474948:	80 03 92             	add    BYTE PTR [rbx],0x92
-  47494b:	e2 03                	loop   474950 <compressed_data+0x270>
-  47494d:	7c 12                	jl     474961 <compressed_data+0x281>
-  47494f:	24 07                	and    al,0x7
-  474951:	e0 00                	loopne 474953 <compressed_data+0x273>
-  474953:	38 40 21             	cmp    BYTE PTR [rax+0x21],al
-  474956:	f0 11 27             	lock adc DWORD PTR [rdi],esp
-  474959:	aa                   	stos   BYTE PTR es:[rdi],al
-  47495a:	d1 26                	shl    DWORD PTR [rsi],1
-  47495c:	6d                   	ins    DWORD PTR es:[rdi],dx
-  47495d:	62                   	(bad)  
-  47495e:	1f                   	(bad)  
-  47495f:	a7                   	cmps   DWORD PTR ds:[rsi],DWORD PTR es:[rdi]
-  474960:	e2 18                	loop   47497a <compressed_data+0x29a>
-  474962:	aa                   	stos   BYTE PTR es:[rdi],al
-  474963:	f1                   	icebp  
-  474964:	28 6b f0             	sub    BYTE PTR [rbx-0x10],ch
-  474967:	07                   	(bad)  
-  474968:	77 60                	ja     4749ca <compressed_data+0x2ea>
-  47496a:	28 90 c2 01 8a 61    	sub    BYTE PTR [rax+0x618a01c2],dl
-  474970:	1d 6d e2 01 72       	sbb    eax,0x7201e26d
-  474975:	02 00                	add    al,BYTE PTR [rax]
-  474977:	7f a0                	jg     474919 <compressed_data+0x239>
-  474979:	1f                   	(bad)  
-  47497a:	e3 e1                	jrcxz  47495d <compressed_data+0x27d>
-  47497c:	1a 64 42 1e          	sbb    ah,BYTE PTR [rdx+rax*2+0x1e]
-  474980:	8f 81 23 0c 80 01    	pop    QWORD PTR [rcx+0x1800c23]
-  474986:	30 00                	xor    BYTE PTR [rax],al
-  474988:	06                   	(bad)  
-  474989:	76 e1                	jbe    47496c <compressed_data+0x28c>
-  47498b:	01 9d 81 01 8f b1    	add    DWORD PTR [rbp-0x4e70fe7f],ebx
-  474991:	11 8e 72 1f 01 f1    	adc    DWORD PTR [rsi-0xefee08e],ecx
-  474997:	0f 54 41 1a          	andps  xmm0,XMMWORD PTR [rcx+0x1a]
-  47499b:	02 c1                	add    al,cl
-  47499d:	1c 3e                	sbb    al,0x3e
-  47499f:	c0 1d 00 70 00 df f1 	rcr    BYTE PTR [rip+0xffffffffdf007000],0xf1        # ffffffffdf47b9a6 <_end+0xffffffffdefc008e>
-  4749a6:	24 66                	and    al,0x66
-  4749a8:	b0 03                	mov    al,0x3
-  4749aa:	01 a1 20 03 40 21    	add    DWORD PTR [rcx+0x21400320],esp
-  4749b0:	38 00                	cmp    BYTE PTR [rax],al
-  4749b2:	22 d4                	and    dl,ah
-  4749b4:	52                   	push   rdx
-  4749b5:	2d 00 a1 20 1d       	sub    eax,0x1d20a100
-  4749ba:	22 22                	and    ah,BYTE PTR [rdx]
-  4749bc:	36 60                	ss (bad) 
-  4749be:	00 0f                	add    BYTE PTR [rdi],cl
-  4749c0:	50                   	push   rax
-  4749c1:	29 01                	sub    DWORD PTR [rcx],eax
-  4749c3:	e1 06                	loope  4749cb <compressed_data+0x2eb>
-  4749c5:	48 e1 22             	rex.W loope 4749ea <compressed_data+0x30a>
-  4749c8:	6c                   	ins    BYTE PTR es:[rdi],dx
-  4749c9:	61                   	(bad)  
-  4749ca:	00 36                	add    BYTE PTR [rsi],dh
-  4749cc:	e0 06                	loopne 4749d4 <compressed_data+0x2f4>
-  4749ce:	4c d1 27             	rex.WR shl QWORD PTR [rdi],1
-  4749d1:	aa                   	stos   BYTE PTR es:[rdi],al
-  4749d2:	e1 00                	loope  4749d4 <compressed_data+0x2f4>
-  4749d4:	07                   	(bad)  
-  4749d5:	f2 18 30             	repnz sbb BYTE PTR [rax],dh
-  4749d8:	00 00                	add    BYTE PTR [rax],al
-  4749da:	75 92                	jne    47496e <compressed_data+0x28e>
-  4749dc:	14 d7                	adc    al,0xd7
-  4749de:	92                   	xchg   edx,eax
-  4749df:	27                   	(bad)  
-  4749e0:	7b d2                	jnp    4749b4 <compressed_data+0x2d4>
-  4749e2:	27                   	(bad)  
-  4749e3:	f7 12                	not    DWORD PTR [rdx]
-  4749e5:	27                   	(bad)  
-  4749e6:	8f 01                	pop    QWORD PTR [rcx]
-  4749e8:	10 19                	adc    BYTE PTR [rcx],bl
-  4749ea:	f2 07                	repnz (bad) 
-  4749ec:	84 12                	test   BYTE PTR [rdx],dl
-  4749ee:	10 1f                	adc    BYTE PTR [rdi],bl
-  4749f0:	70 2a                	jo     474a1c <compressed_data+0x33c>
-  4749f2:	dc 62 2b             	fsub   QWORD PTR [rdx+0x2b]
-  4749f5:	01 b1 03 4e 92 2e    	add    DWORD PTR [rcx+0x2e924e03],esi
-  4749fb:	00 d1                	add    cl,dl
-  4749fd:	2e 33 e0             	cs xor esp,eax
-  474a00:	22 1b                	and    bl,BYTE PTR [rbx]
-  474a02:	02 00                	add    al,BYTE PTR [rax]
-  474a04:	3b 30                	cmp    esi,DWORD PTR [rax]
-  474a06:	2f                   	(bad)  
-  474a07:	11 03                	adc    DWORD PTR [rbx],eax
-  474a09:	10 ca                	adc    dl,cl
-  474a0b:	c1 1c 5b 82          	rcr    DWORD PTR [rbx+rbx*2],0x82
-  474a0f:	00 0c e0             	add    BYTE PTR [rax+riz*8],cl
-  474a12:	03 54 c1 02          	add    edx,DWORD PTR [rcx+rax*8+0x2]
-  474a16:	a4                   	movs   BYTE PTR es:[rdi],BYTE PTR ds:[rsi]
-  474a17:	71 2a                	jno    474a43 <compressed_data+0x363>
-  474a19:	dd 51 30             	fst    QWORD PTR [rcx+0x30]
-  474a1c:	49 f1                	rex.WB icebp 
-  474a1e:	1c d0                	sbb    al,0xd0
-  474a20:	e1 2a                	loope  474a4c <compressed_data+0x36c>
-  474a22:	c6                   	(bad)  
-  474a23:	11 10                	adc    DWORD PTR [rax],edx
-  474a25:	b2 c2                	mov    dl,0xc2
-  474a27:	2c 27                	sub    al,0x27
-  474a29:	43 31 cd             	rex.XB xor r13d,ecx
-  474a2c:	51                   	push   rcx
-  474a2d:	1f                   	(bad)  
-  474a2e:	19 c0                	sbb    eax,eax
-  474a30:	00 26                	add    BYTE PTR [rsi],ah
-  474a32:	60                   	(bad)  
-  474a33:	1f                   	(bad)  
-  474a34:	38 40 15             	cmp    BYTE PTR [rax+0x15],al
-  474a37:	07                   	(bad)  
-  474a38:	40 15 9b b2 19 77    	rex adc eax,0x7719b29b
-  474a3e:	a1 19 d6 b2 33 39 03 	movabs eax,ds:0xda00033933b2d619
-  474a45:	00 da 
-  474a47:	21 1f                	and    DWORD PTR [rdi],ebx
-  474a49:	cb                   	retf   
-  474a4a:	52                   	push   rdx
-  474a4b:	28 bd 32 03 de 72    	sub    BYTE PTR [rbp+0x72de0332],bh
-  474a51:	2c 30                	sub    al,0x30
-  474a53:	f0 18 33             	lock sbb BYTE PTR [rbx],dh
-  474a56:	c0 26 48             	shl    BYTE PTR [rsi],0x48
-  474a59:	21 19                	and    DWORD PTR [rcx],ebx
-  474a5b:	9b                   	fwait
-  474a5c:	52                   	push   rdx
-  474a5d:	2e 48 e2 07          	cs rex.W loop 474a68 <compressed_data+0x388>
-  474a61:	c3                   	ret    
-  474a62:	c0 03 60             	rol    BYTE PTR [rbx],0x60
-  474a65:	c0 07 66             	rol    BYTE PTR [rdi],0x66
-  474a68:	c0 0f 6c             	ror    BYTE PTR [rdi],0x6c
-  474a6b:	92                   	xchg   edx,eax
-  474a6c:	20 30                	and    BYTE PTR [rax],dh
-  474a6e:	40 2d 92 71 00 5d    	rex sub eax,0x5d007192
-  474a74:	f3 35 f3 31 2d 33    	repz xor eax,0x332d31f3
-  474a7a:	20 19                	and    BYTE PTR [rcx],bl
-  474a7c:	e4 c2                	in     al,0xc2
-  474a7e:	1a cc                	sbb    cl,ah
-  474a80:	c1 01 55             	rol    DWORD PTR [rcx],0x55
-  474a83:	73 13                	jae    474a98 <compressed_data+0x3b8>
-  474a85:	5d                   	pop    rbp
-  474a86:	c2 13 4e             	ret    0x4e13
-  474a89:	33 35 8f 11 36 71    	xor    esi,DWORD PTR [rip+0x7136118f]        # 717d5c1e <_end+0x7131a306>
-  474a8f:	c3                   	ret    
-  474a90:	35 02 c3 00 8f       	xor    eax,0x8f00c302
-  474a95:	f1                   	icebp  
-  474a96:	1f                   	(bad)  
-  474a97:	1c b0                	sbb    al,0xb0
-  474a99:	19 3c 11             	sbb    DWORD PTR [rcx+rdx*1],edi
-  474a9c:	36 76 f3             	ss jbe 474a92 <compressed_data+0x3b2>
-  474a9f:	18 63 40             	sbb    BYTE PTR [rbx+0x40],ah
-  474aa2:	2b 7f c0             	sub    edi,DWORD PTR [rdi-0x40]
-  474aa5:	28 29                	sub    BYTE PTR [rcx],ch
-  474aa7:	e2 26                	loop   474acf <compressed_data+0x3ef>
-  474aa9:	15 c2 21 63 62       	adc    eax,0x626321c2
-  474aae:	00 3b                	add    BYTE PTR [rbx],bh
-  474ab0:	02 18                	add    bl,BYTE PTR [rax]
-  474ab2:	30 e0                	xor    al,ah
-  474ab4:	0f 33                	rdpmc  
-  474ab6:	e0 0f                	loopne 474ac7 <compressed_data+0x3e7>
-  474ab8:	87 81 21 7f 80 14    	xchg   DWORD PTR [rcx+0x14807f21],eax
-  474abe:	73 10                	jae    474ad0 <compressed_data+0x3f0>
-  474ac0:	24 97                	and    al,0x97
-  474ac2:	42 30 70 53          	rex.X xor BYTE PTR [rax+0x53],sil
-  474ac6:	22 d6                	and    dl,dh
-  474ac8:	62                   	(bad)  
-  474ac9:	39 95 d3 26 67 13    	cmp    DWORD PTR [rbp+0x136726d3],edx
-  474acf:	36 9d                	ss popf 
-  474ad1:	53                   	push   rbx
-  474ad2:	30 4f f3             	xor    BYTE PTR [rdi-0xd],cl
-  474ad5:	2e c3                	cs ret 
-  474ad7:	b0 12                	mov    al,0x12
-  474ad9:	4c a1 1b 4e 73 2a 8f 	rex.WR movabs rax,ds:0x7e19a18f2a734e1b
-  474ae0:	a1 19 7e 
-  474ae3:	c0 1a 79             	rcr    BYTE PTR [rdx],0x79
-  474ae6:	a1 18 26 a0 2e 67 90 	movabs eax,ds:0x8e2a90672ea02618
-  474aed:	2a 8e 
-  474aef:	01 1f                	add    DWORD PTR [rdi],ebx
-  474af1:	a4                   	movs   BYTE PTR es:[rdi],BYTE PTR ds:[rsi]
-  474af2:	a2 30 33 f0 05 63 30 	movabs ds:0x630f306305f03330,al
-  474af9:	0f 63 
-  474afb:	30 0e                	xor    BYTE PTR [rsi],cl
-  474afd:	70 80                	jo     474a7f <compressed_data+0x39f>
-  474aff:	0d 2b a1 19 1b       	or     eax,0x1b19a12b
-  474b04:	10 2a                	adc    BYTE PTR [rdx],ch
-  474b06:	62 63 36 d7 01       	(bad)
-  474b0b:	00 7e 03             	add    BYTE PTR [rsi+0x3],bh
-  474b0e:	10 52 93             	adc    BYTE PTR [rdx-0x6d],dl
-  474b11:	39 9b 02 3a 56 62    	cmp    DWORD PTR [rbx+0x62563a02],ebx
-  474b17:	25 6f 92 2a 37       	and    eax,0x372a926f
-  474b1c:	f0 03 db             	lock add ebx,ebx
-  474b1f:	61                   	(bad)  
-  474b20:	13 8b b1 26 67 a3    	adc    ecx,DWORD PTR [rbx-0x5c98d94f]
-  474b26:	18 91 92 12 a5 51    	sbb    BYTE PTR [rcx+0x51a51292],dl
-  474b2c:	1a e0                	sbb    ah,al
-  474b2e:	41 21 3a             	and    DWORD PTR [r10],edi
-  474b31:	c2 1a bb             	ret    0xbb1a
-  474b34:	f1                   	icebp  
-  474b35:	03 20                	add    esp,DWORD PTR [rax]
-  474b37:	02 10                	add    dl,BYTE PTR [rax]
-  474b39:	c3                   	ret    
-  474b3a:	10 1d 7b c0 0c 66    	adc    BYTE PTR [rip+0x660cc07b],bl        # 66540bbb <_end+0x660852a3>
-  474b40:	30 03                	xor    BYTE PTR [rbx],al
-  474b42:	f0 60                	lock (bad) 
-  474b44:	3e 33 b0 0d ec 60 0f 	ds xor esi,DWORD PTR [rax+0xf60ec0d]
-  474b4b:	f3 00 0c 3f          	repz add BYTE PTR [rdi+rdi*1],cl
-  474b4f:	d3 19                	rcr    DWORD PTR [rcx],cl
-  474b51:	00 91 3e 33 60 06    	add    BYTE PTR [rcx+0x660333e],dl
-  474b57:	cc                   	int3   
-  474b58:	10 10                	adc    BYTE PTR [rax],dl
-  474b5a:	f8                   	clc    
-  474b5b:	73 3f                	jae    474b9c <compressed_data+0x4bc>
-  474b5d:	00 41 04             	add    BYTE PTR [rcx+0x4],al
-  474b60:	11 f0                	adc    eax,esi
-  474b62:	3f                   	(bad)  
-  474b63:	01 14 01             	add    DWORD PTR [rcx+rax*1],edx
-  474b66:	aa                   	stos   BYTE PTR es:[rdi],al
-  474b67:	50                   	push   rax
-  474b68:	05 04 64 40 55       	add    eax,0x55406404
-  474b6d:	b0 0d                	mov    al,0xd
-  474b6f:	ee                   	out    dx,al
-  474b70:	b0 0d                	mov    al,0xd
-  474b72:	77 90                	ja     474b04 <compressed_data+0x424>
-  474b74:	40 0b 84 2c 0f 84 01 	rex or eax,DWORD PTR [rsp+rbp*1+0x1f01840f]
-  474b7b:	1f 
-  474b7c:	80 2c 12 24          	sub    BYTE PTR [rdx+rdx*1],0x24
-  474b80:	41 9a                	rex.B (bad) 
-  474b82:	c1 06 17             	rol    DWORD PTR [rsi],0x17
-  474b85:	c4                   	(bad)  
-  474b86:	06                   	(bad)  
-  474b87:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  474b88:	80 41 02 f1          	add    BYTE PTR [rcx+0x2],0xf1
-  474b8c:	07                   	(bad)  
-  474b8d:	1b 64 25 11          	sbb    esp,DWORD PTR [rbp+riz*1+0x11]
-  474b91:	b4 19                	mov    ah,0x19
-  474b93:	17                   	(bad)  
-  474b94:	f4                   	hlt    
-  474b95:	06                   	(bad)  
-  474b96:	60                   	(bad)  
-  474b97:	a0 41 18 64 42 1e a4 	movabs al,ds:0x252ba41e42641841
-  474b9e:	2b 25 
-  474ba0:	84 41 23             	test   BYTE PTR [rcx+0x23],al
-  474ba3:	e4 1a                	in     al,0x1a
-  474ba5:	00 61 42             	add    BYTE PTR [rcx+0x42],ah
-  474ba8:	2d e4 33 14 24       	sub    eax,0x241433e4
-  474bad:	1f                   	(bad)  
-  474bae:	15 84 2c f8 50       	adc    eax,0x50f82c84
-  474bb3:	1b 9b f1 0f f2 81    	sbb    ebx,DWORD PTR [rbx-0x7e0df00f]
-  474bb9:	19 0f                	sbb    DWORD PTR [rdi],ecx
-  474bbb:	84 0f                	test   BYTE PTR [rdi],cl
-  474bbd:	3d e3 2c 37 a4       	cmp    eax,0xa4372ce3
-  474bc2:	19 3b                	sbb    DWORD PTR [rbx],edi
-  474bc4:	b4 19                	mov    ah,0x19
-  474bc6:	3d d4 43 16 84       	cmp    eax,0x841643d4
-  474bcb:	41 ec                	rex.B in al,dx
-  474bcd:	70 42                	jo     474c11 <compressed_data+0x531>
-  474bcf:	ec                   	in     al,dx
-  474bd0:	c0 00 5b             	rol    BYTE PTR [rax],0x5b
-  474bd3:	23 10                	and    edx,DWORD PTR [rax]
-  474bd5:	53                   	push   rbx
-  474bd6:	81 44 26 f4 0e 3d b1 	add    DWORD PTR [rsi+riz*1-0xc],0x1bb13d0e
-  474bdd:	1b 
-  474bde:	39 f4                	cmp    esp,esi
-  474be0:	0e                   	(bad)  
-  474be1:	49 c4                	rex.WB (bad) 
-  474be3:	00 4f c4             	add    BYTE PTR [rdi-0x3c],cl
-  474be6:	06                   	(bad)  
-  474be7:	2f                   	(bad)  
-  474be8:	21 45 2e             	and    DWORD PTR [rbp+0x2e],eax
-  474beb:	c4                   	(bad)  
-  474bec:	06                   	(bad)  
-  474bed:	51                   	push   rcx
-  474bee:	54                   	push   rsp
-  474bef:	45 17                	rex.RB (bad) 
-  474bf1:	14 44                	adc    al,0x44
-  474bf3:	5b                   	pop    rbx
-  474bf4:	04 00                	add    al,0x0
-  474bf6:	26 94                	es xchg esp,eax
-  474bf8:	43 02 91 43 42 64 46 	rex.XB add dl,BYTE PTR [r9+0x46644243]
-  474bff:	27                   	(bad)  
-  474c00:	74 41                	je     474c43 <compressed_data+0x563>
-  474c02:	4c e4 33             	rex.WR in al,0x33
-  474c05:	44 b4 1b             	rex.R mov spl,0x1b
-  474c08:	44 e4 43             	rex.R in al,0x43
-  474c0b:	00 c1                	add    cl,al
-  474c0d:	0f 6a c4             	punpckhdq mm0,mm4
-  474c10:	06                   	(bad)  
-  474c11:	ff 80 41 41 84 01    	inc    DWORD PTR [rax+0x1844141]
-  474c17:	42 d4                	rex.X (bad) 
-  474c19:	19 5b c2             	sbb    DWORD PTR [rbx-0x3e],ebx
-  474c1c:	1b 45 94             	sbb    eax,DWORD PTR [rbp-0x6c]
-  474c1f:	47 30 01             	rex.RXB xor BYTE PTR [r9],r8b
-  474c22:	48 b7 81             	rex.W mov dil,0x81
-  474c25:	1b 30                	sbb    esi,DWORD PTR [rax]
-  474c27:	f1                   	icebp  
-  474c28:	00 85 64 48 85 04    	add    BYTE PTR [rbp+0x4854864],al
-  474c2e:	0f 89 a4 48 89 14    	jns    14d094d8 <_end+0x1484dbc0>
-  474c34:	48 bc a1 1d 13 80 31 	movabs rsp,0x332e43180131da1
-  474c3b:	e4 32 03 
-  474c3e:	0a f3                	or     dh,bl
-  474c40:	01 e1                	add    ecx,esp
-  474c42:	b3 24                	mov    bl,0x24
-  474c44:	53                   	push   rbx
-  474c45:	12 1e                	adc    bl,BYTE PTR [rsi]
-  474c47:	b9 22 1c c8 b1       	mov    ecx,0xb1c81c22
-  474c4c:	24 a9                	and    al,0xa9
-  474c4e:	e1 20                	loope  474c70 <compressed_data+0x590>
-  474c50:	8a e3                	mov    ah,bl
-  474c52:	07                   	(bad)  
-  474c53:	1b 20                	sbb    esp,DWORD PTR [rax]
-  474c55:	4a 30 e2             	rex.WX xor dl,spl
-  474c58:	17                   	(bad)  
-  474c59:	7c 41                	jl     474c9c <compressed_data+0x5bc>
-  474c5b:	29 e1                	sub    ecx,esp
-  474c5d:	a1 1d f5 03 1f 2a 72 	movabs eax,ds:0x3f2b722a1f03f51d
-  474c64:	2b 3f 
-  474c66:	10 38                	adc    BYTE PTR [rax],bh
-  474c68:	b2 d2                	mov    dl,0xd2
-  474c6a:	28 85 b2 18 77 50    	sub    BYTE PTR [rbp+0x507718b2],al
-  474c70:	21 c2                	and    edx,eax
-  474c72:	22 2e                	and    ch,BYTE PTR [rsi]
-  474c74:	04 c3                	add    al,0xc3
-  474c76:	25 82 71 36 fa       	and    eax,0xfa367182
-  474c7b:	e1 07                	loope  474c84 <compressed_data+0x5a4>
-  474c7d:	ba 04 1e 23 52       	mov    edx,0x52231e04
-  474c82:	49 06                	rex.WB (bad) 
-  474c84:	c0 01 97             	rol    BYTE PTR [rcx],0x97
-  474c87:	b2 30                	mov    dl,0x30
-  474c89:	3c 62                	cmp    al,0x62
-  474c8b:	1f                   	(bad)  
-  474c8c:	3b f2                	cmp    esi,edx
-  474c8e:	1e                   	(bad)  
-  474c8f:	f1                   	icebp  
-  474c90:	61                   	(bad)  
-  474c91:	1f                   	(bad)  
-  474c92:	e5 91                	in     eax,0x91
-  474c94:	1e                   	(bad)  
-  474c95:	f6 31                	div    BYTE PTR [rcx]
-  474c97:	1e                   	(bad)  
-  474c98:	c2 c2 23             	ret    0x23c2
-  474c9b:	be f3 3b 10 14       	mov    esi,0x14103bf3
-  474ca0:	3c c2                	cmp    al,0xc2
-  474ca2:	a3 4c 34 32 34 db 42 	movabs ds:0x8d3442db3432344c,eax
-  474ca9:	34 8d 
-  474cab:	12 29                	adc    ch,BYTE PTR [rcx]
-  474cad:	bc f1 33 de 14       	mov    esp,0x14de33f1
-  474cb2:	10 f0                	adc    al,dh
-  474cb4:	50                   	push   rax
-  474cb5:	27                   	(bad)  
-  474cb6:	37                   	(bad)  
-  474cb7:	60                   	(bad)  
-  474cb8:	03 3c 80             	add    edi,DWORD PTR [rax+rax*4]
-  474cbb:	03 7b 22             	add    edi,DWORD PTR [rbx+0x22]
-  474cbe:	1c 01                	sbb    al,0x1
-  474cc0:	e1 00                	loope  474cc2 <compressed_data+0x5e2>
-  474cc2:	e3 81                	jrcxz  474c45 <compressed_data+0x565>
-  474cc4:	4b 00 c1             	rex.WXB add r9b,al
-  474cc7:	12 2c d1             	adc    ch,BYTE PTR [rcx+rdx*8]
-  474cca:	2c f1                	sub    al,0xf1
-  474ccc:	24 1f                	and    al,0x1f
-  474cce:	04 61                	add    al,0x61
-  474cd0:	10 07                	adc    BYTE PTR [rdi],al
-  474cd2:	91                   	xchg   ecx,eax
-  474cd3:	10 67 13             	adc    BYTE PTR [rdi+0x13],ah
-  474cd6:	10 0c e1             	adc    BYTE PTR [rcx+riz*8],cl
-  474cd9:	10 0f                	adc    BYTE PTR [rdi],cl
-  474cdb:	11 11                	adc    DWORD PTR [rcx],edx
-  474cdd:	f8                   	clc    
-  474cde:	14 10                	adc    al,0x10
-  474ce0:	14 51                	adc    al,0x51
-  474ce2:	11 1e                	adc    DWORD PTR [rsi],ebx
-  474ce4:	81 11 bc 61 12 02    	adc    DWORD PTR [rcx],0x21261bc
-  474cea:	95                   	xchg   ebp,eax
-  474ceb:	11 e2                	adc    edx,esp
-  474ced:	c1 12 63             	rcl    DWORD PTR [rdx],0x63
-  474cf0:	71 0e                	jno    474d00 <compressed_data+0x620>
-  474cf2:	9a                   	(bad)  
-  474cf3:	c1 13 02             	rcl    DWORD PTR [rbx],0x2
-  474cf6:	61                   	(bad)  
-  474cf7:	1b 12                	sbb    edx,DWORD PTR [rdx]
-  474cf9:	c1 50 f7 b1          	rcl    DWORD PTR [rax-0x9],0xb1
-  474cfd:	12 ba 61 46 81 24    	adc    bh,BYTE PTR [rdx+0x24814661]
-  474d03:	13 34 d1             	adc    esi,DWORD PTR [rcx+rdx*8]
-  474d06:	48 01 71 13          	add    QWORD PTR [rcx+0x13],rsi
-  474d0a:	39 51 25             	cmp    DWORD PTR [rcx+0x25],edx
-  474d0d:	ce                   	(bad)  
-  474d0e:	02 48 c3             	add    cl,BYTE PTR [rax-0x3d]
-  474d11:	f0 13 41 91          	lock adc eax,DWORD PTR [rcx-0x6f]
-  474d15:	51                   	push   rcx
-  474d16:	78 00                	js     474d18 <compressed_data+0x638>
-  474d18:	07                   	(bad)  
-  474d19:	58                   	pop    rax
-  474d1a:	c0 04 2a f2          	rol    BYTE PTR [rdx+rbp*1],0xf2
-  474d1e:	3d 1a c5 17 2d       	cmp    eax,0x2d17c51a
-  474d23:	91                   	xchg   ecx,eax
-  474d24:	17                   	(bad)  
-  474d25:	bb 11 15 53 41       	mov    ebx,0x41531511
-  474d2a:	15 56 11 36 02       	adc    eax,0x2361156
-  474d2f:	91                   	xchg   ecx,eax
-  474d30:	15 5b c1 15 e7       	adc    eax,0xe715c15b
-  474d35:	e0 15                	loopne 474d4c <compressed_data+0x66c>
-  474d37:	0e                   	(bad)  
-  474d38:	85 01                	test   DWORD PTR [rcx],eax
-  474d3a:	db 20                	(bad)  [rax]
-  474d3c:	16                   	(bad)  
-  474d3d:	3c b0                	cmp    al,0xb0
-  474d3f:	0d df 14 10 01       	or     eax,0x11014df
-  474d44:	30 00                	xor    BYTE PTR [rax],al
-  474d46:	69 b1 16 07 d0 1f bb 	imul   esi,DWORD PTR [rcx+0x1fd00716],0x600401bb
-  474d4d:	01 04 60 
-  474d50:	10 17                	adc    BYTE PTR [rdi],dl
-  474d52:	73 01                	jae    474d55 <compressed_data+0x675>
-  474d54:	07                   	(bad)  
-  474d55:	c5 82 50             	(bad)
-  474d58:	79 e1                	jns    474d3b <compressed_data+0x65b>
-  474d5a:	19 bb c1 17 7d c1    	sbb    DWORD PTR [rbx-0x3e82e83f],edi
-  474d60:	14 bb                	adc    al,0xbb
-  474d62:	11 18                	adc    DWORD PTR [rax],ebx
-  474d64:	82                   	(bad)  
-  474d65:	41 18 85 81 0d 02 f1 	sbb    BYTE PTR [r13-0xefdf27f],al
-  474d6c:	1f                   	(bad)  
-  474d6d:	c2 e4 28             	ret    0x28e4
-  474d70:	b2 02                	mov    dl,0x2
-  474d72:	03 63 b0             	add    esp,DWORD PTR [rbx-0x50]
-  474d75:	3d f2 11 50 4f       	cmp    eax,0x4f5011f2
-  474d7a:	b5 19                	mov    ch,0x19
-  474d7c:	96                   	xchg   esi,eax
-  474d7d:	e1 14                	loope  474d93 <compressed_data+0x6b3>
-  474d7f:	0e                   	(bad)  
-  474d80:	45 19 0f             	sbb    DWORD PTR [r15],r9d
-  474d83:	24 1e                	and    al,0x1e
-  474d85:	c8 82 56 f2          	enter  0x5682,0xf2
-  474d89:	31 2c a2             	xor    DWORD PTR [rdx+riz*4],ebp
-  474d8c:	11 2d bb 61 1a a8    	adc    DWORD PTR [rip+0xffffffffa81a61bb],ebp        # ffffffffa861af4d <_end+0xffffffffa815f635>
-  474d92:	91                   	xchg   ecx,eax
-  474d93:	32 f2                	xor    dh,dl
-  474d95:	31 25 30 c4 1b 14    	xor    DWORD PTR [rip+0x141bc430],esp        # 146311cb <_end+0x141758b3>
-  474d9b:	70 1c                	jo     474db9 <compressed_data+0x6d9>
-  474d9d:	14 70                	adc    al,0x70
-  474d9f:	1f                   	(bad)  
-  474da0:	1b c1                	sbb    eax,ecx
-  474da2:	11 1d a1 57 01 61    	adc    DWORD PTR [rip+0x610157a1],ebx        # 6148a549 <_end+0x60fcec31>
-  474da8:	11 17                	adc    DWORD PTR [rdi],edx
-  474daa:	31 50 f2             	xor    DWORD PTR [rax-0xe],edx
-  474dad:	24 51                	and    al,0x51
-  474daf:	ef                   	out    dx,eax
-  474db0:	44 3f                	rex.R (bad) 
-  474db2:	d1 c2                	rol    edx,1
-  474db4:	17                   	(bad)  
-  474db5:	b4 11                	mov    ah,0x11
-  474db7:	4f c5 21 1c          	(bad)
-  474dbb:	c6                   	(bad)  
-  474dbc:	31 1c 2a             	xor    DWORD PTR [rdx+rbp*1],ebx
-  474dbf:	81 01 ff 31 04 03    	add    DWORD PTR [rcx],0x30431ff
-  474dc5:	e0 03                	loopne 474dca <compressed_data+0x6ea>
-  474dc7:	60                   	(bad)  
-  474dc8:	10 06                	adc    BYTE PTR [rsi],al
-  474dca:	62                   	(bad)  
-  474dcb:	05 54 00 31 04       	add    eax,0x4310054
-  474dd0:	63 b0 1f d5 b1 1b    	movsxd esi,DWORD PTR [rax+0x1bb1d51f]
-  474dd6:	d9 93 1d db 31 2e    	fst    DWORD PTR [rbx+0x2e31db1d]
-  474ddc:	31 42 1f             	xor    DWORD PTR [rdx+0x1f],eax
-  474ddf:	cd b2                	int    0xb2
-  474de1:	1f                   	(bad)  
-  474de2:	71 32                	jno    474e16 <compressed_data+0x736>
-  474de4:	2c 74                	sub    al,0x74
-  474de6:	35 2c 75 b2 1f       	xor    eax,0x1fb2752c
-  474deb:	f2 b1 1e             	repnz mov cl,0x1e
-  474dee:	ed                   	in     eax,dx
-  474def:	21 51 4e             	and    DWORD PTR [rcx+0x4e],edx
-  474df2:	d1 59 cd             	rcr    DWORD PTR [rcx-0x33],1
-  474df5:	b2 19                	mov    dl,0x19
-  474df7:	77 c5                	ja     474dbe <compressed_data+0x6de>
-  474df9:	41 88 a5 53 48 b5 2b 	mov    BYTE PTR [r13+0x2bb54853],spl
-  474e00:	fc                   	cld    
-  474e01:	e1 16                	loope  474e19 <compressed_data+0x739>
-  474e03:	bb f1 1f 01 32       	mov    ebx,0x32011ff1
-  474e08:	20 85 32 56 2a c1    	and    BYTE PTR [rbp-0x3ed5a9ce],al
-  474e0e:	01 c7                	add    edi,eax
-  474e10:	d2 19                	rcr    BYTE PTR [rcx],cl
-  474e12:	fe 44 24 63          	inc    BYTE PTR [rsp+0x63]
-  474e16:	f0 5b                	lock pop rbx
-  474e18:	06                   	(bad)  
-  474e19:	30 06                	xor    BYTE PTR [rsi],al
-  474e1b:	83 f5 1f             	xor    ebp,0x1f
-  474e1e:	60                   	(bad)  
-  474e1f:	00 06                	add    BYTE PTR [rsi],al
-  474e21:	57                   	push   rdi
-  474e22:	03 06                	add    eax,DWORD PTR [rsi]
-  474e24:	62                   	(bad)  
-  474e25:	b5 1b                	mov    ch,0x1b
-  474e27:	30 60 21             	xor    BYTE PTR [rax+0x21],ah
-  474e2a:	91                   	xchg   ecx,eax
-  474e2b:	03 22                	add    esp,DWORD PTR [rdx]
-  474e2d:	16                   	(bad)  
-  474e2e:	43 58                	rex.XB pop r8
-  474e30:	53                   	push   rbx
-  474e31:	f2 03 d4             	repnz add edx,esp
-  474e34:	85 5d 02             	test   DWORD PTR [rbp+0x2],ebx
-  474e37:	31 22                	xor    DWORD PTR [rdx],esp
-  474e39:	03 f0                	add    esi,eax
-  474e3b:	03 8f 72 5c b9 e2    	add    ecx,DWORD PTR [rdi-0x1d46a38e]
-  474e41:	5c                   	pop    rsp
-  474e42:	ab                   	stos   DWORD PTR es:[rdi],eax
-  474e43:	35 23 01 f1 1f       	xor    eax,0x1ff10123
-  474e48:	c6 85 5e c2 f5 28 7e 	mov    BYTE PTR [rbp+0x28f5c25e],0x7e
-  474e4f:	40 5d                	rex pop rbp
-  474e51:	4c e3 4d             	rex.WR jrcxz 474ea1 <compressed_data+0x7c1>
-  474e54:	a4                   	movs   BYTE PTR es:[rdi],BYTE PTR ds:[rsi]
-  474e55:	71 5b                	jno    474eb2 <compressed_data+0x7d2>
-  474e57:	94                   	xchg   esp,eax
-  474e58:	75 43                	jne    474e9d <compressed_data+0x7bd>
-  474e5a:	ba f5 5c c2 42       	mov    edx,0x42c25cf5
-  474e5f:	2c f7                	sub    al,0xf7
-  474e61:	71 36                	jno    474e99 <compressed_data+0x7b9>
-  474e63:	cc                   	int3   
-  474e64:	d5                   	(bad)  
-  474e65:	23 fe                	and    edi,esi
-  474e67:	f5                   	cmc    
-  474e68:	5c                   	pop    rsp
-  474e69:	f2 05 5a 8b 65 60    	repnz add eax,0x60658b5a
-  474e6f:	46 b2 07             	rex.RX mov dl,0x7
-  474e72:	3b 80 59 bb 61 34    	cmp    eax,DWORD PTR [rax+0x3461bb59]
-  474e78:	d1 f5                	shl    ebp,1
-  474e7a:	28 e2                	sub    dl,ah
-  474e7c:	63 4a 7c             	movsxd ecx,DWORD PTR [rdx+0x7c]
-  474e7f:	a1 38 ee 64 06 97 c5 	movabs eax,ds:0x431ac5970664ee38
-  474e86:	1a 43 
-  474e88:	d0 51 09             	rcl    BYTE PTR [rcx+0x9],1
-  474e8b:	83 25 53 a5 25 bb f1 	and    DWORD PTR [rip+0xffffffffbb25a553],0xfffffff1        # ffffffffbb6cf3e5 <_end+0xffffffffbb213acd>
-  474e92:	07                   	(bad)  
-  474e93:	66 60                	data16 (bad) 
-  474e95:	04 16                	add    al,0x16
-  474e97:	e0 01                	loopne 474e9a <compressed_data+0x7ba>
-  474e99:	16                   	(bad)  
-  474e9a:	60                   	(bad)  
-  474e9b:	04 66                	add    al,0x66
-  474e9d:	30 58 21             	xor    BYTE PTR [rax+0x21],bl
-  474ea0:	36 62                	ss (bad) 
-  474ea2:	25 b6 2e 02 71       	and    eax,0x71022eb6
-  474ea7:	13 18                	adc    ebx,DWORD PTR [rax]
-  474ea9:	b6 07                	mov    dh,0x7
-  474eab:	63 60 06             	movsxd esp,DWORD PTR [rax+0x6]
-  474eae:	5c                   	pop    rsp
-  474eaf:	b0 1b                	mov    al,0x1b
-  474eb1:	8f 02                	pop    QWORD PTR [rdx]
-  474eb3:	61                   	(bad)  
-  474eb4:	11 e6                	adc    esi,esp
-  474eb6:	62                   	(bad)  
-  474eb7:	10 d4                	adc    ah,dl
-  474eb9:	50                   	push   rax
-  474eba:	01 41 27             	add    DWORD PTR [rcx+0x27],eax
-  474ebd:	b0 95                	mov    al,0x95
-  474ebf:	39 01                	cmp    DWORD PTR [rcx],eax
-  474ec1:	81 27 8b 81 4e 66    	and    DWORD PTR [rdi],0x664e818b
-  474ec7:	d0 27                	shl    BYTE PTR [rdi],1
-  474ec9:	02 a1 2e 7f 72 62    	add    ah,BYTE PTR [rcx+0x62727f2e]
-  474ecf:	83 35 06 82 72 30 36 	xor    DWORD PTR [rip+0x30728206],0x36        # 30b9d0dc <_end+0x306e17c4>
-  474ed6:	56                   	push   rsi
-  474ed7:	63 88 f2 07 8a 82    	movsxd ecx,DWORD PTR [rax-0x7d75f80e]
-  474edd:	63 01                	movsxd eax,DWORD PTR [rcx]
-  474edf:	41 2b 36             	sub    esi,DWORD PTR [r14]
-  474ee2:	d6                   	(bad)  
-  474ee3:	4d 3a 62 4a          	rex.WRB cmp r12b,BYTE PTR [r10+0x4a]
-  474ee7:	e4 61                	in     al,0x61
-  474ee9:	29 5c 65 63          	sub    DWORD PTR [rbp+riz*2+0x63],ebx
-  474eed:	6b b0 07 2e 02 07 02 	imul   esi,DWORD PTR [rax+0x7022e07],0x2
-  474ef4:	f1                   	icebp  
-  474ef5:	03 a6 d4 61 45 e6    	add    esp,DWORD PTR [rsi-0x19ba9e2c]
-  474efb:	5e                   	pop    rsi
-  474efc:	85 22                	test   DWORD PTR [rdx],esp
-  474efe:	4c 61                	rex.WR (bad) 
-  474f00:	35 5e f9 e4 07       	xor    eax,0x7e4f95e
-  474f05:	5a                   	pop    rdx
-  474f06:	80 2c 3b 06          	sub    BYTE PTR [rbx+rdi*1],0x6
-  474f0a:	10 36                	adc    BYTE PTR [rsi],dh
-  474f0c:	66 63 e9             	movsxd bp,ecx
-  474f0f:	25 67 b2 72 50       	and    eax,0x5072b267
-  474f14:	2d d3 2a ae d2       	sub    eax,0xd2ae2ad3
-  474f19:	29 35 26 2b b3 f2    	sub    DWORD PTR [rip+0xfffffffff2b32b26],esi        # fffffffff2fa7a45 <_end+0xfffffffff2aec12d>
-  474f1f:	55                   	push   rbp
-  474f20:	52                   	push   rdx
-  474f21:	b5 52                	mov    ch,0x52
-  474f23:	7b 03                	jnp    474f28 <compressed_data+0x848>
-  474f25:	62 63                	(bad)  
-  474f27:	10 03                	adc    BYTE PTR [rbx],al
-  474f29:	e3 f1                	jrcxz  474f1c <compressed_data+0x83c>
-  474f2b:	59                   	pop    rcx
-  474f2c:	83 c5 03             	add    ebp,0x3
-  474f2f:	a5                   	movs   DWORD PTR es:[rdi],DWORD PTR ds:[rsi]
-  474f30:	42 15 70 06 00 42    	rex.X adc eax,0x42000670
-  474f36:	05 2a 1c 80 03       	add    eax,0x3801c2a
-  474f3b:	4d                   	rex.WRB
-  474f3c:	65 17                	gs (bad) 
-  474f3e:	2e 06                	cs (bad) 
-  474f40:	5b                   	pop    rbx
-  474f41:	75 b2                	jne    474ef5 <compressed_data+0x815>
-  474f43:	63 46 c3             	movsxd eax,DWORD PTR [rsi-0x3d]
-  474f46:	5b                   	pop    rbx
-  474f47:	cd 92                	int    0x92
-  474f49:	43 d0 92 69 e4 e2 35 	rex.XB rcl BYTE PTR [r10+0x35e2e469],1
-  474f50:	48 61                	rex.W (bad) 
-  474f52:	32 01                	xor    al,BYTE PTR [rcx]
-  474f54:	71 2d                	jno    474f83 <compressed_data+0x8a3>
-  474f56:	63 d2                	movsxd edx,edx
-  474f58:	61                   	(bad)  
-  474f59:	93                   	xchg   ebx,eax
-  474f5a:	72 1f                	jb     474f7b <compressed_data+0x89b>
-  474f5c:	ff c1                	inc    ecx
-  474f5e:	1a 6b 96             	sbb    ch,BYTE PTR [rbx-0x6a]
-  474f61:	3c 20                	cmp    al,0x20
-  474f63:	72 21                	jb     474f86 <compressed_data+0x8a6>
-  474f65:	6d                   	ins    DWORD PTR es:[rdi],dx
-  474f66:	12 6a f2             	adc    ch,BYTE PTR [rdx-0xe]
-  474f69:	f5                   	cmc    
-  474f6a:	07                   	(bad)  
-  474f6b:	03 a0 6a 8d 62 02    	add    esp,DWORD PTR [rax+0x2628d6a]
-  474f71:	e9 a2 65 f7 31       	jmp    323eb518 <_end+0x31f2fc00>
-  474f76:	31 31                	xor    DWORD PTR [rcx],esi
-  474f78:	93                   	xchg   ebx,eax
-  474f79:	52                   	push   rdx
-  474f7a:	a3 26 2f 7c 61 66 fa 	movabs ds:0x37a5fa66617c2f26,eax
-  474f81:	a5 37 
+  433788:	48 89 c6             	mov    rsi,rax
+  43378b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433792:	00 
+  433793:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43379a:	00 00 
+  43379c:	75 61                	jne    4337ff <MEMORY_T::POKE64(double, double)+0x29f2f>
+  43379e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4337a5:	31 d2                	xor    edx,edx
+  4337a7:	bf 01 00 00 00       	mov    edi,0x1
+  4337ac:	5b                   	pop    rbx
+  4337ad:	5d                   	pop    rbp
+  4337ae:	41 5c                	pop    r12
+  4337b0:	41 5d                	pop    r13
+  4337b2:	41 5e                	pop    r14
+  4337b4:	41 5f                	pop    r15
+  4337b6:	e9 05 02 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 149: print #1, "isamplerCube";
+  4337bb:	be 0c 00 00 00       	mov    esi,0xc
+  4337c0:	48 8d 3d 52 b1 04 00 	lea    rdi,[rip+0x4b152]        # 47e919 <_IO_stdin_used+0x1919>
+  4337c7:	e8 c4 3d 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4337cc:	48 89 c6             	mov    rsi,rax
+  4337cf:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4337d6:	00 
+  4337d7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4337de:	00 00 
+  4337e0:	75 22                	jne    433804 <MEMORY_T::POKE64(double, double)+0x29f34>
+  4337e2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4337e9:	31 d2                	xor    edx,edx
+  4337eb:	bf 01 00 00 00       	mov    edi,0x1
+  4337f0:	5b                   	pop    rbx
+  4337f1:	5d                   	pop    rbp
+  4337f2:	41 5c                	pop    r12
+  4337f4:	41 5d                	pop    r13
+  4337f6:	41 5e                	pop    r14
+  4337f8:	41 5f                	pop    r15
+  4337fa:	e9 c1 01 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 150: print #1, "isconnected";
+  4337ff:	e8 7c 20 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 149: print #1, "isamplerCube";
+  433804:	e8 77 20 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 148: print #1, "glsl ";
+  433809:	be 05 00 00 00       	mov    esi,0x5
+  43380e:	48 8d 3d fe b0 04 00 	lea    rdi,[rip+0x4b0fe]        # 47e913 <_IO_stdin_used+0x1913>
+  433815:	e8 76 3d 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43381a:	48 89 c6             	mov    rsi,rax
+  43381d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433824:	00 
+  433825:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43382c:	00 00 
+  43382e:	75 61                	jne    433891 <MEMORY_T::POKE64(double, double)+0x29fc1>
+  433830:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433837:	31 d2                	xor    edx,edx
+  433839:	bf 01 00 00 00       	mov    edi,0x1
+  43383e:	5b                   	pop    rbx
+  43383f:	5d                   	pop    rbp
+  433840:	41 5c                	pop    r12
+  433842:	41 5d                	pop    r13
+  433844:	41 5e                	pop    r14
+  433846:	41 5f                	pop    r15
+  433848:	e9 73 01 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 147: print #1, "iSampleRate";
+  43384d:	be 0b 00 00 00       	mov    esi,0xb
+  433852:	48 8d 3d ae b0 04 00 	lea    rdi,[rip+0x4b0ae]        # 47e907 <_IO_stdin_used+0x1907>
+  433859:	e8 32 3d 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43385e:	48 89 c6             	mov    rsi,rax
+  433861:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433868:	00 
+  433869:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433870:	00 00 
+  433872:	75 22                	jne    433896 <MEMORY_T::POKE64(double, double)+0x29fc6>
+  433874:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43387b:	31 d2                	xor    edx,edx
+  43387d:	bf 01 00 00 00       	mov    edi,0x1
+  433882:	5b                   	pop    rbx
+  433883:	5d                   	pop    rbp
+  433884:	41 5c                	pop    r12
+  433886:	41 5d                	pop    r13
+  433888:	41 5e                	pop    r14
+  43388a:	41 5f                	pop    r15
+  43388c:	e9 2f 01 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 148: print #1, "glsl ";
+  433891:	e8 ea 1f fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 147: print #1, "iSampleRate";
+  433896:	e8 e5 1f fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 146: print #1, "isampler3D";
+  43389b:	be 0a 00 00 00       	mov    esi,0xa
+  4338a0:	48 8d 3d 55 b0 04 00 	lea    rdi,[rip+0x4b055]        # 47e8fc <_IO_stdin_used+0x18fc>
+  4338a7:	e8 e4 3c 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4338ac:	48 89 c6             	mov    rsi,rax
+  4338af:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4338b6:	00 
+  4338b7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4338be:	00 00 
+  4338c0:	75 61                	jne    433923 <MEMORY_T::POKE64(double, double)+0x2a053>
+  4338c2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4338c9:	31 d2                	xor    edx,edx
+  4338cb:	bf 01 00 00 00       	mov    edi,0x1
+  4338d0:	5b                   	pop    rbx
+  4338d1:	5d                   	pop    rbp
+  4338d2:	41 5c                	pop    r12
+  4338d4:	41 5d                	pop    r13
+  4338d6:	41 5e                	pop    r14
+  4338d8:	41 5f                	pop    r15
+  4338da:	e9 e1 00 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 145: print #1, "isampler2DRect";
+  4338df:	be 0e 00 00 00       	mov    esi,0xe
+  4338e4:	48 8d 3d 02 b0 04 00 	lea    rdi,[rip+0x4b002]        # 47e8ed <_IO_stdin_used+0x18ed>
+  4338eb:	e8 a0 3c 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4338f0:	48 89 c6             	mov    rsi,rax
+  4338f3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4338fa:	00 
+  4338fb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433902:	00 00 
+  433904:	75 22                	jne    433928 <MEMORY_T::POKE64(double, double)+0x2a058>
+  433906:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43390d:	31 d2                	xor    edx,edx
+  43390f:	bf 01 00 00 00       	mov    edi,0x1
+  433914:	5b                   	pop    rbx
+  433915:	5d                   	pop    rbp
+  433916:	41 5c                	pop    r12
+  433918:	41 5d                	pop    r13
+  43391a:	41 5e                	pop    r14
+  43391c:	41 5f                	pop    r15
+  43391e:	e9 9d 00 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 146: print #1, "isampler3D";
+  433923:	e8 58 1f fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 145: print #1, "isampler2DRect";
+  433928:	e8 53 1f fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 144: print #1, "isampler2DArray";
+  43392d:	be 0f 00 00 00       	mov    esi,0xf
+  433932:	48 8d 3d a4 af 04 00 	lea    rdi,[rip+0x4afa4]        # 47e8dd <_IO_stdin_used+0x18dd>
+  433939:	e8 52 3c 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43393e:	48 89 c6             	mov    rsi,rax
+  433941:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433948:	00 
+  433949:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433950:	00 00 
+  433952:	75 61                	jne    4339b5 <MEMORY_T::POKE64(double, double)+0x2a0e5>
+  433954:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43395b:	31 d2                	xor    edx,edx
+  43395d:	bf 01 00 00 00       	mov    edi,0x1
+  433962:	5b                   	pop    rbx
+  433963:	5d                   	pop    rbp
+  433964:	41 5c                	pop    r12
+  433966:	41 5d                	pop    r13
+  433968:	41 5e                	pop    r14
+  43396a:	41 5f                	pop    r15
+  43396c:	e9 4f 00 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 143: print #1, "isampler2D";
+  433971:	be 0a 00 00 00       	mov    esi,0xa
+  433976:	48 8d 3d 55 af 04 00 	lea    rdi,[rip+0x4af55]        # 47e8d2 <_IO_stdin_used+0x18d2>
+  43397d:	e8 0e 3c 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433982:	48 89 c6             	mov    rsi,rax
+  433985:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43398c:	00 
+  43398d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433994:	00 00 
+  433996:	75 22                	jne    4339ba <MEMORY_T::POKE64(double, double)+0x2a0ea>
+  433998:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43399f:	31 d2                	xor    edx,edx
+  4339a1:	bf 01 00 00 00       	mov    edi,0x1
+  4339a6:	5b                   	pop    rbx
+  4339a7:	5d                   	pop    rbp
+  4339a8:	41 5c                	pop    r12
+  4339aa:	41 5d                	pop    r13
+  4339ac:	41 5e                	pop    r14
+  4339ae:	41 5f                	pop    r15
+  4339b0:	e9 0b 00 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 144: print #1, "isampler2DArray";
+  4339b5:	e8 c6 1e fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 143: print #1, "isampler2D";
+  4339ba:	e8 c1 1e fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 142: print #1, "isampler1DArray";
+  4339bf:	be 0f 00 00 00       	mov    esi,0xf
+  4339c4:	48 8d 3d f7 ae 04 00 	lea    rdi,[rip+0x4aef7]        # 47e8c2 <_IO_stdin_used+0x18c2>
+  4339cb:	e8 c0 3b 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4339d0:	48 89 c6             	mov    rsi,rax
+  4339d3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4339da:	00 
+  4339db:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4339e2:	00 00 
+  4339e4:	75 61                	jne    433a47 <MEMORY_T::POKE64(double, double)+0x2a177>
+  4339e6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4339ed:	31 d2                	xor    edx,edx
+  4339ef:	bf 01 00 00 00       	mov    edi,0x1
+  4339f4:	5b                   	pop    rbx
+  4339f5:	5d                   	pop    rbp
+  4339f6:	41 5c                	pop    r12
+  4339f8:	41 5d                	pop    r13
+  4339fa:	41 5e                	pop    r14
+  4339fc:	41 5f                	pop    r15
+  4339fe:	e9 bd ff 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 141: print #1, "isampler1D";
+  433a03:	be 0a 00 00 00       	mov    esi,0xa
+  433a08:	48 8d 3d a8 ae 04 00 	lea    rdi,[rip+0x4aea8]        # 47e8b7 <_IO_stdin_used+0x18b7>
+  433a0f:	e8 7c 3b 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433a14:	48 89 c6             	mov    rsi,rax
+  433a17:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433a1e:	00 
+  433a1f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433a26:	00 00 
+  433a28:	75 22                	jne    433a4c <MEMORY_T::POKE64(double, double)+0x2a17c>
+  433a2a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433a31:	31 d2                	xor    edx,edx
+  433a33:	bf 01 00 00 00       	mov    edi,0x1
+  433a38:	5b                   	pop    rbx
+  433a39:	5d                   	pop    rbp
+  433a3a:	41 5c                	pop    r12
+  433a3c:	41 5d                	pop    r13
+  433a3e:	41 5e                	pop    r14
+  433a40:	41 5f                	pop    r15
+  433a42:	e9 79 ff 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 142: print #1, "isampler1DArray";
+  433a47:	e8 34 1e fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 141: print #1, "isampler1D";
+  433a4c:	e8 2f 1e fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 140: print #1, "is";
+  433a51:	be 02 00 00 00       	mov    esi,0x2
+  433a56:	48 8d 3d ae c5 04 00 	lea    rdi,[rip+0x4c5ae]        # 48000b <_IO_stdin_used+0x300b>
+  433a5d:	e8 2e 3b 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433a62:	48 89 c6             	mov    rsi,rax
+  433a65:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433a6c:	00 
+  433a6d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433a74:	00 00 
+  433a76:	75 61                	jne    433ad9 <MEMORY_T::POKE64(double, double)+0x2a209>
+  433a78:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433a7f:	31 d2                	xor    edx,edx
+  433a81:	bf 01 00 00 00       	mov    edi,0x1
+  433a86:	5b                   	pop    rbx
+  433a87:	5d                   	pop    rbp
+  433a88:	41 5c                	pop    r12
+  433a8a:	41 5d                	pop    r13
+  433a8c:	41 5e                	pop    r14
+  433a8e:	41 5f                	pop    r15
+  433a90:	e9 2b ff 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 139: print #1, "irid_wavelength";
+  433a95:	be 0f 00 00 00       	mov    esi,0xf
+  433a9a:	48 8d 3d 06 ae 04 00 	lea    rdi,[rip+0x4ae06]        # 47e8a7 <_IO_stdin_used+0x18a7>
+  433aa1:	e8 ea 3a 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433aa6:	48 89 c6             	mov    rsi,rax
+  433aa9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433ab0:	00 
+  433ab1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433ab8:	00 00 
+  433aba:	75 22                	jne    433ade <MEMORY_T::POKE64(double, double)+0x2a20e>
+  433abc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433ac3:	31 d2                	xor    edx,edx
+  433ac5:	bf 01 00 00 00       	mov    edi,0x1
+  433aca:	5b                   	pop    rbx
+  433acb:	5d                   	pop    rbp
+  433acc:	41 5c                	pop    r12
+  433ace:	41 5d                	pop    r13
+  433ad0:	41 5e                	pop    r14
+  433ad2:	41 5f                	pop    r15
+  433ad4:	e9 e7 fe 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 140: print #1, "is";
+  433ad9:	e8 a2 1d fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 139: print #1, "irid_wavelength";
+  433ade:	e8 9d 1d fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 138: print #1, "irid";
+  433ae3:	be 04 00 00 00       	mov    esi,0x4
+  433ae8:	48 8d 3d b3 ad 04 00 	lea    rdi,[rip+0x4adb3]        # 47e8a2 <_IO_stdin_used+0x18a2>
+  433aef:	e8 9c 3a 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433af4:	48 89 c6             	mov    rsi,rax
+  433af7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433afe:	00 
+  433aff:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433b06:	00 00 
+  433b08:	75 61                	jne    433b6b <MEMORY_T::POKE64(double, double)+0x2a29b>
+  433b0a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433b11:	31 d2                	xor    edx,edx
+  433b13:	bf 01 00 00 00       	mov    edi,0x1
+  433b18:	5b                   	pop    rbx
+  433b19:	5d                   	pop    rbp
+  433b1a:	41 5c                	pop    r12
+  433b1c:	41 5d                	pop    r13
+  433b1e:	41 5e                	pop    r14
+  433b20:	41 5f                	pop    r15
+  433b22:	e9 99 fe 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 137: print #1, "iResolution";
+  433b27:	be 0b 00 00 00       	mov    esi,0xb
+  433b2c:	48 8d 3d eb 98 04 00 	lea    rdi,[rip+0x498eb]        # 47d41e <_IO_stdin_used+0x41e>
+  433b33:	e8 58 3a 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433b38:	48 89 c6             	mov    rsi,rax
+  433b3b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433b42:	00 
+  433b43:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433b4a:	00 00 
+  433b4c:	75 22                	jne    433b70 <MEMORY_T::POKE64(double, double)+0x2a2a0>
+  433b4e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433b55:	31 d2                	xor    edx,edx
+  433b57:	bf 01 00 00 00       	mov    edi,0x1
+  433b5c:	5b                   	pop    rbx
+  433b5d:	5d                   	pop    rbp
+  433b5e:	41 5c                	pop    r12
+  433b60:	41 5d                	pop    r13
+  433b62:	41 5e                	pop    r14
+  433b64:	41 5f                	pop    r15
+  433b66:	e9 55 fe 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 138: print #1, "irid";
+  433b6b:	e8 10 1d fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 137: print #1, "iResolution";
+  433b70:	e8 0b 1d fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 136: print #1, "i_resolution";
+  433b75:	be 0c 00 00 00       	mov    esi,0xc
+  433b7a:	48 8d 3d 14 ad 04 00 	lea    rdi,[rip+0x4ad14]        # 47e895 <_IO_stdin_used+0x1895>
+  433b81:	e8 0a 3a 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433b86:	48 89 c6             	mov    rsi,rax
+  433b89:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433b90:	00 
+  433b91:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433b98:	00 00 
+  433b9a:	75 61                	jne    433bfd <MEMORY_T::POKE64(double, double)+0x2a32d>
+  433b9c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433ba3:	31 d2                	xor    edx,edx
+  433ba5:	bf 01 00 00 00       	mov    edi,0x1
+  433baa:	5b                   	pop    rbx
+  433bab:	5d                   	pop    rbp
+  433bac:	41 5c                	pop    r12
+  433bae:	41 5d                	pop    r13
+  433bb0:	41 5e                	pop    r14
+  433bb2:	41 5f                	pop    r15
+  433bb4:	e9 07 fe 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 135: print #1, "ior";
+  433bb9:	be 03 00 00 00       	mov    esi,0x3
+  433bbe:	48 8d 3d 3a ac 04 00 	lea    rdi,[rip+0x4ac3a]        # 47e7ff <_IO_stdin_used+0x17ff>
+  433bc5:	e8 c6 39 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433bca:	48 89 c6             	mov    rsi,rax
+  433bcd:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433bd4:	00 
+  433bd5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433bdc:	00 00 
+  433bde:	75 22                	jne    433c02 <MEMORY_T::POKE64(double, double)+0x2a332>
+  433be0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433be7:	31 d2                	xor    edx,edx
+  433be9:	bf 01 00 00 00       	mov    edi,0x1
+  433bee:	5b                   	pop    rbx
+  433bef:	5d                   	pop    rbp
+  433bf0:	41 5c                	pop    r12
+  433bf2:	41 5d                	pop    r13
+  433bf4:	41 5e                	pop    r14
+  433bf6:	41 5f                	pop    r15
+  433bf8:	e9 c3 fd 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 136: print #1, "i_resolution";
+  433bfd:	e8 7e 1c fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 135: print #1, "ior";
+  433c02:	e8 79 1c fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 134: print #1, "ioctl";
+  433c07:	be 05 00 00 00       	mov    esi,0x5
+  433c0c:	48 8d 3d 7c ac 04 00 	lea    rdi,[rip+0x4ac7c]        # 47e88f <_IO_stdin_used+0x188f>
+  433c13:	e8 78 39 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433c18:	48 89 c6             	mov    rsi,rax
+  433c1b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433c22:	00 
+  433c23:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433c2a:	00 00 
+  433c2c:	75 61                	jne    433c8f <MEMORY_T::POKE64(double, double)+0x2a3bf>
+  433c2e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433c35:	31 d2                	xor    edx,edx
+  433c37:	bf 01 00 00 00       	mov    edi,0x1
+  433c3c:	5b                   	pop    rbx
+  433c3d:	5d                   	pop    rbp
+  433c3e:	41 5c                	pop    r12
+  433c40:	41 5d                	pop    r13
+  433c42:	41 5e                	pop    r14
+  433c44:	41 5f                	pop    r15
+  433c46:	e9 75 fd 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 133: print #1, "i-o-control";
+  433c4b:	be 0b 00 00 00       	mov    esi,0xb
+  433c50:	48 8d 3d 2c ac 04 00 	lea    rdi,[rip+0x4ac2c]        # 47e883 <_IO_stdin_used+0x1883>
+  433c57:	e8 34 39 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433c5c:	48 89 c6             	mov    rsi,rax
+  433c5f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433c66:	00 
+  433c67:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433c6e:	00 00 
+  433c70:	75 22                	jne    433c94 <MEMORY_T::POKE64(double, double)+0x2a3c4>
+  433c72:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433c79:	31 d2                	xor    edx,edx
+  433c7b:	bf 01 00 00 00       	mov    edi,0x1
+  433c80:	5b                   	pop    rbx
+  433c81:	5d                   	pop    rbp
+  433c82:	41 5c                	pop    r12
+  433c84:	41 5d                	pop    r13
+  433c86:	41 5e                	pop    r14
+  433c88:	41 5f                	pop    r15
+  433c8a:	e9 31 fd 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 134: print #1, "ioctl";
+  433c8f:	e8 ec 1b fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 133: print #1, "i-o-control";
+  433c94:	e8 e7 1b fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 132: print #1, "i-o";
+  433c99:	be 03 00 00 00       	mov    esi,0x3
+  433c9e:	48 8d 3d da ab 04 00 	lea    rdi,[rip+0x4abda]        # 47e87f <_IO_stdin_used+0x187f>
+  433ca5:	e8 e6 38 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433caa:	48 89 c6             	mov    rsi,rax
+  433cad:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433cb4:	00 
+  433cb5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433cbc:	00 00 
+  433cbe:	75 61                	jne    433d21 <MEMORY_T::POKE64(double, double)+0x2a451>
+  433cc0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433cc7:	31 d2                	xor    edx,edx
+  433cc9:	bf 01 00 00 00       	mov    edi,0x1
+  433cce:	5b                   	pop    rbx
+  433ccf:	5d                   	pop    rbp
+  433cd0:	41 5c                	pop    r12
+  433cd2:	41 5d                	pop    r13
+  433cd4:	41 5e                	pop    r14
+  433cd6:	41 5f                	pop    r15
+  433cd8:	e9 e3 fc 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 131: print #1, "invoke";
+  433cdd:	be 06 00 00 00       	mov    esi,0x6
+  433ce2:	48 8d 3d 8c a2 04 00 	lea    rdi,[rip+0x4a28c]        # 47df75 <_IO_stdin_used+0xf75>
+  433ce9:	e8 a2 38 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433cee:	48 89 c6             	mov    rsi,rax
+  433cf1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433cf8:	00 
+  433cf9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433d00:	00 00 
+  433d02:	75 22                	jne    433d26 <MEMORY_T::POKE64(double, double)+0x2a456>
+  433d04:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433d0b:	31 d2                	xor    edx,edx
+  433d0d:	bf 01 00 00 00       	mov    edi,0x1
+  433d12:	5b                   	pop    rbx
+  433d13:	5d                   	pop    rbp
+  433d14:	41 5c                	pop    r12
+  433d16:	41 5d                	pop    r13
+  433d18:	41 5e                	pop    r14
+  433d1a:	41 5f                	pop    r15
+  433d1c:	e9 9f fc 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 132: print #1, "i-o";
+  433d21:	e8 5a 1b fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 131: print #1, "invoke";
+  433d26:	e8 55 1b fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 130: print #1, "inversesqr";
+  433d2b:	be 0a 00 00 00       	mov    esi,0xa
+  433d30:	48 8d 3d 3d ab 04 00 	lea    rdi,[rip+0x4ab3d]        # 47e874 <_IO_stdin_used+0x1874>
+  433d37:	e8 54 38 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433d3c:	48 89 c6             	mov    rsi,rax
+  433d3f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433d46:	00 
+  433d47:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433d4e:	00 00 
+  433d50:	75 61                	jne    433db3 <MEMORY_T::POKE64(double, double)+0x2a4e3>
+  433d52:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433d59:	31 d2                	xor    edx,edx
+  433d5b:	bf 01 00 00 00       	mov    edi,0x1
+  433d60:	5b                   	pop    rbx
+  433d61:	5d                   	pop    rbp
+  433d62:	41 5c                	pop    r12
+  433d64:	41 5d                	pop    r13
+  433d66:	41 5e                	pop    r14
+  433d68:	41 5f                	pop    r15
+  433d6a:	e9 51 fc 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 129: print #1, "inverse";
+  433d6f:	be 07 00 00 00       	mov    esi,0x7
+  433d74:	48 8d 3d e0 b9 04 00 	lea    rdi,[rip+0x4b9e0]        # 47f75b <_IO_stdin_used+0x275b>
+  433d7b:	e8 10 38 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433d80:	48 89 c6             	mov    rsi,rax
+  433d83:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433d8a:	00 
+  433d8b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433d92:	00 00 
+  433d94:	75 22                	jne    433db8 <MEMORY_T::POKE64(double, double)+0x2a4e8>
+  433d96:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433d9d:	31 d2                	xor    edx,edx
+  433d9f:	bf 01 00 00 00       	mov    edi,0x1
+  433da4:	5b                   	pop    rbx
+  433da5:	5d                   	pop    rbp
+  433da6:	41 5c                	pop    r12
+  433da8:	41 5d                	pop    r13
+  433daa:	41 5e                	pop    r14
+  433dac:	41 5f                	pop    r15
+  433dae:	e9 0d fc 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 130: print #1, "inversesqr";
+  433db3:	e8 c8 1a fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 129: print #1, "inverse";
+  433db8:	e8 c3 1a fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 128: print #1, "invariant";
+  433dbd:	be 09 00 00 00       	mov    esi,0x9
+  433dc2:	48 8d 3d a1 aa 04 00 	lea    rdi,[rip+0x4aaa1]        # 47e86a <_IO_stdin_used+0x186a>
+  433dc9:	e8 c2 37 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433dce:	48 89 c6             	mov    rsi,rax
+  433dd1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433dd8:	00 
+  433dd9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433de0:	00 00 
+  433de2:	75 61                	jne    433e45 <MEMORY_T::POKE64(double, double)+0x2a575>
+  433de4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433deb:	31 d2                	xor    edx,edx
+  433ded:	bf 01 00 00 00       	mov    edi,0x1
+  433df2:	5b                   	pop    rbx
+  433df3:	5d                   	pop    rbp
+  433df4:	41 5c                	pop    r12
+  433df6:	41 5d                	pop    r13
+  433df8:	41 5e                	pop    r14
+  433dfa:	41 5f                	pop    r15
+  433dfc:	e9 bf fb 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 127: print #1, "invalid";
+  433e01:	be 07 00 00 00       	mov    esi,0x7
+  433e06:	48 8d 3d 55 aa 04 00 	lea    rdi,[rip+0x4aa55]        # 47e862 <_IO_stdin_used+0x1862>
+  433e0d:	e8 7e 37 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433e12:	48 89 c6             	mov    rsi,rax
+  433e15:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433e1c:	00 
+  433e1d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433e24:	00 00 
+  433e26:	75 22                	jne    433e4a <MEMORY_T::POKE64(double, double)+0x2a57a>
+  433e28:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433e2f:	31 d2                	xor    edx,edx
+  433e31:	bf 01 00 00 00       	mov    edi,0x1
+  433e36:	5b                   	pop    rbx
+  433e37:	5d                   	pop    rbp
+  433e38:	41 5c                	pop    r12
+  433e3a:	41 5d                	pop    r13
+  433e3c:	41 5e                	pop    r14
+  433e3e:	41 5f                	pop    r15
+  433e40:	e9 7b fb 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 128: print #1, "invariant";
+  433e45:	e8 36 1a fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 127: print #1, "invalid";
+  433e4a:	e8 31 1a fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 126: print #1, "intrinsic";
+  433e4f:	be 09 00 00 00       	mov    esi,0x9
+  433e54:	48 8d 3d fd a9 04 00 	lea    rdi,[rip+0x4a9fd]        # 47e858 <_IO_stdin_used+0x1858>
+  433e5b:	e8 30 37 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433e60:	48 89 c6             	mov    rsi,rax
+  433e63:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433e6a:	00 
+  433e6b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433e72:	00 00 
+  433e74:	75 61                	jne    433ed7 <MEMORY_T::POKE64(double, double)+0x2a607>
+  433e76:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433e7d:	31 d2                	xor    edx,edx
+  433e7f:	bf 01 00 00 00       	mov    edi,0x1
+  433e84:	5b                   	pop    rbx
+  433e85:	5d                   	pop    rbp
+  433e86:	41 5c                	pop    r12
+  433e88:	41 5d                	pop    r13
+  433e8a:	41 5e                	pop    r14
+  433e8c:	41 5f                	pop    r15
+  433e8e:	e9 2d fb 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 125: print #1, "into";
+  433e93:	be 04 00 00 00       	mov    esi,0x4
+  433e98:	48 8d 3d b4 a9 04 00 	lea    rdi,[rip+0x4a9b4]        # 47e853 <_IO_stdin_used+0x1853>
+  433e9f:	e8 ec 36 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433ea4:	48 89 c6             	mov    rsi,rax
+  433ea7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433eae:	00 
+  433eaf:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433eb6:	00 00 
+  433eb8:	75 22                	jne    433edc <MEMORY_T::POKE64(double, double)+0x2a60c>
+  433eba:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433ec1:	31 d2                	xor    edx,edx
+  433ec3:	bf 01 00 00 00       	mov    edi,0x1
+  433ec8:	5b                   	pop    rbx
+  433ec9:	5d                   	pop    rbp
+  433eca:	41 5c                	pop    r12
+  433ecc:	41 5d                	pop    r13
+  433ece:	41 5e                	pop    r14
+  433ed0:	41 5f                	pop    r15
+  433ed2:	e9 e9 fa 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 126: print #1, "intrinsic";
+  433ed7:	e8 a4 19 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 125: print #1, "into";
+  433edc:	e8 9f 19 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 124: print #1, "intervals";
+  433ee1:	be 09 00 00 00       	mov    esi,0x9
+  433ee6:	48 8d 3d 5c a9 04 00 	lea    rdi,[rip+0x4a95c]        # 47e849 <_IO_stdin_used+0x1849>
+  433eed:	e8 9e 36 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433ef2:	48 89 c6             	mov    rsi,rax
+  433ef5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433efc:	00 
+  433efd:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433f04:	00 00 
+  433f06:	75 61                	jne    433f69 <MEMORY_T::POKE64(double, double)+0x2a699>
+  433f08:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433f0f:	31 d2                	xor    edx,edx
+  433f11:	bf 01 00 00 00       	mov    edi,0x1
+  433f16:	5b                   	pop    rbx
+  433f17:	5d                   	pop    rbp
+  433f18:	41 5c                	pop    r12
+  433f1a:	41 5d                	pop    r13
+  433f1c:	41 5e                	pop    r14
+  433f1e:	41 5f                	pop    r15
+  433f20:	e9 9b fa 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 123: print #1, "interval";
+  433f25:	be 08 00 00 00       	mov    esi,0x8
+  433f2a:	48 8d 3d 0f a9 04 00 	lea    rdi,[rip+0x4a90f]        # 47e840 <_IO_stdin_used+0x1840>
+  433f31:	e8 5a 36 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433f36:	48 89 c6             	mov    rsi,rax
+  433f39:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433f40:	00 
+  433f41:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433f48:	00 00 
+  433f4a:	75 22                	jne    433f6e <MEMORY_T::POKE64(double, double)+0x2a69e>
+  433f4c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433f53:	31 d2                	xor    edx,edx
+  433f55:	bf 01 00 00 00       	mov    edi,0x1
+  433f5a:	5b                   	pop    rbx
+  433f5b:	5d                   	pop    rbp
+  433f5c:	41 5c                	pop    r12
+  433f5e:	41 5d                	pop    r13
+  433f60:	41 5e                	pop    r14
+  433f62:	41 5f                	pop    r15
+  433f64:	e9 57 fa 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 124: print #1, "intervals";
+  433f69:	e8 12 19 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 123: print #1, "interval";
+  433f6e:	e8 0d 19 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 122: print #1, "intersection";
+  433f73:	be 0c 00 00 00       	mov    esi,0xc
+  433f78:	48 8d 3d b4 a8 04 00 	lea    rdi,[rip+0x4a8b4]        # 47e833 <_IO_stdin_used+0x1833>
+  433f7f:	e8 0c 36 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433f84:	48 89 c6             	mov    rsi,rax
+  433f87:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433f8e:	00 
+  433f8f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433f96:	00 00 
+  433f98:	75 61                	jne    433ffb <MEMORY_T::POKE64(double, double)+0x2a72b>
+  433f9a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433fa1:	31 d2                	xor    edx,edx
+  433fa3:	bf 01 00 00 00       	mov    edi,0x1
+  433fa8:	5b                   	pop    rbx
+  433fa9:	5d                   	pop    rbp
+  433faa:	41 5c                	pop    r12
+  433fac:	41 5d                	pop    r13
+  433fae:	41 5e                	pop    r14
+  433fb0:	41 5f                	pop    r15
+  433fb2:	e9 09 fa 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 121: print #1, "intersect";
+  433fb7:	be 09 00 00 00       	mov    esi,0x9
+  433fbc:	48 8d 3d 66 a8 04 00 	lea    rdi,[rip+0x4a866]        # 47e829 <_IO_stdin_used+0x1829>
+  433fc3:	e8 c8 35 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  433fc8:	48 89 c6             	mov    rsi,rax
+  433fcb:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  433fd2:	00 
+  433fd3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  433fda:	00 00 
+  433fdc:	75 22                	jne    434000 <MEMORY_T::POKE64(double, double)+0x2a730>
+  433fde:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  433fe5:	31 d2                	xor    edx,edx
+  433fe7:	bf 01 00 00 00       	mov    edi,0x1
+  433fec:	5b                   	pop    rbx
+  433fed:	5d                   	pop    rbp
+  433fee:	41 5c                	pop    r12
+  433ff0:	41 5d                	pop    r13
+  433ff2:	41 5e                	pop    r14
+  433ff4:	41 5f                	pop    r15
+  433ff6:	e9 c5 f9 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 122: print #1, "intersection";
+  433ffb:	e8 80 18 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 121: print #1, "intersect";
+  434000:	e8 7b 18 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 120: print #1, "interpolate";
+  434005:	be 0b 00 00 00       	mov    esi,0xb
+  43400a:	48 8d 3d 0c a8 04 00 	lea    rdi,[rip+0x4a80c]        # 47e81d <_IO_stdin_used+0x181d>
+  434011:	e8 7a 35 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434016:	48 89 c6             	mov    rsi,rax
+  434019:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434020:	00 
+  434021:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434028:	00 00 
+  43402a:	75 61                	jne    43408d <MEMORY_T::POKE64(double, double)+0x2a7bd>
+  43402c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434033:	31 d2                	xor    edx,edx
+  434035:	bf 01 00 00 00       	mov    edi,0x1
+  43403a:	5b                   	pop    rbx
+  43403b:	5d                   	pop    rbp
+  43403c:	41 5c                	pop    r12
+  43403e:	41 5d                	pop    r13
+  434040:	41 5e                	pop    r14
+  434042:	41 5f                	pop    r15
+  434044:	e9 77 f9 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 119: print #1, "internal";
+  434049:	be 08 00 00 00       	mov    esi,0x8
+  43404e:	48 8d 3d bf a7 04 00 	lea    rdi,[rip+0x4a7bf]        # 47e814 <_IO_stdin_used+0x1814>
+  434055:	e8 36 35 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43405a:	48 89 c6             	mov    rsi,rax
+  43405d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434064:	00 
+  434065:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43406c:	00 00 
+  43406e:	75 22                	jne    434092 <MEMORY_T::POKE64(double, double)+0x2a7c2>
+  434070:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434077:	31 d2                	xor    edx,edx
+  434079:	bf 01 00 00 00       	mov    edi,0x1
+  43407e:	5b                   	pop    rbx
+  43407f:	5d                   	pop    rbp
+  434080:	41 5c                	pop    r12
+  434082:	41 5d                	pop    r13
+  434084:	41 5e                	pop    r14
+  434086:	41 5f                	pop    r15
+  434088:	e9 33 f9 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 120: print #1, "interpolate";
+  43408d:	e8 ee 17 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 119: print #1, "internal";
+  434092:	e8 e9 17 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 118: print #1, "interior_texture";
+  434097:	be 10 00 00 00       	mov    esi,0x10
+  43409c:	48 8d 3d 60 a7 04 00 	lea    rdi,[rip+0x4a760]        # 47e803 <_IO_stdin_used+0x1803>
+  4340a3:	e8 e8 34 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4340a8:	48 89 c6             	mov    rsi,rax
+  4340ab:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4340b2:	00 
+  4340b3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4340ba:	00 00 
+  4340bc:	75 61                	jne    43411f <MEMORY_T::POKE64(double, double)+0x2a84f>
+  4340be:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4340c5:	31 d2                	xor    edx,edx
+  4340c7:	bf 01 00 00 00       	mov    edi,0x1
+  4340cc:	5b                   	pop    rbx
+  4340cd:	5d                   	pop    rbp
+  4340ce:	41 5c                	pop    r12
+  4340d0:	41 5d                	pop    r13
+  4340d2:	41 5e                	pop    r14
+  4340d4:	41 5f                	pop    r15
+  4340d6:	e9 e5 f8 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 117: print #1, "interior";
+  4340db:	be 08 00 00 00       	mov    esi,0x8
+  4340e0:	48 8d 3d 13 a7 04 00 	lea    rdi,[rip+0x4a713]        # 47e7fa <_IO_stdin_used+0x17fa>
+  4340e7:	e8 a4 34 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4340ec:	48 89 c6             	mov    rsi,rax
+  4340ef:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4340f6:	00 
+  4340f7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4340fe:	00 00 
+  434100:	75 22                	jne    434124 <MEMORY_T::POKE64(double, double)+0x2a854>
+  434102:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434109:	31 d2                	xor    edx,edx
+  43410b:	bf 01 00 00 00       	mov    edi,0x1
+  434110:	5b                   	pop    rbx
+  434111:	5d                   	pop    rbp
+  434112:	41 5c                	pop    r12
+  434114:	41 5d                	pop    r13
+  434116:	41 5e                	pop    r14
+  434118:	41 5f                	pop    r15
+  43411a:	e9 a1 f8 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 118: print #1, "interior_texture";
+  43411f:	e8 5c 17 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 117: print #1, "interior";
+  434124:	e8 57 17 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 116: print #1, "interface";
+  434129:	be 09 00 00 00       	mov    esi,0x9
+  43412e:	48 8d 3d bb a6 04 00 	lea    rdi,[rip+0x4a6bb]        # 47e7f0 <_IO_stdin_used+0x17f0>
+  434135:	e8 56 34 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43413a:	48 89 c6             	mov    rsi,rax
+  43413d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434144:	00 
+  434145:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43414c:	00 00 
+  43414e:	75 61                	jne    4341b1 <MEMORY_T::POKE64(double, double)+0x2a8e1>
+  434150:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434157:	31 d2                	xor    edx,edx
+  434159:	bf 01 00 00 00       	mov    edi,0x1
+  43415e:	5b                   	pop    rbx
+  43415f:	5d                   	pop    rbp
+  434160:	41 5c                	pop    r12
+  434162:	41 5d                	pop    r13
+  434164:	41 5e                	pop    r14
+  434166:	41 5f                	pop    r15
+  434168:	e9 53 f8 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 115: print #1, "integer";
+  43416d:	be 07 00 00 00       	mov    esi,0x7
+  434172:	48 8d 3d 73 c4 04 00 	lea    rdi,[rip+0x4c473]        # 4805ec <_IO_stdin_used+0x35ec>
+  434179:	e8 12 34 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43417e:	48 89 c6             	mov    rsi,rax
+  434181:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434188:	00 
+  434189:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434190:	00 00 
+  434192:	75 22                	jne    4341b6 <MEMORY_T::POKE64(double, double)+0x2a8e6>
+  434194:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43419b:	31 d2                	xor    edx,edx
+  43419d:	bf 01 00 00 00       	mov    edi,0x1
+  4341a2:	5b                   	pop    rbx
+  4341a3:	5d                   	pop    rbp
+  4341a4:	41 5c                	pop    r12
+  4341a6:	41 5d                	pop    r13
+  4341a8:	41 5e                	pop    r14
+  4341aa:	41 5f                	pop    r15
+  4341ac:	e9 0f f8 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 116: print #1, "interface";
+  4341b1:	e8 ca 16 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 115: print #1, "integer";
+  4341b6:	e8 c5 16 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 114: print #1, "int";
+  4341bb:	be 03 00 00 00       	mov    esi,0x3
+  4341c0:	48 8d 3d b8 ad 04 00 	lea    rdi,[rip+0x4adb8]        # 47ef7f <_IO_stdin_used+0x1f7f>
+  4341c7:	e8 c4 33 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4341cc:	48 89 c6             	mov    rsi,rax
+  4341cf:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4341d6:	00 
+  4341d7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4341de:	00 00 
+  4341e0:	75 61                	jne    434243 <MEMORY_T::POKE64(double, double)+0x2a973>
+  4341e2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4341e9:	31 d2                	xor    edx,edx
+  4341eb:	bf 01 00 00 00       	mov    edi,0x1
+  4341f0:	5b                   	pop    rbx
+  4341f1:	5d                   	pop    rbp
+  4341f2:	41 5c                	pop    r12
+  4341f4:	41 5d                	pop    r13
+  4341f6:	41 5e                	pop    r14
+  4341f8:	41 5f                	pop    r15
+  4341fa:	e9 c1 f7 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 113: print #1, "instr";
+  4341ff:	be 05 00 00 00       	mov    esi,0x5
+  434204:	48 8d 3d df a5 04 00 	lea    rdi,[rip+0x4a5df]        # 47e7ea <_IO_stdin_used+0x17ea>
+  43420b:	e8 80 33 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434210:	48 89 c6             	mov    rsi,rax
+  434213:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43421a:	00 
+  43421b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434222:	00 00 
+  434224:	75 22                	jne    434248 <MEMORY_T::POKE64(double, double)+0x2a978>
+  434226:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43422d:	31 d2                	xor    edx,edx
+  43422f:	bf 01 00 00 00       	mov    edi,0x1
+  434234:	5b                   	pop    rbx
+  434235:	5d                   	pop    rbp
+  434236:	41 5c                	pop    r12
+  434238:	41 5d                	pop    r13
+  43423a:	41 5e                	pop    r14
+  43423c:	41 5f                	pop    r15
+  43423e:	e9 7d f7 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 114: print #1, "int";
+  434243:	e8 38 16 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 113: print #1, "instr";
+  434248:	e8 33 16 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 112: print #1, "installation";
+  43424d:	be 0c 00 00 00       	mov    esi,0xc
+  434252:	48 8d 3d 84 a5 04 00 	lea    rdi,[rip+0x4a584]        # 47e7dd <_IO_stdin_used+0x17dd>
+  434259:	e8 32 33 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43425e:	48 89 c6             	mov    rsi,rax
+  434261:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434268:	00 
+  434269:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434270:	00 00 
+  434272:	75 61                	jne    4342d5 <MEMORY_T::POKE64(double, double)+0x2aa05>
+  434274:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43427b:	31 d2                	xor    edx,edx
+  43427d:	bf 01 00 00 00       	mov    edi,0x1
+  434282:	5b                   	pop    rbx
+  434283:	5d                   	pop    rbp
+  434284:	41 5c                	pop    r12
+  434286:	41 5d                	pop    r13
+  434288:	41 5e                	pop    r14
+  43428a:	41 5f                	pop    r15
+  43428c:	e9 2f f7 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 111: print #1, "inspect";
+  434291:	be 07 00 00 00       	mov    esi,0x7
+  434296:	48 8d 3d 38 a5 04 00 	lea    rdi,[rip+0x4a538]        # 47e7d5 <_IO_stdin_used+0x17d5>
+  43429d:	e8 ee 32 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4342a2:	48 89 c6             	mov    rsi,rax
+  4342a5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4342ac:	00 
+  4342ad:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4342b4:	00 00 
+  4342b6:	75 22                	jne    4342da <MEMORY_T::POKE64(double, double)+0x2aa0a>
+  4342b8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4342bf:	31 d2                	xor    edx,edx
+  4342c1:	bf 01 00 00 00       	mov    edi,0x1
+  4342c6:	5b                   	pop    rbx
+  4342c7:	5d                   	pop    rbp
+  4342c8:	41 5c                	pop    r12
+  4342ca:	41 5d                	pop    r13
+  4342cc:	41 5e                	pop    r14
+  4342ce:	41 5f                	pop    r15
+  4342d0:	e9 eb f6 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 112: print #1, "installation";
+  4342d5:	e8 a6 15 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 111: print #1, "inspect";
+  4342da:	e8 a1 15 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 110: print #1, "inside_vector";
+  4342df:	be 0d 00 00 00       	mov    esi,0xd
+  4342e4:	48 8d 3d dc a4 04 00 	lea    rdi,[rip+0x4a4dc]        # 47e7c7 <_IO_stdin_used+0x17c7>
+  4342eb:	e8 a0 32 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4342f0:	48 89 c6             	mov    rsi,rax
+  4342f3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4342fa:	00 
+  4342fb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434302:	00 00 
+  434304:	75 61                	jne    434367 <MEMORY_T::POKE64(double, double)+0x2aa97>
+  434306:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43430d:	31 d2                	xor    edx,edx
+  43430f:	bf 01 00 00 00       	mov    edi,0x1
+  434314:	5b                   	pop    rbx
+  434315:	5d                   	pop    rbp
+  434316:	41 5c                	pop    r12
+  434318:	41 5d                	pop    r13
+  43431a:	41 5e                	pop    r14
+  43431c:	41 5f                	pop    r15
+  43431e:	e9 9d f6 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 109: print #1, "inside";
+  434323:	be 06 00 00 00       	mov    esi,0x6
+  434328:	48 8d 3d 91 a4 04 00 	lea    rdi,[rip+0x4a491]        # 47e7c0 <_IO_stdin_used+0x17c0>
+  43432f:	e8 5c 32 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434334:	48 89 c6             	mov    rsi,rax
+  434337:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43433e:	00 
+  43433f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434346:	00 00 
+  434348:	75 22                	jne    43436c <MEMORY_T::POKE64(double, double)+0x2aa9c>
+  43434a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434351:	31 d2                	xor    edx,edx
+  434353:	bf 01 00 00 00       	mov    edi,0x1
+  434358:	5b                   	pop    rbx
+  434359:	5d                   	pop    rbp
+  43435a:	41 5c                	pop    r12
+  43435c:	41 5d                	pop    r13
+  43435e:	41 5e                	pop    r14
+  434360:	41 5f                	pop    r15
+  434362:	e9 59 f6 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 110: print #1, "inside_vector";
+  434367:	e8 14 15 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 109: print #1, "inside";
+  43436c:	e8 0f 15 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 108: print #1, "insert";
+  434371:	be 06 00 00 00       	mov    esi,0x6
+  434376:	48 8d 3d 3c a4 04 00 	lea    rdi,[rip+0x4a43c]        # 47e7b9 <_IO_stdin_used+0x17b9>
+  43437d:	e8 0e 32 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434382:	48 89 c6             	mov    rsi,rax
+  434385:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43438c:	00 
+  43438d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434394:	00 00 
+  434396:	75 61                	jne    4343f9 <MEMORY_T::POKE64(double, double)+0x2ab29>
+  434398:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43439f:	31 d2                	xor    edx,edx
+  4343a1:	bf 01 00 00 00       	mov    edi,0x1
+  4343a6:	5b                   	pop    rbx
+  4343a7:	5d                   	pop    rbp
+  4343a8:	41 5c                	pop    r12
+  4343aa:	41 5d                	pop    r13
+  4343ac:	41 5e                	pop    r14
+  4343ae:	41 5f                	pop    r15
+  4343b0:	e9 0b f6 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 107: print #1, "inquire";
+  4343b5:	be 07 00 00 00       	mov    esi,0x7
+  4343ba:	48 8d 3d f0 a3 04 00 	lea    rdi,[rip+0x4a3f0]        # 47e7b1 <_IO_stdin_used+0x17b1>
+  4343c1:	e8 ca 31 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4343c6:	48 89 c6             	mov    rsi,rax
+  4343c9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4343d0:	00 
+  4343d1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4343d8:	00 00 
+  4343da:	75 22                	jne    4343fe <MEMORY_T::POKE64(double, double)+0x2ab2e>
+  4343dc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4343e3:	31 d2                	xor    edx,edx
+  4343e5:	bf 01 00 00 00       	mov    edi,0x1
+  4343ea:	5b                   	pop    rbx
+  4343eb:	5d                   	pop    rbp
+  4343ec:	41 5c                	pop    r12
+  4343ee:	41 5d                	pop    r13
+  4343f0:	41 5e                	pop    r14
+  4343f2:	41 5f                	pop    r15
+  4343f4:	e9 c7 f5 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 108: print #1, "insert";
+  4343f9:	e8 82 14 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 107: print #1, "inquire";
+  4343fe:	e8 7d 14 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 106: print #1, "input-output";
+  434403:	be 0c 00 00 00       	mov    esi,0xc
+  434408:	48 8d 3d 95 a3 04 00 	lea    rdi,[rip+0x4a395]        # 47e7a4 <_IO_stdin_used+0x17a4>
+  43440f:	e8 7c 31 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434414:	48 89 c6             	mov    rsi,rax
+  434417:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43441e:	00 
+  43441f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434426:	00 00 
+  434428:	75 61                	jne    43448b <MEMORY_T::POKE64(double, double)+0x2abbb>
+  43442a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434431:	31 d2                	xor    edx,edx
+  434433:	bf 01 00 00 00       	mov    edi,0x1
+  434438:	5b                   	pop    rbx
+  434439:	5d                   	pop    rbp
+  43443a:	41 5c                	pop    r12
+  43443c:	41 5d                	pop    r13
+  43443e:	41 5e                	pop    r14
+  434440:	41 5f                	pop    r15
+  434442:	e9 79 f5 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 105: print #1, "input";						
+  434447:	be 05 00 00 00       	mov    esi,0x5
+  43444c:	48 8d 3d 59 c2 04 00 	lea    rdi,[rip+0x4c259]        # 4806ac <_IO_stdin_used+0x36ac>
+  434453:	e8 38 31 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434458:	48 89 c6             	mov    rsi,rax
+  43445b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434462:	00 
+  434463:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43446a:	00 00 
+  43446c:	75 22                	jne    434490 <MEMORY_T::POKE64(double, double)+0x2abc0>
+  43446e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434475:	31 d2                	xor    edx,edx
+  434477:	bf 01 00 00 00       	mov    edi,0x1
+  43447c:	5b                   	pop    rbx
+  43447d:	5d                   	pop    rbp
+  43447e:	41 5c                	pop    r12
+  434480:	41 5d                	pop    r13
+  434482:	41 5e                	pop    r14
+  434484:	41 5f                	pop    r15
+  434486:	e9 35 f5 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 106: print #1, "input-output";
+  43448b:	e8 f0 13 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 105: print #1, "input";						
+  434490:	e8 eb 13 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 104: print #1, "inp";
+  434495:	be 03 00 00 00       	mov    esi,0x3
+  43449a:	48 8d 3d ff a2 04 00 	lea    rdi,[rip+0x4a2ff]        # 47e7a0 <_IO_stdin_used+0x17a0>
+  4344a1:	e8 ea 30 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4344a6:	48 89 c6             	mov    rsi,rax
+  4344a9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4344b0:	00 
+  4344b1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4344b8:	00 00 
+  4344ba:	75 61                	jne    43451d <MEMORY_T::POKE64(double, double)+0x2ac4d>
+  4344bc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4344c3:	31 d2                	xor    edx,edx
+  4344c5:	bf 01 00 00 00       	mov    edi,0x1
+  4344ca:	5b                   	pop    rbx
+  4344cb:	5d                   	pop    rbp
+  4344cc:	41 5c                	pop    r12
+  4344ce:	41 5d                	pop    r13
+  4344d0:	41 5e                	pop    r14
+  4344d2:	41 5f                	pop    r15
+  4344d4:	e9 e7 f4 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 103: print #1, "inout";
+  4344d9:	be 05 00 00 00       	mov    esi,0x5
+  4344de:	48 8d 3d b5 a2 04 00 	lea    rdi,[rip+0x4a2b5]        # 47e79a <_IO_stdin_used+0x179a>
+  4344e5:	e8 a6 30 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4344ea:	48 89 c6             	mov    rsi,rax
+  4344ed:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4344f4:	00 
+  4344f5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4344fc:	00 00 
+  4344fe:	75 22                	jne    434522 <MEMORY_T::POKE64(double, double)+0x2ac52>
+  434500:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434507:	31 d2                	xor    edx,edx
+  434509:	bf 01 00 00 00       	mov    edi,0x1
+  43450e:	5b                   	pop    rbx
+  43450f:	5d                   	pop    rbp
+  434510:	41 5c                	pop    r12
+  434512:	41 5d                	pop    r13
+  434514:	41 5e                	pop    r14
+  434516:	41 5f                	pop    r15
+  434518:	e9 a3 f4 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 104: print #1, "inp";
+  43451d:	e8 5e 13 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 103: print #1, "inout";
+  434522:	e8 59 13 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 102: print #1, "inner";
+  434527:	be 05 00 00 00       	mov    esi,0x5
+  43452c:	48 8d 3d 61 a2 04 00 	lea    rdi,[rip+0x4a261]        # 47e794 <_IO_stdin_used+0x1794>
+  434533:	e8 58 30 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434538:	48 89 c6             	mov    rsi,rax
+  43453b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434542:	00 
+  434543:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43454a:	00 00 
+  43454c:	75 61                	jne    4345af <MEMORY_T::POKE64(double, double)+0x2acdf>
+  43454e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434555:	31 d2                	xor    edx,edx
+  434557:	bf 01 00 00 00       	mov    edi,0x1
+  43455c:	5b                   	pop    rbx
+  43455d:	5d                   	pop    rbp
+  43455e:	41 5c                	pop    r12
+  434560:	41 5d                	pop    r13
+  434562:	41 5e                	pop    r14
+  434564:	41 5f                	pop    r15
+  434566:	e9 55 f4 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 101: print #1, "in_memory";
+  43456b:	be 09 00 00 00       	mov    esi,0x9
+  434570:	48 8d 3d da 96 04 00 	lea    rdi,[rip+0x496da]        # 47dc51 <_IO_stdin_used+0xc51>
+  434577:	e8 14 30 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43457c:	48 89 c6             	mov    rsi,rax
+  43457f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434586:	00 
+  434587:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43458e:	00 00 
+  434590:	75 22                	jne    4345b4 <MEMORY_T::POKE64(double, double)+0x2ace4>
+  434592:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434599:	31 d2                	xor    edx,edx
+  43459b:	bf 01 00 00 00       	mov    edi,0x1
+  4345a0:	5b                   	pop    rbx
+  4345a1:	5d                   	pop    rbp
+  4345a2:	41 5c                	pop    r12
+  4345a4:	41 5d                	pop    r13
+  4345a6:	41 5e                	pop    r14
+  4345a8:	41 5f                	pop    r15
+  4345aa:	e9 11 f4 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 102: print #1, "inner";
+  4345af:	e8 cc 12 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 101: print #1, "in_memory";
+  4345b4:	e8 c7 12 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 100: print #1, "inlinenoinline";
+  4345b9:	be 0e 00 00 00       	mov    esi,0xe
+  4345be:	48 8d 3d c0 a1 04 00 	lea    rdi,[rip+0x4a1c0]        # 47e785 <_IO_stdin_used+0x1785>
+  4345c5:	e8 c6 2f 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4345ca:	48 89 c6             	mov    rsi,rax
+  4345cd:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4345d4:	00 
+  4345d5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4345dc:	00 00 
+  4345de:	75 61                	jne    434641 <MEMORY_T::POKE64(double, double)+0x2ad71>
+  4345e0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4345e7:	31 d2                	xor    edx,edx
+  4345e9:	bf 01 00 00 00       	mov    edi,0x1
+  4345ee:	5b                   	pop    rbx
+  4345ef:	5d                   	pop    rbp
+  4345f0:	41 5c                	pop    r12
+  4345f2:	41 5d                	pop    r13
+  4345f4:	41 5e                	pop    r14
+  4345f6:	41 5f                	pop    r15
+  4345f8:	e9 c3 f3 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 099: print #1, "inline";
+  4345fd:	be 06 00 00 00       	mov    esi,0x6
+  434602:	48 8d 3d 84 a1 04 00 	lea    rdi,[rip+0x4a184]        # 47e78d <_IO_stdin_used+0x178d>
+  434609:	e8 82 2f 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43460e:	48 89 c6             	mov    rsi,rax
+  434611:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434618:	00 
+  434619:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434620:	00 00 
+  434622:	75 22                	jne    434646 <MEMORY_T::POKE64(double, double)+0x2ad76>
+  434624:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43462b:	31 d2                	xor    edx,edx
+  43462d:	bf 01 00 00 00       	mov    edi,0x1
+  434632:	5b                   	pop    rbx
+  434633:	5d                   	pop    rbp
+  434634:	41 5c                	pop    r12
+  434636:	41 5d                	pop    r13
+  434638:	41 5e                	pop    r14
+  43463a:	41 5f                	pop    r15
+  43463c:	e9 7f f3 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 100: print #1, "inlinenoinline";
+  434641:	e8 3a 12 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 099: print #1, "inline";
+  434646:	e8 35 12 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 098: print #1, "inkey";
+  43464b:	be 05 00 00 00       	mov    esi,0x5
+  434650:	48 8d 3d 28 a1 04 00 	lea    rdi,[rip+0x4a128]        # 47e77f <_IO_stdin_used+0x177f>
+  434657:	e8 34 2f 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43465c:	48 89 c6             	mov    rsi,rax
+  43465f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434666:	00 
+  434667:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43466e:	00 00 
+  434670:	75 61                	jne    4346d3 <MEMORY_T::POKE64(double, double)+0x2ae03>
+  434672:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434679:	31 d2                	xor    edx,edx
+  43467b:	bf 01 00 00 00       	mov    edi,0x1
+  434680:	5b                   	pop    rbx
+  434681:	5d                   	pop    rbp
+  434682:	41 5c                	pop    r12
+  434684:	41 5d                	pop    r13
+  434686:	41 5e                	pop    r14
+  434688:	41 5f                	pop    r15
+  43468a:	e9 31 f3 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 097: print #1, "initiate";
+  43468f:	be 08 00 00 00       	mov    esi,0x8
+  434694:	48 8d 3d db a0 04 00 	lea    rdi,[rip+0x4a0db]        # 47e776 <_IO_stdin_used+0x1776>
+  43469b:	e8 f0 2e 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4346a0:	48 89 c6             	mov    rsi,rax
+  4346a3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4346aa:	00 
+  4346ab:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4346b2:	00 00 
+  4346b4:	75 22                	jne    4346d8 <MEMORY_T::POKE64(double, double)+0x2ae08>
+  4346b6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4346bd:	31 d2                	xor    edx,edx
+  4346bf:	bf 01 00 00 00       	mov    edi,0x1
+  4346c4:	5b                   	pop    rbx
+  4346c5:	5d                   	pop    rbp
+  4346c6:	41 5c                	pop    r12
+  4346c8:	41 5d                	pop    r13
+  4346ca:	41 5e                	pop    r14
+  4346cc:	41 5f                	pop    r15
+  4346ce:	e9 ed f2 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 098: print #1, "inkey";
+  4346d3:	e8 a8 11 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 097: print #1, "initiate";
+  4346d8:	e8 a3 11 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 096: print #1, "initialize";
+  4346dd:	be 0a 00 00 00       	mov    esi,0xa
+  4346e2:	48 8d 3d 82 a0 04 00 	lea    rdi,[rip+0x4a082]        # 47e76b <_IO_stdin_used+0x176b>
+  4346e9:	e8 a2 2e 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4346ee:	48 89 c6             	mov    rsi,rax
+  4346f1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4346f8:	00 
+  4346f9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434700:	00 00 
+  434702:	75 61                	jne    434765 <MEMORY_T::POKE64(double, double)+0x2ae95>
+  434704:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43470b:	31 d2                	xor    edx,edx
+  43470d:	bf 01 00 00 00       	mov    edi,0x1
+  434712:	5b                   	pop    rbx
+  434713:	5d                   	pop    rbp
+  434714:	41 5c                	pop    r12
+  434716:	41 5d                	pop    r13
+  434718:	41 5e                	pop    r14
+  43471a:	41 5f                	pop    r15
+  43471c:	e9 9f f2 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 095: print #1, "initialization";
+  434721:	be 0e 00 00 00       	mov    esi,0xe
+  434726:	48 8d 3d 2f a0 04 00 	lea    rdi,[rip+0x4a02f]        # 47e75c <_IO_stdin_used+0x175c>
+  43472d:	e8 5e 2e 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434732:	48 89 c6             	mov    rsi,rax
+  434735:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43473c:	00 
+  43473d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434744:	00 00 
+  434746:	75 22                	jne    43476a <MEMORY_T::POKE64(double, double)+0x2ae9a>
+  434748:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43474f:	31 d2                	xor    edx,edx
+  434751:	bf 01 00 00 00       	mov    edi,0x1
+  434756:	5b                   	pop    rbx
+  434757:	5d                   	pop    rbp
+  434758:	41 5c                	pop    r12
+  43475a:	41 5d                	pop    r13
+  43475c:	41 5e                	pop    r14
+  43475e:	41 5f                	pop    r15
+  434760:	e9 5b f2 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 096: print #1, "initialize";
+  434765:	e8 16 11 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 095: print #1, "initialization";
+  43476a:	e8 11 11 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 094: print #1, "initial_frame";
+  43476f:	be 0d 00 00 00       	mov    esi,0xd
+  434774:	48 8d 3d d3 9f 04 00 	lea    rdi,[rip+0x49fd3]        # 47e74e <_IO_stdin_used+0x174e>
+  43477b:	e8 10 2e 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434780:	48 89 c6             	mov    rsi,rax
+  434783:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43478a:	00 
+  43478b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434792:	00 00 
+  434794:	75 61                	jne    4347f7 <MEMORY_T::POKE64(double, double)+0x2af27>
+  434796:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43479d:	31 d2                	xor    edx,edx
+  43479f:	bf 01 00 00 00       	mov    edi,0x1
+  4347a4:	5b                   	pop    rbx
+  4347a5:	5d                   	pop    rbp
+  4347a6:	41 5c                	pop    r12
+  4347a8:	41 5d                	pop    r13
+  4347aa:	41 5e                	pop    r14
+  4347ac:	41 5f                	pop    r15
+  4347ae:	e9 0d f2 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 093: print #1, "initial_clock";
+  4347b3:	be 0d 00 00 00       	mov    esi,0xd
+  4347b8:	48 8d 3d 81 9f 04 00 	lea    rdi,[rip+0x49f81]        # 47e740 <_IO_stdin_used+0x1740>
+  4347bf:	e8 cc 2d 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4347c4:	48 89 c6             	mov    rsi,rax
+  4347c7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4347ce:	00 
+  4347cf:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4347d6:	00 00 
+  4347d8:	75 22                	jne    4347fc <MEMORY_T::POKE64(double, double)+0x2af2c>
+  4347da:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4347e1:	31 d2                	xor    edx,edx
+  4347e3:	bf 01 00 00 00       	mov    edi,0x1
+  4347e8:	5b                   	pop    rbx
+  4347e9:	5d                   	pop    rbp
+  4347ea:	41 5c                	pop    r12
+  4347ec:	41 5d                	pop    r13
+  4347ee:	41 5e                	pop    r14
+  4347f0:	41 5f                	pop    r15
+  4347f2:	e9 c9 f1 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 094: print #1, "initial_frame";
+  4347f7:	e8 84 10 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 093: print #1, "initial_clock";
+  4347fc:	e8 7f 10 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 092: print #1, "initial";
+  434801:	be 07 00 00 00       	mov    esi,0x7
+  434806:	48 8d 3d 2b 9f 04 00 	lea    rdi,[rip+0x49f2b]        # 47e738 <_IO_stdin_used+0x1738>
+  43480d:	e8 7e 2d 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434812:	48 89 c6             	mov    rsi,rax
+  434815:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43481c:	00 
+  43481d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434824:	00 00 
+  434826:	75 61                	jne    434889 <MEMORY_T::POKE64(double, double)+0x2afb9>
+  434828:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43482f:	31 d2                	xor    edx,edx
+  434831:	bf 01 00 00 00       	mov    edi,0x1
+  434836:	5b                   	pop    rbx
+  434837:	5d                   	pop    rbp
+  434838:	41 5c                	pop    r12
+  43483a:	41 5d                	pop    r13
+  43483c:	41 5e                	pop    r14
+  43483e:	41 5f                	pop    r15
+  434840:	e9 7b f1 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 091: print #1, "inherits";
+  434845:	be 08 00 00 00       	mov    esi,0x8
+  43484a:	48 8d 3d de 9e 04 00 	lea    rdi,[rip+0x49ede]        # 47e72f <_IO_stdin_used+0x172f>
+  434851:	e8 3a 2d 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434856:	48 89 c6             	mov    rsi,rax
+  434859:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434860:	00 
+  434861:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434868:	00 00 
+  43486a:	75 22                	jne    43488e <MEMORY_T::POKE64(double, double)+0x2afbe>
+  43486c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434873:	31 d2                	xor    edx,edx
+  434875:	bf 01 00 00 00       	mov    edi,0x1
+  43487a:	5b                   	pop    rbx
+  43487b:	5d                   	pop    rbp
+  43487c:	41 5c                	pop    r12
+  43487e:	41 5d                	pop    r13
+  434880:	41 5e                	pop    r14
+  434882:	41 5f                	pop    r15
+  434884:	e9 37 f1 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 092: print #1, "initial";
+  434889:	e8 f2 0f fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 091: print #1, "inherits";
+  43488e:	e8 ed 0f fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 090: print #1, "inherited";
+  434893:	be 09 00 00 00       	mov    esi,0x9
+  434898:	48 8d 3d 86 9e 04 00 	lea    rdi,[rip+0x49e86]        # 47e725 <_IO_stdin_used+0x1725>
+  43489f:	e8 ec 2c 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4348a4:	48 89 c6             	mov    rsi,rax
+  4348a7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4348ae:	00 
+  4348af:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4348b6:	00 00 
+  4348b8:	75 61                	jne    43491b <MEMORY_T::POKE64(double, double)+0x2b04b>
+  4348ba:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4348c1:	31 d2                	xor    edx,edx
+  4348c3:	bf 01 00 00 00       	mov    edi,0x1
+  4348c8:	5b                   	pop    rbx
+  4348c9:	5d                   	pop    rbp
+  4348ca:	41 5c                	pop    r12
+  4348cc:	41 5d                	pop    r13
+  4348ce:	41 5e                	pop    r14
+  4348d0:	41 5f                	pop    r15
+  4348d2:	e9 e9 f0 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 089: print #1, "indicate";
+  4348d7:	be 08 00 00 00       	mov    esi,0x8
+  4348dc:	48 8d 3d 39 9e 04 00 	lea    rdi,[rip+0x49e39]        # 47e71c <_IO_stdin_used+0x171c>
+  4348e3:	e8 a8 2c 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4348e8:	48 89 c6             	mov    rsi,rax
+  4348eb:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4348f2:	00 
+  4348f3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4348fa:	00 00 
+  4348fc:	75 22                	jne    434920 <MEMORY_T::POKE64(double, double)+0x2b050>
+  4348fe:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434905:	31 d2                	xor    edx,edx
+  434907:	bf 01 00 00 00       	mov    edi,0x1
+  43490c:	5b                   	pop    rbx
+  43490d:	5d                   	pop    rbp
+  43490e:	41 5c                	pop    r12
+  434910:	41 5d                	pop    r13
+  434912:	41 5e                	pop    r14
+  434914:	41 5f                	pop    r15
+  434916:	e9 a5 f0 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 090: print #1, "inherited";
+  43491b:	e8 60 0f fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 089: print #1, "indicate";
+  434920:	e8 5b 0f fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 088: print #1, "indexed";
+  434925:	be 07 00 00 00       	mov    esi,0x7
+  43492a:	48 8d 3d e3 9d 04 00 	lea    rdi,[rip+0x49de3]        # 47e714 <_IO_stdin_used+0x1714>
+  434931:	e8 5a 2c 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434936:	48 89 c6             	mov    rsi,rax
+  434939:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434940:	00 
+  434941:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434948:	00 00 
+  43494a:	75 61                	jne    4349ad <MEMORY_T::POKE64(double, double)+0x2b0dd>
+  43494c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434953:	31 d2                	xor    edx,edx
+  434955:	bf 01 00 00 00       	mov    edi,0x1
+  43495a:	5b                   	pop    rbx
+  43495b:	5d                   	pop    rbp
+  43495c:	41 5c                	pop    r12
+  43495e:	41 5d                	pop    r13
+  434960:	41 5e                	pop    r14
+  434962:	41 5f                	pop    r15
+  434964:	e9 57 f0 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 087: print #1, "index";
+  434969:	be 05 00 00 00       	mov    esi,0x5
+  43496e:	48 8d 3d 0b b2 04 00 	lea    rdi,[rip+0x4b20b]        # 47fb80 <_IO_stdin_used+0x2b80>
+  434975:	e8 16 2c 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43497a:	48 89 c6             	mov    rsi,rax
+  43497d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434984:	00 
+  434985:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43498c:	00 00 
+  43498e:	75 22                	jne    4349b2 <MEMORY_T::POKE64(double, double)+0x2b0e2>
+  434990:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434997:	31 d2                	xor    edx,edx
+  434999:	bf 01 00 00 00       	mov    edi,0x1
+  43499e:	5b                   	pop    rbx
+  43499f:	5d                   	pop    rbp
+  4349a0:	41 5c                	pop    r12
+  4349a2:	41 5d                	pop    r13
+  4349a4:	41 5e                	pop    r14
+  4349a6:	41 5f                	pop    r15
+  4349a8:	e9 13 f0 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 088: print #1, "indexed";
+  4349ad:	e8 ce 0e fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 087: print #1, "index";
+  4349b2:	e8 c9 0e fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 086: print #1, "include";
+  4349b7:	be 07 00 00 00       	mov    esi,0x7
+  4349bc:	48 8d 3d 49 9d 04 00 	lea    rdi,[rip+0x49d49]        # 47e70c <_IO_stdin_used+0x170c>
+  4349c3:	e8 c8 2b 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4349c8:	48 89 c6             	mov    rsi,rax
+  4349cb:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4349d2:	00 
+  4349d3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4349da:	00 00 
+  4349dc:	75 61                	jne    434a3f <MEMORY_T::POKE64(double, double)+0x2b16f>
+  4349de:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4349e5:	31 d2                	xor    edx,edx
+  4349e7:	bf 01 00 00 00       	mov    edi,0x1
+  4349ec:	5b                   	pop    rbx
+  4349ed:	5d                   	pop    rbp
+  4349ee:	41 5c                	pop    r12
+  4349f0:	41 5d                	pop    r13
+  4349f2:	41 5e                	pop    r14
+  4349f4:	41 5f                	pop    r15
+  4349f6:	e9 c5 ef 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 085: print #1, "in";						
+  4349fb:	be 02 00 00 00       	mov    esi,0x2
+  434a00:	48 8d 3d 00 b6 04 00 	lea    rdi,[rip+0x4b600]        # 480007 <_IO_stdin_used+0x3007>
+  434a07:	e8 84 2b 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434a0c:	48 89 c6             	mov    rsi,rax
+  434a0f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434a16:	00 
+  434a17:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434a1e:	00 00 
+  434a20:	75 22                	jne    434a44 <MEMORY_T::POKE64(double, double)+0x2b174>
+  434a22:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434a29:	31 d2                	xor    edx,edx
+  434a2b:	bf 01 00 00 00       	mov    edi,0x1
+  434a30:	5b                   	pop    rbx
+  434a31:	5d                   	pop    rbp
+  434a32:	41 5c                	pop    r12
+  434a34:	41 5d                	pop    r13
+  434a36:	41 5e                	pop    r14
+  434a38:	41 5f                	pop    r15
+  434a3a:	e9 81 ef 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 086: print #1, "include";
+  434a3f:	e8 3c 0e fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 085: print #1, "in";						
+  434a44:	e8 37 0e fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 084: print #1, "import";
+  434a49:	be 06 00 00 00       	mov    esi,0x6
+  434a4e:	48 8d 3d b0 9c 04 00 	lea    rdi,[rip+0x49cb0]        # 47e705 <_IO_stdin_used+0x1705>
+  434a55:	e8 36 2b 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434a5a:	48 89 c6             	mov    rsi,rax
+  434a5d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434a64:	00 
+  434a65:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434a6c:	00 00 
+  434a6e:	75 61                	jne    434ad1 <MEMORY_T::POKE64(double, double)+0x2b201>
+  434a70:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434a77:	31 d2                	xor    edx,edx
+  434a79:	bf 01 00 00 00       	mov    edi,0x1
+  434a7e:	5b                   	pop    rbx
+  434a7f:	5d                   	pop    rbp
+  434a80:	41 5c                	pop    r12
+  434a82:	41 5d                	pop    r13
+  434a84:	41 5e                	pop    r14
+  434a86:	41 5f                	pop    r15
+  434a88:	e9 33 ef 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 083: print #1, "implementation";
+  434a8d:	be 0e 00 00 00       	mov    esi,0xe
+  434a92:	48 8d 3d 5d 9c 04 00 	lea    rdi,[rip+0x49c5d]        # 47e6f6 <_IO_stdin_used+0x16f6>
+  434a99:	e8 f2 2a 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434a9e:	48 89 c6             	mov    rsi,rax
+  434aa1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434aa8:	00 
+  434aa9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434ab0:	00 00 
+  434ab2:	75 22                	jne    434ad6 <MEMORY_T::POKE64(double, double)+0x2b206>
+  434ab4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434abb:	31 d2                	xor    edx,edx
+  434abd:	bf 01 00 00 00       	mov    edi,0x1
+  434ac2:	5b                   	pop    rbx
+  434ac3:	5d                   	pop    rbp
+  434ac4:	41 5c                	pop    r12
+  434ac6:	41 5d                	pop    r13
+  434ac8:	41 5e                	pop    r14
+  434aca:	41 5f                	pop    r15
+  434acc:	e9 ef ee 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 084: print #1, "import";
+  434ad1:	e8 aa 0d fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 083: print #1, "implementation";
+  434ad6:	e8 a5 0d fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 082: print #1, "imp";
+  434adb:	be 03 00 00 00       	mov    esi,0x3
+  434ae0:	48 8d 3d 0b 9c 04 00 	lea    rdi,[rip+0x49c0b]        # 47e6f2 <_IO_stdin_used+0x16f2>
+  434ae7:	e8 a4 2a 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434aec:	48 89 c6             	mov    rsi,rax
+  434aef:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434af6:	00 
+  434af7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434afe:	00 00 
+  434b00:	75 61                	jne    434b63 <MEMORY_T::POKE64(double, double)+0x2b293>
+  434b02:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434b09:	31 d2                	xor    edx,edx
+  434b0b:	bf 01 00 00 00       	mov    edi,0x1
+  434b10:	5b                   	pop    rbx
+  434b11:	5d                   	pop    rbp
+  434b12:	41 5c                	pop    r12
+  434b14:	41 5d                	pop    r13
+  434b16:	41 5e                	pop    r14
+  434b18:	41 5f                	pop    r15
+  434b1a:	e9 a1 ee 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 081: print #1, "imouse";
+  434b1f:	be 06 00 00 00       	mov    esi,0x6
+  434b24:	48 8d 3d c0 9b 04 00 	lea    rdi,[rip+0x49bc0]        # 47e6eb <_IO_stdin_used+0x16eb>
+  434b2b:	e8 60 2a 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434b30:	48 89 c6             	mov    rsi,rax
+  434b33:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434b3a:	00 
+  434b3b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434b42:	00 00 
+  434b44:	75 22                	jne    434b68 <MEMORY_T::POKE64(double, double)+0x2b298>
+  434b46:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434b4d:	31 d2                	xor    edx,edx
+  434b4f:	bf 01 00 00 00       	mov    edi,0x1
+  434b54:	5b                   	pop    rbx
+  434b55:	5d                   	pop    rbp
+  434b56:	41 5c                	pop    r12
+  434b58:	41 5d                	pop    r13
+  434b5a:	41 5e                	pop    r14
+  434b5c:	41 5f                	pop    r15
+  434b5e:	e9 5d ee 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 082: print #1, "imp";
+  434b63:	e8 18 0d fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 081: print #1, "imouse";
+  434b68:	e8 13 0d fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 080: print #1, "image_width";
+  434b6d:	be 0b 00 00 00       	mov    esi,0xb
+  434b72:	48 8d 3d 66 9b 04 00 	lea    rdi,[rip+0x49b66]        # 47e6df <_IO_stdin_used+0x16df>
+  434b79:	e8 12 2a 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434b7e:	48 89 c6             	mov    rsi,rax
+  434b81:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434b88:	00 
+  434b89:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434b90:	00 00 
+  434b92:	75 61                	jne    434bf5 <MEMORY_T::POKE64(double, double)+0x2b325>
+  434b94:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434b9b:	31 d2                	xor    edx,edx
+  434b9d:	bf 01 00 00 00       	mov    edi,0x1
+  434ba2:	5b                   	pop    rbx
+  434ba3:	5d                   	pop    rbp
+  434ba4:	41 5c                	pop    r12
+  434ba6:	41 5d                	pop    r13
+  434ba8:	41 5e                	pop    r14
+  434baa:	41 5f                	pop    r15
+  434bac:	e9 0f ee 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 079: print #1, "image_pattern";
+  434bb1:	be 0d 00 00 00       	mov    esi,0xd
+  434bb6:	48 8d 3d 14 9b 04 00 	lea    rdi,[rip+0x49b14]        # 47e6d1 <_IO_stdin_used+0x16d1>
+  434bbd:	e8 ce 29 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434bc2:	48 89 c6             	mov    rsi,rax
+  434bc5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434bcc:	00 
+  434bcd:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434bd4:	00 00 
+  434bd6:	75 22                	jne    434bfa <MEMORY_T::POKE64(double, double)+0x2b32a>
+  434bd8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434bdf:	31 d2                	xor    edx,edx
+  434be1:	bf 01 00 00 00       	mov    edi,0x1
+  434be6:	5b                   	pop    rbx
+  434be7:	5d                   	pop    rbp
+  434be8:	41 5c                	pop    r12
+  434bea:	41 5d                	pop    r13
+  434bec:	41 5e                	pop    r14
+  434bee:	41 5f                	pop    r15
+  434bf0:	e9 cb ed 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 080: print #1, "image_width";
+  434bf5:	e8 86 0c fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 079: print #1, "image_pattern";
+  434bfa:	e8 81 0c fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 078: print #1, "image_map";
+  434bff:	be 09 00 00 00       	mov    esi,0x9
+  434c04:	48 8d 3d bc 9a 04 00 	lea    rdi,[rip+0x49abc]        # 47e6c7 <_IO_stdin_used+0x16c7>
+  434c0b:	e8 80 29 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434c10:	48 89 c6             	mov    rsi,rax
+  434c13:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434c1a:	00 
+  434c1b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434c22:	00 00 
+  434c24:	75 61                	jne    434c87 <MEMORY_T::POKE64(double, double)+0x2b3b7>
+  434c26:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434c2d:	31 d2                	xor    edx,edx
+  434c2f:	bf 01 00 00 00       	mov    edi,0x1
+  434c34:	5b                   	pop    rbx
+  434c35:	5d                   	pop    rbp
+  434c36:	41 5c                	pop    r12
+  434c38:	41 5d                	pop    r13
+  434c3a:	41 5e                	pop    r14
+  434c3c:	41 5f                	pop    r15
+  434c3e:	e9 7d ed 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 077: print #1, "image_height";
+  434c43:	be 0c 00 00 00       	mov    esi,0xc
+  434c48:	48 8d 3d 6b 9a 04 00 	lea    rdi,[rip+0x49a6b]        # 47e6ba <_IO_stdin_used+0x16ba>
+  434c4f:	e8 3c 29 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434c54:	48 89 c6             	mov    rsi,rax
+  434c57:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434c5e:	00 
+  434c5f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434c66:	00 00 
+  434c68:	75 22                	jne    434c8c <MEMORY_T::POKE64(double, double)+0x2b3bc>
+  434c6a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434c71:	31 d2                	xor    edx,edx
+  434c73:	bf 01 00 00 00       	mov    edi,0x1
+  434c78:	5b                   	pop    rbx
+  434c79:	5d                   	pop    rbp
+  434c7a:	41 5c                	pop    r12
+  434c7c:	41 5d                	pop    r13
+  434c7e:	41 5e                	pop    r14
+  434c80:	41 5f                	pop    r15
+  434c82:	e9 39 ed 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 078: print #1, "image_map";
+  434c87:	e8 f4 0b fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 077: print #1, "image_height";
+  434c8c:	e8 ef 0b fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 076: print #1, "imageCube";
+  434c91:	be 09 00 00 00       	mov    esi,0x9
+  434c96:	48 8d 3d d1 99 04 00 	lea    rdi,[rip+0x499d1]        # 47e66e <_IO_stdin_used+0x166e>
+  434c9d:	e8 ee 28 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434ca2:	48 89 c6             	mov    rsi,rax
+  434ca5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434cac:	00 
+  434cad:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434cb4:	00 00 
+  434cb6:	75 61                	jne    434d19 <MEMORY_T::POKE64(double, double)+0x2b449>
+  434cb8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434cbf:	31 d2                	xor    edx,edx
+  434cc1:	bf 01 00 00 00       	mov    edi,0x1
+  434cc6:	5b                   	pop    rbx
+  434cc7:	5d                   	pop    rbp
+  434cc8:	41 5c                	pop    r12
+  434cca:	41 5d                	pop    r13
+  434ccc:	41 5e                	pop    r14
+  434cce:	41 5f                	pop    r15
+  434cd0:	e9 eb ec 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 075: print #1, "imageBuffer";
+  434cd5:	be 0b 00 00 00       	mov    esi,0xb
+  434cda:	48 8d 3d 80 99 04 00 	lea    rdi,[rip+0x49980]        # 47e661 <_IO_stdin_used+0x1661>
+  434ce1:	e8 aa 28 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434ce6:	48 89 c6             	mov    rsi,rax
+  434ce9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434cf0:	00 
+  434cf1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434cf8:	00 00 
+  434cfa:	75 22                	jne    434d1e <MEMORY_T::POKE64(double, double)+0x2b44e>
+  434cfc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434d03:	31 d2                	xor    edx,edx
+  434d05:	bf 01 00 00 00       	mov    edi,0x1
+  434d0a:	5b                   	pop    rbx
+  434d0b:	5d                   	pop    rbp
+  434d0c:	41 5c                	pop    r12
+  434d0e:	41 5d                	pop    r13
+  434d10:	41 5e                	pop    r14
+  434d12:	41 5f                	pop    r15
+  434d14:	e9 a7 ec 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 076: print #1, "imageCube";
+  434d19:	e8 62 0b fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 075: print #1, "imageBuffer";
+  434d1e:	e8 5d 0b fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 074: print #1, "image3D";
+  434d23:	be 07 00 00 00       	mov    esi,0x7
+  434d28:	48 8d 3d 29 99 04 00 	lea    rdi,[rip+0x49929]        # 47e658 <_IO_stdin_used+0x1658>
+  434d2f:	e8 5c 28 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434d34:	48 89 c6             	mov    rsi,rax
+  434d37:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434d3e:	00 
+  434d3f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434d46:	00 00 
+  434d48:	75 61                	jne    434dab <MEMORY_T::POKE64(double, double)+0x2b4db>
+  434d4a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434d51:	31 d2                	xor    edx,edx
+  434d53:	bf 01 00 00 00       	mov    edi,0x1
+  434d58:	5b                   	pop    rbx
+  434d59:	5d                   	pop    rbp
+  434d5a:	41 5c                	pop    r12
+  434d5c:	41 5d                	pop    r13
+  434d5e:	41 5e                	pop    r14
+  434d60:	41 5f                	pop    r15
+  434d62:	e9 59 ec 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 073: print #1, "image2DShadow";
+  434d67:	be 0d 00 00 00       	mov    esi,0xd
+  434d6c:	48 8d 3d 39 99 04 00 	lea    rdi,[rip+0x49939]        # 47e6ac <_IO_stdin_used+0x16ac>
+  434d73:	e8 18 28 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434d78:	48 89 c6             	mov    rsi,rax
+  434d7b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434d82:	00 
+  434d83:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434d8a:	00 00 
+  434d8c:	75 22                	jne    434db0 <MEMORY_T::POKE64(double, double)+0x2b4e0>
+  434d8e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434d95:	31 d2                	xor    edx,edx
+  434d97:	bf 01 00 00 00       	mov    edi,0x1
+  434d9c:	5b                   	pop    rbx
+  434d9d:	5d                   	pop    rbp
+  434d9e:	41 5c                	pop    r12
+  434da0:	41 5d                	pop    r13
+  434da2:	41 5e                	pop    r14
+  434da4:	41 5f                	pop    r15
+  434da6:	e9 15 ec 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 074: print #1, "image3D";
+  434dab:	e8 d0 0a fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 073: print #1, "image2DShadow";
+  434db0:	e8 cb 0a fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 072: print #1, "image2DArrayShadow";
+  434db5:	be 12 00 00 00       	mov    esi,0x12
+  434dba:	48 8d 3d d8 98 04 00 	lea    rdi,[rip+0x498d8]        # 47e699 <_IO_stdin_used+0x1699>
+  434dc1:	e8 ca 27 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434dc6:	48 89 c6             	mov    rsi,rax
+  434dc9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434dd0:	00 
+  434dd1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434dd8:	00 00 
+  434dda:	75 61                	jne    434e3d <MEMORY_T::POKE64(double, double)+0x2b56d>
+  434ddc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434de3:	31 d2                	xor    edx,edx
+  434de5:	bf 01 00 00 00       	mov    edi,0x1
+  434dea:	5b                   	pop    rbx
+  434deb:	5d                   	pop    rbp
+  434dec:	41 5c                	pop    r12
+  434dee:	41 5d                	pop    r13
+  434df0:	41 5e                	pop    r14
+  434df2:	41 5f                	pop    r15
+  434df4:	e9 c7 eb 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 071: print #1, "image2DArray";
+  434df9:	be 0c 00 00 00       	mov    esi,0xc
+  434dfe:	48 8d 3d 45 98 04 00 	lea    rdi,[rip+0x49845]        # 47e64a <_IO_stdin_used+0x164a>
+  434e05:	e8 86 27 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434e0a:	48 89 c6             	mov    rsi,rax
+  434e0d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434e14:	00 
+  434e15:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434e1c:	00 00 
+  434e1e:	75 22                	jne    434e42 <MEMORY_T::POKE64(double, double)+0x2b572>
+  434e20:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434e27:	31 d2                	xor    edx,edx
+  434e29:	bf 01 00 00 00       	mov    edi,0x1
+  434e2e:	5b                   	pop    rbx
+  434e2f:	5d                   	pop    rbp
+  434e30:	41 5c                	pop    r12
+  434e32:	41 5d                	pop    r13
+  434e34:	41 5e                	pop    r14
+  434e36:	41 5f                	pop    r15
+  434e38:	e9 83 eb 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 072: print #1, "image2DArrayShadow";
+  434e3d:	e8 3e 0a fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 071: print #1, "image2DArray";
+  434e42:	e8 39 0a fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 070: print #1, "image2D";
+  434e47:	be 07 00 00 00       	mov    esi,0x7
+  434e4c:	48 8d 3d ee 97 04 00 	lea    rdi,[rip+0x497ee]        # 47e641 <_IO_stdin_used+0x1641>
+  434e53:	e8 38 27 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434e58:	48 89 c6             	mov    rsi,rax
+  434e5b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434e62:	00 
+  434e63:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434e6a:	00 00 
+  434e6c:	75 61                	jne    434ecf <MEMORY_T::POKE64(double, double)+0x2b5ff>
+  434e6e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434e75:	31 d2                	xor    edx,edx
+  434e77:	bf 01 00 00 00       	mov    edi,0x1
+  434e7c:	5b                   	pop    rbx
+  434e7d:	5d                   	pop    rbp
+  434e7e:	41 5c                	pop    r12
+  434e80:	41 5d                	pop    r13
+  434e82:	41 5e                	pop    r14
+  434e84:	41 5f                	pop    r15
+  434e86:	e9 35 eb 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 069: print #1, "image1DShadow";
+  434e8b:	be 0d 00 00 00       	mov    esi,0xd
+  434e90:	48 8d 3d f4 97 04 00 	lea    rdi,[rip+0x497f4]        # 47e68b <_IO_stdin_used+0x168b>
+  434e97:	e8 f4 26 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434e9c:	48 89 c6             	mov    rsi,rax
+  434e9f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434ea6:	00 
+  434ea7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434eae:	00 00 
+  434eb0:	75 22                	jne    434ed4 <MEMORY_T::POKE64(double, double)+0x2b604>
+  434eb2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434eb9:	31 d2                	xor    edx,edx
+  434ebb:	bf 01 00 00 00       	mov    edi,0x1
+  434ec0:	5b                   	pop    rbx
+  434ec1:	5d                   	pop    rbp
+  434ec2:	41 5c                	pop    r12
+  434ec4:	41 5d                	pop    r13
+  434ec6:	41 5e                	pop    r14
+  434ec8:	41 5f                	pop    r15
+  434eca:	e9 f1 ea 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 070: print #1, "image2D";
+  434ecf:	e8 ac 09 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 069: print #1, "image1DShadow";
+  434ed4:	e8 a7 09 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 068: print #1, "image1DArrayShadow";
+  434ed9:	be 12 00 00 00       	mov    esi,0x12
+  434ede:	48 8d 3d 93 97 04 00 	lea    rdi,[rip+0x49793]        # 47e678 <_IO_stdin_used+0x1678>
+  434ee5:	e8 a6 26 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434eea:	48 89 c6             	mov    rsi,rax
+  434eed:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434ef4:	00 
+  434ef5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434efc:	00 00 
+  434efe:	75 61                	jne    434f61 <MEMORY_T::POKE64(double, double)+0x2b691>
+  434f00:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434f07:	31 d2                	xor    edx,edx
+  434f09:	bf 01 00 00 00       	mov    edi,0x1
+  434f0e:	5b                   	pop    rbx
+  434f0f:	5d                   	pop    rbp
+  434f10:	41 5c                	pop    r12
+  434f12:	41 5d                	pop    r13
+  434f14:	41 5e                	pop    r14
+  434f16:	41 5f                	pop    r15
+  434f18:	e9 a3 ea 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 067: print #1, "image1DArray";
+  434f1d:	be 0c 00 00 00       	mov    esi,0xc
+  434f22:	48 8d 3d 0a 97 04 00 	lea    rdi,[rip+0x4970a]        # 47e633 <_IO_stdin_used+0x1633>
+  434f29:	e8 62 26 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434f2e:	48 89 c6             	mov    rsi,rax
+  434f31:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434f38:	00 
+  434f39:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434f40:	00 00 
+  434f42:	75 22                	jne    434f66 <MEMORY_T::POKE64(double, double)+0x2b696>
+  434f44:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434f4b:	31 d2                	xor    edx,edx
+  434f4d:	bf 01 00 00 00       	mov    edi,0x1
+  434f52:	5b                   	pop    rbx
+  434f53:	5d                   	pop    rbp
+  434f54:	41 5c                	pop    r12
+  434f56:	41 5d                	pop    r13
+  434f58:	41 5e                	pop    r14
+  434f5a:	41 5f                	pop    r15
+  434f5c:	e9 5f ea 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 068: print #1, "image1DArrayShadow";
+  434f61:	e8 1a 09 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 067: print #1, "image1DArray";
+  434f66:	e8 15 09 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 066: print #1, "image1D";
+  434f6b:	be 07 00 00 00       	mov    esi,0x7
+  434f70:	48 8d 3d b3 96 04 00 	lea    rdi,[rip+0x496b3]        # 47e62a <_IO_stdin_used+0x162a>
+  434f77:	e8 14 26 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434f7c:	48 89 c6             	mov    rsi,rax
+  434f7f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434f86:	00 
+  434f87:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434f8e:	00 00 
+  434f90:	75 61                	jne    434ff3 <MEMORY_T::POKE64(double, double)+0x2b723>
+  434f92:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434f99:	31 d2                	xor    edx,edx
+  434f9b:	bf 01 00 00 00       	mov    edi,0x1
+  434fa0:	5b                   	pop    rbx
+  434fa1:	5d                   	pop    rbp
+  434fa2:	41 5c                	pop    r12
+  434fa4:	41 5d                	pop    r13
+  434fa6:	41 5e                	pop    r14
+  434fa8:	41 5f                	pop    r15
+  434faa:	e9 11 ea 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 065: print #1, "image";
+  434faf:	be 05 00 00 00       	mov    esi,0x5
+  434fb4:	48 8d 3d be 9b 04 00 	lea    rdi,[rip+0x49bbe]        # 47eb79 <_IO_stdin_used+0x1b79>
+  434fbb:	e8 d0 25 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  434fc0:	48 89 c6             	mov    rsi,rax
+  434fc3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  434fca:	00 
+  434fcb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  434fd2:	00 00 
+  434fd4:	75 22                	jne    434ff8 <MEMORY_T::POKE64(double, double)+0x2b728>
+  434fd6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  434fdd:	31 d2                	xor    edx,edx
+  434fdf:	bf 01 00 00 00       	mov    edi,0x1
+  434fe4:	5b                   	pop    rbx
+  434fe5:	5d                   	pop    rbp
+  434fe6:	41 5c                	pop    r12
+  434fe8:	41 5d                	pop    r13
+  434fea:	41 5e                	pop    r14
+  434fec:	41 5f                	pop    r15
+  434fee:	e9 cd e9 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 066: print #1, "image1D";
+  434ff3:	e8 88 08 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 065: print #1, "image";
+  434ff8:	e8 83 08 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 064: print #1, "iimageCube";
+  434ffd:	be 0a 00 00 00       	mov    esi,0xa
+  435002:	48 8d 3d 64 96 04 00 	lea    rdi,[rip+0x49664]        # 47e66d <_IO_stdin_used+0x166d>
+  435009:	e8 82 25 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43500e:	48 89 c6             	mov    rsi,rax
+  435011:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435018:	00 
+  435019:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435020:	00 00 
+  435022:	75 61                	jne    435085 <MEMORY_T::POKE64(double, double)+0x2b7b5>
+  435024:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43502b:	31 d2                	xor    edx,edx
+  43502d:	bf 01 00 00 00       	mov    edi,0x1
+  435032:	5b                   	pop    rbx
+  435033:	5d                   	pop    rbp
+  435034:	41 5c                	pop    r12
+  435036:	41 5d                	pop    r13
+  435038:	41 5e                	pop    r14
+  43503a:	41 5f                	pop    r15
+  43503c:	e9 7f e9 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 063: print #1, "iimageBuffer";
+  435041:	be 0c 00 00 00       	mov    esi,0xc
+  435046:	48 8d 3d 13 96 04 00 	lea    rdi,[rip+0x49613]        # 47e660 <_IO_stdin_used+0x1660>
+  43504d:	e8 3e 25 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435052:	48 89 c6             	mov    rsi,rax
+  435055:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43505c:	00 
+  43505d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435064:	00 00 
+  435066:	75 22                	jne    43508a <MEMORY_T::POKE64(double, double)+0x2b7ba>
+  435068:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43506f:	31 d2                	xor    edx,edx
+  435071:	bf 01 00 00 00       	mov    edi,0x1
+  435076:	5b                   	pop    rbx
+  435077:	5d                   	pop    rbp
+  435078:	41 5c                	pop    r12
+  43507a:	41 5d                	pop    r13
+  43507c:	41 5e                	pop    r14
+  43507e:	41 5f                	pop    r15
+  435080:	e9 3b e9 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 064: print #1, "iimageCube";
+  435085:	e8 f6 07 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 063: print #1, "iimageBuffer";
+  43508a:	e8 f1 07 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 062: print #1, "iimage3D";
+  43508f:	be 08 00 00 00       	mov    esi,0x8
+  435094:	48 8d 3d bc 95 04 00 	lea    rdi,[rip+0x495bc]        # 47e657 <_IO_stdin_used+0x1657>
+  43509b:	e8 f0 24 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4350a0:	48 89 c6             	mov    rsi,rax
+  4350a3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4350aa:	00 
+  4350ab:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4350b2:	00 00 
+  4350b4:	75 61                	jne    435117 <MEMORY_T::POKE64(double, double)+0x2b847>
+  4350b6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4350bd:	31 d2                	xor    edx,edx
+  4350bf:	bf 01 00 00 00       	mov    edi,0x1
+  4350c4:	5b                   	pop    rbx
+  4350c5:	5d                   	pop    rbp
+  4350c6:	41 5c                	pop    r12
+  4350c8:	41 5d                	pop    r13
+  4350ca:	41 5e                	pop    r14
+  4350cc:	41 5f                	pop    r15
+  4350ce:	e9 ed e8 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 061: print #1, "iimage2DArray";
+  4350d3:	be 0d 00 00 00       	mov    esi,0xd
+  4350d8:	48 8d 3d 6a 95 04 00 	lea    rdi,[rip+0x4956a]        # 47e649 <_IO_stdin_used+0x1649>
+  4350df:	e8 ac 24 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4350e4:	48 89 c6             	mov    rsi,rax
+  4350e7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4350ee:	00 
+  4350ef:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4350f6:	00 00 
+  4350f8:	75 22                	jne    43511c <MEMORY_T::POKE64(double, double)+0x2b84c>
+  4350fa:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435101:	31 d2                	xor    edx,edx
+  435103:	bf 01 00 00 00       	mov    edi,0x1
+  435108:	5b                   	pop    rbx
+  435109:	5d                   	pop    rbp
+  43510a:	41 5c                	pop    r12
+  43510c:	41 5d                	pop    r13
+  43510e:	41 5e                	pop    r14
+  435110:	41 5f                	pop    r15
+  435112:	e9 a9 e8 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 062: print #1, "iimage3D";
+  435117:	e8 64 07 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 061: print #1, "iimage2DArray";
+  43511c:	e8 5f 07 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 060: print #1, "iimage2D";
+  435121:	be 08 00 00 00       	mov    esi,0x8
+  435126:	48 8d 3d 13 95 04 00 	lea    rdi,[rip+0x49513]        # 47e640 <_IO_stdin_used+0x1640>
+  43512d:	e8 5e 24 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435132:	48 89 c6             	mov    rsi,rax
+  435135:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43513c:	00 
+  43513d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435144:	00 00 
+  435146:	75 61                	jne    4351a9 <MEMORY_T::POKE64(double, double)+0x2b8d9>
+  435148:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43514f:	31 d2                	xor    edx,edx
+  435151:	bf 01 00 00 00       	mov    edi,0x1
+  435156:	5b                   	pop    rbx
+  435157:	5d                   	pop    rbp
+  435158:	41 5c                	pop    r12
+  43515a:	41 5d                	pop    r13
+  43515c:	41 5e                	pop    r14
+  43515e:	41 5f                	pop    r15
+  435160:	e9 5b e8 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 059: print #1, "iimage1DArray";
+  435165:	be 0d 00 00 00       	mov    esi,0xd
+  43516a:	48 8d 3d c1 94 04 00 	lea    rdi,[rip+0x494c1]        # 47e632 <_IO_stdin_used+0x1632>
+  435171:	e8 1a 24 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435176:	48 89 c6             	mov    rsi,rax
+  435179:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435180:	00 
+  435181:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435188:	00 00 
+  43518a:	75 22                	jne    4351ae <MEMORY_T::POKE64(double, double)+0x2b8de>
+  43518c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435193:	31 d2                	xor    edx,edx
+  435195:	bf 01 00 00 00       	mov    edi,0x1
+  43519a:	5b                   	pop    rbx
+  43519b:	5d                   	pop    rbp
+  43519c:	41 5c                	pop    r12
+  43519e:	41 5d                	pop    r13
+  4351a0:	41 5e                	pop    r14
+  4351a2:	41 5f                	pop    r15
+  4351a4:	e9 17 e8 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 060: print #1, "iimage2D";
+  4351a9:	e8 d2 06 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 059: print #1, "iimage1DArray";
+  4351ae:	e8 cd 06 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 058: print #1, "iimage1D";
+  4351b3:	be 08 00 00 00       	mov    esi,0x8
+  4351b8:	48 8d 3d 6a 94 04 00 	lea    rdi,[rip+0x4946a]        # 47e629 <_IO_stdin_used+0x1629>
+  4351bf:	e8 cc 23 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4351c4:	48 89 c6             	mov    rsi,rax
+  4351c7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4351ce:	00 
+  4351cf:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4351d6:	00 00 
+  4351d8:	75 61                	jne    43523b <MEMORY_T::POKE64(double, double)+0x2b96b>
+  4351da:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4351e1:	31 d2                	xor    edx,edx
+  4351e3:	bf 01 00 00 00       	mov    edi,0x1
+  4351e8:	5b                   	pop    rbx
+  4351e9:	5d                   	pop    rbp
+  4351ea:	41 5c                	pop    r12
+  4351ec:	41 5d                	pop    r13
+  4351ee:	41 5e                	pop    r14
+  4351f0:	41 5f                	pop    r15
+  4351f2:	e9 c9 e7 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 057: print #1, "iGlobalTime";
+  4351f7:	be 0b 00 00 00       	mov    esi,0xb
+  4351fc:	48 8d 3d 0f 82 04 00 	lea    rdi,[rip+0x4820f]        # 47d412 <_IO_stdin_used+0x412>
+  435203:	e8 88 23 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435208:	48 89 c6             	mov    rsi,rax
+  43520b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435212:	00 
+  435213:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43521a:	00 00 
+  43521c:	75 22                	jne    435240 <MEMORY_T::POKE64(double, double)+0x2b970>
+  43521e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435225:	31 d2                	xor    edx,edx
+  435227:	bf 01 00 00 00       	mov    edi,0x1
+  43522c:	5b                   	pop    rbx
+  43522d:	5d                   	pop    rbp
+  43522e:	41 5c                	pop    r12
+  435230:	41 5d                	pop    r13
+  435232:	41 5e                	pop    r14
+  435234:	41 5f                	pop    r15
+  435236:	e9 85 e7 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 058: print #1, "iimage1D";
+  43523b:	e8 40 06 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 057: print #1, "iGlobalTime";
+  435240:	e8 3b 06 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 056: print #1, "iframerate";
+  435245:	be 0a 00 00 00       	mov    esi,0xa
+  43524a:	48 8d 3d cd 93 04 00 	lea    rdi,[rip+0x493cd]        # 47e61e <_IO_stdin_used+0x161e>
+  435251:	e8 3a 23 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435256:	48 89 c6             	mov    rsi,rax
+  435259:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435260:	00 
+  435261:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435268:	00 00 
+  43526a:	75 61                	jne    4352cd <MEMORY_T::POKE64(double, double)+0x2b9fd>
+  43526c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435273:	31 d2                	xor    edx,edx
+  435275:	bf 01 00 00 00       	mov    edi,0x1
+  43527a:	5b                   	pop    rbx
+  43527b:	5d                   	pop    rbp
+  43527c:	41 5c                	pop    r12
+  43527e:	41 5d                	pop    r13
+  435280:	41 5e                	pop    r14
+  435282:	41 5f                	pop    r15
+  435284:	e9 37 e7 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 055: print #1, "iframe";
+  435289:	be 06 00 00 00       	mov    esi,0x6
+  43528e:	48 8d 3d 82 93 04 00 	lea    rdi,[rip+0x49382]        # 47e617 <_IO_stdin_used+0x1617>
+  435295:	e8 f6 22 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43529a:	48 89 c6             	mov    rsi,rax
+  43529d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4352a4:	00 
+  4352a5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4352ac:	00 00 
+  4352ae:	75 22                	jne    4352d2 <MEMORY_T::POKE64(double, double)+0x2ba02>
+  4352b0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4352b7:	31 d2                	xor    edx,edx
+  4352b9:	bf 01 00 00 00       	mov    edi,0x1
+  4352be:	5b                   	pop    rbx
+  4352bf:	5d                   	pop    rbp
+  4352c0:	41 5c                	pop    r12
+  4352c2:	41 5d                	pop    r13
+  4352c4:	41 5e                	pop    r14
+  4352c6:	41 5f                	pop    r15
+  4352c8:	e9 f3 e6 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 056: print #1, "iframerate";
+  4352cd:	e8 ae 05 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 055: print #1, "iframe";
+  4352d2:	e8 a9 05 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 054: print #1, "ifndef";
+  4352d7:	be 06 00 00 00       	mov    esi,0x6
+  4352dc:	48 8d 3d 2d 93 04 00 	lea    rdi,[rip+0x4932d]        # 47e610 <_IO_stdin_used+0x1610>
+  4352e3:	e8 a8 22 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4352e8:	48 89 c6             	mov    rsi,rax
+  4352eb:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4352f2:	00 
+  4352f3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4352fa:	00 00 
+  4352fc:	75 61                	jne    43535f <MEMORY_T::POKE64(double, double)+0x2ba8f>
+  4352fe:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435305:	31 d2                	xor    edx,edx
+  435307:	bf 01 00 00 00       	mov    edi,0x1
+  43530c:	5b                   	pop    rbx
+  43530d:	5d                   	pop    rbp
+  43530e:	41 5c                	pop    r12
+  435310:	41 5d                	pop    r13
+  435312:	41 5e                	pop    r14
+  435314:	41 5f                	pop    r15
+  435316:	e9 a5 e6 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 053: print #1, "iff";
+  43531b:	be 03 00 00 00       	mov    esi,0x3
+  435320:	48 8d 3d 30 af 04 00 	lea    rdi,[rip+0x4af30]        # 480257 <_IO_stdin_used+0x3257>
+  435327:	e8 64 22 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43532c:	48 89 c6             	mov    rsi,rax
+  43532f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435336:	00 
+  435337:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43533e:	00 00 
+  435340:	75 22                	jne    435364 <MEMORY_T::POKE64(double, double)+0x2ba94>
+  435342:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435349:	31 d2                	xor    edx,edx
+  43534b:	bf 01 00 00 00       	mov    edi,0x1
+  435350:	5b                   	pop    rbx
+  435351:	5d                   	pop    rbp
+  435352:	41 5c                	pop    r12
+  435354:	41 5d                	pop    r13
+  435356:	41 5e                	pop    r14
+  435358:	41 5f                	pop    r15
+  43535a:	e9 61 e6 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 054: print #1, "ifndef";
+  43535f:	e8 1c 05 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 053: print #1, "iff";
+  435364:	e8 17 05 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 052: print #1, "ifelse";
+  435369:	be 06 00 00 00       	mov    esi,0x6
+  43536e:	48 8d 3d 94 92 04 00 	lea    rdi,[rip+0x49294]        # 47e609 <_IO_stdin_used+0x1609>
+  435375:	e8 16 22 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43537a:	48 89 c6             	mov    rsi,rax
+  43537d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435384:	00 
+  435385:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43538c:	00 00 
+  43538e:	75 61                	jne    4353f1 <MEMORY_T::POKE64(double, double)+0x2bb21>
+  435390:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435397:	31 d2                	xor    edx,edx
+  435399:	bf 01 00 00 00       	mov    edi,0x1
+  43539e:	5b                   	pop    rbx
+  43539f:	5d                   	pop    rbp
+  4353a0:	41 5c                	pop    r12
+  4353a2:	41 5d                	pop    r13
+  4353a4:	41 5e                	pop    r14
+  4353a6:	41 5f                	pop    r15
+  4353a8:	e9 13 e6 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 051: print #1, "ifdef";
+  4353ad:	be 05 00 00 00       	mov    esi,0x5
+  4353b2:	48 8d 3d 4a 92 04 00 	lea    rdi,[rip+0x4924a]        # 47e603 <_IO_stdin_used+0x1603>
+  4353b9:	e8 d2 21 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4353be:	48 89 c6             	mov    rsi,rax
+  4353c1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4353c8:	00 
+  4353c9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4353d0:	00 00 
+  4353d2:	75 22                	jne    4353f6 <MEMORY_T::POKE64(double, double)+0x2bb26>
+  4353d4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4353db:	31 d2                	xor    edx,edx
+  4353dd:	bf 01 00 00 00       	mov    edi,0x1
+  4353e2:	5b                   	pop    rbx
+  4353e3:	5d                   	pop    rbp
+  4353e4:	41 5c                	pop    r12
+  4353e6:	41 5d                	pop    r13
+  4353e8:	41 5e                	pop    r14
+  4353ea:	41 5f                	pop    r15
+  4353ec:	e9 cf e5 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 052: print #1, "ifelse";
+  4353f1:	e8 8a 04 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 051: print #1, "ifdef";
+  4353f6:	e8 85 04 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 050: print #1, "if";
+  4353fb:	be 02 00 00 00       	mov    esi,0x2
+  435400:	48 8d 3d 67 8b 04 00 	lea    rdi,[rip+0x48b67]        # 47df6e <_IO_stdin_used+0xf6e>
+  435407:	e8 84 21 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43540c:	48 89 c6             	mov    rsi,rax
+  43540f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435416:	00 
+  435417:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43541e:	00 00 
+  435420:	75 61                	jne    435483 <MEMORY_T::POKE64(double, double)+0x2bbb3>
+  435422:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435429:	31 d2                	xor    edx,edx
+  43542b:	bf 01 00 00 00       	mov    edi,0x1
+  435430:	5b                   	pop    rbx
+  435431:	5d                   	pop    rbp
+  435432:	41 5c                	pop    r12
+  435434:	41 5d                	pop    r13
+  435436:	41 5e                	pop    r14
+  435438:	41 5f                	pop    r15
+  43543a:	e9 81 e5 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 049: print #1, "identification";
+  43543f:	be 0e 00 00 00       	mov    esi,0xe
+  435444:	48 8d 3d a9 91 04 00 	lea    rdi,[rip+0x491a9]        # 47e5f4 <_IO_stdin_used+0x15f4>
+  43544b:	e8 40 21 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435450:	48 89 c6             	mov    rsi,rax
+  435453:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43545a:	00 
+  43545b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435462:	00 00 
+  435464:	75 22                	jne    435488 <MEMORY_T::POKE64(double, double)+0x2bbb8>
+  435466:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43546d:	31 d2                	xor    edx,edx
+  43546f:	bf 01 00 00 00       	mov    edi,0x1
+  435474:	5b                   	pop    rbx
+  435475:	5d                   	pop    rbp
+  435476:	41 5c                	pop    r12
+  435478:	41 5d                	pop    r13
+  43547a:	41 5e                	pop    r14
+  43547c:	41 5f                	pop    r15
+  43547e:	e9 3d e5 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 050: print #1, "if";
+  435483:	e8 f8 03 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 049: print #1, "identification";
+  435488:	e8 f3 03 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 048: print #1, "iDate";
+  43548d:	be 05 00 00 00       	mov    esi,0x5
+  435492:	48 8d 3d 55 91 04 00 	lea    rdi,[rip+0x49155]        # 47e5ee <_IO_stdin_used+0x15ee>
+  435499:	e8 f2 20 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43549e:	48 89 c6             	mov    rsi,rax
+  4354a1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4354a8:	00 
+  4354a9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4354b0:	00 00 
+  4354b2:	75 61                	jne    435515 <MEMORY_T::POKE64(double, double)+0x2bc45>
+  4354b4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4354bb:	31 d2                	xor    edx,edx
+  4354bd:	bf 01 00 00 00       	mov    edi,0x1
+  4354c2:	5b                   	pop    rbx
+  4354c3:	5d                   	pop    rbp
+  4354c4:	41 5c                	pop    r12
+  4354c6:	41 5d                	pop    r13
+  4354c8:	41 5e                	pop    r14
+  4354ca:	41 5f                	pop    r15
+  4354cc:	e9 ef e4 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 047: print #1, "id";
+  4354d1:	be 02 00 00 00       	mov    esi,0x2
+  4354d6:	48 8d 3d b1 97 04 00 	lea    rdi,[rip+0x497b1]        # 47ec8e <_IO_stdin_used+0x1c8e>
+  4354dd:	e8 ae 20 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4354e2:	48 89 c6             	mov    rsi,rax
+  4354e5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4354ec:	00 
+  4354ed:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4354f4:	00 00 
+  4354f6:	75 22                	jne    43551a <MEMORY_T::POKE64(double, double)+0x2bc4a>
+  4354f8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4354ff:	31 d2                	xor    edx,edx
+  435501:	bf 01 00 00 00       	mov    edi,0x1
+  435506:	5b                   	pop    rbx
+  435507:	5d                   	pop    rbp
+  435508:	41 5c                	pop    r12
+  43550a:	41 5d                	pop    r13
+  43550c:	41 5e                	pop    r14
+  43550e:	41 5f                	pop    r15
+  435510:	e9 ab e4 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 048: print #1, "iDate";
+  435515:	e8 66 03 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 047: print #1, "id";
+  43551a:	e8 61 03 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 046: print #1, "iCube";
+  43551f:	be 05 00 00 00       	mov    esi,0x5
+  435524:	48 8d 3d bd 90 04 00 	lea    rdi,[rip+0x490bd]        # 47e5e8 <_IO_stdin_used+0x15e8>
+  43552b:	e8 60 20 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435530:	48 89 c6             	mov    rsi,rax
+  435533:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43553a:	00 
+  43553b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435542:	00 00 
+  435544:	75 61                	jne    4355a7 <MEMORY_T::POKE64(double, double)+0x2bcd7>
+  435546:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43554d:	31 d2                	xor    edx,edx
+  43554f:	bf 01 00 00 00       	mov    edi,0x1
+  435554:	5b                   	pop    rbx
+  435555:	5d                   	pop    rbp
+  435556:	41 5c                	pop    r12
+  435558:	41 5d                	pop    r13
+  43555a:	41 5e                	pop    r14
+  43555c:	41 5f                	pop    r15
+  43555e:	e9 5d e4 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 045: print #1, "iChannelTime";
+  435563:	be 0c 00 00 00       	mov    esi,0xc
+  435568:	48 8d 3d 6c 90 04 00 	lea    rdi,[rip+0x4906c]        # 47e5db <_IO_stdin_used+0x15db>
+  43556f:	e8 1c 20 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435574:	48 89 c6             	mov    rsi,rax
+  435577:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43557e:	00 
+  43557f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435586:	00 00 
+  435588:	75 22                	jne    4355ac <MEMORY_T::POKE64(double, double)+0x2bcdc>
+  43558a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435591:	31 d2                	xor    edx,edx
+  435593:	bf 01 00 00 00       	mov    edi,0x1
+  435598:	5b                   	pop    rbx
+  435599:	5d                   	pop    rbp
+  43559a:	41 5c                	pop    r12
+  43559c:	41 5d                	pop    r13
+  43559e:	41 5e                	pop    r14
+  4355a0:	41 5f                	pop    r15
+  4355a2:	e9 19 e4 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 046: print #1, "iCube";
+  4355a7:	e8 d4 02 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 045: print #1, "iChannelTime";
+  4355ac:	e8 cf 02 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 044: print #1, "iChannelResolution";
+  4355b1:	be 12 00 00 00       	mov    esi,0x12
+  4355b6:	48 8d 3d 0b 90 04 00 	lea    rdi,[rip+0x4900b]        # 47e5c8 <_IO_stdin_used+0x15c8>
+  4355bd:	e8 ce 1f 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4355c2:	48 89 c6             	mov    rsi,rax
+  4355c5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4355cc:	00 
+  4355cd:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4355d4:	00 00 
+  4355d6:	75 61                	jne    435639 <MEMORY_T::POKE64(double, double)+0x2bd69>
+  4355d8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4355df:	31 d2                	xor    edx,edx
+  4355e1:	bf 01 00 00 00       	mov    edi,0x1
+  4355e6:	5b                   	pop    rbx
+  4355e7:	5d                   	pop    rbp
+  4355e8:	41 5c                	pop    r12
+  4355ea:	41 5d                	pop    r13
+  4355ec:	41 5e                	pop    r14
+  4355ee:	41 5f                	pop    r15
+  4355f0:	e9 cb e3 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 043: print #1, "iChannel3";
+  4355f5:	be 09 00 00 00       	mov    esi,0x9
+  4355fa:	48 8d 3d bd 8f 04 00 	lea    rdi,[rip+0x48fbd]        # 47e5be <_IO_stdin_used+0x15be>
+  435601:	e8 8a 1f 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435606:	48 89 c6             	mov    rsi,rax
+  435609:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435610:	00 
+  435611:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435618:	00 00 
+  43561a:	75 22                	jne    43563e <MEMORY_T::POKE64(double, double)+0x2bd6e>
+  43561c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435623:	31 d2                	xor    edx,edx
+  435625:	bf 01 00 00 00       	mov    edi,0x1
+  43562a:	5b                   	pop    rbx
+  43562b:	5d                   	pop    rbp
+  43562c:	41 5c                	pop    r12
+  43562e:	41 5d                	pop    r13
+  435630:	41 5e                	pop    r14
+  435632:	41 5f                	pop    r15
+  435634:	e9 87 e3 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 044: print #1, "iChannelResolution";
+  435639:	e8 42 02 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 043: print #1, "iChannel3";
+  43563e:	e8 3d 02 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 042: print #1, "iChannel2";
+  435643:	be 09 00 00 00       	mov    esi,0x9
+  435648:	48 8d 3d 65 8f 04 00 	lea    rdi,[rip+0x48f65]        # 47e5b4 <_IO_stdin_used+0x15b4>
+  43564f:	e8 3c 1f 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435654:	48 89 c6             	mov    rsi,rax
+  435657:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43565e:	00 
+  43565f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435666:	00 00 
+  435668:	75 61                	jne    4356cb <MEMORY_T::POKE64(double, double)+0x2bdfb>
+  43566a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435671:	31 d2                	xor    edx,edx
+  435673:	bf 01 00 00 00       	mov    edi,0x1
+  435678:	5b                   	pop    rbx
+  435679:	5d                   	pop    rbp
+  43567a:	41 5c                	pop    r12
+  43567c:	41 5d                	pop    r13
+  43567e:	41 5e                	pop    r14
+  435680:	41 5f                	pop    r15
+  435682:	e9 39 e3 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 041: print #1, "iChannel1";
+  435687:	be 09 00 00 00       	mov    esi,0x9
+  43568c:	48 8d 3d 17 8f 04 00 	lea    rdi,[rip+0x48f17]        # 47e5aa <_IO_stdin_used+0x15aa>
+  435693:	e8 f8 1e 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435698:	48 89 c6             	mov    rsi,rax
+  43569b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4356a2:	00 
+  4356a3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4356aa:	00 00 
+  4356ac:	75 22                	jne    4356d0 <MEMORY_T::POKE64(double, double)+0x2be00>
+  4356ae:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4356b5:	31 d2                	xor    edx,edx
+  4356b7:	bf 01 00 00 00       	mov    edi,0x1
+  4356bc:	5b                   	pop    rbx
+  4356bd:	5d                   	pop    rbp
+  4356be:	41 5c                	pop    r12
+  4356c0:	41 5d                	pop    r13
+  4356c2:	41 5e                	pop    r14
+  4356c4:	41 5f                	pop    r15
+  4356c6:	e9 f5 e2 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 042: print #1, "iChannel2";
+  4356cb:	e8 b0 01 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 041: print #1, "iChannel1";
+  4356d0:	e8 ab 01 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 040: print #1, "iChannel0";
+  4356d5:	be 09 00 00 00       	mov    esi,0x9
+  4356da:	48 8d 3d 27 7d 04 00 	lea    rdi,[rip+0x47d27]        # 47d408 <_IO_stdin_used+0x408>
+  4356e1:	e8 aa 1e 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4356e6:	48 89 c6             	mov    rsi,rax
+  4356e9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4356f0:	00 
+  4356f1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4356f8:	00 00 
+  4356fa:	75 61                	jne    43575d <MEMORY_T::POKE64(double, double)+0x2be8d>
+  4356fc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435703:	31 d2                	xor    edx,edx
+  435705:	bf 01 00 00 00       	mov    edi,0x1
+  43570a:	5b                   	pop    rbx
+  43570b:	5d                   	pop    rbp
+  43570c:	41 5c                	pop    r12
+  43570e:	41 5d                	pop    r13
+  435710:	41 5e                	pop    r14
+  435712:	41 5f                	pop    r15
+  435714:	e9 a7 e2 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 039: print #1, "i";
+  435719:	be 01 00 00 00       	mov    esi,0x1
+  43571e:	48 8d 3d f7 79 04 00 	lea    rdi,[rip+0x479f7]        # 47d11c <_IO_stdin_used+0x11c>
+  435725:	e8 66 1e 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43572a:	48 89 c6             	mov    rsi,rax
+  43572d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435734:	00 
+  435735:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43573c:	00 00 
+  43573e:	75 22                	jne    435762 <MEMORY_T::POKE64(double, double)+0x2be92>
+  435740:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435747:	31 d2                	xor    edx,edx
+  435749:	bf 01 00 00 00       	mov    edi,0x1
+  43574e:	5b                   	pop    rbx
+  43574f:	5d                   	pop    rbp
+  435750:	41 5c                	pop    r12
+  435752:	41 5d                	pop    r13
+  435754:	41 5e                	pop    r14
+  435756:	41 5f                	pop    r15
+  435758:	e9 63 e2 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 040: print #1, "iChannel0";
+  43575d:	e8 1e 01 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 039: print #1, "i";
+  435762:	e8 19 01 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 038: print #1, "hypot";
+  435767:	be 05 00 00 00       	mov    esi,0x5
+  43576c:	48 8d 3d 31 8e 04 00 	lea    rdi,[rip+0x48e31]        # 47e5a4 <_IO_stdin_used+0x15a4>
+  435773:	e8 18 1e 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435778:	48 89 c6             	mov    rsi,rax
+  43577b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435782:	00 
+  435783:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43578a:	00 00 
+  43578c:	75 61                	jne    4357ef <MEMORY_T::POKE64(double, double)+0x2bf1f>
+  43578e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435795:	31 d2                	xor    edx,edx
+  435797:	bf 01 00 00 00       	mov    edi,0x1
+  43579c:	5b                   	pop    rbx
+  43579d:	5d                   	pop    rbp
+  43579e:	41 5c                	pop    r12
+  4357a0:	41 5d                	pop    r13
+  4357a2:	41 5e                	pop    r14
+  4357a4:	41 5f                	pop    r15
+  4357a6:	e9 15 e2 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 037: print #1, "hypercomplex";
+  4357ab:	be 0c 00 00 00       	mov    esi,0xc
+  4357b0:	48 8d 3d e0 8d 04 00 	lea    rdi,[rip+0x48de0]        # 47e597 <_IO_stdin_used+0x1597>
+  4357b7:	e8 d4 1d 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4357bc:	48 89 c6             	mov    rsi,rax
+  4357bf:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4357c6:	00 
+  4357c7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4357ce:	00 00 
+  4357d0:	75 22                	jne    4357f4 <MEMORY_T::POKE64(double, double)+0x2bf24>
+  4357d2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4357d9:	31 d2                	xor    edx,edx
+  4357db:	bf 01 00 00 00       	mov    edi,0x1
+  4357e0:	5b                   	pop    rbx
+  4357e1:	5d                   	pop    rbp
+  4357e2:	41 5c                	pop    r12
+  4357e4:	41 5d                	pop    r13
+  4357e6:	41 5e                	pop    r14
+  4357e8:	41 5f                	pop    r15
+  4357ea:	e9 d1 e1 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 038: print #1, "hypot";
+  4357ef:	e8 8c 00 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 037: print #1, "hypercomplex";
+  4357f4:	e8 87 00 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 036: print #1, "hvec4";
+  4357f9:	be 05 00 00 00       	mov    esi,0x5
+  4357fe:	48 8d 3d 8c 8d 04 00 	lea    rdi,[rip+0x48d8c]        # 47e591 <_IO_stdin_used+0x1591>
+  435805:	e8 86 1d 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43580a:	48 89 c6             	mov    rsi,rax
+  43580d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435814:	00 
+  435815:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43581c:	00 00 
+  43581e:	75 61                	jne    435881 <MEMORY_T::POKE64(double, double)+0x2bfb1>
+  435820:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435827:	31 d2                	xor    edx,edx
+  435829:	bf 01 00 00 00       	mov    edi,0x1
+  43582e:	5b                   	pop    rbx
+  43582f:	5d                   	pop    rbp
+  435830:	41 5c                	pop    r12
+  435832:	41 5d                	pop    r13
+  435834:	41 5e                	pop    r14
+  435836:	41 5f                	pop    r15
+  435838:	e9 83 e1 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 035: print #1, "hvec3";
+  43583d:	be 05 00 00 00       	mov    esi,0x5
+  435842:	48 8d 3d 42 8d 04 00 	lea    rdi,[rip+0x48d42]        # 47e58b <_IO_stdin_used+0x158b>
+  435849:	e8 42 1d 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43584e:	48 89 c6             	mov    rsi,rax
+  435851:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435858:	00 
+  435859:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435860:	00 00 
+  435862:	75 22                	jne    435886 <MEMORY_T::POKE64(double, double)+0x2bfb6>
+  435864:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43586b:	31 d2                	xor    edx,edx
+  43586d:	bf 01 00 00 00       	mov    edi,0x1
+  435872:	5b                   	pop    rbx
+  435873:	5d                   	pop    rbp
+  435874:	41 5c                	pop    r12
+  435876:	41 5d                	pop    r13
+  435878:	41 5e                	pop    r14
+  43587a:	41 5f                	pop    r15
+  43587c:	e9 3f e1 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 036: print #1, "hvec4";
+  435881:	e8 fa ff fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 035: print #1, "hvec3";
+  435886:	e8 f5 ff fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 034: print #1, "hvec2";
+  43588b:	be 05 00 00 00       	mov    esi,0x5
+  435890:	48 8d 3d ee 8c 04 00 	lea    rdi,[rip+0x48cee]        # 47e585 <_IO_stdin_used+0x1585>
+  435897:	e8 f4 1c 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43589c:	48 89 c6             	mov    rsi,rax
+  43589f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4358a6:	00 
+  4358a7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4358ae:	00 00 
+  4358b0:	75 61                	jne    435913 <MEMORY_T::POKE64(double, double)+0x2c043>
+  4358b2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4358b9:	31 d2                	xor    edx,edx
+  4358bb:	bf 01 00 00 00       	mov    edi,0x1
+  4358c0:	5b                   	pop    rbx
+  4358c1:	5d                   	pop    rbp
+  4358c2:	41 5c                	pop    r12
+  4358c4:	41 5d                	pop    r13
+  4358c6:	41 5e                	pop    r14
+  4358c8:	41 5f                	pop    r15
+  4358ca:	e9 f1 e0 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 033: print #1, "hour";
+  4358cf:	be 04 00 00 00       	mov    esi,0x4
+  4358d4:	48 8d 3d a5 8c 04 00 	lea    rdi,[rip+0x48ca5]        # 47e580 <_IO_stdin_used+0x1580>
+  4358db:	e8 b0 1c 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4358e0:	48 89 c6             	mov    rsi,rax
+  4358e3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4358ea:	00 
+  4358eb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4358f2:	00 00 
+  4358f4:	75 22                	jne    435918 <MEMORY_T::POKE64(double, double)+0x2c048>
+  4358f6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4358fd:	31 d2                	xor    edx,edx
+  4358ff:	bf 01 00 00 00       	mov    edi,0x1
+  435904:	5b                   	pop    rbx
+  435905:	5d                   	pop    rbp
+  435906:	41 5c                	pop    r12
+  435908:	41 5d                	pop    r13
+  43590a:	41 5e                	pop    r14
+  43590c:	41 5f                	pop    r15
+  43590e:	e9 ad e0 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 034: print #1, "hvec2";
+  435913:	e8 68 ff fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 033: print #1, "hour";
+  435918:	e8 63 ff fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 032: print #1, "hollow";
+  43591d:	be 06 00 00 00       	mov    esi,0x6
+  435922:	48 8d 3d 50 8c 04 00 	lea    rdi,[rip+0x48c50]        # 47e579 <_IO_stdin_used+0x1579>
+  435929:	e8 62 1c 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43592e:	48 89 c6             	mov    rsi,rax
+  435931:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435938:	00 
+  435939:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435940:	00 00 
+  435942:	75 61                	jne    4359a5 <MEMORY_T::POKE64(double, double)+0x2c0d5>
+  435944:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43594b:	31 d2                	xor    edx,edx
+  43594d:	bf 01 00 00 00       	mov    edi,0x1
+  435952:	5b                   	pop    rbx
+  435953:	5d                   	pop    rbp
+  435954:	41 5c                	pop    r12
+  435956:	41 5d                	pop    r13
+  435958:	41 5e                	pop    r14
+  43595a:	41 5f                	pop    r15
+  43595c:	e9 5f e0 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 031: print #1, "holdout";
+  435961:	be 07 00 00 00       	mov    esi,0x7
+  435966:	48 8d 3d 04 8c 04 00 	lea    rdi,[rip+0x48c04]        # 47e571 <_IO_stdin_used+0x1571>
+  43596d:	e8 1e 1c 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435972:	48 89 c6             	mov    rsi,rax
+  435975:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43597c:	00 
+  43597d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435984:	00 00 
+  435986:	75 22                	jne    4359aa <MEMORY_T::POKE64(double, double)+0x2c0da>
+  435988:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43598f:	31 d2                	xor    edx,edx
+  435991:	bf 01 00 00 00       	mov    edi,0x1
+  435996:	5b                   	pop    rbx
+  435997:	5d                   	pop    rbp
+  435998:	41 5c                	pop    r12
+  43599a:	41 5d                	pop    r13
+  43599c:	41 5e                	pop    r14
+  43599e:	41 5f                	pop    r15
+  4359a0:	e9 1b e0 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 032: print #1, "hollow";
+  4359a5:	e8 d6 fe fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 031: print #1, "holdout";
+  4359aa:	e8 d1 fe fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 030: print #1, "hintstart";
+  4359af:	be 09 00 00 00       	mov    esi,0x9
+  4359b4:	48 8d 3d ac 8b 04 00 	lea    rdi,[rip+0x48bac]        # 47e567 <_IO_stdin_used+0x1567>
+  4359bb:	e8 d0 1b 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4359c0:	48 89 c6             	mov    rsi,rax
+  4359c3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4359ca:	00 
+  4359cb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4359d2:	00 00 
+  4359d4:	75 61                	jne    435a37 <MEMORY_T::POKE64(double, double)+0x2c167>
+  4359d6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4359dd:	31 d2                	xor    edx,edx
+  4359df:	bf 01 00 00 00       	mov    edi,0x1
+  4359e4:	5b                   	pop    rbx
+  4359e5:	5d                   	pop    rbp
+  4359e6:	41 5c                	pop    r12
+  4359e8:	41 5d                	pop    r13
+  4359ea:	41 5e                	pop    r14
+  4359ec:	41 5f                	pop    r15
+  4359ee:	e9 cd df 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 029: print #1, "hint_error";
+  4359f3:	be 0a 00 00 00       	mov    esi,0xa
+  4359f8:	48 8d 3d 5d 8b 04 00 	lea    rdi,[rip+0x48b5d]        # 47e55c <_IO_stdin_used+0x155c>
+  4359ff:	e8 8c 1b 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435a04:	48 89 c6             	mov    rsi,rax
+  435a07:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435a0e:	00 
+  435a0f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435a16:	00 00 
+  435a18:	75 22                	jne    435a3c <MEMORY_T::POKE64(double, double)+0x2c16c>
+  435a1a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435a21:	31 d2                	xor    edx,edx
+  435a23:	bf 01 00 00 00       	mov    edi,0x1
+  435a28:	5b                   	pop    rbx
+  435a29:	5d                   	pop    rbp
+  435a2a:	41 5c                	pop    r12
+  435a2c:	41 5d                	pop    r13
+  435a2e:	41 5e                	pop    r14
+  435a30:	41 5f                	pop    r15
+  435a32:	e9 89 df 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 030: print #1, "hintstart";
+  435a37:	e8 44 fe fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 029: print #1, "hint_error";
+  435a3c:	e8 3f fe fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 028: print #1, "hintend";
+  435a41:	be 07 00 00 00       	mov    esi,0x7
+  435a46:	48 8d 3d 07 8b 04 00 	lea    rdi,[rip+0x48b07]        # 47e554 <_IO_stdin_used+0x1554>
+  435a4d:	e8 3e 1b 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435a52:	48 89 c6             	mov    rsi,rax
+  435a55:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435a5c:	00 
+  435a5d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435a64:	00 00 
+  435a66:	75 61                	jne    435ac9 <MEMORY_T::POKE64(double, double)+0x2c1f9>
+  435a68:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435a6f:	31 d2                	xor    edx,edx
+  435a71:	bf 01 00 00 00       	mov    edi,0x1
+  435a76:	5b                   	pop    rbx
+  435a77:	5d                   	pop    rbp
+  435a78:	41 5c                	pop    r12
+  435a7a:	41 5d                	pop    r13
+  435a7c:	41 5e                	pop    r14
+  435a7e:	41 5f                	pop    r15
+  435a80:	e9 3b df 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 026: print #1, "high-values";
+  435a85:	be 0b 00 00 00       	mov    esi,0xb
+  435a8a:	48 8d 3d b7 8a 04 00 	lea    rdi,[rip+0x48ab7]        # 47e548 <_IO_stdin_used+0x1548>
+  435a91:	e8 fa 1a 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435a96:	48 89 c6             	mov    rsi,rax
+  435a99:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435aa0:	00 
+  435aa1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435aa8:	00 00 
+  435aaa:	75 22                	jne    435ace <MEMORY_T::POKE64(double, double)+0x2c1fe>
+  435aac:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435ab3:	31 d2                	xor    edx,edx
+  435ab5:	bf 01 00 00 00       	mov    edi,0x1
+  435aba:	5b                   	pop    rbx
+  435abb:	5d                   	pop    rbp
+  435abc:	41 5c                	pop    r12
+  435abe:	41 5d                	pop    r13
+  435ac0:	41 5e                	pop    r14
+  435ac2:	41 5f                	pop    r15
+  435ac4:	e9 f7 de 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 028: print #1, "hintend";
+  435ac9:	e8 b2 fd fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 026: print #1, "high-values";
+  435ace:	e8 ad fd fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 025: print #1, "high-value";
+  435ad3:	be 0a 00 00 00       	mov    esi,0xa
+  435ad8:	48 8d 3d 5e 8a 04 00 	lea    rdi,[rip+0x48a5e]        # 47e53d <_IO_stdin_used+0x153d>
+  435adf:	e8 ac 1a 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435ae4:	48 89 c6             	mov    rsi,rax
+  435ae7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435aee:	00 
+  435aef:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435af6:	00 00 
+  435af8:	75 61                	jne    435b5b <MEMORY_T::POKE64(double, double)+0x2c28b>
+  435afa:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435b01:	31 d2                	xor    edx,edx
+  435b03:	bf 01 00 00 00       	mov    edi,0x1
+  435b08:	5b                   	pop    rbx
+  435b09:	5d                   	pop    rbp
+  435b0a:	41 5c                	pop    r12
+  435b0c:	41 5d                	pop    r13
+  435b0e:	41 5e                	pop    r14
+  435b10:	41 5f                	pop    r15
+  435b12:	e9 a9 de 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 024: print #1, "highp";
+  435b17:	be 05 00 00 00       	mov    esi,0x5
+  435b1c:	48 8d 3d 14 8a 04 00 	lea    rdi,[rip+0x48a14]        # 47e537 <_IO_stdin_used+0x1537>
+  435b23:	e8 68 1a 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435b28:	48 89 c6             	mov    rsi,rax
+  435b2b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435b32:	00 
+  435b33:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435b3a:	00 00 
+  435b3c:	75 22                	jne    435b60 <MEMORY_T::POKE64(double, double)+0x2c290>
+  435b3e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435b45:	31 d2                	xor    edx,edx
+  435b47:	bf 01 00 00 00       	mov    edi,0x1
+  435b4c:	5b                   	pop    rbx
+  435b4d:	5d                   	pop    rbp
+  435b4e:	41 5c                	pop    r12
+  435b50:	41 5d                	pop    r13
+  435b52:	41 5e                	pop    r14
+  435b54:	41 5f                	pop    r15
+  435b56:	e9 65 de 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 025: print #1, "high-value";
+  435b5b:	e8 20 fd fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 024: print #1, "highp";
+  435b60:	e8 1b fd fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 023: print #1, "hierarchy";
+  435b65:	be 09 00 00 00       	mov    esi,0x9
+  435b6a:	48 8d 3d bc 89 04 00 	lea    rdi,[rip+0x489bc]        # 47e52d <_IO_stdin_used+0x152d>
+  435b71:	e8 1a 1a 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435b76:	48 89 c6             	mov    rsi,rax
+  435b79:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435b80:	00 
+  435b81:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435b88:	00 00 
+  435b8a:	75 61                	jne    435bed <MEMORY_T::POKE64(double, double)+0x2c31d>
+  435b8c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435b93:	31 d2                	xor    edx,edx
+  435b95:	bf 01 00 00 00       	mov    edi,0x1
+  435b9a:	5b                   	pop    rbx
+  435b9b:	5d                   	pop    rbp
+  435b9c:	41 5c                	pop    r12
+  435b9e:	41 5d                	pop    r13
+  435ba0:	41 5e                	pop    r14
+  435ba2:	41 5f                	pop    r15
+  435ba4:	e9 17 de 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 022: print #1, "hf_gray_16";
+  435ba9:	be 0a 00 00 00       	mov    esi,0xa
+  435bae:	48 8d 3d 6d 89 04 00 	lea    rdi,[rip+0x4896d]        # 47e522 <_IO_stdin_used+0x1522>
+  435bb5:	e8 d6 19 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435bba:	48 89 c6             	mov    rsi,rax
+  435bbd:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435bc4:	00 
+  435bc5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435bcc:	00 00 
+  435bce:	75 22                	jne    435bf2 <MEMORY_T::POKE64(double, double)+0x2c322>
+  435bd0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435bd7:	31 d2                	xor    edx,edx
+  435bd9:	bf 01 00 00 00       	mov    edi,0x1
+  435bde:	5b                   	pop    rbx
+  435bdf:	5d                   	pop    rbp
+  435be0:	41 5c                	pop    r12
+  435be2:	41 5d                	pop    r13
+  435be4:	41 5e                	pop    r14
+  435be6:	41 5f                	pop    r15
+  435be8:	e9 d3 dd 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 023: print #1, "hierarchy";
+  435bed:	e8 8e fc fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 022: print #1, "hf_gray_16";
+  435bf2:	e8 89 fc fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 021: print #1, "hexagon";
+  435bf7:	be 07 00 00 00       	mov    esi,0x7
+  435bfc:	48 8d 3d 17 89 04 00 	lea    rdi,[rip+0x48917]        # 47e51a <_IO_stdin_used+0x151a>
+  435c03:	e8 88 19 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435c08:	48 89 c6             	mov    rsi,rax
+  435c0b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435c12:	00 
+  435c13:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435c1a:	00 00 
+  435c1c:	75 61                	jne    435c7f <MEMORY_T::POKE64(double, double)+0x2c3af>
+  435c1e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435c25:	31 d2                	xor    edx,edx
+  435c27:	bf 01 00 00 00       	mov    edi,0x1
+  435c2c:	5b                   	pop    rbx
+  435c2d:	5d                   	pop    rbp
+  435c2e:	41 5c                	pop    r12
+  435c30:	41 5d                	pop    r13
+  435c32:	41 5e                	pop    r14
+  435c34:	41 5f                	pop    r15
+  435c36:	e9 85 dd 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 020: print #1, "hex";
+  435c3b:	be 03 00 00 00       	mov    esi,0x3
+  435c40:	48 8d 3d eb a9 04 00 	lea    rdi,[rip+0x4a9eb]        # 480632 <_IO_stdin_used+0x3632>
+  435c47:	e8 44 19 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435c4c:	48 89 c6             	mov    rsi,rax
+  435c4f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435c56:	00 
+  435c57:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435c5e:	00 00 
+  435c60:	75 22                	jne    435c84 <MEMORY_T::POKE64(double, double)+0x2c3b4>
+  435c62:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435c69:	31 d2                	xor    edx,edx
+  435c6b:	bf 01 00 00 00       	mov    edi,0x1
+  435c70:	5b                   	pop    rbx
+  435c71:	5d                   	pop    rbp
+  435c72:	41 5c                	pop    r12
+  435c74:	41 5d                	pop    r13
+  435c76:	41 5e                	pop    r14
+  435c78:	41 5f                	pop    r15
+  435c7a:	e9 41 dd 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 021: print #1, "hexagon";
+  435c7f:	e8 fc fb fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 020: print #1, "hex";
+  435c84:	e8 f7 fb fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 019: print #1, "henyey_greenstein";
+  435c89:	be 11 00 00 00       	mov    esi,0x11
+  435c8e:	48 8d 3d 73 88 04 00 	lea    rdi,[rip+0x48873]        # 47e508 <_IO_stdin_used+0x1508>
+  435c95:	e8 f6 18 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435c9a:	48 89 c6             	mov    rsi,rax
+  435c9d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435ca4:	00 
+  435ca5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435cac:	00 00 
+  435cae:	75 61                	jne    435d11 <MEMORY_T::POKE64(double, double)+0x2c441>
+  435cb0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435cb7:	31 d2                	xor    edx,edx
+  435cb9:	bf 01 00 00 00       	mov    edi,0x1
+  435cbe:	5b                   	pop    rbx
+  435cbf:	5d                   	pop    rbp
+  435cc0:	41 5c                	pop    r12
+  435cc2:	41 5d                	pop    r13
+  435cc4:	41 5e                	pop    r14
+  435cc6:	41 5f                	pop    r15
+  435cc8:	e9 f3 dc 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 018: print #1, "height_field";
+  435ccd:	be 0c 00 00 00       	mov    esi,0xc
+  435cd2:	48 8d 3d 22 88 04 00 	lea    rdi,[rip+0x48822]        # 47e4fb <_IO_stdin_used+0x14fb>
+  435cd9:	e8 b2 18 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435cde:	48 89 c6             	mov    rsi,rax
+  435ce1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435ce8:	00 
+  435ce9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435cf0:	00 00 
+  435cf2:	75 22                	jne    435d16 <MEMORY_T::POKE64(double, double)+0x2c446>
+  435cf4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435cfb:	31 d2                	xor    edx,edx
+  435cfd:	bf 01 00 00 00       	mov    edi,0x1
+  435d02:	5b                   	pop    rbx
+  435d03:	5d                   	pop    rbp
+  435d04:	41 5c                	pop    r12
+  435d06:	41 5d                	pop    r13
+  435d08:	41 5e                	pop    r14
+  435d0a:	41 5f                	pop    r15
+  435d0c:	e9 af dc 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 019: print #1, "henyey_greenstein";
+  435d11:	e8 6a fb fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 018: print #1, "height_field";
+  435d16:	e8 65 fb fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 017: print #1, "heading";
+  435d1b:	be 07 00 00 00       	mov    esi,0x7
+  435d20:	48 8d 3d cc 87 04 00 	lea    rdi,[rip+0x487cc]        # 47e4f3 <_IO_stdin_used+0x14f3>
+  435d27:	e8 64 18 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435d2c:	48 89 c6             	mov    rsi,rax
+  435d2f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435d36:	00 
+  435d37:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435d3e:	00 00 
+  435d40:	75 61                	jne    435da3 <MEMORY_T::POKE64(double, double)+0x2c4d3>
+  435d42:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435d49:	31 d2                	xor    edx,edx
+  435d4b:	bf 01 00 00 00       	mov    edi,0x1
+  435d50:	5b                   	pop    rbx
+  435d51:	5d                   	pop    rbp
+  435d52:	41 5c                	pop    r12
+  435d54:	41 5d                	pop    r13
+  435d56:	41 5e                	pop    r14
+  435d58:	41 5f                	pop    r15
+  435d5a:	e9 61 dc 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 016: print #1, "header";
+  435d5f:	be 06 00 00 00       	mov    esi,0x6
+  435d64:	48 8d 3d 81 87 04 00 	lea    rdi,[rip+0x48781]        # 47e4ec <_IO_stdin_used+0x14ec>
+  435d6b:	e8 20 18 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435d70:	48 89 c6             	mov    rsi,rax
+  435d73:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435d7a:	00 
+  435d7b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435d82:	00 00 
+  435d84:	75 22                	jne    435da8 <MEMORY_T::POKE64(double, double)+0x2c4d8>
+  435d86:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435d8d:	31 d2                	xor    edx,edx
+  435d8f:	bf 01 00 00 00       	mov    edi,0x1
+  435d94:	5b                   	pop    rbx
+  435d95:	5d                   	pop    rbp
+  435d96:	41 5c                	pop    r12
+  435d98:	41 5d                	pop    r13
+  435d9a:	41 5e                	pop    r14
+  435d9c:	41 5f                	pop    r15
+  435d9e:	e9 1d dc 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 017: print #1, "heading";
+  435da3:	e8 d8 fa fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 016: print #1, "header";
+  435da8:	e8 d3 fa fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 015: print #1, "having";
+  435dad:	be 06 00 00 00       	mov    esi,0x6
+  435db2:	48 8d 3d 2c 87 04 00 	lea    rdi,[rip+0x4872c]        # 47e4e5 <_IO_stdin_used+0x14e5>
+  435db9:	e8 d2 17 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435dbe:	48 89 c6             	mov    rsi,rax
+  435dc1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435dc8:	00 
+  435dc9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435dd0:	00 00 
+  435dd2:	75 61                	jne    435e35 <MEMORY_T::POKE64(double, double)+0x2c565>
+  435dd4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435ddb:	31 d2                	xor    edx,edx
+  435ddd:	bf 01 00 00 00       	mov    edi,0x1
+  435de2:	5b                   	pop    rbx
+  435de3:	5d                   	pop    rbp
+  435de4:	41 5c                	pop    r12
+  435de6:	41 5d                	pop    r13
+  435de8:	41 5e                	pop    r14
+  435dea:	41 5f                	pop    r15
+  435dec:	e9 cf db 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 014: print #1, "hashnoise";
+  435df1:	be 09 00 00 00       	mov    esi,0x9
+  435df6:	48 8d 3d de 86 04 00 	lea    rdi,[rip+0x486de]        # 47e4db <_IO_stdin_used+0x14db>
+  435dfd:	e8 8e 17 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435e02:	48 89 c6             	mov    rsi,rax
+  435e05:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435e0c:	00 
+  435e0d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435e14:	00 00 
+  435e16:	75 22                	jne    435e3a <MEMORY_T::POKE64(double, double)+0x2c56a>
+  435e18:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435e1f:	31 d2                	xor    edx,edx
+  435e21:	bf 01 00 00 00       	mov    edi,0x1
+  435e26:	5b                   	pop    rbx
+  435e27:	5d                   	pop    rbp
+  435e28:	41 5c                	pop    r12
+  435e2a:	41 5d                	pop    r13
+  435e2c:	41 5e                	pop    r14
+  435e2e:	41 5f                	pop    r15
+  435e30:	e9 8b db 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 015: print #1, "having";
+  435e35:	e8 46 fa fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 014: print #1, "hashnoise";
+  435e3a:	e8 41 fa fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 013: print #1, "hash";
+  435e3f:	be 04 00 00 00       	mov    esi,0x4
+  435e44:	48 8d 3d 8b 86 04 00 	lea    rdi,[rip+0x4868b]        # 47e4d6 <_IO_stdin_used+0x14d6>
+  435e4b:	e8 40 17 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435e50:	48 89 c6             	mov    rsi,rax
+  435e53:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435e5a:	00 
+  435e5b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435e62:	00 00 
+  435e64:	75 61                	jne    435ec7 <MEMORY_T::POKE64(double, double)+0x2c5f7>
+  435e66:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435e6d:	31 d2                	xor    edx,edx
+  435e6f:	bf 01 00 00 00       	mov    edi,0x1
+  435e74:	5b                   	pop    rbx
+  435e75:	5d                   	pop    rbp
+  435e76:	41 5c                	pop    r12
+  435e78:	41 5d                	pop    r13
+  435e7a:	41 5e                	pop    r14
+  435e7c:	41 5f                	pop    r15
+  435e7e:	e9 3d db 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 012: print #1, "half";
+  435e83:	be 04 00 00 00       	mov    esi,0x4
+  435e88:	48 8d 3d 42 86 04 00 	lea    rdi,[rip+0x48642]        # 47e4d1 <_IO_stdin_used+0x14d1>
+  435e8f:	e8 fc 16 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435e94:	48 89 c6             	mov    rsi,rax
+  435e97:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435e9e:	00 
+  435e9f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435ea6:	00 00 
+  435ea8:	75 22                	jne    435ecc <MEMORY_T::POKE64(double, double)+0x2c5fc>
+  435eaa:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435eb1:	31 d2                	xor    edx,edx
+  435eb3:	bf 01 00 00 00       	mov    edi,0x1
+  435eb8:	5b                   	pop    rbx
+  435eb9:	5d                   	pop    rbp
+  435eba:	41 5c                	pop    r12
+  435ebc:	41 5d                	pop    r13
+  435ebe:	41 5e                	pop    r14
+  435ec0:	41 5f                	pop    r15
+  435ec2:	e9 f9 da 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 013: print #1, "hash";
+  435ec7:	e8 b4 f9 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 012: print #1, "half";
+  435ecc:	e8 af f9 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 011: print #1, "h";
+  435ed1:	be 01 00 00 00       	mov    esi,0x1
+  435ed6:	48 8d 3d 2d eb 04 00 	lea    rdi,[rip+0x4eb2d]        # 484a0a <CSWTCH.2+0x4a>
+  435edd:	e8 ae 16 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435ee2:	48 89 c6             	mov    rsi,rax
+  435ee5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435eec:	00 
+  435eed:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435ef4:	00 00 
+  435ef6:	75 61                	jne    435f59 <MEMORY_T::POKE64(double, double)+0x2c689>
+  435ef8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435eff:	31 d2                	xor    edx,edx
+  435f01:	bf 01 00 00 00       	mov    edi,0x1
+  435f06:	5b                   	pop    rbx
+  435f07:	5d                   	pop    rbp
+  435f08:	41 5c                	pop    r12
+  435f0a:	41 5d                	pop    r13
+  435f0c:	41 5e                	pop    r14
+  435f0e:	41 5f                	pop    r15
+  435f10:	e9 ab da 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 010: print #1, "group_by";
+  435f15:	be 08 00 00 00       	mov    esi,0x8
+  435f1a:	48 8d 3d a7 85 04 00 	lea    rdi,[rip+0x485a7]        # 47e4c8 <_IO_stdin_used+0x14c8>
+  435f21:	e8 6a 16 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435f26:	48 89 c6             	mov    rsi,rax
+  435f29:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435f30:	00 
+  435f31:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435f38:	00 00 
+  435f3a:	75 22                	jne    435f5e <MEMORY_T::POKE64(double, double)+0x2c68e>
+  435f3c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435f43:	31 d2                	xor    edx,edx
+  435f45:	bf 01 00 00 00       	mov    edi,0x1
+  435f4a:	5b                   	pop    rbx
+  435f4b:	5d                   	pop    rbp
+  435f4c:	41 5c                	pop    r12
+  435f4e:	41 5d                	pop    r13
+  435f50:	41 5e                	pop    r14
+  435f52:	41 5f                	pop    r15
+  435f54:	e9 67 da 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 011: print #1, "h";
+  435f59:	e8 22 f9 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 010: print #1, "group_by";
+  435f5e:	e8 1d f9 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 009: print #1, "group";
+  435f63:	be 05 00 00 00       	mov    esi,0x5
+  435f68:	48 8d 3d c3 8a 04 00 	lea    rdi,[rip+0x48ac3]        # 47ea32 <_IO_stdin_used+0x1a32>
+  435f6f:	e8 1c 16 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435f74:	48 89 c6             	mov    rsi,rax
+  435f77:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435f7e:	00 
+  435f7f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435f86:	00 00 
+  435f88:	75 61                	jne    435feb <MEMORY_T::POKE64(double, double)+0x2c71b>
+  435f8a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435f91:	31 d2                	xor    edx,edx
+  435f93:	bf 01 00 00 00       	mov    edi,0x1
+  435f98:	5b                   	pop    rbx
+  435f99:	5d                   	pop    rbp
+  435f9a:	41 5c                	pop    r12
+  435f9c:	41 5d                	pop    r13
+  435f9e:	41 5e                	pop    r14
+  435fa0:	41 5f                	pop    r15
+  435fa2:	e9 19 da 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 008: print #1, "green";
+  435fa7:	be 05 00 00 00       	mov    esi,0x5
+  435fac:	48 8d 3d 0f 85 04 00 	lea    rdi,[rip+0x4850f]        # 47e4c2 <_IO_stdin_used+0x14c2>
+  435fb3:	e8 d8 15 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  435fb8:	48 89 c6             	mov    rsi,rax
+  435fbb:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  435fc2:	00 
+  435fc3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  435fca:	00 00 
+  435fcc:	75 22                	jne    435ff0 <MEMORY_T::POKE64(double, double)+0x2c720>
+  435fce:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  435fd5:	31 d2                	xor    edx,edx
+  435fd7:	bf 01 00 00 00       	mov    edi,0x1
+  435fdc:	5b                   	pop    rbx
+  435fdd:	5d                   	pop    rbp
+  435fde:	41 5c                	pop    r12
+  435fe0:	41 5d                	pop    r13
+  435fe2:	41 5e                	pop    r14
+  435fe4:	41 5f                	pop    r15
+  435fe6:	e9 d5 d9 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 009: print #1, "group";
+  435feb:	e8 90 f8 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 008: print #1, "green";
+  435ff0:	e8 8b f8 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 007: print #1, "greater";
+  435ff5:	be 07 00 00 00       	mov    esi,0x7
+  435ffa:	48 8d 3d b9 84 04 00 	lea    rdi,[rip+0x484b9]        # 47e4ba <_IO_stdin_used+0x14ba>
+  436001:	e8 8a 15 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436006:	48 89 c6             	mov    rsi,rax
+  436009:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  436010:	00 
+  436011:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  436018:	00 00 
+  43601a:	75 61                	jne    43607d <MEMORY_T::POKE64(double, double)+0x2c7ad>
+  43601c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  436023:	31 d2                	xor    edx,edx
+  436025:	bf 01 00 00 00       	mov    edi,0x1
+  43602a:	5b                   	pop    rbx
+  43602b:	5d                   	pop    rbp
+  43602c:	41 5c                	pop    r12
+  43602e:	41 5d                	pop    r13
+  436030:	41 5e                	pop    r14
+  436032:	41 5f                	pop    r15
+  436034:	e9 87 d9 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 006: print #1, "greateeq";
+  436039:	be 08 00 00 00       	mov    esi,0x8
+  43603e:	48 8d 3d 6c 84 04 00 	lea    rdi,[rip+0x4846c]        # 47e4b1 <_IO_stdin_used+0x14b1>
+  436045:	e8 46 15 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43604a:	48 89 c6             	mov    rsi,rax
+  43604d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  436054:	00 
+  436055:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43605c:	00 00 
+  43605e:	75 22                	jne    436082 <MEMORY_T::POKE64(double, double)+0x2c7b2>
+  436060:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  436067:	31 d2                	xor    edx,edx
+  436069:	bf 01 00 00 00       	mov    edi,0x1
+  43606e:	5b                   	pop    rbx
+  43606f:	5d                   	pop    rbp
+  436070:	41 5c                	pop    r12
+  436072:	41 5d                	pop    r13
+  436074:	41 5e                	pop    r14
+  436076:	41 5f                	pop    r15
+  436078:	e9 43 d9 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 007: print #1, "greater";
+  43607d:	e8 fe f7 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 006: print #1, "greateeq";
+  436082:	e8 f9 f7 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 005: print #1, "gray_threshold";
+  436087:	be 0e 00 00 00       	mov    esi,0xe
+  43608c:	48 8d 3d 0f 84 04 00 	lea    rdi,[rip+0x4840f]        # 47e4a2 <_IO_stdin_used+0x14a2>
+  436093:	e8 f8 14 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436098:	48 89 c6             	mov    rsi,rax
+  43609b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4360a2:	00 
+  4360a3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4360aa:	00 00 
+  4360ac:	75 61                	jne    43610f <MEMORY_T::POKE64(double, double)+0x2c83f>
+  4360ae:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4360b5:	31 d2                	xor    edx,edx
+  4360b7:	bf 01 00 00 00       	mov    edi,0x1
+  4360bc:	5b                   	pop    rbx
+  4360bd:	5d                   	pop    rbp
+  4360be:	41 5c                	pop    r12
+  4360c0:	41 5d                	pop    r13
+  4360c2:	41 5e                	pop    r14
+  4360c4:	41 5f                	pop    r15
+  4360c6:	e9 f5 d8 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 004: print #1, "gray";
+  4360cb:	be 04 00 00 00       	mov    esi,0x4
+  4360d0:	48 8d 3d c6 83 04 00 	lea    rdi,[rip+0x483c6]        # 47e49d <_IO_stdin_used+0x149d>
+  4360d7:	e8 b4 14 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4360dc:	48 89 c6             	mov    rsi,rax
+  4360df:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4360e6:	00 
+  4360e7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4360ee:	00 00 
+  4360f0:	75 22                	jne    436114 <MEMORY_T::POKE64(double, double)+0x2c844>
+  4360f2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4360f9:	31 d2                	xor    edx,edx
+  4360fb:	bf 01 00 00 00       	mov    edi,0x1
+  436100:	5b                   	pop    rbx
+  436101:	5d                   	pop    rbp
+  436102:	41 5c                	pop    r12
+  436104:	41 5d                	pop    r13
+  436106:	41 5e                	pop    r14
+  436108:	41 5f                	pop    r15
+  43610a:	e9 b1 d8 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 005: print #1, "gray_threshold";
+  43610f:	e8 6c f7 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 004: print #1, "gray";
+  436114:	e8 67 f7 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 003: print #1, "granite";
+  436119:	be 07 00 00 00       	mov    esi,0x7
+  43611e:	48 8d 3d 70 83 04 00 	lea    rdi,[rip+0x48370]        # 47e495 <_IO_stdin_used+0x1495>
+  436125:	e8 66 14 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43612a:	48 89 c6             	mov    rsi,rax
+  43612d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  436134:	00 
+  436135:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43613c:	00 00 
+  43613e:	75 61                	jne    4361a1 <MEMORY_T::POKE64(double, double)+0x2c8d1>
+  436140:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  436147:	31 d2                	xor    edx,edx
+  436149:	bf 01 00 00 00       	mov    edi,0x1
+  43614e:	5b                   	pop    rbx
+  43614f:	5d                   	pop    rbp
+  436150:	41 5c                	pop    r12
+  436152:	41 5d                	pop    r13
+  436154:	41 5e                	pop    r14
+  436156:	41 5f                	pop    r15
+  436158:	e9 63 d8 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 002: print #1, "gradient";
+  43615d:	be 08 00 00 00       	mov    esi,0x8
+  436162:	48 8d 3d 5f 8a 04 00 	lea    rdi,[rip+0x48a5f]        # 47ebc8 <_IO_stdin_used+0x1bc8>
+  436169:	e8 22 14 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43616e:	48 89 c6             	mov    rsi,rax
+  436171:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  436178:	00 
+  436179:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  436180:	00 00 
+  436182:	75 22                	jne    4361a6 <MEMORY_T::POKE64(double, double)+0x2c8d6>
+  436184:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43618b:	31 d2                	xor    edx,edx
+  43618d:	bf 01 00 00 00       	mov    edi,0x1
+  436192:	5b                   	pop    rbx
+  436193:	5d                   	pop    rbp
+  436194:	41 5c                	pop    r12
+  436196:	41 5d                	pop    r13
+  436198:	41 5e                	pop    r14
+  43619a:	41 5f                	pop    r15
+  43619c:	e9 1f d8 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 003: print #1, "granite";
+  4361a1:	e8 da f6 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 002: print #1, "gradient";
+  4361a6:	e8 d5 f6 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 001: print #1, "goto";
+  4361ab:	be 04 00 00 00       	mov    esi,0x4
+  4361b0:	48 8d 3d d9 82 04 00 	lea    rdi,[rip+0x482d9]        # 47e490 <_IO_stdin_used+0x1490>
+  4361b7:	e8 d4 13 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4361bc:	48 89 c6             	mov    rsi,rax
+  4361bf:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4361c6:	00 
+  4361c7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4361ce:	00 00 
+  4361d0:	75 61                	jne    436233 <MEMORY_T::POKE64(double, double)+0x2c963>
+  4361d2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4361d9:	31 d2                	xor    edx,edx
+  4361db:	bf 01 00 00 00       	mov    edi,0x1
+  4361e0:	5b                   	pop    rbx
+  4361e1:	5d                   	pop    rbp
+  4361e2:	41 5c                	pop    r12
+  4361e4:	41 5d                	pop    r13
+  4361e6:	41 5e                	pop    r14
+  4361e8:	41 5f                	pop    r15
+  4361ea:	e9 d1 d7 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 000: print #1, "gosub";
+  4361ef:	be 05 00 00 00       	mov    esi,0x5
+  4361f4:	48 8d 3d 8f 82 04 00 	lea    rdi,[rip+0x4828f]        # 47e48a <_IO_stdin_used+0x148a>
+  4361fb:	e8 90 13 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436200:	48 89 c6             	mov    rsi,rax
+  436203:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43620a:	00 
+  43620b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  436212:	00 00 
+  436214:	75 22                	jne    436238 <MEMORY_T::POKE64(double, double)+0x2c968>
+  436216:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43621d:	31 d2                	xor    edx,edx
+  43621f:	bf 01 00 00 00       	mov    edi,0x1
+  436224:	5b                   	pop    rbx
+  436225:	5d                   	pop    rbp
+  436226:	41 5c                	pop    r12
+  436228:	41 5d                	pop    r13
+  43622a:	41 5e                	pop    r14
+  43622c:	41 5f                	pop    r15
+  43622e:	e9 8d d7 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 001: print #1, "goto";
+  436233:	e8 48 f6 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 000: print #1, "gosub";
+  436238:	e8 43 f6 fc ff       	call   405880 <__stack_chk_fail@plt>
+;				     select case as const cast(ulongint, mem64(49361))
+  43623d:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  436242:	f2 0f 10 80 88 06 06 	movsd  xmm0,QWORD PTR [rax+0x60688]
+  436249:	00 
+  43624a:	e8 11 f1 fc ff       	call   405360 <nearbyint@plt>
+  43624f:	66 0f 2f 04 24       	comisd xmm0,QWORD PTR [rsp]
+  436254:	0f 83 ab 00 00 00    	jae    436305 <MEMORY_T::POKE64(double, double)+0x2ca35>
+  43625a:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+;						case 144: print #1, "override";
+  43625f:	48 3d ff 00 00 00    	cmp    rax,0xff
+  436265:	0f 87 95 61 fd ff    	ja     40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;						case 145: print #1, "p";
+  43626b:	41 ff 24 c7          	jmp    QWORD PTR [r15+rax*8]
+;					  case 22: print #1, "#include " + chr(13) + lcase("WOODS.INC") + chr(13)
+  43626f:	be 09 00 00 00       	mov    esi,0x9
+  436274:	48 8d 3d 05 82 04 00 	lea    rdi,[rip+0x48205]        # 47e480 <_IO_stdin_used+0x1480>
+  43627b:	31 db                	xor    ebx,ebx
+  43627d:	e8 0e 13 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436282:	31 f6                	xor    esi,esi
+  436284:	48 89 c7             	mov    rdi,rax
+  436287:	e8 f4 0b 04 00       	call   476e80 <fb_StrLcase2>
+  43628c:	b9 06 00 00 00       	mov    ecx,0x6
+  436291:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436295:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  43629c:	00 
+  43629d:	49 89 c2             	mov    r10,rax
+  4362a0:	4c 89 cf             	mov    rdi,r9
+  4362a3:	89 d8                	mov    eax,ebx
+  4362a5:	ba 0b 00 00 00       	mov    edx,0xb
+  4362aa:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4362ac:	48 8d 35 d5 80 04 00 	lea    rsi,[rip+0x480d5]        # 47e388 <_IO_stdin_used+0x1388>
+  4362b3:	4c 89 d1             	mov    rcx,r10
+  4362b6:	4c 89 cf             	mov    rdi,r9
+  4362b9:	e8 b2 f3 03 00       	call   475670 <fb_StrConcat>
+  4362be:	b9 06 00 00 00       	mov    ecx,0x6
+  4362c3:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  4362c7:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  4362ce:	00 
+  4362cf:	48 89 c6             	mov    rsi,rax
+  4362d2:	4c 89 cf             	mov    rdi,r9
+  4362d5:	89 d8                	mov    eax,ebx
+  4362d7:	41 b8 02 00 00 00    	mov    r8d,0x2
+  4362dd:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4362df:	4c 89 cf             	mov    rdi,r9
+  4362e2:	48 8d 0d a8 80 04 00 	lea    rcx,[rip+0x480a8]        # 47e391 <_IO_stdin_used+0x1391>
+  4362e9:	e8 82 f3 03 00       	call   475670 <fb_StrConcat>
+  4362ee:	ba 01 00 00 00       	mov    edx,0x1
+  4362f3:	bf 01 00 00 00       	mov    edi,0x1
+  4362f8:	48 89 c6             	mov    rsi,rax
+  4362fb:	e8 c0 d6 03 00       	call   4739c0 <fb_PrintString>
+;				     end select
+  436300:	e9 fb 60 fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;				     select case as const cast(ulongint, mem64(49361))
+  436305:	f2 0f 5c 04 24       	subsd  xmm0,QWORD PTR [rsp]
+  43630a:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  43630f:	48 31 d8             	xor    rax,rbx
+  436312:	e9 48 ff ff ff       	jmp    43625f <MEMORY_T::POKE64(double, double)+0x2c98f>
+;					  case 21: print #1, "#include " + chr(13) + lcase("WOODMAPS.INC") + chr(13)
+  436317:	be 0c 00 00 00       	mov    esi,0xc
+  43631c:	48 8d 3d 50 81 04 00 	lea    rdi,[rip+0x48150]        # 47e473 <_IO_stdin_used+0x1473>
+  436323:	31 db                	xor    ebx,ebx
+  436325:	e8 66 12 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43632a:	31 f6                	xor    esi,esi
+  43632c:	48 89 c7             	mov    rdi,rax
+  43632f:	e8 4c 0b 04 00       	call   476e80 <fb_StrLcase2>
+  436334:	b9 06 00 00 00       	mov    ecx,0x6
+  436339:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  43633d:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436344:	00 
+  436345:	49 89 c2             	mov    r10,rax
+  436348:	4c 89 cf             	mov    rdi,r9
+  43634b:	89 d8                	mov    eax,ebx
+  43634d:	ba 0b 00 00 00       	mov    edx,0xb
+  436352:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436354:	48 8d 35 2d 80 04 00 	lea    rsi,[rip+0x4802d]        # 47e388 <_IO_stdin_used+0x1388>
+  43635b:	4c 89 d1             	mov    rcx,r10
+  43635e:	4c 89 cf             	mov    rdi,r9
+  436361:	e8 0a f3 03 00       	call   475670 <fb_StrConcat>
+  436366:	b9 06 00 00 00       	mov    ecx,0x6
+  43636b:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  43636f:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436376:	00 
+  436377:	48 89 c6             	mov    rsi,rax
+  43637a:	4c 89 cf             	mov    rdi,r9
+  43637d:	89 d8                	mov    eax,ebx
+  43637f:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436385:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436387:	4c 89 cf             	mov    rdi,r9
+  43638a:	48 8d 0d 00 80 04 00 	lea    rcx,[rip+0x48000]        # 47e391 <_IO_stdin_used+0x1391>
+  436391:	e8 da f2 03 00       	call   475670 <fb_StrConcat>
+  436396:	ba 01 00 00 00       	mov    edx,0x1
+  43639b:	bf 01 00 00 00       	mov    edi,0x1
+  4363a0:	48 89 c6             	mov    rsi,rax
+  4363a3:	e8 18 d6 03 00       	call   4739c0 <fb_PrintString>
+;					  case 22: print #1, "#include " + chr(13) + lcase("WOODS.INC") + chr(13)
+  4363a8:	e9 53 60 fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 20: print #1, "#include " + chr(13) + lcase("TEXTURES.INC") + chr(13)
+  4363ad:	be 0c 00 00 00       	mov    esi,0xc
+  4363b2:	48 8d 3d ad 80 04 00 	lea    rdi,[rip+0x480ad]        # 47e466 <_IO_stdin_used+0x1466>
+  4363b9:	31 db                	xor    ebx,ebx
+  4363bb:	e8 d0 11 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4363c0:	31 f6                	xor    esi,esi
+  4363c2:	48 89 c7             	mov    rdi,rax
+  4363c5:	e8 b6 0a 04 00       	call   476e80 <fb_StrLcase2>
+  4363ca:	b9 06 00 00 00       	mov    ecx,0x6
+  4363cf:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  4363d3:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  4363da:	00 
+  4363db:	49 89 c2             	mov    r10,rax
+  4363de:	4c 89 cf             	mov    rdi,r9
+  4363e1:	89 d8                	mov    eax,ebx
+  4363e3:	ba 0b 00 00 00       	mov    edx,0xb
+  4363e8:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4363ea:	48 8d 35 97 7f 04 00 	lea    rsi,[rip+0x47f97]        # 47e388 <_IO_stdin_used+0x1388>
+  4363f1:	4c 89 d1             	mov    rcx,r10
+  4363f4:	4c 89 cf             	mov    rdi,r9
+  4363f7:	e8 74 f2 03 00       	call   475670 <fb_StrConcat>
+  4363fc:	b9 06 00 00 00       	mov    ecx,0x6
+  436401:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  436405:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  43640c:	00 
+  43640d:	48 89 c6             	mov    rsi,rax
+  436410:	4c 89 cf             	mov    rdi,r9
+  436413:	89 d8                	mov    eax,ebx
+  436415:	41 b8 02 00 00 00    	mov    r8d,0x2
+  43641b:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  43641d:	4c 89 cf             	mov    rdi,r9
+  436420:	48 8d 0d 6a 7f 04 00 	lea    rcx,[rip+0x47f6a]        # 47e391 <_IO_stdin_used+0x1391>
+  436427:	e8 44 f2 03 00       	call   475670 <fb_StrConcat>
+  43642c:	ba 01 00 00 00       	mov    edx,0x1
+  436431:	bf 01 00 00 00       	mov    edi,0x1
+  436436:	48 89 c6             	mov    rsi,rax
+  436439:	e8 82 d5 03 00       	call   4739c0 <fb_PrintString>
+;					  case 21: print #1, "#include " + chr(13) + lcase("WOODMAPS.INC") + chr(13)
+  43643e:	e9 bd 5f fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 19: print #1, "#include " + chr(13) + lcase("STONES.INC") + chr(13)
+  436443:	be 0a 00 00 00       	mov    esi,0xa
+  436448:	48 8d 3d 0c 80 04 00 	lea    rdi,[rip+0x4800c]        # 47e45b <_IO_stdin_used+0x145b>
+  43644f:	31 db                	xor    ebx,ebx
+  436451:	e8 3a 11 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436456:	31 f6                	xor    esi,esi
+  436458:	48 89 c7             	mov    rdi,rax
+  43645b:	e8 20 0a 04 00       	call   476e80 <fb_StrLcase2>
+  436460:	b9 06 00 00 00       	mov    ecx,0x6
+  436465:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436469:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436470:	00 
+  436471:	49 89 c2             	mov    r10,rax
+  436474:	4c 89 cf             	mov    rdi,r9
+  436477:	89 d8                	mov    eax,ebx
+  436479:	ba 0b 00 00 00       	mov    edx,0xb
+  43647e:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436480:	48 8d 35 01 7f 04 00 	lea    rsi,[rip+0x47f01]        # 47e388 <_IO_stdin_used+0x1388>
+  436487:	4c 89 d1             	mov    rcx,r10
+  43648a:	4c 89 cf             	mov    rdi,r9
+  43648d:	e8 de f1 03 00       	call   475670 <fb_StrConcat>
+  436492:	b9 06 00 00 00       	mov    ecx,0x6
+  436497:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  43649b:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  4364a2:	00 
+  4364a3:	48 89 c6             	mov    rsi,rax
+  4364a6:	4c 89 cf             	mov    rdi,r9
+  4364a9:	89 d8                	mov    eax,ebx
+  4364ab:	41 b8 02 00 00 00    	mov    r8d,0x2
+  4364b1:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4364b3:	4c 89 cf             	mov    rdi,r9
+  4364b6:	48 8d 0d d4 7e 04 00 	lea    rcx,[rip+0x47ed4]        # 47e391 <_IO_stdin_used+0x1391>
+  4364bd:	e8 ae f1 03 00       	call   475670 <fb_StrConcat>
+  4364c2:	ba 01 00 00 00       	mov    edx,0x1
+  4364c7:	bf 01 00 00 00       	mov    edi,0x1
+  4364cc:	48 89 c6             	mov    rsi,rax
+  4364cf:	e8 ec d4 03 00       	call   4739c0 <fb_PrintString>
+;					  case 20: print #1, "#include " + chr(13) + lcase("TEXTURES.INC") + chr(13)
+  4364d4:	e9 27 5f fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 18: print #1, "#include " + chr(13) + lcase("STONES2.INC") + chr(13)
+  4364d9:	be 0b 00 00 00       	mov    esi,0xb
+  4364de:	48 8d 3d 6a 7f 04 00 	lea    rdi,[rip+0x47f6a]        # 47e44f <_IO_stdin_used+0x144f>
+  4364e5:	31 db                	xor    ebx,ebx
+  4364e7:	e8 a4 10 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4364ec:	31 f6                	xor    esi,esi
+  4364ee:	48 89 c7             	mov    rdi,rax
+  4364f1:	e8 8a 09 04 00       	call   476e80 <fb_StrLcase2>
+  4364f6:	b9 06 00 00 00       	mov    ecx,0x6
+  4364fb:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  4364ff:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436506:	00 
+  436507:	49 89 c2             	mov    r10,rax
+  43650a:	4c 89 cf             	mov    rdi,r9
+  43650d:	89 d8                	mov    eax,ebx
+  43650f:	ba 0b 00 00 00       	mov    edx,0xb
+  436514:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436516:	48 8d 35 6b 7e 04 00 	lea    rsi,[rip+0x47e6b]        # 47e388 <_IO_stdin_used+0x1388>
+  43651d:	4c 89 d1             	mov    rcx,r10
+  436520:	4c 89 cf             	mov    rdi,r9
+  436523:	e8 48 f1 03 00       	call   475670 <fb_StrConcat>
+  436528:	b9 06 00 00 00       	mov    ecx,0x6
+  43652d:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  436531:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436538:	00 
+  436539:	48 89 c6             	mov    rsi,rax
+  43653c:	4c 89 cf             	mov    rdi,r9
+  43653f:	89 d8                	mov    eax,ebx
+  436541:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436547:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436549:	4c 89 cf             	mov    rdi,r9
+  43654c:	48 8d 0d 3e 7e 04 00 	lea    rcx,[rip+0x47e3e]        # 47e391 <_IO_stdin_used+0x1391>
+  436553:	e8 18 f1 03 00       	call   475670 <fb_StrConcat>
+  436558:	ba 01 00 00 00       	mov    edx,0x1
+  43655d:	bf 01 00 00 00       	mov    edi,0x1
+  436562:	48 89 c6             	mov    rsi,rax
+  436565:	e8 56 d4 03 00       	call   4739c0 <fb_PrintString>
+;					  case 19: print #1, "#include " + chr(13) + lcase("STONES.INC") + chr(13)
+  43656a:	e9 91 5e fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 17: print #1, "#include " + chr(13) + lcase("STONES1.INC") + chr(13)
+  43656f:	be 0b 00 00 00       	mov    esi,0xb
+  436574:	48 8d 3d c8 7e 04 00 	lea    rdi,[rip+0x47ec8]        # 47e443 <_IO_stdin_used+0x1443>
+  43657b:	31 db                	xor    ebx,ebx
+  43657d:	e8 0e 10 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436582:	31 f6                	xor    esi,esi
+  436584:	48 89 c7             	mov    rdi,rax
+  436587:	e8 f4 08 04 00       	call   476e80 <fb_StrLcase2>
+  43658c:	b9 06 00 00 00       	mov    ecx,0x6
+  436591:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436595:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  43659c:	00 
+  43659d:	49 89 c2             	mov    r10,rax
+  4365a0:	4c 89 cf             	mov    rdi,r9
+  4365a3:	89 d8                	mov    eax,ebx
+  4365a5:	ba 0b 00 00 00       	mov    edx,0xb
+  4365aa:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4365ac:	48 8d 35 d5 7d 04 00 	lea    rsi,[rip+0x47dd5]        # 47e388 <_IO_stdin_used+0x1388>
+  4365b3:	4c 89 d1             	mov    rcx,r10
+  4365b6:	4c 89 cf             	mov    rdi,r9
+  4365b9:	e8 b2 f0 03 00       	call   475670 <fb_StrConcat>
+  4365be:	b9 06 00 00 00       	mov    ecx,0x6
+  4365c3:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  4365c7:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  4365ce:	00 
+  4365cf:	48 89 c6             	mov    rsi,rax
+  4365d2:	4c 89 cf             	mov    rdi,r9
+  4365d5:	89 d8                	mov    eax,ebx
+  4365d7:	41 b8 02 00 00 00    	mov    r8d,0x2
+  4365dd:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4365df:	4c 89 cf             	mov    rdi,r9
+  4365e2:	48 8d 0d a8 7d 04 00 	lea    rcx,[rip+0x47da8]        # 47e391 <_IO_stdin_used+0x1391>
+  4365e9:	e8 82 f0 03 00       	call   475670 <fb_StrConcat>
+  4365ee:	ba 01 00 00 00       	mov    edx,0x1
+  4365f3:	bf 01 00 00 00       	mov    edi,0x1
+  4365f8:	48 89 c6             	mov    rsi,rax
+  4365fb:	e8 c0 d3 03 00       	call   4739c0 <fb_PrintString>
+;					  case 18: print #1, "#include " + chr(13) + lcase("STONES2.INC") + chr(13)
+  436600:	e9 fb 5d fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 16: print #1, "#include " + chr(13) + lcase("STONEOLD.INC") + chr(13)
+  436605:	be 0c 00 00 00       	mov    esi,0xc
+  43660a:	48 8d 3d 25 7e 04 00 	lea    rdi,[rip+0x47e25]        # 47e436 <_IO_stdin_used+0x1436>
+  436611:	31 db                	xor    ebx,ebx
+  436613:	e8 78 0f 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436618:	31 f6                	xor    esi,esi
+  43661a:	48 89 c7             	mov    rdi,rax
+  43661d:	e8 5e 08 04 00       	call   476e80 <fb_StrLcase2>
+  436622:	b9 06 00 00 00       	mov    ecx,0x6
+  436627:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  43662b:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436632:	00 
+  436633:	49 89 c2             	mov    r10,rax
+  436636:	4c 89 cf             	mov    rdi,r9
+  436639:	89 d8                	mov    eax,ebx
+  43663b:	ba 0b 00 00 00       	mov    edx,0xb
+  436640:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436642:	48 8d 35 3f 7d 04 00 	lea    rsi,[rip+0x47d3f]        # 47e388 <_IO_stdin_used+0x1388>
+  436649:	4c 89 d1             	mov    rcx,r10
+  43664c:	4c 89 cf             	mov    rdi,r9
+  43664f:	e8 1c f0 03 00       	call   475670 <fb_StrConcat>
+  436654:	b9 06 00 00 00       	mov    ecx,0x6
+  436659:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  43665d:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436664:	00 
+  436665:	48 89 c6             	mov    rsi,rax
+  436668:	4c 89 cf             	mov    rdi,r9
+  43666b:	89 d8                	mov    eax,ebx
+  43666d:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436673:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436675:	4c 89 cf             	mov    rdi,r9
+  436678:	48 8d 0d 12 7d 04 00 	lea    rcx,[rip+0x47d12]        # 47e391 <_IO_stdin_used+0x1391>
+  43667f:	e8 ec ef 03 00       	call   475670 <fb_StrConcat>
+  436684:	ba 01 00 00 00       	mov    edx,0x1
+  436689:	bf 01 00 00 00       	mov    edi,0x1
+  43668e:	48 89 c6             	mov    rsi,rax
+  436691:	e8 2a d3 03 00       	call   4739c0 <fb_PrintString>
+;					  case 17: print #1, "#include " + chr(13) + lcase("STONES1.INC") + chr(13)
+  436696:	e9 65 5d fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 15: print #1, "#include " + chr(13) + lcase("STDCAM.INC") + chr(13)
+  43669b:	be 0a 00 00 00       	mov    esi,0xa
+  4366a0:	48 8d 3d 84 7d 04 00 	lea    rdi,[rip+0x47d84]        # 47e42b <_IO_stdin_used+0x142b>
+  4366a7:	31 db                	xor    ebx,ebx
+  4366a9:	e8 e2 0e 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4366ae:	31 f6                	xor    esi,esi
+  4366b0:	48 89 c7             	mov    rdi,rax
+  4366b3:	e8 c8 07 04 00       	call   476e80 <fb_StrLcase2>
+  4366b8:	b9 06 00 00 00       	mov    ecx,0x6
+  4366bd:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  4366c1:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  4366c8:	00 
+  4366c9:	49 89 c2             	mov    r10,rax
+  4366cc:	4c 89 cf             	mov    rdi,r9
+  4366cf:	89 d8                	mov    eax,ebx
+  4366d1:	ba 0b 00 00 00       	mov    edx,0xb
+  4366d6:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4366d8:	48 8d 35 a9 7c 04 00 	lea    rsi,[rip+0x47ca9]        # 47e388 <_IO_stdin_used+0x1388>
+  4366df:	4c 89 d1             	mov    rcx,r10
+  4366e2:	4c 89 cf             	mov    rdi,r9
+  4366e5:	e8 86 ef 03 00       	call   475670 <fb_StrConcat>
+  4366ea:	b9 06 00 00 00       	mov    ecx,0x6
+  4366ef:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  4366f3:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  4366fa:	00 
+  4366fb:	48 89 c6             	mov    rsi,rax
+  4366fe:	4c 89 cf             	mov    rdi,r9
+  436701:	89 d8                	mov    eax,ebx
+  436703:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436709:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  43670b:	4c 89 cf             	mov    rdi,r9
+  43670e:	48 8d 0d 7c 7c 04 00 	lea    rcx,[rip+0x47c7c]        # 47e391 <_IO_stdin_used+0x1391>
+  436715:	e8 56 ef 03 00       	call   475670 <fb_StrConcat>
+  43671a:	ba 01 00 00 00       	mov    edx,0x1
+  43671f:	bf 01 00 00 00       	mov    edi,0x1
+  436724:	48 89 c6             	mov    rsi,rax
+  436727:	e8 94 d2 03 00       	call   4739c0 <fb_PrintString>
+;					  case 16: print #1, "#include " + chr(13) + lcase("STONEOLD.INC") + chr(13)
+  43672c:	e9 cf 5c fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 14: print #1, "#include " + chr(13) + lcase("STARS.INC") + chr(13)
+  436731:	be 09 00 00 00       	mov    esi,0x9
+  436736:	48 8d 3d e4 7c 04 00 	lea    rdi,[rip+0x47ce4]        # 47e421 <_IO_stdin_used+0x1421>
+  43673d:	31 db                	xor    ebx,ebx
+  43673f:	e8 4c 0e 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436744:	31 f6                	xor    esi,esi
+  436746:	48 89 c7             	mov    rdi,rax
+  436749:	e8 32 07 04 00       	call   476e80 <fb_StrLcase2>
+  43674e:	b9 06 00 00 00       	mov    ecx,0x6
+  436753:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436757:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  43675e:	00 
+  43675f:	49 89 c2             	mov    r10,rax
+  436762:	4c 89 cf             	mov    rdi,r9
+  436765:	89 d8                	mov    eax,ebx
+  436767:	ba 0b 00 00 00       	mov    edx,0xb
+  43676c:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  43676e:	48 8d 35 13 7c 04 00 	lea    rsi,[rip+0x47c13]        # 47e388 <_IO_stdin_used+0x1388>
+  436775:	4c 89 d1             	mov    rcx,r10
+  436778:	4c 89 cf             	mov    rdi,r9
+  43677b:	e8 f0 ee 03 00       	call   475670 <fb_StrConcat>
+  436780:	b9 06 00 00 00       	mov    ecx,0x6
+  436785:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  436789:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436790:	00 
+  436791:	48 89 c6             	mov    rsi,rax
+  436794:	4c 89 cf             	mov    rdi,r9
+  436797:	89 d8                	mov    eax,ebx
+  436799:	41 b8 02 00 00 00    	mov    r8d,0x2
+  43679f:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4367a1:	4c 89 cf             	mov    rdi,r9
+  4367a4:	48 8d 0d e6 7b 04 00 	lea    rcx,[rip+0x47be6]        # 47e391 <_IO_stdin_used+0x1391>
+  4367ab:	e8 c0 ee 03 00       	call   475670 <fb_StrConcat>
+  4367b0:	ba 01 00 00 00       	mov    edx,0x1
+  4367b5:	bf 01 00 00 00       	mov    edi,0x1
+  4367ba:	48 89 c6             	mov    rsi,rax
+  4367bd:	e8 fe d1 03 00       	call   4739c0 <fb_PrintString>
+;					  case 15: print #1, "#include " + chr(13) + lcase("STDCAM.INC") + chr(13)
+  4367c2:	e9 39 5c fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 13: print #1, "#include " + chr(13) + lcase("STAGE1.INC") + chr(13)
+  4367c7:	be 0a 00 00 00       	mov    esi,0xa
+  4367cc:	48 8d 3d 43 7c 04 00 	lea    rdi,[rip+0x47c43]        # 47e416 <_IO_stdin_used+0x1416>
+  4367d3:	31 db                	xor    ebx,ebx
+  4367d5:	e8 b6 0d 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4367da:	31 f6                	xor    esi,esi
+  4367dc:	48 89 c7             	mov    rdi,rax
+  4367df:	e8 9c 06 04 00       	call   476e80 <fb_StrLcase2>
+  4367e4:	b9 06 00 00 00       	mov    ecx,0x6
+  4367e9:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  4367ed:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  4367f4:	00 
+  4367f5:	49 89 c2             	mov    r10,rax
+  4367f8:	4c 89 cf             	mov    rdi,r9
+  4367fb:	89 d8                	mov    eax,ebx
+  4367fd:	ba 0b 00 00 00       	mov    edx,0xb
+  436802:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436804:	48 8d 35 7d 7b 04 00 	lea    rsi,[rip+0x47b7d]        # 47e388 <_IO_stdin_used+0x1388>
+  43680b:	4c 89 d1             	mov    rcx,r10
+  43680e:	4c 89 cf             	mov    rdi,r9
+  436811:	e8 5a ee 03 00       	call   475670 <fb_StrConcat>
+  436816:	b9 06 00 00 00       	mov    ecx,0x6
+  43681b:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  43681f:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436826:	00 
+  436827:	48 89 c6             	mov    rsi,rax
+  43682a:	4c 89 cf             	mov    rdi,r9
+  43682d:	89 d8                	mov    eax,ebx
+  43682f:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436835:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436837:	4c 89 cf             	mov    rdi,r9
+  43683a:	48 8d 0d 50 7b 04 00 	lea    rcx,[rip+0x47b50]        # 47e391 <_IO_stdin_used+0x1391>
+  436841:	e8 2a ee 03 00       	call   475670 <fb_StrConcat>
+  436846:	ba 01 00 00 00       	mov    edx,0x1
+  43684b:	bf 01 00 00 00       	mov    edi,0x1
+  436850:	48 89 c6             	mov    rsi,rax
+  436853:	e8 68 d1 03 00       	call   4739c0 <fb_PrintString>
+;					  case 14: print #1, "#include " + chr(13) + lcase("STARS.INC") + chr(13)
+  436858:	e9 a3 5b fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 12: print #1, "#include " + chr(13) + lcase("SKIES.INC") + chr(13)
+  43685d:	be 09 00 00 00       	mov    esi,0x9
+  436862:	48 8d 3d a3 7b 04 00 	lea    rdi,[rip+0x47ba3]        # 47e40c <_IO_stdin_used+0x140c>
+  436869:	31 db                	xor    ebx,ebx
+  43686b:	e8 20 0d 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436870:	31 f6                	xor    esi,esi
+  436872:	48 89 c7             	mov    rdi,rax
+  436875:	e8 06 06 04 00       	call   476e80 <fb_StrLcase2>
+  43687a:	b9 06 00 00 00       	mov    ecx,0x6
+  43687f:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436883:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  43688a:	00 
+  43688b:	49 89 c2             	mov    r10,rax
+  43688e:	4c 89 cf             	mov    rdi,r9
+  436891:	89 d8                	mov    eax,ebx
+  436893:	ba 0b 00 00 00       	mov    edx,0xb
+  436898:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  43689a:	48 8d 35 e7 7a 04 00 	lea    rsi,[rip+0x47ae7]        # 47e388 <_IO_stdin_used+0x1388>
+  4368a1:	4c 89 d1             	mov    rcx,r10
+  4368a4:	4c 89 cf             	mov    rdi,r9
+  4368a7:	e8 c4 ed 03 00       	call   475670 <fb_StrConcat>
+  4368ac:	b9 06 00 00 00       	mov    ecx,0x6
+  4368b1:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  4368b5:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  4368bc:	00 
+  4368bd:	48 89 c6             	mov    rsi,rax
+  4368c0:	4c 89 cf             	mov    rdi,r9
+  4368c3:	89 d8                	mov    eax,ebx
+  4368c5:	41 b8 02 00 00 00    	mov    r8d,0x2
+  4368cb:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4368cd:	4c 89 cf             	mov    rdi,r9
+  4368d0:	48 8d 0d ba 7a 04 00 	lea    rcx,[rip+0x47aba]        # 47e391 <_IO_stdin_used+0x1391>
+  4368d7:	e8 94 ed 03 00       	call   475670 <fb_StrConcat>
+  4368dc:	ba 01 00 00 00       	mov    edx,0x1
+  4368e1:	bf 01 00 00 00       	mov    edi,0x1
+  4368e6:	48 89 c6             	mov    rsi,rax
+  4368e9:	e8 d2 d0 03 00       	call   4739c0 <fb_PrintString>
+;					  case 13: print #1, "#include " + chr(13) + lcase("STAGE1.INC") + chr(13)
+  4368ee:	e9 0d 5b fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 11: print #1, "#include " + chr(13) + lcase("SHAPESQ.INC") + chr(13)
+  4368f3:	be 0b 00 00 00       	mov    esi,0xb
+  4368f8:	48 8d 3d 01 7b 04 00 	lea    rdi,[rip+0x47b01]        # 47e400 <_IO_stdin_used+0x1400>
+  4368ff:	31 db                	xor    ebx,ebx
+  436901:	e8 8a 0c 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436906:	31 f6                	xor    esi,esi
+  436908:	48 89 c7             	mov    rdi,rax
+  43690b:	e8 70 05 04 00       	call   476e80 <fb_StrLcase2>
+  436910:	b9 06 00 00 00       	mov    ecx,0x6
+  436915:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436919:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436920:	00 
+  436921:	49 89 c2             	mov    r10,rax
+  436924:	4c 89 cf             	mov    rdi,r9
+  436927:	89 d8                	mov    eax,ebx
+  436929:	ba 0b 00 00 00       	mov    edx,0xb
+  43692e:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436930:	48 8d 35 51 7a 04 00 	lea    rsi,[rip+0x47a51]        # 47e388 <_IO_stdin_used+0x1388>
+  436937:	4c 89 d1             	mov    rcx,r10
+  43693a:	4c 89 cf             	mov    rdi,r9
+  43693d:	e8 2e ed 03 00       	call   475670 <fb_StrConcat>
+  436942:	b9 06 00 00 00       	mov    ecx,0x6
+  436947:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  43694b:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436952:	00 
+  436953:	48 89 c6             	mov    rsi,rax
+  436956:	4c 89 cf             	mov    rdi,r9
+  436959:	89 d8                	mov    eax,ebx
+  43695b:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436961:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436963:	4c 89 cf             	mov    rdi,r9
+  436966:	48 8d 0d 24 7a 04 00 	lea    rcx,[rip+0x47a24]        # 47e391 <_IO_stdin_used+0x1391>
+  43696d:	e8 fe ec 03 00       	call   475670 <fb_StrConcat>
+  436972:	ba 01 00 00 00       	mov    edx,0x1
+  436977:	bf 01 00 00 00       	mov    edi,0x1
+  43697c:	48 89 c6             	mov    rsi,rax
+  43697f:	e8 3c d0 03 00       	call   4739c0 <fb_PrintString>
+;					  case 12: print #1, "#include " + chr(13) + lcase("SKIES.INC") + chr(13)
+  436984:	e9 77 5a fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 10: print #1, "#include " + chr(13) + lcase("SHAPES.INC") + chr(13)
+  436989:	be 0a 00 00 00       	mov    esi,0xa
+  43698e:	48 8d 3d 60 7a 04 00 	lea    rdi,[rip+0x47a60]        # 47e3f5 <_IO_stdin_used+0x13f5>
+  436995:	31 db                	xor    ebx,ebx
+  436997:	e8 f4 0b 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43699c:	31 f6                	xor    esi,esi
+  43699e:	48 89 c7             	mov    rdi,rax
+  4369a1:	e8 da 04 04 00       	call   476e80 <fb_StrLcase2>
+  4369a6:	b9 06 00 00 00       	mov    ecx,0x6
+  4369ab:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  4369af:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  4369b6:	00 
+  4369b7:	49 89 c2             	mov    r10,rax
+  4369ba:	4c 89 cf             	mov    rdi,r9
+  4369bd:	89 d8                	mov    eax,ebx
+  4369bf:	ba 0b 00 00 00       	mov    edx,0xb
+  4369c4:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4369c6:	48 8d 35 bb 79 04 00 	lea    rsi,[rip+0x479bb]        # 47e388 <_IO_stdin_used+0x1388>
+  4369cd:	4c 89 d1             	mov    rcx,r10
+  4369d0:	4c 89 cf             	mov    rdi,r9
+  4369d3:	e8 98 ec 03 00       	call   475670 <fb_StrConcat>
+  4369d8:	b9 06 00 00 00       	mov    ecx,0x6
+  4369dd:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  4369e1:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  4369e8:	00 
+  4369e9:	48 89 c6             	mov    rsi,rax
+  4369ec:	4c 89 cf             	mov    rdi,r9
+  4369ef:	89 d8                	mov    eax,ebx
+  4369f1:	41 b8 02 00 00 00    	mov    r8d,0x2
+  4369f7:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  4369f9:	4c 89 cf             	mov    rdi,r9
+  4369fc:	48 8d 0d 8e 79 04 00 	lea    rcx,[rip+0x4798e]        # 47e391 <_IO_stdin_used+0x1391>
+  436a03:	e8 68 ec 03 00       	call   475670 <fb_StrConcat>
+  436a08:	ba 01 00 00 00       	mov    edx,0x1
+  436a0d:	bf 01 00 00 00       	mov    edi,0x1
+  436a12:	48 89 c6             	mov    rsi,rax
+  436a15:	e8 a6 cf 03 00       	call   4739c0 <fb_PrintString>
+;					  case 11: print #1, "#include " + chr(13) + lcase("SHAPESQ.INC") + chr(13)
+  436a1a:	e9 e1 59 fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 9 : print #1, "#include " + chr(13) + lcase("SHAPES2.INC") + chr(13)
+  436a1f:	be 0b 00 00 00       	mov    esi,0xb
+  436a24:	48 8d 3d be 79 04 00 	lea    rdi,[rip+0x479be]        # 47e3e9 <_IO_stdin_used+0x13e9>
+  436a2b:	31 db                	xor    ebx,ebx
+  436a2d:	e8 5e 0b 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436a32:	31 f6                	xor    esi,esi
+  436a34:	48 89 c7             	mov    rdi,rax
+  436a37:	e8 44 04 04 00       	call   476e80 <fb_StrLcase2>
+  436a3c:	b9 06 00 00 00       	mov    ecx,0x6
+  436a41:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436a45:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436a4c:	00 
+  436a4d:	49 89 c2             	mov    r10,rax
+  436a50:	4c 89 cf             	mov    rdi,r9
+  436a53:	89 d8                	mov    eax,ebx
+  436a55:	ba 0b 00 00 00       	mov    edx,0xb
+  436a5a:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436a5c:	48 8d 35 25 79 04 00 	lea    rsi,[rip+0x47925]        # 47e388 <_IO_stdin_used+0x1388>
+  436a63:	4c 89 d1             	mov    rcx,r10
+  436a66:	4c 89 cf             	mov    rdi,r9
+  436a69:	e8 02 ec 03 00       	call   475670 <fb_StrConcat>
+  436a6e:	b9 06 00 00 00       	mov    ecx,0x6
+  436a73:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  436a77:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436a7e:	00 
+  436a7f:	48 89 c6             	mov    rsi,rax
+  436a82:	4c 89 cf             	mov    rdi,r9
+  436a85:	89 d8                	mov    eax,ebx
+  436a87:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436a8d:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436a8f:	4c 89 cf             	mov    rdi,r9
+  436a92:	48 8d 0d f8 78 04 00 	lea    rcx,[rip+0x478f8]        # 47e391 <_IO_stdin_used+0x1391>
+  436a99:	e8 d2 eb 03 00       	call   475670 <fb_StrConcat>
+  436a9e:	ba 01 00 00 00       	mov    edx,0x1
+  436aa3:	bf 01 00 00 00       	mov    edi,0x1
+  436aa8:	48 89 c6             	mov    rsi,rax
+  436aab:	e8 10 cf 03 00       	call   4739c0 <fb_PrintString>
+;					  case 10: print #1, "#include " + chr(13) + lcase("SHAPES.INC") + chr(13)
+  436ab0:	e9 4b 59 fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 8 : print #1, "#include " + chr(13) + lcase("RAD_DEF.INC") + chr(13)
+  436ab5:	be 0b 00 00 00       	mov    esi,0xb
+  436aba:	48 8d 3d 1c 79 04 00 	lea    rdi,[rip+0x4791c]        # 47e3dd <_IO_stdin_used+0x13dd>
+  436ac1:	31 db                	xor    ebx,ebx
+  436ac3:	e8 c8 0a 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436ac8:	31 f6                	xor    esi,esi
+  436aca:	48 89 c7             	mov    rdi,rax
+  436acd:	e8 ae 03 04 00       	call   476e80 <fb_StrLcase2>
+  436ad2:	b9 06 00 00 00       	mov    ecx,0x6
+  436ad7:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436adb:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436ae2:	00 
+  436ae3:	49 89 c2             	mov    r10,rax
+  436ae6:	4c 89 cf             	mov    rdi,r9
+  436ae9:	89 d8                	mov    eax,ebx
+  436aeb:	ba 0b 00 00 00       	mov    edx,0xb
+  436af0:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436af2:	48 8d 35 8f 78 04 00 	lea    rsi,[rip+0x4788f]        # 47e388 <_IO_stdin_used+0x1388>
+  436af9:	4c 89 d1             	mov    rcx,r10
+  436afc:	4c 89 cf             	mov    rdi,r9
+  436aff:	e8 6c eb 03 00       	call   475670 <fb_StrConcat>
+  436b04:	b9 06 00 00 00       	mov    ecx,0x6
+  436b09:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  436b0d:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436b14:	00 
+  436b15:	48 89 c6             	mov    rsi,rax
+  436b18:	4c 89 cf             	mov    rdi,r9
+  436b1b:	89 d8                	mov    eax,ebx
+  436b1d:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436b23:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436b25:	4c 89 cf             	mov    rdi,r9
+  436b28:	48 8d 0d 62 78 04 00 	lea    rcx,[rip+0x47862]        # 47e391 <_IO_stdin_used+0x1391>
+  436b2f:	e8 3c eb 03 00       	call   475670 <fb_StrConcat>
+  436b34:	ba 01 00 00 00       	mov    edx,0x1
+  436b39:	bf 01 00 00 00       	mov    edi,0x1
+  436b3e:	48 89 c6             	mov    rsi,rax
+  436b41:	e8 7a ce 03 00       	call   4739c0 <fb_PrintString>
+;					  case 9 : print #1, "#include " + chr(13) + lcase("SHAPES2.INC") + chr(13)
+  436b46:	e9 b5 58 fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 7 : print #1, "#include " + chr(13) + lcase("METALS.INC") + chr(13)
+  436b4b:	be 0a 00 00 00       	mov    esi,0xa
+  436b50:	48 8d 3d 7b 78 04 00 	lea    rdi,[rip+0x4787b]        # 47e3d2 <_IO_stdin_used+0x13d2>
+  436b57:	31 db                	xor    ebx,ebx
+  436b59:	e8 32 0a 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436b5e:	31 f6                	xor    esi,esi
+  436b60:	48 89 c7             	mov    rdi,rax
+  436b63:	e8 18 03 04 00       	call   476e80 <fb_StrLcase2>
+  436b68:	b9 06 00 00 00       	mov    ecx,0x6
+  436b6d:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436b71:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436b78:	00 
+  436b79:	49 89 c2             	mov    r10,rax
+  436b7c:	4c 89 cf             	mov    rdi,r9
+  436b7f:	89 d8                	mov    eax,ebx
+  436b81:	ba 0b 00 00 00       	mov    edx,0xb
+  436b86:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436b88:	48 8d 35 f9 77 04 00 	lea    rsi,[rip+0x477f9]        # 47e388 <_IO_stdin_used+0x1388>
+  436b8f:	4c 89 d1             	mov    rcx,r10
+  436b92:	4c 89 cf             	mov    rdi,r9
+  436b95:	e8 d6 ea 03 00       	call   475670 <fb_StrConcat>
+  436b9a:	b9 06 00 00 00       	mov    ecx,0x6
+  436b9f:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  436ba3:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436baa:	00 
+  436bab:	48 89 c6             	mov    rsi,rax
+  436bae:	4c 89 cf             	mov    rdi,r9
+  436bb1:	89 d8                	mov    eax,ebx
+  436bb3:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436bb9:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436bbb:	4c 89 cf             	mov    rdi,r9
+  436bbe:	48 8d 0d cc 77 04 00 	lea    rcx,[rip+0x477cc]        # 47e391 <_IO_stdin_used+0x1391>
+  436bc5:	e8 a6 ea 03 00       	call   475670 <fb_StrConcat>
+  436bca:	ba 01 00 00 00       	mov    edx,0x1
+  436bcf:	bf 01 00 00 00       	mov    edi,0x1
+  436bd4:	48 89 c6             	mov    rsi,rax
+  436bd7:	e8 e4 cd 03 00       	call   4739c0 <fb_PrintString>
+;					  case 8 : print #1, "#include " + chr(13) + lcase("RAD_DEF.INC") + chr(13)
+  436bdc:	e9 1f 58 fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 6 : print #1, "#include " + chr(13) + lcase("GOLDS.INC") + chr(13)
+  436be1:	be 09 00 00 00       	mov    esi,0x9
+  436be6:	48 8d 3d db 77 04 00 	lea    rdi,[rip+0x477db]        # 47e3c8 <_IO_stdin_used+0x13c8>
+  436bed:	31 db                	xor    ebx,ebx
+  436bef:	e8 9c 09 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436bf4:	31 f6                	xor    esi,esi
+  436bf6:	48 89 c7             	mov    rdi,rax
+  436bf9:	e8 82 02 04 00       	call   476e80 <fb_StrLcase2>
+  436bfe:	b9 06 00 00 00       	mov    ecx,0x6
+  436c03:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436c07:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436c0e:	00 
+  436c0f:	49 89 c2             	mov    r10,rax
+  436c12:	4c 89 cf             	mov    rdi,r9
+  436c15:	89 d8                	mov    eax,ebx
+  436c17:	ba 0b 00 00 00       	mov    edx,0xb
+  436c1c:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436c1e:	48 8d 35 63 77 04 00 	lea    rsi,[rip+0x47763]        # 47e388 <_IO_stdin_used+0x1388>
+  436c25:	4c 89 d1             	mov    rcx,r10
+  436c28:	4c 89 cf             	mov    rdi,r9
+  436c2b:	e8 40 ea 03 00       	call   475670 <fb_StrConcat>
+  436c30:	b9 06 00 00 00       	mov    ecx,0x6
+  436c35:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  436c39:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436c40:	00 
+  436c41:	48 89 c6             	mov    rsi,rax
+  436c44:	4c 89 cf             	mov    rdi,r9
+  436c47:	89 d8                	mov    eax,ebx
+  436c49:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436c4f:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436c51:	4c 89 cf             	mov    rdi,r9
+  436c54:	48 8d 0d 36 77 04 00 	lea    rcx,[rip+0x47736]        # 47e391 <_IO_stdin_used+0x1391>
+  436c5b:	e8 10 ea 03 00       	call   475670 <fb_StrConcat>
+  436c60:	ba 01 00 00 00       	mov    edx,0x1
+  436c65:	bf 01 00 00 00       	mov    edi,0x1
+  436c6a:	48 89 c6             	mov    rsi,rax
+  436c6d:	e8 4e cd 03 00       	call   4739c0 <fb_PrintString>
+;					  case 7 : print #1, "#include " + chr(13) + lcase("METALS.INC") + chr(13)
+  436c72:	e9 89 57 fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 5 : print #1, "#include " + chr(13) + lcase("GLASS.INC") + chr(13)
+  436c77:	be 09 00 00 00       	mov    esi,0x9
+  436c7c:	48 8d 3d 3b 77 04 00 	lea    rdi,[rip+0x4773b]        # 47e3be <_IO_stdin_used+0x13be>
+  436c83:	31 db                	xor    ebx,ebx
+  436c85:	e8 06 09 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436c8a:	31 f6                	xor    esi,esi
+  436c8c:	48 89 c7             	mov    rdi,rax
+  436c8f:	e8 ec 01 04 00       	call   476e80 <fb_StrLcase2>
+  436c94:	b9 06 00 00 00       	mov    ecx,0x6
+  436c99:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436c9d:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436ca4:	00 
+  436ca5:	49 89 c2             	mov    r10,rax
+  436ca8:	4c 89 cf             	mov    rdi,r9
+  436cab:	89 d8                	mov    eax,ebx
+  436cad:	ba 0b 00 00 00       	mov    edx,0xb
+  436cb2:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436cb4:	48 8d 35 cd 76 04 00 	lea    rsi,[rip+0x476cd]        # 47e388 <_IO_stdin_used+0x1388>
+  436cbb:	4c 89 d1             	mov    rcx,r10
+  436cbe:	4c 89 cf             	mov    rdi,r9
+  436cc1:	e8 aa e9 03 00       	call   475670 <fb_StrConcat>
+  436cc6:	b9 06 00 00 00       	mov    ecx,0x6
+  436ccb:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  436ccf:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436cd6:	00 
+  436cd7:	48 89 c6             	mov    rsi,rax
+  436cda:	4c 89 cf             	mov    rdi,r9
+  436cdd:	89 d8                	mov    eax,ebx
+  436cdf:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436ce5:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436ce7:	4c 89 cf             	mov    rdi,r9
+  436cea:	48 8d 0d a0 76 04 00 	lea    rcx,[rip+0x476a0]        # 47e391 <_IO_stdin_used+0x1391>
+  436cf1:	e8 7a e9 03 00       	call   475670 <fb_StrConcat>
+  436cf6:	ba 01 00 00 00       	mov    edx,0x1
+  436cfb:	bf 01 00 00 00       	mov    edi,0x1
+  436d00:	48 89 c6             	mov    rsi,rax
+  436d03:	e8 b8 cc 03 00       	call   4739c0 <fb_PrintString>
+;					  case 6 : print #1, "#include " + chr(13) + lcase("GOLDS.INC") + chr(13)
+  436d08:	e9 f3 56 fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 4 : print #1, "#include " + chr(13) + lcase("FINISH.INC") + chr(13)
+  436d0d:	be 0a 00 00 00       	mov    esi,0xa
+  436d12:	48 8d 3d 9a 76 04 00 	lea    rdi,[rip+0x4769a]        # 47e3b3 <_IO_stdin_used+0x13b3>
+  436d19:	31 db                	xor    ebx,ebx
+  436d1b:	e8 70 08 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436d20:	31 f6                	xor    esi,esi
+  436d22:	48 89 c7             	mov    rdi,rax
+  436d25:	e8 56 01 04 00       	call   476e80 <fb_StrLcase2>
+  436d2a:	b9 06 00 00 00       	mov    ecx,0x6
+  436d2f:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436d33:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436d3a:	00 
+  436d3b:	49 89 c2             	mov    r10,rax
+  436d3e:	4c 89 cf             	mov    rdi,r9
+  436d41:	89 d8                	mov    eax,ebx
+  436d43:	ba 0b 00 00 00       	mov    edx,0xb
+  436d48:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436d4a:	48 8d 35 37 76 04 00 	lea    rsi,[rip+0x47637]        # 47e388 <_IO_stdin_used+0x1388>
+  436d51:	4c 89 d1             	mov    rcx,r10
+  436d54:	4c 89 cf             	mov    rdi,r9
+  436d57:	e8 14 e9 03 00       	call   475670 <fb_StrConcat>
+  436d5c:	b9 06 00 00 00       	mov    ecx,0x6
+  436d61:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  436d65:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436d6c:	00 
+  436d6d:	48 89 c6             	mov    rsi,rax
+  436d70:	4c 89 cf             	mov    rdi,r9
+  436d73:	89 d8                	mov    eax,ebx
+  436d75:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436d7b:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436d7d:	4c 89 cf             	mov    rdi,r9
+  436d80:	48 8d 0d 0a 76 04 00 	lea    rcx,[rip+0x4760a]        # 47e391 <_IO_stdin_used+0x1391>
+  436d87:	e8 e4 e8 03 00       	call   475670 <fb_StrConcat>
+  436d8c:	ba 01 00 00 00       	mov    edx,0x1
+  436d91:	bf 01 00 00 00       	mov    edi,0x1
+  436d96:	48 89 c6             	mov    rsi,rax
+  436d99:	e8 22 cc 03 00       	call   4739c0 <fb_PrintString>
+;					  case 5 : print #1, "#include " + chr(13) + lcase("GLASS.INC") + chr(13)
+  436d9e:	e9 5d 56 fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 3 : print #1, "#include " + chr(13) + lcase("DEBUG.INC") + chr(13)
+  436da3:	be 09 00 00 00       	mov    esi,0x9
+  436da8:	48 8d 3d fa 75 04 00 	lea    rdi,[rip+0x475fa]        # 47e3a9 <_IO_stdin_used+0x13a9>
+  436daf:	31 db                	xor    ebx,ebx
+  436db1:	e8 da 07 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436db6:	31 f6                	xor    esi,esi
+  436db8:	48 89 c7             	mov    rdi,rax
+  436dbb:	e8 c0 00 04 00       	call   476e80 <fb_StrLcase2>
+  436dc0:	b9 06 00 00 00       	mov    ecx,0x6
+  436dc5:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436dc9:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436dd0:	00 
+  436dd1:	49 89 c2             	mov    r10,rax
+  436dd4:	4c 89 cf             	mov    rdi,r9
+  436dd7:	89 d8                	mov    eax,ebx
+  436dd9:	ba 0b 00 00 00       	mov    edx,0xb
+  436dde:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436de0:	48 8d 35 a1 75 04 00 	lea    rsi,[rip+0x475a1]        # 47e388 <_IO_stdin_used+0x1388>
+  436de7:	4c 89 d1             	mov    rcx,r10
+  436dea:	4c 89 cf             	mov    rdi,r9
+  436ded:	e8 7e e8 03 00       	call   475670 <fb_StrConcat>
+  436df2:	b9 06 00 00 00       	mov    ecx,0x6
+  436df7:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  436dfb:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436e02:	00 
+  436e03:	48 89 c6             	mov    rsi,rax
+  436e06:	4c 89 cf             	mov    rdi,r9
+  436e09:	89 d8                	mov    eax,ebx
+  436e0b:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436e11:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436e13:	4c 89 cf             	mov    rdi,r9
+  436e16:	48 8d 0d 74 75 04 00 	lea    rcx,[rip+0x47574]        # 47e391 <_IO_stdin_used+0x1391>
+  436e1d:	e8 4e e8 03 00       	call   475670 <fb_StrConcat>
+  436e22:	ba 01 00 00 00       	mov    edx,0x1
+  436e27:	bf 01 00 00 00       	mov    edi,0x1
+  436e2c:	48 89 c6             	mov    rsi,rax
+  436e2f:	e8 8c cb 03 00       	call   4739c0 <fb_PrintString>
+;					  case 4 : print #1, "#include " + chr(13) + lcase("FINISH.INC") + chr(13)
+  436e34:	e9 c7 55 fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 2 : print #1, "#include " + chr(13) + lcase("CONSTS.INC") + chr(13)
+  436e39:	be 0a 00 00 00       	mov    esi,0xa
+  436e3e:	48 8d 3d 59 75 04 00 	lea    rdi,[rip+0x47559]        # 47e39e <_IO_stdin_used+0x139e>
+  436e45:	31 db                	xor    ebx,ebx
+  436e47:	e8 44 07 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436e4c:	31 f6                	xor    esi,esi
+  436e4e:	48 89 c7             	mov    rdi,rax
+  436e51:	e8 2a 00 04 00       	call   476e80 <fb_StrLcase2>
+  436e56:	b9 06 00 00 00       	mov    ecx,0x6
+  436e5b:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436e5f:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436e66:	00 
+  436e67:	49 89 c2             	mov    r10,rax
+  436e6a:	4c 89 cf             	mov    rdi,r9
+  436e6d:	89 d8                	mov    eax,ebx
+  436e6f:	ba 0b 00 00 00       	mov    edx,0xb
+  436e74:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436e76:	48 8d 35 0b 75 04 00 	lea    rsi,[rip+0x4750b]        # 47e388 <_IO_stdin_used+0x1388>
+  436e7d:	4c 89 d1             	mov    rcx,r10
+  436e80:	4c 89 cf             	mov    rdi,r9
+  436e83:	e8 e8 e7 03 00       	call   475670 <fb_StrConcat>
+  436e88:	b9 06 00 00 00       	mov    ecx,0x6
+  436e8d:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  436e91:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436e98:	00 
+  436e99:	48 89 c6             	mov    rsi,rax
+  436e9c:	4c 89 cf             	mov    rdi,r9
+  436e9f:	89 d8                	mov    eax,ebx
+  436ea1:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436ea7:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436ea9:	4c 89 cf             	mov    rdi,r9
+  436eac:	48 8d 0d de 74 04 00 	lea    rcx,[rip+0x474de]        # 47e391 <_IO_stdin_used+0x1391>
+  436eb3:	e8 b8 e7 03 00       	call   475670 <fb_StrConcat>
+  436eb8:	ba 01 00 00 00       	mov    edx,0x1
+  436ebd:	bf 01 00 00 00       	mov    edi,0x1
+  436ec2:	48 89 c6             	mov    rsi,rax
+  436ec5:	e8 f6 ca 03 00       	call   4739c0 <fb_PrintString>
+;					  case 3 : print #1, "#include " + chr(13) + lcase("DEBUG.INC") + chr(13)
+  436eca:	e9 31 55 fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 1 : print #1, "#include " + chr(13) + lcase("COLORS.INC") + chr(13)
+  436ecf:	be 0a 00 00 00       	mov    esi,0xa
+  436ed4:	48 8d 3d b8 74 04 00 	lea    rdi,[rip+0x474b8]        # 47e393 <_IO_stdin_used+0x1393>
+  436edb:	31 db                	xor    ebx,ebx
+  436edd:	e8 ae 06 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436ee2:	31 f6                	xor    esi,esi
+  436ee4:	48 89 c7             	mov    rdi,rax
+  436ee7:	e8 94 ff 03 00       	call   476e80 <fb_StrLcase2>
+  436eec:	b9 06 00 00 00       	mov    ecx,0x6
+  436ef1:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436ef5:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436efc:	00 
+  436efd:	49 89 c2             	mov    r10,rax
+  436f00:	4c 89 cf             	mov    rdi,r9
+  436f03:	89 d8                	mov    eax,ebx
+  436f05:	ba 0b 00 00 00       	mov    edx,0xb
+  436f0a:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436f0c:	48 8d 35 75 74 04 00 	lea    rsi,[rip+0x47475]        # 47e388 <_IO_stdin_used+0x1388>
+  436f13:	4c 89 d1             	mov    rcx,r10
+  436f16:	4c 89 cf             	mov    rdi,r9
+  436f19:	e8 52 e7 03 00       	call   475670 <fb_StrConcat>
+  436f1e:	b9 06 00 00 00       	mov    ecx,0x6
+  436f23:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  436f27:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436f2e:	00 
+  436f2f:	48 89 c6             	mov    rsi,rax
+  436f32:	4c 89 cf             	mov    rdi,r9
+  436f35:	89 d8                	mov    eax,ebx
+  436f37:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436f3d:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436f3f:	4c 89 cf             	mov    rdi,r9
+  436f42:	48 8d 0d 48 74 04 00 	lea    rcx,[rip+0x47448]        # 47e391 <_IO_stdin_used+0x1391>
+  436f49:	e8 22 e7 03 00       	call   475670 <fb_StrConcat>
+  436f4e:	ba 01 00 00 00       	mov    edx,0x1
+  436f53:	bf 01 00 00 00       	mov    edi,0x1
+  436f58:	48 89 c6             	mov    rsi,rax
+  436f5b:	e8 60 ca 03 00       	call   4739c0 <fb_PrintString>
+;					  case 2 : print #1, "#include " + chr(13) + lcase("CONSTS.INC") + chr(13)
+  436f60:	e9 9b 54 fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;					  case 0 : print #1, "#include " + chr(13) + lcase("CHARS.INC") + chr(13)
+  436f65:	be 09 00 00 00       	mov    esi,0x9
+  436f6a:	48 8d 3d 0d 74 04 00 	lea    rdi,[rip+0x4740d]        # 47e37e <_IO_stdin_used+0x137e>
+  436f71:	31 db                	xor    ebx,ebx
+  436f73:	e8 18 06 04 00       	call   477590 <fb_StrAllocTempDescZEx>
+  436f78:	31 f6                	xor    esi,esi
+  436f7a:	48 89 c7             	mov    rdi,rax
+  436f7d:	e8 fe fe 03 00       	call   476e80 <fb_StrLcase2>
+  436f82:	b9 06 00 00 00       	mov    ecx,0x6
+  436f87:	49 83 c8 ff          	or     r8,0xffffffffffffffff
+  436f8b:	4c 8d 8c 24 70 01 00 	lea    r9,[rsp+0x170]
+  436f92:	00 
+  436f93:	49 89 c2             	mov    r10,rax
+  436f96:	4c 89 cf             	mov    rdi,r9
+  436f99:	89 d8                	mov    eax,ebx
+  436f9b:	ba 0b 00 00 00       	mov    edx,0xb
+  436fa0:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436fa2:	48 8d 35 df 73 04 00 	lea    rsi,[rip+0x473df]        # 47e388 <_IO_stdin_used+0x1388>
+  436fa9:	4c 89 d1             	mov    rcx,r10
+  436fac:	4c 89 cf             	mov    rdi,r9
+  436faf:	e8 bc e6 03 00       	call   475670 <fb_StrConcat>
+  436fb4:	b9 06 00 00 00       	mov    ecx,0x6
+  436fb9:	48 83 ca ff          	or     rdx,0xffffffffffffffff
+  436fbd:	4c 8d 8c 24 90 01 00 	lea    r9,[rsp+0x190]
+  436fc4:	00 
+  436fc5:	48 89 c6             	mov    rsi,rax
+  436fc8:	4c 89 cf             	mov    rdi,r9
+  436fcb:	89 d8                	mov    eax,ebx
+  436fcd:	41 b8 02 00 00 00    	mov    r8d,0x2
+  436fd3:	f3 ab                	rep stos DWORD PTR es:[rdi],eax
+  436fd5:	4c 89 cf             	mov    rdi,r9
+  436fd8:	48 8d 0d b2 73 04 00 	lea    rcx,[rip+0x473b2]        # 47e391 <_IO_stdin_used+0x1391>
+  436fdf:	e8 8c e6 03 00       	call   475670 <fb_StrConcat>
+  436fe4:	ba 01 00 00 00       	mov    edx,0x1
+  436fe9:	bf 01 00 00 00       	mov    edi,0x1
+  436fee:	48 89 c6             	mov    rsi,rax
+  436ff1:	e8 ca c9 03 00       	call   4739c0 <fb_PrintString>
+;					  case 1 : print #1, "#include " + chr(13) + lcase("COLORS.INC") + chr(13)
+  436ff6:	e9 05 54 fd ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;				     select case as const cast(ulongint, mem64(49361))       
+  436ffb:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  437000:	f2 0f 10 80 88 06 06 	movsd  xmm0,QWORD PTR [rax+0x60688]
+  437007:	00 
+  437008:	e8 53 e3 fc ff       	call   405360 <nearbyint@plt>
+  43700d:	66 0f 2f 04 24       	comisd xmm0,QWORD PTR [rsp]
+  437012:	0f 83 a8 00 00 00    	jae    4370c0 <MEMORY_T::POKE64(double, double)+0x2d7f0>
+  437018:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+;						case 013: print #1, "hash";
+  43701d:	48 83 f8 16          	cmp    rax,0x16
+  437021:	0f 87 d9 53 fd ff    	ja     40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;						case 014: print #1, "hashnoise";
+  437027:	41 ff 24 c6          	jmp    QWORD PTR [r14+rax*8]
+;				     msg=hex(mem64(49362)): print #1, msg: msg=""        
+  43702b:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  437030:	f2 0f 10 80 90 06 06 	movsd  xmm0,QWORD PTR [rax+0x60690]
+  437037:	00 
+  437038:	e8 23 e3 fc ff       	call   405360 <nearbyint@plt>
+  43703d:	66 0f 2f 04 24       	comisd xmm0,QWORD PTR [rsp]
+  437042:	0f 83 8f 00 00 00    	jae    4370d7 <MEMORY_T::POKE64(double, double)+0x2d807>
+  437048:	f2 48 0f 2c f8       	cvttsd2si rdi,xmm0
+  43704d:	e8 ee fc 03 00       	call   476d40 <fb_HEX_l>
+  437052:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  437056:	45 31 c0             	xor    r8d,r8d
+  437059:	48 83 c9 ff          	or     rcx,0xffffffffffffffff
+  43705d:	48 8d 2d 6c 28 09 00 	lea    rbp,[rip+0x9286c]        # 4c98d0 <MSG$>
+  437064:	48 89 c2             	mov    rdx,rax
+  437067:	48 89 ef             	mov    rdi,rbp
+  43706a:	e8 b1 df 03 00       	call   475020 <fb_StrAssign>
+  43706f:	ba 01 00 00 00       	mov    edx,0x1
+  437074:	48 89 ee             	mov    rsi,rbp
+  437077:	bf 01 00 00 00       	mov    edi,0x1
+  43707c:	e8 3f c9 03 00       	call   4739c0 <fb_PrintString>
+  437081:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437088:	00 
+  437089:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437090:	00 00 
+  437092:	75 3e                	jne    4370d2 <MEMORY_T::POKE64(double, double)+0x2d802>
+  437094:	48 89 ef             	mov    rdi,rbp
+  437097:	45 31 c0             	xor    r8d,r8d
+  43709a:	b9 01 00 00 00       	mov    ecx,0x1
+  43709f:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  4370a3:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4370aa:	48 8d 15 36 63 04 00 	lea    rdx,[rip+0x46336]        # 47d3e7 <_IO_stdin_used+0x3e7>
+  4370b1:	5b                   	pop    rbx
+  4370b2:	5d                   	pop    rbp
+  4370b3:	41 5c                	pop    r12
+  4370b5:	41 5d                	pop    r13
+  4370b7:	41 5e                	pop    r14
+  4370b9:	41 5f                	pop    r15
+  4370bb:	e9 60 df 03 00       	jmp    475020 <fb_StrAssign>
+;				     select case as const cast(ulongint, mem64(49361))       
+  4370c0:	f2 0f 5c 04 24       	subsd  xmm0,QWORD PTR [rsp]
+  4370c5:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  4370ca:	48 31 d8             	xor    rax,rbx
+  4370cd:	e9 4b ff ff ff       	jmp    43701d <MEMORY_T::POKE64(double, double)+0x2d74d>
+;				     msg=hex(mem64(49362)): print #1, msg: msg=""        
+  4370d2:	e8 a9 e7 fc ff       	call   405880 <__stack_chk_fail@plt>
+  4370d7:	f2 0f 5c 04 24       	subsd  xmm0,QWORD PTR [rsp]
+  4370dc:	f2 48 0f 2c f8       	cvttsd2si rdi,xmm0
+  4370e1:	48 0f ba ff 3f       	btc    rdi,0x3f
+  4370e6:	e9 62 ff ff ff       	jmp    43704d <MEMORY_T::POKE64(double, double)+0x2d77d>
+;				     msg=hex(mem64(49362)): print #1, msg;: msg=""
+  4370eb:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4370f0:	f2 0f 10 80 90 06 06 	movsd  xmm0,QWORD PTR [rax+0x60690]
+  4370f7:	00 
+  4370f8:	e8 63 e2 fc ff       	call   405360 <nearbyint@plt>
+  4370fd:	66 0f 2f 04 24       	comisd xmm0,QWORD PTR [rsp]
+  437102:	0f 83 fe 00 00 00    	jae    437206 <MEMORY_T::POKE64(double, double)+0x2d936>
+  437108:	f2 48 0f 2c f8       	cvttsd2si rdi,xmm0
+  43710d:	e8 2e fc 03 00       	call   476d40 <fb_HEX_l>
+  437112:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  437116:	45 31 c0             	xor    r8d,r8d
+  437119:	48 83 c9 ff          	or     rcx,0xffffffffffffffff
+  43711d:	48 8d 2d ac 27 09 00 	lea    rbp,[rip+0x927ac]        # 4c98d0 <MSG$>
+  437124:	48 89 c2             	mov    rdx,rax
+  437127:	48 89 ef             	mov    rdi,rbp
+  43712a:	e8 f1 de 03 00       	call   475020 <fb_StrAssign>
+  43712f:	31 d2                	xor    edx,edx
+  437131:	48 89 ee             	mov    rsi,rbp
+  437134:	bf 01 00 00 00       	mov    edi,0x1
+  437139:	e8 82 c8 03 00       	call   4739c0 <fb_PrintString>
+  43713e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437145:	00 
+  437146:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43714d:	00 00 
+  43714f:	0f 85 ac 00 00 00    	jne    437201 <MEMORY_T::POKE64(double, double)+0x2d931>
+  437155:	48 89 ef             	mov    rdi,rbp
+  437158:	45 31 c0             	xor    r8d,r8d
+  43715b:	b9 01 00 00 00       	mov    ecx,0x1
+  437160:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  437164:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43716b:	48 8d 15 75 62 04 00 	lea    rdx,[rip+0x46275]        # 47d3e7 <_IO_stdin_used+0x3e7>
+  437172:	5b                   	pop    rbx
+  437173:	5d                   	pop    rbp
+  437174:	41 5c                	pop    r12
+  437176:	41 5d                	pop    r13
+  437178:	41 5e                	pop    r14
+  43717a:	41 5f                	pop    r15
+  43717c:	e9 9f de 03 00       	jmp    475020 <fb_StrAssign>
+;				     msg=str(mem64(49362)): print #1, msg: msg=""
+  437181:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  437186:	48 8d 2d 43 27 09 00 	lea    rbp,[rip+0x92743]        # 4c98d0 <MSG$>
+  43718d:	f2 0f 10 80 90 06 06 	movsd  xmm0,QWORD PTR [rax+0x60690]
+  437194:	00 
+  437195:	e8 86 f1 03 00       	call   476320 <fb_DoubleToStr>
+  43719a:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  43719e:	45 31 c0             	xor    r8d,r8d
+  4371a1:	48 83 c9 ff          	or     rcx,0xffffffffffffffff
+  4371a5:	48 89 c2             	mov    rdx,rax
+  4371a8:	48 89 ef             	mov    rdi,rbp
+  4371ab:	e8 70 de 03 00       	call   475020 <fb_StrAssign>
+  4371b0:	ba 01 00 00 00       	mov    edx,0x1
+  4371b5:	48 89 ee             	mov    rsi,rbp
+  4371b8:	bf 01 00 00 00       	mov    edi,0x1
+  4371bd:	e8 fe c7 03 00       	call   4739c0 <fb_PrintString>
+  4371c2:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4371c9:	00 
+  4371ca:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4371d1:	00 00 
+  4371d3:	75 45                	jne    43721a <MEMORY_T::POKE64(double, double)+0x2d94a>
+  4371d5:	48 89 ef             	mov    rdi,rbp
+  4371d8:	45 31 c0             	xor    r8d,r8d
+  4371db:	b9 01 00 00 00       	mov    ecx,0x1
+  4371e0:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  4371e4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4371eb:	48 8d 15 f5 61 04 00 	lea    rdx,[rip+0x461f5]        # 47d3e7 <_IO_stdin_used+0x3e7>
+  4371f2:	5b                   	pop    rbx
+  4371f3:	5d                   	pop    rbp
+  4371f4:	41 5c                	pop    r12
+  4371f6:	41 5d                	pop    r13
+  4371f8:	41 5e                	pop    r14
+  4371fa:	41 5f                	pop    r15
+  4371fc:	e9 1f de 03 00       	jmp    475020 <fb_StrAssign>
+;				     msg=hex(mem64(49362)): print #1, msg;: msg=""
+  437201:	e8 7a e6 fc ff       	call   405880 <__stack_chk_fail@plt>
+  437206:	f2 0f 5c 04 24       	subsd  xmm0,QWORD PTR [rsp]
+  43720b:	f2 48 0f 2c f8       	cvttsd2si rdi,xmm0
+  437210:	48 0f ba ff 3f       	btc    rdi,0x3f
+  437215:	e9 f3 fe ff ff       	jmp    43710d <MEMORY_T::POKE64(double, double)+0x2d83d>
+;				     msg=str(mem64(49362)): print #1, msg: msg=""
+  43721a:	e8 61 e6 fc ff       	call   405880 <__stack_chk_fail@plt>
+;				     msg=str(mem64(49362)): print #1, msg;: msg=""
+  43721f:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  437224:	48 8d 2d a5 26 09 00 	lea    rbp,[rip+0x926a5]        # 4c98d0 <MSG$>
+  43722b:	f2 0f 10 80 90 06 06 	movsd  xmm0,QWORD PTR [rax+0x60690]
+  437232:	00 
+  437233:	e8 e8 f0 03 00       	call   476320 <fb_DoubleToStr>
+  437238:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  43723c:	45 31 c0             	xor    r8d,r8d
+  43723f:	48 83 c9 ff          	or     rcx,0xffffffffffffffff
+  437243:	48 89 c2             	mov    rdx,rax
+  437246:	48 89 ef             	mov    rdi,rbp
+  437249:	e8 d2 dd 03 00       	call   475020 <fb_StrAssign>
+  43724e:	31 d2                	xor    edx,edx
+  437250:	48 89 ee             	mov    rsi,rbp
+  437253:	bf 01 00 00 00       	mov    edi,0x1
+  437258:	e8 63 c7 03 00       	call   4739c0 <fb_PrintString>
+  43725d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437264:	00 
+  437265:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43726c:	00 00 
+  43726e:	0f 85 bd 00 00 00    	jne    437331 <MEMORY_T::POKE64(double, double)+0x2da61>
+  437274:	48 89 ef             	mov    rdi,rbp
+  437277:	45 31 c0             	xor    r8d,r8d
+  43727a:	b9 01 00 00 00       	mov    ecx,0x1
+  43727f:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  437283:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43728a:	48 8d 15 56 61 04 00 	lea    rdx,[rip+0x46156]        # 47d3e7 <_IO_stdin_used+0x3e7>
+  437291:	5b                   	pop    rbx
+  437292:	5d                   	pop    rbp
+  437293:	41 5c                	pop    r12
+  437295:	41 5d                	pop    r13
+  437297:	41 5e                	pop    r14
+  437299:	41 5f                	pop    r15
+  43729b:	e9 80 dd 03 00       	jmp    475020 <fb_StrAssign>
+;				     msg=chr(mem64(49362)): print #1, msg: msg=""
+  4372a0:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4372a5:	48 8d 2d 24 26 09 00 	lea    rbp,[rip+0x92624]        # 4c98d0 <MSG$>
+  4372ac:	f2 0f 10 80 90 06 06 	movsd  xmm0,QWORD PTR [rax+0x60690]
+  4372b3:	00 
+  4372b4:	e8 a7 e0 fc ff       	call   405360 <nearbyint@plt>
+  4372b9:	bf 01 00 00 00       	mov    edi,0x1
+  4372be:	31 c0                	xor    eax,eax
+  4372c0:	f2 48 0f 2c f0       	cvttsd2si rsi,xmm0
+  4372c5:	e8 06 e1 03 00       	call   4753d0 <fb_CHR>
+  4372ca:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  4372ce:	45 31 c0             	xor    r8d,r8d
+  4372d1:	48 83 c9 ff          	or     rcx,0xffffffffffffffff
+  4372d5:	48 89 c2             	mov    rdx,rax
+  4372d8:	48 89 ef             	mov    rdi,rbp
+  4372db:	e8 40 dd 03 00       	call   475020 <fb_StrAssign>
+  4372e0:	ba 01 00 00 00       	mov    edx,0x1
+  4372e5:	48 89 ee             	mov    rsi,rbp
+  4372e8:	bf 01 00 00 00       	mov    edi,0x1
+  4372ed:	e8 ce c6 03 00       	call   4739c0 <fb_PrintString>
+  4372f2:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4372f9:	00 
+  4372fa:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437301:	00 00 
+  437303:	75 31                	jne    437336 <MEMORY_T::POKE64(double, double)+0x2da66>
+  437305:	48 89 ef             	mov    rdi,rbp
+  437308:	45 31 c0             	xor    r8d,r8d
+  43730b:	b9 01 00 00 00       	mov    ecx,0x1
+  437310:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  437314:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43731b:	48 8d 15 c5 60 04 00 	lea    rdx,[rip+0x460c5]        # 47d3e7 <_IO_stdin_used+0x3e7>
+  437322:	5b                   	pop    rbx
+  437323:	5d                   	pop    rbp
+  437324:	41 5c                	pop    r12
+  437326:	41 5d                	pop    r13
+  437328:	41 5e                	pop    r14
+  43732a:	41 5f                	pop    r15
+  43732c:	e9 ef dc 03 00       	jmp    475020 <fb_StrAssign>
+;				     msg=str(mem64(49362)): print #1, msg;: msg=""
+  437331:	e8 4a e5 fc ff       	call   405880 <__stack_chk_fail@plt>
+;				     msg=chr(mem64(49362)): print #1, msg: msg=""
+  437336:	e8 45 e5 fc ff       	call   405880 <__stack_chk_fail@plt>
+;				     msg=chr(mem64(49362)): print #1, msg;: msg=""
+  43733b:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  437340:	48 8d 2d 89 25 09 00 	lea    rbp,[rip+0x92589]        # 4c98d0 <MSG$>
+  437347:	f2 0f 10 80 90 06 06 	movsd  xmm0,QWORD PTR [rax+0x60690]
+  43734e:	00 
+  43734f:	e8 0c e0 fc ff       	call   405360 <nearbyint@plt>
+  437354:	bf 01 00 00 00       	mov    edi,0x1
+  437359:	31 c0                	xor    eax,eax
+  43735b:	f2 48 0f 2c f0       	cvttsd2si rsi,xmm0
+  437360:	e8 6b e0 03 00       	call   4753d0 <fb_CHR>
+  437365:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  437369:	45 31 c0             	xor    r8d,r8d
+  43736c:	48 83 c9 ff          	or     rcx,0xffffffffffffffff
+  437370:	48 89 c2             	mov    rdx,rax
+  437373:	48 89 ef             	mov    rdi,rbp
+  437376:	e8 a5 dc 03 00       	call   475020 <fb_StrAssign>
+  43737b:	31 d2                	xor    edx,edx
+  43737d:	48 89 ee             	mov    rsi,rbp
+  437380:	bf 01 00 00 00       	mov    edi,0x1
+  437385:	e8 36 c6 03 00       	call   4739c0 <fb_PrintString>
+  43738a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437391:	00 
+  437392:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437399:	00 00 
+  43739b:	75 7c                	jne    437419 <MEMORY_T::POKE64(double, double)+0x2db49>
+  43739d:	48 89 ef             	mov    rdi,rbp
+  4373a0:	45 31 c0             	xor    r8d,r8d
+  4373a3:	b9 01 00 00 00       	mov    ecx,0x1
+  4373a8:	48 83 ce ff          	or     rsi,0xffffffffffffffff
+  4373ac:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4373b3:	48 8d 15 2d 60 04 00 	lea    rdx,[rip+0x4602d]        # 47d3e7 <_IO_stdin_used+0x3e7>
+  4373ba:	5b                   	pop    rbx
+  4373bb:	5d                   	pop    rbp
+  4373bc:	41 5c                	pop    r12
+  4373be:	41 5d                	pop    r13
+  4373c0:	41 5e                	pop    r14
+  4373c2:	41 5f                	pop    r15
+  4373c4:	e9 57 dc 03 00       	jmp    475020 <fb_StrAssign>
+;                       print #1, str(mem64(49362) * .001)                      					       
+  4373c9:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4373ce:	f2 0f 10 05 52 a2 04 	movsd  xmm0,QWORD PTR [rip+0x4a252]        # 481628 <_IO_stdin_used+0x4628>
+  4373d5:	00 
+  4373d6:	f2 0f 59 80 90 06 06 	mulsd  xmm0,QWORD PTR [rax+0x60690]
+  4373dd:	00 
+  4373de:	e8 3d ef 03 00       	call   476320 <fb_DoubleToStr>
+  4373e3:	48 89 c6             	mov    rsi,rax
+  4373e6:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4373ed:	00 
+  4373ee:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4373f5:	00 00 
+  4373f7:	75 25                	jne    43741e <MEMORY_T::POKE64(double, double)+0x2db4e>
+  4373f9:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437400:	ba 01 00 00 00       	mov    edx,0x1
+  437405:	bf 01 00 00 00       	mov    edi,0x1
+  43740a:	5b                   	pop    rbx
+  43740b:	5d                   	pop    rbp
+  43740c:	41 5c                	pop    r12
+  43740e:	41 5d                	pop    r13
+  437410:	41 5e                	pop    r14
+  437412:	41 5f                	pop    r15
+  437414:	e9 a7 c5 03 00       	jmp    4739c0 <fb_PrintString>
+;				     msg=chr(mem64(49362)): print #1, msg;: msg=""
+  437419:	e8 62 e4 fc ff       	call   405880 <__stack_chk_fail@plt>
+;                       print #1, str(mem64(49362) * .001)                      					       
+  43741e:	e8 5d e4 fc ff       	call   405880 <__stack_chk_fail@plt>
+;                       print #1, str(mem64(49362) * .001);
+  437423:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  437428:	f2 0f 10 05 f8 a1 04 	movsd  xmm0,QWORD PTR [rip+0x4a1f8]        # 481628 <_IO_stdin_used+0x4628>
+  43742f:	00 
+  437430:	f2 0f 59 80 90 06 06 	mulsd  xmm0,QWORD PTR [rax+0x60690]
+  437437:	00 
+  437438:	e8 e3 ee 03 00       	call   476320 <fb_DoubleToStr>
+  43743d:	48 89 c6             	mov    rsi,rax
+  437440:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437447:	00 
+  437448:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43744f:	00 00 
+  437451:	75 6d                	jne    4374c0 <MEMORY_T::POKE64(double, double)+0x2dbf0>
+  437453:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43745a:	31 d2                	xor    edx,edx
+  43745c:	bf 01 00 00 00       	mov    edi,0x1
+  437461:	5b                   	pop    rbx
+  437462:	5d                   	pop    rbp
+  437463:	41 5c                	pop    r12
+  437465:	41 5d                	pop    r13
+  437467:	41 5e                	pop    r14
+  437469:	41 5f                	pop    r15
+  43746b:	e9 50 c5 03 00       	jmp    4739c0 <fb_PrintString>
+;                       print #1, str(mem64(49362) * .01)                      
+  437470:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  437475:	f2 0f 10 05 a3 a1 04 	movsd  xmm0,QWORD PTR [rip+0x4a1a3]        # 481620 <_IO_stdin_used+0x4620>
+  43747c:	00 
+  43747d:	f2 0f 59 80 90 06 06 	mulsd  xmm0,QWORD PTR [rax+0x60690]
+  437484:	00 
+  437485:	e8 96 ee 03 00       	call   476320 <fb_DoubleToStr>
+  43748a:	48 89 c6             	mov    rsi,rax
+  43748d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437494:	00 
+  437495:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43749c:	00 00 
+  43749e:	75 25                	jne    4374c5 <MEMORY_T::POKE64(double, double)+0x2dbf5>
+  4374a0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4374a7:	ba 01 00 00 00       	mov    edx,0x1
+  4374ac:	bf 01 00 00 00       	mov    edi,0x1
+  4374b1:	5b                   	pop    rbx
+  4374b2:	5d                   	pop    rbp
+  4374b3:	41 5c                	pop    r12
+  4374b5:	41 5d                	pop    r13
+  4374b7:	41 5e                	pop    r14
+  4374b9:	41 5f                	pop    r15
+  4374bb:	e9 00 c5 03 00       	jmp    4739c0 <fb_PrintString>
+;                       print #1, str(mem64(49362) * .001);
+  4374c0:	e8 bb e3 fc ff       	call   405880 <__stack_chk_fail@plt>
+;                       print #1, str(mem64(49362) * .01)                      
+  4374c5:	e8 b6 e3 fc ff       	call   405880 <__stack_chk_fail@plt>
+;                       print #1, str(mem64(49362) * .01);
+  4374ca:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4374cf:	f2 0f 10 05 49 a1 04 	movsd  xmm0,QWORD PTR [rip+0x4a149]        # 481620 <_IO_stdin_used+0x4620>
+  4374d6:	00 
+  4374d7:	f2 0f 59 80 90 06 06 	mulsd  xmm0,QWORD PTR [rax+0x60690]
+  4374de:	00 
+  4374df:	e8 3c ee 03 00       	call   476320 <fb_DoubleToStr>
+  4374e4:	48 89 c6             	mov    rsi,rax
+  4374e7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4374ee:	00 
+  4374ef:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4374f6:	00 00 
+  4374f8:	75 6d                	jne    437567 <MEMORY_T::POKE64(double, double)+0x2dc97>
+  4374fa:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437501:	31 d2                	xor    edx,edx
+  437503:	bf 01 00 00 00       	mov    edi,0x1
+  437508:	5b                   	pop    rbx
+  437509:	5d                   	pop    rbp
+  43750a:	41 5c                	pop    r12
+  43750c:	41 5d                	pop    r13
+  43750e:	41 5e                	pop    r14
+  437510:	41 5f                	pop    r15
+  437512:	e9 a9 c4 03 00       	jmp    4739c0 <fb_PrintString>
+;                       print #1, str(mem64(49362) * .1)                       
+  437517:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  43751c:	f2 0f 10 05 f4 a0 04 	movsd  xmm0,QWORD PTR [rip+0x4a0f4]        # 481618 <_IO_stdin_used+0x4618>
+  437523:	00 
+  437524:	f2 0f 59 80 90 06 06 	mulsd  xmm0,QWORD PTR [rax+0x60690]
+  43752b:	00 
+  43752c:	e8 ef ed 03 00       	call   476320 <fb_DoubleToStr>
+  437531:	48 89 c6             	mov    rsi,rax
+  437534:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43753b:	00 
+  43753c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437543:	00 00 
+  437545:	75 25                	jne    43756c <MEMORY_T::POKE64(double, double)+0x2dc9c>
+  437547:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43754e:	ba 01 00 00 00       	mov    edx,0x1
+  437553:	bf 01 00 00 00       	mov    edi,0x1
+  437558:	5b                   	pop    rbx
+  437559:	5d                   	pop    rbp
+  43755a:	41 5c                	pop    r12
+  43755c:	41 5d                	pop    r13
+  43755e:	41 5e                	pop    r14
+  437560:	41 5f                	pop    r15
+  437562:	e9 59 c4 03 00       	jmp    4739c0 <fb_PrintString>
+;                       print #1, str(mem64(49362) * .01);
+  437567:	e8 14 e3 fc ff       	call   405880 <__stack_chk_fail@plt>
+;                       print #1, str(mem64(49362) * .1)                       
+  43756c:	e8 0f e3 fc ff       	call   405880 <__stack_chk_fail@plt>
+;                       print #1, str(mem64(49362) * .1);
+  437571:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  437576:	f2 0f 10 05 9a a0 04 	movsd  xmm0,QWORD PTR [rip+0x4a09a]        # 481618 <_IO_stdin_used+0x4618>
+  43757d:	00 
+  43757e:	f2 0f 59 80 90 06 06 	mulsd  xmm0,QWORD PTR [rax+0x60690]
+  437585:	00 
+  437586:	e8 95 ed 03 00       	call   476320 <fb_DoubleToStr>
+  43758b:	48 89 c6             	mov    rsi,rax
+  43758e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437595:	00 
+  437596:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43759d:	00 00 
+  43759f:	75 64                	jne    437605 <MEMORY_T::POKE64(double, double)+0x2dd35>
+  4375a1:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4375a8:	31 d2                	xor    edx,edx
+  4375aa:	bf 01 00 00 00       	mov    edi,0x1
+  4375af:	5b                   	pop    rbx
+  4375b0:	5d                   	pop    rbp
+  4375b1:	41 5c                	pop    r12
+  4375b3:	41 5d                	pop    r13
+  4375b5:	41 5e                	pop    r14
+  4375b7:	41 5f                	pop    r15
+  4375b9:	e9 02 c4 03 00       	jmp    4739c0 <fb_PrintString>
+;					   print #1, chr(13) add chr(10)
+  4375be:	be 02 00 00 00       	mov    esi,0x2
+  4375c3:	48 8d 3d 9c cb 04 00 	lea    rdi,[rip+0x4cb9c]        # 484166 <pad_numlock_ascii+0x26>
+  4375ca:	e8 c1 ff 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4375cf:	48 89 c6             	mov    rsi,rax
+  4375d2:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4375d9:	00 
+  4375da:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4375e1:	00 00 
+  4375e3:	75 25                	jne    43760a <MEMORY_T::POKE64(double, double)+0x2dd3a>
+  4375e5:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4375ec:	ba 01 00 00 00       	mov    edx,0x1
+  4375f1:	bf 01 00 00 00       	mov    edi,0x1
+  4375f6:	5b                   	pop    rbx
+  4375f7:	5d                   	pop    rbp
+  4375f8:	41 5c                	pop    r12
+  4375fa:	41 5d                	pop    r13
+  4375fc:	41 5e                	pop    r14
+  4375fe:	41 5f                	pop    r15
+  437600:	e9 bb c3 03 00       	jmp    4739c0 <fb_PrintString>
+;                       print #1, str(mem64(49362) * .1);
+  437605:	e8 76 e2 fc ff       	call   405880 <__stack_chk_fail@plt>
+;					   print #1, chr(13) add chr(10)
+  43760a:	e8 71 e2 fc ff       	call   405880 <__stack_chk_fail@plt>
+;					   print #1, str(0-mem64(49362))
+  43760f:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  437614:	66 0f ef c0          	pxor   xmm0,xmm0
+  437618:	f2 0f 5c 80 90 06 06 	subsd  xmm0,QWORD PTR [rax+0x60690]
+  43761f:	00 
+  437620:	e8 fb ec 03 00       	call   476320 <fb_DoubleToStr>
+  437625:	48 89 c6             	mov    rsi,rax
+  437628:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43762f:	00 
+  437630:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437637:	00 00 
+  437639:	75 69                	jne    4376a4 <MEMORY_T::POKE64(double, double)+0x2ddd4>
+  43763b:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437642:	ba 01 00 00 00       	mov    edx,0x1
+  437647:	bf 01 00 00 00       	mov    edi,0x1
+  43764c:	5b                   	pop    rbx
+  43764d:	5d                   	pop    rbp
+  43764e:	41 5c                	pop    r12
+  437650:	41 5d                	pop    r13
+  437652:	41 5e                	pop    r14
+  437654:	41 5f                	pop    r15
+  437656:	e9 65 c3 03 00       	jmp    4739c0 <fb_PrintString>
+;					   print #1, str(0-mem64(49362));
+  43765b:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  437660:	66 0f ef c0          	pxor   xmm0,xmm0
+  437664:	f2 0f 5c 80 90 06 06 	subsd  xmm0,QWORD PTR [rax+0x60690]
+  43766b:	00 
+  43766c:	e8 af ec 03 00       	call   476320 <fb_DoubleToStr>
+  437671:	48 89 c6             	mov    rsi,rax
+  437674:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43767b:	00 
+  43767c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437683:	00 00 
+  437685:	75 22                	jne    4376a9 <MEMORY_T::POKE64(double, double)+0x2ddd9>
+  437687:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43768e:	31 d2                	xor    edx,edx
+  437690:	bf 01 00 00 00       	mov    edi,0x1
+  437695:	5b                   	pop    rbx
+  437696:	5d                   	pop    rbp
+  437697:	41 5c                	pop    r12
+  437699:	41 5d                	pop    r13
+  43769b:	41 5e                	pop    r14
+  43769d:	41 5f                	pop    r15
+  43769f:	e9 1c c3 03 00       	jmp    4739c0 <fb_PrintString>
+;					   print #1, str(0-mem64(49362))
+  4376a4:	e8 d7 e1 fc ff       	call   405880 <__stack_chk_fail@plt>
+;					   print #1, str(0-mem64(49362));
+  4376a9:	e8 d2 e1 fc ff       	call   405880 <__stack_chk_fail@plt>
+;					   print #1, str(mem64(49362))
+  4376ae:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4376b3:	f2 0f 10 80 90 06 06 	movsd  xmm0,QWORD PTR [rax+0x60690]
+  4376ba:	00 
+  4376bb:	e8 60 ec 03 00       	call   476320 <fb_DoubleToStr>
+  4376c0:	48 89 c6             	mov    rsi,rax
+  4376c3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4376ca:	00 
+  4376cb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4376d2:	00 00 
+  4376d4:	75 65                	jne    43773b <MEMORY_T::POKE64(double, double)+0x2de6b>
+  4376d6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4376dd:	ba 01 00 00 00       	mov    edx,0x1
+  4376e2:	bf 01 00 00 00       	mov    edi,0x1
+  4376e7:	5b                   	pop    rbx
+  4376e8:	5d                   	pop    rbp
+  4376e9:	41 5c                	pop    r12
+  4376eb:	41 5d                	pop    r13
+  4376ed:	41 5e                	pop    r14
+  4376ef:	41 5f                	pop    r15
+  4376f1:	e9 ca c2 03 00       	jmp    4739c0 <fb_PrintString>
+;					   print #1, str(mem64(49362));
+  4376f6:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  4376fb:	f2 0f 10 80 90 06 06 	movsd  xmm0,QWORD PTR [rax+0x60690]
+  437702:	00 
+  437703:	e8 18 ec 03 00       	call   476320 <fb_DoubleToStr>
+  437708:	48 89 c6             	mov    rsi,rax
+  43770b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437712:	00 
+  437713:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43771a:	00 00 
+  43771c:	75 22                	jne    437740 <MEMORY_T::POKE64(double, double)+0x2de70>
+  43771e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437725:	31 d2                	xor    edx,edx
+  437727:	bf 01 00 00 00       	mov    edi,0x1
+  43772c:	5b                   	pop    rbx
+  43772d:	5d                   	pop    rbp
+  43772e:	41 5c                	pop    r12
+  437730:	41 5d                	pop    r13
+  437732:	41 5e                	pop    r14
+  437734:	41 5f                	pop    r15
+  437736:	e9 85 c2 03 00       	jmp    4739c0 <fb_PrintString>
+;					   print #1, str(mem64(49362))
+  43773b:	e8 40 e1 fc ff       	call   405880 <__stack_chk_fail@plt>
+;					   print #1, str(mem64(49362));
+  437740:	e8 3b e1 fc ff       	call   405880 <__stack_chk_fail@plt>
+;				     select case as const cast(ulongint, mem64(49361))  
+  437745:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  43774a:	f2 0f 10 80 88 06 06 	movsd  xmm0,QWORD PTR [rax+0x60688]
+  437751:	00 
+  437752:	e8 09 dc fc ff       	call   405360 <nearbyint@plt>
+  437757:	66 0f 2f 04 24       	comisd xmm0,QWORD PTR [rsp]
+  43775c:	73 58                	jae    4377b6 <MEMORY_T::POKE64(double, double)+0x2dee6>
+  43775e:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+;				     msg=hex(mem64(49362)): print #1, msg: msg=""        
+  437763:	48 83 f8 0a          	cmp    rax,0xa
+  437767:	0f 87 93 4c fd ff    	ja     40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;				case 016d ' Header selector
+  43776d:	41 ff 64 c5 00       	jmp    QWORD PTR [r13+rax*8+0x0]
+;						case 255: print #1, "goback";						     
+  437772:	be 06 00 00 00       	mov    esi,0x6
+  437777:	48 8d 3d f9 6b 04 00 	lea    rdi,[rip+0x46bf9]        # 47e377 <_IO_stdin_used+0x1377>
+  43777e:	e8 0d fe 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437783:	48 89 c6             	mov    rsi,rax
+  437786:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43778d:	00 
+  43778e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437795:	00 00 
+  437797:	75 2c                	jne    4377c5 <MEMORY_T::POKE64(double, double)+0x2def5>
+  437799:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4377a0:	31 d2                	xor    edx,edx
+  4377a2:	bf 01 00 00 00       	mov    edi,0x1
+  4377a7:	5b                   	pop    rbx
+  4377a8:	5d                   	pop    rbp
+  4377a9:	41 5c                	pop    r12
+  4377ab:	41 5d                	pop    r13
+  4377ad:	41 5e                	pop    r14
+  4377af:	41 5f                	pop    r15
+  4377b1:	e9 0a c2 03 00       	jmp    4739c0 <fb_PrintString>
+;				     select case as const cast(ulongint, mem64(49361))  
+  4377b6:	f2 0f 5c 04 24       	subsd  xmm0,QWORD PTR [rsp]
+  4377bb:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  4377c0:	48 31 d8             	xor    rax,rbx
+  4377c3:	eb 9e                	jmp    437763 <MEMORY_T::POKE64(double, double)+0x2de93>
+;						case 255: print #1, "goback";						     
+  4377c5:	e8 b6 e0 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 254: print #1, "go";
+  4377ca:	be 02 00 00 00       	mov    esi,0x2
+  4377cf:	48 8d 3d 9e 6b 04 00 	lea    rdi,[rip+0x46b9e]        # 47e374 <_IO_stdin_used+0x1374>
+  4377d6:	e8 b5 fd 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4377db:	48 89 c6             	mov    rsi,rax
+  4377de:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4377e5:	00 
+  4377e6:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4377ed:	00 00 
+  4377ef:	75 61                	jne    437852 <MEMORY_T::POKE64(double, double)+0x2df82>
+  4377f1:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4377f8:	31 d2                	xor    edx,edx
+  4377fa:	bf 01 00 00 00       	mov    edi,0x1
+  4377ff:	5b                   	pop    rbx
+  437800:	5d                   	pop    rbp
+  437801:	41 5c                	pop    r12
+  437803:	41 5d                	pop    r13
+  437805:	41 5e                	pop    r14
+  437807:	41 5f                	pop    r15
+  437809:	e9 b2 c1 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 253: print #1, "global_settings";
+  43780e:	be 0f 00 00 00       	mov    esi,0xf
+  437813:	48 8d 3d 4a 6b 04 00 	lea    rdi,[rip+0x46b4a]        # 47e364 <_IO_stdin_used+0x1364>
+  43781a:	e8 71 fd 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43781f:	48 89 c6             	mov    rsi,rax
+  437822:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437829:	00 
+  43782a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437831:	00 00 
+  437833:	75 22                	jne    437857 <MEMORY_T::POKE64(double, double)+0x2df87>
+  437835:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43783c:	31 d2                	xor    edx,edx
+  43783e:	bf 01 00 00 00       	mov    edi,0x1
+  437843:	5b                   	pop    rbx
+  437844:	5d                   	pop    rbp
+  437845:	41 5c                	pop    r12
+  437847:	41 5d                	pop    r13
+  437849:	41 5e                	pop    r14
+  43784b:	41 5f                	pop    r15
+  43784d:	e9 6e c1 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 254: print #1, "go";
+  437852:	e8 29 e0 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 253: print #1, "global_settings";
+  437857:	e8 24 e0 fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 252: print #1, "global_lights";
+  43785c:	be 0d 00 00 00       	mov    esi,0xd
+  437861:	48 8d 3d ee 6a 04 00 	lea    rdi,[rip+0x46aee]        # 47e356 <_IO_stdin_used+0x1356>
+  437868:	e8 23 fd 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  43786d:	48 89 c6             	mov    rsi,rax
+  437870:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437877:	00 
+  437878:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  43787f:	00 00 
+  437881:	75 61                	jne    4378e4 <MEMORY_T::POKE64(double, double)+0x2e014>
+  437883:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43788a:	31 d2                	xor    edx,edx
+  43788c:	bf 01 00 00 00       	mov    edi,0x1
+  437891:	5b                   	pop    rbx
+  437892:	5d                   	pop    rbp
+  437893:	41 5c                	pop    r12
+  437895:	41 5d                	pop    r13
+  437897:	41 5e                	pop    r14
+  437899:	41 5f                	pop    r15
+  43789b:	e9 20 c1 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 251: print #1, "global";
+  4378a0:	be 06 00 00 00       	mov    esi,0x6
+  4378a5:	48 8d 3d a3 6a 04 00 	lea    rdi,[rip+0x46aa3]        # 47e34f <_IO_stdin_used+0x134f>
+  4378ac:	e8 df fc 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4378b1:	48 89 c6             	mov    rsi,rax
+  4378b4:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4378bb:	00 
+  4378bc:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4378c3:	00 00 
+  4378c5:	75 22                	jne    4378e9 <MEMORY_T::POKE64(double, double)+0x2e019>
+  4378c7:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4378ce:	31 d2                	xor    edx,edx
+  4378d0:	bf 01 00 00 00       	mov    edi,0x1
+  4378d5:	5b                   	pop    rbx
+  4378d6:	5d                   	pop    rbp
+  4378d7:	41 5c                	pop    r12
+  4378d9:	41 5d                	pop    r13
+  4378db:	41 5e                	pop    r14
+  4378dd:	41 5f                	pop    r15
+  4378df:	e9 dc c0 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 252: print #1, "global_lights";
+  4378e4:	e8 97 df fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 251: print #1, "global";
+  4378e9:	e8 92 df fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 250: print #1, "gl_fragcoord.xy";
+  4378ee:	be 0f 00 00 00       	mov    esi,0xf
+  4378f3:	48 8d 3d 45 6a 04 00 	lea    rdi,[rip+0x46a45]        # 47e33f <_IO_stdin_used+0x133f>
+  4378fa:	e8 91 fc 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4378ff:	48 89 c6             	mov    rsi,rax
+  437902:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437909:	00 
+  43790a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437911:	00 00 
+  437913:	75 61                	jne    437976 <MEMORY_T::POKE64(double, double)+0x2e0a6>
+  437915:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  43791c:	31 d2                	xor    edx,edx
+  43791e:	bf 01 00 00 00       	mov    edi,0x1
+  437923:	5b                   	pop    rbx
+  437924:	5d                   	pop    rbp
+  437925:	41 5c                	pop    r12
+  437927:	41 5d                	pop    r13
+  437929:	41 5e                	pop    r14
+  43792b:	41 5f                	pop    r15
+  43792d:	e9 8e c0 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 249: print #1, "gl_fragcolor";
+  437932:	be 0c 00 00 00       	mov    esi,0xc
+  437937:	48 8d 3d f4 69 04 00 	lea    rdi,[rip+0x469f4]        # 47e332 <_IO_stdin_used+0x1332>
+  43793e:	e8 4d fc 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437943:	48 89 c6             	mov    rsi,rax
+  437946:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43794d:	00 
+  43794e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437955:	00 00 
+  437957:	75 22                	jne    43797b <MEMORY_T::POKE64(double, double)+0x2e0ab>
+  437959:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437960:	31 d2                	xor    edx,edx
+  437962:	bf 01 00 00 00       	mov    edi,0x1
+  437967:	5b                   	pop    rbx
+  437968:	5d                   	pop    rbp
+  437969:	41 5c                	pop    r12
+  43796b:	41 5d                	pop    r13
+  43796d:	41 5e                	pop    r14
+  43796f:	41 5f                	pop    r15
+  437971:	e9 4a c0 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 250: print #1, "gl_fragcoord.xy";
+  437976:	e8 05 df fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 249: print #1, "gl_fragcolor";
+  43797b:	e8 00 df fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 248: print #1, "giving";
+  437980:	be 06 00 00 00       	mov    esi,0x6
+  437985:	48 8d 3d 9f 69 04 00 	lea    rdi,[rip+0x4699f]        # 47e32b <_IO_stdin_used+0x132b>
+  43798c:	e8 ff fb 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437991:	48 89 c6             	mov    rsi,rax
+  437994:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  43799b:	00 
+  43799c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4379a3:	00 00 
+  4379a5:	75 61                	jne    437a08 <MEMORY_T::POKE64(double, double)+0x2e138>
+  4379a7:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4379ae:	31 d2                	xor    edx,edx
+  4379b0:	bf 01 00 00 00       	mov    edi,0x1
+  4379b5:	5b                   	pop    rbx
+  4379b6:	5d                   	pop    rbp
+  4379b7:	41 5c                	pop    r12
+  4379b9:	41 5d                	pop    r13
+  4379bb:	41 5e                	pop    r14
+  4379bd:	41 5f                	pop    r15
+  4379bf:	e9 fc bf 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 247: print #1, "gif";
+  4379c4:	be 03 00 00 00       	mov    esi,0x3
+  4379c9:	48 8d 3d 57 69 04 00 	lea    rdi,[rip+0x46957]        # 47e327 <_IO_stdin_used+0x1327>
+  4379d0:	e8 bb fb 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4379d5:	48 89 c6             	mov    rsi,rax
+  4379d8:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4379df:	00 
+  4379e0:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4379e7:	00 00 
+  4379e9:	75 22                	jne    437a0d <MEMORY_T::POKE64(double, double)+0x2e13d>
+  4379eb:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4379f2:	31 d2                	xor    edx,edx
+  4379f4:	bf 01 00 00 00       	mov    edi,0x1
+  4379f9:	5b                   	pop    rbx
+  4379fa:	5d                   	pop    rbp
+  4379fb:	41 5c                	pop    r12
+  4379fd:	41 5d                	pop    r13
+  4379ff:	41 5e                	pop    r14
+  437a01:	41 5f                	pop    r15
+  437a03:	e9 b8 bf 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 248: print #1, "giving";
+  437a08:	e8 73 de fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 247: print #1, "gif";
+  437a0d:	e8 6e de fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 246: print #1, "gettextureinfo";
+  437a12:	be 0e 00 00 00       	mov    esi,0xe
+  437a17:	48 8d 3d fa 68 04 00 	lea    rdi,[rip+0x468fa]        # 47e318 <_IO_stdin_used+0x1318>
+  437a1e:	e8 6d fb 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437a23:	48 89 c6             	mov    rsi,rax
+  437a26:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437a2d:	00 
+  437a2e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437a35:	00 00 
+  437a37:	75 61                	jne    437a9a <MEMORY_T::POKE64(double, double)+0x2e1ca>
+  437a39:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437a40:	31 d2                	xor    edx,edx
+  437a42:	bf 01 00 00 00       	mov    edi,0x1
+  437a47:	5b                   	pop    rbx
+  437a48:	5d                   	pop    rbp
+  437a49:	41 5c                	pop    r12
+  437a4b:	41 5d                	pop    r13
+  437a4d:	41 5e                	pop    r14
+  437a4f:	41 5f                	pop    r15
+  437a51:	e9 6a bf 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 245: print #1, "getmessage";
+  437a56:	be 0a 00 00 00       	mov    esi,0xa
+  437a5b:	48 8d 3d ab 68 04 00 	lea    rdi,[rip+0x468ab]        # 47e30d <_IO_stdin_used+0x130d>
+  437a62:	e8 29 fb 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437a67:	48 89 c6             	mov    rsi,rax
+  437a6a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437a71:	00 
+  437a72:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437a79:	00 00 
+  437a7b:	75 22                	jne    437a9f <MEMORY_T::POKE64(double, double)+0x2e1cf>
+  437a7d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437a84:	31 d2                	xor    edx,edx
+  437a86:	bf 01 00 00 00       	mov    edi,0x1
+  437a8b:	5b                   	pop    rbx
+  437a8c:	5d                   	pop    rbp
+  437a8d:	41 5c                	pop    r12
+  437a8f:	41 5d                	pop    r13
+  437a91:	41 5e                	pop    r14
+  437a93:	41 5f                	pop    r15
+  437a95:	e9 26 bf 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 246: print #1, "gettextureinfo";
+  437a9a:	e8 e1 dd fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 245: print #1, "getmessage";
+  437a9f:	e8 dc dd fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 244: print #1, "getmatrix";
+  437aa4:	be 09 00 00 00       	mov    esi,0x9
+  437aa9:	48 8d 3d 53 68 04 00 	lea    rdi,[rip+0x46853]        # 47e303 <_IO_stdin_used+0x1303>
+  437ab0:	e8 db fa 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437ab5:	48 89 c6             	mov    rsi,rax
+  437ab8:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437abf:	00 
+  437ac0:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437ac7:	00 00 
+  437ac9:	75 61                	jne    437b2c <MEMORY_T::POKE64(double, double)+0x2e25c>
+  437acb:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437ad2:	31 d2                	xor    edx,edx
+  437ad4:	bf 01 00 00 00       	mov    edi,0x1
+  437ad9:	5b                   	pop    rbx
+  437ada:	5d                   	pop    rbp
+  437adb:	41 5c                	pop    r12
+  437add:	41 5d                	pop    r13
+  437adf:	41 5e                	pop    r14
+  437ae1:	41 5f                	pop    r15
+  437ae3:	e9 d8 be 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 243: print #1, "getchar";
+  437ae8:	be 07 00 00 00       	mov    esi,0x7
+  437aed:	48 8d 3d 07 68 04 00 	lea    rdi,[rip+0x46807]        # 47e2fb <_IO_stdin_used+0x12fb>
+  437af4:	e8 97 fa 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437af9:	48 89 c6             	mov    rsi,rax
+  437afc:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437b03:	00 
+  437b04:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437b0b:	00 00 
+  437b0d:	75 22                	jne    437b31 <MEMORY_T::POKE64(double, double)+0x2e261>
+  437b0f:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437b16:	31 d2                	xor    edx,edx
+  437b18:	bf 01 00 00 00       	mov    edi,0x1
+  437b1d:	5b                   	pop    rbx
+  437b1e:	5d                   	pop    rbp
+  437b1f:	41 5c                	pop    r12
+  437b21:	41 5d                	pop    r13
+  437b23:	41 5e                	pop    r14
+  437b25:	41 5f                	pop    r15
+  437b27:	e9 94 be 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 244: print #1, "getmatrix";
+  437b2c:	e8 4f dd fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 243: print #1, "getchar";
+  437b31:	e8 4a dd fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 242: print #1, "getattribute";
+  437b36:	be 0c 00 00 00       	mov    esi,0xc
+  437b3b:	48 8d 3d ac 67 04 00 	lea    rdi,[rip+0x467ac]        # 47e2ee <_IO_stdin_used+0x12ee>
+  437b42:	e8 49 fa 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437b47:	48 89 c6             	mov    rsi,rax
+  437b4a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437b51:	00 
+  437b52:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437b59:	00 00 
+  437b5b:	75 61                	jne    437bbe <MEMORY_T::POKE64(double, double)+0x2e2ee>
+  437b5d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437b64:	31 d2                	xor    edx,edx
+  437b66:	bf 01 00 00 00       	mov    edi,0x1
+  437b6b:	5b                   	pop    rbx
+  437b6c:	5d                   	pop    rbp
+  437b6d:	41 5c                	pop    r12
+  437b6f:	41 5d                	pop    r13
+  437b71:	41 5e                	pop    r14
+  437b73:	41 5f                	pop    r15
+  437b75:	e9 46 be 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 241: print #1, "get";
+  437b7a:	be 03 00 00 00       	mov    esi,0x3
+  437b7f:	48 8d 3d f1 74 04 00 	lea    rdi,[rip+0x474f1]        # 47f077 <_IO_stdin_used+0x2077>
+  437b86:	e8 05 fa 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437b8b:	48 89 c6             	mov    rsi,rax
+  437b8e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437b95:	00 
+  437b96:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437b9d:	00 00 
+  437b9f:	75 22                	jne    437bc3 <MEMORY_T::POKE64(double, double)+0x2e2f3>
+  437ba1:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437ba8:	31 d2                	xor    edx,edx
+  437baa:	bf 01 00 00 00       	mov    edi,0x1
+  437baf:	5b                   	pop    rbx
+  437bb0:	5d                   	pop    rbp
+  437bb1:	41 5c                	pop    r12
+  437bb3:	41 5d                	pop    r13
+  437bb5:	41 5e                	pop    r14
+  437bb7:	41 5f                	pop    r15
+  437bb9:	e9 02 be 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 242: print #1, "getattribute";
+  437bbe:	e8 bd dc fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 241: print #1, "get";
+  437bc3:	e8 b8 dc fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 240: print #1, "generic";
+  437bc8:	be 07 00 00 00       	mov    esi,0x7
+  437bcd:	48 8d 3d 12 67 04 00 	lea    rdi,[rip+0x46712]        # 47e2e6 <_IO_stdin_used+0x12e6>
+  437bd4:	e8 b7 f9 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437bd9:	48 89 c6             	mov    rsi,rax
+  437bdc:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437be3:	00 
+  437be4:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437beb:	00 00 
+  437bed:	75 61                	jne    437c50 <MEMORY_T::POKE64(double, double)+0x2e380>
+  437bef:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437bf6:	31 d2                	xor    edx,edx
+  437bf8:	bf 01 00 00 00       	mov    edi,0x1
+  437bfd:	5b                   	pop    rbx
+  437bfe:	5d                   	pop    rbp
+  437bff:	41 5c                	pop    r12
+  437c01:	41 5d                	pop    r13
+  437c03:	41 5e                	pop    r14
+  437c05:	41 5f                	pop    r15
+  437c07:	e9 b4 bd 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 239: print #1, "generate";
+  437c0c:	be 08 00 00 00       	mov    esi,0x8
+  437c11:	48 8d 3d c5 66 04 00 	lea    rdi,[rip+0x466c5]        # 47e2dd <_IO_stdin_used+0x12dd>
+  437c18:	e8 73 f9 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437c1d:	48 89 c6             	mov    rsi,rax
+  437c20:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437c27:	00 
+  437c28:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437c2f:	00 00 
+  437c31:	75 22                	jne    437c55 <MEMORY_T::POKE64(double, double)+0x2e385>
+  437c33:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437c3a:	31 d2                	xor    edx,edx
+  437c3c:	bf 01 00 00 00       	mov    edi,0x1
+  437c41:	5b                   	pop    rbx
+  437c42:	5d                   	pop    rbp
+  437c43:	41 5c                	pop    r12
+  437c45:	41 5d                	pop    r13
+  437c47:	41 5e                	pop    r14
+  437c49:	41 5f                	pop    r15
+  437c4b:	e9 70 bd 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 240: print #1, "generic";
+  437c50:	e8 2b dc fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 239: print #1, "generate";
+  437c55:	e8 26 dc fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 238: print #1, "gather";
+  437c5a:	be 06 00 00 00       	mov    esi,0x6
+  437c5f:	48 8d 3d 70 66 04 00 	lea    rdi,[rip+0x46670]        # 47e2d6 <_IO_stdin_used+0x12d6>
+  437c66:	e8 25 f9 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437c6b:	48 89 c6             	mov    rsi,rax
+  437c6e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437c75:	00 
+  437c76:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437c7d:	00 00 
+  437c7f:	75 61                	jne    437ce2 <MEMORY_T::POKE64(double, double)+0x2e412>
+  437c81:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437c88:	31 d2                	xor    edx,edx
+  437c8a:	bf 01 00 00 00       	mov    edi,0x1
+  437c8f:	5b                   	pop    rbx
+  437c90:	5d                   	pop    rbp
+  437c91:	41 5c                	pop    r12
+  437c93:	41 5d                	pop    r13
+  437c95:	41 5e                	pop    r14
+  437c97:	41 5f                	pop    r15
+  437c99:	e9 22 bd 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 237: print #1, "g";
+  437c9e:	be 01 00 00 00       	mov    esi,0x1
+  437ca3:	48 8d 3d 85 cc 04 00 	lea    rdi,[rip+0x4cc85]        # 48492f <keysym_to_scancode+0x6cf>
+  437caa:	e8 e1 f8 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437caf:	48 89 c6             	mov    rsi,rax
+  437cb2:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437cb9:	00 
+  437cba:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437cc1:	00 00 
+  437cc3:	75 22                	jne    437ce7 <MEMORY_T::POKE64(double, double)+0x2e417>
+  437cc5:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437ccc:	31 d2                	xor    edx,edx
+  437cce:	bf 01 00 00 00       	mov    edi,0x1
+  437cd3:	5b                   	pop    rbx
+  437cd4:	5d                   	pop    rbp
+  437cd5:	41 5c                	pop    r12
+  437cd7:	41 5d                	pop    r13
+  437cd9:	41 5e                	pop    r14
+  437cdb:	41 5f                	pop    r15
+  437cdd:	e9 de bc 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 238: print #1, "gather";
+  437ce2:	e8 99 db fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 237: print #1, "g";
+  437ce7:	e8 94 db fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 236: print #1, "fvec4";
+  437cec:	be 05 00 00 00       	mov    esi,0x5
+  437cf1:	48 8d 3d d8 65 04 00 	lea    rdi,[rip+0x465d8]        # 47e2d0 <_IO_stdin_used+0x12d0>
+  437cf8:	e8 93 f8 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437cfd:	48 89 c6             	mov    rsi,rax
+  437d00:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437d07:	00 
+  437d08:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437d0f:	00 00 
+  437d11:	75 61                	jne    437d74 <MEMORY_T::POKE64(double, double)+0x2e4a4>
+  437d13:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437d1a:	31 d2                	xor    edx,edx
+  437d1c:	bf 01 00 00 00       	mov    edi,0x1
+  437d21:	5b                   	pop    rbx
+  437d22:	5d                   	pop    rbp
+  437d23:	41 5c                	pop    r12
+  437d25:	41 5d                	pop    r13
+  437d27:	41 5e                	pop    r14
+  437d29:	41 5f                	pop    r15
+  437d2b:	e9 90 bc 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 235: print #1, "fvec3";
+  437d30:	be 05 00 00 00       	mov    esi,0x5
+  437d35:	48 8d 3d 8e 65 04 00 	lea    rdi,[rip+0x4658e]        # 47e2ca <_IO_stdin_used+0x12ca>
+  437d3c:	e8 4f f8 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437d41:	48 89 c6             	mov    rsi,rax
+  437d44:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437d4b:	00 
+  437d4c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437d53:	00 00 
+  437d55:	75 22                	jne    437d79 <MEMORY_T::POKE64(double, double)+0x2e4a9>
+  437d57:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437d5e:	31 d2                	xor    edx,edx
+  437d60:	bf 01 00 00 00       	mov    edi,0x1
+  437d65:	5b                   	pop    rbx
+  437d66:	5d                   	pop    rbp
+  437d67:	41 5c                	pop    r12
+  437d69:	41 5d                	pop    r13
+  437d6b:	41 5e                	pop    r14
+  437d6d:	41 5f                	pop    r15
+  437d6f:	e9 4c bc 03 00       	jmp    4739c0 <fb_PrintString>
+;						case 236: print #1, "fvec4";
+  437d74:	e8 07 db fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 235: print #1, "fvec3";
+  437d79:	e8 02 db fc ff       	call   405880 <__stack_chk_fail@plt>
+;						case 234: print #1, "fvec2";
+  437d7e:	be 05 00 00 00       	mov    esi,0x5
+  437d83:	48 8d 3d 3a 65 04 00 	lea    rdi,[rip+0x4653a]        # 47e2c4 <_IO_stdin_used+0x12c4>
+  437d8a:	e8 01 f8 03 00       	call   477590 <fb_StrAllocTempDescZEx>
+  437d8f:	48 89 c6             	mov    rsi,rax
+  437d92:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  437d99:	00 
+  437d9a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  437da1:	00 00 
+  437da3:	75 61                	jne    437e06 <MEMORY_T::POKE64(double, double)+0x2e536>
+  437da5:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  437dac:	31 d2                	xor    edx,edx
+  437dae:	bf 01 00 00 00       	mov    edi,0x1
+  437db3:	5b                   	pop    rbx
+  437db4:	5d                   	pop    rbp

@@ -1,5230 +1,5230 @@
-  460cc7:	74 47                	je     460d10 <fb_hHookConWrite+0x210>
-  460cc9:	48 8b 44 24 30       	mov    rax,QWORD PTR [rsp+0x30]
-  460cce:	44 0f b6 00          	movzx  r8d,BYTE PTR [rax]
-  460cd2:	e9 f5 fe ff ff       	jmp    460bcc <fb_hHookConWrite+0xcc>
-  460cd7:	45 85 c9             	test   r9d,r9d
-  460cda:	7e 3c                	jle    460d18 <fb_hHookConWrite+0x218>
-  460cdc:	31 db                	xor    ebx,ebx
-  460cde:	8b 44 24 24          	mov    eax,DWORD PTR [rsp+0x24]
-  460ce2:	4c 89 ff             	mov    rdi,r15
-  460ce5:	41 8b 4f 60          	mov    ecx,DWORD PTR [r15+0x60]
-  460ce9:	8d 54 30 ff          	lea    edx,[rax+rsi*1-0x1]
-  460ced:	8b 44 24 28          	mov    eax,DWORD PTR [rsp+0x28]
-  460cf1:	8d 34 18             	lea    esi,[rax+rbx*1]
-  460cf4:	83 c3 01             	add    ebx,0x1
-  460cf7:	41 ff 57 68          	call   QWORD PTR [r15+0x68]
-  460cfb:	48 8b 3d 16 2f 04 00 	mov    rdi,QWORD PTR [rip+0x42f16]        # 4a3c18 <__fb_gfx>
-  460d02:	48 8b 97 80 00 00 00 	mov    rdx,QWORD PTR [rdi+0x80]
-  460d09:	3b 1a                	cmp    ebx,DWORD PTR [rdx]
-  460d0b:	8b 72 04             	mov    esi,DWORD PTR [rdx+0x4]
-  460d0e:	7c ce                	jl     460cde <fb_hHookConWrite+0x1de>
-  460d10:	48 8b 44 24 38       	mov    rax,QWORD PTR [rsp+0x38]
-  460d15:	4c 8b 38             	mov    r15,QWORD PTR [rax]
-  460d18:	48 8b 44 24 38       	mov    rax,QWORD PTR [rsp+0x38]
-  460d1d:	03 74 24 24          	add    esi,DWORD PTR [rsp+0x24]
-  460d21:	8b 48 08             	mov    ecx,DWORD PTR [rax+0x8]
-  460d24:	8b 50 0c             	mov    edx,DWORD PTR [rax+0xc]
-  460d27:	39 d1                	cmp    ecx,edx
-  460d29:	0f 84 d5 00 00 00    	je     460e04 <fb_hHookConWrite+0x304>
-  460d2f:	8b 44 24 24          	mov    eax,DWORD PTR [rsp+0x24]
-  460d33:	39 c8                	cmp    eax,ecx
-  460d35:	7d 08                	jge    460d3f <fb_hHookConWrite+0x23f>
-  460d37:	48 8b 5c 24 38       	mov    rbx,QWORD PTR [rsp+0x38]
-  460d3c:	89 43 08             	mov    DWORD PTR [rbx+0x8],eax
-  460d3f:	39 d6                	cmp    esi,edx
-  460d41:	7e 08                	jle    460d4b <fb_hHookConWrite+0x24b>
-  460d43:	48 8b 44 24 38       	mov    rax,QWORD PTR [rsp+0x38]
-  460d48:	89 70 0c             	mov    DWORD PTR [rax+0xc],esi
-  460d4b:	48 8b 44 24 68       	mov    rax,QWORD PTR [rsp+0x68]
-  460d50:	48 8b 5c 24 60       	mov    rbx,QWORD PTR [rsp+0x60]
-  460d55:	4d 63 47 04          	movsxd r8,DWORD PTR [r15+0x4]
-  460d59:	48 8b b7 a8 00 00 00 	mov    rsi,QWORD PTR [rdi+0xa8]
-  460d60:	8b 50 2c             	mov    edx,DWORD PTR [rax+0x2c]
-  460d63:	48 63 48 28          	movsxd rcx,DWORD PTR [rax+0x28]
-  460d67:	48 89 d8             	mov    rax,rbx
-  460d6a:	0f af 97 88 00 00 00 	imul   edx,DWORD PTR [rdi+0x88]
-  460d71:	48 83 e8 01          	sub    rax,0x1
-  460d75:	41 8b 7f 60          	mov    edi,DWORD PTR [r15+0x60]
-  460d79:	48 01 d9             	add    rcx,rbx
-  460d7c:	48 63 d2             	movsxd rdx,edx
-  460d7f:	48 01 ca             	add    rdx,rcx
-  460d82:	48 85 db             	test   rbx,rbx
-  460d85:	48 8d 0c 52          	lea    rcx,[rdx+rdx*2]
-  460d89:	4a 8b 14 c6          	mov    rdx,QWORD PTR [rsi+r8*8]
-  460d8d:	41 8b 77 64          	mov    esi,DWORD PTR [r15+0x64]
-  460d91:	48 8d 14 8a          	lea    rdx,[rdx+rcx*4]
-  460d95:	74 20                	je     460db7 <fb_hHookConWrite+0x2b7>
-  460d97:	4c 8b 44 24 48       	mov    r8,QWORD PTR [rsp+0x48]
-  460d9c:	41 0f b6 0c 00       	movzx  ecx,BYTE PTR [r8+rax*1]
-  460da1:	48 83 e8 01          	sub    rax,0x1
-  460da5:	48 83 ea 0c          	sub    rdx,0xc
-  460da9:	48 83 f8 ff          	cmp    rax,0xffffffffffffffff
-  460dad:	89 7a 04             	mov    DWORD PTR [rdx+0x4],edi
-  460db0:	89 72 08             	mov    DWORD PTR [rdx+0x8],esi
-  460db3:	89 0a                	mov    DWORD PTR [rdx],ecx
-  460db5:	75 e5                	jne    460d9c <fb_hHookConWrite+0x29c>
-  460db7:	48 83 c4 78          	add    rsp,0x78
-  460dbb:	b8 01 00 00 00       	mov    eax,0x1
-  460dc0:	5b                   	pop    rbx
-  460dc1:	5d                   	pop    rbp
-  460dc2:	41 5c                	pop    r12
-  460dc4:	41 5d                	pop    r13
-  460dc6:	41 5e                	pop    r14
-  460dc8:	41 5f                	pop    r15
-  460dca:	c3                   	ret    
-  460dcb:	48 8b 44 24 48       	mov    rax,QWORD PTR [rsp+0x48]
-  460dd0:	44 0f b6 00          	movzx  r8d,BYTE PTR [rax]
-  460dd4:	41 80 f8 ff          	cmp    r8b,0xff
-  460dd8:	0f 84 f9 fe ff ff    	je     460cd7 <fb_hHookConWrite+0x1d7>
-  460dde:	45 8d 51 0e          	lea    r10d,[r9+0xe]
-  460de2:	41 83 c1 07          	add    r9d,0x7
-  460de6:	45 0f 48 ca          	cmovs  r9d,r10d
-  460dea:	41 c1 f9 03          	sar    r9d,0x3
-  460dee:	44 89 4c 24 2c       	mov    DWORD PTR [rsp+0x2c],r9d
-  460df3:	44 0f af ce          	imul   r9d,esi
-  460df7:	49 63 c1             	movsxd rax,r9d
-  460dfa:	48 89 44 24 40       	mov    QWORD PTR [rsp+0x40],rax
-  460dff:	e9 99 fd ff ff       	jmp    460b9d <fb_hHookConWrite+0x9d>
-  460e04:	8b 54 24 24          	mov    edx,DWORD PTR [rsp+0x24]
-  460e08:	89 70 0c             	mov    DWORD PTR [rax+0xc],esi
-  460e0b:	89 50 08             	mov    DWORD PTR [rax+0x8],edx
-  460e0e:	e9 38 ff ff ff       	jmp    460d4b <fb_hHookConWrite+0x24b>
-  460e13:	0f 1f 00             	nop    DWORD PTR [rax]
-  460e16:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  460e1d:	00 00 00 
-
-0000000000460e20 <fb_hHookConScroll>:
-  460e20:	41 57                	push   r15
-  460e22:	44 89 c0             	mov    eax,r8d
-  460e25:	41 56                	push   r14
-  460e27:	41 55                	push   r13
-  460e29:	41 54                	push   r12
-  460e2b:	29 d0                	sub    eax,edx
-  460e2d:	55                   	push   rbp
-  460e2e:	53                   	push   rbx
-  460e2f:	83 c0 01             	add    eax,0x1
-  460e32:	89 f3                	mov    ebx,esi
-  460e34:	89 d5                	mov    ebp,edx
-  460e36:	49 89 fe             	mov    r14,rdi
-  460e39:	48 83 ec 48          	sub    rsp,0x48
-  460e3d:	4c 8b 27             	mov    r12,QWORD PTR [rdi]
-  460e40:	41 8d 78 01          	lea    edi,[r8+0x1]
-  460e44:	89 44 24 1c          	mov    DWORD PTR [rsp+0x1c],eax
-  460e48:	48 8b 05 c9 2d 04 00 	mov    rax,QWORD PTR [rip+0x42dc9]        # 4a3c18 <__fb_gfx>
-  460e4f:	89 74 24 0c          	mov    DWORD PTR [rsp+0xc],esi
-  460e53:	89 4c 24 2c          	mov    DWORD PTR [rsp+0x2c],ecx
-  460e57:	83 c1 01             	add    ecx,0x1
-  460e5a:	44 89 4c 24 20       	mov    DWORD PTR [rsp+0x20],r9d
-  460e5f:	89 7c 24 14          	mov    DWORD PTR [rsp+0x14],edi
-  460e63:	48 8b b0 80 00 00 00 	mov    rsi,QWORD PTR [rax+0x80]
-  460e6a:	44 89 c8             	mov    eax,r9d
-  460e6d:	89 4c 24 18          	mov    DWORD PTR [rsp+0x18],ecx
-  460e71:	4d 8b 2c 24          	mov    r13,QWORD PTR [r12]
-  460e75:	8b 56 04             	mov    edx,DWORD PTR [rsi+0x4]
-  460e78:	0f af c2             	imul   eax,edx
-  460e7b:	85 c0                	test   eax,eax
-  460e7d:	0f 84 3a 01 00 00    	je     460fbd <fb_hHookConScroll+0x19d>
-  460e83:	29 d9                	sub    ecx,ebx
-  460e85:	8b 1e                	mov    ebx,DWORD PTR [rsi]
-  460e87:	0f af fa             	imul   edi,edx
-  460e8a:	0f af d5             	imul   edx,ebp
-  460e8d:	89 7c 24 10          	mov    DWORD PTR [rsp+0x10],edi
-  460e91:	0f af d9             	imul   ebx,ecx
-  460e94:	29 d7                	sub    edi,edx
-  460e96:	89 54 24 24          	mov    DWORD PTR [rsp+0x24],edx
-  460e9a:	39 f8                	cmp    eax,edi
-  460e9c:	89 fa                	mov    edx,edi
-  460e9e:	89 5c 24 38          	mov    DWORD PTR [rsp+0x38],ebx
-  460ea2:	0f 8d 08 02 00 00    	jge    4610b0 <fb_hHookConScroll+0x290>
-  460ea8:	85 c0                	test   eax,eax
-  460eaa:	0f 88 00 02 00 00    	js     4610b0 <fb_hHookConScroll+0x290>
-  460eb0:	8b 4c 24 24          	mov    ecx,DWORD PTR [rsp+0x24]
-  460eb4:	29 c2                	sub    edx,eax
-  460eb6:	85 d2                	test   edx,edx
-  460eb8:	8d 34 08             	lea    esi,[rax+rcx*1]
-  460ebb:	8d 04 11             	lea    eax,[rcx+rdx*1]
-  460ebe:	89 44 24 28          	mov    DWORD PTR [rsp+0x28],eax
-  460ec2:	74 6a                	je     460f2e <fb_hHookConScroll+0x10e>
-  460ec4:	48 63 c6             	movsxd rax,esi
-  460ec7:	48 63 7c 24 38       	movsxd rdi,DWORD PTR [rsp+0x38]
-  460ecc:	83 ea 01             	sub    edx,0x1
-  460ecf:	48 8d 54 10 01       	lea    rdx,[rax+rdx*1+0x1]
-  460ed4:	4c 8d 3c c5 00 00 00 	lea    r15,[rax*8+0x0]
-  460edb:	00 
-  460edc:	48 63 d9             	movsxd rbx,ecx
-  460edf:	48 29 c3             	sub    rbx,rax
-  460ee2:	4c 89 64 24 30       	mov    QWORD PTR [rsp+0x30],r12
-  460ee7:	89 6c 24 3c          	mov    DWORD PTR [rsp+0x3c],ebp
-  460eeb:	48 c1 e2 03          	shl    rdx,0x3
-  460eef:	4d 89 ec             	mov    r12,r13
-  460ef2:	48 c1 e3 03          	shl    rbx,0x3
-  460ef6:	4d 89 fd             	mov    r13,r15
-  460ef9:	48 89 fd             	mov    rbp,rdi
-  460efc:	49 89 d7             	mov    r15,rdx
-  460eff:	90                   	nop
-  460f00:	49 8b 44 24 08       	mov    rax,QWORD PTR [r12+0x8]
-  460f05:	48 89 ea             	mov    rdx,rbp
-  460f08:	4a 8b 34 28          	mov    rsi,QWORD PTR [rax+r13*1]
-  460f0c:	48 01 d8             	add    rax,rbx
-  460f0f:	4a 8b 3c 28          	mov    rdi,QWORD PTR [rax+r13*1]
-  460f13:	49 83 c5 08          	add    r13,0x8
-  460f17:	ff 15 f3 2c 04 00    	call   QWORD PTR [rip+0x42cf3]        # 4a3c10 <fb_hPixelCpy>
-  460f1d:	4d 39 ef             	cmp    r15,r13
-  460f20:	75 de                	jne    460f00 <fb_hHookConScroll+0xe0>
-  460f22:	4d 89 e5             	mov    r13,r12
-  460f25:	8b 6c 24 3c          	mov    ebp,DWORD PTR [rsp+0x3c]
-  460f29:	4c 8b 64 24 30       	mov    r12,QWORD PTR [rsp+0x30]
-  460f2e:	8b 4c 24 28          	mov    ecx,DWORD PTR [rsp+0x28]
-  460f32:	39 4c 24 10          	cmp    DWORD PTR [rsp+0x10],ecx
-  460f36:	74 56                	je     460f8e <fb_hHookConScroll+0x16e>
-  460f38:	48 63 54 24 28       	movsxd rdx,DWORD PTR [rsp+0x28]
-  460f3d:	8b 44 24 10          	mov    eax,DWORD PTR [rsp+0x10]
-  460f41:	48 63 7c 24 38       	movsxd rdi,DWORD PTR [rsp+0x38]
-  460f46:	89 6c 24 28          	mov    DWORD PTR [rsp+0x28],ebp
-  460f4a:	4c 89 ed             	mov    rbp,r13
-  460f4d:	83 e8 01             	sub    eax,0x1
-  460f50:	29 d0                	sub    eax,edx
-  460f52:	48 8d 1c d5 00 00 00 	lea    rbx,[rdx*8+0x0]
-  460f59:	00 
-  460f5a:	4c 8d 7c 02 01       	lea    r15,[rdx+rax*1+0x1]
-  460f5f:	49 89 fd             	mov    r13,rdi
-  460f62:	49 c1 e7 03          	shl    r15,0x3
-  460f66:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  460f6d:	00 00 00 
-  460f70:	48 8b 45 08          	mov    rax,QWORD PTR [rbp+0x8]
-  460f74:	8b 75 64             	mov    esi,DWORD PTR [rbp+0x64]
-  460f77:	4c 89 ea             	mov    rdx,r13
-  460f7a:	48 8b 3c 18          	mov    rdi,QWORD PTR [rax+rbx*1]
-  460f7e:	48 83 c3 08          	add    rbx,0x8
-  460f82:	ff 55 78             	call   QWORD PTR [rbp+0x78]
-  460f85:	49 39 df             	cmp    r15,rbx
-  460f88:	75 e6                	jne    460f70 <fb_hHookConScroll+0x150>
-  460f8a:	8b 6c 24 28          	mov    ebp,DWORD PTR [rsp+0x28]
-  460f8e:	41 8b 54 24 08       	mov    edx,DWORD PTR [r12+0x8]
-  460f93:	41 8b 44 24 0c       	mov    eax,DWORD PTR [r12+0xc]
-  460f98:	39 c2                	cmp    edx,eax
-  460f9a:	0f 84 30 01 00 00    	je     4610d0 <fb_hHookConScroll+0x2b0>
-  460fa0:	8b 74 24 24          	mov    esi,DWORD PTR [rsp+0x24]
-  460fa4:	39 d6                	cmp    esi,edx
-  460fa6:	0f 8c 14 01 00 00    	jl     4610c0 <fb_hHookConScroll+0x2a0>
-  460fac:	8b 7c 24 10          	mov    edi,DWORD PTR [rsp+0x10]
-  460fb0:	4d 8b 2c 24          	mov    r13,QWORD PTR [r12]
-  460fb4:	39 c7                	cmp    edi,eax
-  460fb6:	7e 05                	jle    460fbd <fb_hHookConScroll+0x19d>
-  460fb8:	41 89 7c 24 0c       	mov    DWORD PTR [r12+0xc],edi
-  460fbd:	8b 74 24 1c          	mov    esi,DWORD PTR [rsp+0x1c]
-  460fc1:	8b 4c 24 20          	mov    ecx,DWORD PTR [rsp+0x20]
-  460fc5:	4d 63 45 04          	movsxd r8,DWORD PTR [r13+0x4]
-  460fc9:	39 ce                	cmp    esi,ecx
-  460fcb:	0f 8e 9c 00 00 00    	jle    46106d <fb_hHookConScroll+0x24d>
-  460fd1:	48 8b 15 40 2c 04 00 	mov    rdx,QWORD PTR [rip+0x42c40]        # 4a3c18 <__fb_gfx>
-  460fd8:	48 8b 82 a8 00 00 00 	mov    rax,QWORD PTR [rdx+0xa8]
-  460fdf:	48 63 92 88 00 00 00 	movsxd rdx,DWORD PTR [rdx+0x88]
-  460fe6:	4a 8b 04 c0          	mov    rax,QWORD PTR [rax+r8*8]
-  460fea:	4c 63 c5             	movsxd r8,ebp
-  460fed:	48 8d 1c 52          	lea    rbx,[rdx+rdx*2]
-  460ff1:	89 ca                	mov    edx,ecx
-  460ff3:	8d 4c 0d 00          	lea    ecx,[rbp+rcx*1+0x0]
-  460ff7:	29 d6                	sub    esi,edx
-  460ff9:	48 c1 e3 02          	shl    rbx,0x2
-  460ffd:	48 63 c9             	movsxd rcx,ecx
-  461000:	01 f5                	add    ebp,esi
-  461002:	48 0f af cb          	imul   rcx,rbx
-  461006:	41 89 f5             	mov    r13d,esi
-  461009:	89 6c 24 10          	mov    DWORD PTR [rsp+0x10],ebp
-  46100d:	4c 0f af c3          	imul   r8,rbx
-  461011:	41 83 ed 01          	sub    r13d,0x1
-  461015:	4c 8d 3c 08          	lea    r15,[rax+rcx*1]
-  461019:	49 01 c0             	add    r8,rax
-  46101c:	8b 44 24 2c          	mov    eax,DWORD PTR [rsp+0x2c]
-  461020:	2b 44 24 0c          	sub    eax,DWORD PTR [rsp+0xc]
-  461024:	4c 89 fd             	mov    rbp,r15
-  461027:	83 c0 01             	add    eax,0x1
-  46102a:	48 98                	cdqe   
-  46102c:	48 8d 04 40          	lea    rax,[rax+rax*2]
-  461030:	48 c1 e0 02          	shl    rax,0x2
-  461034:	49 89 c7             	mov    r15,rax
-  461037:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  46103e:	00 00 
-  461040:	48 89 ee             	mov    rsi,rbp
-  461043:	4c 89 c7             	mov    rdi,r8
-  461046:	4c 89 fa             	mov    rdx,r15
-  461049:	e8 f2 4b fa ff       	call   405c40 <memcpy@plt>
-  46104e:	41 83 ed 01          	sub    r13d,0x1
-  461052:	49 89 c0             	mov    r8,rax
-  461055:	48 01 dd             	add    rbp,rbx
-  461058:	49 01 d8             	add    r8,rbx
-  46105b:	41 83 fd ff          	cmp    r13d,0xffffffff
-  46105f:	75 df                	jne    461040 <fb_hHookConScroll+0x220>
-  461061:	4d 8b 2c 24          	mov    r13,QWORD PTR [r12]
-  461065:	8b 6c 24 10          	mov    ebp,DWORD PTR [rsp+0x10]
-  461069:	45 8b 45 04          	mov    r8d,DWORD PTR [r13+0x4]
-  46106d:	41 8b 45 64          	mov    eax,DWORD PTR [r13+0x64]
-  461071:	89 ee                	mov    esi,ebp
-  461073:	41 b9 20 00 00 00    	mov    r9d,0x20
-  461079:	50                   	push   rax
-  46107a:	41 8b 45 60          	mov    eax,DWORD PTR [r13+0x60]
-  46107e:	50                   	push   rax
-  46107f:	8b 4c 24 24          	mov    ecx,DWORD PTR [rsp+0x24]
-  461083:	8b 54 24 28          	mov    edx,DWORD PTR [rsp+0x28]
-  461087:	8b 7c 24 1c          	mov    edi,DWORD PTR [rsp+0x1c]
-  46108b:	e8 30 81 ff ff       	call   4591c0 <fb_hClearCharCells>
-  461090:	41 8b 46 24          	mov    eax,DWORD PTR [r14+0x24]
-  461094:	41 89 46 2c          	mov    DWORD PTR [r14+0x2c],eax
-  461098:	48 83 c4 58          	add    rsp,0x58
-  46109c:	5b                   	pop    rbx
-  46109d:	5d                   	pop    rbp
-  46109e:	41 5c                	pop    r12
-  4610a0:	41 5d                	pop    r13
-  4610a2:	41 5e                	pop    r14
-  4610a4:	41 5f                	pop    r15
-  4610a6:	c3                   	ret    
-  4610a7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  4610ae:	00 00 
-  4610b0:	8b 44 24 24          	mov    eax,DWORD PTR [rsp+0x24]
-  4610b4:	89 44 24 28          	mov    DWORD PTR [rsp+0x28],eax
-  4610b8:	e9 71 fe ff ff       	jmp    460f2e <fb_hHookConScroll+0x10e>
-  4610bd:	0f 1f 00             	nop    DWORD PTR [rax]
-  4610c0:	41 89 74 24 08       	mov    DWORD PTR [r12+0x8],esi
-  4610c5:	e9 e2 fe ff ff       	jmp    460fac <fb_hHookConScroll+0x18c>
-  4610ca:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  4610d0:	8b 44 24 24          	mov    eax,DWORD PTR [rsp+0x24]
-  4610d4:	4d 8b 2c 24          	mov    r13,QWORD PTR [r12]
-  4610d8:	41 89 44 24 08       	mov    DWORD PTR [r12+0x8],eax
-  4610dd:	8b 44 24 10          	mov    eax,DWORD PTR [rsp+0x10]
-  4610e1:	41 89 44 24 0c       	mov    DWORD PTR [r12+0xc],eax
-  4610e6:	e9 d2 fe ff ff       	jmp    460fbd <fb_hHookConScroll+0x19d>
-  4610eb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-
-00000000004610f0 <fb_GfxPrintBufferEx.part.0>:
-  4610f0:	41 55                	push   r13
-  4610f2:	41 54                	push   r12
-  4610f4:	49 89 f5             	mov    r13,rsi
-  4610f7:	55                   	push   rbp
-  4610f8:	53                   	push   rbx
-  4610f9:	49 89 fc             	mov    r12,rdi
-  4610fc:	48 83 ec 68          	sub    rsp,0x68
-  461100:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
-  461107:	00 00 
-  461109:	48 89 44 24 58       	mov    QWORD PTR [rsp+0x58],rax
-  46110e:	31 c0                	xor    eax,eax
-  461110:	e8 cb 43 ff ff       	call   4554e0 <fb_hGetContext>
-  461115:	31 f6                	xor    esi,esi
-  461117:	48 89 c3             	mov    rbx,rax
-  46111a:	48 89 c7             	mov    rdi,rax
-  46111d:	e8 ee 41 ff ff       	call   455310 <fb_hPrepareTarget>
-  461122:	be 00 00 00 ff       	mov    esi,0xff000000
-  461127:	48 89 df             	mov    rdi,rbx
-  46112a:	e8 71 3e ff ff       	call   454fa0 <fb_hSetPixelTransfer>
-  46112f:	e8 8c 10 ff ff       	call   4521c0 <fb_GfxLock>
-  461134:	48 8d 74 24 04       	lea    rsi,[rsp+0x4]
-  461139:	48 89 e7             	mov    rdi,rsp
-  46113c:	e8 6f 53 00 00       	call   4664b0 <fb_GetSize>
-  461141:	48 8d 74 24 0c       	lea    rsi,[rsp+0xc]
-  461146:	48 8d 7c 24 08       	lea    rdi,[rsp+0x8]
-  46114b:	e8 90 75 00 00       	call   4686e0 <fb_ConsoleGetView>
-  461150:	48 8d 44 24 10       	lea    rax,[rsp+0x10]
-  461155:	c7 44 24 38 00 00 00 	mov    DWORD PTR [rsp+0x38],0x0
-  46115c:	00 
-  46115d:	48 89 5c 24 10       	mov    QWORD PTR [rsp+0x10],rbx
-  461162:	48 c7 44 24 18 00 00 	mov    QWORD PTR [rsp+0x18],0x0
-  461169:	00 00 
-  46116b:	48 89 44 24 20       	mov    QWORD PTR [rsp+0x20],rax
-  461170:	48 8d 05 a9 fc ff ff 	lea    rax,[rip+0xfffffffffffffca9]        # 460e20 <fb_hHookConScroll>
-  461177:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
-  46117c:	48 8d 05 7d f9 ff ff 	lea    rax,[rip+0xfffffffffffff97d]        # 460b00 <fb_hHookConWrite>
-  461183:	48 89 44 24 30       	mov    QWORD PTR [rsp+0x30],rax
-  461188:	8b 44 24 08          	mov    eax,DWORD PTR [rsp+0x8]
-  46118c:	8d 50 ff             	lea    edx,[rax-0x1]
-  46118f:	8b 04 24             	mov    eax,DWORD PTR [rsp]
-  461192:	89 54 24 3c          	mov    DWORD PTR [rsp+0x3c],edx
-  461196:	8d 48 ff             	lea    ecx,[rax-0x1]
-  461199:	8b 44 24 0c          	mov    eax,DWORD PTR [rsp+0xc]
-  46119d:	89 4c 24 40          	mov    DWORD PTR [rsp+0x40],ecx
-  4611a1:	44 8d 40 ff          	lea    r8d,[rax-0x1]
-  4611a5:	48 8b 05 6c 2a 04 00 	mov    rax,QWORD PTR [rip+0x42a6c]        # 4a3c18 <__fb_gfx>
-  4611ac:	44 89 44 24 44       	mov    DWORD PTR [rsp+0x44],r8d
-  4611b1:	8b 70 74             	mov    esi,DWORD PTR [rax+0x74]
-  4611b4:	44 8b 48 78          	mov    r9d,DWORD PTR [rax+0x78]
-  4611b8:	89 74 24 48          	mov    DWORD PTR [rsp+0x48],esi
-  4611bc:	8b b0 c8 00 00 00    	mov    esi,DWORD PTR [rax+0xc8]
-  4611c2:	44 89 4c 24 4c       	mov    DWORD PTR [rsp+0x4c],r9d
-  4611c7:	83 e6 04             	and    esi,0x4
-  4611ca:	0f 85 d0 00 00 00    	jne    4612a0 <fb_GfxPrintBufferEx.part.0+0x1b0>
-  4611d0:	48 8d 6c 24 20       	lea    rbp,[rsp+0x20]
-  4611d5:	4c 89 e6             	mov    rsi,r12
-  4611d8:	b9 01 00 00 00       	mov    ecx,0x1
-  4611dd:	4c 89 ea             	mov    rdx,r13
-  4611e0:	48 89 ef             	mov    rdi,rbp
-  4611e3:	e8 18 29 00 00       	call   463b00 <fb_ConPrintTTY>
-  4611e8:	8b 44 24 48          	mov    eax,DWORD PTR [rsp+0x48]
-  4611ec:	8b 74 24 38          	mov    esi,DWORD PTR [rsp+0x38]
-  4611f0:	44 8b 4c 24 4c       	mov    r9d,DWORD PTR [rsp+0x4c]
-  4611f5:	44 8b 44 24 44       	mov    r8d,DWORD PTR [rsp+0x44]
-  4611fa:	39 f0                	cmp    eax,esi
-  4611fc:	75 0d                	jne    46120b <fb_GfxPrintBufferEx.part.0+0x11b>
-  4611fe:	41 8d 50 01          	lea    edx,[r8+0x1]
-  461202:	41 39 d1             	cmp    r9d,edx
-  461205:	0f 84 e5 00 00 00    	je     4612f0 <fb_GfxPrintBufferEx.part.0+0x200>
-  46120b:	41 83 f8 ff          	cmp    r8d,0xffffffff
-  46120f:	74 20                	je     461231 <fb_GfxPrintBufferEx.part.0+0x141>
-  461211:	45 39 c1             	cmp    r9d,r8d
-  461214:	7e 1b                	jle    461231 <fb_GfxPrintBufferEx.part.0+0x141>
-  461216:	45 29 c1             	sub    r9d,r8d
-  461219:	8b 4c 24 40          	mov    ecx,DWORD PTR [rsp+0x40]
-  46121d:	8b 54 24 3c          	mov    edx,DWORD PTR [rsp+0x3c]
-  461221:	48 89 ef             	mov    rdi,rbp
-  461224:	ff 54 24 28          	call   QWORD PTR [rsp+0x28]
-  461228:	8b 44 24 48          	mov    eax,DWORD PTR [rsp+0x48]
-  46122c:	44 8b 4c 24 4c       	mov    r9d,DWORD PTR [rsp+0x4c]
-  461231:	48 8b 0d e0 29 04 00 	mov    rcx,QWORD PTR [rip+0x429e0]        # 4a3c18 <__fb_gfx>
-  461238:	85 c0                	test   eax,eax
-  46123a:	78 03                	js     46123f <fb_GfxPrintBufferEx.part.0+0x14f>
-  46123c:	89 41 74             	mov    DWORD PTR [rcx+0x74],eax
-  46123f:	45 85 c9             	test   r9d,r9d
-  461242:	78 04                	js     461248 <fb_GfxPrintBufferEx.part.0+0x158>
-  461244:	44 89 49 78          	mov    DWORD PTR [rcx+0x78],r9d
-  461248:	48 8b 43 08          	mov    rax,QWORD PTR [rbx+0x8]
-  46124c:	48 8b 00             	mov    rax,QWORD PTR [rax]
-  46124f:	48 39 41 18          	cmp    QWORD PTR [rcx+0x18],rax
-  461253:	75 1d                	jne    461272 <fb_GfxPrintBufferEx.part.0+0x182>
-  461255:	48 63 7c 24 18       	movsxd rdi,DWORD PTR [rsp+0x18]
-  46125a:	8b 54 24 1c          	mov    edx,DWORD PTR [rsp+0x1c]
-  46125e:	be 01 00 00 00       	mov    esi,0x1
-  461263:	29 fa                	sub    edx,edi
-  461265:	48 03 79 50          	add    rdi,QWORD PTR [rcx+0x50]
-  461269:	48 63 d2             	movsxd rdx,edx
-  46126c:	ff 15 ee 16 02 00    	call   QWORD PTR [rip+0x216ee]        # 482960 <memset@GLIBC_2.2.5>
-  461272:	31 f6                	xor    esi,esi
-  461274:	bf 01 00 00 00       	mov    edi,0x1
-  461279:	e8 a2 0f ff ff       	call   452220 <fb_GfxUnlock>
-  46127e:	48 8b 44 24 58       	mov    rax,QWORD PTR [rsp+0x58]
-  461283:	64 48 33 04 25 28 00 	xor    rax,QWORD PTR fs:0x28
-  46128a:	00 00 
-  46128c:	0f 85 89 00 00 00    	jne    46131b <fb_GfxPrintBufferEx.part.0+0x22b>
-  461292:	48 83 c4 68          	add    rsp,0x68
-  461296:	5b                   	pop    rbx
-  461297:	5d                   	pop    rbp
-  461298:	41 5c                	pop    r12
-  46129a:	41 5d                	pop    r13
-  46129c:	c3                   	ret    
-  46129d:	0f 1f 00             	nop    DWORD PTR [rax]
-  4612a0:	8b b0 c8 00 00 00    	mov    esi,DWORD PTR [rax+0xc8]
-  4612a6:	41 83 c1 01          	add    r9d,0x1
-  4612aa:	c7 44 24 48 00 00 00 	mov    DWORD PTR [rsp+0x48],0x0
-  4612b1:	00 
-  4612b2:	44 89 4c 24 4c       	mov    DWORD PTR [rsp+0x4c],r9d
-  4612b7:	83 e6 fb             	and    esi,0xfffffffb
-  4612ba:	41 83 f8 ff          	cmp    r8d,0xffffffff
-  4612be:	89 b0 c8 00 00 00    	mov    DWORD PTR [rax+0xc8],esi
-  4612c4:	0f 84 06 ff ff ff    	je     4611d0 <fb_GfxPrintBufferEx.part.0+0xe0>
-  4612ca:	45 39 c8             	cmp    r8d,r9d
-  4612cd:	48 8d 6c 24 20       	lea    rbp,[rsp+0x20]
-  4612d2:	0f 8d fd fe ff ff    	jge    4611d5 <fb_GfxPrintBufferEx.part.0+0xe5>
-  4612d8:	45 29 c1             	sub    r9d,r8d
-  4612db:	31 f6                	xor    esi,esi
-  4612dd:	48 89 ef             	mov    rdi,rbp
-  4612e0:	e8 3b fb ff ff       	call   460e20 <fb_hHookConScroll>
-  4612e5:	e9 eb fe ff ff       	jmp    4611d5 <fb_GfxPrintBufferEx.part.0+0xe5>
-  4612ea:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  4612f0:	48 8b 0d 21 29 04 00 	mov    rcx,QWORD PTR [rip+0x42921]        # 4a3c18 <__fb_gfx>
-  4612f7:	44 89 44 24 4c       	mov    DWORD PTR [rsp+0x4c],r8d
-  4612fc:	45 89 c1             	mov    r9d,r8d
-  4612ff:	8b 81 c8 00 00 00    	mov    eax,DWORD PTR [rcx+0xc8]
-  461305:	83 c8 04             	or     eax,0x4
-  461308:	89 81 c8 00 00 00    	mov    DWORD PTR [rcx+0xc8],eax
-  46130e:	8b 44 24 40          	mov    eax,DWORD PTR [rsp+0x40]
-  461312:	89 44 24 48          	mov    DWORD PTR [rsp+0x48],eax
-  461316:	e9 1d ff ff ff       	jmp    461238 <fb_GfxPrintBufferEx.part.0+0x148>
-  46131b:	e8 40 45 fa ff       	call   405860 <__stack_chk_fail@plt>
-
-0000000000461320 <fb_GfxPrintBufferEx>:
-  461320:	83 e2 08             	and    edx,0x8
-  461323:	75 0b                	jne    461330 <fb_GfxPrintBufferEx+0x10>
-  461325:	48 85 f6             	test   rsi,rsi
-  461328:	75 06                	jne    461330 <fb_GfxPrintBufferEx+0x10>
-  46132a:	f3 c3                	repz ret 
-  46132c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  461330:	e9 bb fd ff ff       	jmp    4610f0 <fb_GfxPrintBufferEx.part.0>
-  461335:	90                   	nop
-  461336:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  46133d:	00 00 00 
-
-0000000000461340 <fb_GfxPrintBuffer>:
-  461340:	55                   	push   rbp
-  461341:	53                   	push   rbx
-  461342:	89 f5                	mov    ebp,esi
-  461344:	48 89 fb             	mov    rbx,rdi
-  461347:	48 83 ec 08          	sub    rsp,0x8
-  46134b:	e8 20 41 fa ff       	call   405470 <strlen@plt>
-  461350:	83 e5 08             	and    ebp,0x8
-  461353:	75 05                	jne    46135a <fb_GfxPrintBuffer+0x1a>
-  461355:	48 85 c0             	test   rax,rax
-  461358:	74 16                	je     461370 <fb_GfxPrintBuffer+0x30>
-  46135a:	48 83 c4 08          	add    rsp,0x8
-  46135e:	48 89 df             	mov    rdi,rbx
-  461361:	48 89 c6             	mov    rsi,rax
-  461364:	5b                   	pop    rbx
-  461365:	5d                   	pop    rbp
-  461366:	e9 85 fd ff ff       	jmp    4610f0 <fb_GfxPrintBufferEx.part.0>
-  46136b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  461370:	48 83 c4 08          	add    rsp,0x8
-  461374:	5b                   	pop    rbx
-  461375:	5d                   	pop    rbp
-  461376:	c3                   	ret    
-  461377:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  46137e:	00 00 
-
-0000000000461380 <fb_GfxLocateRaw>:
-  461380:	85 f6                	test   esi,esi
-  461382:	48 8b 05 8f 28 04 00 	mov    rax,QWORD PTR [rip+0x4288f]        # 4a3c18 <__fb_gfx>
-  461389:	78 1d                	js     4613a8 <fb_GfxLocateRaw+0x28>
-  46138b:	85 ff                	test   edi,edi
-  46138d:	89 70 74             	mov    DWORD PTR [rax+0x74],esi
-  461390:	78 1d                	js     4613af <fb_GfxLocateRaw+0x2f>
-  461392:	89 78 78             	mov    DWORD PTR [rax+0x78],edi
-  461395:	c1 e7 08             	shl    edi,0x8
-  461398:	40 0f b6 f6          	movzx  esi,sil
-  46139c:	0f b7 c7             	movzx  eax,di
-  46139f:	09 f0                	or     eax,esi
-  4613a1:	c3                   	ret    
-  4613a2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  4613a8:	85 ff                	test   edi,edi
-  4613aa:	8b 70 74             	mov    esi,DWORD PTR [rax+0x74]
-  4613ad:	79 e3                	jns    461392 <fb_GfxLocateRaw+0x12>
-  4613af:	8b 78 78             	mov    edi,DWORD PTR [rax+0x78]
-  4613b2:	40 0f b6 f6          	movzx  esi,sil
-  4613b6:	c1 e7 08             	shl    edi,0x8
-  4613b9:	0f b7 c7             	movzx  eax,di
-  4613bc:	09 f0                	or     eax,esi
-  4613be:	c3                   	ret    
-  4613bf:	90                   	nop
-
-00000000004613c0 <fb_GfxLocate>:
-  4613c0:	55                   	push   rbp
-  4613c1:	53                   	push   rbx
-  4613c2:	8d 5f ff             	lea    ebx,[rdi-0x1]
-  4613c5:	48 83 ec 08          	sub    rsp,0x8
-  4613c9:	48 8b 05 48 28 04 00 	mov    rax,QWORD PTR [rip+0x42848]        # 4a3c18 <__fb_gfx>
-  4613d0:	8b 90 c8 00 00 00    	mov    edx,DWORD PTR [rax+0xc8]
-  4613d6:	83 e2 fb             	and    edx,0xfffffffb
-  4613d9:	83 ee 01             	sub    esi,0x1
-  4613dc:	89 90 c8 00 00 00    	mov    DWORD PTR [rax+0xc8],edx
-  4613e2:	78 3c                	js     461420 <fb_GfxLocate+0x60>
-  4613e4:	85 db                	test   ebx,ebx
-  4613e6:	89 f5                	mov    ebp,esi
-  4613e8:	89 70 74             	mov    DWORD PTR [rax+0x74],esi
-  4613eb:	78 3a                	js     461427 <fb_GfxLocate+0x67>
-  4613ed:	89 58 78             	mov    DWORD PTR [rax+0x78],ebx
-  4613f0:	48 8d 3d 19 52 05 00 	lea    rdi,[rip+0x55219]        # 4b6610 <__fb_ctx+0x110>
-  4613f7:	89 ee                	mov    esi,ebp
-  4613f9:	c1 e3 08             	shl    ebx,0x8
-  4613fc:	40 0f b6 ed          	movzx  ebp,bpl
-  461400:	e8 0b 71 00 00       	call   468510 <fb_SetPos>
-  461405:	0f b7 c3             	movzx  eax,bx
-  461408:	48 83 c4 08          	add    rsp,0x8
-  46140c:	09 e8                	or     eax,ebp
-  46140e:	05 01 01 00 00       	add    eax,0x101
-  461413:	5b                   	pop    rbx
-  461414:	5d                   	pop    rbp
-  461415:	c3                   	ret    
-  461416:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  46141d:	00 00 00 
-  461420:	85 db                	test   ebx,ebx
-  461422:	8b 68 74             	mov    ebp,DWORD PTR [rax+0x74]
-  461425:	79 c6                	jns    4613ed <fb_GfxLocate+0x2d>
-  461427:	8b 58 78             	mov    ebx,DWORD PTR [rax+0x78]
-  46142a:	eb c4                	jmp    4613f0 <fb_GfxLocate+0x30>
-  46142c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-0000000000461430 <fb_GfxGetX>:
-  461430:	48 8b 05 e1 27 04 00 	mov    rax,QWORD PTR [rip+0x427e1]        # 4a3c18 <__fb_gfx>
-  461437:	8b 40 74             	mov    eax,DWORD PTR [rax+0x74]
-  46143a:	83 c0 01             	add    eax,0x1
-  46143d:	c3                   	ret    
-  46143e:	66 90                	xchg   ax,ax
-
-0000000000461440 <fb_GfxGetY>:
-  461440:	48 8b 05 d1 27 04 00 	mov    rax,QWORD PTR [rip+0x427d1]        # 4a3c18 <__fb_gfx>
-  461447:	8b 40 78             	mov    eax,DWORD PTR [rax+0x78]
-  46144a:	83 c0 01             	add    eax,0x1
-  46144d:	c3                   	ret    
-  46144e:	66 90                	xchg   ax,ax
-
-0000000000461450 <fb_GfxGetXY>:
-  461450:	48 85 ff             	test   rdi,rdi
-  461453:	74 0f                	je     461464 <fb_GfxGetXY+0x14>
-  461455:	48 8b 05 bc 27 04 00 	mov    rax,QWORD PTR [rip+0x427bc]        # 4a3c18 <__fb_gfx>
-  46145c:	8b 40 74             	mov    eax,DWORD PTR [rax+0x74]
-  46145f:	83 c0 01             	add    eax,0x1
-  461462:	89 07                	mov    DWORD PTR [rdi],eax
-  461464:	48 85 f6             	test   rsi,rsi
-  461467:	74 0f                	je     461478 <fb_GfxGetXY+0x28>
-  461469:	48 8b 05 a8 27 04 00 	mov    rax,QWORD PTR [rip+0x427a8]        # 4a3c18 <__fb_gfx>
-  461470:	8b 40 78             	mov    eax,DWORD PTR [rax+0x78]
-  461473:	83 c0 01             	add    eax,0x1
-  461476:	89 06                	mov    DWORD PTR [rsi],eax
-  461478:	f3 c3                	repz ret 
-  46147a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-
-0000000000461480 <fb_GfxGetSize>:
-  461480:	48 85 ff             	test   rdi,rdi
-  461483:	74 0f                	je     461494 <fb_GfxGetSize+0x14>
-  461485:	48 8b 05 8c 27 04 00 	mov    rax,QWORD PTR [rip+0x4278c]        # 4a3c18 <__fb_gfx>
-  46148c:	8b 80 88 00 00 00    	mov    eax,DWORD PTR [rax+0x88]
-  461492:	89 07                	mov    DWORD PTR [rdi],eax
-  461494:	48 85 f6             	test   rsi,rsi
-  461497:	74 0f                	je     4614a8 <fb_GfxGetSize+0x28>
-  461499:	48 8b 05 78 27 04 00 	mov    rax,QWORD PTR [rip+0x42778]        # 4a3c18 <__fb_gfx>
-  4614a0:	8b 80 8c 00 00 00    	mov    eax,DWORD PTR [rax+0x8c]
-  4614a6:	89 06                	mov    DWORD PTR [rsi],eax
-  4614a8:	f3 c3                	repz ret 
-  4614aa:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-
-00000000004614b0 <fb_GfxPrintBufferWstrEx>:
-  4614b0:	55                   	push   rbp
-  4614b1:	48 89 e5             	mov    rbp,rsp
-  4614b4:	41 55                	push   r13
-  4614b6:	41 54                	push   r12
-  4614b8:	53                   	push   rbx
-  4614b9:	41 89 d5             	mov    r13d,edx
-  4614bc:	48 89 f3             	mov    rbx,rsi
-  4614bf:	48 83 ec 18          	sub    rsp,0x18
-  4614c3:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
-  4614ca:	00 00 
-  4614cc:	48 89 45 d8          	mov    QWORD PTR [rbp-0x28],rax
-  4614d0:	31 c0                	xor    eax,eax
-  4614d2:	48 8d 46 10          	lea    rax,[rsi+0x10]
-  4614d6:	48 83 e0 f0          	and    rax,0xfffffffffffffff0
-  4614da:	48 29 c4             	sub    rsp,rax
-  4614dd:	48 85 f6             	test   rsi,rsi
-  4614e0:	49 89 e4             	mov    r12,rsp
-  4614e3:	75 33                	jne    461518 <fb_GfxPrintBufferWstrEx+0x68>
-  4614e5:	c6 04 24 00          	mov    BYTE PTR [rsp],0x0
-  4614e9:	44 89 ea             	mov    edx,r13d
-  4614ec:	48 89 de             	mov    rsi,rbx
-  4614ef:	4c 89 e7             	mov    rdi,r12
-  4614f2:	e8 29 fe ff ff       	call   461320 <fb_GfxPrintBufferEx>
-  4614f7:	48 8b 45 d8          	mov    rax,QWORD PTR [rbp-0x28]
-  4614fb:	64 48 33 04 25 28 00 	xor    rax,QWORD PTR fs:0x28
-  461502:	00 00 
-  461504:	75 1f                	jne    461525 <fb_GfxPrintBufferWstrEx+0x75>
-  461506:	48 8d 65 e8          	lea    rsp,[rbp-0x18]
-  46150a:	5b                   	pop    rbx
-  46150b:	41 5c                	pop    r12
-  46150d:	41 5d                	pop    r13
-  46150f:	5d                   	pop    rbp
-  461510:	c3                   	ret    
-  461511:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  461518:	48 89 fa             	mov    rdx,rdi
-  46151b:	48 89 e7             	mov    rdi,rsp
-  46151e:	e8 3d 96 00 00       	call   46ab60 <fb_wstr_ConvToA>
-  461523:	eb c4                	jmp    4614e9 <fb_GfxPrintBufferWstrEx+0x39>
-  461525:	e8 36 43 fa ff       	call   405860 <__stack_chk_fail@plt>
-  46152a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-
-0000000000461530 <fb_GfxPrintBufferWstr>:
-  461530:	55                   	push   rbp
-  461531:	53                   	push   rbx
-  461532:	89 f5                	mov    ebp,esi
-  461534:	48 89 fb             	mov    rbx,rdi
-  461537:	48 83 ec 08          	sub    rsp,0x8
-  46153b:	e8 c0 3b fa ff       	call   405100 <wcslen@plt>
-  461540:	48 83 c4 08          	add    rsp,0x8
-  461544:	89 ea                	mov    edx,ebp
-  461546:	48 89 df             	mov    rdi,rbx
-  461549:	5b                   	pop    rbx
-  46154a:	5d                   	pop    rbp
-  46154b:	48 89 c6             	mov    rsi,rax
-  46154e:	e9 5d ff ff ff       	jmp    4614b0 <fb_GfxPrintBufferWstrEx>
-  461553:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  46155a:	00 00 00 
-  46155d:	0f 1f 00             	nop    DWORD PTR [rax]
-
-0000000000461560 <fb_GfxReadStr>:
-  461560:	41 57                	push   r15
-  461562:	41 56                	push   r14
-  461564:	45 31 c0             	xor    r8d,r8d
-  461567:	41 55                	push   r13
-  461569:	41 54                	push   r12
-  46156b:	ba db 20 00 00       	mov    edx,0x20db
-  461570:	55                   	push   rbp
-  461571:	53                   	push   rbx
-  461572:	b9 20 00 00 00       	mov    ecx,0x20
-  461577:	48 83 ec 48          	sub    rsp,0x48
-  46157b:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
-  461582:	00 00 
-  461584:	48 89 44 24 38       	mov    QWORD PTR [rsp+0x38],rax
-  461589:	31 c0                	xor    eax,eax
-  46158b:	48 83 3d 85 26 04 00 	cmp    QWORD PTR [rip+0x42685],0x0        # 4a3c18 <__fb_gfx>
-  461592:	00 
-  461593:	b8 db 00 00 00       	mov    eax,0xdb
-  461598:	66 89 54 24 35       	mov    WORD PTR [rsp+0x35],dx
-  46159d:	66 89 44 24 2f       	mov    WORD PTR [rsp+0x2f],ax
-  4615a2:	c6 44 24 37 00       	mov    BYTE PTR [rsp+0x37],0x0
-  4615a7:	66 89 4c 24 31       	mov    WORD PTR [rsp+0x31],cx
-  4615ac:	66 44 89 44 24 33    	mov    WORD PTR [rsp+0x33],r8w
-  4615b2:	0f 84 ca 01 00 00    	je     461782 <fb_GfxReadStr+0x222>
-  4615b8:	48 8d 44 24 33       	lea    rax,[rsp+0x33]
-  4615bd:	4c 8d 74 24 2f       	lea    r14,[rsp+0x2f]
-  4615c2:	4c 8d 7e ff          	lea    r15,[rsi-0x1]
-  4615c6:	48 8d 6c 24 35       	lea    rbp,[rsp+0x35]
-  4615cb:	49 89 fd             	mov    r13,rdi
-  4615ce:	45 31 e4             	xor    r12d,r12d
-  4615d1:	48 89 04 24          	mov    QWORD PTR [rsp],rax
-  4615d5:	48 8d 44 24 31       	lea    rax,[rsp+0x31]
-  4615da:	4c 89 f3             	mov    rbx,r14
-  4615dd:	48 89 44 24 18       	mov    QWORD PTR [rsp+0x18],rax
-  4615e2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  4615e8:	31 f6                	xor    esi,esi
-  4615ea:	48 89 df             	mov    rdi,rbx
-  4615ed:	e8 4e fd ff ff       	call   461340 <fb_GfxPrintBuffer>
-  4615f2:	48 8b 15 1f 26 04 00 	mov    rdx,QWORD PTR [rip+0x4261f]        # 4a3c18 <__fb_gfx>
-  4615f9:	48 39 eb             	cmp    rbx,rbp
-  4615fc:	8b 42 74             	mov    eax,DWORD PTR [rdx+0x74]
-  4615ff:	0f 84 ab 00 00 00    	je     4616b0 <fb_GfxReadStr+0x150>
-  461605:	83 e8 01             	sub    eax,0x1
-  461608:	85 c0                	test   eax,eax
-  46160a:	89 42 74             	mov    DWORD PTR [rdx+0x74],eax
-  46160d:	79 10                	jns    46161f <fb_GfxReadStr+0xbf>
-  46160f:	8b 82 88 00 00 00    	mov    eax,DWORD PTR [rdx+0x88]
-  461615:	83 6a 78 01          	sub    DWORD PTR [rdx+0x78],0x1
-  461619:	83 e8 01             	sub    eax,0x1
-  46161c:	89 42 74             	mov    DWORD PTR [rdx+0x74],eax
-  46161f:	e8 0c 4f 00 00       	call   466530 <fb_Getkey>
-  461624:	3d ff 00 00 00       	cmp    eax,0xff
-  461629:	7f bd                	jg     4615e8 <fb_GfxReadStr+0x88>
-  46162b:	83 f8 08             	cmp    eax,0x8
-  46162e:	0f 84 ac 00 00 00    	je     4616e0 <fb_GfxReadStr+0x180>
-  461634:	83 f8 07             	cmp    eax,0x7
-  461637:	74 af                	je     4615e8 <fb_GfxReadStr+0x88>
-  461639:	4d 39 fc             	cmp    r12,r15
-  46163c:	7d 34                	jge    461672 <fb_GfxReadStr+0x112>
-  46163e:	83 f8 0d             	cmp    eax,0xd
-  461641:	0f 84 01 01 00 00    	je     461748 <fb_GfxReadStr+0x1e8>
-  461647:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
-  46164b:	49 8d 4c 24 01       	lea    rcx,[r12+0x1]
-  461650:	43 88 44 25 00       	mov    BYTE PTR [r13+r12*1+0x0],al
-  461655:	31 f6                	xor    esi,esi
-  461657:	88 44 24 33          	mov    BYTE PTR [rsp+0x33],al
-  46165b:	89 44 24 14          	mov    DWORD PTR [rsp+0x14],eax
-  46165f:	48 89 4c 24 08       	mov    QWORD PTR [rsp+0x8],rcx
-  461664:	e8 d7 fc ff ff       	call   461340 <fb_GfxPrintBuffer>
-  461669:	4c 8b 64 24 08       	mov    r12,QWORD PTR [rsp+0x8]
-  46166e:	8b 44 24 14          	mov    eax,DWORD PTR [rsp+0x14]
-  461672:	83 f8 0d             	cmp    eax,0xd
-  461675:	0f 85 6d ff ff ff    	jne    4615e8 <fb_GfxReadStr+0x88>
-  46167b:	43 c6 44 25 00 00    	mov    BYTE PTR [r13+r12*1+0x0],0x0
-  461681:	4c 89 e8             	mov    rax,r13
-  461684:	48 8b 4c 24 38       	mov    rcx,QWORD PTR [rsp+0x38]
-  461689:	64 48 33 0c 25 28 00 	xor    rcx,QWORD PTR fs:0x28
-  461690:	00 00 
-  461692:	0f 85 f1 00 00 00    	jne    461789 <fb_GfxReadStr+0x229>
-  461698:	48 83 c4 48          	add    rsp,0x48
-  46169c:	5b                   	pop    rbx
-  46169d:	5d                   	pop    rbp
-  46169e:	41 5c                	pop    r12
-  4616a0:	41 5d                	pop    r13
-  4616a2:	41 5e                	pop    r14
-  4616a4:	41 5f                	pop    r15
-  4616a6:	c3                   	ret    
-  4616a7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  4616ae:	00 00 
-  4616b0:	83 e8 01             	sub    eax,0x1
-  4616b3:	4c 89 f3             	mov    rbx,r14
-  4616b6:	85 c0                	test   eax,eax
-  4616b8:	89 42 74             	mov    DWORD PTR [rdx+0x74],eax
-  4616bb:	0f 89 44 ff ff ff    	jns    461605 <fb_GfxReadStr+0xa5>
-  4616c1:	8b 82 88 00 00 00    	mov    eax,DWORD PTR [rdx+0x88]
-  4616c7:	83 6a 78 01          	sub    DWORD PTR [rdx+0x78],0x1
-  4616cb:	83 e8 01             	sub    eax,0x1
-  4616ce:	89 42 74             	mov    DWORD PTR [rdx+0x74],eax
-  4616d1:	e9 2f ff ff ff       	jmp    461605 <fb_GfxReadStr+0xa5>
-  4616d6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  4616dd:	00 00 00 
-  4616e0:	4d 85 e4             	test   r12,r12
-  4616e3:	0f 8e ff fe ff ff    	jle    4615e8 <fb_GfxReadStr+0x88>
-  4616e9:	48 8b 05 28 25 04 00 	mov    rax,QWORD PTR [rip+0x42528]        # 4a3c18 <__fb_gfx>
-  4616f0:	8b 48 74             	mov    ecx,DWORD PTR [rax+0x74]
-  4616f3:	8d 51 ff             	lea    edx,[rcx-0x1]
-  4616f6:	8b 48 78             	mov    ecx,DWORD PTR [rax+0x78]
-  4616f9:	85 d2                	test   edx,edx
-  4616fb:	89 50 74             	mov    DWORD PTR [rax+0x74],edx
-  4616fe:	78 28                	js     461728 <fb_GfxReadStr+0x1c8>
-  461700:	85 c9                	test   ecx,ecx
-  461702:	48 89 eb             	mov    rbx,rbp
-  461705:	78 09                	js     461710 <fb_GfxReadStr+0x1b0>
-  461707:	49 83 ec 01          	sub    r12,0x1
-  46170b:	e9 d8 fe ff ff       	jmp    4615e8 <fb_GfxReadStr+0x88>
-  461710:	48 c7 40 74 00 00 00 	mov    QWORD PTR [rax+0x74],0x0
-  461717:	00 
-  461718:	4c 89 f3             	mov    rbx,r14
-  46171b:	49 83 ec 01          	sub    r12,0x1
-  46171f:	e9 c4 fe ff ff       	jmp    4615e8 <fb_GfxReadStr+0x88>
-  461724:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  461728:	8b b8 88 00 00 00    	mov    edi,DWORD PTR [rax+0x88]
-  46172e:	83 e9 01             	sub    ecx,0x1
-  461731:	48 89 eb             	mov    rbx,rbp
-  461734:	85 c9                	test   ecx,ecx
-  461736:	89 48 78             	mov    DWORD PTR [rax+0x78],ecx
-  461739:	8d 57 ff             	lea    edx,[rdi-0x1]
-  46173c:	89 50 74             	mov    DWORD PTR [rax+0x74],edx
-  46173f:	79 c6                	jns    461707 <fb_GfxReadStr+0x1a7>
-  461741:	eb cd                	jmp    461710 <fb_GfxReadStr+0x1b0>
-  461743:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  461748:	48 8b 7c 24 18       	mov    rdi,QWORD PTR [rsp+0x18]
-  46174d:	31 f6                	xor    esi,esi
-  46174f:	89 44 24 08          	mov    DWORD PTR [rsp+0x8],eax
-  461753:	e8 e8 fb ff ff       	call   461340 <fb_GfxPrintBuffer>
-  461758:	48 8b 0d b9 24 04 00 	mov    rcx,QWORD PTR [rip+0x424b9]        # 4a3c18 <__fb_gfx>
-  46175f:	8b 44 24 08          	mov    eax,DWORD PTR [rsp+0x8]
-  461763:	83 69 74 01          	sub    DWORD PTR [rcx+0x74],0x1
-  461767:	0f 89 da fe ff ff    	jns    461647 <fb_GfxReadStr+0xe7>
-  46176d:	8b b9 88 00 00 00    	mov    edi,DWORD PTR [rcx+0x88]
-  461773:	83 69 78 01          	sub    DWORD PTR [rcx+0x78],0x1
-  461777:	8d 57 ff             	lea    edx,[rdi-0x1]
-  46177a:	89 51 74             	mov    DWORD PTR [rcx+0x74],edx
-  46177d:	e9 c5 fe ff ff       	jmp    461647 <fb_GfxReadStr+0xe7>
-  461782:	31 c0                	xor    eax,eax
-  461784:	e9 fb fe ff ff       	jmp    461684 <fb_GfxReadStr+0x124>
-  461789:	e8 d2 40 fa ff       	call   405860 <__stack_chk_fail@plt>
-  46178e:	66 90                	xchg   ax,ax
-
-0000000000461790 <fb_GfxReadXY>:
-  461790:	31 c0                	xor    eax,eax
-  461792:	85 ff                	test   edi,edi
-  461794:	48 8b 0d 7d 24 04 00 	mov    rcx,QWORD PTR [rip+0x4247d]        # 4a3c18 <__fb_gfx>
-  46179b:	7e 23                	jle    4617c0 <fb_GfxReadXY+0x30>
-  46179d:	48 85 c9             	test   rcx,rcx
-  4617a0:	74 1e                	je     4617c0 <fb_GfxReadXY+0x30>
-  4617a2:	39 b9 88 00 00 00    	cmp    DWORD PTR [rcx+0x88],edi
-  4617a8:	7c 1e                	jl     4617c8 <fb_GfxReadXY+0x38>
-  4617aa:	85 f6                	test   esi,esi
-  4617ac:	7e 1a                	jle    4617c8 <fb_GfxReadXY+0x38>
-  4617ae:	39 b1 8c 00 00 00    	cmp    DWORD PTR [rcx+0x8c],esi
-  4617b4:	7d 1a                	jge    4617d0 <fb_GfxReadXY+0x40>
-  4617b6:	f3 c3                	repz ret 
-  4617b8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  4617bf:	00 
-  4617c0:	f3 c3                	repz ret 
-  4617c2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  4617c8:	f3 c3                	repz ret 
-  4617ca:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  4617d0:	41 54                	push   r12
-  4617d2:	55                   	push   rbp
-  4617d3:	41 89 d4             	mov    r12d,edx
-  4617d6:	53                   	push   rbx
-  4617d7:	89 f5                	mov    ebp,esi
-  4617d9:	89 fb                	mov    ebx,edi
-  4617db:	e8 00 3d ff ff       	call   4554e0 <fb_hGetContext>
-  4617e0:	48 8b 15 31 24 04 00 	mov    rdx,QWORD PTR [rip+0x42431]        # 4a3c18 <__fb_gfx>
-  4617e7:	8d 75 ff             	lea    esi,[rbp-0x1]
-  4617ea:	4c 63 40 04          	movsxd r8,DWORD PTR [rax+0x4]
-  4617ee:	48 63 fb             	movsxd rdi,ebx
-  4617f1:	0f af b2 88 00 00 00 	imul   esi,DWORD PTR [rdx+0x88]
-  4617f8:	48 8b 82 a8 00 00 00 	mov    rax,QWORD PTR [rdx+0xa8]
-  4617ff:	4a 8b 04 c0          	mov    rax,QWORD PTR [rax+r8*8]
-  461803:	48 63 f6             	movsxd rsi,esi
-  461806:	48 01 f7             	add    rdi,rsi
-  461809:	45 85 e4             	test   r12d,r12d
-  46180c:	48 8d 0c 7f          	lea    rcx,[rdi+rdi*2]
-  461810:	48 8d 4c 88 f4       	lea    rcx,[rax+rcx*4-0xc]
-  461815:	74 29                	je     461840 <fb_GfxReadXY+0xb0>
-  461817:	8b 42 28             	mov    eax,DWORD PTR [rdx+0x28]
-  46181a:	83 f8 04             	cmp    eax,0x4
-  46181d:	7e 29                	jle    461848 <fb_GfxReadXY+0xb8>
-  46181f:	83 f8 08             	cmp    eax,0x8
-  461822:	7e 2f                	jle    461853 <fb_GfxReadXY+0xc3>
-  461824:	83 f8 10             	cmp    eax,0x10
-  461827:	74 35                	je     46185e <fb_GfxReadXY+0xce>
-  461829:	41 83 fc 02          	cmp    r12d,0x2
-  46182d:	0f 84 7d 00 00 00    	je     4618b0 <fb_GfxReadXY+0x120>
-  461833:	8b 41 04             	mov    eax,DWORD PTR [rcx+0x4]
-  461836:	5b                   	pop    rbx
-  461837:	5d                   	pop    rbp
-  461838:	41 5c                	pop    r12
-  46183a:	c3                   	ret    
-  46183b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  461840:	8b 01                	mov    eax,DWORD PTR [rcx]
-  461842:	eb f2                	jmp    461836 <fb_GfxReadXY+0xa6>
-  461844:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  461848:	8b 41 08             	mov    eax,DWORD PTR [rcx+0x8]
-  46184b:	c1 e0 04             	shl    eax,0x4
-  46184e:	03 41 04             	add    eax,DWORD PTR [rcx+0x4]
-  461851:	eb e3                	jmp    461836 <fb_GfxReadXY+0xa6>
-  461853:	8b 41 08             	mov    eax,DWORD PTR [rcx+0x8]
-  461856:	c1 e0 08             	shl    eax,0x8
-  461859:	03 41 04             	add    eax,DWORD PTR [rcx+0x4]
-  46185c:	eb d8                	jmp    461836 <fb_GfxReadXY+0xa6>
-  46185e:	41 83 fc 02          	cmp    r12d,0x2
-  461862:	8b 51 08             	mov    edx,DWORD PTR [rcx+0x8]
-  461865:	0f 45 51 04          	cmovne edx,DWORD PTR [rcx+0x4]
-  461869:	8d 0c d5 00 00 00 00 	lea    ecx,[rdx*8+0x0]
-  461870:	89 d0                	mov    eax,edx
-  461872:	c1 e8 02             	shr    eax,0x2
-  461875:	0f b6 f1             	movzx  esi,cl
-  461878:	83 e0 07             	and    eax,0x7
-  46187b:	81 e1 00 00 07 00    	and    ecx,0x70000
-  461881:	09 f0                	or     eax,esi
-  461883:	89 d6                	mov    esi,edx
-  461885:	c1 e6 05             	shl    esi,0x5
-  461888:	0d 00 00 00 ff       	or     eax,0xff000000
-  46188d:	81 e6 00 fc 00 00    	and    esi,0xfc00
-  461893:	09 f0                	or     eax,esi
-  461895:	89 d6                	mov    esi,edx
-  461897:	c1 e2 08             	shl    edx,0x8
-  46189a:	d1 ee                	shr    esi,1
-  46189c:	81 e2 00 00 f8 00    	and    edx,0xf80000
-  4618a2:	81 e6 00 03 00 00    	and    esi,0x300
-  4618a8:	09 f0                	or     eax,esi
-  4618aa:	09 d0                	or     eax,edx
-  4618ac:	09 c8                	or     eax,ecx
-  4618ae:	eb 86                	jmp    461836 <fb_GfxReadXY+0xa6>
-  4618b0:	8b 41 08             	mov    eax,DWORD PTR [rcx+0x8]
-  4618b3:	eb 81                	jmp    461836 <fb_GfxReadXY+0xa6>
-  4618b5:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  4618bc:	00 00 00 
-  4618bf:	90                   	nop
-
-00000000004618c0 <copy_cursor_area>:
-  4618c0:	41 57                	push   r15
-  4618c2:	41 56                	push   r14
-  4618c4:	b9 0d 00 00 00       	mov    ecx,0xd
-  4618c9:	41 55                	push   r13
-  4618cb:	41 54                	push   r12
-  4618cd:	55                   	push   rbp
-  4618ce:	53                   	push   rbx
-  4618cf:	48 83 ec 08          	sub    rsp,0x8
-  4618d3:	48 8b 05 3e 23 04 00 	mov    rax,QWORD PTR [rip+0x4233e]        # 4a3c18 <__fb_gfx>
-  4618da:	4c 8b 25 e7 62 04 00 	mov    r12,QWORD PTR [rip+0x462e7]        # 4a7bc8 <cursor_area>
-  4618e1:	44 8b 68 20          	mov    r13d,DWORD PTR [rax+0x20]
-  4618e5:	44 8b 40 24          	mov    r8d,DWORD PTR [rax+0x24]
-  4618e9:	8b 58 2c             	mov    ebx,DWORD PTR [rax+0x2c]
-  4618ec:	4c 63 70 30          	movsxd r14,DWORD PTR [rax+0x30]
-  4618f0:	41 29 fd             	sub    r13d,edi
-  4618f3:	44 89 c5             	mov    ebp,r8d
-  4618f6:	41 83 fd 0d          	cmp    r13d,0xd
-  4618fa:	44 0f 4f e9          	cmovg  r13d,ecx
-  4618fe:	29 f5                	sub    ebp,esi
-  461900:	b9 16 00 00 00       	mov    ecx,0x16
-  461905:	44 0f af eb          	imul   r13d,ebx
-  461909:	83 fd 16             	cmp    ebp,0x16
-  46190c:	0f 4f e9             	cmovg  ebp,ecx
-  46190f:	89 f1                	mov    ecx,esi
-  461911:	0f af df             	imul   ebx,edi
-  461914:	41 0f af ce          	imul   ecx,r14d
-  461918:	48 63 db             	movsxd rbx,ebx
-  46191b:	48 63 c9             	movsxd rcx,ecx
-  46191e:	48 01 cb             	add    rbx,rcx
-  461921:	48 03 58 18          	add    rbx,QWORD PTR [rax+0x18]
-  461925:	85 d2                	test   edx,edx
-  461927:	44 89 e8             	mov    eax,r13d
-  46192a:	75 0f                	jne    46193b <copy_cursor_area+0x7b>
-  46192c:	4c 89 e2             	mov    rdx,r12
-  46192f:	44 89 f0             	mov    eax,r14d
-  461932:	49 89 dc             	mov    r12,rbx
-  461935:	4d 63 f5             	movsxd r14,r13d
-  461938:	48 89 d3             	mov    rbx,rdx
-  46193b:	41 39 f0             	cmp    r8d,esi
-  46193e:	4d 63 ed             	movsxd r13,r13d
-  461941:	4c 63 f8             	movsxd r15,eax
-  461944:	74 24                	je     46196a <copy_cursor_area+0xaa>
-  461946:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  46194d:	00 00 00 
-  461950:	4c 89 e6             	mov    rsi,r12
-  461953:	48 89 df             	mov    rdi,rbx
-  461956:	4c 89 ea             	mov    rdx,r13
-  461959:	4d 01 fc             	add    r12,r15
-  46195c:	4c 01 f3             	add    rbx,r14
-  46195f:	ff 15 03 10 02 00    	call   QWORD PTR [rip+0x21003]        # 482968 <memcpy@GLIBC_2.14>
-  461965:	83 ed 01             	sub    ebp,0x1
-  461968:	75 e6                	jne    461950 <copy_cursor_area+0x90>
-  46196a:	48 83 c4 08          	add    rsp,0x8
-  46196e:	5b                   	pop    rbx
-  46196f:	5d                   	pop    rbp
-  461970:	41 5c                	pop    r12
-  461972:	41 5d                	pop    r13
-  461974:	41 5e                	pop    r14
-  461976:	41 5f                	pop    r15
-  461978:	c3                   	ret    
-  461979:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-
-0000000000461980 <fb_hSoftCursor_code_start>:
-  461980:	f3 c3                	repz ret 
-  461982:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  461986:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  46198d:	00 00 00 
-
-0000000000461990 <fb_hColorDistance>:
-  461990:	48 8b 05 81 22 04 00 	mov    rax,QWORD PTR [rip+0x42281]        # 4a3c18 <__fb_gfx>
-  461997:	53                   	push   rbx
-  461998:	48 63 ff             	movsxd rdi,edi
-  46199b:	48 8b 40 40          	mov    rax,QWORD PTR [rax+0x40]
-  46199f:	8b 1c b8             	mov    ebx,DWORD PTR [rax+rdi*4]
-  4619a2:	0f b6 c3             	movzx  eax,bl
-  4619a5:	29 f0                	sub    eax,esi
-  4619a7:	0f b6 f7             	movzx  esi,bh
-  4619aa:	c1 eb 10             	shr    ebx,0x10
-  4619ad:	29 d6                	sub    esi,edx
-  4619af:	0f b6 db             	movzx  ebx,bl
-  4619b2:	89 f2                	mov    edx,esi
-  4619b4:	29 cb                	sub    ebx,ecx
-  4619b6:	0f af d6             	imul   edx,esi
-  4619b9:	0f af db             	imul   ebx,ebx
-  4619bc:	0f af c0             	imul   eax,eax
-  4619bf:	01 d3                	add    ebx,edx
-  4619c1:	01 d8                	add    eax,ebx
-  4619c3:	5b                   	pop    rbx
-  4619c4:	c3                   	ret    
-  4619c5:	90                   	nop
-  4619c6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  4619cd:	00 00 00 
-
-00000000004619d0 <fb_hSoftCursorInit>:
-  4619d0:	48 8b 05 41 22 04 00 	mov    rax,QWORD PTR [rip+0x42241]        # 4a3c18 <__fb_gfx>
-  4619d7:	53                   	push   rbx
-  4619d8:	8b 58 2c             	mov    ebx,DWORD PTR [rax+0x2c]
-  4619db:	69 fb 1e 01 00 00    	imul   edi,ebx,0x11e
-  4619e1:	48 63 ff             	movsxd rdi,edi
-  4619e4:	e8 c7 38 fa ff       	call   4052b0 <malloc@plt>
-  4619e9:	83 fb 01             	cmp    ebx,0x1
-  4619ec:	48 89 05 d5 61 04 00 	mov    QWORD PTR [rip+0x461d5],rax        # 4a7bc8 <cursor_area>
-  4619f3:	74 2b                	je     461a20 <fb_hSoftCursorInit+0x50>
-  4619f5:	89 df                	mov    edi,ebx
-  4619f7:	be ff ff ff 00       	mov    esi,0xffffff
-  4619fc:	e8 ef 6a ff ff       	call   4584f0 <fb_hFixColor>
-  461a01:	89 05 bd 61 04 00    	mov    DWORD PTR [rip+0x461bd],eax        # 4a7bc4 <white>
-  461a07:	48 8b 05 0a 22 04 00 	mov    rax,QWORD PTR [rip+0x4220a]        # 4a3c18 <__fb_gfx>
-  461a0e:	31 f6                	xor    esi,esi
-  461a10:	8b 78 2c             	mov    edi,DWORD PTR [rax+0x2c]
-  461a13:	e8 d8 6a ff ff       	call   4584f0 <fb_hFixColor>
-  461a18:	5b                   	pop    rbx
-  461a19:	89 05 a1 61 04 00    	mov    DWORD PTR [rip+0x461a1],eax        # 4a7bc0 <black>
-  461a1f:	c3                   	ret    
-  461a20:	c7 05 9a 61 04 00 0f 	mov    DWORD PTR [rip+0x4619a],0xf        # 4a7bc4 <white>
-  461a27:	00 00 00 
-  461a2a:	c7 05 8c 61 04 00 00 	mov    DWORD PTR [rip+0x4618c],0x0        # 4a7bc0 <black>
-  461a31:	00 00 00 
-  461a34:	5b                   	pop    rbx
-  461a35:	c3                   	ret    
-  461a36:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  461a3d:	00 00 00 
-
-0000000000461a40 <fb_hSoftCursorExit>:
-  461a40:	48 8b 3d 81 61 04 00 	mov    rdi,QWORD PTR [rip+0x46181]        # 4a7bc8 <cursor_area>
-  461a47:	e9 f4 39 fa ff       	jmp    405440 <free@plt>
-  461a4c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-0000000000461a50 <fb_hSoftCursorPut>:
-  461a50:	41 57                	push   r15
-  461a52:	41 56                	push   r14
-  461a54:	31 d2                	xor    edx,edx
-  461a56:	41 55                	push   r13
-  461a58:	41 54                	push   r12
-  461a5a:	41 89 f6             	mov    r14d,esi
-  461a5d:	55                   	push   rbp
-  461a5e:	53                   	push   rbx
-  461a5f:	89 fb                	mov    ebx,edi
-  461a61:	48 83 ec 28          	sub    rsp,0x28
-  461a65:	e8 56 fe ff ff       	call   4618c0 <copy_cursor_area>
-  461a6a:	4c 8b 15 a7 21 04 00 	mov    r10,QWORD PTR [rip+0x421a7]        # 4a3c18 <__fb_gfx>
-  461a71:	41 b8 0d 00 00 00    	mov    r8d,0xd
-  461a77:	41 8b 42 20          	mov    eax,DWORD PTR [r10+0x20]
-  461a7b:	41 8b 52 24          	mov    edx,DWORD PTR [r10+0x24]
-  461a7f:	29 d8                	sub    eax,ebx
-  461a81:	83 f8 0d             	cmp    eax,0xd
-  461a84:	89 44 24 10          	mov    DWORD PTR [rsp+0x10],eax
-  461a88:	44 0f 4e c0          	cmovle r8d,eax
-  461a8c:	44 29 f2             	sub    edx,r14d
-  461a8f:	b8 16 00 00 00       	mov    eax,0x16
-  461a94:	83 fa 16             	cmp    edx,0x16
-  461a97:	0f 4e c2             	cmovle eax,edx
-  461a9a:	89 44 24 14          	mov    DWORD PTR [rsp+0x14],eax
-  461a9e:	41 8b 42 30          	mov    eax,DWORD PTR [r10+0x30]
-  461aa2:	41 0f af 5a 2c       	imul   ebx,DWORD PTR [r10+0x2c]
-  461aa7:	41 0f af c6          	imul   eax,r14d
-  461aab:	4c 63 e8             	movsxd r13,eax
-  461aae:	48 63 c3             	movsxd rax,ebx
-  461ab1:	4c 01 e8             	add    rax,r13
-  461ab4:	49 03 42 18          	add    rax,QWORD PTR [r10+0x18]
-  461ab8:	85 d2                	test   edx,edx
-  461aba:	48 89 44 24 08       	mov    QWORD PTR [rsp+0x8],rax
-  461abf:	0f 8e 12 01 00 00    	jle    461bd7 <fb_hSoftCursorPut+0x187>
-  461ac5:	49 63 c6             	movsxd rax,r14d
-  461ac8:	45 31 e4             	xor    r12d,r12d
-  461acb:	bd 02 00 00 00       	mov    ebp,0x2
-  461ad0:	48 89 44 24 18       	mov    QWORD PTR [rsp+0x18],rax
-  461ad5:	45 89 c6             	mov    r14d,r8d
-  461ad8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  461adf:	00 
-  461ae0:	8b 44 24 10          	mov    eax,DWORD PTR [rsp+0x10]
-  461ae4:	85 c0                	test   eax,eax
-  461ae6:	7e 7d                	jle    461b65 <fb_hSoftCursorPut+0x115>
-  461ae8:	4c 8b 6c 24 08       	mov    r13,QWORD PTR [rsp+0x8]
-  461aed:	45 31 ff             	xor    r15d,r15d
-  461af0:	89 ea                	mov    edx,ebp
-  461af2:	89 ef                	mov    edi,ebp
-  461af4:	83 e2 03             	and    edx,0x3
-  461af7:	45 39 fe             	cmp    r14d,r15d
-  461afa:	0f 8e d0 00 00 00    	jle    461bd0 <fb_hSoftCursorPut+0x180>
-  461b00:	44 89 f6             	mov    esi,r14d
-  461b03:	44 89 f9             	mov    ecx,r15d
-  461b06:	31 db                	xor    ebx,ebx
-  461b08:	44 29 fe             	sub    esi,r15d
-  461b0b:	eb 0c                	jmp    461b19 <fb_hSoftCursorPut+0xc9>
-  461b0d:	0f 1f 00             	nop    DWORD PTR [rax]
-  461b10:	89 e8                	mov    eax,ebp
-  461b12:	83 e0 03             	and    eax,0x3
-  461b15:	39 d0                	cmp    eax,edx
-  461b17:	75 0e                	jne    461b27 <fb_hSoftCursorPut+0xd7>
-  461b19:	83 c3 01             	add    ebx,0x1
-  461b1c:	c1 ed 02             	shr    ebp,0x2
-  461b1f:	39 de                	cmp    esi,ebx
-  461b21:	44 8d 3c 0b          	lea    r15d,[rbx+rcx*1]
-  461b25:	75 e9                	jne    461b10 <fb_hSoftCursorPut+0xc0>
-  461b27:	83 fa 03             	cmp    edx,0x3
-  461b2a:	74 74                	je     461ba0 <fb_hSoftCursorPut+0x150>
-  461b2c:	85 d2                	test   edx,edx
-  461b2e:	74 23                	je     461b53 <fb_hSoftCursorPut+0x103>
-  461b30:	83 e7 01             	and    edi,0x1
-  461b33:	8b 35 8b 60 04 00    	mov    esi,DWORD PTR [rip+0x4608b]        # 4a7bc4 <white>
-  461b39:	0f 44 35 80 60 04 00 	cmove  esi,DWORD PTR [rip+0x46080]        # 4a7bc0 <black>
-  461b40:	48 63 d3             	movsxd rdx,ebx
-  461b43:	4c 89 ef             	mov    rdi,r13
-  461b46:	ff 15 bc 20 04 00    	call   QWORD PTR [rip+0x420bc]        # 4a3c08 <fb_hPixelSet>
-  461b4c:	4c 8b 15 c5 20 04 00 	mov    r10,QWORD PTR [rip+0x420c5]        # 4a3c18 <__fb_gfx>
-  461b53:	41 8b 42 2c          	mov    eax,DWORD PTR [r10+0x2c]
-  461b57:	0f af d8             	imul   ebx,eax
-  461b5a:	48 63 db             	movsxd rbx,ebx
-  461b5d:	49 01 dd             	add    r13,rbx
-  461b60:	45 39 fe             	cmp    r14d,r15d
-  461b63:	7f 8b                	jg     461af0 <fb_hSoftCursorPut+0xa0>
-  461b65:	49 8b 42 50          	mov    rax,QWORD PTR [r10+0x50]
-  461b69:	48 8b 7c 24 18       	mov    rdi,QWORD PTR [rsp+0x18]
-  461b6e:	4c 01 e0             	add    rax,r12
-  461b71:	49 83 c4 01          	add    r12,0x1
-  461b75:	c6 04 38 01          	mov    BYTE PTR [rax+rdi*1],0x1
-  461b79:	4c 8b 15 98 20 04 00 	mov    r10,QWORD PTR [rip+0x42098]        # 4a3c18 <__fb_gfx>
-  461b80:	49 63 42 30          	movsxd rax,DWORD PTR [r10+0x30]
-  461b84:	48 01 44 24 08       	add    QWORD PTR [rsp+0x8],rax
-  461b89:	44 39 64 24 14       	cmp    DWORD PTR [rsp+0x14],r12d
-  461b8e:	7e 47                	jle    461bd7 <fb_hSoftCursorPut+0x187>
-  461b90:	48 8d 05 e9 3f 01 00 	lea    rax,[rip+0x13fe9]        # 475b80 <cursor_data>
-  461b97:	42 8b 2c a0          	mov    ebp,DWORD PTR [rax+r12*4]
-  461b9b:	e9 40 ff ff ff       	jmp    461ae0 <fb_hSoftCursorPut+0x90>
-  461ba0:	41 8b 42 2c          	mov    eax,DWORD PTR [r10+0x2c]
-  461ba4:	83 f8 04             	cmp    eax,0x4
-  461ba7:	75 ae                	jne    461b57 <fb_hSoftCursorPut+0x107>
-  461ba9:	48 63 d3             	movsxd rdx,ebx
-  461bac:	be 00 00 00 40       	mov    esi,0x40000000
-  461bb1:	4c 89 ef             	mov    rdi,r13
-  461bb4:	e8 77 32 ff ff       	call   454e30 <fb_hPixelSetAlpha4>
-  461bb9:	4c 8b 15 58 20 04 00 	mov    r10,QWORD PTR [rip+0x42058]        # 4a3c18 <__fb_gfx>
-  461bc0:	41 8b 42 2c          	mov    eax,DWORD PTR [r10+0x2c]
-  461bc4:	eb 91                	jmp    461b57 <fb_hSoftCursorPut+0x107>
-  461bc6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  461bcd:	00 00 00 
-  461bd0:	31 db                	xor    ebx,ebx
-  461bd2:	e9 50 ff ff ff       	jmp    461b27 <fb_hSoftCursorPut+0xd7>
-  461bd7:	48 83 c4 28          	add    rsp,0x28
-  461bdb:	5b                   	pop    rbx
-  461bdc:	5d                   	pop    rbp
-  461bdd:	41 5c                	pop    r12
-  461bdf:	41 5d                	pop    r13
-  461be1:	41 5e                	pop    r14
-  461be3:	41 5f                	pop    r15
-  461be5:	c3                   	ret    
-  461be6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  461bed:	00 00 00 
-
-0000000000461bf0 <fb_hSoftCursorUnput>:
-  461bf0:	53                   	push   rbx
-  461bf1:	ba 01 00 00 00       	mov    edx,0x1
-  461bf6:	89 f3                	mov    ebx,esi
-  461bf8:	e8 c3 fc ff ff       	call   4618c0 <copy_cursor_area>
-  461bfd:	48 8b 05 14 20 04 00 	mov    rax,QWORD PTR [rip+0x42014]        # 4a3c18 <__fb_gfx>
-  461c04:	b9 16 00 00 00       	mov    ecx,0x16
-  461c09:	48 63 fb             	movsxd rdi,ebx
-  461c0c:	be 01 00 00 00       	mov    esi,0x1
-  461c11:	8b 50 24             	mov    edx,DWORD PTR [rax+0x24]
-  461c14:	29 da                	sub    edx,ebx
-  461c16:	83 fa 16             	cmp    edx,0x16
-  461c19:	0f 4f d1             	cmovg  edx,ecx
-  461c1c:	48 03 78 50          	add    rdi,QWORD PTR [rax+0x50]
-  461c20:	5b                   	pop    rbx
-  461c21:	48 63 d2             	movsxd rdx,edx
-  461c24:	ff 25 36 0d 02 00    	jmp    QWORD PTR [rip+0x20d36]        # 482960 <memset@GLIBC_2.2.5>
-  461c2a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-
-0000000000461c30 <fb_hSoftCursorPaletteChanged>:
-  461c30:	48 8b 05 e1 1f 04 00 	mov    rax,QWORD PTR [rip+0x41fe1]        # 4a3c18 <__fb_gfx>
-  461c37:	83 78 2c 01          	cmp    DWORD PTR [rax+0x2c],0x1
-  461c3b:	7e 03                	jle    461c40 <fb_hSoftCursorPaletteChanged+0x10>
-  461c3d:	f3 c3                	repz ret 
-  461c3f:	90                   	nop
-  461c40:	41 56                	push   r14
-  461c42:	44 8b 1d 77 5f 04 00 	mov    r11d,DWORD PTR [rip+0x45f77]        # 4a7bc0 <black>
-  461c49:	31 f6                	xor    esi,esi
-  461c4b:	41 55                	push   r13
-  461c4d:	41 54                	push   r12
-  461c4f:	45 31 d2             	xor    r10d,r10d
-  461c52:	55                   	push   rbp
-  461c53:	8b 2d 6b 5f 04 00    	mov    ebp,DWORD PTR [rip+0x45f6b]        # 4a7bc4 <white>
-  461c59:	41 b8 40 42 0f 00    	mov    r8d,0xf4240
-  461c5f:	53                   	push   rbx
-  461c60:	4c 8b 48 40          	mov    r9,QWORD PTR [rax+0x40]
-  461c64:	31 db                	xor    ebx,ebx
-  461c66:	bf 40 42 0f 00       	mov    edi,0xf4240
-  461c6b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  461c70:	41 8b 04 b1          	mov    eax,DWORD PTR [r9+rsi*4]
-  461c74:	44 0f b6 e0          	movzx  r12d,al
-  461c78:	0f b6 d4             	movzx  edx,ah
-  461c7b:	c1 e8 10             	shr    eax,0x10
-  461c7e:	0f b6 c0             	movzx  eax,al
-  461c81:	8d 8a 01 ff ff ff    	lea    ecx,[rdx-0xff]
-  461c87:	45 8d b4 24 01 ff ff 	lea    r14d,[r12-0xff]
-  461c8e:	ff 
-  461c8f:	44 8d a8 01 ff ff ff 	lea    r13d,[rax-0xff]
-  461c96:	0f af c9             	imul   ecx,ecx
-  461c99:	45 0f af ed          	imul   r13d,r13d
-  461c9d:	45 0f af f6          	imul   r14d,r14d
-  461ca1:	41 01 cd             	add    r13d,ecx
-  461ca4:	43 8d 4c 35 00       	lea    ecx,[r13+r14*1+0x0]
-  461ca9:	39 f9                	cmp    ecx,edi
-  461cab:	7d 0a                	jge    461cb7 <fb_hSoftCursorPaletteChanged+0x87>
-  461cad:	89 f5                	mov    ebp,esi
-  461caf:	89 cf                	mov    edi,ecx
-  461cb1:	41 ba 01 00 00 00    	mov    r10d,0x1
-  461cb7:	0f af c0             	imul   eax,eax
-  461cba:	0f af d2             	imul   edx,edx
-  461cbd:	45 0f af e4          	imul   r12d,r12d
-  461cc1:	01 c2                	add    edx,eax
-  461cc3:	42 8d 04 22          	lea    eax,[rdx+r12*1]
-  461cc7:	44 39 c0             	cmp    eax,r8d
-  461cca:	7d 0b                	jge    461cd7 <fb_hSoftCursorPaletteChanged+0xa7>
-  461ccc:	41 89 f3             	mov    r11d,esi
-  461ccf:	41 89 c0             	mov    r8d,eax
-  461cd2:	bb 01 00 00 00       	mov    ebx,0x1
-  461cd7:	48 83 c6 01          	add    rsi,0x1
-  461cdb:	48 81 fe 00 01 00 00 	cmp    rsi,0x100
-  461ce2:	75 8c                	jne    461c70 <fb_hSoftCursorPaletteChanged+0x40>
-  461ce4:	45 84 d2             	test   r10b,r10b
-  461ce7:	75 0d                	jne    461cf6 <fb_hSoftCursorPaletteChanged+0xc6>
-  461ce9:	84 db                	test   bl,bl
-  461ceb:	75 11                	jne    461cfe <fb_hSoftCursorPaletteChanged+0xce>
-  461ced:	5b                   	pop    rbx
-  461cee:	5d                   	pop    rbp
-  461cef:	41 5c                	pop    r12
-  461cf1:	41 5d                	pop    r13
-  461cf3:	41 5e                	pop    r14
-  461cf5:	c3                   	ret    
-  461cf6:	89 2d c8 5e 04 00    	mov    DWORD PTR [rip+0x45ec8],ebp        # 4a7bc4 <white>
-  461cfc:	eb eb                	jmp    461ce9 <fb_hSoftCursorPaletteChanged+0xb9>
-  461cfe:	44 89 1d bb 5e 04 00 	mov    DWORD PTR [rip+0x45ebb],r11d        # 4a7bc0 <black>
-  461d05:	eb e6                	jmp    461ced <fb_hSoftCursorPaletteChanged+0xbd>
-  461d07:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  461d0e:	00 00 
-
-0000000000461d10 <fb_hSoftCursor_code_end>:
-  461d10:	f3 c3                	repz ret 
-  461d12:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  461d19:	00 00 00 
-  461d1c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-0000000000461d20 <fb_GfxView>:
-  461d20:	41 54                	push   r12
-  461d22:	55                   	push   rbp
-  461d23:	53                   	push   rbx
-  461d24:	48 83 ec 10          	sub    rsp,0x10
-  461d28:	48 83 3d e8 1e 04 00 	cmp    QWORD PTR [rip+0x41ee8],0x0        # 4a3c18 <__fb_gfx>
-  461d2f:	00 
-  461d30:	89 7c 24 0c          	mov    DWORD PTR [rsp+0xc],edi
-  461d34:	89 74 24 08          	mov    DWORD PTR [rsp+0x8],esi
-  461d38:	89 54 24 04          	mov    DWORD PTR [rsp+0x4],edx
-  461d3c:	89 0c 24             	mov    DWORD PTR [rsp],ecx
-  461d3f:	0f 84 52 01 00 00    	je     461e97 <fb_GfxView+0x177>
-  461d45:	44 89 cd             	mov    ebp,r9d
-  461d48:	45 89 c4             	mov    r12d,r8d
-  461d4b:	e8 90 37 ff ff       	call   4554e0 <fb_hGetContext>
-  461d50:	31 f6                	xor    esi,esi
-  461d52:	48 89 c3             	mov    rbx,rax
-  461d55:	48 89 c7             	mov    rdi,rax
-  461d58:	e8 b3 35 ff ff       	call   455310 <fb_hPrepareTarget>
-  461d5d:	89 ee                	mov    esi,ebp
-  461d5f:	48 89 df             	mov    rdi,rbx
-  461d62:	e8 39 32 ff ff       	call   454fa0 <fb_hSetPixelTransfer>
-  461d67:	48 8d 54 24 04       	lea    rdx,[rsp+0x4]
-  461d6c:	48 8d 74 24 08       	lea    rsi,[rsp+0x8]
-  461d71:	48 8d 7c 24 0c       	lea    rdi,[rsp+0xc]
-  461d76:	48 89 e1             	mov    rcx,rsp
-  461d79:	e8 12 34 ff ff       	call   455190 <fb_hFixCoordsOrder>
-  461d7e:	8b 4c 24 0c          	mov    ecx,DWORD PTR [rsp+0xc]
-  461d82:	8b 7c 24 08          	mov    edi,DWORD PTR [rsp+0x8]
-  461d86:	8b 54 24 04          	mov    edx,DWORD PTR [rsp+0x4]
-  461d8a:	8b 34 24             	mov    esi,DWORD PTR [rsp]
-  461d8d:	89 c8                	mov    eax,ecx
-  461d8f:	09 f8                	or     eax,edi
-  461d91:	09 d0                	or     eax,edx
-  461d93:	09 f0                	or     eax,esi
-  461d95:	3d 00 80 ff ff       	cmp    eax,0xffff8000
-  461d9a:	0f 84 00 01 00 00    	je     461ea0 <fb_GfxView+0x180>
-  461da0:	48 8b 05 71 1e 04 00 	mov    rax,QWORD PTR [rip+0x41e71]        # 4a3c18 <__fb_gfx>
-  461da7:	44 8b 40 20          	mov    r8d,DWORD PTR [rax+0x20]
-  461dab:	44 39 c1             	cmp    ecx,r8d
-  461dae:	0f 8d e3 00 00 00    	jge    461e97 <fb_GfxView+0x177>
-  461db4:	41 89 f2             	mov    r10d,esi
-  461db7:	44 8b 48 24          	mov    r9d,DWORD PTR [rax+0x24]
-  461dbb:	89 d0                	mov    eax,edx
-  461dbd:	41 c1 ea 1f          	shr    r10d,0x1f
-  461dc1:	c1 e8 1f             	shr    eax,0x1f
-  461dc4:	45 89 d3             	mov    r11d,r10d
-  461dc7:	41 08 c3             	or     r11b,al
-  461dca:	0f 85 c7 00 00 00    	jne    461e97 <fb_GfxView+0x177>
-  461dd0:	44 39 cf             	cmp    edi,r9d
-  461dd3:	0f 8d be 00 00 00    	jge    461e97 <fb_GfxView+0x177>
-  461dd9:	8b 83 d0 00 00 00    	mov    eax,DWORD PTR [rbx+0xd0]
-  461ddf:	41 89 c2             	mov    r10d,eax
-  461de2:	41 83 ca 10          	or     r10d,0x10
-  461de6:	f6 44 24 30 01       	test   BYTE PTR [rsp+0x30],0x1
-  461deb:	44 89 93 d0 00 00 00 	mov    DWORD PTR [rbx+0xd0],r10d
-  461df2:	0f 85 d8 00 00 00    	jne    461ed0 <fb_GfxView+0x1b0>
-  461df8:	83 e0 df             	and    eax,0xffffffdf
-  461dfb:	83 c8 10             	or     eax,0x10
-  461dfe:	89 83 d0 00 00 00    	mov    DWORD PTR [rbx+0xd0],eax
-  461e04:	f7 44 24 30 00 00 00 	test   DWORD PTR [rsp+0x30],0x40000000
-  461e0b:	40 
-  461e0c:	0f 84 ce 00 00 00    	je     461ee0 <fb_GfxView+0x1c0>
-  461e12:	41 83 e8 01          	sub    r8d,0x1
-  461e16:	31 c0                	xor    eax,eax
-  461e18:	85 c9                	test   ecx,ecx
-  461e1a:	0f 48 c8             	cmovs  ecx,eax
-  461e1d:	44 39 c1             	cmp    ecx,r8d
-  461e20:	41 0f 4f c8          	cmovg  ecx,r8d
-  461e24:	41 83 e9 01          	sub    r9d,0x1
-  461e28:	85 ff                	test   edi,edi
-  461e2a:	0f 48 f8             	cmovs  edi,eax
-  461e2d:	89 4c 24 0c          	mov    DWORD PTR [rsp+0xc],ecx
-  461e31:	89 4b 30             	mov    DWORD PTR [rbx+0x30],ecx
-  461e34:	44 39 cf             	cmp    edi,r9d
-  461e37:	41 0f 4f f9          	cmovg  edi,r9d
-  461e3b:	85 d2                	test   edx,edx
-  461e3d:	0f 48 d0             	cmovs  edx,eax
-  461e40:	89 7c 24 08          	mov    DWORD PTR [rsp+0x8],edi
-  461e44:	89 7b 34             	mov    DWORD PTR [rbx+0x34],edi
-  461e47:	44 39 c2             	cmp    edx,r8d
-  461e4a:	41 0f 4f d0          	cmovg  edx,r8d
-  461e4e:	85 f6                	test   esi,esi
-  461e50:	0f 49 c6             	cmovns eax,esi
-  461e53:	89 54 24 04          	mov    DWORD PTR [rsp+0x4],edx
-  461e57:	44 39 c8             	cmp    eax,r9d
-  461e5a:	41 0f 4f c1          	cmovg  eax,r9d
-  461e5e:	29 ca                	sub    edx,ecx
-  461e60:	89 04 24             	mov    DWORD PTR [rsp],eax
-  461e63:	29 f8                	sub    eax,edi
-  461e65:	83 c2 01             	add    edx,0x1
-  461e68:	83 c0 01             	add    eax,0x1
-  461e6b:	89 53 38             	mov    DWORD PTR [rbx+0x38],edx
-  461e6e:	89 43 3c             	mov    DWORD PTR [rbx+0x3c],eax
-  461e71:	8b 44 24 30          	mov    eax,DWORD PTR [rsp+0x30]
-  461e75:	85 c0                	test   eax,eax
-  461e77:	78 1e                	js     461e97 <fb_GfxView+0x177>
-  461e79:	8b 7b 14             	mov    edi,DWORD PTR [rbx+0x14]
-  461e7c:	8b 6b 64             	mov    ebp,DWORD PTR [rbx+0x64]
-  461e7f:	44 89 e6             	mov    esi,r12d
-  461e82:	e8 69 66 ff ff       	call   4584f0 <fb_hFixColor>
-  461e87:	bf 01 00 00 00       	mov    edi,0x1
-  461e8c:	89 43 64             	mov    DWORD PTR [rbx+0x64],eax
-  461e8f:	e8 ac b3 ff ff       	call   45d240 <fb_GfxClear>
-  461e94:	89 6b 64             	mov    DWORD PTR [rbx+0x64],ebp
-  461e97:	48 83 c4 10          	add    rsp,0x10
-  461e9b:	5b                   	pop    rbx
-  461e9c:	5d                   	pop    rbp
-  461e9d:	41 5c                	pop    r12
-  461e9f:	c3                   	ret    
-  461ea0:	48 8b 05 71 1d 04 00 	mov    rax,QWORD PTR [rip+0x41d71]        # 4a3c18 <__fb_gfx>
-  461ea7:	83 a3 d0 00 00 00 ef 	and    DWORD PTR [rbx+0xd0],0xffffffef
-  461eae:	48 c7 43 30 00 00 00 	mov    QWORD PTR [rbx+0x30],0x0
-  461eb5:	00 
-  461eb6:	8b 50 20             	mov    edx,DWORD PTR [rax+0x20]
-  461eb9:	8b 40 24             	mov    eax,DWORD PTR [rax+0x24]
-  461ebc:	89 53 38             	mov    DWORD PTR [rbx+0x38],edx
-  461ebf:	89 43 3c             	mov    DWORD PTR [rbx+0x3c],eax
-  461ec2:	48 83 c4 10          	add    rsp,0x10
-  461ec6:	5b                   	pop    rbx
-  461ec7:	5d                   	pop    rbp
-  461ec8:	41 5c                	pop    r12
-  461eca:	c3                   	ret    
-  461ecb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  461ed0:	83 c8 30             	or     eax,0x30
-  461ed3:	89 83 d0 00 00 00    	mov    DWORD PTR [rbx+0xd0],eax
-  461ed9:	e9 26 ff ff ff       	jmp    461e04 <fb_GfxView+0xe4>
-  461ede:	66 90                	xchg   ax,ax
-  461ee0:	8b 7b 14             	mov    edi,DWORD PTR [rbx+0x14]
-  461ee3:	89 ee                	mov    esi,ebp
-  461ee5:	e8 06 66 ff ff       	call   4584f0 <fb_hFixColor>
-  461eea:	4c 8b 15 27 1d 04 00 	mov    r10,QWORD PTR [rip+0x41d27]        # 4a3c18 <__fb_gfx>
-  461ef1:	8b 0c 24             	mov    ecx,DWORD PTR [rsp]
-  461ef4:	48 83 ec 08          	sub    rsp,0x8
-  461ef8:	8b 74 24 10          	mov    esi,DWORD PTR [rsp+0x10]
-  461efc:	8b 7c 24 14          	mov    edi,DWORD PTR [rsp+0x14]
-  461f00:	45 31 c9             	xor    r9d,r9d
-  461f03:	48 c7 43 30 00 00 00 	mov    QWORD PTR [rbx+0x30],0x0
-  461f0a:	00 
-  461f0b:	41 8b 52 20          	mov    edx,DWORD PTR [r10+0x20]
-  461f0f:	83 c1 01             	add    ecx,0x1
-  461f12:	83 ee 01             	sub    esi,0x1
-  461f15:	83 ef 01             	sub    edi,0x1
-  461f18:	89 53 38             	mov    DWORD PTR [rbx+0x38],edx
-  461f1b:	41 8b 52 24          	mov    edx,DWORD PTR [r10+0x24]
-  461f1f:	89 53 3c             	mov    DWORD PTR [rbx+0x3c],edx
-  461f22:	8b 54 24 0c          	mov    edx,DWORD PTR [rsp+0xc]
-  461f26:	68 ff ff 00 00       	push   0xffff
-  461f2b:	41 23 42 60          	and    eax,DWORD PTR [r10+0x60]
-  461f2f:	83 c2 01             	add    edx,0x1
-  461f32:	41 89 c0             	mov    r8d,eax
-  461f35:	e8 36 ad ff ff       	call   45cc70 <fb_hGfxBox>
-  461f3a:	48 8b 05 d7 1c 04 00 	mov    rax,QWORD PTR [rip+0x41cd7]        # 4a3c18 <__fb_gfx>
-  461f41:	8b 4c 24 1c          	mov    ecx,DWORD PTR [rsp+0x1c]
-  461f45:	8b 7c 24 18          	mov    edi,DWORD PTR [rsp+0x18]
-  461f49:	8b 54 24 14          	mov    edx,DWORD PTR [rsp+0x14]
-  461f4d:	8b 74 24 10          	mov    esi,DWORD PTR [rsp+0x10]
-  461f51:	44 8b 40 20          	mov    r8d,DWORD PTR [rax+0x20]
-  461f55:	44 8b 48 24          	mov    r9d,DWORD PTR [rax+0x24]
-  461f59:	41 5a                	pop    r10
-  461f5b:	41 5b                	pop    r11
-  461f5d:	e9 b0 fe ff ff       	jmp    461e12 <fb_GfxView+0xf2>
-  461f62:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  461f69:	00 00 00 
-  461f6c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-0000000000461f70 <fb_hBlitCopy>:
-  461f70:	41 57                	push   r15
-  461f72:	41 56                	push   r14
-  461f74:	41 55                	push   r13
-  461f76:	41 54                	push   r12
-  461f78:	55                   	push   rbp
-  461f79:	53                   	push   rbx
-  461f7a:	48 83 ec 08          	sub    rsp,0x8
-  461f7e:	48 8b 05 93 1c 04 00 	mov    rax,QWORD PTR [rip+0x41c93]        # 4a3c18 <__fb_gfx>
-  461f85:	8b 58 24             	mov    ebx,DWORD PTR [rax+0x24]
-  461f88:	4c 8b 68 18          	mov    r13,QWORD PTR [rax+0x18]
-  461f8c:	0f af 58 70          	imul   ebx,DWORD PTR [rax+0x70]
-  461f90:	4c 8b 78 50          	mov    r15,QWORD PTR [rax+0x50]
-  461f94:	85 db                	test   ebx,ebx
-  461f96:	74 42                	je     461fda <fb_hBlitCopy+0x6a>
-  461f98:	49 89 fc             	mov    r12,rdi
-  461f9b:	4c 63 f6             	movsxd r14,esi
-  461f9e:	31 ed                	xor    ebp,ebp
-  461fa0:	41 80 3f 00          	cmp    BYTE PTR [r15],0x0
-  461fa4:	74 17                	je     461fbd <fb_hBlitCopy+0x4d>
-  461fa6:	48 63 50 30          	movsxd rdx,DWORD PTR [rax+0x30]
-  461faa:	4c 89 ee             	mov    rsi,r13
-  461fad:	4c 89 e7             	mov    rdi,r12
-  461fb0:	ff 15 b2 09 02 00    	call   QWORD PTR [rip+0x209b2]        # 482968 <memcpy@GLIBC_2.14>
-  461fb6:	48 8b 05 5b 1c 04 00 	mov    rax,QWORD PTR [rip+0x41c5b]        # 4a3c18 <__fb_gfx>
-  461fbd:	83 c5 01             	add    ebp,0x1
-  461fc0:	39 68 70             	cmp    DWORD PTR [rax+0x70],ebp
-  461fc3:	7f 0d                	jg     461fd2 <fb_hBlitCopy+0x62>
-  461fc5:	48 63 50 30          	movsxd rdx,DWORD PTR [rax+0x30]
-  461fc9:	49 83 c7 01          	add    r15,0x1
-  461fcd:	31 ed                	xor    ebp,ebp
-  461fcf:	49 01 d5             	add    r13,rdx
-  461fd2:	4d 01 f4             	add    r12,r14
-  461fd5:	83 eb 01             	sub    ebx,0x1
-  461fd8:	75 c6                	jne    461fa0 <fb_hBlitCopy+0x30>
-  461fda:	48 83 c4 08          	add    rsp,0x8
-  461fde:	5b                   	pop    rbx
-  461fdf:	5d                   	pop    rbp
-  461fe0:	41 5c                	pop    r12
-  461fe2:	41 5d                	pop    r13
-  461fe4:	41 5e                	pop    r14
-  461fe6:	41 5f                	pop    r15
-  461fe8:	c3                   	ret    
-  461fe9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-
-0000000000461ff0 <fb_hBlit8to15RGB>:
-  461ff0:	41 57                	push   r15
-  461ff2:	41 56                	push   r14
-  461ff4:	41 55                	push   r13
-  461ff6:	41 54                	push   r12
-  461ff8:	4c 8b 25 19 1c 04 00 	mov    r12,QWORD PTR [rip+0x41c19]        # 4a3c18 <__fb_gfx>
-  461fff:	55                   	push   rbp
-  462000:	53                   	push   rbx
-  462001:	41 8b 5c 24 24       	mov    ebx,DWORD PTR [r12+0x24]
-  462006:	4d 8b 5c 24 40       	mov    r11,QWORD PTR [r12+0x40]
-  46200b:	41 0f af 5c 24 70    	imul   ebx,DWORD PTR [r12+0x70]
-  462011:	4d 8b 74 24 18       	mov    r14,QWORD PTR [r12+0x18]
-  462016:	4d 8b 7c 24 50       	mov    r15,QWORD PTR [r12+0x50]
-  46201b:	85 db                	test   ebx,ebx
-  46201d:	0f 84 0d 01 00 00    	je     462130 <fb_hBlit8to15RGB+0x140>
-  462023:	48 63 c6             	movsxd rax,esi
-  462026:	31 ed                	xor    ebp,ebp
-  462028:	48 89 44 24 f0       	mov    QWORD PTR [rsp-0x10],rax
-  46202d:	eb 27                	jmp    462056 <fb_hBlit8to15RGB+0x66>
-  46202f:	90                   	nop
-  462030:	83 c5 01             	add    ebp,0x1
-  462033:	41 39 6c 24 70       	cmp    DWORD PTR [r12+0x70],ebp
-  462038:	7f 0e                	jg     462048 <fb_hBlit8to15RGB+0x58>
-  46203a:	49 63 44 24 30       	movsxd rax,DWORD PTR [r12+0x30]
-  46203f:	49 83 c7 01          	add    r15,0x1
-  462043:	31 ed                	xor    ebp,ebp
-  462045:	49 01 c6             	add    r14,rax
-  462048:	48 03 7c 24 f0       	add    rdi,QWORD PTR [rsp-0x10]
-  46204d:	83 eb 01             	sub    ebx,0x1
-  462050:	0f 84 da 00 00 00    	je     462130 <fb_hBlit8to15RGB+0x140>
-  462056:	41 80 3f 00          	cmp    BYTE PTR [r15],0x0
-  46205a:	74 d4                	je     462030 <fb_hBlit8to15RGB+0x40>
-  46205c:	41 8b 44 24 20       	mov    eax,DWORD PTR [r12+0x20]
-  462061:	89 c2                	mov    edx,eax
-  462063:	d1 fa                	sar    edx,1
-  462065:	0f 84 d5 00 00 00    	je     462140 <fb_hBlit8to15RGB+0x150>
-  46206b:	8d 42 ff             	lea    eax,[rdx-0x1]
-  46206e:	49 89 fa             	mov    r10,rdi
-  462071:	4d 89 f1             	mov    r9,r14
-  462074:	4d 8d 6c 46 02       	lea    r13,[r14+rax*2+0x2]
-  462079:	89 44 24 fc          	mov    DWORD PTR [rsp-0x4],eax
-  46207d:	0f 1f 00             	nop    DWORD PTR [rax]
-  462080:	41 0f b6 01          	movzx  eax,BYTE PTR [r9]
-  462084:	41 0f b6 51 01       	movzx  edx,BYTE PTR [r9+0x1]
-  462089:	49 83 c1 02          	add    r9,0x2
-  46208d:	49 83 c2 04          	add    r10,0x4
-  462091:	41 8b 04 83          	mov    eax,DWORD PTR [r11+rax*4]
-  462095:	41 8b 0c 93          	mov    ecx,DWORD PTR [r11+rdx*4]
-  462099:	89 c6                	mov    esi,eax
-  46209b:	c1 e8 03             	shr    eax,0x3
-  46209e:	89 ca                	mov    edx,ecx
-  4620a0:	c1 ee 06             	shr    esi,0x6
-  4620a3:	83 e0 1f             	and    eax,0x1f
-  4620a6:	c1 e9 03             	shr    ecx,0x3
-  4620a9:	41 89 f0             	mov    r8d,esi
-  4620ac:	81 e6 00 7c 00 00    	and    esi,0x7c00
-  4620b2:	c1 ea 06             	shr    edx,0x6
-  4620b5:	41 81 e0 e0 03 00 00 	and    r8d,0x3e0
-  4620bc:	83 e1 1f             	and    ecx,0x1f
-  4620bf:	44 09 c0             	or     eax,r8d
-  4620c2:	09 f0                	or     eax,esi
-  4620c4:	09 c8                	or     eax,ecx
-  4620c6:	89 d1                	mov    ecx,edx
-  4620c8:	c1 e2 10             	shl    edx,0x10
-  4620cb:	81 e1 e0 03 00 00    	and    ecx,0x3e0
-  4620d1:	81 e2 00 00 00 7c    	and    edx,0x7c000000
-  4620d7:	09 c8                	or     eax,ecx
-  4620d9:	09 d0                	or     eax,edx
-  4620db:	41 89 42 fc          	mov    DWORD PTR [r10-0x4],eax
-  4620df:	4d 39 e9             	cmp    r9,r13
-  4620e2:	75 9c                	jne    462080 <fb_hBlit8to15RGB+0x90>
-  4620e4:	8b 44 24 fc          	mov    eax,DWORD PTR [rsp-0x4]
-  4620e8:	48 83 c0 01          	add    rax,0x1
-  4620ec:	49 8d 0c 46          	lea    rcx,[r14+rax*2]
-  4620f0:	48 8d 14 87          	lea    rdx,[rdi+rax*4]
-  4620f4:	41 8b 44 24 20       	mov    eax,DWORD PTR [r12+0x20]
-  4620f9:	a8 01                	test   al,0x1
-  4620fb:	0f 84 2f ff ff ff    	je     462030 <fb_hBlit8to15RGB+0x40>
-  462101:	0f b6 01             	movzx  eax,BYTE PTR [rcx]
-  462104:	41 8b 04 83          	mov    eax,DWORD PTR [r11+rax*4]
-  462108:	89 c1                	mov    ecx,eax
-  46210a:	c1 e8 03             	shr    eax,0x3
-  46210d:	c1 e9 06             	shr    ecx,0x6
-  462110:	83 e0 1f             	and    eax,0x1f
-  462113:	89 ce                	mov    esi,ecx
-  462115:	66 81 e1 00 7c       	and    cx,0x7c00
-  46211a:	66 81 e6 e0 03       	and    si,0x3e0
-  46211f:	09 f0                	or     eax,esi
-  462121:	09 c8                	or     eax,ecx
-  462123:	66 89 02             	mov    WORD PTR [rdx],ax
-  462126:	e9 05 ff ff ff       	jmp    462030 <fb_hBlit8to15RGB+0x40>
-  46212b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  462130:	5b                   	pop    rbx
-  462131:	5d                   	pop    rbp
-  462132:	41 5c                	pop    r12
-  462134:	41 5d                	pop    r13
-  462136:	41 5e                	pop    r14
-  462138:	41 5f                	pop    r15
-  46213a:	c3                   	ret    
-  46213b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  462140:	48 89 fa             	mov    rdx,rdi
-  462143:	4c 89 f1             	mov    rcx,r14
-  462146:	eb b1                	jmp    4620f9 <fb_hBlit8to15RGB+0x109>
-  462148:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  46214f:	00 
-
-0000000000462150 <fb_hBlit8to15BGR>:
-  462150:	41 57                	push   r15
-  462152:	41 56                	push   r14
-  462154:	41 55                	push   r13
-  462156:	41 54                	push   r12
-  462158:	55                   	push   rbp
-  462159:	48 8b 2d b8 1a 04 00 	mov    rbp,QWORD PTR [rip+0x41ab8]        # 4a3c18 <__fb_gfx>
-  462160:	53                   	push   rbx
-  462161:	44 8b 5d 24          	mov    r11d,DWORD PTR [rbp+0x24]
-  462165:	4c 8b 55 40          	mov    r10,QWORD PTR [rbp+0x40]
-  462169:	44 0f af 5d 70       	imul   r11d,DWORD PTR [rbp+0x70]
-  46216e:	4c 8b 7d 18          	mov    r15,QWORD PTR [rbp+0x18]
-  462172:	4c 8b 75 50          	mov    r14,QWORD PTR [rbp+0x50]
-  462176:	45 85 db             	test   r11d,r11d
-  462179:	0f 84 11 01 00 00    	je     462290 <fb_hBlit8to15BGR+0x140>
-  46217f:	48 63 c6             	movsxd rax,esi
-  462182:	31 db                	xor    ebx,ebx
-  462184:	48 89 44 24 f8       	mov    QWORD PTR [rsp-0x8],rax
-  462189:	eb 29                	jmp    4621b4 <fb_hBlit8to15BGR+0x64>
-  46218b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  462190:	83 c3 01             	add    ebx,0x1
-  462193:	39 5d 70             	cmp    DWORD PTR [rbp+0x70],ebx
-  462196:	7f 0d                	jg     4621a5 <fb_hBlit8to15BGR+0x55>
-  462198:	48 63 45 30          	movsxd rax,DWORD PTR [rbp+0x30]
-  46219c:	49 83 c6 01          	add    r14,0x1
-  4621a0:	31 db                	xor    ebx,ebx
-  4621a2:	49 01 c7             	add    r15,rax
-  4621a5:	48 03 7c 24 f8       	add    rdi,QWORD PTR [rsp-0x8]
-  4621aa:	41 83 eb 01          	sub    r11d,0x1
-  4621ae:	0f 84 dc 00 00 00    	je     462290 <fb_hBlit8to15BGR+0x140>
-  4621b4:	41 80 3e 00          	cmp    BYTE PTR [r14],0x0
-  4621b8:	74 d6                	je     462190 <fb_hBlit8to15BGR+0x40>
-  4621ba:	8b 45 20             	mov    eax,DWORD PTR [rbp+0x20]
-  4621bd:	41 89 c4             	mov    r12d,eax
-  4621c0:	41 d1 fc             	sar    r12d,1
-  4621c3:	0f 84 d7 00 00 00    	je     4622a0 <fb_hBlit8to15BGR+0x150>
-  4621c9:	41 8d 44 24 ff       	lea    eax,[r12-0x1]
-  4621ce:	49 89 f9             	mov    r9,rdi
-  4621d1:	4d 89 f8             	mov    r8,r15
-  4621d4:	4d 8d 6c 47 02       	lea    r13,[r15+rax*2+0x2]
-  4621d9:	49 89 c4             	mov    r12,rax
-  4621dc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  4621e0:	41 0f b6 00          	movzx  eax,BYTE PTR [r8]
-  4621e4:	49 83 c0 02          	add    r8,0x2
-  4621e8:	49 83 c1 04          	add    r9,0x4
-  4621ec:	41 8b 0c 82          	mov    ecx,DWORD PTR [r10+rax*4]
-  4621f0:	41 0f b6 40 ff       	movzx  eax,BYTE PTR [r8-0x1]
-  4621f5:	41 8b 14 82          	mov    edx,DWORD PTR [r10+rax*4]
-  4621f9:	89 d0                	mov    eax,edx
-  4621fb:	c1 e0 07             	shl    eax,0x7
-  4621fe:	25 00 7c 00 00       	and    eax,0x7c00
-  462203:	89 c6                	mov    esi,eax
-  462205:	89 d0                	mov    eax,edx
-  462207:	c1 ea 13             	shr    edx,0x13
-  46220a:	c1 e8 06             	shr    eax,0x6
-  46220d:	83 e2 1f             	and    edx,0x1f
-  462210:	25 e0 03 00 00       	and    eax,0x3e0
-  462215:	09 f0                	or     eax,esi
-  462217:	09 d0                	or     eax,edx
-  462219:	89 ca                	mov    edx,ecx
-  46221b:	c1 e2 07             	shl    edx,0x7
-  46221e:	c1 e0 10             	shl    eax,0x10
-  462221:	89 d6                	mov    esi,edx
-  462223:	89 ca                	mov    edx,ecx
-  462225:	c1 e9 13             	shr    ecx,0x13
-  462228:	c1 ea 06             	shr    edx,0x6
-  46222b:	81 e6 00 7c 00 00    	and    esi,0x7c00
-  462231:	83 e1 1f             	and    ecx,0x1f
-  462234:	81 e2 e0 03 00 00    	and    edx,0x3e0
-  46223a:	09 f2                	or     edx,esi
-  46223c:	09 d1                	or     ecx,edx
-  46223e:	09 c8                	or     eax,ecx
-  462240:	41 89 41 fc          	mov    DWORD PTR [r9-0x4],eax
-  462244:	4d 39 e8             	cmp    r8,r13
-  462247:	75 97                	jne    4621e0 <fb_hBlit8to15BGR+0x90>
-  462249:	49 83 c4 01          	add    r12,0x1
-  46224d:	8b 45 20             	mov    eax,DWORD PTR [rbp+0x20]
-  462250:	4b 8d 14 67          	lea    rdx,[r15+r12*2]
-  462254:	4a 8d 0c a7          	lea    rcx,[rdi+r12*4]
-  462258:	a8 01                	test   al,0x1
-  46225a:	0f 84 30 ff ff ff    	je     462190 <fb_hBlit8to15BGR+0x40>
-  462260:	0f b6 02             	movzx  eax,BYTE PTR [rdx]
-  462263:	41 8b 14 82          	mov    edx,DWORD PTR [r10+rax*4]
-  462267:	89 d0                	mov    eax,edx
-  462269:	89 d6                	mov    esi,edx
-  46226b:	c1 ea 13             	shr    edx,0x13
-  46226e:	c1 e0 07             	shl    eax,0x7
-  462271:	c1 ee 06             	shr    esi,0x6
-  462274:	83 e2 1f             	and    edx,0x1f
-  462277:	66 25 00 7c          	and    ax,0x7c00
-  46227b:	66 81 e6 e0 03       	and    si,0x3e0
-  462280:	09 f0                	or     eax,esi
-  462282:	09 d0                	or     eax,edx
-  462284:	66 89 01             	mov    WORD PTR [rcx],ax
-  462287:	e9 04 ff ff ff       	jmp    462190 <fb_hBlit8to15BGR+0x40>
-  46228c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  462290:	5b                   	pop    rbx
-  462291:	5d                   	pop    rbp
-  462292:	41 5c                	pop    r12
-  462294:	41 5d                	pop    r13
-  462296:	41 5e                	pop    r14
-  462298:	41 5f                	pop    r15
-  46229a:	c3                   	ret    
-  46229b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  4622a0:	48 89 f9             	mov    rcx,rdi
-  4622a3:	4c 89 fa             	mov    rdx,r15
-  4622a6:	eb b0                	jmp    462258 <fb_hBlit8to15BGR+0x108>
-  4622a8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  4622af:	00 
-
-00000000004622b0 <fb_hBlit8to16RGB>:
-  4622b0:	41 57                	push   r15
-  4622b2:	41 56                	push   r14
-  4622b4:	41 55                	push   r13
-  4622b6:	41 54                	push   r12
-  4622b8:	4c 8b 25 59 19 04 00 	mov    r12,QWORD PTR [rip+0x41959]        # 4a3c18 <__fb_gfx>
-  4622bf:	55                   	push   rbp
-  4622c0:	53                   	push   rbx
-  4622c1:	41 8b 5c 24 24       	mov    ebx,DWORD PTR [r12+0x24]
-  4622c6:	4d 8b 5c 24 40       	mov    r11,QWORD PTR [r12+0x40]
-  4622cb:	41 0f af 5c 24 70    	imul   ebx,DWORD PTR [r12+0x70]
-  4622d1:	4d 8b 74 24 18       	mov    r14,QWORD PTR [r12+0x18]
-  4622d6:	4d 8b 7c 24 50       	mov    r15,QWORD PTR [r12+0x50]
-  4622db:	85 db                	test   ebx,ebx
-  4622dd:	0f 84 0d 01 00 00    	je     4623f0 <fb_hBlit8to16RGB+0x140>
-  4622e3:	48 63 c6             	movsxd rax,esi
-  4622e6:	31 ed                	xor    ebp,ebp
-  4622e8:	48 89 44 24 f0       	mov    QWORD PTR [rsp-0x10],rax
-  4622ed:	eb 27                	jmp    462316 <fb_hBlit8to16RGB+0x66>
-  4622ef:	90                   	nop
-  4622f0:	83 c5 01             	add    ebp,0x1
-  4622f3:	41 39 6c 24 70       	cmp    DWORD PTR [r12+0x70],ebp
-  4622f8:	7f 0e                	jg     462308 <fb_hBlit8to16RGB+0x58>
-  4622fa:	49 63 44 24 30       	movsxd rax,DWORD PTR [r12+0x30]
-  4622ff:	49 83 c7 01          	add    r15,0x1
-  462303:	31 ed                	xor    ebp,ebp
-  462305:	49 01 c6             	add    r14,rax
-  462308:	48 03 7c 24 f0       	add    rdi,QWORD PTR [rsp-0x10]
-  46230d:	83 eb 01             	sub    ebx,0x1
-  462310:	0f 84 da 00 00 00    	je     4623f0 <fb_hBlit8to16RGB+0x140>
-  462316:	41 80 3f 00          	cmp    BYTE PTR [r15],0x0
-  46231a:	74 d4                	je     4622f0 <fb_hBlit8to16RGB+0x40>
-  46231c:	41 8b 44 24 20       	mov    eax,DWORD PTR [r12+0x20]
-  462321:	89 c2                	mov    edx,eax
-  462323:	d1 fa                	sar    edx,1
-  462325:	0f 84 d5 00 00 00    	je     462400 <fb_hBlit8to16RGB+0x150>
-  46232b:	8d 42 ff             	lea    eax,[rdx-0x1]
-  46232e:	49 89 fa             	mov    r10,rdi
-  462331:	4d 89 f1             	mov    r9,r14
-  462334:	4d 8d 6c 46 02       	lea    r13,[r14+rax*2+0x2]
-  462339:	89 44 24 fc          	mov    DWORD PTR [rsp-0x4],eax
-  46233d:	0f 1f 00             	nop    DWORD PTR [rax]
-  462340:	41 0f b6 01          	movzx  eax,BYTE PTR [r9]
-  462344:	41 0f b6 51 01       	movzx  edx,BYTE PTR [r9+0x1]
-  462349:	49 83 c1 02          	add    r9,0x2
-  46234d:	49 83 c2 04          	add    r10,0x4
-  462351:	41 8b 04 83          	mov    eax,DWORD PTR [r11+rax*4]
-  462355:	41 8b 0c 93          	mov    ecx,DWORD PTR [r11+rdx*4]
-  462359:	89 c6                	mov    esi,eax
-  46235b:	c1 e8 03             	shr    eax,0x3
-  46235e:	89 ca                	mov    edx,ecx
-  462360:	c1 ee 05             	shr    esi,0x5
-  462363:	83 e0 1f             	and    eax,0x1f
-  462366:	c1 e9 03             	shr    ecx,0x3
-  462369:	41 89 f0             	mov    r8d,esi
-  46236c:	81 e6 00 f8 00 00    	and    esi,0xf800
-  462372:	c1 ea 05             	shr    edx,0x5
-  462375:	41 81 e0 e0 07 00 00 	and    r8d,0x7e0
-  46237c:	83 e1 1f             	and    ecx,0x1f
-  46237f:	44 09 c0             	or     eax,r8d
-  462382:	09 f0                	or     eax,esi
-  462384:	09 c8                	or     eax,ecx
-  462386:	89 d1                	mov    ecx,edx
-  462388:	c1 e2 10             	shl    edx,0x10
-  46238b:	81 e1 e0 07 00 00    	and    ecx,0x7e0
-  462391:	81 e2 00 00 00 f8    	and    edx,0xf8000000
-  462397:	09 c8                	or     eax,ecx
-  462399:	09 d0                	or     eax,edx
-  46239b:	41 89 42 fc          	mov    DWORD PTR [r10-0x4],eax
-  46239f:	4d 39 e9             	cmp    r9,r13
-  4623a2:	75 9c                	jne    462340 <fb_hBlit8to16RGB+0x90>
-  4623a4:	8b 44 24 fc          	mov    eax,DWORD PTR [rsp-0x4]
-  4623a8:	48 83 c0 01          	add    rax,0x1
-  4623ac:	49 8d 0c 46          	lea    rcx,[r14+rax*2]
-  4623b0:	48 8d 14 87          	lea    rdx,[rdi+rax*4]
-  4623b4:	41 8b 44 24 20       	mov    eax,DWORD PTR [r12+0x20]
-  4623b9:	a8 01                	test   al,0x1
-  4623bb:	0f 84 2f ff ff ff    	je     4622f0 <fb_hBlit8to16RGB+0x40>
-  4623c1:	0f b6 01             	movzx  eax,BYTE PTR [rcx]
-  4623c4:	41 8b 04 83          	mov    eax,DWORD PTR [r11+rax*4]
-  4623c8:	89 c1                	mov    ecx,eax
-  4623ca:	c1 e8 03             	shr    eax,0x3
-  4623cd:	c1 e9 05             	shr    ecx,0x5
-  4623d0:	83 e0 1f             	and    eax,0x1f
-  4623d3:	89 ce                	mov    esi,ecx
-  4623d5:	66 81 e1 00 f8       	and    cx,0xf800
-  4623da:	66 81 e6 e0 07       	and    si,0x7e0
-  4623df:	09 f0                	or     eax,esi
-  4623e1:	09 c8                	or     eax,ecx
-  4623e3:	66 89 02             	mov    WORD PTR [rdx],ax
-  4623e6:	e9 05 ff ff ff       	jmp    4622f0 <fb_hBlit8to16RGB+0x40>
-  4623eb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  4623f0:	5b                   	pop    rbx
-  4623f1:	5d                   	pop    rbp
-  4623f2:	41 5c                	pop    r12
-  4623f4:	41 5d                	pop    r13
-  4623f6:	41 5e                	pop    r14
-  4623f8:	41 5f                	pop    r15
-  4623fa:	c3                   	ret    
-  4623fb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  462400:	48 89 fa             	mov    rdx,rdi
-  462403:	4c 89 f1             	mov    rcx,r14
-  462406:	eb b1                	jmp    4623b9 <fb_hBlit8to16RGB+0x109>
-  462408:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  46240f:	00 
-
-0000000000462410 <fb_hBlit8to16BGR>:
-  462410:	41 57                	push   r15
-  462412:	41 56                	push   r14
-  462414:	41 55                	push   r13
-  462416:	41 54                	push   r12
-  462418:	55                   	push   rbp
-  462419:	48 8b 2d f8 17 04 00 	mov    rbp,QWORD PTR [rip+0x417f8]        # 4a3c18 <__fb_gfx>
-  462420:	53                   	push   rbx
-  462421:	44 8b 5d 24          	mov    r11d,DWORD PTR [rbp+0x24]
-  462425:	4c 8b 55 40          	mov    r10,QWORD PTR [rbp+0x40]
-  462429:	44 0f af 5d 70       	imul   r11d,DWORD PTR [rbp+0x70]
-  46242e:	4c 8b 7d 18          	mov    r15,QWORD PTR [rbp+0x18]
-  462432:	4c 8b 75 50          	mov    r14,QWORD PTR [rbp+0x50]
-  462436:	45 85 db             	test   r11d,r11d
-  462439:	0f 84 11 01 00 00    	je     462550 <fb_hBlit8to16BGR+0x140>
-  46243f:	48 63 c6             	movsxd rax,esi
-  462442:	31 db                	xor    ebx,ebx
-  462444:	48 89 44 24 f8       	mov    QWORD PTR [rsp-0x8],rax
-  462449:	eb 29                	jmp    462474 <fb_hBlit8to16BGR+0x64>
-  46244b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  462450:	83 c3 01             	add    ebx,0x1
-  462453:	39 5d 70             	cmp    DWORD PTR [rbp+0x70],ebx
-  462456:	7f 0d                	jg     462465 <fb_hBlit8to16BGR+0x55>
-  462458:	48 63 45 30          	movsxd rax,DWORD PTR [rbp+0x30]
-  46245c:	49 83 c6 01          	add    r14,0x1
-  462460:	31 db                	xor    ebx,ebx
-  462462:	49 01 c7             	add    r15,rax
-  462465:	48 03 7c 24 f8       	add    rdi,QWORD PTR [rsp-0x8]
-  46246a:	41 83 eb 01          	sub    r11d,0x1
-  46246e:	0f 84 dc 00 00 00    	je     462550 <fb_hBlit8to16BGR+0x140>
-  462474:	41 80 3e 00          	cmp    BYTE PTR [r14],0x0
-  462478:	74 d6                	je     462450 <fb_hBlit8to16BGR+0x40>
-  46247a:	8b 45 20             	mov    eax,DWORD PTR [rbp+0x20]
-  46247d:	41 89 c4             	mov    r12d,eax
-  462480:	41 d1 fc             	sar    r12d,1
-  462483:	0f 84 d7 00 00 00    	je     462560 <fb_hBlit8to16BGR+0x150>
-  462489:	41 8d 44 24 ff       	lea    eax,[r12-0x1]
-  46248e:	49 89 f9             	mov    r9,rdi
-  462491:	4d 89 f8             	mov    r8,r15
-  462494:	4d 8d 6c 47 02       	lea    r13,[r15+rax*2+0x2]
-  462499:	49 89 c4             	mov    r12,rax
-  46249c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  4624a0:	41 0f b6 00          	movzx  eax,BYTE PTR [r8]
-  4624a4:	49 83 c0 02          	add    r8,0x2
-  4624a8:	49 83 c1 04          	add    r9,0x4
-  4624ac:	41 8b 0c 82          	mov    ecx,DWORD PTR [r10+rax*4]
-  4624b0:	41 0f b6 40 ff       	movzx  eax,BYTE PTR [r8-0x1]
-  4624b5:	41 8b 14 82          	mov    edx,DWORD PTR [r10+rax*4]
-  4624b9:	89 d0                	mov    eax,edx
-  4624bb:	c1 e0 08             	shl    eax,0x8
-  4624be:	25 00 f8 00 00       	and    eax,0xf800
-  4624c3:	89 c6                	mov    esi,eax
-  4624c5:	89 d0                	mov    eax,edx
-  4624c7:	c1 ea 13             	shr    edx,0x13
-  4624ca:	c1 e8 05             	shr    eax,0x5
-  4624cd:	83 e2 1f             	and    edx,0x1f
-  4624d0:	25 e0 07 00 00       	and    eax,0x7e0
-  4624d5:	09 f0                	or     eax,esi
-  4624d7:	09 d0                	or     eax,edx
-  4624d9:	89 ca                	mov    edx,ecx
-  4624db:	c1 e2 08             	shl    edx,0x8
-  4624de:	c1 e0 10             	shl    eax,0x10
-  4624e1:	89 d6                	mov    esi,edx
-  4624e3:	89 ca                	mov    edx,ecx
-  4624e5:	c1 e9 13             	shr    ecx,0x13
-  4624e8:	c1 ea 05             	shr    edx,0x5
-  4624eb:	81 e6 00 f8 00 00    	and    esi,0xf800
-  4624f1:	83 e1 1f             	and    ecx,0x1f
-  4624f4:	81 e2 e0 07 00 00    	and    edx,0x7e0
-  4624fa:	09 f2                	or     edx,esi
-  4624fc:	09 d1                	or     ecx,edx
-  4624fe:	09 c8                	or     eax,ecx
-  462500:	41 89 41 fc          	mov    DWORD PTR [r9-0x4],eax
-  462504:	4d 39 e8             	cmp    r8,r13
-  462507:	75 97                	jne    4624a0 <fb_hBlit8to16BGR+0x90>
-  462509:	49 83 c4 01          	add    r12,0x1
-  46250d:	8b 45 20             	mov    eax,DWORD PTR [rbp+0x20]
-  462510:	4b 8d 14 67          	lea    rdx,[r15+r12*2]
-  462514:	4a 8d 0c a7          	lea    rcx,[rdi+r12*4]
-  462518:	a8 01                	test   al,0x1
-  46251a:	0f 84 30 ff ff ff    	je     462450 <fb_hBlit8to16BGR+0x40>
-  462520:	0f b6 02             	movzx  eax,BYTE PTR [rdx]
-  462523:	41 8b 14 82          	mov    edx,DWORD PTR [r10+rax*4]
-  462527:	89 d0                	mov    eax,edx
-  462529:	89 d6                	mov    esi,edx
-  46252b:	c1 ea 13             	shr    edx,0x13
-  46252e:	c1 e0 08             	shl    eax,0x8
-  462531:	c1 ee 05             	shr    esi,0x5
-  462534:	83 e2 1f             	and    edx,0x1f
-  462537:	66 25 00 f8          	and    ax,0xf800
-  46253b:	66 81 e6 e0 07       	and    si,0x7e0
-  462540:	09 f0                	or     eax,esi
-  462542:	09 d0                	or     eax,edx
-  462544:	66 89 01             	mov    WORD PTR [rcx],ax
-  462547:	e9 04 ff ff ff       	jmp    462450 <fb_hBlit8to16BGR+0x40>
-  46254c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  462550:	5b                   	pop    rbx
-  462551:	5d                   	pop    rbp
-  462552:	41 5c                	pop    r12
-  462554:	41 5d                	pop    r13
-  462556:	41 5e                	pop    r14
-  462558:	41 5f                	pop    r15
-  46255a:	c3                   	ret    
-  46255b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  462560:	48 89 f9             	mov    rcx,rdi
-  462563:	4c 89 fa             	mov    rdx,r15
-  462566:	eb b0                	jmp    462518 <fb_hBlit8to16BGR+0x108>
-  462568:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  46256f:	00 
-
-0000000000462570 <fb_hBlit8to24RGB>:
-  462570:	48 8b 05 a1 16 04 00 	mov    rax,QWORD PTR [rip+0x416a1]        # 4a3c18 <__fb_gfx>
-  462577:	41 56                	push   r14
-  462579:	41 54                	push   r12
-  46257b:	55                   	push   rbp
-  46257c:	53                   	push   rbx
-  46257d:	44 8b 48 24          	mov    r9d,DWORD PTR [rax+0x24]
-  462581:	48 8b 68 40          	mov    rbp,QWORD PTR [rax+0x40]
-  462585:	44 0f af 48 70       	imul   r9d,DWORD PTR [rax+0x70]
-  46258a:	4c 8b 60 18          	mov    r12,QWORD PTR [rax+0x18]
-  46258e:	4c 8b 70 50          	mov    r14,QWORD PTR [rax+0x50]
-  462592:	45 85 c9             	test   r9d,r9d
-  462595:	74 79                	je     462610 <fb_hBlit8to24RGB+0xa0>
-  462597:	48 63 f6             	movsxd rsi,esi
-  46259a:	45 31 d2             	xor    r10d,r10d
-  46259d:	eb 22                	jmp    4625c1 <fb_hBlit8to24RGB+0x51>
-  46259f:	90                   	nop
-  4625a0:	41 83 c2 01          	add    r10d,0x1
-  4625a4:	44 39 50 70          	cmp    DWORD PTR [rax+0x70],r10d
-  4625a8:	7f 0e                	jg     4625b8 <fb_hBlit8to24RGB+0x48>
-  4625aa:	48 63 50 30          	movsxd rdx,DWORD PTR [rax+0x30]
-  4625ae:	49 83 c6 01          	add    r14,0x1
-  4625b2:	45 31 d2             	xor    r10d,r10d
-  4625b5:	49 01 d4             	add    r12,rdx
-  4625b8:	48 01 f7             	add    rdi,rsi
-  4625bb:	41 83 e9 01          	sub    r9d,0x1
-  4625bf:	74 4f                	je     462610 <fb_hBlit8to24RGB+0xa0>
-  4625c1:	41 80 3e 00          	cmp    BYTE PTR [r14],0x0
-  4625c5:	74 d9                	je     4625a0 <fb_hBlit8to24RGB+0x30>
-  4625c7:	8b 50 20             	mov    edx,DWORD PTR [rax+0x20]
-  4625ca:	85 d2                	test   edx,edx
-  4625cc:	74 d2                	je     4625a0 <fb_hBlit8to24RGB+0x30>
-  4625ce:	8d 42 ff             	lea    eax,[rdx-0x1]
-  4625d1:	4c 89 e2             	mov    rdx,r12
-  4625d4:	4d 8d 5c 04 01       	lea    r11,[r12+rax*1+0x1]
-  4625d9:	48 89 f8             	mov    rax,rdi
-  4625dc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  4625e0:	0f b6 0a             	movzx  ecx,BYTE PTR [rdx]
-  4625e3:	48 83 c2 01          	add    rdx,0x1
-  4625e7:	48 83 c0 03          	add    rax,0x3
-  4625eb:	8b 4c 8d 00          	mov    ecx,DWORD PTR [rbp+rcx*4+0x0]
-  4625ef:	41 89 c8             	mov    r8d,ecx
-  4625f2:	88 68 fe             	mov    BYTE PTR [rax-0x2],ch
-  4625f5:	88 48 ff             	mov    BYTE PTR [rax-0x1],cl
-  4625f8:	41 c1 e8 10          	shr    r8d,0x10
-  4625fc:	44 88 40 fd          	mov    BYTE PTR [rax-0x3],r8b
-  462600:	4c 39 da             	cmp    rdx,r11
-  462603:	75 db                	jne    4625e0 <fb_hBlit8to24RGB+0x70>
-  462605:	48 8b 05 0c 16 04 00 	mov    rax,QWORD PTR [rip+0x4160c]        # 4a3c18 <__fb_gfx>
-  46260c:	eb 92                	jmp    4625a0 <fb_hBlit8to24RGB+0x30>
-  46260e:	66 90                	xchg   ax,ax
-  462610:	5b                   	pop    rbx
-  462611:	5d                   	pop    rbp
-  462612:	41 5c                	pop    r12
-  462614:	41 5e                	pop    r14
-  462616:	c3                   	ret    
-  462617:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  46261e:	00 00 
-
-0000000000462620 <fb_hBlit8to24BGR>:
-  462620:	48 8b 05 f1 15 04 00 	mov    rax,QWORD PTR [rip+0x415f1]        # 4a3c18 <__fb_gfx>
-  462627:	41 56                	push   r14
-  462629:	55                   	push   rbp
-  46262a:	53                   	push   rbx
-  46262b:	44 8b 40 24          	mov    r8d,DWORD PTR [rax+0x24]
-  46262f:	4c 8b 70 40          	mov    r14,QWORD PTR [rax+0x40]
-  462633:	44 0f af 40 70       	imul   r8d,DWORD PTR [rax+0x70]
-  462638:	48 8b 68 18          	mov    rbp,QWORD PTR [rax+0x18]
-  46263c:	4c 8b 58 50          	mov    r11,QWORD PTR [rax+0x50]
-  462640:	45 85 c0             	test   r8d,r8d
-  462643:	74 7b                	je     4626c0 <fb_hBlit8to24BGR+0xa0>
-  462645:	48 63 f6             	movsxd rsi,esi
-  462648:	45 31 c9             	xor    r9d,r9d
-  46264b:	eb 24                	jmp    462671 <fb_hBlit8to24BGR+0x51>
-  46264d:	0f 1f 00             	nop    DWORD PTR [rax]
-  462650:	41 83 c1 01          	add    r9d,0x1
-  462654:	44 39 48 70          	cmp    DWORD PTR [rax+0x70],r9d
-  462658:	7f 0e                	jg     462668 <fb_hBlit8to24BGR+0x48>
-  46265a:	48 63 50 30          	movsxd rdx,DWORD PTR [rax+0x30]
-  46265e:	49 83 c3 01          	add    r11,0x1
-  462662:	45 31 c9             	xor    r9d,r9d
-  462665:	48 01 d5             	add    rbp,rdx
-  462668:	48 01 f7             	add    rdi,rsi
-  46266b:	41 83 e8 01          	sub    r8d,0x1
-  46266f:	74 4f                	je     4626c0 <fb_hBlit8to24BGR+0xa0>
-  462671:	41 80 3b 00          	cmp    BYTE PTR [r11],0x0
-  462675:	74 d9                	je     462650 <fb_hBlit8to24BGR+0x30>
-  462677:	8b 50 20             	mov    edx,DWORD PTR [rax+0x20]
-  46267a:	85 d2                	test   edx,edx
-  46267c:	74 d2                	je     462650 <fb_hBlit8to24BGR+0x30>
-  46267e:	8d 42 ff             	lea    eax,[rdx-0x1]
-  462681:	48 89 e9             	mov    rcx,rbp
-  462684:	48 89 fa             	mov    rdx,rdi
-  462687:	4c 8d 54 05 01       	lea    r10,[rbp+rax*1+0x1]
-  46268c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  462690:	0f b6 01             	movzx  eax,BYTE PTR [rcx]
-  462693:	48 83 c1 01          	add    rcx,0x1
-  462697:	48 83 c2 03          	add    rdx,0x3
-  46269b:	41 8b 04 86          	mov    eax,DWORD PTR [r14+rax*4]
-  46269f:	88 42 fd             	mov    BYTE PTR [rdx-0x3],al
-  4626a2:	88 62 fe             	mov    BYTE PTR [rdx-0x2],ah
-  4626a5:	c1 e8 10             	shr    eax,0x10
-  4626a8:	88 42 ff             	mov    BYTE PTR [rdx-0x1],al
-  4626ab:	4c 39 d1             	cmp    rcx,r10
-  4626ae:	75 e0                	jne    462690 <fb_hBlit8to24BGR+0x70>
-  4626b0:	48 8b 05 61 15 04 00 	mov    rax,QWORD PTR [rip+0x41561]        # 4a3c18 <__fb_gfx>
-  4626b7:	eb 97                	jmp    462650 <fb_hBlit8to24BGR+0x30>
-  4626b9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  4626c0:	5b                   	pop    rbx
-  4626c1:	5d                   	pop    rbp
-  4626c2:	41 5e                	pop    r14
-  4626c4:	c3                   	ret    
-  4626c5:	90                   	nop
-  4626c6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  4626cd:	00 00 00 
-
-00000000004626d0 <fb_hBlit8to32RGB>:
-  4626d0:	4c 8b 15 41 15 04 00 	mov    r10,QWORD PTR [rip+0x41541]        # 4a3c18 <__fb_gfx>
-  4626d7:	41 54                	push   r12
-  4626d9:	55                   	push   rbp
-  4626da:	53                   	push   rbx
-  4626db:	45 8b 42 24          	mov    r8d,DWORD PTR [r10+0x24]
-  4626df:	49 8b 6a 40          	mov    rbp,QWORD PTR [r10+0x40]
-  4626e3:	45 0f af 42 70       	imul   r8d,DWORD PTR [r10+0x70]
-  4626e8:	4d 8b 62 18          	mov    r12,QWORD PTR [r10+0x18]
-  4626ec:	49 8b 5a 50          	mov    rbx,QWORD PTR [r10+0x50]
-  4626f0:	45 85 c0             	test   r8d,r8d
-  4626f3:	74 6b                	je     462760 <fb_hBlit8to32RGB+0x90>
-  4626f5:	48 63 f6             	movsxd rsi,esi
-  4626f8:	45 31 c9             	xor    r9d,r9d
-  4626fb:	eb 24                	jmp    462721 <fb_hBlit8to32RGB+0x51>
-  4626fd:	0f 1f 00             	nop    DWORD PTR [rax]
-  462700:	41 83 c1 01          	add    r9d,0x1
-  462704:	45 39 4a 70          	cmp    DWORD PTR [r10+0x70],r9d
-  462708:	7f 0e                	jg     462718 <fb_hBlit8to32RGB+0x48>
-  46270a:	49 63 42 30          	movsxd rax,DWORD PTR [r10+0x30]
-  46270e:	48 83 c3 01          	add    rbx,0x1
-  462712:	45 31 c9             	xor    r9d,r9d
-  462715:	49 01 c4             	add    r12,rax
-  462718:	48 01 f7             	add    rdi,rsi
-  46271b:	41 83 e8 01          	sub    r8d,0x1
-  46271f:	74 3f                	je     462760 <fb_hBlit8to32RGB+0x90>
-  462721:	80 3b 00             	cmp    BYTE PTR [rbx],0x0
-  462724:	74 da                	je     462700 <fb_hBlit8to32RGB+0x30>
-  462726:	41 8b 42 20          	mov    eax,DWORD PTR [r10+0x20]
-  46272a:	85 c0                	test   eax,eax
-  46272c:	74 d2                	je     462700 <fb_hBlit8to32RGB+0x30>
-  46272e:	83 e8 01             	sub    eax,0x1
-  462731:	48 89 fa             	mov    rdx,rdi
-  462734:	4d 8d 5c 04 01       	lea    r11,[r12+rax*1+0x1]
-  462739:	4c 89 e0             	mov    rax,r12
-  46273c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  462740:	0f b6 08             	movzx  ecx,BYTE PTR [rax]
-  462743:	48 83 c0 01          	add    rax,0x1
-  462747:	48 83 c2 04          	add    rdx,0x4
-  46274b:	8b 4c 8d 00          	mov    ecx,DWORD PTR [rbp+rcx*4+0x0]
-  46274f:	89 4a fc             	mov    DWORD PTR [rdx-0x4],ecx
-  462752:	49 39 c3             	cmp    r11,rax
-  462755:	75 e9                	jne    462740 <fb_hBlit8to32RGB+0x70>
-  462757:	eb a7                	jmp    462700 <fb_hBlit8to32RGB+0x30>
-  462759:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  462760:	5b                   	pop    rbx
-  462761:	5d                   	pop    rbp
-  462762:	41 5c                	pop    r12
-  462764:	c3                   	ret    
-  462765:	90                   	nop
-  462766:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  46276d:	00 00 00 
-
-0000000000462770 <fb_hBlit8to32BGR>:
-  462770:	4c 8b 15 a1 14 04 00 	mov    r10,QWORD PTR [rip+0x414a1]        # 4a3c18 <__fb_gfx>
-  462777:	41 56                	push   r14
-  462779:	41 55                	push   r13
-  46277b:	41 54                	push   r12
-  46277d:	55                   	push   rbp
-  46277e:	53                   	push   rbx
-  46277f:	45 8b 42 24          	mov    r8d,DWORD PTR [r10+0x24]
-  462783:	49 8b 6a 40          	mov    rbp,QWORD PTR [r10+0x40]
-  462787:	45 0f af 42 70       	imul   r8d,DWORD PTR [r10+0x70]
-  46278c:	4d 8b 62 18          	mov    r12,QWORD PTR [r10+0x18]
-  462790:	49 8b 5a 50          	mov    rbx,QWORD PTR [r10+0x50]
-  462794:	45 85 c0             	test   r8d,r8d
-  462797:	0f 84 83 00 00 00    	je     462820 <fb_hBlit8to32BGR+0xb0>
-  46279d:	48 63 f6             	movsxd rsi,esi
-  4627a0:	45 31 c9             	xor    r9d,r9d
-  4627a3:	eb 24                	jmp    4627c9 <fb_hBlit8to32BGR+0x59>
-  4627a5:	0f 1f 00             	nop    DWORD PTR [rax]
-  4627a8:	41 83 c1 01          	add    r9d,0x1
-  4627ac:	45 39 4a 70          	cmp    DWORD PTR [r10+0x70],r9d
-  4627b0:	7f 0e                	jg     4627c0 <fb_hBlit8to32BGR+0x50>
-  4627b2:	49 63 42 30          	movsxd rax,DWORD PTR [r10+0x30]
-  4627b6:	48 83 c3 01          	add    rbx,0x1
-  4627ba:	45 31 c9             	xor    r9d,r9d
-  4627bd:	49 01 c4             	add    r12,rax
-  4627c0:	48 01 f7             	add    rdi,rsi
-  4627c3:	41 83 e8 01          	sub    r8d,0x1
-  4627c7:	74 57                	je     462820 <fb_hBlit8to32BGR+0xb0>
-  4627c9:	80 3b 00             	cmp    BYTE PTR [rbx],0x0
-  4627cc:	74 da                	je     4627a8 <fb_hBlit8to32BGR+0x38>
-  4627ce:	41 8b 42 20          	mov    eax,DWORD PTR [r10+0x20]
-  4627d2:	85 c0                	test   eax,eax
-  4627d4:	74 d2                	je     4627a8 <fb_hBlit8to32BGR+0x38>
-  4627d6:	83 e8 01             	sub    eax,0x1
-  4627d9:	4c 89 e2             	mov    rdx,r12
-  4627dc:	48 89 f9             	mov    rcx,rdi
-  4627df:	4d 8d 5c 04 01       	lea    r11,[r12+rax*1+0x1]
-  4627e4:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  4627e8:	0f b6 02             	movzx  eax,BYTE PTR [rdx]
-  4627eb:	48 83 c2 01          	add    rdx,0x1
-  4627ef:	48 83 c1 04          	add    rcx,0x4
-  4627f3:	8b 44 85 00          	mov    eax,DWORD PTR [rbp+rax*4+0x0]
-  4627f7:	41 89 c5             	mov    r13d,eax
-  4627fa:	41 89 c6             	mov    r14d,eax
-  4627fd:	c1 e0 10             	shl    eax,0x10
-  462800:	41 81 e5 00 ff 00 00 	and    r13d,0xff00
-  462807:	41 c1 ee 10          	shr    r14d,0x10
-  46280b:	25 00 00 ff 00       	and    eax,0xff0000
-  462810:	45 09 f5             	or     r13d,r14d
-  462813:	44 09 e8             	or     eax,r13d
-  462816:	89 41 fc             	mov    DWORD PTR [rcx-0x4],eax
-  462819:	4c 39 da             	cmp    rdx,r11
-  46281c:	75 ca                	jne    4627e8 <fb_hBlit8to32BGR+0x78>
-  46281e:	eb 88                	jmp    4627a8 <fb_hBlit8to32BGR+0x38>
-  462820:	5b                   	pop    rbx
-  462821:	5d                   	pop    rbp
-  462822:	41 5c                	pop    r12
-  462824:	41 5d                	pop    r13
-  462826:	41 5e                	pop    r14
-  462828:	c3                   	ret    
-  462829:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-
-0000000000462830 <fb_hBlit16to15RGB>:
-  462830:	4c 8b 1d e1 13 04 00 	mov    r11,QWORD PTR [rip+0x413e1]        # 4a3c18 <__fb_gfx>
-  462837:	41 57                	push   r15
-  462839:	41 56                	push   r14
-  46283b:	41 55                	push   r13
-  46283d:	41 54                	push   r12
-  46283f:	55                   	push   rbp
-  462840:	53                   	push   rbx
-  462841:	45 8b 4b 24          	mov    r9d,DWORD PTR [r11+0x24]
-  462845:	45 0f af 4b 70       	imul   r9d,DWORD PTR [r11+0x70]
-  46284a:	4d 8b 63 18          	mov    r12,QWORD PTR [r11+0x18]
-  46284e:	49 8b 5b 50          	mov    rbx,QWORD PTR [r11+0x50]
-  462852:	45 85 c9             	test   r9d,r9d
-  462855:	0f 84 05 01 00 00    	je     462960 <fb_hBlit16to15RGB+0x130>
-  46285b:	4c 63 ee             	movsxd r13,esi
-  46285e:	45 31 d2             	xor    r10d,r10d
-  462861:	eb 2a                	jmp    46288d <fb_hBlit16to15RGB+0x5d>
-  462863:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  462868:	41 83 c2 01          	add    r10d,0x1
-  46286c:	45 39 53 70          	cmp    DWORD PTR [r11+0x70],r10d
-  462870:	7f 0e                	jg     462880 <fb_hBlit16to15RGB+0x50>
-  462872:	49 63 43 30          	movsxd rax,DWORD PTR [r11+0x30]
-  462876:	48 83 c3 01          	add    rbx,0x1
-  46287a:	45 31 d2             	xor    r10d,r10d
-  46287d:	49 01 c4             	add    r12,rax
-  462880:	4c 01 ef             	add    rdi,r13
-  462883:	41 83 e9 01          	sub    r9d,0x1
-  462887:	0f 84 d3 00 00 00    	je     462960 <fb_hBlit16to15RGB+0x130>
-  46288d:	80 3b 00             	cmp    BYTE PTR [rbx],0x0
-  462890:	74 d6                	je     462868 <fb_hBlit16to15RGB+0x38>
-  462892:	41 8b 43 20          	mov    eax,DWORD PTR [r11+0x20]
-  462896:	89 c5                	mov    ebp,eax
-  462898:	d1 fd                	sar    ebp,1
-  46289a:	0f 84 d0 00 00 00    	je     462970 <fb_hBlit16to15RGB+0x140>
-  4628a0:	8d 45 ff             	lea    eax,[rbp-0x1]
-  4628a3:	4d 89 e0             	mov    r8,r12
-  4628a6:	48 89 f9             	mov    rcx,rdi
-  4628a9:	48 8d 74 87 04       	lea    rsi,[rdi+rax*4+0x4]
-  4628ae:	48 89 c5             	mov    rbp,rax
-  4628b1:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  4628b8:	41 0f b7 50 02       	movzx  edx,WORD PTR [r8+0x2]
-  4628bd:	45 0f b7 30          	movzx  r14d,WORD PTR [r8]
-  4628c1:	48 83 c1 04          	add    rcx,0x4
-  4628c5:	49 83 c0 04          	add    r8,0x4
-  4628c9:	89 d0                	mov    eax,edx
-  4628cb:	41 89 d7             	mov    r15d,edx
-  4628ce:	c1 ea 0b             	shr    edx,0xb
-  4628d1:	c1 e0 0a             	shl    eax,0xa
-  4628d4:	41 d1 ef             	shr    r15d,1
-  4628d7:	41 81 e7 e0 03 00 00 	and    r15d,0x3e0
-  4628de:	25 00 7c 00 00       	and    eax,0x7c00
-  4628e3:	44 09 f8             	or     eax,r15d
-  4628e6:	45 89 f7             	mov    r15d,r14d
-  4628e9:	09 d0                	or     eax,edx
-  4628eb:	44 89 f2             	mov    edx,r14d
-  4628ee:	41 d1 ef             	shr    r15d,1
-  4628f1:	c1 e2 0a             	shl    edx,0xa
-  4628f4:	41 81 e7 e0 03 00 00 	and    r15d,0x3e0
-  4628fb:	41 c1 ee 0b          	shr    r14d,0xb
-  4628ff:	81 e2 00 7c 00 00    	and    edx,0x7c00
-  462905:	c1 e0 10             	shl    eax,0x10
-  462908:	44 09 fa             	or     edx,r15d
-  46290b:	44 09 f2             	or     edx,r14d
-  46290e:	09 d0                	or     eax,edx
-  462910:	89 41 fc             	mov    DWORD PTR [rcx-0x4],eax
-  462913:	48 39 f1             	cmp    rcx,rsi
-  462916:	75 a0                	jne    4628b8 <fb_hBlit16to15RGB+0x88>
-  462918:	48 8d 14 ad 04 00 00 	lea    rdx,[rbp*4+0x4]
-  46291f:	00 
-  462920:	41 8b 43 20          	mov    eax,DWORD PTR [r11+0x20]
-  462924:	49 8d 0c 14          	lea    rcx,[r12+rdx*1]
-  462928:	48 01 fa             	add    rdx,rdi
-  46292b:	a8 01                	test   al,0x1
-  46292d:	0f 84 35 ff ff ff    	je     462868 <fb_hBlit16to15RGB+0x38>
-  462933:	0f b7 09             	movzx  ecx,WORD PTR [rcx]
-  462936:	89 c8                	mov    eax,ecx
-  462938:	89 ce                	mov    esi,ecx
-  46293a:	d1 e9                	shr    ecx,1
-  46293c:	c1 e0 0a             	shl    eax,0xa
-  46293f:	c1 ee 0b             	shr    esi,0xb
-  462942:	66 81 e1 e0 03       	and    cx,0x3e0
-  462947:	66 25 00 7c          	and    ax,0x7c00
-  46294b:	09 f0                	or     eax,esi
-  46294d:	09 c8                	or     eax,ecx
-  46294f:	66 89 02             	mov    WORD PTR [rdx],ax
-  462952:	e9 11 ff ff ff       	jmp    462868 <fb_hBlit16to15RGB+0x38>
-  462957:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  46295e:	00 00 
-  462960:	5b                   	pop    rbx
-  462961:	5d                   	pop    rbp
-  462962:	41 5c                	pop    r12
-  462964:	41 5d                	pop    r13
-  462966:	41 5e                	pop    r14
-  462968:	41 5f                	pop    r15
-  46296a:	c3                   	ret    
-  46296b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  462970:	4c 89 e1             	mov    rcx,r12
-  462973:	48 89 fa             	mov    rdx,rdi
-  462976:	eb b3                	jmp    46292b <fb_hBlit16to15RGB+0xfb>
-  462978:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  46297f:	00 
-
-0000000000462980 <fb_hBlit16to15BGR>:
-  462980:	4c 8b 1d 91 12 04 00 	mov    r11,QWORD PTR [rip+0x41291]        # 4a3c18 <__fb_gfx>
-  462987:	41 56                	push   r14
-  462989:	41 55                	push   r13
-  46298b:	41 54                	push   r12
-  46298d:	55                   	push   rbp
-  46298e:	53                   	push   rbx
-  46298f:	45 8b 4b 24          	mov    r9d,DWORD PTR [r11+0x24]
-  462993:	4d 8b 63 18          	mov    r12,QWORD PTR [r11+0x18]
-  462997:	45 0f af 4b 70       	imul   r9d,DWORD PTR [r11+0x70]
-  46299c:	49 8b 5b 50          	mov    rbx,QWORD PTR [r11+0x50]
-  4629a0:	45 85 c9             	test   r9d,r9d
-  4629a3:	0f 84 d7 00 00 00    	je     462a80 <fb_hBlit16to15BGR+0x100>
-  4629a9:	4c 63 ee             	movsxd r13,esi
-  4629ac:	45 31 d2             	xor    r10d,r10d
-  4629af:	eb 2c                	jmp    4629dd <fb_hBlit16to15BGR+0x5d>
-  4629b1:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  4629b8:	41 83 c2 01          	add    r10d,0x1
-  4629bc:	45 39 53 70          	cmp    DWORD PTR [r11+0x70],r10d
-  4629c0:	7f 0e                	jg     4629d0 <fb_hBlit16to15BGR+0x50>
-  4629c2:	49 63 43 30          	movsxd rax,DWORD PTR [r11+0x30]
-  4629c6:	48 83 c3 01          	add    rbx,0x1
-  4629ca:	45 31 d2             	xor    r10d,r10d
-  4629cd:	49 01 c4             	add    r12,rax
-  4629d0:	4c 01 ef             	add    rdi,r13
-  4629d3:	41 83 e9 01          	sub    r9d,0x1
-  4629d7:	0f 84 a3 00 00 00    	je     462a80 <fb_hBlit16to15BGR+0x100>
-  4629dd:	80 3b 00             	cmp    BYTE PTR [rbx],0x0
-  4629e0:	74 d6                	je     4629b8 <fb_hBlit16to15BGR+0x38>
-  4629e2:	41 8b 43 20          	mov    eax,DWORD PTR [r11+0x20]
-  4629e6:	89 c5                	mov    ebp,eax
-  4629e8:	d1 fd                	sar    ebp,1
-  4629ea:	0f 84 a0 00 00 00    	je     462a90 <fb_hBlit16to15BGR+0x110>
-  4629f0:	8d 45 ff             	lea    eax,[rbp-0x1]
-  4629f3:	4d 89 e0             	mov    r8,r12
-  4629f6:	48 89 f9             	mov    rcx,rdi
-  4629f9:	48 8d 74 87 04       	lea    rsi,[rdi+rax*4+0x4]
-  4629fe:	48 89 c5             	mov    rbp,rax
-  462a01:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  462a08:	41 0f b7 50 02       	movzx  edx,WORD PTR [r8+0x2]
-  462a0d:	45 0f b7 30          	movzx  r14d,WORD PTR [r8]
-  462a11:	48 83 c1 04          	add    rcx,0x4
-  462a15:	49 83 c0 04          	add    r8,0x4
-  462a19:	89 d0                	mov    eax,edx
-  462a1b:	83 e2 1f             	and    edx,0x1f
-  462a1e:	d1 e8                	shr    eax,1
-  462a20:	25 e0 7f 00 00       	and    eax,0x7fe0
-  462a25:	09 d0                	or     eax,edx
-  462a27:	44 89 f2             	mov    edx,r14d
-  462a2a:	41 83 e6 1f          	and    r14d,0x1f
-  462a2e:	d1 ea                	shr    edx,1
-  462a30:	c1 e0 10             	shl    eax,0x10
-  462a33:	81 e2 e0 7f 00 00    	and    edx,0x7fe0
-  462a39:	44 09 f2             	or     edx,r14d
-  462a3c:	09 d0                	or     eax,edx
-  462a3e:	89 41 fc             	mov    DWORD PTR [rcx-0x4],eax
-  462a41:	48 39 f1             	cmp    rcx,rsi
-  462a44:	75 c2                	jne    462a08 <fb_hBlit16to15BGR+0x88>
-  462a46:	48 8d 04 ad 04 00 00 	lea    rax,[rbp*4+0x4]
-  462a4d:	00 
-  462a4e:	49 8d 0c 04          	lea    rcx,[r12+rax*1]
-  462a52:	48 8d 14 07          	lea    rdx,[rdi+rax*1]
-  462a56:	41 8b 43 20          	mov    eax,DWORD PTR [r11+0x20]
-  462a5a:	a8 01                	test   al,0x1
-  462a5c:	0f 84 56 ff ff ff    	je     4629b8 <fb_hBlit16to15BGR+0x38>
-  462a62:	0f b7 09             	movzx  ecx,WORD PTR [rcx]
-  462a65:	89 c8                	mov    eax,ecx
-  462a67:	83 e1 1f             	and    ecx,0x1f
-  462a6a:	66 d1 e8             	shr    ax,1
-  462a6d:	66 25 e0 7f          	and    ax,0x7fe0
-  462a71:	09 c8                	or     eax,ecx
-  462a73:	66 89 02             	mov    WORD PTR [rdx],ax
-  462a76:	e9 3d ff ff ff       	jmp    4629b8 <fb_hBlit16to15BGR+0x38>
-  462a7b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  462a80:	5b                   	pop    rbx
-  462a81:	5d                   	pop    rbp
-  462a82:	41 5c                	pop    r12
-  462a84:	41 5d                	pop    r13
-  462a86:	41 5e                	pop    r14
-  462a88:	c3                   	ret    
-  462a89:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  462a90:	4c 89 e1             	mov    rcx,r12
-  462a93:	48 89 fa             	mov    rdx,rdi
-  462a96:	eb c2                	jmp    462a5a <fb_hBlit16to15BGR+0xda>
-  462a98:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  462a9f:	00 
-
-0000000000462aa0 <fb_hBlit16to16RGB>:
-  462aa0:	41 57                	push   r15
-  462aa2:	41 56                	push   r14
-  462aa4:	41 55                	push   r13
-  462aa6:	41 54                	push   r12
-  462aa8:	55                   	push   rbp
-  462aa9:	48 8b 2d 68 11 04 00 	mov    rbp,QWORD PTR [rip+0x41168]        # 4a3c18 <__fb_gfx>
-  462ab0:	53                   	push   rbx
-  462ab1:	44 8b 5d 24          	mov    r11d,DWORD PTR [rbp+0x24]
-  462ab5:	4c 8b 7d 18          	mov    r15,QWORD PTR [rbp+0x18]
-  462ab9:	44 0f af 5d 70       	imul   r11d,DWORD PTR [rbp+0x70]
-  462abe:	4c 8b 6d 50          	mov    r13,QWORD PTR [rbp+0x50]
-  462ac2:	45 85 db             	test   r11d,r11d
-  462ac5:	0f 84 f5 00 00 00    	je     462bc0 <fb_hBlit16to16RGB+0x120>
-  462acb:	48 63 c6             	movsxd rax,esi
-  462ace:	31 db                	xor    ebx,ebx
-  462ad0:	48 89 44 24 f8       	mov    QWORD PTR [rsp-0x8],rax
-  462ad5:	eb 2d                	jmp    462b04 <fb_hBlit16to16RGB+0x64>
-  462ad7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  462ade:	00 00 
-  462ae0:	83 c3 01             	add    ebx,0x1
-  462ae3:	39 5d 70             	cmp    DWORD PTR [rbp+0x70],ebx
-  462ae6:	7f 0d                	jg     462af5 <fb_hBlit16to16RGB+0x55>
-  462ae8:	48 63 45 30          	movsxd rax,DWORD PTR [rbp+0x30]
-  462aec:	49 83 c5 01          	add    r13,0x1
-  462af0:	31 db                	xor    ebx,ebx
-  462af2:	49 01 c7             	add    r15,rax
-  462af5:	48 03 7c 24 f8       	add    rdi,QWORD PTR [rsp-0x8]
-  462afa:	41 83 eb 01          	sub    r11d,0x1
-  462afe:	0f 84 bc 00 00 00    	je     462bc0 <fb_hBlit16to16RGB+0x120>
-  462b04:	41 80 7d 00 00       	cmp    BYTE PTR [r13+0x0],0x0
-  462b09:	74 d5                	je     462ae0 <fb_hBlit16to16RGB+0x40>
-  462b0b:	8b 45 20             	mov    eax,DWORD PTR [rbp+0x20]
-  462b0e:	41 89 c6             	mov    r14d,eax
-  462b11:	41 d1 fe             	sar    r14d,1
-  462b14:	0f 84 b6 00 00 00    	je     462bd0 <fb_hBlit16to16RGB+0x130>
-  462b1a:	41 8d 46 ff          	lea    eax,[r14-0x1]
-  462b1e:	4d 89 fa             	mov    r10,r15
-  462b21:	49 89 f9             	mov    r9,rdi
-  462b24:	4c 8d 64 87 04       	lea    r12,[rdi+rax*4+0x4]
-  462b29:	49 89 c6             	mov    r14,rax
-  462b2c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  462b30:	41 0f b7 72 02       	movzx  esi,WORD PTR [r10+0x2]
-  462b35:	41 0f b7 0a          	movzx  ecx,WORD PTR [r10]
-  462b39:	49 83 c1 04          	add    r9,0x4
-  462b3d:	49 83 c2 04          	add    r10,0x4
-  462b41:	89 f0                	mov    eax,esi
-  462b43:	41 89 f0             	mov    r8d,esi
-  462b46:	89 ca                	mov    edx,ecx
-  462b48:	25 e0 07 00 00       	and    eax,0x7e0
-  462b4d:	41 c1 e8 0b          	shr    r8d,0xb
-  462b51:	81 e2 e0 07 00 00    	and    edx,0x7e0
-  462b57:	41 09 c0             	or     r8d,eax
-  462b5a:	89 f0                	mov    eax,esi
-  462b5c:	89 ce                	mov    esi,ecx
-  462b5e:	c1 e0 0b             	shl    eax,0xb
-  462b61:	c1 ee 0b             	shr    esi,0xb
-  462b64:	c1 e1 0b             	shl    ecx,0xb
-  462b67:	44 09 c0             	or     eax,r8d
-  462b6a:	09 f2                	or     edx,esi
-  462b6c:	0f b7 c9             	movzx  ecx,cx
-  462b6f:	c1 e0 10             	shl    eax,0x10
-  462b72:	09 ca                	or     edx,ecx
-  462b74:	09 d0                	or     eax,edx
-  462b76:	41 89 41 fc          	mov    DWORD PTR [r9-0x4],eax
-  462b7a:	4d 39 e1             	cmp    r9,r12
-  462b7d:	75 b1                	jne    462b30 <fb_hBlit16to16RGB+0x90>
-  462b7f:	4a 8d 04 b5 04 00 00 	lea    rax,[r14*4+0x4]
-  462b86:	00 
-  462b87:	49 8d 0c 07          	lea    rcx,[r15+rax*1]
-  462b8b:	48 8d 14 07          	lea    rdx,[rdi+rax*1]
-  462b8f:	8b 45 20             	mov    eax,DWORD PTR [rbp+0x20]
-  462b92:	a8 01                	test   al,0x1
-  462b94:	0f 84 46 ff ff ff    	je     462ae0 <fb_hBlit16to16RGB+0x40>
-  462b9a:	0f b7 01             	movzx  eax,WORD PTR [rcx]
-  462b9d:	89 c1                	mov    ecx,eax
-  462b9f:	89 c6                	mov    esi,eax
-  462ba1:	66 c1 e8 0b          	shr    ax,0xb
-  462ba5:	c1 e1 0b             	shl    ecx,0xb
-  462ba8:	66 81 e6 e0 07       	and    si,0x7e0
-  462bad:	09 f1                	or     ecx,esi
-  462baf:	09 c8                	or     eax,ecx
-  462bb1:	66 89 02             	mov    WORD PTR [rdx],ax
-  462bb4:	e9 27 ff ff ff       	jmp    462ae0 <fb_hBlit16to16RGB+0x40>
-  462bb9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  462bc0:	5b                   	pop    rbx
-  462bc1:	5d                   	pop    rbp
-  462bc2:	41 5c                	pop    r12
-  462bc4:	41 5d                	pop    r13
-  462bc6:	41 5e                	pop    r14
-  462bc8:	41 5f                	pop    r15
-  462bca:	c3                   	ret    
-  462bcb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  462bd0:	4c 89 f9             	mov    rcx,r15
-  462bd3:	48 89 fa             	mov    rdx,rdi
-  462bd6:	eb ba                	jmp    462b92 <fb_hBlit16to16RGB+0xf2>
-  462bd8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  462bdf:	00 
-
-0000000000462be0 <fb_hBlit16to24>:
-  462be0:	41 57                	push   r15
-  462be2:	41 56                	push   r14
-  462be4:	41 55                	push   r13
-  462be6:	41 54                	push   r12
-  462be8:	55                   	push   rbp
-  462be9:	53                   	push   rbx
-  462bea:	48 8b 1d 27 10 04 00 	mov    rbx,QWORD PTR [rip+0x41027]        # 4a3c18 <__fb_gfx>
-  462bf1:	44 8b 4b 24          	mov    r9d,DWORD PTR [rbx+0x24]
-  462bf5:	48 8b 43 50          	mov    rax,QWORD PTR [rbx+0x50]
-  462bf9:	44 0f af 4b 70       	imul   r9d,DWORD PTR [rbx+0x70]
-  462bfe:	4c 8b 63 18          	mov    r12,QWORD PTR [rbx+0x18]
-  462c02:	48 89 44 24 f8       	mov    QWORD PTR [rsp-0x8],rax
-  462c07:	45 85 c9             	test   r9d,r9d
-  462c0a:	0f 84 f0 01 00 00    	je     462e00 <fb_hBlit16to24+0x220>
-  462c10:	4c 63 ee             	movsxd r13,esi
-  462c13:	45 31 d2             	xor    r10d,r10d
-  462c16:	eb 2f                	jmp    462c47 <fb_hBlit16to24+0x67>
-  462c18:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  462c1f:	00 
-  462c20:	41 83 c2 01          	add    r10d,0x1
-  462c24:	44 39 53 70          	cmp    DWORD PTR [rbx+0x70],r10d
-  462c28:	7f 10                	jg     462c3a <fb_hBlit16to24+0x5a>
-  462c2a:	48 63 43 30          	movsxd rax,DWORD PTR [rbx+0x30]
-  462c2e:	48 83 44 24 f8 01    	add    QWORD PTR [rsp-0x8],0x1
-  462c34:	45 31 d2             	xor    r10d,r10d
-  462c37:	49 01 c4             	add    r12,rax
-  462c3a:	4c 01 ef             	add    rdi,r13
-  462c3d:	41 83 e9 01          	sub    r9d,0x1
-  462c41:	0f 84 b9 01 00 00    	je     462e00 <fb_hBlit16to24+0x220>
-  462c47:	48 8b 44 24 f8       	mov    rax,QWORD PTR [rsp-0x8]
-  462c4c:	80 38 00             	cmp    BYTE PTR [rax],0x0
-  462c4f:	74 cf                	je     462c20 <fb_hBlit16to24+0x40>
-  462c51:	8b 53 20             	mov    edx,DWORD PTR [rbx+0x20]
-  462c54:	41 89 d3             	mov    r11d,edx
-  462c57:	41 c1 fb 02          	sar    r11d,0x2
-  462c5b:	45 85 db             	test   r11d,r11d
-  462c5e:	0f 84 ac 01 00 00    	je     462e10 <fb_hBlit16to24+0x230>
-  462c64:	41 8d 43 ff          	lea    eax,[r11-0x1]
-  462c68:	48 8b 15 91 0f 04 00 	mov    rdx,QWORD PTR [rip+0x40f91]        # 4a3c00 <__fb_color_conv_16to32>
-  462c6f:	48 89 f9             	mov    rcx,rdi
-  462c72:	4d 89 e0             	mov    r8,r12
-  462c75:	49 89 c3             	mov    r11,rax
-  462c78:	48 8d 44 40 03       	lea    rax,[rax+rax*2+0x3]
-  462c7d:	48 8d 34 87          	lea    rsi,[rdi+rax*4]
-  462c81:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  462c88:	41 8b 00             	mov    eax,DWORD PTR [r8]
-  462c8b:	48 83 c1 0c          	add    rcx,0xc
-  462c8f:	49 83 c0 08          	add    r8,0x8
-  462c93:	41 89 c7             	mov    r15d,eax
-  462c96:	41 89 c6             	mov    r14d,eax
-  462c99:	0f b6 ec             	movzx  ebp,ah
-  462c9c:	41 c1 ef 10          	shr    r15d,0x10
-  462ca0:	41 c1 ee 18          	shr    r14d,0x18
-  462ca4:	0f b6 c0             	movzx  eax,al
-  462ca7:	41 81 c6 00 01 00 00 	add    r14d,0x100
-  462cae:	45 0f b6 ff          	movzx  r15d,r15b
-  462cb2:	46 8b 3c ba          	mov    r15d,DWORD PTR [rdx+r15*4]
-  462cb6:	46 0b 3c b2          	or     r15d,DWORD PTR [rdx+r14*4]
-  462cba:	44 8b b4 aa 00 04 00 	mov    r14d,DWORD PTR [rdx+rbp*4+0x400]
-  462cc1:	00 
-  462cc2:	44 0b 34 82          	or     r14d,DWORD PTR [rdx+rax*4]
-  462cc6:	44 89 f0             	mov    eax,r14d
-  462cc9:	45 89 fe             	mov    r14d,r15d
-  462ccc:	41 c1 ef 08          	shr    r15d,0x8
-  462cd0:	41 c1 e6 18          	shl    r14d,0x18
-  462cd4:	44 09 f0             	or     eax,r14d
-  462cd7:	89 41 f4             	mov    DWORD PTR [rcx-0xc],eax
-  462cda:	41 8b 40 fc          	mov    eax,DWORD PTR [r8-0x4]
-  462cde:	0f b6 ec             	movzx  ebp,ah
-  462ce1:	0f b6 c0             	movzx  eax,al
-  462ce4:	44 8b b4 aa 00 04 00 	mov    r14d,DWORD PTR [rdx+rbp*4+0x400]
-  462ceb:	00 
-  462cec:	44 0b 34 82          	or     r14d,DWORD PTR [rdx+rax*4]
-  462cf0:	44 89 f0             	mov    eax,r14d
-  462cf3:	41 c1 ee 10          	shr    r14d,0x10
-  462cf7:	c1 e0 10             	shl    eax,0x10
-  462cfa:	41 09 c7             	or     r15d,eax
-  462cfd:	44 89 79 f8          	mov    DWORD PTR [rcx-0x8],r15d
-  462d01:	41 8b 40 fc          	mov    eax,DWORD PTR [r8-0x4]
-  462d05:	41 89 c7             	mov    r15d,eax
-  462d08:	c1 e8 18             	shr    eax,0x18
-  462d0b:	41 c1 ef 10          	shr    r15d,0x10
-  462d0f:	05 00 01 00 00       	add    eax,0x100
-  462d14:	45 0f b6 ff          	movzx  r15d,r15b
-  462d18:	46 8b 3c ba          	mov    r15d,DWORD PTR [rdx+r15*4]
-  462d1c:	44 0b 3c 82          	or     r15d,DWORD PTR [rdx+rax*4]
-  462d20:	44 89 f8             	mov    eax,r15d
-  462d23:	c1 e0 08             	shl    eax,0x8
-  462d26:	44 09 f0             	or     eax,r14d
-  462d29:	48 39 f1             	cmp    rcx,rsi
-  462d2c:	89 41 fc             	mov    DWORD PTR [rcx-0x4],eax
-  462d2f:	0f 85 53 ff ff ff    	jne    462c88 <fb_hBlit16to24+0xa8>
-  462d35:	49 83 c3 01          	add    r11,0x1
-  462d39:	8b 53 20             	mov    edx,DWORD PTR [rbx+0x20]
-  462d3c:	4b 8d 04 5b          	lea    rax,[r11+r11*2]
-  462d40:	4b 8d 0c dc          	lea    rcx,[r12+r11*8]
-  462d44:	48 8d 04 87          	lea    rax,[rdi+rax*4]
-  462d48:	f6 c2 02             	test   dl,0x2
-  462d4b:	74 6d                	je     462dba <fb_hBlit16to24+0x1da>
-  462d4d:	8b 11                	mov    edx,DWORD PTR [rcx]
-  462d4f:	4c 8b 05 aa 0e 04 00 	mov    r8,QWORD PTR [rip+0x40eaa]        # 4a3c00 <__fb_color_conv_16to32>
-  462d56:	48 83 c0 06          	add    rax,0x6
-  462d5a:	48 83 c1 04          	add    rcx,0x4
-  462d5e:	0f b6 f2             	movzx  esi,dl
-  462d61:	0f b6 de             	movzx  ebx,dh
-  462d64:	41 8b 9c 98 00 04 00 	mov    ebx,DWORD PTR [r8+rbx*4+0x400]
-  462d6b:	00 
-  462d6c:	41 0b 1c b0          	or     ebx,DWORD PTR [r8+rsi*4]
-  462d70:	89 d6                	mov    esi,edx
-  462d72:	c1 ee 10             	shr    esi,0x10
-  462d75:	c1 ea 18             	shr    edx,0x18
-  462d78:	81 c2 00 01 00 00    	add    edx,0x100
-  462d7e:	40 0f b6 f6          	movzx  esi,sil
-  462d82:	41 8b 34 b0          	mov    esi,DWORD PTR [r8+rsi*4]
-  462d86:	41 0b 34 90          	or     esi,DWORD PTR [r8+rdx*4]
-  462d8a:	88 78 fb             	mov    BYTE PTR [rax-0x5],bh
-  462d8d:	88 58 fc             	mov    BYTE PTR [rax-0x4],bl
-  462d90:	41 89 f3             	mov    r11d,esi
-  462d93:	89 de                	mov    esi,ebx
-  462d95:	c1 ee 10             	shr    esi,0x10
-  462d98:	44 89 db             	mov    ebx,r11d
-  462d9b:	44 88 58 ff          	mov    BYTE PTR [rax-0x1],r11b
-  462d9f:	40 88 70 fa          	mov    BYTE PTR [rax-0x6],sil
-  462da3:	44 89 de             	mov    esi,r11d
-  462da6:	88 78 fe             	mov    BYTE PTR [rax-0x2],bh
-  462da9:	c1 ee 10             	shr    esi,0x10
-  462dac:	40 88 70 fd          	mov    BYTE PTR [rax-0x3],sil
-  462db0:	48 8b 1d 61 0e 04 00 	mov    rbx,QWORD PTR [rip+0x40e61]        # 4a3c18 <__fb_gfx>
-  462db7:	8b 53 20             	mov    edx,DWORD PTR [rbx+0x20]
-  462dba:	83 e2 01             	and    edx,0x1
-  462dbd:	0f 84 5d fe ff ff    	je     462c20 <fb_hBlit16to24+0x40>
-  462dc3:	0f b7 09             	movzx  ecx,WORD PTR [rcx]
-  462dc6:	48 8b 35 33 0e 04 00 	mov    rsi,QWORD PTR [rip+0x40e33]        # 4a3c00 <__fb_color_conv_16to32>
-  462dcd:	0f b6 dd             	movzx  ebx,ch
-  462dd0:	0f b6 c9             	movzx  ecx,cl
-  462dd3:	8b 94 9e 00 04 00 00 	mov    edx,DWORD PTR [rsi+rbx*4+0x400]
-  462dda:	0b 14 8e             	or     edx,DWORD PTR [rsi+rcx*4]
-  462ddd:	89 d1                	mov    ecx,edx
-  462ddf:	88 70 01             	mov    BYTE PTR [rax+0x1],dh
-  462de2:	88 50 02             	mov    BYTE PTR [rax+0x2],dl
-  462de5:	c1 e9 10             	shr    ecx,0x10
-  462de8:	88 08                	mov    BYTE PTR [rax],cl
-  462dea:	48 8b 1d 27 0e 04 00 	mov    rbx,QWORD PTR [rip+0x40e27]        # 4a3c18 <__fb_gfx>
-  462df1:	e9 2a fe ff ff       	jmp    462c20 <fb_hBlit16to24+0x40>
-  462df6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  462dfd:	00 00 00 
-  462e00:	5b                   	pop    rbx
-  462e01:	5d                   	pop    rbp
-  462e02:	41 5c                	pop    r12
-  462e04:	41 5d                	pop    r13
-  462e06:	41 5e                	pop    r14
-  462e08:	41 5f                	pop    r15
-  462e0a:	c3                   	ret    
-  462e0b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  462e10:	48 89 f8             	mov    rax,rdi
-  462e13:	4c 89 e1             	mov    rcx,r12
-  462e16:	e9 2d ff ff ff       	jmp    462d48 <fb_hBlit16to24+0x168>
-  462e1b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-
-0000000000462e20 <fb_hBlit16to32>:
-  462e20:	41 57                	push   r15
-  462e22:	41 56                	push   r14
-  462e24:	41 55                	push   r13
-  462e26:	41 54                	push   r12
-  462e28:	55                   	push   rbp
-  462e29:	53                   	push   rbx
-  462e2a:	48 8b 1d e7 0d 04 00 	mov    rbx,QWORD PTR [rip+0x40de7]        # 4a3c18 <__fb_gfx>
-  462e31:	44 8b 53 24          	mov    r10d,DWORD PTR [rbx+0x24]
-  462e35:	4c 8b 6b 18          	mov    r13,QWORD PTR [rbx+0x18]
-  462e39:	44 0f af 53 70       	imul   r10d,DWORD PTR [rbx+0x70]
-  462e3e:	4c 8b 63 50          	mov    r12,QWORD PTR [rbx+0x50]
-  462e42:	45 85 d2             	test   r10d,r10d
-  462e45:	0f 84 e5 00 00 00    	je     462f30 <fb_hBlit16to32+0x110>
-  462e4b:	48 8b 15 ae 0d 04 00 	mov    rdx,QWORD PTR [rip+0x40dae]        # 4a3c00 <__fb_color_conv_16to32>
-  462e52:	4c 63 f6             	movsxd r14,esi
-  462e55:	45 31 db             	xor    r11d,r11d
-  462e58:	eb 2b                	jmp    462e85 <fb_hBlit16to32+0x65>
-  462e5a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  462e60:	41 83 c3 01          	add    r11d,0x1
-  462e64:	44 39 5b 70          	cmp    DWORD PTR [rbx+0x70],r11d
-  462e68:	7f 0e                	jg     462e78 <fb_hBlit16to32+0x58>
-  462e6a:	48 63 43 30          	movsxd rax,DWORD PTR [rbx+0x30]
-  462e6e:	49 83 c4 01          	add    r12,0x1
-  462e72:	45 31 db             	xor    r11d,r11d
-  462e75:	49 01 c5             	add    r13,rax
-  462e78:	4c 01 f7             	add    rdi,r14
-  462e7b:	41 83 ea 01          	sub    r10d,0x1
-  462e7f:	0f 84 ab 00 00 00    	je     462f30 <fb_hBlit16to32+0x110>
-  462e85:	41 80 3c 24 00       	cmp    BYTE PTR [r12],0x0
-  462e8a:	74 d4                	je     462e60 <fb_hBlit16to32+0x40>
-  462e8c:	8b 43 20             	mov    eax,DWORD PTR [rbx+0x20]
-  462e8f:	89 c6                	mov    esi,eax
-  462e91:	d1 fe                	sar    esi,1
-  462e93:	0f 84 a7 00 00 00    	je     462f40 <fb_hBlit16to32+0x120>
-  462e99:	8d 46 ff             	lea    eax,[rsi-0x1]
-  462e9c:	4d 89 e8             	mov    r8,r13
-  462e9f:	48 89 f9             	mov    rcx,rdi
-  462ea2:	49 8d 6c 85 04       	lea    rbp,[r13+rax*4+0x4]
-  462ea7:	89 44 24 fc          	mov    DWORD PTR [rsp-0x4],eax
-  462eab:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  462eb0:	41 8b 00             	mov    eax,DWORD PTR [r8]
-  462eb3:	49 83 c0 04          	add    r8,0x4
-  462eb7:	48 83 c1 08          	add    rcx,0x8
-  462ebb:	0f b6 f4             	movzx  esi,ah
-  462ebe:	44 0f b6 f8          	movzx  r15d,al
-  462ec2:	44 8b 8c b2 00 04 00 	mov    r9d,DWORD PTR [rdx+rsi*4+0x400]
-  462ec9:	00 
-  462eca:	46 0b 0c ba          	or     r9d,DWORD PTR [rdx+r15*4]
-  462ece:	44 89 49 f8          	mov    DWORD PTR [rcx-0x8],r9d
-  462ed2:	41 89 c1             	mov    r9d,eax
-  462ed5:	c1 e8 18             	shr    eax,0x18
-  462ed8:	41 c1 e9 10          	shr    r9d,0x10
-  462edc:	05 00 01 00 00       	add    eax,0x100
-  462ee1:	45 0f b6 c9          	movzx  r9d,r9b
-  462ee5:	46 8b 0c 8a          	mov    r9d,DWORD PTR [rdx+r9*4]
-  462ee9:	44 0b 0c 82          	or     r9d,DWORD PTR [rdx+rax*4]
-  462eed:	4c 39 c5             	cmp    rbp,r8
-  462ef0:	44 89 49 fc          	mov    DWORD PTR [rcx-0x4],r9d
-  462ef4:	75 ba                	jne    462eb0 <fb_hBlit16to32+0x90>
-  462ef6:	8b 74 24 fc          	mov    esi,DWORD PTR [rsp-0x4]
-  462efa:	8b 43 20             	mov    eax,DWORD PTR [rbx+0x20]
-  462efd:	48 83 c6 01          	add    rsi,0x1
-  462f01:	49 8d 4c b5 00       	lea    rcx,[r13+rsi*4+0x0]
-  462f06:	48 8d 34 f7          	lea    rsi,[rdi+rsi*8]
-  462f0a:	a8 01                	test   al,0x1
-  462f0c:	0f 84 4e ff ff ff    	je     462e60 <fb_hBlit16to32+0x40>
-  462f12:	0f b7 01             	movzx  eax,WORD PTR [rcx]
-  462f15:	0f b6 cc             	movzx  ecx,ah
-  462f18:	0f b6 c0             	movzx  eax,al
-  462f1b:	8b 8c 8a 00 04 00 00 	mov    ecx,DWORD PTR [rdx+rcx*4+0x400]
-  462f22:	0b 0c 82             	or     ecx,DWORD PTR [rdx+rax*4]
-  462f25:	89 0e                	mov    DWORD PTR [rsi],ecx
-  462f27:	e9 34 ff ff ff       	jmp    462e60 <fb_hBlit16to32+0x40>
-  462f2c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  462f30:	5b                   	pop    rbx
-  462f31:	5d                   	pop    rbp
-  462f32:	41 5c                	pop    r12
-  462f34:	41 5d                	pop    r13
-  462f36:	41 5e                	pop    r14
-  462f38:	41 5f                	pop    r15
-  462f3a:	c3                   	ret    
-  462f3b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  462f40:	4c 89 e9             	mov    rcx,r13
-  462f43:	48 89 fe             	mov    rsi,rdi
-  462f46:	eb c2                	jmp    462f0a <fb_hBlit16to32+0xea>
-  462f48:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  462f4f:	00 
-
-0000000000462f50 <fb_hBlit32to15RGB>:
-  462f50:	4c 8b 1d c1 0c 04 00 	mov    r11,QWORD PTR [rip+0x40cc1]        # 4a3c18 <__fb_gfx>
-  462f57:	41 57                	push   r15
-  462f59:	41 56                	push   r14
-  462f5b:	41 55                	push   r13
-  462f5d:	41 54                	push   r12
-  462f5f:	55                   	push   rbp
-  462f60:	53                   	push   rbx
-  462f61:	45 8b 4b 24          	mov    r9d,DWORD PTR [r11+0x24]
-  462f65:	45 0f af 4b 70       	imul   r9d,DWORD PTR [r11+0x70]
-  462f6a:	4d 8b 63 18          	mov    r12,QWORD PTR [r11+0x18]
-  462f6e:	49 8b 6b 50          	mov    rbp,QWORD PTR [r11+0x50]
-  462f72:	45 85 c9             	test   r9d,r9d
-  462f75:	0f 84 fd 00 00 00    	je     463078 <fb_hBlit32to15RGB+0x128>
-  462f7b:	4c 63 ee             	movsxd r13,esi
-  462f7e:	45 31 d2             	xor    r10d,r10d
-  462f81:	eb 2a                	jmp    462fad <fb_hBlit32to15RGB+0x5d>
-  462f83:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  462f88:	41 83 c2 01          	add    r10d,0x1
-  462f8c:	45 39 53 70          	cmp    DWORD PTR [r11+0x70],r10d
-  462f90:	7f 0e                	jg     462fa0 <fb_hBlit32to15RGB+0x50>
-  462f92:	49 63 43 30          	movsxd rax,DWORD PTR [r11+0x30]
-  462f96:	48 83 c5 01          	add    rbp,0x1
-  462f9a:	45 31 d2             	xor    r10d,r10d
-  462f9d:	49 01 c4             	add    r12,rax
-  462fa0:	4c 01 ef             	add    rdi,r13
-  462fa3:	41 83 e9 01          	sub    r9d,0x1
-  462fa7:	0f 84 cb 00 00 00    	je     463078 <fb_hBlit32to15RGB+0x128>
-  462fad:	80 7d 00 00          	cmp    BYTE PTR [rbp+0x0],0x0
-  462fb1:	74 d5                	je     462f88 <fb_hBlit32to15RGB+0x38>
-  462fb3:	41 8b 43 20          	mov    eax,DWORD PTR [r11+0x20]
-  462fb7:	89 c6                	mov    esi,eax
-  462fb9:	d1 fe                	sar    esi,1
-  462fbb:	0f 84 c7 00 00 00    	je     463088 <fb_hBlit32to15RGB+0x138>
-  462fc1:	8d 46 ff             	lea    eax,[rsi-0x1]
-  462fc4:	4d 89 e0             	mov    r8,r12
-  462fc7:	48 89 f9             	mov    rcx,rdi
-  462fca:	48 8d 5c 87 04       	lea    rbx,[rdi+rax*4+0x4]
-  462fcf:	48 89 c6             	mov    rsi,rax
-  462fd2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  462fd8:	41 8b 50 04          	mov    edx,DWORD PTR [r8+0x4]
-  462fdc:	45 8b 30             	mov    r14d,DWORD PTR [r8]
-  462fdf:	48 83 c1 04          	add    rcx,0x4
-  462fe3:	49 83 c0 08          	add    r8,0x8
-  462fe7:	89 d0                	mov    eax,edx
-  462fe9:	41 89 d7             	mov    r15d,edx
-  462fec:	c1 ea 13             	shr    edx,0x13
-  462fef:	c1 e8 06             	shr    eax,0x6
-  462ff2:	41 c1 e7 07          	shl    r15d,0x7
-  462ff6:	41 81 e7 00 7c 00 00 	and    r15d,0x7c00
-  462ffd:	25 e0 03 00 00       	and    eax,0x3e0
-  463002:	44 09 f8             	or     eax,r15d
-  463005:	45 89 f7             	mov    r15d,r14d
-  463008:	09 d0                	or     eax,edx
-  46300a:	44 89 f2             	mov    edx,r14d
-  46300d:	41 c1 e7 07          	shl    r15d,0x7
-  463011:	c1 ea 06             	shr    edx,0x6
-  463014:	41 81 e7 00 7c 00 00 	and    r15d,0x7c00
-  46301b:	41 c1 ee 13          	shr    r14d,0x13
-  46301f:	81 e2 e0 03 00 00    	and    edx,0x3e0
-  463025:	c1 e0 10             	shl    eax,0x10
-  463028:	44 09 fa             	or     edx,r15d
-  46302b:	44 09 f2             	or     edx,r14d
-  46302e:	09 d0                	or     eax,edx
-  463030:	89 41 fc             	mov    DWORD PTR [rcx-0x4],eax
-  463033:	48 39 d9             	cmp    rcx,rbx
-  463036:	75 a0                	jne    462fd8 <fb_hBlit32to15RGB+0x88>
-  463038:	48 83 c6 01          	add    rsi,0x1
-  46303c:	41 8b 43 20          	mov    eax,DWORD PTR [r11+0x20]
-  463040:	49 8d 14 f4          	lea    rdx,[r12+rsi*8]
-  463044:	48 8d 0c b7          	lea    rcx,[rdi+rsi*4]
-  463048:	a8 01                	test   al,0x1
-  46304a:	0f 84 38 ff ff ff    	je     462f88 <fb_hBlit32to15RGB+0x38>
-  463050:	8b 12                	mov    edx,DWORD PTR [rdx]
-  463052:	89 d0                	mov    eax,edx
-  463054:	89 d6                	mov    esi,edx
-  463056:	c1 ea 13             	shr    edx,0x13
-  463059:	c1 e8 06             	shr    eax,0x6
-  46305c:	c1 e6 07             	shl    esi,0x7
-  46305f:	66 25 e0 03          	and    ax,0x3e0
-  463063:	66 81 e6 00 7c       	and    si,0x7c00
-  463068:	09 f0                	or     eax,esi
-  46306a:	09 d0                	or     eax,edx
-  46306c:	66 89 01             	mov    WORD PTR [rcx],ax
-  46306f:	e9 14 ff ff ff       	jmp    462f88 <fb_hBlit32to15RGB+0x38>
-  463074:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  463078:	5b                   	pop    rbx
-  463079:	5d                   	pop    rbp
-  46307a:	41 5c                	pop    r12
-  46307c:	41 5d                	pop    r13
-  46307e:	41 5e                	pop    r14
-  463080:	41 5f                	pop    r15
-  463082:	c3                   	ret    
-  463083:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  463088:	4c 89 e2             	mov    rdx,r12
-  46308b:	48 89 f9             	mov    rcx,rdi
-  46308e:	eb b8                	jmp    463048 <fb_hBlit32to15RGB+0xf8>
-
-0000000000463090 <fb_hBlit32to15BGR>:
-  463090:	41 57                	push   r15
-  463092:	41 56                	push   r14
-  463094:	41 55                	push   r13
-  463096:	41 54                	push   r12
-  463098:	55                   	push   rbp
-  463099:	53                   	push   rbx
-  46309a:	48 8b 1d 77 0b 04 00 	mov    rbx,QWORD PTR [rip+0x40b77]        # 4a3c18 <__fb_gfx>
-  4630a1:	44 8b 53 24          	mov    r10d,DWORD PTR [rbx+0x24]
-  4630a5:	4c 8b 6b 18          	mov    r13,QWORD PTR [rbx+0x18]
-  4630a9:	44 0f af 53 70       	imul   r10d,DWORD PTR [rbx+0x70]
-  4630ae:	4c 8b 63 50          	mov    r12,QWORD PTR [rbx+0x50]
-  4630b2:	45 85 d2             	test   r10d,r10d
-  4630b5:	0f 84 05 01 00 00    	je     4631c0 <fb_hBlit32to15BGR+0x130>
-  4630bb:	4c 63 f6             	movsxd r14,esi
-  4630be:	45 31 db             	xor    r11d,r11d
-  4630c1:	eb 2a                	jmp    4630ed <fb_hBlit32to15BGR+0x5d>
-  4630c3:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  4630c8:	41 83 c3 01          	add    r11d,0x1
-  4630cc:	44 39 5b 70          	cmp    DWORD PTR [rbx+0x70],r11d
-  4630d0:	7f 0e                	jg     4630e0 <fb_hBlit32to15BGR+0x50>
-  4630d2:	48 63 43 30          	movsxd rax,DWORD PTR [rbx+0x30]
-  4630d6:	49 83 c4 01          	add    r12,0x1
-  4630da:	45 31 db             	xor    r11d,r11d
-  4630dd:	49 01 c5             	add    r13,rax
-  4630e0:	4c 01 f7             	add    rdi,r14
-  4630e3:	41 83 ea 01          	sub    r10d,0x1
-  4630e7:	0f 84 d3 00 00 00    	je     4631c0 <fb_hBlit32to15BGR+0x130>
-  4630ed:	41 80 3c 24 00       	cmp    BYTE PTR [r12],0x0
-  4630f2:	74 d4                	je     4630c8 <fb_hBlit32to15BGR+0x38>
-  4630f4:	8b 43 20             	mov    eax,DWORD PTR [rbx+0x20]
-  4630f7:	89 c6                	mov    esi,eax
-  4630f9:	d1 fe                	sar    esi,1
-  4630fb:	0f 84 cf 00 00 00    	je     4631d0 <fb_hBlit32to15BGR+0x140>
-  463101:	8d 46 ff             	lea    eax,[rsi-0x1]
-  463104:	4d 89 e9             	mov    r9,r13
-  463107:	49 89 f8             	mov    r8,rdi
-  46310a:	48 8d 6c 87 04       	lea    rbp,[rdi+rax*4+0x4]
-  46310f:	48 89 c6             	mov    rsi,rax
-  463112:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  463118:	41 8b 51 04          	mov    edx,DWORD PTR [r9+0x4]
-  46311c:	41 8b 09             	mov    ecx,DWORD PTR [r9]
-  46311f:	49 83 c0 04          	add    r8,0x4
-  463123:	49 83 c1 08          	add    r9,0x8
-  463127:	89 d0                	mov    eax,edx
-  463129:	c1 e8 03             	shr    eax,0x3
-  46312c:	83 e0 1f             	and    eax,0x1f
-  46312f:	41 89 c7             	mov    r15d,eax
-  463132:	89 d0                	mov    eax,edx
-  463134:	c1 ea 09             	shr    edx,0x9
-  463137:	c1 e8 06             	shr    eax,0x6
-  46313a:	81 e2 00 7c 00 00    	and    edx,0x7c00
-  463140:	25 e0 03 00 00       	and    eax,0x3e0
-  463145:	44 09 f8             	or     eax,r15d
-  463148:	09 d0                	or     eax,edx
-  46314a:	89 ca                	mov    edx,ecx
-  46314c:	c1 ea 03             	shr    edx,0x3
-  46314f:	c1 e0 10             	shl    eax,0x10
-  463152:	83 e2 1f             	and    edx,0x1f
-  463155:	41 89 d7             	mov    r15d,edx
-  463158:	89 ca                	mov    edx,ecx
-  46315a:	c1 e9 09             	shr    ecx,0x9
-  46315d:	c1 ea 06             	shr    edx,0x6
-  463160:	81 e1 00 7c 00 00    	and    ecx,0x7c00
-  463166:	81 e2 e0 03 00 00    	and    edx,0x3e0
-  46316c:	44 09 fa             	or     edx,r15d
-  46316f:	09 d1                	or     ecx,edx
-  463171:	09 c8                	or     eax,ecx
-  463173:	41 89 40 fc          	mov    DWORD PTR [r8-0x4],eax
-  463177:	49 39 e8             	cmp    r8,rbp
-  46317a:	75 9c                	jne    463118 <fb_hBlit32to15BGR+0x88>
-  46317c:	48 83 c6 01          	add    rsi,0x1
-  463180:	8b 43 20             	mov    eax,DWORD PTR [rbx+0x20]
-  463183:	49 8d 54 f5 00       	lea    rdx,[r13+rsi*8+0x0]
-  463188:	48 8d 0c b7          	lea    rcx,[rdi+rsi*4]
-  46318c:	a8 01                	test   al,0x1
-  46318e:	0f 84 34 ff ff ff    	je     4630c8 <fb_hBlit32to15BGR+0x38>
-  463194:	8b 12                	mov    edx,DWORD PTR [rdx]
-  463196:	89 d0                	mov    eax,edx
-  463198:	89 d6                	mov    esi,edx
-  46319a:	c1 ea 09             	shr    edx,0x9
-  46319d:	c1 e8 03             	shr    eax,0x3
-  4631a0:	c1 ee 06             	shr    esi,0x6
-  4631a3:	66 81 e2 00 7c       	and    dx,0x7c00
-  4631a8:	83 e0 1f             	and    eax,0x1f
-  4631ab:	66 81 e6 e0 03       	and    si,0x3e0
-  4631b0:	09 f0                	or     eax,esi
-  4631b2:	09 d0                	or     eax,edx
-  4631b4:	66 89 01             	mov    WORD PTR [rcx],ax
-  4631b7:	e9 0c ff ff ff       	jmp    4630c8 <fb_hBlit32to15BGR+0x38>
-  4631bc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  4631c0:	5b                   	pop    rbx
-  4631c1:	5d                   	pop    rbp
-  4631c2:	41 5c                	pop    r12
-  4631c4:	41 5d                	pop    r13
-  4631c6:	41 5e                	pop    r14
-  4631c8:	41 5f                	pop    r15
-  4631ca:	c3                   	ret    
-  4631cb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  4631d0:	4c 89 ea             	mov    rdx,r13
-  4631d3:	48 89 f9             	mov    rcx,rdi
-  4631d6:	eb b4                	jmp    46318c <fb_hBlit32to15BGR+0xfc>
-  4631d8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  4631df:	00 
-
-00000000004631e0 <fb_hBlit32to16RGB>:
-  4631e0:	4c 8b 1d 31 0a 04 00 	mov    r11,QWORD PTR [rip+0x40a31]        # 4a3c18 <__fb_gfx>
-  4631e7:	41 57                	push   r15
-  4631e9:	41 56                	push   r14
-  4631eb:	41 55                	push   r13
-  4631ed:	41 54                	push   r12
-  4631ef:	55                   	push   rbp
-  4631f0:	53                   	push   rbx
-  4631f1:	45 8b 4b 24          	mov    r9d,DWORD PTR [r11+0x24]
-  4631f5:	45 0f af 4b 70       	imul   r9d,DWORD PTR [r11+0x70]
-  4631fa:	4d 8b 63 18          	mov    r12,QWORD PTR [r11+0x18]
-  4631fe:	49 8b 6b 50          	mov    rbp,QWORD PTR [r11+0x50]
-  463202:	45 85 c9             	test   r9d,r9d
-  463205:	0f 84 fd 00 00 00    	je     463308 <fb_hBlit32to16RGB+0x128>
-  46320b:	4c 63 ee             	movsxd r13,esi
-  46320e:	45 31 d2             	xor    r10d,r10d
-  463211:	eb 2a                	jmp    46323d <fb_hBlit32to16RGB+0x5d>
-  463213:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  463218:	41 83 c2 01          	add    r10d,0x1
-  46321c:	45 39 53 70          	cmp    DWORD PTR [r11+0x70],r10d
-  463220:	7f 0e                	jg     463230 <fb_hBlit32to16RGB+0x50>
-  463222:	49 63 43 30          	movsxd rax,DWORD PTR [r11+0x30]
-  463226:	48 83 c5 01          	add    rbp,0x1
-  46322a:	45 31 d2             	xor    r10d,r10d
-  46322d:	49 01 c4             	add    r12,rax
-  463230:	4c 01 ef             	add    rdi,r13
-  463233:	41 83 e9 01          	sub    r9d,0x1
-  463237:	0f 84 cb 00 00 00    	je     463308 <fb_hBlit32to16RGB+0x128>
-  46323d:	80 7d 00 00          	cmp    BYTE PTR [rbp+0x0],0x0
-  463241:	74 d5                	je     463218 <fb_hBlit32to16RGB+0x38>
-  463243:	41 8b 43 20          	mov    eax,DWORD PTR [r11+0x20]
-  463247:	89 c6                	mov    esi,eax
-  463249:	d1 fe                	sar    esi,1
-  46324b:	0f 84 c7 00 00 00    	je     463318 <fb_hBlit32to16RGB+0x138>
-  463251:	8d 46 ff             	lea    eax,[rsi-0x1]
-  463254:	4d 89 e0             	mov    r8,r12
-  463257:	48 89 f9             	mov    rcx,rdi
-  46325a:	48 8d 5c 87 04       	lea    rbx,[rdi+rax*4+0x4]
-  46325f:	48 89 c6             	mov    rsi,rax
-  463262:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  463268:	41 8b 50 04          	mov    edx,DWORD PTR [r8+0x4]
-  46326c:	45 8b 30             	mov    r14d,DWORD PTR [r8]
-  46326f:	48 83 c1 04          	add    rcx,0x4
-  463273:	49 83 c0 08          	add    r8,0x8
-  463277:	89 d0                	mov    eax,edx
-  463279:	41 89 d7             	mov    r15d,edx
-  46327c:	c1 ea 13             	shr    edx,0x13
-  46327f:	c1 e8 05             	shr    eax,0x5
-  463282:	41 c1 e7 08          	shl    r15d,0x8
-  463286:	41 81 e7 00 f8 00 00 	and    r15d,0xf800
-  46328d:	25 e0 07 00 00       	and    eax,0x7e0
-  463292:	44 09 f8             	or     eax,r15d
-  463295:	45 89 f7             	mov    r15d,r14d
-  463298:	09 d0                	or     eax,edx
-  46329a:	44 89 f2             	mov    edx,r14d
-  46329d:	41 c1 e7 08          	shl    r15d,0x8
-  4632a1:	c1 ea 05             	shr    edx,0x5
-  4632a4:	41 81 e7 00 f8 00 00 	and    r15d,0xf800
-  4632ab:	41 c1 ee 13          	shr    r14d,0x13
-  4632af:	81 e2 e0 07 00 00    	and    edx,0x7e0
-  4632b5:	c1 e0 10             	shl    eax,0x10
-  4632b8:	44 09 fa             	or     edx,r15d
-  4632bb:	44 09 f2             	or     edx,r14d
-  4632be:	09 d0                	or     eax,edx
-  4632c0:	89 41 fc             	mov    DWORD PTR [rcx-0x4],eax
-  4632c3:	48 39 d9             	cmp    rcx,rbx
-  4632c6:	75 a0                	jne    463268 <fb_hBlit32to16RGB+0x88>
-  4632c8:	48 83 c6 01          	add    rsi,0x1
-  4632cc:	41 8b 43 20          	mov    eax,DWORD PTR [r11+0x20]
-  4632d0:	49 8d 14 f4          	lea    rdx,[r12+rsi*8]
-  4632d4:	48 8d 0c b7          	lea    rcx,[rdi+rsi*4]
-  4632d8:	a8 01                	test   al,0x1
-  4632da:	0f 84 38 ff ff ff    	je     463218 <fb_hBlit32to16RGB+0x38>
-  4632e0:	8b 12                	mov    edx,DWORD PTR [rdx]
-  4632e2:	89 d0                	mov    eax,edx
-  4632e4:	89 d6                	mov    esi,edx
-  4632e6:	c1 ea 13             	shr    edx,0x13
-  4632e9:	c1 e8 05             	shr    eax,0x5
-  4632ec:	c1 e6 08             	shl    esi,0x8
-  4632ef:	66 25 e0 07          	and    ax,0x7e0
-  4632f3:	66 81 e6 00 f8       	and    si,0xf800
-  4632f8:	09 f0                	or     eax,esi
-  4632fa:	09 d0                	or     eax,edx
-  4632fc:	66 89 01             	mov    WORD PTR [rcx],ax
-  4632ff:	e9 14 ff ff ff       	jmp    463218 <fb_hBlit32to16RGB+0x38>
-  463304:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  463308:	5b                   	pop    rbx
-  463309:	5d                   	pop    rbp
-  46330a:	41 5c                	pop    r12
-  46330c:	41 5d                	pop    r13
-  46330e:	41 5e                	pop    r14
-  463310:	41 5f                	pop    r15
-  463312:	c3                   	ret    
-  463313:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  463318:	4c 89 e2             	mov    rdx,r12
-  46331b:	48 89 f9             	mov    rcx,rdi
-  46331e:	eb b8                	jmp    4632d8 <fb_hBlit32to16RGB+0xf8>
-
-0000000000463320 <fb_hBlit32to16BGR>:
-  463320:	41 57                	push   r15
-  463322:	41 56                	push   r14
-  463324:	41 55                	push   r13
-  463326:	41 54                	push   r12
-  463328:	55                   	push   rbp
-  463329:	53                   	push   rbx
-  46332a:	48 8b 1d e7 08 04 00 	mov    rbx,QWORD PTR [rip+0x408e7]        # 4a3c18 <__fb_gfx>
-  463331:	44 8b 53 24          	mov    r10d,DWORD PTR [rbx+0x24]
-  463335:	4c 8b 6b 18          	mov    r13,QWORD PTR [rbx+0x18]
-  463339:	44 0f af 53 70       	imul   r10d,DWORD PTR [rbx+0x70]
-  46333e:	4c 8b 63 50          	mov    r12,QWORD PTR [rbx+0x50]
-  463342:	45 85 d2             	test   r10d,r10d
-  463345:	0f 84 05 01 00 00    	je     463450 <fb_hBlit32to16BGR+0x130>
-  46334b:	4c 63 f6             	movsxd r14,esi
-  46334e:	45 31 db             	xor    r11d,r11d
-  463351:	eb 2a                	jmp    46337d <fb_hBlit32to16BGR+0x5d>
-  463353:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  463358:	41 83 c3 01          	add    r11d,0x1
-  46335c:	44 39 5b 70          	cmp    DWORD PTR [rbx+0x70],r11d
-  463360:	7f 0e                	jg     463370 <fb_hBlit32to16BGR+0x50>
-  463362:	48 63 43 30          	movsxd rax,DWORD PTR [rbx+0x30]
-  463366:	49 83 c4 01          	add    r12,0x1
-  46336a:	45 31 db             	xor    r11d,r11d
-  46336d:	49 01 c5             	add    r13,rax
-  463370:	4c 01 f7             	add    rdi,r14
-  463373:	41 83 ea 01          	sub    r10d,0x1
-  463377:	0f 84 d3 00 00 00    	je     463450 <fb_hBlit32to16BGR+0x130>
-  46337d:	41 80 3c 24 00       	cmp    BYTE PTR [r12],0x0
-  463382:	74 d4                	je     463358 <fb_hBlit32to16BGR+0x38>
-  463384:	8b 43 20             	mov    eax,DWORD PTR [rbx+0x20]
-  463387:	89 c6                	mov    esi,eax
-  463389:	d1 fe                	sar    esi,1
-  46338b:	0f 84 cf 00 00 00    	je     463460 <fb_hBlit32to16BGR+0x140>
-  463391:	8d 46 ff             	lea    eax,[rsi-0x1]
-  463394:	4d 89 e9             	mov    r9,r13
-  463397:	49 89 f8             	mov    r8,rdi
-  46339a:	48 8d 6c 87 04       	lea    rbp,[rdi+rax*4+0x4]
-  46339f:	48 89 c6             	mov    rsi,rax
-  4633a2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  4633a8:	41 8b 51 04          	mov    edx,DWORD PTR [r9+0x4]
-  4633ac:	41 8b 09             	mov    ecx,DWORD PTR [r9]
-  4633af:	49 83 c0 04          	add    r8,0x4
-  4633b3:	49 83 c1 08          	add    r9,0x8
-  4633b7:	89 d0                	mov    eax,edx
-  4633b9:	c1 e8 03             	shr    eax,0x3
-  4633bc:	83 e0 1f             	and    eax,0x1f
-  4633bf:	41 89 c7             	mov    r15d,eax
-  4633c2:	89 d0                	mov    eax,edx
-  4633c4:	c1 ea 08             	shr    edx,0x8
-  4633c7:	c1 e8 05             	shr    eax,0x5
-  4633ca:	81 e2 00 f8 00 00    	and    edx,0xf800
-  4633d0:	25 e0 07 00 00       	and    eax,0x7e0
-  4633d5:	44 09 f8             	or     eax,r15d
-  4633d8:	09 d0                	or     eax,edx
-  4633da:	89 ca                	mov    edx,ecx
-  4633dc:	c1 ea 03             	shr    edx,0x3
-  4633df:	c1 e0 10             	shl    eax,0x10
-  4633e2:	83 e2 1f             	and    edx,0x1f
-  4633e5:	41 89 d7             	mov    r15d,edx
-  4633e8:	89 ca                	mov    edx,ecx
-  4633ea:	c1 e9 08             	shr    ecx,0x8
-  4633ed:	c1 ea 05             	shr    edx,0x5
-  4633f0:	81 e1 00 f8 00 00    	and    ecx,0xf800
-  4633f6:	81 e2 e0 07 00 00    	and    edx,0x7e0
-  4633fc:	44 09 fa             	or     edx,r15d
-  4633ff:	09 d1                	or     ecx,edx
-  463401:	09 c8                	or     eax,ecx
-  463403:	41 89 40 fc          	mov    DWORD PTR [r8-0x4],eax
-  463407:	49 39 e8             	cmp    r8,rbp
-  46340a:	75 9c                	jne    4633a8 <fb_hBlit32to16BGR+0x88>
-  46340c:	48 83 c6 01          	add    rsi,0x1
-  463410:	8b 43 20             	mov    eax,DWORD PTR [rbx+0x20]
-  463413:	49 8d 54 f5 00       	lea    rdx,[r13+rsi*8+0x0]
-  463418:	48 8d 0c b7          	lea    rcx,[rdi+rsi*4]
-  46341c:	a8 01                	test   al,0x1
-  46341e:	0f 84 34 ff ff ff    	je     463358 <fb_hBlit32to16BGR+0x38>
-  463424:	8b 12                	mov    edx,DWORD PTR [rdx]
-  463426:	89 d0                	mov    eax,edx
-  463428:	89 d6                	mov    esi,edx
-  46342a:	c1 ea 08             	shr    edx,0x8
-  46342d:	c1 e8 03             	shr    eax,0x3
-  463430:	c1 ee 05             	shr    esi,0x5
-  463433:	66 81 e2 00 f8       	and    dx,0xf800
-  463438:	83 e0 1f             	and    eax,0x1f
-  46343b:	66 81 e6 e0 07       	and    si,0x7e0
-  463440:	09 f0                	or     eax,esi
-  463442:	09 d0                	or     eax,edx
-  463444:	66 89 01             	mov    WORD PTR [rcx],ax
-  463447:	e9 0c ff ff ff       	jmp    463358 <fb_hBlit32to16BGR+0x38>
-  46344c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  463450:	5b                   	pop    rbx
-  463451:	5d                   	pop    rbp
-  463452:	41 5c                	pop    r12
-  463454:	41 5d                	pop    r13
-  463456:	41 5e                	pop    r14
-  463458:	41 5f                	pop    r15
-  46345a:	c3                   	ret    
-  46345b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  463460:	4c 89 ea             	mov    rdx,r13
-  463463:	48 89 f9             	mov    rcx,rdi
-  463466:	eb b4                	jmp    46341c <fb_hBlit32to16BGR+0xfc>
-  463468:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  46346f:	00 
-
-0000000000463470 <fb_hBlit32to24RGB>:
-  463470:	48 8b 05 a1 07 04 00 	mov    rax,QWORD PTR [rip+0x407a1]        # 4a3c18 <__fb_gfx>
-  463477:	41 56                	push   r14
-  463479:	55                   	push   rbp
-  46347a:	53                   	push   rbx
-  46347b:	44 8b 48 24          	mov    r9d,DWORD PTR [rax+0x24]
-  46347f:	48 8b 68 18          	mov    rbp,QWORD PTR [rax+0x18]
-  463483:	44 0f af 48 70       	imul   r9d,DWORD PTR [rax+0x70]
-  463488:	4c 8b 70 50          	mov    r14,QWORD PTR [rax+0x50]
-  46348c:	45 85 c9             	test   r9d,r9d
-  46348f:	74 7f                	je     463510 <fb_hBlit32to24RGB+0xa0>
-  463491:	48 63 f6             	movsxd rsi,esi
-  463494:	45 31 d2             	xor    r10d,r10d
-  463497:	eb 28                	jmp    4634c1 <fb_hBlit32to24RGB+0x51>
-  463499:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  4634a0:	41 83 c2 01          	add    r10d,0x1
-  4634a4:	44 39 50 70          	cmp    DWORD PTR [rax+0x70],r10d
-  4634a8:	7f 0e                	jg     4634b8 <fb_hBlit32to24RGB+0x48>
-  4634aa:	48 63 50 30          	movsxd rdx,DWORD PTR [rax+0x30]
-  4634ae:	49 83 c6 01          	add    r14,0x1
-  4634b2:	45 31 d2             	xor    r10d,r10d
-  4634b5:	48 01 d5             	add    rbp,rdx
-  4634b8:	48 01 f7             	add    rdi,rsi
-  4634bb:	41 83 e9 01          	sub    r9d,0x1
-  4634bf:	74 4f                	je     463510 <fb_hBlit32to24RGB+0xa0>
-  4634c1:	41 80 3e 00          	cmp    BYTE PTR [r14],0x0
-  4634c5:	74 d9                	je     4634a0 <fb_hBlit32to24RGB+0x30>
-  4634c7:	8b 50 20             	mov    edx,DWORD PTR [rax+0x20]
-  4634ca:	85 d2                	test   edx,edx
-  4634cc:	74 d2                	je     4634a0 <fb_hBlit32to24RGB+0x30>
-  4634ce:	8d 42 ff             	lea    eax,[rdx-0x1]
-  4634d1:	48 89 e9             	mov    rcx,rbp
-  4634d4:	4c 8d 5c 40 03       	lea    r11,[rax+rax*2+0x3]
-  4634d9:	48 89 f8             	mov    rax,rdi
-  4634dc:	49 01 fb             	add    r11,rdi
-  4634df:	90                   	nop
-  4634e0:	8b 11                	mov    edx,DWORD PTR [rcx]
-  4634e2:	48 83 c0 03          	add    rax,0x3
-  4634e6:	48 83 c1 04          	add    rcx,0x4
-  4634ea:	41 89 d0             	mov    r8d,edx
-  4634ed:	88 70 fe             	mov    BYTE PTR [rax-0x2],dh
-  4634f0:	88 50 ff             	mov    BYTE PTR [rax-0x1],dl
-  4634f3:	41 c1 e8 10          	shr    r8d,0x10
-  4634f7:	44 88 40 fd          	mov    BYTE PTR [rax-0x3],r8b
-  4634fb:	49 39 c3             	cmp    r11,rax
-  4634fe:	75 e0                	jne    4634e0 <fb_hBlit32to24RGB+0x70>
-  463500:	48 8b 05 11 07 04 00 	mov    rax,QWORD PTR [rip+0x40711]        # 4a3c18 <__fb_gfx>
-  463507:	eb 97                	jmp    4634a0 <fb_hBlit32to24RGB+0x30>
-  463509:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  463510:	5b                   	pop    rbx
-  463511:	5d                   	pop    rbp
-  463512:	41 5e                	pop    r14
-  463514:	c3                   	ret    
-  463515:	90                   	nop
-  463516:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  46351d:	00 00 00 
-
-0000000000463520 <fb_hBlit32to24BGR>:
-  463520:	48 8b 05 f1 06 04 00 	mov    rax,QWORD PTR [rip+0x406f1]        # 4a3c18 <__fb_gfx>
-  463527:	41 56                	push   r14
-  463529:	53                   	push   rbx
-  46352a:	44 8b 40 24          	mov    r8d,DWORD PTR [rax+0x24]
-  46352e:	4c 8b 70 18          	mov    r14,QWORD PTR [rax+0x18]
-  463532:	44 0f af 40 70       	imul   r8d,DWORD PTR [rax+0x70]
-  463537:	4c 8b 58 50          	mov    r11,QWORD PTR [rax+0x50]
-  46353b:	45 85 c0             	test   r8d,r8d
-  46353e:	74 78                	je     4635b8 <fb_hBlit32to24BGR+0x98>
-  463540:	48 63 f6             	movsxd rsi,esi
-  463543:	45 31 c9             	xor    r9d,r9d
-  463546:	eb 29                	jmp    463571 <fb_hBlit32to24BGR+0x51>
-  463548:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  46354f:	00 
-  463550:	41 83 c1 01          	add    r9d,0x1
-  463554:	44 39 48 70          	cmp    DWORD PTR [rax+0x70],r9d
-  463558:	7f 0e                	jg     463568 <fb_hBlit32to24BGR+0x48>
-  46355a:	48 63 50 30          	movsxd rdx,DWORD PTR [rax+0x30]
-  46355e:	49 83 c3 01          	add    r11,0x1
-  463562:	45 31 c9             	xor    r9d,r9d
-  463565:	49 01 d6             	add    r14,rdx
-  463568:	48 01 f7             	add    rdi,rsi
-  46356b:	41 83 e8 01          	sub    r8d,0x1
-  46356f:	74 47                	je     4635b8 <fb_hBlit32to24BGR+0x98>
-  463571:	41 80 3b 00          	cmp    BYTE PTR [r11],0x0
-  463575:	74 d9                	je     463550 <fb_hBlit32to24BGR+0x30>
-  463577:	8b 50 20             	mov    edx,DWORD PTR [rax+0x20]
-  46357a:	85 d2                	test   edx,edx
-  46357c:	74 d2                	je     463550 <fb_hBlit32to24BGR+0x30>
-  46357e:	8d 42 ff             	lea    eax,[rdx-0x1]
-  463581:	4c 89 f1             	mov    rcx,r14
-  463584:	4c 8d 54 40 03       	lea    r10,[rax+rax*2+0x3]
-  463589:	48 89 f8             	mov    rax,rdi
-  46358c:	49 01 fa             	add    r10,rdi
-  46358f:	90                   	nop
-  463590:	8b 11                	mov    edx,DWORD PTR [rcx]
-  463592:	48 83 c0 03          	add    rax,0x3
-  463596:	48 83 c1 04          	add    rcx,0x4
-  46359a:	88 50 fd             	mov    BYTE PTR [rax-0x3],dl
-  46359d:	88 70 fe             	mov    BYTE PTR [rax-0x2],dh
-  4635a0:	c1 ea 10             	shr    edx,0x10
-  4635a3:	88 50 ff             	mov    BYTE PTR [rax-0x1],dl
-  4635a6:	49 39 c2             	cmp    r10,rax
-  4635a9:	75 e5                	jne    463590 <fb_hBlit32to24BGR+0x70>
-  4635ab:	48 8b 05 66 06 04 00 	mov    rax,QWORD PTR [rip+0x40666]        # 4a3c18 <__fb_gfx>
-  4635b2:	eb 9c                	jmp    463550 <fb_hBlit32to24BGR+0x30>
-  4635b4:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  4635b8:	5b                   	pop    rbx
-  4635b9:	41 5e                	pop    r14
-  4635bb:	c3                   	ret    
-  4635bc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-00000000004635c0 <fb_hBlit32to32RGB>:
-  4635c0:	4c 8b 1d 51 06 04 00 	mov    r11,QWORD PTR [rip+0x40651]        # 4a3c18 <__fb_gfx>
-  4635c7:	55                   	push   rbp
-  4635c8:	53                   	push   rbx
-  4635c9:	45 8b 43 24          	mov    r8d,DWORD PTR [r11+0x24]
-  4635cd:	4d 8b 53 18          	mov    r10,QWORD PTR [r11+0x18]
-  4635d1:	45 0f af 43 70       	imul   r8d,DWORD PTR [r11+0x70]
-  4635d6:	49 8b 5b 50          	mov    rbx,QWORD PTR [r11+0x50]
-  4635da:	45 85 c0             	test   r8d,r8d
-  4635dd:	74 79                	je     463658 <fb_hBlit32to32RGB+0x98>
-  4635df:	48 63 ee             	movsxd rbp,esi
-  4635e2:	45 31 c9             	xor    r9d,r9d
-  4635e5:	eb 2a                	jmp    463611 <fb_hBlit32to32RGB+0x51>
-  4635e7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  4635ee:	00 00 
-  4635f0:	41 83 c1 01          	add    r9d,0x1
-  4635f4:	45 39 4b 70          	cmp    DWORD PTR [r11+0x70],r9d
-  4635f8:	7f 0e                	jg     463608 <fb_hBlit32to32RGB+0x48>
-  4635fa:	49 63 43 30          	movsxd rax,DWORD PTR [r11+0x30]
-  4635fe:	48 83 c3 01          	add    rbx,0x1
-  463602:	45 31 c9             	xor    r9d,r9d
-  463605:	49 01 c2             	add    r10,rax
-  463608:	48 01 ef             	add    rdi,rbp
-  46360b:	41 83 e8 01          	sub    r8d,0x1
-  46360f:	74 47                	je     463658 <fb_hBlit32to32RGB+0x98>
-  463611:	80 3b 00             	cmp    BYTE PTR [rbx],0x0
-  463614:	74 da                	je     4635f0 <fb_hBlit32to32RGB+0x30>
-  463616:	41 8b 43 20          	mov    eax,DWORD PTR [r11+0x20]
-  46361a:	85 c0                	test   eax,eax
-  46361c:	74 d2                	je     4635f0 <fb_hBlit32to32RGB+0x30>
-  46361e:	83 e8 01             	sub    eax,0x1
-  463621:	31 d2                	xor    edx,edx
-  463623:	48 8d 34 85 04 00 00 	lea    rsi,[rax*4+0x4]
-  46362a:	00 
-  46362b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  463630:	41 8b 0c 12          	mov    ecx,DWORD PTR [r10+rdx*1]
-  463634:	89 c8                	mov    eax,ecx
-  463636:	81 e1 00 ff 00 00    	and    ecx,0xff00
-  46363c:	25 ff ff ff 00       	and    eax,0xffffff
-  463641:	c1 c0 10             	rol    eax,0x10
-  463644:	09 c8                	or     eax,ecx
-  463646:	89 04 17             	mov    DWORD PTR [rdi+rdx*1],eax
-  463649:	48 83 c2 04          	add    rdx,0x4
-  46364d:	48 39 f2             	cmp    rdx,rsi
-  463650:	75 de                	jne    463630 <fb_hBlit32to32RGB+0x70>
-  463652:	eb 9c                	jmp    4635f0 <fb_hBlit32to32RGB+0x30>
-  463654:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  463658:	5b                   	pop    rbx
-  463659:	5d                   	pop    rbp
-  46365a:	c3                   	ret    
-  46365b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-
-0000000000463660 <fb_hBlit_code_start>:
-  463660:	f3 c3                	repz ret 
-  463662:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  463666:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  46366d:	00 00 00 
-
-0000000000463670 <fb_hGetBlitter>:
-  463670:	48 81 ec d8 00 00 00 	sub    rsp,0xd8
-  463677:	48 8d 15 a2 f7 ff ff 	lea    rdx,[rip+0xfffffffffffff7a2]        # 462e20 <fb_hBlit16to32>
-  46367e:	48 8d 0d 5b f5 ff ff 	lea    rcx,[rip+0xfffffffffffff55b]        # 462be0 <fb_hBlit16to24>
-  463685:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
-  46368c:	00 00 
-  46368e:	48 89 84 24 c8 00 00 	mov    QWORD PTR [rsp+0xc8],rax
-  463695:	00 
-  463696:	31 c0                	xor    eax,eax
-  463698:	48 8d 05 51 e9 ff ff 	lea    rax,[rip+0xffffffffffffe951]        # 461ff0 <fb_hBlit8to15RGB>
-  46369f:	48 89 54 24 38       	mov    QWORD PTR [rsp+0x38],rdx
-  4636a4:	48 89 94 24 98 00 00 	mov    QWORD PTR [rsp+0x98],rdx
-  4636ab:	00 
-  4636ac:	48 8d 15 dd f9 ff ff 	lea    rdx,[rip+0xfffffffffffff9dd]        # 463090 <fb_hBlit32to15BGR>
-  4636b3:	48 89 4c 24 30       	mov    QWORD PTR [rsp+0x30],rcx
-  4636b8:	48 89 8c 24 90 00 00 	mov    QWORD PTR [rsp+0x90],rcx
-  4636bf:	00 
-  4636c0:	48 89 04 24          	mov    QWORD PTR [rsp],rax
-  4636c4:	48 8d 05 e5 eb ff ff 	lea    rax,[rip+0xffffffffffffebe5]        # 4622b0 <fb_hBlit8to16RGB>
-  4636cb:	4c 8b 0d 2e 05 04 00 	mov    r9,QWORD PTR [rip+0x4052e]        # 4a3c00 <__fb_color_conv_16to32>
-  4636d2:	48 89 94 24 a0 00 00 	mov    QWORD PTR [rsp+0xa0],rdx
-  4636d9:	00 
-  4636da:	48 8d 15 3f fc ff ff 	lea    rdx,[rip+0xfffffffffffffc3f]        # 463320 <fb_hBlit32to16BGR>
-  4636e1:	48 89 44 24 08       	mov    QWORD PTR [rsp+0x8],rax
-  4636e6:	48 8d 05 83 ee ff ff 	lea    rax,[rip+0xffffffffffffee83]        # 462570 <fb_hBlit8to24RGB>
-  4636ed:	48 89 94 24 a8 00 00 	mov    QWORD PTR [rsp+0xa8],rdx
-  4636f4:	00 
-  4636f5:	48 8d 15 24 fe ff ff 	lea    rdx,[rip+0xfffffffffffffe24]        # 463520 <fb_hBlit32to24BGR>
-  4636fc:	48 89 44 24 10       	mov    QWORD PTR [rsp+0x10],rax
-  463701:	48 8d 05 c8 ef ff ff 	lea    rax,[rip+0xffffffffffffefc8]        # 4626d0 <fb_hBlit8to32RGB>
-  463708:	48 89 94 24 b0 00 00 	mov    QWORD PTR [rsp+0xb0],rdx
-  46370f:	00 
-  463710:	48 89 44 24 18       	mov    QWORD PTR [rsp+0x18],rax
-  463715:	48 8d 05 14 f1 ff ff 	lea    rax,[rip+0xfffffffffffff114]        # 462830 <fb_hBlit16to15RGB>
-  46371c:	48 89 44 24 20       	mov    QWORD PTR [rsp+0x20],rax
-  463721:	48 8d 05 78 f3 ff ff 	lea    rax,[rip+0xfffffffffffff378]        # 462aa0 <fb_hBlit16to16RGB>
-  463728:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
-  46372d:	48 8d 05 1c f8 ff ff 	lea    rax,[rip+0xfffffffffffff81c]        # 462f50 <fb_hBlit32to15RGB>
-  463734:	48 89 44 24 40       	mov    QWORD PTR [rsp+0x40],rax
-  463739:	48 8d 05 a0 fa ff ff 	lea    rax,[rip+0xfffffffffffffaa0]        # 4631e0 <fb_hBlit32to16RGB>
-  463740:	48 89 44 24 48       	mov    QWORD PTR [rsp+0x48],rax
-  463745:	48 8d 05 24 fd ff ff 	lea    rax,[rip+0xfffffffffffffd24]        # 463470 <fb_hBlit32to24RGB>
-  46374c:	48 89 44 24 50       	mov    QWORD PTR [rsp+0x50],rax
-  463751:	48 8d 05 68 fe ff ff 	lea    rax,[rip+0xfffffffffffffe68]        # 4635c0 <fb_hBlit32to32RGB>
-  463758:	48 89 44 24 58       	mov    QWORD PTR [rsp+0x58],rax
-  46375d:	48 8d 05 ec e9 ff ff 	lea    rax,[rip+0xffffffffffffe9ec]        # 462150 <fb_hBlit8to15BGR>
-  463764:	48 89 44 24 60       	mov    QWORD PTR [rsp+0x60],rax
-  463769:	48 8d 05 a0 ec ff ff 	lea    rax,[rip+0xffffffffffffeca0]        # 462410 <fb_hBlit8to16BGR>
-  463770:	48 89 44 24 68       	mov    QWORD PTR [rsp+0x68],rax
-  463775:	48 8d 05 a4 ee ff ff 	lea    rax,[rip+0xffffffffffffeea4]        # 462620 <fb_hBlit8to24BGR>
-  46377c:	48 89 44 24 70       	mov    QWORD PTR [rsp+0x70],rax
-  463781:	48 8d 05 e8 ef ff ff 	lea    rax,[rip+0xffffffffffffefe8]        # 462770 <fb_hBlit8to32BGR>
-  463788:	48 89 44 24 78       	mov    QWORD PTR [rsp+0x78],rax
-  46378d:	48 8d 05 ec f1 ff ff 	lea    rax,[rip+0xfffffffffffff1ec]        # 462980 <fb_hBlit16to15BGR>
-  463794:	48 89 84 24 80 00 00 	mov    QWORD PTR [rsp+0x80],rax
-  46379b:	00 
-  46379c:	48 8d 05 cd e7 ff ff 	lea    rax,[rip+0xffffffffffffe7cd]        # 461f70 <fb_hBlitCopy>
-  4637a3:	48 89 84 24 88 00 00 	mov    QWORD PTR [rsp+0x88],rax
-  4637aa:	00 
-  4637ab:	48 89 84 24 b8 00 00 	mov    QWORD PTR [rsp+0xb8],rax
-  4637b2:	00 
-  4637b3:	31 c0                	xor    eax,eax
-  4637b5:	eb 3c                	jmp    4637f3 <fb_hGetBlitter+0x183>
-  4637b7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  4637be:	00 00 
-  4637c0:	41 89 c0             	mov    r8d,eax
-  4637c3:	41 c1 e0 13          	shl    r8d,0x13
-  4637c7:	41 81 e0 00 00 f8 00 	and    r8d,0xf80000
-  4637ce:	44 09 c1             	or     ecx,r8d
-  4637d1:	41 89 0c 81          	mov    DWORD PTR [r9+rax*4],ecx
-  4637d5:	89 c1                	mov    ecx,eax
-  4637d7:	81 e1 f8 00 00 00    	and    ecx,0xf8
-  4637dd:	09 ca                	or     edx,ecx
-  4637df:	41 89 94 81 00 04 00 	mov    DWORD PTR [r9+rax*4+0x400],edx
-  4637e6:	00 
-  4637e7:	48 83 c0 01          	add    rax,0x1
-  4637eb:	48 3d 00 01 00 00    	cmp    rax,0x100
-  4637f1:	74 4b                	je     46383e <fb_hGetBlitter+0x1ce>
-  4637f3:	89 c1                	mov    ecx,eax
-  4637f5:	89 c2                	mov    edx,eax
-  4637f7:	c1 e1 05             	shl    ecx,0x5
-  4637fa:	c1 e2 0d             	shl    edx,0xd
-  4637fd:	81 e1 00 1c 00 00    	and    ecx,0x1c00
-  463803:	85 f6                	test   esi,esi
-  463805:	0f b7 d2             	movzx  edx,dx
-  463808:	75 b6                	jne    4637c0 <fb_hGetBlitter+0x150>
-  46380a:	44 8d 04 c5 00 00 00 	lea    r8d,[rax*8+0x0]
-  463811:	00 
-  463812:	45 0f b6 c0          	movzx  r8d,r8b
-  463816:	44 09 c1             	or     ecx,r8d
-  463819:	41 89 0c 81          	mov    DWORD PTR [r9+rax*4],ecx
-  46381d:	89 c1                	mov    ecx,eax
-  46381f:	c1 e1 10             	shl    ecx,0x10
-  463822:	81 e1 00 00 f8 00    	and    ecx,0xf80000
-  463828:	09 ca                	or     edx,ecx
-  46382a:	41 89 94 81 00 04 00 	mov    DWORD PTR [r9+rax*4+0x400],edx
-  463831:	00 
-  463832:	48 83 c0 01          	add    rax,0x1
-  463836:	48 3d 00 01 00 00    	cmp    rax,0x100
-  46383c:	75 b5                	jne    4637f3 <fb_hGetBlitter+0x183>
-  46383e:	48 8d 44 24 60       	lea    rax,[rsp+0x60]
-  463843:	48 89 e2             	mov    rdx,rsp
-  463846:	85 f6                	test   esi,esi
-  463848:	48 0f 45 c2          	cmovne rax,rdx
-  46384c:	48 8b 15 c5 03 04 00 	mov    rdx,QWORD PTR [rip+0x403c5]        # 4a3c18 <__fb_gfx>
-  463853:	8b 4a 28             	mov    ecx,DWORD PTR [rdx+0x28]
-  463856:	83 f9 20             	cmp    ecx,0x20
-  463859:	77 6a                	ja     4638c5 <fb_hGetBlitter+0x255>
-  46385b:	ba 01 00 00 00       	mov    edx,0x1
-  463860:	48 d3 e2             	shl    rdx,cl
-  463863:	f7 c2 16 01 00 00    	test   edx,0x116
-  463869:	75 3d                	jne    4638a8 <fb_hGetBlitter+0x238>
-  46386b:	48 b9 00 00 00 01 01 	movabs rcx,0x101000000
-  463872:	00 00 00 
-  463875:	48 85 ca             	test   rdx,rcx
-  463878:	75 68                	jne    4638e2 <fb_hGetBlitter+0x272>
-  46387a:	f7 c2 00 80 01 00    	test   edx,0x18000
-  463880:	74 43                	je     4638c5 <fb_hGetBlitter+0x255>
-  463882:	83 ff 10             	cmp    edi,0x10
-  463885:	0f 84 ab 00 00 00    	je     463936 <fb_hGetBlitter+0x2c6>
-  46388b:	7e 33                	jle    4638c0 <fb_hGetBlitter+0x250>
-  46388d:	83 ff 18             	cmp    edi,0x18
-  463890:	0f 84 a6 00 00 00    	je     46393c <fb_hGetBlitter+0x2cc>
-  463896:	83 ff 20             	cmp    edi,0x20
-  463899:	75 2a                	jne    4638c5 <fb_hGetBlitter+0x255>
-  46389b:	48 8b 40 38          	mov    rax,QWORD PTR [rax+0x38]
-  46389f:	eb 26                	jmp    4638c7 <fb_hGetBlitter+0x257>
-  4638a1:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  4638a8:	83 ef 08             	sub    edi,0x8
-  4638ab:	83 ff 18             	cmp    edi,0x18
-  4638ae:	77 15                	ja     4638c5 <fb_hGetBlitter+0x255>
-  4638b0:	48 8d 0d 21 23 01 00 	lea    rcx,[rip+0x12321]        # 475bd8 <cursor_data+0x58>
-  4638b7:	48 63 14 b9          	movsxd rdx,DWORD PTR [rcx+rdi*4]
-  4638bb:	48 01 ca             	add    rdx,rcx
-  4638be:	ff e2                	jmp    rdx
-  4638c0:	83 ff 0f             	cmp    edi,0xf
-  4638c3:	74 6b                	je     463930 <fb_hGetBlitter+0x2c0>
-  4638c5:	31 c0                	xor    eax,eax
-  4638c7:	48 8b bc 24 c8 00 00 	mov    rdi,QWORD PTR [rsp+0xc8]
-  4638ce:	00 
-  4638cf:	64 48 33 3c 25 28 00 	xor    rdi,QWORD PTR fs:0x28
-  4638d6:	00 00 
-  4638d8:	75 68                	jne    463942 <fb_hGetBlitter+0x2d2>
-  4638da:	48 81 c4 d8 00 00 00 	add    rsp,0xd8
-  4638e1:	c3                   	ret    
-  4638e2:	83 ff 10             	cmp    edi,0x10
-  4638e5:	74 32                	je     463919 <fb_hGetBlitter+0x2a9>
-  4638e7:	7e 36                	jle    46391f <fb_hGetBlitter+0x2af>
-  4638e9:	83 ff 18             	cmp    edi,0x18
-  4638ec:	74 3c                	je     46392a <fb_hGetBlitter+0x2ba>
-  4638ee:	83 ff 20             	cmp    edi,0x20
-  4638f1:	75 d2                	jne    4638c5 <fb_hGetBlitter+0x255>
-  4638f3:	48 8b 40 58          	mov    rax,QWORD PTR [rax+0x58]
-  4638f7:	eb ce                	jmp    4638c7 <fb_hGetBlitter+0x257>
-  4638f9:	48 8b 40 10          	mov    rax,QWORD PTR [rax+0x10]
-  4638fd:	eb c8                	jmp    4638c7 <fb_hGetBlitter+0x257>
-  4638ff:	48 8b 40 18          	mov    rax,QWORD PTR [rax+0x18]
-  463903:	eb c2                	jmp    4638c7 <fb_hGetBlitter+0x257>
-  463905:	48 8b 00             	mov    rax,QWORD PTR [rax]
-  463908:	eb bd                	jmp    4638c7 <fb_hGetBlitter+0x257>
-  46390a:	48 8d 05 5f e6 ff ff 	lea    rax,[rip+0xffffffffffffe65f]        # 461f70 <fb_hBlitCopy>
-  463911:	eb b4                	jmp    4638c7 <fb_hGetBlitter+0x257>
-  463913:	48 8b 40 08          	mov    rax,QWORD PTR [rax+0x8]
-  463917:	eb ae                	jmp    4638c7 <fb_hGetBlitter+0x257>
-  463919:	48 8b 40 48          	mov    rax,QWORD PTR [rax+0x48]
-  46391d:	eb a8                	jmp    4638c7 <fb_hGetBlitter+0x257>
-  46391f:	83 ff 0f             	cmp    edi,0xf
-  463922:	75 a1                	jne    4638c5 <fb_hGetBlitter+0x255>
-  463924:	48 8b 40 40          	mov    rax,QWORD PTR [rax+0x40]
-  463928:	eb 9d                	jmp    4638c7 <fb_hGetBlitter+0x257>
-  46392a:	48 8b 40 50          	mov    rax,QWORD PTR [rax+0x50]
-  46392e:	eb 97                	jmp    4638c7 <fb_hGetBlitter+0x257>
-  463930:	48 8b 40 20          	mov    rax,QWORD PTR [rax+0x20]
-  463934:	eb 91                	jmp    4638c7 <fb_hGetBlitter+0x257>
-  463936:	48 8b 40 28          	mov    rax,QWORD PTR [rax+0x28]
-  46393a:	eb 8b                	jmp    4638c7 <fb_hGetBlitter+0x257>
-  46393c:	48 8b 40 30          	mov    rax,QWORD PTR [rax+0x30]
-  463940:	eb 85                	jmp    4638c7 <fb_hGetBlitter+0x257>
-  463942:	e8 19 1f fa ff       	call   405860 <__stack_chk_fail@plt>
-  463947:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  46394e:	00 00 
-
-0000000000463950 <fb_hBlit_code_end>:
-  463950:	f3 c3                	repz ret 
-  463952:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  463959:	00 00 00 
-  46395c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-0000000000463960 <fb_hArrayDtorStr>:
-  463960:	4c 8b 47 08          	mov    r8,QWORD PTR [rdi+0x8]
-  463964:	4d 85 c0             	test   r8,r8
-  463967:	74 77                	je     4639e0 <fb_hArrayDtorStr+0x80>
-  463969:	55                   	push   rbp
-  46396a:	53                   	push   rbx
-  46396b:	48 8d 47 48          	lea    rax,[rdi+0x48]
-  46396f:	48 83 ec 08          	sub    rsp,0x8
-  463973:	48 8b 5f 30          	mov    rbx,QWORD PTR [rdi+0x30]
-  463977:	48 8b 77 20          	mov    rsi,QWORD PTR [rdi+0x20]
-  46397b:	48 29 d3             	sub    rbx,rdx
-  46397e:	48 83 fe 01          	cmp    rsi,0x1
-  463982:	76 1e                	jbe    4639a2 <fb_hArrayDtorStr+0x42>
-  463984:	b9 01 00 00 00       	mov    ecx,0x1
-  463989:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  463990:	48 83 c1 01          	add    rcx,0x1
-  463994:	48 83 c0 18          	add    rax,0x18
-  463998:	48 0f af 58 e8       	imul   rbx,QWORD PTR [rax-0x18]
-  46399d:	48 39 f1             	cmp    rcx,rsi
-  4639a0:	75 ee                	jne    463990 <fb_hArrayDtorStr+0x30>
-  4639a2:	48 01 da             	add    rdx,rbx
-  4639a5:	48 85 db             	test   rbx,rbx
-  4639a8:	48 8d 04 52          	lea    rax,[rdx+rdx*2]
-  4639ac:	49 8d 6c c0 e8       	lea    rbp,[r8+rax*8-0x18]
-  4639b1:	7e 1e                	jle    4639d1 <fb_hArrayDtorStr+0x71>
-  4639b3:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  4639b8:	48 83 7d 00 00       	cmp    QWORD PTR [rbp+0x0],0x0
-  4639bd:	74 08                	je     4639c7 <fb_hArrayDtorStr+0x67>
-  4639bf:	48 89 ef             	mov    rdi,rbp
-  4639c2:	e8 c9 64 00 00       	call   469e90 <fb_StrDelete>
-  4639c7:	48 83 ed 18          	sub    rbp,0x18
-  4639cb:	48 83 eb 01          	sub    rbx,0x1
-  4639cf:	75 e7                	jne    4639b8 <fb_hArrayDtorStr+0x58>
-  4639d1:	48 83 c4 08          	add    rsp,0x8
-  4639d5:	5b                   	pop    rbx
-  4639d6:	5d                   	pop    rbp
-  4639d7:	c3                   	ret    
-  4639d8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  4639df:	00 
-  4639e0:	f3 c3                	repz ret 
-  4639e2:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  4639e6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  4639ed:	00 00 00 
-
-00000000004639f0 <fb_ArrayDestructStr>:
-  4639f0:	31 d2                	xor    edx,edx
-  4639f2:	31 f6                	xor    esi,esi
-  4639f4:	e9 67 ff ff ff       	jmp    463960 <fb_hArrayDtorStr>
-  4639f9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-
-0000000000463a00 <fb_ConsoleInput>:
-  463a00:	41 56                	push   r14
-  463a02:	41 55                	push   r13
-  463a04:	41 89 d6             	mov    r14d,edx
-  463a07:	41 54                	push   r12
-  463a09:	55                   	push   rbp
-  463a0a:	41 89 f5             	mov    r13d,esi
-  463a0d:	53                   	push   rbx
-  463a0e:	48 89 fd             	mov    rbp,rdi
-  463a11:	e8 ca 10 00 00       	call   464ae0 <fb_DevScrnInit_Read>
-  463a16:	bf 01 00 00 00       	mov    edi,0x1
-  463a1b:	e8 50 2b 00 00       	call   466570 <fb_IsRedirected>
-  463a20:	85 c0                	test   eax,eax
-  463a22:	75 5c                	jne    463a80 <fb_ConsoleInput+0x80>
-  463a24:	48 c7 c2 40 53 46 00 	mov    rdx,0x465340
-  463a2b:	be 30 00 00 00       	mov    esi,0x30
-  463a30:	bf 02 00 00 00       	mov    edi,0x2
-  463a35:	e8 d6 77 00 00       	call   46b210 <fb_TlsGetCtx>
-  463a3a:	4c 8d 60 10          	lea    r12,[rax+0x10]
-  463a3e:	48 89 c3             	mov    rbx,rax
-  463a41:	4c 89 e7             	mov    rdi,r12
-  463a44:	e8 47 64 00 00       	call   469e90 <fb_StrDelete>
-  463a49:	48 c7 03 00 00 00 00 	mov    QWORD PTR [rbx],0x0
-  463a50:	c7 43 08 00 00 00 00 	mov    DWORD PTR [rbx+0x8],0x0
-  463a57:	45 89 f1             	mov    r9d,r14d
-  463a5a:	c7 43 28 00 00 00 00 	mov    DWORD PTR [rbx+0x28],0x0
-  463a61:	45 89 e8             	mov    r8d,r13d
-  463a64:	4c 89 e6             	mov    rsi,r12
-  463a67:	5b                   	pop    rbx
-  463a68:	48 89 ef             	mov    rdi,rbp
-  463a6b:	31 c9                	xor    ecx,ecx
-  463a6d:	48 c7 c2 ff ff ff ff 	mov    rdx,0xffffffffffffffff
-  463a74:	5d                   	pop    rbp
-  463a75:	41 5c                	pop    r12
-  463a77:	41 5d                	pop    r13
-  463a79:	41 5e                	pop    r14
-  463a7b:	e9 10 2b 00 00       	jmp    466590 <fb_LineInput>
-  463a80:	48 89 ef             	mov    rdi,rbp
-  463a83:	e8 c8 63 00 00       	call   469e50 <fb_hStrDelTemp>
-  463a88:	5b                   	pop    rbx
-  463a89:	5d                   	pop    rbp
-  463a8a:	41 5c                	pop    r12
-  463a8c:	41 5d                	pop    r13
-  463a8e:	41 5e                	pop    r14
-  463a90:	31 ff                	xor    edi,edi
-  463a92:	e9 b9 18 00 00       	jmp    465350 <fb_FileInput>
-  463a97:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  463a9e:	00 00 
-
-0000000000463aa0 <fb_Locate>:
-  463aa0:	55                   	push   rbp
-  463aa1:	53                   	push   rbx
-  463aa2:	89 d3                	mov    ebx,edx
-  463aa4:	48 83 ec 18          	sub    rsp,0x18
-  463aa8:	48 8d 6c 24 04       	lea    rbp,[rsp+0x4]
-  463aad:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
-  463ab4:	00 00 
-  463ab6:	48 89 44 24 08       	mov    QWORD PTR [rsp+0x8],rax
-  463abb:	31 c0                	xor    eax,eax
-  463abd:	48 89 e9             	mov    rcx,rbp
-  463ac0:	e8 eb 2a 00 00       	call   4665b0 <fb_LocateEx>
-  463ac5:	85 c0                	test   eax,eax
-  463ac7:	74 0e                	je     463ad7 <fb_Locate+0x37>
-  463ac9:	48 89 e9             	mov    rcx,rbp
-  463acc:	89 da                	mov    edx,ebx
-  463ace:	31 f6                	xor    esi,esi
-  463ad0:	31 ff                	xor    edi,edi
-  463ad2:	e8 d9 2a 00 00       	call   4665b0 <fb_LocateEx>
-  463ad7:	48 8b 4c 24 08       	mov    rcx,QWORD PTR [rsp+0x8]
-  463adc:	64 48 33 0c 25 28 00 	xor    rcx,QWORD PTR fs:0x28
-  463ae3:	00 00 
-  463ae5:	8b 44 24 04          	mov    eax,DWORD PTR [rsp+0x4]
-  463ae9:	75 07                	jne    463af2 <fb_Locate+0x52>
-  463aeb:	48 83 c4 18          	add    rsp,0x18
-  463aef:	5b                   	pop    rbx
-  463af0:	5d                   	pop    rbp
-  463af1:	c3                   	ret    
-  463af2:	e8 69 1d fa ff       	call   405860 <__stack_chk_fail@plt>
-  463af7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  463afe:	00 00 
-
-0000000000463b00 <fb_ConPrintTTY>:
-  463b00:	41 57                	push   r15
-  463b02:	41 56                	push   r14
-  463b04:	41 55                	push   r13
-  463b06:	41 54                	push   r12
-  463b08:	55                   	push   rbp
-  463b09:	53                   	push   rbx
-  463b0a:	48 81 ec 48 04 00 00 	sub    rsp,0x448
-  463b11:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
-  463b18:	00 00 
-  463b1a:	48 89 84 24 38 04 00 	mov    QWORD PTR [rsp+0x438],rax
-  463b21:	00 
-  463b22:	31 c0                	xor    eax,eax
-  463b24:	8b 47 20             	mov    eax,DWORD PTR [rdi+0x20]
-  463b27:	2b 47 18             	sub    eax,DWORD PTR [rdi+0x18]
-  463b2a:	89 4c 24 0c          	mov    DWORD PTR [rsp+0xc],ecx
-  463b2e:	83 c0 01             	add    eax,0x1
-  463b31:	89 44 24 08          	mov    DWORD PTR [rsp+0x8],eax
-  463b35:	0f 84 c5 00 00 00    	je     463c00 <fb_ConPrintTTY+0x100>
-  463b3b:	48 85 d2             	test   rdx,rdx
-  463b3e:	48 89 fd             	mov    rbp,rdi
-  463b41:	4c 8b 6f 28          	mov    r13,QWORD PTR [rdi+0x28]
-  463b45:	0f 84 b5 00 00 00    	je     463c00 <fb_ConPrintTTY+0x100>
-  463b4b:	48 8d 44 24 30       	lea    rax,[rsp+0x30]
-  463b50:	31 ff                	xor    edi,edi
-  463b52:	48 8d 0d e7 20 01 00 	lea    rcx,[rip+0x120e7]        # 475c40 <cursor_data+0xc0>
-  463b59:	49 89 f4             	mov    r12,rsi
-  463b5c:	4c 8d 04 16          	lea    r8,[rsi+rdx*1]
-  463b60:	31 db                	xor    ebx,ebx
-  463b62:	31 f6                	xor    esi,esi
-  463b64:	48 89 44 24 20       	mov    QWORD PTR [rsp+0x20],rax
-  463b69:	49 89 ff             	mov    r15,rdi
-  463b6c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  463b70:	41 0f b6 04 24       	movzx  eax,BYTE PTR [r12]
-  463b75:	83 e8 07             	sub    eax,0x7
-  463b78:	3c 06                	cmp    al,0x6
-  463b7a:	0f 87 e0 01 00 00    	ja     463d60 <fb_ConPrintTTY+0x260>
-  463b80:	0f b6 c0             	movzx  eax,al
-  463b83:	48 63 04 81          	movsxd rax,DWORD PTR [rcx+rax*4]
-  463b87:	48 01 c8             	add    rax,rcx
-  463b8a:	ff e0                	jmp    rax
-  463b8c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  463b90:	4c 89 44 24 18       	mov    QWORD PTR [rsp+0x18],r8
-  463b95:	48 89 4c 24 10       	mov    QWORD PTR [rsp+0x10],rcx
-  463b9a:	89 74 24 28          	mov    DWORD PTR [rsp+0x28],esi
-  463b9e:	e8 ed 70 00 00       	call   46ac90 <fb_Beep>
-  463ba3:	48 81 fb 00 04 00 00 	cmp    rbx,0x400
-  463baa:	48 8b 4c 24 10       	mov    rcx,QWORD PTR [rsp+0x10]
-  463baf:	4c 8b 44 24 18       	mov    r8,QWORD PTR [rsp+0x18]
-  463bb4:	0f 87 ce 01 00 00    	ja     463d88 <fb_ConPrintTTY+0x288>
-  463bba:	8b 74 24 28          	mov    esi,DWORD PTR [rsp+0x28]
-  463bbe:	66 90                	xchg   ax,ax
-  463bc0:	49 83 c4 01          	add    r12,0x1
-  463bc4:	4d 39 e0             	cmp    r8,r12
-  463bc7:	75 a7                	jne    463b70 <fb_ConPrintTTY+0x70>
-  463bc9:	48 85 db             	test   rbx,rbx
-  463bcc:	0f 85 1e 02 00 00    	jne    463df0 <fb_ConPrintTTY+0x2f0>
-  463bd2:	85 f6                	test   esi,esi
-  463bd4:	74 2a                	je     463c00 <fb_ConPrintTTY+0x100>
-  463bd6:	44 8b 45 24          	mov    r8d,DWORD PTR [rbp+0x24]
-  463bda:	41 83 f8 ff          	cmp    r8d,0xffffffff
-  463bde:	74 20                	je     463c00 <fb_ConPrintTTY+0x100>
-  463be0:	44 8b 4d 2c          	mov    r9d,DWORD PTR [rbp+0x2c]
-  463be4:	45 39 c8             	cmp    r8d,r9d
-  463be7:	7d 17                	jge    463c00 <fb_ConPrintTTY+0x100>
-  463be9:	8b 4d 20             	mov    ecx,DWORD PTR [rbp+0x20]
-  463bec:	8b 55 1c             	mov    edx,DWORD PTR [rbp+0x1c]
-  463bef:	45 29 c1             	sub    r9d,r8d
-  463bf2:	8b 75 18             	mov    esi,DWORD PTR [rbp+0x18]
-  463bf5:	48 89 ef             	mov    rdi,rbp
-  463bf8:	ff 55 08             	call   QWORD PTR [rbp+0x8]
-  463bfb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  463c00:	48 8b 84 24 38 04 00 	mov    rax,QWORD PTR [rsp+0x438]
-  463c07:	00 
-  463c08:	64 48 33 04 25 28 00 	xor    rax,QWORD PTR fs:0x28
-  463c0f:	00 00 
-  463c11:	0f 85 ee 01 00 00    	jne    463e05 <fb_ConPrintTTY+0x305>
-  463c17:	48 81 c4 48 04 00 00 	add    rsp,0x448
-  463c1e:	5b                   	pop    rbx
-  463c1f:	5d                   	pop    rbp
-  463c20:	41 5c                	pop    r12
-  463c22:	41 5d                	pop    r13
-  463c24:	41 5e                	pop    r14
-  463c26:	41 5f                	pop    r15
-  463c28:	c3                   	ret    
-  463c29:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  463c30:	8b 45 18             	mov    eax,DWORD PTR [rbp+0x18]
-  463c33:	45 31 f6             	xor    r14d,r14d
-  463c36:	44 29 e8             	sub    eax,r13d
-  463c39:	41 89 c5             	mov    r13d,eax
-  463c3c:	48 85 db             	test   rbx,rbx
-  463c3f:	74 27                	je     463c68 <fb_ConPrintTTY+0x168>
-  463c41:	48 8b 74 24 20       	mov    rsi,QWORD PTR [rsp+0x20]
-  463c46:	4c 89 fa             	mov    rdx,r15
-  463c49:	48 89 ef             	mov    rdi,rbp
-  463c4c:	4c 89 44 24 18       	mov    QWORD PTR [rsp+0x18],r8
-  463c51:	48 89 4c 24 10       	mov    QWORD PTR [rsp+0x10],rcx
-  463c56:	45 31 ff             	xor    r15d,r15d
-  463c59:	e8 c2 7b 00 00       	call   46b820 <fb_ConPrintRaw>
-  463c5e:	48 8b 4c 24 10       	mov    rcx,QWORD PTR [rsp+0x10]
-  463c63:	4c 8b 44 24 18       	mov    r8,QWORD PTR [rsp+0x18]
-  463c68:	44 01 6d 28          	add    DWORD PTR [rbp+0x28],r13d
-  463c6c:	44 01 75 2c          	add    DWORD PTR [rbp+0x2c],r14d
-  463c70:	be 01 00 00 00       	mov    esi,0x1
-  463c75:	4c 8b 6d 28          	mov    r13,QWORD PTR [rbp+0x28]
-  463c79:	31 db                	xor    ebx,ebx
-  463c7b:	e9 40 ff ff ff       	jmp    463bc0 <fb_ConPrintTTY+0xc0>
-  463c80:	8b 44 24 0c          	mov    eax,DWORD PTR [rsp+0xc]
-  463c84:	85 c0                	test   eax,eax
-  463c86:	0f 84 44 01 00 00    	je     463dd0 <fb_ConPrintTTY+0x2d0>
-  463c8c:	8b 45 18             	mov    eax,DWORD PTR [rbp+0x18]
-  463c8f:	41 be 01 00 00 00    	mov    r14d,0x1
-  463c95:	44 29 e8             	sub    eax,r13d
-  463c98:	41 89 c5             	mov    r13d,eax
-  463c9b:	eb 9f                	jmp    463c3c <fb_ConPrintTTY+0x13c>
-  463c9d:	0f 1f 00             	nop    DWORD PTR [rax]
-  463ca0:	44 89 e8             	mov    eax,r13d
-  463ca3:	2b 45 18             	sub    eax,DWORD PTR [rbp+0x18]
-  463ca6:	44 8d 48 08          	lea    r9d,[rax+0x8]
-  463caa:	41 83 e1 f8          	and    r9d,0xfffffff8
-  463cae:	41 29 c1             	sub    r9d,eax
-  463cb1:	4d 63 c9             	movsxd r9,r9d
-  463cb4:	49 8d 04 19          	lea    rax,[r9+rbx*1]
-  463cb8:	48 3d 00 04 00 00    	cmp    rax,0x400
-  463cbe:	76 09                	jbe    463cc9 <fb_ConPrintTTY+0x1c9>
-  463cc0:	48 85 db             	test   rbx,rbx
-  463cc3:	0f 85 41 01 00 00    	jne    463e0a <fb_ConPrintTTY+0x30a>
-  463cc9:	4c 8d 35 90 1f 01 00 	lea    r14,[rip+0x11f90]        # 475c60 <achTabSpaces.7976>
-  463cd0:	4d 85 c9             	test   r9,r9
-  463cd3:	0f 84 e7 fe ff ff    	je     463bc0 <fb_ConPrintTTY+0xc0>
-  463cd9:	4d 8d 51 ff          	lea    r10,[r9-0x1]
-  463cdd:	44 89 c8             	mov    eax,r9d
-  463ce0:	42 8d 14 28          	lea    edx,[rax+r13*1]
-  463ce4:	48 bf 00 00 00 00 ff 	movabs rdi,0xffffffff00000000
-  463ceb:	ff ff ff 
-  463cee:	49 21 fd             	and    r13,rdi
-  463cf1:	49 09 d5             	or     r13,rdx
-  463cf4:	3b 55 20             	cmp    edx,DWORD PTR [rbp+0x20]
-  463cf7:	48 89 d0             	mov    rax,rdx
-  463cfa:	7e 16                	jle    463d12 <fb_ConPrintTTY+0x212>
-  463cfc:	44 8b 5d 18          	mov    r11d,DWORD PTR [rbp+0x18]
-  463d00:	49 21 fd             	and    r13,rdi
-  463d03:	44 29 d8             	sub    eax,r11d
-  463d06:	99                   	cdq    
-  463d07:	f7 7c 24 08          	idiv   DWORD PTR [rsp+0x8]
-  463d0b:	42 8d 04 1a          	lea    eax,[rdx+r11*1]
-  463d0f:	49 09 c5             	or     r13,rax
-  463d12:	4e 8d 54 13 01       	lea    r10,[rbx+r10*1+0x1]
-  463d17:	48 8d 54 24 2f       	lea    rdx,[rsp+0x2f]
-  463d1c:	49 29 de             	sub    r14,rbx
-  463d1f:	90                   	nop
-  463d20:	48 83 c3 01          	add    rbx,0x1
-  463d24:	41 0f b6 44 1e ff    	movzx  eax,BYTE PTR [r14+rbx*1-0x1]
-  463d2a:	4c 39 d3             	cmp    rbx,r10
-  463d2d:	88 04 1a             	mov    BYTE PTR [rdx+rbx*1],al
-  463d30:	75 ee                	jne    463d20 <fb_ConPrintTTY+0x220>
-  463d32:	4d 01 cf             	add    r15,r9
-  463d35:	e9 86 fe ff ff       	jmp    463bc0 <fb_ConPrintTTY+0xc0>
-  463d3a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  463d40:	44 39 6d 18          	cmp    DWORD PTR [rbp+0x18],r13d
-  463d44:	41 0f 9c c5          	setl   r13b
-  463d48:	45 31 f6             	xor    r14d,r14d
-  463d4b:	45 0f b6 ed          	movzx  r13d,r13b
-  463d4f:	41 f7 dd             	neg    r13d
-  463d52:	e9 e5 fe ff ff       	jmp    463c3c <fb_ConPrintTTY+0x13c>
-  463d57:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  463d5e:	00 00 
-  463d60:	48 8d 43 01          	lea    rax,[rbx+0x1]
-  463d64:	48 3d 00 04 00 00    	cmp    rax,0x400
-  463d6a:	77 74                	ja     463de0 <fb_ConPrintTTY+0x2e0>
-  463d6c:	4d 89 e6             	mov    r14,r12
-  463d6f:	45 31 d2             	xor    r10d,r10d
-  463d72:	b8 01 00 00 00       	mov    eax,0x1
-  463d77:	41 b9 01 00 00 00    	mov    r9d,0x1
-  463d7d:	e9 5e ff ff ff       	jmp    463ce0 <fb_ConPrintTTY+0x1e0>
-  463d82:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  463d88:	45 31 c9             	xor    r9d,r9d
-  463d8b:	4d 89 e6             	mov    r14,r12
-  463d8e:	48 8b 74 24 20       	mov    rsi,QWORD PTR [rsp+0x20]
-  463d93:	4c 89 fa             	mov    rdx,r15
-  463d96:	48 89 ef             	mov    rdi,rbp
-  463d99:	4c 89 44 24 28       	mov    QWORD PTR [rsp+0x28],r8
-  463d9e:	48 89 4c 24 18       	mov    QWORD PTR [rsp+0x18],rcx
-  463da3:	45 31 ff             	xor    r15d,r15d
-  463da6:	4c 89 4c 24 10       	mov    QWORD PTR [rsp+0x10],r9
-  463dab:	31 db                	xor    ebx,ebx
-  463dad:	e8 6e 7a 00 00       	call   46b820 <fb_ConPrintRaw>
-  463db2:	31 f6                	xor    esi,esi
-  463db4:	4c 8b 4c 24 10       	mov    r9,QWORD PTR [rsp+0x10]
-  463db9:	48 8b 4c 24 18       	mov    rcx,QWORD PTR [rsp+0x18]
-  463dbe:	4c 8b 44 24 28       	mov    r8,QWORD PTR [rsp+0x28]
-  463dc3:	e9 08 ff ff ff       	jmp    463cd0 <fb_ConPrintTTY+0x1d0>
-  463dc8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  463dcf:	00 
-  463dd0:	45 31 ed             	xor    r13d,r13d
-  463dd3:	41 be 01 00 00 00    	mov    r14d,0x1
-  463dd9:	e9 5e fe ff ff       	jmp    463c3c <fb_ConPrintTTY+0x13c>
-  463dde:	66 90                	xchg   ax,ax
-  463de0:	41 b9 01 00 00 00    	mov    r9d,0x1
-  463de6:	eb a3                	jmp    463d8b <fb_ConPrintTTY+0x28b>
-  463de8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  463def:	00 
-  463df0:	48 8d 74 24 30       	lea    rsi,[rsp+0x30]
-  463df5:	4c 89 fa             	mov    rdx,r15
-  463df8:	48 89 ef             	mov    rdi,rbp
-  463dfb:	e8 20 7a 00 00       	call   46b820 <fb_ConPrintRaw>
-  463e00:	e9 fb fd ff ff       	jmp    463c00 <fb_ConPrintTTY+0x100>
-  463e05:	e8 56 1a fa ff       	call   405860 <__stack_chk_fail@plt>
-  463e0a:	4c 8d 35 4f 1e 01 00 	lea    r14,[rip+0x11e4f]        # 475c60 <achTabSpaces.7976>
-  463e11:	e9 78 ff ff ff       	jmp    463d8e <fb_ConPrintTTY+0x28e>
-  463e16:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  463e1d:	00 00 00 
-
-0000000000463e20 <DoAdjust.isra.0.constprop.3>:
-  463e20:	83 2f 01             	sub    DWORD PTR [rdi],0x1
-  463e23:	89 d0                	mov    eax,edx
-  463e25:	83 2e 01             	sub    DWORD PTR [rsi],0x1
-  463e28:	03 07                	add    eax,DWORD PTR [rdi]
-  463e2a:	79 16                	jns    463e42 <DoAdjust.isra.0.constprop.3+0x22>
-  463e2c:	89 ca                	mov    edx,ecx
-  463e2e:	29 c2                	sub    edx,eax
-  463e30:	89 d0                	mov    eax,edx
-  463e32:	89 17                	mov    DWORD PTR [rdi],edx
-  463e34:	99                   	cdq    
-  463e35:	f7 f9                	idiv   ecx
-  463e37:	29 06                	sub    DWORD PTR [rsi],eax
-  463e39:	8b 07                	mov    eax,DWORD PTR [rdi]
-  463e3b:	99                   	cdq    
-  463e3c:	f7 f9                	idiv   ecx
-  463e3e:	89 c8                	mov    eax,ecx
-  463e40:	29 d0                	sub    eax,edx
-  463e42:	99                   	cdq    
-  463e43:	89 07                	mov    DWORD PTR [rdi],eax
-  463e45:	f7 f9                	idiv   ecx
-  463e47:	01 06                	add    DWORD PTR [rsi],eax
-  463e49:	8b 07                	mov    eax,DWORD PTR [rdi]
-  463e4b:	99                   	cdq    
-  463e4c:	f7 f9                	idiv   ecx
-  463e4e:	83 c2 01             	add    edx,0x1
-  463e51:	89 17                	mov    DWORD PTR [rdi],edx
-  463e53:	83 06 01             	add    DWORD PTR [rsi],0x1
-  463e56:	c3                   	ret    
-  463e57:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  463e5e:	00 00 
-
-0000000000463e60 <DoMove.constprop.2>:
-  463e60:	53                   	push   rbx
-  463e61:	49 89 fa             	mov    r10,rdi
-  463e64:	89 cb                	mov    ebx,ecx
-  463e66:	e8 b5 ff ff ff       	call   463e20 <DoAdjust.isra.0.constprop.3>
-  463e6b:	8b 3e                	mov    edi,DWORD PTR [rsi]
-  463e6d:	41 8d 40 01          	lea    eax,[r8+0x1]
-  463e71:	41 8b 32             	mov    esi,DWORD PTR [r10]
-  463e74:	39 c7                	cmp    edi,eax
-  463e76:	75 05                	jne    463e7d <DoMove.constprop.2+0x1d>
-  463e78:	83 fe 01             	cmp    esi,0x1
-  463e7b:	74 13                	je     463e90 <DoMove.constprop.2+0x30>
-  463e7d:	5b                   	pop    rbx
-  463e7e:	45 31 c0             	xor    r8d,r8d
-  463e81:	31 c9                	xor    ecx,ecx
-  463e83:	ba ff ff ff ff       	mov    edx,0xffffffff
-  463e88:	e9 13 fc ff ff       	jmp    463aa0 <fb_Locate>
-  463e8d:	0f 1f 00             	nop    DWORD PTR [rax]
-  463e90:	45 89 c3             	mov    r11d,r8d
-  463e93:	89 de                	mov    esi,ebx
-  463e95:	ba ff ff ff ff       	mov    edx,0xffffffff
-  463e9a:	44 89 df             	mov    edi,r11d
-  463e9d:	45 31 c0             	xor    r8d,r8d
-  463ea0:	31 c9                	xor    ecx,ecx
-  463ea2:	e8 f9 fb ff ff       	call   463aa0 <fb_Locate>
-  463ea7:	5b                   	pop    rbx
-  463ea8:	48 8d 3d 37 b5 00 00 	lea    rdi,[rip+0xb537]        # 46f3e6 <_IO_stdin_used+0x3e6>
-  463eaf:	31 d2                	xor    edx,edx
-  463eb1:	be 01 00 00 00       	mov    esi,0x1
-  463eb6:	e9 95 28 00 00       	jmp    466750 <fb_PrintBufferEx>
-  463ebb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-
-0000000000463ec0 <fb_ConReadLine>:
-  463ec0:	41 57                	push   r15
-  463ec2:	41 56                	push   r14
-  463ec4:	41 55                	push   r13
-  463ec6:	41 54                	push   r12
-  463ec8:	55                   	push   rbp
-  463ec9:	53                   	push   rbx
-  463eca:	89 fb                	mov    ebx,edi
-  463ecc:	48 81 ec a8 00 00 00 	sub    rsp,0xa8
-  463ed3:	89 7c 24 14          	mov    DWORD PTR [rsp+0x14],edi
-  463ed7:	48 8d 74 24 64       	lea    rsi,[rsp+0x64]
-  463edc:	48 8d 7c 24 60       	lea    rdi,[rsp+0x60]
-  463ee1:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
-  463ee8:	00 00 
-  463eea:	48 89 84 24 98 00 00 	mov    QWORD PTR [rsp+0x98],rax
-  463ef1:	00 
-  463ef2:	31 c0                	xor    eax,eax
-  463ef4:	48 c7 44 24 70 00 00 	mov    QWORD PTR [rsp+0x70],0x0
-  463efb:	00 00 
-  463efd:	48 c7 44 24 78 00 00 	mov    QWORD PTR [rsp+0x78],0x0
-  463f04:	00 00 
-  463f06:	4c 8d 7c 24 70       	lea    r15,[rsp+0x70]
-  463f0b:	48 c7 84 24 80 00 00 	mov    QWORD PTR [rsp+0x80],0x0
-  463f12:	00 00 00 00 00 
-  463f17:	e8 94 25 00 00       	call   4664b0 <fb_GetSize>
-  463f1c:	45 31 c0             	xor    r8d,r8d
-  463f1f:	31 c9                	xor    ecx,ecx
-  463f21:	31 f6                	xor    esi,esi
-  463f23:	31 ff                	xor    edi,edi
-  463f25:	ba ff ff ff ff       	mov    edx,0xffffffff
-  463f2a:	e8 71 fb ff ff       	call   463aa0 <fb_Locate>
-  463f2f:	c1 e8 10             	shr    eax,0x10
-  463f32:	45 31 c0             	xor    r8d,r8d
-  463f35:	31 c9                	xor    ecx,ecx
-  463f37:	83 e0 01             	and    eax,0x1
-  463f3a:	31 d2                	xor    edx,edx
-  463f3c:	31 f6                	xor    esi,esi
-  463f3e:	31 ff                	xor    edi,edi
-  463f40:	89 44 24 4c          	mov    DWORD PTR [rsp+0x4c],eax
-  463f44:	e8 57 fb ff ff       	call   463aa0 <fb_Locate>
-  463f49:	31 d2                	xor    edx,edx
-  463f4b:	31 f6                	xor    esi,esi
-  463f4d:	31 ff                	xor    edi,edi
-  463f4f:	e8 fc 27 00 00       	call   466750 <fb_PrintBufferEx>
-  463f54:	31 c0                	xor    eax,eax
-  463f56:	85 db                	test   ebx,ebx
-  463f58:	0f 94 c0             	sete   al
-  463f5b:	45 31 c0             	xor    r8d,r8d
-  463f5e:	31 c9                	xor    ecx,ecx
-  463f60:	89 c2                	mov    edx,eax
-  463f62:	31 f6                	xor    esi,esi
-  463f64:	31 ff                	xor    edi,edi
-  463f66:	89 44 24 48          	mov    DWORD PTR [rsp+0x48],eax
-  463f6a:	45 31 f6             	xor    r14d,r14d
-  463f6d:	45 31 ed             	xor    r13d,r13d
-  463f70:	e8 2b fb ff ff       	call   463aa0 <fb_Locate>
-  463f75:	48 8d 44 24 5c       	lea    rax,[rsp+0x5c]
-  463f7a:	48 89 44 24 08       	mov    QWORD PTR [rsp+0x8],rax
-  463f7f:	48 8d 44 24 58       	lea    rax,[rsp+0x58]
-  463f84:	48 89 04 24          	mov    QWORD PTR [rsp],rax
-  463f88:	48 8d 84 24 8a 00 00 	lea    rax,[rsp+0x8a]
-  463f8f:	00 
-  463f90:	48 89 44 24 38       	mov    QWORD PTR [rsp+0x38],rax
-  463f95:	48 8d 44 24 6c       	lea    rax,[rsp+0x6c]
-  463f9a:	48 89 44 24 40       	mov    QWORD PTR [rsp+0x40],rax
-  463f9f:	90                   	nop
-  463fa0:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
-  463fa5:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
-  463fa9:	e8 42 25 00 00       	call   4664f0 <fb_GetXY>
-  463fae:	8b 54 24 14          	mov    edx,DWORD PTR [rsp+0x14]
-  463fb2:	85 d2                	test   edx,edx
-  463fb4:	74 14                	je     463fca <fb_ConReadLine+0x10a>
-  463fb6:	e9 55 01 00 00       	jmp    464110 <fb_ConReadLine+0x250>
-  463fbb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  463fc0:	bf 19 00 00 00       	mov    edi,0x19
-  463fc5:	e8 e6 6c 00 00       	call   46acb0 <fb_Delay>
-  463fca:	e8 81 25 00 00       	call   466550 <fb_KeyHit>
-  463fcf:	85 c0                	test   eax,eax
-  463fd1:	74 ed                	je     463fc0 <fb_ConReadLine+0x100>
-  463fd3:	e8 38 25 00 00       	call   466510 <fb_Inkey>
-  463fd8:	48 8b 10             	mov    rdx,QWORD PTR [rax]
-  463fdb:	48 85 d2             	test   rdx,rdx
-  463fde:	74 c0                	je     463fa0 <fb_ConReadLine+0xe0>
-  463fe0:	48 b9 ff ff ff ff ff 	movabs rcx,0x7fffffffffffffff
-  463fe7:	ff ff 7f 
-  463fea:	48 23 48 08          	and    rcx,QWORD PTR [rax+0x8]
-  463fee:	48 83 f9 02          	cmp    rcx,0x2
-  463ff2:	0f 84 48 01 00 00    	je     464140 <fb_ConReadLine+0x280>
-  463ff8:	44 0f b6 22          	movzx  r12d,BYTE PTR [rdx]
-  463ffc:	48 89 c7             	mov    rdi,rax
-  463fff:	e8 4c 5e 00 00       	call   469e50 <fb_hStrDelTemp>
-  464004:	8b 44 24 14          	mov    eax,DWORD PTR [rsp+0x14]
-  464008:	85 c0                	test   eax,eax
-  46400a:	74 4d                	je     464059 <fb_ConReadLine+0x199>
-  46400c:	4d 39 f5             	cmp    r13,r14
-  46400f:	48 8b 44 24 70       	mov    rax,QWORD PTR [rsp+0x70]
-  464014:	0f 83 3e 01 00 00    	jae    464158 <fb_ConReadLine+0x298>
-  46401a:	48 85 c0             	test   rax,rax
-  46401d:	0f 84 35 01 00 00    	je     464158 <fb_ConReadLine+0x298>
-  464023:	42 0f b6 04 28       	movzx  eax,BYTE PTR [rax+r13*1]
-  464028:	48 8b 74 24 38       	mov    rsi,QWORD PTR [rsp+0x38]
-  46402d:	31 d2                	xor    edx,edx
-  46402f:	31 ff                	xor    edi,edi
-  464031:	88 84 24 8a 00 00 00 	mov    BYTE PTR [rsp+0x8a],al
-  464038:	c6 84 24 8b 00 00 00 	mov    BYTE PTR [rsp+0x8b],0x0
-  46403f:	00 
-  464040:	e8 0b 3d 00 00       	call   467d50 <fb_PrintFixString>
-  464045:	8b 74 24 58          	mov    esi,DWORD PTR [rsp+0x58]
-  464049:	8b 7c 24 5c          	mov    edi,DWORD PTR [rsp+0x5c]
-  46404d:	45 31 c0             	xor    r8d,r8d
-  464050:	31 c9                	xor    ecx,ecx
-  464052:	31 d2                	xor    edx,edx
-  464054:	e8 47 fa ff ff       	call   463aa0 <fb_Locate>
-  464059:	41 81 fc ff 48 00 00 	cmp    r12d,0x48ff
-  464060:	0f 84 9a 04 00 00    	je     464500 <fb_ConReadLine+0x640>
-  464066:	7e 58                	jle    4640c0 <fb_ConReadLine+0x200>
-  464068:	41 81 fc ff 4f 00 00 	cmp    r12d,0x4fff
-  46406f:	0f 84 cb 05 00 00    	je     464640 <fb_ConReadLine+0x780>
-  464075:	0f 8f ed 00 00 00    	jg     464168 <fb_ConReadLine+0x2a8>
-  46407b:	41 81 fc ff 4b 00 00 	cmp    r12d,0x4bff
-  464082:	0f 84 58 05 00 00    	je     4645e0 <fb_ConReadLine+0x720>
-  464088:	41 81 fc ff 4d 00 00 	cmp    r12d,0x4dff
-  46408f:	0f 85 7b 05 00 00    	jne    464610 <fb_ConReadLine+0x750>
-  464095:	4d 39 f5             	cmp    r13,r14
-  464098:	0f 85 c7 05 00 00    	jne    464665 <fb_ConReadLine+0x7a5>
-  46409e:	66 90                	xchg   ax,ax
-  4640a0:	8b 54 24 48          	mov    edx,DWORD PTR [rsp+0x48]
-  4640a4:	45 31 c0             	xor    r8d,r8d
-  4640a7:	31 c9                	xor    ecx,ecx
-  4640a9:	31 f6                	xor    esi,esi
-  4640ab:	31 ff                	xor    edi,edi
-  4640ad:	e8 ee f9 ff ff       	call   463aa0 <fb_Locate>
-  4640b2:	e9 e9 fe ff ff       	jmp    463fa0 <fb_ConReadLine+0xe0>
-  4640b7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  4640be:	00 00 
-  4640c0:	41 83 fc 09          	cmp    r12d,0x9
-  4640c4:	0f 84 76 02 00 00    	je     464340 <fb_ConReadLine+0x480>
-  4640ca:	0f 8e 38 02 00 00    	jle    464308 <fb_ConReadLine+0x448>
-  4640d0:	41 83 fc 1b          	cmp    r12d,0x1b
-  4640d4:	0f 84 5e 04 00 00    	je     464538 <fb_ConReadLine+0x678>
-  4640da:	41 81 fc ff 47 00 00 	cmp    r12d,0x47ff
-  4640e1:	0f 85 29 05 00 00    	jne    464610 <fb_ConReadLine+0x750>
-  4640e7:	44 8b 44 24 64       	mov    r8d,DWORD PTR [rsp+0x64]
-  4640ec:	8b 4c 24 60          	mov    ecx,DWORD PTR [rsp+0x60]
-  4640f0:	44 89 ea             	mov    edx,r13d
-  4640f3:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
-  4640f8:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
-  4640fc:	f7 da                	neg    edx
-  4640fe:	e8 5d fd ff ff       	call   463e60 <DoMove.constprop.2>
-  464103:	45 31 ed             	xor    r13d,r13d
-  464106:	eb 98                	jmp    4640a0 <fb_ConReadLine+0x1e0>
-  464108:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  46410f:	00 
-  464110:	48 8d 35 51 1b 01 00 	lea    rsi,[rip+0x11b51]        # 475c68 <achTabSpaces.7976+0x8>
-  464117:	31 d2                	xor    edx,edx
-  464119:	31 ff                	xor    edi,edi
-  46411b:	e8 30 3c 00 00       	call   467d50 <fb_PrintFixString>
-  464120:	8b 74 24 58          	mov    esi,DWORD PTR [rsp+0x58]
-  464124:	8b 7c 24 5c          	mov    edi,DWORD PTR [rsp+0x5c]
-  464128:	45 31 c0             	xor    r8d,r8d
-  46412b:	31 c9                	xor    ecx,ecx
-  46412d:	31 d2                	xor    edx,edx
-  46412f:	e8 6c f9 ff ff       	call   463aa0 <fb_Locate>
-  464134:	e9 91 fe ff ff       	jmp    463fca <fb_ConReadLine+0x10a>
-  464139:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  464140:	0f b6 52 01          	movzx  edx,BYTE PTR [rdx+0x1]
-  464144:	c1 e2 08             	shl    edx,0x8
-  464147:	44 8d a2 ff 00 00 00 	lea    r12d,[rdx+0xff]
-  46414e:	e9 a9 fe ff ff       	jmp    463ffc <fb_ConReadLine+0x13c>
-  464153:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  464158:	b8 20 00 00 00       	mov    eax,0x20
-  46415d:	e9 c6 fe ff ff       	jmp    464028 <fb_ConReadLine+0x168>
-  464162:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  464168:	41 81 fc ff 50 00 00 	cmp    r12d,0x50ff
-  46416f:	0f 84 2b 04 00 00    	je     4645a0 <fb_ConReadLine+0x6e0>
-  464175:	41 81 fc ff 53 00 00 	cmp    r12d,0x53ff
-  46417c:	0f 85 8e 04 00 00    	jne    464610 <fb_ConReadLine+0x750>
-  464182:	4d 39 f5             	cmp    r13,r14
-  464185:	0f 84 ff 04 00 00    	je     46468a <fb_ConReadLine+0x7ca>
-  46418b:	31 d2                	xor    edx,edx
-  46418d:	45 31 c0             	xor    r8d,r8d
-  464190:	31 c9                	xor    ecx,ecx
-  464192:	31 f6                	xor    esi,esi
-  464194:	31 ff                	xor    edi,edi
-  464196:	49 83 ee 01          	sub    r14,0x1
-  46419a:	e8 01 f9 ff ff       	call   463aa0 <fb_Locate>
-  46419f:	4c 89 f0             	mov    rax,r14
-  4641a2:	49 8d 5d 01          	lea    rbx,[r13+0x1]
-  4641a6:	4c 89 ea             	mov    rdx,r13
-  4641a9:	4c 29 e8             	sub    rax,r13
-  4641ac:	48 c7 44 24 18 01 00 	mov    QWORD PTR [rsp+0x18],0x1
-  4641b3:	00 00 
-  4641b5:	48 c7 44 24 30 01 00 	mov    QWORD PTR [rsp+0x30],0x1
-  4641bc:	00 00 
-  4641be:	48 89 44 24 20       	mov    QWORD PTR [rsp+0x20],rax
-  4641c3:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
-  4641c8:	be 01 00 00 00       	mov    esi,0x1
-  4641cd:	4c 89 ff             	mov    rdi,r15
-  4641d0:	e8 1b 61 00 00       	call   46a2f0 <fb_StrMid>
-  4641d5:	48 8b 54 24 28       	mov    rdx,QWORD PTR [rsp+0x28]
-  4641da:	48 8d 73 01          	lea    rsi,[rbx+0x1]
-  4641de:	4c 89 ff             	mov    rdi,r15
-  4641e1:	48 89 c5             	mov    rbp,rax
-  4641e4:	e8 07 61 00 00       	call   46a2f0 <fb_StrMid>
-  4641e9:	48 c7 c1 ff ff ff ff 	mov    rcx,0xffffffffffffffff
-  4641f0:	45 31 c0             	xor    r8d,r8d
-  4641f3:	48 89 ea             	mov    rdx,rbp
-  4641f6:	48 89 ce             	mov    rsi,rcx
-  4641f9:	4c 89 ff             	mov    rdi,r15
-  4641fc:	48 89 c3             	mov    rbx,rax
-  4641ff:	e8 dc 4a 00 00       	call   468ce0 <fb_StrAssign>
-  464204:	48 c7 c1 ff ff ff ff 	mov    rcx,0xffffffffffffffff
-  46420b:	45 31 c0             	xor    r8d,r8d
-  46420e:	48 89 da             	mov    rdx,rbx
-  464211:	48 89 ce             	mov    rsi,rcx
-  464214:	4c 89 ff             	mov    rdi,r15
-  464217:	e8 f4 4e 00 00       	call   469110 <fb_StrConcatAssign>
-  46421c:	48 8b 7c 24 70       	mov    rdi,QWORD PTR [rsp+0x70]
-  464221:	48 8b 74 24 20       	mov    rsi,QWORD PTR [rsp+0x20]
-  464226:	31 d2                	xor    edx,edx
-  464228:	4c 01 ef             	add    rdi,r13
-  46422b:	e8 20 25 00 00       	call   466750 <fb_PrintBufferEx>
-  464230:	48 8b 7c 24 18       	mov    rdi,QWORD PTR [rsp+0x18]
-  464235:	be 20 00 00 00       	mov    esi,0x20
-  46423a:	e8 d1 5c 00 00       	call   469f10 <fb_StrFill1>
-  46423f:	48 8b 74 24 30       	mov    rsi,QWORD PTR [rsp+0x30]
-  464244:	48 8b 38             	mov    rdi,QWORD PTR [rax]
-  464247:	48 89 c3             	mov    rbx,rax
-  46424a:	31 d2                	xor    edx,edx
-  46424c:	e8 ff 24 00 00       	call   466750 <fb_PrintBufferEx>
-  464251:	48 89 df             	mov    rdi,rbx
-  464254:	e8 f7 5b 00 00       	call   469e50 <fb_hStrDelTemp>
-  464259:	8b 74 24 58          	mov    esi,DWORD PTR [rsp+0x58]
-  46425d:	8b 7c 24 5c          	mov    edi,DWORD PTR [rsp+0x5c]
-  464261:	45 31 c0             	xor    r8d,r8d
-  464264:	31 c9                	xor    ecx,ecx
-  464266:	ba ff ff ff ff       	mov    edx,0xffffffff
-  46426b:	e8 30 f8 ff ff       	call   463aa0 <fb_Locate>
-  464270:	8b 54 24 48          	mov    edx,DWORD PTR [rsp+0x48]
-  464274:	45 31 c0             	xor    r8d,r8d
-  464277:	31 c9                	xor    ecx,ecx
-  464279:	31 f6                	xor    esi,esi
-  46427b:	31 ff                	xor    edi,edi
-  46427d:	e8 1e f8 ff ff       	call   463aa0 <fb_Locate>
-  464282:	41 83 fc 0d          	cmp    r12d,0xd
-  464286:	74 0a                	je     464292 <fb_ConReadLine+0x3d2>
-  464288:	41 83 fc 0a          	cmp    r12d,0xa
-  46428c:	0f 85 0e fd ff ff    	jne    463fa0 <fb_ConReadLine+0xe0>
-  464292:	48 8b 1c 24          	mov    rbx,QWORD PTR [rsp]
-  464296:	48 8b 6c 24 08       	mov    rbp,QWORD PTR [rsp+0x8]
-  46429b:	48 89 df             	mov    rdi,rbx
-  46429e:	48 89 ee             	mov    rsi,rbp
-  4642a1:	e8 4a 22 00 00       	call   4664f0 <fb_GetXY>
-  4642a6:	44 8b 44 24 64       	mov    r8d,DWORD PTR [rsp+0x64]
-  4642ab:	8b 4c 24 60          	mov    ecx,DWORD PTR [rsp+0x60]
-  4642af:	44 89 f2             	mov    edx,r14d
-  4642b2:	44 29 ea             	sub    edx,r13d
-  4642b5:	48 89 df             	mov    rdi,rbx
-  4642b8:	48 89 ee             	mov    rsi,rbp
-  4642bb:	e8 a0 fb ff ff       	call   463e60 <DoMove.constprop.2>
-  4642c0:	8b 54 24 4c          	mov    edx,DWORD PTR [rsp+0x4c]
-  4642c4:	45 31 c0             	xor    r8d,r8d
-  4642c7:	31 c9                	xor    ecx,ecx
-  4642c9:	31 f6                	xor    esi,esi
-  4642cb:	31 ff                	xor    edi,edi
-  4642cd:	e8 ce f7 ff ff       	call   463aa0 <fb_Locate>
-  4642d2:	4c 89 ff             	mov    rdi,r15
-  4642d5:	e8 26 62 00 00       	call   46a500 <fb_StrAllocTempResult>
-  4642da:	48 8b 9c 24 98 00 00 	mov    rbx,QWORD PTR [rsp+0x98]
-  4642e1:	00 
-  4642e2:	64 48 33 1c 25 28 00 	xor    rbx,QWORD PTR fs:0x28
-  4642e9:	00 00 
-  4642eb:	0f 85 a6 03 00 00    	jne    464697 <fb_ConReadLine+0x7d7>
-  4642f1:	48 81 c4 a8 00 00 00 	add    rsp,0xa8
-  4642f8:	5b                   	pop    rbx
-  4642f9:	5d                   	pop    rbp
-  4642fa:	41 5c                	pop    r12
-  4642fc:	41 5d                	pop    r13
-  4642fe:	41 5e                	pop    r14
-  464300:	41 5f                	pop    r15
-  464302:	c3                   	ret    
-  464303:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  464308:	41 83 fc 08          	cmp    r12d,0x8
-  46430c:	0f 85 fe 02 00 00    	jne    464610 <fb_ConReadLine+0x750>
-  464312:	4d 85 ed             	test   r13,r13
-  464315:	0f 84 85 fd ff ff    	je     4640a0 <fb_ConReadLine+0x1e0>
-  46431b:	44 8b 44 24 64       	mov    r8d,DWORD PTR [rsp+0x64]
-  464320:	8b 4c 24 60          	mov    ecx,DWORD PTR [rsp+0x60]
-  464324:	ba ff ff ff ff       	mov    edx,0xffffffff
-  464329:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
-  46432e:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
-  464332:	49 83 ed 01          	sub    r13,0x1
-  464336:	e8 25 fb ff ff       	call   463e60 <DoMove.constprop.2>
-  46433b:	e9 4b fe ff ff       	jmp    46418b <fb_ConReadLine+0x2cb>
-  464340:	49 8d 45 08          	lea    rax,[r13+0x8]
-  464344:	48 8d 9c 24 8c 00 00 	lea    rbx,[rsp+0x8c]
-  46434b:	00 
-  46434c:	b9 0c 00 00 00       	mov    ecx,0xc
-  464351:	be 20 00 00 00       	mov    esi,0x20
-  464356:	48 83 e0 f8          	and    rax,0xfffffffffffffff8
-  46435a:	48 89 df             	mov    rdi,rbx
-  46435d:	4c 29 e8             	sub    rax,r13
-  464360:	48 89 c2             	mov    rdx,rax
-  464363:	48 89 c5             	mov    rbp,rax
-  464366:	e8 35 15 fa ff       	call   4058a0 <__memset_chk@plt>
-  46436b:	45 31 c0             	xor    r8d,r8d
-  46436e:	31 c9                	xor    ecx,ecx
-  464370:	31 d2                	xor    edx,edx
-  464372:	31 f6                	xor    esi,esi
-  464374:	31 ff                	xor    edi,edi
-  464376:	e8 25 f7 ff ff       	call   463aa0 <fb_Locate>
-  46437b:	8b 44 24 58          	mov    eax,DWORD PTR [rsp+0x58]
-  46437f:	48 8d 75 01          	lea    rsi,[rbp+0x1]
-  464383:	48 89 df             	mov    rdi,rbx
-  464386:	c6 84 2c 8c 00 00 00 	mov    BYTE PTR [rsp+rbp*1+0x8c],0x0
-  46438d:	00 
-  46438e:	4c 89 f3             	mov    rbx,r14
-  464391:	4c 29 eb             	sub    rbx,r13
-  464394:	89 44 24 28          	mov    DWORD PTR [rsp+0x28],eax
-  464398:	8b 44 24 5c          	mov    eax,DWORD PTR [rsp+0x5c]
-  46439c:	89 44 24 30          	mov    DWORD PTR [rsp+0x30],eax
-  4643a0:	e8 5b 60 00 00       	call   46a400 <fb_StrAllocTempDescF>
-  4643a5:	4c 89 ea             	mov    rdx,r13
-  4643a8:	be 01 00 00 00       	mov    esi,0x1
-  4643ad:	4c 89 ff             	mov    rdi,r15
-  4643b0:	48 89 44 24 18       	mov    QWORD PTR [rsp+0x18],rax
-  4643b5:	e8 36 5f 00 00       	call   46a2f0 <fb_StrMid>
-  4643ba:	49 8d 75 01          	lea    rsi,[r13+0x1]
-  4643be:	48 89 da             	mov    rdx,rbx
-  4643c1:	4c 89 ff             	mov    rdi,r15
-  4643c4:	48 89 44 24 20       	mov    QWORD PTR [rsp+0x20],rax
-  4643c9:	e8 22 5f 00 00       	call   46a2f0 <fb_StrMid>
-  4643ce:	48 8b 54 24 20       	mov    rdx,QWORD PTR [rsp+0x20]
-  4643d3:	48 c7 c1 ff ff ff ff 	mov    rcx,0xffffffffffffffff
-  4643da:	45 31 c0             	xor    r8d,r8d
-  4643dd:	48 89 ce             	mov    rsi,rcx
-  4643e0:	4c 89 ff             	mov    rdi,r15
-  4643e3:	48 89 c3             	mov    rbx,rax
-  4643e6:	e8 f5 48 00 00       	call   468ce0 <fb_StrAssign>
-  4643eb:	48 8b 54 24 18       	mov    rdx,QWORD PTR [rsp+0x18]
-  4643f0:	48 c7 c1 ff ff ff ff 	mov    rcx,0xffffffffffffffff
-  4643f7:	45 31 c0             	xor    r8d,r8d
-  4643fa:	48 89 ce             	mov    rsi,rcx
-  4643fd:	4c 89 ff             	mov    rdi,r15
-  464400:	e8 0b 4d 00 00       	call   469110 <fb_StrConcatAssign>
-  464405:	48 c7 c1 ff ff ff ff 	mov    rcx,0xffffffffffffffff
-  46440c:	45 31 c0             	xor    r8d,r8d
-  46440f:	48 89 da             	mov    rdx,rbx
-  464412:	48 89 ce             	mov    rsi,rcx
-  464415:	4c 89 ff             	mov    rdi,r15
-  464418:	49 8d 1c 2e          	lea    rbx,[r14+rbp*1]
-  46441c:	e8 ef 4c 00 00       	call   469110 <fb_StrConcatAssign>
-  464421:	48 8b 7c 24 70       	mov    rdi,QWORD PTR [rsp+0x70]
-  464426:	48 89 de             	mov    rsi,rbx
-  464429:	31 d2                	xor    edx,edx
-  46442b:	4c 29 ee             	sub    rsi,r13
-  46442e:	4c 01 ef             	add    rdi,r13
-  464431:	e8 1a 23 00 00       	call   466750 <fb_PrintBufferEx>
-  464436:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
-  46443b:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
-  46443f:	e8 ac 20 00 00       	call   4664f0 <fb_GetXY>
-  464444:	4d 39 f5             	cmp    r13,r14
-  464447:	0f 84 93 00 00 00    	je     4644e0 <fb_ConReadLine+0x620>
-  46444d:	8b 44 24 28          	mov    eax,DWORD PTR [rsp+0x28]
-  464451:	8b 4c 24 60          	mov    ecx,DWORD PTR [rsp+0x60]
-  464455:	89 da                	mov    edx,ebx
-  464457:	48 8b 74 24 40       	mov    rsi,QWORD PTR [rsp+0x40]
-  46445c:	48 8d 7c 24 68       	lea    rdi,[rsp+0x68]
-  464461:	44 29 ea             	sub    edx,r13d
-  464464:	45 89 e9             	mov    r9d,r13d
-  464467:	89 44 24 68          	mov    DWORD PTR [rsp+0x68],eax
-  46446b:	8b 44 24 30          	mov    eax,DWORD PTR [rsp+0x30]
-  46446f:	89 44 24 6c          	mov    DWORD PTR [rsp+0x6c],eax
-  464473:	e8 a8 f9 ff ff       	call   463e20 <DoAdjust.isra.0.constprop.3>
-  464478:	44 8b 44 24 64       	mov    r8d,DWORD PTR [rsp+0x64]
-  46447d:	41 8d 40 01          	lea    eax,[r8+0x1]
-  464481:	3b 44 24 6c          	cmp    eax,DWORD PTR [rsp+0x6c]
-  464485:	7c 09                	jl     464490 <fb_ConReadLine+0x5d0>
-  464487:	75 27                	jne    4644b0 <fb_ConReadLine+0x5f0>
-  464489:	83 7c 24 68 01       	cmp    DWORD PTR [rsp+0x68],0x1
-  46448e:	7e 20                	jle    4644b0 <fb_ConReadLine+0x5f0>
-  464490:	41 8d 14 29          	lea    edx,[r9+rbp*1]
-  464494:	8b 4c 24 60          	mov    ecx,DWORD PTR [rsp+0x60]
-  464498:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
-  46449d:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
-  4644a1:	29 da                	sub    edx,ebx
-  4644a3:	e8 b8 f9 ff ff       	call   463e60 <DoMove.constprop.2>
-  4644a8:	eb 2a                	jmp    4644d4 <fb_ConReadLine+0x614>
-  4644aa:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  4644b0:	8b 44 24 28          	mov    eax,DWORD PTR [rsp+0x28]
-  4644b4:	89 44 24 58          	mov    DWORD PTR [rsp+0x58],eax
-  4644b8:	8b 44 24 30          	mov    eax,DWORD PTR [rsp+0x30]
-  4644bc:	89 44 24 5c          	mov    DWORD PTR [rsp+0x5c],eax
-  4644c0:	8b 4c 24 60          	mov    ecx,DWORD PTR [rsp+0x60]
-  4644c4:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
-  4644c9:	89 ea                	mov    edx,ebp
-  4644cb:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
-  4644cf:	e8 8c f9 ff ff       	call   463e60 <DoMove.constprop.2>
-  4644d4:	49 01 ed             	add    r13,rbp
-  4644d7:	49 89 de             	mov    r14,rbx
-  4644da:	e9 91 fd ff ff       	jmp    464270 <fb_ConReadLine+0x3b0>
-  4644df:	90                   	nop
-  4644e0:	8b 44 24 28          	mov    eax,DWORD PTR [rsp+0x28]
-  4644e4:	44 8b 44 24 64       	mov    r8d,DWORD PTR [rsp+0x64]
-  4644e9:	89 44 24 58          	mov    DWORD PTR [rsp+0x58],eax
-  4644ed:	8b 44 24 30          	mov    eax,DWORD PTR [rsp+0x30]
-  4644f1:	89 44 24 5c          	mov    DWORD PTR [rsp+0x5c],eax
-  4644f5:	eb c9                	jmp    4644c0 <fb_ConReadLine+0x600>
-  4644f7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  4644fe:	00 00 
-  464500:	48 63 44 24 60       	movsxd rax,DWORD PTR [rsp+0x60]
-  464505:	4c 39 e8             	cmp    rax,r13
-  464508:	48 89 c1             	mov    rcx,rax
-  46450b:	0f 87 8f fb ff ff    	ja     4640a0 <fb_ConReadLine+0x1e0>
-  464511:	44 8b 44 24 64       	mov    r8d,DWORD PTR [rsp+0x64]
-  464516:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
-  46451b:	89 c2                	mov    edx,eax
-  46451d:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
-  464521:	f7 da                	neg    edx
-  464523:	e8 38 f9 ff ff       	call   463e60 <DoMove.constprop.2>
-  464528:	48 63 44 24 60       	movsxd rax,DWORD PTR [rsp+0x60]
-  46452d:	49 29 c5             	sub    r13,rax
-  464530:	e9 6b fb ff ff       	jmp    4640a0 <fb_ConReadLine+0x1e0>
-  464535:	0f 1f 00             	nop    DWORD PTR [rax]
-  464538:	44 8b 44 24 64       	mov    r8d,DWORD PTR [rsp+0x64]
-  46453d:	8b 4c 24 60          	mov    ecx,DWORD PTR [rsp+0x60]
-  464541:	44 89 ea             	mov    edx,r13d
-  464544:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
-  464549:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
-  46454d:	f7 da                	neg    edx
-  46454f:	e8 0c f9 ff ff       	call   463e60 <DoMove.constprop.2>
-  464554:	4d 85 f6             	test   r14,r14
-  464557:	0f 84 a6 fb ff ff    	je     464103 <fb_ConReadLine+0x243>
-  46455d:	31 d2                	xor    edx,edx
-  46455f:	45 31 c0             	xor    r8d,r8d
-  464562:	31 c9                	xor    ecx,ecx
-  464564:	31 f6                	xor    esi,esi
-  464566:	31 ff                	xor    edi,edi
-  464568:	4c 89 f3             	mov    rbx,r14
-  46456b:	e8 30 f5 ff ff       	call   463aa0 <fb_Locate>
-  464570:	45 31 ed             	xor    r13d,r13d
-  464573:	4c 89 74 24 18       	mov    QWORD PTR [rsp+0x18],r14
-  464578:	4c 89 74 24 30       	mov    QWORD PTR [rsp+0x30],r14
-  46457d:	48 c7 44 24 20 00 00 	mov    QWORD PTR [rsp+0x20],0x0
-  464584:	00 00 
-  464586:	45 31 f6             	xor    r14d,r14d
-  464589:	48 c7 44 24 28 00 00 	mov    QWORD PTR [rsp+0x28],0x0
-  464590:	00 00 
-  464592:	31 d2                	xor    edx,edx
-  464594:	e9 2f fc ff ff       	jmp    4641c8 <fb_ConReadLine+0x308>
-  464599:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  4645a0:	48 63 44 24 60       	movsxd rax,DWORD PTR [rsp+0x60]
-  4645a5:	48 89 c2             	mov    rdx,rax
-  4645a8:	4c 01 e8             	add    rax,r13
-  4645ab:	4c 39 f0             	cmp    rax,r14
-  4645ae:	0f 87 ec fa ff ff    	ja     4640a0 <fb_ConReadLine+0x1e0>
-  4645b4:	44 8b 44 24 64       	mov    r8d,DWORD PTR [rsp+0x64]
-  4645b9:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
-  4645be:	89 d1                	mov    ecx,edx
-  4645c0:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
-  4645c4:	e8 97 f8 ff ff       	call   463e60 <DoMove.constprop.2>
-  4645c9:	48 63 44 24 60       	movsxd rax,DWORD PTR [rsp+0x60]
-  4645ce:	49 01 c5             	add    r13,rax
-  4645d1:	e9 ca fa ff ff       	jmp    4640a0 <fb_ConReadLine+0x1e0>
-  4645d6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  4645dd:	00 00 00 
-  4645e0:	4d 85 ed             	test   r13,r13
-  4645e3:	0f 84 b7 fa ff ff    	je     4640a0 <fb_ConReadLine+0x1e0>
-  4645e9:	44 8b 44 24 64       	mov    r8d,DWORD PTR [rsp+0x64]
-  4645ee:	8b 4c 24 60          	mov    ecx,DWORD PTR [rsp+0x60]
-  4645f2:	ba ff ff ff ff       	mov    edx,0xffffffff
-  4645f7:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
-  4645fc:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
-  464600:	49 83 ed 01          	sub    r13,0x1
-  464604:	e8 57 f8 ff ff       	call   463e60 <DoMove.constprop.2>
-  464609:	e9 92 fa ff ff       	jmp    4640a0 <fb_ConReadLine+0x1e0>
-  46460e:	66 90                	xchg   ax,ax
-  464610:	41 8d 44 24 e0       	lea    eax,[r12-0x20]
-  464615:	3d df 00 00 00       	cmp    eax,0xdf
-  46461a:	0f 87 50 fc ff ff    	ja     464270 <fb_ConReadLine+0x3b0>
-  464620:	44 88 a4 24 8c 00 00 	mov    BYTE PTR [rsp+0x8c],r12b
-  464627:	00 
-  464628:	bd 01 00 00 00       	mov    ebp,0x1
-  46462d:	48 8d 9c 24 8c 00 00 	lea    rbx,[rsp+0x8c]
-  464634:	00 
-  464635:	e9 31 fd ff ff       	jmp    46436b <fb_ConReadLine+0x4ab>
-  46463a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  464640:	44 8b 44 24 64       	mov    r8d,DWORD PTR [rsp+0x64]
-  464645:	8b 4c 24 60          	mov    ecx,DWORD PTR [rsp+0x60]
-  464649:	44 89 f2             	mov    edx,r14d
-  46464c:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
-  464651:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
-  464655:	44 29 ea             	sub    edx,r13d
-  464658:	4d 89 f5             	mov    r13,r14
-  46465b:	e8 00 f8 ff ff       	call   463e60 <DoMove.constprop.2>
-  464660:	e9 3b fa ff ff       	jmp    4640a0 <fb_ConReadLine+0x1e0>
-  464665:	44 8b 44 24 64       	mov    r8d,DWORD PTR [rsp+0x64]
-  46466a:	8b 4c 24 60          	mov    ecx,DWORD PTR [rsp+0x60]
-  46466e:	ba 01 00 00 00       	mov    edx,0x1
-  464673:	48 8b 74 24 08       	mov    rsi,QWORD PTR [rsp+0x8]
-  464678:	48 8b 3c 24          	mov    rdi,QWORD PTR [rsp]
-  46467c:	49 83 c5 01          	add    r13,0x1
-  464680:	e8 db f7 ff ff       	call   463e60 <DoMove.constprop.2>
-  464685:	e9 16 fa ff ff       	jmp    4640a0 <fb_ConReadLine+0x1e0>
-  46468a:	e8 01 66 00 00       	call   46ac90 <fb_Beep>
-  46468f:	4d 89 ee             	mov    r14,r13
-  464692:	e9 09 fa ff ff       	jmp    4640a0 <fb_ConReadLine+0x1e0>
-  464697:	e8 c4 11 fa ff       	call   405860 <__stack_chk_fail@plt>
-  46469c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-00000000004646a0 <fb_DataRestore>:
-  4646a0:	48 85 ff             	test   rdi,rdi
-  4646a3:	48 89 3d 26 35 04 00 	mov    QWORD PTR [rip+0x43526],rdi        # 4a7bd0 <__fb_data_ptr>
-  4646aa:	74 2e                	je     4646da <fb_DataRestore+0x3a>
-  4646ac:	66 83 3f ff          	cmp    WORD PTR [rdi],0xffff
-  4646b0:	74 0c                	je     4646be <fb_DataRestore+0x1e>
-  4646b2:	eb 26                	jmp    4646da <fb_DataRestore+0x3a>
-  4646b4:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  4646b8:	66 83 3f ff          	cmp    WORD PTR [rdi],0xffff
-  4646bc:	75 15                	jne    4646d3 <fb_DataRestore+0x33>
-  4646be:	48 8b 7f 02          	mov    rdi,QWORD PTR [rdi+0x2]
-  4646c2:	48 85 ff             	test   rdi,rdi
-  4646c5:	75 f1                	jne    4646b8 <fb_DataRestore+0x18>
-  4646c7:	48 c7 05 fe 34 04 00 	mov    QWORD PTR [rip+0x434fe],0x0        # 4a7bd0 <__fb_data_ptr>
-  4646ce:	00 00 00 00 
-  4646d2:	c3                   	ret    
-  4646d3:	48 89 3d f6 34 04 00 	mov    QWORD PTR [rip+0x434f6],rdi        # 4a7bd0 <__fb_data_ptr>
-  4646da:	f3 c3                	repz ret 
-  4646dc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-00000000004646e0 <fb_DataNext>:
-  4646e0:	48 8b 15 e9 34 04 00 	mov    rdx,QWORD PTR [rip+0x434e9]        # 4a7bd0 <__fb_data_ptr>
-  4646e7:	48 85 d2             	test   rdx,rdx
-  4646ea:	74 3e                	je     46472a <fb_DataNext+0x4a>
-  4646ec:	48 8d 42 0a          	lea    rax,[rdx+0xa]
-  4646f0:	48 85 c0             	test   rax,rax
-  4646f3:	48 89 05 d6 34 04 00 	mov    QWORD PTR [rip+0x434d6],rax        # 4a7bd0 <__fb_data_ptr>
-  4646fa:	74 2e                	je     46472a <fb_DataNext+0x4a>
-  4646fc:	66 83 7a 0a ff       	cmp    WORD PTR [rdx+0xa],0xffff
-  464701:	74 0b                	je     46470e <fb_DataNext+0x2e>
-  464703:	eb 25                	jmp    46472a <fb_DataNext+0x4a>
-  464705:	0f 1f 00             	nop    DWORD PTR [rax]
-  464708:	66 83 38 ff          	cmp    WORD PTR [rax],0xffff
-  46470c:	75 15                	jne    464723 <fb_DataNext+0x43>
-  46470e:	48 8b 40 02          	mov    rax,QWORD PTR [rax+0x2]
-  464712:	48 85 c0             	test   rax,rax
-  464715:	75 f1                	jne    464708 <fb_DataNext+0x28>
-  464717:	48 c7 05 ae 34 04 00 	mov    QWORD PTR [rip+0x434ae],0x0        # 4a7bd0 <__fb_data_ptr>
-  46471e:	00 00 00 00 
-  464722:	c3                   	ret    
-  464723:	48 89 05 a6 34 04 00 	mov    QWORD PTR [rip+0x434a6],rax        # 4a7bd0 <__fb_data_ptr>
-  46472a:	f3 c3                	repz ret 
-  46472c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-0000000000464730 <fb_DataReadLongint>:
-  464730:	48 8b 05 99 34 04 00 	mov    rax,QWORD PTR [rip+0x43499]        # 4a7bd0 <__fb_data_ptr>
-  464737:	48 85 c0             	test   rax,rax
-  46473a:	74 34                	je     464770 <fb_DataReadLongint+0x40>
-  46473c:	48 0f bf 30          	movsx  rsi,WORD PTR [rax]
-  464740:	48 8b 40 02          	mov    rax,QWORD PTR [rax+0x2]
-  464744:	66 83 fe fe          	cmp    si,0xfffe
-  464748:	74 1e                	je     464768 <fb_DataReadLongint+0x38>
-  46474a:	66 85 f6             	test   si,si
-  46474d:	53                   	push   rbx
-  46474e:	48 89 fb             	mov    rbx,rdi
-  464751:	78 2d                	js     464780 <fb_DataReadLongint+0x50>
-  464753:	48 89 c7             	mov    rdi,rax
-  464756:	e8 15 4d 00 00       	call   469470 <fb_hStr2Longint>
-  46475b:	48 89 03             	mov    QWORD PTR [rbx],rax
-  46475e:	5b                   	pop    rbx
-  46475f:	e9 7c ff ff ff       	jmp    4646e0 <fb_DataNext>
-  464764:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  464768:	48 89 07             	mov    QWORD PTR [rdi],rax
-  46476b:	e9 70 ff ff ff       	jmp    4646e0 <fb_DataNext>
-  464770:	48 c7 07 00 00 00 00 	mov    QWORD PTR [rdi],0x0
-  464777:	e9 64 ff ff ff       	jmp    4646e0 <fb_DataNext>
-  46477c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  464780:	81 e6 ff 7f 00 00    	and    esi,0x7fff
-  464786:	48 89 c7             	mov    rdi,rax
-  464789:	e8 32 60 00 00       	call   46a7c0 <fb_WstrToLongint>
-  46478e:	48 89 03             	mov    QWORD PTR [rbx],rax
-  464791:	5b                   	pop    rbx
-  464792:	e9 49 ff ff ff       	jmp    4646e0 <fb_DataNext>
-  464797:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  46479e:	00 00 
-
-00000000004647a0 <fb_DataReadStr>:
-  4647a0:	48 83 ec 08          	sub    rsp,0x8
-  4647a4:	48 8b 05 25 34 04 00 	mov    rax,QWORD PTR [rip+0x43425]        # 4a7bd0 <__fb_data_ptr>
-  4647ab:	41 89 d0             	mov    r8d,edx
-  4647ae:	48 85 c0             	test   rax,rax
-  4647b1:	74 45                	je     4647f8 <fb_DataReadStr+0x58>
-  4647b3:	44 0f b7 08          	movzx  r9d,WORD PTR [rax]
-  4647b7:	66 41 83 f9 fe       	cmp    r9w,0xfffe
-  4647bc:	74 11                	je     4647cf <fb_DataReadStr+0x2f>
-  4647be:	66 45 85 c9          	test   r9w,r9w
-  4647c2:	48 8b 50 02          	mov    rdx,QWORD PTR [rax+0x2]
-  4647c6:	78 18                	js     4647e0 <fb_DataReadStr+0x40>
-  4647c8:	31 c9                	xor    ecx,ecx
-  4647ca:	e8 11 45 00 00       	call   468ce0 <fb_StrAssign>
-  4647cf:	48 83 c4 08          	add    rsp,0x8
-  4647d3:	e9 08 ff ff ff       	jmp    4646e0 <fb_DataNext>
-  4647d8:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  4647df:	00 
-  4647e0:	44 89 c1             	mov    ecx,r8d
-  4647e3:	e8 b8 5f 00 00       	call   46a7a0 <fb_WstrAssignToA>
-  4647e8:	48 83 c4 08          	add    rsp,0x8
-  4647ec:	e9 ef fe ff ff       	jmp    4646e0 <fb_DataNext>
-  4647f1:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  4647f8:	48 8d 15 e8 ab 00 00 	lea    rdx,[rip+0xabe8]        # 46f3e7 <_IO_stdin_used+0x3e7>
-  4647ff:	31 c9                	xor    ecx,ecx
-  464801:	e8 da 44 00 00       	call   468ce0 <fb_StrAssign>
-  464806:	48 83 c4 08          	add    rsp,0x8
-  46480a:	e9 d1 fe ff ff       	jmp    4646e0 <fb_DataNext>
-  46480f:	90                   	nop
-
-0000000000464810 <fb_DataReadULongint>:
-  464810:	48 8b 05 b9 33 04 00 	mov    rax,QWORD PTR [rip+0x433b9]        # 4a7bd0 <__fb_data_ptr>
-  464817:	48 85 c0             	test   rax,rax
-  46481a:	74 34                	je     464850 <fb_DataReadULongint+0x40>
-  46481c:	48 0f bf 30          	movsx  rsi,WORD PTR [rax]
-  464820:	48 8b 40 02          	mov    rax,QWORD PTR [rax+0x2]
-  464824:	66 83 fe fe          	cmp    si,0xfffe
-  464828:	74 1e                	je     464848 <fb_DataReadULongint+0x38>
-  46482a:	66 85 f6             	test   si,si
-  46482d:	53                   	push   rbx
-  46482e:	48 89 fb             	mov    rbx,rdi
-  464831:	78 2d                	js     464860 <fb_DataReadULongint+0x50>
-  464833:	48 89 c7             	mov    rdi,rax
-  464836:	e8 85 4e 00 00       	call   4696c0 <fb_hStr2ULongint>
-  46483b:	48 89 03             	mov    QWORD PTR [rbx],rax
-  46483e:	5b                   	pop    rbx
-  46483f:	e9 9c fe ff ff       	jmp    4646e0 <fb_DataNext>
-  464844:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  464848:	48 89 07             	mov    QWORD PTR [rdi],rax
-  46484b:	e9 90 fe ff ff       	jmp    4646e0 <fb_DataNext>
-  464850:	48 c7 07 00 00 00 00 	mov    QWORD PTR [rdi],0x0
-  464857:	e9 84 fe ff ff       	jmp    4646e0 <fb_DataNext>
-  46485c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  464860:	81 e6 ff 7f 00 00    	and    esi,0x7fff
-  464866:	48 89 c7             	mov    rdi,rax
-  464869:	e8 c2 61 00 00       	call   46aa30 <fb_WstrToULongint>
-  46486e:	48 89 03             	mov    QWORD PTR [rbx],rax
-  464871:	5b                   	pop    rbx
-  464872:	e9 69 fe ff ff       	jmp    4646e0 <fb_DataNext>
-  464877:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  46487e:	00 00 
-
-0000000000464880 <fb_DevScrnUpdateWidth>:
-  464880:	48 83 ec 18          	sub    rsp,0x18
-  464884:	31 f6                	xor    esi,esi
-  464886:	48 8d 7c 24 04       	lea    rdi,[rsp+0x4]
-  46488b:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
-  464892:	00 00 
-  464894:	48 89 44 24 08       	mov    QWORD PTR [rsp+0x8],rax
-  464899:	31 c0                	xor    eax,eax
-  46489b:	e8 10 1c 00 00       	call   4664b0 <fb_GetSize>
-  4648a0:	e8 2b 1c 00 00       	call   4664d0 <fb_GetX>
-  4648a5:	83 e8 01             	sub    eax,0x1
-  4648a8:	89 05 86 1d 05 00    	mov    DWORD PTR [rip+0x51d86],eax        # 4b6634 <__fb_ctx+0x134>
-  4648ae:	8b 44 24 04          	mov    eax,DWORD PTR [rsp+0x4]
-  4648b2:	89 05 80 1d 05 00    	mov    DWORD PTR [rip+0x51d80],eax        # 4b6638 <__fb_ctx+0x138>
-  4648b8:	48 8b 44 24 08       	mov    rax,QWORD PTR [rsp+0x8]
-  4648bd:	64 48 33 04 25 28 00 	xor    rax,QWORD PTR fs:0x28
-  4648c4:	00 00 
-  4648c6:	75 05                	jne    4648cd <fb_DevScrnUpdateWidth+0x4d>
-  4648c8:	48 83 c4 18          	add    rsp,0x18
-  4648cc:	c3                   	ret    
-  4648cd:	e8 8e 0f fa ff       	call   405860 <__stack_chk_fail@plt>
-  4648d2:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  4648d6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  4648dd:	00 00 00 
-
-00000000004648e0 <fb_DevScrnMaybeUpdateWidth>:
-  4648e0:	48 83 3d 60 1d 05 00 	cmp    QWORD PTR [rip+0x51d60],0x0        # 4b6648 <__fb_ctx+0x148>
-  4648e7:	00 
-  4648e8:	74 06                	je     4648f0 <fb_DevScrnMaybeUpdateWidth+0x10>
-  4648ea:	eb 94                	jmp    464880 <fb_DevScrnUpdateWidth>
-  4648ec:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  4648f0:	f3 c3                	repz ret 
-  4648f2:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  4648f6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  4648fd:	00 00 00 
-
-0000000000464900 <fb_DevScrnInit_Screen>:
-  464900:	48 83 ec 08          	sub    rsp,0x8
-  464904:	e8 77 ff ff ff       	call   464880 <fb_DevScrnUpdateWidth>
-  464909:	be 14 00 00 00       	mov    esi,0x14
-  46490e:	bf 01 00 00 00       	mov    edi,0x1
-  464913:	e8 48 10 fa ff       	call   405960 <calloc@plt>
-  464918:	48 89 05 31 1d 05 00 	mov    QWORD PTR [rip+0x51d31],rax        # 4b6650 <__fb_ctx+0x150>
-  46491f:	48 83 c4 08          	add    rsp,0x8
-  464923:	c3                   	ret    
-  464924:	66 90                	xchg   ax,ax
-  464926:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  46492d:	00 00 00 
-
-0000000000464930 <fb_DevScrnEnd>:
-  464930:	48 8b 47 40          	mov    rax,QWORD PTR [rdi+0x40]
-  464934:	48 85 c0             	test   rax,rax
-  464937:	74 17                	je     464950 <fb_DevScrnEnd+0x20>
-  464939:	53                   	push   rbx
-  46493a:	48 89 fb             	mov    rbx,rdi
-  46493d:	48 89 c7             	mov    rdi,rax
-  464940:	e8 fb 0a fa ff       	call   405440 <free@plt>
-  464945:	48 c7 43 40 00 00 00 	mov    QWORD PTR [rbx+0x40],0x0
-  46494c:	00 
-  46494d:	5b                   	pop    rbx
-  46494e:	c3                   	ret    
-  46494f:	90                   	nop
-  464950:	f3 c3                	repz ret 
-  464952:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  464956:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  46495d:	00 00 00 
-
-0000000000464960 <fb_DevScrnInit_NoOpen>:
-  464960:	48 83 3d e0 1c 05 00 	cmp    QWORD PTR [rip+0x51ce0],0x0        # 4b6648 <__fb_ctx+0x148>
-  464967:	00 
-  464968:	74 06                	je     464970 <fb_DevScrnInit_NoOpen+0x10>
-  46496a:	f3 c3                	repz ret 
-  46496c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  464970:	48 8d 3d a5 1c 05 00 	lea    rdi,[rip+0x51ca5]        # 4b661c <__fb_ctx+0x11c>
-  464977:	48 8d 0d 96 1c 05 00 	lea    rcx,[rip+0x51c96]        # 4b6614 <__fb_ctx+0x114>
-  46497e:	31 c0                	xor    eax,eax
-  464980:	48 83 ec 08          	sub    rsp,0x8
-  464984:	48 c7 05 85 1c 05 00 	mov    QWORD PTR [rip+0x51c85],0x0        # 4b6614 <__fb_ctx+0x114>
-  46498b:	00 00 00 00 
-  46498f:	48 c7 05 be 1c 05 00 	mov    QWORD PTR [rip+0x51cbe],0x0        # 4b6658 <__fb_ctx+0x158>
-  464996:	00 00 00 00 
-  46499a:	48 83 e7 f8          	and    rdi,0xfffffffffffffff8
-  46499e:	48 29 f9             	sub    rcx,rdi
-  4649a1:	83 c1 4c             	add    ecx,0x4c
-  4649a4:	c1 e9 03             	shr    ecx,0x3
-  4649a7:	f3 48 ab             	rep stos QWORD PTR es:[rdi],rax
-  4649aa:	48 b8 04 00 00 00 03 	movabs rax,0x300000004
-  4649b1:	00 00 00 
-  4649b4:	c7 05 52 1c 05 00 04 	mov    DWORD PTR [rip+0x51c52],0x4        # 4b6610 <__fb_ctx+0x110>
-  4649bb:	00 00 00 
-  4649be:	48 89 05 63 1c 05 00 	mov    QWORD PTR [rip+0x51c63],rax        # 4b6628 <__fb_ctx+0x128>
-  4649c5:	e8 36 ff ff ff       	call   464900 <fb_DevScrnInit_Screen>
-  4649ca:	48 8d 05 0f 32 04 00 	lea    rax,[rip+0x4320f]        # 4a7be0 <hooks_dev_scrn_null>
-  4649d1:	48 89 05 70 1c 05 00 	mov    QWORD PTR [rip+0x51c70],rax        # 4b6648 <__fb_ctx+0x148>
-  4649d8:	48 83 c4 08          	add    rsp,0x8
-  4649dc:	c3                   	ret    
-  4649dd:	0f 1f 00             	nop    DWORD PTR [rax]
-
-00000000004649e0 <fb_DevScrnRead>:
-  4649e0:	48 85 ff             	test   rdi,rdi
-  4649e3:	41 56                	push   r14
-  4649e5:	49 89 d6             	mov    r14,rdx
-  4649e8:	41 55                	push   r13
-  4649ea:	49 89 f5             	mov    r13,rsi
-  4649ed:	41 54                	push   r12
-  4649ef:	55                   	push   rbp
-  4649f0:	53                   	push   rbx
-  4649f1:	48 8b 2a             	mov    rbp,QWORD PTR [rdx]
-  4649f4:	75 0d                	jne    464a03 <fb_DevScrnRead+0x23>
-  4649f6:	e9 ad 00 00 00       	jmp    464aa8 <fb_DevScrnRead+0xc8>
-  4649fb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  464a00:	48 89 c7             	mov    rdi,rax
-  464a03:	48 8b 47 48          	mov    rax,QWORD PTR [rdi+0x48]
-  464a07:	48 85 c0             	test   rax,rax
-  464a0a:	75 f4                	jne    464a00 <fb_DevScrnRead+0x20>
-  464a0c:	48 85 ed             	test   rbp,rbp
-  464a0f:	4c 8b 67 40          	mov    r12,QWORD PTR [rdi+0x40]
-  464a13:	74 77                	je     464a8c <fb_DevScrnRead+0xac>
-  464a15:	41 8b 5c 24 10       	mov    ebx,DWORD PTR [r12+0x10]
-  464a1a:	48 39 eb             	cmp    rbx,rbp
-  464a1d:	48 0f 47 dd          	cmova  rbx,rbp
-  464a21:	48 85 db             	test   rbx,rbx
-  464a24:	74 3c                	je     464a62 <fb_DevScrnRead+0x82>
-  464a26:	48 89 da             	mov    rdx,rbx
-  464a29:	4c 89 e6             	mov    rsi,r12
-  464a2c:	4c 89 ef             	mov    rdi,r13
-  464a2f:	e8 0c 12 fa ff       	call   405c40 <memcpy@plt>
-  464a34:	41 8b 54 24 10       	mov    edx,DWORD PTR [r12+0x10]
-  464a39:	29 da                	sub    edx,ebx
-  464a3b:	85 d2                	test   edx,edx
-  464a3d:	41 89 54 24 10       	mov    DWORD PTR [r12+0x10],edx
-  464a42:	75 74                	jne    464ab8 <fb_DevScrnRead+0xd8>
-  464a44:	49 01 dd             	add    r13,rbx
-  464a47:	48 29 dd             	sub    rbp,rbx
-  464a4a:	75 c9                	jne    464a15 <fb_DevScrnRead+0x35>
-  464a4c:	49 8b 06             	mov    rax,QWORD PTR [r14]
-  464a4f:	eb 3b                	jmp    464a8c <fb_DevScrnRead+0xac>
-  464a51:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  464a58:	bf 19 00 00 00       	mov    edi,0x19
-  464a5d:	e8 4e 62 00 00       	call   46acb0 <fb_Delay>
-  464a62:	e8 e9 1a 00 00       	call   466550 <fb_KeyHit>
-  464a67:	85 c0                	test   eax,eax
-  464a69:	74 ed                	je     464a58 <fb_DevScrnRead+0x78>
-  464a6b:	4c 89 e7             	mov    rdi,r12
-  464a6e:	e8 8d 7a 00 00       	call   46c500 <fb_DevScrnFillInput>
-  464a73:	41 8b 44 24 10       	mov    eax,DWORD PTR [r12+0x10]
-  464a78:	85 c0                	test   eax,eax
-  464a7a:	75 99                	jne    464a15 <fb_DevScrnRead+0x35>
-  464a7c:	48 89 ea             	mov    rdx,rbp
-  464a7f:	31 f6                	xor    esi,esi
-  464a81:	4c 89 ef             	mov    rdi,r13
-  464a84:	e8 37 06 fa ff       	call   4050c0 <memset@plt>
-  464a89:	49 8b 06             	mov    rax,QWORD PTR [r14]
-  464a8c:	48 29 e8             	sub    rax,rbp
-  464a8f:	31 ff                	xor    edi,edi
-  464a91:	49 89 06             	mov    QWORD PTR [r14],rax
-  464a94:	5b                   	pop    rbx
-  464a95:	5d                   	pop    rbp
-  464a96:	41 5c                	pop    r12
-  464a98:	41 5d                	pop    r13
-  464a9a:	41 5e                	pop    r14
-  464a9c:	e9 af 00 00 00       	jmp    464b50 <fb_ErrorSetNum>
-  464aa1:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  464aa8:	48 8b 04 25 40 00 00 	mov    rax,QWORD PTR ds:0x40
-  464aaf:	00 
-  464ab0:	0f 0b                	ud2    
-  464ab2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  464ab8:	49 8d 34 1c          	lea    rsi,[r12+rbx*1]
-  464abc:	4c 89 e7             	mov    rdi,r12
-  464abf:	e8 7c 0c fa ff       	call   405740 <memmove@plt>
-  464ac4:	e9 7b ff ff ff       	jmp    464a44 <fb_DevScrnRead+0x64>
-  464ac9:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-
-0000000000464ad0 <hReadFromStdin>:
-  464ad0:	31 ff                	xor    edi,edi
-  464ad2:	e9 d9 70 00 00       	jmp    46bbb0 <fb_DevFileRead>
-  464ad7:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  464ade:	00 00 
-
-0000000000464ae0 <fb_DevScrnInit_Read>:
-  464ae0:	48 83 ec 08          	sub    rsp,0x8
-  464ae4:	e8 77 fe ff ff       	call   464960 <fb_DevScrnInit_NoOpen>
-  464ae9:	48 8b 05 58 1b 05 00 	mov    rax,QWORD PTR [rip+0x51b58]        # 4b6648 <__fb_ctx+0x148>
-  464af0:	48 83 78 20 00       	cmp    QWORD PTR [rax+0x20],0x0
-  464af5:	74 09                	je     464b00 <fb_DevScrnInit_Read+0x20>
-  464af7:	48 83 c4 08          	add    rsp,0x8
-  464afb:	c3                   	ret    
-  464afc:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-  464b00:	bf 01 00 00 00       	mov    edi,0x1
-  464b05:	e8 66 1a 00 00       	call   466570 <fb_IsRedirected>
-  464b0a:	48 8d 15 cf fe ff ff 	lea    rdx,[rip+0xfffffffffffffecf]        # 4649e0 <fb_DevScrnRead>
-  464b11:	85 c0                	test   eax,eax
-  464b13:	48 8d 05 b6 ff ff ff 	lea    rax,[rip+0xffffffffffffffb6]        # 464ad0 <hReadFromStdin>
-  464b1a:	48 0f 44 c2          	cmove  rax,rdx
-  464b1e:	48 8b 15 23 1b 05 00 	mov    rdx,QWORD PTR [rip+0x51b23]        # 4b6648 <__fb_ctx+0x148>
-  464b25:	48 89 42 20          	mov    QWORD PTR [rdx+0x20],rax
-  464b29:	48 83 c4 08          	add    rsp,0x8
-  464b2d:	c3                   	ret    
-  464b2e:	66 90                	xchg   ax,ax
-
-0000000000464b30 <fb_ErrorGetNum>:
-  464b30:	48 83 ec 08          	sub    rsp,0x8
-  464b34:	31 d2                	xor    edx,edx
-  464b36:	be 30 00 00 00       	mov    esi,0x30
-  464b3b:	31 ff                	xor    edi,edi
-  464b3d:	e8 ce 66 00 00       	call   46b210 <fb_TlsGetCtx>
-  464b42:	8b 40 08             	mov    eax,DWORD PTR [rax+0x8]
-  464b45:	48 83 c4 08          	add    rsp,0x8
-  464b49:	c3                   	ret    
-  464b4a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-
-0000000000464b50 <fb_ErrorSetNum>:
-  464b50:	53                   	push   rbx
-  464b51:	31 d2                	xor    edx,edx
-  464b53:	89 fb                	mov    ebx,edi
-  464b55:	be 30 00 00 00       	mov    esi,0x30
-  464b5a:	31 ff                	xor    edi,edi
-  464b5c:	e8 af 66 00 00       	call   46b210 <fb_TlsGetCtx>
-  464b61:	89 58 08             	mov    DWORD PTR [rax+0x8],ebx
-  464b64:	89 d8                	mov    eax,ebx
-  464b66:	5b                   	pop    rbx
-  464b67:	c3                   	ret    
-  464b68:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  464b6f:	00 
-
-0000000000464b70 <fb_ErrorGetLineNum>:
-  464b70:	48 83 ec 08          	sub    rsp,0x8
-  464b74:	31 d2                	xor    edx,edx
-  464b76:	be 30 00 00 00       	mov    esi,0x30
-  464b7b:	31 ff                	xor    edi,edi
-  464b7d:	e8 8e 66 00 00       	call   46b210 <fb_TlsGetCtx>
-  464b82:	8b 40 0c             	mov    eax,DWORD PTR [rax+0xc]
-  464b85:	48 83 c4 08          	add    rsp,0x8
-  464b89:	c3                   	ret    
-  464b8a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-
-0000000000464b90 <fb_ErrorGetModName>:
-  464b90:	48 83 ec 08          	sub    rsp,0x8
-  464b94:	31 d2                	xor    edx,edx
-  464b96:	be 30 00 00 00       	mov    esi,0x30
-  464b9b:	31 ff                	xor    edi,edi
-  464b9d:	e8 6e 66 00 00       	call   46b210 <fb_TlsGetCtx>
-  464ba2:	48 8b 40 10          	mov    rax,QWORD PTR [rax+0x10]
-  464ba6:	48 83 c4 08          	add    rsp,0x8
-  464baa:	c3                   	ret    
-  464bab:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-
-0000000000464bb0 <fb_ErrorSetModName>:
-  464bb0:	53                   	push   rbx
-  464bb1:	31 d2                	xor    edx,edx
-  464bb3:	48 89 fb             	mov    rbx,rdi
-  464bb6:	be 30 00 00 00       	mov    esi,0x30
-  464bbb:	31 ff                	xor    edi,edi
-  464bbd:	e8 4e 66 00 00       	call   46b210 <fb_TlsGetCtx>
-  464bc2:	48 89 c2             	mov    rdx,rax
-  464bc5:	48 8b 40 10          	mov    rax,QWORD PTR [rax+0x10]
-  464bc9:	48 89 5a 10          	mov    QWORD PTR [rdx+0x10],rbx
-  464bcd:	5b                   	pop    rbx
-  464bce:	c3                   	ret    
-  464bcf:	90                   	nop
-
-0000000000464bd0 <fb_ErrorGetFuncName>:
-  464bd0:	48 83 ec 08          	sub    rsp,0x8
-  464bd4:	31 d2                	xor    edx,edx
-  464bd6:	be 30 00 00 00       	mov    esi,0x30
-  464bdb:	31 ff                	xor    edi,edi
-  464bdd:	e8 2e 66 00 00       	call   46b210 <fb_TlsGetCtx>
-  464be2:	48 8b 40 18          	mov    rax,QWORD PTR [rax+0x18]
-  464be6:	48 83 c4 08          	add    rsp,0x8
-  464bea:	c3                   	ret    
-  464beb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-
-0000000000464bf0 <fb_ErrorSetFuncName>:
-  464bf0:	53                   	push   rbx
-  464bf1:	31 d2                	xor    edx,edx
-  464bf3:	48 89 fb             	mov    rbx,rdi
-  464bf6:	be 30 00 00 00       	mov    esi,0x30
-  464bfb:	31 ff                	xor    edi,edi
-  464bfd:	e8 0e 66 00 00       	call   46b210 <fb_TlsGetCtx>
-  464c02:	48 89 c2             	mov    rdx,rax
-  464c05:	48 8b 40 18          	mov    rax,QWORD PTR [rax+0x18]
-  464c09:	48 89 5a 18          	mov    QWORD PTR [rdx+0x18],rbx
-  464c0d:	5b                   	pop    rbx
-  464c0e:	c3                   	ret    
-  464c0f:	90                   	nop
-
-0000000000464c10 <fb_FileCloseEx>:
-  464c10:	48 85 ff             	test   rdi,rdi
-  464c13:	74 3b                	je     464c50 <fb_FileCloseEx+0x40>
-  464c15:	48 8b 47 38          	mov    rax,QWORD PTR [rdi+0x38]
-  464c19:	48 85 c0             	test   rax,rax
-  464c1c:	74 32                	je     464c50 <fb_FileCloseEx+0x40>
-  464c1e:	53                   	push   rbx
-  464c1f:	48 89 fb             	mov    rbx,rdi
-  464c22:	ff 50 08             	call   QWORD PTR [rax+0x8]
-  464c25:	85 c0                	test   eax,eax
-  464c27:	74 07                	je     464c30 <fb_FileCloseEx+0x20>
-  464c29:	5b                   	pop    rbx
-  464c2a:	c3                   	ret    
-  464c2b:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  464c30:	66 0f ef c0          	pxor   xmm0,xmm0
-  464c34:	31 ff                	xor    edi,edi
-  464c36:	0f 11 03             	movups XMMWORD PTR [rbx],xmm0
-  464c39:	0f 11 43 10          	movups XMMWORD PTR [rbx+0x10],xmm0
-  464c3d:	0f 11 43 20          	movups XMMWORD PTR [rbx+0x20],xmm0
-  464c41:	0f 11 43 30          	movups XMMWORD PTR [rbx+0x30],xmm0
-  464c45:	0f 11 43 40          	movups XMMWORD PTR [rbx+0x40],xmm0
-  464c49:	5b                   	pop    rbx
-  464c4a:	e9 01 ff ff ff       	jmp    464b50 <fb_ErrorSetNum>
-  464c4f:	90                   	nop
-  464c50:	bf 01 00 00 00       	mov    edi,0x1
-  464c55:	e9 f6 fe ff ff       	jmp    464b50 <fb_ErrorSetNum>
-  464c5a:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-
-0000000000464c60 <fb_FileClose>:
-  464c60:	48 63 c7             	movsxd rax,edi
-  464c63:	85 c0                	test   eax,eax
-  464c65:	74 39                	je     464ca0 <fb_FileClose+0x40>
-  464c67:	83 f8 ff             	cmp    eax,0xffffffff
-  464c6a:	48 8d 3d ef 19 05 00 	lea    rdi,[rip+0x519ef]        # 4b6660 <__fb_ctx+0x160>
-  464c71:	74 20                	je     464c93 <fb_FileClose+0x33>
-  464c73:	8d 50 ff             	lea    edx,[rax-0x1]
-  464c76:	31 ff                	xor    edi,edi
-  464c78:	81 fa fe 00 00 00    	cmp    edx,0xfe
-  464c7e:	77 13                	ja     464c93 <fb_FileClose+0x33>
-  464c80:	48 8d 7c 80 05       	lea    rdi,[rax+rax*4+0x5]
-  464c85:	48 8d 05 84 19 05 00 	lea    rax,[rip+0x51984]        # 4b6610 <__fb_ctx+0x110>
-  464c8c:	48 c1 e7 04          	shl    rdi,0x4
-  464c90:	48 01 c7             	add    rdi,rax
-  464c93:	e9 78 ff ff ff       	jmp    464c10 <fb_FileCloseEx>
-  464c98:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  464c9f:	00 
-  464ca0:	bf 01 00 00 00       	mov    edi,0x1
-  464ca5:	e9 a6 fe ff ff       	jmp    464b50 <fb_ErrorSetNum>
-  464caa:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-
-0000000000464cb0 <fb_FileCloseAll>:
-  464cb0:	48 83 ec 08          	sub    rsp,0x8
-  464cb4:	e8 a7 13 00 00       	call   466060 <fb_FileReset>
-  464cb9:	31 ff                	xor    edi,edi
-  464cbb:	48 83 c4 08          	add    rsp,0x8
-  464cbf:	e9 8c fe ff ff       	jmp    464b50 <fb_ErrorSetNum>
-  464cc4:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  464ccb:	00 00 00 
-  464cce:	66 90                	xchg   ax,ax
-
-0000000000464cd0 <fb_FileEofEx>:
-  464cd0:	48 85 ff             	test   rdi,rdi
-  464cd3:	74 23                	je     464cf8 <fb_FileEofEx+0x28>
-  464cd5:	48 8b 47 38          	mov    rax,QWORD PTR [rdi+0x38]
-  464cd9:	48 85 c0             	test   rax,rax
-  464cdc:	74 1a                	je     464cf8 <fb_FileEofEx+0x28>
-  464cde:	48 8b 00             	mov    rax,QWORD PTR [rax]
-  464ce1:	48 85 c0             	test   rax,rax
-  464ce4:	74 12                	je     464cf8 <fb_FileEofEx+0x28>
-  464ce6:	48 83 7f 30 00       	cmp    QWORD PTR [rdi+0x30],0x0
-  464ceb:	75 03                	jne    464cf0 <fb_FileEofEx+0x20>
-  464ced:	ff e0                	jmp    rax
-  464cef:	90                   	nop
-  464cf0:	31 c0                	xor    eax,eax
-  464cf2:	c3                   	ret    
-  464cf3:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  464cf8:	b8 ff ff ff ff       	mov    eax,0xffffffff
-  464cfd:	c3                   	ret    
-  464cfe:	66 90                	xchg   ax,ax
-
-0000000000464d00 <fb_FileEof>:
-  464d00:	85 ff                	test   edi,edi
-  464d02:	74 34                	je     464d38 <fb_FileEof+0x38>
-  464d04:	83 ff ff             	cmp    edi,0xffffffff
-  464d07:	74 57                	je     464d60 <fb_FileEof+0x60>
-  464d09:	8d 47 ff             	lea    eax,[rdi-0x1]
-  464d0c:	3d fe 00 00 00       	cmp    eax,0xfe
-  464d11:	77 18                	ja     464d2b <fb_FileEof+0x2b>
-  464d13:	48 63 ff             	movsxd rdi,edi
-  464d16:	48 8d 05 f3 18 05 00 	lea    rax,[rip+0x518f3]        # 4b6610 <__fb_ctx+0x110>
-  464d1d:	48 8d 7c bf 05       	lea    rdi,[rdi+rdi*4+0x5]
-  464d22:	48 c1 e7 04          	shl    rdi,0x4
-  464d26:	48 01 c7             	add    rdi,rax
-  464d29:	75 14                	jne    464d3f <fb_FileEof+0x3f>
-  464d2b:	b8 ff ff ff ff       	mov    eax,0xffffffff
-  464d30:	c3                   	ret    
-  464d31:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  464d38:	48 8d 3d d1 18 05 00 	lea    rdi,[rip+0x518d1]        # 4b6610 <__fb_ctx+0x110>
-  464d3f:	48 8b 47 38          	mov    rax,QWORD PTR [rdi+0x38]
-  464d43:	48 85 c0             	test   rax,rax
-  464d46:	74 e3                	je     464d2b <fb_FileEof+0x2b>
-  464d48:	48 8b 00             	mov    rax,QWORD PTR [rax]
-  464d4b:	48 85 c0             	test   rax,rax
-  464d4e:	74 db                	je     464d2b <fb_FileEof+0x2b>
-  464d50:	48 83 7f 30 00       	cmp    QWORD PTR [rdi+0x30],0x0
-  464d55:	75 19                	jne    464d70 <fb_FileEof+0x70>
-  464d57:	ff e0                	jmp    rax
-  464d59:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  464d60:	48 8d 3d f9 18 05 00 	lea    rdi,[rip+0x518f9]        # 4b6660 <__fb_ctx+0x160>
-  464d67:	eb d6                	jmp    464d3f <fb_FileEof+0x3f>
-  464d69:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  464d70:	31 c0                	xor    eax,eax
-  464d72:	c3                   	ret    
-  464d73:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  464d7a:	00 00 00 
-  464d7d:	0f 1f 00             	nop    DWORD PTR [rax]
-
-0000000000464d80 <fb_FileFree>:
-  464d80:	48 8d 15 61 19 05 00 	lea    rdx,[rip+0x51961]        # 4b66e8 <__fb_ctx+0x1e8>
-  464d87:	b8 01 00 00 00       	mov    eax,0x1
-  464d8c:	eb 10                	jmp    464d9e <fb_FileFree+0x1e>
-  464d8e:	66 90                	xchg   ax,ax
-  464d90:	83 c0 01             	add    eax,0x1
-  464d93:	48 83 c2 50          	add    rdx,0x50
-  464d97:	3d 00 01 00 00       	cmp    eax,0x100
-  464d9c:	74 12                	je     464db0 <fb_FileFree+0x30>
-  464d9e:	48 83 3a 00          	cmp    QWORD PTR [rdx],0x0
-  464da2:	75 ec                	jne    464d90 <fb_FileFree+0x10>
-  464da4:	f3 c3                	repz ret 
-  464da6:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  464dad:	00 00 00 
-  464db0:	31 c0                	xor    eax,eax
-  464db2:	c3                   	ret    
-  464db3:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  464dba:	00 00 00 
-  464dbd:	0f 1f 00             	nop    DWORD PTR [rax]
-
-0000000000464dc0 <fb_FileGetDataEx>:
-  464dc0:	41 57                	push   r15
-  464dc2:	41 56                	push   r14
-  464dc4:	45 89 cf             	mov    r15d,r9d
-  464dc7:	41 55                	push   r13
-  464dc9:	41 54                	push   r12
-  464dcb:	49 89 d5             	mov    r13,rdx
-  464dce:	55                   	push   rbp
-  464dcf:	53                   	push   rbx
-  464dd0:	49 89 ce             	mov    r14,rcx
-  464dd3:	48 89 fb             	mov    rbx,rdi
-  464dd6:	4c 89 c5             	mov    rbp,r8
-  464dd9:	48 83 ec 38          	sub    rsp,0x38
-  464ddd:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
-  464de4:	00 00 
-  464de6:	48 89 44 24 28       	mov    QWORD PTR [rsp+0x28],rax
-  464deb:	31 c0                	xor    eax,eax
-  464ded:	4d 85 c0             	test   r8,r8
-  464df0:	74 07                	je     464df9 <fb_FileGetDataEx+0x39>
-  464df2:	49 c7 00 00 00 00 00 	mov    QWORD PTR [r8],0x0
-  464df9:	48 85 db             	test   rbx,rbx
-  464dfc:	0f 84 2e 01 00 00    	je     464f30 <fb_FileGetDataEx+0x170>
-  464e02:	48 83 7b 38 00       	cmp    QWORD PTR [rbx+0x38],0x0
-  464e07:	0f 84 23 01 00 00    	je     464f30 <fb_FileGetDataEx+0x170>
-  464e0d:	48 85 f6             	test   rsi,rsi
-  464e10:	48 89 34 24          	mov    QWORD PTR [rsp],rsi
-  464e14:	0f 88 16 01 00 00    	js     464f30 <fb_FileGetDataEx+0x170>
-  464e1a:	31 ff                	xor    edi,edi
-  464e1c:	e8 2f fd ff ff       	call   464b50 <fb_ErrorSetNum>
-  464e21:	48 8b 34 24          	mov    rsi,QWORD PTR [rsp]
-  464e25:	89 c1                	mov    ecx,eax
-  464e27:	4c 89 74 24 20       	mov    QWORD PTR [rsp+0x20],r14
-  464e2c:	4d 89 f0             	mov    r8,r14
-  464e2f:	48 85 f6             	test   rsi,rsi
-  464e32:	74 0f                	je     464e43 <fb_FileGetDataEx+0x83>
-  464e34:	48 89 df             	mov    rdi,rbx
-  464e37:	e8 94 12 00 00       	call   4660d0 <fb_FileSeekEx>
-  464e3c:	4c 8b 44 24 20       	mov    r8,QWORD PTR [rsp+0x20]
-  464e41:	89 c1                	mov    ecx,eax
-  464e43:	4c 8b 63 30          	mov    r12,QWORD PTR [rbx+0x30]
-  464e47:	4d 85 e4             	test   r12,r12
-  464e4a:	0f 84 89 00 00 00    	je     464ed9 <fb_FileGetDataEx+0x119>
-  464e50:	44 8b 5b 08          	mov    r11d,DWORD PTR [rbx+0x8]
-  464e54:	4c 8d 4b 2c          	lea    r9,[rbx+0x2c]
-  464e58:	45 85 db             	test   r11d,r11d
-  464e5b:	0f 84 1f 01 00 00    	je     464f80 <fb_FileGetDataEx+0x1c0>
-  464e61:	4e 8d 14 85 00 00 00 	lea    r10,[r8*4+0x0]
-  464e68:	00 
-  464e69:	8b 74 24 70          	mov    esi,DWORD PTR [rsp+0x70]
-  464e6d:	4d 39 d4             	cmp    r12,r10
-  464e70:	4d 0f 46 d4          	cmovbe r10,r12
-  464e74:	85 f6                	test   esi,esi
-  464e76:	0f 85 34 02 00 00    	jne    4650b0 <fb_FileGetDataEx+0x2f0>
-  464e7c:	4d 85 d2             	test   r10,r10
-  464e7f:	0f 84 8b 02 00 00    	je     465110 <fb_FileGetDataEx+0x350>
-  464e85:	4c 89 d6             	mov    rsi,r10
-  464e88:	4c 89 ea             	mov    rdx,r13
-  464e8b:	4c 89 c8             	mov    rax,r9
-  464e8e:	66 90                	xchg   ax,ax
-  464e90:	48 83 c0 04          	add    rax,0x4
-  464e94:	8b 78 fc             	mov    edi,DWORD PTR [rax-0x4]
-  464e97:	48 83 c2 01          	add    rdx,0x1
-  464e9b:	48 83 ee 04          	sub    rsi,0x4
-  464e9f:	40 88 7a ff          	mov    BYTE PTR [rdx-0x1],dil
-  464ea3:	75 eb                	jne    464e90 <fb_FileGetDataEx+0xd0>
-  464ea5:	48 8b 53 30          	mov    rdx,QWORD PTR [rbx+0x30]
-  464ea9:	44 8b 5b 08          	mov    r11d,DWORD PTR [rbx+0x8]
-  464ead:	4d 89 d4             	mov    r12,r10
-  464eb0:	4c 29 e2             	sub    rdx,r12
-  464eb3:	4d 01 e5             	add    r13,r12
-  464eb6:	48 85 d2             	test   rdx,rdx
-  464eb9:	48 89 53 30          	mov    QWORD PTR [rbx+0x30],rdx
-  464ebd:	0f 85 11 01 00 00    	jne    464fd4 <fb_FileGetDataEx+0x214>
-  464ec3:	4c 89 e0             	mov    rax,r12
-  464ec6:	48 c1 e8 02          	shr    rax,0x2
-  464eca:	45 85 db             	test   r11d,r11d
-  464ecd:	4c 0f 45 e0          	cmovne r12,rax
-  464ed1:	4d 29 e0             	sub    r8,r12
-  464ed4:	4c 89 44 24 20       	mov    QWORD PTR [rsp+0x20],r8
-  464ed9:	85 c9                	test   ecx,ecx
-  464edb:	75 2e                	jne    464f0b <fb_FileGetDataEx+0x14b>
-  464edd:	4d 85 c0             	test   r8,r8
-  464ee0:	74 29                	je     464f0b <fb_FileGetDataEx+0x14b>
-  464ee2:	8b 4c 24 70          	mov    ecx,DWORD PTR [rsp+0x70]
-  464ee6:	48 8b 43 38          	mov    rax,QWORD PTR [rbx+0x38]
-  464eea:	85 c9                	test   ecx,ecx
-  464eec:	74 72                	je     464f60 <fb_FileGetDataEx+0x1a0>
-  464eee:	48 8b 40 28          	mov    rax,QWORD PTR [rax+0x28]
-  464ef2:	48 85 c0             	test   rax,rax
-  464ef5:	74 72                	je     464f69 <fb_FileGetDataEx+0x1a9>
-  464ef7:	48 8d 54 24 20       	lea    rdx,[rsp+0x20]
-  464efc:	4c 89 ee             	mov    rsi,r13
-  464eff:	48 89 df             	mov    rdi,rbx
-  464f02:	ff d0                	call   rax
-  464f04:	4c 03 64 24 20       	add    r12,QWORD PTR [rsp+0x20]
-  464f09:	89 c1                	mov    ecx,eax
-  464f0b:	83 3b 01             	cmp    DWORD PTR [rbx],0x1
-  464f0e:	0f 84 ec 00 00 00    	je     465000 <fb_FileGetDataEx+0x240>
-  464f14:	48 85 ed             	test   rbp,rbp
-  464f17:	74 04                	je     464f1d <fb_FileGetDataEx+0x15d>
-  464f19:	4c 89 65 00          	mov    QWORD PTR [rbp+0x0],r12
-  464f1d:	89 cf                	mov    edi,ecx
-  464f1f:	e8 2c fc ff ff       	call   464b50 <fb_ErrorSetNum>
-  464f24:	eb 14                	jmp    464f3a <fb_FileGetDataEx+0x17a>
-  464f26:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  464f2d:	00 00 00 
-  464f30:	bf 01 00 00 00       	mov    edi,0x1
-  464f35:	e8 16 fc ff ff       	call   464b50 <fb_ErrorSetNum>
-  464f3a:	48 8b 4c 24 28       	mov    rcx,QWORD PTR [rsp+0x28]
-  464f3f:	64 48 33 0c 25 28 00 	xor    rcx,QWORD PTR fs:0x28
-  464f46:	00 00 
-  464f48:	0f 85 dc 01 00 00    	jne    46512a <fb_FileGetDataEx+0x36a>
-  464f4e:	48 83 c4 38          	add    rsp,0x38
-  464f52:	5b                   	pop    rbx
-  464f53:	5d                   	pop    rbp
-  464f54:	41 5c                	pop    r12
-  464f56:	41 5d                	pop    r13
-  464f58:	41 5e                	pop    r14
-  464f5a:	41 5f                	pop    r15
-  464f5c:	c3                   	ret    
-  464f5d:	0f 1f 00             	nop    DWORD PTR [rax]
-  464f60:	48 8b 40 20          	mov    rax,QWORD PTR [rax+0x20]
-  464f64:	48 85 c0             	test   rax,rax
-  464f67:	75 8e                	jne    464ef7 <fb_FileGetDataEx+0x137>
-  464f69:	bf 01 00 00 00       	mov    edi,0x1
-  464f6e:	e8 dd fb ff ff       	call   464b50 <fb_ErrorSetNum>
-  464f73:	89 c1                	mov    ecx,eax
-  464f75:	eb 94                	jmp    464f0b <fb_FileGetDataEx+0x14b>
-  464f77:	66 0f 1f 84 00 00 00 	nop    WORD PTR [rax+rax*1+0x0]
-  464f7e:	00 00 
-  464f80:	8b 44 24 70          	mov    eax,DWORD PTR [rsp+0x70]
-  464f84:	4d 39 c4             	cmp    r12,r8
-  464f87:	4d 89 c2             	mov    r10,r8
-  464f8a:	4d 0f 46 d4          	cmovbe r10,r12
-  464f8e:	85 c0                	test   eax,eax
-  464f90:	0f 84 1a 01 00 00    	je     4650b0 <fb_FileGetDataEx+0x2f0>
-  464f96:	31 c0                	xor    eax,eax
-  464f98:	4d 85 d2             	test   r10,r10
-  464f9b:	0f 84 5f 01 00 00    	je     465100 <fb_FileGetDataEx+0x340>
-  464fa1:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-  464fa8:	41 0f be 54 05 00    	movsx  edx,BYTE PTR [r13+rax*1+0x0]
-  464fae:	41 89 14 81          	mov    DWORD PTR [r9+rax*4],edx
-  464fb2:	48 83 c0 01          	add    rax,0x1
-  464fb6:	49 39 c2             	cmp    r10,rax
-  464fb9:	75 ed                	jne    464fa8 <fb_FileGetDataEx+0x1e8>
-  464fbb:	4c 89 e2             	mov    rdx,r12
-  464fbe:	4d 01 d5             	add    r13,r10
-  464fc1:	4d 89 d4             	mov    r12,r10
-  464fc4:	4c 29 d2             	sub    rdx,r10
-  464fc7:	48 85 d2             	test   rdx,rdx
-  464fca:	48 89 53 30          	mov    QWORD PTR [rbx+0x30],rdx
-  464fce:	0f 84 fd fe ff ff    	je     464ed1 <fb_FileGetDataEx+0x111>
-  464fd4:	4b 8d 34 21          	lea    rsi,[r9+r12*1]
-  464fd8:	4c 89 cf             	mov    rdi,r9
-  464fdb:	44 89 5c 24 14       	mov    DWORD PTR [rsp+0x14],r11d
-  464fe0:	4c 89 44 24 08       	mov    QWORD PTR [rsp+0x8],r8
-  464fe5:	89 0c 24             	mov    DWORD PTR [rsp],ecx
-  464fe8:	e8 53 07 fa ff       	call   405740 <memmove@plt>
-  464fed:	44 8b 5c 24 14       	mov    r11d,DWORD PTR [rsp+0x14]
-  464ff2:	4c 8b 44 24 08       	mov    r8,QWORD PTR [rsp+0x8]
-  464ff7:	8b 0c 24             	mov    ecx,DWORD PTR [rsp]
-  464ffa:	e9 c4 fe ff ff       	jmp    464ec3 <fb_FileGetDataEx+0x103>
-  464fff:	90                   	nop
-  465000:	85 c9                	test   ecx,ecx
-  465002:	0f 85 0c ff ff ff    	jne    464f14 <fb_FileGetDataEx+0x154>
-  465008:	45 85 ff             	test   r15d,r15d
-  46500b:	0f 84 03 ff ff ff    	je     464f14 <fb_FileGetDataEx+0x154>
-  465011:	8b 4b 04             	mov    ecx,DWORD PTR [rbx+0x4]
-  465014:	85 c9                	test   ecx,ecx
-  465016:	0f 84 f8 fe ff ff    	je     464f14 <fb_FileGetDataEx+0x154>
-  46501c:	48 8b 43 38          	mov    rax,QWORD PTR [rbx+0x38]
-  465020:	48 83 78 10 00       	cmp    QWORD PTR [rax+0x10],0x0
-  465025:	0f 84 cd 00 00 00    	je     4650f8 <fb_FileGetDataEx+0x338>
-  46502b:	48 63 f9             	movsxd rdi,ecx
-  46502e:	31 c9                	xor    ecx,ecx
-  465030:	49 39 fe             	cmp    r14,rdi
-  465033:	74 10                	je     465045 <fb_FileGetDataEx+0x285>
-  465035:	bf 03 00 00 00       	mov    edi,0x3
-  46503a:	e8 11 fb ff ff       	call   464b50 <fb_ErrorSetNum>
-  46503f:	48 63 7b 04          	movsxd rdi,DWORD PTR [rbx+0x4]
-  465043:	89 c1                	mov    ecx,eax
-  465045:	8b 54 24 70          	mov    edx,DWORD PTR [rsp+0x70]
-  465049:	4a 8d 04 a5 00 00 00 	lea    rax,[r12*4+0x0]
-  465050:	00 
-  465051:	85 d2                	test   edx,edx
-  465053:	49 0f 44 c4          	cmove  rax,r12
-  465057:	31 d2                	xor    edx,edx
-  465059:	48 f7 f7             	div    rdi
-  46505c:	48 89 f8             	mov    rax,rdi
-  46505f:	48 29 d0             	sub    rax,rdx
-  465062:	31 d2                	xor    edx,edx
-  465064:	48 f7 f7             	div    rdi
-  465067:	48 85 d2             	test   rdx,rdx
-  46506a:	0f 84 a4 fe ff ff    	je     464f14 <fb_FileGetDataEx+0x154>
-  465070:	48 8b 43 30          	mov    rax,QWORD PTR [rbx+0x30]
-  465074:	48 39 c2             	cmp    rdx,rax
-  465077:	0f 86 a1 00 00 00    	jbe    46511e <fb_FileGetDataEx+0x35e>
-  46507d:	48 29 c2             	sub    rdx,rax
-  465080:	48 c7 43 30 00 00 00 	mov    QWORD PTR [rbx+0x30],0x0
-  465087:	00 
-  465088:	48 89 d6             	mov    rsi,rdx
-  46508b:	0f 84 83 fe ff ff    	je     464f14 <fb_FileGetDataEx+0x154>
-  465091:	48 8b 43 38          	mov    rax,QWORD PTR [rbx+0x38]
-  465095:	89 0c 24             	mov    DWORD PTR [rsp],ecx
-  465098:	ba 01 00 00 00       	mov    edx,0x1
-  46509d:	48 89 df             	mov    rdi,rbx
-  4650a0:	ff 50 10             	call   QWORD PTR [rax+0x10]
-  4650a3:	8b 0c 24             	mov    ecx,DWORD PTR [rsp]
-  4650a6:	e9 69 fe ff ff       	jmp    464f14 <fb_FileGetDataEx+0x154>
-  4650ab:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-  4650b0:	4c 89 d2             	mov    rdx,r10
-  4650b3:	4c 89 ce             	mov    rsi,r9
-  4650b6:	4c 89 ef             	mov    rdi,r13
-  4650b9:	4c 89 44 24 18       	mov    QWORD PTR [rsp+0x18],r8
-  4650be:	89 4c 24 14          	mov    DWORD PTR [rsp+0x14],ecx
-  4650c2:	4c 89 54 24 08       	mov    QWORD PTR [rsp+0x8],r10
-  4650c7:	4c 89 0c 24          	mov    QWORD PTR [rsp],r9
-  4650cb:	e8 70 0b fa ff       	call   405c40 <memcpy@plt>
-  4650d0:	4c 8b 54 24 08       	mov    r10,QWORD PTR [rsp+0x8]
-  4650d5:	48 8b 53 30          	mov    rdx,QWORD PTR [rbx+0x30]
-  4650d9:	44 8b 5b 08          	mov    r11d,DWORD PTR [rbx+0x8]
-  4650dd:	4c 8b 0c 24          	mov    r9,QWORD PTR [rsp]
-  4650e1:	8b 4c 24 14          	mov    ecx,DWORD PTR [rsp+0x14]
-  4650e5:	4c 8b 44 24 18       	mov    r8,QWORD PTR [rsp+0x18]
-  4650ea:	4d 89 d4             	mov    r12,r10
-  4650ed:	e9 be fd ff ff       	jmp    464eb0 <fb_FileGetDataEx+0xf0>
-  4650f2:	66 0f 1f 44 00 00    	nop    WORD PTR [rax+rax*1+0x0]
-  4650f8:	31 c9                	xor    ecx,ecx
-  4650fa:	e9 15 fe ff ff       	jmp    464f14 <fb_FileGetDataEx+0x154>
-  4650ff:	90                   	nop
-  465100:	45 31 e4             	xor    r12d,r12d
-  465103:	e9 c9 fd ff ff       	jmp    464ed1 <fb_FileGetDataEx+0x111>
-  465108:	0f 1f 84 00 00 00 00 	nop    DWORD PTR [rax+rax*1+0x0]
-  46510f:	00 
-  465110:	4c 89 e2             	mov    rdx,r12
-  465113:	4c 89 ce             	mov    rsi,r9
-  465116:	45 31 e4             	xor    r12d,r12d
-  465119:	e9 ba fe ff ff       	jmp    464fd8 <fb_FileGetDataEx+0x218>
-  46511e:	48 29 d0             	sub    rax,rdx
-  465121:	48 89 43 30          	mov    QWORD PTR [rbx+0x30],rax
-  465125:	e9 ea fd ff ff       	jmp    464f14 <fb_FileGetDataEx+0x154>
-  46512a:	e8 31 07 fa ff       	call   405860 <__stack_chk_fail@plt>
-  46512f:	90                   	nop
-
-0000000000465130 <fb_FileGetData>:
-  465130:	48 83 ec 08          	sub    rsp,0x8
-  465134:	85 ff                	test   edi,edi
-  465136:	48 8d 05 d3 14 05 00 	lea    rax,[rip+0x514d3]        # 4b6610 <__fb_ctx+0x110>
-  46513d:	74 2e                	je     46516d <fb_FileGetData+0x3d>
-  46513f:	48 83 c0 50          	add    rax,0x50
-  465143:	83 ff ff             	cmp    edi,0xffffffff
-  465146:	74 25                	je     46516d <fb_FileGetData+0x3d>
-  465148:	44 8d 4f ff          	lea    r9d,[rdi-0x1]
-  46514c:	31 c0                	xor    eax,eax
-  46514e:	41 81 f9 fe 00 00 00 	cmp    r9d,0xfe
-  465155:	77 16                	ja     46516d <fb_FileGetData+0x3d>
-  465157:	48 63 ff             	movsxd rdi,edi
-  46515a:	48 8d 44 bf 05       	lea    rax,[rdi+rdi*4+0x5]
-  46515f:	48 8d 3d aa 14 05 00 	lea    rdi,[rip+0x514aa]        # 4b6610 <__fb_ctx+0x110>
-  465166:	48 c1 e0 04          	shl    rax,0x4
-  46516a:	48 01 f8             	add    rax,rdi
-  46516d:	48 83 ec 08          	sub    rsp,0x8
-  465171:	45 89 c1             	mov    r9d,r8d
-  465174:	48 89 c7             	mov    rdi,rax
-  465177:	6a 00                	push   0x0
-  465179:	45 31 c0             	xor    r8d,r8d
-  46517c:	e8 3f fc ff ff       	call   464dc0 <fb_FileGetDataEx>
-  465181:	48 83 c4 18          	add    rsp,0x18
-  465185:	c3                   	ret    
-  465186:	66 2e 0f 1f 84 00 00 	cs nop WORD PTR [rax+rax*1+0x0]
-  46518d:	00 00 00 
-
-0000000000465190 <fb_FileGet>:
-  465190:	48 83 ec 08          	sub    rsp,0x8
-  465194:	85 ff                	test   edi,edi
-  465196:	48 63 f6             	movsxd rsi,esi
-  465199:	48 8d 05 70 14 05 00 	lea    rax,[rip+0x51470]        # 4b6610 <__fb_ctx+0x110>
-  4651a0:	74 2e                	je     4651d0 <fb_FileGet+0x40>
-  4651a2:	48 83 c0 50          	add    rax,0x50
-  4651a6:	83 ff ff             	cmp    edi,0xffffffff
-  4651a9:	74 25                	je     4651d0 <fb_FileGet+0x40>
-  4651ab:	44 8d 47 ff          	lea    r8d,[rdi-0x1]
-  4651af:	31 c0                	xor    eax,eax
-  4651b1:	41 81 f8 fe 00 00 00 	cmp    r8d,0xfe
-  4651b8:	77 16                	ja     4651d0 <fb_FileGet+0x40>
-  4651ba:	48 63 ff             	movsxd rdi,edi
-  4651bd:	48 8d 44 bf 05       	lea    rax,[rdi+rdi*4+0x5]
-  4651c2:	48 8d 3d 47 14 05 00 	lea    rdi,[rip+0x51447]        # 4b6610 <__fb_ctx+0x110>
-  4651c9:	48 c1 e0 04          	shl    rax,0x4
-  4651cd:	48 01 f8             	add    rax,rdi
-  4651d0:	48 83 ec 08          	sub    rsp,0x8
-  4651d4:	41 b9 01 00 00 00    	mov    r9d,0x1
-  4651da:	45 31 c0             	xor    r8d,r8d
-  4651dd:	6a 00                	push   0x0
-  4651df:	48 89 c7             	mov    rdi,rax
-  4651e2:	e8 d9 fb ff ff       	call   464dc0 <fb_FileGetDataEx>
-  4651e7:	48 83 c4 18          	add    rsp,0x18
-  4651eb:	c3                   	ret    
-  4651ec:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
-
-00000000004651f0 <fb_FileGetLarge>:
-  4651f0:	48 83 ec 08          	sub    rsp,0x8
-  4651f4:	85 ff                	test   edi,edi
-  4651f6:	48 8d 05 13 14 05 00 	lea    rax,[rip+0x51413]        # 4b6610 <__fb_ctx+0x110>
-  4651fd:	74 2e                	je     46522d <fb_FileGetLarge+0x3d>
-  4651ff:	48 83 c0 50          	add    rax,0x50
-  465203:	83 ff ff             	cmp    edi,0xffffffff
-  465206:	74 25                	je     46522d <fb_FileGetLarge+0x3d>
-  465208:	44 8d 47 ff          	lea    r8d,[rdi-0x1]
-  46520c:	31 c0                	xor    eax,eax
-  46520e:	41 81 f8 fe 00 00 00 	cmp    r8d,0xfe
-  465215:	77 16                	ja     46522d <fb_FileGetLarge+0x3d>
-  465217:	48 63 ff             	movsxd rdi,edi
-  46521a:	48 8d 44 bf 05       	lea    rax,[rdi+rdi*4+0x5]
-  46521f:	48 8d 3d ea 13 05 00 	lea    rdi,[rip+0x513ea]        # 4b6610 <__fb_ctx+0x110>
-  465226:	48 c1 e0 04          	shl    rax,0x4
-  46522a:	48 01 f8             	add    rax,rdi
-  46522d:	48 83 ec 08          	sub    rsp,0x8
-  465231:	41 b9 01 00 00 00    	mov    r9d,0x1
-  465237:	45 31 c0             	xor    r8d,r8d
-  46523a:	6a 00                	push   0x0
-  46523c:	48 89 c7             	mov    rdi,rax
-  46523f:	e8 7c fb ff ff       	call   464dc0 <fb_FileGetDataEx>
-  465244:	48 83 c4 18          	add    rsp,0x18
-  465248:	c3                   	ret    
-  465249:	0f 1f 80 00 00 00 00 	nop    DWORD PTR [rax+0x0]
-
-0000000000465250 <fb_FileGetIOB>:
-  465250:	48 83 ec 08          	sub    rsp,0x8
-  465254:	85 ff                	test   edi,edi
-  465256:	48 63 f6             	movsxd rsi,esi
-  465259:	48 8d 05 b0 13 05 00 	lea    rax,[rip+0x513b0]        # 4b6610 <__fb_ctx+0x110>
-  465260:	74 2e                	je     465290 <fb_FileGetIOB+0x40>
-  465262:	48 83 c0 50          	add    rax,0x50
-  465266:	83 ff ff             	cmp    edi,0xffffffff
-  465269:	74 25                	je     465290 <fb_FileGetIOB+0x40>
-  46526b:	44 8d 4f ff          	lea    r9d,[rdi-0x1]
-  46526f:	31 c0                	xor    eax,eax
-  465271:	41 81 f9 fe 00 00 00 	cmp    r9d,0xfe
-  465278:	77 16                	ja     465290 <fb_FileGetIOB+0x40>
-  46527a:	48 63 ff             	movsxd rdi,edi
-  46527d:	48 8d 44 bf 05       	lea    rax,[rdi+rdi*4+0x5]
-  465282:	48 8d 3d 87 13 05 00 	lea    rdi,[rip+0x51387]        # 4b6610 <__fb_ctx+0x110>
-  465289:	48 c1 e0 04          	shl    rax,0x4
-  46528d:	48 01 f8             	add    rax,rdi
+  422723:	48 8d 3d 7a d9 05 00 	lea    rdi,[rip+0x5d97a]        # 4800a4 <_IO_stdin_used+0x30a4>
+  42272a:	e8 61 4e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42272f:	48 89 c6             	mov    rsi,rax
+  422732:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422739:	00 
+  42273a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422741:	00 00 
+  422743:	75 22                	jne    422767 <MEMORY_T::POKE64(double, double)+0x18e97>
+  422745:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42274c:	31 d2                	xor    edx,edx
+  42274e:	bf 01 00 00 00       	mov    edi,0x1
+  422753:	5b                   	pop    rbx
+  422754:	5d                   	pop    rbp
+  422755:	41 5c                	pop    r12
+  422757:	41 5d                	pop    r13
+  422759:	41 5e                	pop    r14
+  42275b:	41 5f                	pop    r15
+  42275d:	e9 5e 12 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 146: print #1, "endfor";
+  422762:	e8 19 31 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 145: print #1, "enddeclare";
+  422767:	e8 14 31 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 144: print #1, "empty";
+  42276c:	be 05 00 00 00       	mov    esi,0x5
+  422771:	48 8d 3d 26 d9 05 00 	lea    rdi,[rip+0x5d926]        # 48009e <_IO_stdin_used+0x309e>
+  422778:	e8 13 4e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42277d:	48 89 c6             	mov    rsi,rax
+  422780:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422787:	00 
+  422788:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42278f:	00 00 
+  422791:	75 61                	jne    4227f4 <MEMORY_T::POKE64(double, double)+0x18f24>
+  422793:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42279a:	31 d2                	xor    edx,edx
+  42279c:	bf 01 00 00 00       	mov    edi,0x1
+  4227a1:	5b                   	pop    rbx
+  4227a2:	5d                   	pop    rbp
+  4227a3:	41 5c                	pop    r12
+  4227a5:	41 5d                	pop    r13
+  4227a7:	41 5e                	pop    r14
+  4227a9:	41 5f                	pop    r15
+  4227ab:	e9 10 12 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 143: print #1, "echo";
+  4227b0:	be 04 00 00 00       	mov    esi,0x4
+  4227b5:	48 8d 3d 04 df 05 00 	lea    rdi,[rip+0x5df04]        # 4806c0 <_IO_stdin_used+0x36c0>
+  4227bc:	e8 cf 4d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4227c1:	48 89 c6             	mov    rsi,rax
+  4227c4:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4227cb:	00 
+  4227cc:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4227d3:	00 00 
+  4227d5:	75 22                	jne    4227f9 <MEMORY_T::POKE64(double, double)+0x18f29>
+  4227d7:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4227de:	31 d2                	xor    edx,edx
+  4227e0:	bf 01 00 00 00       	mov    edi,0x1
+  4227e5:	5b                   	pop    rbx
+  4227e6:	5d                   	pop    rbp
+  4227e7:	41 5c                	pop    r12
+  4227e9:	41 5d                	pop    r13
+  4227eb:	41 5e                	pop    r14
+  4227ed:	41 5f                	pop    r15
+  4227ef:	e9 cc 11 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 144: print #1, "empty";
+  4227f4:	e8 87 30 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 143: print #1, "echo";
+  4227f9:	e8 82 30 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 142: print #1, "clone";
+  4227fe:	be 05 00 00 00       	mov    esi,0x5
+  422803:	48 8d 3d 8e d8 05 00 	lea    rdi,[rip+0x5d88e]        # 480098 <_IO_stdin_used+0x3098>
+  42280a:	e8 81 4d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42280f:	48 89 c6             	mov    rsi,rax
+  422812:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422819:	00 
+  42281a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422821:	00 00 
+  422823:	75 61                	jne    422886 <MEMORY_T::POKE64(double, double)+0x18fb6>
+  422825:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42282c:	31 d2                	xor    edx,edx
+  42282e:	bf 01 00 00 00       	mov    edi,0x1
+  422833:	5b                   	pop    rbx
+  422834:	5d                   	pop    rbp
+  422835:	41 5c                	pop    r12
+  422837:	41 5d                	pop    r13
+  422839:	41 5e                	pop    r14
+  42283b:	41 5f                	pop    r15
+  42283d:	e9 7e 11 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 141: print #1, "callable";
+  422842:	be 08 00 00 00       	mov    esi,0x8
+  422847:	48 8d 3d 41 d8 05 00 	lea    rdi,[rip+0x5d841]        # 48008f <_IO_stdin_used+0x308f>
+  42284e:	e8 3d 4d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422853:	48 89 c6             	mov    rsi,rax
+  422856:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42285d:	00 
+  42285e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422865:	00 00 
+  422867:	75 22                	jne    42288b <MEMORY_T::POKE64(double, double)+0x18fbb>
+  422869:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422870:	31 d2                	xor    edx,edx
+  422872:	bf 01 00 00 00       	mov    edi,0x1
+  422877:	5b                   	pop    rbx
+  422878:	5d                   	pop    rbp
+  422879:	41 5c                	pop    r12
+  42287b:	41 5d                	pop    r13
+  42287d:	41 5e                	pop    r14
+  42287f:	41 5f                	pop    r15
+  422881:	e9 3a 11 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 142: print #1, "clone";
+  422886:	e8 f5 2f fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 141: print #1, "callable";
+  42288b:	e8 f0 2f fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 140: print #1, "it";
+  422890:	be 02 00 00 00       	mov    esi,0x2
+  422895:	48 8d 3d 61 d8 05 00 	lea    rdi,[rip+0x5d861]        # 4800fd <_IO_stdin_used+0x30fd>
+  42289c:	e8 ef 4c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4228a1:	48 89 c6             	mov    rsi,rax
+  4228a4:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4228ab:	00 
+  4228ac:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4228b3:	00 00 
+  4228b5:	75 61                	jne    422918 <MEMORY_T::POKE64(double, double)+0x19048>
+  4228b7:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4228be:	31 d2                	xor    edx,edx
+  4228c0:	bf 01 00 00 00       	mov    edi,0x1
+  4228c5:	5b                   	pop    rbx
+  4228c6:	5d                   	pop    rbp
+  4228c7:	41 5c                	pop    r12
+  4228c9:	41 5d                	pop    r13
+  4228cb:	41 5e                	pop    r14
+  4228cd:	41 5f                	pop    r15
+  4228cf:	e9 ec 10 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 139: print #1, "vararg";
+  4228d4:	be 06 00 00 00       	mov    esi,0x6
+  4228d9:	48 8d 3d a8 d7 05 00 	lea    rdi,[rip+0x5d7a8]        # 480088 <_IO_stdin_used+0x3088>
+  4228e0:	e8 ab 4c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4228e5:	48 89 c6             	mov    rsi,rax
+  4228e8:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4228ef:	00 
+  4228f0:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4228f7:	00 00 
+  4228f9:	75 22                	jne    42291d <MEMORY_T::POKE64(double, double)+0x1904d>
+  4228fb:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422902:	31 d2                	xor    edx,edx
+  422904:	bf 01 00 00 00       	mov    edi,0x1
+  422909:	5b                   	pop    rbx
+  42290a:	5d                   	pop    rbp
+  42290b:	41 5c                	pop    r12
+  42290d:	41 5d                	pop    r13
+  42290f:	41 5e                	pop    r14
+  422911:	41 5f                	pop    r15
+  422913:	e9 a8 10 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 140: print #1, "it";
+  422918:	e8 63 2f fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 139: print #1, "vararg";
+  42291d:	e8 5e 2f fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 138: print #1, "tailrec";
+  422922:	be 07 00 00 00       	mov    esi,0x7
+  422927:	48 8d 3d 52 d7 05 00 	lea    rdi,[rip+0x5d752]        # 480080 <_IO_stdin_used+0x3080>
+  42292e:	e8 5d 4c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422933:	48 89 c6             	mov    rsi,rax
+  422936:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42293d:	00 
+  42293e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422945:	00 00 
+  422947:	75 61                	jne    4229aa <MEMORY_T::POKE64(double, double)+0x190da>
+  422949:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422950:	31 d2                	xor    edx,edx
+  422952:	bf 01 00 00 00       	mov    edi,0x1
+  422957:	5b                   	pop    rbx
+  422958:	5d                   	pop    rbp
+  422959:	41 5c                	pop    r12
+  42295b:	41 5d                	pop    r13
+  42295d:	41 5e                	pop    r14
+  42295f:	41 5f                	pop    r15
+  422961:	e9 5a 10 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 137: print #1, "suspend";
+  422966:	be 07 00 00 00       	mov    esi,0x7
+  42296b:	48 8d 3d 06 d7 05 00 	lea    rdi,[rip+0x5d706]        # 480078 <_IO_stdin_used+0x3078>
+  422972:	e8 19 4c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422977:	48 89 c6             	mov    rsi,rax
+  42297a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422981:	00 
+  422982:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422989:	00 00 
+  42298b:	75 22                	jne    4229af <MEMORY_T::POKE64(double, double)+0x190df>
+  42298d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422994:	31 d2                	xor    edx,edx
+  422996:	bf 01 00 00 00       	mov    edi,0x1
+  42299b:	5b                   	pop    rbx
+  42299c:	5d                   	pop    rbp
+  42299d:	41 5c                	pop    r12
+  42299f:	41 5d                	pop    r13
+  4229a1:	41 5e                	pop    r14
+  4229a3:	41 5f                	pop    r15
+  4229a5:	e9 16 10 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 138: print #1, "tailrec";
+  4229aa:	e8 d1 2e fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 137: print #1, "suspend";
+  4229af:	e8 cc 2e fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 136: print #1, "reified";
+  4229b4:	be 07 00 00 00       	mov    esi,0x7
+  4229b9:	48 8d 3d b0 d6 05 00 	lea    rdi,[rip+0x5d6b0]        # 480070 <_IO_stdin_used+0x3070>
+  4229c0:	e8 cb 4b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4229c5:	48 89 c6             	mov    rsi,rax
+  4229c8:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4229cf:	00 
+  4229d0:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4229d7:	00 00 
+  4229d9:	75 61                	jne    422a3c <MEMORY_T::POKE64(double, double)+0x1916c>
+  4229db:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4229e2:	31 d2                	xor    edx,edx
+  4229e4:	bf 01 00 00 00       	mov    edi,0x1
+  4229e9:	5b                   	pop    rbx
+  4229ea:	5d                   	pop    rbp
+  4229eb:	41 5c                	pop    r12
+  4229ed:	41 5d                	pop    r13
+  4229ef:	41 5e                	pop    r14
+  4229f1:	41 5f                	pop    r15
+  4229f3:	e9 c8 0f 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 135: print #1, "noinline";
+  4229f8:	be 08 00 00 00       	mov    esi,0x8
+  4229fd:	48 8d 3d 87 bd 05 00 	lea    rdi,[rip+0x5bd87]        # 47e78b <_IO_stdin_used+0x178b>
+  422a04:	e8 87 4b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422a09:	48 89 c6             	mov    rsi,rax
+  422a0c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422a13:	00 
+  422a14:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422a1b:	00 00 
+  422a1d:	75 22                	jne    422a41 <MEMORY_T::POKE64(double, double)+0x19171>
+  422a1f:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422a26:	31 d2                	xor    edx,edx
+  422a28:	bf 01 00 00 00       	mov    edi,0x1
+  422a2d:	5b                   	pop    rbx
+  422a2e:	5d                   	pop    rbp
+  422a2f:	41 5c                	pop    r12
+  422a31:	41 5d                	pop    r13
+  422a33:	41 5e                	pop    r14
+  422a35:	41 5f                	pop    r15
+  422a37:	e9 84 0f 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 136: print #1, "reified";
+  422a3c:	e8 3f 2e fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 135: print #1, "noinline";
+  422a41:	e8 3a 2e fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 134: print #1, "lateinit";
+  422a46:	be 08 00 00 00       	mov    esi,0x8
+  422a4b:	48 8d 3d 15 d6 05 00 	lea    rdi,[rip+0x5d615]        # 480067 <_IO_stdin_used+0x3067>
+  422a52:	e8 39 4b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422a57:	48 89 c6             	mov    rsi,rax
+  422a5a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422a61:	00 
+  422a62:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422a69:	00 00 
+  422a6b:	75 61                	jne    422ace <MEMORY_T::POKE64(double, double)+0x191fe>
+  422a6d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422a74:	31 d2                	xor    edx,edx
+  422a76:	bf 01 00 00 00       	mov    edi,0x1
+  422a7b:	5b                   	pop    rbx
+  422a7c:	5d                   	pop    rbp
+  422a7d:	41 5c                	pop    r12
+  422a7f:	41 5d                	pop    r13
+  422a81:	41 5e                	pop    r14
+  422a83:	41 5f                	pop    r15
+  422a85:	e9 36 0f 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 133: print #1, "infix";
+  422a8a:	be 05 00 00 00       	mov    esi,0x5
+  422a8f:	48 8d 3d cb d5 05 00 	lea    rdi,[rip+0x5d5cb]        # 480061 <_IO_stdin_used+0x3061>
+  422a96:	e8 f5 4a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422a9b:	48 89 c6             	mov    rsi,rax
+  422a9e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422aa5:	00 
+  422aa6:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422aad:	00 00 
+  422aaf:	75 22                	jne    422ad3 <MEMORY_T::POKE64(double, double)+0x19203>
+  422ab1:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422ab8:	31 d2                	xor    edx,edx
+  422aba:	bf 01 00 00 00       	mov    edi,0x1
+  422abf:	5b                   	pop    rbx
+  422ac0:	5d                   	pop    rbp
+  422ac1:	41 5c                	pop    r12
+  422ac3:	41 5d                	pop    r13
+  422ac5:	41 5e                	pop    r14
+  422ac7:	41 5f                	pop    r15
+  422ac9:	e9 f2 0e 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 134: print #1, "lateinit";
+  422ace:	e8 ad 2d fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 133: print #1, "infix";
+  422ad3:	e8 a8 2d fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 132: print #1, "expect";
+  422ad8:	be 06 00 00 00       	mov    esi,0x6
+  422add:	48 8d 3d 76 d5 05 00 	lea    rdi,[rip+0x5d576]        # 48005a <_IO_stdin_used+0x305a>
+  422ae4:	e8 a7 4a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422ae9:	48 89 c6             	mov    rsi,rax
+  422aec:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422af3:	00 
+  422af4:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422afb:	00 00 
+  422afd:	75 61                	jne    422b60 <MEMORY_T::POKE64(double, double)+0x19290>
+  422aff:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422b06:	31 d2                	xor    edx,edx
+  422b08:	bf 01 00 00 00       	mov    edi,0x1
+  422b0d:	5b                   	pop    rbx
+  422b0e:	5d                   	pop    rbp
+  422b0f:	41 5c                	pop    r12
+  422b11:	41 5d                	pop    r13
+  422b13:	41 5e                	pop    r14
+  422b15:	41 5f                	pop    r15
+  422b17:	e9 a4 0e 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 131: print #1, "crossinline";
+  422b1c:	be 0b 00 00 00       	mov    esi,0xb
+  422b21:	48 8d 3d 26 d5 05 00 	lea    rdi,[rip+0x5d526]        # 48004e <_IO_stdin_used+0x304e>
+  422b28:	e8 63 4a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422b2d:	48 89 c6             	mov    rsi,rax
+  422b30:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422b37:	00 
+  422b38:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422b3f:	00 00 
+  422b41:	75 22                	jne    422b65 <MEMORY_T::POKE64(double, double)+0x19295>
+  422b43:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422b4a:	31 d2                	xor    edx,edx
+  422b4c:	bf 01 00 00 00       	mov    edi,0x1
+  422b51:	5b                   	pop    rbx
+  422b52:	5d                   	pop    rbp
+  422b53:	41 5c                	pop    r12
+  422b55:	41 5d                	pop    r13
+  422b57:	41 5e                	pop    r14
+  422b59:	41 5f                	pop    r15
+  422b5b:	e9 60 0e 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 132: print #1, "expect";
+  422b60:	e8 1b 2d fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 131: print #1, "crossinline";
+  422b65:	e8 16 2d fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 130: print #1, "companion";
+  422b6a:	be 09 00 00 00       	mov    esi,0x9
+  422b6f:	48 8d 3d ce d4 05 00 	lea    rdi,[rip+0x5d4ce]        # 480044 <_IO_stdin_used+0x3044>
+  422b76:	e8 15 4a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422b7b:	48 89 c6             	mov    rsi,rax
+  422b7e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422b85:	00 
+  422b86:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422b8d:	00 00 
+  422b8f:	75 61                	jne    422bf2 <MEMORY_T::POKE64(double, double)+0x19322>
+  422b91:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422b98:	31 d2                	xor    edx,edx
+  422b9a:	bf 01 00 00 00       	mov    edi,0x1
+  422b9f:	5b                   	pop    rbx
+  422ba0:	5d                   	pop    rbp
+  422ba1:	41 5c                	pop    r12
+  422ba3:	41 5d                	pop    r13
+  422ba5:	41 5e                	pop    r14
+  422ba7:	41 5f                	pop    r15
+  422ba9:	e9 12 0e 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 129: print #1, "annotation";
+  422bae:	be 0a 00 00 00       	mov    esi,0xa
+  422bb3:	48 8d 3d 7f d4 05 00 	lea    rdi,[rip+0x5d47f]        # 480039 <_IO_stdin_used+0x3039>
+  422bba:	e8 d1 49 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422bbf:	48 89 c6             	mov    rsi,rax
+  422bc2:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422bc9:	00 
+  422bca:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422bd1:	00 00 
+  422bd3:	75 22                	jne    422bf7 <MEMORY_T::POKE64(double, double)+0x19327>
+  422bd5:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422bdc:	31 d2                	xor    edx,edx
+  422bde:	bf 01 00 00 00       	mov    edi,0x1
+  422be3:	5b                   	pop    rbx
+  422be4:	5d                   	pop    rbp
+  422be5:	41 5c                	pop    r12
+  422be7:	41 5d                	pop    r13
+  422be9:	41 5e                	pop    r14
+  422beb:	41 5f                	pop    r15
+  422bed:	e9 ce 0d 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 130: print #1, "companion";
+  422bf2:	e8 89 2c fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 129: print #1, "annotation";
+  422bf7:	e8 84 2c fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 126: print #1, "actual";
+  422bfc:	be 06 00 00 00       	mov    esi,0x6
+  422c01:	48 8d 3d 2a d4 05 00 	lea    rdi,[rip+0x5d42a]        # 480032 <_IO_stdin_used+0x3032>
+  422c08:	e8 83 49 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422c0d:	48 89 c6             	mov    rsi,rax
+  422c10:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422c17:	00 
+  422c18:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422c1f:	00 00 
+  422c21:	75 61                	jne    422c84 <MEMORY_T::POKE64(double, double)+0x193b4>
+  422c23:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422c2a:	31 d2                	xor    edx,edx
+  422c2c:	bf 01 00 00 00       	mov    edi,0x1
+  422c31:	5b                   	pop    rbx
+  422c32:	5d                   	pop    rbp
+  422c33:	41 5c                	pop    r12
+  422c35:	41 5d                	pop    r13
+  422c37:	41 5e                	pop    r14
+  422c39:	41 5f                	pop    r15
+  422c3b:	e9 80 0d 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 125: print #1, "setparam";
+  422c40:	be 08 00 00 00       	mov    esi,0x8
+  422c45:	48 8d 3d dd d3 05 00 	lea    rdi,[rip+0x5d3dd]        # 480029 <_IO_stdin_used+0x3029>
+  422c4c:	e8 3f 49 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422c51:	48 89 c6             	mov    rsi,rax
+  422c54:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422c5b:	00 
+  422c5c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422c63:	00 00 
+  422c65:	75 22                	jne    422c89 <MEMORY_T::POKE64(double, double)+0x193b9>
+  422c67:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422c6e:	31 d2                	xor    edx,edx
+  422c70:	bf 01 00 00 00       	mov    edi,0x1
+  422c75:	5b                   	pop    rbx
+  422c76:	5d                   	pop    rbp
+  422c77:	41 5c                	pop    r12
+  422c79:	41 5d                	pop    r13
+  422c7b:	41 5e                	pop    r14
+  422c7d:	41 5f                	pop    r15
+  422c7f:	e9 3c 0d 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 126: print #1, "actual";
+  422c84:	e8 f7 2b fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 125: print #1, "setparam";
+  422c89:	e8 f2 2b fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 124: print #1, "receiver";                       
+  422c8e:	be 08 00 00 00       	mov    esi,0x8
+  422c93:	48 8d 3d 86 d3 05 00 	lea    rdi,[rip+0x5d386]        # 480020 <_IO_stdin_used+0x3020>
+  422c9a:	e8 f1 48 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422c9f:	48 89 c6             	mov    rsi,rax
+  422ca2:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422ca9:	00 
+  422caa:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422cb1:	00 00 
+  422cb3:	75 61                	jne    422d16 <MEMORY_T::POKE64(double, double)+0x19446>
+  422cb5:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422cbc:	31 d2                	xor    edx,edx
+  422cbe:	bf 01 00 00 00       	mov    edi,0x1
+  422cc3:	5b                   	pop    rbx
+  422cc4:	5d                   	pop    rbp
+  422cc5:	41 5c                	pop    r12
+  422cc7:	41 5d                	pop    r13
+  422cc9:	41 5e                	pop    r14
+  422ccb:	41 5f                	pop    r15
+  422ccd:	e9 ee 0c 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 123: print #1, "param";
+  422cd2:	be 05 00 00 00       	mov    esi,0x5
+  422cd7:	48 8d 3d 4e d3 05 00 	lea    rdi,[rip+0x5d34e]        # 48002c <_IO_stdin_used+0x302c>
+  422cde:	e8 ad 48 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422ce3:	48 89 c6             	mov    rsi,rax
+  422ce6:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422ced:	00 
+  422cee:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422cf5:	00 00 
+  422cf7:	75 22                	jne    422d1b <MEMORY_T::POKE64(double, double)+0x1944b>
+  422cf9:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422d00:	31 d2                	xor    edx,edx
+  422d02:	bf 01 00 00 00       	mov    edi,0x1
+  422d07:	5b                   	pop    rbx
+  422d08:	5d                   	pop    rbp
+  422d09:	41 5c                	pop    r12
+  422d0b:	41 5d                	pop    r13
+  422d0d:	41 5e                	pop    r14
+  422d0f:	41 5f                	pop    r15
+  422d11:	e9 aa 0c 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 124: print #1, "receiver";                       
+  422d16:	e8 65 2b fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 123: print #1, "param";
+  422d1b:	e8 60 2b fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 122: print #1, "init";
+  422d20:	be 04 00 00 00       	mov    esi,0x4
+  422d25:	48 8d 3d 3f d3 05 00 	lea    rdi,[rip+0x5d33f]        # 48006b <_IO_stdin_used+0x306b>
+  422d2c:	e8 5f 48 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422d31:	48 89 c6             	mov    rsi,rax
+  422d34:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422d3b:	00 
+  422d3c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422d43:	00 00 
+  422d45:	75 61                	jne    422da8 <MEMORY_T::POKE64(double, double)+0x194d8>
+  422d47:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422d4e:	31 d2                	xor    edx,edx
+  422d50:	bf 01 00 00 00       	mov    edi,0x1
+  422d55:	5b                   	pop    rbx
+  422d56:	5d                   	pop    rbp
+  422d57:	41 5c                	pop    r12
+  422d59:	41 5d                	pop    r13
+  422d5b:	41 5e                	pop    r14
+  422d5d:	41 5f                	pop    r15
+  422d5f:	e9 5c 0c 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 121: print #1, "typealias";
+  422d64:	be 09 00 00 00       	mov    esi,0x9
+  422d69:	48 8d 3d a6 d2 05 00 	lea    rdi,[rip+0x5d2a6]        # 480016 <_IO_stdin_used+0x3016>
+  422d70:	e8 1b 48 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422d75:	48 89 c6             	mov    rsi,rax
+  422d78:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422d7f:	00 
+  422d80:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422d87:	00 00 
+  422d89:	75 22                	jne    422dad <MEMORY_T::POKE64(double, double)+0x194dd>
+  422d8b:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422d92:	31 d2                	xor    edx,edx
+  422d94:	bf 01 00 00 00       	mov    edi,0x1
+  422d99:	5b                   	pop    rbx
+  422d9a:	5d                   	pop    rbp
+  422d9b:	41 5c                	pop    r12
+  422d9d:	41 5d                	pop    r13
+  422d9f:	41 5e                	pop    r14
+  422da1:	41 5f                	pop    r15
+  422da3:	e9 18 0c 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 122: print #1, "init";
+  422da8:	e8 d3 2a fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 121: print #1, "typealias";
+  422dad:	e8 ce 2a fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 120: print #1, "package";
+  422db2:	be 07 00 00 00       	mov    esi,0x7
+  422db7:	48 8d 3d 50 d2 05 00 	lea    rdi,[rip+0x5d250]        # 48000e <_IO_stdin_used+0x300e>
+  422dbe:	e8 cd 47 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422dc3:	48 89 c6             	mov    rsi,rax
+  422dc6:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422dcd:	00 
+  422dce:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422dd5:	00 00 
+  422dd7:	75 61                	jne    422e3a <MEMORY_T::POKE64(double, double)+0x1956a>
+  422dd9:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422de0:	31 d2                	xor    edx,edx
+  422de2:	bf 01 00 00 00       	mov    edi,0x1
+  422de7:	5b                   	pop    rbx
+  422de8:	5d                   	pop    rbp
+  422de9:	41 5c                	pop    r12
+  422deb:	41 5d                	pop    r13
+  422ded:	41 5e                	pop    r14
+  422def:	41 5f                	pop    r15
+  422df1:	e9 ca 0b 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 119: print #1, "!is";
+  422df6:	be 03 00 00 00       	mov    esi,0x3
+  422dfb:	48 8d 3d 08 d2 05 00 	lea    rdi,[rip+0x5d208]        # 48000a <_IO_stdin_used+0x300a>
+  422e02:	e8 89 47 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422e07:	48 89 c6             	mov    rsi,rax
+  422e0a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422e11:	00 
+  422e12:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422e19:	00 00 
+  422e1b:	75 22                	jne    422e3f <MEMORY_T::POKE64(double, double)+0x1956f>
+  422e1d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422e24:	31 d2                	xor    edx,edx
+  422e26:	bf 01 00 00 00       	mov    edi,0x1
+  422e2b:	5b                   	pop    rbx
+  422e2c:	5d                   	pop    rbp
+  422e2d:	41 5c                	pop    r12
+  422e2f:	41 5d                	pop    r13
+  422e31:	41 5e                	pop    r14
+  422e33:	41 5f                	pop    r15
+  422e35:	e9 86 0b 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 120: print #1, "package";
+  422e3a:	e8 41 2a fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 119: print #1, "!is";
+  422e3f:	e8 3c 2a fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 118: print #1, "!in";
+  422e44:	be 03 00 00 00       	mov    esi,0x3
+  422e49:	48 8d 3d b6 d1 05 00 	lea    rdi,[rip+0x5d1b6]        # 480006 <_IO_stdin_used+0x3006>
+  422e50:	e8 3b 47 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422e55:	48 89 c6             	mov    rsi,rax
+  422e58:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422e5f:	00 
+  422e60:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422e67:	00 00 
+  422e69:	75 61                	jne    422ecc <MEMORY_T::POKE64(double, double)+0x195fc>
+  422e6b:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422e72:	31 d2                	xor    edx,edx
+  422e74:	bf 01 00 00 00       	mov    edi,0x1
+  422e79:	5b                   	pop    rbx
+  422e7a:	5d                   	pop    rbp
+  422e7b:	41 5c                	pop    r12
+  422e7d:	41 5d                	pop    r13
+  422e7f:	41 5e                	pop    r14
+  422e81:	41 5f                	pop    r15
+  422e83:	e9 38 0b 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 117: print #1, "fun";
+  422e88:	be 03 00 00 00       	mov    esi,0x3
+  422e8d:	48 8d 3d 6e d1 05 00 	lea    rdi,[rip+0x5d16e]        # 480002 <_IO_stdin_used+0x3002>
+  422e94:	e8 f7 46 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422e99:	48 89 c6             	mov    rsi,rax
+  422e9c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422ea3:	00 
+  422ea4:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422eab:	00 00 
+  422ead:	75 22                	jne    422ed1 <MEMORY_T::POKE64(double, double)+0x19601>
+  422eaf:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422eb6:	31 d2                	xor    edx,edx
+  422eb8:	bf 01 00 00 00       	mov    edi,0x1
+  422ebd:	5b                   	pop    rbx
+  422ebe:	5d                   	pop    rbp
+  422ebf:	41 5c                	pop    r12
+  422ec1:	41 5d                	pop    r13
+  422ec3:	41 5e                	pop    r14
+  422ec5:	41 5f                	pop    r15
+  422ec7:	e9 f4 0a 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 118: print #1, "!in";
+  422ecc:	e8 af 29 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 117: print #1, "fun";
+  422ed1:	e8 aa 29 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 116: print #1, "as?";
+  422ed6:	be 03 00 00 00       	mov    esi,0x3
+  422edb:	48 8d 3d 1c d1 05 00 	lea    rdi,[rip+0x5d11c]        # 47fffe <_IO_stdin_used+0x2ffe>
+  422ee2:	e8 a9 46 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422ee7:	48 89 c6             	mov    rsi,rax
+  422eea:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422ef1:	00 
+  422ef2:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422ef9:	00 00 
+  422efb:	75 61                	jne    422f5e <MEMORY_T::POKE64(double, double)+0x1968e>
+  422efd:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422f04:	31 d2                	xor    edx,edx
+  422f06:	bf 01 00 00 00       	mov    edi,0x1
+  422f0b:	5b                   	pop    rbx
+  422f0c:	5d                   	pop    rbp
+  422f0d:	41 5c                	pop    r12
+  422f0f:	41 5d                	pop    r13
+  422f11:	41 5e                	pop    r14
+  422f13:	41 5f                	pop    r15
+  422f15:	e9 a6 0a 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 115: print #1, "NA";
+  422f1a:	be 02 00 00 00       	mov    esi,0x2
+  422f1f:	48 8d 3d d5 d0 05 00 	lea    rdi,[rip+0x5d0d5]        # 47fffb <_IO_stdin_used+0x2ffb>
+  422f26:	e8 65 46 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422f2b:	48 89 c6             	mov    rsi,rax
+  422f2e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422f35:	00 
+  422f36:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422f3d:	00 00 
+  422f3f:	75 22                	jne    422f63 <MEMORY_T::POKE64(double, double)+0x19693>
+  422f41:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422f48:	31 d2                	xor    edx,edx
+  422f4a:	bf 01 00 00 00       	mov    edi,0x1
+  422f4f:	5b                   	pop    rbx
+  422f50:	5d                   	pop    rbp
+  422f51:	41 5c                	pop    r12
+  422f53:	41 5d                	pop    r13
+  422f55:	41 5e                	pop    r14
+  422f57:	41 5f                	pop    r15
+  422f59:	e9 62 0a 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 116: print #1, "as?";
+  422f5e:	e8 1d 29 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 115: print #1, "NA";
+  422f63:	e8 18 29 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 114: print #1, "NaN";
+  422f68:	be 03 00 00 00       	mov    esi,0x3
+  422f6d:	48 8d 3d 83 d0 05 00 	lea    rdi,[rip+0x5d083]        # 47fff7 <_IO_stdin_used+0x2ff7>
+  422f74:	e8 17 46 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422f79:	48 89 c6             	mov    rsi,rax
+  422f7c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422f83:	00 
+  422f84:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422f8b:	00 00 
+  422f8d:	75 61                	jne    422ff0 <MEMORY_T::POKE64(double, double)+0x19720>
+  422f8f:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422f96:	31 d2                	xor    edx,edx
+  422f98:	bf 01 00 00 00       	mov    edi,0x1
+  422f9d:	5b                   	pop    rbx
+  422f9e:	5d                   	pop    rbp
+  422f9f:	41 5c                	pop    r12
+  422fa1:	41 5d                	pop    r13
+  422fa3:	41 5e                	pop    r14
+  422fa5:	41 5f                	pop    r15
+  422fa7:	e9 14 0a 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 113: print #1, "inf";
+  422fac:	be 03 00 00 00       	mov    esi,0x3
+  422fb1:	48 8d 3d 90 b9 05 00 	lea    rdi,[rip+0x5b990]        # 47e948 <_IO_stdin_used+0x1948>
+  422fb8:	e8 d3 45 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  422fbd:	48 89 c6             	mov    rsi,rax
+  422fc0:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  422fc7:	00 
+  422fc8:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  422fcf:	00 00 
+  422fd1:	75 22                	jne    422ff5 <MEMORY_T::POKE64(double, double)+0x19725>
+  422fd3:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  422fda:	31 d2                	xor    edx,edx
+  422fdc:	bf 01 00 00 00       	mov    edi,0x1
+  422fe1:	5b                   	pop    rbx
+  422fe2:	5d                   	pop    rbp
+  422fe3:	41 5c                	pop    r12
+  422fe5:	41 5d                	pop    r13
+  422fe7:	41 5e                	pop    r14
+  422fe9:	41 5f                	pop    r15
+  422feb:	e9 d0 09 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 114: print #1, "NaN";
+  422ff0:	e8 8b 28 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 113: print #1, "inf";
+  422ff5:	e8 86 28 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 112: print #1, "unmanaged";
+  422ffa:	be 09 00 00 00       	mov    esi,0x9
+  422fff:	48 8d 3d e7 cf 05 00 	lea    rdi,[rip+0x5cfe7]        # 47ffed <_IO_stdin_used+0x2fed>
+  423006:	e8 85 45 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42300b:	48 89 c6             	mov    rsi,rax
+  42300e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423015:	00 
+  423016:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42301d:	00 00 
+  42301f:	75 61                	jne    423082 <MEMORY_T::POKE64(double, double)+0x197b2>
+  423021:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423028:	31 d2                	xor    edx,edx
+  42302a:	bf 01 00 00 00       	mov    edi,0x1
+  42302f:	5b                   	pop    rbx
+  423030:	5d                   	pop    rbp
+  423031:	41 5c                	pop    r12
+  423033:	41 5d                	pop    r13
+  423035:	41 5e                	pop    r14
+  423037:	41 5f                	pop    r15
+  423039:	e9 82 09 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 111: print #1, "remove";
+  42303e:	be 06 00 00 00       	mov    esi,0x6
+  423043:	48 8d 3d 9c cf 05 00 	lea    rdi,[rip+0x5cf9c]        # 47ffe6 <_IO_stdin_used+0x2fe6>
+  42304a:	e8 41 45 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42304f:	48 89 c6             	mov    rsi,rax
+  423052:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423059:	00 
+  42305a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423061:	00 00 
+  423063:	75 22                	jne    423087 <MEMORY_T::POKE64(double, double)+0x197b7>
+  423065:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42306c:	31 d2                	xor    edx,edx
+  42306e:	bf 01 00 00 00       	mov    edi,0x1
+  423073:	5b                   	pop    rbx
+  423074:	5d                   	pop    rbp
+  423075:	41 5c                	pop    r12
+  423077:	41 5d                	pop    r13
+  423079:	41 5e                	pop    r14
+  42307b:	41 5f                	pop    r15
+  42307d:	e9 3e 09 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 112: print #1, "unmanaged";
+  423082:	e8 f9 27 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 111: print #1, "remove";
+  423087:	e8 f4 27 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 110: print #1, "partial";
+  42308c:	be 07 00 00 00       	mov    esi,0x7
+  423091:	48 8d 3d 46 cf 05 00 	lea    rdi,[rip+0x5cf46]        # 47ffde <_IO_stdin_used+0x2fde>
+  423098:	e8 f3 44 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42309d:	48 89 c6             	mov    rsi,rax
+  4230a0:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4230a7:	00 
+  4230a8:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4230af:	00 00 
+  4230b1:	75 61                	jne    423114 <MEMORY_T::POKE64(double, double)+0x19844>
+  4230b3:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4230ba:	31 d2                	xor    edx,edx
+  4230bc:	bf 01 00 00 00       	mov    edi,0x1
+  4230c1:	5b                   	pop    rbx
+  4230c2:	5d                   	pop    rbp
+  4230c3:	41 5c                	pop    r12
+  4230c5:	41 5d                	pop    r13
+  4230c7:	41 5e                	pop    r14
+  4230c9:	41 5f                	pop    r15
+  4230cb:	e9 f0 08 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 109: print #1, "orderby";
+  4230d0:	be 07 00 00 00       	mov    esi,0x7
+  4230d5:	48 8d 3d fa ce 05 00 	lea    rdi,[rip+0x5cefa]        # 47ffd6 <_IO_stdin_used+0x2fd6>
+  4230dc:	e8 af 44 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4230e1:	48 89 c6             	mov    rsi,rax
+  4230e4:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4230eb:	00 
+  4230ec:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4230f3:	00 00 
+  4230f5:	75 22                	jne    423119 <MEMORY_T::POKE64(double, double)+0x19849>
+  4230f7:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4230fe:	31 d2                	xor    edx,edx
+  423100:	bf 01 00 00 00       	mov    edi,0x1
+  423105:	5b                   	pop    rbx
+  423106:	5d                   	pop    rbp
+  423107:	41 5c                	pop    r12
+  423109:	41 5d                	pop    r13
+  42310b:	41 5e                	pop    r14
+  42310d:	41 5f                	pop    r15
+  42310f:	e9 ac 08 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 110: print #1, "partial";
+  423114:	e8 67 27 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 109: print #1, "orderby";
+  423119:	e8 62 27 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 108: print #1, "notnull";
+  42311e:	be 07 00 00 00       	mov    esi,0x7
+  423123:	48 8d 3d a4 ce 05 00 	lea    rdi,[rip+0x5cea4]        # 47ffce <_IO_stdin_used+0x2fce>
+  42312a:	e8 61 44 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42312f:	48 89 c6             	mov    rsi,rax
+  423132:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423139:	00 
+  42313a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423141:	00 00 
+  423143:	75 61                	jne    4231a6 <MEMORY_T::POKE64(double, double)+0x198d6>
+  423145:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42314c:	31 d2                	xor    edx,edx
+  42314e:	bf 01 00 00 00       	mov    edi,0x1
+  423153:	5b                   	pop    rbx
+  423154:	5d                   	pop    rbp
+  423155:	41 5c                	pop    r12
+  423157:	41 5d                	pop    r13
+  423159:	41 5e                	pop    r14
+  42315b:	41 5f                	pop    r15
+  42315d:	e9 5e 08 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 107: print #1, "nameof";
+  423162:	be 06 00 00 00       	mov    esi,0x6
+  423167:	48 8d 3d 59 ce 05 00 	lea    rdi,[rip+0x5ce59]        # 47ffc7 <_IO_stdin_used+0x2fc7>
+  42316e:	e8 1d 44 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423173:	48 89 c6             	mov    rsi,rax
+  423176:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42317d:	00 
+  42317e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423185:	00 00 
+  423187:	75 22                	jne    4231ab <MEMORY_T::POKE64(double, double)+0x198db>
+  423189:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423190:	31 d2                	xor    edx,edx
+  423192:	bf 01 00 00 00       	mov    edi,0x1
+  423197:	5b                   	pop    rbx
+  423198:	5d                   	pop    rbp
+  423199:	41 5c                	pop    r12
+  42319b:	41 5d                	pop    r13
+  42319d:	41 5e                	pop    r14
+  42319f:	41 5f                	pop    r15
+  4231a1:	e9 1a 08 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 108: print #1, "notnull";
+  4231a6:	e8 d5 26 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 107: print #1, "nameof";
+  4231ab:	e8 d0 26 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 105: print #1, "into";
+  4231b0:	be 04 00 00 00       	mov    esi,0x4
+  4231b5:	48 8d 3d 97 b6 05 00 	lea    rdi,[rip+0x5b697]        # 47e853 <_IO_stdin_used+0x1853>
+  4231bc:	e8 cf 43 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4231c1:	48 89 c6             	mov    rsi,rax
+  4231c4:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4231cb:	00 
+  4231cc:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4231d3:	00 00 
+  4231d5:	75 61                	jne    423238 <MEMORY_T::POKE64(double, double)+0x19968>
+  4231d7:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4231de:	31 d2                	xor    edx,edx
+  4231e0:	bf 01 00 00 00       	mov    edi,0x1
+  4231e5:	5b                   	pop    rbx
+  4231e6:	5d                   	pop    rbp
+  4231e7:	41 5c                	pop    r12
+  4231e9:	41 5d                	pop    r13
+  4231eb:	41 5e                	pop    r14
+  4231ed:	41 5f                	pop    r15
+  4231ef:	e9 cc 07 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 104: print #1, "equals";
+  4231f4:	be 06 00 00 00       	mov    esi,0x6
+  4231f9:	48 8d 3d c0 cd 05 00 	lea    rdi,[rip+0x5cdc0]        # 47ffc0 <_IO_stdin_used+0x2fc0>
+  423200:	e8 8b 43 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423205:	48 89 c6             	mov    rsi,rax
+  423208:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42320f:	00 
+  423210:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423217:	00 00 
+  423219:	75 22                	jne    42323d <MEMORY_T::POKE64(double, double)+0x1996d>
+  42321b:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423222:	31 d2                	xor    edx,edx
+  423224:	bf 01 00 00 00       	mov    edi,0x1
+  423229:	5b                   	pop    rbx
+  42322a:	5d                   	pop    rbp
+  42322b:	41 5c                	pop    r12
+  42322d:	41 5d                	pop    r13
+  42322f:	41 5e                	pop    r14
+  423231:	41 5f                	pop    r15
+  423233:	e9 88 07 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 105: print #1, "into";
+  423238:	e8 43 26 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 104: print #1, "equals";
+  42323d:	e8 3e 26 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 103: print #1, "unsafe";
+  423242:	be 06 00 00 00       	mov    esi,0x6
+  423247:	48 8d 3d 6b cd 05 00 	lea    rdi,[rip+0x5cd6b]        # 47ffb9 <_IO_stdin_used+0x2fb9>
+  42324e:	e8 3d 43 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423253:	48 89 c6             	mov    rsi,rax
+  423256:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42325d:	00 
+  42325e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423265:	00 00 
+  423267:	75 61                	jne    4232ca <MEMORY_T::POKE64(double, double)+0x199fa>
+  423269:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423270:	31 d2                	xor    edx,edx
+  423272:	bf 01 00 00 00       	mov    edi,0x1
+  423277:	5b                   	pop    rbx
+  423278:	5d                   	pop    rbp
+  423279:	41 5c                	pop    r12
+  42327b:	41 5d                	pop    r13
+  42327d:	41 5e                	pop    r14
+  42327f:	41 5f                	pop    r15
+  423281:	e9 3a 07 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 102: print #1, "unchecked";
+  423286:	be 09 00 00 00       	mov    esi,0x9
+  42328b:	48 8d 3d 1d cd 05 00 	lea    rdi,[rip+0x5cd1d]        # 47ffaf <_IO_stdin_used+0x2faf>
+  423292:	e8 f9 42 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423297:	48 89 c6             	mov    rsi,rax
+  42329a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4232a1:	00 
+  4232a2:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4232a9:	00 00 
+  4232ab:	75 22                	jne    4232cf <MEMORY_T::POKE64(double, double)+0x199ff>
+  4232ad:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4232b4:	31 d2                	xor    edx,edx
+  4232b6:	bf 01 00 00 00       	mov    edi,0x1
+  4232bb:	5b                   	pop    rbx
+  4232bc:	5d                   	pop    rbp
+  4232bd:	41 5c                	pop    r12
+  4232bf:	41 5d                	pop    r13
+  4232c1:	41 5e                	pop    r14
+  4232c3:	41 5f                	pop    r15
+  4232c5:	e9 f6 06 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 103: print #1, "unsafe";
+  4232ca:	e8 b1 25 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 102: print #1, "unchecked";
+  4232cf:	e8 ac 25 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 101: print #1, "throw";
+  4232d4:	be 05 00 00 00       	mov    esi,0x5
+  4232d9:	48 8d 3d c9 cc 05 00 	lea    rdi,[rip+0x5ccc9]        # 47ffa9 <_IO_stdin_used+0x2fa9>
+  4232e0:	e8 ab 42 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4232e5:	48 89 c6             	mov    rsi,rax
+  4232e8:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4232ef:	00 
+  4232f0:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4232f7:	00 00 
+  4232f9:	75 61                	jne    42335c <MEMORY_T::POKE64(double, double)+0x19a8c>
+  4232fb:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423302:	31 d2                	xor    edx,edx
+  423304:	bf 01 00 00 00       	mov    edi,0x1
+  423309:	5b                   	pop    rbx
+  42330a:	5d                   	pop    rbp
+  42330b:	41 5c                	pop    r12
+  42330d:	41 5d                	pop    r13
+  42330f:	41 5e                	pop    r14
+  423311:	41 5f                	pop    r15
+  423313:	e9 a8 06 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 100: print #1, "typeof";
+  423318:	be 06 00 00 00       	mov    esi,0x6
+  42331d:	48 8d 3d 7e cc 05 00 	lea    rdi,[rip+0x5cc7e]        # 47ffa2 <_IO_stdin_used+0x2fa2>
+  423324:	e8 67 42 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423329:	48 89 c6             	mov    rsi,rax
+  42332c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423333:	00 
+  423334:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42333b:	00 00 
+  42333d:	75 22                	jne    423361 <MEMORY_T::POKE64(double, double)+0x19a91>
+  42333f:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423346:	31 d2                	xor    edx,edx
+  423348:	bf 01 00 00 00       	mov    edi,0x1
+  42334d:	5b                   	pop    rbx
+  42334e:	5d                   	pop    rbp
+  42334f:	41 5c                	pop    r12
+  423351:	41 5d                	pop    r13
+  423353:	41 5e                	pop    r14
+  423355:	41 5f                	pop    r15
+  423357:	e9 64 06 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 101: print #1, "throw";
+  42335c:	e8 1f 25 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 100: print #1, "typeof";
+  423361:	e8 1a 25 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 099: print #1, "stackalloc";
+  423366:	be 0a 00 00 00       	mov    esi,0xa
+  42336b:	48 8d 3d 25 cc 05 00 	lea    rdi,[rip+0x5cc25]        # 47ff97 <_IO_stdin_used+0x2f97>
+  423372:	e8 19 42 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423377:	48 89 c6             	mov    rsi,rax
+  42337a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423381:	00 
+  423382:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423389:	00 00 
+  42338b:	75 61                	jne    4233ee <MEMORY_T::POKE64(double, double)+0x19b1e>
+  42338d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423394:	31 d2                	xor    edx,edx
+  423396:	bf 01 00 00 00       	mov    edi,0x1
+  42339b:	5b                   	pop    rbx
+  42339c:	5d                   	pop    rbp
+  42339d:	41 5c                	pop    r12
+  42339f:	41 5d                	pop    r13
+  4233a1:	41 5e                	pop    r14
+  4233a3:	41 5f                	pop    r15
+  4233a5:	e9 16 06 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 098: print #1, "sealed";
+  4233aa:	be 06 00 00 00       	mov    esi,0x6
+  4233af:	48 8d 3d da cb 05 00 	lea    rdi,[rip+0x5cbda]        # 47ff90 <_IO_stdin_used+0x2f90>
+  4233b6:	e8 d5 41 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4233bb:	48 89 c6             	mov    rsi,rax
+  4233be:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4233c5:	00 
+  4233c6:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4233cd:	00 00 
+  4233cf:	75 22                	jne    4233f3 <MEMORY_T::POKE64(double, double)+0x19b23>
+  4233d1:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4233d8:	31 d2                	xor    edx,edx
+  4233da:	bf 01 00 00 00       	mov    edi,0x1
+  4233df:	5b                   	pop    rbx
+  4233e0:	5d                   	pop    rbp
+  4233e1:	41 5c                	pop    r12
+  4233e3:	41 5d                	pop    r13
+  4233e5:	41 5e                	pop    r14
+  4233e7:	41 5f                	pop    r15
+  4233e9:	e9 d2 05 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 099: print #1, "stackalloc";
+  4233ee:	e8 8d 24 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 098: print #1, "sealed";
+  4233f3:	e8 88 24 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 097: print #1, "ref";
+  4233f8:	be 03 00 00 00       	mov    esi,0x3
+  4233fd:	48 8d 3d df d3 05 00 	lea    rdi,[rip+0x5d3df]        # 4807e3 <_IO_stdin_used+0x37e3>
+  423404:	e8 87 41 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423409:	48 89 c6             	mov    rsi,rax
+  42340c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423413:	00 
+  423414:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42341b:	00 00 
+  42341d:	75 61                	jne    423480 <MEMORY_T::POKE64(double, double)+0x19bb0>
+  42341f:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423426:	31 d2                	xor    edx,edx
+  423428:	bf 01 00 00 00       	mov    edi,0x1
+  42342d:	5b                   	pop    rbx
+  42342e:	5d                   	pop    rbp
+  42342f:	41 5c                	pop    r12
+  423431:	41 5d                	pop    r13
+  423433:	41 5e                	pop    r14
+  423435:	41 5f                	pop    r15
+  423437:	e9 84 05 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 096: print #1, "params";
+  42343c:	be 06 00 00 00       	mov    esi,0x6
+  423441:	48 8d 3d 41 cb 05 00 	lea    rdi,[rip+0x5cb41]        # 47ff89 <_IO_stdin_used+0x2f89>
+  423448:	e8 43 41 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42344d:	48 89 c6             	mov    rsi,rax
+  423450:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423457:	00 
+  423458:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42345f:	00 00 
+  423461:	75 22                	jne    423485 <MEMORY_T::POKE64(double, double)+0x19bb5>
+  423463:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42346a:	31 d2                	xor    edx,edx
+  42346c:	bf 01 00 00 00       	mov    edi,0x1
+  423471:	5b                   	pop    rbx
+  423472:	5d                   	pop    rbp
+  423473:	41 5c                	pop    r12
+  423475:	41 5d                	pop    r13
+  423477:	41 5e                	pop    r14
+  423479:	41 5f                	pop    r15
+  42347b:	e9 40 05 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 097: print #1, "ref";
+  423480:	e8 fb 23 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 096: print #1, "params";
+  423485:	e8 f6 23 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 095: print #1, "namespace";
+  42348a:	be 09 00 00 00       	mov    esi,0x9
+  42348f:	48 8d 3d a5 a3 05 00 	lea    rdi,[rip+0x5a3a5]        # 47d83b <_IO_stdin_used+0x83b>
+  423496:	e8 f5 40 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42349b:	48 89 c6             	mov    rsi,rax
+  42349e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4234a5:	00 
+  4234a6:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4234ad:	00 00 
+  4234af:	75 61                	jne    423512 <MEMORY_T::POKE64(double, double)+0x19c42>
+  4234b1:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4234b8:	31 d2                	xor    edx,edx
+  4234ba:	bf 01 00 00 00       	mov    edi,0x1
+  4234bf:	5b                   	pop    rbx
+  4234c0:	5d                   	pop    rbp
+  4234c1:	41 5c                	pop    r12
+  4234c3:	41 5d                	pop    r13
+  4234c5:	41 5e                	pop    r14
+  4234c7:	41 5f                	pop    r15
+  4234c9:	e9 f2 04 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 094: print #1, "foreach";
+  4234ce:	be 07 00 00 00       	mov    esi,0x7
+  4234d3:	48 8d 3d df cb 05 00 	lea    rdi,[rip+0x5cbdf]        # 4800b9 <_IO_stdin_used+0x30b9>
+  4234da:	e8 b1 40 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4234df:	48 89 c6             	mov    rsi,rax
+  4234e2:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4234e9:	00 
+  4234ea:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4234f1:	00 00 
+  4234f3:	75 22                	jne    423517 <MEMORY_T::POKE64(double, double)+0x19c47>
+  4234f5:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4234fc:	31 d2                	xor    edx,edx
+  4234fe:	bf 01 00 00 00       	mov    edi,0x1
+  423503:	5b                   	pop    rbx
+  423504:	5d                   	pop    rbp
+  423505:	41 5c                	pop    r12
+  423507:	41 5d                	pop    r13
+  423509:	41 5e                	pop    r14
+  42350b:	41 5f                	pop    r15
+  42350d:	e9 ae 04 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 095: print #1, "namespace";
+  423512:	e8 69 23 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 094: print #1, "foreach";
+  423517:	e8 64 23 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 093: print #1, "event";
+  42351c:	be 05 00 00 00       	mov    esi,0x5
+  423521:	48 8d 3d f2 cf 05 00 	lea    rdi,[rip+0x5cff2]        # 48051a <_IO_stdin_used+0x351a>
+  423528:	e8 63 40 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42352d:	48 89 c6             	mov    rsi,rax
+  423530:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423537:	00 
+  423538:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42353f:	00 00 
+  423541:	75 61                	jne    4235a4 <MEMORY_T::POKE64(double, double)+0x19cd4>
+  423543:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42354a:	31 d2                	xor    edx,edx
+  42354c:	bf 01 00 00 00       	mov    edi,0x1
+  423551:	5b                   	pop    rbx
+  423552:	5d                   	pop    rbp
+  423553:	41 5c                	pop    r12
+  423555:	41 5d                	pop    r13
+  423557:	41 5e                	pop    r14
+  423559:	41 5f                	pop    r15
+  42355b:	e9 60 04 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 092: print #1, "delegate";
+  423560:	be 08 00 00 00       	mov    esi,0x8
+  423565:	48 8d 3d 14 ca 05 00 	lea    rdi,[rip+0x5ca14]        # 47ff80 <_IO_stdin_used+0x2f80>
+  42356c:	e8 1f 40 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423571:	48 89 c6             	mov    rsi,rax
+  423574:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42357b:	00 
+  42357c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423583:	00 00 
+  423585:	75 22                	jne    4235a9 <MEMORY_T::POKE64(double, double)+0x19cd9>
+  423587:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42358e:	31 d2                	xor    edx,edx
+  423590:	bf 01 00 00 00       	mov    edi,0x1
+  423595:	5b                   	pop    rbx
+  423596:	5d                   	pop    rbp
+  423597:	41 5c                	pop    r12
+  423599:	41 5d                	pop    r13
+  42359b:	41 5e                	pop    r14
+  42359d:	41 5f                	pop    r15
+  42359f:	e9 1c 04 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 093: print #1, "event";
+  4235a4:	e8 d7 22 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 092: print #1, "delegate";
+  4235a9:	e8 d2 22 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 091: print #1, "decimal";
+  4235ae:	be 07 00 00 00       	mov    esi,0x7
+  4235b3:	48 8d 3d a6 b9 05 00 	lea    rdi,[rip+0x5b9a6]        # 47ef60 <_IO_stdin_used+0x1f60>
+  4235ba:	e8 d1 3f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4235bf:	48 89 c6             	mov    rsi,rax
+  4235c2:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4235c9:	00 
+  4235ca:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4235d1:	00 00 
+  4235d3:	75 61                	jne    423636 <MEMORY_T::POKE64(double, double)+0x19d66>
+  4235d5:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4235dc:	31 d2                	xor    edx,edx
+  4235de:	bf 01 00 00 00       	mov    edi,0x1
+  4235e3:	5b                   	pop    rbx
+  4235e4:	5d                   	pop    rbp
+  4235e5:	41 5c                	pop    r12
+  4235e7:	41 5d                	pop    r13
+  4235e9:	41 5e                	pop    r14
+  4235eb:	41 5f                	pop    r15
+  4235ed:	e9 ce 03 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 090: print #1, "checked";
+  4235f2:	be 07 00 00 00       	mov    esi,0x7
+  4235f7:	48 8d 3d b3 c9 05 00 	lea    rdi,[rip+0x5c9b3]        # 47ffb1 <_IO_stdin_used+0x2fb1>
+  4235fe:	e8 8d 3f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423603:	48 89 c6             	mov    rsi,rax
+  423606:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42360d:	00 
+  42360e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423615:	00 00 
+  423617:	75 22                	jne    42363b <MEMORY_T::POKE64(double, double)+0x19d6b>
+  423619:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423620:	31 d2                	xor    edx,edx
+  423622:	bf 01 00 00 00       	mov    edi,0x1
+  423627:	5b                   	pop    rbx
+  423628:	5d                   	pop    rbp
+  423629:	41 5c                	pop    r12
+  42362b:	41 5d                	pop    r13
+  42362d:	41 5e                	pop    r14
+  42362f:	41 5f                	pop    r15
+  423631:	e9 8a 03 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 091: print #1, "decimal";
+  423636:	e8 45 22 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 090: print #1, "checked";
+  42363b:	e8 40 22 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 089: print #1, "catch";
+  423640:	be 05 00 00 00       	mov    esi,0x5
+  423645:	48 8d 3d 2e c9 05 00 	lea    rdi,[rip+0x5c92e]        # 47ff7a <_IO_stdin_used+0x2f7a>
+  42364c:	e8 3f 3f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423651:	48 89 c6             	mov    rsi,rax
+  423654:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42365b:	00 
+  42365c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423663:	00 00 
+  423665:	75 61                	jne    4236c8 <MEMORY_T::POKE64(double, double)+0x19df8>
+  423667:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42366e:	31 d2                	xor    edx,edx
+  423670:	bf 01 00 00 00       	mov    edi,0x1
+  423675:	5b                   	pop    rbx
+  423676:	5d                   	pop    rbp
+  423677:	41 5c                	pop    r12
+  423679:	41 5d                	pop    r13
+  42367b:	41 5e                	pop    r14
+  42367d:	41 5f                	pop    r15
+  42367f:	e9 3c 03 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 088: print #1, "ulong";
+  423684:	be 05 00 00 00       	mov    esi,0x5
+  423689:	48 8d 3d e4 c8 05 00 	lea    rdi,[rip+0x5c8e4]        # 47ff74 <_IO_stdin_used+0x2f74>
+  423690:	e8 fb 3e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423695:	48 89 c6             	mov    rsi,rax
+  423698:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42369f:	00 
+  4236a0:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4236a7:	00 00 
+  4236a9:	75 22                	jne    4236cd <MEMORY_T::POKE64(double, double)+0x19dfd>
+  4236ab:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4236b2:	31 d2                	xor    edx,edx
+  4236b4:	bf 01 00 00 00       	mov    edi,0x1
+  4236b9:	5b                   	pop    rbx
+  4236ba:	5d                   	pop    rbp
+  4236bb:	41 5c                	pop    r12
+  4236bd:	41 5d                	pop    r13
+  4236bf:	41 5e                	pop    r14
+  4236c1:	41 5f                	pop    r15
+  4236c3:	e9 f8 02 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 089: print #1, "catch";
+  4236c8:	e8 b3 21 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 088: print #1, "ulong";
+  4236cd:	e8 ae 21 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 087: print #1, "ushort";
+  4236d2:	be 06 00 00 00       	mov    esi,0x6
+  4236d7:	48 8d 3d 1c cb 05 00 	lea    rdi,[rip+0x5cb1c]        # 4801fa <_IO_stdin_used+0x31fa>
+  4236de:	e8 ad 3e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4236e3:	48 89 c6             	mov    rsi,rax
+  4236e6:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4236ed:	00 
+  4236ee:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4236f5:	00 00 
+  4236f7:	75 61                	jne    42375a <MEMORY_T::POKE64(double, double)+0x19e8a>
+  4236f9:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423700:	31 d2                	xor    edx,edx
+  423702:	bf 01 00 00 00       	mov    edi,0x1
+  423707:	5b                   	pop    rbx
+  423708:	5d                   	pop    rbp
+  423709:	41 5c                	pop    r12
+  42370b:	41 5d                	pop    r13
+  42370d:	41 5e                	pop    r14
+  42370f:	41 5f                	pop    r15
+  423711:	e9 aa 02 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 086: print #1, "sbyte";
+  423716:	be 05 00 00 00       	mov    esi,0x5
+  42371b:	48 8d 3d 4c c8 05 00 	lea    rdi,[rip+0x5c84c]        # 47ff6e <_IO_stdin_used+0x2f6e>
+  423722:	e8 69 3e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423727:	48 89 c6             	mov    rsi,rax
+  42372a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423731:	00 
+  423732:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423739:	00 00 
+  42373b:	75 22                	jne    42375f <MEMORY_T::POKE64(double, double)+0x19e8f>
+  42373d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423744:	31 d2                	xor    edx,edx
+  423746:	bf 01 00 00 00       	mov    edi,0x1
+  42374b:	5b                   	pop    rbx
+  42374c:	5d                   	pop    rbp
+  42374d:	41 5c                	pop    r12
+  42374f:	41 5d                	pop    r13
+  423751:	41 5e                	pop    r14
+  423753:	41 5f                	pop    r15
+  423755:	e9 66 02 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 087: print #1, "ushort";
+  42375a:	e8 21 21 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 086: print #1, "sbyte";
+  42375f:	e8 1c 21 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 085: print #1, "base";
+  423764:	be 04 00 00 00       	mov    esi,0x4
+  423769:	48 8d 3d f9 c7 05 00 	lea    rdi,[rip+0x5c7f9]        # 47ff69 <_IO_stdin_used+0x2f69>
+  423770:	e8 1b 3e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423775:	48 89 c6             	mov    rsi,rax
+  423778:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42377f:	00 
+  423780:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423787:	00 00 
+  423789:	75 61                	jne    4237ec <MEMORY_T::POKE64(double, double)+0x19f1c>
+  42378b:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423792:	31 d2                	xor    edx,edx
+  423794:	bf 01 00 00 00       	mov    edi,0x1
+  423799:	5b                   	pop    rbx
+  42379a:	5d                   	pop    rbp
+  42379b:	41 5c                	pop    r12
+  42379d:	41 5d                	pop    r13
+  42379f:	41 5e                	pop    r14
+  4237a1:	41 5f                	pop    r15
+  4237a3:	e9 18 02 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 084: print #1, "inherited";
+  4237a8:	be 09 00 00 00       	mov    esi,0x9
+  4237ad:	48 8d 3d 71 af 05 00 	lea    rdi,[rip+0x5af71]        # 47e725 <_IO_stdin_used+0x1725>
+  4237b4:	e8 d7 3d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4237b9:	48 89 c6             	mov    rsi,rax
+  4237bc:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4237c3:	00 
+  4237c4:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4237cb:	00 00 
+  4237cd:	75 22                	jne    4237f1 <MEMORY_T::POKE64(double, double)+0x19f21>
+  4237cf:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4237d6:	31 d2                	xor    edx,edx
+  4237d8:	bf 01 00 00 00       	mov    edi,0x1
+  4237dd:	5b                   	pop    rbx
+  4237de:	5d                   	pop    rbp
+  4237df:	41 5c                	pop    r12
+  4237e1:	41 5d                	pop    r13
+  4237e3:	41 5e                	pop    r14
+  4237e5:	41 5f                	pop    r15
+  4237e7:	e9 d4 01 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 085: print #1, "base";
+  4237ec:	e8 8f 20 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 084: print #1, "inherited";
+  4237f1:	e8 8a 20 fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 083: print #1, "boolean";
+  4237f6:	be 07 00 00 00       	mov    esi,0x7
+  4237fb:	48 8d 3d 5f c7 05 00 	lea    rdi,[rip+0x5c75f]        # 47ff61 <_IO_stdin_used+0x2f61>
+  423802:	e8 89 3d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423807:	48 89 c6             	mov    rsi,rax
+  42380a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423811:	00 
+  423812:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423819:	00 00 
+  42381b:	75 61                	jne    42387e <MEMORY_T::POKE64(double, double)+0x19fae>
+  42381d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423824:	31 d2                	xor    edx,edx
+  423826:	bf 01 00 00 00       	mov    edi,0x1
+  42382b:	5b                   	pop    rbx
+  42382c:	5d                   	pop    rbp
+  42382d:	41 5c                	pop    r12
+  42382f:	41 5d                	pop    r13
+  423831:	41 5e                	pop    r14
+  423833:	41 5f                	pop    r15
+  423835:	e9 86 01 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 082: print #1, "extended";
+  42383a:	be 08 00 00 00       	mov    esi,0x8
+  42383f:	48 8d 3d 12 c7 05 00 	lea    rdi,[rip+0x5c712]        # 47ff58 <_IO_stdin_used+0x2f58>
+  423846:	e8 45 3d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42384b:	48 89 c6             	mov    rsi,rax
+  42384e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423855:	00 
+  423856:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42385d:	00 00 
+  42385f:	75 22                	jne    423883 <MEMORY_T::POKE64(double, double)+0x19fb3>
+  423861:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423868:	31 d2                	xor    edx,edx
+  42386a:	bf 01 00 00 00       	mov    edi,0x1
+  42386f:	5b                   	pop    rbx
+  423870:	5d                   	pop    rbp
+  423871:	41 5c                	pop    r12
+  423873:	41 5d                	pop    r13
+  423875:	41 5e                	pop    r14
+  423877:	41 5f                	pop    r15
+  423879:	e9 42 01 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 083: print #1, "boolean";
+  42387e:	e8 fd 1f fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 082: print #1, "extended";
+  423883:	e8 f8 1f fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 081: print #1, "single";
+  423888:	be 06 00 00 00       	mov    esi,0x6
+  42388d:	48 8d 3d bd c6 05 00 	lea    rdi,[rip+0x5c6bd]        # 47ff51 <_IO_stdin_used+0x2f51>
+  423894:	e8 f7 3c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423899:	48 89 c6             	mov    rsi,rax
+  42389c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4238a3:	00 
+  4238a4:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4238ab:	00 00 
+  4238ad:	75 61                	jne    423910 <MEMORY_T::POKE64(double, double)+0x1a040>
+  4238af:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4238b6:	31 d2                	xor    edx,edx
+  4238b8:	bf 01 00 00 00       	mov    edi,0x1
+  4238bd:	5b                   	pop    rbx
+  4238be:	5d                   	pop    rbp
+  4238bf:	41 5c                	pop    r12
+  4238c1:	41 5d                	pop    r13
+  4238c3:	41 5e                	pop    r14
+  4238c5:	41 5f                	pop    r15
+  4238c7:	e9 f4 00 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 080: print #1, "qword";
+  4238cc:	be 05 00 00 00       	mov    esi,0x5
+  4238d1:	48 8d 3d 73 c6 05 00 	lea    rdi,[rip+0x5c673]        # 47ff4b <_IO_stdin_used+0x2f4b>
+  4238d8:	e8 b3 3c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4238dd:	48 89 c6             	mov    rsi,rax
+  4238e0:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4238e7:	00 
+  4238e8:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4238ef:	00 00 
+  4238f1:	75 22                	jne    423915 <MEMORY_T::POKE64(double, double)+0x1a045>
+  4238f3:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4238fa:	31 d2                	xor    edx,edx
+  4238fc:	bf 01 00 00 00       	mov    edi,0x1
+  423901:	5b                   	pop    rbx
+  423902:	5d                   	pop    rbp
+  423903:	41 5c                	pop    r12
+  423905:	41 5d                	pop    r13
+  423907:	41 5e                	pop    r14
+  423909:	41 5f                	pop    r15
+  42390b:	e9 b0 00 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 081: print #1, "single";
+  423910:	e8 6b 1f fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 080: print #1, "qword";
+  423915:	e8 66 1f fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 079: print #1, "int64";
+  42391a:	be 05 00 00 00       	mov    esi,0x5
+  42391f:	48 8d 3d 1f c6 05 00 	lea    rdi,[rip+0x5c61f]        # 47ff45 <_IO_stdin_used+0x2f45>
+  423926:	e8 65 3c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42392b:	48 89 c6             	mov    rsi,rax
+  42392e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423935:	00 
+  423936:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42393d:	00 00 
+  42393f:	75 61                	jne    4239a2 <MEMORY_T::POKE64(double, double)+0x1a0d2>
+  423941:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423948:	31 d2                	xor    edx,edx
+  42394a:	bf 01 00 00 00       	mov    edi,0x1
+  42394f:	5b                   	pop    rbx
+  423950:	5d                   	pop    rbp
+  423951:	41 5c                	pop    r12
+  423953:	41 5d                	pop    r13
+  423955:	41 5e                	pop    r14
+  423957:	41 5f                	pop    r15
+  423959:	e9 62 00 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 078: print #1, "longword";
+  42395e:	be 08 00 00 00       	mov    esi,0x8
+  423963:	48 8d 3d d2 c5 05 00 	lea    rdi,[rip+0x5c5d2]        # 47ff3c <_IO_stdin_used+0x2f3c>
+  42396a:	e8 21 3c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42396f:	48 89 c6             	mov    rsi,rax
+  423972:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423979:	00 
+  42397a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423981:	00 00 
+  423983:	75 22                	jne    4239a7 <MEMORY_T::POKE64(double, double)+0x1a0d7>
+  423985:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42398c:	31 d2                	xor    edx,edx
+  42398e:	bf 01 00 00 00       	mov    edi,0x1
+  423993:	5b                   	pop    rbx
+  423994:	5d                   	pop    rbp
+  423995:	41 5c                	pop    r12
+  423997:	41 5d                	pop    r13
+  423999:	41 5e                	pop    r14
+  42399b:	41 5f                	pop    r15
+  42399d:	e9 1e 00 05 00       	jmp    4739c0 <fb_PrintString>
+;                       case 079: print #1, "int64";
+  4239a2:	e8 d9 1e fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 078: print #1, "longword";
+  4239a7:	e8 d4 1e fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 077: print #1, "longint";
+  4239ac:	be 07 00 00 00       	mov    esi,0x7
+  4239b1:	48 8d 3d c2 c7 05 00 	lea    rdi,[rip+0x5c7c2]        # 48017a <_IO_stdin_used+0x317a>
+  4239b8:	e8 d3 3b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4239bd:	48 89 c6             	mov    rsi,rax
+  4239c0:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4239c7:	00 
+  4239c8:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4239cf:	00 00 
+  4239d1:	75 61                	jne    423a34 <MEMORY_T::POKE64(double, double)+0x1a164>
+  4239d3:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4239da:	31 d2                	xor    edx,edx
+  4239dc:	bf 01 00 00 00       	mov    edi,0x1
+  4239e1:	5b                   	pop    rbx
+  4239e2:	5d                   	pop    rbp
+  4239e3:	41 5c                	pop    r12
+  4239e5:	41 5d                	pop    r13
+  4239e7:	41 5e                	pop    r14
+  4239e9:	41 5f                	pop    r15
+  4239eb:	e9 d0 ff 04 00       	jmp    4739c0 <fb_PrintString>
+;                       case 076: print #1, "cardinal";
+  4239f0:	be 08 00 00 00       	mov    esi,0x8
+  4239f5:	48 8d 3d 37 c5 05 00 	lea    rdi,[rip+0x5c537]        # 47ff33 <_IO_stdin_used+0x2f33>
+  4239fc:	e8 8f 3b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423a01:	48 89 c6             	mov    rsi,rax
+  423a04:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423a0b:	00 
+  423a0c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423a13:	00 00 
+  423a15:	75 22                	jne    423a39 <MEMORY_T::POKE64(double, double)+0x1a169>
+  423a17:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423a1e:	31 d2                	xor    edx,edx
+  423a20:	bf 01 00 00 00       	mov    edi,0x1
+  423a25:	5b                   	pop    rbx
+  423a26:	5d                   	pop    rbp
+  423a27:	41 5c                	pop    r12
+  423a29:	41 5d                	pop    r13
+  423a2b:	41 5e                	pop    r14
+  423a2d:	41 5f                	pop    r15
+  423a2f:	e9 8c ff 04 00       	jmp    4739c0 <fb_PrintString>
+;                       case 077: print #1, "longint";
+  423a34:	e8 47 1e fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 076: print #1, "cardinal";
+  423a39:	e8 42 1e fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 075: print #1, "word";
+  423a3e:	be 04 00 00 00       	mov    esi,0x4
+  423a43:	48 8d 3d f6 c4 05 00 	lea    rdi,[rip+0x5c4f6]        # 47ff40 <_IO_stdin_used+0x2f40>
+  423a4a:	e8 41 3b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423a4f:	48 89 c6             	mov    rsi,rax
+  423a52:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423a59:	00 
+  423a5a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423a61:	00 00 
+  423a63:	75 61                	jne    423ac6 <MEMORY_T::POKE64(double, double)+0x1a1f6>
+  423a65:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423a6c:	31 d2                	xor    edx,edx
+  423a6e:	bf 01 00 00 00       	mov    edi,0x1
+  423a73:	5b                   	pop    rbx
+  423a74:	5d                   	pop    rbp
+  423a75:	41 5c                	pop    r12
+  423a77:	41 5d                	pop    r13
+  423a79:	41 5e                	pop    r14
+  423a7b:	41 5f                	pop    r15
+  423a7d:	e9 3e ff 04 00       	jmp    4739c0 <fb_PrintString>
+;                       case 074: print #1, "shortint";
+  423a82:	be 08 00 00 00       	mov    esi,0x8
+  423a87:	48 8d 3d 9c c4 05 00 	lea    rdi,[rip+0x5c49c]        # 47ff2a <_IO_stdin_used+0x2f2a>
+  423a8e:	e8 fd 3a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423a93:	48 89 c6             	mov    rsi,rax
+  423a96:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423a9d:	00 
+  423a9e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423aa5:	00 00 
+  423aa7:	75 22                	jne    423acb <MEMORY_T::POKE64(double, double)+0x1a1fb>
+  423aa9:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423ab0:	31 d2                	xor    edx,edx
+  423ab2:	bf 01 00 00 00       	mov    edi,0x1
+  423ab7:	5b                   	pop    rbx
+  423ab8:	5d                   	pop    rbp
+  423ab9:	41 5c                	pop    r12
+  423abb:	41 5d                	pop    r13
+  423abd:	41 5e                	pop    r14
+  423abf:	41 5f                	pop    r15
+  423ac1:	e9 fa fe 04 00       	jmp    4739c0 <fb_PrintString>
+;                       case 075: print #1, "word";
+  423ac6:	e8 b5 1d fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 074: print #1, "shortint";
+  423acb:	e8 b0 1d fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 073: print #1, "smpler2DMS";
+  423ad0:	be 0a 00 00 00       	mov    esi,0xa
+  423ad5:	48 8d 3d 43 c4 05 00 	lea    rdi,[rip+0x5c443]        # 47ff1f <_IO_stdin_used+0x2f1f>
+  423adc:	e8 af 3a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423ae1:	48 89 c6             	mov    rsi,rax
+  423ae4:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423aeb:	00 
+  423aec:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423af3:	00 00 
+  423af5:	75 61                	jne    423b58 <MEMORY_T::POKE64(double, double)+0x1a288>
+  423af7:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423afe:	31 d2                	xor    edx,edx
+  423b00:	bf 01 00 00 00       	mov    edi,0x1
+  423b05:	5b                   	pop    rbx
+  423b06:	5d                   	pop    rbp
+  423b07:	41 5c                	pop    r12
+  423b09:	41 5d                	pop    r13
+  423b0b:	41 5e                	pop    r14
+  423b0d:	41 5f                	pop    r15
+  423b0f:	e9 ac fe 04 00       	jmp    4739c0 <fb_PrintString>
+;                       case 072: print #1, "image2DRect"; 
+  423b14:	be 0b 00 00 00       	mov    esi,0xb
+  423b19:	48 8d 3d f3 c3 05 00 	lea    rdi,[rip+0x5c3f3]        # 47ff13 <_IO_stdin_used+0x2f13>
+  423b20:	e8 6b 3a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423b25:	48 89 c6             	mov    rsi,rax
+  423b28:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423b2f:	00 
+  423b30:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423b37:	00 00 
+  423b39:	75 22                	jne    423b5d <MEMORY_T::POKE64(double, double)+0x1a28d>
+  423b3b:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423b42:	31 d2                	xor    edx,edx
+  423b44:	bf 01 00 00 00       	mov    edi,0x1
+  423b49:	5b                   	pop    rbx
+  423b4a:	5d                   	pop    rbp
+  423b4b:	41 5c                	pop    r12
+  423b4d:	41 5d                	pop    r13
+  423b4f:	41 5e                	pop    r14
+  423b51:	41 5f                	pop    r15
+  423b53:	e9 68 fe 04 00       	jmp    4739c0 <fb_PrintString>
+;                       case 073: print #1, "smpler2DMS";
+  423b58:	e8 23 1d fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 072: print #1, "image2DRect"; 
+  423b5d:	e8 1e 1d fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 071: print #1, "inquire";
+  423b62:	be 07 00 00 00       	mov    esi,0x7
+  423b67:	48 8d 3d 43 ac 05 00 	lea    rdi,[rip+0x5ac43]        # 47e7b1 <_IO_stdin_used+0x17b1>
+  423b6e:	e8 1d 3a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423b73:	48 89 c6             	mov    rsi,rax
+  423b76:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423b7d:	00 
+  423b7e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423b85:	00 00 
+  423b87:	75 61                	jne    423bea <MEMORY_T::POKE64(double, double)+0x1a31a>
+  423b89:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423b90:	31 d2                	xor    edx,edx
+  423b92:	bf 01 00 00 00       	mov    edi,0x1
+  423b97:	5b                   	pop    rbx
+  423b98:	5d                   	pop    rbp
+  423b99:	41 5c                	pop    r12
+  423b9b:	41 5d                	pop    r13
+  423b9d:	41 5e                	pop    r14
+  423b9f:	41 5f                	pop    r15
+  423ba1:	e9 1a fe 04 00       	jmp    4739c0 <fb_PrintString>
+;                       case 070: print #1, "find";
+  423ba6:	be 04 00 00 00       	mov    esi,0x4
+  423bab:	48 8d 3d ef a1 05 00 	lea    rdi,[rip+0x5a1ef]        # 47dda1 <_IO_stdin_used+0xda1>
+  423bb2:	e8 d9 39 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423bb7:	48 89 c6             	mov    rsi,rax
+  423bba:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423bc1:	00 
+  423bc2:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423bc9:	00 00 
+  423bcb:	75 22                	jne    423bef <MEMORY_T::POKE64(double, double)+0x1a31f>
+  423bcd:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423bd4:	31 d2                	xor    edx,edx
+  423bd6:	bf 01 00 00 00       	mov    edi,0x1
+  423bdb:	5b                   	pop    rbx
+  423bdc:	5d                   	pop    rbp
+  423bdd:	41 5c                	pop    r12
+  423bdf:	41 5d                	pop    r13
+  423be1:	41 5e                	pop    r14
+  423be3:	41 5f                	pop    r15
+  423be5:	e9 d6 fd 04 00       	jmp    4739c0 <fb_PrintString>
+;                       case 071: print #1, "inquire";
+  423bea:	e8 91 1c fe ff       	call   405880 <__stack_chk_fail@plt>
+;                       case 070: print #1, "find";
+  423bef:	e8 8c 1c fe ff       	call   405880 <__stack_chk_fail@plt>
+;                        case 069: print #1, "implicit";
+  423bf4:	be 08 00 00 00       	mov    esi,0x8
+  423bf9:	48 8d 3d 0a c3 05 00 	lea    rdi,[rip+0x5c30a]        # 47ff0a <_IO_stdin_used+0x2f0a>
+  423c00:	e8 8b 39 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423c05:	48 89 c6             	mov    rsi,rax
+  423c08:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423c0f:	00 
+  423c10:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423c17:	00 00 
+  423c19:	75 61                	jne    423c7c <MEMORY_T::POKE64(double, double)+0x1a3ac>
+  423c1b:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423c22:	31 d2                	xor    edx,edx
+  423c24:	bf 01 00 00 00       	mov    edi,0x1
+  423c29:	5b                   	pop    rbx
+  423c2a:	5d                   	pop    rbp
+  423c2b:	41 5c                	pop    r12
+  423c2d:	41 5d                	pop    r13
+  423c2f:	41 5e                	pop    r14
+  423c31:	41 5f                	pop    r15
+  423c33:	e9 88 fd 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 068: print #1, "alocated";
+  423c38:	be 08 00 00 00       	mov    esi,0x8
+  423c3d:	48 8d 3d bd c2 05 00 	lea    rdi,[rip+0x5c2bd]        # 47ff01 <_IO_stdin_used+0x2f01>
+  423c44:	e8 47 39 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423c49:	48 89 c6             	mov    rsi,rax
+  423c4c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423c53:	00 
+  423c54:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423c5b:	00 00 
+  423c5d:	75 22                	jne    423c81 <MEMORY_T::POKE64(double, double)+0x1a3b1>
+  423c5f:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423c66:	31 d2                	xor    edx,edx
+  423c68:	bf 01 00 00 00       	mov    edi,0x1
+  423c6d:	5b                   	pop    rbx
+  423c6e:	5d                   	pop    rbp
+  423c6f:	41 5c                	pop    r12
+  423c71:	41 5d                	pop    r13
+  423c73:	41 5e                	pop    r14
+  423c75:	41 5f                	pop    r15
+  423c77:	e9 44 fd 04 00       	jmp    4739c0 <fb_PrintString>
+;                        case 069: print #1, "implicit";
+  423c7c:	e8 ff 1b fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 068: print #1, "alocated";
+  423c81:	e8 fa 1b fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 067: print #1, "alarm";
+  423c86:	be 05 00 00 00       	mov    esi,0x5
+  423c8b:	48 8d 3d 69 c2 05 00 	lea    rdi,[rip+0x5c269]        # 47fefb <_IO_stdin_used+0x2efb>
+  423c92:	e8 f9 38 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423c97:	48 89 c6             	mov    rsi,rax
+  423c9a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423ca1:	00 
+  423ca2:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423ca9:	00 00 
+  423cab:	75 61                	jne    423d0e <MEMORY_T::POKE64(double, double)+0x1a43e>
+  423cad:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423cb4:	31 d2                	xor    edx,edx
+  423cb6:	bf 01 00 00 00       	mov    edi,0x1
+  423cbb:	5b                   	pop    rbx
+  423cbc:	5d                   	pop    rbp
+  423cbd:	41 5c                	pop    r12
+  423cbf:	41 5d                	pop    r13
+  423cc1:	41 5e                	pop    r14
+  423cc3:	41 5f                	pop    r15
+  423cc5:	e9 f6 fc 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 066: print #1, "aint";
+  423cca:	be 04 00 00 00       	mov    esi,0x4
+  423ccf:	48 8d 3d a8 b2 05 00 	lea    rdi,[rip+0x5b2a8]        # 47ef7e <_IO_stdin_used+0x1f7e>
+  423cd6:	e8 b5 38 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423cdb:	48 89 c6             	mov    rsi,rax
+  423cde:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423ce5:	00 
+  423ce6:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423ced:	00 00 
+  423cef:	75 22                	jne    423d13 <MEMORY_T::POKE64(double, double)+0x1a443>
+  423cf1:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423cf8:	31 d2                	xor    edx,edx
+  423cfa:	bf 01 00 00 00       	mov    edi,0x1
+  423cff:	5b                   	pop    rbx
+  423d00:	5d                   	pop    rbp
+  423d01:	41 5c                	pop    r12
+  423d03:	41 5d                	pop    r13
+  423d05:	41 5e                	pop    r14
+  423d07:	41 5f                	pop    r15
+  423d09:	e9 b2 fc 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 067: print #1, "alarm";
+  423d0e:	e8 6d 1b fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 066: print #1, "aint";
+  423d13:	e8 68 1b fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 065: print #1, "aimag";
+  423d18:	be 05 00 00 00       	mov    esi,0x5
+  423d1d:	48 8d 3d d1 c1 05 00 	lea    rdi,[rip+0x5c1d1]        # 47fef5 <_IO_stdin_used+0x2ef5>
+  423d24:	e8 67 38 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423d29:	48 89 c6             	mov    rsi,rax
+  423d2c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423d33:	00 
+  423d34:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423d3b:	00 00 
+  423d3d:	75 61                	jne    423da0 <MEMORY_T::POKE64(double, double)+0x1a4d0>
+  423d3f:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423d46:	31 d2                	xor    edx,edx
+  423d48:	bf 01 00 00 00       	mov    edi,0x1
+  423d4d:	5b                   	pop    rbx
+  423d4e:	5d                   	pop    rbp
+  423d4f:	41 5c                	pop    r12
+  423d51:	41 5d                	pop    r13
+  423d53:	41 5e                	pop    r14
+  423d55:	41 5f                	pop    r15
+  423d57:	e9 64 fc 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 064: print #1, "adjustr";
+  423d5c:	be 07 00 00 00       	mov    esi,0x7
+  423d61:	48 8d 3d 85 c1 05 00 	lea    rdi,[rip+0x5c185]        # 47feed <_IO_stdin_used+0x2eed>
+  423d68:	e8 23 38 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423d6d:	48 89 c6             	mov    rsi,rax
+  423d70:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423d77:	00 
+  423d78:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423d7f:	00 00 
+  423d81:	75 22                	jne    423da5 <MEMORY_T::POKE64(double, double)+0x1a4d5>
+  423d83:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423d8a:	31 d2                	xor    edx,edx
+  423d8c:	bf 01 00 00 00       	mov    edi,0x1
+  423d91:	5b                   	pop    rbx
+  423d92:	5d                   	pop    rbp
+  423d93:	41 5c                	pop    r12
+  423d95:	41 5d                	pop    r13
+  423d97:	41 5e                	pop    r14
+  423d99:	41 5f                	pop    r15
+  423d9b:	e9 20 fc 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 065: print #1, "aimag";
+  423da0:	e8 db 1a fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 064: print #1, "adjustr";
+  423da5:	e8 d6 1a fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 063: print #1, "adjustl";
+  423daa:	be 07 00 00 00       	mov    esi,0x7
+  423daf:	48 8d 3d 2f c1 05 00 	lea    rdi,[rip+0x5c12f]        # 47fee5 <_IO_stdin_used+0x2ee5>
+  423db6:	e8 d5 37 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423dbb:	48 89 c6             	mov    rsi,rax
+  423dbe:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423dc5:	00 
+  423dc6:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423dcd:	00 00 
+  423dcf:	75 61                	jne    423e32 <MEMORY_T::POKE64(double, double)+0x1a562>
+  423dd1:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423dd8:	31 d2                	xor    edx,edx
+  423dda:	bf 01 00 00 00       	mov    edi,0x1
+  423ddf:	5b                   	pop    rbx
+  423de0:	5d                   	pop    rbp
+  423de1:	41 5c                	pop    r12
+  423de3:	41 5d                	pop    r13
+  423de5:	41 5e                	pop    r14
+  423de7:	41 5f                	pop    r15
+  423de9:	e9 d2 fb 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 062: print #1, "acosd";
+  423dee:	be 05 00 00 00       	mov    esi,0x5
+  423df3:	48 8d 3d e5 c0 05 00 	lea    rdi,[rip+0x5c0e5]        # 47fedf <_IO_stdin_used+0x2edf>
+  423dfa:	e8 91 37 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423dff:	48 89 c6             	mov    rsi,rax
+  423e02:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423e09:	00 
+  423e0a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423e11:	00 00 
+  423e13:	75 22                	jne    423e37 <MEMORY_T::POKE64(double, double)+0x1a567>
+  423e15:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423e1c:	31 d2                	xor    edx,edx
+  423e1e:	bf 01 00 00 00       	mov    edi,0x1
+  423e23:	5b                   	pop    rbx
+  423e24:	5d                   	pop    rbp
+  423e25:	41 5c                	pop    r12
+  423e27:	41 5d                	pop    r13
+  423e29:	41 5e                	pop    r14
+  423e2b:	41 5f                	pop    r15
+  423e2d:	e9 8e fb 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 063: print #1, "adjustl";
+  423e32:	e8 49 1a fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 062: print #1, "acosd";
+  423e37:	e8 44 1a fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 061: print #1, "achar";
+  423e3c:	be 05 00 00 00       	mov    esi,0x5
+  423e41:	48 8d 3d 91 c0 05 00 	lea    rdi,[rip+0x5c091]        # 47fed9 <_IO_stdin_used+0x2ed9>
+  423e48:	e8 43 37 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423e4d:	48 89 c6             	mov    rsi,rax
+  423e50:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423e57:	00 
+  423e58:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423e5f:	00 00 
+  423e61:	75 61                	jne    423ec4 <MEMORY_T::POKE64(double, double)+0x1a5f4>
+  423e63:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423e6a:	31 d2                	xor    edx,edx
+  423e6c:	bf 01 00 00 00       	mov    edi,0x1
+  423e71:	5b                   	pop    rbx
+  423e72:	5d                   	pop    rbp
+  423e73:	41 5c                	pop    r12
+  423e75:	41 5d                	pop    r13
+  423e77:	41 5e                	pop    r14
+  423e79:	41 5f                	pop    r15
+  423e7b:	e9 40 fb 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 060: print #1, "abort";
+  423e80:	be 05 00 00 00       	mov    esi,0x5
+  423e85:	48 8d 3d 47 c0 05 00 	lea    rdi,[rip+0x5c047]        # 47fed3 <_IO_stdin_used+0x2ed3>
+  423e8c:	e8 ff 36 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423e91:	48 89 c6             	mov    rsi,rax
+  423e94:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423e9b:	00 
+  423e9c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423ea3:	00 00 
+  423ea5:	75 22                	jne    423ec9 <MEMORY_T::POKE64(double, double)+0x1a5f9>
+  423ea7:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423eae:	31 d2                	xor    edx,edx
+  423eb0:	bf 01 00 00 00       	mov    edi,0x1
+  423eb5:	5b                   	pop    rbx
+  423eb6:	5d                   	pop    rbp
+  423eb7:	41 5c                	pop    r12
+  423eb9:	41 5d                	pop    r13
+  423ebb:	41 5e                	pop    r14
+  423ebd:	41 5f                	pop    r15
+  423ebf:	e9 fc fa 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 061: print #1, "achar";
+  423ec4:	e8 b7 19 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 060: print #1, "abort";
+  423ec9:	e8 b2 19 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 059: print #1, "COB_SWITCH_8";
+  423ece:	be 0c 00 00 00       	mov    esi,0xc
+  423ed3:	48 8d 3d ec bf 05 00 	lea    rdi,[rip+0x5bfec]        # 47fec6 <_IO_stdin_used+0x2ec6>
+  423eda:	e8 b1 36 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423edf:	48 89 c6             	mov    rsi,rax
+  423ee2:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423ee9:	00 
+  423eea:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423ef1:	00 00 
+  423ef3:	75 61                	jne    423f56 <MEMORY_T::POKE64(double, double)+0x1a686>
+  423ef5:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423efc:	31 d2                	xor    edx,edx
+  423efe:	bf 01 00 00 00       	mov    edi,0x1
+  423f03:	5b                   	pop    rbx
+  423f04:	5d                   	pop    rbp
+  423f05:	41 5c                	pop    r12
+  423f07:	41 5d                	pop    r13
+  423f09:	41 5e                	pop    r14
+  423f0b:	41 5f                	pop    r15
+  423f0d:	e9 ae fa 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 058: print #1, "COB_SWITCH_7";
+  423f12:	be 0c 00 00 00       	mov    esi,0xc
+  423f17:	48 8d 3d 9b bf 05 00 	lea    rdi,[rip+0x5bf9b]        # 47feb9 <_IO_stdin_used+0x2eb9>
+  423f1e:	e8 6d 36 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423f23:	48 89 c6             	mov    rsi,rax
+  423f26:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423f2d:	00 
+  423f2e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423f35:	00 00 
+  423f37:	75 22                	jne    423f5b <MEMORY_T::POKE64(double, double)+0x1a68b>
+  423f39:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423f40:	31 d2                	xor    edx,edx
+  423f42:	bf 01 00 00 00       	mov    edi,0x1
+  423f47:	5b                   	pop    rbx
+  423f48:	5d                   	pop    rbp
+  423f49:	41 5c                	pop    r12
+  423f4b:	41 5d                	pop    r13
+  423f4d:	41 5e                	pop    r14
+  423f4f:	41 5f                	pop    r15
+  423f51:	e9 6a fa 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 059: print #1, "COB_SWITCH_8";
+  423f56:	e8 25 19 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 058: print #1, "COB_SWITCH_7";
+  423f5b:	e8 20 19 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 057: print #1, "COB_SWITCH_6";
+  423f60:	be 0c 00 00 00       	mov    esi,0xc
+  423f65:	48 8d 3d 40 bf 05 00 	lea    rdi,[rip+0x5bf40]        # 47feac <_IO_stdin_used+0x2eac>
+  423f6c:	e8 1f 36 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423f71:	48 89 c6             	mov    rsi,rax
+  423f74:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423f7b:	00 
+  423f7c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423f83:	00 00 
+  423f85:	75 61                	jne    423fe8 <MEMORY_T::POKE64(double, double)+0x1a718>
+  423f87:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423f8e:	31 d2                	xor    edx,edx
+  423f90:	bf 01 00 00 00       	mov    edi,0x1
+  423f95:	5b                   	pop    rbx
+  423f96:	5d                   	pop    rbp
+  423f97:	41 5c                	pop    r12
+  423f99:	41 5d                	pop    r13
+  423f9b:	41 5e                	pop    r14
+  423f9d:	41 5f                	pop    r15
+  423f9f:	e9 1c fa 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 056: print #1, "COB_SWITCH_5";
+  423fa4:	be 0c 00 00 00       	mov    esi,0xc
+  423fa9:	48 8d 3d ef be 05 00 	lea    rdi,[rip+0x5beef]        # 47fe9f <_IO_stdin_used+0x2e9f>
+  423fb0:	e8 db 35 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  423fb5:	48 89 c6             	mov    rsi,rax
+  423fb8:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  423fbf:	00 
+  423fc0:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  423fc7:	00 00 
+  423fc9:	75 22                	jne    423fed <MEMORY_T::POKE64(double, double)+0x1a71d>
+  423fcb:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  423fd2:	31 d2                	xor    edx,edx
+  423fd4:	bf 01 00 00 00       	mov    edi,0x1
+  423fd9:	5b                   	pop    rbx
+  423fda:	5d                   	pop    rbp
+  423fdb:	41 5c                	pop    r12
+  423fdd:	41 5d                	pop    r13
+  423fdf:	41 5e                	pop    r14
+  423fe1:	41 5f                	pop    r15
+  423fe3:	e9 d8 f9 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 057: print #1, "COB_SWITCH_6";
+  423fe8:	e8 93 18 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 056: print #1, "COB_SWITCH_5";
+  423fed:	e8 8e 18 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 055: print #1, "COB_SWITCH_4";
+  423ff2:	be 0c 00 00 00       	mov    esi,0xc
+  423ff7:	48 8d 3d 94 be 05 00 	lea    rdi,[rip+0x5be94]        # 47fe92 <_IO_stdin_used+0x2e92>
+  423ffe:	e8 8d 35 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424003:	48 89 c6             	mov    rsi,rax
+  424006:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42400d:	00 
+  42400e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424015:	00 00 
+  424017:	75 61                	jne    42407a <MEMORY_T::POKE64(double, double)+0x1a7aa>
+  424019:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424020:	31 d2                	xor    edx,edx
+  424022:	bf 01 00 00 00       	mov    edi,0x1
+  424027:	5b                   	pop    rbx
+  424028:	5d                   	pop    rbp
+  424029:	41 5c                	pop    r12
+  42402b:	41 5d                	pop    r13
+  42402d:	41 5e                	pop    r14
+  42402f:	41 5f                	pop    r15
+  424031:	e9 8a f9 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 054: print #1, "COB_SWITCH_3";
+  424036:	be 0c 00 00 00       	mov    esi,0xc
+  42403b:	48 8d 3d 43 be 05 00 	lea    rdi,[rip+0x5be43]        # 47fe85 <_IO_stdin_used+0x2e85>
+  424042:	e8 49 35 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424047:	48 89 c6             	mov    rsi,rax
+  42404a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424051:	00 
+  424052:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424059:	00 00 
+  42405b:	75 22                	jne    42407f <MEMORY_T::POKE64(double, double)+0x1a7af>
+  42405d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424064:	31 d2                	xor    edx,edx
+  424066:	bf 01 00 00 00       	mov    edi,0x1
+  42406b:	5b                   	pop    rbx
+  42406c:	5d                   	pop    rbp
+  42406d:	41 5c                	pop    r12
+  42406f:	41 5d                	pop    r13
+  424071:	41 5e                	pop    r14
+  424073:	41 5f                	pop    r15
+  424075:	e9 46 f9 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 055: print #1, "COB_SWITCH_4";
+  42407a:	e8 01 18 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 054: print #1, "COB_SWITCH_3";
+  42407f:	e8 fc 17 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 053: print #1, "COB_SWITCH_2";
+  424084:	be 0c 00 00 00       	mov    esi,0xc
+  424089:	48 8d 3d e8 bd 05 00 	lea    rdi,[rip+0x5bde8]        # 47fe78 <_IO_stdin_used+0x2e78>
+  424090:	e8 fb 34 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424095:	48 89 c6             	mov    rsi,rax
+  424098:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42409f:	00 
+  4240a0:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4240a7:	00 00 
+  4240a9:	75 61                	jne    42410c <MEMORY_T::POKE64(double, double)+0x1a83c>
+  4240ab:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4240b2:	31 d2                	xor    edx,edx
+  4240b4:	bf 01 00 00 00       	mov    edi,0x1
+  4240b9:	5b                   	pop    rbx
+  4240ba:	5d                   	pop    rbp
+  4240bb:	41 5c                	pop    r12
+  4240bd:	41 5d                	pop    r13
+  4240bf:	41 5e                	pop    r14
+  4240c1:	41 5f                	pop    r15
+  4240c3:	e9 f8 f8 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 052: print #1, "COB_SWITCH_1";
+  4240c8:	be 0c 00 00 00       	mov    esi,0xc
+  4240cd:	48 8d 3d 97 bd 05 00 	lea    rdi,[rip+0x5bd97]        # 47fe6b <_IO_stdin_used+0x2e6b>
+  4240d4:	e8 b7 34 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4240d9:	48 89 c6             	mov    rsi,rax
+  4240dc:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4240e3:	00 
+  4240e4:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4240eb:	00 00 
+  4240ed:	75 22                	jne    424111 <MEMORY_T::POKE64(double, double)+0x1a841>
+  4240ef:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4240f6:	31 d2                	xor    edx,edx
+  4240f8:	bf 01 00 00 00       	mov    edi,0x1
+  4240fd:	5b                   	pop    rbx
+  4240fe:	5d                   	pop    rbp
+  4240ff:	41 5c                	pop    r12
+  424101:	41 5d                	pop    r13
+  424103:	41 5e                	pop    r14
+  424105:	41 5f                	pop    r15
+  424107:	e9 b4 f8 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 053: print #1, "COB_SWITCH_2";
+  42410c:	e8 6f 17 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 052: print #1, "COB_SWITCH_1";
+  424111:	e8 6a 17 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 051: print #1, "console";
+  424116:	be 07 00 00 00       	mov    esi,0x7
+  42411b:	48 8d 3d 41 bd 05 00 	lea    rdi,[rip+0x5bd41]        # 47fe63 <_IO_stdin_used+0x2e63>
+  424122:	e8 69 34 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424127:	48 89 c6             	mov    rsi,rax
+  42412a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424131:	00 
+  424132:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424139:	00 00 
+  42413b:	75 61                	jne    42419e <MEMORY_T::POKE64(double, double)+0x1a8ce>
+  42413d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424144:	31 d2                	xor    edx,edx
+  424146:	bf 01 00 00 00       	mov    edi,0x1
+  42414b:	5b                   	pop    rbx
+  42414c:	5d                   	pop    rbp
+  42414d:	41 5c                	pop    r12
+  42414f:	41 5d                	pop    r13
+  424151:	41 5e                	pop    r14
+  424153:	41 5f                	pop    r15
+  424155:	e9 66 f8 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 050: print #1, "sleep";
+  42415a:	be 05 00 00 00       	mov    esi,0x5
+  42415f:	48 8d 3d f7 bc 05 00 	lea    rdi,[rip+0x5bcf7]        # 47fe5d <_IO_stdin_used+0x2e5d>
+  424166:	e8 25 34 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42416b:	48 89 c6             	mov    rsi,rax
+  42416e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424175:	00 
+  424176:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42417d:	00 00 
+  42417f:	75 22                	jne    4241a3 <MEMORY_T::POKE64(double, double)+0x1a8d3>
+  424181:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424188:	31 d2                	xor    edx,edx
+  42418a:	bf 01 00 00 00       	mov    edi,0x1
+  42418f:	5b                   	pop    rbx
+  424190:	5d                   	pop    rbp
+  424191:	41 5c                	pop    r12
+  424193:	41 5d                	pop    r13
+  424195:	41 5e                	pop    r14
+  424197:	41 5f                	pop    r15
+  424199:	e9 22 f8 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 051: print #1, "console";
+  42419e:	e8 dd 16 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 050: print #1, "sleep";
+  4241a3:	e8 d8 16 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 049: print #1, "seek";
+  4241a8:	be 04 00 00 00       	mov    esi,0x4
+  4241ad:	48 8d 3d a4 bc 05 00 	lea    rdi,[rip+0x5bca4]        # 47fe58 <_IO_stdin_used+0x2e58>
+  4241b4:	e8 d7 33 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4241b9:	48 89 c6             	mov    rsi,rax
+  4241bc:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4241c3:	00 
+  4241c4:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4241cb:	00 00 
+  4241cd:	75 61                	jne    424230 <MEMORY_T::POKE64(double, double)+0x1a960>
+  4241cf:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4241d6:	31 d2                	xor    edx,edx
+  4241d8:	bf 01 00 00 00       	mov    edi,0x1
+  4241dd:	5b                   	pop    rbx
+  4241de:	5d                   	pop    rbp
+  4241df:	41 5c                	pop    r12
+  4241e1:	41 5d                	pop    r13
+  4241e3:	41 5e                	pop    r14
+  4241e5:	41 5f                	pop    r15
+  4241e7:	e9 d4 f7 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 048: print #1, "seg";
+  4241ec:	be 03 00 00 00       	mov    esi,0x3
+  4241f1:	48 8d 3d 5c bc 05 00 	lea    rdi,[rip+0x5bc5c]        # 47fe54 <_IO_stdin_used+0x2e54>
+  4241f8:	e8 93 33 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4241fd:	48 89 c6             	mov    rsi,rax
+  424200:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424207:	00 
+  424208:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42420f:	00 00 
+  424211:	75 22                	jne    424235 <MEMORY_T::POKE64(double, double)+0x1a965>
+  424213:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42421a:	31 d2                	xor    edx,edx
+  42421c:	bf 01 00 00 00       	mov    edi,0x1
+  424221:	5b                   	pop    rbx
+  424222:	5d                   	pop    rbp
+  424223:	41 5c                	pop    r12
+  424225:	41 5d                	pop    r13
+  424227:	41 5e                	pop    r14
+  424229:	41 5f                	pop    r15
+  42422b:	e9 90 f7 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 049: print #1, "seek";
+  424230:	e8 4b 16 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 048: print #1, "seg";
+  424235:	e8 46 16 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 047: print #1, "inversesqrt";
+  42423a:	be 0b 00 00 00       	mov    esi,0xb
+  42423f:	48 8d 3d 02 bc 05 00 	lea    rdi,[rip+0x5bc02]        # 47fe48 <_IO_stdin_used+0x2e48>
+  424246:	e8 45 33 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42424b:	48 89 c6             	mov    rsi,rax
+  42424e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424255:	00 
+  424256:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42425d:	00 00 
+  42425f:	75 61                	jne    4242c2 <MEMORY_T::POKE64(double, double)+0x1a9f2>
+  424261:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424268:	31 d2                	xor    edx,edx
+  42426a:	bf 01 00 00 00       	mov    edi,0x1
+  42426f:	5b                   	pop    rbx
+  424270:	5d                   	pop    rbp
+  424271:	41 5c                	pop    r12
+  424273:	41 5d                	pop    r13
+  424275:	41 5e                	pop    r14
+  424277:	41 5f                	pop    r15
+  424279:	e9 42 f7 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 046: print #1, "sincos";
+  42427e:	be 06 00 00 00       	mov    esi,0x6
+  424283:	48 8d 3d b7 bb 05 00 	lea    rdi,[rip+0x5bbb7]        # 47fe41 <_IO_stdin_used+0x2e41>
+  42428a:	e8 01 33 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42428f:	48 89 c6             	mov    rsi,rax
+  424292:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424299:	00 
+  42429a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4242a1:	00 00 
+  4242a3:	75 22                	jne    4242c7 <MEMORY_T::POKE64(double, double)+0x1a9f7>
+  4242a5:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4242ac:	31 d2                	xor    edx,edx
+  4242ae:	bf 01 00 00 00       	mov    edi,0x1
+  4242b3:	5b                   	pop    rbx
+  4242b4:	5d                   	pop    rbp
+  4242b5:	41 5c                	pop    r12
+  4242b7:	41 5d                	pop    r13
+  4242b9:	41 5e                	pop    r14
+  4242bb:	41 5f                	pop    r15
+  4242bd:	e9 fe f6 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 047: print #1, "inversesqrt";
+  4242c2:	e8 b9 15 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 046: print #1, "sincos";
+  4242c7:	e8 b4 15 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 045: print #1, "M_SQRT1_2";
+  4242cc:	be 09 00 00 00       	mov    esi,0x9
+  4242d1:	48 8d 3d 5f bb 05 00 	lea    rdi,[rip+0x5bb5f]        # 47fe37 <_IO_stdin_used+0x2e37>
+  4242d8:	e8 b3 32 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4242dd:	48 89 c6             	mov    rsi,rax
+  4242e0:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4242e7:	00 
+  4242e8:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4242ef:	00 00 
+  4242f1:	75 61                	jne    424354 <MEMORY_T::POKE64(double, double)+0x1aa84>
+  4242f3:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4242fa:	31 d2                	xor    edx,edx
+  4242fc:	bf 01 00 00 00       	mov    edi,0x1
+  424301:	5b                   	pop    rbx
+  424302:	5d                   	pop    rbp
+  424303:	41 5c                	pop    r12
+  424305:	41 5d                	pop    r13
+  424307:	41 5e                	pop    r14
+  424309:	41 5f                	pop    r15
+  42430b:	e9 b0 f6 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 044: print #1, "M_SQRT2";
+  424310:	be 07 00 00 00       	mov    esi,0x7
+  424315:	48 8d 3d 1c aa 05 00 	lea    rdi,[rip+0x5aa1c]        # 47ed38 <_IO_stdin_used+0x1d38>
+  42431c:	e8 6f 32 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424321:	48 89 c6             	mov    rsi,rax
+  424324:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42432b:	00 
+  42432c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424333:	00 00 
+  424335:	75 22                	jne    424359 <MEMORY_T::POKE64(double, double)+0x1aa89>
+  424337:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42433e:	31 d2                	xor    edx,edx
+  424340:	bf 01 00 00 00       	mov    edi,0x1
+  424345:	5b                   	pop    rbx
+  424346:	5d                   	pop    rbp
+  424347:	41 5c                	pop    r12
+  424349:	41 5d                	pop    r13
+  42434b:	41 5e                	pop    r14
+  42434d:	41 5f                	pop    r15
+  42434f:	e9 6c f6 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 045: print #1, "M_SQRT1_2";
+  424354:	e8 27 15 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 044: print #1, "M_SQRT2";
+  424359:	e8 22 15 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 043: print #1, "M_LOG10E";
+  42435e:	be 08 00 00 00       	mov    esi,0x8
+  424363:	48 8d 3d 77 a9 05 00 	lea    rdi,[rip+0x5a977]        # 47ece1 <_IO_stdin_used+0x1ce1>
+  42436a:	e8 21 32 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42436f:	48 89 c6             	mov    rsi,rax
+  424372:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424379:	00 
+  42437a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424381:	00 00 
+  424383:	75 61                	jne    4243e6 <MEMORY_T::POKE64(double, double)+0x1ab16>
+  424385:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42438c:	31 d2                	xor    edx,edx
+  42438e:	bf 01 00 00 00       	mov    edi,0x1
+  424393:	5b                   	pop    rbx
+  424394:	5d                   	pop    rbp
+  424395:	41 5c                	pop    r12
+  424397:	41 5d                	pop    r13
+  424399:	41 5e                	pop    r14
+  42439b:	41 5f                	pop    r15
+  42439d:	e9 1e f6 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 042: print #1, "M_LOG2E";
+  4243a2:	be 07 00 00 00       	mov    esi,0x7
+  4243a7:	48 8d 3d 3c a9 05 00 	lea    rdi,[rip+0x5a93c]        # 47ecea <_IO_stdin_used+0x1cea>
+  4243ae:	e8 dd 31 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4243b3:	48 89 c6             	mov    rsi,rax
+  4243b6:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4243bd:	00 
+  4243be:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4243c5:	00 00 
+  4243c7:	75 22                	jne    4243eb <MEMORY_T::POKE64(double, double)+0x1ab1b>
+  4243c9:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4243d0:	31 d2                	xor    edx,edx
+  4243d2:	bf 01 00 00 00       	mov    edi,0x1
+  4243d7:	5b                   	pop    rbx
+  4243d8:	5d                   	pop    rbp
+  4243d9:	41 5c                	pop    r12
+  4243db:	41 5d                	pop    r13
+  4243dd:	41 5e                	pop    r14
+  4243df:	41 5f                	pop    r15
+  4243e1:	e9 da f5 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 043: print #1, "M_LOG10E";
+  4243e6:	e8 95 14 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 042: print #1, "M_LOG2E";
+  4243eb:	e8 90 14 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 041: print #1, "M_LN10";
+  4243f0:	be 06 00 00 00       	mov    esi,0x6
+  4243f5:	48 8d 3d 34 ba 05 00 	lea    rdi,[rip+0x5ba34]        # 47fe30 <_IO_stdin_used+0x2e30>
+  4243fc:	e8 8f 31 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424401:	48 89 c6             	mov    rsi,rax
+  424404:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42440b:	00 
+  42440c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424413:	00 00 
+  424415:	75 61                	jne    424478 <MEMORY_T::POKE64(double, double)+0x1aba8>
+  424417:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42441e:	31 d2                	xor    edx,edx
+  424420:	bf 01 00 00 00       	mov    edi,0x1
+  424425:	5b                   	pop    rbx
+  424426:	5d                   	pop    rbp
+  424427:	41 5c                	pop    r12
+  424429:	41 5d                	pop    r13
+  42442b:	41 5e                	pop    r14
+  42442d:	41 5f                	pop    r15
+  42442f:	e9 8c f5 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 040: print #1, "M_LN2";
+  424434:	be 05 00 00 00       	mov    esi,0x5
+  424439:	48 8d 3d 9b a8 05 00 	lea    rdi,[rip+0x5a89b]        # 47ecdb <_IO_stdin_used+0x1cdb>
+  424440:	e8 4b 31 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424445:	48 89 c6             	mov    rsi,rax
+  424448:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42444f:	00 
+  424450:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424457:	00 00 
+  424459:	75 22                	jne    42447d <MEMORY_T::POKE64(double, double)+0x1abad>
+  42445b:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424462:	31 d2                	xor    edx,edx
+  424464:	bf 01 00 00 00       	mov    edi,0x1
+  424469:	5b                   	pop    rbx
+  42446a:	5d                   	pop    rbp
+  42446b:	41 5c                	pop    r12
+  42446d:	41 5d                	pop    r13
+  42446f:	41 5e                	pop    r14
+  424471:	41 5f                	pop    r15
+  424473:	e9 48 f5 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 041: print #1, "M_LN10";
+  424478:	e8 03 14 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 040: print #1, "M_LN2";
+  42447d:	e8 fe 13 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 039: print #1, "M_E";
+  424482:	be 03 00 00 00       	mov    esi,0x3
+  424487:	48 8d 3d 9e b9 05 00 	lea    rdi,[rip+0x5b99e]        # 47fe2c <_IO_stdin_used+0x2e2c>
+  42448e:	e8 fd 30 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424493:	48 89 c6             	mov    rsi,rax
+  424496:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42449d:	00 
+  42449e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4244a5:	00 00 
+  4244a7:	75 61                	jne    42450a <MEMORY_T::POKE64(double, double)+0x1ac3a>
+  4244a9:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4244b0:	31 d2                	xor    edx,edx
+  4244b2:	bf 01 00 00 00       	mov    edi,0x1
+  4244b7:	5b                   	pop    rbx
+  4244b8:	5d                   	pop    rbp
+  4244b9:	41 5c                	pop    r12
+  4244bb:	41 5d                	pop    r13
+  4244bd:	41 5e                	pop    r14
+  4244bf:	41 5f                	pop    r15
+  4244c1:	e9 fa f4 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 038: print #1, "M_2_SQRTPI";
+  4244c6:	be 0a 00 00 00       	mov    esi,0xa
+  4244cb:	48 8d 3d 4f b9 05 00 	lea    rdi,[rip+0x5b94f]        # 47fe21 <_IO_stdin_used+0x2e21>
+  4244d2:	e8 b9 30 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4244d7:	48 89 c6             	mov    rsi,rax
+  4244da:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4244e1:	00 
+  4244e2:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4244e9:	00 00 
+  4244eb:	75 22                	jne    42450f <MEMORY_T::POKE64(double, double)+0x1ac3f>
+  4244ed:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4244f4:	31 d2                	xor    edx,edx
+  4244f6:	bf 01 00 00 00       	mov    edi,0x1
+  4244fb:	5b                   	pop    rbx
+  4244fc:	5d                   	pop    rbp
+  4244fd:	41 5c                	pop    r12
+  4244ff:	41 5d                	pop    r13
+  424501:	41 5e                	pop    r14
+  424503:	41 5f                	pop    r15
+  424505:	e9 b6 f4 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 039: print #1, "M_E";
+  42450a:	e8 71 13 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 038: print #1, "M_2_SQRTPI";
+  42450f:	e8 6c 13 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 037: print #1, "M_4PI";
+  424514:	be 05 00 00 00       	mov    esi,0x5
+  424519:	48 8d 3d fb b8 05 00 	lea    rdi,[rip+0x5b8fb]        # 47fe1b <_IO_stdin_used+0x2e1b>
+  424520:	e8 6b 30 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424525:	48 89 c6             	mov    rsi,rax
+  424528:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42452f:	00 
+  424530:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424537:	00 00 
+  424539:	75 61                	jne    42459c <MEMORY_T::POKE64(double, double)+0x1accc>
+  42453b:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424542:	31 d2                	xor    edx,edx
+  424544:	bf 01 00 00 00       	mov    edi,0x1
+  424549:	5b                   	pop    rbx
+  42454a:	5d                   	pop    rbp
+  42454b:	41 5c                	pop    r12
+  42454d:	41 5d                	pop    r13
+  42454f:	41 5e                	pop    r14
+  424551:	41 5f                	pop    r15
+  424553:	e9 68 f4 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 036: print #1, "M_2PI";
+  424558:	be 05 00 00 00       	mov    esi,0x5
+  42455d:	48 8d 3d b1 b8 05 00 	lea    rdi,[rip+0x5b8b1]        # 47fe15 <_IO_stdin_used+0x2e15>
+  424564:	e8 27 30 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424569:	48 89 c6             	mov    rsi,rax
+  42456c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424573:	00 
+  424574:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42457b:	00 00 
+  42457d:	75 22                	jne    4245a1 <MEMORY_T::POKE64(double, double)+0x1acd1>
+  42457f:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424586:	31 d2                	xor    edx,edx
+  424588:	bf 01 00 00 00       	mov    edi,0x1
+  42458d:	5b                   	pop    rbx
+  42458e:	5d                   	pop    rbp
+  42458f:	41 5c                	pop    r12
+  424591:	41 5d                	pop    r13
+  424593:	41 5e                	pop    r14
+  424595:	41 5f                	pop    r15
+  424597:	e9 24 f4 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 037: print #1, "M_4PI";
+  42459c:	e8 df 12 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 036: print #1, "M_2PI";
+  4245a1:	e8 da 12 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 035: print #1, "M_PI_4";
+  4245a6:	be 06 00 00 00       	mov    esi,0x6
+  4245ab:	48 8d 3d 78 a7 05 00 	lea    rdi,[rip+0x5a778]        # 47ed2a <_IO_stdin_used+0x1d2a>
+  4245b2:	e8 d9 2f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4245b7:	48 89 c6             	mov    rsi,rax
+  4245ba:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4245c1:	00 
+  4245c2:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4245c9:	00 00 
+  4245cb:	75 61                	jne    42462e <MEMORY_T::POKE64(double, double)+0x1ad5e>
+  4245cd:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4245d4:	31 d2                	xor    edx,edx
+  4245d6:	bf 01 00 00 00       	mov    edi,0x1
+  4245db:	5b                   	pop    rbx
+  4245dc:	5d                   	pop    rbp
+  4245dd:	41 5c                	pop    r12
+  4245df:	41 5d                	pop    r13
+  4245e1:	41 5e                	pop    r14
+  4245e3:	41 5f                	pop    r15
+  4245e5:	e9 d6 f3 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 034: print #1, "M_PI_2";
+  4245ea:	be 06 00 00 00       	mov    esi,0x6
+  4245ef:	48 8d 3d 2d a7 05 00 	lea    rdi,[rip+0x5a72d]        # 47ed23 <_IO_stdin_used+0x1d23>
+  4245f6:	e8 95 2f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4245fb:	48 89 c6             	mov    rsi,rax
+  4245fe:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424605:	00 
+  424606:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42460d:	00 00 
+  42460f:	75 22                	jne    424633 <MEMORY_T::POKE64(double, double)+0x1ad63>
+  424611:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424618:	31 d2                	xor    edx,edx
+  42461a:	bf 01 00 00 00       	mov    edi,0x1
+  42461f:	5b                   	pop    rbx
+  424620:	5d                   	pop    rbp
+  424621:	41 5c                	pop    r12
+  424623:	41 5d                	pop    r13
+  424625:	41 5e                	pop    r14
+  424627:	41 5f                	pop    r15
+  424629:	e9 92 f3 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 035: print #1, "M_PI_4";
+  42462e:	e8 4d 12 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 034: print #1, "M_PI_2";
+  424633:	e8 48 12 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 033: print #1, "M_PI";
+  424638:	be 04 00 00 00       	mov    esi,0x4
+  42463d:	48 8d 3d da a6 05 00 	lea    rdi,[rip+0x5a6da]        # 47ed1e <_IO_stdin_used+0x1d1e>
+  424644:	e8 47 2f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424649:	48 89 c6             	mov    rsi,rax
+  42464c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424653:	00 
+  424654:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42465b:	00 00 
+  42465d:	75 61                	jne    4246c0 <MEMORY_T::POKE64(double, double)+0x1adf0>
+  42465f:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424666:	31 d2                	xor    edx,edx
+  424668:	bf 01 00 00 00       	mov    edi,0x1
+  42466d:	5b                   	pop    rbx
+  42466e:	5d                   	pop    rbp
+  42466f:	41 5c                	pop    r12
+  424671:	41 5d                	pop    r13
+  424673:	41 5e                	pop    r14
+  424675:	41 5f                	pop    r15
+  424677:	e9 44 f3 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 032: print #1, "resource";
+  42467c:	be 08 00 00 00       	mov    esi,0x8
+  424681:	48 8d 3d 84 b7 05 00 	lea    rdi,[rip+0x5b784]        # 47fe0c <_IO_stdin_used+0x2e0c>
+  424688:	e8 03 2f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42468d:	48 89 c6             	mov    rsi,rax
+  424690:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424697:	00 
+  424698:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42469f:	00 00 
+  4246a1:	75 22                	jne    4246c5 <MEMORY_T::POKE64(double, double)+0x1adf5>
+  4246a3:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4246aa:	31 d2                	xor    edx,edx
+  4246ac:	bf 01 00 00 00       	mov    edi,0x1
+  4246b1:	5b                   	pop    rbx
+  4246b2:	5d                   	pop    rbp
+  4246b3:	41 5c                	pop    r12
+  4246b5:	41 5d                	pop    r13
+  4246b7:	41 5e                	pop    r14
+  4246b9:	41 5f                	pop    r15
+  4246bb:	e9 00 f3 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 033: print #1, "M_PI";
+  4246c0:	e8 bb 11 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 032: print #1, "resource";
+  4246c5:	e8 b6 11 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 031: print #1, "sampler2DRect";
+  4246ca:	be 0d 00 00 00       	mov    esi,0xd
+  4246cf:	48 8d 3d 18 a2 05 00 	lea    rdi,[rip+0x5a218]        # 47e8ee <_IO_stdin_used+0x18ee>
+  4246d6:	e8 b5 2e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4246db:	48 89 c6             	mov    rsi,rax
+  4246de:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4246e5:	00 
+  4246e6:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4246ed:	00 00 
+  4246ef:	75 61                	jne    424752 <MEMORY_T::POKE64(double, double)+0x1ae82>
+  4246f1:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4246f8:	31 d2                	xor    edx,edx
+  4246fa:	bf 01 00 00 00       	mov    edi,0x1
+  4246ff:	5b                   	pop    rbx
+  424700:	5d                   	pop    rbp
+  424701:	41 5c                	pop    r12
+  424703:	41 5d                	pop    r13
+  424705:	41 5e                	pop    r14
+  424707:	41 5f                	pop    r15
+  424709:	e9 b2 f2 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 030: print #1, "struct";
+  42470e:	be 06 00 00 00       	mov    esi,0x6
+  424713:	48 8d 3d eb b6 05 00 	lea    rdi,[rip+0x5b6eb]        # 47fe05 <_IO_stdin_used+0x2e05>
+  42471a:	e8 71 2e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42471f:	48 89 c6             	mov    rsi,rax
+  424722:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424729:	00 
+  42472a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424731:	00 00 
+  424733:	75 22                	jne    424757 <MEMORY_T::POKE64(double, double)+0x1ae87>
+  424735:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42473c:	31 d2                	xor    edx,edx
+  42473e:	bf 01 00 00 00       	mov    edi,0x1
+  424743:	5b                   	pop    rbx
+  424744:	5d                   	pop    rbp
+  424745:	41 5c                	pop    r12
+  424747:	41 5d                	pop    r13
+  424749:	41 5e                	pop    r14
+  42474b:	41 5f                	pop    r15
+  42474d:	e9 6e f2 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 031: print #1, "sampler2DRect";
+  424752:	e8 29 11 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 030: print #1, "struct";
+  424757:	e8 24 11 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 029: print #1, "uimage2DMSArray";
+  42475c:	be 0f 00 00 00       	mov    esi,0xf
+  424761:	48 8d 3d 8d b6 05 00 	lea    rdi,[rip+0x5b68d]        # 47fdf5 <_IO_stdin_used+0x2df5>
+  424768:	e8 23 2e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42476d:	48 89 c6             	mov    rsi,rax
+  424770:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424777:	00 
+  424778:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42477f:	00 00 
+  424781:	75 61                	jne    4247e4 <MEMORY_T::POKE64(double, double)+0x1af14>
+  424783:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42478a:	31 d2                	xor    edx,edx
+  42478c:	bf 01 00 00 00       	mov    edi,0x1
+  424791:	5b                   	pop    rbx
+  424792:	5d                   	pop    rbp
+  424793:	41 5c                	pop    r12
+  424795:	41 5d                	pop    r13
+  424797:	41 5e                	pop    r14
+  424799:	41 5f                	pop    r15
+  42479b:	e9 20 f2 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 028: print #1, "iimage2DMSArray";
+  4247a0:	be 0f 00 00 00       	mov    esi,0xf
+  4247a5:	48 8d 3d 39 b6 05 00 	lea    rdi,[rip+0x5b639]        # 47fde5 <_IO_stdin_used+0x2de5>
+  4247ac:	e8 df 2d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4247b1:	48 89 c6             	mov    rsi,rax
+  4247b4:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4247bb:	00 
+  4247bc:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4247c3:	00 00 
+  4247c5:	75 22                	jne    4247e9 <MEMORY_T::POKE64(double, double)+0x1af19>
+  4247c7:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4247ce:	31 d2                	xor    edx,edx
+  4247d0:	bf 01 00 00 00       	mov    edi,0x1
+  4247d5:	5b                   	pop    rbx
+  4247d6:	5d                   	pop    rbp
+  4247d7:	41 5c                	pop    r12
+  4247d9:	41 5d                	pop    r13
+  4247db:	41 5e                	pop    r14
+  4247dd:	41 5f                	pop    r15
+  4247df:	e9 dc f1 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 029: print #1, "uimage2DMSArray";
+  4247e4:	e8 97 10 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 028: print #1, "iimage2DMSArray";
+  4247e9:	e8 92 10 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 027: print #1, "image2DMSArray";
+  4247ee:	be 0e 00 00 00       	mov    esi,0xe
+  4247f3:	48 8d 3d ec b5 05 00 	lea    rdi,[rip+0x5b5ec]        # 47fde6 <_IO_stdin_used+0x2de6>
+  4247fa:	e8 91 2d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4247ff:	48 89 c6             	mov    rsi,rax
+  424802:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424809:	00 
+  42480a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424811:	00 00 
+  424813:	75 61                	jne    424876 <MEMORY_T::POKE64(double, double)+0x1afa6>
+  424815:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42481c:	31 d2                	xor    edx,edx
+  42481e:	bf 01 00 00 00       	mov    edi,0x1
+  424823:	5b                   	pop    rbx
+  424824:	5d                   	pop    rbp
+  424825:	41 5c                	pop    r12
+  424827:	41 5d                	pop    r13
+  424829:	41 5e                	pop    r14
+  42482b:	41 5f                	pop    r15
+  42482d:	e9 8e f1 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 026: print #1, "uimage2DMS";
+  424832:	be 0a 00 00 00       	mov    esi,0xa
+  424837:	48 8d 3d 9c b5 05 00 	lea    rdi,[rip+0x5b59c]        # 47fdda <_IO_stdin_used+0x2dda>
+  42483e:	e8 4d 2d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424843:	48 89 c6             	mov    rsi,rax
+  424846:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42484d:	00 
+  42484e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424855:	00 00 
+  424857:	75 22                	jne    42487b <MEMORY_T::POKE64(double, double)+0x1afab>
+  424859:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424860:	31 d2                	xor    edx,edx
+  424862:	bf 01 00 00 00       	mov    edi,0x1
+  424867:	5b                   	pop    rbx
+  424868:	5d                   	pop    rbp
+  424869:	41 5c                	pop    r12
+  42486b:	41 5d                	pop    r13
+  42486d:	41 5e                	pop    r14
+  42486f:	41 5f                	pop    r15
+  424871:	e9 4a f1 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 027: print #1, "image2DMSArray";
+  424876:	e8 05 10 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 026: print #1, "uimage2DMS";
+  42487b:	e8 00 10 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 025: print #1, "iimage2DMS";
+  424880:	be 0a 00 00 00       	mov    esi,0xa
+  424885:	48 8d 3d 43 b5 05 00 	lea    rdi,[rip+0x5b543]        # 47fdcf <_IO_stdin_used+0x2dcf>
+  42488c:	e8 ff 2c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424891:	48 89 c6             	mov    rsi,rax
+  424894:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42489b:	00 
+  42489c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4248a3:	00 00 
+  4248a5:	75 61                	jne    424908 <MEMORY_T::POKE64(double, double)+0x1b038>
+  4248a7:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4248ae:	31 d2                	xor    edx,edx
+  4248b0:	bf 01 00 00 00       	mov    edi,0x1
+  4248b5:	5b                   	pop    rbx
+  4248b6:	5d                   	pop    rbp
+  4248b7:	41 5c                	pop    r12
+  4248b9:	41 5d                	pop    r13
+  4248bb:	41 5e                	pop    r14
+  4248bd:	41 5f                	pop    r15
+  4248bf:	e9 fc f0 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 024: print #1, "image2DMS";
+  4248c4:	be 09 00 00 00       	mov    esi,0x9
+  4248c9:	48 8d 3d 00 b5 05 00 	lea    rdi,[rip+0x5b500]        # 47fdd0 <_IO_stdin_used+0x2dd0>
+  4248d0:	e8 bb 2c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4248d5:	48 89 c6             	mov    rsi,rax
+  4248d8:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4248df:	00 
+  4248e0:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4248e7:	00 00 
+  4248e9:	75 22                	jne    42490d <MEMORY_T::POKE64(double, double)+0x1b03d>
+  4248eb:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4248f2:	31 d2                	xor    edx,edx
+  4248f4:	bf 01 00 00 00       	mov    edi,0x1
+  4248f9:	5b                   	pop    rbx
+  4248fa:	5d                   	pop    rbp
+  4248fb:	41 5c                	pop    r12
+  4248fd:	41 5d                	pop    r13
+  4248ff:	41 5e                	pop    r14
+  424901:	41 5f                	pop    r15
+  424903:	e9 b8 f0 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 025: print #1, "iimage2DMS";
+  424908:	e8 73 0f fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 024: print #1, "image2DMS";
+  42490d:	e8 6e 0f fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 023: print #1, "dmat4x4";
+  424912:	be 07 00 00 00       	mov    esi,0x7
+  424917:	48 8d 3d a9 b4 05 00 	lea    rdi,[rip+0x5b4a9]        # 47fdc7 <_IO_stdin_used+0x2dc7>
+  42491e:	e8 6d 2c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424923:	48 89 c6             	mov    rsi,rax
+  424926:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42492d:	00 
+  42492e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424935:	00 00 
+  424937:	75 61                	jne    42499a <MEMORY_T::POKE64(double, double)+0x1b0ca>
+  424939:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424940:	31 d2                	xor    edx,edx
+  424942:	bf 01 00 00 00       	mov    edi,0x1
+  424947:	5b                   	pop    rbx
+  424948:	5d                   	pop    rbp
+  424949:	41 5c                	pop    r12
+  42494b:	41 5d                	pop    r13
+  42494d:	41 5e                	pop    r14
+  42494f:	41 5f                	pop    r15
+  424951:	e9 6a f0 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 022: print #1, "dmat4x3";
+  424956:	be 07 00 00 00       	mov    esi,0x7
+  42495b:	48 8d 3d 5d b4 05 00 	lea    rdi,[rip+0x5b45d]        # 47fdbf <_IO_stdin_used+0x2dbf>
+  424962:	e8 29 2c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424967:	48 89 c6             	mov    rsi,rax
+  42496a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424971:	00 
+  424972:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424979:	00 00 
+  42497b:	75 22                	jne    42499f <MEMORY_T::POKE64(double, double)+0x1b0cf>
+  42497d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424984:	31 d2                	xor    edx,edx
+  424986:	bf 01 00 00 00       	mov    edi,0x1
+  42498b:	5b                   	pop    rbx
+  42498c:	5d                   	pop    rbp
+  42498d:	41 5c                	pop    r12
+  42498f:	41 5d                	pop    r13
+  424991:	41 5e                	pop    r14
+  424993:	41 5f                	pop    r15
+  424995:	e9 26 f0 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 023: print #1, "dmat4x4";
+  42499a:	e8 e1 0e fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 022: print #1, "dmat4x3";
+  42499f:	e8 dc 0e fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 021: print #1, "dmat4x2";
+  4249a4:	be 07 00 00 00       	mov    esi,0x7
+  4249a9:	48 8d 3d 07 b4 05 00 	lea    rdi,[rip+0x5b407]        # 47fdb7 <_IO_stdin_used+0x2db7>
+  4249b0:	e8 db 2b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4249b5:	48 89 c6             	mov    rsi,rax
+  4249b8:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4249bf:	00 
+  4249c0:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4249c7:	00 00 
+  4249c9:	75 61                	jne    424a2c <MEMORY_T::POKE64(double, double)+0x1b15c>
+  4249cb:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4249d2:	31 d2                	xor    edx,edx
+  4249d4:	bf 01 00 00 00       	mov    edi,0x1
+  4249d9:	5b                   	pop    rbx
+  4249da:	5d                   	pop    rbp
+  4249db:	41 5c                	pop    r12
+  4249dd:	41 5d                	pop    r13
+  4249df:	41 5e                	pop    r14
+  4249e1:	41 5f                	pop    r15
+  4249e3:	e9 d8 ef 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 019: print #1, "dmat3x4";  
+  4249e8:	be 07 00 00 00       	mov    esi,0x7
+  4249ed:	48 8d 3d bb b3 05 00 	lea    rdi,[rip+0x5b3bb]        # 47fdaf <_IO_stdin_used+0x2daf>
+  4249f4:	e8 97 2b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4249f9:	48 89 c6             	mov    rsi,rax
+  4249fc:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424a03:	00 
+  424a04:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424a0b:	00 00 
+  424a0d:	75 22                	jne    424a31 <MEMORY_T::POKE64(double, double)+0x1b161>
+  424a0f:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424a16:	31 d2                	xor    edx,edx
+  424a18:	bf 01 00 00 00       	mov    edi,0x1
+  424a1d:	5b                   	pop    rbx
+  424a1e:	5d                   	pop    rbp
+  424a1f:	41 5c                	pop    r12
+  424a21:	41 5d                	pop    r13
+  424a23:	41 5e                	pop    r14
+  424a25:	41 5f                	pop    r15
+  424a27:	e9 94 ef 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 021: print #1, "dmat4x2";
+  424a2c:	e8 4f 0e fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 019: print #1, "dmat3x4";  
+  424a31:	e8 4a 0e fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 018: print #1, "dmat3x3";
+  424a36:	be 07 00 00 00       	mov    esi,0x7
+  424a3b:	48 8d 3d 65 b3 05 00 	lea    rdi,[rip+0x5b365]        # 47fda7 <_IO_stdin_used+0x2da7>
+  424a42:	e8 49 2b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424a47:	48 89 c6             	mov    rsi,rax
+  424a4a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424a51:	00 
+  424a52:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424a59:	00 00 
+  424a5b:	75 61                	jne    424abe <MEMORY_T::POKE64(double, double)+0x1b1ee>
+  424a5d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424a64:	31 d2                	xor    edx,edx
+  424a66:	bf 01 00 00 00       	mov    edi,0x1
+  424a6b:	5b                   	pop    rbx
+  424a6c:	5d                   	pop    rbp
+  424a6d:	41 5c                	pop    r12
+  424a6f:	41 5d                	pop    r13
+  424a71:	41 5e                	pop    r14
+  424a73:	41 5f                	pop    r15
+  424a75:	e9 46 ef 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 017: print #1, "dmat3x2";
+  424a7a:	be 07 00 00 00       	mov    esi,0x7
+  424a7f:	48 8d 3d 19 b3 05 00 	lea    rdi,[rip+0x5b319]        # 47fd9f <_IO_stdin_used+0x2d9f>
+  424a86:	e8 05 2b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424a8b:	48 89 c6             	mov    rsi,rax
+  424a8e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424a95:	00 
+  424a96:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424a9d:	00 00 
+  424a9f:	75 22                	jne    424ac3 <MEMORY_T::POKE64(double, double)+0x1b1f3>
+  424aa1:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424aa8:	31 d2                	xor    edx,edx
+  424aaa:	bf 01 00 00 00       	mov    edi,0x1
+  424aaf:	5b                   	pop    rbx
+  424ab0:	5d                   	pop    rbp
+  424ab1:	41 5c                	pop    r12
+  424ab3:	41 5d                	pop    r13
+  424ab5:	41 5e                	pop    r14
+  424ab7:	41 5f                	pop    r15
+  424ab9:	e9 02 ef 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 018: print #1, "dmat3x3";
+  424abe:	e8 bd 0d fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 017: print #1, "dmat3x2";
+  424ac3:	e8 b8 0d fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 016: print #1, "dmat2x4";
+  424ac8:	be 07 00 00 00       	mov    esi,0x7
+  424acd:	48 8d 3d c3 b2 05 00 	lea    rdi,[rip+0x5b2c3]        # 47fd97 <_IO_stdin_used+0x2d97>
+  424ad4:	e8 b7 2a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424ad9:	48 89 c6             	mov    rsi,rax
+  424adc:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424ae3:	00 
+  424ae4:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424aeb:	00 00 
+  424aed:	75 61                	jne    424b50 <MEMORY_T::POKE64(double, double)+0x1b280>
+  424aef:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424af6:	31 d2                	xor    edx,edx
+  424af8:	bf 01 00 00 00       	mov    edi,0x1
+  424afd:	5b                   	pop    rbx
+  424afe:	5d                   	pop    rbp
+  424aff:	41 5c                	pop    r12
+  424b01:	41 5d                	pop    r13
+  424b03:	41 5e                	pop    r14
+  424b05:	41 5f                	pop    r15
+  424b07:	e9 b4 ee 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 015: print #1, "dmat2x3";
+  424b0c:	be 07 00 00 00       	mov    esi,0x7
+  424b11:	48 8d 3d 77 b2 05 00 	lea    rdi,[rip+0x5b277]        # 47fd8f <_IO_stdin_used+0x2d8f>
+  424b18:	e8 73 2a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424b1d:	48 89 c6             	mov    rsi,rax
+  424b20:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424b27:	00 
+  424b28:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424b2f:	00 00 
+  424b31:	75 22                	jne    424b55 <MEMORY_T::POKE64(double, double)+0x1b285>
+  424b33:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424b3a:	31 d2                	xor    edx,edx
+  424b3c:	bf 01 00 00 00       	mov    edi,0x1
+  424b41:	5b                   	pop    rbx
+  424b42:	5d                   	pop    rbp
+  424b43:	41 5c                	pop    r12
+  424b45:	41 5d                	pop    r13
+  424b47:	41 5e                	pop    r14
+  424b49:	41 5f                	pop    r15
+  424b4b:	e9 70 ee 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 016: print #1, "dmat2x4";
+  424b50:	e8 2b 0d fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 015: print #1, "dmat2x3";
+  424b55:	e8 26 0d fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 014: print #1, "dmat2x2";
+  424b5a:	be 07 00 00 00       	mov    esi,0x7
+  424b5f:	48 8d 3d 21 b2 05 00 	lea    rdi,[rip+0x5b221]        # 47fd87 <_IO_stdin_used+0x2d87>
+  424b66:	e8 25 2a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424b6b:	48 89 c6             	mov    rsi,rax
+  424b6e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424b75:	00 
+  424b76:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424b7d:	00 00 
+  424b7f:	75 61                	jne    424be2 <MEMORY_T::POKE64(double, double)+0x1b312>
+  424b81:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424b88:	31 d2                	xor    edx,edx
+  424b8a:	bf 01 00 00 00       	mov    edi,0x1
+  424b8f:	5b                   	pop    rbx
+  424b90:	5d                   	pop    rbp
+  424b91:	41 5c                	pop    r12
+  424b93:	41 5d                	pop    r13
+  424b95:	41 5e                	pop    r14
+  424b97:	41 5f                	pop    r15
+  424b99:	e9 22 ee 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 013: print #1, "dmat4";
+  424b9e:	be 05 00 00 00       	mov    esi,0x5
+  424ba3:	48 8d 3d d7 b1 05 00 	lea    rdi,[rip+0x5b1d7]        # 47fd81 <_IO_stdin_used+0x2d81>
+  424baa:	e8 e1 29 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424baf:	48 89 c6             	mov    rsi,rax
+  424bb2:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424bb9:	00 
+  424bba:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424bc1:	00 00 
+  424bc3:	75 22                	jne    424be7 <MEMORY_T::POKE64(double, double)+0x1b317>
+  424bc5:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424bcc:	31 d2                	xor    edx,edx
+  424bce:	bf 01 00 00 00       	mov    edi,0x1
+  424bd3:	5b                   	pop    rbx
+  424bd4:	5d                   	pop    rbp
+  424bd5:	41 5c                	pop    r12
+  424bd7:	41 5d                	pop    r13
+  424bd9:	41 5e                	pop    r14
+  424bdb:	41 5f                	pop    r15
+  424bdd:	e9 de ed 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 014: print #1, "dmat2x2";
+  424be2:	e8 99 0c fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 013: print #1, "dmat4";
+  424be7:	e8 94 0c fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 012: print #1, "dmat3";
+  424bec:	be 05 00 00 00       	mov    esi,0x5
+  424bf1:	48 8d 3d 83 b1 05 00 	lea    rdi,[rip+0x5b183]        # 47fd7b <_IO_stdin_used+0x2d7b>
+  424bf8:	e8 93 29 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424bfd:	48 89 c6             	mov    rsi,rax
+  424c00:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424c07:	00 
+  424c08:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424c0f:	00 00 
+  424c11:	75 61                	jne    424c74 <MEMORY_T::POKE64(double, double)+0x1b3a4>
+  424c13:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424c1a:	31 d2                	xor    edx,edx
+  424c1c:	bf 01 00 00 00       	mov    edi,0x1
+  424c21:	5b                   	pop    rbx
+  424c22:	5d                   	pop    rbp
+  424c23:	41 5c                	pop    r12
+  424c25:	41 5d                	pop    r13
+  424c27:	41 5e                	pop    r14
+  424c29:	41 5f                	pop    r15
+  424c2b:	e9 90 ed 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 011: print #1, "dmat2";
+  424c30:	be 05 00 00 00       	mov    esi,0x5
+  424c35:	48 8d 3d 39 b1 05 00 	lea    rdi,[rip+0x5b139]        # 47fd75 <_IO_stdin_used+0x2d75>
+  424c3c:	e8 4f 29 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424c41:	48 89 c6             	mov    rsi,rax
+  424c44:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424c4b:	00 
+  424c4c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424c53:	00 00 
+  424c55:	75 22                	jne    424c79 <MEMORY_T::POKE64(double, double)+0x1b3a9>
+  424c57:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424c5e:	31 d2                	xor    edx,edx
+  424c60:	bf 01 00 00 00       	mov    edi,0x1
+  424c65:	5b                   	pop    rbx
+  424c66:	5d                   	pop    rbp
+  424c67:	41 5c                	pop    r12
+  424c69:	41 5d                	pop    r13
+  424c6b:	41 5e                	pop    r14
+  424c6d:	41 5f                	pop    r15
+  424c6f:	e9 4c ed 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 012: print #1, "dmat3";
+  424c74:	e8 07 0c fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 011: print #1, "dmat2";
+  424c79:	e8 02 0c fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 010: print #1, "precise";
+  424c7e:	be 07 00 00 00       	mov    esi,0x7
+  424c83:	48 8d 3d e3 b0 05 00 	lea    rdi,[rip+0x5b0e3]        # 47fd6d <_IO_stdin_used+0x2d6d>
+  424c8a:	e8 01 29 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424c8f:	48 89 c6             	mov    rsi,rax
+  424c92:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424c99:	00 
+  424c9a:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424ca1:	00 00 
+  424ca3:	75 61                	jne    424d06 <MEMORY_T::POKE64(double, double)+0x1b436>
+  424ca5:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424cac:	31 d2                	xor    edx,edx
+  424cae:	bf 01 00 00 00       	mov    edi,0x1
+  424cb3:	5b                   	pop    rbx
+  424cb4:	5d                   	pop    rbp
+  424cb5:	41 5c                	pop    r12
+  424cb7:	41 5d                	pop    r13
+  424cb9:	41 5e                	pop    r14
+  424cbb:	41 5f                	pop    r15
+  424cbd:	e9 fe ec 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 009: print #1, "sample";
+  424cc2:	be 06 00 00 00       	mov    esi,0x6
+  424cc7:	48 8d 3d 0c 89 05 00 	lea    rdi,[rip+0x5890c]        # 47d5da <_IO_stdin_used+0x5da>
+  424cce:	e8 bd 28 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424cd3:	48 89 c6             	mov    rsi,rax
+  424cd6:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424cdd:	00 
+  424cde:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424ce5:	00 00 
+  424ce7:	75 22                	jne    424d0b <MEMORY_T::POKE64(double, double)+0x1b43b>
+  424ce9:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424cf0:	31 d2                	xor    edx,edx
+  424cf2:	bf 01 00 00 00       	mov    edi,0x1
+  424cf7:	5b                   	pop    rbx
+  424cf8:	5d                   	pop    rbp
+  424cf9:	41 5c                	pop    r12
+  424cfb:	41 5d                	pop    r13
+  424cfd:	41 5e                	pop    r14
+  424cff:	41 5f                	pop    r15
+  424d01:	e9 ba ec 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 010: print #1, "precise";
+  424d06:	e8 75 0b fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 009: print #1, "sample";
+  424d0b:	e8 70 0b fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 008: print #1, "patch";
+  424d10:	be 05 00 00 00       	mov    esi,0x5
+  424d15:	48 8d 3d 16 8a 05 00 	lea    rdi,[rip+0x58a16]        # 47d732 <_IO_stdin_used+0x732>
+  424d1c:	e8 6f 28 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424d21:	48 89 c6             	mov    rsi,rax
+  424d24:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424d2b:	00 
+  424d2c:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424d33:	00 00 
+  424d35:	75 61                	jne    424d98 <MEMORY_T::POKE64(double, double)+0x1b4c8>
+  424d37:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424d3e:	31 d2                	xor    edx,edx
+  424d40:	bf 01 00 00 00       	mov    edi,0x1
+  424d45:	5b                   	pop    rbx
+  424d46:	5d                   	pop    rbp
+  424d47:	41 5c                	pop    r12
+  424d49:	41 5d                	pop    r13
+  424d4b:	41 5e                	pop    r14
+  424d4d:	41 5f                	pop    r15
+  424d4f:	e9 6c ec 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 007: print #1, "atomic_uint";
+  424d54:	be 0b 00 00 00       	mov    esi,0xb
+  424d59:	48 8d 3d 01 b0 05 00 	lea    rdi,[rip+0x5b001]        # 47fd61 <_IO_stdin_used+0x2d61>
+  424d60:	e8 2b 28 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424d65:	48 89 c6             	mov    rsi,rax
+  424d68:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424d6f:	00 
+  424d70:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424d77:	00 00 
+  424d79:	75 22                	jne    424d9d <MEMORY_T::POKE64(double, double)+0x1b4cd>
+  424d7b:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424d82:	31 d2                	xor    edx,edx
+  424d84:	bf 01 00 00 00       	mov    edi,0x1
+  424d89:	5b                   	pop    rbx
+  424d8a:	5d                   	pop    rbp
+  424d8b:	41 5c                	pop    r12
+  424d8d:	41 5d                	pop    r13
+  424d8f:	41 5e                	pop    r14
+  424d91:	41 5f                	pop    r15
+  424d93:	e9 28 ec 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 008: print #1, "patch";
+  424d98:	e8 e3 0a fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 007: print #1, "atomic_uint";
+  424d9d:	e8 de 0a fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 006: print #1, "writeonly";
+  424da2:	be 09 00 00 00       	mov    esi,0x9
+  424da7:	48 8d 3d a9 af 05 00 	lea    rdi,[rip+0x5afa9]        # 47fd57 <_IO_stdin_used+0x2d57>
+  424dae:	e8 dd 27 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424db3:	48 89 c6             	mov    rsi,rax
+  424db6:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424dbd:	00 
+  424dbe:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424dc5:	00 00 
+  424dc7:	75 61                	jne    424e2a <MEMORY_T::POKE64(double, double)+0x1b55a>
+  424dc9:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424dd0:	31 d2                	xor    edx,edx
+  424dd2:	bf 01 00 00 00       	mov    edi,0x1
+  424dd7:	5b                   	pop    rbx
+  424dd8:	5d                   	pop    rbp
+  424dd9:	41 5c                	pop    r12
+  424ddb:	41 5d                	pop    r13
+  424ddd:	41 5e                	pop    r14
+  424ddf:	41 5f                	pop    r15
+  424de1:	e9 da eb 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 005: print #1, "readonly";
+  424de6:	be 08 00 00 00       	mov    esi,0x8
+  424deb:	48 8d 3d 5c af 05 00 	lea    rdi,[rip+0x5af5c]        # 47fd4e <_IO_stdin_used+0x2d4e>
+  424df2:	e8 99 27 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424df7:	48 89 c6             	mov    rsi,rax
+  424dfa:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424e01:	00 
+  424e02:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424e09:	00 00 
+  424e0b:	75 22                	jne    424e2f <MEMORY_T::POKE64(double, double)+0x1b55f>
+  424e0d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424e14:	31 d2                	xor    edx,edx
+  424e16:	bf 01 00 00 00       	mov    edi,0x1
+  424e1b:	5b                   	pop    rbx
+  424e1c:	5d                   	pop    rbp
+  424e1d:	41 5c                	pop    r12
+  424e1f:	41 5d                	pop    r13
+  424e21:	41 5e                	pop    r14
+  424e23:	41 5f                	pop    r15
+  424e25:	e9 96 eb 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 006: print #1, "writeonly";
+  424e2a:	e8 51 0a fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 005: print #1, "readonly";
+  424e2f:	e8 4c 0a fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 004: print #1, "restrict";
+  424e34:	be 08 00 00 00       	mov    esi,0x8
+  424e39:	48 8d 3d 05 af 05 00 	lea    rdi,[rip+0x5af05]        # 47fd45 <_IO_stdin_used+0x2d45>
+  424e40:	e8 4b 27 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424e45:	48 89 c6             	mov    rsi,rax
+  424e48:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424e4f:	00 
+  424e50:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424e57:	00 00 
+  424e59:	75 61                	jne    424ebc <MEMORY_T::POKE64(double, double)+0x1b5ec>
+  424e5b:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424e62:	31 d2                	xor    edx,edx
+  424e64:	bf 01 00 00 00       	mov    edi,0x1
+  424e69:	5b                   	pop    rbx
+  424e6a:	5d                   	pop    rbp
+  424e6b:	41 5c                	pop    r12
+  424e6d:	41 5d                	pop    r13
+  424e6f:	41 5e                	pop    r14
+  424e71:	41 5f                	pop    r15
+  424e73:	e9 48 eb 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 002: print #1, "coherent";
+  424e78:	be 08 00 00 00       	mov    esi,0x8
+  424e7d:	48 8d 3d b8 ae 05 00 	lea    rdi,[rip+0x5aeb8]        # 47fd3c <_IO_stdin_used+0x2d3c>
+  424e84:	e8 07 27 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424e89:	48 89 c6             	mov    rsi,rax
+  424e8c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424e93:	00 
+  424e94:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424e9b:	00 00 
+  424e9d:	75 22                	jne    424ec1 <MEMORY_T::POKE64(double, double)+0x1b5f1>
+  424e9f:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424ea6:	31 d2                	xor    edx,edx
+  424ea8:	bf 01 00 00 00       	mov    edi,0x1
+  424ead:	5b                   	pop    rbx
+  424eae:	5d                   	pop    rbp
+  424eaf:	41 5c                	pop    r12
+  424eb1:	41 5d                	pop    r13
+  424eb3:	41 5e                	pop    r14
+  424eb5:	41 5f                	pop    r15
+  424eb7:	e9 04 eb 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 004: print #1, "restrict";
+  424ebc:	e8 bf 09 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 002: print #1, "coherent";
+  424ec1:	e8 ba 09 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 001: print #1, "shared";
+  424ec6:	be 06 00 00 00       	mov    esi,0x6
+  424ecb:	48 8d 3d 63 ae 05 00 	lea    rdi,[rip+0x5ae63]        # 47fd35 <_IO_stdin_used+0x2d35>
+  424ed2:	e8 b9 26 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424ed7:	48 89 c6             	mov    rsi,rax
+  424eda:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424ee1:	00 
+  424ee2:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424ee9:	00 00 
+  424eeb:	75 61                	jne    424f4e <MEMORY_T::POKE64(double, double)+0x1b67e>
+  424eed:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424ef4:	31 d2                	xor    edx,edx
+  424ef6:	bf 01 00 00 00       	mov    edi,0x1
+  424efb:	5b                   	pop    rbx
+  424efc:	5d                   	pop    rbp
+  424efd:	41 5c                	pop    r12
+  424eff:	41 5d                	pop    r13
+  424f01:	41 5e                	pop    r14
+  424f03:	41 5f                	pop    r15
+  424f05:	e9 b6 ea 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 000: print #1, "buffer";
+  424f0a:	be 06 00 00 00       	mov    esi,0x6
+  424f0f:	48 8d 3d 18 ae 05 00 	lea    rdi,[rip+0x5ae18]        # 47fd2e <_IO_stdin_used+0x2d2e>
+  424f16:	e8 75 26 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424f1b:	48 89 c6             	mov    rsi,rax
+  424f1e:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424f25:	00 
+  424f26:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424f2d:	00 00 
+  424f2f:	75 22                	jne    424f53 <MEMORY_T::POKE64(double, double)+0x1b683>
+  424f31:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424f38:	31 d2                	xor    edx,edx
+  424f3a:	bf 01 00 00 00       	mov    edi,0x1
+  424f3f:	5b                   	pop    rbx
+  424f40:	5d                   	pop    rbp
+  424f41:	41 5c                	pop    r12
+  424f43:	41 5d                	pop    r13
+  424f45:	41 5e                	pop    r14
+  424f47:	41 5f                	pop    r15
+  424f49:	e9 72 ea 04 00       	jmp    4739c0 <fb_PrintString>
+;				        case 001: print #1, "shared";
+  424f4e:	e8 2d 09 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				        case 000: print #1, "buffer";
+  424f53:	e8 28 09 fe ff       	call   405880 <__stack_chk_fail@plt>
+;				     select case as const cast(ulongint, mem64(49361))
+  424f58:	48 8b 44 24 10       	mov    rax,QWORD PTR [rsp+0x10]
+  424f5d:	f2 0f 10 80 88 06 06 	movsd  xmm0,QWORD PTR [rax+0x60688]
+  424f64:	00 
+  424f65:	e8 f6 03 fe ff       	call   405360 <nearbyint@plt>
+  424f6a:	66 0f 2f 04 24       	comisd xmm0,QWORD PTR [rsp]
+  424f6f:	73 20                	jae    424f91 <MEMORY_T::POKE64(double, double)+0x1b6c1>
+  424f71:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+;'                 expression is FALSE.
+  424f76:	48 3d ff 00 00 00    	cmp    rax,0xff
+  424f7c:	0f 87 7e 74 fe ff    	ja     40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;                       case 116: print #1, "unless";
+  424f82:	48 8d 3d 57 1b 06 00 	lea    rdi,[rip+0x61b57]        # 486ae0 <tmp$2886.6>
+  424f89:	ff 24 c7             	jmp    QWORD PTR [rdi+rax*8]
+;				case 021d ' CORE - 7
+  424f8c:	e9 6f 74 fe ff       	jmp    40c400 <MEMORY_T::POKE64(double, double)+0x2b30>
+;				     select case as const cast(ulongint, mem64(49361))
+  424f91:	f2 0f 5c 04 24       	subsd  xmm0,QWORD PTR [rsp]
+  424f96:	f2 48 0f 2c c0       	cvttsd2si rax,xmm0
+  424f9b:	48 31 d8             	xor    rax,rbx
+  424f9e:	eb d6                	jmp    424f76 <MEMORY_T::POKE64(double, double)+0x1b6a6>
+;						case 161: print #1, "zeros";
+  424fa0:	be 05 00 00 00       	mov    esi,0x5
+  424fa5:	48 8d 3d 7c ad 05 00 	lea    rdi,[rip+0x5ad7c]        # 47fd28 <_IO_stdin_used+0x2d28>
+  424fac:	e8 df 25 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424fb1:	48 89 c6             	mov    rsi,rax
+  424fb4:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424fbb:	00 
+  424fbc:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  424fc3:	00 00 
+  424fc5:	75 61                	jne    425028 <MEMORY_T::POKE64(double, double)+0x1b758>
+  424fc7:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  424fce:	31 d2                	xor    edx,edx
+  424fd0:	bf 01 00 00 00       	mov    edi,0x1
+  424fd5:	5b                   	pop    rbx
+  424fd6:	5d                   	pop    rbp
+  424fd7:	41 5c                	pop    r12
+  424fd9:	41 5d                	pop    r13
+  424fdb:	41 5e                	pop    r14
+  424fdd:	41 5f                	pop    r15
+  424fdf:	e9 dc e9 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 160: print #1, "zeroes";
+  424fe4:	be 06 00 00 00       	mov    esi,0x6
+  424fe9:	48 8d 3d 31 ad 05 00 	lea    rdi,[rip+0x5ad31]        # 47fd21 <_IO_stdin_used+0x2d21>
+  424ff0:	e8 9b 25 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  424ff5:	48 89 c6             	mov    rsi,rax
+  424ff8:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  424fff:	00 
+  425000:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425007:	00 00 
+  425009:	75 22                	jne    42502d <MEMORY_T::POKE64(double, double)+0x1b75d>
+  42500b:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425012:	31 d2                	xor    edx,edx
+  425014:	bf 01 00 00 00       	mov    edi,0x1
+  425019:	5b                   	pop    rbx
+  42501a:	5d                   	pop    rbp
+  42501b:	41 5c                	pop    r12
+  42501d:	41 5d                	pop    r13
+  42501f:	41 5e                	pop    r14
+  425021:	41 5f                	pop    r15
+  425023:	e9 98 e9 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 161: print #1, "zeros";
+  425028:	e8 53 08 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 160: print #1, "zeroes";
+  42502d:	e8 4e 08 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 159: print #1, "zero";
+  425032:	be 04 00 00 00       	mov    esi,0x4
+  425037:	48 8d 3d de ac 05 00 	lea    rdi,[rip+0x5acde]        # 47fd1c <_IO_stdin_used+0x2d1c>
+  42503e:	e8 4d 25 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425043:	48 89 c6             	mov    rsi,rax
+  425046:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42504d:	00 
+  42504e:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425055:	00 00 
+  425057:	75 61                	jne    4250ba <MEMORY_T::POKE64(double, double)+0x1b7ea>
+  425059:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425060:	31 d2                	xor    edx,edx
+  425062:	bf 01 00 00 00       	mov    edi,0x1
+  425067:	5b                   	pop    rbx
+  425068:	5d                   	pop    rbp
+  425069:	41 5c                	pop    r12
+  42506b:	41 5d                	pop    r13
+  42506d:	41 5e                	pop    r14
+  42506f:	41 5f                	pop    r15
+  425071:	e9 4a e9 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 158: print #1, "z";
+  425076:	be 01 00 00 00       	mov    esi,0x1
+  42507b:	48 8d 3d 5e 8e 05 00 	lea    rdi,[rip+0x58e5e]        # 47dee0 <_IO_stdin_used+0xee0>
+  425082:	e8 09 25 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425087:	48 89 c6             	mov    rsi,rax
+  42508a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425091:	00 
+  425092:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425099:	00 00 
+  42509b:	75 22                	jne    4250bf <MEMORY_T::POKE64(double, double)+0x1b7ef>
+  42509d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4250a4:	31 d2                	xor    edx,edx
+  4250a6:	bf 01 00 00 00       	mov    edi,0x1
+  4250ab:	5b                   	pop    rbx
+  4250ac:	5d                   	pop    rbp
+  4250ad:	41 5c                	pop    r12
+  4250af:	41 5d                	pop    r13
+  4250b1:	41 5e                	pop    r14
+  4250b3:	41 5f                	pop    r15
+  4250b5:	e9 06 e9 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 159: print #1, "zero";
+  4250ba:	e8 c1 07 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 158: print #1, "z";
+  4250bf:	e8 bc 07 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 157: print #1, "yield";
+  4250c4:	be 05 00 00 00       	mov    esi,0x5
+  4250c9:	48 8d 3d 46 ac 05 00 	lea    rdi,[rip+0x5ac46]        # 47fd16 <_IO_stdin_used+0x2d16>
+  4250d0:	e8 bb 24 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4250d5:	48 89 c6             	mov    rsi,rax
+  4250d8:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4250df:	00 
+  4250e0:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4250e7:	00 00 
+  4250e9:	75 61                	jne    42514c <MEMORY_T::POKE64(double, double)+0x1b87c>
+  4250eb:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4250f2:	31 d2                	xor    edx,edx
+  4250f4:	bf 01 00 00 00       	mov    edi,0x1
+  4250f9:	5b                   	pop    rbx
+  4250fa:	5d                   	pop    rbp
+  4250fb:	41 5c                	pop    r12
+  4250fd:	41 5d                	pop    r13
+  4250ff:	41 5e                	pop    r14
+  425101:	41 5f                	pop    r15
+  425103:	e9 b8 e8 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 156: print #1, "yes";
+  425108:	be 03 00 00 00       	mov    esi,0x3
+  42510d:	48 8d 3d fe ab 05 00 	lea    rdi,[rip+0x5abfe]        # 47fd12 <_IO_stdin_used+0x2d12>
+  425114:	e8 77 24 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425119:	48 89 c6             	mov    rsi,rax
+  42511c:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425123:	00 
+  425124:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42512b:	00 00 
+  42512d:	75 22                	jne    425151 <MEMORY_T::POKE64(double, double)+0x1b881>
+  42512f:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425136:	31 d2                	xor    edx,edx
+  425138:	bf 01 00 00 00       	mov    edi,0x1
+  42513d:	5b                   	pop    rbx
+  42513e:	5d                   	pop    rbp
+  42513f:	41 5c                	pop    r12
+  425141:	41 5d                	pop    r13
+  425143:	41 5e                	pop    r14
+  425145:	41 5f                	pop    r15
+  425147:	e9 74 e8 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 157: print #1, "yield";
+  42514c:	e8 2f 07 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 156: print #1, "yes";
+  425151:	e8 2a 07 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 155: print #1, "year";
+  425156:	be 04 00 00 00       	mov    esi,0x4
+  42515b:	48 8d 3d ab ab 05 00 	lea    rdi,[rip+0x5abab]        # 47fd0d <_IO_stdin_used+0x2d0d>
+  425162:	e8 29 24 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425167:	48 89 c6             	mov    rsi,rax
+  42516a:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425171:	00 
+  425172:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425179:	00 00 
+  42517b:	75 64                	jne    4251e1 <MEMORY_T::POKE64(double, double)+0x1b911>
+  42517d:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425184:	31 d2                	xor    edx,edx
+  425186:	bf 01 00 00 00       	mov    edi,0x1
+  42518b:	5b                   	pop    rbx
+  42518c:	5d                   	pop    rbp
+  42518d:	41 5c                	pop    r12
+  42518f:	41 5d                	pop    r13
+  425191:	41 5e                	pop    r14
+  425193:	41 5f                	pop    r15
+  425195:	e9 26 e8 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 154: print #1, "y"
+  42519a:	be 01 00 00 00       	mov    esi,0x1
+  42519f:	48 8d 3d 7d b4 05 00 	lea    rdi,[rip+0x5b47d]        # 480623 <_IO_stdin_used+0x3623>
+  4251a6:	e8 e5 23 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4251ab:	48 89 c6             	mov    rsi,rax
+  4251ae:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4251b5:	00 
+  4251b6:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4251bd:	00 00 
+  4251bf:	75 25                	jne    4251e6 <MEMORY_T::POKE64(double, double)+0x1b916>
+  4251c1:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4251c8:	ba 01 00 00 00       	mov    edx,0x1
+  4251cd:	bf 01 00 00 00       	mov    edi,0x1
+  4251d2:	5b                   	pop    rbx
+  4251d3:	5d                   	pop    rbp
+  4251d4:	41 5c                	pop    r12
+  4251d6:	41 5d                	pop    r13
+  4251d8:	41 5e                	pop    r14
+  4251da:	41 5f                	pop    r15
+  4251dc:	e9 df e7 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 155: print #1, "year";
+  4251e1:	e8 9a 06 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 154: print #1, "y"
+  4251e6:	e8 95 06 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 153: print #1, "xor_bits";
+  4251eb:	be 08 00 00 00       	mov    esi,0x8
+  4251f0:	48 8d 3d 0d ab 05 00 	lea    rdi,[rip+0x5ab0d]        # 47fd04 <_IO_stdin_used+0x2d04>
+  4251f7:	e8 94 23 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4251fc:	48 89 c6             	mov    rsi,rax
+  4251ff:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425206:	00 
+  425207:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42520e:	00 00 
+  425210:	75 61                	jne    425273 <MEMORY_T::POKE64(double, double)+0x1b9a3>
+  425212:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425219:	31 d2                	xor    edx,edx
+  42521b:	bf 01 00 00 00       	mov    edi,0x1
+  425220:	5b                   	pop    rbx
+  425221:	5d                   	pop    rbp
+  425222:	41 5c                	pop    r12
+  425224:	41 5d                	pop    r13
+  425226:	41 5e                	pop    r14
+  425228:	41 5f                	pop    r15
+  42522a:	e9 91 e7 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 152: print #1, "xor";
+  42522f:	be 03 00 00 00       	mov    esi,0x3
+  425234:	48 8d 3d b3 b5 05 00 	lea    rdi,[rip+0x5b5b3]        # 4807ee <_IO_stdin_used+0x37ee>
+  42523b:	e8 50 23 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425240:	48 89 c6             	mov    rsi,rax
+  425243:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42524a:	00 
+  42524b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425252:	00 00 
+  425254:	75 22                	jne    425278 <MEMORY_T::POKE64(double, double)+0x1b9a8>
+  425256:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42525d:	31 d2                	xor    edx,edx
+  42525f:	bf 01 00 00 00       	mov    edi,0x1
+  425264:	5b                   	pop    rbx
+  425265:	5d                   	pop    rbp
+  425266:	41 5c                	pop    r12
+  425268:	41 5d                	pop    r13
+  42526a:	41 5e                	pop    r14
+  42526c:	41 5f                	pop    r15
+  42526e:	e9 4d e7 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 153: print #1, "xor_bits";
+  425273:	e8 08 06 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 152: print #1, "xor";
+  425278:	e8 03 06 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 151: print #1, "x";
+  42527d:	be 01 00 00 00       	mov    esi,0x1
+  425282:	48 8d 3d 2e 9c 05 00 	lea    rdi,[rip+0x59c2e]        # 47eeb7 <_IO_stdin_used+0x1eb7>
+  425289:	e8 02 23 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42528e:	48 89 c6             	mov    rsi,rax
+  425291:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425298:	00 
+  425299:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4252a0:	00 00 
+  4252a2:	75 61                	jne    425305 <MEMORY_T::POKE64(double, double)+0x1ba35>
+  4252a4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4252ab:	31 d2                	xor    edx,edx
+  4252ad:	bf 01 00 00 00       	mov    edi,0x1
+  4252b2:	5b                   	pop    rbx
+  4252b3:	5d                   	pop    rbp
+  4252b4:	41 5c                	pop    r12
+  4252b6:	41 5d                	pop    r13
+  4252b8:	41 5e                	pop    r14
+  4252ba:	41 5f                	pop    r15
+  4252bc:	e9 ff e6 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 150: print #1, "write-only";
+  4252c1:	be 0a 00 00 00       	mov    esi,0xa
+  4252c6:	48 8d 3d 2c aa 05 00 	lea    rdi,[rip+0x5aa2c]        # 47fcf9 <_IO_stdin_used+0x2cf9>
+  4252cd:	e8 be 22 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4252d2:	48 89 c6             	mov    rsi,rax
+  4252d5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4252dc:	00 
+  4252dd:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4252e4:	00 00 
+  4252e6:	75 22                	jne    42530a <MEMORY_T::POKE64(double, double)+0x1ba3a>
+  4252e8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4252ef:	31 d2                	xor    edx,edx
+  4252f1:	bf 01 00 00 00       	mov    edi,0x1
+  4252f6:	5b                   	pop    rbx
+  4252f7:	5d                   	pop    rbp
+  4252f8:	41 5c                	pop    r12
+  4252fa:	41 5d                	pop    r13
+  4252fc:	41 5e                	pop    r14
+  4252fe:	41 5f                	pop    r15
+  425300:	e9 bb e6 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 151: print #1, "x";
+  425305:	e8 76 05 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 150: print #1, "write-only";
+  42530a:	e8 71 05 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 149: print #1, "write";
+  42530f:	be 05 00 00 00       	mov    esi,0x5
+  425314:	48 8d 3d 03 8d 05 00 	lea    rdi,[rip+0x58d03]        # 47e01e <_IO_stdin_used+0x101e>
+  42531b:	e8 70 22 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425320:	48 89 c6             	mov    rsi,rax
+  425323:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42532a:	00 
+  42532b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425332:	00 00 
+  425334:	75 61                	jne    425397 <MEMORY_T::POKE64(double, double)+0x1bac7>
+  425336:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42533d:	31 d2                	xor    edx,edx
+  42533f:	bf 01 00 00 00       	mov    edi,0x1
+  425344:	5b                   	pop    rbx
+  425345:	5d                   	pop    rbp
+  425346:	41 5c                	pop    r12
+  425348:	41 5d                	pop    r13
+  42534a:	41 5e                	pop    r14
+  42534c:	41 5f                	pop    r15
+  42534e:	e9 6d e6 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 148: print #1, "wrinkles";
+  425353:	be 08 00 00 00       	mov    esi,0x8
+  425358:	48 8d 3d 91 a9 05 00 	lea    rdi,[rip+0x5a991]        # 47fcf0 <_IO_stdin_used+0x2cf0>
+  42535f:	e8 2c 22 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425364:	48 89 c6             	mov    rsi,rax
+  425367:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42536e:	00 
+  42536f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425376:	00 00 
+  425378:	75 22                	jne    42539c <MEMORY_T::POKE64(double, double)+0x1bacc>
+  42537a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425381:	31 d2                	xor    edx,edx
+  425383:	bf 01 00 00 00       	mov    edi,0x1
+  425388:	5b                   	pop    rbx
+  425389:	5d                   	pop    rbp
+  42538a:	41 5c                	pop    r12
+  42538c:	41 5d                	pop    r13
+  42538e:	41 5e                	pop    r14
+  425390:	41 5f                	pop    r15
+  425392:	e9 29 e6 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 149: print #1, "write";
+  425397:	e8 e4 04 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 148: print #1, "wrinkles";
+  42539c:	e8 df 04 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 147: print #1, "working-storage";
+  4253a1:	be 0f 00 00 00       	mov    esi,0xf
+  4253a6:	48 8d 3d 33 a9 05 00 	lea    rdi,[rip+0x5a933]        # 47fce0 <_IO_stdin_used+0x2ce0>
+  4253ad:	e8 de 21 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4253b2:	48 89 c6             	mov    rsi,rax
+  4253b5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4253bc:	00 
+  4253bd:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4253c4:	00 00 
+  4253c6:	75 61                	jne    425429 <MEMORY_T::POKE64(double, double)+0x1bb59>
+  4253c8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4253cf:	31 d2                	xor    edx,edx
+  4253d1:	bf 01 00 00 00       	mov    edi,0x1
+  4253d6:	5b                   	pop    rbx
+  4253d7:	5d                   	pop    rbp
+  4253d8:	41 5c                	pop    r12
+  4253da:	41 5d                	pop    r13
+  4253dc:	41 5e                	pop    r14
+  4253de:	41 5f                	pop    r15
+  4253e0:	e9 db e5 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 146: print #1, "words";
+  4253e5:	be 05 00 00 00       	mov    esi,0x5
+  4253ea:	48 8d 3d e9 a8 05 00 	lea    rdi,[rip+0x5a8e9]        # 47fcda <_IO_stdin_used+0x2cda>
+  4253f1:	e8 9a 21 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4253f6:	48 89 c6             	mov    rsi,rax
+  4253f9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425400:	00 
+  425401:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425408:	00 00 
+  42540a:	75 22                	jne    42542e <MEMORY_T::POKE64(double, double)+0x1bb5e>
+  42540c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425413:	31 d2                	xor    edx,edx
+  425415:	bf 01 00 00 00       	mov    edi,0x1
+  42541a:	5b                   	pop    rbx
+  42541b:	5d                   	pop    rbp
+  42541c:	41 5c                	pop    r12
+  42541e:	41 5d                	pop    r13
+  425420:	41 5e                	pop    r14
+  425422:	41 5f                	pop    r15
+  425424:	e9 97 e5 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 147: print #1, "working-storage";
+  425429:	e8 52 04 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 146: print #1, "words";
+  42542e:	e8 4d 04 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 145: print #1, "wood";
+  425433:	be 04 00 00 00       	mov    esi,0x4
+  425438:	48 8d 3d 96 a8 05 00 	lea    rdi,[rip+0x5a896]        # 47fcd5 <_IO_stdin_used+0x2cd5>
+  42543f:	e8 4c 21 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425444:	48 89 c6             	mov    rsi,rax
+  425447:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42544e:	00 
+  42544f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425456:	00 00 
+  425458:	75 61                	jne    4254bb <MEMORY_T::POKE64(double, double)+0x1bbeb>
+  42545a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425461:	31 d2                	xor    edx,edx
+  425463:	bf 01 00 00 00       	mov    edi,0x1
+  425468:	5b                   	pop    rbx
+  425469:	5d                   	pop    rbp
+  42546a:	41 5c                	pop    r12
+  42546c:	41 5d                	pop    r13
+  42546e:	41 5e                	pop    r14
+  425470:	41 5f                	pop    r15
+  425472:	e9 49 e5 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 144: print #1, "with";
+  425477:	be 04 00 00 00       	mov    esi,0x4
+  42547c:	48 8d 3d 85 8b 05 00 	lea    rdi,[rip+0x58b85]        # 47e008 <_IO_stdin_used+0x1008>
+  425483:	e8 08 21 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425488:	48 89 c6             	mov    rsi,rax
+  42548b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425492:	00 
+  425493:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42549a:	00 00 
+  42549c:	75 22                	jne    4254c0 <MEMORY_T::POKE64(double, double)+0x1bbf0>
+  42549e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4254a5:	31 d2                	xor    edx,edx
+  4254a7:	bf 01 00 00 00       	mov    edi,0x1
+  4254ac:	5b                   	pop    rbx
+  4254ad:	5d                   	pop    rbp
+  4254ae:	41 5c                	pop    r12
+  4254b0:	41 5d                	pop    r13
+  4254b2:	41 5e                	pop    r14
+  4254b4:	41 5f                	pop    r15
+  4254b6:	e9 05 e5 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 145: print #1, "wood";
+  4254bb:	e8 c0 03 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 144: print #1, "with";
+  4254c0:	e8 bb 03 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 143: print #1, "window";
+  4254c5:	be 06 00 00 00       	mov    esi,0x6
+  4254ca:	48 8d 3d fd a7 05 00 	lea    rdi,[rip+0x5a7fd]        # 47fcce <_IO_stdin_used+0x2cce>
+  4254d1:	e8 ba 20 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4254d6:	48 89 c6             	mov    rsi,rax
+  4254d9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4254e0:	00 
+  4254e1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4254e8:	00 00 
+  4254ea:	75 61                	jne    42554d <MEMORY_T::POKE64(double, double)+0x1bc7d>
+  4254ec:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4254f3:	31 d2                	xor    edx,edx
+  4254f5:	bf 01 00 00 00       	mov    edi,0x1
+  4254fa:	5b                   	pop    rbx
+  4254fb:	5d                   	pop    rbp
+  4254fc:	41 5c                	pop    r12
+  4254fe:	41 5d                	pop    r13
+  425500:	41 5e                	pop    r14
+  425502:	41 5f                	pop    r15
+  425504:	e9 b7 e4 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 142: print #1, "width";
+  425509:	be 05 00 00 00       	mov    esi,0x5
+  42550e:	48 8d 3d d0 91 05 00 	lea    rdi,[rip+0x591d0]        # 47e6e5 <_IO_stdin_used+0x16e5>
+  425515:	e8 76 20 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42551a:	48 89 c6             	mov    rsi,rax
+  42551d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425524:	00 
+  425525:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42552c:	00 00 
+  42552e:	75 22                	jne    425552 <MEMORY_T::POKE64(double, double)+0x1bc82>
+  425530:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425537:	31 d2                	xor    edx,edx
+  425539:	bf 01 00 00 00       	mov    edi,0x1
+  42553e:	5b                   	pop    rbx
+  42553f:	5d                   	pop    rbp
+  425540:	41 5c                	pop    r12
+  425542:	41 5d                	pop    r13
+  425544:	41 5e                	pop    r14
+  425546:	41 5f                	pop    r15
+  425548:	e9 73 e4 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 143: print #1, "window";
+  42554d:	e8 2e 03 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 142: print #1, "width";
+  425552:	e8 29 03 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 141: print #1, "while";
+  425557:	be 05 00 00 00       	mov    esi,0x5
+  42555c:	48 8d 3d 65 a7 05 00 	lea    rdi,[rip+0x5a765]        # 47fcc8 <_IO_stdin_used+0x2cc8>
+  425563:	e8 28 20 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425568:	48 89 c6             	mov    rsi,rax
+  42556b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425572:	00 
+  425573:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42557a:	00 00 
+  42557c:	75 61                	jne    4255df <MEMORY_T::POKE64(double, double)+0x1bd0f>
+  42557e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425585:	31 d2                	xor    edx,edx
+  425587:	bf 01 00 00 00       	mov    edi,0x1
+  42558c:	5b                   	pop    rbx
+  42558d:	5d                   	pop    rbp
+  42558e:	41 5c                	pop    r12
+  425590:	41 5d                	pop    r13
+  425592:	41 5e                	pop    r14
+  425594:	41 5f                	pop    r15
+  425596:	e9 25 e4 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 140: print #1, "where";
+  42559b:	be 05 00 00 00       	mov    esi,0x5
+  4255a0:	48 8d 3d 1b a7 05 00 	lea    rdi,[rip+0x5a71b]        # 47fcc2 <_IO_stdin_used+0x2cc2>
+  4255a7:	e8 e4 1f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4255ac:	48 89 c6             	mov    rsi,rax
+  4255af:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4255b6:	00 
+  4255b7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4255be:	00 00 
+  4255c0:	75 22                	jne    4255e4 <MEMORY_T::POKE64(double, double)+0x1bd14>
+  4255c2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4255c9:	31 d2                	xor    edx,edx
+  4255cb:	bf 01 00 00 00       	mov    edi,0x1
+  4255d0:	5b                   	pop    rbx
+  4255d1:	5d                   	pop    rbp
+  4255d2:	41 5c                	pop    r12
+  4255d4:	41 5d                	pop    r13
+  4255d6:	41 5e                	pop    r14
+  4255d8:	41 5f                	pop    r15
+  4255da:	e9 e1 e3 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 141: print #1, "while";
+  4255df:	e8 9c 02 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 140: print #1, "where";
+  4255e4:	e8 97 02 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 139: print #1, "when-compiled";
+  4255e9:	be 0d 00 00 00       	mov    esi,0xd
+  4255ee:	48 8d 3d bf a6 05 00 	lea    rdi,[rip+0x5a6bf]        # 47fcb4 <_IO_stdin_used+0x2cb4>
+  4255f5:	e8 96 1f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4255fa:	48 89 c6             	mov    rsi,rax
+  4255fd:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425604:	00 
+  425605:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42560c:	00 00 
+  42560e:	75 61                	jne    425671 <MEMORY_T::POKE64(double, double)+0x1bda1>
+  425610:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425617:	31 d2                	xor    edx,edx
+  425619:	bf 01 00 00 00       	mov    edi,0x1
+  42561e:	5b                   	pop    rbx
+  42561f:	5d                   	pop    rbp
+  425620:	41 5c                	pop    r12
+  425622:	41 5d                	pop    r13
+  425624:	41 5e                	pop    r14
+  425626:	41 5f                	pop    r15
+  425628:	e9 93 e3 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 138: print #1, "when";
+  42562d:	be 04 00 00 00       	mov    esi,0x4
+  425632:	48 8d 3d 76 a6 05 00 	lea    rdi,[rip+0x5a676]        # 47fcaf <_IO_stdin_used+0x2caf>
+  425639:	e8 52 1f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42563e:	48 89 c6             	mov    rsi,rax
+  425641:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425648:	00 
+  425649:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425650:	00 00 
+  425652:	75 22                	jne    425676 <MEMORY_T::POKE64(double, double)+0x1bda6>
+  425654:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42565b:	31 d2                	xor    edx,edx
+  42565d:	bf 01 00 00 00       	mov    edi,0x1
+  425662:	5b                   	pop    rbx
+  425663:	5d                   	pop    rbp
+  425664:	41 5c                	pop    r12
+  425666:	41 5d                	pop    r13
+  425668:	41 5e                	pop    r14
+  42566a:	41 5f                	pop    r15
+  42566c:	e9 4f e3 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 139: print #1, "when-compiled";
+  425671:	e8 0a 02 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 138: print #1, "when";
+  425676:	e8 05 02 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 137: print #1, "wend";
+  42567b:	be 04 00 00 00       	mov    esi,0x4
+  425680:	48 8d 3d 23 a6 05 00 	lea    rdi,[rip+0x5a623]        # 47fcaa <_IO_stdin_used+0x2caa>
+  425687:	e8 04 1f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42568c:	48 89 c6             	mov    rsi,rax
+  42568f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425696:	00 
+  425697:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42569e:	00 00 
+  4256a0:	75 61                	jne    425703 <MEMORY_T::POKE64(double, double)+0x1be33>
+  4256a2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4256a9:	31 d2                	xor    edx,edx
+  4256ab:	bf 01 00 00 00       	mov    edi,0x1
+  4256b0:	5b                   	pop    rbx
+  4256b1:	5d                   	pop    rbp
+  4256b2:	41 5c                	pop    r12
+  4256b4:	41 5d                	pop    r13
+  4256b6:	41 5e                	pop    r14
+  4256b8:	41 5f                	pop    r15
+  4256ba:	e9 01 e3 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 136: print #1, "waves";
+  4256bf:	be 05 00 00 00       	mov    esi,0x5
+  4256c4:	48 8d 3d 94 97 05 00 	lea    rdi,[rip+0x59794]        # 47ee5f <_IO_stdin_used+0x1e5f>
+  4256cb:	e8 c0 1e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4256d0:	48 89 c6             	mov    rsi,rax
+  4256d3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4256da:	00 
+  4256db:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4256e2:	00 00 
+  4256e4:	75 22                	jne    425708 <MEMORY_T::POKE64(double, double)+0x1be38>
+  4256e6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4256ed:	31 d2                	xor    edx,edx
+  4256ef:	bf 01 00 00 00       	mov    edi,0x1
+  4256f4:	5b                   	pop    rbx
+  4256f5:	5d                   	pop    rbp
+  4256f6:	41 5c                	pop    r12
+  4256f8:	41 5d                	pop    r13
+  4256fa:	41 5e                	pop    r14
+  4256fc:	41 5f                	pop    r15
+  4256fe:	e9 bd e2 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 137: print #1, "wend";
+  425703:	e8 78 01 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 136: print #1, "waves";
+  425708:	e8 73 01 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 135: print #1, "wavelength_color";
+  42570d:	be 10 00 00 00       	mov    esi,0x10
+  425712:	48 8d 3d 80 a5 05 00 	lea    rdi,[rip+0x5a580]        # 47fc99 <_IO_stdin_used+0x2c99>
+  425719:	e8 72 1e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42571e:	48 89 c6             	mov    rsi,rax
+  425721:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425728:	00 
+  425729:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425730:	00 00 
+  425732:	75 61                	jne    425795 <MEMORY_T::POKE64(double, double)+0x1bec5>
+  425734:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42573b:	31 d2                	xor    edx,edx
+  42573d:	bf 01 00 00 00       	mov    edi,0x1
+  425742:	5b                   	pop    rbx
+  425743:	5d                   	pop    rbp
+  425744:	41 5c                	pop    r12
+  425746:	41 5d                	pop    r13
+  425748:	41 5e                	pop    r14
+  42574a:	41 5f                	pop    r15
+  42574c:	e9 6f e2 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 134: print #1, "water_level";
+  425751:	be 0b 00 00 00       	mov    esi,0xb
+  425756:	48 8d 3d 30 a5 05 00 	lea    rdi,[rip+0x5a530]        # 47fc8d <_IO_stdin_used+0x2c8d>
+  42575d:	e8 2e 1e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425762:	48 89 c6             	mov    rsi,rax
+  425765:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42576c:	00 
+  42576d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425774:	00 00 
+  425776:	75 22                	jne    42579a <MEMORY_T::POKE64(double, double)+0x1beca>
+  425778:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42577f:	31 d2                	xor    edx,edx
+  425781:	bf 01 00 00 00       	mov    edi,0x1
+  425786:	5b                   	pop    rbx
+  425787:	5d                   	pop    rbp
+  425788:	41 5c                	pop    r12
+  42578a:	41 5d                	pop    r13
+  42578c:	41 5e                	pop    r14
+  42578e:	41 5f                	pop    r15
+  425790:	e9 2b e2 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 135: print #1, "wavelength_color";
+  425795:	e8 e6 00 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 134: print #1, "water_level";
+  42579a:	e8 e1 00 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 133: print #1, "warp";
+  42579f:	be 04 00 00 00       	mov    esi,0x4
+  4257a4:	48 8d 3d dd a4 05 00 	lea    rdi,[rip+0x5a4dd]        # 47fc88 <_IO_stdin_used+0x2c88>
+  4257ab:	e8 e0 1d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4257b0:	48 89 c6             	mov    rsi,rax
+  4257b3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4257ba:	00 
+  4257bb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4257c2:	00 00 
+  4257c4:	75 61                	jne    425827 <MEMORY_T::POKE64(double, double)+0x1bf57>
+  4257c6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4257cd:	31 d2                	xor    edx,edx
+  4257cf:	bf 01 00 00 00       	mov    edi,0x1
+  4257d4:	5b                   	pop    rbx
+  4257d5:	5d                   	pop    rbp
+  4257d6:	41 5c                	pop    r12
+  4257d8:	41 5d                	pop    r13
+  4257da:	41 5e                	pop    r14
+  4257dc:	41 5f                	pop    r15
+  4257de:	e9 dd e1 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 132: print #1, "warning";
+  4257e3:	be 07 00 00 00       	mov    esi,0x7
+  4257e8:	48 8d 3d 91 a4 05 00 	lea    rdi,[rip+0x5a491]        # 47fc80 <_IO_stdin_used+0x2c80>
+  4257ef:	e8 9c 1d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4257f4:	48 89 c6             	mov    rsi,rax
+  4257f7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4257fe:	00 
+  4257ff:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425806:	00 00 
+  425808:	75 22                	jne    42582c <MEMORY_T::POKE64(double, double)+0x1bf5c>
+  42580a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425811:	31 d2                	xor    edx,edx
+  425813:	bf 01 00 00 00       	mov    edi,0x1
+  425818:	5b                   	pop    rbx
+  425819:	5d                   	pop    rbp
+  42581a:	41 5c                	pop    r12
+  42581c:	41 5d                	pop    r13
+  42581e:	41 5e                	pop    r14
+  425820:	41 5f                	pop    r15
+  425822:	e9 99 e1 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 133: print #1, "warp";
+  425827:	e8 54 00 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 132: print #1, "warning";
+  42582c:	e8 4f 00 fe ff       	call   405880 <__stack_chk_fail@plt>
+;						case 131: print #1, "ward";
+  425831:	be 04 00 00 00       	mov    esi,0x4
+  425836:	48 8d 3d d9 88 05 00 	lea    rdi,[rip+0x588d9]        # 47e116 <_IO_stdin_used+0x1116>
+  42583d:	e8 4e 1d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425842:	48 89 c6             	mov    rsi,rax
+  425845:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42584c:	00 
+  42584d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425854:	00 00 
+  425856:	75 61                	jne    4258b9 <MEMORY_T::POKE64(double, double)+0x1bfe9>
+  425858:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42585f:	31 d2                	xor    edx,edx
+  425861:	bf 01 00 00 00       	mov    edi,0x1
+  425866:	5b                   	pop    rbx
+  425867:	5d                   	pop    rbp
+  425868:	41 5c                	pop    r12
+  42586a:	41 5d                	pop    r13
+  42586c:	41 5e                	pop    r14
+  42586e:	41 5f                	pop    r15
+  425870:	e9 4b e1 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 130: print #1, "wait";
+  425875:	be 04 00 00 00       	mov    esi,0x4
+  42587a:	48 8d 3d 4c 7e 05 00 	lea    rdi,[rip+0x57e4c]        # 47d6cd <_IO_stdin_used+0x6cd>
+  425881:	e8 0a 1d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425886:	48 89 c6             	mov    rsi,rax
+  425889:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425890:	00 
+  425891:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425898:	00 00 
+  42589a:	75 22                	jne    4258be <MEMORY_T::POKE64(double, double)+0x1bfee>
+  42589c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4258a3:	31 d2                	xor    edx,edx
+  4258a5:	bf 01 00 00 00       	mov    edi,0x1
+  4258aa:	5b                   	pop    rbx
+  4258ab:	5d                   	pop    rbp
+  4258ac:	41 5c                	pop    r12
+  4258ae:	41 5d                	pop    r13
+  4258b0:	41 5e                	pop    r14
+  4258b2:	41 5f                	pop    r15
+  4258b4:	e9 07 e1 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 131: print #1, "ward";
+  4258b9:	e8 c2 ff fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 130: print #1, "wait";
+  4258be:	e8 bd ff fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 129: print #1, "w";
+  4258c3:	be 01 00 00 00       	mov    esi,0x1
+  4258c8:	48 8d 3d e2 80 05 00 	lea    rdi,[rip+0x580e2]        # 47d9b1 <_IO_stdin_used+0x9b1>
+  4258cf:	e8 bc 1c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4258d4:	48 89 c6             	mov    rsi,rax
+  4258d7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4258de:	00 
+  4258df:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4258e6:	00 00 
+  4258e8:	75 61                	jne    42594b <MEMORY_T::POKE64(double, double)+0x1c07b>
+  4258ea:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4258f1:	31 d2                	xor    edx,edx
+  4258f3:	bf 01 00 00 00       	mov    edi,0x1
+  4258f8:	5b                   	pop    rbx
+  4258f9:	5d                   	pop    rbp
+  4258fa:	41 5c                	pop    r12
+  4258fc:	41 5d                	pop    r13
+  4258fe:	41 5e                	pop    r14
+  425900:	41 5f                	pop    r15
+  425902:	e9 b9 e0 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 128: print #1, "vturbulence";
+  425907:	be 0b 00 00 00       	mov    esi,0xb
+  42590c:	48 8d 3d 61 a3 05 00 	lea    rdi,[rip+0x5a361]        # 47fc74 <_IO_stdin_used+0x2c74>
+  425913:	e8 78 1c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425918:	48 89 c6             	mov    rsi,rax
+  42591b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425922:	00 
+  425923:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42592a:	00 00 
+  42592c:	75 22                	jne    425950 <MEMORY_T::POKE64(double, double)+0x1c080>
+  42592e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425935:	31 d2                	xor    edx,edx
+  425937:	bf 01 00 00 00       	mov    edi,0x1
+  42593c:	5b                   	pop    rbx
+  42593d:	5d                   	pop    rbp
+  42593e:	41 5c                	pop    r12
+  425940:	41 5d                	pop    r13
+  425942:	41 5e                	pop    r14
+  425944:	41 5f                	pop    r15
+  425946:	e9 75 e0 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 129: print #1, "w";
+  42594b:	e8 30 ff fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 128: print #1, "vturbulence";
+  425950:	e8 2b ff fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 127: print #1, "vstr";
+  425955:	be 04 00 00 00       	mov    esi,0x4
+  42595a:	48 8d 3d 0e a3 05 00 	lea    rdi,[rip+0x5a30e]        # 47fc6f <_IO_stdin_used+0x2c6f>
+  425961:	e8 2a 1c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425966:	48 89 c6             	mov    rsi,rax
+  425969:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425970:	00 
+  425971:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425978:	00 00 
+  42597a:	75 61                	jne    4259dd <MEMORY_T::POKE64(double, double)+0x1c10d>
+  42597c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425983:	31 d2                	xor    edx,edx
+  425985:	bf 01 00 00 00       	mov    edi,0x1
+  42598a:	5b                   	pop    rbx
+  42598b:	5d                   	pop    rbp
+  42598c:	41 5c                	pop    r12
+  42598e:	41 5d                	pop    r13
+  425990:	41 5e                	pop    r14
+  425992:	41 5f                	pop    r15
+  425994:	e9 27 e0 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 126: print #1, "v_steps";
+  425999:	be 07 00 00 00       	mov    esi,0x7
+  42599e:	48 8d 3d c2 a2 05 00 	lea    rdi,[rip+0x5a2c2]        # 47fc67 <_IO_stdin_used+0x2c67>
+  4259a5:	e8 e6 1b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4259aa:	48 89 c6             	mov    rsi,rax
+  4259ad:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4259b4:	00 
+  4259b5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4259bc:	00 00 
+  4259be:	75 22                	jne    4259e2 <MEMORY_T::POKE64(double, double)+0x1c112>
+  4259c0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4259c7:	31 d2                	xor    edx,edx
+  4259c9:	bf 01 00 00 00       	mov    edi,0x1
+  4259ce:	5b                   	pop    rbx
+  4259cf:	5d                   	pop    rbp
+  4259d0:	41 5c                	pop    r12
+  4259d2:	41 5d                	pop    r13
+  4259d4:	41 5e                	pop    r14
+  4259d6:	41 5f                	pop    r15
+  4259d8:	e9 e3 df 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 127: print #1, "vstr";
+  4259dd:	e8 9e fe fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 126: print #1, "v_steps";
+  4259e2:	e8 99 fe fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 125: print #1, "vrotate";
+  4259e7:	be 07 00 00 00       	mov    esi,0x7
+  4259ec:	48 8d 3d 6c a2 05 00 	lea    rdi,[rip+0x5a26c]        # 47fc5f <_IO_stdin_used+0x2c5f>
+  4259f3:	e8 98 1b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4259f8:	48 89 c6             	mov    rsi,rax
+  4259fb:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425a02:	00 
+  425a03:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425a0a:	00 00 
+  425a0c:	75 61                	jne    425a6f <MEMORY_T::POKE64(double, double)+0x1c19f>
+  425a0e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425a15:	31 d2                	xor    edx,edx
+  425a17:	bf 01 00 00 00       	mov    edi,0x1
+  425a1c:	5b                   	pop    rbx
+  425a1d:	5d                   	pop    rbp
+  425a1e:	41 5c                	pop    r12
+  425a20:	41 5d                	pop    r13
+  425a22:	41 5e                	pop    r14
+  425a24:	41 5f                	pop    r15
+  425a26:	e9 95 df 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 124: print #1, "volatile";
+  425a2b:	be 08 00 00 00       	mov    esi,0x8
+  425a30:	48 8d 3d 1f a2 05 00 	lea    rdi,[rip+0x5a21f]        # 47fc56 <_IO_stdin_used+0x2c56>
+  425a37:	e8 54 1b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425a3c:	48 89 c6             	mov    rsi,rax
+  425a3f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425a46:	00 
+  425a47:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425a4e:	00 00 
+  425a50:	75 22                	jne    425a74 <MEMORY_T::POKE64(double, double)+0x1c1a4>
+  425a52:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425a59:	31 d2                	xor    edx,edx
+  425a5b:	bf 01 00 00 00       	mov    edi,0x1
+  425a60:	5b                   	pop    rbx
+  425a61:	5d                   	pop    rbp
+  425a62:	41 5c                	pop    r12
+  425a64:	41 5d                	pop    r13
+  425a66:	41 5e                	pop    r14
+  425a68:	41 5f                	pop    r15
+  425a6a:	e9 51 df 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 125: print #1, "vrotate";
+  425a6f:	e8 0c fe fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 124: print #1, "volatile";
+  425a74:	e8 07 fe fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 123: print #1, "void";
+  425a79:	be 04 00 00 00       	mov    esi,0x4
+  425a7e:	48 8d 3d cc a1 05 00 	lea    rdi,[rip+0x5a1cc]        # 47fc51 <_IO_stdin_used+0x2c51>
+  425a85:	e8 06 1b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425a8a:	48 89 c6             	mov    rsi,rax
+  425a8d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425a94:	00 
+  425a95:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425a9c:	00 00 
+  425a9e:	75 61                	jne    425b01 <MEMORY_T::POKE64(double, double)+0x1c231>
+  425aa0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425aa7:	31 d2                	xor    edx,edx
+  425aa9:	bf 01 00 00 00       	mov    edi,0x1
+  425aae:	5b                   	pop    rbx
+  425aaf:	5d                   	pop    rbp
+  425ab0:	41 5c                	pop    r12
+  425ab2:	41 5d                	pop    r13
+  425ab4:	41 5e                	pop    r14
+  425ab6:	41 5f                	pop    r15
+  425ab8:	e9 03 df 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 122: print #1, "vnormalize";
+  425abd:	be 0a 00 00 00       	mov    esi,0xa
+  425ac2:	48 8d 3d 7d a1 05 00 	lea    rdi,[rip+0x5a17d]        # 47fc46 <_IO_stdin_used+0x2c46>
+  425ac9:	e8 c2 1a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425ace:	48 89 c6             	mov    rsi,rax
+  425ad1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425ad8:	00 
+  425ad9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425ae0:	00 00 
+  425ae2:	75 22                	jne    425b06 <MEMORY_T::POKE64(double, double)+0x1c236>
+  425ae4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425aeb:	31 d2                	xor    edx,edx
+  425aed:	bf 01 00 00 00       	mov    edi,0x1
+  425af2:	5b                   	pop    rbx
+  425af3:	5d                   	pop    rbp
+  425af4:	41 5c                	pop    r12
+  425af6:	41 5d                	pop    r13
+  425af8:	41 5e                	pop    r14
+  425afa:	41 5f                	pop    r15
+  425afc:	e9 bf de 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 123: print #1, "void";
+  425b01:	e8 7a fd fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 122: print #1, "vnormalize";
+  425b06:	e8 75 fd fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 121: print #1, "vlength";
+  425b0b:	be 07 00 00 00       	mov    esi,0x7
+  425b10:	48 8d 3d 27 a1 05 00 	lea    rdi,[rip+0x5a127]        # 47fc3e <_IO_stdin_used+0x2c3e>
+  425b17:	e8 74 1a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425b1c:	48 89 c6             	mov    rsi,rax
+  425b1f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425b26:	00 
+  425b27:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425b2e:	00 00 
+  425b30:	75 61                	jne    425b93 <MEMORY_T::POKE64(double, double)+0x1c2c3>
+  425b32:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425b39:	31 d2                	xor    edx,edx
+  425b3b:	bf 01 00 00 00       	mov    edi,0x1
+  425b40:	5b                   	pop    rbx
+  425b41:	5d                   	pop    rbp
+  425b42:	41 5c                	pop    r12
+  425b44:	41 5d                	pop    r13
+  425b46:	41 5e                	pop    r14
+  425b48:	41 5f                	pop    r15
+  425b4a:	e9 71 de 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 120: print #1, "virtual";
+  425b4f:	be 07 00 00 00       	mov    esi,0x7
+  425b54:	48 8d 3d db a0 05 00 	lea    rdi,[rip+0x5a0db]        # 47fc36 <_IO_stdin_used+0x2c36>
+  425b5b:	e8 30 1a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425b60:	48 89 c6             	mov    rsi,rax
+  425b63:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425b6a:	00 
+  425b6b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425b72:	00 00 
+  425b74:	75 22                	jne    425b98 <MEMORY_T::POKE64(double, double)+0x1c2c8>
+  425b76:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425b7d:	31 d2                	xor    edx,edx
+  425b7f:	bf 01 00 00 00       	mov    edi,0x1
+  425b84:	5b                   	pop    rbx
+  425b85:	5d                   	pop    rbp
+  425b86:	41 5c                	pop    r12
+  425b88:	41 5d                	pop    r13
+  425b8a:	41 5e                	pop    r14
+  425b8c:	41 5f                	pop    r15
+  425b8e:	e9 2d de 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 121: print #1, "vlength";
+  425b93:	e8 e8 fc fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 120: print #1, "virtual";
+  425b98:	e8 e3 fc fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 119: print #1, "view";
+  425b9d:	be 04 00 00 00       	mov    esi,0x4
+  425ba2:	48 8d 3d 88 a0 05 00 	lea    rdi,[rip+0x5a088]        # 47fc31 <_IO_stdin_used+0x2c31>
+  425ba9:	e8 e2 19 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425bae:	48 89 c6             	mov    rsi,rax
+  425bb1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425bb8:	00 
+  425bb9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425bc0:	00 00 
+  425bc2:	75 61                	jne    425c25 <MEMORY_T::POKE64(double, double)+0x1c355>
+  425bc4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425bcb:	31 d2                	xor    edx,edx
+  425bcd:	bf 01 00 00 00       	mov    edi,0x1
+  425bd2:	5b                   	pop    rbx
+  425bd3:	5d                   	pop    rbp
+  425bd4:	41 5c                	pop    r12
+  425bd6:	41 5d                	pop    r13
+  425bd8:	41 5e                	pop    r14
+  425bda:	41 5f                	pop    r15
+  425bdc:	e9 df dd 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 118: print #1, "vertex_vectors";
+  425be1:	be 0e 00 00 00       	mov    esi,0xe
+  425be6:	48 8d 3d 35 a0 05 00 	lea    rdi,[rip+0x5a035]        # 47fc22 <_IO_stdin_used+0x2c22>
+  425bed:	e8 9e 19 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425bf2:	48 89 c6             	mov    rsi,rax
+  425bf5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425bfc:	00 
+  425bfd:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425c04:	00 00 
+  425c06:	75 22                	jne    425c2a <MEMORY_T::POKE64(double, double)+0x1c35a>
+  425c08:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425c0f:	31 d2                	xor    edx,edx
+  425c11:	bf 01 00 00 00       	mov    edi,0x1
+  425c16:	5b                   	pop    rbx
+  425c17:	5d                   	pop    rbp
+  425c18:	41 5c                	pop    r12
+  425c1a:	41 5d                	pop    r13
+  425c1c:	41 5e                	pop    r14
+  425c1e:	41 5f                	pop    r15
+  425c20:	e9 9b dd 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 119: print #1, "view";
+  425c25:	e8 56 fc fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 118: print #1, "vertex_vectors";
+  425c2a:	e8 51 fc fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 117: print #1, "version";
+  425c2f:	be 07 00 00 00       	mov    esi,0x7
+  425c34:	48 8d 3d df 9f 05 00 	lea    rdi,[rip+0x59fdf]        # 47fc1a <_IO_stdin_used+0x2c1a>
+  425c3b:	e8 50 19 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425c40:	48 89 c6             	mov    rsi,rax
+  425c43:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425c4a:	00 
+  425c4b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425c52:	00 00 
+  425c54:	75 61                	jne    425cb7 <MEMORY_T::POKE64(double, double)+0x1c3e7>
+  425c56:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425c5d:	31 d2                	xor    edx,edx
+  425c5f:	bf 01 00 00 00       	mov    edi,0x1
+  425c64:	5b                   	pop    rbx
+  425c65:	5d                   	pop    rbp
+  425c66:	41 5c                	pop    r12
+  425c68:	41 5d                	pop    r13
+  425c6a:	41 5e                	pop    r14
+  425c6c:	41 5f                	pop    r15
+  425c6e:	e9 4d dd 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 116: print #1, "vector";
+  425c73:	be 06 00 00 00       	mov    esi,0x6
+  425c78:	48 8d 3d 4f 8b 05 00 	lea    rdi,[rip+0x58b4f]        # 47e7ce <_IO_stdin_used+0x17ce>
+  425c7f:	e8 0c 19 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425c84:	48 89 c6             	mov    rsi,rax
+  425c87:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425c8e:	00 
+  425c8f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425c96:	00 00 
+  425c98:	75 22                	jne    425cbc <MEMORY_T::POKE64(double, double)+0x1c3ec>
+  425c9a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425ca1:	31 d2                	xor    edx,edx
+  425ca3:	bf 01 00 00 00       	mov    edi,0x1
+  425ca8:	5b                   	pop    rbx
+  425ca9:	5d                   	pop    rbp
+  425caa:	41 5c                	pop    r12
+  425cac:	41 5d                	pop    r13
+  425cae:	41 5e                	pop    r14
+  425cb0:	41 5f                	pop    r15
+  425cb2:	e9 09 dd 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 117: print #1, "version";
+  425cb7:	e8 c4 fb fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 116: print #1, "vector";
+  425cbc:	e8 bf fb fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 115: print #1, "vec4";
+  425cc1:	be 04 00 00 00       	mov    esi,0x4
+  425cc6:	48 8d 3d 35 7b 05 00 	lea    rdi,[rip+0x57b35]        # 47d802 <_IO_stdin_used+0x802>
+  425ccd:	e8 be 18 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425cd2:	48 89 c6             	mov    rsi,rax
+  425cd5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425cdc:	00 
+  425cdd:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425ce4:	00 00 
+  425ce6:	75 61                	jne    425d49 <MEMORY_T::POKE64(double, double)+0x1c479>
+  425ce8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425cef:	31 d2                	xor    edx,edx
+  425cf1:	bf 01 00 00 00       	mov    edi,0x1
+  425cf6:	5b                   	pop    rbx
+  425cf7:	5d                   	pop    rbp
+  425cf8:	41 5c                	pop    r12
+  425cfa:	41 5d                	pop    r13
+  425cfc:	41 5e                	pop    r14
+  425cfe:	41 5f                	pop    r15
+  425d00:	e9 bb dc 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 114: print #1, "vec3";
+  425d05:	be 04 00 00 00       	mov    esi,0x4
+  425d0a:	48 8d 3d eb 7a 05 00 	lea    rdi,[rip+0x57aeb]        # 47d7fc <_IO_stdin_used+0x7fc>
+  425d11:	e8 7a 18 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425d16:	48 89 c6             	mov    rsi,rax
+  425d19:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425d20:	00 
+  425d21:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425d28:	00 00 
+  425d2a:	75 22                	jne    425d4e <MEMORY_T::POKE64(double, double)+0x1c47e>
+  425d2c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425d33:	31 d2                	xor    edx,edx
+  425d35:	bf 01 00 00 00       	mov    edi,0x1
+  425d3a:	5b                   	pop    rbx
+  425d3b:	5d                   	pop    rbp
+  425d3c:	41 5c                	pop    r12
+  425d3e:	41 5d                	pop    r13
+  425d40:	41 5e                	pop    r14
+  425d42:	41 5f                	pop    r15
+  425d44:	e9 77 dc 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 115: print #1, "vec4";
+  425d49:	e8 32 fb fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 114: print #1, "vec3";
+  425d4e:	e8 2d fb fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 113: print #1, "vec2";
+  425d53:	be 04 00 00 00       	mov    esi,0x4
+  425d58:	48 8d 3d 97 7a 05 00 	lea    rdi,[rip+0x57a97]        # 47d7f6 <_IO_stdin_used+0x7f6>
+  425d5f:	e8 2c 18 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425d64:	48 89 c6             	mov    rsi,rax
+  425d67:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425d6e:	00 
+  425d6f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425d76:	00 00 
+  425d78:	75 61                	jne    425ddb <MEMORY_T::POKE64(double, double)+0x1c50b>
+  425d7a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425d81:	31 d2                	xor    edx,edx
+  425d83:	bf 01 00 00 00       	mov    edi,0x1
+  425d88:	5b                   	pop    rbx
+  425d89:	5d                   	pop    rbp
+  425d8a:	41 5c                	pop    r12
+  425d8c:	41 5d                	pop    r13
+  425d8e:	41 5e                	pop    r14
+  425d90:	41 5f                	pop    r15
+  425d92:	e9 29 dc 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 112: print #1, "vdot";
+  425d97:	be 04 00 00 00       	mov    esi,0x4
+  425d9c:	48 8d 3d 72 9e 05 00 	lea    rdi,[rip+0x59e72]        # 47fc15 <_IO_stdin_used+0x2c15>
+  425da3:	e8 e8 17 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425da8:	48 89 c6             	mov    rsi,rax
+  425dab:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425db2:	00 
+  425db3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425dba:	00 00 
+  425dbc:	75 22                	jne    425de0 <MEMORY_T::POKE64(double, double)+0x1c510>
+  425dbe:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425dc5:	31 d2                	xor    edx,edx
+  425dc7:	bf 01 00 00 00       	mov    edi,0x1
+  425dcc:	5b                   	pop    rbx
+  425dcd:	5d                   	pop    rbp
+  425dce:	41 5c                	pop    r12
+  425dd0:	41 5d                	pop    r13
+  425dd2:	41 5e                	pop    r14
+  425dd4:	41 5f                	pop    r15
+  425dd6:	e9 e5 db 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 113: print #1, "vec2";
+  425ddb:	e8 a0 fa fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 112: print #1, "vdot";
+  425de0:	e8 9b fa fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 111: print #1, "vcross";
+  425de5:	be 06 00 00 00       	mov    esi,0x6
+  425dea:	48 8d 3d 1d 9e 05 00 	lea    rdi,[rip+0x59e1d]        # 47fc0e <_IO_stdin_used+0x2c0e>
+  425df1:	e8 9a 17 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425df6:	48 89 c6             	mov    rsi,rax
+  425df9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425e00:	00 
+  425e01:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425e08:	00 00 
+  425e0a:	75 61                	jne    425e6d <MEMORY_T::POKE64(double, double)+0x1c59d>
+  425e0c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425e13:	31 d2                	xor    edx,edx
+  425e15:	bf 01 00 00 00       	mov    edi,0x1
+  425e1a:	5b                   	pop    rbx
+  425e1b:	5d                   	pop    rbp
+  425e1c:	41 5c                	pop    r12
+  425e1e:	41 5d                	pop    r13
+  425e20:	41 5e                	pop    r14
+  425e22:	41 5f                	pop    r15
+  425e24:	e9 97 db 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 110: print #1, "vaxis_rotate";
+  425e29:	be 0c 00 00 00       	mov    esi,0xc
+  425e2e:	48 8d 3d cc 9d 05 00 	lea    rdi,[rip+0x59dcc]        # 47fc01 <_IO_stdin_used+0x2c01>
+  425e35:	e8 56 17 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425e3a:	48 89 c6             	mov    rsi,rax
+  425e3d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425e44:	00 
+  425e45:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425e4c:	00 00 
+  425e4e:	75 22                	jne    425e72 <MEMORY_T::POKE64(double, double)+0x1c5a2>
+  425e50:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425e57:	31 d2                	xor    edx,edx
+  425e59:	bf 01 00 00 00       	mov    edi,0x1
+  425e5e:	5b                   	pop    rbx
+  425e5f:	5d                   	pop    rbp
+  425e60:	41 5c                	pop    r12
+  425e62:	41 5d                	pop    r13
+  425e64:	41 5e                	pop    r14
+  425e66:	41 5f                	pop    r15
+  425e68:	e9 53 db 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 111: print #1, "vcross";
+  425e6d:	e8 0e fa fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 110: print #1, "vaxis_rotate";
+  425e72:	e8 09 fa fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 109: print #1, "varying";
+  425e77:	be 07 00 00 00       	mov    esi,0x7
+  425e7c:	48 8d 3d 76 9d 05 00 	lea    rdi,[rip+0x59d76]        # 47fbf9 <_IO_stdin_used+0x2bf9>
+  425e83:	e8 08 17 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425e88:	48 89 c6             	mov    rsi,rax
+  425e8b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425e92:	00 
+  425e93:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425e9a:	00 00 
+  425e9c:	75 61                	jne    425eff <MEMORY_T::POKE64(double, double)+0x1c62f>
+  425e9e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425ea5:	31 d2                	xor    edx,edx
+  425ea7:	bf 01 00 00 00       	mov    edi,0x1
+  425eac:	5b                   	pop    rbx
+  425ead:	5d                   	pop    rbp
+  425eae:	41 5c                	pop    r12
+  425eb0:	41 5d                	pop    r13
+  425eb2:	41 5e                	pop    r14
+  425eb4:	41 5f                	pop    r15
+  425eb6:	e9 05 db 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 108: print #1, "varptr";
+  425ebb:	be 06 00 00 00       	mov    esi,0x6
+  425ec0:	48 8d 3d 2b 9d 05 00 	lea    rdi,[rip+0x59d2b]        # 47fbf2 <_IO_stdin_used+0x2bf2>
+  425ec7:	e8 c4 16 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425ecc:	48 89 c6             	mov    rsi,rax
+  425ecf:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425ed6:	00 
+  425ed7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425ede:	00 00 
+  425ee0:	75 22                	jne    425f04 <MEMORY_T::POKE64(double, double)+0x1c634>
+  425ee2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425ee9:	31 d2                	xor    edx,edx
+  425eeb:	bf 01 00 00 00       	mov    edi,0x1
+  425ef0:	5b                   	pop    rbx
+  425ef1:	5d                   	pop    rbp
+  425ef2:	41 5c                	pop    r12
+  425ef4:	41 5d                	pop    r13
+  425ef6:	41 5e                	pop    r14
+  425ef8:	41 5f                	pop    r15
+  425efa:	e9 c1 da 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 109: print #1, "varying";
+  425eff:	e8 7c f9 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 108: print #1, "varptr";
+  425f04:	e8 77 f9 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 107: print #1, "variance";
+  425f09:	be 08 00 00 00       	mov    esi,0x8
+  425f0e:	48 8d 3d d4 9c 05 00 	lea    rdi,[rip+0x59cd4]        # 47fbe9 <_IO_stdin_used+0x2be9>
+  425f15:	e8 76 16 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425f1a:	48 89 c6             	mov    rsi,rax
+  425f1d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425f24:	00 
+  425f25:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425f2c:	00 00 
+  425f2e:	75 61                	jne    425f91 <MEMORY_T::POKE64(double, double)+0x1c6c1>
+  425f30:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425f37:	31 d2                	xor    edx,edx
+  425f39:	bf 01 00 00 00       	mov    edi,0x1
+  425f3e:	5b                   	pop    rbx
+  425f3f:	5d                   	pop    rbp
+  425f40:	41 5c                	pop    r12
+  425f42:	41 5d                	pop    r13
+  425f44:	41 5e                	pop    r14
+  425f46:	41 5f                	pop    r15
+  425f48:	e9 73 da 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 106: print #1, "varchar";
+  425f4d:	be 07 00 00 00       	mov    esi,0x7
+  425f52:	48 8d 3d 88 9c 05 00 	lea    rdi,[rip+0x59c88]        # 47fbe1 <_IO_stdin_used+0x2be1>
+  425f59:	e8 32 16 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425f5e:	48 89 c6             	mov    rsi,rax
+  425f61:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425f68:	00 
+  425f69:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425f70:	00 00 
+  425f72:	75 22                	jne    425f96 <MEMORY_T::POKE64(double, double)+0x1c6c6>
+  425f74:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425f7b:	31 d2                	xor    edx,edx
+  425f7d:	bf 01 00 00 00       	mov    edi,0x1
+  425f82:	5b                   	pop    rbx
+  425f83:	5d                   	pop    rbp
+  425f84:	41 5c                	pop    r12
+  425f86:	41 5d                	pop    r13
+  425f88:	41 5e                	pop    r14
+  425f8a:	41 5f                	pop    r15
+  425f8c:	e9 2f da 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 107: print #1, "variance";
+  425f91:	e8 ea f8 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 106: print #1, "varchar";
+  425f96:	e8 e5 f8 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 105: print #1, "var";
+  425f9b:	be 03 00 00 00       	mov    esi,0x3
+  425fa0:	48 8d 3d a5 99 05 00 	lea    rdi,[rip+0x599a5]        # 47f94c <_IO_stdin_used+0x294c>
+  425fa7:	e8 e4 15 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425fac:	48 89 c6             	mov    rsi,rax
+  425faf:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425fb6:	00 
+  425fb7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  425fbe:	00 00 
+  425fc0:	75 61                	jne    426023 <MEMORY_T::POKE64(double, double)+0x1c753>
+  425fc2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  425fc9:	31 d2                	xor    edx,edx
+  425fcb:	bf 01 00 00 00       	mov    edi,0x1
+  425fd0:	5b                   	pop    rbx
+  425fd1:	5d                   	pop    rbp
+  425fd2:	41 5c                	pop    r12
+  425fd4:	41 5d                	pop    r13
+  425fd6:	41 5e                	pop    r14
+  425fd8:	41 5f                	pop    r15
+  425fda:	e9 e1 d9 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 104: print #1, "values";
+  425fdf:	be 06 00 00 00       	mov    esi,0x6
+  425fe4:	48 8d 3d 62 85 05 00 	lea    rdi,[rip+0x58562]        # 47e54d <_IO_stdin_used+0x154d>
+  425feb:	e8 a0 15 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  425ff0:	48 89 c6             	mov    rsi,rax
+  425ff3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  425ffa:	00 
+  425ffb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426002:	00 00 
+  426004:	75 22                	jne    426028 <MEMORY_T::POKE64(double, double)+0x1c758>
+  426006:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42600d:	31 d2                	xor    edx,edx
+  42600f:	bf 01 00 00 00       	mov    edi,0x1
+  426014:	5b                   	pop    rbx
+  426015:	5d                   	pop    rbp
+  426016:	41 5c                	pop    r12
+  426018:	41 5d                	pop    r13
+  42601a:	41 5e                	pop    r14
+  42601c:	41 5f                	pop    r15
+  42601e:	e9 9d d9 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 105: print #1, "var";
+  426023:	e8 58 f8 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 104: print #1, "values";
+  426028:	e8 53 f8 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 103: print #1, "value";
+  42602d:	be 05 00 00 00       	mov    esi,0x5
+  426032:	48 8d 3d 09 85 05 00 	lea    rdi,[rip+0x58509]        # 47e542 <_IO_stdin_used+0x1542>
+  426039:	e8 52 15 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42603e:	48 89 c6             	mov    rsi,rax
+  426041:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426048:	00 
+  426049:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426050:	00 00 
+  426052:	75 61                	jne    4260b5 <MEMORY_T::POKE64(double, double)+0x1c7e5>
+  426054:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42605b:	31 d2                	xor    edx,edx
+  42605d:	bf 01 00 00 00       	mov    edi,0x1
+  426062:	5b                   	pop    rbx
+  426063:	5d                   	pop    rbp
+  426064:	41 5c                	pop    r12
+  426066:	41 5d                	pop    r13
+  426068:	41 5e                	pop    r14
+  42606a:	41 5f                	pop    r15
+  42606c:	e9 4f d9 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 102: print #1, "val";
+  426071:	be 03 00 00 00       	mov    esi,0x3
+  426076:	48 8d 3d 0c 93 05 00 	lea    rdi,[rip+0x5930c]        # 47f389 <_IO_stdin_used+0x2389>
+  42607d:	e8 0e 15 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426082:	48 89 c6             	mov    rsi,rax
+  426085:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42608c:	00 
+  42608d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426094:	00 00 
+  426096:	75 22                	jne    4260ba <MEMORY_T::POKE64(double, double)+0x1c7ea>
+  426098:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42609f:	31 d2                	xor    edx,edx
+  4260a1:	bf 01 00 00 00       	mov    edi,0x1
+  4260a6:	5b                   	pop    rbx
+  4260a7:	5d                   	pop    rbp
+  4260a8:	41 5c                	pop    r12
+  4260aa:	41 5d                	pop    r13
+  4260ac:	41 5e                	pop    r14
+  4260ae:	41 5f                	pop    r15
+  4260b0:	e9 0b d9 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 103: print #1, "value";
+  4260b5:	e8 c6 f7 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 102: print #1, "val";
+  4260ba:	e8 c1 f7 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 101: print #1, "v";
+  4260bf:	be 01 00 00 00       	mov    esi,0x1
+  4260c4:	48 8d 3d b3 da 05 00 	lea    rdi,[rip+0x5dab3]        # 483b7e <compressed_data+0x13be>
+  4260cb:	e8 c0 14 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4260d0:	48 89 c6             	mov    rsi,rax
+  4260d3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4260da:	00 
+  4260db:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4260e2:	00 00 
+  4260e4:	75 61                	jne    426147 <MEMORY_T::POKE64(double, double)+0x1c877>
+  4260e6:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4260ed:	31 d2                	xor    edx,edx
+  4260ef:	bf 01 00 00 00       	mov    edi,0x1
+  4260f4:	5b                   	pop    rbx
+  4260f5:	5d                   	pop    rbp
+  4260f6:	41 5c                	pop    r12
+  4260f8:	41 5d                	pop    r13
+  4260fa:	41 5e                	pop    r14
+  4260fc:	41 5f                	pop    r15
+  4260fe:	e9 bd d8 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 100: print #1, "uv_vectors";
+  426103:	be 0a 00 00 00       	mov    esi,0xa
+  426108:	48 8d 3d c7 9a 05 00 	lea    rdi,[rip+0x59ac7]        # 47fbd6 <_IO_stdin_used+0x2bd6>
+  42610f:	e8 7c 14 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426114:	48 89 c6             	mov    rsi,rax
+  426117:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42611e:	00 
+  42611f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426126:	00 00 
+  426128:	75 22                	jne    42614c <MEMORY_T::POKE64(double, double)+0x1c87c>
+  42612a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426131:	31 d2                	xor    edx,edx
+  426133:	bf 01 00 00 00       	mov    edi,0x1
+  426138:	5b                   	pop    rbx
+  426139:	5d                   	pop    rbp
+  42613a:	41 5c                	pop    r12
+  42613c:	41 5d                	pop    r13
+  42613e:	41 5e                	pop    r14
+  426140:	41 5f                	pop    r15
+  426142:	e9 79 d8 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 101: print #1, "v";
+  426147:	e8 34 f7 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 100: print #1, "uv_vectors";
+  42614c:	e8 2f f7 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 099: print #1, "uv_mapping";
+  426151:	be 0a 00 00 00       	mov    esi,0xa
+  426156:	48 8d 3d 6e 9a 05 00 	lea    rdi,[rip+0x59a6e]        # 47fbcb <_IO_stdin_used+0x2bcb>
+  42615d:	e8 2e 14 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426162:	48 89 c6             	mov    rsi,rax
+  426165:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42616c:	00 
+  42616d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426174:	00 00 
+  426176:	75 61                	jne    4261d9 <MEMORY_T::POKE64(double, double)+0x1c909>
+  426178:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42617f:	31 d2                	xor    edx,edx
+  426181:	bf 01 00 00 00       	mov    edi,0x1
+  426186:	5b                   	pop    rbx
+  426187:	5d                   	pop    rbp
+  426188:	41 5c                	pop    r12
+  42618a:	41 5d                	pop    r13
+  42618c:	41 5e                	pop    r14
+  42618e:	41 5f                	pop    r15
+  426190:	e9 2b d8 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 098: print #1, "uv_indices";
+  426195:	be 0a 00 00 00       	mov    esi,0xa
+  42619a:	48 8d 3d 1f 9a 05 00 	lea    rdi,[rip+0x59a1f]        # 47fbc0 <_IO_stdin_used+0x2bc0>
+  4261a1:	e8 ea 13 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4261a6:	48 89 c6             	mov    rsi,rax
+  4261a9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4261b0:	00 
+  4261b1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4261b8:	00 00 
+  4261ba:	75 22                	jne    4261de <MEMORY_T::POKE64(double, double)+0x1c90e>
+  4261bc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4261c3:	31 d2                	xor    edx,edx
+  4261c5:	bf 01 00 00 00       	mov    edi,0x1
+  4261ca:	5b                   	pop    rbx
+  4261cb:	5d                   	pop    rbp
+  4261cc:	41 5c                	pop    r12
+  4261ce:	41 5d                	pop    r13
+  4261d0:	41 5e                	pop    r14
+  4261d2:	41 5f                	pop    r15
+  4261d4:	e9 e7 d7 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 099: print #1, "uv_mapping";
+  4261d9:	e8 a2 f6 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 098: print #1, "uv_indices";
+  4261de:	e8 9d f6 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 097: print #1, "uvec4";
+  4261e3:	be 05 00 00 00       	mov    esi,0x5
+  4261e8:	48 8d 3d cb 99 05 00 	lea    rdi,[rip+0x599cb]        # 47fbba <_IO_stdin_used+0x2bba>
+  4261ef:	e8 9c 13 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4261f4:	48 89 c6             	mov    rsi,rax
+  4261f7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4261fe:	00 
+  4261ff:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426206:	00 00 
+  426208:	75 61                	jne    42626b <MEMORY_T::POKE64(double, double)+0x1c99b>
+  42620a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426211:	31 d2                	xor    edx,edx
+  426213:	bf 01 00 00 00       	mov    edi,0x1
+  426218:	5b                   	pop    rbx
+  426219:	5d                   	pop    rbp
+  42621a:	41 5c                	pop    r12
+  42621c:	41 5d                	pop    r13
+  42621e:	41 5e                	pop    r14
+  426220:	41 5f                	pop    r15
+  426222:	e9 99 d7 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 096: print #1, "uvec3";
+  426227:	be 05 00 00 00       	mov    esi,0x5
+  42622c:	48 8d 3d 81 99 05 00 	lea    rdi,[rip+0x59981]        # 47fbb4 <_IO_stdin_used+0x2bb4>
+  426233:	e8 58 13 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426238:	48 89 c6             	mov    rsi,rax
+  42623b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426242:	00 
+  426243:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42624a:	00 00 
+  42624c:	75 22                	jne    426270 <MEMORY_T::POKE64(double, double)+0x1c9a0>
+  42624e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426255:	31 d2                	xor    edx,edx
+  426257:	bf 01 00 00 00       	mov    edi,0x1
+  42625c:	5b                   	pop    rbx
+  42625d:	5d                   	pop    rbp
+  42625e:	41 5c                	pop    r12
+  426260:	41 5d                	pop    r13
+  426262:	41 5e                	pop    r14
+  426264:	41 5f                	pop    r15
+  426266:	e9 55 d7 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 097: print #1, "uvec4";
+  42626b:	e8 10 f6 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 096: print #1, "uvec3";
+  426270:	e8 0b f6 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 095: print #1, "uvec2";
+  426275:	be 05 00 00 00       	mov    esi,0x5
+  42627a:	48 8d 3d 2d 99 05 00 	lea    rdi,[rip+0x5992d]        # 47fbae <_IO_stdin_used+0x2bae>
+  426281:	e8 0a 13 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426286:	48 89 c6             	mov    rsi,rax
+  426289:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426290:	00 
+  426291:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426298:	00 00 
+  42629a:	75 61                	jne    4262fd <MEMORY_T::POKE64(double, double)+0x1ca2d>
+  42629c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4262a3:	31 d2                	xor    edx,edx
+  4262a5:	bf 01 00 00 00       	mov    edi,0x1
+  4262aa:	5b                   	pop    rbx
+  4262ab:	5d                   	pop    rbp
+  4262ac:	41 5c                	pop    r12
+  4262ae:	41 5d                	pop    r13
+  4262b0:	41 5e                	pop    r14
+  4262b2:	41 5f                	pop    r15
+  4262b4:	e9 07 d7 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 094: print #1, "utf32";
+  4262b9:	be 05 00 00 00       	mov    esi,0x5
+  4262be:	48 8d 3d e3 98 05 00 	lea    rdi,[rip+0x598e3]        # 47fba8 <_IO_stdin_used+0x2ba8>
+  4262c5:	e8 c6 12 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4262ca:	48 89 c6             	mov    rsi,rax
+  4262cd:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4262d4:	00 
+  4262d5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4262dc:	00 00 
+  4262de:	75 22                	jne    426302 <MEMORY_T::POKE64(double, double)+0x1ca32>
+  4262e0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4262e7:	31 d2                	xor    edx,edx
+  4262e9:	bf 01 00 00 00       	mov    edi,0x1
+  4262ee:	5b                   	pop    rbx
+  4262ef:	5d                   	pop    rbp
+  4262f0:	41 5c                	pop    r12
+  4262f2:	41 5d                	pop    r13
+  4262f4:	41 5e                	pop    r14
+  4262f6:	41 5f                	pop    r15
+  4262f8:	e9 c3 d6 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 095: print #1, "uvec2";
+  4262fd:	e8 7e f5 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 094: print #1, "utf32";
+  426302:	e8 79 f5 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 093: print #1, "utf16";
+  426307:	be 05 00 00 00       	mov    esi,0x5
+  42630c:	48 8d 3d 8f 98 05 00 	lea    rdi,[rip+0x5988f]        # 47fba2 <_IO_stdin_used+0x2ba2>
+  426313:	e8 78 12 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426318:	48 89 c6             	mov    rsi,rax
+  42631b:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426322:	00 
+  426323:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42632a:	00 00 
+  42632c:	75 61                	jne    42638f <MEMORY_T::POKE64(double, double)+0x1cabf>
+  42632e:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426335:	31 d2                	xor    edx,edx
+  426337:	bf 01 00 00 00       	mov    edi,0x1
+  42633c:	5b                   	pop    rbx
+  42633d:	5d                   	pop    rbp
+  42633e:	41 5c                	pop    r12
+  426340:	41 5d                	pop    r13
+  426342:	41 5e                	pop    r14
+  426344:	41 5f                	pop    r15
+  426346:	e9 75 d6 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 092: print #1, "utf8";
+  42634b:	be 04 00 00 00       	mov    esi,0x4
+  426350:	48 8d 3d 46 98 05 00 	lea    rdi,[rip+0x59846]        # 47fb9d <_IO_stdin_used+0x2b9d>
+  426357:	e8 34 12 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42635c:	48 89 c6             	mov    rsi,rax
+  42635f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426366:	00 
+  426367:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42636e:	00 00 
+  426370:	75 22                	jne    426394 <MEMORY_T::POKE64(double, double)+0x1cac4>
+  426372:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426379:	31 d2                	xor    edx,edx
+  42637b:	bf 01 00 00 00       	mov    edi,0x1
+  426380:	5b                   	pop    rbx
+  426381:	5d                   	pop    rbp
+  426382:	41 5c                	pop    r12
+  426384:	41 5d                	pop    r13
+  426386:	41 5e                	pop    r14
+  426388:	41 5f                	pop    r15
+  42638a:	e9 31 d6 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 093: print #1, "utf16";
+  42638f:	e8 ec f4 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 092: print #1, "utf8";
+  426394:	e8 e7 f4 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 091: print #1, "u_steps";
+  426399:	be 07 00 00 00       	mov    esi,0x7
+  42639e:	48 8d 3d f0 97 05 00 	lea    rdi,[rip+0x597f0]        # 47fb95 <_IO_stdin_used+0x2b95>
+  4263a5:	e8 e6 11 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4263aa:	48 89 c6             	mov    rsi,rax
+  4263ad:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4263b4:	00 
+  4263b5:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4263bc:	00 00 
+  4263be:	75 61                	jne    426421 <MEMORY_T::POKE64(double, double)+0x1cb51>
+  4263c0:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4263c7:	31 d2                	xor    edx,edx
+  4263c9:	bf 01 00 00 00       	mov    edi,0x1
+  4263ce:	5b                   	pop    rbx
+  4263cf:	5d                   	pop    rbp
+  4263d0:	41 5c                	pop    r12
+  4263d2:	41 5d                	pop    r13
+  4263d4:	41 5e                	pop    r14
+  4263d6:	41 5f                	pop    r15
+  4263d8:	e9 e3 d5 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 090: print #1, "usr";
+  4263dd:	be 03 00 00 00       	mov    esi,0x3
+  4263e2:	48 8d 3d a8 97 05 00 	lea    rdi,[rip+0x597a8]        # 47fb91 <_IO_stdin_used+0x2b91>
+  4263e9:	e8 a2 11 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4263ee:	48 89 c6             	mov    rsi,rax
+  4263f1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4263f8:	00 
+  4263f9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426400:	00 00 
+  426402:	75 22                	jne    426426 <MEMORY_T::POKE64(double, double)+0x1cb56>
+  426404:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42640b:	31 d2                	xor    edx,edx
+  42640d:	bf 01 00 00 00       	mov    edi,0x1
+  426412:	5b                   	pop    rbx
+  426413:	5d                   	pop    rbp
+  426414:	41 5c                	pop    r12
+  426416:	41 5d                	pop    r13
+  426418:	41 5e                	pop    r14
+  42641a:	41 5f                	pop    r15
+  42641c:	e9 9f d5 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 091: print #1, "u_steps";
+  426421:	e8 5a f4 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 090: print #1, "usr";
+  426426:	e8 55 f4 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 089: print #1, "using";
+  42642b:	be 05 00 00 00       	mov    esi,0x5
+  426430:	48 8d 3d 54 97 05 00 	lea    rdi,[rip+0x59754]        # 47fb8b <_IO_stdin_used+0x2b8b>
+  426437:	e8 54 11 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42643c:	48 89 c6             	mov    rsi,rax
+  42643f:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426446:	00 
+  426447:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42644e:	00 00 
+  426450:	75 61                	jne    4264b3 <MEMORY_T::POKE64(double, double)+0x1cbe3>
+  426452:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426459:	31 d2                	xor    edx,edx
+  42645b:	bf 01 00 00 00       	mov    edi,0x1
+  426460:	5b                   	pop    rbx
+  426461:	5d                   	pop    rbp
+  426462:	41 5c                	pop    r12
+  426464:	41 5d                	pop    r13
+  426466:	41 5e                	pop    r14
+  426468:	41 5f                	pop    r15
+  42646a:	e9 51 d5 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 088: print #1, "uses";
+  42646f:	be 04 00 00 00       	mov    esi,0x4
+  426474:	48 8d 3d 0b 97 05 00 	lea    rdi,[rip+0x5970b]        # 47fb86 <_IO_stdin_used+0x2b86>
+  42647b:	e8 10 11 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426480:	48 89 c6             	mov    rsi,rax
+  426483:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42648a:	00 
+  42648b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426492:	00 00 
+  426494:	75 22                	jne    4264b8 <MEMORY_T::POKE64(double, double)+0x1cbe8>
+  426496:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42649d:	31 d2                	xor    edx,edx
+  42649f:	bf 01 00 00 00       	mov    edi,0x1
+  4264a4:	5b                   	pop    rbx
+  4264a5:	5d                   	pop    rbp
+  4264a6:	41 5c                	pop    r12
+  4264a8:	41 5d                	pop    r13
+  4264aa:	41 5e                	pop    r14
+  4264ac:	41 5f                	pop    r15
+  4264ae:	e9 0d d5 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 089: print #1, "using";
+  4264b3:	e8 c8 f3 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 088: print #1, "uses";
+  4264b8:	e8 c3 f3 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 087: print #1, "use_index";
+  4264bd:	be 09 00 00 00       	mov    esi,0x9
+  4264c2:	48 8d 3d b3 96 05 00 	lea    rdi,[rip+0x596b3]        # 47fb7c <_IO_stdin_used+0x2b7c>
+  4264c9:	e8 c2 10 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4264ce:	48 89 c6             	mov    rsi,rax
+  4264d1:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4264d8:	00 
+  4264d9:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4264e0:	00 00 
+  4264e2:	75 61                	jne    426545 <MEMORY_T::POKE64(double, double)+0x1cc75>
+  4264e4:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4264eb:	31 d2                	xor    edx,edx
+  4264ed:	bf 01 00 00 00       	mov    edi,0x1
+  4264f2:	5b                   	pop    rbx
+  4264f3:	5d                   	pop    rbp
+  4264f4:	41 5c                	pop    r12
+  4264f6:	41 5d                	pop    r13
+  4264f8:	41 5e                	pop    r14
+  4264fa:	41 5f                	pop    r15
+  4264fc:	e9 bf d4 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 086: print #1, "use_colour";
+  426501:	be 0a 00 00 00       	mov    esi,0xa
+  426506:	48 8d 3d 64 96 05 00 	lea    rdi,[rip+0x59664]        # 47fb71 <_IO_stdin_used+0x2b71>
+  42650d:	e8 7e 10 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426512:	48 89 c6             	mov    rsi,rax
+  426515:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42651c:	00 
+  42651d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426524:	00 00 
+  426526:	75 22                	jne    42654a <MEMORY_T::POKE64(double, double)+0x1cc7a>
+  426528:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42652f:	31 d2                	xor    edx,edx
+  426531:	bf 01 00 00 00       	mov    edi,0x1
+  426536:	5b                   	pop    rbx
+  426537:	5d                   	pop    rbp
+  426538:	41 5c                	pop    r12
+  42653a:	41 5d                	pop    r13
+  42653c:	41 5e                	pop    r14
+  42653e:	41 5f                	pop    r15
+  426540:	e9 7b d4 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 087: print #1, "use_index";
+  426545:	e8 36 f3 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 086: print #1, "use_colour";
+  42654a:	e8 31 f3 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 085: print #1, "use_color";
+  42654f:	be 09 00 00 00       	mov    esi,0x9
+  426554:	48 8d 3d 0c 96 05 00 	lea    rdi,[rip+0x5960c]        # 47fb67 <_IO_stdin_used+0x2b67>
+  42655b:	e8 30 10 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426560:	48 89 c6             	mov    rsi,rax
+  426563:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42656a:	00 
+  42656b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426572:	00 00 
+  426574:	75 61                	jne    4265d7 <MEMORY_T::POKE64(double, double)+0x1cd07>
+  426576:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42657d:	31 d2                	xor    edx,edx
+  42657f:	bf 01 00 00 00       	mov    edi,0x1
+  426584:	5b                   	pop    rbx
+  426585:	5d                   	pop    rbp
+  426586:	41 5c                	pop    r12
+  426588:	41 5d                	pop    r13
+  42658a:	41 5e                	pop    r14
+  42658c:	41 5f                	pop    r15
+  42658e:	e9 2d d4 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 084: print #1, "use_alpha";
+  426593:	be 09 00 00 00       	mov    esi,0x9
+  426598:	48 8d 3d be 95 05 00 	lea    rdi,[rip+0x595be]        # 47fb5d <_IO_stdin_used+0x2b5d>
+  42659f:	e8 ec 0f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4265a4:	48 89 c6             	mov    rsi,rax
+  4265a7:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4265ae:	00 
+  4265af:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4265b6:	00 00 
+  4265b8:	75 22                	jne    4265dc <MEMORY_T::POKE64(double, double)+0x1cd0c>
+  4265ba:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4265c1:	31 d2                	xor    edx,edx
+  4265c3:	bf 01 00 00 00       	mov    edi,0x1
+  4265c8:	5b                   	pop    rbx
+  4265c9:	5d                   	pop    rbp
+  4265ca:	41 5c                	pop    r12
+  4265cc:	41 5d                	pop    r13
+  4265ce:	41 5e                	pop    r14
+  4265d0:	41 5f                	pop    r15
+  4265d2:	e9 e9 d3 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 085: print #1, "use_color";
+  4265d7:	e8 a4 f2 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 084: print #1, "use_alpha";
+  4265dc:	e8 9f f2 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 083: print #1, "use";
+  4265e1:	be 03 00 00 00       	mov    esi,0x3
+  4265e6:	48 8d 3d f4 89 05 00 	lea    rdi,[rip+0x589f4]        # 47efe1 <_IO_stdin_used+0x1fe1>
+  4265ed:	e8 9e 0f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4265f2:	48 89 c6             	mov    rsi,rax
+  4265f5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4265fc:	00 
+  4265fd:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426604:	00 00 
+  426606:	75 61                	jne    426669 <MEMORY_T::POKE64(double, double)+0x1cd99>
+  426608:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42660f:	31 d2                	xor    edx,edx
+  426611:	bf 01 00 00 00       	mov    edi,0x1
+  426616:	5b                   	pop    rbx
+  426617:	5d                   	pop    rbp
+  426618:	41 5c                	pop    r12
+  42661a:	41 5d                	pop    r13
+  42661c:	41 5e                	pop    r14
+  42661e:	41 5f                	pop    r15
+  426620:	e9 9b d3 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 082: print #1, "usamplerCube";
+  426625:	be 0c 00 00 00       	mov    esi,0xc
+  42662a:	48 8d 3d 1f 95 05 00 	lea    rdi,[rip+0x5951f]        # 47fb50 <_IO_stdin_used+0x2b50>
+  426631:	e8 5a 0f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426636:	48 89 c6             	mov    rsi,rax
+  426639:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426640:	00 
+  426641:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426648:	00 00 
+  42664a:	75 22                	jne    42666e <MEMORY_T::POKE64(double, double)+0x1cd9e>
+  42664c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426653:	31 d2                	xor    edx,edx
+  426655:	bf 01 00 00 00       	mov    edi,0x1
+  42665a:	5b                   	pop    rbx
+  42665b:	5d                   	pop    rbp
+  42665c:	41 5c                	pop    r12
+  42665e:	41 5d                	pop    r13
+  426660:	41 5e                	pop    r14
+  426662:	41 5f                	pop    r15
+  426664:	e9 57 d3 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 083: print #1, "use";
+  426669:	e8 12 f2 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 082: print #1, "usamplerCube";
+  42666e:	e8 0d f2 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 081: print #1, "usamplerBufferStruct";
+  426673:	be 14 00 00 00       	mov    esi,0x14
+  426678:	48 8d 3d bc 94 05 00 	lea    rdi,[rip+0x594bc]        # 47fb3b <_IO_stdin_used+0x2b3b>
+  42667f:	e8 0c 0f 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426684:	48 89 c6             	mov    rsi,rax
+  426687:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42668e:	00 
+  42668f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426696:	00 00 
+  426698:	75 61                	jne    4266fb <MEMORY_T::POKE64(double, double)+0x1ce2b>
+  42669a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4266a1:	31 d2                	xor    edx,edx
+  4266a3:	bf 01 00 00 00       	mov    edi,0x1
+  4266a8:	5b                   	pop    rbx
+  4266a9:	5d                   	pop    rbp
+  4266aa:	41 5c                	pop    r12
+  4266ac:	41 5d                	pop    r13
+  4266ae:	41 5e                	pop    r14
+  4266b0:	41 5f                	pop    r15
+  4266b2:	e9 09 d3 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 080: print #1, "usampler3D";
+  4266b7:	be 0a 00 00 00       	mov    esi,0xa
+  4266bc:	48 8d 3d 6d 94 05 00 	lea    rdi,[rip+0x5946d]        # 47fb30 <_IO_stdin_used+0x2b30>
+  4266c3:	e8 c8 0e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4266c8:	48 89 c6             	mov    rsi,rax
+  4266cb:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4266d2:	00 
+  4266d3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4266da:	00 00 
+  4266dc:	75 22                	jne    426700 <MEMORY_T::POKE64(double, double)+0x1ce30>
+  4266de:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4266e5:	31 d2                	xor    edx,edx
+  4266e7:	bf 01 00 00 00       	mov    edi,0x1
+  4266ec:	5b                   	pop    rbx
+  4266ed:	5d                   	pop    rbp
+  4266ee:	41 5c                	pop    r12
+  4266f0:	41 5d                	pop    r13
+  4266f2:	41 5e                	pop    r14
+  4266f4:	41 5f                	pop    r15
+  4266f6:	e9 c5 d2 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 081: print #1, "usamplerBufferStruct";
+  4266fb:	e8 80 f1 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 080: print #1, "usampler3D";
+  426700:	e8 7b f1 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 079: print #1, "usampler2drect";
+  426705:	be 0e 00 00 00       	mov    esi,0xe
+  42670a:	48 8d 3d 10 94 05 00 	lea    rdi,[rip+0x59410]        # 47fb21 <_IO_stdin_used+0x2b21>
+  426711:	e8 7a 0e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426716:	48 89 c6             	mov    rsi,rax
+  426719:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426720:	00 
+  426721:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426728:	00 00 
+  42672a:	75 61                	jne    42678d <MEMORY_T::POKE64(double, double)+0x1cebd>
+  42672c:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426733:	31 d2                	xor    edx,edx
+  426735:	bf 01 00 00 00       	mov    edi,0x1
+  42673a:	5b                   	pop    rbx
+  42673b:	5d                   	pop    rbp
+  42673c:	41 5c                	pop    r12
+  42673e:	41 5d                	pop    r13
+  426740:	41 5e                	pop    r14
+  426742:	41 5f                	pop    r15
+  426744:	e9 77 d2 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 078: print #1, "usampler2DArray";
+  426749:	be 0f 00 00 00       	mov    esi,0xf
+  42674e:	48 8d 3d bc 93 05 00 	lea    rdi,[rip+0x593bc]        # 47fb11 <_IO_stdin_used+0x2b11>
+  426755:	e8 36 0e 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42675a:	48 89 c6             	mov    rsi,rax
+  42675d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426764:	00 
+  426765:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42676c:	00 00 
+  42676e:	75 22                	jne    426792 <MEMORY_T::POKE64(double, double)+0x1cec2>
+  426770:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426777:	31 d2                	xor    edx,edx
+  426779:	bf 01 00 00 00       	mov    edi,0x1
+  42677e:	5b                   	pop    rbx
+  42677f:	5d                   	pop    rbp
+  426780:	41 5c                	pop    r12
+  426782:	41 5d                	pop    r13
+  426784:	41 5e                	pop    r14
+  426786:	41 5f                	pop    r15
+  426788:	e9 33 d2 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 079: print #1, "usampler2drect";
+  42678d:	e8 ee f0 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 078: print #1, "usampler2DArray";
+  426792:	e8 e9 f0 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 077: print #1, "usampler2D";
+  426797:	be 0a 00 00 00       	mov    esi,0xa
+  42679c:	48 8d 3d 63 93 05 00 	lea    rdi,[rip+0x59363]        # 47fb06 <_IO_stdin_used+0x2b06>
+  4267a3:	e8 e8 0d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4267a8:	48 89 c6             	mov    rsi,rax
+  4267ab:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4267b2:	00 
+  4267b3:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4267ba:	00 00 
+  4267bc:	75 61                	jne    42681f <MEMORY_T::POKE64(double, double)+0x1cf4f>
+  4267be:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4267c5:	31 d2                	xor    edx,edx
+  4267c7:	bf 01 00 00 00       	mov    edi,0x1
+  4267cc:	5b                   	pop    rbx
+  4267cd:	5d                   	pop    rbp
+  4267ce:	41 5c                	pop    r12
+  4267d0:	41 5d                	pop    r13
+  4267d2:	41 5e                	pop    r14
+  4267d4:	41 5f                	pop    r15
+  4267d6:	e9 e5 d1 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 076: print #1, "usampler1DArray";
+  4267db:	be 0f 00 00 00       	mov    esi,0xf
+  4267e0:	48 8d 3d 0f 93 05 00 	lea    rdi,[rip+0x5930f]        # 47faf6 <_IO_stdin_used+0x2af6>
+  4267e7:	e8 a4 0d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4267ec:	48 89 c6             	mov    rsi,rax
+  4267ef:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4267f6:	00 
+  4267f7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4267fe:	00 00 
+  426800:	75 22                	jne    426824 <MEMORY_T::POKE64(double, double)+0x1cf54>
+  426802:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426809:	31 d2                	xor    edx,edx
+  42680b:	bf 01 00 00 00       	mov    edi,0x1
+  426810:	5b                   	pop    rbx
+  426811:	5d                   	pop    rbp
+  426812:	41 5c                	pop    r12
+  426814:	41 5d                	pop    r13
+  426816:	41 5e                	pop    r14
+  426818:	41 5f                	pop    r15
+  42681a:	e9 a1 d1 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 077: print #1, "usampler2D";
+  42681f:	e8 5c f0 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 076: print #1, "usampler1DArray";
+  426824:	e8 57 f0 fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 075: print #1, "usampler1D";
+  426829:	be 0a 00 00 00       	mov    esi,0xa
+  42682e:	48 8d 3d b6 92 05 00 	lea    rdi,[rip+0x592b6]        # 47faeb <_IO_stdin_used+0x2aeb>
+  426835:	e8 56 0d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42683a:	48 89 c6             	mov    rsi,rax
+  42683d:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426844:	00 
+  426845:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  42684c:	00 00 
+  42684e:	75 61                	jne    4268b1 <MEMORY_T::POKE64(double, double)+0x1cfe1>
+  426850:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426857:	31 d2                	xor    edx,edx
+  426859:	bf 01 00 00 00       	mov    edi,0x1
+  42685e:	5b                   	pop    rbx
+  42685f:	5d                   	pop    rbp
+  426860:	41 5c                	pop    r12
+  426862:	41 5d                	pop    r13
+  426864:	41 5e                	pop    r14
+  426866:	41 5f                	pop    r15
+  426868:	e9 53 d1 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 074: print #1, "usage";
+  42686d:	be 05 00 00 00       	mov    esi,0x5
+  426872:	48 8d 3d 6c 92 05 00 	lea    rdi,[rip+0x5926c]        # 47fae5 <_IO_stdin_used+0x2ae5>
+  426879:	e8 12 0d 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42687e:	48 89 c6             	mov    rsi,rax
+  426881:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426888:	00 
+  426889:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426890:	00 00 
+  426892:	75 22                	jne    4268b6 <MEMORY_T::POKE64(double, double)+0x1cfe6>
+  426894:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42689b:	31 d2                	xor    edx,edx
+  42689d:	bf 01 00 00 00       	mov    edi,0x1
+  4268a2:	5b                   	pop    rbx
+  4268a3:	5d                   	pop    rbp
+  4268a4:	41 5c                	pop    r12
+  4268a6:	41 5d                	pop    r13
+  4268a8:	41 5e                	pop    r14
+  4268aa:	41 5f                	pop    r15
+  4268ac:	e9 0f d1 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 075: print #1, "usampler1D";
+  4268b1:	e8 ca ef fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 074: print #1, "usage";
+  4268b6:	e8 c5 ef fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 073: print #1, "upper_mb";
+  4268bb:	be 08 00 00 00       	mov    esi,0x8
+  4268c0:	48 8d 3d 15 92 05 00 	lea    rdi,[rip+0x59215]        # 47fadc <_IO_stdin_used+0x2adc>
+  4268c7:	e8 c4 0c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4268cc:	48 89 c6             	mov    rsi,rax
+  4268cf:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4268d6:	00 
+  4268d7:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4268de:	00 00 
+  4268e0:	75 61                	jne    426943 <MEMORY_T::POKE64(double, double)+0x1d073>
+  4268e2:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4268e9:	31 d2                	xor    edx,edx
+  4268eb:	bf 01 00 00 00       	mov    edi,0x1
+  4268f0:	5b                   	pop    rbx
+  4268f1:	5d                   	pop    rbp
+  4268f2:	41 5c                	pop    r12
+  4268f4:	41 5d                	pop    r13
+  4268f6:	41 5e                	pop    r14
+  4268f8:	41 5f                	pop    r15
+  4268fa:	e9 c1 d0 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 072: print #1, "upper";
+  4268ff:	be 05 00 00 00       	mov    esi,0x5
+  426904:	48 8d 3d 88 6c 05 00 	lea    rdi,[rip+0x56c88]        # 47d593 <_IO_stdin_used+0x593>
+  42690b:	e8 80 0c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426910:	48 89 c6             	mov    rsi,rax
+  426913:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  42691a:	00 
+  42691b:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426922:	00 00 
+  426924:	75 22                	jne    426948 <MEMORY_T::POKE64(double, double)+0x1d078>
+  426926:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42692d:	31 d2                	xor    edx,edx
+  42692f:	bf 01 00 00 00       	mov    edi,0x1
+  426934:	5b                   	pop    rbx
+  426935:	5d                   	pop    rbp
+  426936:	41 5c                	pop    r12
+  426938:	41 5d                	pop    r13
+  42693a:	41 5e                	pop    r14
+  42693c:	41 5f                	pop    r15
+  42693e:	e9 7d d0 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 073: print #1, "upper_mb";
+  426943:	e8 38 ef fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 072: print #1, "upper";
+  426948:	e8 33 ef fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 071: print #1, "upon";
+  42694d:	be 04 00 00 00       	mov    esi,0x4
+  426952:	48 8d 3d 7e 91 05 00 	lea    rdi,[rip+0x5917e]        # 47fad7 <_IO_stdin_used+0x2ad7>
+  426959:	e8 32 0c 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  42695e:	48 89 c6             	mov    rsi,rax
+  426961:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426968:	00 
+  426969:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426970:	00 00 
+  426972:	75 61                	jne    4269d5 <MEMORY_T::POKE64(double, double)+0x1d105>
+  426974:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  42697b:	31 d2                	xor    edx,edx
+  42697d:	bf 01 00 00 00       	mov    edi,0x1
+  426982:	5b                   	pop    rbx
+  426983:	5d                   	pop    rbp
+  426984:	41 5c                	pop    r12
+  426986:	41 5d                	pop    r13
+  426988:	41 5e                	pop    r14
+  42698a:	41 5f                	pop    r15
+  42698c:	e9 2f d0 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 070: print #1, "update";
+  426991:	be 06 00 00 00       	mov    esi,0x6
+  426996:	48 8d 3d 33 91 05 00 	lea    rdi,[rip+0x59133]        # 47fad0 <_IO_stdin_used+0x2ad0>
+  42699d:	e8 ee 0b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4269a2:	48 89 c6             	mov    rsi,rax
+  4269a5:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4269ac:	00 
+  4269ad:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  4269b4:	00 00 
+  4269b6:	75 22                	jne    4269da <MEMORY_T::POKE64(double, double)+0x1d10a>
+  4269b8:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  4269bf:	31 d2                	xor    edx,edx
+  4269c1:	bf 01 00 00 00       	mov    edi,0x1
+  4269c6:	5b                   	pop    rbx
+  4269c7:	5d                   	pop    rbp
+  4269c8:	41 5c                	pop    r12
+  4269ca:	41 5d                	pop    r13
+  4269cc:	41 5e                	pop    r14
+  4269ce:	41 5f                	pop    r15
+  4269d0:	e9 eb cf 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 071: print #1, "upon";
+  4269d5:	e8 a6 ee fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 070: print #1, "update";
+  4269da:	e8 a1 ee fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 069: print #1, "up";
+  4269df:	be 02 00 00 00       	mov    esi,0x2
+  4269e4:	48 8d 3d 4a 80 05 00 	lea    rdi,[rip+0x5804a]        # 47ea35 <_IO_stdin_used+0x1a35>
+  4269eb:	e8 a0 0b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  4269f0:	48 89 c6             	mov    rsi,rax
+  4269f3:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  4269fa:	00 
+  4269fb:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426a02:	00 00 
+  426a04:	75 61                	jne    426a67 <MEMORY_T::POKE64(double, double)+0x1d197>
+  426a06:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426a0d:	31 d2                	xor    edx,edx
+  426a0f:	bf 01 00 00 00       	mov    edi,0x1
+  426a14:	5b                   	pop    rbx
+  426a15:	5d                   	pop    rbp
+  426a16:	41 5c                	pop    r12
+  426a18:	41 5d                	pop    r13
+  426a1a:	41 5e                	pop    r14
+  426a1c:	41 5f                	pop    r15
+  426a1e:	e9 9d cf 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 068: print #1, "until";
+  426a23:	be 05 00 00 00       	mov    esi,0x5
+  426a28:	48 8d 3d 9b 90 05 00 	lea    rdi,[rip+0x5909b]        # 47faca <_IO_stdin_used+0x2aca>
+  426a2f:	e8 5c 0b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426a34:	48 89 c6             	mov    rsi,rax
+  426a37:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426a3e:	00 
+  426a3f:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426a46:	00 00 
+  426a48:	75 22                	jne    426a6c <MEMORY_T::POKE64(double, double)+0x1d19c>
+  426a4a:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426a51:	31 d2                	xor    edx,edx
+  426a53:	bf 01 00 00 00       	mov    edi,0x1
+  426a58:	5b                   	pop    rbx
+  426a59:	5d                   	pop    rbp
+  426a5a:	41 5c                	pop    r12
+  426a5c:	41 5d                	pop    r13
+  426a5e:	41 5e                	pop    r14
+  426a60:	41 5f                	pop    r15
+  426a62:	e9 59 cf 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 069: print #1, "up";
+  426a67:	e8 14 ee fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 068: print #1, "until";
+  426a6c:	e8 0f ee fd ff       	call   405880 <__stack_chk_fail@plt>
+;						case 067: print #1, "unstring";
+  426a71:	be 08 00 00 00       	mov    esi,0x8
+  426a76:	48 8d 3d 94 75 05 00 	lea    rdi,[rip+0x57594]        # 47e011 <_IO_stdin_used+0x1011>
+  426a7d:	e8 0e 0b 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426a82:	48 89 c6             	mov    rsi,rax
+  426a85:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426a8c:	00 
+  426a8d:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426a94:	00 00 
+  426a96:	75 61                	jne    426af9 <MEMORY_T::POKE64(double, double)+0x1d229>
+  426a98:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426a9f:	31 d2                	xor    edx,edx
+  426aa1:	bf 01 00 00 00       	mov    edi,0x1
+  426aa6:	5b                   	pop    rbx
+  426aa7:	5d                   	pop    rbp
+  426aa8:	41 5c                	pop    r12
+  426aaa:	41 5d                	pop    r13
+  426aac:	41 5e                	pop    r14
+  426aae:	41 5f                	pop    r15
+  426ab0:	e9 0b cf 04 00       	jmp    4739c0 <fb_PrintString>
+;						case 066: print #1, "unsigned";
+  426ab5:	be 08 00 00 00       	mov    esi,0x8
+  426aba:	48 8d 3d 00 90 05 00 	lea    rdi,[rip+0x59000]        # 47fac1 <_IO_stdin_used+0x2ac1>
+  426ac1:	e8 ca 0a 05 00       	call   477590 <fb_StrAllocTempDescZEx>
+  426ac6:	48 89 c6             	mov    rsi,rax
+  426ac9:	48 8b 84 24 c8 01 00 	mov    rax,QWORD PTR [rsp+0x1c8]
+  426ad0:	00 
+  426ad1:	64 48 2b 04 25 28 00 	sub    rax,QWORD PTR fs:0x28
+  426ad8:	00 00 
+  426ada:	75 22                	jne    426afe <MEMORY_T::POKE64(double, double)+0x1d22e>
+  426adc:	48 81 c4 d8 01 00 00 	add    rsp,0x1d8
+  426ae3:	31 d2                	xor    edx,edx
+  426ae5:	bf 01 00 00 00       	mov    edi,0x1
+  426aea:	5b                   	pop    rbx
+  426aeb:	5d                   	pop    rbp
+  426aec:	41 5c                	pop    r12
+  426aee:	41 5d                	pop    r13
+  426af0:	41 5e                	pop    r14
+  426af2:	41 5f                	pop    r15
