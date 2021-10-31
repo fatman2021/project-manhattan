@@ -757,7 +757,7 @@ L5:
   ' fb_FileClose( (int32)*(uint8*)4808097ll );
   close                                                                  peek(ubyte,@nibbles(&B0001))  
 
-#include once "basic.bi"
+'#include once "basic.bi"
 #include once "kernal.bi"
 
  /' 
