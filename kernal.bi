@@ -1,424 +1,785 @@
-  ' $FD1A/64794:   Change Vectors For User
-  ' Jump from $FF8D:
-  ' $FD1A: 86 C3     STX $C3       ; Pointer: Type 3 Tape LOAD and general use
-  ' $FD1C: 84 C4     STY $C4       ; Pointer: Type 3 Tape LOAD and general use
-  ' $FD1E: A0 1F     LDY #$1F
-  ' Jump from $FD2D:
-  ' $FD20: B9 14 03  LDA $0314,Y   ; Vector: Hardware IRQ Interrupt Address
-  ' $FD23: B0 02     BCS $FD27
-  ' $FD25: B1 C3     LDA ($C3),Y   ; Pointer: Type 3 Tape LOAD and general use
-  ' Jump from $FD23:
-  ' $FD27: 91 C3     STA ($C3),Y   ; Pointer: Type 3 Tape LOAD and general use
-  ' $FD29: 99 14 03  STA $0314,Y   ; Vector: Hardware IRQ Interrupt Address
-  ' $FD2C: 88        DEY
-  ' $FD2D: 10 F1     BPL $FD20
-  ' $FD2F: 60        RTS
-  ' $FD30/64816:   Kernal Reset Vectors
-  ' $EA31,$FE66,$FE47,$F34A
-  ' $FD30: 31 EA 66 FE 47 FE 4A F3
-  ' poke double,@kernal(&HD30),&H31: poke double,@kernal(&HD31),&HEA
-  ' poke double,@kernal(&HD32),&H66: poke double,@kernal(&HD33),&HFE
-  ' poke double,@kernal(&HD34),&H47: poke double,@kernal(&HD35),&HFE
-  ' poke double,@kernal(&HD36),&H4A: poke double,@kernal(&HD37),&HF3
-  ' $F291,$F20E,$F250,$F333    
-  ' $FD38: 91 F2 0E F2 50 F2 33 F3
-  ' poke double,@kernal(&HD38),&H91: poke double,@kernal(&HD39),&HF2
-  ' poke double,@kernal(&HD3A),&H0E: poke double,@kernal(&HD3B),&HF2
-  ' poke double,@kernal(&HD3C),&H50: poke double,@kernal(&HD3D),&HF2
-  ' poke double,@kernal(&HD3E),&H33: poke double,@kernal(&HD3F),&HF3
-  ' $F157,$F1CA,$F6ED,$F13E    
-  ' $FD40: 57 F1 CA F1 ED F6 3E F1
-  ' poke double,@kernal(&HD40),&H57: poke double,@kernal(&HD41),&HF1
-  ' poke double,@kernal(&HD42),&HCA: poke double,@kernal(&HD43),&HF1
-  ' poke double,@kernal(&HD44),&HED: poke double,@kernal(&HD45),&HF6
-  ' poke double,@kernal(&HD46),&H3E: poke double,@kernal(&HD47),&HF1
-  ' $F32F,$FE66,$F4A5,$F5ED    
-  ' $FD48: 2F F3 66 FE A5 F4 ED F5
-  ' poke double,@kernal(&HD48),&H2F: poke double,@kernal(&HD49),&HF3
-  ' poke double,@kernal(&HD4A),&H66: poke double,@kernal(&HD4B),&HFE
-  ' poke double,@kernal(&HDFC),&HA5: poke double,@kernal(&HDFD),&HF4
-  ' poke double,@kernal(&HDFE),&HED: poke double,@kernal(&HDFF),&HF5    
-  ' $FD50/64848:   Initialise System Constants
+  ' $FCE2/64738:   *** RESET, hardware reset starts here
+  
+  ' #FCE2: A2 FF      LDX #$FF      ; Set X for stock
+  poke double,@kernal(&HCE2),&HA2: poke double,@kernal(&HCE3),&HFF
+  
+  ' $FCE4: 78         SEI           ; Disable the interrupts
+  poke double,@kernal(&HCE4),&H78
+  
+  ' $FCE5: 9A         TXS           ; Clear stack
+  poke double,@kernal(&HCE5),&H9A
+  
+  ' $FCE6: D8         CLD           ; Clear decimal mode
+  poke double,@kernal(&HCE6),&HD8
+  
+  ' $FCE7: 20 02 FD   JSR $FD02     ; Scan for autostart ROM at $8000
+  poke double,@kernal(&HCE7),&H20: poke double,@kernal(&HCE8),&H02: poke double,@kernal(&HCE9),&HFD
+
+  ' $FCEA: D0 03      BNE $FCEF     ; If not there continue startup
+  poke double,@kernal(&HCEA),&HD0: poke double,@kernal(&HCEB),&H03
+   
+  ' $FCEC: 6C 00 80   JMP ($8000)   ; Else call ROM start code
+  poke double,@kernal(&HCEC),&H6C: poke double,@kernal(&HCED),&H00: poke double,@kernal(&HCEE),&H80
+ 
+  /' Corrupts BASIC startup message
+  ' Jump from $FCEA(64746)
+  ' $FCEF: 8E 16 D0   STX $D016     ; Read the horizontal fine scroll and control register
+  poke double,@kernal(&HCEF),&H8E: poke double,@kernal(&HCF0),&H16: poke double,@kernal(&HCF1),&HD0
+  
+  ' $FCF2: 20 A3 FD   JSR $FDA3     ; Initialise SID, CIA and IRQ
+  poke double,@kernal(&HCF2),&H20: poke double,@kernal(&HCF3),&HA3: poke double,@kernal(&HCF4),&HFD
+  
+  ' $FCF5: 20 50 FD   JSR $FD50     ; RAM test and find RAM end
+  poke double,@kernal(&HCF5),&H20: poke double,@kernal(&HCF6),&H50: poke double,@kernal(&HCF7),&HFD
+  
+  ' $FCF8: 20 15 FD   JSR $FD15     ; Restore default I/O vectors
+  poke double,@kernal(&HCF8),&H20: poke double,@kernal(&HCF9),&H15: poke double,@kernal(&HCFA),&HFD
+  
+  ' Corrupts BASIC startup message
+  ' $FCFB: 20 5B FF   JSR $FF5B     ; Initialize VIC and screen editor
+  poke double,@kernal(&HCFB),&H20: poke double,@kernal(&HCFC),&H5B: poke double,@kernal(&HCFD),&HFF
+
+  ' $FCFE: 58         CLI           ; Enable the interrupts
+  ' poke double,@kernal(&HCFE),&H58
+  '/
+  
+  /' Causes display subsystem to malfunction  
+  ' $FCFF: 6C 00 A0   JMP ($A000)   ; Execute BASIC
+  ' poke double,@kernal(&HCFF),&H6C: poke double,@kernal(&HD00),&H00: poke double,@kernal(&HD01),&HA0
+  
+  ' $FD02/64770:   *** scan for autostart ROM at $8000, returns Zb=1 if ROM found
+  ' Jump from $FCE7(64743), $FE56(65110):
+  ' $FD02: A2 05      LDX #$05      ; Five characters to test
+  ' poke double,@kernal(&HD02),&HA2: poke double,@kernal(&HD03),&H05
+  
+  ' Jump from $FD0D(64781):
+  ' $FD04: BD 0F FD   LDA $FD0F,X   ; Get test character
+  ' Corrupts BASIC RAM
+  ' poke double,@kernal(&HD04),&HBD: poke double,@kernal(&HD05),&H0F: poke double,@kernal(&HD06),&HFD
+  
+  ' $FD07: DD 03 80   CMP $8003,X   ; Compare with byte in ROM space
+  ' poke double,@kernal(&HD07),&HDD: poke double,@kernal(&HD08),&H03: poke double,@kernal(&HD09),&H80
+  '/
+  
+  ' $FD0A: D0 03      BNE $FD0F
+  poke double,@kernal(&HD0A),&HD0: poke double,@kernal(&HD0B),&H03
+
+  ' $FD0C: CA         DEX
+  poke double,@kernal(&HD0C),&HCA
+  
+  ' $FD0D: D0 F5      BNE $FD04     ; Loop if not all done
+  poke double,@kernal(&HD0D),&HD0: poke double,@kernal(&HD0E),&HF5
+   
+  ' Jump from $FD0A(64778):
+  ' $FD0F: 60         RTS
+  poke double,@kernal(&HD0F),&H60
+  
+  ' $FD10/64784:   *** autostart ROM signature
+  ' $FD10: C3 C2                     'CB'
+  poke double,@kernal(&HD10),&HC3: poke double,@kernal(&HD11),&HC2
+        
+  ' $FD12: CD 38                     'M8"
+  poke double,@kernal(&HD12),&HCD: poke double,@kernal(&HD13),&H38
+  
+  ' $DD14: 30                        '0'
+  poke double,@kernal(&HD14),&H30
+  
+  ' $FD15/64789:   *** restore default I/O vectors
+  ' Jump from $FCF8(64760), $FE66(65126), $FF8A(65418):
+  ' $FD15: A2 30      LDX #$30      ; Pointer to vactor table low byte
+  poke double,@kernal(&HD15),&HA2: poke double,@kernal(&HD16),&H30
+  
+  ' $FD17: A0 FD      LDY #$FD      ; Pointer to vector table high byte
+  poke double,@kernal(&HD17),&HA0: poke double,@kernal(&HD18),&HFD
+  
+  ' $FD19: 18         CLC           ; Flag set vectors
+  poke double,@kernal(&HD19),&H18
+  
+  ' $FD1A/64794:   *** set/read vectored I/O from (XY), Cb = 1 to read, Cb = 0 to set
+  ' Jump from $FF8D(65421):
+  ' $FD1A: 86 C3      STX $C3       ; Save pointer low byte
+  poke double,@kernal(&HD1A),&H86: poke double,@kernal(&HD1B),&HC3
+  
+  ' $FD1C: 84 C4      STY $C4       ; Save pointer high byte
+  poke double,@kernal(&HD1C),&H84: poke double,@kernal(&HD1D),&HC4
+  
+  ' $FD1E: A0 1F      LDY #$1F      ; Set byte count
+  poke double,@kernal(&HD1E),&HA0: poke double,@kernal(&HD1F),&H1F
+  
+  ' Jump from $FD2D(64813):
+  ' $FD20: B9 14 03   LDA $0314,Y   ; Read vector byte from vectors
+  poke double,@kernal(&HD20),&HB9: poke double,@kernal(&HD21),&H14: poke double,@kernal(&HD22),&H03
+  
+  ' $FD23: B0 02      BCS $FD27     ; Branch if read vectors
+  poke double,@kernal(&HD23),&H23: poke double,@kernal(&HD24),&H02
+  
+  ' $FD25: B1 C3      LDA ($C3),Y   ; Read vector byte from (XY)
+  poke double,@kernal(&HD25),&HB1: poke double,@kernal(&HD26),&HC3
+  
+  ' Jump from $FD23(64803):
+   ' $FD27: 91 C3     STA ($C3),Y   ; Save byte to (XY)
+  poke double,@kernal(&HD27),&H91: poke double,@kernal(&HD28),&HC3
+  
+  ' $FD29: 99 14 03   STA $0314,Y   ; Save byte to vector
+  poke double,@kernal(&HD29),&H99: poke double,@kernal(&HD2A),&H14: poke double,@kernal(&HD2B),&H03
+
+  ' $FD2C: 88         DEY           ; Decrement index
+  poke double,@kernal(&HD2C),&H88
+
+  ' $FD2D: 10 F1      BPL $FD20     ; Loop if more to do
+  poke double,@kernal(&HD2D),&H10: poke double,@kernal(&HD2E),&HF1
+     
+  ' $FD2F: 60         RTS
+  poke double,@kernal(&HD2F),&H60
+  
+  ' The above code works but it tries to write to the ROM. while this is usually harmless
+  ' systems that use flash ROM may suffer. Here is a version that makes the extra write
+  ' to RAM instead but is otherwise identical in function. ##
+                                
+  ' set/read vectored I/O from (XY), Cb = 1 to read, Cb = 0 to set
+                                
+  ' STX $C3         ; save pointer low byte
+  ' STY $C4         ; save pointer high byte
+  ' LDY #$1F        ; set byte count
+  ' LDA ($C3),Y     ; read vector byte from (XY)
+  ' BCC $FD29       ; branch if set vectors
+                                
+  ' LDA $0314,Y     ; else read vector byte from vectors
+  ' STA ($C3),Y     ; save byte to (XY)
+  ' STA $0314,Y     ; save byte to vector
+  ' DEY             ; decrement index
+  ' BPL $FD20       ; loop if more to do
+                                
+  ' RTS
+  
+  ' $FD30/64816:   *** kernal vectors
+  ' $FD30: 31 EA                    $0314 IRQ vector
+  poke double,@kernal(&HD30),&H31: poke double,@kernal(&HD31),&HEA
+  
+  ' $FD32: 66 FE                    $0316 BRK vector
+  poke double,@kernal(&HD32),&H66: poke double,@kernal(&HD33),&HFE
+  
+  ' $FD34: 47 FE                    $0318 NMI vector
+  poke double,@kernal(&HD34),&H47: poke double,@kernal(&HD35),&HFE
+  
+  ' $FD36: 4A F3                    $031A open a logical file
+  poke double,@kernal(&HD36),&H4A: poke double,@kernal(&HD37),&HF3
+  
+  ' $FD38: 91 F2                    $031C close a specified logical file
+  poke double,@kernal(&HD38),&H91: poke double,@kernal(&HD39),&HF2
+  
+  ' $FD3A: 0E F2                    $031E open channel for input
+  poke double,@kernal(&HD3A),&H0E: poke double,@kernal(&HD3B),&HF2
+  
+  ' $FD3C: 50 F2                    $0320 open channel for output
+  poke double,@kernal(&HD3C),&H50: poke double,@kernal(&HD3D),&HF2
+  
+  ' $FD3E: 33 F3                    $0322 close input and output channels
+  poke double,@kernal(&HD3E),&H33: poke double,@kernal(&HD3F),&HF3
+  
+  ' $FD40: 57 F1                    $0324 input character from channel
+  poke double,@kernal(&HD40),&H57: poke double,@kernal(&HD41),&HF1
+  
+  ' $FD42: CA F1                    $0326 output character to channel
+  poke double,@kernal(&HD42),&HCA: poke double,@kernal(&HD43),&HF1
+  
+  ' $FD44: ED F6                    $0328 scan stop key
+  poke double,@kernal(&HD44),&HED: poke double,@kernal(&HD45),&HF6
+  
+  ' $FD46: 3E F1                    $032A get character from the input device
+  poke double,@kernal(&HD46),&H3E: poke double,@kernal(&HD47),&HF1
+  
+  ' $FD48: 2F F3                    $032C close all channels and files
+  poke double,@kernal(&HD48),&H2F: poke double,@kernal(&HD49),&HF3
+  
+  ' $FD4A: 66 FE                    $032E user function
+  poke double,@kernal(&HD4A),&H66: poke double,@kernal(&HD4B),&HFE
+  ' Vector to user defined command, currently points to BRK.
+  ' This appears to be a holdover from PET days, when the built-in machine language monitor
+  ' would jump through the $032E vector when it encountered a command that it did not
+  ' understand, allowing the user to add new commands to the monitor.
+  ' Although this vector is initialized to point to the routine called by STOP/RESTORE and
+  ' the BRK interrupt, and is updated by the kernal vector routine at $FD57, it no longer
+  ' has any function.
+  
+  ' $FD4C: A5 F4                    $0330 load
+  poke double,@kernal(&HD4C),&HED: poke double,@kernal(&HD4D),&HF4
+  
+  ' $FD4E: ED F5                    $0332 save
+  '92618 Segmentation fault (core dump)
+  'poke double,kernal(&HD4E),&HED: poke double,kernal(&HD4F),&HF5
+     
+  ' $FD50/64848:   *** test RAM and find RAM end
   ' Jump from $FCF5(64757), $FF87(65415):
-  ' $FD50: A9 00     LDA #$00
+  ' $FD50: A9 00      LDA #$00      ; Clear A
   poke double,@kernal(&HD50),&HA9: poke double,@kernal(&HD51),&H00
-  ' $FD52: A8        TAY
+  
+  ' $FD52: A8         TAY           ; Clear index 
   poke double,@kernal(&HD52),&HA8
+  
   ' Jump from $FD5D(64861):
-  ' $FD53: 99 02 00  STA $0002,Y   ; Unused
+  ' $FD53: 99 02 00   STA $0002,Y   ; Clear page 0. don't do $0000 or $0001
   poke double,@kernal(&HD53),&H99: poke double,@kernal(&HD54),&H00: poke double,@kernal(&HD55),&H00
-  ' $FD56: 99 00 02  STA $0200,Y   ; BASIC Input Buffer (Input Line from Screen)
+  
+  ' $FD56: 99 00 02   STA $0200,Y   ; Clear page 2
   poke double,@kernal(&HD56),&H99: poke double,@kernal(&HD57),&H00: poke double,@kernal(&HD58),&H02
-  ' $FD59: 99 00 03  STA $0300,Y   ; Vector: BASIC Error Message
+  
+  ' $FD59: 99 00 03   STA $0300,Y   ; Clear page 3
   poke double,@kernal(&HD59),&H99: poke double,@kernal(&HD5A),&H00: poke double,@kernal(&HD5B),&H03
-  ' $FD5C: C8        INY
+  
+  ' $FD5C: C8         INY           ; Increment index
   poke double,@kernal(&HD5C),&HC8
-  ' $FD5D: D0 F4     BNE $FD53
+  
+  ' $FD5D: D0 F4      BNE $FD53     ; Loop if more to do
   poke double,@kernal(&HD5D),&HD0: poke double,@kernal(&HD5E),&HF4
-  ' $FD5F: A2 3C     LDX #$3C
+  
+  ' $FD5F: A2 3C      LDX #$3C      ; Set cassette buffer pointer low byte
   poke double,@kernal(&HD5F),&HA2: poke double,@kernal(&HD60),&H3C
-  ' $FD61: A0 03     LDY #$03
+  
+  ' $FD61: A0 03      LDY #$03      ; Set cassette biffer pointer high byte
   poke double,@kernal(&HD61),&HA0: poke double,@kernal(&HD62),&H03
-  ' $FD63: 86 B2     STX $B2       ; Pointer: Start Address of Tape Buffer
+  
+  ' $FD63: 86 B2      STX $B2       ; Save tape buffer start pointer low byte
   poke double,@kernal(&HD63),&H86: poke double,@kernal(&HD64),&HB2
-  ' $FD65: 84 B3     STY $B3       ; Pointer: Start Address of Tape Buffer
+  
+  ' $FD65: 84 B3      STY $B3       ; Save tape buffer start pointer high byte
   poke double,@kernal(&HD65),&H84: poke double,@kernal(&HD66),&HB3
-  ' $FD67: A8        TAY
+  
+  ' $FD67: A8         TAY           ; Clear Y
   poke double,@kernal(&HD67),&HA8
-  ' $FD68: A9 03     LDA #$03
+  
+  ' $FD68: A9 03      LDA #$03      ; Set RAM test pointer high byte
   poke double,@kernal(&HD68),&HA9: poke double,@kernal(&HD69),&H03
-  ' $FD6A: 85 C2     STA $C2       ; Start Address for LOAD and Cassette Write
+  
+  ' $FD6A: 85 C2      STA $C2       ; Save RAM test pointer high byte
   poke double,@kernal(&HD6A),&H85: poke double,@kernal(&HD6B),&HC2
+  
   ' Jump from $FD86(64902):
-  ' $FD6C: E6 C2     INC $C2       ; Start Address for LOAD and Cassette Write
+  ' $FD6C: E6 C2      INC $C2       ; Increment RAM test pointer high byte
   poke double,@kernal(&HD6C),&HE6: poke double,@kernal(&HD6D),&HC2
+  
   ' Jump from $FD84(64900):
-  ' $FD6E: B1 C1     LDA ($C1),Y   ; Start Address for LOAD and Cassette Write
+  ' $FD6E: B1 C1      LDA ($C1),Y   ; Start Address for LOAD and Cassette Write
   poke double,@kernal(&HD6E),&HB1: poke double,@kernal(&HD6F),&HC1
-  ' $FD70: AA        TAX
+  
+  ' $FD70: AA         TAX
   poke double,@kernal(&HD70),&HAA
-  ' $FD71: A9 55     LDA #$55
+  
+  ' $FD71: A9 55      LDA #$55
   poke double,@kernal(&HD71),&HA9: poke double,@kernal(&HD72),&H55
-  ' $FD73: 91 C1     STA ($C1),Y   ; Start Address for LOAD and Cassette Write
+  
+  ' $FD73: 91 C1      STA ($C1),Y   ; Start Address for LOAD and Cassette Write
   poke double,@kernal(&HD73),&H91: poke double,@kernal(&HD74),&HC1
-  ' $FD75: D1 C1     CMP ($C1),Y   ; Start Address for LOAD and Cassette Write
+  
+  ' $FD75: D1 C1      CMP ($C1),Y   ; Start Address for LOAD and Cassette Write
   poke double,@kernal(&HD75),&HD1: poke double,@kernal(&HD76),&HC1
-  ' $FD77: D0 0F     BNE $FD88
+  
+  ' $FD77: D0 0F      BNE $FD88
   poke double,@kernal(&HD77),&HD0: poke double,@kernal(&HD78),&H0F
-  ' $FD79: 2A        ROL
+  
+  ' $FD79: 2A         ROL
   poke double,@kernal(&HD79),&H2A
-  ' $FD7A: 91 C1     STA ($C1),Y   ; Start Address for LOAD and Cassette Write
+  
+  ' $FD7A: 91 C1      STA ($C1),Y   ; Start Address for LOAD and Cassette Write
   poke double,@kernal(&HD7A),&H91: poke double,@kernal(&HD7B),&HC1
-  ' $FD7C: D1 C1     CMP ($C1),Y   ; Start Address for LOAD and Cassette Write
+  
+  ' $FD7C: D1 C1      CMP ($C1),Y   ; Start Address for LOAD and Cassette Write
   poke double,@kernal(&HD7C),&HD1: poke double,@kernal(&HD7D),&HC1
-  ' $FD7E: D0 08     BNE $FD88
+  
+  ' $FD7E: D0 08      BNE $FD88
   poke double,@kernal(&HD7E),&HD0: poke double,@kernal(&HD7F),&H08
-  ' $FD80: 8A        TXA
+  
+  ' $FD80: 8A         TXA
   poke double,@kernal(&HD80),&H8A
-  ' $FD81: 91 C1     STA ($C1),Y   ; Start Address for LOAD and Cassette Write
+  
+  ' $FD81: 91 C1      STA ($C1),Y   ; Start Address for LOAD and Cassette Write
   poke double,@kernal(&HD81),&H91: poke double,@kernal(&HD82),&HC1
-  ' $FD83: C8        INY
+   
+  ' $FD83: C8         INY
   poke double,@kernal(&HD83),&HC8
-  ' $FD84: D0 E8     BNE $FD6E
+  
+  ' $FD84: D0 E8      BNE $FD6E
   poke double,@kernal(&HD84),&HD0: poke double,@kernal(&HD84),&HE8
-  ' $FD86: F0 E4     BEQ $FD6C
-  poke double,@kernal(&HD86),&HF6
-  ' Jump from $FD77(64887), $FD7E(64894):
-  ' $FD88: 98        TYA
+   
+  ' $FD86: F0 E4      BEQ $FD6C
+  poke double,@kernal(&HD86),&HF0: poke double,@kernal(&HD87),&HE4
+  
+  ' Jump from $FD77(64887), $FD7E(64894): 
+  ' $FD88: 98         TYA
   poke double,@kernal(&HD88),&H98
-  ' $FD89: AA        TAX
+  
+  ' $FD89: AA         TAX
   poke double,@kernal(&HD89),&HAA
-  ' $FD8A: A4 C2     LDY $C2       ; Start Address for LOAD and Cassette Write
+  
+  ' $FD8A: A4 C2      LDY $C2       ; Start Address for LOAD and Cassette Write
   poke double,@kernal(&HD8A),&HA4: poke double,@kernal(&HD8B),&HC2
-  ' $FD8C: 18        CLC
+  
+  ' $FD8C: 18         CLC
   poke double,@kernal(&HD8C),&H18
-  ' $FD8D: 20 2D FE  JSR $FE2D     ; Read / Set Top of Memory
+  
+  ' $FD8D: 20 2D FE   JSR $FE2D     ; Set the top of memory
   poke double,@kernal(&HD8D),&H20: poke double,@kernal(&HD8E),&H2D: poke double,@kernal(&HD8F),&HFE
-  ' $FD90: A9 08     LDA #$08
+  
+  ' $FD90: A9 08      LDA #$08
   poke double,@kernal(&HD90),&HA9: poke double,@kernal(&HD91),&H08
-  ' $FD92: 8D 82 02  STA $0282     ; Pointer: Bottom of Memory for Operating System
+  
+  ' $FD92: 8D 82 02   STA $0282     ; Save the OS start of memory high byte
   poke double,@kernal(&HD92),&H8D: poke double,@kernal(&HD93),&H82: poke double,@kernal(&HD94),&H02
-  ' $FD95: A9 04     LDA #$04
+   
+  ' $FD95: A9 04      LDA #$04
   poke double,@kernal(&HD95),&HA9: poke double,@kernal(&HD96),&H04
-  ' $FD97: 8D 88 02  STA $0288     ; High Byte of Screen Memory Address
+  
+  ' $FD97: 8D 88 02   STA $0288     ; Save the screen memory page
   poke double,@kernal(&HD97),&H8D: poke double,@kernal(&HD98),&H88: poke double,@kernal(&HD99),&H02
-  ' $FD9A: 60        RTS
+   
+  ' $FD9A: 60         RTS
   poke double,@kernal(&HD9A),&H60
-  ' $FD9B/64923:   IRQ Vectors For Tape I/O
-  ' $FD9B: 6A FC CD FB 31 EA 2C F9    $FC6A(64618),$FBCD(64461),$EA31(59953),$F92C(63788)
+  
+  ' $FD9B/64923:   *** tape IRQ vectors
+  ' $FD9B 6A FC                    $08 write tape leader IRQ routine
   poke double,@kernal(&HD9B),&H6A: poke double,@kernal(&HD9C),&HFC
+  
+  ' $FD9D CD FB                    $0A tape write IRQ routine
   poke double,@kernal(&HD9D),&HCD: poke double,@kernal(&HD9E),&HFB
+  
+  ' $FD9F 31 EA                    $0C normal IRQ vector
   poke double,@kernal(&HD9F),&H31: poke double,@kernal(&HDA0),&HEA
+  
+  ' $FDA1 2C F9                    $0E read tape bits IRQ routine
   poke double,@kernal(&HDA1),&H2C: poke double,@kernal(&HDA2),&HF9
-  ' $FDA3/64931:   Initialise I/O
+  
+  
+  ' $FDA3/64931:   *** initialise SID, CIA and IRQ
   ' Jump from $FCF2(64754), $FE69(65129), $FF84(65412):
-  ' $FDA3: A9 7F      LDA #$7F
+  ' $FDA3: A9 7F      LDA #$7F      ; Disable all interrupts
   poke double,@kernal(&HDA3),&HA9: poke double,@kernal(&HDA4),&H7F
-  ' $FDA5: 8D 0D DC   STA $DC0D     ; CIA1: Interrupt (IRQ) Control Register
+  
+  ' $FDA5: 8D 0D DC   STA $DC0D     ; Save VIA 1 ICR
   poke double,@kernal(&HDA5),&H8D: poke double,@kernal(&HDA6),&H0D: poke double,@kernal(&HDA7),&HDC
-  ' $FDA8: 8D 0D DD   STA $DD0D     ; CIA2: Interrupt (NMI) Control Register
+  
+  ' $FDA8: 8D 0D DD   STA $DD0D     ; Save VIA 2 ICR
   poke double,@kernal(&HDA8),&H8D: poke double,@kernal(&HDA9),&H0D: poke double,@kernal(&HDAA),&HDD
-  ' $FDAB: 8D 00 DC   STA $DC00     ; CIA1: Data Port A (Keyboard, Joystick, Paddles)
+  
+  ' $FDAB: 8D 00 DC   STA $DC00     ; Save VIA 1 DRA, keyboard column drive
   poke double,@kernal(&HDAB),&H8D: poke double,@kernal(&HDAC),&H00: poke double,@kernal(&HDAD),&HDC
-  ' $FDAE: A9 08      LDA #$08
+  
+  ' $FDAE: A9 08      LDA #$08      ; Set timer single shot
   poke double,@kernal(&HDAE),&HA9: poke double,@kernal(&HDAF),&H0B
-  ' $FDB0: 8D 0E DC   STA $DC0E     ; CIA1: Control Register A
+  
+  ' $FDB0: 8D 0E DC   STA $DC0E     ; Save VIA 1 CRA
   poke double,@kernal(&HDB0),&H8D: poke double,@kernal(&HDB1),&H0E: poke double,@kernal(&HDB2),&HDC
-  ' $FDB3: 8D 0E DD   STA $DD0E     ; CIA2: Control Register A
+  
+  ' $FDB3: 8D 0E DD   STA $DD0E     ; Save VIA 2 CRA
   poke double,@kernal(&HDB3),&H8D: poke double,@kernal(&HDB4),&H0E: poke double,@kernal(&HDB5),&HDD
-  ' $FDB6: 8D 0F DC   STA $DC0F     ; CIA1: Control Register B
+  
+  ' $FDB6: 8D 0F DC   STA $DC0F     ; Save VIA 1 CRB
   poke double,@kernal(&HDB6),&H8D: poke double,@kernal(&HDB7),&H0F: poke double,@kernal(&HDB8),&HDC
-  ' $FDB9: 8D 0F DD   STA $DD0F     ; CIA2: Control Register B
+  
+  ' $FDB9: 8D 0F DD   STA $DD0F     ; Save VIA 2 CRB
   poke double,@kernal(&HDB9),&H8D: poke double,@kernal(&HDBA),&H0F: poke double,@kernal(&HDBB),&HDD
-  ' $FDBC: A2 00      LDX #$00
+  
+  ' $FDBC: A2 00      LDX #$00      ; Set all inputs
   poke double,@kernal(&HDBC),&HA2: poke double,@kernal(&HDBD),&H0D
-  ' $FDBE: 8E 03 DC   STX $DC03     ; CIA1: Data Direction Register B
+  
+  ' $FDBE: 8E 03 DC   STX $DC03     ; Save VIA 1 DDRB, ketboard row
   poke double,@kernal(&HDBE),&H8E: poke double,@kernal(&HDBF),&H03: poke double,@kernal(&HDC0),&HDC
-  ' $FDC1: 8E 03 DD   STX $DD03     ; CIA2: Data Direction Register B
+  
+  ' $FDC1: 8E 03 DD   STX $DD03     ; Save VIA 2 DDRB, RS-232 port
   poke double,@kernal(&HDC1),&H8E: poke double,@kernal(&HDC2),&H03: poke double,@kernal(&HDC3),&HDD
-  ' $FDC4: 8E 18 D4   STX $D418     ; SID: Select Filter Mode and Volume
+  
+  ' $FDC4: 8E 18 D4   STX $D418     ; Clear the volume and filter select register
   poke double,@kernal(&HDC4),&H8E: poke double,@kernal(&HDC5),&H1B: poke double,@kernal(&HDC6),&H04
-  ' $FDC7: CA         DEX
+  
+  ' $FDC7: CA         DEX           ; Set X = $FF
   poke double,@kernal(&HDC7),&HCA
-  ' $FDC8: 8E 02 DC   STX $DC02     ; CIA1: Data Direction Register A
+  
+  ' $FDC8: 8E 02 DC   STX $DC02     ; Save VIA 1 DDRA, keyboard column
   poke double,@kernal(&HDC8),&H8E: poke double,@kernal(&HDC9),&H02: poke double,@kernal(&HDCA),&HDC
-  ' $FDCB: A9 07      LDA #$07
+  
+  ' $FDCB: A9 07      LDA #$07      ; DATA out high, CLK out high, ATN out high, RS-232 Tx DATA
+  '                                 ; high, video address 15 = 1, video address 14 = 1
   poke double,@kernal(&HDCB),&HA9: poke double,@kernal(&HDCC),&H07
-  ' $FDCD: 8D 00 DD   STA $DD00     ; CIA2: Data Port A (Serial Bus, RS232, VIC Base Mem.)
+  
+  ' $FDCD: 8D 00 DD   STA $DD00     ; Save VIA 2 DRA, serial port and video address
   poke double,@kernal(&HDCD),&H8D: poke double,@kernal(&HDCE),&H00: poke double,@kernal(&HDCF),&HDD
-  ' $FDD0: A9 3F      LDA #$3F
+  
+  ' $FDD0: A9 3F      LDA #$3F      ; Set serial DATA input, serial CLK input  
   poke double,@kernal(&HDD0),&HA9: poke double,@kernal(&HDD1),&H3F
-  ' $FDD2: 8D 02 DD   STA $DD02     ; CIA2: Data Direction Register A
+  
+  ' $FDD2: 8D 02 DD   STA $DD02     ; Save VIA 2 DDRA, serial port and video address
   poke double,@kernal(&HDD2),&H8D: poke double,@kernal(&HDD3),&H02: poke double,@kernal(&HDD4),&HDD
-  ' $FDD5: A9 E7      LDA #$E7
+  
+  ' $FDD5: A9 E7      LDA #$E7      ; Set 1110 0111, motor off, enable I/O, enable KERNAL,
+  '                                 ; enable BASIC
   poke double,@kernal(&HDD5),&HA9: poke double,@kernal(&HDD6),&HE7
-  ' $FDD7: 85 01      STA $01       ; 6510 On-chip 8-bit Input/Output Register
+  
+  ' $FDD7: 85 01      STA $01       ; Save the 6510 I/0 port
   poke double,@kernal(&HDD7),&H85: poke double,@kernal(&HDD8),&H01
-  ' $FDD9: A9 2F      LDA #$2F
+  
+  ' $FDD9: A9 2F      LDA #$2F      ; Set 0010 1111, 0 = input, 1 = output
   poke double,@kernal(&HDD9),&HA9: poke double,@kernal(&HDDA),&H2F
-  ' $FDDB: 85 00      STA $00       ; 6510 On-chip Data Direction Register
+  
+  ' $FDDB: 85 00      STA $00       ; Save the 6510 I/O port direction register
   poke double,@kernal(&HDDB),&H85: poke double,@kernal(&HDDC),&H00
-  ' $FDDD/64989:   Enable Timer
+  
+  ' $FDDD/64989:   *** Enable Timer
   ' Jump from $FCA5(64677), $FF6B(65387):
-  ' $FDDD: AD A6 02   LDA $02A6     ; Flag: TV Standard
+  ' $FDDD: AD A6 02   LDA $02A6     ; Get the PAL/NTSC flag
   poke double,@kernal(&HDDD),&HAD: poke double,@kernal(&HDDE),&HA6: poke double,@kernal(&HDDF),&H02
-  ' $FDE0: F0 0A      BEQ $FDEC
+  
+  ' $FDE0: F0 0A      BEQ $FDEC     ; If NTSC go set NTSC timing
   poke double,@kernal(&HDE0),&HF0: poke double,@kernal(&HDE1),&H0A
+
   ' $FDE2: A9 25      LDA #$25
   poke double,@kernal(&HDE2),&HA9: poke double,@kernal(&HDE3),&H25
-  ' $FDE4: 8D 04 DC   STA $DC04     ; CIA1: Timer A Low-Byte  (Kernal-IRQ, Tape)
+  
+  ' $FDE4: 8D 04 DC   STA $DC04     ; Save VIA 1 timer A low byte
   poke double,@kernal(&HDE4),&H8D: poke double,@kernal(&HDE5),&H04: poke double,@kernal(&HDE6),&HDC
+  
   ' $FDE7: A9 40      LDA #$40
   poke double,@kernal(&HDE7),&HA9: poke double,@kernal(&HDE8),&H40
+  
   ' $FDE9: 4C F3 FD   JMP $FDF3
   poke double,@kernal(&HDE9),&H4C: poke double,@kernal(&HDEA),&HF3: poke double,@kernal(&HDEB),&HFD
+  
   ' Jump from $FDE0{64992):
   ' $FDEC: A9 95      LDA #$95
   poke double,@kernal(&HDEC),&HA9: poke double,@kernal(&HDED),&H95
-  ' $FDEE: 8D 04 DC   STA $DC04     ; CIA1: Timer A Low-Byte  (Kernal-IRQ, Tape)
+  
+  ' $FDEE: 8D 04 DC   STA $DC04     ; Save VIA 1 timer A low byte
   poke double,@kernal(&HDEE),&H8D: poke double,@kernal(&HDEF),&H04: poke double,@kernal(&HDF0),&HDC
+    
   ' $FDF1: A9 42      LDA #$42
   poke double,@kernal(&HDF1),&HA9: poke double,@kernal(&HDF2),&H42
+  
   ' Jump from $FDE9(65001):
-  ' $FDF3: 8D 05 DC   STA $DC05     ; CIA1: Timer A High-Byte (Kernal-IRQ, Tape)
+  ' $FDF3: 8D 05 DC   STA $DC05     ; Save VIA 1 timer A high byte
   poke double,@kernal(&HDF3),&H8D: poke double,@kernal(&HDF4),&H05: poke double,@kernal(&HDF5),&HDC
+   
   ' $FDF6: 4C 6E FF   JMP $FF6E     ; Initialize screen editor
   poke double,@kernal(&HDF6),&H4C: poke double,@kernal(&HDF7),&H6E: poke double,@kernal(&HDF8),&HFF
-  ' $FDF9/65017:   Set Filename
+
+  ' $FDF9/65017:   *** set filename
   ' Jump from $FFBD(65469):
-  ' $FDF9: 85 B7      STA $B7       ; Number of Characters in Filename
+  ' $FDF9: 85 B7      STA $B7       ; Set file name length
   poke double,@kernal(&HDF9),&H85: poke double,@kernal(&HDFA),&H87
-  ' $FDFB: 86 BB      STX $BB       ; Pointer: Current File name Address
+  
+  ' $FDFB: 86 BB      STX $BB       ; Set file name pointer low byte
   poke double,@kernal(&HDFB),&H86: poke double,@kernal(&HDFC),&HBB
-  ' $FDFD: 84 BC      STY $BC       ; Pointer: Current File name Address
+  
+  ' $FDFD: 84 BC      STY $BC       ; Set file name pointer high byte
   poke double,@kernal(&HDFD),&H84: poke double,@kernal(&HDFE),&HBC
+  
   ' $FDFF: 60         RTS
   poke double,@kernal(&HDFF),&H60
-  ' $FE00/65024:   Set Logical File Parameters
+  
+  ' $FE00/65024:   *** set logical, first and second addresses
   ' Jump from $FFBA(65466):
-  ' $FE00: 85 B8      STA $B8       ; Current File - Logical File number
+  ' $FE00: 85 B8      STA $B8       ; Save the logical file
   poke double,@kernal(&HE00),&H85: poke double,@kernal(&HE01),&HB8
-  ' $FE02: 86 BA      STX $BA       ; Current File - First Address (Device number)
+  
+  ' $FE02: 86 BA      STX $BA       ; Save the device number
   poke double,@kernal(&HE02),&HB6: poke double,@kernal(&HE03),&HBA
-  ' $FE04: 84 B9      STY $B9       ; Current File - Secondary Address
+  
+  ' $FE04: 84 B9      STY $B9       ; Save the secondary address
   poke double,@kernal(&HE04),&H84: poke double,@kernal(&HE05),&HB9
+  
   ' $FE06: 60         RTS
   poke double,@kernal(&HE06),&H60
-  ' $FE07/65031:   Get I/O Status Word
+  
+  ' $FE07/65031:   *** read I/O status word
   ' Jump from $FFB7:
-  ' $FE07: A5 BA      LDA $BA       ; Current File - First Address (Device number)
+  ' $FE07: A5 BA      LDA $BA       ; Get the device number
   poke double,@kernal(&HE07),&HA5: poke double,@kernal(&HE08),&HBA
-  ' $FE09: C9 02      CMP #$02
+  
+  ' $FE09: C9 02      CMP #$02      ; Compare device with RS-232 device
   poke double,@kernal(&HE09),&HC9: poke double,@kernal(&HE0A),&H02
-  ' $FE0B: D0 0D      BNE $FE1A     ; Control OS Messages
+
+  ' $FE0B: D0 0D      BNE $FE1A     ; If not RS-232 device go ?? 
+  '                                 ; get RS-232 device status
   poke double,@kernal(&HE0B),&HD0: poke double,@kernal(&HE0C),&H0D
-  ' $FE0D: AD 97 02   LDA $0297     ; RS232 Pseudo 6551 Status Register Image
+  
+  ' $FE0D: AD 97 02   LDA $0297     ; Get the RS-232 status register
   poke double,@kernal(&HE0D),&HAD: poke double,@kernal(&HE0E),&H97: poke double,@kernal(&HE0F),&H02
-  ' $FE10: 48         PHA
+  
+  ' $FE10: 48         PHA           ; Save the RS-232 status value
   poke double,@kernal(&HE10),&H48
-  ' $FE11: A9 00      LDA #$00
+  
+  ' $FE11: A9 00      LDA #$00      ; Clear A
   poke double,@kernal(&HE11),&HA9: poke double,@kernal(&HE12),&H00
-  ' $FE13: 8D 97 02   STA $0297     ; RS232 Pseudo 6551 Status Register Image
+  
+  ' $FE13: 8D 97 02   STA $0297     ; Clear the RS-232 status register
   poke double,@kernal(&HE13),&H8D: poke double,@kernal(&HE14),&H97: poke double,@kernal(&HE15),&H02
-  ' $FE16: 68         PLA
+  
+  ' $FE16: 68         PLA           ; Restore the RS-232 status value
   poke double,@kernal(&HE16),&H68
+      
   ' $FE17: 60         RTS
   poke double,@kernal(&HE17),&H60
-  ' $FE18/65048:   Control OS Messages
+  
+  ' $FE18/65048:   *** control kernal messages
   ' Jump from $FF90(65424):
-  ' $FE18: 85 9D      STA $9D       ; Error-Mode-Flag
+  ' $FE18: 85 9D      STA $9D       ; Set message mode flag
   poke double,@kernal(&HE18),&H85: poke double,@kernal(&HE19),&H9D
+  
   ' Jump from $FE0B:
-  ' $FE1A: A5 90      LDA $90       ; Kernal I/O Status Word ST
+  ' $FE1A: A5 90      LDA $90       ; Read the serial status byte
   poke double,@kernal(&HE1A),&HA5: poke double,@kernal(&HE1B),&H90
-  ' Jump from $EDB2(60850), $EE4F(61007), $F18A(61834), $F518(62744), $FA81(64129), $FAC6(64198), $FB35(64309), $FB88(64392):
-  ' $FE1C: 05 90      ORA $90       ; Kernal I/O Status Word ST
+  
+  ' $FE1C/65052:   *** OR into the serial status byte
+  ' Jump from $EDB2(60850), $EE4F(61007), $F18A(61834), $F518(62744), $FA81(64129),
+  '           $FAC6(64198), $FB35(64309), $FB88(64392):
+  ' $FE1C: 05 90      ORA $90       ; OR with the serial status byte
   poke double,@kernal(&HE1C),&H05: poke double,@kernal(&HE1D),&H90
-  ' $FE1E: 85 90      STA $90       ; Kernal I/O Status Word ST
+  
+  ' $FE1E: 85 90      STA $90       ; Save the serial status byte
   poke double,@kernal(&HE1E),&H85: poke double,@kernal(&HE1F),&H90
+   
   ' $FE20: 60         RTS
   poke double,@kernal(&HE20),&H60
-  ' $FE21/65057:   Set IEEE Timeout
+  
+  ' $FE21/65057:   *** set timeout on serial bus
   ' Jump from $FFA2(65442):
-  ' $FE21: 8D 85 02   STA $0285     ; Serial IEEE Bus timeout defeat Flag
+  ' $FE21: 8D 85 02   STA $0285     ; Save serial bus timeout flag
   poke double,@kernal(&HE21),&H8D: poke double,@kernal(&HE22),&H85: poke double,@kernal(&HE23),&H02
+
   ' $FE24: 60         RTS
   poke double,@kernal(&HE24),&H60
-  ' $FE25/65061:   Read / Set Top of Memory
+  
+  ' $FE25/65061:   *** read/set the top of memory, Cb = 1 to read, Cb = 0 to set
   ' Jump from $FF99(65433):
-  ' $FE25: 90 06      BCC $FE2D
+  ' $FE25: 90 06      BCC $FE2D     ; If Cb clear go set the top of memory
   poke double,@kernal(&HE25),&H90: poke double,@kernal(&HE26),&H06
+  
+  ' $FE27/65063    *** read the top of memory
   ' Jump from $F2B2(62130), $F468(62568):
-  ' $FE27: AE 83 02   LDX $0283     ; Pointer: Top of Memory for Operating System
+  ' $FE27: AE 83 02   LDX $0283     ; Get memory top low byte
   poke double,@kernal(&HE27),&HAE: poke double,@kernal(&HE28),&H83: poke double,@kernal(&HE29),&H02
-  ' $FE2A: AC 84 02   LDY $0284     ; Pointer: Top of Memory for Operating System
+  
+  ' $FE2A: AC 84 02   LDY $0284     ; Get memory top high byte
   poke double,@kernal(&HE2A),&HAC: poke double,@kernal(&HE2B),&H84: poke double,@kernal(&HE2C),&H02
+  
+  ' $FE2D/65069    *** set the top of memory
   ' Jump from $FE25(65061), $F480(62592), $FD8D(64909):
-  ' $FE2D: 8E 83 02   STX $0283     ; Pointer: Top of Memory for Operating System
+  ' $FE2D: 8E 83 02   STX $0283     ; Set memory top low byte
   poke double,@kernal(&HE2D),&H8E: poke double,@kernal(&HE2E),&H83: poke double,@kernal(&HE2F),&H02
-  ' $FE30: 8C 84 02   STY $0284     ; Pointer: Top of Memory for Operating System
+  
+  ' $FE30: 8C 84 02   STY $0284     ; Set memory top high byte
   poke double,@kernal(&HE30),&H8C: poke double,@kernal(&HE31),&H84: poke double,@kernal(&HE32),&H02
+  
   ' $FE33: 60         RTS
   poke double,@kernal(&HE33),&H60
-  ' $FE34/65076:   Read / Set Bottom of Memory
+  
+  ' $FE34/65076:   *** read/set the bottom of memory, Cb = 1 to read, Cb = 0 to set
   ' Jump from $FF9C(65436):
-  ' $FE34: 90 06      BCC $FE3C
+  ' $FE34: 90 06      BCC $FE3C     ; If Cb clear go set the bottom of memory
   poke double,@kernal(&HE34),&H90: poke double,@kernal(&HE35),&H06
-  ' $FE36: AE 81 02   LDX $0281     ; Pointer: Bottom of Memory for Operating System
+  
+  ' $FE36: AE 81 02   LDX $0281     ; Get the OS start of memory low byte
   poke double,@kernal(&HE36),&HAE: poke double,@kernal(&HE37),&H81: poke double,@kernal(&HE38),&H02
-  ' $FE39: AC 82 02   LDY $0282     ; Pointer: Bottom of Memory for Operating System
+  
+  ' $FE39: AC 82 02   LDY $0282     ; Get the OS start of memory high byte
   poke double,@kernal(&HE39),&HAC: poke double,@kernal(&HE3A),&H82: poke double,@kernal(&HE3B),&H02
+
   ' Jump from $FE34:
-  ' $FE3C: 8E 81 02   STX $0281     ; Pointer: Bottom of Memory for Operating System
+  ' $FE3C: 8E 81 02   STX $0281     ; Save the OS start of memory low byte
   poke double,@kernal(&HE3C),&H8E: poke double,@kernal(&HE3D),&H81: poke double,@kernal(&HE3E),&H02
-  ' $FE3F: 8C 82 02   STY $0282     ; Pointer: Bottom of Memory for Operating System
+  
+  ' $FE3F: 8C 82 02   STY $0282     ; Save the OS start of memory high byte
   poke double,@kernal(&HE3F),&H8C: poke double,@kernal(&HE40),&H82: poke double,@kernal(&HE41),&H02
-  ' $FE43/65091:   NMI Transfer Entry
-  ' $FE43: 78         SEI
+  
+  ' $FE42 60          RTS
+  poke double,@kernal(&HE42),&H60
+  
+  ' $FE43/65091:   *** NMI vector
+  ' $FE43: 78         SEI           ; Disable the interrupt
   poke double,@kernal(&HE43),&H78
-  ' $FE44: 6C 18 03   JMP ($0318)   ; Vector: Hardware NMI Interrupt Address
+  
+  ' $FE44: 6C 18 03   JMP ($0318)   ; Do NMI vector
   poke double,@kernal(&HE44),&H6C: poke double,@kernal(&HE45),&H18: poke double,@kernal(&HE46),&H03
-  ' $FE47: 48         PHA
+  
+  ' $FE47/65095    *** NMI handler
+  ' $FE47: 48         PHA           ; Save A
   poke double,@kernal(&HE47),&H48
-  ' $FE48: 8A         TXA
+  
+  ' $FE48: 8A         TXA           ; Copy X
   poke double,@kernal(&HE48),&H8A
-  ' $FE49: 48         PHA
+  
+  ' $FE49: 48         PHA           ; Save X
   poke double,@kernal(&HE49),&H48
-  ' $FE4A: 98         TYA
+  
+  ' $FE4A: 98         TYA           ; Copy Y
   poke double,@kernal(&HE4A),&H98
-  ' $FE4B: 48         PHA
+
+  ' $FE4B: 48         PHA           ; Save Y
   poke double,@kernal(&HE4B),&H48
-  ' $FE4C: A9 7F      LDA #$7F
+  
+  ' $FE4C: A9 7F      LDA #$7F      ; Disable all interrupts
   poke double,@kernal(&HE4C),&HA9: poke double,@kernal(&HE4D),&H7F
-  ' $FE4E: 8D 0D DD   STA $DD0D     ; CIA2: Interrupt (NMI) Control Register
+  
+  ' $FE4E: 8D 0D DD   STA $DD0D     ; Save VIA 2 ICR
   poke double,@kernal(&HE4E),&H8D: poke double,@kernal(&HE4F),&H0D: poke double,@kernal(&HE50),&HDD
-  ' $FE51: AC 0D DD   LDY $DD0D     ; CIA2: Interrupt (NMI) Control Register
+  
+  ' $FE51: AC 0D DD   LDY $DD0D     ; Save VIA 2 ICR
   poke double,@kernal(&HE51),&HAC: poke double,@kernal(&HE52),&H0D: poke double,@kernal(&HE53),&HDD
-  ' $FE54: 30 1C      BMI $FE72     ; Warm Start Basic
+  
+  ' $FE54: 30 1C      BMI $FE72     ; Warm Start BASIC
   poke double,@kernal(&HE54),&H30: poke double,@kernal(&HE55),&H1C
-  ' $FE56: 20 02 FD   JSR $FD02     ; Check For 8-ROM
+  
+  ' $FE56: 20 02 FD   JSR $FD02     ; Scan for autostart ROM at $8000
   poke double,@kernal(&HE56),&H20: poke double,@kernal(&HE57),&H02: poke double,@kernal(&HE58),&HFD
-  ' $FE59: D0 03      BNE $FE5E
+  
+  ' $FE59: D0 03      BNE $FE5E     ; Branch if no autostart ROM
   poke double,@kernal(&HE59),&HD0: poke double,@kernal(&HE5A),&H03
-  ' $FE5B: 6C 02 80   JMP ($8002)
+  
+  ' $FE5B: 6C 02 80   JMP ($8002)   ; Else do autostart ROM break entry
   poke double,@kernal(&HE5B),&H6C: poke double,@kernal(&HE5C),&H0C: poke double,@kernal(&HE5D),&H80
+  
   ' Jump from $FE59(65113):
-  ' $FE5E: 20 BC F6   JSR $F6BC     ; Bump Clock
+  ' $FE5E: 20 BC F6   JSR $F6BC     ; Increment real time clock
   poke double,@kernal(&HE5E),&H20: poke double,@kernal(&HE5F),&HBC: poke double,@kernal(&HE60),&HF6
-  ' $FE61: 20 E1 FF   JSR $FFE1     ; Test-Stop Vector
+  
+  ' $FE61: 20 E1 FF   JSR $FFE1     ; Scan stop key
   poke double,@kernal(&HE61),&H20: poke double,@kernal(&HE62),&HE1: poke double,@kernal(&HE62),&HFF
-  ' $FE64: D0 0C      BNE $FE72     ; Warm Start Basic
+  
+  ' $FE64: D0 0C      BNE $FE72     ; If not [STOP] restore registers and exit interrupt
   poke double,@kernal(&HE64),&HD0: poke double,@kernal(&HE65),&H0C
-  ' $FE66/65126:   Warm Start Basic
-  ' $FE66: 20 15 FD   JSR $FD15     ; Restore Kernal Vectors
+  
+  ' $FE66/65126:   *** user function default vector 
+  '                BRK handler
+  ' $FE66: 20 15 FD   JSR $FD15     ; Restore default I/O vectors
   poke double,@kernal(&HE66),&H20: poke double,@kernal(&HE67),&H15: poke double,@kernal(&HE68),&HFD
-  ' $FE69: 20 A3 FD   JSR $FDA3     ; Initialise I/O
+  
+  ' $FE69: 20 A3 FD   JSR $FDA3     ; Initialise SID, CIA and IRQ
   poke double,@kernal(&HE69),&H20: poke double,@kernal(&HE6A),&HA3: poke double,@kernal(&HE6B),&HFD
-  ' $FE6C: 20 18 E5   JSR $E518     ; Initialize I/O
+  
+  ' $FE6C: 20 18 E5   JSR $E518     ; Initialise the screen and keyboard
   poke double,@kernal(&HE6C),&H20: poke double,@kernal(&HE6D),&H18: poke double,@kernal(&HE6E),&HE5
-  ' $FE6F: 6C 02 A0   JMP ($A002)   ; Restart Vectors
+  
+  ' $FE6F: 6C 02 A0   JMP ($A002)   ; Do BASIC break entry
   poke double,@kernal(&HE6F),&H6C: poke double,@kernal(&HE70),&H02: poke double,@kernal(&HE71),&HA0
+  
+  ' $FE72/65138    *** RS-232 NMI routine
   ' Jump from $FE54(65108), $FE64(65124):
   ' $FE72: 98         TYA
   poke double,@kernal(&HE72),&H98
-  ' $FE73: 2D A1 02   AND $02A1     ; RS232 Enables
+  
+  ' $FE73: 2D A1 02   AND $02A1     ; AND with the RS-232 interrupt enable byte
   poke double,@kernal(&HE73),&H2D: poke double,@kernal(&HE74),&HA1: poke double,@kernal(&HE75),&H02
+ 
   ' $FE76: AA         TAX
   poke double,@kernal(&HE76),&HAA
+  
   ' $FE77: 29 01      AND #$01
   poke double,@kernal(&HE77),&H29: poke double,@kernal(&HE78),&H01
+  
   ' $FE79: F0 28      BEQ $FEA3
   poke double,@kernal(&HE79),&HF0: poke double,@kernal(&HE7A),&H28
-  ' $FE7B: AD 00 DD   LDA $DD00     ; CIA2: Data Port A (Serial Bus, RS232, VIC Base Mem.)
+  
+  ' $FE7B: AD 00 DD   LDA $DD00     ; Read VIA 2 DRA, serial port and video address
   poke double,@kernal(&HE7B),&HAD: poke double,@kernal(&HE7C),&H00: poke double,@kernal(&HE7D),&HDD
-  ' $FE7E: 29 FB      AND #$FB
+  
+  ' $FE7E: 29 FB      AND #$FB      ; Mask xxxx x0xx, clear RS-232 Tx DATA
   poke double,@kernal(&HE7E),&H29: poke double,@kernal(&HE7F),&HFB
-  ' $FE80: 05 B5      ORA $B5       ; RS232 Next Bit to send/Tape Read - End of Tape
+  
+  ' $FE80: 05 B5      ORA $B5       ; OR in the RS-232 transmit data bit
   poke double,@kernal(&HE80),&H05: poke double,@kernal(&HE81),&HB5
-  ' $FE82: 8D 00 DD   STA $DD00     ; CIA2: Data Port A (Serial Bus, RS232, VIC Base Mem.)
+  
+  ' $FE82: 8D 00 DD   STA $DD00     ; Save VIA 2 DRA, serial port and video address
   poke double,@kernal(&HE82),&H8D: poke double,@kernal(&HE83),&H00: poke double,@kernal(&HE84),&HDD
-  ' $FE85: AD A1 02   LDA $02A1     ; RS232 Enables
+  
+  ' $FE85: AD A1 02   LDA $02A1     ; Get the RS-232 interrupt enable byte
   poke double,@kernal(&HE85),&HAD: poke double,@kernal(&HE86),&HA1: poke double,@kernal(&HE87),&H02
-  ' $FE88: 8D 0D DD   STA $DD0D     ; CIA2: Interrupt (NMI) Control Register
+  
+  ' $FE88: 8D 0D DD   STA $DD0D     ; Save VIA 2 ICR
   poke double,@kernal(&HE88),&H8D: poke double,@kernal(&HE89),&H0D: poke double,@kernal(&HE8A),&HDD
+  
   ' $FE8B: 8A         TXA
   poke double,@kernal(&HE8B),&H8A
+  
   ' $FE8C: 29 12      AND #$12
   poke double,@kernal(&HE8C),&H29: poke double,@kernal(&HE8D),&H12
-  ' $FE8E: F0 0D      BEQ $FE9D     ; NOTE: Line locks emulator
+  
+  ' $FE8E: F0 0D      BEQ $FE9D     ; NOTE: Line locks emulator   
+  ' poke double,@kernal(&HE8E),&HF0: poke double,@kernal(&HE8F),&H0D
+  
   ' $FE90: 29 02      AND #$02
   poke double,@kernal(&HE90),&H29: poke double,@kernal(&HE91),&H02
+  
   ' $FE92: F0 06      BEQ $FE9A
   poke double,@kernal(&HE92),&HF0: poke double,@kernal(&HE93),&H06
-  ' $FE94: 20 D6 FE   JSR $FED6     ; NMI RS232 In
+  
+  ' $FE94: 20 D6 FE   JSR $FED6     ; NMI RS-232 In
   poke double,@kernal(&HE94),&H20: poke double,@kernal(&HE94),&HD6: poke double,@kernal(&HE95),&HFE
+  
   ' $FE97: 4C 9D FE   JMP $FE9D
   poke double,@kernal(&HE97),&H4C: poke double,@kernal(&HE98),&H9D: poke double,@kernal(&HE99),&HFE
-  ' Jump from $FE92(65170):
-  ' $FE9A: 20 07 FF   JSR $FF07     ; NMI RS232 Out
+  
+  ' Jump from $FE92(65170): 
+  ' $FE9A: 20 07 FF   JSR $FF07     ; NMI RS-232 Out
   poke double,@kernal(&HE9A),&H20: poke double,@kernal(&HE9B),&H07: poke double,@kernal(&HE9C),&HFF
+  
   ' Jump from $FE8E(65166), $FE97(65175):
-  ' $FE9D: 20 BB EE   JSR $EEBB     ; RS232 Send
+  ' $FE9D: 20 BB EE   JSR $EEBB     ; RS-232 Send
   poke double,@kernal(&HE9D),&H20: poke double,@kernal(&HE9E),&HBB: poke double,@kernal(&HE9F),&HEE
+  
   ' $FEA0: 4C B6 FE   JMP $FEB6
   poke double,@kernal(&HEA0),&H4C: poke double,@kernal(&HEA7),&HB6: poke double,@kernal(&HEA8),&HFE
+
   ' Jump from $FE79(65145):
-  ' $FEA3: 8A         TXA
-  poke double,@kernal(&HEA3),&HBA
-  ' $FEA4: 29 02      AND #$02
+  ' $FEA3: 8A         TXA           ; Get active interruots back 
+  poke double,@kernal(&HEA3),&H8A
+  
+  ' $FEA4: 29 02      AND #$02      ; Mask ?? interrupt
   poke double,@kernal(&HEA4),&H29: poke double,@kernal(&HEA5),&H02
-  ' $FEA6: F0 06      BEQ $FEAE
+  
+  ' $FEA6: F0 06      BEQ $FEAE     ; Branch if not ?? interrupt
+  '                                 ; was ?? interrupt
   poke double,@kernal(&HEA6),&HF0: poke double,@kernal(&HEA7),&H06
+  
   ' $FEA8: 20 D6 FE   JSR $FED6     ; NMI RS232 In
   poke double,@kernal(&HEA8),&H20: poke double,@kernal(&HEA9),&HD6: poke double,@kernal(&HEAA),&HFE
+ 
   ' $FEAB: 4C B6 FE   JMP $FEB6
   poke double,@kernal(&HEAB),&H4C: poke double,@kernal(&HEAC),&HB6: poke double,@kernal(&HEAD),&HFE
+
   ' Jump from $FEA6:
-  ' $FEAE: 8A         TXA
+  ' $FEAE: 8A         TXA           ; Get active interrupts back
   poke double,@kernal(&HEAE),&H8A
-  ' $FEAF: 29 10      AND #$10
+  
+  ' $FEAF: 29 10      AND #$10      ; Mask CB2 interrupt, Rx data bit transition
   poke double,@kernal(&HEAF),&H29: poke double,@kernal(&HEB0),&H10
-  ' $FEB1: F0 03      BEQ $FEB6
+  
+  ' $FEB1: F0 03      BEQ $FEB6     ; If no bit restore registers and exit interrupt
   poke double,@kernal(&HEB1),&HF0: poke double,@kernal(&HEB2),&H03
+
   ' $FEB3: 20 07 FF   JSR $FF07     ; NMI RS232 Out
   poke double,@kernal(&HEB3),&H20: poke double,@kernal(&HEB4),&H07: poke double,@kernal(&HEB5),&HFF
+
   ' Jump from $FEA0, $FEAB(65195), $FEB1(65201):
-  ' $FEB6: AD A1 02   LDA $02A1     ; RS232 Enables
+  ' $FEB6: AD A1 02   LDA $02A1     ; Get the RS-232 interrupt enable byte
   poke double,@kernal(&HEB6),&HAD: poke double,@kernal(&HEB7),&HA1: poke double,@kernal(&HEB8),&H02
-  ' $FEB9: 8D 0D DD   STA $DD0D     ; CIA2: Interrupt (NMI) Control Register
+  
+  ' $FEB9: 8D 0D DD   STA $DD0D     ; Save VIA 2 ICR
   poke double,@kernal(&HEB9),&H8D: poke double,@kernal(&HEBA),&H0D: poke double,@kernal(&HEBB),&HDD
+  
   ' $FEBC/65212:   Exit Interrupt
   ' Jump from $F9D2(63954), $FA0D(64013), $FA5D(64093), $FA8A(64138), $FB8B(64395), $FC09(64521), $FC54(64596):
-  ' $FEBC: 68         PLA
+  ' $FEBC: 68         PLA           ; Pull X
   poke double,@kernal(&HEBC),&H68
-  ' $FEBD: A8         TAY
+
+  ' $FEBD: A8         TAY           ; Restore Y
   poke double,@kernal(&HEBD),&HA8
-  ' $FEBE: 68         PLA
+  
+  ' $FEBE: 68         PLA           ; Pull X
   poke double,@kernal(&HEBE),&H68
-  ' $FEBF: AA         TAX
+  
+  ' $FEBF: AA         TAX           ; Restore X
   poke double,@kernal(&HEBF),&HAA
-  ' $FEC0: 68         PLA
+  
+  ' $FEC0: 68         PLA           ; Restore A 
   poke double,@kernal(&HEC0),&H68
+  
   ' $FEC1: 40         RTI
   poke double,@kernal(&HEC1),&H40
   ' Kernal-Reference:
