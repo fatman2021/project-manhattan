@@ -2,45 +2,130 @@
 '  15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00   15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00   15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00   15     14     13     12     11     10     09     08     07     06     05     04     03     02     01     00
 '1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000 1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000 1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000 1111   1110   1101   1100   1011   1010   1001   1000   0111   0110   0101   0100   0011   0010   0001   0000
 '   1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1    1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1    1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1    1      1      1      1      1      1      1      1      1      1      1      1      1      1      1      1        
-/'
-#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+
+#if defined(__FB_WIN64__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
 
-'/
+
 '                                                                scr_ptr=$C12B(49451)
-      poke double,@adr,peek(double,@adr) subt peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
-'                                                                          font_o(Font offset)=($C0E8/49384)      
-      mov(c, v):mov(c shl, peek(ubyte,@nibbles(&B0011))):mov(c add,peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)))))
-      if peek(double,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then poke double,@c, peek(double,@c) and peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))
-'                           z0=$C0CD(49357)                                                                                                                                            z0=$C0CD(49357)      
-      if peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)))) ls   peek(ubyte,@nibbles(&B0001)) then poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101))),peek(ubyte,@nibbles(&B0001))
-      poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)),peek(ubyte,@nibbles(&B0000))) 'Screen lock
+      poke double,@adr,peek(double,@adr) subt peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) _
+      shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+      add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+    
+      poke ulongint,@c,peek(double,@v)
+      poke ulongint,@c,peek(ulongint,@c) shl peek(ubyte,@nibbles(&B0011))
+      
+'                                                               font_o(Font offset)=($C0E8/49384)        
+      poke ulongint,@c,peek(ulongint,@c) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) _
+      shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) _
+      add peek(ubyte,@nibbles(&B1000))))
+ 
+      if peek(double,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then poke double,@c, peek(double,@c) _
+      and peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))
+
+'                           z0=$C0CD(49357)     
+      if peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+         add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)))) _
+         ls  peek(ubyte,@nibbles(&B0001)) then poke double,_
+         _
+         _'          z0=$C0CD(49357) 
+         @mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) _
+         shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101))),peek(ubyte,@nibbles(&B0001))
+
+'            Screen lock      
+      poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)),peek(ubyte,@nibbles(&B0000))) 
+
 '                           font_f(Flip font)=($C0E7/49383)       
-      if peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)))) eq peek(ubyte,@nibbles(&B0000)) then 
-      mov(xs,adr mod      (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)))):mov(xs shl,peek(ubyte,@nibbles(&B0011))):mov(xs add,(((peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0001))) add peek(ubyte,@nibbles(&B0111))) add 3.5d))
-      mov(ys,adr idiv     (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)))):mov(ys shl,peek(ubyte,@nibbles(&B0011))):mov(ys add,(((peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0001))) add peek(ubyte,@nibbles(&B0111))) add 3.5d))
-      mov(y,0d):mov(x,     peek(ubyte,@nibbles(&B0000)))
-'                                    font_h(Font height)=($C0EA/49386)                                                                                                                  font_w(Font width)=($C0E9/49385        
-      do until logic_and(mov(y,peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))))),mov(x,peek(double,@mem64(peek(ubyte,@nibbles(&B1100))   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))))))
-'                   x0=$C0CB(49355)                                                                                                                                                       scro_x=($C0E3/49379)        
-          mov(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))),(((xs add x) mul peek(ubyte,@nibbles(&B0101))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011))))))
-'                   y0=$C0CC(49356)                                                                                                                                                       scro_y=($C0E4/49380)
-          mov(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))),(((ys add y) shl peek(ubyte,@nibbles(&B0010))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100))))))
-'                   x1=$C0CE(49358)                                                                                                                                                                              scro_x=($C0E3/49379)          
-          mov(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110))),(((xs add x) mul peek(ubyte,@nibbles(&B0101))) add peek(ubyte,@nibbles(&B0111))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)))))
-'                   y1=$C0CF(49359(                                                                                                                                                                              scro_y=($C0E4/49380)      
-          mov(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))),(((ys add y) shl peek(ubyte,@nibbles(&B0010))) add peek(ubyte,@nibbles(&B0100))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)))))
+      if peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+         add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)))) _
+         eq peek(ubyte,@nibbles(&B0000)) then 
+         
+      poke ulongint,@xs,peek(double,@adr) mod (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+      add peek(ubyte,@nibbles(&B1000)))
+      
+      poke ulongint,@xs,peek(ulongint,@xs) shl peek(ubyte,@nibbles(&B0011))
+  
+      poke ulongint,@xs,peek(ulongint,@xs) add (((peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0001))) _
+      add peek(ubyte,@nibbles(&B0111))) add 3.5)
+          
+      mov(ys,adr idiv (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+      add peek(ubyte,@nibbles(&B1000))))
+      
+      mov(ys shl,peek(ubyte,@nibbles(&B0011)))
+          
+      mov(ys add,(((peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0001))) _
+      add peek(ubyte,@nibbles(&B0111))) add 3.5))
+ 
+      poke double,@y,peek(ubyte,@nibbles(&B0000))
+      poke double,@x,peek(ubyte,@nibbles(&B0000))      
+      do until logic_and(_
+      _'                       font_h(Font height)=($C0EA/49386) 
+      mov(y,peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+        add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))))),_
+      _
+      _ '                      font_w(Font width)=($C0E9/49385) 
+      mov(x,peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+        add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))))))
+
+'                   x0=$C0CB(49355)                                                                                                                                                                                                               scro_x=($C0E3/49379)        
+          poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                         add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
+                         add peek(ubyte,@nibbles(&B1011))),(((peek(ulongint,@xs) add peek(ulongint,@x)) _
+                         mul peek(ubyte,@nibbles(&B0101))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) _
+                         shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
+                         shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011)))))
+
+'                   y0=$C0CC(49356)                                                                                                                                                                                                               scro_y=($C0E4/49380)
+          poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                         add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
+                         add peek(ubyte,@nibbles(&B1100))),(((peek(ulongint,@ys) add peek(ulongint,@y)) _
+                         shl peek(ubyte,@nibbles(&B0010))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) _
+                         shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
+                         shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)))))
+
+'                   x1=$C0CE(49358)                                                                                                                                                                                                               scro_x=($C0E3/49379)          
+          poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                         add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
+                         add peek(ubyte,@nibbles(&B1110))),(((peek(ulongint,@xs) add peek(ulongint,@x)) _
+                         mul peek(ubyte,@nibbles(&B0101))) add peek(ubyte,@nibbles(&B0111))) _
+                         add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                         add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) _
+                         add peek(ubyte,@nibbles(&B0011))))
+
+'                   y1=$C0CF(49359)                                                                                                                                                                                                               scro_y=($C0E4/49380)      
+          poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                         add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
+                         add peek(ubyte,@nibbles(&B1111))),(((peek(ulongint,@ys) add peek(ulongint,@y)) _
+                         shl peek(ubyte,@nibbles(&B0010))) add peek(ubyte,@nibbles(&B0100))) _
+                         add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                         add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) _
+                         add peek(ubyte,@nibbles(&B0100))))
+
           'Flag: Print Reverse Characters?0=No ($C0FC/49404)
-          poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)),peek64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))))
-'                                                  font_w(Font width)=($C0E9/49385	    
-        mov(x add,peek(ubyte,@nibbles(&B0001))): if x gt peek(double,@mem64(peek(ubyte,@nibbles(&B1100))   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)))) then 
-                                         mov(x,    peek(ubyte,@nibbles(&B0000))): mov(y add,peek(ubyte,@nibbles(&B0001)))
-                                         mov(c add,peek(ubyte,@nibbles(&B0001)))
-                                      end if
+          poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
+                        shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)), _
+                        peek64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                        add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
+                        add peek(ubyte,@nibbles(&B1100))))
+
+        poke ulongint,@x,peek(ulongint,@x) add peek(ubyte,@nibbles(&B0001))
+
+'                                                  font_w(Font width)=($C0E9/49385)	            
+        if peek(ulongint,@x) gt peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+           add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)))) then 
+           poke ulongint,@x,peek(ubyte,@nibbles(&B0000))
+           poke ulongint,@y,peek(ulongint,@y) add peek(ubyte,@nibbles(&B0001))
+           poke ulongint,@c,peek(ulongint,@c) add peek(ubyte,@nibbles(&B0001))
+       end if
       loop
-      poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0000))) 'Screen Unlock
-'                      font_f      
+      
+ '    Screen Unlock     
+      poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0000))) 
+
+'                               font_f      
       elseif peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)))) eq peek(ubyte,@nibbles(&B0001)) then 
       mov(xs,adr mod            &B00101000):mov(xs shl, &B00000011):mov(xs add,&B00001000 mul &B00000100)
       mov(ys,adr idiv           &B00101000):mov(ys shl, &B00000011):mov(ys add,&B00001000 mul &B00000100)
@@ -103,8 +188,8 @@
       next
       screenunlock ys,ys add 8d           
       end if
-/'      
-#elseif defined(__FB_DOS__)
+    
+#elseif defined(__FB_WIN32__)  or defined(__FB_DOS__)
 '                        scr_ptr
       mov(adr subt,mem64(49451d))
 '                                             font_o
@@ -196,4 +281,4 @@
       screenunlock ys,ys add 8d           
       end if
 #endif  
-'/
+

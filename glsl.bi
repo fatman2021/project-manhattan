@@ -163,7 +163,8 @@ sub glScreen(pixelWidth as integer=-1, pixelHeight as integer=-1, colorBits as i
       fullScreen=false
     end if
   end if
-  if ScreenRes(pixelWidth,pixelHeight,colorBits,,FB.GFX_OPENGL or iif(fullScreen<>0,FB.GFX_FULLSCREEN,0)) then
+  'if ScreenRes(pixelWidth,pixelHeight,colorBits,,FB.GFX_OPENGL or iif(fullScreen<>0,FB.GFX_FULLSCREEN,0)) then
+   if ScreenRes(pixelWidth,pixelHeight,colorBits,,FB.GFX_OPENGL) then
     ' fallback mode
     fullScreen=false
     if ScreenRes(640,350,b,,FB.GFX_OPENGL) then

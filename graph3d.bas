@@ -169,7 +169,8 @@
 					   end if  
 					 wend
 				     strCode = !""	
-                     ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+                     ' ScreenRes 1920,1080, 32, 7, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES: Cls
+                     ScreenRes 1920,1080, 32, 7, GFX_ALPHA_PRIMITIVES: Cls
                      for offset = &H000 to &H400: poke64(mem64(sys_offset add &H12B)+offset, 32): next offset
 #endif
 	            case 001d ' opens POV-Ray device
