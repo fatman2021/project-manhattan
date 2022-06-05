@@ -21,11 +21,11 @@
       shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) _
       add peek(ubyte,@nibbles(&B1000))))
  
-      if peek(double,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then poke double,@c, peek(double,@c) _
+      cmp peek(double,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then poke double,@c, peek(double,@c) _
       and peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))
 
-'                           z0=$C0CD(49357)     
-      if peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+'                            z0=$C0CD(49357)     
+      cmp peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
          add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101)))) _
          ls  peek(ubyte,@nibbles(&B0001)) then poke double,_
          _
@@ -37,29 +37,31 @@
       poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
       shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)),peek(ubyte,@nibbles(&B0000))) 
 
-'                           font_f(Flip font)=($C0E7/49383)       
-      if peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+'                            font_f(Flip font)=($C0E7/49383)       
+      cmp peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
          add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)))) _
          eq peek(ubyte,@nibbles(&B0000)) then 
          
-      poke ulongint,@xs,peek(double,@adr) mod (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B1000)))
+      poke ulongint,@xs,peek(double,@adr) mod (peek(ubyte,@nibbles(&B0010)) _
+          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)))
       
       poke ulongint,@xs,peek(ulongint,@xs) shl peek(ubyte,@nibbles(&B0011))
   
-      poke ulongint,@xs,peek(ulongint,@xs) add (((peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0001))) _
-      add peek(ubyte,@nibbles(&B0111))) add 3.5)
+      poke ulongint,@xs,peek(ulongint,@xs) add (((peek(ubyte,@nibbles(&B0111)) _
+          shl peek(ubyte,@nibbles(&B0001))) add peek(ubyte,@nibbles(&B0111))) add 3.5)
           
-      mov(ys,adr idiv (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B1000))))
+      poke ulongint, @ys,peek(double, @adr) idiv (peek(ubyte,@nibbles(&B0010)) _
+          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)))
       
-      mov(ys shl,peek(ubyte,@nibbles(&B0011)))
+      poke ulongint,@ys,peek(ulongint,@ys) shl peek(ubyte,@nibbles(&B0011))
           
-      mov(ys add,(((peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0001))) _
-      add peek(ubyte,@nibbles(&B0111))) add 3.5))
+      poke ulongint,@ys,peek(ulongint,@ys) add (((peek(ubyte,@nibbles(&B0111)) _
+          shl peek(ubyte,@nibbles(&B0001))) add peek(ubyte,@nibbles(&B0111))) add 3.5)
  
       poke double,@y,peek(ubyte,@nibbles(&B0000))
-      poke double,@x,peek(ubyte,@nibbles(&B0000))      
+      
+      poke double,@x,peek(ubyte,@nibbles(&B0000))
+            
       do until logic_and(_
       _'                       font_h(Font height)=($C0EA/49386) 
       mov(y,peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
@@ -113,12 +115,12 @@
         poke ulongint,@x,peek(ulongint,@x) add peek(ubyte,@nibbles(&B0001))
 
 '                                                  font_w(Font width)=($C0E9/49385)	            
-        if peek(ulongint,@x) gt peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+       cmp peek(ulongint,@x) gt peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
            add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)))) then 
            poke ulongint,@x,peek(ubyte,@nibbles(&B0000))
            poke ulongint,@y,peek(ulongint,@y) add peek(ubyte,@nibbles(&B0001))
            poke ulongint,@c,peek(ulongint,@c) add peek(ubyte,@nibbles(&B0001))
-       end if
+       end cmp
       loop
       
  '    Screen Unlock     
@@ -154,13 +156,13 @@
 '                                    font_h               font_w        
       do until logic_and(mov(y,mem64(49386d)),mov(x,mem64(49385d)))
 '                   x0                                                               scro_x        
-          mov(mem64(49355d),((((xs add x)  mul &B00000101) div &B00000010) add mem64(49379d)))
+          mov(mem64(49355d),((((xs add x)  mul &B00000101) ndiv &B00000010) add mem64(49379d)))
 '                   y0                                                               scro_y
-          mov(mem64(49356d),((((ys add y)  mul &B00000100) div &B00000010) add mem64(49380d)))
+          mov(mem64(49356d),((((ys add y)  mul &B00000100) ndiv &B00000010) add mem64(49380d)))
 '                   x1                                                                               scro_x          
-          mov(mem64(49358d),(((((xs add x) mul &B00000101) add &B00000111) div &B00000010) add mem64(49379d)))
+          mov(mem64(49358d),(((((xs add x) mul &B00000101) add &B00000111) ndiv &B00000010) add mem64(49379d)))
 '                   y1                                                                               scro_y          
-          mov(mem64(49359d),(((((ys add y) mul &B00000100) add &B00000100) div &B00000010) add mem64(49380d)))
+          mov(mem64(49359d),(((((ys add y) mul &B00000100) add &B00000100) ndiv &B00000010) add mem64(49380d)))
           poke64(49404d,peek64(49404d)) 'Flag: Print Reverse Characters?0=No
 '                                            font_w	    
         mov(x add,&B00000001): if x gt mem64(49385d) then mov(x,&B00000000): mov(y add,&B00000001): mov(c add,&B00000001)
@@ -175,13 +177,13 @@
 '                                    font_w      
         for in range(mov(x,0d),mem64(49385d))
 '                   x1                                                        scro_x        
-          mov(mem64(49358d),(((((xs subt x) mul 5d) add 2d) div 2d) add mem64(49379d)))
+          mov(mem64(49358d),(((((xs subt x) mul 5d) add 2d) ndiv 2d) add mem64(49379d)))
 '                   y1                                                        scro_y          
-          mov(mem64(49359d),(((((ys subt y) mul 4d) add 2d) div 2d) add mem64(49380d)))
+          mov(mem64(49359d),(((((ys subt y) mul 4d) add 2d) ndiv 2d) add mem64(49380d)))
 '                   x0                                                        scro_x          
-          mov(mem64(49355d),(((((xs subt x) mul 5d) subt 2d) div 2d) add mem64(49379d)))
+          mov(mem64(49355d),(((((xs subt x) mul 5d) subt 2d) ndiv 2d) add mem64(49379d)))
 '                   y0                                                        scro_y          
-          mov(mem64(49356d),(((((ys subt y) mul 4d) subt 2d) div 2d) add mem64(49380d)))
+          mov(mem64(49356d),(((((ys subt y) mul 4d) subt 2d) ndiv 2d) add mem64(49380d)))
           poke64(49404d,peek64(49404d)) 'Flag: Print Reverse Characters?0=No
         next 
         mov(c add,1d)

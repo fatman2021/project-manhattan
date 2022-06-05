@@ -4,7 +4,7 @@
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
-                case 000d ' Compile and execute glsl        
+                case 000 ' Compile and execute glsl        
 					 dim as boolean bFullscreen
 					 dim as boolean bTextured
 					 dim as boolean bNoise
@@ -15,11 +15,11 @@
 					 dim as boolean bMipmap
 					 dim as boolean bRepeat
 '                              x0
-					 mov(mem64(49355d),1920d) ' Set screen width to 720
+					 mov(mem64(49355),1920) ' Set screen width to 720
 '                              y0					   
-					 mov(mem64(49356d),1080d) ' Set screen height to 576
+					 mov(mem64(49356),1080) ' Set screen height to 576
 '                    Call glScreen($C0A0/49312)
-					 poke64(49312d,0)
+					 poke64(49312,0)
 
 					 dim as vec3 v3
 					 'v3.x = scr_w     ' width  (in pixels)
@@ -173,13 +173,13 @@
                      ScreenRes 1920,1080, 32, 7, GFX_ALPHA_PRIMITIVES: Cls
                      for offset = &H000 to &H400: poke64(mem64(sys_offset add &H12B)+offset, 32): next offset
 #endif
-	            case 001d ' opens POV-Ray device
+	            case 001 ' opens POV-Ray device
                      open "tmp.pov" for output as #1
                      print #1, "// Start of file"
-                case 002d ' closes device
+                case 002 ' closes device
                      print #1, "// End of file"
                      close #1
-                case 003d ' Render                    
+                case 003 ' Render                    
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
@@ -200,9 +200,9 @@
 	                 bload ".\vram\"+str(mem64(49361))+".bmp",fgimage
 #endif
 	                 put fgimage,(0,0), render, pset
-	            case 004d ' Sets offset in video memory
+	            case 004 ' Sets offset in video memory
                      mem64(sys_offset+&HD1)=v' r0 = v
-                case 005d ' Anamation player
+                case 005 ' Anamation player
 '                                               r1              r2                
                      for frame as ubyte = mem64(49362) to mem64(49363)
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
@@ -214,7 +214,7 @@
 #endif 	                 	                   	                 
  	                 sleep(10,1): put fgimage,(0,0), render, pset 
                      next frame
-                case 006d ' CORE - 1
+                case 006 ' CORE - 1
 '                                                     r0				
 				     select case as const cast(ulongint, mem64(49361))  
 						case 000: print #1, "a";
@@ -697,7 +697,7 @@
 'Microsoft BASIC:CVS converts a 32-bit integer or 4-byte string to a SINGLE percision variable.					
 						case 255: print #1, "cvs";
 					 end select
-				case 007d ' CORE - 2
+				case 007 ' CORE - 2
 '                                                     r0				
 				     select case as const cast(ulongint, mem64(49361))  
 						case 000: print #1, "cylinder";
@@ -1244,7 +1244,7 @@
 					  case 21: print #1, "#include " + chr(13) + lcase("WOODMAPS.INC") + chr(13)
 					  case 22: print #1, "#include " + chr(13) + lcase("WOODS.INC") + chr(13)
 				     end select
-				case 017d ' CORE - 3
+				case 017 ' CORE - 3
 '                                                     r0				
 				     select case as const cast(ulongint, mem64(49361))
 'Microsoft BASIC: GOSUB transfers control to a specified line number or label and stores the location of
@@ -1674,7 +1674,7 @@
 'GLSL: mat2x2 is the same as mat2						
 						case 255: print #1, "mat2x2";
 				     end select     				      
-				case 018d ' CORE - 4
+				case 018 ' CORE - 4
 '                                                     r0				
 				     select case as const cast(ulongint, mem64(49361))  
 'GLSL: mat2x3 is a floating point matrix with 2 columns and 3 rows.				        								      
@@ -1791,7 +1791,7 @@
 						case 076: print #1, "nearest_count";
 						case 077: print #1, "negative";
 						case 078: print #1, "nested_loop";
-'Microsoft BASIC: NEW clears BASIC memory and allows you to assign a name to a new progra, or 
+'Microsoft BASIC: NEW clears BASIC memory and allows you to assign a name to a new program, or 
 '                 is an operator to dynamically allocate memory and construct data of a specified type, or 
 '                 is or an operator to construct an object at a specified memory address.
 'C#: NEW operator creates a new instance of a type.
@@ -2119,7 +2119,7 @@
 '        a positive numeric expression.						
 						case 255: print #1, "rand";				     
 					 end select
-				case 019d ' CORE - 5
+				case 019 ' CORE - 5
 '                                                     r0				
 				     select case cast(ulongint, mem64(49361))
 'Microsoft BASIC: RANDOM 1) specifies a file or device to be opened for RANDOM access mode.
@@ -2555,7 +2555,7 @@
 						case 254: print #1, "texture_list";
 						case 255: print #1, "texture_map";
 					 end select                      
-				case 020d ' CORE - 6
+				case 020 ' CORE - 6
 '                                                              r0				
 				     select case as const cast(ulongint, mem64(49361))                       
 						case 000: print #1, "tga";
@@ -2879,7 +2879,7 @@
 'GNU COBOL: ZEROS pads with zeros						
 						case 161: print #1, "zeros";
 				     end select 
-				case 021d ' CORE - 7
+				case 021 ' CORE - 7
 '                                                              r0				
 				     select case as const cast(ulongint, mem64(49361))
 				        case 000: print #1, "buffer";
@@ -3423,7 +3423,7 @@
 'Microsoft BASIC: HIWORD retruns the second 16-bit word of the operand.
                        case 255: print #1, "hiword";
 				     end select
-				case 022d ' CORE - 7
+				case 022 ' CORE - 7
 '                                                              r0				
 				     select case as const cast(ulongint, mem64(49361))
 'Microsoft BASIC: IMAGECONVERTROW converts a row of image data into another color depth.
