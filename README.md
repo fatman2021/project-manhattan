@@ -1613,7 +1613,7 @@ https://www.masswerk.at/6502/bytes2basic.html
 
 # Assembling the PRG file
 
-	**ophis -v yourprogram.asm**
+	ophis -v yourprogram.asm
 
 # Programming with Ophis
 
