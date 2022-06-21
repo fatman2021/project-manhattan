@@ -9,7 +9,7 @@
 static shared as ubyte fr = &HFF, fg = &HFF, fb = &HFF, fa = &HFF 
 static shared as ubyte br = &H00, bg = &H00, bb = &H00, ba = &H00
 static shared as double fc, bc, x0, x1, y0, y1, z0, z1, r0, r1
-static shared as double r2, r3, r4, r5, r6, r7, r8, r9, r10, r11
+'static shared as double r2, r3, r4, r5, r6, r7, r8, r9, r10, r11
 static shared as double rot0,rot1,rot2,rot3,rot4,rot5
 static shared as double d0, d1, prompt
 static shared as longint mx, my, mb
@@ -90,14 +90,23 @@ enum ADR_MODES
 end enum
 
 type FLAGS
-  as ulongint  C:1
-  as ulongint  Z:1
-  as ulongint  I:1
-  as ulongint  D:1
-  as ulongint  B:1
-  as ulongint  H:1
-  as ulongint  V:1
-  as ulongint  N:1
+
+  as ubyte  C:1 ' cary
+
+  as ubyte  Z:1 ' zero 
+
+  as ubyte  I:1 ' interrupt
+
+  as ubyte  D:1 ' decimal
+
+  as ubyte  B:1 ' borrow
+
+  as ubyte  H:1 ' half carry
+
+  as ubyte  V:1 ' overflow
+
+  as ubyte  N:1 ' negative
+
 end type
 
 type CPU6510_T as CPU6510 ptr

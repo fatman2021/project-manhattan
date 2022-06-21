@@ -452,4 +452,59 @@ static shared as ushort IRNDSV = &HE3BA 'Initial RND Seed Value
 static shared as ushort PBCSUM = &HE422 'Print BASIC Start-Up Message
 static shared as ushort TVIBCR = &HE447 'Table of Vectors to Important BASIC Routines
 static shared as ushort CBCVRM = &HE453 'Copy BASIC Vectors to RAM
-static shared as ushort WORDS  = &HE460 'Power-Up Message
+static shared as ushort WORDS  = &HE460 'Power-Up Messages
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

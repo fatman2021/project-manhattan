@@ -1010,29 +1010,29 @@ function RAYTRACER.GetHightFieldValue(byval MapID   as integer, _
   Dim as integer PTR1,PTR2,PTR3
   Dim as REAL  H1,H2,H3,H
 
-  x=REAL_ABS(x) mod Maps[MapID]->Header.w
-  y=REAL_ABS(y) mod Maps[MapID]->Header.h
+  x=mod(REAL_ABS(x), Maps[MapID]->Header.w)
+  y=mod(REAL_ABS(y), Maps[MapID]->Header.h)
 
   Select Case Methode
     '(x+1),y - x,y
     Case M2H
-      PTR1 = Y * Maps[MapID]->Header.w + X
-      PTR2 = Y * Maps[MapID]->Header.w + ((X + 1) Mod Maps[MapID]->Header.w)
+      PTR1 = Y *     Maps[MapID]->Header.w + X
+      'FIX ME: PTR2 = Y * mod(Maps[MapID]->Header.w + ((X + 1), Maps[MapID]->Header.w))
       H1 = Maps[MapID]->pColorPixels[PTR1] * REAL_INV255
       H2 = Maps[MapID]->pColorPixels[PTR2] * REAL_INV255
       h = (H2 - H1)
     'x,(y+1)- x,y  
     Case M2S
-      PTR1 = Y * Maps[MapID]->Header.w + X
-      PTR2 = ((Y + 1) Mod Maps[MapID]->Header.h)* Maps[MapID]->Header.w + X
+      PTR1 = Y *          Maps[MapID]->Header.w + X
+      ' FIX ME: PTR2 = mod(((Y + 1),Maps[MapID]->Header.h))* Maps[MapID]->Header.w + X
       H1 = Maps[MapID]->pColorPixels[PTR1] * REAL_INV255
       H2 = Maps[MapID]->pColorPixels[PTR2] * REAL_INV255
       h = (H2 - H1)
 
     Case M2D
-      PTR1 = Y * Maps[MapID]->Header.w + X
-      PTR2 = Y * Maps[MapID]->Header.w + ((X + 1) Mod Maps[MapID]->Header.w)
-      PTR3 = ((Y + 1) Mod Maps[MapID]->Header.h) * Maps[MapID]->Header.w + X
+      PTR1 = Y *          Maps[MapID]->Header.w + X
+      'FIX ME: PTR2 = Y * mod(     Maps[MapID]->Header.w + ((X + 1), Maps[MapID]->Header.w))
+      PTR3 = (mod((Y + 1),Maps[MapID]->Header.h)) * Maps[MapID]->Header.w + X
       H1 = Maps[MapID]->pColorPixels[PTR1]:h1*=REAL_INV255
       H2 = Maps[MapID]->pColorPixels[PTR2]:h2*=REAL_INV255
       H3 = Maps[MapID]->pColorPixels[PTR3]:h3*=REAL_INV255
@@ -1048,9 +1048,9 @@ function RAYTRACER.IsVisibleOnStampMap(byval MatID as integer, _
   X = REAL_ABS(MapXY.X * Materials[MatID]->StampMapFactor.X)
   Y = REAL_ABS(MapXY.Y * Materials[MatID]->StampMapFactor.Y)
   XP = X * Maps[MapID]->Header.w
-  XP Mod = Maps[MapID]->Header.w
+  XP = Mod(XP,Maps[MapID]->Header.w)
   YP = Y * Maps[MapID]->Header.h
-  YP Mod = Maps[MapID]->Header.h
+  YP = Mod(YP,Maps[MapID]->Header.h)
   ptr1 = YP * Maps[MapID]->Header.w + XP
   If Maps[MapID]->pColorPixels[ptr1] > 0 Then return True
 End Function
@@ -1070,9 +1070,9 @@ sub RAYTRACER.DoBumpMap(byval HitObjID  as integer, _
     X = MapXY.X * Materials[MatID]->BumpMapFactor.x
     Y = MapXY.Y * Materials[MatID]->BumpMapFactor.y
     XP = (X * Maps[MapID]->Header.w)
-    XP = XP Mod Maps[MapID]->Header.w
+    XP = mod(XP,Maps[MapID]->Header.w)
     YP = (Y * Maps[MapID]->Header.h)
-    YP = YP Mod Maps[MapID]->Header.h
+    YP = mod(YP,Maps[MapID]->Header.h)
     L = GetHightFieldValue(MapID, XP, YP, M2D, False) * Materials[MatID]->BumpMapFactor.z
     If L=0 Then
       BNormal = Normal
@@ -1100,9 +1100,9 @@ sub RAYTRACER.SurfaceColor(byval HitObjID as integer, _
     X = MapXY.X * Maps[MapID]->Factor.X
     Y = MapXY.Y * Maps[MapID]->Factor.Y
     XP = X * Maps[MapID]->Header.w
-    XP = XP Mod Maps[MapID]->Header.w
+    XP = mod(XP,Maps[MapID]->Header.w)
     YP = Y * Maps[MapID]->Header.h
-    YP = YP Mod Maps[MapID]->Header.h
+    YP = mod(YP,Maps[MapID]->Header.h)
     ptr1 = YP * Maps[MapID]->Header.w * 3 + XP * 3
     SurCOL.R = Maps[MapID]->pColorPixels[ptr1+0]: SurCOL.R*=REAL_INV255
     SurCOL.G = Maps[MapID]->pColorPixels[ptr1+1]: SurCOL.G*=REAL_INV255
@@ -1904,7 +1904,7 @@ function RAYTRACER.IsPolygonOnRay(byref RayOrigin    as VECTOR, _
       'B.x = lpPoly->Vertices[(vc+1) Mod lpPoly->nVertices]->x - HitPoint.x
       'B.y = lpPoly->Vertices[(vc+1) Mod lpPoly->nVertices]->y - HitPoint.y
       'B.z = lpPoly->Vertices[(vc+1) Mod lpPoly->nVertices]->z - HitPoint.z
-      B = *lpPoly->Vertices[(vc+1) Mod lpPoly->nVertices] - HitPoint
+      ' FIX ME: B = mod(*lpPoly->Vertices[(vc+1),lpPoly->nVertices] - HitPoint)
       'With A
       '  inside = .x*.x + .y*.y + .z*.z
       '  If inside = 0 Then

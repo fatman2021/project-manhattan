@@ -1,6 +1,6 @@
 #include "crt.bi" ' math.bi ...
-'#define DEG2RAD M_PI/180.0
-'#define RAD2DEG 180.0/M_PI
+#define DEG2RAD M_PI/180.0
+#define RAD2DEG 180.0/M_PI
 
 #undef mod
 #undef atn
@@ -15,9 +15,6 @@
 #undef ceil
 #undef floor
 #undef sign
-#undef vec2
-#undef vec3
-#undef vec4
 
 type _vec3 as vec3
 

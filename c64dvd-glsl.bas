@@ -26,13 +26,38 @@ faster than accessing main memory, so prefetching data and then accessing it fro
 faster than accessing it directly from main memory. Prefetching can be done with non-blocking cache control instructions. 
 '/
 
+#if defined(__FB_DOS__)
+#include once "MBOOT.BI"
+' Flags accepted by Screen and ScreenRes
+'
+' Usage examples:
+'	SCREEN 14, 16,, GFX_FULLSCREEN
+'	SCREEN 18, 32,, GFX_OPENGL OR GFX_STENCIL_BUFFER
+'
+#define GFX_NULL 					-1
+#define GFX_WINDOWED				&H00
+#define GFX_FULLSCREEN				&H01
+#define GFX_OPENGL					&H02
+#define GFX_NO_SWITCH				&H04
+#define GFX_NO_FRAME				&H08
+#define GFX_SHAPED_WINDOW			&H10
+#define GFX_ALWAYS_ON_TOP			&H20
+#define GFX_ALPHA_PRIMITIVES		&H40
+#define GFX_HIGH_PRIORITY			&H80
+#define GFX_SCREEN_EXIT 			&H80000000l
+#else
+#include once "fbgfx.bi"
 #include once "./src/kernel/include/multiboot.bi"
-
+using FB
+#endif
 dim shared as multiboot_info ptr MB_INFO
 
-#include once "fbgfx.bi"
+#if defined(__FB_DOS__)
+#include once "ADRR.BI"
+#else
 #include once "address.bi"
-
+#endif
+	
 /'
 #if defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or defined(__FB_NETBSD__) or _
     defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or defined(__FB_UNIX__)   or _
@@ -99,7 +124,7 @@ dim shared as multiboot_info ptr MB_INFO
     #define N1111 &H513697
 #endif
 '/
-using FB
+
 type float as double
 
 '#define M_PI 3.1415926535897932384626433832795028
@@ -159,46 +184,65 @@ type float as double
 #define high_nibble(x)  ((logic_and(x,&HF0)) shr 4)
 
 'ASCII To PETSCII converter
-#define ASCII_TO_PETSCII(adr, a) if logic_and(mem64(adr add a) gt 31,mem64(adr add a) lt 64) then _
-	                                mov(mem64(adr add a),mem64(adr add a) add 32
+'#define ASCII_TO_PETSCII(adr, a) if logic_and(mem64(adr add a) gt 31,mem64(adr add a) lt 64) then _
+'	                                mov(mem64(adr add a),mem64(adr add a) add 32
 'Fast PSET
 #Define PutPixel(_x, _y, colour)   *cptr(ulongint ptr, pScrn + (_y) * pitch + (_x) shl 2) = (colour)
 
 'Fast POINT
 #Define GetPixel(_x, _y)           *cptr(ulongint ptr, pScrn + (_y) * pitch + (_x) shl 2)
         
-#if defined(__FB_WIN32__)   or defined(__FB_WIN64__)   or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or _
-    defined(__FB_FREEBSD__) or defined(__FB_NETBSD__)  or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or _
-    defined(__FB_XBOX__)    or defined(__FB_UNIX__)    or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
-    #include once "glsl.bi"
+#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
+    #include once "GLSL4.BI"
+    #include once "RAY.BI"
+    #define vector2 vec2
+    #define vector3 vec3
+    #define vector4 vec4
+#else
+    #include once "glsl.bi"    
+    #include once "glslstyle.bi"
+    #include once "raytracer.bi"
 #endif
 
-#include once "glslstyle.bi"
-#include once "raytracer.bi"
+#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
+    #define SYSTEM_TYPE ulongint
+#else
+    #define SYSTEM_TYPE double
+#endif
 
 ' memory registers
-dim shared as ulongint pc,old_pc=&H00,adr0,adr1,adr2,adr3,pc_status
+dim shared as SYSTEM_TYPE pc,old_pc=&H00,adr0,adr1,adr2,adr3,pc_status
 
 ' general purpose registers
-dim shared as ulongint r0, r1, r2, r3, r4, r5
+dim shared as SYSTEM_TYPE r0, r1, r2, r3, r4, r5
 
 ' video registers
 
-dim shared as ulongint radius
-dim shared as ulongint red2=&HFF,green2=&HFF,blue2=&HFF,xalpha2=&HFF
-dim shared as double   x_axis0, y_axis0, z_axis0, col0, col1,char_h=&H5A
-dim shared as double   x_axis1, y_axis1, z_axis1, char_ptr, char_w=&H5A
-dim shared as ulongint char_buffer=&H000004000, bitmask=&HFF, pixel_size
-dim shared as float    iGlobalTime ' shader playback time (in seconds)
-dim shared as vector3  iResolution ' viewport resolution (in pixels)
-dim shared as vector4  iMouse      ' mouse pixel coords. xy: current (if MLB down), zw: click
+dim shared as SYSTEM_TYPE   radius
+#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
+dim shared as SYSTEM_TYPE   fc, bc
+static shared as ubyte fr = &HFF, fg = &HFF, fb = &HFF, fa = &HFF 
+static shared as ubyte br = &H00, bg = &H00, bb = &H00, ba = &H00
+#endif
+dim shared as SYSTEM_TYPE   red2=&HFF,green2=&HFF,blue2=&HFF,xalpha2=&HFF
+dim shared as SYSTEM_TYPE   x_axis0, y_axis0, z_axis0, col0, col1,char_h=&H5A
+dim shared as SYSTEM_TYPE   x_axis1, y_axis1, z_axis1, char_ptr, char_w=&H5A
+dim shared as SYSTEM_TYPE  char_buffer=&H000004000, bitmask=&HFF, pixel_size
+dim shared as float        iGlobalTime ' shader playback time (in seconds)
+#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
+dim shared as vec3         iResolution ' viewport resolution (in pixels)
+dim shared as vec4         iMouse      ' mouse pixel coords. xy: current (if MLB down), zw: click
+#else
+dim shared as vector3      iResolution ' viewport resolution (in pixels)
+dim shared as vector4      iMouse      ' mouse pixel coords. xy: current (if MLB down), zw: click
+#endif
 
 ' string registers
-dim shared as ulongint string_adr, string_len 
-dim shared as string   driver_name, string_data
+dim shared as SYSTEM_TYPE string_adr, string_len 
+dim shared as string      driver_name, string_data
 
 ' joystick registers
-dim shared as double   a1,a2,a3,a4,a5,a6,a7,a8
+dim shared as SYSTEM_TYPE    a1,a2,a3,a4,a5,a6,a7,a8
 
 ' system memory bank
 dim shared as string   get_key, get_data, old_data(10000)
@@ -210,153 +254,217 @@ var shared mov(b,0),mov(c,0),mov(x,0),mov(y,0),mov(xs,0),mov(ys,0)
 var shared mov(uflag,0),mov(UpdatedScreen,0),mov(cary,0)
 var shared mov(r,0),mov(g,0),mov(a,0)
 
-common shared as double   offset,swch, sys_offset,str_len,cnt
-common shared as any ptr  bgimage,fgimage,raster
-common shared as any ptr  image, pScrn
-common shared as string   strCode,compiler
-common shared as string   filename
-common shared as ulongint scr_w, scr_h,scr_pos, imgData, pitch
-common shared as any ptr  render
-common shared as string   msg
-common shared as longint  Power2()
-common shared as integer  SizeScreen
-common shared as string  _sCREENRES, _NAME
-common shared as longint  ScrWidth, ScrHeight
-common shared as ulongint Red, Green, Blue
-common shared as longint  xScrCenter, yScrCenter
+common shared as SYSTEM_TYPE    offset,swch, sys_offset,str_len,cnt
+common shared as any ptr        bgimage,fgimage,raster,render
+common shared as any ptr        image, pScrn
+common shared as string         strCode,compiler
+common shared as string         filename
+common shared as ulongint       scr_w, scr_h,scr_pos, imgData, pitch
+common shared as string         msg
+common shared as SYSTEM_TYPE    Power2()
+common shared as SYSTEM_TYPE    SizeScreen
+common shared as string        _sCREENRES, _NAME
+common shared as SYSTEM_TYPE    ScrWidth, ScrHeight
+common shared as SYSTEM_TYPE    Red, Green, Blue
+common shared as SYSTEM_TYPE    xScrCenter, yScrCenter
 
-const SaveDir = ""                           ' For files management
-const as integer SHADOW_SETPS = 16           ' 16 how many soft shadow steps
-const as integer AO_STEPS     =  5           '  5 how many ambient occlusion steps
+const as SYSTEM_TYPE SHADOW_SETPS = 16           ' 16 how many soft shadow steps
+const as SYSTEM_TYPE AO_STEPS     =  5           '  5 how many ambient occlusion steps
 
-var shared mov(eps,9.98012604599318D-322)
-var shared mov(Pi,3.14159265358979#)         ' For angles management
-var shared mov(SQR12,.7071068)               ' SQR(1/2)
-var shared mov(SQR16,.4082483)               ' SQR(1/6)
-var shared mov(SQR23,.8164966)               ' SQR(2/3)
-var shared mov(SatCoeff,84.51663)            ' 100/ATN(SQR(6))
-var shared mov(SatCoef,1.183199E-02)         ' 1/SatCoeff
-var shared mov(PiOver180,.0174533)
-var shared mov(PiOver2,1.5707963267949#)
+type threadscan
+	as SYSTEM_TYPE yscan
+	as SYSTEM_TYPE xend
+	as SYSTEM_TYPE yend
+	as any ptr  thread_handle
+end type
+
+declare def RasterLine(param     as any ptr)
 
 type MEMORY_T
   public:
   declare constructor
   declare destructor
   'Ring 3 - c64dvd
-  declare proc ReadByte     (byval adr           as float)                                                      as  byte
-  declare proc ReadUByte    (byval adr           as float)                                                      as ubyte
-  declare proc ReadUShort   (byval adr           as float)                                                      as ushort
-  declare def  WriteByte    (byval adr           as float   , byval b8               as float)
-  declare def  WriteUByte   (byval adr           as float   , byval b8               as float)
-  declare def  WriteUShort  (byval adr           as float   , byval w16              as float)
-  declare proc Peek64       (byval adr           as float)                                                      as float
-  declare def  poke64       (byval adr           as float   , byval v                as float)
-  declare proc screencode   (byval code          as float)                                                      as float 
-  declare proc peekb        (byval adr           as float)                                                      as float
-  declare def  pokeb        (byval adr           as float   , byval v                as float)
-  declare def  pokew        (byval adr           as float   , byval v                as float)
-  declare proc peekw        (byval adr           as float)                                                      as float
-  declare proc issymbol     (byval s             as string  , byval start            as float)                  as float
-  declare proc isnumber     (byval s             as string  , byval start            as float)                  as float
+  declare proc ReadByte     (byval adr           as SYSTEM_TYPE)                                                 as  byte
+  declare proc ReadUByte    (byval adr           as SYSTEM_TYPE)                                                 as ubyte
+  declare proc ReadUShort   (byval adr           as SYSTEM_TYPE)                                                 as ushort
+  declare def  WriteByte    (byval adr           as SYSTEM_TYPE   , byval b8               as SYSTEM_TYPE)
+  declare def  WriteUByte   (byval adr           as SYSTEM_TYPE   , byval b8               as SYSTEM_TYPE)
+  declare def  WriteUShort  (byval adr           as SYSTEM_TYPE   , byval w16              as SYSTEM_TYPE)
+  declare proc Peek64       (byval adr           as SYSTEM_TYPE)                                                 as SYSTEM_TYPE
+  declare def  poke64       (byval adr           as SYSTEM_TYPE   , byval v                as SYSTEM_TYPE)
+  declare proc screencode   (byval code          as SYSTEM_TYPE)                                                 as SYSTEM_TYPE 
+  declare proc peekb        (byval adr           as SYSTEM_TYPE)                                                 as SYSTEM_TYPE
+  declare def  pokeb        (byval adr           as SYSTEM_TYPE   , byval v                as SYSTEM_TYPE)
+  declare def  pokew        (byval adr           as SYSTEM_TYPE   , byval v                as SYSTEM_TYPE)
+  declare proc peekw        (byval adr           as SYSTEM_TYPE)                                                 as SYSTEM_TYPE
+  declare proc issymbol     (byval s             as string        , byval start            as SYSTEM_TYPE)       as SYSTEM_TYPE
+  declare proc isnumber     (byval s             as string        , byval start            as SYSTEM_TYPE)       as SYSTEM_TYPE
   declare def  getXYZ       ()
+#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
  'Ring 3 - Shadertoy
-  declare proc length6      (p  as vector2)                                                                     as float
-  declare proc length8      (p  as vector2)                                                                     as float
-  declare proc sdPlane      (p  as vector3)                                                                     as float
-  declare proc sdSphere     (p  as vector3 , s   as float)                                                      as float
-  declare proc sdBox        (p  as vector3 , b   as vector3)                                                    as float
-  declare proc sdEllipsoid  (p  as vector3 , r   as vector3)                                                    as float
-  declare proc udRoundBox   (p  as vector3 , b   as vector3 , r                      as float)                  as float
-  declare proc sdTorus      (p  as vector3 , t   as vector2)                                                    as float
-  declare proc sdTorus82    (p  as vector3 , t   as vector2)                                                    as float
-  declare proc sdTorus88    (p  as vector3 , t   as vector2)                                                    as float
-  declare proc sdHexPrism   (p  as vector3 , h   as vector2)                                                    as float
-  declare proc sdCapsule    (p  as vector3 , a   as vector3 , b     as vector3 ,  r  as float)                  as float
-  declare proc sdTriPrism   (p  as vector3 , h   as vector2)                                                    as float
-  declare proc sdCylinder   (p  as vector3 , h   as vector2)                                                    as float
-  declare proc sdCylinder6  (p  as vector3 , h   as vector2)                                                    as float
-  declare proc sdCone       (p  as vector3 , c   as vector3)                                                    as float
-  declare proc _sdCone      (p  as vector3 , c   as vector3)                                                    as float
-  declare proc sdConeHQ     (p  as vector3 , c   as vector3)                                                    as float
-  declare proc sdConeSection(p  as vector3 , h   as float   , r1    as float  ,  r2  as float)                  as float
-  declare proc sdWobbleCube (p  as vector3 , s   as float)                                                      as float
-  declare proc udTriangle   (p  as vector3 , a   as vector3 , b     as vector3 , c   as vector3)                as float
-  declare proc udQuad       (p  as vector3 , a   as vector3 , b     as vector3 , c   as vector3 , d as vector3) as float
-  declare proc opS          (d1 as float   , d2  as float)                                                      as float
-  declare proc opU          (d1 as vector2 , d2  as vector2)                                                    as vector2
-  declare proc opI          (d1 as float   , d2  as float )                                                     as float
-  declare proc opRep        (p  as vector3 , c   as vector3)                                                    as vector3
-  declare proc ExpSmin      (a  as float   , b   as float   , k     as float=32)                                as float
-  declare proc PolySmin     (a  as float   , b   as float   , k     as float=0.1)                               as float
-  declare proc PowSmin      (a  as float   , b   as float   , k     as float=8)                                 as float
-  declare proc opTwist      (p  as vector3)                                                                     as vector3
-  declare proc map          (p  as vector3)                                                                     as vector2
-  declare proc castRay      (ro as vector3 , rd  as vector3)                                                    as vector2
-  declare proc softshadow   (ro as vector3 , rd  as vector3  , mint as float , tmax  as float)                  as float
-  declare proc calcNormal   (p  as vector3)                                                                     as vector3
-  declare proc calcAO       (p  as vector3 , nor as vector3)                                                    as float
-  declare proc RENDER_GLSL  (ro as vector3 , rd  as vector3)                                                    as vector3
-  declare proc setCamera    (ro as vector3 , ta  as vector3  , cr as float )                                    as mat3
-  declare def  mainImage overload (fragColor as vector4, fragCoord as const vector2)
-  declare def _mainImage(fragColor as vector4, fragCoord as const vector2)
-  declare def  EXEC_GLSL()
+  declare proc length6      (p  as vec2)                                                                         as SYSTEM_TYPE
+  declare proc length8      (p  as vec2)                                                                         as SYSTEM_TYPE
+  declare proc sdPlane      (p  as vec3)                                                                         as SYSTEM_TYPE
+  declare proc sdSphere     (p  as vec3 , s   as SYSTEM_TYPE)                                                    as SYSTEM_TYPE
+  declare proc sdBox        (p  as vec3 , b   as vec3)                                                           as SYSTEM_TYPE
+  declare proc sdEllipsoid  (p  as vec3 , r   as vec3)                                                           as SYSTEM_TYPE
+  declare proc udRoundBox   (p  as vec3 , b   as vec3 , r                      as SYSTEM_TYPE)                   as SYSTEM_TYPE
+  declare proc sdTorus      (p  as vec3 , t   as vec2)                                                           as SYSTEM_TYPE
+  declare proc sdTorus82    (p  as vec3 , t   as vec2)                                                           as SYSTEM_TYPE
+  declare proc sdTorus88    (p  as vec3 , t   as vec2)                                                           as SYSTEM_TYPE
+  declare proc sdHexPrism   (p  as vec3 , h   as vec2)                                                           as SYSTEM_TYPE
+  declare proc sdCapsule    (p  as vec3 , a   as vec3 , b     as vec3 ,  r  as SYSTEM_TYPE)                      as SYSTEM_TYPE
+  declare proc sdTriPrism   (p  as vec3 , h   as vec2)                                                           as SYSTEM_TYPE
+  declare proc sdCylinder   (p  as vec3 , h   as vec2)                                                           as SYSTEM_TYPE
+  declare proc sdCylinder6  (p  as vec3 , h   as vec2)                                                           as SYSTEM_TYPE
+  declare proc sdCone       (p  as vec3 , c   as vec3)                                                           as SYSTEM_TYPE
+  declare proc _sdCone      (p  as vec3 , c   as vec3)                                                           as SYSTEM_TYPE
+  declare proc sdConeHQ     (p  as vec3 , c   as vec3)                                                           as SYSTEM_TYPE
+  declare proc sdConeSection(p  as vec3 , h   as SYSTEM_TYPE   , r1    as SYSTEM_TYPE  ,  r2  as SYSTEM_TYPE)    as SYSTEM_TYPE
+  declare proc sdWobbleCube (p  as vec3 , s   as SYSTEM_TYPE)                                                    as SYSTEM_TYPE
+  declare proc udTriangle   (p  as vec3 , a   as vec3 , b     as vec3 , c   as vec3)                             as SYSTEM_TYPE
+  declare proc udQuad       (p  as vec3 , a   as vec3 , b     as vec3 , c   as vec3 , d as vec3)                 as SYSTEM_TYPE
+  declare proc opS          (d1 as SYSTEM_TYPE   , d2  as SYSTEM_TYPE)                                           as SYSTEM_TYPE
+  declare proc opU          (d1 as vec2 , d2  as vec2)                                                           as vec2
+  declare proc opI          (d1 as SYSTEM_TYPE   , d2  as SYSTEM_TYPE )                                          as SYSTEM_TYPE
+  declare proc opRep        (p  as vec3 , c   as vec3)                                                           as vec3
+  declare proc ExpSmin      (a  as SYSTEM_TYPE   , b   as SYSTEM_TYPE   , k     as SYSTEM_TYPE=32)               as SYSTEM_TYPE
+  declare proc PolySmin     (a  as SYSTEM_TYPE   , b   as SYSTEM_TYPE   , k     as SYSTEM_TYPE=0.1)              as SYSTEM_TYPE
+  declare proc PowSmin      (a  as SYSTEM_TYPE   , b   as SYSTEM_TYPE   , k     as SYSTEM_TYPE=8)                as SYSTEM_TYPE
+  declare proc opTwist      (p  as vec3)                                                                         as vec3
+  declare proc map          (p  as vec3)                                                                         as vec2
+  declare proc castRay      (ro as vec3 , rd  as vec3)                                                           as vec2
+  declare proc softshadow   (ro as vec3 , rd  as vec3  , mint as SYSTEM_TYPE , tmax  as SYSTEM_TYPE)             as SYSTEM_TYPE
+  declare proc calcNormal   (p  as vec3)                                                                         as vec3
+  declare proc calcAO       (p  as vec3 , nor as vec3)                                                           as SYSTEM_TYPE
+  declare proc RENDER_GLSL  (ro as vec3 , rd  as vec3)                                                           as vec3
+  declare proc setCamera    (ro as vec3 , ta  as vec3  , cr as SYSTEM_TYPE )                                     as mat3
+
+  declare def  mainImage overload (fragColor as vec4 , fragCoord as const vec2)
+  declare def _mainImage          (fragColor as vec4 , fragCoord as const vec2)
+#else
+ 'Ring 3 - Shadertoy
+  declare proc length6      (p  as vector2)                                                                      as SYSTEM_TYPE
+  declare proc length8      (p  as vector2)                                                                      as SYSTEM_TYPE
+  declare proc sdPlane      (p  as vector3)                                                                      as SYSTEM_TYPE
+  declare proc sdSphere     (p  as vector3 , s   as SYSTEM_TYPE)                                                 as SYSTEM_TYPE
+  declare proc sdBox        (p  as vector3 , b   as vector3)                                                     as SYSTEM_TYPE
+  declare proc sdEllipsoid  (p  as vector3 , r   as vector3)                                                     as SYSTEM_TYPE
+  declare proc udRoundBox   (p  as vector3 , b   as vector3 , r                      as SYSTEM_TYPE)             as SYSTEM_TYPE
+  declare proc sdTorus      (p  as vector3 , t   as vector2)                                                     as SYSTEM_TYPE
+  declare proc sdTorus82    (p  as vector3 , t   as vector2)                                                     as SYSTEM_TYPE
+  declare proc sdTorus88    (p  as vector3 , t   as vector2)                                                     as SYSTEM_TYPE
+  declare proc sdHexPrism   (p  as vector3 , h   as vector2)                                                     as SYSTEM_TYPE
+  declare proc sdCapsule    (p  as vector3 , a   as vector3 , b     as vector3 ,  r  as SYSTEM_TYPE)             as SYSTEM_TYPE
+  declare proc sdTriPrism   (p  as vector3 , h   as vector2)                                                     as SYSTEM_TYPE
+  declare proc sdCylinder   (p  as vector3 , h   as vector2)                                                     as SYSTEM_TYPE
+  declare proc sdCylinder6  (p  as vector3 , h   as vector2)                                                     as SYSTEM_TYPE
+  declare proc sdCone       (p  as vector3 , c   as vector3)                                                     as SYSTEM_TYPE
+  declare proc _sdCone      (p  as vector3 , c   as vector3)                                                     as SYSTEM_TYPE
+  declare proc sdConeHQ     (p  as vector3 , c   as vector3)                                                     as SYSTEM_TYPE
+  declare proc sdConeSection(p  as vector3 , h   as SYSTEM_TYPE   , r1    as SYSTEM_TYPE  ,  r2  as SYSTEM_TYPE) as SYSTEM_TYPE
+  declare proc sdWobbleCube (p  as vector3 , s   as SYSTEM_TYPE)                                                 as SYSTEM_TYPE
+  declare proc udTriangle   (p  as vector3 , a   as vector3 , b     as vector3 , c   as vector3)                 as SYSTEM_TYPE
+  declare proc udQuad       (p  as vector3 , a   as vector3 , b     as vector3 , c   as vector3 , d as vector3)  as SYSTEM_TYPE
+  declare proc opS          (d1 as SYSTEM_TYPE   , d2  as SYSTEM_TYPE)                                           as SYSTEM_TYPE
+  declare proc opU          (d1 as vector2 , d2  as vector2)                                                     as vector2
+  declare proc opI          (d1 as SYSTEM_TYPE   , d2  as SYSTEM_TYPE )                                          as SYSTEM_TYPE
+  declare proc opRep        (p  as vector3 , c   as vector3)                                                     as vector3
+  declare proc ExpSmin      (a  as SYSTEM_TYPE   , b   as SYSTEM_TYPE   , k     as SYSTEM_TYPE=32)               as SYSTEM_TYPE
+  declare proc PolySmin     (a  as SYSTEM_TYPE   , b   as SYSTEM_TYPE   , k     as SYSTEM_TYPE=0.1)              as SYSTEM_TYPE
+  declare proc PowSmin      (a  as SYSTEM_TYPE   , b   as SYSTEM_TYPE   , k     as SYSTEM_TYPE=8)                as SYSTEM_TYPE
+  declare proc opTwist      (p  as vector3)                                                                      as vector3
+  declare proc map          (p  as vector3)                                                                      as vector2
+  declare proc castRay      (ro as vector3 , rd  as vector3)                                                     as vector2
+  declare proc softshadow   (ro as vector3 , rd  as vector3  , mint as SYSTEM_TYPE , tmax  as SYSTEM_TYPE)       as SYSTEM_TYPE
+  declare proc calcNormal   (p  as vector3)                                                                      as vector3
+  declare proc calcAO       (p  as vector3 , nor as vector3)                                                     as SYSTEM_TYPE
+  declare proc RENDER_GLSL  (ro as vector3 , rd  as vector3)                                                     as vector3
+  declare proc setCamera    (ro as vector3 , ta  as vector3  , cr as SYSTEM_TYPE )                               as mat3
+
+  declare def  mainImage overload (fragColor as vector4 , fragCoord as const vector2)
+  declare def _mainImage          (fragColor as vector4 , fragCoord as const vector2)
+#endif
+
+  declare def  EXEC_GLSL          ()
+  declare def  EXEC_GLSL_40       ()
+  declare def  EXEC_GLSL_90       ()
+  declare def  EXEC_GLSL_120      ()
   'Ring 0 - kernel
-  declare proc kmin         (v1 as ulongint, v2  as ulongint)                                                   as ulongint
-  'declare proc ksqrt        (d  as float)                                                                   as float
+  declare def  kmemset      (de as SYSTEM_TYPE, sz  as SYSTEM_TYPE, v  as SYSTEM_TYPE)
+  declare def  kmemcpy      (su as SYSTEM_TYPE, de  as SYSTEM_TYPE, sz as SYSTEM_TYPE)
+  declare proc kmin         (v1 as SYSTEM_TYPE, v2  as SYSTEM_TYPE)                                              as SYSTEM_TYPE
+  'declare proc ksqrt        (d  as SYSTEM_TYPE)                                                                as SYSTEM_TYPE
 #if 0
-  const as ulongint mov(os_end,      &HFFFF) '------|
-  const as ulongint mov(os_base,     &HE000) '  8 K | KERNAL ROM or RAM (adr 0 bit1=0 RAM bit1=1 ROM
-  const as ulongint mov(flopy_end,   &HDFFF) '------+-|
-  const as ulongint mov(flopy_base,  &HDF00) ' 256 b  |
-  const as ulongint mov(cpm_end,     &HDEFF) '--------|
-  const as ulongint mov(cpm_base,    &HDE00) ' 256 b  |
-  const as ulongint mob(cia2_end,    &HDDFF) '--------|
-  const as ulongint mov(cia2_base,   &HDD00) ' 256 b  |
-  const as ulongint mov(cia1_end,    &HDCFF) '--------|
-  const as ulongint mov(cia1_base,   &HDC00) ' 256 b  |-- 4 K I/O
-  const as ulongint mov(col_end,     &HDBFF) '--------|
-  const as ulongint mov(col_base,    &HD800) '  1 K   |
-  const as ulongint mov(sid_end,     &HD7FF) '--------|
-  const as ulongint mov(sid_base,    &HD400) '  1 K   |
-  const as ulongint mov(vic_end,     &HD3FF) '--------|
-  const as ulongint mov(vic_base,    &HD000) '  1 K   |
-  const as ulongint mov(up_ram_end,  &HCFFF) '------+-|
-  const as ulongint mov(up_ram_base, &HC000) '  4 K |
-  const as ulongint mov(basic_end,   &HBFFF) '------|
-  const as ulongint mov(basic_base,  &HA000) '  8 K
+  const as SYSTEM_TYPE os_end     = &HFFFF '------|
+  const as SYSTEM_TYPE os_base    = &HE000 '  8 K | KERNAL ROM or RAM (adr 0 bit1=0 RAM bit1=1 ROM
+  const as SYSTEM_TYPE flopy_end  = &HDFFF '------+-|
+  const as SYSTEM_TYPE flopy_base = &HDF00 ' 256 b  |
+  const as SYSTEM_TYPE cpm_end    = &HDEFF '--------|
+  const as SYSTEM_TYPE cpm_base   = &HDE00 ' 256 b  |
+  const as SYSTEM_TYPE cia2_end   = &HDDFF '--------|
+  const as SYSTEM_TYPE cia2_base  = &HDD00 ' 256 b  |
+  const as SYSTEM_TYPE cia1_end   = &HDCFF '--------|
+  const as SYSTEM_TYPE cia1_base  = &HDC00 ' 256 b  |-- 4 K I/O
+  const as SYSTEM_TYPE col_end    = &HDBFF '--------|
+  const as SYSTEM_TYPE col_base   = &HD800 '  1 K   |
+  const as SYSTEM_TYPE sid_end    = &HD7FF '--------|
+  const as SYSTEM_TYPE sid_base   = &HD400 '  1 K   |
+  const as SYSTEM_TYPE vic_end    = &HD3FF '--------|
+  const as SYSTEM_TYPE vic_base   = &HD000 '  1 K   |
+  const as SYSTEM_TYPE up_ram_end = &HCFFF '------+-|
+  const as SYSTEM_TYPE up_ram_base= &HC000 '  4 K |
+  const as SYSTEM_TYPE basic_end  = &HBFFF '------|
+  const as SYSTEM_TYPE basic_base = &HA000 '  8 K
 #endif
   'Define datasets
-#if defined(__FB_WIN64__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
-    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
-    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
+#if defined(__FB_DOS__)
   'Ring 3 - c64dvd
-  as float     mem64    (16777215) ' Ram
-  as float     kernal   (00016383) ' OS
-  as float     basic    (00016383) ' Basic
-  as float     char     (00032752) ' Font
-  as float     col      (00001023) ' color triples
-  as float     SINTable (00000359) ' sine table
-  as float     COSTable (00000359) ' cosine table
-#elseif defined(__FB_WIN32__) or defined(__FB_DOS__)
+  as SYSTEM_TYPE     mem64    (01048575) ' Ram
+  as SYSTEM_TYPE     kernal   (00016383) ' OS
+  as SYSTEM_TYPE     basic    (00016383) ' Basic
+  as SYSTEM_TYPE     char     (00480000) ' Font
+  as SYSTEM_TYPE     col      (00001023) ' color triples
+  as SYSTEM_TYPE     SINTable (00000359) ' sine table
+  as SYSTEM_TYPE     COSTable (00000359) ' cosine table
+  as       vec4 fragColor
+  as const vec2 fragCoord
+  as       vec2 res
+#elseif defined(__FB_WIN32__) or defined(__WIN64__)
   'Ring 3 - c64dvd
-  as float     mem64    (04194303) ' Ram
-  as float     kernal   (00016383) ' OS
-  as float     basic    (00016383) ' Basic
-  as float     char     (00032752) ' Font
-  as float     col      (00001023) ' color triples
-  as float     SINTable (00000359) ' sine table
-  as float     COSTable (00000359) ' cosine table
-#endif
+  as SYSTEM_TYPE     mem64    (04194303) ' Ram
+  as SYSTEM_TYPE     kernal   (00016383) ' OS
+  as SYSTEM_TYPE     basic    (00016383) ' Basic
+  as SYSTEM_TYPE     char     (00480000) ' Font
+  as SYSTEM_TYPE     col      (00001023) ' color triples
+  as SYSTEM_TYPE     SINTable (00000359) ' sine table
+  as SYSTEM_TYPE     COSTable (00000359) ' cosine table
+  'Ring 3 - Shadertoy 
+  as       vec4 fragColor
+  as const vec2 fragCoord
+  as       vec2 res
+#else
+  'Ring 3 - c64dvd
+  as SYSTEM_TYPE     mem64    (16777215) ' Ram
+  as SYSTEM_TYPE     kernal   (00016383) ' OS
+  as SYSTEM_TYPE     basic    (00016383) ' Basic
+  as SYSTEM_TYPE     char     (02073600) ' Font
+  as SYSTEM_TYPE     col      (00001023) ' color triples
+  as SYSTEM_TYPE     SINTable (00000359) ' sine table
+  as SYSTEM_TYPE     COSTable (00000359) ' cosine table
   'Ring 3 - RAYTRACER
   as RAYTRACER raytracer           ' Raytracer
-  as vector2   res2
-  as vector3   res3
-  as vector4   res4
+  'Ring 3 - Shadertoy
+  as       vector4 fragColor
+  as const vector2 fragCoord
+  as       vector2 res
+#endif
   'Ring 0 - kernel
   as ubyte Result (0 to 2047)
   as ubyte Result2(0 to 2047)
 end type
+
 
 enum ADR_MODES
   _UNK ' unknow
@@ -462,27 +570,25 @@ type CPU6510
   declare constructor(byval mem  as MEMORY_T ptr)
   declare destructor
   declare operator CAST      as string
-#if defined(__FB_WIN64__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
-    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
-    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)   
-  declare function Tick(byval mov(flg as double, 1.797693134862316e+308)) as double
-#elseif defined(__FB_WIN32__)  or defined(__FB_DOS__)
-  declare function Tick(byval mov(flg as double, &H7FFFFFFF)) as double
-#endif    
-  declare function ADR_IMM   as double
-  declare function ADR_REL   as double
-  declare function ADR_ZERO  as double
-  declare function ADR_ZEROX as double
-  declare function ADR_ZEROY as double
-  declare function ADR_ABS   as double
-  declare function ADR_ABSX  as double
-  declare function ADR_ABSY  as double
-  declare function ADR_IND   as double
-  declare function ADR_INDX  as double
-  declare function ADR_INDY  as double
-  declare function ADR_UNK   as double ' unknow
-  declare sub      Push   (byval v as double)
-  declare function Pull      as double
+#if defined(__FB_WIN32__) or defined(__FB_DOS__) or defined(__FB_WIN64__)
+  declare function Tick(byval flg as SYSTEM_TYPE=&HFFFFFFFFFFFFFFFF) as SYSTEM_TYPE
+#else
+  declare function Tick(byval mov(flg as SYSTEM_TYPE, 1.797693134862316e+308)) as SYSTEM_TYPE
+#endif  
+  declare function ADR_IMM   as SYSTEM_TYPE
+  declare function ADR_REL   as SYSTEM_TYPE
+  declare function ADR_ZERO  as SYSTEM_TYPE
+  declare function ADR_ZEROX as SYSTEM_TYPE
+  declare function ADR_ZEROY as SYSTEM_TYPE
+  declare function ADR_ABS   as SYSTEM_TYPE
+  declare function ADR_ABSX  as SYSTEM_TYPE
+  declare function ADR_ABSY  as SYSTEM_TYPE
+  declare function ADR_IND   as SYSTEM_TYPE
+  declare function ADR_INDX  as SYSTEM_TYPE
+  declare function ADR_INDY  as SYSTEM_TYPE
+  declare function ADR_UNK   as SYSTEM_TYPE ' unknow
+  declare sub      Push   (byval v as SYSTEM_TYPE)
+  declare function Pull      as SYSTEM_TYPE
 
   union ' status register P
     as ubyte P
@@ -531,7 +637,6 @@ end type
 
 ' void _ZN5C64_TC1Ev( struct $5C64_T* THIS$1 )
 constructor C64_T
-
   '{
   ' int64 TMP$733$1;
   ' int64 TMP$735$1;
@@ -547,24 +652,19 @@ constructor C64_T
   ' initialize nibbles, bytes, and words.
   ' *(uint8*)4808096ll = (uint8)0u; 
   poke ubyte,@nibbles(&B0000),&B0000
-  
   ' *(uint8*)4808097ll = (uint8)1u;
   poke ubyte,@nibbles(&B0001),&B0001
-  
   ' *(uint8*)4808101ll = (uint8)5u;
   poke ubyte,@nibbles(&H0101),&B0101
-  
   ' *(uint8*)4808104ll = (uint8)8u;
   ' poke ubyte,@nibbles(&B1000),&B1000
   poke ubyte,@nibbles(&B1000),&B1000
-  
   ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
 /'
-   poke integer,@i,peek(ubyte,@nibbles(&B0000))
-   
+   poke integer,@i,peek(ubyte,@nibbles(&B0000)
    print "@i = &H";hex(@i)
    print "@c = &H";hex(@c)
-   for i=0 to 15
+   for i=peek(ubyte,@nibbles(&B0000)) to peek(ubyte,@nibbles(&B1111))
    print "@nibbles(";str(peek(integer,@i));") = &H";hex(@nibbles(peek(integer,@i)))
    next i
    end
@@ -572,11 +672,14 @@ constructor C64_T
 L0A:
   ' label$141:;
   ' *(uint8*)((uint8*)*(int64*)4808136ll + 4808096ll) = (uint8)*(int64*)4808136ll;
+  poke ubyte,@nibbles(&B0000) add peek(ulongint,@i), peek(ulongint,@i)
+
   ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
-  poke ubyte,@nibbles(&B0000) add peek(ulongint,@i), peek(ulongint,@i): poke integer,@i, peek(ulongint,@i) _
-       add peek(ubyte,@nibbles(&B0001))
+  poke ulongint,@i, peek(ulongint,@i)add peek(ubyte,@nibbles(&B0001))
        
   ' fb_Locate( (int32)*(uint8*)4808097ll, (int32)*(uint8*)4808097ll, -1, 0, 0 );
+    locate peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001))
+
   ' FBSTRING* vr$12 = fb_StrAllocTempDescZEx( (uint8*)"NIBBLES: ", 9ll );
   ' fb_PrintString( 0, (FBSTRING*)vr$11, 0 );
   ' if( *(int64*)4808136ll >= ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808097ll & 63ll)) ) goto label$142;
@@ -586,20 +689,8 @@ L0A:
   ' TMP$733$1 = *(int64*)4808136ll - (int64)*(uint8*)4808097ll;
   ' label$158:;
   ' fb_PrintLongint( 0, TMP$733$1, 1 );
-  locate peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001)): _
-         'print "NIBBLES: "; _
-         print _
-         chr(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110))); _ ' N
-         chr(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))); _ ' I
-         chr(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010))); _ ' B
-         chr(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010))); _ ' B
-         chr(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))); _ ' L
-         chr(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101))); _ ' E
-         chr(peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011))); _ ' S
-         chr(peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))); _ ' :
-         chr(peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0000))); _ ' 
-         iif(peek(ulongint,@i) lt peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0001)), _
-         peek(ulongint,@i), peek(ulongint,@i) subt peek(ubyte,@nibbles(&B0001)))
+  print "NIBBLES: "; iif(i lt peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0001)), peek(ulongint,@i), _
+                              peek(ulongint,@i) subt peek(ubyte,@nibbles(&B0001)))    
 
   ' if( *(int64*)4808136ll > ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808097ll & 63ll)) ) goto label$144;;
   ' goto label$141;
@@ -610,15 +701,20 @@ L0A:
   ' end
   poke ulongint,@i,peek(ubyte,@nibbles(&B0000))
 L0B:
-  dprint("C64_T()")
-  ' end
-#if defined(__FB_DOS__) or defined(__FB_WIN32__)
-  ScreenRes                                                                                                         peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)),    peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000)),    peek(ubyte,@nibbles(&B0010))   shl peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0000)),logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
-#endif
+ dprint("C64_T()")
+  dim as integer i,c
  
-#if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or _
-    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__)  or defined(__FB_XBOX__) or _
-    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
+  ' end
+#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
+  ScreenRes peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B1000))  _
+        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)), _
+            peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B1000))  _
+        add peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100))  _
+        add peek(ubyte,@nibbles(&B1000)),                                  _
+            peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)), _
+            peek(ubyte,@nibbles(&B0000)),    peek(ubyte,@nibbles(&B0000)), _
+            GFX_ALPHA_PRIMITIVES: Cls
+#else
   'ScreenRes 1920d,1080d, 32d, 0d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
   'ScreenRes xwords(&B0000011110000000),xwords(&B0000010000111000),bytes(&B00100000),bytes(&B00000000),_
   '          logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls 
@@ -633,30 +729,25 @@ L0B:
   '                + ((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll))) \
   '                + (int64)*(uint8*)4808104ll), (int32)((int64)*(uint8*)4808098ll << \
   '                  ((int64)*(uint8*)4808100ll & 63ll)), (int32)*(uint8*)4808096ll, 64, 0 );
-  ScreenRes peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0111)),peek(ubyte,@nibbles(&B0100)) _
-        shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) _
-        add peek(ubyte,@nibbles(&B1000)),    peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)),_
-        peek(ubyte,@nibbles(&B0000)),GFX_ALPHA_PRIMITIVES
+  ScreenRes peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0111)), _
+            peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000))  _
+        add peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100))  _
+        add peek(ubyte,@nibbles(&B1000)),    peek(ubyte,@nibbles(&B0010))  _
+        shl peek(ubyte,@nibbles(&B0100)),    peek(ubyte,@nibbles(&B0000)), _
+        GFX_ALPHA_PRIMITIVES
         
   ' fb_Cls( -65536 );
   Cls
 #endif
-  ' get curent resolution
-#if defined(__FB_DOS__) or defined(__FB_WIN32__)
+#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
   screeninfo cast(ulongint,scr_w), cast(ulongint,scr_h), cast(ulongint,imgData), cast(ulongint,pitch)
-  mov(bgimage,ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
-  mov(fgimage,ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
-  mov(raster,ImageCreate(scr_w,peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
-  mov(render,ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
-  poke @i,peek(ubyte,@nibbles(&B0000))  
-L0:
-  read c:palette peek(ulongint,@i),peek(ulongint,@c)
-  poke ulongint,@i,peek(ulongint,@i) add peek(ubyte,@nibbles(&B0001))
-  cmp peek(@i) lt peek(ubyte,@nibbles(&B1111)) jmp L0
-#endif
-#if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or defined(__FB_WIN64__) or _
-    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__)  or defined(__FB_XBOX__)  or _
-    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)   
+  fgimage = ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)))
+ ' bgimage = ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)))
+ ' raster  = ImageCreate(scr_w,peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010))_ 
+ '                         shl peek(ubyte,@nibbles(&B0100)))
+ ' render  = ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)))
+  poke @i,peek(ubyte,@nibbles(&B0000)) 
+#else
   ' FBSTRING* vr$91 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
   ' TMP$739$1 = 0ll;
   ' TMP$738$1 = 0ll;
@@ -667,29 +758,34 @@ L0:
   ' void* vr$101 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, \
   '       (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
   ' BGIMAGE$ = vr$101;
-  mov(bgimage, ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) _
-      shl peek(ubyte,@nibbles(&B0100))))
+  bgimage = ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) _
+      shl peek(ubyte,@nibbles(&B0100)))
       
   ' void* vr$109 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, \
   '       (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
   ' FGIMAGE$ = vr$109;
-  mov(fgimage, ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) _
-      shl peek(ubyte,@nibbles(&B0100))))
+  fgimage = ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) _
+      shl peek(ubyte,@nibbles(&B0100)))
       
   ' void* vr$117 = fb_GfxImageCreate( (int32)SCR_W$, (int32)*(uint8*)4808097ll, (uint32)*(uint8*)4808096ll, \
   '       (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
   ' RASTER$ = vr$117;
-  mov(raster,  ImageCreate(scr_w,peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)), _
-      peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))))
+  raster = ImageCreate(scr_w,peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)), _
+      peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)))
       
   ' void* vr$125 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, \
   '       (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
   ' RENDER$ = vr$125;
-  mov(render,  ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) _
-      shl peek(ubyte,@nibbles(&B0100))))
+  render = ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) _
+      shl peek(ubyte,@nibbles(&B0100)))
       
   ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
   poke ulongint,@i,peek(ubyte,@nibbles(&B0000))  
+#endif
+#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
+  fc = rgba(fr,fg,fb,fa)
+  bc = rgba(br,bg,bb,ba)
+#endif
 L0:
  ' label$153:;
  ' fb_DataReadLongint( (int64*)&C$1 );
@@ -699,11 +795,14 @@ L0:
   (@fb_GfxPalette)(peek(ulongint,@i),peek(ulongint,@c),-peek(ubyte,@nibbles(&B0001)),-peek(ubyte,@nibbles(&B0001)))
   
  ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
-  poke integer,@i,peek(ulongint,@i) add peek(ubyte,@nibbles(&B0001))
+  poke ulongint,@i,peek(ulongint,@i) add peek(ubyte,@nibbles(&B0001))
   
  ' if( *(int64*)4808136ll >= (int64)*(uint8*)4808111ll ) goto label$155;
  ' goto label$153;
   cmp peek(ulongint,@i) lt peek(ubyte,@nibbles(&B1111)) jmp L0
+
+#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
+  bload "TEST.BMP",0
 #endif
 
  ' label$155:;
@@ -713,7 +812,7 @@ L0:
  ' _ZN8MEMORY_TC1Ev( TMP$740$1 );
  ' label$156:;
  ' *(struct $8MEMORY_T**)THIS$1 = TMP$740$1;  
-  mov(mem, new MEMORY_T)
+  mem = new MEMORY_T
   
  ' void* vr$135 = malloc( 14720ull );
  ' TMP$742$1 = (struct $7CPU6510*)vr$135;
@@ -722,7 +821,7 @@ L0:
  ' label$157:;
  ' *(struct $7CPU6510**)((uint8*)THIS$1 + 8ll) = TMP$742$1;
  ' label$140:;
-  mov(cpu, new CPU6510(mem))
+  cpu = new CPU6510(mem)
   
  '} 
 end constructor
@@ -742,7 +841,20 @@ destructor C64_T
   ' free( *(void**)THIS$1 );
   delete MEM
   dprint("C64_T~")
+ #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
+  ' label$164:;
+  ' fb_GfxImageDestroy( (void*)BGIMAGE$ );
+  ' ImageDestroy(bgimage)
   
+  ' fb_GfxImageDestroy( (void*)FGIMAGE$ );
+   ImageDestroy(fgimage)
+  
+  ' fb_GfxImageDestroy( (void*)RASTER$ );
+  ' ImageDestroy(raster)
+  
+  ' fb_GfxImageDestroy( (void*)RENDER$ );
+  ' ImageDestroy(render)
+#else
   ' label$164:;
   ' fb_GfxImageDestroy( (void*)BGIMAGE$ );
   ImageDestroy(bgimage)
@@ -755,12 +867,11 @@ destructor C64_T
   
   ' fb_GfxImageDestroy( (void*)RENDER$ );
   ImageDestroy(render)
-  
+#endif 
   ' fb_Sleep( (int32)((((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808104ll & 63ll)) + \
   ' ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808104ll) );
   ' label$162:;
-  sleep peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1110)) _
-    shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))
+  sleep 1
 
   '}
 end destructor
@@ -774,7 +885,7 @@ constructor CPU6510(byval lpMem as MEMORY_T ptr)
   'opcode,name,adrmode,ticks,operand,decoder
   for in range(mov(i,0),255)
     with Opcodes(i)
-      read .code,.nam,.adrmode,.bytes,.ticks,cast(integer,.decode)
+      read .code,.nam,.adrmode,.bytes,.ticks,cast(ulongint,.decode)
     end with
   next
   restore ADDRESS_MODES
@@ -812,7 +923,7 @@ opr CPU6510.CAST as string
             " C:" & F.C)
 end opr
 
-proc CPU6510.Tick(byval flg as double) as double
+proc CPU6510.Tick(byval flg as SYSTEM_TYPE) as SYSTEM_TYPE
   var mov(Ticks,peek(ubyte,@nibbles(&B0000))),mov(msg,chr(peek(ubyte,@nibbles(&B0000))))
   dim as MULTI v
   ' get next opcode from current programm counter
@@ -831,7 +942,8 @@ proc CPU6510.Tick(byval flg as double) as double
                  " Y:" & hex(Y,peek(ubyte,@nibbles(&B0010))) & _
                  " S:" & hex(S,peek(ubyte,@nibbles(&B0010))) & _
                  " P:" & bin(P,peek(ubyte,@nibbles(&B1000))) & chr(peek(ubyte,@nibbles(&B1101)),peek(ubyte,@nibbles(&B1010))))
-    mov(msg &, HEX(pc,peek(ubyte,@nibbles(&B0100))) & " " & hex(code.code,peek(ubyte,@nibbles(&B0010))) & " " & code.nam & " " & stradrmodes(code.adrmode))
+    mov(msg &, HEX(pc,peek(ubyte,@nibbles(&B0100))) & " " & hex(code.code,peek(ubyte,@nibbles(&B0010))) _
+                                                    & " " & code.nam & " " & stradrmodes(code.adrmode))
   end if
   #endif
 
@@ -857,7 +969,8 @@ proc CPU6510.Tick(byval flg as double) as double
       #ifdef _DEBUG
       if flg=Ticks then
         v.ulo=mem->readubyte(pc)
-        dprint(msg & " #$" & hex(v.ulo,peek(ubyte,@nibbles(&B0010))) & chr(peek(ubyte,@nibbles(&B1101)),peek(ubyte,@nibbles(&B1010))))
+        dprint(msg & " #$" & hex(v.ulo,peek(ubyte,@nibbles(&B0010))) & chr(peek(ubyte,@nibbles(&B1101)), _
+                                       peek(ubyte,@nibbles(&B1010))))
         sleep
       endif
       #endif
@@ -867,7 +980,8 @@ proc CPU6510.Tick(byval flg as double) as double
       #ifdef _DEBUG
       if flg=Ticks then
         v.u16=mem->readushort(pc)
-        dprint(msg & "  $" & hex(v.u16,peek(ubyte,@nibbles(&B0100))) & chr(peek(ubyte,@nibbles(&B1101)),peek(ubyte,@nibbles(&B1010))))
+        dprint(msg & "  $" & hex(v.u16,peek(ubyte,@nibbles(&B0100))) & chr(peek(ubyte,@nibbles(&B1101)), _
+                                       peek(ubyte,@nibbles(&B1010))))
         sleep
       endif
       #endif
@@ -877,7 +991,8 @@ proc CPU6510.Tick(byval flg as double) as double
       #ifdef _DEBUG
       if flg=Ticks then
         v.ulo=mem->readubyte(pc)
-        dprint(msg & " $" & hex(v.ulo,peek(ubyte,@nibbles(&B0010))) & chr(peek(ubyte,@nibbles(&B1101)),peek(ubyte,@nibbles(&B1010))))
+        dprint(msg & " $" & hex(v.ulo,peek(ubyte,@nibbles(&B0010))) & chr(peek(ubyte,@nibbles(&B1101)), _
+                                      peek(ubyte,@nibbles(&B1010))))
         sleep
       endif
       #endif
@@ -887,7 +1002,8 @@ proc CPU6510.Tick(byval flg as double) as double
       #ifdef _DEBUG
       if flg=Ticks then
         v.ulo=mem->readubyte(pc)
-        dprint(msg & " $" & hex(v.ulo,peek(ubyte,@nibbles(&B0010))) & ",X" & chr(peek(ubyte,@nibbles(&B1101)),peek(ubyte,@nibbles(&B1010))))
+        dprint(msg & " $" & hex(v.ulo,peek(ubyte,@nibbles(&B0010))) & ",X" & chr(peek(ubyte,@nibbles(&B1101)), _
+                                      peek(ubyte,@nibbles(&B1010))))
         sleep
       endif
       #endif
@@ -897,7 +1013,8 @@ proc CPU6510.Tick(byval flg as double) as double
       #ifdef _DEBUG
       if flg=Ticks then
         v.ulo=mem->readubyte(pc)
-        dprint(msg & " $" & hex(v.ulo,peek(ubyte,@nibbles(&B0010))) & ",Y" & chr(peek(ubyte,@nibbles(&B1101)),peek(ubyte,@nibbles(&B1010))))
+        dprint(msg & " $" & hex(v.ulo,peek(ubyte,@nibbles(&B0010))) & ",Y" & chr(peek(ubyte,@nibbles(&B1101)), _
+                                      peek(ubyte,@nibbles(&B1010))))
         sleep
       endif
       #endif
@@ -907,7 +1024,8 @@ proc CPU6510.Tick(byval flg as double) as double
       #ifdef _DEBUG
       if flg=Ticks then
         v.u16=mem->readushort(pc)
-        dprint(msg & " $" & hex(v.u16,peek(ubyte,@nibbles(&B0010))) & ",X" & chr(peek(ubyte,@nibbles(&B1101)),peek(ubyte,@nibbles(&B1010))))
+        dprint(msg & " $" & hex(v.u16,peek(ubyte,@nibbles(&B0010))) & ",X" & chr(peek(ubyte,@nibbles(&B1101)), _
+                                      peek(ubyte,@nibbles(&B1010))))
         sleep
       endif
       #endif
@@ -917,7 +1035,8 @@ proc CPU6510.Tick(byval flg as double) as double
       #ifdef _DEBUG
       if flg=Ticks then
         v.u16=mem->readushort(pc)
-        dprint(msg & " $" & hex(v.u16,peek(ubyte,@nibbles(&B0010))) & ",Y" & chr(peek(ubyte,@nibbles(&B1101)),peek(ubyte,@nibbles(&B1010))))
+        dprint(msg & " $" & hex(v.u16,peek(ubyte,@nibbles(&B0010))) & ",Y" & chr(peek(ubyte,@nibbles(&B1101)), _
+                                      peek(ubyte,@nibbles(&B1010))))
         sleep
       endif
       #endif
@@ -928,7 +1047,8 @@ proc CPU6510.Tick(byval flg as double) as double
       if mov(flg,Ticks) then
         mov(v.u16,pc)
         mov(v.s16 add,mem->ReadByte(pc) add peek(ubyte,@nibbles(&B0001)))
-        dprint(msg & " $" & hex(v.u16,peek(ubyte,@nibbles(&B0100))) & chr(peek(ubyte,@nibbles(&B1101)),peek(ubyte,@nibbles(&B1010))))
+        dprint(msg & " $" & hex(v.u16,peek(ubyte,@nibbles(&B0100))) & chr(peek(ubyte,@nibbles(&B1101)), _
+                                      peek(ubyte,@nibbles(&B1010))))
         sleep
       endif
       #endif
@@ -938,7 +1058,8 @@ proc CPU6510.Tick(byval flg as double) as double
       #ifdef _DEBUG
       if mov(flg,Ticks) then
         mov(v.u16,mem->ReadUShort(pc))
-        dprint(msg & " ($" & hex(v.u16,peek(ubyte,@nibbles(&B0100))) & ",X)" & chr(peek(ubyte,@nibbles(&B1101)),peek(ubyte,@nibbles(&B1010))))
+        dprint(msg & " ($" & hex(v.u16,peek(ubyte,@nibbles(&B0100))) & ",X)" & chr(peek(ubyte,@nibbles(&B1101)), _
+                                       peek(ubyte,@nibbles(&B1010))))
         sleep
       endif
       #endif
@@ -948,7 +1069,8 @@ proc CPU6510.Tick(byval flg as double) as double
       #ifdef _DEBUG
       if mov(flg,Ticks) then
         mov(v.ulo,mem->ReadUByte(pc))
-        dprint(msg & " ($" & hex(v.ulo,peek(ubyte,@nibbles(&B0100))) & "),Y" & chr(peek(ubyte,@nibbles(&B1101)),peek(ubyte,@nibbles(&B1010))))
+        dprint(msg & " ($" & hex(v.ulo,peek(ubyte,@nibbles(&B0100))) & "),Y" & chr(peek(ubyte,@nibbles(&B1101)), _
+                                       peek(ubyte,@nibbles(&B1010))))
         sleep
       endif
       #endif
@@ -958,7 +1080,8 @@ proc CPU6510.Tick(byval flg as double) as double
       #ifdef _DEBUG
       if mov(flg,Ticks) then
         mov(v.u16,mem->ReadUShort(pc))
-        dprint(msg & " ($" & hex(v.u16,peek(ubyte,@nibbles(&B0100))) & ")" & chr(peek(ubyte,@nibbles(&B1101)),peek(ubyte,@nibbles(&B1010))))
+        dprint(msg & " ($" & hex(v.u16,peek(ubyte,@nibbles(&B0100))) & ")" & chr(peek(ubyte,@nibbles(&B1101)), _
+                                       peek(ubyte,@nibbles(&B1010))))
         sleep
       endif
       #endif
@@ -970,7 +1093,7 @@ end proc
 '
 ' 6510 address modes
 '
-proc CPU6510.ADR_UNK as double
+proc CPU6510.ADR_UNK as SYSTEM_TYPE
   #ifdef _DEBUG
   dprint("! adr unknow !")
   beep:sleep:end
@@ -978,54 +1101,57 @@ proc CPU6510.ADR_UNK as double
   sleep:return peek(ubyte,@nibbles(&B0000))
 end proc
 
-proc CPU6510.ADR_IMM as double ' 1 byte #$xx
+proc CPU6510.ADR_IMM as SYSTEM_TYPE ' 1 byte #$xx
   ' mem(pc)
   mov(proc, PC)
   mov(PC add, peek(ubyte,@nibbles(&B0001)))
 end proc
 
-proc CPU6510.ADR_REL as double  ' 1 byte (rel. branch -128 - +127)
+proc CPU6510.ADR_REL as SYSTEM_TYPE  ' 1 byte (rel. branch -128 - +127)
   mov(proc,PC)
   mov(PC add,peek(ubyte,@nibbles(&B0001)))
 end proc
 
-proc CPU6510.ADR_ABS as double  ' 2 byte $xx:xx
+proc CPU6510.ADR_ABS as SYSTEM_TYPE  ' 2 byte $xx:xx
   ' adr = mem(pc) + mem(pc+1)*256
   mov(proc,mem->ReadUShort(pc))
   mov(pc add,peek(ubyte,@nibbles(&B0010)))
 end proc
 
-proc CPU6510.ADR_ZERO as double ' 1 byte $00:xx
+proc CPU6510.ADR_ZERO as SYSTEM_TYPE ' 1 byte $00:xx
   ' adr = mem(pc) and 255
-  mov(proc,logic_and(mem->ReadUByte(pc),peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
+  mov(proc,logic_and(mem->ReadUByte(pc),peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
+                                    add peek(ubyte,@nibbles(&B1111))))
   mov(pc add,peek(ubyte,@nibbles(&B0001)))
 end proc
 
-proc CPU6510.ADR_ZEROX as double' 1 byte 00:xx,x
+proc CPU6510.ADR_ZEROX as SYSTEM_TYPE' 1 byte 00:xx,x
   ' adr = (mem(pc)+x) and 255
-  mov(proc,logic_and((mem->ReadUByte(pc) add x),peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
+  mov(proc,logic_and((mem->ReadUByte(pc) add x),peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
+                                            add peek(ubyte,@nibbles(&B1111))))
   mov(pc add,peek(ubyte,@nibbles(&B0001)))
 end proc
 
-proc CPU6510.ADR_ZEROY as double' 1 byte 00:xx,y
+proc CPU6510.ADR_ZEROY as SYSTEM_TYPE' 1 byte 00:xx,y
   ' adr = (mem(pc)+y) and 255
-  mov(proc,logic_and((mem->ReadUByte(pc) add y), peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
+  mov(proc,logic_and((mem->ReadUByte(pc) add y), peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
+                                             add peek(ubyte,@nibbles(&B1111))))
   mov(pc add,peek(ubyte,@nibbles(&B0001)))
 end proc
 
-proc CPU6510.ADR_ABSX as double ' 2 byte $xx:xx,x
+proc CPU6510.ADR_ABSX as SYSTEM_TYPE ' 2 byte $xx:xx,x
   ' adr = mem(pc ) + mem(pc+1)*256 + x
   mov(proc,mem->ReadUShort(PC) add X)
   mov(PC add,peek(ubyte,@nibbles(&B0010)))
 end proc
 
-proc CPU6510.ADR_ABSY as double ' 2 byte $xx:xx,y
+proc CPU6510.ADR_ABSY as SYSTEM_TYPE ' 2 byte $xx:xx,y
   ' adr = mem(pc ) + mem(pc+1)*256 + y
   mov(proc,mem->ReadUShort(PC) add Y)
   mov(PC add,peek(ubyte,@nibbles(&B0010)))
 end proc
 
-proc CPU6510.ADR_INDX as double ' 1 byte ($XX,x)
+proc CPU6510.ADR_INDX as SYSTEM_TYPE ' 1 byte ($XX,x)
   ' adr =(mem(pc )+x) and 255
   ' adr = mem(adr) + mem(adr+1)*256
   dim as MULTI v
@@ -1035,7 +1161,7 @@ proc CPU6510.ADR_INDX as double ' 1 byte ($XX,x)
   mov(proc,v.u16)
 end proc
 
-proc CPU6510.ADR_INDY as double ' 1 byte ($XX),y
+proc CPU6510.ADR_INDY as SYSTEM_TYPE ' 1 byte ($XX),y
   ' v.ulo=mem->ReadUByte(pc)
   ' adr = mem(pc ) + mem(pc +1)*256 + y
   mov(v.u16,mem->ReadUshort(mem->ReadUByte(PC)))
@@ -1044,7 +1170,7 @@ proc CPU6510.ADR_INDY as double ' 1 byte ($XX),y
   mov(pc add,peek(ubyte,@nibbles(&B0001)))
 end proc
 
-proc CPU6510.ADR_IND as double ' 2 byte ($xx:xx)
+proc CPU6510.ADR_IND as SYSTEM_TYPE ' 2 byte ($xx:xx)
   ' adr = mem(pc ) + mem(pc +1)*256
   ' pc  = mem(adr) + mem(adr+1)*256
   mov(v.u16,mem->ReadUShort(pc))
@@ -1053,12 +1179,12 @@ proc CPU6510.ADR_IND as double ' 2 byte ($xx:xx)
   mov(proc,v.u16)
 end proc
 
-def CPU6510.Push(byval b as double)
+def CPU6510.Push(byval b as SYSTEM_TYPE)
   mem->WriteUByte(sp,b)
   mov(s subt,peek(ubyte,@nibbles(&B0001)))
 end def
 
-proc CPU6510.PULL as double
+proc CPU6510.PULL as SYSTEM_TYPE
   mov(s add,peek(ubyte,@nibbles(&B0001)))
   mov(proc,mem->ReadUbyte(sp))
 end proc
@@ -1792,7 +1918,7 @@ db "IND"
 #include "basic.bas"
 '/
 '#include "char.bas"
-
+#include once "zpage.bi"
 
 enum FB_KEYS
   fb_bspace =   8
@@ -1920,12 +2046,26 @@ proc InterruptService(byval cpu as CPU6510 ptr) as integer
   end if
   mov(proc,IRQTicks)
 end proc
+
+dim shared as C64_T computer
+dim shared as ulongint ticks,res
+
+def RasterLine(param as any ptr)
+	dim as vector2 fragCoord
+	dim as vector4 fragColor
+    dim as threadscan ptr scanparams = cast(threadscan ptr, param)
+    for in range(mov(x as ulongint,0),scanparams->xend)
+      	fragCoord.x = x
+      	fragCoord.y = scanparams->yend - scanparams->yscan
+      	computer.cpu->mem->mainImage(fragColor, fragCoord)
+        pset fgimage, (x,scanparams->yscan),fragColor
+    next    
+end def
+
 '
 ' main
 '
 def kmain(mb_info as multiboot_info ptr)
-	dim as C64_T computer
-	dim as ulongint ticks,res
 	poke ulongint,@ticks,peek(ubyte,@nibbles(&B0000))
 	poke ulongint,@res,peek(ubyte,@nibbles(&B0000)) 
 	do

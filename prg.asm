@@ -16,5 +16,5 @@ loop:
        cpx #$0c
        bne loop
        rts
-message: 
+message:
        .byte $C8, $C5, $CC, $CC, $CF, $20, $D7, $CF, $D2, $CC, $C4, $21

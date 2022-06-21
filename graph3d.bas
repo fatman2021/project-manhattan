@@ -1,4 +1,22 @@
-    'Compile, execute GLSL/OS, keyword database($C0A1/49313)
+ ' fg_color=$C0C9(49353)
+' alpha   =$C005(49157)
+' red     =$C002(49154)
+' green   =$C003(49155)
+' blue    =$C003(49156)                	     
+' r0      =$C9D1(49361)
+' r1      =$C0D2(49362)
+' r2      =$C0D3(49363)
+' r3      =$C0D4(49364)
+' r4      =$C0D5(49365) r
+' r5      =$C0D6(49366) g
+' r6      =$C0D7(49367) b
+' r7      =$COD8(49368) a
+' r8      =$CDD9(49369) x0
+' r9      =$CDDA(49370) y0
+' r10     =$CDDB(49371) x1
+' r11     =$CDDC(49372) y1   
+
+    ' Compile, execute GLSL/OS, keyword database($C0A1/49313)
 	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001))
          select case as const cast(ulongint, v)	
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
@@ -14,10 +32,10 @@
 					 dim as boolean bLinearNearest
 					 dim as boolean bMipmap
 					 dim as boolean bRepeat
-'                              x0
-					 mov(mem64(49355),1920) ' Set screen width to 720
-'                              y0					   
-					 mov(mem64(49356),1080) ' Set screen height to 576
+'                              r8
+					 mov(mem64(49369),1920) ' Set screen width to 720
+'                              r9					   
+					 mov(mem64(49370),1080) ' Set screen height to 576
 '                    Call glScreen($C0A0/49312)
 					 poke64(49312,0)
 
@@ -176,7 +194,7 @@
 	            case 001 ' opens POV-Ray device
                      open "tmp.pov" for output as #1
                      print #1, "// Start of file"
-                case 002 ' closes device
+                case 002 ' closes POV-Ray device
                      print #1, "// End of file"
                      close #1
                 case 003 ' Render                    
@@ -185,26 +203,26 @@
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
                      shell "povray -d -H600 -W800 tmp.pov"
 	                 shell "convert tmp.png -w --o tmp.bmp"
-'                                                           r0	                 
-	                 shell "cp tmp.bmp ./vram/"+str(mem64(49361))+".bmp"
+'                                                           r8                 
+	                 shell "cp tmp.bmp ./vram/"+str(mem64(49369))+".bmp"
 	                 shell "rm tmp.pov tmp.png": cls
-'                                              r0	                 
-	                 bload "./vram/"+str(mem64(49361))+".bmp",fgimage
+'                                              r8	                 
+	                 bload "./vram/"+str(mem64(49369))+".bmp",fgimage
 #elseif defined(__FB_PCOS__)
                      shell "povray -d -H600 -W800 tmp.pov"
 	                 shell "pictview tmp.tga -w --o tmp.bmp"
-'                                                           r0	                 
-	                 shell "copy tmp.bmp .\vram\"+str(mem64(49361))+".bmp"
+'                                                           r8                 
+	                 shell "copy tmp.bmp .\vram\"+str(mem64(49369))+".bmp"
 	                 shell "del tmp.pov tmp.tga": cls
-'                                              r0	                 
-	                 bload ".\vram\"+str(mem64(49361))+".bmp",fgimage
+'                                              r8	                 
+	                 bload ".\vram\"+str(mem64(49369))+".bmp",fgimage
 #endif
 	                 put fgimage,(0,0), render, pset
 	            case 004 ' Sets offset in video memory
-                     mem64(sys_offset+&HD1)=v' r0 = v
+                     mem64(49369)=v' r8 = v
                 case 005 ' Anamation player
-'                                               r1              r2                
-                     for frame as ubyte = mem64(49362) to mem64(49363)
+'                                               r8              r9                
+                     for frame as ubyte = mem64(49369) to mem64(49370)
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
@@ -214,9 +232,9 @@
 #endif 	                 	                   	                 
  	                 sleep(10,1): put fgimage,(0,0), render, pset 
                      next frame
-                case 006 ' CORE - 1
-'                                                     r0				
-				     select case as const cast(ulongint, mem64(49361))  
+                case 006 ' Keyword Database - 1
+'                                                              r10				
+				     select case as const cast(ulongint, mem64(49371))  
 						case 000: print #1, "a";
 'POVRAY: aa_level specifies the anti-aliasing recursion depth.						
 						case 001: print #1, "aa_level";
@@ -697,9 +715,9 @@
 'Microsoft BASIC:CVS converts a 32-bit integer or 4-byte string to a SINGLE percision variable.					
 						case 255: print #1, "cvs";
 					 end select
-				case 007 ' CORE - 2
-'                                                     r0				
-				     select case as const cast(ulongint, mem64(49361))  
+				case 007 ' Keyword Database - 2
+'                                                              r10				
+				     select case as const cast(ulongint, mem64(49371))  
 						case 000: print #1, "cylinder";
 						case 001: print #1, "cylindrical";
 						case 002: print #1, "d";
@@ -1177,49 +1195,49 @@
 						case 254: print #1, "go";
 						case 255: print #1, "goback";						     
 					 end select       
-				case 009d ' Numeric Processing Unit
-'                                                     r0				
-				     select case as const cast(ulongint, mem64(49361))  
-					  case 0: '            r1        
-					   print #1, str(mem64(49362));
-					  case 1: '            r1
-					   print #1, str(mem64(49362))
-					  case 2: '              r1
-					   print #1, str(0-mem64(49362));
-					  case 3: '              r1
-					   print #1, str(0-mem64(49362))
+				case 009 ' Numeric Processing Unit
+'                                                              r10				
+				     select case as const cast(ulongint, mem64(49371))  
+					  case 0: '            r10        
+					   print #1, str(mem64(49371));
+					  case 1: '            r10
+					   print #1, str(mem64(49371))
+					  case 2: '              r10
+					   print #1, str(0-mem64(49371));
+					  case 3: '              r10
+					   print #1, str(0-mem64(49371))
 					  case 4: '      CR           LF
 					   print #1, chr(13) add chr(10)
-                      case 5: '        r1
-                       print #1, str(mem64(49362) * .1);
-                      case 6:
-                       print #1, str(mem64(49362) * .1)                       
-                      case 7: '        r1 
-                       print #1, str(mem64(49362) * .01);
-                      case 8: '        r1
-                       print #1, str(mem64(49362) * .01)                      
-                      case 9: '        r1 
-                       print #1, str(mem64(49362) * .001);
-                      case 10: '       r1
-                       print #1, str(mem64(49362) * .001)                      					       
+                      case 5: '            r10
+                       print #1, str(mem64(49371) * .1);
+                      case 6: '            r10
+                       print #1, str(mem64(49371) * .1)                       
+                      case 7: '            r10 
+                       print #1, str(mem64(49371) * .01);
+                      case 8: '            r10
+                       print #1, str(mem64(49371) * .01)                      
+                      case 9: '            r10 
+                       print #1, str(mem64(49371) * .001);
+                      case 10: '           r10
+                       print #1, str(mem64(49371) * .001)                      					       
 					 end select
-				case 010d ' ASCII Table
-				'                  r1
-				     msg=chr(mem64(49362)): print #1, msg;: msg=""
-				case 011d ' ASCII Table
-				'                  r1
-				     msg=chr(mem64(49362)): print #1, msg: msg=""
-				case 012d '        r1
-				     msg=str(mem64(49362)): print #1, msg;: msg=""
-				case 013d '        r1
-				     msg=str(mem64(49362)): print #1, msg: msg=""
-				case 014d '        r1
-				     msg=hex(mem64(49362)): print #1, msg;: msg=""
-				case 015d '        r1
-				     msg=hex(mem64(49362)): print #1, msg: msg=""        
-				case 016d ' Header selector
-'                                                     r0				
-				     select case as const cast(ulongint, mem64(49361))       
+				case 010 ' ASCII Table
+				'                  r10
+				     msg=chr(mem64(49371)): print #1, msg;: msg=""
+				case 011 ' ASCII Table
+				'                  r10
+				     msg=chr(mem64(49371)): print #1, msg: msg=""
+				case 012 '         r10
+				     msg=str(mem64(49371)): print #1, msg;: msg=""
+				case 013 '         r10
+				     msg=str(mem64(49371)): print #1, msg: msg=""
+				case 014  '        r10
+				     msg=hex(mem64(49371)): print #1, msg;: msg=""
+				case 015 '         r10
+				     msg=hex(mem64(49371)): print #1, msg: msg=""        
+				case 016 ' POV-ray Header selector
+'                                                              r10				
+				     select case as const cast(ulongint, mem64(49371))       
 					  case 0 : print #1, "#include " + chr(13) + lcase("CHARS.INC") + chr(13)
 					  case 1 : print #1, "#include " + chr(13) + lcase("COLORS.INC") + chr(13)
 					  case 2 : print #1, "#include " + chr(13) + lcase("CONSTS.INC") + chr(13)
@@ -1244,9 +1262,9 @@
 					  case 21: print #1, "#include " + chr(13) + lcase("WOODMAPS.INC") + chr(13)
 					  case 22: print #1, "#include " + chr(13) + lcase("WOODS.INC") + chr(13)
 				     end select
-				case 017 ' CORE - 3
-'                                                     r0				
-				     select case as const cast(ulongint, mem64(49361))
+				case 017 ' Keyword Database- 3
+'                                                              r10				
+				     select case as const cast(ulongint, mem64(49371))
 'Microsoft BASIC: GOSUB transfers control to a specified line number or label and stores the location of
 '                 the GOSUB statement for eventual return from the subroutine.			            				
 						case 000: print #1, "gosub";
@@ -1674,9 +1692,9 @@
 'GLSL: mat2x2 is the same as mat2						
 						case 255: print #1, "mat2x2";
 				     end select     				      
-				case 018 ' CORE - 4
-'                                                     r0				
-				     select case as const cast(ulongint, mem64(49361))  
+				case 018 ' Keyword Database - 4
+'                                                              r10				
+				     select case as const cast(ulongint, mem64(49371))  
 'GLSL: mat2x3 is a floating point matrix with 2 columns and 3 rows.				        								      
 						case 000: print #1, "mat2x3";
 'GLSL: mat2x4 is a floating point matrix with 2 columns and 4 rows.						
@@ -2119,7 +2137,7 @@
 '        a positive numeric expression.						
 						case 255: print #1, "rand";				     
 					 end select
-				case 019 ' CORE - 5
+				case 019 ' Keyword Database - 5
 '                                                     r0				
 				     select case cast(ulongint, mem64(49361))
 'Microsoft BASIC: RANDOM 1) specifies a file or device to be opened for RANDOM access mode.
@@ -2555,7 +2573,7 @@
 						case 254: print #1, "texture_list";
 						case 255: print #1, "texture_map";
 					 end select                      
-				case 020 ' CORE - 6
+				case 020 ' Keyword Database - 6
 '                                                              r0				
 				     select case as const cast(ulongint, mem64(49361))                       
 						case 000: print #1, "tga";
@@ -2879,7 +2897,7 @@
 'GNU COBOL: ZEROS pads with zeros						
 						case 161: print #1, "zeros";
 				     end select 
-				case 021 ' CORE - 7
+				case 021 ' Keyword Database - 7
 '                                                              r0				
 				     select case as const cast(ulongint, mem64(49361))
 				        case 000: print #1, "buffer";
@@ -3423,9 +3441,9 @@
 'Microsoft BASIC: HIWORD retruns the second 16-bit word of the operand.
                        case 255: print #1, "hiword";
 				     end select
-				case 022 ' CORE - 7
-'                                                              r0				
-				     select case as const cast(ulongint, mem64(49361))
+				case 022 ' Keyword Database - 7
+'                                                              r10				
+				     select case as const cast(ulongint, mem64(49371))
 'Microsoft BASIC: IMAGECONVERTROW converts a row of image data into another color depth.
                        case 000: print #1, "imageconvertrow";
 'Microsoft BASIC: IMAGECREATE allocates and initializes storage for an image.

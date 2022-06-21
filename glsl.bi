@@ -9,9 +9,6 @@ extern as any ptr image
 extern as string strCode
 extern as string filename
 
-using fb
-
-
 #ifndef NULL
 #define NULL cast(any ptr,0)
 #endif

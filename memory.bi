@@ -14,18 +14,18 @@ constructor MEMORY_T
 
   'Set default system offset to $C000(49152)
   ' SYS_OFFSET$ = (double)((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll));
-  poke double,@sys_offset, peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100))
+  poke SYSTEM_TYPE,@sys_offset, peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100))
 
   ' initialize zero page and the stack
   ' uint16 B$1;
   ' B$1 = *(uint16*)4808096ll;
   ' uint16 INDEX$1;
   ' INDEX$1 = *(uint16*)4808096ll;
-  'var mov(b,                                                             peek(ushort,@nibbles(&B0000)))
-   'open "address.txt" for output as #1
+  'var mov(b,peek(ushort,@nibbles(&B0000)))
+  'open "address.txt" for output as #1
   'print #1,"&H"+hex(@index)
   'close #1
-
+  restore ZERO_PAGE
 L1:
   ' label$167:;
 
@@ -33,17 +33,18 @@ L1:
   read c
 
   ' *(double*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) = (double)*(int64*)4676760ll;
-  poke double,@mem64(peek(ulongint,@i)),peek(ulongint,@c)
+  poke SYSTEM_TYPE,@mem64(peek(ulongint,@i)),peek(ulongint,@c)
 
   ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
-  poke integer,@i,peek(ulongint,@i) add peek(ubyte,@nibbles(&B0001))
+  poke ulongint,@i,peek(ulongint,@i) add peek(ubyte,@nibbles(&B0001))
 
   ' if( *(int64*)4808136ll > ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808104ll & 63ll)) \
   '   + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) \
   '   goto label$169;
   ' goto label$167;
   cmp peek(ulongint,@i) ls peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L1
+                       add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1111)) jmp L1
 
   ' label$169:;
   ' *(int64*)4808136ll = (int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808104ll & 63ll);
@@ -54,8 +55,8 @@ L2:
   
   ' *(double*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) = (double)(((int64)*(uint8*)4808111ll \
   '        << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll);
-  poke double,@mem64(peek(ulongint,@i)),peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B1111))
+  poke SYSTEM_TYPE,@mem64(peek(ulongint,@i)),peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
+                      add peek(ubyte,@nibbles(&B1111))
 
   ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
   poke ulongint,@i,peek(ulongint,@i ) add peek(ubyte,@nibbles(&B0001))
@@ -78,14 +79,14 @@ L3:
   ' *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134750088ll) = \
   '    __builtin_sin( (double)((((int64)__builtin_nearbyint( ((double)*(int64*)4808136ll * 0x1.921FB54442D18p+1) \
   '    / (double)(int64)*(uint8*)4808107ll )) << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) );
-  poke double,@SINTable(peek(ulongint,@i)),SIN(peek(ulongint,@i) mul M_PI ndiv peek(ubyte,@nibbles(&B1011)) _
-       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)))
+  poke float,@SINTable(peek(ulongint,@i)),SIN(peek(ulongint,@i) mul M_PI ndiv peek(ubyte,@nibbles(&B1011)) _
+                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100)))
          
   ' *(double*)((uint8*)((uint8*)THIS$1 + ((int64)INDEX$1 << (3ll & 63ll))) + 134752968ll) = \
   '    __builtin_cos( (double)((((int64)__builtin_nearbyint( ((double)(int64)INDEX$1 * 0x1.921FB54442D18p+1) \
   '   / (double)(int64)*(uint8*)4808107ll )) << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) );
-  poke double,@COSTable(peek(ulongint,@i)),COS(peek(ulongint,@i) mul M_PI ndiv peek(ubyte,@nibbles(&B1011)) _
-       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100))) 
+  poke float,@COSTable(peek(ulongint,@i)),COS(peek(ulongint,@i) mul M_PI ndiv peek(ubyte,@nibbles(&B1011)) _
+                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100))) 
        
   ' *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134752968ll) = \
   '   __builtin_cos( (double)((((int64)__builtin_nearbyint( ((double)*(int64*)4808136ll * 0x1.921FB54442D18p+1) \
@@ -98,7 +99,7 @@ L3:
   '  goto label$175;
   ' goto label$173;
   ' locate 2,1:print SINTable(i),COSTable(i)
-  cmp peek(ulongint,@i) ls peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+  cmp     peek(ulongint,@i) ls             peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
       add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L3
 
   ' Set text color
@@ -143,9 +144,8 @@ L3:
   '   + ((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808102ll & 63ll))) + ((int64)*(uint8*)4808108ll \
   '   << ((int64)*(uint8*)4808098ll & 63ll))), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll \
   '   & 63ll)) + (int64)*(uint8*)4808111ll) );
-  ' Border Color(Alpha)=($C130/49456)
-  poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100)) _
-     shl peek(ubyte,@nibbles(&B0110)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0010)),_
+  ' Border Color(Alpha)=($C132/49458)
+  poke64(49458,_
          peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))) 
 
   ' Address 648 ($288) holds a "pointer" (or more precisely, half a pointer) that tells 
@@ -163,7 +163,7 @@ L3:
   '   + ((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808104ll), \
   '   (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
   poke64(peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))),peek(ubyte,@nibbles(&B0001)) _
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))),   peek(ubyte,@nibbles(&B0001)) _
      shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))
      
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
@@ -171,41 +171,44 @@ L3:
   '   (double)*(uint8*)4808096ll );
 '        font_f(Flip font)=($C0E7/49383) 
   poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
-     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111))),peek(ubyte,@nibbles(&B0000))
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111))),   peek(ubyte,@nibbles(&B0000))
  
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808104ll), \
   '   (double)*(uint8*)4808098ll );
 '        font_o(Font offset)=($C0E8/49384)    
   poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
-     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))),peek(ubyte,@nibbles(&B0010))
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))),   peek(ubyte,@nibbles(&B0010))
      
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll), \
   '   (double)*(uint8*)4808103ll );
 '        font_w(Font width)=($C0E9/49385)
   poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
-     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(ubyte,@nibbles(&B0111))
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),   peek(ubyte,@nibbles(&B0111))
       
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808106ll), 
   '   (double)*(uint8*)4808103ll );
 '        font_h(Font height)=($C0EA/49386)
   poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
-     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))),peek(ubyte,@nibbles(&B0111))
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))),   peek(ubyte,@nibbles(&B0111))
      
   ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
-  poke integer,@i,peek(ubyte,@nibbles(&B0000))
+  poke ulongint,@i,peek(ubyte,@nibbles(&B0000))
   
   ' uint8 TMP$1;
   ' __builtin_memset( &TMP$1, 0, 1ll );
   dim as ubyte tmp
 
   ' init all ROM's
+#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)  
+   open "ROM.BIN" for binary as peek(ubyte,@nibbles(&B0001)) 
   ' FBSTRING* vr$262 = fb_StrAllocTempDescZEx( (uint8*)"64c.251913-01.bin", 17ll );
   ' fb_FileOpen( (FBSTRING*)vr$246, 0u, 0u, 0u, (int32)*(uint8*)4808097ll, 0 );
   ' open "64c.251913-01.bin" for binary as peek(ubyte,@nibbles(&B0001))
   ' open "complete.318023-02.bin" for binary as peek(ubyte,@nibbles(&B0001))
+#else
   open _
       chr(peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011))) _ 'c
   add chr(peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))) _ 'o
@@ -229,16 +232,18 @@ L3:
   add chr(peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010))) _ 'b
   add chr(peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))) _ 'i
   add chr(peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110))) _ 'n
-  for binary as peek(ubyte,@nibbles(&B0001))  
+  for binary as peek(ubyte,@nibbles(&B0001))
+#endif
   ' open "basic_generic.rom" for binary as peek(ubyte,@nibbles(&B0001))
   ' open "basichi" for binary as peek(ubyte,@nibbles(&B0001))
+
   
 L4:
   ' label$176:;
   ' fb_FileGetLarge( 1, 0ll, (void*)&TMP$1, 1ull );
   
   ' *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134348800ll) = (double)TMP$1;  
-  get #1,,tmp: poke double,@basic(peek(ulongint,@i)),peek(ubyte,@tmp)
+  get #1,,tmp: poke SYSTEM_TYPE,@basic(peek(ulongint,@i)),peek(ubyte,@tmp)
   
   ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
   poke ulongint,@i,peek(ulongint,@i) add peek(ubyte,@nibbles(&B0001))
@@ -247,7 +252,7 @@ L4:
   '    + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll \
   '    << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$178;
   ' goto label$176;
-  cmp peek(ulongint,@i) ls peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1100)) _
+  cmp peek(ulongint,@i) ls                 peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1100)) _
       add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1111)) _
       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L4
       
@@ -266,7 +271,7 @@ L5:
   ' label$179:;
   ' fb_FileGetLarge( 1, 0ll, (void*)&TMP$1, 1ull );
   ' *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134217728ll) = (double)TMP$1; 
-  get #1,,tmp: poke double,@kernal(peek(ulongint,@i)),peek(ubyte,@tmp)
+  get #1,,tmp: poke SYSTEM_TYPE,@kernal(peek(ulongint,@i)),peek(ubyte,@tmp)
   
   ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
   poke ulongint,@i,peek(ulongint,@i) add peek(ubyte,@nibbles(&B0001)) 
@@ -275,7 +280,7 @@ L5:
   '   + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$181;
   ' goto label$179;
-  cmp peek(ulongint,@i) ls peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1100)) _
+  cmp peek(ulongint,@i) ls                 peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1100)) _
       add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1111)) _
       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L5
 
@@ -285,7 +290,7 @@ L5:
   close peek(ubyte,@nibbles(&B0001))  
 
 '#include once "basic.bi"
-#include once "kernal.bi"
+'#include once "kernal.bi"
 
  /' 
   screenres 1980,1080,,32
@@ -337,7 +342,7 @@ L6:
   
   ' fb_FileGetLarge( 1, 0ll, (void*)&TMP$1, 1ull );
   ' *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134479872ll) = (double)TMP$1;
-  get #1,,tmp: poke double,@char(peek(ulongint,@i)),peek(ubyte,@tmp)
+  get #1,,tmp: poke SYSTEM_TYPE,@char(peek(ulongint,@i)),peek(ubyte,@tmp)
   
   ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
   poke ulongint,@i,peek(ulongint,@i) add peek(ubyte,@nibbles(&B0001))
@@ -346,7 +351,7 @@ L6:
   '    + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll \
   '    << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$184;
   ' goto label$182;
-  cmp peek(ulongint,@i) ls peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1100)) _
+  cmp peek(ulongint,@i) ls                 peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1100)) _
       add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1111)) _
       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L6
  
@@ -354,6 +359,14 @@ L6:
   'open "./chargen/2.c64" for binary as #1
  
   ' label$184:;
+
+#if defined(__FB_DOS__)
+  for times as ulongint = 0 to 110
+#elseif defined(__FB_WIN32__) or defined(__WIN64__)  
+  for times as ulongint = 0 to 118
+#else
+  for times as ulongint = 0 to 506
+#endif
 
   ' fb_FileSeek( (int32)*(uint8*)4808097ll, (int32)*(uint8*)4808096ll );
   seek peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000))
@@ -365,7 +378,7 @@ L7:
   ' label$185:;
   ' fb_FileGetLarge( 1, 0ll, (void*)&TMP$1, 1ull );
   ' *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134479872ll) = (double)TMP$1;
-  get #1,,tmp: poke double,@char(peek(ulongint,@i)),peek(ubyte,@tmp)
+  get #1,,tmp: poke SYSTEM_TYPE,@char(peek(ulongint,@i)),peek(ubyte,@tmp)
 
   ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
   poke ulongint,@i,peek(ulongint,@i) add peek(ubyte,@nibbles(&B0001))
@@ -374,12 +387,12 @@ L7:
   '    + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll \
   '    << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) ) goto label$187;
   ' goto label$185;
-  cmp peek(ulongint,@i) ls peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B1100)) _
+  cmp peek(ulongint,@i) ls                 peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B1100)) _
       add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1111)) _
       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) jmp L7
 
   ' label$187:;
-
+  next times
   ' fb_FileClose( (int32)*(uint8*)4808097ll );
   close peek(ubyte,@nibbles(&B0001))
 /'
@@ -443,12 +456,12 @@ L7:
   '      $FFFC(65532)  
   poke64(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
-     add peek(ubyte,@nibbles(&B1100)),peek(ubyte,@nibbles(&B0000)))
+     add peek(ubyte,@nibbles(&B1100)),    peek(ubyte,@nibbles(&B0000)))
 
   '      $FFFD(65533)
   poke64(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
-     add peek(ubyte,@nibbles(&B1100)),peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100))) 
+     add peek(ubyte,@nibbles(&B1100)),    peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100))) 
      
 #endif 
  
@@ -458,9 +471,9 @@ L7:
   '             << (8ll & 63ll))) | (uint64)*(uint8*)4808096ll) | ((uint64)(((int64)*(uint8*)4808111ll \
   '             << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) << (24ll & 63ll))), \
   '             0u, (FBSTRING*)vr$396, 0, 1073741828 );
-  paint(peek(ubyte,@nibbles(&B0000)), peek(ubyte,@nibbles(&B0000))),rgba(peek(ubyte,@nibbles(&B0000)), _
-        peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B1111)) _
-        shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
+  paint(peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0000))),rgba(peek(ubyte,@nibbles(&B0000)), _
+        peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0000)),      peek(ubyte,@nibbles(&B1111)) _
+        shl peek(ubyte,@nibbles(&B0100))                            add peek(ubyte,@nibbles(&B1111)))
 
   'TEST PROGRAMS 1000
   /'
@@ -490,7 +503,7 @@ L7:
   '      $7E72(32370)
   poke64(peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
-     add peek(ubyte,@nibbles(&B0010)), peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) _
+     add peek(ubyte,@nibbles(&B0010)),    peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) _
      add peek(ubyte,@nibbles(&B1001)))
      
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
@@ -499,7 +512,7 @@ L7:
   '      $7E73(32371)   
   poke64(peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
-     add peek(ubyte,@nibbles(&B0011)),peek(ubyte,@nibbles(&B0000)))
+     add peek(ubyte,@nibbles(&B0011)),    peek(ubyte,@nibbles(&B0000)))
 
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll \
@@ -508,7 +521,7 @@ L7:
   '      $7E74(32372)                        
   poke64(peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
-     add peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) _
+     add peek(ubyte,@nibbles(&B0100)),    peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) _
      add peek(ubyte,@nibbles(&B1101)))
  
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
@@ -517,7 +530,7 @@ L7:
   '      $7E75(32373) 
   poke64(peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
-     add peek(ubyte,@nibbles(&B0101)),peek(ubyte,@nibbles(&B0000)))
+     add peek(ubyte,@nibbles(&B0101)),    peek(ubyte,@nibbles(&B0000)))
  
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll \
@@ -526,7 +539,7 @@ L7:
   '      $7E76(32374)
   poke64(peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
-     add peek(ubyte,@nibbles(&B0110)),peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)))
+     add peek(ubyte,@nibbles(&B0110)),    peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)))
 
   ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll \
@@ -535,7 +548,7 @@ L7:
   '      $7E77(32375)
   poke64(peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
-     add peek(ubyte,@nibbles(&B0111)),peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)))                                                        
+     add peek(ubyte,@nibbles(&B0111)),    peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)))                                                        
 
   ' FBSTRING MEM$1;
   ' FBSTRING* vr$521 = fb_CHR( 1, (int64)*(uint8*)4808096ll );
@@ -565,11 +578,12 @@ L8:
   ' FBSTRING* vr$506 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll );
   ' uint32 vr$507 = fb_ASC( (FBSTRING*)vr$506, 1ll );
   ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$507;
-  '                    $466(1126)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-   add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) _
-   add peek(ulongint,@i)), asc(mid(mem, peek(ulongint,@i), peek(ubyte,@nibbles(&B1111)) _
-   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
+  '                        $466(1126)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B0110)) add peek(ulongint,@i)), _
+              asc(mid(mem, peek(ulongint,@i),               peek(ubyte,@nibbles(&B1111)) _
+                       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
 
   ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll /
   '    << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) /
@@ -581,15 +595,20 @@ L8:
   '    + 134217728ll) < (double)((int64)*(uint8*)4808100ll /
   '    << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$190;
   ' goto label$191;
-  '                                 $466(1126)
-  cmp logic_and(peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-   add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110)) _
-   add peek(ulongint,@i))) gt peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add _
-   _ '                                               $466(1126)
-   peek(ubyte,@nibbles(&B1111)), peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) _
-   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) _
-   add peek(ubyte,@nibbles(&B0110)) add peek(ulongint,@i))) lt peek(ubyte,@nibbles(&B0100)) _
-   shl peek(ubyte,@nibbles(&B0100))) jmp L9
+  '                                           $466(1126)
+  cmp logic_and(peek(SYSTEM_TYPE,@kernal(                                                         _
+                peek(ubyte,@nibbles(&B0100))                     shl peek(ubyte,@nibbles(&B1000)) _
+            add peek(ubyte,@nibbles(&B0110))                     shl peek(ubyte,@nibbles(&B0100)) _
+            add peek(ubyte,@nibbles(&B0110))                     add peek(ulongint,@i))) gt       _
+                peek(ubyte,@nibbles(&B0001))                     shl peek(ubyte,@nibbles(&B0100)) _
+   _ '                                        $466(1126)
+            add peek(ubyte,@nibbles(&B1111)),                                                     _
+                peek(SYSTEM_TYPE,@kernal(                                                              _
+                peek(ubyte,@nibbles(&B0100))                                  _
+            shl peek(ubyte,@nibbles(&B1000))                     add peek(ubyte,@nibbles(&B0110)) _
+            shl peek(ubyte,@nibbles(&B0100))                     add peek(ubyte,@nibbles(&B0110)) _
+            add peek(ulongint,@i)))                               lt peek(ubyte,@nibbles(&B0100)) _
+            shl peek(ubyte,@nibbles(&B0100))) jmp L9
 
   ' label$190:;
   ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
@@ -614,13 +633,15 @@ L9:
   '   + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll))) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) \
   '   + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
-  '                    $466(1126)
-  poke double, @kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-   add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ulongint,@i)), _
-   _'                  $466(1126)
-   peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-   add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ulongint,@i)) _
-   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)))
+  '                        $466(1126)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ulongint,@i)),                                           _
+   _'                       $466(1126)
+  peek(SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ulongint,@i))           add peek(ubyte,@nibbles(&B0010)) _
+                       shl peek(ubyte,@nibbles(&B0100)))
    
   ' goto label$188;
   jmp L8
@@ -645,10 +666,11 @@ L11:
   ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) \
   '   + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) \
   '   + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$594;
-  '                    $46C(1132)
-  poke double, @kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-       add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) _
-       add peek(ulongint,@i)),asc(mid(mem,peek(ulongint,@i),peek(ubyte,@nibbles(&B0001))))
+  '                        $46C(1132)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1100)) add peek(ulongint,@i)),          _
+               asc(mid(mem,peek(ulongint,@i),               peek(ubyte,@nibbles(&B0001))))
        
   ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll /
   '    << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) \
@@ -661,15 +683,19 @@ L11:
   
   ' goto label$198;
   
-  '                                 $46C(1132)
-  cmp logic_and(peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-     add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) _
-     add peek(ulongint,@i))) gt peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) _
-     _'                                                   $46C(1132)
-     add peek(ubyte,@nibbles(&B1111)),peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) _
-     shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) _
-     add peek(ubyte,@nibbles(&B1100)) add peek(ulongint,@i))) lt peek(ubyte,@nibbles(&B0100)) _
-     shl peek(ubyte,@nibbles(&B0100))) jmp L12
+  '                                          $46C(1132)
+  cmp logic_and(peek(SYSTEM_TYPE,@kernal(_
+                peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+            add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) _
+            add peek(ubyte,@nibbles(&B1100)) add peek(ulongint,@i)))          _
+             gt peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) _
+     _'                                      $46C(1132)
+            add peek(ubyte,@nibbles(&B1111)),                                        _
+                peek(SYSTEM_TYPE,@kernal(                    _
+                peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+            add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) _
+            add peek(ubyte,@nibbles(&B1100)) add peek(ulongint,@i)))          _
+             lt peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100))) jmp L12
       	   
   ' label$197:;
   
@@ -695,13 +721,14 @@ L12:
   '   + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) + *(int64*)4808136ll) << (3ll & 63ll))) \
   '   + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
-  '                   $46C(1132) 
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+  '                        $46C(1132) 
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
        add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) _
-       _ '                                        $46C(1132)
-       add peek(ulongint,@i)),peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+       add peek(ulongint,@i)),_
+      _'                                    $46C(1132)
+           peek(SYSTEM_TYPE,@kernal(        peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
        add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) _
-       add peek(ulongint,@i)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)))
+       add peek(ulongint,@i))           add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)))
        
   ' goto label$195;
   jmp L11
@@ -712,27 +739,29 @@ L13:
   '   + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808109ll) \
   '   << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808098ll << \
   '   ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll);
-    '                   $47D(1149)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-       add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
-       add peek(ubyte,@nibbles(&B1101))),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-       add peek(ubyte,@nibbles(&B1010))
+    '                       $47D(1149)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1101))),   peek(ubyte,@nibbles(&B0010)) _
+                       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))
        
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) \
   '   + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) \
   '   << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll));     
-  '                   $47E(1150)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-       add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
-       add peek(ubyte,@nibbles(&B1110))),peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))
+  '                        $47E(1150)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1110))),   peek(ubyte,@nibbles(&B0001)) _
+                       shl peek(ubyte,@nibbles(&B0100))
  
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '   + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) /
   '   << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));
-  '                   $47F(1151)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-       add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
-       add peek(ubyte,@nibbles(&B1111))),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))
+  '                        $47F(1151)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1111))),   peek(ubyte,@nibbles(&B0010)) _
+                       shl peek(ubyte,@nibbles(&B0100))
 
   ' fb_StrAssign( (void*)&MEM$1, -1ll, (void*)"MICROSOFT", 10ll, 0 );
   mov(mem, chr(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101))) _ ' M 
@@ -754,10 +783,11 @@ L14:
   ' FBSTRING* vr$730 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, (int64)*(uint8*)4808097ll );
   ' uint32 vr$731 = fb_ASC( (FBSTRING*)vr$730, 1ll );
   ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$731;
-  '                   $47F(1151)  
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) _
-      add peek(ulongint,@i)), asc(mid(mem, peek(ulongint,@i),peek(ubyte,@nibbles(&B0001))))
+  '                        $47F(1151)  
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1111)) add peek(ulongint,@i)),          _ 
+              asc(mid(mem, peek(ulongint,@i),               peek(ubyte,@nibbles(&B0001))))
   
   ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll /
   '    << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808103ll /
@@ -770,15 +800,15 @@ L14:
   '    << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll /
   '    << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$204;
   ' goto label$205;
-  '                                 $47F(1151)
-  cmp logic_and(peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) _
-      add peek(ulongint,@i))) gt peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) _
-      _'                                                    $47F(1151)
-      add peek(ubyte,@nibbles(&B1111)), peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) _
-      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0111)) shl  peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B1111)) add peek(ulongint,@i))) lt peek(ubyte,@nibbles(&B0100)) _
-      shl peek(ubyte,@nibbles(&B0100))) jmp L15
+  '                                              $47F(1151)
+  cmp logic_and(peek(SYSTEM_TYPE,        @kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+            add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) _
+            add peek(ulongint,@i)))           gt peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) _
+            _'                                                                    $47F(1151)
+            add peek(ubyte,@nibbles(&B1111)),    peek(SYSTEM_TYPE,@kernal(        peek(ubyte,@nibbles(&B0100)) _
+            shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
+            add peek(ubyte,@nibbles(&B1111)) add peek(ulongint,@i)))           lt peek(ubyte,@nibbles(&B0100)) _
+            shl peek(ubyte,@nibbles(&B0100))) jmp L15
       
   ' label$204:;
   ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
@@ -804,14 +834,16 @@ L15:
   '   << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) + *(int64*)4808136ll) /
   '   << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)) /
   '   << (3ll & 63ll)));
-  '                   $47F(1151)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-       add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) _
-       add peek(ulongint,@i)), peek(double,_
-       _ '     $47F(1151)
-       @kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0111)) _
-       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)) add peek(ulongint,@i)) _
-       add peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)))
+  '                        $47F(1151)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1111)) add peek(ulongint,@i)),          _
+                           peek(SYSTEM_TYPE,                                             _
+       _ '                      $47F(1151)
+       @kernal(            peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1111)) add peek(ulongint,@i)) _
+                       add peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)))
 
   ' goto label$202;
   jmp L14:
@@ -822,10 +854,11 @@ L16:
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '   + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) /
   '   << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));
-  '                   $489(1161)  
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-       add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))), _
-       peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))
+  '                        $489(1161)  
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1001))),   peek(ubyte,@nibbles(&B0010)) _
+                       shl peek(ubyte,@nibbles(&B0100))
 
   ' fb_StrAssign( (void*)&MEM$1, -1ll, (void*)"BASIC", 6ll, 0 );
   mov(mem, chr(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010))) _ 'B
@@ -846,9 +879,10 @@ L17:
   '   + ((int64)*(uint8*)4808102ll << ((int64)*(uint8*)4808100ll & 63ll))) + *(int64*)4808136ll) /
   '   << (3ll & 63ll))) + 134217728ll) = (double)vr$837;
   '          		  $460(1120)  
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-       add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ulongint,@i)), _
-       asc(mid(mem,peek(ulongint,@i),peek(ubyte,@nibbles(&B0001))))
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ulongint,@i)), _
+               asc(mid(mem,peek(ulongint,@i),peek(ubyte,@nibbles(&B0001))))
 
   ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll /
   '    << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808102ll /
@@ -860,14 +894,14 @@ L17:
   '    << (3ll & 63ll))) + 134217728ll) < (double)((int64)*(uint8*)4808100ll /
   '    << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$211;
   ' goto label$212;
-  '             $460(1120)
-  cmp logic_and(peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-     add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ulongint,@i))) _
-     gt peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)), _
-     _'                  $460(1120) 
-     peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-     add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ulongint,@i))) lt _
-     peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100))) jmp L18
+  '                                              $460(1120)
+  cmp logic_and(peek(SYSTEM_TYPE,@kernal(        peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+            add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ulongint,@i))) _
+             gt peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)), _
+                _'                       $460(1120) 
+                peek(SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100))         shl peek(ubyte,@nibbles(&B1000)) _
+            add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ulongint,@i))) lt _
+                peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100))) jmp L18
  
   ' label$211:;
   ' FBSTRING* vr$884 = fb_StrMid( (FBSTRING*)&MEM$1, *(int64*)4808136ll, (int64)*(uint8*)4808097ll );
@@ -875,10 +909,11 @@ L17:
   ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '   + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) /
   '   + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$885;
-  '                   $489(1161)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100))   shl peek(ubyte,@nibbles(&B1000)) _
-     add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) _
-     add peek(ulongint,@i)), asc(mid(mem,peek(ulongint,@i),peek(ubyte,@nibbles(&B0001))))
+  '                        $489(1161)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1001)) add peek(ulongint,@i)),          _
+               asc(mid(mem,peek(ulongint,@i),               peek(ubyte,@nibbles(&B0001))))
 
   ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll /
   '    << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) /
@@ -890,14 +925,15 @@ L17:
   '    << (3ll & 63ll))) + 134217728ll) < (double)(int64)*(uint8*)((uint8*)NIBBLES$ /
   '    + 4ll))) == 0ll ) goto label$214;
   ' goto label$215;
-  '                                 $489(1161)
-  cmp logic_and(peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-     add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) _
-     add peek(ulongint,@i))) gt peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) _
-     _'                                                   $489(1161)
-     add peek(ubyte,@nibbles(&B1111)),peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) _
-     shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) _
-     add peek(ubyte,@nibbles(&B1001)) add peek(ulongint,@i))) lt peek(ubyte,@nibbles(&B0100))) jmp L19
+  '                                              $489(1161)
+  cmp logic_and(peek(SYSTEM_TYPE,@kernal(        peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+            add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) _
+            add peek(ulongint,@i)))           gt peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) _
+     _'                                                                           $489(1161)
+            add peek(ubyte,@nibbles(&B1111)),    peek(SYSTEM_TYPE,@kernal(        peek(ubyte,@nibbles(&B0100)) _
+            shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) _
+            add peek(ubyte,@nibbles(&B1001)) add peek(ulongint,@i)))           lt peek(ubyte,@nibbles(&B0100))) _
+            jmp L19
      
   ' label$214:;
   
@@ -923,13 +959,16 @@ L18:
   '    << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + *(int64*)4808136ll) /
   '    << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) 
   '    << (3ll & 63ll)));
-  '                   $460(1120) 
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-       add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ulongint,@i)), _
+  '                        $460(1120) 
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ulongint,@i)), _
        _ '                 $460(1120)
-       peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-       add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ulongint,@i)) _
-       add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)))
+                           peek(SYSTEM_TYPE,@kernal(_
+                           peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ulongint,@i))           add peek(ubyte,@nibbles(&B0010)) _
+                       shl peek(ubyte,@nibbles(&B0100)))
 
   ' goto label$209;
   jmp L17
@@ -942,13 +981,16 @@ L19:
   '    + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808104ll /
   '   << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) + (int64)INDEX$1) << (3ll & 63ll))) /
   '    + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) << (3ll & 63ll)));
-  '                   $489(1161)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) _
-      _'                                         $489(1161)
-      add peek(ulongint,@i)),peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001)) _
-      add peek(ulongint,@i)) add peek(ubyte,@nibbles(&B0010)) shl  peek(ubyte,@nibbles(&B0100)))
+  '                        $489(1161)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1001)) _
+      _'                                                               $489(1161)
+                       add peek(ulongint,@i)),peek(SYSTEM_TYPE,@kernal(                  _
+                           peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1001)) add peek(ulongint,@i))           _
+                       add peek(ubyte,@nibbles(&B0010)) shl  peek(ubyte,@nibbles(&B0100)))
 
   ' goto label$209;
   jmp L17
@@ -959,47 +1001,50 @@ L20:
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '    + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808111ll) /
   '   << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll));
-  '                   $48F(1167)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-       add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) _
-       add peek(ubyte,@nibbles(&B1111))),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))
+  '                        $48F(1167)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1111))),   peek(ubyte,@nibbles(&B0010)) _
+                       shl peek(ubyte,@nibbles(&B0100))
 
   ' *(double*)((uint8*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '   + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) << (3ll & 63ll))) + 134217728ll) /
   '   = (double)(((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808102ll);
-  '                   $490(1168)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100))), peek(ubyte,@nibbles(&B1000)) _
-       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110))
+  '                        $490(1168)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000))   _
+                       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100))), _
+                           peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100))   _
+                       add peek(ubyte,@nibbles(&B0110))
 
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '    + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808097ll) /
   '    << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808099ll /
   '    << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll);
-  '                   $491(1169)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
-       add peek(ubyte,@nibbles(&B0001))),peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) _
-       add peek(ubyte,@nibbles(&B0010))
+  '                        $491(1169)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B0001))),   peek(ubyte,@nibbles(&B0011)) _
+                       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010))
 
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '    + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808098ll) /
   '    << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll /
   '    << ((int64)*(uint8*)4808100ll & 63ll));
-  '                   $492(1170)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
-       add peek(ubyte,@nibbles(&B0010))),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))
+  '                        $492(1170)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B0010))),   peek(ubyte,@nibbles(&B0010))    _
+                       shl peek(ubyte,@nibbles(&B0100))
 
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '     + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808098ll) /
   '     << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll /
   '     << ((int64)*(uint8*)4808100ll & 63ll));
-  '                   $493(1171)  
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
-       add peek(ubyte,@nibbles(&B0011))),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-       add peek(ubyte,@nibbles(&B1010))
+  '                        $493(1171)  
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B0011))),   peek(ubyte,@nibbles(&B0010))    _
+                       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))
 
   ' fb_StrAssign( (void*)&MEM$1, -1ll, (void*)" RAM SYSTEM", 12ll, 0 );
   mov(mem, chr(peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))) _
@@ -1025,10 +1070,11 @@ L21:
   ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '    + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) /
   '    + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1078;
-  '                   $49E(1182)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) _
-      add peek(ulongint,@i)), asc(mid(mem,peek(ulongint,@i),peek(ubyte,@nibbles(&B0001))))
+  '                        $49E(1182)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1110)) add peek(ulongint,@i)),          _
+               asc(mid(mem,peek(ulongint,@i),peek(ubyte,@nibbles(&B0001))))
 
   ' if( ((int64)-(*(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll /
   '    << ((int64)*(uint8*)4808104ll & 63ll)) + ((int64)*(uint8*)4808105ll /
@@ -1039,14 +1085,18 @@ L21:
   '     & 63ll))) + (int64)*(uint8*)4808101ll) + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) /
   '     < (double)((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808100ll & 63ll)))) == 0ll ) goto label$221;
   ' goto label$222;
-  '                                 $495(1173)
-  cmp logic_and(peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-     add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) _
-     _ '                                                                          $495(1173)
-     add peek(ulongint,@i))) gt peek(ubyte,@nibbles(&B1111)),peek(double, @kernal(peek(ubyte,@nibbles(&B0100)) _
-     shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
-     add peek(ubyte,@nibbles(&B0101)) add peek(ulongint,@i))) lt peek(ubyte, @nibbles(&B0100)) _
-     shl peek(ubyte,@nibbles(&B0100))) jmp L22
+  '                                      $495(1173)
+  cmp logic_and(peek(SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000))  _
+                                     add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100))  _
+                                     add peek(ubyte,@nibbles(&B0101)) _
+                                     add peek(ulongint,@i)))           gt peek(ubyte,@nibbles(&B1111)), _
+                                         peek(SYSTEM_TYPE, @kernal(   _
+     _ '                                 $495(1173)
+                                         peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000))  _
+                                     add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100))  _
+                                     add peek(ubyte,@nibbles(&B0101)) add peek(ulongint,@i)))           _
+                                      lt peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100))) _
+                                     jmp L22
 L22:  
   ' label$221:;
   ' label$222:;
@@ -1069,13 +1119,16 @@ L23:
   '    << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) + *(int64*)4808136ll) /
   '    << (3ll & 63ll))) + 134217728ll) + (((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)) /
   '    << (3ll & 63ll)));
-  '                   $495(1173)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) _
-      _ '                                        $495(1173)
-      add peek(ulongint,@i)),peek(double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101)) _
-      add peek(ulongint,@i)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)))
+  '                        $495(1173)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B0101)) _
+      _ '                                                        $495(1173)
+                       add peek(ulongint,@i)),              peek(SYSTEM_TYPE,@kernal(    _
+                          peek(ubyte,@nibbles(&B0100))  shl peek(ubyte,@nibbles(&B1000)) _
+                      add peek(ubyte,@nibbles(&B1001))  shl peek(ubyte,@nibbles(&B0100)) _
+                      add peek(ubyte,@nibbles(&B0101))  add peek(ulongint,@i))           _
+                      add peek(ubyte,@nibbles(&B0010))  shl peek(ubyte,@nibbles(&B0100)))
   ' goto label$222;
   jmp L22           
 L23a:
@@ -1114,7 +1167,7 @@ L23a:
   ' FBSTRING* vr$1173 = fb_ULongintToStr( vr$1163 / ((uint64)__builtin_nearbyint( vr$1170 )) );
   ' fb_StrAssign( (void*)&MEM$1, -1ll, (void*)vr$1173, -1ll, 0 );
   mov(mem, str(int(fre(mem64(peek(ubyte,@nibbles(&B0000))))) idiv (peek(ubyte,@nibbles(&B0100)) _
-      shl peek(ubyte,@nibbles(&B1000))) expt peek(ubyte,@nibbles(&B0011))))
+                         shl peek(ubyte,@nibbles(&B1000)))   expt  peek(ubyte,@nibbles(&B0011))))
 
   ' int64 vr$1176 = fb_StrLen( (void*)&MEM$1, -1ll );
   ' if( vr$1176 != (int64)*(uint8*)4808097ll ) goto label$228;
@@ -1134,30 +1187,30 @@ L24:
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) _
   '    + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808107ll) _
   '   << (3ll & 63ll))) + 134217728ll) = (double)vr$1182;
-  '                   $49B(1179)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B1011))),asc(mem)
+  '                        $49B(1179)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1011))),asc(mem)
 
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '    + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) /
   '   << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808100ll /
   '   << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll);
-  '                   $49C(1180)      
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-     add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
-     add peek(ubyte,@nibbles(&B1100))),peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) _
-     add peek(ubyte,@nibbles(&B0111))
+  '                        $49C(1180)      
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1100))),   peek(ubyte,@nibbles(&B0100)) _
+                       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111))
   
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '    + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808109ll) /
   '   << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808100ll /
   '   << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll);
-  '                   $49D(1181)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B1101))),peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B0010))
+  '                        $49D(1181)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                      add peek(ubyte,@nibbles(&B1001))  shl peek(ubyte,@nibbles(&B0100)) _
+                      add peek(ubyte,@nibbles(&B1101))),    peek(ubyte,@nibbles(&B0100)) _
+                      shl peek(ubyte,@nibbles(&B0100))  add peek(ubyte,@nibbles(&B0010))
 
   ' goto label$233;
   jmp L27
@@ -1170,40 +1223,42 @@ L25:
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '   + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808107ll) /
   '   << (3ll & 63ll))) + 134217728ll) = (double)vr$1233;
-  '                   $49B(1179)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B1011))),asc(mid(mem,peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001))))
+  '                        $49B(1179)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1011))),                                _
+               asc(mid(mem,peek(ubyte,@nibbles(&B0001)),    peek(ubyte,@nibbles(&B0001))))
   
   ' FBSTRING* vr$1249 = fb_StrMid( (FBSTRING*)&MEM$1, (int64)*(uint8*)4808098ll, (int64)*(uint8*)4808097ll );
   ' uint32 vr$1250 = fb_ASC( (FBSTRING*)vr$1249, 1ll );
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '     + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll) /
   '    << (3ll & 63ll))) + 134217728ll) = (double)vr$1250;
-  '                   $49C(1180)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B1100))),asc(mid(mem,peek(ubyte,@nibbles(&B0010)),peek(ubyte,@nibbles(&B0001))))
+  '                        $49C(1180)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1100))),                                _
+               asc(mid(mem,peek(ubyte,@nibbles(&B0010)),    peek(ubyte,@nibbles(&B0001))))
 
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '     + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808109ll) /
   '    << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808100ll /
   '    << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808103ll);
-  '                   $49D(1181)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B1101))),peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B0111))
+  '                        $49D(1181)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1101))),   peek(ubyte,@nibbles(&B0100)) _
+                       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111))
 
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '     + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) /
   '    << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808100ll /
   '    << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808098ll);
-  '                   $49E(1182)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B1110))),peek(ubyte,@nibbles(&B0100))  shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B0010))
+  '                        $49E(1182)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1110))),   peek(ubyte,@nibbles(&B0100)) _
+                       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010))
 
   ' fb_StrAssign( (void*)&MEM$1, -1ll, (void*)" RAM SYSTEM", 12ll, 0 );
   mov(mem, chr(peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))) _
@@ -1228,10 +1283,11 @@ L26:
   ' *(double*)((uint8*)((uint8*)THIS$1 + ((((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '     + ((int64)*(uint8*)4808105ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808110ll) /
   '     + *(int64*)4808136ll) << (3ll & 63ll))) + 134217728ll) = (double)vr$1302;
-  '                   $49E(1182)          
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)) _
-      add peek(ulongint,@i)), asc(mid(mem,peek(ulongint,@i),peek(ubyte,@nibbles(&B0001))))  
+  '                        $49E(1182)          
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1110)) add peek(ulongint,@i)),          _
+               asc(mid(mem,peek(ulongint,@i),peek(ubyte,@nibbles(&B0001))))  
 
   ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
   poke ulongint,@i,peek(ulongint,@i) add peek(ubyte,@nibbles(&B0001)) 
@@ -1247,18 +1303,20 @@ L26:
   '    << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll /
   '    << ((int64)*(uint8*)4808100ll & 63ll));
   '                   $49F(1183) Replace "@" at E49F with " ".
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B1111))),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) 
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1111))),   peek(ubyte,@nibbles(&B0010)) _
+                       shl peek(ubyte,@nibbles(&B0100)) 
 
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '     + ((int64)*(uint8*)4808106ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808099ll) /
   '    << (3ll & 63ll))) + 134217728ll) = (double)((int64)*(uint8*)4808098ll /
   '    << ((int64)*(uint8*)4808100ll & 63ll));
   '                   $4A3(1187) Replace "@" at E4A3 with " ".
-  poke double,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B0011))),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100))
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B0011))),   peek(ubyte,@nibbles(&B0010)) _
+                       shl peek(ubyte,@nibbles(&B0100))
        
   ' goto label$233;
   jmp L27
@@ -1270,27 +1328,27 @@ L27:
   '     + ((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) /
   '    << (3ll & 63ll))) + 134217728ll) = (double)(((int64)*(uint8*)4808111ll /
   '    << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808106ll);
-  '                   $535(1333) .,E534 A9 FA    LDA #$FA     ;set default text color to FA(Apple ][ Green)
-  poke double,@kernal(peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B0101))),peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B1010)) 
+  '                        $535(1333) .,E534 A9 FA    LDA #$FA     ;set default text color to FA(Apple ][ Green)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B0101))),   peek(ubyte,@nibbles(&B1111)) _
+                       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010)) 
 
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '     + ((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) /
   '    << (3ll & 63ll))) + 134217728ll) = (double)*(uint8*)4808096ll;
-  '                   $CD9(3289) .:ECD9 FF                    ;set default border color to 0(Black)
-  poke double,@kernal(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B1001))),peek(ubyte,@nibbles(&B0000))
+  '                        $CD9(3289) .:ECD9 FF                    ;set default border color to 0(Black)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1001))),   peek(ubyte,@nibbles(&B0000))
 
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '     + ((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808106ll) /
   '    << (3ll & 63ll))) + 134217728ll) = (double)*(uint8*)4808096ll;
-  '                   $CDA(3290) .:ECDA FF                    ;set default background color to 0(Black)
-  poke double,@kernal(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1000)) _
-      add peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) _
-      add peek(ubyte,@nibbles(&B1010))),peek(ubyte,@nibbles(&B0000))
+  '                        $CDA(3290) .:ECDA FF                    ;set default background color to 0(Black)
+  poke SYSTEM_TYPE,@kernal(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1000)) _
+                       add peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) _
+                       add peek(ubyte,@nibbles(&B1010))),   peek(ubyte,@nibbles(&B0000))
   /'
   kernal(&H506) = &H50 'get the x size
   kernal(&H598) = &H3C 'get the y size
@@ -1311,491 +1369,27 @@ destructor MEMORY_T
 end destructor
 
 'Ring 3 - Shadertoy
-proc MEMORY_T.length6(p as vector2) as float
-  p = p*p*p  : p = p*p
-  return pow( p.x + p.y, 1.0/6.0 )
-end proc
-
-proc MEMORY_T.length8(p as vector2) as float
-  p = p*p: p = p*p: p = p*p
-  return pow( p.x + p.y, 1.0/8.0 )
-end proc
-
-proc MEMORY_T.sdPlane(p as vector3) as float
-  return p.y
-end proc
-
-proc MEMORY_T.sdSphere(p as vector3, s as float) as float
-  return length(p) - s
-end proc
-
-proc MEMORY_T.sdBox(p as vector3, b as vector3) as float
-  dim as vector3 d = abs(p) - b
-  return min(max(d.x,max(d.y,d.z)),0.0) + length(max(d,0.0))
-end proc
-
-proc MEMORY_T.sdEllipsoid(p as vector3, r as vector3) as float
-  return (length( p/r ) - 1.0) * min(min(r.x,r.y),r.z)
-end proc
-
-proc MEMORY_T.udRoundBox(p as vector3, b as vector3, r as float) as float
-  return length(max(abs(p)-b,0.0))-r
-end proc
-
-proc MEMORY_T.sdTorus(p as vector3, t as vector2) as float
-  return length( vector2(length(p.xz)-t.x,p.y) )-t.y
-end proc
-
-proc MEMORY_T.sdTorus82(p as vector3, t as vector2) as float
-  dim as vector2 q = vector2(length(p.xz)-t.x,p.y)
-  return length8(q)-t.y
-end proc
-
-proc MEMORY_T.sdTorus88(p as vector3, t as vector2) as float
-  dim as vector2 q = vector2(length8(p.xz)-t.x,p.y)
-  return length8(q)-t.y
-end proc
-
-proc MEMORY_T.sdHexPrism(p as vector3, h as vector2) as float
-  dim as vector3 q  = abs(p)
-  dim as float d1 = q.z-h.y
-  dim as float d2 = max((q.x*0.866025+q.y*0.5),q.y)-h.x
-  return length(max(vector2(d1,d2),0.0)) + min(max(d1,d2), 0.)
-end proc
-
-proc MEMORY_T.sdCapsule(p as vector3, a as vector3, b as vector3, r as float) as float
-  dim as vector3 pa = p-a, ba = b-a
-  dim as float h = clamp( dot(pa,ba)/dot(ba,ba), 0.0, 1.0 )
-  return length( pa - ba*h ) - r
-end proc
-
-proc MEMORY_T.sdTriPrism(p as vector3, h as vector2) as float
-  dim as vector3  q  = abs(p)
-  dim as float d1 = q.z-h.y
-  dim as float d2 = max(q.x*0.866025+p.y*0.5,-p.y)-h.x*0.5
-  return length(max(vector2(d1,d2),0.0)) + min(max(d1,d2), 0.)
-end proc
-
-proc MEMORY_T.sdCylinder(p as vector3, h as vector2) as float
-  dim as vector2 d = abs(vector2(length(p.xz),p.y)) - h
-  return min(max(d.x,d.y),0.0) + length(max(d,0.0))
-end proc
-
-proc MEMORY_T.sdCylinder6(p as vector3, h as vector2) as float
-  return max( length6(p.xz)-h.x, abs(p.y)-h.y )
-end proc
-
-proc MEMORY_T.sdCone(p as vector3, c as vector3) as float
-  dim as vector2  q  = vector2( length(p.xz), p.y )
-  dim as float d1 = -q.y-c.z
-  dim as float d2 = max( dot(q,c.xy), q.y)
-  return length(max(vector2(d1,d2),0.0)) + min(max(d1,d2), 0.0)
-end function
-
-proc MEMORY_T._sdCone(p as vector3, c as vector3) as float
-  dim as vector2 q = vector2( length(p.xz), p.y )
-  dim as vector2 v = vector2( c.z * c.y/c.x, -c.z )
-  dim as vector2 w = v - q
-  dim as vector2 vv = vector2( dot(v,v), v.x*v.x )
-  dim as vector2 qv = vector2( dot(v,w), v.x*w.x )
-  dim as vector2 d = max(qv,0.0)*qv/vv
-  return sqrt( dot(w,w) - max(d.x,d.y) ) * sign(max(q.y*v.x-q.x*v.y,w.y))
-end proc
-
-proc MEMORY_T.sdConeHQ(p as vector3, c as vector3) as float
-  dim as vector2 q = vector2( length(p.xz), p.y )
-  dim as vector2 v = vector2( c.z*c.y/c.x, -c.z )
-  dim as float vvb = dot( v, v )
-  dim as float qvb = dot( v, v-q )
-  dim as float vvx = v.x*v.x
-  dim as float qvx = v.x*(v.x-q.x)
-  dim as float hb = clamp( qvb, 0.0, vvb )
-  dim as float hx = clamp( qvx, 0.0, vvx )
-  dim as vector2 d1 = vector2( hb*(hb-2.0*qvb)/vvb, q.x*v.y-q.y*v.x )
-  dim as vector2 d2 = vector2( hx*(hx-2.0*qvx)/vvx,     q.y-v.y )
-  dim as vector2 d = min( d1, d2 )
-  return -sqrt( dot(v-q,v-q) + d.x ) * sign(d.y)
-end proc
-
-proc MEMORY_T.sdConeSection(p as vector3, h as float, r1 as float, r2 as float) as float
-  dim as float d1 = -p.y - h
-  dim as float q  =  p.y - h
-  dim as float si = 0.5*(r1-r2)/h
-  dim as float d2 = max( sqrt( dot(p.xz,p.xz)*(1.0-si*si)) + q*si - r2, q )
-  return length(max(vector2(d1,d2),0.0)) + min(max(d1,d2), 0.)
-end proc
-
-proc MEMORY_T.sdWobbleCube( p as vector3, s as float) as float
-  ' Modified cube
-  return max (max(abs(p.x)-s + sin(p.y*10.0)*0.05 , abs(p.y)-s) , abs(p.z)-s )
-end function
-#define dot2(a) dot((a),(a))
-'function dot2(v as vec3) as float
-'  return dot(v,v)
-'end function
-
-proc MEMORY_T.udTriangle(p as vector3, a as vector3, b as vector3, c as vector3) as float
-  dim as vector3 ba = b - a
-  dim as vector3 cb = c - b
-  dim as vector3 ac = a - c
-
-  dim as vector3 pa = p - a
-  dim as vector3 pb = p - b
-  dim as vector3 pc = p - c
-  dim as vector3 nor = cross( ba, ac )
-  'windowtitle "" & nor.x & "," & nor.y & "," & nor.z
-  return sqrt( iif(sign(dot(cross(ba,nor),pa)) _
-                  + sign(dot(cross(cb,nor),pb)) _
-                  + sign(dot(cross(ac,nor),pc))<2.0, min( min( _
-    dot2(ba*clamp(dot(ba,pa)/dot2(ba),0.0,1.0)-pa), _
-    dot2(cb*clamp(dot(cb,pb)/dot2(cb),0.0,1.0)-pb)), _
-    dot2(ac*clamp(dot(ac,pc)/dot2(ac),0.0,1.0)-pc)),  dot(nor,pa)*dot(nor,pa)/dot2(nor)) )
-end proc
-
-proc udQuad(p as vector3, a as vector3, b as vector3, c as vector3, d as vector3) as float
-  dim as vector3 ba = b - a
-  dim as vector3 pa = p - a
-  dim as vector3 cb = c - b
-  dim as vector3 pb = p - b
-  dim as vector3 dc = d - c
-  dim as vector3 pc = p - c
-  dim as vector3 ad = a - d
-  dim as vector3 pd = p - d
-  dim as vector3 nor = cross( ba, ad )
-  dim as float s = sign(dot(cross(ba,nor),pa)) _
-                + sign(dot(cross(cb,nor),pb)) _
-                + sign(dot(cross(dc,nor),pc)) _
-                + sign(dot(cross(ad,nor),pd))
-  if( s<3.0) then return sqrt(min( min( min( _
-    dot2(ba*clamp(dot(ba,pa)/dot2(ba),0.0,1.0)-pa), _
-    dot2(cb*clamp(dot(cb,pb)/dot2(cb),0.0,1.0)-pb)), _
-    dot2(dc*clamp(dot(dc,pc)/dot2(dc),0.0,1.0)-pc)), _
-    dot2(ad*clamp(dot(ad,pd)/dot2(ad),0.0,1.0)-pd)))
-
-  return sqrt(dot(nor,pa)*dot(nor,pa)/dot2(nor))
-end proc
-
-' operator subtract
-proc MEMORY_T.opS(d1 as float, d2 as float) as float
-  return max(-d2,d1)
-end proc
-
-' operator union
-proc MEMORY_T.opU(d1 as vector2, d2 as vector2) as vector2
-  return iif(d1.x<d2.x,d1,d2)
-end proc
-
-' operator intersect
-proc MEMORY_T.opI(d1 as float, d2 as float ) as float
-  return max(d1,d2)
-end proc
-
-' operator repeat
-proc MEMORY_T.opRep(p as vector3, c as vector3) as vector3
-  return MOD_GLSL(p,c)-c*.5
-end proc
-
-' exponential smooth min
-proc MEMORY_T.ExpSmin(a as float, b as float, k as float=32) as float
-  dim as float res = exp( -k*a ) + exp( -k*b )
-  return -log(res)/k
-end proc
-
-' polynomial smooth min
-proc MEMORY_T.PolySmin(a as float, b as float, k as float=0.1) as float
-  dim as float h = clamp( 0.5+0.5*(b-a)/k, 0.0, 1.0 )
-  return mix( b, a, h ) - k*h*(1.0-h)
-end proc
-
-' power smooth min
-proc MEMORY_T.PowSmin(a as float, b as float, k as float=8) as float
-  a = pow(a, k)
-  b = pow(b, k)
-  return pow( (a*b)/(a+b), 1.0/k )
-end proc
-
-proc MEMORY_T.opTwist(p as vector3) as vector3
-  dim as float  c = cos(10.0*p.y+10.0)
-  dim as float  s = sin(10.0*p.y+10.0)
-  dim as mat2  m = mat2(c,-s,s,c)
-  return vector3(m*p.xz,p.y)
-end proc
-
-proc MEMORY_T.map( p as vector3 ) as vector2
-    dim as vector2 res=vector2( sdPlane(     p), 1.0 )
-   'res = opU( res, vector2( udTriangle(  p,vector3(-1,0, 0),vector3(2,0,0),vector3(0,1,0)),  4.9 ) )
-   'res = opU( res, vector2( udTriangle(  p,vector3( 0,0,-.5),vector3(0,0,.5),vector3(0,.5,0)),  6.9 ) )
-
-   res = opU( res, vector2( sdSphere(    p-vector3( 0.0,0.25, 0.0), .25 ), 46.9 ) )
-
-   res = opU( res, vector2( sdBox(       p-vector3( 1.0,0.25, 0.0), vector3(0.25) ), 3.0 ) )
-   res = opU( res, vector2( udRoundBox(  p-vector3( 1.0,0.25, 1.0), vector3(0.15), 0.1 ), 41.0 ) )
-   res = opU( res, vector2( sdTorus(     p-vector3( 0.0,0.25, 1.0), vector2(0.20,0.05) ), 25.0 ) )
-   res = opU( res, vector2( sdCapsule(   p,vector3(-1.3,0.10,-0.1), vector3(-0.8,0.50,0.2), 0.1  ), 31.9 ) )
-   res = opU( res, vector2( sdTriPrism(  p-vector3(-1.0,0.25,-1.0), vector2(0.25,0.05) ),43.5 ) )
-   res = opU( res, vector2( sdCylinder(  p-vector3( 1.0,0.30,-1.0), vector2(0.1,0.2) ), 8.0 ) )
-   res = opU( res, vector2( sdCone(      p-vector3( 0.0,0.50,-1.0), vector3(0.8,0.6,0.3) ), 55.0 ) )
-   res = opU( res, vector2( sdTorus82(   p-vector3( 0.0,0.25, 2.0), vector2(0.20,0.05) ),50.0 ) )
-   res = opU( res, vector2( sdTorus88(   p-vector3(-1.0,0.25, 2.0), vector2(0.20,0.05) ),43.0 ) )
-   res = opU( res, vector2( sdCylinder6( p-vector3( 1.0,0.30, 2.0), vector2(0.1,0.2) ), 12.0 ) )
-   res = opU( res, vector2( sdHexPrism(  p-vector3(-1.0,0.20, 1.0), vector2(0.25,0.05) ),17.0 ) )
-   res = opU( res, vector2( opS( _
-                         udRoundBox(p-vector3(-2.0,0.2, 1.0), vector3(0.15),0.05), _
-                         sdSphere  (p-vector3(-2.0,0.2, 1.0), 0.25)), 13.0 ) )
-   res = opU( res, vector2( opS( sdTorus82 (p-vector3(-2.0,0.2, 0.0), vector2(0.20,0.1)), _
-                              sdCylinder(opRep(vector3(atan(p.x+2.0,p.z)/6.2831, _
-                                                    p.y, _
-                                                    0.02+0.5*length(p-vector3(-2.0,0.2,0.0))), _
-                                               vector3(0.05,1.0,0.05) ), vector2(0.02,0.6))), 51.0 ) )
-
-   res = opU( res, vector2( 0.7*sdSphere(    p-vector3(-2.0,0.25,-1.0), 0.2 ) + _
-                         0.03*sin(50.0*p.x)*sin(50.0*p.y)*sin(50.0*p.z), 65.0 ) )
-   res = opU( res, vector2( 0.5*sdTorus( opTwist(p-vector3(-2.0,0.25, 2.0)),vector2(0.20,0.05)), 46.7 ) )
-   res = opU( res, vector2(sdConeSection( p-vector3( 0.0,0.35,-2.0), 0.15, 0.2, 0.1 ), 13.67 ) )
-   res = opU( res, vector2(sdEllipsoid( p-vector3( 1.0,0.35,-2.0), vector3(0.15, 0.2, 0.05) ), 43.17 ) )
-  return res
-end proc
-
-proc MEMORY_T.castRay(ro as vector3, rd as vector3) as vector2
-  const as float tmin   =  0.1
-  const as float tmax   = 20.0
-  const as float precis = 0.002
-  dim as float t  = tmin
-  dim as float m  = -1.0
-  dim as vector2 res=any
-  do
-    res = map( ro + rd * t )
-    if (t>tmax ) then exit do
-    if (res.x<precis) then exit do
-    t+= res.x
-    m = res.y
-  loop
-  res.x=t
-  res.y=iif(t>tmax,-1,m)
-  return res
-end proc
-
-proc MEMORY_T.softshadow(ro as vector3, rd as vector3, mint as float, tmax as float) as float
-  dim as float res = 1.0
-  dim as float t = mint
-  for i as integer=0 to SHADOW_SETPS-1
-    dim as float h = map( ro + rd*t ).x
-    res = min( res, 8.0*h/t )
-    t += clamp( h, 0.02, 0.10 )
-    if( h<0.001 or t>tmax ) then exit for
-  next
-  return clamp(res,0,1)
-end proc
-
-proc MEMORY_T.calcNormal(p as vector3) as vector3
-  const as float EPS=0.001
-  return normalize(vector3(map(vector3(p.x+EPS,p.y,p.z)).x - map(vector3(p.x-EPS,p.y,p.z)).x, _
-                           map(vector3(p.x,p.y+EPS,p.z)).x - map(vector3(p.x,p.y-EPS,p.z)).x, _
-                           map(vector3(p.x,p.y,p.z+EPS)).x - map(vector3(p.x,p.y,p.z-EPS)).x ))
-end proc
-
-proc MEMORY_T.calcAO(p as vector3, nor as vector3) as float
-  dim as float occ = 0.0
-  dim as float sca = 1.0
-  for i as integer=0 to AO_STEPS-1
-    dim as float hr = 0.01 + 0.12 * i/AO_STEPS
-    dim as vector3 aopos =  nor * hr + p
-    dim as float dd2 = map( aopos ).x
-    occ += -(dd2-hr)*sca
-    sca *= 0.95
-  next
-  occ = 1 - 3.0*occ
-  return clamp(occ, 0.0, 1.0 )
-end proc
-
-proc MEMORY_T.RENDER_GLSL(ro as vector3, rd as vector3) as vector3
-  dim as vector3 col
-  dim as vector2 res = castRay(ro,rd)
-  dim as float t = res.x
-  dim as float m = res.y
-
-  ' get material
-  if (m<0) then
-    ' sky
-    col = vector3(0.5, 0.6, 1.0) + rd.y*0.8
-  else
-    dim as vector3 p = ro + t*rd
-    dim as vector3 nor
-    if (m=1) then
-      ' ground plane with checker board
-      nor = vector3(0,1,0)
-      'col = mod(rfloor(p.x*1) + rfloor(p.z*1),2)*vector3(1)*.4+.1
-      col = MOD_GLSL(floor(p.x*1) + floor(p.z*1),2)*vector3(.4)+.1
-    else
-      ' primitives
-      nor = calcNormal( p )
-      col = .5 + .5 * sin( vector3(0.05,0.08,0.10)*(m-1.0) )
-    end if
-
-    ' lighitng
-    dim as vector3 ref      = reflect( rd, nor )
-    dim as float occ      = calcAO( p, nor )
-    dim as vector3 light    = normalize( vector3(1, 1, -1) )
-    dim as float ambient  = clamp( 0.5+0.5*nor.y, 0.0, 1.0 )
-    dim as float diffuse  = clamp( dot( nor, light ), 0.0, 1.0 )
-    dim as float bac      = clamp( dot( nor, normalize(vector3(-light.x,0.0,-light.z))), 0.0, 1.0 )*clamp( 1.0-p.y,0.0,1.0)
-    dim as float dom      = smoothstep( -0.1, 0.1, ref.y )
-    dim as float fr       = pow(clamp(1.0+dot(nor,rd),0.0,1.0), 2.0 )
-    dim as float specular = pow(clamp( dot( ref, light ), 0.0, 1.0 ),16.0)
-
-    diffuse *= softshadow( p, light, 0.02, 2.5 )
-    dom     *= softshadow( p, ref  , 0.02, 2.5 )
-
-    dim as vector3 lin
-    lin  = 1.20*diffuse *vector3(1.00,0.85,0.55)
-    lin += 1.20*specular*vector3(1.00,0.85,0.55)*diffuse
-    lin += 0.20*ambient *vector3(0.50,0.70,1.00)*occ
-    lin += 0.30*dom     *vector3(0.50,0.70,1.00)*occ
-    lin += 0.30*bac     *vector3(0.25,0.25,0.25)*occ
-    lin += 0.40*fr      *vector3(1.00,1.00,1.00)*occ
-    col = col*lin
-
-    col = mix( col, vector3(0.8,0.9,1.0), 1.0-exp( -0.002*t*t ) )
-  end if
-  return vector3(clamp(col,0.0,1.0) )
-end proc
-
-proc MEMORY_T.setCamera(ro as vector3, ta as vector3 , cr as float ) as mat3
-  dim as vector3 cw = normalize(ta-ro)
-  dim as vector3 cp = vector3(sin(cr), cos(cr),0.0)
-  dim as vector3 cu = normalize( cross(cw,cp) )
-  dim as vector3 cv = normalize( cross(cu,cw) )
-  return mat3( cu, cv, cw )
-end function
-
-def MEMORY_T.mainImage overload (fragColor as vector4, fragCoord as const vector2)
-  dim as float rTime = iGlobalTime '*0.01
-  dim as vector2 q     = fragCoord/iResolution.xy
-  dim as vector2 p     = q*2-1
-  ' aspect ratio
-  p.x *= iResolution.x/iResolution.y
-
-  ' camera
-  dim as vector3 ro = vector3( 2*cos(rTime), _
-                         1.0, _
-                         2*sin(rTime))
-  dim as vector3 ta = vector3( -0.5, -0.4, 0.5 )
-
-  ' camera-to-world transformation
-  dim as mat3 ca = setCamera( ro, ta, 0.0 )
-   
-  ' ray direction
-  dim as vector3 rd = ca * normalize( vector3(p.xy,2.0) )
-  ' render 
-  dim as vector3 col = RENDER_GLSL( ro, rd )
-  ' gamma
-  fragColor = vector4(pow( col, vector3(0.4545) ))
-end def
-
-' fragment shader main
-def MEMORY_T._mainImage(fragColor as vector4, fragCoord as const vector2)
-  dim as vector2 uv = fragCoord / iResolution.xy
-  fragColor = vector4(uv,0.5+0.5*sin(iGlobalTime),1.0)
-end def
-
-def MEMORY_T.EXEC_GLSL()
-	' fg_color=$C0C9(49353)
-	' alpha   =$C005(49157)
-	' red     =$C002(49154)
-	' green   =$C003(49155) 
-	' blue    =$C003(49156)                 	     
-	' r0      =$C9D1(49361) x
-	' r1      =$C0D2(49362) y
-	' r2      =$C0D3(49363)
-	' r3      =$C0D4(49364) Number of frames to display
-	' r4      =$C0D5(49365) r
-	' r5      =$C0D6(49366) g
-	' r6      =$C0D7(49367) b
-	' r7      =$COD8(49368) a	 '
-	' main
-	'
-	'#define USE_PAGES
-
-	dim as ulongint frames,mx,my,mb
-
-	'screeninfo scr_w,scr_h : scr_w*=.5 : scr_h*=.5
-
-	'scr_w=64*5 : scr_h=48*5
-     scr_w=1920:scr_h=1080
-
-	#ifdef USE_PAGES
-	screenres  scr_w,scr_h,32,2
-	screenset 1,0
-
-	pitch shr=2
-	#else
-	'screenres  scr_w,scr_h,32
-	#endif
-
-	' global shader uniform's
-	iResolution.x=scr_w
-	iResolution.y=scr_h
-	iResolution.z=iResolution.x/iResolution.y
-
-	dim as vector2 fragCoord
-	dim as vector4 fragColor
-	'dim as double tShaderStart=timer()
-	dim as double tFrameStart=0 'tShaderStart
-	dim as ulong colour
-	'                                                      r3
-	do until mov(peek(ulongint,@frames),peek(double,@mem64(49364)))
-	  fragCoord.y=scr_h-1 ' OpenGL draws from bottom to top
-	  #ifdef USE_PAGES
-	  dim as ulong ptr row = ScreenPtr()
-	  #endif
-	  for in range(mov(y as longint,0), scr_h subt 1)
-		#ifdef USE_PAGES
-		dim as ulong ptr pixel=fgimage
-		#else
-		screenlock
-		#endif
-		for in range(mov(x as longint,0), scr_w subt 1)
-		  fragCoord.x=x
-		  ' call for every pixel the fragment shader
-		  mainImage(fragColor, fragCoord)
-		  '                 r0
-		  poke float,@mem64(49361),peek(longint,@x)
-		  '                 r1
-		  poke float,@mem64(49362),peek(longint,@y)
-		  '               fg_color
-		  poke float,@mem64(49353),fragColor
-		  ' Draw pixel
-		  poke64(49414,0)
-		  #ifdef USE_PAGES
-		  pixel[x] = colour
-		  #else
-		  'pset fgimage,(x,y),peek(double,@mem64(49353))
-		  #endif
-		next
-		' next row
-		#ifdef USE_PAGES
-		row+=pitch  : flip
-		#else
-		screenunlock y,y
-		sleep 1
-		#endif
-		fragCoord.y-=1
-		   
-	  next
-	  put (0,0),fgimage,alpha
-	  iGlobalTime+= 1/24 '=timer()
-	  var FPS = 1/(iGlobalTime-tFrameStart)
-	  windowtitle "frame: " & frames
-	  tFrameStart=iGlobalTime
-
-	  'iGlobalTime-=tShaderStart
-	  frames+=1
-     loop
-end def
-
+#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__) 
+#include once "C64RAY.BAS"
+#else
+#include once "glslstyle.bas"
+#endif
 'Ring 0 - kernel
+def  MEMORY_T.kmemset(de as SYSTEM_TYPE, sz AS SYSTEM_TYPE, v  AS SYSTEM_TYPE)
+    poke SYSTEM_TYPE,@sz,peek(SYSTEM_TYPE,@sz) subt peek(ubyte,@nibbles(&B0001))
+    for in range(mov(mem_loc as SYSTEM_TYPE,peek(ubyte,@nibbles(&B0000))),peek(SYSTEM_TYPE,@sz))
+      poke SYSTEM_TYPE,@mem64(de add mem_loc),peek(SYSTEM_TYPE,@v)
+    next mem_loc
+end def
 
-proc MEMORY_T.kmin overload (v1 as ulongint,v2 as ulongint) as ulongint
+def  MEMORY_T.kmemcpy(su as SYSTEM_TYPE, de as SYSTEM_TYPE, sz as SYSTEM_TYPE)
+    poke SYSTEM_TYPE,@sz,peek(SYSTEM_TYPE,@sz) subt peek(ubyte,@nibbles(&B0001))
+    for in range(mov(mem_loc as SYSTEM_TYPE,peek(ubyte,@nibbles(&B0000))),peek(SYSTEM_TYPE,@sz))
+      poke SYSTEM_TYPE,@mem64(de add mem_loc),peek(SYSTEM_TYPE,@mem64(su add mem_loc))
+    next mem_loc
+end def
+
+proc MEMORY_T.kmin overload (v1 as SYSTEM_TYPE,v2 as SYSTEM_TYPE) as SYSTEM_TYPE
     if (v1<v2) then return v1
     return v2
 end proc
@@ -1815,7 +1409,7 @@ proc MEMORY_T.ksqrt(d as float) as float
 end proc
 '/
 'Ring 3 - c64dvd
-proc MEMORY_T.screencode (byval code as double) as double
+proc MEMORY_T.screencode (byval code as SYSTEM_TYPE) as SYSTEM_TYPE
   select case chr(code)
    case " ":     mov(proc, &H20)
    case "!":     mov(proc, &H21)
@@ -1915,60 +1509,60 @@ proc MEMORY_T.screencode (byval code as double) as double
   end select 
 end proc
 
-proc MEMORY_T.peekb(byval adr  as double) as double
+proc MEMORY_T.peekb(byval adr  as SYSTEM_TYPE) as SYSTEM_TYPE
   mov(proc,mem64(adr))
 end proc
 
-proc MEMORY_T.peekw(byval adr  as double) as double
+proc MEMORY_T.peekw(byval adr  as SYSTEM_TYPE) as SYSTEM_TYPE
   mov(proc,logic_or(peekb(adr),peekb(adr add 1) shl 8))
 end proc
 
-def MEMORY_T.pokeb(byval adr  as double, byval v as double)
+def MEMORY_T.pokeb(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
   mem64(adr)=v
   select case adr
-'                              r0                                  r0 
-   case &H000000001: mov(mem64(49361),v)             ' move mem64(49361), v
-'                              r1                                  r1
-   case &H000000002: mov(mem64(49362),v)             ' move mem64(49362), v
-'                              r2                                  r2     
-   case &H000000003: mov(mem64(49363),v)             ' move mem64(49363), v
-'                              r0            r1                    r0             r1    
-   case &H000000004: mov(mem64(49361),mem64(49362)) ' move mem64(49361), mem64(49362)
-'                              r0            r2                    r0             r2    
-   case &H000000005: mov(mem64(49361),mem64(49363)) ' move mem64(49361), mem64(49363)
-'                              r1            r0                    r1             r0   
-   case &H000000006: mov(mem64(49362),mem64(49361)) ' move mem64(49362), mem64(49361)
-'                              r1            r2                    r1             r0  
-   case &H000000007: mov(mem64(49362),mem64(49363)) ' move mem64(49362), mem64(49363)
-'                              r2            r0                    r2             r0   
-   case &H000000008: mov(mem64(49363),mem64(49361)) ' move mem64(49363), mem64(49361)
-'                              r2            r1                    r2             r1   
-   case &H000000009: mov(mem64(49363),mem64(49362)) ' move mem64(49363), mem64(49362)
-'                              pc            r0                    pc             r0   
-   case &H00000000A: mov(mem64(49418),mem64(49361)) ' move mem64(49418), mem64(49361)
-'                              pc            r1                    pc             r1   
-   case &H00000000B: mov(mem64(49418),mem64(49362)) ' move mem64(49418), mem64(49362)
-'                              pc            r2                    pc             r2   
-   case &H00000000C: mov(mem64(49418),mem64(49363)) ' move mem64(49418), mem64(49363)
-'                              adr0          r0                    adr0           r0 
-   case &H00000000D: mov(mem64(49425),mem64(49361)) ' move mem64(49425), mem64(49361)
-'                              adr0          r1                    adr0           r1   
-   case &H00000000E: mov(mem64(49425),mem64(49362)) ' move mem64(49425), mem64(49362)
-'                              adr0          r2                    adr0           r2   
-   case &H00000000F: mov(mem64(49425),mem64(49363)) ' move mem64(49425), mem64(49363)
-'                              adr1          r0                    adr1           r0   
-   case &H000000010: mov(mem64(49432),mem64(49361)) ' move mem64(49432), mem64(49361)
-'                              adr1          r1                    adr1           r1    
-   case &H000000011: mov(mem64(49432),mem64(49362)) ' move mem64(49432), mem64(49362)
-'                              adr1          r2                    adr1           r2   
-   case &H000000012: mov(mem64(49432),mem64(49363)) ' move mem64(49432), mem64(49363)
-'                              adr3          r0                    adr3           r0     
-   case &H000000013: mov(mem64(49446),mem64(49361)) ' move mem64(49446), mem64(49361)
-'                              adr3          r1                    adr3           r1   
-   case &H000000014: mov(mem64(49446),mem64(49362)) ' move mem64(49446), mem64(49362)
-'                              adr3            r2                  adr3           r2  
-   case &H000000015: mov(mem64(49446),mem64(49363)) ' move mem64(49446), mem64(49363)
-'                              red             r0                  red            r0   
+'                                            r0                                       r0 
+   case &H000000001: poke SYSTEM_TYPE,@mem64(49361),peek(SYSTEM_TYPE,@v) ' move mem64(49361), v
+'                                            r1                                       r1
+   case &H000000002: poke SYSTEM_TYPE,@mem64(49362),peek(SYSTEM_TYPE,@v) ' move mem64(49362), v
+'                                            r2                                       r2     
+   case &H000000003: poke SYSTEM_TYPE,@mem64(49363),peek(SYSTEM_TYPE,@v) ' move mem64(49363), v
+'                                            r0                             r1                   r0            r1    
+   case &H000000004: poke SYSTEM_TYPE,@mem64(49361),peek(SYSTEM_TYPE,@mem64(49362)) ' move mem64(49361), mem64(49362)
+'                                            r0                             r2                   r0            r2    
+   case &H000000005: poke SYSTEM_TYPE,@mem64(49361),peek(SYSTEM_TYPE,@mem64(49363)) ' move mem64(49361), mem64(49363)
+'                                            r1                             r0                   r1            r0   
+   case &H000000006: poke SYSTEM_TYPE,@mem64(49362),peek(SYSTEM_TYPE,@mem64(49361)) ' move mem64(49362), mem64(49361)
+'                                            r1                             r2                   r1            r2  
+   case &H000000007: poke SYSTEM_TYPE,@mem64(49362),peek(SYSTEM_TYPE,@mem64(49363)) ' move mem64(49362), mem64(49363)
+'                                            r2                             r0                   r2            r0   
+   case &H000000008: poke SYSTEM_TYPE,@mem64(49363),peek(SYSTEM_TYPE,@mem64(49361)) ' move mem64(49363), mem64(49361)
+'                                            r2                             r1                   r2            r1   
+   case &H000000009: poke SYSTEM_TYPE,@mem64(49363),peek(SYSTEM_TYPE,@mem64(49362)) ' move mem64(49363), mem64(49362)
+'                                            pc                             r0                   pc            r0   
+   case &H00000000A: poke SYSTEM_TYPE,@mem64(49418),peek(SYSTEM_TYPE,@mem64(49361)) ' move mem64(49418), mem64(49361)
+'                                            pc                             r1                   pc            r1   
+   case &H00000000B: poke SYSTEM_TYPE,@mem64(49418),peek(SYSTEM_TYPE,@mem64(49362)) ' move mem64(49418), mem64(49362)
+'                                            pc                             r2                   pc            r2   
+   case &H00000000C: poke SYSTEM_TYPE,@mem64(49418),peek(SYSTEM_TYPE,@mem64(49363)) ' move mem64(49418), mem64(49363)
+'                                            adr0                           r0                   adr0          r0 
+   case &H00000000D: poke SYSTEM_TYPE,@mem64(49425),peek(SYSTEM_TYPE,@mem64(49361)) ' move mem64(49425), mem64(49361)
+'                                            adr0                           r1                   adr0          r1   
+   case &H00000000E: poke SYSTEM_TYPE,@mem64(49425),peek(SYSTEM_TYPE,@mem64(49362)) ' move mem64(49425), mem64(49362)
+'                                            adr0                           r2                   adr0          r2   
+   case &H00000000F: poke SYSTEM_TYPE,@mem64(49425),peek(SYSTEM_TYPE,@mem64(49363)) ' move mem64(49425), mem64(49363)
+'                                            adr1                           r0                   adr1          r0   
+   case &H000000010: poke SYSTEM_TYPE,@mem64(49432),peek(SYSTEM_TYPE,@mem64(49361)) ' move mem64(49432), mem64(49361)
+'                                            adr1                           r1                   adr1          r1    
+   case &H000000011: poke SYSTEM_TYPE,@mem64(49432),peek(SYSTEM_TYPE,@mem64(49362)) ' move mem64(49432), mem64(49362)
+'                                            adr1                           r2                   adr1          r2   
+   case &H000000012: poke SYSTEM_TYPE,@mem64(49432),peek(SYSTEM_TYPE,@mem64(49363)) ' move mem64(49432), mem64(49363)
+'                                            adr2                           r0                   adr2          r0     
+   case &H000000013: poke SYSTEM_TYPE,@mem64(49446),peek(SYSTEM_TYPE,@mem64(49361)) ' move mem64(49446), mem64(49361)
+'                                            adr2                           r1                   adr2          r1   
+   case &H000000014: poke SYSTEM_TYPE,@mem64(49446),peek(SYSTEM_TYPE,@mem64(49362)) ' move mem64(49446), mem64(49362)
+'                                            adr2                           r2                   adr2          r2  
+   case &H000000015: poke SYSTEM_TYPE,@mem64(49446),peek(SYSTEM_TYPE,@mem64(49363)) ' move mem64(49446), mem64(49363)
+'                              red          r0                   red           r0   
    case &H000000016: mov(mem64(49154),mem64(49361)) ' move mem64(49154), mem64(49361)
 '                              red           r0                    red            r0   
    case &H000000017: mov(mem64(49154),mem64(49361)) ' move mem64(49154), mem64(49361)
@@ -2032,7 +1626,7 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
    case &H000000034: mov(mem64(49355),mem64(49361)) ' move mem64(49355), mem64(49361)
 '                              r0            y0                    r0             y0
    case &H000000035: mov(mem64(49361),mem64(49356)) ' move mem64(49361), mem64(49356)
-'                              x0            r0                    x0             r0   
+'                              y0            r0                    y0             r0   
    case &H000000036: mov(mem64(49356),mem64(49361)) ' move mem64(49356), mem64(49361)
 '                              r0            z0                    r0             z0   
    case &H000000037: mov(mem64(49361),mem64(49357)) ' move mem64(49361), mem64(49357)
@@ -2079,7 +1673,7 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
 '                              r0            r1                 r2                    r1             r2   
    case &H00000004C: mov(mem64(49361),mem64(49362) expt mem64(49363))  ' exp mem64(49362), mem64(49363)
 '                              r0            r1                r2                     r1             r2   
-   case &H00000004D: mov(mem64(49361),MOD_GLSL(mem64(49362), mem64(49363))) ' mod mem64(49361), mem64(49362)
+   case &H00000004D: mov(mem64(49361),modulo(mem64(49362), mem64(49363))) ' mod mem64(49361), mem64(49362)
 '                              r0                r0                                   r0   
    case &H00000004E: mov(mem64(49361),neg mem64(49361))                 ' neg mem64(49361)
 '                              r0            r1                r2                     r1             r2   
@@ -2207,7 +1801,7 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
       pokeb mem64(pc), 0                         
      next pc
 '                                       times     
-     mov(tmp,MOD_GLSL((tmp add 1),mem64(49621)))
+     mov(tmp,modulo((tmp add 1),mem64(49621)))
     loop
    case &H00000006E
     cls
@@ -2516,55 +2110,228 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
    case &H0000000A2
     print #1, "   END-UNSTRING"
    '/                        		            
-   case &H000004000 to &H000007E70 ' Screen Memory(Text 0x000004000-
-                                  '                     0x000007E70) 90x60 Text Mode    
-    poke double,@adr,peek(double, @adr) subt &H000004000
-'                                                                     font_o      
-    mov(c, v):mov(c shl,peek(ubyte,@nibbles(&B0011))):mov(c add,mem64(49384))
-    mov(xs,MOD_GLSL(adr,char_w)):mov(xs shl,peek(ubyte,@nibbles(&B0011))):mov(xs add,peek(ubyte,@nibbles(&B0111)) mul 3.5)
-    mov(ys,adr idiv  char_h):mov(ys shl, peek(ubyte,@nibbles(&B0011))):mov(ys add,peek(ubyte,@nibbles(&B0111)) mul 3.5)
-    if peek(double,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then mov(c and,peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
-    if peek(double,@mem64(49357)) ls peek(ubyte,@nibbles(&B0001)) then poke double,@mem64(49357),peek(ubyte,@nibbles(&B0001))
+   case &H000004000 to &H000007E70 ' Screen Memory(0x000004000(16384)-
+                                  '                0x000007E70(32368)) 90x60 Text Mode
+#define idev /
+'  alpha          =$C005(49157)
+'  red            =$C002(49154)
+'  green          =$C003(49155)
+'  blue           =$C003(49156)
+'  fg_color       =$C0C9(49353)
+'  bg_color       =$C0CA(49354)
+'  x0             =$C0CB(49355)
+'  y0             =$CDCC(49356)
+'  z0             =$CDCD(49357)
+'  x1             =$CDCE(49358)
+'  y1             =$CDCE(49359)
+'  z1             =$CDCF(49360)
+'  r0             =$C9D1(49361)
+'  r1             =$C0D2(49362)
+'  r2             =$C0D3(49363)
+'  r3             =$C0D4(49364)
+'  r4             =$C0D5(49365)
+'  r5             =$C0D6(49366)
+'  r6             =$C0D7(49367)
+'  r7             =$COD8(49368)
+'  scro_x         =$C0E3(49379)
+'  scro_y         =$C0E4(49380)
+'  Screen Memory(0x000000400(001024)-0x0000007E7(002023)) - 40x25 Text Frame Buffer
+'  Screen Memory(0x000004000(016384)-0x000007E70(032368)) - 90x60 Text Frame Buffer
+'  Screen Memory(0x00000D800(055296)-0x00000DBFF(056319)) - Reprogrammable Character Set
+'  Screen Memory(0x0000C0000(786432)-0x0000C7FF0(819184)) - Reprogrammable Character Set
+'  Screen Memory(0x0000D0000(851968)-0x0000D3E70(867952)) - 120x60 Text Frame Buffer 
+
+    poke SYSTEM_TYPE,@adr,peek(SYSTEM_TYPE, @adr) subt &H000004000    
+    mov(c, v)
+    mov(c shl,peek(ubyte,@nibbles(&B0011)))
+'                   font_o      
+    mov(c add,mem64(49384))
+    mov(xs,modulo(adr,90))
+    mov(xs shl,peek(ubyte,@nibbles(&B0011)))
+    mov(xs add,peek(ubyte,@nibbles(&B0111)) mul 3.5)
+    mov(ys,adr idiv  90):mov(ys shl, peek(ubyte,@nibbles(&B0011)))
+    mov(ys add,peek(ubyte,@nibbles(&B0111)) mul 3.5)
+    if peek(SYSTEM_TYPE,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then 
+      mov(c and,peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
+            add peek(ubyte,@nibbles(&B1111)))
+    end if
+    if peek(SYSTEM_TYPE,@mem64(49357)) ls peek(ubyte,@nibbles(&B0001)) then 
+      poke SYSTEM_TYPE,@mem64(49357),peek(ubyte,@nibbles(&B0001))
+    end if  
     poke64(49410,peek(ubyte,@nibbles(&B0000))) 'Screen lock
-    poke double,@y,peek(ubyte,@nibbles(&B0000)):poke double,@x,peek(ubyte,@nibbles(&B0000))
+    poke SYSTEM_TYPE,@y,peek(ubyte,@nibbles(&B0000))
+    poke SYSTEM_TYPE,@x,peek(ubyte,@nibbles(&B0000))
 '                                    font_h               font_w             
       do until logic_and(mov(y,mem64(49386)),mov(x,mem64(49385)))
-#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
-    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
-    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
-'                 x0                                              scro_x        
-        mov(mem64(49355),((((xs add x) mul 5) ndiv 2) add mem64(49379)))
-'                 y0                                              scro_y
-        mov(mem64(49356),((((ys add y) mul 4) ndiv 2) add mem64(49380)))
-'                 x1                                                       scro_x          
-        mov(mem64(49358),(((((xs add x) mul 5) add 7) ndiv 2) add mem64(49379)))
-'                 y1                                                       scro_y          
-        mov(mem64(49359),(((((ys add y) mul 4) add 4) ndiv 2) add mem64(49380))) 
-#elseif defined(__FB_DOS__)
-'                 x0                                                 scro_x        
-        mov(mem64(49355),((((xs add x) mul 2.08) ndiv 2) add mem64(49379)))
-'                 y0                                                 scro_y
-        mov(mem64(49356),((((ys add y) mul 2.22) ndiv 2) add mem64(49380)))
-'                 x1                                                          scro_x          
-        mov(mem64(49358),(((((xs add x) mul 2.08) add 7) ndiv 2) add mem64(49379)))
-'                 y1                                                          scro_y          
-        mov(mem64(49359),(((((ys add y) mul 2.22) add 4) ndiv 2) add mem64(49380))) 
+
+#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
+
+        pokeb &H000000002,xs                              ' move r1,[xs]
+        pokeb &H000000003,x                               ' move r2,[x]
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+'       scro_x=$C0E3(49379)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+'       x0=$C0CB(49355)           
+        pokeb &H000000022,peek(ubyte,@nibbles(&B0000))    ' move x0,r0
+        
+        pokeb &H000000002,ys                              ' move r1,[ys]
+        pokeb &H000000003,y                               ' move r2,[y]
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+'       scro_y=$C0E4(49380)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+'       y0=$CDCC(49356)           
+        pokeb &H000000024,peek(ubyte,@nibbles(&B0000))    ' move y0,r0 
+        
+        pokeb &H000000002,xs                              ' move r1,[xs]
+        pokeb &H000000003,x                               ' move r2,[x]
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0111))    ' move r2,7
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+'       scro_x=$C0E3(49379)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+'       x1=$CDCE(49358)           
+        pokeb &H000000023,peek(ubyte,@nibbles(&B0000))    ' move x0,r0
+        
+        pokeb &H000000002,ys                              ' move r1,[ys]
+        pokeb &H000000003,y                               ' move r2,[y]
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0100))    ' move r2,4
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+'       scro_y=$C0E4(49380)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
+        pokeb &H000000047,0                               ' add  r1,r2
+'       y1=$CDCE(49359)           
+        pokeb &H000000025,0                               ' move y2,r0
+
+#else
+       
+        pokeb &H000000002,xs                              ' move r1,[xs]
+        pokeb &H000000003,x                               ' move r2,[x]
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0101))    ' move r2,5
+        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+'       scro_x=$C0E3(49379)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+'       x0=$C0CB(49355)           
+        pokeb &H000000022,peek(ubyte,@nibbles(&B0000))    ' move x0,r0
+        
+        pokeb &H000000002,ys                              ' move r1,[ys]
+        pokeb &H000000003,y                               ' move r2,[y]
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,3.5                             ' move r2,3.5
+        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+'       scro_y=$C0E4(49380)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+'       y0=$CDCC(49356)           
+        pokeb &H000000024,peek(ubyte,@nibbles(&B0000))    ' move y0,r0 
+        
+        pokeb &H000000002,xs                              ' move r1,[xs]
+        pokeb &H000000003,x                               ' move r2,[x]
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r2
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0101))    ' move r2,5
+        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0111))    ' move r2,7
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+'       scro_x=$C0E3(49379)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+'       x1=$CDCE(49358)           
+        pokeb &H000000023,peek(ubyte,@nibbles(&B0000))    ' move x0,r0
+        
+        pokeb &H000000002,ys                              ' move r1,[ys]
+        pokeb &H000000003,y                               ' move r2,[y]
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,3.5                             ' move r2,3.5
+        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0111))    ' move r2,7
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
+        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+'       scro_y=$C0E4(49380)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
+        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+'       y1=$CDCE(49359)           
+        pokeb &H000000025,peek(ubyte,@nibbles(&B0000))    ' move y2,r0
+        
 #endif
-	    poke64(49404d,peek64(49404)) 'Flag: Print Reverse Characters?0=No
-'                                    font_w	    
-        mov(x add,1): if x gt mem64(49385) then mov(x,0): mov(y add,1): mov(c add,1)
+
+	    poke64(49404,peek64(49404)) 'Flag: Print Reverse Characters?0=No
+    
+        mov(x add,1)
+'                     font_w	        
+        if x gt mem64(49385) then 
+          mov(x,0)
+          mov(y add,1)
+          mov(c add,1)
+       end if   
       loop
-      poke64(49412d,0) 'Screen Unlock
+      poke64(49412,0) 'Screen Unlock
 '                scr_ptr      
-    mov(adr add,&H000004000):mov(v,mem64(adr))
+    mov(adr add,&H000004000)
+    mov(v,mem64(adr))
    case &H0000A0000 ' Graphics Register Ports
-    line(x_axis0, y_axis0)-(x_axis0+pixel_size,y_axis0+pixel_size),_
+    line fgimage,(x_axis0, y_axis0)-(x_axis0+pixel_size,y_axis0+pixel_size),_
          rgba(red2,green2,blue2,xalpha2), BF 
    case &H0000A0001 
-    line(x_axis0, y_axis0)-(x_axis1, y_axis1), rgba(red2,green2,blue2,_
+    line fgimage,(x_axis0, y_axis0)-(x_axis1, y_axis1), rgba(red2,green2,blue2,_
          xalpha2), , bitmask 
    case &H0000A0002 
-    circle(x_axis0, y_axis1), radius, rgba(red2,green2,blue2,xalpha2)
+    circle fgimage,(x_axis0, y_axis1), radius, rgba(red2,green2,blue2,xalpha2)
    /' 
    case &H0000A0003: povray.render()
    case &H0000A0005: povray.open_pov()
@@ -2603,20 +2370,232 @@ def MEMORY_T.pokeb(byval adr  as double, byval v as double)
    '/                    
    case in range(&H0000C0000, &H0000C7FF0) ' Screen Memory(0x000C0000-0x000C7FF0)
                                            ' Reprogrammable character set
-   mov(adr subt, &H00000C0000)
-   mov(char(adr),v)
-   mov(adr add, &H00000C0000)         
+	   mov(adr subt, &H00000C0000)
+	   mov(char(adr),v)
+	   mov(adr add, &H00000C0000)
+   case in range(&H0000D0000, &H0000D3E70) ' Screen Memory(0x0000D0000(851968)-
+                                           '               0x0000D3E70(867952)) 120x60 Text Mode
+'  alpha          =$C005(49157)
+'  red            =$C002(49154)
+'  green          =$C003(49155)
+'  blue           =$C003(49156)
+'  fg_color       =$C0C9(49353)
+'  bg_color       =$C0CA(49354)
+'  x0             =$C0CB(49355)
+'  y0             =$CDCC(49356)
+'  z0             =$CDCD(49357)
+'  x1             =$CDCE(49358)
+'  y1             =$CDCE(49359)
+'  z1             =$CDCF(49360)
+'  r0             =$C9D1(49361)
+'  r1             =$C0D2(49362)
+'  r2             =$C0D3(49363)
+'  r3             =$C0D4(49364)
+'  r4             =$C0D5(49365)
+'  r5             =$C0D6(49366)
+'  r6             =$C0D7(49367)
+'  r7             =$COD8(49368)
+'  scro_x         =$C0E3(49379)
+'  scro_y         =$C0E4(49380)
+'  Screen Memory(0x000000400(001024)-0x0000007E7(002023)) - 40x25 Text Frame Buffer
+'  Screen Memory(0x000004000(016384)-0x000007E70(032368)) - 90x60 Text Frame Buffer
+'  Screen Memory(0x00000D800(055296)-0x00000DBFF(056319)) - Reprogrammable Character Set
+'  Screen Memory(0x0000C0000(786432)-0x0000C7FF0(819184)) - Reprogrammable Character Set
+'  Screen Memory(0x0000D0000(851968)-0x0000D3E70(867952)) - 120x60 Text Frame Buffer 
+  
+    poke SYSTEM_TYPE,@adr,peek(SYSTEM_TYPE, @adr) subt &H0000D0000     
+    mov(c, v)
+    mov(c shl,peek(ubyte,@nibbles(&B0011)))
+'                   font_o 
+    mov(c add,mem64(49384))
+    mov(xs,modulo(adr,160))
+    mov(xs shl,peek(ubyte,@nibbles(&B0011)))
+    mov(xs add,peek(ubyte,@nibbles(&B1000)) mul peek(ubyte,@nibbles(&B0100)))
+    mov(ys,adr idiv  160)
+    mov(ys shl, peek(ubyte,@nibbles(&B0011)))
+    mov(ys add,peek(ubyte,@nibbles(&B1000)) mul peek(ubyte,@nibbles(&B0100)))
+    if peek(SYSTEM_TYPE,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then 
+       mov(c and,peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
+    end if   
+    if peek(SYSTEM_TYPE,@mem64(49357)) ls peek(ubyte,@nibbles(&B0001)) then 
+       poke SYSTEM_TYPE,@mem64(49357),peek(ubyte,@nibbles(&B0001))
+    end if   
+    poke64(49410,peek(ubyte,@nibbles(&B0000))) 'Screen lock
+    poke SYSTEM_TYPE,@y,peek(ubyte,@nibbles(&B0000))
+    poke SYSTEM_TYPE,@x,peek(ubyte,@nibbles(&B0000))
+'                                    font_h               font_w             
+      do until logic_and(mov(y,mem64(49386)),mov(x,mem64(49385)))
+#if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
+    defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
+    defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
+
+        pokeb &H000000002,xs                              ' move r1,[xs]
+        pokeb &H000000003,x                               ' move r2,[x]
+        pokeb &H000000047,0                               ' add  r1,r2
+        pokeb &H000000006,0                               ' move r1,r2
+        pokeb &H000000003,3.75                            ' move r2,3.75
+        pokeb &H000000049,0                               ' mul  r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+        pokeb &H000000003,2                               ' move r2,2
+        pokeb &H00000004B,0                               ' idev r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+'       scro_x=$C0E3(49379)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
+        pokeb &H000000047,0                               ' add  r1,r2
+'       x0=$C0CB(49355)           
+        pokeb &H000000022,0                               ' move x0,r0
+        
+        pokeb &H000000002,ys                              ' move r1,[ys]
+        pokeb &H000000003,y                               ' move r2,[y]
+        pokeb &H000000047,0                               ' add  r1,r2
+        pokeb &H000000006,0                               ' move r1,r2
+        pokeb &H000000003,3.75                            ' move r2,3.75
+        pokeb &H000000049,0                               ' mul  r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+        pokeb &H000000003,2                               ' move r2,2
+        pokeb &H00000004B,0                               ' idev r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+'       scro_y=$C0E4(49380)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
+        pokeb &H000000047,0                               ' add  r1,r2
+'       y0=$CDCC(49356)           
+        pokeb &H000000024,0                               ' move y0,r0 
+        
+        pokeb &H000000002,xs                              ' move r1,[xs]
+        pokeb &H000000003,x                               ' move r2,[x]
+        pokeb &H000000047,0                               ' add  r1,r2
+        pokeb &H000000006,0                               ' move r1,r2
+        pokeb &H000000003,3.75                            ' move r2,3.75
+        pokeb &H000000049,0                               ' mul  r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+        pokeb &H000000003,7                               ' move r2,7
+        pokeb &H000000047,0                               ' add  r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+        pokeb &H000000003,2                               ' move r2,2
+        pokeb &H00000004B,0                               ' idev r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+'       scro_x=$C0E3(49379)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
+        pokeb &H000000047,0                               ' add  r1,r2
+'       x1=$CDCE(49358)           
+        pokeb &H000000023,0                               ' move x0,r0
+        
+        pokeb &H000000002,ys                              ' move r1,[ys]
+        pokeb &H000000003,y                               ' move r2,[y]
+        pokeb &H000000047,0                               ' add  r1,r2
+        pokeb &H000000006,0                               ' move r1,r2
+        pokeb &H000000003,3.75                            ' move r2,3.75
+        pokeb &H000000049,0                               ' mul  r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+        pokeb &H000000003,4                               ' move r2,4
+        pokeb &H000000047,0                               ' add  r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+        pokeb &H000000003,2                               ' move r2,2
+        pokeb &H00000004B,0                               ' idev r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+'       scro_y=$C0E4(49380)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
+        pokeb &H000000047,0                               ' add  r1,r2
+'       y1=$CDCE(49359)           
+        pokeb &H000000025,0                               ' move y2,r0
+      
+#elseif defined(__FB_DOS__)
+
+        pokeb &H000000002,xs                              ' move r1,[xs]
+        pokeb &H000000003,x                               ' move r2,[x]
+        pokeb &H000000047,0                               ' add  r1,r2
+        pokeb &H000000006,0                               ' move r1,r2
+        pokeb &H000000003,2.08                            ' move r2,2.08
+        pokeb &H000000049,0                               ' mul  r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+        pokeb &H000000003,2                               ' move r2,2
+        pokeb &H00000004B,0                               ' idev r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+'       scro_x=$C0E3(49379)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
+        pokeb &H000000047,0                               ' add  r1,r2
+'       x0=$C0CB(49355)           
+        pokeb &H000000022,0                               ' move x0,r0
+        
+        pokeb &H000000002,ys                              ' move r1,[ys]
+        pokeb &H000000003,y                               ' move r2,[y]
+        pokeb &H000000047,0                               ' add  r1,r2
+        pokeb &H000000006,0                               ' move r1,r2
+        pokeb &H000000003,2.22                            ' move r2,2.22
+        pokeb &H000000049,0                               ' mul  r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+        pokeb &H000000003,2                               ' move r2,2
+        pokeb &H00000004B,0                               ' idev r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+'       scro_y=$C0E4(49380)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
+        pokeb &H000000047,0                               ' add  r1,r2
+'       y0=$CDCC(49356)           
+        pokeb &H000000024,0                               ' move y0,r0 
+        
+        pokeb &H000000002,xs                              ' move r1,[xs]
+        pokeb &H000000003,x                               ' move r2,[x]
+        pokeb &H000000047,0                               ' add  r1,r2
+        pokeb &H000000006,0                               ' move r1,r2
+        pokeb &H000000003,2.08                            ' move r2,2.08
+        pokeb &H000000049,0                               ' mul  r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+        pokeb &H000000003,7                               ' move r2,7
+        pokeb &H000000047,0                               ' add  r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+        pokeb &H000000003,2                               ' move r2,2
+        pokeb &H00000004B,0                               ' idev r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+'       scro_x=$C0E3(49379)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
+        pokeb &H000000047,0                               ' add  r1,r2
+'       x1=$CDCE(49358)           
+        pokeb &H000000023,0                               ' move x0,r0
+        
+        pokeb &H000000002,ys                              ' move r1,[ys]
+        pokeb &H000000003,y                               ' move r2,[y]
+        pokeb &H000000047,0                               ' add  r1,r2
+        pokeb &H000000006,0                               ' move r1,r2
+        pokeb &H000000003,2.22                            ' move r2,2.22
+        pokeb &H000000049,0                               ' mul  r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+        pokeb &H000000003,4                               ' move r2,4
+        pokeb &H000000047,0                               ' add  r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+        pokeb &H000000003,2                               ' move r2,2
+        pokeb &H00000004B,0                               ' idev r1,r2
+        pokeb &H000000006,0                               ' move r1,r0
+'       scro_y=$C0E4(49380)
+        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
+        pokeb &H000000047,0                               ' add  r1,r2
+'       y1=$CDCE(49359)           
+        pokeb &H000000025,0                               ' move y2,r0
+       
+#endif
+	    poke64(49404d,peek64(49404)) 'Flag: Print Reverse Characters?0=No
+'                                    font_w	    
+        mov(x add,1)
+        if x gt mem64(49385) then 
+          mov(x,0)
+          mov(y add,1)
+          mov(c add,1)
+        end if  
+      loop
+      poke64(49412d,0) 'Screen Unlock
+'                scr_ptr      
+    mov(adr add,&H0000D0000)
+    mov(v,mem64(adr))          
   end select  
 end def
 
-def MEMORY_T.pokew(byval adr  as double, byval v as double)
+def MEMORY_T.pokew(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
 	Pokeb adr, lobyte(v)
 	Pokeb adr add 1, hibyte(v)
 end def
 
-proc MEMORY_T.issymbol(byval s    as string, byval start as double) as double
+proc MEMORY_T.issymbol(byval s    as string, byval start as SYSTEM_TYPE) as SYSTEM_TYPE
  do
-  select case asc(mid(s, start, 1))
+  select case as const asc(mid(s, start, 1))
    case in range(&H30, &H39): exit do
    case else: mov(start, start add 1)
   end select
@@ -2624,10 +2603,10 @@ proc MEMORY_T.issymbol(byval s    as string, byval start as double) as double
  mov(issymbol,start)
 end proc
 
-proc MEMORY_T.isnumber(byval s    as string, byval start as double) as double
+proc MEMORY_T.isnumber(byval s    as string, byval start as SYSTEM_TYPE) as SYSTEM_TYPE
  dim as integer tmp: mov(tmp,start)
  do
-  select case asc(mid(get_data, tmp, 1))
+  select case as const asc(mid(get_data, tmp, 1))
    case &H30 to &H39: mov(tmp, tmp add 1)
    case &H26, &H2B, &H2D, &H2E, &H42: mov(tmp, tmp add 1)
    case &H62, &H48, &H68: mov(tmp, tmp add 1)
@@ -2669,7 +2648,7 @@ def MEMORY_T.getXYZ()
  end if
 end def
  
-proc MEMORY_T.Peek64(byval adr as double) as double
+proc MEMORY_T.Peek64(byval adr as SYSTEM_TYPE) as SYSTEM_TYPE
   select case adr 
   case &HE000 to &HFFFF:mov(proc,kernal(adr subt &HE000))
   case &HA000 to &HBFFF:mov(proc,basic (adr subt &HA000))
@@ -2681,30 +2660,31 @@ proc MEMORY_T.Peek64(byval adr as double) as double
   end select
 end proc
 
-def MEMORY_T.poke64(byval adr as double,byval v as double)
-  poke double,@mem64(peek(double,@adr)), peek(double,@v)
+def MEMORY_T.poke64(byval adr as SYSTEM_TYPE,byval v as SYSTEM_TYPE)
+  poke SYSTEM_TYPE,@mem64(peek(SYSTEM_TYPE,@adr)), peek(SYSTEM_TYPE,@v)
   ' Color RAM starts at 55296($D800) and ends at 56319($DBFF) 
-  cmp logic_and(peek(double,@adr) gs 55296,peek(double,@adr) ls 56319) jmp L670
+  cmp logic_and(peek(SYSTEM_TYPE,@adr) gs 55296,peek(SYSTEM_TYPE,@adr) ls 56319) jmp L670
   jmp L671
   
 L670:
   /'
   cmp logic_and(adr gs 55296,adr ls 56295) then
-    poke64(646,peek(double,@v))
+    poke64(646,peek(SYSTEM_TYPE,@v))
   end cmp 
   '/
-  poke double,@adr,peek(double,@adr) subt 55296
+  poke SYSTEM_TYPE,@adr,peek(SYSTEM_TYPE,@adr) subt 55296
     
-  poke double,@col(peek(double,@adr)),peek(double,@v)
+  poke SYSTEM_TYPE,@col(peek(SYSTEM_TYPE,@adr)),peek(SYSTEM_TYPE,@v)
   
-'                    scr_ptr=$C12B(49451)
-  poke double,@adr,peek(double,@adr) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) _
-     shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-     add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+'                                                                          scr_ptr=$C12B(49451)
+  poke SYSTEM_TYPE,@adr,peek(SYSTEM_TYPE,@adr) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) _
+                    shl peek(ubyte,@nibbles(&B1100))                   add peek(ubyte,@nibbles(&B0001)) _
+                    shl peek(ubyte,@nibbles(&B1000))                   add peek(ubyte,@nibbles(&B0010)) _
+                    shl peek(ubyte,@nibbles(&B0100))                   add peek(ubyte,@nibbles(&B1011))))
      
-  poke double, @v,peek(double,@mem64(peek(double,@adr)))
+  poke SYSTEM_TYPE, @v,peek(SYSTEM_TYPE,@mem64(peek(SYSTEM_TYPE,@adr)))
 L671:  
-  cmp peek(double,@adr) eq 199 jmp L672 ' Reverse Print Mode(0=Off)
+  cmp peek(SYSTEM_TYPE,@adr) eq 199 jmp L672 ' Reverse Print Mode(0=Off)
   jmp L673
 L672:
   /'
@@ -2806,254 +2786,254 @@ L931:
   if mov(adr, VMCSB) then
   'dim as ubyte mov(hnibble,high_nibble(cast(ubyte,v)))
   'dim as ubyte mov(lnibble,low_nibble(cast(ubyte,v)))
-    select case  v
+    select case peek(SYSTEM_TYPE,@v)
 		   case peek(ubyte,@nibbles(&B1111)):
 		   
-'                              scr_ptr=$C12B(49451)		     
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0000))
+'                                   scr_ptr=$C12B(49451)		     
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B0000))
 		                   
-		    '                                        scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
-		                  shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-		                  shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
-		                  shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+		    '                                             scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		             shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+		             shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+		             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
 
 		   case peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
 
-'                              scr_ptr=$C12B(49451)		   
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0100)) _
-		                   shl peek(ubyte,@nibbles(&B1000))
+'                                   scr_ptr=$C12B(49451)		   
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B0100)) _
+		                        shl peek(ubyte,@nibbles(&B1000))
 		                   
-		    '                                        scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+		    '                                            scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(HIBASE),hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		            shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+		            shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+		            shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
 		                   
 		   case peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
 		   
-'                              scr_ptr=$C12B(49451)		     
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B1000)) _
-		                   shl peek(ubyte,@nibbles(&B1000))
+'                                    scr_ptr=$C12B(49451)		     
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B1000)) _
+		                        shl peek(ubyte,@nibbles(&B1000))
 		                   
 		    '                                        scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+		    poke SYSTEM_TYPE,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		             shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+		             shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+		             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
 		                   
 		   case peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
 
-'                              scr_ptr=$C12B(49451)		     
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1000))
+'                                   scr_ptr=$C12B(49451)		     
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B1100)) _
+		                        shl peek(ubyte,@nibbles(&B1000))
 		                   
 		    '                                        scr_ptr=$C12B(49451)	    
-		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+		    poke SYSTEM_TYPE,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		             shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+		             shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+		             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
 		                   
 		   case peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
 		   
-'                               scr_ptr=$C12B(49451)		     
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1100))
+'                                   scr_ptr=$C12B(49451)		     
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B0001)) _
+		                        shl peek(ubyte,@nibbles(&B1100))
 		                   
-		    '                                        scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		    '                                       scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
 		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
 		                   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
 		                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
 
 		   case peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
 		   
-'                              scr_ptr=$C12B(49451)		     
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100)) _
-		                   shl peek(ubyte,@nibbles(&B1000))
+'                                   scr_ptr=$C12B(49451)		     
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B0001)) _
+		                        shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100)) _
+		                        shl peek(ubyte,@nibbles(&B1000))
 		                   
 		    '                                        scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+		    poke SYSTEM_TYPE,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		             shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+		             shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+		             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
 		                  
 		   case peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
 		   
-'                              scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)) _
-		                   shl peek(ubyte,@nibbles(&B1000))
+'                                   scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B0001)) _
+		                        shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)) _
+		                        shl peek(ubyte,@nibbles(&B1000))
 		                   
-		    '                                        scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+		    '                                             scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		             shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+		             shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+		             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
 
 		   case peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
 		   
-'                              scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1000))
+'                                   scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B0001)) _
+		                        shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) _
+		                        shl peek(ubyte,@nibbles(&B1000))
 		                   
 		    '                                        scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+		    poke SYSTEM_TYPE,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		             shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+		             shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+		             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
 
 		   case peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
 		   
-'                              scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B1100))
+'                                   scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B0010)) _
+		                        shl peek(ubyte,@nibbles(&B1100))
 		                   
 		    '                                        scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+		    poke SYSTEM_TYPE,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		             shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+		             shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+		             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
 		                   
 		   case peek(ubyte,@nibbles(&B1001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
 		   
-'                              scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100)) _
-		                   shl peek(ubyte,@nibbles(&B1000))
+'                                   scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B0001)) _
+		                        shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100)) _
+		                        shl peek(ubyte,@nibbles(&B1000))
 		                   
-		    '                                        scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+		    '                                             scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		             shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+		             shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+		             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
 		                   
 		   case peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))
 		   : 
-'                              scr_ptr=$C12B(49451)		   
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)) _
-		                   shl peek(ubyte,@nibbles(&B1000))
+'                                   scr_ptr=$C12B(49451)		   
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B0010)) _
+		                        shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)) _
+		                        shl peek(ubyte,@nibbles(&B1000))
 		                   
-		    '                                        scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+		    '                                             scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		             shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+		             shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+		             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
 		                   
 		   case peek(ubyte,@nibbles(&B1011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
 		   
-'                              scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1000))
+'                                   scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B0010)) _
+		                        shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) _
+		                        shl peek(ubyte,@nibbles(&B1000))
 		                   
-		    '                                        scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+		    '                                             scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		             shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+		             shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+		             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
 		                   
 		   case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
 		    
-'                              scr_ptr=$C12B(49451)		   
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0011)) _
-		                   shl peek(ubyte,@nibbles(&B1100))
+'                                   scr_ptr=$C12B(49451)		   
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B0011)) _
+		                        shl peek(ubyte,@nibbles(&B1100))
 		                   
-		    '                                        scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+		    '                                             scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		             shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+		             shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+		             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
 		                   
 	       case peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
 	       
-'                              scr_ptr=$C12B(49451)	        
-	        poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-	                       add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-	                       add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-	                       add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0011)) _
-	                       shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100)) _
-	                       shl peek(ubyte,@nibbles(&B1000))
+'                                   scr_ptr=$C12B(49451)	        
+	        poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+	                            add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+	                            add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+	                            add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B0011)) _
+	                            shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100)) _
+	                            shl peek(ubyte,@nibbles(&B1000))
 	                       
-	        '                                        scr_ptr=$C12B(49451)	        
-	        poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-	                       add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-	                       add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-	                       add peek(ubyte,@nibbles(&B1011))))
+	        '                                            scr_ptr=$C12B(49451)	        
+	        poke SYSTEM_TYPE,@mem64(HIBASE),hibyte(mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+	                                                 add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+	                                                 add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+	                                                 add peek(ubyte,@nibbles(&B1011))))
 	                       
 		   case peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
 		   
-'                              scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0011)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)) _
-		                   shl peek(ubyte,@nibbles(&B1000))
+'                                   scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B0011)) _
+		                        shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)) _
+		                        shl peek(ubyte,@nibbles(&B1000))
 		                   
-		    '                                        scr_ptr=$C12B(49451)
-		    poke double,@mem64(&H0288), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+		    '                                             scr_ptr=$C12B(49451)
+		    poke SYSTEM_TYPE,@mem64(&H0288), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		             shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+		             shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+		             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
 		                   
 		   case peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)):
 		   
-'                              scr_ptr=$C12B(49451)		    
-		    poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-		                   add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
-		                   add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
-		                   add peek(ubyte,@nibbles(&B1011))), peek(ubyte,@nibbles(&B0011)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1000))
+'                                   scr_ptr=$C12B(49451)		    
+		    poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+		                        add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) _
+		                        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) _
+		                        add peek(ubyte,@nibbles(&B1011))),   peek(ubyte,@nibbles(&B0011)) _
+		                        shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) _
+		                        shl peek(ubyte,@nibbles(&B1000))
 		                   
 		    '                                        scr_ptr=$C12B(49451)
-		    poke double,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
-		                   shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
-		                   shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
-		                   shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
+		    poke SYSTEM_TYPE,@mem64(HIBASE), hibyte(mem64(peek(ubyte,@nibbles(&B1100)) _
+		             shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
+		             shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+		             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))))
     end select
   ' Sprite X Registers  
   elseif logic_or(logic_or(logic_or(mov(adr, SP0X), mov(adr, SP1X)), logic_or(mov(adr, SP2X), mov(adr, SP3X))), _
@@ -3112,7 +3092,7 @@ L1827:
    #include once "bg_color.bi"
 L2086:
   end if
-  select case peek(double,@adr)
+  select case peek(SYSTEM_TYPE,@adr)
     case peek(ubyte,@nibbles(&B0000))
     'Play DVD=$C000(49152)  
 	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) 'Play DVD
@@ -3147,98 +3127,136 @@ L2086:
 #endif     	  
   ' label$3129:;
   ' goto label$3124;
-  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) ) goto label$3131;
+  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  '                      + (int64)*(uint8*)4808098ll) ) goto label$3131;
   ' label$3132:;
   ' {
-	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)) ' Foreground Red=$C002(49154)
-  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
-  '                     fg_color=$C0C9(49353)                                                                                                          alpha=$C005(49157)                                                                                                                                          red=$C002(49154)                                                                                                                     green=$C003(49155)                                                                                           blue=$C003(49156)                	     
-	 poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011)))) shl peek(ubyte,@nibbles(&B1000)) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100))))
+  ' Foreground Red=$C002(49154)
+	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)) 
+  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  '        + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) \
+  '       << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 \
+  '        + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) \
+  '       << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) \
+  '        + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 \
+  '        + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) \
+  '       << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) \
+  '        & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll \
+  '       << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) \
+  '       << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll \
+  '       << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
+  '                          fg_color=$C0C9(49353)                                                                                                          alpha=$C005(49157)                                                                                                                                          red=$C002(49154)                                                                                                                     green=$C003(49155)                                                                                           blue=$C003(49156)                	     
+	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100))))
   ' }
   ' goto label$3124;
   ' label$3131:;
-  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) ) goto label$3133;
+  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  '                      + (int64)*(uint8*)4808099ll) ) goto label$3133;
   ' label$3134:;
   ' {
- 	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011)) ' Foreground Green=$C003(49155)
-  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
-  '                     fg_color=$C0C9(49353)                                                                                                          alpha=$C005(49157)                                                                                                                                          red=$C002(49154)                                                                                                                     green=$C003(49155)                                                                                           blue=$C003(49156)                	     
-	 poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011)))) shl peek(ubyte,@nibbles(&B1000)) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100))))
+  ' Foreground Green=$C003(49155)
+ 	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011))
+  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  '                              + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) \
+  '                              + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) \
+  '                  = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 \
+  '                           + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  '                              + (int64)*(uint8*)4808101ll) << (3ll & 63ll))) )) \
+  '                          << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + \
+  '                                (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( \
+  '                             *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll \
+  '                             << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) \
+  '                             << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll \
+  '                             << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) \
+  '                             + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 \
+  '                             + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  '                                + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) \
+  '                              << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 \
+  '                             + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  '                                + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
+  '                          fg_color=$C0C9(49353)                                                                                                                                                                     alpha=$C005(49157)                                                                                                                                                                                                                red=$C002(49154)                                                                                                                                                                                 green=$C003(49155)                                                                                                                                            blue=$C003(49156)                	     
+	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100))))
   ' }
   ' goto label$3124;
   ' label$3133:;
   ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) ) goto label$3135;
   ' label$3136:;
-  ' {  
-	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100)) ' Foreground Blue=$C003(49156)
+  ' {
+  ' Foreground Blue=$C003(49156)  
+	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100))
   ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
-  '                     fg_color=$C0C9(49353)                                                                                                          alpha=$C005(49157)                                                                                                                                          red=$C002(49154)                                                                                                                     green=$C003(49155)                                                                                           blue=$C003(49156)                	     
-	 poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011)))) shl peek(ubyte,@nibbles(&B1000)) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100))))
+  '                          fg_color=$C0C9(49353)                                                                                                                                                                     alpha=$C005(49157)                                                                                                                                                                                                                red=$C002(49154)                                                                                                                                                                                 green=$C003(49155)                                                                                                                                            blue=$C003(49156)                	     
+	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100))))
   ' }
   ' goto label$3124;
   ' label$3135:;
   ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) ) goto label$3137;
   ' label$3138:;
   ' {
-	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101)) ' Foreground Alpha=$C004(49357)
+  ' Foreground Alpha=$C004(49357)
+	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101))
   ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
-  '                     fg_color=$C0C9(49353)                                                                                                          alpha=$C005(49157)                                                                                                                                          red=$C002(49154)                                                                                                                     green=$C003(49155)                                                                                           blue=$C003(49156)                	     
-	 poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011)))) shl peek(ubyte,@nibbles(&B1000)) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100))))
+  '                          fg_color=$C0C9(49353)                                                                                                                                                                alpha=$C005(49157)                                                                                                                                                                                                                red=$C002(49154)                                                                                                                                                                                 green=$C003(49155)                                                                                                                                            blue=$C003(49156)                	     
+	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100))))
   ' }
   ' goto label$3124;
   ' label$3137:;
   ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) ) goto label$3139;
   ' label$3140:;
   ' {
-	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110)) ' Background Red=$C005(49358)
+  ' Background Red=$C005(49358)
+	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110))
   ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808106ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) << (3ll & 63ll)));
-  '                     bg_color=$C0C9(49354)                                                                                                         alpha=$C009(49161)                                                                                                                                         red=$C006(49158)                                                                                                                     green=$C007(49159)                                                                                           blue=$C008(49160)
-	 poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111)))) shl peek(ubyte,@nibbles(&B1000)) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000))))
+  '                          bg_color=$C0CA(49354)                                                                                                                                                                alpha=$C009(49161)                                                                                                                                                                                                                red=$C006(49158)                                                                                                                                                                                 green=$C007(49159)                                                                                                                                            blue=$C008(49160)
+	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000))))
   ' }
   ' goto label$3124;
   ' label$3139:;
   ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) ) goto label$3141;
   ' label$3142:;
   ' {
-	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111)) ' Background Green=$C006(49359)
+  ' Background Green=$C006(49359)
+	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111))
   ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808106ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) << (3ll & 63ll)));
-  '                     bg_color=$C0C9(49354)                                                                                                         alpha=$C009(49161)                                                                                                                                         red=$C006(49158)                                                                                                                     green=$C007(49159)                                                                                           blue=$C008(49160)
-	 poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111)))) shl peek(ubyte,@nibbles(&B1000)) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000))))
+  '                          bg_color=$C0CA(49354)                                                                                                         alpha=$C009(49161)                                                                                                                                         red=$C006(49158)                                                                                                                     green=$C007(49159)                                                                                           blue=$C008(49160)
+	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000))))
   ' }
   ' goto label$3124;
   ' label$3141:;
   ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) ) goto label$3143;
   ' label$3144:;
-	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)) ' Background Blue=$C007(49360)
+  ' Background Blue=$C007(49360)
+	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)) 
   ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808106ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) << (3ll & 63ll)));
-  '                     bg_color=$C0C9(49354)                                                                                                         alpha=$C009(49161)                                                                                                                                         red=$C006(49158)                                                                                                                     green=$C007(49159)                                                                                           blue=$C008(49160)
-	 poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111)))) shl peek(ubyte,@nibbles(&B1000)) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000))))
+  '                          bg_color=$C0CA(49354)                                                                                                         alpha=$C009(49161)                                                                                                                                         red=$C006(49158)                                                                                                                     green=$C007(49159)                                                                                           blue=$C008(49160)
+	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000))))
   ' }
   ' goto label$3124;
   ' label$3143:;
   ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) ) goto label$3145;
   ' label$3146:;
   ' {
-	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)) ' Background Alapha=$C008(49361)
+  ' Background Alapha=$C008(49361)
+	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001))
   ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) << (3ll & 63ll)));
-  '                     bg_color=$C0C9(49354)                                                                                                         alpha=$C009(49161)                                                                                                                                         red=$C006(49158)                                                                                                                     green=$C007(49159)                                                                                           blue=$C008(49160)
-	 poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111)))) shl peek(ubyte,@nibbles(&B1000)) add peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000))))
+  '                          bg_color=$C0CA(49354)                                                                                                                                                  alpha=$C009(49161)                                                                                                                                                                                                                                   red=$C006(49158)                                                                                                                                                                                 green=$C007(49159)                                                                                           blue=$C008(49160)
+	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000))))
   ' }
 #if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__)  or defined(__FB_XBOX__) or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
     'ld x0 ($C0CB/49355) 
 	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))
-'                       x0=$C0CB(49355)                                                                                                  x0d4 	                   x0d3                      x0d2                      x0d1                      x0d0         
-	 poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))),mem64(49163) shl 32d add mem64(49164) shl 24d add mem64(49165) shl 16d add mem64(49166) shl 08d add mem64(49167)
+'                            x0=$C0CB(49355)                                                                                                                                                         x0d4 	                  x0d3                     x0d2                     x0d1                     x0d0         
+	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))),mem64(49163) shl 32d add mem64(49164) shl 24d add mem64(49165) shl 16d add mem64(49166) shl 08d add mem64(49167)
     'ld y0 ($C0CC/49356)
 	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))
-'                       y0=$C0CC(49356)                                                                                                  y0d4      	               y0d3                      y0d2                      y0d1                      y0d0
-	 poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))),mem64(49169) shl 32d add mem64(49170) shl 24d add mem64(49171) shl 16d add mem64(49172) shl 08d add mem64(49173)
+'                            y0=$C0CC(49356)                                                                                                                                                         y0d4      	              y0d3                     y0d2                     y0d1                     y0d0
+	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))),mem64(49169) shl 32d add mem64(49170) shl 24d add mem64(49171) shl 16d add mem64(49172) shl 08d add mem64(49173)
     'ld z0 ($C0CD/49357)
 	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101))
-'                       z0=$C0CD(49357)                                                                                                  z0d4                      z0d3                      z0d2                      z0d1                      z0d0 	           
-	 poke double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101))),mem64(49175) shl 32d add mem64(49176) shl 24d add mem64(49177) shl 16d add mem64(49178) shl 08d add mem64(49179)	                   
+'                            z0=$C0CD(49357)                                                                                                                                                         z0d4                     z0d3                     z0d2                     z0d1                     z0d0 	           
+	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101))),mem64(49175) shl 32d add mem64(49176) shl 24d add mem64(49177) shl 16d add mem64(49178) shl 08d add mem64(49179)	                   
     'ld x1 ($C01C/49180)
 	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))
 '              x1            x1d4                      x1d3                      x1d2 
@@ -3479,23 +3497,40 @@ L2086:
 	 mov(mem64(49379),mem64(49308) shl 24d add mem64(49309) shl 16d add _
 	                   mem64(49310) shl 08d add mem64(49311))
 '                             rot6d1     	           rot6d0  
-#endif             
+#endif
+' fg_color=$C0C9(49353)
+' alpha   =$C005(49157)
+' red     =$C002(49154)
+' green   =$C003(49155)
+' blue    =$C003(49156)                	     
+' r0      =$C9D1(49361)
+' r1      =$C0D2(49362)
+' r2      =$C0D3(49363)
+' r3      =$C0D4(49364)
+' r4      =$C0D5(49365) r
+' r5      =$C0D6(49366) g
+' r6      =$C0D7(49367) b
+' r7      =$COD8(49368) a
+' r8      =$CDD9(49369) x0
+' r9      =$CDDA(49370) y0
+' r10     =$CDDB(49371) x1
+' r11     =$CDDC(49372) y1             
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
     'glScreen=$C0A0(49312)
   	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100))
-'                      x0            y0	
-	 (@glScreen)(mem64(49355),mem64(49356),,,true)
+'                      r8           r9	
+	 (@glScreen)(mem64(49369),mem64(49370),,,true)
 #elseif defined(__FB_DOS__)
     'screenres=$C0A0(49312)
 	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100))
-'                    x0            y0	
-	 screenres(mem64(49355),mem64(49356),0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES): Cls
+'                    r8           r9	
+	 screenres(mem64(49369),mem64(49370),0, GFX_FULLSCREEN OR GFX_ALPHA_PRIMITIVES): Cls
 #endif		 						  							  
     #include once "graph3d.bas" '-> Compile, execute GLSL/OS, keyword database($C0A1/49313)
 
-    ' language/compiler selector=$C0A2(49314)
+    ' language/compiler selector,Blender terminal,POV-Ray Terminal,COBOL Terminal=$C0A2(49314)
 	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010))
 	 select case v
 
@@ -3594,7 +3629,7 @@ L2086:
 		 sleep
 		 ScreenRes 1920,1080, 32, 0: Cls ' GFX_FULLSCREEN: Cls 'OR GFX_ALPHA_PRIMITIVES: Cls
 
-	   case peek(ubyte,@nibbles(&B0010)) ' 002 Povray terminal
+	   case peek(ubyte,@nibbles(&B0010)) ' 002 POV-Ray terminal
 	     ScreenRes 800, 600, 32, 0: Cls ', GFX_FULLSCREEN: 'OR GFX_ALPHA_PRIMITIVES: Cls
          print "Persistence of Vision(tm) Ray Tracer 3.7.0.9"
          print "POV-Ray is based on DKBTrace 2.12 by David K. Buck & Aaron A. Collins"
@@ -3702,7 +3737,7 @@ L2086:
 	    sleep
 	    line fgimage, (0,0)-(scr_w, scr_h), rgba(0,0,0,255),bf
 	    put (0,0),fgimage,pset	    
-	   case 027
+	   case 027 ' 90 column text editor
 	    mov(mem64(49355),0):mov(mem64(49356),0) ' Clears x0 and y0
 	    line fgimage, (0,0)-(scr_w, scr_h), rgba(0,0,0,255),bf
 	    open filename for binary as #1                   
@@ -3755,7 +3790,7 @@ L2086:
     case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1010)) _
      shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))
       dim as integer x, y, wheel, buttons, res
-'     Mouse driver return address: 49322d  
+'     Mouse driver return address: 49322  
       mov(mem64(49322),GetMouse(x, y, ,buttons))
 '               x0                   y0                   z0      
       mov(mem64(49355),x):mov(mem64(49356),y):mov(mem64(49357),wheel)
@@ -3769,7 +3804,7 @@ L2086:
     ' Copies from page x0 to page y0 ($C0AB/49323)  
     case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1010)) _
      shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)) 
-      pcopy peek(double,@mem64(49355)), peek(double,@mem64(49356))
+      pcopy peek(SYSTEM_TYPE,@mem64(49355)), peek(SYSTEM_TYPE,@mem64(49356))
 
     'font v - Loads monochrome 8x8 font into Character RAM. $C0E6(49382)                            
     case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
@@ -3797,7 +3832,7 @@ L2086:
 		case in range(peek(ubyte,@nibbles(&B0000)), peek(ubyte,@nibbles(&B1111)))
 		
 		'       fg_color=$C0C9(49353)
-		 poke64(FCOLOR,MOD_GLSL(v,(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
+		 poke64(FCOLOR,modulo(v,(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
 		                  add peek(ubyte,@nibbles(&B1111)))))
 		                  
 		case in range(peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)), peek(ubyte,@nibbles(&B0001)) _
@@ -3859,11 +3894,11 @@ L2086:
     case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
      shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101))
      
-     select case peek(double,@v)
+     select case peek(SYSTEM_TYPE,@v)
 		case in range(peek(ubyte,@nibbles(&B0000)), peek(ubyte,@nibbles(&B1111)))
 		
 '               bg_color=$C0C9(49354)		
-		 poke64(BGCOL0,MOD_GLSL(v,(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
+		 poke64(BGCOL0,modulo(v,(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
 		                  add  peek(ubyte,@nibbles(&B1111)))))
 
 		case in range(peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)), peek(ubyte,@nibbles(&B0001)) _
@@ -3919,28 +3954,28 @@ L2086:
                                       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110))
                                       
 '                            x0=$C0CB(49355)    
-          line fgimage,(peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+          line fgimage,(peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
                     add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
                     add peek(ubyte,@nibbles(&B1011)))),_
                     _
                     _'       y0=$C0CC(49356)                    
-                        peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                        peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
                     add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
                     add peek(ubyte,@nibbles(&B1100))))_
                    _
           )-(      _
                    _'        x1=$C0CE(49358) 
-                        peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                        peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
                     add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
                     add peek(ubyte,@nibbles(&B1110)))),_
                    _
                    _'        y1=$C0CF(49359)
-                        peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                        peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
                     add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
                     add peek(ubyte,@nibbles(&B1111))))),_
                    _ 
                    _'        fg_color=$C0C9(49353)
-                        peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                        peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
                     add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
                     add peek(ubyte,@nibbles(&B1001)))), BF
 
@@ -3949,28 +3984,28 @@ L2086:
                                       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))
                                       
 '                           x0=$C0CB(49355)
-         line fgimage,(peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+         line fgimage,(peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
                    add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
                    add peek(ubyte,@nibbles(&B1011)))),_
                   _
                   _'        y0=$C0CC(49356)
-                       peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                       peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
                    add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
                    add peek(ubyte,@nibbles(&B1100))))_
                   _
           )-(     _
                   _'        x1=$C0CE(49358)
-                       peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                       peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
                    add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
                    add peek(ubyte,@nibbles(&B1110)))),_
                   _
                   _'        y1=$C0CF(49359)
-                       peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                       peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
                    add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
                    add peek(ubyte,@nibbles(&B1111))))),_
                   _
                   _'        fg_color=$C0CA(49354)  
-                       peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                       peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
                    add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
                    add peek(ubyte,@nibbles(&B1010)))), BF
                    
@@ -4044,13 +4079,13 @@ L2086:
      print #1, strCode: mov(strCode,"")
 '        Flag: Print Reverse Characters?0=No ($C0FC/49404)
     case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) 
-     poke double,@mem64(RVS), peek(double,@v) ' RVS=v
-     if logic_and(peek(double,@char(c)),((peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100))) shr x)) then
-'                                                                    HAM8_BG=$C0ED(49389)                                                                                                                                  HAM8_FG     
-        if peek(double,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0000))) else poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)),peek(ubyte,@nibbles(&B0000)))         
+     poke SYSTEM_TYPE,@mem64(RVS), peek(SYSTEM_TYPE,@v) ' RVS=v
+     if logic_and(peek(SYSTEM_TYPE,@char(c)),((peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100))) shr x)) then
+'                                                                                    HAM8_BG=$C0ED(49389)                                                                                                                                  HAM8_FG     
+        if peek(SYSTEM_TYPE,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0000))) else poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)),peek(ubyte,@nibbles(&B0000)))         
      else
-'                                                                    HAM8_FG=$C0EB(49387),$C0EC(49388)                                                                                                                                  HAM8_BG
-        if peek(double,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)),peek(ubyte,@nibbles(&B0000))) else poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0000)))         
+'                                                                                    HAM8_FG=$C0EB(49387),$C0EC(49388)                                                                                                                                  HAM8_BG
+        if peek(SYSTEM_TYPE,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)),peek(ubyte,@nibbles(&B0000))) else poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0000)))         
      end if
 '        Close file ($C0FD/49405)     
     case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101))
@@ -4067,30 +4102,30 @@ L2086:
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
-	 select case peek(double,@v)
+	 select case peek(SYSTEM_TYPE,@v)
 	        case peek(ubyte,@nibbles(&B0000))
-'                      scro_x	        
-	         poke double,@mem64(49379),0
-'                      scro_y	         
-	         poke double,@mem64(49380),0
+'                                    scro_x	        
+	         poke SYSTEM_TYPE,@mem64(49379),0
+'                                    scro_y	         
+	         poke SYSTEM_TYPE,@mem64(49380),0
 	        case peek(ubyte,@nibbles(&B0001))
-'                      scro_x	        
-	         poke double,@mem64(49379),802
-'                      scro_y	         
-	         poke double,@mem64(49380),0
+'                                    scro_x	        
+	         poke SYSTEM_TYPE,@mem64(49379),802
+'                                    scro_y	         
+	         poke SYSTEM_TYPE,@mem64(49380),0
 	        case peek(ubyte,@nibbles(&B0010))
-'                      scro_x	        
-	         poke double,@mem64(49379),0
-'                      scro_y	         
-	         poke double,@mem64(49380),390
+'                                    scro_x	        
+	         poke SYSTEM_TYPE,@mem64(49379),0
+'                                    scro_y	         
+	         poke SYSTEM_TYPE,@mem64(49380),390
 	        case peek(ubyte,@nibbles(&B0011))
-'                      scro_x	        
-	         poke double,@mem64(49379),802
-'                      scro_y	         
-	         poke double,@mem64(49380),390
+'                                    scro_x	        
+	         poke SYSTEM_TYPE,@mem64(49379),802
+'                                    scro_y	         
+	         poke SYSTEM_TYPE,@mem64(49380),390
 	 end select
 #elseif defined(__FB_DOS__)
-	 select case peek(double,@v)
+	 select case peek(SYSTEM_TYPE,@v)
 	        case 0
 '                      scro_x	        
 	         mov(mem64(49379),0)
@@ -4114,46 +4149,53 @@ L2086:
 	 end select
 #endif      
     case 49409 'Draw shapes in 3D space
-     select case peek(double,@v)
+     select case peek(SYSTEM_TYPE,@v)
             case peek(ubyte,@nibbles(&B0000)) '0
              ' fg_color=$C0C9(49353)
              ' alpha   =$C005(49157)
              ' red     =$C002(49154)
-             ' green   =$C003(49155) 
-             ' blue    =$C003(49156)                 	     
-             ' r0      =$C9D1(49361) x1
-             ' r1      =$C0D2(49362) y1
-             ' r2      =$C0D3(49363) x2
-             ' r3      =$C0D4(49364) y2
+             ' green   =$C003(49155)
+             ' blue    =$C003(49156)                	     
+             ' r0      =$C9D1(49361)
+             ' r1      =$C0D2(49362)
+             ' r2      =$C0D3(49363)
+             ' r3      =$C0D4(49364)
              ' r4      =$C0D5(49365) r
              ' r5      =$C0D6(49366) g
              ' r6      =$C0D7(49367) b
              ' r7      =$COD8(49368) a
-             '                        r0=x1                         r1=x2
-             for x=peek(double,@mem64(49361)) to peek(double,@mem64(49362))
-             '                        r2=y1                         r3=y2
-             for y=peek(double,@mem64(49263)) to peek(double,@mem64(49364))
-             '       red                                   r0=x1                        r1=x2
-              poke64(49154,255 * (x/abs(peek(double,@mem64(49361)) - peek(double,@mem64(49362)))))
+             ' r8      =$CDD9(49369) x1
+             ' r9      =$CDDA(49370) x2
+             ' r10     =$CDDB(49371) x3
+             ' r11     =$CDDC(49372) x4
+             '                             r8=x1                              r9=x2
+             for x=peek(SYSTEM_TYPE,@mem64(49369)) to peek(SYSTEM_TYPE,@mem64(49370))
+             '                             r10=y1                             r11=y2
+             for y=peek(SYSTEM_TYPE,@mem64(49271)) to peek(SYSTEM_TYPE,@mem64(49372))
+             '       red                                        r0=x1                             r1=x2
+              poke64(49154,255 * (x/abs(peek(SYSTEM_TYPE,@mem64(49369)) - peek(SYSTEM_TYPE,@mem64(49370)))))
              '       green 
               poke64(49155,g)
-             '       blue                                  r2=y1                        r3=y2
-              poke64(49156,255 * (y/abs(peek(double,@mem64(49263)) - peek(double,@mem64(49364)))))
-             '                                      fg_color 
-              pset fgimage,(x,y),peek(double,@mem64(49353))
+             '       blue                                       r2=y1                            r3=y2
+              poke64(49156,255 * (y/abs(peek(SYSTEM_TYPE,@mem64(49271)) - peek(SYSTEM_TYPE,@mem64(49372)))))
+             '                                          fg_color 
+              pset fgimage,(x,y),peek(SYSTEM_TYPE,@mem64(49353))
              next y
              '                      r5=g
-             g = peek(double,@mem64(49366))
+             g = peek(SYSTEM_TYPE,@mem64(49366))
              next x
-                               
+             put(0,0),fgimage,alpha                  
             case peek(ubyte,@nibbles(&B0001)) '1
-            case peek(ubyte,@nibbles(&B0010)) '2 Tile color
-            case peek(ubyte,@nibbles(&B0011)) '3 Sky Color
-            case peek(ubyte,@nibbles(&B0100)) '4 Light Color
-            case peek(ubyte,@nibbles(&B0101)) '5 Star Color
-            case peek(ubyte,@nibbles(&B0110)) '6 Resize object array
-            case peek(ubyte,@nibbles(&B0111)) '7 Object data
-            case peek(ubyte,@nibbles(&B1000)) '8 calls EXEC_GLSL()
+            case peek(ubyte,@nibbles(&B0010)) '2
+            case peek(ubyte,@nibbles(&B0011)) '3
+            case peek(ubyte,@nibbles(&B0100)) '4
+            case peek(ubyte,@nibbles(&B0101)) '5 EXEC_GLSL_120()
+              EXEC_GLSL_120()
+            case peek(ubyte,@nibbles(&B0110)) '6 EXEC_GLSL_40()
+              EXEC_GLSL_40()
+            case peek(ubyte,@nibbles(&B0111)) '7 EXEC_GLSL_90()
+              EXEC_GLSL_90()
+            case peek(ubyte,@nibbles(&B1000)) '8 EXEC_GLSL()
               EXEC_GLSL()
      end select
          'Screen lock=$C102(49410)
@@ -4162,16 +4204,16 @@ L2086:
          'Screen unlock=$C103(49411) 
     case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0011)) 
     '                        y0=$C0CC(49356)                                                                                                                             y0=$C103(49356)
-         screenunlock  peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)))) add peek(ubyte,@nibbles(&B1000))
+         screenunlock  peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)))) add peek(ubyte,@nibbles(&B1000))
          'Screen unlock=$C104(49412)
     case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0100))
          screenunlock ys,ys add peek(ubyte,@nibbles(&B1000))       
-    case 49413 'Write to to raster     
-     select case as const cast(ulongint, peek(double,@v))
-       case 0 'Draw pixel to to raster foreground
+    case 49413 'Write to raster     
+     select case as const cast(ulongint, peek(SYSTEM_TYPE,@v))
+       case 0 'Draw pixel to raster foreground
 '                           x0             fg_color                            
         pset raster,(mem64(49355),0),mem64(49353)
-       case 1 'Draw pixel to to raster background
+       case 1 'Draw pixel to raster background
 '                           x0              bg_color       
         pset raster,(mem64(49355),0),mem64(49354)
        case 2 'Draw line to raster foreground
@@ -4188,78 +4230,94 @@ L2086:
         line raster,(mem64(49355),0)-(mem64(49358),0),mem64(49354),,mem64(49198)          
      end select
     case 49414 'Write to foreground/background     
-     select case peek(double,@v)
-       case 0 'Draw pixel to to foreground
-'                                        r0                         r1                          fg_color                            
-        pset fgimage,(peek(double,@mem64(49361)),peek(double,@mem64(49362))),peek(double,@mem64(49353))
+     select case peek(SYSTEM_TYPE,@v)
+       case 0 'Draw pixel to foreground
+'                                             r0                              r1                            
+        pset fgimage,(peek(SYSTEM_TYPE,@mem64(49361)),peek(SYSTEM_TYPE,@mem64(49362))), _
+        _'                                   fg_color
+                      peek(SYSTEM_TYPE,@mem64(49353))
         
-       case 1 'Draw pixel to to background
-'                                        r0                         r1                          bg_color       
-        pset bgimage,(peek(double,@mem64(49361)),peek(double,@mem64(49362))),peek(double,@mem64(49354))
+       case 1 'Draw pixel to background
+'                                             r0                              r1       
+        pset bgimage,(peek(SYSTEM_TYPE,@mem64(49361)),peek(SYSTEM_TYPE,@mem64(49362))), _
+        _'                                    bg_color
+                      peek(SYSTEM_TYPE,@mem64(49354))
         
        case 2 'Draw line to foreground
-'                                        r0                         r1      
-        line fgimage,(peek(double,@mem64(49361)),peek(double,@mem64(49362)))-_
-        _ '                              r2                         r3                          fg_color 
-                     (peek(double,@mem64(49363)),peek(double,@mem64(49364))),peek(double,@mem64(49353))
+'                                             r0                              r1      
+        line fgimage,(peek(SYSTEM_TYPE,@mem64(49361)),peek(SYSTEM_TYPE,@mem64(49362)))- _
+        _ '                                   r2                              r3
+                     (peek(SYSTEM_TYPE,@mem64(49363)),peek(SYSTEM_TYPE,@mem64(49364))), _
+        _'                                    fg_color
+                      peek(SYSTEM_TYPE,@mem64(49353))
         
        case 3 'Draw line to background
-'                                        r0                         r1       
-        line bgimage,(peek(double,@mem64(49361)),peek(double,@mem64(49362)))-_
-        _'                               r2                         r3                          bg_color
-                     (peek(double,@mem64(49363)),peek(double,@mem64(49364))),peek(double,@mem64(49354))
+'                                             r0                              r1       
+        line bgimage,(peek(SYSTEM_TYPE,@mem64(49361)),peek(SYSTEM_TYPE,@mem64(49362)))- _
+        _'                                    r2                              r3
+                     (peek(SYSTEM_TYPE,@mem64(49363)),peek(SYSTEM_TYPE,@mem64(49364))), _
+        _'                                    bg_color
+                      peek(SYSTEM_TYPE,@mem64(49354))
                      
        case 4 'Draw box to foreground
-'                                        r0                         r1       
-        line fgimage,(peek(double,@mem64(49361)),peek(double,@mem64(49362)))-_
-        _ '                              r2                         r3             fg_color
-                     (peek(double,@mem64(49363)),peek(double,@mem64(49364))),peek(double,@mem64(49353)),b
+'                                             r0                              r1       
+        line fgimage,(peek(SYSTEM_TYPE,@mem64(49361)),peek(SYSTEM_TYPE,@mem64(49362)))- _
+        _'                                    r2                              r3
+                     (peek(SYSTEM_TYPE,@mem64(49363)),peek(SYSTEM_TYPE,@mem64(49364))), _
+        _'                                    fg_color
+                      peek(SYSTEM_TYPE,@mem64(49353)),b
                             
        case 5 'Draw box to background
-'                                        r0                         r1       
-        line bgimage,(peek(double,@mem64(49361)),peek(double,@mem64(49362)))-_
-        _'                               r2                         r3                          bg_color
-                     (peek(double,@mem64(49363)),peek(double,@mem64(49365))),peek(double,@mem64(49354)),b
+'                                             r0                              r1       
+        line bgimage,(peek(SYSTEM_TYPE,@mem64(49361)),peek(SYSTEM_TYPE,@mem64(49362)))- _
+        _'                                    r2                              r3
+                     (peek(SYSTEM_TYPE,@mem64(49363)),peek(SYSTEM_TYPE,@mem64(49365))), _
+        _'                                    bg_color
+                      peek(SYSTEM_TYPE,@mem64(49354)),b
               
        case 6 'Draw filled box to foreground
-'                                        r0                         r1        
-        line fgimage,(peek(double,@mem64(49361)),peek(double,@mem64(49362)))-_
-        _'                               r2                         r3                          fg_color    
-                     (peek(double,@mem64(49363)),peek(double,@mem64(49364))),peek(double,@mem64(49353)),bf
+'                                             r0                              r1        
+        line fgimage,(peek(SYSTEM_TYPE,@mem64(49361)),peek(SYSTEM_TYPE,@mem64(49362)))- _
+        _'                                    r2                              r3    
+                     (peek(SYSTEM_TYPE,@mem64(49363)),peek(SYSTEM_TYPE,@mem64(49364))), _
+       _'                                     fg_color              
+                      peek(SYSTEM_TYPE,@mem64(49353)),bf
                              
        case 7 'Draw filled box to background
-'                                        r0                         r1
-        line bgimage,(peek(double,@mem64(49361)),peek(double,@mem64(49362)))-_
-        _'                               r2                         r3                          bg_color
-                     (peek(double,@mem64(49363)),peek(double,@mem64(49364))),peek(double,@mem64(49354)),bf
+'                                             r0                              r1
+        line bgimage,(peek(SYSTEM_TYPE,@mem64(49361)),peek(SYSTEM_TYPE,@mem64(49362)))- _
+        _'                                    r2                              r3
+                     (peek(SYSTEM_TYPE,@mem64(49363)),peek(SYSTEM_TYPE,@mem64(49364))), _
+        _'                                    bg_color              
+                      peek(SYSTEM_TYPE,@mem64(49354)),bf
                              
-       case 7 'Draw circle to foreground
-'                                          r0                         r1       
-        circle fgimage,(peek(double,@mem64(49361)),peek(double,@mem64(49362))),_
-        _'                                 r3                         fg_color
-                        peek(double,@mem64(49363)),peek(double,@mem64(49353))
+       case 8 'Draw circle to foreground
+'                                               r0                              r1       
+        circle fgimage,(peek(SYSTEM_TYPE,@mem64(49361)),peek(SYSTEM_TYPE,@mem64(49362))),_
+        _'                                      r2                             fg_color
+                        peek(SYSTEM_TYPE,@mem64(49363)),peek(SYSTEM_TYPE,@mem64(49353))
                         
-       case 8 'Draw circle to background
-'                                          r0                         r1       
-        circle bgimage,(peek(double,@mem64(49361)),peek(double,@mem64(49362))),_
-        _'                                 r3                         bg_color
-                        peek(double,@mem64(49363)),peek(double,@mem64(49354))
+       case 9 'Draw circle to background
+'                                               r0                              r1       
+        circle bgimage,(peek(SYSTEM_TYPE,@mem64(49361)),peek(SYSTEM_TYPE,@mem64(49362))),_
+        _'                                      r2                              bg_color
+                        peek(SYSTEM_TYPE,@mem64(49363)),peek(SYSTEM_TYPE,@mem64(49354))
                                
-       case 9 'Draw pattren to foreground
-'                                        r0                         r1       
-        line fgimage,(peek(double,@mem64(49361)),peek(double,@mem64(49362)))-_
-        _'                               r2                         r3
-                     (peek(double,@mem64(49363)),peek(double,@mem64(49364))),_
-        _'                               fg_color                    r4
-                      peek(double,@mem64(49353)),,peek(double,@mem64(49365))
+       case 10 'Draw pattren to foreground
+'                                             r0                              r1       
+        line fgimage,(peek(SYSTEM_TYPE,@mem64(49361)),peek(SYSTEM_TYPE,@mem64(49362)))-_
+        _'                                    r2                              r3
+                     (peek(SYSTEM_TYPE,@mem64(49363)),peek(SYSTEM_TYPE,@mem64(49364))),_
+        _'                                    fg_color                         r4
+                      peek(SYSTEM_TYPE,@mem64(49353)),,peek(SYSTEM_TYPE,@mem64(49365))
                              
-       case 10 'Draw pattren to background
-'                                        r0                         r1        
-        line bgimage,(peek(double,@mem64(49361)),peek(double,@mem64(49362)))-_
-        _'                               r2                         r3
-                     (peek(double,@mem64(49363)),peek(double,@mem64(49364))),_
-        _'                               bg_color                    r4
-                      peek(double,@mem64(49354)),,peek(double,@mem64(49365))          
+       case 11 'Draw pattren to background
+'                                             r0                              r1        
+        line bgimage,(peek(SYSTEM_TYPE,@mem64(49361)),peek(SYSTEM_TYPE,@mem64(49362)))-_
+        _'                                    r2                              r3
+                     (peek(SYSTEM_TYPE,@mem64(49363)),peek(SYSTEM_TYPE,@mem64(49364))),_
+        _'                                    bg_color                         r4
+                      peek(SYSTEM_TYPE,@mem64(49354)),,peek(SYSTEM_TYPE,@mem64(49365))          
      end select
     case 49415 : print #1, strCode;: draw string fgimage,(0,0), strCode:mov(strCode,"")
 #if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or _
@@ -4268,8 +4326,8 @@ L2086:
     case 49416 ' E6510CPU
 '                              pc    
        select case mem64(mem64(49418))
-	          ' register port addresses 0x000000001-0x000000076 
-	          case in range(&H000000001, &H000000076)
+	          ' register port addresses 0x000000001-0x000000077 
+	          case in range(&H000000001, &H000000077)
 '                            r3                  pc	                                   pc   
 	               mov(mem64(49364),mem64(mem64(49418) add 1) shl 32 add mem64(mem64(49418) add 2) shl 24 add _
 	               mem64(mem64(49418) add 3) shl 16 add mem64(mem64(49418) add 4) shl 08 add _
@@ -4291,10 +4349,10 @@ L2086:
 '                                    pc                        pc              pc
                    pokeb mem64(mem64(49418)), &H00: mov(mem64(49418), mem64(49418) add 4) 
        end select
-'                                    pc                                     pc              	
+'                adr0               pc                                     pc              	
        mov(mem64(49425),mem64(mem64(49418) add 1) shl  32 add mem64(mem64(49418) add 2) shl 24  add _
-       mem64(mem64(49418) add 3) shl  16 add mem64(mem64(49418) add 4) shl 08 add mem64(mem64(49418) add 5))
-'                  pc                                     pc                                    pc		    	
+           mem64(mem64(49418) add 3) shl  16 add mem64(mem64(49418) add 4) shl 08 add mem64(mem64(49418) add 5))
+'                      pc                                    pc                                   pc		    	
 
 '                        adr0
        select case mem64(49425)
@@ -4306,77 +4364,78 @@ L2086:
 '                              adr0                  pc            pc     
 	               pokeb mem64(49425), 0: mov(mem64(49418),mem64(49418) add 4)		    	
        end select
-'                           pc             pc
-    case 49416:  mov(mem64(49418), mem64(49418) mod &HFFFFFFFFFFFFFFFF)
+'                pc             pc
+       mov(mem64(49418), mem64(49418) mod &HFFFFFFFFFFFFFFFF)
+       
     case 49417 ' ld pc
-'                           pc           pcd4 	                    pcd3                      pcd2          
-	              mov(mem64(49418),mem64(49419) shl 32d add mem64(49420) shl 24d add mem64(49421) shl 16d add _        
-	                                mem64(49422) shl 08d add mem64(49423))
-'                                         pcd1                      pcd0
+'                           pc           pcd4 	                 pcd3                    pcd2          
+	              mov(mem64(49418),mem64(49419) shl 32 add mem64(49420) shl 24 add mem64(49421) shl 16 add _        
+	                                mem64(49422) shl 08 add mem64(49423))
+'                                         pcd1                    pcd0
     case 49424 ' ld adr0	    
-'                           adr0          adr0d4 	                adr0d3                    adr0d2          
-	              mov(mem64(49425),mem64(49426) shl 32d add mem64(49427) shl 24d add mem64(49428) shl 16d add _        
-	                                mem64(49429) shl 08d add mem64(49430))
-'                                         adr0d1                    adr0d0
+'                           adr0          adr0d4 	             adr0d3                 adr0d2          
+	              mov(mem64(49425),mem64(49426) shl 32 add mem64(49427) shl 24 add mem64(49428) shl 16 add _        
+	                                mem64(49429) shl 08 add mem64(49430))
+'                                         adr0d1                  adr0d0
     
     case 49431 ' ld adr1	    
-'                           adr1          adr1d4 	                adr1d3                    adr1d2          
-	              mov(mem64(49432),mem64(49433) shl 32d add mem64(49434) shl 24d add mem64(49435) shl 16d add _        
-	                                mem64(49436) shl 08d add mem64(49437))
-'                                         adr1d1                    adr1d0
+'                           adr1          adr1d4 	             adr1d3                   adr1d2          
+	              mov(mem64(49432),mem64(49433) shl 32 add mem64(49434) shl 24d add mem64(49435) shl 16d add _        
+	                                mem64(49436) shl 08 add mem64(49437))
+'                                         adr1d1                  adr1d0
     case 49438 ' ld adr2	    
 '                           adr2          adr2d4 	                adr2d3                    adr2d2          
 	              mov(mem64(49439),mem64(49440) shl 32d add mem64(49441) shl 24d add mem64(49442) shl 16d add _        
 	                                mem64(49443) shl 08d add mem64(49444))
 '                                         adr2d1                    adr2d0
     case 49445 ' ld adr3	    
-'                           adr3          adr3d4 	                adr3d3                    adr3d2          
-	              mov(mem64(49446),mem64(49447) shl 32d add mem64(49448) shl 24d add mem64(49449) shl 16d add _        
-	                                mem64(49450) shl 08d add mem64(49451))
-'                                         adr3d1                    adr3d0
+'                           adr3         adr3d4 	             adr3d3                  adr3d2          
+	              mov(mem64(49446),mem64(49447) shl 32 add mem64(49448) shl 24 add mem64(49449) shl 16 add _        
+	                                mem64(49450) shl 08 add mem64(49451))
+'                                         adr3d1                  adr3d0
     case 49452 ' ld pc_status	    
-'                           pc_status  pc_status_d4 	         pc_status_d3              pc_status_d2          
-	              mov(mem64(49453),mem64(49454) shl 32d add mem64(49455) shl 24d add mem64(49456) shl 16d add _        
-	                                mem64(49457) shl 08d add mem64(49458))
-'                                      pc_status_d1              pc_status_d0
+'                           pc_status  pc_status_d4 	         pc_status_d3            pc_status_d2          
+	              mov(mem64(49453),mem64(49454) shl 32 add mem64(49455) shl 24 add mem64(49456) shl 16 add _        
+	                                mem64(49457) shl 08 add mem64(49458))
+'                                         pc_status_d1            pc_status_d0
 
     case 49459 ' ld adr0_512
-'                          adr0_512    adr0_512d7               adr0_512d6                 adr0_512d5
-                  mov(mem64(49460),mem64(49461) shl 56d add mem64(49462) shl 48d add mem64(49463) shl 40d add _
-                                    mem64(49464) shl 32d add mem64(49465) shl 24d add mem64(49466) shl 16d add _
-                                    mem64(49467) shl 08d add mem64(49468)) '             adr0_512d2
-'                                      adr0_512d1               adr0_512d0
+'                           adr0_512     adr0_512d7              adr0_512d6              adr0_512d5
+                  mov(mem64(49460),mem64(49461) shl 56 add mem64(49462) shl 48 add mem64(49463) shl 40 add _
+                                    mem64(49464) shl 32 add mem64(49465) shl 24 add mem64(49466) shl 16 add _
+                                    mem64(49467) shl 08 add mem64(49468)) '               adr0_512d2
+'                                        adr0_512d1               adr0_512d0
     case 49469 ' ld adr1_512
-'                          adr1_512    adr1_512d7               adr1_512d6                 adr1_512d5
-                  mov(mem64(49470),mem64(49471) shl 56d add mem64(49472) shl 48d add mem64(49473) shl 40d add _
-                                    mem64(49474) shl 32d add mem64(49475) shl 24d add mem64(49476) shl 16d add _
-                                    mem64(49477) shl 08d add mem64(49478)) '             adr1_512d2
-'                                      adr1_512d1               adr1_512d0
+'                           adr1_512     adr1_512d7              adr1_512d6              adr1_512d5
+                  mov(mem64(49470),mem64(49471) shl 56 add mem64(49472) shl 48 add mem64(49473) shl 40 add _
+                                    mem64(49474) shl 32 add mem64(49475) shl 24 add mem64(49476) shl 16 add _
+                                    mem64(49477) shl 08 add mem64(49478)) '               adr1_512d2
+'                                         adr1_512d1              adr1_512d0
     case 49479 ' ld adr2_512
-'                          adr3_512    adr3_512d7               adr3_512d6                 adr3_512d5
-                  mov(mem64(49480),mem64(49481) shl 56d add mem64(49482) shl 48d add mem64(49483) shl 40d add _
-                                    mem64(49484) shl 32d add mem64(49485) shl 24d add mem64(49486) shl 16d add _
-                                    mem64(49487) shl 08d add mem64(49488)) '             adr3_512d2
-'                                      adr3_512d1               adr3_512d0
+'                           adr3_512     adr3_512d7              adr3_512d6              adr3_512d5
+                  mov(mem64(49480),mem64(49481) shl 56 add mem64(49482) shl 48 add mem64(49483) shl 40 add _
+                                    mem64(49484) shl 32 add mem64(49485) shl 24 add mem64(49486) shl 16 add _
+                                    mem64(49487) shl 08 add mem64(49488)) '               adr3_512d2
+'                                        adr3_512d1               adr3_512d0
     case 49489 ' ld adr3_512
-'                          adr3_512    adr3_512d7               adr3_512d6                 adr3_512d5
-                  mov(mem64(49490),mem64(49491) shl 56d add mem64(49492) shl 48d add mem64(49493) shl 40d add _
-                                    mem64(49494) shl 32d add mem64(49495) shl 24d add mem64(49496) shl 16d add _
-                                    mem64(49497) shl 08d add mem64(49498)) '             adr3_512d2
-'                                      adr3_512d1               adr3_512d0
+'                           adr3_512     adr3_512d7              adr3_512d6              adr3_512d5
+                  mov(mem64(49490),mem64(49491) shl 56 add mem64(49492) shl 48 add mem64(49493) shl 40 add _
+                                    mem64(49494) shl 32 add mem64(49495) shl 24 add mem64(49496) shl 16 add _
+                                    mem64(49497) shl 08 add mem64(49498)) '               adr3_512d2
+'                                         adr3_512d1              adr3_512d0
     case 49499 ' ld pc_512
-'                          pc_512        pc_512d7                 pc_512d6                  pc_512d5
-                  mov(mem64(49500),mem64(49501) shl 56d add mem64(49502) shl 48d add mem64(49503) shl 40d add _
-                                    mem64(49504) shl 32d add mem64(49505) shl 24d add mem64(49506) shl 16d add _
-                                    mem64(49507) shl 08d add mem64(49508)) '              pc_512d2
-'                                        pc_512d1                 pc_512d0
+'                          pc_512        pc_512d7                pc_512d6                pc_512d5
+                  mov(mem64(49500),mem64(49501) shl 56 add mem64(49502) shl 48 add mem64(49503) shl 40 add _
+                                    mem64(49504) shl 32 add mem64(49505) shl 24 add mem64(49506) shl 16 add _
+                                    mem64(49507) shl 08 add mem64(49508)) '               pc_512d2
+'                                         pc_512d1                pc_512d0
     case 49509 ' ld pc_status_512
     
-'                     pc_status_512 pc_status_512d7           pc_status_512d6           pc_status_512d5
-                  mov(mem64(49510),mem64(49511) shl 56d add mem64(49512) shl 48d add mem64(49513) shl 40d add _
-                                    mem64(49514) shl 32d add mem64(49515) shl 24d add mem64(49516) shl 16d add _
-                                    mem64(49517) shl 08d add mem64(49518)) '          pc_status_512d2
-'                                   pc_status_512d1           pc_status_512d0
+'                     pc_status_512 pc_status_512d7         pc_status_512d6        pc_status_512d5
+                  mov(mem64(49510),mem64(49511) shl 56 add mem64(49512) shl 48 add mem64(49513) shl 40 add _
+                                    mem64(49514) shl 32 add mem64(49515) shl 24 add mem64(49516) shl 16 add _
+                                    mem64(49517) shl 08 add mem64(49518)) '         pc_status_512d2
+'                                   pc_status_512d1         pc_status_512d0
 
 '                          pc_512        r0                    pc_512         r0   
     case 49519: mov(mem64(49500),mem64(49361)) ' move mem64(49500), mem64(49361)
@@ -4396,12 +4455,18 @@ L2086:
     case 49526: mov(mem64(49470),mem64(49362)) ' move mem64(49470), mem64(49362)
 '                          adr1_512      r2                    adr1_512       r2   
     case 49527: mov(mem64(49470),mem64(49363)) ' move mem64(49470), mem64(49363)
-'                          adr3_512      r0                    adr3_512       r0     
+'                          adr2_512      r0                    adr2_512       r0     
     case 49528: mov(mem64(49490),mem64(49361)) ' move mem64(49490), mem64(49361)
-'                          adr3_512      r1                    adr3_512       r1   
-    case 49529: mov(mem64(49490),mem64(49390)) ' move mem64(49490), mem64(49362)
-'                          adr3_512      r2                    adr3_512       r2  
-    case 49529: mov(mem64(49490),mem64(49363)) ' move mem64(49490), mem64(49363)
+   
+    case 49529
+     select case peek(SYSTEM_TYPE,@v)
+       case peek(ubyte,@nibbles(&B0000))
+'                    adr2_512     r1                   adr2_512      r1
+           mov(mem64(49490),mem64(49390)) ' move mem64(49490), mem64(49362)
+       case peek(ubyte,@nibbles(&B0001))
+'                    adr2_512     r2                   adr2_512      r2  
+           mov(mem64(49490),mem64(49363)) ' move mem64(49490), mem64(49363)
+    end select       
 '                          red           adr0_512              red           adr0_512   
     case 49530: mov(mem64(49154),mem64(49460)) ' move mem64(49154), mem64(49460)
 '                          red           adr0_512              red           adr0_512   
@@ -4419,143 +4484,143 @@ L2086:
 '                          blue          adr0_512              blue          adr0_512   
     case 59537: mov(mem64(49156),mem64(49460)) ' move mem64(49156), mem64(49460)
 '                          blue          adr0_512              blue          adr0_512   
-    case 59538: mov(mem64(49156),mem64(49460)) ' move mem64(49156), mem64(49460)
+    case 49538: mov(mem64(49156),mem64(49460)) ' move mem64(49156), mem64(49460)
 '                          alpha         adr0_512              alpha         adr0_512   
-    case 59539: mov(mem64(49157),mem64(49460)) ' move mem64(49157), mem64(49460)
+    case 49539: mov(mem64(49157),mem64(49460)) ' move mem64(49157), mem64(49460)
 '                          alpha         adr0_512              alpha         adr0_512
-    case 59560: mov(mem64(49157),mem64(49460)) ' move mem64(49157), mem64(49460)
+    case 49540: mov(mem64(49157),mem64(49460)) ' move mem64(49157), mem64(49460)
 '                          alpha         adr0_512              alpha         adr0_512   
-    case 59561: mov(mem64(49157),mem64(49460)) ' move mem64(49157), mem64(49460)
+    case 49541: mov(mem64(49157),mem64(49460)) ' move mem64(49157), mem64(49460)
 '                          x0            adr0_512              x0            adr0_512      
-    case 59562: mov(mem64(49355),mem64(49460)) ' move mem64(49355), mem64(49460)
+    case 49542: mov(mem64(49355),mem64(49460)) ' move mem64(49355), mem64(49460)
 '                          x1            adr0_512              x1            adr0_512   
-    case 59563: mov(mem64(49358),mem64(49460)) ' move mem64(49358), mem64(49460)
+    case 49543: mov(mem64(49358),mem64(49460)) ' move mem64(49358), mem64(49460)
 '                          y0            adr0_512              y0            adr0_512   
-    case 59564: mov(mem64(49356),mem64(49460)) ' move mem64(49356), mem64(49460)
+    case 49544: mov(mem64(49356),mem64(49460)) ' move mem64(49356), mem64(49460)
 '                          y1            adr0_512              y1            adr0_512   
-    case 59565: mov(mem64(49359),mem64(49460)) ' move mem64(49359), mem64(49460)
+    case 49545: mov(mem64(49359),mem64(49460)) ' move mem64(49359), mem64(49460)
 '                          z0            adr0_512              z0            adr0_512   
-    case 59566: mov(mem64(49357),mem64(49460)) ' move mem64(49357), mem64(49460)
+    case 49546: mov(mem64(49357),mem64(49460)) ' move mem64(49357), mem64(49460)
 '                          z1            adr0_512              z1            adr0_512   
-    case 59567: mov(mem64(49360),mem64(49460)) ' move mem64(49360), mem64(49460)
+    case 49547: mov(mem64(49360),mem64(49460)) ' move mem64(49360), mem64(49460)
 '                          fg_color      adr0_512              fg_color      adr0_512   
-    case 59568: mov(mem64(49353),mem64(49460)) ' move mem64(49353), mem64(49460)
+    case 49548: mov(mem64(49353),mem64(49460)) ' move mem64(49353), mem64(49460)
 '                          bg_color      adr0_512              bg_color      adr0_512   
-    case 59569: mov(mem64(49354),mem64(49460)) ' move mem64(49354), mem64(49460)
+    case 49549: mov(mem64(49354),mem64(49460)) ' move mem64(49354), mem64(49460)
 '                          adr0_512      x0                    adr0_512      x0
-    case 59570: mov(mem64(49460),mem64(49355)) ' move mem64(49460), mem64(49355)
+    case 49550: mov(mem64(49460),mem64(49355)) ' move mem64(49460), mem64(49355)
 '                          x0            adr0_512              x0            adr0_512  
-    case 59571: mov(mem64(49355),mem64(49460)) ' move mem64(49355), mem64(49460)
+    case 49551: mov(mem64(49355),mem64(49460)) ' move mem64(49355), mem64(49460)
 '                          adr0_512      y0                    adr0_512      y0
-    case 59572: mov(mem64(49460),mem64(49356)) ' move mem64(49460), mem64(49356)
+    case 49552: mov(mem64(49460),mem64(49356)) ' move mem64(49460), mem64(49356)
 '                          x0            adr0_512              x0            adr0_512   
-    case 59573: mov(mem64(49356),mem64(49460)) ' move mem64(49356), mem64(49460)
+    case 49553: mov(mem64(49356),mem64(49460)) ' move mem64(49356), mem64(49460)
 '                          adr0_512      z0                    adr0_512      z0   
-    case 59574: mov(mem64(49460),mem64(49357)) ' move mem64(49460), mem64(49357)
+    case 49554: mov(mem64(49460),mem64(49357)) ' move mem64(49460), mem64(49357)
 '                          adr0_512      x1                    adr0_512      x1 
-    case 59575: mov(mem64(49460),mem64(49358)) ' move mem64(49460), mem64(49358)
+    case 49555: mov(mem64(49460),mem64(49358)) ' move mem64(49460), mem64(49358)
 '                          adr0_512      y1                    adr0_512      y1
-    case 59576: mov(mem64(49460),mem64(49359)) ' move mem64(49460), mem64(49359)
+    case 49556: mov(mem64(49460),mem64(49359)) ' move mem64(49460), mem64(49359)
 '                          adr0_512      z1                    adr0_512      z1
-    case 59577: mov(mem64(49460),mem64(49360)) ' move mem64(49460), mem64(49360)
+    case 49557: mov(mem64(49460),mem64(49360)) ' move mem64(49460), mem64(49360)
 '                          z1            adr0_512              z1            adr0_512   
-    case 59578: mov(mem64(49360),mem64(49460)) ' move mem64(49460), mem64(49460)
+    case 49558: mov(mem64(49360),mem64(49460)) ' move mem64(49460), mem64(49460)
 '                          adr0_512      y1                    adr0_512       y1
-    case 59579: mov(mem64(49460),mem64(49359)) ' move mem64(49460), mem64(49359)
+    case 49559: mov(mem64(49460),mem64(49359)) ' move mem64(49460), mem64(49359)
 '                          adr0_512      z1                    adr0_512       z1
-    case 59580: mov(mem64(49460),mem64(49360)) ' move mem64(49460), mem64(49360) 
+    case 49560: mov(mem64(49460),mem64(49360)) ' move mem64(49460), mem64(49360) 
 '                          adr0_512      z1                    adr0_512       z1
-    case 59581: mov(mem64(49460),mem64(49360)) ' move mem64(49460), mem64(49360)
+    case 49561: mov(mem64(49460),mem64(49360)) ' move mem64(49460), mem64(49360)
 '                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512    
-    case 59582: mov(mem64(49460),mem64(49470) add  mem64(49480)) ' add mem64(49470), mem64(49480)
+    case 49562: mov(mem64(49460),mem64(49470) add  mem64(49480)) ' add mem64(49470), mem64(49480)
 '                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512   
-    case 59583: mov(mem64(49460),mem64(49470) subt mem64(49480)) ' sub mem64(49470), mem64(49480)
+    case 49563: mov(mem64(49460),mem64(49470) subt mem64(49480)) ' sub mem64(49470), mem64(49480)
 '                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512   
-    case 59584: mov(mem64(49460),mem64(49470) mul  mem64(49480)) ' mul mem64(49470), mem64(49480)
+    case 49564: mov(mem64(49460),mem64(49470) mul  mem64(49480)) ' mul mem64(49470), mem64(49480)
 '                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512   
-    case 59585: mov(mem64(49460),mem64(49470) ndiv mem64(49480)) ' div mem64(49470), mem64(49480)
+    case 49565: mov(mem64(49460),mem64(49470) ndiv mem64(49480)) ' div mem64(49470), mem64(49480)
 '                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512  
-    case 59586: mov(mem64(49460),mem64(49470) idiv mem64(49480)) ' idiv mem64(49470),mem64(49480)
+    case 49566: mov(mem64(49460),mem64(49470) idiv mem64(49480)) ' idiv mem64(49470),mem64(49480)
 '                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512   
-    case 59587: mov(mem64(49460),mem64(49470) expt mem64(49480)) ' exp mem64(49470), mem64(49480)
+    case 49567: mov(mem64(49460),mem64(49470) expt mem64(49480)) ' exp mem64(49470), mem64(49480)
 '                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512   
-    case 59588: mov(mem64(49460),MOD_GLSL(mem64(49470),mem64(49480))) ' mod mem64(49470), mem64(49480)
+    case 49568: mov(mem64(49460),modulo(mem64(49470),mem64(49480))) ' mod mem64(49470), mem64(49480)
 '                          adr0_512          adr0_512                           adr0_512    
-    case 59589: mov(mem64(49460), neg mem64(49460))              ' neg mem64(49460)
+    case 49569: mov(mem64(49460), neg mem64(49460))              ' neg mem64(49460)
 '                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
-    case 59590: mov(mem64(49460),mem64(49470) shl  mem64(49480)) ' shl mem64(49470), mem64(49480)
+    case 49570: mov(mem64(49460),mem64(49470) shl  mem64(49480)) ' shl mem64(49470), mem64(49480)
 '                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
-    case 59591: mov(mem64(49460),mem64(49470) shr  mem64(49480)) ' shr mem64(49470), mem64(49480)
+    case 49571: mov(mem64(49460),mem64(49470) shr  mem64(49480)) ' shr mem64(49470), mem64(49480)
 '                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
-    case 59592: mov(mem64(49460),mem64(49470) eq   mem64(49480)) ' equ mem64(49470), mem64(49480)
+    case 49572: mov(mem64(49460),mem64(49470) eq   mem64(49480)) ' equ mem64(49470), mem64(49480)
 '                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
-    case 59593: mov(mem64(49460),mem64(49470) ne   mem64(49480)) ' ne  mem64(49470), mem64(49480)
+    case 49573: mov(mem64(49460),mem64(49470) ne   mem64(49480)) ' ne  mem64(49470), mem64(49480)
 '                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
-    case 59594: mov(mem64(49460),mem64(49470) lt   mem64(49480)) ' lt  mem64(49470), mem64(49480)   
+    case 49574: mov(mem64(49460),mem64(49470) lt   mem64(49480)) ' lt  mem64(49470), mem64(49480)   
 '                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
-    case 59595: mov(mem64(49460),mem64(49470) ls   mem64(49480)) ' lte mem64(49470), mem64(49480)
+    case 49575: mov(mem64(49460),mem64(49470) ls   mem64(49480)) ' lte mem64(49470), mem64(49480)
 '                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
-    case 59596: mov(mem64(49460),mem64(49470) gs   mem64(49480)) ' gte mem64(49470), mem64(49480)
+    case 49576: mov(mem64(49460),mem64(49470) gs   mem64(49480)) ' gte mem64(49470), mem64(49480)
 '                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512      
-    case 59597: mov(mem64(49460),mem64(49470) gt   mem64(49480)) ' gt  mem64(49470), mem64(49480)
+    case 49577: mov(mem64(49460),mem64(49470) gt   mem64(49480)) ' gt  mem64(49470), mem64(49480)
 '                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512    
-    case 59598: mov(mem64(49460),mem64(49470) and  mem64(49480)) ' and mem64(494670),mem64(49480)
+    case 49578: mov(mem64(49460),mem64(49470) and  mem64(49480)) ' and mem64(494670),mem64(49480)
 '                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
-    case 59599: mov(mem64(49460),mem64(49370) eqv  mem64(49380)) ' eqv mem64(49370), mem64(49380)
+    case 49579: mov(mem64(49460),mem64(49370) eqv  mem64(49380)) ' eqv mem64(49370), mem64(49380)
 '                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
-    case 59600: mov(mem64(49460),mem64(49370) imp  mem64(49380)) ' imp mem64(49370), mem64(49380)
+    case 49580: mov(mem64(49460),mem64(49370) imp  mem64(49380)) ' imp mem64(49370), mem64(49380)
 '                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
-    case 59601: mov(mem64(49460),mem64(49470) or   mem64(49480)) ' or  mem64(49470), mem64(49480)
+    case 49581: mov(mem64(49460),mem64(49470) or   mem64(49480)) ' or  mem64(49470), mem64(49480)
 '                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
-    case 59602: mov(mem64(49460),mem64(49470) xor  mem64(49480)) ' xor mem64(49470), mem64(49480)
+    case 49582: mov(mem64(49460),mem64(49470) xor  mem64(49480)) ' xor mem64(49470), mem64(49480)
 '                          adr1_512      adr0_512                               adr1_512       adr2_512   
-    case 59603: mov(mem64(49470),mem64(49460))                    ' move mem64(49470), mem64(49460)
+    case 49583: mov(mem64(49470),mem64(49460))                    ' move mem64(49470), mem64(49460)
 '                          adr2_512      adr0_512                               adr2_512       adr0_512   
-    case 59604: mov(mem64(49480),mem64(49460))                    ' move mem64(49480), mem64(49460)
+    case 49584: mov(mem64(49480),mem64(49460))                    ' move mem64(49480), mem64(49460)
 '                          adr0_512      adr0_512                               adr0_512   
-    case 59605: mov(mem64(49460),mem64(49460) add 1)              ' inc mem64(49460)
+    case 49585: mov(mem64(49460),mem64(49460) add 1)              ' inc mem64(49460)
 '                          adr1_512      adr1_512                               adr1_512   
-    case 59606: mov(mem64(49470),mem64(49470) add 1)              ' inc mem64(49470)
+    case 49586: mov(mem64(49470),mem64(49470) add 1)              ' inc mem64(49470)
 '                          adr2_512      adr2_512                               adr2_512
-    case 59607: mov(mem64(49480),mem64(49480) add 1)              ' inc mem64(49480)
+    case 49587: mov(mem64(49480),mem64(49480) add 1)              ' inc mem64(49480)
 '                          adr0_512      adr0_512                               adr0_512   
-    case 59608: mov(mem64(49460),mem64(49460) subt 1)             ' dec mem64(49460)
+    case 49588: mov(mem64(49460),mem64(49460) subt 1)             ' dec mem64(49460)
 '                          adr1_512      adr1_512                               adr1_512   
-    case 59609: mov(mem64(49470),mem64(49470) subt 1)             ' dec mem64(49470)
+    case 49589: mov(mem64(49470),mem64(49470) subt 1)             ' dec mem64(49470)
 '                          adr2_512      adr2_512                               adr2_512   
-    case 59610: mov(mem64(49480),mem64(49480) subt 1)             ' dec mem64(49480)
-    case 59611:                  ' be  [address]
+    case 49590: mov(mem64(49480),mem64(49480) subt 1)             ' dec mem64(49480)
+    case 49591:                  ' be  [address]
 '             adr1_512        adr2_512                  pc_512     
      if (mem64(49470) eq mem64(49480)) then mov(mem64(49500),v)
-    case 59611:                  ' bne [address]
+    case 49592:                  ' bne [address]
 '             adr1_512        adr2_512                  pc_512   
      if (mem64(49470) ne mem64(49480)) then mov(mem64(49500),v)
-    case 59612:                  ' bg  [address]
+    case 49593:                  ' bg  [address]
 '             adr1_512        adr2_512             pc_512   
      if (mem64(49470) gt mem64(49480)) then mov(mem64(49500),v)          
-    case 59613:                  ' bge [address]
+    case 49594:                  ' bge [address]
 '             adr1_512        adr2_512             pc_512   
      if (mem64(49470) gs mem64(49480)) then mov(mem64(49500),v)
-    case 59614:                  ' ble [address]
+    case 49595:                  ' ble [address]
 '             adr1_512        adr2_512             pc_512   
      if (mem64(49470) ls mem64(49480)) then mov(mem64(49500),v)
-    case 59615:                  ' bl  [address]
+    case 49596:                  ' bl  [address]
 '             adr1_512        adr2_512             pc_512 
      if (mem64(49470) gt mem64(49480)) then mov(mem64(49500),v)
-    case 59616:                  ' jmp [address]
+    case 49597:                  ' jmp [address]
 '         pc_512
      mem64(49500) = v 
 
 '                                              adr0_512
-    case 59617:                  ' move.b mem64(49460), [address]
+    case 49598:                  ' move.b mem64(49460), [address]
 '              adr0_512
      mov(mem64(49460), peekb(v)) 
 
 '                                                         adr0_512
-    case 59618:                  ' move.b [address], mem64(49461)
+    case 49599:                  ' move.b [address], mem64(49461)
 '                  adr0_512   
      pokeb v, mem64(49460)
-    case 59619                   ' loop [start],[stop],[times]
+    case 49600                   ' loop [start],[stop],[times]
     
 '                                          old_pc       pc_512   
      dim as ulongint tmp, times: mov(mem64(49630),mem64(49500))
@@ -4587,7 +4652,7 @@ L2086:
       mov(tmp,(tmp add 1) mod mem64(49621))
     loop
     
-   case 49620 ' ld times
+   case 49601 ' ld times
     
 '            times         timesd7                   timesd6                   timesd5
     mov(mem64(49621),mem64(49622) shl 56d add mem64(49623) shl 48d add mem64(49624) shl 40d add _
@@ -4595,18 +4660,18 @@ L2086:
                       mem64(49628) shl 08d add mem64(49629)) '               timesd2
 '                          timesd1                   timesd0
 
-   case 49629 'ld old_pc
+   case 49602 'ld old_pc
 '            old_pc        old_pcd7                   old_pcd6                 old_pcd5
     mov(mem64(49630),mem64(49631) shl 56d add mem64(49631) shl 48d add mem64(49633) shl 40d add _
                       mem64(49634) shl 32d add mem64(49635) shl 24d add mem64(49636) shl 16d add _
                       mem64(49637) shl 08d add mem64(49638)) '               old_pcd2
 '                          old_pcd1                   old_pcd0
 
-'                          pc_512       pc_512
-   case 49416:  mov(mem64(49500),mem64(49500) mod &HFFFFFFFFFFFFFFFF)
+'            pc_512       pc_512
+   mov(mem64(49500),mem64(49500) mod &HFFFFFFFFFFFFFFFF)
 
 #elseif defined(__FB_DOS__) or defined(__FB_WIN32__)
-    case 49416d ' E6510CPU
+    case 49416 ' E6510CPU
 '                              pc    
        select case mem64(mem64(49418))
 	          ' register port addresses 0x000000001-0x000000076 
@@ -4682,20 +4747,20 @@ L2086:
 '                                      pc_status_d1              pc_status_d0
 
 #endif
-   case 49453 ' Border Color Red
-'              bd_color      alpha                     red                       green                     blue 
-	 mov(mem64(49457),mem64(49456) shl 24d add mem64(49453) shl 16d add mem64(49454) shl 08d add mem64(49455))
-   case 49454 ' Border Color Green
-'              bd_color      alpha                     red                       green                     blue	
-	 mov(mem64(49457),mem64(49456) shl 24d add mem64(49453) shl 16d add mem64(49454) shl 08d add mem64(49455))
-   case 49455 ' Border Color Blue
-'              bd_color      alpha                     red                       green                     blue	
-	 mov(mem64(49457),mem64(49456) shl 24d add mem64(49453) shl 16d add mem64(49454) shl 08d add mem64(49455))
-   case 49456 ' Border Color Alapha
-'              bd_color      alpha                     red                       green                     blue 
-	 mov(mem64(49457),mem64(49456) shl 24d add mem64(49453) shl 16d add mem64(49454) shl 08d add mem64(49455))
-   case 49457 
- '                       x0            y0              x1            y1            fg_color       
+   case 49603 ' Border Color Red
+'              bd_color      alpha                  red                     green                    blue 
+	 mov(mem64(49457),mem64(49456) shl 24 add mem64(49453) shl 16 add mem64(49454) shl 08d add mem64(49455))
+   case 49604 ' Border Color Green
+'              bd_color      alpha                  red                     green                    blue	
+	 mov(mem64(49457),mem64(49456) shl 24 add mem64(49453) shl 16 add mem64(49454) shl 08d add mem64(49455))
+   case 49605 ' Border Color Blue
+'              bd_color      alpha                  red                     green                    blue	
+	 mov(mem64(49457),mem64(49456) shl 24 add mem64(49453) shl 16 add mem64(49454) shl 08d add mem64(49455))
+   case 49606 ' Border Color Alapha
+'              bd_color      alpha                  red                     green                    blue 
+	 mov(mem64(49457),mem64(49456) shl 24 add mem64(49453) shl 16 add mem64(49454) shl 08d add mem64(49455))
+   case 49607 
+ '                       x0            y0             x1          y1            fg_color       
      line fgimage,(mem64(49355),mem64(49356))-(mem64(49358),mem64(49359)),mem64(49353),bf
    case 49639
      select case v
@@ -4719,79 +4784,125 @@ L2086:
         next i
        close #1
    case 49642 ' 1080p Graphics - DRAW statment
-     select case peek(double,@v)
-       '                                                   fg_color                                     r0
-        case 0: draw fgimage, "c" add str(peek(double,@mem64(49353))) add "M" add str(peek(double,@mem64(49361))) add _
-                              "," add str(peek(double,@mem64(49362)))
-       '                                                    r1
+     select case peek(SYSTEM_TYPE,@v)
+       '                                                          fg_color
+        case 0: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) add "M" _
+        _'                                                        r0
+                                  add str(peek(SYSTEM_TYPE,@mem64(49361))) add _
+                              "," add str(peek(SYSTEM_TYPE,@mem64(49362)))
+       '                                                          r1
        
-       '                                                    fg_color                                    r0
-        case 1: draw fgimage, "c" add str(peek(double,@mem64(49353))) add "u" add str(peek(double,@mem64(49361)))
+       '                                                          fg_color
+        case 1: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) _
+       _'                                                         r0 
+                          add "u" add str(peek(SYSTEM_TYPE,@mem64(49361)))
         
-       '                                                    fg_color                                    r0
-        case 2: draw fgimage, "c" add str(peek(double,@mem64(49353))) add "d" add str(peek(double,@mem64(48361)))
+       '                                                         fg_color
+        case 2: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) _
+      _'                                                          r0 
+                          add "d" add str(peek(SYSTEM_TYPE,@mem64(48361)))
         
-       '                                                    fg_color                                    r0 
-        case 3: draw fgimage, "c" add str(peek(double,@mem64(49353))) add "l" add str(peek(double,@mem64(48361)))
+       '                                                          fg_color
+        case 3: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) _
+      _'                                                          r0
+                          add "l" add str(peek(SYSTEM_TYPE,@mem64(48361)))
         
-       '                                                    fg_color                                    r0 
-        case 4: draw fgimage, "c" add str(peek(double,@mem64(49353))) add "r" add str(peek(double,@mem64(49361)))
+       '                                                          fg_color
+        case 4: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) _
+       _'                                                         r0
+                          add "r" add str(peek(SYSTEM_TYPE,@mem64(49361)))
         
-       '                                                    fg_color                                    r0 
-        case 5: draw fgimage, "c" add str(peek(double,@mem64(49353))) add "e" add str(peek(double,@mem64(49361)))
+       '                                                          fg_color
+        case 5: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) _
+      _'                                                          r0  
+                          add "e" add str(peek(SYSTEM_TYPE,@mem64(49361)))
       
-       '                                                    fg_color                                    r0  
-        case 6: draw fgimage, "c" add str(peek(double,@mem64(49353))) add "f" add str(peek(double,@mem64(49361)))
+       '                                                          fg_color 
+        case 6: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) _
+      _'                                                          r0
+                          add "f" add str(peek(SYSTEM_TYPE,@mem64(49361)))
         
-       '                                                    fg_color                                    r0 
-        case 7: draw fgimage, "c" add str(peek(double,@mem64(49353))) add "g" add str(peek(double,@mem64(49361)))
+       '                                                          fg_color
+        case 7: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) _
+      _'                                                          r0  
+                          add "g" add str(peek(SYSTEM_TYPE,@mem64(49361)))
         
-       '                                                    fg_color                                    r0  
-        case 8: draw fgimage, "c" add str(peek(double,@mem64(49353))) add "h" add str(peek(double,@mem64(49361)))
+       '                                                          fg_color  
+        case 8: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) _
+      _'                                                          r0
+                          add "h" add str(peek(SYSTEM_TYPE,@mem64(49361)))
 
-       '                                                    fg_color
-        case 9: draw fgimage, "c" add str(peek(double,@mem64(49353)))
+       '                                                          fg_color
+        case 9: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353)))
        
-       '                                                    fg_color                                      r0 
-        case 10: draw fgimage, "c" add str(peek(double,@mem64(49353))) add "p" add str(peek(double,@mem64(49361))) add _
-                               "," add str(peek(double,@mem64(49362)))
-       '                                                     r1
+       '                                                           fg_color 
+        case 10: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) _
+      _'                                                           r0  
+                           add "p" add str(peek(SYSTEM_TYPE,@mem64(49361))) add _
+      _'                                                           r1
+                               "," add str(peek(SYSTEM_TYPE,@mem64(49362)))
         
-       '                                                     fg_color                                    r0 
-        case 11: draw fgimage, "c" add str(peek(double,@mem64(49353))) add "s" add str(peek(double,@mem64(49361)))
+       '                                                           fg_color 
+        case 11: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) add _
+      _'                                                           r0  
+                               "s" add str(peek(SYSTEM_TYPE,@mem64(49361)))
         
-       '                                                     fg_color                                    r0 
-        case 12: draw fgimage, "c" add str(peek(double,@mem64(49353))) add "a" add str(peek(double,@mem64(49361)))
+       '                                                           fg_color 
+        case 12: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) add _
+      _ '                                                          r0 
+                               "a" add str(peek(SYSTEM_TYPE,@mem64(49361)))
        
-       '                                                     fg_color                                     r0
-        case 13: draw fgimage, "c" add str(peek(double,@mem64(49353))) add "ta" add str(peek(double,@mem64(49361)))
+       '                                                           fg_color
+        case 13: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) add "ta" _
+                                   add str(peek(SYSTEM_TYPE,@mem64(49361)))
+       '                                                           r0             
        
-       '                                                      fg_color
-        case 14: draw fgimage, "c" add str(peek(double,@mem64(49353))) add strCode: strCode = "" 
+       '                                                           fg_color
+        case 14: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) add strCode: strCode = "" 
         
         case 15: draw fgimage, "b" add strCode: strCode = ""
        
-       '                                                      fg_color 
-        case 16: draw fgimage, "c" add str(peek(double,@mem64(49353))) add "n" add strCode: strCode = ""
+       '                                                           fg_color 
+        case 16: draw fgimage, "c" add str(peek(SYSTEM_TYPE,@mem64(49353))) add "n" add strCode: strCode = ""
      end select            
-
+' fg_color=$C0C9(49353)
+' alpha   =$C005(49157)
+' red     =$C002(49154)
+' green   =$C003(49155) 
+' blue    =$C003(49156)                 	     
+' r0      =$C9D1(49361) x1
+' r1      =$C0D2(49362) y1
+' r2      =$C0D3(49363) x2
+' r3      =$C0D4(49364) y2
+' r4      =$C0D5(49365) r
+' r5      =$C0D6(49366) g
+' r6      =$C0D7(49367) b
+' r7      =$COD8(49368) a
    case 49643 ' 40x25 PETSCII Graphics
-     select case peek(double,@v) ' + x + 40 * (24 - y)
+     select case peek(SYSTEM_TYPE,@v) ' + x + 40 * (24 - y)
    
-       '                                  scr_ptr                        r0                                    r1                             
-        case 0: poke64(peek(double,@mem64(49451)) add peek(double,@mem64(49361)) add 40 mul peek(double,@mem64(49362)), _
-                       peek(double,@mem64(49363)))
-       '                                  r2                             
+       '                                       scr_ptr                             r0                                    r1                             
+        case 0: poke64(peek(SYSTEM_TYPE,@mem64(49451)) add peek(SYSTEM_TYPE,@mem64(49361)) _
+            add 40 mul peek(SYSTEM_TYPE,@mem64(49362)),    peek(SYSTEM_TYPE,@mem64(49368)))
+       '                                       r1                                  r7                             
 
      end select
    case 49644 ' 90x60 PETSCII Graphics
-     select case peek(double,@v) ' + x + 90 * (60 - y)
+     select case peek(SYSTEM_TYPE,@v) ' + x + 90 * (60 - y)
 
-       '               90x60 frame buffer           r0                                     r1
-        case 0: poke64(16384 add peek(double,@mem64(49361))  add 90 mul peek(double,@mem64(49362)),_
-                                 peek(double,@mem64(49363)))
-       '                                            r2
-     end select       
+       '               90x60 frame buffer                r0                                          r1
+        case 0: poke64(16384 add peek(SYSTEM_TYPE,@mem64(49361))  add 90 mul peek(SYSTEM_TYPE,@mem64(49362)),_
+                                 peek(SYSTEM_TYPE,@mem64(49368)))
+       '                                                 r7
+     end select
+   case 49645 ' 12ox60 PETSCII Graphics
+     select case peek(SYSTEM_TYPE,@v) ' + x + 120 * (60 - y)
+
+	   '              120x60 framebuffer                      r0                                          r1
+		case 0: pokeb(&H0000D0000 add peek(SYSTEM_TYPE,@mem64(49361)) add 160 mul peek(SYSTEM_TYPE,@mem64(49362)), _
+	  _'                                                      r7
+                                      peek(SYSTEM_TYPE,@mem64(49368)))
+     end select             
 /'   
 	case 49162d 'ld x0
 '              x0            x0d4 	                   x0d3                      x0d2          
@@ -4967,7 +5078,14 @@ L2086:
    Next
     '/
 '                       scr_ptr=$C12B(49451)                                                                                                                                                      scr_ptr=$C12B(49451)+$3FF(1023)     			  		
-   case in range(peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)))),peek(double,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)))) add (peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
+   case in range(peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+             add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)))), _
+                 peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+             add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0010)) _
+             shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011)))) add (peek(ubyte,@nibbles(&B0011)) _
+             shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
+             add peek(ubyte,@nibbles(&B1111))))
     #include "font.bas"
       /'
       dim as integer xs=adr mod 40:xs shl =3:xs+=8*4
@@ -4976,7 +5094,7 @@ L2086:
       select case v
        case 00 to 27: print wchr(v+32) 
       end select '/
-'                     scr_ptr                 scr_ptr
+'                     scr_ptr               scr_ptr
   case in range(mem64(49451) add 1024,mem64(49451) add 1031)                
     #include once "sprite.bi"
 /' 
@@ -4986,22 +5104,25 @@ L2086:
     next a
 '/
   ' Screen Memory(Text $4000(16384)-$7E70(32368))
-  case in range(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1100)),peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100))) 
+  case in range(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1100)), _
+                peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B1100))  _
+            add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B1000))  _
+            add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100))) 
    pokeb(adr,v)     
-  case in range(57344d,65535), in range(40960d,49151), in range(55296d,56319): mov(mem64(adr),v)              
+  case in range(57344,65535), in range(40960,49151), in range(55296,56319): mov(mem64(adr),v)              
   end select
 L2150:  
 end def
 
-proc MEMORY_T.ReadUByte(byval adr as double) as ubyte
+proc MEMORY_T.ReadUByte(byval adr as SYSTEM_TYPE) as ubyte
   return Peek64(adr)
 end proc
 
-proc MEMORY_T.ReadByte(byval adr as double) as byte
+proc MEMORY_T.ReadByte(byval adr as SYSTEM_TYPE) as byte
   return Peek64(adr)
 end proc
 
-proc MEMORY_T.ReadUShort(byval adr as double) as ushort
+proc MEMORY_T.ReadUShort(byval adr as SYSTEM_TYPE) as ushort
   return Peek64(adr) or Peek64(adr add peek(ubyte,@nibbles(&B0001))) shl peek(ubyte,@nibbles(&B1000))
 end proc
 
@@ -5009,10 +5130,10 @@ def MEMORY_T.WriteByte(byval adr as double,byval b8 as double)
   poke64(adr,b8)
 end def
 
-def MEMORY_T.WriteUByte(byval adr as double,byval b8 as double)
+def MEMORY_T.WriteUByte(byval adr as SYSTEM_TYPE,byval b8 as SYSTEM_TYPE)
   poke64(adr,b8)
 end def
 
-def MEMORY_T.WriteUShort(byval adr as double,byval w16 as double)
+def MEMORY_T.WriteUShort(byval adr as SYSTEM_TYPE,byval w16 as SYSTEM_TYPE)
   poke64(adr,LOBYTE(w16)):poke64(adr add peek(ubyte,@nibbles(&B0001)),HIBYTE(w16))
 end def

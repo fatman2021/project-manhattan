@@ -1,4 +1,5 @@
 ' zero page memory dump.
+ZERO_PAGE:
 DATA &H2f, &H37, &H00, &Haa, &Hb1, &H91, &Hb3, &H22, &H22, &H00, &H00, &H00, &H00, &Hff, &H00, &H00
 DATA &H00, &H00, &H00, &H00, &H00, &H00, &H19, &H16, &H00, &H0a, &H76, &Ha3, &H00, &H00, &H00, &H00
 DATA &H00, &H00, &H76, &Ha3, &Hb3, &Hbd, &H00, &H00, &H00, &H00, &H00, &H01, &H08, &H03, &H08, &H03

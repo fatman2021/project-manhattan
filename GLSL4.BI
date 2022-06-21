@@ -1,12 +1,12 @@
 #include "crt.bi" ' math.bi ...
-'#define DEG2RAD M_PI/180.0
-'#define RAD2DEG 180.0/M_PI
+const as float DEG2RAD = M_PI/180
+const as float RAD2DEG = 180/M_PI
 
 #undef mod
 #undef atn
-
-#undef exp
 #undef exp2f
+#undef exp
+#undef mod
 #undef log
 #undef sqrt
 #undef exp2
@@ -15,9 +15,6 @@
 #undef ceil
 #undef floor
 #undef sign
-#undef vec2
-#undef vec3
-#undef vec4
 
 type _vec3 as vec3
 
@@ -1290,18 +1287,18 @@ end function
 ' The degrees function converts radians to degrees.
 ' The input parameter can be a floating scalar or a float vector.
 ' In case of a float vector every component is converted from radians to degrees separately.
-'function degrees overload (rad as float) as float
-'  return rad*Rad2Deg
-'end function
-'function degrees (v as vec2) as vec2
-'  return vec2(v.x*Rad2Deg,v.y*Rad2Deg)
-'end function
-'function degrees (v as vec3) as vec3
-'  return vec3(v.x*Rad2Deg,v.y*Rad2Deg,v.y*Rad2Deg)
-'end function
-'function degrees (v as vec4) as vec4
-'  return vec4(v.x*Rad2Deg,v.y*Rad2Deg,v.y*Rad2Deg,v.w*Rad2Deg)
-'end function
+function degrees overload (rad as float) as float
+  return rad*Rad2Deg
+end function
+function degrees (v as vec2) as vec2
+  return vec2(v.x*Rad2Deg,v.y*Rad2Deg)
+end function
+function degrees (v as vec3) as vec3
+  return vec3(v.x*Rad2Deg,v.y*Rad2Deg,v.y*Rad2Deg)
+end function
+function degrees (v as vec4) as vec4
+  return vec4(v.x*Rad2Deg,v.y*Rad2Deg,v.y*Rad2Deg,v.w*Rad2Deg)
+end function
 
 ' The sin function returns the sine of an angle in radians. 
 ' The input parameter can be a floating scalar or a float vector. 
@@ -1436,19 +1433,13 @@ function log(a as vec4) as vec4
   return vec4(logf(a.x),logf(a.y),logf(a.z),logf(a.w))
 end function
 
-' The exp2, exp2f, exp2l function returns 2 raised to the power of x. 
-' The input parameter can be a floating scalar or a float vector. 
-' In case of a float vector the operation is done component-wise.
-
-function exp2f(a as float) as float
-#if defined(__FB_DOS__)
-  return cast(float,exp2f(cast(float,a)))
-#else
-  return powf(2.0, a)
-#endif  
+function exp2f(a as float) as float
+  return powf(2.0, a) 
 end function
 
-
+' The exp2 function returns 2 raised to the power of x. 
+' The input parameter can be a floating scalar or a float vector. 
+' In case of a float vector the operation is done component-wise.
 function exp2 overload(a as float) as float
   return exp2f(a)
 end function
