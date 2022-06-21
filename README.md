@@ -1583,7 +1583,7 @@ included for completeness as a record of the addresses it occupies as a ROM bank
 
 # Compiling Source Code
 
-	**fbc -fpmode fast -fpu sse -w all  "c64dvd-glsl.bas" -map c64dvd-glsl.map -strip  -Wc -mcmodel=small -Wc -msse2avx -Wc -Ofast -Wc -ffp-contract=fast -Wc -foptimize-sibling-calls -Wc -foptimize-strlen -Wc -fno-inline -Wc -save-temps -Wc -O3 -Wc -msse2avx**
+	fbc -fpmode fast -fpu sse -w all  "c64dvd-glsl.bas" -map c64dvd-glsl.map -strip  -Wc -mcmodel=small -Wc -msse2avx -Wc -Ofast -Wc -ffp-contract=fast -Wc -foptimize-sibling-calls -Wc -foptimize-strlen -Wc -fno-inline -Wc -save-temps -Wc -O3 -Wc -msse2avx
 
 # Online 6502 Assembler
 
