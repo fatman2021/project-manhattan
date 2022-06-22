@@ -46,7 +46,7 @@ LibVCM                  Copyright © 2012-present Tomas Davidovic
 
 GLSL FreeBASIC wrapper  Copyright © 2016-present D.J.Peters
 
-						Copyright © 2019-present ShawnLG
+                        Copyright © 2019-present ShawnLG
 
 Shadertoy FreeBASIC RT  Copyright © 2016-present D.J.Peters
 
