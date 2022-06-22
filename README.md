@@ -64,7 +64,7 @@ Project Manhattan       Copyright © 2019-present The Project Manhattan Team
 
 # NOTE: Memory addresses are subject to change.
 
-# The C64 ROMs as part of C64 forever free express edition:
+# The C64 ROMs can be downloaded as part of C64 forever free express edition:
 # https://www.c64forever.com/
 
 # The books can be downloaded free of charge from archive.org:
