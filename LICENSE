@@ -46,15 +46,16 @@ OpenGL Shading Language Copyright © 2004-2006 OpenGLARB
 
     		    	    Copyright © 2006-present The Khronos Group, Inc.
     		    	    
-LibVCM                  Copyright © 2005-present D.J.Peters
+LibVCM                  Copyright © 2012-present Tomas Davidovic 
 
-GLSL FreeBASIC wrapper  Copyright © 2005-present D.J.Peters
+GLSL FreeBASIC wrapper  Copyright © 2016-present D.J.Peters
+                        Copyright © 2019-present ShawnLG
 
-Shadertoy FreeBASIC RT  Copyright © 2005-present D.J.Peters
+Shadertoy FreeBASIC RT  Copyright © 2016-present D.J.Peters
 
-C64 and CPU6510 EMU     Copyright © 2005-present D.J.Peters
+C64 and CPU6510 EMU     Copyright © 2008-present D.J.Peters
 
-Raytracer Datatype      Copyright © 2005-present D.J.Peters
+Raytracer Datatype      Copyright © 2007-present D.J.Peters
 
 QB64                    Copyright © 2007-present The QB64 Development Team
 
