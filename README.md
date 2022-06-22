@@ -42,15 +42,15 @@ OpenGL Shading Language Copyright © 2004-2006 OpenGLARB
 
     		    	    Copyright © 2006-present The Khronos Group, Inc.
     		    	    
-LibVCM                  Copyright © 2005-present Jeff Marshall(D.J.Peters)
+LibVCM                  Copyright © 2005-present D.J.Peters
 
-GLSL FreeBASIC wrapper  Copyright © 2005-present Jeff Marshall(D.J.Peters)
+GLSL FreeBASIC wrapper  Copyright © 2005-present D.J.Peters
 
-Shadertoy FreeBASIC RT  Copyright © 2005-present Jeff Marshall(D.J.Peters)
+Shadertoy FreeBASIC RT  Copyright © 2005-present D.J.Peters
 
-C64 and CPU6510 EMU     Copyright © 2005-present Jeff Marshall(D.J.Peters)
+C64 and CPU6510 EMU     Copyright © 2005-present D.J.Peters
 
-Raytracer Datatype      Copyright © 2005-present Jeff Marshall(D.J.Peters)
+Raytracer Datatype      Copyright © 2005-present D.J.Peters
 
 QB64                    Copyright © 2007-present The QB64 Development Team
 
@@ -70,7 +70,7 @@ Project Manhattan       Copyright © 2019-present The Project Manhattan Team
 # The books can be downloaded free of charge from archive.org:
 # http://archive.org/
 
-Cloanto is a subsidiary of Amiga Corporation.
+Cloanto IT srl is a subsidiary of Amiga Corporation.
 
 Next generation CPU/GPU combo SOC emulator for gaming and business applications.
 
