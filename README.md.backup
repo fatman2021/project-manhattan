@@ -41,16 +41,6 @@ FreeBASIC               Copyright © 2004-present The FreeBASIC Development Team
 OpenGL Shading Language Copyright © 2004-2006 OpenGLARB
 
     		    	    Copyright © 2006-present The Khronos Group, Inc.
-    		    	    
-LibVCM                  Copyright © 2005-present Jeff Marshall(D.J.Peters)
-
-GLSL FreeBASIC wrapper  Copyright © 2005-present Jeff Marshall(D.J.Peters)
-
-Shadertoy FreeBASIC RT  Copyright © 2005-present Jeff Marshall(D.J.Peters)
-
-C64 and CPU6510 EMU     Copyright © 2005-present Jeff Marshall(D.J.Peters)
-
-Raytracer Datatype      Copyright © 2005-present Jeff Marshall(D.J.Peters)
 
 QB64                    Copyright © 2007-present The QB64 Development Team
 
@@ -63,14 +53,6 @@ Project Manhattan       Copyright © 2019-present The Project Manhattan Team
 # project-manhattan
 
 # NOTE: Memory addresses are subject to change.
-
-# The C64 ROMs as part of C64 forever free express edition:
-# https://www.c64forever.com/
-
-# The books can be downloaded free of charge from archive.org:
-# http://archive.org/
-
-Cloanto is a subsidiary of Amiga Corporation.
 
 Next generation CPU/GPU combo SOC emulator for gaming and business applications.
 
@@ -1601,7 +1583,7 @@ included for completeness as a record of the addresses it occupies as a ROM bank
 
 # Compiling Source Code
 
-	fbc -fpmode fast -fpu sse -w all  "c64dvd-glsl.bas" -map c64dvd-glsl.map -strip  -Wc -mcmodel=small -Wc -msse2avx -Wc -Ofast -Wc -ffp-contract=fast -Wc -foptimize-sibling-calls -Wc -foptimize-strlen -Wc -fno-inline -Wc -save-temps -Wc -O3 -Wc -msse2avx
+	**fbc -fpmode fast -fpu sse -w all  "c64dvd-glsl.bas" -map c64dvd-glsl.map -strip  -Wc -mcmodel=small -Wc -msse2avx -Wc -Ofast -Wc -ffp-contract=fast -Wc -foptimize-sibling-calls -Wc -foptimize-strlen -Wc -fno-inline -Wc -save-temps -Wc -O3 -Wc -msse2avx**
 
 # Online 6502 Assembler
 
@@ -1631,7 +1613,7 @@ https://www.masswerk.at/6502/bytes2basic.html
 
 # Assembling the PRG file
 
-	ophis -v yourprogram.asm
+	**ophis -v yourprogram.asm**
 
 # Programming with Ophis
 
