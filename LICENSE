@@ -27,16 +27,34 @@ Commodore KERNAL ROM    Copyright © 1977-1994 Commodore International Limited
 MOS Technology 6510     Copyright © 1982-2001 MOS Technology, Inc.
 
                         Copyright © 2001-present Western Design Center
+                        
+The GNU Compiler COL    Copyright © 1985-present The Free Software Foundation
+
+GNU Binutils            Copyright © 1985-present The Free Software Foundation
+
+GNU FreeFont            Copyright © 1985-present The Free Software Foundation
 
 coreboot                Copyright © 1990-present The coreboot Development Team
+
+Linux kernel            Copyright © 1991-present Linus Torvalds and Community contributors 
                         
 POV-Ray                 Copyright © 1991-present Persistence of Vision Raytracer Pty. Ltd
+
+OpenGL                  Copyright © 1992-2004    Silicon Graphics, Inc
+
+                        Copyright © 2004-2006    OpenGLARB
+
+    		    	    Copyright © 2006-present The Khronos Group, Inc
 
 Wine                    Copyright © 1993-present The Wine Development Team
 
 Blender                 Copyright © 1994-present The Blender Foundation
 
 UAE Emulator            Copyright © 1995-present The UAE Development Team
+
+Mesa3D                  Copyright © 1995-present The Mesa3D Development Team
+
+FreeGLUT                Copyright © 1998-present Paweł W. Olszta
 
 DOSBox                  Copyright © 2002-present The DOSBox Team.
  
@@ -46,11 +64,17 @@ OpenGL Shading Language Copyright © 2004-2006 OpenGLARB
 
     		    	    Copyright © 2006-present The Khronos Group, Inc.
     		    	    
+SeaBIOS                 Copyright © 2008-present Kevin O'Connor
+    		    	    
 LibVCM                  Copyright © 2012-present Tomas Davidovic 
 
 GLSL FreeBASIC wrapper  Copyright © 2016-present D.J.Peters
 
 						Copyright © 2019-present ShawnLG
+						
+						Copyright © 2022-present dodicat
+						
+						Copyright © 2022-present bluatigro
 
 Shadertoy FreeBASIC RT  Copyright © 2016-present D.J.Peters
 
@@ -65,6 +89,8 @@ DOSBox-X                Copyright © 2011-2022 The DOSBox-X Team.
 Shadertoy               Copyright © 2013-present Inigo Quilez & Pol Jeremias
 
 Project Manhattan       Copyright © 2019-present The Project Manhattan Team
+
+PC486 EMU for FreeBASIC Copyright © 2020-present Joseba Epalza
 
    
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION

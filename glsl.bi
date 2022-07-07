@@ -207,7 +207,7 @@ sub glScreen(pixelWidth as integer=-1, pixelHeight as integer=-1, colorBits as i
   glProc(glUniform4fv)
 #endif
   #undef glProc
-  windowtitle "load and compile shader pese wait ..."
+  windowtitle "Loading and compiling shader. Please wait ..."
 end sub
 
 type ShaderToy

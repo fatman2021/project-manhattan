@@ -23,10 +23,24 @@ Commodore KERNAL ROM    Copyright © 1977-1994 Commodore International Limited
 MOS Technology 6510     Copyright © 1982-2001 MOS Technology, Inc.
 
                         Copyright © 2001-present Western Design Center
+                        
+The GNU Compiler COL    Copyright © 1985-present The Free Software Foundation
+
+GNU Binutils            Copyright © 1985-present The Free Software Foundation
+
+GNU FreeFont            Copyright © 1985-present The Free Software Foundation
 
 coreboot                Copyright © 1990-present The coreboot Development Team
+
+Linux kernel            Copyright © 1991-present Linus Torvalds and Community contributors 
                         
 POV-Ray                 Copyright © 1991-present Persistence of Vision Raytracer Pty. Ltd
+
+OpenGL                  Copyright © 1992-2004    Silicon Graphics, Inc
+
+                        Copyright © 2004-2006    OpenGLARB
+
+    		    	    Copyright © 2006-present The Khronos Group, Inc
 
 Wine                    Copyright © 1993-present The Wine Development Team
 
@@ -34,21 +48,31 @@ Blender                 Copyright © 1994-present The Blender Foundation
 
 UAE Emulator            Copyright © 1995-present The UAE Development Team
 
+Mesa3D                  Copyright © 1995-present The Mesa3D Development Team
+
+FreeGLUT                Copyright © 1998-present Paweł W. Olszta
+
 DOSBox                  Copyright © 2002-present The DOSBox Team.
  
 FreeBASIC               Copyright © 2004-present The FreeBASIC Development Team 
-                        
+    		    	    .                        
 OpenGL Shading Language Copyright © 2004-2006 OpenGLARB
 
     		    	    Copyright © 2006-present The Khronos Group, Inc.
+    		    	    
+SeaBIOS                 Copyright © 2008-present Kevin O'Connor
     		    	    
 LibVCM                  Copyright © 2012-present Tomas Davidovic 
 
 GLSL FreeBASIC wrapper  Copyright © 2016-present D.J.Peters
 
-                        Copyright © 2019-present ShawnLG
-
 Shadertoy FreeBASIC RT  Copyright © 2016-present D.J.Peters
+
+						Copyright © 2019-present ShawnLG
+						
+						Copyright © 2022-present dodicat
+						
+						Copyright © 2022-present bluatigro
 
 C64 and CPU6510 EMU     Copyright © 2008-present D.J.Peters
 
@@ -62,6 +86,8 @@ Shadertoy               Copyright © 2013-present Inigo Quilez & Pol Jeremias
 
 Project Manhattan       Copyright © 2019-present The Project Manhattan Team
 
+PC486 EMU for FreeBASIC Copyright © 2020-present Joseba Epalza
+
 # project-manhattan
 
 # NOTE: Memory addresses are subject to change.
@@ -74,7 +100,9 @@ Project Manhattan       Copyright © 2019-present The Project Manhattan Team
 
 Cloanto IT srl is a subsidiary of Amiga Corporation.
 
-Next generation CPU/GPU combo SOC emulator for gaming and business applications.
+Project Manhattan is a next-generation MOS 6510-based CPU/GPU combo system on a chip emulator for gaming and business applications written in FreeBASIC. 
+
+The system on a chip emulator is designed to work at all layers of abstraction(BIOS replacement to being used as an embedded application in a webpage). As such, the emulator must be self-contained and have a maximum file size limit of 16MB.
 
 CPU - 4Ghz, 64-Bit, MOS 6510/VICE compatible, can address up to 1.797693134862316e+308 bytes of system memory.
 
@@ -83,6 +111,10 @@ or any negative values in the range -4.940656458412465e-324 to -1.79769313486231
 most be 53 bits of precision, or about 15 decimal digits.
 
 GPU - 17GHz, 512-Bit, can address up to 1.797693134862316e+308x8 bytes of video memory. 
+
+The GPU will be compatible with the VIC-II, SVGA, ECS(copper lists), and AGA(HAM8) to varying degrees.
+
+Copperlists will use 32-bit ARGB colors instead of 12-bit or 16-bit colors.
 
 NOTE: Video memory addresses can have any positive value in the range 4.940656458412465e-324x8 to 
 1.797693134862316e+308x8, or any negative values in the range -4.940656458412465e-324x8 to -1.797693134862316e+308x8,

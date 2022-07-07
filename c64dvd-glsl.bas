@@ -25,6 +25,7 @@ source for the prefetch operation is usually main memory. Because of their desig
 faster than accessing main memory, so prefetching data and then accessing it from caches is usually many orders of magnitude 
 faster than accessing it directly from main memory. Prefetching can be done with non-blocking cache control instructions. 
 '/
+#define FBCALL
 
 #if defined(__FB_DOS__)
 #include once "MBOOT.BI"
@@ -50,13 +51,32 @@ faster than accessing it directly from main memory. Prefetching can be done with
 #include once "./src/kernel/include/multiboot.bi"
 using FB
 #endif
-dim shared as multiboot_info ptr MB_INFO
+static shared as multiboot_info ptr MB_INFO
 
 #if defined(__FB_DOS__)
 #include once "ADRR.BI"
 #else
 #include once "address.bi"
 #endif
+
+#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
+    #define SYSTEM_TYPE ulongint
+#else
+    #define SYSTEM_TYPE double
+#endif
+
+#if defined(__FB_DOS__)
+  'Ring 3 - c64dvd
+  static shared as SYSTEM_TYPE     mem64    (01048575) ' Ram
+#elseif defined(__FB_WIN32__) or defined(__WIN64__)
+  'Ring 3 - c64dvd
+  static shared as SYSTEM_TYPE     mem64    (04194303) ' Ram
+#else
+  'Ring 3 - c64dvd
+  static shared as SYSTEM_TYPE     mem64    (16777215) ' Ram
+#endif
+
+#include once "qb64.bi"
 	
 /'
 #if defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or defined(__FB_NETBSD__) or _
@@ -125,8 +145,6 @@ dim shared as multiboot_info ptr MB_INFO
 #endif
 '/
 
-type float as double
-
 '#define M_PI 3.1415926535897932384626433832795028
  
 #ifdef _DEBUG
@@ -169,6 +187,184 @@ type float as double
 #define ds ds
 #define opr operator
 
+' def SYSTEM_BUS_T.pokeb(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
+#define mov_r0(x)          computer.cpu_mos6510->mem->pokeb &H000000001, x ' move r0,          [number]
+#define mov_r1(x)          computer.cpu_mos6510->mem->pokeb &H000000002, x ' move r1,          [number]
+#define mov_r2(x)          computer.cpu_mos6510->mem->pokeb &H000000003, x ' move r2,          [number]
+#define mov_r0_r1          computer.cpu_mos6510->mem->pokeb &H000000004, 0 ' move r0,          r1
+#define mov_r0_r2          computer.cpu_mos6510->mem->pokeb &H000000005, 0 ' move r0,          r2
+#define mov_r1_r0          computer.cpu_mos6510->mem->pokeb &H000000006, 0 ' move r1,          r0
+#define mov_r1_r2          computer.cpu_mos6510->mem->pokeb &H000000007, 0 ' move r1,          r2
+#define mov_r2_r0          computer.cpu_mos6510->mem->pokeb &H000000008, 0 ' move r2,          r0
+#define mov_r2_r1          computer.cpu_mos6510->mem->pokeb &H000000009, 0 ' move r2,          r1
+#define mov_pc_r0          computer.cpu_mos6510->mem->pokeb &H00000000A, 0 ' move pc,          r0
+#define mov_pc_r1          computer.cpu_mos6510->mem->pokeb &H00000000B, 0 ' move pc,          r1
+#define mov_pc_r2          computer.cpu_mos6510->mem->pokeb &H00000000C, 0 ' move pc,          r2
+#define mov_adr0_r0        computer.cpu_mos6510->mem->pokeb &H00000000D, 0 ' move adr0,        r0
+#define mov_adr0_r1        computer.cpu_mos6510->mem->pokeb &H00000000E, 0 ' move adr0,        r1
+#define mov_adr0_r2        computer.cpu_mos6510->mem->pokeb &H00000000F, 0 ' move adr0,        r2
+#define mov_adr1_r0        computer.cpu_mos6510->mem->pokeb &H000000010, 0 ' move adr1,        r0
+#define mov_adr1_r1        computer.cpu_mos6510->mem->pokeb &H000000011, 0 ' move adr1,        r1
+#define mov_adr1_r2        computer.cpu_mos6510->mem->pokeb &H000000012, 0 ' move adr1,        r2
+#define mov_adr2_r0        computer.cpu_mos6510->mem->pokeb &H000000013, 0 ' move adr2,        r0
+#define mov_adr2_r1        computer.cpu_mos6510->mem->pokeb &H000000014, 0 ' move adr2,        r1
+#define mov_adr2_r2        computer.cpu_mos6510->mem->pokeb &H000000015, 0 ' move adr2,        r2
+#define mov_red1_r0        computer.cpu_mos6510->mem->pokeb &H000000016, 0 ' move red1,        r0
+#define mov_red2_r0        computer.cpu_mos6510->mem->pokeb &H000000017, 0 ' move red2,        r0
+#define mov_red3_r0        computer.cpu_mos6510->mem->pokeb &H000000018, 0 ' move red3,        r0
+#define mov_green1_r0      computer.cpu_mos6510->mem->pokeb &H000000019, 0 ' move green1,      r0
+#define mov_green2_r0      computer.cpu_mos6510->mem->pokeb &H00000001A, 0 ' move green2,      r0
+#define mov_green3_r0      computer.cpu_mos6510->mem->pokeb &H00000001B, 0 ' move green3,      r0
+#define mov_blue1_r0       computer.cpu_mos6510->mem->pokeb &H00000001C, 0 ' move blue1,       r0
+#define mov_blue2_r0       computer.cpu_mos6510->mem->pokeb &H00000001D, 0 ' move blue2,       r0
+#define mov_blue3_r0       computer.cpu_mos6510->mem->pokeb &H00000001E, 0 ' move blue3,       r0
+#define mov_alpha1_r0      computer.cpu_mos6510->mem->pokeb &H00000001F, 0 ' move alpha1,      r0
+#define mov_alpha2_r0      computer.cpu_mos6510->mem->pokeb &H000000020, 0 ' move alpha2,      r0
+#define mov_alpha3_r0      computer.cpu_mos6510->mem->pokeb &H000000021, 0 ' move alpha3,      r0
+#define mov_x0_r0          computer.cpu_mos6510->mem->pokeb &H000000022, 0 ' move x0,          r0
+#define mov_x1_r0          computer.cpu_mos6510->mem->pokeb &H000000023, 0 ' move x1,          r0
+#define mov_y0_r0          computer.cpu_mos6510->mem->pokeb &H000000024, 0 ' move y0,          r0
+#define mov_y1_r0          computer.cpu_mos6510->mem->pokeb &H000000025, 0 ' move y1,          r0
+#define mov_z0_r0          computer.cpu_mos6510->mem->pokeb &H000000026, 0 ' move z0,          r0
+#define mov_z1_r0          computer.cpu_mos6510->mem->pokeb &H000000027, 0 ' move z1,          r0
+#define mov_fg_color_r0    computer.cpu_mos6510->mem->pokeb &H000000028, 0 ' move fg_color,    r0
+#define mov_bg_color_r0    computer.cpu_mos6510->mem->pokeb &H000000029, 0 ' move bg_color,    r0
+#define mov_char_h_r0      computer.cpu_mos6510->mem->pokeb &H00000002A, 0 ' move char_h,      r0
+#define mov_char_w_r0      computer.cpu_mos6510->mem->pokeb &H00000002B, 0 ' move char_w,      r0 
+#define mov_char_ptr,r0    computer.cpu_mos6510->mem->pokeb &H00000002C, 0 ' move char_ptr,    r0
+#define mov_char_buffer_r0 computer.cpu_mos6510->mem->pokeb &H00000002D, 0 ' move char_buffer, r0
+#define mov_bitmask_r0     computer.cpu_mos6510->mem->pokeb &H00000002E, 0 ' move bitmask,     r0
+#define mov_pixel_size_r0  computer.cpu_mos6510->mem->pokeb &H00000002F, 0 ' move pixel_size,  r0
+#define mov_radius_r0      computer.cpu_mos6510->mem->pokeb &H000000030, 0 ' move radius,      r0
+#define mov_string_adr_r0  computer.cpu_mos6510->mem->pokeb &H000000031, 0 ' move string_adr,  r0
+#define mov_string_len_r0  computer.cpu_mos6510->mem->pokeb &H000000032, 0 ' move string_len,  r0
+#define mov_r0_x0          computer.cpu_mos6510->mem->pokeb &H000000033, 0 ' move r0,          x0
+#define mov_x0_r0_2        computer.cpu_mos6510->mem->pokeb &H000000034, 0 ' move x0,          r0
+#define mov_r0_y0          computer cpu_mos6510->mem->pokeb &H000000035, 0 ' move r0,          y0
+#define mov_y0_r0_2        computer cpu_mos6510->mem->pokeb &H000000036, 0 ' move y0,          r0
+#define mov_r0_z0          computer.cpu_mos6510->mem->pokeb &H000000037, 0 ' move r0,          z0
+#define mov_r0_x1          computer.cpu_mos6510->mem->pokeb &H000000038, 0 ' move r0,          x1
+#define mov_r0_y1          computer.cpu_mos6510->mem->pokeb &H000000039, 0 ' move r0,          y1
+#define mov_r0_z1          computer.cpu_mos6510->mem->pokeb &H00000003A, 0 ' move r0,          z1
+#define mov_z0_r0_2        computer.cpu_mos6510->mem->pokeb &H00000003B, 0 ' move z0,          r0
+#define mov_r0_z1_2        computer.cpu_mos6510->mem->pokeb &H00000003D, 0 ' move r0,          z1
+#define mov_r0_a1          computer.cpu_mos6510->mem->pokeb &H00000003E, 0 ' move r0,          a1
+#define mov_r0_a2          computer.cpu_mos6510->mem->pokeb &H00000003F, 0 ' move r0,          a2
+#define mov_r0_a3          computer.cpu_mos6510->mem->pokeb $H000000040, 0 ' move r0,          a3
+#define mov_r0_a4          computer.cpu_mos6510->mem->pokeb &H000000041, 0 ' move r0,          a4
+#define mov_r0_a5          computer.cpu_mos6510->mem->pokeb &H000000042, 0 ' move r0,          a5
+#define mov_r0_a6          computer.cpu_mos6510->mem->pokeb &H000000043, 0 ' move r0,          a6
+#define mov_r0_a7          computer.cpu_mos6510->mem->pokeb &H000000044, 0 ' move r0,          a7
+#define mov_r0_a8          computer.cpu_mos6510->mem->pokeb &H000000045, 0 ' move r0,          a8
+#define mov_r0_z1_3        computer.cpu_mos6510->mem->pokeb &H000000046, 0 ' move r0,          z0
+#define add_r0_r1_r2       computer.cpu_mos6510->mem->pokeb &H000000047, 0 ' add  r1,          r2
+#define sub_r0_r1_r2       computer.cpu_mos6510->mem->pokeb &H000000048, 0 ' sub  r1,          r2
+#define mul_r0_r1_r2       computer.cpu_mos6510->mem->pokeb &H000000049, 0 ' mul  r1,          r2
+#define div_r0_r1_r2       computer.cpu_mos6510->mem->pokeb &H00000004A, 0 ' div  r1,          r2
+#define idiv_r0_r1_r2      computer.cpu_mos6510->mem->pokeb &H00000004B, 0 ' idiv r1,          r2
+#define exp_r0_r1_r2       computer.cpu_mos6510->mem->pokeb &H00000004C, 0 ' expt r1,          r2
+#define mod_r0_r1_r2       computer.cpu_mos6510->mem->pokeb &H00000004D, 0 ' mod  r1,          r2
+#define neg_r0             computer.cpu_mos6510->mem->pokeb &H00000004E, 0 ' neg  r0
+#define shl_r0_r1_r2       computer.cpu_mos6510->mem->pokeb &H00000004F, 0 ' shl  r1,          r2
+#define shr_r0_r1_r2       computer.cpu_mos6510->mem->pokeb &H000000050, 0 ' shr  r1,          r2
+#define eq_r0_r1_r2        computer.cpu_mos6510->mem->pokeb &H000000051, 0 ' eq   r1,          r2
+#define ne_r0_r1_r2        computer.cpu_mos6510->mem->pokeb &H000000052, 0 ' ne   r1,          r2
+#define lt_r0_r1_r2        computer.cpu_mos6510->mem->pokeb &H000000053, 0 ' lt   r1,          r2
+#define lte_r0_r1_r2       computer.cpu_mos6510->mem->pokeb &H000000054, 0 ' lte  r1,          r2
+#define gte_r0_r1_r2       computer.cpu_mos6510->mem->pokeb &H000000055, 0 ' gte  r1,          r2
+#define gt_r0_r1_r2        computer.cpu_mos6510->mem->pokeb &H000000056, 0 ' gt   r1,          r2
+#define and_r0_r1_r2       computer.cpu_mos6510->mem->pokeb &H000000057, 0 ' and  r1,          r2
+#define eqv_r0_r1_r2       computer.cpu_mos6510->mem->pokeb &H000000058, 0 ' eqv  r1,          r2
+#define imp_r0_r1_r2       computer.cpu_mos6510->mem->pokeb &H000000059, 0 ' imp  r1,          r2
+#define or_r0_r1_r2        computer.cpu_mos6510->mem->pokeb &H00000005A, 0 ' or   r1,          r2
+#define xor_r0_r1_r2       computer.cpu_mos6510->mem->pokeb &H00000005B, 0 ' xor  r1,          r2
+#define mov_r1_r0_2        computer.cpu_mos6510->mem->pokeb &H00000005C, 0 ' mov  r1,          r0
+#define mov_r2_r0_2        computer.cpu_mos6510->mem->pokeb &H00000005D, 0 ' mov  r2,          r0
+#define inc_r0             computer.cpu_mos6510->mem->pokeb &H00000005E, 0 ' inc  r0
+#define inc_r1             computer.cpu_mos6510->mem->pokeb &H00000005F, 0 ' inc  r1
+#define inc_r2             computer.cpu_mos6510->mem->pokeb &H000000060, 0 ' inc  r2
+#define dec_r0             computer.cpu_mos6510->mem->pokeb &H000000061, 0 ' dec  r0
+#define dec_r1             computer.cpu_mos6510->mem->pokeb &H000000062, 0 ' dec  r1
+#define dec_r2             computer.cpu_mos6510->mem->pokeb &H000000063, 0 ' dec  r2
+
+'Microcode
+
+'Get P Register
+#define get_status_flag          computer.cpu_mos6510->p                      ' get status flag
+#define get_carry_flag           computer.cpu_mos6510->f.c                    ' gets cary flag
+#define get_sero_flag            computer.cpu_mos6510->f.z                    ' gets zero flag
+#define get_interrupt_flag       computer.cpu_mos6510->f.i                    ' gets interrupt flag
+#define get_decimal_flag         computer.cpu_mos6510->f.d                    ' gets decimal flag
+#define get_borrow_flag          computer.cpu_mos6510->f.b                    ' gets borrow flag
+#define get_half_carry_flag      computer.cpu_mos6510->f.h                    ' gets half carry flag
+#define get_overflow_flag        computer.cpu_mos6510->f.v                    ' gets overflow flag
+#define get_negative_flag        computer.cpu_mos6510->f.n                    ' gets negtive flag
+
+'Set P Register
+#define set_status_flag(x)       mov(computer.cpu_mos6510->p,   x)            ' set status flag
+#define set_carry_flag(x)        mov(computer.cpu_mos6510->f.c, x)            ' sets cary flag
+#define set_sero_flag(x)         mov(computer.cpu_mos6510->f.z, x)            ' sets zero flag
+#define set_interrupt_flag(x)    mov(computer.cpu_mos6510->f.i, x)            ' sets interrupt flag
+#define set_decimal_flag(x)      mov(computer.cpu_mos6510->f.d, x)            ' sets decimal flag
+#define set_borrow_flag(x)       mov(computer.cpu_mos6510->f.b, x)            ' sets borrow flag
+#define set_half_carry_flag(x)   mov(computer.cpu_mos6510->f.h, x)            ' sets half carry flag
+#define set_overflow_flag(x)     mov(computer.cpu_mos6510->f.v, x)            ' sets overflow flag
+#define set_negative_flag(x)     mov(computer.cpu_mos6510->f.n, x)            ' sets negtive flag
+
+'Addressing Modes
+#define fun_adr_imm              computer.cpu_mos6510->adr_imm
+#define fun_adr_rel              computer.cpu_mos6510->adr_rel
+#define fun_adr_zero             computer.cpu_mos6510->adr_zero
+#define fun_adr_zero_x           computer.cpu_mos6510->adr_zerox
+#define fun_adr_zero_y           computer.cpu_mos6510->adr_zeroy
+#define fun_adr_abs              computer.cpu_mos6510->adr_abs
+#define fun_adr_abs_x            computer.cpu_mos6510->adr_absx
+#define fun_adr_abs_y            computer.cpu_mos6510->adr_absy
+#define fun_adr_ind              computer.cpu_mos6510->adr_ind
+#define fun_adr_ind_x            computer.cpu_mos6510->adr_indx
+#define fun_adr_ind_y            computer.cpu_mos6510->adr_indy
+#define fun_adr_unk              computer.cpu_mos6510->adr_unk
+#define sub_push(x)              computer.cpu_mos6510->push(x)                ' pushes dat on to the stack
+#define fun_pull                                                              ' pulls data from off the stack
+
+'Get Registers
+#define get_a                    computer.cpu_mos6510->a                      ' get accumulator(unsigned)
+#define get_x                    computer.cpu_mos6510->x                      ' get index register X(unsigned)
+#define get_y                    computer.cpu_mos6510->y                      ' get index register Y(unsigned)
+#define get_pc                   computer.cpu_mos6510->pc                     ' get program counter
+#define get_pl                   computer.cpu_mos6510->pl                     ' get program counter(low byte)
+#define get_ph                   computer.cpu_mos6510->ph                     ' get program counter(high byte)
+#define get_sp                   computer.cpu_mos6510->sp                     ' get stack pointer
+#define get_s                    computer.cpu_mos6510->s                      ' get stack pointer(low byte/LSB)
+#define get_msb                  computer.cpu_mos6510->msb                    ' get stack pointer(high byte/MSB)
+ 
+#define get_sa                   computer.cpu_mos6510->sa                     ' get accumulator(signed)
+#define get_sx                   computer.cpu_mos6510->sx                     ' get index register X(signed)
+#define get_sy                   computer.cpu_mos6510->sy                     ' get index register Y(signed)
+
+'Set Registers
+#define set_a(r)                 mov(computer.cpu_mos6510->a, r)              ' set accumulator(unsigned)
+#define set_x(r)                 mov(computer.cpu_mos6510->x, r)              ' set index register X(unsigned)
+#define set_y(r)                 mov(computer.cpu_mos6510->y, r)              ' set index register Y(unsigned)
+#define set_pc(r)                mov(computer.cpu_mos6510->pc, r)             ' set program counter
+#define set_pl(r)                mov(computer.cpu_mos6510->pl, r)             ' set program counter(low byte)
+#define set_ph(r)                mov(computer.cpu_mos6510->ph, r)             ' set program counter(high byte)
+#define set_sp(r)                mov(computer.cpu_mos6510->sp, r)             ' set stack pointer
+#define set_s(r)                 mov(computer.cpu_mos6510->s, r)              ' set stack pointer(low byte/LSB)
+#define set_msb(r)               mov(computer.cpu_mos6510->msb, r)            ' set stack pointer(high byte/MSB)
+
+#define set_sa(r)                mov(computer.cpu_mos6510->sa, r)             ' set accumulator(signed)
+#define set_sx(r)                mov(computer.cpu_mos6510->sx, r)             ' set index register X(signed)
+#define set_sy(r)                mov(computer.cpu_mos6510->sy, r)             ' set index register Y(signed)
+
+#define fun_readbyte(x)          computer.cpu_mos6510->mem->readbyte(x)       ' read signed byte from memory
+#define fun_readubyte(x)         computer.cpu_mos6510->mem->readubyte(x)      ' read unsigned byte from memory
+#define fun_readushort(x)        computer.cpu_mos6510->mem->readushort(x)     ' read unsigned short from memory
+#define sub_writebyte(x, y)      computer.cpu_mom6510->mem->writebyte(x, y)   ' write byte to memory
+#define sub_writeubyte(x, y)     computer.cpu_mos6510->mem->writeubyte(x, y)  ' write unsigned byte to memory
+#define sub_writeushort(x, y)    computer.cpu_mos6510->mem->writeushort(x, y) ' write unsigned short to memory
+ 
+'mov(computer.cpu_mos6510->A,0)
 'Logic Gates
 #define logic_xnor(x, y) not(x xor y) 'XNOR
 #define logic_xor(x, y)  x xor y      'XOR  
@@ -204,50 +400,110 @@ type float as double
     #include once "raytracer.bi"
 #endif
 
-#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
-    #define SYSTEM_TYPE ulongint
-#else
-    #define SYSTEM_TYPE double
-#endif
-
 ' memory registers
-dim shared as SYSTEM_TYPE pc,old_pc=&H00,adr0,adr1,adr2,adr3,pc_status
+static shared as SYSTEM_TYPE pc,old_pc=&H00,adr0,adr1,adr2,adr3,pc_status
 
 ' general purpose registers
-dim shared as SYSTEM_TYPE r0, r1, r2, r3, r4, r5
+static shared as SYSTEM_TYPE r0, r1, r2, r3, r4, r5
 
 ' video registers
-
-dim shared as SYSTEM_TYPE   radius
+static shared as SYSTEM_TYPE   radius
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
-dim shared as SYSTEM_TYPE   fc, bc
+static shared as SYSTEM_TYPE   fc, bc
 static shared as ubyte fr = &HFF, fg = &HFF, fb = &HFF, fa = &HFF 
 static shared as ubyte br = &H00, bg = &H00, bb = &H00, ba = &H00
 #endif
-dim shared as SYSTEM_TYPE   red2=&HFF,green2=&HFF,blue2=&HFF,xalpha2=&HFF
-dim shared as SYSTEM_TYPE   x_axis0, y_axis0, z_axis0, col0, col1,char_h=&H5A
-dim shared as SYSTEM_TYPE   x_axis1, y_axis1, z_axis1, char_ptr, char_w=&H5A
-dim shared as SYSTEM_TYPE  char_buffer=&H000004000, bitmask=&HFF, pixel_size
-dim shared as float        iGlobalTime ' shader playback time (in seconds)
+static shared as SYSTEM_TYPE   red2=&HFF,green2=&HFF,blue2=&HFF,xalpha2=&HFF
+static shared as SYSTEM_TYPE   x_axis0, y_axis0, z_axis0, col0, col1,char_h=&H5A
+static shared as SYSTEM_TYPE   x_axis1, y_axis1, z_axis1, char_ptr, char_w=&H5A
+static shared as SYSTEM_TYPE  char_buffer=&H000004000, bitmask=&HFF, pixel_size
+static shared as float        occ
+static shared as float        ambient
+static shared as float        diffuse
+static shared as float        bac
+static shared as float        dom
+static shared as float        fr
+static shared as float        specular
+static shared as float        iGlobalTime ' shader playback time (in seconds)
+static shared as float        rTime
+static shared as float        iTime
+static shared as SYSTEM_TYPE  cr
+static shared as float        t
+static shared as float        m
+static shared as float        sca
+static shared as float        hr
+static shared as float        dd2
+static shared as float        EPS
+static shared as float        resf ' float res
+static shared as float        h
+static shared as float        mint
+static shared as float        tmax
+static shared as float        tmin
+static shared as float        precis
+static shared as float        s
+static shared as mat2         m2 ' mat2 m
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
-dim shared as vec3         iResolution ' viewport resolution (in pixels)
-dim shared as vec4         iMouse      ' mouse pixel coords. xy: current (if MLB down), zw: click
+static shared as vec3         iResolution ' viewport resolution (in pixels)
+static shared as vec4         iMouse      ' mouse pixel coords. xy: current (if MLB down), zw: click
+static shared as vec4         fragColor
+static shared as vec2         fragCoord
+static shared as vec2         q
+static shared as vec2         p
+static shared as vec3         ro
+static shared as vec3         ta
+static shared as mat3         ca
+static shared as vec3         rd
+static shared as vec3         col
+static shared as vec2         uv
+static shared as vec3         cw
+static shared as vec3         cp
+static shared as vec3         cu
+static shared as vec3         cv
+static shared as vec3         lin
+static shared as vec3         ref
+static shared as vec3         light
+static shared as vec3         p3 ' vector3 p
+static shared as vec3         nor
+static shared as vec2         res2
+static shared as vec3         aopos
 #else
-dim shared as vector3      iResolution ' viewport resolution (in pixels)
-dim shared as vector4      iMouse      ' mouse pixel coords. xy: current (if MLB down), zw: click
+static shared as vector3      iResolution ' viewport resolution (in pixels)
+static shared as vector4      iMouse      ' mouse pixel coords. xy: current (if MLB down), zw: click
+static shared as vector4      fragColor
+static shared as vector2      fragCoord
+static shared as vector2      q
+static shared as vector2      p2 ' vector2 p
+static shared as vector3      ro
+static shared as vector3      ta
+static shared as mat3         ca
+static shared as vector3      rd
+static shared as vector3      col
+static shared as vector2      uv
+static shared as vector3      cw
+static shared as vector3      cp
+static shared as vector3      cu
+static shared as vector3      cv
+static shared as vector3      lin
+static shared as vector3      ref
+static shared as vector3      light
+static shared as vector3      p3   ' vector3 p
+static shared as vector3      nor
+static shared as vector2      res2 ' vector2 res
+static shared as vector3      aopos
+static shared as vector2      rv2   ' vector2 r
 #endif
 
 ' string registers
-dim shared as SYSTEM_TYPE string_adr, string_len 
-dim shared as string      driver_name, string_data
+static shared as SYSTEM_TYPE string_adr, string_len 
+static shared as string      driver_name, string_data
 
 ' joystick registers
-dim shared as SYSTEM_TYPE    a1,a2,a3,a4,a5,a6,a7,a8
+static shared as SYSTEM_TYPE    a1,a2,a3,a4,a5,a6,a7,a8
 
 ' system memory bank
-dim shared as string   get_key, get_data, old_data(10000)
-dim shared as ulongint i
-dim shared as ubyte    nibbles(&B1111)
+static shared as string   get_key, get_data, old_data(10000)
+static shared as ulongint i
+static shared as ubyte    nibbles(&B1111)
 
 var shared mov(bd_color,0)
 var shared mov(b,0),mov(c,0),mov(x,0),mov(y,0),mov(xs,0),mov(ys,0)
@@ -280,7 +536,7 @@ end type
 
 declare def RasterLine(param     as any ptr)
 
-type MEMORY_T
+type SYSTEM_BUS_T
   public:
   declare constructor
   declare destructor
@@ -303,100 +559,209 @@ type MEMORY_T
   declare def  getXYZ       ()
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
  'Ring 3 - Shadertoy
-  declare proc length6      (p  as vec2)                                                                         as SYSTEM_TYPE
-  declare proc length8      (p  as vec2)                                                                         as SYSTEM_TYPE
-  declare proc sdPlane      (p  as vec3)                                                                         as SYSTEM_TYPE
-  declare proc sdSphere     (p  as vec3 , s   as SYSTEM_TYPE)                                                    as SYSTEM_TYPE
-  declare proc sdBox        (p  as vec3 , b   as vec3)                                                           as SYSTEM_TYPE
-  declare proc sdEllipsoid  (p  as vec3 , r   as vec3)                                                           as SYSTEM_TYPE
-  declare proc udRoundBox   (p  as vec3 , b   as vec3 , r                      as SYSTEM_TYPE)                   as SYSTEM_TYPE
-  declare proc sdTorus      (p  as vec3 , t   as vec2)                                                           as SYSTEM_TYPE
-  declare proc sdTorus82    (p  as vec3 , t   as vec2)                                                           as SYSTEM_TYPE
-  declare proc sdTorus88    (p  as vec3 , t   as vec2)                                                           as SYSTEM_TYPE
-  declare proc sdHexPrism   (p  as vec3 , h   as vec2)                                                           as SYSTEM_TYPE
-  declare proc sdCapsule    (p  as vec3 , a   as vec3 , b     as vec3 ,  r  as SYSTEM_TYPE)                      as SYSTEM_TYPE
-  declare proc sdTriPrism   (p  as vec3 , h   as vec2)                                                           as SYSTEM_TYPE
-  declare proc sdCylinder   (p  as vec3 , h   as vec2)                                                           as SYSTEM_TYPE
-  declare proc sdCylinder6  (p  as vec3 , h   as vec2)                                                           as SYSTEM_TYPE
-  declare proc sdCone       (p  as vec3 , c   as vec3)                                                           as SYSTEM_TYPE
-  declare proc _sdCone      (p  as vec3 , c   as vec3)                                                           as SYSTEM_TYPE
-  declare proc sdConeHQ     (p  as vec3 , c   as vec3)                                                           as SYSTEM_TYPE
-  declare proc sdConeSection(p  as vec3 , h   as SYSTEM_TYPE   , r1    as SYSTEM_TYPE  ,  r2  as SYSTEM_TYPE)    as SYSTEM_TYPE
-  declare proc sdWobbleCube (p  as vec3 , s   as SYSTEM_TYPE)                                                    as SYSTEM_TYPE
-  declare proc udTriangle   (p  as vec3 , a   as vec3 , b     as vec3 , c   as vec3)                             as SYSTEM_TYPE
-  declare proc udQuad       (p  as vec3 , a   as vec3 , b     as vec3 , c   as vec3 , d as vec3)                 as SYSTEM_TYPE
-  declare proc opS          (d1 as SYSTEM_TYPE   , d2  as SYSTEM_TYPE)                                           as SYSTEM_TYPE
+  declare proc length6      (p  as vec2)                                                                         as float
+  declare proc length8      (p  as vec2)                                                                         as float
+  declare proc sdPlane      (p  as vec3)                                                                         as float
+  declare proc sdSphere     (p  as vec3 , s   as float)                                                          as float
+  declare proc sdBox        (p  as vec3 , b   as vec3)                                                           as float
+  declare proc sdEllipsoid  (p  as vec3 , r   as vec3)                                                           as float
+  declare proc sdRoundBox   (p  as vec3 , b   as vec3,  r                            as float)                   as float
+  declare proc udRoundBox   (p  as vec3 , b   as vec3 , r                            as float)                   as float
+  declare proc sdBoxFrame   (p  as vec3,  b   as vec3,  e                            as float)                   as float
+  declare proc sdTorus      (p  as vec3 , t   as vec2)                                                           as float
+  declare proc sdTorus82    (p  as vec3 , t   as vec2)                                                           as float
+  declare proc sdTorus88    (p  as vec3 , t   as vec2)                                                           as float
+  declare proc sdHexPrism   (p  as vec3 , h   as vec2)                                                           as float
+  declare proc sdCapsule    (p  as vec3 , a   as vec3 , b     as vec3 ,           r  as float)                   as float
+  declare proc sdTriPrism   (p  as vec3 , h   as vec2)                                                           as float
+  declare proc sdCylinder   (p  as vec3 , h   as vec2)                                                           as float
+  declare proc sdCylinder6  (p  as vec3 , h   as vec2)                                                           as float
+  declare proc sdCone       (p  as vec3 , c   as vec3)                                                           as float
+  declare proc _sdCone      (p  as vec3 , c   as vec3)                                                           as float
+  declare proc sdConeHQ     (p  as vec3 , c   as vec3)                                                           as float
+  declare proc sdConeSection(p  as vec3 , h   as float , r1      as float  ,  r2     as float)                   as float
+  declare proc sdWobbleCube (p  as vec3 , s   as float)                                                          as float
+  declare proc udTriangle   (p  as vec3 , a   as vec3 , b        as vec3 , c         as vec3)                    as float
+  declare proc udQuad       (p  as vec3 , a   as vec3 , b        as vec3 , c         as vec3 , d as vec3)        as float
+  declare proc opS          (d1 as float, d2  as float)                                                          as float
   declare proc opU          (d1 as vec2 , d2  as vec2)                                                           as vec2
-  declare proc opI          (d1 as SYSTEM_TYPE   , d2  as SYSTEM_TYPE )                                          as SYSTEM_TYPE
+  declare proc opI          (d1 as float, d2  as float)                                                          as float
   declare proc opRep        (p  as vec3 , c   as vec3)                                                           as vec3
-  declare proc ExpSmin      (a  as SYSTEM_TYPE   , b   as SYSTEM_TYPE   , k     as SYSTEM_TYPE=32)               as SYSTEM_TYPE
-  declare proc PolySmin     (a  as SYSTEM_TYPE   , b   as SYSTEM_TYPE   , k     as SYSTEM_TYPE=0.1)              as SYSTEM_TYPE
-  declare proc PowSmin      (a  as SYSTEM_TYPE   , b   as SYSTEM_TYPE   , k     as SYSTEM_TYPE=8)                as SYSTEM_TYPE
+  declare proc ExpSmin      (a  as float, b   as float   , k     as float=32)                                    as float
+  declare proc PolySmin     (a  as float, b   as float   , k     as float=0.1)                                   as float
+  declare proc PowSmin      (a  as float, b   as float   , k     as float=8)                                     as float
   declare proc opTwist      (p  as vec3)                                                                         as vec3
   declare proc map          (p  as vec3)                                                                         as vec2
-  declare proc castRay      (ro as vec3 , rd  as vec3)                                                           as vec2
-  declare proc softshadow   (ro as vec3 , rd  as vec3  , mint as SYSTEM_TYPE , tmax  as SYSTEM_TYPE)             as SYSTEM_TYPE
-  declare proc calcNormal   (p  as vec3)                                                                         as vec3
-  declare proc calcAO       (p  as vec3 , nor as vec3)                                                           as SYSTEM_TYPE
-  declare proc RENDER_GLSL  (ro as vec3 , rd  as vec3)                                                           as vec3
-  declare proc setCamera    (ro as vec3 , ta  as vec3  , cr as SYSTEM_TYPE )                                     as mat3
-
+  declare proc castRay      ()                                                                                   as vec2
+  declare proc softshadow   ()                                                                                   as float
+  declare proc calcNormal   ()                                                                                   as vec3
+  declare proc calcAO       ()                                                                                   as float
+  declare proc RENDER_GLSL  ()                                                                                   as vec3
+  declare proc setCamera    ()                                                                                   as mat3
+  declare proc Spectrum     (x as float )                                                                        as vec3
+  declare proc SpectrumPoly (x as float)                                                                         as vec3
   declare def  mainImage overload (fragColor as vec4 , fragCoord as const vec2)
   declare def _mainImage          (fragColor as vec4 , fragCoord as const vec2)
 #else
  'Ring 3 - Shadertoy
-  declare proc length6      (p  as vector2)                                                                      as SYSTEM_TYPE
-  declare proc length8      (p  as vector2)                                                                      as SYSTEM_TYPE
-  declare proc sdPlane      (p  as vector3)                                                                      as SYSTEM_TYPE
-  declare proc sdSphere     (p  as vector3 , s   as SYSTEM_TYPE)                                                 as SYSTEM_TYPE
-  declare proc sdBox        (p  as vector3 , b   as vector3)                                                     as SYSTEM_TYPE
-  declare proc sdEllipsoid  (p  as vector3 , r   as vector3)                                                     as SYSTEM_TYPE
-  declare proc udRoundBox   (p  as vector3 , b   as vector3 , r                      as SYSTEM_TYPE)             as SYSTEM_TYPE
-  declare proc sdTorus      (p  as vector3 , t   as vector2)                                                     as SYSTEM_TYPE
-  declare proc sdTorus82    (p  as vector3 , t   as vector2)                                                     as SYSTEM_TYPE
-  declare proc sdTorus88    (p  as vector3 , t   as vector2)                                                     as SYSTEM_TYPE
-  declare proc sdHexPrism   (p  as vector3 , h   as vector2)                                                     as SYSTEM_TYPE
-  declare proc sdCapsule    (p  as vector3 , a   as vector3 , b     as vector3 ,  r  as SYSTEM_TYPE)             as SYSTEM_TYPE
-  declare proc sdTriPrism   (p  as vector3 , h   as vector2)                                                     as SYSTEM_TYPE
-  declare proc sdCylinder   (p  as vector3 , h   as vector2)                                                     as SYSTEM_TYPE
-  declare proc sdCylinder6  (p  as vector3 , h   as vector2)                                                     as SYSTEM_TYPE
-  declare proc sdCone       (p  as vector3 , c   as vector3)                                                     as SYSTEM_TYPE
-  declare proc _sdCone      (p  as vector3 , c   as vector3)                                                     as SYSTEM_TYPE
-  declare proc sdConeHQ     (p  as vector3 , c   as vector3)                                                     as SYSTEM_TYPE
-  declare proc sdConeSection(p  as vector3 , h   as SYSTEM_TYPE   , r1    as SYSTEM_TYPE  ,  r2  as SYSTEM_TYPE) as SYSTEM_TYPE
-  declare proc sdWobbleCube (p  as vector3 , s   as SYSTEM_TYPE)                                                 as SYSTEM_TYPE
-  declare proc udTriangle   (p  as vector3 , a   as vector3 , b     as vector3 , c   as vector3)                 as SYSTEM_TYPE
-  declare proc udQuad       (p  as vector3 , a   as vector3 , b     as vector3 , c   as vector3 , d as vector3)  as SYSTEM_TYPE
-  declare proc opS          (d1 as SYSTEM_TYPE   , d2  as SYSTEM_TYPE)                                           as SYSTEM_TYPE
+  declare proc length6      (p  as vector2)                                                                      as float
+  declare proc length8      (p  as vector2)                                                                      as float
+  declare proc sdPlane      (p  as vector3)                                                                      as float
+  declare proc sdSphere     (p  as vector3 , s   as float)                                                       as float
+  declare proc sdBox        (p  as vector3 , b   as vector3)                                                     as float
+  declare proc sdEllipsoid  (p  as vector3 , r   as vector3)                                                     as float
+  declare proc sdRoundBox   (p  as vector3 , b   as vector3,  r                      as float)                   as float
+  declare proc udRoundBox   (p  as vector3 , b   as vector3 , r                      as float)                   as float
+  declare proc sdBoxFrame   (p  as vector3 , b   as vector3,  e                      as float)                   as float
+  declare proc sdTorus      (p  as vector3 , t   as vector2)                                                     as float
+  declare proc sdCappedTorus(p  as vector3 , sc  as vector2,  ra    as float  ,   rb as float)                   as float
+  declare proc sdTorus82    (p  as vector3 , t   as vector2)                                                     as float
+  declare proc sdTorus88    (p  as vector3 , t   as vector2)                                                     as float
+  declare proc sdLink       (p  as vector3 , le  as float   , r1    as float   ,  r2 as float)                   as float
+  declare proc sdHexPrism   (p  as vector3 , h   as vector2)                                                     as float
+  declare proc sdCapsule    (p  as vector3 , a   as vector3 , b     as vector3 ,  r  as float)                   as float
+  declare proc sdTriPrism   (p  as vector3 , h   as vector2)                                                     as float
+  declare proc sdCylinder   (p  as vector3 , h   as vector2)                                                     as float
+  declare proc sdCylinder6  (p  as vector3 , h   as vector2)                                                     as float
+  declare proc sdCone       (p  as vector3 , c   as vector3)                                                     as float
+  declare proc _sdCone      (p  as vector3 , c   as vector3)                                                     as float
+  declare proc sdConeHQ     (p  as vector3 , c   as vector3)                                                     as float
+  declare proc sdConeSection(p  as vector3 , h   as float   , r1    as float  ,  r2  as float)                   as float
+  declare proc sdWobbleCube (p  as vector3 , s   as float)                                                       as float
+  declare proc udTriangle   (p  as vector3 , a   as vector3 , b     as vector3 , c   as vector3)                 as float
+  declare proc udQuad       (p  as vector3 , a   as vector3 , b     as vector3 , c   as vector3 , d as vector3)  as float
+  declare proc opS          (d1 as float   , d2  as float)                                                       as float
   declare proc opU          (d1 as vector2 , d2  as vector2)                                                     as vector2
-  declare proc opI          (d1 as SYSTEM_TYPE   , d2  as SYSTEM_TYPE )                                          as SYSTEM_TYPE
+  declare proc opI          (d1 as float   , d2  as float)                                                       as float
   declare proc opRep        (p  as vector3 , c   as vector3)                                                     as vector3
-  declare proc ExpSmin      (a  as SYSTEM_TYPE   , b   as SYSTEM_TYPE   , k     as SYSTEM_TYPE=32)               as SYSTEM_TYPE
-  declare proc PolySmin     (a  as SYSTEM_TYPE   , b   as SYSTEM_TYPE   , k     as SYSTEM_TYPE=0.1)              as SYSTEM_TYPE
-  declare proc PowSmin      (a  as SYSTEM_TYPE   , b   as SYSTEM_TYPE   , k     as SYSTEM_TYPE=8)                as SYSTEM_TYPE
+  declare proc ExpSmin      (a  as float   , b   as float   , k     as float=32)                                 as float
+  declare proc PolySmin     (a  as float   , b   as float   , k     as float=0.1)                                as float
+  declare proc PowSmin      (a  as float   , b   as float   , k     as float=8)                                  as float
   declare proc opTwist      (p  as vector3)                                                                      as vector3
   declare proc map          (p  as vector3)                                                                      as vector2
-  declare proc castRay      (ro as vector3 , rd  as vector3)                                                     as vector2
-  declare proc softshadow   (ro as vector3 , rd  as vector3  , mint as SYSTEM_TYPE , tmax  as SYSTEM_TYPE)       as SYSTEM_TYPE
-  declare proc calcNormal   (p  as vector3)                                                                      as vector3
-  declare proc calcAO       (p  as vector3 , nor as vector3)                                                     as SYSTEM_TYPE
-  declare proc RENDER_GLSL  (ro as vector3 , rd  as vector3)                                                     as vector3
-  declare proc setCamera    (ro as vector3 , ta  as vector3  , cr as SYSTEM_TYPE )                               as mat3
-
-  declare def  mainImage overload (fragColor as vector4 , fragCoord as const vector2)
-  declare def _mainImage          (fragColor as vector4 , fragCoord as const vector2)
+  declare proc castRay      ()                                                                                   as vector2
+  declare proc softshadow   ()                                                                                   as float
+  declare proc calcNormal   ()                                                                                   as vector3
+  declare proc calcAO       ()                                                                                   as float
+  declare proc RENDER_GLSL  ()                                                                                   as vector3
+  declare proc setCamera    ()                                                                                   as mat3
+  declare proc Spectrum     (x as float)                                                                         as vector3
+  declare proc SpectrumPoly (x as float)                                                                         as vector3
+  declare proc haversineISH (x as float)                                                                         as float
+  declare proc rainbowISH   (x as single   , set as boolean = false )                                            as ulong
+  declare def  filter       (i as any ptr  , n as long)
+  declare proc sdPlane    overload (p as vector3, n as vector3, h as float )                                     as float
+  declare proc sdCylinder overload (p as vector3, c as vector3 )                                                 as float
+  declare proc sdCone     overload (p as vector3, c as vector2, h as float )                                     as float
+  declare proc map        overload (a as float  , b as float  , x as float  , c as float, d as float)            as float
+  declare def  mainImage  overload (fragColor as vector4 , fragCoord as const vector2)
+  declare def _mainImage           (fragColor as vector4 , fragCoord as const vector2)
 #endif
 
   declare def  EXEC_GLSL          ()
   declare def  EXEC_GLSL_40       ()
   declare def  EXEC_GLSL_90       ()
   declare def  EXEC_GLSL_120      ()
+  
+  ' Ring 0 - Mesa 3D and FreeGLUT
+  
+  /'
+   ' Initialization functions, see fglut_init.c
+   '/
+  declare FGAPI def    FGAPIENTRY glutInit               overload ( pargc as integer ptr, argv as ubyte ptr)
+  declare FGAPI def    FGAPIENTRY glutInitWindowPosition overload ( x as integer, y  as integer)
+  declare FGAPI def    FGAPIENTRY glutInitWindowSize     overload ( width_data as integer, height_data  as integer)
+  declare FGAPI def    FGAPIENTRY glutInitDisplayMode    overload ( displayMode as uinteger)
+  declare FGAPI def    FGAPIENTRY glutInitDisplayString  overload ( displayMode as const byte ptr )
+
+  ' Ring 3 - FreeBASIC
+  
+  ' 2D Graphics
+  declare FBCALL def DRIVER_LOCK   overload ()		
+  declare FBCALL def DRIVER_UNLOCK overload ()		
+  declare FBCALL def SET_DIRTY     overload (c as float, y as float, h as float)	
+  declare FBCALL def EVENT_LOCK    overload ()
+  declare FBCALL def EVENT_UNLOCK  overload ()
+  declare FBCALL def fb_GfxPset    overload (target as any ptr, fx as float, fy as float, color_data as uinteger, _
+                                             flags as integer, ispreset as integer)
+
+  ' Ring 3 - QB64
+  
+  ' MEM_STATIC memory manager
+  declare proc mem64_static_malloc(size as uinteger) as SYSTEM_TYPE ptr
+  declare def  mem64_static_restore(restore_point as SYSTEM_TYPE ptr)
+ 
+  ' mem64_FAR_DYNAMIC memory manager
+  declare proc mem64_dynamic_malloc(size as uinteger) as SYSTEM_TYPE ptr
+  declare def  mem64_dynamic_free  (block as SYSTEM_TYPE ptr)
+  declare def  sub_defseg          (segment as integer, passed as integer)
+  declare proc func_peek           (offset as integer) as integer
+  declare def  sub_poke            (offset as integer, value as integer)
+  declare def  more_return_points  ()
+  declare proc qbs_new_descriptor  () as qbs ptr
+  declare def  qbs_free_descriptor (str_data as qbs ptr)
+  declare proc varptr_dblock_check (off as ubyte ptr) as ushort
+  declare proc varseg_dblock_check (off as ubyte ptr) as ushort
+  declare proc func_lbound         (array as ptrszint ptr, index as integer, num_indexes as integer) as ptrszint
+  declare proc func_ubound         (array as ptrszint ptr, index as integer, num_indexes as integer) as ptrszint
+  
+  ' Generic File System (GFS)
+  ' TODO: implement fstream(C++), ofstream(C++), template(C++) and HANDLE(Windows API)
+ 
+  ' x86 Virtual MEM64 emulation
+  ' Note: x86 CPU emulation is still experimental and is not available in QB64 yet.
+   declare proc sib() as uinteger
+   
+   ' 486 Emulation
+   
+  ' FPU emulation
+   declare proc qbr                     (f as float) as longint
+   declare proc qbr_longdouble_to_uint64(f as float) as ulongint
+   declare proc qbr_float_to_long       (f as float) as integer
+   declare proc qbr_double_to_long      (f as float) as integer
+   declare def  fpu_reinit              ()
+   
+  ' I/O emulation
+  declare def   sub__blink(onoff as integer) 
+  declare proc  func__blink() as integer
+  declare def   sub_out(port as integer, data_out as integer)
+  declare proc  func_inp(port as integer) as integer
+  declare def   sub_wait(port as integer, andexpression as integer, xorexpression as integer, passed as integer)
+  
+  ' inline functions 
+  declare def  swap_8         (a as ubyte ptr,    b as ubyte ptr)
+  declare def  swap_16        (a as ushort ptr,   b as ushort ptr)
+  declare def  swap_32        (a as uinteger ptr, b as uinteger ptr)
+  declare def  swap_64        (a as ulongint ptr, b as ulongint ptr)
+  declare def  swap_longdouble(a as double ptr,   b as double ptr)
+  
+  ' bit-shifting
+  declare proc func__shl      (a1 as ulongint, b1 as integer) as ulongint
+  declare proc func__shr      (a1 as ulongint, b1 as integer) as ulongint
+  declare proc func__readbit  (a1 as ulongint, b1 as integer) as longint
+  declare proc func__setbit   (a1 as ulongint, b1 as integer) as ulongint 
+  declare proc func__resetbit (a1 as ulongint, b1 as integer) as ulongint
+  declare proc func__togglebit(a1 as ulongint, b1 as integer) as ulongint
+  
+  ' Working with 32bit colors:
+  declare proc func__rgb32(r as integer, g as integer, b as integer, a as integer) as uinteger
+  declare proc func__rgb32(r as integer, g as integer, b as integer) as uinteger
+  declare proc func__rgb32(i as integer, a as integer) as uinteger
+  declare proc func__rgb32(i as integer) as uinteger
+  declare proc func__rgba32(r as integer, g as integer, b as integer, a as integer) as uinteger
+  declare proc func__alpha32(col as uinteger) as integer
+  declare proc func__red32  (col as uinteger) as integer
+  declare proc func__green32(col as uinteger) as integer
+  declare proc func__blue32 (col as uinteger) as integer 
+  
   'Ring 0 - kernel
-  declare def  kmemset      (de as SYSTEM_TYPE, sz  as SYSTEM_TYPE, v  as SYSTEM_TYPE)
-  declare def  kmemcpy      (su as SYSTEM_TYPE, de  as SYSTEM_TYPE, sz as SYSTEM_TYPE)
-  declare proc kmin         (v1 as SYSTEM_TYPE, v2  as SYSTEM_TYPE)                                              as SYSTEM_TYPE
-  'declare proc ksqrt        (d  as SYSTEM_TYPE)                                                                as SYSTEM_TYPE
-#if 0
+  
+  ' kernel mode libc
+  declare def  k_memset     (de as SYSTEM_TYPE, sz  as SYSTEM_TYPE, v  as SYSTEM_TYPE)
+  declare def  k_memcpy     (su as SYSTEM_TYPE, de  as SYSTEM_TYPE, sz as SYSTEM_TYPE)
+  declare proc k_min        (v1 as SYSTEM_TYPE, v2  as SYSTEM_TYPE)                                              as SYSTEM_TYPE
+
+  #if 0
   const as SYSTEM_TYPE os_end     = &HFFFF '------|
   const as SYSTEM_TYPE os_base    = &HE000 '  8 K | KERNAL ROM or RAM (adr 0 bit1=0 RAM bit1=1 ROM
   const as SYSTEM_TYPE flopy_end  = &HDFFF '------+-|
@@ -421,32 +786,22 @@ type MEMORY_T
   'Define datasets
 #if defined(__FB_DOS__)
   'Ring 3 - c64dvd
-  as SYSTEM_TYPE     mem64    (01048575) ' Ram
   as SYSTEM_TYPE     kernal   (00016383) ' OS
   as SYSTEM_TYPE     basic    (00016383) ' Basic
   as SYSTEM_TYPE     char     (00480000) ' Font
   as SYSTEM_TYPE     col      (00001023) ' color triples
   as SYSTEM_TYPE     SINTable (00000359) ' sine table
   as SYSTEM_TYPE     COSTable (00000359) ' cosine table
-  as       vec4 fragColor
-  as const vec2 fragCoord
-  as       vec2 res
-#elseif defined(__FB_WIN32__) or defined(__WIN64__)
+#elseif defined(__FB_WIN32__) or defined(__FB_WIN64__)
   'Ring 3 - c64dvd
-  as SYSTEM_TYPE     mem64    (04194303) ' Ram
   as SYSTEM_TYPE     kernal   (00016383) ' OS
   as SYSTEM_TYPE     basic    (00016383) ' Basic
   as SYSTEM_TYPE     char     (00480000) ' Font
   as SYSTEM_TYPE     col      (00001023) ' color triples
   as SYSTEM_TYPE     SINTable (00000359) ' sine table
   as SYSTEM_TYPE     COSTable (00000359) ' cosine table
-  'Ring 3 - Shadertoy 
-  as       vec4 fragColor
-  as const vec2 fragCoord
-  as       vec2 res
 #else
   'Ring 3 - c64dvd
-  as SYSTEM_TYPE     mem64    (16777215) ' Ram
   as SYSTEM_TYPE     kernal   (00016383) ' OS
   as SYSTEM_TYPE     basic    (00016383) ' Basic
   as SYSTEM_TYPE     char     (02073600) ' Font
@@ -455,10 +810,6 @@ type MEMORY_T
   as SYSTEM_TYPE     COSTable (00000359) ' cosine table
   'Ring 3 - RAYTRACER
   as RAYTRACER raytracer           ' Raytracer
-  'Ring 3 - Shadertoy
-  as       vector4 fragColor
-  as const vector2 fragCoord
-  as       vector2 res
 #endif
   'Ring 0 - kernel
   as ubyte Result (0 to 2047)
@@ -513,6 +864,10 @@ type MULTI
   as any ptr adr0
   as any ptr adr1
    type
+    union
+     as FLOAT128 ufpu128
+     as FLOAT128 sfpu128
+     type
 	 union 
 	  as double ufpu64
 	  as double sfpu64
@@ -551,6 +906,8 @@ type MULTI
 	   end union
 	  end type
 	 end union
+	end type 
+   end union
   end type
  end union  	 
 end type
@@ -567,7 +924,7 @@ end type
 
 type CPU6510
   public:
-  declare constructor(byval mem  as MEMORY_T ptr)
+  declare constructor(byval mem  as SYSTEM_BUS_T ptr)
   declare destructor
   declare operator CAST      as string
 #if defined(__FB_WIN32__) or defined(__FB_DOS__) or defined(__FB_WIN64__)
@@ -603,8 +960,8 @@ type CPU6510
     as  byte  sX ' X signed
   end union
   union ' index register Y
-    as ubyte   Y ' X unsigned
-    as  byte  sY ' X signed
+    as ubyte   Y ' Y unsigned
+    as  byte  sY ' Y signed
   end union
   union ' program counter PC
     as ushort PC
@@ -620,7 +977,7 @@ type CPU6510
       as ubyte MSB   ' msb allways hi
     end type
   end union
-  as MEMORY_T ptr mem
+  as SYSTEM_BUS_T ptr mem
   as OPCODE     code
   private:
   as OPCODE Opcodes(255)
@@ -631,9 +988,11 @@ type C64_T
   public:
   declare constructor
   declare destructor
-  as MEMORY_T  ptr MEM
-  as CPU6510 ptr CPU
+  as SYSTEM_BUS_T  ptr MEM
+  as CPU6510 ptr CPU_MOS6510
 end type
+
+static shared as C64_T computer
 
 ' void _ZN5C64_TC1Ev( struct $5C64_T* THIS$1 )
 constructor C64_T
@@ -643,10 +1002,10 @@ constructor C64_T
   ' int64 TMP$737$1;
   ' int64 TMP$738$1;
   ' int64 TMP$739$1;
-  ' struct $8MEMORY_T* TMP$740$1;
+  ' struct $8SYSTEM_BUS_T* TMP$740$1;
   ' struct $7CPU6510* TMP$742$1;
   ' label$139:;
-  ' __builtin_memset( (struct $8MEMORY_T**)THIS$1, 0, 8ll );
+  ' __builtin_memset( (struct $8SYSTEM_BUS_T**)THIS$1, 0, 8ll );
   ' __builtin_memset( (struct $7CPU6510**)((uint8*)THIS$1 + 8ll), 0, 8ll );
   'dim as integer i,c
   ' initialize nibbles, bytes, and words.
@@ -807,21 +1166,21 @@ L0:
 
  ' label$155:;
  ' void* vr$133 = malloc( 134755848ull );
- ' TMP$740$1 = (struct $8MEMORY_T*)vr$133;
- ' if( TMP$740$1 == (struct $8MEMORY_T*)0ull ) goto label$156;
- ' _ZN8MEMORY_TC1Ev( TMP$740$1 );
+ ' TMP$740$1 = (struct $8SYSTEM_BUS_T*)vr$133;
+ ' if( TMP$740$1 == (struct $8SYSTEM_BUS_T*)0ull ) goto label$156;
+ ' _ZN8SYSTEM_BUS_TC1Ev( TMP$740$1 );
  ' label$156:;
- ' *(struct $8MEMORY_T**)THIS$1 = TMP$740$1;  
-  mem = new MEMORY_T
+ ' *(struct $8SYSTEM_BUS_T**)THIS$1 = TMP$740$1;  
+  mem = new SYSTEM_BUS_T
   
  ' void* vr$135 = malloc( 14720ull );
  ' TMP$742$1 = (struct $7CPU6510*)vr$135;
  ' if( TMP$742$1 == (struct $7CPU6510*)0ull ) goto label$157;
- ' _ZN7CPU6510C1EP8MEMORY_T( TMP$742$1, *(struct $8MEMORY_T**)THIS$1 );
+ ' _ZN7CPU6510C1EP8SYSTEM_BUS_T( TMP$742$1, *(struct $8SYSTEM_BUS_T**)THIS$1 );
  ' label$157:;
  ' *(struct $7CPU6510**)((uint8*)THIS$1 + 8ll) = TMP$742$1;
  ' label$140:;
-  cpu = new CPU6510(mem)
+  cpu_mos6510 = new CPU6510(mem)
   
  '} 
 end constructor
@@ -833,11 +1192,11 @@ destructor C64_T
   ' if( *(struct $7CPU6510**)((uint8*)THIS$1 + 8ll) == (struct $7CPU6510*)0ull ) goto label$163;
   ' _ZN7CPU6510D1Ev( *(struct $7CPU6510**)((uint8*)THIS$1 + 8ll) );
   ' free( *(void**)((uint8*)THIS$1 + 8ll) );
-  delete CPU
+  delete CPU_MOS6510
   
   ' label$163:;
-  ' if( *(struct $8MEMORY_T**)THIS$1 == (struct $8MEMORY_T*)0ull ) goto label$164;
-  ' _ZN8MEMORY_TD1Ev( *(struct $8MEMORY_T**)THIS$1 );
+  ' if( *(struct $8SYSTEM_BUS_T**)THIS$1 == (struct $8SYSTEM_BUS_T*)0ull ) goto label$164;
+  ' _ZN8SYSTEM_BUS_TD1Ev( *(struct $8SYSTEM_BUS_T**)THIS$1 );
   ' free( *(void**)THIS$1 );
   delete MEM
   dprint("C64_T~")
@@ -878,7 +1237,7 @@ end destructor
 
 #include once "memory.bi"
 
-constructor CPU6510(byval lpMem as MEMORY_T ptr)
+constructor CPU6510(byval lpMem as SYSTEM_BUS_T ptr)
   dprint("CPU6510()")
   mov(mem,lpMem): mov(var i,0)
   restore INSTRUCTION_SET
@@ -1528,13 +1887,13 @@ def INS_RTI(byval Cpu as CPU6510_T)
   Cpu->P =Cpu->pull()
   Cpu->PL=Cpu->pull()
   Cpu->PH=Cpu->pull()
-  Cpu->PC+=1d
+  Cpu->PC+=1
 end def
 
 def INS_RTS(byval Cpu as CPU6510_T)
   Cpu->PL=Cpu->pull()
   Cpu->PH=Cpu->pull()
-  Cpu->PC+=1d
+  Cpu->PC+=1
 end def
 
 def INS_SBC(byval Cpu as CPU6510_T)
@@ -2047,7 +2406,7 @@ proc InterruptService(byval cpu as CPU6510 ptr) as integer
   mov(proc,IRQTicks)
 end proc
 
-dim shared as C64_T computer
+
 dim shared as ulongint ticks,res
 
 def RasterLine(param as any ptr)
@@ -2057,7 +2416,7 @@ def RasterLine(param as any ptr)
     for in range(mov(x as ulongint,0),scanparams->xend)
       	fragCoord.x = x
       	fragCoord.y = scanparams->yend - scanparams->yscan
-      	computer.cpu->mem->mainImage(fragColor, fragCoord)
+      	computer.cpu_mos6510->mem->mainImage(fragColor, fragCoord)
         pset fgimage, (x,scanparams->yscan),fragColor
     next    
 end def
@@ -2071,19 +2430,26 @@ def kmain(mb_info as multiboot_info ptr)
 	do
 	  mov(Ticks add, peek(ubyte,@nibbles(&B0001)))
 	  if mov(flag,peek(ubyte,@nibbles(&B0001))) then
-		computer.cpu->Tick Ticks
+		computer.cpu_mos6510->Tick Ticks
+		'         pc            pc
+	    mov(mem64(49418),(mem64(49418) add 1) mod &HFFFFFFFFFFFFFFFF)
+	   '          pc_512        pc_512
+	    mov(mem64(49500),(mem64(49500) add 1) mod &HFFFFFFFFFFFFFFFF)
 	  else
-		computer.cpu->Tick
+		computer.cpu_mos6510->Tick
 	  end if
 	  ' call ISR after 12,000 ticks
 	  if mov(Ticks mod (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100))),peek(ubyte,@nibbles(&B0000))) then
-		mov(Ticks add,InterruptService(computer.cpu))
+		mov(Ticks add,InterruptService(computer.cpu_mos6510))
 		screenlock
 		put (peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0000))),bgimage,pset
-		put (peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0000))),fgimage,alpha
+	 	put (peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0000))),fgimage,alpha
 		screensync 
-		screenunlock
+		screenunlock		
+	    '         RASTR          RASTR
+	    mov(mem64(&HD012),(mem64(&HD012) add 1) mod 1079) 
 	  end if
+	  ' mov(computer.cpu_mos6510->A,0) 
 	  ' draw to screen every 65,536 ticks
 	  'if mov(Ticks mod (peek(ubyte,@nibbles(&B0001)) shl (peek(ubyte,@nibbles(&B0001)) shl  peek(ubyte,@nibbles(&B0100)))),peek(ubyte,@nibbles(&B0000))) then  
 	   ' screenlock
@@ -2095,8 +2461,10 @@ def kmain(mb_info as multiboot_info ptr)
 		'computer.cpu->mem->poke64(&H000,&H00)
 		'sleep(10,1)
 		
-	  'end if
+	  'end if  
 	loop
+	free(@mem64(0))
+	free(@return_point)
 end def
 
 kmain(MB_INFO)

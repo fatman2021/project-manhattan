@@ -1,7 +1,48 @@
-'Original glslstyle.bi by D.J. Peters.
-'Edited by ShawnLG.(Cleaned up source, Fix bugs).
-'Added features for better compatibility with Freebasic.
-
+/'
+ ' Original glslstyle.bi by D.J. Peters.
+ ' Edited by ShawnLG.(Cleaned up source, Fix bugs).
+ ' Added features for better compatibility with Freebasic.
+ ' Additional code and bug fixes by Jacob Dahlen(fatman2021)
+ ' Additional code and bug fixes by dodicat
+ '
+ ' The following code is under the MIT license, so you can easily reuse it. You can support this work 
+ ' through Patreon or PayPal.
+ '
+ ' Articles by Inigo Quilez:
+ ' https://iquilezles.org/articles/
+ '
+ ' Patreon:
+ ' https://www.patreon.com/inigoquilez
+ '
+ ' PayPal:
+ ' https://www.paypal.com/paypalme/inigoquilez
+ ' 
+ ' The MIT License:
+ ' https://opensource.org/licenses/MIT
+ '
+ ' The following people have also contributed code to the Shadertoy FreeBASIC runtime:
+ '
+ ' D.J.Peters:
+ ' https://www.youtube.com/user/DJLinux007
+ ' https://www.freebasic.net/forum/search.php?author_id=44&sr=posts
+ '
+ ' ShawnLG:
+ ' https://freebasic.net/forum/search.php?st=0&sk=t&sd=d&sr=posts&author_id=3623
+ ' 
+ ' dodicat
+ ' https://www.freebasic.net/forum/search.php?author_id=682&sr=posts
+ '
+ ' bluatigro
+ ' https://www.freebasic.net/forum/search.php?author_id=9459&sr=posts 
+ '
+ ' Jacoob Dahlen(fatman2021):
+ ' https://youtube.com/channel/UC2uJbuxD_Kp-nXRkg9xxPKg
+ ' https://patreon.com/user?u=27289798
+ ' https://github.com/fatman2021 
+ '
+ 'Additional information can be found on Wikipedia:
+ 'https://en.wikipedia.org/wiki/Category:Computer_graphics_algorithms
+'/
 #include once "crt.bi" ' math.bi ...
 #define DEG2RAD M_PI/180.0
 #define RAD2DEG 180.0/M_PI
@@ -1316,6 +1357,16 @@ function max (byref a as vector4, byref b as float) as vector4
     return vector4(iif(a.x>b,a.x,b),iif(a.y>b,a.y,b),iif(a.z>b,a.z,b),iif(a.w>b,a.w,b))
 end function
 
+' Returns binomial coefficient without explicit use of factorials,
+' which can't be used with negative integers
+function pascalTriangle(a as float, b as float) as float
+  dim as float result = 1, i 
+  for i = 0 to b 
+    result *= (a - i) / (i + 1)
+  next i  
+  return result
+end function
+
 ' The clamp function returns x if it is larger than minVal and smaller than maxVal. 
 ' In case x is smaller than minVal, minVal is returned. 
 ' If x is larger than maxVal, maxVal is returned. 
@@ -1324,6 +1375,15 @@ end function
 function clamp overload(a as float, b as float, c as float) as float
     return iif(a<b,b,iif(a>c,c,a))
 end function
+'Duplicated definition in 'function clamp overload(x as float, lowerlimit as float, 
+'upperlimit as float) as float'(return x):
+/'
+function clamp overload(x as float, lowerlimit as float, upperlimit as float) as float
+  if (x < lowerlimit) then x = lowerlimit
+  if (x > upperlimit) then x = upperlimit
+  return x 
+end function
+'/
 function clamp (byref a as vector2, byref b as vector2, byref c as vector2) as vector2
     return vector2(iif(a.x<b.x,b.x,iif(a.x>c.x,c.x,a.x)), _
                 iif(a.y<b.y,b.y,iif(a.y>c.y,c.y,a.y)))
@@ -1354,6 +1414,18 @@ function clamp (byref a as vector4, b as float, c as float) as vector4
                 iif(a.y<b,b,iif(a.y>c,c,a.y)), _
                 iif(a.z<b,b,iif(a.z>c,c,a.z)),_
                 iif(a.w<b,b,iif(a.z>c,c,a.w)))
+end function
+
+' Generalized smoothstep
+function generalSmoothStep(N as float, x as float) as float
+  x = clamp(x, 0, 1)' ' x must be equal to or between 0 and 1
+  dim as float result = 0, na
+  for  na = 0  to N
+    result += pascalTriangle(-N - 1, n) * _
+              pascalTriangle(2 * N + 1, N - n) * _
+              pow(x, N + n + 1)
+  next na            
+  return result
 end function
 
 ' The mix function returns the linear blend of x and y, i.e. the product of x and (1 - a) plus the product of y and a. 
@@ -1438,10 +1510,17 @@ end function
 ' The input parameters can be floating scalars or float vectortors. 
 ' In case of float vectortors the operation is done component-wise.
 function smoothstep overload (edge0 as float, edge1 as float, x as float) as float
-    if x<edge0 then return 0
-    if x>edge1 then return 1
-    dim as float t = clamp((x - edge0) / (edge1 - edge0), 0.0, 1.0)
-    return t * t * (3.0 - 2.0 * t)
+   if (x <  edge0) then  return 0
+   if (x >= edge1) then  return 1
+   ' Scale/bias into [0..1] range
+   x = (x - edge0) / (edge1 - edge0)
+   return x * x * (3.0 - 2.0 * x)
+end function
+function smootherstep(edge0 as float, edge1 as float, x as float) as float
+  ' Scale, and clamp x to 0..1 range
+  x = clamp((x - edge0) / (edge1 - edge0), 0.0, 1.0)
+  ' Evaluate polynomial
+  return x * x * x * (x * (x * 6 - 15) + 10)
 end function
 function smoothstep (byref edge0 as vector2, byref edge1 as vector2, byref x as vector2) as vector2
     return vector2(smoothstep(edge0.x,edge1.x,x.x), _
@@ -1473,6 +1552,10 @@ function smoothstep (edge0 as float, edge1 as float, byref x as vector4) as vect
                 smoothstep(edge0,edge1,x.y), _
                 smoothstep(edge0,edge1,x.z), _
                 smoothstep(edge0,edge1,x.w))
+end function
+
+function inverse_smoothstep(x as float) as float
+  return 0.5 - sin(asin(1.0 - 2.0 * x) / 3.0)
 end function
 
 'Returns the length squared of a vectortor or the dot product with it's self.

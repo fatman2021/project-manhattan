@@ -107,7 +107,8 @@
           mov(mem64(49358),(((xs add x) mul 5.25) add 7) add mem64(49379))
 '                   y1                                             scro_y          
           mov(mem64(49359),(((ys add y) mul 4.25) add 7) add mem64(49380))
-          poke64(49404,peek64(49404)) 'Flag: Print Reverse Characters?0=No
+          ' Flag: Print Reverse Characters?0=No
+          computer.cpu_mos6510->mem->poke64(49404,peek64(49404)) 
 
         poke ulongint,@x,peek(ulongint,@x) add peek(ubyte,@nibbles(&B0001))
 
@@ -117,6 +118,8 @@
            poke ulongint,@x,peek(ubyte,@nibbles(&B0000))
            poke ulongint,@y,peek(ulongint,@y) add peek(ubyte,@nibbles(&B0001))
            poke ulongint,@c,peek(ulongint,@c) add peek(ubyte,@nibbles(&B0001))
+           '         RASTR          RASTR
+	       mov(mem64(&HD012),(mem64(&HD012) add 1) mod 1079) 
        end cmp
       loop
       
@@ -134,16 +137,22 @@
       do until logic_and(mov(y,&B00000000),mov(x,&B00000000))
       
 '                   x1                                                               scro_x        
-          mov(mem64(49358d),(((xs subt x) mul &B00000101) add  &B00000010) add mem64(49379d))
+          mov(mem64(49358d),(((xs subt x) mul &B00000101) add  &B00000010) add mem64(49379))
 '                   y1                                                               scro_y          
-          mov(mem64(49359d),(((ys subt y) mul &B00000100) add  &B00000010) add mem64(49380d))
+          mov(mem64(49359d),(((ys subt y) mul &B00000100) add  &B00000010) add mem64(49380))
 '                   x0                                                               scro_x          
-          mov(mem64(49355d),(((xs subt x) mul &B00000101) subt &B00000010) add mem64(49379d))
+          mov(mem64(49355d),(((xs subt x) mul &B00000101) subt &B00000010) add mem64(49379))
 '                   y0                                                               scro_y          
-          mov(mem64(49356d),(((ys subt y) mul &B00000100) subt &B00000010) add mem64(49380d))        
-          poke64(49404d,peek64(49404d)) 'Flag: Print Reverse Characters?0=No
-'                                                  font_w                                       	    
-        mov(x subt,&B000000001): if x lt &B00000000 then mov(x,mem64(49385d)): mov(y subt,&B00000001): mov(c add,&B00000001)
+          mov(mem64(49356d),(((ys subt y) mul &B00000100) subt &B00000010) add mem64(49380))        
+          poke64(49404d,peek64(49404)) 'Flag: Print Reverse Characters?0=No
+                                    	    
+        mov(x subt,&B000000001): if x lt &B00000000 then 
+'                      font_w   
+           mov(x,mem64(49385))
+           mov(y subt,&B00000001): mov(c add,&B00000001)
+           '         RASTR          RASTR
+	       mov(mem64(&HD012),(mem64(&HD012) add 1) mod 1079)
+	    end if             
       loop
       screenunlock ys,ys add 8    
  '                     font_f      
@@ -163,7 +172,11 @@
           mov(mem64(49359),(((((ys add y) mul &B00000100) add &B00000100) ndiv &B00000010) add mem64(49380)))
           poke64(49404,peek64(49404)) 'Flag: Print Reverse Characters?0=No
 '                                            font_w	    
-        mov(x add,&B00000001): if x gt mem64(49385d) then mov(x,&B00000000): mov(y add,&B00000001): mov(c add,&B00000001)
+        mov(x add,&B00000001): if x gt mem64(49385d) then 
+          mov(x,&B00000000): mov(y add,&B00000001): mov(c add,&B00000001)
+          '         RASTR          RASTR
+	      mov(mem64(&HD012),(mem64(&HD012) add 1) mod 1079)
+	   end if              
       loop
       poke64(49412d,&B00000000) 'Screen Unlock     
 '                      font_f      
@@ -183,7 +196,9 @@
 '                   y0                                                        scro_y          
           mov(mem64(49356d),(((((ys subt y) mul 4d) subt 2d) ndiv 2d) add mem64(49380d)))
           poke64(49404d,peek64(49404d)) 'Flag: Print Reverse Characters?0=No
-        next 
+        next
+        '         RASTR          RASTR
+	    mov(mem64(&HD012),(mem64(&HD012) add 1) mod 1079)          
         mov(c add,1d)
       next
       screenunlock ys,ys add 8d           

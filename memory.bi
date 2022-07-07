@@ -1,6 +1,6 @@
 'Ring 3 - c64dvd
-' void _ZN8MEMORY_TC1Ev( struct $8MEMORY_T* THIS$1 )
-constructor MEMORY_T
+' void _ZN8SYSTEM_BUS_TC1Ev( struct $8SYSTEM_BUS_T* THIS$1 )
+constructor SYSTEM_BUS_T
 
  '{
   ' label$165:;
@@ -105,42 +105,42 @@ L3:
   ' Set text color
   ' label$175:;
   
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + (int64)*(uint8*)4808098ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) \
   '   + (int64)*(uint8*)4808111ll) );
   ' Red=($C002/49154)
   poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)), _
          peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))) 
   
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + (int64)*(uint8*)4808099ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) \
   '   + (int64)*(uint8*)4808111ll) );
   ' Green=($C003/49155)
   poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011)), _
          peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))) 
   
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) \
   '   + (int64)*(uint8*)4808111ll) );
   ' Blue=($C004/49156)
   poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100)), _
          peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))) 
   
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + (int64)*(uint8*)4808101ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) \
   '   + (int64)*(uint8*)4808111ll) );
   ' Alpha=($C005/49157)
   poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101)), _
          peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))) 
   
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '  + (int64)*(uint8*)4808105ll), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll & 63ll)) \
   '  + (int64)*(uint8*)4808111ll) );
   ' Background Color(Alpha)=($C009/49161)
   poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)), _
          peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))) 
   
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808100ll << ((int64)*(uint8*)4808102ll & 63ll))) + ((int64)*(uint8*)4808108ll \
   '   << ((int64)*(uint8*)4808098ll & 63ll))), (double)(((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808100ll \
   '   & 63ll)) + (int64)*(uint8*)4808111ll) );
@@ -151,7 +151,7 @@ L3:
   ' Address 648 ($288) holds a "pointer" (or more precisely, half a pointer) that tells 
   ' KERNAL where in RAM the text screen is currently locate: The contents of address 648 is
   ' the most significant 8 bits, or the "high-byte", of the text screen's physical start address.
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808104ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808104ll & 63ll)) \
   '   + ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808104ll), \
   '   (double)*(uint8*)4808100ll );
   poke64(peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1000)) _
@@ -159,35 +159,35 @@ L3:
 
   ' Address 53272 ($D018) is a VIC-II register that generally tells the graphics chip where to "look for graphics", 
   ' in conjunction with both the text screen and with bitmap graphics. 
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808109ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808104ll), \
   '   (double)(((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808111ll) );
   poke64(peek(ubyte,@nibbles(&B1101)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) _
      shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))),   peek(ubyte,@nibbles(&B0001)) _
      shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))
      
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808103ll), \
   '   (double)*(uint8*)4808096ll );
 '        font_f(Flip font)=($C0E7/49383) 
   poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
      shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111))),   peek(ubyte,@nibbles(&B0000))
  
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808104ll), \
   '   (double)*(uint8*)4808098ll );
 '        font_o(Font offset)=($C0E8/49384)    
   poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
      shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))),   peek(ubyte,@nibbles(&B0010))
      
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll), \
   '   (double)*(uint8*)4808103ll );
 '        font_w(Font width)=($C0E9/49385)
   poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
      shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),   peek(ubyte,@nibbles(&B0111))
       
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808106ll), 
   '   (double)*(uint8*)4808103ll );
 '        font_h(Font height)=($C0EA/49386)
@@ -419,16 +419,16 @@ L7:
          
   'Sets top of system memory
   '      $0000(000000)  
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)*(uint8*)4808096ll, __builtin_inf() );
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)*(uint8*)4808096ll, __builtin_inf() );
   poke64(peek(ubyte,@nibbles(&B0000)),1.797693134862316e+308)
   
   '      $0001(00001)
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)*(uint8*)4808097ll, __builtin_inf() );
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)*(uint8*)4808097ll, __builtin_inf() );
   poke64(peek(ubyte,@nibbles(&B0001)),1.797693134862316e+308)
   
   'Sets reset vector to top of system memory
   '      $FFFC(65532)
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808108ll), __builtin_inf() );
   poke64(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
@@ -436,7 +436,7 @@ L7:
      add peek(ubyte,@nibbles(&B1100)),1.797693134862316e+308)
 
   '      $FFFD(65533)
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808111ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808111ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808109ll), __builtin_inf() );
   poke64(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
@@ -496,7 +496,7 @@ L7:
   '.,7E74 STA $C000 10001101 00000000 11000000
   '.,7E77 RTS       01100000
 
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) + \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) + \
   '   ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808098ll), (double)(((int64)*(uint8*)4808106ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808105ll) );
@@ -506,7 +506,7 @@ L7:
      add peek(ubyte,@nibbles(&B0010)),    peek(ubyte,@nibbles(&B1010)) shl peek(ubyte,@nibbles(&B0100)) _
      add peek(ubyte,@nibbles(&B1001)))
      
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808099ll), (double)*(uint8*)4808096ll );     
   '      $7E73(32371)   
@@ -514,7 +514,7 @@ L7:
      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
      add peek(ubyte,@nibbles(&B0011)),    peek(ubyte,@nibbles(&B0000)))
 
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808100ll), (double)(((int64)*(uint8*)4808104ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808109ll) ); 
@@ -524,7 +524,7 @@ L7:
      add peek(ubyte,@nibbles(&B0100)),    peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)) _
      add peek(ubyte,@nibbles(&B1101)))
  
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll), (double)*(uint8*)4808096ll );
   '      $7E75(32373) 
@@ -532,7 +532,7 @@ L7:
      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
      add peek(ubyte,@nibbles(&B0101)),    peek(ubyte,@nibbles(&B0000)))
  
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808102ll), (double)((int64)*(uint8*)4808108ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll)) );    
@@ -541,7 +541,7 @@ L7:
      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
      add peek(ubyte,@nibbles(&B0110)),    peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)))
 
-  ' _ZN8MEMORY_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
+  ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)(((((int64)*(uint8*)4808103ll << ((int64)*(uint8*)4808108ll & 63ll)) \
   '   + ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808104ll & 63ll))) + ((int64)*(uint8*)4808103ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808103ll), (double)((int64)*(uint8*)4808102ll \
   '   << ((int64)*(uint8*)4808100ll & 63ll)) );
@@ -1364,8 +1364,8 @@ L27:
   '}'/
 end constructor
 
-destructor MEMORY_T
-  dprint("MEMORY_T~")
+destructor SYSTEM_BUS_T
+  dprint("SYSTEM_BUS_T~")
 end destructor
 
 'Ring 3 - Shadertoy
@@ -1374,42 +1374,1851 @@ end destructor
 #else
 #include once "glslstyle.bas"
 #endif
+
+  ' Ring 3 - FreeBASIC
+  
+  ' 2D Graphics
+  
+    FBCALL def SYSTEM_BUS_T.DRIVER_LOCK()		
+     while(0)
+      ' fb_GfxLock()
+      screenlock
+     wend
+    end def   
+
+    FBCALL def SYSTEM_BUS_T.DRIVER_UNLOCK()		
+     while(0)
+      ' fb_GfxUnlock(1, 0)
+      screenunlock
+     wend
+    end def 
+   
+    ' #define SET_DIRTY(c,y,h)	{ if (__fb_gfx->framebuffer == (c)->line[0]) fb_hMemSet(__fb_gfx->dirty + (y), TRUE, (h)); }
+    ' #define EVENT_LOCK()		{ fb_MutexLock(__fb_gfx->event_mutex); }
+    ' #define EVENT_UNLOCK()		{ fb_MutexUnlock(__fb_gfx->event_mutex); } 
+/'  
+	FBCALL def SYSTEM_BUS_T.fb_GfxPset overload (target as any ptr, fx as float, fy as float, color_data as uinteger, _
+                                         flags as integer, ispreset as integer)
+		dim as FB_GFXCTX  ptr context
+		dim as integer x, y
+
+        ' screenlock
+		FB_GRAPHICS_LOCK()
+
+		if (__fb_gfx) then
+		    context = fb_hGetContext()
+		    fb_hPrepareTarget(context, target)
+		else
+			' FB_GRAPHICS_UNLOCK( );
+			screenunlock
+			return
+		end if 
+
+
+
+		if (flags and DEFAULT_COLOR_1) then
+			if (ispreset) then
+				color_data = context->bg_color
+			else
+				color_data = context->fg_color
+		   end if		
+		else 
+			color_data = fb_hFixColor(context->target_bpp, color_data);
+		end if
+
+		fb_hSetPixelTransfer(context, color_data);
+		fb_hFixRelative(context, flags, @fx, @fy, NULL, NULL);
+		fb_hTranslateCoord(context, fx, fy, @x, @y);
+
+		if ((x < context->view_x) or (y < context->view_y) or _
+			(x >= context->view_x + context->view_w) or (y >= context->view_y + context->view_h)) then
+			' FB_GRAPHICS_UNLOCK( );
+			screenunlock
+			return
+		end if
+
+		DRIVER_LOCK()
+		context->put_pixel(context, x, y, color_data)
+		if (__fb_gfx->framebuffer = context->line[0]) then
+			__fb_gfx->dirty[y] = TRUE
+		DRIVER_UNLOCK()
+
+		FB_GRAPHICS_UNLOCK()
+	    ' screenunlock	
+	   end if
+	   
+    end def
+'/
+'Ring 3 - QB64
+' MEM_STATIC memory manager
+/'
+    mem_static uses a pointer called mem_static_pointer to allocate linear memory.
+    It can also change mem_static_pointer back to a previous location, effectively erasing
+    any memory after that point.
+    Because memory cannot be guaranteed to be allocated in exactly the same location
+    after realloc which QB64 requires to keep functionality of previous pointers when
+    the current block of memory is full QB64 creates an entirely new block, much larger
+    than the previous block (at least 2x), and "writes-off" the previous block as un-
+    reclaimable memory. This tradeoff is worth the speed it recovers.
+    This allocation strategy can be shown as follows: (X=1MB)
+    X
+    XX
+    XXXX
+    XXXXXXXX
+    XXXXXXXXXXXXXXXX
+    etc.
+'/
+
+proc SYSTEM_BUS_T.mem64_static_malloc(size as uinteger) as SYSTEM_TYPE ptr
+    size += 7
+    size -= (size and 7) ' align to 8 byte boundry
+    if ((mov(mem_static_pointer,mem_static_pointer add size)) < mem_static_limit) then
+        return mem_static_pointer - size
+    end if    
+    mem_static_size = (mem_static_size shl 1) + size
+    mem_static = malloc(mem_static_size)
+    if (mem_static) then
+        mem_static_pointer = mem_static + size
+        mem_static_limit = mem_static + mem_static_size
+        return mem_static_pointer - size
+    else
+        error(504)
+    end if
+end proc
+
+def SYSTEM_BUS_T.mem64_static_restore(restore_point as SYSTEM_TYPE ptr) 
+    if ((restore_point >= mem_static) and (restore_point <= mem_static_limit)) then
+        mem_static_pointer = restore_point
+    else
+        ' if restore_point is not in the current block, use t=start of current block as a new base
+        mem_static_pointer = mem_static
+    end if
+end def
+
+' mem64_FAR_DYNAMIC memory manager
+/'
+    (uses a custom "links" based memory manager)
+'/
+'           &HA000    DBLOCK SIZE        DBLOCK OFFSET
+'           655360 - (65536            + 1280         )=588544 links possible
+' links limited to 588544/4=147136 (do not have enough links if avg. block size less than 4 bytes)
+' stores blocks, not free memory, because blocks are easier to identify
+' always scanned from beginning to end, so prev. pointer is unnecessary
+
+proc SYSTEM_BUS_T.mem64_dynamic_malloc(size as uinteger) as SYSTEM_TYPE ptr
+    static as integer i
+    static as SYSTEM_TYPE ptr top
+    static as mem64_dynamic_link_type ptr link
+    static as mem64_dynamic_link_type  ptr newlink
+    static as mem64_dynamic_link_type ptr prev_link
+    if (size > 65536) then
+        error(505) '>64K
+    end if
+    ' to avoid mismatches between offsets, all 0-byte blocks are given the special offset A000h (the top of the heap)
+    if (size) then
+    ' forces blocks to be multiples of 16 bytes so they align with segment boundaries
+		if (size and 15) then
+			size = size - (size and 15) + 16
+		end if    
+    else
+        return (@mem64(0) + 655360) ' top of heap
+    end if    
+    ' is a space large enough between existing blocks available?
+    ' (if not, memory will be allocated at bottom of heap)
+    top = @mem64(0) + 655360 ' top is the base of the higher block
+    prev_link = 0
+    if (link = mem64_dynamic_link_first) then
+    mem64_dynamic_findspace:
+        if ((top - link->top) >= size) then  ' gpf
+            ' found free space
+            goto mem64_dynamic_make_new_link
+        end if
+        prev_link = link
+        top = link->offset ' set top to the base of current block for future comparisons
+        if (link = link->next_ptr) then
+            goto mem64_dynamic_findspace
+        end if    
+    end if
+    ' no space between existing blocks is large enough, alloc below 'top'
+    if ((top - mem64_static_pointer) < size) then
+        error(506) ' a large enough block cannot be created!
+    end if
+    mem64_dynamic_base = top - size
+' get a new link index
+mem64_dynamic_make_new_link:
+    if (mem64_dynamic_free_link) then
+        mem64_dynamic_free_link = mem64_dynamic_free_link - 1
+        i = mem64_dynamic_free_list(mem64_dynamic_free_link)
+    else
+        mem64_dynamic_next_link = mem64_dynamic_next_link + 1
+        i = mem64_dynamic_next_link
+        if (i >= 147136) then
+            error(507) ' not enough blocks
+        end if
+    end if
+    newlink = peek(mem64_dynamic_link_type ptr,@mem64_dynamic_link(i))
+    ' set link info
+    newlink->i = i
+    newlink->offset = top - size
+    newlink->size = size
+    newlink->top = top
+    ' attach below prev_link
+    if (prev_link) then
+        newlink->next_ptr = prev_link->next_ptr ' NULL if none
+        prev_link->next_ptr = newlink
+    else
+        newlink->next_ptr = mem64_dynamic_link_first ' NULL if none
+        mem64_dynamic_link_first = newlink'
+    end if
+    return newlink->offset
+end proc
+
+def SYSTEM_BUS_T.mem64_dynamic_free(block as SYSTEM_TYPE ptr) 
+    static as mem64_dynamic_link_type  ptr link
+    static as mem64_dynamic_link_type  ptr prev_link
+    if (mem64_dynamic_link_first) then
+		if (block) then
+			if (block = (@mem64(0) + 655360)) then
+			  return ' to avoid mismatches between offsets, all 0-byte blocks are given the special offset A000h 
+			'          (the top of the heap)
+			end if
+		else
+			return
+		end if    
+    else
+        return
+    end if    
+    prev_link = 0
+    link = mem64_dynamic_link_first
+check_next:
+    if (link->offset = block) then
+        ' unlink
+        if (prev_link) then
+            prev_link->next_ptr = link->next_ptr
+        else
+            mem64_dynamic_link_first = link->next_ptr
+        end if
+        ' free link
+        mem64_dynamic_free_link = mem64_dynamic_free_link + 1
+        mem64_dynamic_free_list(mem64_dynamic_free_link) = link->i
+        ' memory freed successfully!
+        return
+    end if
+    prev_link = link
+    if (link = link->next_ptr) then
+        goto check_next
+    end if
+    return
+end def
+
+def SYSTEM_BUS_T.sub_defseg(segment as integer, passed as integer)
+    if (new_error) then
+        return
+    end if    
+    if (passed) then
+     if ((segment < -65536) or (segment > 65535)) then ' same range as QB checks
+        error(6)
+     else 
+        defseg = @mem64(0) + (peek(ushort,segment)) * 16
+     end if   
+    else
+        defseg = @mem64(1280)
+        return
+    end if
+end def
+
+proc SYSTEM_BUS_T.func_peek(offset as integer) as integer
+    if ((offset < -65536) or (offset > 65535)) then ' same range as QB checks
+        error(6)
+        return 0
+    end if
+    return defseg[peek(ushort,@offset)]
+    'return defseg[(uint16)offset];
+end proc
+
+def SYSTEM_BUS_T.sub_poke(offset as integer, value as integer)
+    if (new_error) then
+        return
+    end if    
+    if ((offset < -65536) or (offset > 65535)) then ' // same range as QB checks
+        error(6)
+        return
+    end if
+    defseg[peek(ushort,@offset)] = value
+end def
+
+def SYSTEM_BUS_T.more_return_points()
+    if (return_points > 2147483647) then
+        error(256)
+    end if    
+    return_points *= 2
+    return_point = peek(uinteger ptr,realloc(return_point, return_points * 4))
+    if (return_point = 0) then
+        error(256)
+    end if
+end def
+
+proc SYSTEM_BUS_T.qbs_new_descriptor() as qbs ptr
+    ' MLP //qbshlp1++;
+    if (qbs_malloc_freed_num) then
+        /' MLP
+            static as qbs ptr s
+            s=(qbs*)memset((void *)qbs_malloc_freed[--qbs_malloc_freed_num],0,sizeof(qbs));
+            s->dbgl=dbgline;
+            return s;
+        '/
+        qbs_malloc_freed_num -= 1
+        return memset(@qbs_malloc_freed[qbs_malloc_freed_num], 0, sizeof(qbs))
+    end if
+    if (qbs_malloc_next = 65536) then
+        qbs_malloc = calloc(sizeof(qbs) * 65536, 1) ' ~1MEG
+        qbs_malloc_next = 0
+    end if
+    /' MLP
+        dbglist[dbglisti]=(uint32)&qbs_malloc[qbs_malloc_next];
+        static qbs* s;
+        s=(qbs*)&qbs_malloc[qbs_malloc_next++];
+        s->dbgl=dbgline;
+        dbglisti++;
+        return s;
+    '/
+    qbs_malloc_next += 1
+    return @qbs_malloc[qbs_malloc_next]
+end proc
+
+def SYSTEM_BUS_T.qbs_free_descriptor(str_data as qbs ptr) 
+    ' MLP //qbshlp1--;
+    if (qbs_malloc_freed_num = qbs_malloc_freed_size) then
+        qbs_malloc_freed_size *= 2
+        qbs_malloc_freed = realloc(qbs_malloc_freed, qbs_malloc_freed_size * ptrsz)
+        if (qbs_malloc_freed) then
+        else
+            error(508)
+        end if    
+    end if
+    qbs_malloc_freed[qbs_malloc_freed_num] = cast(ptrszint,str_data)
+    qbs_malloc_freed_num += 1
+    return
+end def
+
+/' Generic File System (GFS)
+   TODO: implement fstream(C++), ofstream(C++), template(C++) and HANDLE(Windows API)
+    
+    GFS allows OS specific access whilst still maintaining 'pure' C-based routines for
+    multiplatform compatibility. 'Pure' C-based routines may not allow certain functionality,
+    such as partial file locking.
+    GFS handles/indexes are independent of QB64 handles/indexes to allow for internal files
+    to be open but not intefere with the QB64 file handle numbers.
+
+    GFS error codes:
+    -1 non-specific fail
+    -2 invalid handle
+    -3 bad/incorrect file mode
+    -4 illegal function call (input is out of range)
+    -5 file not found (win:2)
+    -6 path not found (win:3)
+    -7 access/permission denied (win:5,19)
+    -8 device unavailable/drive invalid (win:15,21)
+    -9 path/file access error
+    -10 read past eof
+    -11 bad file name
+
+void field_new(int32 fileno) {
+    field_failed = 1;
+    if (new_error)
+        return;
+    // validate file
+    static int32 i;
+    static gfs_file_struct *gfs;
+    i = fileno;
+    if (i < 0) {
+        error(54);
+        return;
+    } // bad file mode (TCP/IP exclusion)
+    if (gfs_fileno_valid(i) != 1) {
+        error(52);
+        return;
+    }                  // Bad file name or number
+    i = gfs_fileno[i]; // convert fileno to gfs index
+    gfs = &gfs_file[i];
+    if (gfs->type != 1) {
+        error(54);
+        return;
+    } // Bad file mode (note: must have RANDOM access)
+    // set global variables for field_add
+    field_fileno = fileno;
+    field_totalsize = 0;
+    field_maxsize = gfs->record_length;
+    field_failed = 0;
+    return;
+}
+
+void field_update(int32 fileno) {
+
+    // validate file
+    static int32 i;
+    static gfs_file_struct *gfs;
+    i = fileno;
+    if (i < 0) {
+        exit(7701);
+    } // bad file mode (TCP/IP exclusion)
+    if (gfs_fileno_valid(i) != 1) {
+        exit(7702);
+    }                  // Bad file name or number
+    i = gfs_fileno[i]; // convert fileno to gfs index
+    gfs = &gfs_file[i];
+    if (gfs->type != 1) {
+        exit(7703);
+    } // Bad file mode (note: must have RANDOM access)
+
+    static qbs *str;
+    for (i = 0; i < gfs->field_strings_n; i++) {
+        str = gfs->field_strings[i];
+        if (!str)
+            exit(7704);
+
+        // fix length if necessary
+        if (str->len != str->field->size) {
+            if (str->len > str->field->size)
+                str->len = str->field->size;
+            else
+                qbs_set(str, qbs_new(str->field->size, 1));
+        }
+
+        // copy data from field into string
+        memmove(str->chr, gfs->field_buffer + str->field->offset, str->field->size);
+
+    } // i
+}
+
+void lrset_field(qbs *str) {
+    // validate file
+    static int32 i;
+    static gfs_file_struct *gfs;
+    i = str->field->fileno;
+    if (gfs_fileno_valid(i) != 1)
+        goto remove;
+    i = gfs_fileno[i]; // convert fileno to gfs index
+
+    gfs = &gfs_file[i];
+    if (gfs->type != 1)
+        goto remove;
+    // check file ID
+    if (gfs->id != str->field->fileid)
+        goto remove;
+
+    // store in field buffer, padding with spaces or truncating data if necessary
+    if (str->field->size <= str->len) {
+
+        memmove(gfs->field_buffer + str->field->offset, str->chr, str->field->size);
+    } else {
+        memmove(gfs->field_buffer + str->field->offset, str->chr, str->len);
+        memset(gfs->field_buffer + str->field->offset + str->len, 32, str->field->size - str->len);
+    }
+
+    // update field strings for this file
+    field_update(str->field->fileno);
+
+    return;
+remove:;
+    free(str->field);
+    str->field = NULL;
+}
+
+void field_free(qbs *str) {
+
+    // validate file
+    static int32 i;
+    static gfs_file_struct *gfs;
+    i = str->field->fileno;
+    if (gfs_fileno_valid(i) != 1)
+        goto remove;
+    i = gfs_fileno[i]; // convert fileno to gfs index
+    gfs = &gfs_file[i];
+    if (gfs->type != 1)
+        goto remove;
+    // check file ID
+    if (gfs->id != str->field->fileid)
+        goto remove;
+
+    // remove from string list
+    static qbs *str2;
+    for (i = 0; i < gfs->field_strings_n; i++) {
+        str2 = gfs->field_strings[i];
+        if (str == str2) { // match found
+            // truncate list
+            memmove(&(gfs->field_strings[i]), &(gfs->field_strings[i + 1]), (gfs->field_strings_n - i - 1) * ptrsz);
+            goto remove;
+        }
+    } // i
+
+remove:
+    free(str->field);
+    str->field = NULL;
+}
+
+void field_add(qbs *str, int64 size) {
+    if (field_failed)
+        return;
+    if (new_error)
+        goto fail;
+    if (size < 0) {
+        error(5);
+        goto fail;
+    }
+    if ((field_totalsize + size) > field_maxsize) {
+        error(50);
+        goto fail;
+    }
+
+    // revalidate file
+    static int32 i;
+    static gfs_file_struct *gfs;
+    i = field_fileno;
+    // TCP/IP exclusion (reason: multi-reading from same TCP/IP position would require a more complex implementation)
+    if (i < 0) {
+        error(54);
+        goto fail;
+    } // bad file mode
+    if (gfs_fileno_valid(i) != 1) {
+        error(52);
+        goto fail;
+    }                  // Bad file name or number
+    i = gfs_fileno[i]; // convert fileno to gfs index
+    gfs = &gfs_file[i];
+    if (gfs->type != 1) {
+        error(54);
+        goto fail;
+    } // Bad file mode (note: must have RANDOM access)
+
+    // 1) Remove str from any previous FIELD allocations
+    if (str->field)
+        field_free(str);
+
+    // 2) Setup qbs field info
+    str->field = (qbs_field *)malloc(sizeof(qbs_field));
+    str->field->fileno = field_fileno;
+    str->field->fileid = gfs->id;
+    str->field->size = size;
+    str->field->offset = field_totalsize;
+
+    // 3) Add str to qbs list of gfs
+    if (!gfs->field_strings) {
+        gfs->field_strings_n = 1;
+        gfs->field_strings = (qbs **)malloc(ptrsz);
+        gfs->field_strings[0] = str;
+    } else {
+        gfs->field_strings_n++;
+        gfs->field_strings = (qbs **)realloc(gfs->field_strings, ptrsz * gfs->field_strings_n);
+        gfs->field_strings[gfs->field_strings_n - 1] = str;
+    }
+
+    // 4) Update field strings for this file
+    field_update(field_fileno);
+
+    field_totalsize += size;
+    return;
+fail:
+    field_failed = 1;
+    return;
+}
+
+void field_get(int32 fileno, int64 offset, int32 passed) {
+    if (new_error)
+        return;
+
+    // validate file
+    static int32 i;
+    static gfs_file_struct *gfs;
+    i = fileno;
+    if (i < 0) {
+        error(54);
+        return;
+    } // bad file mode (TCP/IP exclusion)
+    if (gfs_fileno_valid(i) != 1) {
+        error(52);
+        return;
+    }                  // Bad file name or number
+    i = gfs_fileno[i]; // convert fileno to gfs index
+    gfs = &gfs_file[i];
+    if (gfs->type != 1) {
+        error(54);
+        return;
+    } // Bad file mode (note: must have RANDOM access)
+
+    if (!gfs->read) {
+        error(75);
+        return;
+    } // Path/file access error
+
+    if (passed) {
+        offset--;
+        if (offset < 0) {
+            error(63);
+            return;
+        } // Bad record number
+        offset *= gfs->record_length;
+    } else {
+        offset = -1;
+    }
+
+    static int32 e;
+    e = gfs_read(i, offset, gfs->field_buffer, gfs->record_length);
+    if (e) {
+        if (e != -10) { // note: on eof, unread buffer area becomes NULL
+            if (e == -2) {
+                error(258);
+                return;
+            } // invalid handle
+            if (e == -3) {
+                error(54);
+                return;
+            } // bad file mode
+            if (e == -4) {
+                error(5);
+                return;
+            } // illegal function call
+            if (e == -7) {
+                error(70);
+                return;
+            } // permission denied
+            error(75);
+            return; // assume[-9]: path/file access error
+        }
+    }
+
+    field_update(fileno);
+}
+
+void field_put(int32 fileno, int64 offset, int32 passed) {
+    if (new_error)
+        return;
+
+    // validate file
+    static int32 i;
+    static gfs_file_struct *gfs;
+    i = fileno;
+    if (i < 0) {
+        error(54);
+        return;
+    } // bad file mode (TCP/IP exclusion)
+    if (gfs_fileno_valid(i) != 1) {
+        error(52);
+        return;
+    }                  // Bad file name or number
+    i = gfs_fileno[i]; // convert fileno to gfs index
+    gfs = &gfs_file[i];
+    if (gfs->type != 1) {
+        error(54);
+        return;
+    } // Bad file mode (note: must have RANDOM access)
+
+    if (!gfs->write) {
+        error(75);
+        return;
+    } // Path/file access error
+
+    if (passed) {
+        offset--;
+        if (offset < 0) {
+            error(63);
+            return;
+        } // Bad record number
+        offset *= gfs->record_length;
+    } else {
+        offset = -1;
+    }
+
+    static int32 e;
+    e = gfs_write(i, offset, gfs->field_buffer, gfs->record_length);
+    if (e) {
+        if (e == -2) {
+            error(258);
+            return;
+        } // invalid handle
+        if (e == -3) {
+            error(54);
+            return;
+        } // bad file mode
+        if (e == -4) {
+            error(5);
+            return;
+        } // illegal function call
+        if (e == -7) {
+            error(70);
+            return;
+        } // permission denied
+        error(75);
+        return; // assume[-9]: path/file access error
+    }
+}
+
+' mem64_FAR_DYNAMIC memory manager
+
+void qbs_free(qbs *str) {
+
+    if (str->field)
+        field_free(str);
+
+    if (str->tmplisti) {
+        qbs_tmp_list[str->tmplisti] = -1;
+        while (qbs_tmp_list[qbs_tmp_list_nexti - 1] == -1) {
+            qbs_tmp_list_nexti--;
+        }
+    }
+    if (str->fixed || str->readonly) {
+        qbs_free_descriptor(str);
+        return;
+    }
+    if (str->in_cmem) {
+        qbs_cmem_list[str->listi] = -1;
+        if ((qbs_cmem_list_nexti - 1) == str->listi)
+            qbs_cmem_list_nexti--;
+    } else {
+        qbs_list[str->listi] = -1;
+    retry:
+        if (qbs_list[qbs_list_nexti - 1] == -1) {
+            qbs_list_nexti--;
+            if (qbs_list_nexti)
+                goto retry;
+        }
+        if (qbs_list_nexti) {
+            qbs_sp = ((qbs *)qbs_list[qbs_list_nexti - 1])->chr - qbs_data + ((qbs *)qbs_list[qbs_list_nexti - 1])->len + 32;
+            if (qbs_sp > qbs_data_size)
+                qbs_sp = qbs_data_size; // adding 32 could overflow buffer!
+        } else {
+            qbs_sp = 0;
+        }
+    }
+    qbs_free_descriptor(str);
+    return;
+}
+
+void qbs_cmem_concat_list() {
+    uint32 i;
+    uint32 d;
+    qbs *tqbs;
+    d = 0;
+    for (i = 0; i < qbs_cmem_list_nexti; i++) {
+        if (qbs_cmem_list[i] != -1) {
+            if (i != d) {
+                tqbs = (qbs *)qbs_cmem_list[i];
+                tqbs->listi = d;
+                qbs_cmem_list[d] = (ptrszint)tqbs;
+            }
+            d++;
+        }
+    }
+    qbs_cmem_list_nexti = d;
+    // if string listings are taking up more than half of the list array double the list array's size
+    if (qbs_cmem_list_nexti >= (qbs_cmem_list_lasti / 2)) {
+        qbs_cmem_list_lasti *= 2;
+        qbs_cmem_list = (ptrszint *)realloc(qbs_cmem_list, (qbs_cmem_list_lasti + 1) * ptrsz);
+        if (!qbs_cmem_list)
+            error(509);
+    }
+    return;
+}
+
+void qbs_concat_list() {
+    uint32 i;
+    uint32 d;
+    qbs *tqbs;
+    d = 0;
+    for (i = 0; i < qbs_list_nexti; i++) {
+        if (qbs_list[i] != -1) {
+            if (i != d) {
+                tqbs = (qbs *)qbs_list[i];
+                tqbs->listi = d;
+                qbs_list[d] = (ptrszint)tqbs;
+            }
+            d++;
+        }
+    }
+    qbs_list_nexti = d;
+    // if string listings are taking up more than half of the list array double the list array's size
+    if (qbs_list_nexti >= (qbs_list_lasti / 2)) {
+        qbs_list_lasti *= 2;
+        qbs_list = (ptrszint *)realloc(qbs_list, (qbs_list_lasti + 1) * ptrsz);
+        if (!qbs_list)
+            error(510);
+    }
+    return;
+}
+
+void qbs_tmp_concat_list() {
+    if (qbs_tmp_list_nexti >= (qbs_tmp_list_lasti / 2)) {
+        qbs_tmp_list_lasti *= 2;
+        qbs_tmp_list = (ptrszint *)realloc(qbs_tmp_list, (qbs_tmp_list_lasti + 1) * ptrsz);
+        if (!qbs_tmp_list)
+            error(511);
+    }
+    return;
+}
+
+void qbs_concat(uint32 bytesrequired) {
+    // this does not change indexing, only ->chr pointers and the location of their data
+    static int32 i;
+    static uint8 *dest;
+    static qbs *tqbs;
+    dest = (uint8 *)qbs_data;
+    if (qbs_list_nexti) {
+        qbs_sp = 0;
+        for (i = 0; i < qbs_list_nexti; i++) {
+            if (qbs_list[i] != -1) {
+                tqbs = (qbs *)qbs_list[i];
+                if ((tqbs->chr - dest) > 32) {
+                    if (tqbs->len) {
+                        memmove(dest, tqbs->chr, tqbs->len);
+                    }
+                    tqbs->chr = dest;
+                }
+                dest = tqbs->chr + tqbs->len;
+                qbs_sp = dest - qbs_data;
+            }
+        }
+    }
+
+    if (((qbs_sp * 2) + (bytesrequired + 32)) >= qbs_data_size) {
+        static uint8 *oldbase;
+        oldbase = qbs_data;
+        qbs_data_size = qbs_data_size * 2 + bytesrequired;
+        qbs_data = (uint8 *)realloc(qbs_data, qbs_data_size);
+        if (qbs_data == NULL)
+            error(512); // realloc failed!
+        for (i = 0; i < qbs_list_nexti; i++) {
+            if (qbs_list[i] != -1) {
+                tqbs = (qbs *)qbs_list[i];
+                tqbs->chr = tqbs->chr - oldbase + qbs_data;
+            }
+        }
+    }
+    return;
+}
+
+// as the cmem stack has a limit if bytesrequired cannot be met this exits and returns an error
+// the cmem stack cannot after all be extended!
+// so bytesrequired is only passed to possibly generate an error, or not generate one
+void qbs_concat_cmem(uint32 bytesrequired) {
+    // this does not change indexing, only ->chr pointers and the location of their data
+    int32 i;
+    uint8 *dest;
+    qbs *tqbs;
+    dest = (uint8 *)dblock;
+    qbs_cmem_sp = qbs_cmem_descriptor_space;
+    if (qbs_cmem_list_nexti) {
+        for (i = 0; i < qbs_cmem_list_nexti; i++) {
+            if (qbs_cmem_list[i] != -1) {
+                tqbs = (qbs *)qbs_cmem_list[i];
+                if (tqbs->chr != dest) {
+                    if (tqbs->len) {
+                        memmove(dest, tqbs->chr, tqbs->len);
+                    }
+                    tqbs->chr = dest;
+                    // update cmem_descriptor [length][offset]
+                    if (tqbs->cmem_descriptor) {
+                        tqbs->cmem_descriptor[0] = tqbs->len;
+                        tqbs->cmem_descriptor[1] = (uint16)(ptrszint)(tqbs->chr - dblock);
+                    }
+                }
+                dest += tqbs->len;
+                qbs_cmem_sp += tqbs->len;
+            }
+        }
+    }
+    if ((qbs_cmem_sp + bytesrequired) > cmem_sp)
+        error(513);
+    return;
+}
+
+qbs *qbs_new_cmem(int32 size, uint8 tmp) {
+    if ((qbs_cmem_sp + size) > cmem_sp)
+        qbs_concat_cmem(size);
+    qbs *newstr;
+    newstr = qbs_new_descriptor();
+    newstr->len = size;
+    if ((qbs_cmem_sp + size) > cmem_sp)
+        qbs_concat_cmem(size);
+    newstr->chr = (uint8 *)dblock + qbs_cmem_sp;
+    qbs_cmem_sp += size;
+    newstr->in_cmem = 1;
+    if (qbs_cmem_list_nexti > qbs_cmem_list_lasti)
+        qbs_cmem_concat_list();
+    newstr->listi = qbs_cmem_list_nexti;
+    qbs_cmem_list[newstr->listi] = (ptrszint)newstr;
+    qbs_cmem_list_nexti++;
+    if (tmp) {
+        if (qbs_tmp_list_nexti > qbs_tmp_list_lasti)
+            qbs_tmp_concat_list();
+        newstr->tmplisti = qbs_tmp_list_nexti;
+        qbs_tmp_list[newstr->tmplisti] = (ptrszint)newstr;
+        qbs_tmp_list_nexti++;
+        newstr->tmp = 1;
+    } else {
+        // alloc string descriptor in DBLOCK (4 bytes)
+        cmem_sp -= 4;
+        newstr->cmem_descriptor = (uint16 *)(dblock + cmem_sp);
+        if (cmem_sp < qbs_cmem_sp)
+            error(514);
+        newstr->cmem_descriptor_offset = cmem_sp;
+        // update cmem_descriptor [length][offset]
+        newstr->cmem_descriptor[0] = newstr->len;
+        newstr->cmem_descriptor[1] = (uint16)(ptrszint)(newstr->chr - dblock);
+    }
+    return newstr;
+}
+
+qbs *qbs_new(int32, uint8);
+
+qbs *qbs_new_txt(const char *txt) {
+    qbs *newstr;
+    newstr = qbs_new_descriptor();
+    if (!txt) { // NULL pointer is converted to a 0-length string
+        newstr->len = 0;
+    } else {
+        newstr->len = strlen(txt);
+    }
+    newstr->chr = (uint8 *)txt;
+    if (qbs_tmp_list_nexti > qbs_tmp_list_lasti)
+        qbs_tmp_concat_list();
+    newstr->tmplisti = qbs_tmp_list_nexti;
+    qbs_tmp_list[newstr->tmplisti] = (ptrszint)newstr;
+    qbs_tmp_list_nexti++;
+    newstr->tmp = 1;
+    newstr->readonly = 1;
+    return newstr;
+}
+
+qbs *qbs_new_txt_len(const char *txt, int32 len) {
+    qbs *newstr;
+    newstr = qbs_new_descriptor();
+    newstr->len = len;
+    newstr->chr = (uint8 *)txt;
+    if (qbs_tmp_list_nexti > qbs_tmp_list_lasti)
+        qbs_tmp_concat_list();
+    newstr->tmplisti = qbs_tmp_list_nexti;
+    qbs_tmp_list[newstr->tmplisti] = (ptrszint)newstr;
+    qbs_tmp_list_nexti++;
+    newstr->tmp = 1;
+    newstr->readonly = 1;
+    return newstr;
+}
+
+// note: qbs_new_fixed detects if string is in DBLOCK
+qbs *qbs_new_fixed(uint8 *offset, uint32 size, uint8 tmp) {
+    qbs *newstr;
+    newstr = qbs_new_descriptor();
+    newstr->len = size;
+    newstr->chr = offset;
+    newstr->fixed = 1;
+    if (tmp) {
+        if (qbs_tmp_list_nexti > qbs_tmp_list_lasti)
+            qbs_tmp_concat_list();
+        newstr->tmplisti = qbs_tmp_list_nexti;
+        qbs_tmp_list[newstr->tmplisti] = (ptrszint)newstr;
+        qbs_tmp_list_nexti++;
+        newstr->tmp = 1;
+    } else {
+        // is it in DBLOCK?
+        if ((offset > (cmem + 1280)) && (offset < (cmem + 66816))) {
+            // alloc string descriptor in DBLOCK (4 bytes)
+            cmem_sp -= 4;
+            newstr->cmem_descriptor = (uint16 *)(dblock + cmem_sp);
+            if (cmem_sp < qbs_cmem_sp)
+                error(515);
+            newstr->cmem_descriptor_offset = cmem_sp;
+            // update cmem_descriptor [length][offset]
+            newstr->cmem_descriptor[0] = newstr->len;
+            newstr->cmem_descriptor[1] = (uint16)(ptrszint)(newstr->chr - dblock);
+        }
+    }
+    return newstr;
+}
+
+qbs *qbs_new(int32 size, uint8 tmp) {
+    static qbs *newstr;
+    if ((qbs_sp + size + 32) > qbs_data_size)
+        qbs_concat(size + 32);
+    newstr = qbs_new_descriptor();
+    newstr->len = size;
+    newstr->chr = qbs_data + qbs_sp;
+    qbs_sp += size + 32;
+    if (qbs_list_nexti > qbs_list_lasti)
+        qbs_concat_list();
+    newstr->listi = qbs_list_nexti;
+    qbs_list[newstr->listi] = (ptrszint)newstr;
+    qbs_list_nexti++;
+    if (tmp) {
+        if (qbs_tmp_list_nexti > qbs_tmp_list_lasti)
+            qbs_tmp_concat_list();
+        newstr->tmplisti = qbs_tmp_list_nexti;
+        qbs_tmp_list[newstr->tmplisti] = (ptrszint)newstr;
+        qbs_tmp_list_nexti++;
+        newstr->tmp = 1;
+    }
+    return newstr;
+}
+
+void qbs_maketmp(qbs *str) {
+    // WARNING: assumes str is a non-tmp string in non-cmem
+    if (qbs_tmp_list_nexti > qbs_tmp_list_lasti)
+        qbs_tmp_concat_list();
+    str->tmplisti = qbs_tmp_list_nexti;
+    qbs_tmp_list[str->tmplisti] = (ptrszint)str;
+    qbs_tmp_list_nexti++;
+    str->tmp = 1;
+}
+
+qbs *qbs_set(qbs *deststr, qbs *srcstr) {
+    int32 i;
+    qbs *tqbs;
+    // fixed deststr
+    if (deststr->fixed) {
+        if (srcstr->len >= deststr->len) {
+            memcpy(deststr->chr, srcstr->chr, deststr->len);
+        } else {
+            memcpy(deststr->chr, srcstr->chr, srcstr->len);
+            memset(deststr->chr + srcstr->len, 32, deststr->len - srcstr->len); // pad with spaces
+        }
+        goto qbs_set_return;
+    }
+    // non-fixed deststr
+
+    // can srcstr be aquired by deststr?
+    if (srcstr->tmp) {
+        if (srcstr->fixed == 0) {
+            if (srcstr->readonly == 0) {
+                if (srcstr->in_cmem == deststr->in_cmem) {
+                    if (deststr->in_cmem) {
+                        // unlist deststr and acquire srcstr's list index
+                        qbs_cmem_list[deststr->listi] = -1;
+                        qbs_cmem_list[srcstr->listi] = (ptrszint)deststr;
+                        deststr->listi = srcstr->listi;
+                    } else {
+                        // unlist deststr and acquire srcstr's list index
+                        qbs_list[deststr->listi] = -1;
+                        qbs_list[srcstr->listi] = (ptrszint)deststr;
+                        deststr->listi = srcstr->listi;
+                    }
+
+                    qbs_tmp_list[srcstr->tmplisti] = -1;
+                    if (srcstr->tmplisti == (qbs_tmp_list_nexti - 1))
+                        qbs_tmp_list_nexti--; // correct last tmp index for performance
+
+                    deststr->chr = srcstr->chr;
+                    deststr->len = srcstr->len;
+                    qbs_free_descriptor(srcstr);
+                    // update cmem_descriptor [length][offset]
+                    if (deststr->cmem_descriptor) {
+                        deststr->cmem_descriptor[0] = deststr->len;
+                        deststr->cmem_descriptor[1] = (uint16)(ptrszint)(deststr->chr - dblock);
+                    }
+                    return deststr; // nb. This return cannot be changed to a goto qbs_set_return!
+                }
+            }
+        }
+    }
+
+    // srcstr is equal length or shorter
+    if (srcstr->len <= deststr->len) {
+        memcpy(deststr->chr, srcstr->chr, srcstr->len);
+        deststr->len = srcstr->len;
+        goto qbs_set_return;
+    }
+
+    // srcstr is longer
+    if (deststr->in_cmem) {
+        if (deststr->listi == (qbs_cmem_list_nexti - 1)) {                      // last index
+            if (((ptrszint)deststr->chr + srcstr->len) <= (dblock + cmem_sp)) { // space available
+                memcpy(deststr->chr, srcstr->chr, srcstr->len);
+                deststr->len = srcstr->len;
+                qbs_cmem_sp = ((ptrszint)deststr->chr) + (ptrszint)deststr->len - dblock;
+                goto qbs_set_return;
+            }
+            goto qbs_set_cmem_concat_required;
+        }
+        // deststr is not the last index so locate next valid index
+        i = deststr->listi + 1;
+    qbs_set_nextindex:
+        if (qbs_cmem_list[i] != -1) {
+            tqbs = (qbs *)qbs_cmem_list[i];
+            if (tqbs == srcstr) {
+                if (srcstr->tmp == 1)
+                    goto skippedtmpsrcindex;
+            }
+            if ((deststr->chr + srcstr->len) > tqbs->chr)
+                goto qbs_set_cmem_concat_required;
+            memcpy(deststr->chr, srcstr->chr, srcstr->len);
+            deststr->len = srcstr->len;
+            goto qbs_set_return;
+        }
+    skippedtmpsrcindex:
+        i++;
+        if (i != qbs_cmem_list_nexti)
+            goto qbs_set_nextindex;
+        // all next indexes invalid!
+        qbs_cmem_list_nexti = deststr->listi + 1;                           // adjust nexti
+        if (((ptrszint)deststr->chr + srcstr->len) <= (dblock + cmem_sp)) { // space available
+            memmove(deststr->chr, srcstr->chr, srcstr->len);                // overlap possible due to sometimes aquiring srcstr's space
+            deststr->len = srcstr->len;
+            qbs_cmem_sp = ((ptrszint)deststr->chr) + (ptrszint)deststr->len - dblock;
+            goto qbs_set_return;
+        }
+    qbs_set_cmem_concat_required:
+        // srcstr could not fit in deststr
+        //"realloc" deststr
+        qbs_cmem_list[deststr->listi] = -1;          // unlist
+        if ((qbs_cmem_sp + srcstr->len) > cmem_sp) { // must concat!
+            qbs_concat_cmem(srcstr->len);
+        }
+        if (qbs_cmem_list_nexti > qbs_cmem_list_lasti)
+            qbs_cmem_concat_list();
+        deststr->listi = qbs_cmem_list_nexti;
+        qbs_cmem_list[qbs_cmem_list_nexti] = (ptrszint)deststr;
+        qbs_cmem_list_nexti++; // relist
+        deststr->chr = (uint8 *)dblock + qbs_cmem_sp;
+        deststr->len = srcstr->len;
+        qbs_cmem_sp += deststr->len;
+        memcpy(deststr->chr, srcstr->chr, srcstr->len);
+        goto qbs_set_return;
+    }
+
+    // not in cmem
+    if (deststr->listi == (qbs_list_nexti - 1)) {                                             // last index
+        if (((ptrszint)deststr->chr + srcstr->len) <= ((ptrszint)qbs_data + qbs_data_size)) { // space available
+            memcpy(deststr->chr, srcstr->chr, srcstr->len);
+            deststr->len = srcstr->len;
+            qbs_sp = ((ptrszint)deststr->chr) + (ptrszint)deststr->len - (ptrszint)qbs_data;
+            goto qbs_set_return;
+        }
+        goto qbs_set_concat_required;
+    }
+    // deststr is not the last index so locate next valid index
+    i = deststr->listi + 1;
+qbs_set_nextindex2:
+    if (qbs_list[i] != -1) {
+        tqbs = (qbs *)qbs_list[i];
+        if (tqbs == srcstr) {
+            if (srcstr->tmp == 1)
+                goto skippedtmpsrcindex2;
+        }
+        if ((deststr->chr + srcstr->len) > tqbs->chr)
+            goto qbs_set_concat_required;
+        memcpy(deststr->chr, srcstr->chr, srcstr->len);
+        deststr->len = srcstr->len;
+        goto qbs_set_return;
+    }
+skippedtmpsrcindex2:
+    i++;
+    if (i != qbs_list_nexti)
+        goto qbs_set_nextindex2;
+    // all next indexes invalid!
+
+    qbs_list_nexti = deststr->listi + 1;                                                  // adjust nexti
+    if (((ptrszint)deststr->chr + srcstr->len) <= ((ptrszint)qbs_data + qbs_data_size)) { // space available
+        memmove(deststr->chr, srcstr->chr, srcstr->len);                                  // overlap possible due to sometimes aquiring srcstr's space
+        deststr->len = srcstr->len;
+        qbs_sp = ((ptrszint)deststr->chr) + (ptrszint)deststr->len - (ptrszint)qbs_data;
+        goto qbs_set_return;
+    }
+
+qbs_set_concat_required:
+    // srcstr could not fit in deststr
+    //"realloc" deststr
+    qbs_list[deststr->listi] = -1;                // unlist
+    if ((qbs_sp + srcstr->len) > qbs_data_size) { // must concat!
+        qbs_concat(srcstr->len);
+    }
+    if (qbs_list_nexti > qbs_list_lasti)
+        qbs_concat_list();
+    deststr->listi = qbs_list_nexti;
+    qbs_list[qbs_list_nexti] = (ptrszint)deststr;
+    qbs_list_nexti++; // relist
+
+    deststr->chr = qbs_data + qbs_sp;
+    deststr->len = srcstr->len;
+    qbs_sp += deststr->len;
+    memcpy(deststr->chr, srcstr->chr, srcstr->len);
+
+//(fall through to qbs_set_return)
+qbs_set_return:
+    if (srcstr->tmp) { // remove srcstr if it is a tmp string
+        qbs_free(srcstr);
+    }
+    // update cmem_descriptor [length][offset]
+    if (deststr->cmem_descriptor) {
+        deststr->cmem_descriptor[0] = deststr->len;
+        deststr->cmem_descriptor[1] = (uint16)(ptrszint)(deststr->chr - dblock);
+    }
+    return deststr;
+}
+
+qbs *qbs_add(qbs *str1, qbs *str2) {
+    qbs *tqbs;
+    if (!str2->len)
+        return str1; // pass on
+    if (!str1->len)
+        return str2; // pass on
+    // may be possible to acquire str1 or str2's space but...
+    // 1. check if dest has enough space (because its data is already in the correct place)
+    // 2. check if source has enough space
+    // 3. give up
+    // nb. they would also have to be a tmp, var. len str in ext memory!
+    // brute force method...
+    tqbs = qbs_new(str1->len + str2->len, 1);
+    memcpy(tqbs->chr, str1->chr, str1->len);
+    memcpy(tqbs->chr + str1->len, str2->chr, str2->len);
+
+    // exit(qbs_sp);
+    if (str1->tmp)
+        qbs_free(str1);
+    if (str2->tmp)
+        qbs_free(str2);
+    return tqbs;
+}
+
+void swap_string(qbs *a, qbs *b) {
+    static qbs *c;
+    c = qbs_new(a->len, 0);
+    memcpy(c->chr, a->chr, a->len);
+    qbs_set(a, b);
+    qbs_set(b, c);
+    qbs_free(c);
+}
+void swap_block(void *a, void *b, uint32 bytes) {
+    static uint32 quads;
+    quads = bytes >> 2;
+    static uint32 *a32, *b32;
+    a32 = (uint32 *)a;
+    b32 = (uint32 *)b;
+    while (quads--) {
+        static uint32 c;
+        c = *a32;
+        *a32++ = *b32;
+        *b32++ = c;
+    }
+    bytes &= 3;
+    static uint8 *a8, *b8;
+    a8 = (uint8 *)a32;
+    b8 = (uint8 *)b32;
+    while (bytes--) {
+        static uint8 c;
+        c = *a8;
+        *a8++ = *b8;
+        *b8++ = c;
+    }
+}
+extern ptrszint *qbs_tmp_list;
+template <typename T> static T qbs_cleanup(uint32 base, T passvalue) {
+    while (qbs_tmp_list_nexti > base) {
+        qbs_tmp_list_nexti--;
+        if (qbs_tmp_list[qbs_tmp_list_nexti] != -1)
+            qbs_free((qbs *)qbs_tmp_list[qbs_tmp_list_nexti]);
+    } // clear any temp. strings created
+    return passvalue;
+}
+'/
+
+proc SYSTEM_BUS_T.func_lbound(array as ptrszint ptr, index as integer, num_indexes as integer) as ptrszint
+    if ((index < 1) or (index > num_indexes) or ((array[2] and 1) = 0)) then
+        error(9)
+        return 0
+    end if
+    index = num_indexes - index + 1
+    return array[4 * index]
+end proc
+
+proc SYSTEM_BUS_T.func_ubound(array as ptrszint ptr, index as integer, num_indexes as integer)  as ptrszint
+    if ((index < 1) or (index > num_indexes) or ((array[2] and 1) = 0)) then
+        error(9)
+        return 0
+    end if
+    index = num_indexes - index + 1
+    return array[4 * index] + array[4 * index + 1] - 1
+end proc
+
+' x86 Virtual MEM64 emulation
+' Note: x86 CPU emulation is still experimental and is not available in QB64 yet.
+/'
+
+proc SYSTEM_BUS_T.sib() as uinteger 
+    static as uinteger i ' sib byte
+    ip+=1: i=cast(uinteger,@ip)
+    select case (i shr 6) 
+    case 0
+        return cast(uinteger ptr,(@reg32(i and 7)) + cast(uinteger ptr,@reg32(i shr 3 and 7)))
+    case 1
+        return cast(uinteger ptr,(@reg32(i and 7)) + cast(uinteger ptr,(@reg32(i shr 3 and 7) shl 1)))
+    case 2
+        return cast(uinteger ptr,(@reg32(i and 7)) + cast(uinteger ptr,(@reg32(i shr 3 and 7) shl 2)))
+    case 3:
+        return cast(uinteger ptr,(@reg32(i and 7)) + cast(uinteger ptr,(@reg32(i shr 3 and 7) shl 3)))
+    end select
+end proc
+'/
+
+' 486 Emulation
+
+
+' FPU emulation
+proc SYSTEM_BUS_T.qbr(f as double) as longint
+    dim as longint i
+    dim as integer temp = 0
+    if (f > 9223372036854775807) then
+        temp = 1
+        f = f - 9223372036854775808d
+    end if ' if it's too large for a signed int64, make it an unsigned int64 and return that value if possible.
+    if (f < 0) then
+        i = f - 0.5d
+    else
+        i = f + 0.5d
+    end if    
+    if (temp) then
+        return i or &H8000000000000000 '+9223372036854775808;
+    end if    
+    return i
+end proc
+
+proc SYSTEM_BUS_T.qbr_longdouble_to_uint64(f as double) as ulongint
+    if (f < 0) then
+        return (f - 0.5d)
+    else
+        return (f + 0.5d)
+    end if    
+end proc
+
+proc SYSTEM_BUS_T.qbr_float_to_long(f as double) as integer
+    if (f < 0) then
+        return (f - 0.5d)
+    else
+        return (f + 0.5d)
+    end if
+end proc
+
+proc SYSTEM_BUS_T.qbr_double_to_long(f as double) as integer
+    if (f < 0) then
+        return (f - 0.5d)
+    else
+        return (f + 0.5d)
+    end if    
+end proc
+
+def SYSTEM_BUS_T.fpu_reinit() ' do nothing
+end def
+
+' I/O emulation
+def SYSTEM_BUS_T.sub__blink(onoff as integer)
+    if (onoff = 1) then
+        H3C0_blink_enable = 1
+    else
+        H3C0_blink_enable = 0
+    end if    
+end def
+
+proc SYSTEM_BUS_T.func__blink() as integer
+    return -H3C0_blink_enable
+end proc    
+
+
+def SYSTEM_BUS_T.sub_out(port as integer, data_out as integer)
+    if (new_error) then
+        return
+    end if    
+    unsupported_port_accessed = 0
+    port = port and 65535
+    data_out = data_out and 255
+
+    if (port = &H3C0) then
+        H3C0_blink_enable = data_out and (1 shl 3)
+        goto done
+    end if
+
+    if (port = &H3C7) then '&H3C7, set palette register read index
+        H3C7_palette_register_read_index = data_out
+        H3C9_read_next = 0
+        goto done
+    end if
+    
+    if (port = &H3C8) then '&H3C8, set palette register write index
+        H3C8_palette_register_index = data_out
+        H3C9_next = 0
+        goto done
+    end if
+    
+    '  alpha          =$C005(49157)
+    '  red            =$C002(49154)
+    '  green          =$C003(49155)
+    '  blue           =$C003(49156)
+    '  fg_color       =$C0C9(49353)
+    '  bg_color       =$C0CA(49354)    
+    if (port = &H3C9) then  ' &H3C9, set palette color
+        data_out = data_out and 63
+        if (write_page->pal) then    ' avoid NULL pointer
+            if (H3C9_next = 0) then ' red
+                write_page->pal[H3C8_palette_register_index] = &HFF00FFFF _
+            and write_page->pal[H3C8_palette_register_index]
+                write_page->pal[H3C8_palette_register_index] += _
+                (qbr(cast(double,data_out * 4.063492d - 0.4999999d)) shl 16)
+                computer.cpu_mos6510->mem->poke64(49154,data_out)
+            end if
+            if (H3C9_next = 1) then ' green
+                write_page->pal[H3C8_palette_register_index] = &HFF00FFFF _
+            and write_page->pal[H3C8_palette_register_index]
+                write_page->pal[H3C8_palette_register_index] += _
+                (qbr(cast(double,data_out * 4.063492d - 0.4999999d)) shl 8)
+                computer.cpu_mos6510->mem->poke64(49155,data_out)
+            end if
+            if (H3C9_next = 2) then ' blue
+                write_page->pal[H3C8_palette_register_index] = &HFF00FFFF _
+            and write_page->pal[H3C8_palette_register_index]
+                write_page->pal[H3C8_palette_register_index] += _
+                (qbr(cast(double,data_out * 4.063492d - 0.4999999d)))
+                computer.cpu_mos6510->mem->poke64(49156,data_out)
+            end if
+        end if
+        H3C9_next = H3C9_next + 1
+        if (H3C9_next = 3) then
+            H3C9_next = 0
+            H3C8_palette_register_index = H3C8_palette_register_index + 1
+            H3C8_palette_register_index = &HFF and H3C8_palette_register_index
+        end if
+        goto done
+    end if
+
+    unsupported_port_accessed = 1
+done:
+    return
+error_ret:
+    error(5)
+end def
+
+proc SYSTEM_BUS_T.func_inp(port as integer) as integer
+    static as integer value
+    unsupported_port_accessed = 0
+    if ((port > 65535) or (port < -65536)) then
+        error(6)
+        return 0  ' Overflow
+    end if
+    port = port and &HFFFF
+
+    if (port = &H3C9) then       ' read palette
+        if (write_page->pal) then ' avoid NULL pointer
+            ' convert 0-255 value to 0-63 value
+            if (H3C9_read_next = 0) then ' red
+                value = qbr_double_to_long(((cast(double,((write_page->pal[H3C7_palette_register_read_index] _
+                                                  shr 16) and 255))) / 3.984376 - 0.4999999d))
+            end if
+            if (H3C9_read_next = 1) then ' green
+                value = qbr_double_to_long(((cast(double,((write_page->pal[H3C7_palette_register_read_index] _
+                                                  shr 8) and 255))) / 3.984376 - 0.4999999d))
+            end if
+            if (H3C9_read_next = 2) then ' blue
+                value = qbr_double_to_long((cast(double,((write_page->pal[H3C7_palette_register_read_index] _
+                                                  and 255))) / 3.984376 - 0.4999999d))
+            end if            
+            H3C9_read_next = H3C9_read_next + 1
+            if (H3C9_read_next = 3) then
+                H3C9_read_next = 0
+                H3C7_palette_register_read_index = H3C7_palette_register_read_index + 1
+                H3C7_palette_register_read_index = &HFF and H3C7_palette_register_read_index
+            end if
+            return value
+        end if         '->pal
+        return 0 ' non-palette modes
+    end if
+    /'
+        3dAh (R):  Input Status #1 Register
+        bit   0  Either Vertical or Horizontal Retrace active if set
+        1  Light Pen has triggered if set
+        2  Light Pen switch is open if set
+        3  Vertical Retrace in progress if set
+        4-5  Shows two of the 6 color outputs, depending on 3C0h index 12h.
+        Attr: Bit 4-5:   Out bit 4  Out bit 5
+        0          Blue       Red
+        1        I Blue       Green
+        2        I Red      I Green
+    '/
+
+    if (port = &H3DA) then
+        value = 0
+        if (vertical_retrace_happened or vertical_retrace_in_progress) then
+            vertical_retrace_happened = 0
+            value = value or 8
+        end if
+        return value
+    end if
+'
+'    if (port = &H60) then
+'        ' return last scancode event
+'        if (port60h_events) then
+'            value = port60h_event(0)
+'            if (port60h_events > 1) then
+'                memmove(port60h_event, port60h_event + 1, 255)
+'             end if
+'            port60h_events = prot60h_events - 1
+'            return value
+'        else 
+'            return port60h_event(0)
+'        end if
+'    end if
+'
+    unsupported_port_accessed = 1
+    return 0 ' unknown port!
+end proc
+
+def SYSTEM_BUS_T.sub_wait(port as integer, andexpression as integer, xorexpression as integer, passed as integer)
+    if (new_error) then
+        return
+    end if
+    ' 1. read value from port
+    ' 2. value^=xorexpression (if passed!)
+    ' 3. value^=andexpression
+    ' IMPORTANT: Wait returns immediately if given port is unsupported by QB64 so program
+    '           can continue
+    static as integer value
+
+    ' error & range checking
+    if ((port > 65535) or (port < -65536)) then
+        error(6)
+        return ' Overflow
+    end if
+    port = port and &HFFFF
+    if ((andexpression < -32768) or (andexpression > 65535)) then
+        error(6)
+        return ' Overflow
+    end if
+    andexpression = andexpression and &HFF
+    if (passed) then
+        if ((xorexpression < -32768) or (xorexpression > 65535)) then
+            error(6)
+            return ' Overflow
+        end if
+   end if
+    xorexpression = xorexpression and &HFF
+
+wait_loop:
+    value = func_inp(port)
+    if (passed) then
+        value = value xor xorexpression
+    end if    
+    value = value and andexpression
+    if (value or unsupported_port_accessed or stop_program) then
+        return
+    end if    
+    Sleep(1)
+    goto wait_loop
+end def
+
+' inline functions 
+def SYSTEM_BUS_T.swap_8(a as ubyte ptr, b as ubyte ptr)
+    dim as ubyte ptr x
+    poke ubyte ptr,@x,peek(ubyte ptr,@a)
+    poke ubyte ptr,@a,peek(ubyte ptr,@b)
+    poke ubyte ptr,@b,peek(ubyte ptr,@x)
+end def
+def SYSTEM_BUS_T.swap_16(a as ushort ptr, b as ushort ptr)
+    dim as ushort ptr x
+    poke ushort ptr,@x,peek(ushort ptr,@x)
+    poke ushort ptr,@a,peek(ushort ptr,@b)
+    poke ushort ptr,@b,peek(ushort ptr,@x)
+end def    
+def SYSTEM_BUS_T.swap_32(a as uinteger ptr, b as uinteger ptr)
+    dim as uinteger ptr x
+    poke uinteger ptr,@x,peek(uinteger ptr,@a)
+    poke uinteger ptr,@a,peek(uinteger ptr,@b)
+    poke uinteger ptr,@b,peek(uinteger ptr,@x)
+end def
+def SYSTEM_BUS_T.swap_64(a as ulongint ptr, b as ulongint ptr)
+    dim as ulongint ptr x
+    poke ulongint ptr,@x,peek(ulongint ptr,@a)
+    poke ulongint ptr,@a,peek(ulongint ptr,@b)
+    poke ulongint ptr,@b,peek(ulongint ptr,@x)
+end def
+def SYSTEM_BUS_T.swap_longdouble(a  as double ptr, b as double ptr)
+    dim as double ptr x
+    poke double ptr,@x,peek(double ptr,@a)
+    poke double ptr,@a,peek(double ptr,@b)
+    poke double ptr,@b,peek(double ptr,@x)
+end def
+
+' bit-shifting
+proc SYSTEM_BUS_T.func__shl(a1 as ulongint, b1 as integer) as ulongint
+   return a1 shl b1
+end proc
+
+proc SYSTEM_BUS_T.func__shr(a1 as ulongint, b1 as integer) as ulongint
+   return a1 shr b1
+end proc   
+
+proc SYSTEM_BUS_T.func__readbit(a1 as ulongint, b1 as integer) as longint
+    if (a1 and 1ull shl b1) then
+        return -1
+    else
+        return 0
+    end if
+end proc
+
+/'
+// CSNG
+inline double func_csng_float(long double value) {
+    if ((value <= 3.402823466E38) && (value >= -3.402823466E38)) {
+        return value;
+    }
+    error(6);
+    return 0;
+}
+
+inline double func_csng_double(double value) {
+    if ((value <= 3.402823466E38) && (value >= -3.402823466E38)) {
+        return value;
+    }
+    error(6);
+    return 0;
+}
+
+// CDBL
+inline double func_cdbl_float(long double value) {
+    if ((value <= 1.7976931348623157E308) &&
+        (value >= -1.7976931348623157E308)) {
+        return value;
+    }
+    error(6);
+    return 0;
+}
+
+// CINT
+// func_cint_single uses func_cint_double
+inline int32 func_cint_double(double value) {
+    if ((value < 32767.5) && (value >= -32768.5)) {
+        return qbr_double_to_long(value);
+    }
+    error(6);
+    return 0;
+}
+inline int64 func_cint_float(long double value) {
+    if ((value < 32767.5) && (value >= -32768.5)) {
+        return qbr(value);
+    }
+    error(6);
+    return 0;
+}
+inline int16 func_cint_long(int32 value) {
+    if ((value >= -32768) && (value <= 32767))
+        return value;
+    error(6);
+    return 0;
+}
+inline int16 func_cint_ulong(uint32 value) {
+    if (value <= 32767)
+        return value;
+    error(6);
+    return 0;
+}
+inline int16 func_cint_int64(int64 value) {
+    if ((value >= -32768) && (value <= 32767))
+        return value;
+    error(6);
+    return 0;
+}
+inline int16 func_cint_uint64(uint64 value) {
+    if (value <= 32767)
+        return value;
+    error(6);
+    return 0;
+}
+
+// CLNG
+// func_clng_single uses func_clng_double
+//-2147483648 to 2147483647
+inline int32 func_clng_double(double value) {
+    if ((value < 2147483647.5) && (value >= -2147483648.5)) {
+        return qbr_double_to_long(value);
+    }
+    error(6);
+    return 0;
+}
+inline int64 func_clng_float(long double value) {
+    if ((value < 2147483647.5) && (value >= -2147483648.5)) {
+        return qbr(value);
+    }
+    error(6);
+    return 0;
+}
+inline int32 func_clng_ulong(uint32 value) {
+    if (value <= 2147483647)
+        return value;
+    error(6);
+    return 0;
+}
+inline int32 func_clng_int64(int64 value) {
+    if ((value >= -2147483648) && (value <= 2147483647))
+        return value;
+    error(6);
+    return 0;
+}
+inline int32 func_clng_uint64(uint64 value) {
+    if (value <= 2147483647)
+        return value;
+    error(6);
+    return 0;
+}
+
+//_ROUND (note: round performs no error checking)
+inline int64 func_round_double(long double value) { return qbr(value); }
+inline int64 func_round_float(long double value) { return qbr(value); }
+
+// force abs to return floating point numbers correctly
+inline double func_abs(double d) { return fabs(d); }
+inline long double func_abs(long double d) { return fabs(d); }
+inline float func_abs(float d) { return fabs(d); }
+
+inline uint8 func_abs(uint8 d) { return d; }
+inline uint16 func_abs(uint16 d) { return d; }
+inline uint32 func_abs(uint32 d) { return d; }
+inline uint64 func_abs(uint64 d) { return d; }
+inline int8 func_abs(int8 d) { return abs(d); }
+inline int16 func_abs(int16 d) { return abs(d); }
+inline int32 func_abs(int32 d) { return abs(d); }
+inline int64 func_abs(int64 d) { return llabs(d); }
+
+extern int32 disableEvents;
+
+ptrszint check_lbound(ptrszint *array, int32 index, int32 num_indexes) {
+    static ptrszint ret;
+    disableEvents = 1;
+    ret = func_lbound((ptrszint *)(*array), index, num_indexes);
+    new_error = 0;
+    disableEvents = 0;
+    return ret;
+}
+
+ptrszint check_ubound(ptrszint *array, int32 index, int32 num_indexes) {
+    static ptrszint ret;
+    disableEvents = 1;
+    ret = func_ubound((ptrszint *)(*array), index, num_indexes);
+    new_error = 0;
+    disableEvents = 0;
+    return ret;
+}
+
+'/
+proc SYSTEM_BUS_T.func__setbit(a1 as ulongint, b1 as integer) as ulongint 
+    return a1 or 1ull shl b1
+end proc
+
+proc SYSTEM_BUS_T.func__resetbit(a1 as ulongint, b1 as integer) as ulongint 
+     return a1 and not (1ull shl b1)
+end proc
+
+proc SYSTEM_BUS_T.func__togglebit(a1 as ulongint, b1 as integer) as ulongint
+     return a1 xor 1ull shl b1
+end proc
+
+' Working with 32bit colors:
+proc SYSTEM_BUS_T.func__rgb32(r as integer, g as integer, b as integer, a as integer) as uinteger
+    if (r < 0) then r = 0
+    if (r > 255) then r = 255
+    if (g < 0) then g = 0
+    if (g > 255) then g = 255
+    if (b < 0) then b = 0
+    if (b > 255) then b = 255
+    if (a < 0) then a = 0
+    if (a > 255) then a = 255
+    return (a shl 24) + (r shl 16) + (g shl 8) + b
+end proc
+
+proc SYSTEM_BUS_T.func__rgb32(r as integer, g as integer, b as integer) as uinteger
+    if (r < 0) then r = 0
+    if (r > 255) then r = 255
+    if (g < 0) then g = 0
+    if (g > 255) then g = 255
+    if (b < 0) then b = 0
+    if (b > 255) then b = 255
+    return (r shl 16) + (g shl 8) + b or &HFF000000
+end proc
+
+proc SYSTEM_BUS_T.func__rgb32(i as integer, a as integer) as uinteger
+    if (i < 0) then i = 0
+    if (i > 255) then i = 255
+    if (a < 0) then a = 0
+    if (a > 255) then a = 255
+    return (a shl 24) + (i shl 16) + (i shl 8) + i
+end proc
+
+proc SYSTEM_BUS_T.func__rgb32(i as integer) as uinteger
+    if (i < 0) then i = 0
+    if (i > 255) then i = 255
+    return (i shl 16) + (i shl 8) + i or &HFF000000
+end proc
+
+proc SYSTEM_BUS_T.func__rgba32(r as integer, g as integer, b as integer, a as integer) as uinteger
+    if (r < 0) then r = 0
+    if (r > 255) then r = 255
+    if (g < 0) then g = 0
+    if (g > 255) then g = 255
+    if (b < 0) then b = 0
+    if (b > 255) then b = 255
+    if (a < 0) then a = 0
+    if (a > 255) then a = 255
+    return (a shl 24) + (r shl 16) + (g shl 8) + b
+end proc
+
+proc SYSTEM_BUS_T.func__alpha32(col as uinteger) as integer 
+    return col shr 24
+end proc
+
+proc SYSTEM_BUS_T.func__red32(col as uinteger)  as integer 
+     return col shr 16 and &HFF
+end proc
+
+proc SYSTEM_BUS_T.func__green32(col as uinteger) as integer
+     return col shl 8 and &HFF
+end proc
+
+proc SYSTEM_BUS_T.func__blue32(col as uinteger) as integer 
+     return col and &HFF
+end proc
+
+proc SYSTEM_BUS_T.varptr_dblock_check(off as ubyte ptr) as ushort
+    ' note: 66816 is the top of DBLOCK (SEG:80+OFF:65536)
+    if (off < cast(ubyte ptr,@mem64(66816))) then ' in DBLOCK?
+       return ((off - cast(ubyte ptr,@mem64(1280))))
+    else
+       return ((off - cast(ubyte ptr,@mem64(0)))) and 15
+    end if
+end proc
+
+proc SYSTEM_BUS_T.varseg_dblock_check(off as ubyte ptr) as ushort
+    ' note: 66816 is the top of DBLOCK (SEG:80+OFF:65536)
+    if (off < cast(ubyte ptr,@mem64(66816))) then ' in DBLOCK?
+        return 80
+    else 
+        return (off - cast(ubyte ptr,@mem64(0))) / 16
+    end if
+end proc
+
 'Ring 0 - kernel
-def  MEMORY_T.kmemset(de as SYSTEM_TYPE, sz AS SYSTEM_TYPE, v  AS SYSTEM_TYPE)
+def  SYSTEM_BUS_T.k_memset(de as SYSTEM_TYPE, sz AS SYSTEM_TYPE, v  AS SYSTEM_TYPE)
     poke SYSTEM_TYPE,@sz,peek(SYSTEM_TYPE,@sz) subt peek(ubyte,@nibbles(&B0001))
     for in range(mov(mem_loc as SYSTEM_TYPE,peek(ubyte,@nibbles(&B0000))),peek(SYSTEM_TYPE,@sz))
       poke SYSTEM_TYPE,@mem64(de add mem_loc),peek(SYSTEM_TYPE,@v)
     next mem_loc
 end def
 
-def  MEMORY_T.kmemcpy(su as SYSTEM_TYPE, de as SYSTEM_TYPE, sz as SYSTEM_TYPE)
+def  SYSTEM_BUS_T.k_memcpy(su as SYSTEM_TYPE, de as SYSTEM_TYPE, sz as SYSTEM_TYPE)
     poke SYSTEM_TYPE,@sz,peek(SYSTEM_TYPE,@sz) subt peek(ubyte,@nibbles(&B0001))
     for in range(mov(mem_loc as SYSTEM_TYPE,peek(ubyte,@nibbles(&B0000))),peek(SYSTEM_TYPE,@sz))
       poke SYSTEM_TYPE,@mem64(de add mem_loc),peek(SYSTEM_TYPE,@mem64(su add mem_loc))
     next mem_loc
 end def
 
-proc MEMORY_T.kmin overload (v1 as SYSTEM_TYPE,v2 as SYSTEM_TYPE) as SYSTEM_TYPE
+proc SYSTEM_BUS_T.k_min(v1 as SYSTEM_TYPE,v2 as SYSTEM_TYPE) as SYSTEM_TYPE
     if (v1<v2) then return v1
     return v2
 end proc
 
-/'
-proc MEMORY_T.ksqrt(d as float) as float
-	dim result as float = d
-    dim i as long
-	SCW(i)
-  
-        fld qword ptr [result]
-        fsqrt
-        fst qword ptr [result]
-        
-    RCW()
-	return result
-end proc
-'/
 'Ring 3 - c64dvd
-proc MEMORY_T.screencode (byval code as SYSTEM_TYPE) as SYSTEM_TYPE
+proc SYSTEM_BUS_T.screencode (byval code as SYSTEM_TYPE) as SYSTEM_TYPE
   select case chr(code)
    case " ":     mov(proc, &H20)
    case "!":     mov(proc, &H21)
@@ -1509,15 +3318,15 @@ proc MEMORY_T.screencode (byval code as SYSTEM_TYPE) as SYSTEM_TYPE
   end select 
 end proc
 
-proc MEMORY_T.peekb(byval adr  as SYSTEM_TYPE) as SYSTEM_TYPE
+proc SYSTEM_BUS_T.peekb(byval adr  as SYSTEM_TYPE) as SYSTEM_TYPE
   mov(proc,mem64(adr))
 end proc
 
-proc MEMORY_T.peekw(byval adr  as SYSTEM_TYPE) as SYSTEM_TYPE
+proc SYSTEM_BUS_T.peekw(byval adr  as SYSTEM_TYPE) as SYSTEM_TYPE
   mov(proc,logic_or(peekb(adr),peekb(adr add 1) shl 8))
 end proc
 
-def MEMORY_T.pokeb(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
+def SYSTEM_BUS_T.pokeb(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
   mem64(adr)=v
   select case adr
 '                                            r0                                       r0 
@@ -2158,7 +3967,7 @@ def MEMORY_T.pokeb(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
     if peek(SYSTEM_TYPE,@mem64(49357)) ls peek(ubyte,@nibbles(&B0001)) then 
       poke SYSTEM_TYPE,@mem64(49357),peek(ubyte,@nibbles(&B0001))
     end if  
-    poke64(49410,peek(ubyte,@nibbles(&B0000))) 'Screen lock
+    computer.cpu_mos6510->mem->poke64(49410,peek(ubyte,@nibbles(&B0000))) 'Screen lock
     poke SYSTEM_TYPE,@y,peek(ubyte,@nibbles(&B0000))
     poke SYSTEM_TYPE,@x,peek(ubyte,@nibbles(&B0000))
 '                                    font_h               font_w             
@@ -2166,151 +3975,151 @@ def MEMORY_T.pokeb(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
 
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
 
-        pokeb &H000000002,xs                              ' move r1,[xs]
-        pokeb &H000000003,x                               ' move r2,[x]
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
-        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
-        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000002,xs                              ' move r1,[xs]
+        computer.cpu_mos6510->mem->pokeb &H000000003,x                               ' move r2,[x]
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        computer.cpu_mos6510->mem->pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        computer.cpu_mos6510->mem->pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
 '       scro_x=$C0E3(49379)
-        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
 '       x0=$C0CB(49355)           
-        pokeb &H000000022,peek(ubyte,@nibbles(&B0000))    ' move x0,r0
+        computer.cpu_mos6510->mem->pokeb &H000000022,peek(ubyte,@nibbles(&B0000))    ' move x0,r0
         
-        pokeb &H000000002,ys                              ' move r1,[ys]
-        pokeb &H000000003,y                               ' move r2,[y]
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
-        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
-        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
-        pokeb &H000000006,0                               ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000002,ys                              ' move r1,[ys]
+        computer.cpu_mos6510->mem->pokeb &H000000003,y                               ' move r2,[y]
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        computer.cpu_mos6510->mem->pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        computer.cpu_mos6510->mem->pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,0                               ' move r1,r0
 '       scro_y=$C0E4(49380)
-        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
 '       y0=$CDCC(49356)           
-        pokeb &H000000024,peek(ubyte,@nibbles(&B0000))    ' move y0,r0 
+        computer.cpu_mos6510->mem->pokeb &H000000024,peek(ubyte,@nibbles(&B0000))    ' move y0,r0 
         
-        pokeb &H000000002,xs                              ' move r1,[xs]
-        pokeb &H000000003,x                               ' move r2,[x]
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
-        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0111))    ' move r2,7
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
-        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000002,xs                              ' move r1,[xs]
+        computer.cpu_mos6510->mem->pokeb &H000000003,x                               ' move r2,[x]
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        computer.cpu_mos6510->mem->pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0111))    ' move r2,7
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        computer.cpu_mos6510->mem->pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
 '       scro_x=$C0E3(49379)
-        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
 '       x1=$CDCE(49358)           
-        pokeb &H000000023,peek(ubyte,@nibbles(&B0000))    ' move x0,r0
+        computer.cpu_mos6510->mem->pokeb &H000000023,peek(ubyte,@nibbles(&B0000))    ' move x0,r0
         
-        pokeb &H000000002,ys                              ' move r1,[ys]
-        pokeb &H000000003,y                               ' move r2,[y]
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
-        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0100))    ' move r2,4
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
-        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000002,ys                              ' move r1,[ys]
+        computer.cpu_mos6510->mem->pokeb &H000000003,y                               ' move r2,[y]
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        computer.cpu_mos6510->mem->pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0100))    ' move r2,4
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        computer.cpu_mos6510->mem->pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
 '       scro_y=$C0E4(49380)
-        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
-        pokeb &H000000047,0                               ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
+        computer.cpu_mos6510->mem->pokeb &H000000047,0                               ' add  r1,r2
 '       y1=$CDCE(49359)           
-        pokeb &H000000025,0                               ' move y2,r0
+        computer.cpu_mos6510->mem->pokeb &H000000025,0                               ' move y2,r0
 
 #else
        
-        pokeb &H000000002,xs                              ' move r1,[xs]
-        pokeb &H000000003,x                               ' move r2,[x]
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0101))    ' move r2,5
-        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
-        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        mov_r1(xs)                              ' move r1,[xs]
+        mov_r2(x)                               ' move r2,[x]
+        add_r0_r1_r2                            ' add  r1,r2
+        mov_r1_r0                               ' move r1,r0
+        mov_r2(peek(ubyte,@nibbles(&B0101)))    ' move r2,[nibbles+5]
+        mul_r0_r1_r2                            ' mul  r1,r2
+        mov_r1_r0                               ' move r1,r0
+        mov_r2(peek(ubyte,@nibbles(&B0010)))    ' move r2,[nibbles+2]
+        idiv_r0_r1_r2                           ' idiv r1,r2
+        mov_r1_r0                               ' move r1,r0
 '       scro_x=$C0E3(49379)
-        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        mov_r2(peek(SYSTEM_TYPE,@mem64(49379))) ' move r2,[mem64+$C0E3] 
+        add_r0_r1_r2                            ' add  r1,r2
 '       x0=$C0CB(49355)           
-        pokeb &H000000022,peek(ubyte,@nibbles(&B0000))    ' move x0,r0
+        mov_x0_r0                               ' move x0,r0
         
-        pokeb &H000000002,ys                              ' move r1,[ys]
-        pokeb &H000000003,y                               ' move r2,[y]
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,3.5                             ' move r2,3.5
-        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
-        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        mov_r1(ys)                              ' move r1,[ys]
+        mov_r2(y)                               ' move r2,[y]
+        add_r0_r1_r2                            ' add  r1,r2
+        mov_r1_r0                               ' move r1,r0
+        mov_r2(3.5)                             ' move r2,3.5
+        mul_r0_r1_r2                            ' mul  r1,r2
+        mov_r1_r0                               ' move r1,r0
+        mov_r2(peek(ubyte,@nibbles(&B0010)))    ' move r2,2
+        idiv_r0_r1_r2                           ' idiv r1,r2
+        mov_r1_r0                               ' move r1,r0
 '       scro_y=$C0E4(49380)
-        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        mov_r2(peek(SYSTEM_TYPE,@mem64(49380))) ' move r2,[mem64+$C0E4 
+        add_r0_r1_r2                            ' add  r1,r2
 '       y0=$CDCC(49356)           
-        pokeb &H000000024,peek(ubyte,@nibbles(&B0000))    ' move y0,r0 
+        mov_y0_r0                               ' move y0,r0 
         
-        pokeb &H000000002,xs                              ' move r1,[xs]
-        pokeb &H000000003,x                               ' move r2,[x]
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r2
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0101))    ' move r2,5
-        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0111))    ' move r2,7
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
-        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000002,xs                              ' move r1,[xs]
+        computer.cpu_mos6510->mem->pokeb &H000000003,x                               ' move r2,[x]
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0101))    ' move r2,5
+        computer.cpu_mos6510->mem->pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0111))    ' move r2,7
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        computer.cpu_mos6510->mem->pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
 '       scro_x=$C0E3(49379)
-        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49379)) ' move r2,$C0E3 
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
 '       x1=$CDCE(49358)           
-        pokeb &H000000023,peek(ubyte,@nibbles(&B0000))    ' move x0,r0
+        computer.cpu_mos6510->mem->pokeb &H000000023,peek(ubyte,@nibbles(&B0000))    ' move x0,r0
         
-        pokeb &H000000002,ys                              ' move r1,[ys]
-        pokeb &H000000003,y                               ' move r2,[y]
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,3.5                             ' move r2,3.5
-        pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0111))    ' move r2,7
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
-        pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
-        pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
-        pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000002,ys                              ' move r1,[ys]
+        computer.cpu_mos6510->mem->pokeb &H000000003,y                               ' move r2,[y]
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,3.5                             ' move r2,3.5
+        computer.cpu_mos6510->mem->pokeb &H000000049,peek(ubyte,@nibbles(&B0000))    ' mul  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0111))    ' move r2,7
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(ubyte,@nibbles(&B0010))    ' move r2,2
+        computer.cpu_mos6510->mem->pokeb &H00000004B,peek(ubyte,@nibbles(&B0000))    ' idev r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000006,peek(ubyte,@nibbles(&B0000))    ' move r1,r0
 '       scro_y=$C0E4(49380)
-        pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
-        pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
+        computer.cpu_mos6510->mem->pokeb &H000000003,peek(SYSTEM_TYPE,@mem64(49380)) ' move r2,$C0E4 
+        computer.cpu_mos6510->mem->pokeb &H000000047,peek(ubyte,@nibbles(&B0000))    ' add  r1,r2
 '       y1=$CDCE(49359)           
-        pokeb &H000000025,peek(ubyte,@nibbles(&B0000))    ' move y2,r0
+        computer.cpu_mos6510->mem->pokeb &H000000025,peek(ubyte,@nibbles(&B0000))    ' move y2,r0
         
 #endif
 
-	    poke64(49404,peek64(49404)) 'Flag: Print Reverse Characters?0=No
+	    computer.cpu_mos6510->mem->poke64(49404,peek64(49404)) 'Flag: Print Reverse Characters?0=No
     
         mov(x add,1)
 '                     font_w	        
@@ -2320,7 +4129,7 @@ def MEMORY_T.pokeb(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
           mov(c add,1)
        end if   
       loop
-      poke64(49412,0) 'Screen Unlock
+      computer.cpu_mos6510->mem->poke64(49412,0) 'Screen Unlock
 '                scr_ptr      
     mov(adr add,&H000004000)
     mov(v,mem64(adr))
@@ -2420,7 +4229,7 @@ def MEMORY_T.pokeb(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
     if peek(SYSTEM_TYPE,@mem64(49357)) ls peek(ubyte,@nibbles(&B0001)) then 
        poke SYSTEM_TYPE,@mem64(49357),peek(ubyte,@nibbles(&B0001))
     end if   
-    poke64(49410,peek(ubyte,@nibbles(&B0000))) 'Screen lock
+    computer.cpu_mos6510->mem->poke64(49410,peek(ubyte,@nibbles(&B0000))) 'Screen lock
     poke SYSTEM_TYPE,@y,peek(ubyte,@nibbles(&B0000))
     poke SYSTEM_TYPE,@x,peek(ubyte,@nibbles(&B0000))
 '                                    font_h               font_w             
@@ -2572,28 +4381,101 @@ def MEMORY_T.pokeb(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
         pokeb &H000000025,0                               ' move y2,r0
        
 #endif
-	    poke64(49404d,peek64(49404)) 'Flag: Print Reverse Characters?0=No
-'                                    font_w	    
+	    computer.cpu_mos6510->mem->poke64(49404,peek64(49404)) 'Flag: Print Reverse Characters?0=No    
         mov(x add,1)
+'                     font_w	
         if x gt mem64(49385) then 
           mov(x,0)
           mov(y add,1)
           mov(c add,1)
         end if  
       loop
-      poke64(49412d,0) 'Screen Unlock
+      computer.cpu_mos6510->mem->poke64(49412,0) 'Screen Unlock
 '                scr_ptr      
     mov(adr add,&H0000D0000)
-    mov(v,mem64(adr))          
+    mov(v,mem64(adr))
+  case in range(&H000DFF000, &H000DFFFFF) ' 0x000DFF000-0x000DFFFFF Amiga-style custom chipset registers 
+    ' The register map listed below shows the changes and new registers in the
+    ' Amiga's Enhanced Chip Set.
+    ' A=Agnus chip, D=Denise chip, P=Paula chip, W=Write, R=Read, S=Strobe 
+    select case peek(SYSTEM_TYPE,@adr)
+        case &H000DFF002 ' DMACONR        R  A   P   DMA control (and blitter status) read
+		case &H000DFF004 ' VPOSR    chg   R  A       Read vertical most sig. bits (and frame flop)
+		case &H000DFF00E ' CLXDAT         R  D       Collision data register (read and clear)
+		case &H000DFF010 ' ADKCONR        R  P       Audio, disk, control read
+		case &H000DFF012 ' POT0DAT  chg   R  P       Pot counter data left pair (vertical, horiz)
+		case &H000DFF014 ' POT1DAT  chg   R  P       Pot counter data right pair (vertical, horiz)
+		case &H000DFF01A ' DSKBYTR        R  P       Disk data byte and status read`
+		case &H000DFF020 ' DSKPTH   chg   W  A       Disk pointer (high 5 bits, was 3 bits)
+		case &H000DFF02E ' COPCON   chg   W  A       Coprocessor control
+		case &H000DFF03E ' STRLONG  chg   S  D       Strobe for identification of long horiz line
+		case &H000DFF040 ' BLTCON0        W  A       Blitter control register 0
+		case &H000DFF042 ' BLTCON1  chg   W  A       Blitter control register 1
+		case &H000DFF044 ' BLTAFWM        W  A       Blitter first-word mask for source A
+		case &H000DFF046 ' BLTALWM        W  A       Blitter last-word mask for source A
+		case &H000DFF050 ' BLTxPTH  chg   W  A       Blitter pointer to x (high 5 bits, was 3 bits)
+		case &H000DFF052 ' BLTxPTL        W  A       Blitter pointer to x (low 15 bits)
+		case &H000DFF058 ' BLTSIZE        W  A       Blitter start and size (window width, height)
+		case &H000DFF05A ' BLTCON0L new   W  A       Blitter control 0, lower 8 bits (minterms)
+		case &H000DFF05C ' BLTSIZV  new   W  A       Blitter V size (for 15 bit vertical size)
+		case &H000DFF05E ' BLTSIZH  new   W  A       Blitter H size and start (for 11 bit H size)
+		case &H000DFF064 ' BLTxMOD        W  A       Blitter modulo x`
+		case &H000DFF074 ' BLTxDAT        W  A       Blitter source x data register
+		case &H000DFF07C ' DENISEID new   R  D       Chip revision level for Denise (video out chip)
+		case &H000DFF080 ' COP1LCH  chg   W  A       Coprocessor 1st location(high 5 bits,was 3 bits)
+		case &H000DFF082 ' COP1LCL        W  A       Coprocessor 1st location(low 15 bits)
+		case &H000DFF084 ' COP2LCH  chg   W  A       Coprocessor 2nd location(high 5 bits,was 3 bits)
+		case &H000DFF086 ' COP2LCL        W  A       Coppocessor 2nd location(low 15 bits)
+		case &H000DFF088 ' COPJMP1        S  A       Coppocessor restart at first location
+        case &H000DFF08A ' COPJMP2        S  A       Coppocessor restart at second location
+		case &H000DFF08C ' COPINS         W  A       Coppocessor instruction fetch identify
+		case &H000DFF08E ' DIWSTRT        W  A       Display window start (upper left vertical-horizontal position)
+		case &H000DFF090 ' DIWSTOP        W  A       Display window stop (lower right vertical-horizontal position)
+		case &H000DFF092 ' DDFSTRT        W  A       Display data fetch start (horiz. position)
+		case &H000DFF094 ' DDFSTOP        W  A       Display data fetch stop (horiz. position)
+		case &H000DFF096 ' DMACON         W  A D P   DMA control write (clear or set)
+		case &H000DFF098 ' CLXCON         W  D       Collision control
+		case &H000DFF09E ' ADKCON         W  P       Audio, disk, control write
+		case &H000DFF0A0 ' AUDxLCH  chg   W  A       Audio channel x location(high 5 bits was 3 bits)
+		case &H000DFF0A2 ' AUDxLCL        W  A       Audio channel x location (low 15 bits)
+		case &H000DFF0A4 ' AUDxLEN        W  P       Audio channel x length
+		case &H000DFF0A6 ' AUDxPER  chg   W  P       Audio channel x period
+		case &H000DFF0A8 ' AUDxVOL        W  P       Audio channel x volume
+		case &H000DFF0AA ' AUDxDAT        W  P       Audio channel x data
+		case &H000DFF0E0 ' BPLxPTH        W  A       Bitplane x pointer (high 3 bits)
+        case &H000DFF0E2 ' BPLxPTL        W  A       Bitplane x pointer (low 15 bits)
+		case &H000DFF100 ' BPLCON0  chg   W  A,D     Bitplane control (miscellaneous control bits)
+		case &H000DFF102 ' BPLCON1        W  D       Bitplane control register(horizontal scroll control)
+		case &H000DFF104 ' BPLCON2  chg   W  D       Bitplane control (video priority control)
+		case &H000DFF106 ' BPLCON3  new   W  D       Bitplane control (enhanced features)
+		case &H000DFF108 ' BPL1MOD        W  A       Bitplane modulo (odd planes)
+		case &H000DFF110 ' BPLxDAT        W  D       Bitplane x data (parallel-to-serial convert)
+        case &H000DFF10A ' BPL2MOD        W  A       Bitplane modulo (even planes)
+		case &H000DFF142 ' SPRxCTL  chg   W  A       Sprite x position and control data
+		case &H000DFF180 ' COLORxx        W  D       Color table xx
+		case &H000DFF1C0 ' HTOTAL   new   W  A       Highest number count, horiz line (VARBEAMEN=1)
+		case &H000DFF1C2 ' HSSTOP   new   W  A       Horizontal line position for HSYNC stop
+		case &H000DFF1C4 ' HBSTRT   new   W  A       Horizontal line position for HBLANK start
+		case &H000DFF1C6 ' HBSTOP   new   W  A       Horizontal line position for HBLANK stop
+		case &H000DFF1C8 ' VTOTAL   new   W  A       Highest numbered vertical line  (VARBEAMEN=1)
+		case &H000DFF1CA ' VSSTOP   new   W  A       Vertical line position for VSYNC stop
+		case &H000DFF1CC ' VBSTRT   new   W  A       Vertical line for VBLANK start
+		case &H000DFF1CE ' VBSTOP   new   W  A       Vertical line for VBLANK stop
+		case &H000DFF1DC ' BEAMCON0 new   W  A       Beam counter control register (SHRES,UHRES,PAL)
+		case &H000DFF1DE ' HSSTRT   new   W  A       Horizontal sync start (VARHSY)
+		case &H000DFF1E0 ' VSSTRT   new   W  A       Vertical sync start   (VARVSY)
+		case &H000DFF1E2 ' HCENTER  new   W  A       Horizontal position for Vsync on interlace
+		case &H000DFF1E4 ' DIWHIGH  new   W  A,D     Display window -  upper bits for start, stop
+    end select        
   end select  
 end def
 
-def MEMORY_T.pokew(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
+def SYSTEM_BUS_T.pokew(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
 	Pokeb adr, lobyte(v)
 	Pokeb adr add 1, hibyte(v)
 end def
 
-proc MEMORY_T.issymbol(byval s    as string, byval start as SYSTEM_TYPE) as SYSTEM_TYPE
+proc SYSTEM_BUS_T.issymbol(byval s    as string, byval start as SYSTEM_TYPE) as SYSTEM_TYPE
  do
   select case as const asc(mid(s, start, 1))
    case in range(&H30, &H39): exit do
@@ -2603,7 +4485,7 @@ proc MEMORY_T.issymbol(byval s    as string, byval start as SYSTEM_TYPE) as SYST
  mov(issymbol,start)
 end proc
 
-proc MEMORY_T.isnumber(byval s    as string, byval start as SYSTEM_TYPE) as SYSTEM_TYPE
+proc SYSTEM_BUS_T.isnumber(byval s    as string, byval start as SYSTEM_TYPE) as SYSTEM_TYPE
  dim as integer tmp: mov(tmp,start)
  do
   select case as const asc(mid(get_data, tmp, 1))
@@ -2620,7 +4502,7 @@ proc MEMORY_T.isnumber(byval s    as string, byval start as SYSTEM_TYPE) as SYST
  end if    
 end proc
 
-def MEMORY_T.getXYZ()
+def SYSTEM_BUS_T.getXYZ()
 '          x0
  mov(mem64(49355), isnumber(get_data, 7))
 '             x0 
@@ -2648,7 +4530,7 @@ def MEMORY_T.getXYZ()
  end if
 end def
  
-proc MEMORY_T.Peek64(byval adr as SYSTEM_TYPE) as SYSTEM_TYPE
+proc SYSTEM_BUS_T.Peek64(byval adr as SYSTEM_TYPE) as SYSTEM_TYPE
   select case adr 
   case &HE000 to &HFFFF:mov(proc,kernal(adr subt &HE000))
   case &HA000 to &HBFFF:mov(proc,basic (adr subt &HA000))
@@ -2660,7 +4542,7 @@ proc MEMORY_T.Peek64(byval adr as SYSTEM_TYPE) as SYSTEM_TYPE
   end select
 end proc
 
-def MEMORY_T.poke64(byval adr as SYSTEM_TYPE,byval v as SYSTEM_TYPE)
+def SYSTEM_BUS_T.poke64(byval adr as SYSTEM_TYPE,byval v as SYSTEM_TYPE)
   poke SYSTEM_TYPE,@mem64(peek(SYSTEM_TYPE,@adr)), peek(SYSTEM_TYPE,@v)
   ' Color RAM starts at 55296($D800) and ends at 56319($DBFF) 
   cmp logic_and(peek(SYSTEM_TYPE,@adr) gs 55296,peek(SYSTEM_TYPE,@adr) ls 56319) jmp L670
@@ -3046,7 +4928,7 @@ L931:
   ' Sprite Color Registers       
   elseif logic_or(logic_or(logic_or(mov(adr, SP0COL), mov(adr, SP1COL)), logic_or(mov(adr, SP2COL), mov(adr, SP3COL))), _
          logic_or(logic_or(mov(adr, SP4COL), mov(adr, SP5COL)), logic_or(mov(adr, SP6COL), mov(adr, SP7COL)))) then         
-         poke64(FCOLOR,v)
+         computer.cpu_mos6510->mem->poke64(FCOLOR,v)
   /'
   Sprite Enable Register
   
@@ -3069,9 +4951,9 @@ L931:
   that lie within the visible screen range in order for a sprite to appear on
   screen.  
   '/
-  elseif mov(adr, SPENA) then ' Sprite enable register
-  elseif mov(adr,RASTR) then
-     put (0,v),raster,alpha  
+  ' elseif mov(adr, SPENA) then ' Sprite enable register
+  ' elseif mov(adr,RASTR) then
+  '   put (0,v),raster,alpha  
    /'
    Border Color Register
    
@@ -3737,7 +5619,7 @@ L2086:
 	    sleep
 	    line fgimage, (0,0)-(scr_w, scr_h), rgba(0,0,0,255),bf
 	    put (0,0),fgimage,pset	    
-	   case 027 ' 90 column text editor
+	   case 027 ' 90 column text mode
 	    mov(mem64(49355),0):mov(mem64(49356),0) ' Clears x0 and y0
 	    line fgimage, (0,0)-(scr_w, scr_h), rgba(0,0,0,255),bf
 	    open filename for binary as #1                   
@@ -3781,7 +5663,7 @@ L2086:
     'Load and compile tmp.glsl=$C0A3(49315)
     case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1010)) _
      shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011))
-     filename  = "tmp.glsl": poke64(&HC0A1,&H00)
+     filename  = "tmp.glsl": computer.cpu_mos6510->mem->poke64(&HC0A1,&H00)
 #endif 
     
     'SYS calls sys_offset+A4 to sys_offset+A9
@@ -3831,63 +5713,67 @@ L2086:
      select case v
 		case in range(peek(ubyte,@nibbles(&B0000)), peek(ubyte,@nibbles(&B1111)))
 		
-		'       fg_color=$C0C9(49353)
-		 poke64(FCOLOR,modulo(v,(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
-		                  add peek(ubyte,@nibbles(&B1111)))))
+		'                                                   fg_color=$C0C9(49353)
+		 computer.cpu_mos6510->mem->poke64(FCOLOR,modulo(v,(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
+		                                                add peek(ubyte,@nibbles(&B1111)))))
 		                  
 		case in range(peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)), peek(ubyte,@nibbles(&B0001)) _
 		          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
 		          
-		'       fg_red=$C002(49154)
-		 poke64(peek(ubyte,@nibbles(&B1100)) shl  peek(ubyte,@nibbles(&B1100))   add    peek(ubyte,@nibbles(&B0010)),_
-		                               (((v subt  peek(ubyte,@nibbles(&B0001))   shl    peek(ubyte,@nibbles(&B0100))) _
-		                                     mod (peek(ubyte,@nibbles(&B1111))   shl    peek(ubyte,@nibbles(&B0100)) _
-		                                     add  peek(ubyte,@nibbles(&B1111)))) mul   (peek(ubyte,@nibbles(&B0001)) _
-		                                     shl  peek(ubyte,@nibbles(&B0100))   add    peek(ubyte,@nibbles(&B0001)))) _
-		                                     mod (peek(ubyte,@nibbles(&B1111))   shl    peek(ubyte,@nibbles(&B0100)) _
-		                                     add  peek(ubyte,@nibbles(&B1111))))
+		'                                 fg_red=$C002(49154)
+	    computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))    shl  peek(ubyte,@nibbles(&B1100)) _
+	                                 add  peek(ubyte,@nibbles(&B0010)),_
+		                       (((v subt  peek(ubyte,@nibbles(&B0001))    shl  peek(ubyte,@nibbles(&B0100))) _
+		                             mod (peek(ubyte,@nibbles(&B1111))    shl  peek(ubyte,@nibbles(&B0100)) _
+		                             add  peek(ubyte,@nibbles(&B1111))))  mul (peek(ubyte,@nibbles(&B0001)) _
+		                             shl  peek(ubyte,@nibbles(&B0100))    add  peek(ubyte,@nibbles(&B0001)))) _
+		                             mod (peek(ubyte,@nibbles(&B1111))    shl  peek(ubyte,@nibbles(&B0100)) _
+		                             add  peek(ubyte,@nibbles(&B1111))))
 		                                     
 		case in range(peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)), peek(ubyte,@nibbles(&B0010)) _
 		          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
 
-	    '       fg_grn=$C003(49155)  
-		 poke64(peek(ubyte,@nibbles(&B1100)) shl  peek(ubyte,@nibbles(&B1100))   add  peek(ubyte,@nibbles(&B0011)),_
-		                               (((v subt  peek(ubyte,@nibbles(&B0010))   shl  peek(ubyte,@nibbles(&B0100))) _
-		                                     mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
-		                                     add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
-		                                     shl  peek(ubyte,@nibbles(&B0100))   add  peek(ubyte,@nibbles(&B0001)))) _
-		                                     mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
-		                                     add  peek(ubyte,@nibbles(&B1111))))
+	    '                                  fg_grn=$C003(49155)  
+		 computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))   shl  peek(ubyte,@nibbles(&B1100)) _
+		                              add  peek(ubyte,@nibbles(&B0011)),_
+		                        (((v subt  peek(ubyte,@nibbles(&B0010))   shl  peek(ubyte,@nibbles(&B0100))) _
+		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
+		                              add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
+		                              shl  peek(ubyte,@nibbles(&B0100))   add  peek(ubyte,@nibbles(&B0001)))) _
+		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
+		                              add  peek(ubyte,@nibbles(&B1111))))
 
 		case in range(peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)), peek(ubyte,@nibbles(&B0011)) _
 		          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
 
-		'       fg_blu=$C004(49156)		          
-		 poke64(peek(ubyte,@nibbles(&B1100)) shl  peek(ubyte,@nibbles(&B1100))   add  peek(ubyte,@nibbles(&B0100)),_
-		                               (((v subt  peek(ubyte,@nibbles(&B0011))   shl  peek(ubyte,@nibbles(&B0100))) _
-		                                     mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
-		                                     add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
-		                                     shl  peek(ubyte,@nibbles(&B0100))   add  peek(ubyte,@nibbles(&B0001)))) _
-		                                     mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
-		                                     add  peek(ubyte,@nibbles(&B1111))))
+		'                                  fg_blu=$C004(49156)		          
+		 computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))   shl  peek(ubyte,@nibbles(&B1100)) _
+		                              add  peek(ubyte,@nibbles(&B0100)),_
+		                        (((v subt  peek(ubyte,@nibbles(&B0011))   shl  peek(ubyte,@nibbles(&B0100))) _
+		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
+		                              add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
+		                              shl  peek(ubyte,@nibbles(&B0100))   add  peek(ubyte,@nibbles(&B0001)))) _
+		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
+		                              add  peek(ubyte,@nibbles(&B1111))))
 
 
      	case else
      	
-'               fg_alph=$C005(49157)
-     	 poke64(peek(ubyte,@nibbles(&B1100)) shl  peek(ubyte,@nibbles(&B1100))   add  peek(ubyte,@nibbles(&B0101)),_
-     	                               (((v subt  peek(ubyte,@nibbles(&B0100))   shl  peek(ubyte,@nibbles(&B0100))) _
-     	                                     mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
-     	                                     add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
-     	                                     shl  peek(ubyte,@nibbles(&B0100))   add  peek(ubyte,@nibbles(&B0001)))) _
-     	                                     mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
-     	                                     add  peek(ubyte,@nibbles(&B1111))))				  
+'                                          fg_alph=$C005(49157)
+     	 computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))   shl  peek(ubyte,@nibbles(&B1100)) _
+     	                              add  peek(ubyte,@nibbles(&B0101)),_
+     	                        (((v subt  peek(ubyte,@nibbles(&B0100))   shl  peek(ubyte,@nibbles(&B0100))) _
+     	                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
+     	                              add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
+     	                              shl  peek(ubyte,@nibbles(&B0100))   add  peek(ubyte,@nibbles(&B0001)))) _
+     	                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
+     	                              add  peek(ubyte,@nibbles(&B1111))))				  
      end select
      if mov(adr,49388) then
-        '                   fg_color 
-        poke64(53280,peek64(49353))
-        '                   fg_color
-        poke64(53281,peek64(49353))
+        '                                 fg_color 
+        computer.cpu_mos6510->mem->poke64(53280,peek64(49353))
+        '                                 fg_color
+        computer.cpu_mos6510->mem->poke64(53281,peek64(49353))
      end if
      
     'Amiga style Hold-and-Modify - background=$C0ED(49389)    
@@ -3897,62 +5783,66 @@ L2086:
      select case peek(SYSTEM_TYPE,@v)
 		case in range(peek(ubyte,@nibbles(&B0000)), peek(ubyte,@nibbles(&B1111)))
 		
-'               bg_color=$C0C9(49354)		
-		 poke64(BGCOL0,modulo(v,(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
-		                  add  peek(ubyte,@nibbles(&B1111)))))
+'                                                           bg_color=$C0C9(49354)		
+		 computer.cpu_mos6510->mem->poke64(BGCOL0,modulo(v,(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
+		                                               add  peek(ubyte,@nibbles(&B1111)))))
 
 		case in range(peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)), peek(ubyte,@nibbles(&B0001)) _
 		          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
 
-'               bg_red=$C005(49158)				
-		 poke64(peek(ubyte,@nibbles(&B1100)) shl  peek(ubyte,@nibbles(&B1100))   add  peek(ubyte,@nibbles(&B0110)),_
-		                               (((v subt  peek(ubyte,@nibbles(&B0001))   shl  peek(ubyte,@nibbles(&B0100))) _
-		                                     mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
-		                                     add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
-		                                     shl  peek(ubyte,@nibbles(&B0100))   add  peek(ubyte,@nibbles(&B0001)))) _
-		                                     mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
-		                                     add  peek(ubyte,@nibbles(&B1111))))
+'                                          bg_red=$C005(49158)				
+		 computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))   shl  peek(ubyte,@nibbles(&B1100)) _
+		                              add  peek(ubyte,@nibbles(&B0110)),_
+		                        (((v subt  peek(ubyte,@nibbles(&B0001))   shl  peek(ubyte,@nibbles(&B0100))) _
+		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
+		                              add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
+		                              shl  peek(ubyte,@nibbles(&B0100))   add  peek(ubyte,@nibbles(&B0001)))) _
+		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
+		                              add  peek(ubyte,@nibbles(&B1111))))
 
 		case in range(peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)), peek(ubyte,@nibbles(&B0010)) _
 		          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
 		          
-'               bg_grn=$C006(49159)		          
-		 poke64(peek(ubyte,@nibbles(&B1100)) shl  peek(ubyte,@nibbles(&B1100))   add  peek(ubyte,@nibbles(&B0111)), _
-		                               (((v subt  peek(ubyte,@nibbles(&B0010))   shl  peek(ubyte,@nibbles(&B0100))) _
-		                                     mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
-		                                     add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
-		                                     shl  peek(ubyte,@nibbles(&B0100))   add  peek(ubyte,@nibbles(&B0001)))) _
-		                                     mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
-		                                     add  peek(ubyte,@nibbles(&B1111))))
+'                                          bg_grn=$C006(49159)		          
+		 computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))   shl  peek(ubyte,@nibbles(&B1100)) _
+		                              add  peek(ubyte,@nibbles(&B0111)), _
+		                        (((v subt  peek(ubyte,@nibbles(&B0010))   shl  peek(ubyte,@nibbles(&B0100))) _
+		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
+		                              add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
+		                              shl  peek(ubyte,@nibbles(&B0100))   add  peek(ubyte,@nibbles(&B0001)))) _
+		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
+		                              add  peek(ubyte,@nibbles(&B1111))))
 
 		case in range(peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)), peek(ubyte,@nibbles(&B0011)) _
 		          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
 
-'               bg_blu=$C007(49160)		          
-		 poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100))   add  peek(ubyte,@nibbles(&B1000)),_
-		                               (((v subt peek(ubyte,@nibbles(&B0011))   shl  peek(ubyte,@nibbles(&B0100))) _
-		                                     mod (peek(ubyte,@nibbles(&B1111))  shl  peek(ubyte,@nibbles(&B0100)) _
-		                                     add peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
-		                                     shl peek(ubyte,@nibbles(&B0100))   add  peek(ubyte,@nibbles(&B0001)))) _
-		                                     mod (peek(ubyte,@nibbles(&B1111))  shl  peek(ubyte,@nibbles(&B0100)) _
-		                                     add peek(ubyte,@nibbles(&B1111))))
+'                                          bg_blu=$C007(49160)		          
+		 computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))   shl peek(ubyte,@nibbles(&B1100)) _
+		                              add  peek(ubyte,@nibbles(&B1000)),_
+		                         (((v subt peek(ubyte,@nibbles(&B0011))   shl  peek(ubyte,@nibbles(&B0100))) _
+		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
+		                              add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
+		                              shl  peek(ubyte,@nibbles(&B0100))   add  peek(ubyte,@nibbles(&B0001)))) _
+		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
+		                              add  peek(ubyte,@nibbles(&B1111))))
 		                                     
      	case else
      	
-'               bg_aph=$C008(49161)    	
-     	 poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100))   add  peek(ubyte,@nibbles(&B1001)),_
-     	                               (((v subt peek(ubyte,@nibbles(&B0100))   shl  peek(ubyte,@nibbles(&B0100))) _
-     	                                     mod (peek(ubyte,@nibbles(&B1111))  shl  peek(ubyte,@nibbles(&B0100)) _
-     	                                     add peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
-     	                                     shl peek(ubyte,@nibbles(&B0100))   add  peek(ubyte,@nibbles(&B0001)))) _
-     	                                     mod (peek(ubyte,@nibbles(&B1111))  shl  peek(ubyte,@nibbles(&B0100)) _
-     	                                     add peek(ubyte,@nibbles(&B1111))))					  
+'                                          bg_aph=$C008(49161)    	
+     	 computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))   shl  peek(ubyte,@nibbles(&B1100)) _
+     	                              add  peek(ubyte,@nibbles(&B1001)), _
+     	                         (((v subt peek(ubyte,@nibbles(&B0100))   shl  peek(ubyte,@nibbles(&B0100))) _
+     	                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
+     	                              add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
+     	                              shl  peek(ubyte,@nibbles(&B0100))   add  peek(ubyte,@nibbles(&B0001)))) _
+     	                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
+     	                              add  peek(ubyte,@nibbles(&B1111))))					  
      end select
 
 '        Amiga style Hold-and-Modify - Draw foreground=$C0EE(49390)           
     case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
                                       shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110))
-                                      
+                                              
 '                            x0=$C0CB(49355)    
           line fgimage,(peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
                     add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
@@ -4029,7 +5919,8 @@ L2086:
      for offset = &H000 to &H400: poke64(mem64(49451) add offset, 32): next offset
 #endif
     '' Execute MS-Windows program=$C0F1(49393)                      
-    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001))
+    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001))
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)    
@@ -4040,52 +5931,86 @@ L2086:
      for offset = &H000 to &H400: poke64(mem64(49451) add offset, 32): next offset 
 #endif 
     ' Execute MS-DOS program=$C0F2(49394)                    
-    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010))
+    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010))
      screen 0:shell "dosbox-x " + strCode+" -fullscreen -exit": strCode = ""
      ScreenRes 1920,1080, 32, 0, logic_or(GFX_FULLSCREEN,GFX_ALPHA_PRIMITIVES): Cls
      paint(0,0), rgba(0, 0, 0, 255)
      'for offset = &H000 to &H400: poke64(mem64(sys_offset+&H12B)+offset, 32): next offset
     ' Open Intel Assembley Language File=$C0F3(49395)             
-    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011))
+    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011))
      open strCode add ".asm" for output as #1
      strCode=""
     ' Write to Intel ASM file=$C0F4(49396)
-    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100))
+    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100))
      print #1, strCode: mov(strCode,"")
     ' Close Intel ASM File=$C0F5(49397) 
-    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101))
+    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101))
      close #1: mov(strCode,"")
     ' Execute assembler=$C0F6(49398)  
-    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110))
+    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110))
      shell "nasm " add strCode+".asm -f bin -o" add strCode+".bin": mov(strCode,"")
     ' Execute external boot sector=$C0F7(49399) 
-    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111))
+    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111))
      screen 0: shell "dosbox-x -c 'boot " add strCode add "'" add " -exit"
      shell "rm " add strCode: mov(strCode,"")
      ScreenRes 1920,1080, 32, 0, logic_or(GFX_FULLSCREEN,GFX_ALPHA_PRIMITIVES): Cls        
      paint(0,0), rgba(0, 0, 0, 255)
      for in range(mov(offset,&H000),&H400): poke64(mem64(sys_offset+&H12B) add offset, 32): next offset
     ' Execute external program using the SHELL command=$C0F8(49400)      
-    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))
+    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))
      shell strCode: mov(strCode,"")
     ' Set swch to v $C0F9(49401) 
-    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))
+    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))
      mov(swch,v)
     ' Add BYTE to string=$C0FA(49402) 
-    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))
+    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))
      strCode=strCode+lcase(chr(v))
     'Write string to file=$C0FB(49403) 
-    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))
+    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1011))
      print #1, strCode: mov(strCode,"")
 '        Flag: Print Reverse Characters?0=No ($C0FC/49404)
-    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) 
+    case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) _
+     shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100)) 
      poke SYSTEM_TYPE,@mem64(RVS), peek(SYSTEM_TYPE,@v) ' RVS=v
      if logic_and(peek(SYSTEM_TYPE,@char(c)),((peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100))) shr x)) then
-'                                                                                    HAM8_BG=$C0ED(49389)                                                                                                                                  HAM8_FG     
-        if peek(SYSTEM_TYPE,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0000))) else poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)),peek(ubyte,@nibbles(&B0000)))         
+   
+        if peek(SYSTEM_TYPE,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then 
+ '                                           HAM8_BG=$C0ED(49389)         
+           computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                                         add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) _
+                                         add peek(ubyte,@nibbles(&B1111)),    peek(ubyte,@nibbles(&B0000))) 
+        else 
+  '                                          HAM8_FG=$C0EC(49388)       
+           computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                                         add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) _
+                                         add peek(ubyte,@nibbles(&B1110)),    peek(ubyte,@nibbles(&B0000))) 
+                                                 
+        end if
+        
      else
-'                                                                                    HAM8_FG=$C0EB(49387),$C0EC(49388)                                                                                                                                  HAM8_BG
-        if peek(SYSTEM_TYPE,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110)),peek(ubyte,@nibbles(&B0000))) else poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0000)))         
+
+        if peek(SYSTEM_TYPE,@mem64(RVS)) ne peek(ubyte,@nibbles(&B0000)) then 
+ '                                           HAM8_FG=$C0EB(49387),$C0EC(49388)         
+           computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                                         add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) _
+                                         add peek(ubyte,@nibbles(&B1110)),    peek(ubyte,@nibbles(&B0000))) 
+        else
+  '                                          HAM8_BG=$C0ED(49389)          
+           computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+                                         add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100)) _
+                                         add peek(ubyte,@nibbles(&B1111)),peek(ubyte,@nibbles(&B0000)))
+                                                  
+        end if
      end if
 '        Close file ($C0FD/49405)     
     case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101))
@@ -4096,7 +6021,7 @@ L2086:
 '        Compile and execite GLSL program. ($C0FF/49407)
 	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))
 	 'locate 1,1: print filename: sleep 1
-	 poke64(49313,0): filename=""
+	 computer.cpu_mos6510->mem->poke64(49313,0): filename=""
 '        Text buffer back switching	 ($C100/40408)
 	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B1000))
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
@@ -4172,12 +6097,16 @@ L2086:
              for x=peek(SYSTEM_TYPE,@mem64(49369)) to peek(SYSTEM_TYPE,@mem64(49370))
              '                             r10=y1                             r11=y2
              for y=peek(SYSTEM_TYPE,@mem64(49271)) to peek(SYSTEM_TYPE,@mem64(49372))
-             '       red                                        r0=x1                             r1=x2
-              poke64(49154,255 * (x/abs(peek(SYSTEM_TYPE,@mem64(49369)) - peek(SYSTEM_TYPE,@mem64(49370)))))
-             '       green 
-              poke64(49155,g)
-             '       blue                                       r2=y1                            r3=y2
-              poke64(49156,255 * (y/abs(peek(SYSTEM_TYPE,@mem64(49271)) - peek(SYSTEM_TYPE,@mem64(49372)))))
+             '                                  red                                        r0=x1
+              computer.cpu_mos6510->mem->poke64(49154,255 * (x/abs(peek(SYSTEM_TYPE,@mem64(49369)) _
+           _ '                                                                             r1=x2
+                                                              subt peek(SYSTEM_TYPE,@mem64(49370)))))
+             '                                  green 
+              computer.cpu_mos6510->mem->poke64(49155,g)
+             '                                  blue                                       r2=y1
+              computer.cpu_mos6510->mem->poke64(49156,255 * (y/abs(peek(SYSTEM_TYPE,@mem64(49271)) _
+            _ '                                                                            r3=y2
+                                                              subt peek(SYSTEM_TYPE,@mem64(49372)))))
              '                                          fg_color 
               pset fgimage,(x,y),peek(SYSTEM_TYPE,@mem64(49353))
              next y
@@ -4188,7 +6117,54 @@ L2086:
             case peek(ubyte,@nibbles(&B0001)) '1
             case peek(ubyte,@nibbles(&B0010)) '2
             case peek(ubyte,@nibbles(&B0011)) '3
+              dim as ulong colour
+			  dim as float xpos,ypos
+			  dim as ubyte r,g,b,a            
+				for xx as long=0 to 1920
+					  var ps=map(0,1920,xx,80,400)
+					  colour=rainbowISH(ps)
+					  for yy as long=0 to 1080\2
+							r= cptr(ubyte ptr,@colour)[2] 
+							g= cptr(ubyte ptr,@colour)[1] 
+							b= cptr(ubyte ptr,@colour)[0]
+							a=map(1080\2,0,yy,0,255)
+							pset fgimage,(xx,yy),rgba(r,g,b,a)
+					  next yy
+				next xx           
             case peek(ubyte,@nibbles(&B0100)) '4
+              dim as ulong colour
+			  dim as float xpos,ypos
+			  dim as ubyte r,g,b,a
+				for xx as long=0 to 1920
+					  var ps=map(0,1920,xx,80,400)
+					  colour=rainbowISH(ps)
+					  for yy as long=0 to 1080\2
+							r= cptr(ubyte ptr,@colour)[2] 
+							g= cptr(ubyte ptr,@colour)[1] 
+							b= cptr(ubyte ptr,@colour)[0]
+							a=map(1080\2,0,yy,0,255)
+							pset fgimage,(xx,yy),rgba(r,g,b,a)
+					  next yy
+				next xx
+				rainbowISH(0,true)
+				for xx as long=0 to 1920
+					  var ps=map(0,1920,xx,80,400)
+					  colour=rainbowISH(ps)
+					  r= cptr(ubyte ptr,@colour)[2] 
+					  g= cptr(ubyte ptr,@colour)[1] 
+					  b= Cptr(ubyte ptr,@colour)[0]
+					  var rval=map(0,255,r,1000,400)
+					  var rad=map(0,255,r,1,4)
+					  circle fgimage,(xx,rval),rad,rgb(255,0,0),,,,f
+					  var gval=map(0,255,g,1000,400)
+					  rad=map(0,255,g,1,4)
+					  circle fgimage,(xx,gval),rad,rgb(0,255,0),,,,f
+					  var bval=map(0,255,b,1000,400)
+					  rad=map(0,255,b,1,4)
+					  circle fgimage,(xx,bval),rad,rgb(0,0,255),,,,f
+				next xx
+				filter(fgimage,5)
+				put(0,0),fgimage,alpha
             case peek(ubyte,@nibbles(&B0101)) '5 EXEC_GLSL_120()
               EXEC_GLSL_120()
             case peek(ubyte,@nibbles(&B0110)) '6 EXEC_GLSL_40()
@@ -4366,7 +6342,7 @@ L2086:
        end select
 '                pc             pc
        mov(mem64(49418), mem64(49418) mod &HFFFFFFFFFFFFFFFF)
-       
+                                          
     case 49417 ' ld pc
 '                           pc           pcd4 	                 pcd3                    pcd2          
 	              mov(mem64(49418),mem64(49419) shl 32 add mem64(49420) shl 24 add mem64(49421) shl 16 add _        
@@ -4713,7 +6689,7 @@ L2086:
 	               pokeb mem64(49425), 0: mov(mem64(49418),mem64(49418) add 4)		    	
        end select
 '                           pc             pc
-    case 49416:  mov(mem64(49418), mem64(49418) mod &HFFFFFFFF)
+    case 49416:  mov(mem64(49418), mem64(49418) mod &HFFFFFFFFFFFFFFFF)
     case 49417 ' ld pc
 '                           pc            pcd3                      pcd2          
 	              mov(mem64(49418),mem64(49420) shl 24d add mem64(49421) shl 16d add _        
@@ -5114,26 +7090,26 @@ L2086:
 L2150:  
 end def
 
-proc MEMORY_T.ReadUByte(byval adr as SYSTEM_TYPE) as ubyte
+proc SYSTEM_BUS_T.ReadUByte(byval adr as SYSTEM_TYPE) as ubyte
   return Peek64(adr)
 end proc
 
-proc MEMORY_T.ReadByte(byval adr as SYSTEM_TYPE) as byte
+proc SYSTEM_BUS_T.ReadByte(byval adr as SYSTEM_TYPE) as byte
   return Peek64(adr)
 end proc
 
-proc MEMORY_T.ReadUShort(byval adr as SYSTEM_TYPE) as ushort
+proc SYSTEM_BUS_T.ReadUShort(byval adr as SYSTEM_TYPE) as ushort
   return Peek64(adr) or Peek64(adr add peek(ubyte,@nibbles(&B0001))) shl peek(ubyte,@nibbles(&B1000))
 end proc
 
-def MEMORY_T.WriteByte(byval adr as double,byval b8 as double)
+def SYSTEM_BUS_T.WriteByte(byval adr as double,byval b8 as double)
   poke64(adr,b8)
 end def
 
-def MEMORY_T.WriteUByte(byval adr as SYSTEM_TYPE,byval b8 as SYSTEM_TYPE)
+def SYSTEM_BUS_T.WriteUByte(byval adr as SYSTEM_TYPE,byval b8 as SYSTEM_TYPE)
   poke64(adr,b8)
 end def
 
-def MEMORY_T.WriteUShort(byval adr as SYSTEM_TYPE,byval w16 as SYSTEM_TYPE)
+def SYSTEM_BUS_T.WriteUShort(byval adr as SYSTEM_TYPE,byval w16 as SYSTEM_TYPE)
   poke64(adr,LOBYTE(w16)):poke64(adr add peek(ubyte,@nibbles(&B0001)),HIBYTE(w16))
 end def
