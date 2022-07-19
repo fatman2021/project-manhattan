@@ -11,6 +11,9 @@
  ' Articles by Inigo Quilez:
  ' https://iquilezles.org/articles/
  '
+ ' Shadertoy: 
+ ' https://www.shadertoy.com
+ '
  ' Patreon:
  ' https://www.patreon.com/inigoquilez
  '
@@ -28,7 +31,7 @@
  '
  ' ShawnLG:
  ' https://freebasic.net/forum/search.php?st=0&sk=t&sd=d&sr=posts&author_id=3623
- ' 
+ '
  ' dodicat
  ' https://www.freebasic.net/forum/search.php?author_id=682&sr=posts
  '
@@ -42,6 +45,15 @@
  '
  'Additional information can be found on Wikipedia:
  'https://en.wikipedia.org/wiki/Category:Computer_graphics_algorithms
+ 
+ TEMPLATE:
+/'
+Original Code:
+
+Intermediate Code:
+
+FreeBASIC:
+'/
 '/
 #include once "crt.bi" ' math.bi ...
 #define DEG2RAD M_PI/180.0
@@ -59,7 +71,10 @@
 #undef floor
 #undef sign
 
-
+#define dot2(a) dot((a),(a))
+'function dot2(v as vec3) as float
+'  return dot(v,v)
+'end function
 
 '   ########
 '  # vector2 #
@@ -194,11 +209,11 @@ operator /(byref l as vector2, byref r as vector2) as vector2
     return vector2(l.x/r.x, l.y/r.y)
 end operator
 
-operator =(byref l as vector2,byref r as vector2) as integer 
+operator =(byref l as vector2,byref r as vector2) as longint 
     if (l.x xor r.x) or (l.y xor r.y) then return 0
     return -1
 end operator
-operator <>(byref l as vector2,byref r as vector2) as integer
+operator <>(byref l as vector2,byref r as vector2) as longint
     if (l.x xor r.x) or (l.y xor r.y) then return -1
     return 0
 end operator
@@ -207,7 +222,7 @@ end operator
 '  # vector3 #
 ' ########
 
-type vector3
+type vector3 extends vector2
     declare constructor
     declare constructor(pxyz as float)
     declare constructor(px as float, py as float, pz as float)
@@ -220,7 +235,7 @@ type vector3
     declare operator let(byref p as vector3)
 
     declare operator cast as string
-    declare operator cast as ulong
+    declare operator cast as ulongint
 
     declare operator +=(v as float)
     declare operator -=(v as float)
@@ -312,9 +327,9 @@ operator vector3.cast () as string
     return "(" + str(x) + ", " + str(y) + ", " + str(z) + ")"
 end operator
 
-operator vector3.cast as ulong
-    dim as ulong t = any
-    dim as ulong a = 255
+operator vector3.cast as ulongint
+    dim as ulongint t = any
+    dim as ulongint a = 255
     #macro clip(v)  
         a shl = 8
         if v < 0 then 
@@ -516,11 +531,11 @@ operator /(byref l as vector3, byref r as vector3) as vector3
     return vector3(l.x/r.x, l.y/r.y, l.z/r.z)
 end operator
 
-operator =(byref l as vector3, byref r as vector3) as integer 
+operator =(byref l as vector3, byref r as vector3) as longint 
     if (l.x xor r.x) or (l.y xor r.y) or (l.z xor r.z) then return 0
     return -1
 end operator
-operator <>(byref l as vector3, byref r as vector3) as integer
+operator <>(byref l as vector3, byref r as vector3) as longint
     if (l.x xor r.x) or (l.y xor r.y) or (l.z xor r.z) then return -1
     return 0
 end operator
@@ -529,7 +544,7 @@ end operator
 '  # vector4 #
 ' ########
 
-type vector4
+type vector4 extends vector3
     declare constructor
     declare constructor(pxyz as float, pw as float=1)
     declare constructor(px as float, py as float, pz as float, pw as float=1)
@@ -545,7 +560,7 @@ type vector4
     declare operator let(byref p as vector4)
     
     declare operator cast as string
-    declare operator cast as ulong
+    declare operator cast as ulongint
 
     declare operator +=(v as float)
     declare operator -=(v as float)
@@ -654,8 +669,8 @@ operator vector4.cast () as string
     return "(" + str(x) + ", " + str(y) + ", " + str(z) + ", " + str(w) + ")"
 end operator
 
-operator vector4.cast as ulong
-    dim as ulong c
+operator vector4.cast as ulongint
+    dim as ulongint c
     #macro clip255(v)  
         c shl = 8
         if v < 1/255 then
@@ -905,11 +920,11 @@ operator /(byref l as vector3, byref r as vector4) as vector4
     return vector4(l.x/r.x, l.y/r.y, l.z/r.z)
 end operator
 
-operator =(byref l as vector4,byref r as vector4) as integer 
+operator =(byref l as vector4,byref r as vector4) as longint 
     if (l.x xor r.x) or (l.y xor r.y) or (l.z xor r.z) or (l.w xor r.w) then return 0
     return -1
 end operator
-operator <>(byref l as vector4,byref r as vector4) as integer
+operator <>(byref l as vector4,byref r as vector4) as longint
     if (l.x xor r.x) or (l.y xor r.y) or (l.z xor r.z) or (l.w xor r.w) then return -1
     return 0
 end operator
@@ -923,7 +938,7 @@ Enum ePlaneSide
     FrontSide
     BackSide
 end enum
-type plane
+type plane extends vector4
     declare constructor
     declare constructor (byref normal as vector3,byref v as vector3)
     declare function getDistance(byref v as vector3) as float 
@@ -1289,7 +1304,7 @@ end function
 ' In case of float vectortors the operation is done component-wise.
 ' Side note: If x and y are integers the return value is the remainder of the division of x by y as expected.
 ' There is also a variation of the mod function where the second parameter is always a floating scalar.
-function modulo overload (x as integer,y as integer) as integer
+function modulo overload (x as longint,y as longint) as longint
     return x-y*(x\y)
 end function
 function modulo (x as float,y as float) as float
@@ -1766,7 +1781,7 @@ end function
 '  # mat2 #
 ' ########
 'M subscript for matrices (column),(row)
-type mat2
+type mat2 extends plane
     declare constructor(d as float=1)
     declare constructor(a as float,b as float, c as float,d as float) 
     
@@ -1810,7 +1825,7 @@ end operator
 '   ########
 '  # mat3 #
 ' ########
-type mat3
+type mat3 extends mat2
     declare constructor(d as float=1)
     declare constructor( a as float, b as float, c as float, d as float, e as float, f as float, g as float, h as float, j as float)
     declare constructor(byref a as vector3, byref b as vector3, byref c as vector3)
@@ -1920,7 +1935,7 @@ end operator
 '   ########
 '  # mat4 #
 ' ########
-type mat4
+type mat4 extends mat3
     declare constructor(d as float=1)
     declare constructor(a as float,b as float,c as float,d as float,e as float,f as float,g as float,h as float,i as float,j as float,k as float,l as float,m as float,n as float,o as float,p as float) 
     
@@ -2040,10 +2055,10 @@ end operator
 function matrixCompMult overload (byref x as mat2,byref y as mat2) as mat2
     dim as mat2 z
     dim as float ptr pz=@z.m00,px=@x.m00,py=@y.m00
-    dim as integer i2
-    for i as integer = 0 to 1
-        dim as integer ij=i2
-        for j as integer = 0 to 1
+    dim as longint i2
+    for i as longint = 0 to 1
+        dim as longint ij=i2
+        for j as longint = 0 to 1
             pz[ij] = px[ij] * py[ij] :ij+=1
         next
         i2+=2
@@ -2053,10 +2068,10 @@ end function
 function matrixCompMult (byref x as mat3, byref y as mat3) as mat3
     dim as mat3 z
     dim as float ptr pz=@z.m00,px=@x.m00,py=@y.m00
-    dim as integer i3
-    for i as integer = 0 to 1
-    dim as integer ij=i3
-        for j as integer = 0 to 1
+    dim as longint i3
+    for i as longint = 0 to 1
+    dim as longint ij=i3
+        for j as longint = 0 to 1
             pz[ij] = px[ij] * py[ij] :ij+=1
         next
         i3+=3
@@ -2066,10 +2081,10 @@ end function
 function matrixCompMult (byref x as mat4, byref y as mat4) as mat4
     dim as mat4 z
     dim as float ptr pz=@z.m00,px=@x.m00,py=@y.m00
-    dim as integer i4
-    for i as integer = 0 to 1
-        dim as integer ij=i4
-        for j as integer = 0 to 1
+    dim as longint i4
+    for i as longint = 0 to 1
+        dim as longint ij=i4
+        for j as longint = 0 to 1
             pz[ij] = px[ij] * py[ij] :ij+=1
         next
         i4+=4

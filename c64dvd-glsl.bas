@@ -28,7 +28,7 @@ faster than accessing it directly from main memory. Prefetching can be done with
 #define FBCALL
 
 #if defined(__FB_DOS__)
-#include once "MBOOT.BI"
+#include once ".\DOS\MBOOT.BI"
 ' Flags accepted by Screen and ScreenRes
 '
 ' Usage examples:
@@ -54,7 +54,7 @@ using FB
 static shared as multiboot_info ptr MB_INFO
 
 #if defined(__FB_DOS__)
-#include once "ADRR.BI"
+#include once ".\DOS\ADRR.BI"
 #else
 #include once "address.bi"
 #endif
@@ -325,7 +325,7 @@ static shared as multiboot_info ptr MB_INFO
 #define fun_adr_ind_y            computer.cpu_mos6510->adr_indy
 #define fun_adr_unk              computer.cpu_mos6510->adr_unk
 #define sub_push(x)              computer.cpu_mos6510->push(x)                ' pushes dat on to the stack
-#define fun_pull                                                              ' pulls data from off the stack
+#define fun_pull()               computer.cpU_mos6510->pull()                 ' pulls data from off the stack
 
 'Get Registers
 #define get_a                    computer.cpu_mos6510->a                      ' get accumulator(unsigned)
@@ -389,8 +389,8 @@ static shared as multiboot_info ptr MB_INFO
 #Define GetPixel(_x, _y)           *cptr(ulongint ptr, pScrn + (_y) * pitch + (_x) shl 2)
         
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
-    #include once "GLSL4.BI"
-    #include once "RAY.BI"
+    #include once ".\DOS\GLSL4.BI"
+    #include once ".\DOS\RAY.BI"
     #define vector2 vec2
     #define vector3 vec3
     #define vector4 vec4
@@ -559,49 +559,70 @@ type SYSTEM_BUS_T
   declare def  getXYZ       ()
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
  'Ring 3 - Shadertoy
-  declare proc length6      (p  as vec2)                                                                         as float
-  declare proc length8      (p  as vec2)                                                                         as float
-  declare proc sdPlane      (p  as vec3)                                                                         as float
-  declare proc sdSphere     (p  as vec3 , s   as float)                                                          as float
-  declare proc sdBox        (p  as vec3 , b   as vec3)                                                           as float
-  declare proc sdEllipsoid  (p  as vec3 , r   as vec3)                                                           as float
-  declare proc sdRoundBox   (p  as vec3 , b   as vec3,  r                            as float)                   as float
-  declare proc udRoundBox   (p  as vec3 , b   as vec3 , r                            as float)                   as float
-  declare proc sdBoxFrame   (p  as vec3,  b   as vec3,  e                            as float)                   as float
-  declare proc sdTorus      (p  as vec3 , t   as vec2)                                                           as float
-  declare proc sdTorus82    (p  as vec3 , t   as vec2)                                                           as float
-  declare proc sdTorus88    (p  as vec3 , t   as vec2)                                                           as float
-  declare proc sdHexPrism   (p  as vec3 , h   as vec2)                                                           as float
-  declare proc sdCapsule    (p  as vec3 , a   as vec3 , b     as vec3 ,           r  as float)                   as float
-  declare proc sdTriPrism   (p  as vec3 , h   as vec2)                                                           as float
-  declare proc sdCylinder   (p  as vec3 , h   as vec2)                                                           as float
-  declare proc sdCylinder6  (p  as vec3 , h   as vec2)                                                           as float
-  declare proc sdCone       (p  as vec3 , c   as vec3)                                                           as float
-  declare proc _sdCone      (p  as vec3 , c   as vec3)                                                           as float
-  declare proc sdConeHQ     (p  as vec3 , c   as vec3)                                                           as float
-  declare proc sdConeSection(p  as vec3 , h   as float , r1      as float  ,  r2     as float)                   as float
-  declare proc sdWobbleCube (p  as vec3 , s   as float)                                                          as float
-  declare proc udTriangle   (p  as vec3 , a   as vec3 , b        as vec3 , c         as vec3)                    as float
-  declare proc udQuad       (p  as vec3 , a   as vec3 , b        as vec3 , c         as vec3 , d as vec3)        as float
-  declare proc opS          (d1 as float, d2  as float)                                                          as float
-  declare proc opU          (d1 as vec2 , d2  as vec2)                                                           as vec2
-  declare proc opI          (d1 as float, d2  as float)                                                          as float
-  declare proc opRep        (p  as vec3 , c   as vec3)                                                           as vec3
-  declare proc ExpSmin      (a  as float, b   as float   , k     as float=32)                                    as float
-  declare proc PolySmin     (a  as float, b   as float   , k     as float=0.1)                                   as float
-  declare proc PowSmin      (a  as float, b   as float   , k     as float=8)                                     as float
-  declare proc opTwist      (p  as vec3)                                                                         as vec3
-  declare proc map          (p  as vec3)                                                                         as vec2
+  declare proc length6      (p  as vec2)                                                                      as float
+  declare proc length8      (p  as vec2)                                                                      as float
+  declare proc sdPlane      (p  as vec3)                                                                      as float
+  declare proc sdSphere     (p  as vec3 , s   as float)                                                       as float
+  declare proc sdBox        (p  as vec3 , b   as vec3)                                                     as float
+  declare proc sdEllipsoid  (p  as vec3 , r   as vec3)                                                     as float
+  declare proc sdRoundBox   (p  as vec3 , b   as vec3,  r                      as float)                   as float
+  declare proc udRoundBox   (p  as vec3 , b   as vec3 , r                      as float)                   as float
+  declare proc sdBoxFrame   (p  as vec3 , b   as vec3,  e                      as float)                   as float
+  declare proc sdTorus      (p  as vec3 , t   as vec2)                                                     as float
+  declare proc sdCappedTorus(p  as vec3 , sc  as vec2,  ra    as float  ,   rb as float)                   as float
+  declare proc sdTorus82    (p  as vec3 , t   as vec2)                                                     as float
+  declare proc sdTorus88    (p  as vec3 , t   as vec2)                                                     as float
+  declare proc sdLink       (p  as vec3 , le  as float   , r1    as float   ,  r2 as float)                   as float
+  declare proc sdHexPrism   (p  as vec3 , h   as vec2)                                                     as float
+  declare proc sdHexPrism2  (p  as vec3 , h   as vec2 )                                                    as float
+  declare proc sdCapsule    (p  as vec3 , a   as vec3 , b     as vec3 ,  r  as float)                   as float
+  declare proc sdTriPrism   (p  as vec3 , h   as vec2)                                                     as float
+  declare proc sdTriPrism2  (p  as vec3 , h   as vec2)                                                     as float
+  declare proc sdCylinder   (p  as vec3 , h   as vec2)                                                     as float
+  declare proc sdCylinder6  (p  as vec3 , h   as vec2)                                                     as float
+  declare proc sdCone       (p  as vec3 , c   as vec3)                                                     as float
+  declare proc sdCone       (p  as vec3 , c   as vec2)                                                     as float
+  declare proc sdCone2      (p  as vec3 , c   as vec2 , h     as float )                                   as float
+  declare proc _sdCone      (p  as vec3 , c   as vec3)                                                     as float
+  declare proc sdConeHQ     (p  as vec3 , c   as vec3)                                                     as float
+  declare proc sdCappedCone (p  as vec3 , h   as float   , r1    as float  ,  r2  as float)                   as float
+  declare proc sdConeSection(p  as vec3 , h   as float   , r1    as float  ,  r2  as float)                   as float
+  declare proc sdWobbleCube (p  as vec3 , s   as float)                                                       as float
+  declare proc udTriangle   (p  as vec3 , a   as vec3 , b     as vec3 , c   as vec3)                 as float
+  declare proc udQuad       (p  as vec3 , a   as vec3 , b     as vec3 , c   as vec3 , d as vec3)  as float
+  declare proc opS          (d1 as float   , d2  as float)                                                       as float
+  declare proc opU          (d1 as vec2 , d2  as vec2)                                                     as vec2
+  declare proc opI          (d1 as float   , d2  as float)                                                       as float
+  declare proc opRep        (p  as vec3 , c   as vec3)                                                     as vec3
+  declare proc ExpSmin      (a  as float   , b   as float   , k     as float=32)                                 as float
+  declare proc PolySmin     (a  as float   , b   as float   , k     as float=0.1)                                as float
+  declare proc PowSmin      (a  as float   , b   as float   , k     as float=8)                                  as float
+  declare proc opTwist      (p  as vec3)                                                                      as vec3
+  declare proc map          (p  as vec3)                                                                      as vec2
   declare proc castRay      ()                                                                                   as vec2
   declare proc softshadow   ()                                                                                   as float
   declare proc calcNormal   ()                                                                                   as vec3
   declare proc calcAO       ()                                                                                   as float
   declare proc RENDER_GLSL  ()                                                                                   as vec3
   declare proc setCamera    ()                                                                                   as mat3
-  declare proc Spectrum     (x as float )                                                                        as vec3
+  declare proc Spectrum     (x as float)                                                                         as vec3
   declare proc SpectrumPoly (x as float)                                                                         as vec3
-  declare def  mainImage overload (fragColor as vec4 , fragCoord as const vec2)
-  declare def _mainImage          (fragColor as vec4 , fragCoord as const vec2)
+  declare proc haversineISH (x as float)                                                                         as float
+  declare proc rainbowISH   (x as single   , set as boolean = false )                                            as ulong
+  declare def  filter       (i as any ptr  , n as long)
+  declare proc sdPlane    overload (p as vec3, n as vec3, h as float )                                     as float
+  declare proc sdCylinder overload (p as vec3, c as vec3 )                                                 as float
+  declare proc sdCone     overload (p as vec3, c as vec2, h as float )                                     as float
+  declare proc map        overload (a as float  , b as float  , x as float  , c as float, d as float)            as float
+  declare def  mainImage  overload (fragColor as vec4 , fragCoord as const vec2)
+  declare def _mainImage           (fragColor as vec4 , fragCoord as const vec2)
+  declare proc sdVerticalCapsule   (p as vec3         , h as float       , r as float)                        as float
+  declare proc sdCappedCylinder    (p as vec3         , h as float       , r as float)                        as float
+  declare proc sdCappedCylinder overload (p as vec3, a as vec3, b as vec3, r as float)                  as float
+  declare proc sdRoundedCylinder   (p as vec3         , ra as float      , rb as float, h as float)           as float
+  declare proc sdCappedCone overload (p as vec3, a as vec3, b as vec3, ra as float, rb as float)        as float
+  declare proc sdSolidAngle        (p as vec3         , c as vec2     , ra as float)                       as float
+  declare proc sdCutSphere         (p as vec3         , r as float       , h  as float )                      as float
 #else
  'Ring 3 - Shadertoy
   declare proc length6      (p  as vector2)                                                                      as float
@@ -619,13 +640,18 @@ type SYSTEM_BUS_T
   declare proc sdTorus88    (p  as vector3 , t   as vector2)                                                     as float
   declare proc sdLink       (p  as vector3 , le  as float   , r1    as float   ,  r2 as float)                   as float
   declare proc sdHexPrism   (p  as vector3 , h   as vector2)                                                     as float
+  declare proc sdHexPrism2  (p  as vector3 , h   as vector2 )                                                    as float
   declare proc sdCapsule    (p  as vector3 , a   as vector3 , b     as vector3 ,  r  as float)                   as float
   declare proc sdTriPrism   (p  as vector3 , h   as vector2)                                                     as float
+  declare proc sdTriPrism2  (p  as vector3 , h   as vector2)                                                     as float
   declare proc sdCylinder   (p  as vector3 , h   as vector2)                                                     as float
   declare proc sdCylinder6  (p  as vector3 , h   as vector2)                                                     as float
   declare proc sdCone       (p  as vector3 , c   as vector3)                                                     as float
+  declare proc sdCone       (p  as vector3 , c   as vector2)                                                     as float
+  declare proc sdCone2      (p  as vector3 , c   as vector2 , h     as float )                                   as float
   declare proc _sdCone      (p  as vector3 , c   as vector3)                                                     as float
   declare proc sdConeHQ     (p  as vector3 , c   as vector3)                                                     as float
+  declare proc sdCappedCone (p  as vector3 , h   as float   , r1    as float  ,  r2  as float)                   as float
   declare proc sdConeSection(p  as vector3 , h   as float   , r1    as float  ,  r2  as float)                   as float
   declare proc sdWobbleCube (p  as vector3 , s   as float)                                                       as float
   declare proc udTriangle   (p  as vector3 , a   as vector3 , b     as vector3 , c   as vector3)                 as float
@@ -639,7 +665,10 @@ type SYSTEM_BUS_T
   declare proc PowSmin      (a  as float   , b   as float   , k     as float=8)                                  as float
   declare proc opTwist      (p  as vector3)                                                                      as vector3
   declare proc map          (p  as vector3)                                                                      as vector2
+  declare proc map2         (_pos as vector3)                                                                    as float
   declare proc castRay      ()                                                                                   as vector2
+  declare proc castRay2     (ro as vector3, rd as vector3)                                                       as float
+  declare proc sdGuy        (_pos as vector3)                                                                    as float
   declare proc softshadow   ()                                                                                   as float
   declare proc calcNormal   ()                                                                                   as vector3
   declare proc calcAO       ()                                                                                   as float
@@ -654,8 +683,25 @@ type SYSTEM_BUS_T
   declare proc sdCylinder overload (p as vector3, c as vector3 )                                                 as float
   declare proc sdCone     overload (p as vector3, c as vector2, h as float )                                     as float
   declare proc map        overload (a as float  , b as float  , x as float  , c as float, d as float)            as float
+
+  declare proc calcNormal overload (_pos as vector3) as vector3
+  
   declare def  mainImage  overload (fragColor as vector4 , fragCoord as const vector2)
   declare def _mainImage           (fragColor as vector4 , fragCoord as const vector2)
+  declare def  mainImage_hj        (fragColor as vector4 , fragCoord as const vector2)
+  declare def  mainImage_gs        (fragColor as vector4 , fragCoord as const vector2)
+  declare def  mainImage_gt        (fragColor as vector4 , fragCoord as const vector2)
+  
+  declare proc sdVerticalCapsule   (p as vector3         , h as float       , r as float)                        as float
+  declare proc sdCappedCylinder    (p as vector3         , h as float       , r as float)                        as float
+  declare proc sdCappedCylinder overload (p as vector3, a as vector3, b as vector3, r as float)                  as float
+  declare proc sdRoundedCylinder   (p as vector3         , ra as float      , rb as float, h as float)           as float
+  declare proc sdCappedCone overload (p as vector3, a as vector3, b as vector3, ra as float, rb as float)        as float
+  declare proc sdSolidAngle        (p  as vector3         , c  as vector2     , ra as float)                     as float
+  declare proc sdCutSphere         (p  as vector3         , r  as float       , h  as float)                     as float
+  declare proc sdCutHollowSphere   (p  as vector3         , r  as float       , h  as float   , t  as float)     as float
+  declare proc sdDeathStar         (p2 as vector3         , ra as float       , rb as float   , d  as float)     as float
+  declare proc sdRoundCone         (p  as vector3         , r1 as float,        r2 as float   , h  as float)     as float
 #endif
 
   declare def  EXEC_GLSL          ()
@@ -674,6 +720,220 @@ type SYSTEM_BUS_T
   declare FGAPI def    FGAPIENTRY glutInitDisplayMode    overload ( displayMode as uinteger)
   declare FGAPI def    FGAPIENTRY glutInitDisplayString  overload ( displayMode as const byte ptr )
 
+  ' Ring 0 - POV-Ray
+  declare proc POV_min             (x as DBL, y as DBL)           as DBL
+  declare proc POV_max             (x as DBL, y as DBL)           as DBL
+  declare proc POV_min3            (x as DBL, y as DBL, z as DBL) as DBL
+  declare proc POV_max3            (x as DBL, y as DBL, z as DBL) as DBL
+  declare proc POV_labs            (x as DBL)                     as long 
+  declare proc POV_fabs            (x as DBL)                     as DBL
+  
+  /' Stuff for bounding boxes. '/
+  declare def  Assign_BBox_Vect(d as DBL ptr, s as DBL ptr)
+  declare def  Make_BBox(BBox() as _BBOX,llx as _BBOX_VAL,lly as _BBOX_VAL,llz as _BBOX_VAL, _
+                                             lex as _BBOX_VAL,ley as _BBOX_VAL,lez as _BBOX_VAL)
+  declare def  Make_BBox_from_min_max(BBox()  as _BBOX, mins as _BBOX_VAL ptr, maxs as _BBOX_VAL ptr)
+  declare def  Make_min_max_from_BBox(mins as _BBOX_VAL ptr, maxs as _BBOX_VAL ptr, BBox() as _BBOX)
+  
+  declare def  Initialize_BBox_Code ()
+  declare def  Deinitialize_BBox_Code ()
+  declare def  Build_Bounding_Slabs (Root as _BBOX_TREE ptr ptr)
+  declare def  Destroy_Bounding_Slabs ()
+  declare def  Recompute_BBox (bbox as _BBOX ptr, _trans as _TRANSFORM ptr)
+  declare def  Recompute_Inverse_BBox (bbox as _BBOX ptr, _trans as _TRANSFORM ptr)
+  declare proc Intersect_BBox_Tree (Root as _BBOX_TREE ptr, ray as _RAY ptr, _
+                                    Best_Intersection as _INTERSECTION ptr, Best_Object as _OBJECT ptr ptr) as integer                                    
+  declare def  Check_And_Enqueue (Queue as _PRIORITY_QUEUE ptr, Node as _BBOX_TREE ptr, BBox as _BBOX ptr, _
+                                  rayinfo as _RAYINFO)
+  declare def  Priority_Queue_Delete (Queue as _PRIORITY_QUEUE ptr, key as DBL ptr, Node as _BBOX_TREE ptr ptr)
+  declare def  Build_BBox_Tree (Root as _BBOX_TREE ptr ptr, nFinites as long, Finite as _BBOX_TREE ptr ptr, _
+                                nInfinite as long, Infinite as _BBOX_TREE ptr ptr)
+  declare def  Destroy_BBox_Tree (Node as _BBOX_TREE ptr)
+  declare def  Create_Rayinfo (Ray as _RAY ptr, rayinfo as _RAYINFO ptr)
+
+  declare proc Create_Priority_Queue (QSize as uinteger) as _PRIORITY_QUEUE ptr
+  declare def  Destroy_Priority_Queue (Queue as _PRIORITY_QUEUE ptr)
+
+  /' Stuff for SNGL vectors. '/
+  declare def  Assign_SNGL_Vect(d as SNGL ptr,s as SNGL ptr)
+  
+    /' Scalar, vector, and color manipulation. '/
+  declare def  Destroy_Float(x as float)
+  declare def  Assign_Vector(d as _VECTOR ptr, s as _VECTOR ptr)
+  declare def  Destroy_Vector(x as _VECTOR ptr) 
+  declare def  Assign_UV_Vect(d as _UV_VECT ptr,s as _UV_VECT ptr)
+  declare def  Destroy_UV_Vect(x as _UV_VECT ptr) 
+  
+  /' Prototypes for machine specific functions defined in "computer".c (ibm.c amiga.c unix.c etc.)'/
+  declare def  display_finished ()
+  declare def  display_init  (w as integer, h as integer)
+  declare def  display_close ()
+  declare def  display_plot (x as integer, y as integer, r as ubyte, g as ubyte, b as ubyte, a as ubyte)
+  declare def  display_plot_rect (x1 as integer, x2 as integer, y1 as integer, y2 as integer, r as ubyte, _
+                                  g as ubyte, b as ubyte, a as ubyte)
+  
+  /' Prototypes for functions defined in mem.c '/
+  declare def  mem_init ()
+  declare def  mem_mark ()
+  declare def  mem_release (LogFile as integer)
+  declare def  mem_release_all (LogFile as integer)
+  declare proc pov_malloc  (size as ulongint, file as byte ptr, _line as integer, msg as byte ptr) as any ptr
+  declare proc pov_calloc  (nitems as ulongint, size as ulongint,  file as byte ptr, _line as integer, _
+                            msg as byte ptr) as any ptr
+  declare proc pov_realloc (_ptr as any ptr, size as ulongint, file as byte ptr, _line as integer, _
+                            msg as byte ptr) as any ptr
+  declare def  pov_free    (_ptr as any ptr, file as byte ptr, _line as integer)
+  declare proc pov_strdup  (s as byte ptr) as byte ptr
+  declare proc pov_memmove (dest as any ptr, src as any ptr, length as longint) as any ptr
+  
+  ' #define MEM_STATS
+  ' #if defined(MEM_STATS)
+  /' These are level 1 routines '/
+  declare proc mem_stats_current_mem_usage () as ulongint
+  declare proc mem_stats_largest_mem_usage () as ulongint
+  declare proc mem_stats_smallest_alloc () as ulongint
+  declare proc mem_stats_largest_alloc () as ulongint
+  
+  /' These are level 2 routines '/
+  #if defined(MEM_STATS) = 2
+  declare proc mem_stats_smallest_file () as byte ptr
+  declare proc mem_stats_smallest_line () as uinteger
+  declare proc mem_stats_largest_file () as byte ptr
+  declare proc mem_stats_largest_line () as uinteger
+  declare proc mem_stats_total_allocs () as ulongint
+  declare proc mem_stats_total_frees () as ulongint
+  #endif
+  ' #endif
+  
+  #if defined(MEM_RECLAIM)
+  declare def  add_node (node as MEMNODE ptr) static
+  declare def  remove_node (node as MEMNODE ptr) static
+  #endif
+  
+  #if defined(MEM_TAG)
+  declare proc mem_check_tag (node as MEMNODE) as integer static
+  #endif
+  
+  #if defined(MEM_STATS)
+  declare def  mem_stats_init ()
+  declare def  mem_stats_alloc (nbytes as ulongint, file as byte ptr, _line as integer)
+  declare def  mem_stats_free (nbytes as ulongint)
+  #endif
+  
+  /' Prototypes for functions defined in userio.c '/
+  declare proc Banner       CDECL (_format as byte ptr,...) as integer
+  declare proc Warning      CDECL (level as DBL, _format as byte ptr,...) as integer
+  declare proc Render_Info  CDECL (_format as byte ptr,...) as integer
+  declare proc Status_Info  CDECL (_format as byte ptr,...) as integer
+  declare proc Statistics   CDECL (_format as byte ptr,...) as integer
+  declare proc Error_Line   CDECL (_format as byte ptr,...) as integer
+  declare proc pov_Error    CDECL (_format as byte ptr,...) as integer
+  declare proc Debug_Info   CDECL (_format as byte ptr, ...) as integer
+
+  declare def  Terminate_POV CDECL (i as integer)
+  
+  /' Parser '/
+  declare def  Parse_Error        (Token_Id as _TOKEN) 
+  declare def  Parse_Error_Str    (_str as byte ptr)
+  declare def  Parse_Begin        ()
+  declare def  Parse_End          ()
+  declare def  Parse_Comma        ()
+  declare def  Parse_Semi_Colon   ()
+  declare def  Destroy_Frame      ()
+  declare def  Parse              ()
+  declare def  MAError            (_str as byte ptr, size as ulongint)
+  declare def  Warn_State         (Token_Id as _TOKEN, _Type as _TOKEN)
+  declare def  Warn               (Level as DBL, _str as byte ptr)
+  declare def  Only_In            (s1 as byte ptr,char as byte ptr)
+  declare def  Not_With           (s1 as byte ptr, s2 as byte ptr)
+  declare def  Warn_Compat        (f as integer)
+  declare def  Link_Textures      (Old_Texture as _TEXTURE ptr ptr, New_Texture as _TEXTURE ptr)
+
+  declare def  Parse_Object_Mods  (_Object as _OBJECT ptr)
+  declare proc Parse_Object       () as _OBJECT ptr
+  declare def  Parse_Default      ()
+  declare def  Parse_Declare      ()
+  declare def  Parse_Matrix       (Matrix as _MATRIX)
+  declare def  Destroy_Ident_Data (_Data as any ptr, _Type as integer)
+  declare proc Parse_RValue       (Previous as integer, NumberPtr as integer ptr, _DataPtr as any ptr ptr, ParFlag as integer, _
+                                   SemiFlag as integer) as integer
+  declare proc Get_Token_String   (Token_Id as _TOKEN) as byte ptr
+  declare def  Test_Redefine      (Previous as _TOKEN, NumberPtr as _TOKEN ptr, Data as any ptr)
+  
+  /' Camera '/
+  declare def  Translate_Camera (Cm as _CAMERA ptr, Vector as _VECTOR)
+  declare def  Rotate_Camera    (Cm as _CAMERA ptr, Vector as _VECTOR)
+  declare def  Scale_Camera     (Cm as _CAMERA ptr, Vector as _VECTOR)
+  declare def  Transform_Camera (Cm as _CAMERA ptr, _Trans as _TRANSFORM ptr)
+  declare proc Copy_Camera      (Old as _CAMERA ptr) as _CAMERA ptr
+  declare proc Create_Camera    () as _CAMERA ptr
+  declare def  Destroy_Camera   (Cm as _CAMERA ptr)
+
+  /' Media '/
+  declare def  Simulate_Media    (as _IMEDIA ptr ptr, as _RAY ptr, as _INTERSECTION ptr, as _COLOUR ptr , as integer )
+  
+  declare def  Init_Media        (as _IMEDIA ptr)
+
+  declare proc Create_Media      ()               as _IMEDIA ptr
+  declare proc Copy_Media        (as _IMEDIA ptr) as _IMEDIA ptr
+  declare def  Destroy_Media     (as _IMEDIA ptr)
+  declare def  Transform_Media   (IMedia as _IMEDIA ptr, _Trans as _TRANSFORM ptr)
+  declare def  Transform_Density (Density as _PIGMENT ptr, _Trans as _TRANSFORM ptr)
+  declare def  Post_Media        (as _IMEDIA ptr)
+  
+  declare def  Clip_Polygon (Points as _VECTOR ptr, PointCnt as integer ptr, VX1 as _VECTOR, VX2 as _VECTOR, VY1 as _VECTOR, _
+                             VY2 as _VECTOR, DX1 as DBL, DX2 as DBL, DY1 as DBL, DY2 as DBL)
+
+  declare def  Initialize_VLBuffer_Code ()
+  declare def  Reinitialize_VLBuffer_Code ()
+  declare def  Deinitialize_VLBuffer_Code ()
+
+  declare def  Destroy_Project_Tree (Node as _PROJECT_TREE_NODE)
+
+  /' Lighting '/
+  declare proc Create_Light_Source () as _LIGHT_SOURCE ptr
+  declare proc Attenuate_Light (Light_Source as _LIGHT_SOURCE ptr, Light_Source_Ray as _RAY ptr, Distance as DBL) as DBL
+  declare proc Create_Light_Grid (Size1 as integer, Size2 as integer) as _COLOUR ptr ptr
+
+  /' Render '/
+  declare def  Read_Rendered_Part           (New_Fname as ubyte ptr)
+  declare def  Start_Tracing_Mosaic_Smooth  (StartPixelSize as integer, EndPixelSize as integer)
+  declare def  Start_Tracing_Mosaic_Preview (StartPixelSize as integer, EndPixelSize as integer)
+  declare def  Start_Adaptive_Tracing       ()
+  declare def  Start_Non_Adaptive_Tracing   ()
+  declare def  Initialize_Renderer          ()
+  declare def  Terminate_Renderer           ()
+  declare proc Trace                        (Ray as _RAY ptr, Colour as _COLOUR, Weight as DBL) as DBL
+  declare def  Check_User_Abort             (Do_Stats as integer)
+  declare def  write_histogram              (filename as byte ptr)
+  declare def  destroy_histogram            ()
+
+  /' POV-ray main '/
+  #ifdef NOCMDLINE
+     #ifdef ALTMAIN
+        declare proc alt_pov_main () as MAIN_RETURN_TYPE
+     #else
+        declare proc pov_main () as MAIN_RETURN_TYPE
+     #endif
+  #else
+     #ifdef ALTMAIN
+         declare proc alt_pov_main (argc as integer, argv as byte ptr ptr) as MAIN_RETURN_TYPE
+     #else
+         declare proc pov_main (argc as integer, argv as byte ptr ptr) as MAIN_RETURN_TYPE
+     #endif
+  #endif
+
+  declare proc pov_stricmp (s1 as byte ptr, s2 as byte ptr) as integer
+  declare def  close_all ()
+  declare def  POV_Std_Split_Time (time_dif as DBL, hrs as ulong ptr, mins as ulong ptr, secs as DBL ptr)
+  declare proc Locate_File (filename as byte ptr, mode as byte ptr, ext1 as byte ptr, ext2 as byte ptr, buffer as byte ptr, _
+                            err_flag as integer) as FILE ptr
+
+  declare proc pov_shellout (_Type as _SHELLTYPE) as _SHELLRET
+  declare def  pre_init_povray ()
+
+  declare def  _POV_Split_Path (s as byte ptr, p as byte ptr, f as byte ptr)
+  
   ' Ring 3 - FreeBASIC
   
   ' 2D Graphics
@@ -684,7 +944,11 @@ type SYSTEM_BUS_T
   declare FBCALL def EVENT_UNLOCK  overload ()
   declare FBCALL def fb_GfxPset    overload (target as any ptr, fx as float, fy as float, color_data as uinteger, _
                                              flags as integer, ispreset as integer)
-
+  
+  ' VGA Emulation
+  declare proc fb_GfxIn(port as ushort) as integer
+  declare proc fb_GfxOut(port as ushort, value as ubyte) as integer
+  
   ' Ring 3 - QB64
   
   ' MEM_STATIC memory manager
@@ -706,7 +970,7 @@ type SYSTEM_BUS_T
   declare proc func_ubound         (array as ptrszint ptr, index as integer, num_indexes as integer) as ptrszint
   
   ' Generic File System (GFS)
-  ' TODO: implement fstream(C++), ofstream(C++), template(C++) and HANDLE(Windows API)
+  ' TODO: implement fstream(C++), ofstream(C++), template(C++)
  
   ' x86 Virtual MEM64 emulation
   ' Note: x86 CPU emulation is still experimental and is not available in QB64 yet.
@@ -743,6 +1007,35 @@ type SYSTEM_BUS_T
   declare proc func__resetbit (a1 as ulongint, b1 as integer) as ulongint
   declare proc func__togglebit(a1 as ulongint, b1 as integer) as ulongint
   
+  ' CSNG
+  declare proc func_csng_float(value as single) as float
+  declare proc func_csng_double(value as double) as double
+  
+  ' CDBL
+  declare proc func_cdbl_float(value as double) as double
+  
+  ' CINT
+  declare proc func_cint_double(value as double) as integer
+  declare proc func_cint_float(value as double) as longint
+  declare proc func_cint_long(value as integer) as short
+  declare proc func_cint_ulong(value as uinteger) as integer
+  declare proc func_cint_int64(value as longint) as short
+  declare proc func_cint_uint64(value as longint) as short
+  
+  ' CLNG
+  declare proc func_clng_double(value as double) as integer
+  declare proc func_clng_float(value as double) as longint
+  declare proc func_clng_ulong(value as uinteger) as integer
+  declare proc func_clng_int64(value as longint) as integer
+  declare proc func_clng_uint64(value as ulongint) as integer
+  
+  ' _ROUND (note: round performs no error checking)
+  declare proc func_round_double(value as double) as longint
+  declare proc func_round_float(value as double) as longint
+  
+  ' force ABS to return floating point numbers correctly
+  
+  
   ' Working with 32bit colors:
   declare proc func__rgb32(r as integer, g as integer, b as integer, a as integer) as uinteger
   declare proc func__rgb32(r as integer, g as integer, b as integer) as uinteger
@@ -757,10 +1050,18 @@ type SYSTEM_BUS_T
   'Ring 0 - kernel
   
   ' kernel mode libc
-  declare def  k_memset     (de as SYSTEM_TYPE, sz  as SYSTEM_TYPE, v  as SYSTEM_TYPE)
-  declare def  k_memcpy     (su as SYSTEM_TYPE, de  as SYSTEM_TYPE, sz as SYSTEM_TYPE)
-  declare proc k_min        (v1 as SYSTEM_TYPE, v2  as SYSTEM_TYPE)                                              as SYSTEM_TYPE
-
+  declare def  k_memset        (de  as SYSTEM_TYPE , sz   as SYSTEM_TYPE, v  as SYSTEM_TYPE)
+  declare def  k_memcpy        (su  as SYSTEM_TYPE , de   as SYSTEM_TYPE, sz as SYSTEM_TYPE)
+  declare proc k_min           (v1  as SYSTEM_TYPE , v2   as SYSTEM_TYPE)                                       as SYSTEM_TYPE
+  declare proc k_max           (v1  as SYSTEM_TYPE , v2   as SYSTEM_TYPE)                                       as SYSTEM_TYPE
+  declare proc k_strlen        (s   as ubyte ptr)                                                               as SYSTEM_TYPE
+  declare proc k_strtrim       (s   as ubyte ptr)                                                               as ubyte ptr
+  declare def  k_strrev        (s   as ubyte ptr)
+  declare proc k_strtoupper    (s   as ubyte ptr)                                                               as ubyte ptr
+  declare proc k_strtolower    (s   as ubyte ptr)                                                               as ubyte ptr
+  declare proc k_substring     (s   as ubyte ptr   ,index  as SYSTEM_TYPE, count as SYSTEM_TYPE)                as ubyte ptr
+  declare proc k_strendswith   (src as ubyte ptr   ,search as ubyte ptr)                                        as SYSTEM_TYPE
+  declare proc k_strlastindexof(s   as ubyte ptr   ,s2     as ubyte ptr)                                        as SYSTEM_TYPE
   #if 0
   const as SYSTEM_TYPE os_end     = &HFFFF '------|
   const as SYSTEM_TYPE os_base    = &HE000 '  8 K | KERNAL ROM or RAM (adr 0 bit1=0 RAM bit1=1 ROM
@@ -912,7 +1213,7 @@ type MULTI
  end union  	 
 end type
 
-dim shared as MULTI v,o
+static shared as MULTI v,o
    
 type OPCODE
   as ulongint    code
@@ -984,7 +1285,7 @@ type CPU6510
   as string StrAdrModes(12)
 end type
 
-type C64_T
+type C64_T extends mat4
   public:
   declare constructor
   declare destructor
@@ -1061,7 +1362,7 @@ L0A:
   poke ulongint,@i,peek(ubyte,@nibbles(&B0000))
 L0B:
  dprint("C64_T()")
-  dim as integer i,c
+  static as integer i,c
  
   ' end
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
@@ -1284,7 +1585,7 @@ end opr
 
 proc CPU6510.Tick(byval flg as SYSTEM_TYPE) as SYSTEM_TYPE
   var mov(Ticks,peek(ubyte,@nibbles(&B0000))),mov(msg,chr(peek(ubyte,@nibbles(&B0000))))
-  dim as MULTI v
+  static as MULTI v
   ' get next opcode from current programm counter
   mov(code,opcodes(mem->readubyte(PC)))
 
@@ -1513,7 +1814,7 @@ end proc
 proc CPU6510.ADR_INDX as SYSTEM_TYPE ' 1 byte ($XX,x)
   ' adr =(mem(pc )+x) and 255
   ' adr = mem(adr) + mem(adr+1)*256
-  dim as MULTI v
+  static as MULTI v
   mov(v.u16,logic_and((mem->ReadUByte(pc) add x), peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))))
   mov(v.u16,mem->ReadUShort(v.u16))
   mov(pc add,peek(ubyte,@nibbles(&B0001)))
@@ -1621,7 +1922,7 @@ def INS_BEQ(byval Cpu as CPU6510_T)
 end def
 
 def INS_BIT(byval Cpu as CPU6510_T)
-  dim as byte b
+  static as byte b
   b=Cpu->mem->Readbyte(Cpu->Code.op.u16)
   Cpu->F.n=iif(b and peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
   Cpu->F.v=iif(b and peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
@@ -1897,7 +2198,7 @@ def INS_RTS(byval Cpu as CPU6510_T)
 end def
 
 def INS_SBC(byval Cpu as CPU6510_T)
-  dim as MULTI b
+  static as MULTI b
   b.ulo=Cpu->mem->ReadUbyte(Cpu->Code.op.u16)
   v.u16=Cpu->A - b.ulo
   if Cpu->F.c=peek(ubyte,@nibbles(&B0000)) then v.s16-=peek(ubyte,@nibbles(&B0001))
@@ -2302,12 +2603,12 @@ enum C64_KEYS
 end enum
 
 
-dim shared as integer flag
+static shared as integer flag
 
 proc InterruptService(byval cpu as CPU6510 ptr) as integer
   static as string s
-  dim as integer key
-  dim as integer IRQTicks
+  static as integer key
+  static as integer IRQTicks
   ' return if any interrupt are active
   if cpu->F.i=peek(ubyte,@nibbles(&B0001)) then return peek(ubyte,@nibbles(&B0000))
   ' how many chars in key buffer
@@ -2328,7 +2629,7 @@ proc InterruptService(byval cpu as CPU6510 ptr) as integer
       if len(strKey) then
         key=freefile
         if open(strKey for binary access write as #key)=0 then
-          dim as ubyte   u8
+          static as ubyte   u8
           dim as integer nBytes=cpu->mem->ReadUShort(&H02D)
           nBytes-=2048
           put #key,,nBytes
@@ -2350,8 +2651,8 @@ proc InterruptService(byval cpu as CPU6510 ptr) as integer
       if len(strKey) then
         key=freefile
         if open(strKey for binary access read as #key)=0 then
-          dim as ubyte   u8
-          dim as integer nBytes
+          static as ubyte   u8
+          static as integer nBytes
           get #key,,nBytes
           for i as integer=0 to nBytes-1
             get #key,,u8
@@ -2407,11 +2708,11 @@ proc InterruptService(byval cpu as CPU6510 ptr) as integer
 end proc
 
 
-dim shared as ulongint ticks,res
+static shared as ulongint ticks,res
 
 def RasterLine(param as any ptr)
-	dim as vector2 fragCoord
-	dim as vector4 fragColor
+	static as vector2 fragCoord
+	static as vector4 fragColor
     dim as threadscan ptr scanparams = cast(threadscan ptr, param)
     for in range(mov(x as ulongint,0),scanparams->xend)
       	fragCoord.x = x

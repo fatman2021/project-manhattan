@@ -1370,11 +1370,331 @@ end destructor
 
 'Ring 3 - Shadertoy
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__) 
-#include once "C64RAY.BAS"
+#include once "./DOS/C64RAY.BAS"
 #else
 #include once "glslstyle.bas"
 #endif
 
+  ' Ring 0 - POV-Ray
+  
+  /' Get minimum/maximum of two values. '/
+  proc SYSTEM_BUS_T.POV_min(x as DBL, y as DBL) as DBL
+	 return (iif(((x)>(y)),(y),(x)))
+  end proc
+
+  proc SYSTEM_BUS_T.POV_max(x as DBL, y as DBL) as DBL
+     return (iif(((x)<(y)),(y),(x)))
+  end proc
+
+  /' Get minimum/maximum of three values. '/
+  proc SYSTEM_BUS_T.POV_min3(x as DBL, y as DBL, z as DBL) as DBL
+     return iif(x < y , iif(x < z , x , z) , iif(y < z , y , z))
+  end proc
+  
+  proc SYSTEM_BUS_T.POV_max3(x as DBL, y as DBL, z as DBL) as DBL
+     return iif(x > y , iif(x > z , x , z) , iif(y > z , y , z))
+  end proc
+  
+  /' Absolute value of the long integer x. '/
+  proc SYSTEM_BUS_T.POV_labs(x as DBL) as long 
+     return iif(((x)<0),-(x),(x))
+  end proc
+
+  /' Absolute value of the double x. '/
+  proc SYSTEM_BUS_T.POV_fabs(x as DBL)  as DBL
+     return iif((x) < 0.0 , -(x) , (x))
+  end proc
+  
+  /'
+ ' These functions do checking for memory allocation, and can also do other things.  
+ ' They aren't simply replacements for malloc, calloc, realloc, and free.
+ '/
+def SYSTEM_BUS_T.mem_init()
+#if defined(MEM_RECLAIM)
+  num_nodes = 0
+  poolno = 0
+  memlist = NULL
+#endif
+#if defined(MEM_STATS)
+  mem_stats_init()
+#endif
+  leak_msg = FALSE
+end def
+
+#if defined(MEM_TAG)
+/' **************************************************************************** '/
+/' * return TRUE if pointer is non-null and has a valid tag                   * '/
+proc SYSTEM_BUS_T.mem_check_tag(node  as MEMNODE ptr) as integer static
+  dim as integer isOK = FALSE
+
+  if (node <> NULL) then
+    if (node->tag = MEMTAG_VALUE) then
+      isOK = TRUE
+    end if
+  end if    
+  return isOK
+end proc
+#endif /' MEM_TAG '/
+
+/' **************************************************************************** '/
+proc SYSTEM_BUS_T.pov_malloc(size as ulongint, file as byte ptr, _line as integer, msg as byte ptr) as any ptr
+  dim as any ptr block
+  dim as ulongint totalsize
+' #if defined(MEM_HEADER)
+  dim as MEMNODE ptr node
+' #endif
+#if defined(MEM_HEADER)
+  if (size = 0) then
+    Error("Attempt to malloc zero size block (File: %s Line: %d).\n", file, _line)
+  end if
+#endif
+  totalsize=size+NODESIZE /' number of bytes allocated in OS '/
+  block = Allocate(totalsize)
+  if (block = NULL) then
+    ' Not implemented.
+    ' MAError(msg, size)
+  end if
+#if defined(MEM_HEADER)
+  node = cast((MEMNODE ptr), block)
+#endif
+#if defined(MEM_TAG)
+  node->tag = MEMTAG_VALUE
+#endif
+#if defined(MEM_TRACE) or defined(MEM_STATS)
+  node->size = totalsize
+#endif
+#if defined(MEM_TRACE)
+  node->file = file
+  node->line = _line
+#endif
+#if defined(MEM_RECLAIM)
+  add_node(node)
+#endif
+#if defined(MEM_STATS)
+  mem_stats_alloc(totalsize, file, _line)
+#endif
+  return block + NODESIZE
+end proc
+
+/' **************************************************************************** '/
+proc SYSTEM_BUS_T.pov_calloc(nitems as ulongint, size as ulongint, file as byte ptr, _line as integer, _
+                             msg as byte ptr) as any ptr
+  dim as any ptr block
+  dim as ulongint actsize
+  dim as ulongint totalsize /' number of bytes allocated in OS '/
+#if defined(MEM_HEADER)
+  dim as MEMNODE ptr node
+#endif
+  actsize=nitems*size
+  totalsize=actsize+NODESIZE
+#if defined(MEM_HEADER)
+  if (actsize = 0) yjrm
+    Error("Attempt to calloc zero size block (File: %s Line: %d).\n", file, _line)
+  end if
+#endif
+  block = MALLOC(totalsize)
+  if (block = NULL) then
+    ' Not implemented.
+    ' MAError(msg, actsize)
+  end if
+  memset(block, 0, totalsize)
+#if defined(MEM_HEADER)
+  node = cast((MEMNODE ptr), block)
+#endif
+#if defined(MEM_TAG)
+  node->tag = MEMTAG_VALUE
+#endif
+#if defined(MEM_TRACE) or defined(MEM_STATS)
+  node->size = totalsize
+#endif
+#if defined(MEM_TRACE)
+  node->file = file
+  node->line = _line
+#endif
+#if defined(MEM_RECLAIM)
+  add_node(node)
+#endif
+
+#if defined(MEM_STATS)
+  mem_stats_alloc(totalsize, file, line)
+#endif
+
+  return block + NODESIZE
+end proc
+
+/' **************************************************************************** '/
+/' * Level 1                                                                  * '/
+
+/' **************************************************************************** '/
+'proc SYSTEM_BUS_T.mem_stats_smallest_alloc() as ulongint
+'  return cast(ulongint,mem_stats.smallest_alloc)
+'end proc
+
+/' **************************************************************************** '/
+'proc SYSTEM_BUS_T.mem_stats_largest_alloc() as ulongint
+'  return cast(ulongint,mem_stats.largest_alloc)
+'end proc
+
+/' **************************************************************************** '/
+'proc SYSTEM_BUS_T.mem_stats_current_mem_usage() as ulongint
+'  return cast(ulongint,mem_stats.current_mem_usage)
+'end proc
+
+' **************************************************************************** '/
+'proc SYSTEM_BUS_T.mem_stats_largest_mem_usage() as ulongint
+'  return cast(ulongint,mem_stats.largest_mem_usage)
+'end proc
+
+/' **************************************************************************** '/
+/' * Level 2                                                                  * '/
+
+#if defined(MEM_STATS)=2
+
+/' **************************************************************************** '/
+proc SYSTEM_BUS_T.mem_stats_smallest_file() as byte ptr
+  return mem_stats.smallest_file
+end proc
+
+/' **************************************************************************** '/
+proc SYSTEM_BUS_T.mem_stats_smallest_line() as integer
+  return mem_stats.smallest_line
+end proc
+
+/' **************************************************************************** '/
+proc SYSTEM_BUS_T.mem_stats_largest_file() as byte ptr
+  return mem_stats.largest_file
+end proc
+
+/' **************************************************************************** '/
+proc SYSTEM_BUS_T.mem_stats_largest_line() as integer
+  return mem_stats.largest_line
+end proc
+
+' **************************************************************************** '/
+proc SYSTEM_BUS_T.mem_stats_total_allocs() as longint
+  return mem_stats.total_allocs
+end proc
+
+/' **************************************************************************** '/
+proc SYSTEM_BUS_T.mem_stats_total_frees() as longint
+  return mem_stats.total_frees
+end proc
+#endif
+
+/'
+ ' Functions which invoke external programs to do work for POV, generally
+ ' at the request of the user.
+ '/
+
+  
+  /' Stuff for bounding boxes. '/
+  def SYSTEM_BUS_T.Assign_BBox_Vect(d as DBL ptr, s as DBL ptr)
+     dim as SYSTEM_TYPE x = fun_pull() ' x = computer.cpU_mos6510->pull()
+     dim as SYSTEM_TYPE y = fun_pull() ' y = computer.cpU_mos6510->pull()
+     dim as SYSTEM_TYPE z = fun_pull() ' z = computer.cpU_mos6510->pull()
+     d[x] = s[x]: d[y] = s[y]: d[z] = s[z]
+  end def
+
+  def SYSTEM_BUS_T.Make_BBox(BBox() as _BBOX,llx as _BBOX_VAL,lly as _BBOX_VAL,llz as _BBOX_VAL, _
+                                                 lex as _BBOX_VAL,ley as _BBOX_VAL,lez as _BBOX_VAL)
+     dim as SYSTEM_TYPE x = fun_pull() ' x = computer.cpU_mos6510->pull()
+     dim as SYSTEM_TYPE y = fun_pull() ' y = computer.cpU_mos6510->pull()
+     dim as SYSTEM_TYPE z = fun_pull() ' z = computer.cpU_mos6510->pull()
+     BBox(x).Lower_Left   = (llx)
+     BBox(y).Lower_Left   = (lly)
+     BBox(z).Lower_Left   = (llz)
+     BBox(x).Lengths      = (lex)
+     BBox(y).Lengths      = (ley)
+     BBox(z).Lengths      = (lez)
+  end def
+  
+  def SYSTEM_BUS_T.Make_BBox_from_min_max(BBox() as _BBOX, mins as _BBOX_VAL ptr, maxs as _BBOX_VAL ptr)
+     dim as SYSTEM_TYPE x = fun_pull() ' x = computer.cpU_mos6510->pull()
+     dim as SYSTEM_TYPE y = fun_pull() ' y = computer.cpU_mos6510->pull()
+     dim as SYSTEM_TYPE z = fun_pull() ' z = computer.cpU_mos6510->pull()
+     BBox(x).Lower_Left = mins[x]
+     BBox(y).Lower_Left = mins[y]
+     BBox(z).Lower_Left = mins[z]
+     BBox(x).Lengths = (maxs[x]-mins[x])
+     BBox(y).Lengths = (maxs[y]-mins[y])
+     BBox(z).Lengths = (maxs[z]-mins[z])
+  end def
+  
+  def SYSTEM_BUS_T.Make_min_max_from_BBox(mins as _BBOX_VAL ptr, maxs as _BBOX_VAL ptr, BBox() as _BBOX)
+     dim as SYSTEM_TYPE x = fun_pull() ' x = computer.cpU_mos6510->pull()
+     dim as SYSTEM_TYPE y = fun_pull() ' y = computer.cpU_mos6510->pull()
+     dim as SYSTEM_TYPE z = fun_pull() ' z = computer.cpU_mos6510->pull()
+     mins[x] = BBox(x).Lower_Left
+     mins[y] = BBox(y).Lower_Left
+     mins[z] = BBox(z).Lower_Left
+     maxs[x] = mins[x] + BBox(x).Lengths
+     maxs[y] = mins[y] + BBox(y).Lengths
+     maxs[z] = mins[z] + BBox(z).Lengths
+  end def
+  
+  /' Stuff for SNGL vectors. '/
+  def SYSTEM_BUS_T.Assign_SNGL_Vect(d as SNGL ptr,s as SNGL ptr)
+     dim as SYSTEM_TYPE x = fun_pull() ' x = computer.cpU_mos6510->pull()
+     dim as SYSTEM_TYPE y = fun_pull() ' y = computer.cpU_mos6510->pull()
+     dim as SYSTEM_TYPE z = fun_pull() ' z = computer.cpU_mos6510->pull()  
+     d[x] = s[x]
+     d[y] = s[y]
+     d[z] = s[z]
+  end def
+  
+  /' Scalar, vector, and color manipulation. '/
+  def SYSTEM_BUS_T.Destroy_Float(x as float)    
+     ' if ((x) <> NULL) then POV_FREE(x)
+  end def   
+  
+  def SYSTEM_BUS_T.Assign_Vector(d as _VECTOR ptr, s as _VECTOR ptr)  
+     memcpy((d),(s),sizeof(_VECTOR))
+  end def   
+  
+  def SYSTEM_BUS_T.Destroy_Vector(x as _VECTOR ptr)   
+     ' if ((x) <> NULL) then POV_FREE(x)
+  end def
+  
+  def SYSTEM_BUS_T.Assign_UV_Vect(d as _UV_VECT ptr,s as _UV_VECT ptr) 
+     memcpy((d),(s),sizeof(_UV_VECT))
+  end def
+  
+  def SYSTEM_BUS_T.Destroy_UV_Vect(x as _UV_VECT ptr)  
+     ' if ((x) <> NULL) then POV_FREE(x)
+  end def   
+  /'
+#define Assign_Vector_4D(d,s) memcpy((d),(s),sizeof(VECTOR_4D))
+#define Destroy_Vector_4D(x)  if ((x) <> NULL) then POV_FREE(x)
+
+#define Assign_Colour(d,s)  memcpy((d),(s),sizeof(_COLOUR))
+#define Make_Colour(c,r,g,b) _
+_
+	(c)[_RED]   =(r) _
+	(c)[_GREEN] =(g) _
+	(c)[_BLUE]  =(b) _
+	(c)[_FILTER]=0.0 _
+	(c)[_TRANSM]=0.0
+	
+#define Make_ColourA(c,r,g,b,a,t) _
+_
+	(c)[_RED]=(r)    _
+	(c)[_GREEN]=(g)  _
+	(c)[_BLUE]=(b)   _
+	(c)[_FILTER]=(a) _
+	(c)[_TRANSM]=t
+	
+#define Make_Vector(v,a,b,c) _
+	(v)(X)=(a) _
+	(v)(Y)=(b) _
+	(v)(Z)=(c)
+	
+#define Destroy_Colour(x) if ((x)!=NULL) then POV_FREE(x)
+#define Make_RGB(c,r,g,b) _
+	(c)[RED]=(r)   _
+	(c)[GREEN]=(g) _
+	(c)[BLUE]=(b)
+
+'/  
   ' Ring 3 - FreeBASIC
   
   ' 2D Graphics
@@ -1386,12 +1706,113 @@ end destructor
      wend
     end def   
 
-    FBCALL def SYSTEM_BUS_T.DRIVER_UNLOCK()		
+    def FBCALL SYSTEM_BUS_T.DRIVER_UNLOCK()		
      while(0)
       ' fb_GfxUnlock(1, 0)
       screenunlock
      wend
     end def 
+    
+    static as integer idx = 0, shift = 2, color_data = 0
+/' 
+    proc SYSTEM_BUS_T.fb_GfxIn(port as ushort) as integer
+		static as integer value = -1
+
+		FB_GRAPHICS_LOCK( )
+
+		if (__fb_gfx) then
+		else
+			FB_GRAPHICS_UNLOCK( )
+			return -1
+		end if
+
+		select case (port) 
+			case 0x3C9:
+				if (__fb_gfx->depth > 8) then
+					return
+				end if		
+				value = (__fb_gfx->device_palette[idx] shr shift) & 0x3F
+				shift += 8
+				if (shift > 18) then
+					shift = 2
+					idx += 1
+					idx = idx and  (__fb_gfx->default_palette->colors - 1)
+				end if
+				return
+
+			case 0x3DA:
+				if (__fb_gfx->driver->wait_vsync) then
+					__fb_gfx->driver->wait_vsync()
+				end if		
+				value = 8
+				return
+		 end select
+
+		FB_GRAPHICS_UNLOCK( )
+		return value
+    end proc
+ '/
+ /'   
+    int fb_GfxOut(unsigned short port, unsigned char value)
+{
+	int i, r, g, b;
+
+	FB_GRAPHICS_LOCK( );
+
+	if ((!__fb_gfx) || (__fb_gfx->depth > 8)) {
+		FB_GRAPHICS_UNLOCK( );
+		return -1;
+	}
+
+	switch (port) {
+		case 0x3C7:
+		case 0x3C8:
+			idx = value & (__fb_gfx->default_palette->colors - 1);
+			shift = 2;
+			color = 0;
+			break;
+
+		case 0x3C9:
+			color |= ((value & 0x3F) << shift);
+			shift += 8;
+			if (shift > 18) {
+				if (__fb_gfx->default_palette == &__fb_palette[FB_PALETTE_256])
+					fb_GfxPalette(idx, (color >> 2) & 0x3F3F3F, -1, -1);
+				else {
+					DRIVER_LOCK();
+					r = color & 0xFF;
+					g = (color >> 8) & 0xFF;
+					b = (color >> 16) & 0xFF;
+					__fb_gfx->palette[idx] = color;
+					for (i = 0; i < (1 << __fb_gfx->depth); i++) {
+						if (__fb_gfx->color_association[i] == idx) {
+							__fb_gfx->device_palette[i] = color;
+							if (__fb_gfx->driver->set_palette)
+								__fb_gfx->driver->set_palette(i, r, g, b);
+						}
+					}
+					fb_hMemSet(__fb_gfx->dirty, TRUE, __fb_gfx->h);
+					DRIVER_UNLOCK();
+				}
+				shift = 2;
+				color = 0;
+				idx++;
+				idx &= (__fb_gfx->default_palette->colors - 1);
+			}
+			break;
+		
+		default:
+			FB_GRAPHICS_UNLOCK( );
+			return -1;
+	}
+
+
+'	FB_GRAPHICS_UNLOCK( );
+'	return 0;
+}
+'/  
+    
+    ' 2D Graphics
    
     ' #define SET_DIRTY(c,y,h)	{ if (__fb_gfx->framebuffer == (c)->line[0]) fb_hMemSet(__fb_gfx->dirty + (y), TRUE, (h)); }
     ' #define EVENT_LOCK()		{ fb_MutexLock(__fb_gfx->event_mutex); }
@@ -2958,116 +3379,136 @@ proc SYSTEM_BUS_T.func__readbit(a1 as ulongint, b1 as integer) as longint
     end if
 end proc
 
+' CSNG
+proc SYSTEM_BUS_T.func_csng_float(value as single) as float
+    if ((value <= 3.402823466E38) and (value >= -3.402823466E38)) then
+        return value
+    end if
+    error(6)
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_csng_double(value as double) as double
+    if ((value <= 3.402823466E38) and (value >= -3.402823466E38)) then
+        return value
+    end if
+    error(6)
+    return 0
+end proc
+
+' CDBL
+proc SYSTEM_BUS_T.func_cdbl_float(value as double) as double
+    if ((value <= 1.7976931348623157E308) and _
+        (value >= -1.7976931348623157E308)) then
+        return value
+    end if
+    error(6)
+    return 0
+end proc
+
+' CINT
+' func_cint_single uses func_cint_double
+proc SYSTEM_BUS_T.func_cint_double(value as double) as integer
+    if ((value < 32767.5) and (value >= -32768.5)) then
+        return qbr_double_to_long(value)
+    end if
+    error(6)
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_cint_float(value as float) as longint
+    if ((value < 32767.5) and (value >= -32768.5)) then
+        return qbr(value)
+    end if
+    error(6)
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_cint_long(value as integer) as short
+    if ((value >= -32768) and (value <= 32767)) then
+        return value
+    end if    
+    error(6)
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_cint_ulong(value as uinteger) as integer
+    if (value <= 32767) then
+        return value
+    end if    
+    error(6)
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_cint_int64(value as longint) as short
+    if ((value >= -32768) and (value <= 32767)) then
+        return value
+    end if    
+    error(6)
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_cint_uint64(value as longint) as short
+    if (value <= 32767) then
+        return value
+    end if    
+    error(6)
+    return 0
+end proc
+
+' CLNG
+' func_clng_single uses func_clng_double
+'-2147483648 to 2147483647
+proc SYSTEM_BUS_T.func_clng_double(value as double) as integer
+    if ((value < 2147483647.5) and (value >= -2147483648.5)) then
+        return qbr_double_to_long(value)
+    end if
+    error(6)
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_clng_float(value as double) as longint
+    if ((value < 2147483647.5) and (value >= -2147483648.5)) then
+        return qbr(value)
+    end if
+    error(6)
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_clng_ulong(value as uinteger) as integer
+    if (value <= 2147483647) then
+        return value
+    end if
+    error(6)
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_clng_int64(value as longint) as integer
+    if ((value >= -2147483648) and (value <= 2147483647)) then
+        return value
+    end if    
+    error(6)
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_clng_uint64(value as ulongint) as integer
+    if (value <= 2147483647) then
+        return value
+    end if    
+    error(6)
+    return 0
+end proc
+
+' _ROUND (note: round performs no error checking)
+proc SYSTEM_BUS_T.func_round_double(value as double) as longint
+  return qbr(value)
+end proc
+
+proc SYSTEM_BUS_T.func_round_float(value as double) as longint 
+  return qbr(value)
+end proc  
 /'
-// CSNG
-inline double func_csng_float(long double value) {
-    if ((value <= 3.402823466E38) && (value >= -3.402823466E38)) {
-        return value;
-    }
-    error(6);
-    return 0;
-}
-
-inline double func_csng_double(double value) {
-    if ((value <= 3.402823466E38) && (value >= -3.402823466E38)) {
-        return value;
-    }
-    error(6);
-    return 0;
-}
-
-// CDBL
-inline double func_cdbl_float(long double value) {
-    if ((value <= 1.7976931348623157E308) &&
-        (value >= -1.7976931348623157E308)) {
-        return value;
-    }
-    error(6);
-    return 0;
-}
-
-// CINT
-// func_cint_single uses func_cint_double
-inline int32 func_cint_double(double value) {
-    if ((value < 32767.5) && (value >= -32768.5)) {
-        return qbr_double_to_long(value);
-    }
-    error(6);
-    return 0;
-}
-inline int64 func_cint_float(long double value) {
-    if ((value < 32767.5) && (value >= -32768.5)) {
-        return qbr(value);
-    }
-    error(6);
-    return 0;
-}
-inline int16 func_cint_long(int32 value) {
-    if ((value >= -32768) && (value <= 32767))
-        return value;
-    error(6);
-    return 0;
-}
-inline int16 func_cint_ulong(uint32 value) {
-    if (value <= 32767)
-        return value;
-    error(6);
-    return 0;
-}
-inline int16 func_cint_int64(int64 value) {
-    if ((value >= -32768) && (value <= 32767))
-        return value;
-    error(6);
-    return 0;
-}
-inline int16 func_cint_uint64(uint64 value) {
-    if (value <= 32767)
-        return value;
-    error(6);
-    return 0;
-}
-
-// CLNG
-// func_clng_single uses func_clng_double
-//-2147483648 to 2147483647
-inline int32 func_clng_double(double value) {
-    if ((value < 2147483647.5) && (value >= -2147483648.5)) {
-        return qbr_double_to_long(value);
-    }
-    error(6);
-    return 0;
-}
-inline int64 func_clng_float(long double value) {
-    if ((value < 2147483647.5) && (value >= -2147483648.5)) {
-        return qbr(value);
-    }
-    error(6);
-    return 0;
-}
-inline int32 func_clng_ulong(uint32 value) {
-    if (value <= 2147483647)
-        return value;
-    error(6);
-    return 0;
-}
-inline int32 func_clng_int64(int64 value) {
-    if ((value >= -2147483648) && (value <= 2147483647))
-        return value;
-    error(6);
-    return 0;
-}
-inline int32 func_clng_uint64(uint64 value) {
-    if (value <= 2147483647)
-        return value;
-    error(6);
-    return 0;
-}
-
-//_ROUND (note: round performs no error checking)
-inline int64 func_round_double(long double value) { return qbr(value); }
-inline int64 func_round_float(long double value) { return qbr(value); }
-
-// force abs to return floating point numbers correctly
+' force ABS to return floating point numbers correctly
 inline double func_abs(double d) { return fabs(d); }
 inline long double func_abs(long double d) { return fabs(d); }
 inline float func_abs(float d) { return fabs(d); }
@@ -3080,8 +3521,6 @@ inline int8 func_abs(int8 d) { return abs(d); }
 inline int16 func_abs(int16 d) { return abs(d); }
 inline int32 func_abs(int32 d) { return abs(d); }
 inline int64 func_abs(int64 d) { return llabs(d); }
-
-extern int32 disableEvents;
 
 ptrszint check_lbound(ptrszint *array, int32 index, int32 num_indexes) {
     static ptrszint ret;
@@ -3216,6 +3655,141 @@ proc SYSTEM_BUS_T.k_min(v1 as SYSTEM_TYPE,v2 as SYSTEM_TYPE) as SYSTEM_TYPE
     if (v1<v2) then return v1
     return v2
 end proc
+
+proc SYSTEM_BUS_T.k_max(v1 as SYSTEM_TYPE,v2 as SYSTEM_TYPE) as SYSTEM_TYPE
+    if (v1>v2) then return v1
+    return v2
+end proc
+
+proc SYSTEM_BUS_T.k_strlen(s as ubyte ptr) as SYSTEM_TYPE
+    dim retval as SYSTEM_TYPE
+    retval=0
+    while s[retval]<>0
+        retval+=1
+    wend
+    return retval
+end proc
+
+proc SYSTEM_BUS_T.k_strtrim(s as ubyte ptr) as ubyte ptr
+    dim retval  as ubyte ptr=@(Result(0))
+    retval[0]=0
+    dim i as integer=0
+    dim j as integer=0
+    while (s[i]<>0 and s[i]=32 and s[i]<>9 and s[i]<>10 and s[i]<>13)
+        i+=1
+    wend
+    while(s[i]<>0)
+        retval[j]=s[i]
+        i+=1
+        j+=1
+    wend
+    retval[j]=0
+    
+    k_strrev(retval)
+    
+    i=0
+    j=0
+    while (retval[i]<>0 and retval[i]=32 and retval[i]=9 and retval[i]=10 and retval[i]=13)
+        i+=1
+    wend
+    while(retval[i]<>0)
+        retval[j]=retval[i]
+        i+=1
+        j+=1
+    wend
+    retval[j]=0
+   k_strrev(retval)
+    
+    return retval
+end proc
+
+proc SYSTEM_BUS_T.k_strtoupper(s as ubyte ptr) as ubyte ptr
+    dim i as SYSTEM_TYPE
+    dim dst as ubyte ptr=@(Result(0))
+    i=0
+    while s[i]<>0 and i<1022
+        if (s[i]>=97 and s[i]<=122) then
+            dst[i]=s[i]-32
+        else
+            dst[i]=s[i]
+        end if
+        i+=1
+    wend
+    dst[i]=0
+    return dst
+end proc
+
+proc SYSTEM_BUS_T.k_strtolower(s as ubyte ptr) as ubyte ptr
+    dim i as SYSTEM_TYPE
+    dim dst as ubyte ptr=@(Result(0))
+    i=0
+    while s[i]<>0 and i<1022
+        if (s[i]>=65 and s[i]<=90) then
+            dst[i]=s[i]+32
+        else
+            dst[i]=s[i]
+        end if
+        i+=1
+    wend
+    dst[i]=0
+    return dst
+end proc
+
+proc SYSTEM_BUS_T.k_substring(s as ubyte ptr,index as SYSTEM_TYPE, count as SYSTEM_TYPE) as ubyte ptr
+    dim i as SYSTEM_TYPE
+    dim dst as ubyte ptr=@(Result(0))
+    dim l as SYSTEM_TYPE=k_strlen(s)
+    i=0
+    while s[i+index]<>0 and i+index<1022 and i+index<l  and (i<count or count=-1)
+        dst[i]=s[i+index]
+        i+=1
+    wend
+    dst[i]=0
+    return dst
+end proc
+
+proc SYSTEM_BUS_T.k_strlastindexof(s as ubyte ptr,s2 as ubyte ptr) as SYSTEM_TYPE
+    var l1=k_strlen(s)
+    var l2=k_strlen(s2)
+    dim i as SYSTEM_TYPE
+    dim j as SYSTEM_TYPE
+    var ok=0
+    for i=l1-l2 to 0 step -1
+        if s[i]=s2[0] then
+            ok=1
+            for j=0 to l2-1
+                if s[i+j]<>s2[j] then 
+                    ok=0
+                    exit for
+                end if
+            next j
+            if ok<>0 then return i
+        end if
+    next i
+    return -1
+end proc
+
+proc SYSTEM_BUS_T.k_strendswith(src as ubyte ptr,search as ubyte ptr) as SYSTEM_TYPE
+    if (k_strlastindexof(src,search) = k_strlen(src)-k_strlen(search)) then
+        return 1
+    else
+        return 0
+    end if
+end proc
+
+def SYSTEM_BUS_T.k_strrev(s as ubyte ptr)
+    
+    dim l as integer=k_strlen(s)
+    dim i as integer
+    dim tmp as ubyte
+    dim tmp2 as ubyte
+    for i=0 to (l/2)-1
+        tmp=s[i]
+        tmp2=s[l-i-1]
+        s[i] = tmp2
+        s[l-i-1]=tmp
+    next i
+end def
 
 'Ring 3 - c64dvd
 proc SYSTEM_BUS_T.screencode (byval code as SYSTEM_TYPE) as SYSTEM_TYPE
@@ -5027,8 +5601,24 @@ L2086:
   '       << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) \
   '       << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll \
   '       << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
-  '                          fg_color=$C0C9(49353)                                                                                                          alpha=$C005(49157)                                                                                                                                          red=$C002(49154)                                                                                                                     green=$C003(49155)                                                                                           blue=$C003(49156)                	     
-	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100))))
+  '                          fg_color=$C0C9(49353)
+     poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
+	                     add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
+	                     add peek(ubyte,@nibbles(&B1001))), _
+	                    _ '                      alpha=$C005(49157)
+	                     peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100))    shl  peek(ubyte,@nibbles(&B1100))  _
+	                                         add peek(ubyte,@nibbles(&B0101))))  shl (peek(ubyte,@nibbles(&B0001))  _
+	                                         shl peek(ubyte,@nibbles(&B0100))    add  peek(ubyte,@nibbles(&B1000))) _
+	                   _ '                       red=$C002(49154)
+	                 add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100))    shl  peek(ubyte,@nibbles(&B1100)) _
+	                                         add peek(ubyte,@nibbles(&B0010))))  shl (peek(ubyte,@nibbles(&B0001)) _
+	                                         shl peek(ubyte,@nibbles(&B0100)))   _
+	                   _ '                       green=$C003(49155)
+	                 add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100))    shl  peek(ubyte,@nibbles(&B1100))  _
+	                                         add peek(ubyte,@nibbles(&B0011))))  shl  peek(ubyte,@nibbles(&B1000))  _
+	                   _ '                       blue=$C003(49156)                	      
+	                 add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100))    shl  peek(ubyte,@nibbles(&B1100))  _
+	                                         add peek(ubyte,@nibbles(&B0100))))
   ' }
   ' goto label$3124;
   ' label$3131:;
@@ -5541,7 +6131,7 @@ L2086:
 	   case peek(ubyte,@nibbles(&B0111)) ' 007
 	    mov(filename,"tmp.f77"):   mov(compiler,"gfortran -std=legacy ")     ' GNU FORTRAN 77
 	   case peek(ubyte,@nibbles(&B1000)) ' 008
-	    mov(filename,"tmp.pas"):   mov(compiler,"fpc ")                      ' GNU PASCAL
+	    mov(filename,"tmp.pas"):   mov(compiler,"fpc ")                      ' FreeBASIC
 	   case peek(ubyte,@nibbles(&B1001)) ' 009
 	    mov(filename,"tmp.osl"):   mov(compiler,"")                          ' Open Shading Language
 	   case peek(ubyte,@nibbles(&B1010)) ' 010

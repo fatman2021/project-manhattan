@@ -8,787 +8,90 @@
 
 #include once "crt.bi"
 
-#define _WINDEF_
-#define _MINWINDEF_
-#define BASETYPES
+type IO_FILE
+  as integer flags       /' High-order word is _IO_MAGIC; rest is flags. '/
+#define IO_file_flags flags
 
-type PULONG as ULONG ptr
-type PUSHORT as USHORT ptr
-type UCHAR as ubyte
-type PUCHAR as UCHAR ptr
-type PSZ as zstring ptr
+  /' The following pointers correspond to the C++ streambuf protocol. '/
+  /' Note:  Tk uses the _IO_read_ptr and _IO_read_end fields directly. '/
+  as byte ptr IO_read_ptr     /' Current read pointer '/
+  as byte ptr IO_read_end     /' End of get area. '/
+  as byte ptr IO_read_base    /' Start of putback+get area. '/
+  as byte ptr IO_write_base   /' Start of put area. '/
+  as byte ptr IO_write_ptr    /' Current put pointer. '/
+  as byte ptr IO_write_end    /' End of put area. '/
+  as byte ptr IO_buf_base     /' Start of reserve area. '/
+  as byte ptr IO_buf_end      /' End of reserve area. '/
+  /' The following fields are used to support backing up and undo. '/
+  as byte ptr IO_save_base    /' Pointer to start of non-current get area. '/
+  as byte ptr IO_backup_base  /' Pointer to first valid character of backup area '/
+  as byte ptr IO_save_end     /' Pointer to end of non-current get area. '/
 
-#ifndef MAX_PATH
-const MAX_PATH = 260
-#endif
-#ifndef NULL
-	const NULL = 0
-#endif
-#ifndef FALSE
-	const FALSE = 0
-#endif
-#ifndef CTRUE
-	const CTRUE = 1
-#endif
-#ifndef TRUE
-	const TRUE = 1
-#endif
-#define _DEF_WINBOOL_
+  ' error 14: Expected identifier, found 'IO_marker' in 'type as IO_marker ptr markers'
+  ' type as IO_marker ptr markers
 
-type WINBOOL as long
-type BOOL as long
-type PBOOL as WINBOOL ptr
-type LPBOOL as WINBOOL ptr
-type WORD as ushort
-type DWORD as ulong
-type PFLOAT as FLOAT ptr
-type PBYTE as UBYTE ptr
-type LPBYTE as UBYTE ptr
-type PINT as long ptr
-type LPINT as long ptr
-type PWORD as WORD ptr
-type LPWORD as WORD ptr
-type LPLONG as long ptr
-type PDWORD as DWORD ptr
-type LPDWORD as DWORD ptr
-type LPVOID as any ptr
-#define _LPCVOID_DEFINED
-type LPCVOID as const any ptr
-type INT_ as long
-type UINT as ulong
-type PUINT as ulong ptr
-type WPARAM as UINT_PTR
-type LPARAM as LONG_PTR
-type LRESULT as LONG_PTR
+  ' error 3: Expected End-of-Line, found '_chain' in 'type as IO_FILE ptr _chain'
+  ' type as IO_FILE ptr _chain
 
-#define MAKEWORD(a, b) cast(WORD, cast(UBYTE, cast(DWORD_PTR, (a)) and &hff) or (cast(WORD, cast(UBYTE, cast(DWORD_PTR, (b)) and &hff)) shl 8))
-#define MAKELONG(a, b) cast(LONG, cast(WORD, cast(DWORD_PTR, (a)) and &hffff) or (cast(DWORD, cast(WORD, cast(DWORD_PTR, (b)) and &hffff)) shl 16))
-
-type SPHANDLE as HANDLE ptr
-type LPHANDLE as HANDLE ptr
-type HGLOBAL as HANDLE
-type HLOCAL as HANDLE
-type GLOBALHANDLE as HANDLE
-type LOCALHANDLE as HANDLE
-
-#ifdef __FB_64BIT__
-	type POINTER_64_INT as ulongint
+  as integer fileno
+#if 0
+  as integer blksize
 #else
-	type POINTER_64_INT as ulong
+  as integer flags2
 #endif
+  ' error 14: Expected identifier, found 'IO_off_t' in 'as IO_off_t _old_offset /' 
+  ' This used to be _offset but it's too small.  '/'
+  ' as IO_off_t _old_offset /' This used to be _offset but it's too small.  '/
 
-#define POINTER_32
-#define POINTER_64
-#define FIRMWARE_PTR
-#define POINTER_SIGNED
-#define POINTER_UNSIGNED
-#define SPOINTER_32 POINTER_SIGNED
-#define UPOINTER_32 POINTER_UNSIGNED
+#define __HAVE_COLUMN /' temporary '/
+  /' 1+column number of pbase(); 0 is unknown. '/
+  as ushort cur_column
+  as byte   vtable_offset
+  as byte   shortbuf(1)
 
-type INT8 as byte
-type PINT8 as byte ptr
-type INT16 as short
-type PINT16 as short ptr
-type INT32 as long
-type PINT32 as long ptr
-type INT64 as longint
-type PINT64 as longint ptr
-type UINT8 as ubyte
-type PUINT8 as ubyte ptr
-type UINT16 as ushort
-type PUINT16 as ushort ptr
-type UINT32 as ulong
-type PUINT32 as ulong ptr
-type UINT64 as ulongint
-type PUINT64 as ulongint ptr
-type LONG32 as long
-type PLONG32 as long ptr
-type ULONG32 as ulong
-type PULONG32 as ulong ptr
-type DWORD32 as ulong
-type PDWORD32 as ulong ptr
+  /'  char* _save_gptr;  char* _save_egptr; '/
+  ' error 14: Expected identifier, found 'IO_lock_t' in 'as IO_lock_t ptr _lock'
+  ' as IO_lock_t ptr _lock
+#ifdef IO_USE_OLD_IO_FILE
+end type
 
-#ifdef __FB_64BIT__
-	type INT_PTR as longint
-	type PINT_PTR as longint ptr
-	type UINT_PTR as ulongint
-	type PUINT_PTR as ulongint ptr
-	type LONG_PTR as longint
-	type PLONG_PTR as longint ptr
-	type ULONG_PTR as ulongint
-	type PULONG_PTR as ulongint ptr
-	type __int3264 as longint
-	const ADDRESS_TAG_BIT = &h40000000000ull
-	type SHANDLE_PTR as longint
-	type HANDLE_PTR as ulongint
-	type UHALF_PTR as ulong
-	type PUHALF_PTR as ulong ptr
-	type HALF_PTR as long
-	type PHALF_PTR as long ptr
-
-	#define HandleToULong(h) culng(cast(ULONG_PTR, (h)))
-	#define HandleToLong(h) clng(cast(LONG_PTR, (h)))
-	#define ULongToHandle(h) cptr(any ptr, cast(UINT_PTR, (h)))
-	#define LongToHandle(h) cptr(any ptr, cast(INT_PTR, (h)))
-	#define PtrToUlong(p) culng(cast(ULONG_PTR, (p)))
-	#define PtrToUint(p) culng(cast(UINT_PTR, (p)))
-	#define PtrToUshort(p) cushort(culng(cast(ULONG_PTR, (p))))
-	#define PtrToLong(p) clng(cast(LONG_PTR, (p)))
-	#define PtrToInt(p) clng(cast(INT_PTR, (p)))
-	#define PtrToShort(p) cshort(clng(cast(LONG_PTR, (p))))
-	#define IntToPtr(i) cptr(any ptr, cast(INT_PTR, (i)))
-	#define UIntToPtr(ui) cptr(any ptr, cast(UINT_PTR, (ui)))
-	#define LongToPtr(l) cptr(any ptr, cast(LONG_PTR, (l)))
-	#define ULongToPtr(ul) cptr(any ptr, cast(ULONG_PTR, (ul)))
-	#define PtrToPtr64(p) cptr(any ptr, p)
-	#define Ptr64ToPtr(p) cptr(any ptr, p)
-	#define HandleToHandle64(h) PtrToPtr64(h)
-	#define Handle64ToHandle(h) Ptr64ToPtr(h)
-	#define Ptr32ToPtr(p) cptr(any ptr, cast(ULONG_PTR, culng(cast(ULONG_PTR, (p)))))
-	#define Handle32ToHandle(h) cptr(any ptr, cast(LONG_PTR, clng(cast(ULONG_PTR, (h)))))
-	#define PtrToPtr32(p) cptr(any ptr, cast(ULONG_PTR, culng(cast(ULONG_PTR, (p)))))
-#else
-	type INT_PTR as long
-	type PINT_PTR as long ptr
-	type UINT_PTR as ulong
-	type PUINT_PTR as ulong ptr
-	type LONG_PTR as long
-	type PLONG_PTR as long ptr
-	type ULONG_PTR as ulong
-	type PULONG_PTR as ulong ptr
-	type __int3264 as long
-	const ADDRESS_TAG_BIT = &h80000000u
-	type UHALF_PTR as ushort
-	type PUHALF_PTR as ushort ptr
-	type HALF_PTR as short
-	type PHALF_PTR as short ptr
-	type SHANDLE_PTR as long
-	type HANDLE_PTR as ulong
-
-	#define HandleToULong(h) cast(ULONG, cast(ULONG_PTR, (h)))
-	#define HandleToLong(h) cast(LONG, cast(LONG_PTR, (h)))
-	#define ULongToHandle(ul) cast(HANDLE, cast(ULONG_PTR, (ul)))
-	#define LongToHandle(h) cast(HANDLE, cast(LONG_PTR, (h)))
-	#define PtrToUlong(p) cast(ULONG, cast(ULONG_PTR, (p)))
-	#define PtrToLong(p) cast(LONG, cast(LONG_PTR, (p)))
-	#define PtrToUint(p) cast(UINT, cast(UINT_PTR, (p)))
-	#define PtrToInt(p) cast(INT_, cast(INT_PTR, (p)))
-	#define PtrToUshort(p) cushort(cast(ULONG_PTR, (p)))
-	#define PtrToShort(p) cshort(cast(LONG_PTR, (p)))
-	#define IntToPtr(i) cptr(VOID ptr, cast(INT_PTR, clng(i)))
-	#define UIntToPtr(ui) cptr(VOID ptr, cast(UINT_PTR, culng(ui)))
-	#define LongToPtr(l) cptr(VOID ptr, cast(LONG_PTR, clng(l)))
-	#define ULongToPtr(ul) cptr(VOID ptr, cast(ULONG_PTR, culng(ul)))
-	#define PtrToPtr64(p) cptr(any ptr, cast(ULONG_PTR, (p)))
-	#define Ptr64ToPtr(p) cptr(any ptr, cast(ULONG_PTR, (p)))
-	#define HandleToHandle64(h) cptr(any ptr, cast(LONG_PTR, (h)))
-	#define Handle64ToHandle(h) cptr(any ptr, cast(ULONG_PTR, (h)))
-	#define Ptr32ToPtr(p) cptr(any ptr, p)
-	#define Handle32ToHandle(h) Ptr32ToPtr(h)
-	#define PtrToPtr32(p) cptr(any ptr, p)
+type IO_FILE_complete
+  type IO_FILE file;
 #endif
+' error 6: Expected '(', found 'G_IO_IO_FILE_VERSION' in '#if defined G_IO_IO_FILE_VERSION 
+' and G_IO_IO_FILE_VERSION = &H20001'
+' #if defined G_IO_IO_FILE_VERSION and G_IO_IO_FILE_VERSION = &H20001
 
-#define HandleToHandle32(h) PtrToPtr32(h)
-const MAXUINT_PTR = not cast(UINT_PTR, 0)
-const MAXINT_PTR = cast(INT_PTR, MAXUINT_PTR shr 1)
-const MININT_PTR = not MAXINT_PTR
-const MAXULONG_PTR = not cast(ULONG_PTR, 0)
-const MAXLONG_PTR = cast(LONG_PTR, MAXULONG_PTR shr 1)
-const MINLONG_PTR = not MAXLONG_PTR
-const MAXUHALF_PTR = cast(UHALF_PTR, not 0)
-const MAXHALF_PTR = cast(HALF_PTR, MAXUHALF_PTR shr 1)
-const MINHALF_PTR = not MAXHALF_PTR
+' error 14: Expected identifier, found 'IO_off64_t' in 'as IO_off64_t offset'
+' as IO_off64_t offset
 
-type SIZE_T_ as ULONG_PTR
-type PSIZE_T as ULONG_PTR ptr
-type SSIZE_T_ as LONG_PTR
-type PSSIZE_T as LONG_PTR ptr
-
-
-const MAXUINT8 = cast(UINT8, not cast(UINT8, 0))
-const MAXINT8 = cast(INT8, MAXUINT8 shr 1)
-const MININT8 = cast(INT8, not MAXINT8)
-#define MAXUINT16 cast(UINT16, not cast(UINT16, 0))
-#define MAXINT16 cast(INT16, MAXUINT16 shr 1)
-#define MININT16 cast(INT16, not MAXINT16)
-const MAXUINT32 = cast(UINT32, not cast(UINT32, 0))
-const MAXINT32 = cast(INT32, MAXUINT32 shr 1)
-const MININT32 = cast(INT32, not MAXINT32)
-const MAXUINT64 = cast(UINT64, not cast(UINT64, 0))
-const MAXINT64 = cast(INT64, MAXUINT64 shr 1)
-const MININT64 = cast(INT64, not MAXINT64)
-const MAXULONG32 = cast(ULONG32, not cast(ULONG32, 0))
-const MAXLONG32 = cast(LONG32, MAXULONG32 shr 1)
-const MINLONG32 = cast(LONG32, not MAXLONG32)
-#define MAXULONG64 cast(ULONG64, not cast(ULONG64, 0))
-#define MAXLONG64 cast(LONG64, MAXULONG64 shr 1)
-#define MINLONG64 cast(LONG64, not MAXLONG64)
-#define MAXULONGLONG cast(ULONGLONG, not cast(ULONGLONG, 0))
-#define MINLONGLONG cast(LONGLONG, not MAXLONGLONG)
-const MAXSIZE_T = cast(SIZE_T_, not cast(SIZE_T_, 0))
-const MAXSSIZE_T = cast(SSIZE_T_, MAXSIZE_T shr 1)
-const MINSSIZE_T = cast(SSIZE_T_, not MAXSSIZE_T)
-const MAXUINT = cast(UINT, not cast(UINT, 0))
-#define MAXINT cast(INT_, MAXUINT shr 1)
-#define MININT cast(INT_, not MAXINT)
-const MAXDWORD32 = cast(DWORD32, not cast(DWORD32, 0))
-#define MAXDWORD64 cast(DWORD64, not cast(DWORD64, 0))
-
-type DWORD_PTR as ULONG_PTR
-type PDWORD_PTR as ULONG_PTR ptr
-type LONG64 as longint
-type PLONG64 as longint ptr
-type ULONG64 as ulongint
-type PULONG64 as ulongint ptr
-type DWORD64 as ulongint
-type PDWORD64 as ulongint ptr
-type KAFFINITY as ULONG_PTR
-type PKAFFINITY as KAFFINITY ptr
-
-
-type ATOM as WORD
-type HFILE as long
-
-type HINSTANCE__
-	unused as long
+' error 6: Expected '(', found 'LIBC' in '#if defined LIBC or defined GLIBCPP_USE_WCHAR_T'
+' #if defined LIBC or defined GLIBCPP_USE_WCHAR_T
+  /' Wide character stream stuff.  '/
+' type as IO_codecvt ptr codecvt
+' type as IO_wide_data ptr wide_data
+' type as IO_FILE ptr freeres_list
+'  as any ptr freeres_buf
+'  as size_t _freeres_size
+' #else
+'  as any ptr pad1
+'  as any ptr pad2
+'  as any ptr pad3
+'  as any ptr pad4
+'  as size_t pad5
+' #endif
+  as integer mode
+  /' Make sure we don't get into trouble again.  '/
+  
+  ' error 3: Expected End-of-Line, found '[' in 'as byte unused2[15 * sizeof (integer) - 
+  ' 4 * sizeof (any ptr) - sizeof (size_t)]'
+  ' as byte unused2[15 * sizeof (integer) - 4 * sizeof (any ptr) - sizeof (size_t)]
+' #endif
 end type
 
-type HINSTANCE as HINSTANCE__ ptr
+#include once "povray.bi"
 
-type HKEY__
-	unused as long
-end type
-
-type HKEY as HKEY__ ptr
-type PHKEY as HKEY ptr
-
-type HKL__
-	unused as long
-end type
-
-type HKL as HKL__ ptr
-
-type HLSURF__
-	unused as long
-end type
-
-type HLSURF as HLSURF__ ptr
-
-type HMETAFILE__
-	unused as long
-end type
-
-type HMETAFILE as HMETAFILE__ ptr
-type HMODULE as HINSTANCE
-
-type HRGN__
-	unused as long
-end type
-
-type HRGN as HRGN__ ptr
-
-type HRSRC__
-	unused as long
-end type
-
-type HRSRC as HRSRC__ ptr
-
-type HSPRITE__
-	unused as long
-end type
-
-type HSPRITE as HSPRITE__ ptr
-
-type HSTR__
-	unused as long
-end type
-
-type HSTR as HSTR__ ptr
-
-type HTASK__
-	unused as long
-end type
-
-type HTASK as HTASK__ ptr
-
-type HWINSTA__
-	unused as long
-end type
-
-type HWINSTA as HWINSTA__ ptr
-
-type _FILETIME
-	dwLowDateTime as DWORD
-	dwHighDateTime as DWORD
-end type
-
-type FILETIME as _FILETIME
-type PFILETIME as _FILETIME ptr
-type LPFILETIME as _FILETIME ptr
-#define _FILETIME_
-
-type HWND__
-	unused as long
-end type
-
-type HWND as HWND__ ptr
-
-type HHOOK__
-	unused as long
-end type
-
-type HHOOK as HHOOK__ ptr
-type HGDIOBJ as any ptr
-
-type HACCEL__
-	unused as long
-end type
-
-type HACCEL as HACCEL__ ptr
-
-type HBITMAP__
-	unused as long
-end type
-
-type HBITMAP as HBITMAP__ ptr
-
-type HBRUSH__
-	unused as long
-end type
-
-type HBRUSH as HBRUSH__ ptr
-
-type HCOLORSPACE__
-	unused as long
-end type
-
-type HCOLORSPACE as HCOLORSPACE__ ptr
-
-type HDC__
-	unused as long
-end type
-
-type HDC as HDC__ ptr
-
-type HGLRC__
-	unused as long
-end type
-
-type HGLRC as HGLRC__ ptr
-
-type HDESK__
-	unused as long
-end type
-
-type HDESK as HDESK__ ptr
-
-type HENHMETAFILE__
-	unused as long
-end type
-
-type HENHMETAFILE as HENHMETAFILE__ ptr
-
-type HFONT__
-	unused as long
-end type
-
-type HFONT as HFONT__ ptr
-
-type HICON__
-	unused as long
-end type
-
-type HICON as HICON__ ptr
-
-type HMENU__
-	unused as long
-end type
-
-type HMENU as HMENU__ ptr
-
-type HPALETTE__
-	unused as long
-end type
-
-type HPALETTE as HPALETTE__ ptr
-
-type HPEN__
-	unused as long
-end type
-
-type HPEN as HPEN__ ptr
-
-type HMONITOR__
-	unused as long
-end type
-
-type HMONITOR as HMONITOR__ ptr
-
-type HWINEVENTHOOK__
-	unused as long
-end type
-
-type HWINEVENTHOOK as HWINEVENTHOOK__ ptr
-type HCURSOR as HICON
-type COLORREF as DWORD
-
-type HUMPD__
-	unused as long
-end type
-
-type HUMPD as HUMPD__ ptr
-type LPCOLORREF as DWORD ptr
-const HFILE_ERROR = cast(HFILE, -1)
-
-type tagRECT
-	left as LONG
-	top as LONG
-	right as LONG
-	bottom as LONG
-end type
-
-type RECT as tagRECT
-type PRECT as tagRECT ptr
-type NPRECT as tagRECT ptr
-type LPRECT as tagRECT ptr
-type LPCRECT as const RECT ptr
-
-type _RECTL
-	left as LONG
-	top as LONG
-	right as LONG
-	bottom as LONG
-end type
-
-type RECTL as _RECTL
-type PRECTL as _RECTL ptr
-type LPRECTL as _RECTL ptr
-type LPCRECTL as const RECTL ptr
-
-type tagPOINT
-	x as LONG
-	y as LONG
-end type
-
-type POINT as tagPOINT
-type PPOINT as tagPOINT ptr
-type NPPOINT as tagPOINT ptr
-type LPPOINT as tagPOINT ptr
-
-type _POINTL
-	x as LONG
-	y as LONG
-end type
-
-type POINTL as _POINTL
-type PPOINTL as _POINTL ptr
-
-type tagSIZE
-	cx as LONG
-	cy as LONG
-end type
-
-type SIZE as tagSIZE
-type PSIZE as tagSIZE ptr
-type LPSIZE as tagSIZE ptr
-type SIZEL as SIZE
-type PSIZEL as SIZE ptr
-type LPSIZEL as SIZE ptr
-
-type tagPOINTS
-	x as SHORT
-	y as SHORT
-end type
-
-type POINTS as tagPOINTS
-type PPOINTS as tagPOINTS ptr
-type LPPOINTS as tagPOINTS ptr
-
-const DM_UPDATE = 1
-const DM_COPY = 2
-const DM_PROMPT = 4
-const DM_MODIFY = 8
-#define DM_IN_BUFFER DM_MODIFY
-#define DM_IN_PROMPT DM_PROMPT
-#define DM_OUT_BUFFER DM_COPY
-#define DM_OUT_DEFAULT DM_UPDATE
-const DC_FIELDS = 1
-const DC_PAPERS = 2
-const DC_PAPERSIZE = 3
-const DC_MINEXTENT = 4
-const DC_MAXEXTENT = 5
-const DC_BINS = 6
-const DC_DUPLEX = 7
-const DC_SIZE = 8
-const DC_EXTRA = 9
-const DC_VERSION = 10
-const DC_DRIVER = 11
-const DC_BINNAMES = 12
-const DC_ENUMRESOLUTIONS = 13
-const DC_FILEDEPENDENCIES = 14
-const DC_TRUETYPE = 15
-const DC_PAPERNAMES = 16
-const DC_ORIENTATION = 17
-const DC_COPIES = 18
-
-const WINAPI_PARTITION_DESKTOP = &h1
-const WINAPI_PARTITION_APP = &h2
-const WINAPI_FAMILY_APP = WINAPI_PARTITION_APP
-const WINAPI_FAMILY_DESKTOP_APP = WINAPI_PARTITION_DESKTOP or WINAPI_PARTITION_APP
-const WINAPI_FAMILY = WINAPI_FAMILY_DESKTOP_APP
-#define WINAPI_FAMILY_PARTITION(v) ((WINAPI_FAMILY and v) = v)
-#define WINAPI_FAMILY_ONE_PARTITION(vset, v) ((WINAPI_FAMILY and vset) = v)
-
-const ANYSIZE_ARRAY = 1
-#define RESTRICTED_POINTER
-
-#ifdef __FB_64BIT__
-	#define ALIGNMENT_MACHINE
-	#define MAX_NATURAL_ALIGNMENT sizeof(ULONGLONG)
-	const MEMORY_ALLOCATION_ALIGNMENT = 16
-#else
-	#undef ALIGNMENT_MACHINE
-	#define MAX_NATURAL_ALIGNMENT sizeof(DWORD)
-	const MEMORY_ALLOCATION_ALIGNMENT = 8
-#endif
-
-const SYSTEM_CACHE_ALIGNMENT_SIZE = 64
-const PRAGMA_DEPRECATED_DDK = 0
-type PVOID as any ptr
-type PVOID64 as any ptr
-type VOID as any
-type CHAR as byte
-type INT_ as long
-#define __WCHAR_DEFINED
-type WCHAR as wchar_t
-type PWCHAR as WCHAR ptr
-type LPWCH as WCHAR ptr
-type PWCH as WCHAR ptr
-type LPCWCH as const WCHAR ptr
-type PCWCH as const WCHAR ptr
-type NWPSTR as wstring ptr
-type LPWSTR as wstring ptr
-type PWSTR as wstring ptr
-type PZPWSTR as PWSTR ptr
-type PCZPWSTR as const PWSTR ptr
-type LPUWSTR as wstring ptr
-type PUWSTR as wstring ptr
-type LPCWSTR as const wstring ptr
-type PCWSTR as const wstring ptr
-type PZPCWSTR as PCWSTR ptr
-type LPCUWSTR as const wstring ptr
-type PCUWSTR as const wstring ptr
-type PZZWSTR as wstring ptr
-type PCZZWSTR as const wstring ptr
-type PUZZWSTR as wstring ptr
-type PCUZZWSTR as const wstring ptr
-type PNZWCH as WCHAR ptr
-type PCNZWCH as const WCHAR ptr
-type PUNZWCH as WCHAR ptr
-type PCUNZWCH as const WCHAR ptr
-
-
-type LPCWCHAR as const WCHAR ptr
-type PCWCHAR as const WCHAR ptr
-type LPCUWCHAR as const WCHAR ptr
-type PCUWCHAR as const WCHAR ptr
-type UCSCHAR as ulong
-
-const UCSCHAR_INVALID_CHARACTER = &hffffffff
-const MIN_UCSCHAR = 0
-const MAX_UCSCHAR = &h0010ffff
-
-type PUCSCHAR as UCSCHAR ptr
-type PCUCSCHAR as const UCSCHAR ptr
-type PUCSSTR as UCSCHAR ptr
-type PUUCSSTR as UCSCHAR ptr
-type PCUCSSTR as const UCSCHAR ptr
-type PCUUCSSTR as const UCSCHAR ptr
-type PUUCSCHAR as UCSCHAR ptr
-type PCUUCSCHAR as const UCSCHAR ptr
-
-
-type PCHAR as CHAR ptr
-type LPCH as CHAR ptr
-type PCH as CHAR ptr
-type LPCCH as const CHAR ptr
-type PCCH as const CHAR ptr
-type NPSTR as zstring ptr
-type LPSTR as zstring ptr
-type PSTR as zstring ptr
-type PZPSTR as PSTR ptr
-type PCZPSTR as const PSTR ptr
-type LPCSTR as const zstring ptr
-type PCSTR as const zstring ptr
-type PZPCSTR as PCSTR ptr
-type PZZSTR as zstring ptr
-type PCZZSTR as const zstring ptr
-type PNZCH as CHAR ptr
-type PCNZCH as const CHAR ptr
-#define _TCHAR_DEFINED
-
-#ifdef UNICODE
-	type TCHAR as WCHAR
-	type PTCHAR as WCHAR ptr
-	type TBYTE as WCHAR
-	type PTBYTE as WCHAR ptr
-	type LPTCH as LPWSTR
-	type PTCH as LPWSTR
-	type PTSTR as LPWSTR
-	type LPTSTR as LPWSTR
-	type PCTSTR as LPCWSTR
-	type LPCTSTR as LPCWSTR
-	type PUTSTR as LPUWSTR
-	type LPUTSTR as LPUWSTR
-	type PCUTSTR as LPCUWSTR
-	type LPCUTSTR as LPCUWSTR
-	type LP as LPWSTR
-	type PZZTSTR as PZZWSTR
-	type PCZZTSTR as PCZZWSTR
-	type PUZZTSTR as PUZZWSTR
-	type PCUZZTSTR as PCUZZWSTR
-	type PZPTSTR as PZPWSTR
-	type PNZTCH as PNZWCH
-	type PCNZTCH as PCNZWCH
-	type PUNZTCH as PUNZWCH
-	type PCUNZTCH as PCUNZWCH
-	#define __TEXT(quote) wstr(quote)
-#else
-	type TCHAR as byte
-	type PTCHAR as byte ptr
-	type TBYTE as ubyte
-	type PTBYTE as ubyte ptr
-	type LPTCH as LPSTR
-	type PTCH as LPSTR
-	type LPCTCH as LPCCH
-	type PCTCH as LPCCH
-	type PTSTR as LPSTR
-	type LPTSTR as LPSTR
-	type PUTSTR as LPSTR
-	type LPUTSTR as LPSTR
-	type PCTSTR as LPCSTR
-	type LPCTSTR as LPCSTR
-	type PCUTSTR as LPCSTR
-	type LPCUTSTR as LPCSTR
-	type PZZTSTR as PZZSTR
-	type PUZZTSTR as PZZSTR
-	type PCZZTSTR as PCZZSTR
-	type PCUZZTSTR as PCZZSTR
-	type PZPTSTR as PZPSTR
-	type PNZTCH as PNZCH
-	type PUNZTCH as PNZCH
-	type PCNZTCH as PCNZCH
-	type PCUNZTCH as PCNZCH
-	#define __TEXT(quote) quote
-#endif
-
-type PSHORT as SHORT ptr
-type PLONG as LONG ptr
-#define ___GROUP_AFFINITY_DEFINED
-
-type _GROUP_AFFINITY
-	Mask as KAFFINITY
-	Group as WORD
-	Reserved(0 to 2) as WORD
-end type
-
-type GROUP_AFFINITY as _GROUP_AFFINITY
-type PGROUP_AFFINITY as _GROUP_AFFINITY ptr
-type HANDLE as any ptr
-type PHANDLE as HANDLE ptr
-type FCHAR as UBYTE
-type FSHORT as WORD
-type FLONG as DWORD
-#define _HRESULT_DEFINED
-type HRESULT as LONG
-type CCHAR as zstring
-#define _LCID_DEFINED
-type LCID as DWORD
-type PLCID as PDWORD
-#define _LANGID_DEFINED
-type LANGID as WORD
-#define __COMPARTMENT_ID_DEFINED__
-
-type COMPARTMENT_ID as long
-enum
-	UNSPECIFIED_COMPARTMENT_ID = 0
-	DEFAULT_COMPARTMENT_ID
-end enum
-
-type PCOMPARTMENT_ID as COMPARTMENT_ID ptr
-const APPLICATION_ERROR_MASK = &h20000000
-const ERROR_SEVERITY_SUCCESS = &h00000000
-const ERROR_SEVERITY_INFORMATIONAL = &h40000000
-const ERROR_SEVERITY_WARNING = &h80000000
-const ERROR_SEVERITY_ERROR = &hC0000000
-
-type _FLOAT128
-	LowPart as longint
-	HighPart as longint
-end type
-
-type FLOAT128 as _FLOAT128
-type PFLOAT128 as FLOAT128 ptr
-#define _ULONGLONG_
-type LONGLONG as longint
-type ULONGLONG as ulongint
-const MAXLONGLONG = &h7fffffffffffffffll
-type PLONGLONG as LONGLONG ptr
-type PULONGLONG as ULONGLONG ptr
-type USN as LONGLONG
-#define _LARGE_INTEGER_DEFINED
-
-type _LARGE_INTEGER_u
-	LowPart as DWORD
-	HighPart as LONG
-end type
-
-union _LARGE_INTEGER
-	type
-		LowPart as DWORD
-		HighPart as LONG
-	end type
-
-	u as _LARGE_INTEGER_u
-	QuadPart as LONGLONG
-end union
-
-type LARGE_INTEGER as _LARGE_INTEGER
-type PLARGE_INTEGER as LARGE_INTEGER ptr
-
-type _ULARGE_INTEGER_u
-	LowPart as DWORD
-	HighPart as DWORD
-end type
-
-union _ULARGE_INTEGER
-	type
-		LowPart as DWORD
-		HighPart as DWORD
-	end type
-
-	u as _ULARGE_INTEGER_u
-	QuadPart as ULONGLONG
-end union
-
-type ULARGE_INTEGER as _ULARGE_INTEGER
-type PULARGE_INTEGER as ULARGE_INTEGER ptr
-
-type _LUID
-	LowPart as DWORD
-	HighPart as LONG
-end type
-
-type LUID as _LUID
-type PLUID as _LUID ptr
-#define _DWORDLONG_
-type DWORDLONG as ULONGLONG
-type PDWORDLONG as DWORDLONG ptr
-#define Int32x32To64(a, b) (cast(LONGLONG, cast(LONG, (a))) * cast(LONGLONG, cast(LONG, (b))))
-#define UInt32x32To64(a, b) (cast(ULONGLONG, culng(a)) * cast(ULONGLONG, culng(b)))
-#define Int64ShllMod32(a, b) (cast(ULONGLONG, (a)) shl (b))
-#define Int64ShraMod32(a, b) (cast(LONGLONG, (a)) shr (b))
-#define Int64ShrlMod32(a, b) (cast(ULONGLONG, (a)) shr (b))
+#include once "win32.bi"
 
 #define ptrszint  longint
 #define uptrszint ulongint
@@ -837,15 +140,15 @@ type FBGFX_PUTTER as sub _
 	)
 
 type FB_GFXCTX
-	dim id as long
-	dim work_page as long
+	static id as long
+	static work_page as long
 	dim line as ubyte ptr ptr
-	dim max_h as long
-	dim target_bpp as long
-	dim target_pitch as long
-	dim last_target as any ptr
-	dim last_x as single
-	dim last_y as single
+	static max_h as long
+	static target_bpp as long
+	static target_pitch as long
+	static last_target as any ptr
+	static last_x as single
+	static last_y as single
 	union
 		type
 			dim view_x as long
@@ -864,33 +167,33 @@ type FB_GFXCTX
 		end type
 		dim old_view(0 to 3) as long
 	end union
-	dim win_x as single
-	dim win_y as single
-	dim win_w as single
-	dim win_h as single
-	dim fg_color as ulong
-	dim bg_color as ulong
-	dim put_pixel as sub _
+	static win_x as single
+	static win_y as single
+	static win_w as single
+	static win_h as single
+	static fg_color as ulong
+	static bg_color as ulong
+	static put_pixel as sub _
 		( _
 			byval ctx as FB_GFXCTX ptr, _
 			byval x as long, _
 			byval y as long, _
 			byval clr as ulong _
 		)
-	dim get_pixel as function _
+	static get_pixel as function _
 		( _
 			byval ctx as FB_GFXCTX ptr, _
 			byval x as long, _
 			byval y as long _
 		) as ulong
-	dim pixel_set as function _
+	static pixel_set as function _
 		( _
 			byval dst as any ptr, _
 			byval clr as long, _
 			byval size as integer _
 		) as any ptr
-	dim putter(0 to PUT_MODES-1) as FBGFX_PUTTER ptr
-	dim flags as long
+	static putter(0 to PUT_MODES-1) as FBGFX_PUTTER ptr
+	static flags as long
 end type
 
 #define FB_WCHAR byte
@@ -2381,3 +1684,5 @@ dim shared as integer full_screen_set = -1 ' 0(windowed),1(stretched/closest),2(
 
 dim shared as integer vertical_retrace_in_progress = 0
 dim shared as integer vertical_retrace_happened = 0
+
+dim shared as integer disableEvents
