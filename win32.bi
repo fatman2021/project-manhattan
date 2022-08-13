@@ -208,7 +208,8 @@ type as WORD                ATOM
 ' type as uinteger            ULONG32
 type as ulongint            DWORD64
 type as uint64_t            ULONG64
-type as integer             INT32
+' error 4: Duplicated definition
+' type as integer             INT32
 type as int64_t             INT64
 type as uint64_t            DWORDLONG
 
@@ -1064,12 +1065,1185 @@ const ERROR_SEVERITY_WARNING = &h80000000
 const ERROR_SEVERITY_ERROR = &hC0000000
 
 type _FLOAT128
-	LowPart as longint
-	HighPart as longint
+    declare constructor
+    declare constructor(px   as _FLOAT128)
+    declare constructor(px   as _FLOAT128, py as _FLOAT128)
+    declare constructor(px   as _FLOAT128, py as _FLOAT128, pz as _FLOAT128)
+    declare constructor(px   as _FLOAT128, py as _FLOAT128, pz as _FLOAT128, pw as _FLOAT128)
+    declare constructor(pxyz as float)    
+    declare constructor(pxyz as float    , pw as float=1)
+    declare constructor(px   as float    , py as float    , pz as float    , pw as float=1)
+    declare constructor(v1   as _FLOAT128, pz as float    , pw as float)
+    declare constructor(v3   as _FLOAT128, pw as float=1)
+    declare constructor(px   as float    , v3 as _FLOAT128)
+    
+    declare constructor(p1 as single  , p2 as single)
+    declare constructor(p1 as uint64  , p2 as uint64, p3 as uint64)
+
+    declare operator let(pxyzw as float)
+    declare operator let(p as single)
+    declare operator let(p as uint64)
+    declare operator let(p as _FLOAT128)
+    
+    declare operator cast as string
+    declare operator cast as uint64
+    
+    declare operator +=(v as single)
+    declare operator -=(v as single)
+    declare operator *=(v as single)
+    declare operator /=(v as single)
+
+    declare operator +=(v as float)
+    declare operator -=(v as float)
+    declare operator *=(v as float)
+    declare operator /=(v as float)
+  
+    declare operator +=(v as uint64)
+    declare operator -=(v as uint64)
+    declare operator *=(v as uint64)
+    declare operator /=(v as uint64)
+  
+    declare operator +=(v4 as _FLOAT128)
+    declare operator -=(v4 as _FLOAT128)
+    declare operator *=(v4 as _FLOAT128)
+    declare operator /=(v4 as _FLOAT128)
+
+    declare function xx as _FLOAT128
+    declare function xy as _FLOAT128
+  
+    declare function xz as _FLOAT128 
+    declare function yx as _FLOAT128
+    declare function yy as _FLOAT128
+    declare function yz as _FLOAT128
+  
+    declare function zx as _FLOAT128
+    declare function zy as _FLOAT128
+    declare function zz as _FLOAT128
+
+    declare function xxx as _FLOAT128
+    declare function xxy as _FLOAT128
+    declare function xxz as _FLOAT128
+    declare function xyx as _FLOAT128
+    declare function xyy as _FLOAT128
+    declare function xyz as _FLOAT128
+    declare function xzx as _FLOAT128
+    declare function xzy as _FLOAT128
+    declare function xzz as _FLOAT128
+  
+    declare function yxx as _FLOAT128
+    declare function yxy as _FLOAT128
+    declare function yxz as _FLOAT128
+    declare function yyx as _FLOAT128
+    declare function yyy as _FLOAT128
+    declare function yyz as _FLOAT128
+    declare function yzx as _FLOAT128
+    declare function yzy as _FLOAT128
+    declare function yzz as _FLOAT128
+  
+    declare function zxx as _FLOAT128
+    declare function zxy as _FLOAT128
+    declare function zxz as _FLOAT128
+    declare function zyx as _FLOAT128
+    declare function zyy as _FLOAT128
+    declare function zyz as _FLOAT128
+    declare function zzx as _FLOAT128
+    declare function zzy as _FLOAT128
+    declare function zzz as _FLOAT128
+
+    declare function rgb  as _FLOAT128
+    declare function rgba as _FLOAT128
+    'Common letters used by vectortors    
+    union
+	   as int64 LowPart
+	   type
+        union : as float x,r,s : end union
+        union : as float y,g,t : end union	   
+	   end type
+	   as int64 HighPart
+	   type
+        union : as float z,b,p : end union
+        union : as float w,a,q : end union	   
+	   end type
+	end union     
 end type
+
+constructor _FLOAT128
+    w=1
+end constructor
+constructor _FLOAT128(pxyz as float, pw as float)
+    x=pxyz: y=pxyz : z=pxyz : w=pw
+end constructor
+constructor _FLOAT128(px as float, py as float, pz as float, pw as float)
+    x=px : y=py : z=pz : w=pw
+end constructor
+constructor _FLOAT128(v1 as _FLOAT128, pz as float, pw as float)
+    x=v1.x : y=v1.y : z=pz : w=pw
+end constructor
+constructor _FLOAT128(v1 as _FLOAT128, v2 as _FLOAT128)
+    x=v1.x : y= v1.y : z=v2.x : w=v2.y
+end constructor
+constructor _FLOAT128(v3 as _FLOAT128, pw as float)
+    x=v3.x : y=v3.y : z=v3.z : w=pw
+end constructor
+constructor _FLOAT128(px as float, v3 as _FLOAT128)
+    x=px : y= v3.x : z=v3.y : w=v3.z
+end constructor
+constructor _FLOAT128(v4 as _FLOAT128)
+    x=v4.x : y=v4.y : z=v4.z : w=v4.w
+end constructor
+
+operator _FLOAT128.let(pxyzw as float)
+    x=pxyzw: y=pxyzw : z=pxyzw : w=pxyzw
+end operator
+operator _FLOAT128.let(p as single)
+    x=p: y=p: z=1:w=1
+end operator
+operator _FLOAT128.let(p as ulongint)
+    x=p: y=p: z=p: w=1
+end operator
+operator _FLOAT128.let(p as _FLOAT128)
+    x=p.x:y=p.y:z=p.z:w=p.w
+end operator
+operator _FLOAT128.cast () as string
+    return "(" + str(x) + ", " + str(y) + ", " + str(z) + ", " + str(w) + ")"
+end operator
+
+operator _FLOAT128.cast as ulongint
+    dim as ulongint c
+    #macro clip255(v)  
+        c shl = 8
+        if v < 1/255 then
+        elseif v > 1 then
+        c or = 255
+        else
+        c or = v * 255
+        end if
+    #endmacro
+    clip255(w)
+    clip255(x)
+    clip255(y)
+    clip255(z)
+    #undef clip255
+    return c
+end operator
+
+operator _FLOAT128.+=(v as single)
+    x+=v : y+=v : z+=v : w+=v
+end operator
+operator _FLOAT128.-=(v as single)
+    x-=v : y-=v : z-=v : w-=v
+end operator
+operator _FLOAT128.*=(v as single)
+    x*=v : y*=v : z*=v : w*=v
+end operator
+operator _FLOAT128./=(v as single)
+    x/=v : y/=v : z/=v : w/=v
+end operator  
+
+operator _FLOAT128.+=(v as float)
+    x+=v : y+=v : z+=v : w+=v
+end operator
+
+operator _FLOAT128.-=(v as float)
+    x-=v : y-=v : z-=v : w-=v
+end operator
+operator _FLOAT128.*=(v as float)
+    x*=v : y*=v : z*=v : w*=v
+end operator
+operator _FLOAT128./=(v as float)
+    x/=v : y/=v : z/=v : w/=v
+end operator  
+
+operator _FLOAT128.+=(v as ulongint)
+    x+=v : y+=v : z+=v : w+=v
+end operator
+operator _FLOAT128.-=(v as ulongint)
+    x-=v : y-=v : z-=v : w-=v
+end operator
+operator _FLOAT128.*=(v as ulongint)
+    x*=v : y*=v : z*=v : w*=v
+end operator
+operator _FLOAT128./=(v as ulongint)
+    x/=v : y/=v : z/=v : w/=v
+end operator  
+
+operator _FLOAT128.+=(v4 as _FLOAT128)
+    x+=v4.x : y+=v4.y : z+=v4.z : w+=v4.w
+end operator
+operator _FLOAT128.-=(v4 as _FLOAT128)
+    x-=v4.x : y-=v4.y : z-=v4.z : w-=v4.w
+end operator
+operator _FLOAT128.*=(v4 as _FLOAT128)
+    x*=v4.x : y*=v4.y : z*=v4.z : w*=v4.w
+end operator
+operator _FLOAT128./=(v4 as _FLOAT128)
+    x/=v4.x : y/=v4.y : z/=v4.z : w/=v4.w
+end operator
+
+function _FLOAT128.xx as _FLOAT128
+    return _FLOAT128(x,x)
+end function 
+function _FLOAT128.xy as _FLOAT128
+    return _FLOAT128(x,y)
+end function 
+function _FLOAT128.xz as _FLOAT128
+    return _FLOAT128(y,z)
+end function 
+function _FLOAT128.yx as _FLOAT128
+    return _FLOAT128(y,x)
+end function 
+function _FLOAT128.yy as _FLOAT128
+    return _FLOAT128(y,y)
+end function 
+function _FLOAT128.yz as _FLOAT128
+    return _FLOAT128(y,z)
+end function 
+function _FLOAT128.zx as _FLOAT128
+    return _FLOAT128(z,x)
+end function 
+function _FLOAT128.zy as _FLOAT128
+    return _FLOAT128(z,y)
+end function 
+function _FLOAT128.zz as _FLOAT128
+    return _FLOAT128(z,z)
+end function 
+
+function _FLOAT128.xxx as _FLOAT128
+    return _FLOAT128(x,x,x)
+end function
+function _FLOAT128.xxy as _FLOAT128
+    return _FLOAT128(x,x,y)
+end function
+function _FLOAT128.xxz as _FLOAT128
+    return _FLOAT128(x,x,z)
+end function
+function _FLOAT128.xyx as _FLOAT128
+    return _FLOAT128(x,y,x)
+end function
+function _FLOAT128.xyy as _FLOAT128
+    return _FLOAT128(x,y,y)
+end function
+function _FLOAT128.xyz as _FLOAT128
+    return _FLOAT128(x,y,z)
+end function
+function _FLOAT128.xzx as _FLOAT128
+    return _FLOAT128(x,z,x)
+end function
+function _FLOAT128.xzy as _FLOAT128
+    return _FLOAT128(x,z,y)
+end function
+function _FLOAT128.xzz as _FLOAT128
+    return _FLOAT128(x,z,z)
+end function
+
+function _FLOAT128.yxx as _FLOAT128
+    return _FLOAT128(y,x,x)
+end function
+function _FLOAT128.yxy as _FLOAT128
+    return _FLOAT128(y,x,y)
+end function
+function _FLOAT128.yxz as _FLOAT128
+    return _FLOAT128(y,x,z)
+end function
+function _FLOAT128.yyx as _FLOAT128
+    return _FLOAT128(y,y,x)
+end function
+function _FLOAT128.yyy as _FLOAT128
+    return _FLOAT128(y,y,y)
+end function
+function _FLOAT128.yyz as _FLOAT128
+    return _FLOAT128(y,y,z)
+end function
+function _FLOAT128.yzx as _FLOAT128
+    return _FLOAT128(y,z,x)
+end function
+function _FLOAT128.yzy as _FLOAT128
+    return _FLOAT128(y,z,y)
+end function
+function _FLOAT128.yzz as _FLOAT128
+    return _FLOAT128(y,z,z)
+end function
+
+function _FLOAT128.zxx as _FLOAT128
+    return _FLOAT128(z,x,x)
+end function
+function _FLOAT128.zxy as _FLOAT128
+    return _FLOAT128(z,x,y)
+end function
+function _FLOAT128.zxz as _FLOAT128
+    return _FLOAT128(z,x,z)
+end function
+function _FLOAT128.zyx as _FLOAT128
+    return _FLOAT128(z,y,x)
+end function
+function _FLOAT128.zyy as _FLOAT128
+    return _FLOAT128(z,y,y)
+end function
+function _FLOAT128.zyz as _FLOAT128
+    return _FLOAT128(z,y,z)
+end function
+function _FLOAT128.zzx as _FLOAT128
+    return _FLOAT128(z,z,x)
+end function
+function _FLOAT128.zzy as _FLOAT128
+    return _FLOAT128(z,z,y)
+end function
+function _FLOAT128.zzz as _FLOAT128
+    return _FLOAT128(z,z,z)
+end function
+
+function _FLOAT128.rgb as _FLOAT128
+    return _FLOAT128(x,y,z)
+end function  
+function _FLOAT128.rgba as _FLOAT128
+    return _FLOAT128(x,y,z,w)
+end function  
+
+operator -(l as _FLOAT128) as _FLOAT128
+    return _FLOAT128(-l.x, -l.y, -l.z, -l.w)
+end operator
+operator +(l as _FLOAT128, r as _FLOAT128) as _FLOAT128
+    return _FLOAT128(l.x+r.x, l.y+r.y, l.z+r.z, l.w+r.w)
+end operator
+operator -(l as _FLOAT128, r as _FLOAT128) as _FLOAT128
+    return _FLOAT128(l.x-r.x, l.y-r.y, l.z-r.z, l.w-r.w)
+end operator
+operator *(l as _FLOAT128, r as _FLOAT128) as _FLOAT128
+    return _FLOAT128(l.x*r.x, l.y*r.y, l.z*r.z, l.w*r.w)
+end operator
+operator /(l as _FLOAT128, r as _FLOAT128) as _FLOAT128
+    return _FLOAT128(l.x/r.x, l.y/r.y, l.z/r.z, l.w/r.w)
+end operator
+operator =(l as _FLOAT128, r as _FLOAT128) as longint 
+    if (l.x xor r.x) or (l.y xor r.y) then return 0
+    return -1
+end operator
+operator <>(l as _FLOAT128,r as _FLOAT128) as longint
+    if (l.x xor r.x) or (l.y xor r.y) then return -1
+    return 0
+end operator
+
+' _FLOAT128 float
+operator +(l as _FLOAT128, r as float) as _FLOAT128
+    return _FLOAT128(l.x+r, l.y+r, l.z+r, l.w+r)
+end operator
+operator +(l as float, r as _FLOAT128) as _FLOAT128
+    return _FLOAT128(r.x+l, r.y+l, r.z+l, r.w+l)
+end operator
+
+operator -(l as _FLOAT128, r as float) as _FLOAT128
+    return _FLOAT128(l.x-r, l.y-r, l.z-r, l.w-r)
+end operator
+operator -(l as float, r as _FLOAT128) as _FLOAT128
+    return _FLOAT128(r.x-l, r.y-l, r.z-l, r.w-l)
+end operator
+
+operator *(byref l as _FLOAT128, r as float) as _FLOAT128
+    return _FLOAT128(l.x*r, l.y*r, l.z*r, l.w*r)
+end operator
+operator *(l as float, r as _FLOAT128) as _FLOAT128
+    return _FLOAT128(l*r.x, l*r.y, l*r.z, l*r.w)
+end operator
 
 type FLOAT128 as _FLOAT128
 type PFLOAT128 as FLOAT128 ptr
+
+type _FLOAT256
+    declare constructor
+    declare constructor(px   as _FLOAT256)
+    declare constructor(px   as _FLOAT256, py as _FLOAT256)
+    declare constructor(px   as _FLOAT256, py as _FLOAT256, pz as _FLOAT256)
+    declare constructor(px   as _FLOAT256, py as _FLOAT256, pz as _FLOAT256, pw as _FLOAT256)
+    declare constructor(pxyz as float)    
+    declare constructor(pxyz as float    , pw as float=1)
+    declare constructor(px   as float    , py as float    , pz as float    , pw as float=1)
+    declare constructor(v1   as _FLOAT256, pz as float    , pw as float)
+    declare constructor(v3   as _FLOAT256, pw as float=1)
+    declare constructor(px   as float    , v3 as _FLOAT256)
+    
+    declare constructor(p1 as single  , p2 as single)
+    declare constructor(p1 as uint64  , p2 as uint64, p3 as uint64)
+
+    declare operator let(pxyzw as float)
+    declare operator let(p as single)
+    declare operator let(p as uint64)
+    declare operator let(p as _FLOAT256)
+    
+    declare operator cast as string
+    declare operator cast as uint64
+    
+    declare operator +=(v as single)
+    declare operator -=(v as single)
+    declare operator *=(v as single)
+    declare operator /=(v as single)
+
+    declare operator +=(v as float)
+    declare operator -=(v as float)
+    declare operator *=(v as float)
+    declare operator /=(v as float)
+  
+    declare operator +=(v as uint64)
+    declare operator -=(v as uint64)
+    declare operator *=(v as uint64)
+    declare operator /=(v as uint64)
+  
+    declare operator +=(v4 as _FLOAT256)
+    declare operator -=(v4 as _FLOAT256)
+    declare operator *=(v4 as _FLOAT256)
+    declare operator /=(v4 as _FLOAT256)
+
+    declare function xx as _FLOAT256
+    declare function xy as _FLOAT256
+  
+    declare function xz as _FLOAT256 
+    declare function yx as _FLOAT256
+    declare function yy as _FLOAT256
+    declare function yz as _FLOAT256
+  
+    declare function zx as _FLOAT256
+    declare function zy as _FLOAT256
+    declare function zz as _FLOAT256
+
+    declare function xxx as _FLOAT256
+    declare function xxy as _FLOAT256
+    declare function xxz as _FLOAT256
+    declare function xyx as _FLOAT256
+    declare function xyy as _FLOAT256
+    declare function xyz as _FLOAT256
+    declare function xzx as _FLOAT256
+    declare function xzy as _FLOAT256
+    declare function xzz as _FLOAT256
+  
+    declare function yxx as _FLOAT256
+    declare function yxy as _FLOAT256
+    declare function yxz as _FLOAT256
+    declare function yyx as _FLOAT256
+    declare function yyy as _FLOAT256
+    declare function yyz as _FLOAT256
+    declare function yzx as _FLOAT256
+    declare function yzy as _FLOAT256
+    declare function yzz as _FLOAT256
+  
+    declare function zxx as _FLOAT256
+    declare function zxy as _FLOAT256
+    declare function zxz as _FLOAT256
+    declare function zyx as _FLOAT256
+    declare function zyy as _FLOAT256
+    declare function zyz as _FLOAT256
+    declare function zzx as _FLOAT256
+    declare function zzy as _FLOAT256
+    declare function zzz as _FLOAT256
+
+    declare function rgb  as _FLOAT256
+    declare function rgba as _FLOAT256
+    'Common letters used by vectortors
+    union
+	   as int64 LowPart1
+	   type
+	    union : as float x,r,s : end union
+	   end type
+	   as int64 HighPart1
+	   type
+        union : as float y,g,t : end union	   
+	   end type
+	   as int64 LowPart2
+	   type
+        union : as float z,b,p : end union	   
+	   end type
+	   as int64 HighPart2 
+	   type
+	    union : as float w,a,q : end union
+	   end type 
+	end union     
+end type
+
+constructor _FLOAT256
+    w=1
+end constructor
+constructor _FLOAT256(pxyz as float, pw as float)
+    x=pxyz: y=pxyz : z=pxyz : w=pw
+end constructor
+constructor _FLOAT256(px as float, py as float, pz as float, pw as float)
+    x=px : y=py : z=pz : w=pw
+end constructor
+constructor _FLOAT256(v1 as _FLOAT256, pz as float, pw as float)
+    x=v1.x : y=v1.y : z=pz : w=pw
+end constructor
+constructor _FLOAT256(v1 as _FLOAT256, v2 as _FLOAT256)
+    x=v1.x : y= v1.y : z=v2.x : w=v2.y
+end constructor
+constructor _FLOAT256(v3 as _FLOAT256, pw as float)
+    x=v3.x : y=v3.y : z=v3.z : w=pw
+end constructor
+constructor _FLOAT256(px as float, v3 as _FLOAT256)
+    x=px : y= v3.x : z=v3.y : w=v3.z
+end constructor
+constructor _FLOAT256(v4 as _FLOAT256)
+    x=v4.x : y=v4.y : z=v4.z : w=v4.w
+end constructor
+
+operator _FLOAT256.let(pxyzw as float)
+    x=pxyzw: y=pxyzw : z=pxyzw : w=pxyzw
+end operator
+operator _FLOAT256.let(p as single)
+    x=p: y=p: z=1:w=1
+end operator
+operator _FLOAT256.let(p as ulongint)
+    x=p: y=p: z=p: w=1
+end operator
+operator _FLOAT256.let(p as _FLOAT256)
+    x=p.x:y=p.y:z=p.z:w=p.w
+end operator
+operator _FLOAT256.cast () as string
+    return "(" + str(x) + ", " + str(y) + ", " + str(z) + ", " + str(w) + ")"
+end operator
+
+operator _FLOAT256.cast as ulongint
+    dim as ulongint c
+    #macro clip255(v)  
+        c shl = 8
+        if v < 1/255 then
+        elseif v > 1 then
+        c or = 255
+        else
+        c or = v * 255
+        end if
+    #endmacro
+    clip255(w)
+    clip255(x)
+    clip255(y)
+    clip255(z)
+    #undef clip255
+    return c
+end operator
+
+operator _FLOAT256.+=(v as single)
+    x+=v : y+=v : z+=v : w+=v
+end operator
+operator _FLOAT256.-=(v as single)
+    x-=v : y-=v : z-=v : w-=v
+end operator
+operator _FLOAT256.*=(v as single)
+    x*=v : y*=v : z*=v : w*=v
+end operator
+operator _FLOAT256./=(v as single)
+    x/=v : y/=v : z/=v : w/=v
+end operator  
+
+operator _FLOAT256.+=(v as float)
+    x+=v : y+=v : z+=v : w+=v
+end operator
+
+operator _FLOAT256.-=(v as float)
+    x-=v : y-=v : z-=v : w-=v
+end operator
+operator _FLOAT256.*=(v as float)
+    x*=v : y*=v : z*=v : w*=v
+end operator
+operator _FLOAT256./=(v as float)
+    x/=v : y/=v : z/=v : w/=v
+end operator  
+
+operator _FLOAT256.+=(v as ulongint)
+    x+=v : y+=v : z+=v : w+=v
+end operator
+operator _FLOAT256.-=(v as ulongint)
+    x-=v : y-=v : z-=v : w-=v
+end operator
+operator _FLOAT256.*=(v as ulongint)
+    x*=v : y*=v : z*=v : w*=v
+end operator
+operator _FLOAT256./=(v as ulongint)
+    x/=v : y/=v : z/=v : w/=v
+end operator  
+
+operator _FLOAT256.+=(v4 as _FLOAT256)
+    x+=v4.x : y+=v4.y : z+=v4.z : w+=v4.w
+end operator
+operator _FLOAT256.-=(v4 as _FLOAT256)
+    x-=v4.x : y-=v4.y : z-=v4.z : w-=v4.w
+end operator
+operator _FLOAT256.*=(v4 as _FLOAT256)
+    x*=v4.x : y*=v4.y : z*=v4.z : w*=v4.w
+end operator
+operator _FLOAT256./=(v4 as _FLOAT256)
+    x/=v4.x : y/=v4.y : z/=v4.z : w/=v4.w
+end operator
+
+function _FLOAT256.xx as _FLOAT256
+    return _FLOAT256(x,x)
+end function 
+function _FLOAT256.xy as _FLOAT256
+    return _FLOAT256(x,y)
+end function 
+function _FLOAT256.xz as _FLOAT256
+    return _FLOAT256(y,z)
+end function 
+function _FLOAT256.yx as _FLOAT256
+    return _FLOAT256(y,x)
+end function 
+function _FLOAT256.yy as _FLOAT256
+    return _FLOAT256(y,y)
+end function 
+function _FLOAT256.yz as _FLOAT256
+    return _FLOAT256(y,z)
+end function 
+function _FLOAT256.zx as _FLOAT256
+    return _FLOAT256(z,x)
+end function 
+function _FLOAT256.zy as _FLOAT256
+    return _FLOAT256(z,y)
+end function 
+function _FLOAT256.zz as _FLOAT256
+    return _FLOAT256(z,z)
+end function 
+
+function _FLOAT256.xxx as _FLOAT256
+    return _FLOAT256(x,x,x)
+end function
+function _FLOAT256.xxy as _FLOAT256
+    return _FLOAT256(x,x,y)
+end function
+function _FLOAT256.xxz as _FLOAT256
+    return _FLOAT256(x,x,z)
+end function
+function _FLOAT256.xyx as _FLOAT256
+    return _FLOAT256(x,y,x)
+end function
+function _FLOAT256.xyy as _FLOAT256
+    return _FLOAT256(x,y,y)
+end function
+function _FLOAT256.xyz as _FLOAT256
+    return _FLOAT256(x,y,z)
+end function
+function _FLOAT256.xzx as _FLOAT256
+    return _FLOAT256(x,z,x)
+end function
+function _FLOAT256.xzy as _FLOAT256
+    return _FLOAT256(x,z,y)
+end function
+function _FLOAT256.xzz as _FLOAT256
+    return _FLOAT256(x,z,z)
+end function
+
+function _FLOAT256.yxx as _FLOAT256
+    return _FLOAT256(y,x,x)
+end function
+function _FLOAT256.yxy as _FLOAT256
+    return _FLOAT256(y,x,y)
+end function
+function _FLOAT256.yxz as _FLOAT256
+    return _FLOAT256(y,x,z)
+end function
+function _FLOAT256.yyx as _FLOAT256
+    return _FLOAT256(y,y,x)
+end function
+function _FLOAT256.yyy as _FLOAT256
+    return _FLOAT256(y,y,y)
+end function
+function _FLOAT256.yyz as _FLOAT256
+    return _FLOAT256(y,y,z)
+end function
+function _FLOAT256.yzx as _FLOAT256
+    return _FLOAT256(y,z,x)
+end function
+function _FLOAT256.yzy as _FLOAT256
+    return _FLOAT256(y,z,y)
+end function
+function _FLOAT256.yzz as _FLOAT256
+    return _FLOAT256(y,z,z)
+end function
+
+function _FLOAT256.zxx as _FLOAT256
+    return _FLOAT256(z,x,x)
+end function
+function _FLOAT256.zxy as _FLOAT256
+    return _FLOAT256(z,x,y)
+end function
+function _FLOAT256.zxz as _FLOAT256
+    return _FLOAT256(z,x,z)
+end function
+function _FLOAT256.zyx as _FLOAT256
+    return _FLOAT256(z,y,x)
+end function
+function _FLOAT256.zyy as _FLOAT256
+    return _FLOAT256(z,y,y)
+end function
+function _FLOAT256.zyz as _FLOAT256
+    return _FLOAT256(z,y,z)
+end function
+function _FLOAT256.zzx as _FLOAT256
+    return _FLOAT256(z,z,x)
+end function
+function _FLOAT256.zzy as _FLOAT256
+    return _FLOAT256(z,z,y)
+end function
+function _FLOAT256.zzz as _FLOAT256
+    return _FLOAT256(z,z,z)
+end function
+
+function _FLOAT256.rgb as _FLOAT256
+    return _FLOAT256(x,y,z)
+end function  
+function _FLOAT256.rgba as _FLOAT256
+    return _FLOAT256(x,y,z,w)
+end function  
+
+operator -(l as _FLOAT256) as _FLOAT256
+    return _FLOAT256(-l.x, -l.y, -l.z, -l.w)
+end operator
+operator +(l as _FLOAT256, r as _FLOAT256) as _FLOAT256
+    return _FLOAT256(l.x+r.x, l.y+r.y, l.z+r.z, l.w+r.w)
+end operator
+operator -(l as _FLOAT256, r as _FLOAT256) as _FLOAT256
+    return _FLOAT256(l.x-r.x, l.y-r.y, l.z-r.z, l.w-r.w)
+end operator
+operator *(l as _FLOAT256, r as _FLOAT256) as _FLOAT256
+    return _FLOAT256(l.x*r.x, l.y*r.y, l.z*r.z, l.w*r.w)
+end operator
+operator /(l as _FLOAT256, r as _FLOAT256) as _FLOAT256
+    return _FLOAT256(l.x/r.x, l.y/r.y, l.z/r.z, l.w/r.w)
+end operator
+operator =(l as _FLOAT256, r as _FLOAT256) as longint 
+    if (l.x xor r.x) or (l.y xor r.y) then return 0
+    return -1
+end operator
+operator <>(l as _FLOAT256,r as _FLOAT256) as longint
+    if (l.x xor r.x) or (l.y xor r.y) then return -1
+    return 0
+end operator
+
+' _FLOAT256 float
+operator +(l as _FLOAT256, r as float) as _FLOAT256
+    return _FLOAT256(l.x+r, l.y+r, l.z+r, l.w+r)
+end operator
+operator +(l as float, r as _FLOAT256) as _FLOAT256
+    return _FLOAT256(r.x+l, r.y+l, r.z+l, r.w+l)
+end operator
+
+operator -(l as _FLOAT256, r as float) as _FLOAT256
+    return _FLOAT256(l.x-r, l.y-r, l.z-r, l.w-r)
+end operator
+operator -(l as float, r as _FLOAT256) as _FLOAT256
+    return _FLOAT256(r.x-l, r.y-l, r.z-l, r.w-l)
+end operator
+
+operator *(byref l as _FLOAT256, r as float) as _FLOAT256
+    return _FLOAT256(l.x*r, l.y*r, l.z*r, l.w*r)
+end operator
+operator *(l as float, r as _FLOAT256) as _FLOAT256
+    return _FLOAT256(l*r.x, l*r.y, l*r.z, l*r.w)
+end operator
+
+type FLOAT256 as _FLOAT256
+type PFLOAT256 as FLOAT256 ptr
+
+type _FLOAT512
+    declare constructor
+    declare constructor(px   as _FLOAT512)
+    declare constructor(px   as _FLOAT512, py as _FLOAT512)
+    declare constructor(px   as _FLOAT512, py as _FLOAT512, pz as _FLOAT512)
+    declare constructor(px   as _FLOAT512, py as _FLOAT512, pz as _FLOAT512, pw as _FLOAT512)
+    declare constructor(pxyz as float)    
+    declare constructor(pxyz as float    , pw as float=1)
+    declare constructor(px   as float    , py as float    , pz as float    , pw as float=1)
+    declare constructor(v1   as _FLOAT512, pz as float    , pw as float)
+    declare constructor(v3   as _FLOAT512, pw as float=1)
+    declare constructor(px   as float    , v3 as _FLOAT512)
+    
+    declare constructor(p1 as single  , p2 as single)
+    declare constructor(p1 as uint64  , p2 as uint64, p3 as uint64)
+
+    declare operator let(pxyzw as float)
+    declare operator let(p as single)
+    declare operator let(p as uint64)
+    declare operator let(p as _FLOAT512)
+    
+    declare operator cast as string
+    declare operator cast as uint64
+    
+    declare operator +=(v as single)
+    declare operator -=(v as single)
+    declare operator *=(v as single)
+    declare operator /=(v as single)
+
+    declare operator +=(v as float)
+    declare operator -=(v as float)
+    declare operator *=(v as float)
+    declare operator /=(v as float)
+  
+    declare operator +=(v as uint64)
+    declare operator -=(v as uint64)
+    declare operator *=(v as uint64)
+    declare operator /=(v as uint64)
+  
+    declare operator +=(v4 as _FLOAT512)
+    declare operator -=(v4 as _FLOAT512)
+    declare operator *=(v4 as _FLOAT512)
+    declare operator /=(v4 as _FLOAT512)
+
+    declare function xx as _FLOAT512
+    declare function xy as _FLOAT512
+  
+    declare function xz as _FLOAT512 
+    declare function yx as _FLOAT512
+    declare function yy as _FLOAT512
+    declare function yz as _FLOAT512
+  
+    declare function zx as _FLOAT512
+    declare function zy as _FLOAT512
+    declare function zz as _FLOAT512
+
+    declare function xxx as _FLOAT512
+    declare function xxy as _FLOAT512
+    declare function xxz as _FLOAT512
+    declare function xyx as _FLOAT512
+    declare function xyy as _FLOAT512
+    declare function xyz as _FLOAT512
+    declare function xzx as _FLOAT512
+    declare function xzy as _FLOAT512
+    declare function xzz as _FLOAT512
+  
+    declare function yxx as _FLOAT512
+    declare function yxy as _FLOAT512
+    declare function yxz as _FLOAT512
+    declare function yyx as _FLOAT512
+    declare function yyy as _FLOAT512
+    declare function yyz as _FLOAT512
+    declare function yzx as _FLOAT512
+    declare function yzy as _FLOAT512
+    declare function yzz as _FLOAT512
+  
+    declare function zxx as _FLOAT512
+    declare function zxy as _FLOAT512
+    declare function zxz as _FLOAT512
+    declare function zyx as _FLOAT512
+    declare function zyy as _FLOAT512
+    declare function zyz as _FLOAT512
+    declare function zzx as _FLOAT512
+    declare function zzy as _FLOAT512
+    declare function zzz as _FLOAT512
+
+    declare function rgb  as _FLOAT512
+    declare function rgba as _FLOAT512
+    'Common letters used by vectortors   
+    union
+	   as int64 LowPart1
+	    type
+	     union : as float x : end union
+	    end type
+	   as int64 HighPart1
+	   type
+	    union : as float r,s : end union
+	   end type
+	   as int64 LowPart2
+	   type
+	    union : as float y : end union
+	   end type
+	   as int64 HighPart2
+	   type
+        union : as float g,t : end union	   
+	   end type
+	   as int64 LowPart3
+	   type
+	    union :  as float z : end union
+	   end type
+	   as int64 HighPart3
+	   type
+        union : as float b,p : end union	   
+	   end type
+	   as int64 LowPart4
+	   type
+	    union :  as float w : end union
+	   end type 	   
+	   as int64 HighPart4
+	   type
+        union : as float a,q : end union	   
+	   end type		   	
+	end union    
+end type
+
+constructor _FLOAT512
+    w=1
+end constructor
+constructor _FLOAT512(pxyz as float, pw as float)
+    x=pxyz: y=pxyz : z=pxyz : w=pw
+end constructor
+constructor _FLOAT512(px as float, py as float, pz as float, pw as float)
+    x=px : y=py : z=pz : w=pw
+end constructor
+constructor _FLOAT512(v1 as _FLOAT512, pz as float, pw as float)
+    x=v1.x : y=v1.y : z=pz : w=pw
+end constructor
+constructor _FLOAT512(v1 as _FLOAT512, v2 as _FLOAT512)
+    x=v1.x : y= v1.y : z=v2.x : w=v2.y
+end constructor
+constructor _FLOAT512(v3 as _FLOAT512, pw as float)
+    x=v3.x : y=v3.y : z=v3.z : w=pw
+end constructor
+constructor _FLOAT512(px as float, v3 as _FLOAT512)
+    x=px : y= v3.x : z=v3.y : w=v3.z
+end constructor
+constructor _FLOAT512(v4 as _FLOAT512)
+    x=v4.x : y=v4.y : z=v4.z : w=v4.w
+end constructor
+
+operator _FLOAT512.let(pxyzw as float)
+    x=pxyzw: y=pxyzw : z=pxyzw : w=pxyzw
+end operator
+operator _FLOAT512.let(p as single)
+    x=p: y=p: z=1:w=1
+end operator
+operator _FLOAT512.let(p as ulongint)
+    x=p: y=p: z=p: w=1
+end operator
+operator _FLOAT512.let(p as _FLOAT512)
+    x=p.x:y=p.y:z=p.z:w=p.w
+end operator
+operator _FLOAT512.cast () as string
+    return "(" + str(x) + ", " + str(y) + ", " + str(z) + ", " + str(w) + ")"
+end operator
+
+operator _FLOAT512.cast as ulongint
+    dim as ulongint c
+    #macro clip255(v)  
+        c shl = 8
+        if v < 1/255 then
+        elseif v > 1 then
+        c or = 255
+        else
+        c or = v * 255
+        end if
+    #endmacro
+    clip255(w)
+    clip255(x)
+    clip255(y)
+    clip255(z)
+    #undef clip255
+    return c
+end operator
+
+operator _FLOAT512.+=(v as single)
+    x+=v : y+=v : z+=v : w+=v
+end operator
+operator _FLOAT512.-=(v as single)
+    x-=v : y-=v : z-=v : w-=v
+end operator
+operator _FLOAT512.*=(v as single)
+    x*=v : y*=v : z*=v : w*=v
+end operator
+operator _FLOAT512./=(v as single)
+    x/=v : y/=v : z/=v : w/=v
+end operator  
+
+operator _FLOAT512.+=(v as float)
+    x+=v : y+=v : z+=v : w+=v
+end operator
+
+operator _FLOAT512.-=(v as float)
+    x-=v : y-=v : z-=v : w-=v
+end operator
+operator _FLOAT512.*=(v as float)
+    x*=v : y*=v : z*=v : w*=v
+end operator
+operator _FLOAT512./=(v as float)
+    x/=v : y/=v : z/=v : w/=v
+end operator  
+
+operator _FLOAT512.+=(v as ulongint)
+    x+=v : y+=v : z+=v : w+=v
+end operator
+operator _FLOAT512.-=(v as ulongint)
+    x-=v : y-=v : z-=v : w-=v
+end operator
+operator _FLOAT512.*=(v as ulongint)
+    x*=v : y*=v : z*=v : w*=v
+end operator
+operator _FLOAT512./=(v as ulongint)
+    x/=v : y/=v : z/=v : w/=v
+end operator  
+
+operator _FLOAT512.+=(v4 as _FLOAT512)
+    x+=v4.x : y+=v4.y : z+=v4.z : w+=v4.w
+end operator
+operator _FLOAT512.-=(v4 as _FLOAT512)
+    x-=v4.x : y-=v4.y : z-=v4.z : w-=v4.w
+end operator
+operator _FLOAT512.*=(v4 as _FLOAT512)
+    x*=v4.x : y*=v4.y : z*=v4.z : w*=v4.w
+end operator
+operator _FLOAT512./=(v4 as _FLOAT512)
+    x/=v4.x : y/=v4.y : z/=v4.z : w/=v4.w
+end operator
+
+function _FLOAT512.xx as _FLOAT512
+    return _FLOAT512(x,x)
+end function 
+function _FLOAT512.xy as _FLOAT512
+    return _FLOAT512(x,y)
+end function 
+function _FLOAT512.xz as _FLOAT512
+    return _FLOAT512(y,z)
+end function 
+function _FLOAT512.yx as _FLOAT512
+    return _FLOAT512(y,x)
+end function 
+function _FLOAT512.yy as _FLOAT512
+    return _FLOAT512(y,y)
+end function 
+function _FLOAT512.yz as _FLOAT512
+    return _FLOAT512(y,z)
+end function 
+function _FLOAT512.zx as _FLOAT512
+    return _FLOAT512(z,x)
+end function 
+function _FLOAT512.zy as _FLOAT512
+    return _FLOAT512(z,y)
+end function 
+function _FLOAT512.zz as _FLOAT512
+    return _FLOAT512(z,z)
+end function 
+
+function _FLOAT512.xxx as _FLOAT512
+    return _FLOAT512(x,x,x)
+end function
+function _FLOAT512.xxy as _FLOAT512
+    return _FLOAT512(x,x,y)
+end function
+function _FLOAT512.xxz as _FLOAT512
+    return _FLOAT512(x,x,z)
+end function
+function _FLOAT512.xyx as _FLOAT512
+    return _FLOAT512(x,y,x)
+end function
+function _FLOAT512.xyy as _FLOAT512
+    return _FLOAT512(x,y,y)
+end function
+function _FLOAT512.xyz as _FLOAT512
+    return _FLOAT512(x,y,z)
+end function
+function _FLOAT512.xzx as _FLOAT512
+    return _FLOAT512(x,z,x)
+end function
+function _FLOAT512.xzy as _FLOAT512
+    return _FLOAT512(x,z,y)
+end function
+function _FLOAT512.xzz as _FLOAT512
+    return _FLOAT512(x,z,z)
+end function
+
+function _FLOAT512.yxx as _FLOAT512
+    return _FLOAT512(y,x,x)
+end function
+function _FLOAT512.yxy as _FLOAT512
+    return _FLOAT512(y,x,y)
+end function
+function _FLOAT512.yxz as _FLOAT512
+    return _FLOAT512(y,x,z)
+end function
+function _FLOAT512.yyx as _FLOAT512
+    return _FLOAT512(y,y,x)
+end function
+function _FLOAT512.yyy as _FLOAT512
+    return _FLOAT512(y,y,y)
+end function
+function _FLOAT512.yyz as _FLOAT512
+    return _FLOAT512(y,y,z)
+end function
+function _FLOAT512.yzx as _FLOAT512
+    return _FLOAT512(y,z,x)
+end function
+function _FLOAT512.yzy as _FLOAT512
+    return _FLOAT512(y,z,y)
+end function
+function _FLOAT512.yzz as _FLOAT512
+    return _FLOAT512(y,z,z)
+end function
+
+function _FLOAT512.zxx as _FLOAT512
+    return _FLOAT512(z,x,x)
+end function
+function _FLOAT512.zxy as _FLOAT512
+    return _FLOAT512(z,x,y)
+end function
+function _FLOAT512.zxz as _FLOAT512
+    return _FLOAT512(z,x,z)
+end function
+function _FLOAT512.zyx as _FLOAT512
+    return _FLOAT512(z,y,x)
+end function
+function _FLOAT512.zyy as _FLOAT512
+    return _FLOAT512(z,y,y)
+end function
+function _FLOAT512.zyz as _FLOAT512
+    return _FLOAT512(z,y,z)
+end function
+function _FLOAT512.zzx as _FLOAT512
+    return _FLOAT512(z,z,x)
+end function
+function _FLOAT512.zzy as _FLOAT512
+    return _FLOAT512(z,z,y)
+end function
+function _FLOAT512.zzz as _FLOAT512
+    return _FLOAT512(z,z,z)
+end function
+
+function _FLOAT512.rgb as _FLOAT512
+    return _FLOAT512(x,y,z)
+end function  
+function _FLOAT512.rgba as _FLOAT512
+    return _FLOAT512(x,y,z,w)
+end function  
+
+operator -(l as _FLOAT512) as _FLOAT512
+    return _FLOAT512(-l.x, -l.y, -l.z, -l.w)
+end operator
+operator +(l as _FLOAT512, r as _FLOAT512) as _FLOAT512
+    return _FLOAT512(l.x+r.x, l.y+r.y, l.z+r.z, l.w+r.w)
+end operator
+operator -(l as _FLOAT512, r as _FLOAT512) as _FLOAT512
+    return _FLOAT512(l.x-r.x, l.y-r.y, l.z-r.z, l.w-r.w)
+end operator
+operator *(l as _FLOAT512, r as _FLOAT512) as _FLOAT512
+    return _FLOAT512(l.x*r.x, l.y*r.y, l.z*r.z, l.w*r.w)
+end operator
+operator /(l as _FLOAT512, r as _FLOAT512) as _FLOAT512
+    return _FLOAT512(l.x/r.x, l.y/r.y, l.z/r.z, l.w/r.w)
+end operator
+operator =(l as _FLOAT512, r as _FLOAT512) as longint 
+    if (l.x xor r.x) or (l.y xor r.y) then return 0
+    return -1
+end operator
+operator <>(l as _FLOAT512,r as _FLOAT512) as longint
+    if (l.x xor r.x) or (l.y xor r.y) then return -1
+    return 0
+end operator
+
+' _FLOAT512 float
+operator +(l as _FLOAT512, r as float) as _FLOAT512
+    return _FLOAT512(l.x+r, l.y+r, l.z+r, l.w+r)
+end operator
+operator +(l as float, r as _FLOAT512) as _FLOAT512
+    return _FLOAT512(r.x+l, r.y+l, r.z+l, r.w+l)
+end operator
+
+operator -(l as _FLOAT512, r as float) as _FLOAT512
+    return _FLOAT512(l.x-r, l.y-r, l.z-r, l.w-r)
+end operator
+operator -(l as float, r as _FLOAT512) as _FLOAT512
+    return _FLOAT512(r.x-l, r.y-l, r.z-l, r.w-l)
+end operator
+
+operator *(byref l as _FLOAT512, r as float) as _FLOAT512
+    return _FLOAT512(l.x*r, l.y*r, l.z*r, l.w*r)
+end operator
+operator *(l as float, r as _FLOAT512) as _FLOAT512
+    return _FLOAT512(l*r.x, l*r.y, l*r.z, l*r.w)
+end operator
+
+type FLOAT512 as _FLOAT512
+type PFLOAT512 as FLOAT512 ptr
+
 #define _ULONGLONG_
 type LONGLONG as longint
 type ULONGLONG as ulongint

@@ -217,7 +217,7 @@
 '                                              r8	                 
 	                 bload ".\vram\"+str(mem64(49369))+".bmp",fgimage
 #endif
-	                 put fgimage,(0,0), render, pset
+	                 put fgimage,(0,0), _render, pset
 	            case 004 ' Sets offset in video memory
                      mem64(49369)=v' r8 = v
                 case 005 ' Anamation player
@@ -226,11 +226,11 @@
 #if defined(__FB_WIN32__)  or defined(__FB_LINUX__)   or defined(__FB_CYGWIN__) or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__) or defined(__FB_XBOX__)    or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__) 
- 	                 bload ".\vram\"+str(frame)+".bmp", render
+ 	                 bload ".\vram\"+str(frame)+".bmp", _render
 #elseif defined(__FB_PCOS__)
- 	                 bload "./vram/"+str(frame)+".bmp", render
+ 	                 bload "./vram/"+str(frame)+".bmp", _render
 #endif 	                 	                   	                 
- 	                 sleep(10,1): put fgimage,(0,0), render, pset 
+ 	                 sleep(10,1): put fgimage,(0,0), _render, pset 
                      next frame
                 case 006 ' Keyword Database - 1
 '                                                              r10				

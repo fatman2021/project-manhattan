@@ -51,12 +51,12 @@ FreeBASIC:
 '/
 proc SYSTEM_BUS_T.length6(p as vector2) as float
   p = p*p*p  : p = p*p
-  return pow( p.x + p.y, 1.0/6.0 )
+  return k_pow( p.x + p.y, 1.0/6.0 )
 end proc
 
 proc SYSTEM_BUS_T.length8(p as vector2) as float
   p = p*p: p = p*p: p = p*p
-  return pow( p.x + p.y, 1.0/8.0 )
+  return k_pow( p.x + p.y, 1.0/8.0 )
 end proc
 
 proc SYSTEM_BUS_T.sdPlane(p as vector3) as float
@@ -89,7 +89,7 @@ FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdPlane overload( p as vector3, n as vector3, h as float ) as float
   ' n must be normalized
-  return dot(p,n) + h
+  return k_dot(p,n) + h
 end proc
 
 /'
@@ -116,7 +116,7 @@ double _ZN12SYSTEM_BUS_T8SDSPHEREER7VECTOR3d( struct $12SYSTEM_BUS_T* THIS$1, st
 FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdSphere(p as vector3, s as float) as float
-  return length(p) - s
+  return k_length(p) - s
 end proc
 
 /'
@@ -159,7 +159,7 @@ FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdBox( p as vector3, b as vector3 ) as float
   dim as vector3 q = abs(p) - b
-  return length(max(q,0.0)) + min(max(q.x,max(q.y,q.z)),0.0)
+  return k_length(k_max(q,0.0)) + k_min(k_max(q.x,k_max(q.y,q.z)),0.0)
 end proc
 
 /'
@@ -170,7 +170,7 @@ Intermediate Code:
 FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdEllipsoid(p as vector3, r as vector3) as float
-  return (length( p/r ) - 1.0) * min(min(r.x,r.y),r.z)
+  return (k_length( p/r ) - 1.0) * k_min(k_min(r.x,r.y),r.z)
 end proc
 
 /'
@@ -213,11 +213,11 @@ FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdRoundBox(p as vector3, b as vector3, r as float) as float
   dim as vector3 q = abs(p) - b
-  return length(max(q,0.0)) + min(max(q.x,max(q.y,q.z)),0.0) - r
+  return k_length(k_max(q,0.0)) + k_min(k_max(q.x,k_max(q.y,q.z)),0.0) - r
 end proc
 
 proc SYSTEM_BUS_T.udRoundBox(p as vector3, b as vector3, r as float) as float
-  return length(max(abs(p)-b,0.0))-r
+  return k_length(k_max(abs(p)-b,0.0))-r
 end proc
 
 /'
@@ -279,8 +279,8 @@ end proc
  FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdTorus( p as vector3, t as vector2) as float
-  dim as vector2 q = vector2(length(p.xz)-t.x,p.y)
-  return length(q)-t.y
+  dim as vector2 q = vector2(k_length(p.xz)-t.x,p.y)
+  return k_length(q)-t.y
 end proc
 
 /'
@@ -330,12 +330,12 @@ FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdCappedTorus(p as vector3, sc as vector2, ra as float, rb as float) as float
   p.x = abs(p.x)
-  dim as float k = iif((sc.y*p.x>sc.x*p.y) , dot(p.xy,sc) , length(p.xy))
-  return sqrt( dot(p,p) + ra*ra - 2.0*ra*k ) - rb
+  dim as float k = iif((sc.y*p.x>sc.x*p.y) , k_dot(p.xy,sc) , k_length(p.xy))
+  return k_sqrt( k_dot(p,p) + ra*ra - 2.0*ra*k ) - rb
 end proc
 
 proc SYSTEM_BUS_T.sdTorus82(p as vector3, t as vector2) as float
-  dim as vector2 q = vector2(length(p.xz)-t.x,p.y)
+  dim as vector2 q = vector2(k_length(p.xz)-t.x,p.y)
   return length8(q)-t.y
 end proc
 
@@ -378,15 +378,15 @@ double _ZN12SYSTEM_BUS_T6SDLINKER7VECTOR3ddd( struct $12SYSTEM_BUS_T* THIS$1, st
 FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdLink( p as vector3, le as float, r1 as float, r2 as float) as float
-  dim as vector3 q = vector3( p.x, max(abs(p.y)-le,0.0), p.z )
-  return length(vector2(length(q.xy)-r1,q.z)) - r2
+  dim as vector3 q = vector3( p.x, k_max(abs(p.y)-le,0.0), p.z )
+  return k_length(vector2(k_length(q.xy)-r1,q.z)) - r2
 end proc
 
 proc SYSTEM_BUS_T.sdHexPrism(p as vector3, h as vector2) as float
   dim as vector3 q  = abs(p)
   dim as float d1 = q.z-h.y
-  dim as float d2 = max((q.x*0.866025+q.y*0.5),q.y)-h.x
-  return length(max(vector2(d1,d2),0.0)) + min(max(d1,d2), 0.)
+  dim as float d2 = k_max((q.x*0.866025+q.y*0.5),q.y)-h.x
+  return k_length(k_max(vector2(d1,d2),0.0)) + k_min(k_max(d1,d2), 0.)
 end proc
 
 /'
@@ -433,8 +433,8 @@ FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdCapsule(p as vector3, a as vector3, b as vector3, r as float) as float
   dim as vector3 pa = p-a, ba = b-a
-  dim as float h = clamp( dot(pa,ba)/dot(ba,ba), 0.0, 1.0 )
-  return length( pa - ba*h ) - r
+  dim as float h = k_clamp( k_dot(pa,ba)/k_dot(ba,ba), 0.0, 1.0 )
+  return k_length( pa - ba*h ) - r
 end proc
 
 /'
@@ -465,15 +465,15 @@ double _ZN12SYSTEM_BUS_T17SDVERTICALCAPSULEER7VECTOR3dd( struct $12SYSTEM_BUS_T*
 FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdVerticalCapsule( p as vector3, h as float, r as float ) as float
-  p.y -= clamp( p.y, 0.0, h )
-  return length( p ) - r
+  p.y -= k_clamp( p.y, 0.0, h )
+  return k_length( p ) - r
 end proc
 
 proc SYSTEM_BUS_T.sdTriPrism(p as vector3, h as vector2) as float
   dim as vector3  q  = abs(p)
   dim as float d1 = q.z-h.y
-  dim as float d2 = max(q.x*0.866025+p.y*0.5,-p.y)-h.x*0.5
-  return length(max(vector2(d1,d2),0.0)) + min(max(d1,d2), 0.)
+  dim as float d2 = k_max(q.x*0.866025+p.y*0.5,-p.y)-h.x*0.5
+  return k_length(k_max(vector2(d1,d2),0.0)) + k_min(k_max(d1,d2), 0.)
 end proc
 
 /'
@@ -510,12 +510,12 @@ FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdTriPrism2( p as vector3, h as vector2) as float
   dim as vector3 q = abs(p)
-  return max(q.z-h.y,max(q.x*0.866025+p.y*0.5,-p.y)-h.x*0.5)
+  return k_max(q.z-h.y,k_max(q.x*0.866025+p.y*0.5,-p.y)-h.x*0.5)
 end proc
 
 proc SYSTEM_BUS_T.sdCylinder(p as vector3, h as vector2) as float
-  dim as vector2 d = abs(vector2(length(p.xz),p.y)) - h
-  return min(max(d.x,d.y),0.0) + length(max(d,0.0))
+  dim as vector2 d = abs(vector2(k_length(p.xz),p.y)) - h
+  return k_min(k_max(d.x,d.y),0.0) + k_length(k_max(d,0.0))
 end proc
 
 /'
@@ -549,11 +549,11 @@ double _ZN12SYSTEM_BUS_T10SDCYLINDERER7VECTOR3S1_( struct $12SYSTEM_BUS_T* THIS$
 FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdCylinder overload (p as vector3, c as vector3 ) as float
-  return length(p.xz-c.xy)-c.z
+  return k_length(p.xz-c.xy)-c.z
 end proc
 
 proc SYSTEM_BUS_T.sdCylinder6(p as vector3, h as vector2) as float
-  return max( length6(p.xz)-h.x, abs(p.y)-h.y )
+  return k_max( length6(p.xz)-h.x, abs(p.y)-h.y )
 end proc
 
 /'
@@ -601,8 +601,8 @@ double _ZN12SYSTEM_BUS_T16SDCAPPEDCYLINDERER7VECTOR3dd( struct $12SYSTEM_BUS_T* 
 FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdCappedCylinder( p as vector3, h as float, r as float) as float
-  dim as vector2 d = abs(vector2(length(p.xz),p.y)) - vector2(h,r)
-  return min(max(d.x,d.y),0.0) + length(max(d,0.0))
+  dim as vector2 d = abs(vector2(k_length(p.xz),p.y)) - vector2(h,r)
+  return k_min(k_max(d.x,d.y),0.0) + k_length(k_max(d,0.0))
 end proc
 
 /'
@@ -697,14 +697,14 @@ FreeBASIC:
 proc SYSTEM_BUS_T.sdCappedCylinder overload(p as vector3, a as vector3, b as vector3, r as float) as float
   dim as vector3  ba = b - a
   dim as vector3  pa = p - a
-  dim as float baba = dot(ba,ba)
-  dim as float paba = dot(pa,ba)
-  dim as float x = length(pa*baba-ba*paba) - r*baba
+  dim as float baba = k_dot(ba,ba)
+  dim as float paba = k_dot(pa,ba)
+  dim as float x = k_length(pa*baba-ba*paba) - r*baba
   dim as float y = abs(paba-baba*0.5)-baba*0.5
   dim as float x2 = x*x
   dim as float y2 = y*y*baba
-  dim as float d = (iif(max(x,y)<0.0,-min(x2,y2),((iif((x>0.0),x2,0.0))+(iif((y>0.0),y2,0.0)))))
-  return sign(d)*sqrt(abs(d))/baba
+  dim as float d = (iif(k_max(x,y)<0.0,-k_min(x2,y2),((iif((x>0.0),x2,0.0))+(iif((y>0.0),y2,0.0)))))
+  return k_sign(d)*k_sqrt(abs(d))/baba
 end proc
 
 /'
@@ -745,16 +745,16 @@ double _ZN12SYSTEM_BUS_T17SDROUNDEDCYLINDERER7VECTOR3ddd( struct $12SYSTEM_BUS_T
 FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdRoundedCylinder( p as vector3, ra as float, rb as float, h as float) as float
-  dim as vector2 d = vector2( length(p.xz)-2.0*ra+rb, abs(p.y) - h )
-  return min(max(d.x,d.y),0.0) + length(max(d,0.0)) - rb
+  dim as vector2 d = vector2( k_length(p.xz)-2.0*ra+rb, abs(p.y) - h )
+  return k_min(k_max(d.x,d.y),0.0) + k_length(k_max(d,0.0)) - rb
 end proc
 
 
 proc SYSTEM_BUS_T.sdCone(p as vector3, c as vector3) as float
-  dim as vector2  q  = vector2( length(p.xz), p.y )
+  dim as vector2  q  = vector2( k_length(p.xz), p.y )
   dim as float d1 = -q.y-c.z
-  dim as float d2 = max( dot(q,c.xy), q.y)
-  return length(max(vector2(d1,d2),0.0)) + min(max(d1,d2), 0.0)
+  dim as float d2 = k_max( k_dot(q,c.xy), q.y)
+  return k_length(k_max(vector2(d1,d2),0.0)) + k_min(k_max(d1,d2), 0.0)
 end function
 
 /'
@@ -841,13 +841,13 @@ proc SYSTEM_BUS_T.sdCone overload (p as vector3, c as vector2, h as float ) as f
   ' Alternatively pass q instead of (c,h),
   ' which is the point at the base in 2D
   dim as vector2 q = h*vector2(c.x/c.y,-1.0)  
-  dim as vector2 w = vector2( length(p.xz), p.y )
-  dim as vector2 a = w - q*clamp( dot(w,q)/dot(q,q), 0.0, 1.0 )
-  dim as vector2 b = w - q*vector2( clamp( w.x/q.x, 0.0, 1.0 ), 1.0 )
-  dim as float k = sign( q.y )
-  dim as float d = min(dot( a, a ),dot(b, b))
-  dim as float s = max( k*(w.x*q.y-w.y*q.x),k*(w.y-q.y)  )
-  return sqrt(d)*sign(s)
+  dim as vector2 w = vector2( k_length(p.xz), p.y )
+  dim as vector2 a = w - q*k_clamp( k_dot(w,q)/k_dot(q,q), 0.0, 1.0 )
+  dim as vector2 b = w - q*vector2( k_clamp( w.x/q.x, 0.0, 1.0 ), 1.0 )
+  dim as float k = k_sign( q.y )
+  dim as float d = k_min(k_dot( a, a ),k_dot(b, b))
+  dim as float s = k_max( k*(w.x*q.y-w.y*q.x),k*(w.y-q.y)  )
+  return k_sqrt(d)*k_sign(s)
 end proc
 
 /'
@@ -924,8 +924,8 @@ FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdCone(p as vector3, c as vector2 ) as float
     ' c is the sin/cos of the angle
-    dim as vector2 q = vector2( length(p.xz), -p.y )
-    dim as float d = length(q-c*max(dot(q,c), 0.0))
+    dim as vector2 q = vector2( k_length(p.xz), -p.y )
+    dim as float d = k_length(q-c*k_max(k_dot(q,c), 0.0))
     return d * (iif((q.x*c.y-q.y*c.x)<0.0,-1.0,1.0))
 end proc
 
@@ -966,33 +966,33 @@ double _ZN12SYSTEM_BUS_T7SDCONE2ER7VECTOR3R7VECTOR2d( struct $12SYSTEM_BUS_T* TH
 FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdCone2 ( p as vector3, c as vector2, h as float ) as float
-  dim as float q = length(p.xz)
-  return max(dot(c.xy,vector2(q,p.y)),-h-p.y)
+  dim as float q = k_length(p.xz)
+  return k_max(k_dot(c.xy,vector2(q,p.y)),-h-p.y)
 end proc
 
 proc SYSTEM_BUS_T._sdCone(p as vector3, c as vector3) as float
-  dim as vector2 q = vector2( length(p.xz), p.y )
+  dim as vector2 q = vector2( k_length(p.xz), p.y )
   dim as vector2 v = vector2( c.z * c.y/c.x, -c.z )
   dim as vector2 w = v - q
-  dim as vector2 vv = vector2( dot(v,v), v.x*v.x )
-  dim as vector2 qv = vector2( dot(v,w), v.x*w.x )
-  dim as vector2 d = max(qv,0.0)*qv/vv
-  return sqrt( dot(w,w) - max(d.x,d.y) ) * sign(max(q.y*v.x-q.x*v.y,w.y))
+  dim as vector2 vv = vector2( k_dot(v,v), v.x*v.x )
+  dim as vector2 qv = vector2( k_dot(v,w), v.x*w.x )
+  dim as vector2 d = k_max(qv,0.0)*qv/vv
+  return k_sqrt( k_dot(w,w) - k_max(d.x,d.y) ) * k_sign(k_max(q.y*v.x-q.x*v.y,w.y))
 end proc
 
 proc SYSTEM_BUS_T.sdConeHQ(p as vector3, c as vector3) as float
-  dim as vector2 q = vector2( length(p.xz), p.y )
+  dim as vector2 q = vector2( k_length(p.xz), p.y )
   dim as vector2 v = vector2( c.z*c.y/c.x, -c.z )
-  dim as float vvb = dot( v, v )
-  dim as float qvb = dot( v, v-q )
+  dim as float vvb = k_dot( v, v )
+  dim as float qvb = k_dot( v, v-q )
   dim as float vvx = v.x*v.x
   dim as float qvx = v.x*(v.x-q.x)
-  dim as float hb = clamp( qvb, 0.0, vvb )
-  dim as float hx = clamp( qvx, 0.0, vvx )
+  dim as float hb = k_clamp( qvb, 0.0, vvb )
+  dim as float hx = k_clamp( qvx, 0.0, vvx )
   dim as vector2 d1 = vector2( hb*(hb-2.0*qvb)/vvb, q.x*v.y-q.y*v.x )
   dim as vector2 d2 = vector2( hx*(hx-2.0*qvx)/vvx,     q.y-v.y )
-  dim as vector2 d = min( d1, d2 )
-  return -sqrt( dot(v-q,v-q) + d.x ) * sign(d.y)
+  dim as vector2 d = k_min( d1, d2 )
+  return -k_sqrt( k_dot(v-q,v-q) + d.x ) * k_sign(d.y)
 end proc
 
 /'
@@ -1071,14 +1071,15 @@ double _ZN12SYSTEM_BUS_T12SDCAPPEDCONEER7VECTOR3ddd( struct $12SYSTEM_BUS_T* THI
 
 FreeBASIC:
 '/
+
 proc SYSTEM_BUS_T.sdCappedCone( p as vector3, h as float, r1 as float, r2 as float) as float
-  dim as vector2 q = vector2( length(p.xz), p.y )
+  dim as vector2 q = vector2( k_length(p.xz), p.y )
   dim as vector2 k1 = vector2(r2,h)
   dim as vector2 k2 = vector2(r2-r1,2.0*h)
-  dim as vector2 ca = vector2(q.x-min(q.x,iif((q.y<0.0),r1,r2)), abs(q.y)-h)
-  dim as vector2 cb = q - k1 + k2*clamp( dot(k1-q,k2)/dot2(k2), 0.0, 1.0 )
+  dim as vector2 ca = vector2(q.x-k_min(q.x,iif((q.y<0.0),r1,r2)), abs(q.y)-h)
+  dim as vector2 cb = q - k1 + k2*k_clamp( k_dot(k1-q,k2)/ dot2(k2), 0.0, 1.0 )
   dim as float s = iif((cb.x<0.0 and ca.y<0.0) , -1.0 , 1.0)
-  return s*sqrt( min(dot2(ca),dot2(cb)) )
+  return s*k_sqrt( k_min(dot2(ca),dot2(cb)) )
 end proc
 
 /'
@@ -1177,18 +1178,18 @@ FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdCappedCone overload (p as vector3, a as vector3, b as vector3, ra as float, rb as float) as float
   dim as float rba  = rb-ra
-  dim as float baba = dot(b-a,b-a)
-  dim as float papa = dot(p-a,p-a)
-  dim as float paba = dot(p-a,b-a)/baba
-  dim as float x = sqrt( papa - paba*paba*baba )
-  dim as float cax = max(0.0,x-(iif((paba<0.5),ra,rb)))
+  dim as float baba = k_dot(b-a,b-a)
+  dim as float papa = k_dot(p-a,p-a)
+  dim as float paba = k_dot(p-a,b-a)/baba
+  dim as float x = k_sqrt( papa - paba*paba*baba )
+  dim as float cax = k_max(0.0,x-(iif((paba<0.5),ra,rb)))
   dim as float cay = abs(paba-0.5)-0.5
   dim as float k = rba*rba + baba
-  dim as float f = clamp( (rba*(x-ra)+paba*baba)/k, 0.0, 1.0 )
+  dim as float f = k_clamp( (rba*(x-ra)+paba*baba)/k, 0.0, 1.0 )
   dim as float cbx = x-ra - f*rba
   dim as float cby = paba - f
   dim as float s = iif((cbx<0.0 and cay<0.0) , -1.0 , 1.0)
-  return s*sqrt( min(cax*cax + cay*cay*baba, _
+  return s*k_sqrt( k_min(cax*cax + cay*cay*baba, _
                      cbx*cbx + cby*cby*baba) )
 end proc
 
@@ -1196,8 +1197,8 @@ proc SYSTEM_BUS_T.sdConeSection(p as vector3, h as float, r1 as float, r2 as flo
   dim as float d1 = -p.y - h
   dim as float q  =  p.y - h
   dim as float si = 0.5*(r1-r2)/h
-  dim as float d2 = max( sqrt( dot(p.xz,p.xz)*(1.0-si*si)) + q*si - r2, q )
-  return length(max(vector2(d1,d2),0.0)) + min(max(d1,d2), 0.)
+  dim as float d2 = k_max( k_sqrt( k_dot(p.xz,p.xz)*(1.0-si*si)) + q*si - r2, q )
+  return k_length(k_max(vector2(d1,d2),0.0)) + k_min(k_max(d1,d2), 0.)
 end proc
 
 /'
@@ -1271,14 +1272,14 @@ FreeBASIC:
 proc SYSTEM_BUS_T.sdRoundCone( p as vector3, r1 as float, r2 as float, h as float) as float
   ' sampling independent computations (only depend on shape)
   dim as float b = (r1-r2)/h
-  dim as float a = sqrt(1.0-b*b)
+  dim as float a = k_sqrt(1.0-b*b)
 
   ' sampling dependant computations
-  dim as vector2 q = vector2( length(p.xz), p.y )
-  dim as float k = dot(q,vector2(-b,a))
-  if( k<0.0 ) then return length(q) - r1
-  if( k>a*h ) then return length(q-vector2(0.0,h)) - r2
-  return dot(q, vector2(a,b) ) - r1
+  dim as vector2 q = vector2( k_length(p.xz), p.y )
+  dim as float k = k_dot(q,vector2(-b,a))
+  if( k<0.0 ) then return k_length(q) - r1
+  if( k>a*h ) then return k_length(q-vector2(0.0,h)) - r2
+  return k_dot(q, vector2(a,b) ) - r1
 end proc
 
 /'
@@ -1373,10 +1374,10 @@ FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdSolidAngle(p as vector3, c as vector2, ra as float) as float
   ' c is the sin/cos of the angle
-  dim as vector2 q = vector2( length(p.xz), p.y )
-  dim as float l = length(q) - ra
-  dim as float m = length(q - c*clamp(dot(q,c),0.0,ra) )
-  return max(l,m*sign(c.y*q.x-c.x*q.y))
+  dim as vector2 q = vector2( k_length(p.xz), p.y )
+  dim as float l = k_length(q) - ra
+  dim as float m = k_length(q - c*k_clamp(k_dot(q,c),0.0,ra) )
+  return k_max(l,m*k_sign(c.y*q.x-c.x*q.y))
 end proc
 
 /'
@@ -1445,14 +1446,14 @@ FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdCutSphere( p as vector3, r as float, h as float ) as float
   ' sampling independent computations (only depend on shape)
-  dim as float w = sqrt(r*r-h*h)
+  dim as float w = k_sqrt(r*r-h*h)
   
   ' sampling dependant computations
-  dim as vector2 q = vector2( length(p.xz), p.y )
-  dim as float s = max( (h-r)*q.x*q.x+w*w*(h+r-2.0*q.y), h*q.x-w*q.y )
-  return iif((s<0.0) , length(q)-r , _
+  dim as vector2 q = vector2( k_length(p.xz), p.y )
+  dim as float s =k_max( (h-r)*q.x*q.x+w*w*(h+r-2.0*q.y), h*q.x-w*q.y )
+  return iif((s<0.0) , k_length(q)-r , _
          iif((q.x<w) , h - q.y     , _
-                   length(q-vector2(w,h))))
+                   k_length(q-vector2(w,h))))
 end proc
 
 /'
@@ -1507,12 +1508,12 @@ FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdCutHollowSphere( p as vector3, r as float, h as float, t as float) as float
   ' sampling independent computations (only depend on shape)
-  dim as float w = sqrt(r*r-h*h)
+  dim as float w = k_sqrt(r*r-h*h)
   
   ' sampling dependant computations
-  dim as vector2 q = vector2( length(p.xz), p.y )
-  return (iif((h*q.x<w*q.y) , length(q-vector2(w,h)) , _
-                          abs(length(q)-r) )) - t
+  dim as vector2 q = vector2( k_length(p.xz), p.y )
+  return (iif((h*q.x<w*q.y) , k_length(q-vector2(w,h)) , _
+                          abs(k_length(q)-r) )) - t
 end proc
 
 /'
@@ -1584,21 +1585,21 @@ FreeBASIC:
 proc SYSTEM_BUS_T.sdDeathStar(p2 as vector3, ra as float, rb as float, d as float) as float
   ' sampling independent computations (only depend on shape)
   dim as float a = (ra*ra - rb*rb + d*d)/(2.0*d)
-  dim as float b = sqrt(max(ra*ra-a*a,0.0))
+  dim as float b = k_sqrt(k_max(ra*ra-a*a,0.0))
 	
   ' sampling dependant computations
-  dim as vector2 p = vector2( p2.x, length(p2.yz) )
-  if( p.x*b-p.y*a > d*max(b-p.y,0.0) ) then
-    return length(p-vector2(a,b))
+  dim as vector2 p = vector2( p2.x, k_length(p2.yz) )
+  if( p.x*b-p.y*a > d*k_max(b-p.y,0.0) ) then
+    return k_length(p-vector2(a,b))
   else
-    return max( (length(p          )-ra), _
-               -(length(p-vector2(d,0))-rb))
+    return k_max( (k_length(p          )-ra), _
+                 -(k_length(p-vector2(d,0))-rb))
   end if             
 end proc
 
 proc SYSTEM_BUS_T.sdWobbleCube( p as vector3, s as float) as float
   ' Modified cube
-  return max (max(abs(p.x)-s + sin(p.y*10.0)*0.05 , abs(p.y)-s) , abs(p.z)-s )
+  return k_max (k_max(abs(p.x)-s + sin(p.y*10.0)*0.05 , abs(p.y)-s) , abs(p.z)-s )
 end function
 
 proc SYSTEM_BUS_T.udTriangle(p as vector3, a as vector3, b as vector3, c as vector3) as float
@@ -1609,17 +1610,17 @@ proc SYSTEM_BUS_T.udTriangle(p as vector3, a as vector3, b as vector3, c as vect
   dim as vector3 pa = p - a
   dim as vector3 pb = p - b
   dim as vector3 pc = p - c
-  dim as vector3 nor = cross( ba, ac )
+  dim as vector3 nor = k_cross( ba, ac )
   'windowtitle "" & nor.x & "," & nor.y & "," & nor.z
-  return sqrt( iif(sign(dot(cross(ba,nor),pa)) _
-                  + sign(dot(cross(cb,nor),pb)) _
-                  + sign(dot(cross(ac,nor),pc))<2.0, min( min( _
-    dot2(ba*clamp(dot(ba,pa)/dot2(ba),0.0,1.0)-pa), _
-    dot2(cb*clamp(dot(cb,pb)/dot2(cb),0.0,1.0)-pb)), _
-    dot2(ac*clamp(dot(ac,pc)/dot2(ac),0.0,1.0)-pc)),  dot(nor,pa)*dot(nor,pa)/dot2(nor)) )
+  return k_sqrt( iif(k_sign(k_dot(k_cross(ba,nor),pa)) _
+                   + k_sign(k_dot(k_cross(cb,nor),pb)) _
+                   + k_sign(k_dot(k_cross(ac,nor),pc))<2.0, k_min( k_min( _
+    dot2(ba*k_clamp(k_dot(ba,pa)/dot2(ba),0.0,1.0)-pa), _
+    dot2(cb*k_clamp(k_dot(cb,pb)/dot2(cb),0.0,1.0)-pb)), _
+    dot2(ac*k_clamp(k_dot(ac,pc)/dot2(ac),0.0,1.0)-pc)),  k_dot(nor,pa)*k_dot(nor,pa)/dot2(nor)) )
 end proc
 
-proc udQuad(p as vector3, a as vector3, b as vector3, c as vector3, d as vector3) as float
+proc SYSTEM_BUS_T.udQuad(p as vector3, a as vector3, b as vector3, c as vector3, d as vector3) as float
   dim as vector3 ba = b - a
   dim as vector3 pa = p - a
   dim as vector3 cb = c - b
@@ -1628,23 +1629,23 @@ proc udQuad(p as vector3, a as vector3, b as vector3, c as vector3, d as vector3
   dim as vector3 pc = p - c
   dim as vector3 ad = a - d
   dim as vector3 pd = p - d
-  dim as vector3 nor = cross( ba, ad )
-  dim as float s = sign(dot(cross(ba,nor),pa)) _
-                + sign(dot(cross(cb,nor),pb)) _
-                + sign(dot(cross(dc,nor),pc)) _
-                + sign(dot(cross(ad,nor),pd))
-  if( s<3.0) then return sqrt(min( min( min( _
-    dot2(ba*clamp(dot(ba,pa)/dot2(ba),0.0,1.0)-pa), _
-    dot2(cb*clamp(dot(cb,pb)/dot2(cb),0.0,1.0)-pb)), _
-    dot2(dc*clamp(dot(dc,pc)/dot2(dc),0.0,1.0)-pc)), _
-    dot2(ad*clamp(dot(ad,pd)/dot2(ad),0.0,1.0)-pd)))
+  dim as vector3 nor = k_cross( ba, ad )
+  dim as float s = k_sign(k_dot(k_cross(ba,nor),pa)) _
+                 + k_sign(k_dot(k_cross(cb,nor),pb)) _
+                 + k_sign(k_dot(k_cross(dc,nor),pc)) _
+                 + k_sign(k_dot(k_cross(ad,nor),pd))
+  if( s<3.0) then return k_sqrt(k_min( k_min( k_min( _
+    dot2(ba*k_clamp(k_dot(ba,pa)/dot2(ba),0.0,1.0)-pa), _
+    dot2(cb*k_clamp(k_dot(cb,pb)/dot2(cb),0.0,1.0)-pb)), _
+    dot2(dc*k_clamp(k_dot(dc,pc)/dot2(dc),0.0,1.0)-pc)), _
+    dot2(ad*k_clamp(k_dot(ad,pd)/dot2(ad),0.0,1.0)-pd)))
 
-  return sqrt(dot(nor,pa)*dot(nor,pa)/dot2(nor))
+  return k_sqrt(k_dot(nor,pa)*k_dot(nor,pa)/dot2(nor))
 end proc
 
 ' operator subtract
 proc SYSTEM_BUS_T.opS(d1 as float, d2 as float) as float
-  return max(-d2,d1)
+  return k_max(-d2,d1)
 end proc
 
 ' operator union
@@ -1654,31 +1655,31 @@ end proc
 
 ' operator intersect
 proc SYSTEM_BUS_T.opI(d1 as float, d2 as float ) as float
-  return max(d1,d2)
+  return k_max(d1,d2)
 end proc
 
 ' operator repeat
 proc SYSTEM_BUS_T.opRep(p as vector3, c as vector3) as vector3
-  return modulo(p,c)-c*.5
+  return k_modulo(p,c)-c*.5
 end proc
 
 ' exponential smooth min
 proc SYSTEM_BUS_T.ExpSmin(a as float, b as float, k as float=32) as float
-  dim as float res = exp( -k*a ) + exp( -k*b )
-  return -log(res)/k
+  dim as float res = k_exp( -k*a ) + k_exp( -k*b )
+  return -k_log(res)/k
 end proc
 
 ' polynomial smooth min
 proc SYSTEM_BUS_T.PolySmin(a as float, b as float, k as float=0.1) as float
-  dim as float h = clamp( 0.5+0.5*(b-a)/k, 0.0, 1.0 )
-  return mix( b, a, h ) - k*h*(1.0-h)
+  dim as float h = k_clamp( 0.5+0.5*(b-a)/k, 0.0, 1.0 )
+  return k_mix( b, a, h ) - k*h*(1.0-h)
 end proc
 
 ' power smooth min
 proc SYSTEM_BUS_T.PowSmin(a as float, b as float, k as float=8) as float
-  a = pow(a, k)
-  b = pow(b, k)
-  return pow( (a*b)/(a+b), 1.0/k )
+  a = k_pow(a, k)
+  b = k_pow(b, k)
+  return k_pow( (a*b)/(a+b), 1.0/k )
 end proc
 
 proc SYSTEM_BUS_T.opTwist(p as vector3) as vector3
@@ -1712,9 +1713,9 @@ proc SYSTEM_BUS_T.map( p3 as vector3 ) as vector2
                          sdSphere  (p3-vector3(-2.0,0.2, 1.0), 0.25)), 13.0 ) )
    
    res2 = opU( res2, vector2( opS( sdTorus82 (p3-vector3(-2.0,0.2, 0.0), vector2(0.20,0.1)), _
-                              sdCylinder(opRep(vector3(atan(p3.x+2.0,p3.z)/6.2831, _
+                              sdCylinder(opRep(vector3(k_atan(p3.x+2.0,p3.z)/6.2831, _
                                                     p3.y, _
-                                                    0.02+0.5*length(p3-vector3(-2.0,0.2,0.0))), _
+                                                    0.02+0.5*k_length(p3-vector3(-2.0,0.2,0.0))), _
                                                vector3(0.05,1.0,0.05) ), vector2(0.02,0.6))), 51.0 ) )
 
    res2 = opU( res2, vector2( 0.7*sdSphere(    p3-vector3(-2.0,0.25,-1.0), 0.2 ) + _
@@ -1763,18 +1764,18 @@ proc SYSTEM_BUS_T.softshadow() as float
   t = mint
   for i as integer=0 to SHADOW_SETPS-1
     h = map( ro + rd*t ).x
-    resf = min( resf, 8.0*h/t )
-    t += clamp( h, 0.02, 0.10 )
+    resf = k_min( resf, 8.0*h/t )
+    t += k_clamp( h, 0.02, 0.10 )
     if( h<0.001 or t>tmax ) then exit for
   next
-  return clamp(resf,0,1)
+  return k_clamp(resf,0,1)
 end proc
 
 proc SYSTEM_BUS_T.calcNormal() as vector3
   EPS=0.001
-  return normalize(vector3(map(vector3(p3.x+EPS,p3.y,p3.z)).x - map(vector3(p3.x-EPS,p3.y,p3.z)).x, _
-                           map(vector3(p3.x,p3.y+EPS,p3.z)).x - map(vector3(p3.x,p3.y-EPS,p3.z)).x, _
-                           map(vector3(p3.x,p3.y,p3.z+EPS)).x - map(vector3(p3.x,p3.y,p3.z-EPS)).x ))
+  return k_normalize(vector3(map(vector3(p3.x+EPS,p3.y,p3.z)).x - map(vector3(p3.x-EPS,p3.y,p3.z)).x, _
+                             map(vector3(p3.x,p3.y+EPS,p3.z)).x - map(vector3(p3.x,p3.y-EPS,p3.z)).x, _
+                             map(vector3(p3.x,p3.y,p3.z+EPS)).x - map(vector3(p3.x,p3.y,p3.z-EPS)).x ))
 end proc
 
 proc SYSTEM_BUS_T.calcAO() as float
@@ -1788,7 +1789,7 @@ proc SYSTEM_BUS_T.calcAO() as float
     sca *= 0.95
   next
   occ = 1 - 3.0*occ
-  return clamp(occ, 0.0, 1.0 )
+  return k_clamp(occ, 0.0, 1.0 )
 end proc
 
 proc SYSTEM_BUS_T.haversineISH(x as float) as float
@@ -1885,7 +1886,7 @@ proc SYSTEM_BUS_T.RENDER_GLSL() as vector3
       ' ground plane with checker board
       nor = vector3(0,1,0)
       'col = mod(rfloor(p.x*1) + rfloor(p.z*1),2)*vector3(1)*.4+.1
-      col = modulo(floor(p3.x*1) + floor(p3.z*1),2)*vector3(.4)+.1
+      col = k_modulo(k_floor(p3.x*1) + k_floor(p3.z*1),2)*vector3(.4)+.1
     else
       ' primitives
       nor = calcNormal()
@@ -1893,15 +1894,15 @@ proc SYSTEM_BUS_T.RENDER_GLSL() as vector3
     end if
 
     ' lighitng
-    ref      = reflect( rd, nor )
+    ref      = k_reflect( rd, nor )
     occ      = calcAO()
-    light    = normalize( vector3(1, 1, -1) )
-    ambient  = clamp( 0.5+0.5*nor.y, 0.0, 1.0 )
-    diffuse  = clamp( dot( nor, light ), 0.0, 1.0 )
-    bac      = clamp( dot( nor, normalize(vector3(-light.x,0.0,-light.z))), 0.0, 1.0 )*clamp( 1.0-p3.y,0.0,1.0)
-    dom      = smoothstep( -0.1, 0.1, ref.y )
-    fr       = pow(clamp(1.0+dot(nor,rd),0.0,1.0), 2.0 )
-    specular = pow(clamp( dot( ref, light ), 0.0, 1.0 ),16.0)
+    light    = k_normalize( vector3(1, 1, -1) )
+    ambient  = k_clamp( 0.5+0.5*nor.y, 0.0, 1.0 )
+    diffuse  = k_clamp( k_dot( nor, light ), 0.0, 1.0 )
+    bac      = k_clamp( k_dot( nor, k_normalize(vector3(-light.x,0.0,-light.z))), 0.0, 1.0 )*k_clamp( 1.0-p3.y,0.0,1.0)
+    dom      = k_smoothstep( -0.1, 0.1, ref.y )
+    fr       = k_pow(k_clamp(1.0+k_dot(nor,rd),0.0,1.0), 2.0 )
+    specular = k_pow(k_clamp( k_dot( ref, light ), 0.0, 1.0 ),16.0)
 
     mint = 0.02
     tmax = 2.5
@@ -1919,16 +1920,16 @@ proc SYSTEM_BUS_T.RENDER_GLSL() as vector3
     lin += 0.40*fr      *vector3(1.00,1.00,1.00)*occ
     col = col*lin
 
-    col = mix( col, vector3(0.8,0.9,1.0), 1.0-exp( -0.002*t*t ) )
+    col = k_mix( col, vector3(0.8,0.9,1.0), 1.0-k_exp( -0.002*t*t ) )
   end if
-  return vector3(clamp(col,0.0,1.0) )
+  return vector3(k_clamp(col,0.0,1.0) )
 end proc
 
 proc SYSTEM_BUS_T.setCamera() as mat3
-  cw = normalize(ta-ro)
+  cw = k_normalize(ta-ro)
   cp = vector3(sin(cr), cos(cr),0.0)
-  cu = normalize( cross(cw,cp) )
-  cv = normalize( cross(cu,cw) )
+  cu = k_normalize( k_cross(cw,cp) )
+  cv = k_normalize( k_cross(cu,cw) )
   return mat3( cu, cv, cw )
 end function
 
@@ -1936,26 +1937,26 @@ proc SYSTEM_BUS_T.Spectrum(x as float ) as vector3
     ' https://www.shadertoy.com/view/wlSBzD
 	dim as float r, g, b
     
-    r = iif(x<.16 , smoothstep(0., .16, x)*.169 , _
-    	iif(x<.22 , smoothstep(.22, .16, x)*.134+.035 , _
-    	iif(x<.41 , smoothstep(.22, .41, x)*.098+.035 , _
-    	iif(x<.64 , smoothstep(.41,.64,x)*.851+.133 , _
-    			    smoothstep(1., .64, x)*.984))))
+    r = iif(x<.16 , k_smoothstep(0., .16, x)*.169 , _
+    	iif(x<.22 , k_smoothstep(.22, .16, x)*.134+.035 , _
+    	iif(x<.41 , k_smoothstep(.22, .41, x)*.098+.035 , _
+    	iif(x<.64 , k_smoothstep(.41,.64,x)*.851+.133 , _
+    			    k_smoothstep(1., .64, x)*.984))))
     
     g = iif(x<.05 , 0. , _
-    	iif(x<.15 , smoothstep(.05, .15, x)*.047 , _
-    	iif(x<.45 , smoothstep(.15, .45, x)*.882+.047 , _
-    	iif(x<.70 , smoothstep(.70, .45, x)*.796+.133 , _
-    			    smoothstep(1.0, .70, x)*.133))))
+    	iif(x<.15 , k_smoothstep(.05, .15, x)*.047 , _
+    	iif(x<.45 , k_smoothstep(.15, .45, x)*.882+.047 , _
+    	iif(x<.70 , k_smoothstep(.70, .45, x)*.796+.133 , _
+    			    k_smoothstep(1.0, .70, x)*.133))))
     
-    b = iif(x<.18 , smoothstep(0.0, .18, x)*.5 , _
-    	iif(x<.22 , smoothstep(.22, .18, x)*.1+.4 , _
-    	iif(x<.35 , smoothstep(.22, .35, x)*.059+.4 , _
-    	iif(x<.54 , smoothstep(.54, .35, x)*.334+.125 , _
-    	iif(x<.60 , smoothstep(.54, .60, x)*.169+.125 , _
-    	iif(x<.69 , smoothstep(.69, .60, x)*.243+.051 , _
-    	iif(x<.72 , smoothstep(.69, .72, x)*.043+.051 , _
-    	iif(x<.89 , smoothstep(.89, .72, x)*.094 , 0.))))))))
+    b = iif(x<.18 , k_smoothstep(0.0, .18, x)*.5 , _
+    	iif(x<.22 , k_smoothstep(.22, .18, x)*.1+.4 , _
+    	iif(x<.35 , k_smoothstep(.22, .35, x)*.059+.4 , _
+    	iif(x<.54 , k_smoothstep(.54, .35, x)*.334+.125 , _
+    	iif(x<.60 , k_smoothstep(.54, .60, x)*.169+.125 , _
+    	iif(x<.69 , k_smoothstep(.69, .60, x)*.243+.051 , _
+    	iif(x<.72 , k_smoothstep(.69, .72, x)*.043+.051 , _
+    	iif(x<.89 , k_smoothstep(.89, .72, x)*.094 , 0.))))))))
     
     return vector3(r,g,b)
 end proc
@@ -1993,11 +1994,11 @@ def SYSTEM_BUS_T.mainImage overload (fragColor as vector4, fragCoord as const ve
   ca = setCamera()
    
   ' ray direction
-  rd = ca * normalize( vector3(p2.xy,2.0) )
+  rd = ca * k_normalize( vector3(p2.xy,2.0) )
   ' render 
   dim as vector3 col = RENDER_GLSL()
   ' gamma
-  fragColor = vector4(pow( col, vector3(0.4545) ))
+  fragColor = vector4(k_pow( col, vector3(0.4545) ))
   
   /'  
   ' Normalized pixel coordinates (from 0 to 1)

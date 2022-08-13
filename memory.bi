@@ -1890,7 +1890,7 @@ _
     etc.
 '/
 
-proc SYSTEM_BUS_T.mem64_static_malloc(size as uinteger) as SYSTEM_TYPE ptr
+proc SYSTEM_BUS_T.mem64_static_malloc(size as uint32) as SYSTEM_TYPE ptr
     size += 7
     size -= (size and 7) ' align to 8 byte boundry
     if ((mov(mem_static_pointer,mem_static_pointer add size)) < mem_static_limit) then
@@ -1926,7 +1926,7 @@ end def
 ' stores blocks, not free memory, because blocks are easier to identify
 ' always scanned from beginning to end, so prev. pointer is unnecessary
 
-proc SYSTEM_BUS_T.mem64_dynamic_malloc(size as uinteger) as SYSTEM_TYPE ptr
+proc SYSTEM_BUS_T.mem64_dynamic_malloc(size as uint32) as SYSTEM_TYPE ptr
     static as integer i
     static as SYSTEM_TYPE ptr top
     static as mem64_dynamic_link_type ptr link
@@ -2032,7 +2032,7 @@ check_next:
     return
 end def
 
-def SYSTEM_BUS_T.sub_defseg(segment as integer, passed as integer)
+def SYSTEM_BUS_T.sub_defseg(segment as int32, passed as int32)
     if (new_error) then
         return
     end if    
@@ -2040,7 +2040,7 @@ def SYSTEM_BUS_T.sub_defseg(segment as integer, passed as integer)
      if ((segment < -65536) or (segment > 65535)) then ' same range as QB checks
         error(6)
      else 
-        defseg = @mem64(0) + (peek(ushort,segment)) * 16
+        defseg = @mem64(0) + (peek(uint16,@segment)) * 16
      end if   
     else
         defseg = @mem64(1280)
@@ -2048,7 +2048,7 @@ def SYSTEM_BUS_T.sub_defseg(segment as integer, passed as integer)
     end if
 end def
 
-proc SYSTEM_BUS_T.func_peek(offset as integer) as integer
+proc SYSTEM_BUS_T.func_peek(offset as int32) as int32
     if ((offset < -65536) or (offset > 65535)) then ' same range as QB checks
         error(6)
         return 0
@@ -2057,7 +2057,7 @@ proc SYSTEM_BUS_T.func_peek(offset as integer) as integer
     'return defseg[(uint16)offset];
 end proc
 
-def SYSTEM_BUS_T.sub_poke(offset as integer, value as integer)
+def SYSTEM_BUS_T.sub_poke(offset as int32, value as int32)
     if (new_error) then
         return
     end if    
@@ -2073,7 +2073,7 @@ def SYSTEM_BUS_T.more_return_points()
         error(256)
     end if    
     return_points *= 2
-    return_point = peek(uinteger ptr,realloc(return_point, return_points * 4))
+    return_point = peek(uint32 ptr,realloc(return_point, return_points * 4))
     if (return_point = 0) then
         error(256)
     end if
@@ -3040,7 +3040,7 @@ template <typename T> static T qbs_cleanup(uint32 base, T passvalue) {
 }
 '/
 
-proc SYSTEM_BUS_T.func_lbound(array as ptrszint ptr, index as integer, num_indexes as integer) as ptrszint
+proc SYSTEM_BUS_T.func_lbound(array as ptrszint ptr, index as int32, num_indexes as int32) as ptrszint
     if ((index < 1) or (index > num_indexes) or ((array[2] and 1) = 0)) then
         error(9)
         return 0
@@ -3049,7 +3049,7 @@ proc SYSTEM_BUS_T.func_lbound(array as ptrszint ptr, index as integer, num_index
     return array[4 * index]
 end proc
 
-proc SYSTEM_BUS_T.func_ubound(array as ptrszint ptr, index as integer, num_indexes as integer)  as ptrszint
+proc SYSTEM_BUS_T.func_ubound(array as ptrszint ptr, index as int32, num_indexes as int32)  as ptrszint
     if ((index < 1) or (index > num_indexes) or ((array[2] and 1) = 0)) then
         error(9)
         return 0
@@ -3108,7 +3108,7 @@ proc SYSTEM_BUS_T.qbr_longdouble_to_uint64(f as double) as ulongint
     end if    
 end proc
 
-proc SYSTEM_BUS_T.qbr_float_to_long(f as double) as integer
+proc SYSTEM_BUS_T.qbr_float_to_long(f as float) as int64
     if (f < 0) then
         return (f - 0.5d)
     else
@@ -3116,7 +3116,7 @@ proc SYSTEM_BUS_T.qbr_float_to_long(f as double) as integer
     end if
 end proc
 
-proc SYSTEM_BUS_T.qbr_double_to_long(f as double) as integer
+proc SYSTEM_BUS_T.qbr_double_to_long(f as float) as int32
     if (f < 0) then
         return (f - 0.5d)
     else
@@ -3128,7 +3128,7 @@ def SYSTEM_BUS_T.fpu_reinit() ' do nothing
 end def
 
 ' I/O emulation
-def SYSTEM_BUS_T.sub__blink(onoff as integer)
+def SYSTEM_BUS_T.sub__blink(onoff as int32)
     if (onoff = 1) then
         H3C0_blink_enable = 1
     else
@@ -3136,12 +3136,12 @@ def SYSTEM_BUS_T.sub__blink(onoff as integer)
     end if    
 end def
 
-proc SYSTEM_BUS_T.func__blink() as integer
+proc SYSTEM_BUS_T.func__blink() as int32
     return -H3C0_blink_enable
 end proc    
 
 
-def SYSTEM_BUS_T.sub_out(port as integer, data_out as integer)
+def SYSTEM_BUS_T.sub_out(port as int32, data_out as int32)
     if (new_error) then
         return
     end if    
@@ -3213,8 +3213,8 @@ error_ret:
     error(5)
 end def
 
-proc SYSTEM_BUS_T.func_inp(port as integer) as integer
-    static as integer value
+proc SYSTEM_BUS_T.func_inp(port as int32) as int32
+    static as int32 value
     unsupported_port_accessed = 0
     if ((port > 65535) or (port < -65536)) then
         error(6)
@@ -3226,15 +3226,15 @@ proc SYSTEM_BUS_T.func_inp(port as integer) as integer
         if (write_page->pal) then ' avoid NULL pointer
             ' convert 0-255 value to 0-63 value
             if (H3C9_read_next = 0) then ' red
-                value = qbr_double_to_long(((cast(double,((write_page->pal[H3C7_palette_register_read_index] _
+                value = qbr_double_to_long(((cast(float,((write_page->pal[H3C7_palette_register_read_index] _
                                                   shr 16) and 255))) / 3.984376 - 0.4999999d))
             end if
             if (H3C9_read_next = 1) then ' green
-                value = qbr_double_to_long(((cast(double,((write_page->pal[H3C7_palette_register_read_index] _
+                value = qbr_double_to_long(((cast(float,((write_page->pal[H3C7_palette_register_read_index] _
                                                   shr 8) and 255))) / 3.984376 - 0.4999999d))
             end if
             if (H3C9_read_next = 2) then ' blue
-                value = qbr_double_to_long((cast(double,((write_page->pal[H3C7_palette_register_read_index] _
+                value = qbr_double_to_long((cast(float,((write_page->pal[H3C7_palette_register_read_index] _
                                                   and 255))) / 3.984376 - 0.4999999d))
             end if            
             H3C9_read_next = H3C9_read_next + 1
@@ -3287,7 +3287,7 @@ proc SYSTEM_BUS_T.func_inp(port as integer) as integer
     return 0 ' unknown port!
 end proc
 
-def SYSTEM_BUS_T.sub_wait(port as integer, andexpression as integer, xorexpression as integer, passed as integer)
+def SYSTEM_BUS_T.sub_wait(port as int32, andexpression as int32, xorexpression as int32, passed as int32)
     if (new_error) then
         return
     end if
@@ -3296,7 +3296,7 @@ def SYSTEM_BUS_T.sub_wait(port as integer, andexpression as integer, xorexpressi
     ' 3. value^=andexpression
     ' IMPORTANT: Wait returns immediately if given port is unsupported by QB64 so program
     '           can continue
-    static as integer value
+    static as int32 value
 
     ' error & range checking
     if ((port > 65535) or (port < -65536)) then
@@ -3331,53 +3331,133 @@ wait_loop:
 end def
 
 ' inline functions 
-def SYSTEM_BUS_T.swap_8(a as ubyte ptr, b as ubyte ptr)
-    dim as ubyte ptr x
-    poke ubyte ptr,@x,peek(ubyte ptr,@a)
-    poke ubyte ptr,@a,peek(ubyte ptr,@b)
-    poke ubyte ptr,@b,peek(ubyte ptr,@x)
+def SYSTEM_BUS_T.swap_8(a as any ptr, b as any ptr)
+    dim as uint8 ptr x
+    poke uint8 ptr,@x,peek(uint8 ptr,@a)
+    poke uint8 ptr,@a,peek(uint8 ptr,@b)
+    poke uint8 ptr,@b,peek(uint8 ptr,@x)
 end def
-def SYSTEM_BUS_T.swap_16(a as ushort ptr, b as ushort ptr)
-    dim as ushort ptr x
-    poke ushort ptr,@x,peek(ushort ptr,@x)
-    poke ushort ptr,@a,peek(ushort ptr,@b)
-    poke ushort ptr,@b,peek(ushort ptr,@x)
+def SYSTEM_BUS_T.swap_16(a as any ptr, b as any ptr)
+    dim as uint16 ptr x
+    poke uint16 ptr,@x,peek(uint16 ptr,@x)
+    poke uint16 ptr,@a,peek(uint16 ptr,@b)
+    poke uint16 ptr,@b,peek(uint16 ptr,@x)
 end def    
-def SYSTEM_BUS_T.swap_32(a as uinteger ptr, b as uinteger ptr)
-    dim as uinteger ptr x
-    poke uinteger ptr,@x,peek(uinteger ptr,@a)
-    poke uinteger ptr,@a,peek(uinteger ptr,@b)
-    poke uinteger ptr,@b,peek(uinteger ptr,@x)
+def SYSTEM_BUS_T.swap_32(a as any ptr, b as any ptr)
+    dim as uint32 ptr x
+    poke uint32 ptr,@x,peek(uint32 ptr,@a)
+    poke uint32 ptr,@a,peek(uint32 ptr,@b)
+    poke uint32 ptr,@b,peek(uint32 ptr,@x)
 end def
-def SYSTEM_BUS_T.swap_64(a as ulongint ptr, b as ulongint ptr)
-    dim as ulongint ptr x
-    poke ulongint ptr,@x,peek(ulongint ptr,@a)
-    poke ulongint ptr,@a,peek(ulongint ptr,@b)
-    poke ulongint ptr,@b,peek(ulongint ptr,@x)
+def SYSTEM_BUS_T.swap_64(a as any ptr, b as any ptr)
+    dim as uint64 ptr x
+    poke uint64 ptr,@x,peek(uint64 ptr,@a)
+    poke uint64 ptr,@a,peek(uint64 ptr,@b)
+    poke uint64 ptr,@b,peek(uint64 ptr,@x)
 end def
-def SYSTEM_BUS_T.swap_longdouble(a  as double ptr, b as double ptr)
-    dim as double ptr x
-    poke double ptr,@x,peek(double ptr,@a)
-    poke double ptr,@a,peek(double ptr,@b)
-    poke double ptr,@b,peek(double ptr,@x)
+def SYSTEM_BUS_T.swap_longdouble(a  as any ptr, b as any ptr)
+    dim as float ptr x
+    poke float ptr,@x,peek(float ptr,@a)
+    poke float ptr,@a,peek(float ptr,@b)
+    poke float ptr,@b,peek(float ptr,@x)
+end def
+def swap_block(a as any ptr, b as any ptr, bytes as uint32)
+    static as uint32 quads
+    quads = bytes shr 2
+    static as uint32 ptr a32
+    static as uint32 ptr b32
+    a32 = peek(uint32 ptr,@a)
+    b32 = peek(uint32 ptr,@b)
+    while (quads)
+        static as uint32 c
+        c = *a32
+        *a32 = *b32: *a32 += 1
+        *b32= c: *b32 += 1
+        quads -= 1 
+    wend
+    bytes = bytes and 3
+    static as uint8 ptr a8
+    static as uint8 ptr b8
+    a8 = peek(uint8 ptr, @a32)
+    b8 = peek(uint8 ptr, @b32)
+    while (bytes)
+        static as uint8 c
+        c = *a8
+        *a8 = *b8: *a8 += 1
+        *b8 = c: *b8 += 1
+        bytes -= 1
+    wend
 end def
 
 ' bit-shifting
-proc SYSTEM_BUS_T.func__shl(a1 as ulongint, b1 as integer) as ulongint
+proc SYSTEM_BUS_T.func__shl(a1 as uint64, b1 as int_t) as uint64
    return a1 shl b1
 end proc
 
-proc SYSTEM_BUS_T.func__shr(a1 as ulongint, b1 as integer) as ulongint
+proc SYSTEM_BUS_T.func__shr(a1 as uint64, b1 as int_t) as uint64
    return a1 shr b1
 end proc   
 
-proc SYSTEM_BUS_T.func__readbit(a1 as ulongint, b1 as integer) as longint
+proc SYSTEM_BUS_T.func__readbit(a1 as uint64, b1 as int_t) as uint64
     if (a1 and 1ull shl b1) then
         return -1
     else
         return 0
     end if
 end proc
+
+
+proc SYSTEM_BUS_T.func__setbit(a1 as uint64, b1 as int_t) as uint64 
+    return a1 or 1ull shl b1
+end proc
+
+proc SYSTEM_BUS_T.func__resetbit(a1 as uint64, b1 as int_t) as uint64 
+    return a1 and not (1ull shl b1)
+end proc
+
+proc SYSTEM_BUS_T.func__togglebit(a1 as uint64, b1 as int_t) as uint64 
+    return a1 xor 1ull shl b1
+end proc
+
+' bit-array access functions (note: used to be included through 'bit.cpp')
+proc SYSTEM_BUS_T.getubits(bsize as uint32, _base as uint8 ptr, i as ptrszint) as uint64
+    static as int64 bmask, n=1
+    bmask = not (-((peek(int64,@n))) shl bsize)
+    i *= bsize
+    return ((*cptr(uint64 ptr,(_base + (i shr 3)))) shr (i and 7)) and bmask
+end proc
+
+proc SYSTEM_BUS_T.getbits(bsize as uint32, _base as uint8 ptr, i as ptrszint) as int64
+    static as int64 bmask, bval64, n=1
+    bmask = not (-((peek(int64,@n)) shl bsize))
+    i *= bsize
+    bval64 = ((*cptr(uint64 ptr,(_base + (i shr 3))) shr (i and 7))) and bmask
+    if (bval64 and ((peek(int64,@n)) shl (bsize - 1))) then
+        return bval64 or (not bmask)
+    end if    
+    return bval64
+end proc
+
+proc SYSTEM_BUS_T.call_getubits  (bsize as uint32, array as ptrszint ptr, i as ptrszint) as uint64
+    return getubits(bsize, peek(uint8 ptr, *cptr(ptrszint ptr,array)), i)
+end proc
+
+proc SYSTEM_BUS_T.call_getbits   (bsize as uint32, array as ptrszint ptr, i as ptrszint) as int64
+    return getbits(bsize, peek(uint8 ptr, *cptr(ptrszint ptr,array)), i)
+end proc
+
+def SYSTEM_BUS_T.call_setbits   (bsize as uint32, array as ptrszint ptr, i as ptrszint, _val as int64)
+    setbits(bsize, peek(uint8 ptr, *cptr(ptrszint ptr,array)), i, _val)
+end def
+
+def  SYSTEM_BUS_T.setbits(bsize as uint32, _base as uint8 ptr, i as ptrszint, _val as int64)
+    static as int64 bmask,n=1
+    static as uint64 ptr bptr64
+    bmask = ((peek(uint64,@n)) shl bsize) - 1
+    i *= bsize
+    bptr64 = peek(uint64 ptr,(_base + (i shr 3)))
+    *bptr64 = (*cptr(uint64 ptr,bptr64) and (((bmask shl (i and 7)) xor -1))) or ((_val and bmask) shl (i and 7))
+end def
 
 ' CSNG
 proc SYSTEM_BUS_T.func_csng_float(value as single) as float
@@ -3388,7 +3468,7 @@ proc SYSTEM_BUS_T.func_csng_float(value as single) as float
     return 0
 end proc
 
-proc SYSTEM_BUS_T.func_csng_double(value as double) as double
+proc SYSTEM_BUS_T.func_csng_double(value as float) as float
     if ((value <= 3.402823466E38) and (value >= -3.402823466E38)) then
         return value
     end if
@@ -3397,7 +3477,7 @@ proc SYSTEM_BUS_T.func_csng_double(value as double) as double
 end proc
 
 ' CDBL
-proc SYSTEM_BUS_T.func_cdbl_float(value as double) as double
+proc SYSTEM_BUS_T.func_cdbl_float(value as float) as float
     if ((value <= 1.7976931348623157E308) and _
         (value >= -1.7976931348623157E308)) then
         return value
@@ -3408,7 +3488,7 @@ end proc
 
 ' CINT
 ' func_cint_single uses func_cint_double
-proc SYSTEM_BUS_T.func_cint_double(value as double) as integer
+proc SYSTEM_BUS_T.func_cint_double(value as float) as int32
     if ((value < 32767.5) and (value >= -32768.5)) then
         return qbr_double_to_long(value)
     end if
@@ -3416,7 +3496,7 @@ proc SYSTEM_BUS_T.func_cint_double(value as double) as integer
     return 0
 end proc
 
-proc SYSTEM_BUS_T.func_cint_float(value as float) as longint
+proc SYSTEM_BUS_T.func_cint_float(value as float) as int64
     if ((value < 32767.5) and (value >= -32768.5)) then
         return qbr(value)
     end if
@@ -3424,7 +3504,7 @@ proc SYSTEM_BUS_T.func_cint_float(value as float) as longint
     return 0
 end proc
 
-proc SYSTEM_BUS_T.func_cint_long(value as integer) as short
+proc SYSTEM_BUS_T.func_cint_long(value as int32) as int16
     if ((value >= -32768) and (value <= 32767)) then
         return value
     end if    
@@ -3432,7 +3512,7 @@ proc SYSTEM_BUS_T.func_cint_long(value as integer) as short
     return 0
 end proc
 
-proc SYSTEM_BUS_T.func_cint_ulong(value as uinteger) as integer
+proc SYSTEM_BUS_T.func_cint_ulong(value as uint32) as int16
     if (value <= 32767) then
         return value
     end if    
@@ -3440,7 +3520,7 @@ proc SYSTEM_BUS_T.func_cint_ulong(value as uinteger) as integer
     return 0
 end proc
 
-proc SYSTEM_BUS_T.func_cint_int64(value as longint) as short
+proc SYSTEM_BUS_T.func_cint_int64(value as int64) as int16
     if ((value >= -32768) and (value <= 32767)) then
         return value
     end if    
@@ -3448,7 +3528,7 @@ proc SYSTEM_BUS_T.func_cint_int64(value as longint) as short
     return 0
 end proc
 
-proc SYSTEM_BUS_T.func_cint_uint64(value as longint) as short
+proc SYSTEM_BUS_T.func_cint_uint64(value as uint64) as int16
     if (value <= 32767) then
         return value
     end if    
@@ -3459,7 +3539,7 @@ end proc
 ' CLNG
 ' func_clng_single uses func_clng_double
 '-2147483648 to 2147483647
-proc SYSTEM_BUS_T.func_clng_double(value as double) as integer
+proc SYSTEM_BUS_T.func_clng_double(value as float) as int32
     if ((value < 2147483647.5) and (value >= -2147483648.5)) then
         return qbr_double_to_long(value)
     end if
@@ -3467,7 +3547,7 @@ proc SYSTEM_BUS_T.func_clng_double(value as double) as integer
     return 0
 end proc
 
-proc SYSTEM_BUS_T.func_clng_float(value as double) as longint
+proc SYSTEM_BUS_T.func_clng_float(value as float) as int64
     if ((value < 2147483647.5) and (value >= -2147483648.5)) then
         return qbr(value)
     end if
@@ -3475,7 +3555,7 @@ proc SYSTEM_BUS_T.func_clng_float(value as double) as longint
     return 0
 end proc
 
-proc SYSTEM_BUS_T.func_clng_ulong(value as uinteger) as integer
+proc SYSTEM_BUS_T.func_clng_ulong(value as uint32) as int32
     if (value <= 2147483647) then
         return value
     end if
@@ -3483,7 +3563,7 @@ proc SYSTEM_BUS_T.func_clng_ulong(value as uinteger) as integer
     return 0
 end proc
 
-proc SYSTEM_BUS_T.func_clng_int64(value as longint) as integer
+proc SYSTEM_BUS_T.func_clng_int64(value as int64) as int32
     if ((value >= -2147483648) and (value <= 2147483647)) then
         return value
     end if    
@@ -3491,7 +3571,7 @@ proc SYSTEM_BUS_T.func_clng_int64(value as longint) as integer
     return 0
 end proc
 
-proc SYSTEM_BUS_T.func_clng_uint64(value as ulongint) as integer
+proc SYSTEM_BUS_T.func_clng_uint64(value as uint64) as int32
     if (value <= 2147483647) then
         return value
     end if    
@@ -3500,61 +3580,247 @@ proc SYSTEM_BUS_T.func_clng_uint64(value as ulongint) as integer
 end proc
 
 ' _ROUND (note: round performs no error checking)
-proc SYSTEM_BUS_T.func_round_double(value as double) as longint
+proc SYSTEM_BUS_T.func_round_double(value as float) as int64
   return qbr(value)
 end proc
 
-proc SYSTEM_BUS_T.func_round_float(value as double) as longint 
+proc SYSTEM_BUS_T.func_round_float(value as float) as int64
   return qbr(value)
 end proc  
-/'
+
 ' force ABS to return floating point numbers correctly
-inline double func_abs(double d) { return fabs(d); }
-inline long double func_abs(long double d) { return fabs(d); }
-inline float func_abs(float d) { return fabs(d); }
+proc SYSTEM_BUS_T.func_abs(d as single)  as single
+  return fabs(d)
+end proc
 
-inline uint8 func_abs(uint8 d) { return d; }
-inline uint16 func_abs(uint16 d) { return d; }
-inline uint32 func_abs(uint32 d) { return d; }
-inline uint64 func_abs(uint64 d) { return d; }
-inline int8 func_abs(int8 d) { return abs(d); }
-inline int16 func_abs(int16 d) { return abs(d); }
-inline int32 func_abs(int32 d) { return abs(d); }
-inline int64 func_abs(int64 d) { return llabs(d); }
+proc SYSTEM_BUS_T.func_abs(d as float) as float 
+  return fabs(d)
+end proc
 
-ptrszint check_lbound(ptrszint *array, int32 index, int32 num_indexes) {
-    static ptrszint ret;
-    disableEvents = 1;
-    ret = func_lbound((ptrszint *)(*array), index, num_indexes);
-    new_error = 0;
-    disableEvents = 0;
-    return ret;
-}
-
-ptrszint check_ubound(ptrszint *array, int32 index, int32 num_indexes) {
-    static ptrszint ret;
-    disableEvents = 1;
-    ret = func_ubound((ptrszint *)(*array), index, num_indexes);
-    new_error = 0;
-    disableEvents = 0;
-    return ret;
-}
-
+def SYSTEM_BUS_T.func_abs(d as FLOAT128) ' as FLOAT128
+/'
+  if peek(double,@d) > 0 then
+    return d
+  else
+    return d * -1
+  end if    
 '/
-proc SYSTEM_BUS_T.func__setbit(a1 as ulongint, b1 as integer) as ulongint 
-    return a1 or 1ull shl b1
+  k_float128_abs(@d, @d)
+end def
+
+def SYSTEM_BUS_T.func_abs(d as FLOAT256) ' as FLOAT128
+/'
+  if peek(double,@d) > 0 then
+    return d
+  else
+    return d * -1
+  end if    
+'/
+  k_float256_abs(@d, @d)
+end def
+
+def SYSTEM_BUS_T.func_abs(d as FLOAT512) ' as FLOAT128
+/'
+  if peek(double,@d) > 0 then
+    return d
+  else
+    return d * -1
+  end if    
+'/
+  k_float512_abs(@d, @d)
+end def
+
+proc SYSTEM_BUS_T.func_abs(d as uint8) as uint8 
+  return d
+end proc
+  
+proc SYSTEM_BUS_T.func_abs(d as uint16) as uint16
+  return d
 end proc
 
-proc SYSTEM_BUS_T.func__resetbit(a1 as ulongint, b1 as integer) as ulongint 
-     return a1 and not (1ull shl b1)
+proc SYSTEM_BUS_T.func_abs(d as uint32) as uint32 
+  return d
 end proc
 
-proc SYSTEM_BUS_T.func__togglebit(a1 as ulongint, b1 as integer) as ulongint
-     return a1 xor 1ull shl b1
+proc SYSTEM_BUS_T.func_abs(d as uint64) as uint64
+  return d
+end proc
+
+proc SYSTEM_BUS_T.func_abs(d as int8) as int8 
+  return abs(d)
+end proc
+ 
+proc SYSTEM_BUS_T.func_abs(d as int16) as int16
+  return abs(d)
+end proc
+
+proc SYSTEM_BUS_T.func_abs(d as int32) as int32
+  return abs(d)
+end proc
+
+proc SYSTEM_BUS_T.func_abs(d as int64) as int64
+  return llabs(d)
+end proc  
+
+proc SYSTEM_BUS_T.check_lbound(array as ptrszint ptr, index as int32, num_indexes as int32) as ptrszint
+    static as ptrszint ret
+    disableEvents = 1
+    ret = func_lbound(peek(ptrszint ptr,@array), index, num_indexes)
+    new_error = 0
+    disableEvents = 0
+    return ret
+end proc
+
+proc SYSTEM_BUS_T.check_ubound(array as ptrszint ptr, index as int32, num_indexes as int32) as ptrszint
+    static as ptrszint ret
+    disableEvents = 1
+    ret = func_ubound(peek(ptrszint ptr,@array), index, num_indexes)
+    new_error = 0
+    disableEvents = 0
+    return ret
+end proc
+
+proc SYSTEM_BUS_T.logical_drives() as int32
+#ifdef QB64_WINDOWS
+    return GetLogicalDrives()
+#else
+    return 0
+#endif
+end proc
+
+proc SYSTEM_BUS_T.func_sgn(v as uint8) as int32
+    if (v) then
+        return 1
+    else
+        return 0
+    end if    
+end proc
+
+proc SYSTEM_BUS_T.func_sgn(v as int8) as int32
+    if (v) then
+        if (v > 0)then
+            return 1
+        else
+            return -1
+        end if
+    end if        
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_sgn(v as uint16) as int32
+    if (v) then
+        return 1
+    else
+        return 0
+    end if
+end proc
+
+proc SYSTEM_BUS_T.func_sgn(v as int16) as int32
+    if (v) then
+        if (v > 0) then
+            return 1
+        else
+            return -1
+        end if
+    end if        
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_sgn(v as uint32) as int32
+    if (v) then
+        return 1
+    else
+        return 0
+    end if    
+end proc
+
+proc SYSTEM_BUS_T.func_sgn(v as int32) as int32
+    if (v) then
+        if (v > 0) then
+            return 1
+        else
+            return -1
+       end if
+    end if        
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_sgn(v as uint64) as int32
+    if (v) then
+        return 1
+    else
+        return 0
+    end if
+end proc
+
+proc SYSTEM_BUS_T.func_sgn(v as int64) as int32
+    if (v) then
+        if (v > 0) then
+            return 1
+        else
+            return -1
+        end if
+    end if        
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_sgn(v as single) as int32
+    if (v) then
+        if (v > 0) then
+            return 1
+        else
+            return -1
+        end if
+    end if        
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_sgn(v as float) as int32
+    if (v) then
+        if (v > 0) then
+            return 1
+        else
+            return -1
+        end if
+    end if        
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_sgn(v as FLOAT128) as int32
+    if (v) then
+        if (v > 0) then
+            return 1
+        else
+            return -1
+        end if
+    end if        
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_sgn(v as FLOAT256) as int32
+    if (v) then
+        if (v > 0) then
+            return 1
+        else
+            return -1
+        end if
+    end if        
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func_sgn(v as FLOAT512) as int32
+    if (v) then
+        if (v > 0) then
+            return 1
+        else
+            return -1
+        end if
+    end if        
+    return 0
 end proc
 
 ' Working with 32bit colors:
-proc SYSTEM_BUS_T.func__rgb32(r as integer, g as integer, b as integer, a as integer) as uinteger
+proc SYSTEM_BUS_T.func__rgb32(r as int32, g as int32, b as int32, a as int32) as uint32
     if (r < 0) then r = 0
     if (r > 255) then r = 255
     if (g < 0) then g = 0
@@ -3566,7 +3832,7 @@ proc SYSTEM_BUS_T.func__rgb32(r as integer, g as integer, b as integer, a as int
     return (a shl 24) + (r shl 16) + (g shl 8) + b
 end proc
 
-proc SYSTEM_BUS_T.func__rgb32(r as integer, g as integer, b as integer) as uinteger
+proc SYSTEM_BUS_T.func__rgb32(r as int32, g as int32, b as int32) as uint32
     if (r < 0) then r = 0
     if (r > 255) then r = 255
     if (g < 0) then g = 0
@@ -3576,7 +3842,7 @@ proc SYSTEM_BUS_T.func__rgb32(r as integer, g as integer, b as integer) as uinte
     return (r shl 16) + (g shl 8) + b or &HFF000000
 end proc
 
-proc SYSTEM_BUS_T.func__rgb32(i as integer, a as integer) as uinteger
+proc SYSTEM_BUS_T.func__rgb32(i as int32, a as int32) as uint32
     if (i < 0) then i = 0
     if (i > 255) then i = 255
     if (a < 0) then a = 0
@@ -3584,13 +3850,13 @@ proc SYSTEM_BUS_T.func__rgb32(i as integer, a as integer) as uinteger
     return (a shl 24) + (i shl 16) + (i shl 8) + i
 end proc
 
-proc SYSTEM_BUS_T.func__rgb32(i as integer) as uinteger
+proc SYSTEM_BUS_T.func__rgb32(i as int32) as uint32
     if (i < 0) then i = 0
     if (i > 255) then i = 255
     return (i shl 16) + (i shl 8) + i or &HFF000000
 end proc
 
-proc SYSTEM_BUS_T.func__rgba32(r as integer, g as integer, b as integer, a as integer) as uinteger
+proc SYSTEM_BUS_T.func__rgba32(r as int32, g as int32, b as int32, a as int32) as uint32
     if (r < 0) then r = 0
     if (r > 255) then r = 255
     if (g < 0) then g = 0
@@ -3602,194 +3868,41 @@ proc SYSTEM_BUS_T.func__rgba32(r as integer, g as integer, b as integer, a as in
     return (a shl 24) + (r shl 16) + (g shl 8) + b
 end proc
 
-proc SYSTEM_BUS_T.func__alpha32(col as uinteger) as integer 
+proc SYSTEM_BUS_T.func__alpha32(col as uint32) as int32 
     return col shr 24
 end proc
 
-proc SYSTEM_BUS_T.func__red32(col as uinteger)  as integer 
+proc SYSTEM_BUS_T.func__red32(col as uint32)  as int32 
      return col shr 16 and &HFF
 end proc
 
-proc SYSTEM_BUS_T.func__green32(col as uinteger) as integer
+proc SYSTEM_BUS_T.func__green32(col as uint32) as int32
      return col shl 8 and &HFF
 end proc
 
-proc SYSTEM_BUS_T.func__blue32(col as uinteger) as integer 
+proc SYSTEM_BUS_T.func__blue32(col as uint32) as int32
      return col and &HFF
 end proc
 
-proc SYSTEM_BUS_T.varptr_dblock_check(off as ubyte ptr) as ushort
+proc SYSTEM_BUS_T.varptr_dblock_check(off as uint8 ptr) as uint16
     ' note: 66816 is the top of DBLOCK (SEG:80+OFF:65536)
-    if (off < cast(ubyte ptr,@mem64(66816))) then ' in DBLOCK?
-       return ((off - cast(ubyte ptr,@mem64(1280))))
+    if (off < peek(uint8 ptr,@mem64(66816))) then ' in DBLOCK?
+       return ((off - peek(uint8 ptr,@mem64(1280))))
     else
-       return ((off - cast(ubyte ptr,@mem64(0)))) and 15
+       return ((off - peek(uint8 ptr,@mem64(0)))) and 15
     end if
 end proc
 
-proc SYSTEM_BUS_T.varseg_dblock_check(off as ubyte ptr) as ushort
+proc SYSTEM_BUS_T.varseg_dblock_check(off as uint8 ptr) as uint16
     ' note: 66816 is the top of DBLOCK (SEG:80+OFF:65536)
-    if (off < cast(ubyte ptr,@mem64(66816))) then ' in DBLOCK?
+    if (off < peek(uint8 ptr,@mem64(66816))) then ' in DBLOCK?
         return 80
     else 
-        return (off - cast(ubyte ptr,@mem64(0))) / 16
+        return (off - peek(uint8 ptr,@mem64(0))) / 16
     end if
 end proc
 
-'Ring 0 - kernel
-def  SYSTEM_BUS_T.k_memset(de as SYSTEM_TYPE, sz AS SYSTEM_TYPE, v  AS SYSTEM_TYPE)
-    poke SYSTEM_TYPE,@sz,peek(SYSTEM_TYPE,@sz) subt peek(ubyte,@nibbles(&B0001))
-    for in range(mov(mem_loc as SYSTEM_TYPE,peek(ubyte,@nibbles(&B0000))),peek(SYSTEM_TYPE,@sz))
-      poke SYSTEM_TYPE,@mem64(de add mem_loc),peek(SYSTEM_TYPE,@v)
-    next mem_loc
-end def
-
-def  SYSTEM_BUS_T.k_memcpy(su as SYSTEM_TYPE, de as SYSTEM_TYPE, sz as SYSTEM_TYPE)
-    poke SYSTEM_TYPE,@sz,peek(SYSTEM_TYPE,@sz) subt peek(ubyte,@nibbles(&B0001))
-    for in range(mov(mem_loc as SYSTEM_TYPE,peek(ubyte,@nibbles(&B0000))),peek(SYSTEM_TYPE,@sz))
-      poke SYSTEM_TYPE,@mem64(de add mem_loc),peek(SYSTEM_TYPE,@mem64(su add mem_loc))
-    next mem_loc
-end def
-
-proc SYSTEM_BUS_T.k_min(v1 as SYSTEM_TYPE,v2 as SYSTEM_TYPE) as SYSTEM_TYPE
-    if (v1<v2) then return v1
-    return v2
-end proc
-
-proc SYSTEM_BUS_T.k_max(v1 as SYSTEM_TYPE,v2 as SYSTEM_TYPE) as SYSTEM_TYPE
-    if (v1>v2) then return v1
-    return v2
-end proc
-
-proc SYSTEM_BUS_T.k_strlen(s as ubyte ptr) as SYSTEM_TYPE
-    dim retval as SYSTEM_TYPE
-    retval=0
-    while s[retval]<>0
-        retval+=1
-    wend
-    return retval
-end proc
-
-proc SYSTEM_BUS_T.k_strtrim(s as ubyte ptr) as ubyte ptr
-    dim retval  as ubyte ptr=@(Result(0))
-    retval[0]=0
-    dim i as integer=0
-    dim j as integer=0
-    while (s[i]<>0 and s[i]=32 and s[i]<>9 and s[i]<>10 and s[i]<>13)
-        i+=1
-    wend
-    while(s[i]<>0)
-        retval[j]=s[i]
-        i+=1
-        j+=1
-    wend
-    retval[j]=0
-    
-    k_strrev(retval)
-    
-    i=0
-    j=0
-    while (retval[i]<>0 and retval[i]=32 and retval[i]=9 and retval[i]=10 and retval[i]=13)
-        i+=1
-    wend
-    while(retval[i]<>0)
-        retval[j]=retval[i]
-        i+=1
-        j+=1
-    wend
-    retval[j]=0
-   k_strrev(retval)
-    
-    return retval
-end proc
-
-proc SYSTEM_BUS_T.k_strtoupper(s as ubyte ptr) as ubyte ptr
-    dim i as SYSTEM_TYPE
-    dim dst as ubyte ptr=@(Result(0))
-    i=0
-    while s[i]<>0 and i<1022
-        if (s[i]>=97 and s[i]<=122) then
-            dst[i]=s[i]-32
-        else
-            dst[i]=s[i]
-        end if
-        i+=1
-    wend
-    dst[i]=0
-    return dst
-end proc
-
-proc SYSTEM_BUS_T.k_strtolower(s as ubyte ptr) as ubyte ptr
-    dim i as SYSTEM_TYPE
-    dim dst as ubyte ptr=@(Result(0))
-    i=0
-    while s[i]<>0 and i<1022
-        if (s[i]>=65 and s[i]<=90) then
-            dst[i]=s[i]+32
-        else
-            dst[i]=s[i]
-        end if
-        i+=1
-    wend
-    dst[i]=0
-    return dst
-end proc
-
-proc SYSTEM_BUS_T.k_substring(s as ubyte ptr,index as SYSTEM_TYPE, count as SYSTEM_TYPE) as ubyte ptr
-    dim i as SYSTEM_TYPE
-    dim dst as ubyte ptr=@(Result(0))
-    dim l as SYSTEM_TYPE=k_strlen(s)
-    i=0
-    while s[i+index]<>0 and i+index<1022 and i+index<l  and (i<count or count=-1)
-        dst[i]=s[i+index]
-        i+=1
-    wend
-    dst[i]=0
-    return dst
-end proc
-
-proc SYSTEM_BUS_T.k_strlastindexof(s as ubyte ptr,s2 as ubyte ptr) as SYSTEM_TYPE
-    var l1=k_strlen(s)
-    var l2=k_strlen(s2)
-    dim i as SYSTEM_TYPE
-    dim j as SYSTEM_TYPE
-    var ok=0
-    for i=l1-l2 to 0 step -1
-        if s[i]=s2[0] then
-            ok=1
-            for j=0 to l2-1
-                if s[i+j]<>s2[j] then 
-                    ok=0
-                    exit for
-                end if
-            next j
-            if ok<>0 then return i
-        end if
-    next i
-    return -1
-end proc
-
-proc SYSTEM_BUS_T.k_strendswith(src as ubyte ptr,search as ubyte ptr) as SYSTEM_TYPE
-    if (k_strlastindexof(src,search) = k_strlen(src)-k_strlen(search)) then
-        return 1
-    else
-        return 0
-    end if
-end proc
-
-def SYSTEM_BUS_T.k_strrev(s as ubyte ptr)
-    
-    dim l as integer=k_strlen(s)
-    dim i as integer
-    dim tmp as ubyte
-    dim tmp2 as ubyte
-    for i=0 to (l/2)-1
-        tmp=s[i]
-        tmp2=s[l-i-1]
-        s[i] = tmp2
-        s[l-i-1]=tmp
-    next i
-end def
+#include once "kernel2.bas"
 
 'Ring 3 - c64dvd
 proc SYSTEM_BUS_T.screencode (byval code as SYSTEM_TYPE) as SYSTEM_TYPE
@@ -4055,8 +4168,8 @@ def SYSTEM_BUS_T.pokeb(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
    case &H00000004B: mov(mem64(49361),mem64(49362) idiv mem64(49363))  ' idiv mem64(49362), mem64(49363)
 '                              r0            r1                 r2                    r1             r2   
    case &H00000004C: mov(mem64(49361),mem64(49362) expt mem64(49363))  ' exp mem64(49362), mem64(49363)
-'                              r0            r1                r2                     r1             r2   
-   case &H00000004D: mov(mem64(49361),modulo(mem64(49362), mem64(49363))) ' mod mem64(49361), mem64(49362)
+'                              r0            r1                r2                       r1             r2   
+   case &H00000004D: mov(mem64(49361),k_modulo(mem64(49362), mem64(49363))) ' mod mem64(49361), mem64(49362)
 '                              r0                r0                                   r0   
    case &H00000004E: mov(mem64(49361),neg mem64(49361))                 ' neg mem64(49361)
 '                              r0            r1                r2                     r1             r2   
@@ -4184,7 +4297,7 @@ def SYSTEM_BUS_T.pokeb(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
       pokeb mem64(pc), 0                         
      next pc
 '                                       times     
-     mov(tmp,modulo((tmp add 1),mem64(49621)))
+     mov(tmp,k_modulo((tmp add 1),mem64(49621)))
     loop
    case &H00000006E
     cls
@@ -4529,7 +4642,7 @@ def SYSTEM_BUS_T.pokeb(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
     mov(c shl,peek(ubyte,@nibbles(&B0011)))
 '                   font_o      
     mov(c add,mem64(49384))
-    mov(xs,modulo(adr,90))
+    mov(xs,k_modulo(adr,90))
     mov(xs shl,peek(ubyte,@nibbles(&B0011)))
     mov(xs add,peek(ubyte,@nibbles(&B0111)) mul 3.5)
     mov(ys,adr idiv  90):mov(ys shl, peek(ubyte,@nibbles(&B0011)))
@@ -4791,7 +4904,7 @@ def SYSTEM_BUS_T.pokeb(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
     mov(c shl,peek(ubyte,@nibbles(&B0011)))
 '                   font_o 
     mov(c add,mem64(49384))
-    mov(xs,modulo(adr,160))
+    mov(xs,k_modulo(adr,160))
     mov(xs shl,peek(ubyte,@nibbles(&B0011)))
     mov(xs add,peek(ubyte,@nibbles(&B1000)) mul peek(ubyte,@nibbles(&B0100)))
     mov(ys,adr idiv  160)
@@ -5116,7 +5229,7 @@ proc SYSTEM_BUS_T.Peek64(byval adr as SYSTEM_TYPE) as SYSTEM_TYPE
   end select
 end proc
 
-def SYSTEM_BUS_T.poke64(byval adr as SYSTEM_TYPE,byval v as SYSTEM_TYPE)
+def SYSTEM_BUS_T.poke64(byval adr as float,byval v as float)
   poke SYSTEM_TYPE,@mem64(peek(SYSTEM_TYPE,@adr)), peek(SYSTEM_TYPE,@v)
   ' Color RAM starts at 55296($D800) and ends at 56319($DBFF) 
   cmp logic_and(peek(SYSTEM_TYPE,@adr) gs 55296,peek(SYSTEM_TYPE,@adr) ls 56319) jmp L670
@@ -6304,8 +6417,8 @@ L2086:
 		case in range(peek(ubyte,@nibbles(&B0000)), peek(ubyte,@nibbles(&B1111)))
 		
 		'                                                   fg_color=$C0C9(49353)
-		 computer.cpu_mos6510->mem->poke64(FCOLOR,modulo(v,(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
-		                                                add peek(ubyte,@nibbles(&B1111)))))
+		 computer.cpu_mos6510->mem->poke64(FCOLOR,k_modulo(v,(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
+		                                                  add peek(ubyte,@nibbles(&B1111)))))
 		                  
 		case in range(peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)), peek(ubyte,@nibbles(&B0001)) _
 		          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
@@ -6374,8 +6487,8 @@ L2086:
 		case in range(peek(ubyte,@nibbles(&B0000)), peek(ubyte,@nibbles(&B1111)))
 		
 '                                                           bg_color=$C0C9(49354)		
-		 computer.cpu_mos6510->mem->poke64(BGCOL0,modulo(v,(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
-		                                               add  peek(ubyte,@nibbles(&B1111)))))
+		 computer.cpu_mos6510->mem->poke64(BGCOL0,k_modulo(v,(peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0100)) _
+		                                                 add  peek(ubyte,@nibbles(&B1111)))))
 
 		case in range(peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)), peek(ubyte,@nibbles(&B0001)) _
 		          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
@@ -6705,6 +6818,8 @@ L2086:
              next x
              put(0,0),fgimage,alpha                  
             case peek(ubyte,@nibbles(&B0001)) '1
+             ' draw string fgimage,(8,8), str(k_sqrt(25.0))
+             poke64(1024,(asc(str(k_sqrtf(25.0))) + &H02) and &H3F)
             case peek(ubyte,@nibbles(&B0010)) '2
             case peek(ubyte,@nibbles(&B0011)) '3
               dim as ulong colour
@@ -7109,8 +7224,8 @@ L2086:
     case 49566: mov(mem64(49460),mem64(49470) idiv mem64(49480)) ' idiv mem64(49470),mem64(49480)
 '                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512   
     case 49567: mov(mem64(49460),mem64(49470) expt mem64(49480)) ' exp mem64(49470), mem64(49480)
-'                          adr0_512      adr1_512          adr2_512             adr1_512      adr2_512   
-    case 49568: mov(mem64(49460),modulo(mem64(49470),mem64(49480))) ' mod mem64(49470), mem64(49480)
+'                          adr0_512             adr1_512     adr2_512             adr1_512      adr2_512   
+    case 49568: mov(mem64(49460),k_modulo(mem64(49470),mem64(49480))) ' mod mem64(49470), mem64(49480)
 '                          adr0_512          adr0_512                           adr0_512    
     case 49569: mov(mem64(49460), neg mem64(49460))              ' neg mem64(49460)
 '                          adr0_512      adr1_512         adr2_512              adr1_512       adr2_512   
@@ -7680,11 +7795,59 @@ L2086:
 L2150:  
 end def
 
-proc SYSTEM_BUS_T.ReadUByte(byval adr as SYSTEM_TYPE) as ubyte
+proc SYSTEM_BUS_T.ReadByte(byval adr as uint8) as byte
   return Peek64(adr)
 end proc
 
-proc SYSTEM_BUS_T.ReadByte(byval adr as SYSTEM_TYPE) as byte
+proc SYSTEM_BUS_T.ReadByte(byval adr as int8) as byte
+  return Peek64(adr)
+end proc
+
+proc SYSTEM_BUS_T.ReadByte(byval adr as uint16) as byte
+  return Peek64(adr)
+end proc
+
+proc SYSTEM_BUS_T.ReadByte(byval adr as int16) as byte
+  return Peek64(adr)
+end proc
+
+proc SYSTEM_BUS_T.ReadByte(byval adr as uint32) as byte
+  return Peek64(adr)
+end proc
+
+proc SYSTEM_BUS_T.ReadByte(byval adr as int32) as byte
+  return Peek64(adr)
+end proc
+
+proc SYSTEM_BUS_T.ReadByte(byval adr as uint64) as byte
+  return Peek64(adr)
+end proc
+
+proc SYSTEM_BUS_T.ReadByte(byval adr as int64) as byte
+  return Peek64(adr)
+end proc
+
+proc SYSTEM_BUS_T.ReadByte(byval adr as single) as byte
+  return Peek64(adr)
+end proc
+
+proc SYSTEM_BUS_T.ReadByte(byval adr as float) as byte
+  return Peek64(adr)
+end proc
+
+proc SYSTEM_BUS_T.ReadByte(byval adr as FLOAT128) as byte
+  return Peek64(adr)
+end proc
+
+proc SYSTEM_BUS_T.ReadByte(byval adr as FLOAT256) as byte
+  return Peek64(adr)
+end proc
+
+proc SYSTEM_BUS_T.ReadByte(byval adr as FLOAT512) as byte
+  return Peek64(adr)
+end proc
+
+proc SYSTEM_BUS_T.ReadUByte(byval adr as SYSTEM_TYPE) as ubyte
   return Peek64(adr)
 end proc
 
@@ -7692,7 +7855,44 @@ proc SYSTEM_BUS_T.ReadUShort(byval adr as SYSTEM_TYPE) as ushort
   return Peek64(adr) or Peek64(adr add peek(ubyte,@nibbles(&B0001))) shl peek(ubyte,@nibbles(&B1000))
 end proc
 
-def SYSTEM_BUS_T.WriteByte(byval adr as double,byval b8 as double)
+def SYSTEM_BUS_T.WriteByte(byval adr as uint8,byval b8 as uint8)
+  poke64(adr,b8)
+end def
+
+def SYSTEM_BUS_T.WriteByte(byval adr as int8,byval b8 as int8)
+  poke64(adr,b8)
+end def
+
+def SYSTEM_BUS_T.WriteByte(byval adr as uint16,byval b8 as uint16)
+  poke64(adr,b8)
+end def
+
+def SYSTEM_BUS_T.WriteByte(byval adr as int16,byval b8 as int16)
+  poke64(adr,b8)
+end def
+
+def SYSTEM_BUS_T.WriteByte(byval adr as uint32,byval b8 as uint32)
+  poke64(adr,b8)
+end def
+
+def SYSTEM_BUS_T.WriteByte(byval adr as int32,byval b8 as int32)
+  poke64(adr,b8)
+end def
+
+
+def SYSTEM_BUS_T.WriteByte(byval adr as uint64,byval b8 as uint64)
+  poke64(adr,b8)
+end def
+
+def SYSTEM_BUS_T.WriteByte(byval adr as int64,byval b8 as int64)
+  poke64(adr,b8)
+end def
+
+def SYSTEM_BUS_T.WriteByte(byval adr as single,byval b8 as single)
+  poke64(adr,b8)
+end def
+
+def SYSTEM_BUS_T.WriteByte(byval adr as float,byval b8 as float)
   poke64(adr,b8)
 end def
 

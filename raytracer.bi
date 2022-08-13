@@ -219,13 +219,13 @@ function Refract(byref I as VECTOR,byref N as VECTOR,byval eta as REAL) as VECTO
   return R
 end function
 
-type RECTANGLE
+type RECTANGLE extends VECTOR
   as VECTOR LeftTop
   as VECTOR RightBottom
 end type
 
 ' MAP2D descriptor
-Type BMPHEADER Field = 1
+Type BMPHEADER extends RECTANGLE Field = 1
   as ushort  fileid  
   as long filesize
   as ushort  res1, res2
@@ -239,7 +239,7 @@ Type BMPHEADER Field = 1
   as long ColorsInportant
 End Type
 
-type PALENTRY field=1
+type PALENTRY extends BMPHEADER field=1
   as ubyte r,g,b,flag
 end type
 
@@ -264,7 +264,7 @@ type MAP2D
   as VECTOR      Factor
 end type
 
-type MATERIAL
+type MATERIAL extends PALENTRY
   as integer  ID
   as VECTOR   Color                 ' r,g,b 0 - 1.0
   as REAL     Rough_reflection      ' 0 - 1.0
@@ -306,7 +306,7 @@ type LIGHT
   as BOOLEAN        BuildShadow ' true/false
 end type
 
-type POLY
+type POLY extends MATERIAL
   as integer        ID
   as RECTANGLE      ScreenRec
   as integer        nVertices
@@ -334,7 +334,7 @@ type OBJECT3D
   as POLY   ptr ptr    Polys
 end type 
 
-type AAPIXEL
+type AAPIXEL extends MATERIAL
   as integer V
   as integer  x,y
 end type
@@ -348,7 +348,7 @@ sub LatLonToXYZ (byval lat as REAL,byval lon as REAL, byref x as REAL,byref y as
 end sub
 
 
-type RAYTRACER
+type RAYTRACER extends MATERIAL
   public:
   declare constructor
   declare constructor(byval w as integer, _

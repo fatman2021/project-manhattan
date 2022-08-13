@@ -25,6 +25,134 @@ source for the prefetch operation is usually main memory. Because of their desig
 faster than accessing main memory, so prefetching data and then accessing it from caches is usually many orders of magnitude 
 faster than accessing it directly from main memory. Prefetching can be done with non-blocking cache control instructions. 
 '/
+
+' Libc datatypes:
+#include once "crt.bi" ' math.bi ...
+
+#define	K_MASK	&H7ffL
+#define	K_SHIFT	20
+#define	K_BIAS	1022L
+
+union Cheat
+	as double	d
+	type
+		as long	ls
+		as long	ms
+	end type
+end union
+
+#undef NAN
+
+static shared as double NAN = 0.0/0.0
+static shared as double POS_INF = 1.0 /0.0
+static shared as double NEG_INF = -1.0/0.0
+
+#define EPSILON 1e-7
+
+#ifdef __FLT_EVAL_METHOD__
+#define FLT_EVAL_METHOD __FLT_EVAL_METHOD__
+#else
+#define FLT_EVAL_METHOD 0
+#endif
+
+#define LDBL_TRUE_MIN 3.6451995318824746025e-4951L
+#define LDBL_MIN 3.3621031431120935063e-4932L
+#define LDBL_MAX 1.1897314953572317650e+4932L
+#define LDBL_EPSILON 1.0842021724855044340e-19L
+
+#define LDBL_MANT_DIG 64
+#define LDBL_MIN_EXP (-16381)
+#define LDBL_MAX_EXP 16384
+
+#define LDBL_DIG 18
+#define LDBL_MIN_10_EXP (-4931)
+#define LDBL_MAX_10_EXP 4932
+
+#define DECIMAL_DIG 21
+
+#undef int32_t
+#undef intptr_t
+#undef ptrdiff_t
+#undef time_t
+#undef size_t
+#undef ssize_t
+#undef uint32_t
+#undef uintptr_t
+#undef wchar_t
+#undef wint_t
+#undef NULL
+
+#if defined(__ARMEB__) or defined(__AARCH64EB__)
+#define __BYTE_ORDER __BIG_ENDIAN
+#else
+#define __BYTE_ORDER __LITTLE_ENDIAN
+#endif
+
+#define LONG_BIT 64
+#define LONG_MAX &H7fffffffffffffffL
+#define LLONG_MAX &H7fffffffffffffffLL
+
+type as byte         int8_t
+type as short        int16_t
+type as long         int32_t
+type as longint      int64_t
+type as longint      intmax_t
+type as longint      intptr_t
+type as longint      ptrdiff_t
+dim  as ulongint     __jmp_buf(8) ' typedef unsigned long long __jmp_buf[8];
+type as ulongint     size_t
+type as longint      ssize_t
+type as longint      time_t
+type as longint      suseconds_t
+type as ubyte        uint8_t
+type as ushort       uint16_t
+type as ulong        uint32_t
+type as ulongint     uint64_t
+type as ulongint     uintmax_t
+type as ulongint     uintptr_t
+type as longint      wchar_t
+type as longint      wint_t
+
+type as byte         char
+type as ubyte        uchar
+type as byte         int8
+type as ubyte        uint8
+type as short        int16
+type as ushort       uint16
+
+type as long         int32
+type as ulong        uint32
+type as longint      int64
+type as ulongint     uint64
+
+type as double       float
+type as integer      int_t
+type as uinteger     uint_t
+
+#define __suseconds_t_defined 1
+
+#define NULL 0L
+
+type as float max_align_t
+
+#define CHAR_MIN (-128)
+#define CHAR_MAX 127
+#define CHAR_BIT 8
+#define SCHAR_MIN (-128)
+#define SCHAR_MAX 127
+#define UCHAR_MAX 255
+#define SHRT_MIN (-1 - &H7fff)
+#define SHRT_MAX &H7fff
+#define USHRT_MAX &Hffff
+#define INT_MIN (-1 - &H7fffffff)
+#define INT_MAX &H7fffffff
+#define UINT_MAX &HffffffffU
+#define LONG_MIN (-LONG_MAX - 1)
+#define ULONG_MAX (2UL * LONG_MAX + 1)
+#define LLONG_MIN (-LLONG_MAX - 1)
+#define ULLONG_MAX (2ULL * LLONG_MAX + 1)
+#define MB_LEN_MAX 4
+
 #define FBCALL
 
 #if defined(__FB_DOS__)
@@ -60,9 +188,9 @@ static shared as multiboot_info ptr MB_INFO
 #endif
 
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
-    #define SYSTEM_TYPE ulongint
+    #define SYSTEM_TYPE uint64
 #else
-    #define SYSTEM_TYPE double
+    #define SYSTEM_TYPE float
 #endif
 
 #if defined(__FB_DOS__)
@@ -383,21 +511,21 @@ static shared as multiboot_info ptr MB_INFO
 '#define ASCII_TO_PETSCII(adr, a) if logic_and(mem64(adr add a) gt 31,mem64(adr add a) lt 64) then _
 '	                                mov(mem64(adr add a),mem64(adr add a) add 32
 'Fast PSET
-#Define PutPixel(_x, _y, colour)   *cptr(ulongint ptr, pScrn + (_y) * pitch + (_x) shl 2) = (colour)
+#Define PutPixel(_x, _y, colour)   *cptr(any ptr, pScrn + (_y) * pitch + (_x) shl 2) = (colour)
 
 'Fast POINT
-#Define GetPixel(_x, _y)           *cptr(ulongint ptr, pScrn + (_y) * pitch + (_x) shl 2)
+#Define GetPixel(_x, _y)           *cptr(any ptr, pScrn + (_y) * pitch + (_x) shl 2)
         
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
-    #include once ".\DOS\GLSL4.BI"
     #include once ".\DOS\RAY.BI"
+    #include once ".\DOS\GLSL4.BI"
     #define vector2 vec2
     #define vector3 vec3
     #define vector4 vec4
 #else
-    #include once "glsl.bi"    
+    #include once "glsl.bi"
+    #include once "raytracer.bi"   
     #include once "glslstyle.bi"
-    #include once "raytracer.bi"
 #endif
 
 ' memory registers
@@ -410,8 +538,8 @@ static shared as SYSTEM_TYPE r0, r1, r2, r3, r4, r5
 static shared as SYSTEM_TYPE   radius
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
 static shared as SYSTEM_TYPE   fc, bc
-static shared as ubyte fr = &HFF, fg = &HFF, fb = &HFF, fa = &HFF 
-static shared as ubyte br = &H00, bg = &H00, bb = &H00, ba = &H00
+static shared as uchar fr = &HFF, fg = &HFF, fb = &HFF, fa = &HFF 
+static shared as uchar br = &H00, bg = &H00, bb = &H00, ba = &H00
 #endif
 static shared as SYSTEM_TYPE   red2=&HFF,green2=&HFF,blue2=&HFF,xalpha2=&HFF
 static shared as SYSTEM_TYPE   x_axis0, y_axis0, z_axis0, col0, col1,char_h=&H5A
@@ -502,8 +630,8 @@ static shared as SYSTEM_TYPE    a1,a2,a3,a4,a5,a6,a7,a8
 
 ' system memory bank
 static shared as string   get_key, get_data, old_data(10000)
-static shared as ulongint i
-static shared as ubyte    nibbles(&B1111)
+static shared as uint64 i
+static shared as uchar    nibbles(&B1111)
 
 var shared mov(bd_color,0)
 var shared mov(b,0),mov(c,0),mov(x,0),mov(y,0),mov(xs,0),mov(ys,0)
@@ -511,11 +639,11 @@ var shared mov(uflag,0),mov(UpdatedScreen,0),mov(cary,0)
 var shared mov(r,0),mov(g,0),mov(a,0)
 
 common shared as SYSTEM_TYPE    offset,swch, sys_offset,str_len,cnt
-common shared as any ptr        bgimage,fgimage,raster,render
+common shared as any ptr        bgimage,fgimage,raster,_render
 common shared as any ptr        image, pScrn
 common shared as string         strCode,compiler
 common shared as string         filename
-common shared as ulongint       scr_w, scr_h,scr_pos, imgData, pitch
+common shared as uint64         scr_w, scr_h,scr_pos, imgData, pitch
 common shared as string         msg
 common shared as SYSTEM_TYPE    Power2()
 common shared as SYSTEM_TYPE    SizeScreen
@@ -541,12 +669,40 @@ type SYSTEM_BUS_T
   declare constructor
   declare destructor
   'Ring 3 - c64dvd
-  declare proc ReadByte     (byval adr           as SYSTEM_TYPE)                                                 as  byte
-  declare proc ReadUByte    (byval adr           as SYSTEM_TYPE)                                                 as ubyte
-  declare proc ReadUShort   (byval adr           as SYSTEM_TYPE)                                                 as ushort
-  declare def  WriteByte    (byval adr           as SYSTEM_TYPE   , byval b8               as SYSTEM_TYPE)
+  declare proc ReadByte     (byval adr           as uint8)                                                       as char  
+  declare proc ReadByte     (byval adr           as int8)                                                        as char   
+  declare proc ReadByte     (byval adr           as uint16)                                                      as char  
+  declare proc ReadByte     (byval adr           as int16)                                                       as char   
+  declare proc ReadByte     (byval adr           as uint32)                                                      as char  
+  declare proc ReadByte     (byval adr           as int32)                                                       as char   
+  declare proc ReadByte     (byval adr           as uint64)                                                      as char  
+  declare proc ReadByte     (byval adr           as int64)                                                       as char  
+  declare proc ReadByte     (byval adr           as single)                                                      as char  
+  declare proc ReadByte     (byval adr           as float)                                                       as char  
+  declare proc ReadByte     (byval adr           as FLOAT128)                                                    as char  
+  declare proc ReadByte     (byval adr           as FLOAT256)                                                    as char  
+  declare proc ReadByte     (byval adr           as FLOAT512)                                                    as char
+  
+  declare proc ReadUByte    (byval adr           as SYSTEM_TYPE)                                                 as uchar
+  declare proc ReadUShort   (byval adr           as SYSTEM_TYPE)                                                 as uint16
+
+  declare def  WriteByte    (byval adr           as uint8         , byval b8               as uint8)
+  declare def  WriteByte    (byval adr           as int8          , byval b8               as int8)
+  declare def  WriteByte    (byval adr           as uint16        , byval b8               as uint16)
+  declare def  WriteByte    (byval adr           as int16         , byval b8               as int16)
+  declare def  WriteByte    (byval adr           as uint32        , byval b8               as uint32)
+  declare def  WriteByte    (byval adr           as int32         , byval b8               as int32)
+  declare def  WriteByte    (byval adr           as uint64        , byval b8               as uint64)
+  declare def  WriteByte    (byval adr           as int64         , byval b8               as int64)  
+  declare def  WriteByte    (byval adr           as single        , byval b8               as single)
+  declare def  WriteByte    (byval adr           as float         , byval b8               as float)
+  declare def  WriteByte    (byval adr           as FLOAT128      , byval b8               as FLOAT128)
+  declare def  WriteByte    (byval adr           as FLOAT256      , byval b8               as FLOAT256)
+  declare def  WriteByte    (byval adr           as FLOAT512      , byval b8               as FLOAT512)
+      
   declare def  WriteUByte   (byval adr           as SYSTEM_TYPE   , byval b8               as SYSTEM_TYPE)
   declare def  WriteUShort  (byval adr           as SYSTEM_TYPE   , byval w16              as SYSTEM_TYPE)
+  
   declare proc Peek64       (byval adr           as SYSTEM_TYPE)                                                 as SYSTEM_TYPE
   declare def  poke64       (byval adr           as SYSTEM_TYPE   , byval v                as SYSTEM_TYPE)
   declare proc screencode   (byval code          as SYSTEM_TYPE)                                                 as SYSTEM_TYPE 
@@ -559,46 +715,46 @@ type SYSTEM_BUS_T
   declare def  getXYZ       ()
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
  'Ring 3 - Shadertoy
-  declare proc length6      (p  as vec2)                                                                      as float
-  declare proc length8      (p  as vec2)                                                                      as float
-  declare proc sdPlane      (p  as vec3)                                                                      as float
-  declare proc sdSphere     (p  as vec3 , s   as float)                                                       as float
-  declare proc sdBox        (p  as vec3 , b   as vec3)                                                     as float
-  declare proc sdEllipsoid  (p  as vec3 , r   as vec3)                                                     as float
-  declare proc sdRoundBox   (p  as vec3 , b   as vec3,  r                      as float)                   as float
-  declare proc udRoundBox   (p  as vec3 , b   as vec3 , r                      as float)                   as float
-  declare proc sdBoxFrame   (p  as vec3 , b   as vec3,  e                      as float)                   as float
-  declare proc sdTorus      (p  as vec3 , t   as vec2)                                                     as float
-  declare proc sdCappedTorus(p  as vec3 , sc  as vec2,  ra    as float  ,   rb as float)                   as float
-  declare proc sdTorus82    (p  as vec3 , t   as vec2)                                                     as float
-  declare proc sdTorus88    (p  as vec3 , t   as vec2)                                                     as float
-  declare proc sdLink       (p  as vec3 , le  as float   , r1    as float   ,  r2 as float)                   as float
-  declare proc sdHexPrism   (p  as vec3 , h   as vec2)                                                     as float
-  declare proc sdHexPrism2  (p  as vec3 , h   as vec2 )                                                    as float
-  declare proc sdCapsule    (p  as vec3 , a   as vec3 , b     as vec3 ,  r  as float)                   as float
-  declare proc sdTriPrism   (p  as vec3 , h   as vec2)                                                     as float
-  declare proc sdTriPrism2  (p  as vec3 , h   as vec2)                                                     as float
-  declare proc sdCylinder   (p  as vec3 , h   as vec2)                                                     as float
-  declare proc sdCylinder6  (p  as vec3 , h   as vec2)                                                     as float
-  declare proc sdCone       (p  as vec3 , c   as vec3)                                                     as float
-  declare proc sdCone       (p  as vec3 , c   as vec2)                                                     as float
-  declare proc sdCone2      (p  as vec3 , c   as vec2 , h     as float )                                   as float
-  declare proc _sdCone      (p  as vec3 , c   as vec3)                                                     as float
-  declare proc sdConeHQ     (p  as vec3 , c   as vec3)                                                     as float
-  declare proc sdCappedCone (p  as vec3 , h   as float   , r1    as float  ,  r2  as float)                   as float
-  declare proc sdConeSection(p  as vec3 , h   as float   , r1    as float  ,  r2  as float)                   as float
-  declare proc sdWobbleCube (p  as vec3 , s   as float)                                                       as float
-  declare proc udTriangle   (p  as vec3 , a   as vec3 , b     as vec3 , c   as vec3)                 as float
-  declare proc udQuad       (p  as vec3 , a   as vec3 , b     as vec3 , c   as vec3 , d as vec3)  as float
-  declare proc opS          (d1 as float   , d2  as float)                                                       as float
-  declare proc opU          (d1 as vec2 , d2  as vec2)                                                     as vec2
-  declare proc opI          (d1 as float   , d2  as float)                                                       as float
-  declare proc opRep        (p  as vec3 , c   as vec3)                                                     as vec3
-  declare proc ExpSmin      (a  as float   , b   as float   , k     as float=32)                                 as float
-  declare proc PolySmin     (a  as float   , b   as float   , k     as float=0.1)                                as float
-  declare proc PowSmin      (a  as float   , b   as float   , k     as float=8)                                  as float
-  declare proc opTwist      (p  as vec3)                                                                      as vec3
-  declare proc map          (p  as vec3)                                                                      as vec2
+  declare proc length6      (p  as vec2)                                                                         as float
+  declare proc length8      (p  as vec2)                                                                         as float
+  declare proc sdPlane      (p  as vec3)                                                                         as float
+  declare proc sdSphere     (p  as vec3 , s   as float)                                                          as float
+  declare proc sdBox        (p  as vec3 , b   as vec3)                                                           as float
+  declare proc sdEllipsoid  (p  as vec3 , r   as vec3)                                                           as float
+  declare proc sdRoundBox   (p  as vec3 , b   as vec3 , r   as float)                                            as float
+  declare proc udRoundBox   (p  as vec3 , b   as vec3 , r   as float)                                            as float
+  declare proc sdBoxFrame   (p  as vec3 , b   as vec3 , e   as float)                                            as float
+  declare proc sdTorus      (p  as vec3 , t   as vec2)                                                           as float
+  declare proc sdCappedTorus(p  as vec3 , sc  as vec2 , ra  as float     , rb as float)                          as float
+  declare proc sdTorus82    (p  as vec3 , t   as vec2)                                                           as float
+  declare proc sdTorus88    (p  as vec3 , t   as vec2)                                                           as float
+  declare proc sdLink       (p  as vec3 , le  as float, r1  as float     , r2 as float)                          as float
+  declare proc sdHexPrism   (p  as vec3 , h   as vec2)                                                           as float
+  declare proc sdHexPrism2  (p  as vec3 , h   as vec2)                                                           as float
+  declare proc sdCapsule    (p  as vec3 , a   as vec3  , b  as vec3      , r  as float)                          as float
+  declare proc sdTriPrism   (p  as vec3 , h   as vec2)                                                           as float
+  declare proc sdTriPrism2  (p  as vec3 , h   as vec2)                                                           as float
+  declare proc sdCylinder   (p  as vec3 , h   as vec2)                                                           as float
+  declare proc sdCylinder6  (p  as vec3 , h   as vec2)                                                           as float
+  declare proc sdCone       (p  as vec3 , c   as vec3)                                                           as float
+  declare proc sdCone       (p  as vec3 , c   as vec2)                                                           as float
+  declare proc sdCone2      (p  as vec3 , c   as vec2  , h  as float)                                            as float
+  declare proc _sdCone      (p  as vec3 , c   as vec3)                                                           as float
+  declare proc sdConeHQ     (p  as vec3 , c   as vec3)                                                           as float
+  declare proc sdCappedCone (p  as vec3 , h   as float , r1 as float     , r2 as float)                          as float
+  declare proc sdConeSection(p  as vec3 , h   as float , r1 as float     , r2 as float)                          as float
+  declare proc sdWobbleCube (p  as vec3 , s   as float)                                                          as float
+  declare proc udTriangle   (p  as vec3 , a   as vec3  , b  as vec3      , c  as vec3)                           as float
+  declare proc udQuad       (p  as vec3 , a   as vec3  , b  as vec3      , c  as vec3  , d as vec3)              as float
+  declare proc opS          (d1 as float, d2  as float)                                                          as float
+  declare proc opU          (d1 as vec2 , d2  as vec2)                                                           as vec2
+  declare proc opI          (d1 as float, d2  as float)                                                          as float
+  declare proc opRep        (p  as vec3 , c   as vec3)                                                           as vec3
+  declare proc ExpSmin      (a  as float, b   as float , k  as float=32)                                         as float
+  declare proc PolySmin     (a  as float, b   as float , k  as float=0.1)                                        as float
+  declare proc PowSmin      (a  as float, b   as float , k  as float=8)                                          as float
+  declare proc opTwist      (p  as vec3)                                                                         as vec3
+  declare proc map          (p  as vec3)                                                                         as vec2
   declare proc castRay      ()                                                                                   as vec2
   declare proc softshadow   ()                                                                                   as float
   declare proc calcNormal   ()                                                                                   as vec3
@@ -608,21 +764,21 @@ type SYSTEM_BUS_T
   declare proc Spectrum     (x as float)                                                                         as vec3
   declare proc SpectrumPoly (x as float)                                                                         as vec3
   declare proc haversineISH (x as float)                                                                         as float
-  declare proc rainbowISH   (x as single   , set as boolean = false )                                            as ulong
-  declare def  filter       (i as any ptr  , n as long)
-  declare proc sdPlane    overload (p as vec3, n as vec3, h as float )                                     as float
-  declare proc sdCylinder overload (p as vec3, c as vec3 )                                                 as float
-  declare proc sdCone     overload (p as vec3, c as vec2, h as float )                                     as float
-  declare proc map        overload (a as float  , b as float  , x as float  , c as float, d as float)            as float
+  declare proc rainbowISH   (x as single , set as boolean = false )                                              as ulong
+  declare def  filter       (i as any ptr, n   as long)
+  declare proc sdPlane    overload (p as vec3 , n as vec3  , h as float )                                        as float
+  declare proc sdCylinder overload (p as vec3 , c as vec3)                                                       as float
+  declare proc sdCone     overload (p as vec3 , c as vec2  , h as float )                                        as float
+  declare proc map        overload (a as float, b as float , x as float  , c as float, d as float)               as float
   declare def  mainImage  overload (fragColor as vec4 , fragCoord as const vec2)
   declare def _mainImage           (fragColor as vec4 , fragCoord as const vec2)
-  declare proc sdVerticalCapsule   (p as vec3         , h as float       , r as float)                        as float
-  declare proc sdCappedCylinder    (p as vec3         , h as float       , r as float)                        as float
-  declare proc sdCappedCylinder overload (p as vec3, a as vec3, b as vec3, r as float)                  as float
-  declare proc sdRoundedCylinder   (p as vec3         , ra as float      , rb as float, h as float)           as float
-  declare proc sdCappedCone overload (p as vec3, a as vec3, b as vec3, ra as float, rb as float)        as float
-  declare proc sdSolidAngle        (p as vec3         , c as vec2     , ra as float)                       as float
-  declare proc sdCutSphere         (p as vec3         , r as float       , h  as float )                      as float
+  declare proc sdVerticalCapsule         (p as vec3, h  as float, r  as float)                                   as float
+  declare proc sdCappedCylinder          (p as vec3, h  as float, r  as float)                                   as float
+  declare proc sdCappedCylinder overload (p as vec3, a  as vec3 , b  as vec3  , r  as float)                     as float
+  declare proc sdRoundedCylinder         (p as vec3, ra as float, rb as float , h  as float)                     as float
+  declare proc sdCappedCone     overload (p as vec3, a  as vec3 , b  as vec3  , ra as float, rb as float)        as float
+  declare proc sdSolidAngle              (p as vec3, c  as vec2 , ra as float)                                   as float
+  declare proc sdCutSphere               (p as vec3, r  as float, h  as float)                                   as float
 #else
  'Ring 3 - Shadertoy
   declare proc length6      (p  as vector2)                                                                      as float
@@ -677,8 +833,8 @@ type SYSTEM_BUS_T
   declare proc Spectrum     (x as float)                                                                         as vector3
   declare proc SpectrumPoly (x as float)                                                                         as vector3
   declare proc haversineISH (x as float)                                                                         as float
-  declare proc rainbowISH   (x as single   , set as boolean = false )                                            as ulong
-  declare def  filter       (i as any ptr  , n as long)
+  declare proc rainbowISH   (x as single   , set as boolean = false )                                            as uint32
+  declare def  filter       (i as any ptr  , n as int32)
   declare proc sdPlane    overload (p as vector3, n as vector3, h as float )                                     as float
   declare proc sdCylinder overload (p as vector3, c as vector3 )                                                 as float
   declare proc sdCone     overload (p as vector3, c as vector2, h as float )                                     as float
@@ -725,7 +881,7 @@ type SYSTEM_BUS_T
   declare proc POV_max             (x as DBL, y as DBL)           as DBL
   declare proc POV_min3            (x as DBL, y as DBL, z as DBL) as DBL
   declare proc POV_max3            (x as DBL, y as DBL, z as DBL) as DBL
-  declare proc POV_labs            (x as DBL)                     as long 
+  declare proc POV_labs            (x as DBL)                     as int32 
   declare proc POV_fabs            (x as DBL)                     as DBL
   
   /' Stuff for bounding boxes. '/
@@ -917,22 +1073,22 @@ type SYSTEM_BUS_T
      #endif
   #else
      #ifdef ALTMAIN
-         declare proc alt_pov_main (argc as integer, argv as byte ptr ptr) as MAIN_RETURN_TYPE
+         declare proc alt_pov_main (argc as int32, argv as char ptr ptr) as MAIN_RETURN_TYPE
      #else
-         declare proc pov_main (argc as integer, argv as byte ptr ptr) as MAIN_RETURN_TYPE
+         declare proc pov_main (argc as int32, argv as char ptr ptr) as MAIN_RETURN_TYPE
      #endif
   #endif
 
-  declare proc pov_stricmp (s1 as byte ptr, s2 as byte ptr) as integer
+  declare proc pov_stricmp (s1 as char ptr, s2 as char ptr) as int32
   declare def  close_all ()
-  declare def  POV_Std_Split_Time (time_dif as DBL, hrs as ulong ptr, mins as ulong ptr, secs as DBL ptr)
-  declare proc Locate_File (filename as byte ptr, mode as byte ptr, ext1 as byte ptr, ext2 as byte ptr, buffer as byte ptr, _
-                            err_flag as integer) as FILE ptr
+  declare def  POV_Std_Split_Time (time_dif as DBL, hrs as uint32 ptr, mins as uint32 ptr, secs as DBL ptr)
+  declare proc Locate_File (filename as char ptr, mode as char ptr, ext1 as char ptr, ext2 as char ptr, buffer as char ptr, _
+                            err_flag as int32) as FILE ptr
 
   declare proc pov_shellout (_Type as _SHELLTYPE) as _SHELLRET
   declare def  pre_init_povray ()
 
-  declare def  _POV_Split_Path (s as byte ptr, p as byte ptr, f as byte ptr)
+  declare def  _POV_Split_Path (s as char ptr, p as char ptr, f as char ptr)
   
   ' Ring 3 - FreeBASIC
   
@@ -942,126 +1098,915 @@ type SYSTEM_BUS_T
   declare FBCALL def SET_DIRTY     overload (c as float, y as float, h as float)	
   declare FBCALL def EVENT_LOCK    overload ()
   declare FBCALL def EVENT_UNLOCK  overload ()
-  declare FBCALL def fb_GfxPset    overload (target as any ptr, fx as float, fy as float, color_data as uinteger, _
-                                             flags as integer, ispreset as integer)
+  declare FBCALL def fb_GfxPset    overload (target as any ptr, fx as float, fy as float, color_data as uint32, _
+                                             flags as int32, ispreset as int32)
   
   ' VGA Emulation
-  declare proc fb_GfxIn(port as ushort) as integer
-  declare proc fb_GfxOut(port as ushort, value as ubyte) as integer
+  declare proc fb_GfxIn(port as uint16) as int32
+  declare proc fb_GfxOut(port as uint16, value as uchar) as int32
   
   ' Ring 3 - QB64
   
   ' MEM_STATIC memory manager
-  declare proc mem64_static_malloc(size as uinteger) as SYSTEM_TYPE ptr
+  declare proc mem64_static_malloc(size as uint32) as SYSTEM_TYPE ptr
   declare def  mem64_static_restore(restore_point as SYSTEM_TYPE ptr)
  
   ' mem64_FAR_DYNAMIC memory manager
-  declare proc mem64_dynamic_malloc(size as uinteger) as SYSTEM_TYPE ptr
-  declare def  mem64_dynamic_free  (block as SYSTEM_TYPE ptr)
-  declare def  sub_defseg          (segment as integer, passed as integer)
-  declare proc func_peek           (offset as integer) as integer
-  declare def  sub_poke            (offset as integer, value as integer)
+  declare proc mem64_dynamic_malloc(size   as uint32)                 as SYSTEM_TYPE ptr
+  declare def  mem64_dynamic_free  (block  as SYSTEM_TYPE ptr)
+  declare def  sub_defseg          (segment as int32, passed as int32)
+  declare proc func_peek           (offset  as int32)                 as int32
+  declare def  sub_poke            (offset  as int32, value as int32)
   declare def  more_return_points  ()
   declare proc qbs_new_descriptor  () as qbs ptr
   declare def  qbs_free_descriptor (str_data as qbs ptr)
-  declare proc varptr_dblock_check (off as ubyte ptr) as ushort
-  declare proc varseg_dblock_check (off as ubyte ptr) as ushort
-  declare proc func_lbound         (array as ptrszint ptr, index as integer, num_indexes as integer) as ptrszint
-  declare proc func_ubound         (array as ptrszint ptr, index as integer, num_indexes as integer) as ptrszint
-  
+  declare proc varptr_dblock_check (off as uint8 ptr) as uint16
+  declare proc varseg_dblock_check (off as uint8 ptr) as uint16
+  declare proc func_lbound         (array as ptrszint ptr, index as int32, num_indexes as int32) as ptrszint
+  declare proc func_ubound         (array as ptrszint ptr, index as int32, num_indexes as int32) as ptrszint
+  declare proc check_lbound        (array as ptrszint ptr, index as int32, num_indexes as int32) as ptrszint
+  declare proc check_ubound        (array as ptrszint ptr, index as int32, num_indexes as int32) as ptrszint
+    
   ' Generic File System (GFS)
   ' TODO: implement fstream(C++), ofstream(C++), template(C++)
  
   ' x86 Virtual MEM64 emulation
   ' Note: x86 CPU emulation is still experimental and is not available in QB64 yet.
-   declare proc sib() as uinteger
+   declare proc sib() as uint32
    
    ' 486 Emulation
    
   ' FPU emulation
-   declare proc qbr                     (f as float) as longint
-   declare proc qbr_longdouble_to_uint64(f as float) as ulongint
-   declare proc qbr_float_to_long       (f as float) as integer
-   declare proc qbr_double_to_long      (f as float) as integer
+   declare proc qbr                     (f as float) as int64
+   declare proc qbr_longdouble_to_uint64(f as float) as uint64
+   declare proc qbr_float_to_long       (f as float) as int64
+   declare proc qbr_double_to_long      (f as float) as int32
    declare def  fpu_reinit              ()
    
   ' I/O emulation
-  declare def   sub__blink(onoff as integer) 
-  declare proc  func__blink() as integer
-  declare def   sub_out(port as integer, data_out as integer)
-  declare proc  func_inp(port as integer) as integer
-  declare def   sub_wait(port as integer, andexpression as integer, xorexpression as integer, passed as integer)
+  declare def   sub__blink(onoff as int32) 
+  declare proc  func__blink() as int32
+  declare def   sub_out(port as int32, data_out as int32)
+  declare proc  func_inp(port as int32) as int32
+  declare def   sub_wait(port as int32, andexpression as int32, xorexpression as int32, passed as int32)
   
   ' inline functions 
-  declare def  swap_8         (a as ubyte ptr,    b as ubyte ptr)
-  declare def  swap_16        (a as ushort ptr,   b as ushort ptr)
-  declare def  swap_32        (a as uinteger ptr, b as uinteger ptr)
-  declare def  swap_64        (a as ulongint ptr, b as ulongint ptr)
-  declare def  swap_longdouble(a as double ptr,   b as double ptr)
-  
-  ' bit-shifting
-  declare proc func__shl      (a1 as ulongint, b1 as integer) as ulongint
-  declare proc func__shr      (a1 as ulongint, b1 as integer) as ulongint
-  declare proc func__readbit  (a1 as ulongint, b1 as integer) as longint
-  declare proc func__setbit   (a1 as ulongint, b1 as integer) as ulongint 
-  declare proc func__resetbit (a1 as ulongint, b1 as integer) as ulongint
-  declare proc func__togglebit(a1 as ulongint, b1 as integer) as ulongint
+  declare def  swap_8         (a as any ptr, b as any ptr)
+  declare def  swap_16        (a as any ptr, b as any ptr)
+  declare def  swap_32        (a as any ptr, b as any ptr)
+  declare def  swap_64        (a as any ptr, b as any ptr)
+  declare def  swap_longdouble(a as any ptr, b as any ptr)
+  declare def  swap_block     (a as any ptr, b as any ptr, bytes as uint32)
   
   ' CSNG
-  declare proc func_csng_float(value as single) as float
-  declare proc func_csng_double(value as double) as double
+  declare proc func_csng_float (value as single) as float
+  declare proc func_csng_double(value as float)  as float
   
   ' CDBL
-  declare proc func_cdbl_float(value as double) as double
+  declare proc func_cdbl_float (value as float)  as float
   
   ' CINT
-  declare proc func_cint_double(value as double) as integer
-  declare proc func_cint_float(value as double) as longint
-  declare proc func_cint_long(value as integer) as short
-  declare proc func_cint_ulong(value as uinteger) as integer
-  declare proc func_cint_int64(value as longint) as short
-  declare proc func_cint_uint64(value as longint) as short
+  declare proc func_cint_double(value as float)  as int32
+  declare proc func_cint_float (value as float)  as int64
+  declare proc func_cint_long  (value as int32)  as int16
+  declare proc func_cint_ulong (value as uint32) as int16
+  declare proc func_cint_int64 (value as int64)  as int16
+  declare proc func_cint_uint64(value as uint64) as int16
   
   ' CLNG
-  declare proc func_clng_double(value as double) as integer
-  declare proc func_clng_float(value as double) as longint
-  declare proc func_clng_ulong(value as uinteger) as integer
-  declare proc func_clng_int64(value as longint) as integer
-  declare proc func_clng_uint64(value as ulongint) as integer
+  declare proc func_clng_double(value as float)  as int32
+  declare proc func_clng_float(value  as float)  as int64
+  declare proc func_clng_ulong(value  as uint32) as int32
+  declare proc func_clng_int64(value  as int64)  as int32
+  declare proc func_clng_uint64(value as uint64) as int32
   
   ' _ROUND (note: round performs no error checking)
-  declare proc func_round_double(value as double) as longint
-  declare proc func_round_float(value as double) as longint
+  declare proc func_round_double(value as float) as int64
+  declare proc func_round_float(value  as float) as int64
   
   ' force ABS to return floating point numbers correctly
+ declare proc func_abs(d as single)    as single
+ declare proc func_abs(d as float)     as float
+ declare def  func_abs(d as FLOAT128)  ' as FLOAT128
+ declare def  func_abs(d as FLOAT256)  ' as FLOAT256
+ declare def  func_abs(d as FLOAT512)  ' as FLOAT512
   
+ declare proc func_abs(d as uint8)  as uint8
+ declare proc func_abs(d as uint16) as uint16
+ declare proc func_abs(d as uint32) as uint32
+ declare proc func_abs(d as uint64) as uint64
+ declare proc func_abs(d as int8)   as int8
+ declare proc func_abs(d as int16)  as int16
+ declare proc func_abs(d as int32)  as int32
+ declare proc func_abs(d as int64)  as int64
+
+   ' bit-shifting
+  declare proc func__shl      (a1 as uint64, b1 as int_t) as uint64
+  declare proc func__shr      (a1 as uint64, b1 as int_t) as uint64
+  declare proc func__readbit  (a1 as uint64, b1 as int_t) as uint64
+  
+  declare proc func__setbit   (a1 as uint64, b1 as int_t) as uint64 
+  declare proc func__resetbit (a1 as uint64, b1 as int_t) as uint64
+  declare proc func__togglebit(a1 as uint64, b1 as int_t) as uint64 
+  
+  ' bit-array access functions (note: used to be included through 'bit.cpp')
+  declare proc getubits       (bsize as uint32, _base as uint8 ptr, i as ptrszint) as uint64
+  declare proc getbits        (bsize as uint32, _base as uint8 ptr, i as ptrszint) as int64
+  declare def  setbits        (bsize as uint32, _base as uint8 ptr, i as ptrszint, _val as int64)
+  
+  declare proc call_getubits  (bsize as uint32, array as ptrszint ptr, i as ptrszint) as uint64
+  declare proc call_getbits   (bsize as uint32, array as ptrszint ptr, i as ptrszint) as int64
+  declare def  call_setbits   (bsize as uint32, array as ptrszint ptr, i as ptrszint, _val as int64)
+  
+  declare proc logical_drives() as int32
+  
+  declare proc array_check(index as uptrszint, imit as uptrszint) as ptrszint
+  
+  declare proc func_sgn(v as uint8)    as int32
+  declare proc func_sgn(v as int8)     as int32
+  declare proc func_sgn(v as uint16)   as int32
+  declare proc func_sgn(v as int16)    as int32
+  declare proc func_sgn(v as uint32)   as int32
+  declare proc func_sgn(v as int32)    as int32
+  declare proc func_sgn(v as uint64)   as int32
+  declare proc func_sgn(v as int64)    as int32
+  declare proc func_sgn(v as single)   as int32
+  declare proc func_sgn(v as float)    as int32
+  declare proc func_sgn(v as FLOAT128) as int32
+  declare proc func_sgn(v as FLOAT256) as int32
+  declare proc func_sgn(v as FLOAT512) as int32
   
   ' Working with 32bit colors:
-  declare proc func__rgb32(r as integer, g as integer, b as integer, a as integer) as uinteger
-  declare proc func__rgb32(r as integer, g as integer, b as integer) as uinteger
-  declare proc func__rgb32(i as integer, a as integer) as uinteger
-  declare proc func__rgb32(i as integer) as uinteger
-  declare proc func__rgba32(r as integer, g as integer, b as integer, a as integer) as uinteger
-  declare proc func__alpha32(col as uinteger) as integer
-  declare proc func__red32  (col as uinteger) as integer
-  declare proc func__green32(col as uinteger) as integer
-  declare proc func__blue32 (col as uinteger) as integer 
+  declare proc func__rgb32  (r   as int32 , g as int32 , b as int32 , a as int32)                               as uint32
+  declare proc func__rgb32  (r   as int32 , g as int32 , b as int32)                                            as uint32
+  declare proc func__rgb32  (i   as int32 , a as int32)                                                         as uint32
+  declare proc func__rgb32  (i   as int32)                                                                      as uint32
+  declare proc func__rgba32 (r   as int32 , g as int32 , b as int32 , a as int32)                               as uint32
+  declare proc func__alpha32(col as uint32)                                                                     as int32
+  declare proc func__red32  (col as uint32)                                                                     as int32
+  declare proc func__green32(col as uint32)                                                                     as int32
+  declare proc func__blue32 (col as uint32)                                                                     as int32  
   
   'Ring 0 - kernel
   
   ' kernel mode libc
-  declare def  k_memset        (de  as SYSTEM_TYPE , sz   as SYSTEM_TYPE, v  as SYSTEM_TYPE)
-  declare def  k_memcpy        (su  as SYSTEM_TYPE , de   as SYSTEM_TYPE, sz as SYSTEM_TYPE)
-  declare proc k_min           (v1  as SYSTEM_TYPE , v2   as SYSTEM_TYPE)                                       as SYSTEM_TYPE
-  declare proc k_max           (v1  as SYSTEM_TYPE , v2   as SYSTEM_TYPE)                                       as SYSTEM_TYPE
-  declare proc k_strlen        (s   as ubyte ptr)                                                               as SYSTEM_TYPE
-  declare proc k_strtrim       (s   as ubyte ptr)                                                               as ubyte ptr
-  declare def  k_strrev        (s   as ubyte ptr)
-  declare proc k_strtoupper    (s   as ubyte ptr)                                                               as ubyte ptr
-  declare proc k_strtolower    (s   as ubyte ptr)                                                               as ubyte ptr
-  declare proc k_substring     (s   as ubyte ptr   ,index  as SYSTEM_TYPE, count as SYSTEM_TYPE)                as ubyte ptr
-  declare proc k_strendswith   (src as ubyte ptr   ,search as ubyte ptr)                                        as SYSTEM_TYPE
-  declare proc k_strlastindexof(s   as ubyte ptr   ,s2     as ubyte ptr)                                        as SYSTEM_TYPE
+  declare proc k_f             (x   as uint8)                                                                   as float 
+  declare proc k_f             (x   as int8)                                                                    as float
+  declare proc k_f             (x   as uint16)                                                                  as float 
+  declare proc k_f             (x   as int16)                                                                   as float 
+  declare proc k_f             (x   as uint32)                                                                  as float 
+  declare proc k_f             (x   as int32)                                                                   as float 
+  declare proc k_f             (x   as uint64)                                                                  as float 
+  declare proc k_f             (x   as int64)                                                                   as float                 
+  declare proc k_f             (x   as single)                                                                  as float  
+  declare proc k_f             (x   as float)                                                                   as float
+  declare proc k_f             (x   as FLOAT128)                                                                as float
+  declare proc k_f             (x   as FLOAT256)                                                                as float
+  declare proc k_f             (x   as FLOAT512)                                                                as float
+
+  declare proc k_frexp         (d   as uint8       , ep         as uint8 ptr)                                   as float 
+  declare proc k_frexp         (d   as int8        , ep         as int8 ptr)                                    as float 
+  declare proc k_frexp         (d   as uint16      , ep         as uint16 ptr)                                  as float 
+  declare proc k_frexp         (d   as int16       , ep         as int16 ptr)                                   as float 
+  declare proc k_frexp         (d   as uint32      , ep         as uint32 ptr)                                  as float 
+  declare proc k_frexp         (d   as int32       , ep         as int32 ptr)                                   as float 
+  declare proc k_frexp         (d   as uint64      , ep         as uint64 ptr)                                  as float  
+  declare proc k_frexp         (d   as int64       , ep         as int64 ptr)                                   as float  
+  declare proc k_frexp         (d   as single      , ep         as single ptr)                                  as float    
+  declare proc k_frexp         (d   as float       , ep         as float ptr)                                   as float
+  declare proc k_frexp         (d   as FLOAT128    , ep         as FLOAT128 ptr)                                as float
+  declare proc k_frexp         (d   as FLOAT256    , ep         as FLOAT256 ptr)                                as float
+  declare proc k_frexp         (d   as FLOAT512    , ep         as FLOAT512 ptr)                                as float
+
+  declare proc k_ldexp         (d   as uint8       , e          as uint8)                                       as float
+  declare proc k_ldexp         (d   as int8        , e          as int8)                                        as float
+  declare proc k_ldexp         (d   as uint16      , e          as uint16)                                      as float
+  declare proc k_ldexp         (d   as int16       , e          as int16)                                       as float
+  declare proc k_ldexp         (d   as uint32      , e          as uint32)                                      as float
+  declare proc k_ldexp         (d   as int32       , e          as int32)                                       as float
+  declare proc k_ldexp         (d   as uint64      , e          as uint64)                                      as float
+  declare proc k_ldexp         (d   as int64       , e          as int64)                                       as float        
+  declare proc k_ldexp         (d   as single      , e          as single)                                      as float
+  declare proc k_ldexp         (d   as float       , e          as float)                                       as float
+  declare proc k_ldexp         (d   as FLOAT128    , e          as FLOAT128)                                    as float
+  declare proc k_ldexp         (d   as FLOAT256    , e          as FLOAT256)                                    as float
+  declare proc k_ldexp         (d   as FLOAT512    , e          as FLOAT512)                                    as float
+
+  declare proc k_sqrtf         (arg as uint8)                                                                   as float         
+  declare proc k_sqrtf         (arg as int8)                                                                    as float
+  declare proc k_sqrtf         (arg as uint16)                                                                  as float         
+  declare proc k_sqrtf         (arg as int16)                                                                   as float
+  declare proc k_sqrtf         (arg as uint32)                                                                  as float         
+  declare proc k_sqrtf         (arg as int32)                                                                   as float
+  declare proc k_sqrtf         (arg as uint64)                                                                  as float         
+  declare proc k_sqrtf         (arg as int64)                                                                   as float
+  declare proc k_sqrtf         (arg as single)                                                                  as float         
+  declare proc k_sqrtf         (arg as float)                                                                   as float
+
+  declare def  k_memset        (de  as uint8    ptr, sz         as uint8       , v          as uint8)
+  declare def  k_memset        (de  as int8     ptr, sz         as int8        , v          as int8)
+  declare def  k_memset        (de  as uint16   ptr, sz         as uint16      , v          as uint16)
+  declare def  k_memset        (de  as int16    ptr, sz         as int16       , v          as int16)
+  declare def  k_memset        (de  as uint32   ptr, sz         as uint32      , v          as uint32)
+  declare def  k_memset        (de  as int32    ptr, sz         as int32       , v          as int32)        
+  declare def  k_memset        (de  as uint64   ptr, sz         as uint64      , v          as uint64)
+  declare def  k_memset        (de  as int64    ptr, sz         as int64       , v          as int64)
+  declare def  k_memset        (de  as single   ptr, sz         as single      , v          as single) 
+  declare def  k_memset        (de  as float    ptr, sz         as float       , v          as float)  
+  declare def  k_memset        (de  as FLOAT128 ptr, sz         as FLOAT128    , v          as FLOAT128)  
+  declare def  k_memset        (de  as FLOAT256 ptr, sz         as FLOAT256    , v          as FLOAT256)   
+  declare def  k_memset        (de  as FLOAT512 ptr, sz         as FLOAT512    , v          as FLOAT512)
+
+  declare def  k_memset        (de  as uint8       , sz         as uint8       , v          as uint8)
+  declare def  k_memset        (de  as int8        , sz         as int8        , v          as int8)
+  declare def  k_memset        (de  as uint16      , sz         as uint16      , v          as uint16)
+  declare def  k_memset        (de  as int16       , sz         as int16       , v          as int16)
+  declare def  k_memset        (de  as uint32      , sz         as uint32      , v          as uint32)
+  declare def  k_memset        (de  as int32       , sz         as int32       , v          as int32)        
+  declare def  k_memset        (de  as uint64      , sz         as uint64      , v          as uint64)
+  declare def  k_memset        (de  as int64       , sz         as int64       , v          as int64)
+  declare def  k_memset        (de  as single      , sz         as single      , v          as single)  
+  declare def  k_memset        (de  as float       , sz         as float       , v          as float)
+  declare def  k_memset        (de  as FLOAT128    , sz         as FLOAT128    , v          as FLOAT128)  
+  declare def  k_memset        (de  as FLOAT256    , sz         as FLOAT256    , v          as FLOAT256)   
+  declare def  k_memset        (de  as FLOAT512    , sz         as FLOAT512    , v          as FLOAT512)
+
+  declare def  k_memcpy        (su  as uint8  ptr  , de         as uint8  ptr  , sz         as uint8)
+  declare def  k_memcpy        (su  as int8   ptr  , de         as int8   ptr  , sz         as int8)
+  declare def  k_memcpy        (su  as uint16 ptr  , de         as uint16 ptr  , sz         as uint16)
+  declare def  k_memcpy        (su  as int16  ptr  , de         as int16  ptr  , sz         as int16)
+  declare def  k_memcpy        (su  as uint32 ptr  , de         as uint32 ptr  , sz         as uint32)
+  declare def  k_memcpy        (su  as int32  ptr  , de         as int32  ptr  , sz         as int32)
+  declare def  k_memcpy        (su  as uint64 ptr  , de         as uint64 ptr  , sz         as uint64)
+  declare def  k_memcpy        (su  as int64  ptr  , de         as int64  ptr  , sz         as int64)
+  declare def  k_memcpy        (su  as single ptr  , de         as single ptr  , sz         as single)
+  declare def  k_memcpy        (su  as float  ptr  , de         as float  ptr  , sz         as float)
+  declare def  k_memcpy        (su  as FLOAT128 ptr, de         as FLOAT128 ptr, sz         as FLOAT128)
+  declare def  k_memcpy        (su  as FLOAT256 ptr, de         as FLOAT256 ptr, sz         as FLOAT256)  
+  declare def  k_memcpy        (su  as FLOAT512 ptr, de         as FLOAT512 ptr, sz         as FLOAT512) 
+
+  declare def  k_memcpy        (su  as uint8       , de         as uint8       , sz         as uint8)
+  declare def  k_memcpy        (su  as int8        , de         as int8        , sz         as int8)
+  declare def  k_memcpy        (su  as uint16      , de         as uint16      , sz         as uint16)
+  declare def  k_memcpy        (su  as int16       , de         as int16       , sz         as int16)
+  declare def  k_memcpy        (su  as uint32      , de         as uint32      , sz         as uint32)
+  declare def  k_memcpy        (su  as int32       , de         as int32       , sz         as int32)
+  declare def  k_memcpy        (su  as uint64      , de         as uint64      , sz         as uint64)
+  declare def  k_memcpy        (su  as int64       , de         as int64       , sz         as int64)
+  declare def  k_memcpy        (su  as single      , de         as single      , sz         as single)
+  declare def  k_memcpy        (su  as float       , de         as float       , sz         as float)
+  declare def  k_memcpy        (su  as FLOAT128    , de         as FLOAT128    , sz         as FLOAT128)
+  declare def  k_memcpy        (su  as FLOAT256    , de         as FLOAT256    , sz         as FLOAT256)    
+  declare def  k_memcpy        (su  as FLOAT512    , de         as FLOAT512    , sz         as FLOAT512)
+  
+  declare def  k_memcpy16      (dst as any ptr     , src        as any ptr     , cpt        as uint32)
+  declare def  k_memcpy32      (dst as any ptr     , src        as any ptr     , cpt        as uint32)
+  declare def  k_memset16      (dst as any ptr     , value      as uint16      , cpt        as uint32) 
+  declare def  k_memset32      (dst as any ptr     , value      as uint32      , cpt        as uint32) 
+
+  declare proc k_minf          (v1  as uint8       , v2         as uint8)                                       as float  
+  declare proc k_minf          (v1  as int8        , v2         as int8)                                        as float 
+  declare proc k_minf          (v1  as uint16      , v2         as uint16)                                      as float  
+  declare proc k_minf          (v1  as int16       , v2         as int16)                                       as float 
+  declare proc k_minf          (v1  as uint32      , v2         as uint32)                                      as float  
+  declare proc k_minf          (v1  as int32       , v2         as int32)                                       as float  
+  declare proc k_minf          (v1  as uint64      , v2         as uint64)                                      as float  
+  declare proc k_minf          (v1  as int64       , v2         as int64)                                       as float 
+  declare proc k_minf          (v1  as single      , v2         as single)                                      as float  
+  declare proc k_minf          (v1  as float       , v2         as float)                                       as float
+  declare proc k_minf          (v1  as FLOAT128    , v2         as FLOAT128)                                    as float
+  declare proc k_minf          (v1  as FLOAT256    , v2         as FLOAT256)                                    as float
+  declare proc k_minf          (v1  as FLOAT512    , v2         as FLOAT512)                                    as float    
+
+  declare proc k_maxf          (v1  as uint8       , v2         as uint8)                                       as float  
+  declare proc k_maxf          (v1  as int8        , v2         as int8)                                        as float
+  declare proc k_maxf          (v1  as uint16      , v2         as uint16)                                      as float  
+  declare proc k_maxf          (v1  as int16       , v2         as int16)                                       as float
+  declare proc k_maxf          (v1  as uint32      , v2         as uint32)                                      as float  
+  declare proc k_maxf          (v1  as int32       , v2         as int32)                                       as float
+  declare proc k_maxf          (v1  as uint64      , v2         as uint64)                                      as float  
+  declare proc k_maxf          (v1  as int64       , v2         as int64)                                       as float
+  declare proc k_maxf          (v1  as single      , v2         as single)                                      as float  
+  declare proc k_maxf          (v1  as float       , v2         as float)                                       as float
+  declare proc k_maxf          (v1  as FLOAT128    , v2         as FLOAT128)                                    as float  
+  declare proc k_maxf          (v1  as FLOAT256    , v2         as FLOAT256)                                    as float
+  declare proc k_maxf          (v1  as FLOAT512    , v2         as FLOAT512)                                    as float  
+    
+  declare proc k_strlen        (s   as uchar ptr)                                                               as SYSTEM_TYPE
+  declare proc k_strtrim       (s   as uchar ptr)                                                               as uchar ptr
+  declare proc k_strcontains   (s   as uchar ptr   , s2         as uchar ptr)                                   as SYSTEM_TYPE
+  declare proc k_strindexof    (s   as uchar ptr   , s2         as uchar ptr)                                   as SYSTEM_TYPE
+  declare proc k_strlastindexof(s   as uchar ptr   , s2         as uchar ptr)                                   as SYSTEM_TYPE
+  declare proc k_strncmp       (s1  as uchar ptr   , s2         as uchar ptr   , count      as SYSTEM_TYPE)     as SYSTEM_TYPE
+  declare proc k_strcmp        (s1  as uchar ptr   , s2         as uchar ptr)                                   as SYSTEM_TYPE
+  declare def  k_strrev        (s   as uchar ptr)
+  declare proc k_strtoupper    (s   as uchar ptr)                                                               as uchar ptr
+  declare proc k_strtolower    (s   as uchar ptr)                                                               as uchar ptr
+  declare proc k_substring     (s   as uchar ptr   , index      as SYSTEM_TYPE , count      as SYSTEM_TYPE)     as uchar ptr
+  declare proc k_strendswith   (src as uchar ptr   , search     as uchar ptr)                                   as SYSTEM_TYPE
+  declare proc k_strcat        (s1  as uchar ptr   , s2         as uchar ptr)                                   as uchar ptr
+
+  declare proc k_clampf        (x   as uint8       , lowerlimit as uint8       , upperlimit as uint8)           as float 
+  declare proc k_clampf        (x   as int8        , lowerlimit as int8        , upperlimit as int8)            as float
+  declare proc k_clampf        (x   as uint16      , lowerlimit as uint16      , upperlimit as uint16)          as float 
+  declare proc k_clampf        (x   as int16       , lowerlimit as int16       , upperlimit as int16)           as float
+  declare proc k_clampf        (x   as uint32      , lowerlimit as uint32      , upperlimit as uint32)          as float 
+  declare proc k_clampf        (x   as int32       , lowerlimit as int32       , upperlimit as int32)           as float
+  declare proc k_clampf        (x   as uint64      , lowerlimit as uint64      , upperlimit as uint64)          as float 
+  declare proc k_clampf        (x   as int64       , lowerlimit as int64       , upperlimit as int64)           as float  
+  declare proc k_clampf        (x   as single      , lowerlimit as single      , upperlimit as single)          as float 
+  declare proc k_clampf        (x   as float       , lowerlimit as float       , upperlimit as float)           as float
+  declare proc k_clampf        (x   as FLOAT128    , lowerlimit as FLOAT128    , upperlimit as FLOAT128)        as float  
+  declare proc k_clampf        (x   as FLOAT256    , lowerlimit as FLOAT256    , upperlimit as FLOAT256)        as float  
+  declare proc k_clampf        (x   as FLOAT512    , lowerlimit as FLOAT512    , upperlimit as FLOAT512)        as float  
+    
+  ' kernel mode OpenGL shader language
+  declare proc k_radiance             (      deg   as       uint8)                                                  as float  
+  declare proc k_radiance             (      deg   as       int8)                                                   as float  
+  declare proc k_radiance             (      deg   as       uint16)                                                 as float  
+  declare proc k_radiance             (      deg   as       int16)                                                  as float   
+  declare proc k_radiance             (      deg   as       uint32)                                                 as float  
+  declare proc k_radiance             (      deg   as       int32)                                                  as float 
+  declare proc k_radiance             (      deg   as       uint64)                                                 as float  
+  declare proc k_radiance             (      deg   as       int64)                                                  as float 
+  declare proc k_radiance             (      deg   as       single)                                                 as float  
+  declare proc k_radiance    overload (      deg   as       float)                                                  as float 
+  declare proc k_radiance             (byref v     as       vector2)                                                as vector2
+  declare proc k_radiance             (byref v     as       vector3)                                                as vector3
+  declare proc k_radiance             (byref v     as       vector4)                                                as vector4  
+
+  declare proc k_degrees              (      rad   as       uint8)                                                  as float
+  declare proc k_degrees              (      rad   as       int8)                                                   as float
+  declare proc k_degrees              (      rad   as       uint16)                                                 as float
+  declare proc k_degrees              (      rad   as       int16)                                                  as float
+  declare proc k_degrees              (      rad   as       uint32)                                                 as float
+  declare proc k_degrees              (      rad   as       int32)                                                  as float
+  declare proc k_degrees              (      rad   as       uint64)                                                 as float
+  declare proc k_degrees              (      rad   as       int64)                                                  as float
+  declare proc k_degrees              (      rad   as       single)                                                 as float
+  declare proc k_degrees     overload (      rad   as       float)                                                  as float
+  declare proc k_degrees              (      rad   as       FLOAT128)                                               as float
+  declare proc k_degrees              (      rad   as       FLOAT256)                                               as float
+  declare proc k_degrees              (      rad   as       FLOAT512)                                               as float      
+  declare proc k_degrees              (byref v     as       vector2)                                                as vector2
+  declare proc k_degrees              (byref v     as       vector3)                                                as vector3
+  declare proc k_degrees              (byref v     as       vector4)                                                as vector4
+
+  declare proc k_atan                 (      x     as       uint8   ,      y     as uint8)                          as float
+  declare proc k_atan                 (      x     as       int8    ,      y     as int8)                           as float
+  declare proc k_atan                 (      x     as       uint16  ,      y     as uint16)                         as float
+  declare proc k_atan                 (      x     as       int16   ,      y     as int16)                          as float
+  declare proc k_atan                 (      x     as       uint32  ,      y     as uint32)                         as float
+  declare proc k_atan                 (      x     as       int32   ,      y     as int32)                          as float
+  declare proc k_atan                 (      x     as       uint64  ,      y     as uint64)                         as float
+  declare proc k_atan                 (      x     as       int64   ,      y     as int64)                          as float
+  declare proc k_atan                 (      x     as       single  ,      y     as single)                         as float
+  declare proc k_atan        overload (      x     as       float   ,      y     as float)                          as float
+  declare proc k_atan                 (      x     as       FLOAT128,      y     as FLOAT128)                       as float
+  declare proc k_atan                 (      x     as       FLOAT256,      y     as FLOAT256)                       as float
+  declare proc k_atan                 (      x     as       FLOAT512,      y     as FLOAT512)                       as float      
+  declare proc k_atan                 (byref x     as       vector2 ,byref y     as vector2)                        as vector2
+  declare proc k_atan                 (byref x     as       vector3 ,byref y     as vector3)                        as vector3
+  declare proc k_atan                 (byref x     as       vector4 ,byref y     as vector4)                        as vector4
+
+  declare proc k_pow                  (      a     as       uint8   ,      b     as uint8)                          as float
+  declare proc k_pow                  (      a     as       int8    ,      b     as int8)                           as float
+  declare proc k_pow                  (      a     as       uint16  ,      b     as uint16)                         as float
+  declare proc k_pow                  (      a     as       int16   ,      b     as int16)                          as float
+  declare proc k_pow                  (      a     as       uint32  ,      b     as uint32)                         as float
+  declare proc k_pow                  (      a     as       int32   ,      b     as int32)                          as float
+  declare proc k_pow                  (      a     as       uint64  ,      b     as uint64)                         as float
+  declare proc k_pow                  (      a     as       int64   ,      b     as int64)                          as float
+  declare proc k_pow                  (      a     as       single  ,      b     as single)                         as float
+  declare proc k_pow         overload (      a     as       float   ,      b     as float)                          as float
+  declare proc k_pow                  (      a     as       FLOAT128,      b     as FLOAT128)                       as float
+  declare proc k_pow                  (      a     as       FLOAT256,      b     as FLOAT256)                       as float
+  declare proc k_pow                  (      a     as       FLOAT512,      b     as FLOAT512)                       as float    
+  declare proc k_pow                  (byref a     as       vector2 ,byref b     as vector2)                        as vector2
+  declare proc k_pow                  (byref a     as       vector3 ,byref b     as vector3)                        as vector3
+  declare proc k_pow                  (byref a     as       vector4 ,byref b     as vector4)                        as vector4
+
+  declare proc k_exp2f                (      a     as       uint8)                                                  as float
+  declare proc k_exp2f                (      a     as       int8)                                                   as float
+  declare proc k_exp2f                (      a     as       uint16)                                                 as float
+  declare proc k_exp2f                (      a     as       int16)                                                  as float
+  declare proc k_exp2f                (      a     as       uint32)                                                 as float
+  declare proc k_exp2f                (      a     as       int32)                                                  as float
+  declare proc k_exp2f                (      a     as       uint64)                                                 as float
+  declare proc k_exp2f                (      a     as       int64)                                                  as float
+  declare proc k_exp2f                (      a     as       single)                                                 as float
+  declare proc k_exp2f                (      a     as       float)                                                  as float
+  declare proc k_exp2f                (      a     as       FLOAT128)                                               as float
+  declare proc k_exp2f                (      a     as       FLOAT256)                                               as float
+  declare proc k_exp2f                (      a     as       FLOAT512)                                               as float
+
+  declare proc k_exp                  (      a     as       uint8)                                                  as float
+  declare proc k_exp                  (      a     as       int8)                                                   as float
+  declare proc k_exp                  (      a     as       uint16)                                                 as float
+  declare proc k_exp                  (      a     as       int16)                                                  as float
+  declare proc k_exp                  (      a     as       uint32)                                                 as float
+  declare proc k_exp                  (      a     as       int32)                                                  as float
+  declare proc k_exp                  (      a     as       uint64)                                                 as float
+  declare proc k_exp                  (      a     as       int64)                                                  as float
+  declare proc k_exp                  (      a     as       single)                                                 as float
+  declare proc k_exp         overload (      a     as       float)                                                  as float
+  declare proc k_exp                  (      a     as       FLOAT128)                                               as float
+  declare proc k_exp                  (      a     as       FLOAT256)                                               as float
+  declare proc k_exp                  (      a     as       FLOAT512)                                               as float    
+  declare proc k_exp                  (byref a     as       vector2)                                                as vector2
+  declare proc k_exp                  (byref a     as       vector3)                                                as vector3
+  declare proc k_exp                  (byref a     as       vector4)                                                as vector4
+
+  declare proc k_log                  (      a     as       uint8)                                                  as float
+  declare proc k_log                  (      a     as       int8)                                                   as float
+  declare proc k_log                  (      a     as       uint16)                                                 as float
+  declare proc k_log                  (      a     as       int16)                                                  as float
+  declare proc k_log                  (      a     as       uint32)                                                 as float
+  declare proc k_log                  (      a     as       int32)                                                  as float
+  declare proc k_log                  (      a     as       uint64)                                                 as float
+  declare proc k_log                  (      a     as       int64)                                                  as float
+  declare proc k_log                  (      a     as       single)                                                 as float
+  declare proc k_log         overload (      a     as       float)                                                  as float
+  declare proc k_log                  (      a     as       FLOAT128)                                               as float
+  declare proc k_log                  (      a     as       FLOAT256)                                               as float
+  declare proc k_log                  (      a     as       FLOAT512)                                               as float
+  declare proc k_log                  (byref a     as       vector2)                                                as vector2
+  declare proc k_log                  (byref a     as       vector3)                                                as vector3
+  declare proc k_log                  (byref a     as       vector4)                                                as vector4
+
+  declare proc k_exp2                 (byref a     as       uint8)                                                  as float
+  declare proc k_exp2                 (byref a     as       int8)                                                   as float
+  declare proc k_exp2                 (byref a     as       uint16)                                                 as float
+  declare proc k_exp2                 (byref a     as       int16)                                                  as float
+  declare proc k_exp2                 (byref a     as       uint32)                                                 as float
+  declare proc k_exp2                 (byref a     as       int32)                                                  as float
+  declare proc k_exp2                 (byref a     as       uint64)                                                 as float
+  declare proc k_exp2                 (byref a     as       int64)                                                  as float
+  declare proc k_exp2                 (byref a     as       single)                                                 as float
+  declare proc k_exp2        overload (byref a     as       float)                                                  as float
+  declare proc k_exp2                 (byref a     as       FLOAT128)                                               as float
+  declare proc k_exp2                 (byref a     as       FLOAT256)                                               as float
+  declare proc k_exp2                 (byref a     as       FLOAT512)                                               as float
+  declare proc k_exp2                 (byref a     as       vector2)                                                as vector2
+  declare proc k_exp2                 (byref a     as       vector3)                                                as vector3
+  declare proc k_exp2                 (byref a     as       vector4)                                                as vector4
+
+  declare proc k_log2                 (      a     as       uint8)                                                  as float
+  declare proc k_log2                 (      a     as       int8)                                                   as float
+  declare proc k_log2                 (      a     as       uint16)                                                 as float
+  declare proc k_log2                 (      a     as       int16)                                                  as float
+  declare proc k_log2                 (      a     as       uint32)                                                 as float
+  declare proc k_log2                 (      a     as       int32)                                                  as float
+  declare proc k_log2                 (      a     as       uint64)                                                 as float
+  declare proc k_log2                 (      a     as       int64)                                                  as float
+  declare proc k_log2                 (      a     as       single)                                                 as float
+  declare proc k_log2        overload (      a     as       float)                                                  as float
+  declare proc k_log2                 (      a     as       FLOAT128)                                               as float
+  declare proc k_log2                 (      a     as       FLOAT256)                                               as float
+  declare proc k_log2                 (      a     as       FLOAT512)                                               as float
+  declare proc k_log2                 (byref a     as       vector2)                                                as vector2
+  declare proc k_log2                 (byref a     as       vector3)                                                as vector3
+  declare proc k_log2                 (byref a     as       vector4)                                                as vector4
+
+  declare proc k_sqrt                 (      a     as       uint8)                                                  as float
+  declare proc k_sqrt                 (      a     as       int8)                                                   as float
+  declare proc k_sqrt                 (      a     as       uint16)                                                 as float
+  declare proc k_sqrt                 (      a     as       int16)                                                  as float
+  declare proc k_sqrt                 (      a     as       uint32)                                                 as float
+  declare proc k_sqrt                 (      a     as       int32)                                                  as float
+  declare proc k_sqrt                 (      a     as       uint64)                                                 as float
+  declare proc k_sqrt                 (      a     as       int64)                                                  as float
+  declare proc k_sqrt                 (      a     as       single)                                                 as float
+  declare proc k_sqrt        overload (      a     as       float)                                                  as float
+  declare proc k_sqrt                 (      a     as       FLOAT128)                                               as float
+  declare proc k_sqrt                 (      a     as       FLOAT256)                                               as float
+  declare proc k_sqrt                 (      a     as       FLOAT512)                                               as float
+  declare proc k_sqrt                 (byref a     as       vector2)                                                as vector2
+  declare proc k_sqrt                 (byref a     as       vector3)                                                as vector3
+  declare proc k_sqrt                 (byref a     as       vector4)                                                as vector4
+
+  declare proc k_inversesqrt          (      a     as       uint8)                                                  as float
+  declare proc k_inversesqrt          (      a     as       int8)                                                   as float
+  declare proc k_inversesqrt          (      a     as       uint16)                                                 as float
+  declare proc k_inversesqrt          (      a     as       int16)                                                  as float
+  declare proc k_inversesqrt          (      a     as       uint32)                                                 as float
+  declare proc k_inversesqrt          (      a     as       int32)                                                  as float
+  declare proc k_inversesqrt          (      a     as       uint64)                                                 as float
+  declare proc k_inversesqrt          (      a     as       int64)                                                  as float
+  declare proc k_inversesqrt          (      a     as       single)                                                 as float
+  declare proc k_inversesqrt overload (      a     as       float)                                                  as float
+  declare proc k_inversesqrt          (      a     as       FLOAT128)                                               as float
+  declare proc k_inversesqrt          (      a     as       FLOAT256)                                               as float
+  declare proc k_inversesqrt          (      a     as       FLOAT512)                                               as float
+  declare proc k_inversesqrt          (byref a     as       vector2)                                                as vector2
+  declare proc k_inversesqrt          (byref a     as       vector3)                                                as vector3
+  declare proc k_inversesqrt          (byref a     as       vector4)                                                as vector4
+
+  declare proc k_sign                 (      a     as       uint8)                                                  as float
+  declare proc k_sign                 (      a     as       int8)                                                   as float
+  declare proc k_sign                 (      a     as       uint16)                                                 as float
+  declare proc k_sign                 (      a     as       int16)                                                  as float
+  declare proc k_sign                 (      a     as       uint32)                                                 as float
+  declare proc k_sign                 (      a     as       int32)                                                  as float
+  declare proc k_sign                 (      a     as       uint64)                                                 as float
+  declare proc k_sign                 (      a     as       int64)                                                  as float
+  declare proc k_sign                 (      a     as       single)                                                 as float
+  declare proc k_sign        overload (      a     as       float)                                                  as float
+  declare proc k_sign                 (      a     as       FLOAT128)                                               as float
+  declare proc k_sign                 (      a     as       FLOAT256)                                               as float
+  declare proc k_sign                 (      a     as       FLOAT512)                                               as float    
+  declare proc k_sign                 (byref a     as       vector2)                                                as vector2
+  declare proc k_sign                 (byref a     as       vector3)                                                as vector3
+  declare proc k_sign                 (byref a     as       vector4)                                                as vector4
+
+  declare proc k_floor                (      a     as       uint8)                                                  as float
+  declare proc k_floor                (      a     as       int8)                                                   as float
+  declare proc k_floor                (      a     as       uint16)                                                 as float
+  declare proc k_floor                (      a     as       int16)                                                  as float
+  declare proc k_floor                (      a     as       uint32)                                                 as float
+  declare proc k_floor                (      a     as       int32)                                                  as float
+  declare proc k_floor                (      a     as       uint64)                                                 as float
+  declare proc k_floor                (      a     as       int64)                                                  as float
+  declare proc k_floor                (      a     as       single)                                                 as float
+  declare proc k_floor       overload (      a     as       float)                                                  as float
+  declare proc k_floor                (      a     as       FLOAT128)                                               as float
+  declare proc k_floor                (      a     as       FLOAT256)                                               as float
+  declare proc k_floor                (      a     as       FLOAT512)                                               as float  
+  declare proc k_floor                (byref a     as       vector2)                                                as vector2
+  declare proc k_floor                (byref a     as       vector3)                                                as vector3
+  declare proc k_floor                (byref a     as       vector4)                                                as vector4
+
+  declare proc k_ceil                 (      a     as       uint8)                                                  as float
+  declare proc k_ceil                 (      a     as       int8)                                                   as float
+  declare proc k_ceil                 (      a     as       uint16)                                                 as float
+  declare proc k_ceil                 (      a     as       int16)                                                  as float
+  declare proc k_ceil                 (      a     as       uint32)                                                 as float
+  declare proc k_ceil                 (      a     as       int32)                                                  as float
+  declare proc k_ceil                 (      a     as       uint64)                                                 as float
+  declare proc k_ceil                 (      a     as       int64)                                                  as float
+  declare proc k_ceil                 (      a     as       single)                                                 as float
+  declare proc k_ceil        overload (      a     as       float)                                                  as float
+  declare proc k_ceil                 (      a     as       FLOAT128)                                               as float
+  declare proc k_ceil                 (      a     as       FLOAT256)                                               as float
+  declare proc k_ceil                 (      a     as       FLOAT512)                                               as float
+  declare proc k_ceil                 (byref a     as       vector2)                                                as vector2
+  declare proc k_ceil                 (byref a     as       vector3)                                                as vector3
+  declare proc k_ceil                 (byref a     as       vector4)                                                as vector4
+
+  declare proc k_fract                (      x     as       uint8)                                                  as float
+  declare proc k_fract                (      x     as       int8)                                                   as float
+  declare proc k_fract                (      x     as       uint16)                                                 as float
+  declare proc k_fract                (      x     as       int16)                                                  as float  
+  declare proc k_fract                (      x     as       uint32)                                                 as float
+  declare proc k_fract                (      x     as       int32)                                                  as float
+  declare proc k_fract                (      x     as       uint64)                                                 as float
+  declare proc k_fract                (      x     as       int64)                                                  as float
+  declare proc k_fract                (      x     as       single)                                                 as float
+  declare proc k_fract       overload (      x     as       float)                                                  as float
+  declare proc k_fract                (      x     as       FLOAT128)                                               as float
+  declare proc k_fract                (      x     as       FLOAT256)                                               as float
+  declare proc k_fract                (      x     as       FLOAT512)                                               as float
+  declare proc k_fract                (byref x     as       vector2)                                                as vector2
+  declare proc k_fract                (byref x     as       vector3)                                                as vector3
+  declare proc k_fract                (byref x     as       vector4)                                                as vector4
+
+  declare proc k_modulo               (      x     as       uint8   ,      y     as uint8)                          as float
+  declare proc k_modulo               (      x     as       int8    ,      y     as int8)                           as float
+  declare proc k_modulo               (      x     as       uint16  ,      y     as uint16)                         as float
+  declare proc k_modulo               (      x     as       int16   ,      y     as int16)                          as float
+  declare proc k_modulo               (      x     as       uint32  ,      y     as uint32)                         as float
+  declare proc k_modulo               (      x     as       int32   ,      y     as int32)                          as float
+  declare proc k_modulo               (      x     as       uint64  ,      y     as uint64)                         as float
+  declare proc k_modulo      overload (      x     as       int64   ,      y     as int64)                          as float
+  declare proc k_modulo               (      x     as       single  ,      y     as single)                         as float  
+  declare proc k_modulo               (      x     as       float   ,      y     as float)                          as float
+  declare proc k_modulo               (      x     as       FLOAT128,      y     as FLOAT128)                       as float
+  declare proc k_modulo               (      x     as       FLOAT256,      y     as FLOAT256)                       as float
+  declare proc k_modulo               (      x     as       FLOAT512,      y     as FLOAT512)                       as float
+  declare proc k_modulo               (byref x     as       vector2 ,byref y     as vector2)                        as vector2
+  declare proc k_modulo               (byref x     as       vector3 ,byref y     as vector3)                        as vector3
+  declare proc k_modulo               (byref x     as       vector4 ,byref y     as vector4)                        as vector4
+
+  declare proc k_min                  (      a     as       uint8   ,      b     as uint8)                          as float 
+  declare proc k_min                  (      a     as       int8    ,      b     as int8)                           as float 
+  declare proc k_min                  (      a     as       uint16  ,      b     as uint16)                         as float 
+  declare proc k_min                  (      a     as       int16   ,      b     as int16)                          as float 
+  declare proc k_min                  (      a     as       uint32  ,      b     as uint32)                         as float 
+  declare proc k_min                  (      a     as       int32   ,      b     as int32)                          as float 
+  declare proc k_min                  (      a     as       uint64  ,      b     as uint64)                         as float 
+  declare proc k_min                  (      a     as       int64   ,      b     as int64)                          as float 
+  declare proc k_min                  (      a     as       single  ,      b     as single)                         as float 
+  declare proc k_min         overload (      a     as       float   ,      b     as float)                          as float    
+  declare proc k_min                  (byref a     as       FLOAT128,byref b     as FLOAT128)                       as float 
+  declare proc k_min                  (byref a     as       FLOAT256,byref b     as FLOAT256)                       as float 
+  declare proc k_min                  (byref a     as       FLOAT512,byref b     as FLOAT512)                       as float
+  declare proc k_min                  (byref a     as       vector2 ,byref b     as vector2)                        as vector2
+  declare proc k_min                  (byref a     as       vector3 ,byref b     as vector3)                        as vector3
+  declare proc k_min                  (byref a     as       vector4 ,byref b     as vector4)                        as vector4
+  declare proc k_min                  (byref a     as       vector2 ,byref b     as float)                          as vector2
+  declare proc k_min                  (byref a     as       vector3 ,byref b     as float)                          as vector3
+  declare proc k_min                  (byref a     as       vector4 ,byref b     as float)                          as vector4
+
+  declare proc k_max                  (      a     as       uint8   ,      b     as uint8)                          as float 
+  declare proc k_max                  (      a     as       int8    ,      b     as int8)                           as float 
+  declare proc k_max                  (      a     as       uint16  ,      b     as uint16)                         as float 
+  declare proc k_max                  (      a     as       int16   ,      b     as int16)                          as float 
+  declare proc k_max                  (      a     as       uint32  ,      b     as uint32)                         as float 
+  declare proc k_max                  (      a     as       int32   ,      b     as int32)                          as float 
+  declare proc k_max                  (      a     as       uint64  ,      b     as uint64)                         as float 
+  declare proc k_max                  (      a     as       int64   ,      b     as int64)                          as float 
+  declare proc k_max                  (      a     as       single  ,      b     as single)                         as float
+  declare proc k_max         overload (      a     as       float   ,      b     as float)                          as float
+  declare proc k_max                  (byref a     as       FLOAT128,byref b     as FLOAT128)                       as float 
+  declare proc k_max                  (byref a     as       FLOAT256,byref b     as FLOAT256)                       as float 
+  declare proc k_max                  (byref a     as       FLOAT512,byref b     as FLOAT512)                       as float
+  declare proc k_max                  (byref a     as       vector2 ,byref b     as vector2)                        as vector2
+  declare proc k_max                  (byref a     as       vector3 ,byref b     as vector3)                        as vector3
+  declare proc k_max                  (byref a     as       vector4 ,byref b     as vector4)                        as vector4
+  declare proc k_max                  (byref a     as       vector2 ,byref b     as float)                          as vector2
+  declare proc k_max                  (byref a     as       vector3 ,byref b     as float)                          as vector3
+  declare proc k_max                  (byref a     as       vector4 ,byref b     as float)                          as vector4
+
+  declare proc k_pascalTriangle       (      a     as       uint8   ,      b     as uint8)                          as float
+  declare proc k_pascalTriangle       (      a     as       int8    ,      b     as int8)                           as float
+  declare proc k_pascalTriangle       (      a     as       uint16  ,      b     as uint16)                         as float
+  declare proc k_pascalTriangle       (      a     as       int16   ,      b     as int16)                          as float
+  declare proc k_pascalTriangle       (      a     as       uint32  ,      b     as uint32)                         as float
+  declare proc k_pascalTriangle       (      a     as       int32   ,      b     as int32)                          as float
+  declare proc k_pascalTriangle       (      a     as       uint64  ,      b     as uint64)                         as float
+  declare proc k_pascalTriangle       (      a     as       int64   ,      b     as int64)                          as float
+  declare proc k_pascalTriangle       (      a     as       single  ,      b     as single)                         as float
+  declare proc k_pascalTriangle       (      a     as       float   ,      b     as float)                          as float
+
+  declare proc k_clamp                (      a     as       uint8   ,      b     as uint8   ,      c    as uint8)   as float
+  declare proc k_clamp                (      a     as       int8    ,      b     as int8    ,      c    as int8)    as float 
+  declare proc k_clamp                (      a     as       uint16  ,      b     as uint16  ,      c    as uint16)  as float
+  declare proc k_clamp                (      a     as       int16   ,      b     as int16   ,      c    as int16)   as float 
+  declare proc k_clamp                (      a     as       uint32  ,      b     as uint32  ,      c    as uint32)  as float
+  declare proc k_clamp                (      a     as       int32   ,      b     as int32   ,      c    as int32)   as float 
+  declare proc k_clamp                (      a     as       uint64  ,      b     as uint64  ,      c    as uint64)  as float
+  declare proc k_clamp                (      a     as       int64   ,      b     as int64   ,      c    as int64)   as float 
+  declare proc k_clamp                (      a     as       single  ,      b     as single  ,      c    as single)  as float  
+  declare proc k_clamp       overload (      a     as       float   ,      b     as float   ,      c    as float)   as float
+  declare proc k_clamp                (byref a     as       FLOAT128,byref b     as FLOAT128,byref c    as FLOAT128)as float  
+  declare proc k_clamp                (byref a     as       FLOAT256,byref b     as FLOAT256,byref c    as FLOAT256)as float
+  declare proc k_clamp                (byref a     as       FLOAT512,byref b     as FLOAT512,byref c    as FLOAT512)as float  
+  declare proc k_clamp                (byref a     as       vector2 ,byref b     as vector2 ,byref c    as vector2) as vector2
+  declare proc k_clamp                (byref a     as       vector3 ,byref b     as vector3 ,byref c    as vector3) as vector3
+  declare proc k_clamp                (byref a     as       vector4 ,byref b     as vector4 ,byref c    as vector4) as vector4
+  declare proc k_clamp                (byref a     as       vector2 ,      b     as float   ,      c    as float)   as vector2
+  declare proc k_clamp                (byref a     as       vector3 ,      b     as float   ,      c    as float)   as vector3
+  declare proc k_clamp                (byref a     as       vector4 ,      b     as float   ,      c    as float)   as vector4
+
+  declare proc k_generalSmoothStep    (      N     as       uint8   ,      x     as uint8)                          as float
+  declare proc k_generalSmoothStep    (      N     as       int8    ,      x     as int8)                           as float
+  declare proc k_generalSmoothStep    (      N     as       uint16  ,      x     as uint16)                         as float
+  declare proc k_generalSmoothStep    (      N     as       int16   ,      x     as int16)                          as float
+  declare proc k_generalSmoothStep    (      N     as       uint32  ,      x     as uint32)                         as float
+  declare proc k_generalSmoothStep    (      N     as       int32   ,      x     as int32)                          as float
+  declare proc k_generalSmoothStep    (      N     as       uint64  ,      x     as uint64)                         as float
+  declare proc k_generalSmoothStep    (      N     as       int64   ,      x     as int64)                          as float
+  declare proc k_generalSmoothStep    (      N     as       single  ,      x     as single)                         as float
+  declare proc k_generalSmoothStep    (      N     as       float   ,      x     as float)                          as float
+
+  declare proc k_mix                  (      a     as       uint8   ,      b     as uint8   ,      c    as uint8)   as float
+  declare proc k_mix                  (      a     as       int8    ,      b     as int8    ,      c    as int8)    as float
+  declare proc k_mix                  (      a     as       uint16  ,      b     as uint16  ,      c    as uint16)  as float
+  declare proc k_mix                  (      a     as       int16   ,      b     as int16   ,      c    as int16)   as float
+  declare proc k_mix                  (      a     as       uint32  ,      b     as uint32  ,      c    as uint32)  as float
+  declare proc k_mix                  (      a     as       int32   ,      b     as int32   ,      c    as int32)   as float  
+  declare proc k_mix                  (      a     as       uint64  ,      b     as uint64  ,      c    as uint64)  as float
+  declare proc k_mix                  (      a     as       int64   ,      b     as int64   ,      c    as int64)   as float
+  declare proc k_mix                  (      a     as       single  ,      b     as single   ,     c    as single)  as float
+  declare proc k_mix         overload (      a     as       float   ,      b     as float   ,      c    as float)   as float
+  declare proc k_mix                  (      a     as       FLOAT128,      b     as FLOAT128,      c    as FLOAT128)as float
+  declare proc k_mix                  (      a     as       FLOAT256,      b     as FLOAT256,      c    as FLOAT256)as float
+  declare proc k_mix                  (      a     as       FLOAT512,      b     as FLOAT512,      c    as FLOAT512)as float
+  declare proc k_mix                  (byref a     as       vector2 ,byref b     as vector2 ,byref c    as vector2) as vector2
+  declare proc k_mix                  (byref a     as       vector3 ,byref b     as vector3 ,byref c    as vector3) as vector3
+  declare proc k_mix                  (byref a     as       vector4 ,byref b     as vector4 ,byref c    as vector4) as vector4
+  declare proc k_mix                  (byref a     as       vector2 ,byref b     as vector2 ,      c    as float)   as vector2
+  declare proc k_mix                  (byref a     as       vector3 ,byref b     as vector3 ,      c    as float)   as vector3
+  declare proc k_mix                  (byref a     as       vector4 ,byref b     as vector4 ,      c    as float)   as vector4
+
+  declare proc k_step                 (      edge  as       uint8   ,      x     as uint8)                          as float
+  declare proc k_step                 (      edge  as       int8    ,      x     as int8)                           as float
+  declare proc k_step                 (      edge  as       uint16  ,      x     as uint16)                         as float
+  declare proc k_step                 (      edge  as       int16   ,      x     as int16)                          as float
+  declare proc k_step                 (      edge  as       uint32  ,      x     as uint32)                         as float
+  declare proc k_step                 (      edge  as       int32   ,      x     as int32)                          as float
+  declare proc k_step                 (      edge  as       uint64  ,      x     as uint64)                         as float
+  declare proc k_step                 (      edge  as       int64   ,      x     as int64)                          as float
+  declare proc k_step                 (      edge  as       single  ,      x     as single)                         as float
+  declare proc k_step        overload (      edge  as       float   ,      x     as float)                          as float
+  declare proc k_step                 (      edge  as       FLOAT128,      x     as FLOAT128)                       as float
+  declare proc k_step                 (      edge  as       FLOAT256,      x     as FLOAT256)                       as float
+  declare proc k_step                 (      edge  as       FLOAT512,      x     as FLOAT512)                       as float  
+  declare proc k_step                 (byref edge  as       vector2 ,byref x     as vector2)                        as vector2
+  declare proc k_step                 (byref edge  as       vector3 ,byref x     as vector3)                        as vector3
+  declare proc k_step                 (byref edge  as       vector4 ,byref x     as vector4)                        as vector4
+  declare proc k_step                 (      edge  as       float   ,byref x     as vector2)                        as vector2
+  declare proc k_step                 (      edge  as       float   ,byref x     as vector3)                        as vector3
+  declare proc k_step                 (      edge  as       float   ,byref x     as vector4)                        as vector4
+
+  declare proc k_smoothstep           (      edge0 as       uint8   ,      edge1 as uint8   ,      x    as uint8)   as float
+  declare proc k_smoothstep           (      edge0 as       int8    ,      edge1 as int8    ,      x    as int8)    as float
+  declare proc k_smoothstep           (      edge0 as       uint16  ,      edge1 as uint16  ,      x    as uint16)  as float
+  declare proc k_smoothstep           (      edge0 as       int16   ,      edge1 as int16   ,      x    as int16)   as float
+  declare proc k_smoothstep           (      edge0 as       uint32  ,      edge1 as uint32  ,      x    as uint32)  as float
+  declare proc k_smoothstep           (      edge0 as       int32   ,      edge1 as int32   ,      x    as int32)   as float
+  declare proc k_smoothstep           (      edge0 as       uint64  ,      edge1 as uint64  ,      x    as uint64)  as float
+  declare proc k_smoothstep           (      edge0 as       int64   ,      edge1 as int64   ,      x    as int64)   as float
+  declare proc k_smoothstep           (      edge0 as       single  ,      edge1 as single  ,      x    as single)  as float
+  declare proc k_smoothstep  overload (      edge0 as       float   ,      edge1 as float   ,      x    as float)   as float
+  declare proc k_smoothstep           (      edge0 as       FLOAT128,      edge1 as FLOAT128,      x    as FLOAT128)as float
+  declare proc k_smoothstep           (      edge0 as       FLOAT256,      edge1 as FLOAT256,      x    as FLOAT256)as float
+  declare proc k_smoothstep           (      edge0 as       FLOAT512,      edge1 as FLOAT512,      x    as FLOAT512)as float
+
+  declare proc k_smootherstep         (      edge0 as       uint8   ,      edge1 as uint8 ,        x    as uint8)   as float      
+  declare proc k_smootherstep         (      edge0 as       int8    ,      edge1 as int8  ,        x    as int8)    as float
+  declare proc k_smootherstep         (      edge0 as       uint16  ,      edge1 as uint16,        x    as uint16)  as float      
+  declare proc k_smootherstep         (      edge0 as       int16   ,      edge1 as int16 ,        x    as int16)   as float
+  declare proc k_smootherstep         (      edge0 as       uint32  ,      edge1 as uint32,        x    as uint32)  as float      
+  declare proc k_smootherstep         (      edge0 as       int32   ,      edge1 as int32 ,        x    as int32)   as float
+  declare proc k_smootherstep         (      edge0 as       uint64  ,      edge1 as uint64,        x    as uint64)  as float      
+  declare proc k_smootherstep         (      edge0 as       int64   ,      edge1 as int64 ,        x    as int64)   as float
+  declare proc k_smootherstep         (      edge0 as       single  ,      edge1 as single,        x    as single)  as float      
+  declare proc k_smootherstep         (      edge0 as       float   ,      edge1 as float,         x    as float)   as float
+
+  declare proc k_smoothstep           (byref edge0 as       vector2 ,byref edge1 as vector2 ,byref x    as vector2) as vector2
+  declare proc k_smoothstep           (byref edge0 as       vector3 ,byref edge1 as vector3 ,byref x    as vector3) as vector3
+  declare proc k_smoothstep           (byref edge0 as       vector4 ,byref edge1 as vector4 ,byref x    as vector4) as vector4
+  declare proc k_smoothstep           (      edge0 as       float   ,      edge1 as float   ,byref x    as vector2) as vector2
+  declare proc k_smoothstep           (      edge0 as       float   ,      edge1 as float   ,byref x    as vector3) as vector3
+  declare proc k_smoothstep           (      edge0 as       float   ,      edge1 as float   ,byref x    as vector4) as vector4
+
+  declare proc k_inverse_smoothstep   (      x     as       uint8)                                                  as float
+  declare proc k_inverse_smoothstep   (      x     as       int8)                                                   as float
+  declare proc k_inverse_smoothstep   (      x     as       uint16)                                                 as float
+  declare proc k_inverse_smoothstep   (      x     as       int16)                                                  as float
+  declare proc k_inverse_smoothstep   (      x     as       uint32)                                                 as float
+  declare proc k_inverse_smoothstep   (      x     as       int32)                                                  as float
+  declare proc k_inverse_smoothstep   (      x     as       uint64)                                                 as float
+  declare proc k_inverse_smoothstep   (      x     as       int64)                                                  as float
+  declare proc k_inverse_smoothstep   (      x     as       single)                                                 as float
+  declare proc k_inverse_smoothstep   (      x     as       float)                                                  as float
+
+  declare proc k_length2              (      a     as const uint8)                                                  as float
+  declare proc k_length2              (      a     as const int8)                                                   as float
+  declare proc k_length2              (      a     as const uint16)                                                 as float
+  declare proc k_length2              (      a     as const int16)                                                  as float
+  declare proc k_length2              (      a     as const uint32)                                                 as float
+  declare proc k_length2              (      a     as const int32)                                                  as float
+  declare proc k_length2              (      a     as const uint64)                                                 as float
+  declare proc k_length2              (      a     as const int64)                                                  as float
+  declare proc k_length2              (      a     as const single)                                                 as float 
+  declare proc k_length2     overload (      a     as const float)                                                  as float
+  declare proc k_length2              (byref v     as const FLOAT128)                                               as float 
+  declare proc k_length2              (byref v     as const FLOAT256)                                               as float
+  declare proc k_length2              (byref v     as const FLOAT512)                                               as float     
+  declare proc k_length2              (byref v     as const vector2)                                                as float
+  declare proc k_length2              (byref v     as const vector3)                                                as float
+  declare proc k_length2              (byref v     as const vector4)                                                as float
+
+  declare proc k_length               (      a     as const uint8)                                                  as float
+  declare proc k_length               (      a     as const int8)                                                   as float
+  declare proc k_length               (      a     as const uint16)                                                 as float
+  declare proc k_length               (      a     as const int16)                                                  as float
+  declare proc k_length               (      a     as const uint32)                                                 as float
+  declare proc k_length               (      a     as const int32)                                                  as float
+  declare proc k_length               (      a     as const uint64)                                                 as float
+  declare proc k_length               (      a     as const int64)                                                  as float
+  declare proc k_length               (      a     as const single)                                                 as float
+  declare proc k_length      overload (      a     as const float)                                                  as float
+  declare proc k_length               (byref v     as const FLOAT128)                                               as float
+  declare proc k_length               (byref v     as const FLOAT256)                                               as float
+  declare proc k_length               (byref v     as const FLOAT512)                                               as float      
+  declare proc k_length               (byref v     as const vector2)                                                as float
+  declare proc k_length               (byref v     as const vector3)                                                as float
+  declare proc k_length               (byref v     as const vector4)                                                as float
+
+  declare proc k_distance             (      a     as       uint8   ,      b     as uint8)                          as float
+  declare proc k_distance             (      a     as       int8    ,      b     as int8)                           as float
+  declare proc k_distance             (      a     as       uint16  ,      b     as uint16)                         as float
+  declare proc k_distance             (      a     as       int16   ,      b     as int16)                          as float
+  declare proc k_distance             (      a     as       uint32  ,      b     as uint32)                         as float
+  declare proc k_distance             (      a     as       int32   ,      b     as int32)                          as float
+  declare proc k_distance             (      a     as       uint64  ,      b     as uint64)                         as float
+  declare proc k_distance             (      a     as       int64   ,      b     as int64)                          as float
+  declare proc k_distance             (      a     as       single  ,      b     as single)                         as float
+  declare proc k_distance    overload (      a     as       float   ,      b     as float)                          as float
+  declare proc k_distance             (byref a     as       FLOAT128,byref b     as FLOAT128)                       as float
+  declare proc k_distance             (byref a     as       FLOAT256,byref b     as FLOAT256)                       as float
+  declare proc k_distance             (byref a     as       FLOAT512,byref b     as FLOAT512)                       as float       
+  declare proc k_distance             (byref a     as       vector2 ,byref b     as vector2)                        as float
+  declare proc k_distance             (byref a     as       vector3 ,byref b     as vector3)                        as float
+  declare proc k_distance             (byref a     as       vector4 ,byref b     as vector4)                        as float
+
+  declare proc k_dot                  (      a     as       uint8   ,      b     as uint8)                          as float
+  declare proc k_dot                  (      a     as       int8    ,      b     as int8)                           as float
+  declare proc k_dot                  (      a     as       uint16  ,      b     as uint16)                         as float
+  declare proc k_dot                  (      a     as       int16   ,      b     as int16)                          as float
+  declare proc k_dot                  (      a     as       uint32  ,      b     as uint32)                         as float
+  declare proc k_dot                  (      a     as       int32   ,      b     as int32)                          as float  
+  declare proc k_dot                  (      a     as       uint64  ,      b     as uint64)                         as float
+  declare proc k_dot                  (      a     as       int64   ,      b     as int64)                          as float
+  declare proc k_dot                  (      a     as       single  ,      b     as single)                         as float
+  declare proc k_dot         overload (      a     as       float   ,      b     as float)                          as float
+  declare proc k_dot                  (byref a     as       FLOAT128,byref b     as FLOAT128)                       as float
+  declare proc k_dot                  (byref a     as       FLOAT256,byref b     as FLOAT256)                       as float
+  declare proc k_dot                  (byref a     as       FLOAT512,byref b     as FLOAT512)                       as float  
+  declare proc k_dot                  (byref a     as       vector2 ,byref b     as vector2)                        as float
+  declare proc k_dot                  (byref a     as       vector3 ,byref b     as vector3)                        as float
+  declare proc k_dot                  (byref a     as       vector4 ,byref b     as vector4)                        as float
+
+  declare proc k_cross                (byref a     as       vector3 ,byref b     as vector3)                        as vector3
+
+  declare proc k_normalize            (      v     as       uint8)                                                  as float
+  declare proc k_normalize            (      v     as       int8)                                                   as float
+  declare proc k_normalize            (      v     as       uint16)                                                 as float
+  declare proc k_normalize            (      v     as       int16)                                                  as float
+  declare proc k_normalize            (      v     as       uint32)                                                 as float
+  declare proc k_normalize            (      v     as       int32)                                                  as float
+  declare proc k_normalize            (      v     as       uint64)                                                 as float
+  declare proc k_normalize            (      v     as       int64)                                                  as float
+  declare proc k_normalize            (      v     as       single)                                                 as float
+  declare proc k_normalize   overload (      v     as       float)                                                  as float
+  declare proc k_normalize            (byref v     as       FLOAT128)                                               as float
+  declare proc k_normalize            (byref v     as       FLOAT256)                                               as float
+  declare proc k_normalize            (byref v     as       FLOAT512)                                               as float      
+  declare proc k_normalize            (byref v     as       vector2)                                                as vector2
+  declare proc k_normalize            (byref v     as       vector3)                                                as vector3
+  declare proc k_normalize            (byref v     as       vector4)                                                as vector4
+
+  declare proc k_faceforward          (      N     as       uint8   ,      I     as uint8   ,      Nref as uint8)   as float
+  declare proc k_faceforward          (      N     as       int8    ,      I     as int8    ,      Nref as int8)    as float
+  declare proc k_faceforward          (      N     as       uint16  ,      I     as uint16  ,      Nref as uint16)  as float
+  declare proc k_faceforward          (      N     as       int16   ,      I     as int16   ,      Nref as int16)   as float
+  declare proc k_faceforward          (      N     as       uint32  ,      I     as uint32  ,      Nref as uint32)  as float
+  declare proc k_faceforward          (      N     as       int32   ,      I     as int32  ,       Nref as int32)   as float
+  declare proc k_faceforward          (      N     as       uint64  ,      I     as uint64  ,      Nref as uint64)  as float
+  declare proc k_faceforward          (      N     as       int64   ,      I     as int64   ,      Nref as int64)   as float
+  declare proc k_faceforward          (      N     as       single  ,      I     as single  ,      Nref as single)  as float
+  declare proc k_faceforward overload (      N     as       float   ,      I     as float   ,      Nref as float)   as float
+  declare proc k_faceforward          (byref N     as       FLOAT128,byref I     as FLOAT128,byref Nref as FLOAT128)as float
+  declare proc k_faceforward          (byref N     as       FLOAT256,byref I     as FLOAT256,byref Nref as FLOAT256)as float
+  declare proc k_faceforward          (byref N     as       FLOAT512,byref I     as FLOAT512,byref Nref as FLOAT512)as float  
+  declare proc k_faceforward          (byref N     as       vector2 ,byref I     as vector2 ,byref Nref as vector2) as vector2
+  declare proc k_faceforward          (byref N     as       vector3 ,byref I     as vector3 ,byref Nref as vector3) as vector3
+  declare proc k_faceforward          (byref N     as       vector4 ,byref I     as vector4 ,byref Nref as vector4) as vector4
+
+  declare proc k_reflect              (      I     as       uint8   ,      N     as uint8)                          as float
+  declare proc k_reflect              (      I     as       int8    ,      N     as int8)                           as float
+  declare proc k_reflect              (      I     as       uint16  ,      N     as uint16)                         as float
+  declare proc k_reflect              (      I     as       int16   ,      N     as int16)                          as float
+  declare proc k_reflect              (      I     as       uint32  ,      N     as uint32)                         as float
+  declare proc k_reflect              (      I     as       int32   ,      N     as int32)                          as float
+  declare proc k_reflect              (      I     as       uint64  ,      N     as uint64)                         as float
+  declare proc k_reflect              (      I     as       int64   ,      N     as int64)                          as float
+  declare proc k_reflect              (      I     as       single  ,      N     as single)                         as float
+  declare proc k_reflect     overload (      I     as       float   ,      N     as float)                          as float
+  declare proc k_reflect              (byref I     as       FLOAT128,byref N     as FLOAT128)                       as float  
+  declare proc k_reflect              (byref I     as       FLOAT256,byref N     as FLOAT256)                       as float
+  declare proc k_reflect              (byref I     as       FLOAT512,byref N     as FLOAT512)                       as float  
+  declare proc k_reflect              (byref I     as       vector2 ,byref N     as vector2)                        as vector2
+  declare proc k_reflect              (byref I     as       vector3 ,byref N     as vector3)                        as vector3
+  declare proc k_reflect              (byref I     as       vector4 ,byref N     as vector4)                        as vector4
+
+  declare proc k_refract     overload (byref I     as       vector2 ,byref N     as vector2 ,      eta  as float)   as vector2
+  declare proc k_refract              (byref I     as       vector3 ,byref N     as vector3 ,      eta  as float)   as vector3
+  declare proc k_refract              (      I     as       vector4 ,      N     as vector4 ,      eta  as float)   as vector4 
+
+  ' kernel float128 math functions
+  declare def  k_float128_abs        (a as FLOAT128 ptr, b as FLOAT128 ptr)
+  declare def  k_float128_from_double(a as FLOAT128 ptr, b as float ptr)
+  declare def  k_float128_to_double  (a as FLOAT128 ptr, b as float ptr)
+  declare def  k_float128_add        (a as FLOAT128 ptr, b as FLOAT128 ptr , c as FLOAT128 ptr)
+  declare def  k_float128_sub        (a as FLOAT128 ptr, b as FLOAT128 ptr , c as FLOAT128 ptr)
+  declare def  k_float128_mul        (a as FLOAT128 ptr, b as FLOAT128 ptr , c as FLOAT128 ptr)
+  declare def  k_float128_div        (a as FLOAT128 ptr, b as FLOAT128 ptr , c as FLOAT128 ptr)
+  declare proc k_float128_cmp        (a as FLOAT128 ptr, b as FLOAT128 ptr)                     as int_t
+  
+  ' kernel float256 math functions
+  declare def  k_float256_abs        (a as FLOAT256 ptr, b as FLOAT256 ptr)
+  declare def  k_float256_from_double(a as FLOAT256 ptr, b as float ptr)
+  declare def  k_float256_to_double  (a as FLOAT256 ptr, b as float ptr)
+  declare def  k_float256_add        (a as FLOAT256 ptr, b as FLOAT256 ptr , c as FLOAT256 ptr)
+  declare def  k_float256_sub        (a as FLOAT256 ptr, b as FLOAT256 ptr , c as FLOAT256 ptr)
+  declare def  k_float256_mul        (a as FLOAT256 ptr, b as FLOAT256 ptr , c as FLOAT256 ptr)
+  declare def  k_float256_div        (a as FLOAT256 ptr, b as FLOAT256 ptr , c as FLOAT256 ptr)
+  declare proc k_float256_cmp        (a as FLOAT256 ptr, b as FLOAT256 ptr)                     as int_t
+
+  ' kernel float512 math functions
+  declare def  k_float512_abs        (a as FLOAT512 ptr, b as FLOAT512 ptr)
+  declare def  k_float512_from_double(a as FLOAT512 ptr, b as float ptr)
+  declare def  k_float512_to_double  (a as FLOAT512 ptr, b as float ptr)
+  declare def  k_float512_add        (a as FLOAT512 ptr, b as FLOAT512 ptr , c as FLOAT512 ptr)
+  declare def  k_float512_sub        (a as FLOAT512 ptr, b as FLOAT512 ptr , c as FLOAT512 ptr)
+  declare def  k_float512_mul        (a as FLOAT512 ptr, b as FLOAT512 ptr , c as FLOAT512 ptr)
+  declare def  k_float512_div        (a as FLOAT512 ptr, b as FLOAT512 ptr , c as FLOAT512 ptr)
+  declare proc k_float512_cmp        (a as FLOAT512 ptr, b as FLOAT512 ptr)                     as int_t
+  
   #if 0
   const as SYSTEM_TYPE os_end     = &HFFFF '------|
   const as SYSTEM_TYPE os_base    = &HE000 '  8 K | KERNAL ROM or RAM (adr 0 bit1=0 RAM bit1=1 ROM
@@ -1109,12 +2054,13 @@ type SYSTEM_BUS_T
   as SYSTEM_TYPE     col      (00001023) ' color triples
   as SYSTEM_TYPE     SINTable (00000359) ' sine table
   as SYSTEM_TYPE     COSTable (00000359) ' cosine table
+#endif  
   'Ring 3 - RAYTRACER
   as RAYTRACER raytracer           ' Raytracer
-#endif
+
   'Ring 0 - kernel
-  as ubyte Result (0 to 2047)
-  as ubyte Result2(0 to 2047)
+  as uchar Result (0 to 2047)
+  as uchar Result2(0 to 2047)
 end type
 
 
@@ -1148,14 +2094,14 @@ enum ADR_MODES
 end enum
 
 type FLAGS
-  as ubyte  C:1 ' cary
-  as ubyte  Z:1 ' zero 
-  as ubyte  I:1 ' interrupt
-  as ubyte  D:1 ' decimal
-  as ubyte  B:1 ' borrow
-  as ubyte  H:1 ' half carry
-  as ubyte  V:1 ' overflow
-  as ubyte  N:1 ' negative
+  as uchar  C:1 ' cary
+  as uchar  Z:1 ' zero 
+  as uchar  I:1 ' interrupt
+  as uchar  D:1 ' decimal
+  as uchar  B:1 ' borrow
+  as uchar  H:1 ' half carry
+  as uchar  V:1 ' overflow
+  as uchar  N:1 ' negative
 end type
 
 type CPU6510_T as CPU6510 ptr
@@ -1164,38 +2110,34 @@ type MULTI
  union
   as any ptr adr0
   as any ptr adr1
-   type
-    union
-     as FLOAT128 ufpu128
-     as FLOAT128 sfpu128
      type
 	 union 
-	  as double ufpu64
-	  as double sfpu64
+	  as float ufpu64
+	  as float sfpu64
 	   type
 		union
-	     as ulongint u64
-		 as  longint s64
+	     as uint64 u64
+		 as  int64 s64
 		 type
 		 union
 		  as single ufpu32
 		  as single sfpu32
 		  type
 		   union
-			as ulong u32
-			as  long s32
+			as uint32 u32
+			as  int32 s32
 			type
 			  union
-				as ushort u16
-				as  short s16
+				as uint16 u16
+				as  int16 s16
 				type
 				  union
-					as ubyte ulo
-					as  byte slo
+					as uchar ulo
+					as  char slo
 				  end union
 				  union
-					as ubyte uhi
-					as  byte shi
+					as uchar uhi
+					as  char shi
 				  end union
 				end type
 			  end union
@@ -1208,17 +2150,15 @@ type MULTI
 	  end type
 	 end union
 	end type 
-   end union
-  end type
- end union  	 
+   end union	 
 end type
 
 static shared as MULTI v,o
    
 type OPCODE
-  as ulongint    code
+  as uint64      code
   as zstring * 4 nam
-  as ulongint    adrmode,bytes,ticks
+  as uint64      adrmode,bytes,ticks
   as MULTI       op
   as sub(byval Cpu as CPU6510_T) decode
 end type
@@ -1249,33 +2189,33 @@ type CPU6510
   declare function Pull      as SYSTEM_TYPE
 
   union ' status register P
-    as ubyte P
+    as uchar P
     as FLAGS F
   end union
   union ' accumulator A
-    as ubyte   A ' A unsigned
-    as  byte  sA ' A signed
+    as uchar   A ' A unsigned
+    as  char  sA ' A signed
   end union
   union ' index register X
-    as ubyte   X ' X unsigned
-    as  byte  sX ' X signed
+    as uchar   X ' X unsigned
+    as  char  sX ' X signed
   end union
   union ' index register Y
-    as ubyte   Y ' Y unsigned
-    as  byte  sY ' Y signed
+    as uchar   Y ' Y unsigned
+    as  char  sY ' Y signed
   end union
   union ' program counter PC
-    as ushort PC
+    as uint16 PC
     type
-      as ubyte PL ' as lo hi bytes
-      as ubyte PH
+      as uchar PL ' as lo hi bytes
+      as uchar PH
     end type
   end union
   union ' stack pointer
-    as ushort SP
+    as uint16 SP
     type
-      as ubyte S     ' as lo bytes
-      as ubyte MSB   ' msb allways hi
+      as uchar S     ' as lo bytes
+      as uchar MSB   ' msb allways hi
     end type
   end union
   as SYSTEM_BUS_T ptr mem
@@ -1311,14 +2251,14 @@ constructor C64_T
   'dim as integer i,c
   ' initialize nibbles, bytes, and words.
   ' *(uint8*)4808096ll = (uint8)0u; 
-  poke ubyte,@nibbles(&B0000),&B0000
+  poke uchar,@nibbles(&B0000),&B0000
   ' *(uint8*)4808097ll = (uint8)1u;
-  poke ubyte,@nibbles(&B0001),&B0001
+  poke uchar,@nibbles(&B0001),&B0001
   ' *(uint8*)4808101ll = (uint8)5u;
-  poke ubyte,@nibbles(&H0101),&B0101
+  poke uchar,@nibbles(&H0101),&B0101
   ' *(uint8*)4808104ll = (uint8)8u;
   ' poke ubyte,@nibbles(&B1000),&B1000
-  poke ubyte,@nibbles(&B1000),&B1000
+  poke uchar,@nibbles(&B1000),&B1000
   ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
 /'
    poke integer,@i,peek(ubyte,@nibbles(&B0000)
@@ -1332,13 +2272,13 @@ constructor C64_T
 L0A:
   ' label$141:;
   ' *(uint8*)((uint8*)*(int64*)4808136ll + 4808096ll) = (uint8)*(int64*)4808136ll;
-  poke ubyte,@nibbles(&B0000) add peek(ulongint,@i), peek(ulongint,@i)
+  poke uchar,@nibbles(&B0000) add peek(uint64,@i), peek(uint64,@i)
 
   ' *(int64*)4808136ll = *(int64*)4808136ll + (int64)*(uint8*)4808097ll;
-  poke ulongint,@i, peek(ulongint,@i)add peek(ubyte,@nibbles(&B0001))
+  poke uint64,@i, peek(uint64,@i)add peek(uchar,@nibbles(&B0001))
        
   ' fb_Locate( (int32)*(uint8*)4808097ll, (int32)*(uint8*)4808097ll, -1, 0, 0 );
-    locate peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0001))
+    locate peek(uchar,@nibbles(&B0001)),peek(uchar,@nibbles(&B0001))
 
   ' FBSTRING* vr$12 = fb_StrAllocTempDescZEx( (uint8*)"NIBBLES: ", 9ll );
   ' fb_PrintString( 0, (FBSTRING*)vr$11, 0 );
@@ -1349,30 +2289,30 @@ L0A:
   ' TMP$733$1 = *(int64*)4808136ll - (int64)*(uint8*)4808097ll;
   ' label$158:;
   ' fb_PrintLongint( 0, TMP$733$1, 1 );
-  print "NIBBLES: "; iif(i lt peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0001)), peek(ulongint,@i), _
-                              peek(ulongint,@i) subt peek(ubyte,@nibbles(&B0001)))    
+  print "NIBBLES: "; iif(i lt peek(uchar,@nibbles(&B1000)) shl peek(uchar,@nibbles(&B0001)), peek(uint64,@i), _
+                              peek(uint64,@i) subt peek(uchar,@nibbles(&B0001)))    
 
   ' if( *(int64*)4808136ll > ((int64)*(uint8*)4808104ll << ((int64)*(uint8*)4808097ll & 63ll)) ) goto label$144;;
   ' goto label$141;
-  cmp peek(ulongint,@i) ls peek(ubyte,@nibbles(&B1000)) shl peek(ubyte,@nibbles(&B0001)) jmp L0A
+  cmp peek(uint64,@i) ls peek(uchar,@nibbles(&B1000)) shl peek(uchar,@nibbles(&B0001)) jmp L0A
   
   ' label$144:;
   ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
   ' end
-  poke ulongint,@i,peek(ubyte,@nibbles(&B0000))
+  poke uint64,@i,peek(uchar,@nibbles(&B0000))
 L0B:
  dprint("C64_T()")
-  static as integer i,c
+  static as int32 i,c
  
   ' end
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
-  ScreenRes peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B1000))  _
-        add peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)), _
-            peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B1000))  _
-        add peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100))  _
-        add peek(ubyte,@nibbles(&B1000)),                                  _
-            peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)), _
-            peek(ubyte,@nibbles(&B0000)),    peek(ubyte,@nibbles(&B0000)), _
+  ScreenRes peek(uchar,@nibbles(&B0011)) shl peek(uchar,@nibbles(&B1000))  _
+        add peek(uchar,@nibbles(&B0010)) shl peek(uchar,@nibbles(&B0100)), _
+            peek(uchar,@nibbles(&B0010)) shl peek(uchar,@nibbles(&B1000))  _
+        add peek(uchar,@nibbles(&B0101)) shl peek(uchar,@nibbles(&B0100))  _
+        add peek(uchar,@nibbles(&B1000)),                                  _
+            peek(uchar,@nibbles(&B0010)) shl peek(uchar,@nibbles(&B0100)), _
+            peek(uchar,@nibbles(&B0000)),    peek(uchar,@nibbles(&B0000)), _
             GFX_ALPHA_PRIMITIVES: Cls
 #else
   'ScreenRes 1920d,1080d, 32d, 0d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
@@ -1389,58 +2329,58 @@ L0B:
   '                + ((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll))) \
   '                + (int64)*(uint8*)4808104ll), (int32)((int64)*(uint8*)4808098ll << \
   '                  ((int64)*(uint8*)4808100ll & 63ll)), (int32)*(uint8*)4808096ll, 64, 0 );
-  ScreenRes peek(ubyte,@nibbles(&B1111)) shl peek(ubyte,@nibbles(&B0111)), _
-            peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B1000))  _
-        add peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100))  _
-        add peek(ubyte,@nibbles(&B1000)),    peek(ubyte,@nibbles(&B0010))  _
-        shl peek(ubyte,@nibbles(&B0100)),    peek(ubyte,@nibbles(&B0000)), _
+  ScreenRes peek(uchar,@nibbles(&B1111)) shl peek(uchar,@nibbles(&B0111)), _
+            peek(uchar,@nibbles(&B0100)) shl peek(uchar,@nibbles(&B1000))  _
+        add peek(uchar,@nibbles(&B0011)) shl peek(uchar,@nibbles(&B0100))  _
+        add peek(uchar,@nibbles(&B1000)),    peek(uchar,@nibbles(&B0010))  _
+        shl peek(uchar,@nibbles(&B0100)),    peek(uchar,@nibbles(&B0000)), _
         GFX_ALPHA_PRIMITIVES
         
   ' fb_Cls( -65536 );
   Cls
 #endif
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
-  screeninfo cast(ulongint,scr_w), cast(ulongint,scr_h), cast(ulongint,imgData), cast(ulongint,pitch)
-  fgimage = ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)))
+  screeninfo cast(uint64,scr_w), cast(uint64,scr_h), cast(uint64,imgData), cast(uint64,pitch)
+  fgimage = ImageCreate(scr_w,scr_h,peek(uchar,@nibbles(&B0000)),peek(uchar,@nibbles(&B0010)) shl peek(uchar,@nibbles(&B0100)))
  ' bgimage = ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)))
  ' raster  = ImageCreate(scr_w,peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010))_ 
  '                         shl peek(ubyte,@nibbles(&B0100)))
  ' render  = ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)))
-  poke @i,peek(ubyte,@nibbles(&B0000)) 
+  poke @i,peek(uchar,@nibbles(&B0000)) 
 #else
   ' FBSTRING* vr$91 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
   ' TMP$739$1 = 0ll;
   ' TMP$738$1 = 0ll;
   ' fb_GfxScreenInfo( (int64*)&SCR_W$, (int64*)&SCR_H$, (int64*)&IMGDATA$, (int64*)&PITCH$, &TMP$738$1, \
   '                  &TMP$739$1, vr$91 );
-  screeninfo cast(ulongint,scr_w),cast(ulongint,scr_h),cast(ulongint,imgData),cast(ulongint,pitch)
+  screeninfo cast(uint64,scr_w),cast(uint64,scr_h),cast(uint64,imgData),cast(uint64,pitch)
  
   ' void* vr$101 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, \
   '       (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
   ' BGIMAGE$ = vr$101;
-  bgimage = ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) _
-      shl peek(ubyte,@nibbles(&B0100)))
+  bgimage = ImageCreate(scr_w,scr_h,peek(uchar,@nibbles(&B0000)),peek(uchar,@nibbles(&B0010)) _
+      shl peek(uchar,@nibbles(&B0100)))
       
   ' void* vr$109 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, \
   '       (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
   ' FGIMAGE$ = vr$109;
-  fgimage = ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) _
-      shl peek(ubyte,@nibbles(&B0100)))
+  fgimage = ImageCreate(scr_w,scr_h,peek(uchar,@nibbles(&B0000)),peek(uchar,@nibbles(&B0010)) _
+      shl peek(uchar,@nibbles(&B0100)))
       
   ' void* vr$117 = fb_GfxImageCreate( (int32)SCR_W$, (int32)*(uint8*)4808097ll, (uint32)*(uint8*)4808096ll, \
   '       (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
   ' RASTER$ = vr$117;
-  raster = ImageCreate(scr_w,peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)), _
-      peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)))
+  raster = ImageCreate(scr_w,peek(uchar,@nibbles(&B0001)),peek(uchar,@nibbles(&B0000)), _
+      peek(uchar,@nibbles(&B0010)) shl peek(uchar,@nibbles(&B0100)))
       
   ' void* vr$125 = fb_GfxImageCreate( (int32)SCR_W$, (int32)SCR_H$, (uint32)*(uint8*)4808096ll, \
   '       (int32)((int64)*(uint8*)4808098ll << ((int64)*(uint8*)4808100ll & 63ll)), 0 );
   ' RENDER$ = vr$125;
-  render = ImageCreate(scr_w,scr_h,peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0010)) _
-      shl peek(ubyte,@nibbles(&B0100)))
+  _render = ImageCreate(scr_w,scr_h,peek(uchar,@nibbles(&B0000)),peek(uchar,@nibbles(&B0010)) _
+      shl peek(uchar,@nibbles(&B0100)))
       
   ' *(int64*)4808136ll = (int64)*(uint8*)4808096ll;
-  poke ulongint,@i,peek(ubyte,@nibbles(&B0000))  
+  poke uint64,@i,peek(uchar,@nibbles(&B0000))  
 #endif
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
   fc = rgba(fr,fg,fb,fa)
@@ -1526,7 +2466,7 @@ destructor C64_T
   ImageDestroy(raster)
   
   ' fb_GfxImageDestroy( (void*)RENDER$ );
-  ImageDestroy(render)
+  ImageDestroy(_render)
 #endif 
   ' fb_Sleep( (int32)((((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808104ll & 63ll)) + \
   ' ((int64)*(uint8*)4808110ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808104ll) );

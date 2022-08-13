@@ -93,17 +93,46 @@ end type
 
 #include once "win32.bi"
 
-#define ptrszint  longint
-#define uptrszint ulongint
-#define ptrsz     8
+type FBSTRING
+    as  byte ptr data 
+    as int64 len 
+    as int64 size
+end type
+
+#undef boolean
+type as int8 boolean
+
+type _FBARRAYDIM
+	as size_t elements
+	as ssize_t lbound
+	as ssize_t ubound
+end type
+type as _FBARRAYDIM FBARRAYDIM
+
+enum _FBARRAY_FLAGS
+	FBARRAY_FLAGS_DIMENSIONS = &H0000000f
+	FBARRAY_FLAGS_FIXED_DIM  = &H00000010
+	FBARRAY_FLAGS_FIXED_LEN  = &H00000020
+	FBARRAY_FLAGS_RESERVED   = &Hffffffc0
+end enum
+type as _FBARRAY_FLAGS FBARRAY_FLAGS
+
+type _FBARRAY
+	as any             ptr data    /' ptr + diff, must be at ofs 0! '/
+	as any             ptr _ptr
+	as size_t          size
+	as size_t          element_len
+	as size_t          dimensions
+	as size_t          flags       /' FBARRAY_FLAGS '/
+	dim as FBARRAYDIM  dimTB(1)    /' dimtb[dimensions] '/
+end type
+type as _FBARRAY FBARRAY
 
 #define BYTES_PER_PIXEL(d)		(((d) + 7) / 8)
-#define BPP_MASK(b)				cast((integer),((1ll shl ((b) shl 3)) - 1))
+#define BPP_MASK(b)				cast((int32),((1ll shl ((b) shl 3)) - 1))
 
 #define DEFAULT_COLOR_1			&H80000000
 #define DEFAULT_COLOR_2			&H40000000
-
-type float as double
 
 enum PUT_MODES_ENUM
 	 PUT_MODE_TRANS      = 0
@@ -868,67 +897,89 @@ type    GLcharARB     as zstring
 #define GLUT_CORE_PROFILE                   &H0001
 #define	GLUT_COMPATIBILITY_PROFILE          &H0002
 
+#define ptrszint  int64
+#define uptrszint uint64
+#define ptrsz     8
+
 ' QB64 string descriptor structure
 type qbs_field
-    as integer fileno
-    as longint fileid
-    as longint size
-    as longint offset
+    as int32 fileno
+    as int64 fileid
+    as int64 size
+    as int64 offset
 end type
 
 type qbs 
-    as ubyte ptr  str_data ' a 32 bit pointer to the string's data
-    as integer    str_len  ' must be signed for comparisons against signed int32s
-    as ubyte      in_mem64  ' set to 1 if in the conventional memory DBLOCK
-    as ushort ptr mem64_descriptor
-    as ushort     mem64_descriptor_offset
-    as uinteger   listi    ' the index in the list of strings that references it
-    as ubyte      tmp      ' set to 1 if the string can be deleted immediately after being processed
-    as uinteger   tmplisti ' the index in the list of strings that references it
-    as ubyte      fixed    ' fixed length string
-    as ubyte      readonly ' set to 1 if string is read only
-    as qbs_field ptr field_data
+    as uint8 ptr chr  ' a 32 bit pointer to the string's data
+    as int32 len      ' must be signed for comparisons against signed int32s
+    as uint8 in_mem64 ' set to 1 if in the conventional memory DBLOCK
+    as uint16 ptr mem64_descriptor
+    as uint16 mem64_descriptor_offset
+    as uint32 listi     ' the index in the list of strings that references it
+    as uint8 tmp        ' set to 1 if the string can be deleted immediately after being processed
+    as uint32 tmplisti  ' the index in the list of strings that references it
+    as uint8 fixed      ' fixed length string
+    as uint8 readonly   ' set to 1 if string is read only
+    as qbs_field ptr field
 end type
 
 type img_struct 
-    as any ptr  lock_offset
-    as longint  lock_id
-    as ubyte    valid   ' 0,1 0=invalid
-    as ubyte    text    ' if set, surface is a text surface
-    as ubyte    console ' dummy surface to absorb unimplemented console functionality
-    as ushort   img_width, img_height
-    as ubyte    bytes_per_pixel ' 1,2,4
-    as ubyte    bits_per_pixel  ' 1,2,4,8,16(text),32
-    as uinteger mask            ' 1,3,0xF,0xFF,0xFFFF,0xFFFFFFFF
-    as ushort   compatible_mode ' 0,1,2,7,8,9,10,11,12,13,32,256
-    as uinteger img_color, background_color, draw_color
-    as uinteger font            ' 8,14,16,?
-    as short    top_row, bottom_row ' VIEW PRINT settings, unique (as in QB) to each "page"
-    as short    cursor_x, cursor_y  ' unique (as in QB) to each "page"
-    as ubyte cursor_show, cursor_firstvalue, cursor_lastvalue
+    as any ptr lock_offset
+    as int64 lock_id
+    as uint8 valid    ' 0,1 0=invalid
+    as uint8 text    ' if set, surface is a text surface
+    as uint8 console ' dummy surface to absorb unimplemented console functionality
+    as uint16 width
+    as uint16 height
+    as uint8 bytes_per_pixel  ' 1,2,4
+    as uint8 bits_per_pixel   ' 1,2,4,8,16(text),32
+    as uint32 mask            ' 1,3,&HF,&HFF,&HFFFF,&HFFFFFFFF
+    as uint16 compatible_mode ' 0,1,2,7,8,9,10,11,12,13,32,256
+    as uint32 color
+    as uint32 background_color
+    as uint32 draw_color
+    as uint32 font               ' 8,14,16,?
+    as int16 top_row    ' VIEW PRINT settings, unique (as in QB) to each "page"
+    as int16 bottom_row ' unique (as in QB) to each "page"
+    as int16 cursor_x
+    as int16 cursor_y  
+    as uint8 cursor_show
+    as uint8 cursor_firstvalue
+    as uint8 cursor_lastvalue
     union
-        as ubyte  ptr offset
-        as uinteger ptr offset32
+        as uint8 ptr offset
+        as uint32 ptr offset32
     end union
-    as uinteger flags
-    as uinteger ptr pal
-    as integer transparent_color ' -1 means no color is transparent
-    as ubyte alpha_disabled
-    as ubyte holding_cursor
-    as ubyte print_mode
+    as uint32 flags
+    as uint32 ptr pal
+    as int32 transparent_color  '-1 means no color is transparent
+    as uint8 alpha_disabled
+    as uint8 holding_cursor
+    as uint8 print_mode
     ' BEGIN apm ('active page migration')
     ' everything between apm points is migrated during active page changes
     ' note: apm data is only relevent to graphics modes
-    as ubyte apm_p1
-    as integer view_x1, view_y1, view_x2, view_y2
-    as integer view_offset_x, view_offset_y
-    as FLOAT128 x, y
-    as ubyte clipping_or_scaling
-    as FLOAT128 scaling_x, scaling_y, scaling_offset_x, scaling_offset_y
-    as FLOAT128 window_x1, window_y1, window_x2, window_y2
-    as FLOAT128 draw_ta
-    as FLOAT128 draw_scale
-    as ubyte apm_p2
+    as uint8 apm_p1
+    as int32 view_x1
+    as int32 view_y1
+    as int32 view_x2
+    as int32 view_y2
+    as int32 view_offset_x
+    as int32 view_offset_y
+    as float x
+    as float y
+    as uint8 clipping_or_scaling
+    as float scaling_x
+    as float scaling_y
+    as float scaling_offset_x
+    as float scaling_offset_y
+    as float window_x1
+    as float window_y1
+    as float window_x2
+    as float window_y2
+    as float draw_ta
+    as float draw_scale
+    as uint8 apm_p2
     ' END apm
 end type
 
@@ -947,24 +998,24 @@ end type
 #define ISOFFSETINBITS         16777216
 
 type ontimer_struct 
-    as ubyte    allocated
-    as uinteger id        ' the event ID to trigger (0=no event)
-    as longint  pass      ' the value to pass to the triggered event (only applicable to ON ... CALL ...(x)
-    as ubyte    active    ' 0=OFF, 1=ON, 2=STOP
-    as ubyte    state     ' 0=untriggered,1=triggered
-    as FLOAT128 seconds   ' how many seconds between events
-    as FLOAT128 last_time ' the last time this event was triggered
+    as uint8 allocated
+    as uint32 id       ' the event ID to trigger (0=no event)
+    as int64 pass      ' the value to pass to the triggered event (only applicable to ON ... CALL ...(x)
+    as uint8 active    ' 0=OFF, 1=ON, 2=STOP
+    as uint8 state     ' 0=untriggered,1=triggered
+    as float seconds   ' how many seconds between events
+    as float last_time ' the last time this event was triggered
 end type
 
 type onkey_struct 
-    as uinteger id                ' the event ID to trigger (0=no event)
-    as longint  pass              ' the value to pass to the triggered event (only applicable to ON ... CALL ...(x)
-    as ubyte    active            ' 0=OFF, 1=ON, 2=STOP
-    as ubyte    state             ' 0=untriggered,1=triggered,2=in progress(TIMER only),2+=multiple events queued(KEY only)
-    as uinteger keycode           ' 32-bit code, same as what _KEYHIT returns
-    as uinteger keycode_alternate ' an alternate keycode which may also trigger event
-    as ubyte    key_scancode
-    as ubyte    key_flags
+    as uint32 id                 ' the event ID to trigger (0=no event)
+    as int64 pass                ' the value to pass to the triggered event (only applicable to ON ... CALL ...(x)
+    as uint8 active              ' 0=OFF, 1=ON, 2=STOP
+    as uint8 state               ' 0=untriggered,1=triggered,2=in progress(TIMER only),2+=multiple events queued(KEY only)
+    as uint32 keycode            ' 32-bit code, same as what _KEYHIT returns
+    as uint32 keycode_alternate  ' an alternate keycode which may also trigger event
+    as uint8 key_scancode
+    as uint8 key_flags
     ' flags:
     ' 0 No keyboard flag, 1-3 Either Shift key, 4 Ctrl key, 8 Alt key,32 NumLock key,64 Caps Lock key, 128 Extended keys on a 101-key keyboard
     ' To specify multiple shift states, add the values together. For example, a value of 12 specifies that the user-defined key is used in combination with the
@@ -973,46 +1024,46 @@ type onkey_struct
 end type
 
 type onstrig_struct 
-    as uinteger id     ' the event ID to trigger (0=no event)
-    as longint  pass   ' the value to pass to the triggered event (only applicable to ON ... CALL ...(x)
-    as ubyte    active ' 0=OFF, 1=ON, 2=STOP
-    as ubyte    state  ' 0=untriggered,1=triggered,2=in progress(TIMER only),2+=multiple events queued(KEY only)
+    as uint32 id     ' the event ID to trigger (0=no event)
+    as int64 pass    ' the value to pass to the triggered event (only applicable to ON ... CALL ...(x)
+    as uint8 active  ' 0=OFF, 1=ON, 2=STOP
+    as uint8 state   ' 0=untriggered,1=triggered,2=in progress(TIMER only),2+=multiple events queued(KEY only)
 end type
 
 type byte_element_struct
-    as ulongint offset
-    as integer  length
+    as uint64 offset
+    as int32 length
 end type
 
 type device_struct
-    as integer used
-    as integer type_data
+    as int32 used
+    as int32 type
     ' 0=Unallocated
     ' 1=Joystick/Gamepad
     ' 2=Keybaord
     ' 3=Mouse
-    as byte ptr  name_data
-    as integer   connected
-    as integer   lastbutton
-    as integer   lastaxis
-    as integer   lastwheel
+    as char ptr name
+    as int32 connected
+    as int32 lastbutton
+    as int32 lastaxis
+    as int32 lastwheel
     '--------------
-    as integer   max_events
-    as integer   queued_events
-    as ubyte ptr events ' the structure and size of the events depends greatly on the device and its capabilities
-    as integer   event_size
+    as int32 max_events
+    as int32 queued_events
+    as uint8 ptr events ' the structure and size of the events depends greatly on the device and its capabilities
+    as int32 event_size
     '--------------
-    as ubyte     STRIG_button_pressed(256) ' checked and cleared by the STRIG function
+    dim as uint8 STRIG_button_pressed(256) ' checked and cleared by the STRIG function
     '--------------
-    as any ptr      handle_pointer  ' handle as pointer
-    as longint      handle_int      ' handle as integer
-    as byte ptr     description     ' description provided by manufacturer
-    as longint      product_id
-    as longint      vendor_id
-    as integer      buttons
-    as integer      axes
-    as integer      balls
-    as integer      hats
+    as any ptr handle_pointer ' handle as pointer
+    as int64 handle_int       ' handle as integer
+    as char ptr description   ' description provided by manufacturer
+    as int64 product_id
+    as int64 vendor_id
+    as int32 buttons
+    as int32 axes
+    as int32 balls
+    as int32 hats
 end type
 
 ' device_struct constants
@@ -1025,9 +1076,9 @@ end type
 type mem_block
     as ptrszint offset
     as ptrszint size
-    as longint lock_id      ' 64-bit key, must be present at lock's offset or memory region is invalid
+    as int64 lock_id        ' 64-bit key, must be present at lock's offset or memory region is invalid
     as ptrszint lock_offset ' pointer to lock
-    as ptrszint type_data
+    as ptrszint type
     /'
         memorytype (4 bytes, but only the first used, for flags):
         1 integer values
@@ -1036,105 +1087,127 @@ type mem_block
         8 char string(s) 'element-size is the memory size of 1 string
     '/
     as ptrszint elementsize
-    as integer image
-    as integer sound
+    as int32 image
+    as int32 sound
 end type
 
 type mem_lock
-    as ulongint id
-    as integer type_data ' required to know what action to take (if any) when a request is made to free the block
+    as uint64 id
+    as int32 type ' required to know what action to take (if any) when a request is made to free the block
     ' 0=no security (eg. user defined block from _OFFSET)
     ' 1=C-malloc'ed block
-    ' 2=image
+    '  2=image
     ' 3=sub/function scope block
     ' 4=array
-    ' 5=sound
-    '---- type specific variables follow ----
-    as any  ptr offset ' used by malloc'ed blocks to free them
+    '  5=sound
+    ' ---- type specific variables follow ----
+    as any ptr offset ' used by malloc'ed blocks to free them
 end type
 
+static shared as uint32 new_error = 0
+static shared as uint32 error_err = 0
+static shared as float  error_erl = 0
+static shared as uint32 error_occurred = 0
+static shared as uint32 error_goto_line = 0
+static shared as uint32 error_handling = 0
+static shared as uint32 error_retry = 0
+
+' keyhit cyclic buffer
+static shared as int64 keyhit(8192)
+'    keyhit specific internal flags: (stored in high 32-bits)
+'    &4294967296->numpad was used
+static shared as int32 keyhit_nextfree
+static shared as int32 keyhit_next
+' note: if full, the oldest message is discarded to make way for the new message
+
+static shared as uint8 port60h_event(256)
+static shared as int32 port60h_events
+
+static shared as int32 window_exists
+static shared as int32 no_control_characters2
+
+static shared as int32 disableEvents = 0
+
 ' shared global variables
-dim shared as integer sleep_break
-dim shared as ulongint mem_lock_id
-dim shared as mem_lock ptr mem_lock_tmp
-dim shared as longint exit_code
-dim shared as integer lock_mainloop ' 0=unlocked, 1=lock requested, 2=locked
-dim shared as longint device_event_index
-dim shared as integer exit_ok
-dim shared as qbs ptr func_command_str
-dim shared as integer timer_event_occurred = 0 ' inc/dec as each GOSUB to QBMAIN ()
-                                               ' begins/ends
-dim shared as integer timer_event_id = 0
-dim shared as integer key_event_occurred = 0 ' inc/dec as each GOSUB to QBMAIN () begins/ends
-dim shared as integer  key_event_id = 0
-dim shared as integer strig_event_occurred = 0 ' inc/dec as each GOSUB to QBMAIN ()
-                                               ' begins/ends
-dim shared as integer strig_event_id = 0
-dim shared as uinteger  ercl
-dim shared as uinteger inclercl
-dim shared as byte ptr includedfilename
-dim shared as ushort call_absolute_offsets(256)
-dim shared as uinteger dbgline
-dim shared as uinteger qbs_mem64_sp = 256
-dim shared as uinteger mem64_sp = 65536
-dim shared as ptrszint dblock ' 32bit offset of dblock
-dim shared as ubyte close_program = 0
-dim shared as integer tab_spc_cr_size = 1 ' 1=PRINT(default), 2=FILE
-dim shared as integer tab_fileno = 0      ' only valid if tab_spc_cr_size=2
-dim shared as integer tab_LPRINT = 0      ' 1=dest is LPRINT image
+static shared as int32 consolekey
+static shared as int32 consolemousex
+static shared as int32 consolemousey
+static shared as int32 consolebutton
 
-dim shared as ulongint ptr nothingvalue ' a pointer to 8 empty bytes in dblock
-dim shared as uinteger error_err = 0
-dim shared as float    error_erl = 0
-dim shared as uinteger qbs_tmp_list_nexti = 1
-dim shared as uinteger error_occurred = 0
-dim shared as uinteger new_error = 0
-dim shared as uinteger bkp_new_error = 0
-dim shared as qbs ptr nothingstring
-dim shared as uinteger qbevent = 0
-dim shared as ubyte suspend_program = 0
-dim shared as ubyte stop_program = 0
-dim shared as uinteger error_retry = 0
-' 16*65535+65535+3 (enough for highest referencable dword in conv memory)
-dim shared as SYSTEM_TYPE ptr mem64_static_pointer = @mem64(0) + 1280 + 65536
-dim shared as SYSTEM_TYPE ptr mem64_dynamic_base = @mem64(0) + 655360
-dim shared as SYSTEM_TYPE ptr mem_static
-dim shared as SYSTEM_TYPE ptr mem_static_pointer
-dim shared as SYSTEM_TYPE ptr mem_static_limit
-dim shared as float last_line = 0
-dim shared as uinteger error_goto_line = 0
-dim shared as uinteger error_handling = 0
+static shared as int32 sleep_break
+static shared as uint64 mem_lock_id
+static shared as mem_lock ptr mem_lock_tmp
+static shared as int64 exit_code
+static shared as int32 lock_mainloop ' 0=unlocked, 1=lock requested, 2=locked
+static shared as int64 device_event_index
+static shared as int32 exit_ok
+static shared as qbs ptr func_command_str
+static shared as int32 timer_event_occurred = 0 ' inc/dec as each GOSUB to QBMAIN ()
+                                                ' begins/ends
+static shared as int32 timer_event_id = 0
+static shared as int32 key_event_occurred = 0 ' inc/dec as each GOSUB to QBMAIN () begins/ends
+static shared as int32 key_event_id = 0
+static shared as int32 strig_event_occurred = 0 ' inc/dec as each GOSUB to QBMAIN ()
+                                                ' begins/ends
+static shared as int32 strig_event_id = 0
+static shared as uint32 ercl
+static shared as uint32 inclercl
+static shared as char ptr includedfilename
+static shared as uint16 call_absolute_offsets(256)
+static shared as uint32 dbgline
+static shared as uint32 qbs_mem64_sp = 256
+static shared as uint32 mem64_sp = 65536
+static shared as ptrszint dblock ' 32bit offset of dblock
+static shared as uint8 close_program = 0
+static shared as int32 tab_spc_cr_size = 1 ' 1=PRINT(default), 2=FILE
+static shared as int32 tab_fileno = 0      ' only valid if tab_spc_cr_size=2
+static shared as int32 tab_LPRINT = 0      ' 1=dest is LPRINT image
 
-dim shared as uinteger next_return_point = 0
-dim shared as uinteger ptr return_point = 0: return_point = malloc(4 * 16384)
-dim shared as uinteger return_points = 16384
-dim shared as any ptr qbs_input_variableoffsets(257)
-dim shared as any ptr qbs_input_variabletypes(257)
+static shared as uint64 ptr nothingvalue ' a pointer to 8 empty bytes in dblock
+static shared as uint32 qbs_tmp_list_nexti = 1
+static shared as uint32 bkp_new_error = 0
+static shared as qbs ptr nothingstring
+static shared as uint32 qbevent = 0
+static shared as uint8 suspend_program = 0
+static shared as uint8 stop_program = 0
+
+static shared as SYSTEM_TYPE ptr mem64_static_pointer = @mem64(0) + 1280 + 65536
+static shared as SYSTEM_TYPE ptr mem64_dynamic_base = @mem64(0) + 655360
+static shared as SYSTEM_TYPE ptr mem_static
+static shared as SYSTEM_TYPE ptr mem_static_pointer
+static shared as SYSTEM_TYPE ptr mem_static_limit
+static shared as float last_line = 0
+static shared as uint32 next_return_point = 0
+static shared as uint32 ptr return_point = 0: return_point = peek(uint32 ptr,malloc(4 * 16384))
+static shared as uint32 return_points = 16384
+static shared as any ptr qbs_input_variableoffsets(257)
+static shared as int32 qbs_input_variabletypes(257)
+
 
 ' qbmain specific global variables
-dim shared as byte  g_tmp_char
-dim shared as ubyte g_tmp_uchar
-dim shared as short g_tmp_short
-dim shared as ushort g_tmp_ushort
-dim shared as integer g_tmp_long
-dim shared as uinteger g_tmp_ulong
+static shared as char g_tmp_char
+static shared as uint8 g_tmp_uchar
+static shared as int16 g_tmp_short
+static shared as uint16 g_tmp_ushort
+static shared as int32 g_tmp_long
+static shared as uint32 g_tmp_ulong
 
-dim shared as byte g_tmp_int8
-dim shared as ubyte g_tmp_uint8
-dim shared as short g_tmp_int16
-dim shared as ushort g_tmp_uint16
-dim shared as integer g_tmp_int32
-dim shared as uinteger g_tmp_uint32
-dim shared as longint g_tmp_int64
-dim shared as ulongint g_tmp_uint64
-dim shared as FLOAT128 g_tmp_float
-dim shared as FLOAT128 g_tmp_double
-dim shared as FLOAT128 g_tmp_longfloat
+static shared as int8 g_tmp_int8
+static shared as uint8 g_tmp_uint8
+static shared as int16 g_tmp_int16
+static shared as uint16 g_tmp_uint16
+static shared as int32 g_tmp_int32
+static shared as uint32 g_tmp_uint32
+static shared as int64 g_tmp_int64
+static shared as uint64 g_tmp_uint64
+static shared as float g_tmp_float
+static shared as float g_tmp_double
+static shared as float g_tmp_longdouble
 
-dim shared as qbs ptr g_tmp_str
-dim shared as qbs ptr g_swap_str
-dim shared as qbs ptr pass_str
-dim shared as ptrszint data_offset = 0
+static shared as qbs ptr g_tmp_str
+static shared as qbs ptr g_swap_str
+static shared as qbs ptr pass_str
+static shared as ptrszint data_offset = 0
 
 ' clang-format on
 
@@ -1671,9 +1744,6 @@ dim shared as integer H3C9_read_next = 0
 
 dim shared as integer H3C0_blink_enable = 1
 
-dim shared as ubyte port60h_event(256)
-dim shared as integer port60h_events = 0
-
 dim shared as uinteger qb64_firsttimervalue  ' based on time of day
 dim shared as uinteger clock_firsttimervalue ' based on program launch time
 
@@ -1684,5 +1754,3 @@ dim shared as integer full_screen_set = -1 ' 0(windowed),1(stretched/closest),2(
 
 dim shared as integer vertical_retrace_in_progress = 0
 dim shared as integer vertical_retrace_happened = 0
-
-dim shared as integer disableEvents

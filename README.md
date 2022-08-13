@@ -126,7 +126,7 @@ It is therefore possible to create a 64-bit MOS 6510 compatible CPU(about 36,224
 
 FUN FACT #2: The universities have already produced multicore 8-bit CPUs that run at 150GHz or more in the lab.
 
-FUN FACT #3: Unlike real hardware, you can get an emulator to anything you want.
+FUN FACT #3: Unlike real hardware, you can get an emulator to do anything you want.
 
 # Predication (computer architecture)
 
@@ -213,7 +213,7 @@ included for completeness as a record of the addresses it occupies as a ROM bank
 # DOS, DOSBox, DOSBox-x, Windows, ReactOS, OS/2?, ArcaOS?, and Wine
 	SYSTEM_TYPE is defined as a ulongint.
 
-# Uinx-like operating systems
+# Unix-like operating systems
 	SYSTEM_TYPE is defined as a double. 
 	
 # Extended Memory Table 1
@@ -234,7 +234,7 @@ included for completeness as a record of the addresses it occupies as a ROM bank
 	
 	Storage Area for Y Register        =$030E(00782) Not the same as y0
 	
-	Storage Area for P Register        =$030E(00783) Status Register(See above)
+	Storage Area for P Register        =$030F(00783) Status Register(See above)
 	
 	Used for function calls            =$7E72(32370) .,7E72 LDA #$00  10101001 00000000
 	
@@ -1635,8 +1635,8 @@ included for completeness as a record of the addresses it occupies as a ROM bank
 
 # Compiling Source Code
 
-	fbc -fpmode fast -fpu sse -w all  "c64dvd-glsl.bas" -map c64dvd-glsl.map -strip  -Wc -mcmodel=small -Wc -msse2avx -Wc -Ofast -Wc -ffp-contract=fast -Wc -foptimize-sibling-calls -Wc -foptimize-strlen -Wc -fno-inline -Wc -save-temps -Wc -O3 -Wc -msse2avx
-
+	fbc -fpmode fast -fpu sse -w all  "c64dvd-glsl.bas" -map c64dvd-glsl.map -strip -Wc " -mcmodel=small -msse2avx -Ofast -ffp-contract=fast -foptimize-sibling-calls -foptimize-strlen -fno-inline -save-temps  -ffreestanding -ffunction-sections -fdata-sections  -nostdlib -Os -lgcc -msse2avx"
+	
 # Online 6502 Assembler
 
 https://www.masswerk.at/6502/assembler.html
