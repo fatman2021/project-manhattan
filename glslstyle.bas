@@ -164,13 +164,33 @@ end proc
 
 /'
 Original Code:
+// https://iquilezles.org/articles/distfunctions
+float sdEllipsoid( in vec3 p, in vec3 r ) // approximated
+{
+    float k0 = length(p/r);
+    float k1 = length(p/(r*r));
+    return k0*(k0-1.0)/k1;
+}
 
 Intermediate Code:
 
 FreeBASIC:
 '/
 proc SYSTEM_BUS_T.sdEllipsoid(p as vector3, r as vector3) as float
-  return (k_length( p/r ) - 1.0) * k_min(k_min(r.x,r.y),r.z)
+  dim as float k0 = k_length(p/r)
+  dim as float k1 = k_length(p/(r*r))
+  return k0*(k0-1.0)/k1
+end proc
+/'
+Original Code:
+
+Intermediate Code:
+
+FreeBASIC:
+'/
+proc SYSTEM_BUS_T.sdEllipsoid(p as vector3, r as float) as float
+  dim as float d = k_length(p/r) - 1.0 
+  return d*r
 end proc
 
 /'
@@ -2456,3 +2476,911 @@ def SYSTEM_BUS_T.EXEC_GLSL_120()
 	  frames+=1
      loop	
 end def
+
+' Ring 0 - Cool Retro Term
+
+' ShaderLibrary.qml
+proc SYSTEM_BUS_T.applyRasterization1(screenCoords as vector2, texel AS vector3, virtualResolution as vector2, _
+                                      intensity as float) as vector3
+    return texel
+end proc
+
+proc SYSTEM_BUS_T.applyRasterization2(screenCoords as vector2, texel AS vector3, virtualResolution as vector2, _
+                                      intensity as float) as vector3
+   const _INTENSITY as float = 0.30
+   const _BRIGHTBOOST as float = 0.30
+   dim as vector3 pixelHigh = ((1.0 + _BRIGHTBOOST) - (0.2 * texel)) * texel
+   dim as vector3 pixelLow = ((1.0 - _INTENSITY) + (0.1 * texel)) * texel
+   dim as vector2 coords = k_fract(screenCoords * virtualResolution) * 2.0 - vector2(1.0)
+   dim as float mask = 1.0 - abs(coords.y)
+   dim as vector3 rasterizationColor = k_mix(pixelLow, pixelHigh, mask)
+   return k_mix(texel, rasterizationColor, intensity)
+end proc
+
+proc SYSTEM_BUS_T.applyRasterization3(screenCoords as vector2, texel AS vector3, virtualResolution as vector2, _
+                                      intensity as float) as vector3
+   dim as vector3 result = texel
+   const _INTENSITY as float = 0.30
+   const _BRIGHTBOOST as float = 0.30
+   dim as vector3 pixelHigh = ((1.0 + _BRIGHTBOOST) - (0.2 * texel)) * texel
+   dim as vector3 pixelLow = ((1.0 - _INTENSITY) + (0.1 * texel)) * texel
+   dim as vector2 coords = k_fract(screenCoords * virtualResolution) * 2.0 - vector2(1.0)
+   coords = coords * coords
+   dim as float mask = 1.0 - coords.x - coords.y
+   dim as vector3 rasterizationColor = k_mix(pixelLow, pixelHigh, mask)
+   return k_mix(texel, rasterizationColor, intensity)
+end proc
+
+proc SYSTEM_BUS_T.min2(v as vector2) as float
+    return k_min(v.x, v.y)
+end proc
+
+proc SYSTEM_BUS_T.rgb2grey(v as vector3) as float
+    return k_dot(v, vector3(0.21, 0.72, 0.04))
+end proc
+
+proc SYSTEM_BUS_T.max2(v as vector2) as float
+    return k_max(v.x, v.y)
+end proc
+
+proc SYSTEM_BUS_T.prod2(v as vector2) as float
+    return v.x * v.y
+end proc
+
+proc SYSTEM_BUS_T.sum2(v as vector2) as float
+    return v.x + v.y
+end proc
+
+def SYSTEM_BUS_T.DestroyTexture2D(texture as sampler2D)
+    texture.Unlock()
+    texture.Destroy()
+    Deallocate(texture.PixelData)
+    texture.PixelData = null
+    texture.Width = 0
+    texture.Height = 0
+    texture.BytesPerPixel = 0
+    texture.Pitch = 0
+end def
+
+proc SYSTEM_BUS_T.CreateTexture2D(xwidth as int32, xheight as int32, bytesPerPixel as int32) As sampler2D
+     Dim As sampler2D result
+     result.Width = xwidth
+     result.Height = xheight
+     result.BytesPerPixel = bytesPerPixel
+     result.Pitch = xwidth * bytesPerPixel
+     result.PixelData = Allocate(result.Pitch * xheight)
+     result.Create()
+     Return result
+end proc
+
+proc SYSTEM_BUS_T.DrawRetroCRTCursor(texture as sampler2D, mode as Int32, x As Int32, y As int32, version As Int32, cameraPos as vector3, cameraDir as vector3) as sampler2D
+     ' Create a distance field using the signed distance field technique
+     Dim As Float CURSOR_RADIUS = 10, CURSOR_COLOR
+     Dim distanceField(texture.Width, texture.Height) As Float
+
+    ' Initialize the distance field with the cursor shape
+    For i As Integer = 0 To texture.Width - 1
+      For j As Integer = 0 To texture.Height - 1
+         Dim coords As vector2 = vector2(x + j, y + i) - vector2(CURSOR_RADIUS)
+         distanceField(i, j) = k_min(k_length(coords), CURSOR_RADIUS)
+      Next
+    Next
+
+    Select Case version
+      Case 1
+        ' Use the modified distance field to draw the cursor shape using 2D texture
+        CreateTexture2D(texture.Width, texture.Height, 4)
+        texture.Lock()
+        ' Draw the cursor using the texture 
+        For i As Integer = 0 To texture.Width - 1
+          For j As Integer = 0 To texture.Height - 1
+            If distanceField(i, j) < 0 Then
+              ' Use the character generator to draw the cursor shape
+              ' Transform cursor position based on camera position and direction
+              Dim cursorPos As vector3 = vector3(x + j, y + i, 0) + cameraPos + cameraDir
+              texture.WritePixel(x, y, CURSOR_COLOR)
+            End If
+          Next j
+        Next i
+        texture.Unlock()
+        ' Deallocate the memory used by the texture object
+        texture.Destroy()
+      Case 2
+        ' Use the modified distance field to draw the cursor shape using 1080p graphics, 120x60, 90x60, 
+        ' and 40x24 text mode
+        For i As Integer = 0 To texture.Width - 1
+           For j As Integer = 0 To texture.Height - 1
+              If distanceField(i, j) < 0 Then
+                ' Use the character generator to draw the cursor shape
+                ' Transform cursor position based on camera position and direction
+                Dim cursorPos As vector3 = vector3(x + j, y + i, 0) + cameraPos + cameraDir
+                poke SYSTEM_TYPE,@mem64(49361), cursorPos.x
+                poke SYSTEM_TYPE,@mem64(49362), cursorPos.y
+                poke SYSTEM_TYPE,@mem64(49353),CURSOR_COLOR
+                select case mode
+                  case 2: Poke64(49414,0) ' Draw Pixel 1080p
+                  case 3: Poke64(49645,0) ' Draw Pixel 120x60 text mode
+                  case 4: Poke64(49644,0) ' Draw Pixel  90x60 text mode
+                  case 5: Poke64(49645,0) ' Draw Pixel  40x25 text mode
+                end select  
+              End If
+           Next j
+        Next i
+End Select
+return texture
+End proc
+
+' utils.js
+
+proc SYSTEM_BUS_T.max(a As Single, b As Single) As Single
+    If b > a Then return b else return a
+End proc
+
+proc SYSTEM_BUS_T.min(a As Single, b As Single) As Single
+    If b < a Then return b else return a
+End proc
+
+proc SYSTEM_BUS_T.Clamp(x As Single, _min As Single, _max As Single) As Single
+    If x <= _min Then
+        Return _min
+    ElseIf x >= _max Then
+        Return _max
+    Else
+        Return x
+    End If
+End proc
+
+proc SYSTEM_BUS_T.Lint(a As Single, b As Single, t As Single) As Single
+    Return (1 - t) * a + (t) * b
+End proc
+
+proc SYSTEM_BUS_T.Mix(c1 As vector3, c2 As vector3, _alpha As Single) As Long
+    Return RGB(c1.r * _alpha + c2.r * (1-_alpha), c1.g * _alpha + c2.g * (1-_alpha), _
+               c1.b * _alpha + c2.b * (1-_alpha))
+End proc
+
+proc SYSTEM_BUS_T.SmoothStep(_min As Single, _max As Single, value As Single) As Single
+    Dim As Single x = max(0, min(1, (value - _min) / (_max - _min)))
+    Return x * x * (3 - 2 * x)
+End proc
+
+proc SYSTEM_BUS_T.StrToColor(s As String) As Long
+    Dim As Integer r = VAL("&H" + MID(s, 2, 2)) / 256
+    Dim As Integer g = VAL("&H" + MID(s, 4, 2)) / 256
+    Dim As Integer b = VAL("&H" + MID(s, 6, 2)) / 256
+    Return RGB(r, g, b)
+End proc
+
+proc SYSTEM_BUS_T.Join(arr() As String, delimiter As String) As String
+    Dim result As String = ""
+    For i As Integer = 0 To UBound(arr)
+        result += arr(i)
+        If i < UBound(arr) Then
+            result += delimiter
+        End If
+    Next
+    Return result
+End proc
+
+proc SYSTEM_BUS_T.TokenizeCommandLine(s As String) As String
+Dim args() As String
+Dim currentToken As String = ""
+Dim quoteChar As String = ""
+Dim escaped As Boolean = False
+
+For i As Integer = 0 To Len(s) - 1
+    If escaped Then
+        escaped = False
+        currentToken += Mid(s, i, 1)
+    ElseIf quoteChar <> "" Then
+        escaped = Mid(s, i, 1) = "\"
+        If quoteChar = Mid(s, i, 1) Then
+            quoteChar = ""
+            ReDim Preserve args(UBound(args) + 1)
+            args(UBound(args)) = currentToken
+            currentToken = ""
+        ElseIf Not escaped Then
+            currentToken += Mid(s, i, 1)
+        End If
+    Else
+        escaped = Mid(s, i, 1) = "\"
+        If Mid(s, i, 1) = "\" Then
+            ' begin escape
+        ElseIf Mid(s, i, 1) = chr(10) Then
+            ' newlines always delimits
+            ReDim Preserve args(UBound(args) + 1)
+            args(UBound(args)) = currentToken
+            currentToken = ""
+        Elseif Mid(s, i, 1) = " " Or Mid(s, i, 1) = chr(9) Then
+            ' delimit on new whitespace
+            If currentToken <> "" Then
+                ReDim Preserve args(UBound(args) + 1)
+                args(UBound(args)) = currentToken
+                currentToken = ""
+            End If    
+        Elseif Mid(s, i, 1) = "'" Or Mid(s, i, 1) = """" Then
+            ' begin quoted section
+            quoteChar = Mid(s, i, 1)
+        Else
+            currentToken += Mid(s, i, 1)
+        End If
+    End If
+Next
+
+' ignore last token if broken quotes/backslash
+If currentToken <> "" And Not escaped And quoteChar = "" Then
+    ReDim Preserve args(UBound(args) + 1)
+    args(UBound(args)) = currentToken
+End If
+
+ TokenizeCommandLine = Join(args(), " ")
+End proc
+
+' Xlib.h
+
+#define X_PROTOCOL 11
+#define X_PROTOCOL_REVISION 0
+
+Type XID as ULong
+Type Mask as ULong
+Type _Atom as ULong
+Type VisualID as ULong
+Type Time as ULong
+Type Window as XID
+Type Drawable as XID
+Type _Font as XID
+Type Pixmap as XID
+Type Cursor as XID
+Type Colormap as XID
+Type GContext as XID
+Type KeySym as XID
+Type KeyCode as UByte
+
+Type _XExtData
+    number as integer
+    next as _XExtData ptr
+    free_private as sub ptr
+    private_data as ubyte ptr
+End Type
+
+Type XExtCodes
+    extension as integer
+    major_opcode as integer
+    first_event as integer
+    first_error as integer
+End Type
+
+Type XPixmapFormatValues
+    depth as integer
+    bits_per_pixel as integer
+    scanline_pad as integer
+End Type
+
+Type XGCValues
+    function as integer
+    plane_mask as ulong
+    foreground as ulong
+    background as ulong
+    line_width as integer
+    line_style as integer
+    cap_style as integer
+    join_style as integer
+    fill_style as integer
+    fill_rule as integer
+    arc_mode as integer
+    tile as Pixmap
+    stipple as Pixmap
+    ts_x_origin as integer
+    ts_y_origin as integer
+    font as _Font
+    subwindow_mode as integer
+    graphics_exposures as boolean
+    clip_x_origin as integer
+    clip_y_origin as integer
+    clip_mask as Pixmap
+    dash_offset as integer
+    dashes as zstring * 1
+End Type
+
+Type GC
+   ext_data as _XExtData ptr
+   gid as GContext
+End Type
+
+Type Visual
+   ext_data as _XExtData ptr
+   visualid as VisualID
+   class as integer
+   red_mask as ulong
+   green_mask as ulong
+   blue_mask as ulong
+   bits_per_rgb as integer
+   map_entries as integer
+End Type
+
+Type Depth
+    depth as integer
+    nvisuals as integer
+    visuals as Visual ptr
+End Type
+
+Type _XPrivate
+     dummy1 As Integer
+     dummy2 As String
+End Type
+
+Type _XrmHashBucketRec
+     dummy3 As Long
+     dummy4 As Single
+     dummy5 As Boolean
+End Type
+
+Type _XDisplay
+    ext_data As Long Ptr 'hook for extension to hang data
+    private1 As Long Ptr
+    fd As Integer 'Network socket.
+    private2 As Integer
+    proto_major_version As Integer 'major version of server's X protocol
+    proto_minor_version As Integer 'minor version of servers X protocol
+    vendor As String 'vendor of the server hardware
+    private3 As XID
+    private4 As XID
+    private5 As XID
+    private6 As Integer
+    resource_alloc As Long Ptr 'allocator function
+    byte_order As Integer 'screen byte order, LSBFirst, MSBFirst
+    bitmap_unit As Integer 'padding and data requirements
+    bitmap_pad As Integer 'padding requirements on bitmaps
+    bitmap_bit_order As Integer 'LeastSignificant or MostSignificant
+    nformats As Integer 'number of pixmap formats in list
+    pixmap_format As Long Ptr 'pixmap format list
+    private8 As Integer
+    release As Integer 'release of the server
+    private9 As Long Ptr
+    private10 As Long Ptr
+    qlen As Integer 'Length of input event queue
+    last_request_read As ULong 'seq number of last event read
+    request As ULong 'sequence number of last request.
+    private11 As Long Ptr
+    private12 As Long Ptr
+    private13 As Long Ptr
+    private14 As Long Ptr
+    max_request_size As UInteger 'maximum number 32 bit words in request
+    db As Long Ptr 'struct _XrmHashBucketRec Ptr
+    private15 As Long Ptr 'function pointer
+    display_name As String '"host:display" string used on this connect
+    default_screen As Integer 'default screen for operations
+    nscreens As Integer 'number of screens on this server
+    screens As Long Ptr 'pointer to list of screens
+    motion_buffer As ULong 'size of motion buffer
+    private16 As ULong
+    min_keycode As Integer 'minimum defined keycode
+    max_keycode As Integer 'maximum defined keycode
+    private17 As Long Ptr
+    private18 As Long Ptr
+    private19 As Integer
+    xdefaults As String 'contents of defaults from server
+    handle as long
+    blendFunc as FBGFX_BLENDER
+    putFunc as FBGFX_PUTTER
+    width as long
+    height as long
+    bpp as long
+    refresh_rate as long
+    flags as long
+    color as long
+end type
+
+type XExtData 
+     ext_data as _XExtData ptr 'hook for extension to hang data
+     display as _XDisplay ptr ' back pointer to display structure
+     root as Window ' Root window id.
+     width as integer
+     height as integer ' width and height of screen
+     mwidth as integer
+     mheight as integer ' width and height of in millimeters
+     ndepths as integer ' number of depths possible
+     depths as Depth ptr ' list of allowable depths on the screen
+     root_depth as integer ' bits per pixel
+     root_visual as Visual ptr ' root visual
+     default_gc as GC ' GC for the root root visual
+     cmap as Colormap ' default color map
+     white_pixel as ulong
+     black_pixel as ulong ' White and Black pixel values
+     max_maps as integer
+     min_maps as integer ' max and min color maps
+     backing_store as integer ' Never, WhenMapped, Always
+     save_unders as boolean
+     root_input_mask as long ' initial root input mask
+end type
+
+type ScreenFormat
+     ext_data as XExtData ptr
+     depth as integer
+     bits_per_pixel as integer
+     scanline_pad as integer
+end type
+
+Type Screen
+     ext_data as XExtData ptr 'hook for extension to hang data
+     display as _XDisplay ptr ' back pointer to display structure
+     root as Window ' root window ID
+     width as integer
+     height as integer ' width and height of screen
+     mwidth as integer
+     mheight as integer ' width and height of in millimeters
+     ndepths as integer ' number of depths possible
+     depths as Depth ptr ' list of allowable depths on the screen
+     root_depth as integer ' bits per pixel
+     root_visual as Visual ptr ' root visual
+     default_gc as GC ' GC for the root root visual
+     cmap as Colormap ' default colormap
+     white_pixel as ulong
+     black_pixel as ulong ' white and black pixel values
+     max_maps as integer
+     min_maps as integer ' max and min colormaps
+     backing_store as integer ' Never, WhenMapped, Always
+     save_unders as boolean
+     root_input_mask as long ' initial root input mask
+End Type
+
+Type XSetWindowAttributes
+     background_pixmap as Pixmap
+     background_pixel as ulong
+     border_pixmap as Pixmap
+     border_pixel as ulong
+     bit_gravity as integer
+     win_gravity as integer
+     backing_store as integer
+     backing_planes as ulong
+     backing_pixel as ulong
+     save_under as boolean
+     event_mask as long
+     do_not_propagate_mask as long
+     override_redirect as boolean
+     colormap as Colormap
+     cursor as Cursor
+End Type
+
+Type XWindowAttributes
+     x as integer
+     y as integer
+     width as integer
+     height as integer
+     border_width as integer
+     depth as integer
+     visual as Visual ptr
+     root as Window
+     class as integer
+     bit_gravity as integer
+     win_gravity as integer
+     backing_store as integer
+     backing_planes as ulong
+     backing_pixel as ulong
+     save_under as boolean
+     colormap as Colormap
+     map_installed as boolean
+     map_state as integer
+     all_event_masks as long
+     your_event_mask as long
+     do_not_propagate_mask as long
+     override_redirect as boolean
+     screen as Screen ptr
+End Type
+
+Type XHostAddress
+     family as integer
+     length as integer
+     address as zstring ptr
+End Type
+
+Type XServerInterpretedAddress
+     typelength as integer
+     valuelength as integer
+     type as zstring ptr
+     value as zstring ptr
+End Type
+
+Type XImage
+    width as integer
+    height as integer
+    xoffset as integer
+    format as integer
+    data as ubyte ptr
+    byte_order as integer
+    bitmap_unit as integer
+    bitmap_bit_order as integer
+    bitmap_pad as integer
+    depth as integer
+    bytes_per_line as integer
+    bits_per_pixel as integer
+    red_mask as ulong
+    green_mask as ulong
+    blue_mask as ulong
+    obdata as ubyte ptr
+end type
+
+type XImage_f extends XImage
+	declare function create_image(display as _XDisplay ptr, visual as Visual ptr, depth as uinteger, format as integer, offset as integer, data as ubyte ptr, width as uinteger, height as uinteger, bitmap_pad as integer, bytes_per_line as integer) as XImage ptr
+	declare function destroy_image(ximage as XImage ptr) as integer
+	declare function get_pixel(ximage as XImage ptr, x as integer, y as integer) as ulong
+	declare function put_pixel(ximage as XImage ptr, x as integer, y as integer, pixel as ulong) as integer
+	declare function sub_image(ximage as XImage ptr, x as integer, y as integer, width as uinteger, height as uinteger) as XImage ptr
+	declare function add_pixel(ximage as XImage ptr, pixel as long) as integer
+end type
+
+Type XWindowChanges
+     x as integer
+     y as integer
+     width as integer
+     height as integer
+     border_width as integer
+     sibling as Window
+     stack_mode as integer
+End Type
+
+Type XColor
+     pixel as ulong
+     red as ushort
+     green as ushort
+     blue as ushort
+     flags as byte
+     pad as byte
+End Type
+
+Type XSegment
+     x1 as integer
+     y1 as integer
+     x2 as integer
+     y2 as integer
+End Type
+
+Type XPoint
+     x as integer
+     y as integer
+End Type
+
+Type XRectangle
+     x as integer
+     y as integer
+     width as integer
+     height as integer
+End Type
+
+Type XArc
+     x as integer
+     y as integer
+     width as integer
+     height as integer
+     angle1 as integer
+     angle2 as integer
+End Type
+
+type XKeyboardControl
+     key_click_percent as integer
+     bell_percent as integer
+     bell_pitch as integer
+     bell_duration as integer
+     led as integer
+     led_mode as integer
+     key as integer
+     auto_repeat_mode as integer ' On, Off, Default
+end type
+
+type XKeyboardState
+     key_click_percent as integer
+     bell_percent as integer
+     bell_pitch as unsigned integer
+     bell_duration as unsigned integer
+     led_mask as unsigned long
+     global_auto_repeat as integer
+     auto_repeats(31) as char
+end type
+
+type XTimeCoord
+     time as Time
+     x as short
+     y as short
+end type
+
+type XModifierKeymap
+     max_keypermod as integer
+     modifiermap as KeyCode ptr
+end type
+
+Type TTime
+    sec As ULong
+    usec As ULong
+End Type
+
+Type Display as _XDisplay
+
+Type XKeyEvent
+     type As Integer
+     serial As ULong
+     send_event As Integer 'Bool
+     display As Display Ptr 'Display pointer
+     window As XID
+     root As XID
+     subwindow As XID
+     time As TTime
+     x As Integer
+     y As Integer
+     x_root As Integer
+     y_root As Integer
+     state As UInteger
+     keycode As UInteger
+     same_screen As Boolean 'Bool
+End Type
+
+Type XKeyPressedEvent As XKeyEvent
+Type XKeyReleasedEvent As XKeyEvent
+
+Type XButtonEvent
+     type As Integer
+     serial As ULong
+     send_event As Boolean
+     display As Display Ptr
+     window As XID
+     root As XID
+     subwindow As XID
+     time As TTime
+     x As Integer
+     y As Integer
+     x_root As Integer
+     y_root As Integer
+     state As UInteger
+     button As UInteger
+     same_screen As Boolean
+End Type
+
+Type XButtonPressedEvent As XButtonEvent
+Type XButtonReleasedEvent As XButtonEvent
+
+Type XMotionEvent
+     type As Integer
+     serial As ULong
+     send_event As Boolean 'Bool
+     display As Display Ptr 'Display pointer
+     window As XID
+     root As XID
+     subwindow As XID
+     time As TTime
+     x As Integer
+     y As Integer
+     x_root As Integer
+     y_root As Integer
+     state As UInteger
+     is_hint As Byte
+     same_screen As Boolean
+End Type
+
+Type XPointerMovedEvent As XMotionEvent
+
+Type XCrossingEvent
+     type As Integer
+     serial As ULong
+     send_event As Boolean
+     display As Display Ptr
+     window As XID
+     root As XID
+     subwindow As XID
+     time As TTime
+     x As Integer
+     y As Integer
+     x_root As Integer
+     y_root As Integer
+     mode As Integer
+     detail As Integer
+     same_screen As Boolean
+     focus As Boolean
+     state As UInteger
+End Type
+Type XEnterWindowEvent As XCrossingEvent
+Type XLeaveWindowEvent As XCrossingEvent
+
+Type XFocusChangeEvent
+     type As Integer
+     serial As ULong
+     send_event As Boolean 'Bool
+     display As Display Ptr 'Display pointer
+     window As XID
+     mode As Integer
+     detail As Integer
+End Type
+
+Type XFocusInEvent  As XFocusChangeEvent
+Type XFocusOutEvent As XFocusChangeEvent
+
+Type XKeymapEvent
+     type as Integer
+     serial as ULong
+     send_event as Boolean
+     display as Display Ptr
+     window as Window
+     key_vector(31) as Byte
+End Type
+
+Type XExposeEvent
+     type As Integer
+     serial As ULong
+     send_event As Boolean
+     display As Display Ptr
+     window As Window
+     x As Integer
+     y As Integer
+     width As Integer
+     height As Integer
+     count As Integer
+End Type
+
+Type XGraphicsExposeEvent
+    type As Integer
+    serial As ULong
+    send_event As Boolean
+    display As Display Ptr
+    drawable As Drawable
+    x As Integer
+    y As Integer
+    width As Integer
+    height As Integer
+    count As Integer
+    major_code As Integer
+    minor_code As Integer
+End Type
+
+' xFont
+#define XFT_MAJOR 2
+#define XFT_MINOR 3
+#define XFT_REVISION 2
+#define XFT_VERSION	((XFT_MAJOR * 10000) + (XFT_MINOR * 100) + (XFT_REVISION))
+#define XftVersion	XFT_VERSION
+/'#include "FT_FREETYPE_H"'/
+#ifndef _X_SENTINEL
+# define _X_SENTINEL(x)
+#endif
+#ifndef _XFT_NO_COMPAT_
+/' #include <X11/Xft/XftCompat.h> '/
+#endif
+#define XFT_CORE		"core"
+#define XFT_RENDER		"render"
+#define XFT_XLFD		"xlfd"
+#define XFT_MAX_GLYPH_MEMORY	"maxglyphmemory"
+#define XFT_MAX_UNREF_FONTS	"maxunreffonts"
+' Extern FT_Library _XftFTlibrary as FT_Library
+
+Type XftFontInfo
+   'TODO: Define the fields of the structure here
+   as integer dummy
+End Type
+
+Type XftFont
+     Ascent as Integer
+     Descent as Integer
+     Height as Integer
+     Max_advance_width as Integer
+     ' Charset as FcCharSet Ptr
+     ' Pattern as FcPattern Ptr
+End Type
+
+Type XftDraw
+   'TODO: Define the fields of the structure here
+   as integer dummy
+End Type
+/'
+Type XftColor
+     Pixel as UInteger
+     Color as XRenderColor
+End Type
+
+Type XftCharSpec
+     Ucs4 as FcChar32
+     X as Short
+     Y as Short
+End Type
+
+Type XftCharFontSpec
+     Font as XftFont Ptr
+     Ucs4 as FcChar32
+     X as Short
+     Y as Short
+End Type
+'/
+Type FT_UInt
+   'TODO: Define the fields of the structure here
+   as integer dummy
+End Type
+
+Type XftGlyphSpec
+     Glyph as FT_UInt
+     X as Short
+     Y as Short
+End Type
+
+Type XftGlyphFontSpec
+     Font as XftFont Ptr
+     Glyph as FT_UInt
+     X as Short
+     Y as Short
+End Type
+
+' phosphor.c
+
+#define FUZZY_BORDER
+
+#define MAX(a,b) ((a)>(b)?(a):(b))
+#define MIN(a,b) ((a)<(b)?(a):(b))
+
+#define BLANK 0
+#define FLARE 1
+#define _NORMAL 2
+#define FADE 3
+#define STATE_MAX FADE
+
+#define CURSOR_INDEX 128
+
+#define NPAR 16
+
+#define BUILTIN_FONT
+
+Type p_char
+     name as ubyte
+     width as integer
+     height as integer
+     pixmap as Pixmap
+#ifdef FUZZY_BORDER
+     pixmap2 as Pixmap
+#endif
+     blank_p as boolean
+end type
+
+Type p_cell
+     p_char as p_char ptr
+     state as integer
+     changed as boolean
+end type
+/'
+Type p_state
+     dpy as Display ptr
+     window as Window
+     xgwa as XWindowAttributes
+     font as XftFont ptr
+     xftdraw as XftDraw ptr
+     program as zstring
+     grid_width as integer
+     grid_height as integer
+     char_width as integer
+     char_height as integer
+     xmargin as integer
+     ymargin as integer
+     saved_x as integer
+     saved_y as integer
+     scale as integer
+     ticks as integer
+     mode as integer
+     escstate as integer
+     csiparam(NPAR) as integer
+     curparam as integer
+     unicruds as integer
+     unicrud(7) as byte
+     chars as p_char ptr ptr
+     cells as p_cell ptr
+     gcv as XGCValues
+     gc0 as GC
+     gc1 as GC
+#ifdef FUZZY_BORDER
+     gc2 as GC
+#endif
+     gcs as GC ptr
+     font_bits as XImage ptr
+     cursor_x as integer
+     cursor_y as integer
+     cursor_timer as XtIntervalId
+     cursor_blink as Time
+     delay as integer
+     pty_p as boolean
+     tc as text_data ptr
+     last_c as char
+     bk as integer
+End Type
+'/

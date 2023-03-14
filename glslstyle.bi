@@ -59,18 +59,6 @@ FreeBASIC:
 #define DEG2RAD M_PI/180.0
 #define RAD2DEG 180.0/M_PI
 
-#undef atn
-#undef exp2f
-#undef exp
-#undef log
-#undef sqrt
-#undef exp2
-#undef log2
-#undef pow
-#undef ceil
-#undef floor
-#undef sign
-
 #define dot2(a) k_dot((a),(a))
 'function dot2(v as vec3) as float
 '  return dot(v,v)
@@ -1371,3 +1359,89 @@ function matrixCompMult (byref x as mat4, byref y as mat4) as mat4
     next
     return z
 end function
+
+/'
+ ' A sampler is a set of GLSL variable types. Variables of one of the sampler types must be uniforms or as
+ ' function parameters. Each sampler in a program represents a single texture of a particular texture type.
+ ' The type of the sampler corresponds to the type of the texture that can be used by that sampler.
+ '/
+Type sampler2D
+     as int32 Width
+     as int32 Height
+     as int32 BytesPerPixel
+     as int32 Pitch
+     as any ptr PixelData
+     declare Sub Lock()
+     declare Sub Unlock()
+     declare Sub WritePixel(x as Integer, y as Integer, xcolor as ULong)
+     declare Function ReadPixel(x as Integer, y as Integer) as ULong
+     declare Sub Create()
+     declare Sub Destroy()
+     declare Sub Load(file as string)
+     declare Sub Save(file as string)
+     declare Sub Fill(color as ULong)
+     declare Sub FastFillBox(x1 as Integer, y1 as Integer, x2 as Integer, y2 as Integer, xcolor as ULong)
+     declare Function CreateSampler2D() As sampler2D
+     declare Function Sample(x as float, y as float) as float
+End Type
+
+Sub sampler2D.Lock()
+    ScreenLock()
+End Sub
+
+Sub sampler2D.Unlock()
+    ScreenUnlock()
+End Sub
+
+Sub sampler2D.WritePixel(x as Integer, y as Integer, xcolor as ULong)
+    Dim As ULong Ptr pixel = PixelData + y * Pitch + x * BytesPerPixel
+    *pixel = xcolor
+End Sub
+
+Function sampler2D.ReadPixel(x as Integer, y as Integer) as ULong
+    Dim As ULong Ptr pixel = PixelData + y * Pitch + x * BytesPerPixel
+    Return *pixel
+End Function
+
+Sub sampler2D.Create()
+    PixelData = ImageCreate(Width, Height, , BytesPerPixel)
+    ImageInfo PixelData, Width, Height, BytesPerPixel, Pitch
+End Sub
+
+Sub sampler2D.Destroy()
+    ImageDestroy(PixelData)
+End Sub
+
+Sub sampler2D.Load(file as string)
+    Bload File, PixelData
+End Sub
+
+Sub sampler2D.Save(file as string)
+    Bsave File, PixelData
+End Sub
+
+Sub sampler2D.Fill(xcolor as ULong)
+    FastFillBox(0,0,Width,Height,xcolor)
+End Sub
+
+Sub sampler2D.FastFillBox(x1 as Integer, y1 as Integer, x2 as Integer, y2 as Integer, xcolor as ULong)
+    Dim As Integer x, y
+    For y = y1 to y2
+      For x = x1 to x2
+         WritePixel(x, y, xcolor)
+      Next
+    Next
+End Sub
+
+Function sampler2D.CreateSampler2D() As sampler2D
+    Dim As sampler2D result
+    ScreenInfo result.Width, result.Height, , result.BytesPerPixel, result.Pitch
+    result.PixelData = ImageCreate(Width, Height, , BytesPerPixel)
+    Return result
+End Function
+
+Function sampler2D.Sample(x as float, y as float) as float
+    Dim As Integer ix = Int(x * Width)
+    Dim As Integer iy = Int(y * Height)
+    Return ReadPixel(ix, iy)
+End Function

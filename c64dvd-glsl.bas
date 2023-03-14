@@ -26,6 +26,79 @@ faster than accessing main memory, so prefetching data and then accessing it fro
 faster than accessing it directly from main memory. Prefetching can be done with non-blocking cache control instructions. 
 '/
 
+' Extended Memory Table 1
+' declare def poke64(byval adr as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
+
+#define NUM_WAITING_KEYBOARD_ENTRIES_PTR &H00C6
+#define REVERSE_PRINT_PTR                &H00C7
+#define FG_COLOR_PTR                     &H0286
+#define HI_BYTE_TEXT_SCREEN_ADDRESS_PTR  &H0288
+#define A_REG_STORAGE_PTR                &H030C
+#define X_REG_STORAGE_PTR                &H030D
+#define Y_REG_STORAGE_PTR                &H030E
+#define P_REG_STORAGE_PTR                &H030F
+#define FUNC_CALL_1_PTR                  &H7E72
+#define FUNC_CALL_2_PTR                  &H7E73
+#define FUNC_CALL_3_PTR                  &H7E74
+#define FUNC_CALL_4_PTR                  &H7E75
+#define FUNC_CALL_5_PTR                  &H7E76
+#define FUNC_CALL_6_PTR                  &H7E77
+#define PLAY_DVD_PTR                     &HC000
+#define DISPLAY_DVD_MENU_PTR             &HC001
+#define FG_RED_PTR                       &HC002
+#define FG_GREEN_PTR                     &HC003
+#define FG_BLUE_PTR                      &HC004
+#define FG_ALPHA_PTR                     &HC005
+#define BG_RED_PTR                       &HC006
+#define BG_GREEN_PTR                     &HC007
+#define BG_BLUE_PTR                      &HC008
+#define BG_ALPHA_PTR                     &HC009
+#define X0_PTR                           &HC00A
+#define X0_1_PTR                         &HC00B
+#define X0_2_PTR                         &HC00C
+#define X0_3_PTR                         &HC00D
+#define X0_4_PTR                         &HC00E
+#define X0_5_PTR                         &HC00F
+#define Y0_PTR                           &HC010
+#define Y0_1_PTR                         &HC011
+#define Y0_2_PTR                         &HC012
+#define Y0_3_PTR                         &HC013
+#define Y0_4_PTR                         &HC014
+#define Y0_5_PTR                         &HC015
+#define Z0_PTR                           &HC016
+#define Z0_1_PTR                         &HC017
+#define Z0_2_PTR                         &HC018
+#define Z0_3_PTR                         &HC019
+#define Z0_4_PTR                         &HC01A
+#define Z0_5_PTR                         &HC01B
+#define X1_LD_PTR                        &HC01C
+#define X1_1_PTR                         &HC01D
+#define X1_2_PTR                         &HC01E
+#define X1_3_PTR                         &HC01F
+#define X1_4_PTR                         &HC020
+#define X1_5_PTR                         &HC021
+#define LD_Y1_PTR                        &HC022
+#define Y1_1_PTR                         &HC023
+#define Y1_2_PTR                         &HC024
+#define Y1_3_PTR                         &HC025
+#define Y1_4_PTR                         &HC026
+#define Y1_5_PTR                         &HC027
+#define LD_Z1_PTR                        &HC028
+#define Z1_1_PTR                         &HC029
+#define Z1_2_PTR                         &HC02A
+#define Z1_3_PTR                         &HC02B
+#define Z1_4_PTR                         &HC02C
+#define Z1_5_PTR                         &HC02D
+
+#define LD_FG_COLOR_PTR                  &HC0C9
+#define LD_BG_COLOR_PTR                  &HC0CA
+
+' Extended Memory Table 2
+' declare def pokeb(byval adr as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
+
+#define LD_FG_RGBA_PTR                   &H000E00000
+#define LD_BG_RGBA_PTR                   &H000E00001
+
 ' Libc datatypes:
 #include once "crt.bi" ' math.bi ...
 
@@ -787,8 +860,9 @@ type SYSTEM_BUS_T
   declare proc sdSphere     (p  as vector3 , s   as float)                                                       as float
   declare proc sdBox        (p  as vector3 , b   as vector3)                                                     as float
   declare proc sdEllipsoid  (p  as vector3 , r   as vector3)                                                     as float
+  declare proc sdEllipsoid  (p  as vector3 , r   as float)                                                       as float
   declare proc sdRoundBox   (p  as vector3 , b   as vector3,  r                      as float)                   as float
-  declare proc udRoundBox   (p  as vector3 , b   as vector3 , r                      as float)                   as float
+  declare proc udRoundBox   (p  as vector3 , b   as vector3,  r                      as float)                   as float
   declare proc sdBoxFrame   (p  as vector3 , b   as vector3,  e                      as float)                   as float
   declare proc sdTorus      (p  as vector3 , t   as vector2)                                                     as float
   declare proc sdCappedTorus(p  as vector3 , sc  as vector2,  ra    as float  ,   rb as float)                   as float
@@ -796,7 +870,7 @@ type SYSTEM_BUS_T
   declare proc sdTorus88    (p  as vector3 , t   as vector2)                                                     as float
   declare proc sdLink       (p  as vector3 , le  as float   , r1    as float   ,  r2 as float)                   as float
   declare proc sdHexPrism   (p  as vector3 , h   as vector2)                                                     as float
-  declare proc sdHexPrism2  (p  as vector3 , h   as vector2 )                                                    as float
+  declare proc sdHexPrism2  (p  as vector3 , h   as vector2)                                                     as float
   declare proc sdCapsule    (p  as vector3 , a   as vector3 , b     as vector3 ,  r  as float)                   as float
   declare proc sdTriPrism   (p  as vector3 , h   as vector2)                                                     as float
   declare proc sdTriPrism2  (p  as vector3 , h   as vector2)                                                     as float
@@ -860,12 +934,39 @@ type SYSTEM_BUS_T
   declare proc sdRoundCone         (p  as vector3         , r1 as float,        r2 as float   , h  as float)     as float
 #endif
 
-  declare def  EXEC_GLSL          ()
-  declare def  EXEC_GLSL_40       ()
-  declare def  EXEC_GLSL_90       ()
-  declare def  EXEC_GLSL_120      ()
+  declare def  EXEC_GLSL           () '  1080p 
+  declare def  EXEC_GLSL_40        () '  40x25 text mode with 32-bit color using PETSCII art
+  declare def  EXEC_GLSL_90        () '  90x60 text mode with 32-bit color using PETSCII art
+  declare def  EXEC_GLSL_120       () ' 120x60 text mode with 32-bit color using PETSCII art
+ 
+  ' Ring 0 - Cool Retro Term
   
-  ' Ring 0 - Mesa 3D and FreeGLUT
+ declare proc applyRasterization1(screenCoords as vector2, texel AS vector3, virtualResolution as vector2, _
+                                  intensity as float) as vector3
+ declare proc applyRasterization2(screenCoords as vector2, texel AS vector3, virtualResolution as vector2, _ 
+                                  intensity as float) as vector3
+ declare proc applyRasterization3(screenCoords as vector2, texel AS vector3, virtualResolution as vector2, _
+                                  intensity as float) as vector3
+ declare proc min2 (v as vector2) as float
+ declare proc rgb2grey(v as vector3) as float
+ declare proc max2 (v as vector2) as float
+ declare proc prod2 (v as vector2) as float
+ declare proc sum2 (v as vector2) as float
+ declare def  DestroyTexture2D(texture as sampler2D)
+ declare proc CreateTexture2D(xwidth as int32, xheight as int32, bytesPerPixel as int32) As sampler2D  
+ declare proc DrawRetroCRTCursor(texture as sampler2D, mode as Int32, x As Int32, y As int32, version As Int32, _
+                                 cameraPos as vector3, cameraDir as vector3) as sampler2D
+ declare proc max(a As Single, b As Single) As Single
+ declare proc min(a As Single, b As Single) As Single
+ declare proc Clamp(x As Single, _min As Single, _max As Single) As Single
+ declare proc Lint(a As Single, b As Single, t As Single) As Single
+ declare proc Mix(c1 As vector3, c2 As  vector3, _alpha As Single) As Long
+ declare proc SmoothStep(_min As Single, _max As Single, value As Single) As Single
+ declare proc StrToColor(s As String) As Long
+ declare proc Join(arr() As String, delimiter As String) As String
+ declare proc TokenizeCommandLine(s As String) As String
+
+   ' Ring 0 - Mesa 3D and FreeGLUT
   
   /'
    ' Initialization functions, see fglut_init.c
@@ -1107,6 +1208,46 @@ type SYSTEM_BUS_T
   
   ' Ring 3 - QB64
   
+  declare proc rotateLeft(word as uint32, shift as uint32) as uint32
+  #ifndef QB64_WINDOWS
+  declare def  ZeroMemory(_ptr as any ptr, bytes as int64)
+  #endif
+  ' Console INP scan code reader
+  declare proc func__cinp(toggle as int32, passed as int32) as int32
+  declare proc func__capslock() as int32
+  declare proc func__scrolllock() as int32
+  declare proc func__numlock() as int32
+  declare def  toggle_lock_key(key_code as int32)
+  declare def  sub__capslock(options as int32)
+  declare def  sub__scrolllock(options as int32)
+  declare def  sub__numlock(options as int32)
+  declare def  sub__consolefont(FontName as qbs ptr, FontSize as int_t)
+  declare def  sub__console_cursor(visible as int32, cursorsize as int32, passed as int32)
+  declare proc func__getconsoleinput() as int32 ' declare here, so we can use with SLEEP and END commands
+  
+  declare def  unlockvWatchHandle()
+  declare proc vWatchHandle() as int32
+
+' mem64_FAR_DYNAMIC memory manager
+  declare proc qbs_add(str1 As qbs ptr, str2 As qbs ptr) As qbs ptr
+  declare proc qbs_free(_str as qbs ptr) as qbs ptr
+  declare def  qbs_mem64_concat_list()
+  declare def  qbs_concat_mem64(bytesrequired as uint32)
+
+ ' QB64 String handling routines
+  declare proc qbs_new_txt(_txt as const byte ptr) as qbs ptr
+  declare proc qbs_new_txt_len(txt as const byte ptr, _len as int32) as qbs ptr
+  declare def  qbs_maketmp(_str as qbs ptr)
+  declare proc qbs_equal(str1 as qbs ptr, str2 as qbs ptr) as int32  
+  declare proc qbs_ucase(str as qbs ptr) as qbs ptr
+  declare def  qbs_concat(bytesrequired as uint32)
+  declare def  qbs_concat_list()
+  declare def  qbs_tmp_concat_list()
+  declare proc qbs_set(deststr as qbs ptr, srcstr as qbs ptr) as qbs ptr
+  declare proc qbs_new(size as int32, tmp as uint8) as qbs ptr
+  
+  declare proc func__dir(context_in as qbs ptr) as qbs ptr
+  
   ' MEM_STATIC memory manager
   declare proc mem64_static_malloc(size as uint32) as SYSTEM_TYPE ptr
   declare def  mem64_static_restore(restore_point as SYSTEM_TYPE ptr)
@@ -1122,6 +1263,7 @@ type SYSTEM_BUS_T
   declare def  qbs_free_descriptor (str_data as qbs ptr)
   declare proc varptr_dblock_check (off as uint8 ptr) as uint16
   declare proc varseg_dblock_check (off as uint8 ptr) as uint16
+  declare proc qbs_cleanup         (ByVal _base As uint32, ByRef passvalue As Any Ptr) As Any Ptr
   declare proc func_lbound         (array as ptrszint ptr, index as int32, num_indexes as int32) as ptrszint
   declare proc func_ubound         (array as ptrszint ptr, index as int32, num_indexes as int32) as ptrszint
   declare proc check_lbound        (array as ptrszint ptr, index as int32, num_indexes as int32) as ptrszint
@@ -1129,10 +1271,18 @@ type SYSTEM_BUS_T
     
   ' Generic File System (GFS)
   ' TODO: implement fstream(C++), ofstream(C++), template(C++)
- 
+  declare proc gfs_fileno_valid(f as int32) as int32
+  declare def  field_new(fileno As int32)
+  declare def  lrset_field(_str as qbs ptr) 
+  declare def  field_free(_str As qbs Ptr)
+  declare def  field_update(fileno as int32)
+  declare def  field_add(_str as qbs ptr, size as int64)
+  declare def  field_get(fileno as int32, offset as int32, passed as int32)
+  declare proc gfs_read(i as int32, position as int64, _data as uint8 ptr, size as int64) as int32
+  
   ' x86 Virtual MEM64 emulation
   ' Note: x86 CPU emulation is still experimental and is not available in QB64 yet.
-   declare proc sib() as uint32
+  declare proc sib() as uint32
    
    ' 486 Emulation
    
@@ -1156,6 +1306,7 @@ type SYSTEM_BUS_T
   declare def  swap_32        (a as any ptr, b as any ptr)
   declare def  swap_64        (a as any ptr, b as any ptr)
   declare def  swap_longdouble(a as any ptr, b as any ptr)
+  declare def  swap_string    (a as qbs ptr, b as qbs ptr)
   declare def  swap_block     (a as any ptr, b as any ptr, bytes as uint32)
   
   ' CSNG
@@ -1185,25 +1336,41 @@ type SYSTEM_BUS_T
   declare proc func_round_float(value  as float) as int64
   
   ' force ABS to return floating point numbers correctly
- declare proc func_abs(d as single)    as single
- declare proc func_abs(d as float)     as float
- declare def  func_abs(d as FLOAT128)  ' as FLOAT128
- declare def  func_abs(d as FLOAT256)  ' as FLOAT256
- declare def  func_abs(d as FLOAT512)  ' as FLOAT512
+  declare proc func_abs(d as single)    as single
+  declare proc func_abs(d as float)     as float
+  declare def  func_abs(d as FLOAT128)  ' as FLOAT128
+  declare def  func_abs(d as FLOAT256)  ' as FLOAT256
+  declare def  func_abs(d as FLOAT512)  ' as FLOAT512
   
- declare proc func_abs(d as uint8)  as uint8
- declare proc func_abs(d as uint16) as uint16
- declare proc func_abs(d as uint32) as uint32
- declare proc func_abs(d as uint64) as uint64
- declare proc func_abs(d as int8)   as int8
- declare proc func_abs(d as int16)  as int16
- declare proc func_abs(d as int32)  as int32
- declare proc func_abs(d as int64)  as int64
+  declare proc func_abs(d as uint8)  as uint8
+  declare proc func_abs(d as uint16) as uint16
+  declare proc func_abs(d as uint32) as uint32
+  declare proc func_abs(d as uint64) as uint64
+  declare proc func_abs(d as int8)   as int8
+  declare proc func_abs(d as int16)  as int16
+  declare proc func_abs(d as int32)  as int32
+  declare proc func_abs(d as int64)  as int64
+
+  ' a740g: ROR & ROL additions start
+  ' The rotation functions below are the way they are for a couple of reasons:
+  '  1. They are safer (well folks seem to think so; see:
+  '     https://en.wikipedia.org/wiki/Circular_shift#Implementing_circular_shifts)
+  '  2. We are using C library constants and there is just 1 numeric literal - '1'
+  '  3. GGC recognizes the 'pattern' and will optimize it out to 'roX' and
+  '     3 more instructions when using O2
+  declare proc func__rol8(value as uint8, count as uint8) as uint8
+  declare proc func__ror8(value as uint8, count as uint8) as uint8
+  declare proc func__rol16(value as uint16, count as uint16) as uint16
+  declare proc func__ror16(value as uint16, count as uint16) as uint16
+  declare proc func__rol32(value as uint32, count as uint32) as uint32
+  declare proc func__ror32(value as uint32, count as uint32) as uint32
+  declare proc func__rol64(value as uint64, count as uint64) as uint64
+  declare proc func__ror64(value as uint64, count as uint64) as uint64
 
    ' bit-shifting
   declare proc func__shl      (a1 as uint64, b1 as int_t) as uint64
   declare proc func__shr      (a1 as uint64, b1 as int_t) as uint64
-  declare proc func__readbit  (a1 as uint64, b1 as int_t) as uint64
+  declare proc func__readbit  (a1 as uint64, b1 as int_t) as int64
   
   declare proc func__setbit   (a1 as uint64, b1 as int_t) as uint64 
   declare proc func__resetbit (a1 as uint64, b1 as int_t) as uint64
@@ -1220,7 +1387,7 @@ type SYSTEM_BUS_T
   
   declare proc logical_drives() as int32
   
-  declare proc array_check(index as uptrszint, imit as uptrszint) as ptrszint
+  declare proc array_check(index as uptrszint, limit as uptrszint) as ptrszint
   
   declare proc func_sgn(v as uint8)    as int32
   declare proc func_sgn(v as int8)     as int32
@@ -1418,7 +1585,19 @@ type SYSTEM_BUS_T
   declare proc k_clampf        (x   as float       , lowerlimit as float       , upperlimit as float)           as float
   declare proc k_clampf        (x   as FLOAT128    , lowerlimit as FLOAT128    , upperlimit as FLOAT128)        as float  
   declare proc k_clampf        (x   as FLOAT256    , lowerlimit as FLOAT256    , upperlimit as FLOAT256)        as float  
-  declare proc k_clampf        (x   as FLOAT512    , lowerlimit as FLOAT512    , upperlimit as FLOAT512)        as float  
+  declare proc k_clampf        (x   as FLOAT512    , lowerlimit as FLOAT512    , upperlimit as FLOAT512)        as float
+  
+  declare proc k_cos           (arg as float)                                                                   as float
+  
+  declare proc k_sin           (arg as float)                                                                   as float
+       
+  declare proc k_cosf          (arg as float)                                                                   as float
+  
+  declare proc k_sinf          (arg as float)                                                                   as float
+
+  declare proc k_fcos          (arg as float)                                                                   as float
+  
+  declare proc k_fsin          (arg as float)                                                                   as float
     
   ' kernel mode OpenGL shader language
   declare proc k_radiance             (      deg   as       uint8)                                                  as float  
@@ -2094,14 +2273,14 @@ enum ADR_MODES
 end enum
 
 type FLAGS
-  as uchar  C:1 ' cary
-  as uchar  Z:1 ' zero 
-  as uchar  I:1 ' interrupt
-  as uchar  D:1 ' decimal
-  as uchar  B:1 ' borrow
-  as uchar  H:1 ' half carry
-  as uchar  V:1 ' overflow
-  as uchar  N:1 ' negative
+  as uint64  C:1 ' cary
+  as uint64  Z:1 ' zero 
+  as uint64  I:1 ' interrupt
+  as uint64  D:1 ' decimal
+  as uint64  B:1 ' borrow
+  as uint64  H:1 ' half carry
+  as uint64  V:1 ' overflow
+  as uint64  N:1 ' negative
 end type
 
 type CPU6510_T as CPU6510 ptr

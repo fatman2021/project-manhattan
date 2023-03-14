@@ -20,31 +20,31 @@ static shared Result2(0 to 2047) as unsigned byte
 ' 	return result
 ' end function
 
-function fcos(d as double) as double
-	dim result as double = d
-    dim i as integer
-	asm
-  
-        fld qword ptr [result]
-        fcos
-        fst qword ptr [result]
-        
-    end asm
-	return result
-end function
+' function fcos(d as double) as double
+' 	dim result as double = d
+'    dim i as integer
+'	asm
+'  
+'        fld qword ptr [result]
+'        fcos
+'        fst qword ptr [result]
+'        
+'    end asm
+'	return result
+' end function
 
-function fsin(d as double) as double
-	dim result as double = d
-    dim i as integer
-	asm
-  
-        fld qword ptr [result]
-        fsin
-        fst qword ptr [result]
-        
-    end asm
-	return result
-end function
+' function fsin(d as double) as double
+' 	dim result as double = d
+'     dim i as integer
+' 	asm
+'   
+'         fld qword ptr [result]
+'         fsin
+'         fst qword ptr [result]
+'        
+'     end asm
+' 	return result
+' end function
 
 ' function strlen(s as unsigned byte ptr) as unsigned integer
 '     dim retval as unsigned integer

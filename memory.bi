@@ -17,6 +17,20 @@ constructor SYSTEM_BUS_T
   poke SYSTEM_TYPE,@sys_offset, peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100))
 
   ' initialize zero page and the stack
+
+  ' This code block initializes the zero page, a block of memory at the beginning of the address
+  ' space used for various purposes such as storing system variables and pointers. The zero page
+  ' memory is being initialized with values read from a data block called "ZERO_PAGE".
+
+  ' The code first restores the zero page data block and then enters a loop at label L1. In the loop, 
+  ' a value is read from the data block into the variable "c" and then stored at a memory location specified by
+  ' the value of the variable "i". The value of "i" is then incremented by 1 and the loop continues until "i"
+  ' exceeds a certain value.
+
+  ' When this condition is met, the code branches to label L2 and another loop is entered. In this loop, a fixed
+  ' value is written to a memory location specified by the value of "i" and "i" is incremented by 1. The loop
+  ' continues until "i" exceeds another predetermined value. When this condition is met, the code ends.
+  
   ' uint16 B$1;
   ' B$1 = *(uint16*)4808096ll;
   ' uint16 INDEX$1;
@@ -76,6 +90,14 @@ L2:
 L3:
   ' label$173:;
  
+  ' This code block is initializing the SINTable and COSTable arrays with pre-calculated sine and cosine values.
+  ' It does this by iterating through the arrays and using the built-in sin and cos functions to calculate the
+  ' sine and cosine values for each index. The angle for each calculation is obtained by multiplying the current
+  ' index value by pi, dividing it by a value stored at 4808107, and rounding it to the nearest integer. The result
+  ' of this calculation is then multiplied by 2^4 and added to the value stored at 4808100. The resulting value is
+  ' passed to the built-in sin or cos function, and the resulting value is stored in the SINTable or COSTable at the
+  ' current index value. The loop continues until the current index value exceeds a certain threshold.
+
   ' *(double*)((uint8*)((uint8*)THIS$1 + (*(int64*)4808136ll << (3ll & 63ll))) + 134750088ll) = \
   '    __builtin_sin( (double)((((int64)__builtin_nearbyint( ((double)*(int64*)4808136ll * 0x1.921FB54442D18p+1) \
   '    / (double)(int64)*(uint8*)4808107ll )) << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808100ll) );
@@ -103,6 +125,13 @@ L3:
       add peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0111)) jmp L3
 
   ' Set text color
+  
+  ' These code blocks are using the poke64 function to set the colors for various elements on a screen, such as
+  ' the background, border, and text. The colors are specified using values for the Red, Green, Blue, and Alpha
+  ' channels, which are passed to the poke64 function as arguments. The values for these channels are being
+  ' calculated using bit shifting and adding constants. It is not clear what language this code is written in or
+  ' what the full context of the code is, so it is difficult to provide more detailed information.
+  
   ' label$175:;
   
   ' _ZN8SYSTEM_BUS_T6POKE64Edd( THIS$1, (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
@@ -202,6 +231,15 @@ L3:
   dim as ubyte tmp
 
   ' init all ROM's
+  
+  ' This code block reads in data from a file named "ROM.BIN" (or "complete.318023-02.bin" on non-Windows platforms)
+  ' and stores it in arrays called "basic" and "kernal". "i" is a pointer to the current position in the array,
+  ' and "tmp" is a temporary variable used to store data read from the file.
+  
+  ' The code reads one byte at a time from the file, increments the value of "i", and stores the byte in the
+  ' appropriate location in the "basic" or "kernal" array. The process repeats until "i" exceeds a certain value,
+  ' at which point the file is closed and the loop exits.
+  
 #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)  
    open "ROM.BIN" for binary as peek(ubyte,@nibbles(&B0001)) 
   ' FBSTRING* vr$262 = fb_StrAllocTempDescZEx( (uint8*)"64c.251913-01.bin", 17ll );
@@ -313,6 +351,15 @@ L5:
   end
   
 '/
+
+  ' This block of code reads in a 9-bit 8x8 monochrome character ROM and stores it in memory.
+
+  ' The code begins by allocating a temporary string and opening a file called "./chargen/2.c64" in
+  ' read/write mode. It then reads in the file one byte at a time and stores it in memory, using the
+  ' poke function to write the value of the byte at a specified memory location. The code reads in the
+  ' file in two separate loops, each reading in a different portion of the file. The loops end when a 
+  ' certain memory location is reached. Finally, the file is closed.
+
   ' FBSTRING* vr$311 = fb_StrAllocTempDescZEx( (uint8*)"./chargen/2.c64", 15ll );
   ' fb_FileOpen( (FBSTRING*)vr$311, 0u, 0u, 0u, (int32)*(uint8*)4808097ll, 0 );
   ' open "./chargen/2.c64" for binary as peek(ubyte,@nibbles(&B0001))
@@ -465,6 +512,11 @@ L7:
      
 #endif 
  
+  ' This block of code is calling the paint function and passing it two arguments: the coordinates (x,y) at which
+  ' the paint operation should begin, and the color with which to paint. The rgba function is being used to create
+  ' a color value from four 8-bit values representing the red, green, blue, and alpha channels, respectively. The
+  ' paint function will likely draw a pixel or set of pixels with the specified color at the specified location.
+ 
   ' FBSTRING* vr$396 = fb_StrAllocTempDescZEx( (uint8*)"", 0ll );
   ' fb_GfxPaint( (void*)0ull, (float)*(uint8*)4808096ll, (float)*(uint8*)4808096ll, \
   '             (uint32)(((((uint64)*(uint8*)4808096ll << (16ll & 63ll)) | ((uint64)*(uint8*)4808096ll \
@@ -491,6 +543,12 @@ L7:
   '/
   
   '/
+  
+  ' The code appears to be using the poke64 function to write values to specific memory addresses
+  ' in the emulator. The values written are 64-bit double precision floating point values. The memory addresses
+  ' being written to are specified using the @mem64 and @nibbles arrays. The values being written are machine code
+  ' instructions.
+  
   'SYS calls 7E72
   '.,7E72 LDA #$00  10101001 00000000
   '.,7E74 STA $C000 10001101 00000000 11000000
@@ -549,6 +607,13 @@ L7:
   poke64(peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) _
      shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) _
      add peek(ubyte,@nibbles(&B0111)),    peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)))                                                        
+
+  ' This code block is patching some startup messages in the Commodore 64 emulator, by replacing certain characters
+  ' in a string with new ones. The string is initialized with a single character, and then a loop is set up to
+  ' iterate through the string and replace certain characters with others, until a certain condition is met. The
+  ' loop uses functions like fb_StrMid to extract substrings, and fb_ASC to get the ASCII value of a character. The
+  ' characters in the string are replaced by poking their values into memory addresses with the poke statement. The
+  ' loop ends when the index of the current character in the string exceeds a certain value.
 
   ' FBSTRING MEM$1;
   ' FBSTRING* vr$521 = fb_CHR( 1, (int64)*(uint8*)4808096ll );
@@ -1140,6 +1205,16 @@ L23a:
   next a 
 '/  
   '64-bit memory detection
+  '
+  ' This code block patches the BASIC 2.0 startup message to display the correct amount of memory available
+  ' on the system. It does this by first getting the amount of available memory and converting it to a string.
+  ' It then checks the length of the string and takes different actions depending on the length. If the length
+  ' is 1, it stores the ASCII value of the first character in the string at a specific memory address. If the
+  ' length is 2, it stores the ASCII values of both characters at specific memory addresses and then stores 
+  ' the ASCII values of the rest of the string " RAM SYSTEM" at additional memory addresses. If the length is not
+  ' 1 or 2, it jumps to different parts of the code that handle other lengths. Finally, it replaces the "@"
+  ' characters at certain memory addresses with spaces.
+  ' 
   '.:E47B 2A 2A (mem) 47 42 4D 4D 4F  (cr) (cr) (mem)gb ram system
 /' 
   mov(mem, str(int(fre(mem64(0)) idiv 1024d expt 3)))
@@ -1323,6 +1398,21 @@ L26:
   
 L27:
   ' label$233:;
+  
+  ' This code block is setting the default text color, border color, and background color for the system.
+  ' The cod block is using a memory-mapped I/O technique to directly write to the system's memory addresses.
+  ' The peek and poke functions are used to read and write values to specific memory addresses, respectively.
+  ' The @kernal array returns the memory address of the start of the system's kernel, and the nibbles array
+  ' is returning binary values that are used to specify an offset from the start of the kernel.
+  ' The shl operator shifts the bits of its first operand left by the number of places specified in its second
+  ' operand. The add operator adds its operands. The values being written to memory are specified in binary.
+  ' The peek(ubyte,...) function is reading an unsigned 8-bit integer value from the specified memory address.
+  ' The poke(SYSTEM_TYPE,...) function is writing a value of the specified type (either uint64 or float) to the
+  ' specified memory address.
+
+
+
+
   
   ' *(double*)((uint8*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808101ll << ((int64)*(uint8*)4808104ll & 63ll)) /
   '     + ((int64)*(uint8*)4808099ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808101ll) /
@@ -1871,6 +1961,724 @@ _
     end def
 '/
 'Ring 3 - QB64
+
+proc SYSTEM_BUS_T.rotateLeft(word as uint32, shift as uint32) as uint32
+    return (word shl shift) or (word shr (32 - shift))
+end proc
+
+#ifndef QB64_WINDOWS
+def SYSTEM_BUS_T.ZeroMemory(_ptr as any ptr, bytes as int64)
+   memset(_ptr, 0, bytes)
+end def
+#endif
+
+' Console INP scan code reader
+proc SYSTEM_BUS_T.func__cinp(toggle as int32, passed as int32) as int32
+#ifdef QB64_WINDOWS
+    dim as int32 temp = consolekey
+    consolekey = 0 ' reset the console key, now that we've read it
+    if (passed = 0) then
+        toggle = 1 ' default return of positive/negative scan code values
+    end if    
+    if (toggle) then
+        return temp
+    else 
+        if (temp >= 0) then
+            return temp
+        end if   
+        return -temp + 128
+    end if
+#else
+    return 0
+#endif    
+end proc
+
+proc SYSTEM_BUS_T.func__capslock() as int32
+#ifdef QB64_WINDOWS
+    return -GetKeyState(VK_CAPITAL)
+#endif
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func__scrolllock() as int32
+#ifdef QB64_WINDOWS
+    return -GetKeyState(VK_SCROLL)
+#endif
+    return 0
+end proc
+
+proc SYSTEM_BUS_T.func__numlock() as int32
+#ifdef QB64_WINDOWS
+    return -GetKeyState(VK_NUMLOCK)
+#endif
+    return 0
+end proc
+
+def SYSTEM_BUS_T.toggle_lock_key(key_code as int32)
+#ifdef QB64_WINDOWS
+    keybd_event(key_code, &H45, 1, 0)
+    keybd_event(key_code, &H45, 3, 0)
+#endif
+end def
+
+def sub__capslock(options as int32)
+#ifdef QB64_WINDOWS
+    ' VK_CAPITAL
+    dim as int32 currentState = func__capslock()
+    select case (options)
+    case 1 ' ON
+        if (currentState = -1) then
+            return
+        end if
+    case 2 ' OFF
+        if (currentState = 0) then
+            return
+        end if
+    end select
+    ' _TOGGLE:
+    toggle_lock_key(VK_CAPITAL)
+#endif
+end def
+
+def sub__scrolllock(options as int32)
+#ifdef QB64_WINDOWS
+    ' VK_SCROLL
+    dim as int32 currentState = func__scrolllock()
+    select case (options)
+    case 1 ' ON
+        if (currentState = -1) then
+            return
+        end if
+    case 2 ' OFF
+        if (currentState = 0) then
+            return
+        end if
+    end select
+    ' _TOGGLE:
+    toggle_lock_key(VK_SCROLL)
+#endif    
+end def
+
+def SYSTEM_BUS_T.sub__numlock(options as int32)
+#ifdef QB64_WINDOWS
+    ' VK_NUMLOCK
+    dim as int32 currentState = func__numlock()
+    select case (options)
+    case 1 ' ON
+        if (currentState = -1) then
+            return;
+        end if
+    case 2 ' OFF
+        if (currentState = 0) then
+            return
+        end if
+    end select
+    ' _TOGGLE:
+    toggle_lock_key(VK_NUMLOCK)
+#endif
+end def
+
+def SYSTEM_BUS_T.sub__consolefont(FontName as qbs ptr, FontSize as int_t)
+#ifdef QB64_WINDOWS
+#ifdef WINVER >= &H0600 ' this block is not compatible with XP
+    dim as SECURITY_ATTRIBUTES SecAttribs = {sizeof(SECURITY_ATTRIBUTES), 0, 1}
+    dim as HANDLE cl_conout = CreateFileA("CONOUT$", GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | _
+                                          FILE_SHARE_WRITE, &SecAttribs, OPEN_EXISTING, 0, 0)
+    static as int_t OneTimePause
+    if (!OneTimePause) then ' a slight delay so the console can be properly created and 
+                            ' registered with Windows, before we try and change fonts with it.
+        Sleep(500)
+        OneTimePause = 1 ' after the first pause, the console should be created, so we don't 
+                         ' need any more delays in the future.
+    end if
+    CONSOLE_FONT_INFOEX info = {0}
+    info.cbSize = sizeof(info)
+    info.dwFontSize.Y = FontSize' ' leave X as zero
+    info.FontWeight = FW_NORMAL
+    if (FontName->len > 0) then ' if we don't pass a font name, don't change the existing one.
+        const as size_t cSize = FontName->len
+        dim as wchar_t ptr wc = new wchar_t[32]
+        mbstowcs(wc, cast((char ptr),FontName->chr, cSize))
+        wcscpy(info.FaceName, wc)
+        delete wc
+    end if
+
+    SetCurrentConsoleFontEx(cl_conout, NULL, @info)
+#endif
+#endif
+end def
+
+def SYSTEM_BUS_T.sub__console_cursor(visible as int32, cursorsize as int32, passed as int32)
+#ifdef QB64_WINDOWS
+    dim as HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE)
+    dim as CONSOLE_CURSOR_INFO info
+
+    GetConsoleCursorInfo(consoleHandle, &info) ' get the original info, so we reuse it, unless 
+                                               ' the user called for a change.
+
+    if (visible = 1) then
+        info.bVisible = TRUE ' cursor is set to show
+    end if    
+    if (visible = 2) then
+        info.bVisible = FALSE ' set to hide
+    end if
+    if (passed && cursorsize >= 0 and cursorsize <= 100) then
+        info.dwSize = cursorsize ' the user passed the cursor size, of a suitable size
+    end if
+    SetConsoleCursorInfo(consoleHandle, @info);
+#endif
+end def
+
+proc SYSTEM_BUS_T.func__getconsoleinput() as int32
+#ifdef QB64_WINDOWS
+    dim as HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE)
+    dim as INPUT_RECORD irInputRecord
+    dim as DWORD dwEventsRead, fdwMode, dwMode
+    dim as CONSOLE_SCREEN_BUFFER_INFO cl_bufinfo
+
+    GetConsoleMode(hStdin, cast((LPDWORD),@dwMode))
+    fdwMode = ENABLE_EXTENDED_FLAGS
+    SetConsoleMode(hStdin, fdwMode)
+    fdwMode = dwMode or ENABLE_WINDOW_INPUT or ENABLE_MOUSE_INPUT
+    SetConsoleMode(hStdin, fdwMode)
+
+    ReadConsoleInputA(hStdin, @irInputRecord, 1, @dwEventsRead)
+    select case (irInputRecord.EventType)
+    case KEY_EVENT ' keyboard input
+        consolekey = irInputRecord.Event.KeyEvent.wVirtualScanCode
+        if (!irInputRecord.Event.KeyEvent.bKeyDown) then
+            consolekey = -consolekey ' positive/negative return of scan codes.
+        return 1
+    case MOUSE_EVENT ' mouse input
+        consolemousex = irInputRecord.Event.MouseEvent.dwMousePosition.X + 1
+        consolemousey = irInputRecord.Event.MouseEvent.dwMousePosition.Y - cl_bufinfo.srWindow.Top + 1
+        consolebutton = irInputRecord.Event.MouseEvent.dwButtonState ' button state for all buttons
+        ' SetConsoleMode(hStdin, dwMode)
+        return 2
+    end select
+#endif
+    return 0 ' in case it's some other odd input
+end proc
+
+def SYSTEM_BUS_T.unlockvWatchHandle()
+    if (vwatch > 0) then
+        vwatch = -1
+    end if    
+end def
+
+proc SYSTEM_BUS_T.vWatchHandle() as int32
+  return vwatch
+end proc
+
+def SYSTEM_BUS_T.qbs_concat(bytesrequired as uint32)
+    ' this does not change indexing, only ->chr pointers and the location of their data
+    static as int32 i
+    static as uint8  ptr dest
+    static as qbs ptr tqbs
+    dest = peek(uint8 ptr,qbs_data)
+    if (qbs_list_nexti) then
+        qbs_sp = 0
+        for i = 0 to qbs_list_nexti
+            if not (qbs_list[i]  = -1) then
+                tqbs = peek(qbs ptr, @qbs_list[i])
+                if ((tqbs->chr - dest) > 32) then
+                    if (tqbs->len) then
+                        memmove(dest, tqbs->chr, tqbs->len)
+                    end if
+                    tqbs->chr = dest
+                end if
+                dest = tqbs->chr + tqbs->len
+                qbs_sp = dest - qbs_data
+            end if
+        next
+    end if
+
+    if (((qbs_sp * 2) + (bytesrequired + 32)) >= qbs_data_size) then
+        static  as uint8 ptr oldbase
+        oldbase = qbs_data
+        qbs_data_size = qbs_data_size * 2 + bytesrequired
+        qbs_data = cptr(uint8 ptr, realloc(qbs_data, qbs_data_size))
+        if (qbs_data = NULL) then
+            error(512) ' realloc failed!
+        end if    
+        for i = 0 to qbs_list_nexti
+            if not (qbs_list[i] = -1) then
+                tqbs = peek(qbs ptr,@qbs_list[i])
+                tqbs->chr = tqbs->chr - oldbase + qbs_data
+            end if
+        next
+    end if
+    return
+end def
+
+proc SYSTEM_BUS_T.qbs_free(_str as qbs ptr) as qbs ptr
+    if not (_str->len) then
+        return _str
+    end if    
+    dim as qbs ptr tqbs = NULL
+    if _str->tmp and  not _str->fixed and not _str->readonly and not _str->in_mem64 then
+        tqbs = _str
+   else
+        tqbs = qbs_new(_str->len, 1)
+        memcpy(tqbs->chr, _str->chr, _str->len)
+    end if
+    dim as uchar ptr c = tqbs->chr
+    dim as int32 i
+    for i = 0 to _str->len
+        if ((*c >= 97) and (*c <= 122)) then
+            *c = *c and 223
+        end if    
+        c += 1
+    next
+    if not (tqbs = _str and _str->tmp) then
+        qbs_free(_str)
+    end if    
+    return tqbs
+end proc
+
+proc SYSTEM_BUS_T.qbs_set(deststr as qbs ptr, srcstr as qbs ptr) as qbs ptr
+    dim as int32 i
+    dim as qbs ptr tqbs
+    ' fixed deststr
+    if (deststr->fixed) then
+        if (srcstr->len >= deststr->len) then
+            memcpy(deststr->chr, srcstr->chr, deststr->len)
+        else
+            memcpy(deststr->chr, srcstr->chr, srcstr->len)
+            memset(deststr->chr + srcstr->len, 32, deststr->len - srcstr->len) ' pad with spaces
+        end if
+        goto qbs_set_return
+    end if
+    ' non-fixed deststr
+
+    ' can srcstr be aquired by deststr?
+    if (srcstr->tmp) then
+        if (srcstr->fixed = 0) then
+            if (srcstr->readonly = 0) then
+                if (srcstr->in_mem64 = deststr->in_mem64) then
+                    if (deststr->in_mem64) then
+                        ' unlist deststr and acquire srcstr's list index
+                        qbs_mem64_list[deststr->listi] = -1
+                        qbs_mem64_list[srcstr->listi] = peek(ptrszint,@deststr)
+                        deststr->listi = srcstr->listi
+                    else
+                        ' unlist deststr and acquire srcstr's list index
+                        qbs_list[deststr->listi] = -1
+                        qbs_list[srcstr->listi] = peek(ptrszint,@deststr)
+                        deststr->listi = srcstr->listi
+                    end if
+
+                    qbs_tmp_list[srcstr->tmplisti] = -1
+                    if (srcstr->tmplisti = (qbs_tmp_list_nexti - 1)) then
+                        qbs_tmp_list_nexti -= 1 ' correct last tmp index for performance
+                    end if
+                    deststr->chr = srcstr->chr
+                    deststr->len = srcstr->len
+                    qbs_free_descriptor(srcstr)
+                    ' update mem64_descriptor [length][offset]
+                    if (deststr->mem64_descriptor) then
+                        deststr->mem64_descriptor[0] = deststr->len
+                        deststr->mem64_descriptor[1] = peek(uint16,peek(ptrszint,@deststr->chr - dblock))
+                    end if
+                    return deststr ' nb. This return cannot be changed to a goto qbs_set_return!
+                end if
+            end if
+        end if
+    end if
+
+    ' srcstr is equal length or shorter
+    if (srcstr->len <= deststr->len) then
+        memcpy(deststr->chr, srcstr->chr, srcstr->len)
+        deststr->len = srcstr->len
+        goto qbs_set_return
+    end if
+
+    ' srcstr is longer
+    if (deststr->in_mem64) then
+        if (deststr->listi = (qbs_mem64_list_nexti - 1)) then                           ' last index
+            if (peek(ptrszint,@deststr->chr + srcstr->len) <= (dblock + mem64_sp)) then ' space available
+                memcpy(deststr->chr, srcstr->chr, srcstr->len)
+                deststr->len = srcstr->len
+                qbs_mem64_sp = peek(ptrszint,@deststr->chr) + peek(ptrszint,deststr->len - dblock)
+                goto qbs_set_return
+            end if
+            goto qbs_set_mem64_concat_required
+        end if
+        ' deststr is not the last index so locate next valid index
+        i = deststr->listi + 1
+    qbs_set_nextindex:
+        if not (qbs_mem64_list[i] = -1) then
+            tqbs = peek(qbs ptr, @qbs_mem64_list[i])
+            if (tqbs = srcstr) then
+                if (srcstr->tmp = 1) then
+                    goto skippedtmpsrcindex
+                end if    
+            end if
+            if ((deststr->chr + srcstr->len) > tqbs->chr) then
+                goto qbs_set_mem64_concat_required
+            end if    
+            memcpy(deststr->chr, srcstr->chr, srcstr->len)
+            deststr->len = srcstr->len
+            goto qbs_set_return
+        end if
+    skippedtmpsrcindex:
+        i += 1
+        if not (i = qbs_mem64_list_nexti) then
+            goto qbs_set_nextindex
+        end if    
+        ' all next indexes invalid!
+        qbs_mem64_list_nexti = deststr->listi + 1                                   ' adjust nexti
+        if (peek(ptrszint,@deststr->chr + srcstr->len) <= (dblock + mem64_sp)) then ' space available
+            memmove(deststr->chr, srcstr->chr, srcstr->len)                         ' overlap possible due to sometimes 
+                                                                                    ' aquiring srcstr's space
+            deststr->len = srcstr->len
+            qbs_mem64_sp = peek(ptrszint,@deststr->chr) + peek(ptrszint,@deststr->len - dblock)
+            goto qbs_set_return
+        end if
+    qbs_set_mem64_concat_required:
+        ' srcstr could not fit in deststr
+        '"realloc" deststr
+        qbs_mem64_list[deststr->listi] = -1               ' unlist
+        if ((qbs_mem64_sp + srcstr->len) > mem64_sp) then ' must concat!
+            qbs_concat_mem64(srcstr->len)
+        end if
+        if (qbs_mem64_list_nexti > qbs_mem64_list_lasti) then
+            qbs_mem64_concat_list()
+        end if    
+        deststr->listi = qbs_mem64_list_nexti
+        qbs_mem64_list[qbs_mem64_list_nexti] = peek(ptrszint,@deststr)
+        qbs_mem64_list_nexti += 1 ' relist
+        deststr->chr = peek(uint8 ptr,dblock + qbs_mem64_sp)
+        deststr->len = srcstr->len
+        qbs_mem64_sp += deststr->len
+        memcpy(deststr->chr, srcstr->chr, srcstr->len)
+        goto qbs_set_return
+    end if
+
+    ' not in mem64
+    if (deststr->listi = (qbs_list_nexti - 1)) then                                                 ' last index
+        ' space available
+        if (peek(ptrszint,@deststr->chr + srcstr->len) <= peek(ptrszint,@qbs_data + qbs_data_size)) then 
+            memcpy(deststr->chr, srcstr->chr, srcstr->len)
+            deststr->len = srcstr->len
+            qbs_sp = peek(ptrszint,@deststr->chr) + peek(ptrszint,@deststr->len) - peek(ptrszint,@qbs_data)
+            goto qbs_set_return
+        end if
+        goto qbs_set_concat_required
+    end if
+    ' deststr is not the last index so locate next valid index
+    i = deststr->listi + 1
+qbs_set_nextindex2:
+    if not (qbs_list[i] = -1) then
+        tqbs = peek(qbs ptr,@qbs_list[i])
+        if (tqbs = srcstr) then
+            if (srcstr->tmp = 1) then
+                goto skippedtmpsrcindex2
+            end if    
+        end if
+        if ((deststr->chr + srcstr->len) > tqbs->chr) then
+            goto qbs_set_concat_required
+        end if    
+        memcpy(deststr->chr, srcstr->chr, srcstr->len)
+        deststr->len = srcstr->len
+        goto qbs_set_return
+    end if
+skippedtmpsrcindex2:
+    i += 1
+    if not (i = qbs_list_nexti) then
+        goto qbs_set_nextindex2
+    end if    
+    ' all next indexes invalid!
+
+    qbs_list_nexti = deststr->listi + 1                                                              ' adjust nexti
+    if (peek(ptrszint,@deststr->chr + srcstr->len) <= peek(ptrszint,@qbs_data + qbs_data_size)) then ' space available
+        memmove(deststr->chr, srcstr->chr, srcstr->len)                                              ' overlap possible 
+                                                                                                     ' due to sometimes 
+                                                                                                     ' aquiring srcstr's 
+                                                                                                     ' space
+        deststr->len = srcstr->len
+        qbs_sp = peek(ptrszint,@deststr->chr) + peek(ptrszint,@deststr->len) - peek(ptrszint,@qbs_data)
+        goto qbs_set_return
+    end if
+
+qbs_set_concat_required:
+    ' srcstr could not fit in deststr
+    '"realloc" deststr
+    qbs_list[deststr->listi] = -1                    ' unlist
+    if ((qbs_sp + srcstr->len) > qbs_data_size) then ' must concat!
+        qbs_concat(srcstr->len)
+    end if
+    if (qbs_list_nexti > qbs_list_lasti) then
+        qbs_concat_list()
+    end if    
+    deststr->listi = qbs_list_nexti
+    qbs_list[qbs_list_nexti] = peek(ptrszint,@deststr)
+    qbs_list_nexti += 1 ' relist
+
+    deststr->chr = qbs_data + qbs_sp
+    deststr->len = srcstr->len
+    qbs_sp += deststr->len
+    memcpy(deststr->chr, srcstr->chr, srcstr->len)
+
+
+' (fall through to qbs_set_return)
+qbs_set_return:
+    if (srcstr->tmp) then ' remove srcstr if it is a tmp string
+        qbs_free(srcstr)
+    end if
+    ' update cmem_descriptor [length][offset]
+    if (deststr->mem64_descriptor) then
+        deststr->mem64_descriptor[0] = deststr->len
+        deststr->mem64_descriptor[1] = peek(uint16,@peek(ptrszint,@deststr->chr - dblock))
+    end if
+    return deststr
+end proc
+
+def SYSTEM_BUS_T.qbs_tmp_concat_list()
+    if (qbs_tmp_list_nexti >= (qbs_tmp_list_lasti / 2)) then
+        qbs_tmp_list_lasti *= 2
+        qbs_tmp_list = cptr(ptrszint ptr,realloc(qbs_tmp_list, (qbs_tmp_list_lasti + 1) * ptrsz))
+        if (qbs_tmp_list = NULL) then
+            error(511)
+        end if    
+    end if
+    return
+end def
+
+def SYSTEM_BUS_T.qbs_concat_list()
+    dim as uint32 i
+    dim as uint32 d
+    dim as qbs ptr tqbs
+    d = 0
+    for i = 0 to qbs_list_nexti
+        if qbs_list[i] <> -1 then
+            if i <> d then
+                tqbs = peek(qbs ptr, @qbs_list[i])
+                tqbs->listi = d
+                qbs_list[d] = peek(ptrszint,@tqbs)
+            end if
+            d += 1
+        end if
+    next
+    qbs_list_nexti = d
+    ' if string listings are taking up more than half of the list array double the list array's size
+    if qbs_list_nexti >= (qbs_list_lasti / 2) then
+        qbs_list_lasti *= 2
+        qbs_list = peek(ptrszint ptr,realloc(qbs_list, (qbs_list_lasti + 1) * ptrsz))
+        if (qbs_list = NULL) then
+            error(510)
+        end if    
+    end if
+    return
+end def
+
+proc SYSTEM_BUS_T.qbs_new(size as int32, tmp as uint8) as qbs ptr
+    static  as qbs ptr newstr
+    if ((qbs_sp + size + 32) > qbs_data_size) then
+        qbs_concat(size + 32)
+    end if    
+    newstr = qbs_new_descriptor()
+    newstr->len = size
+    newstr->chr = qbs_data + qbs_sp
+    qbs_sp += size + 32
+    if (qbs_list_nexti > qbs_list_lasti) then
+        qbs_concat_list()
+    end if    
+    newstr->listi = qbs_list_nexti
+    qbs_list[newstr->listi] = peek(ptrszint,@newstr)
+    qbs_list_nexti += 1
+    if (tmp) then
+        if (qbs_tmp_list_nexti > qbs_tmp_list_lasti) then
+            qbs_tmp_concat_list()
+        end if    
+        newstr->tmplisti = qbs_tmp_list_nexti
+        qbs_tmp_list[newstr->tmplisti] = peek(ptrszint,@newstr)
+        qbs_tmp_list_nexti += 1
+        newstr->tmp = 1
+    end if
+    return newstr
+end proc
+
+proc SYSTEM_BUS_T.qbs_equal(str1 as qbs ptr, str2 as qbs ptr) as int32
+    if not (str1->len = str2->len) then
+        return 0
+    end if    
+    if (memcmp(str1->chr, str2->chr, str1->len) = 0) then
+        return -1
+    end if    
+    return 0
+end proc
+/'
+proc SYSTEM_BUS_T.func__dir(context_in as qbs ptr) as qbs ptr
+
+    static  as qbs ptr context = NULL
+    if (context = NULL) then
+        context = qbs_new(0, 0)
+    end if
+
+    qbs_set(context, qbs_ucase(context_in))
+
+    if (qbs_equal(qbs_ucase(context), qbs_new_txt(@"TEXT")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"DOCUMENT")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"DOCUMENTS")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"MY DOCUMENTS"))) then
+#ifdef QB64_WINDOWS
+        dim as CHAR osPath(MAX_PATH)
+        if (SUCCEEDED(SHGetFolderPathA(NULL, 5, NULL, 0, osPath))) then ' Documents
+            return qbs_add(qbs_new_txt(osPath), qbs_new_txt(@"\\"))
+        end if
+#endif
+    end if
+
+    if (qbs_equal(qbs_ucase(context), qbs_new_txt(@"MUSIC")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"AUDIO")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"SOUND")) or _ 
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"SOUNDS")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"MY MUSIC"))) then
+#ifdef QB64_WINDOWS
+        dim as CHAR osPath(MAX_PATH)
+        if (SUCCEEDED(SHGetFolderPathA(NULL, 13, NULL, 0, osPath))) then ' Music
+            return qbs_add(qbs_new_txt(osPath), qbs_new_txt(@"\\"))
+        end if
+#endif
+    end if
+
+    if (qbs_equal(qbs_ucase(context), qbs_new_txt(@"PICTURE")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"PICTURES")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"IMAGE")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"IMAGES")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"MY PICTURES"))) then
+#ifdef QB64_WINDOWS
+        dim as CHAR osPath(MAX_PATH)
+        if (SUCCEEDED(SHGetFolderPathA(NULL, 39, NULL, 0, osPath))) then ' Pictures
+            return qbs_add(qbs_new_txt(osPath), qbs_new_txt(@"\\"))
+        end if
+#endif
+    end if
+
+    if (qbs_equal(qbs_ucase(context), qbs_new_txt(@"DCIM")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"CAMERA")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"CAMERA ROLL")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"PHOTO")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"PHOTOS"))) then
+#ifdef QB64_WINDOWS
+        dim as CHAR osPath(MAX_PATH)
+        if (SUCCEEDED(SHGetFolderPathA(NULL, 39, NULL, 0, osPath))) then ' Pictures
+            return qbs_add(qbs_new_txt(osPath), qbs_new_txt(@"\\"))
+        end if
+#endif
+    end if
+
+    if (qbs_equal(qbs_ucase(context), qbs_new_txt(@"MOVIE")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"MOVIES")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"VIDEO")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"VIDEOS")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"MY VIDEOS"))) then
+#ifdef QB64_WINDOWS
+        dim as CHAR osPath(MAX_PATH)
+        if (SUCCEEDED(SHGetFolderPathA(NULL, 14, NULL, 0, osPath))) then ' Videos
+            return qbs_add(qbs_new_txt(osPath), qbs_new_txt(@"\\"))
+        end if
+#endif
+    end if
+
+    if (qbs_equal(qbs_ucase(context), qbs_new_txt(@"DOWNLOAD")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"DOWNLOADS"))) then
+#ifdef QB64_WINDOWS
+        dim as CHAR osPath(MAX_PATH)
+        if (SUCCEEDED(SHGetFolderPathA(NULL, 0x0028, NULL, 0, osPath))) then ' user folder
+            ' XP & SHGetFolderPathA do not support the concept of a Downloads folder, however it can be constructed
+            mkdir((char *)((qbs_add(qbs_new_txt(osPath), qbs_new_txt_len(@"\\Downloads\0", 11)))->chr))
+            return qbs_add(qbs_new_txt(osPath), qbs_new_txt(@"\\Downloads\\"))
+        end if
+#endif
+    end if
+
+    if (qbs_equal(qbs_ucase(context), qbs_new_txt(@"DESKTOP"))) then
+#ifdef QB64_WINDOWS
+        dim as CHAR osPath(MAX_PATH)
+        if (SUCCEEDED(SHGetFolderPathA(NULL, 0, NULL, 0, osPath))) then ' Desktop
+            return qbs_add(qbs_new_txt(osPath), qbs_new_txt(@"\\"))
+        end if
+#endif
+    end if
+
+    if (qbs_equal(qbs_ucase(context), qbs_new_txt(@"APPDATA")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"APPLICATION DATA")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"PROGRAM DATA")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"DATA"))) then
+#ifdef QB64_WINDOWS
+        dim as CHAR osPath(MAX_PATH)
+        if (SUCCEEDED(SHGetFolderPathA(NULL, 0x001a, NULL, 0, osPath))) then ' CSIDL_APPDATA (%APPDATA%)
+            return qbs_add(qbs_new_txt(osPath), qbs_new_txt(@"\\"))
+        end if
+#endif
+    end if
+
+    if (qbs_equal(qbs_ucase(context), qbs_new_txt(@"LOCALAPPDATA")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"LOCAL APPLICATION DATA")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"LOCAL PROGRAM DATA")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"LOCAL DATA"))) then
+#ifdef QB64_WINDOWS
+        dim as CHAR osPath(MAX_PATH)
+        if (SUCCEEDED(SHGetFolderPathA(NULL, 0x001c, NULL, 0, osPath))) then ' CSIDL_LOCAL_APPDATA (%LOCALAPPDATA%)
+            return qbs_add(qbs_new_txt(osPath), qbs_new_txt(@"\\"))
+        end if
+#endif
+    end if
+
+    if (qbs_equal(qbs_ucase(context), qbs_new_txt(@"PROGRAMFILES")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"PROGRAM FILES"))) then
+#ifdef QB64_WINDOWS
+        dim as CHAR osPath[MAX_PATH];
+        if (SUCCEEDED(SHGetFolderPathA(NULL, 0x0026, NULL, 0, osPath))) then ' CSIDL_PROGRAM_FILES (%PROGRAMFILES%)
+            return qbs_add(qbs_new_txt(osPath), qbs_new_txt(@"\\"));
+        end if
+#endif
+    end if
+
+    if (qbs_equal(qbs_ucase(context), qbs_new_txt(@"PROGRAMFILESX86")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"PROGRAMFILES X86")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"PROGRAM FILES X86")) or _ 
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"PROGRAM FILES 86")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"PROGRAM FILES (X86)")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"PROGRAMFILES (X86)")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"PROGRAM FILES(X86)"))) then
+#if defined(QB64_WINDOWS) and defined(FB_WIN64)
+        dim as CHAR osPath[MAX_PATH];
+        if (SUCCEEDED(SHGetFolderPathA(NULL, 0x002a, NULL, 0, osPath))) then ' CSIDL_PROGRAM_FILES (%PROGRAMFILES(X86)%)
+            return qbs_add(qbs_new_txt(osPath), qbs_new_txt(@"\\"))
+        end if
+#endif
+    end if
+
+    if (qbs_equal(qbs_ucase(context), qbs_new_txt(@"TEMP")) or _
+        qbs_equal(qbs_ucase(context), qbs_new_txt(@"TEMP FILES"))) then
+#ifdef QB64_WINDOWS
+        dim as CHAR osPath(MAX_PATH + 1)
+        DWORD pathlen;
+        dim as pathlen = GetTempPathA(261, osPath) '%TEMP%
+        dim as char path[pathlen]
+        memcpy(path, @osPath, pathlen)
+        if (pathlen > 0) then
+            return qbs_new_txt(path)
+        end if
+#endif
+    end if
+
+' general fallback location
+#ifdef QB64_WINDOWS
+    dim as CHAR osPath(MAX_PATH)
+    if (SUCCEEDED(SHGetFolderPathA(NULL, 0, NULL, 0, osPath))) then ' desktop
+        return qbs_add(qbs_new_txt(osPath), qbs_new_txt(@"\\"))
+    end if
+    return qbs_new_txt(@".\\") ' current location
+#else
+    return qbs_new_txt(@"./") ' current location
+#endif
+end proc
+'/
+
 ' MEM_STATIC memory manager
 /'
     mem_static uses a pointer called mem_static_pointer to allocate linear memory.
@@ -2143,274 +2951,388 @@ end def
     -9 path/file access error
     -10 read past eof
     -11 bad file name
+'/
 
-void field_new(int32 fileno) {
-    field_failed = 1;
-    if (new_error)
-        return;
-    // validate file
-    static int32 i;
-    static gfs_file_struct *gfs;
-    i = fileno;
-    if (i < 0) {
-        error(54);
-        return;
-    } // bad file mode (TCP/IP exclusion)
-    if (gfs_fileno_valid(i) != 1) {
-        error(52);
-        return;
-    }                  // Bad file name or number
-    i = gfs_fileno[i]; // convert fileno to gfs index
-    gfs = &gfs_file[i];
-    if (gfs->type != 1) {
-        error(54);
-        return;
-    } // Bad file mode (note: must have RANDOM access)
-    // set global variables for field_add
-    field_fileno = fileno;
-    field_totalsize = 0;
-    field_maxsize = gfs->record_length;
-    field_failed = 0;
-    return;
-}
+proc SYSTEM_BUS_T.gfs_fileno_valid(f as int32) as int32
+    ' returns: -2   invalid handle
+    '          1   in use
+    '          0   unused
 
-void field_update(int32 fileno) {
+    if (f <= 0) then
+        return -2
+    end if    
+    if (f <= gfs_fileno_n) then
+        if (gfs_fileno[f] = -1) then
+            return 0   
+        else
+            return 1
+        end if    
+    end if
+    gfs_fileno = realloc(gfs_fileno, (f + 1) * 4)
+    memset(gfs_fileno + gfs_fileno_n + 1, -1, (f - gfs_fileno_n) * 4)
+    gfs_fileno_n = f
+    return 0
+end proc
 
-    // validate file
-    static int32 i;
-    static gfs_file_struct *gfs;
-    i = fileno;
-    if (i < 0) {
-        exit(7701);
-    } // bad file mode (TCP/IP exclusion)
-    if (gfs_fileno_valid(i) != 1) {
-        exit(7702);
-    }                  // Bad file name or number
-    i = gfs_fileno[i]; // convert fileno to gfs index
-    gfs = &gfs_file[i];
-    if (gfs->type != 1) {
-        exit(7703);
-    } // Bad file mode (note: must have RANDOM access)
+def SYSTEM_BUS_T.field_new(fileno as int32)
+    field_failed = 1
+    if (new_error) then
+        exit sub
+    end if    
+    ' validate file
+    static as int32 i
+    static as gfs_file_struct  ptr gfs
+    i = fileno
+    if (i < 0)  then
+        error(54)
+        exit sub
+    end if ' bad file mode (TCP/IP exclusion)
+    if not (gfs_fileno_valid(i) = 1) then
+        error(52)
+        exit sub
+    end if ' Bad file name or number
+    i = gfs_fileno[i] ' convert fileno to gfs index
+    gfs = @gfs_file[i]
+    if not (gfs->type = 1) then
+        error(54)
+        exit sub    
+    end if ' Bad file mode (note: must have RANDOM access)
+    ' set global variables for field_add
+    field_fileno = fileno
+    field_totalsize = 0
+    field_maxsize = gfs->record_length
+    field_failed = 0
+end def
 
-    static qbs *str;
-    for (i = 0; i < gfs->field_strings_n; i++) {
-        str = gfs->field_strings[i];
-        if (!str)
-            exit(7704);
+def SYSTEM_BUS_T.field_update(fileno as int32)
 
-        // fix length if necessary
-        if (str->len != str->field->size) {
-            if (str->len > str->field->size)
-                str->len = str->field->size;
+   ' validate file
+    static as int32 i
+    static as gfs_file_struct ptr gfs
+    i = fileno
+    if (i < 0) then
+        error(7701)
+        exit def
+    end if ' bad file mode (TCP/IP exclusion)
+    if (gfs_fileno_valid(i) = 1) then
+        error(7702)
+        exit def
+    end if                  ' Bad file name or number
+    i = gfs_fileno[i] ' convert fileno to gfs index
+    gfs = @gfs_file[i]
+    if not (gfs->type = 1) then
+        error(7703)
+        exit def
+    end if ' Bad file mode (note: must have RANDOM access)
+
+    static as qbs ptr _str
+    for i = 0 to gfs->field_strings_n
+        _str = gfs->field_strings[i]
+        if (_str = NULL) then
+            error(7704)
+            exit def
+        end if
+        ' fix length if necessary
+        if not (_str->len = _str->field->size) then
+            if (_str->len > _str->field->size) then
+                _str->len = _str->field->size
             else
-                qbs_set(str, qbs_new(str->field->size, 1));
-        }
+                qbs_set(_str, qbs_new(_str->field->size, 1))
+            end if
+        end if
 
-        // copy data from field into string
-        memmove(str->chr, gfs->field_buffer + str->field->offset, str->field->size);
+        ' copy data from field into string
+        memmove(_str->chr, gfs->field_buffer + _str->field->offset, _
+                _str->field->size)
 
-    } // i
-}
+    next ' 1
+end def
 
-void lrset_field(qbs *str) {
-    // validate file
-    static int32 i;
-    static gfs_file_struct *gfs;
-    i = str->field->fileno;
-    if (gfs_fileno_valid(i) != 1)
-        goto remove;
-    i = gfs_fileno[i]; // convert fileno to gfs index
+def SYSTEM_BUS_T.lrset_field(_str as qbs ptr) 
+    ' validate file
+    static as int32 i
+    static as gfs_file_struct ptr gfs 
+    i = _str->field->fileno
+    if not(gfs_fileno_valid(i) = 1) then
+        goto remove
+    end if    
+    i = gfs_fileno[i] ' convert fileno to gfs index
 
-    gfs = &gfs_file[i];
-    if (gfs->type != 1)
-        goto remove;
-    // check file ID
-    if (gfs->id != str->field->fileid)
-        goto remove;
+    gfs = @gfs_file[i]
+    if not (gfs->type = 1) then
+        goto remove
+    end if    
+    ' check file ID
+    if not (gfs->id = _str->field->fileid) then
+        goto remove
+    end if
+    ' store in field buffer, padding with spaces or truncating data if necessary
+    if (_str->field->size <= _str->len) then
+        memmove(gfs->field_buffer + _str->field->offset, _str->chr, _str->field->size)
+    else
+        memmove(gfs->field_buffer + _str->field->offset, _str->chr, _str->len)
+        memset(gfs->field_buffer + _str->field->offset + _str->len, 32, _str->field->size - _str->len)
+    end if
 
-    // store in field buffer, padding with spaces or truncating data if necessary
-    if (str->field->size <= str->len) {
+    ' update field strings for this file
+    field_update(_str->field->fileno)
 
-        memmove(gfs->field_buffer + str->field->offset, str->chr, str->field->size);
-    } else {
-        memmove(gfs->field_buffer + str->field->offset, str->chr, str->len);
-        memset(gfs->field_buffer + str->field->offset + str->len, 32, str->field->size - str->len);
-    }
-
-    // update field strings for this file
-    field_update(str->field->fileno);
-
-    return;
-remove:;
-    free(str->field);
-    str->field = NULL;
-}
-
-void field_free(qbs *str) {
-
-    // validate file
-    static int32 i;
-    static gfs_file_struct *gfs;
-    i = str->field->fileno;
-    if (gfs_fileno_valid(i) != 1)
-        goto remove;
-    i = gfs_fileno[i]; // convert fileno to gfs index
-    gfs = &gfs_file[i];
-    if (gfs->type != 1)
-        goto remove;
-    // check file ID
-    if (gfs->id != str->field->fileid)
-        goto remove;
-
-    // remove from string list
-    static qbs *str2;
-    for (i = 0; i < gfs->field_strings_n; i++) {
-        str2 = gfs->field_strings[i];
-        if (str == str2) { // match found
-            // truncate list
-            memmove(&(gfs->field_strings[i]), &(gfs->field_strings[i + 1]), (gfs->field_strings_n - i - 1) * ptrsz);
-            goto remove;
-        }
-    } // i
-
+    exit def
 remove:
-    free(str->field);
-    str->field = NULL;
-}
+    free(_str->field)
+    _str->field = NULL
+end def
 
-void field_add(qbs *str, int64 size) {
-    if (field_failed)
-        return;
-    if (new_error)
-        goto fail;
-    if (size < 0) {
-        error(5);
-        goto fail;
-    }
-    if ((field_totalsize + size) > field_maxsize) {
-        error(50);
-        goto fail;
-    }
+def SYSTEM_BUS_T.field_free(_str As qbs Ptr)
 
-    // revalidate file
-    static int32 i;
-    static gfs_file_struct *gfs;
-    i = field_fileno;
-    // TCP/IP exclusion (reason: multi-reading from same TCP/IP position would require a more complex implementation)
-    if (i < 0) {
-        error(54);
-        goto fail;
-    } // bad file mode
-    if (gfs_fileno_valid(i) != 1) {
-        error(52);
-        goto fail;
-    }                  // Bad file name or number
-    i = gfs_fileno[i]; // convert fileno to gfs index
-    gfs = &gfs_file[i];
-    if (gfs->type != 1) {
-        error(54);
-        goto fail;
-    } // Bad file mode (note: must have RANDOM access)
+    ' validate file
+    Dim i As Integer
+    Dim gfs As gfs_file_struct Ptr
+    i = _str->field->fileno
+    If gfs_fileno_valid(i) <> 1 Then GoTo remove
+    i = gfs_fileno[i] ' convert fileno to gfs index
+    gfs = @gfs_file[i]
+    If gfs->type <> 1 Then GoTo remove
+    ' check file ID
+    If gfs->id <> _str->field->fileid Then GoTo remove
+    GoTo field_free_skip
+    
+remove:
+    Free(_str->field)
+    _str->field = Null
+    exit def
+        
+field_free_skip:
+    ' remove from string list
+    Dim str2 As qbs Ptr
+    For i = 0 To gfs->field_strings_n - 1
+        str2 = gfs->field_strings[i]
+        If _str = str2 Then ' match found
+            ' truncate list
+            memmove(@(gfs->field_strings[i]), @(gfs->field_strings[i + 1]), _
+                   (gfs->field_strings_n - i - 1) * ptrsz)
+            goto remove
+        End If
+    Next
 
-    // 1) Remove str from any previous FIELD allocations
-    if (str->field)
-        field_free(str);
+end def
 
-    // 2) Setup qbs field info
-    str->field = (qbs_field *)malloc(sizeof(qbs_field));
-    str->field->fileno = field_fileno;
-    str->field->fileid = gfs->id;
-    str->field->size = size;
-    str->field->offset = field_totalsize;
+def SYSTEM_BUS_T.field_add(_str as qbs ptr, size as int64)
+    if (field_failed) then
+        exit def
+    end if
+    if (new_error) then
+        goto fail
+    end if    
+    if (size < 0) then
+        error(5)
+        goto fail
+    end if
+    if ((field_totalsize + size) > field_maxsize) then
+        error(50)
+        goto fail
+    end if
 
-    // 3) Add str to qbs list of gfs
-    if (!gfs->field_strings) {
-        gfs->field_strings_n = 1;
-        gfs->field_strings = (qbs **)malloc(ptrsz);
-        gfs->field_strings[0] = str;
-    } else {
-        gfs->field_strings_n++;
-        gfs->field_strings = (qbs **)realloc(gfs->field_strings, ptrsz * gfs->field_strings_n);
-        gfs->field_strings[gfs->field_strings_n - 1] = str;
-    }
+    ' revalidate file
+    static as int32 i
+    static as gfs_file_struct ptr gfs
+    i = field_fileno
+    ' TCP/IP exclusion (reason: multi-reading from same TCP/IP position would require a more complex implementation)
+    if (i < 0) then
+        error(54)
+        goto fail
+    end if ' bad file mode
+    if not (gfs_fileno_valid(i) = 1) then
+        error(52)
+        goto fail
+    end if                  ' Bad file name or number
+    i = gfs_fileno[i] ' convert fileno to gfs index
+    gfs = @gfs_file[i]
+    if not (gfs->type = 1) then
+        error(54)
+        goto fail
+    end if ' Bad file mode (note: must have RANDOM access)
 
-    // 4) Update field strings for this file
-    field_update(field_fileno);
+    ' 1) Remove str from any previous FIELD allocations
+    if (_str->field) then
+        field_free(_str)
+    end if
+    ' 2) Setup qbs field info
+    _str->field = malloc(sizeof(qbs_field))
+    _str->field->fileno = field_fileno
+    _str->field->fileid = gfs->id
+    _str->field->size = size
+    _str->field->offset = field_totalsize
 
-    field_totalsize += size;
-    return;
+    ' 3) Add str to qbs list of gfs
+    if (gfs->field_strings) then
+        gfs->field_strings_n += 1
+        gfs->field_strings = realloc(gfs->field_strings, ptrsz * gfs->field_strings_n)
+        gfs->field_strings[gfs->field_strings_n - 1] = _str
+    else
+        gfs->field_strings_n = 1
+        gfs->field_strings = malloc(ptrsz)
+        gfs->field_strings[0] = _str
+    end if
+
+    ' 4) Update field strings for this file
+    field_update(field_fileno)
+
+    field_totalsize += size
+    exit def
 fail:
-    field_failed = 1;
-    return;
-}
+    field_failed = 1
+    exit def
+end def
+/'
+proc SYSTEM_BUS_T.gfs_read(i as int32, position as int64, _data as uint8 ptr, size as int64) as int32
 
-void field_get(int32 fileno, int64 offset, int32 passed) {
-    if (new_error)
-        return;
+    gfs_read_bytes_value = 0
+    if not (gfs_validhandle(i)) then
+        return -2 ' invalid handle
+    end if    
+    static as int32 e
+    static as gfs_file_struct ptr f
+    f = @gfs_file[i]
+    if not (f->read) then
+        return -3 ' bad file mode
+    end if    
+    if (size < 0) then
+        return -4 ' illegal function call
+    end if    
+    static as int32 x
+    if not (position = -1) then
+        if (x = gfs_setpos(i, position)) then
+            return x '(pass on error)
+        end if
+    end if
 
-    // validate file
-    static int32 i;
-    static gfs_file_struct *gfs;
-    i = fileno;
-    if (i < 0) {
-        error(54);
-        return;
-    } // bad file mode (TCP/IP exclusion)
-    if (gfs_fileno_valid(i) != 1) {
-        error(52);
-        return;
-    }                  // Bad file name or number
-    i = gfs_fileno[i]; // convert fileno to gfs index
-    gfs = &gfs_file[i];
-    if (gfs->type != 1) {
-        error(54);
-        return;
-    } // Bad file mode (note: must have RANDOM access)
+#ifdef GFS_C
+    f->file_handle->clear()
+    f->file_handle->read(_data, size)
+    if (f->file_handle->bad()) then ' note: 'eof' also sets the 'fail' flag, so only the the 'bad' flag is checked
+        return -7               ' assume: permission denied
+    end if
+    static as int64 bytesread
+    bytesread = f->file_handle->gcount()
+    gfs_read_bytes_value = bytesread
+    f->pos += bytesread
+    if (bytesread < size) then
+        memset(_data + bytesread, 0, size - bytesread)
+        f->eof_passed = 1
+        return -10
+    end if
+    f->eof_passed = 0
+    return 0
+#endif
 
-    if (!gfs->read) {
-        error(75);
-        return;
-    } // Path/file access error
+#ifdef GFS_WINDOWS
+    static as gfs_file_win_struct ptr f_w
+    f_w = @gfs_file_win[i]
+    static as uint32 size2
+    static as int64 bytesread = 0
+    while (size)
+        if (size > 4294967295) then
+            size2 = 4294967295
+            size -= 4294967295
+        else
+            size2 = size
+            size = 0
+        end if
 
-    if (passed) {
-        offset--;
-        if (offset < 0) {
-            error(63);
-            return;
-        } // Bad record number
-        offset *= gfs->record_length;
-    } else {
-        offset = -1;
-    }
+        if (ReadFile(f_w->file_handle, data, size2, @bytesread, NULL)) then
+            _data += bytesread
+            f->pos += bytesread
+            gfs_read_bytes_value += bytesread
+            if not (bytesread = size2) then
+                ZeroMemory(data, size + (size2 - bytesread)) ' nullify remaining buffer
+                f->eof_passed = 1
+                return -10
+            end if ' eof passed
+        else
+            ' error
+            e = GetLastError()
+            if ((e = 5) or (e = 33)) then
+                return -7 ' permission denied
+            end if    
+            ' showvalue(e);
+            return -9 ' assume: path/file access error
+        end if
+    wend
+    f->eof_passed = 0
+    return 0
+#endif
 
-    static int32 e;
-    e = gfs_read(i, offset, gfs->field_buffer, gfs->record_length);
-    if (e) {
-        if (e != -10) { // note: on eof, unread buffer area becomes NULL
-            if (e == -2) {
-                error(258);
-                return;
-            } // invalid handle
-            if (e == -3) {
-                error(54);
-                return;
-            } // bad file mode
-            if (e == -4) {
-                error(5);
-                return;
-            } // illegal function call
-            if (e == -7) {
-                error(70);
-                return;
-            } // permission denied
-            error(75);
-            return; // assume[-9]: path/file access error
-        }
-    }
+    return -1
+end proc
+'/
+def SYSTEM_BUS_T.field_get(fileno as int32, offset as int32, passed as int32)
+    if (new_error) then
+        exit def
+    end if
+    ' validate file
+    static as int32 i
+    static as gfs_file_struct ptr gfs
+    i = fileno
+    if (i < 0) then
+        error(54)
+        exit def
+    end if ' bad file mode (TCP/IP exclusion)
+    if not (gfs_fileno_valid(i) = 1) then
+        error(52)
+        exit def
+    end if            ' Bad file name or number
+    i = gfs_fileno[i] ' convert fileno to gfs index
+    gfs = @gfs_file[i]
+    if not (gfs->type = 1) then
+        error(54)
+        exit def
+    end if ' Bad file mode (note: must have RANDOM access)
 
-    field_update(fileno);
-}
+    if not (gfs->read) then
+        error(75)
+        exit def
+    end if ' Path/file access error
 
+    if (passed) then
+        offset -= 1
+        if (offset < 0) then
+            error(63)
+            exit def
+        end if ' Bad record number
+        offset *= gfs->record_length
+    else
+        offset = -1
+    end if
+
+    static as int32 e
+    e = gfs_read(i, offset, gfs->field_buffer, gfs->record_length)
+    if (e) then
+        if not (e = -10) then ' note: on eof, unread buffer area becomes NULL
+            if (e = -2) then 
+                error(258)
+                exit def
+            end if ' invalid handle
+            if (e = -3) then
+                error(54)
+                exit def
+            end if ' bad file mode
+            if (e = -4) then
+                error(5)
+                exit def
+            end if ' illegal function call
+            if (e = -7) then
+                error(70)
+                exit def
+            end if ' permission denied
+            error(75)
+            exit def ' assume[-9]: path/file access error
+        end if
+    end if
+
+    field_update(fileno)
+end def
+/'
 void field_put(int32 fileno, int64 offset, int32 passed) {
     if (new_error)
         return;
@@ -2474,184 +3396,134 @@ void field_put(int32 fileno, int64 offset, int32 passed) {
     }
 }
 
-' mem64_FAR_DYNAMIC memory manager
+Sub field_put(fileno as Integer, offset as Int64, passed as Integer)
+    If new_error Then
+        Exit Sub
+    End If
 
-void qbs_free(qbs *str) {
+    Static i as Integer
+    Static gfs as gfs_file_struct
 
-    if (str->field)
-        field_free(str);
+    i = fileno
+    If i < 0 Then
+        error(54)
+        Exit Sub
+    End If
+    If gfs_fileno_valid(i) <> 1 Then
+        error(52)
+        Exit Sub
+    End If
+    i = gfs_fileno(i)
+    gfs = gfs_file(i)
+    If gfs.type <> 1 Then
+        error(54)
+        Exit Sub
+    End If
+    If Not gfs.write Then
+        error(75)
+        Exit Sub
+    End If
 
-    if (str->tmplisti) {
-        qbs_tmp_list[str->tmplisti] = -1;
-        while (qbs_tmp_list[qbs_tmp_list_nexti - 1] == -1) {
-            qbs_tmp_list_nexti--;
-        }
-    }
-    if (str->fixed || str->readonly) {
-        qbs_free_descriptor(str);
-        return;
-    }
-    if (str->in_cmem) {
-        qbs_cmem_list[str->listi] = -1;
-        if ((qbs_cmem_list_nexti - 1) == str->listi)
-            qbs_cmem_list_nexti--;
-    } else {
-        qbs_list[str->listi] = -1;
-    retry:
-        if (qbs_list[qbs_list_nexti - 1] == -1) {
-            qbs_list_nexti--;
-            if (qbs_list_nexti)
-                goto retry;
-        }
-        if (qbs_list_nexti) {
-            qbs_sp = ((qbs *)qbs_list[qbs_list_nexti - 1])->chr - qbs_data + ((qbs *)qbs_list[qbs_list_nexti - 1])->len + 32;
-            if (qbs_sp > qbs_data_size)
-                qbs_sp = qbs_data_size; // adding 32 could overflow buffer!
-        } else {
-            qbs_sp = 0;
-        }
-    }
-    qbs_free_descriptor(str);
-    return;
-}
+    If passed Then
+        offset = offset - 1
+        If offset < 0 Then
+            error(63)
+            Exit Sub
+        End If
+        offset = offset * gfs.record_length
+    Else
+        offset = -1
+    End If
 
-void qbs_cmem_concat_list() {
-    uint32 i;
-    uint32 d;
-    qbs *tqbs;
-    d = 0;
-    for (i = 0; i < qbs_cmem_list_nexti; i++) {
-        if (qbs_cmem_list[i] != -1) {
-            if (i != d) {
-                tqbs = (qbs *)qbs_cmem_list[i];
-                tqbs->listi = d;
-                qbs_cmem_list[d] = (ptrszint)tqbs;
-            }
-            d++;
-        }
-    }
-    qbs_cmem_list_nexti = d;
-    // if string listings are taking up more than half of the list array double the list array's size
-    if (qbs_cmem_list_nexti >= (qbs_cmem_list_lasti / 2)) {
-        qbs_cmem_list_lasti *= 2;
-        qbs_cmem_list = (ptrszint *)realloc(qbs_cmem_list, (qbs_cmem_list_lasti + 1) * ptrsz);
-        if (!qbs_cmem_list)
-            error(509);
-    }
-    return;
-}
+    Static e as Integer
+    e = gfs_write(i, offset, gfs.field_buffer, gfs.record_length)
+    If e <> 0 Then
+        Select Case e
+            Case -2
+                error(258)
+                Exit Sub
+            Case -3
+                error(54)
+                Exit Sub
+            Case -4
+                error(5)
+                Exit Sub
+            Case -7
+                error(70)
+                Exit Sub
+            Case Else
+                error(75)
+                Exit Sub
+        End Select
+    End If
+End Sub
+'/
 
-void qbs_concat_list() {
-    uint32 i;
-    uint32 d;
-    qbs *tqbs;
-    d = 0;
-    for (i = 0; i < qbs_list_nexti; i++) {
-        if (qbs_list[i] != -1) {
-            if (i != d) {
-                tqbs = (qbs *)qbs_list[i];
-                tqbs->listi = d;
-                qbs_list[d] = (ptrszint)tqbs;
-            }
-            d++;
-        }
-    }
-    qbs_list_nexti = d;
-    // if string listings are taking up more than half of the list array double the list array's size
-    if (qbs_list_nexti >= (qbs_list_lasti / 2)) {
-        qbs_list_lasti *= 2;
-        qbs_list = (ptrszint *)realloc(qbs_list, (qbs_list_lasti + 1) * ptrsz);
-        if (!qbs_list)
-            error(510);
-    }
-    return;
-}
+' mem64_FAR_DYNAMIC memory manage
+def SYSTEM_BUS_T.qbs_mem64_concat_list() 
+    dim as uint32 i
+    dim as uint32 d
+    dim as qbs ptr tqbs
+    d = 0
+    for i = 0 to qbs_mem64_list_nexti
+        if not (qbs_mem64_list[i] = -1) then
+            if not (i = d) then
+                tqbs = peek(qbs ptr,@qbs_mem64_list[i])
+                tqbs->listi = d
+                qbs_mem64_list[d] = peek(ptrszint,@tqbs)
+            end if
+            d += 1
+        end if
+    next
+    qbs_mem64_list_nexti = d
+    ' if string listings are taking up more than half of the list array double the list array's size
+    if (qbs_mem64_list_nexti >= (qbs_mem64_list_lasti / 2)) then
+        qbs_mem64_list_lasti *= 2
+        qbs_mem64_list = cptr(ptrszint ptr,realloc(qbs_mem64_list, (qbs_mem64_list_lasti + 1) * ptrsz))
+        if (qbs_mem64_list) = NULL then
+            error(509)
+        end if    
+    end if
+    return
+end def
 
-void qbs_tmp_concat_list() {
-    if (qbs_tmp_list_nexti >= (qbs_tmp_list_lasti / 2)) {
-        qbs_tmp_list_lasti *= 2;
-        qbs_tmp_list = (ptrszint *)realloc(qbs_tmp_list, (qbs_tmp_list_lasti + 1) * ptrsz);
-        if (!qbs_tmp_list)
-            error(511);
-    }
-    return;
-}
+' as the mem64 stack has a limit if bytesrequired cannot be met this exits and returns an error
+' the mem64 stack cannot after all be extended!
+' so bytesrequired is only passed to possibly generate an error, or not generate one
 
-void qbs_concat(uint32 bytesrequired) {
-    // this does not change indexing, only ->chr pointers and the location of their data
-    static int32 i;
-    static uint8 *dest;
-    static qbs *tqbs;
-    dest = (uint8 *)qbs_data;
-    if (qbs_list_nexti) {
-        qbs_sp = 0;
-        for (i = 0; i < qbs_list_nexti; i++) {
-            if (qbs_list[i] != -1) {
-                tqbs = (qbs *)qbs_list[i];
-                if ((tqbs->chr - dest) > 32) {
-                    if (tqbs->len) {
-                        memmove(dest, tqbs->chr, tqbs->len);
-                    }
-                    tqbs->chr = dest;
-                }
-                dest = tqbs->chr + tqbs->len;
-                qbs_sp = dest - qbs_data;
-            }
-        }
-    }
-
-    if (((qbs_sp * 2) + (bytesrequired + 32)) >= qbs_data_size) {
-        static uint8 *oldbase;
-        oldbase = qbs_data;
-        qbs_data_size = qbs_data_size * 2 + bytesrequired;
-        qbs_data = (uint8 *)realloc(qbs_data, qbs_data_size);
-        if (qbs_data == NULL)
-            error(512); // realloc failed!
-        for (i = 0; i < qbs_list_nexti; i++) {
-            if (qbs_list[i] != -1) {
-                tqbs = (qbs *)qbs_list[i];
-                tqbs->chr = tqbs->chr - oldbase + qbs_data;
-            }
-        }
-    }
-    return;
-}
-
-// as the cmem stack has a limit if bytesrequired cannot be met this exits and returns an error
-// the cmem stack cannot after all be extended!
-// so bytesrequired is only passed to possibly generate an error, or not generate one
-void qbs_concat_cmem(uint32 bytesrequired) {
-    // this does not change indexing, only ->chr pointers and the location of their data
-    int32 i;
-    uint8 *dest;
-    qbs *tqbs;
-    dest = (uint8 *)dblock;
-    qbs_cmem_sp = qbs_cmem_descriptor_space;
-    if (qbs_cmem_list_nexti) {
-        for (i = 0; i < qbs_cmem_list_nexti; i++) {
-            if (qbs_cmem_list[i] != -1) {
-                tqbs = (qbs *)qbs_cmem_list[i];
-                if (tqbs->chr != dest) {
-                    if (tqbs->len) {
-                        memmove(dest, tqbs->chr, tqbs->len);
-                    }
-                    tqbs->chr = dest;
-                    // update cmem_descriptor [length][offset]
-                    if (tqbs->cmem_descriptor) {
-                        tqbs->cmem_descriptor[0] = tqbs->len;
-                        tqbs->cmem_descriptor[1] = (uint16)(ptrszint)(tqbs->chr - dblock);
-                    }
-                }
-                dest += tqbs->len;
-                qbs_cmem_sp += tqbs->len;
-            }
-        }
-    }
-    if ((qbs_cmem_sp + bytesrequired) > cmem_sp)
-        error(513);
-    return;
-}
-
+def SYSTEM_BUS_T.qbs_concat_mem64(bytesrequired as uint32) 
+    ' this does not change indexing, only ->chr pointers and the location of their data
+    dim as int32 i
+    dim as uint8 ptr dest
+    dim as qbs ptr tqbs
+    dest = peek(uint8 ptr, @dblock)
+    qbs_mem64_sp = qbs_mem64_descriptor_space
+    if (qbs_mem64_list_nexti) then
+        for i = 0 to qbs_mem64_list_nexti
+            if not (qbs_mem64_list[i] = -1) then
+                tqbs = peek(qbs ptr, qbs_mem64_list[i])
+                if not (tqbs->chr = dest) then
+                    if (tqbs->len) then
+                        memmove(dest, tqbs->chr, tqbs->len)
+                    end if
+                    tqbs->chr = dest
+                    ' update mem64_descriptor [length][offset]
+                    if (tqbs->mem64_descriptor) then
+                        tqbs->mem64_descriptor[0] = tqbs->len
+                        tqbs->mem64_descriptor[1] = peek(uint16,peek(ptrszint,@tqbs->chr - dblock))
+                    end if
+                end if
+                dest += tqbs->len
+                qbs_mem64_sp += tqbs->len
+            end if
+        next
+    end if
+    if ((qbs_mem64_sp + bytesrequired) > mem64_sp) then
+        error(513)
+    end if    
+    return
+end def
+/'
 qbs *qbs_new_cmem(int32 size, uint8 tmp) {
     if ((qbs_cmem_sp + size) > cmem_sp)
         qbs_concat_cmem(size);
@@ -2689,42 +3561,44 @@ qbs *qbs_new_cmem(int32 size, uint8 tmp) {
     return newstr;
 }
 
-qbs *qbs_new(int32, uint8);
+' qbs *qbs_new(int32, uint8);
+'/
+proc SYSTEM_BUS_T.qbs_new_txt(_txt as const byte ptr) as qbs ptr
+    static as qbs ptr newstr
+    newstr = qbs_new_descriptor()
+    if (_txt) = NULL then ' NULL pointer is converted to a 0-length string
+        newstr->len = 0
+    else
+        newstr->len = k_strlen(cast(uchar ptr, _txt))
+    end if
+    newstr->chr = peek(uint8 ptr, @_txt)
+    if (qbs_tmp_list_nexti > qbs_tmp_list_lasti) then
+        qbs_tmp_concat_list()
+    end if    
+    newstr->tmplisti = qbs_tmp_list_nexti
+    qbs_tmp_list[newstr->tmplisti] = peek(ptrszint,@newstr)
+    qbs_tmp_list_nexti += 1
+    newstr->tmp = 1
+    newstr->readonly = 1
+    return newstr
+end proc
 
-qbs *qbs_new_txt(const char *txt) {
-    qbs *newstr;
-    newstr = qbs_new_descriptor();
-    if (!txt) { // NULL pointer is converted to a 0-length string
-        newstr->len = 0;
-    } else {
-        newstr->len = strlen(txt);
-    }
-    newstr->chr = (uint8 *)txt;
-    if (qbs_tmp_list_nexti > qbs_tmp_list_lasti)
-        qbs_tmp_concat_list();
-    newstr->tmplisti = qbs_tmp_list_nexti;
-    qbs_tmp_list[newstr->tmplisti] = (ptrszint)newstr;
-    qbs_tmp_list_nexti++;
-    newstr->tmp = 1;
-    newstr->readonly = 1;
-    return newstr;
-}
-
-qbs *qbs_new_txt_len(const char *txt, int32 len) {
-    qbs *newstr;
-    newstr = qbs_new_descriptor();
-    newstr->len = len;
-    newstr->chr = (uint8 *)txt;
-    if (qbs_tmp_list_nexti > qbs_tmp_list_lasti)
-        qbs_tmp_concat_list();
-    newstr->tmplisti = qbs_tmp_list_nexti;
-    qbs_tmp_list[newstr->tmplisti] = (ptrszint)newstr;
-    qbs_tmp_list_nexti++;
-    newstr->tmp = 1;
-    newstr->readonly = 1;
-    return newstr;
-}
-
+proc SYSTEM_BUS_T.qbs_new_txt_len(_txt as const byte ptr, _len as int32) as qbs ptr
+    static as qbs ptr newstr
+    newstr = qbs_new_descriptor()
+    newstr->len = _len
+    newstr->chr = peek(uint8 ptr,@_txt)
+    if (qbs_tmp_list_nexti > qbs_tmp_list_lasti) then
+        qbs_tmp_concat_list()
+    end if    
+    newstr->tmplisti = qbs_tmp_list_nexti
+    qbs_tmp_list[newstr->tmplisti] = peek(ptrszint, @newstr)
+    qbs_tmp_list_nexti += 1
+    newstr->tmp = 1
+    newstr->readonly = 1
+    return newstr
+end proc
+/'
 // note: qbs_new_fixed detects if string is in DBLOCK
 qbs *qbs_new_fixed(uint8 *offset, uint32 size, uint8 tmp) {
     qbs *newstr;
@@ -2755,290 +3629,248 @@ qbs *qbs_new_fixed(uint8 *offset, uint32 size, uint8 tmp) {
     }
     return newstr;
 }
+'/
+def SYSTEM_BUS_T.qbs_maketmp(_str as qbs ptr)
+    ' WARNING: assumes str is a non-tmp string in non-mem64
+    if (qbs_tmp_list_nexti > qbs_tmp_list_lasti) then
+        qbs_tmp_concat_list()
+    end if    
+    _str->tmplisti = qbs_tmp_list_nexti
+    qbs_tmp_list[_str->tmplisti] = peek(ptrszint, @_str)
+    qbs_tmp_list_nexti+=1
+    _str->tmp = 1
+end def
 
-qbs *qbs_new(int32 size, uint8 tmp) {
-    static qbs *newstr;
-    if ((qbs_sp + size + 32) > qbs_data_size)
-        qbs_concat(size + 32);
-    newstr = qbs_new_descriptor();
-    newstr->len = size;
-    newstr->chr = qbs_data + qbs_sp;
-    qbs_sp += size + 32;
-    if (qbs_list_nexti > qbs_list_lasti)
-        qbs_concat_list();
-    newstr->listi = qbs_list_nexti;
-    qbs_list[newstr->listi] = (ptrszint)newstr;
-    qbs_list_nexti++;
-    if (tmp) {
-        if (qbs_tmp_list_nexti > qbs_tmp_list_lasti)
-            qbs_tmp_concat_list();
-        newstr->tmplisti = qbs_tmp_list_nexti;
-        qbs_tmp_list[newstr->tmplisti] = (ptrszint)newstr;
-        qbs_tmp_list_nexti++;
-        newstr->tmp = 1;
-    }
-    return newstr;
-}
+/'
+proc SYSTEM_BUS_T.qbs_set(deststr as qbs ptr, srcstr as qbs ptr) as qbs ptr
+    dim as int32 i
+    dim as tqbs qbs ptr
+    ' fixed deststr
+    if (deststr->fixed) then
+        if (srcstr->len >= deststr->len) then
+            memcpy(deststr->chr, srcstr->chr, deststr->len)
+        else
+            memcpy(deststr->chr, srcstr->chr, srcstr->len)
+            memset(deststr->chr + srcstr->len, 32, deststr->len - srcstr->len) ' pad with spaces
+        end if
+        goto qbs_set_return
+    end if
+    ' non-fixed deststr
 
-void qbs_maketmp(qbs *str) {
-    // WARNING: assumes str is a non-tmp string in non-cmem
-    if (qbs_tmp_list_nexti > qbs_tmp_list_lasti)
-        qbs_tmp_concat_list();
-    str->tmplisti = qbs_tmp_list_nexti;
-    qbs_tmp_list[str->tmplisti] = (ptrszint)str;
-    qbs_tmp_list_nexti++;
-    str->tmp = 1;
-}
+    ' can srcstr be aquired by deststr?
+    if (srcstr->tmp) then
+        if (srcstr->fixed = 0) then
+            if (srcstr->readonly = 0) then
+                if (srcstr->in_cmem == deststr->in_cmem) then
+                    if (deststr->in_mem64) then
+                        ' unlist deststr and acquire srcstr's list index
+                        qbs_cmem_list[deststr->listi] = -1
+                        qbs_cmem_list[srcstr->listi] = (ptrszint)deststr
+                        deststr->listi = srcstr->listi
+                    else
+                        ' unlist deststr and acquire srcstr's list index
+                        qbs_list[deststr->listi] = -1
+                        qbs_list[srcstr->listi] = (ptrszint)deststr
+                        deststr->listi = srcstr->listi
+                    end if
 
-qbs *qbs_set(qbs *deststr, qbs *srcstr) {
-    int32 i;
-    qbs *tqbs;
-    // fixed deststr
-    if (deststr->fixed) {
-        if (srcstr->len >= deststr->len) {
-            memcpy(deststr->chr, srcstr->chr, deststr->len);
-        } else {
-            memcpy(deststr->chr, srcstr->chr, srcstr->len);
-            memset(deststr->chr + srcstr->len, 32, deststr->len - srcstr->len); // pad with spaces
-        }
-        goto qbs_set_return;
-    }
-    // non-fixed deststr
+                    qbs_tmp_list[srcstr->tmplisti] = -1
+                    if (srcstr->tmplisti = (qbs_tmp_list_nexti - 1)) then
+                        qbs_tmp_list_nexti-=1 ' correct last tmp index for performance
+                    end if
+                    deststr->chr = srcstr->chr
+                    deststr->len = srcstr->len
+                    qbs_free_descriptor(srcstr)
+                    ' update cmem_descriptor [length][offset]
+                    if (deststr->cmem_descriptor) then
+                        deststr->cmem_descriptor[0] = deststr->len
+                        deststr->cmem_descriptor[1] = (uint16)(ptrszint)(deststr->chr - dblock)
+                    end uf
+                    return deststr ' nb. This return cannot be changed to a goto qbs_set_return!
+                end if
+            end if
+        end if
+    end if
 
-    // can srcstr be aquired by deststr?
-    if (srcstr->tmp) {
-        if (srcstr->fixed == 0) {
-            if (srcstr->readonly == 0) {
-                if (srcstr->in_cmem == deststr->in_cmem) {
-                    if (deststr->in_cmem) {
-                        // unlist deststr and acquire srcstr's list index
-                        qbs_cmem_list[deststr->listi] = -1;
-                        qbs_cmem_list[srcstr->listi] = (ptrszint)deststr;
-                        deststr->listi = srcstr->listi;
-                    } else {
-                        // unlist deststr and acquire srcstr's list index
-                        qbs_list[deststr->listi] = -1;
-                        qbs_list[srcstr->listi] = (ptrszint)deststr;
-                        deststr->listi = srcstr->listi;
-                    }
+    ' srcstr is equal length or shorter
+    if (srcstr->len <= deststr->len) then
+        memcpy(deststr->chr, srcstr->chr, srcstr->len)
+        deststr->len = srcstr->len
+        goto qbs_set_return
+    end if
 
-                    qbs_tmp_list[srcstr->tmplisti] = -1;
-                    if (srcstr->tmplisti == (qbs_tmp_list_nexti - 1))
-                        qbs_tmp_list_nexti--; // correct last tmp index for performance
-
-                    deststr->chr = srcstr->chr;
-                    deststr->len = srcstr->len;
-                    qbs_free_descriptor(srcstr);
-                    // update cmem_descriptor [length][offset]
-                    if (deststr->cmem_descriptor) {
-                        deststr->cmem_descriptor[0] = deststr->len;
-                        deststr->cmem_descriptor[1] = (uint16)(ptrszint)(deststr->chr - dblock);
-                    }
-                    return deststr; // nb. This return cannot be changed to a goto qbs_set_return!
-                }
-            }
-        }
-    }
-
-    // srcstr is equal length or shorter
-    if (srcstr->len <= deststr->len) {
-        memcpy(deststr->chr, srcstr->chr, srcstr->len);
-        deststr->len = srcstr->len;
-        goto qbs_set_return;
-    }
-
-    // srcstr is longer
+    ' srcstr is longer
     if (deststr->in_cmem) {
-        if (deststr->listi == (qbs_cmem_list_nexti - 1)) {                      // last index
-            if (((ptrszint)deststr->chr + srcstr->len) <= (dblock + cmem_sp)) { // space available
-                memcpy(deststr->chr, srcstr->chr, srcstr->len);
-                deststr->len = srcstr->len;
-                qbs_cmem_sp = ((ptrszint)deststr->chr) + (ptrszint)deststr->len - dblock;
-                goto qbs_set_return;
-            }
-            goto qbs_set_cmem_concat_required;
-        }
-        // deststr is not the last index so locate next valid index
-        i = deststr->listi + 1;
+        if (deststr->listi == (qbs_cmem_list_nexti - 1)) {                         ' last index
+            if (((ptrszint)deststr->chr + srcstr->len) <= (dblock + cmem_sp)) then ' space available
+                memcpy(deststr->chr, srcstr->chr, srcstr->len)
+                deststr->len = srcstr->len
+                qbs_cmem_sp = ((ptrszint)deststr->chr) + (ptrszint)deststr->len - dblock
+                goto qbs_set_return
+            end if
+            goto qbs_set_cmem_concat_required
+        end if
+        ' deststr is not the last index so locate next valid index
+        i = deststr->listi + 1
     qbs_set_nextindex:
-        if (qbs_cmem_list[i] != -1) {
-            tqbs = (qbs *)qbs_cmem_list[i];
-            if (tqbs == srcstr) {
-                if (srcstr->tmp == 1)
-                    goto skippedtmpsrcindex;
-            }
+        if (qbs_cmem_list[i] != -1) then
+            tqbs = (qbs *)qbs_cmem_list[i]
+            if (tqbs == srcstr) then
+                if (srcstr->tmp == 1) then
+                    goto skippedtmpsrcindex
+                end if    
+            end if
             if ((deststr->chr + srcstr->len) > tqbs->chr)
-                goto qbs_set_cmem_concat_required;
-            memcpy(deststr->chr, srcstr->chr, srcstr->len);
-            deststr->len = srcstr->len;
-            goto qbs_set_return;
-        }
+                goto qbs_set_cmem_concat_required
+            end if    
+            memcpy(deststr->chr, srcstr->chr, srcstr->len)
+            deststr->len = srcstr->len
+            goto qbs_set_return
+        end if
     skippedtmpsrcindex:
-        i++;
-        if (i != qbs_cmem_list_nexti)
-            goto qbs_set_nextindex;
-        // all next indexes invalid!
-        qbs_cmem_list_nexti = deststr->listi + 1;                           // adjust nexti
-        if (((ptrszint)deststr->chr + srcstr->len) <= (dblock + cmem_sp)) { // space available
-            memmove(deststr->chr, srcstr->chr, srcstr->len);                // overlap possible due to sometimes aquiring srcstr's space
-            deststr->len = srcstr->len;
-            qbs_cmem_sp = ((ptrszint)deststr->chr) + (ptrszint)deststr->len - dblock;
-            goto qbs_set_return;
-        }
+        i+=1
+        if (i <> qbs_cmem_list_nexti) then
+            goto qbs_set_nextindex
+        end if    
+        ' all next indexes invalid!
+        qbs_cmem_list_nexti = deststr->listi + 1 ' adjust nexti
+        if (((ptrszint)deststr->chr + srcstr->len) <= (dblock + cmem_sp)) then ' space available
+            memmove(deststr->chr, srcstr->chr, srcstr->len)                    ' overlap possible due to sometimes aquiring srcstr's space
+            deststr->len = srcstr->len
+            qbs_cmem_sp = ((ptrszint)deststr->chr) + (ptrszint)deststr->len - dblock
+            goto qbs_set_return
+        end if
     qbs_set_cmem_concat_required:
-        // srcstr could not fit in deststr
-        //"realloc" deststr
-        qbs_cmem_list[deststr->listi] = -1;          // unlist
-        if ((qbs_cmem_sp + srcstr->len) > cmem_sp) { // must concat!
-            qbs_concat_cmem(srcstr->len);
-        }
-        if (qbs_cmem_list_nexti > qbs_cmem_list_lasti)
-            qbs_cmem_concat_list();
-        deststr->listi = qbs_cmem_list_nexti;
-        qbs_cmem_list[qbs_cmem_list_nexti] = (ptrszint)deststr;
-        qbs_cmem_list_nexti++; // relist
-        deststr->chr = (uint8 *)dblock + qbs_cmem_sp;
-        deststr->len = srcstr->len;
-        qbs_cmem_sp += deststr->len;
-        memcpy(deststr->chr, srcstr->chr, srcstr->len);
-        goto qbs_set_return;
-    }
+        ' srcstr could not fit in deststr
+        ' "realloc" deststr
+        qbs_cmem_list[deststr->listi] = -1             ' unlist
+        if ((qbs_cmem_sp + srcstr->len) > cmem_sp) then ' must concat!
+            qbs_concat_cmem(srcstr->len)
+        end if
+        if (qbs_cmem_list_nexti > qbs_cmem_list_lasti) then
+            qbs_cmem_concat_list()
+        end if    
+        deststr->listi = qbs_mem64_list_nexti;
+        qbs_mem64_list[qbs_mem64_list_nexti] = (ptrszint)deststr;
+        qbs_mem64_list_nexti++; // relist
+        deststr->chr = (uint8 *)dblock + qbs_mem64_sp
+        deststr->len = srcstr->len
+        qbs_mem64_sp += deststr->len
+        memcpy(deststr->chr, srcstr->chr, srcstr->len)
+        goto qbs_set_return
+    end if
 
-    // not in cmem
-    if (deststr->listi == (qbs_list_nexti - 1)) {                                             // last index
-        if (((ptrszint)deststr->chr + srcstr->len) <= ((ptrszint)qbs_data + qbs_data_size)) { // space available
-            memcpy(deststr->chr, srcstr->chr, srcstr->len);
-            deststr->len = srcstr->len;
-            qbs_sp = ((ptrszint)deststr->chr) + (ptrszint)deststr->len - (ptrszint)qbs_data;
-            goto qbs_set_return;
-        }
-        goto qbs_set_concat_required;
-    }
-    // deststr is not the last index so locate next valid index
-    i = deststr->listi + 1;
+    ' not in mem64
+    if (deststr->listi == (qbs_list_nexti - 1)) then                                                ' last index
+        if (((ptrszint)deststr->chr + srcstr->len) <= ((ptrszint)qbs_data + qbs_data_size)) then ' space available
+            memcpy(deststr->chr, srcstr->chr, srcstr->len)
+            deststr->len = srcstr->len
+            qbs_sp = ((ptrszint)deststr->chr) + (ptrszint)deststr->len - (ptrszint)qbs_data
+            goto qbs_set_return
+        end if
+        goto qbs_set_concat_required
+    end if
+    ' deststr is not the last index so locate next valid index
+    i = deststr->listi + 1
 qbs_set_nextindex2:
-    if (qbs_list[i] != -1) {
+    if (qbs_list[i] <> -1) then 
         tqbs = (qbs *)qbs_list[i];
-        if (tqbs == srcstr) {
-            if (srcstr->tmp == 1)
-                goto skippedtmpsrcindex2;
-        }
-        if ((deststr->chr + srcstr->len) > tqbs->chr)
-            goto qbs_set_concat_required;
-        memcpy(deststr->chr, srcstr->chr, srcstr->len);
-        deststr->len = srcstr->len;
-        goto qbs_set_return;
-    }
+        if (tqbs == srcstr) then
+            if (srcstr->tmp == 1) then
+                goto skippedtmpsrcindex2
+            end if    
+        end if
+        if ((deststr->chr + srcstr->len) > tqbs->chr) then
+            goto qbs_set_concat_required
+        end if    
+        memcpy(deststr->chr, srcstr->chr, srcstr->len)
+        deststr->len = srcstr->len
+        goto qbs_set_return
+    end if
 skippedtmpsrcindex2:
-    i++;
+    i+=1
     if (i != qbs_list_nexti)
-        goto qbs_set_nextindex2;
-    // all next indexes invalid!
+        goto qbs_set_nextindex2
+    end if    
+    ' all next indexes invalid!
 
-    qbs_list_nexti = deststr->listi + 1;                                                  // adjust nexti
-    if (((ptrszint)deststr->chr + srcstr->len) <= ((ptrszint)qbs_data + qbs_data_size)) { // space available
-        memmove(deststr->chr, srcstr->chr, srcstr->len);                                  // overlap possible due to sometimes aquiring srcstr's space
-        deststr->len = srcstr->len;
-        qbs_sp = ((ptrszint)deststr->chr) + (ptrszint)deststr->len - (ptrszint)qbs_data;
-        goto qbs_set_return;
-    }
+    qbs_list_nexti = deststr->listi + 1                                                     ' adjust nexti
+    if ((peek(ptrszint, @deststr->chr) + srcstr->len) <= peek(ptrszint,@qbs_data + qbs_data_size)) then ' space available
+        memmove(deststr->chr, srcstr->chr, srcstr->len) ' overlap possible due to sometimes aquiring srcstr's space
+        deststr->len = srcstr->len
+        qbs_sp = (peek(ptrszint, @deststr->chr) + peek(ptrszint, @deststr->len) - peek(ptrszint, @qbs_data)
+        goto qbs_set_return
+    end if
 
 qbs_set_concat_required:
-    // srcstr could not fit in deststr
-    //"realloc" deststr
-    qbs_list[deststr->listi] = -1;                // unlist
-    if ((qbs_sp + srcstr->len) > qbs_data_size) { // must concat!
-        qbs_concat(srcstr->len);
-    }
-    if (qbs_list_nexti > qbs_list_lasti)
-        qbs_concat_list();
-    deststr->listi = qbs_list_nexti;
-    qbs_list[qbs_list_nexti] = (ptrszint)deststr;
-    qbs_list_nexti++; // relist
+    ' srcstr could not fit in deststr
+    ' "realloc" deststr
+    qbs_list[deststr->listi] = -1;                   ' unlist
+    if ((qbs_sp + srcstr->len) > qbs_data_size) then ' must concat!
+        qbs_concat(srcstr->len)
+    end if
+    if (qbs_list_nexti > qbs_list_lasti) then
+        qbs_concat_list()
+    end if    
+    deststr->listi = qbs_list_nexti
+    qbs_list[qbs_list_nexti] = (ptrszint)deststr
+    qbs_list_nexti+=1 ' relist
 
-    deststr->chr = qbs_data + qbs_sp;
-    deststr->len = srcstr->len;
-    qbs_sp += deststr->len;
-    memcpy(deststr->chr, srcstr->chr, srcstr->len);
+    deststr->chr = qbs_data + qbs_sp
+    deststr->len = srcstr->len
+    qbs_sp += deststr->len
+    memcpy(deststr->chr, srcstr->chr, srcstr->len)
 
-//(fall through to qbs_set_return)
+' (fall through to qbs_set_return)
 qbs_set_return:
-    if (srcstr->tmp) { // remove srcstr if it is a tmp string
-        qbs_free(srcstr);
-    }
-    // update cmem_descriptor [length][offset]
-    if (deststr->cmem_descriptor) {
-        deststr->cmem_descriptor[0] = deststr->len;
-        deststr->cmem_descriptor[1] = (uint16)(ptrszint)(deststr->chr - dblock);
-    }
-    return deststr;
-}
-
-qbs *qbs_add(qbs *str1, qbs *str2) {
-    qbs *tqbs;
-    if (!str2->len)
-        return str1; // pass on
-    if (!str1->len)
-        return str2; // pass on
-    // may be possible to acquire str1 or str2's space but...
-    // 1. check if dest has enough space (because its data is already in the correct place)
-    // 2. check if source has enough space
-    // 3. give up
-    // nb. they would also have to be a tmp, var. len str in ext memory!
-    // brute force method...
-    tqbs = qbs_new(str1->len + str2->len, 1);
-    memcpy(tqbs->chr, str1->chr, str1->len);
-    memcpy(tqbs->chr + str1->len, str2->chr, str2->len);
-
-    // exit(qbs_sp);
-    if (str1->tmp)
-        qbs_free(str1);
-    if (str2->tmp)
-        qbs_free(str2);
-    return tqbs;
-}
-
-void swap_string(qbs *a, qbs *b) {
-    static qbs *c;
-    c = qbs_new(a->len, 0);
-    memcpy(c->chr, a->chr, a->len);
-    qbs_set(a, b);
-    qbs_set(b, c);
-    qbs_free(c);
-}
-void swap_block(void *a, void *b, uint32 bytes) {
-    static uint32 quads;
-    quads = bytes >> 2;
-    static uint32 *a32, *b32;
-    a32 = (uint32 *)a;
-    b32 = (uint32 *)b;
-    while (quads--) {
-        static uint32 c;
-        c = *a32;
-        *a32++ = *b32;
-        *b32++ = c;
-    }
-    bytes &= 3;
-    static uint8 *a8, *b8;
-    a8 = (uint8 *)a32;
-    b8 = (uint8 *)b32;
-    while (bytes--) {
-        static uint8 c;
-        c = *a8;
-        *a8++ = *b8;
-        *b8++ = c;
-    }
-}
-extern ptrszint *qbs_tmp_list;
-template <typename T> static T qbs_cleanup(uint32 base, T passvalue) {
-    while (qbs_tmp_list_nexti > base) {
-        qbs_tmp_list_nexti--;
-        if (qbs_tmp_list[qbs_tmp_list_nexti] != -1)
-            qbs_free((qbs *)qbs_tmp_list[qbs_tmp_list_nexti]);
-    } // clear any temp. strings created
-    return passvalue;
-}
+    if (srcstr->tmp) then ' remove srcstr if it is a tmp string
+        qbs_free(srcstr)
+    end if
+    ' update mem64_descriptor [length][offset]
+    if (deststr->mem64_descriptor) then
+        deststr->mem64_descriptor[0] = deststr->len
+        deststr->mem64_descriptor[1] = peek(uint16,peek(ptrszint,@deststr->chr - dblock))
+    end if
+    return deststr
+end proc
 '/
+proc SYSTEM_BUS_T.qbs_add(str1 As qbs ptr, str2 As qbs ptr) As qbs ptr
+    dim tqbs as qbs ptr
+    if (str2->len = NULL) then
+        return str1 ' pass on
+    end if    
+    if (str1->len = NULL) then
+        return str2 ' pass on
+    end if    
+    ' may be possible to acquire str1 or str2's space but...
+    ' 1. check if dest has enough space (because its data is already in the correct place)
+    ' 2. check if source has enough space
+    ' 3. give up
+    ' nb. they would also have to be a tmp, var. len str in ext memory!
+    ' brute force method...
+    tqbs = qbs_new(str1->len + str2->len, 1)
+    memcpy(tqbs->chr, str1->chr, str1->len)
+    memcpy(tqbs->chr + str1->len, str2->chr, str2->len)
+
+    ' exit(qbs_sp)
+    if (str1->tmp) then
+        qbs_free(str1)
+    end if    
+    if (str2->tmp) then
+        qbs_free(str2)
+    end if    
+    return tqbs
+end proc
+
+proc SYSTEM_BUS_T.qbs_cleanup(ByVal _base As uint32, ByRef passvalue As Any Ptr) As Any Ptr
+    While qbs_tmp_list_nexti > _base
+        qbs_tmp_list_nexti = qbs_tmp_list_nexti - 1
+        If qbs_tmp_list[qbs_tmp_list_nexti] <> -1 Then
+            qbs_free(cast(qbs ptr, qbs_tmp_list[qbs_tmp_list_nexti]))
+        End If
+    Wend
+    Return passvalue
+end proc
 
 proc SYSTEM_BUS_T.func_lbound(array as ptrszint ptr, index as int32, num_indexes as int32) as ptrszint
     if ((index < 1) or (index > num_indexes) or ((array[2] and 1) = 0)) then
@@ -3101,31 +3933,78 @@ proc SYSTEM_BUS_T.qbr(f as double) as longint
 end proc
 
 proc SYSTEM_BUS_T.qbr_longdouble_to_uint64(f as double) as ulongint
-    if (f < 0) then
-        return (f - 0.5d)
-    else
-        return (f + 0.5d)
-    end if    
+    dim as int64 i = int(f)
+    if f >= i + 0.5 then
+        i += 1
+    end if
+    return i  
 end proc
 
 proc SYSTEM_BUS_T.qbr_float_to_long(f as float) as int64
-    if (f < 0) then
-        return (f - 0.5d)
-    else
-        return (f + 0.5d)
+    dim as int64 i = int(f)
+    if f >= i + 0.5 then
+        i += 1
     end if
+    return i
 end proc
 
 proc SYSTEM_BUS_T.qbr_double_to_long(f as float) as int32
-    if (f < 0) then
-        return (f - 0.5d)
-    else
-        return (f + 0.5d)
-    end if    
+    dim as int64 i = int(f)
+    if f >= i + 0.5 then
+        i += 1
+    end if
+    return i  
 end proc
 
 def SYSTEM_BUS_T.fpu_reinit() ' do nothing
 end def
+
+/'
+def SYSTEM_BUS_T.fpu_push(value as double)
+fpu_stack[fpu_stack_top] = value
+fpu_stack_top += 1
+if (fpu_stack_top > 7) then
+fpu_stack_top = 0
+end if
+end def
+
+def SYSTEM_BUS_T.fpu_pop() as double
+fpu_stack_top -= 1
+if (fpu_stack_top < 0) then
+fpu_stack_top = 7
+end if
+return fpu_stack[fpu_stack_top]
+end def
+
+def SYSTEM_BUS_T.fpu_add()
+dim as double op2 = fpu_pop()
+dim as double op1 = fpu_pop()
+fpu_push(op1 + op2)
+end def
+
+def SYSTEM_BUS_T.fpu_sub()
+dim as double op2 = fpu_pop()
+dim as double op1 = fpu_pop()
+fpu_push(op1 - op2)
+end def
+
+def SYSTEM_BUS_T.fpu_mul()
+dim as double op2 = fpu_pop()
+dim as double op1 = fpu_pop()
+fpu_push(op1 * op2)
+end def
+
+def SYSTEM_BUS_T.fpu_div()
+dim as double op2 = fpu_pop()
+dim as double op1 = fpu_pop()
+fpu_push(op1 / op2)
+end def
+
+def SYSTEM_BUS_T.fpu_sqrt()
+dim as double op = fpu_pop()
+fpu_push(sqrt(op))
+end def
+'/
 
 ' I/O emulation
 def SYSTEM_BUS_T.sub__blink(onoff as int32)
@@ -3337,31 +4216,45 @@ def SYSTEM_BUS_T.swap_8(a as any ptr, b as any ptr)
     poke uint8 ptr,@a,peek(uint8 ptr,@b)
     poke uint8 ptr,@b,peek(uint8 ptr,@x)
 end def
+
 def SYSTEM_BUS_T.swap_16(a as any ptr, b as any ptr)
     dim as uint16 ptr x
-    poke uint16 ptr,@x,peek(uint16 ptr,@x)
+    poke uint16 ptr,@x,peek(uint16 ptr,@a)
     poke uint16 ptr,@a,peek(uint16 ptr,@b)
     poke uint16 ptr,@b,peek(uint16 ptr,@x)
 end def    
+
 def SYSTEM_BUS_T.swap_32(a as any ptr, b as any ptr)
     dim as uint32 ptr x
     poke uint32 ptr,@x,peek(uint32 ptr,@a)
     poke uint32 ptr,@a,peek(uint32 ptr,@b)
     poke uint32 ptr,@b,peek(uint32 ptr,@x)
 end def
+
 def SYSTEM_BUS_T.swap_64(a as any ptr, b as any ptr)
     dim as uint64 ptr x
     poke uint64 ptr,@x,peek(uint64 ptr,@a)
     poke uint64 ptr,@a,peek(uint64 ptr,@b)
     poke uint64 ptr,@b,peek(uint64 ptr,@x)
 end def
+
 def SYSTEM_BUS_T.swap_longdouble(a  as any ptr, b as any ptr)
     dim as float ptr x
     poke float ptr,@x,peek(float ptr,@a)
     poke float ptr,@a,peek(float ptr,@b)
     poke float ptr,@b,peek(float ptr,@x)
 end def
-def swap_block(a as any ptr, b as any ptr, bytes as uint32)
+
+def SYSTEM_BUS_T.swap_string(a as qbs ptr, b as qbs ptr)
+    static as qbs ptr c
+    c = qbs_new(a->len,0)
+    memcpy(c->chr,a->chr,a->len)
+    qbs_set(a,b)
+    qbs_set(b,c)
+    qbs_free(c)
+end def
+
+def SYSTEM_BUS_Tswap_block(a as any ptr, b as any ptr, bytes as uint32)
     static as uint32 quads
     quads = bytes shr 2
     static as uint32 ptr a32
@@ -3389,6 +4282,62 @@ def swap_block(a as any ptr, b as any ptr, bytes as uint32)
     wend
 end def
 
+' a740g: ROR & ROL additions start
+' The rotation functions below are the way they are for a couple of reasons:
+'  1. They are safer (well folks seem to think so; see:
+'     https://en.wikipedia.org/wiki/Circular_shift#Implementing_circular_shifts)
+'  2. We are using C library constants and there is just 1 numeric literal - '1'
+'  3. GGC recognizes the 'pattern' and will optimize it out to 'roX' and
+'     3 more instructions when using O2
+
+proc SYSTEM_BUS_T.func__rol8(value as uint8, count as uint8) as uint8
+   const mask as uint8 = 8 * sizeOf(value) - 1
+   count = count and mask
+   return (value shl count) or (value shr (not count and mask))
+end proc
+
+proc SYSTEM_BUS_T.func__ror8(value as uint8, count as uint8) as uint8
+   const mask as uint8 = 8 * sizeOf(value) - 1
+   count = count and mask
+   return (value shr count) or (value shl (not count and mask))
+end proc
+
+proc SYSTEM_BUS_T.func__rol16(value as uint16, count as uint16) as uint16
+   const mask as uint16 = 8 * sizeOf(value) - 1
+   count = count and mask
+   return (value shl count) or (value shr (not count and mask))
+end proc
+
+proc SYSTEM_BUS_T.func__ror16(value as uint16, count as uint16) as uint16
+   const mask as uint16 = 8 * sizeOf(value) - 1
+   count = count and mask
+   return (value shr count) or (value shl (not count and mask))
+end proc
+
+proc SYSTEM_BUS_T.func__rol32(value as uint32, count as uint32) as uint32
+   const mask as uint32 = 8 * sizeOf(value) - 1
+   count = count and mask
+   return (value shl count) or (value shr (not count and mask))
+end proc
+
+proc SYSTEM_BUS_T.func__ror32(value as uint32, count as uint32) as uint32
+   const mask as uint32 = 8 * sizeOf(value) - 1
+   count = count and mask
+   return (value shr count) or (value shl (not count and mask))
+end proc
+
+proc SYSTEM_BUS_T.func__rol64(value as uint64, count as uint64) as uint64
+   const mask as uint64 = 8 * sizeOf(value) - 1
+   count = count and mask
+   return (value shl count) or (value shr (not count and mask))
+end proc
+
+proc SYSTEM_BUS_T.func__ror64(value as uint64, count as uint64) as uint64
+   const mask as uint64 = 8 * sizeOf(value) - 1
+   count = count and mask
+   return (value shr count) or (value shl (not count and mask))
+end proc
+
 ' bit-shifting
 proc SYSTEM_BUS_T.func__shl(a1 as uint64, b1 as int_t) as uint64
    return a1 shl b1
@@ -3398,14 +4347,13 @@ proc SYSTEM_BUS_T.func__shr(a1 as uint64, b1 as int_t) as uint64
    return a1 shr b1
 end proc   
 
-proc SYSTEM_BUS_T.func__readbit(a1 as uint64, b1 as int_t) as uint64
+proc SYSTEM_BUS_T.func__readbit(a1 as uint64, b1 as int_t) as int64
     if (a1 and 1ull shl b1) then
         return -1
     else
         return 0
     end if
 end proc
-
 
 proc SYSTEM_BUS_T.func__setbit(a1 as uint64, b1 as int_t) as uint64 
     return a1 or 1ull shl b1
@@ -3438,6 +4386,15 @@ proc SYSTEM_BUS_T.getbits(bsize as uint32, _base as uint8 ptr, i as ptrszint) as
     return bval64
 end proc
 
+def SYSTEM_BUS_T.setbits(bsize as uint32, _base as uint8 ptr, i as ptrszint, val as int64)
+    static as int64 bmask = 1
+    static as uint64 ptr bptr64
+    bmask = ((peek(uint64, @bmask) shl bsize) - 1)
+    i *= bsize
+    bptr64 = cptr(uint64 ptr, _base + (i shr 3))
+    *bptr64 = (*bptr64 and (((bmask shl (i and 7)) xor -1))) or ((val and bmask) shl (i and 7))
+end def
+
 proc SYSTEM_BUS_T.call_getubits  (bsize as uint32, array as ptrszint ptr, i as ptrszint) as uint64
     return getubits(bsize, peek(uint8 ptr, *cptr(ptrszint ptr,array)), i)
 end proc
@@ -3448,15 +4405,6 @@ end proc
 
 def SYSTEM_BUS_T.call_setbits   (bsize as uint32, array as ptrszint ptr, i as ptrszint, _val as int64)
     setbits(bsize, peek(uint8 ptr, *cptr(ptrszint ptr,array)), i, _val)
-end def
-
-def  SYSTEM_BUS_T.setbits(bsize as uint32, _base as uint8 ptr, i as ptrszint, _val as int64)
-    static as int64 bmask,n=1
-    static as uint64 ptr bptr64
-    bmask = ((peek(uint64,@n)) shl bsize) - 1
-    i *= bsize
-    bptr64 = peek(uint64 ptr,(_base + (i shr 3)))
-    *bptr64 = (*cptr(uint64 ptr,bptr64) and (((bmask shl (i and 7)) xor -1))) or ((_val and bmask) shl (i and 7))
 end def
 
 ' CSNG
@@ -3680,6 +4628,15 @@ proc SYSTEM_BUS_T.check_ubound(array as ptrszint ptr, index as int32, num_indexe
     return ret
 end proc
 
+proc SYSTEM_BUS_T.array_check(index as uptrszint, limit as uptrszint) as ptrszint
+    if index < limit then
+        return index
+    else
+        error(9)
+        return 0
+    end if
+end proc
+
 proc SYSTEM_BUS_T.logical_drives() as int32
 #ifdef QB64_WINDOWS
     return GetLogicalDrives()
@@ -3688,184 +4645,91 @@ proc SYSTEM_BUS_T.logical_drives() as int32
 #endif
 end proc
 
-proc SYSTEM_BUS_T.func_sgn(v as uint8) as int32
-    if (v) then
-        return 1
-    else
-        return 0
-    end if    
+proc SYSTEM_BUS_T.func_sgn(v as uint8)    as int32
+  return k_sign(v)
 end proc
 
-proc SYSTEM_BUS_T.func_sgn(v as int8) as int32
-    if (v) then
-        if (v > 0)then
-            return 1
-        else
-            return -1
-        end if
-    end if        
-    return 0
+proc SYSTEM_BUS_T.func_sgn(v as int8)     as int32
+  return k_sign(v)
 end proc
 
-proc SYSTEM_BUS_T.func_sgn(v as uint16) as int32
-    if (v) then
-        return 1
-    else
-        return 0
-    end if
+proc SYSTEM_BUS_T.func_sgn(v as uint16)   as int32
+  return k_sign(v)
 end proc
 
-proc SYSTEM_BUS_T.func_sgn(v as int16) as int32
-    if (v) then
-        if (v > 0) then
-            return 1
-        else
-            return -1
-        end if
-    end if        
-    return 0
+proc SYSTEM_BUS_T.func_sgn(v as int16)    as int32
+  return k_sign(v)
 end proc
 
-proc SYSTEM_BUS_T.func_sgn(v as uint32) as int32
-    if (v) then
-        return 1
-    else
-        return 0
-    end if    
+proc SYSTEM_BUS_T.func_sgn(v as uint32)   as int32
+  return k_sign(v)
 end proc
 
-proc SYSTEM_BUS_T.func_sgn(v as int32) as int32
-    if (v) then
-        if (v > 0) then
-            return 1
-        else
-            return -1
-       end if
-    end if        
-    return 0
+proc SYSTEM_BUS_T.func_sgn(v as int32)    as int32
+  return k_sign(v)
 end proc
 
-proc SYSTEM_BUS_T.func_sgn(v as uint64) as int32
-    if (v) then
-        return 1
-    else
-        return 0
-    end if
+proc SYSTEM_BUS_T.func_sgn(v as uint64)   as int32
+  return k_sign(v)
 end proc
 
-proc SYSTEM_BUS_T.func_sgn(v as int64) as int32
-    if (v) then
-        if (v > 0) then
-            return 1
-        else
-            return -1
-        end if
-    end if        
-    return 0
+proc SYSTEM_BUS_T.func_sgn(v as int64)    as int32
+  return k_sign(v)
 end proc
 
-proc SYSTEM_BUS_T.func_sgn(v as single) as int32
-    if (v) then
-        if (v > 0) then
-            return 1
-        else
-            return -1
-        end if
-    end if        
-    return 0
+proc SYSTEM_BUS_T.func_sgn(v as single)   as int32
+  return k_sign(v)
 end proc
 
-proc SYSTEM_BUS_T.func_sgn(v as float) as int32
-    if (v) then
-        if (v > 0) then
-            return 1
-        else
-            return -1
-        end if
-    end if        
-    return 0
+proc SYSTEM_BUS_T.func_sgn(v as float)    as int32
+  return k_sign(v)
 end proc
 
 proc SYSTEM_BUS_T.func_sgn(v as FLOAT128) as int32
-    if (v) then
-        if (v > 0) then
-            return 1
-        else
-            return -1
-        end if
-    end if        
-    return 0
+  return k_sign(v)
 end proc
 
 proc SYSTEM_BUS_T.func_sgn(v as FLOAT256) as int32
-    if (v) then
-        if (v > 0) then
-            return 1
-        else
-            return -1
-        end if
-    end if        
-    return 0
+  return k_sign(v)
 end proc
 
 proc SYSTEM_BUS_T.func_sgn(v as FLOAT512) as int32
-    if (v) then
-        if (v > 0) then
-            return 1
-        else
-            return -1
-        end if
-    end if        
-    return 0
+  return k_sign(v)
 end proc
 
 ' Working with 32bit colors:
 proc SYSTEM_BUS_T.func__rgb32(r as int32, g as int32, b as int32, a as int32) as uint32
-    if (r < 0) then r = 0
-    if (r > 255) then r = 255
-    if (g < 0) then g = 0
-    if (g > 255) then g = 255
-    if (b < 0) then b = 0
-    if (b > 255) then b = 255
-    if (a < 0) then a = 0
-    if (a > 255) then a = 255
-    return (a shl 24) + (r shl 16) + (g shl 8) + b
+   r = k_clamp(r, 0, 255)
+   g = k_clamp(g, 0, 255)
+   b = k_clamp(b, 0, 255)
+   a = k_clamp(a, 0, 255)
+   return (a shl 24) + (r shl 16) + (g shl 8) + b
 end proc
 
 proc SYSTEM_BUS_T.func__rgb32(r as int32, g as int32, b as int32) as uint32
-    if (r < 0) then r = 0
-    if (r > 255) then r = 255
-    if (g < 0) then g = 0
-    if (g > 255) then g = 255
-    if (b < 0) then b = 0
-    if (b > 255) then b = 255
+    r = k_clamp(r, 0, 255)
+    g = k_clamp(g, 0, 255)
+    b = k_clamp(b, 0, 255)
     return (r shl 16) + (g shl 8) + b or &HFF000000
 end proc
 
 proc SYSTEM_BUS_T.func__rgb32(i as int32, a as int32) as uint32
-    if (i < 0) then i = 0
-    if (i > 255) then i = 255
-    if (a < 0) then a = 0
-    if (a > 255) then a = 255
+    i = k_clamp(i, 0, 255)
+    a = k_clamp(a, 0, 255)
     return (a shl 24) + (i shl 16) + (i shl 8) + i
 end proc
 
 proc SYSTEM_BUS_T.func__rgb32(i as int32) as uint32
-    if (i < 0) then i = 0
-    if (i > 255) then i = 255
-    return (i shl 16) + (i shl 8) + i or &HFF000000
+   i = k_clamp(i, 0, 255)
+   return (i shl 16) + (i shl 8) + i or &HFF000000
 end proc
 
 proc SYSTEM_BUS_T.func__rgba32(r as int32, g as int32, b as int32, a as int32) as uint32
-    if (r < 0) then r = 0
-    if (r > 255) then r = 255
-    if (g < 0) then g = 0
-    if (g > 255) then g = 255
-    if (b < 0) then b = 0
-    if (b > 255) then b = 255
-    if (a < 0) then a = 0
-    if (a > 255) then a = 255
-    return (a shl 24) + (r shl 16) + (g shl 8) + b
+   r = k_clamp(r, 0, 255)
+   g = k_clamp(g, 0, 255)
+   b = k_clamp(b, 0, 255)
+   a = k_clamp(a, 0, 255)
+   return (a shl 24) + (r shl 16) + (g shl 8) + b
 end proc
 
 proc SYSTEM_BUS_T.func__alpha32(col as uint32) as int32 
@@ -3877,7 +4741,7 @@ proc SYSTEM_BUS_T.func__red32(col as uint32)  as int32
 end proc
 
 proc SYSTEM_BUS_T.func__green32(col as uint32) as int32
-     return col shl 8 and &HFF
+     return col shr 8 and &HFF
 end proc
 
 proc SYSTEM_BUS_T.func__blue32(col as uint32) as int32
@@ -3887,9 +4751,9 @@ end proc
 proc SYSTEM_BUS_T.varptr_dblock_check(off as uint8 ptr) as uint16
     ' note: 66816 is the top of DBLOCK (SEG:80+OFF:65536)
     if (off < peek(uint8 ptr,@mem64(66816))) then ' in DBLOCK?
-       return ((off - peek(uint8 ptr,@mem64(1280))))
+       return cast(uint16,((off - peek(uint8 ptr,@mem64(1280)))))
     else
-       return ((off - peek(uint8 ptr,@mem64(0)))) and 15
+       return cast(uint16,((off - peek(uint8 ptr,@mem64(0))))) and 15
     end if
 end proc
 
@@ -5153,7 +6017,45 @@ def SYSTEM_BUS_T.pokeb(byval adr  as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
 		case &H000DFF1E0 ' VSSTRT   new   W  A       Vertical sync start   (VARVSY)
 		case &H000DFF1E2 ' HCENTER  new   W  A       Horizontal position for Vsync on interlace
 		case &H000DFF1E4 ' DIWHIGH  new   W  A,D     Display window -  upper bits for start, stop
-    end select        
+    end select
+  /'
+  The following two case statements are used to determine which memory location should be updated with the current
+  foreground and.or background color values.The color values are stored in the form of a 32-bit integer in ARGB
+  format, which consists of four 8-bit values representing the alpha, red, green, and blue channels of the color
+  being displayed.
+
+  In the LD_FG_RGBA_PTR case, the code retrieves the values of the alpha, red, green, and blue channels from the 
+  memory locations specified by FG_ALPHA_PTR, FG_RED_PTR, FG_GREEN_PTR, and FG_BLUE_PTR, respectively. These values
+  are then combined using bit shifting and addition operations to form a 32-bit integer in ARGB format. The resulting
+  value is then written to the memory location specified by LD_FG_COLOR_PTR using the poke statement. This updates the
+  foreground color with the current color value.
+
+  Similarly, in the LD_BG_RGBA_PTR case, the code retrieves the values of the alpha, red, green, and blue channels
+  from the memory locations specified by BG_ALPHA_PTR, BG_RED_PTR, BG_GREEN_PTR, and BG_BLUE_PTR, respectively.
+  These values are combined in the same way as in the LD_FG_RGBA_PTR case to form a 32-bit integer in ARGB format,
+  which is then written to the memory location specified by LD_BG_COLOR_PTR. This updates the background color with
+  the current color value.
+  '/  
+  case LD_FG_RGBA_PTR ' Load Forground Color RGBA
+        poke SYSTEM_TYPE,@mem64(LD_FG_COLOR_PTR), _
+	                    _ '                      alpha=$C005(49157)
+	                     peek(SYSTEM_TYPE,@mem64(FG_ALPHA_PTR)) shl 24_
+	                   _ '                       red=$C002(49154)
+	                 add peek(SYSTEM_TYPE,@mem64(FG_RED_PTR))   shl 16  _
+	                   _ '                       green=$C003(49155)
+	                 add peek(SYSTEM_TYPE,@mem64(FG_GREEN_PTR)) shl 8  _
+	                   _ '                       blue=$C004(49156)                	      
+	                 add peek(SYSTEM_TYPE,@mem64(FG_BLUE_PTR))
+  case LD_BG_RGBA_PTR ' Load Background Color RGBA
+        poke SYSTEM_TYPE,@mem64(LD_BG_COLOR_PTR), _
+	                    _ '                      alpha=$C009(49161)
+	                     peek(SYSTEM_TYPE,@mem64(BG_ALPHA_PTR)) shl 24_
+	                   _ '                       red=$C006(49158)
+	                 add peek(SYSTEM_TYPE,@mem64(BG_RED_PTR))   shl 16  _
+	                   _ '                       green=$C007(49159)
+	                 add peek(SYSTEM_TYPE,@mem64(BG_GREEN_PTR)) shl 8  _
+	                   _ '                       blue=$C008(49160)                	      
+	                 add peek(SYSTEM_TYPE,@mem64(BG_BLUE_PTR))	                           
   end select  
 end def
 
@@ -5693,140 +6595,52 @@ L2086:
      'ScreenRes 1920d,1080d, 32d, 7d, logic_or(GFX_FULLSCREEN, GFX_ALPHA_PRIMITIVES): Cls
      ScreenRes 1920, 1080, 32, 7, GFX_ALPHA_PRIMITIVES: Cls
      paint(0,0), rgba(0, 0, 0, 255)   
-#endif     	  
-  ' label$3129:;
-  ' goto label$3124;
-  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
-  '                      + (int64)*(uint8*)4808098ll) ) goto label$3131;
-  ' label$3132:;
-  ' {
-  ' Foreground Red=$C002(49154)
-	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)) 
-  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
-  '        + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) \
-  '       << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 \
-  '        + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) \
-  '       << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) \
-  '        + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 \
-  '        + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) \
-  '       << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) \
-  '        & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll \
-  '       << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) \
-  '       << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll \
-  '       << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
-  '                          fg_color=$C0C9(49353)
-     poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
-	                     add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
-	                     add peek(ubyte,@nibbles(&B1001))), _
-	                    _ '                      alpha=$C005(49157)
-	                     peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100))    shl  peek(ubyte,@nibbles(&B1100))  _
-	                                         add peek(ubyte,@nibbles(&B0101))))  shl (peek(ubyte,@nibbles(&B0001))  _
-	                                         shl peek(ubyte,@nibbles(&B0100))    add  peek(ubyte,@nibbles(&B1000))) _
-	                   _ '                       red=$C002(49154)
-	                 add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100))    shl  peek(ubyte,@nibbles(&B1100)) _
-	                                         add peek(ubyte,@nibbles(&B0010))))  shl (peek(ubyte,@nibbles(&B0001)) _
-	                                         shl peek(ubyte,@nibbles(&B0100)))   _
-	                   _ '                       green=$C003(49155)
-	                 add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100))    shl  peek(ubyte,@nibbles(&B1100))  _
-	                                         add peek(ubyte,@nibbles(&B0011))))  shl  peek(ubyte,@nibbles(&B1000))  _
-	                   _ '                       blue=$C003(49156)                	      
-	                 add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100))    shl  peek(ubyte,@nibbles(&B1100))  _
-	                                         add peek(ubyte,@nibbles(&B0100))))
-  ' }
-  ' goto label$3124;
-  ' label$3131:;
-  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
-  '                      + (int64)*(uint8*)4808099ll) ) goto label$3133;
-  ' label$3134:;
-  ' {
-  ' Foreground Green=$C003(49155)
- 	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011))
-  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
-  '                              + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) \
-  '                              + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) \
-  '                  = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 \
-  '                           + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
-  '                              + (int64)*(uint8*)4808101ll) << (3ll & 63ll))) )) \
-  '                          << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + \
-  '                                (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( \
-  '                             *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll \
-  '                             << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) \
-  '                             << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll \
-  '                             << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) \
-  '                             + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 \
-  '                             + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
-  '                                + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) \
-  '                              << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 \
-  '                             + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) \
-  '                                + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
-  '                          fg_color=$C0C9(49353)                                                                                                                                                                     alpha=$C005(49157)                                                                                                                                                                                                                red=$C002(49154)                                                                                                                                                                                 green=$C003(49155)                                                                                                                                            blue=$C003(49156)                	     
-	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100))))
-  ' }
-  ' goto label$3124;
-  ' label$3133:;
-  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) ) goto label$3135;
-  ' label$3136:;
-  ' {
-  ' Foreground Blue=$C003(49156)  
-	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100))
-  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
-  '                          fg_color=$C0C9(49353)                                                                                                                                                                     alpha=$C005(49157)                                                                                                                                                                                                                red=$C002(49154)                                                                                                                                                                                 green=$C003(49155)                                                                                                                                            blue=$C003(49156)                	     
-	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100))))
-  ' }
-  ' goto label$3124;
-  ' label$3135:;
-  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) ) goto label$3137;
-  ' label$3138:;
-  ' {
-  ' Foreground Alpha=$C004(49357)
-	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101))
-  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808101ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808098ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808099ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808100ll) << (3ll & 63ll)));
-  '                          fg_color=$C0C9(49353)                                                                                                                                                                alpha=$C005(49157)                                                                                                                                                                                                                red=$C002(49154)                                                                                                                                                                                 green=$C003(49155)                                                                                                                                            blue=$C003(49156)                	     
-	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0101)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0010)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0011)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0100))))
-  ' }
-  ' goto label$3124;
-  ' label$3137:;
-  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) ) goto label$3139;
-  ' label$3140:;
-  ' {
-  ' Background Red=$C005(49358)
-	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110))
-  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808106ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) << (3ll & 63ll)));
-  '                          bg_color=$C0CA(49354)                                                                                                                                                                alpha=$C009(49161)                                                                                                                                                                                                                red=$C006(49158)                                                                                                                                                                                 green=$C007(49159)                                                                                                                                            blue=$C008(49160)
-	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000))))
-  ' }
-  ' goto label$3124;
-  ' label$3139:;
-  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) ) goto label$3141;
-  ' label$3142:;
-  ' {
-  ' Background Green=$C006(49359)
-	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111))
-  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808106ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) << (3ll & 63ll)));
-  '                          bg_color=$C0CA(49354)                                                                                                         alpha=$C009(49161)                                                                                                                                         red=$C006(49158)                                                                                                                     green=$C007(49159)                                                                                           blue=$C008(49160)
-	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000))))
-  ' }
-  ' goto label$3124;
-  ' label$3141:;
-  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) ) goto label$3143;
-  ' label$3144:;
-  ' Background Blue=$C007(49360)
-	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000)) 
-  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808106ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) << (3ll & 63ll)));
-  '                          bg_color=$C0CA(49354)                                                                                                         alpha=$C009(49161)                                                                                                                                         red=$C006(49158)                                                                                                                     green=$C007(49159)                                                                                           blue=$C008(49160)
-	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1010))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000))))
-  ' }
-  ' goto label$3124;
-  ' label$3143:;
-  ' if( ADR$1 != (double)(((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) ) goto label$3145;
-  ' label$3146:;
-  ' {
-  ' Background Alapha=$C008(49361)
-	case peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001))
-  ' *(double*)((uint8*)THIS$1 + (((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + ((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808100ll & 63ll))) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) = (double)(((((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808105ll) << (3ll & 63ll))) )) << ((((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) + (int64)*(uint8*)4808104ll) & 63ll)) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808102ll) << (3ll & 63ll))) )) << (((int64)*(uint8*)4808097ll << ((int64)*(uint8*)4808100ll & 63ll)) & 63ll))) + (((int64)__builtin_nearbyint( *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808103ll) << (3ll & 63ll))) )) << ((int64)*(uint8*)4808104ll & 63ll))) + *(double*)((uint8*)THIS$1 + ((((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll)) + (int64)*(uint8*)4808104ll) << (3ll & 63ll)));
-  '                          bg_color=$C0CA(49354)                                                                                                                                                  alpha=$C009(49161)                                                                                                                                                                                                                                   red=$C006(49158)                                                                                                                                                                                 green=$C007(49159)                                                                                           blue=$C008(49160)
-	 poke SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))),peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1001)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0110)))) shl (peek(ubyte,@nibbles(&B0001)) shl peek(ubyte,@nibbles(&B0100))) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B0111)))) shl peek(ubyte,@nibbles(&B1000)) add peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1000))))
-  ' }
+#endif
+
+   /'
+   The case statements are used to select which memory address should be updated based on the value of the case
+   selector. In this case, the case selector is one of the following constants: FG_RED_PTR, FG_GREEN_PTR, 
+   FG_BLUE_PTR, FG_ALPHA_PTR, BG_RED_PTR, BG_GREEN_PTR, BG_BLUE_PTR, or BG_ALPHA_PTR.
+   
+   For each of these constants, the corresponding memory address is updated with the current color value in ARGB
+   format using the pokeb function. The pokeb function takes two arguments: the memory address to update, and the
+   value to be stored at that address. In this case, the memory address is either LD_FG_RGBA_PTR or LD_BG_RGBA_PTR,
+   which are the addresses of the foreground and background RGBA color update functions, respectively. The value to
+   be stored is 0, which means that the current color value in ARGB format will be overwritten with a new value.
+   
+   t's worth noting that the pokeb function is used to store a single byte at the specified memory address, rather
+   than the entire color value in ARGB format. This means that the color value is being stored in multiple memory 
+   addresses, with each byte of the value being stored at a different address.
+
+   For example, if the current foreground color value is &hFF00FF00 (a fully opaque green color in ARGB format), 
+   this value would be stored in four separate memory addresses using the pokeb function. The first byte (FF) would
+   be stored at the address specified by FG_ALPHA_PTR, the second byte (00) would be stored at the address specified
+   by FG_RED_PTR, the third byte (FF) would be stored at the address specified by FG_GREEN_PTR, and the fourth 
+   byte(00) would be stored at the address specified by FG_BLUE_PTR.
+
+   It's also worth noting that the LD_FG_RGBA_PTR and LD_BG_RGBA_PTR memory addresses are the addresses of functions
+   that are responsible for updating the foreground and background colors, respectively. When these functions are
+   called using the pokeb function, they will use the current values stored in FG_ALPHA_PTR, FG_RED_PTR,
+   FG_GREEN_PTR, and FG_BLUE_PTR (for the foreground color) or BG_ALPHA_PTR, BG_RED_PTR, BG_GREEN_PTR, and
+   BG_BLUE_PTR (for the background color) to update the foreground or background color.
+   '/
+   
+   ' Foreground Red=$C002(49154)    Load Forground Color RGBA=$000E00000(14680064)
+	case FG_RED_PTR:                pokeb(LD_FG_RGBA_PTR, 0)
+   ' Foreground Green=$C003(49155)  Load Forground Color RGBA=$000E00000(14680064)
+ 	case FG_GREEN_PTR:              pokeb(LD_FG_RGBA_PTR, 0)
+  ' Foreground Blue=$C004(49156)    Load Forground Color RGBA=$000E00000(14680064)
+	case FG_BLUE_PTR:               pokeb(LD_FG_RGBA_PTR, 0)  
+  ' Foreground Alpha=$C004(49357)   Load Forground Color RGBA=$000E00000(14680064)
+	case FG_ALPHA_PTR:              pokeb(LD_FG_RGBA_PTR, 0)  
+  ' Background Red=$C005(49358)     Load Background Color RGBA=$000E00001(14680065)
+	case BG_RED_PTR:                pokeb(LD_BG_RGBA_PTR, 0)  
+  ' Background Green=$C006(49359)   Load Background Color RGBA=$000E00001(14680066)
+	case BG_GREEN_PTR:              pokeb(LD_BG_RGBA_PTR, 0)  
+  ' Background Blue=$C007(49360)    Load Background Color RGBA=$000E00001(14680066)
+	case BG_BLUE_PTR:               pokeb(LD_BG_RGBA_PTR, 0) 
+  ' Background Alapha=$C008(49361)  Load Background Color RGBA=$000E00001(14680066)
+	case BG_ALPHA_PTR:              pokeb(LD_BG_RGBA_PTR, 0)
 #if defined(__FB_LINUX__)  or defined(__FB_CYGWIN__)  or defined(__FB_FREEBSD__) or _
     defined(__FB_NETBSD__) or defined(__FB_OPENBSD__) or defined(__FB_DARWIN__)  or defined(__FB_XBOX__) or _
     defined(__FB_UNIX__)   or defined(__FB_64BIT__)   or defined(__FB_ARM__)
@@ -6424,8 +7238,7 @@ L2086:
 		          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
 		          
 		'                                 fg_red=$C002(49154)
-	    computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))    shl  peek(ubyte,@nibbles(&B1100)) _
-	                                 add  peek(ubyte,@nibbles(&B0010)),_
+	    computer.cpu_mos6510->mem->poke64(FG_RED_PTR,_
 		                       (((v subt  peek(ubyte,@nibbles(&B0001))    shl  peek(ubyte,@nibbles(&B0100))) _
 		                             mod (peek(ubyte,@nibbles(&B1111))    shl  peek(ubyte,@nibbles(&B0100)) _
 		                             add  peek(ubyte,@nibbles(&B1111))))  mul (peek(ubyte,@nibbles(&B0001)) _
@@ -6437,8 +7250,7 @@ L2086:
 		          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
 
 	    '                                  fg_grn=$C003(49155)  
-		 computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))   shl  peek(ubyte,@nibbles(&B1100)) _
-		                              add  peek(ubyte,@nibbles(&B0011)),_
+		 computer.cpu_mos6510->mem->poke64(FG_GREEN_PTR,_
 		                        (((v subt  peek(ubyte,@nibbles(&B0010))   shl  peek(ubyte,@nibbles(&B0100))) _
 		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
 		                              add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
@@ -6450,8 +7262,7 @@ L2086:
 		          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
 
 		'                                  fg_blu=$C004(49156)		          
-		 computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))   shl  peek(ubyte,@nibbles(&B1100)) _
-		                              add  peek(ubyte,@nibbles(&B0100)),_
+		 computer.cpu_mos6510->mem->poke64(FG_BLUE_PTR,_
 		                        (((v subt  peek(ubyte,@nibbles(&B0011))   shl  peek(ubyte,@nibbles(&B0100))) _
 		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
 		                              add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
@@ -6463,8 +7274,7 @@ L2086:
      	case else
      	
 '                                          fg_alph=$C005(49157)
-     	 computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))   shl  peek(ubyte,@nibbles(&B1100)) _
-     	                              add  peek(ubyte,@nibbles(&B0101)),_
+     	 computer.cpu_mos6510->mem->poke64(FG_ALPHA_PTR,_
      	                        (((v subt  peek(ubyte,@nibbles(&B0100))   shl  peek(ubyte,@nibbles(&B0100))) _
      	                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
      	                              add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
@@ -6494,8 +7304,7 @@ L2086:
 		          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
 
 '                                          bg_red=$C005(49158)				
-		 computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))   shl  peek(ubyte,@nibbles(&B1100)) _
-		                              add  peek(ubyte,@nibbles(&B0110)),_
+		 computer.cpu_mos6510->mem->poke64(BG_RED_PTR,_
 		                        (((v subt  peek(ubyte,@nibbles(&B0001))   shl  peek(ubyte,@nibbles(&B0100))) _
 		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
 		                              add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
@@ -6507,8 +7316,7 @@ L2086:
 		          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
 		          
 '                                          bg_grn=$C006(49159)		          
-		 computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))   shl  peek(ubyte,@nibbles(&B1100)) _
-		                              add  peek(ubyte,@nibbles(&B0111)), _
+		 computer.cpu_mos6510->mem->poke64(BG_GREEN_PTR, _
 		                        (((v subt  peek(ubyte,@nibbles(&B0010))   shl  peek(ubyte,@nibbles(&B0100))) _
 		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
 		                              add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
@@ -6520,8 +7328,7 @@ L2086:
 		          shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111)))
 
 '                                          bg_blu=$C007(49160)		          
-		 computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))   shl peek(ubyte,@nibbles(&B1100)) _
-		                              add  peek(ubyte,@nibbles(&B1000)),_
+		 computer.cpu_mos6510->mem->poke64(BG_BLUE_PTR,_
 		                         (((v subt peek(ubyte,@nibbles(&B0011))   shl  peek(ubyte,@nibbles(&B0100))) _
 		                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
 		                              add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
@@ -6532,8 +7339,7 @@ L2086:
      	case else
      	
 '                                          bg_aph=$C008(49161)    	
-     	 computer.cpu_mos6510->mem->poke64(peek(ubyte,@nibbles(&B1100))   shl  peek(ubyte,@nibbles(&B1100)) _
-     	                              add  peek(ubyte,@nibbles(&B1001)), _
+     	 computer.cpu_mos6510->mem->poke64(BG_ALPHA_PTR, _
      	                         (((v subt peek(ubyte,@nibbles(&B0100))   shl  peek(ubyte,@nibbles(&B0100))) _
      	                              mod (peek(ubyte,@nibbles(&B1111))   shl  peek(ubyte,@nibbles(&B0100)) _
      	                              add  peek(ubyte,@nibbles(&B1111)))) mul (peek(ubyte,@nibbles(&B0001)) _
@@ -6597,7 +7403,7 @@ L2086:
                    add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
                    add peek(ubyte,@nibbles(&B1111))))),_
                   _
-                  _'        fg_color=$C0CA(49354)  
+                  _'        bg_color=$C0CA(49354)  
                        peek(SYSTEM_TYPE,@mem64(peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100)) _
                    add peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B0100)) _
                    add peek(ubyte,@nibbles(&B1010)))), BF
@@ -7576,7 +8382,7 @@ L2086:
                                  peek(SYSTEM_TYPE,@mem64(49368)))
        '                                                 r7
      end select
-   case 49645 ' 12ox60 PETSCII Graphics
+   case 49645 ' 120x60 PETSCII Graphics
      select case peek(SYSTEM_TYPE,@v) ' + x + 120 * (60 - y)
 
 	   '              120x60 framebuffer                      r0                                          r1

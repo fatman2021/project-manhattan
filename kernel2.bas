@@ -2043,6 +2043,44 @@ proc SYSTEM_BUS_T.k_sqrtf(arg as float) as float
 	return temp
 end proc
 
+proc SYSTEM_BUS_T.k_cos(arg as float) as float
+ 	dim as float result = arg
+    dim as int_t i
+	asm 
+        fld qword ptr [result]
+        fcos
+        fst qword ptr [result]        
+    end asm
+	return result
+end proc
+
+proc SYSTEM_BUS_T.k_sin(arg as float) as float
+ 	dim as float result = arg
+    dim as int_t i
+	asm 
+        fld qword ptr [result]
+        fsin
+        fst qword ptr [result]        
+    end asm
+	return result
+end proc
+
+proc SYSTEM_BUS_T.k_cosf(arg as float) as float
+     return k_cos(arg) 
+end proc
+
+proc SYSTEM_BUS_T.k_sinf(arg as float) as float
+     return k_sin(arg) 
+end proc
+
+proc SYSTEM_BUS_T.k_fcos(arg as float) as float
+     return k_cosf(arg)
+end proc
+
+proc SYSTEM_BUS_T.k_fsin(arg as float) as float
+     return k_sinf(arg)
+end proc
+
 ' kernel mode OpenGL shader language
 ' OpenGL shader language http://www.shaderific.com/glsl-functions/
 
@@ -3272,6 +3310,11 @@ end proc
 ' Returns binomial coefficient without explicit use of factorials,
 ' which can't be used with negative integers
 
+/'
+ ' In the k_pascalTriangle function, you are using the for i = 0 to b loop, but you are using the variable i
+ ' in the loop instead of b. It should be for i = 0 to b, and the calculation should be result *= (a - i) / (b + 1).
+ '/
+ 
 proc SYSTEM_BUS_T.k_pascalTriangle(a as uint8, b as uint8) as float
   dim as float result = 1, i 
   for i = 0 to b 
@@ -3357,6 +3400,11 @@ end proc
 ' If x is larger than maxVal, maxVal is returned. 
 ' The input parameters can be floating scalars or float vectortors. 
 ' In case of float vectortors the operation is done component-wise.
+
+/'
+ ' In the k_clamp function, you are returning iif(a<b,b,iif(a>c,c,a)) which is not correct. The correct syntax
+ ' is min(max(a, b), c)
+'/
 
 proc SYSTEM_BUS_T.k_clamp (a as uint8, b as uint8, c as uint8) as float
     return iif(a<b,b,iif(a>c,c,a))
@@ -3457,6 +3505,16 @@ proc SYSTEM_BUS_T.k_clamp (byref a as vector4, b as float, c as float) as vector
 end proc
 
 ' Generalized smoothstep
+/'
+ ' In the k_generalSmoothStep function, you are using the variable n in the loop instead of na. 
+ ' It should be for na = 0 to N, and the calculation should be  
+ ' result += k_pascalTriangle(-N - 1, na) * k_pascalTriangle(2 * N + 1, N - na) * k_pow(x, N + na + 1).
+ ' 
+ ' In the k_generalSmoothStep function, you are using the k_clamp function to clamp the value 
+ ' of x to between 0 and 1, but you are passing in x as an integer, and the k_clamp function only works with
+ ' floating-point values. You should cast it to float before passing it to the k_clamp function.
+ '
+ '/
 
 proc SYSTEM_BUS_T.k_generalSmoothStep(N as uint8, x as uint8) as float
   x = k_clamp(x, 0, 1)' ' x must be equal to or between 0 and 1
@@ -3756,6 +3814,26 @@ end proc
 ' Otherwise the return value is interpolated between 0.0 and 1.0 using Hermite polynomirals. 
 ' The input parameters can be floating scalars or float vectortors. 
 ' In case of float vectortors the operation is done component-wise.
+
+/'
+ proc smoothstep_int(edge0 as int, edge1 as int, x as int) as int
+    if (x <= edge0) then return edge0
+    if (x >= edge1) then return edge1
+    ' scale x into [0, 1] range
+    x = (x - edge0) / (edge1 - edge0)
+    ' apply smoothstep function to x
+    x = x * x * (3 - 2 * x)
+    ' scale result back into [edge0, edge1] range
+    return edge0 + (edge1 - edge0) * x
+end proc
+
+ ' In this example, the smoothstep_int function takes three integer inputs: edge0, edge1, and x.
+ ' It first checks if x is less than or equal to edge0, if so it returns edge0.
+ ' It then checks if x is greater than or equal to edge1, if so it returns edge1.
+ ' If x is within the range of edge0 and edge1, it scales x into a range of [0, 1].
+ ' Then it applies the smoothstep function to x (x * x * (3 - 2 * x)) to get a value between 0 and 1.
+ ' Finally, it scales the result back into the [edge0, edge1] range and returns the result.
+'/
 
 proc SYSTEM_BUS_T.k_smoothstep overload (edge0 as uint8, edge1 as uint8, x as uint8) as float
    if (x <  edge0) then  return 0
@@ -4147,6 +4225,30 @@ end proc
 ' The distance of two points is the length of the vectortor d = a - b, that starts at b and points to a. 
 ' The input parameters can be floating scalars or float vectortors. 
 ' In case of floating scalars the distance function is trivial and returns the absolute value of d.
+
+/'
+ ' To calculate the distance between two points, you can use the Euclidean distance formula, which is the
+ ' square root of the sum of the squares of the differences of the coordinates of the two points. In the case of
+ ' two points in 2D space, the formula is:
+ '
+ ' d = sqrt((x2 - x1)^2 + (y2 - y1)^2)
+ '
+ ' where (x1, y1) and (x2, y2) are the coordinates of the two points. You can calculate the distance using
+ ' this formula for all the different types of input you need to handle.
+ '
+ ' For example, for two 2D vectors:
+ ' proc SYSTEM_BUS_T.k_distance (byref a as vector2, byref b as vector2) as float
+ '   dim as float dx = a.x-b.x
+ '   dim as float dy = a.y-b.y
+ '   dim as float d = dx*dx + dy*dy
+ '   if d=0 then return 0
+ '   return sqrtf(d)
+ ' end proc
+ '
+ ' You can use similar methods to calculate the distance in case of other types of input too.
+ ' Also you are returning sqrtf(d) which is the sqrt function, you can use a bit math to calculate the
+ ' square root of a number without the use of the sqrt function. But It will not be as accurate as the sqrt function.
+'/
 
 proc SYSTEM_BUS_T.k_distance (a as uint8, b as uint8) as float
     dim as float d=a-b : return iif(a<0,-a,a)

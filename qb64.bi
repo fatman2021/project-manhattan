@@ -540,12 +540,430 @@ type    GLclampd      as FLOAT128
 type    GLeglImageOES as any ptr
 type    GLchar        as zstring
 type    GLcharARB     as zstring
-#endif
 
+
+/' GL types for handling large vertex buffer objects '/
+type khronos_intptr_t as GLintptr
+type khronos_ssize_t  as GLsizeiptr
+
+/' OpenGL ES core versions '/
+#define GL_ES_VERSION_2_0       
+
+/' ClearBufferMask '/
+#define GL_DEPTH_BUFFER_BIT               &H00000100
+#define GL_STENCIL_BUFFER_BIT             &H00000400
+#define GL_COLOR_BUFFER_BIT               &H00004000
+
+/' Boolean '/
+#define GL_FALSE                          0
+#define GL_TRUE                           1
+
+/' BeginMode '/
+#define GL_POINTS                         &H0000
+#define GL_LINES                          &H0001
+#define GL_LINE_LOOP                      &H0002
+#define GL_LINE_STRIP                     &H0003
+#define GL_TRIANGLES                      &H0004
+#define GL_TRIANGLE_STRIP                 &H0005
+#define GL_TRIANGLE_FAN                   &H0006
+
+/' AlphaFunction (not supported in ES20) '/
+/'      GL_NEVER '/
+/'      GL_LESS '/
+/'      GL_EQUAL '/
+/'      GL_LEQUAL '/
+/'      GL_GREATER '/
+/'      GL_NOTEQUAL '/
+/'      GL_GEQUAL '/
+/'      GL_ALWAYS '/
+/' BlendingFactorDest '/
+#define GL_ZERO                           0
+#define GL_ONE                            1
+#define GL_SRC_COLOR                      &H0300
+#define GL_ONE_MINUS_SRC_COLOR            &H0301
+#define GL_SRC_ALPHA                      &H0302
+#define GL_ONE_MINUS_SRC_ALPHA            &H0303
+#define GL_DST_ALPHA                      &H0304
+#define GL_ONE_MINUS_DST_ALPHA            &H0305
+
+/' BlendingFactorSrc '/
+/'      GL_ZERO '/
+/'      GL_ONE '/
+#define GL_DST_COLOR                      &H0306
+#define GL_ONE_MINUS_DST_COLOR            &H0307
+#define GL_SRC_ALPHA_SATURATE             &H0308
+/'      GL_SRC_ALPHA '/
+/'      GL_ONE_MINUS_SRC_ALPHA '/
+/'      GL_DST_ALPHA '/
+/'      GL_ONE_MINUS_DST_ALPHA '/
+
+/' BlendEquationSeparate '/
+#define GL_FUNC_ADD                       &H8006
+#define GL_BLEND_EQUATION                 &H8009
+#define GL_BLEND_EQUATION_RGB             &H8009    /' same as BLEND_EQUATION '/
+#define GL_BLEND_EQUATION_ALPHA           &H883D
+
+/' BlendSubtract '/
+#define GL_FUNC_SUBTRACT                  &H800A
+#define GL_FUNC_REVERSE_SUBTRACT          &H800B
+
+/' Separate Blend Functions '/
+#define GL_BLEND_DST_RGB                  &H80C8
+#define GL_BLEND_SRC_RGB                  &H80C9
+#define GL_BLEND_DST_ALPHA                &H80CA
+#define GL_BLEND_SRC_ALPHA                &H80CB
+#define GL_CONSTANT_COLOR                 &H8001
+#define GL_ONE_MINUS_CONSTANT_COLOR       &H8002
+#define GL_CONSTANT_ALPHA                 &H8003
+#define GL_ONE_MINUS_CONSTANT_ALPHA       &H8004
+#define GL_BLEND_COLOR                    &H8005
+
+/' Buffer Objects '/
+#define GL_ARRAY_BUFFER                   &H8892
+#define GL_ELEMENT_ARRAY_BUFFER           &H8893
+#define GL_ARRAY_BUFFER_BINDING           &H8894
+#define GL_ELEMENT_ARRAY_BUFFER_BINDING   &H8895
+#define GL_STREAM_DRAW                    &H88E0
+#define GL_STATIC_DRAW                    &H88E4
+#define GL_DYNAMIC_DRAW                   &H88E8
+#define GL_BUFFER_SIZE                    &H8764
+#define GL_BUFFER_USAGE                   &H8765
+#define GL_CURRENT_VERTEX_ATTRIB          &H8626
+
+/' CullFaceMode '/
+#define GL_FRONT                          &H0404
+#define GL_BACK                           &H0405
+#define GL_FRONT_AND_BACK                 &H0408
+
+/' DepthFunction '/
+/'      GL_NEVER '/
+/'      GL_LESS '/
+/'      GL_EQUAL '/
+/'      GL_LEQUAL '/
+/'      GL_GREATER '/
+/'      GL_NOTEQUAL '/
+/'      GL_GEQUAL '/
+/'      GL_ALWAYS '/
+
+/' EnableCap '/
+#define GL_TEXTURE_2D                     &H0DE1
+#define GL_CULL_FACE                      &H0B44
+#define GL_BLEND                          &H0BE2
+#define GL_DITHER                         &H0BD0
+#define GL_STENCIL_TEST                   &H0B90
+#define GL_DEPTH_TEST                     &H0B71
+#define GL_SCISSOR_TEST                   &H0C11
+#define GL_POLYGON_OFFSET_FILL            &H8037
+#define GL_SAMPLE_ALPHA_TO_COVERAGE       &H809E
+#define GL_SAMPLE_COVERAGE                &H80A0
+
+/' ErrorCode '/
+#define GL_NO_ERROR                       0
+#define GL_INVALID_ENUM                   &H0500
+#define GL_INVALID_VALUE                  &H0501
+#define GL_INVALID_OPERATION              &H0502
+#define GL_OUT_OF_MEMORY                  &H0505
+
+/' FrontFaceDirection '/
+#define GL_CW                             &H0900
+#define GL_CCW                            &H0901
+
+/' GetPName '/
+#define GL_LINE_WIDTH                     &H0B21
+#define GL_ALIASED_POINT_SIZE_RANGE       &H846D
+#define GL_ALIASED_LINE_WIDTH_RANGE       &H846E
+#define GL_CULL_FACE_MODE                 &H0B45
+#define GL_FRONT_FACE                     &H0B46
+#define GL_DEPTH_RANGE                    &H0B70
+#define GL_DEPTH_WRITEMASK                &H0B72
+#define GL_DEPTH_CLEAR_VALUE              &H0B73
+#define GL_DEPTH_FUNC                     &H0B74
+#define GL_STENCIL_CLEAR_VALUE            &H0B91
+#define GL_STENCIL_FUNC                   &H0B92
+#define GL_STENCIL_FAIL                   &H0B94
+#define GL_STENCIL_PASS_DEPTH_FAIL        &H0B95
+#define GL_STENCIL_PASS_DEPTH_PASS        &H0B96
+#define GL_STENCIL_REF                    &H0B97
+#define GL_STENCIL_VALUE_MASK             &H0B93
+#define GL_STENCIL_WRITEMASK              &H0B98
+#define GL_STENCIL_BACK_FUNC              &H8800
+#define GL_STENCIL_BACK_FAIL              &H8801
+#define GL_STENCIL_BACK_PASS_DEPTH_FAIL   &H8802
+#define GL_STENCIL_BACK_PASS_DEPTH_PASS   &H8803
+#define GL_STENCIL_BACK_REF               &H8CA3
+#define GL_STENCIL_BACK_VALUE_MASK        &H8CA4
+#define GL_STENCIL_BACK_WRITEMASK         &H8CA5
+#define GL_VIEWPORT                       &H0BA2
+#define GL_SCISSOR_BOX                    &H0C10
+/'      GL_SCISSOR_TEST '/
+#define GL_COLOR_CLEAR_VALUE              &H0C22
+#define GL_COLOR_WRITEMASK                &H0C23
+#define GL_UNPACK_ALIGNMENT               &H0CF5
+#define GL_PACK_ALIGNMENT                 &H0D05
+#define GL_MAX_TEXTURE_SIZE               &H0D33
+#define GL_MAX_VIEWPORT_DIMS              &H0D3A
+#define GL_SUBPIXEL_BITS                  &H0D50
+#define GL_RED_BITS                       &H0D52
+#define GL_GREEN_BITS                     &H0D53
+#define GL_BLUE_BITS                      &H0D54
+#define GL_ALPHA_BITS                     &H0D55
+#define GL_DEPTH_BITS                     &H0D56
+#define GL_STENCIL_BITS                   &H0D57
+#define GL_POLYGON_OFFSET_UNITS           &H2A00
+/'      GL_POLYGON_OFFSET_FILL '/
+#define GL_POLYGON_OFFSET_FACTOR          &H8038
+#define GL_TEXTURE_BINDING_2D             &H8069
+#define GL_SAMPLE_BUFFERS                 &H80A8
+#define GL_SAMPLES                        &H80A9
+#define GL_SAMPLE_COVERAGE_VALUE          &H80AA
+#define GL_SAMPLE_COVERAGE_INVERT         &H80AB
+
+/' GetTextureParameter '/
+/'      GL_TEXTURE_MAG_FILTER '/
+/'      GL_TEXTURE_MIN_FILTER '/
+/'      GL_TEXTURE_WRAP_S '/
+/'      GL_TEXTURE_WRAP_T '/
+#define GL_NUM_COMPRESSED_TEXTURE_FORMATS &H86A2
+#define GL_COMPRESSED_TEXTURE_FORMATS     &H86A3
+
+/' HintMode '/
+#define GL_DONT_CARE                      &H1100
+#define GL_FASTEST                        &H1101
+#define GL_NICEST                         &H1102
+
+/' HintTarget '/
+#define GL_GENERATE_MIPMAP_HINT            &H8192
+
+/' DataType '/
+#define GL_BYTE                           &H1400
+#define GL_UNSIGNED_BYTE                  &H1401
+#define GL_SHORT                          &H1402
+#define GL_UNSIGNED_SHORT                 &H1403
+#define GL_INT                            &H1404
+#define GL_UNSIGNED_INT                   &H1405
+#define GL_FLOAT                          &H1406
+#define GL_FIXED                          &H140C
+
+/' PixelFormat '/
+#define GL_DEPTH_COMPONENT                &H1902
+#define GL_ALPHA                          &H1906
+#define GL_RGB                            &H1907
+#define GL_RGBA                           &H1908
+#define GL_LUMINANCE                      &H1909
+#define GL_LUMINANCE_ALPHA                &H190A
+
+/' PixelType '/
+/'      GL_UNSIGNED_BYTE '/
+#define GL_UNSIGNED_SHORT_4_4_4_4         &H8033
+#define GL_UNSIGNED_SHORT_5_5_5_1         &H8034
+#define GL_UNSIGNED_SHORT_5_6_5           &H8363
+
+/' Shaders '/
+#define GL_FRAGMENT_SHADER                  &H8B30
+#define GL_VERTEX_SHADER                    &H8B31
+#define GL_MAX_VERTEX_ATTRIBS               &H8869
+#define GL_MAX_VERTEX_UNIFORM_VECTORS       &H8DFB
+#define GL_MAX_VARYING_VECTORS              &H8DFC
+#define GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS &H8B4D
+#define GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS   &H8B4C
+#define GL_MAX_TEXTURE_IMAGE_UNITS          &H8872
+#define GL_MAX_FRAGMENT_UNIFORM_VECTORS     &H8DFD
+#define GL_SHADER_TYPE                      &H8B4F
+#define GL_DELETE_STATUS                    &H8B80
+#define GL_LINK_STATUS                      &H8B82
+#define GL_VALIDATE_STATUS                  &H8B83
+#define GL_ATTACHED_SHADERS                 &H8B85
+#define GL_ACTIVE_UNIFORMS                  &H8B86
+#define GL_ACTIVE_UNIFORM_MAX_LENGTH        &H8B87
+#define GL_ACTIVE_ATTRIBUTES                &H8B89
+#define GL_ACTIVE_ATTRIBUTE_MAX_LENGTH      &H8B8A
+#define GL_SHADING_LANGUAGE_VERSION         &H8B8C
+#define GL_CURRENT_PROGRAM                  &H8B8D
+
+/' StencilFunction '/
+#define GL_NEVER                          &H0200
+#define GL_LESS                           &H0201
+#define GL_EQUAL                          &H0202
+#define GL_LEQUAL                         &H0203
+#define GL_GREATER                        &H0204
+#define GL_NOTEQUAL                       &H0205
+#define GL_GEQUAL                         &H0206
+#define GL_ALWAYS                         &H0207
+
+/' StencilOp '/
+/'      GL_ZERO '/
+#define GL_KEEP                           &H1E00
+#define GL_REPLACE                        &H1E01
+#define GL_INCR                           &H1E02
+#define GL_DECR                           &H1E03
+#define GL_INVERT                         &H150A
+#define GL_INCR_WRAP                      &H8507
+#define GL_DECR_WRAP                      &H8508
+
+/' StringName '/
+#define GL_VENDOR                         &H1F00
+#define GL_RENDERER                       &H1F01
+#define GL_VERSION                        &H1F02
+#define GL_EXTENSIONS                     &H1F03
+
+/' TextureMagFilter '/
+#define GL_NEAREST                        &H2600
+#define GL_LINEAR                         &H2601
+
+/' TextureMinFilter '/
+/'      GL_NEAREST '/
+/'      GL_LINEAR '/
+#define GL_NEAREST_MIPMAP_NEAREST         &H2700
+#define GL_LINEAR_MIPMAP_NEAREST          &H2701
+#define GL_NEAREST_MIPMAP_LINEAR          &H2702
+#define GL_LINEAR_MIPMAP_LINEAR           &H2703
+
+/' TextureParameterName '/
+#define GL_TEXTURE_MAG_FILTER             &H2800
+#define GL_TEXTURE_MIN_FILTER             &H2801
+#define GL_TEXTURE_WRAP_S                 &H2802
+#define GL_TEXTURE_WRAP_T                 &H2803
+
+/' TextureTarget '/
+/'      GL_TEXTURE_2D '/
+#define GL_TEXTURE                        &H1702
+#define GL_TEXTURE_CUBE_MAP               &H8513
+#define GL_TEXTURE_BINDING_CUBE_MAP       &H8514
+#define GL_TEXTURE_CUBE_MAP_POSITIVE_X    &H8515
+#define GL_TEXTURE_CUBE_MAP_NEGATIVE_X    &H8516
+#define GL_TEXTURE_CUBE_MAP_POSITIVE_Y    &H8517
+#define GL_TEXTURE_CUBE_MAP_NEGATIVE_Y    &H8518
+#define GL_TEXTURE_CUBE_MAP_POSITIVE_Z    &H8519
+#define GL_TEXTURE_CUBE_MAP_NEGATIVE_Z    &H851A
+#define GL_MAX_CUBE_MAP_TEXTURE_SIZE      &H851C
+
+/' TextureUnit '/
+#define GL_TEXTURE0                       &H84C0
+#define GL_TEXTURE1                       &H84C1
+#define GL_TEXTURE2                       &H84C2
+#define GL_TEXTURE3                       &H84C3
+#define GL_TEXTURE4                       &H84C4
+#define GL_TEXTURE5                       &H84C5
+#define GL_TEXTURE6                       &H84C6
+#define GL_TEXTURE7                       &H84C7
+#define GL_TEXTURE8                       &H84C8
+#define GL_TEXTURE9                       &H84C9
+#define GL_TEXTURE10                      &H84CA
+#define GL_TEXTURE11                      &H84CB
+#define GL_TEXTURE12                      &H84CC
+#define GL_TEXTURE13                      &H84CD
+#define GL_TEXTURE14                      &H84CE
+#define GL_TEXTURE15                      &H84CF
+#define GL_TEXTURE16                      &H84D0
+#define GL_TEXTURE17                      &H84D1
+#define GL_TEXTURE18                      &H84D2
+#define GL_TEXTURE19                      &H84D3
+#define GL_TEXTURE20                      &H84D4
+#define GL_TEXTURE21                      &H84D5
+#define GL_TEXTURE22                      &H84D6
+#define GL_TEXTURE23                      &H84D7
+#define GL_TEXTURE24                      &H84D8
+#define GL_TEXTURE25                      &H84D9
+#define GL_TEXTURE26                      &H84DA
+#define GL_TEXTURE27                      &H84DB
+#define GL_TEXTURE28                      &H84DC
+#define GL_TEXTURE29                      &H84DD
+#define GL_TEXTURE30                      &H84DE
+#define GL_TEXTURE31                      &H84DF
+#define GL_ACTIVE_TEXTURE                 &H84E0
+
+/' TextureWrapMode '/
+#define GL_REPEAT                         &H2901
+#define GL_CLAMP_TO_EDGE                  &H812F
+#define GL_MIRRORED_REPEAT                &H8370
+
+/' Uniform Types '/
+#define GL_FLOAT_VEC2                     &H8B50
+#define GL_FLOAT_VEC3                     &H8B51
+#define GL_FLOAT_VEC4                     &H8B52
+#define GL_INT_VEC2                       &H8B53
+#define GL_INT_VEC3                       &H8B54
+#define GL_INT_VEC4                       &H8B55
+#define GL_BOOL                           &H8B56
+#define GL_BOOL_VEC2                      &H8B57
+#define GL_BOOL_VEC3                      &H8B58
+#define GL_BOOL_VEC4                      &H8B59
+#define GL_FLOAT_MAT2                     &H8B5A
+#define GL_FLOAT_MAT3                     &H8B5B
+#define GL_FLOAT_MAT4                     &H8B5C
+#define GL_SAMPLER_2D                     &H8B5E
+#define GL_SAMPLER_CUBE                   &H8B60
+
+/' Vertex Arrays '/
+#define GL_VERTEX_ATTRIB_ARRAY_ENABLED        &H8622
+#define GL_VERTEX_ATTRIB_ARRAY_SIZE           &H8623
+#define GL_VERTEX_ATTRIB_ARRAY_STRIDE         &H8624
+#define GL_VERTEX_ATTRIB_ARRAY_TYPE           &H8625
+#define GL_VERTEX_ATTRIB_ARRAY_NORMALIZED     &H886A
+#define GL_VERTEX_ATTRIB_ARRAY_POINTER        &H8645
+#define GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING &H889F
+
+/' Read Format '/
+#define GL_IMPLEMENTATION_COLOR_READ_TYPE   &H8B9A
+#define GL_IMPLEMENTATION_COLOR_READ_FORMAT &H8B9B
+
+/' Shader Source '/
+#define GL_COMPILE_STATUS                 &H8B81
+#define GL_INFO_LOG_LENGTH                &H8B84
+#define GL_SHADER_SOURCE_LENGTH           &H8B88
+#define GL_SHADER_COMPILER                &H8DFA
+
+/' Shader Binary '/
+#define GL_SHADER_BINARY_FORMATS          &H8DF8
+#define GL_NUM_SHADER_BINARY_FORMATS      &H8DF9
+
+/' Shader Precision-Specified Types '/
+#define GL_LOW_FLOAT                      &H8DF0
+#define GL_MEDIUM_FLOAT                   &H8DF1
+#define GL_HIGH_FLOAT                     &H8DF2
+#define GL_LOW_INT                        &H8DF3
+#define GL_MEDIUM_INT                     &H8DF4
+#define GL_HIGH_INT                       &H8DF5
+
+/' Framebuffer Object. '/
+#define GL_FRAMEBUFFER                    &H8D40
+#define GL_RENDERBUFFER                   &H8D41
+#define GL_RGBA4                          &H8056
+#define GL_RGB5_A1                        &H8057
+#define GL_RGB565                         &H8D62
+#define GL_DEPTH_COMPONENT16              &H81A5
+#define GL_STENCIL_INDEX                  &H1901
+#define GL_STENCIL_INDEX8                 &H8D48
+#define GL_RENDERBUFFER_WIDTH             &H8D42
+#define GL_RENDERBUFFER_HEIGHT            &H8D43
+#define GL_RENDERBUFFER_INTERNAL_FORMAT   &H8D44
+#define GL_RENDERBUFFER_RED_SIZE          &H8D50
+#define GL_RENDERBUFFER_GREEN_SIZE        &H8D51
+#define GL_RENDERBUFFER_BLUE_SIZE         &H8D52
+#define GL_RENDERBUFFER_ALPHA_SIZE        &H8D53
+#define GL_RENDERBUFFER_DEPTH_SIZE        &H8D54
+#define GL_RENDERBUFFER_STENCIL_SIZE      &H8D55
+#define GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE           &H8CD0
+#define GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME           &H8CD1
+#define GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL         &H8CD2
+#define GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE &H8CD3
+#define GL_COLOR_ATTACHMENT0              &H8CE0
+#define GL_DEPTH_ATTACHMENT               &H8D00
+#define GL_STENCIL_ATTACHMENT             &H8D20
+#define GL_NONE                           0
+#define GL_FRAMEBUFFER_COMPLETE                      &H8CD5
+#define GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT         &H8CD6
+#define GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT &H8CD7
+#define GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS         &H8CD9
+#define GL_FRAMEBUFFER_UNSUPPORTED                   &H8CDD
+#define GL_FRAMEBUFFER_BINDING            &H8CA6
+#define GL_RENDERBUFFER_BINDING           &H8CA7
+#define GL_MAX_RENDERBUFFER_SIZE          &H84E8
+#define GL_INVALID_FRAMEBUFFER_OPERATION  &H0506
+#endif
 /' Non-Windows definition of FGAPI and FGAPIENTRY  '/
 #define FGAPI
 #define FGAPIENTRY
-
 
 /'
  ' The freeglut and GLUT API versions
@@ -902,63 +1320,63 @@ type    GLcharARB     as zstring
 #define ptrsz     8
 
 ' QB64 string descriptor structure
-type qbs_field
-    as int32 fileno
-    as int64 fileid
-    as int64 size
-    as int64 offset
-end type
+Type qbs_field
+    fileno as Integer
+    fileid as Int64
+    size as Int64
+    offset as Int64
+End Type
 
-type qbs 
-    as uint8 ptr chr  ' a 32 bit pointer to the string's data
-    as int32 len      ' must be signed for comparisons against signed int32s
-    as uint8 in_mem64 ' set to 1 if in the conventional memory DBLOCK
-    as uint16 ptr mem64_descriptor
-    as uint16 mem64_descriptor_offset
-    as uint32 listi     ' the index in the list of strings that references it
-    as uint8 tmp        ' set to 1 if the string can be deleted immediately after being processed
-    as uint32 tmplisti  ' the index in the list of strings that references it
-    as uint8 fixed      ' fixed length string
-    as uint8 readonly   ' set to 1 if string is read only
-    as qbs_field ptr field
-end type
+type qbs
+     as uint8 ptr chr ' a 32 bit pointer to the string's data
+     as int32 len ' must be signed for comparisons against signed int32s
+     as uint8 in_mem64 ' set to 1 if in the conventional memory DBLOCK
+     as uint16 ptr mem64_descriptor
+     as uint16 mem64_descriptor_offset
+     as uint32 listi ' the index in the list of strings that references it
+     as uint8 tmp ' set to 1 if the string can be deleted immediately after being processed
+     as uint32 tmplisti ' the index in the list of strings that references it
+     as uint8 fixed ' fixed length string
+     as uint8 readonly ' set to 1 if string is read only
+     as qbs_field ptr field
+end type ' Keep the comments
 
-type img_struct 
-    as any ptr lock_offset
-    as int64 lock_id
-    as uint8 valid    ' 0,1 0=invalid
-    as uint8 text    ' if set, surface is a text surface
-    as uint8 console ' dummy surface to absorb unimplemented console functionality
-    as uint16 width
-    as uint16 height
-    as uint8 bytes_per_pixel  ' 1,2,4
-    as uint8 bits_per_pixel   ' 1,2,4,8,16(text),32
-    as uint32 mask            ' 1,3,&HF,&HFF,&HFFFF,&HFFFFFFFF
-    as uint16 compatible_mode ' 0,1,2,7,8,9,10,11,12,13,32,256
-    as uint32 color
-    as uint32 background_color
-    as uint32 draw_color
-    as uint32 font               ' 8,14,16,?
-    as int16 top_row    ' VIEW PRINT settings, unique (as in QB) to each "page"
-    as int16 bottom_row ' unique (as in QB) to each "page"
-    as int16 cursor_x
-    as int16 cursor_y  
-    as uint8 cursor_show
-    as uint8 cursor_firstvalue
-    as uint8 cursor_lastvalue
-    union
+type img_struct
+     as any ptr lock_offset
+     as int64 lock_id
+     as uint8 valid ' 0,1 0=invalid
+     as uint8 text ' if set, surface is a text surface
+     as uint8 console ' dummy surface to absorb unimplemented console functionality
+     as uint16 width
+     as uint16 height
+     as uint8 bytes_per_pixel ' 1,2,4
+     as uint8 bits_per_pixel ' 1,2,4,8,16(text),32
+     as uint32 mask ' 1,3,&HF,&HFF,&HFFFF,&HFFFFFFFF
+     as uint16 compatible_mode ' 0,1,2,7,8,9,10,11,12,13,32,256
+     as uint32 color
+     as uint32 background_color
+     as uint32 draw_color
+     as uint32 font ' 8,14,16,?
+     as int16 top_row ' VIEW PRINT settings, unique (as in QB) to each "page"
+     as int16 bottom_row ' unique (as in QB) to each "page"
+     as int16 cursor_x
+     as int16 cursor_y
+     as uint8 cursor_show
+     as uint8 cursor_firstvalue
+     as uint8 cursor_lastvalue
+     union
         as uint8 ptr offset
         as uint32 ptr offset32
-    end union
-    as uint32 flags
-    as uint32 ptr pal
-    as int32 transparent_color  '-1 means no color is transparent
-    as uint8 alpha_disabled
-    as uint8 holding_cursor
-    as uint8 print_mode
-    ' BEGIN apm ('active page migration')
-    ' everything between apm points is migrated during active page changes
-    ' note: apm data is only relevent to graphics modes
+     end union
+     as uint32 flags
+     as uint32 ptr pal
+     as int32 transparent_color '-1 means no color is transparent
+     as uint8 alpha_disabled
+     as uint8 holding_cursor
+     as uint8 print_mode
+     ' BEGIN apm ('active page migration')
+     ' everything between apm points is migrated during active page changes
+     ' note: apm data is only relevent to graphics modes
     as uint8 apm_p1
     as int32 view_x1
     as int32 view_y1
@@ -980,24 +1398,24 @@ type img_struct
     as float draw_ta
     as float draw_scale
     as uint8 apm_p2
-    ' END apm
+   ' END apm
 end type
 
 ' img_struct flags
 #define IMG_FREEPAL 1 ' free palette data before freeing image
-#define IMG_SCREEN  2 ' img is linked to other screen pages
+#define IMG_SCREEN 2  ' img is linked to other screen pages
 #define IMG_FREEMEM 4 ' if set, it means memory must be freed
 
-' QB64 internal variable type flags (internally referenced by some functions)
-#define ISSTRING             1073741824
-#define ISFLOAT               536870912
-#define ISUNSIGNED            268435456
-#define ISPOINTER             134217728
-#define ISFIXEDLENGTH          67108864 ' only set for strings with pointer flag
+' QB64 internal variable type flags (internally referenced by some C functions)
+#define ISSTRING 1073741824
+#define ISFLOAT 536870912
+#define ISUNSIGNED 268435456
+#define ISPOINTER 134217728
+#define ISFIXEDLENGTH 67108864 ' only set for strings with pointer flag
 #define ISINCONVENTIONALMEMORY 33554432
-#define ISOFFSETINBITS         16777216
+#define ISOFFSETINBITS 16777216
 
-type ontimer_struct 
+type ontimer_struct
     as uint8 allocated
     as uint32 id       ' the event ID to trigger (0=no event)
     as int64 pass      ' the value to pass to the triggered event (only applicable to ON ... CALL ...(x)
@@ -1038,10 +1456,10 @@ end type
 type device_struct
     as int32 used
     as int32 type
-    ' 0=Unallocated
-    ' 1=Joystick/Gamepad
-    ' 2=Keybaord
-    ' 3=Mouse
+    ' 0 = Unallocated
+    ' 1 = Joystick/Gamepad
+    ' 2 = Keyboard
+    ' 3 = Mouse
     as char ptr name
     as int32 connected
     as int32 lastbutton
@@ -1050,14 +1468,14 @@ type device_struct
     '--------------
     as int32 max_events
     as int32 queued_events
-    as uint8 ptr events ' the structure and size of the events depends greatly on the device and its capabilities
+    as uint8 ptr events ' The structure and size of the events depends greatly on the device and its capabilities
     as int32 event_size
     '--------------
-    dim as uint8 STRIG_button_pressed(256) ' checked and cleared by the STRIG function
+    dim as uint8 STRIG_button_pressed(256) ' Checked and cleared by the STRIG function
     '--------------
-    as any ptr handle_pointer ' handle as pointer
-    as int64 handle_int       ' handle as integer
-    as char ptr description   ' description provided by manufacturer
+    as any ptr handle_pointer ' Handle as pointer
+    as int64 handle_int ' Handle as integer
+    as char ptr description ' Description provided by manufacturer
     as int64 product_id
     as int64 vendor_id
     as int32 buttons
@@ -1067,11 +1485,10 @@ type device_struct
 end type
 
 ' device_struct constants
-#define QUEUED_EVENTS_LIMIT   1024
-#define DEVICETYPE_CONTROLLER    1
-#define DEVICETYPE_KEYBOARD      2
-#define DEVICETYPE_MOUSE         3
-
+#define QUEUED_EVENTS_LIMIT 1024
+#define DEVICETYPE_CONTROLLER 1
+#define DEVICETYPE_KEYBOARD 2
+#define DEVICETYPE_MOUSE 3
 
 type mem_block
     as ptrszint offset
@@ -1096,10 +1513,10 @@ type mem_lock
     as int32 type ' required to know what action to take (if any) when a request is made to free the block
     ' 0=no security (eg. user defined block from _OFFSET)
     ' 1=C-malloc'ed block
-    '  2=image
+    ' 2=image
     ' 3=sub/function scope block
     ' 4=array
-    '  5=sound
+    ' 5=sound
     ' ---- type specific variables follow ----
     as any ptr offset ' used by malloc'ed blocks to free them
 end type
@@ -1274,7 +1691,7 @@ dim shared as ptrszint ptr qbs_tmp_list: qbs_tmp_list = calloc(65536 * ptrsz, 1)
 dim shared as uinteger qbs_tmp_list_lasti = 65535
 
 ' entended string memory
-dim as ubyte ptr qbs_data = malloc(1048576)
+dim shared as ubyte ptr qbs_data: qbs_data = malloc(1048576)
 dim shared as uinteger qbs_data_size = 1048576
 dim shared as uinteger qbs_sp = 0
 
@@ -1333,53 +1750,84 @@ dim shared integer lprint_locked = 0 ' set to 1 to deny access by QB64 program
 #if defined(GFS_WINDOWS)
 #define GFS_C
 #endif
-/' TODO: implement fstream(C++), ofstream(C++), and template(C++)
-struct gfs_file_struct { // info applicable to all files
-    int64 id;            // a unique ID given to all files (currently only referenced by the FIELD statement to remove old field conditions)
-    uint8 open;
-    uint8 read;
-    uint8 write;
-    uint8 lock_read;
-    uint8 lock_write;
-    int64 pos;           //-1=unknown
-    uint8 eof_reached;   // read last character of file (set/reset by gfs_read only)
-    uint8 eof_passed;    // attempted to read past eof (set/reset by gfs_read only)
-    int32 fileno;        // link to fileno index
-    uint8 type;          // qb access method (1=RANDOM,2=BINARY,3=INPUT,4=OUTPUT)
-    int64 record_length; // used by RANDOM
-    uint8 *field_buffer;
-    qbs **field_strings;   // list of qbs pointers linked to this file
-    int32 field_strings_n; // number of linked strings
-    int64 column;          // used by OUTPUT/APPEND to tab correctly (base 0)
-    // GFS_C data follows: (unused by custom GFS interfaces)
-    fstream *file_handle;
-    ofstream *file_handle_o;
-    // COM port data follows (*=default)
-    uint8 com_port;              // 0=not a com port
-    int32 com_baud_rate;         //(bits per second)75,110,150,300*,600,1200,1800,2400,9600,?
-    int8 com_parity;             //[0]N,[1]E*,[2]O,[3]S,[4]M,[5]PE(none,even*,odd,space,mark,error-checking)
-    int8 com_data_bits_per_byte; // 5,6,7*,8
-    int8 com_stop_bits;          //[10]1,[15]1.5,[20]2
-    // The default value is 1 for baud rates greater than 110. For
-    // baud rates less than or equal to 110, the default value is
-    // 1.5 when data is 5; otherwise, the value is 2.
-    int8 com_bin_asc; //[0]=BIN*,[1]=ASC
-    int8 com_asc_lf;  //[0]omit*,[1]LF(only valid with ASC)
-    // note: rb_x and tb_x are ignored by QB64 (receive and transmit buffer sizes)
-    int8 com_rs;    //[0]detect*,[1]dont-detect
-    int32 com_cd_x; // 0*-65535
-    int32 com_cs_x; // 1000*,0-65535
-    int32 com_ds_x; // 1000*,0-65535
-    int32 com_op_x;
-    //                 OP not used:          x omitted:     x specified:
-    //                 10 times the CD or    10000 ms       0 - 65,535 milliseconds
-    //                 DS timeout value,
-    //                 whichever is greater
+' TODO: implement fstream(C++), ofstream(C++), and template(C++)
+type gfs_file_struct ' info applicable to all files
+    as int64 id            ' a unique ID given to all files (currently only referenced by the FIELD statement to remove old field conditions)
+    as uint8 open
+    as uint8 read
+    as uint8 write
+    as uint8 lock_read_var
+    as uint8 lock_write_var
+    as int64 pos         ' -1=unknown
+    as uint8 eof_reached ' read last character of file (set/reset by
+                         ' gfs_read only)
+    as uint8 eof_passed  ' attempted to read past eof (set/reset by
+                         ' gfs_read only)
+    as int32 fileno      ' link to fileno index
+    as uint8 type        ' qb access method (1=RANDOM,2=BINARY,3=INPUT,
+                         ' 4=OUTPUT)
+    as int64 record_length ' used by RANDOM
+    as uint8 ptr field_buffer
+    as qbs ptr ptr field_strings ' list of qbs pointers linked to this file
+    as int32 field_strings_n ' number of linked strings
+    as int64 column          ' used by OUTPUT/APPEND to tab correctly (base 0)
+    '' GFS_C data follows: (unused by custom GFS interfaces)
+    as ulong ptr file_handle
+    as ulong ptr file_handle_o
+    ' COM port data follows (*=default)
+    as uint8 com_port            ' 0=not a com port
+    as int32 com_baud_rate       ' (bits per second)75,110,150,300*,600,1200,1800,2400,9600,?
+    as int8 com_parity           ' [0]N,[1]E*,[2]O,[3]S,[4]M,[5]PE(none,even*,odd,space,mark,error-checking)
+    as int8 com_data_bits_per_byte ' 5,6,7*,8
+    as int8 com_stop_bits          ' [10]1,[15]1.5,[20]2
+    ' The default value is 1 for baud rates greater than 110. For
+    ' baud rates less than or equal to 110, the default value is
+    ' 1.5 when data is 5; otherwise, the value is 2.
+    as int8 com_bin_asc ' [0]=BIN*,[1]=ASC
+    as int8 com_asc_lf  ' [0]omit*,[1]LF(only valid with ASC)
+    ' note: rb_x and tb_x are ignored by QB64 (receive and transmit buffer sizes)
+    as int8 com_rs    ' [0]detect*,[1]dont-detect
+    as int32 com_cd_x ' 0*-65535
+    as int32 com_cs_x ' 1000*,0-65535
+    as int32 com_ds_x ' 1000*,0-65535
+    as int32 com_op_x
+    '                 OP not used:          x omitted:     x specified:
+    '                 10 times the CD or    10000 ms       0 - 65,535 milliseconds
+    '                 DS timeout value,
+    '                 whichever is greater
 
-    // SCRN: support follows
-    uint8 scrn; // 0 = not a file opened as "SCRN:"
-}; 
+    ' SCRN: support follows
+    as uint8 scrn ' 0 = not a file opened as "SCRN:"
+end type
 
+#ifdef GFS_WINDOWS
+type gfs_file_win_struct ' info applicable to WINDOWS OS files
+    as HANDLE file_handle
+end type
+gfs_file_win_struct *gfs_file_win = (gfs_file_win_struct *)malloc(1);
+#endif
+
+static shared as int64 gfs_nextid = 1
+
+static shared as gfs_file_struct ptr gfs_file: gfs_file = malloc(1)
+
+static shared as int32 gfs_n = 0
+static shared as int32 gfs_freed_n = 0
+static shared as int32 ptr gfs_freed: gfs_freed = malloc(1)
+static shared as int32 gfs_freed_size = 0
+
+static shared as int32 ptr gfs_fileno: gfs_fileno = malloc(1)
+static shared as int32 gfs_fileno_n = 0
+
+static shared as int32 file_charset8_raw_len = 16384
+
+static shared as int32 field_failed = 1
+static shared as int32 field_fileno
+static shared as int32 field_totalsize
+static shared as int32 field_maxsize
+
+static shared as int64 gfs_read_bytes_value
+/'
 // Allocates and frees a Mutex. Mutex is created unlocked.
 struct libqb_mutex *libqb_mutex_new();
 void libqb_mutex_free(struct libqb_mutex *);
@@ -1714,43 +2162,52 @@ type cpu_struct
     as ubyte parity_flag
     as ubyte carry_flag
 end type
-dim as cpu_struct cpu_x86
+static as cpu_struct cpu_x86
 
-dim shared as ubyte ptr ip
-dim shared as ubyte ptr seg    ' default segment (DS unless overridden)
-dim shared as ubyte ptr seg_bp ' the segment bp will be accessed from (SS unless overridden)
+static shared as ubyte ptr ip
+static shared as ubyte ptr seg    ' default segment (DS unless overridden)
+static shared as ubyte ptr seg_bp ' the segment bp will be accessed from (SS unless overridden)
 
-dim shared as ubyte ptr     reg8(8)
-dim shared as ushort ptr    reg16(8)
-dim shared as uinteger ptr  reg32(8)
-dim shared as ulongint ptr  reg64(8)
-dim shared as ushort ptr    segreg(8)
+static shared as ubyte ptr     reg8(8)
+static shared as ushort ptr    reg16(8)
+static shared as uinteger ptr  reg32(8)
+static shared as ulongint ptr  reg64(8)
+static shared as ushort ptr    segreg(8)
 
-dim shared as integer a32
-dim shared as integer b32 ' size of data to read/write in bits is 32
+static shared as integer a32
+static shared as integer b32 ' size of data to read/write in bits is 32
 
 ' use of non-indexed forms assumes valid indexes (may not be suitable for all commands)
-dim shared as img_struct ptr write_page = 0
-dim shared as img_struct ptr read_page = 0
-dim shared as img_struct ptr display_page = 0
-dim shared as uinteger ptr display_surface_offset = 0
+static shared as img_struct ptr write_page = 0
+static shared as img_struct ptr read_page = 0
+static shared as img_struct ptr display_page = 0
+static shared as uinteger ptr display_surface_offset = 0
 
-dim shared as integer unsupported_port_accessed = 0
+static shared as integer unsupported_port_accessed = 0
 
-dim shared as integer H3C7_palette_register_read_index = 0
-dim shared as integer H3C8_palette_register_index = 0
-dim shared as integer H3C9_next = 0
-dim shared as integer H3C9_read_next = 0
+static shared as integer H3C7_palette_register_read_index = 0
+static shared as integer H3C8_palette_register_index = 0
+static shared as integer H3C9_next = 0
+static shared as integer H3C9_read_next = 0
 
-dim shared as integer H3C0_blink_enable = 1
+static shared as integer H3C0_blink_enable = 1
 
-dim shared as uinteger qb64_firsttimervalue  ' based on time of day
-dim shared as uinteger clock_firsttimervalue ' based on program launch time
+static shared as uinteger qb64_firsttimervalue  ' based on time of day
+static shared as uinteger clock_firsttimervalue ' based on program launch time
 
-dim shared as ubyte wait_needed = 1
+static shared as ubyte wait_needed = 1
 
-dim shared as integer full_screen = 0 ' 0,1(stretched/closest),2(1:1)
-dim shared as integer full_screen_set = -1 ' 0(windowed),1(stretched/closest),2(1:1)
+static shared as integer full_screen = 0 ' 0,1(stretched/closest),2(1:1)
+static shared as integer full_screen_set = -1 ' 0(windowed),1(stretched/closest),2(1:1)
 
-dim shared as integer vertical_retrace_in_progress = 0
-dim shared as integer vertical_retrace_happened = 0
+static shared as integer vertical_retrace_in_progress = 0
+static shared as integer vertical_retrace_happened = 0
+
+static shared as int32 console
+static shared as int32 screen_hide_startup
+static shared as int32 asserts
+static shared as int32 vwatch
+
+static shared as int32 requestedKeyboardOverlayImage
+
+static shared as uint32 qbs_mem64_descriptor_space = 256 ' enough for 64 strings before expansion
