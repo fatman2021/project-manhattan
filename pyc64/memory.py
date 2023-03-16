@@ -546,7 +546,8 @@ class ScreenAndMemory:
 
     def setspritecolor(self, spritenum, color):
         assert 0 <= spritenum <= self.sprites - 1
-        assert 0 <= color <= 255
+        if not 0 <= color <= 255:
+            raise AssertionError
         self.memory[0xd027 + spritenum] = color
 
     def setspritepos(self, spritenum, x, y):

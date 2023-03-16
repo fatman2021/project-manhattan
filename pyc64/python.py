@@ -20,7 +20,8 @@ class ColorsProxy:
             item = slice(item.start + 0xd800, item.stop + 0xd800, item.step)
             return self.screen.memory[item]
         x, y = int(item[0]), int(item[1])
-        assert 0 <= x <= self.screen.columns and 0 <= y <= self.screen.rows, "position out of range"
+        if not (0 <= x <= self.screen.columns and 0 <= y <= self.screen.rows):
+            raise AssertionError("position out of range")
         _, color = self.screen.getchar(x, y)
         return color
 
@@ -30,7 +31,8 @@ class ColorsProxy:
             self.screen.memory[item] = value
         else:
             x, y = int(item[0]), int(item[1])
-            assert 0 <= x <= self.screen.columns and 0 <= y <= self.screen.rows, "position out of range"
+            if not (0 <= x <= self.screen.columns and 0 <= y <= self.screen.rows):
+                raise AssertionError("position out of range")
             self.screen.memory[0xd800 + x + self.screen.columns * y] = value
 
 
@@ -43,7 +45,8 @@ class CharsProxy:
             item = slice(item.start + 0x0400, item.stop + 0x0400, item.step)
             return self.screen.memory[item]
         x, y = int(item[0]), int(item[1])
-        assert 0 <= x <= self.screen.columns and 0 <= y <= self.screen.rows, "position out of range"
+        if not (0 <= x <= self.screen.columns and 0 <= y <= self.screen.rows):
+            raise AssertionError("position out of range")
         char, _ = self.screen.getchar(x, y)
         return char
 
@@ -53,7 +56,8 @@ class CharsProxy:
             self.screen.memory[item] = value
         else:
             x, y = int(item[0]), int(item[1])
-            assert 0 <= x <= self.screen.columns and 0 <= y <= self.screen.rows, "position out of range"
+            if not (0 <= x <= self.screen.columns and 0 <= y <= self.screen.rows):
+                raise AssertionError("position out of range")
             self.screen.memory[0x0400 + x + self.screen.columns * y] = value
 
 
@@ -187,7 +191,8 @@ class PythonInterpreter:
         do_sys(self.screen, addr)
 
     def execute_sprite(self, spritenum, x=None, y=None, dx=None, dy=None, color=None, enabled=None, pointer=None):
-        assert 0 <= spritenum <= 7
+        if not 0 <= spritenum <= 7:
+            raise AssertionError
         if x is None and y is None and dx is None and dy is None and color is None and enabled is None and pointer is None:
             # return sprite info instead
             return self.screen.getsprites([spritenum], bitmap=False)[spritenum]
