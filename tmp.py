@@ -41,7 +41,6 @@ bpy.data.objects['Cube'].select_set(True)
 bpy.context.view_layer.objects.active = bpy.data.objects['Cube']
 scene = bpy.data.scenes["Scene"]
 bpy.context.scene.world.use_nodes = True
-bpy.data.worlds[bpy.context.scene.world.name].node_tree
 envNode = bpy.data.worlds[bpy.context.scene.world.name].node_tree.nodes.new(type="ShaderNodeTexEnvironment")
 envNode.image=bpy.data.images.load("vram/HDRI/0.png")
 backNode = bpy.data.worlds[bpy.context.scene.world.name].node_tree.nodes['Background']
