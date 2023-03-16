@@ -17,28 +17,30 @@ screencode-c64-uc - Upper-case/graphics mapping to screencodes (POKE) used by th
 """
 import codecs
 
-from . import petscii_c64en_lc
-from . import petscii_c64en_uc
-from . import petscii_vic20en_lc
-from . import petscii_vic20en_uc
-from . import screencode_c64_lc
-from . import screencode_c64_uc
+from . import (
+    petscii_c64en_lc,
+    petscii_c64en_uc,
+    petscii_vic20en_lc,
+    petscii_vic20en_uc,
+    screencode_c64_lc,
+    screencode_c64_uc,
+)
 
-__version__ = '0.2.1'
+__version__ = "0.2.1"
 __all__ = []
 
 petscii_codecs = {
-    'petscii-c64en-lc': petscii_c64en_lc.getregentry(),
-    'petscii-c64en-uc': petscii_c64en_uc.getregentry(),
-    'petscii-vic20en-lc': petscii_vic20en_lc.getregentry(),
-    'petscii-vic20en-uc': petscii_vic20en_uc.getregentry(),
-    'screencode-c64-lc': screencode_c64_lc.getregentry(),
-    'screencode-c64-uc': screencode_c64_uc.getregentry()
+    "petscii-c64en-lc": petscii_c64en_lc.getregentry(),
+    "petscii-c64en-uc": petscii_c64en_uc.getregentry(),
+    "petscii-vic20en-lc": petscii_vic20en_lc.getregentry(),
+    "petscii-vic20en-uc": petscii_vic20en_uc.getregentry(),
+    "screencode-c64-lc": screencode_c64_lc.getregentry(),
+    "screencode-c64-uc": screencode_c64_uc.getregentry(),
 }
 
 
 def search_fn(encoding):
-    return petscii_codecs.get(encoding, None)
+    return petscii_codecs.get(encoding)
 
 
 codecs.register(search_fn)
