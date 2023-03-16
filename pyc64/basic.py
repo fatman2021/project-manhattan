@@ -187,7 +187,7 @@ class BasicInterpreter:
         self.next_run_line_idx = gx.line_idx
 
     def process_programline_entry(self, line):
-        match = re.match("(\d+)(\s*.*)", line)
+        match = re.match(r"(\d+)(\s*.*)", line)
         if match:
             if self.running_program:
                 raise BasicError("cannot define lines while running")
@@ -334,7 +334,7 @@ class BasicInterpreter:
         elif cmd.startswith("for"):
             cmd = cmd[3:]
         cmd = cmd.strip()
-        match = re.match("(\w+)\s*=\s*(\S+)\s*to\s*(\S+)\s*(?:step\s*(\S+))?$", cmd)
+        match = re.match(r"(\w+)\s*=\s*(\S+)\s*to\s*(\S+)\s*(?:step\s*(\S+))?$", cmd)
         if match:
             if not self.running_program:
                 raise BasicError("illegal direct")    # we only support for loops in a program (with line numbers), not on the screen
