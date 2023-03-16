@@ -451,7 +451,6 @@ class BasicInterpreter:
                 raise GotoLineException(self.program_lines.index(line))               
         else:
             raise BasicError("gosub unsupported yet")
-            # raise BasicError("syntax")
 
 
     def execute_sleep(self, cmd, all_cmds_on_line):
