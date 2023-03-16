@@ -780,8 +780,8 @@ class BasicInterpreter:
                 if self.data_line < nr and line.lstrip().startswith(("dA", "data")):
                     self.data_line = nr
                     return self.get_next_data()
-            else:
-                return None
+                
+            return None
         else:
             self.data_index += 1
             return eval(value)
