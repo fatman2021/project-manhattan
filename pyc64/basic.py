@@ -14,6 +14,7 @@ slow down the thing at certain points.
 Written by Irmen de Jong (irmen@razorvine.net)
 License: MIT open-source.
 """
+import ast
 
 import os
 import math
@@ -287,7 +288,7 @@ class BasicInterpreter:
             if match:
                 # variable assignment
                 symbol, value = match.groups()
-                self.symbols[symbol] = eval(value, self.symbols)
+                self.symbols[symbol] = ast.literal_eval(value, self.symbols)
                 return True
             else:
                 print("Syntax error:", cmd, file=sys.stderr)
@@ -316,7 +317,7 @@ class BasicInterpreter:
             if cmd.endswith((',', ';')):
                 cmd = cmd[:-1]
                 print_return = ""
-            result = eval(cmd, self.symbols)
+            result = ast.literal_eval(cmd, self.symbols)
             if isinstance(result, numbers.Number):
                 if result < 0:
                     result = str(result) + " "
@@ -343,9 +344,9 @@ class BasicInterpreter:
             varname, start, to, step = match.groups()
             if step is None:
                 step = "1"
-            start = eval(start, self.symbols)
-            to = eval(to, self.symbols)
-            step = eval(step, self.symbols)
+            start = ast.literal_eval(start, self.symbols)
+            to = ast.literal_eval(to, self.symbols)
+            step = ast.literal_eval(step, self.symbols)
 
             def frange(start, to, step):
                 yield start
@@ -404,7 +405,7 @@ class BasicInterpreter:
             cmd = cmd[2:]
         elif cmd.startswith("goto"):
             cmd = cmd[4:]
-        line = eval(cmd, self.symbols)    # allows jump tables via GOTO VAR
+        line = ast.literal_eval(cmd, self.symbols)    # allows jump tables via GOTO VAR
         if not self.running_program:
             # do a run instead
             self.execute_run("run " + str(line))
@@ -440,7 +441,7 @@ class BasicInterpreter:
         goInx=cmd.find("go")
         expr=cmd[0:goInx]        
         # eval the on <expr> goto part
-        onGoIndex=int(eval(expr,self.symbols))-1        
+        onGoIndex=int(ast.literal_eval(expr,self.symbols))-1        
         line=int(lineTargetTuple[onGoIndex])
         if gosub is False:
             if not self.running_program:
@@ -460,7 +461,7 @@ class BasicInterpreter:
             cmd = cmd[5:]
         if all_cmds_on_line and len(all_cmds_on_line) > 1:
             raise BasicError("sleep not alone on line")    # we only can SLEEP when it's on their own line
-        howlong = eval(cmd, self.symbols)
+        howlong = ast.literal_eval(cmd, self.symbols)
         if howlong == 0:
             return
         if 0 < howlong <= 60:       # sleep value must be between 0 and 60 seconds
@@ -474,7 +475,7 @@ class BasicInterpreter:
             cmd = cmd[2:]
         elif cmd.startswith("scroll"):
             cmd = cmd[6:]
-        direction = eval("(" + cmd + ")", self.symbols)
+        direction = ast.literal_eval("(" + cmd + ")", self.symbols)
         scrolldir = 'u'
         x1, y1 = 0, 0
         x2, y2 = self.screen.columns - 1, self.screen.rows - 1
@@ -531,7 +532,7 @@ class BasicInterpreter:
         elif cmd.startswith("poke"):
             cmd = cmd[4:]
         addr, value = cmd.split(',', maxsplit=1)
-        addr, value = eval(addr, self.symbols), int(eval(value, self.symbols))
+        addr, value = ast.literal_eval(addr, self.symbols), int(ast.literal_eval(value, self.symbols))
         if addr < 0 or addr > 0xffff or value < 0 or value > 0xff:
             raise BasicError("illegal quantity")
         self.screen.memory[int(addr)] = int(value)
@@ -541,7 +542,7 @@ class BasicInterpreter:
         if cmd.startswith("pokew"):
             cmd = cmd[5:]
         addr, value = cmd.split(',', maxsplit=1)
-        addr, value = eval(addr, self.symbols), int(eval(value, self.symbols))
+        addr, value = ast.literal_eval(addr, self.symbols), int(ast.literal_eval(value, self.symbols))
         if addr < 0 or addr > 0xffff or addr & 1 or value < 0 or value > 0xffff:
             raise BasicError("illegal quantity")
         self.screen.memory.setword(int(addr), int(value))
@@ -553,7 +554,7 @@ class BasicInterpreter:
             cmd = cmd[3:]
         if not cmd:
             raise BasicError("syntax")
-        addr = eval(cmd, self.symbols)
+        addr = ast.literal_eval(cmd, self.symbols)
         try:
             do_sys(self.screen, addr, self.interactive._microsleep)
         except FlowcontrolException:
@@ -664,7 +665,7 @@ class BasicInterpreter:
         match = re.match(r"if(.+)then(.+)$", cmd)
         if match:
             condition, then = match.groups()
-            condition = eval(condition, self.symbols)
+            condition = ast.literal_eval(condition, self.symbols)
             if condition:
                 return self.execute_line(then, recursive=True)
         else:
@@ -673,9 +674,9 @@ class BasicInterpreter:
             if not match:
                 raise BasicError("syntax")
             condition, line = match.groups()
-            condition = eval(condition, self.symbols)
+            condition = ast.literal_eval(condition, self.symbols)
             if condition:
-                line = eval(line, self.symbols)   # allows jumptables via GOTO VAR
+                line = ast.literal_eval(line, self.symbols)   # allows jumptables via GOTO VAR
                 if line not in self.program:
                     raise BasicError("undef'd statement")
                 raise GotoLineException(self.program_lines.index(line))
@@ -710,7 +711,7 @@ class BasicInterpreter:
         elif cmd.startswith("color"):
             cmd = cmd[5:]
         if cmd:
-            colors = eval(cmd, self.symbols)
+            colors = ast.literal_eval(cmd, self.symbols)
             if isinstance(colors, tuple):
                 if len(colors) != 3:
                     raise BasicError("syntax")
@@ -732,7 +733,7 @@ class BasicInterpreter:
         elif cmd.startswith("cursor"):
             cmd = cmd[6:]
         if cmd:
-            coords = eval(cmd, self.symbols)
+            coords = ast.literal_eval(cmd, self.symbols)
             if isinstance(coords, tuple):
                 if len(coords) != 2:
                     raise BasicError("syntax")
@@ -783,7 +784,7 @@ class BasicInterpreter:
             return None
         else:
             self.data_index += 1
-            return eval(value)
+            return ast.literal_eval(value)
 
     def program_step(self):
         # perform a discrete step of the running program
