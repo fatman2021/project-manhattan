@@ -16,7 +16,6 @@ class Monitor(py65.monitor.Monitor):
     def __init__(self, memory, stdout=None, stdin=None):
         try:
             super().__init__(stdout=stdout, stdin=stdin, memory=memory, putc_addr=None, getc_addr=None)
-            self.__workaround = False
         except TypeError:
             # workaround for older version of py65
             self.memory = memory
