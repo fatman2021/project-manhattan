@@ -156,17 +156,15 @@ class BasicInterpreter:
                         break
                 if not self.running_program and not self.sleep_until and not self.must_run_stop:
                     self.write_prompt("\n")
-            if self.running_program:
-                if not recursive:
-                    # schedule next line to be executed
-                    self.next_run_line_idx += 1
+            if self.running_program and not recursive:
+                # schedule next line to be executed
+                self.next_run_line_idx += 1
         except GotoLineException as gx:
             self.implementGoto(gx)            
         except FlowcontrolException:
-            if in_program:
-                if not recursive:
-                    # we do go to the next line...
-                    self.next_run_line_idx += 1
+            if in_program and not recursive:
+                # we do go to the next line...
+                self.next_run_line_idx += 1
             raise
         except BasicError as bx:
             traceback.print_exc()
