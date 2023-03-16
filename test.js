@@ -1,14 +1,12 @@
-const http = require('http');
+const http = require('http')
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const hostname = '127.0.0.1'
+const port = 3000
 
 const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('This is a test...');
-});
+  res.statusCode = 200
+  res.setHeader('Content-Type', 'text/plain')
+  res.end('This is a test...')
+})
 
-server.listen(port, hostname, () => {
-  
-});
+server.listen(port, hostname, () => {})
