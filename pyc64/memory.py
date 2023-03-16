@@ -526,7 +526,8 @@ class ScreenAndMemory:
         if which is None:
             which = range(self.sprites)
         else:
-            assert all(0 <= i <= (self.sprites - 1) for i in which)
+            if not all(0 <= i <= (self.sprites - 1) for i in which):
+                raise AssertionError
         result = {}
         for i in which:
             s = ScreenAndMemory.Sprite()
@@ -543,13 +544,15 @@ class ScreenAndMemory:
         return result
 
     def setspritecolor(self, spritenum, color):
-        assert 0 <= spritenum <= self.sprites - 1
+        if not 0 <= spritenum <= self.sprites - 1:
+            raise AssertionError
         if not 0 <= color <= 255:
             raise AssertionError
         self.memory[0xd027 + spritenum] = color
 
     def setspritepos(self, spritenum, x, y):
-        assert 0 <= spritenum <= self.sprites - 1
+        if not 0 <= spritenum <= self.sprites - 1:
+            raise AssertionError
         self.memory[0xd000 + spritenum] = x & 255
         self.memory[0xd001 + spritenum] = y
         if x > 255:
@@ -559,7 +562,8 @@ class ScreenAndMemory:
 
     def getchar(self, x, y):
         """get the character AND color value at position x,y"""
-        assert 0 <= x <= self.columns and 0 <= y <= self.rows, "position out of range"
+        if not (0 <= x <= self.columns and 0 <= y <= self.rows):
+            raise AssertionError("position out of range")
         offset = x + y * self.columns
         return self.memory[0x0400 + offset], self.memory[0xd800 + offset]
 
@@ -602,7 +606,8 @@ class ScreenAndMemory:
 
     def write(self, petscii):
         """Write PETSCII-encoded text to the screen."""
-        assert isinstance(petscii, bytes)
+        if not isinstance(petscii, bytes):
+            raise AssertionError
         self._fix_cursor()
         petscii = petscii.replace(b"\x8d", b"\x0d")    # replace shift-RETURN by regular RETURN
         txtcolors = {
