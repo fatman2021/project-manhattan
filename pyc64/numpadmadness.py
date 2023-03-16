@@ -12,7 +12,8 @@ class NumpadmadnessWindow(tkinter.Tk):
         self.bind("<KeyRelease>", self.keyrelease)
         self.bind("<KP_0>", self.keypadzero)
 
-    def keypadzero(self, event):
+    @staticmethod
+    def keypadzero(event):
         print("KEYPADZERO", event)
 
     joystick_keys_sane_platforms = {
