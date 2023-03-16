@@ -348,7 +348,7 @@ class ScreenAndMemory:
             return newval
 
         def write_controlregister(address, oldval, newval):
-            pass
+            raise NotImplementedError()
 
         def read_controlregister(address, value):
             # the high bit of the control register is bit#9 of the raster beam position (0-319)

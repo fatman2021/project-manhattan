@@ -77,10 +77,10 @@ class BasicInterpreter:
         self.reset()
 
     def start(self):
-        pass
+        raise NotImplementedError()
 
     def stop(self):
-        pass
+        raise NotImplementedError()
 
     def reset(self):
         self.symbols = {
