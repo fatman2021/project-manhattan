@@ -433,7 +433,6 @@ class C64EmulatorWindow(EmulatorWindowBase):
         char = event.char
         if not char or ord(char) > 255:
             char = event.keysym
-        # print("keypress", repr(char), event.state)
         with_shift = event.state & 1
         with_control = event.state & 4
         with_alt = event.state & 8
@@ -456,8 +455,6 @@ class C64EmulatorWindow(EmulatorWindowBase):
             return
 
         if len(char) == 1:
-            # if '1' <= char <= '8' and self.key_control_down:
-            #     self.c64screen.text = ord(char)-1
             if char == '\r':    # RETURN key
                 line = self.screen.current_line(True, True, "ascii")
                 line1, line2, line3 = line[0: self.columns], line[self.columns: self.columns * 2], line[self.columns * 2:]

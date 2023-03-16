@@ -19,7 +19,6 @@ class BasicEmulatorTest(unittest.TestCase):
             b=BasicInterpreter(ScreenAndMemory())
             b.execute_load("load \"ongoto1\" ")
             b.execute_run("run 20")
-            #b.execute_line("run 20")
             self.fail("No error?")
         except GotoLineException as gx:
             b.implementGoto(gx)

@@ -274,7 +274,6 @@ class ScreenAndMemory:
             self.memory._patch(0xe388, 0x4c)   # JMP to same address near the end of the reset routine
             self.memory._patch(0xe389, 0x88)   # ...to avoid entering actual basic program loop. RTS won't work because the stack is clobbered I think.
             self.memory._patch(0xe38a, 0xe3)   # ...(this jmp loop is recognised by tahe cpu emulator as an 'end of the program')
-            # self.memory._patch(0xfce5, 0xea)   # NOP to not clobber stack pointer register in reset routine
             self.memory._patch(0xfcf6, 0x90)   # skip a large part of the memory init routine that is very slow and may cause issues
         self.hz = 60        # NTSC
         self.columns = columns
