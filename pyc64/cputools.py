@@ -73,18 +73,26 @@ if __name__ == "__main__":
     screen.clear()
     screen.memory[0xc000:0xc00b] = [0xa9, 0x44, 0x8d, 0x00, 0x04, 0xa9, 0x01, 0x8d, 0x00, 0xd8, 0x60]
     cpu = CPU(screen.memory)
-    assert screen.memory[0x0400] == 0x20
-    assert screen.memory[0xd800] == 14
+    if screen.memory[0x0400] != 0x20:
+        raise AssertionError
+    if screen.memory[0xd800] != 14:
+        raise AssertionError
     cpu.run(pc=0xc000)
-    assert screen.memory[0x0400] == 0x44
-    assert screen.memory[0xd800] == 1
+    if screen.memory[0x0400] != 0x44:
+        raise AssertionError
+    if screen.memory[0xd800] != 1:
+        raise AssertionError
     program = open("drive8/gary2.prg", "rb").read()
     address = program[0] + 256*program[1]
     for _ in range(200):
         cpu.reset()
         screen.memory[address:address+len(program)-2] = program[2:]
         cpu.run(pc=2061, loop_detect_delay=0)
-    assert screen.memory[0x0400] != 0x44
-    assert screen.memory[0xd800] != 1
-    assert screen.memory[53280] == 0
-    assert screen.memory[53281] == 0
+    if screen.memory[0x0400] == 0x44:
+        raise AssertionError
+    if screen.memory[0xd800] == 1:
+        raise AssertionError
+    if screen.memory[53280] != 0:
+        raise AssertionError
+    if screen.memory[53281] != 0:
+        raise AssertionError
