@@ -1,7 +1,5 @@
 # Start of file
-import bpy,math,mathutils,bmesh,bgl,blf
-from math import radians
-from random import randint
+import bpy
 bpy.context.scene.render.engine = 'BLENDER_WORKBENCH'
 bpy.context.scene.render.resolution_x = 640
 bpy.context.scene.render.resolution_y = 480
