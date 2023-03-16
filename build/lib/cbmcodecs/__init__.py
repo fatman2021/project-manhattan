@@ -38,7 +38,7 @@ petscii_codecs = {
 
 
 def search_fn(encoding):
-    return petscii_codecs.get(encoding, None)
+    return petscii_codecs.get(encoding)
 
 
 codecs.register(search_fn)

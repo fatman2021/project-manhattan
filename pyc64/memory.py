@@ -30,7 +30,7 @@ def _codec_errors_pyc64specials(error):
                 '_': '▁',
                 '|': '│',
                 '\\': 'M',  # 'backslash' in lower-case charset
-            }.get(error.object[i], None)
+            }.get(error.object[i])
         if replacement:
             result.append(replacement)
         else:
