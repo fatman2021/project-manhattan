@@ -19,7 +19,7 @@ name = "scala"
 name = "java"
 
   [analyzers.meta]
-  runtime_version = "17"
+  runtime_version = "19"
 
 [[analyzers]]
 name = "cxx"
@@ -65,6 +65,16 @@ name = "javascript"
     "ember",
     "meteor",
     "angularjs"
+  ]
+  environment = [
+    "nodejs",
+    "jquery",
+    "mongo",
+    "cypress",
+    "jest",
+    "vitest",
+    "mocha",
+    "jasmine"
   ]
 
 [[analyzers]]
@@ -117,3 +127,6 @@ name = "yapf"
 
 [[transformers]]
 name = "isort"
+
+[[transformers]]
+name = "ruff"
