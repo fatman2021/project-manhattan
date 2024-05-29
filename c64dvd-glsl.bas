@@ -27,69 +27,370 @@ faster than accessing it directly from main memory. Prefetching can be done with
 '/
 
 ' Extended Memory Table 1
+' Define SYSTEM_TYPE based on the operating system
+#IF DEFINED(__FB_WIN32__)
+   #DEFINE SYSTEM_TYPE ULONGINT
+#ELSEIF DEFINED(__FB_DOS__)
+   #DEFINE SYSTEM_TYPE ULONGINT
+#ELSEIF DEFINED(__FB_CYGWIN__)
+   #DEFINE SYSTEM_TYPE ULONGINT
+#ELSEIF DEFINED(__FB_PCOS__)
+   #DEFINE SYSTEM_TYPE ULONGINT
+#ELSEIF DEFINED(__FB_UNIX__)
+   #DEFINE SYSTEM_TYPE DOUBLE
+#ELSEIF DEFINED(__FB_LINUX__)
+   #DEFINE SYSTEM_TYPE DOUBLE
+#ELSEIF DEFINED(__FB_FREEBSD__)
+   #DEFINE SYSTEM_TYPE DOUBLE
+#ELSEIF DEFINED(__FB_NETBSD__)
+   #DEFINE SYSTEM_TYPE DOUBLE
+#ELSEIF DEFINED(__FB_OPENBSD__)
+   #DEFINE SYSTEM_TYPE DOUBLE
+#ELSEIF DEFINED(__FB_DARWIN__)
+   #DEFINE SYSTEM_TYPE DOUBLE
+#ENDIF
+
 ' declare def poke64(byval adr as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
 
-#define NUM_WAITING_KEYBOARD_ENTRIES_PTR &H00C6
-#define REVERSE_PRINT_PTR                &H00C7
-#define FG_COLOR_PTR                     &H0286
-#define HI_BYTE_TEXT_SCREEN_ADDRESS_PTR  &H0288
-#define A_REG_STORAGE_PTR                &H030C
-#define X_REG_STORAGE_PTR                &H030D
-#define Y_REG_STORAGE_PTR                &H030E
-#define P_REG_STORAGE_PTR                &H030F
-#define FUNC_CALL_1_PTR                  &H7E72
-#define FUNC_CALL_2_PTR                  &H7E73
-#define FUNC_CALL_3_PTR                  &H7E74
-#define FUNC_CALL_4_PTR                  &H7E75
-#define FUNC_CALL_5_PTR                  &H7E76
-#define FUNC_CALL_6_PTR                  &H7E77
-#define PLAY_DVD_PTR                     &HC000
-#define DISPLAY_DVD_MENU_PTR             &HC001
-#define FG_RED_PTR                       &HC002
-#define FG_GREEN_PTR                     &HC003
-#define FG_BLUE_PTR                      &HC004
-#define FG_ALPHA_PTR                     &HC005
-#define BG_RED_PTR                       &HC006
-#define BG_GREEN_PTR                     &HC007
-#define BG_BLUE_PTR                      &HC008
-#define BG_ALPHA_PTR                     &HC009
-#define X0_PTR                           &HC00A
-#define X0_1_PTR                         &HC00B
-#define X0_2_PTR                         &HC00C
-#define X0_3_PTR                         &HC00D
-#define X0_4_PTR                         &HC00E
-#define X0_5_PTR                         &HC00F
-#define Y0_PTR                           &HC010
-#define Y0_1_PTR                         &HC011
-#define Y0_2_PTR                         &HC012
-#define Y0_3_PTR                         &HC013
-#define Y0_4_PTR                         &HC014
-#define Y0_5_PTR                         &HC015
-#define Z0_PTR                           &HC016
-#define Z0_1_PTR                         &HC017
-#define Z0_2_PTR                         &HC018
-#define Z0_3_PTR                         &HC019
-#define Z0_4_PTR                         &HC01A
-#define Z0_5_PTR                         &HC01B
-#define X1_LD_PTR                        &HC01C
-#define X1_1_PTR                         &HC01D
-#define X1_2_PTR                         &HC01E
-#define X1_3_PTR                         &HC01F
-#define X1_4_PTR                         &HC020
-#define X1_5_PTR                         &HC021
-#define LD_Y1_PTR                        &HC022
-#define Y1_1_PTR                         &HC023
-#define Y1_2_PTR                         &HC024
-#define Y1_3_PTR                         &HC025
-#define Y1_4_PTR                         &HC026
-#define Y1_5_PTR                         &HC027
-#define LD_Z1_PTR                        &HC028
-#define Z1_1_PTR                         &HC029
-#define Z1_2_PTR                         &HC02A
-#define Z1_3_PTR                         &HC02B
-#define Z1_4_PTR                         &HC02C
-#define Z1_5_PTR                         &HC02D
+' Zeropage addressing (0-255)
+#define NUM_WAITING_KEYBOARD_ENTRIES_PTR &H00C6  ' (198) Number of waiting keyboard entries
+#define REVERSE_PRINT_PTR                &H00C7  ' (199) Reverse Print (0=Off)
 
+' Enhanced Zeropage contains the stack (256-511)
+' No specific definitions provided for this range
+
+' Operating System and BASIC pointers (512-1023)
+#define FG_COLOR_PTR                     &H0286  ' (646) Foreground Color
+#define HI_BYTE_TEXT_SCREEN_ADDRESS_PTR  &H0288  ' (648) High-byte of text screen address
+#define A_REG_STORAGE_PTR                &H030C  ' (780) Storage Area for A Register
+#define X_REG_STORAGE_PTR                &H030D  ' (781) Storage Area for X Register
+#define Y_REG_STORAGE_PTR                &H030E  ' (782) Storage Area for Y Register
+#define P_REG_STORAGE_PTR                &H030F  ' (783) Storage Area for P Register
+
+' Function call pointers (32370-32375)
+#define FUNC_CALL_1_PTR                  &H7E72  ' (32370)
+#define FUNC_CALL_2_PTR                  &H7E73  ' (32371)
+#define FUNC_CALL_3_PTR                  &H7E74  ' (32372)
+#define FUNC_CALL_4_PTR                  &H7E75  ' (32373)
+#define FUNC_CALL_5_PTR                  &H7E76  ' (32374)
+#define FUNC_CALL_6_PTR                  &H7E77  ' (32375)
+
+' Cartridge ROM (low) (32768-40959)
+' No specific definitions provided for this range
+
+' BASIC interpreter ROM or cartridge ROM (high) (40960-49151)
+' No specific definitions provided for this range
+
+' Free machine language program storage area (49152-53247)
+#define PLAY_DVD_PTR                     &HC000  ' (49152) Play DVD
+#define DISPLAY_DVD_MENU_PTR             &HC001  ' (49153) Display DVD Menu
+#define FG_RED_PTR                       &HC002  ' (49154) Foreground Red
+#define FG_GREEN_PTR                     &HC003  ' (49155) Foreground Green
+#define FG_BLUE_PTR                      &HC004  ' (49156) Foreground Blue
+#define FG_ALPHA_PTR                     &HC005  ' (49157) Foreground Alpha
+#define BG_RED_PTR                       &HC006  ' (49158) Background Red
+#define BG_GREEN_PTR                     &HC007  ' (49159) Background Green
+#define BG_BLUE_PTR                      &HC008  ' (49160) Background Blue
+#define BG_ALPHA_PTR                     &HC009  ' (49161) Background Alpha
+#define X0_PTR                           &HC00A  ' (49162)
+#define X0_1_PTR                         &HC00B  ' (49163)
+#define X0_2_PTR                         &HC00C  ' (49164)
+#define X0_3_PTR                         &HC00D  ' (49165)
+#define X0_4_PTR                         &HC00E  ' (49166)
+#define X0_5_PTR                         &HC00F  ' (49167)
+#define Y0_PTR                           &HC010  ' (49168)
+#define Y0_1_PTR                         &HC011  ' (49169)
+#define Y0_2_PTR                         &HC012  ' (49170)
+#define Y0_3_PTR                         &HC013  ' (49171)
+#define Y0_4_PTR                         &HC014  ' (49172)
+#define Y0_5_PTR                         &HC015  ' (49173)
+#define Z0_PTR                           &HC016  ' (49174)
+#define Z0_1_PTR                         &HC017  ' (49175)
+#define Z0_2_PTR                         &HC018  ' (49176)
+#define Z0_3_PTR                         &HC019  ' (49177)
+#define Z0_4_PTR                         &HC01A  ' (49178)
+#define Z0_5_PTR                         &HC01B  ' (49179)
+#define X1_LD_PTR                        &HC01C  ' (49180) Loads all data from $C01D to $C021 into x1
+#define X1_1_PTR                         &HC01D  ' (49181)
+#define X1_2_PTR                         &HC01E  ' (49182)
+#define X1_3_PTR                         &HC01F  ' (49183)
+#define X1_4_PTR                         &HC020  ' (49184)
+#define X1_5_PTR                         &HC021  ' (49185)
+#define LD_Y1_PTR                        &HC022  ' (49186) Loads all data from $C023 to $C027 into y1
+#define Y1_1_PTR                         &HC023  ' (49187)
+#define Y1_2_PTR                         &HC024  ' (49188)
+#define Y1_3_PTR                         &HC025  ' (49189)
+#define Y1_4_PTR                         &HC026  ' (49190)
+#define Y1_5_PTR                         &HC027  ' (49191)
+#define LD_Z1_PTR                        &HC028  ' (49192) Loads all data from $C029 to $C02D into z1
+#define Z1_1_PTR                         &HC029  ' (49193)
+#define Z1_2_PTR                         &HC02A  ' (49194)
+#define Z1_3_PTR                         &HC02B  ' (49195)
+#define Z1_4_PTR                         &HC02C  ' (49196)
+#define Z1_5_PTR                         &HC02D  ' (49197)
+#define LD_R0_PTR                        &HC02E  ' (49198) Loads all data from $C02F to $C033 into r0
+#define R0_1_PTR                         &HC02F  ' (49199)
+#define R0_2_PTR                         &HC030  ' (49200)
+#define R0_3_PTR                         &HC031  ' (49201)
+#define R0_4_PTR                         &HC032  ' (49202)
+#define R0_5_PTR                         &HC033  ' (49203)
+#define LD_R1_PTR                        &HC034  ' (49204) Loads all data from $C035 to $C039 into r1
+#define R1_1_PTR                         &HC035  ' (49205)
+#define R1_2_PTR                         &HC036  ' (49206)
+#define R1_3_PTR                         &HC037  ' (49207)
+#define R1_4_PTR                         &HC038  ' (49208)
+#define R1_5_PTR                         &HC039  ' (49209)
+#define LD_R2_PTR                        &HC03A  ' (49210) Loads all data from $C03B to $C03F into r2
+#define R2_1_PTR                         &HC03B  ' (49211)
+#define R2_2_PTR                         &HC03C  ' (49313)
+#define R2_3_PTR                         &HC03D  ' (49314)
+#define R2_4_PTR                         &HC03E  ' (49315)
+#define R2_5_PTR                         &HC03F  ' (49316)
+#define LD_R3_PTR                        &HC040  ' (49216) Loads all data from $C041 to $C046 into r3
+#define R3_1_PTR                         &HC041  ' (49217)
+#define R3_2_PTR                         &HC042  ' (49218)
+#define R3_3_PTR                         &HC043  ' (49219)
+#define R3_4_PTR                         &HC044  ' (49220)
+#define R3_5_PTR                         &HC045  ' (49221)
+#define LD_R4_PTR                        &HC047  ' (49223) Loads all data from $C048 to $C04C into r4
+#define R4_1_PTR                         &HC048  ' (49224)
+#define R4_2_PTR                         &HC049  ' (49225)
+#define R4_3_PTR                         &HC04A  ' (49226)
+#define R4_4_PTR                         &HC04B  ' (49227)
+#define R4_5_PTR                         &HC04C  ' (49228)
+#define LD_R5_PTR                        &HC04B  ' (49227) Loads all data from $C04D to $C051 into r5
+#define R5_1_PTR                         &HC04D  ' (49229)
+#define R5_2_PTR                         &HC04E  ' (49230)
+#define R5_3_PTR                         &HC04F  ' (49231)
+#define R5_4_PTR                         &HC050  ' (49232)
+#define R5_5_PTR                         &HC051  ' (49233)
+#define LD_R6_PTR                        &HC052  ' (49234) Loads all data from $C053 to $C057 into r6
+#define R6_1_PTR                         &HC053  ' (49235)
+#define R6_2_PTR                         &HC054  ' (49236)
+#define R6_3_PTR                         &HC055  ' (49237)
+#define R6_4_PTR                         &HC056  ' (49238)
+#define R6_5_PTR                         &HC057  ' (49239)
+#define LD_R7_PTR                        &HC058  ' (49240) Loads all data from $C059 to $C05D into r7
+#define R7_1_PTR                         &HC059  ' (49241)
+#define R7_2_PTR                         &HC05A  ' (49242)
+#define R7_3_PTR                         &HC05B  ' (49243)
+#define R7_4_PTR                         &HC05C  ' (49244)
+#define R7_5_PTR                         &HC05D  ' (49245)
+#define LD_R8_PTR                        &HC05E  ' (49246) Loads all data from $C05F to $C063 into r8
+#define R8_1_PTR                         &HC05F  ' (49247)
+#define R8_2_PTR                         &HC060  ' (49248)
+#define R8_3_PTR                         &HC061  ' (49249)
+#define R8_4_PTR                         &HC062  ' (49250)
+#define R8_5_PTR                         &HC063  ' (49251)
+#define LD_R9_PTR                        &HC064  ' (49252) Loads all data from $C065 to $C069 into r9
+#define R9_1_PTR                         &HC065  ' (49253)
+#define R9_2_PTR                         &HC066  ' (49254)
+#define R9_3_PTR                         &HC067  ' (49255)
+#define R9_4_PTR                         &HC068  ' (49256)
+#define R9_5_PTR                         &HC069  ' (49257)
+#define LD_R10_PTR                       &HC06A  ' (49258) Loads all data from $C06B to $C06F into r10
+#define R10_1_PTR                        &HC06B  ' (49259)
+#define R10_2_PTR                        &HC06C  ' (49260)
+#define R10_3_PTR                        &HC06D  ' (49261)
+#define R10_4_PTR                        &HC06E  ' (49262)
+#define R10_5_PTR                        &HC06F  ' (49263)
+#define LD_R11_PTR                       &HC070  ' (49264) Loads all data from $C071 to $C075 into r11
+#define R11_1_PTR                        &HC071  ' (49265)
+#define R11_2_PTR                        &HC072  ' (49266)
+#define R11_3_PTR                        &HC073  ' (49267)
+#define R11_4_PTR                        &HC074  ' (49268)
+#define R11_5_PTR                        &HC075  ' (49269)
+#define LD_ROT0_PTR                      &HC076  ' (49270) Loads all data from $C077 to $C07B into rot0
+#define ROT0_1_PTR                       &HC077  ' (49271)
+#define ROT0_2_PTR                       &HC078  ' (49272)
+#define ROT0_3_PTR                       &HC079  ' (49273)
+#define ROT0_4_PTR                       &HC07A  ' (49274)
+#define ROT0_5_PTR                       &HC07B  ' (49275)
+#define LD_ROT1_PTR                      &HC07C  ' (49276) Loads all data from $C07D to $C081 into rot1
+#define ROT1_1_PTR                       &HC07D  ' (49277)
+#define ROT1_2_PTR                       &HC07E  ' (49278)
+#define ROT1_3_PTR                       &HC07F  ' (49279)
+#define ROT1_4_PTR                       &HC080  ' (49280)
+#define ROT1_5_PTR                       &HC081  ' (49281)
+#define LD_ROT2_PTR                      &HC082  ' (49282) Loads all data from $C083 to $C087 into rot2
+#define ROT2_1_PTR                       &HC083  ' (49283)
+#define ROT2_2_PTR                       &HC084  ' (49284)
+#define ROT2_3_PTR                       &HC085  ' (49285)
+#define ROT2_4_PTR                       &HC086  ' (49286)
+#define ROT2_5_PTR                       &HC087  ' (49287)
+#define LD_ROT3_PTR                      &HC088  ' (49288) Loads all data from $C089 to $C08D into rot3
+#define ROT3_1_PTR                       &HC089  ' (49289)
+#define ROT3_2_PTR                       &HC08A  ' (49290)
+#define ROT3_3_PTR                       &HC08B  ' (49291)
+#define ROT3_4_PTR                       &HC08C  ' (49292)
+#define ROT3_5_PTR                       &HC08D  ' (49293)
+#define LD_ROT4_PTR                      &HC08E  ' (49294) Loads all data from $C08F to $C093 into rot4
+#define ROT4_1_PTR                       &HC08F  ' (49295)
+#define ROT4_2_PTR                       &HC090  ' (49296)
+#define ROT4_3_PTR                       &HC091  ' (49297)
+#define ROT4_4_PTR                       &HC092  ' (49298)
+#define ROT4_5_PTR                       &HC093  ' (49299)
+#define LD_SCRO_X_ROT5_PTR               &HC094  ' (49300) Loads all data from $C095 to $C099 into rot5
+#define SCRO_X_ROT5_1_PTR                &HC095  ' (49301)
+#define SCRO_X_ROT5_2_PTR                &HC096  ' (49302)
+#define SCRO_X_ROT5_3_PTR                &HC097  ' (49303)
+#define SCRO_X_ROT5_4_PTR                &HC098  ' (49304)
+#define SCRO_X_ROT5_5_PTR                &HC099  ' (49305)
+#define LD_SCRO_Y_ROT6_PTR               &HC09A  ' (49306) Loads all data from $C09B to $C09F into rot6
+#define SCRO_Y_ROT6_1_PTR                &HC09B  ' (49307)
+#define SCRO_Y_ROT6_2_PTR                &HC09C  ' (49308)
+#define SCRO_Y_ROT6_3_PTR                &HC09D  ' (49309)
+#define SCRO_Y_ROT6_4_PTR                &HC09E  ' (49310)
+#define SCRO_Y_ROT6_5_PTR                &HC09F  ' (49311)
+#define SET_SCREEN_RESOLUTION_PTR        &HC0A0  ' (49312) r8 sets screen width, r9 sets screen height
+
+' GLSL/OS and keyword database functions
+#define EXEC_GLSL_OS_PTR                 &HC0A1  ' (49313) Execute GLSL/OS, keyword database
+                                                    ' 0 - Compile and execute GLSL
+                                                    ' 1 - Opens POV-Ray device
+                                                    ' 2 - Closes POV-Ray device
+                                                    ' 3 - Render using POV-Ray
+                                                    ' 4 - Sets offset in video memory using r8
+                                                    ' 5 - Animation player (r8 sets first frame, r9 sets last frame)
+                                                    ' 6-22 - Keyword Database uses r10 as selector
+#define LANG_TERM_SELECTOR_PTR           &HC0A2  ' (49314) Language/Terminal Selector
+                                                    ' 0 - Blender terminal
+                                                    ' 1 - COBOL terminal
+                                                    ' 2 - POV-Ray terminal
+                                                    ' 3 - FreeBASIC terminal
+                                                    ' 4 - FreeBASIC QB terminal
+                                                    ' 5 - GLSL terminal
+                                                    ' 6 - COBOL compiler
+                                                    ' 7 - Fortran compiler
+                                                    ' 8 - Pascal compiler
+                                                    ' 9 - OSL compiler
+                                                    ' 10 - POV-Ray compiler
+                                                    ' 11 - Java compiler
+                                                    ' 12 - C compiler
+                                                    ' 13 - C++ compiler
+                                                    ' 14 - C# compiler
+                                                    ' 15 - JavaScript compiler
+                                                    ' 16 - PHP compiler
+                                                    ' 17 - Python compiler
+                                                    ' 18 - Swift compiler
+                                                    ' 19 - Octave compiler
+                                                    ' 20 - Kotlin compiler
+                                                    ' 21 - R compiler
+                                                    ' 22 - Dart compiler
+                                                    ' 23 - Scala compiler
+                                                    ' 24 - Open File
+                                                    ' 25 - Close File
+                                                    ' 26 - Compile and execute program
+                                                    ' 27 - 90 column text editor
+#define LOAD_COMPILE_GLSL_PTR            &HC0A3  ' (49315) Load and compile tmp.glsl
+
+' Mouse driver and related functions
+#define MOUSE_LOCATION_STATUS_PTR        &HC0AA  ' (49322) Mouse driver return address
+                                                    ' Mouse screen location is returned to x0 and y0
+                                                    ' Wheel status is returned to z0
+                                                    ' Button status is returned to x1
+#define PCOPY_PAGE_PTR                   &HC0AB  ' (49323) PCOPY from page x0 to page y0
+
+' Foreground and background color pointers
+'#define FG_COLOR_PTR                     &HC0C9  ' (49353) Loads all data from $C002 to $C005 into fg_color
+#define BG_COLOR_PTR                     &HC0CA  ' (49354) Loads all data from $C006 to $C009 into bg_color
+#define LD_X0_PTR                        &HC0CB  ' (49355) Loads all data from $C00B to $C00F into x0
+#define LD_Y0_PTR                        &HC0CC  ' (49356) Loads all data from $C011 to $C015 into y0
+#define LD_Z0_PTR                        &HC0CD  ' (49357) Loads all data from $C017 to $C01B into z0
+
+' Additional registers
+'#define X0_PTR                           &HC0CB  ' (49355)
+'#define Y0_PTR                           &HC0CC  ' (49356)
+'#define Z0_PTR                           &HC0CD  ' (49357)
+#define X1_PTR                           &HC0CE  ' (49358)
+#define Y2_PTR                           &HC0CF  ' (49359)
+#define Z2_PTR                           &HC0D0  ' (49360)
+#define R0_PTR                           &HC0D1  ' (49361)
+#define R1_PTR                           &HC0D2  ' (49362)
+#define R2_PTR                           &HC0D3  ' (49363)
+#define R3_PTR                           &HC0D4  ' (49364)
+#define R4_PTR                           &HC0D5  ' (49365)
+#define R5_PTR                           &HC0D6  ' (49366)
+#define R6_PTR                           &HC0D7  ' (49367)
+#define R7_PTR                           &HC0D8  ' (49368)
+#define R8_PTR                           &HC0D9  ' (49369)
+#define R9_PTR                           &HC0DA  ' (49370)
+#define R10_PTR                          &HC0DB  ' (49371)
+#define R11_PTR                          &HC0DD  ' (49372)
+#define ROT0_PTR                         &HC0DE  ' (49373)
+#define ROT1_PTR                         &HC0DF  ' (49374)
+#define ROT2_PTR                         &HC0E0  ' (49375)
+#define ROT3_PTR                         &HC0E1  ' (49377)
+#define ROT4_PTR                         &HC0E2  ' (49378)
+#define SCRO_X_ROT5_PTR                  &HC0E3  ' (49379)
+#define SCRO_Y_ROT6_PTR                  &HC0E4  ' (49380)
+#define LOAD_MONOCHROME_FONT_PTR         &HC0E6  ' (49382) Loads Monochrome 8x8 font
+#define FONT_FLIP_PTR                    &HC0E7  ' (49383) Font Flip
+#define FONT_OFFSET_PTR                  &HC0E8  ' (49384) Font Offset
+#define FONT_WIDTH_PTR                   &HC0E9  ' (49385) Font Width
+#define FONT_HEIGHT_PTR                  &HC0EA  ' (49386) Font Height
+#define HAM_FG_COLOR_PTR                 &HC0EB  ' (49387) Amiga style Hold-and-Modify (Foreground color)
+#define HAM_BORDER_COLOR_PTR             &HC0EC  ' (49388) Amiga style Hold-and-Modify (Border color)
+#define HAM_BG_COLOR_PTR                 &HC0ED  ' (49389) Amiga style Hold-and-Modify (Background color)
+#define HAM_DRAW_FILLED_BOX_FG_PTR       &HC0EE  ' (49390) Amiga style Hold-and-Modify (Draw filled box using x0, y0, x1, y1, FG)
+#define HAM_DRAW_FILLED_BOX_BG_PTR       &HC0EF  ' (49391) Amiga style Hold-and-Modify (Draw filled box using x0, y0, x1, y1, BG)
+#define CHAIN_COMMAND_PTR                &HC0F0  ' (49392) CHAIN command uses strCode
+#define EXEC_MS_WINDOWS_PROGRAM_PTR      &HC0F1  ' (49393) Execute MS-Windows program uses strCode
+#define EXEC_MS_DOS_PROGRAM_PTR          &HC0F2  ' (49394) Execute MS-DOS program uses strCode
+#define OPEN_INTEL_ASM_FILE_PTR          &HC0F3  ' (49395) Open Intel Assembly Language File uses strCode
+#define WRITE_INTEL_ASM_FILE_PTR         &HC0F4  ' (49396) Write to Intel ASM file uses strCode
+#define EXEC_NASM_ASSEMBLER_PTR          &HC0F6  ' (49398) Execute NASM assembler uses strCode
+#define EXEC_EXTERNAL_BOOT_SECTOR_PTR    &HC0F7  ' (49399) Execute external boot sector uses strCode
+#define SHELL_COMMAND_PTR                &HC0F8  ' (49400) SHELL command uses strCode
+#define SWCH_PTR                         &HC0F9  ' (49401)
+#define ADD_BYTE_TO_STR_CODE_PTR         &HC0FA  ' (49402) Add BYTE to strCode
+#define WRITE_STR_CODE_TO_FILE_PTR       &HC0FB  ' (49403) Write strCode to file
+#define PRINT_REVERSE_CHARACTERS_PTR     &HC0FC  ' (49404) Print Reverse Characters (0=No)
+#define CLOSE_FILE_PTR                   &HC0FD  ' (49405) Close file
+#define ADD_BYTE_TO_FILE_NAME_PTR        &HC0FE  ' (49406) Add byte to file name
+#define COMPILE_EXEC_GLSL_PTR            &HC0FF  ' (49407) Compile and execute GLSL program
+#define TEXT_BUFFER_BACK_SWITCHING_PTR   &HC100  ' (49408) Text buffer back switching
+#define DRAW_SHAPES_3D_PTR               &HC101  ' (49409) Draw shapes in 3D space
+                                                    ' 0 - Draw shaded box using r8, r9, r10, r11
+                                                    ' 5 - Render GLSL in 32-bit 120x60 text mode
+                                                    ' 6 - Render GLSL in 32-bit 40x25 text mode
+                                                    ' 7 - Render GLSL in 32-bit 90x60 text mode
+#define SCREEN_LOCK_PTR                  &HC102  ' (49410) Screen lock
+#define SCREEN_UNLOCK_PTR                &HC103  ' (49411) Screen unlock uses y0, y0
+#define SCREEN_UNLOCK_YS_PTR             &HC104  ' (49412) Screen unlock uses ys, ys+8
+#define WRITE_FG_BG_PTR                  &HC106  ' (49414) Write to foreground/background
+                                                    ' 0 - Draw pixel(FG) using r0, r1, fg_color
+                                                    ' 1 - Draw pixel(BG) using r0, r1, bg_color
+                                                    ' 2 - Draw line(FG) using r0, r1, r2, r3, fg_color
+                                                    ' 3 - Draw line(BG) using r0, r1, r2, r3, bg_color
+                                                    ' 4 - Draw box(FG) using r0, r1, r2, r3, fg_color
+                                                    ' 5 - Draw box(BG) using r0, r1, r2, r3, bg_color
+                                                    ' 6 - Draw filled box(FG) using r0, r1, r2, r3, fg_color
+                                                    ' 7 - Draw filled box(BG) using r0, r1, r2, r3, bg_color
+                                                    ' 8 - Draw circle(FG) using r0, r1, r2, fg_color
+                                                    ' 9 - Draw circle(BG) using r0, r1, r2, bg_color
+                                                    ' 10 - Draw pattern(FG) using r0, r1, r2, r3, fg_color
+                                                    ' 11 - Draw pattern(BG) using r0, r1, r2, r3, bg_color
+#define E6510CPU_PTR                     &HC108  ' (49416)
+#define LD_PC_PTR                        &HC109  ' (49417) Loads all data from $C10B to $C10F into pc
+#define PC_PTR                           &HC10A  ' (49418) Uses r3
+#define LD_ADR0_PTR                      &HC110  ' (49424) Loads all data from $C111 to $C116 into adr0
+#define ADR0_PTR                         &HC111  ' (49425) Uses pc and r3
+#define LD_ADR1_PTR                      &HC117  ' (49431) Loads all data from $C118 to $C11D into adr1
+#define LD_ADR2_PTR                      &HC11E  ' (49438) Loads all data from $C11F to $C124 into adr2
+#define LD_ADR3_PTR                      &HC125  ' (49445) Loads all data from $C126 to $C12B into adr3
+#define SCR_PTR_ADR3                     &HC12B  ' (49451)
+#define LD_PC_STATUS_PTR                 &HC12C
+
+' Character generator ROM
+#define CHAR_GEN_ROM_START               &HD000
+#define CHAR_GEN_ROM_END                 &HDFFF
+
+' KERNAL ROM or cartridge ROM (high)
+#define KERNAL_ROM_START                 &HE000
+#define KERNAL_ROM_END                   &HFFFF
+
+' Color pointers
 #define LD_FG_COLOR_PTR                  &HC0C9
 #define LD_BG_COLOR_PTR                  &HC0CA
 
@@ -260,11 +561,11 @@ static shared as multiboot_info ptr MB_INFO
 #include once "address.bi"
 #endif
 
-#if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
-    #define SYSTEM_TYPE uint64
-#else
-    #define SYSTEM_TYPE float
-#endif
+' #if defined(__FB_DOS__) or defined(__FB_WIN32__) or defined(__FB_WIN64__)
+'    #define SYSTEM_TYPE uint64
+' #else
+'    #define SYSTEM_TYPE float
+' #endif
 
 #if defined(__FB_DOS__)
   'Ring 3 - c64dvd
@@ -1279,6 +1580,7 @@ type SYSTEM_BUS_T
   declare def  field_add(_str as qbs ptr, size as int64)
   declare def  field_get(fileno as int32, offset as int32, passed as int32)
   declare proc gfs_read(i as int32, position as int64, _data as uint8 ptr, size as int64) as int32
+  declare proc gfs_validhandle(i as int32) as int32
   
   ' x86 Virtual MEM64 emulation
   ' Note: x86 CPU emulation is still experimental and is not available in QB64 yet.

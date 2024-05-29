@@ -3184,7 +3184,75 @@ fail:
     field_failed = 1
     exit def
 end def
+
+proc SYSTEM_BUS_T.gfs_validhandle(i as int32) as int32
+    if ((i < 0) or (i >= gfs_n)) then
+        return 0
+    end if    
+    if (gfs_file[i].scrn) then
+        return 1
+    end if    
+    if (gfs_file[i].open) then
+        return 1
+    end if
+    return 0
+end proc
 /'
+int32 gfs_setpos(int32 i, int64 position) {
+    if (!gfs_validhandle(i))
+        return -2; // invalid handle
+    if (position < 0)
+        return -4; // illegal function call
+
+    static gfs_file_struct *f;
+    f = &gfs_file[i];
+
+#ifdef GFS_C
+    if (f->read) {
+        f->file_handle->clear();
+        f->file_handle->seekg(position);
+    }
+    if (f->write) {
+        f->file_handle->clear();
+        f->file_handle->seekp(position);
+    }
+    f->pos = position;
+    if (f->pos <= gfs_lof(i)) {
+        f->eof_passed = 0;
+        f->eof_reached = 0;
+    }
+    return 0;
+#endif
+
+#ifdef GFS_WINDOWS
+    static gfs_file_win_struct *f_w;
+    f_w = &gfs_file_win[i];
+    if (SetFilePointer(f_w->file_handle, (int32)position, (long *)(((int32 *)&position) + 1), FILE_BEGIN) ==
+        0xFFFFFFFF) { /*Note that it is not an error to set the file pointer to a position beyond the end of the file. The size of the file does not increase
+                         until you call the SetEndOfFile, WriteFile, or WriteFileEx function.*/
+        if (GetLastError() != NO_ERROR) {
+            return -3; // bad file mode
+        }
+    }
+    f->pos = position;
+    if (f->pos <= gfs_lof(i)) {
+        f->eof_passed = 0;
+        f->eof_reached = 0;
+    }
+    return 0;
+#endif
+
+    return -1;
+}
+
+int64 gfs_getpos(int32 i) {
+    if (!gfs_validhandle(i))
+        return -2; // invalid handle
+    static gfs_file_struct *f;
+    f = &gfs_file[i];
+    return f->pos;
+}
+
 proc SYSTEM_BUS_T.gfs_read(i as int32, position as int64, _data as uint8 ptr, size as int64) as int32
 
     gfs_read_bytes_value = 0
