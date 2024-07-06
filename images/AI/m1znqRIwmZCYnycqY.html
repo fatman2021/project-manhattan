@@ -1,288 +1,333 @@
-<html><head><base href="https://websim.ai/c/project-manhattan-realistic-benchmark">
-<title>Project Manhattan - Advanced MOS 6510 SoC Emulator with Modern Realistic Graphics Benchmark</title>
-<style>
-  body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #0a0a0a;
-    color: #e0e0e0;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  .container {
-    display: flex;
-    height: 100vh;
-  }
-  .render-container {
-    flex: 1;
-    position: relative;
-  }
-  #benchmark-canvas {
-    width: 100%;
-    height: 100%;
-  }
-  .controls {
-    width: 300px;
-    background-color: #1a1a1a;
-    padding: 20px;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-    overflow-y: auto;
-  }
-  h1, h2 {
-    color: #4CAF50;
-    margin-bottom: 20px;
-  }
-  .stat {
-    margin-bottom: 15px;
-  }
-  .stat-label {
-    font-weight: bold;
-    color: #4CAF50;
-  }
-  .control-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-  }
-  .control-button:hover {
-    background-color: #45a049;
-  }
-  #loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  .loader {
-    border: 8px solid #f3f3f3;
-    border-top: 8px solid #4CAF50;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-  }
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  #mos6510-output {
-    font-family: 'Courier New', monospace;
-    background-color: #000;
-    color: #4CAF50;
-    padding: 10px;
-    border: 1px solid #4CAF50;
-    margin-top: 20px;
-    height: 100px;
-    overflow-y: auto;
-  }
-</style>
-</head>
-<body>
-<div id="loading-screen">
-  <div class="loader"></div>
-</div>
-<div class="container">
-  <div class="render-container">
-    <canvas id="benchmark-canvas"></canvas>
-  </div>
-  <div class="controls">
-    <h1>Project Manhattan</h1>
-    <h2>MOS 6510 SoC Benchmark</h2>
-    <div class="stat">
-      <span class="stat-label">FPS:</span>
-      <span id="fps-counter">0</span>
+<html>
+  <head>
+    <base href="https://websim.ai/c/project-manhattan-realistic-benchmark" />
+    <title>
+      Project Manhattan - Advanced MOS 6510 SoC Emulator with Modern Realistic
+      Graphics Benchmark
+    </title>
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #0a0a0a;
+        color: #e0e0e0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      .container {
+        display: flex;
+        height: 100vh;
+      }
+      .render-container {
+        flex: 1;
+        position: relative;
+      }
+      #benchmark-canvas {
+        width: 100%;
+        height: 100%;
+      }
+      .controls {
+        width: 300px;
+        background-color: #1a1a1a;
+        padding: 20px;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        overflow-y: auto;
+      }
+      h1,
+      h2 {
+        color: #4caf50;
+        margin-bottom: 20px;
+      }
+      .stat {
+        margin-bottom: 15px;
+      }
+      .stat-label {
+        font-weight: bold;
+        color: #4caf50;
+      }
+      .control-button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+      .control-button:hover {
+        background-color: #45a049;
+      }
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      .loader {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #4caf50;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      #mos6510-output {
+        font-family: "Courier New", monospace;
+        background-color: #000;
+        color: #4caf50;
+        padding: 10px;
+        border: 1px solid #4caf50;
+        margin-top: 20px;
+        height: 100px;
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading-screen">
+      <div class="loader"></div>
     </div>
-    <div class="stat">
-      <span class="stat-label">Draw Calls:</span>
-      <span id="draw-calls">0</span>
+    <div class="container">
+      <div class="render-container">
+        <canvas id="benchmark-canvas"></canvas>
+      </div>
+      <div class="controls">
+        <h1>Project Manhattan</h1>
+        <h2>MOS 6510 SoC Benchmark</h2>
+        <div class="stat">
+          <span class="stat-label">FPS:</span>
+          <span id="fps-counter">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Draw Calls:</span>
+          <span id="draw-calls">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Triangles:</span>
+          <span id="triangles">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Textures:</span>
+          <span id="textures">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Shader Complexity:</span>
+          <span id="shader-complexity">Low</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Benchmark Score:</span>
+          <span id="benchmark-score">0</span>
+        </div>
+        <button class="control-button" id="start-benchmark">
+          Start Benchmark
+        </button>
+        <button class="control-button" id="toggle-wireframe">
+          Toggle Wireframe
+        </button>
+        <div id="mos6510-output"></div>
+      </div>
     </div>
-    <div class="stat">
-      <span class="stat-label">Triangles:</span>
-      <span id="triangles">0</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Textures:</span>
-      <span id="textures">0</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Shader Complexity:</span>
-      <span id="shader-complexity">Low</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Benchmark Score:</span>
-      <span id="benchmark-score">0</span>
-    </div>
-    <button class="control-button" id="start-benchmark">Start Benchmark</button>
-    <button class="control-button" id="toggle-wireframe">Toggle Wireframe</button>
-    <div id="mos6510-output"></div>
-  </div>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-<script>
-let scene, camera, renderer, controls;
-let benchmarkRunning = false;
-let frameCount = 0;
-let lastTime = performance.now();
-let benchmarkScore = 0;
-let wireframeMode = false;
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script>
+      let scene, camera, renderer, controls;
+      let benchmarkRunning = false;
+      let frameCount = 0;
+      let lastTime = performance.now();
+      let benchmarkScore = 0;
+      let wireframeMode = false;
 
-const loadingManager = new THREE.LoadingManager();
-loadingManager.onLoad = () => {
-  document.getElementById('loading-screen').style.display = 'none';
-};
+      const loadingManager = new THREE.LoadingManager();
+      loadingManager.onLoad = () => {
+        document.getElementById("loading-screen").style.display = "none";
+      };
 
-function init() {
-  scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('benchmark-canvas'), antialias: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1;
-  renderer.outputEncoding = THREE.sRGBEncoding;
+      function init() {
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(
+          75,
+          window.innerWidth / window.innerHeight,
+          0.1,
+          1000,
+        );
+        renderer = new THREE.WebGLRenderer({
+          canvas: document.getElementById("benchmark-canvas"),
+          antialias: true,
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1;
+        renderer.outputEncoding = THREE.sRGBEncoding;
 
-  controls = new THREE.OrbitControls(camera, renderer.domElement);
-  
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-  scene.add(ambientLight);
-  
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-  directionalLight.position.set(5, 5, 5);
-  scene.add(directionalLight);
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-  camera.position.z = 5;
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
 
-  // Load complex 3D model
-  const loader = new THREE.GLTFLoader(loadingManager);
-  loader.load('https://threejs.org/examples/models/gltf/DamagedHelmet/glTF/DamagedHelmet.gltf', (gltf) => {
-    scene.add(gltf.scene);
-    gltf.scene.scale.set(2, 2, 2);
-    gltf.scene.rotation.y = Math.PI / 4;
-  });
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(5, 5, 5);
+        scene.add(directionalLight);
 
-  // Add particle system
-  const particlesGeometry = new THREE.BufferGeometry();
-  const particlesCnt = 5000;
-  const posArray = new Float32Array(particlesCnt * 3);
-  for(let i = 0; i < particlesCnt * 3; i++) {
-    posArray[i] = (Math.random() - 0.5) * 10;
-  }
-  particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-  const particlesMaterial = new THREE.PointsMaterial({
-    size: 0.005,
-    color: 0x00ff00
-  });
-  const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-  scene.add(particlesMesh);
+        camera.position.z = 5;
 
-  window.addEventListener('resize', onWindowResize, false);
-}
+        // Load complex 3D model
+        const loader = new THREE.GLTFLoader(loadingManager);
+        loader.load(
+          "https://threejs.org/examples/models/gltf/DamagedHelmet/glTF/DamagedHelmet.gltf",
+          (gltf) => {
+            scene.add(gltf.scene);
+            gltf.scene.scale.set(2, 2, 2);
+            gltf.scene.rotation.y = Math.PI / 4;
+          },
+        );
 
-function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-}
+        // Add particle system
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCnt = 5000;
+        const posArray = new Float32Array(particlesCnt * 3);
+        for (let i = 0; i < particlesCnt * 3; i++) {
+          posArray[i] = (Math.random() - 0.5) * 10;
+        }
+        particlesGeometry.setAttribute(
+          "position",
+          new THREE.BufferAttribute(posArray, 3),
+        );
+        const particlesMaterial = new THREE.PointsMaterial({
+          size: 0.005,
+          color: 0x00ff00,
+        });
+        const particlesMesh = new THREE.Points(
+          particlesGeometry,
+          particlesMaterial,
+        );
+        scene.add(particlesMesh);
 
-function animate() {
-  requestAnimationFrame(animate);
-  
-  if (benchmarkRunning) {
-    frameCount++;
-    const currentTime = performance.now();
-    if (currentTime - lastTime >= 1000) {
-      const fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
-      document.getElementById('fps-counter').textContent = fps;
-      benchmarkScore += fps;
-      document.getElementById('benchmark-score').textContent = benchmarkScore;
-      frameCount = 0;
-      lastTime = currentTime;
-      
-      // Simulate MOS 6510 output
-      simulateMOS6510Output();
-    }
-  }
+        window.addEventListener("resize", onWindowResize, false);
+      }
 
-  controls.update();
-  renderer.render(scene, camera);
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
 
-  updateStats();
-}
+      function animate() {
+        requestAnimationFrame(animate);
 
-function updateStats() {
-  document.getElementById('draw-calls').textContent = renderer.info.render.calls;
-  document.getElementById('triangles').textContent = renderer.info.render.triangles;
-  document.getElementById('textures').textContent = renderer.info.memory.textures;
-}
+        if (benchmarkRunning) {
+          frameCount++;
+          const currentTime = performance.now();
+          if (currentTime - lastTime >= 1000) {
+            const fps = Math.round(
+              (frameCount * 1000) / (currentTime - lastTime),
+            );
+            document.getElementById("fps-counter").textContent = fps;
+            benchmarkScore += fps;
+            document.getElementById("benchmark-score").textContent =
+              benchmarkScore;
+            frameCount = 0;
+            lastTime = currentTime;
 
-function startBenchmark() {
-  benchmarkRunning = true;
-  benchmarkScore = 0;
-  frameCount = 0;
-  lastTime = performance.now();
-  document.getElementById('benchmark-score').textContent = '0';
-  document.getElementById('start-benchmark').textContent = 'Stop Benchmark';
-  document.getElementById('mos6510-output').innerHTML = '';
-}
+            // Simulate MOS 6510 output
+            simulateMOS6510Output();
+          }
+        }
 
-function stopBenchmark() {
-  benchmarkRunning = false;
-  document.getElementById('start-benchmark').textContent = 'Start Benchmark';
-}
+        controls.update();
+        renderer.render(scene, camera);
 
-function toggleWireframe() {
-  wireframeMode = !wireframeMode;
-  scene.traverse((obj) => {
-    if (obj.isMesh) {
-      obj.material.wireframe = wireframeMode;
-    }
-  });
-}
+        updateStats();
+      }
 
-function simulateMOS6510Output() {
-  const outputElement = document.getElementById('mos6510-output');
-  const instructions = [
-    'LDA #$FF',
-    'STA $D020',
-    'LDX #$00',
-    'STX $D021',
-    'JSR $FFD2',
-    'RTS'
-  ];
-  const randomInstruction = instructions[Math.floor(Math.random() * instructions.length)];
-  outputElement.innerHTML += randomInstruction + '<br>';
-  outputElement.scrollTop = outputElement.scrollHeight;
-}
+      function updateStats() {
+        document.getElementById("draw-calls").textContent =
+          renderer.info.render.calls;
+        document.getElementById("triangles").textContent =
+          renderer.info.render.triangles;
+        document.getElementById("textures").textContent =
+          renderer.info.memory.textures;
+      }
 
-document.getElementById('start-benchmark').addEventListener('click', () => {
-  if (benchmarkRunning) {
-    stopBenchmark();
-  } else {
-    startBenchmark();
-  }
-});
+      function startBenchmark() {
+        benchmarkRunning = true;
+        benchmarkScore = 0;
+        frameCount = 0;
+        lastTime = performance.now();
+        document.getElementById("benchmark-score").textContent = "0";
+        document.getElementById("start-benchmark").textContent =
+          "Stop Benchmark";
+        document.getElementById("mos6510-output").innerHTML = "";
+      }
 
-document.getElementById('toggle-wireframe').addEventListener('click', toggleWireframe);
+      function stopBenchmark() {
+        benchmarkRunning = false;
+        document.getElementById("start-benchmark").textContent =
+          "Start Benchmark";
+      }
 
-init();
-animate();
-</script>
-</body></html>
+      function toggleWireframe() {
+        wireframeMode = !wireframeMode;
+        scene.traverse((obj) => {
+          if (obj.isMesh) {
+            obj.material.wireframe = wireframeMode;
+          }
+        });
+      }
+
+      function simulateMOS6510Output() {
+        const outputElement = document.getElementById("mos6510-output");
+        const instructions = [
+          "LDA #$FF",
+          "STA $D020",
+          "LDX #$00",
+          "STX $D021",
+          "JSR $FFD2",
+          "RTS",
+        ];
+        const randomInstruction =
+          instructions[Math.floor(Math.random() * instructions.length)];
+        outputElement.innerHTML += randomInstruction + "<br>";
+        outputElement.scrollTop = outputElement.scrollHeight;
+      }
+
+      document
+        .getElementById("start-benchmark")
+        .addEventListener("click", () => {
+          if (benchmarkRunning) {
+            stopBenchmark();
+          } else {
+            startBenchmark();
+          }
+        });
+
+      document
+        .getElementById("toggle-wireframe")
+        .addEventListener("click", toggleWireframe);
+
+      init();
+      animate();
+    </script>
+  </body>
+</html>
