@@ -1,401 +1,438 @@
-<html><head><base href="https://websim.ai/c/blendmiga-fix-cli" />
-<title>BlendMIGA - Modern 3D & Amiga Graphics Hybrid</title>
-<style>
-  body {
-    font-family: "VT323", monospace;
-    background-color: #2b2b2b;
-    color: #33ff00;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  .container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  .main-content {
-    flex-grow: 1;
-    display: flex;
-  }
-  .sidebar {
-    width: 200px;
-    background-color: #1a1a1a;
-    padding: 10px;
-    border-right: 2px solid #33ff00;
-  }
-  .viewport-container {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .toolbar {
-    background-color: #1a1a1a;
-    padding: 10px;
-    border-bottom: 2px solid #33ff00;
-  }
-  .viewport {
-    flex-grow: 1;
-    background-color: #000;
-    position: relative;
-    overflow: hidden;
-  }
-  .status-bar {
-    background-color: #1a1a1a;
-    padding: 5px 10px;
-    border-top: 2px solid #33ff00;
-    font-size: 14px;
-  }
-  .cli-container {
-    height: 200px;
-    background-color: #000;
-    border-top: 2px solid #33ff00;
-    padding: 10px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-  }
-  #cli-output {
-    flex-grow: 1;
-    margin-bottom: 10px;
-    white-space: pre-wrap;
-    overflow-y: auto;
-  }
-  #cli-input-container {
-    display: flex;
-    align-items: center;
-  }
-  #cli-input {
-    flex-grow: 1;
-    background-color: #000;
-    border: none;
-    color: #33ff00;
-    font-family: inherit;
-    font-size: 16px;
-    outline: none;
-  }
-  button {
-    background-color: #1a1a1a;
-    color: #33ff00;
-    border: 1px solid #33ff00;
-    padding: 5px 10px;
-    margin: 5px;
-    cursor: pointer;
-    font-family: inherit;
-  }
-  button:hover {
-    background-color: #33ff00;
-    color: #1a1a1a;
-  }
-  .menu-item {
-    margin-bottom: 10px;
-  }
-  .menu-item h3 {
-    margin: 0 0 5px 0;
-    border-bottom: 1px solid #33ff00;
-  }
-  .menu-item button {
-    display: block;
-    width: 100%;
-    text-align: left;
-  }
-  #render-canvas {
-    width: 100%;
-    height: 100%;
-  }
-  .scanlines {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      to bottom,
-      rgba(255,255,255,0) 50%,
-      rgba(0,0,0,0.2) 50%
-    );
-    background-size: 100% 4px;
-    pointer-events: none;
-  }
-  .glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    box-shadow: inset 0 0 50px 10px rgba(51,255,0,0.1);
-    pointer-events: none;
-  }
-</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-</head>
-<body>
-<div class="container">
-  <div class="main-content">
-    <div class="sidebar">
-      <div class="menu-item">
-        <h3>File</h3>
-        <button onclick="executeCommand('NEW')">New</button>
-        <button onclick="executeCommand('LOAD')">Open</button>
-        <button onclick="executeCommand('SAVE')">Save</button>
+<html>
+  <head>
+    <base href="https://websim.ai/c/blendmiga-fix-cli" />
+    <title>BlendMIGA - Modern 3D & Amiga Graphics Hybrid</title>
+    <style>
+      body {
+        font-family: "VT323", monospace;
+        background-color: #2b2b2b;
+        color: #33ff00;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      .main-content {
+        flex-grow: 1;
+        display: flex;
+      }
+      .sidebar {
+        width: 200px;
+        background-color: #1a1a1a;
+        padding: 10px;
+        border-right: 2px solid #33ff00;
+      }
+      .viewport-container {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .toolbar {
+        background-color: #1a1a1a;
+        padding: 10px;
+        border-bottom: 2px solid #33ff00;
+      }
+      .viewport {
+        flex-grow: 1;
+        background-color: #000;
+        position: relative;
+        overflow: hidden;
+      }
+      .status-bar {
+        background-color: #1a1a1a;
+        padding: 5px 10px;
+        border-top: 2px solid #33ff00;
+        font-size: 14px;
+      }
+      .cli-container {
+        height: 200px;
+        background-color: #000;
+        border-top: 2px solid #33ff00;
+        padding: 10px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      #cli-output {
+        flex-grow: 1;
+        margin-bottom: 10px;
+        white-space: pre-wrap;
+        overflow-y: auto;
+      }
+      #cli-input-container {
+        display: flex;
+        align-items: center;
+      }
+      #cli-input {
+        flex-grow: 1;
+        background-color: #000;
+        border: none;
+        color: #33ff00;
+        font-family: inherit;
+        font-size: 16px;
+        outline: none;
+      }
+      button {
+        background-color: #1a1a1a;
+        color: #33ff00;
+        border: 1px solid #33ff00;
+        padding: 5px 10px;
+        margin: 5px;
+        cursor: pointer;
+        font-family: inherit;
+      }
+      button:hover {
+        background-color: #33ff00;
+        color: #1a1a1a;
+      }
+      .menu-item {
+        margin-bottom: 10px;
+      }
+      .menu-item h3 {
+        margin: 0 0 5px 0;
+        border-bottom: 1px solid #33ff00;
+      }
+      .menu-item button {
+        display: block;
+        width: 100%;
+        text-align: left;
+      }
+      #render-canvas {
+        width: 100%;
+        height: 100%;
+      }
+      .scanlines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0) 50%,
+          rgba(0, 0, 0, 0.2) 50%
+        );
+        background-size: 100% 4px;
+        pointer-events: none;
+      }
+      .glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: inset 0 0 50px 10px rgba(51, 255, 0, 0.1);
+        pointer-events: none;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-content">
+        <div class="sidebar">
+          <div class="menu-item">
+            <h3>File</h3>
+            <button onclick="executeCommand('NEW')">New</button>
+            <button onclick="executeCommand('LOAD')">Open</button>
+            <button onclick="executeCommand('SAVE')">Save</button>
+          </div>
+          <div class="menu-item">
+            <h3>Edit</h3>
+            <button onclick="executeCommand('UNDO')">Undo</button>
+            <button onclick="executeCommand('REDO')">Redo</button>
+          </div>
+          <div class="menu-item">
+            <h3>View</h3>
+            <button onclick="executeCommand('WIREFRAME')">
+              Toggle Wireframe
+            </button>
+            <button onclick="executeCommand('SHADE')">Toggle Shading</button>
+          </div>
+          <div class="menu-item">
+            <h3>Render</h3>
+            <button onclick="executeCommand('RENDER')">Render Frame</button>
+            <button onclick="executeCommand('ANIM')">Render Animation</button>
+          </div>
+          <div class="menu-item">
+            <h3>Amiga Graphics</h3>
+            <button onclick="executeCommand('HAM')">Toggle HAM Mode</button>
+            <button onclick="executeCommand('BOB')">Add BOB</button>
+            <button onclick="executeCommand('SPRITE')">Add Sprite</button>
+          </div>
+        </div>
+        <div class="viewport-container">
+          <div class="toolbar">
+            <button onclick="executeCommand('CUBE')">Add Cube</button>
+            <button onclick="executeCommand('SPHERE')">Add Sphere</button>
+            <button onclick="executeCommand('LIGHT')">Add Light</button>
+            <button onclick="executeCommand('CAMERA')">Add Camera</button>
+          </div>
+          <div class="viewport">
+            <canvas id="render-canvas"></canvas>
+            <div class="scanlines"></div>
+            <div class="glow"></div>
+          </div>
+          <div class="status-bar">
+            <span id="status">Ready</span>
+            <span id="fps" style="float: right">FPS: 60</span>
+          </div>
+        </div>
       </div>
-      <div class="menu-item">
-        <h3>Edit</h3>
-        <button onclick="executeCommand('UNDO')">Undo</button>
-        <button onclick="executeCommand('REDO')">Redo</button>
-      </div>
-      <div class="menu-item">
-        <h3>View</h3>
-        <button onclick="executeCommand('WIREFRAME')">Toggle Wireframe</button>
-        <button onclick="executeCommand('SHADE')">Toggle Shading</button>
-      </div>
-      <div class="menu-item">
-        <h3>Render</h3>
-        <button onclick="executeCommand('RENDER')">Render Frame</button>
-        <button onclick="executeCommand('ANIM')">Render Animation</button>
-      </div>
-      <div class="menu-item">
-        <h3>Amiga Graphics</h3>
-        <button onclick="executeCommand('HAM')">Toggle HAM Mode</button>
-        <button onclick="executeCommand('BOB')">Add BOB</button>
-        <button onclick="executeCommand('SPRITE')">Add Sprite</button>
+      <div class="cli-container">
+        <div id="cli-output"></div>
+        <div id="cli-input-container">
+          <span style="color: #33ff00">BlendMIGA &gt;</span>
+          <input
+            type="text"
+            id="cli-input"
+            onkeydown="handleInput(event)"
+            autofocus
+          />
+        </div>
       </div>
     </div>
-    <div class="viewport-container">
-      <div class="toolbar">
-        <button onclick="executeCommand('CUBE')">Add Cube</button>
-        <button onclick="executeCommand('SPHERE')">Add Sphere</button>
-        <button onclick="executeCommand('LIGHT')">Add Light</button>
-        <button onclick="executeCommand('CAMERA')">Add Camera</button>
-      </div>
-      <div class="viewport">
-        <canvas id="render-canvas"></canvas>
-        <div class="scanlines"></div>
-        <div class="glow"></div>
-      </div>
-      <div class="status-bar">
-        <span id="status">Ready</span>
-        <span id="fps" style="float: right;">FPS: 60</span>
-      </div>
-    </div>
-  </div>
-  <div class="cli-container">
-    <div id="cli-output"></div>
-    <div id="cli-input-container">
-      <span style="color: #33ff00;">BlendMIGA &gt;</span>
-      <input type="text" id="cli-input" onkeydown="handleInput(event)" autofocus>
-    </div>
-  </div>
-</div>
 
-<script>
-  const canvas = document.getElementById('render-canvas');
-  const cliOutput = document.getElementById('cli-output');
-  const cliInput = document.getElementById('cli-input');
+    <script>
+      const canvas = document.getElementById("render-canvas");
+      const cliOutput = document.getElementById("cli-output");
+      const cliInput = document.getElementById("cli-input");
 
-  // Three.js setup
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
-  renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+      // Three.js setup
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000,
+      );
+      const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: true,
+      });
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
 
-  camera.position.z = 5;
+      camera.position.z = 5;
 
-  // Add a cube to the scene
-  const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
+      // Add a cube to the scene
+      const geometry = new THREE.BoxGeometry();
+      const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+      const cube = new THREE.Mesh(geometry, material);
+      scene.add(cube);
 
-  // Add a light
-  const light = new THREE.PointLight(0xffffff, 1, 100);
-  light.position.set(0, 0, 10);
-  scene.add(light);
+      // Add a light
+      const light = new THREE.PointLight(0xffffff, 1, 100);
+      light.position.set(0, 0, 10);
+      scene.add(light);
 
-  // Variables for Amiga-style graphics
-  let hamMode = false;
-  let bobs = [];
-  let sprites = [];
+      // Variables for Amiga-style graphics
+      let hamMode = false;
+      let bobs = [];
+      let sprites = [];
 
-  function animate() {
-    requestAnimationFrame(animate);
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-    renderer.render(scene, camera);
-
-    // Animate BOBs and Sprites
-    bobs.forEach(bob => {
-      bob.position.x = Math.sin(Date.now() * 0.001 + bob.offset) * 2;
-    });
-
-    sprites.forEach(sprite => {
-      sprite.position.y = Math.cos(Date.now() * 0.002 + sprite.offset) * 2;
-    });
-  }
-
-  animate();
-
-  function toggleWireframe() {
-    cube.material.wireframe = !cube.material.wireframe;
-  }
-
-  function toggleHAM() {
-    hamMode = !hamMode;
-    if (hamMode) {
-      renderer.outputEncoding = THREE.sRGBEncoding;
-      scene.background = new THREE.Color(0x000000);
-      cube.material.color.setHex(0xffd700); // Gold color
-    } else {
-      renderer.outputEncoding = THREE.LinearEncoding;
-      scene.background = null;
-      cube.material.color.setHex(0x00ff00);
-    }
-  }
-
-  function addBOB() {
-    const bobGeometry = new THREE.SphereGeometry(0.2, 32, 32);
-    const bobMaterial = new THREE.MeshPhongMaterial({ color: 0xff00ff });
-    const bob = new THREE.Mesh(bobGeometry, bobMaterial);
-    bob.offset = Math.random() * Math.PI * 2;
-    bob.position.set(0, 2, 0);
-    scene.add(bob);
-    bobs.push(bob);
-  }
-
-  function addSprite() {
-    const spriteMap = new THREE.TextureLoader().load('https://threejs.org/examples/textures/sprites/disc.png');
-    const spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap, color: 0xffffff });
-    const sprite = new THREE.Sprite(spriteMaterial);
-    sprite.scale.set(0.5, 0.5, 1);
-    sprite.offset = Math.random() * Math.PI * 2;
-    sprite.position.set(2, 0, 0);
-    scene.add(sprite);
-    sprites.push(sprite);
-  }
-
-  function executeCommand(command) {
-    switch (command.toUpperCase()) {
-      case 'NEW':
-        outputMessage('Creating new scene...');
-        scene.clear();
-        scene.add(cube);
-        scene.add(light);
-        break;
-      case 'LOAD':
-        outputMessage('Loading scene... (not implemented)');
-        break;
-      case 'SAVE':
-        outputMessage('Saving scene... (not implemented)');
-        break;
-      case 'UNDO':
-        outputMessage('Undo operation... (not implemented)');
-        break;
-      case 'REDO':
-        outputMessage('Redo operation... (not implemented)');
-        break;
-      case 'WIREFRAME':
-        toggleWireframe();
-        outputMessage('Wireframe mode toggled');
-        break;
-      case 'SHADE':
-        outputMessage('Shading mode toggled (not implemented)');
-        break;
-      case 'RENDER':
-        outputMessage('Rendering frame...');
+      function animate() {
+        requestAnimationFrame(animate);
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
         renderer.render(scene, camera);
-        outputMessage('Render complete');
-        break;
-      case 'ANIM':
-        outputMessage('Rendering animation... (already running)');
-        break;
-      case 'HAM':
-        toggleHAM();
-        outputMessage('HAM mode toggled');
-        break;
-      case 'BOB':
-        addBOB();
-        outputMessage('BOB added to scene');
-        break;
-      case 'SPRITE':
-        addSprite();
-        outputMessage('Sprite added to scene');
-        break;
-      case 'CUBE':
-        const newCube = new THREE.Mesh(geometry, material);
-        newCube.position.set(Math.random() * 4 - 2, Math.random() * 4 - 2, Math.random() * 4 - 2);
-        scene.add(newCube);
-        outputMessage('Cube added to scene');
-        break;
-      case 'SPHERE':
-        const sphereGeometry = new THREE.SphereGeometry(0.5, 32, 32);
-        const sphere = new THREE.Mesh(sphereGeometry, material);
-        sphere.position.set(Math.random() * 4 - 2, Math.random() * 4 - 2, Math.random() * 4 - 2);
-        scene.add(sphere);
-        outputMessage('Sphere added to scene');
-        break;
-      case 'LIGHT':
-        const newLight = new THREE.PointLight(0xffffff, 1, 100);
-        newLight.position.set(Math.random() * 4 - 2, Math.random() * 4 - 2, Math.random() * 4 - 2);
-        scene.add(newLight);
-        outputMessage('Light added to scene');
-        break;
-      case 'CAMERA':
-        outputMessage('Camera controls not implemented');
-        break;
-      case 'HELP':
-        outputMessage('Available commands: NEW, LOAD, SAVE, UNDO, REDO, WIREFRAME, SHADE, RENDER, ANIM, HAM, BOB, SPRITE, CUBE, SPHERE, LIGHT, CAMERA, HELP, CLEAR');
-        break;
-      case 'CLEAR':
-        cliOutput.innerHTML = '';
-        break;
-      default:
-        outputMessage(`Unknown command: ${command}`);
-    }
-  }
 
-  function outputMessage(message) {
-    cliOutput.innerHTML += message + '\n';
-    cliOutput.scrollTop = cliOutput.scrollHeight;
-    document.getElementById('status').textContent = message;
-  }
+        // Animate BOBs and Sprites
+        bobs.forEach((bob) => {
+          bob.position.x = Math.sin(Date.now() * 0.001 + bob.offset) * 2;
+        });
 
-  function handleInput(event) {
-    if (event.key === 'Enter') {
-      const command = cliInput.value.trim();
-      outputMessage(`BlendMIGA > ${command}`);
-      executeCommand(command);
-      cliInput.value = '';
-    }
-  }
+        sprites.forEach((sprite) => {
+          sprite.position.y = Math.cos(Date.now() * 0.002 + sprite.offset) * 2;
+        });
+      }
 
-  // Simulate FPS counter
-  setInterval(() => {
-    const fps = Math.floor(Math.random() * 10) + 55; // Random FPS between 55-64
-    document.getElementById('fps').textContent = `FPS: ${fps}`;
-  }, 1000);
+      animate();
 
-  // Handle window resize
-  function resizeRenderer() {
-    const width = canvas.clientWidth;
-    const height = canvas.clientHeight;
-    if (canvas.width !== width || canvas.height !== height) {
-      renderer.setSize(width, height, false);
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-    }
-  }
+      function toggleWireframe() {
+        cube.material.wireframe = !cube.material.wireframe;
+      }
 
-  window.addEventListener('resize', resizeRenderer);
+      function toggleHAM() {
+        hamMode = !hamMode;
+        if (hamMode) {
+          renderer.outputEncoding = THREE.sRGBEncoding;
+          scene.background = new THREE.Color(0x000000);
+          cube.material.color.setHex(0xffd700); // Gold color
+        } else {
+          renderer.outputEncoding = THREE.LinearEncoding;
+          scene.background = null;
+          cube.material.color.setHex(0x00ff00);
+        }
+      }
 
-  // Initial resize
-  resizeRenderer();
+      function addBOB() {
+        const bobGeometry = new THREE.SphereGeometry(0.2, 32, 32);
+        const bobMaterial = new THREE.MeshPhongMaterial({ color: 0xff00ff });
+        const bob = new THREE.Mesh(bobGeometry, bobMaterial);
+        bob.offset = Math.random() * Math.PI * 2;
+        bob.position.set(0, 2, 0);
+        scene.add(bob);
+        bobs.push(bob);
+      }
 
-  // Focus on CLI input when the page loads
-  window.onload = () => {
-    cliInput.focus();
-  };
+      function addSprite() {
+        const spriteMap = new THREE.TextureLoader().load(
+          "https://threejs.org/examples/textures/sprites/disc.png",
+        );
+        const spriteMaterial = new THREE.SpriteMaterial({
+          map: spriteMap,
+          color: 0xffffff,
+        });
+        const sprite = new THREE.Sprite(spriteMaterial);
+        sprite.scale.set(0.5, 0.5, 1);
+        sprite.offset = Math.random() * Math.PI * 2;
+        sprite.position.set(2, 0, 0);
+        scene.add(sprite);
+        sprites.push(sprite);
+      }
 
-  // Output initial message
-  outputMessage('Welcome to BlendMIGA! Type HELP for a list of commands.');
-</script>
-</body></html>
+      function executeCommand(command) {
+        switch (command.toUpperCase()) {
+          case "NEW":
+            outputMessage("Creating new scene...");
+            scene.clear();
+            scene.add(cube);
+            scene.add(light);
+            break;
+          case "LOAD":
+            outputMessage("Loading scene... (not implemented)");
+            break;
+          case "SAVE":
+            outputMessage("Saving scene... (not implemented)");
+            break;
+          case "UNDO":
+            outputMessage("Undo operation... (not implemented)");
+            break;
+          case "REDO":
+            outputMessage("Redo operation... (not implemented)");
+            break;
+          case "WIREFRAME":
+            toggleWireframe();
+            outputMessage("Wireframe mode toggled");
+            break;
+          case "SHADE":
+            outputMessage("Shading mode toggled (not implemented)");
+            break;
+          case "RENDER":
+            outputMessage("Rendering frame...");
+            renderer.render(scene, camera);
+            outputMessage("Render complete");
+            break;
+          case "ANIM":
+            outputMessage("Rendering animation... (already running)");
+            break;
+          case "HAM":
+            toggleHAM();
+            outputMessage("HAM mode toggled");
+            break;
+          case "BOB":
+            addBOB();
+            outputMessage("BOB added to scene");
+            break;
+          case "SPRITE":
+            addSprite();
+            outputMessage("Sprite added to scene");
+            break;
+          case "CUBE":
+            const newCube = new THREE.Mesh(geometry, material);
+            newCube.position.set(
+              Math.random() * 4 - 2,
+              Math.random() * 4 - 2,
+              Math.random() * 4 - 2,
+            );
+            scene.add(newCube);
+            outputMessage("Cube added to scene");
+            break;
+          case "SPHERE":
+            const sphereGeometry = new THREE.SphereGeometry(0.5, 32, 32);
+            const sphere = new THREE.Mesh(sphereGeometry, material);
+            sphere.position.set(
+              Math.random() * 4 - 2,
+              Math.random() * 4 - 2,
+              Math.random() * 4 - 2,
+            );
+            scene.add(sphere);
+            outputMessage("Sphere added to scene");
+            break;
+          case "LIGHT":
+            const newLight = new THREE.PointLight(0xffffff, 1, 100);
+            newLight.position.set(
+              Math.random() * 4 - 2,
+              Math.random() * 4 - 2,
+              Math.random() * 4 - 2,
+            );
+            scene.add(newLight);
+            outputMessage("Light added to scene");
+            break;
+          case "CAMERA":
+            outputMessage("Camera controls not implemented");
+            break;
+          case "HELP":
+            outputMessage(
+              "Available commands: NEW, LOAD, SAVE, UNDO, REDO, WIREFRAME, SHADE, RENDER, ANIM, HAM, BOB, SPRITE, CUBE, SPHERE, LIGHT, CAMERA, HELP, CLEAR",
+            );
+            break;
+          case "CLEAR":
+            cliOutput.innerHTML = "";
+            break;
+          default:
+            outputMessage(`Unknown command: ${command}`);
+        }
+      }
+
+      function outputMessage(message) {
+        cliOutput.innerHTML += message + "\n";
+        cliOutput.scrollTop = cliOutput.scrollHeight;
+        document.getElementById("status").textContent = message;
+      }
+
+      function handleInput(event) {
+        if (event.key === "Enter") {
+          const command = cliInput.value.trim();
+          outputMessage(`BlendMIGA > ${command}`);
+          executeCommand(command);
+          cliInput.value = "";
+        }
+      }
+
+      // Simulate FPS counter
+      setInterval(() => {
+        const fps = Math.floor(Math.random() * 10) + 55; // Random FPS between 55-64
+        document.getElementById("fps").textContent = `FPS: ${fps}`;
+      }, 1000);
+
+      // Handle window resize
+      function resizeRenderer() {
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        if (canvas.width !== width || canvas.height !== height) {
+          renderer.setSize(width, height, false);
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+        }
+      }
+
+      window.addEventListener("resize", resizeRenderer);
+
+      // Initial resize
+      resizeRenderer();
+
+      // Focus on CLI input when the page loads
+      window.onload = () => {
+        cliInput.focus();
+      };
+
+      // Output initial message
+      outputMessage("Welcome to BlendMIGA! Type HELP for a list of commands.");
+    </script>
+  </body>
+</html>
