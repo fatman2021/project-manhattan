@@ -1,158 +1,183 @@
-<html><head><base href="https://websim.ai/c/project-manhattan/"><title>Project Manhattan: Next-Gen MOS 6510-based System-on-Chip Emulator</title>
-<style>
-  body {
-    font-family: "VT323", monospace;
-    background-color: #000080;
-    color: #00FF00;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-  }
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  header {
-    text-align: center;
-    padding: 20px 0;
-    background-color: #000040;
-    border-bottom: 2px solid #00FF00;
-  }
-  h1, h2, h3 {
-    color: #FFFF00;
-  }
-  .crt-effect {
-    animation: textShadow 1.6s infinite;
-  }
-  @keyframes textShadow {
-    0% {
-      text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-    }
-    100% {
-      text-shadow: 2.6208764473832513px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-    }
-  }
-  .menu {
-    display: flex;
-    justify-content: space-around;
-    background-color: #000040;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-  .menu a {
-    color: #00FF00;
-    text-decoration: none;
-    padding: 5px 10px;
-    border: 1px solid #00FF00;
-  }
-  .menu a:hover {
-    background-color: #00FF00;
-    color: #000040;
-  }
-  .content {
-    display: flex;
-    justify-content: space-between;
-  }
-  .main-content {
-    width: 70%;
-    background-color: #000040;
-    padding: 20px;
-    border: 1px solid #00FF00;
-  }
-  .sidebar {
-    width: 25%;
-    background-color: #000040;
-    padding: 20px;
-    border: 1px solid #00FF00;
-  }
-  #emulator-screen {
-    width: 100%;
-    height: 300px;
-    background-color: #000000;
-    border: 2px solid #00FF00;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-  }
-  button {
-    background-color: #000040;
-    color: #00FF00;
-    border: 1px solid #00FF00;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-  button:hover {
-    background-color: #00FF00;
-    color: #000040;
-  }
-  .footer {
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #000040;
-    border-top: 2px solid #00FF00;
-  }
-  pre {
-    background-color: #000020;
-    padding: 10px;
-    border: 1px solid #00FF00;
-    overflow-x: auto;
-  }
-</style>
-</head>
-<body class="crt-effect">
-<div class="container">
-  <header>
-    <h1>Project Manhattan</h1>
-    <p>Next-Generation MOS 6510-based CPU/GPU System-on-Chip Emulator</p>
-  </header>
-  
-  <nav class="menu">
-    <a href="#about">About</a>
-    <a href="#features">Features</a>
-    <a href="#demo">Demo</a>
-    <a href="https://websim.ai/c/project-manhattan/docs">Documentation</a>
-    <a href="https://websim.ai/c/project-manhattan/download">Download</a>
-    <a href="https://websim.ai/c/project-manhattan/community">Community</a>
-  </nav>
-  
-  <div class="content">
-    <main class="main-content">
-      <section id="about">
-        <h2>About Project Manhattan</h2>
-        <p>Project Manhattan is a groundbreaking emulator that brings the power of the MOS 6510 CPU/GPU combo system-on-chip to modern systems. Designed for both gaming enthusiasts and business application developers, this emulator offers an unparalleled retro computing experience with enhanced capabilities.</p>
-        <p>Developed using a unique combination of FreeBASIC, GW-BASIC, QB64, and AMOS Professional, Project Manhattan pushes the boundaries of what's possible in emulation technology.</p>
-      </section>
-      
-      <section id="features">
-        <h2>Features</h2>
-        <ul>
-          <li>Accurate MOS 6510 CPU emulation</li>
-          <li>Integrated GPU emulation for enhanced graphics capabilities</li>
-          <li>Support for both gaming and business applications</li>
-          <li>Cross-platform compatibility (Windows, macOS, Linux)</li>
-          <li>Advanced debugging tools</li>
-          <li>Customizable memory mapping</li>
-          <li>Emulated peripherals (joysticks, printers, disk drives)</li>
-          <li>Support for loading and saving disk images</li>
-        </ul>
-      </section>
-      
-      <section id="demo">
-        <h2>Interactive Demo</h2>
-        <div id="emulator-screen">PROJECT MANHATTAN READY.</div>
-        <button onclick="bootEmulator()">Boot Emulator</button>
-        <button onclick="loadProgram()">Load Program</button>
-        <button onclick="runProgram()">Run Program</button>
-      </section>
-      
-      <section id="code-sample">
-        <h2>Sample Code</h2>
-        <pre>
+<html>
+  <head>
+    <base href="https://websim.ai/c/project-manhattan/" />
+    <title>
+      Project Manhattan: Next-Gen MOS 6510-based System-on-Chip Emulator
+    </title>
+    <style>
+      body {
+        font-family: "VT323", monospace;
+        background-color: #000080;
+        color: #00ff00;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      header {
+        text-align: center;
+        padding: 20px 0;
+        background-color: #000040;
+        border-bottom: 2px solid #00ff00;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #ffff00;
+      }
+      .crt-effect {
+        animation: textShadow 1.6s infinite;
+      }
+      @keyframes textShadow {
+        0% {
+          text-shadow:
+            0.4389924193300864px 0 1px rgba(0, 30, 255, 0.5),
+            -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+        }
+        100% {
+          text-shadow:
+            2.6208764473832513px 0 1px rgba(0, 30, 255, 0.5),
+            -2.6208764473832513px 0 1px rgba(255, 0, 80, 0.3),
+            0 0 3px;
+        }
+      }
+      .menu {
+        display: flex;
+        justify-content: space-around;
+        background-color: #000040;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .menu a {
+        color: #00ff00;
+        text-decoration: none;
+        padding: 5px 10px;
+        border: 1px solid #00ff00;
+      }
+      .menu a:hover {
+        background-color: #00ff00;
+        color: #000040;
+      }
+      .content {
+        display: flex;
+        justify-content: space-between;
+      }
+      .main-content {
+        width: 70%;
+        background-color: #000040;
+        padding: 20px;
+        border: 1px solid #00ff00;
+      }
+      .sidebar {
+        width: 25%;
+        background-color: #000040;
+        padding: 20px;
+        border: 1px solid #00ff00;
+      }
+      #emulator-screen {
+        width: 100%;
+        height: 300px;
+        background-color: #000000;
+        border: 2px solid #00ff00;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+      }
+      button {
+        background-color: #000040;
+        color: #00ff00;
+        border: 1px solid #00ff00;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+      button:hover {
+        background-color: #00ff00;
+        color: #000040;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #000040;
+        border-top: 2px solid #00ff00;
+      }
+      pre {
+        background-color: #000020;
+        padding: 10px;
+        border: 1px solid #00ff00;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body class="crt-effect">
+    <div class="container">
+      <header>
+        <h1>Project Manhattan</h1>
+        <p>Next-Generation MOS 6510-based CPU/GPU System-on-Chip Emulator</p>
+      </header>
+
+      <nav class="menu">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#demo">Demo</a>
+        <a href="https://websim.ai/c/project-manhattan/docs">Documentation</a>
+        <a href="https://websim.ai/c/project-manhattan/download">Download</a>
+        <a href="https://websim.ai/c/project-manhattan/community">Community</a>
+      </nav>
+
+      <div class="content">
+        <main class="main-content">
+          <section id="about">
+            <h2>About Project Manhattan</h2>
+            <p>
+              Project Manhattan is a groundbreaking emulator that brings the
+              power of the MOS 6510 CPU/GPU combo system-on-chip to modern
+              systems. Designed for both gaming enthusiasts and business
+              application developers, this emulator offers an unparalleled retro
+              computing experience with enhanced capabilities.
+            </p>
+            <p>
+              Developed using a unique combination of FreeBASIC, GW-BASIC, QB64,
+              and AMOS Professional, Project Manhattan pushes the boundaries of
+              what's possible in emulation technology.
+            </p>
+          </section>
+
+          <section id="features">
+            <h2>Features</h2>
+            <ul>
+              <li>Accurate MOS 6510 CPU emulation</li>
+              <li>
+                Integrated GPU emulation for enhanced graphics capabilities
+              </li>
+              <li>Support for both gaming and business applications</li>
+              <li>Cross-platform compatibility (Windows, macOS, Linux)</li>
+              <li>Advanced debugging tools</li>
+              <li>Customizable memory mapping</li>
+              <li>Emulated peripherals (joysticks, printers, disk drives)</li>
+              <li>Support for loading and saving disk images</li>
+            </ul>
+          </section>
+
+          <section id="demo">
+            <h2>Interactive Demo</h2>
+            <div id="emulator-screen">PROJECT MANHATTAN READY.</div>
+            <button onclick="bootEmulator()">Boot Emulator</button>
+            <button onclick="loadProgram()">Load Program</button>
+            <button onclick="runProgram()">Run Program</button>
+          </section>
+
+          <section id="code-sample">
+            <h2>Sample Code</h2>
+            <pre>
 10 PRINT "HELLO, PROJECT MANHATTAN!"
 20 FOR I = 1 TO 10
 30   PRINT "COUNTDOWN: "; 11 - I
@@ -164,94 +189,110 @@
 1000 REM Delay subroutine
 1010 FOR J = 1 TO 1000: NEXT J
 1020 RETURN
-        </pre>
-      </section>
-    </main>
-    
-    <aside class="sidebar">
-      <h3>System Specifications</h3>
-      <ul>
-        <li>CPU: Emulated MOS 6510</li>
-        <li>Clock Speed: Up to 8 MHz</li>
-        <li>RAM: 64KB to 16MB (configurable)</li>
-        <li>Video: 320x200 up to 1920x1080</li>
-        <li>Colors: 16 to 32-bit true color</li>
-        <li>Sound: Emulated SID chip + PCM audio</li>
-      </ul>
-      
-      <h3>Supported Languages</h3>
-      <ul>
-        <li>BASIC (multiple dialects)</li>
-        <li>Assembly (MOS 6510)</li>
-        <li>C (with custom compiler)</li>
-      </ul>
-      
-      <h3>Latest Updates</h3>
-      <p>Version 2.1: Added support for custom GPU shaders and improved audio emulation.</p>
-      
-      <h3>Upcoming Events</h3>
-      <p>Join our webinar on "Developing Business Applications for Project Manhattan" on September 15th!</p>
-    </aside>
-  </div>
-  
-  <footer class="footer">
-    <p>© 2023 Project Manhattan. Reviving the past, powering the future.</p>
-    <a href="https://websim.ai/c/project-manhattan/privacy">Privacy Policy</a> | 
-    <a href="https://websim.ai/c/project-manhattan/terms">Terms of Service</a>
-  </footer>
-</div>
+        </pre
+            >
+          </section>
+        </main>
 
-<script>
-  let emulatorState = 'off';
-  const emulatorScreen = document.getElementById('emulator-screen');
+        <aside class="sidebar">
+          <h3>System Specifications</h3>
+          <ul>
+            <li>CPU: Emulated MOS 6510</li>
+            <li>Clock Speed: Up to 8 MHz</li>
+            <li>RAM: 64KB to 16MB (configurable)</li>
+            <li>Video: 320x200 up to 1920x1080</li>
+            <li>Colors: 16 to 32-bit true color</li>
+            <li>Sound: Emulated SID chip + PCM audio</li>
+          </ul>
 
-  function bootEmulator() {
-    if (emulatorState === 'off') {
-      emulatorScreen.innerHTML = 'Booting Project Manhattan...<br>';
-      setTimeout(() => {
-        emulatorScreen.innerHTML += 'MOS 6510 CPU Initialized<br>';
-      }, 1000);
-      setTimeout(() => {
-        emulatorScreen.innerHTML += 'GPU Subsystem Online<br>';
-      }, 2000);
-      setTimeout(() => {
-        emulatorScreen.innerHTML += 'PROJECT MANHATTAN READY.';
-        emulatorState = 'ready';
-      }, 3000);
-    }
-  }
+          <h3>Supported Languages</h3>
+          <ul>
+            <li>BASIC (multiple dialects)</li>
+            <li>Assembly (MOS 6510)</li>
+            <li>C (with custom compiler)</li>
+          </ul>
 
-  function loadProgram() {
-    if (emulatorState === 'ready') {
-      emulatorScreen.innerHTML = 'Loading program...<br>';
-      setTimeout(() => {
-        emulatorScreen.innerHTML += 'Program loaded. Ready to run.';
-        emulatorState = 'loaded';
-      }, 1500);
-    } else {
-      emulatorScreen.innerHTML = 'Error: Emulator not ready. Please boot first.';
-    }
-  }
+          <h3>Latest Updates</h3>
+          <p>
+            Version 2.1: Added support for custom GPU shaders and improved audio
+            emulation.
+          </p>
 
-  function runProgram() {
-    if (emulatorState === 'loaded') {
-      emulatorScreen.innerHTML = 'HELLO, PROJECT MANHATTAN!<br>';
-      let countdown = 10;
-      const countdownInterval = setInterval(() => {
-        emulatorScreen.innerHTML += `COUNTDOWN: ${countdown}<br>`;
-        countdown--;
-        if (countdown === 0) {
-          clearInterval(countdownInterval);
+          <h3>Upcoming Events</h3>
+          <p>
+            Join our webinar on "Developing Business Applications for Project
+            Manhattan" on September 15th!
+          </p>
+        </aside>
+      </div>
+
+      <footer class="footer">
+        <p>
+          © 2023 Project Manhattan. Reviving the past, powering the future.
+        </p>
+        <a href="https://websim.ai/c/project-manhattan/privacy"
+          >Privacy Policy</a
+        >
+        |
+        <a href="https://websim.ai/c/project-manhattan/terms"
+          >Terms of Service</a
+        >
+      </footer>
+    </div>
+
+    <script>
+      let emulatorState = "off";
+      const emulatorScreen = document.getElementById("emulator-screen");
+
+      function bootEmulator() {
+        if (emulatorState === "off") {
+          emulatorScreen.innerHTML = "Booting Project Manhattan...<br>";
           setTimeout(() => {
-            emulatorScreen.innerHTML += 'LIFTOFF!';
-            emulatorState = 'ready';
+            emulatorScreen.innerHTML += "MOS 6510 CPU Initialized<br>";
           }, 1000);
+          setTimeout(() => {
+            emulatorScreen.innerHTML += "GPU Subsystem Online<br>";
+          }, 2000);
+          setTimeout(() => {
+            emulatorScreen.innerHTML += "PROJECT MANHATTAN READY.";
+            emulatorState = "ready";
+          }, 3000);
         }
-      }, 1000);
-    } else {
-      emulatorScreen.innerHTML = 'Error: No program loaded. Please load a program first.';
-    }
-  }
-</script>
-</body>
+      }
+
+      function loadProgram() {
+        if (emulatorState === "ready") {
+          emulatorScreen.innerHTML = "Loading program...<br>";
+          setTimeout(() => {
+            emulatorScreen.innerHTML += "Program loaded. Ready to run.";
+            emulatorState = "loaded";
+          }, 1500);
+        } else {
+          emulatorScreen.innerHTML =
+            "Error: Emulator not ready. Please boot first.";
+        }
+      }
+
+      function runProgram() {
+        if (emulatorState === "loaded") {
+          emulatorScreen.innerHTML = "HELLO, PROJECT MANHATTAN!<br>";
+          let countdown = 10;
+          const countdownInterval = setInterval(() => {
+            emulatorScreen.innerHTML += `COUNTDOWN: ${countdown}<br>`;
+            countdown--;
+            if (countdown === 0) {
+              clearInterval(countdownInterval);
+              setTimeout(() => {
+                emulatorScreen.innerHTML += "LIFTOFF!";
+                emulatorState = "ready";
+              }, 1000);
+            }
+          }, 1000);
+        } else {
+          emulatorScreen.innerHTML =
+            "Error: No program loaded. Please load a program first.";
+        }
+      }
+    </script>
+  </body>
 </html>

@@ -1,194 +1,229 @@
-<html><head><base href="https://websim.ai/c/project-manhattan/">
-<title>Project Manhattan - Hybrid Computing Platform</title>
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Courier New', monospace;
-    color: #33ff33;
-    background-color: #000000;
-    height: 100%;
-  }
-  #container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  #header {
-    background-color: #001100;
-    padding: 20px;
-    text-align: center;
-  }
-  #main-content {
-    display: flex;
-    flex: 1;
-  }
-  #sidebar {
-    width: 200px;
-    background-color: #002200;
-    padding: 20px;
-  }
-  #content {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-  }
-  h1, h2, h3 {
-    color: #33ff33;
-    text-shadow: 0 0 10px #33ff33;
-  }
-  .button {
-    background-color: #006600;
-    color: #33ff33;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .button:hover {
-    background-color: #008800;
-    box-shadow: 0 0 10px #33ff33;
-  }
-  #terminal {
-    background-color: #001100;
-    border: 1px solid #33ff33;
-    padding: 10px;
-    font-family: monospace;
-    height: 150px;
-    overflow-y: auto;
-    margin-bottom: 20px;
-  }
-  .menu-item {
-    margin-bottom: 10px;
-  }
-  .menu-item a {
-    color: #33ff33;
-    text-decoration: none;
-  }
-  .menu-item a:hover {
-    text-decoration: underline;
-  }
-  #quantum-viz {
-    border: 1px solid #33ff33;
-    margin-top: 20px;
-  }
-</style>
-</head>
-<body>
-<div id="container">
-  <div id="header">
-    <h1>Project Manhattan</h1>
-    <p>Advanced Hybrid Computing Platform</p>
-  </div>
-  <div id="main-content">
-    <div id="sidebar">
-      <div class="menu-item"><a href="#home">Home</a></div>
-      <div class="menu-item"><a href="https://websim.ai/c/project-manhattan/emulator">Emulator</a></div>
-      <div class="menu-item"><a href="https://websim.ai/c/project-manhattan/assembly">Assembly IDE</a></div>
-      <div class="menu-item"><a href="https://websim.ai/c/project-manhattan/graphics">Graphics Studio</a></div>
-      <div class="menu-item"><a href="https://websim.ai/c/project-manhattan/docs">Documentation</a></div>
-      <div class="menu-item"><a href="#about">About</a></div>
+<html>
+  <head>
+    <base href="https://websim.ai/c/project-manhattan/" />
+    <title>Project Manhattan - Hybrid Computing Platform</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: "Courier New", monospace;
+        color: #33ff33;
+        background-color: #000000;
+        height: 100%;
+      }
+      #container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      #header {
+        background-color: #001100;
+        padding: 20px;
+        text-align: center;
+      }
+      #main-content {
+        display: flex;
+        flex: 1;
+      }
+      #sidebar {
+        width: 200px;
+        background-color: #002200;
+        padding: 20px;
+      }
+      #content {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #33ff33;
+        text-shadow: 0 0 10px #33ff33;
+      }
+      .button {
+        background-color: #006600;
+        color: #33ff33;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .button:hover {
+        background-color: #008800;
+        box-shadow: 0 0 10px #33ff33;
+      }
+      #terminal {
+        background-color: #001100;
+        border: 1px solid #33ff33;
+        padding: 10px;
+        font-family: monospace;
+        height: 150px;
+        overflow-y: auto;
+        margin-bottom: 20px;
+      }
+      .menu-item {
+        margin-bottom: 10px;
+      }
+      .menu-item a {
+        color: #33ff33;
+        text-decoration: none;
+      }
+      .menu-item a:hover {
+        text-decoration: underline;
+      }
+      #quantum-viz {
+        border: 1px solid #33ff33;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        <h1>Project Manhattan</h1>
+        <p>Advanced Hybrid Computing Platform</p>
+      </div>
+      <div id="main-content">
+        <div id="sidebar">
+          <div class="menu-item"><a href="#home">Home</a></div>
+          <div class="menu-item">
+            <a href="https://websim.ai/c/project-manhattan/emulator"
+              >Emulator</a
+            >
+          </div>
+          <div class="menu-item">
+            <a href="https://websim.ai/c/project-manhattan/assembly"
+              >Assembly IDE</a
+            >
+          </div>
+          <div class="menu-item">
+            <a href="https://websim.ai/c/project-manhattan/graphics"
+              >Graphics Studio</a
+            >
+          </div>
+          <div class="menu-item">
+            <a href="https://websim.ai/c/project-manhattan/docs"
+              >Documentation</a
+            >
+          </div>
+          <div class="menu-item"><a href="#about">About</a></div>
+        </div>
+        <div id="content">
+          <h2>Welcome to Project Manhattan</h2>
+          <p>
+            Project Manhattan is a cutting-edge hybrid computing platform that
+            integrates classical architectures (6502, Z80, 68000, RISC-V) with
+            quantum computing paradigms. Explore the future of computing with
+            our innovative tools and simulations.
+          </p>
+
+          <h3>Quick Start</h3>
+          <button class="button" onclick="launchEmulator()">
+            Launch Emulator
+          </button>
+          <button class="button" onclick="openAssemblyIDE()">
+            Open Assembly IDE
+          </button>
+          <button class="button" onclick="openGraphicsStudio()">
+            Open Graphics Studio
+          </button>
+
+          <h3>Terminal</h3>
+          <div id="terminal"></div>
+
+          <h3>Quantum Visualization</h3>
+          <canvas id="quantum-viz" width="400" height="200"></canvas>
+
+          <h3>Latest Updates</h3>
+          <ul>
+            <li>Integrated RISC-V support in the hybrid core</li>
+            <li>Enhanced quantum simulation capabilities</li>
+            <li>Improved graphics rendering with quantum-inspired effects</li>
+            <li>Updated documentation with new code examples</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div id="content">
-      <h2>Welcome to Project Manhattan</h2>
-      <p>Project Manhattan is a cutting-edge hybrid computing platform that integrates classical architectures (6502, Z80, 68000, RISC-V) with quantum computing paradigms. Explore the future of computing with our innovative tools and simulations.</p>
-      
-      <h3>Quick Start</h3>
-      <button class="button" onclick="launchEmulator()">Launch Emulator</button>
-      <button class="button" onclick="openAssemblyIDE()">Open Assembly IDE</button>
-      <button class="button" onclick="openGraphicsStudio()">Open Graphics Studio</button>
-      
-      <h3>Terminal</h3>
-      <div id="terminal"></div>
-      
-      <h3>Quantum Visualization</h3>
-      <canvas id="quantum-viz" width="400" height="200"></canvas>
-      
-      <h3>Latest Updates</h3>
-      <ul>
-        <li>Integrated RISC-V support in the hybrid core</li>
-        <li>Enhanced quantum simulation capabilities</li>
-        <li>Improved graphics rendering with quantum-inspired effects</li>
-        <li>Updated documentation with new code examples</li>
-      </ul>
-    </div>
-  </div>
-</div>
 
-<script>
-const terminal = document.getElementById('terminal');
-const canvas = document.getElementById('quantum-viz');
-const ctx = canvas.getContext('2d');
+    <script>
+      const terminal = document.getElementById("terminal");
+      const canvas = document.getElementById("quantum-viz");
+      const ctx = canvas.getContext("2d");
 
-function launchEmulator() {
-  addToTerminal('Launching Project Manhattan Emulator...');
-  setTimeout(() => {
-    addToTerminal('Emulator loaded. Ready for input.');
-    window.location.href = 'https://websim.ai/c/project-manhattan/emulator';
-  }, 1500);
-}
+      function launchEmulator() {
+        addToTerminal("Launching Project Manhattan Emulator...");
+        setTimeout(() => {
+          addToTerminal("Emulator loaded. Ready for input.");
+          window.location.href =
+            "https://websim.ai/c/project-manhattan/emulator";
+        }, 1500);
+      }
 
-function openAssemblyIDE() {
-  addToTerminal('Opening Hybrid Assembly IDE...');
-  setTimeout(() => {
-    addToTerminal('IDE loaded. You can now write hybrid assembly code.');
-    window.location.href = 'https://websim.ai/c/project-manhattan/assembly';
-  }, 1500);
-}
+      function openAssemblyIDE() {
+        addToTerminal("Opening Hybrid Assembly IDE...");
+        setTimeout(() => {
+          addToTerminal("IDE loaded. You can now write hybrid assembly code.");
+          window.location.href =
+            "https://websim.ai/c/project-manhattan/assembly";
+        }, 1500);
+      }
 
-function openGraphicsStudio() {
-  addToTerminal('Launching Graphics Studio...');
-  setTimeout(() => {
-    addToTerminal('Graphics Studio ready. Create amazing visuals!');
-    window.location.href = 'https://websim.ai/c/project-manhattan/graphics';
-  }, 1500);
-}
+      function openGraphicsStudio() {
+        addToTerminal("Launching Graphics Studio...");
+        setTimeout(() => {
+          addToTerminal("Graphics Studio ready. Create amazing visuals!");
+          window.location.href =
+            "https://websim.ai/c/project-manhattan/graphics";
+        }, 1500);
+      }
 
-function addToTerminal(text) {
-  terminal.innerHTML += `> ${text}<br>`;
-  terminal.scrollTop = terminal.scrollHeight;
-}
+      function addToTerminal(text) {
+        terminal.innerHTML += `> ${text}<br>`;
+        terminal.scrollTop = terminal.scrollHeight;
+      }
 
-function drawQuantumVisualization() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
-  const time = Date.now() * 0.001;
-  const centerY = canvas.height / 2;
-  
-  ctx.beginPath();
-  ctx.moveTo(0, centerY);
-  
-  for (let x = 0; x < canvas.width; x++) {
-    const y = Math.sin(x * 0.05 + time) * 50 + centerY;
-    ctx.lineTo(x, y);
-  }
-  
-  ctx.strokeStyle = '#33ff33';
-  ctx.lineWidth = 2;
-  ctx.stroke();
-  
-  // Draw "quantum particles"
-  for (let i = 0; i < 5; i++) {
-    const x = (time * 50 + i * 80) % canvas.width;
-    const y = Math.sin(x * 0.05 + time) * 50 + centerY;
-    ctx.fillStyle = '#33ff33';
-    ctx.beginPath();
-    ctx.arc(x, y, 5, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  
-  requestAnimationFrame(drawQuantumVisualization);
-}
+      function drawQuantumVisualization() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-addToTerminal('Welcome to Project Manhattan');
-addToTerminal('Initializing hybrid computing environment...');
-setTimeout(() => {
-  addToTerminal('System ready. Please select an option to begin.');
-}, 1500);
+        const time = Date.now() * 0.001;
+        const centerY = canvas.height / 2;
 
-drawQuantumVisualization();
-</script>
-</body>
+        ctx.beginPath();
+        ctx.moveTo(0, centerY);
+
+        for (let x = 0; x < canvas.width; x++) {
+          const y = Math.sin(x * 0.05 + time) * 50 + centerY;
+          ctx.lineTo(x, y);
+        }
+
+        ctx.strokeStyle = "#33ff33";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Draw "quantum particles"
+        for (let i = 0; i < 5; i++) {
+          const x = (time * 50 + i * 80) % canvas.width;
+          const y = Math.sin(x * 0.05 + time) * 50 + centerY;
+          ctx.fillStyle = "#33ff33";
+          ctx.beginPath();
+          ctx.arc(x, y, 5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        requestAnimationFrame(drawQuantumVisualization);
+      }
+
+      addToTerminal("Welcome to Project Manhattan");
+      addToTerminal("Initializing hybrid computing environment...");
+      setTimeout(() => {
+        addToTerminal("System ready. Please select an option to begin.");
+      }, 1500);
+
+      drawQuantumVisualization();
+    </script>
+  </body>
 </html>

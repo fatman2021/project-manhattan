@@ -1,181 +1,211 @@
-<html><head><base href="https://websim.ai/c/project-manhattan/">
-<title>Project Manhattan: Next-Gen MOS 6510-based SoC Emulator</title>
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    font-family: 'Courier New', monospace;
-    background-color: #000;
-    color: #0f0;
-    overflow: hidden;
-  }
-  #container {
-    display: flex;
-    height: 100%;
-  }
-  #sidebar {
-    width: 250px;
-    background-color: #111;
-    padding: 20px;
-    overflow-y: auto;
-  }
-  #main-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-  }
-  #emulator-output {
-    flex-grow: 1;
-    background-color: #001100;
-    border: 1px solid #0f0;
-    padding: 10px;
-    overflow-y: auto;
-    font-family: 'VT323', monospace;
-    margin-bottom: 20px;
-  }
-  #command-input {
-    background: #000;
-    border: 1px solid #0f0;
-    color: #0f0;
-    padding: 5px;
-    width: calc(100% - 12px);
-    font-family: 'Courier New', monospace;
-  }
-  .sidebar-title {
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #0f0;
-  }
-  .sidebar-item {
-    margin-bottom: 5px;
-    cursor: pointer;
-  }
-  .sidebar-item:hover {
-    text-decoration: underline;
-  }
-  #status-bar {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    font-size: 0.8em;
-  }
-  #color-preview {
-    width: 100%;
-    height: 50px;
-    margin-top: 10px;
-    border: 1px solid #0f0;
-  }
-  .color-input {
-    width: 100%;
-    margin-top: 5px;
-  }
-</style>
-<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-</head>
-<body>
-<div id="container">
-  <div id="sidebar">
-    <div class="sidebar-title">Project Manhattan</div>
-    <div class="sidebar-item" onclick="loadModule('cpu')">CPU Emulation</div>
-    <div class="sidebar-item" onclick="loadModule('gpu')">GPU Emulation</div>
-    <div class="sidebar-item" onclick="loadModule('memory')">Memory Management</div>
-    <div class="sidebar-item" onclick="loadModule('color')">Color Management</div>
-    <div class="sidebar-item" onclick="loadModule('io')">I/O Subsystem</div>
-    <div class="sidebar-item" onclick="loadModule('assembler')">6510 Assembler</div>
-    <div class="sidebar-item" onclick="loadModule('glsl')">GLSL Shader Editor</div>
-    <div class="sidebar-item" onclick="loadModule('basic')">FreeBASIC IDE</div>
-    <div class="sidebar-title">Compatibility Modes</div>
-    <div class="sidebar-item" onclick="setCompatMode('vicii')">VIC-II</div>
-    <div class="sidebar-item" onclick="setCompatMode('svga')">SVGA</div>
-    <div class="sidebar-item" onclick="setCompatMode('ecs')">ECS (Copperlist)</div>
-    <div class="sidebar-item" onclick="setCompatMode('aga')">AGA (HAM8)</div>
-    <div class="sidebar-item" onclick="setCompatMode('hdr')">HDR</div>
-    <div class="sidebar-title">Documentation</div>
-    <div class="sidebar-item" onclick="showDoc('architecture')">SoC Architecture</div>
-    <div class="sidebar-item" onclick="showDoc('color')">Color Model</div>
-  </div>
-  <div id="main-content">
-    <div id="emulator-output"></div>
-    <input type="text" id="command-input" placeholder="Enter command or code...">
-    <div id="status-bar">
-      <span id="cpu-status">CPU: 4GHz</span>
-      <span id="gpu-status">GPU: 17GHz</span>
-      <span id="color-status">COLOR: HDR</span>
+<html>
+  <head>
+    <base href="https://websim.ai/c/project-manhattan/" />
+    <title>Project Manhattan: Next-Gen MOS 6510-based SoC Emulator</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        font-family: "Courier New", monospace;
+        background-color: #000;
+        color: #0f0;
+        overflow: hidden;
+      }
+      #container {
+        display: flex;
+        height: 100%;
+      }
+      #sidebar {
+        width: 250px;
+        background-color: #111;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      #main-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+      }
+      #emulator-output {
+        flex-grow: 1;
+        background-color: #001100;
+        border: 1px solid #0f0;
+        padding: 10px;
+        overflow-y: auto;
+        font-family: "VT323", monospace;
+        margin-bottom: 20px;
+      }
+      #command-input {
+        background: #000;
+        border: 1px solid #0f0;
+        color: #0f0;
+        padding: 5px;
+        width: calc(100% - 12px);
+        font-family: "Courier New", monospace;
+      }
+      .sidebar-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #0f0;
+      }
+      .sidebar-item {
+        margin-bottom: 5px;
+        cursor: pointer;
+      }
+      .sidebar-item:hover {
+        text-decoration: underline;
+      }
+      #status-bar {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-size: 0.8em;
+      }
+      #color-preview {
+        width: 100%;
+        height: 50px;
+        margin-top: 10px;
+        border: 1px solid #0f0;
+      }
+      .color-input {
+        width: 100%;
+        margin-top: 5px;
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <div class="sidebar-title">Project Manhattan</div>
+        <div class="sidebar-item" onclick="loadModule('cpu')">
+          CPU Emulation
+        </div>
+        <div class="sidebar-item" onclick="loadModule('gpu')">
+          GPU Emulation
+        </div>
+        <div class="sidebar-item" onclick="loadModule('memory')">
+          Memory Management
+        </div>
+        <div class="sidebar-item" onclick="loadModule('color')">
+          Color Management
+        </div>
+        <div class="sidebar-item" onclick="loadModule('io')">I/O Subsystem</div>
+        <div class="sidebar-item" onclick="loadModule('assembler')">
+          6510 Assembler
+        </div>
+        <div class="sidebar-item" onclick="loadModule('glsl')">
+          GLSL Shader Editor
+        </div>
+        <div class="sidebar-item" onclick="loadModule('basic')">
+          FreeBASIC IDE
+        </div>
+        <div class="sidebar-title">Compatibility Modes</div>
+        <div class="sidebar-item" onclick="setCompatMode('vicii')">VIC-II</div>
+        <div class="sidebar-item" onclick="setCompatMode('svga')">SVGA</div>
+        <div class="sidebar-item" onclick="setCompatMode('ecs')">
+          ECS (Copperlist)
+        </div>
+        <div class="sidebar-item" onclick="setCompatMode('aga')">
+          AGA (HAM8)
+        </div>
+        <div class="sidebar-item" onclick="setCompatMode('hdr')">HDR</div>
+        <div class="sidebar-title">Documentation</div>
+        <div class="sidebar-item" onclick="showDoc('architecture')">
+          SoC Architecture
+        </div>
+        <div class="sidebar-item" onclick="showDoc('color')">Color Model</div>
+      </div>
+      <div id="main-content">
+        <div id="emulator-output"></div>
+        <input
+          type="text"
+          id="command-input"
+          placeholder="Enter command or code..."
+        />
+        <div id="status-bar">
+          <span id="cpu-status">CPU: 4GHz</span>
+          <span id="gpu-status">GPU: 17GHz</span>
+          <span id="color-status">COLOR: HDR</span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<script>
-const emulatorOutput = document.getElementById('emulator-output');
-const commandInput = document.getElementById('command-input');
-const cpuStatus = document.getElementById('cpu-status');
-const gpuStatus = document.getElementById('gpu-status');
-const colorStatus = document.getElementById('color-status');
+    <script>
+      const emulatorOutput = document.getElementById("emulator-output");
+      const commandInput = document.getElementById("command-input");
+      const cpuStatus = document.getElementById("cpu-status");
+      const gpuStatus = document.getElementById("gpu-status");
+      const colorStatus = document.getElementById("color-status");
 
-let currentModule = '';
-let compatMode = 'hdr';
+      let currentModule = "";
+      let compatMode = "hdr";
 
-function log(message) {
-  const logEntry = document.createElement('div');
-  logEntry.innerHTML = `${message}`;
-  emulatorOutput.appendChild(logEntry);
-  emulatorOutput.scrollTop = emulatorOutput.scrollHeight;
-}
+      function log(message) {
+        const logEntry = document.createElement("div");
+        logEntry.innerHTML = `${message}`;
+        emulatorOutput.appendChild(logEntry);
+        emulatorOutput.scrollTop = emulatorOutput.scrollHeight;
+      }
 
-function loadModule(module) {
-  currentModule = module;
-  emulatorOutput.innerHTML = '';
-  log(`Loading ${module.toUpperCase()} module...`);
-  
-  switch(module) {
-    case 'cpu':
-      log('MOS 6510 Compatible CPU Emulation');
-      log('4GHz clock, 64-bit architecture');
-      log('Type 6510 assembly code to execute');
-      break;
-    case 'gpu':
-      log('Advanced GPU Emulation');
-      log('17GHz clock, 512-bit architecture');
-      log('Compatibility modes: VIC-II, SVGA, ECS, AGA, HDR');
-      log('Type GLSL code or GPU commands');
-      break;
-    case 'memory':
-      log('Unified Memory Architecture');
-      log('Addressable range: ±1.797693134862316e+308');
-      log('Precision: 53 bits (approx. 15 decimal digits)');
-      log('Type "read <addr>" or "write <addr> <value>"');
-      break;
-    case 'color':
-      log('Advanced Color Management');
-      log('Range: ±1.797693134862316e+308 per channel');
-      log('Precision: 53 bits (approx. 15 decimal digits)');
-      createColorInterface();
-      break;
-    case 'io':
-      log('I/O Subsystem');
-      log('Emulated devices: Keyboard, Joystick, Sound Chip');
-      log('Type "list" to view devices, "connect <device>" to connect');
-      break;
-    case 'assembler':
-      log('6510 Assembler with 64-bit Extensions');
-      log('Type assembly code, use "assemble" to compile');
-      break;
-    case 'glsl':
-      log('GLSL Shader Editor with PM Extensions');
-      log('Type GLSL code, use "compile" to build shader');
-      break;
-    case 'basic':
-      log('FreeBASIC IDE');
-      log('Type FreeBASIC code, use "run" to execute');
-      break;
-  }
-}
+      function loadModule(module) {
+        currentModule = module;
+        emulatorOutput.innerHTML = "";
+        log(`Loading ${module.toUpperCase()} module...`);
 
-function createColorInterface() {
-  const colorInterface = document.createElement('div');
-  colorInterface.innerHTML = `
+        switch (module) {
+          case "cpu":
+            log("MOS 6510 Compatible CPU Emulation");
+            log("4GHz clock, 64-bit architecture");
+            log("Type 6510 assembly code to execute");
+            break;
+          case "gpu":
+            log("Advanced GPU Emulation");
+            log("17GHz clock, 512-bit architecture");
+            log("Compatibility modes: VIC-II, SVGA, ECS, AGA, HDR");
+            log("Type GLSL code or GPU commands");
+            break;
+          case "memory":
+            log("Unified Memory Architecture");
+            log("Addressable range: ±1.797693134862316e+308");
+            log("Precision: 53 bits (approx. 15 decimal digits)");
+            log('Type "read <addr>" or "write <addr> <value>"');
+            break;
+          case "color":
+            log("Advanced Color Management");
+            log("Range: ±1.797693134862316e+308 per channel");
+            log("Precision: 53 bits (approx. 15 decimal digits)");
+            createColorInterface();
+            break;
+          case "io":
+            log("I/O Subsystem");
+            log("Emulated devices: Keyboard, Joystick, Sound Chip");
+            log('Type "list" to view devices, "connect <device>" to connect');
+            break;
+          case "assembler":
+            log("6510 Assembler with 64-bit Extensions");
+            log('Type assembly code, use "assemble" to compile');
+            break;
+          case "glsl":
+            log("GLSL Shader Editor with PM Extensions");
+            log('Type GLSL code, use "compile" to build shader');
+            break;
+          case "basic":
+            log("FreeBASIC IDE");
+            log('Type FreeBASIC code, use "run" to execute');
+            break;
+        }
+      }
+
+      function createColorInterface() {
+        const colorInterface = document.createElement("div");
+        colorInterface.innerHTML = `
     <div id="color-preview"></div>
     <input type="text" class="color-input" id="red-input" placeholder="Red (-1.8e308 to 1.8e308)">
     <input type="text" class="color-input" id="green-input" placeholder="Green (-1.8e308 to 1.8e308)">
@@ -183,117 +213,120 @@ function createColorInterface() {
     <input type="text" class="color-input" id="alpha-input" placeholder="Alpha (-1.8e308 to 1.8e308)">
     <button onclick="updateColor()">Update Color</button>
   `;
-  emulatorOutput.appendChild(colorInterface);
-}
+        emulatorOutput.appendChild(colorInterface);
+      }
 
-function updateColor() {
-  const red = parseFloat(document.getElementById('red-input').value);
-  const green = parseFloat(document.getElementById('green-input').value);
-  const blue = parseFloat(document.getElementById('blue-input').value);
-  const alpha = parseFloat(document.getElementById('alpha-input').value);
-  
-  log(`Setting color: R=${red}, G=${green}, B=${blue}, A=${alpha}`);
-  
-  // Convert to visible range for preview
-  const visibleRed = Math.min(Math.max((red + 1) / 2, 0), 1);
-  const visibleGreen = Math.min(Math.max((green + 1) / 2, 0), 1);
-  const visibleBlue = Math.min(Math.max((blue + 1) / 2, 0), 1);
-  const visibleAlpha = Math.min(Math.max((alpha + 1) / 2, 0), 1);
-  
-  const colorPreview = document.getElementById('color-preview');
-  colorPreview.style.backgroundColor = `rgba(${visibleRed * 255}, ${visibleGreen * 255}, ${visibleBlue * 255}, ${visibleAlpha})`;
-}
+      function updateColor() {
+        const red = parseFloat(document.getElementById("red-input").value);
+        const green = parseFloat(document.getElementById("green-input").value);
+        const blue = parseFloat(document.getElementById("blue-input").value);
+        const alpha = parseFloat(document.getElementById("alpha-input").value);
 
-function setCompatMode(mode) {
-  compatMode = mode;
-  log(`Switching to ${mode.toUpperCase()} compatibility mode`);
-  
-  switch(mode) {
-    case 'vicii':
-      log('VIC-II Mode: 320x200, 16 colors');
-      colorStatus.textContent = 'COLOR: 4-bit';
-      break;
-    case 'svga':
-      log('SVGA Mode: Up to 1280x1024, 16.7M colors');
-      colorStatus.textContent = 'COLOR: 24-bit';
-      break;
-    case 'ecs':
-      log('ECS Mode: Copperlist support, 32-bit ARGB colors');
-      colorStatus.textContent = 'COLOR: 32-bit';
-      break;
-    case 'aga':
-      log('AGA Mode: HAM8, 256K colors from 16.7M palette');
-      colorStatus.textContent = 'COLOR: HAM8';
-      break;
-    case 'hdr':
-      log('HDR Mode: Extended range and precision');
-      colorStatus.textContent = 'COLOR: HDR';
-      break;
-  }
-  
-  log('GPU reconfigured. Use Color Management for advanced color operations.');
-}
+        log(`Setting color: R=${red}, G=${green}, B=${blue}, A=${alpha}`);
 
-function showDoc(topic) {
-  emulatorOutput.innerHTML = '';
-  log(`Displaying documentation for: ${topic}`);
-  
-  switch(topic) {
-    case 'architecture':
-      log('Project Manhattan SoC Architecture');
-      log('- 64-bit CPU: 4GHz, MOS 6510 compatible with extensions');
-      log('- 512-bit GPU: 17GHz, multi-mode compatibility');
-      log('- Unified Memory: Up to 1.797693134862316e+308 bytes');
-      log('- Advanced Color Management: HDR capable');
-      break;
-    case 'color':
-      log('Project Manhattan Color Model');
-      log('- Range: ±1.797693134862316e+308 per channel');
-      log('- Precision: 53 bits (~15 decimal digits)');
-      log('- Supports: Standard RGB, HDR, and legacy modes');
-      log('- Copperlist: 32-bit ARGB in ECS mode');
-      log('- HAM8: 256K colors from 16.7M palette in AGA mode');
-      break;
-  }
-}
+        // Convert to visible range for preview
+        const visibleRed = Math.min(Math.max((red + 1) / 2, 0), 1);
+        const visibleGreen = Math.min(Math.max((green + 1) / 2, 0), 1);
+        const visibleBlue = Math.min(Math.max((blue + 1) / 2, 0), 1);
+        const visibleAlpha = Math.min(Math.max((alpha + 1) / 2, 0), 1);
 
-commandInput.addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
-    const command = this.value.trim();
-    this.value = '';
-    executeCommand(command);
-  }
-});
+        const colorPreview = document.getElementById("color-preview");
+        colorPreview.style.backgroundColor = `rgba(${visibleRed * 255}, ${visibleGreen * 255}, ${visibleBlue * 255}, ${visibleAlpha})`;
+      }
 
-function executeCommand(command) {
-  log(`> ${command}`);
-  
-  if (currentModule === 'cpu' || currentModule === 'assembler') {
-    log('Executing extended 6510 assembly...');
-    log('A=$FFFFFFFFFFFFFFFF X=$0000000000000000 Y=$0000000000000000');
-    log('PC=$0000000000000400 SP=$00000000000000FD');
-  } else if (currentModule === 'gpu' || currentModule === 'glsl') {
-    log(`Compiling and running GLSL shader in ${compatMode.toUpperCase()} mode...`);
-    log('vec4 color = vec4(1.5e200, -3.2e100, 7.8e150, 1.0);');
-    log('Shader compiled successfully.');
-  } else if (currentModule === 'color') {
-    log('Processing color command...');
-    log('Color set: R=1.23e200, G=-4.56e150, B=7.89e180, A=1.0');
-  } else if (currentModule === 'basic') {
-    log('Executing FreeBASIC code...');
-    log('DIM AS DOUBLE r = 1.23e200, g = -4.56e150, b = 7.89e180');
-    log('PRINT "HDR Color set:", r, g, b');
-  } else {
-    log('Command executed. Check module output for results.');
-  }
-}
+      function setCompatMode(mode) {
+        compatMode = mode;
+        log(`Switching to ${mode.toUpperCase()} compatibility mode`);
 
-// Initial setup
-loadModule('color');
-cpuStatus.textContent = 'CPU: 4GHz';
-gpuStatus.textContent = 'GPU: 17GHz';
-colorStatus.textContent = 'COLOR: HDR';
+        switch (mode) {
+          case "vicii":
+            log("VIC-II Mode: 320x200, 16 colors");
+            colorStatus.textContent = "COLOR: 4-bit";
+            break;
+          case "svga":
+            log("SVGA Mode: Up to 1280x1024, 16.7M colors");
+            colorStatus.textContent = "COLOR: 24-bit";
+            break;
+          case "ecs":
+            log("ECS Mode: Copperlist support, 32-bit ARGB colors");
+            colorStatus.textContent = "COLOR: 32-bit";
+            break;
+          case "aga":
+            log("AGA Mode: HAM8, 256K colors from 16.7M palette");
+            colorStatus.textContent = "COLOR: HAM8";
+            break;
+          case "hdr":
+            log("HDR Mode: Extended range and precision");
+            colorStatus.textContent = "COLOR: HDR";
+            break;
+        }
 
-</script>
-</body>
+        log(
+          "GPU reconfigured. Use Color Management for advanced color operations.",
+        );
+      }
+
+      function showDoc(topic) {
+        emulatorOutput.innerHTML = "";
+        log(`Displaying documentation for: ${topic}`);
+
+        switch (topic) {
+          case "architecture":
+            log("Project Manhattan SoC Architecture");
+            log("- 64-bit CPU: 4GHz, MOS 6510 compatible with extensions");
+            log("- 512-bit GPU: 17GHz, multi-mode compatibility");
+            log("- Unified Memory: Up to 1.797693134862316e+308 bytes");
+            log("- Advanced Color Management: HDR capable");
+            break;
+          case "color":
+            log("Project Manhattan Color Model");
+            log("- Range: ±1.797693134862316e+308 per channel");
+            log("- Precision: 53 bits (~15 decimal digits)");
+            log("- Supports: Standard RGB, HDR, and legacy modes");
+            log("- Copperlist: 32-bit ARGB in ECS mode");
+            log("- HAM8: 256K colors from 16.7M palette in AGA mode");
+            break;
+        }
+      }
+
+      commandInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          const command = this.value.trim();
+          this.value = "";
+          executeCommand(command);
+        }
+      });
+
+      function executeCommand(command) {
+        log(`> ${command}`);
+
+        if (currentModule === "cpu" || currentModule === "assembler") {
+          log("Executing extended 6510 assembly...");
+          log("A=$FFFFFFFFFFFFFFFF X=$0000000000000000 Y=$0000000000000000");
+          log("PC=$0000000000000400 SP=$00000000000000FD");
+        } else if (currentModule === "gpu" || currentModule === "glsl") {
+          log(
+            `Compiling and running GLSL shader in ${compatMode.toUpperCase()} mode...`,
+          );
+          log("vec4 color = vec4(1.5e200, -3.2e100, 7.8e150, 1.0);");
+          log("Shader compiled successfully.");
+        } else if (currentModule === "color") {
+          log("Processing color command...");
+          log("Color set: R=1.23e200, G=-4.56e150, B=7.89e180, A=1.0");
+        } else if (currentModule === "basic") {
+          log("Executing FreeBASIC code...");
+          log("DIM AS DOUBLE r = 1.23e200, g = -4.56e150, b = 7.89e180");
+          log('PRINT "HDR Color set:", r, g, b');
+        } else {
+          log("Command executed. Check module output for results.");
+        }
+      }
+
+      // Initial setup
+      loadModule("color");
+      cpuStatus.textContent = "CPU: 4GHz";
+      gpuStatus.textContent = "GPU: 17GHz";
+      colorStatus.textContent = "COLOR: HDR";
+    </script>
+  </body>
 </html>

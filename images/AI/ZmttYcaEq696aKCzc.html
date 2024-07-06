@@ -1,229 +1,251 @@
-<html><head><base href="https://websim.ai/c/project-manhattan/">
-<title>Project Manhattan: Advanced SoC Emulator with Blender-style UI</title>
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Segoe UI', 'Arial', sans-serif;
-    background-color: #2b2b2b;
-    color: #e0e0e0;
-    overflow: hidden;
-  }
-  #container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  #menu-bar {
-    background-color: #333333;
-    padding: 5px;
-    display: flex;
-  }
-  .menu-item {
-    margin-right: 15px;
-    cursor: pointer;
-  }
-  #main-content {
-    display: flex;
-    flex-grow: 1;
-  }
-  #sidebar {
-    width: 250px;
-    background-color: #333333;
-    padding: 10px;
-    overflow-y: auto;
-  }
-  #viewport {
-    flex-grow: 1;
-    position: relative;
-  }
-  #terminal {
-    height: 150px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #00ff00;
-    font-family: 'Courier New', monospace;
-    padding: 10px;
-    overflow-y: auto;
-  }
-  #output {
-    height: calc(100% - 30px);
-    overflow-y: auto;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-  #input-line {
-    display: flex;
-    align-items: center;
-  }
-  #prompt {
-    color: #00ff00;
-    margin-right: 10px;
-  }
-  #command-input {
-    background: transparent;
-    border: none;
-    color: #00ff00;
-    font-family: inherit;
-    font-size: inherit;
-    flex-grow: 1;
-    outline: none;
-  }
-  .sidebar-section {
-    margin-bottom: 20px;
-  }
-  .sidebar-title {
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  .sidebar-item {
-    margin-bottom: 5px;
-    cursor: pointer;
-  }
-  .sidebar-item:hover {
-    color: #ffffff;
-  }
-</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-</head>
-<body>
-<div id="container">
-  <div id="menu-bar">
-    <div class="menu-item">File</div>
-    <div class="menu-item">Edit</div>
-    <div class="menu-item">Add</div>
-    <div class="menu-item">Render</div>
-    <div class="menu-item">Window</div>
-    <div class="menu-item">Help</div>
-  </div>
-  <div id="main-content">
-    <div id="sidebar">
-      <div class="sidebar-section">
-        <div class="sidebar-title">3D Primitives</div>
-        <div class="sidebar-item" onclick="addObject('cube')">Cube</div>
-        <div class="sidebar-item" onclick="addObject('sphere')">Sphere</div>
-        <div class="sidebar-item" onclick="addObject('cylinder')">Cylinder</div>
-        <div class="sidebar-item" onclick="addObject('torus')">Torus</div>
+<html>
+  <head>
+    <base href="https://websim.ai/c/project-manhattan/" />
+    <title>
+      Project Manhattan: Advanced SoC Emulator with Blender-style UI
+    </title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: "Segoe UI", "Arial", sans-serif;
+        background-color: #2b2b2b;
+        color: #e0e0e0;
+        overflow: hidden;
+      }
+      #container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      #menu-bar {
+        background-color: #333333;
+        padding: 5px;
+        display: flex;
+      }
+      .menu-item {
+        margin-right: 15px;
+        cursor: pointer;
+      }
+      #main-content {
+        display: flex;
+        flex-grow: 1;
+      }
+      #sidebar {
+        width: 250px;
+        background-color: #333333;
+        padding: 10px;
+        overflow-y: auto;
+      }
+      #viewport {
+        flex-grow: 1;
+        position: relative;
+      }
+      #terminal {
+        height: 150px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #00ff00;
+        font-family: "Courier New", monospace;
+        padding: 10px;
+        overflow-y: auto;
+      }
+      #output {
+        height: calc(100% - 30px);
+        overflow-y: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      #input-line {
+        display: flex;
+        align-items: center;
+      }
+      #prompt {
+        color: #00ff00;
+        margin-right: 10px;
+      }
+      #command-input {
+        background: transparent;
+        border: none;
+        color: #00ff00;
+        font-family: inherit;
+        font-size: inherit;
+        flex-grow: 1;
+        outline: none;
+      }
+      .sidebar-section {
+        margin-bottom: 20px;
+      }
+      .sidebar-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .sidebar-item {
+        margin-bottom: 5px;
+        cursor: pointer;
+      }
+      .sidebar-item:hover {
+        color: #ffffff;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="menu-bar">
+        <div class="menu-item">File</div>
+        <div class="menu-item">Edit</div>
+        <div class="menu-item">Add</div>
+        <div class="menu-item">Render</div>
+        <div class="menu-item">Window</div>
+        <div class="menu-item">Help</div>
       </div>
-      <div class="sidebar-section">
-        <div class="sidebar-title">2D Graphics</div>
-        <div class="sidebar-item" onclick="add2DObject('sprite')">Sprite</div>
-        <div class="sidebar-item" onclick="add2DObject('bob')">BOB</div>
+      <div id="main-content">
+        <div id="sidebar">
+          <div class="sidebar-section">
+            <div class="sidebar-title">3D Primitives</div>
+            <div class="sidebar-item" onclick="addObject('cube')">Cube</div>
+            <div class="sidebar-item" onclick="addObject('sphere')">Sphere</div>
+            <div class="sidebar-item" onclick="addObject('cylinder')">
+              Cylinder
+            </div>
+            <div class="sidebar-item" onclick="addObject('torus')">Torus</div>
+          </div>
+          <div class="sidebar-section">
+            <div class="sidebar-title">2D Graphics</div>
+            <div class="sidebar-item" onclick="add2DObject('sprite')">
+              Sprite
+            </div>
+            <div class="sidebar-item" onclick="add2DObject('bob')">BOB</div>
+          </div>
+          <div class="sidebar-section">
+            <div class="sidebar-title">Effects</div>
+            <div class="sidebar-item" onclick="addEffect('scanline')">
+              Scanline Effect
+            </div>
+            <div class="sidebar-item" onclick="addEffect('raster')">
+              Raster Effect
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <div class="sidebar-title">Tools</div>
+            <div class="sidebar-item" onclick="setTool('translate')">
+              3D Translate
+            </div>
+            <div class="sidebar-item" onclick="setTool('rotate')">
+              3D Rotate
+            </div>
+            <div class="sidebar-item" onclick="setTool('scale')">3D Scale</div>
+          </div>
+        </div>
+        <div id="viewport"></div>
       </div>
-      <div class="sidebar-section">
-        <div class="sidebar-title">Effects</div>
-        <div class="sidebar-item" onclick="addEffect('scanline')">Scanline Effect</div>
-        <div class="sidebar-item" onclick="addEffect('raster')">Raster Effect</div>
-      </div>
-      <div class="sidebar-section">
-        <div class="sidebar-title">Tools</div>
-        <div class="sidebar-item" onclick="setTool('translate')">3D Translate</div>
-        <div class="sidebar-item" onclick="setTool('rotate')">3D Rotate</div>
-        <div class="sidebar-item" onclick="setTool('scale')">3D Scale</div>
+      <div id="terminal">
+        <div id="output"></div>
+        <div id="input-line">
+          <span id="prompt">PM&gt;</span>
+          <input type="text" id="command-input" autofocus />
+        </div>
       </div>
     </div>
-    <div id="viewport"></div>
-  </div>
-  <div id="terminal">
-    <div id="output"></div>
-    <div id="input-line">
-      <span id="prompt">PM&gt;</span>
-      <input type="text" id="command-input" autofocus>
-    </div>
-  </div>
-</div>
 
-<script>
-const output = document.getElementById('output');
-const commandInput = document.getElementById('command-input');
-const viewport = document.getElementById('viewport');
+    <script>
+      const output = document.getElementById("output");
+      const commandInput = document.getElementById("command-input");
+      const viewport = document.getElementById("viewport");
 
-let scene, camera, renderer;
-let objects = [];
-let currentTool = 'translate';
+      let scene, camera, renderer;
+      let objects = [];
+      let currentTool = "translate";
 
-function initScene() {
-  scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(75, viewport.clientWidth / viewport.clientHeight, 0.1, 1000);
-  renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(viewport.clientWidth, viewport.clientHeight);
-  viewport.appendChild(renderer.domElement);
+      function initScene() {
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(
+          75,
+          viewport.clientWidth / viewport.clientHeight,
+          0.1,
+          1000,
+        );
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(viewport.clientWidth, viewport.clientHeight);
+        viewport.appendChild(renderer.domElement);
 
-  const light = new THREE.PointLight(0xffffff, 1, 100);
-  light.position.set(0, 0, 10);
-  scene.add(light);
+        const light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(0, 0, 10);
+        scene.add(light);
 
-  camera.position.z = 5;
-}
+        camera.position.z = 5;
+      }
 
-function animate() {
-  requestAnimationFrame(animate);
-  renderer.render(scene, camera);
-}
+      function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+      }
 
-function onWindowResize() {
-  camera.aspect = viewport.clientWidth / viewport.clientHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(viewport.clientWidth, viewport.clientHeight);
-}
+      function onWindowResize() {
+        camera.aspect = viewport.clientWidth / viewport.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(viewport.clientWidth, viewport.clientHeight);
+      }
 
-window.addEventListener('resize', onWindowResize);
+      window.addEventListener("resize", onWindowResize);
 
-initScene();
-animate();
+      initScene();
+      animate();
 
-function addObject(type) {
-  let geometry, material, mesh;
+      function addObject(type) {
+        let geometry, material, mesh;
 
-  switch(type) {
-    case 'cube':
-      geometry = new THREE.BoxGeometry();
-      break;
-    case 'sphere':
-      geometry = new THREE.SphereGeometry(0.5, 32, 32);
-      break;
-    case 'cylinder':
-      geometry = new THREE.CylinderGeometry(0.5, 0.5, 1, 32);
-      break;
-    case 'torus':
-      geometry = new THREE.TorusGeometry(0.5, 0.2, 16, 100);
-      break;
-  }
+        switch (type) {
+          case "cube":
+            geometry = new THREE.BoxGeometry();
+            break;
+          case "sphere":
+            geometry = new THREE.SphereGeometry(0.5, 32, 32);
+            break;
+          case "cylinder":
+            geometry = new THREE.CylinderGeometry(0.5, 0.5, 1, 32);
+            break;
+          case "torus":
+            geometry = new THREE.TorusGeometry(0.5, 0.2, 16, 100);
+            break;
+        }
 
-  material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
-  mesh = new THREE.Mesh(geometry, material);
-  
-  mesh.position.set(
-    Math.random() * 4 - 2,
-    Math.random() * 4 - 2,
-    Math.random() * 4 - 2
-  );
+        material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+        mesh = new THREE.Mesh(geometry, material);
 
-  objects.push(mesh);
-  scene.add(mesh);
-  log(`Added ${type} to the scene`);
-}
+        mesh.position.set(
+          Math.random() * 4 - 2,
+          Math.random() * 4 - 2,
+          Math.random() * 4 - 2,
+        );
 
-function add2DObject(type) {
-  log(`Added ${type} to the scene (simulated)`);
-}
+        objects.push(mesh);
+        scene.add(mesh);
+        log(`Added ${type} to the scene`);
+      }
 
-function addEffect(type) {
-  log(`Added ${type} to the scene (simulated)`);
-}
+      function add2DObject(type) {
+        log(`Added ${type} to the scene (simulated)`);
+      }
 
-function setTool(tool) {
-  currentTool = tool;
-  log(`Set current tool to: ${tool}`);
-}
+      function addEffect(type) {
+        log(`Added ${type} to the scene (simulated)`);
+      }
 
-function log(message) {
-  output.innerHTML += `<div>${message}</div>`;
-  output.scrollTop = output.scrollHeight;
-}
+      function setTool(tool) {
+        currentTool = tool;
+        log(`Set current tool to: ${tool}`);
+      }
 
-const systemCommands = {
-  help: () => `
+      function log(message) {
+        output.innerHTML += `<div>${message}</div>`;
+        output.scrollTop = output.scrollHeight;
+      }
+
+      const systemCommands = {
+        help: () => `
 Available commands:
   help        - Display this help message
   info        - Show system information
@@ -232,7 +254,7 @@ Available commands:
   clear       - Clear the terminal screen
   exit        - Exit the emulator (simulated)
 `,
-  info: () => `
+        info: () => `
 Project Manhattan SoC Emulator v4.0.0
 CPU: 4GHz 64-Bit MOS 6510/VICE compatible
 GPU: 17GHz 512-Bit
@@ -240,7 +262,7 @@ Max addressable memory: 1.797693134862316e+308 bytes
 Max video memory: 1.797693134862316e+308x8 bytes
 3D Viewport: Active (Modern 3D Graphics with legacy compatibility)
 `,
-  mem: () => `
+        mem: () => `
 Memory Usage:
 Total System Memory: 1.797693134862316e+308 bytes
 Used: 1024 bytes (simulated)
@@ -252,7 +274,7 @@ Negative: -4.940656458412465e-324 to -1.797693134862316e+308
 Zero: 0
 Precision: 53 bits (approx. 15 decimal digits)
 `,
-  gpu: () => `
+        gpu: () => `
 GPU Status:
 Clock: 17GHz
 Video Memory: 1.797693134862316e+308x8 bytes
@@ -267,43 +289,43 @@ Precision: 53 bits (approx. 15 decimal digits)
 
 Copperlist color mode: 32-bit ARGB
 `,
-  clear: () => {
-    output.innerHTML = '';
-    return '';
-  },
-  exit: () => `
+        clear: () => {
+          output.innerHTML = "";
+          return "";
+        },
+        exit: () => `
 Shutting down Project Manhattan emulator...
 Thank you for using our system!
 `,
-};
+      };
 
-function processCommand(cmd) {
-  const args = cmd.trim().split(' ');
-  const command = args.shift().toLowerCase();
-  let response;
+      function processCommand(cmd) {
+        const args = cmd.trim().split(" ");
+        const command = args.shift().toLowerCase();
+        let response;
 
-  if (command in systemCommands) {
-    response = systemCommands[command](args);
-  } else {
-    response = `Unknown command: ${command}\nType 'help' for available commands.`;
-  }
+        if (command in systemCommands) {
+          response = systemCommands[command](args);
+        } else {
+          response = `Unknown command: ${command}\nType 'help' for available commands.`;
+        }
 
-  log(`> ${cmd}`);
-  if (response) {
-    log(response);
-  }
-}
+        log(`> ${cmd}`);
+        if (response) {
+          log(response);
+        }
+      }
 
-commandInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    const cmd = commandInput.value;
-    processCommand(cmd);
-    commandInput.value = '';
-  }
-});
+      commandInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          const cmd = commandInput.value;
+          processCommand(cmd);
+          commandInput.value = "";
+        }
+      });
 
-// Initial welcome message
-log(`
+      // Initial welcome message
+      log(`
    _____           _           _   __  __           _           _   _             
   |  __ \\         (_)         | | |  \\/  |         | |         | | | |            
   | |__) | __ ___  _  ___  ___| |_| \\  / | __ _ _ __| |__   __ _| |_| |_ __ _ _ __  
@@ -322,6 +344,6 @@ log(`
   Type 'help' in the terminal for available commands.
   Use the sidebar to add 3D objects, 2D graphics, and effects to the scene.
 `);
-</script>
-</body>
+    </script>
+  </body>
 </html>
