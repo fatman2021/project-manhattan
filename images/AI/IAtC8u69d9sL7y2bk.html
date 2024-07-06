@@ -1,0 +1,222 @@
+<html><head><base href="https://websim.ai/c/project-manhattan-online" />
+<title>Project Manhattan - Online MOS 6510 CPU/GPU Emulator</title>
+<style>
+  body {
+    font-family: "VT323", monospace;
+    background-color: #000080;
+    color: #00FF00;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  h1, h2 {
+    text-align: center;
+    text-shadow: 2px 2px #000000;
+  }
+  .menu {
+    display: flex;
+    justify-content: space-around;
+    background-color: #000040;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  .menu a {
+    color: #00FF00;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #00FF00;
+  }
+  .menu a:hover {
+    background-color: #00FF00;
+    color: #000040;
+  }
+  .content {
+    background-color: #000040;
+    padding: 20px;
+    border: 1px solid #00FF00;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.8em;
+  }
+  .crt-effect {
+    animation: textShadow 1.6s infinite;
+  }
+  @keyframes textShadow {
+    0% {
+      text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+    }
+    100% {
+      text-shadow: 2.6208764473832513px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+    }
+  }
+  #emulator-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  #emulator-screen {
+    width: 640px;
+    height: 480px;
+    background-color: #000000;
+    border: 2px solid #00FF00;
+  }
+  #emulator-controls {
+    width: 300px;
+  }
+  #code-editor {
+    width: 100%;
+    height: 200px;
+    background-color: #000000;
+    color: #00FF00;
+    border: 1px solid #00FF00;
+    font-family: monospace;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  button {
+    background-color: #000040;
+    color: #00FF00;
+    border: 1px solid #00FF00;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #00FF00;
+    color: #000040;
+  }
+</style>
+</head>
+<body class="crt-effect">
+<div class="container">
+  <h1>Project Manhattan</h1>
+  <h2>Online MOS 6510 CPU/GPU Combo Emulator</h2>
+  
+  <div class="menu">
+    <a href="#emulator">Emulator</a>
+    <a href="#documentation">Documentation</a>
+    <a href="#examples">Examples</a>
+    <a href="#community">Community</a>
+  </div>
+  
+  <div class="content">
+    <div id="emulator-container">
+      <div id="emulator-screen">
+        <!-- Emulator screen will be rendered here -->
+        <canvas id="emu-canvas" width="640" height="480"></canvas>
+      </div>
+      <div id="emulator-controls">
+        <h3>Controls</h3>
+        <textarea id="code-editor" placeholder="Enter your code here...">
+10 PRINT "HELLO, PROJECT MANHATTAN!"
+20 GOTO 10
+        </textarea>
+        <button onclick="runCode()">Run Code</button>
+        <button onclick="stopEmulation()">Stop</button>
+        <button onclick="resetEmulator()">Reset</button>
+        <div id="output-console"></div>
+      </div>
+    </div>
+    
+    <h3 id="documentation">Quick Documentation</h3>
+    <p>Project Manhattan emulates a MOS 6510 CPU with integrated GPU capabilities. You can write and run BASIC programs, assembly code, or use our custom high-level language for game development.</p>
+    <a href="https://websim.ai/c/project-manhattan/docs" style="color: #00FF00;">Full Documentation</a>
+    
+    <h3 id="examples">Code Examples</h3>
+    <ul>
+      <li><a href="#" onclick="loadExample('hello_world')">Hello World</a></li>
+      <li><a href="#" onclick="loadExample('sprite_demo')">Sprite Demo</a></li>
+      <li><a href="#" onclick="loadExample('fractal')">Mandelbrot Fractal</a></li>
+    </ul>
+    
+    <h3 id="community">Community</h3>
+    <p>Join our community to share your creations, get help, and collaborate with other Project Manhattan enthusiasts.</p>
+    <a href="https://websim.ai/c/project-manhattan/forum" style="color: #00FF00;">Visit Forums</a>
+  </div>
+  
+  <div class="footer">
+    <p>© 2023 Project Manhattan. Emulating the future of retro computing.</p>
+  </div>
+</div>
+
+<script>
+  const canvas = document.getElementById('emu-canvas');
+  const ctx = canvas.getContext('2d');
+  const codeEditor = document.getElementById('code-editor');
+  const outputConsole = document.getElementById('output-console');
+  
+  let emulatorRunning = false;
+  let emulatorInterval;
+
+  function runCode() {
+    if (emulatorRunning) {
+      stopEmulation();
+    }
+    emulatorRunning = true;
+    const code = codeEditor.value;
+    outputConsole.innerHTML = "Running code...<br>";
+    
+    // Simple BASIC interpreter simulation
+    const lines = code.split('\n');
+    let lineIndex = 0;
+    
+    emulatorInterval = setInterval(() => {
+      if (lineIndex >= lines.length) {
+        lineIndex = 0; // Loop back to start
+      }
+      const line = lines[lineIndex].trim();
+      if (line.startsWith('10 PRINT')) {
+        const text = line.substring(8).replace(/"/g, '');
+        outputConsole.innerHTML += text + "<br>";
+        drawTextOnScreen(text);
+      }
+      lineIndex++;
+    }, 500);
+  }
+
+  function stopEmulation() {
+    clearInterval(emulatorInterval);
+    emulatorRunning = false;
+    outputConsole.innerHTML += "Emulation stopped.<br>";
+  }
+
+  function resetEmulator() {
+    stopEmulation();
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    outputConsole.innerHTML = "Emulator reset.<br>";
+  }
+
+  function drawTextOnScreen(text) {
+    ctx.fillStyle = '#00FF00';
+    ctx.font = '20px monospace';
+    ctx.fillText(text, 10, Math.random() * 460 + 20);
+  }
+
+  function loadExample(exampleName) {
+    switch(exampleName) {
+      case 'hello_world':
+        codeEditor.value = '10 PRINT "HELLO, PROJECT MANHATTAN!"\n20 GOTO 10';
+        break;
+      case 'sprite_demo':
+        codeEditor.value = '10 REM SPRITE DEMO\n20 SPRITE 1, 1, 2, 100, 100\n30 MOVE SPRITE 1, 2, 1\n40 GOTO 30';
+        break;
+      case 'fractal':
+        codeEditor.value = '10 REM MANDELBROT FRACTAL\n20 FOR X = 0 TO 319\n30 FOR Y = 0 TO 199\n40 A = X * 0.01 - 2: B = Y * 0.01 - 1\n50 C = A: D = B: N = 0\n60 T = A * A - B * B + C\n70 B = 2 * A * B + D: A = T\n80 N = N + 1\n90 IF A * A + B * B < 4 AND N < 20 THEN GOTO 60\n100 PSET (X, Y), N\n110 NEXT Y\n120 NEXT X';
+        break;
+    }
+  }
+
+  // Initialize empty black screen
+  ctx.fillStyle = '#000000';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+</script>
+</body>
+</html>

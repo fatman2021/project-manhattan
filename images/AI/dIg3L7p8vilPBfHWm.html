@@ -1,0 +1,159 @@
+<html><head><base href="https://websim.ai/c/project-manhattan/emulator/">
+<title>Project Manhattan - Emulator Console</title>
+<style>
+  body {
+    font-family: "VT323", monospace;
+    background-color: #000080;
+    color: #00FF00;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #000040;
+    padding: 20px;
+    border: 1px solid #00FF00;
+  }
+  h1, h2, h3 {
+    color: #FFFF00;
+  }
+  .crt-effect {
+    animation: textShadow 1.6s infinite;
+  }
+  @keyframes textShadow {
+    0% {
+      text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+    }
+    100% {
+      text-shadow: 2.6208764473832513px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+    }
+  }
+  .menu {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  .menu a {
+    color: #00FF00;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #00FF00;
+  }
+  .menu a:hover {
+    background-color: #00FF00;
+    color: #000080;
+  }
+  .terminal {
+    background-color: #000000;
+    border: 1px solid #00FF00;
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+    height: 400px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+  }
+  #command-input {
+    width: 100%;
+    background-color: #000000;
+    border: 1px solid #00FF00;
+    color: #00FF00;
+    font-family: 'Courier New', monospace;
+    padding: 5px;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body class="crt-effect">
+<div class="container">
+  <h1>Project Manhattan - Emulator Console</h1>
+  <div class="menu">
+    <a href="../">Home</a>
+    <a href="../overview">Overview</a>
+    <a href="../cpu">CPU</a>
+    <a href="../gpu">GPU</a>
+    <a href="../memory">Memory</a>
+    <a href="../docs">Documentation</a>
+  </div>
+  
+  <h2>Interactive Emulator Console</h2>
+  <p>Welcome to the Project Manhattan Emulator Console. Here you can interact with the emulator in real-time. Type your commands below and see the results instantly.</p>
+  
+  <div id="terminal" class="terminal">
+Initializing Project Manhattan Emulator v1.0...
+CPU: 4GHz 64-Bit MOS 6510 Compatible
+GPU: 17GHz 512-Bit Custom Architecture
+Memory: 1.797693134862316e+308 bytes addressable
+
+Manhattan OS v1.0
+Ready.
+>_
+  </div>
+  
+  <form id="command-form" method="GET" action="https://websim.ai/c/project-manhattan/emulator/execute">
+    <input type="text" id="command-input" name="cmd" placeholder="Enter your command here..." autofocus>
+  </form>
+
+  <script>
+    const terminal = document.getElementById('terminal');
+    const commandForm = document.getElementById('command-form');
+    const commandInput = document.getElementById('command-input');
+
+    commandForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const command = commandInput.value;
+      terminal.innerHTML += '> ' + command + '\n';
+      commandInput.value = '';
+      
+      // Simulated command processing
+      setTimeout(() => {
+        switch(command.toLowerCase()) {
+          case 'help':
+            terminal.innerHTML += 'Available commands: HELP, INFO, BASIC, ASM, CLEAR\n';
+            break;
+          case 'info':
+            terminal.innerHTML += 'Project Manhattan Emulator v1.0\n' +
+                                  'CPU: 4GHz 64-Bit MOS 6510 Compatible\n' +
+                                  'GPU: 17GHz 512-Bit Custom Architecture\n' +
+                                  'Memory: 1.797693134862316e+308 bytes addressable\n';
+            break;
+          case 'basic':
+            terminal.innerHTML += 'Entering BASIC mode...\n' +
+                                  'READY.\n' +
+                                  '10 PRINT "HELLO, PROJECT MANHATTAN!"\n' +
+                                  '20 FOR I = 1 TO 5\n' +
+                                  '30 PRINT "ITERATION: "; I\n' +
+                                  '40 NEXT I\n' +
+                                  'RUN\n' +
+                                  'HELLO, PROJECT MANHATTAN!\n' +
+                                  'ITERATION: 1\n' +
+                                  'ITERATION: 2\n' +
+                                  'ITERATION: 3\n' +
+                                  'ITERATION: 4\n' +
+                                  'ITERATION: 5\n' +
+                                  'READY.\n';
+            break;
+          case 'asm':
+            terminal.innerHTML += 'Entering Assembly mode...\n' +
+                                  'Project Manhattan Assembler v1.0\n' +
+                                  '  LDA #$01\n' +
+                                  '  STA $D020\n' +
+                                  '  RTS\n' +
+                                  'Assembled. 3 bytes.\n' +
+                                  'Execute? (Y/N)\n';
+            break;
+          case 'clear':
+            terminal.innerHTML = 'Terminal cleared.\n';
+            break;
+          default:
+            terminal.innerHTML += 'Unknown command. Type HELP for available commands.\n';
+        }
+        terminal.innerHTML += '> ';
+        terminal.scrollTop = terminal.scrollHeight;
+      }, 500);
+    });
+  </script>
+</div>
+</body>
+</html>

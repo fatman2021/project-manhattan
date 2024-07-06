@@ -1,0 +1,181 @@
+<html><head><base href="https://websim.ai/c/project-manhattan" />
+<title>Project Manhattan - Next-Gen MOS 6510 CPU/GPU SoC Emulator</title>
+<style>
+  body {
+    font-family: "VT323", monospace;
+    background-color: #000080;
+    color: #00ff00;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #000040;
+    padding: 20px;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 10px #00ff00;
+  }
+  h1, h2 {
+    color: #ffff00;
+    text-align: center;
+    text-shadow: 2px 2px #008000;
+  }
+  .menu {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  .menu-item {
+    background-color: #008000;
+    color: #ffffff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #00ff00;
+  }
+  .menu-item:hover {
+    background-color: #00ff00;
+    color: #000080;
+  }
+  .content {
+    background-color: #000020;
+    padding: 20px;
+    border: 1px solid #008000;
+  }
+  .topic-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .topic {
+    background-color: #004000;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+  }
+  .cli {
+    background-color: #000000;
+    color: #00ff00;
+    padding: 10px;
+    margin-top: 20px;
+    font-family: "Courier New", monospace;
+    border: 1px solid #00ff00;
+  }
+  #cli-output {
+    min-height: 100px;
+    margin-bottom: 10px;
+  }
+  #cli-input {
+    width: 100%;
+    background-color: #000000;
+    color: #00ff00;
+    border: none;
+    outline: none;
+    font-family: inherit;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Project Manhattan</h1>
+  <h2>Next-Generation MOS 6510-based CPU/GPU SoC Emulator</h2>
+  
+  <div class="menu">
+    <a href="#overview" class="menu-item">Overview</a>
+    <a href="#features" class="menu-item">Features</a>
+    <a href="#documentation" class="menu-item">Documentation</a>
+    <a href="#download" class="menu-item">Download</a>
+  </div>
+  
+  <div class="content">
+    <h3>Overview</h3>
+    <p>
+      Project Manhattan is a groundbreaking emulator that combines the power of the classic MOS 6510 CPU with modern GPU capabilities. Written in FreeBASIC, this system-on-chip (SoC) emulator brings new life to retro computing and opens up exciting possibilities for both gaming and business applications.
+    </p>
+    
+    <h3>Key Features</h3>
+    <ul>
+      <li>Accurate MOS 6510 CPU emulation</li>
+      <li>Integrated GPU with GLSL support</li>
+      <li>Compatibility with C64 software</li>
+      <li>Extended instruction set for modern capabilities</li>
+      <li>Ring-0 and x86 low-level optimizations</li>
+      <li>Built-in assembler for direct machine code programming</li>
+      <li>Business application framework</li>
+      <li>Game development toolkit</li>
+    </ul>
+    
+    <h3>Topics</h3>
+    <div class="topic-list">
+      <span class="topic">game emulator</span>
+      <span class="topic">application</span>
+      <span class="topic">business</span>
+      <span class="topic">cpu</span>
+      <span class="topic">system</span>
+      <span class="topic">gpu</span>
+      <span class="topic">assembly</span>
+      <span class="topic">game-development</span>
+      <span class="topic">assembler</span>
+      <span class="topic">glsl</span>
+      <span class="topic">applications</span>
+      <span class="topic">c64</span>
+      <span class="topic">ring</span>
+      <span class="topic">x86</span>
+      <span class="topic">chip</span>
+      <span class="topic">combo</span>
+      <span class="topic">system-programming</span>
+      <span class="topic">gamming</span>
+      <span class="topic">ring-0</span>
+    </div>
+  </div>
+  
+  <div class="cli">
+    <div id="cli-output">Welcome to Project Manhattan CLI. Type 'help' for a list of commands.</div>
+    <div>
+      <span style="color: #00ff00;">PM&gt;</span>
+      <input type="text" id="cli-input" onkeydown="handleInput(event)">
+    </div>
+  </div>
+</div>
+
+<script>
+  const cliOutput = document.getElementById('cli-output');
+  const cliInput = document.getElementById('cli-input');
+  
+  function handleInput(event) {
+    if (event.key === 'Enter') {
+      const command = cliInput.value.trim().toLowerCase();
+      cliOutput.innerHTML += `<br>PM> ${command}`;
+      
+      switch(command) {
+        case 'help':
+          cliOutput.innerHTML += `<br>Available commands: help, info, run, assemble, gpu, cpu`;
+          break;
+        case 'info':
+          cliOutput.innerHTML += `<br>Project Manhattan v1.0 - MOS 6510 CPU/GPU SoC Emulator`;
+          break;
+        case 'run':
+          cliOutput.innerHTML += `<br>Initializing emulator...<br>MOS 6510 CPU: OK<br>GPU Core: OK<br>Memory: 64KB + 4MB GPU<br>System ready.`;
+          break;
+        case 'assemble':
+          cliOutput.innerHTML += `<br>Assembler ready. Please input your assembly code:`;
+          break;
+        case 'gpu':
+          cliOutput.innerHTML += `<br>GPU Status: Active<br>GLSL Version: 4.5<br>Render Pipeline: Initialized`;
+          break;
+        case 'cpu':
+          cliOutput.innerHTML += `<br>CPU Status: Active<br>Clock Speed: 1MHz (emulated)<br>Extended Instructions: Enabled`;
+          break;
+        default:
+          cliOutput.innerHTML += `<br>Unknown command. Type 'help' for a list of commands.`;
+      }
+      
+      cliInput.value = '';
+      cliOutput.scrollTop = cliOutput.scrollHeight;
+    }
+  }
+</script>
+</body></html>
