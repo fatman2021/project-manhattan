@@ -1,193 +1,203 @@
-<html><head><base href="https://websim.ai/c/project-manhattan/">
-<title>Project Manhattan: Advanced SoC Emulator</title>
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Courier New', monospace;
-    background-color: #000;
-    overflow: hidden;
-    color: #00ff00;
-  }
-  #container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  #viewport {
-    flex-grow: 1;
-    position: relative;
-  }
-  #terminal {
-    height: 200px;
-    padding: 10px;
-    box-sizing: border-box;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #00ff00;
-    text-shadow: 0 0 5px #00ff00;
-    overflow-y: auto;
-    position: relative;
-    border-top: 2px solid #00ff00;
-  }
-  #output {
-    height: calc(100% - 30px);
-    overflow-y: auto;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-  #input-line {
-    display: flex;
-    align-items: center;
-  }
-  #prompt {
-    color: #00ff00;
-    margin-right: 10px;
-  }
-  #command-input {
-    background: transparent;
-    border: none;
-    color: #00ff00;
-    font-family: inherit;
-    font-size: inherit;
-    flex-grow: 1;
-    outline: none;
-  }
-  #language-selector {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 1000;
-    background-color: #000;
-    color: #00ff00;
-    border: 1px solid #00ff00;
-  }
-  .scanline {
-    background: linear-gradient(to bottom,
-      rgba(0,255,0,0),
-      rgba(0,255,0,0) 50%,
-      rgba(0,255,0,.2) 50%,
-      rgba(0,255,0,.2));
-    background-size: 100% 4px;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    opacity: 0.15;
-  }
-  .glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    box-shadow: 
-      inset 0 0 50px #0f0,
-      inset 20px 0 80px #0f0,
-      inset -20px 0 80px #0f0,
-      inset 20px 0 300px #0f0,
-      inset -20px 0 300px #0f0,
-      0 0 50px #0f0,
-      -10px 0 80px #0f0,
-      10px 0 80px #0f0;
-    opacity: 0.05;
-    pointer-events: none;
-  }
-</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-</head>
-<body>
-<div id="container">
-  <div id="viewport"></div>
-  <div id="terminal">
-    <div id="output"></div>
-    <div id="input-line">
-      <span id="prompt">PM&gt;</span>
-      <input type="text" id="command-input" autofocus>
+<html>
+  <head>
+    <base href="https://websim.ai/c/project-manhattan/" />
+    <title>Project Manhattan: Advanced SoC Emulator</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: "Courier New", monospace;
+        background-color: #000;
+        overflow: hidden;
+        color: #00ff00;
+      }
+      #container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      #viewport {
+        flex-grow: 1;
+        position: relative;
+      }
+      #terminal {
+        height: 200px;
+        padding: 10px;
+        box-sizing: border-box;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #00ff00;
+        text-shadow: 0 0 5px #00ff00;
+        overflow-y: auto;
+        position: relative;
+        border-top: 2px solid #00ff00;
+      }
+      #output {
+        height: calc(100% - 30px);
+        overflow-y: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      #input-line {
+        display: flex;
+        align-items: center;
+      }
+      #prompt {
+        color: #00ff00;
+        margin-right: 10px;
+      }
+      #command-input {
+        background: transparent;
+        border: none;
+        color: #00ff00;
+        font-family: inherit;
+        font-size: inherit;
+        flex-grow: 1;
+        outline: none;
+      }
+      #language-selector {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+        background-color: #000;
+        color: #00ff00;
+        border: 1px solid #00ff00;
+      }
+      .scanline {
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 255, 0, 0),
+          rgba(0, 255, 0, 0) 50%,
+          rgba(0, 255, 0, 0.2) 50%,
+          rgba(0, 255, 0, 0.2)
+        );
+        background-size: 100% 4px;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        opacity: 0.15;
+      }
+      .glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow:
+          inset 0 0 50px #0f0,
+          inset 20px 0 80px #0f0,
+          inset -20px 0 80px #0f0,
+          inset 20px 0 300px #0f0,
+          inset -20px 0 300px #0f0,
+          0 0 50px #0f0,
+          -10px 0 80px #0f0,
+          10px 0 80px #0f0;
+        opacity: 0.05;
+        pointer-events: none;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="viewport"></div>
+      <div id="terminal">
+        <div id="output"></div>
+        <div id="input-line">
+          <span id="prompt">PM&gt;</span>
+          <input type="text" id="command-input" autofocus />
+        </div>
+        <div class="scanline"></div>
+        <div class="glow"></div>
+      </div>
     </div>
-    <div class="scanline"></div>
-    <div class="glow"></div>
-  </div>
-</div>
-<div id="language-selector">
-  <select id="language-select">
-    <option value="system">System</option>
-    <option value="freebasic">FreeBASIC</option>
-    <option value="asm6510">ASM 6510</option>
-    <option value="copper">Copper List</option>
-    <option value="glsl">GLSL</option>
-  </select>
-</div>
+    <div id="language-selector">
+      <select id="language-select">
+        <option value="system">System</option>
+        <option value="freebasic">FreeBASIC</option>
+        <option value="asm6510">ASM 6510</option>
+        <option value="copper">Copper List</option>
+        <option value="glsl">GLSL</option>
+      </select>
+    </div>
 
-<script>
-const output = document.getElementById('output');
-const commandInput = document.getElementById('command-input');
-const languageSelect = document.getElementById('language-select');
-const viewport = document.getElementById('viewport');
+    <script>
+      const output = document.getElementById("output");
+      const commandInput = document.getElementById("command-input");
+      const languageSelect = document.getElementById("language-select");
+      const viewport = document.getElementById("viewport");
 
-let currentLanguage = 'system';
-let scene, camera, renderer;
-let cube, torus, sphere;
+      let currentLanguage = "system";
+      let scene, camera, renderer;
+      let cube, torus, sphere;
 
-function initScene() {
-  scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(75, viewport.clientWidth / viewport.clientHeight, 0.1, 1000);
-  renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(viewport.clientWidth, viewport.clientHeight);
-  viewport.appendChild(renderer.domElement);
+      function initScene() {
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(
+          75,
+          viewport.clientWidth / viewport.clientHeight,
+          0.1,
+          1000,
+        );
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(viewport.clientWidth, viewport.clientHeight);
+        viewport.appendChild(renderer.domElement);
 
-  const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
-  cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+        cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
 
-  const torusGeometry = new THREE.TorusGeometry(0.5, 0.2, 16, 100);
-  torus = new THREE.Mesh(torusGeometry, material);
-  torus.position.x = 2;
-  scene.add(torus);
+        const torusGeometry = new THREE.TorusGeometry(0.5, 0.2, 16, 100);
+        torus = new THREE.Mesh(torusGeometry, material);
+        torus.position.x = 2;
+        scene.add(torus);
 
-  const sphereGeometry = new THREE.SphereGeometry(0.5, 32, 32);
-  sphere = new THREE.Mesh(sphereGeometry, material);
-  sphere.position.x = -2;
-  scene.add(sphere);
+        const sphereGeometry = new THREE.SphereGeometry(0.5, 32, 32);
+        sphere = new THREE.Mesh(sphereGeometry, material);
+        sphere.position.x = -2;
+        scene.add(sphere);
 
-  const light = new THREE.PointLight(0xffffff, 1, 100);
-  light.position.set(0, 0, 10);
-  scene.add(light);
+        const light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(0, 0, 10);
+        scene.add(light);
 
-  camera.position.z = 5;
-}
+        camera.position.z = 5;
+      }
 
-function animate() {
-  requestAnimationFrame(animate);
+      function animate() {
+        requestAnimationFrame(animate);
 
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
 
-  torus.rotation.x += 0.02;
-  torus.rotation.y += 0.02;
+        torus.rotation.x += 0.02;
+        torus.rotation.y += 0.02;
 
-  sphere.rotation.x += 0.03;
-  sphere.rotation.y += 0.03;
+        sphere.rotation.x += 0.03;
+        sphere.rotation.y += 0.03;
 
-  renderer.render(scene, camera);
-}
+        renderer.render(scene, camera);
+      }
 
-function onWindowResize() {
-  camera.aspect = viewport.clientWidth / viewport.clientHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(viewport.clientWidth, viewport.clientHeight);
-}
+      function onWindowResize() {
+        camera.aspect = viewport.clientWidth / viewport.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(viewport.clientWidth, viewport.clientHeight);
+      }
 
-window.addEventListener('resize', onWindowResize);
+      window.addEventListener("resize", onWindowResize);
 
-initScene();
-animate();
+      initScene();
+      animate();
 
-const systemCommands = {
-  help: () => `
+      const systemCommands = {
+        help: () => `
 Available commands:
   help        - Display this help message
   info        - Show system information
@@ -198,7 +208,7 @@ Available commands:
   lang        - Show current language or switch language
   scene       - Manipulate the 3D scene (add, remove, color)
 `,
-  info: () => `
+        info: () => `
 Project Manhattan SoC Emulator v3.0.0
 CPU: 4GHz 64-Bit MOS 6510/VICE compatible
 GPU: 17GHz 512-Bit
@@ -208,7 +218,7 @@ Supported languages: FreeBASIC, ASM 6510, Copper List, GLSL
 Compatibility: VIC-II, SVGA, ECS (copper lists), AGA (HAM8)
 File size: 16MB (self-contained)
 `,
-  mem: () => `
+        mem: () => `
 Memory Usage:
 Total System Memory: 1.797693134862316e+308 bytes
 Used: 1024 bytes (simulated)
@@ -219,7 +229,7 @@ Positive: 4.940656458412465e-324 to 1.797693134862316e+308
 Negative: -4.940656458412465e-324 to -1.797693134862316e+308
 Precision: 53 bits (approx. 15 decimal digits)
 `,
-  gpu: () => `
+        gpu: () => `
 GPU Status:
 Clock: 17GHz
 Video Memory: 1.797693134862316e+308x8 bytes
@@ -232,119 +242,123 @@ Positive: 4.940656458412465e-324x8 to 1.797693134862316e+308x8
 Negative: -4.940656458412465e-324x8 to -1.797693134862316e+308x8
 Precision: 53 bits (approx. 15 decimal digits)
 `,
-  clear: () => {
-    output.innerHTML = '';
-    return '';
-  },
-  exit: () => `
+        clear: () => {
+          output.innerHTML = "";
+          return "";
+        },
+        exit: () => `
 Shutting down Project Manhattan emulator...
 Thank you for using our system!
 `,
-  lang: (args) => {
-    if (args.length > 0) {
-      const newLang = args[0].toLowerCase();
-      if (['system', 'freebasic', 'asm6510', 'copper', 'glsl'].includes(newLang)) {
-        currentLanguage = newLang;
-        languageSelect.value = newLang;
-        return `Switched to ${newLang.toUpperCase()} mode.`;
-      } else {
-        return `Invalid language. Available options: system, freebasic, asm6510, copper, glsl`;
-      }
-    } else {
-      return `Current language: ${currentLanguage.toUpperCase()}`;
-    }
-  },
-  scene: (args) => {
-    if (args.length < 2) {
-      return 'Usage: scene [add|remove|color] [value]';
-    }
-    const action = args[0].toLowerCase();
-    const value = args[1];
-    
-    switch (action) {
-      case 'add':
-        const geometry = new THREE.IcosahedronGeometry(0.5, 0);
-        const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
-        const newObject = new THREE.Mesh(geometry, material);
-        newObject.position.set(
-          Math.random() * 4 - 2,
-          Math.random() * 4 - 2,
-          Math.random() * 4 - 2
-        );
-        scene.add(newObject);
-        return 'New object added to the scene';
-      case 'remove':
-        const lastObject = scene.children[scene.children.length - 1];
-        if (lastObject instanceof THREE.Mesh) {
-          scene.remove(lastObject);
-          return 'Last added object removed from the scene';
-        }
-        return 'No objects to remove';
-      case 'color':
-        scene.traverse((child) => {
-          if (child instanceof THREE.Mesh) {
-            child.material.color.setHex(parseInt(value, 16));
+        lang: (args) => {
+          if (args.length > 0) {
+            const newLang = args[0].toLowerCase();
+            if (
+              ["system", "freebasic", "asm6510", "copper", "glsl"].includes(
+                newLang,
+              )
+            ) {
+              currentLanguage = newLang;
+              languageSelect.value = newLang;
+              return `Switched to ${newLang.toUpperCase()} mode.`;
+            } else {
+              return `Invalid language. Available options: system, freebasic, asm6510, copper, glsl`;
+            }
+          } else {
+            return `Current language: ${currentLanguage.toUpperCase()}`;
           }
-        });
-        return `All objects color changed to ${value}`;
-      default:
-        return 'Invalid scene action. Use add, remove, or color.';
-    }
-  }
-};
+        },
+        scene: (args) => {
+          if (args.length < 2) {
+            return "Usage: scene [add|remove|color] [value]";
+          }
+          const action = args[0].toLowerCase();
+          const value = args[1];
 
-const languageInterpreters = {
-  freebasic: (code) => {
-    return 'FreeBASIC code execution simulated in Project Manhattan environment.';
-  },
-  asm6510: (code) => {
-    return 'ASM 6510 code execution simulated in Project Manhattan environment.';
-  },
-  copper: (code) => {
-    return 'Copper List execution simulated in Project Manhattan environment (32-bit ARGB color mode).';
-  },
-  glsl: (code) => {
-    return 'GLSL shader compilation and execution simulated in Project Manhattan environment.';
-  }
-};
+          switch (action) {
+            case "add":
+              const geometry = new THREE.IcosahedronGeometry(0.5, 0);
+              const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+              const newObject = new THREE.Mesh(geometry, material);
+              newObject.position.set(
+                Math.random() * 4 - 2,
+                Math.random() * 4 - 2,
+                Math.random() * 4 - 2,
+              );
+              scene.add(newObject);
+              return "New object added to the scene";
+            case "remove":
+              const lastObject = scene.children[scene.children.length - 1];
+              if (lastObject instanceof THREE.Mesh) {
+                scene.remove(lastObject);
+                return "Last added object removed from the scene";
+              }
+              return "No objects to remove";
+            case "color":
+              scene.traverse((child) => {
+                if (child instanceof THREE.Mesh) {
+                  child.material.color.setHex(parseInt(value, 16));
+                }
+              });
+              return `All objects color changed to ${value}`;
+            default:
+              return "Invalid scene action. Use add, remove, or color.";
+          }
+        },
+      };
 
-function processCommand(cmd) {
-  const args = cmd.trim().split(' ');
-  const command = args.shift().toLowerCase();
-  let response;
+      const languageInterpreters = {
+        freebasic: (code) => {
+          return "FreeBASIC code execution simulated in Project Manhattan environment.";
+        },
+        asm6510: (code) => {
+          return "ASM 6510 code execution simulated in Project Manhattan environment.";
+        },
+        copper: (code) => {
+          return "Copper List execution simulated in Project Manhattan environment (32-bit ARGB color mode).";
+        },
+        glsl: (code) => {
+          return "GLSL shader compilation and execution simulated in Project Manhattan environment.";
+        },
+      };
 
-  if (currentLanguage === 'system') {
-    if (command in systemCommands) {
-      response = systemCommands[command](args);
-    } else {
-      response = `Unknown command: ${command}\nType 'help' for available commands.`;
-    }
-  } else {
-    response = languageInterpreters[currentLanguage](cmd);
-  }
+      function processCommand(cmd) {
+        const args = cmd.trim().split(" ");
+        const command = args.shift().toLowerCase();
+        let response;
 
-  output.innerHTML += `<div>> ${cmd}</div>`;
-  if (response) {
-    output.innerHTML += `<div>${response}</div>`;
-  }
-  output.scrollTop = output.scrollHeight;
-}
+        if (currentLanguage === "system") {
+          if (command in systemCommands) {
+            response = systemCommands[command](args);
+          } else {
+            response = `Unknown command: ${command}\nType 'help' for available commands.`;
+          }
+        } else {
+          response = languageInterpreters[currentLanguage](cmd);
+        }
 
-commandInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    const cmd = commandInput.value;
-    processCommand(cmd);
-    commandInput.value = '';
-  }
-});
+        output.innerHTML += `<div>> ${cmd}</div>`;
+        if (response) {
+          output.innerHTML += `<div>${response}</div>`;
+        }
+        output.scrollTop = output.scrollHeight;
+      }
 
-languageSelect.addEventListener('change', (e) => {
-  currentLanguage = e.target.value;
-  processCommand(`lang ${currentLanguage}`);
-});
+      commandInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          const cmd = commandInput.value;
+          processCommand(cmd);
+          commandInput.value = "";
+        }
+      });
 
-// Initial welcome message
-output.innerHTML = `
+      languageSelect.addEventListener("change", (e) => {
+        currentLanguage = e.target.value;
+        processCommand(`lang ${currentLanguage}`);
+      });
+
+      // Initial welcome message
+      output.innerHTML = `
    _____           _           _   __  __           _           _   _             
   |  __ \\         (_)         | | |  \\/  |         | |         | | | |            
   | |__) | __ ___  _  ___  ___| |_| \\  / | __ _ _ __| |__   __ _| |_| |_ __ _ _ __  
@@ -359,6 +373,6 @@ output.innerHTML = `
 
   Type 'help' for available commands or use the language selector to switch modes.
 `;
-</script>
-</body>
+    </script>
+  </body>
 </html>

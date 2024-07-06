@@ -1,331 +1,383 @@
-<html><head><base href="https://websim.ai/c/project-manhattan/">
-<title>Project Manhattan: Advanced MOS 6510-based SoC Emulator with 3D Benchmark</title>
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    font-family: 'Roboto Mono', monospace;
-    background-color: #001420;
-    color: #00ff00;
-    overflow: hidden;
-  }
-  #container {
-    display: flex;
-    height: 100%;
-  }
-  #sidebar {
-    width: 250px;
-    background-color: #002233;
-    padding: 20px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-  }
-  #main-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-  }
-  #output {
-    flex-grow: 1;
-    background-color: #001a2b;
-    border: 1px solid #00ff00;
-    padding: 10px;
-    overflow: auto;
-    font-family: 'Courier New', monospace;
-    white-space: pre-wrap;
-  }
-  #demo-canvas {
-    display: none;
-    border: 1px solid #00ff00;
-    margin-bottom: 10px;
-  }
-  #input {
-    background-color: #000;
-    border: 1px solid #00ff00;
-    color: #00ff00;
-    padding: 5px;
-    font-family: 'Roboto Mono', monospace;
-  }
-  .sidebar-title {
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #00ffff;
-  }
-  .sidebar-item {
-    margin-bottom: 5px;
-    cursor: pointer;
-  }
-  .sidebar-item:hover {
-    text-decoration: underline;
-  }
-  #status-bar {
-    background-color: #002233;
-    padding: 5px;
-    font-size: 0.8em;
-    display: flex;
-    justify-content: space-between;
-  }
-  .highlight {
-    color: #ff00ff;
-    font-weight: bold;
-  }
-  button {
-    background-color: #004d00;
-    color: #00ff00;
-    border: 1px solid #00ff00;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-right: 5px;
-  }
-  button:hover {
-    background-color: #006600;
-  }
-  #benchmark-controls {
-    display: none;
-    margin-top: 10px;
-  }
-  #benchmark-results {
-    margin-top: auto;
-    font-size: 0.9em;
-    border-top: 1px solid #00ff00;
-    padding-top: 10px;
-  }
-  .result-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-  }
-  .result-bar {
-    background-color: #00ff00;
-    height: 5px;
-    margin-top: 5px;
-  }
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-</head>
-<body>
-<div id="container">
-  <div id="sidebar">
-    <div class="sidebar-title">Project Manhattan</div>
-    <div class="sidebar-item" onclick="loadModule('overview')">Overview</div>
-    <div class="sidebar-item" onclick="loadModule('cpu')">CPU Architecture</div>
-    <div class="sidebar-item" onclick="loadModule('gpu')">GPU Architecture</div>
-    <div class="sidebar-item" onclick="loadModule('assembly')">Assembly IDE</div>
-    <div class="sidebar-item" onclick="loadModule('glsl')">GLSL Shader Editor</div>
-    <div class="sidebar-item" onclick="loadModule('c64')">C64 Compatibility</div>
-    <div class="sidebar-item" onclick="loadModule('business')">Business Applications</div>
-    <div class="sidebar-item" onclick="loadModule('game')">Game Development</div>
-    <div class="sidebar-item" onclick="loadModule('system')">System Programming</div>
-    <div class="sidebar-item" onclick="loadModule('ring0')">Ring-0 Operations</div>
-    <div class="sidebar-item" onclick="loadModule('x86')">x86 Compatibility</div>
-    <div class="sidebar-item" onclick="loadModule('benchmark')">3D Benchmark</div>
-    <div id="benchmark-results"></div>
-  </div>
-  <div id="main-content">
-    <div id="output"></div>
-    <canvas id="demo-canvas" width="800" height="600"></canvas>
-    <div id="benchmark-controls">
-      <button onclick="startBenchmark()">Start Benchmark</button>
-      <button onclick="stopBenchmark()">Stop Benchmark</button>
+<html>
+  <head>
+    <base href="https://websim.ai/c/project-manhattan/" />
+    <title>
+      Project Manhattan: Advanced MOS 6510-based SoC Emulator with 3D Benchmark
+    </title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        font-family: "Roboto Mono", monospace;
+        background-color: #001420;
+        color: #00ff00;
+        overflow: hidden;
+      }
+      #container {
+        display: flex;
+        height: 100%;
+      }
+      #sidebar {
+        width: 250px;
+        background-color: #002233;
+        padding: 20px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      #main-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+      }
+      #output {
+        flex-grow: 1;
+        background-color: #001a2b;
+        border: 1px solid #00ff00;
+        padding: 10px;
+        overflow: auto;
+        font-family: "Courier New", monospace;
+        white-space: pre-wrap;
+      }
+      #demo-canvas {
+        display: none;
+        border: 1px solid #00ff00;
+        margin-bottom: 10px;
+      }
+      #input {
+        background-color: #000;
+        border: 1px solid #00ff00;
+        color: #00ff00;
+        padding: 5px;
+        font-family: "Roboto Mono", monospace;
+      }
+      .sidebar-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #00ffff;
+      }
+      .sidebar-item {
+        margin-bottom: 5px;
+        cursor: pointer;
+      }
+      .sidebar-item:hover {
+        text-decoration: underline;
+      }
+      #status-bar {
+        background-color: #002233;
+        padding: 5px;
+        font-size: 0.8em;
+        display: flex;
+        justify-content: space-between;
+      }
+      .highlight {
+        color: #ff00ff;
+        font-weight: bold;
+      }
+      button {
+        background-color: #004d00;
+        color: #00ff00;
+        border: 1px solid #00ff00;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+      button:hover {
+        background-color: #006600;
+      }
+      #benchmark-controls {
+        display: none;
+        margin-top: 10px;
+      }
+      #benchmark-results {
+        margin-top: auto;
+        font-size: 0.9em;
+        border-top: 1px solid #00ff00;
+        padding-top: 10px;
+      }
+      .result-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+      }
+      .result-bar {
+        background-color: #00ff00;
+        height: 5px;
+        margin-top: 5px;
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <div class="sidebar-title">Project Manhattan</div>
+        <div class="sidebar-item" onclick="loadModule('overview')">
+          Overview
+        </div>
+        <div class="sidebar-item" onclick="loadModule('cpu')">
+          CPU Architecture
+        </div>
+        <div class="sidebar-item" onclick="loadModule('gpu')">
+          GPU Architecture
+        </div>
+        <div class="sidebar-item" onclick="loadModule('assembly')">
+          Assembly IDE
+        </div>
+        <div class="sidebar-item" onclick="loadModule('glsl')">
+          GLSL Shader Editor
+        </div>
+        <div class="sidebar-item" onclick="loadModule('c64')">
+          C64 Compatibility
+        </div>
+        <div class="sidebar-item" onclick="loadModule('business')">
+          Business Applications
+        </div>
+        <div class="sidebar-item" onclick="loadModule('game')">
+          Game Development
+        </div>
+        <div class="sidebar-item" onclick="loadModule('system')">
+          System Programming
+        </div>
+        <div class="sidebar-item" onclick="loadModule('ring0')">
+          Ring-0 Operations
+        </div>
+        <div class="sidebar-item" onclick="loadModule('x86')">
+          x86 Compatibility
+        </div>
+        <div class="sidebar-item" onclick="loadModule('benchmark')">
+          3D Benchmark
+        </div>
+        <div id="benchmark-results"></div>
+      </div>
+      <div id="main-content">
+        <div id="output"></div>
+        <canvas id="demo-canvas" width="800" height="600"></canvas>
+        <div id="benchmark-controls">
+          <button onclick="startBenchmark()">Start Benchmark</button>
+          <button onclick="stopBenchmark()">Stop Benchmark</button>
+        </div>
+        <input type="text" id="input" placeholder="Enter command..." />
+        <div id="status-bar">
+          <span id="mode">Mode: Overview</span>
+          <span id="emulator-status">Emulator: Idle</span>
+        </div>
+      </div>
     </div>
-    <input type="text" id="input" placeholder="Enter command...">
-    <div id="status-bar">
-      <span id="mode">Mode: Overview</span>
-      <span id="emulator-status">Emulator: Idle</span>
-    </div>
-  </div>
-</div>
 
-<script>
-const output = document.getElementById('output');
-const input = document.getElementById('input');
-const modeDisplay = document.getElementById('mode');
-const emulatorStatus = document.getElementById('emulator-status');
-const demoCanvas = document.getElementById('demo-canvas');
-const benchmarkControls = document.getElementById('benchmark-controls');
-const benchmarkResults = document.getElementById('benchmark-results');
+    <script>
+      const output = document.getElementById("output");
+      const input = document.getElementById("input");
+      const modeDisplay = document.getElementById("mode");
+      const emulatorStatus = document.getElementById("emulator-status");
+      const demoCanvas = document.getElementById("demo-canvas");
+      const benchmarkControls = document.getElementById("benchmark-controls");
+      const benchmarkResults = document.getElementById("benchmark-results");
 
-let currentMode = 'overview';
-let benchmarkScene, benchmarkCamera, benchmarkRenderer, benchmarkCube;
-let benchmarkAnimationId = null;
-let benchmarkStartTime, benchmarkStats = {};
+      let currentMode = "overview";
+      let benchmarkScene, benchmarkCamera, benchmarkRenderer, benchmarkCube;
+      let benchmarkAnimationId = null;
+      let benchmarkStartTime,
+        benchmarkStats = {};
 
-const operatingModes = ['cpu', 'gpu', 'c64', 'business', 'game', 'system', 'ring0', 'x86'];
-let currentBenchmarkMode = 0;
+      const operatingModes = [
+        "cpu",
+        "gpu",
+        "c64",
+        "business",
+        "game",
+        "system",
+        "ring0",
+        "x86",
+      ];
+      let currentBenchmarkMode = 0;
 
-function log(message) {
-  output.textContent += message + '\n';
-  output.scrollTop = output.scrollHeight;
-}
+      function log(message) {
+        output.textContent += message + "\n";
+        output.scrollTop = output.scrollHeight;
+      }
 
-function clearOutput() {
-  output.textContent = '';
-}
+      function clearOutput() {
+        output.textContent = "";
+      }
 
-function loadModule(module) {
-  clearOutput();
-  currentMode = module;
-  modeDisplay.textContent = `Mode: ${module.charAt(0).toUpperCase() + module.slice(1)}`;
-  
-  demoCanvas.style.display = 'none';
-  benchmarkControls.style.display = 'none';
-  
-  switch(module) {
-    case 'overview':
-      log("Project Manhattan: Next-generation MOS 6510-based CPU/GPU SoC Emulator");
-      log("- Written in FreeBASIC");
-      log("- Designed for gaming and business applications");
-      log("- Features advanced CPU/GPU combo system on a chip");
-      log("- Supports assembly, GLSL, and system-level programming");
-      log("- C64 and x86 compatibility layers");
-      log("- Ring-0 operations for low-level system control");
-      break;
-    case 'benchmark':
-      log("3D Performance Benchmark");
-      log("This benchmark will test each operating mode using modern 3D graphics.");
-      log("Click 'Start Benchmark' to begin the test suite.");
-      demoCanvas.style.display = 'block';
-      benchmarkControls.style.display = 'block';
-      initBenchmark();
-      break;
-    // ... other cases remain the same
-  }
-}
+      function loadModule(module) {
+        clearOutput();
+        currentMode = module;
+        modeDisplay.textContent = `Mode: ${module.charAt(0).toUpperCase() + module.slice(1)}`;
 
-function initBenchmark() {
-  benchmarkScene = new THREE.Scene();
-  benchmarkCamera = new THREE.PerspectiveCamera(75, demoCanvas.width / demoCanvas.height, 0.1, 1000);
-  benchmarkRenderer = new THREE.WebGLRenderer({ canvas: demoCanvas });
-  benchmarkRenderer.setSize(demoCanvas.width, demoCanvas.height);
+        demoCanvas.style.display = "none";
+        benchmarkControls.style.display = "none";
 
-  const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
-  benchmarkCube = new THREE.Mesh(geometry, material);
-  benchmarkScene.add(benchmarkCube);
+        switch (module) {
+          case "overview":
+            log(
+              "Project Manhattan: Next-generation MOS 6510-based CPU/GPU SoC Emulator",
+            );
+            log("- Written in FreeBASIC");
+            log("- Designed for gaming and business applications");
+            log("- Features advanced CPU/GPU combo system on a chip");
+            log("- Supports assembly, GLSL, and system-level programming");
+            log("- C64 and x86 compatibility layers");
+            log("- Ring-0 operations for low-level system control");
+            break;
+          case "benchmark":
+            log("3D Performance Benchmark");
+            log(
+              "This benchmark will test each operating mode using modern 3D graphics.",
+            );
+            log("Click 'Start Benchmark' to begin the test suite.");
+            demoCanvas.style.display = "block";
+            benchmarkControls.style.display = "block";
+            initBenchmark();
+            break;
+          // ... other cases remain the same
+        }
+      }
 
-  const light = new THREE.PointLight(0xffffff, 1, 100);
-  light.position.set(0, 0, 10);
-  benchmarkScene.add(light);
+      function initBenchmark() {
+        benchmarkScene = new THREE.Scene();
+        benchmarkCamera = new THREE.PerspectiveCamera(
+          75,
+          demoCanvas.width / demoCanvas.height,
+          0.1,
+          1000,
+        );
+        benchmarkRenderer = new THREE.WebGLRenderer({ canvas: demoCanvas });
+        benchmarkRenderer.setSize(demoCanvas.width, demoCanvas.height);
 
-  benchmarkCamera.position.z = 5;
-}
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+        benchmarkCube = new THREE.Mesh(geometry, material);
+        benchmarkScene.add(benchmarkCube);
 
-function startBenchmark() {
-  if (benchmarkAnimationId) return;
+        const light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(0, 0, 10);
+        benchmarkScene.add(light);
 
-  currentBenchmarkMode = 0;
-  benchmarkStartTime = performance.now();
-  benchmarkStats = {};
-  benchmarkResults.innerHTML = "<h3>Benchmark Results:</h3>";
+        benchmarkCamera.position.z = 5;
+      }
 
-  runNextBenchmark();
-}
+      function startBenchmark() {
+        if (benchmarkAnimationId) return;
 
-function runNextBenchmark() {
-  if (currentBenchmarkMode >= operatingModes.length) {
-    stopBenchmark();
-    return;
-  }
+        currentBenchmarkMode = 0;
+        benchmarkStartTime = performance.now();
+        benchmarkStats = {};
+        benchmarkResults.innerHTML = "<h3>Benchmark Results:</h3>";
 
-  const mode = operatingModes[currentBenchmarkMode];
-  log(`Starting benchmark for ${mode.toUpperCase()} mode...`);
-  emulatorStatus.textContent = `Emulator: Benchmarking ${mode.toUpperCase()}`;
+        runNextBenchmark();
+      }
 
-  benchmarkStats[mode] = {
-    frames: 0,
-    totalTime: 0
-  };
+      function runNextBenchmark() {
+        if (currentBenchmarkMode >= operatingModes.length) {
+          stopBenchmark();
+          return;
+        }
 
-  function animate() {
-    benchmarkStats[mode].frames++;
-    const now = performance.now();
-    const frameTime = now - benchmarkStartTime;
-    benchmarkStats[mode].totalTime += frameTime;
+        const mode = operatingModes[currentBenchmarkMode];
+        log(`Starting benchmark for ${mode.toUpperCase()} mode...`);
+        emulatorStatus.textContent = `Emulator: Benchmarking ${mode.toUpperCase()}`;
 
-    benchmarkCube.rotation.x += 0.01;
-    benchmarkCube.rotation.y += 0.01;
+        benchmarkStats[mode] = {
+          frames: 0,
+          totalTime: 0,
+        };
 
-    switch(mode) {
-      case 'cpu':
-        benchmarkCube.scale.setScalar(Math.sin(now * 0.001) * 0.5 + 1);
-        break;
-      case 'gpu':
-        benchmarkCube.material.color.setHSL(now * 0.001 % 1, 1, 0.5);
-        break;
-      case 'game':
-        benchmarkCube.position.x = Math.sin(now * 0.002) * 2;
-        benchmarkCube.position.y = Math.cos(now * 0.002) * 2;
-        break;
-      // ... add specific animations for other modes
-    }
+        function animate() {
+          benchmarkStats[mode].frames++;
+          const now = performance.now();
+          const frameTime = now - benchmarkStartTime;
+          benchmarkStats[mode].totalTime += frameTime;
 
-    benchmarkRenderer.render(benchmarkScene, benchmarkCamera);
-    benchmarkStartTime = now;
+          benchmarkCube.rotation.x += 0.01;
+          benchmarkCube.rotation.y += 0.01;
 
-    if (benchmarkStats[mode].totalTime < 5000) {  // Run each mode for 5 seconds
-      benchmarkAnimationId = requestAnimationFrame(animate);
-    } else {
-      currentBenchmarkMode++;
-      updateBenchmarkResults();
-      runNextBenchmark();
-    }
-  }
+          switch (mode) {
+            case "cpu":
+              benchmarkCube.scale.setScalar(Math.sin(now * 0.001) * 0.5 + 1);
+              break;
+            case "gpu":
+              benchmarkCube.material.color.setHSL((now * 0.001) % 1, 1, 0.5);
+              break;
+            case "game":
+              benchmarkCube.position.x = Math.sin(now * 0.002) * 2;
+              benchmarkCube.position.y = Math.cos(now * 0.002) * 2;
+              break;
+            // ... add specific animations for other modes
+          }
 
-  animate();
-}
+          benchmarkRenderer.render(benchmarkScene, benchmarkCamera);
+          benchmarkStartTime = now;
 
-function stopBenchmark() {
-  if (benchmarkAnimationId) {
-    cancelAnimationFrame(benchmarkAnimationId);
-    benchmarkAnimationId = null;
-    emulatorStatus.textContent = "Emulator: Idle";
-    updateBenchmarkResults(true);
-  }
-}
+          if (benchmarkStats[mode].totalTime < 5000) {
+            // Run each mode for 5 seconds
+            benchmarkAnimationId = requestAnimationFrame(animate);
+          } else {
+            currentBenchmarkMode++;
+            updateBenchmarkResults();
+            runNextBenchmark();
+          }
+        }
 
-function updateBenchmarkResults(final = false) {
-  let maxFPS = 0;
-  for (const stats of Object.values(benchmarkStats)) {
-    const avgFPS = stats.frames / (stats.totalTime / 1000);
-    if (avgFPS > maxFPS) maxFPS = avgFPS;
-  }
+        animate();
+      }
 
-  let resultsHTML = "<h3>Benchmark Results:</h3>";
+      function stopBenchmark() {
+        if (benchmarkAnimationId) {
+          cancelAnimationFrame(benchmarkAnimationId);
+          benchmarkAnimationId = null;
+          emulatorStatus.textContent = "Emulator: Idle";
+          updateBenchmarkResults(true);
+        }
+      }
 
-  for (const [mode, stats] of Object.entries(benchmarkStats)) {
-    const avgFPS = stats.frames / (stats.totalTime / 1000);
-    const percentage = (avgFPS / maxFPS) * 100;
-    resultsHTML += `
+      function updateBenchmarkResults(final = false) {
+        let maxFPS = 0;
+        for (const stats of Object.values(benchmarkStats)) {
+          const avgFPS = stats.frames / (stats.totalTime / 1000);
+          if (avgFPS > maxFPS) maxFPS = avgFPS;
+        }
+
+        let resultsHTML = "<h3>Benchmark Results:</h3>";
+
+        for (const [mode, stats] of Object.entries(benchmarkStats)) {
+          const avgFPS = stats.frames / (stats.totalTime / 1000);
+          const percentage = (avgFPS / maxFPS) * 100;
+          resultsHTML += `
       <div class="result-item">
         <span>${mode.toUpperCase()}:</span>
         <span>${avgFPS.toFixed(2)} FPS</span>
       </div>
       <div class="result-bar" style="width: ${percentage}%;"></div>
     `;
-  }
+        }
 
-  if (final) {
-    resultsHTML += "<br><div class='highlight'>Benchmark Complete!</div>";
-    // Here you could add an overall score or comparison
-  }
+        if (final) {
+          resultsHTML += "<br><div class='highlight'>Benchmark Complete!</div>";
+          // Here you could add an overall score or comparison
+        }
 
-  benchmarkResults.innerHTML = resultsHTML;
-}
+        benchmarkResults.innerHTML = resultsHTML;
+      }
 
-input.addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
-    log(`> ${this.value}`);
-    // Process user input here
-    this.value = '';
-  }
-});
+      input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          log(`> ${this.value}`);
+          // Process user input here
+          this.value = "";
+        }
+      });
 
-// Initialize with overview
-loadModule('overview');
-</script>
-</body>
+      // Initialize with overview
+      loadModule("overview");
+    </script>
+  </body>
 </html>

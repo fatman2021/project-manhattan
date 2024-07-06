@@ -1,358 +1,398 @@
-<html><head><base href="https://websim.ai/c/project-manhattan/">
-<title>Project Manhattan: Advanced Multi-System Emulator with 3D Benchmark</title>
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    font-family: 'Roboto Mono', monospace;
-    background-color: #001420;
-    color: #00ff00;
-    overflow: hidden;
-  }
-  #container {
-    display: flex;
-    height: 100%;
-  }
-  #sidebar {
-    width: 250px;
-    background-color: #002233;
-    padding: 20px;
-    overflow-y: auto;
-  }
-  #main-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-  }
-  #output {
-    flex-grow: 1;
-    background-color: #001a2b;
-    border: 1px solid #00ff00;
-    padding: 10px;
-    overflow: auto;
-    font-family: 'Courier New', monospace;
-    white-space: pre-wrap;
-  }
-  #demo-canvas {
-    display: none;
-    border: 1px solid #00ff00;
-    margin-bottom: 10px;
-  }
-  #input {
-    background-color: #000;
-    border: 1px solid #00ff00;
-    color: #00ff00;
-    padding: 5px;
-    font-family: 'Roboto Mono', monospace;
-  }
-  .sidebar-title {
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #00ffff;
-  }
-  .sidebar-item {
-    margin-bottom: 5px;
-    cursor: pointer;
-  }
-  .sidebar-item:hover {
-    text-decoration: underline;
-  }
-  #status-bar {
-    background-color: #002233;
-    padding: 5px;
-    font-size: 0.8em;
-    display: flex;
-    justify-content: space-between;
-  }
-  .highlight {
-    color: #ff00ff;
-    font-weight: bold;
-  }
-  button {
-    background-color: #004d00;
-    color: #00ff00;
-    border: 1px solid #00ff00;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-right: 5px;
-  }
-  button:hover {
-    background-color: #006600;
-  }
-  #benchmark-controls {
-    display: none;
-    margin-top: 10px;
-  }
-  #benchmark-results {
-    margin-top: 10px;
-    font-size: 0.9em;
-  }
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-</head>
-<body>
-<div id="container">
-  <div id="sidebar">
-    <div class="sidebar-title">Project Manhattan</div>
-    <div class="sidebar-item" onclick="loadModule('overview')">Overview</div>
-    <div class="sidebar-item" onclick="loadModule('atari2600')">Atari 2600</div>
-    <div class="sidebar-item" onclick="loadModule('c64')">Commodore 64</div>
-    <div class="sidebar-item" onclick="loadModule('pet')">Commodore PET</div>
-    <div class="sidebar-item" onclick="loadModule('amiga500')">Amiga 500</div>
-    <div class="sidebar-item" onclick="loadModule('amiga1200')">Amiga 1200</div>
-    <div class="sidebar-item" onclick="loadModule('amiga4000')">Amiga 4000</div>
-    <div class="sidebar-item" onclick="loadModule('atariST')">Atari ST</div>
-    <div class="sidebar-item" onclick="loadModule('benchmark')">3D Multi-System Benchmark</div>
-  </div>
-  <div id="main-content">
-    <div id="output"></div>
-    <canvas id="demo-canvas" width="800" height="600"></canvas>
-    <div id="benchmark-controls">
-      <button onclick="startBenchmark()">Start Benchmark</button>
-      <button onclick="stopBenchmark()">Stop Benchmark</button>
-    </div>
-    <div id="benchmark-results"></div>
-    <input type="text" id="input" placeholder="Enter command...">
-    <div id="status-bar">
-      <span id="mode">Mode: Overview</span>
-      <span id="emulator-status">Emulator: Idle</span>
-    </div>
-  </div>
-</div>
-
-<script>
-const output = document.getElementById('output');
-const input = document.getElementById('input');
-const modeDisplay = document.getElementById('mode');
-const emulatorStatus = document.getElementById('emulator-status');
-const demoCanvas = document.getElementById('demo-canvas');
-const benchmarkControls = document.getElementById('benchmark-controls');
-const benchmarkResults = document.getElementById('benchmark-results');
-
-let currentMode = 'overview';
-let currentEmulator = null;
-let benchmarkScene, benchmarkCamera, benchmarkRenderer, benchmarkObjects = [];
-let benchmarkAnimationId = null;
-let benchmarkStartTime, benchmarkStats = {};
-
-const emulators = {
-  atari2600: {
-    cpu: 'MOS Technology 6507',
-    ram: '128 bytes',
-    rom: '4 KB',
-    graphics: 'TIA (Television Interface Adaptor)',
-    resolution: '160x192 pixels',
-    colors: '128 colors',
-    sound: '2 channel mono'
-  },
-  c64: {
-    cpu: 'MOS Technology 6510',
-    ram: '64 KB',
-    rom: '20 KB',
-    graphics: 'VIC-II',
-    resolution: '320x200 pixels',
-    colors: '16 colors',
-    sound: 'SID (Sound Interface Device)'
-  },
-  pet: {
-    cpu: 'MOS Technology 6502',
-    ram: '4 KB to 96 KB',
-    rom: '14 KB to 24 KB',
-    graphics: 'Monochrome text mode',
-    resolution: '40x25 or 80x25 characters',
-    sound: 'None (later models had a basic sound capability)'
-  },
-  amiga500: {
-    cpu: 'Motorola 68000 @ 7.14 MHz',
-    ram: '512 KB (expandable to 1 MB)',
-    rom: '512 KB',
-    graphics: 'OCS (Original Chip Set)',
-    resolution: 'Up to 640x512 pixels',
-    colors: '4096 colors',
-    sound: '4 channel stereo'
-  },
-  amiga1200: {
-    cpu: 'Motorola 68EC020 @ 14 MHz',
-    ram: '2 MB',
-    rom: '512 KB',
-    graphics: 'AGA (Advanced Graphics Architecture)',
-    resolution: 'Up to 1280x512 pixels',
-    colors: '16.8 million colors',
-    sound: '4 channel stereo'
-  },
-  amiga4000: {
-    cpu: 'Motorola 68040 @ 25 MHz',
-    ram: '4 MB (expandable to 16 MB)',
-    rom: '512 KB',
-    graphics: 'AGA (Advanced Graphics Architecture)',
-    resolution: 'Up to 1280x512 pixels',
-    colors: '16.8 million colors',
-    sound: '4 channel stereo'
-  },
-  atariST: {
-    cpu: 'Motorola 68000 @ 8 MHz',
-    ram: '512 KB to 4 MB',
-    rom: '192 KB',
-    graphics: 'Shifter chip',
-    resolution: '320x200 (16 colors), 640x200 (4 colors), 640x400 (monochrome)',
-    sound: 'Yamaha YM2149 3-voice sound chip'
-  }
-};
-
-function log(message) {
-  output.textContent += message + '\n';
-  output.scrollTop = output.scrollHeight;
-}
-
-function clearOutput() {
-  output.textContent = '';
-}
-
-function loadModule(module) {
-  clearOutput();
-  currentMode = module;
-  modeDisplay.textContent = `Mode: ${module.charAt(0).toUpperCase() + module.slice(1)}`;
-  
-  demoCanvas.style.display = 'none';
-  benchmarkControls.style.display = 'none';
-  benchmarkResults.innerHTML = '';
-  
-  switch(module) {
-    case 'overview':
-      log("Project Manhattan: Advanced Multi-System Emulator");
-      log("Supported systems:");
-      log("- Atari 2600");
-      log("- Commodore 64");
-      log("- Commodore PET");
-      log("- Commodore Amiga 500");
-      log("- Amiga 1200");
-      log("- Amiga 4000");
-      log("- Atari ST");
-      log("\nSelect a system from the sidebar to start emulation or run the 3D benchmark.");
-      break;
-    case 'benchmark':
-      log("3D Multi-System Benchmark");
-      log("This benchmark will test the emulation performance across all supported systems");
-      log("using modern 3D graphics to visualize the results.");
-      log("Use the 'Start Benchmark' button to begin.");
-      demoCanvas.style.display = 'block';
-      benchmarkControls.style.display = 'block';
-      initBenchmark();
-      break;
-    default:
-      if (emulators[module]) {
-        displayEmulatorInfo(module);
-      } else {
-        log("Unknown module selected.");
+<html>
+  <head>
+    <base href="https://websim.ai/c/project-manhattan/" />
+    <title>
+      Project Manhattan: Advanced Multi-System Emulator with 3D Benchmark
+    </title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        font-family: "Roboto Mono", monospace;
+        background-color: #001420;
+        color: #00ff00;
+        overflow: hidden;
       }
-  }
-}
+      #container {
+        display: flex;
+        height: 100%;
+      }
+      #sidebar {
+        width: 250px;
+        background-color: #002233;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      #main-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+      }
+      #output {
+        flex-grow: 1;
+        background-color: #001a2b;
+        border: 1px solid #00ff00;
+        padding: 10px;
+        overflow: auto;
+        font-family: "Courier New", monospace;
+        white-space: pre-wrap;
+      }
+      #demo-canvas {
+        display: none;
+        border: 1px solid #00ff00;
+        margin-bottom: 10px;
+      }
+      #input {
+        background-color: #000;
+        border: 1px solid #00ff00;
+        color: #00ff00;
+        padding: 5px;
+        font-family: "Roboto Mono", monospace;
+      }
+      .sidebar-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #00ffff;
+      }
+      .sidebar-item {
+        margin-bottom: 5px;
+        cursor: pointer;
+      }
+      .sidebar-item:hover {
+        text-decoration: underline;
+      }
+      #status-bar {
+        background-color: #002233;
+        padding: 5px;
+        font-size: 0.8em;
+        display: flex;
+        justify-content: space-between;
+      }
+      .highlight {
+        color: #ff00ff;
+        font-weight: bold;
+      }
+      button {
+        background-color: #004d00;
+        color: #00ff00;
+        border: 1px solid #00ff00;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+      button:hover {
+        background-color: #006600;
+      }
+      #benchmark-controls {
+        display: none;
+        margin-top: 10px;
+      }
+      #benchmark-results {
+        margin-top: 10px;
+        font-size: 0.9em;
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <div class="sidebar-title">Project Manhattan</div>
+        <div class="sidebar-item" onclick="loadModule('overview')">
+          Overview
+        </div>
+        <div class="sidebar-item" onclick="loadModule('atari2600')">
+          Atari 2600
+        </div>
+        <div class="sidebar-item" onclick="loadModule('c64')">Commodore 64</div>
+        <div class="sidebar-item" onclick="loadModule('pet')">
+          Commodore PET
+        </div>
+        <div class="sidebar-item" onclick="loadModule('amiga500')">
+          Amiga 500
+        </div>
+        <div class="sidebar-item" onclick="loadModule('amiga1200')">
+          Amiga 1200
+        </div>
+        <div class="sidebar-item" onclick="loadModule('amiga4000')">
+          Amiga 4000
+        </div>
+        <div class="sidebar-item" onclick="loadModule('atariST')">Atari ST</div>
+        <div class="sidebar-item" onclick="loadModule('benchmark')">
+          3D Multi-System Benchmark
+        </div>
+      </div>
+      <div id="main-content">
+        <div id="output"></div>
+        <canvas id="demo-canvas" width="800" height="600"></canvas>
+        <div id="benchmark-controls">
+          <button onclick="startBenchmark()">Start Benchmark</button>
+          <button onclick="stopBenchmark()">Stop Benchmark</button>
+        </div>
+        <div id="benchmark-results"></div>
+        <input type="text" id="input" placeholder="Enter command..." />
+        <div id="status-bar">
+          <span id="mode">Mode: Overview</span>
+          <span id="emulator-status">Emulator: Idle</span>
+        </div>
+      </div>
+    </div>
 
-function displayEmulatorInfo(system) {
-  const info = emulators[system];
-  log(`${system.toUpperCase()} Emulator`);
-  for (const [key, value] of Object.entries(info)) {
-    log(`${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`);
-  }
-  log("\nUse 'start' command to begin emulation.");
-}
+    <script>
+      const output = document.getElementById("output");
+      const input = document.getElementById("input");
+      const modeDisplay = document.getElementById("mode");
+      const emulatorStatus = document.getElementById("emulator-status");
+      const demoCanvas = document.getElementById("demo-canvas");
+      const benchmarkControls = document.getElementById("benchmark-controls");
+      const benchmarkResults = document.getElementById("benchmark-results");
 
-function initBenchmark() {
-  benchmarkScene = new THREE.Scene();
-  benchmarkCamera = new THREE.PerspectiveCamera(75, demoCanvas.width / demoCanvas.height, 0.1, 1000);
-  benchmarkRenderer = new THREE.WebGLRenderer({ canvas: demoCanvas });
-  benchmarkRenderer.setSize(demoCanvas.width, demoCanvas.height);
+      let currentMode = "overview";
+      let currentEmulator = null;
+      let benchmarkScene,
+        benchmarkCamera,
+        benchmarkRenderer,
+        benchmarkObjects = [];
+      let benchmarkAnimationId = null;
+      let benchmarkStartTime,
+        benchmarkStats = {};
 
-  const systems = Object.keys(emulators);
-  const radius = 10;
-  const systemGeometry = new THREE.BoxGeometry(1, 1, 1);
+      const emulators = {
+        atari2600: {
+          cpu: "MOS Technology 6507",
+          ram: "128 bytes",
+          rom: "4 KB",
+          graphics: "TIA (Television Interface Adaptor)",
+          resolution: "160x192 pixels",
+          colors: "128 colors",
+          sound: "2 channel mono",
+        },
+        c64: {
+          cpu: "MOS Technology 6510",
+          ram: "64 KB",
+          rom: "20 KB",
+          graphics: "VIC-II",
+          resolution: "320x200 pixels",
+          colors: "16 colors",
+          sound: "SID (Sound Interface Device)",
+        },
+        pet: {
+          cpu: "MOS Technology 6502",
+          ram: "4 KB to 96 KB",
+          rom: "14 KB to 24 KB",
+          graphics: "Monochrome text mode",
+          resolution: "40x25 or 80x25 characters",
+          sound: "None (later models had a basic sound capability)",
+        },
+        amiga500: {
+          cpu: "Motorola 68000 @ 7.14 MHz",
+          ram: "512 KB (expandable to 1 MB)",
+          rom: "512 KB",
+          graphics: "OCS (Original Chip Set)",
+          resolution: "Up to 640x512 pixels",
+          colors: "4096 colors",
+          sound: "4 channel stereo",
+        },
+        amiga1200: {
+          cpu: "Motorola 68EC020 @ 14 MHz",
+          ram: "2 MB",
+          rom: "512 KB",
+          graphics: "AGA (Advanced Graphics Architecture)",
+          resolution: "Up to 1280x512 pixels",
+          colors: "16.8 million colors",
+          sound: "4 channel stereo",
+        },
+        amiga4000: {
+          cpu: "Motorola 68040 @ 25 MHz",
+          ram: "4 MB (expandable to 16 MB)",
+          rom: "512 KB",
+          graphics: "AGA (Advanced Graphics Architecture)",
+          resolution: "Up to 1280x512 pixels",
+          colors: "16.8 million colors",
+          sound: "4 channel stereo",
+        },
+        atariST: {
+          cpu: "Motorola 68000 @ 8 MHz",
+          ram: "512 KB to 4 MB",
+          rom: "192 KB",
+          graphics: "Shifter chip",
+          resolution:
+            "320x200 (16 colors), 640x200 (4 colors), 640x400 (monochrome)",
+          sound: "Yamaha YM2149 3-voice sound chip",
+        },
+      };
 
-  systems.forEach((system, index) => {
-    const angle = (index / systems.length) * Math.PI * 2;
-    const x = Math.cos(angle) * radius;
-    const z = Math.sin(angle) * radius;
+      function log(message) {
+        output.textContent += message + "\n";
+        output.scrollTop = output.scrollHeight;
+      }
 
-    const material = new THREE.MeshPhongMaterial({ color: Math.random() * 0xffffff });
-    const systemMesh = new THREE.Mesh(systemGeometry, material);
-    systemMesh.position.set(x, 0, z);
-    systemMesh.userData.system = system;
+      function clearOutput() {
+        output.textContent = "";
+      }
 
-    benchmarkScene.add(systemMesh);
-    benchmarkObjects.push(systemMesh);
-  });
+      function loadModule(module) {
+        clearOutput();
+        currentMode = module;
+        modeDisplay.textContent = `Mode: ${module.charAt(0).toUpperCase() + module.slice(1)}`;
 
-  const light = new THREE.PointLight(0xffffff, 1, 100);
-  light.position.set(0, 10, 0);
-  benchmarkScene.add(light);
+        demoCanvas.style.display = "none";
+        benchmarkControls.style.display = "none";
+        benchmarkResults.innerHTML = "";
 
-  benchmarkCamera.position.y = 5;
-  benchmarkCamera.lookAt(0, 0, 0);
-}
+        switch (module) {
+          case "overview":
+            log("Project Manhattan: Advanced Multi-System Emulator");
+            log("Supported systems:");
+            log("- Atari 2600");
+            log("- Commodore 64");
+            log("- Commodore PET");
+            log("- Commodore Amiga 500");
+            log("- Amiga 1200");
+            log("- Amiga 4000");
+            log("- Atari ST");
+            log(
+              "\nSelect a system from the sidebar to start emulation or run the 3D benchmark.",
+            );
+            break;
+          case "benchmark":
+            log("3D Multi-System Benchmark");
+            log(
+              "This benchmark will test the emulation performance across all supported systems",
+            );
+            log("using modern 3D graphics to visualize the results.");
+            log("Use the 'Start Benchmark' button to begin.");
+            demoCanvas.style.display = "block";
+            benchmarkControls.style.display = "block";
+            initBenchmark();
+            break;
+          default:
+            if (emulators[module]) {
+              displayEmulatorInfo(module);
+            } else {
+              log("Unknown module selected.");
+            }
+        }
+      }
 
-function startBenchmark() {
-  if (benchmarkAnimationId) return;
+      function displayEmulatorInfo(system) {
+        const info = emulators[system];
+        log(`${system.toUpperCase()} Emulator`);
+        for (const [key, value] of Object.entries(info)) {
+          log(`${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`);
+        }
+        log("\nUse 'start' command to begin emulation.");
+      }
 
-  benchmarkStartTime = performance.now();
-  benchmarkStats = {
-    frames: 0,
-    totalTime: 0,
-    systemPerformance: {}
-  };
+      function initBenchmark() {
+        benchmarkScene = new THREE.Scene();
+        benchmarkCamera = new THREE.PerspectiveCamera(
+          75,
+          demoCanvas.width / demoCanvas.height,
+          0.1,
+          1000,
+        );
+        benchmarkRenderer = new THREE.WebGLRenderer({ canvas: demoCanvas });
+        benchmarkRenderer.setSize(demoCanvas.width, demoCanvas.height);
 
-  Object.keys(emulators).forEach(system => {
-    benchmarkStats.systemPerformance[system] = {
-      operations: 0,
-      time: 0
-    };
-  });
+        const systems = Object.keys(emulators);
+        const radius = 10;
+        const systemGeometry = new THREE.BoxGeometry(1, 1, 1);
 
-  function animate() {
-    benchmarkStats.frames++;
-    const now = performance.now();
-    const frameTime = now - benchmarkStartTime;
-    benchmarkStats.totalTime += frameTime;
+        systems.forEach((system, index) => {
+          const angle = (index / systems.length) * Math.PI * 2;
+          const x = Math.cos(angle) * radius;
+          const z = Math.sin(angle) * radius;
 
-    benchmarkObjects.forEach((obj) => {
-      obj.rotation.x += 0.01;
-      obj.rotation.y += 0.01;
-      
-      const system = obj.userData.system;
-      benchmarkStats.systemPerformance[system].operations += Math.random() * 1000000;
-      benchmarkStats.systemPerformance[system].time += frameTime;
-    });
+          const material = new THREE.MeshPhongMaterial({
+            color: Math.random() * 0xffffff,
+          });
+          const systemMesh = new THREE.Mesh(systemGeometry, material);
+          systemMesh.position.set(x, 0, z);
+          systemMesh.userData.system = system;
 
-    benchmarkCamera.position.x = Math.sin(now * 0.001) * 15;
-    benchmarkCamera.position.z = Math.cos(now * 0.001) * 15;
-    benchmarkCamera.lookAt(0, 0, 0);
+          benchmarkScene.add(systemMesh);
+          benchmarkObjects.push(systemMesh);
+        });
 
-    benchmarkRenderer.render(benchmarkScene, benchmarkCamera);
-    benchmarkStartTime = now;
+        const light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(0, 10, 0);
+        benchmarkScene.add(light);
 
-    updateBenchmarkResults();
+        benchmarkCamera.position.y = 5;
+        benchmarkCamera.lookAt(0, 0, 0);
+      }
 
-    benchmarkAnimationId = requestAnimationFrame(animate);
-  }
+      function startBenchmark() {
+        if (benchmarkAnimationId) return;
 
-  animate();
-  emulatorStatus.textContent = "Emulator: Running 3D Benchmark";
-}
+        benchmarkStartTime = performance.now();
+        benchmarkStats = {
+          frames: 0,
+          totalTime: 0,
+          systemPerformance: {},
+        };
 
-function stopBenchmark() {
-  if (benchmarkAnimationId) {
-    cancelAnimationFrame(benchmarkAnimationId);
-    benchmarkAnimationId = null;
-    emulatorStatus.textContent = "Emulator: Idle";
-    updateBenchmarkResults(true);
-  }
-}
+        Object.keys(emulators).forEach((system) => {
+          benchmarkStats.systemPerformance[system] = {
+            operations: 0,
+            time: 0,
+          };
+        });
 
-function updateBenchmarkResults(final = false) {
-  const avgFPS = benchmarkStats.frames / (benchmarkStats.totalTime / 1000);
+        function animate() {
+          benchmarkStats.frames++;
+          const now = performance.now();
+          const frameTime = now - benchmarkStartTime;
+          benchmarkStats.totalTime += frameTime;
 
-  let resultsHTML = `
+          benchmarkObjects.forEach((obj) => {
+            obj.rotation.x += 0.01;
+            obj.rotation.y += 0.01;
+
+            const system = obj.userData.system;
+            benchmarkStats.systemPerformance[system].operations +=
+              Math.random() * 1000000;
+            benchmarkStats.systemPerformance[system].time += frameTime;
+          });
+
+          benchmarkCamera.position.x = Math.sin(now * 0.001) * 15;
+          benchmarkCamera.position.z = Math.cos(now * 0.001) * 15;
+          benchmarkCamera.lookAt(0, 0, 0);
+
+          benchmarkRenderer.render(benchmarkScene, benchmarkCamera);
+          benchmarkStartTime = now;
+
+          updateBenchmarkResults();
+
+          benchmarkAnimationId = requestAnimationFrame(animate);
+        }
+
+        animate();
+        emulatorStatus.textContent = "Emulator: Running 3D Benchmark";
+      }
+
+      function stopBenchmark() {
+        if (benchmarkAnimationId) {
+          cancelAnimationFrame(benchmarkAnimationId);
+          benchmarkAnimationId = null;
+          emulatorStatus.textContent = "Emulator: Idle";
+          updateBenchmarkResults(true);
+        }
+      }
+
+      function updateBenchmarkResults(final = false) {
+        const avgFPS =
+          benchmarkStats.frames / (benchmarkStats.totalTime / 1000);
+
+        let resultsHTML = `
     <div>Frames Rendered: ${benchmarkStats.frames}</div>
     <div>Average FPS: ${avgFPS.toFixed(2)}</div>
     <div>Total Time: ${(benchmarkStats.totalTime / 1000).toFixed(2)} seconds</div>
@@ -360,50 +400,52 @@ function updateBenchmarkResults(final = false) {
     <div>System Performance:</div>
   `;
 
-  for (const [system, stats] of Object.entries(benchmarkStats.systemPerformance)) {
-    const opsPerSecond = stats.operations / (stats.time / 1000);
-    resultsHTML += `<div>${system}: ${opsPerSecond.toFixed(2)} ops/second</div>`;
-  }
+        for (const [system, stats] of Object.entries(
+          benchmarkStats.systemPerformance,
+        )) {
+          const opsPerSecond = stats.operations / (stats.time / 1000);
+          resultsHTML += `<div>${system}: ${opsPerSecond.toFixed(2)} ops/second</div>`;
+        }
 
-  if (final) {
-    resultsHTML += `<br><div class="highlight">3D Benchmark Complete!</div>`;
-  }
+        if (final) {
+          resultsHTML += `<br><div class="highlight">3D Benchmark Complete!</div>`;
+        }
 
-  benchmarkResults.innerHTML = resultsHTML;
-}
-
-function processCommand(cmd) {
-  log(`> ${cmd}`);
-  
-  switch(cmd.toLowerCase()) {
-    case 'start':
-      if (currentMode === 'benchmark') {
-        startBenchmark();
-      } else {
-        log("Emulator start functionality not implemented in this demo.");
+        benchmarkResults.innerHTML = resultsHTML;
       }
-      break;
-    case 'stop':
-      if (currentMode === 'benchmark') {
-        stopBenchmark();
-      } else {
-        log("Emulator stop functionality not implemented in this demo.");
+
+      function processCommand(cmd) {
+        log(`> ${cmd}`);
+
+        switch (cmd.toLowerCase()) {
+          case "start":
+            if (currentMode === "benchmark") {
+              startBenchmark();
+            } else {
+              log("Emulator start functionality not implemented in this demo.");
+            }
+            break;
+          case "stop":
+            if (currentMode === "benchmark") {
+              stopBenchmark();
+            } else {
+              log("Emulator stop functionality not implemented in this demo.");
+            }
+            break;
+          default:
+            log("Unknown command. Available commands: start, stop");
+        }
       }
-      break;
-    default:
-      log("Unknown command. Available commands: start, stop");
-  }
-}
 
-input.addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
-    processCommand(this.value);
-    this.value = '';
-  }
-});
+      input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          processCommand(this.value);
+          this.value = "";
+        }
+      });
 
-// Initialize with overview
-loadModule('overview');
-</script>
-</body>
+      // Initialize with overview
+      loadModule("overview");
+    </script>
+  </body>
 </html>
