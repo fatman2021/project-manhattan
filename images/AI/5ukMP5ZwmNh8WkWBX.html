@@ -1,194 +1,235 @@
-<html><head><base href="https://websim.ai/c/project-manhattan/">
-<title>Project Manhattan - Next-generation MOS 6510-based CPU/GPU SoC Emulator</title>
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Share Tech Mono', monospace;
-    background-color: #0a0a0a;
-    color: #00ff00;
-    height: 100%;
-    overflow: hidden;
-  }
-  #container {
-    display: flex;
-    height: 100vh;
-  }
-  #sidebar {
-    width: 250px;
-    background-color: #1a1a1a;
-    padding: 10px;
-    overflow-y: auto;
-  }
-  #main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  #header {
-    background-color: #2a2a2a;
-    padding: 10px;
-    text-align: center;
-    font-size: 1.2em;
-  }
-  #content {
-    flex: 1;
-    background-color: #000;
-    padding: 20px;
-    overflow-y: auto;
-  }
-  .menu-item {
-    cursor: pointer;
-    padding: 5px;
-    margin: 2px 0;
-  }
-  .menu-item:hover {
-    background-color: #2a2a2a;
-  }
-  #status-bar {
-    background-color: #2a2a2a;
-    padding: 5px;
-    text-align: right;
-    font-size: 0.9em;
-  }
-  h1, h2, h3 {
-    color: #00aa00;
-  }
-  .highlight {
-    color: #00ff00;
-    font-weight: bold;
-  }
-  .demo-container {
-    border: 1px solid #00aa00;
-    padding: 10px;
-    margin-top: 20px;
-  }
-  .button {
-    background-color: #00aa00;
-    color: #000;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  .button:hover {
-    background-color: #00ff00;
-  }
-  canvas {
-    width: 100%;
-    height: 300px;
-    border: 1px solid #00aa00;
-  }
-  textarea {
-    width: 100%;
-    height: 200px;
-    background-color: #0f0f0f;
-    color: #00ff00;
-    border: 1px solid #00aa00;
-    font-family: monospace;
-    margin-bottom: 10px;
-  }
-  .operating-mode {
-    display: none;
-  }
-  #topic-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  .topic {
-    background-color: #1a1a1a;
-    color: #00ff00;
-    padding: 5px 10px;
-    margin: 5px;
-    border-radius: 15px;
-    cursor: pointer;
-  }
-  .topic:hover {
-    background-color: #2a2a2a;
-  }
-</style>
-</head>
-<body>
-<div id="container">
-  <div id="sidebar">
-    <div class="menu-item" data-mode="overview">Overview</div>
-    <div class="menu-item" data-mode="cpu">CPU Architecture</div>
-    <div class="menu-item" data-mode="gpu">GPU Architecture</div>
-    <div class="menu-item" data-mode="assembly">Assembly IDE</div>
-    <div class="menu-item" data-mode="glsl">GLSL Shader Editor</div>
-    <div class="menu-item" data-mode="c64">C64 Compatibility</div>
-    <div class="menu-item" data-mode="business">Business Applications</div>
-    <div class="menu-item" data-mode="game">Game Development</div>
-    <div class="menu-item" data-mode="system">System Programming</div>
-    <div class="menu-item" data-mode="ring0">Ring-0 Operations</div>
-    <div class="menu-item" data-mode="x86">x86 Compatibility</div>
-    <div class="menu-item" data-mode="freebasic">FreeBASIC Editor</div>
-  </div>
-  <div id="main">
-    <div id="header">Project Manhattan - Next-generation MOS 6510-based CPU/GPU SoC Emulator</div>
-    <div id="content">
-      <div id="overview" class="operating-mode">
-        <h1>Welcome to Project Manhattan</h1>
-        <p>Project Manhattan is a revolutionary next-generation MOS 6510-based CPU/GPU combo system on a chip emulator for gaming and business applications. Written in FreeBASIC, this emulator pushes the boundaries of what's possible with classic hardware emulation combined with modern GPU capabilities.</p>
-        <h2>Key Features:</h2>
-        <ul>
-          <li>Emulation of MOS 6510 CPU architecture</li>
-          <li>Integrated GPU capabilities for enhanced graphics processing</li>
-          <li>C64 compatibility for retro gaming and applications</li>
-          <li>GLSL shader support for advanced graphics effects</li>
-          <li>Business application support</li>
-          <li>Game development environment</li>
-          <li>Low-level system programming capabilities</li>
-          <li>Ring-0 operations for advanced system control</li>
-          <li>x86 compatibility layer</li>
-          <li>FreeBASIC development environment</li>
-        </ul>
-        <div id="topic-cloud">
-          <div class="topic" onclick="switchMode('cpu')">CPU</div>
-          <div class="topic" onclick="switchMode('gpu')">GPU</div>
-          <div class="topic" onclick="switchMode('assembly')">Assembly</div>
-          <div class="topic" onclick="switchMode('glsl')">GLSL</div>
-          <div class="topic" onclick="switchMode('c64')">C64</div>
-          <div class="topic" onclick="switchMode('business')">Business</div>
-          <div class="topic" onclick="switchMode('game')">Game Development</div>
-          <div class="topic" onclick="switchMode('system')">System Programming</div>
-          <div class="topic" onclick="switchMode('ring0')">Ring-0</div>
-          <div class="topic" onclick="switchMode('x86')">x86</div>
-          <div class="topic" onclick="switchMode('freebasic')">FreeBASIC</div>
+<html>
+  <head>
+    <base href="https://websim.ai/c/project-manhattan/" />
+    <title>
+      Project Manhattan - Next-generation MOS 6510-based CPU/GPU SoC Emulator
+    </title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: "Share Tech Mono", monospace;
+        background-color: #0a0a0a;
+        color: #00ff00;
+        height: 100%;
+        overflow: hidden;
+      }
+      #container {
+        display: flex;
+        height: 100vh;
+      }
+      #sidebar {
+        width: 250px;
+        background-color: #1a1a1a;
+        padding: 10px;
+        overflow-y: auto;
+      }
+      #main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      #header {
+        background-color: #2a2a2a;
+        padding: 10px;
+        text-align: center;
+        font-size: 1.2em;
+      }
+      #content {
+        flex: 1;
+        background-color: #000;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      .menu-item {
+        cursor: pointer;
+        padding: 5px;
+        margin: 2px 0;
+      }
+      .menu-item:hover {
+        background-color: #2a2a2a;
+      }
+      #status-bar {
+        background-color: #2a2a2a;
+        padding: 5px;
+        text-align: right;
+        font-size: 0.9em;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #00aa00;
+      }
+      .highlight {
+        color: #00ff00;
+        font-weight: bold;
+      }
+      .demo-container {
+        border: 1px solid #00aa00;
+        padding: 10px;
+        margin-top: 20px;
+      }
+      .button {
+        background-color: #00aa00;
+        color: #000;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      .button:hover {
+        background-color: #00ff00;
+      }
+      canvas {
+        width: 100%;
+        height: 300px;
+        border: 1px solid #00aa00;
+      }
+      textarea {
+        width: 100%;
+        height: 200px;
+        background-color: #0f0f0f;
+        color: #00ff00;
+        border: 1px solid #00aa00;
+        font-family: monospace;
+        margin-bottom: 10px;
+      }
+      .operating-mode {
+        display: none;
+      }
+      #topic-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .topic {
+        background-color: #1a1a1a;
+        color: #00ff00;
+        padding: 5px 10px;
+        margin: 5px;
+        border-radius: 15px;
+        cursor: pointer;
+      }
+      .topic:hover {
+        background-color: #2a2a2a;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <div class="menu-item" data-mode="overview">Overview</div>
+        <div class="menu-item" data-mode="cpu">CPU Architecture</div>
+        <div class="menu-item" data-mode="gpu">GPU Architecture</div>
+        <div class="menu-item" data-mode="assembly">Assembly IDE</div>
+        <div class="menu-item" data-mode="glsl">GLSL Shader Editor</div>
+        <div class="menu-item" data-mode="c64">C64 Compatibility</div>
+        <div class="menu-item" data-mode="business">Business Applications</div>
+        <div class="menu-item" data-mode="game">Game Development</div>
+        <div class="menu-item" data-mode="system">System Programming</div>
+        <div class="menu-item" data-mode="ring0">Ring-0 Operations</div>
+        <div class="menu-item" data-mode="x86">x86 Compatibility</div>
+        <div class="menu-item" data-mode="freebasic">FreeBASIC Editor</div>
+      </div>
+      <div id="main">
+        <div id="header">
+          Project Manhattan - Next-generation MOS 6510-based CPU/GPU SoC
+          Emulator
         </div>
-      </div>
+        <div id="content">
+          <div id="overview" class="operating-mode">
+            <h1>Welcome to Project Manhattan</h1>
+            <p>
+              Project Manhattan is a revolutionary next-generation MOS
+              6510-based CPU/GPU combo system on a chip emulator for gaming and
+              business applications. Written in FreeBASIC, this emulator pushes
+              the boundaries of what's possible with classic hardware emulation
+              combined with modern GPU capabilities.
+            </p>
+            <h2>Key Features:</h2>
+            <ul>
+              <li>Emulation of MOS 6510 CPU architecture</li>
+              <li>
+                Integrated GPU capabilities for enhanced graphics processing
+              </li>
+              <li>C64 compatibility for retro gaming and applications</li>
+              <li>GLSL shader support for advanced graphics effects</li>
+              <li>Business application support</li>
+              <li>Game development environment</li>
+              <li>Low-level system programming capabilities</li>
+              <li>Ring-0 operations for advanced system control</li>
+              <li>x86 compatibility layer</li>
+              <li>FreeBASIC development environment</li>
+            </ul>
+            <div id="topic-cloud">
+              <div class="topic" onclick="switchMode('cpu')">CPU</div>
+              <div class="topic" onclick="switchMode('gpu')">GPU</div>
+              <div class="topic" onclick="switchMode('assembly')">Assembly</div>
+              <div class="topic" onclick="switchMode('glsl')">GLSL</div>
+              <div class="topic" onclick="switchMode('c64')">C64</div>
+              <div class="topic" onclick="switchMode('business')">Business</div>
+              <div class="topic" onclick="switchMode('game')">
+                Game Development
+              </div>
+              <div class="topic" onclick="switchMode('system')">
+                System Programming
+              </div>
+              <div class="topic" onclick="switchMode('ring0')">Ring-0</div>
+              <div class="topic" onclick="switchMode('x86')">x86</div>
+              <div class="topic" onclick="switchMode('freebasic')">
+                FreeBASIC
+              </div>
+            </div>
+          </div>
 
-      <div id="cpu" class="operating-mode">
-        <h1>CPU Architecture</h1>
-        <p>The Project Manhattan emulator faithfully recreates the MOS 6510 CPU architecture, allowing for accurate emulation of classic systems while extending its capabilities for modern applications.</p>
-        <canvas id="cpu-canvas"></canvas>
-        <button class="button" onclick="runCPUDemo()">Run CPU Demo</button>
-      </div>
+          <div id="cpu" class="operating-mode">
+            <h1>CPU Architecture</h1>
+            <p>
+              The Project Manhattan emulator faithfully recreates the MOS 6510
+              CPU architecture, allowing for accurate emulation of classic
+              systems while extending its capabilities for modern applications.
+            </p>
+            <canvas id="cpu-canvas"></canvas>
+            <button class="button" onclick="runCPUDemo()">Run CPU Demo</button>
+          </div>
 
-      <div id="gpu" class="operating-mode">
-        <h1>GPU Architecture</h1>
-        <p>Our custom GPU architecture enhances the classic MOS 6510 with modern graphics processing capabilities, enabling advanced visual effects and 3D rendering.</p>
-        <canvas id="gpu-canvas"></canvas>
-        <button class="button" onclick="runGPUDemo()">Run GPU Demo</button>
-      </div>
+          <div id="gpu" class="operating-mode">
+            <h1>GPU Architecture</h1>
+            <p>
+              Our custom GPU architecture enhances the classic MOS 6510 with
+              modern graphics processing capabilities, enabling advanced visual
+              effects and 3D rendering.
+            </p>
+            <canvas id="gpu-canvas"></canvas>
+            <button class="button" onclick="runGPUDemo()">Run GPU Demo</button>
+          </div>
 
-      <div id="assembly" class="operating-mode">
-        <h1>Assembly IDE</h1>
-        <p>Write and test assembly code directly in the emulator with our integrated Assembly IDE.</p>
-        <textarea id="assembly-input">
+          <div id="assembly" class="operating-mode">
+            <h1>Assembly IDE</h1>
+            <p>
+              Write and test assembly code directly in the emulator with our
+              integrated Assembly IDE.
+            </p>
+            <textarea id="assembly-input">
 LDA #$01
 STA $D020
-RTS</textarea>
-        <canvas id="assembly-canvas"></canvas>
-        <button class="button" onclick="runAssemblyDemo()">Assemble and Run</button>
-      </div>
+RTS</textarea
+            >
+            <canvas id="assembly-canvas"></canvas>
+            <button class="button" onclick="runAssemblyDemo()">
+              Assemble and Run
+            </button>
+          </div>
 
-      <div id="glsl" class="operating-mode">
-        <h1>GLSL Shader Editor</h1>
-        <p>Create and test GLSL shaders to add stunning visual effects to your Project Manhattan applications.</p>
-        <textarea id="glsl-input">
+          <div id="glsl" class="operating-mode">
+            <h1>GLSL Shader Editor</h1>
+            <p>
+              Create and test GLSL shaders to add stunning visual effects to
+              your Project Manhattan applications.
+            </p>
+            <textarea id="glsl-input">
 precision mediump float;
 
 uniform float iTime;
@@ -198,423 +239,505 @@ void main() {
     vec2 uv = gl_FragCoord.xy / iResolution.xy;
     vec3 col = 0.5 + 0.5 * cos(iTime + uv.xyx + vec3(0, 2, 4));
     gl_FragColor = vec4(col, 1.0);
-}</textarea>
-        <canvas id="glsl-canvas"></canvas>
-        <button class="button" onclick="runGLSLDemo()">Compile and Run Shader</button>
-      </div>
+}</textarea
+            >
+            <canvas id="glsl-canvas"></canvas>
+            <button class="button" onclick="runGLSLDemo()">
+              Compile and Run Shader
+            </button>
+          </div>
 
-      <div id="c64" class="operating-mode">
-        <h1>C64 Compatibility</h1>
-        <p>Run classic Commodore 64 programs and games with our built-in C64 compatibility layer.</p>
-        <textarea id="c64-input">
+          <div id="c64" class="operating-mode">
+            <h1>C64 Compatibility</h1>
+            <p>
+              Run classic Commodore 64 programs and games with our built-in C64
+              compatibility layer.
+            </p>
+            <textarea id="c64-input">
 10 PRINT "HELLO, PROJECT MANHATTAN!"
 20 FOR I = 1 TO 5
 30 PRINT "ITERATION: "; I
 40 NEXT I
-50 PRINT "C64 DEMO COMPLETE"</textarea>
-        <canvas id="c64-canvas"></canvas>
-        <button class="button" onclick="runC64Demo()">Run C64 Demo</button>
-      </div>
+50 PRINT "C64 DEMO COMPLETE"</textarea
+            >
+            <canvas id="c64-canvas"></canvas>
+            <button class="button" onclick="runC64Demo()">Run C64 Demo</button>
+          </div>
 
-      <div id="business" class="operating-mode">
-        <h1>Business Applications</h1>
-        <p>Leverage the power of Project Manhattan for business applications, from data processing to advanced visualizations.</p>
-        <textarea id="business-input">
+          <div id="business" class="operating-mode">
+            <h1>Business Applications</h1>
+            <p>
+              Leverage the power of Project Manhattan for business applications,
+              from data processing to advanced visualizations.
+            </p>
+            <textarea id="business-input">
 Product,Q1,Q2,Q3,Q4
 Widgets,100,150,200,180
 Gadgets,80,120,160,140
-Gizmos,50,70,90,85</textarea>
-        <canvas id="business-canvas"></canvas>
-        <button class="button" onclick="runBusinessDemo()">Run Business Demo</button>
-      </div>
+Gizmos,50,70,90,85</textarea
+            >
+            <canvas id="business-canvas"></canvas>
+            <button class="button" onclick="runBusinessDemo()">
+              Run Business Demo
+            </button>
+          </div>
 
-      <div id="game" class="operating-mode">
-        <h1>Game Development</h1>
-        <p>Create exciting games that combine classic 8-bit charm with modern graphics capabilities.</p>
-        <canvas id="game-canvas"></canvas>
-        <button class="button" onclick="runGameDemo()">Run Game Demo</button>
-      </div>
+          <div id="game" class="operating-mode">
+            <h1>Game Development</h1>
+            <p>
+              Create exciting games that combine classic 8-bit charm with modern
+              graphics capabilities.
+            </p>
+            <canvas id="game-canvas"></canvas>
+            <button class="button" onclick="runGameDemo()">
+              Run Game Demo
+            </button>
+          </div>
 
-      <div id="system" class="operating-mode">
-        <h1>System Programming</h1>
-        <p>Access low-level system functions and optimize performance with our system programming interface.</p>
-        <textarea id="system-input">
+          <div id="system" class="operating-mode">
+            <h1>System Programming</h1>
+            <p>
+              Access low-level system functions and optimize performance with
+              our system programming interface.
+            </p>
+            <textarea id="system-input">
 LOAD_MODULE kernel.sys
 MOUNT_VFS /
 START_SERVICE networking
-START_SERVICE graphics</textarea>
-        <canvas id="system-canvas"></canvas>
-        <button class="button" onclick="runSystemDemo()">Run System Demo</button>
-      </div>
+START_SERVICE graphics</textarea
+            >
+            <canvas id="system-canvas"></canvas>
+            <button class="button" onclick="runSystemDemo()">
+              Run System Demo
+            </button>
+          </div>
 
-      <div id="ring0" class="operating-mode">
-        <h1>Ring-0 Operations</h1>
-        <p>Perform privileged operations and access hardware directly with Ring-0 level commands.</p>
-        <textarea id="ring0-input">
+          <div id="ring0" class="operating-mode">
+            <h1>Ring-0 Operations</h1>
+            <p>
+              Perform privileged operations and access hardware directly with
+              Ring-0 level commands.
+            </p>
+            <textarea id="ring0-input">
 ACCESS_MSR 0x1B
 MODIFY_IDT 21, 0x1000
 OPTIMIZE_PAGEMAP
-EXIT_RING0</textarea>
-        <canvas id="ring0-canvas"></canvas>
-        <button class="button" onclick="runRing0Demo()">Run Ring-0 Demo</button>
-      </div>
+EXIT_RING0</textarea
+            >
+            <canvas id="ring0-canvas"></canvas>
+            <button class="button" onclick="runRing0Demo()">
+              Run Ring-0 Demo
+            </button>
+          </div>
 
-      <div id="x86" class="operating-mode">
-        <h1>x86 Compatibility</h1>
-        <p>Run x86 code on our emulated environment with our x86 compatibility layer.</p>
-        <textarea id="x86-input">
+          <div id="x86" class="operating-mode">
+            <h1>x86 Compatibility</h1>
+            <p>
+              Run x86 code on our emulated environment with our x86
+              compatibility layer.
+            </p>
+            <textarea id="x86-input">
 mov eax, 1
 mov ebx, 2
 add eax, ebx
-int 0x80</textarea>
-        <canvas id="x86-canvas"></canvas>
-        <button class="button" onclick="runX86Demo()">Run x86 Demo</button>
-      </div>
+int 0x80</textarea
+            >
+            <canvas id="x86-canvas"></canvas>
+            <button class="button" onclick="runX86Demo()">Run x86 Demo</button>
+          </div>
 
-      <div id="freebasic" class="operating-mode">
-        <h1>FreeBASIC Editor</h1>
-        <p>Develop and run FreeBASIC code, the language powering Project Manhattan itself.</p>
-        <textarea id="freebasic-input">
+          <div id="freebasic" class="operating-mode">
+            <h1>FreeBASIC Editor</h1>
+            <p>
+              Develop and run FreeBASIC code, the language powering Project
+              Manhattan itself.
+            </p>
+            <textarea id="freebasic-input">
 ' Project Manhattan FreeBASIC Demo
 PRINT "Welcome to Project Manhattan!"
 FOR i AS INTEGER = 1 TO 5
     PRINT "Iteration: " & i
 NEXT i
-PRINT "FreeBASIC Demo Complete"</textarea>
-        <canvas id="freebasic-canvas"></canvas>
-        <button class="button" onclick="runFreeBASICDemo()">Run FreeBASIC Demo</button>
+PRINT "FreeBASIC Demo Complete"</textarea
+            >
+            <canvas id="freebasic-canvas"></canvas>
+            <button class="button" onclick="runFreeBASICDemo()">
+              Run FreeBASIC Demo
+            </button>
+          </div>
+        </div>
+        <div id="status-bar">Mode: Overview | Emulator: Idle</div>
       </div>
     </div>
-    <div id="status-bar">
-      Mode: Overview | Emulator: Idle
-    </div>
-  </div>
-</div>
 
-<script>
-function initCanvas(canvasId) {
-  const canvas = document.getElementById(canvasId);
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-  return canvas.getContext('2d');
-}
-
-function switchMode(mode) {
-  document.querySelectorAll('.operating-mode').forEach(el => el.style.display = 'none');
-  document.getElementById(mode).style.display = 'block';
-  document.getElementById('status-bar').textContent = `Mode: ${mode} | Emulator: Active`;
-  if (mode === 'glsl') {
-    runGLSLDemo();
-  }
-}
-
-document.querySelectorAll('.menu-item, .topic').forEach(item => {
-  item.addEventListener('click', function() {
-    switchMode(this.getAttribute('data-mode') || this.textContent.toLowerCase());
-  });
-});
-
-function runCPUDemo() {
-  const ctx = initCanvas('cpu-canvas');
-  let frame = 0;
-  
-  function animate() {
-    ctx.fillStyle = '#000';
-    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    
-    ctx.strokeStyle = '#00ff00';
-    ctx.strokeRect(50, 50, 300, 200);
-    
-    ctx.fillStyle = `rgb(0, ${Math.sin(frame * 0.1) * 127 + 128}, 0)`;
-    ctx.fillRect(150, 100, 100, 100);
-    
-    ctx.fillStyle = '#00ff00';
-    ctx.font = '16px monospace';
-    ctx.fillText(`A: 0x${Math.floor(Math.random() * 256).toString(16).padStart(2, '0')}`, 60, 80);
-    ctx.fillText(`X: 0x${Math.floor(Math.random() * 256).toString(16).padStart(2, '0')}`, 60, 110);
-    ctx.fillText(`Y: 0x${Math.floor(Math.random() * 256).toString(16).padStart(2, '0')}`, 60, 140);
-    ctx.fillText(`PC: 0x${(0x1000 + frame).toString(16)}`, 60, 170);
-    
-    frame++;
-    requestAnimationFrame(animate);
-  }
-  
-  animate();
-}
-
-function runGPUDemo() {
-  const ctx = initCanvas('gpu-canvas');
-  let time = 0;
-  
-  function animate() {
-    const imageData = ctx.createImageData(ctx.canvas.width, ctx.canvas.height);
-    const data = imageData.data;
-    for (let x = 0; x < ctx.canvas.width; x++) {
-      for (let y = 0; y < ctx.canvas.height; y++) {
-        const i = (y * ctx.canvas.width + x) * 4;
-        data[i] = Math.sin(x * 0.01 + time) * 127 + 128;
-        data[i + 1]  = Math.sin(y * 0.01 + time) * 127 + 128;
-        data[i + 2] = Math.sin((x + y) * 0.01 + time) * 127 + 128;
-        data[i + 3] = 255;
+    <script>
+      function initCanvas(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        return canvas.getContext("2d");
       }
-    }
-    ctx.putImageData(imageData, 0, 0);
-    time += 0.05;
-    requestAnimationFrame(animate);
-  }
-  
-  animate();
-}
 
-function runAssemblyDemo() {
-  const ctx = initCanvas('assembly-canvas');
-  const code = document.getElementById('assembly-input').value;
-  let y = 30;
-  ctx.fillStyle = '#000';
-  ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  ctx.fillStyle = '#00ff00';
-  ctx.font = '16px monospace';
-  code.split('\n').forEach(line => {
-    ctx.fillText(line, 10, y);
-    y += 20;
-  });
-  ctx.fillStyle = '#00aa00';
-  ctx.fillRect(0, ctx.canvas.height - 20, ctx.canvas.width, 20);
-  ctx.fillStyle = '#000';
-  ctx.fillText('Assembled and executed', 10, ctx.canvas.height - 5);
-}
+      function switchMode(mode) {
+        document
+          .querySelectorAll(".operating-mode")
+          .forEach((el) => (el.style.display = "none"));
+        document.getElementById(mode).style.display = "block";
+        document.getElementById("status-bar").textContent =
+          `Mode: ${mode} | Emulator: Active`;
+        if (mode === "glsl") {
+          runGLSLDemo();
+        }
+      }
 
-function runGLSLDemo() {
-  const canvas = document.getElementById('glsl-canvas');
-  const gl = canvas.getContext('webgl');
-  const code = document.getElementById('glsl-input').value;
+      document.querySelectorAll(".menu-item, .topic").forEach((item) => {
+        item.addEventListener("click", function () {
+          switchMode(
+            this.getAttribute("data-mode") || this.textContent.toLowerCase(),
+          );
+        });
+      });
 
-  if (!gl) {
-    alert('WebGL not supported');
-    return;
-  }
+      function runCPUDemo() {
+        const ctx = initCanvas("cpu-canvas");
+        let frame = 0;
 
-  canvas.width = canvas.clientWidth;
-  canvas.height = canvas.clientHeight;
-  gl.viewport(0, 0, canvas.width, canvas.height);
+        function animate() {
+          ctx.fillStyle = "#000";
+          ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-  const vertexShaderSource = `
+          ctx.strokeStyle = "#00ff00";
+          ctx.strokeRect(50, 50, 300, 200);
+
+          ctx.fillStyle = `rgb(0, ${Math.sin(frame * 0.1) * 127 + 128}, 0)`;
+          ctx.fillRect(150, 100, 100, 100);
+
+          ctx.fillStyle = "#00ff00";
+          ctx.font = "16px monospace";
+          ctx.fillText(
+            `A: 0x${Math.floor(Math.random() * 256)
+              .toString(16)
+              .padStart(2, "0")}`,
+            60,
+            80,
+          );
+          ctx.fillText(
+            `X: 0x${Math.floor(Math.random() * 256)
+              .toString(16)
+              .padStart(2, "0")}`,
+            60,
+            110,
+          );
+          ctx.fillText(
+            `Y: 0x${Math.floor(Math.random() * 256)
+              .toString(16)
+              .padStart(2, "0")}`,
+            60,
+            140,
+          );
+          ctx.fillText(`PC: 0x${(0x1000 + frame).toString(16)}`, 60, 170);
+
+          frame++;
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+      }
+
+      function runGPUDemo() {
+        const ctx = initCanvas("gpu-canvas");
+        let time = 0;
+
+        function animate() {
+          const imageData = ctx.createImageData(
+            ctx.canvas.width,
+            ctx.canvas.height,
+          );
+          const data = imageData.data;
+          for (let x = 0; x < ctx.canvas.width; x++) {
+            for (let y = 0; y < ctx.canvas.height; y++) {
+              const i = (y * ctx.canvas.width + x) * 4;
+              data[i] = Math.sin(x * 0.01 + time) * 127 + 128;
+              data[i + 1] = Math.sin(y * 0.01 + time) * 127 + 128;
+              data[i + 2] = Math.sin((x + y) * 0.01 + time) * 127 + 128;
+              data[i + 3] = 255;
+            }
+          }
+          ctx.putImageData(imageData, 0, 0);
+          time += 0.05;
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+      }
+
+      function runAssemblyDemo() {
+        const ctx = initCanvas("assembly-canvas");
+        const code = document.getElementById("assembly-input").value;
+        let y = 30;
+        ctx.fillStyle = "#000";
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.fillStyle = "#00ff00";
+        ctx.font = "16px monospace";
+        code.split("\n").forEach((line) => {
+          ctx.fillText(line, 10, y);
+          y += 20;
+        });
+        ctx.fillStyle = "#00aa00";
+        ctx.fillRect(0, ctx.canvas.height - 20, ctx.canvas.width, 20);
+        ctx.fillStyle = "#000";
+        ctx.fillText("Assembled and executed", 10, ctx.canvas.height - 5);
+      }
+
+      function runGLSLDemo() {
+        const canvas = document.getElementById("glsl-canvas");
+        const gl = canvas.getContext("webgl");
+        const code = document.getElementById("glsl-input").value;
+
+        if (!gl) {
+          alert("WebGL not supported");
+          return;
+        }
+
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        gl.viewport(0, 0, canvas.width, canvas.height);
+
+        const vertexShaderSource = `
     attribute vec4 a_position;
     void main() {
       gl_Position = a_position;
     }
   `;
 
-  const fragmentShaderSource = code;
+        const fragmentShaderSource = code;
 
-  const vertexShader = gl.createShader(gl.VERTEX_SHADER);
-  gl.shaderSource(vertexShader, vertexShaderSource);
-  gl.compileShader(vertexShader);
+        const vertexShader = gl.createShader(gl.VERTEX_SHADER);
+        gl.shaderSource(vertexShader, vertexShaderSource);
+        gl.compileShader(vertexShader);
 
-  const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-  gl.shaderSource(fragmentShader, fragmentShaderSource);
-  gl.compileShader(fragmentShader);
+        const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+        gl.shaderSource(fragmentShader, fragmentShaderSource);
+        gl.compileShader(fragmentShader);
 
-  if (!gl.getShaderParameter(fragmentShader, gl.COMPILE_STATUS)) {
-    alert('Error compiling fragment shader: ' + gl.getShaderInfoLog(fragmentShader));
-    return;
-  }
+        if (!gl.getShaderParameter(fragmentShader, gl.COMPILE_STATUS)) {
+          alert(
+            "Error compiling fragment shader: " +
+              gl.getShaderInfoLog(fragmentShader),
+          );
+          return;
+        }
 
-  const program = gl.createProgram();
-  gl.attachShader(program, vertexShader);
-  gl.attachShader(program, fragmentShader);
-  gl.linkProgram(program);
+        const program = gl.createProgram();
+        gl.attachShader(program, vertexShader);
+        gl.attachShader(program, fragmentShader);
+        gl.linkProgram(program);
 
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-    alert('Error linking program: ' + gl.getProgramInfoLog(program));
-    return;
-  }
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+          alert("Error linking program: " + gl.getProgramInfoLog(program));
+          return;
+        }
 
-  gl.useProgram(program);
+        gl.useProgram(program);
 
-  const positionBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
-    -1, -1,
-    1, -1,
-    -1, 1,
-    -1, 1,
-    1, -1,
-    1, 1
-  ]), gl.STATIC_DRAW);
+        const positionBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+        gl.bufferData(
+          gl.ARRAY_BUFFER,
+          new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
+          gl.STATIC_DRAW,
+        );
 
-  const positionAttributeLocation = gl.getAttribLocation(program, "a_position");
-  gl.enableVertexAttribArray(positionAttributeLocation);
-  gl.vertexAttribPointer(positionAttributeLocation, 2, gl.FLOAT, false, 0, 0);
+        const positionAttributeLocation = gl.getAttribLocation(
+          program,
+          "a_position",
+        );
+        gl.enableVertexAttribArray(positionAttributeLocation);
+        gl.vertexAttribPointer(
+          positionAttributeLocation,
+          2,
+          gl.FLOAT,
+          false,
+          0,
+          0,
+        );
 
-  const timeUniformLocation = gl.getUniformLocation(program, "iTime");
-  const resolutionUniformLocation = gl.getUniformLocation(program, "iResolution");
+        const timeUniformLocation = gl.getUniformLocation(program, "iTime");
+        const resolutionUniformLocation = gl.getUniformLocation(
+          program,
+          "iResolution",
+        );
 
-  gl.uniform2f(resolutionUniformLocation, canvas.width, canvas.height);
+        gl.uniform2f(resolutionUniformLocation, canvas.width, canvas.height);
 
-  let startTime = performance.now();
-  function render() {
-    const currentTime = performance.now();
-    const elapsedTime = (currentTime - startTime) / 1000;
+        let startTime = performance.now();
+        function render() {
+          const currentTime = performance.now();
+          const elapsedTime = (currentTime - startTime) / 1000;
 
-    gl.uniform1f(timeUniformLocation, elapsedTime);
+          gl.uniform1f(timeUniformLocation, elapsedTime);
 
-    gl.clearColor(0, 0, 0, 1);
-    gl.clear(gl.COLOR_BUFFER_BIT);
+          gl.clearColor(0, 0, 0, 1);
+          gl.clear(gl.COLOR_BUFFER_BIT);
 
-    gl.drawArrays(gl.TRIANGLES, 0, 6);
+          gl.drawArrays(gl.TRIANGLES, 0, 6);
 
-    requestAnimationFrame(render);
-  }
+          requestAnimationFrame(render);
+        }
 
-  render();
-}
+        render();
+      }
 
-function runC64Demo() {
-  const ctx = initCanvas('c64-canvas');
-  const code = document.getElementById('c64-input').value;
-  let y = 30;
-  ctx.fillStyle = '#4040ff';
-  ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  ctx.fillStyle = '#ffffff';
-  ctx.font = '16px "C64 Pro Mono", monospace';
-  code.split('\n').forEach(line => {
-    ctx.fillText(line, 10, y);
-    y += 20;
-  });
-  y += 20;
-  ctx.fillText('READY.', 10, y);
-}
+      function runC64Demo() {
+        const ctx = initCanvas("c64-canvas");
+        const code = document.getElementById("c64-input").value;
+        let y = 30;
+        ctx.fillStyle = "#4040ff";
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.fillStyle = "#ffffff";
+        ctx.font = '16px "C64 Pro Mono", monospace';
+        code.split("\n").forEach((line) => {
+          ctx.fillText(line, 10, y);
+          y += 20;
+        });
+        y += 20;
+        ctx.fillText("READY.", 10, y);
+      }
 
-function runBusinessDemo() {
-  const ctx = initCanvas('business-canvas');
-  const data = document.getElementById('business-input').value.split('\n').map(row => row.split(','));
-  const headers = data.shift();
-  
-  ctx.fillStyle = '#000';
-  ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  
-  const cellWidth = ctx.canvas.width / (headers.length + 1);
-  const cellHeight = ctx.canvas.height / (data.length + 1);
-  
-  ctx.fillStyle = '#00ff00';
-  ctx.font = '12px monospace';
-  
-  headers.forEach((header, i) => {
-    ctx.fillText(header, (i + 1) * cellWidth, 20);
-  });
-  
-  data.forEach((row, i) => {
-    ctx.fillText(row[0], 10, (i + 1) * cellHeight + 20);
-    row.slice(1).forEach((cell, j) => {
-      ctx.fillText(cell, (j + 1) * cellWidth, (i + 1) * cellHeight + 20);
-    });
-  });
-}
+      function runBusinessDemo() {
+        const ctx = initCanvas("business-canvas");
+        const data = document
+          .getElementById("business-input")
+          .value.split("\n")
+          .map((row) => row.split(","));
+        const headers = data.shift();
 
-function runGameDemo() {
-  const ctx = initCanvas('game-canvas');
-  let x = 0, y = 150;
-  let dx = 2, dy = -2;
-  
-  function animate() {
-    ctx.fillStyle = '#000';
-    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    ctx.fillStyle = '#00ff00';
-    ctx.fillRect(x, y, 20, 20);
-    
-    x += dx;
-    y += dy;
-    
-    if (x + 20 > ctx.canvas.width || x < 0) dx = -dx;
-    if (y + 20 > ctx.canvas.height || y < 0) dy = -dy;
-    
-    requestAnimationFrame(animate);
-  }
-  
-  animate();
-}
+        ctx.fillStyle = "#000";
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-function runSystemDemo() {
-  const ctx = initCanvas('system-canvas');
-  const code = document.getElementById('system-input').value;
-  let y = 30;
-  ctx.fillStyle = '#000';
-  ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  ctx.fillStyle = '#00ff00';
-  ctx.font = '16px monospace';
-  code.split('\n').forEach(line => {
-    ctx.fillText(line, 10, y);
-    y += 20;
-  });
-  y += 20;
-  ctx.fillText('System initialized', 10, y);
-  y += 20;
-  ctx.fillText('All services started', 10, y);
-}
+        const cellWidth = ctx.canvas.width / (headers.length + 1);
+        const cellHeight = ctx.canvas.height / (data.length + 1);
 
-function runRing0Demo() {
-  const ctx = initCanvas('ring0-canvas');
-  const code = document.getElementById('ring0-input').value;
-  let y = 30;
-  ctx.fillStyle = '#000';
-  ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  ctx.fillStyle = '#00ff00';
-  ctx.font = '16px monospace';
-  code.split('\n').forEach(line => {
-    ctx.fillText(line, 10, y);
-    y += 20;
-  });
-  y += 20;
-  ctx.fillText('Ring-0 operations executed', 10, y);
-  y += 20;
-  ctx.fillText('System in privileged mode', 10, y);
-}
+        ctx.fillStyle = "#00ff00";
+        ctx.font = "12px monospace";
 
-function runX86Demo() {
-  const ctx = initCanvas('x86-canvas');
-  const code = document.getElementById('x86-input').value;
-  let y = 30;
-  ctx.fillStyle = '#000';
-  ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  ctx.fillStyle = '#00ff00';
-  ctx.font = '16px monospace';
-  code.split('\n').forEach(line => {
-    ctx.fillText(line, 10, y);
-    y += 20;
-  });
-  y += 20;
-  ctx.fillText('x86 code executed', 10, y);
-  y += 20;
-  ctx.fillText('Result: EAX = 3', 10, y);
-}
+        headers.forEach((header, i) => {
+          ctx.fillText(header, (i + 1) * cellWidth, 20);
+        });
 
-function runFreeBASICDemo() {
-  const ctx = initCanvas('freebasic-canvas');
-  const code = document.getElementById('freebasic-input').value;
-  let y = 30;
-  ctx.fillStyle = '#000';
-  ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  ctx.fillStyle = '#00ff00';
-  ctx.font = '16px monospace';
-  code.split('\n').forEach(line => {
-    ctx.fillText(line, 10, y);
-    y += 20;
-  });
-  y += 20;
-  ctx.fillText('Output:', 10, y);
-  y += 20;
-  ctx.fillText('Welcome to Project Manhattan!', 10, y);
-  y += 20;
-  for (let i = 1; i <= 5; i++) {
-    ctx.fillText(`Iteration: ${i}`, 10, y);
-    y += 20;
-  }
-  ctx.fillText('FreeBASIC Demo Complete', 10, y);
-}
+        data.forEach((row, i) => {
+          ctx.fillText(row[0], 10, (i + 1) * cellHeight + 20);
+          row.slice(1).forEach((cell, j) => {
+            ctx.fillText(cell, (j + 1) * cellWidth, (i + 1) * cellHeight + 20);
+          });
+        });
+      }
 
-// Initialize with overview mode
-switchMode('overview');
-</script>
-</body>
+      function runGameDemo() {
+        const ctx = initCanvas("game-canvas");
+        let x = 0,
+          y = 150;
+        let dx = 2,
+          dy = -2;
+
+        function animate() {
+          ctx.fillStyle = "#000";
+          ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+          ctx.fillStyle = "#00ff00";
+          ctx.fillRect(x, y, 20, 20);
+
+          x += dx;
+          y += dy;
+
+          if (x + 20 > ctx.canvas.width || x < 0) dx = -dx;
+          if (y + 20 > ctx.canvas.height || y < 0) dy = -dy;
+
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+      }
+
+      function runSystemDemo() {
+        const ctx = initCanvas("system-canvas");
+        const code = document.getElementById("system-input").value;
+        let y = 30;
+        ctx.fillStyle = "#000";
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.fillStyle = "#00ff00";
+        ctx.font = "16px monospace";
+        code.split("\n").forEach((line) => {
+          ctx.fillText(line, 10, y);
+          y += 20;
+        });
+        y += 20;
+        ctx.fillText("System initialized", 10, y);
+        y += 20;
+        ctx.fillText("All services started", 10, y);
+      }
+
+      function runRing0Demo() {
+        const ctx = initCanvas("ring0-canvas");
+        const code = document.getElementById("ring0-input").value;
+        let y = 30;
+        ctx.fillStyle = "#000";
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.fillStyle = "#00ff00";
+        ctx.font = "16px monospace";
+        code.split("\n").forEach((line) => {
+          ctx.fillText(line, 10, y);
+          y += 20;
+        });
+        y += 20;
+        ctx.fillText("Ring-0 operations executed", 10, y);
+        y += 20;
+        ctx.fillText("System in privileged mode", 10, y);
+      }
+
+      function runX86Demo() {
+        const ctx = initCanvas("x86-canvas");
+        const code = document.getElementById("x86-input").value;
+        let y = 30;
+        ctx.fillStyle = "#000";
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.fillStyle = "#00ff00";
+        ctx.font = "16px monospace";
+        code.split("\n").forEach((line) => {
+          ctx.fillText(line, 10, y);
+          y += 20;
+        });
+        y += 20;
+        ctx.fillText("x86 code executed", 10, y);
+        y += 20;
+        ctx.fillText("Result: EAX = 3", 10, y);
+      }
+
+      function runFreeBASICDemo() {
+        const ctx = initCanvas("freebasic-canvas");
+        const code = document.getElementById("freebasic-input").value;
+        let y = 30;
+        ctx.fillStyle = "#000";
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.fillStyle = "#00ff00";
+        ctx.font = "16px monospace";
+        code.split("\n").forEach((line) => {
+          ctx.fillText(line, 10, y);
+          y += 20;
+        });
+        y += 20;
+        ctx.fillText("Output:", 10, y);
+        y += 20;
+        ctx.fillText("Welcome to Project Manhattan!", 10, y);
+        y += 20;
+        for (let i = 1; i <= 5; i++) {
+          ctx.fillText(`Iteration: ${i}`, 10, y);
+          y += 20;
+        }
+        ctx.fillText("FreeBASIC Demo Complete", 10, y);
+      }
+
+      // Initialize with overview mode
+      switchMode("overview");
+    </script>
+  </body>
 </html>
