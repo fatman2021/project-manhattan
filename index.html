@@ -1,122 +1,139 @@
-<html><head><base href="https://websim.ai/project-manhattan"><title>Project Manhattan: Next-Generation MOS 6510-based CPU/GPU SoC Emulator Written in FreeBASIC</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/objects/Water.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/objects/Sky.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css"></script>
-<!-- Adding Foundation CSS for styling the overlay -->
-<style>
-  body { margin: 0; overflow: hidden; background-color: #000; }
-  canvas { width: 100%; height: 100%; }
-  #info {
-    position: absolute;
-    top: 10px;
-    width: 100%;
-    text-align: center;
-    color: white;
-    font-family: Arial, sans-serif;
-    pointer-events: none;
-    text-shadow: 1px 1px 2px black;
-  }
-  #metrics {
-    position: absolute;
-    top: 50px;
-    left: 10px;
-    color: white;
-    font-family: Arial, sans-serif;
-    background-color: rgba(0,0,0,0.5);
-    padding: 10px;
-    border-radius: 5px;
-  }
-  #benchmark {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    color: white;
-    font-family: Arial, sans-serif;
-    background-color: rgba(0,0,0,0.5);
-    padding: 10px;
-    border-radius: 5px;
-  }
-  #source-code {
-    position: absolute;
-    top: 60px;
-    right: 10px;
-    width: 300px;
-    height: 85%;
-    color: lime;
-    background-color: rgba(0, 0, 0, 0.7);
-    overflow: auto;
-    padding: 10px;
-    border-radius: 5px;
-    font-family: monospace;
-  }
-  #emulator {
-    position: absolute;
-    top: 50%;
-    left: 35%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.7);
-    overflow-y: scroll;
-    padding: 20px;
-    border-radius: 10px;
-    font-family: monospace;
-    text-align: left;
-  }
-  .emulator-button {
-    margin-top: 10px;
-    text-align: center;
-  }
-  #terminal {
-    font-family: 'Courier New', Courier, monospace;
-    color: lime;
-    background-color: black;
-    overflow: auto;
-    height: 300px;
-    width: 560px;
-    padding: 10px;
-    text-align: left;
-    border-radius: 10px;
-    filter: contrast(120%) brightness(80%);
-    box-shadow: 0 0 8px #00FF00;
-  }
-  #command-input {
-    display: block;
-    margin: 0 auto;
-    width: 90%;
-    background-color: black;
-    color: lime;
-    border: 1px solid green;
-    padding: 5px;
-    font-family: 'Courier New', Courier, monospace;
-  }
-  #graphics-viewport {
-    width: 100%;
-    height: 200px;
-    background-color: black;
-    margin-top: 10px;
-    border: 1px solid #008080;
-    overflow: hidden;
-    border-radius: 10px;
-  }
-</style>
-</head>
-<body>
-<div id="info">Project Manhattan: Next-Generation MOS 6510-based CPU/GPU SoC Emulator Written in FreeBASIC</div>
-<div id="metrics"></div>
-<div id="benchmark"></div>
-<div id="source-code">
-<pre>' Project Manhattan: Next-Generation MOS 6510-based CPU/GPU SoC Emulator
+<html>
+  <head>
+    <base href="https://websim.ai/project-manhattan" />
+    <title>
+      Project Manhattan: Next-Generation MOS 6510-based CPU/GPU SoC Emulator
+      Written in FreeBASIC
+    </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/objects/Water.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/objects/Sky.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css"></script>
+    <!-- Adding Foundation CSS for styling the overlay -->
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #000;
+      }
+      canvas {
+        width: 100%;
+        height: 100%;
+      }
+      #info {
+        position: absolute;
+        top: 10px;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-family: Arial, sans-serif;
+        pointer-events: none;
+        text-shadow: 1px 1px 2px black;
+      }
+      #metrics {
+        position: absolute;
+        top: 50px;
+        left: 10px;
+        color: white;
+        font-family: Arial, sans-serif;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+      }
+      #benchmark {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: white;
+        font-family: Arial, sans-serif;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+      }
+      #source-code {
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        width: 300px;
+        height: 85%;
+        color: lime;
+        background-color: rgba(0, 0, 0, 0.7);
+        overflow: auto;
+        padding: 10px;
+        border-radius: 5px;
+        font-family: monospace;
+      }
+      #emulator {
+        position: absolute;
+        top: 50%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 600px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.7);
+        overflow-y: scroll;
+        padding: 20px;
+        border-radius: 10px;
+        font-family: monospace;
+        text-align: left;
+      }
+      .emulator-button {
+        margin-top: 10px;
+        text-align: center;
+      }
+      #terminal {
+        font-family: "Courier New", Courier, monospace;
+        color: lime;
+        background-color: black;
+        overflow: auto;
+        height: 300px;
+        width: 560px;
+        padding: 10px;
+        text-align: left;
+        border-radius: 10px;
+        filter: contrast(120%) brightness(80%);
+        box-shadow: 0 0 8px #00ff00;
+      }
+      #command-input {
+        display: block;
+        margin: 0 auto;
+        width: 90%;
+        background-color: black;
+        color: lime;
+        border: 1px solid green;
+        padding: 5px;
+        font-family: "Courier New", Courier, monospace;
+      }
+      #graphics-viewport {
+        width: 100%;
+        height: 200px;
+        background-color: black;
+        margin-top: 10px;
+        border: 1px solid #008080;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="info">
+      Project Manhattan: Next-Generation MOS 6510-based CPU/GPU SoC Emulator
+      Written in FreeBASIC
+    </div>
+    <div id="metrics"></div>
+    <div id="benchmark"></div>
+    <div id="source-code">
+      <pre>
+' Project Manhattan: Next-Generation MOS 6510-based CPU/GPU SoC Emulator
 ' Version 2.0.1
 ' This code implements an advanced MOS 6510-based CPU/GPU System on Chip emulator
 ' with integrated 3D graphics capabilities for both retro and modern applications.
@@ -240,683 +257,803 @@ CPU_Shutdown()
 GPU_Shutdown()
 Memory_Shutdown()
 END
-</pre>
-</div>
-<div id="emulator" style="left: calc(50% - 120px); top: 50%; transform: translate(-50%, -50%);">
-  <h4>UNIX Posix Terminal</h4>
-  <pre id="terminal">user@project-manhattan:~$</pre>
-  <div class="emulator-button">
-    <button class="button" onclick="startTerminal()">Start Terminal</button>
-    <button class="button" onclick="runCommand()">Run Command</button>
-  </div>
-  <textarea id="command-input" rows="5" cols="35"></textarea>
-  <div id="graphics-viewport"></div>
-  
-  <!-- Updated graphics viewports -->
-  <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-top: 20px;">
-    <div class="mini-viewport" style="width: 135px; height: 135px; background-color: #000; border: 1px solid #008080; border-radius: 5px; margin-bottom: 10px;">
-      <canvas id="vic-ii-demo" width="135" height="135">
-<script>
-// VIC-II demo
-const vicIICanvas = document.getElementById('vic-ii-demo');
-const vicIICtx = vicIICanvas.getContext('2d');
-
-// VIC-II color palette (16 colors)
-const vicIIColors = [
-    '#000000', '#FFFFFF', '#880000', '#AAFFEE',
-    '#CC44CC', '#00CC55', '#0000AA', '#EEEE77',
-    '#DD8855', '#664400', '#FF7777', '#333333',
-    '#777777', '#AAFF66', '#0088FF', '#BBBBBB'
-];
-
-// VIC-II screen resolution (scaled down)
-const screenWidth = 135;
-const screenHeight = 135;
-
-// Sprite data (8x21 pixels, represented as hex)
-const spriteData = [
-    0x00, 0x00, 0x00,
-    0x00, 0x3C, 0x00,
-    0x00, 0x7E, 0x00,
-    0x00, 0xFF, 0x00,
-    0x01, 0xFF, 0x80,
-    0x03, 0xFF, 0xC0,
-    0x03, 0xFF, 0xC0,
-    0x07, 0xFF, 0xE0,
-    0x07, 0xFF, 0xE0,
-    0x0F, 0xFF, 0xF0,
-    0x0F, 0xFF, 0xF0,
-    0x0F, 0xFF, 0xF0,
-    0x0F, 0xFF, 0xF0,
-    0x07, 0xFF, 0xE0,
-    0x07, 0xFF, 0xE0,
-    0x03, 0xFF, 0xC0,
-    0x03, 0xFF, 0xC0,
-    0x01, 0xFF, 0x80,
-    0x00, 0xFF, 0x00,
-    0x00, 0x7E, 0x00,
-    0x00, 0x3C, 0x00
-];
-
-function drawSprite(x, y, colorIndex) {
-    vicIICtx.fillStyle = vicIIColors[colorIndex];
-    for (let row = 0; row < 21; row++) {
-        for (let col = 0; col < 24; col++) {
-            if (spriteData[row * 3 + Math.floor(col / 8)] & (0x80 >> (col % 8))) {
-                vicIICtx.fillRect(x + col, y + row, 1, 1);
-            }
-        }
-    }
-}
-
-function drawCharacter(x, y, charCode, colorIndex) {
-    vicIICtx.fillStyle = vicIIColors[colorIndex];
-    vicIICtx.font = '8px "Commodore 64"';
-    vicIICtx.fillText(String.fromCharCode(charCode), x, y + 7);
-}
-
-function drawVICIIDemo() {
-    // Clear screen with background color (light blue)
-    vicIICtx.fillStyle = vicIIColors[3];
-    vicIICtx.fillRect(0, 0, screenWidth, screenHeight);
-
-    // Draw border (dark blue)
-    vicIICtx.fillStyle = vicIIColors[6];
-    vicIICtx.fillRect(0, 0, screenWidth, 8);
-    vicIICtx.fillRect(0, screenHeight - 8, screenWidth, 8);
-    vicIICtx.fillRect(0, 0, 8, screenHeight);
-    vicIICtx.fillRect(screenWidth - 8, 0, 8, screenHeight);
-
-    // Draw some colorful characters
-    for (let i = 0; i < 16; i++) {
-        drawCharacter(20 + (i % 4) * 10, 20 + Math.floor(i / 4) * 10, 65 + i, i);
-    }
-
-    // Draw a sprite
-    const spriteX = 70 + Math.sin(Date.now() * 0.003) * 30;
-    const spriteY = 70 + Math.cos(Date.now() * 0.002) * 30;
-    drawSprite(spriteX, spriteY, 7);
-
-    // Draw raster bar effect
-    const rasterBarHeight = 4;
-    for (let i = 0; i < 6; i++) {
-        const y = (Math.sin(Date.now() * 0.002 + i * 0.5) * 20) + 60;
-        vicIICtx.fillStyle = vicIIColors[(i + 1) % 16];
-        vicIICtx.fillRect(8, y, screenWidth - 16, rasterBarHeight);
-    }
-
-    // Add some text
-    vicIICtx.font = '7px Arial';
-    vicIICtx.fillStyle = vicIIColors[1];
-    vicIICtx.fillText('VIC-II Demo', 85, 130);
-}
-
-function animateVICII() {
-    drawVICIIDemo();
-    requestAnimationFrame(animateVICII);
-}
-
-animateVICII();
-</script>
-</canvas>
+</pre
+      >
     </div>
-    <div class="mini-viewport" style="width: 135px; height: 135px; background-color: #000; border: 1px solid #008080; border-radius: 5px; margin-bottom: 10px;">
-      <canvas id="svga-demo" width="135" height="135">
-<script>
-// SVGA demo
-const svgaCanvas = document.getElementById('svga-demo');
-const svgaCtx = svgaCanvas.getContext('2d');
+    <div
+      id="emulator"
+      style="
+        left: calc(50% - 120px);
+        top: 50%;
+        transform: translate(-50%, -50%);
+      "
+    >
+      <h4>UNIX Posix Terminal</h4>
+      <pre id="terminal">user@project-manhattan:~$</pre>
+      <div class="emulator-button">
+        <button class="button" onclick="startTerminal()">Start Terminal</button>
+        <button class="button" onclick="runCommand()">Run Command</button>
+      </div>
+      <textarea id="command-input" rows="5" cols="35"></textarea>
+      <div id="graphics-viewport"></div>
 
-// SVGA supported resolutions and color depths
-const svgaModes = [
-    { width: 800, height: 600, colorDepth: 16 },
-    { width: 1024, height: 768, colorDepth: 24 },
-    { width: 1280, height: 1024, colorDepth: 32 }
-];
+      <!-- Updated graphics viewports -->
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          margin-top: 20px;
+        "
+      >
+        <div
+          class="mini-viewport"
+          style="
+            width: 135px;
+            height: 135px;
+            background-color: #000;
+            border: 1px solid #008080;
+            border-radius: 5px;
+            margin-bottom: 10px;
+          "
+        >
+          <canvas id="vic-ii-demo" width="135" height="135">
+            <script>
+              // VIC-II demo
+              const vicIICanvas = document.getElementById("vic-ii-demo");
+              const vicIICtx = vicIICanvas.getContext("2d");
 
-let currentMode = 0;
-let frame = 0;
+              // VIC-II color palette (16 colors)
+              const vicIIColors = [
+                "#000000",
+                "#FFFFFF",
+                "#880000",
+                "#AAFFEE",
+                "#CC44CC",
+                "#00CC55",
+                "#0000AA",
+                "#EEEE77",
+                "#DD8855",
+                "#664400",
+                "#FF7777",
+                "#333333",
+                "#777777",
+                "#AAFF66",
+                "#0088FF",
+                "#BBBBBB",
+              ];
 
-function drawSVGADemo() {
-    const mode = svgaModes[currentMode];
-    const scale = 135 / Math.max(mode.width, mode.height);
+              // VIC-II screen resolution (scaled down)
+              const screenWidth = 135;
+              const screenHeight = 135;
 
-    // Clear canvas
-    svgaCtx.fillStyle = '#000000';
-    svgaCtx.fillRect(0, 0, 135, 135);
+              // Sprite data (8x21 pixels, represented as hex)
+              const spriteData = [
+                0x00, 0x00, 0x00, 0x00, 0x3c, 0x00, 0x00, 0x7e, 0x00, 0x00,
+                0xff, 0x00, 0x01, 0xff, 0x80, 0x03, 0xff, 0xc0, 0x03, 0xff,
+                0xc0, 0x07, 0xff, 0xe0, 0x07, 0xff, 0xe0, 0x0f, 0xff, 0xf0,
+                0x0f, 0xff, 0xf0, 0x0f, 0xff, 0xf0, 0x0f, 0xff, 0xf0, 0x07,
+                0xff, 0xe0, 0x07, 0xff, 0xe0, 0x03, 0xff, 0xc0, 0x03, 0xff,
+                0xc0, 0x01, 0xff, 0x80, 0x00, 0xff, 0x00, 0x00, 0x7e, 0x00,
+                0x00, 0x3c, 0x00,
+              ];
 
-    // Scale context to fit the demo area
-    svgaCtx.save();
-    svgaCtx.scale(scale, scale);
+              function drawSprite(x, y, colorIndex) {
+                vicIICtx.fillStyle = vicIIColors[colorIndex];
+                for (let row = 0; row < 21; row++) {
+                  for (let col = 0; col < 24; col++) {
+                    if (
+                      spriteData[row * 3 + Math.floor(col / 8)] &
+                      (0x80 >> col % 8)
+                    ) {
+                      vicIICtx.fillRect(x + col, y + row, 1, 1);
+                    }
+                  }
+                }
+              }
 
-    // Draw a complex pattern showcasing SVGA capabilities
-    for (let x = 0; x < mode.width; x += 20) {
-        for (let y = 0; y < mode.height; y += 20) {
-            const hue = (x + y + frame) % 360;
-            const saturation = 100 * (1 - y / mode.height);
-            const lightness = 50 + 25 * Math.sin((x + y + frame) * 0.01);
-            
-            svgaCtx.fillStyle = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-            svgaCtx.fillRect(x, y, 20, 20);
-        }
-    }
+              function drawCharacter(x, y, charCode, colorIndex) {
+                vicIICtx.fillStyle = vicIIColors[colorIndex];
+                vicIICtx.font = '8px "Commodore 64"';
+                vicIICtx.fillText(String.fromCharCode(charCode), x, y + 7);
+              }
 
-    // Draw some geometric shapes
-    svgaCtx.strokeStyle = '#FFFFFF';
-    svgaCtx.lineWidth = 2;
-    
-    // Animated circle
-    const radius = 50 + 25 * Math.sin(frame * 0.05);
-    svgaCtx.beginPath();
-    svgaCtx.arc(mode.width / 2, mode.height / 2, radius, 0, 2 * Math.PI);
-    svgaCtx.stroke();
+              function drawVICIIDemo() {
+                // Clear screen with background color (light blue)
+                vicIICtx.fillStyle = vicIIColors[3];
+                vicIICtx.fillRect(0, 0, screenWidth, screenHeight);
 
-    // Rotating triangle
-    svgaCtx.save();
-    svgaCtx.translate(mode.width / 2, mode.height / 2);
-    svgaCtx.rotate(frame * 0.02);
-    svgaCtx.beginPath();
-    svgaCtx.moveTo(0, -60);
-    svgaCtx.lineTo(52, 30);
-    svgaCtx.lineTo(-52, 30);
-    svgaCtx.closePath();
-    svgaCtx.stroke();
-    svgaCtx.restore();
+                // Draw border (dark blue)
+                vicIICtx.fillStyle = vicIIColors[6];
+                vicIICtx.fillRect(0, 0, screenWidth, 8);
+                vicIICtx.fillRect(0, screenHeight - 8, screenWidth, 8);
+                vicIICtx.fillRect(0, 0, 8, screenHeight);
+                vicIICtx.fillRect(screenWidth - 8, 0, 8, screenHeight);
 
-    // Add some text
-    svgaCtx.font = '16px Arial';
-    svgaCtx.fillStyle = '#FFFFFF';
-    svgaCtx.fillText(`SVGA ${mode.width}x${mode.height}`, 10, 20);
-    svgaCtx.fillText(`${mode.colorDepth}-bit Color`, 10, 40);
+                // Draw some colorful characters
+                for (let i = 0; i < 16; i++) {
+                  drawCharacter(
+                    20 + (i % 4) * 10,
+                    20 + Math.floor(i / 4) * 10,
+                    65 + i,
+                    i,
+                  );
+                }
 
-    svgaCtx.restore();
+                // Draw a sprite
+                const spriteX = 70 + Math.sin(Date.now() * 0.003) * 30;
+                const spriteY = 70 + Math.cos(Date.now() * 0.002) * 30;
+                drawSprite(spriteX, spriteY, 7);
 
-    frame++;
-    if (frame % 180 === 0) {
-        currentMode = (currentMode + 1) % svgaModes.length;
-    }
-}
+                // Draw raster bar effect
+                const rasterBarHeight = 4;
+                for (let i = 0; i < 6; i++) {
+                  const y = Math.sin(Date.now() * 0.002 + i * 0.5) * 20 + 60;
+                  vicIICtx.fillStyle = vicIIColors[(i + 1) % 16];
+                  vicIICtx.fillRect(8, y, screenWidth - 16, rasterBarHeight);
+                }
 
-function animateSVGA() {
-    drawSVGADemo();
-    requestAnimationFrame(animateSVGA);
-}
+                // Add some text
+                vicIICtx.font = "7px Arial";
+                vicIICtx.fillStyle = vicIIColors[1];
+                vicIICtx.fillText("VIC-II Demo", 85, 130);
+              }
 
-animateSVGA();
-</script>
-</canvas>
+              function animateVICII() {
+                drawVICIIDemo();
+                requestAnimationFrame(animateVICII);
+              }
+
+              animateVICII();
+            </script>
+          </canvas>
+        </div>
+        <div
+          class="mini-viewport"
+          style="
+            width: 135px;
+            height: 135px;
+            background-color: #000;
+            border: 1px solid #008080;
+            border-radius: 5px;
+            margin-bottom: 10px;
+          "
+        >
+          <canvas id="svga-demo" width="135" height="135">
+            <script>
+              // SVGA demo
+              const svgaCanvas = document.getElementById("svga-demo");
+              const svgaCtx = svgaCanvas.getContext("2d");
+
+              // SVGA supported resolutions and color depths
+              const svgaModes = [
+                { width: 800, height: 600, colorDepth: 16 },
+                { width: 1024, height: 768, colorDepth: 24 },
+                { width: 1280, height: 1024, colorDepth: 32 },
+              ];
+
+              let currentMode = 0;
+              let frame = 0;
+
+              function drawSVGADemo() {
+                const mode = svgaModes[currentMode];
+                const scale = 135 / Math.max(mode.width, mode.height);
+
+                // Clear canvas
+                svgaCtx.fillStyle = "#000000";
+                svgaCtx.fillRect(0, 0, 135, 135);
+
+                // Scale context to fit the demo area
+                svgaCtx.save();
+                svgaCtx.scale(scale, scale);
+
+                // Draw a complex pattern showcasing SVGA capabilities
+                for (let x = 0; x < mode.width; x += 20) {
+                  for (let y = 0; y < mode.height; y += 20) {
+                    const hue = (x + y + frame) % 360;
+                    const saturation = 100 * (1 - y / mode.height);
+                    const lightness =
+                      50 + 25 * Math.sin((x + y + frame) * 0.01);
+
+                    svgaCtx.fillStyle = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+                    svgaCtx.fillRect(x, y, 20, 20);
+                  }
+                }
+
+                // Draw some geometric shapes
+                svgaCtx.strokeStyle = "#FFFFFF";
+                svgaCtx.lineWidth = 2;
+
+                // Animated circle
+                const radius = 50 + 25 * Math.sin(frame * 0.05);
+                svgaCtx.beginPath();
+                svgaCtx.arc(
+                  mode.width / 2,
+                  mode.height / 2,
+                  radius,
+                  0,
+                  2 * Math.PI,
+                );
+                svgaCtx.stroke();
+
+                // Rotating triangle
+                svgaCtx.save();
+                svgaCtx.translate(mode.width / 2, mode.height / 2);
+                svgaCtx.rotate(frame * 0.02);
+                svgaCtx.beginPath();
+                svgaCtx.moveTo(0, -60);
+                svgaCtx.lineTo(52, 30);
+                svgaCtx.lineTo(-52, 30);
+                svgaCtx.closePath();
+                svgaCtx.stroke();
+                svgaCtx.restore();
+
+                // Add some text
+                svgaCtx.font = "16px Arial";
+                svgaCtx.fillStyle = "#FFFFFF";
+                svgaCtx.fillText(`SVGA ${mode.width}x${mode.height}`, 10, 20);
+                svgaCtx.fillText(`${mode.colorDepth}-bit Color`, 10, 40);
+
+                svgaCtx.restore();
+
+                frame++;
+                if (frame % 180 === 0) {
+                  currentMode = (currentMode + 1) % svgaModes.length;
+                }
+              }
+
+              function animateSVGA() {
+                drawSVGADemo();
+                requestAnimationFrame(animateSVGA);
+              }
+
+              animateSVGA();
+            </script>
+          </canvas>
+        </div>
+        <div
+          class="mini-viewport"
+          style="
+            width: 135px;
+            height: 135px;
+            background-color: #000;
+            border: 1px solid #008080;
+            border-radius: 5px;
+            margin-bottom: 10px;
+          "
+        >
+          <canvas id="copperlists-demo" width="135" height="135">
+            <script>
+              // ECS Copperlists demo
+              const copperlistsCanvas =
+                document.getElementById("copperlists-demo");
+              const copperlistsCtx = copperlistsCanvas.getContext("2d");
+
+              // ECS components
+              const Position = Symbol("position");
+              const Velocity = Symbol("velocity");
+              const Color = Symbol("color");
+              const Size = Symbol("size");
+
+              // ECS entities
+              const entities = new Map();
+
+              // ECS systems
+              const movementSystem = (entity) => {
+                const position = entity.get(Position);
+                const velocity = entity.get(Velocity);
+                position.x += velocity.x;
+                position.y += velocity.y;
+
+                // Bounce off edges
+                if (position.x <= 0 || position.x >= 135) velocity.x *= -1;
+                if (position.y <= 0 || position.y >= 135) velocity.y *= -1;
+              };
+
+              const renderSystem = (entity) => {
+                const position = entity.get(Position);
+                const color = entity.get(Color);
+                const size = entity.get(Size);
+
+                copperlistsCtx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
+                copperlistsCtx.fillRect(position.x, position.y, size, size);
+              };
+
+              // Create entities
+              for (let i = 0; i < 50; i++) {
+                const entity = new Map();
+                entity.set(Position, {
+                  x: Math.random() * 135,
+                  y: Math.random() * 135,
+                });
+                entity.set(Velocity, {
+                  x: (Math.random() - 0.5) * 2,
+                  y: (Math.random() - 0.5) * 2,
+                });
+                entity.set(Color, {
+                  r: Math.floor(Math.random() * 256),
+                  g: Math.floor(Math.random() * 256),
+                  b: Math.floor(Math.random() * 256),
+                  a: Math.random() * 0.5 + 0.5,
+                });
+                entity.set(Size, Math.random() * 5 + 2);
+                entities.set(i, entity);
+              }
+
+              // Copperlist effect using 32-bit ARGB colors
+              function createCopperlist() {
+                const copperlist = [];
+                for (let i = 0; i < 135; i++) {
+                  copperlist.push({
+                    y: i,
+                    color: {
+                      r: Math.sin(i * 0.1) * 127 + 128,
+                      g: Math.sin(i * 0.1 + 2) * 127 + 128,
+                      b: Math.sin(i * 0.1 + 4) * 127 + 128,
+                      a: 1,
+                    },
+                  });
+                }
+                return copperlist;
+              }
+
+              const copperlist = createCopperlist();
+
+              function drawCopperlistsDemo() {
+                // Clear canvas
+                copperlistsCtx.clearRect(0, 0, 135, 135);
+
+                // Apply copperlist effect
+                for (const copper of copperlist) {
+                  copperlistsCtx.fillStyle = `rgba(${copper.color.r}, ${copper.color.g}, ${copper.color.b}, ${copper.color.a})`;
+                  copperlistsCtx.fillRect(0, copper.y, 135, 1);
+                }
+
+                // Update and render entities
+                for (const entity of entities.values()) {
+                  movementSystem(entity);
+                  renderSystem(entity);
+                }
+
+                // Add some text
+                copperlistsCtx.font = "10px Arial";
+                copperlistsCtx.fillStyle = "rgba(255, 255, 255, 0.8)";
+                copperlistsCtx.fillText("ECS Copperlist", 5, 15);
+                copperlistsCtx.fillText("32-bit ARGB", 5, 130);
+              }
+
+              function animateCopperlists() {
+                drawCopperlistsDemo();
+                requestAnimationFrame(animateCopperlists);
+              }
+
+              animateCopperlists();
+            </script>
+          </canvas>
+        </div>
+        <div
+          class="mini-viewport"
+          style="
+            width: 135px;
+            height: 135px;
+            background-color: #000;
+            border: 1px solid #008080;
+            border-radius: 5px;
+            margin-bottom: 10px;
+          "
+        >
+          <canvas id="aga-ham8-demo" width="135" height="135">
+            <script>
+              // AGA HAM8 demo
+              const agaHam8Canvas = document.getElementById("aga-ham8-demo");
+              const agaHam8Ctx = agaHam8Canvas.getContext("2d");
+
+              function drawAGAHAM8Demo() {
+                // Clear canvas
+                agaHam8Ctx.fillStyle = "#000000";
+                agaHam8Ctx.fillRect(0, 0, 135, 135);
+
+                // Display all 4096 colors
+                const colorSize = Math.ceil(Math.sqrt(4096));
+                const pixelSize = Math.ceil(135 / colorSize);
+
+                for (let i = 0; i < 4096; i++) {
+                  const r = (i & 0xf00) >> 8;
+                  const g = (i & 0x0f0) >> 4;
+                  const b = i & 0x00f;
+
+                  const x = (i % colorSize) * pixelSize;
+                  const y = Math.floor(i / colorSize) * pixelSize;
+
+                  agaHam8Ctx.fillStyle = `rgb(${r * 17}, ${g * 17}, ${b * 17})`;
+                  agaHam8Ctx.fillRect(x, y, pixelSize, pixelSize);
+                }
+
+                // Add some text
+                agaHam8Ctx.font = "10px Arial";
+                agaHam8Ctx.fillStyle = "#FFFFFF";
+                agaHam8Ctx.fillText("AGA HAM8", 5, 15);
+                agaHam8Ctx.fillText("4096 Colors", 5, 130);
+              }
+
+              function animateAGAHAM8() {
+                drawAGAHAM8Demo();
+                requestAnimationFrame(animateAGAHAM8);
+              }
+
+              animateAGAHAM8();
+            </script>
+          </canvas>
+        </div>
+        <div
+          class="mini-viewport"
+          style="
+            width: 135px;
+            height: 135px;
+            background-color: #000;
+            border: 1px solid #008080;
+            border-radius: 5px;
+            margin-bottom: 10px;
+          "
+        >
+          <canvas id="soc-demo" width="135" height="539">
+            <script>
+              // HDR demo
+              const hdrCanvas = document.getElementById("soc-demo");
+              const hdrCtx = hdrCanvas.getContext("2d");
+
+              // Create an off-screen canvas for HDR rendering
+              const offscreenCanvas = document.createElement("canvas");
+              offscreenCanvas.width = 135;
+              offscreenCanvas.height = 539;
+              const offscreenCtx = offscreenCanvas.getContext("2d");
+
+              function drawHDRDemo() {
+                // Clear canvas
+                offscreenCtx.fillStyle = "#000000";
+                offscreenCtx.fillRect(0, 0, 135, 539);
+
+                // Create a gradient to simulate HDR sky
+                const gradient = offscreenCtx.createLinearGradient(
+                  0,
+                  0,
+                  0,
+                  539,
+                );
+                gradient.addColorStop(0, "rgba(255, 255, 255, 1)"); // Bright white
+                gradient.addColorStop(0.3, "rgba(255, 200, 100, 1)"); // Warm sunlight
+                gradient.addColorStop(0.6, "rgba(100, 150, 255, 1)"); // Sky blue
+                gradient.addColorStop(1, "rgba(0, 0, 50, 1)"); // Deep night sky
+
+                offscreenCtx.fillStyle = gradient;
+                offscreenCtx.fillRect(0, 0, 135, 539);
+
+                // Add a very bright sun
+                const sunGradient = offscreenCtx.createRadialGradient(
+                  67,
+                  67,
+                  0,
+                  67,
+                  67,
+                  30,
+                );
+                sunGradient.addColorStop(0, "rgba(255, 255, 255, 1)");
+                sunGradient.addColorStop(0.3, "rgba(255, 255, 200, 1)");
+                sunGradient.addColorStop(1, "rgba(255, 200, 100, 0)");
+
+                offscreenCtx.fillStyle = sunGradient;
+                offscreenCtx.beginPath();
+                offscreenCtx.arc(67, 67, 30, 0, 2 * Math.PI);
+                offscreenCtx.fill();
+
+                // Add lens flare
+                const flareGradient = offscreenCtx.createRadialGradient(
+                  47,
+                  87,
+                  0,
+                  47,
+                  87,
+                  10,
+                );
+                flareGradient.addColorStop(0, "rgba(255, 255, 255, 0.8)");
+                flareGradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+                offscreenCtx.fillStyle = flareGradient;
+                offscreenCtx.beginPath();
+                offscreenCtx.arc(47, 87, 10, 0, 2 * Math.PI);
+                offscreenCtx.fill();
+
+                // Add very dark shadows
+                offscreenCtx.fillStyle = "rgba(0, 0, 0, 0.9)";
+                offscreenCtx.fillRect(10, 400, 115, 20);
+
+                // Add midtones
+                offscreenCtx.fillStyle = "rgba(100, 100, 100, 0.5)";
+                offscreenCtx.fillRect(20, 250, 95, 100);
+
+                // Simulate HDR tone mapping
+                const imageData = offscreenCtx.getImageData(0, 0, 135, 539);
+                const data = imageData.data;
+                for (let i = 0; i < data.length; i += 4) {
+                  // Apply a simple tone mapping curve
+                  data[i] = Math.pow(data[i] / 255, 0.6) * 255;
+                  data[i + 1] = Math.pow(data[i + 1] / 255, 0.6) * 255;
+                  data[i + 2] = Math.pow(data[i + 2] / 255, 0.6) * 255;
+                }
+                hdrCtx.putImageData(imageData, 0, 0);
+
+                // Add some text
+                hdrCtx.font = "10px Arial";
+                hdrCtx.fillStyle = "rgba(255, 255, 255, 0.8)";
+                hdrCtx.fillText("HDR Demo", 5, 15);
+                hdrCtx.fillText("High Dynamic", 5, 520);
+                hdrCtx.fillText("Range", 5, 532);
+              }
+
+              function animateHDR() {
+                drawHDRDemo();
+                requestAnimationFrame(animateHDR);
+              }
+
+              animateHDR();
+            </script>
+          </canvas>
+        </div>
+      </div>
     </div>
-    <div class="mini-viewport" style="width: 135px; height: 135px; background-color: #000; border: 1px solid #008080; border-radius: 5px; margin-bottom: 10px;">
-      <canvas id="copperlists-demo" width="135" height="135">
-<script>
-// ECS Copperlists demo
-const copperlistsCanvas = document.getElementById('copperlists-demo');
-const copperlistsCtx = copperlistsCanvas.getContext('2d');
 
-// ECS components
-const Position = Symbol('position');
-const Velocity = Symbol('velocity');
-const Color = Symbol('color');
-const Size = Symbol('size');
+    <script>
+      // Set up the scene, camera, and renderer
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        2000,
+      );
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 0.5;
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      document.body.appendChild(renderer.domElement);
 
-// ECS entities
-const entities = new Map();
+      // Add orbit controls
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.maxPolarAngle = Math.PI * 0.495;
+      controls.target.set(0, 10, 0);
+      controls.minDistance = 40.0;
+      controls.maxDistance = 500.0;
 
-// ECS systems
-const movementSystem = (entity) => {
-    const position = entity.get(Position);
-    const velocity = entity.get(Velocity);
-    position.x += velocity.x;
-    position.y += velocity.y;
+      // Create the water
+      const waterGeometry = new THREE.PlaneGeometry(10000, 10000);
+      const water = new THREE.Water(waterGeometry, {
+        textureWidth: 512,
+        textureHeight: 512,
+        waterNormals: new THREE.TextureLoader().load(
+          "https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/waternormals.jpg",
+          function (texture) {
+            texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+          },
+        ),
+        sunDirection: new THREE.Vector3(),
+        sunColor: 0xffffff,
+        waterColor: 0x001e0f,
+        distortionScale: 3.7,
+        fog: scene.fog !== undefined,
+      });
+      water.rotation.x = -Math.PI / 2;
+      water.receiveShadow = true;
+      scene.add(water);
 
-    // Bounce off edges
-    if (position.x <= 0 || position.x >= 135) velocity.x *= -1;
-    if (position.y <= 0 || position.y >= 135) velocity.y *= -1;
-};
+      // Create the sky
+      const sky = new THREE.Sky();
+      sky.scale.setScalar(10000);
+      scene.add(sky);
 
-const renderSystem = (entity) => {
-    const position = entity.get(Position);
-    const color = entity.get(Color);
-    const size = entity.get(Size);
+      const skyUniforms = sky.material.uniforms;
+      skyUniforms["turbidity"].value = 10;
+      skyUniforms["rayleigh"].value = 2;
+      skyUniforms["mieCoefficient"].value = 0.005;
+      skyUniforms["mieDirectionalG"].value = 0.8;
 
-    copperlistsCtx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
-    copperlistsCtx.fillRect(position.x, position.y, size, size);
-};
+      const parameters = {
+        elevation: 2,
+        azimuth: 180,
+      };
 
-// Create entities
-for (let i = 0; i < 50; i++) {
-    const entity = new Map();
-    entity.set(Position, { x: Math.random() * 135, y: Math.random() * 135 });
-    entity.set(Velocity, { x: (Math.random() - 0.5) * 2, y: (Math.random() - 0.5) * 2 });
-    entity.set(Color, {
-        r: Math.floor(Math.random() * 256),
-        g: Math.floor(Math.random() * 256),
-        b: Math.floor(Math.random() * 256),
-        a: Math.random() * 0.5 + 0.5
-    });
-    entity.set(Size, Math.random() * 5 + 2);
-    entities.set(i, entity);
-}
+      const pmremGenerator = new THREE.PMREMGenerator(renderer);
 
-// Copperlist effect using 32-bit ARGB colors
-function createCopperlist() {
-    const copperlist = [];
-    for (let i = 0; i < 135; i++) {
-        copperlist.push({
-            y: i,
-            color: {
-                r: Math.sin(i * 0.1) * 127 + 128,
-                g: Math.sin(i * 0.1 + 2) * 127 + 128,
-                b: Math.sin(i * 0.1 + 4) * 127 + 128,
-                a: 1
-            }
+      function updateSun() {
+        const phi = THREE.MathUtils.degToRad(90 - parameters.elevation);
+        const theta = THREE.MathUtils.degToRad(parameters.azimuth);
+        const sun = new THREE.Vector3();
+        sun.setFromSphericalCoords(1, phi, theta);
+        sky.material.uniforms["sunPosition"].value.copy(sun);
+        water.material.uniforms["sunDirection"].value.copy(sun).normalize();
+        scene.environment = pmremGenerator.fromScene(sky).texture;
+      }
+
+      updateSun();
+
+      // Create complex geometry for benchmark
+      const complexGeometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+      const complexMaterial = new THREE.MeshStandardMaterial({
+        color: 0xffffff,
+        metalness: 0.9,
+        roughness: 0.1,
+        envMap: scene.environment,
+        envMapIntensity: 1.0,
+      });
+
+      const NUM_OBJECTS = 500;
+      const objects = [];
+
+      for (let i = 0; i < NUM_OBJECTS; i++) {
+        const object = new THREE.Mesh(complexGeometry, complexMaterial);
+        object.position.set(
+          Math.random() * 200 - 100,
+          Math.random() * 200 - 100,
+          Math.random() * 200 - 100,
+        );
+        object.rotation.set(
+          Math.random() * Math.PI,
+          Math.random() * Math.PI,
+          Math.random() * Math.PI,
+        );
+        object.scale.setScalar(Math.random() * 0.5 + 0.5);
+        object.castShadow = true;
+        object.receiveShadow = true;
+        scene.add(object);
+        objects.push(object);
+      }
+
+      // Add directional light (sun)
+      const sunLight = new THREE.DirectionalLight(0xffffaa, 1.5);
+      sunLight.position.set(50, 100, 50);
+      sunLight.castShadow = true;
+      sunLight.shadow.mapSize.width = 2048;
+      sunLight.shadow.mapSize.height = 2048;
+      sunLight.shadow.camera.near = 1;
+      sunLight.shadow.camera.far = 500;
+      scene.add(sunLight);
+
+      // Set up camera position
+      camera.position.set(30, 30, 100);
+
+      // Post-processing
+      const composer = new THREE.EffectComposer(renderer);
+      const renderPass = new THREE.RenderPass(scene, camera);
+      composer.addPass(renderPass);
+
+      const bloomPass = new THREE.UnrealBloomPass(
+        new THREE.Vector2(window.innerWidth, window.innerHeight),
+        1.5,
+        0.4,
+        0.85,
+      );
+      bloomPass.threshold = 0.5;
+      bloomPass.strength = 0.8;
+      bloomPass.radius = 0.3;
+      composer.addPass(bloomPass);
+
+      // Metrics display
+      const metricsElement = document.getElementById("metrics");
+      const benchmarkElement = document.getElementById("benchmark");
+
+      let frameCount = 0;
+      let lastTime = performance.now();
+      let fps = 0;
+
+      // Animation loop
+      function animate() {
+        requestAnimationFrame(animate);
+
+        const time = performance.now();
+        frameCount++;
+
+        if (time >= lastTime + 1000) {
+          fps = Math.round((frameCount * 1000) / (time - lastTime));
+          frameCount = 0;
+          lastTime = time;
+        }
+
+        // Rotate objects
+        objects.forEach((object, index) => {
+          object.rotation.x += 0.01 * (index % 2 ? 1 : -1);
+          object.rotation.y += 0.01 * (index % 3 ? 1 : -1);
         });
-    }
-    return copperlist;
-}
 
-const copperlist = createCopperlist();
+        // Update water
+        water.material.uniforms["time"].value += 1.0 / 60.0;
 
-function drawCopperlistsDemo() {
-    // Clear canvas
-    copperlistsCtx.clearRect(0, 0, 135, 135);
+        controls.update();
+        composer.render();
 
-    // Apply copperlist effect
-    for (const copper of copperlist) {
-        copperlistsCtx.fillStyle = `rgba(${copper.color.r}, ${copper.color.g}, ${copper.color.b}, ${copper.color.a})`;
-        copperlistsCtx.fillRect(0, copper.y, 135, 1);
-    }
-
-    // Update and render entities
-    for (const entity of entities.values()) {
-        movementSystem(entity);
-        renderSystem(entity);
-    }
-
-    // Add some text
-    copperlistsCtx.font = '10px Arial';
-    copperlistsCtx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-    copperlistsCtx.fillText('ECS Copperlist', 5, 15);
-    copperlistsCtx.fillText('32-bit ARGB', 5, 130);
-}
-
-function animateCopperlists() {
-    drawCopperlistsDemo();
-    requestAnimationFrame(animateCopperlists);
-}
-
-animateCopperlists();
-</script>
-</canvas>
-    </div>
-    <div class="mini-viewport" style="width: 135px; height: 135px; background-color: #000; border: 1px solid #008080; border-radius: 5px; margin-bottom: 10px;">
-      <canvas id="aga-ham8-demo" width="135" height="135">
-<script>
-// AGA HAM8 demo
-const agaHam8Canvas = document.getElementById('aga-ham8-demo');
-const agaHam8Ctx = agaHam8Canvas.getContext('2d');
-
-function drawAGAHAM8Demo() {
-    // Clear canvas
-    agaHam8Ctx.fillStyle = '#000000';
-    agaHam8Ctx.fillRect(0, 0, 135, 135);
-
-    // Display all 4096 colors
-    const colorSize = Math.ceil(Math.sqrt(4096));
-    const pixelSize = Math.ceil(135 / colorSize);
-
-    for (let i = 0; i < 4096; i++) {
-        const r = (i & 0xF00) >> 8;
-        const g = (i & 0x0F0) >> 4;
-        const b = i & 0x00F;
-
-        const x = (i % colorSize) * pixelSize;
-        const y = Math.floor(i / colorSize) * pixelSize;
-
-        agaHam8Ctx.fillStyle = `rgb(${r * 17}, ${g * 17}, ${b * 17})`;
-        agaHam8Ctx.fillRect(x, y, pixelSize, pixelSize);
-    }
-
-    // Add some text
-    agaHam8Ctx.font = '10px Arial';
-    agaHam8Ctx.fillStyle = '#FFFFFF';
-    agaHam8Ctx.fillText('AGA HAM8', 5, 15);
-    agaHam8Ctx.fillText('4096 Colors', 5, 130);
-}
-
-function animateAGAHAM8() {
-    drawAGAHAM8Demo();
-    requestAnimationFrame(animateAGAHAM8);
-}
-
-animateAGAHAM8();
-</script>
-</canvas>
-    </div>
-    <div class="mini-viewport" style="width: 135px; height: 135px; background-color: #000; border: 1px solid #008080; border-radius: 5px; margin-bottom: 10px;">
-      <canvas id="soc-demo" width="135" height="539">
-<script>
-// HDR demo
-const hdrCanvas = document.getElementById('soc-demo');
-const hdrCtx = hdrCanvas.getContext('2d');
-
-// Create an off-screen canvas for HDR rendering
-const offscreenCanvas = document.createElement('canvas');
-offscreenCanvas.width = 135;
-offscreenCanvas.height = 539;
-const offscreenCtx = offscreenCanvas.getContext('2d');
-
-function drawHDRDemo() {
-    // Clear canvas
-    offscreenCtx.fillStyle = '#000000';
-    offscreenCtx.fillRect(0, 0, 135, 539);
-
-    // Create a gradient to simulate HDR sky
-    const gradient = offscreenCtx.createLinearGradient(0, 0, 0, 539);
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');  // Bright white
-    gradient.addColorStop(0.3, 'rgba(255, 200, 100, 1)'); // Warm sunlight
-    gradient.addColorStop(0.6, 'rgba(100, 150, 255, 1)'); // Sky blue
-    gradient.addColorStop(1, 'rgba(0, 0, 50, 1)');       // Deep night sky
-
-    offscreenCtx.fillStyle = gradient;
-    offscreenCtx.fillRect(0, 0, 135, 539);
-
-    // Add a very bright sun
-    const sunGradient = offscreenCtx.createRadialGradient(67, 67, 0, 67, 67, 30);
-    sunGradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-    sunGradient.addColorStop(0.3, 'rgba(255, 255, 200, 1)');
-    sunGradient.addColorStop(1, 'rgba(255, 200, 100, 0)');
-
-    offscreenCtx.fillStyle = sunGradient;
-    offscreenCtx.beginPath();
-    offscreenCtx.arc(67, 67, 30, 0, 2 * Math.PI);
-    offscreenCtx.fill();
-
-    // Add lens flare
-    const flareGradient = offscreenCtx.createRadialGradient(47, 87, 0, 47, 87, 10);
-    flareGradient.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
-    flareGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-
-    offscreenCtx.fillStyle = flareGradient;
-    offscreenCtx.beginPath();
-    offscreenCtx.arc(47, 87, 10, 0, 2 * Math.PI);
-    offscreenCtx.fill();
-
-    // Add very dark shadows
-    offscreenCtx.fillStyle = 'rgba(0, 0, 0, 0.9)';
-    offscreenCtx.fillRect(10, 400, 115, 20);
-
-    // Add midtones
-    offscreenCtx.fillStyle = 'rgba(100, 100, 100, 0.5)';
-    offscreenCtx.fillRect(20, 250, 95, 100);
-
-    // Simulate HDR tone mapping
-    const imageData = offscreenCtx.getImageData(0, 0, 135, 539);
-    const data = imageData.data;
-    for (let i = 0; i < data.length; i += 4) {
-        // Apply a simple tone mapping curve
-        data[i] = Math.pow(data[i] / 255, 0.6) * 255;
-        data[i+1] = Math.pow(data[i+1] / 255, 0.6) * 255;
-        data[i+2] = Math.pow(data[i+2] / 255, 0.6) * 255;
-    }
-    hdrCtx.putImageData(imageData, 0, 0);
-
-    // Add some text
-    hdrCtx.font = '10px Arial';
-    hdrCtx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-    hdrCtx.fillText('HDR Demo', 5, 15);
-    hdrCtx.fillText('High Dynamic', 5, 520);
-    hdrCtx.fillText('Range', 5, 532);
-}
-
-function animateHDR() {
-    drawHDRDemo();
-    requestAnimationFrame(animateHDR);
-}
-
-animateHDR();
-</script>
-</canvas>
-    </div>
-  </div>
-</div>
-
-<script>
-// Set up the scene, camera, and renderer
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 0.5;
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-document.body.appendChild(renderer.domElement);
-
-// Add orbit controls
-const controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.maxPolarAngle = Math.PI * 0.495;
-controls.target.set(0, 10, 0);
-controls.minDistance = 40.0;
-controls.maxDistance = 500.0;
-
-// Create the water
-const waterGeometry = new THREE.PlaneGeometry(10000, 10000);
-const water = new THREE.Water(waterGeometry, {
-  textureWidth: 512,
-  textureHeight: 512,
-  waterNormals: new THREE.TextureLoader().load('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/waternormals.jpg', function(texture) {
-    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-  }),
-  sunDirection: new THREE.Vector3(),
-  sunColor: 0xffffff,
-  waterColor: 0x001e0f,
-  distortionScale: 3.7,
-  fog: scene.fog !== undefined
-});
-water.rotation.x = -Math.PI / 2;
-water.receiveShadow = true;
-scene.add(water);
-
-// Create the sky
-const sky = new THREE.Sky();
-sky.scale.setScalar(10000);
-scene.add(sky);
-
-const skyUniforms = sky.material.uniforms;
-skyUniforms['turbidity'].value = 10;
-skyUniforms['rayleigh'].value = 2;
-skyUniforms['mieCoefficient'].value = 0.005;
-skyUniforms['mieDirectionalG'].value = 0.8;
-
-const parameters = {
-  elevation: 2,
-  azimuth: 180
-};
-
-const pmremGenerator = new THREE.PMREMGenerator(renderer);
-
-function updateSun() {
-  const phi = THREE.MathUtils.degToRad(90 - parameters.elevation);
-  const theta = THREE.MathUtils.degToRad(parameters.azimuth);
-  const sun = new THREE.Vector3();
-  sun.setFromSphericalCoords(1, phi, theta);
-  sky.material.uniforms['sunPosition'].value.copy(sun);
-  water.material.uniforms['sunDirection'].value.copy(sun).normalize();
-  scene.environment = pmremGenerator.fromScene(sky).texture;
-}
-
-updateSun();
-
-// Create complex geometry for benchmark
-const complexGeometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-const complexMaterial = new THREE.MeshStandardMaterial({
-  color: 0xffffff,
-  metalness: 0.9,
-  roughness: 0.1,
-  envMap: scene.environment,
-  envMapIntensity: 1.0
-});
-
-const NUM_OBJECTS = 500;
-const objects = [];
-
-for (let i = 0; i < NUM_OBJECTS; i++) {
-  const object = new THREE.Mesh(complexGeometry, complexMaterial);
-  object.position.set(
-    Math.random() * 200 - 100,
-    Math.random() * 200 - 100,
-    Math.random() * 200 - 100
-  );
-  object.rotation.set(
-    Math.random() * Math.PI,
-    Math.random() * Math.PI,
-    Math.random() * Math.PI
-  );
-  object.scale.setScalar(Math.random() * 0.5 + 0.5);
-  object.castShadow = true;
-  object.receiveShadow = true;
-  scene.add(object);
-  objects.push(object);
-}
-
-// Add directional light (sun)
-const sunLight = new THREE.DirectionalLight(0xffffaa, 1.5);
-sunLight.position.set(50, 100, 50);
-sunLight.castShadow = true;
-sunLight.shadow.mapSize.width = 2048;
-sunLight.shadow.mapSize.height = 2048;
-sunLight.shadow.camera.near = 1;
-sunLight.shadow.camera.far = 500;
-scene.add(sunLight);
-
-// Set up camera position
-camera.position.set(30, 30, 100);
-
-// Post-processing
-const composer = new THREE.EffectComposer(renderer);
-const renderPass = new THREE.RenderPass(scene, camera);
-composer.addPass(renderPass);
-
-const bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
-bloomPass.threshold = 0.5;
-bloomPass.strength = 0.8;
-bloomPass.radius = 0.3;
-composer.addPass(bloomPass);
-
-// Metrics display
-const metricsElement = document.getElementById('metrics');
-const benchmarkElement = document.getElementById('benchmark');
-
-let frameCount = 0;
-let lastTime = performance.now();
-let fps = 0;
-
-// Animation loop
-function animate() {
-  requestAnimationFrame(animate);
-  
-  const time = performance.now();
-  frameCount++;
-  
-  if (time >= lastTime + 1000) {
-    fps = Math.round((frameCount * 1000) / (time - lastTime));
-    frameCount = 0;
-    lastTime = time;
-  }
-
-  // Rotate objects
-  objects.forEach((object, index) => {
-    object.rotation.x += 0.01 * (index % 2 ? 1 : -1);
-    object.rotation.y += 0.01 * (index % 3 ? 1 : -1);
-  });
-
-  // Update water
-  water.material.uniforms['time'].value += 1.0 / 60.0;
-
-  controls.update();
-  composer.render();
-
-  // Update metrics display
-  metricsElement.innerHTML = `
+        // Update metrics display
+        metricsElement.innerHTML = `
     FPS: ${fps}<br>
     Objects: ${NUM_OBJECTS}<br>
     Resolution: ${window.innerWidth}x${window.innerHeight}
   `;
-}
+      }
 
-animate();
+      animate();
 
-// Benchmark
-let benchmarkDuration = 10000; // 10 seconds
-let benchmarkStartTime = performance.now();
-let totalFrames = 0;
+      // Benchmark
+      let benchmarkDuration = 10000; // 10 seconds
+      let benchmarkStartTime = performance.now();
+      let totalFrames = 0;
 
-function runBenchmark() {
-  if (performance.now() - benchmarkStartTime < benchmarkDuration) {
-    totalFrames++;
-    requestAnimationFrame(runBenchmark);
-  } else {
-    const averageFPS = Math.round(totalFrames / (benchmarkDuration / 1000));
-    const score = Math.round(averageFPS * NUM_OBJECTS / 100);
-    benchmarkElement.innerHTML = `
+      function runBenchmark() {
+        if (performance.now() - benchmarkStartTime < benchmarkDuration) {
+          totalFrames++;
+          requestAnimationFrame(runBenchmark);
+        } else {
+          const averageFPS = Math.round(
+            totalFrames / (benchmarkDuration / 1000),
+          );
+          const score = Math.round((averageFPS * NUM_OBJECTS) / 100);
+          benchmarkElement.innerHTML = `
       Benchmark Results:<br>
       Average FPS: ${averageFPS}<br>
       Score: ${score}
     `;
-  }
-}
+        }
+      }
 
-runBenchmark();
+      runBenchmark();
 
-// Handle window resizing
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  composer.setSize(window.innerWidth, window.innerHeight);
-});
+      // Handle window resizing
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        composer.setSize(window.innerWidth, window.innerHeight);
+      });
 
-// Start terminal
-function startTerminal() {
-    const terminalOutput = document.getElementById('terminal');
-    terminalOutput.innerHTML = `user@project-manhattan:~$`;
+      // Start terminal
+      function startTerminal() {
+        const terminalOutput = document.getElementById("terminal");
+        terminalOutput.innerHTML = `user@project-manhattan:~$`;
 
-    // Additional terminal logic can be added here
-    // For example, initializing terminal state, etc.
-}
+        // Additional terminal logic can be added here
+        // For example, initializing terminal state, etc.
+      }
 
-// Run command
-function runCommand() {
-    const commandInput = document.getElementById('command-input').value;
-    const terminalOutput = document.getElementById('terminal');
-    terminalOutput.innerHTML += "\nuser@project-manhattan:~$ " + commandInput;
+      // Run command
+      function runCommand() {
+        const commandInput = document.getElementById("command-input").value;
+        const terminalOutput = document.getElementById("terminal");
+        terminalOutput.innerHTML +=
+          "\nuser@project-manhattan:~$ " + commandInput;
 
-    // Interpret and execute the command
-    interpretCommand(commandInput);
-}
+        // Interpret and execute the command
+        interpretCommand(commandInput);
+      }
 
-// Bash compatible command interpreter with ANSI C and FreeBASIC support (emulated)
-function interpretCommand(command) {
-    const terminalOutput = document.getElementById('terminal');
-    const [cmd, ...args] = command.trim().split(/\s+/);
+      // Bash compatible command interpreter with ANSI C and FreeBASIC support (emulated)
+      function interpretCommand(command) {
+        const terminalOutput = document.getElementById("terminal");
+        const [cmd, ...args] = command.trim().split(/\s+/);
 
-    switch (cmd) {
-        case "clear":
+        switch (cmd) {
+          case "clear":
             terminalOutput.innerHTML = `user@project-manhattan:~$`;
             break;
-        case "echo":
+          case "echo":
             terminalOutput.innerHTML += "\n" + args.join(" ");
             break;
-        case "start_emulator":
+          case "start_emulator":
             terminalOutput.innerHTML += "\nStarting 6510 Emulator...";
             startEmulator();
             break;
-        case "run_benchmark":
+          case "run_benchmark":
             terminalOutput.innerHTML += "\nRunning 3D Benchmark...";
             runBenchmark();
             break;
-        case "help":
+          case "help":
             terminalOutput.innerHTML += `
 \nAvailable Commands:
 clear           - Clear the terminal screen.
@@ -928,153 +1065,175 @@ c [source.c]    - Compile and execute ANSI C source code.
 fb [source.bas] - Compile and execute FreeBASIC source code.
             `;
             break;
-        case "c":
+          case "c":
             if (args.length > 0) {
-                const sourceCode = args.join(" ");
-                compileAndRunC(sourceCode);} else {
-                terminalOutput.innerHTML += `\nc: missing argument 'source.c'`;
-            }
-            break;
-        case "fb":
-            if (args.length > 0) {
-                const sourceCode = args.join(" ");
-                compileAndRunFreeBASIC(sourceCode);
+              const sourceCode = args.join(" ");
+              compileAndRunC(sourceCode);
             } else {
-                terminalOutput.innerHTML += `\nfb: missing argument 'source.bas'`;
+              terminalOutput.innerHTML += `\nc: missing argument 'source.c'`;
             }
             break;
-        // Add more commands as needed for the 6502 emulator, the 3D benchmark, ANSI C, and FreeBASIC processing as per your requirements.
+          case "fb":
+            if (args.length > 0) {
+              const sourceCode = args.join(" ");
+              compileAndRunFreeBASIC(sourceCode);
+            } else {
+              terminalOutput.innerHTML += `\nfb: missing argument 'source.bas'`;
+            }
+            break;
+          // Add more commands as needed for the 6502 emulator, the 3D benchmark, ANSI C, and FreeBASIC processing as per your requirements.
 
-        default:
+          default:
             terminalOutput.innerHTML += `\nbash: ${cmd}: command not found`;
-    }
-}
+        }
+      }
 
-// ANSI C compilation and execution (emulated)
-function compileAndRunC(sourceCode) {
-    // Placeholder: Here you would invoke an actual ANSI C compiler and execute the compiled code.
-    // For the purpose of this simulation, we'll display a mock compilation and execution process.
-    const terminalOutput = document.getElementById('terminal');
-    terminalOutput.innerHTML += `\nCompiling and running ${sourceCode}...\n`;
-    terminalOutput.innerHTML += `\n[gcc] Compilation successful.\n`;
-    terminalOutput.innerHTML += `\n[output] Hello, ANSI C World!\n`;
-}
+      // ANSI C compilation and execution (emulated)
+      function compileAndRunC(sourceCode) {
+        // Placeholder: Here you would invoke an actual ANSI C compiler and execute the compiled code.
+        // For the purpose of this simulation, we'll display a mock compilation and execution process.
+        const terminalOutput = document.getElementById("terminal");
+        terminalOutput.innerHTML += `\nCompiling and running ${sourceCode}...\n`;
+        terminalOutput.innerHTML += `\n[gcc] Compilation successful.\n`;
+        terminalOutput.innerHTML += `\n[output] Hello, ANSI C World!\n`;
+      }
 
-// FreeBASIC compilation and execution (emulated)
-function compileAndRunFreeBASIC(sourceCode) {
-    // Placeholder: Here you would invoke an actual FreeBASIC compiler and execute the compiled code.
-    // For the purpose of this simulation, we'll display a mock compilation and execution process.
-    const terminalOutput = document.getElementById('terminal');
-    terminalOutput.innerHTML += `\nCompiling and running ${sourceCode}...\n`;terminalOutput.innerHTML += `\n[fbc] Compilation successful.\n`;
-    terminalOutput.innerHTML += `\n[output] Hello, FreeBASIC World!\n`;
-}
+      // FreeBASIC compilation and execution (emulated)
+      function compileAndRunFreeBASIC(sourceCode) {
+        // Placeholder: Here you would invoke an actual FreeBASIC compiler and execute the compiled code.
+        // For the purpose of this simulation, we'll display a mock compilation and execution process.
+        const terminalOutput = document.getElementById("terminal");
+        terminalOutput.innerHTML += `\nCompiling and running ${sourceCode}...\n`;
+        terminalOutput.innerHTML += `\n[fbc] Compilation successful.\n`;
+        terminalOutput.innerHTML += `\n[output] Hello, FreeBASIC World!\n`;
+      }
 
-// Graphics Viewport
-const graphicsViewport = document.getElementById('graphics-viewport');
-const graphicsViewportRenderer = new THREE.WebGLRenderer({ antialias: true });
-graphicsViewportRenderer.setPixelRatio(window.devicePixelRatio);
-graphicsViewportRenderer.setSize(graphicsViewport.clientWidth, graphicsViewport.clientHeight);
-graphicsViewport.appendChild(graphicsViewportRenderer.domElement);
+      // Graphics Viewport
+      const graphicsViewport = document.getElementById("graphics-viewport");
+      const graphicsViewportRenderer = new THREE.WebGLRenderer({
+        antialias: true,
+      });
+      graphicsViewportRenderer.setPixelRatio(window.devicePixelRatio);
+      graphicsViewportRenderer.setSize(
+        graphicsViewport.clientWidth,
+        graphicsViewport.clientHeight,
+      );
+      graphicsViewport.appendChild(graphicsViewportRenderer.domElement);
 
-const graphicsViewportScene = new THREE.Scene();
-const graphicsViewportCamera = new THREE.PerspectiveCamera(
-    30, 
-    graphicsViewport.clientWidth / graphicsViewport.clientHeight, 
-    0.1, 
-    1000
-);
-graphicsViewportCamera.position.z = 5;
+      const graphicsViewportScene = new THREE.Scene();
+      const graphicsViewportCamera = new THREE.PerspectiveCamera(
+        30,
+        graphicsViewport.clientWidth / graphicsViewport.clientHeight,
+        0.1,
+        1000,
+      );
+      graphicsViewportCamera.position.z = 5;
 
-const graphicsViewportGeometry = new THREE.BoxGeometry();
-const graphicsViewportMaterial = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
-const graphicsViewportCube = new THREE.Mesh(graphicsViewportGeometry, graphicsViewportMaterial);
-graphicsViewportScene.add(graphicsViewportCube);
+      const graphicsViewportGeometry = new THREE.BoxGeometry();
+      const graphicsViewportMaterial = new THREE.MeshLambertMaterial({
+        color: 0x00ff00,
+      });
+      const graphicsViewportCube = new THREE.Mesh(
+        graphicsViewportGeometry,
+        graphicsViewportMaterial,
+      );
+      graphicsViewportScene.add(graphicsViewportCube);
 
-const ambientLight = new THREE.AmbientLight(0x404040); 
-graphicsViewportScene.add(ambientLight);
-const pointLight = new THREE.PointLight(0xffffff, 1, 100);
-pointLight.position.set(10, 10, 10);
-graphicsViewportScene.add(pointLight);
+      const ambientLight = new THREE.AmbientLight(0x404040);
+      graphicsViewportScene.add(ambientLight);
+      const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+      pointLight.position.set(10, 10, 10);
+      graphicsViewportScene.add(pointLight);
 
-const demos = [
-    function displayVICIIDemo() {
-        // Set up and display VIC-II demo
-        graphicsViewportCube.material.color.set(0x00ff00); // Green
-        graphicsViewportCube.rotation.x = 0;
-        graphicsViewportCube.rotation.y = 0;
-        graphicsViewportCube.scale.set(1, 1, 1);
-    },
-    function displaySVGADemo() {
-        // Set up and display SVGA demo
-        graphicsViewportCube.material.color.set(0x0000ff); // Blue
-        graphicsViewportCube.rotation.x = Math.PI / 4;
-        graphicsViewportCube.rotation.y = Math.PI / 4;
-        graphicsViewportCube.scale.set(1.5, 1.5, 1.5);
-    },
-    function displayCopperlistsDemo() {
-        // Set up and display Copperlists demo
-        graphicsViewportCube.material.color.set(0xff0000); // Red
-        graphicsViewportCube.rotation.x = Math.PI / 2;
-        graphicsViewportCube.rotation.y = Math.PI / 2;
-        graphicsViewportCube.scale.set(1, 1, 1);
+      const demos = [
+        function displayVICIIDemo() {
+          // Set up and display VIC-II demo
+          graphicsViewportCube.material.color.set(0x00ff00); // Green
+          graphicsViewportCube.rotation.x = 0;
+          graphicsViewportCube.rotation.y = 0;
+          graphicsViewportCube.scale.set(1, 1, 1);
+        },
+        function displaySVGADemo() {
+          // Set up and display SVGA demo
+          graphicsViewportCube.material.color.set(0x0000ff); // Blue
+          graphicsViewportCube.rotation.x = Math.PI / 4;
+          graphicsViewportCube.rotation.y = Math.PI / 4;
+          graphicsViewportCube.scale.set(1.5, 1.5, 1.5);
+        },
+        function displayCopperlistsDemo() {
+          // Set up and display Copperlists demo
+          graphicsViewportCube.material.color.set(0xff0000); // Red
+          graphicsViewportCube.rotation.x = Math.PI / 2;
+          graphicsViewportCube.rotation.y = Math.PI / 2;
+          graphicsViewportCube.scale.set(1, 1, 1);
 
-        // Copper list effect using 32-bit ARGB colors
-        let gradient = new THREE.Texture(createCopperlistGradient());
-        gradient.needsUpdate = true;
-        graphicsViewportCube.material.map = gradient;
-    },
-    function displayAGAHAM8Demo() {
-        // Set up and display AGA HAM8 demo
-        graphicsViewportCube.material.color.set(0xffff00); // Yellow
-        graphicsViewportCube.rotation.x = Math.PI / 8;
-        graphicsViewportCube.rotation.y = Math.PI / 8;
-        graphicsViewportCube.scale.set(0.5, 0.5, 0.5);
-    }
-];
-let currentDemo = 0;
+          // Copper list effect using 32-bit ARGB colors
+          let gradient = new THREE.Texture(createCopperlistGradient());
+          gradient.needsUpdate = true;
+          graphicsViewportCube.material.map = gradient;
+        },
+        function displayAGAHAM8Demo() {
+          // Set up and display AGA HAM8 demo
+          graphicsViewportCube.material.color.set(0xffff00); // Yellow
+          graphicsViewportCube.rotation.x = Math.PI / 8;
+          graphicsViewportCube.rotation.y = Math.PI / 8;
+          graphicsViewportCube.scale.set(0.5, 0.5, 0.5);
+        },
+      ];
+      let currentDemo = 0;
 
-function animateGraphicsViewport() {
-    requestAnimationFrame(animateGraphicsViewport);
+      function animateGraphicsViewport() {
+        requestAnimationFrame(animateGraphicsViewport);
 
-    // Run the current demo
-    demos[currentDemo % demos.length]();
+        // Run the current demo
+        demos[currentDemo % demos.length]();
 
-    graphicsViewportCube.rotation.x += 0.01;
-    graphicsViewportCube.rotation.y += 0.01;
+        graphicsViewportCube.rotation.x += 0.01;
+        graphicsViewportCube.rotation.y += 0.01;
 
-    graphicsViewportRenderer.render(graphicsViewportScene, graphicsViewportCamera);
+        graphicsViewportRenderer.render(
+          graphicsViewportScene,
+          graphicsViewportCamera,
+        );
 
-    // Loop through the demos
-    if (Math.floor(performance.now() / 5000) % demos.length !== currentDemo) {
-        currentDemo = Math.floor(performance.now() / 5000) % demos.length;
-    }
-}
+        // Loop through the demos
+        if (
+          Math.floor(performance.now() / 5000) % demos.length !==
+          currentDemo
+        ) {
+          currentDemo = Math.floor(performance.now() / 5000) % demos.length;
+        }
+      }
 
-animateGraphicsViewport();
+      animateGraphicsViewport();
 
-// Create Copperlist gradient
-function createCopperlistGradient() {
-    const canvas = document.createElement('canvas');
-    canvas.width = 256;
-    canvas.height = 1;
+      // Create Copperlist gradient
+      function createCopperlistGradient() {
+        const canvas = document.createElement("canvas");
+        canvas.width = 256;
+        canvas.height = 1;
 
-    const context = canvas.getContext('2d');
-    const gradient = context.createLinearGradient(0, 0, 256, 0);
-    gradient.addColorStop(0, 'rgba(255,0,0,1)'); // Red
-    gradient.addColorStop(0.5, 'rgba(0,255,0,1)'); // Green
-    gradient.addColorStop(1, 'rgba(0,0,255,1)'); // Blue
+        const context = canvas.getContext("2d");
+        const gradient = context.createLinearGradient(0, 0, 256, 0);
+        gradient.addColorStop(0, "rgba(255,0,0,1)"); // Red
+        gradient.addColorStop(0.5, "rgba(0,255,0,1)"); // Green
+        gradient.addColorStop(1, "rgba(0,0,255,1)"); // Blue
 
-    context.fillStyle = gradient;
-    context.fillRect(0, 0, 256, 1);
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, 256, 1);
 
-    return canvas;
-}
+        return canvas;
+      }
 
-window.addEventListener('resize', () => {
-    graphicsViewportRenderer.setSize(graphicsViewport.clientWidth, graphicsViewport.clientHeight);
-    graphicsViewportCamera.aspect = graphicsViewport.clientWidth / graphicsViewport.clientHeight;
-    graphicsViewportCamera.updateProjectionMatrix();
-});
-
-</script>
-</body></html>
+      window.addEventListener("resize", () => {
+        graphicsViewportRenderer.setSize(
+          graphicsViewport.clientWidth,
+          graphicsViewport.clientHeight,
+        );
+        graphicsViewportCamera.aspect =
+          graphicsViewport.clientWidth / graphicsViewport.clientHeight;
+        graphicsViewportCamera.updateProjectionMatrix();
+      });
+    </script>
+  </body>
+</html>
