@@ -246,30 +246,52 @@ END
   <h4>UNIX Posix Terminal</h4>
   <pre id="terminal">user@project-manhattan:~$ debug_info
 
-=== 3D Benchmark Debug Data ===
-Objects rendered: 500
-Resolution: 1920x1080
-Shader complexity: High
-Post-processing: Enabled (Bloom, SSAO)
-Current FPS: 78
-GPU utilization: 92%
-VRAM usage: 2.7 GB
+=== Project Manhattan: Advanced MOS 6510-based CPU/GPU SoC Emulator Debug Info ===
 
-=== MOS 6510-based CPU/GPU SoC Emulator Debug Info ===
-CPU clock: 1.023 MHz
-GPU clock: 40 MHz
-Memory: 64 MB unified
-Current instruction: LDA #$FF
-Registers:
-  A: $7F  X: $00  Y: $C4
-  PC: $F000  SP: $01FF
-Flags: NV-BDIZC
-       10110000
-Graphics mode: AGA HAM8 (4096 colors)
-Sprite data:
-  Sprite 0: Enabled, (x:120, y:80)
-  Sprite 1: Disabled
-Copper list: Active, 64 instructions
+CPU Specifications:
+- Clock Speed: 4 GHz
+- Architecture: 64-Bit
+- Compatibility: MOS 6510 / VICE compatible
+- Addressable Memory: Up to 1.797693134862316e+308 bytes
+
+Memory Addressing:
+- Positive Range: 4.940656458412465e-324 to 1.797693134862316e+308
+- Negative Range: -4.940656458412465e-324 to -1.797693134862316e+308
+- Zero: 0
+- Precision: 53 bits (approx. 15 decimal digits)
+
+GPU Specifications:
+- Clock Speed: 17 GHz
+- Bus Width: 512-Bit
+- Addressable Video Memory: Up to 1.797693134862316e+308x8 bytes
+
+GPU Compatibility:
+- VIC-II
+- SVGA
+- ECS (Copper lists)
+- AGA (HAM8)
+
+Enhanced Features:
+- Copper lists: Using 32-bit ARGB colors
+
+Video Memory Addressing:
+- Positive Range: 4.940656458412465e-324x8 to 1.797693134862316e+308x8
+- Negative Range: -4.940656458412465-324x8 to -1.797693134862316e+308x8
+- Zero: 0
+- Precision: 53 bits (approx. 15 decimal digits)
+
+Current System State:
+- CPU Usage: 12%
+- Memory Usage: 128 TB / 1 PB
+- GPU Usage: 8%
+- VRAM Usage: 64 TB / 512 TB
+
+Active Processes:
+1. VIC-II Emulation (PID: 1024)
+2. SVGA Renderer (PID: 1025)
+3. Copper List Processor (PID: 1026)
+4. AGA HAM8 Color Engine (PID: 1027)
+5. Quantum Memory Manager (PID: 1028)
 
 user@project-manhattan:~$</pre>
   <div class="emulator-button">
@@ -288,66 +310,55 @@ user@project-manhattan:~$</pre>
 const vicIICanvas = document.getElementById('vic-ii-demo');
 const vicIICtx = vicIICanvas.getContext('2d');
 
-// Define some VIC-II colors
-const vicIIColors = [
-    '#000000', '#FFFFFF', '#880000', '#AAFFEE',
-    '#CC44CC', '#00CC55', '#0000AA', '#EEEE77',
-    '#DD8855', '#664400', '#FF7777', '#333333',
-    '#777777', '#AAFF66', '#0088FF', '#BBBBBB'
+// Set up a basic color palette similar to the Commodore 64
+const c64Colors = [
+    '#000000', '#ffffff', '#880000', '#aaffee',
+    '#cc44cc', '#00cc55', '#0000aa', '#eeee77',
+    '#dd8855', '#664400', '#ff7777', '#333333',
+    '#777777', '#aaff66', '#0088ff', '#bbbbbb'
 ];
 
 function drawVICIIDemo() {
     // Clear the canvas
-    vicIICtx.fillStyle = vicIIColors[0];
+    vicIICtx.fillStyle = c64Colors[6]; // Background color (dark blue)
     vicIICtx.fillRect(0, 0, 135, 135);
 
-    // Draw a simple sprite
-    vicIICtx.fillStyle = vicIIColors[7];
-    vicIICtx.fillRect(60, 60, 15, 15);
+    // Draw a simple sprite-like character
+    vicIICtx.fillStyle = c64Colors[7]; // Light yellow
+    vicIICtx.fillRect(60, 50, 15, 25);
+    vicIICtx.fillRect(55, 60, 25, 10);
+    
+    // Draw some text
+    vicIICtx.font = '10px Commodore64';
+    vicIICtx.fillStyle = c64Colors[1]; // White
+    vicIICtx.fillText('VIC-II DEMO', 30, 30);
 
-    // Draw some colorful pixels
-    for (let i = 0; i < 16; i++) {
-        vicIICtx.fillStyle = vicIIColors[i];
-        vicIICtx.fillRect(i * 8, 0, 8, 8);
-    }
+    // Draw a simple border
+    vicIICtx.strokeStyle = c64Colors[2]; // Red
+    vicIICtx.lineWidth = 2;
+    vicIICtx.strokeRect(5, 5, 125, 125);
 
-    // Simulate character mode
-    vicIICtx.font = '8px monospace';
-    vicIICtx.fillStyle = vicIIColors[1];
-    vicIICtx.fillText('HELLO VIC-II', 10, 30);
-
-    // Simulate high-resolution mode
-    for (let y = 40; y < 60; y++) {
-        for (let x = 0; x < 135; x++) {
-            if ((x + y) % 2 === 0) {
-                vicIICtx.fillStyle = vicIIColors[2];
-                vicIICtx.fillRect(x, y, 1, 1);
-            }
-        }
-    }
-
-    // Simulate multicolor mode
-    for (let y = 80; y < 135; y += 2) {
-        for (let x = 0; x < 135; x += 2) {
-            let colorIndex = Math.floor(Math.random() * vicIIColors.length);
-            vicIICtx.fillStyle = vicIIColors[colorIndex];
-            vicIICtx.fillRect(x, y, 2, 2);
-        }
+    // Simulate a raster bar effect
+    for (let i = 0; i < 5; i++) {
+        vicIICtx.fillStyle = c64Colors[i + 2];
+        vicIICtx.fillRect(0, 100 + i * 7, 135, 7);
     }
 }
 
-// Initial draw
-drawVICIIDemo();
+// Animate the demo
+function animateVICII() {
+    drawVICIIDemo();
+    requestAnimationFrame(animateVICII);
+}
 
-// Update demo periodically
-setInterval(drawVICIIDemo, 1000);
+animateVICII();
 </script>
 </canvas>
     </div>
     <div class="mini-viewport" style="width: 135px; height: 135px; background-color: #000; border: 1px solid #008080; border-radius: 5px; margin-bottom: 10px;">
       <canvas id="svga-demo" width="135" height="135">
 <script>
-// SVGA demo
+// SVGA/HDMI/DisplayPort demo
 const svgaCanvas = document.getElementById('svga-demo');
 const svgaCtx = svgaCanvas.getContext('2d');
 
@@ -356,185 +367,154 @@ function drawSVGADemo() {
     svgaCtx.fillStyle = '#000000';
     svgaCtx.fillRect(0, 0, 135, 135);
 
-    // Draw a gradient background
+    // Draw a colorful gradient background
     const gradient = svgaCtx.createLinearGradient(0, 0, 135, 135);
-    gradient.addColorStop(0, '#000080');
-    gradient.addColorStop(1, '#4B0082');
+    gradient.addColorStop(0, '#ff0000');
+    gradient.addColorStop(0.5, '#00ff00');
+    gradient.addColorStop(1, '#0000ff');
     svgaCtx.fillStyle = gradient;
-    svgaCtx.fillRect(0, 0, 135, 135);
-
-    // Draw some shapes
-    svgaCtx.beginPath();
-    svgaCtx.arc(67, 67, 50, 0, 2 * Math.PI);
-    svgaCtx.fillStyle = 'rgba(255, 255, 0, 0.5)';
-    svgaCtx.fill();
-
-    svgaCtx.beginPath();
-    svgaCtx.moveTo(20, 20);
-    svgaCtx.lineTo(115, 20);
-    svgaCtx.lineTo(67, 115);
-    svgaCtx.closePath();
-    svgaCtx.fillStyle = 'rgba(0, 255, 0, 0.5)';
-    svgaCtx.fill();
+    svgaCtx.fillRect(10, 10, 115, 115);
 
     // Draw some text
     svgaCtx.font = '12px Arial';
-    svgaCtx.fillStyle = '#FFFFFF';
-    svgaCtx.textAlign = 'center';
-    svgaCtx.fillText('SVGA 800x600', 67, 15);
+    svgaCtx.fillStyle = '#ffffff';
+    svgaCtx.fillText('SVGA/HDMI/DP', 20, 30);
 
-    // Draw some lines
-    svgaCtx.strokeStyle = '#FF00FF';
-    svgaCtx.lineWidth = 2;
-    for (let i = 0; i < 5; i++) {
-        svgaCtx.beginPath();
-        svgaCtx.moveTo(0, i * 27);
-        svgaCtx.lineTo(135, 135 - i * 27);
-        svgaCtx.stroke();
+    // Draw a simple shape
+    svgaCtx.beginPath();
+    svgaCtx.arc(67, 67, 25, 0, 2 * Math.PI);
+    svgaCtx.fillStyle = '#ffff00';
+    svgaCtx.fill();
+    svgaCtx.lineWidth = 3;
+    svgaCtx.strokeStyle = '#000000';
+    svgaCtx.stroke();
+
+    // Draw some lines to simulate high resolution
+    svgaCtx.beginPath();
+    for (let i = 0; i < 135; i += 5) {
+        svgaCtx.moveTo(0, i);
+        svgaCtx.lineTo(135, i);
+        svgaCtx.moveTo(i, 0);
+        svgaCtx.lineTo(i, 135);
     }
+    svgaCtx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+    svgaCtx.lineWidth = 1;
+    svgaCtx.stroke();
 }
 
-// Initial draw
-drawSVGADemo();
+// Animate the demo
+function animateSVGA() {
+    drawSVGADemo();
+    requestAnimationFrame(animateSVGA);
+}
 
-// Update demo periodically
-setInterval(drawSVGADemo, 1000);
+animateSVGA();
 </script>
 </canvas>
     </div>
     <div class="mini-viewport" style="width: 135px; height: 135px; background-color: #000; border: 1px solid #008080; border-radius: 5px; margin-bottom: 10px;">
       <canvas id="copperlists-demo" width="135" height="135">
 <script>
-// Copperlists demo with ECS and 32-bit ARGB colors
+// ECS (Copper lists) demo using 32-bit ARGB colors
 const copperlistsCanvas = document.getElementById('copperlists-demo');
 const copperlistsCtx = copperlistsCanvas.getContext('2d');
 
-class CopperBar {
-    constructor(y, color, speed) {
-        this.y = y;
-        this.color = color;
-        this.speed = speed;
-    }
-
-    update() {
-        this.y += this.speed;
-        if (this.y > 135) this.y = 0;
-        if (this.y < 0) this.y = 135;
-    }
-
-    draw(ctx) {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(0, Math.floor(this.y), 135, 1);
-    }
-}
-
-const copperBars = [];
-for (let i = 0; i < 20; i++) {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    const a = Math.random() * 0.5 + 0.5; // Semi-transparent
-    copperBars.push(new CopperBar(
-        i * 7,
-        `rgba(${r},${g},${b},${a})`,
-        (Math.random() - 0.5) * 2
-    ));
-}
-
 function drawCopperlistsDemo() {
     // Clear the canvas
-    copperlistsCtx.fillStyle = '#000000';
+    copperlistsCtx.clearRect(0, 0, 135, 135);
+
+    // Create a gradient background
+    const gradient = copperlistsCtx.createLinearGradient(0, 0, 0, 135);
+    for (let i = 0; i < 10; i++) {
+        const color = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255},1)`;
+        gradient.addColorStop(i / 10, color);
+    }
+    copperlistsCtx.fillStyle = gradient;
     copperlistsCtx.fillRect(0, 0, 135, 135);
 
-    // Update and draw copper bars
-    copperBars.forEach(bar => {
-        bar.update();
-        bar.draw(copperlistsCtx);
-    });
+    // Simulate copper list effects
+    const time = Date.now() * 0.001;
+    for (let y = 0; y < 135; y += 2) {
+        const r = Math.sin(y * 0.1 + time) * 127 + 128;
+        const g = Math.sin(y * 0.1 + time + 2) * 127 + 128;
+        const b = Math.sin(y * 0.1 + time + 4) * 127 + 128;
+        const a = 0.5 + Math.sin(y * 0.05 + time) * 0.5;
+        copperlistsCtx.fillStyle = `rgba(${r},${g},${b},${a})`;
+        copperlistsCtx.fillRect(0, y, 135, 2);
+    }
 
     // Draw some text
     copperlistsCtx.font = '10px Arial';
-    copperlistsCtx.fillStyle = '#FFFFFF';
-    copperlistsCtx.textAlign = 'center';
-    copperlistsCtx.fillText('32-bit ARGB', 67, 15);
-    copperlistsCtx.fillText('Copperlists', 67, 30);
+    copperlistsCtx.fillStyle = 'rgba(255,255,255,0.8)';
+    copperlistsCtx.fillText('ECS Copper', 5, 15);
+    copperlistsCtx.fillText('32-bit ARGB', 5, 130);
 
-    // Draw a simple sprite that moves through the copper bars
-    const spriteSize = 10;
-    const spriteX = (Date.now() / 20) % (135 - spriteSize);
-    copperlistsCtx.fillStyle = '#FFFFFF';
-    copperlistsCtx.fillRect(spriteX, 60, spriteSize, spriteSize);
+    // Draw a shape that moves with the copper effect
+    const shapeX = Math.sin(time) * 50 + 67;
+    const shapeY = Math.cos(time) * 50 + 67;
+    copperlistsCtx.beginPath();
+    copperlistsCtx.arc(shapeX, shapeY, 10, 0, 2 * Math.PI);
+    copperlistsCtx.fillStyle = `rgba(255,255,255,${0.5 + Math.sin(time) * 0.5})`;
+    copperlistsCtx.fill();
 }
 
-// Initial draw
-drawCopperlistsDemo();
+// Animate the demo
+function animateCopperlists() {
+    drawCopperlistsDemo();
+    requestAnimationFrame(animateCopperlists);
+}
 
-// Update demo
-setInterval(drawCopperlistsDemo, 1000 / 60); // 60 FPS
+animateCopperlists();
 </script>
 </canvas>
     </div>
     <div class="mini-viewport" style="width: 135px; height: 135px; background-color: #000; border: 1px solid #008080; border-radius: 5px; margin-bottom: 10px;">
       <canvas id="aga-ham8-demo" width="135" height="135">
 <script>
-// AGA HAM8 demo
-const agaHam8Canvas = document.getElementById('aga-ham8-demo');
-const agaHam8Ctx = agaHam8Canvas.getContext('2d');
+// AGA HAM8 demo (Hold-And-Modify 8-bit mode)
+const agaCanvas = document.getElementById('aga-ham8-demo');
+const agaCtx = agaCanvas.getContext('2d');
 
 function drawAGAHAM8Demo() {
     // Clear the canvas
-    agaHam8Ctx.fillStyle = '#000000';
-    agaHam8Ctx.fillRect(0, 0, 135, 135);
+    agaCtx.clearRect(0, 0, 135, 135);
 
-    // Generate all 4096 colors
-    const colors = [];
-    for (let r = 0; r < 16; r++) {
-        for (let g = 0; g < 16; g++) {
-            for (let b = 0; b < 16; b++) {
-                colors.push(`rgb(${r * 17},${g * 17},${b * 17})`);
-            }
+    // Create a gradient to showcase all 4096 colors
+    for (let y = 0; y < 135; y++) {
+        for (let x = 0; x < 135; x++) {
+            const r = Math.floor((x / 135) * 16) * 16;
+            const g = Math.floor((y / 135) * 16) * 16;
+            const b = Math.floor(((x + y) / 270) * 16) * 16;
+            agaCtx.fillStyle = `rgb(${r},${g},${b})`;
+            agaCtx.fillRect(x, y, 1, 1);
         }
     }
 
-    // Draw color swatches
-    const swatchSize = Math.ceil(Math.sqrt(135 * 135 / 4096));
-    let x = 0;
-    let y = 0;
+    // Draw some text
+    agaCtx.font = '10px Arial';
+    agaCtx.fillStyle = 'rgba(255,255,255,0.8)';
+    agaCtx.fillText('AGA HAM8', 5, 15);
+    agaCtx.fillText('4096 colors', 5, 130);
 
-    for (let i = 0; i < 4096; i++) {
-        agaHam8Ctx.fillStyle = colors[i];
-        agaHam8Ctx.fillRect(x, y, swatchSize, swatchSize);
-
-        x += swatchSize;
-        if (x + swatchSize > 135) {
-            x = 0;
-            y += swatchSize;
-        }
-    }
-
-    // Draw text
-    agaHam8Ctx.font = '10px Arial';
-    agaHam8Ctx.fillStyle = '#FFFFFF';
-    agaHam8Ctx.textAlign = 'center';
-    agaHam8Ctx.fillText('AGA HAM8', 67, 15);
-    agaHam8Ctx.fillText('4096 Colors', 67, 30);
-
-    // Add a moving highlight to showcase color depth
-    const time = Date.now() / 1000;
-    const highlightX = Math.cos(time) * 45 + 67;
-    const highlightY = Math.sin(time) * 45 + 67;
-    const gradient = agaHam8Ctx.createRadialGradient(highlightX, highlightY, 0, highlightX, highlightY, 20);
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
-    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-    agaHam8Ctx.fillStyle = gradient;
-    agaHam8Ctx.fillRect(0, 0, 135, 135);
+    // Draw a shape that moves across the colorful background
+    const time = Date.now() * 0.001;
+    const shapeX = Math.sin(time) * 50 + 67;
+    const shapeY = Math.cos(time) * 50 + 67;
+    agaCtx.beginPath();
+    agaCtx.arc(shapeX, shapeY, 10, 0, 2 * Math.PI);
+    agaCtx.fillStyle = `rgba(255,255,255,${0.5 + Math.sin(time) * 0.5})`;
+    agaCtx.fill();
+    agaCtx.strokeStyle = 'black';
+    agaCtx.stroke();
 }
 
-// Initial draw
-drawAGAHAM8Demo();
+// Animate the demo
+function animateAGAHAM8() {
+    drawAGAHAM8Demo();
+    requestAnimationFrame(animateAGAHAM8);
+}
 
-// Update demo
-setInterval(drawAGAHAM8Demo, 1000 / 30); // 30 FPS
+animateAGAHAM8();
 </script>
 </canvas>
     </div>
@@ -565,6 +545,15 @@ setInterval(drawAGAHAM8Demo, 1000 / 30); // 30 FPS
       
       const copperInstructions = Math.floor(Math.random() * 32) + 48; // Random number of copper instructions between 48 and 80
       
+      // Generate random CPU instruction
+      const cpuInstructions = ['LDA', 'LDX', 'LDY', 'STA', 'STX', 'STY', 'AND', 'ORA', 'EOR', 'ADC', 'SBC', 'INC', 'DEC', 'ASL', 'LSR', 'ROL', 'ROR', 'JMP', 'JSR', 'RTS'];
+      const randomCPUInstruction = cpuInstructions[Math.floor(Math.random() * cpuInstructions.length)];
+      const randomCPUOperand = '#$' + Math.floor(Math.random() * 256).toString(16).padStart(2, '0').toUpperCase();
+      
+      // Generate random GPU instruction
+      const gpuInstructions = ['SET_PIXEL', 'DRAW_LINE', 'FILL_RECT', 'DRAW_SPRITE', 'SET_PALETTE', 'CLEAR_SCREEN', 'BLIT', 'SET_VIEWPORT', 'ENABLE_LAYER', 'DISABLE_LAYER'];
+      const randomGPUInstruction = gpuInstructions[Math.floor(Math.random() * gpuInstructions.length)];
+      
       const updatedInfo = `user@project-manhattan:~$ debug_info
 
 === 3D Benchmark Debug Data ===
@@ -580,7 +569,8 @@ VRAM usage: ${vramUsage} GB
 CPU clock: ${cpuClock} MHz
 GPU clock: ${gpuClock} MHz
 Memory: 64 MB unified
-Current instruction: LDA #$FF
+Current CPU instruction: ${randomCPUInstruction} ${randomCPUOperand}
+Current GPU instruction: ${randomGPUInstruction}
 Registers:
   A: $${registers.A}  X: $${registers.X}  Y: $${registers.Y}
   PC: $${registers.PC}  SP: $${registers.SP}
