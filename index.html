@@ -1,122 +1,139 @@
-<html><head><base href="https://websim.ai/project-manhattan"><title>Project Manhattan: Next-Generation MOS 6510-based CPU/GPU SoC Emulator Written in FreeBASIC</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/objects/Water.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/objects/Sky.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css"></script>
-<!-- Adding Foundation CSS for styling the overlay -->
-<style>
-  body { margin: 0; overflow: hidden; background-color: #000; }
-  canvas { width: 100%; height: 100%; }
-  #info {
-    position: absolute;
-    top: 10px;
-    width: 100%;
-    text-align: center;
-    color: white;
-    font-family: Arial, sans-serif;
-    pointer-events: none;
-    text-shadow: 1px 1px 2px black;
-  }
-  #metrics {
-    position: absolute;
-    top: 50px;
-    left: 10px;
-    color: white;
-    font-family: Arial, sans-serif;
-    background-color: rgba(0,0,0,0.5);
-    padding: 10px;
-    border-radius: 5px;
-  }
-  #benchmark {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    color: white;
-    font-family: Arial, sans-serif;
-    background-color: rgba(0,0,0,0.5);
-    padding: 10px;
-    border-radius: 5px;
-  }
-  #source-code {
-    position: absolute;
-    top: 60px;
-    right: 10px;
-    width: 300px;
-    height: 85%;
-    color: lime;
-    background-color: rgba(0, 0, 0, 0.7);
-    overflow: auto;
-    padding: 10px;
-    border-radius: 5px;
-    font-family: monospace;
-  }
-  #emulator {
-    position: absolute;
-    top: 50%;
-    left: 35%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.7);
-    overflow-y: scroll;
-    padding: 20px;
-    border-radius: 10px;
-    font-family: monospace;
-    text-align: left;
-  }
-  .emulator-button {
-    margin-top: 10px;
-    text-align: center;
-  }
-  #terminal {
-    font-family: 'Courier New', Courier, monospace;
-    color: lime;
-    background-color: black;
-    overflow: auto;
-    height: 300px;
-    width: 560px;
-    padding: 10px;
-    text-align: left;
-    border-radius: 10px;
-    filter: contrast(120%) brightness(80%);
-    box-shadow: 0 0 8px #00FF00;
-  }
-  #command-input {
-    display: block;
-    margin: 0 auto;
-    width: 90%;
-    background-color: black;
-    color: lime;
-    border: 1px solid green;
-    padding: 5px;
-    font-family: 'Courier New', Courier, monospace;
-  }
-  #graphics-viewport {
-    width: 100%;
-    height: 200px;
-    background-color: black;
-    margin-top: 10px;
-    border: 1px solid #008080;
-    overflow: hidden;
-    border-radius: 10px;
-  }
-</style>
-</head>
-<body>
-<div id="info">Project Manhattan: Next-Generation MOS 6510-based CPU/GPU SoC Emulator Written in FreeBASIC</div>
-<div id="metrics"></div>
-<div id="benchmark"></div>
-<div id="source-code">
-<pre>' Project Manhattan: Next-Generation MOS 6510-based CPU/GPU SoC Emulator
+<html>
+  <head>
+    <base href="https://websim.ai/project-manhattan" />
+    <title>
+      Project Manhattan: Next-Generation MOS 6510-based CPU/GPU SoC Emulator
+      Written in FreeBASIC
+    </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/objects/Water.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/objects/Sky.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css"></script>
+    <!-- Adding Foundation CSS for styling the overlay -->
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #000;
+      }
+      canvas {
+        width: 100%;
+        height: 100%;
+      }
+      #info {
+        position: absolute;
+        top: 10px;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-family: Arial, sans-serif;
+        pointer-events: none;
+        text-shadow: 1px 1px 2px black;
+      }
+      #metrics {
+        position: absolute;
+        top: 50px;
+        left: 10px;
+        color: white;
+        font-family: Arial, sans-serif;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+      }
+      #benchmark {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: white;
+        font-family: Arial, sans-serif;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+      }
+      #source-code {
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        width: 300px;
+        height: 85%;
+        color: lime;
+        background-color: rgba(0, 0, 0, 0.7);
+        overflow: auto;
+        padding: 10px;
+        border-radius: 5px;
+        font-family: monospace;
+      }
+      #emulator {
+        position: absolute;
+        top: 50%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 600px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.7);
+        overflow-y: scroll;
+        padding: 20px;
+        border-radius: 10px;
+        font-family: monospace;
+        text-align: left;
+      }
+      .emulator-button {
+        margin-top: 10px;
+        text-align: center;
+      }
+      #terminal {
+        font-family: "Courier New", Courier, monospace;
+        color: lime;
+        background-color: black;
+        overflow: auto;
+        height: 300px;
+        width: 560px;
+        padding: 10px;
+        text-align: left;
+        border-radius: 10px;
+        filter: contrast(120%) brightness(80%);
+        box-shadow: 0 0 8px #00ff00;
+      }
+      #command-input {
+        display: block;
+        margin: 0 auto;
+        width: 90%;
+        background-color: black;
+        color: lime;
+        border: 1px solid green;
+        padding: 5px;
+        font-family: "Courier New", Courier, monospace;
+      }
+      #graphics-viewport {
+        width: 100%;
+        height: 200px;
+        background-color: black;
+        margin-top: 10px;
+        border: 1px solid #008080;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="info">
+      Project Manhattan: Next-Generation MOS 6510-based CPU/GPU SoC Emulator
+      Written in FreeBASIC
+    </div>
+    <div id="metrics"></div>
+    <div id="benchmark"></div>
+    <div id="source-code">
+      <pre>
+' Project Manhattan: Next-Generation MOS 6510-based CPU/GPU SoC Emulator
 ' Version 2.0.1
 ' This code implements an advanced MOS 6510-based CPU/GPU System on Chip emulator
 ' with integrated 3D graphics capabilities for both retro and modern applications.
@@ -240,11 +257,20 @@ CPU_Shutdown()
 GPU_Shutdown()
 Memory_Shutdown()
 END
-</pre>
-</div>
-<div id="emulator" style="left: calc(50% - 120px); top: 50%; transform: translate(-50%, -50%);">
-  <h4>UNIX Posix Terminal</h4>
-  <pre id="terminal">user@project-manhattan:~$ debug_info
+</pre
+      >
+    </div>
+    <div
+      id="emulator"
+      style="
+        left: calc(50% - 120px);
+        top: 50%;
+        transform: translate(-50%, -50%);
+      "
+    >
+      <h4>UNIX Posix Terminal</h4>
+      <pre id="terminal">
+user@project-manhattan:~$ debug_info
 
 === Project Manhattan: Advanced MOS 6510-based CPU/GPU SoC Emulator Debug Info ===
 
@@ -293,268 +319,388 @@ Active Processes:
 4. AGA HAM8 Color Engine (PID: 1027)
 5. Quantum Memory Manager (PID: 1028)
 
-user@project-manhattan:~$</pre>
-  <div class="emulator-button">
-    <button class="button" onclick="startTerminal()">Start Terminal</button>
-    <button class="button" onclick="runCommand()">Run Command</button>
-  </div>
-  <textarea id="command-input" rows="5" cols="35"></textarea>
-  <div id="graphics-viewport"></div>
-  
-  <!-- Updated graphics viewports -->
-  <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-top: 20px;">
-    <div class="mini-viewport" style="width: 135px; height: 135px; background-color: #000; border: 1px solid #008080; border-radius: 5px; margin-bottom: 10px;">
-      <canvas id="vic-ii-demo" width="135" height="135">
-<script>
-// VIC-II demo
-const vicIICanvas = document.getElementById('vic-ii-demo');
-const vicIICtx = vicIICanvas.getContext('2d');
+user@project-manhattan:~$</pre
+      >
+      <div class="emulator-button">
+        <button class="button" onclick="startTerminal()">Start Terminal</button>
+        <button class="button" onclick="runCommand()">Run Command</button>
+      </div>
+      <textarea id="command-input" rows="5" cols="35"></textarea>
+      <div id="graphics-viewport"></div>
 
-// Set up a basic color palette similar to the Commodore 64
-const c64Colors = [
-    '#000000', '#ffffff', '#880000', '#aaffee',
-    '#cc44cc', '#00cc55', '#0000aa', '#eeee77',
-    '#dd8855', '#664400', '#ff7777', '#333333',
-    '#777777', '#aaff66', '#0088ff', '#bbbbbb'
-];
+      <!-- Updated graphics viewports -->
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          margin-top: 20px;
+        "
+      >
+        <div
+          class="mini-viewport"
+          style="
+            width: 135px;
+            height: 135px;
+            background-color: #000;
+            border: 1px solid #008080;
+            border-radius: 5px;
+            margin-bottom: 10px;
+          "
+        >
+          <canvas id="vic-ii-demo" width="135" height="135">
+            <script>
+              // VIC-II demo
+              const vicIICanvas = document.getElementById("vic-ii-demo");
+              const vicIICtx = vicIICanvas.getContext("2d");
 
-function drawVICIIDemo() {
-    // Clear the canvas
-    vicIICtx.fillStyle = c64Colors[6]; // Background color (dark blue)
-    vicIICtx.fillRect(0, 0, 135, 135);
+              // Set up a basic color palette similar to the Commodore 64
+              const c64Colors = [
+                "#000000",
+                "#ffffff",
+                "#880000",
+                "#aaffee",
+                "#cc44cc",
+                "#00cc55",
+                "#0000aa",
+                "#eeee77",
+                "#dd8855",
+                "#664400",
+                "#ff7777",
+                "#333333",
+                "#777777",
+                "#aaff66",
+                "#0088ff",
+                "#bbbbbb",
+              ];
 
-    // Draw a simple sprite-like character
-    vicIICtx.fillStyle = c64Colors[7]; // Light yellow
-    vicIICtx.fillRect(60, 50, 15, 25);
-    vicIICtx.fillRect(55, 60, 25, 10);
-    
-    // Draw some text
-    vicIICtx.font = '10px Commodore64';
-    vicIICtx.fillStyle = c64Colors[1]; // White
-    vicIICtx.fillText('VIC-II DEMO', 30, 30);
+              function drawVICIIDemo() {
+                // Clear the canvas
+                vicIICtx.fillStyle = c64Colors[6]; // Background color (dark blue)
+                vicIICtx.fillRect(0, 0, 135, 135);
 
-    // Draw a simple border
-    vicIICtx.strokeStyle = c64Colors[2]; // Red
-    vicIICtx.lineWidth = 2;
-    vicIICtx.strokeRect(5, 5, 125, 125);
+                // Draw a simple sprite-like character
+                vicIICtx.fillStyle = c64Colors[7]; // Light yellow
+                vicIICtx.fillRect(60, 50, 15, 25);
+                vicIICtx.fillRect(55, 60, 25, 10);
 
-    // Simulate a raster bar effect
-    for (let i = 0; i < 5; i++) {
-        vicIICtx.fillStyle = c64Colors[i + 2];
-        vicIICtx.fillRect(0, 100 + i * 7, 135, 7);
-    }
-}
+                // Draw some text
+                vicIICtx.font = "10px Commodore64";
+                vicIICtx.fillStyle = c64Colors[1]; // White
+                vicIICtx.fillText("VIC-II DEMO", 30, 30);
 
-// Animate the demo
-function animateVICII() {
-    drawVICIIDemo();
-    requestAnimationFrame(animateVICII);
-}
+                // Draw a simple border
+                vicIICtx.strokeStyle = c64Colors[2]; // Red
+                vicIICtx.lineWidth = 2;
+                vicIICtx.strokeRect(5, 5, 125, 125);
 
-animateVICII();
-</script>
-</canvas>
-    </div>
-    <div class="mini-viewport" style="width: 135px; height: 135px; background-color: #000; border: 1px solid #008080; border-radius: 5px; margin-bottom: 10px;">
-      <canvas id="svga-demo" width="135" height="135">
-<script>
-// SVGA/HDMI/DisplayPort demo
-const svgaCanvas = document.getElementById('svga-demo');
-const svgaCtx = svgaCanvas.getContext('2d');
+                // Simulate a raster bar effect
+                for (let i = 0; i < 5; i++) {
+                  vicIICtx.fillStyle = c64Colors[i + 2];
+                  vicIICtx.fillRect(0, 100 + i * 7, 135, 7);
+                }
+              }
 
-function drawSVGADemo() {
-    // Clear the canvas
-    svgaCtx.fillStyle = '#000000';
-    svgaCtx.fillRect(0, 0, 135, 135);
+              // Animate the demo
+              function animateVICII() {
+                drawVICIIDemo();
+                requestAnimationFrame(animateVICII);
+              }
 
-    // Draw a colorful gradient background
-    const gradient = svgaCtx.createLinearGradient(0, 0, 135, 135);
-    gradient.addColorStop(0, '#ff0000');
-    gradient.addColorStop(0.5, '#00ff00');
-    gradient.addColorStop(1, '#0000ff');
-    svgaCtx.fillStyle = gradient;
-    svgaCtx.fillRect(10, 10, 115, 115);
+              animateVICII();
+            </script>
+          </canvas>
+        </div>
+        <div
+          class="mini-viewport"
+          style="
+            width: 135px;
+            height: 135px;
+            background-color: #000;
+            border: 1px solid #008080;
+            border-radius: 5px;
+            margin-bottom: 10px;
+          "
+        >
+          <canvas id="svga-demo" width="135" height="135">
+            <script>
+              // SVGA/HDMI/DisplayPort demo
+              const svgaCanvas = document.getElementById("svga-demo");
+              const svgaCtx = svgaCanvas.getContext("2d");
 
-    // Draw some text
-    svgaCtx.font = '12px Arial';
-    svgaCtx.fillStyle = '#ffffff';
-    svgaCtx.fillText('SVGA/HDMI/DP', 20, 30);
+              function drawSVGADemo() {
+                // Clear the canvas
+                svgaCtx.fillStyle = "#000000";
+                svgaCtx.fillRect(0, 0, 135, 135);
 
-    // Draw a simple shape
-    svgaCtx.beginPath();
-    svgaCtx.arc(67, 67, 25, 0, 2 * Math.PI);
-    svgaCtx.fillStyle = '#ffff00';
-    svgaCtx.fill();
-    svgaCtx.lineWidth = 3;
-    svgaCtx.strokeStyle = '#000000';
-    svgaCtx.stroke();
+                // Draw a colorful gradient background
+                const gradient = svgaCtx.createLinearGradient(0, 0, 135, 135);
+                gradient.addColorStop(0, "#ff0000");
+                gradient.addColorStop(0.5, "#00ff00");
+                gradient.addColorStop(1, "#0000ff");
+                svgaCtx.fillStyle = gradient;
+                svgaCtx.fillRect(10, 10, 115, 115);
 
-    // Draw some lines to simulate high resolution
-    svgaCtx.beginPath();
-    for (let i = 0; i < 135; i += 5) {
-        svgaCtx.moveTo(0, i);
-        svgaCtx.lineTo(135, i);
-        svgaCtx.moveTo(i, 0);
-        svgaCtx.lineTo(i, 135);
-    }
-    svgaCtx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-    svgaCtx.lineWidth = 1;
-    svgaCtx.stroke();
-}
+                // Draw some text
+                svgaCtx.font = "12px Arial";
+                svgaCtx.fillStyle = "#ffffff";
+                svgaCtx.fillText("SVGA/HDMI/DP", 20, 30);
 
-// Animate the demo
-function animateSVGA() {
-    drawSVGADemo();
-    requestAnimationFrame(animateSVGA);
-}
+                // Draw a simple shape
+                svgaCtx.beginPath();
+                svgaCtx.arc(67, 67, 25, 0, 2 * Math.PI);
+                svgaCtx.fillStyle = "#ffff00";
+                svgaCtx.fill();
+                svgaCtx.lineWidth = 3;
+                svgaCtx.strokeStyle = "#000000";
+                svgaCtx.stroke();
 
-animateSVGA();
-</script>
-</canvas>
-    </div>
-    <div class="mini-viewport" style="width: 135px; height: 135px; background-color: #000; border: 1px solid #008080; border-radius: 5px; margin-bottom: 10px;">
-      <canvas id="copperlists-demo" width="135" height="135">
-<script>
-// ECS (Copper lists) demo using 32-bit ARGB colors
-const copperlistsCanvas = document.getElementById('copperlists-demo');
-const copperlistsCtx = copperlistsCanvas.getContext('2d');
+                // Draw some lines to simulate high resolution
+                svgaCtx.beginPath();
+                for (let i = 0; i < 135; i += 5) {
+                  svgaCtx.moveTo(0, i);
+                  svgaCtx.lineTo(135, i);
+                  svgaCtx.moveTo(i, 0);
+                  svgaCtx.lineTo(i, 135);
+                }
+                svgaCtx.strokeStyle = "rgba(255, 255, 255, 0.2)";
+                svgaCtx.lineWidth = 1;
+                svgaCtx.stroke();
+              }
 
-function drawCopperlistsDemo() {
-    // Clear the canvas
-    copperlistsCtx.clearRect(0, 0, 135, 135);
+              // Animate the demo
+              function animateSVGA() {
+                drawSVGADemo();
+                requestAnimationFrame(animateSVGA);
+              }
 
-    // Create a gradient background
-    const gradient = copperlistsCtx.createLinearGradient(0, 0, 0, 135);
-    for (let i = 0; i < 10; i++) {
-        const color = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255},1)`;
-        gradient.addColorStop(i / 10, color);
-    }
-    copperlistsCtx.fillStyle = gradient;
-    copperlistsCtx.fillRect(0, 0, 135, 135);
+              animateSVGA();
+            </script>
+          </canvas>
+        </div>
+        <div
+          class="mini-viewport"
+          style="
+            width: 135px;
+            height: 135px;
+            background-color: #000;
+            border: 1px solid #008080;
+            border-radius: 5px;
+            margin-bottom: 10px;
+          "
+        >
+          <canvas id="copperlists-demo" width="135" height="135">
+            <script>
+              // ECS (Copper lists) demo using 32-bit ARGB colors
+              const copperlistsCanvas =
+                document.getElementById("copperlists-demo");
+              const copperlistsCtx = copperlistsCanvas.getContext("2d");
 
-    // Simulate copper list effects
-    const time = Date.now() * 0.001;
-    for (let y = 0; y < 135; y += 2) {
-        const r = Math.sin(y * 0.1 + time) * 127 + 128;
-        const g = Math.sin(y * 0.1 + time + 2) * 127 + 128;
-        const b = Math.sin(y * 0.1 + time + 4) * 127 + 128;
-        const a = 0.5 + Math.sin(y * 0.05 + time) * 0.5;
-        copperlistsCtx.fillStyle = `rgba(${r},${g},${b},${a})`;
-        copperlistsCtx.fillRect(0, y, 135, 2);
-    }
+              function drawCopperlistsDemo() {
+                // Clear the canvas
+                copperlistsCtx.clearRect(0, 0, 135, 135);
 
-    // Draw some text
-    copperlistsCtx.font = '10px Arial';
-    copperlistsCtx.fillStyle = 'rgba(255,255,255,0.8)';
-    copperlistsCtx.fillText('ECS Copper', 5, 15);
-    copperlistsCtx.fillText('32-bit ARGB', 5, 130);
+                // Create a gradient background
+                const gradient = copperlistsCtx.createLinearGradient(
+                  0,
+                  0,
+                  0,
+                  135,
+                );
+                for (let i = 0; i < 10; i++) {
+                  const color = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255},1)`;
+                  gradient.addColorStop(i / 10, color);
+                }
+                copperlistsCtx.fillStyle = gradient;
+                copperlistsCtx.fillRect(0, 0, 135, 135);
 
-    // Draw a shape that moves with the copper effect
-    const shapeX = Math.sin(time) * 50 + 67;
-    const shapeY = Math.cos(time) * 50 + 67;
-    copperlistsCtx.beginPath();
-    copperlistsCtx.arc(shapeX, shapeY, 10, 0, 2 * Math.PI);
-    copperlistsCtx.fillStyle = `rgba(255,255,255,${0.5 + Math.sin(time) * 0.5})`;
-    copperlistsCtx.fill();
-}
+                // Simulate copper list effects
+                const time = Date.now() * 0.001;
+                for (let y = 0; y < 135; y += 2) {
+                  const r = Math.sin(y * 0.1 + time) * 127 + 128;
+                  const g = Math.sin(y * 0.1 + time + 2) * 127 + 128;
+                  const b = Math.sin(y * 0.1 + time + 4) * 127 + 128;
+                  const a = 0.5 + Math.sin(y * 0.05 + time) * 0.5;
+                  copperlistsCtx.fillStyle = `rgba(${r},${g},${b},${a})`;
+                  copperlistsCtx.fillRect(0, y, 135, 2);
+                }
 
-// Animate the demo
-function animateCopperlists() {
-    drawCopperlistsDemo();
-    requestAnimationFrame(animateCopperlists);
-}
+                // Draw some text
+                copperlistsCtx.font = "10px Arial";
+                copperlistsCtx.fillStyle = "rgba(255,255,255,0.8)";
+                copperlistsCtx.fillText("ECS Copper", 5, 15);
+                copperlistsCtx.fillText("32-bit ARGB", 5, 130);
 
-animateCopperlists();
-</script>
-</canvas>
-    </div>
-    <div class="mini-viewport" style="width: 135px; height: 135px; background-color: #000; border: 1px solid #008080; border-radius: 5px; margin-bottom: 10px;">
-      <canvas id="aga-ham8-demo" width="135" height="135">
-<script>
-// AGA HAM8 demo (Hold-And-Modify 8-bit mode)
-const agaCanvas = document.getElementById('aga-ham8-demo');
-const agaCtx = agaCanvas.getContext('2d');
+                // Draw a shape that moves with the copper effect
+                const shapeX = Math.sin(time) * 50 + 67;
+                const shapeY = Math.cos(time) * 50 + 67;
+                copperlistsCtx.beginPath();
+                copperlistsCtx.arc(shapeX, shapeY, 10, 0, 2 * Math.PI);
+                copperlistsCtx.fillStyle = `rgba(255,255,255,${0.5 + Math.sin(time) * 0.5})`;
+                copperlistsCtx.fill();
+              }
 
-function drawAGAHAM8Demo() {
-    // Clear the canvas
-    agaCtx.clearRect(0, 0, 135, 135);
+              // Animate the demo
+              function animateCopperlists() {
+                drawCopperlistsDemo();
+                requestAnimationFrame(animateCopperlists);
+              }
 
-    // Create a gradient to showcase all 4096 colors
-    for (let y = 0; y < 135; y++) {
-        for (let x = 0; x < 135; x++) {
-            const r = Math.floor((x / 135) * 16) * 16;
-            const g = Math.floor((y / 135) * 16) * 16;
-            const b = Math.floor(((x + y) / 270) * 16) * 16;
-            agaCtx.fillStyle = `rgb(${r},${g},${b})`;
-            agaCtx.fillRect(x, y, 1, 1);
-        }
-    }
+              animateCopperlists();
+            </script>
+          </canvas>
+        </div>
+        <div
+          class="mini-viewport"
+          style="
+            width: 135px;
+            height: 135px;
+            background-color: #000;
+            border: 1px solid #008080;
+            border-radius: 5px;
+            margin-bottom: 10px;
+          "
+        >
+          <canvas id="aga-ham8-demo" width="135" height="135">
+            <script>
+              // AGA HAM8 demo (Hold-And-Modify 8-bit mode)
+              const agaCanvas = document.getElementById("aga-ham8-demo");
+              const agaCtx = agaCanvas.getContext("2d");
 
-    // Draw some text
-    agaCtx.font = '10px Arial';
-    agaCtx.fillStyle = 'rgba(255,255,255,0.8)';
-    agaCtx.fillText('AGA HAM8', 5, 15);
-    agaCtx.fillText('4096 colors', 5, 130);
+              function drawAGAHAM8Demo() {
+                // Clear the canvas
+                agaCtx.clearRect(0, 0, 135, 135);
 
-    // Draw a shape that moves across the colorful background
-    const time = Date.now() * 0.001;
-    const shapeX = Math.sin(time) * 50 + 67;
-    const shapeY = Math.cos(time) * 50 + 67;
-    agaCtx.beginPath();
-    agaCtx.arc(shapeX, shapeY, 10, 0, 2 * Math.PI);
-    agaCtx.fillStyle = `rgba(255,255,255,${0.5 + Math.sin(time) * 0.5})`;
-    agaCtx.fill();
-    agaCtx.strokeStyle = 'black';
-    agaCtx.stroke();
-}
+                // Create a gradient to showcase all 4096 colors
+                for (let y = 0; y < 135; y++) {
+                  for (let x = 0; x < 135; x++) {
+                    const r = Math.floor((x / 135) * 16) * 16;
+                    const g = Math.floor((y / 135) * 16) * 16;
+                    const b = Math.floor(((x + y) / 270) * 16) * 16;
+                    agaCtx.fillStyle = `rgb(${r},${g},${b})`;
+                    agaCtx.fillRect(x, y, 1, 1);
+                  }
+                }
 
-// Animate the demo
-function animateAGAHAM8() {
-    drawAGAHAM8Demo();
-    requestAnimationFrame(animateAGAHAM8);
-}
+                // Draw some text
+                agaCtx.font = "10px Arial";
+                agaCtx.fillStyle = "rgba(255,255,255,0.8)";
+                agaCtx.fillText("AGA HAM8", 5, 15);
+                agaCtx.fillText("4096 colors", 5, 130);
 
-animateAGAHAM8();
-</script>
-</canvas>
-    </div>
-  </div>
-  
-  <script>
-    function updateDebugInfo() {
-      const terminal = document.getElementById('terminal');
-      const now = new Date();
-      const fps = Math.floor(Math.random() * 20) + 70; // Random FPS between 70 and 90
-      const gpuUtilization = Math.floor(Math.random() * 10) + 85; // Random GPU utilization between 85% and 95%
-      const vramUsage = (Math.random() * 0.5 + 2.5).toFixed(1); // Random VRAM usage between 2.5 and 3.0 GB
-      const cpuClock = (Math.random() * 0.1 + 1.0).toFixed(3); // Random CPU clock between 1.000 and 1.100 MHz
-      const gpuClock = Math.floor(Math.random() * 5) + 38; // Random GPU clock between 38 and 42 MHz
-      
-      const registers = {
-        A: Math.floor(Math.random() * 256).toString(16).padStart(2, '0').toUpperCase(),
-        X: Math.floor(Math.random() * 256).toString(16).padStart(2, '0').toUpperCase(),
-        Y: Math.floor(Math.random() * 256).toString(16).padStart(2, '0').toUpperCase(),
-        PC: (Math.floor(Math.random() * 256) + 0xF000).toString(16).toUpperCase(),
-        SP: (Math.floor(Math.random() * 256) + 0x0100).toString(16).toUpperCase()
-      };
-      
-      const flags = Math.floor(Math.random() * 256).toString(2).padStart(8, '0');
-      
-      const spriteX = Math.floor(Math.random() * 320);
-      const spriteY = Math.floor(Math.random() * 200);
-      
-      const copperInstructions = Math.floor(Math.random() * 32) + 48; // Random number of copper instructions between 48 and 80
-      
-      // Generate random CPU instruction
-      const cpuInstructions = ['LDA', 'LDX', 'LDY', 'STA', 'STX', 'STY', 'AND', 'ORA', 'EOR', 'ADC', 'SBC', 'INC', 'DEC', 'ASL', 'LSR', 'ROL', 'ROR', 'JMP', 'JSR', 'RTS'];
-      const randomCPUInstruction = cpuInstructions[Math.floor(Math.random() * cpuInstructions.length)];
-      const randomCPUOperand = '#$' + Math.floor(Math.random() * 256).toString(16).padStart(2, '0').toUpperCase();
-      
-      // Generate random GPU instruction
-      const gpuInstructions = ['SET_PIXEL', 'DRAW_LINE', 'FILL_RECT', 'DRAW_SPRITE', 'SET_PALETTE', 'CLEAR_SCREEN', 'BLIT', 'SET_VIEWPORT', 'ENABLE_LAYER', 'DISABLE_LAYER'];
-      const randomGPUInstruction = gpuInstructions[Math.floor(Math.random() * gpuInstructions.length)];
-      
-      const updatedInfo = `user@project-manhattan:~$ debug_info
+                // Draw a shape that moves across the colorful background
+                const time = Date.now() * 0.001;
+                const shapeX = Math.sin(time) * 50 + 67;
+                const shapeY = Math.cos(time) * 50 + 67;
+                agaCtx.beginPath();
+                agaCtx.arc(shapeX, shapeY, 10, 0, 2 * Math.PI);
+                agaCtx.fillStyle = `rgba(255,255,255,${0.5 + Math.sin(time) * 0.5})`;
+                agaCtx.fill();
+                agaCtx.strokeStyle = "black";
+                agaCtx.stroke();
+              }
+
+              // Animate the demo
+              function animateAGAHAM8() {
+                drawAGAHAM8Demo();
+                requestAnimationFrame(animateAGAHAM8);
+              }
+
+              animateAGAHAM8();
+            </script>
+          </canvas>
+        </div>
+      </div>
+
+      <script>
+        function updateDebugInfo() {
+          const terminal = document.getElementById("terminal");
+          const now = new Date();
+          const fps = Math.floor(Math.random() * 20) + 70; // Random FPS between 70 and 90
+          const gpuUtilization = Math.floor(Math.random() * 10) + 85; // Random GPU utilization between 85% and 95%
+          const vramUsage = (Math.random() * 0.5 + 2.5).toFixed(1); // Random VRAM usage between 2.5 and 3.0 GB
+          const cpuClock = (Math.random() * 0.1 + 1.0).toFixed(3); // Random CPU clock between 1.000 and 1.100 MHz
+          const gpuClock = Math.floor(Math.random() * 5) + 38; // Random GPU clock between 38 and 42 MHz
+
+          const registers = {
+            A: Math.floor(Math.random() * 256)
+              .toString(16)
+              .padStart(2, "0")
+              .toUpperCase(),
+            X: Math.floor(Math.random() * 256)
+              .toString(16)
+              .padStart(2, "0")
+              .toUpperCase(),
+            Y: Math.floor(Math.random() * 256)
+              .toString(16)
+              .padStart(2, "0")
+              .toUpperCase(),
+            PC: (Math.floor(Math.random() * 256) + 0xf000)
+              .toString(16)
+              .toUpperCase(),
+            SP: (Math.floor(Math.random() * 256) + 0x0100)
+              .toString(16)
+              .toUpperCase(),
+          };
+
+          const flags = Math.floor(Math.random() * 256)
+            .toString(2)
+            .padStart(8, "0");
+
+          const spriteX = Math.floor(Math.random() * 320);
+          const spriteY = Math.floor(Math.random() * 200);
+
+          const copperInstructions = Math.floor(Math.random() * 32) + 48; // Random number of copper instructions between 48 and 80
+
+          // Generate random CPU instruction
+          const cpuInstructions = [
+            "LDA",
+            "LDX",
+            "LDY",
+            "STA",
+            "STX",
+            "STY",
+            "AND",
+            "ORA",
+            "EOR",
+            "ADC",
+            "SBC",
+            "INC",
+            "DEC",
+            "ASL",
+            "LSR",
+            "ROL",
+            "ROR",
+            "JMP",
+            "JSR",
+            "RTS",
+          ];
+          const randomCPUInstruction =
+            cpuInstructions[Math.floor(Math.random() * cpuInstructions.length)];
+          const randomCPUOperand =
+            "#$" +
+            Math.floor(Math.random() * 256)
+              .toString(16)
+              .padStart(2, "0")
+              .toUpperCase();
+
+          // Generate random GPU instruction
+          const gpuInstructions = [
+            "SET_PIXEL",
+            "DRAW_LINE",
+            "FILL_RECT",
+            "DRAW_SPRITE",
+            "SET_PALETTE",
+            "CLEAR_SCREEN",
+            "BLIT",
+            "SET_VIEWPORT",
+            "ENABLE_LAYER",
+            "DISABLE_LAYER",
+          ];
+          const randomGPUInstruction =
+            gpuInstructions[Math.floor(Math.random() * gpuInstructions.length)];
+
+          const updatedInfo = `user@project-manhattan:~$ debug_info
 
 === 3D Benchmark Debug Data ===
 Objects rendered: 500
@@ -584,252 +730,269 @@ Copper list: Active, ${copperInstructions} instructions
 
 user@project-manhattan:~$`;
 
-      terminal.innerHTML = updatedInfo;
-    }
+          terminal.innerHTML = updatedInfo;
+        }
 
-    // Update debug info every 2 seconds
-    setInterval(updateDebugInfo, 2000);
+        // Update debug info every 2 seconds
+        setInterval(updateDebugInfo, 2000);
 
-    // Initial update
-    updateDebugInfo();
-  </script>
-</div>
+        // Initial update
+        updateDebugInfo();
+      </script>
+    </div>
 
-<script>
-// Set up the scene, camera, and renderer
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 0.5;
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-document.body.appendChild(renderer.domElement);
+    <script>
+      // Set up the scene, camera, and renderer
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        2000,
+      );
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 0.5;
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      document.body.appendChild(renderer.domElement);
 
-// Add orbit controls
-const controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.maxPolarAngle = Math.PI*0.495;
-controls.target.set(0, 10, 0);
-controls.minDistance = 40.0;
-controls.maxDistance = 500.0;
+      // Add orbit controls
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.maxPolarAngle = Math.PI * 0.495;
+      controls.target.set(0, 10, 0);
+      controls.minDistance = 40.0;
+      controls.maxDistance = 500.0;
 
-// Create the water
-const waterGeometry = new THREE.PlaneGeometry(10000, 10000);
-const water = new THREE.Water(waterGeometry, {
-  textureWidth: 512,
-  textureHeight: 512,
-  waterNormals: new THREE.TextureLoader().load('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/waternormals.jpg', function(texture) {
-    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-  }),
-  sunDirection: new THREE.Vector3(),
-  sunColor: 0xffffff,
-  waterColor: 0x001e0f,
-  distortionScale: 3.7,
-  fog: scene.fog !== undefined
-});
-water.rotation.x = -Math.PI / 2;
-water.receiveShadow = true;
-scene.add(water);
+      // Create the water
+      const waterGeometry = new THREE.PlaneGeometry(10000, 10000);
+      const water = new THREE.Water(waterGeometry, {
+        textureWidth: 512,
+        textureHeight: 512,
+        waterNormals: new THREE.TextureLoader().load(
+          "https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/waternormals.jpg",
+          function (texture) {
+            texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+          },
+        ),
+        sunDirection: new THREE.Vector3(),
+        sunColor: 0xffffff,
+        waterColor: 0x001e0f,
+        distortionScale: 3.7,
+        fog: scene.fog !== undefined,
+      });
+      water.rotation.x = -Math.PI / 2;
+      water.receiveShadow = true;
+      scene.add(water);
 
-// Create the sky
-const sky = new THREE.Sky();
-sky.scale.setScalar(10000);
-scene.add(sky);
+      // Create the sky
+      const sky = new THREE.Sky();
+      sky.scale.setScalar(10000);
+      scene.add(sky);
 
-const skyUniforms = sky.material.uniforms;
-skyUniforms['turbidity'].value = 10;
-skyUniforms['rayleigh'].value = 2;
-skyUniforms['mieCoefficient'].value = 0.005;
-skyUniforms['mieDirectionalG'].value = 0.8;
+      const skyUniforms = sky.material.uniforms;
+      skyUniforms["turbidity"].value = 10;
+      skyUniforms["rayleigh"].value = 2;
+      skyUniforms["mieCoefficient"].value = 0.005;
+      skyUniforms["mieDirectionalG"].value = 0.8;
 
-const parameters = {
-  elevation: 2,
-  azimuth: 180
-};
+      const parameters = {
+        elevation: 2,
+        azimuth: 180,
+      };
 
-const pmremGenerator = new THREE.PMREMGenerator(renderer);
+      const pmremGenerator = new THREE.PMREMGenerator(renderer);
 
-function updateSun() {
-  const phi = THREE.MathUtils.degToRad(90 - parameters.elevation);
-  const theta = THREE.MathUtils.degToRad(parameters.azimuth);
-  const sun = new THREE.Vector3();
-  sun.setFromSphericalCoords(1, phi, theta);
-  sky.material.uniforms['sunPosition'].value.copy(sun);
-  water.material.uniforms['sunDirection'].value.copy(sun).normalize();
-  scene.environment = pmremGenerator.fromScene(sky).texture;
-}
+      function updateSun() {
+        const phi = THREE.MathUtils.degToRad(90 - parameters.elevation);
+        const theta = THREE.MathUtils.degToRad(parameters.azimuth);
+        const sun = new THREE.Vector3();
+        sun.setFromSphericalCoords(1, phi, theta);
+        sky.material.uniforms["sunPosition"].value.copy(sun);
+        water.material.uniforms["sunDirection"].value.copy(sun).normalize();
+        scene.environment = pmremGenerator.fromScene(sky).texture;
+      }
 
-updateSun();
+      updateSun();
 
-// Create complex geometry for benchmark
-const complexGeometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-const complexMaterial = new THREE.MeshStandardMaterial({
-  color: 0xffffff,
-  metalness: 0.9,
-  roughness: 0.1,
-  envMap: scene.environment,
-  envMapIntensity: 1.0
-});
+      // Create complex geometry for benchmark
+      const complexGeometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+      const complexMaterial = new THREE.MeshStandardMaterial({
+        color: 0xffffff,
+        metalness: 0.9,
+        roughness: 0.1,
+        envMap: scene.environment,
+        envMapIntensity: 1.0,
+      });
 
-const NUM_OBJECTS = 500;
-const objects = [];
+      const NUM_OBJECTS = 500;
+      const objects = [];
 
-for (let i = 0; i < NUM_OBJECTS; i++) {
-  const object = new THREE.Mesh(complexGeometry, complexMaterial);
-  object.position.set(
-    Math.random() * 200 - 100,
-    Math.random() * 200 - 100,
-    Math.random() * 200 - 100
-  );
-  object.rotation.set(
-    Math.random() * Math.PI,
-    Math.random() * Math.PI,
-    Math.random() * Math.PI
-  );
-  object.scale.setScalar(Math.random() * 0.5 + 0.5);
-  object.castShadow = true;
-  object.receiveShadow = true;
-  scene.add(object);
-  objects.push(object);
-}
+      for (let i = 0; i < NUM_OBJECTS; i++) {
+        const object = new THREE.Mesh(complexGeometry, complexMaterial);
+        object.position.set(
+          Math.random() * 200 - 100,
+          Math.random() * 200 - 100,
+          Math.random() * 200 - 100,
+        );
+        object.rotation.set(
+          Math.random() * Math.PI,
+          Math.random() * Math.PI,
+          Math.random() * Math.PI,
+        );
+        object.scale.setScalar(Math.random() * 0.5 + 0.5);
+        object.castShadow = true;
+        object.receiveShadow = true;
+        scene.add(object);
+        objects.push(object);
+      }
 
-// Add directional light (sun)
-const sunLight = new THREE.DirectionalLight(0xffffaa, 1.5);
-sunLight.position.set(50, 100, 50);
-sunLight.castShadow = true;
-sunLight.shadow.mapSize.width = 2048;
-sunLight.shadow.mapSize.height = 2048;
-sunLight.shadow.camera.near = 1;
-sunLight.shadow.camera.far = 500;
-scene.add(sunLight);
+      // Add directional light (sun)
+      const sunLight = new THREE.DirectionalLight(0xffffaa, 1.5);
+      sunLight.position.set(50, 100, 50);
+      sunLight.castShadow = true;
+      sunLight.shadow.mapSize.width = 2048;
+      sunLight.shadow.mapSize.height = 2048;
+      sunLight.shadow.camera.near = 1;
+      sunLight.shadow.camera.far = 500;
+      scene.add(sunLight);
 
-// Set up camera position
-camera.position.set(30, 30, 100);
+      // Set up camera position
+      camera.position.set(30, 30, 100);
 
-// Post-processing
-const composer = new THREE.EffectComposer(renderer);
-const renderPass = new THREE.RenderPass(scene, camera);
-composer.addPass(renderPass);
+      // Post-processing
+      const composer = new THREE.EffectComposer(renderer);
+      const renderPass = new THREE.RenderPass(scene, camera);
+      composer.addPass(renderPass);
 
-const bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
-bloomPass.threshold = 0.5;
-bloomPass.strength = 0.8;
-bloomPass.radius = 0.3;
-composer.addPass(bloomPass);
+      const bloomPass = new THREE.UnrealBloomPass(
+        new THREE.Vector2(window.innerWidth, window.innerHeight),
+        1.5,
+        0.4,
+        0.85,
+      );
+      bloomPass.threshold = 0.5;
+      bloomPass.strength = 0.8;
+      bloomPass.radius = 0.3;
+      composer.addPass(bloomPass);
 
-// Metrics display
-const metricsElement = document.getElementById('metrics');
-const benchmarkElement = document.getElementById('benchmark');
+      // Metrics display
+      const metricsElement = document.getElementById("metrics");
+      const benchmarkElement = document.getElementById("benchmark");
 
-let frameCount = 0;
-let lastTime = performance.now();
-let fps = 0;
+      let frameCount = 0;
+      let lastTime = performance.now();
+      let fps = 0;
 
-// Animation loop
-function animate() {
-  requestAnimationFrame(animate);
-  
-  const time = performance.now();
-  frameCount++;
-  
-  if (time >= lastTime + 1000) {
-    fps = Math.round((frameCount * 1000) / (time - lastTime));
-    frameCount = 0;
-    lastTime = time;
-  }
+      // Animation loop
+      function animate() {
+        requestAnimationFrame(animate);
 
-  // Rotate objects
-  objects.forEach((object, index) => {
-    object.rotation.x += 0.01 * (index % 2 ? 1 : -1);
-    object.rotation.y += 0.01 * (index % 3 ? 1 : -1);
-  });
+        const time = performance.now();
+        frameCount++;
 
-  // Update water
-  water.material.uniforms['time'].value += 1.0 / 60.0;
+        if (time >= lastTime + 1000) {
+          fps = Math.round((frameCount * 1000) / (time - lastTime));
+          frameCount = 0;
+          lastTime = time;
+        }
 
-  controls.update();
-  composer.render();
+        // Rotate objects
+        objects.forEach((object, index) => {
+          object.rotation.x += 0.01 * (index % 2 ? 1 : -1);
+          object.rotation.y += 0.01 * (index % 3 ? 1 : -1);
+        });
 
-  // Update metrics display
-  metricsElement.innerHTML = `
+        // Update water
+        water.material.uniforms["time"].value += 1.0 / 60.0;
+
+        controls.update();
+        composer.render();
+
+        // Update metrics display
+        metricsElement.innerHTML = `
     FPS: ${fps}<br>
     Objects: ${NUM_OBJECTS}<br>
     Resolution: ${window.innerWidth}x${window.innerHeight}
   `;
-}
+      }
 
-animate();
+      animate();
 
-// Benchmark
-let benchmarkDuration = 10000; // 10 seconds
-let benchmarkStartTime = performance.now();
-let totalFrames = 0;
+      // Benchmark
+      let benchmarkDuration = 10000; // 10 seconds
+      let benchmarkStartTime = performance.now();
+      let totalFrames = 0;
 
-function runBenchmark() {
-  if (performance.now() - benchmarkStartTime < benchmarkDuration) {
-    totalFrames++;
-    requestAnimationFrame(runBenchmark);
-  } else {
-    const averageFPS = Math.round(totalFrames / (benchmarkDuration / 1000));
-    const score = Math.round(averageFPS * NUM_OBJECTS / 100);
-    benchmarkElement.innerHTML = `
+      function runBenchmark() {
+        if (performance.now() - benchmarkStartTime < benchmarkDuration) {
+          totalFrames++;
+          requestAnimationFrame(runBenchmark);
+        } else {
+          const averageFPS = Math.round(
+            totalFrames / (benchmarkDuration / 1000),
+          );
+          const score = Math.round((averageFPS * NUM_OBJECTS) / 100);
+          benchmarkElement.innerHTML = `
       Benchmark Results:<br>
       Average FPS: ${averageFPS}<br>
       Score: ${score}
     `;
-  }
-}
+        }
+      }
 
-runBenchmark();
+      runBenchmark();
 
-// Handle window resizing
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  composer.setSize(window.innerWidth, window.innerHeight);
-});
+      // Handle window resizing
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        composer.setSize(window.innerWidth, window.innerHeight);
+      });
 
-// Start terminal
-function startTerminal() {
-    const terminalOutput = document.getElementById('terminal');terminalOutput.innerHTML = `user@project-manhattan:~$`;
+      // Start terminal
+      function startTerminal() {
+        const terminalOutput = document.getElementById("terminal");
+        terminalOutput.innerHTML = `user@project-manhattan:~$`;
 
-    // Additional terminal logic can be added here
-    // For example, initializing terminal state, etc.
-}
+        // Additional terminal logic can be added here
+        // For example, initializing terminal state, etc.
+      }
 
-// Run command
-function runCommand() {
-    const commandInput = document.getElementById('command-input').value;
-    const terminalOutput = document.getElementById('terminal');
-    terminalOutput.innerHTML += "\nuser@project-manhattan:~$ " + commandInput;
+      // Run command
+      function runCommand() {
+        const commandInput = document.getElementById("command-input").value;
+        const terminalOutput = document.getElementById("terminal");
+        terminalOutput.innerHTML +=
+          "\nuser@project-manhattan:~$ " + commandInput;
 
-    // Interpret and execute the command
-    interpretCommand(commandInput);
-}
+        // Interpret and execute the command
+        interpretCommand(commandInput);
+      }
 
-// Bash compatible command interpreter with ANSI C and FreeBASIC support (emulated)
-function interpretCommand(command) {
-    const terminalOutput = document.getElementById('terminal');
-    const [cmd, ...args] = command.trim().split(/\s+/);
+      // Bash compatible command interpreter with ANSI C and FreeBASIC support (emulated)
+      function interpretCommand(command) {
+        const terminalOutput = document.getElementById("terminal");
+        const [cmd, ...args] = command.trim().split(/\s+/);
 
-    switch (cmd) {
-        case "clear":
+        switch (cmd) {
+          case "clear":
             terminalOutput.innerHTML = `user@project-manhattan:~$`;
             break;
-        case "echo":
+          case "echo":
             terminalOutput.innerHTML += "\n" + args.join(" ");
             break;
-        case "start_emulator":
+          case "start_emulator":
             terminalOutput.innerHTML += "\nStarting 6510 Emulator...";
             startEmulator();
             break;
-        case "run_benchmark":
+          case "run_benchmark":
             terminalOutput.innerHTML += "\nRunning 3D Benchmark...";
             runBenchmark();
             break;
-        case "help":
+          case "help":
             terminalOutput.innerHTML += `
 \nAvailable Commands:
 clear           - Clear the terminal screen.
@@ -841,161 +1004,182 @@ c [source.c]    - Compile and execute ANSI C source code.
 fb [source.bas] - Compile and execute FreeBASIC source code.
             `;
             break;
-        case "c":
+          case "c":
             if (args.length > 0) {
-                const sourceCode = args.join(" ");
-                compileAndRunC(sourceCode);} else {
-                terminalOutput.innerHTML += `\nc: missing argument 'source.c'`;
-            }
-            break;
-        case "fb":
-            if (args.length > 0) {
-                const sourceCode = args.join(" ");
-                compileAndRunFreeBASIC(sourceCode);
+              const sourceCode = args.join(" ");
+              compileAndRunC(sourceCode);
             } else {
-                terminalOutput.innerHTML += `\nfb: missing argument 'source.bas'`;
+              terminalOutput.innerHTML += `\nc: missing argument 'source.c'`;
             }
             break;
-        // Add more commands as needed for the 6502 emulator, the 3D benchmark, ANSI C, and FreeBASIC processing as per your requirements.
+          case "fb":
+            if (args.length > 0) {
+              const sourceCode = args.join(" ");
+              compileAndRunFreeBASIC(sourceCode);
+            } else {
+              terminalOutput.innerHTML += `\nfb: missing argument 'source.bas'`;
+            }
+            break;
+          // Add more commands as needed for the 6502 emulator, the 3D benchmark, ANSI C, and FreeBASIC processing as per your requirements.
 
-        default:
+          default:
             terminalOutput.innerHTML += `\nbash: ${cmd}: command not found`;
-    }
-}
+        }
+      }
 
-// ANSI C compilation and execution (emulated)
-function compileAndRunC(sourceCode) {
-    // Placeholder: Here you would invoke an actual ANSI C compiler and execute the compiled code.
-    // For the purpose of this simulation, we'll display a mock compilation and execution process.
-    const terminalOutput = document.getElementById('terminal');
-    terminalOutput.innerHTML += `\nCompiling and running ${sourceCode}...\n`;
-    terminalOutput.innerHTML += `\n[gcc] Compilation successful.\n`;
-    terminalOutput.innerHTML += `\n[output] Hello, ANSI C World!\n`;
-}
+      // ANSI C compilation and execution (emulated)
+      function compileAndRunC(sourceCode) {
+        // Placeholder: Here you would invoke an actual ANSI C compiler and execute the compiled code.
+        // For the purpose of this simulation, we'll display a mock compilation and execution process.
+        const terminalOutput = document.getElementById("terminal");
+        terminalOutput.innerHTML += `\nCompiling and running ${sourceCode}...\n`;
+        terminalOutput.innerHTML += `\n[gcc] Compilation successful.\n`;
+        terminalOutput.innerHTML += `\n[output] Hello, ANSI C World!\n`;
+      }
 
-// FreeBASIC compilation and execution (emulated)
-function compileAndRunFreeBASIC(sourceCode) {
-    // Placeholder: Here you would invoke an actual FreeBASIC compiler and execute the compiled code.
-    // For the purpose of this simulation, we'll display a mock compilation and execution process.
-    const terminalOutput = document.getElementById('terminal');
-    terminalOutput.innerHTML += `\nCompiling and running ${sourceCode}...\n`;
-    terminalOutput.innerHTML += `\n[fbc] Compilation successful.\n`;
-    terminalOutput.innerHTML += `\n[output] Hello, FreeBASIC World!\n`;
-}
+      // FreeBASIC compilation and execution (emulated)
+      function compileAndRunFreeBASIC(sourceCode) {
+        // Placeholder: Here you would invoke an actual FreeBASIC compiler and execute the compiled code.
+        // For the purpose of this simulation, we'll display a mock compilation and execution process.
+        const terminalOutput = document.getElementById("terminal");
+        terminalOutput.innerHTML += `\nCompiling and running ${sourceCode}...\n`;
+        terminalOutput.innerHTML += `\n[fbc] Compilation successful.\n`;
+        terminalOutput.innerHTML += `\n[output] Hello, FreeBASIC World!\n`;
+      }
 
-// Graphics Viewport
-const graphicsViewport = document.getElementById('graphics-viewport');
-const graphicsViewportRenderer = new THREE.WebGLRenderer({ antialias: true });
-graphicsViewportRenderer.setPixelRatio(window.devicePixelRatio);
-graphicsViewportRenderer.setSize(graphicsViewport.clientWidth, graphicsViewport.clientHeight);
-graphicsViewport.appendChild(graphicsViewportRenderer.domElement);
+      // Graphics Viewport
+      const graphicsViewport = document.getElementById("graphics-viewport");
+      const graphicsViewportRenderer = new THREE.WebGLRenderer({
+        antialias: true,
+      });
+      graphicsViewportRenderer.setPixelRatio(window.devicePixelRatio);
+      graphicsViewportRenderer.setSize(
+        graphicsViewport.clientWidth,
+        graphicsViewport.clientHeight,
+      );
+      graphicsViewport.appendChild(graphicsViewportRenderer.domElement);
 
-const graphicsViewportScene = new THREE.Scene();
-const graphicsViewportCamera = new THREE.PerspectiveCamera(
-    30, 
-    graphicsViewport.clientWidth / graphicsViewport.clientHeight, 
-    0.1, 
-    1000
-);
-graphicsViewportCamera.position.z = 5;
+      const graphicsViewportScene = new THREE.Scene();
+      const graphicsViewportCamera = new THREE.PerspectiveCamera(
+        30,
+        graphicsViewport.clientWidth / graphicsViewport.clientHeight,
+        0.1,
+        1000,
+      );
+      graphicsViewportCamera.position.z = 5;
 
-const graphicsViewportGeometry = new THREE.BoxGeometry();
-const graphicsViewportMaterial = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
-const graphicsViewportCube = new THREE.Mesh(graphicsViewportGeometry, graphicsViewportMaterial);
-graphicsViewportScene.add(graphicsViewportCube);
+      const graphicsViewportGeometry = new THREE.BoxGeometry();
+      const graphicsViewportMaterial = new THREE.MeshLambertMaterial({
+        color: 0x00ff00,
+      });
+      const graphicsViewportCube = new THREE.Mesh(
+        graphicsViewportGeometry,
+        graphicsViewportMaterial,
+      );
+      graphicsViewportScene.add(graphicsViewportCube);
 
-const ambientLight = new THREE.AmbientLight(0x404040); 
-graphicsViewportScene.add(ambientLight);
-const pointLight = new THREE.PointLight(0xffffff, 1, 100);
-pointLight.position.set(10, 10, 10);
-graphicsViewportScene.add(pointLight);
+      const ambientLight = new THREE.AmbientLight(0x404040);
+      graphicsViewportScene.add(ambientLight);
+      const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+      pointLight.position.set(10, 10, 10);
+      graphicsViewportScene.add(pointLight);
 
-const demos = [
-    function displayVICIIDemo() {
-        // Set up and display VIC-II demo
-        graphicsViewportCube.material.color.set(0x00ff00); // Green
-        graphicsViewportCube.rotation.x = 0;
-        graphicsViewportCube.rotation.y = 0;
-        graphicsViewportCube.scale.set(1, 1, 1);
-    },
-    function displaySVGADemo() {
-        // Set up and display SVGA demo
-        graphicsViewportCube.material.color.set(0x0000ff); // Blue
-        graphicsViewportCube.rotation.x = Math.PI / 4;
-        graphicsViewportCube.rotation.y = Math.PI / 4;
-        graphicsViewportCube.scale.set(1.5, 1.5, 1.5);
-    },
-    function displayCopperlistsDemo() {
-        // Set up and display Copperlists demo
-        graphicsViewportCube.material.color.set(0xff0000); // Red
-        graphicsViewportCube.rotation.x = Math.PI / 2;
-        graphicsViewportCube.rotation.y = Math.PI / 2;
-        graphicsViewportCube.scale.set(1, 1, 1);
+      const demos = [
+        function displayVICIIDemo() {
+          // Set up and display VIC-II demo
+          graphicsViewportCube.material.color.set(0x00ff00); // Green
+          graphicsViewportCube.rotation.x = 0;
+          graphicsViewportCube.rotation.y = 0;
+          graphicsViewportCube.scale.set(1, 1, 1);
+        },
+        function displaySVGADemo() {
+          // Set up and display SVGA demo
+          graphicsViewportCube.material.color.set(0x0000ff); // Blue
+          graphicsViewportCube.rotation.x = Math.PI / 4;
+          graphicsViewportCube.rotation.y = Math.PI / 4;
+          graphicsViewportCube.scale.set(1.5, 1.5, 1.5);
+        },
+        function displayCopperlistsDemo() {
+          // Set up and display Copperlists demo
+          graphicsViewportCube.material.color.set(0xff0000); // Red
+          graphicsViewportCube.rotation.x = Math.PI / 2;
+          graphicsViewportCube.rotation.y = Math.PI / 2;
+          graphicsViewportCube.scale.set(1, 1, 1);
 
-        // Copper list effect using 32-bit ARGB colors
-        let gradient = new THREE.Texture(createCopperlistGradient());
-        gradient.needsUpdate = true;
-        graphicsViewportCube.material.map = gradient;
-    },
-    function displayAGAHAM8Demo() {
-        // Set up and display AGA HAM8 demo
-        graphicsViewportCube.material.color.set(0xffff00); // Yellow
-        graphicsViewportCube.rotation.x = Math.PI / 8;
-        graphicsViewportCube.rotation.y = Math.PI / 8;
-        graphicsViewportCube.scale.set(0.5, 0.5, 0.5);
-    },
-    function displayHDRDemo() {
-        // Set up and display HDR demo
-        graphicsViewportCube.material.color.set(0x00ff00); // Green
-        graphicsViewportCube.rotation.x = Math.PI;
-        graphicsViewportCube.rotation.y = Math.PI;
-        graphicsViewportCube.scale.set(2, 2, 2);
-    }
-];
-let currentDemo = 0;
+          // Copper list effect using 32-bit ARGB colors
+          let gradient = new THREE.Texture(createCopperlistGradient());
+          gradient.needsUpdate = true;
+          graphicsViewportCube.material.map = gradient;
+        },
+        function displayAGAHAM8Demo() {
+          // Set up and display AGA HAM8 demo
+          graphicsViewportCube.material.color.set(0xffff00); // Yellow
+          graphicsViewportCube.rotation.x = Math.PI / 8;
+          graphicsViewportCube.rotation.y = Math.PI / 8;
+          graphicsViewportCube.scale.set(0.5, 0.5, 0.5);
+        },
+        function displayHDRDemo() {
+          // Set up and display HDR demo
+          graphicsViewportCube.material.color.set(0x00ff00); // Green
+          graphicsViewportCube.rotation.x = Math.PI;
+          graphicsViewportCube.rotation.y = Math.PI;
+          graphicsViewportCube.scale.set(2, 2, 2);
+        },
+      ];
+      let currentDemo = 0;
 
-function animateGraphicsViewport() {
-    requestAnimationFrame(animateGraphicsViewport);
+      function animateGraphicsViewport() {
+        requestAnimationFrame(animateGraphicsViewport);
 
-    // Run the current demo
-    demos[currentDemo % demos.length]();
+        // Run the current demo
+        demos[currentDemo % demos.length]();
 
-    graphicsViewportCube.rotation.x += 0.01;
-    graphicsViewportCube.rotation.y += 0.01;
+        graphicsViewportCube.rotation.x += 0.01;
+        graphicsViewportCube.rotation.y += 0.01;
 
-    graphicsViewportRenderer.render(graphicsViewportScene, graphicsViewportCamera);
+        graphicsViewportRenderer.render(
+          graphicsViewportScene,
+          graphicsViewportCamera,
+        );
 
-    // Loop through the demos
-    if (Math.floor(performance.now() / 5000) % demos.length !== currentDemo) {
-        currentDemo = Math.floor(performance.now() / 5000) % demos.length;
-    }
-}
+        // Loop through the demos
+        if (
+          Math.floor(performance.now() / 5000) % demos.length !==
+          currentDemo
+        ) {
+          currentDemo = Math.floor(performance.now() / 5000) % demos.length;
+        }
+      }
 
-animateGraphicsViewport();
+      animateGraphicsViewport();
 
-// Create Copperlist gradient
-function createCopperlistGradient() {
-    const canvas = document.createElement('canvas');
-    canvas.width = 256;
-    canvas.height = 1;
+      // Create Copperlist gradient
+      function createCopperlistGradient() {
+        const canvas = document.createElement("canvas");
+        canvas.width = 256;
+        canvas.height = 1;
 
-    const context = canvas.getContext('2d');
-    const gradient = context.createLinearGradient(0, 0, 256, 0);
-    gradient.addColorStop(0, 'rgba(255,0,0,1)'); // Red
-    gradient.addColorStop(0.5, 'rgba(0,255,0,1)'); // Green
-    gradient.addColorStop(1, 'rgba(0,0,255,1)'); // Blue
+        const context = canvas.getContext("2d");
+        const gradient = context.createLinearGradient(0, 0, 256, 0);
+        gradient.addColorStop(0, "rgba(255,0,0,1)"); // Red
+        gradient.addColorStop(0.5, "rgba(0,255,0,1)"); // Green
+        gradient.addColorStop(1, "rgba(0,0,255,1)"); // Blue
 
-    context.fillStyle = gradient;
-    context.fillRect(0, 0, 256, 1);
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, 256, 1);
 
-    return canvas;
-}
+        return canvas;
+      }
 
-window.addEventListener('resize', () => {
-    graphicsViewportRenderer.setSize(graphicsViewport.clientWidth, graphicsViewport.clientHeight);
-    graphicsViewportCamera.aspect = graphicsViewport.clientWidth / graphicsViewport.clientHeight;
-    graphicsViewportCamera.updateProjectionMatrix();
-});
-
-</script>
-</body></html>
+      window.addEventListener("resize", () => {
+        graphicsViewportRenderer.setSize(
+          graphicsViewport.clientWidth,
+          graphicsViewport.clientHeight,
+        );
+        graphicsViewportCamera.aspect =
+          graphicsViewport.clientWidth / graphicsViewport.clientHeight;
+        graphicsViewportCamera.updateProjectionMatrix();
+      });
+    </script>
+  </body>
+</html>
