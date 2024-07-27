@@ -1,2212 +1,1584 @@
-<html><head><base href="https://websim.ai/project-manhattan"><title>Advanced File System Visualizer (FSV) and Multi-Architecture Debugger</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/RGBELoader.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-<style>
-  body { margin: 0; overflow: hidden; font-family: Arial, sans-serif; background-color: #000; color: #fff; }
-  #container { display: flex; width: 100vw; height: 100vh; }
-  #file-system { width: 70%; height: 100%; }
-  #debugger { width: 30%; height: 100%; display: flex; flex-direction: column; background-color: #1e1e1e; }
-  #editor { height: 30%; }
-  #output { height: 30%; overflow-y: auto; padding: 10px; background-color: #2d2d2d; }
-  #visual-output { height: 40%; display: flex; flex-wrap: wrap; }
-  #controls { position: absolute; bottom: 10px; left: 10px; z-index: 100; }
-  #controls button, #debugger-controls button { margin: 5px; padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer; }
-  #file-tree { position: absolute; top: 10px; left: 10px; width: 200px; height: calc(100% - 60px); overflow-y: auto; background-color: rgba(0,0,0,0.7); padding: 10px; }
-  #file-content { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(0,0,0,0.8); padding: 20px; border-radius: 10px; max-width: 80%; max-height: 80%; overflow: auto; }
-  #cli { display: none; position: absolute; bottom: 60px; left: 10px; width: calc(100% - 20px); background-color: rgba(0,0,0,0.8); color: #0f0; font-family: monospace; padding: 10px; border-radius: 5px; }
-  #cli-output { height: 200px; overflow-y: auto; margin-bottom: 10px; }
-  #cli-input { width: 100%; background-color: transparent; border: none; border-top: 1px solid #0f0; color: #0f0; font-family: monospace; padding: 5px 0; }
-  #debugger-controls { display: flex; flex-wrap: wrap; justify-content: space-around; padding: 5px; background-color: #333; }
-  .debug-view { width: 50%; height: 50%; box-sizing: border-box; padding: 5px; }
-  .debug-view canvas { width: 100%; height: 100%; }
-</style>
-</head>
-<body>
-<div id="container">
-  <div id="file-system"></div>
-  <div id="debugger">
-    <div id="debugger-controls">
-      <button onclick="toggleDebugView('mos65c02')">MOS-65c02</button>
-      <button onclick="toggleDebugView('armv8')">ARMv8</button>
-      <button onclick="toggleDebugView('fpga')">FPGA</button>
-      <button onclick="toggleDebugView('freebasic')">FreeBASIC</button>
-      <button onclick="toggleDebugView('vicii')">VIC-II</button>
-      <button onclick="toggleDebugView('svga')">SVGA</button>
-      <button onclick="toggleDebugView('ecs')">ECS</button>
-      <button onclick="toggleDebugView('aga')">AGA</button>
-      <button onclick="toggleDebugView('hdr')">HDR</button>
-      <button onclick="toggleDebugView('hdri')">HDRI</button>
-      <button onclick="toggleDebugView('3d')">3D Graphics</button>
-      <button onclick="toggleDebugView('oscilloscope')">Oscilloscope</button>
-      <button onclick="toggleDebugView('logic')">Logic Analyzer</button>
+<html>
+  <head>
+    <base href="https://websim.ai/project-manhattan" />
+    <title>
+      Advanced File System Visualizer (FSV) and Multi-Architecture Debugger
+    </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/RGBELoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+      }
+      #container {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+      }
+      #file-system {
+        width: 70%;
+        height: 100%;
+      }
+      #debugger {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: #1e1e1e;
+      }
+      #editor {
+        height: 30%;
+      }
+      #output {
+        height: 30%;
+        overflow-y: auto;
+        padding: 10px;
+        background-color: #2d2d2d;
+      }
+      #visual-output {
+        height: 40%;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      #controls {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        z-index: 100;
+      }
+      #controls button,
+      #debugger-controls button {
+        margin: 5px;
+        padding: 5px 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      #file-tree {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 200px;
+        height: calc(100% - 60px);
+        overflow-y: auto;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+      }
+      #file-content {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 80%;
+        max-height: 80%;
+        overflow: auto;
+      }
+      #cli {
+        display: none;
+        position: absolute;
+        bottom: 60px;
+        left: 10px;
+        width: calc(100% - 20px);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #0f0;
+        font-family: monospace;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      #cli-output {
+        height: 200px;
+        overflow-y: auto;
+        margin-bottom: 10px;
+      }
+      #cli-input {
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        border-top: 1px solid #0f0;
+        color: #0f0;
+        font-family: monospace;
+        padding: 5px 0;
+      }
+      #debugger-controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 5px;
+        background-color: #333;
+      }
+      .debug-view {
+        width: 50%;
+        height: 50%;
+        box-sizing: border-box;
+        padding: 5px;
+      }
+      .debug-view canvas {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="file-system"></div>
+      <div id="debugger">
+        <div id="debugger-controls">
+          <button onclick="toggleDebugView('mos65c02')">MOS-65c02</button>
+          <button onclick="toggleDebugView('armv8')">ARMv8</button>
+          <button onclick="toggleDebugView('fpga')">FPGA</button>
+          <button onclick="toggleDebugView('freebasic')">FreeBASIC</button>
+          <button onclick="toggleDebugView('vicii')">VIC-II</button>
+          <button onclick="toggleDebugView('svga')">SVGA</button>
+          <button onclick="toggleDebugView('ecs')">ECS</button>
+          <button onclick="toggleDebugView('aga')">AGA</button>
+          <button onclick="toggleDebugView('hdr')">HDR</button>
+          <button onclick="toggleDebugView('hdri')">HDRI</button>
+          <button onclick="toggleDebugView('3d')">3D Graphics</button>
+          <button onclick="toggleDebugView('oscilloscope')">
+            Oscilloscope
+          </button>
+          <button onclick="toggleDebugView('logic')">Logic Analyzer</button>
+        </div>
+        <div id="editor"></div>
+        <div id="output"></div>
+        <div id="visual-output"></div>
+      </div>
     </div>
-    <div id="editor"></div>
-    <div id="output"></div>
-    <div id="visual-output"></div>
-  </div>
-</div>
-<div id="controls">
-  <button onclick="toggleFileTree()">Toggle File Tree</button>
-  <button onclick="toggleCLI()">Toggle CLI</button>
-  <button onclick="toggleDebugger()">Toggle Debugger</button>
-  <button onclick="toggleViewMode()">Toggle View Mode</button>
-  <button onclick="toggleEagleEye()">Toggle Eagle Eye</button>
-</div>
-<div id="file-tree"></div>
-<div id="file-content"></div>
-<div id="cli">
-  <div id="cli-output"></div>
-  <input type="text" id="cli-input" placeholder="Enter command...">
-</div>
+    <div id="controls">
+      <button onclick="toggleFileTree()">Toggle File Tree</button>
+      <button onclick="toggleCLI()">Toggle CLI</button>
+      <button onclick="toggleDebugger()">Toggle Debugger</button>
+      <button onclick="toggleViewMode()">Toggle View Mode</button>
+      <button onclick="toggleEagleEye()">Toggle Eagle Eye</button>
+    </div>
+    <div id="file-tree"></div>
+    <div id="file-content"></div>
+    <div id="cli">
+      <div id="cli-output"></div>
+      <input type="text" id="cli-input" placeholder="Enter command..." />
+    </div>
 
-<script>
-let scene, camera, renderer, controls;
-let fileObjects = [];
-let currentPath = '/';
-let viewMode = 'MapV';
-let eagleEyeMode = false;
-let debuggerVisible = true;
-let fileTreeVisible = true;
-let cliVisible = false;
-let activeDebugViews = new Set();
+    <script>
+      let scene, camera, renderer, controls;
+      let fileObjects = [];
+      let currentPath = "/";
+      let viewMode = "MapV";
+      let eagleEyeMode = false;
+      let debuggerVisible = true;
+      let fileTreeVisible = true;
+      let cliVisible = false;
+      let activeDebugViews = new Set();
 
-const fileTypes = {
-  directory: { color: 0x4a90e2, height: 2 },
-  file: { color: 0xf5a623, height: 1 },
-  executable: { color: 0x7ed321, height: 1.5 },
-  image: { color: 0xe74c3c, height: 1.2 },
-  video: { color: 0x9b59b6, height: 1.3 },
-  audio: { color: 0xf1c40f, height: 1.1 },
-  '65c02': { color: 0x3498db, height: 1.4 },
-  'armv8': { color: 0xe67e22, height: 1.4 },
-  'fpga': { color: 0x1abc9c, height: 1.4 },
-  'freebasic': { color: 0x9b59b6, height: 1.4 },
-  'python': { color: 0x2ecc71, height: 1.4 },
-};
+      const fileTypes = {
+        directory: { color: 0x4a90e2, height: 2 },
+        file: { color: 0xf5a623, height: 1 },
+        executable: { color: 0x7ed321, height: 1.5 },
+        image: { color: 0xe74c3c, height: 1.2 },
+        video: { color: 0x9b59b6, height: 1.3 },
+        audio: { color: 0xf1c40f, height: 1.1 },
+        "65c02": { color: 0x3498db, height: 1.4 },
+        armv8: { color: 0xe67e22, height: 1.4 },
+        fpga: { color: 0x1abc9c, height: 1.4 },
+        freebasic: { color: 0x9b59b6, height: 1.4 },
+        python: { color: 0x2ecc71, height: 1.4 },
+      };
 
-function init() {
-  scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(75, window.innerWidth * 0.7 / window.innerHeight, 0.1, 1000);
-  renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(window.innerWidth * 0.7, window.innerHeight);
-  renderer.setClearColor(0x000000);
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1;
-  renderer.outputEncoding = THREE.sRGBEncoding;
-  document.getElementById('file-system').appendChild(renderer.domElement);
+      function init() {
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(
+          75,
+          (window.innerWidth * 0.7) / window.innerHeight,
+          0.1,
+          1000,
+        );
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth * 0.7, window.innerHeight);
+        renderer.setClearColor(0x000000);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1;
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        document.getElementById("file-system").appendChild(renderer.domElement);
 
-  controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
-  controls.dampingFactor = 0.05;
-  controls.screenSpacePanning = false;
-  controls.minDistance = 5;
-  controls.maxDistance = 50;
-  controls.maxPolarAngle = Math.PI / 2;
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.screenSpacePanning = false;
+        controls.minDistance = 5;
+        controls.maxDistance = 50;
+        controls.maxPolarAngle = Math.PI / 2;
 
-  camera.position.set(0, 20, 30);
-  controls.update();
+        camera.position.set(0, 20, 30);
+        controls.update();
 
-  // Load HDRI environment
-  new THREE.RGBELoader()
-    .setPath('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/equirectangular/')
-    .load('royal_esplanade_1k.hdr', function(texture) {
-      texture.mapping = THREE.EquirectangularReflectionMapping;
-      scene.background = texture;
-      scene.environment = texture;
+        // Load HDRI environment
+        new THREE.RGBELoader()
+          .setPath(
+            "https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/equirectangular/",
+          )
+          .load("royal_esplanade_1k.hdr", function (texture) {
+            texture.mapping = THREE.EquirectangularReflectionMapping;
+            scene.background = texture;
+            scene.environment = texture;
 
-      generateDirectory();
-    });
+            generateDirectory();
+          });
 
-  window.addEventListener('resize', onWindowResize, false);
+        window.addEventListener("resize", onWindowResize, false);
 
-  // Initialize Ace editor
-  const editor = ace.edit("editor");
-  editor.setTheme("ace/theme/monokai");
-  editor.session.setMode("ace/mode/assembly_x86");
+        // Initialize Ace editor
+        const editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/assembly_x86");
 
-  // Initialize Chart.js for oscilloscope and logic analyzer
-  const ctx = document.createElement('canvas');
-  document.getElementById('visual-output').appendChild(ctx);
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: [],
-      datasets: [{
-        label: 'Oscilloscope',
-        data: [],
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1
-      }]
-    },
-    options: {
-      responsive: true,
-      animation: false,
-      scales: {
-        x: {
-          type: 'linear',
-          position: 'bottom'
+        // Initialize Chart.js for oscilloscope and logic analyzer
+        const ctx = document.createElement("canvas");
+        document.getElementById("visual-output").appendChild(ctx);
+        new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: [],
+            datasets: [
+              {
+                label: "Oscilloscope",
+                data: [],
+                borderColor: "rgb(75, 192, 192)",
+                tension: 0.1,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            animation: false,
+            scales: {
+              x: {
+                type: "linear",
+                position: "bottom",
+              },
+            },
+          },
+        });
+      }
+
+      function generateDirectory() {
+        // Clear existing file objects
+        fileObjects.forEach((obj) => scene.remove(obj.mesh));
+        fileObjects = [];
+
+        const numObjects = 30 + Math.floor(Math.random() * 20);
+        const gridSize = Math.ceil(Math.sqrt(numObjects));
+
+        for (let i = 0; i < numObjects; i++) {
+          const fileType =
+            Object.keys(fileTypes)[
+              Math.floor(Math.random() * Object.keys(fileTypes).length)
+            ];
+          const { color, height } = fileTypes[fileType];
+          const size = Math.random() * 2 + 0.5;
+
+          let geometry, mesh;
+          if (viewMode === "MapV") {
+            geometry = new THREE.BoxGeometry(size, size * height, size);
+            mesh = new THREE.Mesh(
+              geometry,
+              new THREE.MeshStandardMaterial({
+                color,
+                metalness: 0.5,
+                roughness: 0.5,
+                envMapIntensity: 1.0,
+              }),
+            );
+            mesh.position.y = (size * height) / 2;
+          } else {
+            // TreeV mode
+            if (fileType === "directory") {
+              geometry = new THREE.BoxGeometry(2, 0.5, 2);
+              mesh = new THREE.Mesh(
+                geometry,
+                new THREE.MeshStandardMaterial({
+                  color,
+                  metalness: 0.5,
+                  roughness: 0.5,
+                  envMapIntensity: 1.0,
+                }),
+              );
+              mesh.position.y = 0.25;
+            } else {
+              geometry = new THREE.CylinderGeometry(
+                0.2,
+                0.2,
+                size * height,
+                32,
+              );
+              mesh = new THREE.Mesh(
+                geometry,
+                new THREE.MeshStandardMaterial({
+                  color,
+                  metalness: 0.5,
+                  roughness: 0.5,
+                  envMapIntensity: 1.0,
+                }),
+              );
+              mesh.position.y = (size * height) / 2;
+            }
+          }
+
+          const row = Math.floor(i / gridSize);
+          const col = i % gridSize;
+          mesh.position.x = (col - gridSize / 2) * 3;
+          mesh.position.z = (row - gridSize / 2) * 3;
+
+          scene.add(mesh);
+
+          const label = createLabel(generateFileName(fileType));
+          label.position.copy(mesh.position);
+          label.position.y += size * height + 0.5;
+          scene.add(label);
+
+          fileObjects.push({
+            mesh,
+            label,
+            type: fileType,
+            name: label.name,
+            size,
+          });
+        }
+
+        if (viewMode === "TreeV") {
+          createTreeConnections();
+        }
+
+        updateFileTree();
+      }
+
+      function createTreeConnections() {
+        const directories = fileObjects.filter(
+          (obj) => obj.type === "directory",
+        );
+        directories.forEach((dir, index) => {
+          if (index > 0) {
+            const startPoint = new THREE.Vector3(
+              dir.mesh.position.x,
+              0,
+              dir.mesh.position.z,
+            );
+            const endPoint = new THREE.Vector3(
+              directories[0].mesh.position.x,
+              0,
+              directories[0].mesh.position.z,
+            );
+            const geometry = new THREE.BufferGeometry().setFromPoints([
+              startPoint,
+              endPoint,
+            ]);
+            const material = new THREE.LineBasicMaterial({ color: 0xffffff });
+            const line = new THREE.Line(geometry, material);
+            scene.add(line);
+          }
+        });
+      }
+
+      function generateFileName(fileType) {
+        const prefixes = [
+          "data",
+          "project",
+          "temp",
+          "backup",
+          "config",
+          "log",
+          "user",
+        ];
+        const suffixes = ["old", "new", "v1", "v2", "final", "draft"];
+        const extensions = {
+          file: [".txt", ".doc", ".pdf"],
+          image: [".jpg", ".png", ".gif"],
+          video: [".mp4", ".avi", ".mov"],
+          audio: [".mp3", ".wav", ".ogg"],
+          executable: [".exe", ".sh", ".py"],
+          directory: [""],
+          "65c02": [".asm"],
+          armv8: [".s"],
+          fpga: [".vhdl", ".v"],
+          freebasic: [".bas"],
+          python: [".py"],
+        };
+
+        const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+        const suffix =
+          Math.random() > 0.5
+            ? "_" + suffixes[Math.floor(Math.random() * suffixes.length)]
+            : "";
+        const extension =
+          extensions[fileType][
+            Math.floor(Math.random() * extensions[fileType].length)
+          ];
+
+        return prefix + suffix + extension;
+      }
+
+      function createLabel(text) {
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+        context.font = "Bold 24px Arial";
+        context.fillStyle = "rgba(255,255,255,0.95)";
+        context.fillText(text, 0, 24);
+
+        const texture = new THREE.CanvasTexture(canvas);
+        const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
+        const sprite = new THREE.Sprite(spriteMaterial);
+        sprite.scale.set(2, 1, 1);
+        sprite.name = text;
+
+        return sprite;
+      }
+
+      function toggleViewMode() {
+        viewMode = viewMode === "MapV" ? "TreeV" : "MapV";
+        generateDirectory();
+      }
+
+      function toggleEagleEye() {
+        eagleEyeMode = !eagleEyeMode;
+        if (eagleEyeMode) {
+          camera.position.set(0, 50, 0);
+          camera.lookAt(0, 0, 0);
+        } else {
+          camera.position.set(0, 20, 30);
+        }
+        controls.update();
+      }
+
+      function toggleDebugger() {
+        debuggerVisible = !debuggerVisible;
+        document.getElementById("debugger").style.display = debuggerVisible
+          ? "flex"
+          : "none";
+        document.getElementById("file-system").style.width = debuggerVisible
+          ? "70%"
+          : "100%";
+        onWindowResize();
+      }
+
+      function toggleFileTree() {
+        fileTreeVisible = !fileTreeVisible;
+        document.getElementById("file-tree").style.display = fileTreeVisible
+          ? "block"
+          : "none";
+      }
+
+      function toggleCLI() {
+        cliVisible = !cliVisible;
+        document.getElementById("cli").style.display = cliVisible
+          ? "block"
+          : "none";
+        if (cliVisible) {
+          document.getElementById("cli-input").focus();
         }
       }
-    }
-  });
-}
 
-function generateDirectory() {
-  // Clear existing file objects
-  fileObjects.forEach(obj => scene.remove(obj.mesh));
-  fileObjects = [];
+      function updateFileTree() {
+        const fileTree = document.getElementById("file-tree");
+        fileTree.innerHTML = "";
 
-  const numObjects = 30 + Math.floor(Math.random() * 20);
-  const gridSize = Math.ceil(Math.sqrt(numObjects));
+        const root = document.createElement("ul");
+        const rootItem = document.createElement("li");
+        rootItem.textContent = "/";
+        root.appendChild(rootItem);
 
-  for (let i = 0; i < numObjects; i++) {
-    const fileType = Object.keys(fileTypes)[Math.floor(Math.random() * Object.keys(fileTypes).length)];
-    const { color, height } = fileTypes[fileType];
-    const size = Math.random() * 2 + 0.5;
+        const currentDir = document.createElement("ul");
+        fileObjects.forEach((obj) => {
+          const item = document.createElement("li");
+          item.textContent = obj.name;
+          item.onclick = () => openFile(obj);
+          currentDir.appendChild(item);
+        });
 
-    let geometry, mesh;
-    if (viewMode === 'MapV') {
-      geometry = new THREE.BoxGeometry(size, size * height, size);
-      mesh = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ 
-        color, 
-        metalness: 0.5, 
-        roughness: 0.5,
-        envMapIntensity: 1.0
-      }));
-      mesh.position.y = size * height / 2;
-    } else { // TreeV mode
-      if (fileType === 'directory') {
-        geometry = new THREE.BoxGeometry(2, 0.5, 2);
-        mesh = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ 
-          color, 
-          metalness: 0.5, 
-          roughness: 0.5,
-          envMapIntensity: 1.0
-        }));
-        mesh.position.y = 0.25;
-      } else {
-        geometry = new THREE.CylinderGeometry(0.2, 0.2, size * height, 32);
-        mesh = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ 
-          color, 
-          metalness: 0.5, 
-          roughness: 0.5,
-          envMapIntensity: 1.0
-        }));
-        mesh.position.y = size * height / 2;
+        rootItem.appendChild(currentDir);
+        fileTree.appendChild(root);
       }
-    }
 
-    const row = Math.floor(i / gridSize);
-    const col = i % gridSize;
-    mesh.position.x = (col - gridSize / 2) * 3;
-    mesh.position.z = (row - gridSize / 2) * 3;
+      function openFile(file) {
+        const editor = ace.edit("editor");
+        const output = document.getElementById("output");
+        const visualOutput = document.getElementById("visual-output");
 
-    scene.add(mesh);
+        output.innerHTML = "";
+        visualOutput.innerHTML = "";
 
-    const label = createLabel(generateFileName(fileType));
-    label.position.copy(mesh.position);
-    label.position.y += size * height + 0.5;
-    scene.add(label);
+        switch (file.type) {
+          case "file":
+          case "65c02":
+          case "armv8":
+          case "fpga":
+          case "freebasic":
+          case "python":
+            editor.session.setValue(
+              `// Content of ${file.name}\n// File size: ${file.size.toFixed(2)} KB\n\n// Add your code here`,
+            );
+            break;
+          case "executable":
+            output.innerHTML = `<h2>${file.name}</h2><p>Executing ${file.name}...</p><pre>$ ./${file.name}\nOutput: Hello, World!\nExecution completed.</pre>`;
+            break;
+          case "image":
+            visualOutput.innerHTML = `<h2>${file.name}</h2><img src="https://picsum.photos/400/300" alt="Random image representing ${file.name}" />`;
+            break;
+          case "video":
+            visualOutput.innerHTML = `<h2>${file.name}</h2><video width="400" controls><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">Your browser does not support the video tag.</video>`;
+            break;
+          case "audio":
+            visualOutput.innerHTML = `<h2>${file.name}</h2><audio controls><source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">Your browser does not support the audio tag.</audio>`;
+            break;
+        }
+      }
 
-    fileObjects.push({ mesh, label, type: fileType, name: label.name, size });
-  }
+      function onWindowResize() {
+        const width = debuggerVisible
+          ? window.innerWidth * 0.7
+          : window.innerWidth;
+        camera.aspect = width / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, window.innerHeight);
+      }
 
-  if (viewMode === 'TreeV') {
-    createTreeConnections();
-  }
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+        updateDebugViews();
+      }
 
-  updateFileTree();
-}
+      function updateDebugViews() {
+        activeDebugViews.forEach((view) => {
+          switch (view) {
+            case "mos65c02":
+              updateMOS65c02View();
+              break;
+            case "armv8":
+              updateARMv8View();
+              break;
+            case "fpga":
+              updateFPGAView();
+              break;
+            case "freebasic":
+              updateFreeBASICView();
+              break;
+            case "vicii":
+              updateVICIIView();
+              break;
+            case "svga":
+              updateSVGAView();
+              break;
+            case "ecs":
+              updateECSView();
+              break;
+            case "aga":
+              updateAGAView();
+              break;
+            case "hdr":
+              updateHDRView();
+              break;
+            case "hdri":
+              updateHDRIView();
+              break;
+            case "3d":
+              update3DGraphicsView();
+              break;
+            case "oscilloscope":
+              updateOscilloscopeView();
+              break;
+            case "logic":
+              updateLogicAnalyzerView();
+              break;
+          }
+        });
+      }
 
-function createTreeConnections() {
-  const directories = fileObjects.filter(obj => obj.type === 'directory');
-  directories.forEach((dir, index) => {
-    if (index > 0) {
-      const startPoint = new THREE.Vector3(dir.mesh.position.x, 0, dir.mesh.position.z);
-      const endPoint = new THREE.Vector3(directories[0].mesh.position.x, 0, directories[0].mesh.position.z);
-      const geometry = new THREE.BufferGeometry().setFromPoints([startPoint, endPoint]);
-      const material = new THREE.LineBasicMaterial({ color: 0xffffff });
-      const line = new THREE.Line(geometry, material);
-      scene.add(line);
-    }
-  });
-}
-
-function generateFileName(fileType) {
-  const prefixes = ['data', 'project', 'temp', 'backup', 'config', 'log', 'user'];
-  const suffixes = ['old', 'new', 'v1', 'v2', 'final', 'draft'];
-  const extensions = {
-    file: ['.txt', '.doc', '.pdf'],
-    image: ['.jpg', '.png', '.gif'],
-    video: ['.mp4', '.avi', '.mov'],
-    audio: ['.mp3', '.wav', '.ogg'],
-    executable: ['.exe', '.sh', '.py'],
-    directory: [''],
-    '65c02': ['.asm'],
-    'armv8': ['.s'],
-    'fpga': ['.vhdl', '.v'],
-    'freebasic': ['.bas'],
-    'python': ['.py'],
-  };
-
-  const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
-  const suffix = Math.random() > 0.5 ? '_' + suffixes[Math.floor(Math.random() * suffixes.length)] : '';
-  const extension = extensions[fileType][Math.floor(Math.random() * extensions[fileType].length)];
-
-  return prefix + suffix + extension;
-}
-
-function createLabel(text) {
-  const canvas = document.createElement('canvas');
-  const context = canvas.getContext('2d');
-  context.font = 'Bold 24px Arial';
-  context.fillStyle = 'rgba(255,255,255,0.95)';
-  context.fillText(text, 0, 24);
-
-  const texture = new THREE.CanvasTexture(canvas);
-  const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
-  const sprite = new THREE.Sprite(spriteMaterial);
-  sprite.scale.set(2, 1, 1);
-  sprite.name = text;
-
-  return sprite;
-}
-
-function toggleViewMode() {
-  viewMode = viewMode === 'MapV' ? 'TreeV' : 'MapV';
-  generateDirectory();
-}
-
-function toggleEagleEye() {
-  eagleEyeMode = !eagleEyeMode;
-  if (eagleEyeMode) {
-    camera.position.set(0, 50, 0);
-    camera.lookAt(0, 0, 0);
-  } else {
-    camera.position.set(0, 20, 30);
-  }
-  controls.update();
-}
-
-function toggleDebugger() {
-  debuggerVisible = !debuggerVisible;
-  document.getElementById('debugger').style.display = debuggerVisible ? 'flex' : 'none';
-  document.getElementById('file-system').style.width = debuggerVisible ? '70%' : '100%';
-  onWindowResize();
-}
-
-function toggleFileTree() {
-  fileTreeVisible = !fileTreeVisible;
-  document.getElementById('file-tree').style.display = fileTreeVisible ? 'block' : 'none';
-}
-
-function toggleCLI() {
-  cliVisible = !cliVisible;
-  document.getElementById('cli').style.display = cliVisible ? 'block' : 'none';
-  if (cliVisible) {
-    document.getElementById('cli-input').focus();
-  }
-}
-
-function updateFileTree() {
-  const fileTree = document.getElementById('file-tree');
-  fileTree.innerHTML = '';
-  
-  const root = document.createElement('ul');
-  const rootItem = document.createElement('li');
-  rootItem.textContent = '/';
-  root.appendChild(rootItem);
-
-  const currentDir = document.createElement('ul');
-  fileObjects.forEach(obj => {
-    const item = document.createElement('li');
-    item.textContent = obj.name;
-    item.onclick = () => openFile(obj);
-    currentDir.appendChild(item);
-  });
-
-  rootItem.appendChild(currentDir);
-  fileTree.appendChild(root);
-}
-
-function openFile(file) {
-  const editor = ace.edit("editor");
-  const output = document.getElementById('output');
-  const visualOutput = document.getElementById('visual-output');
-
-  output.innerHTML = '';
-  visualOutput.innerHTML = '';
-
-  switch (file.type) {
-    case 'file':
-    case '65c02':
-    case 'armv8':
-    case 'fpga':
-    case 'freebasic':
-    case 'python':
-      editor.session.setValue(`// Content of ${file.name}\n// File size: ${file.size.toFixed(2)} KB\n\n// Add your code here`);
-      break;
-    case 'executable':
-      output.innerHTML = `<h2>${file.name}</h2><p>Executing ${file.name}...</p><pre>$ ./${file.name}\nOutput: Hello, World!\nExecution completed.</pre>`;
-      break;
-    case 'image':
-      visualOutput.innerHTML = `<h2>${file.name}</h2><img src="https://picsum.photos/400/300" alt="Random image representing ${file.name}" />`;
-      break;
-    case 'video':
-      visualOutput.innerHTML = `<h2>${file.name}</h2><video width="400" controls><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">Your browser does not support the video tag.</video>`;
-      break;
-    case 'audio':
-      visualOutput.innerHTML = `<h2>${file.name}</h2><audio controls><source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">Your browser does not support the audio tag.</audio>`;
-      break;
-  }
-}
-
-function onWindowResize() {
-  const width = debuggerVisible ? window.innerWidth * 0.7 : window.innerWidth;
-  camera.aspect = width / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(width, window.innerHeight);
-}
-
-function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  renderer.render(scene, camera);
-  updateDebugViews();
-}
-
-function updateDebugViews() {
-  activeDebugViews.forEach(view => {
-    switch(view) {
-      case 'mos65c02':
-        updateMOS65c02View();
-        break;
-      case 'armv8':
-        updateARMv8View();
-        break;
-      case 'fpga':
-        updateFPGAView();
-        break;
-      case 'freebasic':
-        updateFreeBASICView();
-        break;
-      case 'vicii':
-        updateVICIIView();
-        break;
-      case 'svga':
-        updateSVGAView();
-        break;
-      case 'ecs':
-        updateECSView();
-        break;
-      case 'aga':
-        updateAGAView();
-        break;
-      case 'hdr':
-        updateHDRView();
-        break;
-      case 'hdri':
-        updateHDRIView();
-        break;
-      case '3d':
-        update3DGraphicsView();
-        break;
-      case 'oscilloscope':
-        updateOscilloscopeView();
-        break;
-      case 'logic':
-        updateLogicAnalyzerView();
-        break;
-    }
-  });
-}
-
-function toggleDebugView(view) {
-  if (activeDebugViews.has(view)) {
-    activeDebugViews.delete(view);
-    removeDebugView(view);
-  } else {
-    activeDebugViews.add(view);
-    createDebugView(view);
-  }
-  updateDebugLayout();
-}
-
-function createDebugView(view) {
-  const visualOutput = document.getElementById('visual-output');
-  const debugView = document.createElement('div');
-  debugView.className = 'debug-view';
-  debugView.id = `debug-view-${view}`;
-  const canvas = document.createElement('canvas');
-  debugView.appendChild(canvas);
-  visualOutput.appendChild(debugView);
-}
-
-function removeDebugView(view) {
-  const debugView = document.getElementById(`debug-view-${view}`);
-  if (debugView) {
-    debugView.remove();
-  }
-}
-
-function updateDebugLayout() {
-  const visualOutput = document.getElementById('visual-output');
-  const activeViews = visualOutput.children;
-  const viewCount = activeViews.length;
-  const columns = Math.ceil(Math.sqrt(viewCount));
-  const rows = Math.ceil(viewCount / columns);
-  
-  for (let i = 0; i < activeViews.length; i++) {
-    activeViews[i].style.width = `${100 / columns}%`;
-    activeViews[i].style.height = `${100 / rows}%`;
-  }
-}
-
-function updateMOS65c02View() {
-  const canvas = document.querySelector('#debug-view-mos65c02 canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'white';
-  ctx.font = '12px monospace';
-  ctx.fillText('MOS-65c02 Debugger', 10, 20);
-  ctx.fillText('A: 0x00 X: 0x00 Y: 0x00', 10, 40);
-  ctx.fillText('PC: 0x0000 SP: 0xFF', 10, 60);
-  ctx.fillText('Flags: NV-BDIZC', 10, 80);
-  ctx.fillText('       00100000', 10, 100);
-}
-
-function updateARMv8View() {
-  const canvas = document.querySelector('#debug-view-armv8 canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'white';
-  ctx.font = '12px monospace';
-  ctx.fillText('ARMv8 Debugger', 10, 20);
-  ctx.fillText('X0: 0x0000000000000000', 10, 40);
-  ctx.fillText('X1: 0x0000000000000000', 10, 60);
-  ctx.fillText('PC: 0x0000000000000000', 10, 80);
-  ctx.fillText('PSTATE: 0x00000000', 10, 100);
-}
-
-function updateFPGAView() {
-  const canvas = document.querySelector('#debug-view-fpga canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'white';
-  ctx.font = '12px monospace';
-  ctx.fillText('FPGA Debugger', 10, 20);
-  // Simulating logic gates
-  ctx.strokeStyle = 'white';
-  ctx.beginPath();
-  ctx.moveTo(50, 50);
-  ctx.lineTo(100, 50);
-  ctx.lineTo(125, 75);
-  ctx.lineTo(100, 100);
-  ctx.lineTo(50, 100);
-  ctx.closePath();
-  ctx.stroke();
-  ctx.fillText('AND', 75, 80);
-}
-
-function updateFreeBASICView() {
-  const canvas = document.querySelector('#debug-view-freebasic canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'white';
-  ctx.font = '12px monospace';
-  ctx.fillText('FreeBASIC Debugger', 10, 20);
-  ctx.fillText('Line: 10', 10, 40);
-  ctx.fillText('Variables:', 10, 60);
-  ctx.fillText('x = 5', 20, 80);
-  ctx.fillText('y = "Hello"', 20, 100);
-}
-
-function updateVICIIView() {
-  const canvas = document.querySelector('#debug-view-vicii canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // Simulating VIC-II output
-  for (let y = 0; y < canvas.height; y += 8) {
-    for (let x = 0; x < canvas.width; x += 8) {
-      ctx.fillStyle = `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`;
-      ctx.fillRect(x, y, 8, 8);
-    }
-  }
-  ctx.fillStyle = 'white';
-  ctx.font = '12px monospace';
-  ctx.fillText('VIC-II Emulation', 10, 20);
-}
-
-function updateSVGAView() {
-  const canvas = document.querySelector('#debug-view-svga canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // Simulating SVGA output
-  const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-  gradient.addColorStop(0, 'red');
-  gradient.addColorStop(0.5, 'green');
-  gradient.addColorStop(1, 'blue');
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'white';
-  ctx.font = '12px monospace';
-  ctx.fillText('SVGA Emulation', 10, 20);
-}
-
-function updateECSView() {
-  const canvas = document.querySelector('#debug-view-ecs canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // Simulating ECS output with copper list effect
-  for (let y = 0; y < canvas.height; y++) {
-    ctx.fillStyle = `rgba(${Math.sin(y*0.1)*127+128},${Math.cos(y*0.1)*127+128},${Math.sin(y*0.05)*127+128},1)`;
-    ctx.fillRect(0, y, canvas.width, 1);
-  }
-  ctx.fillStyle = 'white';
-  ctx.font = '12px monospace';
-  ctx.fillText('ECS Emulation (Copper List)', 10, 20);
-}
-
-function updateAGAView() {
-  const canvas = document.querySelector('#debug-view-aga canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // Simulating AGA HAM8 mode
-  for (let y = 0; y < canvas.height; y++) {
-    for (let x = 0; x < canvas.width; x++) {
-      ctx.fillStyle = `rgb(${(x/canvas.width)*255},${(y/canvas.height)*255},${((x+y)/(canvas.width+canvas.height))*255})`;
-      ctx.fillRect(x, y, 1, 1);
-    }
-  }
-  ctx.fillStyle = 'white';
-  ctx.font = '12px monospace';
-  ctx.fillText('AGA Emulation (HAM8)', 10, 20);
-}
-
-function updateHDRView() {
-  const canvas = document.querySelector('#debug-view-hdr canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // Simulating HDR effect
-  const gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 10, canvas.width/2, canvas.height/2, canvas.width/2);
-  gradient.addColorStop(0, 'white');
-  gradient.addColorStop(0.2, 'yellow');
-  gradient.addColorStop(0.4, 'orange');
-  gradient.addColorStop(0.6, 'red');
-  gradient.addColorStop(0.8, 'purple');
-  gradient.addColorStop(1, 'black');
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'white';
-  ctx.font = '12px monospace';
-  ctx.fillText('HDR Simulation', 10, 20);
-}
-
-function updateHDRIView() {
-  const canvas = document.querySelector('#debug-view-hdri canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // Simulating HDRI environment mapping
-  const img = new Image();
-  img.onload = () => {
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'white';
-    ctx.font = '12px monospace';
-    ctx.fillText('HDRI Environment Mapping', 10, 20);
-  };
-  img.src = 'https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_14640,h_7320/https://hdrihaven.com/files/hdri_images/tonemapped/1500/sunset_jhbcentral_1500.jpg';
-}
-
-function update3DGraphicsView() {
-  const canvas = document.querySelector('#debug-view-3d canvas');
-  const renderer = new THREE.WebGLRenderer({canvas});
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, canvas.width / canvas.height, 0.1, 1000);
-  
-  const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-  const material = new THREE.MeshPhongMaterial({color: 0x00ff00});
-  const torusKnot = new THREE.Mesh(geometry, material);
-  scene.add(torusKnot);
-  
-  const light = new THREE.PointLight(0xffffff, 1, 100);
-  light.position.set(0, 0, 20);
-  scene.add(light);
-  
-  camera.position.z = 30;
-  
-  renderer.render(scene, camera);
-}
-
-function updateOscilloscopeView() {
-  const canvas = document.querySelector('#debug-view-oscilloscope canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.strokeStyle = '#00ff00';
-  ctx.beginPath();
-  for (let x = 0; x < canvas.width; x++) {
-    const y = canvas.height/2 + Math.sin(x * 0.1) * 50 + Math.random() * 10;
-    ctx.lineTo(x, y);
-  }
-  ctx.stroke();
-  ctx.fillStyle = 'white';
-  ctx.font = '12px monospace';
-  ctx.fillText('Oscilloscope Simulation', 10, 20);
-}
-
-function updateLogicAnalyzerView() {
-  const canvas = document.querySelector('#debug-view-logic canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  const channels = 8;
-  const channelHeight = canvas.height / channels;
-  
-  for (let i = 0; i < channels; i++) {
-    ctx.strokeStyle = `hsl(${i * 360 / channels}, 100%, 50%)`;
-    ctx.beginPath();
-    for (let x = 0; x < canvas.width; x++) {
-      const y = i * channelHeight + (Math.random() > 0.5 ? 0 : channelHeight);
-      ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-  }
-  
-  ctx.fillStyle = 'white';
-  ctx.font = '12px monospace';
-  ctx.fillText('Logic Analyzer', 10, 20);
-}
-
-// CLI functionality
-document.getElementById('cli-input').addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
-    const command = this.value.trim();
-    this.value = '';
-    executeCommand(command);
-  }
-});
-
-function executeCommand(command) {
-  const output = document.getElementById('cli-output');
-  output.innerHTML += `<div>> ${command}</div>`;
-
-  let response = '';
-  switch (command.toLowerCase()) {
-    case 'help':
-      response = 'Available commands: ls, cd, pwd, cat, clear, exit, run, debug, mapv, treev, eagleeye, python, freebasic, 65c02, armv8';
-      break;
-    case 'ls':
-      response = fileObjects.map(obj => obj.name).join('\n');
-      break;
-    case 'pwd':
-      response = currentPath;
-      break;
-    case 'clear':
-      output.innerHTML = '';
-      return;
-    case 'exit':
-      toggleCLI();
-      return;
-    case 'run':
-      runCode();
-      response = 'Running code. Check the output panel for results.';
-      break;
-    case 'debug':
-      debugCode();
-      response = 'Debugging code. Check the visual output for debug views.';
-      break;
-    case 'mapv':
-      viewMode = 'MapV';
-      generateDirectory();
-      response = 'Switched to MapV mode';
-      break;
-    case 'treev':
-      viewMode = 'TreeV';
-      generateDirectory();
-      response = 'Switched to TreeV mode';
-      break;
-    case 'eagleeye':
-      toggleEagleEye();
-      response = eagleEyeMode ? 'Eagle Eye mode activated' : 'Eagle Eye mode deactivated';
-      break;
-    case 'python':
-      openInterpreter('python');
-      response = 'Python interpreter opened';
-      break;
-    case 'freebasic':
-      openInterpreter('freebasic');
-      response = 'FreeBASIC interpreter opened';
-      break;
-    case '65c02':
-      openAssembler('65c02');
-      response = '65c02 assembler opened';
-      break;
-    case 'armv8':
-      openAssembler('armv8');
-      response = 'ARMv8 assembler opened';
-      break;
-    default:
-      if (command.startsWith('cd ')) {
-        const dir = command.split(' ')[1];
-        if (dir === '..') {
-          currentPath = currentPath.split('/').slice(0, -1).join('/') || '/';
-          response = `Changed directory to ${currentPath}`;
+      function toggleDebugView(view) {
+        if (activeDebugViews.has(view)) {
+          activeDebugViews.delete(view);
+          removeDebugView(view);
         } else {
-          const targetDir = fileObjects.find(obj => obj.name === dir && obj.type === 'directory');
-          if (targetDir) {
-            currentPath += '/' + dir;
-            response = `Changed directory to ${currentPath}`;
-          } else {
-            response = `Directory not found: ${dir}`;
+          activeDebugViews.add(view);
+          createDebugView(view);
+        }
+        updateDebugLayout();
+      }
+
+      function createDebugView(view) {
+        const visualOutput = document.getElementById("visual-output");
+        const debugView = document.createElement("div");
+        debugView.className = "debug-view";
+        debugView.id = `debug-view-${view}`;
+        const canvas = document.createElement("canvas");
+        debugView.appendChild(canvas);
+        visualOutput.appendChild(debugView);
+      }
+
+      function removeDebugView(view) {
+        const debugView = document.getElementById(`debug-view-${view}`);
+        if (debugView) {
+          debugView.remove();
+        }
+      }
+
+      function updateDebugLayout() {
+        const visualOutput = document.getElementById("visual-output");
+        const activeViews = visualOutput.children;
+        const viewCount = activeViews.length;
+        const columns = Math.ceil(Math.sqrt(viewCount));
+        const rows = Math.ceil(viewCount / columns);
+
+        for (let i = 0; i < activeViews.length; i++) {
+          activeViews[i].style.width = `${100 / columns}%`;
+          activeViews[i].style.height = `${100 / rows}%`;
+        }
+      }
+
+      function updateMOS65c02View() {
+        const canvas = document.querySelector("#debug-view-mos65c02 canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.font = "12px monospace";
+        ctx.fillText("MOS-65c02 Debugger", 10, 20);
+        ctx.fillText("A: 0x00 X: 0x00 Y: 0x00", 10, 40);
+        ctx.fillText("PC: 0x0000 SP: 0xFF", 10, 60);
+        ctx.fillText("Flags: NV-BDIZC", 10, 80);
+        ctx.fillText("       00100000", 10, 100);
+      }
+
+      function updateARMv8View() {
+        const canvas = document.querySelector("#debug-view-armv8 canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.font = "12px monospace";
+        ctx.fillText("ARMv8 Debugger", 10, 20);
+        ctx.fillText("X0: 0x0000000000000000", 10, 40);
+        ctx.fillText("X1: 0x0000000000000000", 10, 60);
+        ctx.fillText("PC: 0x0000000000000000", 10, 80);
+        ctx.fillText("PSTATE: 0x00000000", 10, 100);
+      }
+
+      function updateFPGAView() {
+        const canvas = document.querySelector("#debug-view-fpga canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.font = "12px monospace";
+        ctx.fillText("FPGA Debugger", 10, 20);
+        // Simulating logic gates
+        ctx.strokeStyle = "white";
+        ctx.beginPath();
+        ctx.moveTo(50, 50);
+        ctx.lineTo(100, 50);
+        ctx.lineTo(125, 75);
+        ctx.lineTo(100, 100);
+        ctx.lineTo(50, 100);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fillText("AND", 75, 80);
+      }
+
+      function updateFreeBASICView() {
+        const canvas = document.querySelector("#debug-view-freebasic canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.font = "12px monospace";
+        ctx.fillText("FreeBASIC Debugger", 10, 20);
+        ctx.fillText("Line: 10", 10, 40);
+        ctx.fillText("Variables:", 10, 60);
+        ctx.fillText("x = 5", 20, 80);
+        ctx.fillText('y = "Hello"', 20, 100);
+      }
+
+      function updateVICIIView() {
+        const canvas = document.querySelector("#debug-view-vicii canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Simulating VIC-II output
+        for (let y = 0; y < canvas.height; y += 8) {
+          for (let x = 0; x < canvas.width; x += 8) {
+            ctx.fillStyle = `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`;
+            ctx.fillRect(x, y, 8, 8);
           }
         }
-        generateDirectory();
-      } else if (command.startsWith('cat ')) {
-        const fileName = command.split(' ')[1];
-        const file = fileObjects.find(obj => obj.name === fileName);
-        if (file) {
-          response = `Content of ${fileName}:\nThis is a sample content for ${fileName}.\nFile size: ${file.size.toFixed(2)} KB`;
-        } else {
-          response = `File not found: ${fileName}`;
-        }
-      } else {
-        response = `Command not found: ${command}`;
+        ctx.fillStyle = "white";
+        ctx.font = "12px monospace";
+        ctx.fillText("VIC-II Emulation", 10, 20);
       }
-  }
 
-  output.innerHTML += `<div>${response}</div>`;
-  output.scrollTop = output.scrollHeight;
-}
+      function updateSVGAView() {
+        const canvas = document.querySelector("#debug-view-svga canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Simulating SVGA output
+        const gradient = ctx.createLinearGradient(
+          0,
+          0,
+          canvas.width,
+          canvas.height,
+        );
+        gradient.addColorStop(0, "red");
+        gradient.addColorStop(0.5, "green");
+        gradient.addColorStop(1, "blue");
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.font = "12px monospace";
+        ctx.fillText("SVGA Emulation", 10, 20);
+      }
 
-function runCode() {
-  const editor = ace.edit("editor");
-  const code = editor.getValue();
-  const output = document.getElementById('output');
+      function updateECSView() {
+        const canvas = document.querySelector("#debug-view-ecs canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Simulating ECS output with copper list effect
+        for (let y = 0; y < canvas.height; y++) {
+          ctx.fillStyle = `rgba(${Math.sin(y * 0.1) * 127 + 128},${Math.cos(y * 0.1) * 127 + 128},${Math.sin(y * 0.05) * 127 + 128},1)`;
+          ctx.fillRect(0, y, canvas.width, 1);
+        }
+        ctx.fillStyle = "white";
+        ctx.font = "12px monospace";
+        ctx.fillText("ECS Emulation (Copper List)", 10, 20);
+      }
 
-  output.innerHTML = '<h3>Code Execution</h3>';
-  output.innerHTML += `<pre>${code}\n\nOutput: Hello, World!</pre>`;
-}
+      function updateAGAView() {
+        const canvas = document.querySelector("#debug-view-aga canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Simulating AGA HAM8 mode
+        for (let y = 0; y < canvas.height; y++) {
+          for (let x = 0; x < canvas.width; x++) {
+            ctx.fillStyle = `rgb(${(x / canvas.width) * 255},${(y / canvas.height) * 255},${((x + y) / (canvas.width + canvas.height)) * 255})`;
+            ctx.fillRect(x, y, 1, 1);
+          }
+        }
+        ctx.fillStyle = "white";
+        ctx.font = "12px monospace";
+        ctx.fillText("AGA Emulation (HAM8)", 10, 20);
+      }
 
-function debugCode() {
-  const editor = ace.edit("editor");
-  const code = editor.getValue();
-  const output = document.getElementById('output');
+      function updateHDRView() {
+        const canvas = document.querySelector("#debug-view-hdr canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Simulating HDR effect
+        const gradient = ctx.createRadialGradient(
+          canvas.width / 2,
+          canvas.height / 2,
+          10,
+          canvas.width / 2,
+          canvas.height / 2,
+          canvas.width / 2,
+        );
+        gradient.addColorStop(0, "white");
+        gradient.addColorStop(0.2, "yellow");
+        gradient.addColorStop(0.4, "orange");
+        gradient.addColorStop(0.6, "red");
+        gradient.addColorStop(0.8, "purple");
+        gradient.addColorStop(1, "black");
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.font = "12px monospace";
+        ctx.fillText("HDR Simulation", 10, 20);
+      }
 
-  output.innerHTML = '<h3>Debugging</h3>';
-  output.innerHTML += `<pre>Debugging code:\n\n${code}\n\nBreakpoint hit at line 3</pre>`;
+      function updateHDRIView() {
+        const canvas = document.querySelector("#debug-view-hdri canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Simulating HDRI environment mapping
+        const img = new Image();
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          ctx.fillStyle = "white";
+          ctx.font = "12px monospace";
+          ctx.fillText("HDRI Environment Mapping", 10, 20);
+        };
+        img.src =
+          "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_14640,h_7320/https://hdrihaven.com/files/hdri_images/tonemapped/1500/sunset_jhbcentral_1500.jpg";
+      }
 
-  // Activate all debug views for demonstration
-  ['mos65c02', 'armv8', 'fpga', 'freebasic', 'vicii', 'svga', 'ecs', 'aga', 'hdr', 'hdri', '3d', 'oscilloscope', 'logic'].forEach(view => {
-    if (!activeDebugViews.has(view)) {
-      toggleDebugView(view);
-    }
-  });
-}
+      function update3DGraphicsView() {
+        const canvas = document.querySelector("#debug-view-3d canvas");
+        const renderer = new THREE.WebGLRenderer({ canvas });
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(
+          75,
+          canvas.width / canvas.height,
+          0.1,
+          1000,
+        );
 
-function openInterpreter(type) {
-  const editor = ace.edit("editor");
-  const output = document.getElementById('output');
+        const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+        const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+        const torusKnot = new THREE.Mesh(geometry, material);
+        scene.add(torusKnot);
 
-  switch(type) {
-    case 'python':
-      editor.session.setMode("ace/mode/python");
-      editor.setValue("# Python Interpreter\nprint('Hello, World!')\n");
-      output.innerHTML = '<h3>Python Interpreter</h3><pre>> Hello, World!</pre>';
-      break;
-    case 'freebasic':
-      editor.session.setMode("ace/mode/vbscript");
-      editor.setValue("' FreeBASIC Interpreter\nPRINT \"Hello, World!\"\n");
-      output.innerHTML = '<h3>FreeBASIC Interpreter</h3><pre>> Hello, World!</pre>';
-      break;
-  }
-}
+        const light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(0, 0, 20);
+        scene.add(light);
 
-function openAssembler(type) {
-  const editor = ace.edit("editor");
-  const output = document.getElementById('output');
+        camera.position.z = 30;
 
-  switch(type) {
-    case '65c02':
-      editor.session.setMode("ace/mode/assembly_x86");
-      editor.setValue("; 65c02 Assembler\nLDA #$01\nSTA $0200\nRTS\n");
-      output.innerHTML = '<h3>65c02 Assembler</h3><pre>Assembled successfully</pre>';
-      break;
-    case 'armv8':
-      editor.session.setMode("ace/mode/assembly_x86");
-      editor.setValue("// ARMv8 Assembler\nmov x0, #1\nstr x0, [sp, #16]\nret\n");
-      output.innerHTML = '<h3>ARMv8 Assembler</h3><pre>Assembled successfully</pre>';
-      break;
-  }
-}
+        renderer.render(scene, camera);
+      }
 
-// Initialize the application
-init();
-animate();
+      function updateOscilloscopeView() {
+        const canvas = document.querySelector(
+          "#debug-view-oscilloscope canvas",
+        );
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = "#00ff00";
+        ctx.beginPath();
+        for (let x = 0; x < canvas.width; x++) {
+          const y =
+            canvas.height / 2 + Math.sin(x * 0.1) * 50 + Math.random() * 10;
+          ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+        ctx.fillStyle = "white";
+        ctx.font = "12px monospace";
+        ctx.fillText("Oscilloscope Simulation", 10, 20);
+      }
 
-// Add event listeners for keyboard shortcuts
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'r' || event.key === 'R') {
-    runCode();
-  } else if (event.key === 'd' || event.key === 'D') {
-    debugCode();
-  } else if (event.key === 'm' || event.key === 'M') {
-    viewMode = 'MapV';
-    generateDirectory();
-  } else if (event.key === 't' || event.key === 'T') {
-    viewMode = 'TreeV';
-    generateDirectory();
-  } else if (event.key === 'e' || event.key === 'E') {
-    toggleEagleEye();
-  }
-});
-</script>
-</body></html>
+      function updateLogicAnalyzerView() {
+        const canvas = document.querySelector("#debug-view-logic canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const channels = 8;
+        const channelHeight = canvas.height / channels;
 
-, y);
-  }
-  ctx.stroke();
-  ctx.fillStyle = 'white';
-  ctx.font = '12px monospace';
-  ctx.fillText('Oscilloscope Simulation', 10, 20);
-}
+        for (let i = 0; i < channels; i++) {
+          ctx.strokeStyle = `hsl(${(i * 360) / channels}, 100%, 50%)`;
+          ctx.beginPath();
+          for (let x = 0; x < canvas.width; x++) {
+            const y =
+              i * channelHeight + (Math.random() > 0.5 ? 0 : channelHeight);
+            ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
 
-function updateLogicAnalyzerView() {
-  const canvas = document.querySelector('#debug-view-logic canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  const channels = 8;
-  const channelHeight = canvas.height / channels;
-  
-  for (let i = 0; i < channels; i++) {
-    ctx.strokeStyle = `hsl(${i * 360 / channels}, 100%, 50%)`;
-    ctx.beginPath();
-    for (let x = 0; x < canvas.width; x++) {
-      const y = i * channelHeight + (Math.random() > 0.5 ? 0 : channelHeight);
-      ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-  }
-  
-  ctx.fillStyle = 'white';
-  ctx.font = '12px monospace';
-  ctx.fillText('Logic Analyzer', 10, 20);
-}
+        ctx.fillStyle = "white";
+        ctx.font = "12px monospace";
+        ctx.fillText("Logic Analyzer", 10, 20);
+      }
 
-// Hardware simulator
-function initializeHardwareSimulator() {
-  const output = document.getElementById('output');
-  output.innerHTML += '<h3>Hardware Simulator</h3>';
-  output.innerHTML += '<p>Initializing hardware simulation...</p>';
-  
-  // Simulated hardware components
-  const cpu = { frequency: 1000000000, cores: 4 };
-  const memory = { total: 8589934592, free: 4294967296 };
-  const storage = { total: 1099511627776, free: 549755813888 };
-  
-  output.innerHTML += `<pre>
+      // CLI functionality
+      document
+        .getElementById("cli-input")
+        .addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            const command = this.value.trim();
+            this.value = "";
+            executeCommand(command);
+          }
+        });
+
+      function executeCommand(command) {
+        const output = document.getElementById("cli-output");
+        output.innerHTML += `<div>> ${command}</div>`;
+
+        let response = "";
+        switch (command.toLowerCase()) {
+          case "help":
+            response =
+              "Available commands: ls, cd, pwd, cat, clear, exit, run, debug, mapv, treev, eagleeye, python, freebasic, 65c02, armv8";
+            break;
+          case "ls":
+            response = fileObjects.map((obj) => obj.name).join("\n");
+            break;
+          case "pwd":
+            response = currentPath;
+            break;
+          case "clear":
+            output.innerHTML = "";
+            return;
+          case "exit":
+            toggleCLI();
+            return;
+          case "run":
+            runCode();
+            response = "Running code. Check the output panel for results.";
+            break;
+          case "debug":
+            debugCode();
+            response =
+              "Debugging code. Check the visual output for debug views.";
+            break;
+          case "mapv":
+            viewMode = "MapV";
+            generateDirectory();
+            response = "Switched to MapV mode";
+            break;
+          case "treev":
+            viewMode = "TreeV";
+            generateDirectory();
+            response = "Switched to TreeV mode";
+            break;
+          case "eagleeye":
+            toggleEagleEye();
+            response = eagleEyeMode
+              ? "Eagle Eye mode activated"
+              : "Eagle Eye mode deactivated";
+            break;
+          case "python":
+            openInterpreter("python");
+            response = "Python interpreter opened";
+            break;
+          case "freebasic":
+            openInterpreter("freebasic");
+            response = "FreeBASIC interpreter opened";
+            break;
+          case "65c02":
+            openAssembler("65c02");
+            response = "65c02 assembler opened";
+            break;
+          case "armv8":
+            openAssembler("armv8");
+            response = "ARMv8 assembler opened";
+            break;
+          default:
+            if (command.startsWith("cd ")) {
+              const dir = command.split(" ")[1];
+              if (dir === "..") {
+                currentPath =
+                  currentPath.split("/").slice(0, -1).join("/") || "/";
+                response = `Changed directory to ${currentPath}`;
+              } else {
+                const targetDir = fileObjects.find(
+                  (obj) => obj.name === dir && obj.type === "directory",
+                );
+                if (targetDir) {
+                  currentPath += "/" + dir;
+                  response = `Changed directory to ${currentPath}`;
+                } else {
+                  response = `Directory not found: ${dir}`;
+                }
+              }
+              generateDirectory();
+            } else if (command.startsWith("cat ")) {
+              const fileName = command.split(" ")[1];
+              const file = fileObjects.find((obj) => obj.name === fileName);
+              if (file) {
+                response = `Content of ${fileName}:\nThis is a sample content for ${fileName}.\nFile size: ${file.size.toFixed(2)} KB`;
+              } else {
+                response = `File not found: ${fileName}`;
+              }
+            } else {
+              response = `Command not found: ${command}`;
+            }
+        }
+
+        output.innerHTML += `<div>${response}</div>`;
+        output.scrollTop = output.scrollHeight;
+      }
+
+      function runCode() {
+        const editor = ace.edit("editor");
+        const code = editor.getValue();
+        const output = document.getElementById("output");
+
+        output.innerHTML = "<h3>Code Execution</h3>";
+        output.innerHTML += `<pre>${code}\n\nOutput: Hello, World!</pre>`;
+      }
+
+      function debugCode() {
+        const editor = ace.edit("editor");
+        const code = editor.getValue();
+        const output = document.getElementById("output");
+
+        output.innerHTML = "<h3>Debugging</h3>";
+        output.innerHTML += `<pre>Debugging code:\n\n${code}\n\nBreakpoint hit at line 3</pre>`;
+
+        // Activate all debug views for demonstration
+        [
+          "mos65c02",
+          "armv8",
+          "fpga",
+          "freebasic",
+          "vicii",
+          "svga",
+          "ecs",
+          "aga",
+          "hdr",
+          "hdri",
+          "3d",
+          "oscilloscope",
+          "logic",
+        ].forEach((view) => {
+          if (!activeDebugViews.has(view)) {
+            toggleDebugView(view);
+          }
+        });
+      }
+
+      function openInterpreter(type) {
+        const editor = ace.edit("editor");
+        const output = document.getElementById("output");
+
+        switch (type) {
+          case "python":
+            editor.session.setMode("ace/mode/python");
+            editor.setValue("# Python Interpreter\nprint('Hello, World!')\n");
+            output.innerHTML =
+              "<h3>Python Interpreter</h3><pre>> Hello, World!</pre>";
+            break;
+          case "freebasic":
+            editor.session.setMode("ace/mode/vbscript");
+            editor.setValue(
+              '\' FreeBASIC Interpreter\nPRINT "Hello, World!"\n',
+            );
+            output.innerHTML =
+              "<h3>FreeBASIC Interpreter</h3><pre>> Hello, World!</pre>";
+            break;
+        }
+      }
+
+      function openAssembler(type) {
+        const editor = ace.edit("editor");
+        const output = document.getElementById("output");
+
+        switch (type) {
+          case "65c02":
+            editor.session.setMode("ace/mode/assembly_x86");
+            editor.setValue("; 65c02 Assembler\nLDA #$01\nSTA $0200\nRTS\n");
+            output.innerHTML =
+              "<h3>65c02 Assembler</h3><pre>Assembled successfully</pre>";
+            break;
+          case "armv8":
+            editor.session.setMode("ace/mode/assembly_x86");
+            editor.setValue(
+              "// ARMv8 Assembler\nmov x0, #1\nstr x0, [sp, #16]\nret\n",
+            );
+            output.innerHTML =
+              "<h3>ARMv8 Assembler</h3><pre>Assembled successfully</pre>";
+            break;
+        }
+      }
+
+      // Initialize the application
+      init();
+      animate();
+
+      // Add event listeners for keyboard shortcuts
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "r" || event.key === "R") {
+          runCode();
+        } else if (event.key === "d" || event.key === "D") {
+          debugCode();
+        } else if (event.key === "m" || event.key === "M") {
+          viewMode = "MapV";
+          generateDirectory();
+        } else if (event.key === "t" || event.key === "T") {
+          viewMode = "TreeV";
+          generateDirectory();
+        } else if (event.key === "e" || event.key === "E") {
+          toggleEagleEye();
+        }
+      });
+    </script>
+  </body>
+</html>
+
+, y); } ctx.stroke(); ctx.fillStyle = 'white'; ctx.font = '12px monospace';
+ctx.fillText('Oscilloscope Simulation', 10, 20); } function
+updateLogicAnalyzerView() { const canvas =
+document.querySelector('#debug-view-logic canvas'); const ctx =
+canvas.getContext('2d'); ctx.clearRect(0, 0, canvas.width, canvas.height); const
+channels = 8; const channelHeight = canvas.height / channels; for (let i = 0; i
+< channels; i++) { ctx.strokeStyle = `hsl(${i * 360 / channels}, 100%, 50%)`;
+ctx.beginPath(); for (let x = 0; x < canvas.width; x++) { const y = i *
+channelHeight + (Math.random() > 0.5 ? 0 : channelHeight); ctx.lineTo(x, y); }
+ctx.stroke(); } ctx.fillStyle = 'white'; ctx.font = '12px monospace';
+ctx.fillText('Logic Analyzer', 10, 20); } // Hardware simulator function
+initializeHardwareSimulator() { const output =
+document.getElementById('output'); output.innerHTML += '
+<h3>Hardware Simulator</h3>
+'; output.innerHTML += '
+<p>Initializing hardware simulation...</p>
+'; // Simulated hardware components const cpu = { frequency: 1000000000, cores:
+4 }; const memory = { total: 8589934592, free: 4294967296 }; const storage = {
+total: 1099511627776, free: 549755813888 }; output.innerHTML += `
+<pre>
 CPU: ${cpu.cores} cores @ ${cpu.frequency / 1000000} MHz
 Memory: ${memory.total / 1073741824} GB total, ${memory.free / 1073741824} GB free
 Storage: ${storage.total / 1073741824} GB total, ${storage.free / 1073741824} GB free
-</pre>`;
-  
-  // Start simulated hardware monitoring
-  setInterval(updateHardwareStatus, 1000);
-}
-
-function updateHardwareStatus() {
-  const output = document.getElementById('output');
-  const cpuUsage = Math.random() * 100;
-  const memoryUsage = Math.random() * 8589934592;
-  const storageUsage = Math.random() * 1099511627776;
-  
-  output.innerHTML += `<pre>
+</pre>
+`; // Start simulated hardware monitoring setInterval(updateHardwareStatus,
+1000); } function updateHardwareStatus() { const output =
+document.getElementById('output'); const cpuUsage = Math.random() * 100; const
+memoryUsage = Math.random() * 8589934592; const storageUsage = Math.random() *
+1099511627776; output.innerHTML += `
+<pre>
 CPU Usage: ${cpuUsage.toFixed(2)}%
 Memory Usage: ${(memoryUsage / 1073741824).toFixed(2)} GB
 Storage Usage: ${(storageUsage / 1073741824).toFixed(2)} GB
-</pre>`;
-  
-  // Limit the output to last 10 updates
-  const lines = output.innerHTML.split('\n');
-  if (lines.length > 50) {
-    output.innerHTML = lines.slice(-50).join('\n');
-  }
-}
-
-// Initialize hardware simulator
-initializeHardwareSimulator();
-
-// Add event listener for hardware simulation toggle
-document.getElementById('toggle-hardware-sim').addEventListener('click', function() {
-  const output = document.getElementById('output');
-  if (this.textContent === 'Start Hardware Simulation') {
-    this.textContent = 'Stop Hardware Simulation';
-    initializeHardwareSimulator();
-  } else {
-    this.textContent = 'Start Hardware Simulation';
-    clearInterval(updateHardwareStatus);
-    output.innerHTML += '<p>Hardware simulation stopped.</p>';
-  }
-});
-
-// File System Visualizer (FSV) enhancements
-function enhanceFSV() {
-  // Add 3D objects for different file types
-  const fileTypeObjects = {
-    directory: new THREE.BoxBufferGeometry(1, 1, 1),
-    file: new THREE.SphereBufferGeometry(0.5, 32, 32),
-    executable: new THREE.ConeBufferGeometry(0.5, 1, 32),
-    image: new THREE.CircleBufferGeometry(0.5, 32),
-    video: new THREE.RingBufferGeometry(0.3, 0.5, 32),
-    audio: new THREE.TorusBufferGeometry(0.3, 0.1, 16, 100)
-  };
-
-  fileObjects.forEach(obj => {
-    const geometry = fileTypeObjects[obj.type] || fileTypeObjects.file;
-    const material = new THREE.MeshStandardMaterial({
-      color: fileTypes[obj.type].color,
-      metalness: 0.5,
-      roughness: 0.5,
-      envMapIntensity: 1.0
-    });
-    obj.mesh.geometry = geometry;
-    obj.mesh.material = material;
-  });
-
-  // Add HDRI environment mapping
-  new THREE.RGBELoader()
-    .setPath('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/equirectangular/')
-    .load('royal_esplanade_1k.hdr', function(texture) {
-      texture.mapping = THREE.EquirectangularReflectionMapping;
-      scene.environment = texture;
-    });
-
-  // Add real-time reflections
-  const reflector = new THREE.Reflector(new THREE.PlaneBufferGeometry(10, 10), {
-    clipBias: 0.003,
-    textureWidth: 1024 * window.devicePixelRatio,
-    textureHeight: 1024 * window.devicePixelRatio,
-    color: 0x889999
-  });
-  reflector.position.y = -1;
-  reflector.rotateX(-Math.PI / 2);
-  scene.add(reflector);
-}
-
-// Call the enhancement function
-enhanceFSV();
-
-// Add more interactivity to the 3D file system
-function addFileSystemInteractivity() {
-  const raycaster = new THREE.Raycaster();
-  const mouse = new THREE.Vector2();
-
-  function onMouseMove(event) {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-    raycaster.setFromCamera(mouse, camera);
-    const intersects = raycaster.intersectObjects(scene.children);
-
-    if (intersects.length > 0) {
-      const object = intersects[0].object;
-      const fileObject = fileObjects.find(obj => obj.mesh === object);
-      if (fileObject) {
-        document.body.style.cursor = 'pointer';
-        object.material.emissive.setHex(0x555555);
-      } else {
-        document.body.style.cursor = 'default';
-        fileObjects.forEach(obj => obj.mesh.material.emissive.setHex(0x000000));
-      }
-    } else {
-      document.body.style.cursor = 'default';
-      fileObjects.forEach(obj => obj.mesh.material.emissive.setHex(0x000000));
-    }
-  }
-
-  function onMouseClick(event) {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-    raycaster.setFromCamera(mouse, camera);
-    const intersects = raycaster.intersectObjects(scene.children);
-
-    if (intersects.length > 0) {
-      const object = intersects[0].object;
-      const fileObject = fileObjects.find(obj => obj.mesh === object);
-      if (fileObject) {
-        openFile(fileObject);
-      }
-    }
-  }
-
-  window.addEventListener('mousemove', onMouseMove, false);
-  window.addEventListener('click', onMouseClick, false);
-}
-
-// Call the interactivity function
-addFileSystemInteractivity();
-
-// Enhance the File System Visualizer with animation
-function animateFileSystem() {
-  fileObjects.forEach(obj => {
-    obj.mesh.rotation.y += 0.005;
-    obj.mesh.position.y = Math.sin(Date.now() * 0.001 + obj.mesh.position.x) * 0.1;
-  });
-}
-
-// Add the animation to the render loop
-function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  animateFileSystem();
-  renderer.render(scene, camera);
-  updateDebugViews();
-}
-
-// Start the enhanced animation
-animate();
-
-// Add a particle system to represent file transfers
-function addFileTransferParticles() {
-  const particleCount = 1000;
-  const particles = new THREE.BufferGeometry();
-  const positions = new Float32Array(particleCount * 3);
-
-  for (let i = 0; i < particleCount * 3; i += 3) {
-    positions[i] = Math.random() * 20 - 10;
-    positions[i + 1] = Math.random() * 20 - 10;
-    positions[i + 2] = Math.random() * 20 - 10;
-  }
-
-  particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-  const particleMaterial = new THREE.PointsMaterial({
-    color: 0x00ff00,
-    size: 0.05,
-    transparent: true,
-    blending: THREE.AdditiveBlending
-  });
-
-  const particleSystem = new THREE.Points(particles, particleMaterial);
-  scene.add(particleSystem);
-
-  function animateParticles() {
-    const positions = particles.attributes.position.array;
-
-    for (let i = 0; i < positions.length; i += 3) {
-      positions[i + 1] += 0.05;
-
-      if (positions[i + 1] > 10) {
-        positions[i + 1] = -10;
-      }
-    }
-
-    particles.attributes.position.needsUpdate = true;
-  }
-
-  return animateParticles;
-}
-
-const animateParticles = addFileTransferParticles();
-
-// Update the animation loop to include particle animation
-function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  animateFileSystem();
-  animateParticles();
-  renderer.render(scene, camera);
-  updateDebugViews();
-}
-
-// Start the enhanced animation with particles
-animate();
-
-// Add audio visualization
-function addAudioVisualization() {
-  const listener = new THREE.AudioListener();
-  camera.add(listener);
-
-  const sound = new THREE.Audio(listener);
-  const audioLoader = new THREE.AudioLoader();
-
-  audioLoader.load('https://cdn.pixabay.com/download/audio/2021/11/25/audio_1fcc2e7d15.mp3?filename=electronic-future-beats-117997.mp3', function(buffer) {
-    sound.setBuffer(buffer);
-    sound.setLoop(true);
-    sound.setVolume(0.5);
-  });
-
-  const analyser = new THREE.AudioAnalyser(sound, 32);
-
-  const geometry = new THREE.BoxBufferGeometry(0.5, 1, 0.5);
-  const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
-
-  const bars = new THREE.Group();
-
-  for (let i = 0; i < 32; i++) {
-    const bar = new THREE.Mesh(geometry, material);
-    bar.position.set(i - 16, 0, 0);
-    bars.add(bar);
-  }
-
-  scene.add(bars);
-
-  function updateAudioVisualization() {
-    if (sound.isPlaying) {
-      const frequencyData = analyser.getFrequencyData();
-
-      for (let i = 0; i < bars.children.length; i++) {
-        const bar = bars.children[i];
-        bar.scale.y = (frequencyData[i] / 255) * 5 + 0.1;
-      }
-    }
-  }
-
-  return { sound, updateAudioVisualization };
-}
-
-const audioViz = addAudioVisualization();
-
-// Add audio controls
-const audioControls = document.createElement('div');
-audioControls.style.position = 'absolute';
-audioControls.style.bottom = '10px';
-audioControls.style.right = '10px';
+</pre>
+`; // Limit the output to last 10 updates const lines =
+output.innerHTML.split('\n'); if (lines.length > 50) { output.innerHTML =
+lines.slice(-50).join('\n'); } } // Initialize hardware simulator
+initializeHardwareSimulator(); // Add event listener for hardware simulation
+toggle document.getElementById('toggle-hardware-sim').addEventListener('click',
+function() { const output = document.getElementById('output'); if
+(this.textContent === 'Start Hardware Simulation') { this.textContent = 'Stop
+Hardware Simulation'; initializeHardwareSimulator(); } else { this.textContent =
+'Start Hardware Simulation'; clearInterval(updateHardwareStatus);
+output.innerHTML += '
+<p>Hardware simulation stopped.</p>
+'; } }); // File System Visualizer (FSV) enhancements function enhanceFSV() { //
+Add 3D objects for different file types const fileTypeObjects = { directory: new
+THREE.BoxBufferGeometry(1, 1, 1), file: new THREE.SphereBufferGeometry(0.5, 32,
+32), executable: new THREE.ConeBufferGeometry(0.5, 1, 32), image: new
+THREE.CircleBufferGeometry(0.5, 32), video: new THREE.RingBufferGeometry(0.3,
+0.5, 32), audio: new THREE.TorusBufferGeometry(0.3, 0.1, 16, 100) };
+fileObjects.forEach(obj => { const geometry = fileTypeObjects[obj.type] ||
+fileTypeObjects.file; const material = new THREE.MeshStandardMaterial({ color:
+fileTypes[obj.type].color, metalness: 0.5, roughness: 0.5, envMapIntensity: 1.0
+}); obj.mesh.geometry = geometry; obj.mesh.material = material; }); // Add HDRI
+environment mapping new THREE.RGBELoader()
+.setPath('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/equirectangular/')
+.load('royal_esplanade_1k.hdr', function(texture) { texture.mapping =
+THREE.EquirectangularReflectionMapping; scene.environment = texture; }); // Add
+real-time reflections const reflector = new THREE.Reflector(new
+THREE.PlaneBufferGeometry(10, 10), { clipBias: 0.003, textureWidth: 1024 *
+window.devicePixelRatio, textureHeight: 1024 * window.devicePixelRatio, color:
+0x889999 }); reflector.position.y = -1; reflector.rotateX(-Math.PI / 2);
+scene.add(reflector); } // Call the enhancement function enhanceFSV(); // Add
+more interactivity to the 3D file system function addFileSystemInteractivity() {
+const raycaster = new THREE.Raycaster(); const mouse = new THREE.Vector2();
+function onMouseMove(event) { mouse.x = (event.clientX / window.innerWidth) * 2
+- 1; mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+raycaster.setFromCamera(mouse, camera); const intersects =
+raycaster.intersectObjects(scene.children); if (intersects.length > 0) { const
+object = intersects[0].object; const fileObject = fileObjects.find(obj =>
+obj.mesh === object); if (fileObject) { document.body.style.cursor = 'pointer';
+object.material.emissive.setHex(0x555555); } else { document.body.style.cursor =
+'default'; fileObjects.forEach(obj =>
+obj.mesh.material.emissive.setHex(0x000000)); } } else {
+document.body.style.cursor = 'default'; fileObjects.forEach(obj =>
+obj.mesh.material.emissive.setHex(0x000000)); } } function onMouseClick(event) {
+mouse.x = (event.clientX / window.innerWidth) * 2 - 1; mouse.y = -(event.clientY
+/ window.innerHeight) * 2 + 1; raycaster.setFromCamera(mouse, camera); const
+intersects = raycaster.intersectObjects(scene.children); if (intersects.length >
+0) { const object = intersects[0].object; const fileObject =
+fileObjects.find(obj => obj.mesh === object); if (fileObject) {
+openFile(fileObject); } } } window.addEventListener('mousemove', onMouseMove,
+false); window.addEventListener('click', onMouseClick, false); } // Call the
+interactivity function addFileSystemInteractivity(); // Enhance the File System
+Visualizer with animation function animateFileSystem() { fileObjects.forEach(obj
+=> { obj.mesh.rotation.y += 0.005; obj.mesh.position.y = Math.sin(Date.now() *
+0.001 + obj.mesh.position.x) * 0.1; }); } // Add the animation to the render
+loop function animate() { requestAnimationFrame(animate); controls.update();
+animateFileSystem(); renderer.render(scene, camera); updateDebugViews(); } //
+Start the enhanced animation animate(); // Add a particle system to represent
+file transfers function addFileTransferParticles() { const particleCount = 1000;
+const particles = new THREE.BufferGeometry(); const positions = new
+Float32Array(particleCount * 3); for (let i = 0; i < particleCount * 3; i += 3)
+{ positions[i] = Math.random() * 20 - 10; positions[i + 1] = Math.random() * 20
+- 10; positions[i + 2] = Math.random() * 20 - 10; }
+particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+const particleMaterial = new THREE.PointsMaterial({ color: 0x00ff00, size: 0.05,
+transparent: true, blending: THREE.AdditiveBlending }); const particleSystem =
+new THREE.Points(particles, particleMaterial); scene.add(particleSystem);
+function animateParticles() { const positions =
+particles.attributes.position.array; for (let i = 0; i < positions.length; i +=
+3) { positions[i + 1] += 0.05; if (positions[i + 1] > 10) { positions[i + 1] =
+-10; } } particles.attributes.position.needsUpdate = true; } return
+animateParticles; } const animateParticles = addFileTransferParticles(); //
+Update the animation loop to include particle animation function animate() {
+requestAnimationFrame(animate); controls.update(); animateFileSystem();
+animateParticles(); renderer.render(scene, camera); updateDebugViews(); } //
+Start the enhanced animation with particles animate(); // Add audio
+visualization function addAudioVisualization() { const listener = new
+THREE.AudioListener(); camera.add(listener); const sound = new
+THREE.Audio(listener); const audioLoader = new THREE.AudioLoader();
+audioLoader.load('https://cdn.pixabay.com/download/audio/2021/11/25/audio_1fcc2e7d15.mp3?filename=electronic-future-beats-117997.mp3',
+function(buffer) { sound.setBuffer(buffer); sound.setLoop(true);
+sound.setVolume(0.5); }); const analyser = new THREE.AudioAnalyser(sound, 32);
+const geometry = new THREE.BoxBufferGeometry(0.5, 1, 0.5); const material = new
+THREE.MeshPhongMaterial({ color: 0x00ff00 }); const bars = new THREE.Group();
+for (let i = 0; i < 32; i++) { const bar = new THREE.Mesh(geometry, material);
+bar.position.set(i - 16, 0, 0); bars.add(bar); } scene.add(bars); function
+updateAudioVisualization() { if (sound.isPlaying) { const frequencyData =
+analyser.getFrequencyData(); for (let i = 0; i < bars.children.length; i++) {
+const bar = bars.children[i]; bar.scale.y = (frequencyData[i] / 255) * 5 + 0.1;
+} } } return { sound, updateAudioVisualization }; } const audioViz =
+addAudioVisualization(); // Add audio controls const audioControls =
+document.createElement('div'); audioControls.style.position = 'absolute';
+audioControls.style.bottom = '10px'; audioControls.style.right = '10px';
 audioControls.innerHTML = `
-  <button id="toggle-audio">Play Audio</button>
-  <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
-`;
-document.body.appendChild(audioControls);
-
+<button id="toggle-audio">Play Audio</button>
+<input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5" />
+`; document.body.appendChild(audioControls);
 document.getElementById('toggle-audio').addEventListener('click', function() {
-  if (audioViz.sound.isPlaying) {
-    audioViz.sound.pause();
-    this.textContent = 'Play Audio';
-  } else {
-    audioViz.sound.play();
-    this.textContent = 'Pause Audio';
-  }
-});
-
+if (audioViz.sound.isPlaying) { audioViz.sound.pause(); this.textContent = 'Play
+Audio'; } else { audioViz.sound.play(); this.textContent = 'Pause Audio'; } });
 document.getElementById('volume-slider').addEventListener('input', function() {
-  audioViz.sound.setVolume(this.value);
-});
-
-// Update the animation loop to include audio visualization
-function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  animateFileSystem();
-  animateParticles();
-  audioViz.updateAudioVisualization();
-  renderer.render(scene, camera);
-  updateDebugViews();
-}
-
-// Start the fully enhanced animation
-animate();
-
-// Add a weather simulation to the environment
-function addWeatherSimulation() {
-  const rainGeometry = new THREE.BufferGeometry();
-  const rainCount = 15000;
-  const rainPositions = new Float32Array(rainCount * 3);
-
-  for (let i = 0; i < rainCount * 3; i += 3) {
-    rainPositions[i] = Math.random() * 400 - 200;
-    rainPositions[i + 1] = Math.random() * 500 - 250;
-    rainPositions[i + 2] = Math.random() * 400 - 200;
-  }
-
-  rainGeometry.setAttribute('position', new THREE.BufferAttribute(rainPositions, 3));
-  const rainMaterial = new THREE.PointsMaterial({
-    color: 0xaaaaaa,
-    size: 0.1,
-    transparent: true
-  });
-
-  const rain = new THREE.Points(rainGeometry, rainMaterial);
-  scene.add(rain);
-
-  function animateRain() {
-    const positions = rain.geometry.attributes.position.array;
-    for (let i = 0; i < positions.length; i += 3) {
-      positions[i + 1] -= 0.1 + Math.random() * 0.1;
-      if (positions[i + 1] < -250) positions[i + 1] = 250;
-    }
-    rain.geometry.attributes.position.needsUpdate = true;
-  }
-
-  return animateRain;
-}
-
-const animateRain = addWeatherSimulation();
-
-// Add lightning effect
-function addLightningEffect() {
-  const lightningMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-  const lightningGeometry = new THREE.PlaneGeometry(400, 500);
-  const lightning = new THREE.Mesh(lightningGeometry, lightningMaterial);
-  lightning.position.z = -100;
-  lightning.visible = false;
-  scene.add(lightning);
-
-  function flashLightning() {
-    if (Math.random() > 0.99) {
-      lightning.visible = true;
-      setTimeout(() => {
-        lightning.visible = false;
-      }, 50);
-    }
-  }
-
-  return flashLightning;
-}
-
-const flashLightning = addLightningEffect();
-
-// Add fog to the scene
-scene.fog = new THREE.FogExp2(0x11111f, 0.002);
-
-// Update the animation loop to include weather effects
-function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  animateFileSystem();
-  animateParticles();
-  audioViz.updateAudioVisualization();
-  animateRain();
-  flashLightning();
-  renderer.render(scene, camera);
-  updateDebugViews();
-}
-
-// Add a day/night cycle
-function addDayNightCycle() {
-  const sunLight = new THREE.DirectionalLight(0xffffff, 1);
-  sunLight.position.set(0, 1, 0);
-  scene.add(sunLight);
-
-  const moonLight = new THREE.DirectionalLight(0x7777cc, 0.5);
-  moonLight.position.set(0, -1, 0);
-  scene.add(moonLight);
-
-  function updateDayNightCycle() {
-    const time = Date.now() * 0.0001;
-    const dayIntensity = Math.sin(time) * 0.5 + 0.5;
-    const nightIntensity = 1 - dayIntensity;
-
-    sunLight.intensity = dayIntensity;
-    moonLight.intensity = nightIntensity * 0.5;
-
-    scene.fog.color.setHSL(0.6, 1, dayIntensity * 0.5 + 0.1);
-    renderer.setClearColor(scene.fog.color);
-  }
-
-  return updateDayNightCycle;
-}
-
-const updateDayNightCycle = addDayNightCycle();
-
-// Add an ocean effect
-function addOceanEffect() {
-  const waterGeometry = new THREE.PlaneBufferGeometry(10000, 10000);
-  const waterMaterial = new THREE.MeshPhongMaterial({
-    color: 0x006994,
-    transparent: true,
-    opacity: 0.8,
-    flatShading: true,
-  });
-
-  const water = new THREE.Mesh(waterGeometry, waterMaterial);
-  water.rotation.x = -Math.PI / 2;
-  water.position.y = -5;
-  scene.add(water);
-
-  function animateOcean() {
-    const time = Date.now() * 0.001;
-    const positions = water.geometry.attributes.position.array;
-
-    for (let i = 0; i < positions.length; i += 3) {
-      positions[i + 2] = Math.sin(positions[i] / 2 + time) * Math.cos(positions[i + 1] / 2 + time) * 2;
-    }
-
-    water.geometry.attributes.position.needsUpdate = true;
-  }
-
-  return animateOcean;
-}
-
-const animateOcean = addOceanEffect();
-
-// Update the animation loop to include all new effects
-function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  animateFileSystem();
-  animateParticles();
-  audioViz.updateAudioVisualization();
-  animateRain();
-  flashLightning();
-  updateDayNightCycle();
-  animateOcean();
-  renderer.render(scene, camera);
-  updateDebugViews();
-}
-
-// Add a minimap
-function addMinimap() {
-  const minimapSize = 200;
-  const minimapCamera = new THREE.OrthographicCamera(
-    -1000, 1000,
-    1000, -1000,
-    1, 3000
-  );
-  minimapCamera.position.y = 2000;
-  minimapCamera.lookAt(new THREE.Vector3());
-
-  const minimapRenderer = new THREE.WebGLRenderer({ alpha: true });
-  minimapRenderer.setSize(minimapSize, minimapSize);
-  minimapRenderer.domElement.style.position = 'absolute';
-  minimapRenderer.domElement.style.bottom = '10px';
-  minimapRenderer.domElement.style.left = '10px';
-  document.body.appendChild(minimapRenderer.domElement);
-
-  function updateMinimap() {
-    minimapRenderer.render(scene, minimapCamera);
-  }
-
-  return updateMinimap;
-}
-
-const updateMinimap = addMinimap();
-
-// Add a first-person view toggle
-let isFirstPerson = false;
-const firstPersonButton = document.createElement('button');
-firstPersonButton.textContent = 'Toggle First Person';
-firstPersonButton.style.position = 'absolute';
-firstPersonButton.style.top = '10px';
-firstPersonButton.style.right = '10px';
+audioViz.sound.setVolume(this.value); }); // Update the animation loop to
+include audio visualization function animate() { requestAnimationFrame(animate);
+controls.update(); animateFileSystem(); animateParticles();
+audioViz.updateAudioVisualization(); renderer.render(scene, camera);
+updateDebugViews(); } // Start the fully enhanced animation animate(); // Add a
+weather simulation to the environment function addWeatherSimulation() { const
+rainGeometry = new THREE.BufferGeometry(); const rainCount = 15000; const
+rainPositions = new Float32Array(rainCount * 3); for (let i = 0; i < rainCount *
+3; i += 3) { rainPositions[i] = Math.random() * 400 - 200; rainPositions[i + 1]
+= Math.random() * 500 - 250; rainPositions[i + 2] = Math.random() * 400 - 200; }
+rainGeometry.setAttribute('position', new THREE.BufferAttribute(rainPositions,
+3)); const rainMaterial = new THREE.PointsMaterial({ color: 0xaaaaaa, size: 0.1,
+transparent: true }); const rain = new THREE.Points(rainGeometry, rainMaterial);
+scene.add(rain); function animateRain() { const positions =
+rain.geometry.attributes.position.array; for (let i = 0; i < positions.length; i
++= 3) { positions[i + 1] -= 0.1 + Math.random() * 0.1; if (positions[i + 1] <
+-250) positions[i + 1] = 250; } rain.geometry.attributes.position.needsUpdate =
+true; } return animateRain; } const animateRain = addWeatherSimulation(); // Add
+lightning effect function addLightningEffect() { const lightningMaterial = new
+THREE.MeshBasicMaterial({ color: 0xffffff }); const lightningGeometry = new
+THREE.PlaneGeometry(400, 500); const lightning = new
+THREE.Mesh(lightningGeometry, lightningMaterial); lightning.position.z = -100;
+lightning.visible = false; scene.add(lightning); function flashLightning() { if
+(Math.random() > 0.99) { lightning.visible = true; setTimeout(() => {
+lightning.visible = false; }, 50); } } return flashLightning; } const
+flashLightning = addLightningEffect(); // Add fog to the scene scene.fog = new
+THREE.FogExp2(0x11111f, 0.002); // Update the animation loop to include weather
+effects function animate() { requestAnimationFrame(animate); controls.update();
+animateFileSystem(); animateParticles(); audioViz.updateAudioVisualization();
+animateRain(); flashLightning(); renderer.render(scene, camera);
+updateDebugViews(); } // Add a day/night cycle function addDayNightCycle() {
+const sunLight = new THREE.DirectionalLight(0xffffff, 1);
+sunLight.position.set(0, 1, 0); scene.add(sunLight); const moonLight = new
+THREE.DirectionalLight(0x7777cc, 0.5); moonLight.position.set(0, -1, 0);
+scene.add(moonLight); function updateDayNightCycle() { const time = Date.now() *
+0.0001; const dayIntensity = Math.sin(time) * 0.5 + 0.5; const nightIntensity =
+1 - dayIntensity; sunLight.intensity = dayIntensity; moonLight.intensity =
+nightIntensity * 0.5; scene.fog.color.setHSL(0.6, 1, dayIntensity * 0.5 + 0.1);
+renderer.setClearColor(scene.fog.color); } return updateDayNightCycle; } const
+updateDayNightCycle = addDayNightCycle(); // Add an ocean effect function
+addOceanEffect() { const waterGeometry = new THREE.PlaneBufferGeometry(10000,
+10000); const waterMaterial = new THREE.MeshPhongMaterial({ color: 0x006994,
+transparent: true, opacity: 0.8, flatShading: true, }); const water = new
+THREE.Mesh(waterGeometry, waterMaterial); water.rotation.x = -Math.PI / 2;
+water.position.y = -5; scene.add(water); function animateOcean() { const time =
+Date.now() * 0.001; const positions = water.geometry.attributes.position.array;
+for (let i = 0; i < positions.length; i += 3) { positions[i + 2] =
+Math.sin(positions[i] / 2 + time) * Math.cos(positions[i + 1] / 2 + time) * 2; }
+water.geometry.attributes.position.needsUpdate = true; } return animateOcean; }
+const animateOcean = addOceanEffect(); // Update the animation loop to include
+all new effects function animate() { requestAnimationFrame(animate);
+controls.update(); animateFileSystem(); animateParticles();
+audioViz.updateAudioVisualization(); animateRain(); flashLightning();
+updateDayNightCycle(); animateOcean(); renderer.render(scene, camera);
+updateDebugViews(); } // Add a minimap function addMinimap() { const minimapSize
+= 200; const minimapCamera = new THREE.OrthographicCamera( -1000, 1000, 1000,
+-1000, 1, 3000 ); minimapCamera.position.y = 2000; minimapCamera.lookAt(new
+THREE.Vector3()); const minimapRenderer = new THREE.WebGLRenderer({ alpha: true
+}); minimapRenderer.setSize(minimapSize, minimapSize);
+minimapRenderer.domElement.style.position = 'absolute';
+minimapRenderer.domElement.style.bottom = '10px';
+minimapRenderer.domElement.style.left = '10px';
+document.body.appendChild(minimapRenderer.domElement); function updateMinimap()
+{ minimapRenderer.render(scene, minimapCamera); } return updateMinimap; } const
+updateMinimap = addMinimap(); // Add a first-person view toggle let
+isFirstPerson = false; const firstPersonButton =
+document.createElement('button'); firstPersonButton.textContent = 'Toggle First
+Person'; firstPersonButton.style.position = 'absolute';
+firstPersonButton.style.top = '10px'; firstPersonButton.style.right = '10px';
 document.body.appendChild(firstPersonButton);
-
-firstPersonButton.addEventListener('click', () => {
-  isFirstPerson = !isFirstPerson;
-  if (isFirstPerson) {
-    camera.position.set(0, 2, 5);
-    controls.target.set(0, 2, 0);
-  } else {
-    camera.position.set(0, 20, 30);
-    controls.target.set(0, 0, 0);
-  }
-});
-
-// Update the animation loop to include minimap and handle first-person view
-function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  animateFileSystem();
-  animateParticles();
-  audioViz.updateAudioVisualization();
-  animateRain();
-  flashLightning();
-  updateDayNightCycle();
-  animateOcean();
-  updateMinimap();
-
-  if (isFirstPerson) {
-    camera.position.y = Math.max(camera.position.y, 2); // Prevent camera from going below ground level
-  }
-
-  renderer.render(scene, camera);
-  updateDebugViews();
-}
-
-// Start the fully enhanced animation with all new features
-animate();
-
-// Add a performance monitor
-(function addPerformanceMonitor() {
-  const stats = new Stats();
-  stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
-  document.body.appendChild(stats.dom);
-
-  function updatePerformanceStats() {
-    stats.begin();
-    stats.end();
-  }
-
-  return updatePerformanceStats;
-})();
-
-// Add a sky box
-function addSkyBox() {
-  const loader = new THREE.CubeTextureLoader();
-  const texture = loader.load([
-    'https://threejsfundamentals.org/threejs/resources/images/skybox/px.jpg',
-    'https://threejsfundamentals.org/threejs/resources/images/skybox/nx.jpg',
-    'https://threejsfundamentals.org/threejs/resources/images/skybox/py.jpg',
-    'https://threejsfundamentals.org/threejs/resources/images/skybox/ny.jpg',
-    'https://threejsfundamentals.org/threejs/resources/images/skybox/pz.jpg',
-    'https://threejsfundamentals.org/threejs/resources/images/skybox/nz.jpg',
-  ]);
-  scene.background = texture;
-}
-
-addSkyBox();
-
-// Add a terrain generator
-function addTerrain() {
-  const geometry = new THREE.PlaneBufferGeometry(2000, 2000, 256, 256);
-  const material = new THREE.MeshPhongMaterial({
-    color: 0x3c3c3c,
-    wireframe: false
-  });
-
-  const terrain = new THREE.Mesh(geometry, material);
-  terrain.rotation.x = -Math.PI / 2;
-
-  const positions = terrain.geometry.attributes.position.array;
-  for (let i = 0; i < positions.length; i += 3) {
-    const x = positions[i];
-    const y = positions[i + 1];
-    positions[i + 2] = noise.simplex2(x / 100, y / 100) * 50;
-  }
-
-  terrain.geometry.attributes.position.needsUpdate = true;
-  terrain.geometry.computeVertexNormals();
-
-  scene.add(terrain);
-}
-
-addTerrain();
-
-// Add a physics engine
-const world = new CANNON.World();
-world.gravity.set(0, -9.82, 0);
-
-function addPhysics() {
-  fileObjects.forEach(obj => {
-    const shape = new CANNON.Box(new CANNON.Vec3(0.5, 0.5, 0.5));
-    const body = new CANNON.Body({
-      mass: 1,
-      shape: shape,
-      position: new CANNON.Vec3(obj.mesh.position.x, obj.mesh.position.y, obj.mesh.position.z)
-    });
-    world.addBody(body);
-    obj.body = body;
-  });
-}
-
-addPhysics();
-
-// Update physics in animation loop
-function updatePhysics() {
-  world.step(1 / 60);
-  fileObjects.forEach(obj => {
-    obj.mesh.position.copy(obj.body.position);
-    obj.mesh.quaternion.copy(obj.body.quaternion);
-  });
-}
-
-// Add object highlighting on hover
-const highlightMaterial = new THREE.MeshPhongMaterial({ color: 0xffff00, emissive: 0xffff00, emissiveIntensity: 0.5 });
-let highlightedObject = null;
-
-function highlightObject(object) {
-  if (highlightedObject) {
-    highlightedObject.material = highlightedObject.originalMaterial;
-  }
-  if (object) {
-    object.originalMaterial = object.material;
-    object.material = highlightMaterial;
-  }
-  highlightedObject = object;
-}
-
-// Raycaster for object selection
-const raycaster = new THREE.Raycaster();
-const mouse = new THREE.Vector2();
-
-function onMouseMove(event) {
-  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-  raycaster.setFromCamera(mouse, camera);
-  const intersects = raycaster.intersectObjects(scene.children);
-
-  if (intersects.length > 0) {
-    const object = intersects[0].object;
-    if (object.userData.fileObject) {
-      highlightObject(object);
-    } else {
-      highlightObject(null);
-    }
-  } else {
-    highlightObject(null);
-  }
-}
-
-window.addEventListener('mousemove', onMouseMove, false);
-
-// Add a search functionality
-function addSearch() {
-  const searchInput = document.createElement('input');
-  searchInput.type = 'text';
-  searchInput.placeholder = 'Search files...';
-  searchInput.style.position = 'absolute';
-  searchInput.style.top = '10px';
-  searchInput.style.left = '10px';
-  document.body.appendChild(searchInput);
-
-  searchInput.addEventListener('input', (event) => {
-    const searchTerm = event.target.value.toLowerCase();
-    fileObjects.forEach(obj => {
-      const isMatch = obj.name.toLowerCase().includes(searchTerm);
-      obj.mesh.visible = isMatch;
-      if (obj.label) obj.label.visible = isMatch;
-    });
-  });
-}
-
-addSearch();
-
-// Add a file creation interface
-function addFileCreationInterface() {
-  const createButton = document.createElement('button');
-  createButton.textContent = 'Create File';
-  createButton.style.position = 'absolute';
-  createButton.style.top = '40px';
-  createButton.style.left = '10px';
-  document.body.appendChild(createButton);
-
-  createButton.addEventListener('click', () => {
-    const fileName = prompt('Enter file name:');
-    if (fileName) {
-      const fileType = prompt('Enter file type (file, directory, image, etc.):');
-      if (fileType && fileTypes[fileType]) {
-        createFile(fileName, fileType);
-      } else {
-        alert('Invalid file type');
-      }
-    }
-  });
-}
-
-function createFile(name, type) {
-  const { color, height } = fileTypes[type];
-  const size = Math.random() * 2 + 0.5;
-
-  const geometry = new THREE.BoxGeometry(size, size * height, size);
-  const material = new THREE.MeshStandardMaterial({ 
-    color, 
-    metalness: 0.5, 
-    roughness: 0.5,
-    envMapIntensity: 1.0
-  });
-  const mesh = new THREE.Mesh(geometry, material);
-
-  const x = (Math.random() - 0.5) * 20;
-  const z = (Math.random() - 0.5) * 20;
-  mesh.position.set(x, size * height / 2, z);
-
-  scene.add(mesh);
-
-  const label = createLabel(name);
-  label.position.copy(mesh.position);
-  label.position.y += size * height + 0.5;
-  scene.add(label);
-
-  const fileObject = { mesh, label, type, name, size };
-  fileObjects.push(fileObject);
-
-  updateFileTree();
-}
-
-addFileCreationInterface();
-
-// Enhance the animation loop with all new features
-function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  animateFileSystem();
-  animateParticles();
-  audioViz.updateAudioVisualization();
-  animateRain();
-  flashLightning();
-  updateDayNightCycle();
-  animateOcean();
-  updateMinimap();
-  updatePhysics();
-  updatePerformanceStats();
-
-  if (isFirstPerson) {
-    camera.position.y = Math.max(camera.position.y, 2);
-  }
-
-  renderer.render(scene, camera);
-  updateDebugViews();
-}
-
-// Start the fully enhanced animation with all new features
-animate();
-
-// Add a command palette
-function addCommandPalette() {
-  const palette = document.createElement('div');
-  palette.style.position = 'absolute';
-  palette.style.top = '50%';
-  palette.style.left = '50%';
-  palette.style.transform = 'translate(-50%, -50%)';
-  palette.style.background = 'rgba(0, 0, 0, 0.8)';
-  palette.style.padding = '10px';
-  palette.style.borderRadius = '5px';
-  palette.style.display = 'none';
-
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.placeholder = 'Enter command...';
-  input.style.width = '300px';
-
-  palette.appendChild(input);
-  document.body.appendChild(palette);
-
-  // Command palette functionality
-  const commands = {
-    'create file': () => createFile(prompt('Enter file name:'), prompt('Enter file type:')),
-    'delete file': () => deleteFile(prompt('Enter file name:')),
-    'change view': () => toggleViewMode(),
-    'toggle debugger': () => toggleDebugger(),
-    'toggle audio': () => document.getElementById('toggle-audio').click(),
-    'toggle first person': () => firstPersonButton.click(),
-  };
-
-  input.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-      const command = input.value.toLowerCase();
-      if (commands[command]) {
-        commands[command]();
-        palette.style.display = 'none';
-      } else {
-        alert('Unknown command');
-      }
-      input.value = '';
-    }
-  });
-
-  // Toggle command palette visibility
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'p' && (event.ctrlKey || event.metaKey)) {
-      event.preventDefault();
-      palette.style.display = palette.style.display === 'none' ? 'block' : 'none';
-      if (palette.style.display === 'block') {
-        input.focus();
-      }
-    }
-  });
-}
-
-addCommandPalette();
-
-// Add a file deletion function
-function deleteFile(fileName) {
-  const fileIndex = fileObjects.findIndex(obj => obj.name === fileName);
-  if (fileIndex !== -1) {
-    const fileObject = fileObjects[fileIndex];
-    scene.remove(fileObject.mesh);
-    scene.remove(fileObject.label);
-    fileObjects.splice(fileIndex, 1);
-    updateFileTree();
-  } else {
-    alert('File not found');
-  }
-}
-
-// Add a simple code editor
-function addCodeEditor() {
-  const editorContainer = document.createElement('div');
-  editorContainer.style.position = 'absolute';
-  editorContainer.style.top = '10%';
-  editorContainer.style.right = '10px';
-  editorContainer.style.width = '300px';
-  editorContainer.style.height = '400px';
-  editorContainer.style.background = 'rgba(0, 0, 0, 0.8)';
-  editorContainer.style.display = 'none';
-
-  const editor = document.createElement('textarea');
-  editor.style.width = '100%';
-  editor.style.height = 'calc(100% - 30px)';
-  editor.style.background = 'rgba(0, 0, 0, 0.8)';
-  editor.style.color = '#fff';
-  editor.style.border = 'none';
-  editor.style.padding = '10px';
-  editor.style.fontFamily = 'monospace';
-
-  const runButton = document.createElement('button');
-  runButton.textContent = 'Run';
-  runButton.style.width = '100%';
-  runButton.style.height = '30px';
-
-  editorContainer.appendChild(editor);
-  editorContainer.appendChild(runButton);
-  document.body.appendChild(editorContainer);
-
-  // Toggle editor visibility
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'e' && (event.ctrlKey || event.metaKey)) {
-      event.preventDefault();
-      editorContainer.style.display = editorContainer.style.display === 'none' ? 'block' : 'none';
-    }
-  });
-
-  // Run code
-  runButton.addEventListener('click', () => {
-    try {
-      eval(editor.value);
-    } catch (error) {
-      console.error('Error executing code:', error);
-      alert('Error executing code. Check the console for details.');
-    }
-  });
-}
-
-addCodeEditor();
-
-// Add a simple task scheduler
-const taskQueue = [];
-
-function scheduleTask(task, delay) {
-  taskQueue.push({ task, executionTime: Date.now() + delay });
-}
-
-function processTasks() {
-  const now = Date.now();
-  while (taskQueue.length > 0 && taskQueue[0].executionTime <= now) {
-    const { task } = taskQueue.shift();
-    task();
-  }
-  requestAnimationFrame(processTasks);
-}
-
-processTasks();
-
-// Example usage of task scheduler
-scheduleTask(() => console.log('Delayed task executed'), 5000);
-
-// Add a simple event system
-const eventSystem = {
-  listeners: {},
-  on(event, callback) {
-    if (!this.listeners[event]) {
-      this.listeners[event] = [];
-    }
-    this.listeners[event].push(callback);
-  },
-  emit(event, data) {
-    if (this.listeners[event]) {
-      this.listeners[event].forEach(callback => callback(data));
-    }
-  }
-};
-
-// Example usage of event system
-eventSystem.on('fileCreated', (file) => console.log('New file created:', file.name));
-
-// Modify createFile function to emit event
-function createFile(name, type) {
-  // ... (previous createFile code) ...
-
-  const fileObject = { mesh, label, type, name, size };
-  fileObjects.push(fileObject);
-
-  updateFileTree();
-
-  eventSystem.emit('fileCreated', fileObject);
-}
-
-// Add a simple undo/redo system
-const history = {
-  past: [],
-  future: [],
-  pushState(state) {
-    this.past.push(state);
-    this.future = [];
-  },
-  undo() {
-    if (this.past.length > 0) {
-      const currentState = this.past.pop();
-      this.future.push(currentState);
-      return this.past[this.past.length - 1];
-    }
-  },
-  redo() {
-    if (this.future.length > 0) {
-      const nextState = this.future.pop();
-      this.past.push(nextState);
-      return nextState;
-    }
-  }
-};
-
-// Example usage of undo/redo system
-function createFileWithUndo(name, type) {
-  const previousState = [...fileObjects];
-  history.pushState(previousState);
-  createFile(name, type);
-}
-
-function undoLastAction() {
-  const previousState = history.undo();
-  if (previousState) {
-    fileObjects = previousState;
-    updateScene();
-  }
-}
-
-function redoLastAction() {
-  const nextState = history.redo();
-  if (nextState) {
-    fileObjects = nextState;
-    updateScene();
-  }
-}
-
-function updateScene() {
-  // Clear existing objects
-  scene.children = scene.children.filter(child => !(child.isMesh || child.isSprite));
-
-  // Recreate file objects
-  fileObjects.forEach(obj => {
-    scene.add(obj.mesh);
-    scene.add(obj.label);
-  });
-
-  updateFileTree();
-}
-
-// Add undo/redo buttons
-const undoButton = document.createElement('button');
-undoButton.textContent = 'Undo';
-undoButton.style.position = 'absolute';
-undoButton.style.bottom = '10px';
-undoButton.style.left = '10px';
+firstPersonButton.addEventListener('click', () => { isFirstPerson =
+!isFirstPerson; if (isFirstPerson) { camera.position.set(0, 2, 5);
+controls.target.set(0, 2, 0); } else { camera.position.set(0, 20, 30);
+controls.target.set(0, 0, 0); } }); // Update the animation loop to include
+minimap and handle first-person view function animate() {
+requestAnimationFrame(animate); controls.update(); animateFileSystem();
+animateParticles(); audioViz.updateAudioVisualization(); animateRain();
+flashLightning(); updateDayNightCycle(); animateOcean(); updateMinimap(); if
+(isFirstPerson) { camera.position.y = Math.max(camera.position.y, 2); // Prevent
+camera from going below ground level } renderer.render(scene, camera);
+updateDebugViews(); } // Start the fully enhanced animation with all new
+features animate(); // Add a performance monitor (function
+addPerformanceMonitor() { const stats = new Stats(); stats.showPanel(0); // 0:
+fps, 1: ms, 2: mb, 3+: custom document.body.appendChild(stats.dom); function
+updatePerformanceStats() { stats.begin(); stats.end(); } return
+updatePerformanceStats; })(); // Add a sky box function addSkyBox() { const
+loader = new THREE.CubeTextureLoader(); const texture = loader.load([
+'https://threejsfundamentals.org/threejs/resources/images/skybox/px.jpg',
+'https://threejsfundamentals.org/threejs/resources/images/skybox/nx.jpg',
+'https://threejsfundamentals.org/threejs/resources/images/skybox/py.jpg',
+'https://threejsfundamentals.org/threejs/resources/images/skybox/ny.jpg',
+'https://threejsfundamentals.org/threejs/resources/images/skybox/pz.jpg',
+'https://threejsfundamentals.org/threejs/resources/images/skybox/nz.jpg', ]);
+scene.background = texture; } addSkyBox(); // Add a terrain generator function
+addTerrain() { const geometry = new THREE.PlaneBufferGeometry(2000, 2000, 256,
+256); const material = new THREE.MeshPhongMaterial({ color: 0x3c3c3c, wireframe:
+false }); const terrain = new THREE.Mesh(geometry, material); terrain.rotation.x
+= -Math.PI / 2; const positions = terrain.geometry.attributes.position.array;
+for (let i = 0; i < positions.length; i += 3) { const x = positions[i]; const y
+= positions[i + 1]; positions[i + 2] = noise.simplex2(x / 100, y / 100) * 50; }
+terrain.geometry.attributes.position.needsUpdate = true;
+terrain.geometry.computeVertexNormals(); scene.add(terrain); } addTerrain(); //
+Add a physics engine const world = new CANNON.World(); world.gravity.set(0,
+-9.82, 0); function addPhysics() { fileObjects.forEach(obj => { const shape =
+new CANNON.Box(new CANNON.Vec3(0.5, 0.5, 0.5)); const body = new CANNON.Body({
+mass: 1, shape: shape, position: new CANNON.Vec3(obj.mesh.position.x,
+obj.mesh.position.y, obj.mesh.position.z) }); world.addBody(body); obj.body =
+body; }); } addPhysics(); // Update physics in animation loop function
+updatePhysics() { world.step(1 / 60); fileObjects.forEach(obj => {
+obj.mesh.position.copy(obj.body.position);
+obj.mesh.quaternion.copy(obj.body.quaternion); }); } // Add object highlighting
+on hover const highlightMaterial = new THREE.MeshPhongMaterial({ color:
+0xffff00, emissive: 0xffff00, emissiveIntensity: 0.5 }); let highlightedObject =
+null; function highlightObject(object) { if (highlightedObject) {
+highlightedObject.material = highlightedObject.originalMaterial; } if (object) {
+object.originalMaterial = object.material; object.material = highlightMaterial;
+} highlightedObject = object; } // Raycaster for object selection const
+raycaster = new THREE.Raycaster(); const mouse = new THREE.Vector2(); function
+onMouseMove(event) { mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+raycaster.setFromCamera(mouse, camera); const intersects =
+raycaster.intersectObjects(scene.children); if (intersects.length > 0) { const
+object = intersects[0].object; if (object.userData.fileObject) {
+highlightObject(object); } else { highlightObject(null); } } else {
+highlightObject(null); } } window.addEventListener('mousemove', onMouseMove,
+false); // Add a search functionality function addSearch() { const searchInput =
+document.createElement('input'); searchInput.type = 'text';
+searchInput.placeholder = 'Search files...'; searchInput.style.position =
+'absolute'; searchInput.style.top = '10px'; searchInput.style.left = '10px';
+document.body.appendChild(searchInput); searchInput.addEventListener('input',
+(event) => { const searchTerm = event.target.value.toLowerCase();
+fileObjects.forEach(obj => { const isMatch =
+obj.name.toLowerCase().includes(searchTerm); obj.mesh.visible = isMatch; if
+(obj.label) obj.label.visible = isMatch; }); }); } addSearch(); // Add a file
+creation interface function addFileCreationInterface() { const createButton =
+document.createElement('button'); createButton.textContent = 'Create File';
+createButton.style.position = 'absolute'; createButton.style.top = '40px';
+createButton.style.left = '10px'; document.body.appendChild(createButton);
+createButton.addEventListener('click', () => { const fileName = prompt('Enter
+file name:'); if (fileName) { const fileType = prompt('Enter file type (file,
+directory, image, etc.):'); if (fileType && fileTypes[fileType]) {
+createFile(fileName, fileType); } else { alert('Invalid file type'); } } }); }
+function createFile(name, type) { const { color, height } = fileTypes[type];
+const size = Math.random() * 2 + 0.5; const geometry = new
+THREE.BoxGeometry(size, size * height, size); const material = new
+THREE.MeshStandardMaterial({ color, metalness: 0.5, roughness: 0.5,
+envMapIntensity: 1.0 }); const mesh = new THREE.Mesh(geometry, material); const
+x = (Math.random() - 0.5) * 20; const z = (Math.random() - 0.5) * 20;
+mesh.position.set(x, size * height / 2, z); scene.add(mesh); const label =
+createLabel(name); label.position.copy(mesh.position); label.position.y += size
+* height + 0.5; scene.add(label); const fileObject = { mesh, label, type, name,
+size }; fileObjects.push(fileObject); updateFileTree(); }
+addFileCreationInterface(); // Enhance the animation loop with all new features
+function animate() { requestAnimationFrame(animate); controls.update();
+animateFileSystem(); animateParticles(); audioViz.updateAudioVisualization();
+animateRain(); flashLightning(); updateDayNightCycle(); animateOcean();
+updateMinimap(); updatePhysics(); updatePerformanceStats(); if (isFirstPerson) {
+camera.position.y = Math.max(camera.position.y, 2); } renderer.render(scene,
+camera); updateDebugViews(); } // Start the fully enhanced animation with all
+new features animate(); // Add a command palette function addCommandPalette() {
+const palette = document.createElement('div'); palette.style.position =
+'absolute'; palette.style.top = '50%'; palette.style.left = '50%';
+palette.style.transform = 'translate(-50%, -50%)'; palette.style.background =
+'rgba(0, 0, 0, 0.8)'; palette.style.padding = '10px'; palette.style.borderRadius
+= '5px'; palette.style.display = 'none'; const input =
+document.createElement('input'); input.type = 'text'; input.placeholder = 'Enter
+command...'; input.style.width = '300px'; palette.appendChild(input);
+document.body.appendChild(palette); // Command palette functionality const
+commands = { 'create file': () => createFile(prompt('Enter file name:'),
+prompt('Enter file type:')), 'delete file': () => deleteFile(prompt('Enter file
+name:')), 'change view': () => toggleViewMode(), 'toggle debugger': () =>
+toggleDebugger(), 'toggle audio': () =>
+document.getElementById('toggle-audio').click(), 'toggle first person': () =>
+firstPersonButton.click(), }; input.addEventListener('keydown', (event) => { if
+(event.key === 'Enter') { const command = input.value.toLowerCase(); if
+(commands[command]) { commands[command](); palette.style.display = 'none'; }
+else { alert('Unknown command'); } input.value = ''; } }); // Toggle command
+palette visibility document.addEventListener('keydown', (event) => { if
+(event.key === 'p' && (event.ctrlKey || event.metaKey)) {
+event.preventDefault(); palette.style.display = palette.style.display === 'none'
+? 'block' : 'none'; if (palette.style.display === 'block') { input.focus(); } }
+}); } addCommandPalette(); // Add a file deletion function function
+deleteFile(fileName) { const fileIndex = fileObjects.findIndex(obj => obj.name
+=== fileName); if (fileIndex !== -1) { const fileObject =
+fileObjects[fileIndex]; scene.remove(fileObject.mesh);
+scene.remove(fileObject.label); fileObjects.splice(fileIndex, 1);
+updateFileTree(); } else { alert('File not found'); } } // Add a simple code
+editor function addCodeEditor() { const editorContainer =
+document.createElement('div'); editorContainer.style.position = 'absolute';
+editorContainer.style.top = '10%'; editorContainer.style.right = '10px';
+editorContainer.style.width = '300px'; editorContainer.style.height = '400px';
+editorContainer.style.background = 'rgba(0, 0, 0, 0.8)';
+editorContainer.style.display = 'none'; const editor =
+document.createElement('textarea'); editor.style.width = '100%';
+editor.style.height = 'calc(100% - 30px)'; editor.style.background = 'rgba(0, 0,
+0, 0.8)'; editor.style.color = '#fff'; editor.style.border = 'none';
+editor.style.padding = '10px'; editor.style.fontFamily = 'monospace'; const
+runButton = document.createElement('button'); runButton.textContent = 'Run';
+runButton.style.width = '100%'; runButton.style.height = '30px';
+editorContainer.appendChild(editor); editorContainer.appendChild(runButton);
+document.body.appendChild(editorContainer); // Toggle editor visibility
+document.addEventListener('keydown', (event) => { if (event.key === 'e' &&
+(event.ctrlKey || event.metaKey)) { event.preventDefault();
+editorContainer.style.display = editorContainer.style.display === 'none' ?
+'block' : 'none'; } }); // Run code runButton.addEventListener('click', () => {
+try { eval(editor.value); } catch (error) { console.error('Error executing
+code:', error); alert('Error executing code. Check the console for details.'); }
+}); } addCodeEditor(); // Add a simple task scheduler const taskQueue = [];
+function scheduleTask(task, delay) { taskQueue.push({ task, executionTime:
+Date.now() + delay }); } function processTasks() { const now = Date.now(); while
+(taskQueue.length > 0 && taskQueue[0].executionTime <= now) { const { task } =
+taskQueue.shift(); task(); } requestAnimationFrame(processTasks); }
+processTasks(); // Example usage of task scheduler scheduleTask(() =>
+console.log('Delayed task executed'), 5000); // Add a simple event system const
+eventSystem = { listeners: {}, on(event, callback) { if (!this.listeners[event])
+{ this.listeners[event] = []; } this.listeners[event].push(callback); },
+emit(event, data) { if (this.listeners[event]) {
+this.listeners[event].forEach(callback => callback(data)); } } }; // Example
+usage of event system eventSystem.on('fileCreated', (file) => console.log('New
+file created:', file.name)); // Modify createFile function to emit event
+function createFile(name, type) { // ... (previous createFile code) ... const
+fileObject = { mesh, label, type, name, size }; fileObjects.push(fileObject);
+updateFileTree(); eventSystem.emit('fileCreated', fileObject); } // Add a simple
+undo/redo system const history = { past: [], future: [], pushState(state) {
+this.past.push(state); this.future = []; }, undo() { if (this.past.length > 0) {
+const currentState = this.past.pop(); this.future.push(currentState); return
+this.past[this.past.length - 1]; } }, redo() { if (this.future.length > 0) {
+const nextState = this.future.pop(); this.past.push(nextState); return
+nextState; } } }; // Example usage of undo/redo system function
+createFileWithUndo(name, type) { const previousState = [...fileObjects];
+history.pushState(previousState); createFile(name, type); } function
+undoLastAction() { const previousState = history.undo(); if (previousState) {
+fileObjects = previousState; updateScene(); } } function redoLastAction() {
+const nextState = history.redo(); if (nextState) { fileObjects = nextState;
+updateScene(); } } function updateScene() { // Clear existing objects
+scene.children = scene.children.filter(child => !(child.isMesh ||
+child.isSprite)); // Recreate file objects fileObjects.forEach(obj => {
+scene.add(obj.mesh); scene.add(obj.label); }); updateFileTree(); } // Add
+undo/redo buttons const undoButton = document.createElement('button');
+undoButton.textContent = 'Undo'; undoButton.style.position = 'absolute';
+undoButton.style.bottom = '10px'; undoButton.style.left = '10px';
 undoButton.addEventListener('click', undoLastAction);
-document.body.appendChild(undoButton);
-
-const redoButton = document.createElement('button');
-redoButton.textContent = 'Redo';
-redoButton.style.position = 'absolute';
-redoButton.style.bottom = '10px';
-redoButton.style.left = '70px';
-redoButton.addEventListener('click', redoLastAction);
-document.body.appendChild(redoButton);
-
-// Add a simple plugin system
-const pluginSystem = {
-  plugins: {},
-  register(name, plugin) {
-    this.plugins[name] = plugin;
-  },
-  init() {
-    Object.values(this.plugins).forEach(plugin => plugin.init());
-  }
-};
-
-// Example plugin
-const examplePlugin = {
-  init() {
-    console.log('Example plugin initialized');
-    eventSystem.on('fileCreated', (file) => {
-      console.log('Example plugin: file created -', file.name);
-    });
-  }
-};
-
-pluginSystem.register('examplePlugin', examplePlugin);
-pluginSystem.init();
-
-// Enhance the animation loop with all new features
-function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  animateFileSystem();
-  animateParticles();
-  audioViz.updateAudioVisualization();
-  animateRain();
-  flashLightning();
-  updateDayNightCycle();
-  animateOcean();
-  updateMinimap();
-  updatePhysics();
-  updatePerformanceStats();
-
-  if (isFirstPerson) {
-    camera.position.y = Math.max(camera.position.y, 2);
-  }
-
-  renderer.render(scene, camera);
-  updateDebugViews();
-}
-
-// Start the fully enhanced animation with all new features
-animate();
-
-// Add a simple version control system
-const versionControl = {
-  versions: [],
-  currentVersion: -1,
-  saveVersion() {
-    const version = JSON.stringify(fileObjects);
-    this.versions = this.versions.slice(0, this.currentVersion + 1);
-    this.versions.push(version);
-    this.currentVersion++;
-  },
-  checkout(versionIndex) {
-    if (versionIndex >= 0 && versionIndex < this.versions.length) {
-      fileObjects = JSON.parse(this.versions[versionIndex]);
-      this.currentVersion = versionIndex;
-      updateScene();
-    }
-  }
-};
-
-// Add version control buttons
-const saveVersionButton = document.createElement('button');
-saveVersionButton.textContent = 'Save Version';
-saveVersionButton.style.position = 'absolute';
-saveVersionButton.style.bottom = '40px';
+document.body.appendChild(undoButton); const redoButton =
+document.createElement('button'); redoButton.textContent = 'Redo';
+redoButton.style.position = 'absolute'; redoButton.style.bottom = '10px';
+redoButton.style.left = '70px'; redoButton.addEventListener('click',
+redoLastAction); document.body.appendChild(redoButton); // Add a simple plugin
+system const pluginSystem = { plugins: {}, register(name, plugin) {
+this.plugins[name] = plugin; }, init() {
+Object.values(this.plugins).forEach(plugin => plugin.init()); } }; // Example
+plugin const examplePlugin = { init() { console.log('Example plugin
+initialized'); eventSystem.on('fileCreated', (file) => { console.log('Example
+plugin: file created -', file.name); }); } };
+pluginSystem.register('examplePlugin', examplePlugin); pluginSystem.init(); //
+Enhance the animation loop with all new features function animate() {
+requestAnimationFrame(animate); controls.update(); animateFileSystem();
+animateParticles(); audioViz.updateAudioVisualization(); animateRain();
+flashLightning(); updateDayNightCycle(); animateOcean(); updateMinimap();
+updatePhysics(); updatePerformanceStats(); if (isFirstPerson) {
+camera.position.y = Math.max(camera.position.y, 2); } renderer.render(scene,
+camera); updateDebugViews(); } // Start the fully enhanced animation with all
+new features animate(); // Add a simple version control system const
+versionControl = { versions: [], currentVersion: -1, saveVersion() { const
+version = JSON.stringify(fileObjects); this.versions = this.versions.slice(0,
+this.currentVersion + 1); this.versions.push(version); this.currentVersion++; },
+checkout(versionIndex) { if (versionIndex >= 0 && versionIndex <
+this.versions.length) { fileObjects = JSON.parse(this.versions[versionIndex]);
+this.currentVersion = versionIndex; updateScene(); } } }; // Add version control
+buttons const saveVersionButton = document.createElement('button');
+saveVersionButton.textContent = 'Save Version'; saveVersionButton.style.position
+= 'absolute'; saveVersionButton.style.bottom = '40px';
 saveVersionButton.style.left = '10px';
 saveVersionButton.addEventListener('click', () => versionControl.saveVersion());
-document.body.appendChild(saveVersionButton);
-
-const checkoutButton = document.createElement('button');
-checkoutButton.textContent = 'Checkout Version';
-checkoutButton.style.position = 'absolute';
-checkoutButton.style.bottom = '40px';
-checkoutButton.style.left = '120px';
-checkoutButton.addEventListener('click', () => {
-  const versionIndex = prompt('Enter version number to checkout:');
-  versionControl.checkout(parseInt(versionIndex));
-});
-document.body.appendChild(checkoutButton);
-
-// Add a simple profiler
-const profiler = {
-  startTime: 0,
-  endTime: 0,
-  measures: {},
-  start(label) {
-    this.startTime = performance.now();
-  },
-  end(label) {
-    this.endTime = performance.now();
-    const duration = this.endTime - this.startTime;
-    if (!this.measures[label]) {
-      this.measures[label] = [];
-    }
-    this.measures[label].push(duration);
-  },
-  getAverageTime(label) {
-    const measurements = this.measures[label];
-    if (measurements && measurements.length > 0) {
-      const sum = measurements.reduce((a, b) => a + b, 0);
-      return sum / measurements.length;
-    }
-    return 0;
-  }
-};
-
-// Use profiler in animation loop
-function animate() {
-  requestAnimationFrame(animate);
-
-  profiler.start('animationFrame');
-
-  controls.update();
-  animateFileSystem();
-  animateParticles();
-  audioViz.updateAudioVisualization();
-  animateRain();
-  flashLightning();
-  updateDayNightCycle();
-  animateOcean();
-  updateMinimap();
-  updatePhysics();
-  updatePerformanceStats();
-
-  if (isFirstPerson) {
-    camera.position.y = Math.max(camera.position.y, 2);
-  }
-
-  renderer.render(scene, camera);
-  updateDebugViews();
-
-  profiler.end('animationFrame');
-}
-
-// Add profiler output
-setInterval(() => {
-  console.log('Average animation frame time:', profiler.getAverageTime('animationFrame').toFixed(2), 'ms');
-}, 5000);
-
-// Add a simple asset loader
-const assetLoader = {
-  loadQueue: [],
-  loadedAssets: {},
-  enqueue(assetType, assetUrl) {
-    this.loadQueue.push({ type: assetType, url: assetUrl });
-  },
-  loadNext() {
-    if (this.loadQueue.length === 0) return;
-
-    const asset = this.loadQueue.shift();
-    let loader;
-
-    switch (asset.type) {
-      case 'texture':
-        loader = new THREE.TextureLoader();
-        break;
-      case 'model':
-        loader = new THREE.GLTFLoader();
-        break;
-      // Add more loaders as needed
-    }
-
-    loader.load(asset.url, 
-      (loadedAsset) => {
-        this.loadedAssets[asset.url] = loadedAsset;
-        console.log(`Loaded asset: ${asset.url}`);
-        this.loadNext();
-      },
-      (xhr) => {
-        console.log(`${asset.url}: ${(xhr.loaded / xhr.total * 100)}% loaded`);
-      },
-      (error) => {
-        console.error(`Error loading asset ${asset.url}:`, error);
-        this.loadNext();
-      }
-    );
-  },
-  startLoading() {
-    this.loadNext();
-  }
-};
-
-// Example usage of asset loader
-assetLoader.enqueue('texture', 'https://example.com/texture.jpg');
-assetLoader.enqueue('model', 'https://example.com/model.gltf');
-assetLoader.startLoading();
-
-// Add a simple shader system
-const shaderSystem = {
-  shaders: {},
-  add(name, vertexShader, fragmentShader) {
-    this.shaders[name] = new THREE.ShaderMaterial({
-      vertexShader,
-      fragmentShader
-    });
-  },
-  get(name) {
-    return this.shaders[name];
-  }
-};
-
-// Example usage of shader system
-const customVertexShader = `
-  varying vec2 vUv;
-  void main() {
-    vUv = uv;
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-  }
-`;
-
-const customFragmentShader = `
-  varying vec2 vUv;
-  void main() {
-    gl_FragColor = vec4(vUv.x, vUv.y, 0.5, 1.0);
-  }
-`;
-
-shaderSystem.add('custom', customVertexShader, customFragmentShader);
-
-// Use custom shader on a new mesh
-const customShaderGeometry = new THREE.PlaneGeometry(5, 5);
-const customShaderMesh = new THREE.Mesh(customShaderGeometry, shaderSystem.get('custom'));
-customShaderMesh.position.set(0, 10, 0);
-scene.add(customShaderMesh);
-
-// Add a simple particle system
-function createParticleSystem() {
-  const particleCount = 1000;
-  const particles = new THREE.BufferGeometry();
-  const positions = new Float32Array(particleCount * 3);
-  const colors = new Float32Array(particleCount * 3);
-
-  for (let i = 0; i < particleCount * 3; i += 3) {
-    positions[i] = Math.random() * 100 - 50;
-    positions[i + 1] = Math.random() * 100 - 50;
-    positions[i + 2] = Math.random() * 100 - 50;
-
-    colors[i] = Math.random();
-    colors[i + 1] = Math.random();
-    colors[i + 2] = Math.random();
-  }
-
-  particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-  const particleMaterial = new THREE.PointsMaterial({
-    size: 0.1,
-    vertexColors: true
-  });
-
-  const particleSystem = new THREE.Points(particles, particleMaterial);
-  scene.add(particleSystem);
-
-  function animateParticles() {
-    const positions = particles.attributes.position.array;
-    for (let i = 0; i < positions.length; i += 3) {
-      positions[i] += Math.random() * 0.1 - 0.05;
-      positions[i + 1] += Math.random() * 0.1 - 0.05;
-      positions[i + 2] += Math.random() * 0.1 - 0.05;
-    }
-    particles.attributes.position.needsUpdate = true;
-  }
-
-  return animateParticles;
-}
-
-const animateCustomParticles = createParticleSystem();
-
-// Update animation loop to include custom particle animation
-function animate() {
-  requestAnimationFrame(animate);
-
-  profiler.start('animationFrame');
-
-  controls.update();
-  animateFileSystem();
-  animateParticles();
-  animateCustomParticles();
-  audioViz.updateAudioVisualization();
-  animateRain();
-  flashLightning();
-  updateDayNightCycle();
-  animateOcean();
-  updateMinimap();
-  updatePhysics();
-  updatePerformanceStats();
-
-  if (isFirstPerson) {
-    camera.position.y = Math.max(camera.position.y, 2);
-  }
-
-  renderer.render(scene, camera);
-  updateDebugViews();
-
-  profiler.end('animationFrame');
-}
-
-// Start the enhanced animation loop
-animate();
+document.body.appendChild(saveVersionButton); const checkoutButton =
+document.createElement('button'); checkoutButton.textContent = 'Checkout
+Version'; checkoutButton.style.position = 'absolute';
+checkoutButton.style.bottom = '40px'; checkoutButton.style.left = '120px';
+checkoutButton.addEventListener('click', () => { const versionIndex =
+prompt('Enter version number to checkout:');
+versionControl.checkout(parseInt(versionIndex)); });
+document.body.appendChild(checkoutButton); // Add a simple profiler const
+profiler = { startTime: 0, endTime: 0, measures: {}, start(label) {
+this.startTime = performance.now(); }, end(label) { this.endTime =
+performance.now(); const duration = this.endTime - this.startTime; if
+(!this.measures[label]) { this.measures[label] = []; }
+this.measures[label].push(duration); }, getAverageTime(label) { const
+measurements = this.measures[label]; if (measurements && measurements.length >
+0) { const sum = measurements.reduce((a, b) => a + b, 0); return sum /
+measurements.length; } return 0; } }; // Use profiler in animation loop function
+animate() { requestAnimationFrame(animate); profiler.start('animationFrame');
+controls.update(); animateFileSystem(); animateParticles();
+audioViz.updateAudioVisualization(); animateRain(); flashLightning();
+updateDayNightCycle(); animateOcean(); updateMinimap(); updatePhysics();
+updatePerformanceStats(); if (isFirstPerson) { camera.position.y =
+Math.max(camera.position.y, 2); } renderer.render(scene, camera);
+updateDebugViews(); profiler.end('animationFrame'); } // Add profiler output
+setInterval(() => { console.log('Average animation frame time:',
+profiler.getAverageTime('animationFrame').toFixed(2), 'ms'); }, 5000); // Add a
+simple asset loader const assetLoader = { loadQueue: [], loadedAssets: {},
+enqueue(assetType, assetUrl) { this.loadQueue.push({ type: assetType, url:
+assetUrl }); }, loadNext() { if (this.loadQueue.length === 0) return; const
+asset = this.loadQueue.shift(); let loader; switch (asset.type) { case
+'texture': loader = new THREE.TextureLoader(); break; case 'model': loader = new
+THREE.GLTFLoader(); break; // Add more loaders as needed }
+loader.load(asset.url, (loadedAsset) => { this.loadedAssets[asset.url] =
+loadedAsset; console.log(`Loaded asset: ${asset.url}`); this.loadNext(); },
+(xhr) => { console.log(`${asset.url}: ${(xhr.loaded / xhr.total * 100)}%
+loaded`); }, (error) => { console.error(`Error loading asset ${asset.url}:`,
+error); this.loadNext(); } ); }, startLoading() { this.loadNext(); } }; //
+Example usage of asset loader assetLoader.enqueue('texture',
+'https://example.com/texture.jpg'); assetLoader.enqueue('model',
+'https://example.com/model.gltf'); assetLoader.startLoading(); // Add a simple
+shader system const shaderSystem = { shaders: {}, add(name, vertexShader,
+fragmentShader) { this.shaders[name] = new THREE.ShaderMaterial({ vertexShader,
+fragmentShader }); }, get(name) { return this.shaders[name]; } }; // Example
+usage of shader system const customVertexShader = ` varying vec2 vUv; void
+main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix *
+vec4(position, 1.0); } `; const customFragmentShader = ` varying vec2 vUv; void
+main() { gl_FragColor = vec4(vUv.x, vUv.y, 0.5, 1.0); } `;
+shaderSystem.add('custom', customVertexShader, customFragmentShader); // Use
+custom shader on a new mesh const customShaderGeometry = new
+THREE.PlaneGeometry(5, 5); const customShaderMesh = new
+THREE.Mesh(customShaderGeometry, shaderSystem.get('custom'));
+customShaderMesh.position.set(0, 10, 0); scene.add(customShaderMesh); // Add a
+simple particle system function createParticleSystem() { const particleCount =
+1000; const particles = new THREE.BufferGeometry(); const positions = new
+Float32Array(particleCount * 3); const colors = new Float32Array(particleCount *
+3); for (let i = 0; i < particleCount * 3; i += 3) { positions[i] =
+Math.random() * 100 - 50; positions[i + 1] = Math.random() * 100 - 50;
+positions[i + 2] = Math.random() * 100 - 50; colors[i] = Math.random(); colors[i
++ 1] = Math.random(); colors[i + 2] = Math.random(); }
+particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+particles.setAttribute('color', new THREE.BufferAttribute(colors, 3)); const
+particleMaterial = new THREE.PointsMaterial({ size: 0.1, vertexColors: true });
+const particleSystem = new THREE.Points(particles, particleMaterial);
+scene.add(particleSystem); function animateParticles() { const positions =
+particles.attributes.position.array; for (let i = 0; i < positions.length; i +=
+3) { positions[i] += Math.random() * 0.1 - 0.05; positions[i + 1] +=
+Math.random() * 0.1 - 0.05; positions[i + 2] += Math.random() * 0.1 - 0.05; }
+particles.attributes.position.needsUpdate = true; } return animateParticles; }
+const animateCustomParticles = createParticleSystem(); // Update animation loop
+to include custom particle animation function animate() {
+requestAnimationFrame(animate); profiler.start('animationFrame');
+controls.update(); animateFileSystem(); animateParticles();
+animateCustomParticles(); audioViz.updateAudioVisualization(); animateRain();
+flashLightning(); updateDayNightCycle(); animateOcean(); updateMinimap();
+updatePhysics(); updatePerformanceStats(); if (isFirstPerson) {
+camera.position.y = Math.max(camera.position.y, 2); } renderer.render(scene,
+camera); updateDebugViews(); profiler.end('animationFrame'); } // Start the
+enhanced animation loop animate();
