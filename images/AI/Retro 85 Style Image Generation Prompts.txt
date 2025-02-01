@@ -1,4 +1,4 @@
-Retro 85 Style Image Generation Prompts
+Retro 85 Style Image/Video Generation Prompts
 MODEL: glif-loradex-trainer/fatman2021b_flux_dev_retro85style_8_kv_prodigy
 URL1: https://huggingface.co/spaces/fatman2021/glif-loradex-trainer-fatman2021b_flux_dev_retro85style_8_kv_prodigy
 URL2: https://huggingface.co/glif-loradex-trainer/fatman2021b_flux_dev_retro85style_8_kv_prodigy
