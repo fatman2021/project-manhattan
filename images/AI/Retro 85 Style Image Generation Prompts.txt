@@ -1,0 +1,63 @@
+Retro 85 Style Image Generation Prompts
+MODEL: glif-loradex-trainer/fatman2021b_flux_dev_retro85style_8_kv_prodigy
+URL1: https://huggingface.co/spaces/fatman2021/glif-loradex-trainer-fatman2021b_flux_dev_retro85style_8_kv_prodigy
+URL2: https://huggingface.co/glif-loradex-trainer/fatman2021b_flux_dev_retro85style_8_kv_prodigy
+URL3: https://glif.app/@fatman2021b/glifs/cm6lir08v000113m7dfnw33x6
+URL4: https://glif.app/@fatman2021b/glifs/cm6lk9oj80002cz51w1k0ijn0 
+
+KEYWORDS: Group of Fish - Photorealistic Underwater Theme
+
+In a blocky retro 85 style, render a silver mechanical fish with angular, geometric fins, emerging into a saltwater mountain lake made of purple wireframe crystals. The fish moves through this digital terrain, diving through water plants of flowing vector patterns, into an underwater canyon of orange and red grids. The water is illuminated by cascading neon reflections, creating a mesmerizing interplay of color and structure. Use flat shading, emphasize the ray-traced lighting effects, and end with the scene fading into darkness, leaving a single wireframe line extending into infinity.
+
+KEYWORDS: Abstract and Surreal Fish and Coral Art
+
+In a blocky retro 85 style, visualize an otherworldly marine ecosystem composed of luminous wireframe coral structures. A silver mechanical fish with angular, geometric fins glides through an expanse of shifting neon waves, tracing an intricate path through pulsating digital flora. The environment transitions into a canyon of orange and red grids, where refractive distortions create a dynamic interplay of light and shadow. Flat shading and advanced ray-tracing techniques heighten the scene’s surrealist quality, culminating in an infinite wireframe strand extending into the void.
+
+KEYWORDS: Biopunk Cyborg Forest
+
+In a blocky retro 85 style, illustrate a biomechanical forest where towering trees of neon circuitry pulse with synchronized data streams. A biopunk cyborg woman with geometric limbs emerges into the landscape, moving through the digital terrain. She runs through biopunk flora of flowing vector patterns into a canyon of orange and red grids. Flat shading and ray-traced lighting enhance the hyperrealistic atmosphere, with the scene concluding in a singular, continuous wireframe trajectory fading into the digital expanse.
+
+KEYWORDS: Cyberpunk Cityscape
+
+In a blocky retro 85 style, construct a cyberpunk cityscape of neon skyscrapers reflected in a saltwater mountain lake composed of purple wireframe crystals. A silver mechanical fish with angular, geometric fins emerges from the digital depths, weaving through holographic billboards and pixelated rain. Submerged, the scene transforms into a canyon of orange and red grids, where neon shadows flicker against submerged structures. Flat shading and ray-traced lighting create depth and dimension, culminating in a single wireframe path stretching endlessly into cyberspace.
+
+KEYWORDS: Belly Dancer - Wireframe and Low Poly Variations 1
+
+In a blocky retro 85 style, render a wireframe belly dancer mid-shimmy, wearing a detailed costume, against a desert oasis backdrop. Ensure cultural authenticity and dynamic motion blur to convey movement.
+
+
+
+KEYWORDS: Belly Dancer - Wireframe and Low Poly Variations 2
+
+In a blocky retro 85 style, render a low-poly belly dancer made of simple shapes, mid-shimmy, with the same detailed costume and desert oasis setting. The scene should maintain retro aesthetics, emphasizing geometric elegance and motion dynamics. Flat shading and ray-traced lighting should enhance the vibrancy and depth, concluding with a single wireframe line extending into infinity.
+
+
+
+KEYWORDS: Belly Dancer - Wireframe and Low Poly Variations 3
+
+ In a blocky retro 85 style render of a belly dancer mid-shimmy with detailed geometric costume and geometric limbs, emerging into a desert oasis. The desert floor is made of purple wireframe crystals and green and brown wireframe plants. The belly dancer moves through this digital terrain, running through desert flora of flowing vector patterns, into a canyon of orange and red grids. Use flat shading, emphasize the ray-traced lighting effects, and end with the scene fading into darkness, leaving a single wireframe line extending into infinity
+
+KEYWORDS: Silver Mechanical Bird
+
+In a blocky retro 85 style, render a silver mechanical bird with angular, geometric wings, emerging into a landscape made of purple wireframe crystals. The bird moves through this digital terrain, diving through a waterfall of flowing vector patterns into a canyon of orange and red grids, and finally among floating, rotating polygonal islands in a violet sky. Use flat shading, emphasize the ray-traced lighting effects, and end with the scene fading into darkness, leaving a single wireframe line extending into infinity.
+
+KEYWORDS: Rain-Soaked Cyberpunk Alleyway
+
+In a blocky retro 85 style, depict a rain-soaked cyberpunk alleyway where neon reflections distort in puddles of digital rain. A silver mechanical fish with jagged, geometric fins swims through glowing currents, merging with streams of falling data. The alley transitions into an underwater canyon of orange and red grids, where the last traces of digital light flicker before the scene fades into darkness. Flat shading and ray-traced effects enhance the immersive depth, with a final solitary wireframe line stretching infinitely into the void.
+
+KEYWORDS: Steampunk Cityscape
+
+In a blocky retro 85 style, portray a grand steampunk metropolis where towering brass constructs and rotating gears emerge above a saltwater mountain lake of purple wireframe crystals. A silver mechanical fish with articulated, geometric fins moves through vaporized currents of pixelated steam, gliding past neon-lit zeppelins and elaborate mechanical contraptions. It descends into an intricate canyon of orange and red grids, where reflective surfaces amplify the interplay of light and shadow. Flat shading and ray-traced lighting provide enhanced realism, ending with a single wireframe strand vanishing into the horizon.
+
+KEYWORDS: Surrealist Landscape
+
+In a blocky retro 85 style, envision an expansive dreamscape where wireframe mountains rise above a saltwater lake of crystalline purple grids. A silver mechanical fish with hyper-angular, geometric fins emerges into this shifting digital terrain, weaving through floating vector formations and glimmering pixelated flora. The scene evolves into a deep canyon of orange and red grids, where distorted reflections create a kaleidoscopic interplay of colors. Employ flat shading and ray-tracing techniques to enhance visual depth, concluding with an infinite wireframe path extending beyond comprehension.
+
+KEYWORDS: Mountain Lake at Sunset
+
+In a blocky retro 85 style, render a sunset-lit saltwater mountain lake composed of radiant purple wireframe crystals. A silver mechanical fish with angular, geometric fins emerges as neon reflections ripple across the lake’s vector-based surface. The fish glides through suspended polygonal birds and surreal floating structures before diving into a canyon of orange and red grids. Flat shading and ray-traced lighting heighten the cinematic impact, leading to the final dissolution of the scene into a singular, infinite wireframe trajectory.
+
+KEYWORDS: Neon-Lit Metropolis at Night
+
+In a blocky retro 85 style, craft a futuristic neon-lit metropolis where towering buildings pulse with electric blue and magenta hues. A silver mechanical fish with geometrically precise fins ascends from a wireframe ocean, its path illuminated by shifting holographic advertisements. As the fish ascends, it crosses vast skyways of neon circuitry, leading to a digital canyon of orange and red grids. Use flat shading and ray-tracing to enhance the atmospheric lighting, concluding with the scene fading into a single infinite wireframe strand, disappearing into the metropolis’s glowing skyline.
+
