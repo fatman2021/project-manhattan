@@ -1,6 +1,7 @@
 # Assembly Code Report
 
 ## Summary
+
 - Total assembly files: **422**
 - File extensions:
   - `.asm`: 9
@@ -8,15 +9,15 @@
 
 ## Directory Breakdown (top-level counts)
 
-| Directory | Assembly files |
-| --- | ---: |
-| `src/asm/c64dvd-glsl` | 408 |
-| `.` | 7 |
-| `src/kernel/src/arch/x86` | 2 |
-| `src/res` | 2 |
-| `src/asm` | 1 |
-| `src/keymaps` | 1 |
-| `src/userland` | 1 |
+| Directory                 | Assembly files |
+| ------------------------- | -------------: |
+| `src/asm/c64dvd-glsl`     |            408 |
+| `.`                       |              7 |
+| `src/kernel/src/arch/x86` |              2 |
+| `src/res`                 |              2 |
+| `src/asm`                 |              1 |
+| `src/keymaps`             |              1 |
+| `src/userland`            |              1 |
 
 ## File Inventory
 
