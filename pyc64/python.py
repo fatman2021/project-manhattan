@@ -8,7 +8,8 @@ License: MIT open-source.
 import os
 import sys
 import traceback
-from .shared import StdoutWrapper, do_load, do_dos, do_sys, FlowcontrolException
+
+from .shared import FlowcontrolException, StdoutWrapper, do_dos, do_load, do_sys
 
 
 class ColorsProxy:
@@ -17,7 +18,7 @@ class ColorsProxy:
 
     def __getitem__(self, item):
         if type(item) is slice:
-            item = slice(item.start + 0xd800, item.stop + 0xd800, item.step)
+            item = slice(item.start + 0xD800, item.stop + 0xD800, item.step)
             return self.screen.memory[item]
         x, y = int(item[0]), int(item[1])
         if not (0 <= x <= self.screen.columns and 0 <= y <= self.screen.rows):
@@ -27,13 +28,13 @@ class ColorsProxy:
 
     def __setitem__(self, item, value):
         if type(item) is slice:
-            item = slice(item.start + 0xd800, item.stop + 0xd800, item.step)
+            item = slice(item.start + 0xD800, item.stop + 0xD800, item.step)
             self.screen.memory[item] = value
         else:
             x, y = int(item[0]), int(item[1])
             if not (0 <= x <= self.screen.columns and 0 <= y <= self.screen.rows):
                 raise AssertionError("position out of range")
-            self.screen.memory[0xd800 + x + self.screen.columns * y] = value
+            self.screen.memory[0xD800 + x + self.screen.columns * y] = value
 
 
 class CharsProxy:
@@ -65,13 +66,13 @@ class PythonInterpreter:
     F1_list_command = "lprg()"
     F3_run_command = "run()"
     F5_load_command = ""
-    F6_load_command = "load(\"*\",8)"
-    F7_dir_command = "\fdos(\"$\")"
+    F6_load_command = 'load("*",8)'
+    F7_dir_command = '\fdos("$")'
 
     def __init__(self, screen):
         self.screen = screen
         self.screen.shifted = True
-        self.interactive = None   # will be set later, externally
+        self.interactive = None  # will be set later, externally
         self.reset()
 
     def start(self):
@@ -101,9 +102,13 @@ class PythonInterpreter:
             "new": self.execute_new,
             "call": self.execute_sys,
             "sync": lambda: self.check_run_stop(self.interactive.do_sync_command),
-            "sprite": self.execute_sprite
+            "sprite": self.execute_sprite,
         }
-        self.screen.writestr("\n  **** COMMODORE 64 PYTHON {:d}.{:d}.{:d} ****\n".format(*sys.version_info[:3]))
+        self.screen.writestr(
+            "\n  **** COMMODORE 64 PYTHON {:d}.{:d}.{:d} ****\n".format(
+                *sys.version_info[:3]
+            )
+        )
         self.screen.writestr("\n use 'go64' to return to C64 BASIC V2.\n")
         self.write_prompt()
 
@@ -190,10 +195,28 @@ class PythonInterpreter:
     def execute_sys(self, addr):
         do_sys(self.screen, addr)
 
-    def execute_sprite(self, spritenum, x=None, y=None, dx=None, dy=None, color=None, enabled=None, pointer=None):
+    def execute_sprite(
+        self,
+        spritenum,
+        x=None,
+        y=None,
+        dx=None,
+        dy=None,
+        color=None,
+        enabled=None,
+        pointer=None,
+    ):
         if not 0 <= spritenum <= 7:
             raise AssertionError
-        if x is None and y is None and dx is None and dy is None and color is None and enabled is None and pointer is None:
+        if (
+            x is None
+            and y is None
+            and dx is None
+            and dy is None
+            and color is None
+            and enabled is None
+            and pointer is None
+        ):
             # return sprite info instead
             return self.screen.getsprites([spritenum], bitmap=False)[spritenum]
         if x is not None:

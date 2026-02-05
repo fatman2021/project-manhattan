@@ -344,7 +344,7 @@ END
                   for (let col = 0; col < 24; col++) {
                     if (
                       spriteData[row * 3 + Math.floor(col / 8)] &
-                      (0x80 >> col % 8)
+                      (0x80 >> (col % 8))
                     ) {
                       vicIICtx.fillRect(x + col, y + row, 1, 1);
                     }

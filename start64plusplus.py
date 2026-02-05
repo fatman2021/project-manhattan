@@ -6,12 +6,14 @@ class EmulatorPlusWindow(C64EmulatorWindow):
     columns = 64
     rows = 50
     bordersize = 32
-    sprites = 0   # for now, a larger screen will overwrite the sprite pointers so you can't use sprites. also y can not be >255
-    smoothscrolling = True   # set to False, if your tkinter can't smoothly scroll a window of this size
-    welcome_message = "WHOAAA !!!! This is what a C-64 with a 512x400 screen would look like!\n\n\n\n" \
-                      "pyc64 basic & function keys active\n\n" \
-                      "use 'gopy' to enter Python mode\n\n\n\n" \
-                      "(install the py64 library to be able to execute 6502 machine code)"
+    sprites = 0  # for now, a larger screen will overwrite the sprite pointers so you can't use sprites. also y can not be >255
+    smoothscrolling = True  # set to False, if your tkinter can't smoothly scroll a window of this size
+    welcome_message = (
+        "WHOAAA !!!! This is what a C-64 with a 512x400 screen would look like!\n\n\n\n"
+        "pyc64 basic & function keys active\n\n"
+        "use 'gopy' to enter Python mode\n\n\n\n"
+        "(install the py64 library to be able to execute 6502 machine code)"
+    )
     colorpalette = (
         0x000000,  # 0 = black
         0xFFFFFF,  # 1 = white
@@ -29,12 +31,12 @@ class EmulatorPlusWindow(C64EmulatorWindow):
         0x9AD284,  # 13 = light green
         0x6C5EB5,  # 14 = light blue
         0x959595,  # 15 = light grey
-        0x0000ff,
-        0x00ff00,
-        0x00ffff,
-        0xff0000,
-        0xff00ff,
-        0xffff00,
+        0x0000FF,
+        0x00FF00,
+        0x00FFFF,
+        0xFF0000,
+        0xFF00FF,
+        0xFFFF00,
         0x000080,
         0x008000,
         0x008080,
@@ -52,11 +54,15 @@ class EmulatorPlusWindow(C64EmulatorWindow):
 
 
 def start():
-    screen = ScreenAndMemory(columns=EmulatorPlusWindow.columns,
-                             rows=EmulatorPlusWindow.rows,
-                             sprites=EmulatorPlusWindow.sprites,
-                             rom_directory=None)
-    emu = EmulatorPlusWindow(screen, "Commodore-64 \"PLUSPLUS\" simulator in pure Python!", None)
+    screen = ScreenAndMemory(
+        columns=EmulatorPlusWindow.columns,
+        rows=EmulatorPlusWindow.rows,
+        sprites=EmulatorPlusWindow.sprites,
+        rom_directory=None,
+    )
+    emu = EmulatorPlusWindow(
+        screen, 'Commodore-64 "PLUSPLUS" simulator in pure Python!', None
+    )
     emu.start()
     emu.mainloop()
 

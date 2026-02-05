@@ -14,6 +14,7 @@ slow down the thing at certain points.
 Written by Irmen de Jong (irmen@razorvine.net)
 License: MIT open-source.
 """
+
 import ast
 import base64
 import binascii
@@ -36,20 +37,19 @@ class BasicError(Exception):
 
 
 class GotoLineException(FlowcontrolException):
-
     def __init__(self, line_idx):
         self.line_idx = line_idx
 
 
 class TimeValProxy:
-
     def __init__(self, memory, hz):
         self.memory = memory
         self.hz = hz
 
     def __str__(self):
-        secs = ((self.memory[160] << 16) +
-                (self.memory[161] << 8) + self.memory[162]) / self.hz
+        secs = (
+            (self.memory[160] << 16) + (self.memory[161] << 8) + self.memory[162]
+        ) / self.hz
         h, secs = divmod(secs, 3600)
         m, secs = divmod(secs, 60)
         return "{:02d}{:02d}{:02d}".format(int(h), int(m), int(secs))
@@ -58,8 +58,7 @@ class TimeValProxy:
         return self.__str__()
 
     def __int__(self):
-        jiffies = (self.memory[160] << 16) + (
-            self.memory[161] << 8) + self.memory[162]
+        jiffies = (self.memory[160] << 16) + (self.memory[161] << 8) + self.memory[162]
         return jiffies
 
 
@@ -133,17 +132,18 @@ class BasicInterpreter:
         try:
             if in_program:
                 # we're running in a program, REM and DATA do nothing
-                if line.startswith(("#", "rem") or line.startswith(
-                        ("dA", "data"))):
+                if line.startswith(("#", "rem") or line.startswith(("dA", "data"))):
                     if not recursive:
                         self.next_run_line_idx += 1
                     return
             else:
                 # direct mode
                 # if there's no char on the last pos of the first line, only evaluate the first line
-                if (len(line) >= self.screen.columns
-                        and line[self.screen.columns - 1] == " "):
-                    line = line[:self.screen.columns]
+                if (
+                    len(line) >= self.screen.columns
+                    and line[self.screen.columns - 1] == " "
+                ):
+                    line = line[: self.screen.columns]
                 if self.process_programline_entry(line):
                     return
                 if line.startswith(("#", "rem")):
@@ -160,8 +160,11 @@ class BasicInterpreter:
                     do_more = self._execute_cmd(cmd, parts)
                     if not do_more:
                         break
-                if (not self.running_program and not self.sleep_until
-                        and not self.must_run_stop):
+                if (
+                    not self.running_program
+                    and not self.sleep_until
+                    and not self.must_run_stop
+                ):
                     self.write_prompt("\n")
             if self.running_program and not recursive:
                 # schedule next line to be executed
@@ -180,8 +183,11 @@ class BasicInterpreter:
                 self.write_prompt()
             else:
                 line = self.program_lines[self.next_run_line_idx]
-                self.screen.writestr("\n?" + bx.args[0].lower() +
-                                     "  error in {line:d}\n".format(line=line))
+                self.screen.writestr(
+                    "\n?"
+                    + bx.args[0].lower()
+                    + "  error in {line:d}\n".format(line=line)
+                )
                 self.write_prompt()
             self.stop_running_program()
         except Exception as ex:
@@ -371,8 +377,7 @@ class BasicInterpreter:
         elif cmd.startswith("for"):
             cmd = cmd[3:]
         cmd = cmd.strip()
-        match = re.match(
-            r"(\w+)\s*=\s*(\S+)\s*to\s*(\S+)\s*(?:step\s*(\S+))?$", cmd)
+        match = re.match(r"(\w+)\s*=\s*(\S+)\s*to\s*(\S+)\s*(?:step\s*(\S+))?$", cmd)
         if match:
             if not self.running_program:
                 raise BasicError(
@@ -418,13 +423,13 @@ class BasicInterpreter:
                 "illegal direct"
             )  # we only support for loops in a program (with line numbers), not on the screen
         if not varname:
-            raise BasicError(
-                "next without varname")  # we require the varname for now
+            raise BasicError("next without varname")  # we require the varname for now
         if varname not in self.forloops or varname not in self.symbols:
             raise BasicError("next without for")
         if "," in varname:
             raise BasicError(
-                "next with multiple vars")  # we only support one var right now
+                "next with multiple vars"
+            )  # we only support one var right now
         try:
             runline_index, iterator = self.forloops[varname]
             self.symbols[varname] = next(iterator)
@@ -452,8 +457,7 @@ class BasicInterpreter:
             cmd = cmd[2:]
         elif cmd.startswith("goto"):
             cmd = cmd[4:]
-        line = ast.literal_eval(
-            cmd, self.symbols)  # allows jump tables via GOTO VAR
+        line = ast.literal_eval(cmd, self.symbols)  # allows jump tables via GOTO VAR
         if not self.running_program:
             # do a run instead
             self.execute_run("run " + str(line))
@@ -509,8 +513,9 @@ class BasicInterpreter:
         elif cmd.startswith("sleep"):
             cmd = cmd[5:]
         if all_cmds_on_line and len(all_cmds_on_line) > 1:
-            raise BasicError("sleep not alone on line"
-                             )  # we only can SLEEP when it's on their own line
+            raise BasicError(
+                "sleep not alone on line"
+            )  # we only can SLEEP when it's on their own line
         howlong = ast.literal_eval(cmd, self.symbols)
         if howlong == 0:
             return
@@ -556,25 +561,32 @@ class BasicInterpreter:
                     amount = direction[3]
                 if len(direction) > 4:
                     raise BasicError("syntax")
-        if (x1 < 0 or x1 >= self.screen.columns or x2 < 0
-                or x2 >= self.screen.columns or y1 < 0
-                or y1 >= self.screen.rows or y2 < 0 or y2 >= self.screen.rows):
+        if (
+            x1 < 0
+            or x1 >= self.screen.columns
+            or x2 < 0
+            or x2 >= self.screen.columns
+            or y1 < 0
+            or y1 >= self.screen.rows
+            or y2 < 0
+            or y2 >= self.screen.rows
+        ):
             raise BasicError("illegal quantity")
         if amount <= 0 or amount > max(self.screen.columns, self.screen.rows):
             raise BasicError("illegal quantity")
         if scrolldir in (
-                "u",
-                "d",
-                "l",
-                "r",
-                "ul",
-                "ur",
-                "dl",
-                "dr",
-                "lu",
-                "ru",
-                "ld",
-                "rd",
+            "u",
+            "d",
+            "l",
+            "r",
+            "ul",
+            "ur",
+            "dl",
+            "dr",
+            "lu",
+            "ru",
+            "ld",
+            "rd",
         ):
             self.screen.scroll(
                 (x1, y1),
@@ -594,8 +606,11 @@ class BasicInterpreter:
             raise BasicError("syntax")
         if self.running_program:
             if cmd in ("sT", "stop"):
-                self.screen.writestr("\nbreak in {:d}\n".format(
-                    self.program_lines[self.next_run_line_idx]))
+                self.screen.writestr(
+                    "\nbreak in {:d}\n".format(
+                        self.program_lines[self.next_run_line_idx]
+                    )
+                )
             self.stop_running_program()
 
     def execute_poke(self, cmd):
@@ -604,8 +619,10 @@ class BasicInterpreter:
         elif cmd.startswith("poke"):
             cmd = cmd[4:]
         addr, value = cmd.split(",", maxsplit=1)
-        addr, value = ast.literal_eval(addr, self.symbols), int(
-            ast.literal_eval(value, self.symbols))
+        addr, value = (
+            ast.literal_eval(addr, self.symbols),
+            int(ast.literal_eval(value, self.symbols)),
+        )
         if addr < 0 or addr > 0xFFFF or value < 0 or value > 0xFF:
             raise BasicError("illegal quantity")
         self.screen.memory[int(addr)] = int(value)
@@ -615,8 +632,10 @@ class BasicInterpreter:
         if cmd.startswith("pokew"):
             cmd = cmd[5:]
         addr, value = cmd.split(",", maxsplit=1)
-        addr, value = ast.literal_eval(addr, self.symbols), int(
-            ast.literal_eval(value, self.symbols))
+        addr, value = (
+            ast.literal_eval(addr, self.symbols),
+            int(ast.literal_eval(value, self.symbols)),
+        )
         if addr < 0 or addr > 0xFFFF or addr & 1 or value < 0 or value > 0xFFFF:
             raise BasicError("illegal quantity")
         self.screen.memory.setword(int(addr), int(value))
@@ -704,8 +723,10 @@ class BasicInterpreter:
             cmd += ".bas"
         self.screen.writestr("\nsaving " + cmd)
         with open("drive8/" + cmd, "w", encoding="utf8") as file:
-            file.writelines("{:d} {:s}\n".format(num, line)
-                            for num, line in sorted(self.program.items()))
+            file.writelines(
+                "{:d} {:s}\n".format(num, line)
+                for num, line in sorted(self.program.items())
+            )
 
     def execute_load(self, cmd):
         if cmd.startswith("lO"):
@@ -735,7 +756,8 @@ class BasicInterpreter:
             self.data_index = None
             self.program_lines = list(sorted(self.program))
             raise GotoLineException(
-                0 if start is None else self.program_lines.index(start))
+                0 if start is None else self.program_lines.index(start)
+            )
 
     def execute_if(self, cmd):
         match = re.match(r"if(.+)then(.+)$", cmd)
@@ -753,7 +775,8 @@ class BasicInterpreter:
             condition = ast.literal_eval(condition, self.symbols)
             if condition:
                 line = ast.literal_eval(
-                    line, self.symbols)  # allows jumptables via GOTO VAR
+                    line, self.symbols
+                )  # allows jumptables via GOTO VAR
                 if line not in self.program:
                     raise BasicError("undef'd statement")
                 raise GotoLineException(self.program_lines.index(line))
@@ -855,8 +878,7 @@ class BasicInterpreter:
             # go to next line
             self.data_index = 0
             for nr, line in sorted(self.program.items()):
-                if self.data_line < nr and line.lstrip().startswith(
-                        ("dA", "data")):
+                if self.data_line < nr and line.lstrip().startswith(("dA", "data")):
                     self.data_line = nr
                     return self.get_next_data()
 
