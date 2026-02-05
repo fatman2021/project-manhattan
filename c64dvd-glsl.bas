@@ -4048,15 +4048,17 @@ proc InterruptService(byval cpu as CPU6510 ptr) as integer
       locate 1,1: print space(48)
       locate 1,1: input "save filename:";strKey
       if len(strKey) then
+        dim as SYSTEM_BUS_T ptr mem = cpu->mem
         key=freefile
         if open(strKey for binary access write as #key)=0 then
           static as ubyte   u8
-          dim as integer nBytes=cpu->mem->ReadUShort(&H02D)
-          nBytes-=2048
+          dim as integer nBytes=mem->ReadUShort(&H02D) - 2048
           put #key,,nBytes
+          dim as integer addr = 2048
           for i as integer=0 to nBytes-1
-            u8=cpu->mem->ReadUByte(2048+i)
+            u8=mem->ReadUByte(addr)
             put #key,,u8
+            addr+=1
           next
           close #key
         else
@@ -4070,18 +4072,21 @@ proc InterruptService(byval cpu as CPU6510 ptr) as integer
       locate 1,1: print space(48)
       locate 1,1: input "load filename:";strKey
       if len(strKey) then
+        dim as SYSTEM_BUS_T ptr mem = cpu->mem
         key=freefile
         if open(strKey for binary access read as #key)=0 then
           static as ubyte   u8
           static as integer nBytes
           get #key,,nBytes
+          dim as integer addr = 2048
           for i as integer=0 to nBytes-1
             get #key,,u8
-            cpu->mem->WriteUByte(2048+i,u8)
+            mem->WriteUByte(addr,u8)
+            addr+=1
           next
           close #key
           nBytes+=2048
-          cpu->mem->WriteUShort(&H02D,nBytes)
+          mem->WriteUShort(&H02D,nBytes)
           cpu->PC=&HA52A
         else
           locate 1,1: print space(48)
