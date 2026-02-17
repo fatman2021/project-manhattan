@@ -15,6 +15,7 @@ petscii-vic20en-uc - Upper-case/graphics mapping used by the VIC-20
 screencode-c64-lc - Mixed-case mapping to screencodes (POKE) used by the Commodore 64 and Vic20
 screencode-c64-uc - Upper-case/graphics mapping to screencodes (POKE) used by the Commodore 64 and Vic20
 """
+
 import codecs
 
 from . import (

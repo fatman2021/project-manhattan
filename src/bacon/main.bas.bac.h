@@ -20,45 +20,45 @@ NUMBER r3;
 typedef struct {
 #undef __b2c_lineno
 #define __b2c_lineno 9
-long x_axis;
+  long x_axis;
 #undef __b2c_lineno
 #define __b2c_lineno 10
-long y_axis;
+  long y_axis;
 #undef __b2c_lineno
 #define __b2c_lineno 11
-long z_axis;
+  long z_axis;
 #undef __b2c_lineno
 #define __b2c_lineno 12
-long col;
+  long col;
 #undef __b2c_lineno
 #define __b2c_lineno 13
-long grad;
+  long grad;
 #undef __b2c_lineno
 #define __b2c_lineno 14
-long xi;
+  long xi;
 #undef __b2c_lineno
 #define __b2c_lineno 15
 } Point3D_TYPE;
-typedef  Point3D_TYPE  Point3D_type;
- Point3D_TYPE  Point3D = { 0 } ;
+typedef Point3D_TYPE Point3D_type;
+Point3D_TYPE Point3D = {0};
 
 #undef __b2c_lineno
 #define __b2c_lineno 17
 typedef struct {
 #undef __b2c_lineno
 #define __b2c_lineno 18
-long p1;
+  long p1;
 #undef __b2c_lineno
 #define __b2c_lineno 19
-long p2;
+  long p2;
 #undef __b2c_lineno
 #define __b2c_lineno 20
-long p3;
+  long p3;
 #undef __b2c_lineno
 #define __b2c_lineno 21
 } Tri2D_TYPE;
-typedef  Tri2D_TYPE  Tri2D_type;
- Tri2D_TYPE  Tri2D = { 0 } ;
+typedef Tri2D_TYPE Tri2D_type;
+Tri2D_TYPE Tri2D = {0};
 
 #undef __b2c_lineno
 #define __b2c_lineno 23
@@ -107,22 +107,22 @@ NUMBER refresh_rate;
 NUMBER radius;
 #undef __b2c_lineno
 #define __b2c_lineno 33
-NUMBER red0=255;
-NUMBER green0=255;
-NUMBER blue0=255;
-NUMBER xalpha0=255;
+NUMBER red0 = 255;
+NUMBER green0 = 255;
+NUMBER blue0 = 255;
+NUMBER xalpha0 = 255;
 #undef __b2c_lineno
 #define __b2c_lineno 34
-NUMBER red1=0;
-NUMBER green1=0;
-NUMBER blue1=0;
-NUMBER xalpha1=0;
+NUMBER red1 = 0;
+NUMBER green1 = 0;
+NUMBER blue1 = 0;
+NUMBER xalpha1 = 0;
 #undef __b2c_lineno
 #define __b2c_lineno 35
-NUMBER red2=255;
-NUMBER green2=255;
-NUMBER blue2=255;
-NUMBER xalpha2=255;
+NUMBER red2 = 255;
+NUMBER green2 = 255;
+NUMBER blue2 = 255;
+NUMBER xalpha2 = 255;
 #undef __b2c_lineno
 #define __b2c_lineno 36
 NUMBER x_axis0;
@@ -130,18 +130,18 @@ NUMBER y_axis0;
 NUMBER z_axis0;
 NUMBER col0;
 NUMBER col1;
-NUMBER char_h=160;
+NUMBER char_h = 160;
 #undef __b2c_lineno
 #define __b2c_lineno 37
 NUMBER x_axis1;
 NUMBER y_axis1;
 NUMBER z_axis1;
 NUMBER char_ptr;
-NUMBER char_w=160;
+NUMBER char_w = 160;
 #undef __b2c_lineno
 #define __b2c_lineno 38
-NUMBER char_buffer=16384;
-NUMBER bitmask=255;
+NUMBER char_buffer = 16384;
+NUMBER bitmask = 255;
 NUMBER pixel_size;
 #undef __b2c_lineno
 #define __b2c_lineno 41
@@ -178,13 +178,13 @@ NUMBER a8;
 NUMBER key;
 #undef __b2c_lineno
 #define __b2c_lineno 55
-NUMBER ram   (0x10FFFFFF);
+NUMBER ram(0x10FFFFFF);
 #undef __b2c_lineno
 #define __b2c_lineno 56
 NUMBER ' Font xchar  (0x00007FF0);
 #undef __b2c_lineno
 #define __b2c_lineno 58
-int __b2c__label_floatarray_CHAR_ROM;
+    int __b2c__label_floatarray_CHAR_ROM;
 int __b2c__label_stringarray_CHAR_ROM;
 #undef __b2c_lineno
 #define __b2c_lineno 59
@@ -968,20 +968,20 @@ NUMBER) TYPE NUMBER peekb( long adr);
 #define __b2c_lineno 452
 #undef __b2c_lineno
 #define __b2c_lineno 454
-long adr-;
+long adr - ;
 #undef __b2c_lineno
 #define __b2c_lineno 455
 #undef __b2c_lineno
 #define __b2c_lineno 456
-long char_ptr <<;
+long char_ptr << ;
 #undef __b2c_lineno
 #define __b2c_lineno 457
-long x_axis0 <<;
-long x_axis0+;
+long x_axis0 << ;
+long x_axis0 + ;
 #undef __b2c_lineno
 #define __b2c_lineno 458
-long y_axis0 <<;
-long y_axis0+;
+long y_axis0 << ;
+long y_axis0 + ;
 #undef __b2c_lineno
 #define __b2c_lineno 460
 #undef __b2c_lineno
@@ -996,12 +996,12 @@ long y_axis0+;
 #define __b2c_lineno 467
 #undef __b2c_lineno
 #define __b2c_lineno 468
-long char_ptr+;
+long char_ptr + ;
 #undef __b2c_lineno
 #define __b2c_lineno 469
 #undef __b2c_lineno
 #define __b2c_lineno 471
-long adr+;
+long adr + ;
 long v;
 #undef __b2c_lineno
 #define __b2c_lineno 472
@@ -1143,7 +1143,7 @@ long v;
 #define __b2c_lineno 547
 #undef __b2c_lineno
 #define __b2c_lineno 548
-void pokeb( adr as uinteger);
+void pokeb(adr as uinteger);
 #undef __b2c_lineno
 #define __b2c_lineno 549
 #undef __b2c_lineno
@@ -1160,12 +1160,12 @@ NUMBER) TYPE NUMBER peekw( long adr);
 NUMBER get_key, get_data, old_data(10000);
 #undef __b2c_lineno
 #define __b2c_lineno 561
-NUMBER data_pointer=1;
+NUMBER data_pointer = 1;
 NUMBER repeat;
 NUMBER count;
 #undef __b2c_lineno
 #define __b2c_lineno 562
-NUMBER integerprompt_flag=1;
+NUMBER integerprompt_flag = 1;
 NUMBER lineNo;
 #undef __b2c_lineno
 #define __b2c_lineno 567
@@ -1318,5 +1318,5 @@ long get_data;
 #undef __b2c_lineno
 #define __b2c_lineno 664
 #include "main.bas.peekb.h"
-#include "main.bas.pokeb.h"
 #include "main.bas.peekw.h"
+#include "main.bas.pokeb.h"

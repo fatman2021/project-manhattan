@@ -4,7 +4,6 @@ import tkinter
 
 
 class NumpadmadnessWindow(tkinter.Tk):
-
     def __init__(self):
         super().__init__()
         label = tkinter.Label(
@@ -80,8 +79,7 @@ class NumpadmadnessWindow(tkinter.Tk):
         if sys.platform == "darwin":
             # OSX numkeys are problematic, I try to solve this via raw keycode
             if event.keycode in self.joystick_keys_osx:
-                print("JOYSTICK switch OFF:",
-                      self.joystick_keys_osx[event.keycode])
+                print("JOYSTICK switch OFF:", self.joystick_keys_osx[event.keycode])
                 return
         elif sys.platform == "win32":
             # Windows numkeys are also problematic, need to solve this via keysym_num OR via keycode.. (sigh)
@@ -93,8 +91,9 @@ class NumpadmadnessWindow(tkinter.Tk):
                 return
         # sane platforms (Linux for one) play nice and just use the friendly keysym name.
         elif event.keysym in self.joystick_keys_sane_platforms:
-            print("JOYSTICK switch OFF:",
-                  self.joystick_keys_sane_platforms[event.keysym])
+            print(
+                "JOYSTICK switch OFF:", self.joystick_keys_sane_platforms[event.keysym]
+            )
             return
 
     def keypress(self, event):
@@ -106,8 +105,7 @@ class NumpadmadnessWindow(tkinter.Tk):
         if sys.platform == "darwin":
             # OSX numkeys are problematic, I try to solve this via raw keycode
             if event.keycode in self.joystick_keys_osx:
-                print("JOYSTICK switch ON:",
-                      self.joystick_keys_osx[event.keycode])
+                print("JOYSTICK switch ON:", self.joystick_keys_osx[event.keycode])
                 return
         elif sys.platform == "win32":
             # Windows numkeys are also problematic, need to solve this via keysym_num OR via keycode.. (sigh)
@@ -119,8 +117,9 @@ class NumpadmadnessWindow(tkinter.Tk):
                 return
         # sane platforms (Linux for one) play nice and just use the friendly keysym name.
         elif event.keysym in self.joystick_keys_sane_platforms:
-            print("JOYSTICK switch ON:",
-                  self.joystick_keys_sane_platforms[event.keysym])
+            print(
+                "JOYSTICK switch ON:", self.joystick_keys_sane_platforms[event.keysym]
+            )
             return
 
 

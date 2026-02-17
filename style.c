@@ -5667,10 +5667,12 @@
 [0m[0m[41m\t\t\t\t\t\t[0m[42m                        [0mFBSTRING[0m[41m*[0m [0m[42m*[0mvr$2074 = fb_StrAllocTempDescZEx([0m[41m [0m(uint8[0m[42m [0m*)"Shadertoy.com", 13ll[0m[41m [0m);
 [0m[0m[41m\t\t\t\t\t\t[0m[42m                        [0mfb_GfxDrawString([0m[41m [0mIMG$3, 0x1.8p[0m[42m [0m+[0m[42m [0m4f, 0x1.8p[0m[42m [0m+[0m[42m [0m4f, 4, (FBSTRING[0m[42m [0m*)vr$2074, 4278255360u, (void[0m[42m [0m*)0ull, 0, (void[0m[42m [0m*)0ull, (void[0m[42m [0m*)0ull,[0m[42m\n[0m
 [0m[42m                                        [0m (void[0m[42m [0m*)0ull[0m[41m [0m);
-[0m[0m[41m\t\t\t\t\t[0m[42m                    [0m}
+[0m[0m[41m\t\t\t\t\t[0m[42m                    [0m
+}
 [0m[0m[41m\t\t\t\t\t[0mlabel$662:[0m[41m;[0m
 [0m[0m[41m\t\t\t\t[0m[42m                    ;\n[0m
-[0m[42m                [0m}
+[0m[42m                [0m
+}
 [0m[0m[41m\t\t\t\t[0mlabel$661:[0m[41m;[0m
 [0m[0m[41m\t\t\t\t[0m[42m                ;\n[0m
 [0m[42m[0mlabel$660:[0m[41m;[0m
@@ -5762,7 +5764,8 @@
 [0m[0m[41m\t\t\t\t[0m[42m                [0mfb_GfxImageDestroy([0m[41m [0m(void[0m[42m [0m*)IMG$3[0m[41m [0m);
 [0m[0m[41m\t\t\t\t[0m[42m                [0mIMG$3 = (void[0m[42m [0m*)0ull;
 [0m[0m[41m\t\t\t\t[0m[42m                [0mglBindTexture([0m[41m [0m3553u, 0u[0m[41m [0m);
-[0m[0m[41m\t\t\t[0m[42m            [0m}
+[0m[0m[41m\t\t\t[0m[42m            [0m
+}
 [0m[0m[41m\t\t\t[0mlabel$659:[0m[41m;[0m
 [0m[0m[41m\t\t\t[0m[42m            ;\n[0m
 [0m[42m[0mlabel$658:[0m[41m;[0m
@@ -5992,7 +5995,8 @@
 [0m[0m[41m\t\t\t[0m[42m                ;\n[0m
 [0m[42m            [0m}
 [0m[0m[41m\t\t\t[0m[42m            [0m_ZN9SHADERTOYD1Ev([0m[41m [0m&SHADER$3[0m[41m [0m);
-[0m[0m[41m\t\t[0m[42m        [0m}
+[0m[0m[41m\t\t[0m[42m        [0m
+}
 [0m[0m[41m\t\t[0m[42m        [0mgoto label$577;
 [0m[0m[41m\t\t[0mlabel$652:[0m[41m;[0m
 [0m[0m[41m\t\t[0m[42m        ;\n[0m
@@ -14932,10 +14936,12 @@
 [0m[0m[41m\t\t[0m[42m        ;\n[0m
 [0m[42m[0mlabel$577:[0m[41m;[0m
 [0m[0m[41m\t[0m[42m        ;\n[0m
-[0m[42m    [0m}
+[0m[42m    [0m
+}
 [0m[0m[41m\t[0mlabel$227:[0m[42m\n[0m
 [0m[42m    [0m;
-[0m}
+[0m
+}
 [0m
 [0muint8 _ZN8MEMORY_T9READUBYTEEy([0m[41m [0mstruct $8MEMORY_T[0m[42m [0m* THIS$1, uint64 ADR$1[0m[41m [0m)
 [0m{
@@ -15052,7 +15058,8 @@
 [0m[0m[41m\t\t[0m[42m        }\n[0m
 [0m[42m[0mlabel$1353:[0m[41m;[0m
 [0m[0m[41m\t[0m[42m        ;\n[0m
-[0m[42m    [0m}
+[0m[42m    [0m
+}
 [0m[0m[41m\t[0m[42m    [0mfb_DataRestore([0m[41m [0m(void[0m[42m [0m*)label$1356[0m[41m [0m);
 [0m[0m[41m\t[0m[42m    [0m{
 [0m[0m[41m\t\t[0m[42m        [0mint64 I$2;
@@ -15078,7 +15085,8 @@
 [0m[0m[41m\t[0m[42m    [0m*(uint16[0m[42m [0m*)((uint8[0m[42m [0m*)THIS$1 + 12ll) = (uint16)64738u;
 [0m[0m[41m\t[0mlabel$1348:[0m[42m\n[0m
 [0m[42m    [0m;
-[0m}
+[0m
+}
 [0m
 [0mvoid _ZN7CPU6510D1Ev([0m[41m [0mstruct $7CPU6510[0m[42m [0m* THIS$1[0m[41m [0m)
 [0m{
@@ -18131,4 +18139,3 @@
 [42m\n[0m[33m means that you should insert a newline.[0m
 [41m\t[0m[33m means that you should delete a tab.[0m
 [33mAnd consider adding more comments![0m
-

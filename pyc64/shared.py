@@ -2,10 +2,10 @@
 commands shared by BASIC V2 and Python interpreter.
 """
 
-import re
-import os
-import struct
 import glob
+import os
+import re
+import struct
 
 
 class StdoutWrapper:
@@ -34,10 +34,14 @@ class ResetMachineException(FlowcontrolException):
 def do_dos(screen, arg):
     # show disk directory
     if arg != "$":
-        raise ValueError("only \"$\" understood for now")
+        raise ValueError('only "$" understood for now')
     files = sorted(os.listdir("drive8"))
-    catalog = ((file, os.path.getsize("drive8/" + file)) for file in files if os.path.isfile("drive8/" + file))
-    header = "\"floppy contents \" ** 2a"
+    catalog = (
+        (file, os.path.getsize("drive8/" + file))
+        for file in files
+        if os.path.isfile("drive8/" + file)
+    )
+    header = '"floppy contents " ** 2a'
     screen.writestr("\n0 \uf11a" + header + "\uf11b\n")
     for file, size in sorted(catalog):
         name, suff = os.path.splitext(file)
@@ -50,18 +54,18 @@ def do_load(screen, arg):
     # load a BASIC .bas or Python .py or C64 .prg file
     if not arg:
         raise ValueError("missing filename")
-    if arg.startswith("\"$\""):
-        raise ValueError("use dos\"$ instead")
+    if arg.startswith('"$"'):
+        raise ValueError('use dos"$ instead')
     match = re.match(r'\s*"(.+)"', arg)
     if not match:
-        match = re.match(r'\s*(.+)', arg)
+        match = re.match(r"\s*(.+)", arg)
         if not match:
             raise ValueError("missing filename")
     filename = match.groups()[0]
     screen.writestr("searching for " + filename + "\n")
     if not os.path.isfile("drive8/" + filename):
         filename = filename + ".*"
-    if filename.endswith('*'):
+    if filename.endswith("*"):
         # take the first file in the directory matching the pattern
         filename = glob.glob("drive8/" + filename)
         if not filename:
@@ -86,7 +90,9 @@ def do_load(screen, arg):
         with open("drive8/" + filename, "rb") as file:
             address = struct.unpack("<H", file.read(2))[0]
             prog = file.read()
-        screen.writestr("loading from ${:04x} to ${:04x}...\n".format(address, address + len(prog)))
+        screen.writestr(
+            "loading from ${:04x} to ${:04x}...\n".format(address, address + len(prog))
+        )
         screen.memory[address: address + len(prog)] = prog
         visible = b" abcdefghijklmnopqrstuvwxyz1234567890-=`~!@#$%^&*()_+[];:'\",.<>/?"
         return {
@@ -98,7 +104,11 @@ def do_load(screen, arg):
             6: "maybe it contains machine code",
             7: "that you can call via sys...",
             8: "the first 30 printable chars are:",
-            9: ">>> " + "".join(chr(x) if x in visible else ' ' for x in screen.memory[address: address + 30]),
+            9: ">>> "
+            + "".join(
+                chr(x) if x in visible else " "
+                for x in screen.memory[address: address + 30]
+            ),
             10: "(usually a sys address is shown)",
             11: "---------------",
         }
@@ -107,37 +117,38 @@ def do_load(screen, arg):
 
 
 def do_sys(screen, addr, microsleep=None, use_rom_routines=False):
-    if addr < 0 or addr > 0xffff:
+    if addr < 0 or addr > 0xFFFF:
         raise ValueError("illegal quantity")
     if not use_rom_routines:
         if addr in (64738, 64760):
             raise ResetMachineException()
-        if addr == 58640:       # set cursorpos
+        if addr == 58640:  # set cursorpos
             x, y = screen.memory[211], screen.memory[214]
             screen.cursormove(x, y)
             return
-        elif addr in (58629, 65517):    # kernel SCREEN (get screen size X=colums Y=rows)
-            screen.memory[0x30d] = screen.columns
-            screen.memory[0x30e] = screen.rows
+        elif addr in (58629, 65517):  # kernel SCREEN (get screen size X=colums Y=rows)
+            screen.memory[0x30D] = screen.columns
+            screen.memory[0x30E] = screen.rows
             return
-        elif addr in (65520, 58634):    # kernel PLOT (get/set cursorpos)
-            if screen.memory[0x030f] & 1:
+        elif addr in (65520, 58634):  # kernel PLOT (get/set cursorpos)
+            if screen.memory[0x030F] & 1:
                 # carry set, read position
                 x, y = screen.cursorpos()
                 screen.memory[211], screen.memory[214] = x, y
-                screen.memory[0x030e], screen.memory[0x030d] = x, y
+                screen.memory[0x030E], screen.memory[0x030D] = x, y
             else:
                 # carry clear, set position
-                x, y = screen.memory[0x030e], screen.memory[0x030d]
+                x, y = screen.memory[0x030E], screen.memory[0x030D]
                 screen.memory[211], screen.memory[214] = x, y
                 screen.cursormove(x, y)
             return
     from .cputools import CPU
+
     cpu = CPU(memory=screen.memory, pc=addr)
     # read A,X,Y and P from the ram
-    cpu.a, cpu.x, cpu.y, cpu.p = screen.memory[0x030c:0x0310]
+    cpu.a, cpu.x, cpu.y, cpu.p = screen.memory[0x030C:0x0310]
     try:
         cpu.run(microsleep=microsleep)
     finally:
         # store result A,X,Y and P back to ram
-        screen.memory[0x030c:0x0310] = cpu.a, cpu.x, cpu.y, cpu.p
+        screen.memory[0x030C:0x0310] = cpu.a, cpu.x, cpu.y, cpu.p

@@ -10,27 +10,30 @@ License: MIT open-source.
 
 import io
 import os
-import sys
-import tkinter
 import pkgutil
-import threading
 import queue
+import sys
+import threading
 import time
+import tkinter
 from collections import deque
+
 from PIL import Image
-from .memory import ScreenAndMemory
+
 from .basic import BasicInterpreter
-from .shared import ResetMachineException, do_sys
+from .memory import ScreenAndMemory
 from .python import PythonInterpreter
+from .shared import ResetMachineException, do_sys
 
 
 def create_bitmaps_from_char_rom(temp_graphics_folder, roms_directory):
     # create char bitmaps from the orignal c-64 chargen rom file
-    rom = open(roms_directory+"/chargen", "rb").read()
+    rom = open(roms_directory + "/chargen", "rb").read()
+
     def doublewidth_and_mirror(b):
         result = 0
         for _ in range(8):
-            bit = b&1
+            bit = b & 1
             b >>= 1
             result <<= 1
             result |= bit
@@ -38,27 +41,38 @@ def create_bitmaps_from_char_rom(temp_graphics_folder, roms_directory):
             result |= bit
         x, y = divmod(result, 256)
         return y, x
+
     def writechar(c, rom_offset, filesuffix):
-        with open("{:s}/char{:s}-{:02x}.xbm".format(temp_graphics_folder, filesuffix, c), "wb") as outf:
+        with open(
+            "{:s}/char{:s}-{:02x}.xbm".format(temp_graphics_folder, filesuffix, c), "wb"
+        ) as outf:
             outf.write(b"#define im_width 16\n")
             outf.write(b"#define im_height 16\n")
             outf.write(b"static char im_bits[] = {\n")
             for y in range(8):
-                b1, b2 = doublewidth_and_mirror(rom[c*8 + y + rom_offset])
-                outf.write(bytes("0x{:02x}, 0x{:02x}, 0x{:02x}, 0x{:02x}, ".format(b1, b2, b1, b2), "ascii"))
+                b1, b2 = doublewidth_and_mirror(rom[c * 8 + y + rom_offset])
+                outf.write(
+                    bytes(
+                        "0x{:02x}, 0x{:02x}, 0x{:02x}, 0x{:02x}, ".format(
+                            b1, b2, b1, b2
+                        ),
+                        "ascii",
+                    )
+                )
             outf.seek(-2, os.SEEK_CUR)  # get rid of the last space and comma
             outf.write(b"\n};\n")
+
     # normal chars
     for c in range(256):
         writechar(c, 0, "")
     # shifted chars
     for c in range(256):
-        writechar(c, 256*8, "-sh")
+        writechar(c, 256 * 8, "-sh")
 
 
 class EmulatorWindowBase(tkinter.Tk):
     temp_graphics_folder = "temp_gfx"
-    update_rate = 1000 // 20    # 20 hz screen refresh rate
+    update_rate = 1000 // 20  # 20 hz screen refresh rate
     columns = 0
     rows = 0
     bordersize = 0
@@ -86,15 +100,25 @@ class EmulatorWindowBase(tkinter.Tk):
         if sys.platform == "win32":
             # tell windows to use a new toolbar icon
             import ctypes
-            myappid = 'net.Razorvine.Tale.story'  # arbitrary string
+
+            myappid = "net.Razorvine.Tale.story"  # arbitrary string
             ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
         self.geometry(self.windowgeometry)
         self.screen = screen
-        self.canvas = tkinter.Canvas(self, width=2 * self.bordersize + self.columns * 16, height=2 * self.bordersize + self.rows * 16,
-                                     borderwidth=0, highlightthickness=0, background="black",
-                                     xscrollincrement=1, yscrollincrement=1)
+        self.canvas = tkinter.Canvas(
+            self,
+            width=2 * self.bordersize + self.columns * 16,
+            height=2 * self.bordersize + self.rows * 16,
+            borderwidth=0,
+            highlightthickness=0,
+            background="black",
+            xscrollincrement=1,
+            yscrollincrement=1,
+        )
         self.buttonbar = tkinter.Frame(self)
-        resetbut1 = tkinter.Button(self.buttonbar, text="reset", command=self.reset_machine)
+        resetbut1 = tkinter.Button(
+            self.buttonbar, text="reset", command=self.reset_machine
+        )
         resetbut1.pack(side=tkinter.LEFT)
         self.buttonbar.pack(fill=tkinter.X)
         self.refreshtick = threading.Event()
@@ -107,14 +131,28 @@ class EmulatorWindowBase(tkinter.Tk):
         for y in range(self.rows):
             for x in range(self.columns):
                 cor = self.screencor((x, y))
-                bm = self.canvas.create_bitmap(cor[0], cor[1], bitmap="@" + self.temp_graphics_folder + "/char-20.xbm",
-                                               foreground="white", background="black", anchor=tkinter.NW, tags="charbitmap")
+                bm = self.canvas.create_bitmap(
+                    cor[0],
+                    cor[1],
+                    bitmap="@" + self.temp_graphics_folder + "/char-20.xbm",
+                    foreground="white",
+                    background="black",
+                    anchor=tkinter.NW,
+                    tags="charbitmap",
+                )
                 self.charbitmaps.append(bm)
         # create the sprite tkinter bitmaps:
         for i in range(self.sprites - 1, -1, -1):
             cor = self.screencor_sprite((30 + i * 20, 140 + i * 10))
-            bm = self.canvas.create_bitmap(cor[0], cor[1], bitmap="@{:s}/sprite-{:d}.xbm".format(self.temp_graphics_folder, i),
-                                           foreground=self.tkcolor(i + 8), background=None, anchor=tkinter.NW, tags="spritebitmap")
+            bm = self.canvas.create_bitmap(
+                cor[0],
+                cor[1],
+                bitmap="@{:s}/sprite-{:d}.xbm".format(self.temp_graphics_folder, i),
+                foreground=self.tkcolor(i + 8),
+                background=None,
+                anchor=tkinter.NW,
+                tags="spritebitmap",
+            )
             self.spritebitmaps.insert(0, bm)
         # the borders:
         if self.bordersize > 0:
@@ -138,26 +176,36 @@ class EmulatorWindowBase(tkinter.Tk):
     def _welcome_message(self):
         if self.welcome_message:
             topleft = self.screencor((0, 0))
-            introtxt = self.canvas.create_text(topleft[0] + 16 * self.columns // 2, topleft[0] + 16 * (self.rows // 2 - 2),
-                                               fill="white", justify=tkinter.CENTER,
-                                               text=self.welcome_message)
+            introtxt = self.canvas.create_text(
+                topleft[0] + 16 * self.columns // 2,
+                topleft[0] + 16 * (self.rows // 2 - 2),
+                fill="white",
+                justify=tkinter.CENTER,
+                text=self.welcome_message,
+            )
             self.after(4000, lambda: self.canvas.delete(introtxt))
 
     def _cyclic_repaint(self):
         starttime = time.perf_counter()
         self.repaint()
         duration = time.perf_counter() - starttime
-        remaining_timer_budget = (self.update_rate/1000)-duration
+        remaining_timer_budget = (self.update_rate / 1000) - duration
         if remaining_timer_budget < 0.001:
-            print("warning: screen refresh took too long! ", remaining_timer_budget, file=sys.stderr)
+            print(
+                "warning: screen refresh took too long! ",
+                remaining_timer_budget,
+                file=sys.stderr,
+            )
             remaining_timer_budget = 0.001
-        self.cyclic_repaint_after = self.after(int(remaining_timer_budget * 1000), self._cyclic_repaint)
+        self.cyclic_repaint_after = self.after(
+            int(remaining_timer_budget * 1000), self._cyclic_repaint
+        )
 
     def keypress(self, event):
-        pass   # override in subclass
+        pass  # override in subclass
 
     def keyrelease(self, event):
-        pass   # override in subclass
+        pass  # override in subclass
 
     def repaint(self):
         # set bordercolor, done by setting the 4 border rectangles
@@ -191,8 +239,12 @@ class EmulatorWindowBase(tkinter.Tk):
         for index, (char, color) in dirty:
             forecol = self.tkcolor(color)
             bm = self.charbitmaps[index]
-            bitmap = "@{:s}/{:s}-{:02x}.xbm".format(self.temp_graphics_folder, prefix, char)
-            self.canvas.itemconfigure(bm, foreground=forecol, background=screencolor, bitmap=bitmap)
+            bitmap = "@{:s}/{:s}-{:02x}.xbm".format(
+                self.temp_graphics_folder, prefix, char
+            )
+            self.canvas.itemconfigure(
+                bm, foreground=forecol, background=screencolor, bitmap=bitmap
+            )
         # smooth scroll
         if self.smoothscrolling:
             xys = self.smoothscroll(self.screen.scrollx, self.screen.scrolly)
@@ -208,29 +260,45 @@ class EmulatorWindowBase(tkinter.Tk):
             current_bm = self.canvas.itemcget(self.spritebitmaps[snum], "bitmap")
             extension = "-2x" if sprite.doublex else ""
             extension += "-2y" if sprite.doubley else ""
-            if sprite.doublex != ("-2x" in current_bm) or sprite.doubley != ("-2y" in current_bm):
+            if sprite.doublex != ("-2x" in current_bm) or sprite.doubley != (
+                "-2y" in current_bm
+            ):
                 # size change
-                configure["bitmap"] = "@{:s}/sprite-{:d}{:s}.xbm".format(self.temp_graphics_folder, snum, extension)
+                configure["bitmap"] = "@{:s}/sprite-{:d}{:s}.xbm".format(
+                    self.temp_graphics_folder, snum, extension
+                )
             # bitmapdata
             if sprite.bitmap != self.spritebitmapbytes[snum]:
                 # regenerate sprite bitmap
                 self.create_sprite_bitmap(snum, sprite.bitmap)
                 self.spritebitmapbytes[snum] = sprite.bitmap
                 # first, configure another bitmap to force the old one out
-                self.canvas.itemconfigure(self.spritebitmaps[snum], bitmap="@{:s}/char-00.xbm".format(self.temp_graphics_folder))
+                self.canvas.itemconfigure(
+                    self.spritebitmaps[snum],
+                    bitmap="@{:s}/char-00.xbm".format(self.temp_graphics_folder),
+                )
                 # schedule reloading the sprite bitmap:
-                configure["bitmap"] = "@{:s}/sprite-{:d}{:s}.xbm".format(self.temp_graphics_folder, snum, extension)
+                configure["bitmap"] = "@{:s}/sprite-{:d}{:s}.xbm".format(
+                    self.temp_graphics_folder, snum, extension
+                )
             # sprite enabled
             tkstate = tkinter.NORMAL if sprite.enabled else tkinter.HIDDEN
             if self.canvas.itemcget(self.spritebitmaps[snum], "state") != tkstate:
                 configure["state"] = tkstate
             # sprite colors
             spritecolor = self.tkcolor(sprite.color)
-            if self.canvas.itemcget(self.spritebitmaps[snum], "foreground") != spritecolor:
+            if (
+                self.canvas.itemcget(self.spritebitmaps[snum], "foreground")
+                != spritecolor
+            ):
                 configure["foreground"] = spritecolor
             # sprite positions
             x, y = self.screencor_sprite((sprite.x, sprite.y))
-            self.canvas.coords(self.spritebitmaps[snum], x - 2 * self.screen.scrollx, y - 2 * self.screen.scrolly)
+            self.canvas.coords(
+                self.spritebitmaps[snum],
+                x - 2 * self.screen.scrollx,
+                y - 2 * self.screen.scrolly,
+            )
             if configure:
                 # reconfigure all changed properties in one go
                 self.canvas.itemconfigure(self.spritebitmaps[snum], **configure)
@@ -242,31 +310,49 @@ class EmulatorWindowBase(tkinter.Tk):
     def create_bitmaps(self, roms_directory=""):
         os.makedirs(self.temp_graphics_folder, exist_ok=True)
         with open(self.temp_graphics_folder + "/readme.txt", "w") as f:
-            f.write("this is a temporary folder to cache pyc64 files for tkinter graphics bitmaps.\n")
-        if roms_directory and os.path.isfile(roms_directory+"/chargen"):
+            f.write(
+                "this is a temporary folder to cache pyc64 files for tkinter graphics bitmaps.\n"
+            )
+        if roms_directory and os.path.isfile(roms_directory + "/chargen"):
             # create char bitmaps from the C64 chargen rom file.
             print("creating char bitmaps from chargen rom")
             create_bitmaps_from_char_rom(self.temp_graphics_folder, roms_directory)
         else:
             if roms_directory:
-                print("creating char bitmaps from png images in the package (consider supplying {:s}/chargen ROM file)".format(roms_directory))
+                print(
+                    "creating char bitmaps from png images in the package (consider supplying {:s}/chargen ROM file)".format(
+                        roms_directory
+                    )
+                )
             else:
                 print("creating char bitmaps from png images in the package")
             # normal
-            with Image.open(io.BytesIO(pkgutil.get_data(__name__, "charset/" + self.charset_normal))) as source_chars:
+            with Image.open(
+                io.BytesIO(pkgutil.get_data(__name__, "charset/" + self.charset_normal))
+            ) as source_chars:
                 for i in range(256):
                     filename = self.temp_graphics_folder + "/char-{:02x}.xbm".format(i)
                     chars = source_chars.copy()
-                    row, col = divmod(i, source_chars.width // 16)        # we assume 16x16 pixel chars (2x zoom)
+                    row, col = divmod(
+                        i, source_chars.width // 16
+                    )  # we assume 16x16 pixel chars (2x zoom)
                     ci = chars.crop((col * 16, row * 16, col * 16 + 16, row * 16 + 16))
                     ci = ci.convert(mode="1", dither=None)
                     ci.save(filename, "xbm")
             # shifted
-            with Image.open(io.BytesIO(pkgutil.get_data(__name__, "charset/" + self.charset_shifted))) as source_chars:
+            with Image.open(
+                io.BytesIO(
+                    pkgutil.get_data(__name__, "charset/" + self.charset_shifted)
+                )
+            ) as source_chars:
                 for i in range(256):
-                    filename = self.temp_graphics_folder + "/char-sh-{:02x}.xbm".format(i)
+                    filename = self.temp_graphics_folder + "/char-sh-{:02x}.xbm".format(
+                        i
+                    )
                     chars = source_chars.copy()
-                    row, col = divmod(i, source_chars.width // 16)        # we assume 16x16 pixel chars (2x zoom)
+                    row, col = divmod(
+                        i, source_chars.width // 16
+                    )  # we assume 16x16 pixel chars (2x zoom)
                     ci = chars.crop((col * 16, row * 16, col * 16 + 16, row * 16 + 16))
                     ci = ci.convert(mode="1", dither=None)
                     ci.save(filename, "xbm")
@@ -282,14 +368,30 @@ class EmulatorWindowBase(tkinter.Tk):
         else:
             sx, sy = 0, 0
         return [
-            [sx, sy,
-                2 * self.bordersize + self.columns * 16 + sx, self.bordersize + sy],
-            [self.bordersize + self.columns * 16 + sx, self.bordersize + sy,
-                2 * self.bordersize + self.columns * 16 + sx, self.bordersize + self.rows * 16 + sy],
-            [sx, self.bordersize + self.rows * 16 + sy,
-                2 * self.bordersize + self.columns * 16 + sx, 2 * self.bordersize + self.rows * 16 + sy],
-            [sx, self.bordersize + sy,
-                self.bordersize + sx, self.bordersize + self.rows * 16 + sy]
+            [
+                sx,
+                sy,
+                2 * self.bordersize + self.columns * 16 + sx,
+                self.bordersize + sy,
+            ],
+            [
+                self.bordersize + self.columns * 16 + sx,
+                self.bordersize + sy,
+                2 * self.bordersize + self.columns * 16 + sx,
+                self.bordersize + self.rows * 16 + sy,
+            ],
+            [
+                sx,
+                self.bordersize + self.rows * 16 + sy,
+                2 * self.bordersize + self.columns * 16 + sx,
+                2 * self.bordersize + self.rows * 16 + sy,
+            ],
+            [
+                sx,
+                self.bordersize + sy,
+                self.bordersize + sx,
+                self.bordersize + self.rows * 16 + sy,
+            ],
         ]
 
     def screencor(self, cxy):
@@ -315,13 +417,15 @@ class C64EmulatorWindow(EmulatorWindowBase):
     bordersize = 52
     sprites = 8
     colorpalette = ScreenAndMemory.colorpalette_pepto
-    welcome_message = "pyc64 basic & function keys active\n\n" \
-                      "use 'gopy' to enter Python mode\n\n\n\n" \
-                      "(install the py64 library to be able to execute 6502 machine code)"
+    welcome_message = (
+        "pyc64 basic & function keys active\n\n"
+        "use 'gopy' to enter Python mode\n\n\n\n"
+        "(install the py64 library to be able to execute 6502 machine code)"
+    )
 
     def __init__(self, screen, title, roms_directory):
         super().__init__(screen, title, roms_directory)
-        self.screen.memory[0x00fb] = EmulatorWindowBase.update_rate
+        self.screen.memory[0x00FB] = EmulatorWindowBase.update_rate
         self.hertztick = threading.Event()
         self.interpret_thread = None
         self.interpreter = None
@@ -338,12 +442,14 @@ class C64EmulatorWindow(EmulatorWindowBase):
         self.hertztick.set()
 
     def _cyclic_blink_cursor(self):
-        self.cyclic_blink_after = self.after(self.screen.cursor_blink_rate, self._cyclic_blink_cursor)
+        self.cyclic_blink_after = self.after(
+            self.screen.cursor_blink_rate, self._cyclic_blink_cursor
+        )
         self.screen.blink_cursor()
 
     @property
     def update_rate(self):
-        return max(10, self.screen.memory[0x00fb])
+        return max(10, self.screen.memory[0x00FB])
 
     joystick_keys_sane_platforms = {
         "Control_R": "fire",
@@ -366,34 +472,34 @@ class C64EmulatorWindow(EmulatorWindowBase):
         "KP_End": "leftdown",
         "KP_1": "leftdown",
         "KP_Next": "rightdown",
-        "KP_3": "rightdown"
+        "KP_3": "rightdown",
     }
 
     joystick_keys_osx = {
-        524352: "fire",        # R alt
-        270336: "fire",        # R control
-        5374000: "fire",       # kp 0
-        498073: "fire",        # kp Enter
-        5963832: "up",         # kp 8
-        5505074: "down",       # kp 2
-        5636148: "left",       # kp 4
-        5767222: "right",      # kp 6
-        5832759: "leftup",     # kp 7
-        6029369: "rightup",    # kp 9
-        5439537: "leftdown",   # kp 1
+        524352: "fire",  # R alt
+        270336: "fire",  # R control
+        5374000: "fire",  # kp 0
+        498073: "fire",  # kp Enter
+        5963832: "up",  # kp 8
+        5505074: "down",  # kp 2
+        5636148: "left",  # kp 4
+        5767222: "right",  # kp 6
+        5832759: "leftup",  # kp 7
+        6029369: "rightup",  # kp 9
+        5439537: "leftdown",  # kp 1
         5570611: "rightdown",  # kp 3
     }
 
     joystick_keys_windows_keycode = {
-        96: "fire",       # kp 0 (numlock)
-        104: "up",        # kp 8 (numlock)
-        98: "down",       # kp 2 (numlock)
-        100: "left",      # kp 4 (numlock)
-        102: "right",     # kp 6 (numlock)
-        103: "leftup",    # kp 7 (numlock)
-        105: "rightup",   # kp 9 (numlock)
-        97: "leftdown",   # kp 1 (numlock)
-        99: "rightdown"   # kp 3 (numlock)
+        96: "fire",  # kp 0 (numlock)
+        104: "up",  # kp 8 (numlock)
+        98: "down",  # kp 2 (numlock)
+        100: "left",  # kp 4 (numlock)
+        102: "right",  # kp 6 (numlock)
+        103: "leftup",  # kp 7 (numlock)
+        105: "rightup",  # kp 9 (numlock)
+        97: "leftdown",  # kp 1 (numlock)
+        99: "rightdown",  # kp 3 (numlock)
     }
 
     def keyrelease(self, event):
@@ -401,16 +507,22 @@ class C64EmulatorWindow(EmulatorWindowBase):
         if sys.platform == "darwin":
             # OSX numkeys are problematic, I try to solve this via raw keycode
             if event.keycode in self.joystick_keys_osx:
-                self.screen.setjoystick(**{self.joystick_keys_osx[event.keycode]: False})
+                self.screen.setjoystick(
+                    **{self.joystick_keys_osx[event.keycode]: False}
+                )
                 return
         elif sys.platform == "win32":
             # Windows numkeys are also problematic, need to solve this via keysym_num OR via keycode.. (sigh)
             if event.keycode in self.joystick_keys_windows_keycode:
-                self.screen.setjoystick(**{self.joystick_keys_windows_keycode[event.keycode]: False})
+                self.screen.setjoystick(
+                    **{self.joystick_keys_windows_keycode[event.keycode]: False}
+                )
                 return
         # sane platforms (Linux for one) play nice and just use the friendly keysym name.
         elif event.keysym in self.joystick_keys_sane_platforms:
-            self.screen.setjoystick(**{self.joystick_keys_sane_platforms[event.keysym]: False})
+            self.screen.setjoystick(
+                **{self.joystick_keys_sane_platforms[event.keysym]: False}
+            )
             return
 
     def keypress(self, event):
@@ -423,11 +535,15 @@ class C64EmulatorWindow(EmulatorWindowBase):
         elif sys.platform == "win32":
             # Windows numkeys are also problematic, need to solve this via keysym_num OR via keycode.. (sigh)
             if event.keycode in self.joystick_keys_windows_keycode:
-                self.screen.setjoystick(**{self.joystick_keys_windows_keycode[event.keycode]: True})
+                self.screen.setjoystick(
+                    **{self.joystick_keys_windows_keycode[event.keycode]: True}
+                )
                 return
         # sane platforms (Linux for one) play nice and just use the friendly keysym name.
         elif event.keysym in self.joystick_keys_sane_platforms:
-            self.screen.setjoystick(**{self.joystick_keys_sane_platforms[event.keysym]: True})
+            self.screen.setjoystick(
+                **{self.joystick_keys_sane_platforms[event.keysym]: True}
+            )
             return
         # turn the event into a bit more managable key character
         char = event.char
@@ -436,48 +552,59 @@ class C64EmulatorWindow(EmulatorWindowBase):
         with_shift = event.state & 1
         with_control = event.state & 4
         with_alt = event.state & 8
-        if char.startswith("Shift") and with_control or char.startswith("Control") and with_shift \
-                or char == "??" and with_control and with_shift:
-                # simulate SHIFT+COMMODORE_KEY to flip the charset
-                self.screen.shifted = not self.screen.shifted
-                return
+        if (
+            char.startswith("Shift")
+            and with_control
+            or char.startswith("Control")
+            and with_shift
+            or char == "??"
+            and with_control
+            and with_shift
+        ):
+            # simulate SHIFT+COMMODORE_KEY to flip the charset
+            self.screen.shifted = not self.screen.shifted
+            return
 
         if self.interpret_thread.running_something:
             # we're running something so only the break key should do something!
-            if char == '\x03' and with_control:  # ctrl+C
+            if char == "\x03" and with_control:  # ctrl+C
                 self.interpret_thread.runstop()
-            elif char == '\x1b':    # esc
+            elif char == "\x1b":  # esc
                 self.interpret_thread.runstop()
             else:
                 # buffer the keypress (if it's not the pgup=RESTORE key)
-                if char != 'Prior':
+                if char != "Prior":
                     self.interpret_thread.buffer_keypress(char, event)
             return
 
         if len(char) == 1:
-            if char == '\r':    # RETURN key
+            if char == "\r":  # RETURN key
                 line = self.screen.current_line(True, True, "ascii")
-                line1, line2, line3 = line[0: self.columns], line[self.columns: self.columns * 2], line[self.columns * 2:]
-                if line1.endswith(' '):
-                    line1 = ''
-                if line2.endswith(' '):
-                    line3 = ''
+                line1, line2, line3 = (
+                    line[0: self.columns],
+                    line[self.columns: self.columns * 2],
+                    line[self.columns * 2:],
+                )
+                if line1.endswith(" "):
+                    line1 = ""
+                if line2.endswith(" "):
+                    line3 = ""
                 else:
-                    line1 = ''
+                    line1 = ""
                 line = (line1 + line2 + line3).rstrip()
                 self.screen.return_key()
                 if len(line) > self.columns and not line1:
                     self.screen.return_key()
                 if not with_shift:
                     self.execute_direct_line(line)
-            elif char in ('\x08', '\x7f', 'Delete'):
+            elif char in ("\x08", "\x7f", "Delete"):
                 if with_shift:
                     self.screen.insert()
                 else:
                     self.screen.backspace()
-            elif char == '\x03' and with_control:  # ctrl+C
+            elif char == "\x03" and with_control:  # ctrl+C
                 self.interpret_thread.runstop()
-            elif char == '\x1b':    # esc
+            elif char == "\x1b":  # esc
                 self.interpret_thread.runstop()
             else:
                 self.screen.writestr(char)
@@ -508,8 +635,8 @@ class C64EmulatorWindow(EmulatorWindowBase):
                 line = self.screen.current_line(False, True, "screencodes").rstrip()
                 x = len(line)
                 if x > self.columns:
-                    if line[self.columns - 1] == ' ':
-                        line = line[:self.columns].rstrip()
+                    if line[self.columns - 1] == " ":
+                        line = line[: self.columns].rstrip()
                         x = len(line)
                     else:
                         y += 1
@@ -520,10 +647,10 @@ class C64EmulatorWindow(EmulatorWindowBase):
             elif char in ("Insert", "Help"):
                 self.screen.insert()
                 self.repaint()
-            elif char == "F7":      # directory shortcut key
+            elif char == "F7":  # directory shortcut key
                 self.screen.writestr(self.interpreter.F7_dir_command + "\n")
                 self.execute_direct_line(self.interpreter.F7_dir_command)
-            elif char == "F5":      # load file shortcut key
+            elif char == "F5":  # load file shortcut key
                 if with_shift:
                     self.screen.writestr(self.interpreter.F6_load_command + "\n")
                     self.execute_direct_line(self.interpreter.F6_load_command)
@@ -532,16 +659,16 @@ class C64EmulatorWindow(EmulatorWindowBase):
                     line = self.screen.current_line(False, False, "ascii")
                     self.screen.return_key()
                     self.execute_direct_line(line)
-            elif char == "F3":      # run program shortcut key
+            elif char == "F3":  # run program shortcut key
                 self.screen.writestr(self.interpreter.F3_run_command + "\n")
                 self.execute_direct_line(self.interpreter.F3_run_command)
-            elif char == "F1":      # list program shortcut key
+            elif char == "F1":  # list program shortcut key
                 self.screen.writestr(self.interpreter.F1_list_command + "\n")
                 self.execute_direct_line(self.interpreter.F1_list_command)
-            elif char == "Prior":     # pageup = RESTORE (outside running program)
+            elif char == "Prior":  # pageup = RESTORE (outside running program)
                 if not self.interpret_thread.running_something:
                     self.screen.reset()
-                    self.screen.memory[0x00fb] = EmulatorWindowBase.update_rate
+                    self.screen.memory[0x00FB] = EmulatorWindowBase.update_rate
                     self.interpreter.write_prompt("\n")
 
     def execute_direct_line(self, line):
@@ -561,7 +688,7 @@ class C64EmulatorWindow(EmulatorWindowBase):
             self.interpreter.stop()
         self.hertztick.set()
         self.screen.reset()
-        self.screen.memory[0x00fb] = EmulatorWindowBase.update_rate
+        self.screen.memory[0x00FB] = EmulatorWindowBase.update_rate
         self.repaint()
         if interpreter == "basic":
             self.interpreter = BasicInterpreter(self.screen)
@@ -581,13 +708,24 @@ class C64EmulatorWindow(EmulatorWindowBase):
     def create_sprite_bitmap(self, spritenum, bitmapbytes):
         with Image.frombytes("1", (24, 21), bytes(bitmapbytes)) as si:
             si = si.resize((48, 42), 0)
-            si.save(self.temp_graphics_folder + "/sprite-{:d}.xbm".format(spritenum), "xbm")
+            si.save(
+                self.temp_graphics_folder + "/sprite-{:d}.xbm".format(spritenum), "xbm"
+            )
             dx = si.resize((96, 42), 0)
-            dx.save(self.temp_graphics_folder + "/sprite-{:d}-2x.xbm".format(spritenum), "xbm")
+            dx.save(
+                self.temp_graphics_folder + "/sprite-{:d}-2x.xbm".format(spritenum),
+                "xbm",
+            )
             dy = si.resize((48, 84), 0)
-            dy.save(self.temp_graphics_folder + "/sprite-{:d}-2y.xbm".format(spritenum), "xbm")
+            dy.save(
+                self.temp_graphics_folder + "/sprite-{:d}-2y.xbm".format(spritenum),
+                "xbm",
+            )
             dxy = si.resize((96, 84), 0)
-            dxy.save(self.temp_graphics_folder + "/sprite-{:d}-2x-2y.xbm".format(spritenum), "xbm")
+            dxy.save(
+                self.temp_graphics_folder + "/sprite-{:d}-2x-2y.xbm".format(spritenum),
+                "xbm",
+            )
 
     def screencor_sprite(self, cc):
         # on the C-64, sprite upper left = (24, 50)
@@ -614,11 +752,16 @@ class C64EmulatorWindow(EmulatorWindowBase):
 
     def reset_machine(self):
         super().reset_machine()
-        self.screen.memory[0x00fb] = EmulatorWindowBase.update_rate
+        self.screen.memory[0x00FB] = EmulatorWindowBase.update_rate
         self.switch_interpreter("basic")
         if self.screen.using_roms:
             print("using actual ROM reset routine (sys 64738)")
-            do_sys(self.screen, 64738, self.interpret_thread._microsleep, use_rom_routines=True)
+            do_sys(
+                self.screen,
+                64738,
+                self.interpret_thread._microsleep,
+                use_rom_routines=True,
+            )
             self.interpreter.write_prompt("\n\n\n\n\n")
 
 
@@ -639,7 +782,11 @@ class InterpretThread(threading.Thread):
 
     @property
     def running_something(self):
-        return self.running_program or self.executing_line or self.interpreter.sleep_until is not None
+        return (
+            self.running_program
+            or self.executing_line
+            or self.interpreter.sleep_until is not None
+        )
 
     def run(self):
         while not self.must_stop:
@@ -657,7 +804,9 @@ class InterpretThread(threading.Thread):
                         self.interpreter.program_step()
                         self.running_program = self.interpreter.running_program
                     self.step_counter += 1
-                    if self.step_counter > 200:     # control program execution speed with this
+                    if (
+                        self.step_counter > 200
+                    ):  # control program execution speed with this
                         self.step_counter = 0
                         self._microsleep()
                     if not self.running_program:
@@ -668,7 +817,7 @@ class InterpretThread(threading.Thread):
                         time_left = self.interpreter.sleep_until - time.time()
                         if time_left > 0:
                             if os.name == "nt" and time_left <= 0.016:
-                                self._microsleep()    # because on Windows, sleep() takes too long
+                                self._microsleep()  # because on Windows, sleep() takes too long
                             else:
                                 time.sleep(min(0.1, time_left))
                             continue
@@ -697,7 +846,7 @@ class InterpretThread(threading.Thread):
 
     def _microsleep(self):
         # artificial microscopic delay to yield the thread and allow screen to refresh
-        self.window.hertztick.wait(.02)
+        self.window.hertztick.wait(0.02)
         self.window.hertztick.clear()
 
     def stop(self):
@@ -725,7 +874,7 @@ class InterpretThread(threading.Thread):
                 return char
             else:
                 pass  # @todo handle control characters? (F1  etc) INPUT would also need that
-        return ''
+        return ""
 
     def do_sync_command(self):
         self.window.refreshtick.wait(self.window.update_rate / 1000 * 2)
@@ -737,7 +886,9 @@ class InterpretThread(threading.Thread):
     def runstop(self):
         self.interpreter.runstop()
         with self.interpret_lock:
-            if (self.executing_line or self.interpreter.sleep_until) and not self.running_program:
+            if (
+                self.executing_line or self.interpreter.sleep_until
+            ) and not self.running_program:
                 self.window.screen.writestr("\n?break  error")
             if self.interpreter.sleep_until:
                 self.interpreter.sleep_until = 1
@@ -747,11 +898,15 @@ class InterpretThread(threading.Thread):
 
 def start():
     rom_directory = "roms"
-    screen = ScreenAndMemory(columns=C64EmulatorWindow.columns,
-                             rows=C64EmulatorWindow.rows,
-                             sprites=C64EmulatorWindow.sprites,
-                             rom_directory=rom_directory)
-    emu = C64EmulatorWindow(screen, "Commodore-64 simulator in pure Python!", rom_directory)
+    screen = ScreenAndMemory(
+        columns=C64EmulatorWindow.columns,
+        rows=C64EmulatorWindow.rows,
+        sprites=C64EmulatorWindow.sprites,
+        rom_directory=rom_directory,
+    )
+    emu = C64EmulatorWindow(
+        screen, "Commodore-64 simulator in pure Python!", rom_directory
+    )
     emu.start()
     emu.mainloop()
 
