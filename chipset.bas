@@ -225,6 +225,11 @@ case sys_offset+&HB2 ' Render
   bload "vram/"+str(mem64(sys_offset+&HB4))+".bmp",image
   put (0,0),image, alpha	       
 case sys_offset+&HB3' Sets offset in video memory
+  ' VRAM offsets are stored as IEEE-754 doubles so they can represent:
+  '  * positive addresses up to 1.797693134862316e+308 x 8 bytes
+  '  * negative addresses down to -1.797693134862316e+308 x 8 bytes
+  '  * zero
+  ' This keeps compatibility with the extended GPU addressing model.
   mem64(sys_offset+&HB4)=v
 case sys_offset+&HB5 ' Anamation player
   poke64(sys_offset+&HAB,0) ' clear screen
@@ -447,4 +452,14 @@ case sys_offset+&HEE 'POV-Ray terninal
      sleep
      ScreenRes 1920,1080, 32, 0, GFX_FULLSCREEN 'OR GFX_ALPHA_PRIMITIVES: Cls
 	 poke64(sys_offset+&HBC,0) ' reset screen
+case sys_offset+&HF0 ' GPU clock in GHz (read-only capability register)
+  mem64(sys_offset+&HF0) = 17
+case sys_offset+&HF1 ' GPU bus width in bits (read-only capability register)
+  mem64(sys_offset+&HF1) = 512
+case sys_offset+&HF2 ' GPU max addressable VRAM bytes
+  mem64(sys_offset+&HF2) = 1.797693134862316e+308 * 8
+case sys_offset+&HF3 ' GPU compatibility bitfield: 1=VIC-II,2=SVGA,4=ECS,8=AGA(HAM8)
+  mem64(sys_offset+&HF3) = &H0F
+case sys_offset+&HF4 ' Copperlists color mode bits-per-pixel (ARGB8888)
+  mem64(sys_offset+&HF4) = 32
 case sys_offset+&HFF: system
