@@ -20,13 +20,28 @@
 #define _CRTALLOC(x)        allocate(x)
 #define DECLSPEC_ALIGN(x)   x
 
+#if defined(__FB_WIN32__) or defined(__FB_WIN64__)
+    #define WIN32BI_HOST_WINDOWS 1
+#else
+    #define WIN32BI_HOST_WINDOWS 0
+#endif
+
 /' Basic Defines: '/
-#define NTAPI    stdcall
-#define WINAPI   stdcall
-#define APIENTRY stdcall
-#define CALLBACK stdcall
+#if WIN32BI_HOST_WINDOWS
+    #define WIN32BI_CALLCONV stdcall
+#else
+    #define WIN32BI_CALLCONV cdecl
+#endif
+
+#define NTAPI    WIN32BI_CALLCONV
+#define WINAPI   WIN32BI_CALLCONV
+#define APIENTRY WIN32BI_CALLCONV
+#define CALLBACK WIN32BI_CALLCONV
 #ifndef FORCEINLINE
 #define FORCEINLINE __forceinline
+#endif
+#ifndef __forceinline
+#define __forceinline inline
 #endif
 #ifdef UNICODE
 #define __TEXT(x) L ## x
@@ -36,6 +51,14 @@
 #endif
 #define PATH_MAX 260
 #define MAX_PATH 260
+#define WIN32BI_PATH_SEP_WIN "\\"
+#define WIN32BI_PATH_SEP_UNIX "/"
+
+#if WIN32BI_HOST_WINDOWS
+    #define WIN32BI_PATH_SEP WIN32BI_PATH_SEP_WIN
+#else
+    #define WIN32BI_PATH_SEP WIN32BI_PATH_SEP_UNIX
+#endif
 
 #define _WINDEF_
 #define _MINWINDEF_
@@ -245,6 +268,18 @@ type as HANDLE              HGLRC
 type as HANDLE              HMENU
 type as HANDLE ptr          PHANDLE
 type as HANDLE ptr          LPHANDLE
+
+#ifndef INVALID_HANDLE_VALUE
+const INVALID_HANDLE_VALUE = cast(HANDLE, -1)
+#endif
+
+#ifndef WAIT_OBJECT_0
+const WAIT_OBJECT_0 = 0
+#endif
+
+#ifndef WAIT_TIMEOUT
+const WAIT_TIMEOUT = 258
+#endif
 
 #define DECLARE_HANDLE(name) type name##__ _
  as integer unused _
