@@ -127,6 +127,46 @@ type MULTI
  end union   
 end type
 
+' 2-bit dynamic branch predictor (00 strong NT, 01 weak NT, 10 weak T, 11 strong T)
+const BRANCH_PREDICTOR_SIZE = 256
+static shared as ubyte branchPredictorState(BRANCH_PREDICTOR_SIZE - 1)
+static shared as ulongint branchPredictorPredictions, branchPredictorHits, branchPredictorMisses
+
+function BranchPredictorIndex(byval pc as ushort) as ubyte
+  return pc and (BRANCH_PREDICTOR_SIZE - 1)
+end function
+
+function BranchPredictorPredictTaken(byval pc as ushort) as ubyte
+  dim as ubyte idx = BranchPredictorIndex(pc)
+  return iif(branchPredictorState(idx) >= 2, 1, 0)
+end function
+
+sub BranchPredictorUpdate(byval pc as ushort, byval taken as ubyte)
+  dim as ubyte idx = BranchPredictorIndex(pc)
+  dim as ubyte predictedTaken = BranchPredictorPredictTaken(pc)
+  branchPredictorPredictions += 1
+  if predictedTaken = taken then
+    branchPredictorHits += 1
+  else
+    branchPredictorMisses += 1
+  end if
+  if taken then
+    if branchPredictorState(idx) < 3 then branchPredictorState(idx) += 1
+  else
+    if branchPredictorState(idx) > 0 then branchPredictorState(idx) -= 1
+  end if
+end sub
+
+sub ApplyPredictedBranch(byval Cpu as CPU6510_T, byval taken as ubyte)
+  dim as MULTI v
+  dim as ushort branchPc = Cpu->pc
+  v.u16 = branchPc
+  v.s16-=1
+  v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
+  BranchPredictorUpdate(branchPc, taken)
+  if taken then Cpu->pc=v.u16
+end sub
+
 type OPCODE
   as ulongint    code
   as zstring * 4 nam
@@ -822,33 +862,15 @@ sub INS_ASLA(byval Cpu as CPU6510_T) ' ac
 end sub
 
 sub INS_BCC(byval Cpu as CPU6510_T)
-  if Cpu->F.c=0 then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  ApplyPredictedBranch(Cpu, iif(Cpu->F.c=0,1,0))
 end sub
 
 sub INS_BCS(byval Cpu as CPU6510_T)
-  if Cpu->F.c then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  ApplyPredictedBranch(Cpu, iif(Cpu->F.c<>0,1,0))
 end sub
 
 sub INS_BEQ(byval Cpu as CPU6510_T)
-  if Cpu->F.z=1 then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  ApplyPredictedBranch(Cpu, iif(Cpu->F.z=1,1,0))
 end sub
 
 sub INS_BIT(byval Cpu as CPU6510_T)
@@ -860,33 +882,15 @@ sub INS_BIT(byval Cpu as CPU6510_T)
 end sub
 
 sub INS_BMI(byval Cpu as CPU6510_T)
-  if Cpu->F.n then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  ApplyPredictedBranch(Cpu, iif(Cpu->F.n<>0,1,0))
 end sub
 
 sub INS_BNE(byval Cpu as CPU6510_T)
-  if Cpu->F.z=0 then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  ApplyPredictedBranch(Cpu, iif(Cpu->F.z=0,1,0))
 end sub
 
 sub INS_BPL(byval Cpu as CPU6510_T)
-  if Cpu->F.n=0 then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  ApplyPredictedBranch(Cpu, iif(Cpu->F.n=0,1,0))
 end sub
 
 sub INS_BRK(byval Cpu as CPU6510_T)
@@ -900,23 +904,11 @@ sub INS_BRK(byval Cpu as CPU6510_T)
 end sub
 
 sub INS_BVC(byval Cpu as CPU6510_T)
-  if Cpu->F.v=0 then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  ApplyPredictedBranch(Cpu, iif(Cpu->F.v=0,1,0))
 end sub
 
 sub INS_BVS(byval Cpu as CPU6510_T)
-  if Cpu->F.v then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  ApplyPredictedBranch(Cpu, iif(Cpu->F.v<>0,1,0))
 end sub
 
 sub INS_CLC(byval Cpu as CPU6510_T)
