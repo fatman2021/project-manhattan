@@ -104,6 +104,10 @@ Project Manhattan is a next-generation MOS 6510-based CPU/GPU combo system on a 
 
 The system on a chip emulator is designed to work at all layers of abstraction(BIOS replacement to being used as an embedded application in a webpage). As such, the emulator must be self-contained and have a maximum file size limit of 16MB.
 
+## Size-budget check
+
+Use `tools/check_size_budget.sh <artifact> [max_mb]` to verify generated binaries stay within the 16MB default deployment limit.
+
 CPU - 4Ghz, 64-Bit, MOS 6510/VICE compatible, can address up to 1.797693134862316e+308 bytes of system memory.
 
 NOTE: System memory addresses can have any positive value in the range 4.940656458412465e-324 to 1.797693134862316e+308, 
