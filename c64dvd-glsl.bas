@@ -4136,14 +4136,21 @@ end proc
 
 static shared as ulongint ticks,res
 
+#define ZERO_NIBBLE                      0
+#define ONE_NIBBLE                       1
+#define FRAME_IRQ_TICK_INTERVAL          12000
+#define MAX_PC_WRAP                      &HFFFFFFFFFFFFFFFF
+#define MAX_RASTER_LINES                 1079
+
 def RasterLine(param as any ptr)
 	static as vector2 fragCoord
 	static as vector4 fragColor
     dim as threadscan ptr scanparams = cast(threadscan ptr, param)
+    dim as ulongint scanlineY = scanparams->yend - scanparams->yscan
     for in range(mov(x as ulongint,0),scanparams->xend)
-      	fragCoord.x = x
-      	fragCoord.y = scanparams->yend - scanparams->yscan
-      	computer.cpu_mos6510->mem->mainImage(fragColor, fragCoord)
+       	fragCoord.x = x
+	      fragCoord.y = scanlineY
+       	computer.cpu_mos6510->mem->mainImage(fragColor, fragCoord)
         pset fgimage, (x,scanparams->yscan),fragColor
     next    
 end def
@@ -4152,29 +4159,29 @@ end def
 ' main
 '
 def kmain(mb_info as multiboot_info ptr)
-	poke ulongint,@ticks,peek(ubyte,@nibbles(&B0000))
-	poke ulongint,@res,peek(ubyte,@nibbles(&B0000)) 
+	poke ulongint,@ticks,ZERO_NIBBLE
+	poke ulongint,@res,ZERO_NIBBLE
 	do
-	  mov(Ticks add, peek(ubyte,@nibbles(&B0001)))
-	  if mov(flag,peek(ubyte,@nibbles(&B0001))) then
+	  mov(Ticks add, ONE_NIBBLE)
+	  if mov(flag,ONE_NIBBLE) then
 		computer.cpu_mos6510->Tick Ticks
 		'         pc            pc
-	    mov(mem64(49418),(mem64(49418) add 1) mod &HFFFFFFFFFFFFFFFF)
+	    mov(mem64(49418),(mem64(49418) add 1) mod MAX_PC_WRAP)
 	   '          pc_512        pc_512
-	    mov(mem64(49500),(mem64(49500) add 1) mod &HFFFFFFFFFFFFFFFF)
+	    mov(mem64(49500),(mem64(49500) add 1) mod MAX_PC_WRAP)
 	  else
 		computer.cpu_mos6510->Tick
 	  end if
 	  ' call ISR after 12,000 ticks
-	  if mov(Ticks mod (peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B1100)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B1000)) add peek(ubyte,@nibbles(&B1110)) shl peek(ubyte,@nibbles(&B0100))),peek(ubyte,@nibbles(&B0000))) then
+	  if mov(Ticks mod FRAME_IRQ_TICK_INTERVAL,ZERO_NIBBLE) then
 		mov(Ticks add,InterruptService(computer.cpu_mos6510))
 		screenlock
-		put (peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0000))),bgimage,pset
-	 	put (peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0000))),fgimage,alpha
+		put (ZERO_NIBBLE,ZERO_NIBBLE),bgimage,pset
+	 	put (ZERO_NIBBLE,ZERO_NIBBLE),fgimage,alpha
 		screensync 
 		screenunlock		
 	    '         RASTR          RASTR
-	    mov(mem64(&HD012),(mem64(&HD012) add 1) mod 1079) 
+	    mov(mem64(&HD012),(mem64(&HD012) add 1) mod MAX_RASTER_LINES)
 	  end if
 	  ' mov(computer.cpu_mos6510->A,0) 
 	  ' draw to screen every 65,536 ticks
