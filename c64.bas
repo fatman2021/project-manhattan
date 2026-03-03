@@ -156,6 +156,8 @@ type CPU6510
   declare function ADR_UNK   as ushort ' unknow
   declare sub      Push   (byval v as ubyte)
   declare function Pull      as ubyte
+  declare sub      BranchCommit(byval branchPc as ushort, byval taken as integer)
+  declare sub      BranchExecute(byval taken as integer)
 
   union ' status register P
     as ubyte P
@@ -192,6 +194,10 @@ type CPU6510
   private:
   as OPCODE Opcodes(255)
   as string StrAdrModes(12)
+  as ubyte BranchPredictor(&HFFFF)
+  as ulongint BranchPredictions
+  as ulongint BranchHits
+  as ulongint BranchMispredictions
 end type
   
 type C64_T
@@ -336,6 +342,9 @@ constructor CPU6510(byval lpMem as MEMORY_T ptr)
   MSB=1 ':S=&HFF
   ' reset vector
   PC=&HFCE2
+  for i as integer = 0 to &HFFFF
+    BranchPredictor(i)=2
+  next
 end constructor
 
 destructor CPU6510
@@ -355,8 +364,37 @@ operator CPU6510.CAST as string
   " D:" & F.D & _
   " I:" & F.I & _
   " Z:" & F.Z & _
-  " C:" & F.C
+  " C:" & F.C & _
+  " BP:" & BranchHits & "/" & BranchPredictions
 end operator
+
+sub CPU6510.BranchCommit(byval branchPc as ushort, byval taken as integer)
+  dim as ubyte state = BranchPredictor(branchPc)
+  dim as integer predicted = iif(state >= 2,1,0)
+  BranchPredictions += 1
+  if predicted = taken then
+    BranchHits += 1
+  else
+    BranchMispredictions += 1
+  end if
+  if taken then
+    if state < 3 then state += 1
+  else
+    if state > 0 then state -= 1
+  end if
+  BranchPredictor(branchPc)=state
+end sub
+
+sub CPU6510.BranchExecute(byval taken as integer)
+  dim as ushort branchPc = PC - 2
+  BranchCommit(branchPc, taken)
+  if taken=0 then exit sub
+  dim as MULTI v
+  v.u16 = PC
+  v.s16 -= 1
+  v.s16 += mem->ReadByte(code.op.u16)+1
+  PC = v.u16
+end sub
 
 #ifdef DEBUG
 function CPU6510.Tick(byval flg as integer) as integer
@@ -685,35 +723,17 @@ end sub
 
 ' branch if carry clear
 sub INS_BCC(byval Cpu as CPU6510_T)
-  if Cpu->F.c=0 then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  Cpu->BranchExecute(iif(Cpu->F.c=0,1,0))
 end sub
 
 ' branch if carry set
 sub INS_BCS(byval Cpu as CPU6510_T)
-  if Cpu->F.c then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  Cpu->BranchExecute(iif(Cpu->F.c<>0,1,0))
 end sub
 
 ' branch if equal
 sub INS_BEQ(byval Cpu as CPU6510_T)
-  if Cpu->F.z=1 then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  Cpu->BranchExecute(iif(Cpu->F.z=1,1,0))
 end sub
 
 ' bit test memory with A
@@ -727,35 +747,17 @@ end sub
 
 ' branch if minus
 sub INS_BMI(byval Cpu as CPU6510_T)
-  if Cpu->F.n then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  Cpu->BranchExecute(iif(Cpu->F.n<>0,1,0))
 end sub
 
 ' branch if not equal
 sub INS_BNE(byval Cpu as CPU6510_T)
-  if Cpu->F.z=0 then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  Cpu->BranchExecute(iif(Cpu->F.z=0,1,0))
 end sub
 
 ' branch if plus
 sub INS_BPL(byval Cpu as CPU6510_T)
-  if Cpu->F.n=0 then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  Cpu->BranchExecute(iif(Cpu->F.n=0,1,0))
 end sub
 
 ' break instruction
@@ -771,24 +773,12 @@ end sub
 
 ' branch if overflow flag is clear
 sub INS_BVC(byval Cpu as CPU6510_T)
-  if Cpu->F.v=0 then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  Cpu->BranchExecute(iif(Cpu->F.v=0,1,0))
 end sub
 
 ' branch if overflow flag is set
 sub INS_BVS(byval Cpu as CPU6510_T)
-  if Cpu->F.v then
-    dim as MULTI v
-    v.u16 =Cpu->pc
-    v.s16-=1
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+1
-    Cpu->pc=v.u16
-  end if
+  Cpu->BranchExecute(iif(Cpu->F.v<>0,1,0))
 end sub
 
 ' clear carry flag
@@ -2879,4 +2869,3 @@ do
     Ticks+=InterruptService(computer.cpu)
   end if
 loop
-
