@@ -1674,3 +1674,14 @@ https://michaelcmartin.github.io/Ophis/book/book1.html
 # Ophis Github page:
 
 https://github.com/michaelcmartin/Ophis
+
+## Optimized FreeBASIC builds (size + speed)
+
+- Single-target optimized builds now use `compile_lnx.sh`, `compile_win.bat`, or `COMPILE.BAT` with aggressive optimization and stripping enabled by default.
+- To batch-build optimized binaries for all `.bas` sources, run:
+
+```bash
+./tools/optimize_all_freebasic.sh
+```
+
+Output binaries are written under `build/optimized/` preserving the source tree layout.
