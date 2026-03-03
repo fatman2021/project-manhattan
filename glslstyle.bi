@@ -59,6 +59,14 @@ FreeBASIC:
 #define DEG2RAD M_PI/180.0
 #define RAD2DEG 180.0/M_PI
 
+' GLSL profile metadata (mirrors modern desktop versions)
+const GLSL_VERSION_040 = 40
+const GLSL_VERSION_090 = 90
+const GLSL_VERSION_120 = 120
+const GLSL_VERSION_330 = 330
+const GLSL_VERSION_460 = 460
+const GLSL_VERSION_LATEST = GLSL_VERSION_460
+
 #define dot2(a) k_dot((a),(a))
 'function dot2(v as vec3) as float
 '  return dot(v,v)
@@ -1382,7 +1390,7 @@ Type sampler2D
      declare Sub Fill(color as ULong)
      declare Sub FastFillBox(x1 as Integer, y1 as Integer, x2 as Integer, y2 as Integer, xcolor as ULong)
      declare Function CreateSampler2D() As sampler2D
-     declare Function Sample(x as float, y as float) as float
+     declare Function Sample(x as float, y as float) as ULong
 End Type
 
 Sub sampler2D.Lock()
@@ -1394,12 +1402,14 @@ Sub sampler2D.Unlock()
 End Sub
 
 Sub sampler2D.WritePixel(x as Integer, y as Integer, xcolor as ULong)
-    Dim As ULong Ptr pixel = PixelData + y * Pitch + x * BytesPerPixel
+    Dim As UByte Ptr base = cast(UByte Ptr, PixelData)
+    Dim As ULong Ptr pixel = cast(ULong Ptr, base + y * Pitch + x * BytesPerPixel)
     *pixel = xcolor
 End Sub
 
 Function sampler2D.ReadPixel(x as Integer, y as Integer) as ULong
-    Dim As ULong Ptr pixel = PixelData + y * Pitch + x * BytesPerPixel
+    Dim As UByte Ptr base = cast(UByte Ptr, PixelData)
+    Dim As ULong Ptr pixel = cast(ULong Ptr, base + y * Pitch + x * BytesPerPixel)
     Return *pixel
 End Function
 
@@ -1436,12 +1446,45 @@ End Sub
 Function sampler2D.CreateSampler2D() As sampler2D
     Dim As sampler2D result
     ScreenInfo result.Width, result.Height, , result.BytesPerPixel, result.Pitch
-    result.PixelData = ImageCreate(Width, Height, , BytesPerPixel)
+    result.PixelData = ImageCreate(result.Width, result.Height, , result.BytesPerPixel)
     Return result
 End Function
 
-Function sampler2D.Sample(x as float, y as float) as float
-    Dim As Integer ix = Int(x * Width)
-    Dim As Integer iy = Int(y * Height)
+Function sampler2D.Sample(x as float, y as float) as ULong
+    Dim As Integer ix = Int(x * (Width - 1))
+    Dim As Integer iy = Int(y * (Height - 1))
+    if ix < 0 then ix = 0
+    if iy < 0 then iy = 0
+    if ix >= Width then ix = Width - 1
+    if iy >= Height then iy = Height - 1
     Return ReadPixel(ix, iy)
 End Function
+
+' GLSL 3.30+/4.60 style texture helpers
+function texture(byref image as sampler2D, byref uv as vector2) as vector4
+    dim as ulong c = image.Sample(uv.x, uv.y)
+    return vector4( _
+        cast(float, (c shr 16) and 255) / 255.0, _
+        cast(float, (c shr 8) and 255) / 255.0, _
+        cast(float, c and 255) / 255.0, _
+        cast(float, (c shr 24) and 255) / 255.0)
+end function
+
+function texture(byref image as sampler2D, x as float, y as float) as vector4
+    return texture(image, vector2(x, y))
+end function
+
+function texelFetch(byref image as sampler2D, byref xy as vector2) as vector4
+    dim as integer ix = cint(xy.x)
+    dim as integer iy = cint(xy.y)
+    if ix < 0 then ix = 0
+    if iy < 0 then iy = 0
+    if ix >= image.Width then ix = image.Width - 1
+    if iy >= image.Height then iy = image.Height - 1
+    dim as ulong c = image.ReadPixel(ix, iy)
+    return vector4( _
+        cast(float, (c shr 16) and 255) / 255.0, _
+        cast(float, (c shr 8) and 255) / 255.0, _
+        cast(float, c and 255) / 255.0, _
+        cast(float, (c shr 24) and 255) / 255.0)
+end function
