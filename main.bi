@@ -49,6 +49,8 @@ dim shared as short    data_pointer = 1, repeat
 dim shared as integer  prompt_flag = 1
 dim shared as string eol: eol = chr(13) + chr(10)
 
+#ifndef __POVRAY_T_DECLARED__
+#define __POVRAY_T_DECLARED__
 type POVRAY_T
  public:
   declare sub povray_loc(pov_loc as string)
@@ -58,6 +60,7 @@ type POVRAY_T
   declare sub new_pov()
   declare sub list_pov()
   declare sub _include(s as string)
+  declare sub camera(s as string)
   declare sub camaera(s as string)
   declare sub sky(s as string)
   declare sub direction(s as string)
@@ -88,11 +91,18 @@ type POVRAY_T
   declare sub pigment(s as string)
   declare sub _union(s as string)
   declare sub translate(s as string)
+  declare sub rotate(s as string)
+  declare sub scale(s as string)
+  declare sub box(s as string)
+  declare sub cone(s as string)
+  declare sub torus(s as string)
   as string string_pov
   as string endline = eol
   as string povloc
 end type
+#endif
 
 dim shared as POVRAY_T povray
+povray.endline = eol
 
 #include once "povray.bas"

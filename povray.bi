@@ -1,5 +1,76 @@
+#ifndef __POVRAY_BI__
+#define __POVRAY_BI__
 
 ' Ring 0 - POV-Ray
+
+#ifndef POVRAY_SCENE_FILE
+#define POVRAY_SCENE_FILE "tmp.pov"
+#endif
+
+#ifndef POVRAY_IMAGE_FILE
+#define POVRAY_IMAGE_FILE "tmp.png"
+#endif
+
+#ifndef POVRAY_BITMAP_FILE
+#define POVRAY_BITMAP_FILE "tmp.bmp"
+#endif
+
+#ifndef POVRAY_RENDER_ARGS
+#define POVRAY_RENDER_ARGS "+I" + POVRAY_SCENE_FILE + " +O" + POVRAY_IMAGE_FILE
+#endif
+
+#ifndef __POVRAY_T_DECLARED__
+#define __POVRAY_T_DECLARED__
+type POVRAY_T
+ public:
+  declare sub povray_loc(pov_loc as string)
+  declare sub render()
+  declare sub open_pov()
+  declare sub close_pov()
+  declare sub new_pov()
+  declare sub list_pov()
+  declare sub _include(s as string)
+  declare sub camera(s as string)
+  declare sub camaera(s as string)
+  declare sub sky(s as string)
+  declare sub direction(s as string)
+  declare sub _right(s as string)
+  declare sub location(s as string)
+  declare sub look_at(s as string)
+  declare sub angle(s as string)
+  declare sub end_sub()
+  declare sub light_source(s as string)
+  declare sub vector(s as string)
+  declare sub background(s as string)
+  declare sub _color(s as string)
+  declare sub plane(s as string)
+  declare sub sphere(s as string)
+  declare sub global_settings(s as string)
+  declare sub texture(s as string)
+  declare sub _declare(s as string)
+  declare sub end_declare()
+  declare sub _object(s as string)
+  declare sub povsub(s as string)
+  declare sub cylinder(s as string)
+  declare sub finish(s as string)
+  declare sub ambient(s as string)
+  declare sub diffuse(s as string)
+  declare sub reflection(s as string)
+  declare sub specular(s as string)
+  declare sub roughness(s as string)
+  declare sub pigment(s as string)
+  declare sub _union(s as string)
+  declare sub translate(s as string)
+  declare sub rotate(s as string)
+  declare sub scale(s as string)
+  declare sub box(s as string)
+  declare sub cone(s as string)
+  declare sub torus(s as string)
+  as string string_pov
+  as string endline
+  as string povloc
+end type
+#endif
 
 /'
  ' These two are used if POV is being called from within another program
