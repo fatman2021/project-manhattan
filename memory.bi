@@ -247,30 +247,8 @@ L3:
   ' open "64c.251913-01.bin" for binary as peek(ubyte,@nibbles(&B0001))
   ' open "complete.318023-02.bin" for binary as peek(ubyte,@nibbles(&B0001))
 #else
-  open _
-      chr(peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011))) _ 'c
-  add chr(peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1111))) _ 'o
-  add chr(peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101))) _ 'm
-  add chr(peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)))                                  _ 'p
-  add chr(peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1100))) _ 'l 
-  add chr(peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101))) _ 'e
-  add chr(peek(ubyte,@nibbles(&B0111)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0100))) _ 't
-  add chr(peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101))) _ 'e
-  add chr(peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110))) _ '.
-  add chr(peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011))) _ '3
-  add chr(peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0001))) _ '1
-  add chr(peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1000))) _ '8
-  add chr(peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)))                                  _ '0
-  add chr(peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010))) _ '2
-  add chr(peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0011))) _ '3
-  add chr(peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1101))) _ '-
-  add chr(peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)))                                  _ '0
-  add chr(peek(ubyte,@nibbles(&B0011)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010))) _ '2
-  add chr(peek(ubyte,@nibbles(&B0010)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110))) _ '.
-  add chr(peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010))) _ 'b
-  add chr(peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1001))) _ 'i
-  add chr(peek(ubyte,@nibbles(&B0110)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B1110))) _ 'n
-  for binary as peek(ubyte,@nibbles(&B0001))
+  ' Avoid building the ROM filename character-by-character at runtime.
+  open "complete.318023-02.bin" for binary as peek(ubyte,@nibbles(&B0001))
 #endif
   ' open "basic_generic.rom" for binary as peek(ubyte,@nibbles(&B0001))
   ' open "basichi" for binary as peek(ubyte,@nibbles(&B0001))
@@ -715,10 +693,8 @@ L10:
   ' label$194:;
   
   ' fb_StrAssign( (void*)&MEM$1, -1ll, (void*)"FREE", 5ll, 0 );
-  mov(mem, chr(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0110))) _ 'F
-       add chr(peek(ubyte,@nibbles(&B0101)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0010))) _ 'R
-       add chr(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101))) _ 'E
-       add chr(peek(ubyte,@nibbles(&B0100)) shl peek(ubyte,@nibbles(&B0100)) add peek(ubyte,@nibbles(&B0101))))  'E
+  ' Avoid repeated temporary string construction for a static value.
+  mov(mem, "FREE")
   
   ' *(int64*)4808136ll = (int64)*(uint8*)4808097ll;
   poke ulongint,@i,peek(ubyte,@nibbles(&B0001))
