@@ -1,51 +1,57 @@
 #include once "main.bi"
 
-if prompt_flag = 1 then 
+if prompt_flag = 1 then
  print "* ";
  prompt_flag = 0
-end if  
+end if
 
-if key > 31 and key < 127 then 
+if key > 31 and key < 127 then
    dim as integer tmp
    print chr(key);
    get_data = get_data + chr(key)
 elseif chr(key)= chr(13) then
    print chr(13)
    select case ucase(left(get_data,1))
-    case "}": pokeb &H0000A000F,0 
+    case "}": pokeb &H0000A000F,0
     case "<"
-     string_data = get_data 
-     pokeb &H0000A0011,0      
-   end select	     
+     string_data = get_data
+     pokeb &H0000A0011,0
+   end select
    select case ucase(left(get_data,2))
     case "01"
      string_data = mid(get_data, 4, len(get_data))
      pokeb &H000000082,0
-    case "05" 
+    case "05"
      string_data = mid(get_data, 4, len(get_data))
      pokeb &H000000083,0
     case "10"
      string_data = mid(get_data, 4, len(get_data))
-     pokeb &H000000084,0   
-    case "66" 
+     pokeb &H000000084,0
+    case "66"
      string_data = mid(get_data, 4, len(get_data))
      pokeb &H000000085,0
     case "88"
      string_data = mid(get_data, 4, len(get_data))
-     pokeb &H000000086,0      
+     pokeb &H000000086,0
     case "IF"
      string_data = mid(get_data, 4, len(get_data))
-     pokeb &H000000094,0         
+     pokeb &H000000094,0
    end select
    select case ucase(left(get_data,3))
+    case "BOX"
+	 string_data = mid(get_data, 5, len(get_data))
+     pokeb &H0000A0028,0
     case "SKY"
- 	 string_data = mid(get_data, 5, len(get_data))
+	 string_data = mid(get_data, 5, len(get_data))
      pokeb &H0000A0009,0
     case "ADD"
- 	 string_data = mid(get_data, 5, len(get_data))
-     pokeb &H00000008E,0      	     
+	 string_data = mid(get_data, 5, len(get_data))
+     pokeb &H00000008E,0
    end select
    select case ucase(left(get_data,4))
+    case "CONE"
+	 string_data = mid(get_data, 6, len(get_data))
+	 pokeb &H0000A0029,0
 	case "MOVE"
 	 select case ucase(mid(get_data, 6, 3))
 	  case "R0,": r0 = val(mid(get_data, 10, len(get_data)))
@@ -58,7 +64,7 @@ elseif chr(key)= chr(13) then
 	 select case ucase(mid(get_data, 6, 6))
 	  case "COBOL,"
 	   string_data = mid(get_data, 13, len(get_data))
-	   pokeb &H00000008B,0 
+	   pokeb &H00000008B,0
 	 end select
 	 select case ucase(mid(get_data, 6, 7))
 	  case "x_axis0": x_axis0 = val(mid(get_data, 14, len(get_data)))
@@ -77,40 +83,43 @@ elseif chr(key)= chr(13) then
 	 end if
 	case "WHEN"
 	 string_data = ucase(mid(get_data, 6, len(get_data)))
-	 pokeb &H000000098,0 
+	 pokeb &H000000098,0
 	case "ELSE"
      string_data = ucase(mid(get_data, 6, len(get_data)))
-     pokeb &H000000095,0   
+     pokeb &H000000095,0
 	case "DUMP"
-	 cls 
+	 cls
 	 dim tmp as ulong
 	 tmp = val(mid(get_data,6,len(get_data)))
 	 for tmp = tmp to tmp + 50
 	  print tab(160); hex(tmp); " "; hex(ram(tmp))
-	 next tmp     
+	 next tmp
    end select
    select case ucase(left(get_data, 5))
     case "GO TO"
      string_data = mid(get_data, 7, len(get_data))
-     pokeb &H00000009B,0   
+     pokeb &H00000009B,0
     case "PLANE"
      string_data = mid(get_data, 7, len(get_data))
      pokeb &H0000A0014,0
     case "UNION"
      string_data = mid(get_data, 7, len(get_data))
      pokeb &H0000A0024,0
+    case "TORUS"
+	 string_data = mid(get_data, 7, len(get_data))
+     pokeb &H0000A002A,0
     case "COLOR"
      string_data = mid(get_data, 7, len(get_data))
      pokeb &H0000A0012,0
     case "ANGLE"
- 	 string_data = mid(get_data, 7, len(get_data))
-     pokeb &H0000A000E,0     
+	 string_data = mid(get_data, 7, len(get_data))
+     pokeb &H0000A000E,0
     case "RIGHT"
- 	 string_data = mid(get_data, 7, len(get_data))
-     pokeb &H0000A000B,0 
+	 string_data = mid(get_data, 7, len(get_data))
+     pokeb &H0000A000B,0
 	case "ENTER"
-	 text_buffer=char_buffer: cls 
-	 dim as string tmp1 
+	 text_buffer=char_buffer: cls
+	 dim as string tmp1
 	 tmp1 = mid(get_data,7,len(get_data))
 	 adr0 = val(tmp1): get_data = ""
 	 while chr(key) <> "q"
@@ -129,193 +138,199 @@ elseif chr(key)= chr(13) then
 	   get_data = "": prompt_flag = 0
 	   adr0 = adr0 + 1
 	   print
-	  end if     
+	  end if
 	 wend
-	 text_buffer=char_buffer: cls 
-   end select 
+	 text_buffer=char_buffer: cls
+   end select
    select case ucase(left(get_data, 6))
     case "STRING"
      string_data = mid(get_data, 8, len(get_data))
 	 pokeb &H00000009E,0
     case "END-IF"
      string_data = mid(get_data, 8, len(get_data))
-	 pokeb &H000000096,0      
+	 pokeb &H000000096,0
     case "FINISH"
      string_data = mid(get_data, 8, len(get_data))
-	 pokeb &H0000A001D,0               
+	 pokeb &H0000A001D,0
     case "CAMERA"
      string_data = mid(get_data, 8, len(get_data))
-	 pokeb &H0000A0008,0       
+	 pokeb &H0000A0008,0
+    case "ROTATE"
+     string_data = mid(get_data, 8, len(get_data))
+	 pokeb &H0000A0026,0
     case "POVSUB"
      string_data = mid(get_data, 8, len(get_data))
-	 pokeb &H0000A001B,0   
+	 pokeb &H0000A001B,0
     case "COBSUB"
      string_data = mid(get_data, 8, len(get_data))
-	 pokeb &H000000093,0   
+	 pokeb &H000000093,0
     case "DIVIDE"
      string_data = mid(get_data, 8, len(get_data))
-	 pokeb &H000000091,0   
+	 pokeb &H000000091,0
     case "ACCEPT"
      string_data = mid(get_data, 8, len(get_data))
-	 pokeb &H00000008C,0   
+	 pokeb &H00000008C,0
     case "SPHERE"
      string_data = mid(get_data, 8, len(get_data))
 	 pokeb &H0000A0015,0
     case "OBJECT"
 	 string_data = mid(get_data, 8, len(get_data))
-	 pokeb &H0000A001A,0       
-    case "AUTHOR"   
+	 pokeb &H0000A001A,0
+    case "AUTHOR"
 	 string_data = mid(get_data, 8, len(get_data))
-     pokeb &H0000007B,0  
-   end select 
+     pokeb &H0000007B,0
+   end select
    select case ucase(left(get_data, 7))
     case "INSPECT"
      string_data = mid(get_data, 9, len(get_data))
-     pokeb &H00000009D,0 
+     pokeb &H00000009D,0
     case "PERFORM"
      string_data = mid(get_data, 9, len(get_data))
-     pokeb &H00000009A,0 
+     pokeb &H00000009A,0
     case "DIFFUSE"
-   	 string_data = mid(get_data, 9, len(get_data))
-     pokeb &H0000A0023,0       
+	 string_data = mid(get_data, 9, len(get_data))
+     pokeb &H0000A0023,0
+    case "SCALE"
+	 string_data = mid(get_data, 9, len(get_data))
+     pokeb &H0000A0027,0
     case "AMBIENT"
-  	 string_data = mid(get_data, 9, len(get_data))
-     pokeb &H0000A001E,0    
+	 string_data = mid(get_data, 9, len(get_data))
+     pokeb &H0000A001E,0
     case "PIGMENT"
 	 string_data = mid(get_data, 9, len(get_data))
-     pokeb &H0000A0022,0               
+     pokeb &H0000A0022,0
     case "COMPUTE"
- 	 string_data = mid(get_data, 9, len(get_data))
-     pokeb &H000000092,0     
+	 string_data = mid(get_data, 9, len(get_data))
+     pokeb &H000000092,0
     case "TEXTURE"
 	 string_data = mid(get_data, 9, len(get_data))
-     pokeb &H0000A0017,0          
+     pokeb &H0000A0017,0
     case "LOOK_AT"
 	 string_data = mid(get_data, 9, len(get_data))
-	 pokeb &H0000A000D,0              
+	 pokeb &H0000A000D,0
     case "DISPLAY"
 	 string_data = mid(get_data, 9, len(get_data))
-     pokeb &H000000088,0 	     
-   end select  
+     pokeb &H000000088,0
+   end select
    select case ucase(left(get_Data, 8))
     case "VARIABLE"
      string_data = mid(get_Data, 10, len(get_data))
-     pokeb &H0000000A0, 0   
+     pokeb &H0000000A0, 0
     case "UNSTRING"
      string_data = mid(get_Data, 10, len(get_data))
-     pokeb &H00000009F, 0   
+     pokeb &H00000009F, 0
     case "EVALUATE"
      string_data = mid(get_Data, 10, len(get_data))
      pokeb &H000000097, 0
     case "SPECULAR"
-   	 string_data = mid(get_data, 10, len(get_data))
-     pokeb &H0000A0020,0     
+	 string_data = mid(get_data, 10, len(get_data))
+     pokeb &H0000A0020,0
     case "SUBTRACT"
-  	 string_data = mid(get_data, 10, len(get_data))
-     pokeb &H00000008F,0 
+	 string_data = mid(get_data, 10, len(get_data))
+     pokeb &H00000008F,0
     case "MULTIPLY"
-   	 string_data = mid(get_data, 10, len(get_data))
-     pokeb &H000000090,0           
+	 string_data = mid(get_data, 10, len(get_data))
+     pokeb &H000000090,0
     case "CYLINDER"
-  	 string_data = mid(get_data, 10, len(get_data))
-     pokeb &H0000A001C,0  
+	 string_data = mid(get_data, 10, len(get_data))
+     pokeb &H0000A001C,0
     case "#DECLARE"
 	 string_data = mid(get_data, 10, len(get_data))
-     pokeb &H0000A0018,0       
+     pokeb &H0000A0018,0
     case "#INCLUDE"
 	 string_data = mid(get_data, 10, len(get_data))
-     pokeb &H0000A0007,0   
+     pokeb &H0000A0007,0
     case "LOCATION"
 	 string_data = mid(get_data, 10, len(get_data))
-	 pokeb &H0000A000C,0         
+	 pokeb &H0000A000C,0
     case "SECURITY"
 	 string_data = mid(get_data, 10, len(get_data))
-	 pokeb &H00000007F,0     
-   end select 
+	 pokeb &H00000007F,0
+   end select
    select case ucase(left(get_data, 9))
     case "TRANSLATE"
-   	 string_data = mid(get_data, 11, len(get_data))
-	 pokeb &H0000A0025,0    
-    case "ROUGHNESS"
-  	 string_data = mid(get_data, 11, len(get_data))
-	 pokeb &H0000A0021,0        
-    case "PARAGRAPH"
-  	 string_data = mid(get_data, 11, len(get_data))
-	 pokeb &H00000008A,0      
-    case "DIRECTION" 
 	 string_data = mid(get_data, 11, len(get_data))
-	 pokeb &H0000A000A,0              
+	 pokeb &H0000A0025,0
+    case "ROUGHNESS"
+	 string_data = mid(get_data, 11, len(get_data))
+	 pokeb &H0000A0021,0
+    case "PARAGRAPH"
+	 string_data = mid(get_data, 11, len(get_data))
+	 pokeb &H00000008A,0
+    case "DIRECTION"
+	 string_data = mid(get_data, 11, len(get_data))
+	 pokeb &H0000A000A,0
    end select
    select case ucase(left(get_data, 10))
     case "END-STRING"
      string_data = mid(get_data, 12, len(get_data))
-	 pokeb &H0000000A1,0 
+	 pokeb &H0000000A1,0
     case "REFLECTION"
- 	 string_data = mid(get_data, 12, len(get_data))
-	 pokeb &H0000A001F,0     
+	 string_data = mid(get_data, 12, len(get_data))
+	 pokeb &H0000A001F,0
     case "INITIALIZE"
 	 string_data = mid(get_data, 12, len(get_data))
-	 pokeb &H00000008C,0     
+	 pokeb &H00000008C,0
     case "BACKGROUND"
 	 string_data = mid(get_data, 12, len(get_data))
-	 pokeb &H0000A0013,0 
-    case "PROGRAM-ID"     
+	 pokeb &H0000A0013,0
+    case "PROGRAM-ID"
 	 string_data = mid(get_data, 12, len(get_data))
      pokeb &H0000007A,0
    end select
    select case ucase(left(get_data, 11))
     case "END-PERFORM"
- 	 string_data = mid(get_data, 13, len(get_data)) 
-	 pokeb &H00000009C,0    
-   end select     
+	 string_data = mid(get_data, 13, len(get_data))
+	 pokeb &H00000009C,0
+   end select
    select case ucase(left(get_data, 12))
     case "END-UNSTRING"
- 	 string_data = mid(get_data, 14, len(get_data)) 
+	 string_data = mid(get_data, 14, len(get_data))
 	 pokeb &H0000000A2,0
     case "END-EVALUATE"
- 	 string_data = mid(get_data, 14, len(get_data)) 
-	 pokeb &H000000099,0     
+	 string_data = mid(get_data, 14, len(get_data))
+	 pokeb &H000000099,0
     case "#END DECLARE": pokeb &H0000A0019,0
     case "LIGHT_SOURCE"
- 	 string_data = mid(get_data, 14, len(get_data)) 
+	 string_data = mid(get_data, 14, len(get_data))
 	 pokeb &H0000A0010,0
 	case "INSTALLATION"
-	 string_data = mid(get_data, 14, len(get_data)) 
+	 string_data = mid(get_data, 14, len(get_data))
 	 pokeb &H0000007C,0
 	case "DATE-WRITTEN"
 	 string_data = mid(get_data, 14, len(get_data))
 	 pokeb &H0000007D,0
    end select
-   select case ucase(left(get_data, 13)) 
+   select case ucase(left(get_data, 13))
     case "DATA DIVISION"
- 	 string_data = mid(get_data, 14, len(get_data))
-	 pokeb &H000000080,0    
+	 string_data = mid(get_data, 14, len(get_data))
+	 pokeb &H000000080,0
     case "AMBIENT_LIGHT"
 	 string_data = mid(get_data, 14, len(get_data))
-	 pokeb &H0000A0018,0                  
-    case "DATE-COMPILED" 
+	 pokeb &H0000A0018,0
+    case "DATE-COMPILED"
      string_data = mid(get_data, 14, len(get_data))
-     pokeb &H00000007E,0 
+     pokeb &H00000007E,0
    end select
    select case ucase(left(get_data, 15))
     case "GLOBAL_SETTINGS"
      string_data = mid(get_data, 17, len(get_data))
-     pokeb &H0000A0016,0    
-   end select 
-   select case ucase(left(get_data, 18)) 
-    case "PROCEDURE DIVISION" 
+     pokeb &H0000A0016,0
+   end select
+   select case ucase(left(get_data, 18))
+    case "PROCEDURE DIVISION"
      string_data = mid(get_data, 20, len(get_data))
-     pokeb &H000000087, 0 
+     pokeb &H000000087, 0
    end select
    select case lcase(get_data)
-	  case "quit","exit","system","bye","(quit)": system         
+	  case "quit","exit","system","bye","(quit)": system
 	  case "clear","cls","home":  cls
-	  case "begin cobol":         pokeb &H000000077,0	
-	  case "end cobol":           pokeb &H000000078,0	
+	  case "begin cobol":         pokeb &H000000077,0
+	  case "end cobol":           pokeb &H000000078,0
 	  case "begin povray":        pokeb &H0000A0005,0
-	  case "end povray":          pokeb &H0000A0006,0   
+	  case "end povray":          pokeb &H0000A0006,0
 	  case "new cobol":           povray.new_pov
-	  case "new povray": shell "rm tmp.pov tmp.png tmp.bmp"
+	  case "new povray": povray.new_pov
 	  case "list cobol"
 	   dim tmp as string
 	   open "tmp.cob" for input as #1
@@ -339,7 +354,7 @@ elseif chr(key)= chr(13) then
         if ucase(tmp) <> "EXIT" then print #1, tmp
        loop
        close #1
-       cls 	  
+       cls
       case "povray editor"
        cls
        dim tmp as string
@@ -354,7 +369,7 @@ elseif chr(key)= chr(13) then
 	  case "echo $r1": print r1
 	  case "echo $r2": print r2
 	  case "echo $x_axis0": print x_axis0
-	  case "echo $y_axis0": print y_axis0  
+	  case "echo $y_axis0": print y_axis0
 	  case "move r0, r1":          pokeb &H000000004, 0
 	  case "move r0, r2":          pokeb &H000000005, 0
 	  case "move r1, r0":          pokeb &H000000006, 0
@@ -369,7 +384,7 @@ elseif chr(key)= chr(13) then
 	  case "move adr0, r2":        pokeb &H00000000F, 0
 	  case "move adr1, r0":        pokeb &H000000010, 0
 	  case "move adr1, r1":        pokeb &H000000011, 0
-	  case "move adr1, r2":        pokeb &H000000012, 0  
+	  case "move adr1, r2":        pokeb &H000000012, 0
 	  case "move adr3, r0":        pokeb &H000000013, 0
 	  case "move adr3, r1":        pokeb &H000000014, 0
 	  case "move adr3, r2":        pokeb &H000000015, 0
@@ -384,7 +399,7 @@ elseif chr(key)= chr(13) then
 	  case "move blue2, r0":       pokeb &H00000001E, 0
 	  case "move xalpha0, r0":     pokeb &H00000001F, 0
 	  case "move xalpha1, r0":     pokeb &H000000020, 0
-	  case "move xalpha2, r0":     pokeb &H000000021, 0   
+	  case "move xalpha2, r0":     pokeb &H000000021, 0
 	  case "move x_axis0, r0":     pokeb &H000000022, 0
 	  case "move x_axis1, r0":     pokeb &H000000023, 0
 	  case "move y_axis0, r0":     pokeb &H000000024, 0
@@ -402,7 +417,7 @@ elseif chr(key)= chr(13) then
 	  case "move radius, r0":      pokeb &H000000030, 0
 	  case "move string_adr, r0":  pokeb &H000000031, 0
 	  case "move string_len, r0":  pokeb &H000000032, 0
-	  case "move r0, mouse_X":     pokeb &H000000033, 0 
+	  case "move r0, mouse_X":     pokeb &H000000033, 0
 	  case "move mouse_x, r0":     pokeb &H000000034, 0
 	  case "move r0, mouse_y":     pokeb &H000000035, 0
 	  case "move mouse_y, r0":     pokeb &H000000036, 0
@@ -420,8 +435,8 @@ elseif chr(key)= chr(13) then
 	  case "move r0, a5":          pokeb &H000000042, 0
 	  case "move r0, a6":          pokeb &H000000043, 0
 	  case "move r0, a7":          pokeb &H000000044, 0
-	  case "move r0, a8":          pokeb &H000000045, 0  
-	  case "move r0, key":         pokeb &H000000046, 0 
+	  case "move r0, a8":          pokeb &H000000045, 0
+	  case "move r0, key":         pokeb &H000000046, 0
 	  case "add r1, r2":           pokeb &H000000047, 0
 	  case "sub r1, r2":           pokeb &H000000048, 0
 	  case "mul r1, r2":           pokeb &H000000049, 0
@@ -430,7 +445,7 @@ elseif chr(key)= chr(13) then
 	  case "exp r1, r2":           pokeb &H00000004C, 0
 	  case "mod r0, r1":           pokeb &H00000004D, 0
 	  case "neg r0":               pokeb &H00000004E, 0
-	  case "shl r1, r2":           pokeb &H00000004F, 0 
+	  case "shl r1, r2":           pokeb &H00000004F, 0
 	  case "shr r1, r2":           pokeb &H000000050, 0
 	  case "equ r1, r2":           pokeb &H000000051, 0
 	  case "ne  r1, r2":           pokeb &H000000052, 0
@@ -450,9 +465,9 @@ elseif chr(key)= chr(13) then
 	  case "inc r2":               pokeb &H000000060, 0
 	  case "dec r0":               pokeb &H000000061, 0
 	  case "dec r1":               pokeb &H000000062, 0
-	  case "dec r2":               pokeb &H000000063, 0	        
+	  case "dec r2":               pokeb &H000000063, 0
    end select
-   if old_pc <> &H00 then pc = old_pc: old_pc = &H00    
-   data_pointer = 1: prompt_flag = 1 
+   if old_pc <> &H00 then pc = old_pc: old_pc = &H00
+   data_pointer = 1: prompt_flag = 1
    get_data = ""
 end if

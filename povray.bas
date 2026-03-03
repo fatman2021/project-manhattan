@@ -1,17 +1,38 @@
 #include once "main.bi"
 
+#ifndef POVRAY_SCENE_FILE
+#define POVRAY_SCENE_FILE "tmp.pov"
+#endif
+
+#ifndef POVRAY_IMAGE_FILE
+#define POVRAY_IMAGE_FILE "tmp.png"
+#endif
+
+#ifndef POVRAY_BITMAP_FILE
+#define POVRAY_BITMAP_FILE "tmp.bmp"
+#endif
+
+#ifndef POVRAY_RENDER_ARGS
+#define POVRAY_RENDER_ARGS "+I" + POVRAY_SCENE_FILE + " +O" + POVRAY_IMAGE_FILE
+#endif
+
 sub POVRAY_T.povray_loc(pov_loc as string)
  povloc = pov_loc
 end sub
 
 sub POVRAY_T.render()
- shell povloc + "povray tmp.pov"
- shell "convert tmp.png tmp.bmp"
- bload "tmp.bmp", 0
+ dim render_cmd as string
+ if len(trim(povloc)) > 0 then
+  render_cmd = povloc + " "
+ end if
+ render_cmd += "povray " + POVRAY_RENDER_ARGS
+ shell render_cmd
+ shell "convert " + POVRAY_IMAGE_FILE + " " + POVRAY_BITMAP_FILE
+ if fileexists(POVRAY_BITMAP_FILE) then bload POVRAY_BITMAP_FILE, 0
 end sub
 
 sub POVRAY_T.open_pov()
- open "tmp.pov" for output as #1
+ open POVRAY_SCENE_FILE for output as #1
 end sub
 
 sub POVRAY_T.close_pov()
@@ -19,12 +40,14 @@ sub POVRAY_T.close_pov()
 end sub
 
 sub POVRAY_T.new_pov()
- shell "rm tmp.pov tmp.png tmp.bmp"
+ if fileexists(POVRAY_SCENE_FILE) then kill POVRAY_SCENE_FILE
+ if fileexists(POVRAY_IMAGE_FILE) then kill POVRAY_IMAGE_FILE
+ if fileexists(POVRAY_BITMAP_FILE) then kill POVRAY_BITMAP_FILE
 end sub
 
 sub POVRAY_T.list_pov()
  dim tmp as string
- open "tmp.pov" for input as #1
+ open POVRAY_SCENE_FILE for input as #1
   do until eof(1)
    input #1, tmp
     print tmp
@@ -36,9 +59,13 @@ sub POVRAY_T._include(s as string)
  print #1, "#include "; s
 end sub
 
-sub POVRAY_T.camaera(s as string)
+sub POVRAY_T.camera(s as string)
  print #1, "camera "; s
- end sub
+end sub
+
+sub POVRAY_T.camaera(s as string)
+ camera(s)
+end sub
  
 sub POVRAY_T.sky(s as string)
  print #1, "sky "; s
@@ -154,6 +181,26 @@ end sub
 
 sub POVRAY_T.translate(s as string)
  print #1, "translate "; s
+end sub
+
+sub POVRAY_T.rotate(s as string)
+ print #1, "rotate "; s
+end sub
+
+sub POVRAY_T.scale(s as string)
+ print #1, "scale "; s
+end sub
+
+sub POVRAY_T.box(s as string)
+ print #1, "box "; s
+end sub
+
+sub POVRAY_T.cone(s as string)
+ print #1, "cone "; s
+end sub
+
+sub POVRAY_T.torus(s as string)
+ print #1, "torus "; s
 end sub
 
   

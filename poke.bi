@@ -4,8 +4,8 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
   ram(adr)=v
   select case adr
    case &H000000001: r0 = v           ' move r0, v
-   case &H000000002: r1 = v           ' move r1, v  
-   case &H000000003: r2 = v           ' move r2, v 
+   case &H000000002: r1 = v           ' move r1, v
+   case &H000000003: r2 = v           ' move r2, v
    case &H000000004: r0 = r1          ' move r0, r1
    case &H000000005: r0 = r2          ' move r0, r2
    case &H000000006: r1 = r0          ' move r1, r0
@@ -20,13 +20,13 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
    case &H00000000F: adr0 = r2        ' move adr0, r2
    case &H000000010: adr1 = r0        ' move adr1, r0
    case &H000000011: adr1 = r1        ' move adr1, r1
-   case &H000000012: adr1 = r2        ' move adr1, r2  
+   case &H000000012: adr1 = r2        ' move adr1, r2
    case &H000000013: adr3 = r0        ' move adr3, r0
    case &H000000014: adr3 = r1        ' move adr3, r1
    case &H000000015: adr3 = r2        ' move adr3, r2
    case &H000000016: red0 = r0        ' move red0, r0
    case &H000000017: red1 = r0        ' move red0, r0
-   case &H000000018: red2 = r0        ' move red2, r0 
+   case &H000000018: red2 = r0        ' move red2, r0
    case &H000000019: green0 = r0      ' move green0, r0
    case &H00000001A: green1 = r0      ' move green1, r0
    case &H00000001B: green2 = r0      ' move green2, r0
@@ -35,7 +35,7 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
    case &H00000001E: blue2 = r0       ' move blue2, r0
    case &H00000001F: xalpha0 = r0     ' move xalpha0, r0
    case &H000000020: xalpha1 = r0     ' move xalpha1, r0
-   case &H000000021: xalpha2 = r0     ' move xalpha2, r0   
+   case &H000000021: xalpha2 = r0     ' move xalpha2, r0
    case &H000000022: x_axis0 = r0     ' move x_axis0, r0
    case &H000000023: x_axis1 = r0     ' move x_axis1, r0
    case &H000000024: y_axis0 = r0     ' move y_axis0, r0
@@ -71,8 +71,8 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
    case &H000000042: r0 = a5          ' move r0, a5
    case &H000000043: r0 = a6          ' move r0, a6
    case &H000000044: r0 = a7          ' move r0, a7
-   case &H000000045: r0 = a8          ' move r0, a8   
-   case &H000000046: r0 = key         ' move r0, key 
+   case &H000000045: r0 = a8          ' move r0, a8
+   case &H000000046: r0 = key         ' move r0, key
    case &H000000047: r0 = r1 + r2     ' add r1, r2
    case &H000000048: r0 = r1 - r2     ' sub r1, r2
    case &H000000049: r0 = r1 * r2     ' mul r1, r2
@@ -88,7 +88,7 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
    case &H000000053: r0 = (r1 < r2)   ' lt  r1, r2
    case &H000000054: r0 = (r1 <= r2)  ' lte r1, r2
    case &H000000055: r0 = (r1 >= r2)  ' gle r1, r2
-   case &H000000056: r0 = (r1 > r2)   ' gt  r1, r2 
+   case &H000000056: r0 = (r1 > r2)   ' gt  r1, r2
    case &H000000057: r0 = (r1 and r2) ' and r1, r2
    case &H000000058: r0 = (r1 eqv r2) ' eqv r1, r2
    case &H000000059: r0 = (r1 imp r2) ' imp r1, r2
@@ -102,12 +102,12 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
    case &H000000061: r0 = r0 - 1      ' dec r0
    case &H000000062: r1 = r1 - 1      ' dec r1
    case &H000000063: r2 = r2 - 1      ' dec r2
-   case &H000000064:                  ' be  [address]  
+   case &H000000064:                  ' be  [address]
     if (r1 = r2) then pc = v
    case &H000000065:                  ' bne [address]
     if (r1 <> r2) then pc = v
    case &H000000066:                  ' bg  [address]
-    if (r1 > r2) then pc = v          
+    if (r1 > r2) then pc = v
    case &H000000067:                  ' bge [address]
     if (r1 >= r2) then pc = v
    case &H000000068:                  ' ble [address]
@@ -130,7 +130,7 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
 		    ram(pc + 10)
 	times = ram(pc + 11) shl 32 + ram(pc + 12) shl 24 +_
 		    ram(pc + 13) shl 16 + ram(pc + 14) shl 08 +_
-		    ram(pc + 15)		       
+		    ram(pc + 15)
     do until tmp = times
      for pc = adr0 to adr1
       pokeb ram(pc), 0
@@ -153,18 +153,18 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
 	adr0 = ram(pc + 1) shl 32 + ram(pc + 2) shl 24 +_
 		   ram(pc + 3) shl 16 + ram(pc + 4) shl 08 +_
 		   ram(pc + 5)
-	r3 = peekb(adr0)      
+	r3 = peekb(adr0)
    case &H000000070 ' pokeb adr0, r3
 	adr0 = ram(pc + 1) shl 32 + ram(pc + 2) shl 24 +_
 		   ram(pc + 3) shl 16 + ram(pc + 4) shl 08 +_
 		   ram(pc + 5)
 	r3   = ram(pc + 6)
-	pokeb adr0, r3     
+	pokeb adr0, r3
    case &H000000071 ' peekw r3
 	adr0 = ram(pc + 1) shl 32 + ram(pc + 2) shl 24 +_
 		   ram(pc + 3) shl 16 + ram(pc + 4) shl 08 +_
 		   ram(pc + 5)
-	r3 = peekw(adr0)       
+	r3 = peekw(adr0)
    case &H000000072 ' pokew adr0, r3
 	adr0 = ram(pc + 1) shl 32 + ram(pc + 2) shl 24 +_
 		   ram(pc + 3) shl 16 + ram(pc + 4) shl 08 +_
@@ -180,7 +180,7 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
 	adr1 = ram(pc + 6) shl 32 + ram(pc + 7) shl 24 +_
 		   ram(pc + 8) shl 16 + ram(pc + 9) shl 08 +_
 		   ram(pc + 10)
-	pokeb adr0, peekb(adr1)       
+	pokeb adr0, peekb(adr1)
    case &H000000074 ' pokew [address],[address]
 	   adr0 = ram(pc + 1) shl 32 + ram(pc + 2) shl 24 +_
 			  ram(pc + 3) shl 16 + ram(pc + 4) shl 08 +_
@@ -193,8 +193,8 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
 	adr0 = ram(pc + 1) shl 32 + ram(pc + 2) shl 24 +_
 		   ram(pc + 3) shl 16 + ram(pc + 4) shl 08 +_
 		   ram(pc + 5)
-	string_data = str(r0)             
-	for r3 = 1 to len(string_data)             
+	string_data = str(r0)
+	for r3 = 1 to len(string_data)
 	  pokeb (char_buffer+adr0)+(r3-1),_
 	  screencode(asc(mid(string_data,r3,1)))
 	next r3
@@ -208,15 +208,15 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
 				 ram(pc + 10)
 	adr0       = ram(pc + 11) shl 32 + ram(pc + 12) shl 24 +_
 				 ram(pc + 13) shl 16 + ram(pc + 14) shl 08 +_
-				 ram(pc + 15): pc = pc + 16		                
+				 ram(pc + 15): pc = pc + 16
 	for r3 = 0 to string_len
 	 pokeb (char_buffer + adr0) + r3,_
-	 screencode(ram(string_adr + r3)) 		    
+	 screencode(ram(string_adr + r3))
 	next r3
-   case &H000000077	
+   case &H000000077
     open "tmp.cob" for output as #1
-   case &H000000078 
-    close #1       
+   case &H000000078
+    close #1
    case &H000000079
     print #1, "IDENTIFICATION DIVISION."
    case &H00000007A
@@ -244,9 +244,9 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
    case &H000000085
     print #1, "          66 "; string_data
    case &H000000086
-    print #1, "   88 "; string_data        
+    print #1, "   88 "; string_data
    case &H000000087
-    print #1, "PROCEDURE DIVISION. "; string_data 
+    print #1, "PROCEDURE DIVISION. "; string_data
    case &H000000088
     print #1, "   DISPLAY "; string_data
    case &H000000089
@@ -254,7 +254,7 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
    case &H00000008A ' paragraph
     print #1, string_data
    case &H00000008B
-    print #1, "   MOVE "; string_data  
+    print #1, "   MOVE "; string_data
    case &H00000008C
     print #1, "   ACCEPT "; string_data
    case &H00000008D
@@ -276,17 +276,17 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
    case &H000000095
     print #1, "   ELSE "; string_data
    case &H000000096
-    print #1, "   END-IF "; string_data      
+    print #1, "   END-IF "; string_data
    case &H000000097
     print #1, "   EVALUATE "; string_data
    case &H000000098
     print #1, "   WHEN "; string_data
-   case &H000000099 
+   case &H000000099
     print #1, "   END-EVALUATE "; string_data
    case &H00000009A
     print #1, "   PERFORM "; string_data
    case &H00000009B
-    print #1, "   GO TO "; string_data  
+    print #1, "   GO TO "; string_data
    case &H00000009C
     print #1, "   END-PERFORM."
    case &H00000009D
@@ -300,17 +300,17 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
    case &H0000000A1
     print #1, "   END-STRING"
    case &H0000000A2
-    print #1, "   END-UNSTRING"                       		            
+    print #1, "   END-UNSTRING"
    case &H000004000 to &H000007E70 ' Screen Memory(Text 0x000004000-
-                                  '                     0x000007E70)    
-    adr-=&H000004000 
+                                  '                     0x000007E70)
+    adr-=&H000004000
     col0 = rgba(red0, green0, blue0, xalpha0)
     char_ptr=v:char_ptr shl=3
     x_axis0=adr mod char_w:x_axis0 shl =3:x_axis0+=8*4
     y_axis0=adr  \  char_h:y_axis0 shl =3:y_axis0+=8*4
     screenlock
     for y_axis1 = 0 to 7
-  	  for x_axis1 = 0 to 7 
+	  for x_axis1 = 0 to 7
 	    if char(char_ptr) and (128 shr x_axis1) then
 		  pset(x_axis0+x_axis1,y_axis0+y_axis1),col0
 	    else
@@ -318,22 +318,22 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
 	    end if
 	  next
 	  char_ptr+=1
-    next 
+    next
     screenunlock y_axis0,y_axis0+8
     adr+=&H000004000:v=ram(adr)
    case &H0000A0000 ' Graphics Register Ports
     line(x_axis0, y_axis0)-(x_axis0+pixel_size,y_axis0+pixel_size),_
-         rgba(red2,green2,blue2,xalpha2), BF 
-   case &H0000A0001 
+         rgba(red2,green2,blue2,xalpha2), BF
+   case &H0000A0001
     line(x_axis0, y_axis0)-(x_axis1, y_axis1), rgba(red2,green2,blue2,_
-         xalpha2), , bitmask 
-   case &H0000A0002 
+         xalpha2), , bitmask
+   case &H0000A0002
     circle(x_axis0, y_axis1), radius, rgba(red2,green2,blue2,xalpha2)
    case &H0000A0003: povray.render()
    case &H0000A0005: povray.open_pov()
    case &H0000A0006: povray.close_pov()
    case &H0000A0007: povray._include(string_data)
-   case &H0000A0008: povray.camaera(string_data)
+   case &H0000A0008: povray.camera(string_data)
    case &H0000A0009: povray.sky(string_data)
    case &H0000A000A: povray.direction(string_data)
    case &H0000A000B: povray._right(string_data)
@@ -352,25 +352,30 @@ sub pokeb(byval adr as uinteger,byval v as uinteger)
    case &H0000A0018: povray._declare(string_data)
    case &H0000A0019: povray.end_declare()
    case &H0000A001A: povray._object(string_data)
-   case &H0000A001B: povray.povsub(string_data) 
+   case &H0000A001B: povray.povsub(string_data)
    case &H0000A001C: povray.cylinder(string_data)
    case &H0000A001D: povray.finish(string_data)
    case &H0000A001E: povray.ambient(string_data)
    case &H0000A001F: povray.reflection(string_data)
    case &H0000A0020: povray.specular(string_data)
    case &H0000A0021: povray.roughness(string_data)
-   case &H0000A0022: povray.pigment(string_data) 
+   case &H0000A0022: povray.pigment(string_data)
    case &H0000A0023: povray.diffuse(string_data)
    case &H0000A0024: povray._union(string_data)
-   case &H0000A0025: povray.translate(string_data)                    
+   case &H0000A0025: povray.translate(string_data)
+   case &H0000A0026: povray.rotate(string_data)
+   case &H0000A0027: povray.scale(string_data)
+   case &H0000A0028: povray.box(string_data)
+   case &H0000A0029: povray.cone(string_data)
+   case &H0000A002A: povray.torus(string_data)
    case &H0000C0000 to &H0000C7FF0' Screen Memory(0x000C0000-0x000C7FF0)
                                   ' Reprogrammable character set
-   adr-=&H00000C0000: char(adr)=v: adr+=&H00000C0000         
-  end select  
+   adr-=&H00000C0000: char(adr)=v: adr+=&H00000C0000
+  end select
 end sub
 
 sub pokew(adr as ulong, value as ushort)
 	Pokeb adr, lobyte(value)
 	Pokeb adr+1, hibyte(value)
 end sub
- 
+
