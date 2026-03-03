@@ -46,7 +46,9 @@ Const VRAM_TOTAL =((VRAM_SIZE*1024*1024)-1)
 
 ' memoria
 static shared As UByte rambuf(0 To RAM_TOTAL) 
-static shared As UByte rombuf(0 To &h1FFFF) 
+Const FIRMWARE_FLASH_SIZE_MB = 64
+Const FIRMWARE_FLASH_SIZE_BYTES =(FIRMWARE_FLASH_SIZE_MB*1024*1024)
+static shared As UByte rombuf(0 To FIRMWARE_FLASH_SIZE_BYTES-1) 
 static shared As UByte vrambuf(0 To VRAM_TOTAL) 
 static shared As UByte vrombuf(0 To &h7FFF) 
 'static shared As UByte rambiosbuf(&h10000) ' inventado por mi
@@ -135,6 +137,7 @@ loadbinary &h0000, "video\ET4K_W32.bin", vrom ' con 2mb de VRAM : esta permite l
 'loadbinary &h0000, "bios\ami486.bin", rom 
 
 init_PC("ali1429g") 
+firmware_set_flash_size_mb(FIRMWARE_FLASH_SIZE_MB)
 loadbinary &h0000, "bios\ali1429g.bin", rom 
 
 'loadbinary &h0000, "bios\test.bin", rom 

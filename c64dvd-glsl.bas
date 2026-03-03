@@ -50,6 +50,21 @@ faster than accessing it directly from main memory. Prefetching can be done with
    #DEFINE SYSTEM_TYPE DOUBLE
 #ENDIF
 
+' UEFI/SPI firmware flash sizing presets (modern boards)
+#define UEFI_FLASH_MB_LEGACY_MIN          8
+#define UEFI_FLASH_MB_LEGACY_MAX          16
+#define UEFI_FLASH_MB_MAINSTREAM          32
+#define UEFI_FLASH_MB_HIGH_END            64
+#define UEFI_FLASH_MB_RECOMMENDED_DEFAULT UEFI_FLASH_MB_MAINSTREAM
+
+Function get_uefi_flash_size_category(ByVal flash_size_mb As Integer) As String
+  If flash_size_mb >= UEFI_FLASH_MB_HIGH_END Then Return "modern-high-end"
+  If flash_size_mb >= UEFI_FLASH_MB_MAINSTREAM Then Return "mainstream-modern"
+  If flash_size_mb >= UEFI_FLASH_MB_LEGACY_MIN Then Return "budget-legacy"
+  Return "legacy-bios-era"
+End Function
+
+
 ' declare def poke64(byval adr as SYSTEM_TYPE, byval v as SYSTEM_TYPE)
 
 ' Zeropage addressing (0-255)

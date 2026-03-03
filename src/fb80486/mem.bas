@@ -9,6 +9,11 @@ static shared As Integer cache=4 ' en la rutina "mem_updatecache" 4=256k, el max
 static shared As Integer memwaitstate
 static shared As ULong biosmask=&hFFFF ' BIOS de 64k
 static shared As Integer cachesize=256
+
+Const FIRMWARE_FLASH_LEGACY_8_MB = 8
+Const FIRMWARE_FLASH_LEGACY_16_MB = 16
+Const FIRMWARE_FLASH_MAINSTREAM_32_MB = 32
+Const FIRMWARE_FLASH_HIGH_END_64_MB = 64
 'static shared as UByte romext(32768)
 static shared As ULong mmucache(0 To &hFFFFF)
 static shared As Integer mmucaches(0 To 53)
@@ -22,6 +27,31 @@ static Shared as ULong mem_logical_addr
 
 Declare Sub addwritelookup(virt As ULong , phys As ULong ) 
 Declare Sub addreadlookup (virt As ULong , phys As ULong )
+
+Function firmware_recommended_flash_size_mb(ByVal motherboard_tier As String) As Integer
+    Dim tier_lc As String = LCase(Trim(motherboard_tier))
+
+    If tier_lc = "premium" Or tier_lc = "enthusiast" Or tier_lc = "high-end" Then
+        Return FIRMWARE_FLASH_HIGH_END_64_MB
+    EndIf
+    If tier_lc = "mainstream" Or tier_lc = "midrange" Then
+        Return FIRMWARE_FLASH_MAINSTREAM_32_MB
+    EndIf
+    If tier_lc = "legacy" Or tier_lc = "budget" Then
+        Return FIRMWARE_FLASH_LEGACY_16_MB
+    EndIf
+
+    Return FIRMWARE_FLASH_MAINSTREAM_32_MB
+End Function
+
+Sub firmware_set_flash_size_mb(ByVal size_mb As Integer)
+    If size_mb < 1 Then size_mb = 1
+    If size_mb > FIRMWARE_FLASH_HIGH_END_64_MB Then size_mb = FIRMWARE_FLASH_HIGH_END_64_MB
+
+    firmware_flash_size_mb = size_mb
+    firmware_flash_size_bytes = Culng(size_mb) * 1024UL * 1024UL
+    biosmask = firmware_flash_size_bytes - 1UL
+End Sub
 
 
 

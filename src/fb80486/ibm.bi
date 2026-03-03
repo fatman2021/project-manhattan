@@ -67,6 +67,8 @@ static shared As UShort zero=0
 
 
 static shared As Integer shadowbios ,shadowbios_write, grabar_bios, modo_bios
+static shared As Integer firmware_flash_size_mb
+static shared As ULong firmware_flash_size_bytes
 static shared As ULong pccache
 static shared As UShort flags,eflags
 static shared As Ulong oldds',olddslimit,olddslimitw
@@ -75,6 +77,9 @@ static shared As Integer cpl_override
 
 
 static shared As Integer readflash ' Used by the IDE
+
+Declare Function firmware_recommended_flash_size_mb(ByVal motherboard_tier As String) As Integer
+Declare Sub firmware_set_flash_size_mb(ByVal size_mb As Integer)
 
 ' port variables
 static shared puertosb(0 To &hFFFF) as UByte
