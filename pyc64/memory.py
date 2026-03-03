@@ -17,20 +17,23 @@ import time
 from collections import defaultdict
 
 
+_PYC64SPECIAL_REPLACEMENTS = {
+    "{": "┤",
+    "}": "├",
+    "^": "↑",
+    "~": "▒",  # PI 'π' in lower-case charset
+    "π": "▒",  # PI 'π' in lower-case charset
+    "`": "'",
+    "_": "▁",
+    "|": "│",
+    "\\": "M",  # 'backslash' in lower-case charset
+}
+
+
 def _codec_errors_pyc64specials(error):
     result = []
     for i in range(error.start, error.end):
-        replacement = {
-            "{": "┤",
-            "}": "├",
-            "^": "↑",
-            "~": "▒",  # PI 'π' in lower-case charset
-            "π": "▒",  # PI 'π' in lower-case charset
-            "`": "'",
-            "_": "▁",
-            "|": "│",
-            "\\": "M",  # 'backslash' in lower-case charset
-        }.get(error.object[i])
+        replacement = _PYC64SPECIAL_REPLACEMENTS.get(error.object[i])
         if replacement:
             result.append(replacement)
         else:
@@ -70,7 +73,10 @@ class Memory:
 
     def clear(self):
         """set all memory values to 0."""
-        for a in range(0, 0x10000):
+        if not self.rom_areas and not any(self.hooked_writes):
+            self.mem[:] = b"\x00" * self.size
+            return
+        for a in range(self.size):
             self[a] = 0
 
     def getword(self, address, signed=False):
@@ -100,16 +106,16 @@ class Memory:
     def __getitem__(self, addr_or_slice):
         """get the value of a memory location or range of locations (via slice)"""
         if type(addr_or_slice) is int:
+            value = self.mem[addr_or_slice]
             if self.hooked_reads[addr_or_slice]:
-                value = self.mem[addr_or_slice]
                 for hook in self.read_hooks[addr_or_slice]:
                     newvalue = hook(addr_or_slice, value)
                     if newvalue is not None:
                         value = newvalue
                 self.mem[addr_or_slice] = value
-            return self.mem[addr_or_slice]
+            return value
         elif type(addr_or_slice) is slice:
-            if any(self.hooked_reads[addr_or_slice]):
+            if self.hooked_reads[addr_or_slice].find(1) != -1:
                 # there's at least one address in the slice with a hook, so... slow mode
                 return [
                     self[addr]
@@ -135,7 +141,7 @@ class Memory:
             else:
                 self.mem[addr_or_slice] = value
         elif type(addr_or_slice) is slice:
-            if any(self.hooked_writes[addr_or_slice]):
+            if self.hooked_writes[addr_or_slice].find(1) != -1:
                 # there's at least one address in the slice with a hook, so... slow mode
                 if type(value) is int:
                     for addr in range(*addr_or_slice.indices(self.size)):
