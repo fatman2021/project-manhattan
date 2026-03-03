@@ -128,8 +128,8 @@ type _FBARRAY
 end type
 type as _FBARRAY FBARRAY
 
-#define BYTES_PER_PIXEL(d)		(((d) + 7) / 8)
-#define BPP_MASK(b)				cast((int32),((1ll shl ((b) shl 3)) - 1))
+#define BYTES_PER_PIXEL(d)		(((d) + 7) shr 3)
+#define BPP_MASK(b)				cast((int32), iif((b) >= 4, &HFFFFFFFFu, ((1u shl ((b) shl 3)) - 1u)))
 
 #define DEFAULT_COLOR_1			&H80000000
 #define DEFAULT_COLOR_2			&H40000000
