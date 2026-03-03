@@ -89,6 +89,7 @@ type MEMORY_T
   declare sub      WriteUShort(byval adr as double, byval w16 as double)
   declare function Peek64(byval adr as double) as double
   declare sub      poke64(byval adr as double, byval v as double)
+  declare function NormalizeAddress(byval adr as double) as double
 #if 0
   const as ulongint mov(os_end,      &HFFFF) '------|
   const as ulongint mov(os_base,     &HE000) '  8 K | KERNAL ROM or RAM (adr 0 bit1=0 RAM bit1=1 ROM
@@ -117,6 +118,9 @@ type MEMORY_T
   as double   basic (00016383d) ' Basic
   as double   char  (00016383d) ' Font
   as double   col   (00001023d) ' color triples
+  as double   sparseAdr()
+  as ubyte    sparseVal()
+  as ulong    sparseCount
 end type
 
 enum ADR_MODES
@@ -341,6 +345,9 @@ destructor C64_T
 end destructor
 
 constructor MEMORY_T
+  redim sparseAdr(0)
+  redim sparseVal(0)
+  sparseCount = 0
   'Set default memory addresses
   mov(sys_offset,49152d)
   mov(fg_red, sys_offset add 2d):     mov(fg_grn, sys_offset add 3d)
@@ -484,20 +491,70 @@ destructor MEMORY_T
   dprint("MEMORY_T~")
 end destructor
 
+proc MEMORY_T.NormalizeAddress(byval adr as double) as double
+  if (adr <> adr) then
+    proc = 0d
+    exit proc
+  end if
+  if (abs(adr) > 1.7976931348623157d+308) then
+    proc = 0d
+    exit proc
+  end if
+  proc = adr
+end proc
+
 proc MEMORY_T.Peek64(byval adr as double) as double
-  select case adr 
-  case &HE000 to &HFFFF:mov(proc,kernal(adr-&HE000))
-  case &HA000 to &HBFFF:mov(proc,basic (adr-&HA000))
-  case &HD800 to &HDBFF:mov(proc,char  (adr-&HD800))
-  case &HD000 to &HD3FF
-    var mov(reg,logic_and(adr,&H003f))
-    if mov(reg, &H12) then mov(proc,0d) else mov(proc,&HFF)
-  case else : mov(proc,mem64(adr))
-  end select
+  adr = NormalizeAddress(adr)
+  if (adr = fix(adr)) andalso (adr >= 0d) andalso (adr <= ubound(mem64)) then
+    dim as ulong idx = culng(adr)
+    select case idx
+    case &HE000 to &HFFFF:mov(proc,kernal(idx-&HE000))
+    case &HA000 to &HBFFF:mov(proc,basic (idx-&HA000))
+    case &HD800 to &HDBFF:mov(proc,char  (idx-&HD800))
+    case &HD000 to &HD3FF
+      var mov(reg,logic_and(idx,&H003f))
+      if mov(reg, &H12) then mov(proc,0d) else mov(proc,&HFF)
+    case else : mov(proc,mem64(idx))
+    end select
+    exit proc
+  end if
+
+  if sparseCount > 0 then
+    for i as ulong = 0 to sparseCount-1
+      if sparseAdr(i) = adr then
+        proc = sparseVal(i)
+        exit proc
+      end if
+    next i
+  end if
+  proc = 0d
 end proc
 
 def MEMORY_T.poke64(byval adr as double,byval v as double)
-  mov(mem64(adr), v)
+  adr = NormalizeAddress(adr)
+  v = logic_and(v,255d)
+  if (adr = fix(adr)) andalso (adr >= 0d) andalso (adr <= ubound(mem64)) then
+    mov(mem64(culng(adr)), v)
+  else
+    if sparseCount > 0 then
+      for i as ulong = 0 to sparseCount-1
+        if sparseAdr(i) = adr then
+          sparseVal(i) = cubyte(v)
+          exit def
+        end if
+      next i
+    end if
+    if sparseCount = 0 then
+      redim sparseAdr(0)
+      redim sparseVal(0)
+    else
+      redim preserve sparseAdr(sparseCount)
+      redim preserve sparseVal(sparseCount)
+    end if
+    sparseAdr(sparseCount) = adr
+    sparseVal(sparseCount) = cubyte(v)
+    sparseCount += 1
+  end if
   if logic_and(adr geq 55296d,adr leq 56319d) then
     mov(adr subt, 55296d): mov(col(adr), v)
     mov(adr add, mem64(scr_ptr))
