@@ -420,6 +420,9 @@ end union
 static shared as double NAN = 0.0/0.0
 static shared as double POS_INF = 1.0 /0.0
 static shared as double NEG_INF = -1.0/0.0
+' IEEE-754 double-precision bounds used for emulated color channels.
+const COLOR_CHANNEL_MIN_ABS as double = 4.940656458412465e-324
+const COLOR_CHANNEL_MAX_ABS as double = 1.797693134862316e+308
 
 #define EPSILON 1e-7
 
