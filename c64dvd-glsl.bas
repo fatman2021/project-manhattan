@@ -2635,6 +2635,36 @@ type MULTI
 end type
 
 static shared as MULTI v,o
+
+' 2-bit dynamic branch predictor (00 strong NT, 01 weak NT, 10 weak T, 11 strong T)
+const BRANCH_PREDICTOR_SIZE = 256
+static shared as ubyte branchPredictorState(BRANCH_PREDICTOR_SIZE - 1)
+static shared as ulongint branchPredictorPredictions, branchPredictorHits, branchPredictorMisses
+
+def BranchPredictorIndex(byval pc as ushort) as ubyte
+  proc = pc and (BRANCH_PREDICTOR_SIZE - 1)
+end def
+
+def BranchPredictorPredictTaken(byval pc as ushort) as ubyte
+  var idx = BranchPredictorIndex(pc)
+  proc = iif(branchPredictorState(idx) >= 2, peek(ubyte,@nibbles(&B0001)), peek(ubyte,@nibbles(&B0000)))
+end def
+
+def BranchPredictorUpdate(byval pc as ushort, byval taken as ubyte)
+  var idx = BranchPredictorIndex(pc)
+  var predictedTaken = BranchPredictorPredictTaken(pc)
+  branchPredictorPredictions += peek(ubyte,@nibbles(&B0001))
+  if predictedTaken = taken then
+    branchPredictorHits += peek(ubyte,@nibbles(&B0001))
+  else
+    branchPredictorMisses += peek(ubyte,@nibbles(&B0001))
+  end if
+  if taken then
+    if branchPredictorState(idx) < 3 then branchPredictorState(idx) += peek(ubyte,@nibbles(&B0001))
+  else
+    if branchPredictorState(idx) > 0 then branchPredictorState(idx) -= peek(ubyte,@nibbles(&B0001))
+  end if
+end def
    
 type OPCODE
   as uint64      code
@@ -3319,10 +3349,12 @@ end def
 ' - predicate = 1: branch target updates architectural state (PC)
 ' - predicate = 0: target is calculated but architectural state is not modified
 def ApplyPredicatedBranch(byval Cpu as CPU6510_T, byval predicate as ubyte)
-  static as ushort candidatePc
-  candidatePc = Cpu->pc
+  static as ushort candidatePc, branchPc
+  branchPc = Cpu->pc
+  candidatePc = branchPc
   candidatePc -= peek(ubyte,@nibbles(&B0001))
   candidatePc += Cpu->mem->ReadByte(Cpu->Code.op.u16) + peek(ubyte,@nibbles(&B0001))
+  BranchPredictorUpdate(branchPc, predicate)
   if predicate then Cpu->pc = candidatePc
 end def
 
