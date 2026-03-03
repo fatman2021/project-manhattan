@@ -2,244 +2,184 @@
 static shared Result(0 to 2047) as unsigned byte
 static shared Result2(0 to 2047) as unsigned byte
 
-' function min(v1 as unsigned integer,v2 as unsigned integer) as unsigned integer
-'     if (v1<v2) then return v1
-'     return v2
-' end function
+function min(v1 as unsigned integer,v2 as unsigned integer) as unsigned integer
+    if (v1<v2) then return v1
+    return v2
+end function
 
-' function sqrt(d as double) as double
-' 	dim result as double = d
-'     dim i as integer' 
-	SCW(i)
-'  
-'         fld qword ptr [result]
-'         fsqrt
-'         fst qword ptr [result]
-'         
-'     RCW()
-' 	return result
-' end function
+function sqrt(d as double) as double
+    return sqr(d)
+end function
 
-' function fcos(d as double) as double
-' 	dim result as double = d
-'    dim i as integer
-'	asm
-'  
-'        fld qword ptr [result]
-'        fcos
-'        fst qword ptr [result]
-'        
-'    end asm
-'	return result
-' end function
+function fcos(d as double) as double
+    return cos(d)
+end function
 
-' function fsin(d as double) as double
-' 	dim result as double = d
-'     dim i as integer
-' 	asm
-'   
-'         fld qword ptr [result]
-'         fsin
-'         fst qword ptr [result]
-'        
-'     end asm
-' 	return result
-' end function
+function fsin(d as double) as double
+    return sin(d)
+end function
 
-' function strlen(s as unsigned byte ptr) as unsigned integer
-'     dim retval as unsigned integer
-'     retval=0
-'     while s[retval]<>0
-'         retval+=1
-'     wend
-'     return retval
-' end function
+function strlen(s as unsigned byte ptr) as unsigned integer
+    dim retval as unsigned integer=0
+    while s[retval]<>0
+        retval+=1
+    wend
+    return retval
+end function
 
-' function strtrim(s as unsigned byte ptr) as unsigned byte ptr
-'     dim retval  as unsigned byte ptr=@(Result(0))
-'     retval[0]=0
-'     dim i as integer=0
-'     dim j as integer=0
-'     while (s[i]<>0 and s[i]=32 and s[i]<>9 and s[i]<>10 and s[i]<>13)
-'         i+=1
-'     wend
-'     while(s[i]<>0)
-'         retval[j]=s[i]
-'         i+=1
-'         j+=1
-'     wend
-'     retval[j]=0
-'     
-'     strrev(retval)
-'     
-'     i=0
-'     j=0
-'     while (retval[i]<>0 and retval[i]=32 and retval[i]=9 and retval[i]=10 and retval[i]=13)
-'         i+=1
-'     wend
-'     while(retval[i]<>0)
-'        retval[j]=retval[i]'
-'        i+=1
-'        j+=1
-'     wend
-'     retval[j]=0
-'     strrev(retval)
-'     
-'     return retval
-' end function
+sub strrev(s as unsigned byte ptr)
+    dim l as integer=strlen(s)
+    dim i as integer
+    dim tmp as unsigned byte
+    for i=0 to (l\2)-1
+        tmp=s[i]
+        s[i]=s[l-i-1]
+        s[l-i-1]=tmp
+    next i
+end sub
 
-' function strcontains(s as unsigned byte ptr,s2 as unsigned byte ptr) as integer
-'     return 0
-' end function
+function strtrim(s as unsigned byte ptr) as unsigned byte ptr
+    dim dst as unsigned byte ptr=@(Result(0))
+    dim i as integer=0
+    dim j as integer=0
+    dim last as integer=-1
 
-' function strindexof(s as unsigned byte ptr,s2 as unsigned byte ptr) as integer
-'     var l1=strlen(s)
-'     var l2=strlen(s2)
-'     dim i as integer
-'     dim j as integer
-'     var ok=0
-'     for i=0 to l1-l2
-'         if s[i]=s2[0] then
-'             ok=1
-'             for j=0 to l2-1
-'                 if s[i+j]<>s2[j] then 
-'                     ok=0
-'                     exit for
-'                 end if
-'             next j
-'             if ok<>0 then return i
-'         end if
-'     next i
-'     return -1
-' end function
+    while (s[i]=32 or s[i]=9 or s[i]=10 or s[i]=13)
+        i+=1
+    wend
 
-' function strlastindexof(s as unsigned byte ptr,s2 as unsigned byte ptr) as integer
-'     var l1=strlen(s)
-'     var l2=strlen(s2)
-'     dim i as integer
-'     dim j as integer
-'     var ok=0
-'     for i=l1-l2 to 0 step -1
-'         if s[i]=s2[0] then' 
-'             ok=1
-'             for j=0 to l2-1
-'                 if s[i+j]<>s2[j] then 
-'                     ok=0
-'                     exit for
-'                 end if
-'             next j
-'             if ok<>0 then return i
-'         end if
-'     next i
-'     return -1
-' end function
+    while s[i]<>0 and j<2047
+        dst[j]=s[i]
+        if not (dst[j]=32 or dst[j]=9 or dst[j]=10 or dst[j]=13) then
+            last=j
+        end if
+        i+=1
+        j+=1
+    wend
 
+    if last<0 then
+        dst[0]=0
+    else
+        dst[last+1]=0
+    end if
+    return dst
+end function
 
-' function strncmp(s1 as unsigned byte ptr,s2 as unsigned byte ptr,count as unsigned integer) as integer
-'     dim retval as integer=0
-'     dim i as integer=0
-'     while i<count
-' 		if (s1[i]<>s2[i]) then return s1[i]-s2[i]
-'         i+=1
-'     wend
-'     return 0
-' end function
+function strcmp(s1 as unsigned byte ptr,s2 as unsigned byte ptr) as integer
+    dim i as unsigned integer=0
+    while s1[i]=s2[i] and s1[i]<>0
+        i+=1
+    wend
+    return s1[i]-s2[i]
+end function
 
-' function strcmp(s1 as unsigned byte ptr,s2 as unsigned byte ptr) as integer
-'     dim retval as integer=0
-'     dim i as integer=0
-'     while s1[i]=s2[i] and s1[i]<>0 and s2[i]<>0
-'         i+=1
-'     wend
-'     return s1[i]-s2[i]
-' end function
+function strncmp(s1 as unsigned byte ptr,s2 as unsigned byte ptr,count as unsigned integer) as integer
+    dim i as unsigned integer=0
+    while i<count
+        if s1[i]<>s2[i] or s1[i]=0 or s2[i]=0 then return s1[i]-s2[i]
+        i+=1
+    wend
+    return 0
+end function
 
+function strindexof(s as unsigned byte ptr,s2 as unsigned byte ptr) as integer
+    dim l1 as integer=strlen(s)
+    dim l2 as integer=strlen(s2)
+    dim i as integer
+    if l2=0 then return 0
+    if l2>l1 then return -1
+    for i=0 to l1-l2
+        if strncmp(s+i,s2,l2)=0 then return i
+    next i
+    return -1
+end function
 
+function strlastindexof(s as unsigned byte ptr,s2 as unsigned byte ptr) as integer
+    dim l1 as integer=strlen(s)
+    dim l2 as integer=strlen(s2)
+    dim i as integer
+    if l2=0 then return l1
+    if l2>l1 then return -1
+    for i=l1-l2 to 0 step -1
+        if strncmp(s+i,s2,l2)=0 then return i
+    next i
+    return -1
+end function
 
-' sub strrev(s as unsigned byte ptr)
-'     
-'     dim l as integer=strlen(s)
-'     dim i as integer
-'     dim tmp as unsigned byte
-'     dim tmp2 as unsigned byte
-'     for i=0 to (l/2)-1
-'         tmp=s[i]
-'         tmp2=s[l-i-1]
-'         s[i] = tmp2
-'         s[l-i-1]=tmp
-'     next i
-' end sub
+function strcontains(s as unsigned byte ptr,s2 as unsigned byte ptr) as integer
+    if strindexof(s,s2)>=0 then return 1
+    return 0
+end function
 
-' function strtoupper(s as unsigned byte ptr) as unsigned byte ptr
-'     dim i as unsigned integer
-'     dim dst as unsigned byte ptr=@(Result(0))
-'     i=0
-'     while s[i]<>0 and i<1022
-'         if (s[i]>=97 and s[i]<=122) then
-'             dst[i]=s[i]-32
-'         else
-'             dst[i]=s[i]
-'         end if
-'         i+=1
-'     wend
-'     dst[i]=0
-'     return dst
-' end function
+function strtoupper(s as unsigned byte ptr) as unsigned byte ptr
+    dim i as unsigned integer=0
+    dim dst as unsigned byte ptr=@(Result(0))
+    while s[i]<>0 and i<2047
+        if (s[i]>=97 and s[i]<=122) then
+            dst[i]=s[i]-32
+        else
+            dst[i]=s[i]
+        end if
+        i+=1
+    wend
+    dst[i]=0
+    return dst
+end function
 
-' function strtolower(s as unsigned byte ptr) as unsigned byte ptr
-'     dim i as unsigned integer
-'     dim dst as unsigned byte ptr=@(Result(0))
-'     i=0
-'     while s[i]<>0 and i<1022
-'         if (s[i]>=65 and s[i]<=90) then
-'             dst[i]=s[i]+32
-'         else
-'             dst[i]=s[i]
-'         end if
-'         i+=1
-'     wend
-'     dst[i]=0
-'     return dst
-' end function
+function strtolower(s as unsigned byte ptr) as unsigned byte ptr
+    dim i as unsigned integer=0
+    dim dst as unsigned byte ptr=@(Result(0))
+    while s[i]<>0 and i<2047
+        if (s[i]>=65 and s[i]<=90) then
+            dst[i]=s[i]+32
+        else
+            dst[i]=s[i]
+        end if
+        i+=1
+    wend
+    dst[i]=0
+    return dst
+end function
 
-' function substring(s as unsigned byte ptr,index as unsigned integer, count as integer) as unsigned byte ptr
-'     dim i as unsigned integer
-'     dim dst as unsigned byte ptr=@(Result(0))
-'     dim l as unsigned integer=strlen(s)
-'     i=0
-'     while s[i+index]<>0 and i+index<1022 and i+index<l  and (i<count or count=-1)
-'         dst[i]=s[i+index]
-'         i+=1
-'     wend
-'     dst[i]=0
-'     return dst
-' end function
+function substring(s as unsigned byte ptr,index as unsigned integer,count as integer) as unsigned byte ptr
+    dim i as unsigned integer=0
+    dim dst as unsigned byte ptr=@(Result(0))
+    if count=0 then
+        dst[0]=0
+        return dst
+    end if
+    while s[i+index]<>0 and i<2047 and (count<0 or i<count)
+        dst[i]=s[i+index]
+        i+=1
+    wend
+    dst[i]=0
+    return dst
+end function
 
-' function strendswith(src as unsigned byte ptr,search as unsigned byte ptr) as unsigned integer
-'     if (strlastindexof(src,search) = strlen(src)-strlen(search)) then
-'         return 1
-'     else
-'         return 0
-'     end if
-' end function
+function strendswith(src as unsigned byte ptr,search as unsigned byte ptr) as unsigned integer
+    dim lsrc as integer=strlen(src)
+    dim lfind as integer=strlen(search)
+    if lfind>lsrc then return 0
+    if strncmp(src+(lsrc-lfind),search,lfind)=0 then return 1
+    return 0
+end function
 
-' function strcat(s1 as unsigned byte ptr,s2 as unsigned byte ptr) as unsigned byte ptr
-'     dim i1 as unsigned integer=0
-'     dim i2 as unsigned integer=0
-'     dim dst as unsigned byte ptr=@(Result(0))
-'     while s1[i1]<>0 and i1<1022
-'         dst[i1]=s1[i1]
-'         i1+=1
-'     wend
-'     
-'     while s2[i2]<>0 and i1+i2<1022
-'         dst[i1+i2]=s2[i2]
-'         i2+=1
-'     wend
-'     dst[i1+i2]=0
-'     return dst
-' end function
-
+function strcat(s1 as unsigned byte ptr,s2 as unsigned byte ptr) as unsigned byte ptr
+    dim i as unsigned integer=0
+    dim j as unsigned integer=0
+    dim dst as unsigned byte ptr=@(Result(0))
+    while s1[i]<>0 and i<2047
+        dst[i]=s1[i]
+        i+=1
+    wend
+    while s2[j]<>0 and i<2047
+        dst[i]=s2[j]
+        i+=1
+        j+=1
+    wend
+    dst[i]=0
+    return dst
+end function
 
 sub ftoa(d as double,b as unsigned byte ptr)
     dim l as integer = 0
@@ -367,65 +307,56 @@ function strcpy(dst as unsigned byte ptr,src as unsigned byte ptr) as unsigned b
     return dst
 end function
 
-' sub memcpy(dst as any ptr,src as any ptr,cpt as unsigned integer)
-'     asm
-' 		mov esi,[src] 
-' 		mov edi,[dst]
-' 		mov ecx,[cpt]
-' 		cld
-' 		rep movsb
-' 	end asm
-' end sub
+sub memcpy(dst as any ptr,src as any ptr,cpt as unsigned integer)
+    dim d as unsigned byte ptr=cast(unsigned byte ptr,dst)
+    dim s as unsigned byte ptr=cast(unsigned byte ptr,src)
+    dim i as unsigned integer
+    for i=0 to cpt-1
+        d[i]=s[i]
+    next i
+end sub
 
-' sub memcpy16(dst as any ptr,src as any ptr,cpt as unsigned integer)
-'     asm
-' 		mov esi,[src]
-' 		mov edi,[dst]
-' 		mov ecx,[cpt]
-' 		cld
-' 		rep movsw
-' 	end asm
-' end sub
+sub memcpy16(dst as any ptr,src as any ptr,cpt as unsigned integer)
+    dim d as unsigned short ptr=cast(unsigned short ptr,dst)
+    dim s as unsigned short ptr=cast(unsigned short ptr,src)
+    dim i as unsigned integer
+    for i=0 to cpt-1
+        d[i]=s[i]
+    next i
+end sub
 
-' sub memcpy32(dst as any ptr,src as any ptr,cpt as unsigned integer)
-' 	asm
-' 		mov esi,[src]
-' 		mov edi,[dst]
-' 		mov ecx,[cpt]
-' 		cld
-' 		rep movsd
-' 	end asm
-' end sub
+sub memcpy32(dst as any ptr,src as any ptr,cpt as unsigned integer)
+    dim d as unsigned integer ptr=cast(unsigned integer ptr,dst)
+    dim s as unsigned integer ptr=cast(unsigned integer ptr,src)
+    dim i as unsigned integer
+    for i=0 to cpt-1
+        d[i]=s[i]
+    next i
+end sub
 
-' sub memset(dst as any ptr,value as unsigned byte,cpt as unsigned integer) 
-'     asm
-' 		movb al,[value]
-' 		mov ecx,[cpt]
-' 		mov edi,[dst]
-' 		cld
-' 		rep stosb
-' 	end asm
-' end sub
+sub memset(dst as any ptr,value as unsigned byte,cpt as unsigned integer)
+    dim d as unsigned byte ptr=cast(unsigned byte ptr,dst)
+    dim i as unsigned integer
+    for i=0 to cpt-1
+        d[i]=value
+    next i
+end sub
 
-' sub memset16(dst as any ptr,value as unsigned short ,cpt as unsigned integer) 
-'     asm
-' 		movw ax,[value]
-' 		mov ecx,[cpt]
-' 		mov edi,[dst]
-' 		cld
-' 		rep stosw
-' 	end asm
-' end sub
+sub memset16(dst as any ptr,value as unsigned short,cpt as unsigned integer)
+    dim d as unsigned short ptr=cast(unsigned short ptr,dst)
+    dim i as unsigned integer
+    for i=0 to cpt-1
+        d[i]=value
+    next i
+end sub
 
-' sub memset32(dst as any ptr,value as unsigned integer ,cpt as unsigned integer) 
-' 	asm
-' 		mov eax,[value]
-' 		mov ecx,[cpt]
-' 		mov edi,[dst]
-' 		cld
-' 		rep stosd
-' 	end asm
-' end sub
+sub memset32(dst as any ptr,value as unsigned integer,cpt as unsigned integer)
+    dim d as unsigned integer ptr=cast(unsigned integer ptr,dst)
+    dim i as unsigned integer
+    for i=0 to cpt-1
+        d[i]=value
+    next i
+end sub
 
 
 
@@ -441,7 +372,7 @@ function atoi(s as unsigned byte ptr) as integer
         i=1
     end if
     if (s[0]=43) then i=1
-    while (s[i]<>0)
+    while (s[i]>=48 and s[i]<=57)
         res=res*10+ s[i]-48
         i+=1
     wend
@@ -485,6 +416,7 @@ function atoihex(s as unsigned byte ptr) as unsigned integer
         if (d>=48 and d<=57) then res=res*16+ d-48
         if (d>=65 and d<=70) then res=res*16+ d-55
         if (d>=97 and d<=102) then res=res*16+ d-87
+        if not ((d>=48 and d<=57) or (d>=65 and d<=70) or (d>=97 and d<=102)) then exit while
         i+=1
     wend
     return res
@@ -501,7 +433,7 @@ function atol(s as unsigned byte ptr) as long
         i=1
     end if
     if (s[0]=43) then i=1
-    while (s[i]<>0)
+    while (s[i]>=48 and s[i]<=57)
         res=res*10+ s[i]-48
         i+=1
     wend
@@ -517,6 +449,7 @@ function atolhex(s as unsigned byte ptr) as unsigned long
         if (d>=48 and d<=57) then res=res*16+ d-48
         if (d>=65 and d<=70) then res=res*16+ d-55
         if (d>=97 and d<=102) then res=res*16+ d-87
+        if not ((d>=48 and d<=57) or (d>=65 and d<=70) or (d>=97 and d<=102)) then exit while
         i+=1
     wend
     return res
