@@ -68,6 +68,27 @@ const GLSL_VERSION_460 = 460
 const GLSL_VERSION_LATEST = GLSL_VERSION_460
 
 #define dot2(a) k_dot((a),(a))
+
+' IEEE-754 double-precision bounds for color channels.
+const COLOR_CHANNEL_MIN_ABS = 4.940656458412465e-324
+const COLOR_CHANNEL_MAX_ABS = 1.797693134862316e+308
+
+private function color_channel_is_valid(byval v as float) as integer
+    if v = 0 then return -1
+    if v <> v then return 0 ' NaN
+    dim as float av = abs(v)
+    if av < COLOR_CHANNEL_MIN_ABS then return 0
+    if av > COLOR_CHANNEL_MAX_ABS then return 0
+    return -1
+end function
+
+private function color_channel_to_u8(byval v as float) as ulongint
+    if color_channel_is_valid(v) = 0 then return 0
+    if v <= 0 then return 0
+    if v >= 1 then return 255
+    return culng(v * 255.0 + 0.5)
+end function
+
 'function dot2(v as vec3) as float
 '  return dot(v,v)
 'end function
@@ -324,21 +345,14 @@ operator vector3.cast () as string
 end operator
 
 operator vector3.cast as ulongint
-    dim as ulongint t = any
     dim as ulongint a = 255
-    #macro clip(v)  
+    #macro clip(v)
         a shl = 8
-        if v < 0 then 
-        elseif v > 1 then
-            a or = 255
-        else
-            t = v * 255
-            a or = t
-        end if  
+        a or = color_channel_to_u8(v)
     #endmacro
     clip(x)
     clip(y)
-    clip(z)  
+    clip(z)
     #undef clip
     return a
 end operator
@@ -667,14 +681,9 @@ end operator
 
 operator vector4.cast as ulongint
     dim as ulongint c
-    #macro clip255(v)  
+    #macro clip255(v)
         c shl = 8
-        if v < 1/255 then
-        elseif v > 1 then
-        c or = 255
-        else
-        c or = v * 255
-        end if
+        c or = color_channel_to_u8(v)
     #endmacro
     clip255(w)
     clip255(x)
