@@ -6,6 +6,37 @@
 
 dim as uinteger text_buffer = char_buffer
 
+const as ulongint MAX_SELF_CONTAINED_BUDGET_BYTES = 16ull * 1024ull * 1024ull
+
+function ValidateSelfContainedBudget(byval max_bytes as ulongint = MAX_SELF_CONTAINED_BUDGET_BYTES) as integer
+  dim as string executable_path = exepath()
+
+  if len(executable_path) = 0 then
+    print "WARNING: unable to resolve executable path; skipping size budget check."
+    return FALSE
+  end if
+
+  dim as longint executable_size = filelen(executable_path)
+  if executable_size < 0 then
+    print "WARNING: unable to read executable size for " & executable_path & "; skipping size budget check."
+    return FALSE
+  end if
+
+  if culngint(executable_size) > max_bytes then
+    print "ERROR: self-contained artifact exceeds 16MB deployment limit."
+    print "       path: " & executable_path
+    print "       size: " & executable_size & " bytes"
+    print "      limit: " & max_bytes & " bytes"
+    return FALSE
+  end if
+
+  return TRUE
+end function
+
+if ValidateSelfContainedBudget() = FALSE then
+  end 1
+end if
+
 screenres 800, 600, 32
 screeninfo screen_width, screen_height, bits_per_pixel, bytes_per_pixel, _ 
            bytes_per_scanline, refresh_rate, driver_name 
