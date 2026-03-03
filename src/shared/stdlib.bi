@@ -27,8 +27,10 @@ declare function sqrt(d as double) as double
 declare function fcos(d as double) as double
 declare function fsin(d as double) as double
 declare function strlen(s as  unsigned byte ptr) as unsigned integer
+declare function strnlen(s as  unsigned byte ptr, maxlen as unsigned integer) as unsigned integer
 declare function strncmp(s1 as  unsigned byte ptr,s2 as  unsigned byte ptr,count as unsigned integer) as integer
 declare function strcmp(s1 as  unsigned byte ptr,s2 as  unsigned byte ptr) as integer
+declare function memcmp(s1 as any ptr,s2 as any ptr,count as unsigned integer) as integer
 declare function strtrim(s as  unsigned byte ptr) as unsigned byte ptr
 declare function strcontains(s as  unsigned byte ptr,s2 as  unsigned byte ptr) as integer
 declare function strindexof(s as  unsigned byte ptr,s2 as  unsigned byte ptr) as integer
@@ -37,12 +39,17 @@ declare function strlastindexof(s as  unsigned byte ptr,s2 as  unsigned byte ptr
 declare sub strrev(s as unsigned byte ptr)
 declare function strendswith(src as unsigned byte ptr,search as unsigned byte ptr) as unsigned integer
 declare function strcpy(dst as unsigned byte ptr,src as  unsigned byte ptr) as unsigned byte ptr
+declare function strncpy(dst as unsigned byte ptr,src as  unsigned byte ptr,count as unsigned integer) as unsigned byte ptr
 declare function strtoupper(s as  unsigned byte ptr) as unsigned byte ptr
 declare function strtolower(s as  unsigned byte ptr) as unsigned byte ptr
 declare function strcat(s1 as  unsigned byte ptr,s2 as  unsigned byte ptr) as unsigned byte ptr
 declare function substring(s as  unsigned byte ptr,index as unsigned integer, count as integer) as unsigned byte ptr
+declare function strstr(src as unsigned byte ptr,needle as unsigned byte ptr) as unsigned byte ptr
+declare function strchr(src as unsigned byte ptr,ch as integer) as unsigned byte ptr
+declare function strrchr(src as unsigned byte ptr,ch as integer) as unsigned byte ptr
 
 declare sub memcpy(dst as any ptr,src as any ptr,cpt as unsigned integer)
+declare sub memmove(dst as any ptr,src as any ptr,cpt as unsigned integer)
 declare sub memcpy16(dst as any ptr,src as any ptr,cpt as unsigned integer)
 declare sub memcpy32(dst as any ptr,src as any ptr,cpt as unsigned integer)
 declare sub memset(dst as any ptr,value as unsigned byte,cpt as unsigned integer) 
