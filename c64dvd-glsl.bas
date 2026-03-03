@@ -2746,6 +2746,16 @@ end type
 
 static shared as C64_T computer
 
+#if defined(__FB_GCC__)
+declare sub __builtin_prefetch cdecl alias "__builtin_prefetch" (byval p as const any ptr, byval rw as integer = 0, byval locality as integer = 3)
+#endif
+
+private sub CPU6510Prefetch(byval p as any ptr)
+#if defined(__FB_GCC__)
+  if p<>0 then __builtin_prefetch(p,0,3)
+#endif
+end sub
+
 ' void _ZN5C64_TC1Ev( struct $5C64_T* THIS$1 )
 constructor C64_T
   '{
@@ -3037,8 +3047,12 @@ end opr
 proc CPU6510.Tick(byval flg as SYSTEM_TYPE) as SYSTEM_TYPE
   var mov(Ticks,peek(ubyte,@nibbles(&B0000))),mov(msg,chr(peek(ubyte,@nibbles(&B0000))))
   static as MULTI v
+  var opcodeByte = mem->readubyte(PC)
+
+  CPU6510Prefetch(@Opcodes((opcodeByte add peek(ubyte,@nibbles(&B0001))) and &HFF))
   ' get next opcode from current programm counter
-  mov(code,opcodes(mem->readubyte(PC)))
+  mov(code,opcodes(opcodeByte))
+  CPU6510Prefetch(cast(any ptr,code.decode))
 
   ' clear union
   mov(code.op.ufpu64,peek(ubyte,@nibbles(&B0000)))

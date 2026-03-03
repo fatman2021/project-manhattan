@@ -206,6 +206,16 @@ type CPU6510
   as string StrAdrModes(12)
 end type
 
+#if defined(__FB_GCC__)
+declare sub __builtin_prefetch cdecl alias "__builtin_prefetch" (byval p as const any ptr, byval rw as integer = 0, byval locality as integer = 3)
+#endif
+
+private sub CPU6510Prefetch(byval p as any ptr)
+#if defined(__FB_GCC__)
+  if p<>0 then __builtin_prefetch(p,0,3)
+#endif
+end sub
+
 type C64_T
   public:
   declare constructor
@@ -1025,8 +1035,13 @@ function CPU6510.Tick(byval flg as ulongint) as ulongint
   static as integer Ticks
   dim as string msg
   dim as MULTI v
+  dim as ubyte opcodeByte
+
+  opcodeByte = mem->readubyte(PC)
+  CPU6510Prefetch(@Opcodes((opcodeByte+1) and &HFF))
   ' get next opcode from current programm counter
-  code=opcodes(mem->readubyte(PC))
+  code=opcodes(opcodeByte)
+  CPU6510Prefetch(cast(any ptr,code.decode))
 
   ' clear union
   code.op.u16=0
