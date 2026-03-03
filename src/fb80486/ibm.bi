@@ -13,6 +13,16 @@ static shared As Integer timing_mr, timing_mrl
 static shared As Integer timing_rm, timing_rml
 static shared As Integer timing_mm, timing_mml
 static shared As Integer timing_bt, timing_bnt
+static shared As Integer timing_bm
+
+static shared As UByte branch_predictor(0 To 255)
+static shared As ULong branch_predictions
+static shared As ULong branch_mispredictions
+
+Declare Sub branch_predictor_reset()
+Declare Sub branch_predictor_update(ByVal branch_pc As ULong, ByVal branch_taken As Integer)
+
+#Define APPLY_BRANCH_WITH_PREDICTOR(_cond,_disp,_pc) branch_taken=IIf((_cond),1,0):If branch_taken Then pc+=(_disp):cycles-=timing_bt:EndIf:cycles-=timing_bnt:branch_predictor_update((_pc),branch_taken)
 
 ' Program Counter
 static shared As ULong pc

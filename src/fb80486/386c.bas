@@ -14,6 +14,7 @@ Sub exec386(ByVal cycs As Integer)
         Dim As Integer oldcyc=Any 
         Dim As integer tempi=Any 
         Dim As integer trap =any
+        Dim As Integer branch_taken =Any
 
         cycles+=cycs 
         
@@ -676,123 +677,75 @@ Sub exec386(ByVal cycs As Integer)
                         		  Exit Select 
                         	case &h80  /'JO'/
                                 tempw=getword2f() 
-                                if (flags And V_FLAG) Then 
-                                         pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR((flags And V_FLAG), CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h81  /'JNO'/
                                 tempw=getword2f() 
-                                if (flags And V_FLAG)=0 Then 
-                                         pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR((flags And V_FLAG)=0, CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h82  /'JB'/
                                 tempw=getword2f() 
-                                if (flags And C_FLAG) Then 
-                                         pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR((flags And C_FLAG), CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h83  /'JNB'/
                                 tempw=getword2f() 
-                                if (flags And C_FLAG)=0 Then 
-                                         pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR((flags And C_FLAG)=0, CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h84  /'JE'/
                                 tempw=getword2f() 
-                                if (flags And Z_FLAG) Then 
-                                         pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR((flags And Z_FLAG), CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h85  /'JNE'/
                                 tempw=getword2f() 
-                                if (flags And Z_FLAG)=0 Then 
-                                         pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR((flags And Z_FLAG)=0, CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h86  /'JBE'/
                                 tempw=getword2f() 
-                                if (flags And (C_FLAG Or Z_FLAG)) Then 
-                                         pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR((flags And (C_FLAG Or Z_FLAG)), CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h87  /'JNBE'/
                                 tempw=getword2f() 
-                                if (flags And (C_FLAG Or Z_FLAG))=0 Then 
-                                         pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR((flags And (C_FLAG Or Z_FLAG))=0, CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h88  /'JS'/
                                 tempw=getword2f() 
-                                if (flags And N_FLAG) Then 
-                                         pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR((flags And N_FLAG), CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h89  /'JNS'/
                                 tempw=getword2f() 
-                                if (flags And N_FLAG)=0 Then 
-                                         pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR((flags And N_FLAG)=0, CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h8A  /'JP'/
                                 tempw=getword2f() 
-                                if (flags And P_FLAG) Then 
-                                         pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR((flags And P_FLAG), CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h8B  /'JNP'/
                                 tempw=getword2f() 
-                                if (flags And P_FLAG)=0 Then 
-                                         pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR((flags And P_FLAG)=0, CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h8C  /'JL'/
                                 tempw=getword2f() 
                                 temp=IIf((flags And N_FLAG),1,0) 
                                 temp2=IIf((flags And V_FLAG),1,0 )
-                                if (temp<>temp2) Then 
-                                          pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR((temp<>temp2), CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h8D  /'JNL'/
                                 tempw=getword2f() 
                                 temp=IIf((flags And N_FLAG),1,0) 
                                 temp2=IIf((flags And V_FLAG),1,0 )
-                                if (temp=temp2) Then 
-                                          pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR((temp=temp2), CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h8E  /'JLE'/
                                 tempw=getword2f() 
                                 temp=IIf((flags And N_FLAG),1,0 )
                                 temp2=IIf((flags And V_FLAG),1,0 )
-                                if ((flags And Z_FLAG)<>0) Or (temp<>temp2) Then 
-                                          pc+=CShort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR(((flags And Z_FLAG)<>0) Or (temp<>temp2), CShort(tempw), oldpc) 
                                 Exit Select 
                         	case &h8F  /'JNLE'/
                                 tempw=getword2f() 
                                 temp=IIf((flags And N_FLAG),1,0 )
                                 temp2=IIf((flags And V_FLAG),1,0 )
-                                if ( ((flags And Z_FLAG)<>0) Or (temp<>temp2) )=0 Then 
-                                          pc+=cshort(tempw): cycles-=timing_bt  
-                                EndIf
-                                cycles -= timing_bnt 
+                                APPLY_BRANCH_WITH_PREDICTOR(( ((flags And Z_FLAG)<>0) Or (temp<>temp2) )=0, cshort(tempw), oldpc) 
                                 Exit Select 
                         	case &h90  /'SETO'/
                                 fetchea2() : if abrt then exit Select
@@ -3374,123 +3327,75 @@ Sub exec386(ByVal cycs As Integer)
                         Exit Select 
                 	case &h70, &h170, &h270, &h370  /'JO'/
                         offset=cbyte(getbytef())
-                        if (flags And V_FLAG) Then 
-                                 pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((flags And V_FLAG), offset, oldpc) 
                         Exit Select 
                 	case &h71, &h171, &h271, &h371  /'JNO'/
                         offset=cbyte(getbytef())
-                        if (flags And V_FLAG)=0 Then 
-                                 pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((flags And V_FLAG)=0, offset, oldpc) 
                         Exit Select 
                 	case &h72, &h172, &h272, &h372  /'JB'/
                         offset=cbyte(getbytef()) 
-                        if (flags And C_FLAG) Then 
-                                 pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((flags And C_FLAG), offset, oldpc) 
                         Exit Select 
                 	case &h73, &h173, &h273, &h373  /'JNB'/
                         offset=cbyte(getbytef()) 
-                        if (flags And C_FLAG)=0 Then 
-                                 pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((flags And C_FLAG)=0, offset, oldpc) 
                         Exit Select 
                 	case &h74, &h174, &h274, &h374  /'JZ'/
                         offset=cbyte(getbytef()) 
-                        if (flags And Z_FLAG) Then 
-                                 pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((flags And Z_FLAG), offset, oldpc) 
                         Exit Select 
                 	case &h75, &h175, &h275, &h375  /'JNZ'/
                         offset=cbyte(getbytef()) 
-                        if (flags And Z_FLAG)=0 Then 
-                                 pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((flags And Z_FLAG)=0, offset, oldpc) 
                         Exit Select 
                 	case &h76, &h176, &h276, &h376  /'JBE'/
                         offset=cbyte(getbytef()) 
-                        if (flags And (C_FLAG Or Z_FLAG)) Then 
-                                 pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((flags And (C_FLAG Or Z_FLAG)), offset, oldpc) 
                         Exit Select 
                 	case &h77, &h177, &h277, &h377  /'JNBE'/
                         offset=cbyte(getbytef()) 
-                        if (flags And (C_FLAG Or Z_FLAG))=0 Then 
-                                 pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((flags And (C_FLAG Or Z_FLAG))=0, offset, oldpc) 
                         Exit Select 
                 	case &h78, &h178, &h278, &h378  /'JS'/
                         offset=cbyte(getbytef()) 
-                        if (flags And N_FLAG) Then 
-                                  pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((flags And N_FLAG), offset, oldpc) 
                         Exit Select 
                 	case &h79, &h179, &h279, &h379  /'JNS'/
                         offset=cbyte(getbytef()) 
-                        if (flags And N_FLAG)=0 Then 
-                                  pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((flags And N_FLAG)=0, offset, oldpc) 
                         Exit Select 
                 	case &h7A, &h17A, &h27A, &h37A  /'JP'/
                         offset=cbyte(getbytef()) 
-                        if (flags And P_FLAG) Then 
-                                  pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((flags And P_FLAG), offset, oldpc) 
                         Exit Select 
                 	case &h7B, &h17B, &h27B, &h37B  /'JNP'/
                         offset=cbyte(getbytef()) 
-                        if (flags And P_FLAG)=0 Then 
-                                  pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((flags And P_FLAG)=0, offset, oldpc) 
                         Exit Select 
                 	case &h7C, &h17C, &h27C, &h37C  /'JL'/
                         offset=cbyte(getbytef()) 
                         temp=iif((flags And N_FLAG),1,0 )
                         temp2=iif((flags And V_FLAG),1,0 )
-                        if (temp<>temp2) Then 
-                                  pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((temp<>temp2), offset, oldpc) 
                         Exit Select 
                 	case &h7D, &h17D, &h27D, &h37D  /'JNL'/
                         offset=cbyte(getbytef()) 
                         temp=iif((flags And N_FLAG),1,0 )
                         temp2=iif((flags And V_FLAG),1,0 )
-                        if (temp=temp2) Then 
-                                  pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((temp=temp2), offset, oldpc) 
                         Exit Select 
                 	case &h7E, &h17E, &h27E, &h37E  /'JLE'/
                         offset=cbyte(getbytef()) 
                         temp=iif((flags And N_FLAG),1,0 )
                         temp2=iif((flags And V_FLAG),1,0 )
-                        if (flags And Z_FLAG)  Or  (temp<>temp2) Then 
-                                  pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR((flags And Z_FLAG)  Or  (temp<>temp2), offset, oldpc) 
                         Exit Select 
                 	case &h7F, &h17F, &h27F, &h37F  /'JNLE'/
                         offset=cbyte(getbytef()) 
                         temp=IIf((flags And N_FLAG),1,0 )
                         temp2=iif((flags And V_FLAG),1,0 )
-                        if ( ((flags And Z_FLAG)<>0) Or (temp<>temp2) )=0 Then 
-                                  pc += offset: cycles -= timing_bt  
-                        EndIf
-                        cycles -= timing_bnt 
+                        APPLY_BRANCH_WITH_PREDICTOR(( ((flags And Z_FLAG)<>0) Or (temp<>temp2) )=0, offset, oldpc) 
                         Exit Select 
                 	case &h80, &h180, &h280, &h380 ,_
 		                 &h82, &h182, &h282, &h382 

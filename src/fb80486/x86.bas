@@ -78,6 +78,33 @@ Sub cpu_CPUID()
 End sub
 
 
+Sub branch_predictor_reset()
+        Dim As Integer i
+        For i = 0 To 255
+                branch_predictor(i) = 1 'weakly not-taken
+        Next
+        branch_predictions = 0
+        branch_mispredictions = 0
+End Sub
+
+Sub branch_predictor_update(ByVal branch_pc As ULong, ByVal branch_taken As Integer)
+        Dim As Integer idx = (branch_pc Shr 1) And &hFF
+        Dim As Integer predicted_taken = IIf((branch_predictor(idx) >= 2),1,0)
+
+        branch_predictions += 1
+        If predicted_taken <> branch_taken Then
+                branch_mispredictions += 1
+                cycles -= timing_bm
+        End If
+
+        If branch_taken Then
+                If branch_predictor(idx) < 3 Then branch_predictor(idx) += 1
+        Else
+                If branch_predictor(idx) > 0 Then branch_predictor(idx) -= 1
+        End If
+End Sub
+
+
 
 ' inicializa CPU
 Sub resetx86(reset_cpu As Integer) 
@@ -103,6 +130,9 @@ Sub resetx86(reset_cpu As Integer)
 		rammask=&hFFFFFFFF 
 		flags=2 
 		
+		branch_predictor_reset()
+
+		
 		initmmucache() ' CPU cache
 		resetreadlookup() ' look ahead CPU
 		
@@ -114,7 +144,10 @@ Sub resetx86(reset_cpu As Integer)
 		ESP=0 
 		mmu_perm=4 		
 		
-		' esto es del PREFETCHCLEAR que estaba en el X86.C pero ¿¿¿SOLO se emplea en el Reset????
+        branch_predictor_reset()
+			timing_bm  = 3 'branch mispredict penalty
+			branch_predictor_reset()
+		' esto es del PREFETCHCLEAR que estaba en el X86.C pero Â¿Â¿Â¿SOLO se emplea en el Reset????
         'prefetchpc=pc
         'prefetchw=0
         'memcycs=cycdiff-cycles
