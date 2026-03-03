@@ -28,7 +28,7 @@ sub TString.SetText(s as unsigned byte ptr)
     this.Len=strlen(s)
     this.ResizeBuffer(this.Len)
 
-    dim i as integer
+    dim i as integer=0
     while s[i]<>0
         this.Buffer[i]=s[i]
         i+=1
@@ -39,9 +39,13 @@ end sub
 sub TString.ResizeBuffer(newlen as unsigned integer)
     var newBufferSize=newlen+(512-(newlen mod 512))
     if (this.Buffer=0 or this.BufferSize<newBufferSize) then
-        if (this.Buffer<>0) then MFree(this.Buffer)
+        var oldBuffer=this.Buffer
+        var oldBufferSize=this.BufferSize
         var b=MAlloc(newBufferSize)
-        if (this.Buffer<>0) then memcpy(b,this.Buffer,this.BufferSize)
+        if (oldBuffer<>0) then
+            memcpy(b,oldBuffer,min(oldBufferSize,newBufferSize))
+            MFree(oldBuffer)
+        end if
         this.Buffer=b
         this.BufferSize=newBufferSize
     end if
@@ -100,6 +104,7 @@ function TString.ContainsChar(b as unsigned byte) as integer
 end function
 
 function TString.EndsWithChar(b as unsigned byte) as integer
+    if this.Len=0 then return 0
     return this.Buffer[this.Len-1]=b
 end function
 
