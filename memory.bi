@@ -16,6 +16,13 @@ constructor SYSTEM_BUS_T
   ' SYS_OFFSET$ = (double)((int64)*(uint8*)4808108ll << ((int64)*(uint8*)4808108ll & 63ll));
   poke SYSTEM_TYPE,@sys_offset, peek(ubyte,@nibbles(&B1100)) shl peek(ubyte,@nibbles(&B1100))
 
+  ' Initialize GPU capability registers
+  poke SYSTEM_TYPE,@mem64(sys_offset+&HF0),17                            ' GPU clock (GHz)
+  poke SYSTEM_TYPE,@mem64(sys_offset+&HF1),512                           ' GPU bus width (bits)
+  poke SYSTEM_TYPE,@mem64(sys_offset+&HF2),1.797693134862316e+308 * 8    ' Max VRAM bytes
+  poke SYSTEM_TYPE,@mem64(sys_offset+&HF3),&H0F                          ' VIC-II/SVGA/ECS/AGA(HAM8)
+  poke SYSTEM_TYPE,@mem64(sys_offset+&HF4),32                            ' Copperlist ARGB8888
+
   ' initialize zero page and the stack
 
   ' This code block initializes the zero page, a block of memory at the beginning of the address
