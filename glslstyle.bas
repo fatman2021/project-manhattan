@@ -3384,3 +3384,20 @@ Type p_state
      bk as integer
 End Type
 '/
+
+' GLSL version dispatcher for portability across target platforms.
+' 4.60 requests are mapped to the most capable local emulator path.
+def SYSTEM_BUS_T.EXEC_GLSL_VERSION(glslVersion as longint = GLSL_VERSION_LATEST)
+  select case glslVersion
+    case is < GLSL_VERSION_090
+      EXEC_GLSL_40()
+    case is < GLSL_VERSION_120
+      EXEC_GLSL_90()
+    case else
+      EXEC_GLSL_120()
+  end select
+end def
+
+def SYSTEM_BUS_T.EXEC_GLSL_LATEST()
+  EXEC_GLSL_VERSION(GLSL_VERSION_LATEST)
+end def
