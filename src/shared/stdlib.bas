@@ -27,6 +27,14 @@ function strlen(s as unsigned byte ptr) as unsigned integer
     return retval
 end function
 
+function strnlen(s as unsigned byte ptr, maxlen as unsigned integer) as unsigned integer
+    dim retval as unsigned integer=0
+    while retval<maxlen and s[retval]<>0
+        retval+=1
+    wend
+    return retval
+end function
+
 sub strrev(s as unsigned byte ptr)
     dim l as integer=strlen(s)
     dim i as integer
@@ -71,6 +79,16 @@ function strcmp(s1 as unsigned byte ptr,s2 as unsigned byte ptr) as integer
         i+=1
     wend
     return s1[i]-s2[i]
+end function
+
+function memcmp(s1 as any ptr,s2 as any ptr,count as unsigned integer) as integer
+    dim p1 as unsigned byte ptr=cast(unsigned byte ptr,s1)
+    dim p2 as unsigned byte ptr=cast(unsigned byte ptr,s2)
+    dim i as unsigned integer
+    for i=0 to count-1
+        if p1[i]<>p2[i] then return cast(integer,p1[i])-cast(integer,p2[i])
+    next i
+    return 0
 end function
 
 function strncmp(s1 as unsigned byte ptr,s2 as unsigned byte ptr,count as unsigned integer) as integer
@@ -154,6 +172,36 @@ function substring(s as unsigned byte ptr,index as unsigned integer,count as int
     wend
     dst[i]=0
     return dst
+end function
+
+function strstr(src as unsigned byte ptr,needle as unsigned byte ptr) as unsigned byte ptr
+    dim idx as integer=strindexof(src,needle)
+    if idx<0 then return 0
+    return src+idx
+end function
+
+function strchr(src as unsigned byte ptr,ch as integer) as unsigned byte ptr
+    dim i as unsigned integer=0
+    dim needle as unsigned byte=ch and 255
+    while src[i]<>0
+        if src[i]=needle then return src+i
+        i+=1
+    wend
+    if needle=0 then return src+i
+    return 0
+end function
+
+function strrchr(src as unsigned byte ptr,ch as integer) as unsigned byte ptr
+    dim i as unsigned integer=0
+    dim last as integer=-1
+    dim needle as unsigned byte=ch and 255
+    while src[i]<>0
+        if src[i]=needle then last=i
+        i+=1
+    wend
+    if needle=0 then return src+i
+    if last<0 then return 0
+    return src+last
 end function
 
 function strendswith(src as unsigned byte ptr,search as unsigned byte ptr) as unsigned integer
@@ -307,13 +355,47 @@ function strcpy(dst as unsigned byte ptr,src as unsigned byte ptr) as unsigned b
     return dst
 end function
 
+function strncpy(dst as unsigned byte ptr,src as unsigned byte ptr,count as unsigned integer) as unsigned byte ptr
+    dim i as unsigned integer=0
+    while i<count and src[i]<>0
+        dst[i]=src[i]
+        i+=1
+    wend
+    while i<count
+        dst[i]=0
+        i+=1
+    wend
+    return dst
+end function
+
 sub memcpy(dst as any ptr,src as any ptr,cpt as unsigned integer)
     dim d as unsigned byte ptr=cast(unsigned byte ptr,dst)
     dim s as unsigned byte ptr=cast(unsigned byte ptr,src)
-    dim i as unsigned integer
-    for i=0 to cpt-1
+    dim i as unsigned integer=0
+    while i+4<=cpt
+        *cast(unsigned integer ptr,d+i)=*cast(unsigned integer ptr,s+i)
+        i+=4
+    wend
+    while i<cpt
         d[i]=s[i]
-    next i
+        i+=1
+    wend
+end sub
+
+sub memmove(dst as any ptr,src as any ptr,cpt as unsigned integer)
+    dim d as unsigned byte ptr=cast(unsigned byte ptr,dst)
+    dim s as unsigned byte ptr=cast(unsigned byte ptr,src)
+    dim i as unsigned integer
+    if d=s or cpt=0 then exit sub
+    if d<s or d>=s+cpt then
+        memcpy(dst,src,cpt)
+    else
+        i=cpt
+        while i>0
+            i-=1
+            d[i]=s[i]
+        wend
+    end if
 end sub
 
 sub memcpy16(dst as any ptr,src as any ptr,cpt as unsigned integer)
@@ -336,10 +418,16 @@ end sub
 
 sub memset(dst as any ptr,value as unsigned byte,cpt as unsigned integer)
     dim d as unsigned byte ptr=cast(unsigned byte ptr,dst)
-    dim i as unsigned integer
-    for i=0 to cpt-1
+    dim i as unsigned integer=0
+    dim v32 as unsigned integer=(value shl 24) or (value shl 16) or (value shl 8) or value
+    while i+4<=cpt
+        *cast(unsigned integer ptr,d+i)=v32
+        i+=4
+    wend
+    while i<cpt
         d[i]=value
-    next i
+        i+=1
+    wend
 end sub
 
 sub memset16(dst as any ptr,value as unsigned short,cpt as unsigned integer)
@@ -361,6 +449,9 @@ end sub
 
 
 function atoi(s as unsigned byte ptr) as integer
+    while s[0]=32 or s[0]=9 or s[0]=10 or s[0]=13
+        s+=1
+    wend
     if (s[0]= 48) and ((s[1]=120) or (s[1]=88)) then return atoihex(s+2)
     if (s[0]= 38) and ((s[1]=104) or (s[1]=72)) then return atoihex(s+2)
     
@@ -383,6 +474,10 @@ end function
 function atof(s as unsigned byte ptr) as double
     dim rez as double =0
     dim fact as double=1
+    while s[0]=32 or s[0]=9 or s[0]=10 or s[0]=13
+        s+=1
+    wend
+    if (s[0]=43) then s+=1
     if (s[0]=45) then
         s+=1
         fact =-1
@@ -423,6 +518,9 @@ function atoihex(s as unsigned byte ptr) as unsigned integer
 end function
 
 function atol(s as unsigned byte ptr) as long
+    while s[0]=32 or s[0]=9 or s[0]=10 or s[0]=13
+        s+=1
+    wend
     if (s[0]= 48) and ((s[1]=120) or (s[1]=88)) then return atolhex(s+2)
     
     dim res as long=0
