@@ -3315,31 +3315,27 @@ def INS_ASLA(byval Cpu as CPU6510_T) ' ac
   Cpu->F.n=iif(Cpu->sA<peek(ubyte,@nibbles(&B0000)),peek(ubyte,@nibbles(&B0001)),peek(ubyte,@nibbles(&B0000)))
 end def
 
+' Predicated branch helper:
+' - predicate = 1: branch target updates architectural state (PC)
+' - predicate = 0: target is calculated but architectural state is not modified
+def ApplyPredicatedBranch(byval Cpu as CPU6510_T, byval predicate as ubyte)
+  static as ushort candidatePc
+  candidatePc = Cpu->pc
+  candidatePc -= peek(ubyte,@nibbles(&B0001))
+  candidatePc += Cpu->mem->ReadByte(Cpu->Code.op.u16) + peek(ubyte,@nibbles(&B0001))
+  if predicate then Cpu->pc = candidatePc
+end def
+
 def INS_BCC(byval Cpu as CPU6510_T)
-  if Cpu->F.c=peek(ubyte,@nibbles(&B0000)) then
-    v.u16 =Cpu->pc
-    v.s16-=peek(ubyte,@nibbles(&B0001))
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-    Cpu->pc=v.u16
-  end if
+  ApplyPredicatedBranch(Cpu, iif(Cpu->F.c=peek(ubyte,@nibbles(&B0000)), peek(ubyte,@nibbles(&B0001)), peek(ubyte,@nibbles(&B0000))))
 end def
 
 def INS_BCS(byval Cpu as CPU6510_T)
-  if Cpu->F.c then
-    v.u16 =Cpu->pc
-    v.s16-=peek(ubyte,@nibbles(&B0001))
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-    Cpu->pc=v.u16
-  end if
+  ApplyPredicatedBranch(Cpu, Cpu->F.c)
 end def
 
 def INS_BEQ(byval Cpu as CPU6510_T)
-  if Cpu->F.z=peek(ubyte,@nibbles(&B0001)) then
-    v.u16 =Cpu->pc
-    v.s16-=peek(ubyte,@nibbles(&B0001))
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-    Cpu->pc=v.u16
-  end if
+  ApplyPredicatedBranch(Cpu, iif(Cpu->F.z=peek(ubyte,@nibbles(&B0001)), peek(ubyte,@nibbles(&B0001)), peek(ubyte,@nibbles(&B0000))))
 end def
 
 def INS_BIT(byval Cpu as CPU6510_T)
@@ -3351,30 +3347,15 @@ def INS_BIT(byval Cpu as CPU6510_T)
 end def
 
 def INS_BMI(byval Cpu as CPU6510_T)
-  if Cpu->F.n then
-    v.u16 =Cpu->pc
-    v.s16-=peek(ubyte,@nibbles(&B0001))
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-    Cpu->pc=v.u16
-  end if
+  ApplyPredicatedBranch(Cpu, Cpu->F.n)
 end def
 
 def INS_BNE(byval Cpu as CPU6510_T)
-  if Cpu->F.z=peek(ubyte,@nibbles(&B0000)) then
-    v.u16 =Cpu->pc
-    v.s16-=peek(ubyte,@nibbles(&B0001))
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-    Cpu->pc=v.u16
-  end if
+  ApplyPredicatedBranch(Cpu, iif(Cpu->F.z=peek(ubyte,@nibbles(&B0000)), peek(ubyte,@nibbles(&B0001)), peek(ubyte,@nibbles(&B0000))))
 end def
 
 def INS_BPL(byval Cpu as CPU6510_T)
-  if Cpu->F.n=0 then
-    v.u16 =Cpu->pc
-    v.s16-=peek(ubyte,@nibbles(&B0001))
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-    Cpu->pc=v.u16
-  end if
+  ApplyPredicatedBranch(Cpu, iif(Cpu->F.n=peek(ubyte,@nibbles(&B0000)), peek(ubyte,@nibbles(&B0001)), peek(ubyte,@nibbles(&B0000))))
 end def
 
 def INS_BRK(byval Cpu as CPU6510_T)
@@ -3388,21 +3369,11 @@ def INS_BRK(byval Cpu as CPU6510_T)
 end def
 
 def INS_BVC(byval Cpu as CPU6510_T)
-  if Cpu->F.v=peek(ubyte,@nibbles(&B0000)) then
-    v.u16 =Cpu->pc
-    v.s16-=peek(ubyte,@nibbles(&B0001))
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-    Cpu->pc=v.u16
-  end if
+  ApplyPredicatedBranch(Cpu, iif(Cpu->F.v=peek(ubyte,@nibbles(&B0000)), peek(ubyte,@nibbles(&B0001)), peek(ubyte,@nibbles(&B0000))))
 end def
 
 def INS_BVS(byval Cpu as CPU6510_T)
-  if Cpu->F.v then
-    v.u16 =Cpu->pc
-    v.s16-=peek(ubyte,@nibbles(&B0001))
-    v.s16+=Cpu->mem->ReadByte(Cpu->Code.op.u16)+peek(ubyte,@nibbles(&B0001))
-    Cpu->pc=v.u16
-  end if
+  ApplyPredicatedBranch(Cpu, Cpu->F.v)
 end def
 
 def INS_CLC(byval Cpu as CPU6510_T)
