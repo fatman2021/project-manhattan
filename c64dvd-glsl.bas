@@ -382,6 +382,16 @@ faster than accessing it directly from main memory. Prefetching can be done with
 #define SCR_PTR_ADR3                     &HC12B  ' (49451)
 #define LD_PC_STATUS_PTR                 &HC12C
 
+' Firmware/UEFI capability registers (sizes in megabytes unless noted)
+#define FW_BIOS_LEGACY_MIN_MB_PTR        &HC130  ' (49456) Legacy BIOS lower-bound (historical)
+#define FW_BIOS_LEGACY_MAX_MB_PTR        &HC131  ' (49457) Legacy BIOS upper-bound (historical)
+#define FW_UEFI_MODERN_MIN_MB_PTR        &HC132  ' (49458) Modern UEFI lower-bound
+#define FW_UEFI_MODERN_COMMON_MB_PTR     &HC133  ' (49459) Modern UEFI common size
+#define FW_UEFI_MODERN_MAX_MB_PTR        &HC134  ' (49460) Modern UEFI upper-bound observed
+#define FW_UEFI_COMMON_KB_PTR            &HC135  ' (49461) Modern UEFI common size in KiB
+#define FW_STORAGE_GPT_MAX_ZB_PTR        &HC136  ' (49462) GPT theoretical maximum addressable storage in ZB
+#define FW_STORAGE_IS_SPI_FLASH_PTR      &HC137  ' (49463) 1 = motherboard SPI flash device
+
 ' Character generator ROM
 #define CHAR_GEN_ROM_START               &HD000
 #define CHAR_GEN_ROM_END                 &HDFFF

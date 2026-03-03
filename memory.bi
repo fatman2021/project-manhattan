@@ -23,6 +23,17 @@ constructor SYSTEM_BUS_T
   poke SYSTEM_TYPE,@mem64(sys_offset+&HF3),&H0F                          ' VIC-II/SVGA/ECS/AGA(HAM8)
   poke SYSTEM_TYPE,@mem64(sys_offset+&HF4),32                            ' Copperlist ARGB8888
 
+  ' Initialize firmware capability registers
+  ' Sizes are kept in megabytes/kibibytes to mirror real SPI flash ROM parts.
+  poke SYSTEM_TYPE,@mem64(FW_BIOS_LEGACY_MIN_MB_PTR),4                   ' Older boards often used 4MB ROMs
+  poke SYSTEM_TYPE,@mem64(FW_BIOS_LEGACY_MAX_MB_PTR),8                   ' Older boards often used 8MB ROMs
+  poke SYSTEM_TYPE,@mem64(FW_UEFI_MODERN_MIN_MB_PTR),8                   ' Modern UEFI minimum commonly seen
+  poke SYSTEM_TYPE,@mem64(FW_UEFI_MODERN_COMMON_MB_PTR),32               ' 32MB (32768 KiB) common on feature-rich boards
+  poke SYSTEM_TYPE,@mem64(FW_UEFI_MODERN_MAX_MB_PTR),64                  ' 64MB boards emerging for larger firmware images
+  poke SYSTEM_TYPE,@mem64(FW_UEFI_COMMON_KB_PTR),32768                   ' 32MB in KiB
+  poke SYSTEM_TYPE,@mem64(FW_STORAGE_GPT_MAX_ZB_PTR),9.4                 ' GPT theoretical addressable storage limit
+  poke SYSTEM_TYPE,@mem64(FW_STORAGE_IS_SPI_FLASH_PTR),1                 ' 1 = SPI flash device on motherboard
+
   ' initialize zero page and the stack
 
   ' This code block initializes the zero page, a block of memory at the beginning of the address
